@@ -1,0 +1,232 @@
+!! XVkbd-strip.ad  - sample app-defaults file for xvkbd
+!! by Tom Sato <VEF00200@nifty.ne.jp>, http://homepage3.nifty.com/tsato/
+!!
+!! Last update: 2010-01-16
+
+#include "XVkbd-common"
+
+! Make the virtual keyboard support most Latin-1 characters
+!
+xvkbd.title: xvkbd - Virtual Keyboard
+
+xvkbd.inheritGeoemetry: false
+xvkbd.modalKeytop: true
+xvkbd.keypad: false
+xvkbd.keypadOnly: true
+xvkbd.geometry: +0-0
+xvkbd.keypad_panel.geometry: -0-0
+xvkbd*keypad.vertDistance: 0
+xvkbd*keypad.horizDistance: 0
+
+xvkbd*banner.width: 1
+xvkbd*banner.height: 1
+xvkbd.form*Command.width: 27
+xvkbd.form*Command.height: 22
+xvkbd.form*Repeater.width: 27
+xvkbd.form*Repeater.height: 22
+xvkbd.form*Return.width: 54
+xvkbd.form*MainMenu.width: 27
+xvkbd.form*Control_L.width: 18
+xvkbd.form*Shift_L.width: 18
+xvkbd.form*Mode_switch.width: 18
+xvkbd.keypad_panel*Repeater.width: 27
+xvkbd.keypad_panel*Repeater.height: 22
+xvkbd*Command.horizDistance: 0
+xvkbd*Repeater.horizDistance: 0
+xvkbd*Command.justify: center
+xvkbd*Repeater.justify: center
+xvkbd*Command.justify: center
+xvkbd*Repeater.justify: center
+xvkbd*vertDistance: 0
+
+xvkbd*Focus.bitmap: /usr/include/X11/bitmaps/target
+
+xvkbd.NormalKeys: \
+  a       n     \n\
+  b       o     \n\
+  c       p     \n\
+  d       q     \n\
+  e       r     \n\
+  f       s     \n\
+  g       t     \n\
+  h       u     \n\
+  i       v     \n\
+  j       w     \n\
+  k       x     \n\
+  l       y     \n\
+  m       z     \n\
+  space   BackSpace \n\
+  Return            \n\
+  Control_L Shift_L Mode_switch \n\
+  Focus   MainMenu
+
+xvkbd.ShiftKeys: \
+  A       N     \n\
+  B       O     \n\
+  C       P     \n\
+  D       Q     \n\
+  E       R     \n\
+  F       S     \n\
+  G       T     \n\
+  H       U     \n\
+  I       V     \n\
+  J       W     \n\
+  K       X     \n\
+  L       Y     \n\
+  M       Z     \n\
+  space   BackSpace \n\
+  Return            \n\
+  Control_L Shift_L Mode_switch \n\
+  Focus   MainMenu
+
+xvkbd.NormalKeyLabels: \
+  a       n     \n\
+  b       o     \n\
+  c       p     \n\
+  d       q     \n\
+  e       r     \n\
+  f       s     \n\
+  g       t     \n\
+  h       u     \n\
+  i       v     \n\
+  j       w     \n\
+  k       x     \n\
+  l       y     \n\
+  m       z     \n\
+  space   BS    \n\
+  Return        \n\
+  Ct   Sh   Ag  \n\
+  Focus   MainMenu
+
+xvkbd.ShiftKeyLabels: \
+  A       N     \n\
+  B       O     \n\
+  C       P     \n\
+  D       Q     \n\
+  E       R     \n\
+  F       S     \n\
+  G       T     \n\
+  H       U     \n\
+  I       V     \n\
+  J       W     \n\
+  K       X     \n\
+  L       Y     \n\
+  M       Z     \n\
+  space   BS    \n\
+  Return        \n\
+  Ctrl    Shift  AltGr \n\
+  Focus   MainMenu
+
+xvkbd.AltgrKeys: \
+  ,       .     \n\
+  ;       :     \n\
+  !       ?     \n\
+  (       )     \n\
+  {       }     \n\
+  [       ]     \n\
+  <       >     \n\
+  #       $     \n\
+  %       ^     \n\
+  &       @     \n\
+  _       ~     \n\
+  |       =     \n\
+  '       "     \n\
+  \\  BackSpace \n\
+  Return        \n\
+  Control_L Shift_L Mode_switch \n\
+  Focus   MainMenu
+
+xvkbd.AltgrKeyLabels: \
+  ,       .     \n\
+  ;       :     \n\
+  !       ?     \n\
+  (       )     \n\
+  {       }     \n\
+  [       ]     \n\
+  <       >     \n\
+  #       $     \n\
+  %       ^     \n\
+  &       @     \n\
+  _       ~     \n\
+  |       =     \n\
+  '       "     \n\
+  \\      BS    \n\
+  Return        \n\
+  Ct   Sh   Ag  \n\
+  Focus   MainMenu
+
+xvkbd.ShiftAltgrKeys: \
+  Escape  Tab   \n\
+  +       -     \n\
+  *       /     \n\
+  0       5     \n\
+  1       6     \n\
+  2       7     \n\
+  3       8     \n\
+  4       9     \n\
+  .       ,     \n\
+  Left    Right \n\
+  Up      Down  \n\
+  F1      F4    \n\
+  F2      F5    \n\
+  space   BackSpace \n\
+  Return            \n\
+  Control_L Shift_L Mode_switch \n\
+  Focus   MainMenu
+
+xvkbd.ShiftAltgrKeyLabels: \
+  Esc     Tab   \n\
+  +       -     \n\
+  *       /     \n\
+  0       5     \n\
+  1       6     \n\
+  2       7     \n\
+  3       8     \n\
+  4       9     \n\
+  .       ,     \n\
+  left    right \n\
+  up      down  \n\
+  F1      F4    \n\
+  F2      F5    \n\
+  space   BS    \n\
+  Return        \n\
+  Ct   Sh   Ag  \n\
+  Focus   MainMenu
+
+xvkbd.KeypadLabels: \
+  Esc         Tab   \n\
+  +           -     \n\
+  *           /     \n\
+  0           F1    \n\
+  1           F2    \n\
+  2           F3    \n\
+  3           F4    \n\
+  4           F5    \n\
+  5           F6    \n\
+  6           F7    \n\
+  7           F8    \n\
+  8           F9    \n\
+  9           F10   \n\
+  .           Ent   \n\
+  left        right \n\
+  up          down  \n\
+  Del         Ins
+
+xvkbd.NormalKeypad: \
+  Escape      Tab         \n\
+  KP_Add      KP_Subtract \n\
+  KP_Multiply KP_Divide   \n\
+  KP_0        F1     \n\
+  KP_1        F2     \n\
+  KP_2        F3     \n\
+  KP_3        F4     \n\
+  KP_4        F5     \n\
+  KP_5        F6     \n\
+  KP_6        F7     \n\
+  KP_7        F8     \n\
+  KP_8        F9     \n\
+  KP_9        F10    \n\
+  .           Enter  \n\
+  Left        Right  \n\
+  Up          Down   \n\
+  Delete      Insert

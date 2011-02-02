@@ -1,0 +1,1219 @@
+.TH xvkbd 1 2010-03-14
+
+
+.SH NAME
+\fPxvkbd\fP - virtual keyboard for X window system
+
+.SH DESCRIPTION
+.PP
+\fIxvkbd\fP is a virtual (graphical) keyboard program for X Window System
+which provides facility to enter characters onto other clients (softwares)
+by clicking on a keyboard displayed on the screen.
+This may be used for systems without a hardware keyboard
+such as kiosk terminals or handheld devices.
+This program also has facility to send characters
+specified as the command line option to another client.
+.PP
+The standard keyboard layout is based on the traditional US layout,
+but some other keyboard layout (see "Screen Shot")
+are also supported.
+The default window size may be too large for systems with small screen,
+but it can be configured to use smaller space (220x90 pixels, for example).
+For details,
+see also "Screen Shot"
+and "How to Customize \fIxvkbd\fP" below,
+and resouce files in the distribution.
+.PP
+\fIxvkbd\fP version 2.1 and later support word completion,
+which may make it easier to enter long words with \fIxvkbd\fP.
+.PP
+\fIIMPORTANT NOTE:\fP
+When invoking \fIxvkbd\fP from display managers such as XDM, GDM, etc.,
+always use \fIxvkbd\fP with \fB-secure\fP option
+or you will have serious security risk.
+
+.SH "Environment"
+\fIxvkbd\fP will work on X11R5 or X11R6.
+It is tested on \fIredhat Linux\fP and \fISolaris\fP,
+and it will work also on most UNIX-like systems.
+.PP
+This program uses \fIXaw\fP (use of \fIXaw3d\fP is recommended) 
+and no special library is required.
+
+.SH "Operation"
+
+.SH "    Input Keys"
+When \fIxvkbd\fP is started, the image of a keyboard 
+will be displayed on the screen.
+Clicking any key on the \fIxvkbd\fP window will send the character
+to the focused window
+as if the key had been actually typed with the hardware keyboard.
+.PP
+If you want to input upper-case alphabets
+or other characters on the upper position on the keyboard,
+you should click the key after selecting \fIShift\fP by clicking it,
+or click the key with mouse button 3 (maybe right button) or mouse button 4.
+In the similar manner, if you want to input \fIControl\fPed characters,
+you should click the key after clicking \fIControl\fP,
+or click the key with mouse button 2 (maybe middle button).
+\fIAlt\fP and \fIMeta\fP can be used in the similar manner with \fIControl\fP,
+but there are no shortcuts with mouse buttons.
+
+.SH "    ``Quick Modifiers''"
+\fIxvkbd\fP 2.5 and later support another way to input characters
+with modifiers such as \fIShift\fP, \fIControl\fP, \fIAltGr\fP, etc.,
+which may be useful especially for machines with touch panels such as PDAs
+- we would call it \fI"Quick Modifiers"\fP.
+.PP
+\fIQuick Modifiers\fP can be enabled/disabled by the
+``\fIEnable "Quick Modifiers?\fP'' entry on the
+property panel.
+If \fIQuick Modifiers\fP is enabled,
+it will be activated by pressing a key on the \fIxvkbd\fP window,
+move the pointer outside of the key,
+and then release the mouse button or equivalent.
+.PP
+The direction of the pointer motion will select the modifier:
+.sp
+.in +4
+.nf
+  up        - Shift
+  right     - AltGr
+  right-up  - Shift AltGr
+  left      - Control
+  left-up   - Shift Control
+  down      - Meta
+  left-down - Alt
+.fi
+.sp
+.in -4
+
+.SH "    Setting Input Focus"
+If you are using a window manager and clients
+where you can set input focus by clicking mouse button on the window 
+(and you don't have to keep pointer in the window after that),
+you can simply set input focus in the normal way
+and then click keys on the \fIxvkbd\fP window 
+- the character will be sent to the selected position.
+.PP
+If you are using a window manager or clients
+where you must keep the pointer in the input field to input from the keyboard,
+or if the input focus is switched to the \fIxvkbd\fP window
+when you clicked on the key on the \fIxvkbd\fP window,
+you must make \fIxvkbd\fP to set input focus explicitly
+by clicking the \fIFocus\fP button on the \fIxvkbd\fP window
+and then click on the input field.
+This input focus can be cleared by clicking \fIFocus\fP button
+with mouse button 3, or simply clicking \fIFocus\fP button twice.
+
+.SH "    Word Completion"
+Choosing ``\fIWord Completion...\fP'' in the main menu
+will popup the \fIWord Completion\fP panel.
+.PP
+When you entered characters by clicked keys on the \fIxvkbd\fP window as usual
+while the \fIWord Completion\fP panel open,
+words started with the characters will be listed in the panel,
+and you can enter the remaining characters of the selected word
+by clicking one of the words in the list.
+.PP
+The dictionary (list of words) file is \fB/usr/share/dict/words\fP by default,
+but it can be changed by \fB-dict\fP option or \fBxvkbd.dictFile\fP resouce,
+or on the Property panel.
+
+.SH "    Main Menu"
+Pressing the ``xvkbd'' logo on the main keyboard
+(placed near left-bottom corner in the default configuration)
+will popup the main menu.
+.PP
+The menu contains following items:
+.TP 4
+\fIAbout...\fP
+Show short description of this program.
+.TP 4
+\fIManual...\fP
+Launch manual page reader.
+.TP 4
+\fIKeypad...\fP
+Open the Keypad panel.
+.TP 4
+\fISun Function Keys...\fP
+Open the Sun Function Keys panel.
+.TP 4
+\fIDead Keys...\fP
+Open the Dead Keys panel
+which can be used to enter Latin characters with accent symbol in double stroke.
+.TP 4
+\fIWord Completion...\fP
+Open the Word Completion panel.
+.PP
+.TP 4
+\fIChange Keyboard Layout...\fP
+Open a popup window to change the keyboard layout.
+In the default configuration,
+Default (US),
+Belgian,
+Danish,
+French,
+German,
+Icelandic,
+Italian,
+Japanese (JIS-X-6002),
+Japanese (JIS-X-6004),
+Korean,
+Norwegian,
+Portuguese,
+Russian,
+Spanish,
+Swedish,
+Swiss/German,
+United Kingdom
+and Latin-1
+are available.
+.TP 4
+\fIEdit Function Keys...\fP
+Open a popup window to edit string assigned to function keys.
+See also "Assigning Text to Function Keys".
+.TP 4
+\fIShow Keypad?\fP
+Toggle show/hide of the keypad on the main window.
+.TP 4
+\fIShow Function Keys?\fP
+Toggle show/hide of the function keys on the main window.
+.TP 4
+\fIProperty...\fP
+Popup the Property panel.
+.TP 4
+\fIConnect to Remote Display...\fP
+Open a panel to specify the name of a remote display to be connected,
+so that following key events will be sent to windows on the remote display.
+.TP 4
+\fIRevert to Local Display\fP
+Disconnect from the remote display
+so that following key events will be sent to windows on the local display.
+
+.SH "    Property Panel"
+.TP 4
+\fIEnable "Quick Modifiers"?\fP
+Toggle enable/disable of the
+\fIQuick Modifiers\fP feature.
+.TP 4
+\fILock Shift?\fP
+Toggle locking/momentary of \fIShift\fP keys.
+.TP 4
+\fILock AltGr?\fP
+Toggle locking/momentary of \fIAltGr\fP key.
+.TP 4
+\fILock Control, Alt and Meta?\fP
+Toggle locking/momentary of \fIControl\fP, \fIAlt\fP and \fIMeta\fP keys.
+.TP 4
+\fIAlways on Top?\fP
+If this entry is set ON,
+\fIxvkbd\fP attempts to keep the \fIxvkbd\fP window always on the top of the display
+(i.e. not to be hidden by other windows).
+This feature is experimental,
+and care should be taken as this feature can cause problem in some situations.
+.TP 4
+\fIBehave as Toolbar Window?\fP
+\fIxvkbd\fP attempts to be a toolbar window when it is used with
+some kind of window managers such as Matchbox window manager.
+.TP 4
+\fIUse XTEST Extension?\fP
+XTEST extension will be used if this entry is checked.
+If this entry is set inactive,
+the X server does not support XTEST extension.
+.TP 4
+\fIJump Pointer?\fP
+If this entry is set ON,
+\fIxvkbd\fP will temporary jump the pointer to the focused window,
+if XTEST extension is to be used to simulate keyboard events.
+.TP 4
+\fIKey-Click Sound\fP
+Set on/off and duration of key-click sound.
+.TP 4
+\fIAutomatic Click\fP
+Set on/off of the automatic click feature
+and the delay before automatic click is activated.
+If this feature is set,
+\fIxvkbd\fP will work as if left mouse button is clicked
+when mouse pointer is moved on a button and stays long enough.
+You may want to set \fIJump Pointer?\fP to OFF to avoid auto-repeating.
+.TP 4
+\fICompletion Dictionary\fP
+Set the filename to be used for word completion.
+This setting take precedence over the `\fBxvkbd.dictFile\fP' resource
+and the \fB-dict\fP option.
+
+.SH "    Options"
+\fIxvkbd\fP accept following command line options, in addition to
+general options such as `\fB-display\fP'.
+.PP
+.TP 4
+.B "-version"
+Display version information and exit.
+.TP 4
+.B "-xsendevent"
+Make \fIxvkbd\fP to use \fIXSendEvent()\fP to simulate keyboard events,
+as it was in \fIxvkbd\fP version 1.0.
+\fIxvkbd\fP version 1.1 and later will try to use XTEST extension instead
+in the default configuration.
+.sp 0.5
+If XTEST extension is not supported by the X server,
+\fIxvkbd\fP will automatically switch to this mode.
+.sp 0.5
+Resource `\fBxvkbd.xtest: false\fP' has the same function.
+.TP 4
+.B "-no-sync"
+Normally, \fIxvkbd\fP attempts to synchronize with the destinating client step by step.
+This can cause problem when the client (or the X server) responded too slow.
+In such situation, maybe this \fB-no-sync\fP can solve the problem.
+.sp 0.5
+Resource `\fBxvkbd.noSync: true\fP' has the same function.
+.TP 4
+.B "-no-jump-pointer"
+Make \fIxvkbd\fP not to jump the pointer when sending events.
+In the default, \fIxvkbd\fP will temporary jump the pointer to the focused window,
+if input focus is set explicitly via \fIFocus\fP button,
+and XTEST extension is to be used to simulate keyboard events.
+.sp 0.5
+Resource `\fBxvkbd.jumpPointer: false\fP' has the same function.
+.TP 4
+.B "-no-back-pointer"
+Make \fIxvkbd\fP not to jump the pointer back to the original position
+after events has been sent.
+Maybe this can be useful when using \fIxvkbd\fP to move the pointer position.
+.sp 0.5
+Resource `\fBxvkbd.jumpPointerBack: false\fP' has the same function.
+.TP 4
+.B "-modal"
+Make labels on keys in the \fIxvkbd\fP window
+to be set independently for each of four shift states,
+not shifted, \fIShift\fP, \fIAltGr\fP and \fIShift\fP-\fIAltGr\fP.
+This is useful when you want to make the \fIxvkbd\fP window very small.
+.sp 0.5
+See also "Customizing Keyboard Layout"
+and resouce files in the distribution.
+.sp 0.5
+Resource `\fBxvkbd.modalKeytop: true\fP' has the same function.
+.TP 4
+.B "-geometry "[\fIwidth\fPx\fIheight\fP][\fB+\fIxoff\fP+\fIyoff\fP]
+Set window geometry (size and position).
+.sp 0.5
+You can use form like \fB-geometry 400x130\fP to specify the window size,
+\fB-geometry +100+100\fP to specify the window position from left/top edge of the screen,
+and \fB-geometry 400x130+100+100\fP to specify both the size and the position.
+You can specify position from right/bottom edge of the screen
+by using \fB-\fP instead of \fB+\fP,
+but please note that you must take account of size of the window border.
+(If you specify `\fB-geometry -0-0\fP',
+the window will not fit in the screen.)
+.sp 0.5
+This can be set by \fBxvkbd.windowGeometry\fP resource
+(note that it is not \fBxvkbd.geometry\fP), too.
+.TP 4
+.B "-no-repeat"
+Do not auto-repeat even if key is depressed long time.
+.sp 0.5
+If auto-repeat is enabled (this is the default),
+time before start auto-repeat can be set as
+`\fBxvkbd*Repeater.initialDelay: 600\fP',
+and period of repeat can be set as
+`\fBxvkbd*Repeater.minimumDelay: 100\fP' 
+(unit of there parameters are milli-seconds).
+.sp 0.5
+Resource `\fBxvkbd.autoRepeat: false\fP' has the same function.
+.TP 4
+.B "-no-functionkey"
+Do not display function keys.
+.sp 0.5
+Resource `\fBxvkbd.functionkey: false\fP' has the same function.
+.TP 4
+.B "-no-keypad"
+Do not display keypad.
+.sp 0.5
+Resource `\fBxvkbd.keypad: false\fP' has the same function.
+.TP 4
+.B "-compact"
+Do not display function keys nor keypad.
+.sp 0.5
+Resource `\fBxvkbd.compact: true\fP' has the same function.
+.TP 4
+.B "-keypad"
+Display only keypad.
+This option will be ignored
+if `\fB-no-keypad\fP' or `\fB-compact\fP' is specified.
+.sp 0.5
+Resource `\fBxvkbd.keypadOnly: true\fP' has the same function.
+.TP 4
+.BI "-text " string
+Send the string to the focused window
+(see also `\fB-window\fP' option).
+.sp 0.5
+If this option is specified,
+\fIxvkbd\fP will not open its window
+and terminate soon after sending the string.
+.sp 0.5
+The string can contain:
+.IP "    - " 6
+\fB\\r\fP - Return
+.IP "    - " 6
+\fB\\t\fP - Tab
+.IP "    - " 6
+\fB\\b\fP - Backspace
+.IP "    - " 6
+\fB\\e\fP - Escape
+.IP "    - " 6
+\fB\\d\fP - Delete
+.IP "    - " 6
+\fB\\S\fP - Shift (modify the next character;
+please note that modify with ``\fB\\S\fP'' will be ignored in many cases.
+For example, ``\fBa\\Cb\\ScD\\CE\fP'' will be interpreted as \fBa\fP,
+Control-\fBb\fP, \fBc\fP, Shift-\fBD\fP, and Control-Shift-\fBE\fP.)
+.IP "    - " 6
+\fB\\C\fP - Control (modify the next character)
+.IP "    - " 6
+\fB\\A\fP - Alt (modify the next character)
+.IP "    - " 6
+\fB\\M\fP - Meta (modify the next character)
+.IP "    - " 6
+\fB\\[\fP\fIkeysym\fP\fB]\fP - the keysym \fIkeysym\fP
+(e.g., \fB\\[Left]\fP)
+.IP "    - " 6
+\fB\\D\fP\fIdigit\fP - delay \fIdigit\fP * 100 ms
+.IP "    - " 6
+\fB\\x\fP\fIvalue\fP - move mouse pointer (use "+" or "-" for relative motion)
+.IP "    - " 6
+\fB\\y\fP\fIvalue\fP - move mouse pointer (use "+" or "-" for relative motion)
+.IP "    - " 6
+\fB\\m\fP\fIdigit\fP - simulate click of the specified mouse button
+.TP 4
+.BI "-file " filename
+Send the contents of the specified file to the focused window
+(see also `\fB-window\fP' option).
+If ``\fB-\fP'' was specified as the \fIfilename\fP,
+string to be sent will be read from the standard input (stdin).
+.sp 0.5
+If this option is specified,
+\fIxvkbd\fP will not open its window
+and terminate soon after sending the string.
+.TP 4
+.BI "-delay " value
+Put \fIvalue\fP ms of delay for evey characters
+when sending characters with \fB-text\fP or \fB-file\fP.
+Maybe this is useful when problem arises when characters are entered too fast.
+.TP 4
+.BI "-window " window
+Specify the ID 
+(hexadecimal value leaded with `\fB0x\fP', or decimal value),
+the name (instance name or class name) of the window,
+or the title of the window to set input focus.
+It is possible to use wildcard characters `\fB*\fP' and `\fB?\fP'
+to match the window name or the window title.
+.sp 0.5
+If this is not specified, \fIxvkbd\fP will use input focus
+under control of the window manager,
+unless focus is specified explicitly via \fIFocus\fP button.
+Even if this option is specified,
+you can set input focus to other windows using \fIFocus\fP button,
+or clear the input focus.
+.sp 0.5
+If there are two or more windows which have the name specified with this option,
+the window which was found first will be selected.
+.TP 4
+.BI "-widget " widget-name
+Specify the name of the widget to set the input focus.
+To use this feature, the client must support \fIEditres\fP protocol.
+In general, this option will be used with `\fB-window\fP' option.
+.sp 0.5
+If you want to set input focus to the widget \fBfoo.bar.zot\fP,
+you can write \fBzot\fP, \fBbar.zot\fP or \fBfoo.bar.zot\fP
+as \fIwidget-name\fP.
+To avoid confusion, the \fIwidget-name\fP should match
+with a single widget of the client.
+.sp 0.5
+For example,
+.sp
+.in +4
+\fBxvkbd -window xarchie -widget searchText -text "\\Ca\\Ckabc\\r\fP"
+.sp
+.in -4
+will enter the string ``\fBabc\fP'' to the ``Search Term'' field
+of a \fBxarchie\fP window.
+.TP 4
+.B "-true-keypad"
+If this option is specified,
+\fIxvkbd\fP will attempt to use \fIkeysym\fPs such as 
+\fIXK_KP_1\fP instead of \fIXK_1\fP.
+.sp 0.5
+Resource `\fBxvkbd.keypadKeysym: true\fP' has the same function.
+.TP 4
+.BI "-dict " filename
+Specify the default dictionary (list of words) file to be used for
+word completion.
+The `\fICompletion Dictionary\fP' filename
+set on the Property panel takes precedence over this.
+.sp 0.5
+Resource `\fBxvkbd.dictFile: \fP\fIfilename\fP' has the same function.
+.sp 0.5
+See also ``Making your own completion dictionary''.
+.TP 4
+.B "-minimizable"
+Make \fIxvkbd\fP window can be minimized (iconified)
+even if no window manager is in use.
+When this feature is enabled,
+small triangle will be displayed at left ot the \fIxvkbd\fP main menu,
+and \fIxvkbd\fP window will be minimized when the triangle is clicked.
+.sp 0.5
+Resource `\fBxvkbd.minimizable: true\fP' has the same function.
+.TP 4
+.B "-secure"
+Disable invocation of external commands,
+including user assigned command and the online manual reader.
+Connection to another displays would also be disabled.
+This option may be useful when \fIxvkbd\fP is to be run with some kind of privileges.
+.sp 0.5
+Resource `\fBxvkbd.secure: true\fP' has the same function.
+.TP 4
+.B "-nonexitable"
+Disable termination of the \fIxvkbd\fP program.
+This option may be useful when \fIxvkbd\fP is to be run automatically
+for systems with no keyboards and users should not terminate the \fIxvkbd\fP.
+.sp 0.5
+Resource `\fBxvkbd.nonexitable: true\fP' has the same function.
+.TP 4
+.B "-xdm"
+Same as \fB-secure -nonexitable\fP.
+When \fIxvkbd\fP is to be run for login screen,
+it would be suggested to use this option.
+.TP 4
+.BI "-modifiers " modifiers
+Normally, \fIxvkbd\fP will activate modifiers (control, shift, etc.)
+only while sending characters.
+If modifiers were specified with this option,
+the specified modifiers will be activated
+while corresponding key on the \fIxvkbd\fP window is in active.
+For example, you can specify \fB-modifiers shift,control,meta,alt\fP
+to apply this for those four modifiers.
+Maybe this can be useful when attempting to decorate
+the mouse operations with the modifiers.
+Please note that the modifiers will also be applied
+when attempting to click on the \fIxvkbd\fP window
+and which can prevent the correct operation in some situations.
+.sp 0.5
+Resource `\fBxvkbd.positiveModifiers: \fP\fImodifiers...\fP' has the same function.
+.TP 4
+.B "-debug"
+Make \fIxvkbd\fP to output debug information.
+It also disable keyboard width adjustment,
+to help adjusting key size when making keyboard layout file.
+.sp 0.5
+<!--
+.TP 4
+.B "-version"
+Output version information and exit.
+-->
+
+.SH "Screen Shot"
+.TP 4
+Default (US)
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-normal.gif
+.TP 4
+Belgian
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-belgian.gif
+.TP 4
+Danish
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-danish.gif
+.TP 4
+French
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-french.gif
+.sp 0.5
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-french2.gif
+.TP 4
+German
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-german.gif
+.TP 4
+Icelandic
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-icelandic.gif
+.TP 4
+Italian
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-italian.gif
+.TP 4
+Japanese (JIS-X-6002)
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-jisx6002.gif
+.TP 4
+Japanese (JIS-X-6004)
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-jisx6004.gif
+.TP 4
+Norwegian
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-norwegian.gif
+.TP 4
+Portuguese
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-portuguese.gif
+.TP 4
+Spanish
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-spanish.gif
+.TP 4
+Swedish
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-swedish.gif
+.TP 4
+Swiss/German
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-swissgerman.gif
+.TP 4
+United Kingdom
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-uk.gif
+.TP 4
+Latin-1
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-latin1.gif
+.TP 4
+Small Keyboard (maybe suitable for PDAs)
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-small.gif
+.TP 4
+Hebrew
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-hebrew.gif
+.TP 4
+Greek
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-greek.gif
+.TP 4
+Turkish
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-turkish.gif
+.TP 4
+Slovene
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-slovene.gif
+.TP 4
+Korean
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-korean.gif
+.TP 4
+Russian (Cyrillic)
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-russian.gif
+
+.SH "Download"
+.TP 4
+\fILatest Official Release\fP
+\fIhttp://homepage3.nifty.com/tsato/xvkbd/xvkbd-3.2.tar.gz\fP
+.br
+- source of version 3.2 (2010-03-14)
+.TP 4
+previous release
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-3.1.tar.gz
+.br
+- source of version 3.1 (2010-01-17)
+.sp 0.5
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-3.0.tar.gz
+.br
+- source of version 3.0 (2008-05-05)
+.PP
+\fIxvkbd\fP is distributed under the terms of the
+GNU General Public License.
+
+.SH "Install"
+.IP "  o " 4
+\fIuntar\fP the source in a directory,
+and move to the directory
+.IP "  o " 4
+If you wish to use genuine \fIXaw\fP insead of \fIXaw3d\fP,
+edit \fBImakefile\fP and remove (or comment-out) `\fB#define XAW3D\fP'.
+.sp 0.5
+When you are installing \fIxvkbd\fP (for example) in very old systems,
+you may also want to remove `\fB#define XTEST\fP' and `\fB#define I18N\fP'
+to disable XTEST and internationalization facility respectively.
+.IP "  o " 4
+Run \fBxmkmf; make install install.man\fP
+
+.SH "Customization"
+
+.SH "    How to Customize \fIxvkbd\fP"
+Some degree of customization of \fIxvkbd\fP is possible
+by setting resources.
+Some resources are already described above,
+and resources to customizing keyboard layout are described below.
+.PP
+To set resources, you can:
+.IP "  o " 4
+put them in your \fB$HOME/.Xdefaults\fP file, or
+.IP "  o " 4
+load them via \fIxrdb\fP(1), or
+.IP "  o " 4
+set the filename to the \fB$XENVIRONMENT\fP environment variable, or
+.IP "  o " 4
+put them in application default directory as `\fBXVkbd-\fP\fIsuffix\fP'
+and set resource ``\fBxvkbd.customization: -\fP\fIsuffix\fP'', or
+.IP "  o " 4
+put them in application default directory as \fBXVkbd\fP.
+.PP
+Here, \fIapplication default directory\fP can be either of:
+.IP "  o " 4
+directories specified with \fB$XUSERFILESEACHPATH\fP,
+\fB$XAPPLRESDIR\fP or else \fB$HOME\fP environment variable
+.IP "  o " 4
+system's application default directory specified with
+\fB$XFILESEACHPATH\fP environment variable,
+or else the directory specified when compiling the X
+(e.g., \fB/usr/lib/X11/app-defaults\fP)
+.PP
+When the application default file is to be stored
+in the system's application default directory,
+the file must contain ``\fB#include "XVkbd-common"\fP''
+near top of the file.
+.PP
+\fIxvkbd\fP is distributed with some application default files,
+and they will be installed in the system's application default directory.
+
+.SH "    Making Window Small"
+Size (and position) of \fIxvkbd\fP window can be set
+by `\fBxvkbd.windowGeometry\fP' resource.
+When making window small, you may need to choose the smaller font, too.
+.sp
+.in +4
+.nf
+  xvkbd.windowGeometry: 220x90
+  xvkbd.compact: true
+  xvkbd*Font: 6x12
+.fi
+.sp
+.in -4
+.PP
+You may also want to set:
+.sp
+.in +4
+.nf
+  xvkbd.modalKeytop: true
+.fi
+.sp
+.in -4
+to display only the labels for the current shift state,
+instead of trying to always display all of them in the small keytop.
+.PP
+See also \fBXVkbd-small.ad\fP in the \fIxvkbd\fP distribution.
+
+.SH "    Removing Unwanted Keys"
+Keys on \fIxvkbd\fP window can be removed by setting its width to 1.
+.PP
+To remove \fICompose\fP key and make \fIShift\fP key larger,
+you can write:
+.sp
+.in +4
+.nf
+  xvkbd*Multi_key.width: 1
+  xvkbd*Shift_R.width: 75
+.fi
+.sp
+.in -4
+.PP
+To remove right \fIAlt\fP and \fIMeta\fP key,
+you can write:
+.sp
+.in +4
+.nf
+  xvkbd*Alt_R.width: 1
+  xvkbd*Meta_R.width: 1
+.fi
+.sp
+.in -4
+
+.SH "    Customizing Keyboard Layout"
+Layout of keys on the \fIxvkbd\fP window can be customized
+with following resources:
+.TP 4
+.B "xvkbd.NormalKeys"
+list of keys available when neighter of \fIShift\fP and \fIAltGr\fP are selected
+.TP 4
+.B "xvkbd.ShiftKeys"
+list of keys available when \fIShift\fP is selected
+.TP 4
+.B "xvkbd.AltgrKeys"
+list of keys available when \fIAltGr\fP is selected
+.TP 4
+.B "xvkbd.ShiftAltgrKeys"
+list of keys available when both \fIAltGr\fP and \fIShift\fP are selected
+.TP 4
+.B "xvkbd.KeyLabels"
+list of labels displayed on the keys
+.TP 4
+.B "xvkbd.NormalKeyLabels"
+list of labels displayed on the keys
+  when neither of \fIShift\fP and \fIAltGr\fP are selected.
+.TP 4
+.B "xvkbd.ShiftKeyLabels"
+list of labels displayed on the keys
+  when \fIShift\fP is selected
+.TP 4
+.B "xvkbd.AltgrKeyLabels"
+list of labels displayed on the keys
+  when \fIAltGr\fP is selected
+.TP 4
+.B "xvkbd.ShiftAltgrKeyLabels"
+list of labels displayed on the keys
+  when both \fIAltGr\fP and \fIShift\fP are selected
+.PP
+Four resources to set labels on the keys
+(\fBxvkbd.NormalKeyLabels\fP, \fBxvkbd.ShiftKeyLabels\fP,
+\fBxvkbd.AltgrKeyLabels\fP and \fBxvkbd.ShiftAltgrKeyLabels\fP)
+will be used instead of \fBxvkbd.KeyLabels\fP
+when \fBxvkbd.modalKeytop\fP resoruce is set \fBtrue\fP.
+.PP
+In all of those resources, each keys are separated by spaces,
+and rows of keys are terminated with `\fB \\n\\\fP'
+(note that `\fB\\n\fP' must have space before it).
+Please refer \fBXVkbd-german.ad\fP and \fBXVkbd-latin1.ad\fP
+in the \fIxvkbd\fP distribution for more about these resources.
+.PP
+\fBXVkbd-german\fP and \fBXVkbd-latin1\fP will be installed
+in the system's application default directory,
+and setting the resource ``\fBxvkbd.customization: -german\fP''
+will make \fIxvkbd\fP to use the German layout.
+For another method to activate those settings, please refer
+"How to Customize \fIxvkbd\fP" above.
+
+.SH "    Assigning Text to Function Keys"
+Text can be assigned to each function keys
+(and, actually, to most other keys).
+If text is assigned to the function key,
+clicking on the key will send the assigned text
+instead of the function key itself.
+When pointer is on a key where text is assigned,
+the text will be displayed near the key.
+.PP
+The setting will be read from a text file
+which contains text for each function keys as:
+.sp
+.in +4
+.nf
+  F1 text for F1
+  F2 text for F2
+  s:F1 text for Shift-F1
+  c:F1 text for Control-F1
+  m:F1 text for Meta-F1
+  a:F1 text for Alt-F1
+  ...
+.fi
+.sp
+.in -4
+.PP
+`\fBs:\fP', `\fBc:\fP', `\fBm:\fP' and `\fBa:\fP'
+before the keys name indicates four modifiers
+(\fIShift\fP, \fIControl\fP, \fIMeta\fP and \fIAlt\fP) respectively.
+.PP
+If the first character of the assigned string is `\fB!\fP',
+the string will be used as command to be executed when the key is clicked.
+To assign string starting with `\fB!\fP' or `\fB\\\fP',
+put `\fB\\\fP' before the string.
+.PP
+The file is \fB$HOME/.xvkbd\fP in default,
+and it can be changed by setting the filename
+with \fBxvkbd.keyFile\fP resource.
+.PP
+For \fBF1\fP to \fBF12\fP with or without \fIShift\fP modifier,
+it is possible to edit the assigned string on a panel popped up via
+"\fIEdit Function Keys...\fP" in the main menu.
+
+.SH "Miscellaneous Informations"
+
+.SH "    Notes"
+.IP "  o " 4
+On \fIXFree86\fP, resolution switch with
+\fICtrl + Alt + Keypad-Plus\fP and \fICtrl + Alt + Keypad-Minus\fP 
+may be simulated.
+However, \fICtrl + Alt + Backspace\fP will not be simulated.
+.IP "  o " 4
+\fIShift\fP is used to decide key to be sent
+and it will not used to set modifier bit when sending the event.
+You can use \fBxev\fP command to check what is actually sent.
+.IP "  o " 4
+If \fIAlt\fP or \fIMeta\fP is not defined as modifier,
+the key can't be used as modifier.
+You can use `\fBxmodmap -pm\fP' to check how modifiers are defined.
+.IP "  o " 4
+\fINum Lock\fP (and maybe other modifiers) on the physical keyboard
+may not work correctly when \fIxvkbd\fP is in use.
+
+.SH "    Additional Informations"
+.TP 4
+FAQ - Possible Problems and Solutions
+http://homepage3.nifty.com/tsato/xvkbd/faq.html
+.TP 4
+Making your own completion dictionary
+http://homepage3.nifty.com/tsato/xvkbd/make-dic.html
+.TP 4
+Hints to use \fBxvkbd -text\fP
+http://homepage3.nifty.com/tsato/xvkbd/xvkbd-text.html
+.TP 4
+Note about how to send key events
+http://homepage3.nifty.com/tsato/xvkbd/events.html
+
+.SH "Change Log"
+.TP 4
+Version 0.1 (2000-05-13)
+.IP "    - " 6
+
+The first release, not announced anywhere.
+.TP 4
+Version 0.2 (2000-09-15)
+.IP "    - " 6
+Compose key is added.
+In the environments where Compose key is supported,
+some characters (mainly letters with accent symbol)
+which can't be entered directly from keyboard
+can be entered using dedicated key combinations.
+.IP "    - " 6
+Make keyboard layout not to be disturbed when
+window size if specified with \fB-geometry\fP option.
+.IP "    - " 6
+Sample app-defaults file is added.
+.TP 4
+Version 0.3 (2000-10-05)
+.IP "    - " 6
+\fB-text\fP option can now accept some modifiers
+(\fB\\S\fP, \fB\\C\fP, etc.) and any keysyms 
+(\fB\\[\fP\fIkeysym\fP\fB]\fP).
+.IP "    - " 6
+In addition to the window ID,
+\fB-window\fP option can now accept window name.
+.IP "    - " 6
+New \fB-widget\fP option to specify the widget to set the input focus.
+.TP 4
+Version 1.0 (2000-11-03)
+.IP "    - " 6
+Keyboard layout can be now configured with resources.
+See "Customizing Keyboard Layout" above,
+and \fBXVkbd-german.ad\fP in the distribution.
+.IP "    - " 6
+\fIxvkbd\fP can now send keys
+with \fIMode_switch\fP (\fIAltGr\fP) modifier,
+which enables those characters in the position to be entered.
+.IP "    - " 6
+\fIxvkbd\fP now support \fIAltGr\fP key
+so that German (and some other) keyboard layout can be used.
+See \fBXVkbd-german.ad\fP in the distribution.
+.IP "    - " 6
+\fBXVkbd-german\fP and \fBXVkbd-latin1\fP are included
+in the distribution, which modifies keyboard layout
+and put some non-ASCII keys on the \fIxvkbd\fP window.
+.IP "    - " 6
+\fICapsLock\fP key is supported now.
+.TP 4
+Version 1.1 (2000-12-23)
+.IP "    - " 6
+\fIxvkbd\fP can now use XTEST extension to simulate keyboard events.
+It can still use \fIXSendEvent()\fP, as it was in the older release.
+(thanks, Bjoern)
+.IP "    - " 6
+Labels on keys can now be set independently for each of four shift states,
+not shifted, \fIShift\fP, \fIAltGr\fP and \fIShift\fP-\fIAltGr\fP.
+(thanks, Jim)
+.IP "    - " 6
+\fB-kterm\fP option and \fBxvkbd.kterm\fP resource are removed.
+.TP 4
+Version 1.2 (2001-02-18)
+.IP "    - " 6
+\fIFocus\fP button is now placed in the main keyboard, too,
+so that it will be available also in compact mode.
+If you don't need it,
+it can be removed by setting ``\fBxvkbd*row5.Focus.width: 1\fP''.
+.IP "    - " 6
+Input focus set by \fIFocus\fP button can now be cleard
+by clicking \fIFocus\fP button twice.
+Clicking \fIFocus\fP button with mouse button 3 will
+still clear the input focus, too.
+.IP "    - " 6
+Text can now be assigned to function keys
+(and, actually, to most other keys).
+.IP "    - " 6
+It is now possible to assign keys modified with
+\fIShift\fP, \fIControl\fP, \fIAlt\fP and \fIMeta\fP on the main keyboard,
+by putting `\fBs:\fP', `\fBc:\fP', `\fBa:\fP' and `\fBm:\fP'
+before those keysym name when
+customizing the keyboard layout.
+.IP "    - " 6
+\fIxvkbd\fP now ignores SIGINT and SIGQUIT
+so that it will not terminated accidently.
+.TP 4
+Version 1.3 (2001-03-19)
+.IP "    - " 6
+New app-defaults file for Swiss-German layout, \fBXVkbd-swissgerman.ad\fP.
+(contributed from Marcel Portner)
+.IP "    - " 6
+\fIxvkbd\fP now catches MappingNotify event and reload the new mapping.
+This allows users to use \fBxmodmap\fP while \fIxvkbd\fP is running.
+.IP "    - " 6
+\fINumLock\fP key is supported now.
+(I'd removed \fIPrint\fP, \fIScrLk\fP and \fIPause\fP from keypad
+- somebody need them?)
+.TP 4
+Version 1.4 (2001-04-22)
+.IP "    - " 6
+Auto-repeat didn't work
+when focus was set explicitly via \fIFocus\fP button.
+It is now fixed.
+.IP "    - " 6
+When required keysym was not defined in the keymap table,
+\fIxvkbd\fP will now add it on-the-fly.
+This means that we don't have to add them via \fIxmodmap\fP.
+.IP "    - " 6
+Keypad panel can now be popped up from the main keyboard
+as a separate window.
+.IP "    - " 6
+Sun function keys is now supported.
+It can be popped up from the main keyboard as a separate window.
+.IP "    - " 6
+Manual page is now available.
+.TP 4
+Version 1.5 (2001-10-08)
+.IP "    - " 6
+Key events can now be sent to windows on a remote display
+(i.e. windows on other X servers)
+- use "\fIConnect to Remote Display...\fP" in the main menu
+to connect to remote display.
+.IP "    - " 6
+\fIShift\fP, \fIControl\fP, \fIAlt\fP and \fIMeta\fP can now be locked
+- use "\fILock Shift?\fP" and "\fILock Control, Alt and Meta?\fP"
+in the main menu.
+Those initial settings can be set by 
+\fBxvkbd.shiftLock\fP and \fBxvkbd.modifiersLock\fP resource.
+.IP "    - " 6
+If the first keysym for a key is an alphabet
+and the second keysym is \fINoSymbol\fP,
+it is now interpreted as if the first keysym is lowercase alphabet
+and the second keysym is uppercase alphabet.
+Keymap may be defined in this way in some systems including Solaris,
+and older \fIxvkbd\fP may not work correctly in such situation.
+.TP 4
+Version 1.6 (2001-11-10)
+.IP "    - " 6
+New `\fB-file\fP' option to send characters in the specified file.
+(thanks, Gregory)
+.IP "    - " 6
+New entry `\fIUse XTEST Extension?\fP' is added
+to the main menu,
+mainly to indicate the availability of the XTEST extension.
+.IP "    - " 6
+\fIxvkbd\fP would crash when the window explicitly focused
+via \fIFocus\fP button becomes was destroyed.
+This problem is now fixed.
+.TP 4
+Version 2.0 (2001-12-09)
+.IP "    - " 6
+Keyboard layout (default, German, French, etc.) can now be changed
+after \fIxvkbd\fP is invoked.
+.IP "    - " 6
+Show/hide of the keypad and funcion keys on the main window
+can now be toggled from the main menu.
+.IP "    - " 6
+New app-defaults file for French layout, \fBXVkbd-french.ad\fP.
+(contributed from Jean-Pierre Demailly)
+.TP 4
+Version 2.1 (2002-01-27)
+.IP "    - " 6
+When height of the \fIxvkbd\fP window is smaller than
+\fBXVkbd.modalThreshold\fP,
+\fIxvkbd\fP will now automatically switch the keytop
+as if \fB-modal\fP option was specified.
+.IP "    - " 6
+\fB\\[\fP\fIkeysym\fP\fB]\fP in \fB-text\fP option
+would send wrong keys - this problem is now fixed.
+.IP "    - " 6
+Target \fBdistclean\fP in the \fBImakefile\fP is renamed
+to avoid the possible confusion on some systems.
+.IP "    - " 6
+Word completion is now supported.
+.TP 4
+Version 2.2 (2002-03-17)
+.IP "    - " 6
+String assigned to function keys can now be edited on a panel popped up via
+"\fIEdit Function Keys...\fP" in the main menu.
+.IP "    - " 6
+When ``\fB-\fP'' was specified as the filename parameter
+for \fB-file\fP option, \fIxvkbd\fP will now read
+its standard input (stdin) to get the string to be sent.
+.IP "    - " 6
+In the previous release,
+less-portable \fBsetenv()\fP function was used
+instead of \fBputenv()\fP function,
+may cause compilation error on some systems including Solaris.
+.TP 4
+Version 2.3 (2002-04-05)
+.IP "    - " 6
+New "Dead Keys" panel added.
+Which can be used to enter Latin characters with accent symbol in double stroke.
+.IP "    - " 6
+More localized keyboard layout:
+Belgian,
+Danish,
+French,
+German,
+Icelandic,
+Italian,
+Japanese (JIS-X-6004),
+Norwegian,
+Portuguese,
+Spanish,
+Swedish,
+Swiss/German,
+United Kingdom
+and Latin-1.
+.IP "    - " 6
+\fB-keypad\fP option would crash previous version of \fIxvkbd\fP
+- this problem is now fixed.
+.TP 4
+Version 2.4 (2002-10-02)
+.IP "    - " 6
+Command can now be assigned to function keys
+so that clicking on the function key will execute the command
+instead of sending the string to clients.
+.IP "    - " 6
+Assigned string for \fBF1\fP to \fBF12\fP
+with \fIShift\fP modifier can now be edited on a panel popped up via
+"\fIEdit Function Keys...\fP" in the main menu.
+.TP 4
+Version 2.5 (2002-10-12)
+.IP "    - " 6
+\fIQuick Modifier\fP feature added
+- now, it is possible to enter characters with modifiers
+by pressing a key and then move the pointer.
+(suggested by Niklas Rokaeus)
+.IP "    - " 6
+``\fILock AltGr?\fP'' entry is added in the main menu.
+.IP "    - " 6
+Status of ``\fILock Shift?\fP'', ``\fILock AltGr\fP'',
+``\fILock Control, Alt and Meta?\fP'' will be recorded in \fB$HOME/.xvkbd\fP file
+and it will be read when \fIxvkbd\fP is invoked next time.
+.TP 4
+Version 2.5a (2003-06-25)
+.IP "    - " 6
+``Fitaly'' layout is now supported
+- may be useful for PDAs.
+.TP 4
+Version 2.6 (2004-05-04)
+.IP "    - " 6
+Code to adding keysyms which were not found in the keymap table is revised.
+\fIxvkbd\fP now avoid to add keysyms in the shifted position of keys
+which already have a keysym defined in the non-shifted position,
+and entries in the keymap table which is modified keys will be redefined
+rather than redefining the entire keymap table.
+This change is to avoid possible problem (\fIAltGr\fP key could be effectively disabled)
+which may caused in some systems where \fIXGetKeyboardMapping()\fP can produce
+incorrect map when keys have more then two keysyms.
+.IP "    - " 6
+If \fIMode_switch\fP is not defined in the modifier table
+but \fIISO_Level3_Shift\fP is defined,
+\fIxvkbd\fP now attempt to add \fIMode_switch\fP as the same modifier
+with \fIISO_Level3_Shift\fP.
+.IP "    - " 6
+Korean layout is now supported.
+Although Hangul characters will be displayed on the keys,
+\fIxvkbd\fP will simply generate alphabet characters when those keys are clicked.
+It is intented to be used with "ami" or similar Hangul input program.
+.IP "    - " 6
+URL of the \fIxvkbd\fP main page is now changes to
+http://homepage3.nifty.com/tsato/xvkbd/.
+.TP 4
+Version 2.7 (2005-05-05)
+.IP "    - " 6
+Yet another Japanese keyboard layout, JIS X 6002, is now supported.
+.IP "    - " 6
+It is now possible to minimize (iconify) the main window
+even if no window manager is in use.
+This feature can be activated by \fB-minimizable\fP option
+or \fBxvkbd.minimizable\fP resource.
+.IP "    - " 6
+Experimental code to keep the \fIxvkbd\fP window always on the top of the display.
+This feature can be activated by \fB-always-on-top\fP option,
+\fBxvkbd.alwaysOnTop\fP resource
+or the "Always on Top?" entry in the main menu.
+Care should be taken as this feature can cause problem in some situations.
+.IP "    - " 6
+\fB-text\fP option now support combinations of modifiers and a special key.
+For example, \fB-text '\\C\\A\\d'\fP can be used for Control-Alt-Delete key combination.
+.IP "    - " 6
+New options:
+\fB-secure\fP option (\fBxvkbd.secure\fP resource)
+which disables invocation of external commands,
+\fB-nonexitable\fP option (\fBxvkbd.nonexitable\fP resource)
+which inhibits termination of the program,
+and \fB-xdm\fP option which is equivalent to \fB-secure -nonexitable\fP
+and maybe useful when run \fIxvkbd\fP from a display manager.
+.TP 4
+Version 2.7a (2005-05-07)
+.IP "    - " 6
+Fixed a problem that \fIxvkbd\fP could cause segmentation fault on startup.
+.TP 4
+Version 2.8 (2006-09-10)
+.IP "    - " 6
+\fIISO_Level3_Shift\fP is now to be prefered over \fIMode_switch\fP
+so that \fIAltGr\fP can be used on relatively new systems
+where we must use \fIISO_Level3_Shift\fP instead of \fIMode_switch\fP.
+.IP "    - " 6
+Reference to the target bitmap is changed from
+\fB/usr/X11R6/include/X11/bitmaps/target\fP to \fB/usr/include/X11/bitmaps/target\fP.
+.IP "    - " 6
+New options: \fB-no-back-pointer\fP, \fB-no-sync\fP, \fB-modifiers\fP.
+.TP 4
+Version 2.9 (2008-03-30)
+.IP "    - " 6
+Russian (Cyrillic) keyboard layout supported. (thanks, Victor)
+.IP "    - " 6
+New \fB-delay\fP option.
+.IP "    - " 6
+\fB\\D\fP special sequence in \fB-text\fP can be used to put a delay in specific position.
+.IP "    - " 6
+\fB-text\fP can now simulate mouse operation
+via \fB\\x\fP, \fB\\y\fP and \fB\\m\fP special sequences.
+.TP 4
+Version 3.0 (2008-05-05)
+.IP "    - " 6
+New Property panel.
+.IP "    - " 6
+New automatic click feature.
+.IP "    - " 6
+Key-click sounds when key is pressed.
+.TP 4
+Version 3.1 (2010-01-17)
+.IP "    - " 6
+Changed the default setting for automatic click to OFF, which was set ON in the previous release in error and caused confusion.
+.IP "    - " 6
+The keypad is now customizable, too (see XVkbd-strip.ad for the example).
+.IP "    - " 6
+Up to 25x25 keys can now be supported both for the main keyboard and the keypad.
+.IP "    - " 6
+Able to open the keypad panel when startup, by setting `\fBxvkbd.keypad: false\fP' and `\fBxvkbd.keypadOnly: true\fP'.
+.IP "    - " 6
+Fixed errors in some keyboard layout files (Korean, Slovene, UK).
+.IP "    - " 6
+A new sample layout file XVkbd-strip.ad.
+.TP 4
+Version 3.2 (2010-03-14)
+.IP "    - " 6
+New option `\fIBehave as Toolbar Window?\fP' on the Property panel,
+  which may make xvkbd works better with some kind of window managers
+  such as Matchbox window manager. (Thanks, Patrick)
+.IP "    - " 6
+`\fIAlways on Top\fP' will work rather better with window managers
+  which support extended window manager hint \fB_NET_WM_STATE_ABOVE\fP.
+.IP "    - " 6
+\fB-window\fP option can now find window which have title match with
+  the specified string.
+.IP "    - " 6
+\fB-window\fP option now accept wildcard characters
+  `\fB*\fP' and `\fB?\fP'.
+.IP "    - " 6
+Word completion dictionary file to be used with `\fIWord Completion...\fP'
+  can now be specified on the Property panel.
+.IP "    - " 6
+Only the words which have two or more characters will be appeared
+  in the word completion list.
+.IP "    - " 6
+New \fB-version\fP option to display version information.
+
+.SH "Author"
+\fIxvkbd\fP was written by Tom Sato,
+and it is distributed under the terms of the
+GNU General Public License
+Version 2 or any later version.
+.PP
+Please send any feedback (such as bug reports, requests or comments) to
+Tom Sato <VEF00200@nifty.ne.jp>.
+.PP
+The latest version of this software
+and more information about it may be available at
+http://homepage3.nifty.com/tsato/xvkbd/.
+Release of the new version will be announced
+on the Freshmeat (http://freshmeat.net),
+and you can probably receive the announce via e-mail if you wish.

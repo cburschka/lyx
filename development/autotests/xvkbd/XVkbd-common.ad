@@ -1,0 +1,349 @@
+!! XVkbd-common  - default setting for xvkbd-2.2
+!! by Tom Sato <VEF00200@nifty.ne.jp>, http://homepage3.nifty.com/tsato/
+!!
+!! Last update: 2002-04-17
+!
+! These settings are hardcoded in xvkbd.c as fallback resouces, too,
+! and this file is not required in general.
+! This is intended to be included in another app-defaults files
+! (XVkbd-german, for example), as:
+!
+!     #include "XVkbd-common"
+!
+! because fallback resouces may be ignored when such app-defaults file
+! (application class resource file) is loaded.
+
+XVkbd.title: xvkbd - Virtual Keyboard
+XVkbd.iconName: xvkbd
+XVkbd*input: false
+XVkbd*props_panel.input: true
+XVkbd*display_panel.input: true
+XVkbd.mappedWhenManaged: false
+XVkbd.translations: #override \
+	<Message>WM_PROTOCOLS: DeleteWindowProc()\n\
+        <Configure>: WindowResized()\n\
+        <MappingNotify>: ReadKeymap()\n\
+        <Visible>: VisibilityChanged()
+XVkbd.Form.translations: <BtnDown>:
+XVkbd.Form.?.translations: <BtnDown>:
+XVkbd*Command.translations: #override \n\
+        <EnterWindow>: ShowBalloon() highlight() \n\
+        <LeaveWindow>: CloseBalloon() unhighlight() \n\
+	<BtnDown>: ButtonDownAction() set()\n\
+	<BtnUp>: notify() unset() ButtonUpAction()
+XVkbd*Repeater.translations: #override \n\
+        <EnterWindow>: ShowBalloon() highlight() \n\
+        <LeaveWindow>: CloseBalloon() unhighlight() \n\
+	<BtnDown>: ButtonDownAction() set() start() \n\
+	<BtnUp>: stop() unset() ButtonUpAction()
+XVkbd*MenuButton.translations: #override \n\
+        <EnterWindow>: ShowBalloon() highlight() \n\
+        <LeaveWindow>: CloseBalloon() unhighlight()
+XVkbd.TransientShell.translations: #override \n\
+	<Message>WM_PROTOCOLS: ClosePopupPanel()
+XVkbd*Text*translations: #override \
+	<Key>Return: \n\
+	<Key>Linefeed: \n\
+	Ctrl<Key>m: \n\
+	Ctrl<Key>j:
+XVkbd*Repeater.initialDelay: 600
+XVkbd*Repeater.minimumDelay: 100
+XVkbd*Repeater.decay: 500
+
+XVkbd*Font: -*-helvetica-medium-r-*-*-12-*-*-*-*-*-iso8859-1
+XVkbd*generalFont: -*-lucidatypewriter-bold-r-*-*-12-*-*-*-*-*-iso8859-1
+XVkbd*letterFont: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-1
+XVkbd*specialFont: -*-helvetica-medium-r-*-*-12-*-*-*-*-*-iso8859-1
+XVkbd*keypadFont: -*-helvetica-medium-r-*-*-10-*-*-*-*-*-iso8859-1
+XVkbd*banner.font: -*-lucida-bold-i-*-*-14-*-*-*-*-*-iso8859-1
+XVkbd*display_panel*label.font: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-1
+
+XVkbd*beNiceToColormap: false
+XVkbd*topShadowContrast: 40
+XVkbd*bottomShadowContrast: 80
+XVkbd*shadowWidth: 2
+XVkbd*Label.shadowWidth: 0
+XVkbd*MainMenu.shadowWidth: 0
+XVkbd*MainMenu.topShadowContrast: 0
+XVkbd*MainMenu.bottomShadowContrast: 0
+XVkbd*Background: gray85
+XVkbd*Text*background: white
+XVkbd*specialBackground: gray75
+XVkbd*focusBackground: bisque2
+XVkbd*remoteFocusBackground: lightcyan1
+XVkbd*Foreground: black
+XVkbd*highlightBackground: gray90
+XVkbd*highlightForeground: forestgreen
+XVkbd*highlightThickness: 1
+XVkbd*Form.resizable: true
+XVkbd*defaultDistance: 0
+XVkbd*Form.borderWidth: 0
+XVkbd*Label.borderWidth: 0
+XVkbd*Command.internalWidth: 2
+XVkbd*Repeater.internalWidth: 2
+XVkbd*Command.resize: false
+XVkbd*Repeater.resize: false
+XVkbd*Command.justify: center
+XVkbd*Repeater.justify: center
+
+XVkbd*row1.vertDistance: 5
+XVkbd*F5.horizDistance: 5
+XVkbd*F9.horizDistance: 5
+XVkbd*BackSpace.horizDistance: 5
+
+XVkbd*Command.height: 30
+XVkbd*Repeater.height: 30
+XVkbd*banner.height: 30
+XVkbd*row0.Repeater.height: 25
+XVkbd*Command.width: 30
+XVkbd*Repeater.width: 30
+XVkbd*space.width: 80
+XVkbd*Tab.width: 45
+XVkbd*Control_L.width: 60
+XVkbd*Shift_L.width: 75
+XVkbd*Shift_R.width: 40
+XVkbd*Multi_key.width: 35
+XVkbd*Caps_Lock.width: 35
+XVkbd*Alt_L.width: 38
+XVkbd*Alt_R.width: 38
+XVkbd*Meta_L.width: 38
+XVkbd*Meta_R.width: 38
+XVkbd*BackSpace.width: 75
+XVkbd*Delete.width: 45
+XVkbd*Return.width: 60
+XVkbd*row5.Focus.width: 35
+xvkbd*Mode_switch.width: 45
+
+XVkbd*keypad.vertDistance: 5
+XVkbd*keypad.horizDistance: 10
+XVkbd*keypad*Command.width: 35
+XVkbd*keypad*Repeater.width: 35
+XVkbd*keypad*Command.justify: left
+XVkbd*keypad*Repeater.justify: left
+XVkbd*keypad*pad3,3.height: 60
+XVkbd*keypad*pad4,0.width: 70
+
+XVkbd.balloonBackground: LightYellow1
+XVkbd.launchBalloonBackground: LightCyan1
+XVkbd*balloon_panel.Label.width: 150
+XVkbd*balloon_panel.Label.resize: false
+XVkbd*balloon_panel.Label.justify: left
+
+XVkbd*banner.width: 150
+XVkbd*banner.justify: right
+XVkbd*MainMenu.width: 0
+XVkbd*MainMenu.label: xvkbd
+XVkbd*MainMenu.justify: left
+XVkbd*MainMenu.internalWidth: 2
+XVkbd*MainMenu.highlightThickness: 0
+
+XVkbd*menu.about.label: About...
+XVkbd*menu.man.label: Manual...
+XVkbd*menu.keypad.label: Keypad...
+XVkbd*menu.sun_fkey.label: Sun Function Keys...
+XVkbd*menu.deadkey.label: Dead Keys...
+XVkbd*menu.completion.label: Word Completion...
+XVkbd*menu.select_layout.label: Change Keyboard Layout...
+XVkbd*menu.edit_fkey.label: Edit Function Keys...
+XVkbd*menu.show_keypad.label: Show Keypad?
+XVkbd*menu.show_functionkey.label: Show Function Keys?
+XVkbd*menu.props.label: Property...
+XVkbd*menu.open_display.label: Connect to Remote Display...
+XVkbd*menu.close_display.label: Revert to Local Display
+XVkbd*menu.quit.label: Quit
+XVkbd*menu.SmeBSB.rightMargin: 30
+
+XVkbd*props_panel.title: xvkbd - proprety
+XVkbd*props_panel*defaultDistance: 10
+XVkbd*props_panel*vertDistance: 5
+XVkbd*props_panel*always_on_top.label: Always on Top?
+XVkbd*props_panel*wm_toolbar.label: Behave as Toolbar Window?
+XVkbd*props_panel*shift_lock.label: Lock Shift?
+XVkbd*props_panel*altgr_lock.label: Lock AltGr?
+XVkbd*props_panel*modifiers_lock.label: Lock Control, Alt and Meta?
+XVkbd*props_panel*quick_modifiers.label: Enable "Quick Modifiers"?
+XVkbd*props_panel*use_xtest.label: Use XTEST Extension?
+XVkbd*props_panel*jump_pointer.label: Jump Pointer?
+XVkbd*props_panel*dict_entry_label.label: Completion Dictionary: 
+XVkbd*props_panel*dict_default_button.label: Default
+XVkbd*props_panel*click.label: Key-Click Sound:
+XVkbd*props_panel*autoclick.label: Automatic Click:
+XVkbd*props_panel*Command.internalWidth: 4
+XVkbd*props_panel*Command.width: 0
+XVkbd*props_panel*Command.height: 0
+XVkbd*props_panel*dismiss.label: Dismiss
+XVkbd*props_panel*dismiss.vertDistance: 10
+XVkbd*props_panel*Toggle.width: 200
+XVkbd*props_panel*Toggle.justify: left
+XVkbd*props_panel*dict_entry.width: 220
+XVkbd*props_panel*left: chainLeft
+XVkbd*props_panel*right: chainLeft
+XVkbd*props_panel*top: chainTop
+XVkbd*props_panel*bottom: chainTop
+XVkbd*props_panel*dict_entry.left: chainLeft
+XVkbd*props_panel*dict_entry.right: chainRight
+XVkbd*props_panel*dict_default_button.left: chainRight
+XVkbd*props_panel*dict_default_button.right: chainRight
+
+XVkbd.about_panel.title: xvkbd - about this program
+XVkbd.keypad_panel.title: xvkbd - keypad
+XVkbd.sun_fkey_panel.title: xvkbd - Sun
+XVkbd.display_panel.title: xvkbd - Remote Display
+
+XVkbd.sun_fkey_panel*Repeater.width: 35
+XVkbd.sun_fkey_panel*Help.width: 70
+XVkbd.sun_fkey_panel*justify: left
+
+XVkbd.display_panel*label.label: Remote Display:
+XVkbd.display_panel*ok.label: Connect
+XVkbd.display_panel*Text.width: 150
+XVkbd.display_panel*defaultDistance: 3
+XVkbd.display_panel*Command.width: 0
+XVkbd.display_panel*Command.height: 0
+XVkbd.display_panel*Command.internalWidth: 4
+XVkbd.display_panel*Label.width: 0
+XVkbd.display_panel*Label.resizable: true
+
+XVkbd*layout_panel.title: xvkbd - layout
+
+XVkbd*layout_panel*Command.width: 150
+XVkbd*layout_panel*Command.height: 0
+XVkbd*layout_panel*vSpace: 2
+XVkbd*layout_panel.box.width: 320
+XVkbd*layout_panel.box.orientation: vertical
+
+XVkbd*completion_panel.title: xvkbd - word completion
+XVkbd*completion_panel*Label.justify: left
+XVkbd*completion_panel*entry.width: 200
+XVkbd*completion_panel*view.allowVert: true
+XVkbd*completion_panel*view.useRight: true
+XVkbd*completion_panel*view.forceBars: true
+XVkbd*completion_panel*view.list.width: 400
+XVkbd*completion_panel*view.list.height: 150
+
+XVkbd*completion_panel*label.font: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-1
+XVkbd*completion_panel*list.font: -*-lucida-medium-r-*-*-14-*-*-*-*-*-iso8859-1
+XVkbd*completion_panel*label.label: Completion:
+XVkbd*completion_panel*bottom: chainTop
+XVkbd*completion_panel*label.right: chainLeft
+XVkbd*completion_panel*entry.left: chainLeft
+XVkbd*completion_panel*view.top: chainTop
+XVkbd*completion_panel*view.bottom: chainBottom
+XVkbd*completion_panel*view.right: chainRight
+
+XVkbd*edit_fkey_panel.title: xvkbd - edit function keys
+XVkbd*edit_fkey_panel.input: true
+XVkbd*edit_fkey_panel*defaultDistance: 4
+XVkbd*edit_fkey_panel*form2*vertDistance: 6
+XVkbd*edit_fkey_panel*width: 0
+XVkbd*edit_fkey_panel*height: 0
+XVkbd*edit_fkey_panel*internalWidth: 4
+XVkbd*edit_fkey_panel*MenuButton.shadowWidth: 2
+XVkbd*edit_fkey_panel*form2.borderWidth: 1
+XVkbd*edit_fkey_panel*form2.?.left: chainLeft
+XVkbd*edit_fkey_panel*form2.?.right: chainLeft
+XVkbd*edit_fkey_panel*form2.fkey_value.right: chainRight
+XVkbd*edit_fkey_panel*Command.left: chainLeft
+XVkbd*edit_fkey_panel*Command.right: chainLeft
+XVkbd*edit_fkey_panel*fkey_menu.fromHoriz: fkey_label
+XVkbd*edit_fkey_panel*fkey_value_menu.fromVert: fkey_label
+XVkbd*edit_fkey_panel*fkey_value.fromVert: fkey_label
+XVkbd*edit_fkey_panel*fkey_value_sep.fromVert: fkey_label
+XVkbd*edit_fkey_panel*fkey_value_sep.fromHoriz: fkey_value_menu
+XVkbd*edit_fkey_panel*fkey_value.fromHoriz: fkey_value_sep
+XVkbd*edit_fkey_panel*fkey_value.width: 200
+XVkbd*edit_fkey_panel*fkey_value.height: 22
+XVkbd*edit_fkey_panel*save_button.fromVert: form2
+XVkbd*edit_fkey_panel*close_button.fromVert: form2
+XVkbd*edit_fkey_panel*close_button.fromHoriz: save_button
+
+XVkbd*edit_fkey_panel*justify: left
+XVkbd*edit_fkey_panel*fkey_menu.label: Shift-F999
+XVkbd*edit_fkey_panel*fkey_label.label: Function Key:
+XVkbd*edit_fkey_panel*fkey_value_menu.label: Assigned Command
+XVkbd*edit_fkey_panel*fkey_value_menu*string.label: Assigned String
+XVkbd*edit_fkey_panel*fkey_value_menu*command.label: Assigned Command
+XVkbd*edit_fkey_panel*fkey_value_sep.label: :
+XVkbd*edit_fkey_panel*fkey_value_sep.horizDistance: 0
+XVkbd*edit_fkey_panel*save_button.label: Save
+XVkbd*edit_fkey_panel*close_button.label: Close
+
+XVkbd*edit_fkey_panel*Label.font: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-1
+XVkbd*edit_fkey_panel*fkey_value_menu.font: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-1
+
+!! Dead Keys
+!
+XVkbd.deadkeys: dead_diaeresis,dead_acute,dead_grave,\
+  dead_circumflex,dead_macron,dead_abovering,dead_doubleacute,\
+  dead_tilde,dead_abovedot
+
+XVkbd*deadkey_panel.title: xvkbd - dead keys
+XVkbd*deadkey_panel*font: -*-helvetica-medium-r-*-*-24-*-*-*-*-*-iso8859-1
+XVkbd*deadkey_panel*Repeater.width: 30
+XVkbd*deadkey_panel*Repeater.height: 36
+XVkbd*deadkey_panel*dead_diaeresis.label: \250
+XVkbd*deadkey_panel*dead_acute.label: \264
+XVkbd*deadkey_panel*dead_grave.label: `
+XVkbd*deadkey_panel*dead_circumflex.label: ^
+XVkbd*deadkey_panel*dead_macron.label: \257
+XVkbd*deadkey_panel*dead_abovering.label: \260
+XVkbd*deadkey_panel*dead_doubleacute.label: \264\264
+XVkbd*deadkey_panel*dead_tilde.label: ~
+XVkbd*deadkey_panel*dead_abovedot.label: \267
+
+!! keyboard layouts
+!
+XVkbd.customizations: default,belgian,danish,fitaly,\
+  french,french2,german,greek,hebrew,icelandic,italian,\
+  jisx6002/ja_JP.eucJP,jisx6004/ja_JP.eucJP,korean/ko_KR.eucKR,\
+  norwegian,portuguese,russian/ru_RU.KOI8-R,slovene,spanish,\
+  swedish,swissgerman,turkish,uk,latin1,small,strip
+
+XVkbd*layout_panel*default.label: Default
+XVkbd*layout_panel*belgian.label: Belgian
+XVkbd*layout_panel*danish.label: Danish
+XVkbd*layout_panel*fitaly.label: Fitaly
+XVkbd*layout_panel*french.label: French
+XVkbd*layout_panel*french2.label: French (2)
+XVkbd*layout_panel*german.label: German
+XVkbd*layout_panel*greek.label: Greek
+XVkbd*layout_panel*hebrew.label: Hebrew
+XVkbd*layout_panel*icelandic.label: Icelandic
+XVkbd*layout_panel*italian.label: Italian
+XVkbd*layout_panel*jisx6002.label: Japanese
+XVkbd*layout_panel*jisx6004.label: Japanese (JIS X 6004)
+XVkbd*layout_panel*korean.label: Korean
+XVkbd*layout_panel*norwegian.label: Norwegian
+XVkbd*layout_panel*portuguese.label: Portuguese
+XVkbd*layout_panel*russian.label: Russian
+XVkbd*layout_panel*slovene.label: Slovene
+XVkbd*layout_panel*spanish.label: Spanish
+XVkbd*layout_panel*swedish.label: Swedish
+XVkbd*layout_panel*swissgerman.label: Swiss/German
+XVkbd*layout_panel*turkish.label: Turkish
+XVkbd*layout_panel*uk.label: United Kingdom
+XVkbd*layout_panel*latin1.label: Latin-1
+XVkbd*layout_panel*small.label: Small Keyboard
+XVkbd*layout_panel*strip.label: Key Strip
+
+XVkbd*Iconify.width: 20
+XVkbd*Iconify.shadowWidth: 0
+XVkbd*Iconify.resizable: false
+XVkbd*iconified_window*hSpace: 0
+XVkbd*iconified_window*vSpace: 0
+XVkbd*iconified_window*shadowWidth: 0
+
+!! uncomment the following lines when genuine Xaw is used instead of Xaw3d
+!
+! XVkbd*keypad*pad3,3.height: 62
+! XVkbd*keypad*pad4,0.width: 72
+
+!! Sample settings to make window small - see also XVkbd-small.ad
+!
+!xvkbd.windowGeometry: 300x100
+!xvkbd.modalKeytop: true
+!xvkbd.compact: true
+
+!! You should set the label font if you want to make the window small.
+!
+!xvkbd*Font: -misc-fixed-medium-r-semicondensed--13-*-iso8859-1

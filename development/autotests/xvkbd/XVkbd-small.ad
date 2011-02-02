@@ -1,0 +1,66 @@
+!! XVkbd-small.ad  - sample app-defaults file for xvkbd
+!! by Tom Sato <VEF00200@nifty.ne.jp>, http://homepage3.nifty.com/tsato/
+!!
+!! Last update: 2002-04-04
+
+#include "XVkbd-common"
+
+!! Size of the window can be set with xvkbd.windowGeometry resource
+!! or -geometry (or -windowgeometry) option.
+!! Please note that you must take account of size of the window border
+!! when you want set window position from right/bottom of the screen.
+!
+xvkbd.inheritGeoemetry: false
+xvkbd.windowGeometry: 220x85-5-25
+xvkbd.keypad_panel.geometry: 100x100
+xvkbd.sun_fkey_panel.geometry: 70x120
+
+!! You should set the label font if you want to make the window small.
+!
+xvkbd.compact: true
+xvkbd*Font: 6x12
+xvkbd*Command.ShadowWidth: 1
+xvkbd*Repeater.ShadowWidth: 1
+
+!! Remove some keys and make some keys larger.
+!
+xvkbd*Alt_R.width: 1
+xvkbd*Meta_R.width: 1
+xvkbd*Multi_key.width: 1
+xvkbd*Caps_Lock.width: 45
+xvkbd*Shift_R.width: 75
+
+!! If you want to make the window very small but need Compose key,
+!! you may want to remove right Shift key and make Compose key larger.
+!
+!xvkbd*Shift_R.width: 1
+!xvkbd*Multi_key.width: 75
+
+!! Uncomment the following line if you want to remove "Focus" button
+!
+!xvkbd*Focus.width: 1
+
+!! Replace labels on some keys.  ("Control" to "Ctrl", for example)
+!
+xvkbd.modalKeytop: true
+
+xvkbd.NormalKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  Esc 1 2 3 4 5 6 7 8 9 0 - = \\ ` \n\
+  Tab q w e r t y u i o p [ ] Del \n\
+  Ctrl a s d f g h j k l ; ' Ret \n\
+  Shift z x c v b n m , . / Compose Shift \n\
+  MainMenu Caps Alt Meta space Meta Alt left right up down Fc
+
+xvkbd.ShiftKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  Esc ! @ # $ % ^ & * ( ) _ + | ~ \n\
+  Tab Q W E R T Y U I O P { } Del \n\
+  Ctrl A S D F G H J K L : \" Ret \n\
+  Shift Z X C V B N M < > ? Compose Shift \n\
+  MainMenu Caps Alt Meta space Meta Alt left right up down Fc
+
+!! Use "target" icon in the place of label on the Focus button
+!
+xvkbd*Focus.internalWidth: 0
+xvkbd*Focus.bitmap: /usr/include/X11/bitmaps/target

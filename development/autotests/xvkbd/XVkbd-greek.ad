@@ -1,0 +1,131 @@
+!! XVkbd-greek.ad  - sample app-defaults file for xvkbd
+!! by Tom Sato <VEF00200@nifty.ne.jp>, http://homepage3.nifty.com/tsato/
+!!
+!! Last update: 2002-04-17
+
+#include "XVkbd-common"
+
+! Make the virtual keyboard support Greek characters
+!
+xvkbd.title: xvkbd - Virtual Keyboard (Greek)
+
+XVkbd*generalFont: -*-lucidatypewriter-bold-r-*-*-12-*-*-*-*-*-iso8859-7
+XVkbd*letterFont: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-7
+
+xvkbd*Mode_switch.width: 50
+xvkbd*space.width: 110
+
+xvkbd.NormalKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape 1 2 3 4 5 6 7 8 9 0 - = \\ ` \n\
+  Tab q w e r t y u i o p [ ] Delete \n\
+  Control_L a s d f g h j k l ; ' Return \n\
+  Shift_L z x c v b n m , . / Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.ShiftKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape ! @ # $ % ^ & * ( ) _ + | ~ \n\
+  Tab Q W E R T Y U I O P { } Delete \n\
+  Control_L A S D F G H J K L : " Return \n\
+  Shift_L Z X C V B N M < > ? Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.AltgrKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape 1 2 3 4 5 6 7 8 9 0 - = \\ ` \n\
+  Tab Greek_theta Greek_omega Greek_epsilon Greek_rho Greek_tau Greek_psi \
+    Greek_upsilon Greek_iota Greek_omicron Greek_pi [ ] Delete \n\
+  Control_L Greek_alpha Greek_sigma Greek_delta Greek_phi Greek_gamma Greek_eta \
+    space Greek_kappa Greek_lambda ; ' Return \n\
+  Shift_L Greek_zeta Greek_xi Greek_chi space Greek_beta Greek_nu Greek_mu \
+    , . / Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.ShiftAltgrKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape 1 2 3 4 5 6 7 8 9 0 - = \\ ` \n\
+  Tab Greek_THETA Greek_OMEGA Greek_EPSILON Greek_RHO Greek_TAU Greek_PSI \
+    Greek_UPSILON Greek_IOTA Greek_OMICRON Greek_PI { } Delete \n\
+  Control_L Greek_ALPHA Greek_SIGMA Greek_DELTA Greek_PHI Greek_GAMMA Greek_ETA \
+    SPACE Greek_KAPPA Greek_LAMBDA : " Return \n\
+  Shift_L Greek_ZETA Greek_XI Greek_CHI SPACE Greek_BETA Greek_NU Greek_MU \
+    < > ? Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.KeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  Esc !\n1 @\n2 #\n3 $\n4 %\n5 ^\n6 &\n7 *\n8 (\n9 )\n0 _\n- +\n= |\n\\ ~\n` \n\
+  Tab Q_\310 W_\331 E_\305 R_\321 T_\324 Y_\330 U_\325 I_\311 O_\317 P_\320 \
+    {\n[ }\n] Del \n\
+  Control A_\301 S_\323 D_\304 F_\326 G_\303 H_\307 J K_\312 L_\313 :\n; "\n' Return \n\
+  Shift Z_\306 X_\316 C_\327 V B_\302 N_\315 M_\314 <\n, >\n. ?\n/ Com\npose Shift \n\
+  MainMenu Caps\nLock Alt Meta space AltGr left right up down Focus
+
+xvkbd.KeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  Esc !\n1 @\n2 #\n3 $\n4 %\n5 ^\n6 &\n7 *\n8 (\n9 )\n0 _\n- +\n= |\n\\ ~\n` \n\
+  Tab Q_\350 W_\371 E_\345 R_\361 T_\364 Y_\370 U_\365 I_\351 O_\357 P_\360 \
+    {\n[ }\n] Del \n\
+  Control A_\341 S_\363 D_\344 F_\366 G_\343 H_\347 J K_\352 L_\353 :\n; "\n' Return \n\
+  Shift Z_\346 X_\356 C_\367 V B_\342 N_\355 M_\354 <\n, >\n. ?\n/ Com\npose Shift \n\
+  MainMenu Caps\nLock Alt Meta space AltGr left right up down Focus
+
+xvkbd.NormalKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  Esc 1 2 3 4 5 6 7 8 9 0 - = \\ ` \n\
+  Tab q w e r t y u i o p [ ] Del \n\
+  Ctrl a s d f g h j k l ; ' Return \n\
+  Shift z x c v b n m , . / Comp Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus
+
+xvkbd.ShiftKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  Esc ! @ # $ % ^ & * ( ) _ + | ~ \n\
+  Tab Q W E R T Y U I O P { } Del \n\
+  Ctrl A S D F G H J K L : " Return \n\
+  Shift Z X C V B N M < > ? Comp Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus
+
+xvkbd.AltgrKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  Esc 1 2 3 4 5 6 7 8 9 0 - = \\ ` \n\
+  Tab \350 \371 \345 \361 \364 \370 \365 \351 \357 \360 [ ] Del \n\
+  Ctrl \341 \363 \344 \366 \343 \347 space \352 \353 ; ' Return \n\
+  Shift \346 \356 \367 space \342 \355 \354 , . / Comp Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus
+
+xvkbd.ShiftAltgrKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  Esc ! @ # $ % ^ & * ( ) _ + | ~ \n\
+  Tab \310 \331 \305 \321 \324 \330 \325 \311 \317 \320 { } Del \n\
+  Ctrl \301 \323 \304 \326 \303 \307 space \312 \313 : " Return \n\
+  Shift \306 \316 \327 space \302 \315 \314 < > ? Comp Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus
+
+! A Greek_ALPHA          \301 \341
+! B Greek_BETA           \302 \342
+! C Greek_CHI            \327 \367
+! D Greek_DELTA          \304 \344
+! E Greek_EPSILON        \305 \345
+! F Greek_PHI            \326 \366
+! G Greek_GAMMA          \303 \343
+! H Greek_ETA            \307 \347
+! I Greek_IOTA           \311 \351
+! J
+! K Greek_KAPPA          \312 \352
+! L Greek_LAMBDA         \313 \353
+! M Greek_MU             \314 \354
+! N Greek_NU             \315 \355
+! O Greek_OMICRON        \317 \357
+! P Greek_PI             \320 \360
+! Q Greek_THETA          \310 \350
+! R Greek_RHO            \321 \361
+! S Greek_SIGMA          \323 \363
+! T Greek_TAU            \324 \364
+! U Greek_UPSILON        \325 \365
+! V
+! W Greek_OMEGA          \331 \371
+! X Greek_XI             \316 \356
+! Y Greek_PSI            \330 \370
+! Z Greek_ZETA           \306 \346

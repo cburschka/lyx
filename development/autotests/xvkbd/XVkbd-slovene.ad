@@ -1,0 +1,90 @@
+!! XVkbd-slovene.ad  - sample app-defaults file for xvkbd
+!! by Tom Sato <VEF00200@nifty.ne.jp>, http://homepage3.nifty.com/tsato/
+!!
+!! Last update: 2002-04-16
+
+#include "XVkbd-common"
+
+! Make the virtual keyboard to Norwegian layout, roughly taken from
+! xkeycaps's "PC 105 key, wide Delete, tall Enter / XFree86; Slovene"
+!
+xvkbd.title: xvkbd - Virtual Keyboard (Slovene)
+
+xvkbd*generalFont: -*-lucidatypewriter-bold-r-*-*-12-*-*-*-*-*-iso8859-2
+xvkbd*letterFont: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-2
+
+xvkbd*Shift_L.width: 45
+xvkbd*space.width: 110
+
+xvkbd.NormalKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape 1 2 3 4 5 6 7 8 9 0 ' + cedilla zcaron \n\
+  Tab q w e r t z u i o p scaron dstroke Delete \n\
+  Control_L a s d f g h j k l ccaron cacute Return \n\
+  Shift_L < y x c v b n m , . - Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.ShiftKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape ! " # $ % & / ( ) = ? * diaeresis Zcaron \n\
+  Tab Q W E R T Z U I O P Scaron Dstroke Delete \n\
+  Control_L A S D F G H J K L Ccaron Cacute Return \n\
+  Shift_L > Y X C V B N M ; : _ Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.AltgrKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape ~ 2 ^ 4 5 6 7 8 9 0 ' + cedilla currency \n\
+  Tab \\ | e r t z u i o p division multiply Delete \n\
+  Control_L a s d f g h j lstroke Lstroke ccaron ssharp Return \n\
+  Shift_L < y x c @ { } section , . - Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.KeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  Esc !\n1_~ "\n2 #\n3_^ $\n4 %\n5 &\n6 /\n7 (\n8 )\n9 =\n0 \
+         ?\n' *\n+ \250\n\270 \256_\244 \n\
+  Tab Q_\\ W_| E R T Z U I O P \251_\367 \320_\327 Del \n\
+  Control A S D F G H J K_\263 L_\243 \310 \306_\337 Return \n\
+  Shift >\n< Y X C V_@ B_{ N_} M_\247 ;\n, :\n. _\n- Com\npose Shift \n\
+  MainMenu Caps\nLock Alt Meta space AltGr left right up down Focus
+
+xvkbd.NormalKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Esc 1 2 3 4 5 6 7 8 9 0 ' + , \276 \n\
+  Tab q w e r t z u i o p \271 \360 Del \n\
+  Ctrl a s d f g h j k l \350 \346 Return \n\
+  Shift < y x c v b n m , . - Comp Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus
+
+xvkbd.ShiftKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Esc ! " # $ % & / ( ) = ? * \250 \256 \n\
+  Tab Q W E R T Z U I O P \251 \320 Del \n\
+  Ctrl A S D F G H J K L \310 \306 Return \n\
+  Shift > Y X C V B N M ; : _ Comp Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus
+
+xvkbd.AltgrKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Esc ~ 2 ^ 4 5 6 7 8 9 0 ' + , \244 \n\
+  Tab \\ | e r t z u i o p \367 \327 Del \n\
+  Ctrl a s d f g h j \263 \243 \350 \337 Return \n\
+  Shift < y x c @ { } \247 , . - Comp Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus
+
+
+XVkbd.deadkeys: dead_diaeresis,dead_acute,dead_grave,\
+  dead_circumflex,dead_macron,dead_abovering,dead_doubleacute,\
+  dead_caron,dead_breve,\
+  dead_tilde,dead_abovedot,\
+  dead_ogonek,dead_cedilla
+
+XVkbd*deadkey_panel*dead_caron.font: -*-helvetica-medium-r-*-*-24-*-*-*-*-*-iso8859-2
+XVkbd*deadkey_panel*dead_breve.font: -*-helvetica-medium-r-*-*-24-*-*-*-*-*-iso8859-2
+XVkbd*deadkey_panel*dead_ogonek.font: -*-helvetica-medium-r-*-*-24-*-*-*-*-*-iso8859-2
+XVkbd*deadkey_panel*dead_cedilla.font: -*-helvetica-medium-r-*-*-24-*-*-*-*-*-iso8859-2
+XVkbd*deadkey_panel*dead_caron.label: \267
+XVkbd*deadkey_panel*dead_breve.label: \242
+XVkbd*deadkey_panel*dead_ogonek.label: \262
+XVkbd*deadkey_panel*dead_cedilla.label: \270

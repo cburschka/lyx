@@ -1,0 +1,85 @@
+#ifndef XCOMM
+#define XCOMM #
+#endif
+
+
+XCOMM Remove the next line if you want genuine Xaw instead of Xaw3d
+XCOMM #define XAW3D
+
+XCOMM Remove the next line if you don't want to enable XTEST support
+#define XTEST
+
+XCOMM Remove the next line if you want to disable internationalization
+#define I18N
+
+
+SRCS = xvkbd.c findwidget.c
+OBJS = xvkbd.o findwidget.o
+DEPLIBS = XawClientDepLibs
+SYS_LIBRARIES = XawClientLibs
+
+#ifdef XAW3D
+D_XAW3D = -DXAW3D
+XAWLIB = -lXaw3d
+#endif
+
+#ifdef XTEST
+D_XTEST = -DUSE_XTEST
+SYS_LIBRARIES = XawClientLibs -lXtst
+#endif
+
+#ifdef I18N
+D_I18N = -DUSE_I18N
+#endif
+
+DEFINES = $(D_XAW3D) $(D_XTEST) $(D_I18N)
+
+SpecialObjectRule(xvkbd.o, xvkbd.c resources.h XVkbd-common.h, )
+ComplexProgramTarget(xvkbd)
+
+InstallAppDefaults(XVkbd)
+InstallAppDefaults(XVkbd-belgian)
+InstallAppDefaults(XVkbd-common)
+InstallAppDefaults(XVkbd-danish)
+InstallAppDefaults(XVkbd-fitaly)
+InstallAppDefaults(XVkbd-french)
+InstallAppDefaults(XVkbd-french2)
+InstallAppDefaults(XVkbd-german)
+InstallAppDefaults(XVkbd-greek)
+InstallAppDefaults(XVkbd-hebrew)
+InstallAppDefaults(XVkbd-icelandic)
+InstallAppDefaults(XVkbd-italian)
+InstallAppDefaults(XVkbd-jisx6002)
+InstallAppDefaults(XVkbd-jisx6004)
+InstallAppDefaults(XVkbd-korean)
+InstallAppDefaults(XVkbd-latin1)
+InstallAppDefaults(XVkbd-norwegian)
+InstallAppDefaults(XVkbd-portuguese)
+InstallAppDefaults(XVkbd-russian)
+InstallAppDefaults(XVkbd-slovene)
+InstallAppDefaults(XVkbd-small)
+InstallAppDefaults(XVkbd-spanish)
+InstallAppDefaults(XVkbd-swedish)
+InstallAppDefaults(XVkbd-swissgerman)
+InstallAppDefaults(XVkbd-turkish)
+InstallAppDefaults(XVkbd-uk)
+InstallAppDefaults(XVkbd-strip)
+
+
+XCOMM  ============================
+XCOMM  These rules are only for me
+
+_distclean: clean
+	-rm Makefile
+
+XVkbd-common.h: XVkbd-common.ad
+	-which ad2c > /dev/null && ad2c XVkbd-common.ad > XVkbd-common.h
+
+HTML = $(HOME)/public_html/homepage3.nifty.com/xvkbd/index.html
+_readme:
+	-[ -f $(HTML) ] && html2man $(HTML) > xvkbd.man
+	( echo ".pl 10000"; echo ".ll 75"; echo ".hy 0"; echo ".ad l" ) | \
+		cat - xvkbd.man | groff -Tascii -man | sed 's/.//g' | \
+		head -9000 | cat -s | tail -n +3 > README
+
+XCOMM  ============================

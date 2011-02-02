@@ -1,0 +1,71 @@
+!! XVkbd-norwegian.ad  - sample app-defaults file for xvkbd
+!! by Tom Sato <VEF00200@nifty.ne.jp>, http://homepage3.nifty.com/tsato/
+!!
+!! Last update: 2002-04-04
+
+#include "XVkbd-common"
+
+! Make the virtual keyboard to Norwegian layout, roughly taken from
+! xkeycaps's "PC 102 key, wide Delete, tall Enter / XFree86; Norwegian"
+!
+xvkbd.title: xvkbd - Virtual Keyboard (Norwegian)
+
+xvkbd*Shift_L.width: 45
+xvkbd*space.width: 110
+
+xvkbd.NormalKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape 1 2 3 4 5 6 7 8 9 0 + \\ | ' \n\
+  Tab q w e r t y u i o p á ¨ Delete \n\
+  Control_L a s d f g h j k l ø æ Return \n\
+  Shift_L < z x c v b n m , . - Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.ShiftKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Esc ! " # ¤ % & / ( ) = ? ` § * \n\
+  Tab Q W E R T Y U I O P Á ^ Delete \n\
+  Control_L A S D F G H J K L Ø Æ Return \n\
+  Shift_L > Z X C V B N M ; : _ Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.AltgrKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Esc 1 @ £ $ 5 6 { [ ] } + ' ¦ ' \n\
+  Tab q w e r t y u i o p á ~ Delete \n\
+  Control_L a s d f g h j k l ø dead_diaeresis ' Return \n\
+  Shift_L < z x c v b n m , . - Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.KeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  Esc !\n1 "\n2_@ #\n3_£ ¤\n4_$ %\n5 &\n6 /\n7_{ (\n8_[ )\n9_] =\n0_} ?\n+ `\n\\_' §\n|_¦ *\n' \n\
+  Tab Q W E R T Y U I O P Á ^\n¨_~ Del \n\
+  Control A S D F G H J K L Ø Æ Return \n\
+  Shift >\n< Z X C V B N M ;\n, :\n. _\n- Com\npose Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus
+
+xvkbd.NormalKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  Esc 1 2 3 4 5 6 7 8 9 0 + \\ | ' \n\
+  Tab q w e r t y u i o p á ¨ Del \n\
+  Ctrl a s d f g h j k l ø æ Return \n\
+  Shift < z x c v b n m , . - Com\npose Shift \n\
+  MainMenu Caps\nLock Alt Meta space AltGr left right up down Focus
+
+xvkbd.ShiftKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  Esc ! " # ¤ % & / ( ) = ? ` § * \n\
+  Tab Q W E R T Y U I O P Á ^ Del \n\
+  Ctrl A S D F G H J K L Ø Æ Return \n\
+  Shift > Z X C V B N M ; : _ Comp Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus
+
+xvkbd.AltgrKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  Esc 1 @ £ $ 5 6 { [ ] } + ' ¦ ' \n\
+  Tab q w e r t y u i o p á ~ Del \n\
+  Ctrl a s d f g h j k l ø æ Return \n\
+  Shift < z x c v b n m , . - Comp Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus
+

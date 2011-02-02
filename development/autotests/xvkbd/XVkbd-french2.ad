@@ -1,0 +1,93 @@
+!! XVkbd-french.ad  - sample app-defaults file for xvkbd
+!! by Tom Sato <VEF00200@nifty.ne.jp>, http://homepage3.nifty.com/tsato/
+!!
+!! This app-defaults file is contributed from Jean-Pierre Demailly
+!!
+!! Last update: 2002-04-04
+
+#include "XVkbd-common"
+
+! Make the virtual keyboard support most Latin-1 characters
+!
+xvkbd.title: xvkbd - Virtual Keyboard (French)
+
+xvkbd*Mode_switch.width: 50
+xvkbd*space.width: 110
+
+xvkbd.NormalKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape & ~ \" ' ( - ` _ ^ @ ) = \\ < \n\
+  Tab a z e r t y u i o p ^ $ Delete \n\
+  Control_L q s d f g h j k l m ù Return \n\
+  Shift_L w x c v b n , ; : ! Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.ShiftKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape 1 2 3 4 5 6 7 8 9 0 ° + ¿ > \n\
+  Tab A Z E R T Y U I O P ¨ £ Delete \n\
+  Control_L Q S D F G H J K L M % Return \n\
+  Shift_L W X C V B N ? . / § Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.AltgrKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape ½ ¤ # { [ | ¥ ¸ ¢ ´ ] } ¦ µ \n\
+  Tab à á â ã ä å æ ç è é ê ë Delete \n\
+  Control_L ì í î ï ð ñ ò ó ô õ ö Return \n\
+  Shift ø ù ú û ü ý þ ÿ · ¡ Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.ShiftAltgrKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape ¹ ² ³ ¾ ª ® © ¬ ­ º ¶ ± × ÷ \n\
+  Tab À Á Â Ã Ä Å Æ Ç È É Ê Ë Delete \n\
+  Control_L Ì Í Î Ï Ð Ñ Ò Ó Ô Õ Ö Return \n\
+  Shift Ø Ù Ú Û Ü Ý Þ ß « » Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+
+xvkbd.KeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  Esc   1_¹\n&_½ 2_²\n~_¤ 3_³\n"_# 4_¾\n'_{ 5_ª\n(_[ \
+    6_®\n-_| 7_©\n`_¥ 8_¬\n__¸ 9_­\n^_¢ 0_º\n@_´ °_¶\n)_] \
+    +_±\n=_} ¿_×\n\\_¦ >_÷\n<_µ \n\
+  Tab A_à Z_á E_â R_ã T_ä Y_å U_æ I_ç O_è P_é \
+    ¨_¯\n^_ê £_Ë\n$_ë   Del \n\
+  Control   Q_ì S_í D_î F_ï G_ð H_ñ J_ò K_ó L_ô \
+    M_õ %_Ö\nù_ö   Return \n\
+  Shift W_ø X_ù C_ú V_û B_ü N_ý ?_Þ\n,_þ \
+    ._ß\n;_ÿ /_«\n:_· §_»\n!_¡   Com\npose Shift \n\
+  MainMenu Caps\nLock Alt Meta space AltGr left right up down Focus
+
+xvkbd.NormalKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  Escape & ~ \" ' ( - ` _ ^ @ ) = \\ < \n\
+  Tab a z e r t y u i o p ^ $ Del \n\
+  Ctrl q s d f g h j k l m ù Return \n\
+  Shift w x c v b n , ; : ! Comp Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus
+
+xvkbd.ShiftKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  Escape 1 2 3 4 5 6 7 8 9 0 ° + ¿ > \n\
+  Tab A Z E R T Y U I O P ¨ £ Del \n\
+  Ctrl Q S D F G H J K L M % Return \n\
+  Shift W X C V B N ? . / § Comp Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus
+
+xvkbd.AltgrKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  Escape ½ ¤ # { [ | ¥ ¸ ¢ ´ ] } ¦ µ \n\
+  Tab à á â ã ä å æ ç è é ê ë Del \n\
+  Ctrl ì í î ï ð ñ ò ó ô õ ö Return \n\
+  Shift ø ù ú û ü ý þ ÿ · ¡ Comp Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus
+
+xvkbd.ShiftAltgrKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  Escape ¹ ² ³ ¾ ª ® © ¬ ­ º ¶ ± × ÷ \n\
+  Tab À Á Â Ã Ä Å Æ Ç È É Ê Ë Del \n\
+  Ctrl Ì Í Î Ï Ð Ñ Ò Ó Ô Õ Ö Return \n\
+  Shift Ø Ù Ú Û Ü Ý Þ ß « » Comp Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus

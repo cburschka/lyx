@@ -1,33 +1,52 @@
 Automated tests based on the "MonKey Testing" keytest program.
+======================================================================
+
+WARNING!!
+----------------------------------------------------------------------
+Running the tests in this folder may cause abrupt kill of existing
+LyX instances on your system. In order to avoid any possible data
+loss, quit any running instance of LyX in which you're carrying out
+real work. Also, although precautions have been taken in order to not
+allow the key presses to reach non-LyX windows, this may sometimes
+happen anyway. Please, close any running application that is not
+strictly needed.
+
 
 DEPENDENCIES
+----------------------------------------------------------------------
+The following programs are needed by the testing framework:
+- xvkbd: a modified copy of xvkbd is included in this folder, and should
+         be built before running the tests
+- wmctrl
+- pcregrep
 
-xvkbd, wmctrl, pcregrep
 
 USAGE
-
+----------------------------------------------------------------------
 In order to launch all the tests available in this folder, just run
 
-  ./run-tests.sh
+  make
 
 and do not interact with your computer while the tests are running.
 
 If you wish to launch one or more specific tests, then provide them
-as argument to the script, e.g.:
+as argument to the run-tests.sh script, e.g.:
 
   ./run-tests.sh <whatever>*-in.txt
 
 For failed tests you get a folder with the logs that help you identify
 the problem.
 
-SYNTAX
 
+SYNTAX
+----------------------------------------------------------------------
 Each test-case script should be named as xxx-in.txt. The syntax of the
 script is described in detail in the sample test-case script
 hello-world-in.txt.
 
-TODO
 
+TODO
+----------------------------------------------------------------------
 Speed-up the execution of the tests as much as possible (i.e., get rid
 of heuristic waits when present and replace them with exact check of
 the condition we're waiting for).

@@ -200,7 +200,7 @@ def sendKeystring(keystr, LYX_PID):
         time.sleep(0.1)
     sys.stdout.flush()
     if (subprocess.call(
-            ["xvkbd", "-xsendevent", "-window", lyx_window_name, "-delay", DELAY, "-text", keystr],
+            [xvkbd_exe, "-no_root", "-xsendevent", "-window", lyx_window_name, "-delay", DELAY, "-text", keystr],
             stdout=FNULL,stderr=FNULL
             ) == 0):
         sys.stdout.write('*')
@@ -243,6 +243,10 @@ if max_loops is None:
 lyx_exe = os.environ.get('LYX_EXE')
 if lyx_exe is None:
     lyx_exe = "lyx"
+
+xvkbd_exe = os.environ.get('XVKBD_EXE')
+if xvkbd_exe is None:
+    xvkbd_exe = "xvkbd"
 
 file_new_command = os.environ.get('FILE_NEW_COMMAND')
 if file_new_command is None:

@@ -1,0 +1,95 @@
+!! XVkbd-jisx6004.ad  - sample app-defaults file for xvkbd
+!! by Tom Sato <VEF00200@nifty.ne.jp>, http://homepage3.nifty.com/tsato/
+!!
+!! Last update: 2002-04-04
+
+#include "XVkbd-common"
+
+! Make the virtual keyboard to Japanese (JIS X 6004) layout
+!
+xvkbd.title: xvkbd - Virtual Keyboard (Japanese)
+
+xvkbd*Shift_L.width: 75
+xvkbd*Shift_R.width: 90
+xvkbd*Delete.width: 60
+xvkbd*Return.width: 45
+xvkbd*Henkan_Mode.width: 60
+xvkbd*Caps_Lock.width: 40
+xvkbd*Alt_L.width: 40
+xvkbd*Meta_L.width: 40
+xvkbd*Mode_switch.width: 50
+xvkbd*space.width: 140
+xvkbd*row1.Focus.width: 45
+
+xvkbd*row1*international: true
+xvkbd*row2*international: true
+xvkbd*row3*international: true
+xvkbd*row4*international: true
+xvkbd*row5*international: true
+xvkbd*specialFontSet: -*-helvetica-medium-r-*-*-12-*-*-*-*-*-iso8859-*,*--14-*
+xvkbd*fontSet: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-*,*--14-*
+xvkbd.modalKeytop: true
+
+xvkbd.NormalKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape 1 2 3 4 5 6 7 8 9 0 - ^ \\ Focus \n\
+  Tab q w e r t y u i o p @ [ Delete \n\
+  Control_L a s d f g h j k l ; : ] Return \n\
+  Shift_L z x c v b n m , . / Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down
+
+xvkbd.ShiftKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape ! " # $ % & ' ( ) _ = ~ | Focus \n\
+  Tab Q W E R T Y U I O P ` { Delete \n\
+  Control_L A S D F G H J K L + * } Return \n\
+  Shift_L Z X C V B N M < > ? Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down
+
+xvkbd.AltgrKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape 1 2 3 4 5 6 7 8 9 0 - ^ \\ Focus \n\
+  Tab kana_SO kana_KE kana_SE kana_TE kana_yo kana_TSU kana_N kana_NO kana_WO kana_RI kana_CHI space Delete \n\
+  Control_L kana_HA kana_KA kana_SHI kana_TO kana_TA kana_KU kana_U kana_I voicedsound kana_KI kana_NA space Return \n\
+  Shift_L kana_SU kana_KO kana_NI kana_SA kana_A kana_tsu kana_RU kana_comma kana_fullstop kana_RE Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down
+
+xvkbd.ShiftAltgrKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape ! " # $ % & ' ( ) _ = ~ | Focus \n\
+  Tab kana_a semivoicedsound kana_HO kana_FU kana_ME kana_HI kana_E kana_MI kana_YA kana_NU kana_openingbracket space Delete \n\
+  Control_L kana_i kana_HE kana_RA kana_yu kana_YO kana_MA kana_O kana_MO kana_WA kana_YU kana_closingbracket space Return \n\
+  Shift_L kana_u kana_e kana_o kana_NE kana_ya kana_MU kana_RO kana_conjunctive - space Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down
+
+xvkbd.NormalKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Esc 1 2 3 4 5 6 7 8 9 0 - ^ \\ Focus \n\
+  Tab q w e r t y u i o p @ [ Delete \n\
+  Control a s d f g h j k l ; : ] Return \n\
+  Shift z x c v b n m , . / Shift \n\
+  MainMenu Caps Alt Meta space かな left right up down
+
+xvkbd.ShiftKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Esc ! " # $ % & ' ( ) _ = ~ | Focus \n\
+  Tab Q W E R T Y U I O P ` { Delete \n\
+  Control A S D F G H J K L + * } Return \n\
+  Shift Z X C V B N M < > ? Shift \n\
+  MainMenu Caps Alt Meta space かな left right up down
+
+xvkbd.AltgrKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Esc 1 2 3 4 5 6 7 8 9 0 - ^ \\ Focus \n\
+  Tab そ け せ て ょ つ ん の を り ち space Delete \n\
+  Control は か し と た く う い ゛ き な space Return \n\
+  Shift す こ に さ あ っ る 、 。 れ Shift \n\
+  MainMenu Caps Alt Meta space かな left right up down
+
+xvkbd.ShiftAltgrKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Esc ! " # $ % & ' ( ) _ = ~ | Focus \n\
+  Tab ぁ ゜ ほ ふ め ひ え み や ぬ 「 space Delete \n\
+  Control ぃ へ ら ゅ よ ま お も わ ゆ 」 space Return \n\
+  Shift ぅ ぇ ぉ ね ゃ む ろ ・ ー space Shift \n\
+  MainMenu Caps Alt Meta space かな left right up down

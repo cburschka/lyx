@@ -1,0 +1,70 @@
+!! XVkbd-german.ad  - sample app-defaults file for xvkbd
+!! by Tom Sato <VEF00200@nifty.ne.jp>, http://homepage3.nifty.com/tsato/
+!!
+!! Last update: 2002-04-04
+
+#include "XVkbd-common"
+
+! Make the virtual keyboard to German layout
+!
+xvkbd.title: xvkbd - Virtual Keyboard (German)
+
+xvkbd*Shift_L.width: 45
+xvkbd*space.width: 110
+
+xvkbd.NormalKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape 1 2 3 4 5 6 7 8 9 0 ? ` ^ # \n\
+  Tab q w e r t z u i o p \374 + Delete \n\
+  Control_L a s d f g h j k l \366 \344 Return \n\
+  Shift_L < y x c v b n m , . - Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.ShiftKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape ! " \247 $ % & / ( ) = \337 ' \260 | \n\
+  Tab Q W E R T Z U I O P \334 * Delete \n\
+  Control_L A S D F G H J K L \326 \304 Return \n\
+  Shift_L > Y X C V B N M ; : _ Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.AltgrKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape \271 \262 \263 \243 \254 \251 { [ ] } \\ ' ^ # \n\
+  Tab @ w e r t z u i o p \374 ~ Delete \n\
+  Control_L a s d f g h j k l \366 \344 Return \n\
+  Shift_L | y x c v b n \265 , . - Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.KeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  Esc !\n1_\271 "\n2_\262 \247\n3_\263 $\n4_\243 %\n5_\254 &\n6_\251 \
+    /\n7_{ (\n8_[ )\n9_] =\n0_} \337\n\?_\\ '\n` \260\n^ |\n# \n\
+  Tab Q_@ W E R T Z U I O P \334 *\n+_~ Del \n\
+  Control A S D F G H J K L \326 \304 Return \n\
+  Shift >\n<_| Y X C V B N M_\265 ;\n, :\n. _\n- Com\npose Shift \n\
+  MainMenu Caps\nLock Alt Meta space AltGr left right up down Focus
+
+xvkbd.NormalKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Esc 1 2 3 4 5 6 7 8 9 0 ? ` ^ # \n\
+  Tab q w e r t z u i o p \374 + Del \n\
+  Ctrl a s d f g h j k l \366 \344 Return \n\
+  Shift < y x c v b n m , . - Comp Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus
+
+xvkbd.ShiftKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Esc ! " \247 $ % & / ( ) = \337 ' \260 | \n\
+  Tab Q W E R T Z U I O P \334 * Del \n\
+  Ctrl A S D F G H J K L \326 \304 Return \n\
+  Shift > Y X C V B N M ; : _ Comp Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus
+
+xvkbd.AltgrKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Esc \271 \262 \263 \243 \254 \251 { [ ] } \\ ' ^ # \n\
+  Tab @ w e r t z u i o p \374 ~ Del \n\
+  Ctrl a s d f g h j k l \366 \344 Return \n\
+  Shift | y x c v b n \265 , . - Comp Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus

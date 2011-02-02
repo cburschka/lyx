@@ -1,0 +1,54 @@
+!! XVkbd-uk.ad  - sample app-defaults file for xvkbd
+!! by Tom Sato <VEF00200@nifty.ne.jp>, http://homepage3.nifty.com/tsato/
+!!
+!! Last update: 2002-04-04
+
+#include "XVkbd-common"
+
+! Make the virtual keyboard to UK layout, roughly taken from
+! xkeycaps's "102 key, wide Delete, tall Enter / XFree86; United Kingdom"
+!
+xvkbd.title: xvkbd - Virtual Keyboard (United Kingdom)
+
+xvkbd*Shift_L.width: 45
+!xvkbd*space.width: 110
+
+xvkbd.NormalKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape 1 2 3 4 5 6 7 8 9 0 - = ` # \n\
+  Tab q w e r t y u i o p [ ] Delete \n\
+  Control_L a s d f g h j k l ; ' Return \n\
+  Shift_L \\ z x c v b n m , . / Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Meta_R Alt_R Left Right Up Down Focus
+
+xvkbd.ShiftKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape ! " £ $ % ^ & * ( ) _ + ¬ ~ \n\
+  Tab Q W E R T Y U I O P { } Delete \n\
+  Control_L A S D F G H J K L : @ Return \n\
+  Shift_L | Z X C V B N M < > ? Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Meta_R Alt_R Left Right Up Down Focus
+
+xvkbd.KeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  Esc !\n1 "\n2 £\n3 $\n4 %\n5 ^\n6 &\n7 *\n8 (\n9 )\n0 _\n- +\n= ¬\n` ~\n# \n\
+  Tab Q W E R T Y U I O P {\n[ }\n] Del \n\
+  Control A S D F G H J K L :\n; @\n' Return \n\
+  Shift |\n\\ Z X C V B N M <\n, >\n. ?\n/ Com\npose Shift \n\
+  MainMenu Caps\nLock Alt Meta space Meta Alt left right up down Focus
+
+xvkbd.NormalKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  Esc 1 2 3 4 5 6 7 8 9 0 - = ` # \n\
+  Tab q w e r t y u i o p [ ] Del \n\
+  Ctrl a s d f g h j k l ; ' Return \n\
+  Shift \\ z x c v b n m , . / Comp Shift \n\
+  MainMenu Caps Alt Meta space Meta Alt left right up down Focus
+
+xvkbd.ShiftKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  Esc ! " £ $ % ^ & * ( ) _ + ¬ ~ \n\
+  Tab Q W E R T Y U I O P { } Del \n\
+  Ctrl A S D F G H J K L : @ Return \n\
+  Shift | Z X C V B N M < > ? Comp Shift \n\
+  MainMenu Caps Alt Meta space Meta Alt left right up down Focus

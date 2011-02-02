@@ -1,0 +1,70 @@
+!! XVkbd-icelandic.ad  - sample app-defaults file for xvkbd
+!! by Tom Sato <VEF00200@nifty.ne.jp>, http://homepage3.nifty.com/tsato/
+!!
+!! Last update: 2002-04-04
+
+#include "XVkbd-common"
+
+! Make the virtual keyboard to Icelandic layout, roughly taken from
+! xkeycaps's "PC 105 key, wide Delete, tall Enter / XFree86; Icelandic"
+!
+xvkbd.title: xvkbd - Virtual Keyboard (Icelandic)
+
+xvkbd*Shift_L.width: 45
+xvkbd*space.width: 110
+
+xvkbd.NormalKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape 1 2 3 4 5 6 7 8 9 0 ö - ° + \n\
+  Tab q w e r t y u i o p ð ' Delete \n\
+  Control_L a s d f g h j k l æ ' Return \n\
+  Shift_L < z x c v b n m , . þ Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.ShiftKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape ! " # $ % & / ( ) = Ö _ ¨ * \n\
+  Tab Q W E R T Y U I O P Ð ? Delete \n\
+  Control_L A S D F G H J K L Æ ' Return \n\
+  Shift_L > Z X C V B N M ; : Þ Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.AltgrKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Escape 1 2 3 4 5 6 { [ ] } \\ - ° ` \n\
+  Tab q w e r t y u i o p ð ~ Delete \n\
+  Control_L a s d f g h j k l æ ^ Return \n\
+  Shift_L | z x c v b n m , . þ Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.KeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Esc !\n1 "\n2 #\n3 $\n4 %\n5 &\n6 /\n7_{ (\n8_[ )\n9_] =\n0_} Ö_\\ _\n- ¨\n° *\n+_` \n\
+  Tab Q W E R T Y U I O P Ð ?\n'_~ Del \n\
+  Control A S D F G H J K L Æ '_^ Return \n\
+  Shift >\n<_| Z X C V B N M ;\n, :\n. Þ Com\npose Shift \n\
+  MainMenu Caps\nLock Alt Meta space AltGr left right up down Focus
+
+xvkbd.NormalKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Esc 1 2 3 4 5 6 7 8 9 0 ö - ° + \n\
+  Tab q w e r t y u i o p ð ' Del \n\
+  Ctrl a s d f g h j k l æ ' Return \n\
+  Shift < z x c v b n m , . þ Comp Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus
+
+xvkbd.ShiftKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Esc ! " # $ % & / ( ) = Ö _ ¨ * \n\
+  Tab Q W E R T Y U I O P Ð ? Del \n\
+  Ctrl A S D F G H J K L Æ ' Return \n\
+  Shift > Z X C V B N M ; : Þ Comp Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus
+
+xvkbd.AltgrKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  Esc 1 2 3 4 5 6 { [ ] } \\ - ° ` \n\
+  Tab q w e r t y u i o p ð ~ Del \n\
+  Ctrl a s d f g h j k l æ ^ Return \n\
+  Shift | z x c v b n m , . þ Comp Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus

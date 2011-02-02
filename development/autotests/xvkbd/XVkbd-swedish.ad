@@ -1,0 +1,79 @@
+!! XVkbd-swedish.ad  - sample app-defaults file for xvkbd
+!! by Tom Sato <VEF00200@nifty.ne.jp>, http://homepage3.nifty.com/tsato/
+!!
+!! with contribution from Hakan Lennestal
+!!
+!! Last update: 2002-04-04
+
+#include "XVkbd-common"
+
+! Make the virtual keyboard to Swedish layout
+!
+xvkbd.title: xvkbd - Virtual Keyboard (Swedish)
+
+xvkbd*Shift_L.width: 45
+xvkbd*Shift_R.width: 60
+xvkbd*Return.width: 50
+xvkbd*Delete.width: 40
+xvkbd*Escape.width: 40
+xvkbd*space.width: 120
+xvkbd*row2.BackSpace.width: 65
+xvkbd*row2.BackSpace.horizDistance: 0
+
+xvkbd.NormalKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  § 1 2 3 4 5 6 7 8 9 0 + ´ Delete Escape \n\
+  Tab q w e r t y u i o p å ¨ BackSpace \n\
+  Control_L a s d f g h j k l ö ä ' Return \n\
+  Shift_L < z x c v b n m , . - Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.ShiftKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  ½ ! " # ¤ % & / ( ) = ? ` Delete Escape \n\
+  Tab Q W E R T Y U I O P Å ^ BackSpace \n\
+  Control_L A S D F G H J K L Ö Ä * Return \n\
+  Shift_L > Z X C V B N M ; : _ Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.AltgrKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 BackSpace \n\
+  § 1 @ £ $ 5 6 { [ ] } \\ ´ Delete Escape \n\
+  Tab q w e r t y u i o p å ~ BackSpace \n\
+  Control_L a s d f g h j k l ö ä ' Return \n\
+  Shift_L | z x c v b n m , . - Multi_key Shift_R \n\
+  MainMenu Caps_Lock Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.KeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  ½\n§ !\n1 "\n2_@ #\n3_£ ¤\n4_$ %\n5 &\n6 \
+      /\n7_{ (\n8_[ )\n9_] =\n0_} ?\n+_\\ `\n´ Del Esc \n\
+  Tab Q W E R T Y U I O P Å ^\n¨_~ back \n\
+  Control A S D F G H J K L Ö Ä *\n' Return \n\
+  Shift >\n<_| Z X C V B N M ;\n, :\n. _\n- Com\npose Shift \n\
+  MainMenu Caps\nLock Alt Meta space AltGr left right up down Focus
+
+xvkbd.NormalKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  § 1 2 3 4 5 6 7 8 9 0 + ´ Del Esc \n\
+  Tab q w e r t y u i o p å ¨ back \n\
+  Ctrl a s d f g h j k l ö ä ' Return \n\
+  Shift < z x c v b n m , . - Comp Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus
+
+xvkbd.ShiftKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  ½ ! " # ¤ % & / ( ) = ? ` Del Esc \n\
+  Tab Q W E R T Y U I O P Å ^ back \n\
+  Ctrl A S D F G H J K L Ö Ä * Return \n\
+  Shift > Z X C V B N M ; : _ Comp Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus
+
+xvkbd.AltgrKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 Backspace \n\
+  § 1 @ £ $ 5 6 { [ ] } \\ ´ Del Esc \n\
+  Tab q w e r t y u i o p å ~ back \n\
+  Ctrl a s d f g h j k l ö ä ' Return \n\
+  Shift | z x c v b n m , . - Comp Shift \n\
+  MainMenu Caps Alt Meta space AltGr left right up down Focus
+

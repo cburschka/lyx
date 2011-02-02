@@ -1,0 +1,78 @@
+!! XVkbd-korean.ad  - sample app-defaults file for xvkbd
+!! by Tom Sato <VEF00200@nifty.ne.jp>, http://homepage3.nifty.com/tsato/
+!!
+!! with contribution from Young-Ho
+!!
+!! Last update: 2004-05-04
+
+#include "XVkbd-common"
+
+! Make the virtual keyboard to Korean layout
+!
+xvkbd.title: xvkbd - Virtual Keyboard (Korean)
+
+xvkbd*Shift_L.width: 75
+xvkbd*Shift_R.width: 80
+xvkbd*Control_L.width: 40
+xvkbd*Caps_Lock.width: 60
+xvkbd*Alt_L.width: 40
+xvkbd*Meta_L.width: 40
+xvkbd*Mode_switch.width: 50
+xvkbd*space.width: 100
+xvkbd*Delete.width: 50
+xvkbd*Return.width: 65
+xvkbd*row0.F1.horizDistance: 6
+xvkbd*row1.BackSpace.horizDistance: 0
+xvkbd*row1.BackSpace.width: 40
+xvkbd*row5.Focus.international: false
+
+xvkbd*row1*international: true
+xvkbd*row2*international: true
+xvkbd*row3*international: true
+xvkbd*row4*international: true
+xvkbd*row5*international: true
+xvkbd*specialFontSet: -*-helvetica-medium-r-*-*-12-*-*-*-*-*-iso8859-*,\
+  -*-*-medium-r-*-*-12-*-*-*-*-*-ksc5601.1987-0,*--12-*
+xvkbd*fontSet: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-iso8859-*,\
+  -*-*-medium-r-*-*-12-*-*-*-*-*-ksc5601.1987-0,*--12-*
+xvkbd.modalKeytop: false
+
+xvkbd.NormalKeys: \
+  Escape F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 \n\
+  ` 1 2 3 4 5 6 7 8 9 0 - = \\ BackSpace \n\
+  Tab q w e r t y u i o p [ ] Delete \n\
+  Caps_Lock a s d f g h j k l ; ' Return \n\
+  Shift_L z x c v b n m , . / Shift_R \n\
+  MainMenu Control_L Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.ShiftKeys: \
+  Escape F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 \n\
+  ~ ! @ # $ % ^ & * ( ) _ + | BackSpace \n\
+  Tab Q W E R T Y U I O P { } Delete \n\
+  Caps_Lock A S D F G H J K L : " Return \n\
+  Shift_L Z X C V B N M < > ? Shift_R \n\
+  MainMenu Control_L Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.AltgrKeys: \
+  Escape F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 \n\
+  ` 1 2 3 4 5 6 7 8 9 0 - = \\ BackSpace \n\
+  Tab q w e r t y u i o p [ ] Delete \n\
+  Caps_Lock a s d f g h j k l ; ' Return \n\
+  Shift_L z x c v b n m , . / Shift_R \n\
+  MainMenu Control_L Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.ShiftAltgrKeys: \
+  Escape F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 \n\
+  ` 1 2 3 4 5 6 7 8 9 0 - = \\ BackSpace \n\
+  Tab q w e r t y u i o p [ ] Delete \n\
+  Caps_Lock a s d f g h j k l ; ' Return \n\
+  Shift_L z x c v b n m , . / Shift_R \n\
+  MainMenu Control_L Alt_L Meta_L space Mode_switch Left Right Up Down Focus
+
+xvkbd.KeyLabels: \
+  Esc F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 \n\
+  ~\n` !\n1 @\n2 #\n3 $\n4 %\n5 ^\n6 &\n7 *\n8 (\n9 )\n0 _\n- +\n= |\n\\ back \n\
+  Tab Q\nげこ W\nじす E\nぇえ R\nぁあ T\nさざ Y\nに U\nづ I\nち O\nだぢ P\nつて {\n[ }\n] Delete \n\
+  Caps A\nけ S\nい D\nし F\nぉ G\nぞ H\nで J\nっ K\nた L\nび :\n; "\n' Return \n\
+  Shift Z\nせ X\nぜ C\nず V\nそ B\nば N\nぬ M\nぱ <\n, >\n. ?\n/ Shift \n\
+  MainMenu Ctrl Alt Meta space 廃/慎 left right up down Focus

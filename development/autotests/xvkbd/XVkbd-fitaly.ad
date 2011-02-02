@@ -1,0 +1,72 @@
+!! XVkbd-fitaly.ad  - sample app-defaults file for xvkbd
+!! by Tom Sato <VEF00200@nifty.ne.jp>, http://homepage3.nifty.com/tsato/
+!!
+!! with contribution from Marshall Rose
+!!
+!! Last update: 2003-06-23
+
+#include "XVkbd-common"
+
+xvkbd.title: xvkbd - Virtual Keyboard ("Fitaly" Style)
+
+xvkbd.inheritGeoemetry: false
+xvkbd.compact: true
+xvkbd.form*Repeater.shadowWidth: 1
+xvkbd.form*Command.shadowWidth: 1
+xvkbd.form*Repeater.height: 20
+xvkbd.form*Command.height: 20
+xvkbd.form*Repeater.width: 20
+xvkbd.form*row0*Repeater.width: 28
+xvkbd.Form*F5.horizDistance: 0
+xvkbd.Form*F9.horizDistance: 0
+xvkbd.form*Command.width: 60
+xvkbd.form*Escape.width: 60
+xvkbd.form*Tab.width: 60
+xvkbd.form*row1.BackSpace.horizDistance: 0
+xvkbd.form*BackSpace.width: 60
+xvkbd.form*Delete.width: 60
+xvkbd.form*Return.width: 60
+xvkbd.form*space.width: 60
+xvkbd.form*Alt_L.width: 30
+xvkbd.form*MainMenu.width: 30
+xvkbd.form*MainMenu.height: 20
+
+xvkbd.NormalKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 BackSpace \n\
+  Escape \\ z v c h w k ; 1 2 BackSpace \n\
+  Shift_L ' f i t a l y , 3 4 Shift_R \n\
+  Tab space n e space 5 6 Return \n\
+  Caps_Lock ` g d o r s b . 7 8 [ = ] \n\
+  Control_L / q j u m p x - 9 0 Alt_L MainMenu
+
+xvkbd.ShiftKeys: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 BackSpace \n\
+  Escape | Z V C H W K : ! @ Delete \n\
+  Shift_L " F I T A L Y < # $ Shift_R \n\
+  Tab space N E space % ^ Return \n\
+  Caps_Lock ~ G D O R S B > & * { + } \n\
+  Control_L ? Q J U M P X _ ( ) Alt_L MainMenu
+
+xvkbd.KeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 back \n\
+  Esc \\ Z V C H W K ; 1 2 BS \n\
+  Shift ' F I T A L Y , 3 4 Shift \n\
+  Tab space N E space 5 6 Return \n\
+  Caps ` G D O R S B . 7 8 [ = ] \n\
+  Ctrl / Q J U M P X - 9 0 Alt MainMenu
+
+xvkbd.NormalKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 back  \n\
+  Esc \\ z v c h w k ; 1 2 BS \n\
+  Shift ' f i t a l y , 3 4 Shift \n\
+  Tab space n e space 5 6 Return \n\
+  Caps ` g d o r s b . 7 8 [ = ] \n\
+  Ctrl / q j u m p x - 9 0 Alt MainMenu
+
+xvkbd.ShiftKeyLabels: \
+  F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 back \n\
+  Esc | Z V C H W K : ! @ Del \n\
+  Shift " F I T A L Y < # $ Shift \n\
+  Tab space N E space % ^ Return \n\
+  Caps ~ G D O R S B > & * { + } \n\
+  Ctrl ? Q J U M P X _ ( ) Alt MainMenu
