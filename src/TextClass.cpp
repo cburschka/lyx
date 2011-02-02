@@ -979,6 +979,7 @@ bool TextClass::readFloat(Lexer & lexrc)
 				name = fl.name();
 				listname = fl.listName();
 				usesfloat = fl.usesFloatPkg();
+				ispredefined = fl.isPredefined();
 				listcommand = fl.listCommand();
 				refprefix = fl.refPrefix();
 			} 
