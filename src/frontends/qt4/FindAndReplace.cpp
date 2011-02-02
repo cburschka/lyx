@@ -79,6 +79,7 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 	replace_work_area_->setFrameStyle(QFrame::StyledPanel);
 
 	// We don't want two cursors blinking.
+	find_work_area_->stopBlinkingCursor();
 	replace_work_area_->stopBlinkingCursor();
 }
 
@@ -119,6 +120,9 @@ bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 			if (obj == find_work_area_){
 				LYXERR(Debug::FIND, "Focusing replace WA");
 				replace_work_area_->setFocus();
+				LYXERR(Debug::FIND, "Selecting entire replace buffer");
+				dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
+				dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
 				return true;
 			}
 		}
@@ -128,6 +132,9 @@ bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 		if (obj == replace_work_area_) {
 			LYXERR(Debug::FIND, "Focusing find WA");
 			find_work_area_->setFocus();
+			LYXERR(Debug::FIND, "Selecting entire find buffer");
+			dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
+			dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
 			return true;
 		}
 		break;
@@ -525,6 +532,7 @@ void FindAndReplaceWidget::on_replaceallPB_clicked()
 
 void FindAndReplaceWidget::showEvent(QShowEvent * /* ev */)
 {
+	LYXERR(Debug::DEBUG, "showEvent()" << endl);
 	BufferView * bv = view_.documentBufferView();
 	if (bv) {
 		Buffer & doc_buf = bv->buffer();
@@ -541,14 +549,15 @@ void FindAndReplaceWidget::showEvent(QShowEvent * /* ev */)
 		FuncRequest cmd(LFUN_LANGUAGE, lang);
 		find_buf.text().dispatch(find_work_area_->bufferView().cursor(), cmd);
 		replace_buf.text().dispatch(replace_work_area_->bufferView().cursor(), cmd);
-
-		view_.setCurrentWorkArea(find_work_area_);
-		LYXERR(Debug::FIND, "Selecting entire find buffer");
-		dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
-		dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
 	}
+
 	find_work_area_->installEventFilter(this);
 	replace_work_area_->installEventFilter(this);
+
+	view_.setCurrentWorkArea(find_work_area_);
+	LYXERR(Debug::FIND, "Selecting entire find buffer");
+	dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
+	dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
 }
 
 
