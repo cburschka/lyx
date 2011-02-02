@@ -55,17 +55,6 @@ against at least Qt 4.2.2. The only special point to make is that you must
 ensure that both LyX and the Qt libraries are compiled with the same C++
 compiler.
 
-Note that if Qt is using Xft2/fontconfig, you may need to install the
-latex-xft-fonts package (at ftp://ftp.lyx.org/pub/lyx/contrib/) to get
-maths symbols displayed properly. To find out, type:
-
-	ldd `which lyx` | grep fontconfig
-
-at the console. Most recent distributions are known to use fontconfig.
-
-If, however, your version of Qt does not use fontconfig, then TeX
-fonts should be added to the font path. 'man xset' is your friend.
-
 * Other things to note
 
 If you make modifications to files in src/ (for example by applying a
