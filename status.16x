@@ -43,17 +43,16 @@ What's new
 
 * DOCUMENTATION AND LOCALIZATION
 
+- Re-introduce Swedish User Interface localization. 
+
 - Updated Basque, Czech, French, German, Indonesian, Italian,
   Norwegian (Nynorsk), Serbian (Latin), Slovak and Ukrainian
   User Interface localizations.
-  
-- Re-introduce Swedish User Interface localization. 
 
 
 * BUILD/INSTALLATION
 
 - Allow using autoconf 2.66 and 2.68.
-
 
 
 ** Bug fixes:
@@ -70,7 +69,7 @@ What's new
   settings (bug 7052).
 
 - Avoid inserting a blank line before the end of an environment when
-  exporting to LaTeX a custom inset (bug 7254).
+  exporting a custom inset to LaTeX (bug 7254).
 
 - Correctly check for RTF and DOC viewers.
 
@@ -94,17 +93,20 @@ What's new
 - Fix crash when inserting quotes with a selection spanning multiple
   paragraphs (bug 7200).
 
-- Fix crash when clicking on begin of unfinished command in math
-  when autocomplete is active (bug 7209).
+- Fix crash when clicking on the beginning of an unfinished command in
+  math when autocompletion is active (bug 7209).
 
 - Fix assertion when pasting a column in a math matrix (bug 7106).
 
 - Remove traces of long removed index settings dialog. This fixes a crash
   when issueing the non-functional lfuns "dialog-show index" and
   "dialog-show-new-inset index" (bug 7180).
+
+- Clear column width field in the tabular dialog when moving in a column
+  without a fixed width (bug 6976).
   
-- Correctly save the settings of UI components. They could disappear
-  when starting LyX with a modified default.ui file and changing the 
+- Correctly save the settings of UI components. They could disappear when
+  starting LyX with a modified default.ui file and changing the
   preferences afterwards (bug 7099).
 
 - Fix the painting of the workarea for a non-standard DPI and using
@@ -115,7 +117,7 @@ What's new
 
 - Don't shadow user math macros defined in child documents (bug 7183).
 
-- Make the modules description in the menu "Document -> Settings" fully
+- Make the modules description in the menu "Document > Settings" fully
   translatable (bug 6987).
 
 - Fix table line bug when unsetting a multicolumn cell via the table
@@ -134,9 +136,6 @@ What's new
 - Do not allow to put the cursor in an InsetInfo. Instead, a context
   menu item is added to facilitate copying of the contents (bug 5446).
   
-- Clear column width field in the tabular dialog when moving in a column
-  without a fixed width (bug 6976).
-
 - Fix the display of the horizontal alignment of table cells (bug 7007).
 
 - Numbered items in insets that do not produce any output (e.g. Notes)
@@ -146,7 +145,7 @@ What's new
   cursor is moved (bug 6952).
 
 - Correctly toggle the numbering of an equation when issueing the menu
-  "Insert -> Numbered equation" on a displayed equation (bug 6709).
+  "Insert > Numbered equation" on a displayed equation (bug 6709).
   
 - Fix the painting of non-text insets with a transparent background
   (such as quotation marks) as well as the description of a caption
@@ -170,7 +169,8 @@ What's new
 
 - Fix the enabling of LFUN_SPLIT_CELL in the math context menu (bug 4849).
 
-- Recognize the program listings' parameter 'breakatwhitespace' (bug 7077).
+- Recognize the program listings' parameter 'breakatwhitespace'
+  (bug 7077).
 
 - Wake up from waiting state after encountering a file parsing error
   (bug 6950).
@@ -181,18 +181,18 @@ What's new
 - Allow to undo the insertion of math macros (bug 7125).
 
 - Add some visual aids to distinguish opened files: full paths in
-  statusbar for recent files items; absolute paths in tooltips of
-  tabs; and longer paths in the window title (bug 7182).
+  statusbar for recent files items, absolute paths in tooltips of tabs,
+  and longer paths in the window title (bug 7182).
 
-- Fix the response of the update button of the view source window
-  after reopening a file (bug 5600).
+- Fix the response of the update button of the view source window after
+  reopening a file (bug 5600).
 
 - Don't allow to set an alignment for rows in math substack environments
   (bug 2498).
 
 - Allow paragraph breaks and nested environments in framed boxes.
 
-- Trigger LaTeX rerun if requested by the package etaremune.
+- Trigger LaTeX rerun if requested by the package "etaremune".
 
 - Fix EndFont tag in the svmult.layout (bug 7257).
 
