@@ -1040,10 +1040,23 @@ bool TextClass::readFloat(Lexer & lexrc)
 
 	// Here we have a full float if getout == true
 	if (getout) {
-		if (!needsfloat && listcommand.empty())
-			LYXERR0("The layout does not provide a list command " <<
-			        "for the builtin float `" << type << "'. LyX will " <<
-			        "not be able to produce a float list.");
+		if (!needsfloat && listcommand.empty()) {
+			// if this float uses the same auxfile as an existing one,
+			// there is no need for it to provide a list command.
+			FloatList::const_iterator it = floatlist_.begin();
+			FloatList::const_iterator en = floatlist_.end();
+			bool found_ext = false;
+			for (; it != en; ++it) {
+				if (it->second.ext() == ext) {
+					found_ext = true;
+					break;
+				}
+			}
+			if (!found_ext)
+				LYXERR0("The layout does not provide a list command " <<
+			          "for the builtin float `" << type << "'. LyX will " <<
+			          "not be able to produce a float list.");
+		}
 		Floating fl(type, placement, ext, within, style, name, 
 				listname, listcommand, refprefix, 
 				htmltag, htmlattr, htmlstyle, needsfloat);
