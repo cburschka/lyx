@@ -221,6 +221,7 @@ Float
 	NumberWithin	none
 	Style		plain
 	ListName	"List of Tables"
+	ListCommand listoftables
 	NeedsFloatPkg false
 End
 
@@ -232,6 +233,7 @@ Float
 	NumberWithin	none
 	Style		plain
 	ListName	"List of Figures"
+	ListCommand listoffigures
 	NeedsFloatPkg false
 End
 

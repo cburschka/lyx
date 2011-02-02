@@ -1094,11 +1094,21 @@ void MenuDefinition::expandFloatListInsert(Buffer const * buf)
 	FloatList const & floats = buf->params().documentClass().floats();
 	FloatList::const_iterator cit = floats.begin();
 	FloatList::const_iterator end = floats.end();
+	set<string> seen;
 	for (; cit != end; ++cit) {
-		addWithStatusCheck(MenuItem(MenuItem::Command,
-				    qt_(cit->second.listName()),
-				    FuncRequest(LFUN_FLOAT_LIST_INSERT,
-						cit->second.floattype())));
+		// Different floats could declare the same ListCommand. We only
+		// want it on the list once, though.
+		string const & list_cmd = cit->second.listCommand();
+		// This form of insert returns an iterator pointing to the newly
+		// inserted element OR the existing element with that value, and
+		// a bool indicating whether we inserted a new element. So we can
+		// see if one is there and insert it if not all at once.
+		pair<set<string>::iterator, bool> ret = seen.insert(list_cmd);
+		if (!ret.second)
+			continue;
+		string const & list_name = cit->second.listName();
+		addWithStatusCheck(MenuItem(MenuItem::Command, qt_(list_name),
+			FuncRequest(LFUN_FLOAT_LIST_INSERT, cit->second.floattype())));
 	}
 }
 
