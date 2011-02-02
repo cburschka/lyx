@@ -186,8 +186,8 @@ Float
 	Extension             lof
 	NumberWithin          none
 	Style                 plain
-	IsPredefined true
-	UsesFloatPkg false
+	IsPredefined          true
+	UsesFloatPkg          false
 End
 
 
@@ -198,8 +198,8 @@ Float
 	Extension             lot
 	NumberWithin          none
 	Style                 Ruled
-	IsPredefined true
-	UsesFloatPkg false
+	IsPredefined          true
+	UsesFloatPkg          false
 End
 
 

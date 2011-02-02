@@ -14,8 +14,8 @@ Float
 	NumberWithin          none
 	Style                 plain
 	ListName              "List of Tables"
-	IsPredefined true
-	UsesFloatPkg false
+	IsPredefined          true
+	UsesFloatPkg          false
 	ListCommand           listoftables
 	RefPrefix             tab
 End
@@ -29,8 +29,8 @@ Float
 	NumberWithin          none
 	Style                 plain
 	ListName              "List of Figures"
-	IsPredefined true
-	UsesFloatPkg false
+	IsPredefined          true
+	UsesFloatPkg          false
 	ListCommand           listoffigures
 	RefPrefix             fig
 End
@@ -44,7 +44,7 @@ Float
 	NumberWithin          none
 	Style                 ruled
 	ListName              "List of Algorithms"
-	IsPredefined false
-	UsesFloatPkg true
+	IsPredefined          false
+	UsesFloatPkg          true
 	RefPrefix             alg
 End
