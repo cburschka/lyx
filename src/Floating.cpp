@@ -33,10 +33,11 @@ Floating::Floating(string const & type, string const & placement,
 		   string const & listName, std::string const & listCmd, 
 			 string const & refPrefix,
 			 string const & htmlTag, string const & htmlAttrib, 
-			 string const & htmlStyle, bool needsfloat)
+			 string const & htmlStyle, bool usesfloat, bool ispredefined)
 	: floattype_(type), placement_(placement), ext_(ext), within_(within),
 	  style_(style), name_(name), listname_(listName), listcommand_(listCmd),
-	  refprefix_(refPrefix), usesfloatpkg_(needsfloat), html_tag_(htmlTag),
+	  refprefix_(refPrefix), usesfloatpkg_(usesfloat),
+    ispredefined_(ispredefined), html_tag_(htmlTag),
 		html_attrib_(htmlAttrib), html_style_(htmlStyle)
 {}
 

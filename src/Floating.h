@@ -34,7 +34,7 @@ public:
 		 std::string const & listName, std::string const & listCmd,
 		 std::string const & refPrefix,
 		 std::string const & htmlType, std::string const & htmlClass, 
-		 std::string const & htmlStyle, bool builtin = false);
+		 std::string const & htmlStyle, bool usesfloat, bool isprefined);
 	///
 	std::string const & floattype() const { return floattype_; }
 	///
@@ -58,6 +58,8 @@ public:
 	std::string const & refPrefix() const { return refprefix_; }
 	///
 	bool usesFloatPkg() const { return usesfloatpkg_; }
+	///
+	bool isPredefined() const { return ispredefined_; }
 	/// style information, for preamble
 	std::string const & htmlStyle() const { return html_style_; }
 	/// class, for css, defaults to "float-" + type()
@@ -87,6 +89,8 @@ private:
 	std::string refprefix_;
 	///
 	bool usesfloatpkg_;
+	///
+	bool ispredefined_;
 	/// 
 	mutable std::string html_tag_;
 	/// 

@@ -60,7 +60,7 @@ namespace lyx {
 // development/updatelayouts.sh script, to update the format of 
 // all of our layout files.
 //
-int const LAYOUT_FORMAT = 32;
+int const LAYOUT_FORMAT = 33;
 	
 namespace {
 
@@ -911,7 +911,8 @@ bool TextClass::readFloat(Lexer & lexrc)
 		FT_WITHIN,
 		FT_STYLE,
 		FT_LISTNAME,
-		FT_NEEDSFLOAT,
+		FT_USESFLOAT,
+		FT_PREDEFINED,
 		FT_HTMLSTYLE,
 		FT_HTMLATTR,
 		FT_HTMLTAG,
@@ -927,14 +928,15 @@ bool TextClass::readFloat(Lexer & lexrc)
 		{ "htmlattr", FT_HTMLATTR },
 		{ "htmlstyle", FT_HTMLSTYLE },
 		{ "htmltag", FT_HTMLTAG },
+		{ "ispredefined", FT_PREDEFINED },
 		{ "listcommand", FT_LISTCOMMAND },
 		{ "listname", FT_LISTNAME },
-		{ "needsfloatpkg", FT_NEEDSFLOAT },
 		{ "numberwithin", FT_WITHIN },
 		{ "placement", FT_PLACEMENT },
 		{ "refprefix", FT_REFPREFIX },
 		{ "style", FT_STYLE },
-		{ "type", FT_TYPE }
+		{ "type", FT_TYPE },
+		{ "usesfloatpkg", FT_USESFLOAT }
 	};
 
 	lexrc.pushTable(floatTags);
@@ -952,6 +954,7 @@ bool TextClass::readFloat(Lexer & lexrc)
 	string type;
 	string within;
 	bool usesfloat = true;
+	bool ispredefined = false;
 
 	bool getout = false;
 	while (!getout && lexrc.isOK()) {
@@ -1014,9 +1017,13 @@ bool TextClass::readFloat(Lexer & lexrc)
 			lexrc.next();
 			listname = lexrc.getString();
 			break;
-		case FT_NEEDSFLOAT:
+		case FT_USESFLOAT:
 			lexrc.next();
 			usesfloat = lexrc.getBool();
+			break;
+		case FT_PREDEFINED:
+			lexrc.next();
+			ispredefined = lexrc.getBool();
 			break;
 		case FT_HTMLATTR:
 			lexrc.next();
@@ -1059,7 +1066,7 @@ bool TextClass::readFloat(Lexer & lexrc)
 		}
 		Floating fl(type, placement, ext, within, style, name, 
 				listname, listcommand, refprefix, 
-				htmltag, htmlattr, htmlstyle, usesfloat);
+				htmltag, htmlattr, htmlstyle, usesfloat, ispredefined);
 		floatlist_.newFloat(fl);
 		// each float has its own counter
 		counters_.newCounter(from_ascii(type), from_ascii(within),
