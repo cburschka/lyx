@@ -7,7 +7,7 @@ KK: aaa\[Home]
 KK: \CF
 KK: a\[Tab]
 KK: aba\[Return]\[Return]\[Return]
-KK: \Afs
+KK: \Cs
 KK: \Ax
 KK: buffer-export latex\[Return]
 TestEnd grep "^abaabaa$" test.tex

@@ -7,7 +7,7 @@ KK: x^(a) +\\frac 1+x^(a) \[Down]1-x^(a)  \C\[Home]
 KK: \CF
 KK: \Cmx^(a) \[Tab]
 KK: \Cmx_a \[Return]\[Return]\[Return]
-KK: \Afs
+KK: \Cs
 KK: \Ax
 KK: buffer-export latex\[Return]
 TestEnd grep '^\$x_{a}+\\frac{1+x_{a}}{1-x\^{(a)}}\$' test.tex
