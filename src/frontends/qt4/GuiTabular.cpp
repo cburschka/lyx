@@ -48,12 +48,14 @@ GuiTabular::GuiTabular(QWidget * parent)
 {
 	setupUi(this);
 
+	tabularWidthED->setValidator(unsignedLengthValidator(tabularWidthED));
 	widthED->setValidator(unsignedLengthValidator(widthED));
 	multirowOffsetED->setValidator(new LengthValidator(multirowOffsetED));
 	topspaceED->setValidator(new LengthValidator(topspaceED));
 	bottomspaceED->setValidator(new LengthValidator(bottomspaceED));
 	interlinespaceED->setValidator(new LengthValidator(interlinespaceED));
 
+	tabularWidthUnitCB->setCurrentItem(Length::defaultUnit());
 	widthUnitCB->setCurrentItem(Length::defaultUnit());
 	multirowOffsetUnitCB->setCurrentItem(Length::defaultUnit());
 	topspaceUnitCB->setCurrentItem(Length::defaultUnit());
@@ -152,6 +154,8 @@ GuiTabular::GuiTabular(QWidget * parent)
 		this, SLOT(checkEnabled()));
 	connect(rightRB, SIGNAL(clicked()),
 		this, SLOT(checkEnabled()));
+	connect(tabularWidthED, SIGNAL(textEdited(const QString &)),
+		this, SLOT(checkEnabled()));
 
 	decimalPointLE->setInputMask("X; ");
 	decimalPointLE->setMaxLength(1);
@@ -199,15 +203,25 @@ void GuiTabular::checkEnabled()
 	hAlignCB->setEnabled(!(multirowCB->isChecked()
 		&& !widgetsToLength(widthED, widthUnitCB).empty())
 		&& specialAlignmentED->text().isEmpty());
-	bool dalign =
+	bool const dalign =
 		hAlignCB->itemData(hAlignCB->currentIndex()).toString() == QString("decimal");
 	decimalPointLE->setEnabled(dalign);
 	decimalL->setEnabled(dalign);
+
+	bool const setwidth = TableAlignCB->currentText() == qt_("Middle")
+		&& !longTabularCB->isChecked() && !rotateTabularCB->isChecked();
+	tabularWidthL->setEnabled(setwidth);
+	tabularWidthED->setEnabled(setwidth);
+	tabularWidthUnitCB->setEnabled(setwidth);
+
+	bool const is_tabular_star = !tabularWidthED->text().isEmpty();
+	rotateTabularCB->setDisabled(is_tabular_star);
 
 	vAlignCB->setEnabled(!multirowCB->isChecked()
 		&& !widgetsToLength(widthED, widthUnitCB).empty()
 		&& specialAlignmentED->text().isEmpty());
 
+	topspaceED->setEnabled(topspaceCO->currentIndex() == 2);
 	topspaceED->setEnabled(topspaceCO->currentIndex() == 2);
 	topspaceUnitCB->setEnabled(topspaceCO->currentIndex() == 2);
 	bottomspaceED->setEnabled(bottomspaceCO->currentIndex() == 2);
@@ -216,13 +230,15 @@ void GuiTabular::checkEnabled()
 	interlinespaceUnitCB->setEnabled(interlinespaceCO->currentIndex() == 2);
 
 	// setting as longtable is not allowed when table is inside a float
-	longTabularCB->setEnabled(funcEnabled(Tabular::SET_LONGTABULAR));
+	longTabularCB->setEnabled(!is_tabular_star && funcEnabled(Tabular::SET_LONGTABULAR));
 	bool const longtabular = longTabularCB->isChecked();
 	longtableGB->setEnabled(true);
 	newpageCB->setEnabled(longtabular);
 	alignmentGB->setEnabled(longtabular);
-	// longtables cannot have a vertical alignment
-	TableAlignCB->setDisabled(longtabular);
+	// longtables and tabular* cannot have a vertical alignment
+	TableAlignCB->setDisabled(is_tabular_star || longtabular);
+	TableAlignCO->setDisabled(is_tabular_star || longtabular);
+	TableAlignCB->setDisabled(is_tabular_star || longtabular);
 
 	// FIXME: This Dialog is really horrible, disabling/enabling a checkbox
 	// depending on the cursor position is very very unintuitive...
@@ -393,6 +409,12 @@ docstring GuiTabular::dialogToParams() const
 {
 	// FIXME: We should use Tabular directly.
 	string param_str = "tabular";
+
+	// table width
+	string tabwidth = widgetsToLength(tabularWidthED, tabularWidthUnitCB);
+	if (tabwidth.empty())
+		tabwidth = "0pt";
+	setParam(param_str, Tabular::SET_TABULAR_WIDTH, tabwidth);
 
 	// apply the fixed width values
 	// this must be done before applying the column alignment
@@ -674,6 +696,14 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 
 	///////////////////////////////////
 	// Set width and alignment
+
+	Length const tabwidth = tabular.tabularWidth();
+	if (tabwidth.zero())
+		tabularWidthED->clear();
+	else
+		lengthToWidgets(widthED, widthUnitCB,
+			tabwidth.asString(), default_unit);
+
 	Length pwidth;
 	docstring special;
 	if (multicol) {

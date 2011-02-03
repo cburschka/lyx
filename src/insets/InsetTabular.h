@@ -270,6 +270,8 @@ public:
 		///
 		SET_DECIMAL_POINT,
 		///
+		SET_TABULAR_WIDTH,
+		///
 		LAST_ACTION
 	};
 	///
@@ -401,6 +403,10 @@ public:
 	///
 	void setVAlignment(idx_type cell, VAlignment align,
 			   bool onlycolumn = false);
+	///
+	void setTabularWidth(Length const & l) { tabular_width = l; }
+	///
+	Length tabularWidth() const { return tabular_width; }
 	///
 	void setColumnPWidth(Cursor &, idx_type, Length const &);
 	///
@@ -674,6 +680,8 @@ public:
 	column_vector column_info;
 	///
 	mutable cell_vvector cell_info;
+	///
+	Length tabular_width;
 	///
 	bool use_booktabs;
 	///

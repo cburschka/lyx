@@ -2436,6 +2436,28 @@ def convert_langpack(document):
 
     document.header.insert(i + 1, "\\language_package default")
 
+
+def revert_tabularwidth(document):
+  i = 0
+  while True:
+    i = find_token(document.body, "\\begin_inset Tabular", i)
+    if i == -1:
+      return
+    j = find_end_of_inset(document.body, i)
+    if j == -1:
+      document.warning("Unable to find end of Tabular inset at line " + str(i))
+      i += 1
+      continue
+    i += 1
+    features = find_token(document.body, "<features", i, j)
+    if features == -1:
+      document.warning("Can't find any features in Tabular inset at line " + str(i))
+      i = j
+      continue
+    if document.body[features].find('alignment="tabularwidth"') != -1:
+      remove_option(document.body, features, 'tabularwidth')
+
+
 ##
 # Conversion hub
 #
@@ -2506,10 +2528,12 @@ convert = [[346, []],
            [408, []],
            [409, [convert_use_xetex]],
            [410, []],
-           [411, [convert_langpack]]
+           [411, [convert_langpack]],
+           [410, []]
 ]
 
-revert =  [[410, [revert_langpack]],
+revert =  [[411, [revert_tabularwidth]],
+           [410, [revert_langpack]],
            [409, [revert_labeling]],
            [408, [revert_use_xetex]],
            [407, [revert_script]],

@@ -183,6 +183,7 @@ TabularFeature tabularFeature[] =
 	{ Tabular::LONGTABULAR_ALIGN_CENTER, "longtabular-align-center", false },
 	{ Tabular::LONGTABULAR_ALIGN_RIGHT, "longtabular-align-right", false },
 	{ Tabular::SET_DECIMAL_POINT, "set-decimal-point", true },
+	{ Tabular::SET_TABULAR_WIDTH, "set-tabular-width", true },
 	{ Tabular::LAST_ACTION, "", false }
 };
 
@@ -678,6 +679,7 @@ void Tabular::init(Buffer * buf, row_type rows_arg,
 	updateIndexes();
 	is_long_tabular = false;
 	tabular_valignment = LYX_VALIGN_MIDDLE;
+	tabular_width = Length();
 	longtabular_alignment = LYX_LONGTABULAR_ALIGN_CENTER;
 	rotate = false;
 	use_booktabs = false;
@@ -1391,8 +1393,10 @@ void Tabular::write(ostream & os) const
 	   << write_attribute("lastFootBottomDL", endlastfoot.bottomDL)
 	   << write_attribute("lastFootEmpty", endlastfoot.empty);
 	// longtables cannot be aligned vertically
-	if (!is_long_tabular)
+	if (!is_long_tabular) {
 	   os << write_attribute("tabularvalignment", tabular_valignment);
+	   os << write_attribute("tabularwidth", tabular_width);
+	}
 	if (is_long_tabular)
 	   os << write_attribute("longtabularalignment",
 	                         longtabular_alignment);
@@ -1489,6 +1493,7 @@ void Tabular::read(Lexer & lex)
 	getTokenValue(line, "booktabs", use_booktabs);
 	getTokenValue(line, "islongtable", is_long_tabular);
 	getTokenValue(line, "tabularvalignment", tabular_valignment);
+	getTokenValue(line, "tabularwidth", tabular_width);
 	getTokenValue(line, "longtabularalignment", longtabular_alignment);
 	getTokenValue(line, "firstHeadTopDL", endfirsthead.topDL);
 	getTokenValue(line, "firstHeadBottomDL", endfirsthead.bottomDL);
@@ -2594,6 +2599,7 @@ int Tabular::TeXRow(otexstream & os, row_type row,
 int Tabular::latex(otexstream & os, OutputParams const & runparams) const
 {
 	int ret = 0;
+	bool const is_tabular_star = !tabular_width.zero();
 
 	//+---------------------------------------------------------------------
 	//+                      first the opening preamble                    +
@@ -2616,7 +2622,10 @@ int Tabular::latex(otexstream & os, OutputParams const & runparams) const
 			break;
 		}
 	} else {
-		os << "\\begin{tabular}";
+		if (is_tabular_star)
+			os << "\\begin{tabular*}{" << from_ascii(tabular_width.asLatexString()) << "}";
+		else
+			os << "\\begin{tabular}";
 		switch (tabular_valignment) {
 		case LYX_VALIGN_TOP:
 			os << "[t]";
@@ -2630,6 +2639,9 @@ int Tabular::latex(otexstream & os, OutputParams const & runparams) const
 	}
 	
 	os << "{";
+
+	if (is_tabular_star)
+		os << "@{\\extracolsep{\\fill}}";
 
 	for (col_type c = 0; c < ncols(); ++c) {
 		if (columnLeftLine(c))
@@ -2716,7 +2728,10 @@ int Tabular::latex(otexstream & os, OutputParams const & runparams) const
 	if (is_long_tabular)
 		os << "\\end{longtable}";
 	else
-		os << "\\end{tabular}";
+		if (is_tabular_star)
+			os << "\\end{tabular*}";
+		else
+			os << "\\end{tabular}";
 	if (rotate) {
 		// clear counter
 		os.countLines();
@@ -4360,6 +4375,11 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.clear();
 			return true;
 
+		case Tabular::SET_TABULAR_WIDTH:
+			status.setEnabled(!tabular.rotate &&  !tabular.is_long_tabular
+				&& tabular.tabular_valignment == Tabular::LYX_VALIGN_MIDDLE);
+			break;
+
 		case Tabular::SET_DECIMAL_POINT:
 			status.setEnabled(
 				tabular.getAlignment(cur.idx()) == LYX_ALIGN_DECIMAL);
@@ -4498,18 +4518,22 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 		case Tabular::TOGGLE_ROTATE_TABULAR:
 		case Tabular::SET_ROTATE_TABULAR:
+			status.setEnabled(tabular.tabular_width.zero());
 			status.setOnOff(tabular.rotate);
 			break;
 
 		case Tabular::TABULAR_VALIGN_TOP:
+			status.setEnabled(tabular.tabular_width.zero());
 			status.setOnOff(tabular.tabular_valignment 
 				== Tabular::LYX_VALIGN_TOP);
 			break;
 		case Tabular::TABULAR_VALIGN_MIDDLE:
+			status.setEnabled(tabular.tabular_width.zero());
 			status.setOnOff(tabular.tabular_valignment 
 				== Tabular::LYX_VALIGN_MIDDLE);
 			break;
 		case Tabular::TABULAR_VALIGN_BOTTOM:
+			status.setEnabled(tabular.tabular_width.zero());
 			status.setOnOff(tabular.tabular_valignment 
 				== Tabular::LYX_VALIGN_BOTTOM);
 			break;
@@ -5186,6 +5210,10 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	Tabular::ltType ltt;
 
 	switch (feature) {
+
+	case Tabular::SET_TABULAR_WIDTH:
+		tabular.setTabularWidth(Length(value));
+		break;
 
 	case Tabular::SET_PWIDTH: {
 		Length const len(value);
