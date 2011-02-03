@@ -1218,9 +1218,11 @@ dist_layouts_DATA =\
 	layouts/tufte-handout.layout
 
 scriptsdir = $(pkgdatadir)/scripts
+dist_scripts_DATA = \
+	scripts/bash_completion \
+	scripts/lyxsweave.R
 # Note that we "chmod 755" manually these files in install-data-hook.
 dist_scripts_PYTHON = \
-	scripts/bash_completion \
 	scripts/clean_dvi.py \
 	scripts/convertDefault.py \
 	scripts/csv2lyx.py \
@@ -1238,7 +1240,6 @@ dist_scripts_PYTHON = \
 	scripts/lyxpreview-lytex2bitmap.py \
 	scripts/lyxpreview-platex2bitmap.py \
 	scripts/lyxpreview_tools.py \
-	scripts/lyxsweave.R \
 	scripts/prefs2prefs.py \
 	scripts/prefs2prefs_lfuns.py \
 	scripts/prefs2prefs_prefs.py \

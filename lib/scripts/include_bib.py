@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 # file include_bib.py
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
