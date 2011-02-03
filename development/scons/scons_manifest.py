@@ -1563,16 +1563,16 @@ lib_images_files = Split('''
     split-view_vertical.png
     standard.png
     tabular-feature_align-decimal.png
+    tabular-feature_append-column.png
+    tabular-feature_append-row.png
+    tabular-feature_delete-column.png
+    tabular-feature_delete-row.png
     tabular-feature_m-align-center.png
     tabular-feature_m-align-left.png
     tabular-feature_m-align-right.png
     tabular-feature_m-valign-bottom.png
     tabular-feature_m-valign-middle.png
     tabular-feature_m-valign-top.png
-    tabular-feature_append-column.png
-    tabular-feature_append-row.png
-    tabular-feature_delete-column.png
-    tabular-feature_delete-row.png
     tabular-feature_multicolumn.png
     tabular-feature_multirow.png
     tabular-feature_set-all-lines.png
