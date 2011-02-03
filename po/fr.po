@@ -251,7 +251,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-02 11:38+0100\n"
+"POT-Creation-Date: 2011-02-03 11:04+0100\n"
 "PO-Revision-Date: 2011-02-01 17:44+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
@@ -1550,7 +1550,6 @@ msgid "Perform a case-sensitive search"
 msgstr "Effectuer une recherche conforme à la casse"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:75
-#: src/frontends/qt4/ui/SearchUi.ui:101
 msgid "Case &sensitive"
 msgstr "Selon la &casse"
 
@@ -4623,6 +4622,11 @@ msgstr "référence mise en forme"
 msgid "Textual reference"
 msgstr "Référence textuelle"
 
+#: src/frontends/qt4/ui/SearchUi.ui:101
+#, fuzzy
+msgid "Case &sensitive[[search]]"
+msgstr "Selon la &casse"
+
 #: src/frontends/qt4/ui/SearchUi.ui:108
 msgid "Match w&hole words only"
 msgstr "&Mots complets seulement"
@@ -5359,27 +5363,28 @@ msgstr "TitreCourt"
 #: lib/layouts/aa.layout:326 lib/layouts/aastex.layout:276
 #: lib/layouts/aastex.layout:293 lib/layouts/aastex.layout:333
 #: lib/layouts/aastex.layout:359 lib/layouts/aastex.layout:398
-#: lib/layouts/achemso.layout:120 lib/layouts/acmsiggraph.layout:68
-#: lib/layouts/acmsiggraph.layout:114 lib/layouts/acmsiggraph.layout:141
-#: lib/layouts/agutex.layout:58 lib/layouts/agutex.layout:75
-#: lib/layouts/agutex.layout:116 lib/layouts/agutex.layout:134
-#: lib/layouts/ectaart.layout:22 lib/layouts/ectaart.layout:47
-#: lib/layouts/ectaart.layout:70 lib/layouts/elsarticle.layout:58
-#: lib/layouts/elsarticle.layout:101 lib/layouts/elsarticle.layout:120
-#: lib/layouts/elsarticle.layout:198 lib/layouts/elsarticle.layout:226
-#: lib/layouts/elsarticle.layout:255 lib/layouts/entcs.layout:74
-#: lib/layouts/iopart.layout:60 lib/layouts/iopart.layout:130
-#: lib/layouts/iopart.layout:149 lib/layouts/iopart.layout:174
-#: lib/layouts/iopart.layout:203 lib/layouts/siamltex.layout:275
-#: lib/layouts/siamltex.layout:295 lib/layouts/sigplanconf.layout:71
-#: lib/layouts/sigplanconf.layout:124 lib/layouts/sigplanconf.layout:157
-#: lib/layouts/svglobal3.layout:77 lib/layouts/tufte-handout.layout:49
-#: lib/layouts/amsdefs.inc:31 lib/layouts/amsdefs.inc:54
-#: lib/layouts/amsdefs.inc:74 lib/layouts/amsdefs.inc:98
-#: lib/layouts/amsdefs.inc:125 lib/layouts/lyxmacros.inc:45
-#: lib/layouts/lyxmacros.inc:66 lib/layouts/stdstruct.inc:16
-#: lib/layouts/stdtitle.inc:50 lib/layouts/stdtitle.inc:71
-#: lib/layouts/stdtitle.inc:90 lib/layouts/customHeadersFooters.module:11
+#: lib/layouts/achemso.layout:57 lib/layouts/achemso.layout:190
+#: lib/layouts/acmsiggraph.layout:68 lib/layouts/acmsiggraph.layout:114
+#: lib/layouts/acmsiggraph.layout:141 lib/layouts/agutex.layout:58
+#: lib/layouts/agutex.layout:75 lib/layouts/agutex.layout:116
+#: lib/layouts/agutex.layout:134 lib/layouts/ectaart.layout:22
+#: lib/layouts/ectaart.layout:47 lib/layouts/ectaart.layout:70
+#: lib/layouts/elsarticle.layout:58 lib/layouts/elsarticle.layout:101
+#: lib/layouts/elsarticle.layout:120 lib/layouts/elsarticle.layout:198
+#: lib/layouts/elsarticle.layout:226 lib/layouts/elsarticle.layout:255
+#: lib/layouts/entcs.layout:74 lib/layouts/iopart.layout:60
+#: lib/layouts/iopart.layout:130 lib/layouts/iopart.layout:149
+#: lib/layouts/iopart.layout:174 lib/layouts/iopart.layout:203
+#: lib/layouts/siamltex.layout:275 lib/layouts/siamltex.layout:295
+#: lib/layouts/sigplanconf.layout:71 lib/layouts/sigplanconf.layout:124
+#: lib/layouts/sigplanconf.layout:157 lib/layouts/svglobal3.layout:77
+#: lib/layouts/tufte-handout.layout:49 lib/layouts/amsdefs.inc:31
+#: lib/layouts/amsdefs.inc:54 lib/layouts/amsdefs.inc:74
+#: lib/layouts/amsdefs.inc:98 lib/layouts/amsdefs.inc:125
+#: lib/layouts/lyxmacros.inc:45 lib/layouts/lyxmacros.inc:66
+#: lib/layouts/stdstruct.inc:16 lib/layouts/stdtitle.inc:50
+#: lib/layouts/stdtitle.inc:71 lib/layouts/stdtitle.inc:90
+#: lib/layouts/customHeadersFooters.module:11
 msgid "FrontMatter"
 msgstr "Préliminaires"
 
@@ -5419,8 +5424,8 @@ msgstr "Parution de la publication :"
 #: lib/layouts/aa.layout:88 lib/layouts/aa.layout:322
 #: lib/layouts/aa.layout:338 lib/layouts/aapaper.layout:100
 #: lib/layouts/aapaper.layout:203 lib/layouts/aastex.layout:113
-#: lib/layouts/aastex.layout:252 lib/layouts/achemso.layout:116
-#: lib/layouts/achemso.layout:133 lib/layouts/acmsiggraph.layout:110
+#: lib/layouts/aastex.layout:252 lib/layouts/achemso.layout:186
+#: lib/layouts/achemso.layout:203 lib/layouts/acmsiggraph.layout:110
 #: lib/layouts/acmsiggraph.layout:126 lib/layouts/agutex.layout:130
 #: lib/layouts/apa.layout:70 lib/layouts/cl2emult.layout:81
 #: lib/layouts/cl2emult.layout:92 lib/layouts/ectaart.layout:42
@@ -5494,8 +5499,8 @@ msgid "Theorem"
 msgstr "Théorème"
 
 #: lib/layouts/AEA.layout:112 lib/layouts/elsart.layout:343
-#: lib/layouts/powerdot.layout:403 lib/layouts/siamltex.layout:111
-#: lib/layouts/stdfloats.inc:39
+#: lib/layouts/powerdot.layout:405 lib/layouts/siamltex.layout:111
+#: lib/layouts/stdfloats.inc:41
 #: lib/layouts/theorems-ams-extended-bytype.module:82
 #: lib/layouts/theorems-ams-extended.module:70
 #: lib/layouts/theorems-ams-extended.module:80
@@ -5782,7 +5787,7 @@ msgstr "Preuve"
 
 #: lib/layouts/IEEEtran.layout:34 lib/layouts/aa.layout:27
 #: lib/layouts/aapaper.layout:34 lib/layouts/aastex.layout:52
-#: lib/layouts/achemso.layout:30 lib/layouts/acmsiggraph.layout:34
+#: lib/layouts/achemso.layout:32 lib/layouts/acmsiggraph.layout:34
 #: lib/layouts/agutex.layout:31 lib/layouts/amsart.layout:27
 #: lib/layouts/amsbook.layout:28 lib/layouts/apa.layout:24
 #: lib/layouts/beamer.layout:32 lib/layouts/broadway.layout:173
@@ -5810,27 +5815,27 @@ msgstr "Standard"
 #: lib/layouts/IEEEtran.layout:64 lib/layouts/aa.layout:67
 #: lib/layouts/aa.layout:264 lib/layouts/aapaper.layout:76
 #: lib/layouts/aapaper.layout:170 lib/layouts/aastex.layout:95
-#: lib/layouts/aastex.layout:217 lib/layouts/agutex.layout:54
-#: lib/layouts/apa.layout:39 lib/layouts/beamer.layout:738
-#: lib/layouts/broadway.layout:185 lib/layouts/cl2emult.layout:40
-#: lib/layouts/docbook-book.layout:11 lib/layouts/docbook-chapter.layout:9
-#: lib/layouts/docbook-section.layout:9 lib/layouts/ectaart.layout:15
-#: lib/layouts/egs.layout:251 lib/layouts/elsart.layout:91
-#: lib/layouts/elsarticle.layout:54 lib/layouts/entcs.layout:39
-#: lib/layouts/foils.layout:125 lib/layouts/hollywood.layout:331
-#: lib/layouts/ijmpc.layout:35 lib/layouts/ijmpd.layout:38
-#: lib/layouts/iopart.layout:56 lib/layouts/isprs.layout:93
-#: lib/layouts/kluwer.layout:111 lib/layouts/latex8.layout:38
-#: lib/layouts/llncs.layout:106 lib/layouts/ltugboat.layout:136
-#: lib/layouts/paper.layout:110 lib/layouts/powerdot.layout:41
-#: lib/layouts/revtex.layout:94 lib/layouts/revtex4.layout:125
-#: lib/layouts/scrlettr.layout:188 lib/layouts/scrlttr2.layout:271
-#: lib/layouts/siamltex.layout:183 lib/layouts/sigplanconf.layout:104
-#: lib/layouts/simplecv.layout:121 lib/layouts/svprobth.layout:35
-#: lib/layouts/tufte-book.layout:34 lib/layouts/agu_stdtitle.inc:246
-#: lib/layouts/amsdefs.inc:30 lib/layouts/db_stdtitle.inc:13
-#: lib/layouts/scrclass.inc:161 lib/layouts/stdtitle.inc:47
-#: lib/layouts/svjour.inc:130
+#: lib/layouts/aastex.layout:217 lib/layouts/achemso.layout:54
+#: lib/layouts/agutex.layout:54 lib/layouts/apa.layout:39
+#: lib/layouts/beamer.layout:738 lib/layouts/broadway.layout:185
+#: lib/layouts/cl2emult.layout:40 lib/layouts/docbook-book.layout:11
+#: lib/layouts/docbook-chapter.layout:9 lib/layouts/docbook-section.layout:9
+#: lib/layouts/ectaart.layout:15 lib/layouts/egs.layout:251
+#: lib/layouts/elsart.layout:91 lib/layouts/elsarticle.layout:54
+#: lib/layouts/entcs.layout:39 lib/layouts/foils.layout:125
+#: lib/layouts/hollywood.layout:331 lib/layouts/ijmpc.layout:35
+#: lib/layouts/ijmpd.layout:38 lib/layouts/iopart.layout:56
+#: lib/layouts/isprs.layout:93 lib/layouts/kluwer.layout:111
+#: lib/layouts/latex8.layout:38 lib/layouts/llncs.layout:106
+#: lib/layouts/ltugboat.layout:136 lib/layouts/paper.layout:110
+#: lib/layouts/powerdot.layout:41 lib/layouts/revtex.layout:94
+#: lib/layouts/revtex4.layout:125 lib/layouts/scrlettr.layout:188
+#: lib/layouts/scrlttr2.layout:271 lib/layouts/siamltex.layout:183
+#: lib/layouts/sigplanconf.layout:104 lib/layouts/simplecv.layout:121
+#: lib/layouts/svprobth.layout:35 lib/layouts/tufte-book.layout:34
+#: lib/layouts/agu_stdtitle.inc:246 lib/layouts/amsdefs.inc:30
+#: lib/layouts/db_stdtitle.inc:13 lib/layouts/scrclass.inc:161
+#: lib/layouts/stdtitle.inc:47 lib/layouts/svjour.inc:130
 msgid "Title"
 msgstr "Titre"
 
@@ -5845,23 +5850,24 @@ msgstr "minuscules"
 #: lib/layouts/IEEEtran.layout:114 lib/layouts/aa.layout:73
 #: lib/layouts/aa.layout:276 lib/layouts/aapaper.layout:82
 #: lib/layouts/aapaper.layout:181 lib/layouts/aastex.layout:98
-#: lib/layouts/aastex.layout:229 lib/layouts/apa.layout:114
-#: lib/layouts/beamer.layout:795 lib/layouts/broadway.layout:199
-#: lib/layouts/cl2emult.layout:58 lib/layouts/ectaart.layout:102
-#: lib/layouts/ectaart.layout:180 lib/layouts/egs.layout:295
-#: lib/layouts/elsart.layout:112 lib/layouts/elsarticle.layout:117
-#: lib/layouts/entcs.layout:50 lib/layouts/foils.layout:133
-#: lib/layouts/hollywood.layout:318 lib/layouts/ijmpc.layout:42
-#: lib/layouts/ijmpd.layout:45 lib/layouts/iopart.layout:126
-#: lib/layouts/isprs.layout:76 lib/layouts/kluwer.layout:165
-#: lib/layouts/llncs.layout:182 lib/layouts/ltugboat.layout:155
-#: lib/layouts/paper.layout:120 lib/layouts/powerdot.layout:65
-#: lib/layouts/revtex.layout:102 lib/layouts/revtex4.layout:133
-#: lib/layouts/siamltex.layout:205 lib/layouts/sigplanconf.layout:120
-#: lib/layouts/svprobth.layout:52 lib/layouts/tufte-book.layout:38
-#: lib/layouts/agu_stdtitle.inc:167 lib/layouts/amsdefs.inc:53
-#: lib/layouts/db_stdtitle.inc:21 lib/layouts/scrclass.inc:177
-#: lib/layouts/stdtitle.inc:68 lib/layouts/svjour.inc:162
+#: lib/layouts/aastex.layout:229 lib/layouts/achemso.layout:77
+#: lib/layouts/apa.layout:114 lib/layouts/beamer.layout:795
+#: lib/layouts/broadway.layout:199 lib/layouts/cl2emult.layout:58
+#: lib/layouts/ectaart.layout:102 lib/layouts/ectaart.layout:180
+#: lib/layouts/egs.layout:295 lib/layouts/elsart.layout:112
+#: lib/layouts/elsarticle.layout:117 lib/layouts/entcs.layout:50
+#: lib/layouts/foils.layout:133 lib/layouts/hollywood.layout:318
+#: lib/layouts/ijmpc.layout:42 lib/layouts/ijmpd.layout:45
+#: lib/layouts/iopart.layout:126 lib/layouts/isprs.layout:76
+#: lib/layouts/kluwer.layout:165 lib/layouts/llncs.layout:182
+#: lib/layouts/ltugboat.layout:155 lib/layouts/paper.layout:120
+#: lib/layouts/powerdot.layout:65 lib/layouts/revtex.layout:102
+#: lib/layouts/revtex4.layout:133 lib/layouts/siamltex.layout:205
+#: lib/layouts/sigplanconf.layout:120 lib/layouts/svprobth.layout:52
+#: lib/layouts/tufte-book.layout:38 lib/layouts/agu_stdtitle.inc:167
+#: lib/layouts/amsdefs.inc:53 lib/layouts/db_stdtitle.inc:21
+#: lib/layouts/scrclass.inc:177 lib/layouts/stdtitle.inc:68
+#: lib/layouts/svjour.inc:162
 msgid "Author"
 msgstr "Auteur"
 
@@ -5934,7 +5940,7 @@ msgstr "Appendice"
 
 #: lib/layouts/IEEEtran.layout:242 lib/layouts/aa.layout:94
 #: lib/layouts/aa.layout:381 lib/layouts/aapaper.layout:106
-#: lib/layouts/aapaper.layout:220 lib/layouts/achemso.layout:168
+#: lib/layouts/aapaper.layout:220 lib/layouts/achemso.layout:238
 #: lib/layouts/agutex.layout:200 lib/layouts/beamer.layout:883
 #: lib/layouts/book.layout:21 lib/layouts/book.layout:23
 #: lib/layouts/cl2emult.layout:103 lib/layouts/egs.layout:559
@@ -5949,8 +5955,8 @@ msgstr "Appendice"
 #: lib/layouts/report.layout:14 lib/layouts/scrbook.layout:22
 #: lib/layouts/scrbook.layout:24 lib/layouts/scrreprt.layout:11
 #: lib/layouts/scrreprt.layout:13 lib/layouts/siamltex.layout:313
-#: lib/layouts/simplecv.layout:142 lib/layouts/tufte-book.layout:238
-#: lib/layouts/tufte-book.layout:240 lib/layouts/aguplus.inc:172
+#: lib/layouts/simplecv.layout:142 lib/layouts/tufte-book.layout:242
+#: lib/layouts/tufte-book.layout:244 lib/layouts/aguplus.inc:172
 #: lib/layouts/aguplus.inc:174 lib/layouts/amsdefs.inc:202
 #: lib/layouts/scrclass.inc:245 lib/layouts/stdstruct.inc:53
 #: lib/layouts/svjour.inc:289 src/frontends/qt4/GuiDocument.cpp:1259
@@ -5959,7 +5965,7 @@ msgstr "Bibliographie"
 
 #: lib/layouts/IEEEtran.layout:257 lib/layouts/aastex.layout:125
 #: lib/layouts/aastex.layout:485 lib/layouts/aastex.layout:498
-#: lib/layouts/achemso.layout:182 lib/layouts/agutex.layout:215
+#: lib/layouts/achemso.layout:252 lib/layouts/agutex.layout:215
 #: lib/layouts/beamer.layout:897 lib/layouts/cl2emult.layout:117
 #: lib/layouts/egs.layout:573 lib/layouts/elsarticle.layout:287
 #: lib/layouts/iopart.layout:276 lib/layouts/iopart.layout:291
@@ -6185,13 +6191,13 @@ msgid "email"
 msgstr "e-mail"
 
 #: lib/layouts/aapaper.layout:88 lib/layouts/aastex.layout:104
-#: lib/layouts/aastex.layout:354 lib/layouts/ectaart.layout:69
-#: lib/layouts/elsarticle.layout:212 lib/layouts/iopart.layout:160
-#: lib/layouts/latex8.layout:64 lib/layouts/lettre.layout:45
-#: lib/layouts/lettre.layout:398 lib/layouts/llncs.layout:236
-#: lib/layouts/svglobal3.layout:37 lib/layouts/aapaper.inc:46
-#: lib/layouts/amsdefs.inc:151 lib/layouts/db_stdcharstyles.inc:71
-#: lib/layouts/db_stdcharstyles.inc:73
+#: lib/layouts/aastex.layout:354 lib/layouts/achemso.layout:89
+#: lib/layouts/ectaart.layout:69 lib/layouts/elsarticle.layout:212
+#: lib/layouts/iopart.layout:160 lib/layouts/latex8.layout:64
+#: lib/layouts/lettre.layout:45 lib/layouts/lettre.layout:398
+#: lib/layouts/llncs.layout:236 lib/layouts/svglobal3.layout:37
+#: lib/layouts/aapaper.inc:46 lib/layouts/amsdefs.inc:151
+#: lib/layouts/db_stdcharstyles.inc:71 lib/layouts/db_stdcharstyles.inc:73
 msgid "Email"
 msgstr "E-mail"
 
@@ -6214,9 +6220,9 @@ msgid "Paragraph"
 msgstr "Paragraphe"
 
 #: lib/layouts/aastex.layout:101 lib/layouts/aastex.layout:272
-#: lib/layouts/apa.layout:150 lib/layouts/latex8.layout:88
-#: lib/layouts/revtex4.layout:151 lib/layouts/agu_stdtitle.inc:128
-#: lib/layouts/aguplus.inc:65
+#: lib/layouts/achemso.layout:94 lib/layouts/apa.layout:150
+#: lib/layouts/latex8.layout:88 lib/layouts/revtex4.layout:151
+#: lib/layouts/agu_stdtitle.inc:128 lib/layouts/aguplus.inc:65
 msgid "Affiliation"
 msgstr "Affiliation"
 
@@ -6352,35 +6358,56 @@ msgstr "Obj :"
 msgid "Dataset:"
 msgstr "Ensemble de données :"
 
-#: lib/layouts/achemso.layout:55 lib/layouts/achemso.layout:65
+#: lib/layouts/achemso.layout:100
+#, fuzzy
+msgid "Alt Affiliation"
+msgstr "AffiliationAlt"
+
+#: lib/layouts/achemso.layout:105
+#, fuzzy
+msgid "Also Affiliation"
+msgstr "AffiliationAlt"
+
+#: lib/layouts/achemso.layout:110 lib/layouts/lettre.layout:41
+#: lib/layouts/lettre.layout:342 lib/layouts/scrlttr2.layout:191
+#: lib/configure.py:574
+msgid "Fax"
+msgstr "Fax"
+
+#: lib/layouts/achemso.layout:115 lib/layouts/dinbrief.layout:295
+#: lib/layouts/g-brief.layout:117
+msgid "Phone"
+msgstr "Téléphone"
+
+#: lib/layouts/achemso.layout:122 lib/layouts/achemso.layout:133
 msgid "Scheme"
 msgstr "Schéma"
 
-#: lib/layouts/achemso.layout:60
+#: lib/layouts/achemso.layout:127
 msgid "List of Schemes"
 msgstr "Liste des schémas"
 
-#: lib/layouts/achemso.layout:76 lib/layouts/achemso.layout:86
+#: lib/layouts/achemso.layout:144 lib/layouts/achemso.layout:155
 msgid "Chart"
 msgstr "Diagramme"
 
-#: lib/layouts/achemso.layout:81
+#: lib/layouts/achemso.layout:149
 msgid "List of Charts"
 msgstr "Liste des diagrammes"
 
-#: lib/layouts/achemso.layout:97 lib/layouts/achemso.layout:107
+#: lib/layouts/achemso.layout:166 lib/layouts/achemso.layout:177
 msgid "Graph"
 msgstr "Graphique"
 
-#: lib/layouts/achemso.layout:102
+#: lib/layouts/achemso.layout:171
 msgid "List of Graphs"
 msgstr "Liste des graphiques"
 
-#: lib/layouts/achemso.layout:149
+#: lib/layouts/achemso.layout:219
 msgid "bibnote"
 msgstr "bibnote"
 
-#: lib/layouts/achemso.layout:194
+#: lib/layouts/achemso.layout:264
 msgid "chemistry"
 msgstr "chimie"
 
@@ -6962,13 +6989,13 @@ msgstr "Tableau"
 msgid "List of Tables"
 msgstr "Liste des tableaux"
 
-#: lib/layouts/beamer.layout:1212 lib/layouts/powerdot.layout:392
-#: lib/layouts/stdfloats.inc:25
+#: lib/layouts/beamer.layout:1213 lib/layouts/powerdot.layout:393
+#: lib/layouts/stdfloats.inc:26
 msgid "Figure"
 msgstr "Figure"
 
-#: lib/layouts/beamer.layout:1217 lib/layouts/powerdot.layout:396
-#: lib/layouts/tufte-book.layout:234 lib/layouts/stdfloats.inc:30
+#: lib/layouts/beamer.layout:1218 lib/layouts/powerdot.layout:397
+#: lib/layouts/tufte-book.layout:236 lib/layouts/stdfloats.inc:31
 #: src/insets/InsetFloatList.cpp:178
 msgid "List of Figures"
 msgstr "Liste des figures"
@@ -7398,10 +7425,6 @@ msgstr "MaRéférence"
 #: lib/layouts/dinbrief.layout:290
 msgid "Unterschrift"
 msgstr "Signature"
-
-#: lib/layouts/dinbrief.layout:295 lib/layouts/g-brief.layout:117
-msgid "Phone"
-msgstr "Téléphone"
 
 #: lib/layouts/dinbrief.layout:300
 msgid "Telefon"
@@ -8595,11 +8618,6 @@ msgstr "Auteur courant :"
 msgid "NoTelephone"
 msgstr "Sans téléphone"
 
-#: lib/layouts/lettre.layout:41 lib/layouts/lettre.layout:342
-#: lib/layouts/scrlttr2.layout:191 lib/configure.py:574
-msgid "Fax"
-msgstr "Fax"
-
 #: lib/layouts/lettre.layout:43 lib/layouts/lettre.layout:372
 #: lib/layouts/lettre.layout:380
 msgid "NoFax"
@@ -8875,7 +8893,7 @@ msgstr "ListePucesType1"
 msgid "EnumerateType1"
 msgstr "ÉnumérationType1"
 
-#: lib/layouts/powerdot.layout:407 lib/layouts/stdfloats.inc:44
+#: lib/layouts/powerdot.layout:409 lib/layouts/stdfloats.inc:46
 msgid "List of Algorithms"
 msgstr "Liste des algorithmes"
 
@@ -9331,7 +9349,7 @@ msgstr "Pleine largeur"
 msgid "MarginTable"
 msgstr "Table en marge"
 
-#: lib/layouts/tufte-book.layout:229
+#: lib/layouts/tufte-book.layout:231
 msgid "MarginFigure"
 msgstr "Figure en marge"
 
@@ -9674,15 +9692,15 @@ msgstr "Commentaire Slug :"
 msgid "Plate"
 msgstr "Planche"
 
-#: lib/layouts/aguplus.inc:194
+#: lib/layouts/aguplus.inc:195
 msgid "Planotable"
 msgstr "PlancheTableau"
 
-#: lib/layouts/aguplus.inc:205
+#: lib/layouts/aguplus.inc:207
 msgid "Table Caption"
 msgstr "Légende tableau"
 
-#: lib/layouts/aguplus.inc:215
+#: lib/layouts/aguplus.inc:217
 msgid "TableCaption"
 msgstr "LégendeTableau"
 
@@ -12112,7 +12130,7 @@ msgstr "Figure floatflt"
 msgid "Table of Contents|C"
 msgstr "Table des matières|e"
 
-#: lib/ui/classic.ui:318 src/frontends/qt4/Menus.cpp:1386
+#: lib/ui/classic.ui:318 src/frontends/qt4/Menus.cpp:1401
 msgid "Index List|I"
 msgstr "Index|I"
 
@@ -12714,17 +12732,17 @@ msgid "Justified Line Break|J"
 msgstr "Passage à la ligne (justifié)|j"
 
 #: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:102 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1221 src/mathed/InsetMathNest.cpp:587
+#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:587
 msgid "Cut"
 msgstr "Couper"
 
 #: lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:103 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1226 src/mathed/InsetMathNest.cpp:596
+#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:596
 msgid "Copy"
 msgstr "Copier"
 
 #: lib/ui/stdcontext.inc:290 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1174 src/mathed/InsetMathGrid.cpp:1327
+#: src/Text3.cpp:1175 src/mathed/InsetMathGrid.cpp:1327
 #: src/mathed/InsetMathNest.cpp:566
 msgid "Paste"
 msgstr "Coller"
@@ -17506,7 +17524,7 @@ msgstr "Chargement de la classe impossible"
 msgid "Error reading internal layout information"
 msgstr "Erreur de lecture du format interne"
 
-#: src/BufferParams.cpp:2059 src/TextClass.cpp:1326
+#: src/BufferParams.cpp:2059 src/TextClass.cpp:1347
 msgid "Read Error"
 msgstr "Erreur de lecture"
 
@@ -19480,23 +19498,23 @@ msgstr "Déjà en mode « expression régulière »"
 msgid "Regexp editor mode"
 msgstr "Mode « expression régulière »"
 
-#: src/Text3.cpp:1286
+#: src/Text3.cpp:1287
 msgid "Layout "
 msgstr "Environnement "
 
-#: src/Text3.cpp:1287
+#: src/Text3.cpp:1288
 msgid " not known"
 msgstr " inconnu"
 
-#: src/Text3.cpp:1751 src/frontends/qt4/GuiApplication.cpp:1381
+#: src/Text3.cpp:1752 src/frontends/qt4/GuiApplication.cpp:1381
 msgid "Missing argument"
 msgstr "Paramètre manquant"
 
-#: src/Text3.cpp:1899 src/Text3.cpp:1911
+#: src/Text3.cpp:1901 src/Text3.cpp:1913
 msgid "Character set"
 msgstr "Encodage"
 
-#: src/Text3.cpp:2118 src/Text3.cpp:2129
+#: src/Text3.cpp:2120 src/Text3.cpp:2131
 msgid "Paragraph layout set"
 msgstr "Style du paragraphe redéfini"
 
@@ -19522,7 +19540,7 @@ msgid "Could not read stdinsets.inc! This may lead to data loss!"
 msgstr ""
 "Fichier stdinsets.inc illisible ! Ceci peut provoquer une perte de données !"
 
-#: src/TextClass.cpp:1303
+#: src/TextClass.cpp:1324
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -19535,11 +19553,11 @@ msgstr ""
 "Si vous l'avez installé récemment, vous devez probablement reconfigurer "
 "LyX.\n"
 
-#: src/TextClass.cpp:1307
+#: src/TextClass.cpp:1328
 msgid "Module not available"
 msgstr "Module non disponible"
 
-#: src/TextClass.cpp:1313
+#: src/TextClass.cpp:1334
 #, c-format
 msgid ""
 "The module %1$s requires a package that is not\n"
@@ -19557,11 +19575,11 @@ msgstr ""
 "Voir le paragraphe 3.1.2.3 (Modules)  du\n"
 "Guide de l'Utilisateur pour en savoir plus."
 
-#: src/TextClass.cpp:1320
+#: src/TextClass.cpp:1341
 msgid "Package not available"
 msgstr "Paquetage indisponible"
 
-#: src/TextClass.cpp:1325
+#: src/TextClass.cpp:1346
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr "Erreur de lecture du module %1$s\n"
@@ -20683,7 +20701,7 @@ msgid "Document Settings"
 msgstr "Paramètres du document"
 
 #: src/frontends/qt4/GuiDocument.cpp:720 src/frontends/qt4/GuiInclude.cpp:48
-#: src/frontends/qt4/Menus.cpp:1370
+#: src/frontends/qt4/Menus.cpp:1385
 msgid "Child Document"
 msgstr "Sous-document"
 
@@ -22688,57 +22706,57 @@ msgstr "Visionner [%1$s]|V"
 msgid "Update [%1$s]|U"
 msgstr "Mettre à jour [%1$s]|u"
 
-#: src/frontends/qt4/Menus.cpp:1147
+#: src/frontends/qt4/Menus.cpp:1162
 msgid "No Custom Insets Defined!"
 msgstr "Aucun insert paramétrable défini !"
 
-#: src/frontends/qt4/Menus.cpp:1219
+#: src/frontends/qt4/Menus.cpp:1234
 msgid "<No Document Open>"
 msgstr "<Aucun document ouvert>"
 
-#: src/frontends/qt4/Menus.cpp:1229
+#: src/frontends/qt4/Menus.cpp:1244
 msgid "Master Document"
 msgstr "Document maître"
 
-#: src/frontends/qt4/Menus.cpp:1246
+#: src/frontends/qt4/Menus.cpp:1261
 msgid "Open Navigator..."
 msgstr "Ouvrir le navigateur..."
 
-#: src/frontends/qt4/Menus.cpp:1267
+#: src/frontends/qt4/Menus.cpp:1282
 msgid "Other Lists"
 msgstr "Autres listes"
 
-#: src/frontends/qt4/Menus.cpp:1280
+#: src/frontends/qt4/Menus.cpp:1295
 msgid "<Empty Table of Contents>"
 msgstr "<Table des matières vide>"
 
-#: src/frontends/qt4/Menus.cpp:1315
+#: src/frontends/qt4/Menus.cpp:1330
 msgid "Other Toolbars"
 msgstr "Autres barres d'outils"
 
-#: src/frontends/qt4/Menus.cpp:1330
+#: src/frontends/qt4/Menus.cpp:1345
 msgid "No Branches Set for Document!"
 msgstr "Pas de branche sélectionnée dans le document !"
 
-#: src/frontends/qt4/Menus.cpp:1391
+#: src/frontends/qt4/Menus.cpp:1406
 msgid "Index Entry|d"
 msgstr "Entrée d'index|i"
 
-#: src/frontends/qt4/Menus.cpp:1406
+#: src/frontends/qt4/Menus.cpp:1421
 #, c-format
 msgid "Index: %1$s"
 msgstr "Index : %1$s"
 
-#: src/frontends/qt4/Menus.cpp:1411 src/frontends/qt4/Menus.cpp:1440
+#: src/frontends/qt4/Menus.cpp:1426 src/frontends/qt4/Menus.cpp:1455
 #, c-format
 msgid "Index Entry (%1$s)"
 msgstr "Entrée d'index (%1$s)"
 
-#: src/frontends/qt4/Menus.cpp:1457
+#: src/frontends/qt4/Menus.cpp:1472
 msgid "No Citation in Scope!"
 msgstr "Aucune citation accessible !"
 
-#: src/frontends/qt4/Menus.cpp:2038
+#: src/frontends/qt4/Menus.cpp:2053
 msgid "No Action Defined!"
 msgstr "Aucune action définie !"
 
