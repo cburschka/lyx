@@ -385,6 +385,7 @@ BufferParams::BufferParams()
 	fonts_sans_scale = 100;
 	fonts_typewriter_scale = 100;
 	inputenc = "auto";
+	lang_package = "default";
 	graphics_driver = "default";
 	default_output_format = "default";
 	bibtex_command = "default";
@@ -601,6 +602,9 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex >> suppress_date;
 	} else if (token == "\\language") {
 		readLanguage(lex);
+	} else if (token == "\\language_package") {
+		lex.eatLine();
+		lang_package = lex.getString();
 	} else if (token == "\\inputencoding") {
 		lex >> inputenc;
 	} else if (token == "\\graphics") {
@@ -945,7 +949,8 @@ void BufferParams::writeFile(ostream & os) const
 	// then the text parameters
 	if (language != ignore_language)
 		os << "\\language " << language->lang() << '\n';
-	os << "\\inputencoding " << inputenc
+	os << "\\language_package " << lang_package
+	   << "\n\\inputencoding " << inputenc
 	   << "\n\\fontencoding " << fontenc
 	   << "\n\\font_roman " << fonts_roman
 	   << "\n\\font_sans " << fonts_sans
@@ -2442,6 +2447,9 @@ string const BufferParams::font_encoding() const
 
 string BufferParams::babelCall(string const & lang_opts, bool const langoptions) const
 {
+	if (lang_package != "auto" && lang_package != "babel"
+	    && lang_package != "default" && lang_package != "none")
+		return lang_package;
 	if (lyxrc.language_package_selection == LyXRC::LP_CUSTOM)
 		return lyxrc.language_custom_package;
 	// suppress the babel call if there is no BabelName defined

@@ -2416,6 +2416,26 @@ def revert_labeling(document):
         document.body[i] = "\\begin_layout List"
 
 
+def revert_langpack(document):
+    " revert \\language_package parameter "
+    i = 0
+    i = find_token(document.header, "\\language_package", 0)
+    if i == -1:
+        document.warning("Malformed document. No \\language_package param!")
+        return
+
+    del document.header[i]
+
+
+def convert_langpack(document):
+    " Add \\language_package parameter "
+    i = find_token(document.header, "\language" , 0)
+    if i == -1:
+        document.warning("Malformed document. No \\language defined!")
+        return
+
+    document.header.insert(i + 1, "\\language_package default")
+
 ##
 # Conversion hub
 #
@@ -2485,10 +2505,12 @@ convert = [[346, []],
            [407, []],
            [408, []],
            [409, [convert_use_xetex]],
-           [410, []]
+           [410, []],
+           [411, [convert_langpack]]
 ]
 
-revert =  [[409, [revert_labeling]],
+revert =  [[409, [revert_langpack]],
+           [409, [revert_labeling]],
            [408, [revert_use_xetex]],
            [407, [revert_script]],
            [406, [revert_multirowOffset]],

@@ -964,6 +964,12 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(langModule->quoteStyleCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
+	connect(langModule->languagePackageCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(langModule->languagePackageED, SIGNAL(textChanged(QString)),
+		this, SLOT(change_adaptor()));
+	connect(langModule->languagePackageCO, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(languagePackageChanged(int)));
 
 	QAbstractItemModel * language_model = guiApp->languageModel();
 	// FIXME: it would be nice if sorting was enabled/disabled via a checkbox.
@@ -987,6 +993,17 @@ GuiDocument::GuiDocument(GuiView & lv)
 	langModule->quoteStyleCO->addItem(qt_(",,text''"));
 	langModule->quoteStyleCO->addItem(qt_("<<text>>"));
 	langModule->quoteStyleCO->addItem(qt_(">>text<<"));
+
+	langModule->languagePackageCO->addItem(
+		qt_("Default"), toqstr("default"));
+	langModule->languagePackageCO->addItem(
+		qt_("Automatic"), toqstr("auto"));
+	langModule->languagePackageCO->addItem(
+		qt_("Always Babel"), toqstr("babel"));
+	langModule->languagePackageCO->addItem(
+		qt_("Custom"), toqstr("custom"));
+	langModule->languagePackageCO->addItem(
+		qt_("None[[language package]]"), toqstr("none"));
 
 
 	// color
@@ -1877,6 +1894,13 @@ void GuiDocument::classChanged()
 }
 
 
+void GuiDocument::languagePackageChanged(int i)
+{
+	 langModule->languagePackageED->setEnabled(
+		langModule->languagePackageCO->itemData(i).toString() == "custom");
+}
+
+
 void GuiDocument::bibtexChanged(int n)
 {
 	biblioModule->bibtexOptionsED->setEnabled(n != 0);
@@ -2202,6 +2226,14 @@ void GuiDocument::applyView()
 	QString const lang = langModule->languageCO->itemData(
 		langModule->languageCO->currentIndex()).toString();
 	bp_.language = lyx::languages.getLanguage(fromqstr(lang));
+	
+	QString const pack = langModule->languagePackageCO->itemData(
+		langModule->languagePackageCO->currentIndex()).toString();
+	if (pack == "custom")
+		bp_.lang_package =
+			fromqstr(langModule->languagePackageED->text());
+	else
+		bp_.lang_package = fromqstr(pack);
 
 	//color
 	bp_.backgroundcolor = set_backgroundcolor;
@@ -2613,6 +2645,16 @@ void GuiDocument::paramsToDialog()
 	}
 	langModule->defaultencodingRB->setChecked(default_enc);
 	langModule->otherencodingRB->setChecked(!default_enc);
+
+	int const p = langModule->languagePackageCO->findData(toqstr(bp_.lang_package));
+	if (p == -1) {
+		langModule->languagePackageCO->setCurrentIndex(
+			  langModule->languagePackageCO->findData("custom"));
+		langModule->languagePackageED->setText(toqstr(bp_.lang_package));
+	} else {
+		langModule->languagePackageCO->setCurrentIndex(p);
+		langModule->languagePackageED->clear();
+	}
 
 	//color
 	if (bp_.isfontcolor) {

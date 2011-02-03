@@ -236,6 +236,8 @@ public:
 	int tocdepth;
 	///
 	Language const * language;
+	/// language package
+	std::string lang_package;
 	/// BranchList:
 	BranchList & branchlist();
 	BranchList const & branchlist() const;

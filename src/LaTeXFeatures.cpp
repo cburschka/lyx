@@ -294,20 +294,31 @@ bool LaTeXFeatures::useBabel() const
 {
 	if (usePolyglossia())
 		return false;
-	return (lyxrc.language_package_selection != LyXRC::LP_NONE)
-	        || (bufferParams().language->lang() != lyxrc.default_language
-	            && !bufferParams().language->babel().empty())
-	        || this->hasLanguages();
+	if (bufferParams().lang_package == "default")
+		return (lyxrc.language_package_selection != LyXRC::LP_NONE)
+			|| (bufferParams().language->lang() != lyxrc.default_language
+			    && !bufferParams().language->babel().empty())
+			|| this->hasLanguages();
+	return (bufferParams().lang_package != "none")
+		|| (bufferParams().language->lang() != lyxrc.default_language
+		    && !bufferParams().language->babel().empty())
+		|| this->hasLanguages();
 }
 
 
 bool LaTeXFeatures::usePolyglossia() const
 {
-	return (lyxrc.language_package_selection == LyXRC::LP_AUTO)
-	        && isRequired("polyglossia")
-	        && isAvailable("polyglossia")
-	        && !params_.documentClass().provides("babel")
-	        && this->hasPolyglossiaLanguages();
+	if (bufferParams().lang_package == "default")
+		return (lyxrc.language_package_selection == LyXRC::LP_AUTO)
+			&& isRequired("polyglossia")
+			&& isAvailable("polyglossia")
+			&& !params_.documentClass().provides("babel")
+			&& this->hasPolyglossiaLanguages();
+	return (bufferParams().lang_package == "auto")
+		&& isRequired("polyglossia")
+		&& isAvailable("polyglossia")
+		&& !params_.documentClass().provides("babel")
+		&& this->hasPolyglossiaLanguages();
 }
 
 
