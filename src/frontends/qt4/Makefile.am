@@ -20,7 +20,7 @@ moc_%.cpp: %.h
 
 Resources.qrc: Makefile
 	$(AM_V_GEN)echo "<!DOCTYPE RCC><RCC version='1.0'><qresource>" > $@ ; \
-	find $(top_srcdir)/lib/images -name '*.png' \
+	find $(top_srcdir)/lib/images -name '*.png' -o -name '*.gif' \
 		| sed -e 's:$(top_srcdir)/lib/\(.*\):<file alias="\1">&</file>:' \
 		>> $@ ;\
 	echo "</qresource></RCC>" >> $@
