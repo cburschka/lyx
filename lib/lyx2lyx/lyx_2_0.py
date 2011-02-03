@@ -2509,7 +2509,7 @@ convert = [[346, []],
            [411, [convert_langpack]]
 ]
 
-revert =  [[409, [revert_langpack]],
+revert =  [[410, [revert_langpack]],
            [409, [revert_labeling]],
            [408, [revert_use_xetex]],
            [407, [revert_script]],
