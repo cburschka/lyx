@@ -69,7 +69,7 @@ where command is a lyx command.
 \fB \-e [\-\-export]\fP \fIfmt
 where fmt is the export format of choice.
 Look on Tools->Preferences->File formats->Format to get an idea which parameters should be passed.
-Note that the order of -e and -x switches matters.
+Note that the order of \-e and \-x switches matters.
 .TP
 \fB \-i [\-\-import]\fP \fIfmt file.xxx
 where fmt is the import format of choice and file.xxx is the file to be imported.
@@ -92,11 +92,11 @@ by using the lyxpipe, ask an already running instance of LyX to open the
 documents passed as arguments and then exit. If the lyxpipe is not set up or
 is not working, a new instance is created and execution continues normally.
 .TP
-.BI -batch
+.BI \-batch
 causes LyX to run the given commands without opening a GUI window.
 Thus, something like:
 .br
-    lyx -batch -x "buffer-print printer default dvips" myfile.lyx
+    lyx \-batch \-x "buffer\-print printer default dvips" myfile.lyx
 .br
 will cause LyX to print myfile.lyx to the default printer, using dvips and
 the default print settings (which, of course, have to have been configured
