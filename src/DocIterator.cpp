@@ -192,6 +192,16 @@ Paragraph & DocIterator::innerParagraph() const
 }
 
 
+FontSpan DocIterator::locateWord(word_location const loc) const
+{
+	FontSpan f = FontSpan();
+
+	f.first = pos();
+	top().paragraph().locateWord(f.first, f.last, loc);
+	return f;
+}
+
+	
 CursorSlice const & DocIterator::innerTextSlice() const
 {
 	LASSERT(!empty(), /**/);

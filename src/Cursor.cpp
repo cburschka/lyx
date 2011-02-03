@@ -503,6 +503,7 @@ Row const & Cursor::textRow() const
 void Cursor::resetAnchor()
 {
 	anchor_ = *this;
+	checkNewWordPosition();
 }
 
 
@@ -515,6 +516,54 @@ void Cursor::setCursorToAnchor()
 		if (depth() < anchor_.depth() && top() <= anchor_[depth() - 1])
 			++normal.pos();
 		setCursor(normal);
+	}
+}
+
+
+void Cursor::markEditPosition()
+{
+	if (inTexted() && new_word_.empty()) {
+		FontSpan ow = locateWord(WHOLE_WORD);
+		if (ow.size() == 1) {
+			LYXERR(Debug::DEBUG, "start new word: "
+				<< " par: " << pit()
+				<< " pos: " << ow.first);
+			new_word_ = *this;
+		}
+	}
+}
+
+
+void Cursor::clearNewWordPosition()
+{
+	if (!new_word_.empty()) {
+		LYXERR(Debug::DEBUG, "clear new word: "
+			<< " par: " << pit()
+			<< " pos: " << pos());
+		new_word_.resize(0);
+	}
+}
+
+
+void Cursor::checkNewWordPosition()
+{
+	if (new_word_.empty())
+		return ;
+	if (!inTexted())
+		clearNewWordPosition();
+	else {
+		if (paragraph().id() != new_word_.paragraph().id())
+			clearNewWordPosition();
+		else {
+			FontSpan ow = new_word_.locateWord(WHOLE_WORD);
+			FontSpan nw = locateWord(WHOLE_WORD);
+			if (nw.intersect(ow).empty())
+				clearNewWordPosition();
+			else
+				LYXERR(Debug::DEBUG, "new word: "
+					<< " par: " << pit()
+					<< " pos: " << nw.first << ".." << nw.last);
+		}
 	}
 }
 

@@ -25,6 +25,7 @@ class MathAtom;
 class Paragraph;
 class Text;
 class InsetIterator;
+class FontSpan;
 
 DocIterator doc_iterator_begin(Buffer const * buf, Inset const * inset = 0);
 DocIterator doc_iterator_end(Buffer const * buf, Inset const * inset = 0);
@@ -161,6 +162,9 @@ public:
 	Paragraph & innerParagraph() const;
 	/// return the inner text slice.
 	CursorSlice const & innerTextSlice() const;
+	/// the first and last positions of a word at top cursor slice
+	/// \warning only works within text!
+	FontSpan locateWord(word_location const loc) const;
 	///
 	Text * text() const;
 	/// the containing inset or the cell, respectively

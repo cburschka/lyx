@@ -77,12 +77,34 @@ public:
 	{
 		return first == s.first && last == s.last;
 	}
-	
+
 	inline bool inside(pos_type p) const
 	{
 		return first <= p && p <= last;
 	}
 
+	inline size_t size() const
+	{
+		return empty() ? 0 : last - first;
+	}
+	
+
+	inline FontSpan intersect(FontSpan const & f) const
+	{
+		FontSpan result = FontSpan();
+		if (inside(f.first))
+			result.first = f.first;
+		else if (f.inside(first))
+			result.first = first;
+		else
+			return result;
+		if (inside(f.last))
+			result.last = f.last;
+		else if (f.inside(last))
+			result.last = last;
+		return result;
+	}
+	
 	inline bool empty() const
 	{
 		return first > last;

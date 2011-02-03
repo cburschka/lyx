@@ -415,17 +415,17 @@ void RowPainter::paintFromPos(pos_type & vpos, bool changed)
 		// don't draw misspelled marker for words at cursor position
 		// we don't want to disturb the process of text editing
 		BufferView const * bv = pi_.base.bv;
-		Cursor const & cur = bv->cursor();
-		bool current_word = false;
-		if (cur.inTexted() && par_.id() == cur.paragraph().id()) {
-			pos_type cpos = cur.pos();
+		DocIterator const nw = bv->cursor().newWord();
+		bool new_word = false;
+		if (!nw.empty() && par_.id() == nw.paragraph().id()) {
+			pos_type cpos = nw.pos();
 			if (cpos > 0 && cpos == par_.size() && !par_.isWordSeparator(cpos-1))
 				--cpos;
 			else if (cpos > 0 && par_.isWordSeparator(cpos))
 				--cpos;
-			current_word = par_.isSameSpellRange(pos, cpos) ;
+			new_word = par_.isSameSpellRange(pos, cpos) ;
 		}
-		if (!current_word)
+		if (!new_word)
 			paintMisspelledMark(orig_x, changed);
 	}
 }

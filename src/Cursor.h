@@ -292,6 +292,15 @@ public:
 	///
 	void checkBufferStructure();
 
+	/// hook for text input to maintain the "new born word"
+	void markEditPosition();
+
+	/// The position of the new born word
+	/// As the user is entering a word without leaving it
+	/// the result is not empty. When not in text mode
+	/// and after leaving the word the result is empty.
+	DocIterator newWord() const { return new_word_; }
+
 public:
 //private:
 	
@@ -301,10 +310,18 @@ public:
 	void saveBeforeDispatchPosXY();
 
 private:
+	/// validate the "new born word" position
+	void checkNewWordPosition();
+	/// clear the "new born word" position
+	void clearNewWordPosition();
+
+private:
 	///
 	BufferView * bv_;
 	/// the anchor position
 	DocIterator anchor_;
+	/// the start of the new born word
+	DocIterator new_word_;
 	///
 	mutable DispatchResult disp_;
 	/**
