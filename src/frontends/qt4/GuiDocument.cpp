@@ -1074,7 +1074,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		QString const command = toqstr(*it).left(toqstr(*it).indexOf(" "));
 		biblioModule->bibtexCO->addItem(command, command);
 	}
-	
+	biblioModule->bibtexCO->addItem(qt_("Custom"), QString("custom"));
+
 
 	// indices
 	indicesModule = new GuiIndices;
@@ -1903,7 +1904,13 @@ void GuiDocument::languagePackageChanged(int i)
 
 void GuiDocument::bibtexChanged(int n)
 {
-	biblioModule->bibtexOptionsED->setEnabled(n != 0);
+	QString const data =
+		biblioModule->bibtexCO->itemData(n).toString();
+	biblioModule->bibtexOptionsED->setEnabled(data != "default");
+	if (data == "custom")
+		biblioModule->bibtexOptionsLA->setText(qt_("Co&mmand:"));
+	else
+		biblioModule->bibtexOptionsLA->setText(qt_("&Options:"));
 	changed();
 }
 
@@ -2164,7 +2171,9 @@ void GuiDocument::applyView()
 			biblioModule->bibtexCO->currentIndex()).toString());
 	string const bibtex_options =
 		fromqstr(biblioModule->bibtexOptionsED->text());
-	if (bibtex_command == "default" || bibtex_options.empty())
+	if (bibtex_command == "custom")
+		bp_.bibtex_command = bibtex_options;
+	else if (bibtex_command == "default" || bibtex_options.empty())
 		bp_.bibtex_command = bibtex_command;
 	else
 		bp_.bibtex_command = bibtex_command + " " + bibtex_options;
@@ -2601,9 +2610,12 @@ void GuiDocument::paramsToDialog()
 	if (bpos != -1) {
 		biblioModule->bibtexCO->setCurrentIndex(bpos);
 		biblioModule->bibtexOptionsED->setText(toqstr(options).trimmed());
+		biblioModule->bibtexOptionsLA->setText(qt_("&Options:"));
 	} else {
-		biblioModule->bibtexCO->setCurrentIndex(0);
-		biblioModule->bibtexOptionsED->clear();
+		biblioModule->bibtexCO->setCurrentIndex(
+			biblioModule->bibtexCO->findData(toqstr("custom")));
+		biblioModule->bibtexOptionsED->setText(toqstr(bp_.bibtex_command));
+		biblioModule->bibtexOptionsLA->setText(qt_("&Command:"));
 	}
 	biblioModule->bibtexOptionsED->setEnabled(
 		biblioModule->bibtexCO->currentIndex() != 0);
