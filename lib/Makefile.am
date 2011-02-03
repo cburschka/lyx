@@ -436,13 +436,17 @@ dist_images_DATA = \
 	images/split-view_horizontal.png \
 	images/split-view_vertical.png \
 	images/standard.png \
-	images/tabular-feature_m-align-center.png \
-	images/tabular-feature_m-align-left.png \
-	images/tabular-feature_m-align-right.png \
+	images/tabular-feature_align-decimal.png \
 	images/tabular-feature_append-column.png \
 	images/tabular-feature_append-row.png \
 	images/tabular-feature_delete-column.png \
 	images/tabular-feature_delete-row.png \
+	images/tabular-feature_m-align-center.png \
+	images/tabular-feature_m-align-left.png \
+	images/tabular-feature_m-align-right.png \
+	images/tabular-feature_m-valign-bottom.png \
+	images/tabular-feature_m-valign-middle.png \
+	images/tabular-feature_m-valign-top.png \
 	images/tabular-feature_multicolumn.png \
 	images/tabular-feature_multirow.png \
 	images/tabular-feature_set-all-lines.png \
@@ -457,9 +461,6 @@ dist_images_DATA = \
 	images/tabular-feature_toggle-rotate-cell.png \
 	images/tabular-feature_toggle-rotate-tabular.png \
 	images/tabular-feature_unset-all-lines.png \
-	images/tabular-feature_m-valign-bottom.png \
-	images/tabular-feature_m-valign-middle.png \
-	images/tabular-feature_m-valign-top.png \
 	images/tabular-insert.png \
 	images/thesaurus-entry.png \
 	images/toolbar-toggle_math.png \
