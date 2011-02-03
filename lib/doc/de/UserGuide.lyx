@@ -1,4 +1,4 @@
-#LyX 1.6.8svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.9svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -105,6 +105,7 @@
 \output_changes false
 \author "" 
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -124,7 +125,7 @@ vom LyX-Team
 \size normal
 
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -133,8 +134,9 @@ status collapsed
 \size default
 \noun on
 HHa
-\size normal
 \noun default
+, bis März 2010
+\size normal
 ), 
 \size default
 Uwe Stöhr
@@ -173,8 +175,8 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 24.
- Februar 2010
+letzte Änderung: 2.
+ Februar 2011
 \end_layout
 
 \begin_layout Standard
@@ -36079,6 +36081,103 @@ Aktualisieren
 PDF (pdflatex)
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+Wenn Sie sich beim Dateinamen eines Bildes verschrieben haben oder eine
+ 
+\family typewriter
+.lyx
+\family default
+-Datei ohne die zugehörigen Bilder bekommen haben, wird 
+\family typewriter
+pdflatex
+\family default
+ die Arbeit verweigern.
+ Sie haben dann mehrere Möglichkeiten, sich doch eine Druckvorschau anzusehen:
+\end_layout
+
+\begin_layout Itemize
+Sie weichen auf 
+\family sans
+Ansicht
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+DVI
+\family default
+ oder
+\family sans
+ Ansicht
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Postscript
+\family default
+ aus.
+\end_layout
+
+\begin_layout Itemize
+Sie fügen in den LaTeX-Vorspann des Dokumentes folgendes ein:
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+
+\backslash
+let
+\backslash
+oldincludegraphics
+\backslash
+includegraphics 
+\backslash
+renewcommand
+\backslash
+includegraphics[2][]{%    
+\backslash
+IfFileExists{#2}{
+\backslash
+oldincludegraphics[#1]{#2}}{
+\backslash
+fbox{Bild nicht da!}}}
+\end_layout
+
+\begin_layout Itemize
+Sie fügen in den LaTeX-Vorspann des Dokumentes folgendes ein:
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+
+\backslash
+setkeys{Gin}{width=1cm,height=1cm}
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+Vorsicht
+\emph default
+: das überschreibt die nicht vorhandenen Größenangaben für alle Bilder im
+ Dokument.
+ 
+\end_layout
+
+\begin_layout Itemize
+Sie können für die nicht vorhandenen Bilder Breite 
+\emph on
+und
+\emph default
+ Höhe festlegen.
+ Dann wird ein Platzhalterkästchen in dieser Größe gezeichnet.
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 \begin_inset Graphics
 	filename ../../images/buffer-view_ps.png
