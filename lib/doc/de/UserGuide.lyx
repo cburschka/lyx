@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 410
+\lyxformat 411
 \begin_document
 \begin_header
 \textclass scrbook
@@ -51,6 +51,7 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language ngerman
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
@@ -137,14 +138,14 @@ vom LyX-Team
 \size normal
 
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Übersetzung und Bearbeitung : Hartmut Haase (
 \noun on
 HHa
 \noun default
-), Uwe Stöhr
+, bis März 2010), Uwe Stöhr
 \end_layout
 
 \end_inset
@@ -25427,7 +25428,8 @@ iche Größen:
 
 \begin_layout Standard
 Man kann viele teilweise gefüllte Mathed-Strukturen wie diese Matrix verlassen:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left(\begin{array}{ccc}
 \lambda_{1}\\
  & \ddots\\
@@ -25642,7 +25644,8 @@ Mathe-Werkzeugleiste
  einen Standardbruch erzeugen.
  Jede mathematische Struktur kann in einen Bruch geschrieben werden, wie
  dieses Beispiel zeigt:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left[\frac{1}{\left(\begin{array}{cc}
 2 & 3\\
 4 & 5
@@ -25744,7 +25747,8 @@ Die Summen- und Integralzeichen
 \end_inset
 
 , bei abgesetzten Formeln hingegen über und unter dem Summenzeichen: 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \sum_{n=1}^{\infty}\frac{x^{n}}{n}=\ln\left(\frac{1}{1-x}\right).
 \]
 
@@ -25756,7 +25760,8 @@ Bei Integralen werden die Grenzen immer neben dem Integralzeichen platziert
 \end_inset
 
 , bei abgesetzten Formeln sieht es so aus:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \int_{-\infty}^{\infty}\frac{dx}{1+x^{2}}=\pi.
 \]
 
@@ -25777,7 +25782,8 @@ L
  Wie die Änderung genau aussieht, hängt vom Zeichen ab.
  Einige andere mathematische Ausdrücke besitzen diese Automatik-Funktion
  auch, wie 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \lim_{x\rightarrow\infty}f(x),
 \]
 
@@ -26819,7 +26825,8 @@ sint
 \end_inset
 
  oder darunter wie hier:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \lim_{x\rightarrow0}f(x)=L.
 \]
 
@@ -27332,7 +27339,8 @@ Es gibt in LyX mehrere Klammerarten.
  benutzen, insbesondere, wenn Sie große Strukturen wie Matrizen oder Brüche
  in Klammern setzen wollen, oder wenn Sie mehrere Klammernschichten haben.
  So zum Beispiel würden Sie Klammern um eine Matrix setzen:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left[\begin{array}{cc}
 1 & 2\\
 3 & 4
@@ -27356,14 +27364,16 @@ reference "Matrizen-mehrzeilige-Gleichungen"
  steht ausführlich beschrieben, wie man das im Einzelnen macht.
  Auch erkennt man mehrere Klammernschichten besser bei Scheußlichkeiten
  wie hier: 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}\label{eq:Bruch}
 \end{equation}
 
 \end_inset
 
 oder hier:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 f\left(g\left(h\left(k\left(l\left(x\right)\right)\right)\right)\right).
 \]
 
@@ -27491,7 +27501,8 @@ x^(y^z)=x^y^z
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 x^{yz} & \mathrm{ist}\,\mathrm{anders\, als} & x^{y^{z}}
 \end{eqnarray*}
 
@@ -27579,7 +27590,8 @@ Mathe-Matrix
 \family default
  öffnet, in dem Sie verschiedene Optionen setzen können.
  Hier ist ein Beispiel:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left(\begin{array}{ccc}
 1 & 2 & 3\\
 4 & 5 & 6\\
@@ -27702,7 +27714,8 @@ nicht
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \begin{array}{lcr}
 diese & diese & diese\\
 Spalte & Spalte & Spalte\\
@@ -27734,7 +27747,8 @@ cases
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 f(x) & := & \begin{cases}
 \frac{1}{q} & \mathrm{f}\ddot{\mathrm{u}}\mathrm{r}\, x=\frac{p}{q}\,(\mathrm{p},\,\mathrm{q}\,\,\mathrm{ganzzahlig})\\
 0 & \mathrm{falls}\, x\,\mathrm{irrational}\,\mathrm{ist}
@@ -27797,7 +27811,8 @@ Tab
 \family default
 -Taste bewegen können.
  Hier ist ein Beispiel:
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 3 & = & 1+2\\
 4+5 & = & 9
 \end{eqnarray*}
@@ -27919,14 +27934,16 @@ name "Gleichungen-numerieren-markieren"
 \begin_layout Standard
 Mit LyX ist es sehr einfach, Gleichungen zu nummerieren.
  Um eine Gleichung wie 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 1+2=3
 \]
 
 \end_inset
 
 in eine nummerierte
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 1+2=3\label{eq:first-eqn}
 \end{equation}
 
@@ -27958,7 +27975,8 @@ N
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 1+1=2.
 \end{equation}
 
@@ -28005,7 +28023,8 @@ reference "eq:fourth-eqn"
 \end_inset
 
 ).
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 1 & = & 3-2\\
 2 & = & 4-2\\
 4 & \leq & 7.
@@ -28033,7 +28052,8 @@ N
  schaltet man die Nummerierung aller Zeilen der mehrzeiligen Formel an und
  aus.
  
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 1 & = & 4-3\label{eq:fourth-eqn}\\
 2 & = & 7-5\\
 1 & = & e^{2\pi i}\nonumber \\
@@ -28913,7 +28933,8 @@ text
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 f(x)=\begin{array}{rl}
 x & \textrm{wenn ich es sage}\\
 -x & \textrm{sonst}
@@ -29073,7 +29094,8 @@ reference "eq:Bruch"
 
 \begin_layout Standard
 \noindent
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \frac{1}{\left(1+\left({\displaystyle \frac{1}{1+{\displaystyle \left(\frac{1}{1+x}\right)}}}\right)\right)}
 \]
 
@@ -33085,7 +33107,8 @@ Antwort{\SpecialChar \ldots{}
 Frage
 \family default
 -Teil erscheint:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 x^{2}-2x-2\Rightarrow\Frage{x_{1}}\Antwort{x_{2}}=1\Frage{+\sqrt{3}}\Antwort{-\sqrt{3}}.
 \]
 
@@ -37177,6 +37200,103 @@ Ansicht
 PDF (pdflatex)
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+Wenn Sie sich beim Dateinamen eines Bildes verschrieben haben oder eine
+ 
+\family typewriter
+.lyx
+\family default
+-Datei ohne die zugehörigen Bilder bekommen haben, wird 
+\family typewriter
+pdflatex
+\family default
+ die Arbeit verweigern.
+ Sie haben dann mehrere Möglichkeiten, sich doch eine Druckvorschau anzusehen:
+\end_layout
+
+\begin_layout Itemize
+Sie weichen auf 
+\family sans
+Ansicht
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+DVI
+\family default
+ oder
+\family sans
+ Ansicht
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Postscript
+\family default
+ aus.
+\end_layout
+
+\begin_layout Itemize
+Sie fügen in den LaTeX-Vorspann des Dokumentes folgendes ein:
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+
+\backslash
+let
+\backslash
+oldincludegraphics
+\backslash
+includegraphics 
+\backslash
+renewcommand
+\backslash
+includegraphics[2][]{%    
+\backslash
+IfFileExists{#2}{
+\backslash
+oldincludegraphics[#1]{#2}}{
+\backslash
+fbox{Bild nicht da!}}}
+\end_layout
+
+\begin_layout Itemize
+Sie fügen in den LaTeX-Vorspann des Dokumentes folgendes ein:
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+
+\backslash
+setkeys{Gin}{width=1cm,height=1cm}
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+Vorsicht
+\emph default
+: das überschreibt die nicht vorhandenen Größenangaben für alle Bilder im
+ Dokument.
+ 
+\end_layout
+
+\begin_layout Itemize
+Sie können für die nicht vorhandenen Bilder Breite 
+\emph on
+und
+\emph default
+ Höhe festlegen.
+ Dann wird ein Platzhalterkästchen in dieser Größe gezeichnet.
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 \begin_inset Graphics
 	filename ../../images/buffer-update_pdf2.png
