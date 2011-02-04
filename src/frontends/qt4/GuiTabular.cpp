@@ -49,30 +49,30 @@ GuiTabular::GuiTabular(QWidget * parent)
 	setupUi(this);
 
 	tabularWidthED->setValidator(unsignedLengthValidator(tabularWidthED));
-	widthED->setValidator(unsignedLengthValidator(widthED));
+	columnWidthED->setValidator(unsignedLengthValidator(columnWidthED));
 	multirowOffsetED->setValidator(new LengthValidator(multirowOffsetED));
 	topspaceED->setValidator(new LengthValidator(topspaceED));
 	bottomspaceED->setValidator(new LengthValidator(bottomspaceED));
 	interlinespaceED->setValidator(new LengthValidator(interlinespaceED));
 
-	tabularWidthUnitCB->setCurrentItem(Length::defaultUnit());
-	widthUnitCB->setCurrentItem(Length::defaultUnit());
-	multirowOffsetUnitCB->setCurrentItem(Length::defaultUnit());
-	topspaceUnitCB->setCurrentItem(Length::defaultUnit());
-	bottomspaceUnitCB->setCurrentItem(Length::defaultUnit());
-	interlinespaceUnitCB->setCurrentItem(Length::defaultUnit());
+	tabularWidthUnitLC->setCurrentItem(Length::defaultUnit());
+	columnWidthUnitLC->setCurrentItem(Length::defaultUnit());
+	multirowOffsetUnitLC->setCurrentItem(Length::defaultUnit());
+	topspaceUnitLC->setCurrentItem(Length::defaultUnit());
+	bottomspaceUnitLC->setCurrentItem(Length::defaultUnit());
+	interlinespaceUnitLC->setCurrentItem(Length::defaultUnit());
 
-	connect(topspaceED, SIGNAL(editingFinished()),
+	connect(topspaceED, SIGNAL(textEdited(const QString &)),
 		this, SLOT(checkEnabled()));
-	connect(topspaceUnitCB, SIGNAL(selectionChanged(lyx::Length::UNIT)),
+	connect(topspaceUnitLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(checkEnabled()));
-	connect(bottomspaceED, SIGNAL(editingFinished()),
+	connect(bottomspaceED, SIGNAL(textEdited(const QString &)),
 		this, SLOT(checkEnabled()));
-	connect(bottomspaceUnitCB, SIGNAL(selectionChanged(lyx::Length::UNIT)),
+	connect(bottomspaceUnitLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(checkEnabled()));
-	connect(interlinespaceED, SIGNAL(editingFinished()),
+	connect(interlinespaceED, SIGNAL(textEdited(const QString &)),
 		this, SLOT(checkEnabled()));
-	connect(interlinespaceUnitCB, SIGNAL(selectionChanged(lyx::Length::UNIT)),
+	connect(interlinespaceUnitLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(checkEnabled()));
 	connect(booktabsRB, SIGNAL(clicked(bool)),
 		this, SLOT(checkEnabled()));
@@ -82,17 +82,17 @@ GuiTabular::GuiTabular(QWidget * parent)
 		this, SLOT(borderSet_clicked()));
 	connect(borderUnsetPB, SIGNAL(clicked()),
 		this, SLOT(borderUnset_clicked()));
-	connect(hAlignCB, SIGNAL(activated(int)),
+	connect(hAlignCO, SIGNAL(activated(int)),
 		this, SLOT(checkEnabled()));
-	connect(vAlignCB, SIGNAL(activated(int)),
+	connect(vAlignCO, SIGNAL(activated(int)),
 		this, SLOT(checkEnabled()));
 	connect(multicolumnCB, SIGNAL(clicked()),
 		this, SLOT(checkEnabled()));
 	connect(multirowCB, SIGNAL(clicked()),
 		this, SLOT(checkEnabled()));
-	connect(multirowOffsetED, SIGNAL(editingFinished()),
+	connect(multirowOffsetED, SIGNAL(textEdited(const QString &)),
 		this, SLOT(checkEnabled()));
-	connect(multirowOffsetUnitCB, SIGNAL(selectionChanged(lyx::Length::UNIT)),
+	connect(multirowOffsetUnitLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(checkEnabled()));
 	connect(newpageCB, SIGNAL(clicked()),
 		this, SLOT(checkEnabled()));
@@ -128,9 +128,9 @@ GuiTabular::GuiTabular(QWidget * parent)
 		this, SLOT(checkEnabled()));
 	connect(specialAlignmentED, SIGNAL(editingFinished()),
 		this, SLOT(checkEnabled()));
-	connect(widthED, SIGNAL(editingFinished()),
+	connect(columnWidthED, SIGNAL(textEdited(const QString &)),
 		this, SLOT(checkEnabled()));
-	connect(widthUnitCB, SIGNAL(selectionChanged(lyx::Length::UNIT)),
+	connect(columnWidthUnitLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(checkEnabled()));
 	connect(borders, SIGNAL(topSet(bool)),
 		this, SLOT(checkEnabled()));
@@ -144,7 +144,7 @@ GuiTabular::GuiTabular(QWidget * parent)
 		this, SLOT(checkEnabled()));
 	connect(rotateCellCB, SIGNAL(clicked()),
 		this, SLOT(checkEnabled()));
-	connect(TableAlignCB, SIGNAL(activated(int)),
+	connect(TableAlignCO, SIGNAL(activated(int)),
 		this, SLOT(checkEnabled()));
 	connect(longTabularCB, SIGNAL(clicked()),
 		this, SLOT(checkEnabled()));
@@ -157,16 +157,16 @@ GuiTabular::GuiTabular(QWidget * parent)
 	connect(tabularWidthED, SIGNAL(textEdited(const QString &)),
 		this, SLOT(checkEnabled()));
 
-	decimalPointLE->setInputMask("X; ");
-	decimalPointLE->setMaxLength(1);
+	decimalPointED->setInputMask("X; ");
+	decimalPointED->setMaxLength(1);
 
 	// initialize the length validator
-	addCheckedWidget(widthED, fixedWidthColLA);
+	addCheckedWidget(columnWidthED, columnWidthLA);
 	addCheckedWidget(multirowOffsetED, multirowOffsetLA);
 	addCheckedWidget(topspaceED, topspaceLA);
 	addCheckedWidget(bottomspaceED, bottomspaceLA);
 	addCheckedWidget(interlinespaceED, interlinespaceLA);
-	addCheckedWidget(tabularWidthED, tabularWidthL);
+	addCheckedWidget(tabularWidthED, tabularWidthLA);
 }
 
 
@@ -174,7 +174,7 @@ void GuiTabular::on_topspaceCO_activated(int index)
 {
 	bool const enable = (index == 2);
 	topspaceED->setEnabled(enable);
-	topspaceUnitCB->setEnabled(enable);
+	topspaceUnitLC->setEnabled(enable);
 }
 
 
@@ -182,7 +182,7 @@ void GuiTabular::on_bottomspaceCO_activated(int index)
 {
 	bool const enable = (index == 2);
 	bottomspaceED->setEnabled(enable);
-	bottomspaceUnitCB->setEnabled(enable);
+	bottomspaceUnitLC->setEnabled(enable);
 }
 
 
@@ -190,7 +190,7 @@ void GuiTabular::on_interlinespaceCO_activated(int index)
 {
 	bool const enable = (index == 2);
 	interlinespaceED->setEnabled(enable);
-	interlinespaceUnitCB->setEnabled(enable);
+	interlinespaceUnitLC->setEnabled(enable);
 }
 
 
@@ -198,37 +198,37 @@ void GuiTabular::checkEnabled()
 {
 	// if there is a LaTeX argument, the width and alignment will be overwritten
 	// therefore disable them in this case
-	widthED->setEnabled(specialAlignmentED->text().isEmpty());
+	columnWidthED->setEnabled(specialAlignmentED->text().isEmpty());
 	// if the column has a width, multirows are always left-aligned
 	// therefore disable hAlignCB in this case
-	hAlignCB->setEnabled(!(multirowCB->isChecked()
-		&& !widgetsToLength(widthED, widthUnitCB).empty())
+	hAlignCO->setEnabled(!(multirowCB->isChecked()
+		&& !widgetsToLength(columnWidthED, columnWidthUnitLC).empty())
 		&& specialAlignmentED->text().isEmpty());
-	bool const dalign =
-		hAlignCB->itemData(hAlignCB->currentIndex()).toString() == QString("decimal");
-	decimalPointLE->setEnabled(dalign);
-	decimalL->setEnabled(dalign);
+	bool const dalign = 
+		hAlignCO->itemData(hAlignCO->currentIndex()).toString() == QString("decimal");
+	decimalPointED->setEnabled(dalign);
+	decimalLA->setEnabled(dalign);
 
-	bool const setwidth = TableAlignCB->currentText() == qt_("Middle")
+	bool const setwidth = TableAlignCO->currentText() == qt_("Middle")
 		&& !longTabularCB->isChecked() && !rotateTabularCB->isChecked();
-	tabularWidthL->setEnabled(setwidth);
+	tabularWidthLA->setEnabled(setwidth);
 	tabularWidthED->setEnabled(setwidth);
-	tabularWidthUnitCB->setEnabled(setwidth);
+	tabularWidthUnitLC->setEnabled(setwidth);
 
 	bool const is_tabular_star = !tabularWidthED->text().isEmpty();
 	rotateTabularCB->setDisabled(is_tabular_star);
 
-	vAlignCB->setEnabled(!multirowCB->isChecked()
-		&& !widgetsToLength(widthED, widthUnitCB).empty()
+	vAlignCO->setEnabled(!multirowCB->isChecked()
+		&& !widgetsToLength(columnWidthED, columnWidthUnitLC).empty()
 		&& specialAlignmentED->text().isEmpty());
 
 	topspaceED->setEnabled(topspaceCO->currentIndex() == 2);
 	topspaceED->setEnabled(topspaceCO->currentIndex() == 2);
-	topspaceUnitCB->setEnabled(topspaceCO->currentIndex() == 2);
+	topspaceUnitLC->setEnabled(topspaceCO->currentIndex() == 2);
 	bottomspaceED->setEnabled(bottomspaceCO->currentIndex() == 2);
-	bottomspaceUnitCB->setEnabled(bottomspaceCO->currentIndex() == 2);
+	bottomspaceUnitLC->setEnabled(bottomspaceCO->currentIndex() == 2);
 	interlinespaceED->setEnabled(interlinespaceCO->currentIndex() == 2);
-	interlinespaceUnitCB->setEnabled(interlinespaceCO->currentIndex() == 2);
+	interlinespaceUnitLC->setEnabled(interlinespaceCO->currentIndex() == 2);
 
 	// setting as longtable is not allowed when table is inside a float
 	longTabularCB->setEnabled(!is_tabular_star && funcEnabled(Tabular::SET_LONGTABULAR));
@@ -237,9 +237,8 @@ void GuiTabular::checkEnabled()
 	newpageCB->setEnabled(longtabular);
 	alignmentGB->setEnabled(longtabular);
 	// longtables and tabular* cannot have a vertical alignment
-	TableAlignCB->setDisabled(is_tabular_star || longtabular);
+	TableAlignLA->setDisabled(is_tabular_star || longtabular);
 	TableAlignCO->setDisabled(is_tabular_star || longtabular);
-	TableAlignCB->setDisabled(is_tabular_star || longtabular);
 
 	// FIXME: This Dialog is really horrible, disabling/enabling a checkbox
 	// depending on the cursor position is very very unintuitive...
@@ -289,7 +288,7 @@ void GuiTabular::checkEnabled()
 	multicolumnCB->setEnabled(funcEnabled(Tabular::MULTICOLUMN));
 	multirowCB->setEnabled(funcEnabled(Tabular::MULTIROW));
 	multirowOffsetED->setEnabled(multirowCB->isChecked());
-	multirowOffsetUnitCB->setEnabled(multirowCB->isChecked());
+	multirowOffsetUnitLC->setEnabled(multirowCB->isChecked());
 
 	changed();
 }
@@ -331,7 +330,7 @@ void GuiTabular::setHAlign(string & param_str) const
 	Tabular::Feature num = Tabular::ALIGN_LEFT;
 	Tabular::Feature multi_num = Tabular::M_ALIGN_LEFT;
 	string const align =
-		fromqstr(hAlignCB->itemData(hAlignCB->currentIndex()).toString());
+		fromqstr(hAlignCO->itemData(hAlignCO->currentIndex()).toString());
 	if (align == "left") {
 		num = Tabular::ALIGN_LEFT;
 		multi_num = Tabular::M_ALIGN_LEFT;
@@ -358,7 +357,7 @@ void GuiTabular::setHAlign(string & param_str) const
 
 void GuiTabular::setVAlign(string & param_str) const
 {
-	int const align = vAlignCB->currentIndex();
+	int const align = vAlignCO->currentIndex();
 	enum VALIGN { TOP, MIDDLE, BOTTOM };
 	VALIGN v = TOP;
 
@@ -394,7 +393,7 @@ void GuiTabular::setVAlign(string & param_str) const
 
 void GuiTabular::setTableAlignment(string & param_str) const
 {
-	int const align = TableAlignCB->currentIndex();
+	int const align = TableAlignCO->currentIndex();
 	switch (align) {
 		case 0: setParam(param_str, Tabular::TABULAR_VALIGN_TOP);
 			break;
@@ -412,7 +411,7 @@ docstring GuiTabular::dialogToParams() const
 	string param_str = "tabular";
 
 	// table width
-	string tabwidth = widgetsToLength(tabularWidthED, tabularWidthUnitCB);
+	string tabwidth = widgetsToLength(tabularWidthED, tabularWidthUnitLC);
 	if (tabwidth.empty())
 		tabwidth = "0pt";
 	setParam(param_str, Tabular::SET_TABULAR_WIDTH, tabwidth);
@@ -420,7 +419,7 @@ docstring GuiTabular::dialogToParams() const
 	// apply the fixed width values
 	// this must be done before applying the column alignment
 	// because its value influences the alignment of multirow cells
-	string width = widgetsToLength(widthED, widthUnitCB);
+	string width = widgetsToLength(columnWidthED, columnWidthUnitLC);
 	if (width.empty())
 		width = "0pt";
 	if (multicolumnCB->isChecked())
@@ -432,7 +431,7 @@ docstring GuiTabular::dialogToParams() const
 	setHAlign(param_str);
 
 	// SET_DECIMAL_POINT must come after setHAlign() (ALIGN_DECIMAL)
-	string decimal_point = fromqstr(decimalPointLE->text());
+	string decimal_point = fromqstr(decimalPointED->text());
 	if (decimal_point.empty())
 		decimal_point = lyxrc.default_decimal_point;
 	setParam(param_str, Tabular::SET_DECIMAL_POINT, decimal_point);
@@ -456,7 +455,7 @@ docstring GuiTabular::dialogToParams() const
 		case 2:
 			if (!topspaceED->text().isEmpty())
 				setParam(param_str, Tabular::SET_TOP_SPACE,
-					 widgetsToLength(topspaceED, topspaceUnitCB));
+					 widgetsToLength(topspaceED, topspaceUnitLC));
 			break;
 	}
 
@@ -472,7 +471,7 @@ docstring GuiTabular::dialogToParams() const
 			if (!bottomspaceED->text().isEmpty())
 				setParam(param_str, Tabular::SET_BOTTOM_SPACE,
 					widgetsToLength(bottomspaceED,
-							bottomspaceUnitCB));
+							bottomspaceUnitLC));
 			break;
 	}
 
@@ -488,7 +487,7 @@ docstring GuiTabular::dialogToParams() const
 			if (!interlinespaceED->text().isEmpty())
 				setParam(param_str, Tabular::SET_INTERLINE_SPACE,
 					widgetsToLength(interlinespaceED,
-							interlinespaceUnitCB));
+							interlinespaceUnitLC));
 			break;
 	}
 
@@ -526,7 +525,7 @@ docstring GuiTabular::dialogToParams() const
 		setParam(param_str, Tabular::UNSET_MULTICOLUMN);
 
 	// apply the multirow offset
-	string mroffset = widgetsToLength(multirowOffsetED, multirowOffsetUnitCB);
+	string mroffset = widgetsToLength(multirowOffsetED, multirowOffsetUnitLC);
 	if (mroffset.empty())
 		mroffset = "0pt";
 	if (multirowCB->isChecked())
@@ -702,7 +701,7 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	if (tabwidth.zero())
 		tabularWidthED->clear();
 	else
-		lengthToWidgets(tabularWidthED, tabularWidthUnitCB,
+		lengthToWidgets(tabularWidthED, tabularWidthUnitLC,
 			tabwidth.asString(), default_unit);
 
 	Length pwidth;
@@ -718,10 +717,10 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	}
 	string colwidth;
 	if (pwidth.zero())
-		widthED->clear();
+		columnWidthED->clear();
 	else {
 		colwidth = pwidth.asString();
-		lengthToWidgets(widthED, widthUnitCB,
+		lengthToWidgets(columnWidthED, columnWidthUnitLC,
 			colwidth, default_unit);
 	}
 	Length mroffset;
@@ -732,7 +731,7 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 		multirowOffsetED->clear();
 	else {
 		offset = mroffset.asString();
-		lengthToWidgets(multirowOffsetED, multirowOffsetUnitCB,
+		lengthToWidgets(multirowOffsetED, multirowOffsetUnitLC,
 			offset, default_unit);
 	}
 	specialAlignmentED->setText(toqstr(special));
@@ -750,7 +749,7 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	} else {
 		topspaceCO->setCurrentIndex(2);
 		lengthToWidgets(topspaceED,
-				topspaceUnitCB,
+				topspaceUnitLC,
 				tabular.row_info[row].top_space.asString(),
 				default_unit);
 	}
@@ -763,7 +762,7 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	} else {
 		bottomspaceCO->setCurrentIndex(2);
 		lengthToWidgets(bottomspaceED,
-				bottomspaceUnitCB,
+				bottomspaceUnitLC,
 				tabular.row_info[row].bottom_space.asString(),
 				default_unit);
 	}
@@ -776,19 +775,19 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	} else {
 		interlinespaceCO->setCurrentIndex(2);
 		lengthToWidgets(interlinespaceED,
-				interlinespaceUnitCB,
+				interlinespaceUnitLC,
 				tabular.row_info[row].interline_space.asString(),
 				default_unit);
 	}
 
-	hAlignCB->clear();
-	hAlignCB->addItem(qt_("Left"), toqstr("left"));
-	hAlignCB->addItem(qt_("Center"), toqstr("center"));
-	hAlignCB->addItem(qt_("Right"), toqstr("right"));
+	hAlignCO->clear();
+	hAlignCO->addItem(qt_("Left"), toqstr("left"));
+	hAlignCO->addItem(qt_("Center"), toqstr("center"));
+	hAlignCO->addItem(qt_("Right"), toqstr("right"));
 	if (!multicol && !pwidth.zero())
-		hAlignCB->addItem(qt_("Justified"), toqstr("justified"));
+		hAlignCO->addItem(qt_("Justified"), toqstr("justified"));
 	if (!multicol)
-		hAlignCB->addItem(qt_("At Decimal Separator"), toqstr("decimal"));
+		hAlignCO->addItem(qt_("At Decimal Separator"), toqstr("decimal"));
 
 	string align;
 	switch (tabular.getAlignment(cell)) {
@@ -817,13 +816,13 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 			// we should never end up here
 			break;
 	}
-	hAlignCB->setCurrentIndex(hAlignCB->findData(toqstr(align)));
+	hAlignCO->setCurrentIndex(hAlignCO->findData(toqstr(align)));
 
 	//
 	QString decimal_point = toqstr(tabular.column_info[col].decimal_point);
 	if (decimal_point.isEmpty())
 		decimal_point = toqstr(from_utf8(lyxrc.default_decimal_point));
-	decimalPointLE->setText(decimal_point);
+	decimalPointED->setText(decimal_point);
 
 	int valign = 0;
 	switch (tabular.getVAlignment(cell)) {
@@ -842,7 +841,7 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	}
 	if (pwidth.zero())
 		valign = 0;
-	vAlignCB->setCurrentIndex(valign);
+	vAlignCO->setCurrentIndex(valign);
 
 	int tableValign = 1;
 	switch (tabular.tabular_valignment) {
@@ -859,7 +858,7 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 		tableValign = 0;
 		break;
 	}
-	TableAlignCB->setCurrentIndex(tableValign);
+	TableAlignCO->setCurrentIndex(tableValign);
 
 	if (!tabular.is_long_tabular) {
 		headerStatusCB->setChecked(false);
@@ -884,7 +883,7 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 		return;
 	} else {
 		// longtables cannot have a vertical alignment
-		TableAlignCB->setCurrentIndex(Tabular::LYX_VALIGN_MIDDLE);
+		TableAlignCO->setCurrentIndex(Tabular::LYX_VALIGN_MIDDLE);
 	}
 	switch (tabular.longtabular_alignment) {
 	case Tabular::LYX_LONGTABULAR_ALIGN_LEFT:

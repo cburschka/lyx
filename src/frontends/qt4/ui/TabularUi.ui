@@ -42,17 +42,17 @@
          </property>
          <layout class="QGridLayout" name="gridLayout">
           <item row="0" column="0">
-           <widget class="QLabel" name="hAlignCO">
+           <widget class="QLabel" name="hAlignLA">
             <property name="text">
              <string>&amp;Horizontal alignment:</string>
             </property>
             <property name="buddy">
-             <cstring>hAlignCB</cstring>
+             <cstring>hAlignCO</cstring>
             </property>
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QComboBox" name="hAlignCB">
+           <widget class="QComboBox" name="hAlignCO">
             <property name="toolTip">
              <string>Horizontal alignment in column</string>
             </property>
@@ -102,7 +102,7 @@
           <item row="0" column="3" colspan="2">
            <layout class="QHBoxLayout" name="horizontalLayout">
             <item>
-             <widget class="QLabel" name="decimalL">
+             <widget class="QLabel" name="decimalLA">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -110,12 +110,12 @@
                <string>&amp;Decimal separator:</string>
               </property>
               <property name="buddy">
-               <cstring>decimalPointLE</cstring>
+               <cstring>decimalPointED</cstring>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="decimalPointLE">
+             <widget class="QLineEdit" name="decimalPointED">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -148,19 +148,19 @@
            </layout>
           </item>
           <item row="1" column="0">
-           <widget class="QLabel" name="fixedWidthColLA">
+           <widget class="QLabel" name="columnWidthLA">
             <property name="text">
              <string>&amp;Width:</string>
             </property>
             <property name="buddy">
-             <cstring>widthED</cstring>
+             <cstring>columnWidthED</cstring>
             </property>
            </widget>
           </item>
           <item row="1" column="1" colspan="3">
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
-             <widget class="QLineEdit" name="widthED">
+             <widget class="QLineEdit" name="columnWidthED">
               <property name="enabled">
                <bool>true</bool>
               </property>
@@ -173,7 +173,7 @@
              </widget>
             </item>
             <item>
-             <widget class="LengthCombo" name="widthUnitCB"/>
+             <widget class="LengthCombo" name="columnWidthUnitLC"/>
             </item>
            </layout>
           </item>
@@ -191,17 +191,17 @@
            </spacer>
           </item>
           <item row="2" column="0">
-           <widget class="QLabel" name="vAlignCO">
+           <widget class="QLabel" name="vAlignLA">
             <property name="text">
              <string>&amp;Vertical alignment in row:</string>
             </property>
             <property name="buddy">
-             <cstring>vAlignCB</cstring>
+             <cstring>vAlignCO</cstring>
             </property>
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="QComboBox" name="vAlignCB">
+           <widget class="QComboBox" name="vAlignCO">
             <property name="toolTip">
              <string>Specifies the vertical alignment of this cell in relation to the baseline of the row.</string>
             </property>
@@ -262,7 +262,7 @@
                <string>&amp;Vertical Offset:</string>
               </property>
               <property name="buddy">
-               <cstring>widthED</cstring>
+               <cstring>columnWidthED</cstring>
               </property>
              </widget>
             </item>
@@ -280,7 +280,7 @@
              </widget>
             </item>
             <item row="0" column="2">
-             <widget class="LengthCombo" name="multirowOffsetUnitCB"/>
+             <widget class="LengthCombo" name="multirowOffsetUnitLC"/>
             </item>
            </layout>
           </item>
@@ -333,7 +333,7 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
           <item row="1" column="0">
-           <widget class="QLabel" name="tabularWidthL">
+           <widget class="QLabel" name="tabularWidthLA">
             <property name="text">
              <string>Table w&amp;idth:</string>
             </property>
@@ -343,23 +343,23 @@
            </widget>
           </item>
           <item row="1" column="2">
-           <widget class="LengthCombo" name="tabularWidthUnitCB"/>
+           <widget class="LengthCombo" name="tabularWidthUnitLC"/>
           </item>
           <item row="1" column="1">
            <widget class="QLineEdit" name="tabularWidthED"/>
           </item>
           <item row="2" column="0">
-           <widget class="QLabel" name="TableAlignCO">
+           <widget class="QLabel" name="TableAlignLA">
             <property name="text">
              <string>Verti&amp;cal alignment:</string>
             </property>
             <property name="buddy">
-             <cstring>vAlignCB</cstring>
+             <cstring>vAlignCO</cstring>
             </property>
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="QComboBox" name="TableAlignCB">
+           <widget class="QComboBox" name="TableAlignCO">
             <property name="toolTip">
              <string>Vertical alignment of the table</string>
             </property>
@@ -1028,7 +1028,7 @@
            <widget class="QLineEdit" name="topspaceED"/>
           </item>
           <item row="0" column="3">
-           <widget class="LengthCombo" name="topspaceUnitCB"/>
+           <widget class="LengthCombo" name="topspaceUnitLC"/>
           </item>
           <item row="0" column="1">
            <widget class="QComboBox" name="topspaceCO">
@@ -1069,7 +1069,7 @@
            </widget>
           </item>
           <item row="1" column="3">
-           <widget class="LengthCombo" name="bottomspaceUnitCB"/>
+           <widget class="LengthCombo" name="bottomspaceUnitLC"/>
           </item>
           <item row="1" column="2">
            <widget class="QLineEdit" name="bottomspaceED"/>
@@ -1117,7 +1117,7 @@
            </widget>
           </item>
           <item row="2" column="3">
-           <widget class="LengthCombo" name="interlinespaceUnitCB"/>
+           <widget class="LengthCombo" name="interlinespaceUnitLC"/>
           </item>
          </layout>
         </widget>
@@ -1512,19 +1512,19 @@
  </customwidgets>
  <tabstops>
   <tabstop>TabWidget</tabstop>
-  <tabstop>hAlignCB</tabstop>
-  <tabstop>decimalPointLE</tabstop>
-  <tabstop>widthED</tabstop>
-  <tabstop>widthUnitCB</tabstop>
-  <tabstop>vAlignCB</tabstop>
+  <tabstop>hAlignCO</tabstop>
+  <tabstop>decimalPointED</tabstop>
+  <tabstop>columnWidthED</tabstop>
+  <tabstop>columnWidthUnitLC</tabstop>
+  <tabstop>vAlignCO</tabstop>
   <tabstop>multicolumnCB</tabstop>
   <tabstop>multirowCB</tabstop>
   <tabstop>multirowOffsetED</tabstop>
-  <tabstop>multirowOffsetUnitCB</tabstop>
+  <tabstop>multirowOffsetUnitLC</tabstop>
   <tabstop>rotateCellCB</tabstop>
   <tabstop>tabularWidthED</tabstop>
-  <tabstop>tabularWidthUnitCB</tabstop>
-  <tabstop>TableAlignCB</tabstop>
+  <tabstop>tabularWidthUnitLC</tabstop>
+  <tabstop>TableAlignCO</tabstop>
   <tabstop>rotateTabularCB</tabstop>
   <tabstop>specialAlignmentED</tabstop>
   <tabstop>borderSetPB</tabstop>
@@ -1533,13 +1533,13 @@
   <tabstop>booktabsRB</tabstop>
   <tabstop>topspaceCO</tabstop>
   <tabstop>topspaceED</tabstop>
-  <tabstop>topspaceUnitCB</tabstop>
+  <tabstop>topspaceUnitLC</tabstop>
   <tabstop>bottomspaceCO</tabstop>
   <tabstop>bottomspaceED</tabstop>
-  <tabstop>bottomspaceUnitCB</tabstop>
+  <tabstop>bottomspaceUnitLC</tabstop>
   <tabstop>interlinespaceCO</tabstop>
   <tabstop>interlinespaceED</tabstop>
-  <tabstop>interlinespaceUnitCB</tabstop>
+  <tabstop>interlinespaceUnitLC</tabstop>
   <tabstop>longTabularCB</tabstop>
   <tabstop>headerStatusCB</tabstop>
   <tabstop>headerBorderAboveCB</tabstop>
