@@ -163,6 +163,7 @@ def main(argv):
     if not os.path.exists(lyxfile):
         error('File "%s" not found.' % lyxfile)
 
+    outdir = ""
     if len(argv) == 3:
         outdir = argv[2]
         if not os.path.isdir(outdir):
