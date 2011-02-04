@@ -701,7 +701,7 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	if (tabwidth.zero())
 		tabularWidthED->clear();
 	else
-		lengthToWidgets(widthED, widthUnitCB,
+		lengthToWidgets(tabularWidthED, tabularWidthUnitCB,
 			tabwidth.asString(), default_unit);
 
 	Length pwidth;
