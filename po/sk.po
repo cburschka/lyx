@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-02-04 06:59+0100\n"
-"PO-Revision-Date: 2011-02-03 19:42+0100\n"
+"PO-Revision-Date: 2011-02-04 07:13+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -1170,12 +1170,11 @@ msgid "Forma&t:"
 msgstr "F&ormát:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:191
-#, fuzzy
 msgid ""
 "Enable LyX to preview this material; only if graphics previewing is not "
 "disabled at application level (see Preference dialog)."
 msgstr ""
-"Umožniť náhľad tohoto obrázku len v prípade že náhľad obrázkov je v "
+"Umožniť náhľad tohoto materiálu len v prípade že náhľad obrázkov je v "
 "Nastaveniach povolený."
 
 #: src/frontends/qt4/ui/ExternalUi.ui:194
@@ -4569,9 +4568,8 @@ msgid "Table-wide settings"
 msgstr "Nastavenia na celú tabuľku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:338
-#, fuzzy
 msgid "Table w&idth:"
-msgstr "Poznámka tabuľky:"
+msgstr "Šírka tabuľky:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:354
 msgid "Verti&cal alignment:"
