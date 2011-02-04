@@ -1700,7 +1700,7 @@ contributers = [
                  "Re: The LyX licence",
                  "m=110909031824764",
                  "22 February 2005",
-                 u"support for page selection for printing support for number of copies"),
+                 u"support for CVS revision control, native spell checker interface for Mac OS"),
 
      contributer(u"Russ Woodroofe",
                  "paranoia () math ! cornell ! edu",
