@@ -2529,7 +2529,7 @@ convert = [[346, []],
            [409, [convert_use_xetex]],
            [410, []],
            [411, [convert_langpack]],
-           [410, []]
+           [412, []]
 ]
 
 revert =  [[411, [revert_tabularwidth]],
