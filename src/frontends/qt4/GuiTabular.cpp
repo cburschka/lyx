@@ -166,6 +166,7 @@ GuiTabular::GuiTabular(QWidget * parent)
 	addCheckedWidget(topspaceED, topspaceLA);
 	addCheckedWidget(bottomspaceED, bottomspaceLA);
 	addCheckedWidget(interlinespaceED, interlinespaceLA);
+	addCheckedWidget(tabularWidthED, tabularWidthL);
 }
 
 
