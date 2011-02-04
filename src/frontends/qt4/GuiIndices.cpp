@@ -52,6 +52,7 @@ GuiIndices::GuiIndices(QWidget * parent)
 	indicesTW->headerItem()->setText(1, qt_("Label Color"));
 	indicesTW->setSortingEnabled(true);
 
+	// NOTE: we do not provide "custom" here for security reasons!
 	indexCO->clear();
 	indexCO->addItem(qt_("Default"), QString("default"));
 	for (set<string>::const_iterator it = lyxrc.index_alternatives.begin();
@@ -59,7 +60,6 @@ GuiIndices::GuiIndices(QWidget * parent)
 		QString const command = toqstr(*it).left(toqstr(*it).indexOf(" "));
 		indexCO->addItem(command, command);
 	}
-	indexCO->addItem(qt_("Custom"), QString("custom"));
 }
 
 void GuiIndices::update(BufferParams const & params)
@@ -83,11 +83,11 @@ void GuiIndices::update(BufferParams const & params)
 	if (pos != -1) {
 		indexCO->setCurrentIndex(pos);
 		indexOptionsED->setText(toqstr(options).trimmed());
-		indexOptionsLA->setText(qt_("&Options:"));
 	} else {
-		indexCO->setCurrentIndex(indexCO->findData(toqstr("custom")));
-		indexOptionsED->setText(toqstr(params.index_command));
-		indexOptionsLA->setText(qt_("Co&mmand:"));
+		// We reset to default if we do not know the specified compiler
+		// This is for security reasons
+		indexCO->setCurrentIndex(indexCO->findData(toqstr("default")));
+		indexOptionsED->clear();
 	}
 	indexOptionsED->setEnabled(
 		indexCO->currentIndex() != 0);
@@ -146,9 +146,7 @@ void GuiIndices::apply(BufferParams & params) const
 		fromqstr(indexCO->itemData(
 			indexCO->currentIndex()).toString());
 	string const index_options = fromqstr(indexOptionsED->text());
-	if (index_command == "custom")
-		params.index_command = index_options;
-	else if (index_command == "default" || index_options.empty())
+	if (index_command == "default" || index_options.empty())
 		params.index_command = index_command;
 	else
 		params.index_command = index_command + " " + index_options;
@@ -157,12 +155,8 @@ void GuiIndices::apply(BufferParams & params) const
 
 void GuiIndices::on_indexCO_activated(int n)
 {
-	QString const data = indexCO->itemData(n).toString();
-	indexOptionsED->setEnabled(data != "default");
-	if (data == "custom")
-		indexOptionsLA->setText(qt_("Co&mmand:"));
-	else
-		indexOptionsLA->setText(qt_("&Options:"));
+	indexOptionsED->setEnabled(
+		indexCO->itemData(n).toString() != "default");
 	changed();
 }
 

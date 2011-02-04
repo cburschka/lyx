@@ -1066,7 +1066,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 	biblioModule->citeStyleCO->addItem(qt_("Author-year"));
 	biblioModule->citeStyleCO->addItem(qt_("Numerical"));
 	biblioModule->citeStyleCO->setCurrentIndex(0);
-	
+
+	// NOTE: we do not provide "custom" here for security reasons!
 	biblioModule->bibtexCO->clear();
 	biblioModule->bibtexCO->addItem(qt_("Default"), QString("default"));
 	for (set<string>::const_iterator it = lyxrc.bibtex_alternatives.begin();
@@ -1074,7 +1075,6 @@ GuiDocument::GuiDocument(GuiView & lv)
 		QString const command = toqstr(*it).left(toqstr(*it).indexOf(" "));
 		biblioModule->bibtexCO->addItem(command, command);
 	}
-	biblioModule->bibtexCO->addItem(qt_("Custom"), QString("custom"));
 
 
 	// indices
@@ -1904,13 +1904,8 @@ void GuiDocument::languagePackageChanged(int i)
 
 void GuiDocument::bibtexChanged(int n)
 {
-	QString const data =
-		biblioModule->bibtexCO->itemData(n).toString();
-	biblioModule->bibtexOptionsED->setEnabled(data != "default");
-	if (data == "custom")
-		biblioModule->bibtexOptionsLA->setText(qt_("Co&mmand:"));
-	else
-		biblioModule->bibtexOptionsLA->setText(qt_("&Options:"));
+	biblioModule->bibtexOptionsED->setEnabled(
+		biblioModule->bibtexCO->itemData(n).toString() != "default");
 	changed();
 }
 
@@ -2171,9 +2166,7 @@ void GuiDocument::applyView()
 			biblioModule->bibtexCO->currentIndex()).toString());
 	string const bibtex_options =
 		fromqstr(biblioModule->bibtexOptionsED->text());
-	if (bibtex_command == "custom")
-		bp_.bibtex_command = bibtex_options;
-	else if (bibtex_command == "default" || bibtex_options.empty())
+	if (bibtex_command == "default" || bibtex_options.empty())
 		bp_.bibtex_command = bibtex_command;
 	else
 		bp_.bibtex_command = bibtex_command + " " + bibtex_options;
@@ -2610,12 +2603,12 @@ void GuiDocument::paramsToDialog()
 	if (bpos != -1) {
 		biblioModule->bibtexCO->setCurrentIndex(bpos);
 		biblioModule->bibtexOptionsED->setText(toqstr(options).trimmed());
-		biblioModule->bibtexOptionsLA->setText(qt_("&Options:"));
 	} else {
+		// We reset to default if we do not know the specified compiler
+		// This is for security reasons
 		biblioModule->bibtexCO->setCurrentIndex(
-			biblioModule->bibtexCO->findData(toqstr("custom")));
-		biblioModule->bibtexOptionsED->setText(toqstr(bp_.bibtex_command));
-		biblioModule->bibtexOptionsLA->setText(qt_("&Command:"));
+			biblioModule->bibtexCO->findData(toqstr("default")));
+		biblioModule->bibtexOptionsED->clear();
 	}
 	biblioModule->bibtexOptionsED->setEnabled(
 		biblioModule->bibtexCO->currentIndex() != 0);
