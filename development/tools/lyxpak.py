@@ -24,7 +24,7 @@ from sets import Set
 lyx2lyx = None
 
 # Pre-compiled regular expressions.
-re_lyxfile = re.compile("\.lyx$")
+re_extn = re.compile("\.[^.]*$")
 re_input = re.compile(r'^(.*)\\(input|include){(\s*)(\S+)(\s*)}.*$')
 re_package = re.compile(r'^(.*)\\(usepackage){(\s*)(\S+)(\s*)}.*$')
 re_class = re.compile(r'^(\\)(textclass)(\s+)(\S+)$')
@@ -71,7 +71,7 @@ def abspath(name):
 def gather_files(curfile, incfiles):
     " Recursively gather files."
     curdir = os.path.dirname(abspath(curfile))
-    is_lyxfile = re_lyxfile.search(curfile)
+    is_lyxfile = re_extn.search(curfile)
     if is_lyxfile:
         lyx2lyx_cmd = 'python "%s" "%s"' % (lyx2lyx, curfile)
         l2l_status, l2l_stdout = run_cmd(lyx2lyx_cmd)
@@ -156,48 +156,50 @@ def gather_files(curfile, incfiles):
 
 def main(argv):
 
-    if len(argv) >= 2 and len(argv) <= 3:
-        lyxfile = argv[1]
-        if not os.path.exists(lyxfile):
-            error('File "%s" not found.' % lyxfile)
-
-        # Check that it actually is a LyX document
-        input = open(lyxfile, 'rU')
-        line = input.readline()
-        input.close()
-        if not (line and line.startswith('#LyX')):
-            error('File "%s" is not a LyX document.' % lyxfile)
-
-        # Either tar or zip must be available
-        extlist = ['']
-        if os.environ.has_key("PATHEXT"):
-            extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
-        path = string.split(os.environ["PATH"], os.pathsep)
-        archiver, full_path = find_exe(["tar", "zip"], extlist, path)
-
-        if archiver == "tar":
-            ar_cmd = "tar cf"
-            ar_name = re_lyxfile.sub(".tar", abspath(lyxfile))
-            # Archive will be compressed if either gzip or bzip2 are available
-            compress, full_path = find_exe(["gzip", "bzip2"], extlist, path)
-            if compress == "gzip":
-                ext = ".gz"
-            elif compress == "bzip2":
-                ext = ".bz2"
-        elif archiver == "zip":
-            ar_cmd = "zip"
-            ar_name = re_lyxfile.sub(".zip", abspath(lyxfile))
-            compress = None
-        else:
-            error("Unable to find neither tar nor zip.")
-
-        if len(argv) == 3:
-            outdir = argv[2]
-            if not os.path.isdir(outdir):
-                error('Error: "%s" is not a directory.' % outdir)
-            ar_name = os.path.join(abspath(outdir), os.path.basename(ar_name))
-    else:
+    if len(argv) < 2 and len(argv) > 3:
         error(usage(argv[0]))
+
+    lyxfile = argv[1]
+    if not os.path.exists(lyxfile):
+        error('File "%s" not found.' % lyxfile)
+
+    if len(argv) == 3:
+        outdir = argv[2]
+        if not os.path.isdir(outdir):
+            error('Error: "%s" is not a directory.' % outdir)
+
+    # Check that it actually is a LyX document
+    input = open(lyxfile, 'rU')
+    line = input.readline()
+    input.close()
+    if not (line and line.startswith('#LyX')):
+        error('File "%s" is not a LyX document.' % lyxfile)
+
+    # Either tar or zip must be available
+    extlist = ['']
+    if os.environ.has_key("PATHEXT"):
+        extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
+    path = string.split(os.environ["PATH"], os.pathsep)
+    archiver, full_path = find_exe(["tar", "zip"], extlist, path)
+
+    if archiver == "tar":
+        ar_cmd = "tar cf"
+        ar_name = re_extn.sub(".tar", abspath(lyxfile))
+        # Archive will be compressed if either gzip or bzip2 are available
+        compress, full_path = find_exe(["gzip", "bzip2"], extlist, path)
+        if compress == "gzip":
+            ext = ".gz"
+        elif compress == "bzip2":
+            ext = ".bz2"
+    elif archiver == "zip":
+        ar_cmd = "zip"
+        ar_name = re_extn.sub(".zip", abspath(lyxfile))
+        compress = None
+    else:
+        error("Unable to find either tar or zip.")
+
+    if outdir:
+        ar_name = os.path.join(abspath(outdir), os.path.basename(ar_name))
 
     # Try to find the location of the lyx2lyx script
     global lyx2lyx
@@ -205,27 +207,26 @@ def main(argv):
         lyx_exe, full_path = find_exe(["lyxc", "lyx"], extlist, path)
         if lyx_exe == None:
             error('Cannot find the LyX executable in the path.')
-        else:
-            cmd_status, cmd_stdout = run_cmd("%s -version 2>&1" % lyx_exe)
-            if cmd_status != None:
-                error('Cannot query LyX about the lyx2lyx script.')
-            re_msvc = re.compile(r'^(\s*)(Host type:)(\s+)(win32)$')
-            re_sysdir = re.compile(r'^(\s*)(LyX files dir:)(\s+)(\S+)$')
-            lines = cmd_stdout.splitlines()
-            for line in lines:
-                match = re_msvc.match(line)
-                if match:
-                    # The LyX executable was built with MSVC, so the
-                    # "LyX files dir:" line is unusable
-                    basedir = os.path.dirname(os.path.dirname(full_path))
-                    lyx2lyx = os.path.join(basedir, 'Resources', 'lyx2lyx', 'lyx2lyx')
-                    break
-                match = re_sysdir.match(line)
-                if match:
-                    lyx2lyx = os.path.join(match.group(4), 'lyx2lyx', 'lyx2lyx')
-                    break
-            if not os.access(lyx2lyx, os.X_OK):
-                error('Unable to find the lyx2lyx script.')
+        cmd_status, cmd_stdout = run_cmd("%s -version 2>&1" % lyx_exe)
+        if cmd_status != None:
+            error('Cannot query LyX about the lyx2lyx script.')
+        re_msvc = re.compile(r'^(\s*)(Host type:)(\s+)(win32)$')
+        re_sysdir = re.compile(r'^(\s*)(LyX files dir:)(\s+)(\S+)$')
+        lines = cmd_stdout.splitlines()
+        for line in lines:
+            match = re_msvc.match(line)
+            if match:
+                # The LyX executable was built with MSVC, so the
+                # "LyX files dir:" line is unusable
+                basedir = os.path.dirname(os.path.dirname(full_path))
+                lyx2lyx = os.path.join(basedir, 'Resources', 'lyx2lyx', 'lyx2lyx')
+                break
+            match = re_sysdir.match(line)
+            if match:
+                lyx2lyx = os.path.join(match.group(4), 'lyx2lyx', 'lyx2lyx')
+                break
+        if not os.access(lyx2lyx, os.X_OK):
+            error('Unable to find the lyx2lyx script.')
 
     # Initialize the list with the specified LyX file and recursively
     # gather all required files (also from child documents).
@@ -251,7 +252,7 @@ def main(argv):
     # Build the archive command
     ar_cmd = '%s "%s"' % (ar_cmd, ar_name)
     for file in incfiles:
-        print file
+        #print file
         ar_cmd = ar_cmd + ' "' + file + '"'
 
     # Create the archive
