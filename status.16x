@@ -84,6 +84,9 @@ What's new
 
 - Letter class: Support Quote, Quotation and Separator.
 
+- Don't pass the letterpaper option to the geometry package when using
+  default paper format and margins are explicitly set.
+
 
 * USER INTERFACE
 

@@ -1181,6 +1181,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			// default papersize ie PAPER_DEFAULT
 			switch (lyxrc.default_papersize) {
 			case PAPER_DEFAULT: // keep compiler happy
+				break;
 			case PAPER_USLETTER:
 				ods << ",letterpaper";
 				break;
