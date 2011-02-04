@@ -1,4 +1,4 @@
-#LyX 1.6.8svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.9svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -260,7 +260,8 @@ Traduction française : Siegfried Meunier-Guttin-Cluzel
 \end_layout
 
 \begin_layout Plain Layout
-version 1.6.x janvier 2010
+version 1.6.x janvier 2011 (revue J.-P.
+ Chrétien)
 \end_layout
 
 \end_inset
@@ -751,15 +752,15 @@ zgrep %%Bounding x.eps.gz > x.eps.bb
 
 La seconde commande va créer le fichier contenant la description de la boîte
  de délimitation 
-\begin_inset Quotes eld
+\family typewriter
+
+\begin_inset Quotes fld
 \end_inset
 
-
-\family typewriter
 x.eps.bb
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  qui est indispensable pour que LaTeX puisse traiter un fichier compressé.
@@ -943,7 +944,7 @@ Flottant\SpecialChar \menuseparator
 Figure
 \family default
  insèrent un flottant avec l'étiquette 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -955,7 +956,7 @@ Figure
 #:
 \series default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  (# est le numéro réel de l'image).
@@ -1151,11 +1152,11 @@ croisée
  de la barre d'outils.
  Il est important d'utiliser des références pour les flottants de figures
  plutôt que des locutions vagues du genre 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 la figure ci-dessous
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , puisque LaTeX va repositionner la figure dans le document final.
@@ -1328,11 +1329,11 @@ name "fig:Deux-images-déformées"
 
 Deux images déformées.
  Les deux images font partie du groupe de paramétrisation 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 déformés
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -1361,7 +1362,7 @@ name "sec:Image-Formats"
 status collapsed
 
 \begin_layout Plain Layout
-Formats d' images
+Formats d'images
 \end_layout
 
 \end_inset
@@ -1437,7 +1438,7 @@ images
 \begin_inset space ~
 \end_inset
 
-Matricielles
+matricielles les
 \begin_inset space ~
 \end_inset
 
@@ -1450,24 +1451,24 @@ bitmap) l'image est décomposée en une mosaïque de points (ou pixels), souvent
  Elles ne sont pas facilement redimensionnables et on voit apparaître des
  petits carrés quand on utilise des agrandissements trop importants (aspect
  
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 pixellisé
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 ).
  Les formats matriciels les plus connus sont le GIF (
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Graphics Interchange Format
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , avec comme extension de fichier 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -1475,7 +1476,7 @@ Graphics Interchange Format
 .gif
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 )
@@ -1511,11 +1512,11 @@ status collapsed
 \end_inset
 
 , le PNG (
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Portable Network Graphics, extension 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -1523,7 +1524,7 @@ Portable Network Graphics, extension
 .png
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 )
@@ -1559,11 +1560,11 @@ status collapsed
 \end_inset
 
  et le JPG (
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Joint Photographic Expert Group, extension 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -1571,11 +1572,11 @@ Joint Photographic Expert Group, extension
 .jpg
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  ou 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -1583,7 +1584,7 @@ Joint Photographic Expert Group, extension
 .jpeg
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 )
@@ -1651,15 +1652,15 @@ nnement.
 \end_inset
 
 Les principaux formats vectoriels sont le SVG (
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Scalable Vector Graphics
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , extension
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -1667,7 +1668,7 @@ Scalable Vector Graphics
 .svg
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 )
@@ -1703,15 +1704,15 @@ status collapsed
 \end_inset
 
 , l'EPS ( 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 encapsulated PostScript
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , extension
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -1719,7 +1720,7 @@ encapsulated PostScript
 .eps
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 )
@@ -1755,15 +1756,15 @@ status collapsed
 \end_inset
 
 , le PDF (
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Portable Document Format
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , extension
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -1771,7 +1772,7 @@ Portable Document Format
 .pdf
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 )
@@ -1807,15 +1808,15 @@ status collapsed
 \end_inset
 
  et le WMF (
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Windows Metafile
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , extension 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -1823,11 +1824,11 @@ Windows Metafile
 .wfm
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  ou 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -1835,7 +1836,7 @@ Windows Metafile
 .emf
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 )
@@ -1965,7 +1966,7 @@ Tableau
 \begin_inset Newline newline
 \end_inset
 
-Le tableau a implicitementune bordure au dessus et à gauche de chaque case,
+Le tableau a implicitement une bordure au dessus et à gauche de chaque case,
  une à droite de la colonne la plus à droite et une en bas de la rangée
  du bas, qui forment une boîte autour du tableau.
  En plus, la rangée supérieure a aussi une bordure en bas, ce qui fait qu'elle
@@ -2272,7 +2273,7 @@ status open
 \series bold
 Note:
 \series default
- La plupart des visualiseurs DVI ne sont 
+ La plupart des visionneuses DVI ne sont 
 \emph on
 pas
 \emph default
@@ -2368,7 +2369,7 @@ Tableau
 
 long Cet onglet est utilisé pour transformer un tableau en ce que l'on nomme
  un 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -2376,7 +2377,7 @@ long Cet onglet est utilisé pour transformer un tableau en ce que l'on nomme
 tableau long
 \emph default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  qui peut continuer sur plusieurs pages.
@@ -2934,7 +2935,7 @@ Tableau
 \begin_layout Standard
 Le flottant apparaît à l'écran comme une boîte repliable avec une légende
  qui a comme étiquette 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Tableau
@@ -2942,7 +2943,7 @@ Tableau
 \end_inset
 
 #:
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  (où # est le numéro du tableau).
@@ -9623,11 +9624,11 @@ Il peut y avoir des problèmes quand un flottant apparaît sur la page où
  Pour éviter une telle situation, 
 \lang english
 insert a 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 clear page
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  (menu
@@ -9668,7 +9669,7 @@ Implicitement les tableaux ne peuvent être coupés qu'entre deux lignes.
  Si vous avez une cellule avec plusieurs lignes et que vous voulez avoir
  un saut de page à l'intérieur de cette cellule, insérez la commande LaTeX
  de saut de ligne 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -9676,12 +9677,12 @@ Implicitement les tableaux ne peuvent être coupés qu'entre deux lignes.
 
 \backslash
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  en code TeX à l'endroit de la cellule où vous voulez qu'elle soit coupée.
  Avant la commande 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -9689,33 +9690,33 @@ Implicitement les tableaux ne peuvent être coupés qu'entre deux lignes.
 
 \backslash
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , vous devez insérer en code TeX, autant de caractères 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 &
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  qu'il y a de colonnes après la cellule concernée.
  Le caractère 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 &
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  sert à séparer les colonnes d'un tableau.
  Écrivez en code-TeX, après chaque 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 &
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  le contenu des cellules correspondantes et en même temps supprimez le contenu
@@ -9729,11 +9730,11 @@ Après la commande
 
 \backslash
 , insérez autant de caractères 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 &
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  qu'il y a de colonnes avant la colonne traitée.
@@ -9752,7 +9753,7 @@ reference "tab:Tableau-saut-de-page"
  suivie par une autre colonne.
  La commande suivante a donc été insérée en code TeX dans la cellule après
  le mot 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -9760,7 +9761,7 @@ reference "tab:Tableau-saut-de-page"
 Castelchiodato,
 \emph default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 :
@@ -9784,11 +9785,11 @@ newpage
 
 \begin_layout Standard
 Le 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 111
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  dans la troisième colonne de la ligne a été supprimé.
@@ -12731,7 +12732,7 @@ reference "tab:Exemple-tableau-booktabs"
 
 .
  Ce genre de tableau est appelé 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -12739,7 +12740,7 @@ reference "tab:Exemple-tableau-booktabs"
 formel
 \emph default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -13691,7 +13692,7 @@ cmidrule{2-4}
 
 \end_inset
 
-Epaisseur du capteur en µm
+Épaisseur du capteur en µm
 \end_layout
 
 \end_inset
@@ -15207,13 +15208,13 @@ et les valeurs de couleur sont des nombres compris entre 0 et 1, séparés
 
 \begin_layout Standard
 Vous pouvez par exemple définir la couleur 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
 \emph on
 vertfonce
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  dans le préambule avec la ligne
@@ -15228,11 +15229,19 @@ definecolor{vertfonce}{cmyk}{0.5, 0, 1, 0.5}
 \end_layout
 
 \begin_layout Standard
-et la couleur "
+et la couleur 
 \emph on
+
+\begin_inset Quotes fld
+\end_inset
+
 grisclair
 \emph default
-" avec
+
+\begin_inset Quotes frd
+\end_inset
+
+ avec
 \end_layout
 
 \begin_layout Standard
@@ -15307,7 +15316,7 @@ status open
 \series bold
 Note:
 \series default
- Tous les visualiseurs DVI ne sont pas capables d'afficher les couleurs
+ Toutes les visionneuses DVI ne sont pas capables d'afficher les couleurs
  définies par l'utilisateur.
 \end_layout
 
@@ -16348,7 +16357,7 @@ arrayrulewidth}{0.4pt}
 \end_layout
 
 \begin_layout Section
-Personnalisation des Tableaux
+Personnalisation des tableaux
 \begin_inset Index
 status collapsed
 
@@ -16752,7 +16761,7 @@ Si vous utilisez des polices de taille plus grande que la taille normale,
 \backslash
 strut
 \series default
- en code TeX au debut d'une ligne du tableau.
+ en code TeX au début d'une ligne du tableau.
  Le tableau
 \lang english
 
@@ -17973,7 +17982,7 @@ reference "sub:Calculs-multicolonnes"
 \end_inset
 
  peut devenir très pénible si vous avez plusieurs tableaux avec des cellules
- multicolonnes.
+ multi-colonnes.
  Pour vous rendre la vie plus facile, vous pouvez définir dans le préambule
  un format de cellule/colonne, qui puisse être utilisé dans tous les tableaux
  du document.
@@ -18026,7 +18035,7 @@ r
 \end_layout
 
 \begin_layout Standard
-Pour de cellules multicolonnes centrées verticalement et horizontalement
+Pour de cellules multi-colonnes centrées verticalement et horizontalement
  avec une largeur donnée, vous pouvez définir le format de cellule suivant
  :
 \end_layout
@@ -18157,7 +18166,7 @@ Ensuite, vous pouvez entrer
 \begin_layout Standard
 
 \series bold
-S{largeur de la cellule multicolonne}{nombre de colonnes couvertes}
+S{largeur de la cellule multi-colonne}{nombre de colonnes couvertes}
 \end_layout
 
 \begin_layout Standard
@@ -18189,11 +18198,11 @@ hspace{0pt}}c}
 
 \begin_layout Standard
 Le 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 c
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  à la fin crée une colonne de largeur variable dont le texte est centré
@@ -18240,7 +18249,7 @@ M{2.5cm}
 \end_layout
 
 \begin_layout Standard
-pour la première colonne et la multicolonne,
+pour la première colonne et la multi-colonne,
 \end_layout
 
 \begin_layout Standard
@@ -18311,7 +18320,7 @@ motTrèsLongDansUneCellule
 \begin_inset Text
 
 \begin_layout Plain Layout
-multicolonne avec multiligne
+multicolonne avec multi-ligne
 \end_layout
 
 \end_inset
@@ -19532,11 +19541,11 @@ usepackage{arydshln}
 \begin_layout Standard
 Pour faire un filet vertical avec un trait interrompu, mettez deux points
  
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 :
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  avec le caractère décrivant l'alignement horizontal comme paramètre LaTeX
@@ -19561,7 +19570,7 @@ en code TeX comme premier élément de la première cellule de la ligne de
 \end_layout
 
 \begin_layout Standard
-Pour des filets interrompus avec des cellules multicolonnes, utilisez la
+Pour des filets interrompus avec des cellules multi-colonnes, utilisez la
  commande 
 \end_layout
 
@@ -19614,7 +19623,7 @@ reference "tab:Tableau-filets-tirets"
 \end_inset
 
  a été créé en utilisant 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -19622,7 +19631,7 @@ reference "tab:Tableau-filets-tirets"
 :c
 \series default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  comme paramètre LaTeX pour la troisième colonne.
@@ -19784,11 +19793,11 @@ Flottants ! Introduction
 Un flottant est une portion de document, qui peut être associé à une étiquette
  et dont la position n'est pas fixée.
  Il peut 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 flotter
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  d'une page ou deux en avant ou en arrière, pour trouver l'emplacement le
@@ -19861,7 +19870,7 @@ Flottant.
 \family default
  Une boîte va être insérée dans votre document avec par exemple une étiquette
  du genre 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Figure
@@ -19869,7 +19878,7 @@ Figure
 \end_inset
 
 #:
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  (où # est un numéro).
@@ -20103,7 +20112,7 @@ où
 nom
 \family default
  est le mot 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -20111,7 +20120,7 @@ nom
 algorithme
 \emph default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  dans votre langue.
@@ -20167,7 +20176,7 @@ votre
 nom
 \family default
  est la traduction de 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -20175,7 +20184,7 @@ nom
 List of Algorithm
 \emph default
 s
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  dans votre langue.
@@ -20184,11 +20193,11 @@ s
 \begin_layout Standard
 Les flottants d'algorithme ne sont pas numérotés implicitement en suivant
  le schéma 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 chapitre.algorithme
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  comme c'est le cas pour les tableaux dans plusieurs classes de documents.
@@ -20509,19 +20518,19 @@ Flottants ! Numérotation
 \begin_layout Standard
 Les flottant sont soit numérotés indépendemment des sections dans lesquelles
  ils se trouvent, soit en utilisant un format du genre 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 chapitre.numéro
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  ou 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 section.numéro
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -20573,11 +20582,11 @@ roman
 
 \begin_layout Standard
 Pour changer le type de numérotation pour par exemple 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 sous-section.numéro
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , utilisez la commande suivante dans le préambule du document :
@@ -20712,11 +20721,19 @@ Insérer\SpecialChar \menuseparator
  LyX propose comme texte pour l'étiquette les premiers mots de la légendes
  précédés d'un préfixe.
  Ce préfixe dépend du type de flottant, par exemple, pour une figure le
- préfixe sera "
+ préfixe sera 
 \family sans
+
+\begin_inset Quotes fld
+\end_inset
+
 fig:
 \family default
-".
+
+\begin_inset Quotes frd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -20847,11 +20864,11 @@ reference "fig:Deux-images-déformées"
 : affiche le numéro de l'élément entre parenthèses, c'est le style utilisé
  normalement pour faire référence à des formules mathématiques, en particulier
  quand le mot 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Équation
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  est omis : 
@@ -20893,11 +20910,11 @@ page
 \end_inset
 
 : affiche le mot 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 page
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  suivi du numéro de la page sur laquelle se trouve l'élément : 
@@ -20924,11 +20941,11 @@ page
 \end_inset
 
 : affiche le numéro de l'élément, le mot 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 page
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  et le numéro de la page : 
@@ -21003,7 +21020,7 @@ Paquetages LaTeX ! prettyref
  n'imprimera pas le numéro de la page si l'étiquette se trouve sur la page
  précédente, la même page ou la page suivante.
  Vous verrez par exemple un texte du genre 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -21011,7 +21028,7 @@ Paquetages LaTeX ! prettyref
 sur cette page
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  à la place.
@@ -21027,9 +21044,7 @@ page
 
 <page>
 \family default
- 
-\lang english
-will not print anything about the page if the label is on the same page.
+ n'imprimera rien concernant la page si l'étiquette est sur la même page.
 \end_layout
 
 \begin_layout Standard
@@ -21068,14 +21083,14 @@ Paquetages LaTeX ! prettyref
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 fig:
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- est par exempel le raccourci LyX pour les étiquettes dans les légendes
+ est par exemple le raccourci LyX pour les étiquettes dans les légendes
  de figures,.
 \end_layout
 
@@ -21181,11 +21196,11 @@ Paramètres du document
  croisées, en incluant le nom du flottant référencé (ou d'une partie comme
  une section).
  Par exemple pour vous éviter de devoir écrire le mot 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Figure
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  devant chaque référence à une figure.
@@ -21216,7 +21231,7 @@ autoref{#1}}}}
 \begin_layout Standard
 Si vous préférez d'autres noms de référence que ceux qui sont proposés par
  défaut, par exemple vous préférez le nom 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 sec.
@@ -21224,15 +21239,15 @@ sec.
 \end_inset
 
 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
  plutôt que 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 section
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , vous pouvez redéfinir ce nom en insérant ceci dans le préambule:
@@ -21509,7 +21524,7 @@ hypcap
 \series default
  pour tous les types de flottants, mais ce n'est pas recommandé pour des
  raisons de stabilité.
- Pour plus d'information, jetez un coup d'œil au manuel d' 
+ Pour plus d'information, jetez un coup d'œil au manuel de 
 \series bold
 hypcap
 \series default
@@ -21894,11 +21909,11 @@ Prix
  Utilisez cette option le moins souvent possible et seulement quand le document
  est presque prêt à être imprimé.
  En effet, le flottant n'est plus capable de 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 flotter
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , ce qui peut perturber toutes les mises en page.
@@ -21989,7 +22004,7 @@ Paquetages LaTeX ! endfloat
  document dans leurs propres sections.
  À la position d'origine du flottant, une indication textuelle du genre
  
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -22005,7 +22020,7 @@ about here.
 ]
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  est insérée.
@@ -22087,16 +22102,16 @@ Note:
 endfloat
 \series default
  quand la légende contient un 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 ß
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  allemand.
  Utilisez dans ce cas la commande 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -22106,15 +22121,15 @@ endfloat
 ss
 \series default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  en code TeX à la place du 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 ß
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -22229,7 +22244,7 @@ status open
 \series bold
 Note:
 \series default
- Les flottants pivotés ne sont pas affichables par tous les visualiseurs
+ Les flottants pivotés ne sont pas affichables par tous les visionneuses
  DVI.
 \end_layout
 
@@ -23068,7 +23083,7 @@ flottants
 .
  Dans la fenêtre de LyX les légendes apparaissent comme une étiquette comme
  par exemple 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -23076,16 +23091,16 @@ flottants
 Figure #:
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  suivi par le texte de la légende.
  Le 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 #
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  étant remplacé par le numéro de référence réel.
@@ -23287,19 +23302,19 @@ key "caption"
 
 \begin_layout Standard
 Pour changer le nom de l'étiquette, par exemple de 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Figure
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  à 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Image
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , utilisez la commande suivante dans le préambule :
@@ -23327,13 +23342,13 @@ thefigure
  insère le numéro de la figure et
 \series bold
  
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 ~
 \series default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  ajoute une espace insécable.
@@ -24237,7 +24252,7 @@ figure
 table
 \family default
 , le placement peut être 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -24245,11 +24260,11 @@ table
 t
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  pour haut (top), 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -24257,11 +24272,11 @@ t
 c
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  pour centre (center), ou 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -24269,7 +24284,7 @@ c
 b
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  pour bas (bottom).
@@ -25328,14 +25343,14 @@ status collapsed
 
 
 \backslash
-newcounter{MyRepeatFoot}
+newcounter{MaNoteMultiple}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-setcounter{MyRepeatFoot}{
+setcounter{MaNoteMultiple}{
 \backslash
 thefootnote}
 \end_layout
@@ -25395,47 +25410,43 @@ reference "fn:Note-en-bas"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Footnotes in tables are not printed by LaTeX due to technical reasons.
- However there exists another method to print them: Instead of the footnote
- the command 
+Les notes de bas de page dans les tableaux ne sont pas imprimées par LaTeX
+ pour des raisons techniques.
+ Cependant, une autre méthode existe pour cela: au lieu de la note de bas
+ de page LyX, la commande 
 \series bold
 
 \backslash
 footnotemark{}
 \series default
- is inserted as TeX-code.
- The text of the footnote is entered as argument of the TeX-code command
+ doit être insérée en code LaTeX.
+ Le texte de la note doit être saisi en code TeX comme argument de le commande
  
 \series bold
 
 \backslash
 footnotetext
 \series default
- after the table.
+ après le tableau.
 \begin_inset Newline newline
 \end_inset
 
-This was done for the following table with the command
+Ceci a été effectué pour le tableau qui suit avec la commande:
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 footnotetext{
 \series default
-Printed table footnote.
+Note de bas de page imprimable dans un tableau
 \series bold
 }
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="1">
 <features>
@@ -25445,16 +25456,12 @@ Printed table footnote.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-This an example text.
+Ceci est un exemple de texte.
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-This footnote will not be printed!
+Cette note ne sera pas imprimée !
 \end_layout
 
 \end_inset
@@ -25470,9 +25477,7 @@ This footnote will not be printed!
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-This an example text.
+Ceci est un exemple de texte.
 \begin_inset ERT
 status collapsed
 
@@ -25508,7 +25513,7 @@ footnotetext{
 
 \end_inset
 
-Printed table footnote.
+Note de bas de page imprimable dans un tableau.
 \begin_inset ERT
 status collapsed
 
@@ -25523,14 +25528,10 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Footnotes in longtables are described in section
+Les notes de bas de page pour les tableaux longs sont décrites au paragraphe
 \begin_inset space ~
 \end_inset
 
-
-\lang french
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -25542,16 +25543,13 @@ reference "sub:Notes-dans-tableau-long"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Footnotes in minipage boxes are printed, but inside the box and with a different
- numbering because a minipage box is like a page inside a page.
- (For more about minipages, see section
+Les notes de bas de page dans les boîtes minipage sont imprimées, mais dans
+ la boîte et avec une numérotation différente, parce que la boîte minipage
+ est une page dans la page (pour les détails sur les minipages, voir la
+ section
 \begin_inset space ~
 \end_inset
 
-
-\lang french
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -25559,16 +25557,15 @@ reference "sec:Minipages"
 
 \end_inset
 
-
-\lang english
-.) To get a footnote in the minipage that is output at the bottom of the
- page like normal footnotes, also use the method of 
+).
+ Pour obtenir une note de bas de page de minipage qui apparaisse au bas
+ de la page courante, utiliser également la méthode avec 
 \series bold
 
 \backslash
 footnotemark{}
 \series default
- and 
+ et 
 \series bold
 
 \backslash
@@ -25578,8 +25575,6 @@ footnotetext
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -25593,16 +25588,12 @@ height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-This an example text in a minipage.
+Ceci est un exemple de texte de minipage.
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-Footnote in the minipage.
+Note de bas de page dans une minipage.
 \end_layout
 
 \end_inset
@@ -25611,9 +25602,7 @@ Footnote in the minipage.
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
-This an example text in a minipage.
+Ceci est un exemple de texte de minipage.
 \begin_inset ERT
 status collapsed
 
@@ -25635,8 +25624,6 @@ footnotemark{}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -25649,7 +25636,7 @@ footnotetext{
 
 \end_inset
 
-Footnote outside the minipage.
+Note de bas de page hors d'une minipage.
 \begin_inset ERT
 status collapsed
 
@@ -25671,28 +25658,25 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To refer to the same footnote several times without printing the footnote
- text every time, use the command 
+Pour référencer plusieurs fois la même note de bas de page sans imprimer
+ la note plusieurs fois, utiliser la commande 
 \series bold
 
 \backslash
 footnotemark[number]
 \series default
- in TeX-code.
+ en code TeX.
 \begin_inset Newline newline
 \end_inset
 
-As you do not know the number of the repeating footnote while you are writing
- the text, you have to store its number.
- For the following footnote mark example, these commands were inserted in
- TeX-code after Footnote
+Comme vous ne connaissez pas le nombre de répétitions de la note de bas
+ de page au moment de la saisie du texte, vous devez en effet enregistrer
+ ce nombre.
+ Pour les exemples qui suivent, ces commandes ont été insérées en code TeX
+ après la note de bas de page
 \begin_inset space ~
 \end_inset
 
-
-\lang french
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -25700,11 +25684,7 @@ reference "fn:Note-en-bas"
 
 \end_inset
 
-
-\lang english
- to store the footnote number
-\lang french
-:
+ pour enregistrer le numéro de la note:
 \end_layout
 
 \begin_layout Standard
@@ -25712,23 +25692,19 @@ reference "fn:Note-en-bas"
 \series bold
 
 \backslash
-newcounter{MyRepeatFoot}
+newcounter{MaNoteMultiple}
 \begin_inset Newline newline
 \end_inset
 
 
 \backslash
-setcounter{MyRepeatFoot}{
+setcounter{MaNoteMultiple}{
 \backslash
 thefootnote}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The footnote mark was then created with this command
-\lang french
-:
+La note de bas de page a été créée avec cette commande:
 \end_layout
 
 \begin_layout Standard
@@ -25738,17 +25714,13 @@ The footnote mark was then created with this command
 \backslash
 footnotemark[
 \backslash
-theMyRepeatFoot]
+theMaNoteMultiple]
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is a repeated footnote
-\lang french
-:
+Voici une note répétée:
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -25756,7 +25728,7 @@ status collapsed
 \backslash
 footnotemark[
 \backslash
-theMyRepeatFoot]
+theMaNoteMultiple]
 \end_layout
 
 \end_inset
@@ -25765,12 +25737,8 @@ theMyRepeatFoot]
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you want to repeat the previous footnote, you can omit the storage of
- the footnote number and just use this command instead
-\lang french
-:
+Si vous voulez juste répéter la note précédente, vous pouvez omettre l'enregistr
+ement du numéro et utiliser cette commande à la place:
 \end_layout
 
 \begin_layout Standard
@@ -25784,11 +25752,7 @@ thefootnote]
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is another repeated footnote
-\lang french
-:
+Voici une autre note de bas de page répétée:
 \begin_inset ERT
 status collapsed
 
@@ -25922,11 +25886,11 @@ alph
 \series default
 .
  Pour les 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 numéroter
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  avec des symboles, utilisez 
@@ -26018,11 +25982,11 @@ arabic{footnote}}
 \begin_layout Standard
 Si vous voulez que vos notes de bas de pages soient numérotées en suivant
  le schéma 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 chapitre.note
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , ajoutez la commande suivante au préambule de votre document :
@@ -26099,11 +26063,11 @@ status open
 
 \begin_layout Plain Layout
 Cette note est numérotée en suivant le schéma 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 chapitre.note
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -26161,13 +26125,13 @@ numberwithin
 
 \begin_layout Standard
 Donc pour avoir par exemple le schéma 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 chapitre.
 \backslash
 Roman{note}
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , utilisez la commande suivante plutôt que 
@@ -26451,11 +26415,11 @@ reference "fig:Notes-de-fin"
 
 .
  On les appelle 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 notes de fin
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -26568,11 +26532,11 @@ L'entête de paragraphe pour les notes de fin n'est pas traduit automatiquement
  dans la langue du document, cela doit être fait manuellement.
  Les lignes de préambule suivantes traduisent implicitement le nom en anglais
  
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Notes
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  en sa traduction Allemande
@@ -26581,11 +26545,11 @@ status collapsed
 
 \begin_layout Plain Layout
 En français, 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Notes
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  peut être conservé.
@@ -26594,11 +26558,11 @@ Notes
 \end_inset
 
  
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Anmerkungen
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  :
@@ -26672,11 +26636,7 @@ endnote
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For endnotes there is
-\lang french
- la commande 
+Pour les notes en fin de document, il existe la commande 
 \series bold
 
 \backslash
@@ -26810,11 +26770,11 @@ Les notes en marge apparaissent dans la marge de droite dans les documents
  imprimées sur une seule face.
  Dans les documents imprimés recto-verso, elles apparaissent dans la marge
  
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 extérieure
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  – la gauche sur les pages paires et la droite sur les pages impaires.
@@ -27140,7 +27100,7 @@ reference "cha:Unités-de-longueur"
 \end_inset
 
 cm avec la commande en code TeX 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -27148,7 +27108,7 @@ cm avec la commande en code TeX
 [-1.5cm]
 \series default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 
@@ -27341,7 +27301,7 @@ Vous pouvez changer la mise en forme d'une note en marge en changeant sa
  définition.
  Pour créer par exemple une entête pour toutes les notes en marge avec le
  texte 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -27353,11 +27313,11 @@ Attention!
 \series default
 \bar default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- écrit en souligné, sans-sérif et en gras, ajoutez ce qui suit dans le préambule
- de votre document :
+ écrit en souligné, sans empattement et en gras, ajoutez ce qui suit dans
+ le préambule de votre document :
 \end_layout
 
 \begin_layout Standard
@@ -27927,11 +27887,11 @@ Hauteur
 
 \begin_layout Description
 Profondeur C'est simplement la 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 hauteur
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  du texte.
@@ -28547,8 +28507,8 @@ cadre simple
  sans boîte intérieure, vous pouvez autoriser les sauts de page à l'intérieur
  de la boîte.
  Notez que dans ce cas, contrairement aux autres boîtes avec cadre, le cadre
- predra toute la largeur de la colonne, la boîte sera considérée comme son
- propre paragraphe et 
+ prendra toute la largeur de la colonne, la boîte sera considérée comme
+ son propre paragraphe et 
 \series bold
 
 \backslash
@@ -28597,11 +28557,11 @@ Cadre
 \begin_inset space ~
 \end_inset
 
-oval,
+ovale,
 \begin_inset space ~
 \end_inset
 
-fin Ceci dessine un cadre ovalisée autour de la boîte.
+fin Ceci dessine un cadre ovalisé autour de la boîte.
  L'épaisseur du trait de ce cadre est de  0.4
 \begin_inset space \thinspace{}
 \end_inset
@@ -28635,11 +28595,11 @@ Cadre
 \begin_inset space ~
 \end_inset
 
-oval,
+ovale,
 \begin_inset space ~
 \end_inset
 
-épais Ceci dessine un cadre ovalisée autour de la boîte.
+épais Ceci dessine un cadre ovalisé autour de la boîte.
  L'épaisseur du trait de ce cadre est de   0.8
 \begin_inset space \thinspace{}
 \end_inset
@@ -29451,7 +29411,7 @@ FrameSep}{9pt}
 \end_layout
 
 \begin_layout Standard
-Pour les bôites à 
+Pour les boîtes à 
 \family sans
 Fond
 \begin_inset space ~
@@ -29905,9 +29865,7 @@ Boîtes ! Parboxes
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-En attendant une traduction de parbox (NdT)
+En attendant une traduction francophone de parbox (NdT)
 \end_layout
 
 \end_inset
@@ -30005,11 +29963,11 @@ Voici un exemple de texte :
 \begin_layout Standard
 Cette ligne est un exemple pour montrer comment vous pouvez empêcher une
  césure dans un 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 motTrèsTrèsLong
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 
@@ -30017,11 +29975,11 @@ motTrèsTrèsLong
 
 \begin_layout Standard
 Pour empêcher que le mot 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 motTrèsTrèsLong
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  soit coupé, ajoutez la commande
@@ -30038,7 +29996,7 @@ mbox{
 \begin_layout Standard
 en code TeX avant le mot.
  Après le mot, insérez l'accolade fermante 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -30046,7 +30004,7 @@ en code TeX avant le mot.
 }
 \series default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  en code TeX.
@@ -30072,11 +30030,11 @@ mbox{
 \end_inset
 
 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 motTrèsTrèsLong
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -30095,7 +30053,7 @@ status collapsed
 
 \begin_layout Standard
 Une autre méthode consiste à mettre la commande 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -30114,7 +30072,7 @@ Une autre méthode consiste à mettre la commande
 \begin_layout Standard
 Cette ligne est un exemple pour montrer comment vous pouvez empêcher une
  césure dans un 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -30131,7 +30089,7 @@ status collapsed
 \end_inset
 
 motTrèsTrèsLong
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -30184,11 +30142,11 @@ mbox{
 \end_inset
 
 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 motTrèsTrèsLong
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -30301,27 +30259,27 @@ Le déplacement peut être une valeur positive pour élever la boîte ou négati
 
 \begin_layout Standard
 Pour aligner le mot 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 empêcher
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  de façon à ce que le point le plus bas du caractère le plus 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 profond
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , le 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 p
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , soit au niveau de la ligne de base, insérez la commande 
@@ -30340,7 +30298,7 @@ depth}{
 \begin_layout Standard
 en code TeX avant le mot.
  Insérez après le mot l'accolade fermante 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -30348,7 +30306,7 @@ en code TeX avant le mot.
 }
 \series default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  en code TeX.
@@ -30375,11 +30333,11 @@ depth}{
 \end_inset
 
 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 empêcher
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 
@@ -30421,11 +30379,11 @@ depth}{
 \end_inset
 
 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 empêcher
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 
@@ -30457,11 +30415,11 @@ raisebox{0.5cm}{
 \end_inset
 
 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 tester
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 
@@ -30511,11 +30469,11 @@ depth}[0pt]{
 \end_inset
 
 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 empêcher
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 
@@ -30547,11 +30505,11 @@ raisebox{0.5cm}[0pt]{
 \end_inset
 
 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 tester
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 
@@ -30606,11 +30564,11 @@ Couleur ! Pour le texte
 \begin_layout Standard
 Pour pouvoir colorer la couleur de fond d'un texte, il faut le mettre dans
  une boîte appelée 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 colorbox
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -30784,11 +30742,11 @@ colorbox{red}{
 \begin_layout Standard
 avant le mot en code TeX.
  Insérez l'accolade fermante 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 }
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  après le mot, en code TeX.
@@ -30813,11 +30771,11 @@ colorbox{red}{
 \end_inset
 
 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Attention!
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 
@@ -31088,11 +31046,11 @@ colorbox{color}{
 \begin_layout Standard
 en code TeX.
  Après la minipage, insérez l'accolade fermante 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 }
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  en code TeX.
@@ -31198,7 +31156,7 @@ a
 
 \begin_layout Plain Layout
 b2
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 |
@@ -31327,7 +31285,7 @@ status open
 \series bold
 Note:
 \series default
- Certain visualiseurs DVI ne peuvent pas afficher des objets pivotés ou
+ Certain visionneuses DVI ne peuvent pas afficher des objets pivotés ou
  redimensionnés.
 \end_layout
 
@@ -31485,20 +31443,20 @@ Dans l'exemple qui suit, la commande
 rotatebox[origin=c]{60}{
 \series default
  a été insérée en code TeX juste avant le texte 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 pivoté de 90°
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  ; la boîte est refermée juste après le texte par une accolade fermante
  
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 }
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  en code TeX.
@@ -32333,11 +32291,11 @@ status collapsed
 
 \begin_layout Plain Layout
 Quand 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 fleqn
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  est ajouté aux options de la classe de document.
@@ -33232,7 +33190,7 @@ espaces
 \family default
  qui matérialise chaque espace présente dans le code source par un caractère
  
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -33249,7 +33207,7 @@ textvisiblespace
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  .
@@ -33494,7 +33452,7 @@ Flottant
 \family default
  crée un flottant de listing pour lequel vous pouvez préciser les options
  classiques d'emplacement : 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -33502,11 +33460,11 @@ Flottant
 h
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -33514,11 +33472,11 @@ h
 t
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -33526,11 +33484,11 @@ t
 b
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , et 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -33538,7 +33496,7 @@ b
 p
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  correspondant aux emplacement décrits dans la section
@@ -33555,7 +33513,7 @@ reference "sec:Placement-flottants"
 .
  Les options de positionnement peuvent être mélangées et doivent être saisies
  sans séparation, par exemple, on peut taper 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -33563,16 +33521,16 @@ reference "sec:Placement-flottants"
 htbp
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
- L' option 
-\begin_inset Quotes eld
+ L'option 
+\begin_inset Quotes fld
 \end_inset
 
 h
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  a parfois aucun effet, mais vous n'avez pas besoin d'utiliser l'option
@@ -33656,11 +33614,11 @@ Quand vous avez choisi un langage de programmation dans la fenêtre de dialogue
  de listing, les mots-clés de ce langage seront reconnus et mis en forme
  de manière particulière dans la sortie imprimée.
  Dans l'exemple de listing, le mot clé Python 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 def
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  est reconnu et imprimé en caractères gras dans la sortie.
@@ -33725,11 +33683,11 @@ Pas
 \family default
  pour désigner les lignes qui seront numérotées.
  Par exemple, si vous mettez 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 3
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , seule une ligne sur trois sera numérotée.
@@ -33761,7 +33719,7 @@ Caractères
 
 Voici un exemple de listing avec la numérotation des lignes à gauche par
  pas de 3, en langage Python, avec les options 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Table
@@ -33777,11 +33735,11 @@ caractères
 \end_inset
 
 étendue
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  et 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Espace
@@ -33801,7 +33759,7 @@ un
 \end_inset
 
 symbole
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , l'intervalle de ligne étant 3
@@ -33956,11 +33914,11 @@ reference "sec:Sous-documents"
  à utiliser pour le listing dans une zone de texte.
  Pour avoir une liste des paramètres disponibles, tapez un point d'interrogation
  
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 ?
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  dans la zone de texte.
@@ -34030,15 +33988,13 @@ lstparams "breaklines=true,caption={Lignes 10 - 15 de ce fichier LyX},extendedch
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Inserting a formula into a listing can be done the following way:
+Procéder de la manière suivante pour insérer une formule dans un listing:
 \end_layout
 
 \begin_layout Enumerate
-
+Ouvrir le menu de dialogue listings et ajouter
 \lang english
-Open the listings dialog and add
+
 \begin_inset Newline newline
 \end_inset
 
@@ -34050,54 +34006,49 @@ mathescape=true
 \begin_inset Newline newline
 \end_inset
 
-to the field of the 
+
+\lang french
+au champ de l'onglet 
 \family sans
-Advanced
-\family default
- tab.
+Avancé;
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Create a formula outside the listing
+Créer une formule en dehors du listing;
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Copy the content of the formula (not the formula inset) to the clipboard
- (shortcut 
+Copier le contenu de la formule (et non pas l'insert de formule lui-même)
+ dans le presse-papiers (raccourci 
 \begin_inset Info
 type  "shortcut"
 arg   "copy"
 \end_inset
 
-)
+);
 \end_layout
 
 \begin_layout Enumerate
+Dans le listing, saisir 
+\family sans
 
-\lang english
-In the listing write 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
-
-\family sans
 $$
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- and copy from the clipboard between the dollar-signs (shortcut 
+ et insérer depuis le presse-papiers entre les caractères dollar (raccourci
+ 
 \begin_inset Info
 type  "shortcut"
 arg   "paste"
 \end_inset
 
-)
+).
 \end_layout
 
 \begin_layout Standard
@@ -34111,9 +34062,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Exemple de listing flottant 
-\lang english
-containing a formula
+Exemple de listing flottant avec formule
 \end_layout
 
 \end_inset
@@ -34175,11 +34124,11 @@ Texte
 .
  Pour avoir la liste des options disponibles, tapez un point d'interrogation
  
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 ?
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  dans le champ 
@@ -35299,7 +35248,7 @@ PDF
 \end_layout
 
 \begin_layout Chapter
-Explication de l' Équation
+Explication de l'équation
 \begin_inset space ~
 \end_inset
 
