@@ -115,7 +115,14 @@ Also you can check http://www.lyx.org/trac/browser/lyx-devel/trunk to track
 changes or watch updates.
 
 
-8) REFERENCES
+8) SHALL ALL THE UNUSED STRINGS AT THE BOTTOM OF .PO FILE BE REMOVED,
+   OR SHALL THEY STAY?
+
+As you wish. They can be reused for generating fuzzy hints, when completely
+new strings appear, no other function.
+
+
+9) REFERENCES
 
 For some basic idea on how the translation works, you can look at 
 
