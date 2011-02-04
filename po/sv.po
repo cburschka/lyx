@@ -4,7 +4,7 @@
 # Joacim Persson <sp2joap@ida.his.se> 1997, 1998.
 # Jim Rotmalm <jim.rotmalm@gmail.com>, 2010, 2011.
 #
-# Status 2011-02-02:
+# Status 2011-02-03:
 #   ~100% "acceptably done".
 #   ~234 shortcuts are not done.
 #   Improvements? Please tell me.
@@ -86,7 +86,7 @@
 #   editor               -> redigerare/redaktör
 #   emph, emphasis       -> betoning
 #   emphasize/d          -> betona/d
-#   encl(ose)            -> bifoga?
+#   encl(ose)            -> bifog?(ad/at/ning)
 #   enter, Enter         -> ange, Retur
 #   environment          -> miljö
 #   ERT                  -> ERT, röd text?
@@ -97,7 +97,7 @@
 #   find & replace       -> hitta & ersätt
 #   float/s (ing)      ? -> flotte/ar? (flytande?)
 #   font                 -> teckensnitt, typsnitt?, font?
-#     .. face            -> teckensnitt
+#     .. face            -> teckensnitt?
 #     .. family          -> teckensnittsfamilj (teckenfamilj?)
 #     .. size            -> teckensnittsstorlek (teckenstorlek?)
 #   frame(d)             -> ram (inramad)
@@ -184,7 +184,7 @@
 #   show                 -> visa
 #   slide                -> bild? diabild?
 #   slideshow            -> bildspel
-#   space              ? -> mellanrum, mellanslag? blanksteg? tomrum?
+#   space              ? -> mellanrum, mellanslag? blanksteg? tomrum? utrymme? ..?
 #   spacing(s)         ? -> kägel, rad/avstånd? utslutning?
 #   special              -> special, speciell
 #   specify              -> specificera
@@ -200,6 +200,7 @@
 #   toggle               -> växel/växla, byt?
 #   tooltip              -> verktygstips
 #   type                 -> typ
+#   typeface             -> typsnitt?
 #   (in)valid            -> (o)giltig, (in)valid?
 #   validate             -> giltiggör, validera?
 #   validity             -> giltighet, validitet?
@@ -212,7 +213,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.9\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-02-01 17:58+0100\n"
-"PO-Revision-Date: 2011-02-02 21:12+0100\n"
+"PO-Revision-Date: 2011-02-03 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -284,7 +285,7 @@ msgstr "&Dummy"
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
 #: src/frontends/qt4/ui/VSpaceUi.ui:36 src/frontends/qt4/ui/WrapUi.ui:150
 msgid "&OK"
-msgstr "&OK"
+msgstr "&Ok"
 
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:461
@@ -325,7 +326,7 @@ msgstr "Citatstil"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:37
 msgid "Use the jurabib styles for law and humanities"
-msgstr "Använd jurabibstilarna för lag och humanism"
+msgstr "Använd jurabibstilarna för juridik och humaniora"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:40
 msgid "&Jurabib"
@@ -333,7 +334,7 @@ msgstr "&Jurabib"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:47
 msgid "Use the natbib styles for natural sciences and arts"
-msgstr "Använd natbibstilarna för naturvetenskaper och konst"
+msgstr "Använd natbibstilarna för naturvetenskap och konst"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:50
 msgid "&Natbib"
@@ -866,7 +867,7 @@ msgstr "Teckensnittsstorlek"
 #: src/frontends/qt4/ui/CharacterUi.ui:240
 #: src/frontends/qt4/ui/CharacterUi.ui:273
 msgid "Other font settings"
-msgstr "Andra teckensnittalternativ"
+msgstr "Andra teckensnittsalternativ"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:243
 msgid "Always Toggled"
@@ -886,7 +887,7 @@ msgstr "&Växla alla"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:305
 msgid "Apply each change automatically"
-msgstr "Tillämpa vardera ändring automatiskt"
+msgstr "Tillämpa varje ändring automatiskt"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:308
 msgid "Apply changes immediately"
@@ -1076,7 +1077,7 @@ msgstr "Spara som standardvärden för dokument"
 
 #: src/frontends/qt4/ui/ERTUi.ui:31 src/frontends/qt4/GuiPrefs.cpp:967
 msgid "Display"
-msgstr "Visa"
+msgstr "Visning"
 
 #: src/frontends/qt4/ui/ERTUi.ui:43
 msgid "Show ERT button only"
@@ -1161,7 +1162,7 @@ msgstr "Vi&sa i LyX"
 #: src/frontends/qt4/ui/GraphicsUi.ui:559
 #: src/frontends/qt4/ui/GraphicsUi.ui:566
 msgid "Percentage to scale by in LyX"
-msgstr "Procentsats för skalan i LyX"
+msgstr "Procentsats att skala med i LyX"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:269
 #: src/frontends/qt4/ui/GraphicsUi.ui:569
@@ -1356,7 +1357,7 @@ msgstr "&Linjärer:"
 
 #: src/frontends/qt4/ui/FontUi.ui:148
 msgid "Select the Sans Serif (grotesque) typeface"
-msgstr "Välj teckensnitt linjärer (grotesk)"
+msgstr "Välj typsnitt för linjärer (grotesk)"
 
 #: src/frontends/qt4/ui/FontUi.ui:155
 msgid "S&cale (%):"
@@ -1365,7 +1366,7 @@ msgstr "S&kala (%):"
 #: src/frontends/qt4/ui/FontUi.ui:165
 msgid "Scale the Sans Serif font to match the base font's dimensions"
 msgstr ""
-"Skala teckensnitt linjärer så den matchar grundteckensnittets dimensioner"
+"Skala teckensnittet linjärer så den matchar grundteckensnittets dimensioner"
 
 #: src/frontends/qt4/ui/FontUi.ui:178
 msgid "&Roman:"
@@ -1373,7 +1374,7 @@ msgstr "&Antikva:"
 
 #: src/frontends/qt4/ui/FontUi.ui:188
 msgid "Select the roman (serif) typeface"
-msgstr "Välj teckensnitt antikva (serif)"
+msgstr "Välj typsnitt för antikva (serif)"
 
 #: src/frontends/qt4/ui/FontUi.ui:195
 msgid "&Typewriter:"
@@ -1381,7 +1382,7 @@ msgstr "&Skrivmaskin:"
 
 #: src/frontends/qt4/ui/FontUi.ui:205
 msgid "Select the typewriter (monospaced) typeface"
-msgstr "Välj teckensnitt skrivmaskin (monospace)"
+msgstr "Välj typsnitt för skrivmaskin (monospace)"
 
 #: src/frontends/qt4/ui/FontUi.ui:212
 msgid "Sc&ale (%):"
@@ -1390,7 +1391,7 @@ msgstr "Sk&ala (%):"
 #: src/frontends/qt4/ui/FontUi.ui:222
 msgid "Scale the Typewriter font to match the base font's dimensions"
 msgstr ""
-"Skala teckensnitt skrivmaskin så den matchar grundteckensnittets dimensioner"
+"Skala teckensnittet skrivmaskin så den matchar grundteckensnittets dimensioner"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
@@ -1426,7 +1427,7 @@ msgstr "Sätt &bredd:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:174
 msgid "Scale image to maximum size not exceeding width and height"
-msgstr "Skala bild till maximal storlek utan att gå över bredd och höjd"
+msgstr "Skala bild till max storlek utan att gå över bredd och höjd"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:187
 msgid "Rotate Graphics"
@@ -1489,8 +1490,8 @@ msgid ""
 "Enable LyX to preview this graphics, only if graphics previewing is not "
 "disabled at application level (see Preference dialog)."
 msgstr ""
-"Låt LyX förhandsgranska grafiken, men bara om förhandsgranskning av grafik "
-"är aktiverad på programnivå (se inställningsdialog)."
+"Aktivera LyX att förhandsgranska denna grafik, men bara om förhandsgranskning "
+"av grafik är aktiverad på programnivå (se inställningsdialog)."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:530
 msgid "Sho&w in LyX"
@@ -1498,7 +1499,7 @@ msgstr "&Visa i LyX"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:595
 msgid "Assign the graphic to a group of graphics that share the same settings"
-msgstr "Tilldela grafiken en grafikgrupp som delar samma inställningar"
+msgstr "Tilldela grafiken till en grafikgrupp som delar samma inställningar"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:598
 msgid "Graphics Group"
@@ -1836,7 +1837,7 @@ msgstr "&Placering:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:68
 msgid "Specify placement (htbp) for floating listings"
-msgstr "Specificera placering (htbp?) för flytande listningar"
+msgstr "Specificera placering (htbp) för flytande listningar"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:78
 msgid "Line numbering"
@@ -1988,7 +1989,7 @@ msgstr "&Uppdatera"
 
 #: src/frontends/qt4/ui/LogUi.ui:64
 msgid "Copy to Clip&board"
-msgstr "Kopiera till ur&klipp"
+msgstr "Kopiera till klipp&bord"
 
 #: src/frontends/qt4/ui/LogUi.ui:98 src/frontends/qt4/ui/SearchUi.ui:28
 msgid "&Find:"
@@ -2076,7 +2077,7 @@ msgstr "Kolumner:"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:136
 msgid "Resize this to the correct table dimensions"
-msgstr "Storleksändra detta till korrekta tabelldimensioner"
+msgstr "Storleksändra detta till de korrekta tabelldimensionerna"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:211 src/frontends/qt4/ui/WrapUi.ui:195
 msgid "Vertical alignment"
@@ -2099,20 +2100,20 @@ msgid ""
 "The AMS LaTeX packages are only used if symbols from the AMS math toolbars "
 "are inserted into formulas"
 msgstr ""
-"AMS LaTeX-paketen används bara om symboler från AMS matematikverktygsrader "
+"AMS-LaTeX-paketen används bara om symboler från AMS-matematikverktygsraderna "
 "infogas i formler"
 
 #: src/frontends/qt4/ui/MathsUi.ui:28
 msgid "&Use AMS math package automatically"
-msgstr "Använd paketet AMS matematik a&utomatiskt"
+msgstr "Använd paketet AMS-matematik a&utomatiskt"
 
 #: src/frontends/qt4/ui/MathsUi.ui:38
 msgid "The AMS LaTeX packages are always used"
-msgstr "AMS LaTeX-paketen används alltid"
+msgstr "AMS-LaTeX-paketen används alltid"
 
 #: src/frontends/qt4/ui/MathsUi.ui:41
 msgid "Use AMS &math package"
-msgstr "Använd paketet AMS &matematik"
+msgstr "Använd paketet AMS-&matematik"
 
 #: src/frontends/qt4/ui/MathsUi.ui:48
 msgid ""
@@ -2268,7 +2269,7 @@ msgstr "Färga länkar"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:249
 msgid "Bibliographical backreferences"
-msgstr "Litterära bakåtreferenser"
+msgstr "Bibliografiska bakåtreferenser"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:252
 msgid "B&ackreferences:"
@@ -2519,7 +2520,7 @@ msgid ""
 "When the TAB completion is not unique, there won't be a delay of the popup. "
 "It will be shown right away."
 msgstr ""
-"När tabulatorkompletteringen inte är unik kommer det inte vara en "
+"När tabulatorkompletteringen inte är unik kommer det inte finnas en "
 "fördröjning för popup. Den kommer att visas direkt."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:221
@@ -2575,11 +2576,11 @@ msgstr "Aktiv&erad"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:292
 msgid "Maximum A&ge (in days):"
-msgstr "Maximal ålder (i da&gar):"
+msgstr "Max ålder (i da&gar):"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:25
 msgid "Display &Graphics"
-msgstr "Visa &grafik"
+msgstr "&Grafikvisning"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:45
 msgid "Instant &Preview:"
@@ -2656,7 +2657,7 @@ msgstr "Skärm som används (&pixlar):"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:169
 msgid "Hide &tabbar"
-msgstr "Dölj flikfäl&t"
+msgstr "Dölj flikrad"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:176
 msgid "Hide scr&ollbar"
@@ -2664,7 +2665,7 @@ msgstr "Dölj rullningslist"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:191
 msgid "&Hide toolbars"
-msgstr "&Dölj verktygsrad"
+msgstr "&Dölj verktygsrader"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:31
 msgid "&New..."
@@ -3018,7 +3019,7 @@ msgstr "Fråga om tillåtelse"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:123
 msgid "Main file only"
-msgstr "Huvudfil endast"
+msgstr "Bara huvudfil"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:128
 msgid "All files"
@@ -3067,8 +3068,8 @@ msgid ""
 "0, paragraphs are output in a single line; if the line length is > 0, "
 "paragraphs are separated by a blank line."
 msgstr ""
-"Maximal linjelängd för exporterade vanlig text/LaTeX/SGML-filer. Om satt "
-"till 0 matas stycken ut i en enkel linje; om linjelängd är > 0 så separeras "
+"Max linjelängd för exporterade vanlig text/LaTeX/SGML-filer. Om satt till 0 "
+"matas stycken ut i en enkel linje; om linjelängd är > 0 så separeras "
 "stycken med en blank linje."
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:67
@@ -3235,7 +3236,7 @@ msgstr "Antikva:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:169
 msgid "Screen &DPI:"
-msgstr "Skärmens DPI"
+msgstr "Skärmens DPI:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:186
 msgid "&Zoom %:"
@@ -3290,8 +3291,8 @@ msgid ""
 "Checking this improves performance, but might decrease the on-screen quality "
 "of fonts"
 msgstr ""
-"Markera för att öka prestandan, men det kan försämra teckensnittens kvalitet "
-"på skärmen."
+"Markera detta för att öka prestandan, men det kan försämra teckensnittens "
+"kvalitet på skärmen."
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:371
 msgid "&Use pixmap cache to speed up font rendering"
@@ -3327,7 +3328,7 @@ msgstr "&Escape-tecken:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:111
 msgid "Spellchec&ker executable:"
-msgstr "&Stavningskontrollens körbara program:"
+msgstr "&Stavningskontrollens exekverbara program:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:121
 msgid "Override the language used for the spellchecker"
@@ -3339,7 +3340,7 @@ msgstr "Använd inmatningskodning"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:135
 msgid "Accept words such as \"diskdrive\""
-msgstr "Godta ord så som \"iochförsig\""
+msgstr "Godta ord som \"iochförsig\""
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:138
 msgid "Accept compound &words"
@@ -3412,8 +3413,8 @@ msgid ""
 "Checking this allow the automatic display of helpful comments for insets in "
 "the main work area of an edited document"
 msgstr ""
-"Markera för att tillåta automatisk visning av hjälpfulla kommentarer för "
-"insättningar i huvudarbetsområdet av ett redigerat dokument"
+"Markera detta för att tillåta automatisk visning av hjälpfulla kommentarer "
+"för insättningar i huvudarbetsområdet av ett redigerat dokument"
 
 #: src/frontends/qt4/ui/PrefUi.ui:238
 msgid "&Enable tool tips in main work area"
@@ -3462,11 +3463,11 @@ msgstr "&Alla"
 
 #: src/frontends/qt4/ui/PrintUi.ui:116
 msgid "Print &odd-numbered pages"
-msgstr "Skriv ut udda numrerade sid&or"
+msgstr "Skriv ut udda-numrerade sid&or"
 
 #: src/frontends/qt4/ui/PrintUi.ui:126
 msgid "Print &even-numbered pages"
-msgstr "Skriv ut jämnt numr&erade sidor"
+msgstr "Skriv ut jämn-numr&erade sidor"
 
 #: src/frontends/qt4/ui/PrintUi.ui:136
 msgid "Print in reverse order"
@@ -3578,7 +3579,7 @@ msgstr "&Skiftlägeskänslig"
 
 #: src/frontends/qt4/ui/SearchUi.ui:112
 msgid "Match whole words onl&y"
-msgstr "Matcha bara &hela ord"
+msgstr "Matcha endast &hela ord"
 
 #: src/frontends/qt4/ui/SearchUi.ui:170
 msgid "Find &Next"
@@ -3600,7 +3601,7 @@ msgstr "Sök &bakåt"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:42
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr "Behandla den omvandlade filen med detta kommando ($$FName = filnamn"
+msgstr "Behandla den omvandlade filen med detta kommando ($$FName = filnamn)"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:101
 msgid "&Export formats:"
@@ -3882,7 +3883,7 @@ msgstr "Huvud:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1085
 msgid "Repeat this row as header on every (except the first) page"
-msgstr "Upprepa denna rad som sidhuvudet på varje (förutom den sista) sida"
+msgstr "Upprepa denna rad som huvud på varje (förutom den sista) sida"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1088
 #: src/frontends/qt4/ui/TabularUi.ui:1125
@@ -3927,7 +3928,7 @@ msgstr "Fot:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1163
 msgid "Repeat this row as footer on every (except the last) page"
-msgstr "Upprepa denna rad som foten på varje (förutom den sista) sida"
+msgstr "Upprepa denna rad som fot på varje (förutom den sista) sida"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1187
 msgid "Last footer:"
@@ -3977,7 +3978,7 @@ msgstr "Bygg om fillistorna"
 msgid ""
 "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
-"Visa innehållet i markerad fil. Endast möjligt när filer visas med sökväg"
+"Visa innehåll i märkt fil. Bara möjligt när filer visas med sökväg"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:107
 msgid "&View"
@@ -4013,7 +4014,7 @@ msgstr "Kägel"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:68
 msgid "Separate paragraphs with"
-msgstr "Skilj stycken med"
+msgstr "Separera stycken med"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:112
 msgid "Listing settings"
@@ -4021,7 +4022,7 @@ msgstr "Listningsinställningar"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:227
 msgid "Format text into two columns"
-msgstr "Formatera text till två kolumner"
+msgstr "Formatera text i två kolumner"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:230
 msgid "Two-&column document"
@@ -4316,7 +4317,7 @@ msgstr "Författare"
 
 #: lib/layouts/IEEEtran.layout:102
 msgid "MarkBoth"
-msgstr "MarkeraBåda"
+msgstr "MärkBåda"
 
 #: lib/layouts/IEEEtran.layout:120 lib/layouts/aa.layout:85
 #: lib/layouts/aa.layout:312 lib/layouts/aa.layout:328
@@ -4779,7 +4780,7 @@ msgstr "Datasats"
 
 #: lib/layouts/aastex.layout:279
 msgid "Altaffilation"
-msgstr "Alt. tillhörighet"
+msgstr "Alttillhörighet"
 
 #: lib/layouts/aastex.layout:288
 msgid "Alternative affiliation:"
@@ -4787,11 +4788,11 @@ msgstr "Alternativ tillhörighet:"
 
 #: lib/layouts/aastex.layout:295
 msgid "altaffilmark"
-msgstr "alt.tillhörighetmärke"
+msgstr "alttillhörmärke"
 
 #: lib/layouts/aastex.layout:299
 msgid "altaffiliation mark"
-msgstr "alt.tillhörighetmärke"
+msgstr "alttillhörighetsmärke"
 
 #: lib/layouts/aastex.layout:330
 msgid "Subject headings:"
@@ -5235,7 +5236,7 @@ msgstr "BörjaVanligRam"
 
 #: lib/layouts/beamer.layout:285
 msgid "Frame (no head/foot/sidebars)"
-msgstr "Ram (inget huvud/foot/sidorader)"
+msgstr "Ram (inget huvud/fot/sidorader)"
 
 #: lib/layouts/beamer.layout:308
 msgid "AgainFrame"
@@ -5362,7 +5363,7 @@ msgstr "Block ( ERT[{title}] alert text ):"
 #: lib/layouts/beamer.layout:796 lib/layouts/beamer.layout:818
 #: lib/layouts/beamer.layout:861 lib/layouts/beamer.layout:964
 msgid "Titling"
-msgstr "Textning"
+msgstr "Titulering"
 
 #: lib/layouts/beamer.layout:762
 msgid "Title (Plain Frame)"
@@ -5916,13 +5917,13 @@ msgstr "Avslutning:"
 #: lib/layouts/dinbrief.layout:199 lib/layouts/lettre.layout:71
 #: lib/layouts/lettre.layout:602 lib/layouts/stdletter.inc:111
 msgid "encl"
-msgstr "bifoga"
+msgstr "bifog"
 
 #: lib/layouts/dinbrief.layout:201 lib/layouts/lettre.layout:607
 #: lib/layouts/scrlettr.layout:108 lib/layouts/scrlttr2.layout:139
 #: lib/layouts/stdletter.inc:114
 msgid "encl:"
-msgstr "bifoga:"
+msgstr "bifog:"
 
 #: lib/layouts/dinbrief.layout:214 lib/layouts/g-brief-en.layout:222
 #: lib/layouts/g-brief2.layout:933 lib/layouts/lettre.layout:73
@@ -6029,11 +6030,11 @@ msgstr "Referens"
 
 #: lib/layouts/dinbrief.layout:335 lib/layouts/g-brief-de.layout:196
 msgid "Betreff"
-msgstr "Huvud"
+msgstr "Beträffande"
 
 #: lib/layouts/dinbrief.layout:340 lib/layouts/g-brief-de.layout:205
 msgid "Anrede"
-msgstr "Ärende"
+msgstr "Tilltalstitel"
 
 #: lib/layouts/dinbrief.layout:345 lib/layouts/g-brief-en.layout:17
 #: lib/layouts/g-brief2.layout:39 lib/layouts/iopart.layout:117
@@ -6047,7 +6048,7 @@ msgstr "Brevtext"
 
 #: lib/layouts/dinbrief.layout:355 lib/layouts/g-brief-de.layout:231
 msgid "Gruss"
-msgstr "Hälsningar"
+msgstr "Hälsning"
 
 #: lib/layouts/dinbrief.layout:359
 msgid "ps"
@@ -6056,7 +6057,7 @@ msgstr "ps"
 #: lib/layouts/dinbrief.layout:364 lib/layouts/g-brief-en.layout:214
 #: lib/layouts/g-brief2.layout:912
 msgid "Encl."
-msgstr "Bifogat"
+msgstr "Bifog."
 
 #: lib/layouts/dinbrief.layout:369 lib/layouts/g-brief-de.layout:214
 msgid "Anlagen"
@@ -6472,7 +6473,7 @@ msgstr "Författarens fotnot:"
 
 #: lib/layouts/elsarticle.layout:164
 msgid "CorAuthormark"
-msgstr "Matematik"
+msgstr "KorFörfattarensmärke"
 
 #: lib/layouts/elsarticle.layout:168
 msgid "CorAuthor mark"
@@ -6821,7 +6822,7 @@ msgstr "Konto"
 
 #: lib/layouts/g-brief-de.layout:169 lib/layouts/g-brief-en.layout:169
 msgid "BankAccount:"
-msgstr "BankKonto:"
+msgstr "Bankkonto:"
 
 #: lib/layouts/g-brief-de.layout:176 lib/layouts/g-brief-en.layout:176
 #: lib/layouts/g-brief2.layout:706
@@ -6856,11 +6857,11 @@ msgstr "Returadress"
 
 #: lib/layouts/g-brief-en.layout:159
 msgid "BankCode"
-msgstr "BankKod"
+msgstr "Bankkod"
 
 #: lib/layouts/g-brief-en.layout:166
 msgid "BankAccount"
-msgstr "BankKonto"
+msgstr "Bankkonto"
 
 #: lib/layouts/g-brief-en.layout:173 lib/layouts/g-brief2.layout:696
 msgid "PostalComment"
@@ -7398,7 +7399,7 @@ msgstr "IngetDatum"
 
 #: lib/layouts/lettre.layout:75 lib/layouts/lettre.layout:646
 msgid "Post Scriptum"
-msgstr "Post Scriptum"
+msgstr "Post scriptum"
 
 #: lib/layouts/lettre.layout:77 lib/layouts/lettre.layout:512
 msgid "EndOfMessage"
@@ -7603,11 +7604,11 @@ msgstr "Listelement:"
 
 #: lib/layouts/moderncv.layout:102
 msgid "DoubleItem"
-msgstr "DubblaElement"
+msgstr "DubbeltElement"
 
 #: lib/layouts/moderncv.layout:105
 msgid "Double Item:"
-msgstr "Dubbla element:"
+msgstr "Dubbelt element:"
 
 #: lib/layouts/moderncv.layout:108
 msgid "Space"
@@ -7720,7 +7721,7 @@ msgstr "Preprint"
 
 #: lib/layouts/revtex4.layout:167 lib/layouts/revtex4.layout:172
 msgid "AltAffiliation"
-msgstr "Alt. tillhörighet"
+msgstr "AltTillhörighet"
 
 #: lib/layouts/revtex4.layout:188 lib/layouts/amsdefs.inc:176
 msgid "Thanks:"
@@ -7753,7 +7754,7 @@ msgstr "O"
 
 #: lib/layouts/scrlettr.layout:105 lib/layouts/scrlttr2.layout:136
 msgid "Encl"
-msgstr "Bifoga"
+msgstr "Bifog"
 
 #: lib/layouts/scrlettr.layout:156 lib/layouts/scrlttr2.layout:233
 msgid "Place:"
@@ -8304,11 +8305,11 @@ msgstr "Underunderstycke"
 
 #: lib/layouts/agu_stdtitle.inc:13
 msgid "Header"
-msgstr "Sidhuvud"
+msgstr "Huvud"
 
 #: lib/layouts/agu_stdtitle.inc:19
 msgid "-- Header --"
-msgstr "-- Sidhuvud --"
+msgstr "-- Huvud --"
 
 #: lib/layouts/agu_stdtitle.inc:31
 msgid "Special-section"
@@ -8416,11 +8417,11 @@ msgstr "Identlinje:"
 
 #: lib/layouts/agu_stdtitle.inc:230
 msgid "Runhead"
-msgstr "Huvudrubrik"
+msgstr "Löphuvud"
 
 #: lib/layouts/agu_stdtitle.inc:233
 msgid "Runhead:"
-msgstr "Huvudrubrik:"
+msgstr "Löphuvud:"
 
 #: lib/layouts/agu_stdtitle.inc:241
 msgid "Published-online:"
@@ -8845,7 +8846,7 @@ msgstr "Förlag"
 
 #: lib/layouts/scrclass.inc:193 lib/layouts/svjour.inc:115
 msgid "Dedication"
-msgstr "Dedikering"
+msgstr "Dedikation"
 
 #: lib/layouts/scrclass.inc:199
 msgid "Titlehead"
@@ -8877,7 +8878,7 @@ msgstr "Ordalag"
 
 #: lib/layouts/stdcharstyles.inc:8
 msgid "CharStyle"
-msgstr "TeckenStil"
+msgstr "Teckenstil"
 
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
 #: src/insets/InsetCollapsable.cpp:156
@@ -8969,11 +8970,11 @@ msgstr "Svep"
 
 #: lib/layouts/stdinsets.inc:246
 msgid "OptArg"
-msgstr "AltArg"
+msgstr "ValfrittArgument"
 
 #: lib/layouts/stdinsets.inc:247
 msgid "opt"
-msgstr "alt"
+msgstr "valfritt"
 
 #: lib/layouts/stdinsets.inc:255 src/frontends/qt4/GuiInfo.cpp:51
 msgid "Info"
@@ -8997,7 +8998,7 @@ msgstr "--Avskiljare--"
 
 #: lib/layouts/stdlayouts.inc:76
 msgid "--- Separate Environment ---"
-msgstr "--- Skilda miljöer ---"
+msgstr "--- Avskild miljö ---"
 
 #: lib/layouts/svjour.inc:92
 msgid "Headnote"
@@ -9188,7 +9189,7 @@ msgid ""
 "Adds an endnote inset, in addition to footnotes. You will need to add "
 "\\theendnotes in ERT where you want the endnotes to appear."
 msgstr ""
-"Lägger till en slutnot-insättning utöver fotnoter. Du behöver lägga till "
+"Lägger till en slutnotsinsättning utöver fotnoter. Du behöver lägga till "
 "\\theendnotes i ERT där du vill att slutnoterna ska visas."
 
 #: lib/layouts/endnotes.module:9
@@ -9277,7 +9278,7 @@ msgstr "Numrerade exempel (konsekutiv)"
 
 #: lib/layouts/linguistics.module:41
 msgid "Examples:"
-msgstr "Exemplar:"
+msgstr "Exempel:"
 
 #: lib/layouts/linguistics.module:46
 msgid "Subexample"
@@ -9414,9 +9415,9 @@ msgid ""
 "chapter- and section-wide numbering, use one of the 'within "
 "Sections'/'within Chapters' modules, respectively."
 msgstr ""
-"Definierar teorem-miljöer och bevis-miljön via det utökade AMS-maskineriet. "
-"Både numrerade och onumrerade typer förses. I motsats till den vanliga AMS "
-"teorem-modulen har de olika teorem-typerna försedda här varsin separat "
+"Definierar teoremmiljöer och bevismiljön via det utökade AMS-maskineriet. "
+"Både numrerade och onumrerade typer förses. I motsats till den vanliga "
+"AMS-teoremmodulen har de olika teoremtyperna försedda här varsin separat "
 "räknare (t.ex. teorem 1, teorem 2, lemma 1, proposition 1, teorem 3, lemma "
 "2, ..., i motsats till teorem 1, teorem 2, lemma 3, proposition 4, ...). "
 "Numreringens omfång är hela dokumentet. För kapitel- och avsnittsbred "
@@ -9436,13 +9437,13 @@ msgid ""
 "criterion 1, criterion 2, axiom 1, assumption 1, criterion 3, ..., as "
 "opposed to criterion 1, criterion 2, axiom 3, assumption 4, ...)."
 msgstr ""
-"Definierar några ytterligare teorem-miljöer för användning med AMS teorem-"
-"paketen. Inkluderar kriterium, algoritm, axiom, villkor, anteckning, "
-"notation, sammanfattning, erkännande, slutsats, antagande, och fall, i både "
-"numrerade och onumrerade former. I motsats till den vanliga AMS-utökad "
-"modulen, har de olika teorem-typerna försedda här varsin separat räknare (t."
-"ex. kriterium 1, kriterium 2, axiom 1, antagande 1, kriterium 3, ..., i "
-"motsats till kriterium 1, kriterium 2, axiom 3, antagande 4, ...)."
+"Definierar några ytterligare teoremmiljöer för användning med "
+"AMS-teorempaketen. Inkluderar kriterium, algoritm, axiom, villkor, "
+"anteckning, notation, sammanfattning, erkännande, slutsats, antagande, och "
+"fall, i både numrerade och onumrerade former. I motsats till den vanliga "
+"AMS-utökad-modulen, har de olika teoremtyperna försedda här varsin separat "
+"räknare (t.ex. kriterium 1, kriterium 2, axiom 1, antagande 1, kriterium 3, "
+"..., i motsats till kriterium 1, kriterium 2, axiom 3, antagande 4, ...)."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:63
 msgid "Criterion \\thecriterion."
@@ -9601,10 +9602,10 @@ msgid ""
 "Summary, Acknowledgement, Conclusion, Fact, Assumption, and Case, in both "
 "numbered and non-numbered forms."
 msgstr ""
-"Definierar några ytterligare teorem-miljöer för användning med AMS teorem-"
-"paketen. Inkluderar kriterium, algoritm, axiom, villkor, anteckning, "
-"notation, sammanfattning, erkännande, slutsats, fakta, antagande, och fall, i "
-"både numrerade och onumrerade former."
+"Definierar några ytterligare teoremmiljöer för användning med "
+"AMS-teorempaketen. Inkluderar kriterium, algoritm, axiom, villkor, "
+"anteckning, notation, sammanfattning, erkännande, slutsats, fakta, antagande, "
+"och fall, i både numrerade och onumrerade former."
 
 #: lib/layouts/theorems-ams-extended.module:37
 msgid "Criterion \\thetheorem."
@@ -9657,10 +9658,10 @@ msgid ""
 "the theorems are numbered consecutively throughout the document. This can be "
 "changed by loading one of the 'Theorems (Numbered by ...)' modules."
 msgstr ""
-"Definierar teorem-miljöer och bevis-miljön via det utökade AMS-maskineriet. "
+"Definierar teoremmiljöer och bevismiljön via det utökade AMS-maskineriet. "
 "Både numrerade och onumrerade typer förses. Som standard är teorem numrerade "
 "konsekutivt genom dokumentet. Detta kan ändras genom att ladda en av 'Teorem "
-"(numrerade efter ...)' modulerna."
+"(numrerade efter ...)'-modulerna."
 
 #: lib/layouts/theorems-bytype.module:2
 msgid "Theorems (Numbered by Type)"
@@ -9676,17 +9677,17 @@ msgid ""
 "chapter- and section-wide numbering, use one of the 'within "
 "Sections'/'within Chapters' modules, respectively."
 msgstr ""
-"Definierar några teorem-miljöer för användning med icke-AMS-klasser. I "
-"motsats till den vanliga teorem-modulen har de olika teorem-typerna försedda "
+"Definierar några teoremmiljöer för användning med icke-AMS-klasser. I "
+"motsats till den vanliga teoremmodulen har de olika teoremtyperna försedda "
 "här varsin separat räknare (t.ex., teorem 1, teorem 2, lemma 1, proposition "
 "1, teorem 3, lemma 2, ..., i motsats till teorem 1, teorem 2, lemma 3, "
 "proposition 4, ...). Numreringens omfång är hela dokumentet. För kapitel- "
-"och avsnittsbred numrering, använd en av 'i avsnitt'/'i kapitel' modulerna, "
+"och avsnittsbred numrering, använd en av 'i avsnitt'/'i kapitel'-modulerna, "
 "respektive."
 
 #: lib/layouts/theorems-chap-bytype.module:2
 msgid "Theorems (Numbered by Type within Chapters)"
-msgstr "Teorem (Numrerade efter typ i kapitel)"
+msgstr "Teorem (Numrerade efter typ inom kapitel)"
 
 #: lib/layouts/theorems-chap-bytype.module:9
 msgid ""
@@ -9696,9 +9697,9 @@ msgid ""
 "theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
 "proposition 4, ...). The numbering is reset at each chapter start."
 msgstr ""
-"Definierar några teorem-miljöer för användning med icke-AMS-klasser. I "
-"motsats till den vanliga teorem-modulen har de olika teorem-typerna "
-"förseddahär varsin separat räknare (t.ex., teorem 1, teorem 2, lemma 1, "
+"Definierar några teoremmiljöer för användning med icke-AMS-klasser. I "
+"motsats till den vanliga teoremmodulen har de olika teoremtyperna "
+"försedda här varsin separat räknare (t.ex., teorem 1, teorem 2, lemma 1, "
 "proposition 1, teorem 3, lemma 2, ..., i motsats till teorem 1, teorem 2, "
 "lemma 3, proposition 4, ...). Numreringen återställs vid varje kapitelstart."
 
@@ -9718,7 +9719,7 @@ msgstr ""
 
 #: lib/layouts/theorems-sec-bytype.module:2
 msgid "Theorems (Numbered by Type within Sections)"
-msgstr "Teorem (Numrerade efter typ i avsnitt)"
+msgstr "Teorem (Numrerade efter typ inom avsnitt)"
 
 #: lib/layouts/theorems-sec-bytype.module:9
 msgid ""
@@ -9728,9 +9729,9 @@ msgid ""
 "theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
 "proposition 4, ...). The numbering is reset at each section start."
 msgstr ""
-"Definierar några teorem-miljöer för användning med icke-AMS-klasser. I "
-"motsats till den vanliga teorem-modulen har de olika teorem-typerna "
-"förseddahär varsin separat räknare (t.ex., teorem 1, teorem 2, lemma 1, "
+"Definierar några teoremmiljöer för användning med icke-AMS-klasser. I "
+"motsats till den vanliga teoremmodulen har de olika teorem-typerna "
+"försedda här varsin separat räknare (t.ex., teorem 1, teorem 2, lemma 1, "
 "proposition 1, teorem 3, lemma 2, ..., i motsats till teorem 1, teorem 2, "
 "lemma 3, proposition 4, ...). Numreringen återställs vid varje avsnittstart."
 
@@ -9755,7 +9756,7 @@ msgid ""
 "Defines only unnumbered theorem environments, and the proof environment, "
 "using the extended AMS machinery."
 msgstr ""
-"Definierar bara onumrerade teorem-miljöer, och bevis-miljön, via det utökade "
+"Definierar bara onumrerade teoremmiljöer, och bevismiljön, via det utökade "
 "AMS-maskineriet."
 
 #: lib/layouts/theorems-std.module:7
@@ -9764,9 +9765,9 @@ msgid ""
 "the theorems are numbered consecutively throughout the document. This can be "
 "changed by loading one of the 'Theorems (Numbered by ...)' modules."
 msgstr ""
-"Definierar några teorem-miljöer för användning med icke-AMS-klasser. Som "
+"Definierar några teoremmiljöer för användning med icke-AMS-klasser. Som "
 "standard är teorem numrerade konsekutivt genom dokumentet. Detta kan ändras "
-"genom att ladda en av 'Teorem (numrerade efter ...)' modulerna."
+"genom att ladda en av 'Teorem (numrerade efter ...)'-modulerna."
 
 #: lib/languages:3 src/Font.cpp:51 src/Font.cpp:54 src/Font.cpp:58
 #: src/Font.cpp:63 src/Font.cpp:66
@@ -10340,7 +10341,7 @@ msgstr "Registrera...|R"
 
 #: lib/ui/classic.ui:69 lib/ui/stdmenus.inc:73
 msgid "Check In Changes...|I"
-msgstr "Skicka in ändringar..."
+msgstr "Skicka in ändringar...|i"
 
 #: lib/ui/classic.ui:70 lib/ui/stdmenus.inc:74
 msgid "Check Out for Edit|O"
@@ -10560,7 +10561,7 @@ msgstr "Standard|t"
 
 #: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:243
 msgid "Display|D"
-msgstr "Visa"
+msgstr "Visning"
 
 #: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:244
 msgid "Inline|I"
@@ -10601,7 +10602,7 @@ msgstr "Formel på plats"
 
 #: lib/ui/classic.ui:200 lib/ui/stdcontext.inc:50 lib/ui/stdmenus.inc:285
 msgid "Displayed Formula|D"
-msgstr "Visad formel|d"
+msgstr "Visningsformel"
 
 #: lib/ui/classic.ui:201
 msgid "Eqnarray Environment|q"
@@ -10786,7 +10787,7 @@ msgstr "Dubbla citattecken"
 
 #: lib/ui/classic.ui:259 lib/ui/stdmenus.inc:370
 msgid "Menu Separator|M"
-msgstr "Menydelare|M"
+msgstr "Menyavskiljare|M"
 
 #: lib/ui/classic.ui:260
 msgid "Horizontal Line"
@@ -10798,7 +10799,7 @@ msgstr "Sidbrytning"
 
 #: lib/ui/classic.ui:266 lib/ui/stdmenus.inc:399
 msgid "Display Formula|D"
-msgstr "Visa formel"
+msgstr "Visningsformel"
 
 #: lib/ui/classic.ui:267 lib/ui/stdcontext.inc:51 lib/ui/stdmenus.inc:286
 #: lib/ui/stdmenus.inc:401
@@ -11088,7 +11089,7 @@ msgstr "Handbok"
 
 #: lib/ui/classic.ui:412
 msgid "Extended Features|E"
-msgstr "Utökade funktioner|e"
+msgstr "Utökad redigering|e"
 
 #: lib/ui/classic.ui:413
 msgid "Embedded Objects|m"
@@ -11144,7 +11145,7 @@ msgstr "Makro|o"
 
 #: lib/ui/stdcontext.inc:52
 msgid "AMS Environment|A"
-msgstr "AMS miljö|A"
+msgstr "AMS-miljö|A"
 
 #: lib/ui/stdcontext.inc:54
 msgid "Equation Label|L"
@@ -11366,7 +11367,7 @@ msgstr "Quad mellanrum|Q"
 
 #: lib/ui/stdcontext.inc:198 lib/ui/stdcontext.inc:224
 msgid "Double Quad Space|u"
-msgstr "Dubbel quad mellanrum|u"
+msgstr "Dubbelt quad mellanrum|u"
 
 #: lib/ui/stdcontext.inc:199
 msgid "Horizontal Fill|F"
@@ -11462,7 +11463,7 @@ msgstr "Verbatim|V"
 
 #: lib/ui/stdcontext.inc:251
 msgid "Verbatim (marked blanks)|b"
-msgstr "Verbatim (markerade blanksteg)|b"
+msgstr "Verbatim (märkta blanksteg)|b"
 
 #: lib/ui/stdcontext.inc:252
 msgid "Listing|L"
@@ -11928,11 +11929,11 @@ msgstr "Visa källa|s"
 
 #: lib/ui/stdmenus.inc:309
 msgid "Split View Into Left and Right Half|i"
-msgstr "Dela vy till vänster och höger halva|i"
+msgstr "Dela vy i vänster och höger halva|i"
 
 #: lib/ui/stdmenus.inc:310
 msgid "Split View Into Upper and Lower Half|V"
-msgstr "Dela vy till övre och nedre halva|v"
+msgstr "Dela vy i övre och nedre halva|v"
 
 #: lib/ui/stdmenus.inc:311
 msgid "Close Current View|w"
@@ -11944,7 +11945,7 @@ msgstr "Helskärm|l"
 
 #: lib/ui/stdmenus.inc:313
 msgid "Toolbars|b"
-msgstr "Verktygsrad"
+msgstr "Verktygsrader"
 
 #: lib/ui/stdmenus.inc:333
 msgid "Special Character|p"
@@ -12846,7 +12847,7 @@ msgstr "Quadratin mellanrum\t\\quad"
 
 #: lib/ui/stdtoolbars.inc:300
 msgid "Double quadratin space\t\\qquad"
-msgstr "Dubbel quadratin mellanrum\t\\qquad"
+msgstr "Dubbelt quadratin mellanrum\t\\qquad"
 
 #: lib/ui/stdtoolbars.inc:301
 msgid "Negative space\t\\!"
@@ -12878,7 +12879,7 @@ msgstr "Annan rot\t\\root"
 
 #: lib/ui/stdtoolbars.inc:313
 msgid "Display style\t\\displaystyle"
-msgstr "Visa stil\t\\displaystyle"
+msgstr "Visningsstil\t\\displaystyle"
 
 #: lib/ui/stdtoolbars.inc:314
 msgid "Normal text style\t\\textstyle"
@@ -12922,11 +12923,11 @@ msgstr "Enhetsbråk (20 km/h)\t\\unitfrac"
 
 #: lib/ui/stdtoolbars.inc:327
 msgid "Text fraction\t\\tfrac"
-msgstr "Textbråk\t\\tfrac"
+msgstr "Text bråk\t\\tfrac"
 
 #: lib/ui/stdtoolbars.inc:328
 msgid "Display fraction\t\\dfrac"
-msgstr "Visa bråk\t\\dfrac"
+msgstr "Visning bråk\t\\dfrac"
 
 #: lib/ui/stdtoolbars.inc:329
 msgid "Continued fraction\t\\cfrac"
@@ -12950,7 +12951,7 @@ msgstr "Text binomial\t\\tbinom"
 
 #: lib/ui/stdtoolbars.inc:334
 msgid "Display binomial\t\\dbinom"
-msgstr "Visa binomial\t\\dbinom"
+msgstr "Visning binomial\t\\dbinom"
 
 #: lib/ui/stdtoolbars.inc:338
 msgid "Roman\t\\mathrm"
@@ -15329,7 +15330,7 @@ msgstr "Inget år"
 
 #: src/BiblioInfo.cpp:520 src/BiblioInfo.cpp:580
 msgid "Add to bibliography only."
-msgstr "Lägg endast till bibliografi."
+msgstr "Lägg enbart till bibliografi."
 
 #: src/BiblioInfo.cpp:576
 msgid "before"
@@ -15536,7 +15537,7 @@ msgstr "  Sparning misslyckades! Provar än en gång...\n"
 
 #: src/Buffer.cpp:998
 msgid "  Save failed! Bummer. Document is lost."
-msgstr "  Sparning misslyckades! Dokument förlorades."
+msgstr "  Sparning misslyckades! Dokument förlorat."
 
 #: src/Buffer.cpp:1078
 msgid "Iconv software exception Detected"
@@ -15700,7 +15701,7 @@ msgstr "Ladda nödsparning?"
 
 #: src/Buffer.cpp:2764
 msgid "&Recover"
-msgstr "&Återhämta"
+msgstr "Åte&rhämta"
 
 #: src/Buffer.cpp:2764
 msgid "&Load Original"
@@ -15792,8 +15793,8 @@ msgstr ""
 "Utformningsfilen som efterfrågades av detta dokument,\n"
 "%1$s.layout,\n"
 "är inte användbar. Detta är antagligen eftersom en\n"
-"LaTeX-klass eller stilfil som krävs av den inte finns\n"
-"tillgänglig. Se dokumentationen Anpassning\n"
+"LaTeX-klass eller stilfil som krävs av den inte\n"
+"finns tillgänglig. Se dokumentationen Anpassning\n"
 "för mer information.\n"
 
 #: src/BufferParams.cpp:488
@@ -16169,7 +16170,7 @@ msgstr "grenetikett"
 
 #: src/Color.cpp:165
 msgid "footnote label"
-msgstr "fotnotetikett"
+msgstr "fotnotsetikett"
 
 #: src/Color.cpp:166
 msgid "index label"
@@ -17136,7 +17137,7 @@ msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr ""
-"Anse sammansatta ord, så som \"iochförsig\" för \"i och för sig\" som "
+"Anse sammansatta ord, som \"iochförsig\" för \"i och för sig\" som "
 "godtagbara ord?"
 
 #: src/LyXRC.cpp:2527
@@ -17154,15 +17155,15 @@ msgid ""
 msgstr ""
 "Använd för att definiera ett externt program för att framställa tabeller i "
 "vanlig textutmatning. T.ex. \"groff -t -Tlatin1 $$FName\" där $$FName är "
-"inmatningsfilen. Om \"\" är specificerad, används en intern rutin."
+"inmatningsfilen. Om \"\" är specificerad så används en intern rutin."
 
 #: src/LyXRC.cpp:2539
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
 msgstr ""
-"Välj bort om du inte vill att aktuell markering ska ersättas automatiskt med "
-"vad du skriver."
+"Välj bort om du inte vill att aktuellt urval ska ersättas automatiskt med vad "
+"du skriver."
 
 #: src/LyXRC.cpp:2543
 msgid ""
@@ -17303,7 +17304,7 @@ msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
 msgstr ""
-"Teckensnittskodningen som används för LaTeX2e fontenc-paketet. T1 är högst "
+"Teckensnittskodningen som används för LaTeX2e-paketet fontenc. T1 är högst "
 "rekommenderad för icke-engelska språk."
 
 #: src/LyXRC.cpp:2647
@@ -17340,7 +17341,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2668
 msgid "Maximum number of words in the initialization string for a new label"
-msgstr "Maximalt antal ord i initieringssträngen för en ny etikett"
+msgstr "Max antal ord i initieringssträngen för en ny etikett"
 
 #: src/LyXRC.cpp:2672
 msgid ""
@@ -17422,7 +17423,7 @@ msgstr "Rullningshastigheten för mushjulet."
 
 #: src/LyXRC.cpp:2725
 msgid "The completion popup delay."
-msgstr "Kompletteringpopupens fördröjning."
+msgstr "Fördröjning för kompletteringspopup."
 
 #: src/LyXRC.cpp:2729
 msgid "Select to display the completion popup in math mode."
@@ -17466,14 +17467,14 @@ msgstr "Använd \"...\" för att korta av långa kompletteringar."
 #: src/LyXRC.cpp:2761
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
-msgstr "Maximalt antal senaste-filer. Upp till %1$d kan visas i filmenyn."
+msgstr "Maximalt antal senaste-filer. Upp till %1$d kan visas i arkivmenyn."
 
 #: src/LyXRC.cpp:2766
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
 msgstr ""
-"Specificera dessa kataloger som bör föregå PATH-miljövariabeln. Använd "
+"Specificera de kataloger som bör föregå PATH-miljövariabeln. Använd "
 "operativsystemets standard."
 
 #: src/LyXRC.cpp:2773
@@ -17540,7 +17541,7 @@ msgstr "Alternativet för att skriva ut endast udda sidor."
 #: src/LyXRC.cpp:2821
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr ""
-"Alternativet för att specificera en komma-separerad lista över sidor att "
+"Alternativet för att specificera en kommaseparerad lista över sidor att "
 "skriva ut."
 
 #: src/LyXRC.cpp:2825
@@ -17589,7 +17590,7 @@ msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr ""
-"Markera för LyX att förmedla namnet på destinationsskrivaren till ditt "
+"Välj för LyX att förmedla namnet på destinationsskrivaren till ditt "
 "utskriftskommando."
 
 #: src/LyXRC.cpp:2857
@@ -17629,8 +17630,8 @@ msgstr ""
 #: src/LyXRC.cpp:2888
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
-"Teckensnittsstorlekarna som används för att beräkna teckensnittens skalning "
-"på skärmen."
+"Teckensnittsstorlekarna som används för att beräkna skalningen för "
+"skärmteckensnitten."
 
 #: src/LyXRC.cpp:2893
 #, no-c-format
@@ -17682,8 +17683,8 @@ msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
 msgstr ""
-"Användargränssnittsfilen. Kan antingen specificera en absolut sökväg, eller "
-"så tittar LyX i dess globala och lokala ui/ kataloger."
+"Användargränssnittsfilen (UI). Kan antingen specificera en absolut sökväg, "
+"eller så tittar LyX i dess globala och lokala ui/ kataloger."
 
 #: src/LyXRC.cpp:2943
 msgid ""
@@ -17703,7 +17704,7 @@ msgstr "Aktivera automatiskt uppdykande av verktygstips i arbetsområdet."
 #: src/LyXRC.cpp:2951
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
-msgstr "Aktivera pixmapgömman som kan öka prestandan på Mac och Windows."
+msgstr "Aktivera pixmapgömman som kan öka prestanda på Mac och Windows."
 
 #: src/LyXRC.cpp:2958
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
@@ -17774,7 +17775,7 @@ msgstr "Stycket är inte rätt initierad"
 
 #: src/SpellBase.cpp:51
 msgid "Native OS API not yet supported."
-msgstr "Infött OS API stöds inte än"
+msgstr "Operativsystemets standard-API stöds inte än"
 
 #: src/Text.cpp:146
 msgid "Unknown Inset"
@@ -18014,7 +18015,7 @@ msgstr ""
 "Du måste manuellt lösa konflikterna NU!\n"
 "'%1$s'.\n"
 "\n"
-"Efter du tryckt OK kommer LyX försöka återöppna det lösta dokumentet."
+"Efter du tryckt Ok kommer LyX försöka återöppna det lösta dokumentet."
 
 #: src/VCBackend.cpp:599
 #, c-format
@@ -18079,7 +18080,7 @@ msgid ""
 msgstr ""
 "Fel vid arkivering till förråd.\n"
 "Du måste manuellt lösa problemet.\n"
-"Efter du tryckt OK kommer LyX att återöppna dokumentet."
+"Efter du tryckt Ok kommer LyX att återöppna dokumentet."
 
 #: src/VCBackend.cpp:902
 msgid ""
@@ -18114,7 +18115,7 @@ msgstr ""
 "Du måste manuellt lösa konflikterna NU!\n"
 "'%1$s'.\n"
 "\n"
-"Efter du tryckt OK kommer LyX försöka återöppna det lösta dokumentet."
+"Efter du tryckt Ok kommer LyX försöka återöppna det lösta dokumentet."
 
 #: src/VCBackend.cpp:965
 #, c-format
@@ -19183,7 +19184,7 @@ msgstr "Vänster botten"
 
 #: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:72
 msgid "Baseline left"
-msgstr "Vänster grundlinje"
+msgstr "Vänster baslinje"
 
 #: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:73
 msgid "Top center"
@@ -19195,7 +19196,7 @@ msgstr "Center botten"
 
 #: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:73
 msgid "Baseline center"
-msgstr "Center grundlinje"
+msgstr "Center baslinje"
 
 #: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:74
 msgid "Top right"
@@ -19207,7 +19208,7 @@ msgstr "Höger botten"
 
 #: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:74
 msgid "Baseline right"
-msgstr "Höger grundlinje"
+msgstr "Höger baslinje"
 
 #: src/frontends/qt4/GuiExternal.cpp:95
 msgid "External Material"
@@ -19865,7 +19866,7 @@ msgstr "Kägelmodifierande bokstäver"
 
 #: src/frontends/qt4/GuiSymbols.cpp:60
 msgid "Combining Diacritical Marks"
-msgstr "Kombinerade diakritiska märken"
+msgstr "Kombinerande diakritiska märken"
 
 #: src/frontends/qt4/GuiSymbols.cpp:62
 msgid "Cyrillic"
@@ -19953,7 +19954,7 @@ msgstr "Valutasymboler"
 
 #: src/frontends/qt4/GuiSymbols.cpp:86
 msgid "Combining Diacritical Marks for Symbols"
-msgstr "Kombinerade diakritiska märken för symboler"
+msgstr "Kombinerande diakritiska märken för symboler"
 
 #: src/frontends/qt4/GuiSymbols.cpp:87
 msgid "Letterlike Symbols"
@@ -20559,7 +20560,7 @@ msgstr "Ingen innehållsförteckning"
 
 #: src/frontends/qt4/Menus.cpp:1046
 msgid "Other Toolbars"
-msgstr "Andra verktygsrad"
+msgstr "Andra verktygsrader"
 
 #: src/frontends/qt4/Menus.cpp:1066
 msgid "No Branch in Document!"
@@ -20737,7 +20738,7 @@ msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
 msgstr ""
-"Det är mellanrum i sökvägarna till dina BibTeX-databaser.\n"
+"Det finns mellanrum i sökvägarna till dina BibTeX-databaser.\n"
 "BibTeX kommer inte att kunna hitta dem."
 
 #: src/insets/InsetBibtex.cpp:360
@@ -20745,7 +20746,7 @@ msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
 msgstr ""
-"Det är mellanrum i sökvägen till din BibTeX stilfil.\n"
+"Det finns mellanrum i sökvägen till din BibTeX stilfil.\n"
 "BibTeX kommer inte att kunna hitta den."
 
 #: src/insets/InsetBox.cpp:64
@@ -21362,7 +21363,7 @@ msgstr "QQuad mellanrum"
 
 #: src/insets/InsetSpace.cpp:94
 msgid "Enspace"
-msgstr "Enspace (halvfyrkant)"
+msgstr "Enspace"
 
 #: src/insets/InsetSpace.cpp:97
 msgid "Enskip"
@@ -21420,7 +21421,7 @@ msgstr "Skyddat horisontellt mellanrum (%1$s)"
 
 #: src/insets/InsetTOC.cpp:50
 msgid "Unknown TOC type"
-msgstr "Okänd typ för innehållsförteckning"
+msgstr "Okänd innehållsförteckningstyp"
 
 #: src/insets/InsetTabular.cpp:3236
 msgid "Opened table"
@@ -21472,7 +21473,7 @@ msgstr "Skalning etc..."
 
 #: src/insets/RenderGraphic.cpp:102
 msgid "Ready to display"
-msgstr "Redo att visa"
+msgstr "Redo för visning"
 
 #: src/insets/RenderGraphic.cpp:105
 msgid "No file found!"
@@ -21641,7 +21642,7 @@ msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
 msgstr ""
-"Beräkning kan inte utföras för AMS matematikmiljöer.\n"
+"Beräkning kan inte utföras för AMS-matematikmiljöer.\n"
 "Ändra matematikformelns typ och försök igen."
 
 #: src/mathed/InsetMathHull.cpp:1257 src/mathed/InsetMathHull.cpp:1265
@@ -22494,7 +22495,7 @@ msgstr "Okänd användare"
 #~ msgstr "Stavningskontroll på a&nteckningar och kommentarer"
 
 #~ msgid "Mark misspelled words with a underline."
-#~ msgstr "Markera felstavade ord med understrykning."
+#~ msgstr "Märk felstavade ord med understrykning."
 
 #~ msgid "S&pellcheck continuously"
 #~ msgstr "Kontinuerlig stavningskontroll"
@@ -23287,7 +23288,7 @@ msgstr "Okänd användare"
 
 #~ msgid "The file %1$s cannot be written because it is marked as read-only."
 #~ msgstr ""
-#~ "Filen %1$s kan inte skrivas eftersom den är markerad som skrivskyddad."
+#~ "Filen %1$s kan inte skrivas eftersom den är märkt som skrivskyddad."
 
 #~ msgid "Don't know how to export to format: %1$s"
 #~ msgstr "Vet inte hur man exporterar till format: %1$s"
@@ -23538,7 +23539,7 @@ msgstr "Okänd användare"
 #~ "Du måste manuellt lösa konflikterna NU!\n"
 #~ "'%2$s'.\n"
 #~ "\n"
-#~ "Efter du tryckt OK kommer LyX försöka återöppna det lösta dokumentet."
+#~ "Efter du tryckt Ok kommer LyX försöka återöppna det lösta dokumentet."
 
 #~ msgid "File"
 #~ msgstr "Fil"
@@ -23774,7 +23775,7 @@ msgstr "Okänd användare"
 #~ msgstr "Sätt sökvägen till Hunspell-ordböckerna"
 
 #~ msgid "Native"
-#~ msgstr "Infödd"
+#~ msgstr "Standard"
 
 #~ msgid "Hunspell"
 #~ msgstr "Hunspell"
@@ -24540,7 +24541,7 @@ msgstr "Okänd användare"
 #~ msgstr "Innehållsförteckning"
 
 #~ msgid "OK"
-#~ msgstr "OK"
+#~ msgstr "Ok"
 
 #~ msgid "Chinese"
 #~ msgstr "Kinesiska"
