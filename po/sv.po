@@ -212,7 +212,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.9\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-01 17:58+0100\n"
+"POT-Creation-Date: 2011-02-05 09:13+0100\n"
 "PO-Revision-Date: 2011-02-03 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
@@ -585,7 +585,7 @@ msgstr "Åte&rställ"
 msgid "&Apply"
 msgstr "Tillämp&a"
 
-#: src/frontends/qt4/ui/BoxUi.ui:285 src/frontends/qt4/ui/ExternalUi.ui:504
+#: src/frontends/qt4/ui/BoxUi.ui:285 src/frontends/qt4/ui/ExternalUi.ui:499
 #: src/frontends/qt4/ui/PageLayoutUi.ui:204
 msgid "&Height:"
 msgstr "&Höjd:"
@@ -598,7 +598,7 @@ msgstr "Inr&e ruta:"
 msgid "&Decoration:"
 msgstr "&Dekoration:"
 
-#: src/frontends/qt4/ui/BoxUi.ui:330 src/frontends/qt4/ui/ExternalUi.ui:478
+#: src/frontends/qt4/ui/BoxUi.ui:330 src/frontends/qt4/ui/ExternalUi.ui:473
 #: src/frontends/qt4/ui/PageLayoutUi.ui:217
 #: src/frontends/qt4/ui/TabularUi.ui:100 src/frontends/qt4/ui/WrapUi.ui:85
 msgid "&Width:"
@@ -1153,114 +1153,124 @@ msgstr "Alternati&v:"
 msgid "Forma&t:"
 msgstr "Forma&t:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:254
+#: src/frontends/qt4/ui/ExternalUi.ui:246
+#: src/frontends/qt4/ui/GraphicsUi.ui:527
+msgid ""
+"Enable LyX to preview this graphics, only if graphics previewing is not "
+"disabled at application level (see Preference dialog)."
+msgstr ""
+"Aktivera LyX att förhandsgranska denna grafik, men bara om "
+"förhandsgranskning av grafik är aktiverad på programnivå (se "
+"inställningsdialog)."
+
+#: src/frontends/qt4/ui/ExternalUi.ui:249
 msgid "&Show in LyX"
 msgstr "Vi&sa i LyX"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:266
-#: src/frontends/qt4/ui/ExternalUi.ui:290
+#: src/frontends/qt4/ui/ExternalUi.ui:261
+#: src/frontends/qt4/ui/ExternalUi.ui:285
 #: src/frontends/qt4/ui/GraphicsUi.ui:559
 #: src/frontends/qt4/ui/GraphicsUi.ui:566
 msgid "Percentage to scale by in LyX"
 msgstr "Procentsats att skala med i LyX"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:269
+#: src/frontends/qt4/ui/ExternalUi.ui:264
 #: src/frontends/qt4/ui/GraphicsUi.ui:569
 msgid "Sca&le on Screen (%):"
 msgstr "Ska&la på skärmen (%):"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:327
+#: src/frontends/qt4/ui/ExternalUi.ui:322
 msgid "Si&ze and Rotation"
 msgstr "Storle&k och rotation"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:339
+#: src/frontends/qt4/ui/ExternalUi.ui:334
 msgid "Rotate"
 msgstr "Rotera"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:386
-#: src/frontends/qt4/ui/ExternalUi.ui:416
+#: src/frontends/qt4/ui/ExternalUi.ui:381
+#: src/frontends/qt4/ui/ExternalUi.ui:411
 #: src/frontends/qt4/ui/GraphicsUi.ui:240
 #: src/frontends/qt4/ui/GraphicsUi.ui:247
 msgid "Angle to rotate image by"
 msgstr "Vinkel att rotera bild med"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:396
-#: src/frontends/qt4/ui/ExternalUi.ui:409
+#: src/frontends/qt4/ui/ExternalUi.ui:391
+#: src/frontends/qt4/ui/ExternalUi.ui:404
 #: src/frontends/qt4/ui/GraphicsUi.ui:212
 #: src/frontends/qt4/ui/GraphicsUi.ui:219
 msgid "The origin of the rotation"
 msgstr "Rotationens ursprung"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:399
+#: src/frontends/qt4/ui/ExternalUi.ui:394
 msgid "Ori&gin:"
 msgstr "Ursprun&g:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:419
+#: src/frontends/qt4/ui/ExternalUi.ui:414
 msgid "A&ngle:"
 msgstr "Vi&nkel:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:434
+#: src/frontends/qt4/ui/ExternalUi.ui:429
 msgid "Scale"
 msgstr "Skala"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:458
+#: src/frontends/qt4/ui/ExternalUi.ui:453
 #: src/frontends/qt4/ui/GraphicsUi.ui:131
 msgid "Height of image in output"
 msgstr "Bildens höjd i utmatning"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:468
+#: src/frontends/qt4/ui/ExternalUi.ui:463
 #: src/frontends/qt4/ui/GraphicsUi.ui:97
 msgid "Width of image in output"
 msgstr "Bildens bredd i utmatning"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:491
+#: src/frontends/qt4/ui/ExternalUi.ui:486
 msgid "Maintain aspect ratio with largest dimension"
 msgstr "Bibehåll bildförhållande med största dimension"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:494
+#: src/frontends/qt4/ui/ExternalUi.ui:489
 #: src/frontends/qt4/ui/GraphicsUi.ui:177
 msgid "&Maintain aspect ratio"
 msgstr "Bibehåll bild&förhållande"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:517
+#: src/frontends/qt4/ui/ExternalUi.ui:512
 msgid "Crop"
 msgstr "Beskär"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:532
+#: src/frontends/qt4/ui/ExternalUi.ui:527
 #: src/frontends/qt4/ui/GraphicsUi.ui:309
 msgid "Clip to bounding box values"
 msgstr "Klipp till begränsningsrutans värden"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:535
+#: src/frontends/qt4/ui/ExternalUi.ui:530
 #: src/frontends/qt4/ui/GraphicsUi.ui:312
 msgid "Clip to &bounding box"
 msgstr "Klipp till &begränsningsrutan"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:542
+#: src/frontends/qt4/ui/ExternalUi.ui:537
 #: src/frontends/qt4/ui/GraphicsUi.ui:345
 msgid "&Left bottom:"
 msgstr "&Vänster botten:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:555
+#: src/frontends/qt4/ui/ExternalUi.ui:550
 msgid "x"
 msgstr "x"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:562
+#: src/frontends/qt4/ui/ExternalUi.ui:557
 #: src/frontends/qt4/ui/GraphicsUi.ui:383
 msgid "Right &top:"
 msgstr "&Höger topp:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:572
+#: src/frontends/qt4/ui/ExternalUi.ui:567
 #: src/frontends/qt4/ui/GraphicsUi.ui:437
 msgid "Get bounding box from the (EPS) file"
 msgstr "Hämta begränsningsruta från (EPS)-filen"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:575
+#: src/frontends/qt4/ui/ExternalUi.ui:570
 #: src/frontends/qt4/ui/GraphicsUi.ui:440
 msgid "&Get from File"
 msgstr "Häm&ta från fil"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:605
+#: src/frontends/qt4/ui/ExternalUi.ui:600
 msgid "y"
 msgstr "y"
 
@@ -1391,7 +1401,8 @@ msgstr "Sk&ala (%):"
 #: src/frontends/qt4/ui/FontUi.ui:222
 msgid "Scale the Typewriter font to match the base font's dimensions"
 msgstr ""
-"Skala teckensnittet skrivmaskin så den matchar grundteckensnittets dimensioner"
+"Skala teckensnittet skrivmaskin så den matchar grundteckensnittets "
+"dimensioner"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
@@ -1484,14 +1495,6 @@ msgstr "Ytterligare LaTeX-alternativ"
 #: src/frontends/qt4/ui/GraphicsUi.ui:501
 msgid "LaTeX &options:"
 msgstr "LaTeX-a&lternativ:"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:527
-msgid ""
-"Enable LyX to preview this graphics, only if graphics previewing is not "
-"disabled at application level (see Preference dialog)."
-msgstr ""
-"Aktivera LyX att förhandsgranska denna grafik, men bara om förhandsgranskning "
-"av grafik är aktiverad på programnivå (se inställningsdialog)."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:530
 msgid "Sho&w in LyX"
@@ -3069,8 +3072,8 @@ msgid ""
 "paragraphs are separated by a blank line."
 msgstr ""
 "Max linjelängd för exporterade vanlig text/LaTeX/SGML-filer. Om satt till 0 "
-"matas stycken ut i en enkel linje; om linjelängd är > 0 så separeras "
-"stycken med en blank linje."
+"matas stycken ut i en enkel linje; om linjelängd är > 0 så separeras stycken "
+"med en blank linje."
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:67
 msgid "Output &line length:"
@@ -3977,8 +3980,7 @@ msgstr "Bygg om fillistorna"
 #: src/frontends/qt4/ui/TexinfoUi.ui:104
 msgid ""
 "Show contents of marked file. Only possible when files are shown with path"
-msgstr ""
-"Visa innehåll i märkt fil. Bara möjligt när filer visas med sökväg"
+msgstr "Visa innehåll i märkt fil. Bara möjligt när filer visas med sökväg"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:107
 msgid "&View"
@@ -9416,12 +9418,12 @@ msgid ""
 "Sections'/'within Chapters' modules, respectively."
 msgstr ""
 "Definierar teoremmiljöer och bevismiljön via det utökade AMS-maskineriet. "
-"Både numrerade och onumrerade typer förses. I motsats till den vanliga "
-"AMS-teoremmodulen har de olika teoremtyperna försedda här varsin separat "
-"räknare (t.ex. teorem 1, teorem 2, lemma 1, proposition 1, teorem 3, lemma "
-"2, ..., i motsats till teorem 1, teorem 2, lemma 3, proposition 4, ...). "
-"Numreringens omfång är hela dokumentet. För kapitel- och avsnittsbred "
-"numrering, använd en av 'i avsnitt'/'i kapitel' modulerna, respektive."
+"Både numrerade och onumrerade typer förses. I motsats till den vanliga AMS-"
+"teoremmodulen har de olika teoremtyperna försedda här varsin separat räknare "
+"(t.ex. teorem 1, teorem 2, lemma 1, proposition 1, teorem 3, lemma 2, ..., i "
+"motsats till teorem 1, teorem 2, lemma 3, proposition 4, ...). Numreringens "
+"omfång är hela dokumentet. För kapitel- och avsnittsbred numrering, använd "
+"en av 'i avsnitt'/'i kapitel' modulerna, respektive."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:2
 msgid "Theorems (AMS-Extended, Numbered by Type)"
@@ -9437,13 +9439,13 @@ msgid ""
 "criterion 1, criterion 2, axiom 1, assumption 1, criterion 3, ..., as "
 "opposed to criterion 1, criterion 2, axiom 3, assumption 4, ...)."
 msgstr ""
-"Definierar några ytterligare teoremmiljöer för användning med "
-"AMS-teorempaketen. Inkluderar kriterium, algoritm, axiom, villkor, "
-"anteckning, notation, sammanfattning, erkännande, slutsats, antagande, och "
-"fall, i både numrerade och onumrerade former. I motsats till den vanliga "
-"AMS-utökad-modulen, har de olika teoremtyperna försedda här varsin separat "
-"räknare (t.ex. kriterium 1, kriterium 2, axiom 1, antagande 1, kriterium 3, "
-"..., i motsats till kriterium 1, kriterium 2, axiom 3, antagande 4, ...)."
+"Definierar några ytterligare teoremmiljöer för användning med AMS-"
+"teorempaketen. Inkluderar kriterium, algoritm, axiom, villkor, anteckning, "
+"notation, sammanfattning, erkännande, slutsats, antagande, och fall, i både "
+"numrerade och onumrerade former. I motsats till den vanliga AMS-utökad-"
+"modulen, har de olika teoremtyperna försedda här varsin separat räknare (t."
+"ex. kriterium 1, kriterium 2, axiom 1, antagande 1, kriterium 3, ..., i "
+"motsats till kriterium 1, kriterium 2, axiom 3, antagande 4, ...)."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:63
 msgid "Criterion \\thecriterion."
@@ -9602,10 +9604,10 @@ msgid ""
 "Summary, Acknowledgement, Conclusion, Fact, Assumption, and Case, in both "
 "numbered and non-numbered forms."
 msgstr ""
-"Definierar några ytterligare teoremmiljöer för användning med "
-"AMS-teorempaketen. Inkluderar kriterium, algoritm, axiom, villkor, "
-"anteckning, notation, sammanfattning, erkännande, slutsats, fakta, antagande, "
-"och fall, i både numrerade och onumrerade former."
+"Definierar några ytterligare teoremmiljöer för användning med AMS-"
+"teorempaketen. Inkluderar kriterium, algoritm, axiom, villkor, anteckning, "
+"notation, sammanfattning, erkännande, slutsats, fakta, antagande, och fall, "
+"i både numrerade och onumrerade former."
 
 #: lib/layouts/theorems-ams-extended.module:37
 msgid "Criterion \\thetheorem."
@@ -9698,10 +9700,10 @@ msgid ""
 "proposition 4, ...). The numbering is reset at each chapter start."
 msgstr ""
 "Definierar några teoremmiljöer för användning med icke-AMS-klasser. I "
-"motsats till den vanliga teoremmodulen har de olika teoremtyperna "
-"försedda här varsin separat räknare (t.ex., teorem 1, teorem 2, lemma 1, "
-"proposition 1, teorem 3, lemma 2, ..., i motsats till teorem 1, teorem 2, "
-"lemma 3, proposition 4, ...). Numreringen återställs vid varje kapitelstart."
+"motsats till den vanliga teoremmodulen har de olika teoremtyperna försedda "
+"här varsin separat räknare (t.ex., teorem 1, teorem 2, lemma 1, proposition "
+"1, teorem 3, lemma 2, ..., i motsats till teorem 1, teorem 2, lemma 3, "
+"proposition 4, ...). Numreringen återställs vid varje kapitelstart."
 
 #: lib/layouts/theorems-chap.module:2
 msgid "Theorems (Numbered by Chapter)"
@@ -9730,10 +9732,10 @@ msgid ""
 "proposition 4, ...). The numbering is reset at each section start."
 msgstr ""
 "Definierar några teoremmiljöer för användning med icke-AMS-klasser. I "
-"motsats till den vanliga teoremmodulen har de olika teorem-typerna "
-"försedda här varsin separat räknare (t.ex., teorem 1, teorem 2, lemma 1, "
-"proposition 1, teorem 3, lemma 2, ..., i motsats till teorem 1, teorem 2, "
-"lemma 3, proposition 4, ...). Numreringen återställs vid varje avsnittstart."
+"motsats till den vanliga teoremmodulen har de olika teorem-typerna försedda "
+"här varsin separat räknare (t.ex., teorem 1, teorem 2, lemma 1, proposition "
+"1, teorem 3, lemma 2, ..., i motsats till teorem 1, teorem 2, lemma 3, "
+"proposition 4, ...). Numreringen återställs vid varje avsnittstart."
 
 #: lib/layouts/theorems-sec.module:2
 msgid "Theorems (Numbered by Section)"
@@ -15805,7 +15807,7 @@ msgstr "Dokumentklass inte tillgänglig"
 msgid "LyX will not be able to produce output."
 msgstr "LyX kommer inte att kunna producera utmatning."
 
-#: src/BufferParams.cpp:1666
+#: src/BufferParams.cpp:1667
 #, c-format
 msgid ""
 "The document class %1$s could not be found. A default textclass with default "
@@ -15816,20 +15818,20 @@ msgstr ""
 "utformningar kommer att användas. LyX kanske inte kan producera utmatning om "
 "inte en korrekt textklass är vald från dialogen för dokumentinställningar."
 
-#: src/BufferParams.cpp:1671
+#: src/BufferParams.cpp:1672
 msgid "Document class not found"
 msgstr "Dokumentklass hittades inte"
 
-#: src/BufferParams.cpp:1678 src/LyXFunc.cpp:752
+#: src/BufferParams.cpp:1679 src/LyXFunc.cpp:752
 #, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr "Dokumentklassen %1$s kunde inte laddas."
 
-#: src/BufferParams.cpp:1680 src/LyXFunc.cpp:754
+#: src/BufferParams.cpp:1681 src/LyXFunc.cpp:754
 msgid "Could not load class"
 msgstr "Kunde inte ladda klass"
 
-#: src/BufferParams.cpp:1742
+#: src/BufferParams.cpp:1743
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -15842,15 +15844,15 @@ msgstr ""
 "moduler. Om du installerade den nyss, måste\n"
 "du nog omkonfigurera LyX.\n"
 
-#: src/BufferParams.cpp:1746
+#: src/BufferParams.cpp:1747
 msgid "Module not available"
 msgstr "Modul inte tillgänglig"
 
-#: src/BufferParams.cpp:1747
+#: src/BufferParams.cpp:1748
 msgid "Some layouts may not be available."
 msgstr "Några utformningar kanske inte är tillgängliga."
 
-#: src/BufferParams.cpp:1754
+#: src/BufferParams.cpp:1755
 #, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
@@ -15860,20 +15862,20 @@ msgstr ""
 "Modulen %1$s kräver ett paket som inte finns tillgänglig i din\n"
 "LaTeX-installation. LaTeX-utmatning kanske inte är möjlig.\n"
 
-#: src/BufferParams.cpp:1757
+#: src/BufferParams.cpp:1758
 msgid "Package not available"
 msgstr "Paket inte tillgängligt"
 
-#: src/BufferParams.cpp:1762
+#: src/BufferParams.cpp:1763
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr "Fel vid läsning av modul %1$s\n"
 
-#: src/BufferParams.cpp:1763 src/BufferParams.cpp:1769
+#: src/BufferParams.cpp:1764 src/BufferParams.cpp:1770
 msgid "Read Error"
 msgstr "Läsfel"
 
-#: src/BufferParams.cpp:1768
+#: src/BufferParams.cpp:1769
 msgid "Error reading internal layout information"
 msgstr "Fel vid läsning av intern utformningsinformation"
 
@@ -16673,8 +16675,8 @@ msgid ""
 "Could not insert word `%1$s' because it could not be converted to encoding `%"
 "2$s'."
 msgstr ""
-"Kunde inte infoga ord `%1$s' eftersom det inte kunde omvandlas till kodning "
-"`%2$s'."
+"Kunde inte infoga ord `%1$s' eftersom det inte kunde omvandlas till kodning `"
+"%2$s'."
 
 #: src/ISpell.cpp:481
 #, c-format
@@ -16682,8 +16684,8 @@ msgid ""
 "Could not accept word `%1$s' because it could not be converted to encoding `%"
 "2$s'."
 msgstr ""
-"Kunde inte godta ord `%1$s' eftersom det inte kunde omvandlas till kodning "
-"`%2$s'."
+"Kunde inte godta ord `%1$s' eftersom det inte kunde omvandlas till kodning `%"
+"2$s'."
 
 #: src/KeySequence.cpp:166
 msgid "   options: "
@@ -17162,8 +17164,8 @@ msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
 msgstr ""
-"Välj bort om du inte vill att aktuellt urval ska ersättas automatiskt med vad "
-"du skriver."
+"Välj bort om du inte vill att aktuellt urval ska ersättas automatiskt med "
+"vad du skriver."
 
 #: src/LyXRC.cpp:2543
 msgid ""
@@ -17601,8 +17603,7 @@ msgstr "Ditt favoritutskriftsprogram, t.ex. \"dvips\", \"dvilj4\"."
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
-"Välj för bidi visuell markörförflyttning, välj bort för logisk "
-"förflyttning."
+"Välj för bidi visuell markörförflyttning, välj bort för logisk förflyttning."
 
 #: src/LyXRC.cpp:2869
 msgid ""
@@ -23287,8 +23288,7 @@ msgstr "Okänd användare"
 #~ msgstr "Filen är skrivskyddad"
 
 #~ msgid "The file %1$s cannot be written because it is marked as read-only."
-#~ msgstr ""
-#~ "Filen %1$s kan inte skrivas eftersom den är märkt som skrivskyddad."
+#~ msgstr "Filen %1$s kan inte skrivas eftersom den är märkt som skrivskyddad."
 
 #~ msgid "Don't know how to export to format: %1$s"
 #~ msgstr "Vet inte hur man exporterar till format: %1$s"
@@ -23330,8 +23330,8 @@ msgstr "Okänd användare"
 #~ "marked read-only. Please make sure to save the document as a different "
 #~ "file."
 #~ msgstr ""
-#~ "En säkerhetskopierad fil laddades framgångsrikt, men originalfilen %1$s är "
-#~ "märkt skrivskyddad. Vänligen spara dokumentet som en annan fil."
+#~ "En säkerhetskopierad fil laddades framgångsrikt, men originalfilen %1$s "
+#~ "är märkt skrivskyddad. Vänligen spara dokumentet som en annan fil."
 
 #~ msgid "Included File Invalid"
 #~ msgstr "Inkluderad fil ogiltig"
