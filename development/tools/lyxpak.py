@@ -24,7 +24,7 @@ from sets import Set
 lyx2lyx = None
 
 # Pre-compiled regular expressions.
-re_extn = re.compile("\.[^.]*$")
+re_lyxfile = re.compile("\.lyx$")
 re_input = re.compile(r'^(.*)\\(input|include){(\s*)(\S+)(\s*)}.*$')
 re_package = re.compile(r'^(.*)\\(usepackage){(\s*)(\S+)(\s*)}.*$')
 re_class = re.compile(r'^(\\)(textclass)(\s+)(\S+)$')
@@ -71,7 +71,7 @@ def abspath(name):
 def gather_files(curfile, incfiles):
     " Recursively gather files."
     curdir = os.path.dirname(abspath(curfile))
-    is_lyxfile = re_extn.search(curfile)
+    is_lyxfile = re_lyxfile.search(curfile)
     if is_lyxfile:
         lyx2lyx_cmd = 'python "%s" "%s"' % (lyx2lyx, curfile)
         l2l_status, l2l_stdout = run_cmd(lyx2lyx_cmd)
@@ -185,7 +185,7 @@ def main(argv):
 
     if archiver == "tar":
         ar_cmd = "tar cf"
-        ar_name = re_extn.sub(".tar", abspath(lyxfile))
+        ar_name = re_lyxfile.sub(".tar", abspath(lyxfile))
         # Archive will be compressed if either gzip or bzip2 are available
         compress, full_path = find_exe(["gzip", "bzip2"], extlist, path)
         if compress == "gzip":
@@ -194,7 +194,7 @@ def main(argv):
             ext = ".bz2"
     elif archiver == "zip":
         ar_cmd = "zip"
-        ar_name = re_extn.sub(".zip", abspath(lyxfile))
+        ar_name = re_lyxfile.sub(".zip", abspath(lyxfile))
         compress = None
     else:
         error("Unable to find either tar or zip.")
