@@ -14,7 +14,8 @@
 # found in the path. The tar archive is then compressed with gzip or bzip2.
 
 import os, re, string, sys
-from sets import Set
+if sys.version_info < (2, 4, 0):
+    from sets import Set as set
 
 # Replace with the actual path to the 1.5.x or 1.6.x lyx2lyx.
 # If left undefined and the LyX executable is in the path, the script will
@@ -256,7 +257,7 @@ def main(argv):
         i += 1
 
     # Remove duplicates and sort the list
-    incfiles = list(Set(incfiles))
+    incfiles = list(set(incfiles))
     incfiles.sort()
 
     # Build the archive command
