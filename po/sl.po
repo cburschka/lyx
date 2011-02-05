@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-03 11:04+0100\n"
+"POT-Creation-Date: 2011-02-05 02:09+0100\n"
 "PO-Revision-Date: 2004-01-02 23:55+0100\n"
 "Last-Translator:  Roman Maurer <>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -37,7 +37,7 @@ msgstr "Pravice razširjanja"
 #: src/frontends/qt4/ui/AboutUi.ui:131 src/frontends/qt4/ui/CompareUi.ui:155
 #: src/frontends/qt4/ui/DelimiterUi.ui:286
 #: src/frontends/qt4/ui/ErrorListUi.ui:60
-#: src/frontends/qt4/ui/ExternalUi.ui:619
+#: src/frontends/qt4/ui/ExternalUi.ui:608
 #: src/frontends/qt4/ui/IncludeUi.ui:250
 #: src/frontends/qt4/ui/InsetParamsUi.ui:132 src/frontends/qt4/ui/LogUi.ui:87
 #: src/frontends/qt4/ui/ParagraphUi.ui:260 src/frontends/qt4/ui/PrefsUi.ui:93
@@ -247,7 +247,7 @@ msgstr "Dodaj bibliografijo v &kazalo"
 #: src/frontends/qt4/ui/CitationUi.ui:197
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:183
 #: src/frontends/qt4/ui/CompareUi.ui:145 src/frontends/qt4/ui/DocumentUi.ui:67
-#: src/frontends/qt4/ui/ExternalUi.ui:599
+#: src/frontends/qt4/ui/ExternalUi.ui:588
 #: src/frontends/qt4/ui/GraphicsUi.ui:721
 #: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/IndexUi.ui:41
 #: src/frontends/qt4/ui/InsetParamsUi.ui:112
@@ -330,23 +330,23 @@ msgid "Horizontal alignment of the content inside the box"
 msgstr "Vodoravna poravnava v stolpcu"
 
 #: src/frontends/qt4/ui/BoxUi.ui:63 src/frontends/qt4/ui/ListingsUi.ui:103
-#: src/frontends/qt4/ui/TabularUi.ui:69 src/frontends/qt4/ui/TabularUi.ui:1371
+#: src/frontends/qt4/ui/TabularUi.ui:69 src/frontends/qt4/ui/TabularUi.ui:1387
 #: src/frontends/qt4/ui/WrapUi.ui:209 src/frontends/qt4/GuiParagraph.cpp:109
-#: src/frontends/qt4/GuiTabular.cpp:754
+#: src/frontends/qt4/GuiTabular.cpp:784
 msgid "Left"
 msgstr "Levo"
 
 #: src/frontends/qt4/ui/BoxUi.ui:68 src/frontends/qt4/ui/TabularUi.ui:74
-#: src/frontends/qt4/ui/TabularUi.ui:1378 src/frontends/qt4/GuiExternal.cpp:77
+#: src/frontends/qt4/ui/TabularUi.ui:1394 src/frontends/qt4/GuiExternal.cpp:77
 #: src/frontends/qt4/GuiGraphics.cpp:72 src/frontends/qt4/GuiParagraph.cpp:111
-#: src/frontends/qt4/GuiTabular.cpp:755
+#: src/frontends/qt4/GuiTabular.cpp:785
 msgid "Center"
 msgstr "Sredina"
 
 #: src/frontends/qt4/ui/BoxUi.ui:73 src/frontends/qt4/ui/ListingsUi.ui:108
-#: src/frontends/qt4/ui/TabularUi.ui:79 src/frontends/qt4/ui/TabularUi.ui:1388
+#: src/frontends/qt4/ui/TabularUi.ui:79 src/frontends/qt4/ui/TabularUi.ui:1404
 #: src/frontends/qt4/ui/WrapUi.ui:214 src/frontends/qt4/GuiParagraph.cpp:110
-#: src/frontends/qt4/GuiTabular.cpp:756
+#: src/frontends/qt4/GuiTabular.cpp:786
 msgid "Right"
 msgstr "Desno"
 
@@ -362,19 +362,20 @@ msgstr "Navpična poravnava za stolpce stalne širine"
 
 #: src/frontends/qt4/ui/BoxUi.ui:96 src/frontends/qt4/ui/BoxUi.ui:123
 #: src/frontends/qt4/ui/MathMatrixUi.ui:167
-#: src/frontends/qt4/ui/TabularUi.ui:210 src/frontends/qt4/ui/TabularUi.ui:338
+#: src/frontends/qt4/ui/TabularUi.ui:210 src/frontends/qt4/ui/TabularUi.ui:371
 msgid "Top"
 msgstr "Vrh"
 
 #: src/frontends/qt4/ui/BoxUi.ui:101 src/frontends/qt4/ui/BoxUi.ui:128
 #: src/frontends/qt4/ui/MathMatrixUi.ui:172
-#: src/frontends/qt4/ui/TabularUi.ui:215 src/frontends/qt4/ui/TabularUi.ui:343
+#: src/frontends/qt4/ui/TabularUi.ui:215 src/frontends/qt4/ui/TabularUi.ui:376
+#: src/frontends/qt4/GuiTabular.cpp:212
 msgid "Middle"
 msgstr "Sredina"
 
 #: src/frontends/qt4/ui/BoxUi.ui:106 src/frontends/qt4/ui/BoxUi.ui:133
 #: src/frontends/qt4/ui/MathMatrixUi.ui:177
-#: src/frontends/qt4/ui/TabularUi.ui:220 src/frontends/qt4/ui/TabularUi.ui:348
+#: src/frontends/qt4/ui/TabularUi.ui:220 src/frontends/qt4/ui/TabularUi.ui:381
 msgid "Bottom"
 msgstr "Dno"
 
@@ -403,7 +404,7 @@ msgstr "&Navpično:"
 msgid "Horizontal"
 msgstr "&Vodoravno:"
 
-#: src/frontends/qt4/ui/BoxUi.ui:197 src/frontends/qt4/ui/ExternalUi.ui:457
+#: src/frontends/qt4/ui/BoxUi.ui:197 src/frontends/qt4/ui/ExternalUi.ui:446
 #: src/frontends/qt4/ui/PageLayoutUi.ui:70
 msgid "&Height:"
 msgstr "&Višina:"
@@ -418,7 +419,7 @@ msgstr "&Notranji:"
 msgid "&Decoration:"
 msgstr "Posvetilo"
 
-#: src/frontends/qt4/ui/BoxUi.ui:242 src/frontends/qt4/ui/ExternalUi.ui:431
+#: src/frontends/qt4/ui/BoxUi.ui:242 src/frontends/qt4/ui/ExternalUi.ui:420
 #: src/frontends/qt4/ui/LineUi.ui:58 src/frontends/qt4/ui/PageLayoutUi.ui:99
 #: src/frontends/qt4/ui/TabularUi.ui:153 src/frontends/qt4/ui/WrapUi.ui:85
 msgid "&Width:"
@@ -440,9 +441,9 @@ msgstr ""
 #: src/frontends/qt4/ui/BoxUi.ui:273 src/frontends/qt4/ui/HSpaceUi.ui:32
 #: src/frontends/qt4/ui/ListingsUi.ui:98
 #: src/frontends/qt4/ui/MathMatrixUi.ui:247
-#: src/frontends/qt4/ui/TabularUi.ui:1021
-#: src/frontends/qt4/ui/TabularUi.ui:1040
-#: src/frontends/qt4/ui/TabularUi.ui:1088 src/frontends/qt4/GuiBox.cpp:193
+#: src/frontends/qt4/ui/TabularUi.ui:1037
+#: src/frontends/qt4/ui/TabularUi.ui:1056
+#: src/frontends/qt4/ui/TabularUi.ui:1104 src/frontends/qt4/GuiBox.cpp:193
 #: src/frontends/qt4/GuiBox.cpp:311 src/frontends/qt4/GuiBox.cpp:388
 #: src/frontends/qt4/GuiDocument.cpp:113 src/frontends/qt4/GuiGraphics.cpp:579
 #: src/frontends/qt4/GuiPrefs.cpp:2058 src/frontends/qt4/GuiPrefs.cpp:2081
@@ -575,7 +576,7 @@ msgstr ""
 #: src/Buffer.cpp:2282 src/Buffer.cpp:3760 src/Buffer.cpp:3823
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:222 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
-#: src/frontends/qt4/GuiDocument.cpp:1775
+#: src/frontends/qt4/GuiDocument.cpp:1793
 #: src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:2070
 #: src/frontends/qt4/GuiView.cpp:2259 src/frontends/qt4/GuiView.cpp:2304
@@ -608,23 +609,24 @@ msgstr "Ve&likost:"
 #: src/frontends/qt4/ui/BulletsUi.ui:66
 #: src/frontends/qt4/ui/ParagraphUi.ui:115
 #: src/frontends/qt4/ui/PrefLatexUi.ui:52
-#: src/frontends/qt4/ui/TabularUi.ui:1026
-#: src/frontends/qt4/ui/TabularUi.ui:1045
-#: src/frontends/qt4/ui/TabularUi.ui:1093 lib/ui/stdtoolbars.inc:112
+#: src/frontends/qt4/ui/TabularUi.ui:1042
+#: src/frontends/qt4/ui/TabularUi.ui:1061
+#: src/frontends/qt4/ui/TabularUi.ui:1109 lib/ui/stdtoolbars.inc:112
 #: src/Font.cpp:178 src/HSpace.cpp:117 src/frontends/qt4/GuiDocument.cpp:109
 #: src/frontends/qt4/GuiDocument.cpp:127 src/frontends/qt4/GuiDocument.cpp:143
 #: src/frontends/qt4/GuiDocument.cpp:156 src/frontends/qt4/GuiDocument.cpp:685
 #: src/frontends/qt4/GuiDocument.cpp:788 src/frontends/qt4/GuiDocument.cpp:793
 #: src/frontends/qt4/GuiDocument.cpp:829 src/frontends/qt4/GuiDocument.cpp:840
-#: src/frontends/qt4/GuiDocument.cpp:1054
-#: src/frontends/qt4/GuiDocument.cpp:1630
-#: src/frontends/qt4/GuiDocument.cpp:1653
-#: src/frontends/qt4/GuiDocument.cpp:1654
-#: src/frontends/qt4/GuiDocument.cpp:1655
-#: src/frontends/qt4/GuiDocument.cpp:1730
-#: src/frontends/qt4/GuiDocument.cpp:2087
-#: src/frontends/qt4/GuiDocument.cpp:3162 src/frontends/qt4/GuiExternal.cpp:75
-#: src/frontends/qt4/GuiGraphics.cpp:70 src/frontends/qt4/GuiIndices.cpp:56
+#: src/frontends/qt4/GuiDocument.cpp:998
+#: src/frontends/qt4/GuiDocument.cpp:1072
+#: src/frontends/qt4/GuiDocument.cpp:1648
+#: src/frontends/qt4/GuiDocument.cpp:1671
+#: src/frontends/qt4/GuiDocument.cpp:1672
+#: src/frontends/qt4/GuiDocument.cpp:1673
+#: src/frontends/qt4/GuiDocument.cpp:1748
+#: src/frontends/qt4/GuiDocument.cpp:2113
+#: src/frontends/qt4/GuiDocument.cpp:3209 src/frontends/qt4/GuiExternal.cpp:75
+#: src/frontends/qt4/GuiGraphics.cpp:70 src/frontends/qt4/GuiIndices.cpp:57
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
 #: src/frontends/qt4/GuiPrefs.cpp:2202
 #: src/frontends/qt4/GuiPrintNomencl.cpp:47
@@ -762,7 +764,7 @@ msgstr "Vrste pisav"
 #: src/frontends/qt4/ui/CharacterUi.ui:108
 #: src/frontends/qt4/ui/CharacterUi.ui:145
 #: src/frontends/qt4/ui/ListingsUi.ui:339
-#: src/frontends/qt4/GuiDocument.cpp:1256 src/frontends/qt4/GuiPrefs.cpp:2161
+#: src/frontends/qt4/GuiDocument.cpp:1274 src/frontends/qt4/GuiPrefs.cpp:2161
 #: src/frontends/qt4/Menus.cpp:839
 msgid "Language"
 msgstr "Jezik"
@@ -773,7 +775,7 @@ msgid "Font color"
 msgstr "Barva pisave"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:148
-#: src/frontends/qt4/ui/LanguageUi.ui:99
+#: src/frontends/qt4/ui/LanguageUi.ui:19
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:22
 #: src/frontends/qt4/ui/ThesaurusUi.ui:22
 msgid "&Language:"
@@ -830,15 +832,15 @@ msgstr "Samodejni uporabi vsako spremembo"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:367
 #: src/frontends/qt4/ui/DocumentUi.ui:77
-#: src/frontends/qt4/ui/ExternalUi.ui:609
+#: src/frontends/qt4/ui/ExternalUi.ui:598
 #: src/frontends/qt4/ui/GraphicsUi.ui:742
 #: src/frontends/qt4/ui/InsetParamsUi.ui:122
 #: src/frontends/qt4/ui/ListingsUi.ui:549
 #: src/frontends/qt4/ui/ParagraphUi.ui:250 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:124 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
-#: src/frontends/qt4/GuiDocument.cpp:1851
-#: src/frontends/qt4/GuiDocument.cpp:3105
+#: src/frontends/qt4/GuiDocument.cpp:1869
+#: src/frontends/qt4/GuiDocument.cpp:3152
 msgid "&Apply"
 msgstr "&Uporabi"
 
@@ -1247,146 +1249,152 @@ msgstr "Način &osnutka"
 msgid "&Template"
 msgstr "&Vzorci:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:123
+#: src/frontends/qt4/ui/ExternalUi.ui:121
 msgid "Available templates"
 msgstr "Dostopni vzorci"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:134
+#: src/frontends/qt4/ui/ExternalUi.ui:132
 #: src/frontends/qt4/ui/GraphicsUi.ui:448
 #, fuzzy
 msgid "LaTe&X and LyX options"
 msgstr "&Izbire za LaTeX"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:146
+#: src/frontends/qt4/ui/ExternalUi.ui:144
 #, fuzzy
 msgid "LaTeX Options"
 msgstr "&Izbire za LaTeX"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:164
+#: src/frontends/qt4/ui/ExternalUi.ui:162
 #, fuzzy
 msgid "O&ption:"
 msgstr "&Pojasnilo:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:177
+#: src/frontends/qt4/ui/ExternalUi.ui:175
 #, fuzzy
 msgid "Forma&t:"
 msgstr "F&ormat:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:201
+#: src/frontends/qt4/ui/ExternalUi.ui:191
+msgid ""
+"Enable LyX to preview this material; only if graphics previewing is not "
+"disabled at application level (see Preference dialog)."
+msgstr ""
+
+#: src/frontends/qt4/ui/ExternalUi.ui:194
 msgid "&Show in LyX"
 msgstr "&Prikaži v LyXu"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:219
-#: src/frontends/qt4/ui/ExternalUi.ui:243
+#: src/frontends/qt4/ui/ExternalUi.ui:212
+#: src/frontends/qt4/ui/ExternalUi.ui:234
 #: src/frontends/qt4/ui/GraphicsUi.ui:559
 #: src/frontends/qt4/ui/GraphicsUi.ui:566
 msgid "Percentage to scale by in LyX"
 msgstr "Odstotek raztega v LyXu"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:222
+#: src/frontends/qt4/ui/ExternalUi.ui:215
 #: src/frontends/qt4/ui/GraphicsUi.ui:569
 #, fuzzy
 msgid "Sca&le on Screen (%):"
 msgstr "&brez serifov:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:280
+#: src/frontends/qt4/ui/ExternalUi.ui:271
 #, fuzzy
 msgid "Si&ze and Rotation"
 msgstr "Citat"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:292
+#: src/frontends/qt4/ui/ExternalUi.ui:283
 #, fuzzy
 msgid "Rotate"
 msgstr "Država"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:339
-#: src/frontends/qt4/ui/ExternalUi.ui:369
+#: src/frontends/qt4/ui/ExternalUi.ui:328
+#: src/frontends/qt4/ui/ExternalUi.ui:358
 #: src/frontends/qt4/ui/GraphicsUi.ui:240
 #: src/frontends/qt4/ui/GraphicsUi.ui:247
 msgid "Angle to rotate image by"
 msgstr "Kot zasuka slike"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:349
-#: src/frontends/qt4/ui/ExternalUi.ui:362
+#: src/frontends/qt4/ui/ExternalUi.ui:338
+#: src/frontends/qt4/ui/ExternalUi.ui:351
 #: src/frontends/qt4/ui/GraphicsUi.ui:212
 #: src/frontends/qt4/ui/GraphicsUi.ui:219
 msgid "The origin of the rotation"
 msgstr "Izhodišče zasuka"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:352
+#: src/frontends/qt4/ui/ExternalUi.ui:341
 #, fuzzy
 msgid "Ori&gin:"
 msgstr "&Izhodišče:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:372
+#: src/frontends/qt4/ui/ExternalUi.ui:361
 msgid "A&ngle:"
 msgstr "&Kot:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:387
+#: src/frontends/qt4/ui/ExternalUi.ui:376
 #, fuzzy
 msgid "Scale"
 msgstr "Razteg%"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:411
+#: src/frontends/qt4/ui/ExternalUi.ui:400
 #: src/frontends/qt4/ui/GraphicsUi.ui:131
 msgid "Height of image in output"
 msgstr "Višina slike na izhodu"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:421
+#: src/frontends/qt4/ui/ExternalUi.ui:410
 #: src/frontends/qt4/ui/GraphicsUi.ui:97
 msgid "Width of image in output"
 msgstr "Širina slike na izhodu"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:444
+#: src/frontends/qt4/ui/ExternalUi.ui:433
 msgid "Maintain aspect ratio with largest dimension"
 msgstr "Ohrani pojavno razmerje pri večjih dimenzijah"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:447
+#: src/frontends/qt4/ui/ExternalUi.ui:436
 #: src/frontends/qt4/ui/GraphicsUi.ui:177
 msgid "&Maintain aspect ratio"
 msgstr "&Ohrani pojavno razmerje"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:470
+#: src/frontends/qt4/ui/ExternalUi.ui:459
 #, fuzzy
 msgid "Crop"
 msgstr "Prepiši"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:485
+#: src/frontends/qt4/ui/ExternalUi.ui:474
 #: src/frontends/qt4/ui/GraphicsUi.ui:309
 msgid "Clip to bounding box values"
 msgstr "Obreži v vrednosti okvirne škatle"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:488
+#: src/frontends/qt4/ui/ExternalUi.ui:477
 #: src/frontends/qt4/ui/GraphicsUi.ui:312
 msgid "Clip to &bounding box"
 msgstr "Obreži v &okvirno škatlo"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:495
+#: src/frontends/qt4/ui/ExternalUi.ui:484
 #: src/frontends/qt4/ui/GraphicsUi.ui:345
 msgid "&Left bottom:"
 msgstr "&Levo dno:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:508
+#: src/frontends/qt4/ui/ExternalUi.ui:497
 msgid "x"
 msgstr "x"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:515
+#: src/frontends/qt4/ui/ExternalUi.ui:504
 #: src/frontends/qt4/ui/GraphicsUi.ui:383
 msgid "Right &top:"
 msgstr "Desni &vrh:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:525
+#: src/frontends/qt4/ui/ExternalUi.ui:514
 #: src/frontends/qt4/ui/GraphicsUi.ui:437
 msgid "Get bounding box from the (EPS) file"
 msgstr "Okvirno škatlo vzemi iz datoteke (EPS)"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:528
+#: src/frontends/qt4/ui/ExternalUi.ui:517
 #: src/frontends/qt4/ui/GraphicsUi.ui:440
 #, fuzzy
 msgid "&Get from File"
 msgstr "&Vzemi iz datoteke"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:558
+#: src/frontends/qt4/ui/ExternalUi.ui:547
 msgid "y"
 msgstr "y"
 
@@ -2218,25 +2226,40 @@ msgstr ""
 msgid "&Use refstyle (not prettyref) for cross-references"
 msgstr ""
 
-#: src/frontends/qt4/ui/LanguageUi.ui:25
+#: src/frontends/qt4/ui/LanguageUi.ui:52
+#, fuzzy
+msgid "&Quote Style:"
+msgstr "Slog narekovajev"
+
+#: src/frontends/qt4/ui/LanguageUi.ui:65
 #, fuzzy
 msgid "Encoding"
 msgstr "&Kodiranje:"
 
-#: src/frontends/qt4/ui/LanguageUi.ui:40
+#: src/frontends/qt4/ui/LanguageUi.ui:80
 #, fuzzy
 msgid "Language &Default"
 msgstr "Glava"
 
-#: src/frontends/qt4/ui/LanguageUi.ui:63
+#: src/frontends/qt4/ui/LanguageUi.ui:103
 #, fuzzy
 msgid "&Other:"
 msgstr "&Zunanji:"
 
-#: src/frontends/qt4/ui/LanguageUi.ui:109
-#, fuzzy
-msgid "&Quote Style:"
-msgstr "Slog narekovajev"
+#: src/frontends/qt4/ui/LanguageUi.ui:125
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:39
+msgid "Language pac&kage:"
+msgstr "Jezikovni &paket:"
+
+#: src/frontends/qt4/ui/LanguageUi.ui:135
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:51
+msgid "Select which language package LyX should use"
+msgstr ""
+
+#: src/frontends/qt4/ui/LanguageUi.ui:142
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:78
+msgid "Enter the command to load the language package (default: babel)"
+msgstr ""
 
 #: src/frontends/qt4/ui/LineUi.ui:22
 #, fuzzy
@@ -2349,7 +2372,7 @@ msgid "Choose the font size for line numbers"
 msgstr "Izberi slogovno datoteko"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:188
-#: src/frontends/qt4/ui/TabularUi.ui:950
+#: src/frontends/qt4/ui/TabularUi.ui:966
 msgid "Style"
 msgstr "Slog"
 
@@ -3073,7 +3096,7 @@ msgid "&Landscape"
 msgstr "&Ležeče"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:161
-#: src/frontends/qt4/GuiDocument.cpp:1254
+#: src/frontends/qt4/GuiDocument.cpp:1272
 #, fuzzy
 msgid "Page Layout"
 msgstr "Videz odstavka"
@@ -3130,12 +3153,13 @@ msgstr "Dvojni"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:135
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:65
-#: src/frontends/qt4/ui/TabularUi.ui:1031
-#: src/frontends/qt4/ui/TabularUi.ui:1050
-#: src/frontends/qt4/ui/TabularUi.ui:1098 src/frontends/qt4/ui/VSpaceUi.ui:107
+#: src/frontends/qt4/ui/TabularUi.ui:1047
+#: src/frontends/qt4/ui/TabularUi.ui:1066
+#: src/frontends/qt4/ui/TabularUi.ui:1114 src/frontends/qt4/ui/VSpaceUi.ui:107
 #: src/frontends/qt4/GuiDocument.cpp:686 src/frontends/qt4/GuiDocument.cpp:690
 #: src/frontends/qt4/GuiDocument.cpp:698 src/frontends/qt4/GuiDocument.cpp:794
-#: src/frontends/qt4/GuiDocument.cpp:841 src/frontends/qt4/GuiHSpace.cpp:54
+#: src/frontends/qt4/GuiDocument.cpp:841
+#: src/frontends/qt4/GuiDocument.cpp:1004 src/frontends/qt4/GuiHSpace.cpp:54
 #: src/frontends/qt4/GuiHSpace.cpp:63 src/frontends/qt4/GuiPrefs.cpp:810
 #: src/frontends/qt4/GuiPrefs.cpp:837 src/frontends/qt4/GuiPrefs.cpp:2060
 #: src/frontends/qt4/GuiPrefs.cpp:2083
@@ -3644,32 +3668,23 @@ msgstr "Datoteka z &uporabniškim vmesnikom:"
 msgid "Select the language of the user interface (menus, dialogs, etc.)"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:39
-msgid "Language pac&kage:"
-msgstr "Jezikovni &paket:"
-
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:51
-msgid "Select which language package LyX should use"
-msgstr ""
-
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:55
+#: src/frontends/qt4/GuiDocument.cpp:1000
 #, fuzzy
 msgid "Automatic"
 msgstr "Epošta_avtorja"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:60
+#: src/frontends/qt4/GuiDocument.cpp:1002
 #, fuzzy
 msgid "Always Babel"
 msgstr "Vedno preklopljeni"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:70
+#: src/frontends/qt4/GuiDocument.cpp:1006
 #, fuzzy
 msgid "None[[language package]]"
 msgstr "Jezikovni &paket:"
-
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:78
-msgid "Enter the command to load the language package (default: babel)"
-msgstr ""
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:87
 msgid "Command s&tart:"
@@ -4292,7 +4307,7 @@ msgstr "Epošta_avtorja"
 
 #: src/frontends/qt4/ui/PrefUi.ui:76
 msgid ""
-"Checking this allow the automatic display of helpful comments for insets in "
+"Checking this allows the automatic display of helpful comments for insets in "
 "the main work area of an edited document"
 msgstr ""
 
@@ -4528,7 +4543,7 @@ msgid "Select the index that shall be printed at this place of the document."
 msgstr "Ponastavi privzete parametre trenutnega razreda"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
-#: src/frontends/qt4/GuiDocument.cpp:1267 src/frontends/qt4/GuiPrefs.cpp:230
+#: src/frontends/qt4/GuiDocument.cpp:1285 src/frontends/qt4/GuiPrefs.cpp:230
 #, fuzzy
 msgid "Output"
 msgstr "Izhod"
@@ -4732,7 +4747,7 @@ msgid "Clear current shortcut"
 msgstr "Klic funkcije ,createDirectory` z napačnim imenom"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:100
-#: src/frontends/qt4/ui/TabularUi.ui:940
+#: src/frontends/qt4/ui/TabularUi.ui:956
 msgid "C&lear"
 msgstr "Zbriši"
 
@@ -4849,11 +4864,11 @@ msgid "Horizontal alignment in column"
 msgstr "Vodoravna poravnava v stolpcu"
 
 #: src/frontends/qt4/ui/TabularUi.ui:64 src/frontends/qt4/GuiParagraph.cpp:108
-#: src/frontends/qt4/GuiTabular.cpp:758
+#: src/frontends/qt4/GuiTabular.cpp:788
 msgid "Justified"
 msgstr "Poravnano"
 
-#: src/frontends/qt4/ui/TabularUi.ui:84 src/frontends/qt4/GuiTabular.cpp:760
+#: src/frontends/qt4/ui/TabularUi.ui:84 src/frontends/qt4/GuiTabular.cpp:790
 #, fuzzy
 msgid "At Decimal Separator"
 msgstr "Separacija"
@@ -4925,248 +4940,253 @@ msgstr "Zavrti to celico za 90°"
 msgid "Rotate &cell 90 degrees"
 msgstr "Zavrti to celico za 90°"
 
-#: src/frontends/qt4/ui/TabularUi.ui:315
+#: src/frontends/qt4/ui/TabularUi.ui:312
+msgid "LaTe&X argument:"
+msgstr "Argument za LaTe&X:"
+
+#: src/frontends/qt4/ui/TabularUi.ui:322
+msgid "Custom column format (LaTeX)"
+msgstr "Prilagojen format stolpca (LaTeX)"
+
+#: src/frontends/qt4/ui/TabularUi.ui:332
 #, fuzzy
 msgid "Table-wide settings"
 msgstr "Nastavitve tabele"
 
-#: src/frontends/qt4/ui/TabularUi.ui:321
+#: src/frontends/qt4/ui/TabularUi.ui:338
+#, fuzzy
+msgid "Table w&idth:"
+msgstr "OpombaPodČrto"
+
+#: src/frontends/qt4/ui/TabularUi.ui:354
 #, fuzzy
 msgid "Verti&cal alignment:"
 msgstr "Navpična poravnava"
 
-#: src/frontends/qt4/ui/TabularUi.ui:331
+#: src/frontends/qt4/ui/TabularUi.ui:364
 #, fuzzy
 msgid "Vertical alignment of the table"
 msgstr "Navpična poravnava"
 
-#: src/frontends/qt4/ui/TabularUi.ui:375
+#: src/frontends/qt4/ui/TabularUi.ui:408
 #, fuzzy
 msgid "Rotate the table by 90 degrees"
 msgstr "Zavrti tabelo za 90°"
 
-#: src/frontends/qt4/ui/TabularUi.ui:378
+#: src/frontends/qt4/ui/TabularUi.ui:411
 #, fuzzy
 msgid "&Rotate table 90 degrees"
 msgstr "Zavrti tabelo za 90°"
 
-#: src/frontends/qt4/ui/TabularUi.ui:388
-msgid "LaTe&X argument:"
-msgstr "Argument za LaTe&X:"
-
-#: src/frontends/qt4/ui/TabularUi.ui:398
-msgid "Custom column format (LaTeX)"
-msgstr "Prilagojen format stolpca (LaTeX)"
-
-#: src/frontends/qt4/ui/TabularUi.ui:406
+#: src/frontends/qt4/ui/TabularUi.ui:422
 msgid "&Borders"
 msgstr "&Meje"
 
-#: src/frontends/qt4/ui/TabularUi.ui:412
+#: src/frontends/qt4/ui/TabularUi.ui:428
 msgid "Set Borders"
 msgstr "Nastavi meje"
 
-#: src/frontends/qt4/ui/TabularUi.ui:908
+#: src/frontends/qt4/ui/TabularUi.ui:924
 #, fuzzy
 msgid "Set borders of the current (selected) cell(s)"
 msgstr "Ponastavi privzete parametre trenutnega razreda"
 
-#: src/frontends/qt4/ui/TabularUi.ui:921
+#: src/frontends/qt4/ui/TabularUi.ui:937
 msgid "All Borders"
 msgstr "Vse meje"
 
-#: src/frontends/qt4/ui/TabularUi.ui:927
+#: src/frontends/qt4/ui/TabularUi.ui:943
 #, fuzzy
 msgid "Set all borders of the current (selected) cell(s)"
 msgstr "Ponastavi privzete parametre trenutnega razreda"
 
-#: src/frontends/qt4/ui/TabularUi.ui:930
+#: src/frontends/qt4/ui/TabularUi.ui:946
 #, fuzzy
 msgid "&Set"
 msgstr "&Shrani"
 
-#: src/frontends/qt4/ui/TabularUi.ui:937
+#: src/frontends/qt4/ui/TabularUi.ui:953
 #, fuzzy
 msgid "Unset all borders of the current (selected) cell(s)"
 msgstr "Ponastavi privzete parametre trenutnega razreda"
 
-#: src/frontends/qt4/ui/TabularUi.ui:956
+#: src/frontends/qt4/ui/TabularUi.ui:972
 msgid "Use formal (a.k.a. booktabs) border style (no vertical borders)"
 msgstr ""
 
-#: src/frontends/qt4/ui/TabularUi.ui:959
+#: src/frontends/qt4/ui/TabularUi.ui:975
 #, fuzzy
 msgid "Fo&rmal"
 msgstr "navadna"
 
-#: src/frontends/qt4/ui/TabularUi.ui:969
+#: src/frontends/qt4/ui/TabularUi.ui:985
 msgid "Use default (grid-like) border style"
 msgstr ""
 
-#: src/frontends/qt4/ui/TabularUi.ui:972
+#: src/frontends/qt4/ui/TabularUi.ui:988
 #, fuzzy
 msgid "De&fault"
 msgstr "privzeta"
 
-#: src/frontends/qt4/ui/TabularUi.ui:998
+#: src/frontends/qt4/ui/TabularUi.ui:1014
 #, fuzzy
 msgid "Additional Space"
 msgstr "Dodatne izbire za LaTeX"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1004
+#: src/frontends/qt4/ui/TabularUi.ui:1020
 msgid "T&op of row:"
 msgstr ""
 
-#: src/frontends/qt4/ui/TabularUi.ui:1064
+#: src/frontends/qt4/ui/TabularUi.ui:1080
 #, fuzzy
 msgid "Botto&m of row:"
 msgstr "Dno strani"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1077
+#: src/frontends/qt4/ui/TabularUi.ui:1093
 msgid "Bet&ween rows:"
 msgstr ""
 
-#: src/frontends/qt4/ui/TabularUi.ui:1126
+#: src/frontends/qt4/ui/TabularUi.ui:1142
 msgid "&Longtable"
 msgstr "&Dolga tabela"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1132
+#: src/frontends/qt4/ui/TabularUi.ui:1148
 msgid "Select for tables that span multiple pages"
 msgstr "Izberite za tabele, ki se raztezajo prek več strani"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1135
+#: src/frontends/qt4/ui/TabularUi.ui:1151
 msgid "&Use long table"
 msgstr "&Uporabi dolgo tabelo"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1145
+#: src/frontends/qt4/ui/TabularUi.ui:1161
 #, fuzzy
 msgid "Row settings"
 msgstr "Nastavitve"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1151
+#: src/frontends/qt4/ui/TabularUi.ui:1167
 #, fuzzy
 msgid "Status"
 msgstr "Mesto"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1158
+#: src/frontends/qt4/ui/TabularUi.ui:1174
 #, fuzzy
 msgid "Border above"
 msgstr "Meje"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1165
+#: src/frontends/qt4/ui/TabularUi.ui:1181
 #, fuzzy
 msgid "Border below"
 msgstr "Meje"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1172
+#: src/frontends/qt4/ui/TabularUi.ui:1188
 msgid "Contents"
 msgstr "Vsebina"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1179
+#: src/frontends/qt4/ui/TabularUi.ui:1195
 msgid "Header:"
 msgstr "Glava:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1186
+#: src/frontends/qt4/ui/TabularUi.ui:1202
 msgid "Repeat this row as header on every (except the first) page"
 msgstr ""
 
-#: src/frontends/qt4/ui/TabularUi.ui:1189
-#: src/frontends/qt4/ui/TabularUi.ui:1226
-#: src/frontends/qt4/ui/TabularUi.ui:1267
-#: src/frontends/qt4/ui/TabularUi.ui:1298
-#: src/frontends/qt4/ui/TabularUi.ui:1336 src/frontends/qt4/GuiToolbar.cpp:358
+#: src/frontends/qt4/ui/TabularUi.ui:1205
+#: src/frontends/qt4/ui/TabularUi.ui:1242
+#: src/frontends/qt4/ui/TabularUi.ui:1283
+#: src/frontends/qt4/ui/TabularUi.ui:1314
+#: src/frontends/qt4/ui/TabularUi.ui:1352 src/frontends/qt4/GuiToolbar.cpp:358
 #: src/frontends/qt4/GuiToolbar.cpp:367
 #, fuzzy
 msgid "on"
 msgstr "Kraj"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1199
-#: src/frontends/qt4/ui/TabularUi.ui:1206
-#: src/frontends/qt4/ui/TabularUi.ui:1233
-#: src/frontends/qt4/ui/TabularUi.ui:1240
-#: src/frontends/qt4/ui/TabularUi.ui:1274
-#: src/frontends/qt4/ui/TabularUi.ui:1281
-#: src/frontends/qt4/ui/TabularUi.ui:1305
-#: src/frontends/qt4/ui/TabularUi.ui:1312
+#: src/frontends/qt4/ui/TabularUi.ui:1215
+#: src/frontends/qt4/ui/TabularUi.ui:1222
+#: src/frontends/qt4/ui/TabularUi.ui:1249
+#: src/frontends/qt4/ui/TabularUi.ui:1256
+#: src/frontends/qt4/ui/TabularUi.ui:1290
+#: src/frontends/qt4/ui/TabularUi.ui:1297
+#: src/frontends/qt4/ui/TabularUi.ui:1321
+#: src/frontends/qt4/ui/TabularUi.ui:1328
 msgid "double"
 msgstr "dvojni"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1213
+#: src/frontends/qt4/ui/TabularUi.ui:1229
 #, fuzzy
 msgid "First header:"
 msgstr "DesnaGlava"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1220
+#: src/frontends/qt4/ui/TabularUi.ui:1236
 #, fuzzy
 msgid "This row is the header of the first page"
 msgstr "Ohrani prostor na vrhu strani"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1247
+#: src/frontends/qt4/ui/TabularUi.ui:1263
 #, fuzzy
 msgid "Don't output the first header"
 msgstr "Pošlji izhod na tiskalnik"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1250
-#: src/frontends/qt4/ui/TabularUi.ui:1322
+#: src/frontends/qt4/ui/TabularUi.ui:1266
+#: src/frontends/qt4/ui/TabularUi.ui:1338
 msgid "is empty"
 msgstr "je prazen"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1257
+#: src/frontends/qt4/ui/TabularUi.ui:1273
 msgid "Footer:"
 msgstr "Noga:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1264
+#: src/frontends/qt4/ui/TabularUi.ui:1280
 msgid "Repeat this row as footer on every (except the last) page"
 msgstr ""
 
-#: src/frontends/qt4/ui/TabularUi.ui:1288
+#: src/frontends/qt4/ui/TabularUi.ui:1304
 #, fuzzy
 msgid "Last footer:"
 msgstr "Zadnja noga"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1295
+#: src/frontends/qt4/ui/TabularUi.ui:1311
 #, fuzzy
 msgid "This row is the footer of the last page"
 msgstr "Ohrani prostor na vrhu strani"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1319
+#: src/frontends/qt4/ui/TabularUi.ui:1335
 #, fuzzy
 msgid "Don't output the last footer"
 msgstr "Izberite ime izhodne datoteke"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1329
+#: src/frontends/qt4/ui/TabularUi.ui:1345
 #, fuzzy
 msgid "Caption:"
 msgstr "&Pojasnilo:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1346
+#: src/frontends/qt4/ui/TabularUi.ui:1362
 msgid "Set a page break on the current row"
 msgstr "Določi prelom strani v trenutni vrstici"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1349
+#: src/frontends/qt4/ui/TabularUi.ui:1365
 #, fuzzy
 msgid "Page &break on current row"
 msgstr "Ni moč tiskati"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1362
+#: src/frontends/qt4/ui/TabularUi.ui:1378
 #, fuzzy
 msgid "Horizontal alignment of the longtable"
 msgstr "Vodoravna poravnava v stolpcu"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1365
+#: src/frontends/qt4/ui/TabularUi.ui:1381
 #, fuzzy
 msgid "Longtable alignment"
 msgstr "&Vodoravna poravnava:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1417
+#: src/frontends/qt4/ui/TabularUi.ui:1433
 msgid "Current cell:"
 msgstr "Trenutna celica:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1439
+#: src/frontends/qt4/ui/TabularUi.ui:1455
 msgid "Current row position"
 msgstr "Trenutni položaj vrstice"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1461
+#: src/frontends/qt4/ui/TabularUi.ui:1477
 msgid "Current column position"
 msgstr "Trenutni položaj stolpca"
 
@@ -5779,7 +5799,7 @@ msgstr "Definicija"
 #: lib/layouts/theorems.inc:180 lib/layouts/theorems.inc:189
 #: lib/layouts/theorems.inc:192 lib/layouts/theorems-chap-bytype.module:138
 #: lib/layouts/theorems-sec-bytype.module:110
-#: src/frontends/qt4/GuiDocument.cpp:1023
+#: src/frontends/qt4/GuiDocument.cpp:1040
 msgid "Example"
 msgstr "Zgled"
 
@@ -6109,7 +6129,7 @@ msgstr "Dodatek"
 #: lib/layouts/tufte-book.layout:244 lib/layouts/aguplus.inc:172
 #: lib/layouts/aguplus.inc:174 lib/layouts/amsdefs.inc:202
 #: lib/layouts/scrclass.inc:245 lib/layouts/stdstruct.inc:53
-#: lib/layouts/svjour.inc:289 src/frontends/qt4/GuiDocument.cpp:1259
+#: lib/layouts/svjour.inc:289 src/frontends/qt4/GuiDocument.cpp:1277
 msgid "Bibliography"
 msgstr "Literatura"
 
@@ -6461,10 +6481,10 @@ msgstr "GlavaProsojnice"
 msgid "[Acknowledgements]"
 msgstr "Priznanja"
 
-#: lib/layouts/aastex.layout:404 src/frontends/qt4/GuiDocument.cpp:1902
-#: src/frontends/qt4/GuiDocument.cpp:1914
-#: src/frontends/qt4/GuiDocument.cpp:2006
-#: src/frontends/qt4/GuiDocument.cpp:2025
+#: lib/layouts/aastex.layout:404 src/frontends/qt4/GuiDocument.cpp:1928
+#: src/frontends/qt4/GuiDocument.cpp:1940
+#: src/frontends/qt4/GuiDocument.cpp:2032
+#: src/frontends/qt4/GuiDocument.cpp:2051
 #, fuzzy
 msgid "and"
 msgstr "Dežela"
@@ -10594,7 +10614,7 @@ msgstr "Odprt vstavek"
 msgid "ERT"
 msgstr "ERT"
 
-#: lib/layouts/stdinsets.inc:168 src/frontends/qt4/GuiDocument.cpp:1264
+#: lib/layouts/stdinsets.inc:168 src/frontends/qt4/GuiDocument.cpp:1282
 #, fuzzy
 msgid "Listings"
 msgstr "Seznam"
@@ -14594,11 +14614,11 @@ msgstr "Uvozi spis"
 msgid "Check spelling"
 msgstr "Preveri TeX"
 
-#: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1312
+#: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1313
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1322
+#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1323
 msgid "Redo"
 msgstr "Ponovi"
 
@@ -15181,7 +15201,7 @@ msgid "Fractions"
 msgstr "LyX: Matematična plošča"
 
 #: lib/ui/stdtoolbars.inc:276 lib/ui/stdtoolbars.inc:370
-#: src/frontends/qt4/GuiDocument.cpp:1252
+#: src/frontends/qt4/GuiDocument.cpp:1270
 #, fuzzy
 msgid "Fonts"
 msgstr "Pisava: "
@@ -17970,7 +17990,7 @@ msgstr "HTML (MS Word)"
 msgid "LyXBlogger"
 msgstr ""
 
-#: src/BiblioInfo.cpp:247 src/frontends/qt4/GuiDocument.cpp:1901
+#: src/BiblioInfo.cpp:247 src/frontends/qt4/GuiDocument.cpp:1927
 #, c-format
 msgid "%1$s and %2$s"
 msgstr ""
@@ -18069,12 +18089,12 @@ msgstr ""
 msgid "\\begin_document is missing"
 msgstr ""
 
-#: src/Buffer.cpp:773 src/Buffer.cpp:779 src/BufferView.cpp:1417
-#: src/BufferView.cpp:1423
+#: src/Buffer.cpp:773 src/Buffer.cpp:779 src/BufferView.cpp:1418
+#: src/BufferView.cpp:1424
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:774 src/BufferView.cpp:1418
+#: src/Buffer.cpp:774 src/BufferView.cpp:1419
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -18082,7 +18102,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:780 src/BufferView.cpp:1424
+#: src/Buffer.cpp:780 src/BufferView.cpp:1425
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -18090,7 +18110,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:818 src/BufferParams.cpp:412
+#: src/Buffer.cpp:818 src/BufferParams.cpp:413
 #: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:452
 #: src/insets/InsetIndex.cpp:717
 msgid "Index"
@@ -18535,7 +18555,7 @@ msgid ""
 "inaccessible. You will need to update the included filename."
 msgstr ""
 
-#: src/BufferParams.cpp:568
+#: src/BufferParams.cpp:569
 #, c-format
 msgid ""
 "The selected document class\n"
@@ -18549,12 +18569,12 @@ msgid ""
 "User's Guide for more information."
 msgstr ""
 
-#: src/BufferParams.cpp:577
+#: src/BufferParams.cpp:578
 #, fuzzy
 msgid "Document class not available"
 msgstr "Nastavitev videza spisa"
 
-#: src/BufferParams.cpp:2005
+#: src/BufferParams.cpp:2011
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -18564,12 +18584,12 @@ msgid ""
 "correct output."
 msgstr ""
 
-#: src/BufferParams.cpp:2011
+#: src/BufferParams.cpp:2017
 #, fuzzy
 msgid "Document class not found"
 msgstr "Nastavitev videza spisa"
 
-#: src/BufferParams.cpp:2018
+#: src/BufferParams.cpp:2024
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -18579,17 +18599,17 @@ msgid ""
 "correct output."
 msgstr ""
 
-#: src/BufferParams.cpp:2024 src/BufferView.cpp:1262 src/BufferView.cpp:1294
+#: src/BufferParams.cpp:2030 src/BufferView.cpp:1263 src/BufferView.cpp:1295
 #, fuzzy
 msgid "Could not load class"
 msgstr "Ni moč pognati z datoteko:"
 
-#: src/BufferParams.cpp:2058
+#: src/BufferParams.cpp:2064
 #, fuzzy
 msgid "Error reading internal layout information"
 msgstr "Splošni podatki"
 
-#: src/BufferParams.cpp:2059 src/TextClass.cpp:1347
+#: src/BufferParams.cpp:2065 src/TextClass.cpp:1347
 #, fuzzy
 msgid "Read Error"
 msgstr "Išči"
@@ -18599,135 +18619,135 @@ msgstr "Išči"
 msgid "No more insets"
 msgstr "Ni več opomb"
 
-#: src/BufferView.cpp:728
+#: src/BufferView.cpp:729
 #, fuzzy
 msgid "Save bookmark"
 msgstr "Shrani zaznamek 2"
 
-#: src/BufferView.cpp:937
+#: src/BufferView.cpp:938
 msgid "Converting document to new document class..."
 msgstr "Spis se spreminja v nov razred spisa..."
 
-#: src/BufferView.cpp:980
+#: src/BufferView.cpp:981
 msgid "Document is read-only"
 msgstr "Spis je le za branje"
 
-#: src/BufferView.cpp:989
+#: src/BufferView.cpp:990
 msgid "This portion of the document is deleted."
 msgstr ""
 
-#: src/BufferView.cpp:1260 src/BufferView.cpp:1292
+#: src/BufferView.cpp:1261 src/BufferView.cpp:1293
 #, fuzzy, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "Nastavitev videza spisa"
 
-#: src/BufferView.cpp:1315
+#: src/BufferView.cpp:1316
 #, fuzzy
 msgid "No further undo information"
 msgstr "Ni nadaljnjih razveljavitvenih podatkov"
 
-#: src/BufferView.cpp:1325
+#: src/BufferView.cpp:1326
 msgid "No further redo information"
 msgstr "Ni nadaljnjih ponovitvenih podatkov"
 
-#: src/BufferView.cpp:1512 src/lyxfind.cpp:373 src/lyxfind.cpp:391
+#: src/BufferView.cpp:1513 src/lyxfind.cpp:373 src/lyxfind.cpp:391
 msgid "String not found!"
 msgstr "Niza ni moč najti!"
 
-#: src/BufferView.cpp:1555
+#: src/BufferView.cpp:1556
 msgid "Mark off"
 msgstr "Znak izključen"
 
-#: src/BufferView.cpp:1561
+#: src/BufferView.cpp:1562
 msgid "Mark on"
 msgstr "Znak vključen"
 
-#: src/BufferView.cpp:1568
+#: src/BufferView.cpp:1569
 msgid "Mark removed"
 msgstr "Znak odstranjen"
 
-#: src/BufferView.cpp:1571
+#: src/BufferView.cpp:1572
 msgid "Mark set"
 msgstr "Znak postavljen"
 
-#: src/BufferView.cpp:1626
+#: src/BufferView.cpp:1627
 msgid "Statistics for the selection:"
 msgstr ""
 
-#: src/BufferView.cpp:1628
+#: src/BufferView.cpp:1629
 #, fuzzy
 msgid "Statistics for the document:"
 msgstr "Zamenjaj s prejšnjim spisom"
 
-#: src/BufferView.cpp:1631
+#: src/BufferView.cpp:1632
 #, fuzzy, c-format
 msgid "%1$d words"
 msgstr "%1$d words checked."
 
-#: src/BufferView.cpp:1633
+#: src/BufferView.cpp:1634
 #, fuzzy
 msgid "One word"
 msgstr "Ključna beseda"
 
-#: src/BufferView.cpp:1636
+#: src/BufferView.cpp:1637
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1639
+#: src/BufferView.cpp:1640
 msgid "One character (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1642
+#: src/BufferView.cpp:1643
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1645
+#: src/BufferView.cpp:1646
 msgid "One character (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1647
+#: src/BufferView.cpp:1648
 #, fuzzy
 msgid "Statistics"
 msgstr "Mesto"
 
-#: src/BufferView.cpp:1777
+#: src/BufferView.cpp:1778
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
 
-#: src/BufferView.cpp:1779
+#: src/BufferView.cpp:1780
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr ""
 
-#: src/BufferView.cpp:1787
+#: src/BufferView.cpp:1788
 #, fuzzy
 msgid "Branch name"
 msgstr "Pot za varnostne kopije:|#P"
 
-#: src/BufferView.cpp:1794 src/frontends/qt4/GuiBranches.cpp:176
+#: src/BufferView.cpp:1795 src/frontends/qt4/GuiBranches.cpp:176
 msgid "Branch already exists"
 msgstr ""
 
-#: src/BufferView.cpp:2518
+#: src/BufferView.cpp:2519
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Vstavlja se spis %1$s..."
 
-#: src/BufferView.cpp:2529
+#: src/BufferView.cpp:2530
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument izvožen kot "
 
-#: src/BufferView.cpp:2531
+#: src/BufferView.cpp:2532
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Spisa ni moč vstaviti"
 
-#: src/BufferView.cpp:2796
+#: src/BufferView.cpp:2797
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -18735,28 +18755,28 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/BufferView.cpp:2798
+#: src/BufferView.cpp:2799
 #, fuzzy
 msgid "Could not read file"
 msgstr "Ni moč pognati z datoteko:"
 
-#: src/BufferView.cpp:2805
+#: src/BufferView.cpp:2806
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr " odstavkov ni moč spremeniti"
 
-#: src/BufferView.cpp:2806 src/output.cpp:39
+#: src/BufferView.cpp:2807 src/output.cpp:39
 #, fuzzy
 msgid "Could not open file"
 msgstr "Ni moč pogledati datoteke"
 
-#: src/BufferView.cpp:2813
+#: src/BufferView.cpp:2814
 msgid "Reading not UTF-8 encoded file"
 msgstr ""
 
-#: src/BufferView.cpp:2814
+#: src/BufferView.cpp:2815
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -19320,19 +19340,19 @@ msgid "Copying %1$s to %2$s failed."
 msgstr ""
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:121
-#: src/frontends/qt4/GuiDocument.cpp:3162
+#: src/frontends/qt4/GuiDocument.cpp:3209
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Roman"
 msgstr "pokončna"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:122
-#: src/frontends/qt4/GuiDocument.cpp:3162
+#: src/frontends/qt4/GuiDocument.cpp:3209
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Sans Serif"
 msgstr "brez serifov"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:123
-#: src/frontends/qt4/GuiDocument.cpp:3162
+#: src/frontends/qt4/GuiDocument.cpp:3209
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Typewriter"
 msgstr "pisalni stroj"
@@ -21156,7 +21176,7 @@ msgstr "Literatura"
 
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
-#: src/frontends/qt4/GuiDocument.cpp:1817
+#: src/frontends/qt4/GuiDocument.cpp:1835
 #: src/frontends/qt4/GuiExternal.cpp:639 src/frontends/qt4/GuiGraphics.cpp:799
 #: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1821
 #: src/frontends/qt4/GuiView.cpp:1879 src/frontends/qt4/GuiView.cpp:2020
@@ -21258,8 +21278,8 @@ msgid "Filename Suffix"
 msgstr "Ime datoteke"
 
 #: src/frontends/qt4/GuiBranches.cpp:99 src/frontends/qt4/GuiBranches.cpp:107
-#: src/frontends/qt4/GuiDocument.cpp:2051
-#: src/frontends/qt4/GuiDocument.cpp:3048
+#: src/frontends/qt4/GuiDocument.cpp:2077
+#: src/frontends/qt4/GuiDocument.cpp:3095
 #: src/frontends/qt4/GuiProgressView.cpp:123
 #: src/frontends/qt4/GuiProgressView.cpp:137
 #: src/frontends/qt4/GuiProgressView.cpp:158
@@ -21267,8 +21287,8 @@ msgid "Yes"
 msgstr ""
 
 #: src/frontends/qt4/GuiBranches.cpp:99 src/frontends/qt4/GuiBranches.cpp:107
-#: src/frontends/qt4/GuiDocument.cpp:2050
-#: src/frontends/qt4/GuiDocument.cpp:3047
+#: src/frontends/qt4/GuiDocument.cpp:2076
+#: src/frontends/qt4/GuiDocument.cpp:3094
 #: src/frontends/qt4/GuiProgressView.cpp:89
 #: src/frontends/qt4/GuiProgressView.cpp:122
 #: src/frontends/qt4/GuiProgressView.cpp:158
@@ -21293,7 +21313,7 @@ msgstr ""
 msgid "&Merge"
 msgstr "Velika:"
 
-#: src/frontends/qt4/GuiBranches.cpp:185 src/frontends/qt4/GuiIndices.cpp:214
+#: src/frontends/qt4/GuiBranches.cpp:185 src/frontends/qt4/GuiIndices.cpp:218
 #, fuzzy
 msgid "Renaming failed"
 msgstr "Pretvorba"
@@ -21481,9 +21501,9 @@ msgstr "Želite shraniti spis?"
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx| Dokumenti za LyX (*.lyx)"
 
-#: src/frontends/qt4/GuiCompare.cpp:198 src/frontends/qt4/GuiDocument.cpp:1788
-#: src/frontends/qt4/GuiDocument.cpp:1863
-#: src/frontends/qt4/GuiDocument.cpp:3113
+#: src/frontends/qt4/GuiCompare.cpp:198 src/frontends/qt4/GuiDocument.cpp:1806
+#: src/frontends/qt4/GuiDocument.cpp:1881
+#: src/frontends/qt4/GuiDocument.cpp:3160
 #, fuzzy
 msgid "Error"
 msgstr "Puščica"
@@ -21822,161 +21842,161 @@ msgstr ""
 msgid "JIS B6"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:975
+#: src/frontends/qt4/GuiDocument.cpp:981
 #, fuzzy
 msgid "Language Default (no inputenc)"
 msgstr "Glava"
 
-#: src/frontends/qt4/GuiDocument.cpp:984
+#: src/frontends/qt4/GuiDocument.cpp:990
 msgid "``text''"
 msgstr "``besedilo''"
 
-#: src/frontends/qt4/GuiDocument.cpp:985
+#: src/frontends/qt4/GuiDocument.cpp:991
 msgid "''text''"
 msgstr "''besedilo''"
 
-#: src/frontends/qt4/GuiDocument.cpp:986
+#: src/frontends/qt4/GuiDocument.cpp:992
 msgid ",,text``"
 msgstr ",,besedilo``"
 
-#: src/frontends/qt4/GuiDocument.cpp:987
+#: src/frontends/qt4/GuiDocument.cpp:993
 msgid ",,text''"
 msgstr ",,besedilo''"
 
-#: src/frontends/qt4/GuiDocument.cpp:988
+#: src/frontends/qt4/GuiDocument.cpp:994
 msgid "<<text>>"
 msgstr "<<besedilo>>"
 
-#: src/frontends/qt4/GuiDocument.cpp:989
+#: src/frontends/qt4/GuiDocument.cpp:995
 msgid ">>text<<"
 msgstr ">>besedilo<<"
 
-#: src/frontends/qt4/GuiDocument.cpp:1024
+#: src/frontends/qt4/GuiDocument.cpp:1041
 #, fuzzy
 msgid "Numbered"
 msgstr "Številčenje"
 
-#: src/frontends/qt4/GuiDocument.cpp:1025
+#: src/frontends/qt4/GuiDocument.cpp:1042
 msgid "Appears in TOC"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1049
+#: src/frontends/qt4/GuiDocument.cpp:1066
 msgid "Author-year"
 msgstr "Avtor-leto"
 
-#: src/frontends/qt4/GuiDocument.cpp:1050
+#: src/frontends/qt4/GuiDocument.cpp:1067
 #, fuzzy
 msgid "Numerical"
 msgstr "ameriško"
 
-#: src/frontends/qt4/GuiDocument.cpp:1141
+#: src/frontends/qt4/GuiDocument.cpp:1159
 #, fuzzy, c-format
 msgid "Unavailable: %1$s"
 msgstr "Dostopni"
 
-#: src/frontends/qt4/GuiDocument.cpp:1244
-#: src/frontends/qt4/GuiDocument.cpp:1345
+#: src/frontends/qt4/GuiDocument.cpp:1262
+#: src/frontends/qt4/GuiDocument.cpp:1363
 msgid "Input listings parameters below. Enter ? for a list of parameters."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1248
-#: src/frontends/qt4/GuiDocument.cpp:1269
-#: src/frontends/qt4/GuiDocument.cpp:2802
+#: src/frontends/qt4/GuiDocument.cpp:1266
+#: src/frontends/qt4/GuiDocument.cpp:1287
+#: src/frontends/qt4/GuiDocument.cpp:2849
 #, fuzzy
 msgid "Document Class"
 msgstr "&Razred spisa:"
 
-#: src/frontends/qt4/GuiDocument.cpp:1249
-#: src/frontends/qt4/GuiDocument.cpp:2800
-#: src/frontends/qt4/GuiDocument.cpp:2801
-#: src/frontends/qt4/GuiDocument.cpp:2804 src/frontends/qt4/qt_helpers.cpp:543
+#: src/frontends/qt4/GuiDocument.cpp:1267
+#: src/frontends/qt4/GuiDocument.cpp:2847
+#: src/frontends/qt4/GuiDocument.cpp:2848
+#: src/frontends/qt4/GuiDocument.cpp:2851 src/frontends/qt4/qt_helpers.cpp:543
 #, fuzzy
 msgid "Child Documents"
 msgstr "Spis"
 
-#: src/frontends/qt4/GuiDocument.cpp:1250
+#: src/frontends/qt4/GuiDocument.cpp:1268
 #, fuzzy
 msgid "Modules"
 msgstr "Sredina"
 
-#: src/frontends/qt4/GuiDocument.cpp:1251
+#: src/frontends/qt4/GuiDocument.cpp:1269
 #, fuzzy
 msgid "Local Layout"
 msgstr "Videz "
 
-#: src/frontends/qt4/GuiDocument.cpp:1253
+#: src/frontends/qt4/GuiDocument.cpp:1271
 #, fuzzy
 msgid "Text Layout"
 msgstr "Videz "
 
-#: src/frontends/qt4/GuiDocument.cpp:1255
+#: src/frontends/qt4/GuiDocument.cpp:1273
 #, fuzzy
 msgid "Page Margins"
 msgstr "Robovi"
 
-#: src/frontends/qt4/GuiDocument.cpp:1257 src/frontends/qt4/GuiPrefs.cpp:1068
+#: src/frontends/qt4/GuiDocument.cpp:1275 src/frontends/qt4/GuiPrefs.cpp:1068
 msgid "Colors"
 msgstr "Barve"
 
-#: src/frontends/qt4/GuiDocument.cpp:1258
+#: src/frontends/qt4/GuiDocument.cpp:1276
 #, fuzzy
 msgid "Numbering & TOC"
 msgstr "Številčenje"
 
-#: src/frontends/qt4/GuiDocument.cpp:1260
+#: src/frontends/qt4/GuiDocument.cpp:1278
 #, fuzzy
 msgid "Indexes"
 msgstr "Stvarno kazalo"
 
-#: src/frontends/qt4/GuiDocument.cpp:1261
+#: src/frontends/qt4/GuiDocument.cpp:1279
 #, fuzzy
 msgid "PDF Properties"
 msgstr "Lastnost"
 
-#: src/frontends/qt4/GuiDocument.cpp:1262
+#: src/frontends/qt4/GuiDocument.cpp:1280
 #, fuzzy
 msgid "Math Options"
 msgstr "Izbire za plovke"
 
-#: src/frontends/qt4/GuiDocument.cpp:1263
+#: src/frontends/qt4/GuiDocument.cpp:1281
 #, fuzzy
 msgid "Float Placement"
 msgstr "Postavitev plovk:|#l"
 
-#: src/frontends/qt4/GuiDocument.cpp:1265
+#: src/frontends/qt4/GuiDocument.cpp:1283
 msgid "Bullets"
 msgstr "Pike"
 
-#: src/frontends/qt4/GuiDocument.cpp:1266
+#: src/frontends/qt4/GuiDocument.cpp:1284
 msgid "Branches"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1268
+#: src/frontends/qt4/GuiDocument.cpp:1286
 msgid "LaTeX Preamble"
 msgstr "Vzglavje LaTeXa"
 
-#: src/frontends/qt4/GuiDocument.cpp:1670
-#: src/frontends/qt4/GuiDocument.cpp:1676
-#: src/frontends/qt4/GuiDocument.cpp:1682
+#: src/frontends/qt4/GuiDocument.cpp:1688
+#: src/frontends/qt4/GuiDocument.cpp:1694
+#: src/frontends/qt4/GuiDocument.cpp:1700
 msgid " (not installed)"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1757
+#: src/frontends/qt4/GuiDocument.cpp:1775
 #, fuzzy
 msgid "Layouts|#o#O"
 msgstr "Videz|I"
 
-#: src/frontends/qt4/GuiDocument.cpp:1759
+#: src/frontends/qt4/GuiDocument.cpp:1777
 #, fuzzy
 msgid "LyX Layout (*.layout)"
 msgstr "*.lyx| Dokumenti za LyX (*.lyx)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1761
-#: src/frontends/qt4/GuiDocument.cpp:1770
+#: src/frontends/qt4/GuiDocument.cpp:1779
+#: src/frontends/qt4/GuiDocument.cpp:1788
 msgid "Local layout file"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1771
+#: src/frontends/qt4/GuiDocument.cpp:1789
 msgid ""
 "The layout file you have selected is a local layout\n"
 "file, not one in the system or user directory. Your\n"
@@ -21984,119 +22004,119 @@ msgid ""
 "keep the layout file in the document directory."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1775
+#: src/frontends/qt4/GuiDocument.cpp:1793
 #, fuzzy
 msgid "&Set Layout"
 msgstr "Videz "
 
-#: src/frontends/qt4/GuiDocument.cpp:1789
+#: src/frontends/qt4/GuiDocument.cpp:1807
 #, fuzzy
 msgid "Unable to read local layout file."
 msgstr "Shrani kot privzeto za spis"
 
-#: src/frontends/qt4/GuiDocument.cpp:1811
+#: src/frontends/qt4/GuiDocument.cpp:1829
 #, fuzzy
 msgid "Select master document"
 msgstr "Želite shraniti spis?"
 
-#: src/frontends/qt4/GuiDocument.cpp:1815
+#: src/frontends/qt4/GuiDocument.cpp:1833
 #, fuzzy
 msgid "LyX Files (*.lyx)"
 msgstr "*.lyx| Dokumenti za LyX (*.lyx)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1848
-#: src/frontends/qt4/GuiDocument.cpp:3102
+#: src/frontends/qt4/GuiDocument.cpp:1866
+#: src/frontends/qt4/GuiDocument.cpp:3149
 #, fuzzy
 msgid "Unapplied changes"
 msgstr "Zapiši spremembe...|Z"
 
-#: src/frontends/qt4/GuiDocument.cpp:1849
-#: src/frontends/qt4/GuiDocument.cpp:3103
+#: src/frontends/qt4/GuiDocument.cpp:1867
+#: src/frontends/qt4/GuiDocument.cpp:3150
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1851
-#: src/frontends/qt4/GuiDocument.cpp:3105
+#: src/frontends/qt4/GuiDocument.cpp:1869
+#: src/frontends/qt4/GuiDocument.cpp:3152
 msgid "&Dismiss"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1863
-#: src/frontends/qt4/GuiDocument.cpp:3113
+#: src/frontends/qt4/GuiDocument.cpp:1881
+#: src/frontends/qt4/GuiDocument.cpp:3160
 #, fuzzy
 msgid "Unable to set document class."
 msgstr "Shrani kot privzeto za spis"
 
-#: src/frontends/qt4/GuiDocument.cpp:1908
+#: src/frontends/qt4/GuiDocument.cpp:1934
 #, c-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1913
+#: src/frontends/qt4/GuiDocument.cpp:1939
 #, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1927
+#: src/frontends/qt4/GuiDocument.cpp:1953
 #, c-format
 msgid "%1$s (unavailable)"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2002
+#: src/frontends/qt4/GuiDocument.cpp:2028
 #, fuzzy
 msgid "Module provided by document class."
 msgstr "Shrani kot privzeto za spis"
 
-#: src/frontends/qt4/GuiDocument.cpp:2010
+#: src/frontends/qt4/GuiDocument.cpp:2036
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2016
+#: src/frontends/qt4/GuiDocument.cpp:2042
 #, fuzzy
 msgid "or"
 msgstr "Formati"
 
-#: src/frontends/qt4/GuiDocument.cpp:2019
+#: src/frontends/qt4/GuiDocument.cpp:2045
 #, c-format
 msgid "Modules required: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2028
+#: src/frontends/qt4/GuiDocument.cpp:2054
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2034
+#: src/frontends/qt4/GuiDocument.cpp:2060
 msgid "WARNING: Some required packages are unavailable!"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2777
+#: src/frontends/qt4/GuiDocument.cpp:2824
 #, fuzzy
 msgid "[No options predefined]"
 msgstr "Pojdi k naslednji napaki"
 
-#: src/frontends/qt4/GuiDocument.cpp:3125
+#: src/frontends/qt4/GuiDocument.cpp:3172
 #, fuzzy
 msgid "Can't set layout!"
 msgstr "Znakovni slog"
 
-#: src/frontends/qt4/GuiDocument.cpp:3126
+#: src/frontends/qt4/GuiDocument.cpp:3173
 #, fuzzy, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Shrani kot privzeto za spis"
 
-#: src/frontends/qt4/GuiDocument.cpp:3219
+#: src/frontends/qt4/GuiDocument.cpp:3266
 #, fuzzy
 msgid "Not Found"
 msgstr " ni znan"
 
-#: src/frontends/qt4/GuiDocument.cpp:3273
+#: src/frontends/qt4/GuiDocument.cpp:3320
 msgid "Assigned master does not include this file"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:3274
+#: src/frontends/qt4/GuiDocument.cpp:3321
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -22104,12 +22124,12 @@ msgid ""
 "feature."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:3278
+#: src/frontends/qt4/GuiDocument.cpp:3325
 #, fuzzy
 msgid "Could not load master"
 msgstr "Ni moč pognati z datoteko:"
 
-#: src/frontends/qt4/GuiDocument.cpp:3279
+#: src/frontends/qt4/GuiDocument.cpp:3326
 #, fuzzy, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -22367,21 +22387,21 @@ msgstr "Vnos v stvarno kazalo"
 msgid "Label Color"
 msgstr "barve"
 
-#: src/frontends/qt4/GuiIndices.cpp:186
+#: src/frontends/qt4/GuiIndices.cpp:190
 #, fuzzy
 msgid "Cannot remove standard index"
 msgstr "Napaka! Začasnega imenika ni moč ustvariti:"
 
-#: src/frontends/qt4/GuiIndices.cpp:187
+#: src/frontends/qt4/GuiIndices.cpp:191
 msgid "The default index cannot be removed."
 msgstr ""
 
-#: src/frontends/qt4/GuiIndices.cpp:207
+#: src/frontends/qt4/GuiIndices.cpp:211
 #, fuzzy
 msgid "Enter new index name"
 msgstr "Zbirka podatkov BibTeX za rabo"
 
-#: src/frontends/qt4/GuiIndices.cpp:215
+#: src/frontends/qt4/GuiIndices.cpp:219
 msgid "The index could not be renamed. Check if the new name already exists."
 msgstr ""
 
@@ -24914,7 +24934,7 @@ msgstr "Zaščiten presledek|Z"
 msgid "Unknown TOC type"
 msgstr "Neznana akcija"
 
-#: src/insets/InsetTabular.cpp:4685
+#: src/insets/InsetTabular.cpp:4709
 msgid "Selection size should match clipboard content."
 msgstr ""
 
