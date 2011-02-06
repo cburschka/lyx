@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-05 02:09+0100\n"
-"PO-Revision-Date: 2011-02-04 07:13+0100\n"
+"POT-Creation-Date: 2011-02-06 16:31+0100\n"
+"PO-Revision-Date: 2011-02-06 17:32+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -16526,6 +16526,22 @@ msgstr "HTML (MS Word)"
 #: lib/configure.py:675
 msgid "LyXBlogger"
 msgstr "LyXBlogger"
+
+#: lib/configure.py:880
+msgid "LyX Archive (zip)"
+msgstr "LyX Archív (zip)"
+
+#: lib/configure.py:885
+msgid "LyX Archive (tar.gz)"
+msgstr "LyX Archív (tar.gz)"
+
+#: lib/configure.py:888
+msgid "LyX Archive (tar.bz2)"
+msgstr "LyX Archív (tar.bz2)"
+
+#: lib/configure.py:891
+msgid "LyX Archive (tar)"
+msgstr "LyX Archív (tar)"
 
 #: src/BiblioInfo.cpp:247 src/frontends/qt4/GuiDocument.cpp:1927
 #, c-format
