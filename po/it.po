@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-02-05 02:09+0100\n"
-"PO-Revision-Date: 2011-02-04 00:19+0100\n"
+"PO-Revision-Date: 2011-02-06 17:25+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
 "Language: it\n"
@@ -1169,7 +1169,6 @@ msgid "Forma&t:"
 msgstr "Forma&to:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:191
-#, fuzzy
 msgid ""
 "Enable LyX to preview this material; only if graphics previewing is not "
 "disabled at application level (see Preference dialog)."
@@ -1995,7 +1994,7 @@ msgstr "Applica i cambiamenti immediatamente"
 #: src/frontends/qt4/ui/InsetParamsUi.ui:62
 #: src/frontends/qt4/ui/ParagraphUi.ui:44
 msgid "I&mmediate Apply"
-msgstr "Applica i&mmediatamente"
+msgstr "A&pplica immediatamente"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:89
 msgid "New Inset"
@@ -4591,7 +4590,7 @@ msgstr "Ruota questa cella di 90 gradi"
 
 #: src/frontends/qt4/ui/TabularUi.ui:302
 msgid "Rotate &cell 90 degrees"
-msgstr "Ruota cella di 90 gradi"
+msgstr "Ruota cella di 90 &gradi"
 
 #: src/frontends/qt4/ui/TabularUi.ui:312
 msgid "LaTe&X argument:"
@@ -4606,9 +4605,8 @@ msgid "Table-wide settings"
 msgstr "Impostazioni tabella globali"
 
 #: src/frontends/qt4/ui/TabularUi.ui:338
-#, fuzzy
 msgid "Table w&idth:"
-msgstr "Nota tabella:"
+msgstr "Larghezza &tabella:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:354
 msgid "Verti&cal alignment:"
