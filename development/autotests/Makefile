@@ -1,5 +1,5 @@
 
-all: build-xvkbd run-tests
+all: $(if $(XVKBD_HACKED),build-xvkbd,) run-tests
 
 .PHONY:
 build-xvkbd:
