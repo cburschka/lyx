@@ -253,7 +253,7 @@ def main(argv):
     # Remove the prefix common to all paths in the list
     i = 0
     while i < len(incfiles):
-        incfiles[i] = string.replace(incfiles[i], topdir, '')
+        incfiles[i] = string.replace(incfiles[i], topdir, '', 1)
         i += 1
 
     # Remove duplicates and sort the list
