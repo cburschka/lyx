@@ -10,7 +10,11 @@ if [ ! -x xvkbd/xvkbd ]; then
 fi
 
 export LYX_EXE=../../../src/lyx
-export XVKBD_EXE=../xvkbd/xvkbd
+
+if [ "$XVKBD_HACKED" != "" ]; then
+    export XVKBD_EXE=${XVKBD:-../xvkbd/xvkbd};
+fi
+
 export KEYTEST=../keytest.py
 LYX_HOME=out-home
 export LYX_USERDIR=$(pwd)/$LYX_HOME/.lyx

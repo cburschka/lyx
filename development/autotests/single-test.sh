@@ -22,6 +22,11 @@ if [ "$(pidof lyx)" != "" ]; then
 fi
 export MAX_LOOPS=1
 export LYX_EXE=${LYX_EXE:-../../src/lyx}
-export XVKBD_EXE=${XVKBD_EXE:-./xvkbd/xvkbd}
+
+if [ "$XVKBD_HACKED" != "" ]; then
+    export XVKBD_EXE=${XVKBD_EXE:-./xvkbd/xvkbd};
+else
+    export XVKBD_EXE=${XVKBD_EXE:-xvkbd};
+fi
 
 $KEYTEST

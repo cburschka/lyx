@@ -20,7 +20,8 @@ print 'Beginning keytest.py'
 
 FNULL = open('/dev/null', 'w')
 
-DELAY = '59'
+def_delay = '60'
+key_delay = ''
 
 class CommandSource:
 
@@ -207,13 +208,16 @@ def sendKeystring(keystr, LYX_PID):
         intr_system('import -window root '+screenshot_out+str(x.count)+".png")
         time.sleep(0.1)
     sys.stdout.flush()
-    if (subprocess.call(
-            [xvkbd_exe, "-no_root", "-xsendevent", "-window", lyx_window_name, "-delay", DELAY, "-text", keystr],
-            stdout=FNULL,stderr=FNULL
-            ) == 0):
-        sys.stdout.write('*')
+    actual_delay = key_delay
+    if actual_delay == '':
+        actual_delay = def_delay
+    if not xvkbd_hacked:
+        subprocess.call([xvkbd_exe, "-xsendevent", "-window", lyx_window_name,
+                         "-delay", actual_delay, "-text", keystr], stdout = FNULL, stderr = FNULL)
     else:
-        sys.stdout.write('X')
+        subprocess.call([xvkbd_exe, "-no_root", "-wait_idle", lyx_pid,
+                         "-xsendevent", "-window", lyx_window_name,
+                         "-delay", actual_delay, "-text", keystr], stdout = FNULL, stderr = FNULL)
 
 def system_retry(num_retry, cmd):
     i = 0
@@ -255,6 +259,8 @@ if lyx_exe is None:
 xvkbd_exe = os.environ.get('XVKBD_EXE')
 if xvkbd_exe is None:
     xvkbd_exe = "xvkbd"
+
+xvkbd_hacked = os.environ.get('XVKBD_HACKED') != None
 
 file_new_command = os.environ.get('FILE_NEW_COMMAND')
 if file_new_command is None:
@@ -351,8 +357,8 @@ while not failed:
             print 'No path /proc/' + lyx_pid + '/status, exiting'
             os._exit(1)
     elif c[0:4] == 'KD: ':
-        DELAY = c[4:].rstrip('\n')
-        print 'Setting DELAY to ' + DELAY + '.'
+        key_delay = c[4:].rstrip('\n')
+        print 'Setting DELAY to ' + key_delay + '.'
     elif c == 'Loop':
         RaiseWindow()
         sendKeystring(ResetCommand, lyx_pid)
