@@ -1236,6 +1236,7 @@ dist_scripts_PYTHON = \
 	scripts/layout2layout.py \
 	scripts/legacy_lyxpreview2ppm.py \
 	scripts/listerrors \
+	scripts/lyxpak.py \
 	scripts/lyxpreview2bitmap.py \
 	scripts/lyxpreview-lytex2bitmap.py \
 	scripts/lyxpreview-platex2bitmap.py \

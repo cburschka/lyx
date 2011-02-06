@@ -868,6 +868,31 @@ def checkConverterEntries():
     checkProg('a Noteedit -> LilyPond converter', ['noteedit --export-lilypond $$i'],
         rc_entry = [ r'\converter noteedit   lilypond   "%%"	""', ''])
     #
+    # currently (as of 2/5/11), lyxpak outputs a tar archive if tar is found,
+    # and a zip archive if tar is not found but zip is. if tar is found, then
+    # it looks for gzip and bzip2, in that order, and compresses the archive
+    # using the one it finds.
+    # so, we mimic this search, and configure the appropriate version.
+    path, prog = checkProg('the LyX packing script', ['tar', 'zip'])
+    if prog:
+        cmd = r'\converter lyx %s "python -tt $$s/scripts/lyxpak.py $$i" ""'
+        if prog == "zip":
+            addToRC(r'\Format lyxzip     zip    "LyX Archive (zip)"     "" "" ""  "document"')
+            addToRC(cmd % "lyxzip")
+        elif prog == "tar":
+            path, prog = checkProg('gzip or bzip2', ['gzip', 'bzip2'])
+            if prog == "gzip":
+                addToRC(r'\Format lyxgz      gz     "LyX Archive (tar.gz)"  "" "" ""  "document"')
+                outfmt = "lyxgz"
+            elif prog == "bzip2":
+                addToRC(r'\Format lyxbz2     bz2    "LyX Archive (tar.bz2)" "" "" ""  "document"')
+                outfmt = "lyxbz2"
+            else:
+                addToRC(r'\Format lyxtar     tar    "LyX Archive (tar)"     "" "" ""  "document"')
+                outfmt = "lyxtar"
+            addToRC(cmd % outfmt)
+        
+    #
     # FIXME: no rc_entry? comment it out
     # checkProg('Image converter', ['convert $$i $$o'])
     #
