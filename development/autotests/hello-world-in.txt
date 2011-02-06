@@ -44,6 +44,9 @@
 #     \[Tab] ........ sends a Tab character
 #     \[Return] ..... sends a Return
 #
+# KD: n
+#   Changes the delay among typed charactes to n milliseconds.
+#
 #
 # This example instructs LyX to type "Hello World", then exports it as
 # LaTeX, and verifies that the typed characters are indeed present in the

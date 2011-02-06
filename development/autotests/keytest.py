@@ -20,7 +20,6 @@ print 'Beginning keytest.py'
 
 FNULL = open('/dev/null', 'w')
 
-def_delay = '60'
 key_delay = ''
 
 class CommandSource:
@@ -261,6 +260,10 @@ if xvkbd_exe is None:
     xvkbd_exe = "xvkbd"
 
 xvkbd_hacked = os.environ.get('XVKBD_HACKED') != None
+
+def_delay = os.environ.get('XVKBD_DELAY')
+if def_delay is None:
+    def_delay = '100'
 
 file_new_command = os.environ.get('FILE_NEW_COMMAND')
 if file_new_command is None:

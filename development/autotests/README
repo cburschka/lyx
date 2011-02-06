@@ -37,6 +37,19 @@ as argument to the run-tests.sh script, e.g.:
 For failed tests you get a folder with the logs that help you identify
 the problem.
 
+Despite the efforts to avoid it, sometimes a test fails simply because
+the key presses provided to the process are someway lost due to slow
+hardware, slow window manager, too beautiful and animated desktop,...
+When this happens, the tests should be run with a higher delay among
+key presses. The default of 100 milliseconds can be changed by setting
+the XVKBD_DELAY environment variable.
+
+The standard xvkbd available on your system may be used to run the
+tests. However, a custom xvkbd may optionally be used that forbids the
+testing framework to type into non-LyX windows and may mitigate the
+issue described right above. This option can be activated by defining
+the XVKBD_HACKED environment variable to any value.
+
 
 SYNTAX
 ----------------------------------------------------------------------
