@@ -6,7 +6,10 @@ KK: \Cm
 KK: x^(a) +\\frac 1+x^(a) \[Down]1-x^(a)  \C\[Home]
 KK: \CF
 KK: \Cmx^(a) \[Tab]
-KK: \Cmx_a \[Return]\[Return]\[Return]
+KK: \Cmx_a 
+KD: 500
+KK: \[Return]\[Return]\[Return]
+KD: 60
 KK: \Cs
 KK: \Ax
 KK: buffer-export latex\[Return]
