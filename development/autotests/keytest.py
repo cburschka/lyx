@@ -170,6 +170,14 @@ def lyx_sleeping():
     return sleeping
 
 
+# Interruptible os.system()
+def intr_system(cmd):
+    ret = os.system(cmd)
+    if os.WIFSIGNALED(ret):
+        raise KeyboardInterrupt
+    return ret
+
+
 def sendKeystring(keystr, LYX_PID):
 
     # print "sending keystring "+keystr+"\n"
@@ -186,7 +194,7 @@ def sendKeystring(keystr, LYX_PID):
             print 'Killing due to freeze (KILL_FREEZE)'
 
             # Do profiling, but sysprof has no command line interface?
-            # os.system("killall -KILL lyx")
+            # intr_system("killall -KILL lyx")
 
             os._exit(1)
     if not screenshot_out is None:
@@ -196,7 +204,7 @@ def sendKeystring(keystr, LYX_PID):
             sys.stdout.flush()
         print 'Making Screenshot: ' + screenshot_out + ' OF ' + infilename
         time.sleep(0.2)
-        os.system('import -window root '+screenshot_out+str(x.count)+".png")
+        intr_system('import -window root '+screenshot_out+str(x.count)+".png")
         time.sleep(0.1)
     sys.stdout.flush()
     if (subprocess.call(
@@ -209,10 +217,10 @@ def sendKeystring(keystr, LYX_PID):
 
 def system_retry(num_retry, cmd):
     i = 0
-    rtn = os.system(cmd)
+    rtn = intr_system(cmd)
     while ( ( i < num_retry ) and ( rtn != 0) ):
         i = i + 1
-	rtn=os.system(cmd)
+	rtn = intr_system(cmd)
         time.sleep(1)
     if ( rtn != 0 ):
         print "Command Failed: "+cmd
@@ -220,10 +228,10 @@ def system_retry(num_retry, cmd):
         os._exit(1)
 
 def RaiseWindow():
-    #os.system("echo x-session-manager PID: $X_PID.")
-    #os.system("echo x-session-manager open files: `lsof -p $X_PID | grep ICE-unix | wc -l`")
-    ####os.system("wmctrl -l | ( grep '"+lyx_window_name+"' || ( killall lyx ; sleep 1 ; killall -9 lyx ))")
-    #os.system("wmctrl -R '"+lyx_window_name+"' ;sleep 0.1")
+    #intr_system("echo x-session-manager PID: $X_PID.")
+    #intr_system("echo x-session-manager open files: `lsof -p $X_PID | grep ICE-unix | wc -l`")
+    ####intr_system("wmctrl -l | ( grep '"+lyx_window_name+"' || ( killall lyx ; sleep 1 ; killall -9 lyx ))")
+    #intr_system("wmctrl -R '"+lyx_window_name+"' ;sleep 0.1")
     system_retry(30, "wmctrl -a '"+lyx_window_name+"'")
 
 
@@ -286,7 +294,7 @@ write_commands = True
 failed = False
 
 while not failed:
-    #os.system('echo -n LOADAVG:; cat /proc/loadavg')
+    #intr_system('echo -n LOADAVG:; cat /proc/loadavg')
     c = x.getCommand()
     if c is None:
         break
@@ -301,15 +309,15 @@ while not failed:
         lyx_pid=os.popen("pidof lyx").read()
         if lyx_pid != "":
             print "Found running instance(s) of LyX: " + lyx_pid + ": killing them all\n"
-            os.system("killall lyx")
+            intr_system("killall lyx")
             time.sleep(0.5)
-            os.system("killall -KILL lyx")
+            intr_system("killall -KILL lyx")
         time.sleep(0.2)
         print "Starting LyX . . ."
         if lyx_userdir is None:
-            os.system(lyx_exe + c[9:] + "&")
+            intr_system(lyx_exe + c[9:] + "&")
         else:
-            os.system(lyx_exe + " -userdir " + lyx_userdir + " " + c[9:] + "&")
+            intr_system(lyx_exe + " -userdir " + lyx_userdir + " " + c[9:] + "&")
         while True:
             lyx_pid=os.popen("pidof lyx").read().rstrip()
             if lyx_pid != "":
@@ -327,7 +335,7 @@ while not failed:
     elif c[0:4] == 'Exec':
         cmd = c[5:].rstrip()
         print "\nExecuting " + cmd + "\n"
-        os.system(cmd)
+        intr_system(cmd)
     elif c == 'Loop':
         outfile.close()
         outfile = open(outfilename + '+', 'w')
@@ -339,7 +347,7 @@ while not failed:
         if lyx_exists():
             sendKeystring(c[4:], lyx_pid)
         else:
-            ##os.system('killall lyx; sleep 2 ; killall -9 lyx')
+            ##intr_system('killall lyx; sleep 2 ; killall -9 lyx')
             print 'No path /proc/' + lyx_pid + '/status, exiting'
             os._exit(1)
     elif c[0:4] == 'KD: ':
@@ -351,19 +359,19 @@ while not failed:
     elif c[0:6] == 'Assert':
         cmd = c[7:].rstrip()
         print "\nExecuting " + cmd
-        result = os.system(cmd)
+        result = intr_system(cmd)
         failed = failed or (result != 0)
         print "result=" + str(result) + ", failed=" + str(failed)
     elif c[0:7] == 'TestEnd':
         time.sleep(0.5)
         print "\nTerminating lyx instance: " + str(lyx_pid) + "\n"
-        os.system("kill -9 " + str(lyx_pid) + "\n");
+        intr_system("kill -9 " + str(lyx_pid) + "\n");
         while lyx_exists():
             print "Waiting for lyx to die...\n"
             time.sleep(0.5)
         cmd = c[8:].rstrip()
         print "\nExecuting " + cmd
-        result = os.system(cmd)
+        result = intr_system(cmd)
         failed = failed or (result != 0)
         print "result=" + str(result) + ", failed=" + str(failed)
     elif c[0:4] == 'Lang':
