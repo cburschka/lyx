@@ -1,6 +1,6 @@
 -*- text -*-
 
-This file describes what has been done in the preparation of LyX 1.6.9
+This file describes what has been done in the preparation of LyX 1.6.10
 All comments are welcome.
 
 I'd be glad if some of you could take the time to check it out (or fix
@@ -24,40 +24,21 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- eLyXer is now always run as a script, not as a python module.
 
 
 * USER INTERFACE
 
-- CVS support:
-  + Synchronization of whole directories (bug 6255).
-  + Add implementation of checkOut operation.
-  + Utilize read-only checkouts with "cvs edit".
-  + Check for conflicts when doing checkIn/checkOut operation.
 
-- Allow Ctrl+Arrow to move between table cells (bug 1839).
-
-- Add support for showing on screen italic uppercase Greek letters,
-  either inserted in a \mathit inset or through AMS macros (bug 4606).
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Re-introduce Swedish User Interface localization. 
 
-- Updated Basque, Czech, French, German, Indonesian, Italian,
-  Norwegian (Nynorsk), Portugues, Serbian (Latin), Slovak and
-  Ukrainian User Interface localizations.
-
-- Updated French translation of the Customization manual, the Embedded
-  Objects manual und the Linguistics manual.
-
-- Updated German translation of the User Guide.
 
 
 * BUILD/INSTALLATION
 
-- Allow using autoconf 2.66 and 2.68.
+
 
 
 ** Bug fixes:
@@ -65,152 +46,17 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Correctly break URLs at the end of lines in DVI output when hyperref
-  is used (bug 7033).
 
-- Escape "]" in subfloat captions to prevent LaTeX failure. 
-
-- Fix DVI output of the document class "letter (lettre)".
-
-- Do not output PDF settings if these are disabled in the document
-  settings (bug 7052).
-
-- Avoid inserting a blank line before the end of an environment when
-  exporting a custom inset to LaTeX (bug 7254).
-
-- Correctly check for RTF and DOC viewers.
-
-- KOMA classes: Support the optional argument of Addpart, Addchap and
-  Addsec.
-
-- Letter class: Support Quote, Quotation and Separator.
-
-- Don't pass the letterpaper option to the geometry package when using
-  default paper format and margins are explicitly set.
 
 
 * USER INTERFACE
 
-- Fix crash when using a computer algebra system from within AMS math
-  environments (bug 7058).
 
-- Fix crash when pressing up or down arrow while editing a macro name and
-  an inline completion is suggested (bug 7068).
-
-- Fix crash when removing a math macro argument while instant preview
-  is active (bug 7090).
-
-- Fix crash when inserting quotes with a selection spanning multiple
-  paragraphs (bug 7200).
-
-- Fix crash when clicking on the beginning of an unfinished command in
-  math when autocompletion is active (bug 7209).
-
-- Fix assertion when pasting a column in a math matrix (bug 7106).
-
-- Remove traces of long removed index settings dialog. This fixes a crash
-  when issueing the non-functional lfuns "dialog-show index" and
-  "dialog-show-new-inset index" (bug 7180).
-
-- Clear column width field in the tabular dialog when moving in a column
-  without a fixed width (bug 6976).
-  
-- Correctly save the settings of UI components. They could disappear when
-  starting LyX with a modified default.ui file and changing the
-  preferences afterwards (bug 7099).
-
-- Fix the painting of the workarea for a non-standard DPI and using
-  emulated scaling on Windows Vista and Windows 7 (bug 7187).
-
-- Fix insertion of a user math macro through the math-insert lfun when a
-  selection is present (bug 6939).
-
-- Don't shadow user math macros defined in child documents (bug 7183).
-
-- Make the modules description in the menu "Document > Settings" fully
-  translatable (bug 6987).
-
-- Fix table line bug when unsetting a multicolumn cell via the table
-  dialog (bug 7000). 
-
-- Fix the display of table cell alignment in the context menu (bug 7053).
-
-- Don't allow to make tables within floats "long" as this could lead to
-  LaTeX errors (bug 6585).
-
-- Don't use absolute paths on internal copy/paste operations on Mac
-  (bug 6538).
-
-- Correct the denomination of the languages Norsk and Nynorsk.
-
-- Do not allow to put the cursor in an InsetInfo. Instead, a context
-  menu item is added to facilitate copying of the contents (bug 5446).
-  
-- Fix the display of the horizontal alignment of table cells (bug 7007).
-
-- Numbered items in insets that do not produce any output (e.g. Notes)
-  no longer have a number associated with them (bug 6315).
-
-- Update the status of the buttons in the Text Style dialog when the
-  cursor is moved (bug 6952).
-
-- Correctly toggle the numbering of an equation when issueing the menu
-  "Insert > Numbered equation" on a displayed equation (bug 6709).
-  
-- Fix the painting of non-text insets with a transparent background
-  (such as quotation marks) as well as the description of a caption
-  (bug 4889).
-
-- Fix painting of math-macro templates while moving the cursor or
-  performing a selection with the mouse (bug 7193).
-
-- Fix unexpected behavior when inserting big math delimiters around a
-  matrix (bug 7088).
-
-- Fix saving of personal dictionary path to preferences (bug 6688).
-
-- Fix unexpected behavior of some "insert math" menu/toolbar entries
-  (bug 6709).
-
-- In the table dialog, disable the column width and column alignment if
-  there is a LaTeX argument (bug 3517).
-  
-- Fix aspell spellchecking with Farsi (bug 7171).
-
-- Fix the enabling of LFUN_SPLIT_CELL in the math context menu (bug 4849).
-
-- Recognize the program listings' parameter 'breakatwhitespace'
-  (bug 7077).
-
-- Wake up from waiting state after encountering a file parsing error
-  (bug 6950).
-
-- Fix enabling/disabling of Instant Preview widgets in the preferences
-  dialog (bug 7190).
-
-- Allow to undo the insertion of math macros (bug 7125).
-
-- Add some visual aids to distinguish opened files: full paths in
-  statusbar for recent files items, absolute paths in tooltips of tabs,
-  and longer paths in the window title (bug 7182).
-
-- Fix the response of the update button of the view source window after
-  reopening a file (bug 5600).
-
-- Don't allow to set an alignment for rows in math substack environments
-  (bug 2498).
-
-- Allow paragraph breaks and nested environments in framed boxes.
-
-- Trigger LaTeX rerun if requested by the package "etaremune".
-
-- Fix EndFont tag in the svmult.layout (bug 7257).
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Fix LaTeX errors in modernCV.lyx example file with recent versions
-  of the LaTeX package modernCV (bug 7272).
+
 
 
 * BUILD/INSTALLATION
