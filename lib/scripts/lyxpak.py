@@ -10,18 +10,23 @@
 # Full author contact details are available in file CREDITS
 
 # This script creates a tar or zip archive with a lyx file and all included
-# files (graphics and so on). A zip archive is created only if tar is not
-# found in the path. The tar archive is then compressed with gzip or bzip2.
+# files (graphics and so on). The created archive is the standard type on a
+# given platform, such that a zip archive is created on Windows and a gzip
+# compressed tar archive on *nix.
 
 import os, re, string, sys
 if sys.version_info < (2, 4, 0):
     from sets import Set as set
+if os.name == 'nt':
+    import zipfile
+else:
+    import tarfile
 
-# Replace with the actual path to the 1.5.x or 1.6.x lyx2lyx.
+# Replace with the actual path to the 1.5, 1.6, or 2.0 lyx2lyx.
 # If left undefined and the LyX executable is in the path, the script will
 # try to locate lyx2lyx by querying LyX about the system dir.
 # Example for *nix:
-# lyx2lyx = /usr/share/lyx/lyx2lyx/lyx2lyx
+# lyx2lyx = "/usr/share/lyx/lyx2lyx/lyx2lyx"
 lyx2lyx = None
 
 # Pre-compiled regular expressions.
@@ -177,31 +182,19 @@ def main(argv):
     if not (line and line.startswith('#LyX')):
         error('File "%s" is not a LyX document.' % lyxfile)
 
-    # Either tar or zip must be available
+    # Create a tar archive on *nix and a zip archive on Windows
     extlist = ['']
-    if os.environ.has_key("PATHEXT"):
-        extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
-    path = string.split(os.environ["PATH"], os.pathsep)
-    archiver, full_path = find_exe(["tar", "zip"], extlist, path)
+    ar_ext = ".tar.gz"
+    if os.name == 'nt':
+        ar_ext = ".zip"
+        if os.environ.has_key("PATHEXT"):
+            extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
 
-    if archiver == "tar":
-        ar_cmd = "tar cf"
-        ar_name = re_lyxfile.sub(".tar", abspath(lyxfile))
-        # Archive will be compressed if either gzip or bzip2 are available
-        compress, full_path = find_exe(["gzip", "bzip2"], extlist, path)
-        if compress == "gzip":
-            ext = ".gz"
-        elif compress == "bzip2":
-            ext = ".bz2"
-    elif archiver == "zip":
-        ar_cmd = "zip"
-        ar_name = re_lyxfile.sub(".zip", abspath(lyxfile))
-        compress = None
-    else:
-        error("Unable to find either tar or zip.")
-
+    ar_name = re_lyxfile.sub(ar_ext, abspath(lyxfile))
     if outdir:
         ar_name = os.path.join(abspath(outdir), os.path.basename(ar_name))
+
+    path = string.split(os.environ["PATH"], os.pathsep)
 
     # Try to find the location of the lyx2lyx script
     global lyx2lyx
@@ -260,26 +253,23 @@ def main(argv):
     incfiles = list(set(incfiles))
     incfiles.sort()
 
-    # Build the archive command
-    ar_cmd = '%s "%s"' % (ar_cmd, ar_name)
-    for file in incfiles:
-        #print file
-        ar_cmd = ar_cmd + ' "' + file + '"'
-
-    # Create the archive
     if topdir != '':
         os.chdir(topdir)
-    cmd_status, cmd_stdout = run_cmd(ar_cmd)
-    if cmd_status != None:
-        error('Failed to create LyX archive "%s"' % ar_name)
 
-    # If possible, compress the archive
-    if compress != None:
-        compress_cmd = '%s "%s"' % (compress, ar_name)
-        cmd_status, cmd_stdout = run_cmd(compress_cmd)
-        if cmd_status != None:
-            error('Failed to compress LyX archive "%s"' % ar_name)
-        ar_name = ar_name + ext
+    # Create the archive
+    try:
+        if os.name == 'nt':
+            zip = zipfile.ZipFile(ar_name, "w", zipfile.ZIP_DEFLATED)
+            for file in incfiles:
+                zip.write(file)
+            zip.close()
+        else:
+            tar = tarfile.open(ar_name, "w:gz")
+            for file in incfiles:
+                tar.add(file)
+            tar.close()
+    except:
+        error('Failed to create LyX archive "%s"' % ar_name)
 
     print 'LyX archive "%s" created successfully.' % ar_name
     return 0
