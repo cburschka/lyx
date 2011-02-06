@@ -875,7 +875,7 @@ def checkConverterEntries():
     # so, we mimic this search, and configure the appropriate version.
     path, prog = checkProg('the LyX packing script', ['tar', 'zip'])
     if prog:
-        cmd = r'\converter lyx %s "python -tt $$s/scripts/lyxpak.py $$i" ""'
+        cmd = r'\converter lyx %s "python -tt $$s/scripts/lyxpak.py $$r/$$i" ""'
         if prog == "zip":
             addToRC(r'\Format lyxzip     zip    "LyX Archive (zip)"     "" "" ""  "document"')
             addToRC(cmd % "lyxzip")
