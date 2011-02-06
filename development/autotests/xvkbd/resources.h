@@ -59,6 +59,7 @@ struct appres_struct {
   String window;
   String instance;
   String widget;
+  String wait_idle;
   XFontStruct *general_font;
   XFontStruct *letter_font;
   XFontStruct *special_font;

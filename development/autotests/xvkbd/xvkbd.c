@@ -270,6 +270,8 @@ static XtResource application_resources[] = {
      Offset(secure), XtRImmediate, (XtPointer)FALSE },
   { "no_root", "NoRoot", XtRBoolean, sizeof(Boolean),
      Offset(no_root), XtRImmediate, (XtPointer)FALSE },
+  { "wait_idle", "Text", XtRString, sizeof(char *),
+    Offset(wait_idle), XtRImmediate, "" },
   { "nonexitable", "Secure", XtRBoolean, sizeof(Boolean),
      Offset(nonexitable), XtRImmediate, (XtPointer)FALSE },
   { "modalKeytop", "ModalKeytop", XtRBoolean, sizeof(Boolean),
@@ -429,6 +431,7 @@ static XrmOptionDescRec options[] = {
   { "-minimizable", ".minimizable", XrmoptionNoArg, "True" },
   { "-secure", ".secure", XrmoptionNoArg, "True" },
   { "-no_root", ".no_root", XrmoptionNoArg, "True" },
+  { "-wait_idle", ".wait_idle", XrmoptionSepArg, NULL },
   { "-nonexitable", ".nonexitable", XrmoptionNoArg, "True" },
   { "-xdm", ".Secure", XrmoptionNoArg, "True" },
   { "-dict", ".dictFile", XrmoptionSepArg, NULL },
@@ -1399,7 +1402,26 @@ static void SendString(const unsigned char *str)
 
   shift_state = 0;
   for (cp = str; *cp != '\0'; cp++) {
-    if (0 < appres.text_delay) usleep(appres.text_delay * 1000);
+    if (0 < appres.text_delay)
+      usleep(appres.text_delay * 1000);
+    if (appres.wait_idle && strlen(appres.wait_idle) > 0) {
+      int pid = atoi(appres.wait_idle);
+      int ret;
+      do {
+	char cmd[80];
+	snprintf(cmd, sizeof(cmd), "/proc/%d/status", pid);
+	FILE *f = fopen(cmd, "r");
+	if (f == NULL) {
+	  fprintf(stderr, "Process not found: %d\n", pid);
+	  exit(-1);
+	}
+	fclose(f);
+	snprintf(cmd, sizeof(cmd), "grep 'State.*running' /proc/%d/status", pid);
+	ret = system(cmd);
+	if (ret == 0)
+	  usleep(50);
+      } while (ret == 0);
+    }
     if (*cp == '\\') {
       cp++;
       switch (*cp) {
