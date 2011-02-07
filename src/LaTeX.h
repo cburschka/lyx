@@ -188,7 +188,8 @@ private:
 	void updateBibtexDependencies(DepTable &, std::vector<AuxInfo> const &);
 
 	///
-	bool runBibTeX(std::vector<AuxInfo> const &, OutputParams const &);
+	bool runBibTeX(std::vector<AuxInfo> const &,
+		       OutputParams const &, bool biber);
 
 	///
 	void deleteFilesOnError() const;
