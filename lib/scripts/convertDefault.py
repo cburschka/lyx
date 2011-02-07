@@ -27,7 +27,7 @@ fout.close()
 version = re_version.match(output)
 
 # Imagemagick by default
-gm = 0
+gm = False
 
 if version != None:
     major = int(version.group(1))
@@ -39,7 +39,7 @@ else:
     re_version = re.compile(r'^GraphicsMagick.*http:..www.GraphicsMagick.org.*$')
     version = re_version.match(output)
     if version != None:
-        gm = 1
+        gm = True
 
 opts = "-depth 8"
 
