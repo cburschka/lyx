@@ -33,6 +33,7 @@
 #include "TexRow.h"
 #include "Text.h"
 
+#include "frontends/Application.h"
 #include "frontends/alert.h"
 
 #include "mathed/InsetMath.h"
@@ -709,17 +710,82 @@ private:
 	// number of (.*?) subexpressions added at end of search regexp for closing
 	// environments, math mode, styles, etc...
 	int close_wildcards;
+	// Are we searching with regular expressions ?
+	bool use_regexp;
 };
+
+
+static docstring buffer_to_latex(Buffer & buffer) 
+{
+	OutputParams runparams(&buffer.params().encoding());
+	odocstringstream ods;
+	otexstream os(ods);
+	runparams.nice = true;
+	runparams.flavor = OutputParams::LATEX;
+	runparams.linelen = 80; //lyxrc.plaintext_linelen;
+	// No side effect of file copying and image conversion
+	runparams.dryrun = true;
+	buffer.texrow().reset();
+	pit_type const endpit = buffer.paragraphs().size();
+	for (pit_type pit = 0; pit != endpit; ++pit) {
+		TeXOnePar(buffer, buffer.text(),
+			  pit, os, buffer.texrow(), runparams);
+		LYXERR(Debug::FIND, "searchString up to here: " << ods.str());
+	}
+	return ods.str();
+}
+
+
+static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions const & opt) {
+	docstring str;
+	if (!opt.ignoreformat) {
+		str = buffer_to_latex(buffer);
+	} else {
+		ParIterator it = buffer.par_iterator_begin();
+		ParIterator end = buffer.par_iterator_end();
+		OutputParams runparams(&buffer.params().encoding());
+		odocstringstream os;
+		runparams.nice = true;
+		runparams.flavor = OutputParams::LATEX;
+		runparams.linelen = 100000; //lyxrc.plaintext_linelen;
+		runparams.dryrun = true;
+		for (; it != end; ++it) {
+			LYXERR(Debug::FIND, "Adding to search string: '"
+				<< it->asString(false)
+				<< "'");
+			str +=
+				it->stringify(pos_type(0), it->size(),
+					      AS_STR_INSETS, runparams);
+		}
+	}
+	return str;
+}
+
+
+/// Return separation pos between the leading material and the rest
+static size_t identifyLeading(string const & s)  {
+	string t = s;
+	// @TODO Support \item[text]
+	while (regex_replace(t, t, "\\\\(emph|textbf|subsubsection|subsection|section|subparagraph|paragraph|part)\\{", "")
+	       || regex_replace(t, t, "^\\$", "")
+	       || regex_replace(t, t, "^\\\\\\[ ", "")
+	       || regex_replace(t, t, "^\\\\item ", ""))
+		LYXERR(Debug::FIND, "  after removing leading $, \\[ , \\emph{, \\textbf{, etc.: " << t);
+	return s.find(t);
+}
 
 
 MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & opt)
 	: p_buf(&buf), p_first_buf(&buf), opt(opt)
 {
-	par_as_string = normalize(opt.search);
+	Buffer & find_buf = *theBufferList().getBuffer(FileName(to_utf8(opt.find_buf_name)), true);
+	par_as_string = normalize(stringifySearchBuffer(find_buf, opt));
 	open_braces = 0;
 	close_wildcards = 0;
 
-	if (! opt.regexp) {
+	use_regexp = !opt.ignoreformat || par_as_string.find("\\regexp") != std::string::npos;
+
+	if (!use_regexp) {
 		// Remove trailing closure of math, macros and environments, so to catch parts of them.
 		do {
 			LYXERR(Debug::FIND, "par_as_string now is '" << par_as_string << "'");
@@ -741,6 +807,14 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 		LYXERR(Debug::FIND, "Open braces: " << open_braces);
 		LYXERR(Debug::FIND, "Built MatchStringAdv object: par_as_string = '" << par_as_string << "'");
 	} else {
+		size_t lead_size = identifyLeading(par_as_string);
+		string lead_as_regexp;
+		if (lead_size > 0) {
+			lead_as_regexp = escape_for_regex(par_as_string.substr(0, lead_size));
+			par_as_string = par_as_string.substr(lead_size, par_as_string.size() - lead_size);
+			LYXERR(Debug::FIND, "lead_as_regexp is '" << lead_as_regexp << "'");
+			LYXERR(Debug::FIND, "par_as_string now is '" << par_as_string << "'");
+		}
 		par_as_string = escape_for_regex(par_as_string);
 		// Insert (.*?) before trailing closure of math, macros and environments, so to catch parts of them.
 		LYXERR(Debug::FIND, "par_as_string now is '" << par_as_string << "'");
@@ -762,9 +836,14 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 		LYXERR(Debug::FIND, "Close .*?  : " << close_wildcards);
 		LYXERR(Debug::FIND, "Replaced text (to be used as regex): " << par_as_string);
 		// If entered regexp must match at begin of searched string buffer
-		regexp = lyx::regex(string("\\`") + par_as_string);
+		string regexp_str = string("\\`") + lead_as_regexp + par_as_string;
+		LYXERR(Debug::FIND, "Setting regexp to : " << regexp_str << endl);
+		regexp = lyx::regex(regexp_str);
+
 		// If entered regexp may match wherever in searched string buffer
-		regexp2 = lyx::regex(string("\\`.*") + par_as_string);
+		string regexp2_str = string("\\`.*") + lead_as_regexp + ".*" + par_as_string;
+		LYXERR(Debug::FIND, "Setting regexp2 to: " << regexp2_str << endl);
+		regexp2 = lyx::regex(regexp2_str);
 	}
 }
 
@@ -775,7 +854,7 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 	LYXERR(Debug::FIND, "Matching against     '" << lyx::to_utf8(docstr) << "'");
 	string str = normalize(docstr);
 	LYXERR(Debug::FIND, "After normalization: '" << str << "'");
-	if (! opt.regexp) {
+	if (! use_regexp) {
 		LYXERR(Debug::FIND, "Searching in normal mode: par_as_string='" << par_as_string << "', str='" << str << "'");
 		if (at_begin) {
 			LYXERR(Debug::FIND, "size=" << par_as_string.size() << ", substr='" << str.substr(0, par_as_string.size()) << "'");
@@ -792,7 +871,7 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 				return par_as_string.size();
 		}
 	} else {
-		LYXERR(Debug::FIND, "Searching in regexp mode");
+		LYXERR(Debug::FIND, "Searching in regexp mode: at_begin=" << at_begin);
 		// Try all possible regexp matches, 
 		//until one that verifies the braces match test is found
 		regex const *p_regexp = at_begin ? &regexp : &regexp2;
@@ -823,6 +902,8 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 int MatchStringAdv::operator()(DocIterator const & cur, int len, bool at_begin) const
 {
 	int res = findAux(cur, len, at_begin);
+	LYXERR(Debug::FIND,
+	       "res=" << res << ", at_begin=" << at_begin << ", matchword=" << opt.matchword << ", inTexted=" << cur.inTexted());
 	if (res == 0 || !at_begin || !opt.matchword || !cur.inTexted())
 		return res;
 	Paragraph const & par = cur.paragraph();
@@ -1014,16 +1095,31 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 {
 	if (!cur)
 		return 0;
-	while (cur && !match(cur, -1, false)) {
-		if (cur.pit() < cur.lastpit())
+	while (!theApp()->longOperationCancelled() && cur) {
+		LYXERR(Debug::FIND, "findForwardAdv() cur: " << cur);
+		if (match(cur, -1, false)) {
+			for (; !theApp()->longOperationCancelled() && cur; cur.forwardPos()) {
+				LYXERR(Debug::FIND, "Advancing cur: " << cur);
+				if (match(cur)) {
+					// Sometimes in finalize we understand it wasn't a match
+					// and we need to continue the outest loop
+					int len = findAdvFinalize(cur, match);
+					if (len > 0)
+						return len;
+				}
+			}
+			if (!cur)
+				return 0;
+		}
+		if (cur.pit() < cur.lastpit()) {
+			LYXERR(Debug::FIND, "Advancing par: cur=" << cur);
 			cur.forwardPar();
-		else {
+		} else {
+			// This should exit nested insets, if any, or otherwise undefine the currsor.
+			cur.pos() = cur.lastpos();
+			LYXERR(Debug::FIND, "Advancing pos: cur=" << cur);
 			cur.forwardPos();
 		}
-	}
-	for (; cur; cur.forwardPos()) {
-		if (match(cur))
-			return findAdvFinalize(cur, match);
 	}
 	return 0;
 }
@@ -1097,7 +1193,7 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match) {
 		else
 			cur.backwardPos();
 		pit_changed = true;
-	} while (true);
+	} while (!theApp()->longOperationCancelled());
 	return 0;
 }
 
@@ -1116,13 +1212,13 @@ docstring stringifyFromForSearch(FindAndReplaceOptions const & opt,
 }
 
 
-FindAndReplaceOptions::FindAndReplaceOptions(docstring const & search, bool casesensitive,
+FindAndReplaceOptions::FindAndReplaceOptions(docstring const & find_buf_name, bool casesensitive,
 	bool matchword, bool forward, bool expandmacros, bool ignoreformat,
-	bool regexp, docstring const & replace, bool keep_case,
+	docstring const & repl_buf_name, bool keep_case,
 	SearchScope scope)
-	: search(search), casesensitive(casesensitive), matchword(matchword),
+	: find_buf_name(find_buf_name), casesensitive(casesensitive), matchword(matchword),
 	forward(forward), expandmacros(expandmacros), ignoreformat(ignoreformat),
-	regexp(regexp), replace(replace), keep_case(keep_case), scope(scope)
+	repl_buf_name(repl_buf_name), keep_case(keep_case), scope(scope)
 {
 }
 
@@ -1175,8 +1271,9 @@ static void changeFirstCase(Buffer & buffer, TextCase first_case, TextCase other
 static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, MatchStringAdv & matchAdv)
 {
 	Cursor & cur = bv->cursor();
-	if (opt.replace == docstring(from_utf8(LYX_FR_NULL_STRING)))
+	if (opt.repl_buf_name == docstring())
 		return;
+
 	DocIterator sel_beg = cur.selectionBegin();
 	DocIterator sel_end = cur.selectionEnd();
 	if (&sel_beg.inset() != &sel_end.inset()
@@ -1192,9 +1289,11 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 	if (!matchAdv(sel_beg, sel_len))
 		return;
 
-	string lyx = to_utf8(opt.replace);
-	// FIXME: Seems so stupid to me to rebuild a buffer here,
-	// when we already have one (replace_work_area_.buffer())
+	// Build a copy of the replace buffer, adapted to the KeepCase option
+	Buffer & repl_buffer_orig = *theBufferList().getBuffer(FileName(to_utf8(opt.repl_buf_name)), true);
+	ostringstream oss;
+	repl_buffer_orig.write(oss);
+	string lyx = oss.str();
 	Buffer repl_buffer("", false);
 	repl_buffer.setUnnamed(true);
 	LASSERT(repl_buffer.readString(lyx), /**/);
@@ -1253,11 +1352,6 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 	DocIterator cur;
 	int match_len = 0;
 
-	if (opt.search.empty()) {
-		bv->message(_("Search text is empty!"));
-		return false;
-	}
-
 	try {
 		MatchStringAdv matchAdv(bv->buffer(), opt);
 		findAdvReplace(bv, opt, matchAdv);
@@ -1288,14 +1382,13 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 
 ostringstream & operator<<(ostringstream & os, FindAndReplaceOptions const & opt)
 {
-	os << to_utf8(opt.search) << "\nEOSS\n"
+	os << to_utf8(opt.find_buf_name) << "\nEOSS\n"
 	   << opt.casesensitive << ' '
 	   << opt.matchword << ' '
 	   << opt.forward << ' '
 	   << opt.expandmacros << ' '
 	   << opt.ignoreformat << ' '
-	   << opt.regexp << ' '
-	   << to_utf8(opt.replace) << "\nEOSS\n"
+	   << to_utf8(opt.repl_buf_name) << "\nEOSS\n"
 	   << opt.keep_case << ' '
 	   << int(opt.scope);
 
@@ -1303,6 +1396,7 @@ ostringstream & operator<<(ostringstream & os, FindAndReplaceOptions const & opt
 
 	return os;
 }
+
 
 istringstream & operator>>(istringstream & is, FindAndReplaceOptions & opt)
 {
@@ -1318,9 +1412,9 @@ istringstream & operator>>(istringstream & is, FindAndReplaceOptions & opt)
 				break;
 		getline(is, line);
 	}
-	LYXERR(Debug::FIND, "searching for: '" << s << "'");
-	opt.search = from_utf8(s);
-	is >> opt.casesensitive >> opt.matchword >> opt.forward >> opt.expandmacros >> opt.ignoreformat >> opt.regexp;
+	LYXERR(Debug::FIND, "file_buf_name: '" << s << "'");
+	opt.find_buf_name = from_utf8(s);
+	is >> opt.casesensitive >> opt.matchword >> opt.forward >> opt.expandmacros >> opt.ignoreformat;
 	is.get();	// Waste space before replace string
 	s = "";
 	getline(is, line);
@@ -1332,14 +1426,14 @@ istringstream & operator>>(istringstream & is, FindAndReplaceOptions & opt)
 				break;
 		getline(is, line);
 	}
+	LYXERR(Debug::FIND, "repl_buf_name: '" << s << "'");
+	opt.repl_buf_name = from_utf8(s);
 	is >> opt.keep_case;
 	int i;
 	is >> i;
 	opt.scope = FindAndReplaceOptions::SearchScope(i);
 	LYXERR(Debug::FIND, "parsed: " << opt.casesensitive << ' ' << opt.matchword << ' ' << opt.forward << ' '
-		   << opt.expandmacros << ' ' << opt.ignoreformat << ' ' << opt.regexp << ' ' << opt.keep_case);
-	LYXERR(Debug::FIND, "replacing with: '" << s << "'");
-	opt.replace = from_utf8(s);
+		   << opt.expandmacros << ' ' << opt.ignoreformat << ' ' << opt.keep_case);
 	return is;
 }
 
