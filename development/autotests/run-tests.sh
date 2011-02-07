@@ -38,6 +38,9 @@ if [ ! -d $LYX_HOME ]; then
     cd ..
 fi
 
+# Launch the emergency STOP button
+./stop_autotests.tcl &
+
 echo "Running test cases . . ."
 failed=0
 for t in $(echo "$TESTS" | sed -e 's/-in.txt//g'); do
