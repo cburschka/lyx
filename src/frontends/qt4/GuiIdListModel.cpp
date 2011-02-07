@@ -76,9 +76,8 @@ bool GuiIdListModel::insertRows(int row, int count,
 	if (!rowIsValid(row))
 		return false;
 	vector<OurData>::iterator it = userData_.begin() + row;
-	OurData const v;
 	beginInsertRows(QModelIndex(), row, row + count - 1);
-	userData_.insert(it, count, v);
+	userData_.insert(it, count, OurData());
 	endInsertRows();
 	return true;
 }

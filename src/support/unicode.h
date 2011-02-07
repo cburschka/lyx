@@ -15,6 +15,7 @@
 
 #include "support/strfwd.h"
 
+#include <cstddef>
 #include <vector>
 
 
