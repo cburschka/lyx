@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-02-07 01:28+0100\n"
-"PO-Revision-Date: 2011-02-03 17:32+0100\n"
+"PO-Revision-Date: 2011-02-07 07:53+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -1265,12 +1265,12 @@ msgid "Forma&t:"
 msgstr "&Format:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:191
-#, fuzzy
 msgid ""
 "Enable LyX to preview this material; only if graphics previewing is not "
 "disabled at application level (see Preference dialog)."
 msgstr ""
-"Vorschau für diese Grafik aktivieren (hierzu muss die Grafikvorschau in den "
+"Vorschau für dieses Material aktivieren (hierzu muss die Grafikvorschau in "
+"den "
 "Systemeinstellungen von LyX global aktiviert sein)."
 
 #: src/frontends/qt4/ui/ExternalUi.ui:194
@@ -4686,7 +4686,7 @@ msgstr "M&ehrfachzeile"
 
 #: src/frontends/qt4/ui/TabularUi.ui:262
 msgid "&Vertical Offset:"
-msgstr "Vertikaler Versat&z:"
+msgstr "Vertikaler Ve&rsatz:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:275
 msgid "Optional vertical offset"
@@ -4717,9 +4717,8 @@ msgid "Table-wide settings"
 msgstr "Tabellenweite Einstellungen"
 
 #: src/frontends/qt4/ui/TabularUi.ui:338
-#, fuzzy
 msgid "Table w&idth:"
-msgstr "Tabellenfußnote:"
+msgstr "Tabellenbre&ite:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:354
 msgid "Verti&cal alignment:"
@@ -16705,11 +16704,11 @@ msgstr "LyxBlogger"
 
 #: lib/configure.py:876
 msgid "LyX Archive (zip)"
-msgstr ""
+msgstr "LyX-Archiv (zip)"
 
 #: lib/configure.py:879
 msgid "LyX Archive (tar.gz)"
-msgstr ""
+msgstr "LyX-Archiv (tar.gz)"
 
 #: src/BiblioInfo.cpp:247 src/frontends/qt4/GuiDocument.cpp:1927
 #, c-format
