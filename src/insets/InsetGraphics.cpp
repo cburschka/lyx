@@ -960,6 +960,7 @@ string InsetGraphics::prepareHTMLFile(OutputParams const & runparams) const
 docstring InsetGraphics::xhtml(XHTMLStream & xs, OutputParams const & op) const
 {
 	string const output_file = prepareHTMLFile(op);
+
 	if (output_file.empty()) {
 		LYXERR0("InsetGraphics::xhtml: Unable to prepare file `" 
 		        << params().filename << "' for output. File missing?");
@@ -970,10 +971,18 @@ docstring InsetGraphics::xhtml(XHTMLStream & xs, OutputParams const & op) const
 	}
 
 	// FIXME XHTML 
-	// Do we want to do something with the parameters, other than use them to 
-	// crop, etc, the image?
-	// Speaking of which: Do the cropping, rotating, etc.
-	string const attr = "src='" + output_file + "' alt='image: " 
+	// We aren't doing anything with the crop and rotate parameters, and it would
+	// really be better to do width and height conversion, rather than to output
+	// these parameters here.
+	string imgstyle;
+	if (!params().width.zero())
+		imgstyle += "width:" + params().width.asHTMLString() + ";";
+	if (!params().height.zero())
+		imgstyle += " height:" + params().height.asHTMLString() + ";";
+	if (!imgstyle.empty())
+		imgstyle = "style='" + imgstyle + "' ";
+
+	string const attr = imgstyle + "src='" + output_file + "' alt='image: " 
 	                    + output_file + "'";
 	xs << html::CompTag("img", attr);
 	return docstring();
