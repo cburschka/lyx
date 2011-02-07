@@ -17,16 +17,8 @@
 import os, re, string, sys
 if sys.version_info < (2, 4, 0):
     from sets import Set as set
-if os.name == 'nt':
-    import zipfile
-else:
-    import tarfile
+from getopt import getopt
 
-# Replace with the actual path to the 1.5, 1.6, or 2.0 lyx2lyx.
-# If left undefined and the LyX executable is in the path, the script will
-# try to locate lyx2lyx by querying LyX about the system dir.
-# Example for *nix:
-# lyx2lyx = "/usr/share/lyx/lyx2lyx/lyx2lyx"
 lyx2lyx = None
 
 # Pre-compiled regular expressions.
@@ -41,7 +33,18 @@ re_bibfiles = re.compile(r'^(\s*)bibfiles(\s+)(\S+)$')
 
 
 def usage(prog_name):
-    return "Usage: %s file.lyx [output_dir]\n" % prog_name
+    msg = '''
+Usage: %s [-t] [-z] [-l path] [-o output_dir] file.lyx
+Options:
+-l: Path to lyx2lyx script
+-o: Directory for output
+-t: Create gzipped tar file
+-z: Create zip file
+By default, we create file.zip on Windows and file.tar.gz on *nix,
+with the file output to where file.lyx is, and we look for lyx2lyx
+in the known locations, querying LyX itself if necessary.
+'''
+    return msg % prog_name
 
 
 def error(message):
@@ -160,20 +163,41 @@ def gather_files(curfile, incfiles):
     return 0
 
 
-def main(argv):
+def main(args):
 
-    if len(argv) < 2 and len(argv) > 3:
-        error(usage(argv[0]))
+    ourprog = args[0]
 
-    lyxfile = argv[1]
+    try:
+      (options, argv) = getopt(args[1:], "htzl:o:")
+    except:
+      error(usage(ourprog))
+
+    # we expect the filename to be left
+    if len(argv) != 1:
+        error(usage(ourprog))
+
+    makezip = (os.name == 'nt')
+    outdir = ""
+    global lyx2lyx
+
+    for (opt, param) in options:
+      if opt == "-h":
+        print usage(ourprog)
+        sys.exit(0)
+      elif opt == "-t":
+        makezip = False
+      elif opt == "-z":
+        makezip = True
+      elif opt == "-l":
+        lyx2lyx = param
+      elif opt == "-o":
+        outdir = param
+        if not os.path.isdir(outdir):
+          error('Error: "%s" is not a directory.' % outdir)
+
+    lyxfile = argv[0]
     if not os.path.exists(lyxfile):
         error('File "%s" not found.' % lyxfile)
-
-    outdir = ""
-    if len(argv) == 3:
-        outdir = argv[2]
-        if not os.path.isdir(outdir):
-            error('Error: "%s" is not a directory.' % outdir)
 
     # Check that it actually is a LyX document
     input = open(lyxfile, 'rU')
@@ -182,13 +206,15 @@ def main(argv):
     if not (line and line.startswith('#LyX')):
         error('File "%s" is not a LyX document.' % lyxfile)
 
+    if makezip:
+        import zipfile
+    else:
+        import tarfile
+
     # Create a tar archive on *nix and a zip archive on Windows
-    extlist = ['']
     ar_ext = ".tar.gz"
-    if os.name == 'nt':
+    if makezip:
         ar_ext = ".zip"
-        if os.environ.has_key("PATHEXT"):
-            extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
 
     ar_name = re_lyxfile.sub(ar_ext, abspath(lyxfile))
     if outdir:
@@ -197,17 +223,19 @@ def main(argv):
     path = string.split(os.environ["PATH"], os.pathsep)
 
     # Try to find the location of the lyx2lyx script
-    global lyx2lyx
     if lyx2lyx == None:
         # first we will see if the script is roughly where we are
         # i.e., we will assume we are in $SOMEDIR/scripts and look
         # for $SOMEDIR/lyx2lyx/lyx2lyx.
-        ourpath = os.path.dirname(abspath(argv[0]))
+        ourpath = os.path.dirname(abspath(ourprog))
         (upone, discard) = os.path.split(ourpath)
         tryit = os.path.join(upone, "lyx2lyx", "lyx2lyx")
         if os.path.exists(tryit):
             lyx2lyx = tryit
         else:
+          extlist = ['']
+          if os.environ.has_key("PATHEXT"):
+              extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
           lyx_exe, full_path = find_exe(["lyxc", "lyx"], extlist, path)
           if lyx_exe == None:
               error('Cannot find the LyX executable in the path.')
