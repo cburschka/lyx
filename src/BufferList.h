@@ -81,10 +81,17 @@ public:
 
 	/// \return index of named buffer in buffer list
 	int bufferNum(support::FileName const & name) const;
-	/// \return a pointer to the buffer with the given name
-	Buffer * getBuffer(support::FileName const & name) const;
+
+	/** returns a pointer to the buffer with the given name
+	 *
+	 *  \param internal
+	 *    If true, the buffer is searched also among internal buffers
+	 */
+	Buffer * getBuffer(support::FileName const & name, bool internal = false) const;
+
 	/// \return a pointer to the buffer with the given number
 	Buffer * getBuffer(unsigned int);
+
 	/// \return a pointer to the buffer whose temppath matches the given path
 	Buffer * getBufferFromTmp(std::string const & path);
 

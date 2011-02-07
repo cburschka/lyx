@@ -254,17 +254,33 @@ struct equivalent_to : public binary_function<FileName, FileName, bool>
 }
 
 
-Buffer * BufferList::getBuffer(support::FileName const & fname) const
+Buffer * BufferList::getBuffer(support::FileName const & fname, bool internal) const
 {
 	// 1) cheap test, using string comparison of file names
 	BufferStorage::const_iterator it = find_if(bstore.begin(), bstore.end(),
 		lyx::bind(equal_to<FileName>(), lyx::bind(&Buffer::fileName, _1), fname));
 	if (it != bstore.end())
-			return *it;
+		return *it;
 	// 2) possibly expensive test, using equivalence test of file names
 	it = find_if(bstore.begin(), bstore.end(),
 		lyx::bind(equivalent_to(), lyx::bind(&Buffer::fileName, _1), fname));
-	return it != bstore.end() ? (*it) : 0;
+	if (it != bstore.end())
+		return *it;
+
+	if (internal) {
+		// 1) cheap test, using string comparison of file names
+		BufferStorage::const_iterator it = find_if(binternal.begin(), binternal.end(),
+			lyx::bind(equal_to<FileName>(), lyx::bind(&Buffer::fileName, _1), fname));
+		if (it != binternal.end())
+			return *it;
+		// 2) possibly expensive test, using equivalence test of file names
+		it = find_if(binternal.begin(), binternal.end(),
+			     lyx::bind(equivalent_to(), lyx::bind(&Buffer::fileName, _1), fname));
+		if (it != binternal.end())
+			return *it;
+	}
+
+	return 0;
 }
 
 
