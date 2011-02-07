@@ -126,6 +126,10 @@ void LaTeX::deleteFilesOnError() const
 	FileName const bbl(changeExtension(file.absFilename(), ".bbl"));
 	bbl.removeFile();
 
+	// biber file
+	FileName const bcf(changeExtension(file.absFilename(), ".bcf"));
+	bcf.removeFile();
+
 	// makeindex file
 	FileName const ind(changeExtension(file.absFilename(), ".ind"));
 	ind.removeFile();
@@ -207,7 +211,8 @@ int LaTeX::run(TeXErrors & terr)
 			LYXERR(Debug::DEPEND, "Dependency file has changed");
 		}
 
-		if (head.extchanged(".bib") || head.extchanged(".bst"))
+		if (head.extchanged(".bib") || head.extchanged(".bst")
+		    || head.extchanged(".bcf"))
 			run_bibtex = true;
 	} else
 		LYXERR(Debug::DEPEND,
@@ -273,6 +278,12 @@ int LaTeX::run(TeXErrors & terr)
 	if (head.haschanged(glofile))
 		rerun |= runMakeIndexNomencl(file, ".glo", ".gls");
 
+	// check if we're using biber instead of bibtex
+	// biber writes no info to the aux file, so we just check
+	// if a bcf file exists (and, above, if it was updated)
+	FileName const bcffile(changeExtension(file.absFilename(), ".bcf"));
+	bool const biber = bcffile.exists();
+
 	// run bibtex
 	// if (scanres & UNDEF_CIT || scanres & RERUN || run_bibtex)
 	if (scanres & UNDEF_CIT || run_bibtex) {
@@ -283,7 +294,7 @@ int LaTeX::run(TeXErrors & terr)
 		LYXERR(Debug::LATEX, "Running BibTeX.");
 		message(_("Running BibTeX."));
 		updateBibtexDependencies(head, bibtex_info);
-		rerun |= runBibTeX(bibtex_info, runparams);
+		rerun |= runBibTeX(bibtex_info, runparams, biber);
 	} else if (!had_depfile) {
 		/// If we run pdflatex on the file after running latex on it,
 		/// then we do not need to run bibtex, but we do need to
@@ -335,7 +346,7 @@ int LaTeX::run(TeXErrors & terr)
 		LYXERR(Debug::LATEX, "Running BibTeX.");
 		message(_("Running BibTeX."));
 		updateBibtexDependencies(head, bibtex_info);
-		rerun |= runBibTeX(bibtex_info, runparams);
+		rerun |= runBibTeX(bibtex_info, runparams, biber);
 	}
 
 	// 4
@@ -552,12 +563,12 @@ void LaTeX::updateBibtexDependencies(DepTable & dep,
 
 
 bool LaTeX::runBibTeX(vector<Aux_Info> const & bibtex_info,
-		      OutputParams const & runparams)
+		      OutputParams const & runparams, bool biber)
 {
 	bool result = false;
 	for (vector<Aux_Info>::const_iterator it = bibtex_info.begin();
 	     it != bibtex_info.end(); ++it) {
-		if (it->databases.empty())
+		if (!biber && it->databases.empty())
 			continue;
 		result = true;
 

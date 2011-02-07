@@ -189,7 +189,8 @@ private:
 				      std::vector<Aux_Info> const &);
 
 	///
-	bool runBibTeX(std::vector<Aux_Info> const &, OutputParams const &);
+	bool runBibTeX(std::vector<Aux_Info> const &,
+		       OutputParams const &, bool biber);
 
 	///
 	void deleteFilesOnError() const;
