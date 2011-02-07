@@ -75,9 +75,6 @@ bool findPreviousChange(BufferView * bv);
 /// \param next true to find the next change, otherwise the previous
 bool findChange(BufferView * bv, bool next);
 
-// Hopefully, nobody will ever replace with something like this
-#define LYX_FR_NULL_STRING "__LYX__F&R__NULL__STRING__"
-
 class FindAndReplaceOptions {
 public:
 	typedef enum {
@@ -87,26 +84,25 @@ public:
 		S_ALL_MANUALS
 	} SearchScope;
 	FindAndReplaceOptions(
-		docstring const & search,
+		docstring const & find_buf_name,
 		bool casesensitive,
 		bool matchword,
 		bool forward,
 		bool expandmacros,
 		bool ignoreformat,
-		bool regexp,
-		docstring const & replace,
+		docstring const & repl_buf_name,
 		bool keep_case,
 		SearchScope scope = S_BUFFER
 	);
 	FindAndReplaceOptions() {  }
-	docstring search;
+	docstring find_buf_name;
 	bool casesensitive;
 	bool matchword;
 	bool forward;
 	bool expandmacros;
 	bool ignoreformat;
-	bool regexp;
-	docstring replace;
+	/// This is docstring() if no replace was requested
+	docstring repl_buf_name;
 	bool keep_case;
 	SearchScope scope;
 };
