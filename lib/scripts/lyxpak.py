@@ -6,13 +6,15 @@
 # Licence details can be found in the file COPYING.
 
 # author Enrico Forestieri
+# author Richard Heck
 
 # Full author contact details are available in file CREDITS
 
 # This script creates a tar or zip archive with a lyx file and all included
-# files (graphics and so on). The created archive is the standard type on a
-# given platform, such that a zip archive is created on Windows and a gzip
-# compressed tar archive on *nix.
+# files (graphics and so on). By default, the created archive is the standard
+# type on a given platform, such that a zip archive is created on Windows and
+# a gzip compressed tar archive on *nix. This can be controlled by command
+# line options, however.
 
 import os, re, string, sys
 if sys.version_info < (2, 4, 0):
@@ -163,6 +165,47 @@ def gather_files(curfile, incfiles):
     return 0
 
 
+def find_lyx2lyx(progloc):
+    # first we will see if the script is roughly where we are
+    # i.e., we will assume we are in $SOMEDIR/scripts and look
+    # for $SOMEDIR/lyx2lyx/lyx2lyx.
+    ourpath = os.path.dirname(abspath(progloc))
+    (upone, discard) = os.path.split(ourpath)
+    tryit = os.path.join(upone, "lyx2lyx", "lyx2lyx")
+    if os.access(tryit, os.X_OK):
+        return tryit
+
+    # now we will try to query LyX itself to find the path.
+    extlist = ['']
+    if os.environ.has_key("PATHEXT"):
+        extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
+    lyx_exe, full_path = find_exe(["lyxc", "lyx"], extlist, path)
+    if lyx_exe == None:
+        error('Cannot find the LyX executable in the path.')
+    cmd_status, cmd_stdout = run_cmd("%s -version 2>&1" % lyx_exe)
+    if cmd_status != None:
+        error('Cannot query LyX about the lyx2lyx script.')
+    re_msvc = re.compile(r'^(\s*)(Host type:)(\s+)(win32)$')
+    re_sysdir = re.compile(r'^(\s*)(LyX files dir:)(\s+)(\S+)$')
+    lines = cmd_stdout.splitlines()
+    for line in lines:
+        match = re_msvc.match(line)
+        if match:
+            # The LyX executable was built with MSVC, so the
+            # "LyX files dir:" line is unusable
+            basedir = os.path.dirname(os.path.dirname(full_path))
+            tryit = os.path.join(basedir, 'Resources', 'lyx2lyx', 'lyx2lyx')
+            break
+        match = re_sysdir.match(line)
+        if match:
+            tryit = os.path.join(match.group(4), 'lyx2lyx', 'lyx2lyx')
+            break
+
+    if not os.access(tryit, os.X_OK):
+        error('Unable to find the lyx2lyx script.')
+    return tryit
+
+
 def main(args):
 
     ourprog = args[0]
@@ -224,41 +267,7 @@ def main(args):
 
     # Try to find the location of the lyx2lyx script
     if lyx2lyx == None:
-        # first we will see if the script is roughly where we are
-        # i.e., we will assume we are in $SOMEDIR/scripts and look
-        # for $SOMEDIR/lyx2lyx/lyx2lyx.
-        ourpath = os.path.dirname(abspath(ourprog))
-        (upone, discard) = os.path.split(ourpath)
-        tryit = os.path.join(upone, "lyx2lyx", "lyx2lyx")
-        if os.path.exists(tryit):
-            lyx2lyx = tryit
-        else:
-          extlist = ['']
-          if os.environ.has_key("PATHEXT"):
-              extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
-          lyx_exe, full_path = find_exe(["lyxc", "lyx"], extlist, path)
-          if lyx_exe == None:
-              error('Cannot find the LyX executable in the path.')
-          cmd_status, cmd_stdout = run_cmd("%s -version 2>&1" % lyx_exe)
-          if cmd_status != None:
-              error('Cannot query LyX about the lyx2lyx script.')
-          re_msvc = re.compile(r'^(\s*)(Host type:)(\s+)(win32)$')
-          re_sysdir = re.compile(r'^(\s*)(LyX files dir:)(\s+)(\S+)$')
-          lines = cmd_stdout.splitlines()
-          for line in lines:
-              match = re_msvc.match(line)
-              if match:
-                  # The LyX executable was built with MSVC, so the
-                  # "LyX files dir:" line is unusable
-                  basedir = os.path.dirname(os.path.dirname(full_path))
-                  lyx2lyx = os.path.join(basedir, 'Resources', 'lyx2lyx', 'lyx2lyx')
-                  break
-              match = re_sysdir.match(line)
-              if match:
-                  lyx2lyx = os.path.join(match.group(4), 'lyx2lyx', 'lyx2lyx')
-                  break
-          if not os.access(lyx2lyx, os.X_OK):
-              error('Unable to find the lyx2lyx script.')
+        lyx2lyx = find_lyx2lyx(ourprog)
 
     # Initialize the list with the specified LyX file and recursively
     # gather all required files (also from child documents).
