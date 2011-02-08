@@ -63,7 +63,7 @@ for t in $(echo "$TESTS" | sed -e 's/-in.txt//g'); do
     fi;
 done
 
-killall -w stop_autotests.tcl
+killall stop_autotests.tcl > /dev/null 2>&1
 
 echo
 if [ $failed -eq 0 ]; then
