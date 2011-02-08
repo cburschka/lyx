@@ -552,17 +552,21 @@ void Cursor::checkNewWordPosition()
 	if (!inTexted())
 		clearNewWordPosition();
 	else {
-		if (paragraph().id() != new_word_.paragraph().id())
+		if (pit() != new_word_.pit())
 			clearNewWordPosition();
 		else {
-			FontSpan ow = new_word_.locateWord(WHOLE_WORD);
 			FontSpan nw = locateWord(WHOLE_WORD);
-			if (nw.intersect(ow).empty())
+			if (nw.size()) {
+				FontSpan ow = new_word_.locateWord(WHOLE_WORD);
+				if (nw.intersect(ow).empty())
+					clearNewWordPosition();
+				else
+					LYXERR(Debug::DEBUG, "new word: "
+						   << " par: " << pit()
+						   << " pos: " << nw.first << ".." << nw.last);
+			} else {
 				clearNewWordPosition();
-			else
-				LYXERR(Debug::DEBUG, "new word: "
-					<< " par: " << pit()
-					<< " pos: " << nw.first << ".." << nw.last);
+			}
 		}
 	}
 }

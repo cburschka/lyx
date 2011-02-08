@@ -196,8 +196,10 @@ FontSpan DocIterator::locateWord(word_location const loc) const
 {
 	FontSpan f = FontSpan();
 
-	f.first = pos();
-	top().paragraph().locateWord(f.first, f.last, loc);
+	if (!top().text()->empty()) {
+		f.first = pos();
+		top().paragraph().locateWord(f.first, f.last, loc);
+	}
 	return f;
 }
 
