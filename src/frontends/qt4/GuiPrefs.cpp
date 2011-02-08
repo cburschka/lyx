@@ -1303,9 +1303,14 @@ PrefPaths::PrefPaths(GuiPreferences * form)
 	connect(tempDirED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 
+#if defined(USE_HUNSPELL)
 	connect(hunspellDirPB, SIGNAL(clicked()), this, SLOT(selectHunspelldir()));
 	connect(hunspellDirED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
+#else
+	hunspellDirPB->setEnabled(false);
+	hunspellDirED->setEnabled(false);
+#endif
 
 	connect(pathPrefixED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
