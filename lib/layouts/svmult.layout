@@ -242,37 +242,13 @@ Style Part*
 End
 
 Style Chapter
-	Margin		Static
 	Category	"For editors"
-	LabelString	"Chapter \thechapter"
-	LabelStringAppendix  "Appendix \thechapter"
-	LabelType	Counter
-	LabelCounter	chapter
-	TocLevel	0
-	LatexType	Command
-	LatexName	chapter
-	NeedProtect	1
-	NextNoIndent	1
-	ParSkip		0.4
-	TopSep		4
-	BottomSep	0.8
-	ParSep		0.8
-	Align		Left
-	OptionalArgs	1
-	Font
-	  Series	Bold
-	  Size		Huge
-	EndFont
+  Align   Left
 End
 
 Style Chapter*
-	CopyStyle	Chapter
 	Category	"For editors"
-	Margin		Static
-	LatexName	chapter*
-	LabelType	No_Label
-	LabelCounter	""
-	OptionalArgs	0
+  Align   Left
 End
 
 InsetLayout Inst

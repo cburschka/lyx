@@ -18,8 +18,11 @@
 # see www.springer.de/author/tex/help-journals.html for class files
 #
 # The standard Springer Journal sections
+
 Format 33
 Input svjour.inc
+NoStyle Chapter
+NoCounter chapter
 
 ClassOptions
   Other		global

@@ -48,8 +48,6 @@ Input stdtitle.inc
 NoStyle Part
 NoCounter part
 NoStyle Part*
-NoStyle Chapter
-NoCounter chapter
 NoStyle Chapter*
 NoStyle Subparagraph
 NoCounter subparagraph
