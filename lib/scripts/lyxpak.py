@@ -21,8 +21,6 @@ if sys.version_info < (2, 4, 0):
     from sets import Set as set
 from getopt import getopt
 
-lyx2lyx = None
-
 # Pre-compiled regular expressions.
 re_lyxfile = re.compile("\.lyx$")
 re_input = re.compile(r'^(.*)\\(input|include){(\s*)(\S+)(\s*)}.*$')
@@ -79,7 +77,7 @@ def abspath(name):
     return newname
 
 
-def gather_files(curfile, incfiles):
+def gather_files(curfile, incfiles, lyx2lyx):
     " Recursively gather files."
     curdir = os.path.dirname(abspath(curfile))
     is_lyxfile = re_lyxfile.search(curfile)
@@ -221,7 +219,7 @@ def main(args):
 
     makezip = (os.name == 'nt')
     outdir = ""
-    global lyx2lyx
+    lyx2lyx = None
 
     for (opt, param) in options:
       if opt == "-h":
@@ -272,7 +270,7 @@ def main(args):
     # Initialize the list with the specified LyX file and recursively
     # gather all required files (also from child documents).
     incfiles = [abspath(lyxfile)]
-    gather_files(lyxfile, incfiles)
+    gather_files(lyxfile, incfiles, lyx2lyx)
 
     # Find the topmost dir common to all files
     if len(incfiles) > 1:
