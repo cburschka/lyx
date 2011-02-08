@@ -123,7 +123,7 @@ def gather_files(curfile, incfiles, lyx2lyx):
             if file_exists:
                 incfiles.append(abspath(file))
                 if recursive:
-                    gather_files(file, incfiles)
+                    gather_files(file, incfiles, lyx2lyx)
             i += 1
             continue
 
@@ -164,6 +164,7 @@ def gather_files(curfile, incfiles, lyx2lyx):
 
 
 def find_lyx2lyx(progloc):
+    " Find a usable version of the lyx2lyx script. "
     # first we will see if the script is roughly where we are
     # i.e., we will assume we are in $SOMEDIR/scripts and look
     # for $SOMEDIR/lyx2lyx/lyx2lyx.
@@ -252,7 +253,6 @@ def main(args):
     else:
         import tarfile
 
-    # Create a tar archive on *nix and a zip archive on Windows
     ar_ext = ".tar.gz"
     if makezip:
         ar_ext = ".zip"
@@ -263,7 +263,6 @@ def main(args):
 
     path = string.split(os.environ["PATH"], os.pathsep)
 
-    # Try to find the location of the lyx2lyx script
     if lyx2lyx == None:
         lyx2lyx = find_lyx2lyx(ourprog)
 
