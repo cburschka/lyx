@@ -800,7 +800,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 	if (!LaTeXFeatures::isAvailable("fontspec"))
 		fontModule->osFontsCB->setToolTip(
-			qt_("Use OpenType- and TrueType fonts directly (requires XeTeX or LuaTeX)\n"
+			qt_("Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)\n"
 			    "You need to install the package \"fontspec\" to use this feature"));
 
 
