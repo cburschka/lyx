@@ -2494,7 +2494,9 @@ void BufferParams::writeEncodingPreamble(odocstream & os,
 	// LuaTeX neither, but with tex fonts, we need to load
 	// the luainputenc package.
 	if (features.runparams().flavor == OutputParams::LUATEX) {
-		if (!useNonTeXFonts) {
+		if (!useNonTeXFonts && inputenc != "default"
+		    && ((inputenc == "auto" && language->encoding()->package() == Encoding::inputenc)
+		        || (inputenc != "auto" && encoding().package() == Encoding::inputenc))) {
 			os << "\\usepackage[utf8]{luainputenc}\n";
 			texrow.newline();
 		}
