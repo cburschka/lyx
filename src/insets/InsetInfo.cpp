@@ -27,6 +27,7 @@
 #include "LyXVC.h"
 #include "Lexer.h"
 #include "ParagraphParameters.h"
+#include "version.h"
 
 #include "frontends/Application.h"
 
@@ -454,7 +455,7 @@ void InsetInfo::updateInfo()
 	}
 	case LYX_INFO:
 		if (name_ == "version")
-			setText(from_ascii(PACKAGE_VERSION));
+			setText(from_ascii(lyx_version));
 		break;
 	}
 }
