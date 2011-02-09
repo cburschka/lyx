@@ -1187,7 +1187,7 @@ bool Buffer::write(ostream & ofs) const
 	// The top of the file should not be written by params().
 
 	// write out a comment in the top of the file
-	ofs << "#LyX " << lyx_version
+	ofs << "#LyX " << lyx_version_major << "." << lyx_version_minor
 	    << " created this file. For more info see http://www.lyx.org/\n"
 	    << "\\lyxformat " << LYX_FORMAT << "\n"
 	    << "\\begin_document\n";
