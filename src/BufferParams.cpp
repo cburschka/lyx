@@ -2624,7 +2624,7 @@ string const BufferParams::loadFonts(string const & rm,
 	 *    -- if there's a way to find out if a font really supports
 	 *       OldStyle, enable/disable the widget accordingly. 
 	*/
-	if (use_systemfonts) {
+	if (use_systemfonts && features.isAvailable("fontspec")) {
 		// "Mapping=tex-text" and "Ligatures=TeX" are equivalent.
 		// However, until v.2 (2010/07/11) fontspec only knew
 		// Mapping=tex-text (for XeTeX only); then "Ligatures=TeX"
