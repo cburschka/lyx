@@ -214,7 +214,7 @@ def revert_xetex(document):
 
     # 2.) check font settings
     # defaults
-    roman = sans = typew = default
+    roman = sans = typew = "default"
     osf = False
     sf_scale = tt_scale = 100.0
     
@@ -288,11 +288,11 @@ def revert_xetex(document):
             sf += 'Scale=' + str(sf_scale / 100.0) + ','
         sf += 'Mapping=tex-text]{' + sans + '}'
         pretext.append(sf)
-    if typewriter != "default":
+    if typew != "default":
         tw = '\\setmonofont'
         if tt_scale != 100.0:
             tw += '[Scale=' + str(tt_scale / 100.0) + ']'
-        tw += '{' + typewriter + '}'
+        tw += '{' + typew + '}'
         pretext.append(tw)
     if osf:
         pretext.append('\\defaultfontfeatures{Numbers=OldStyle}')
