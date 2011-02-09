@@ -163,7 +163,7 @@ msgstr "Zitierstil"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:28
 msgid "Use BibTeX's default numerical styles"
-msgstr "Verwenden Sie BibTeXs nummerische Standardstile"
+msgstr "Verwende BibTeXs nummerische Standardstile"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:31
 msgid "&Default (numerical)"
@@ -187,7 +187,7 @@ msgstr "Natbib-&Stil:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:97
 msgid "Use the jurabib styles for law and humanities"
-msgstr "Verwenden Sie die Jurabib-Stile für Rechts- und Geisteswissenschaften"
+msgstr "Verwende die Jurabib-Stile für Rechts- und Geisteswissenschaften"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:100
 msgid "&Jurabib"
@@ -567,7 +567,7 @@ msgstr "(&De)aktivieren"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:107
 msgid "Add a new branch to the list"
-msgstr "Fügen Sie einen neuen Zweig zur Liste hinzu"
+msgstr "Füge einen neuen Zweig zur Liste hinzu"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:120
 msgid "Define or change background color"
@@ -598,7 +598,7 @@ msgstr "&Umbenennen..."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:25
 msgid "Add the selected branches to the list."
-msgstr "Fügen Sie den ausgewählten Zweig zur Liste hinzu"
+msgstr "Füge den ausgewählten Zweig zur Liste hinzu"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:28
 msgid "&Add Selected"
@@ -606,7 +606,7 @@ msgstr "Ausge&wählte hinzufügen"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:35
 msgid "Add all unknown branches to the list."
-msgstr "Fügen Sie alle nicht-definierten Zweige zur Liste hinzu"
+msgstr "Füge alle nicht-definierten Zweige zur Liste hinzu"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:38
 msgid "Add A&ll"
@@ -1140,7 +1140,7 @@ msgstr "TeX-Code: "
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:167
 msgid "Match delimiter types"
-msgstr "Wählen Sie zusammengehörige Trennzeichen"
+msgstr "Wähle zusammengehörige Trennzeichen"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:170
 msgid "&Keep matched"
@@ -1161,7 +1161,7 @@ msgstr "&Einfügen"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:112
 msgid "Reset to the default settings for the document class"
-msgstr "Setzen Sie auf die Standardeinstellungen der Dokumentklasse zurück"
+msgstr "Auf die Standardeinstellungen der Dokumentklasse zurücksetzen"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:115
 msgid "Use Class Defaults"
@@ -2046,7 +2046,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:131
 msgid "Add a new index to the list"
-msgstr "Fügen Sie einen neuen Index zur Liste hinzu"
+msgstr "Füge einen neuen Index zur Liste hinzu"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149
@@ -2460,7 +2460,7 @@ msgstr "Nächster &Fehler"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:28
 msgid "Use the margin settings provided by the document class"
-msgstr "Verwenden Sie die Rand-Einstellungen der Dokumentklasse"
+msgstr "Verwende die Randeinstellungen der Dokumentklasse"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:31
 msgid "&Default Margins"
@@ -2980,7 +2980,7 @@ msgstr "Der für den Seitenkopf und -fuß verwendete Stil"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:206
 msgid "Lay out the page for double-sided printing"
-msgstr "Formatieren Sie die Seite für doppelseitigen Ausdruck"
+msgstr "Formatiere die Seite für doppelseitigen Ausdruck"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:209
 msgid "&Two-sided document"
@@ -3496,7 +3496,7 @@ msgstr "Sprache der Benutzer&oberfläche:"
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:29
 msgid "Select the language of the user interface (menus, dialogs, etc.)"
 msgstr ""
-"Legen Sie die Sprache der Benutzeroberfläche (Menüs, Dialoge usw.) fest."
+"Legen Sie hier die Sprache der Benutzeroberfläche (Menüs, Dialoge usw.) fest."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:55
 #: src/frontends/qt4/GuiDocument.cpp:1000
@@ -4102,8 +4102,7 @@ msgstr "Zu &ignorierende Zeichen:"
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:117
 msgid "Override the language used for the spellchecker"
 msgstr ""
-"Geben Sie die Sprache vor, die für die Rechtschreibprüfung verwendet werden "
-"soll"
+"Überschreibe die Sprache vor für die Rechtschreibprüfung"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:124
 msgid "Al&ternative language:"
@@ -4490,7 +4489,7 @@ msgstr "Nur ganze &Wörter"
 #: src/frontends/qt4/ui/SendtoUi.ui:42
 msgid "Process the converted file with this command ($$FName = file name)"
 msgstr ""
-"Verarbeiten Sie die konvertierte Datei mit diesem Befehl ($$FName = "
+"Verarbeite die konvertierte Datei mit diesem Befehl ($$FName = "
 "Dateiname)"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:101
@@ -10730,7 +10729,7 @@ msgid ""
 msgstr ""
 "Nummeriert Theoreme und Ähnliches kapitelweise (d.h. der Zähler wird am "
 "Anfang jedes Kapitels zurückgesetzt). Benutzen Sie dieses Modul nur mit "
-"Dokumentklassen die Kapitel verwenden."
+"Dokumentklassen, die Kapitel verwenden."
 
 #: lib/layouts/theorems-named.module:3
 msgid "Named Theorems"
@@ -20101,7 +20100,7 @@ msgstr ""
 "Fehler beim Lesen der Konfigurationsdatei\n"
 "%1$s.\n"
 "LyX kehrt zur Standardeinstellung zurück.\n"
-"Bitte schauen Sie unter Werkzeuge>Einstellungen>Benutzeroberfläche\n"
+"Bitte schauen Sie unter Werkzeuge > Einstellungen > Benutzeroberfläche\n"
 "nach, welche Konfigurationsdatei Sie verwenden, und überprüfen Sie diese."
 
 #: src/frontends/qt4/GuiBibtex.cpp:53
