@@ -1,11 +1,12 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 410
+\lyxformat 412
 \begin_document
 \begin_header
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
 \language english
+\language_package default
 \inputencoding default
 \fontencoding global
 \font_roman default
@@ -446,6 +447,37 @@ Feynman
 Diagram
 \series default
 ).
+\end_layout
+
+\begin_layout Subsection
+fontspec
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "fontspec"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/fontspec
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+fontspec
+\family default
+ provides access to your Operating System's OpenType, TrueType and PostScript
+ fonts.
+ The package needs either the XeTeX or the LuaTeX engine for this.
+ Note that LuaTeX is only supported as of fontspec version 2.0 (2010/07/11).
 \end_layout
 
 \begin_layout Subsection

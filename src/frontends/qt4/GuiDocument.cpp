@@ -798,6 +798,11 @@ GuiDocument::GuiDocument(GuiView & lv)
 		fontModule->fontsDefaultCO->addItem(
 			qt_(GuiDocument::fontfamilies_gui[n]));
 
+	if (!LaTeXFeatures::isAvailable("fontspec"))
+		fontModule->osFontsCB->setToolTip(
+			qt_("Use OpenType- and TrueType fonts directly (requires XeTeX or LuaTeX)\n"
+			    "You need to install the package \"fontspec\" to use this feature"));
+
 
 	// page layout
 	pageLayoutModule = new UiWidget<Ui::PageLayoutUi>;
@@ -2874,9 +2879,12 @@ void GuiDocument::paramsToDialog()
 	if (index == -1)
 		index = 0;
 	outputModule->defaultFormatCO->setCurrentIndex(index);
-	fontModule->osFontsCB->setEnabled(bp_.baseClass()->outputType() == lyx::LATEX);
+	bool const os_fonts_available =
+		bp_.baseClass()->outputType() == lyx::LATEX
+		&& LaTeXFeatures::isAvailable("fontspec");
+	fontModule->osFontsCB->setEnabled(os_fonts_available);
 	fontModule->osFontsCB->setChecked(
-		bp_.baseClass()->outputType() == lyx::LATEX && bp_.useNonTeXFonts);
+		os_fonts_available && bp_.useNonTeXFonts);
 
 	outputModule->outputsyncCB->setChecked(bp_.output_sync);
 	outputModule->synccustomCB->setEditText(toqstr(bp_.output_sync_macro));
@@ -2889,7 +2897,7 @@ void GuiDocument::paramsToDialog()
 	updateFontsize(documentClass().opt_fontsize(),
 			bp_.fontsize);
 
-	if (bp_.useNonTeXFonts) {
+	if (bp_.useNonTeXFonts && os_fonts_available) {
 		fontModule->fontencLA->setEnabled(false);
 		fontModule->fontencCO->setEnabled(false);
 		fontModule->fontencLE->setEnabled(false);
