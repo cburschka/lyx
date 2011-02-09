@@ -130,7 +130,7 @@ public:
 		    typically for the File->Export menu. */
 		ExportFormats,
 		/** This is a list of importable formats
-		    typically for the File->Export menu. */
+		    typically for the File->Import menu. */
 		ImportFormats,
 		/** This is the list of elements available
 		 * for insertion into document. */
