@@ -149,8 +149,6 @@ class CommandSourceFromFile(CommandSource):
         line = self.lines[self.i].rstrip('\n')
         self.count = self.count + 1
         self.i = self.i + 1
-        #print '\nLine read: <<' + line + '>>\n'
-        sys.stdout.write('r')
         return line
 
 def lyx_exists():
@@ -171,10 +169,13 @@ def lyx_sleeping():
 
 
 # Interruptible os.system()
-def intr_system(cmd):
+def intr_system(cmd, ignore_err = False):
+    print "Executing " + cmd + "\n"
     ret = os.system(cmd)
     if os.WIFSIGNALED(ret):
         raise KeyboardInterrupt
+    if ret != 0 and not ignore_err:
+        raise BaseException("command failed.")
     return ret
 
 
@@ -188,7 +189,6 @@ def sendKeystring(keystr, LYX_PID):
     before_secs = time.time()
     while lyx_exists() and not lyx_sleeping():
         time.sleep(0.02)
-        sys.stdout.write('.')
         sys.stdout.flush()
         if time.time() - before_secs > 180:
             print 'Killing due to freeze (KILL_FREEZE)'
@@ -200,7 +200,6 @@ def sendKeystring(keystr, LYX_PID):
     if not screenshot_out is None:
         while lyx_exists() and not lyx_sleeping():
             time.sleep(0.02)
-            sys.stdout.write('.')
             sys.stdout.flush()
         print 'Making Screenshot: ' + screenshot_out + ' OF ' + infilename
         time.sleep(0.2)
@@ -261,6 +260,10 @@ if xvkbd_exe is None:
 
 xvkbd_hacked = os.environ.get('XVKBD_HACKED') != None
 
+locale_dir = os.environ.get('LOCALE_DIR')
+if locale_dir is None:
+    locale_dir = '.'
+
 def_delay = os.environ.get('XVKBD_DELAY')
 if def_delay is None:
     def_delay = '100'
@@ -312,7 +315,7 @@ while not failed:
     outfile.writelines(c + '\n')
     outfile.flush()
     if c[0] == '#':
-        print "\nIgnoring comment line: " + c
+        print "Ignoring comment line: " + c
     elif c[0:9] == 'TestBegin':
         print "\n"
         lyx_pid=os.popen("pidof lyx").read()
@@ -339,11 +342,10 @@ while not failed:
         print 'lyx_pid: ' + lyx_pid + '\n'
         print 'lyx_win: ' + lyx_window_name + '\n'
     elif c[0:5] == 'Sleep':
-        print "\nSleeping for " + c[6:] + "\n"
+        print "Sleeping for " + c[6:] + "\n"
         time.sleep(float(c[6:]))
     elif c[0:4] == 'Exec':
         cmd = c[5:].rstrip()
-        print "\nExecuting " + cmd + "\n"
         intr_system(cmd)
     elif c == 'Loop':
         outfile.close()
@@ -361,32 +363,51 @@ while not failed:
             os._exit(1)
     elif c[0:4] == 'KD: ':
         key_delay = c[4:].rstrip('\n')
-        print 'Setting DELAY to ' + key_delay + '.'
+        print 'Setting DELAY to ' + key_delay + '.\n'
     elif c == 'Loop':
         RaiseWindow()
         sendKeystring(ResetCommand, lyx_pid)
     elif c[0:6] == 'Assert':
         cmd = c[7:].rstrip()
-        print "\nExecuting " + cmd
+        print "Executing " + cmd
         result = intr_system(cmd)
         failed = failed or (result != 0)
         print "result=" + str(result) + ", failed=" + str(failed)
     elif c[0:7] == 'TestEnd':
         time.sleep(0.5)
-        print "\nTerminating lyx instance: " + str(lyx_pid) + "\n"
-        intr_system("kill -9 " + str(lyx_pid) + "\n");
+        print "Terminating lyx instance: " + str(lyx_pid) + "\n"
+        intr_system("kill -9 " + str(lyx_pid));
         while lyx_exists():
             print "Waiting for lyx to die...\n"
             time.sleep(0.5)
         cmd = c[8:].rstrip()
-        print "\nExecuting " + cmd
+        print "Executing " + cmd
         result = intr_system(cmd)
         failed = failed or (result != 0)
         print "result=" + str(result) + ", failed=" + str(failed)
     elif c[0:4] == 'Lang':
         lang = c[5:].rstrip()
-        print "\nSetting LANG=" + lang
+        print "Setting LANG=" + lang + "\n"
         os.environ['LANG'] = lang
+        idx = lang.rfind(".")
+        if idx != -1:
+            ccode = lang[0:idx]
+        else:
+            ccode = lang
+        idx = lang.find("_")
+        if idx != -1:
+            short_code = lang[0:idx]
+        else:
+            short_code = ccode
+        lyx_dir = os.popen("dirname \"" + lyx_exe + "\"").read().rstrip()
+        intr_system("mkdir -p " + locale_dir + "/" + ccode + "/LC_MESSAGES")
+# Append version suffix ?
+        if lyx_dir[0:3] == "../":
+            rel_dir = "../../" + lyx_dir
+        else:
+            rel_dir = lyx_dir
+        intr_system("rm -f " + locale_dir + "/" + ccode + "/LC_MESSAGES/lyx.mo")
+        intr_system("ln -s " + rel_dir + "/../po/" + short_code + ".gmo " +  locale_dir + "/" + ccode + "/LC_MESSAGES/lyx.mo")
     else:
         print "Unrecognised Command '" + c + "'\n"
         failed = True

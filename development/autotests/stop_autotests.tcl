@@ -1,4 +1,4 @@
-#! /usr/bin/wish8.5
+#!/usr/bin/wish8.5
 
 wm attributes . -topmost 1
 

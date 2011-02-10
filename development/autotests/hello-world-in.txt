@@ -52,10 +52,9 @@
 # LaTeX, and verifies that the typed characters are indeed present in the
 # exported document.
 #
-Lang it_IT.utf8
 TestBegin test.lyx > lyx-log.txt 2>&1
 KK: Hello World
-KK: \Afs
+KK: \Cs
 KK: \Ax
 KK: buffer-export latex\[Return]
 TestEnd grep "Hello World" test.tex
