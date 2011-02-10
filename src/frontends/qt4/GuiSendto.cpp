@@ -33,7 +33,7 @@ namespace frontend {
 
 
 GuiSendTo::GuiSendTo(GuiView & lv)
-	: GuiDialog(lv, "sendto", qt_("Send Document to Command"))
+	: GuiDialog(lv, "sendto", qt_("Export or Send Document"))
 {
 	setupUi(this);
 
@@ -131,8 +131,7 @@ bool GuiSendTo::isValid()
 		return false;
 
 	return (formatLW->selectedItems().size() > 0
-		&& formatLW->count() != 0
-		&& !commandCO->currentText().isEmpty());
+		&& formatLW->count() != 0);
 }
 
 
@@ -155,11 +154,17 @@ void GuiSendTo::paramsToDialog(Format const * /*format*/, QString const & comman
 
 void GuiSendTo::dispatchParams()
 {
-	if (command_.isEmpty() || !format_ || format_->name().empty())
+	if (!format_ || format_->name().empty())
 		return;
 
-	string const data = format_->name() + " " + fromqstr(command_);
-	dispatch(FuncRequest(getLfun(), data));
+	string data = format_->name();
+	if (!command_.isEmpty())
+		data += " " + fromqstr(command_);
+
+	FuncCode const lfun = command_.isEmpty() ?
+		LFUN_BUFFER_EXPORT : getLfun();
+
+	dispatch(FuncRequest(lfun, data));
 }
 
 Dialog * createGuiSendTo(GuiView & lv) { return new GuiSendTo(lv); }
