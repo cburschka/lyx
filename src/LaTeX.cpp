@@ -207,8 +207,7 @@ int LaTeX::run(TeXErrors & terr)
 			LYXERR(Debug::DEPEND, "Dependency file has changed");
 		}
 
-		if (head.extchanged(".bib") || head.extchanged(".bst")
-		    || head.extchanged(".bcf"))
+		if (head.extchanged(".bib") || head.extchanged(".bst"))
 			run_bibtex = true;
 	} else
 		LYXERR(Debug::DEPEND,
@@ -276,9 +275,9 @@ int LaTeX::run(TeXErrors & terr)
 
 	// check if we're using biber instead of bibtex
 	// biber writes no info to the aux file, so we just check
-	// if a bcf file exists (and, above, if it was updated)
+	// if a bcf file exists (and if it was updated)
 	FileName const bcffile(changeExtension(file.absFileName(), ".bcf"));
-	bool const biber = bcffile.exists();
+	bool const biber = head.exist(bcffile);
 
 	// run bibtex
 	// if (scanres & UNDEF_CIT || scanres & RERUN || run_bibtex)
@@ -289,13 +288,21 @@ int LaTeX::run(TeXErrors & terr)
 		// no checks for now
 		LYXERR(Debug::LATEX, "Running BibTeX.");
 		message(_("Running BibTeX."));
-		updateBibtexDependencies(head, bibtex_info);
+		updateBibtexDependencies(head, bibtex_info, biber);
 		rerun |= runBibTeX(bibtex_info, runparams, biber);
+		if (biber) {
+			// since biber writes no info to the aux file, we have
+			// to parse the blg file (which only exists after biber
+			// was first issued)
+			FileName const blgfile(changeExtension(file.absFileName(), ".blg"));
+			if (blgfile.exists())
+				scanBlgFile(head);
+		}
 	} else if (!had_depfile) {
 		/// If we run pdflatex on the file after running latex on it,
 		/// then we do not need to run bibtex, but we do need to
 		/// insert the .bib and .bst files into the .dep-pdf file.
-		updateBibtexDependencies(head, bibtex_info);
+		updateBibtexDependencies(head, bibtex_info, biber);
 	}
 
 	// 2
@@ -341,7 +348,7 @@ int LaTeX::run(TeXErrors & terr)
 		// no checks for now
 		LYXERR(Debug::LATEX, "Running BibTeX.");
 		message(_("Running BibTeX."));
-		updateBibtexDependencies(head, bibtex_info);
+		updateBibtexDependencies(head, bibtex_info, biber);
 		rerun |= runBibTeX(bibtex_info, runparams, biber);
 	}
 
@@ -541,7 +548,8 @@ void LaTeX::scanAuxFile(FileName const & file, AuxInfo & aux_info)
 
 
 void LaTeX::updateBibtexDependencies(DepTable & dep,
-				     vector<AuxInfo> const & bibtex_info)
+				     vector<AuxInfo> const & bibtex_info,
+				     bool biber)
 {
 	// Since a run of Bibtex mandates more latex runs it is ok to
 	// remove all ".bib" and ".bst" files.
@@ -564,6 +572,12 @@ void LaTeX::updateBibtexDependencies(DepTable & dep,
 			if (!file.empty())
 				dep.insert(file, true);
 		}
+	}
+
+	// biber writes nothing into the aux file.
+	// Instead, we have to scan the blg file
+	if (biber) {
+		scanBlgFile(dep);
 	}
 }
 
@@ -1121,6 +1135,32 @@ void LaTeX::deplog(DepTable & head)
 
 	// Make sure that the main .tex file is in the dependency file.
 	head.insert(file, true);
+}
+
+
+void LaTeX::scanBlgFile(DepTable & dep)
+{
+	FileName const blg_file(changeExtension(file.absFileName(), "blg"));
+	LYXERR(Debug::LATEX, "Scanning blg file: " << blg_file);
+
+	ifstream ifs(blg_file.toFilesystemEncoding().c_str());
+	string token;
+	static regex const reg1(".*Found bibtex data file '([^']+).*");
+
+	while (getline(ifs, token)) {
+		token = rtrim(token, "\r");
+		smatch sub;
+		// FIXME UNICODE: We assume that citation keys and filenames
+		// in the aux file are in the file system encoding.
+		token = to_utf8(from_filesystem8bit(token));
+		if (regex_match(token, sub, reg1)) {
+			string data = sub.str(1);
+			if (!data.empty()) {
+				LYXERR(Debug::LATEX, "Found bib file: " << data);
+				handleFoundFile(data, dep);
+			}
+		}
+	} 
 }
 
 

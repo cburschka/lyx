@@ -185,7 +185,12 @@ private:
 	void scanAuxFile(support::FileName const &, AuxInfo &);
 
 	///
-	void updateBibtexDependencies(DepTable &, std::vector<AuxInfo> const &);
+	void updateBibtexDependencies(DepTable &,
+				      std::vector<AuxInfo> const &,
+				      bool biber);
+
+	///
+	void scanBlgFile(DepTable & head);
 
 	///
 	bool runBibTeX(std::vector<AuxInfo> const &,
