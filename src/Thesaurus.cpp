@@ -23,7 +23,11 @@
 #include "support/lstrings.h"
 #include "support/os.h"
 
+#ifdef USE_EXTERNAL_MYTHES
+#include MYTHES_H_LOCATION
+#else
 #include "support/mythes/mythes.hxx"
+#endif
 
 #include "frontends/alert.h"
 

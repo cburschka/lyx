@@ -313,7 +313,7 @@ AM_CONDITIONAL(LYX_BUILD_PCH, test "$lyx_pch_comp" = yes)
 dnl Usage: LYX_USE_INCLUDED_BOOST : select if the included boost should
 dnl        be used.
 AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
-	AC_MSG_CHECKING([whether to use boost included library])
+	AC_MSG_CHECKING([whether to use included boost library])
 	AC_ARG_WITH(included-boost,
 	    [AC_HELP_STRING([--without-included-boost], [do not use the boost lib supplied with LyX, try to find one in the system directories - compilation will abort if nothing suitable is found])],
 	    [lyx_cv_with_included_boost=$withval],
@@ -333,6 +333,37 @@ AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 		fi
 		AC_SUBST(BOOST_SEP)
 		AC_SUBST(BOOST_MT)
+	fi
+])
+
+
+dnl Usage: LYX_USE_INCLUDED_MYTHES : select if the included MyThes should
+dnl        be used.
+AC_DEFUN([LYX_USE_INCLUDED_MYTHES],[
+	AC_MSG_CHECKING([whether to use included MyThes library])
+	AC_ARG_WITH(included-mythes,
+	    [AC_HELP_STRING([--without-included-mythes], [do not use the MyThes lib supplied with LyX, try to find one in the system directories - compilation will abort if nothing suitable is found])],
+	    [lyx_cv_with_included_mythes=$withval],
+	    [lyx_cv_with_included_mythes=yes])
+	AM_CONDITIONAL(USE_INCLUDED_MYTHES, test x$lyx_cv_with_included_mythes = xyes)
+	AC_MSG_RESULT([$lyx_cv_with_included_mythes])
+	if test x$lyx_cv_with_included_mythes != xyes ; then
+		AC_LANG_PUSH(C++)
+		AC_CHECK_HEADER(mythes.hxx,[ac_cv_header_mythes_h=yes lyx_cv_mythes_h_location="<mythes.hxx>"])
+		if test x$ac_cv_header_mythes_h != xyes; then
+			AC_CHECK_HEADER(mythes/mythes.hxx,[ac_cv_header_mythes_h=yes lyx_cv_mythes_h_location="<mythes/mythes.hxx>"])
+		fi
+		AC_CHECK_LIB(mythes, main, [MYTHES_LIBS="-lmythes" lyx_mythes=yes], [lyx_mythes=no], [-lm])
+		if test x$lyx_mythes != xyes; then
+			AC_CHECK_LIB(mythes-1.2, main, [MYTHES_LIBS="-lmythes-1.2" lyx_mythes=yes], [lyx_mythes=no], [-lm])
+		fi
+		AC_LANG_POP(C++)
+		if test x$lyx_mythes != xyes -o x$ac_cv_header_mythes_h != xyes; then
+			LYX_ERROR([No suitable MyThes library found (do not use --without-included-mythes)])
+		fi
+		AC_DEFINE(USE_EXTERNAL_MYTHES, 1, [Define as 1 to use an external MyThes library])
+		AC_DEFINE_UNQUOTED(MYTHES_H_LOCATION,$lyx_cv_mythes_h_location,[Location of mythes.hxx])
+		AC_SUBST(MYTHES_LIBS)
 	fi
 ])
 
