@@ -17,8 +17,8 @@
 ///About dialog, inset info, export headers
 extern char const * lyx_version;
 //.lyx header. We don't want lyx_version because of VCS conflicts.
-extern const int lyx_version_major;
-extern const int lyx_version_minor;
+extern int lyx_version_major;
+extern int lyx_version_minor;
 ///
 extern char const * lyx_release_date;
 

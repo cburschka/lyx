@@ -14,8 +14,8 @@
 ///
 char const * lyx_version = PACKAGE_VERSION;
 ///
-const int lyx_version_major = LYX_MAJOR_VERSION;
-const int lyx_version_minor = LYX_MINOR_VERSION;
+int lyx_version_major = LYX_MAJOR_VERSION;
+int lyx_version_minor = LYX_MINOR_VERSION;
 ///
 char const * lyx_release_date = LYX_DATE;
 
