@@ -45,10 +45,6 @@ Input stdfloats.inc
 Input stdcounters.inc
 Input stdtitle.inc
 
-NoStyle Part
-NoCounter part
-NoStyle Part*
-NoStyle Chapter*
 NoStyle Subparagraph
 NoCounter subparagraph
 NoStyle Subparagraph*

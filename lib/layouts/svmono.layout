@@ -65,39 +65,6 @@ Style Back_Matter
 	LabelString	"--- Back Matter ---"
 End
 
-Style Part
-	Category	Section
-	Margin		Dynamic
-	LabelString	"Part \thepart"
-	LabelType	Counter
-	TocLevel	0
-	LabelCounter	part
-	LatexType	Command
-	LatexName	part
-	NeedProtect	1
-	NextNoIndent	1
-	Labelsep	xxx
-	ParSkip		0.4
-	TopSep		4
-	BottomSep	4
-	ParSep		0.8
-	Align		Center
-	Alignpossible	Center
-	Font
-	  Series	Bold
-	  Size		Huge
-	EndFont
-End
-
-Style Part*
-	CopyStyle	Part
-	Category	Unnumbered
-	Margin		Static
-	LatexName	part*
-	LabelType	No_Label
-	LabelCounter	""
-End
-
 Style Chapter
 	Align		Left
 End
