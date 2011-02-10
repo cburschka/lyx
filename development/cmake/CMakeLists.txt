@@ -530,6 +530,9 @@ set(CPACK_SOURCE_GENERATOR TGZ ZIP TBZ2)
 set(CPACK_SOURCE_INSTALLED_DIRECTORIES "${TOP_SRC_DIR};/") # http://www.mail-archive.com/cmake@cmake.org/msg33720.html
 
 set(CPACK_PACKAGE_INSTALL_DIRECTORY "CMake ${LYX_INSTALL_SUFFIX}")
+
+set(CPACK_SOURCE_GENERATOR TGZ ZIP TBZ2)
+set(CPACK_SOURCE_INSTALLED_DIRECTORIES "${TOP_SRC_DIR};/") # http://www.mail-archive.com/cmake@cmake.org/msg33720.html
 #
 # needed by rpm
 set(CPACK_SET_DESTDIR "ON")
@@ -576,7 +579,9 @@ endif()
 # so we do not provide infofiles for
 # CPACK_RESOURCE_FILE_README and CPACK_RESOURCE_FILE_WELCOME
 
-include(CPack)
+if(LYX_CPACK)
+	include(CPack)
+endif()
 
 #Now it is possible to create some packages
 # cd <BuildDir>
