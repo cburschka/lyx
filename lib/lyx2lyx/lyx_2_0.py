@@ -2078,7 +2078,6 @@ def convert_passthru(document):
           document.warning("Can't find end of layout at line " + str(beg))
           beg += 1
           continue
-        document.warning(str(end))
 
         # we are now going to replace newline insets within this layout
         # by new instances of this layout. so we have repeated layouts
