@@ -186,7 +186,10 @@ private:
 
 	///
 	void updateBibtexDependencies(DepTable &,
-				      std::vector<Aux_Info> const &);
+				      std::vector<Aux_Info> const &, bool biber);
+
+	///
+	void scanBlgFile(DepTable & head);
 
 	///
 	bool runBibTeX(std::vector<Aux_Info> const &,
