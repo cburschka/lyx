@@ -108,8 +108,8 @@ void InsetHyperlink::viewTarget() const
 }
 
 
-int InsetHyperlink::latex(otexstream & os,
-			  OutputParams const & runparams) const
+void InsetHyperlink::latex(otexstream & os,
+			   OutputParams const & runparams) const
 {
 	docstring url = getParam("target");
 	docstring name = getParam("name");
@@ -193,8 +193,6 @@ int InsetHyperlink::latex(otexstream & os,
 
 	// output the ready \href command
 	os << "\\href{" << getParam("type") << url << "}{" << name << '}';
-
-	return 0;
 }
 
 

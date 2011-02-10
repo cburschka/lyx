@@ -518,8 +518,9 @@ static bool isPreviewWanted(InsetExternalParams const & params)
 
 static docstring latexString(InsetExternal const & inset)
 {
+	TexRow texrow;
 	odocstringstream ods;
-	otexstream os(ods);
+	otexstream os(ods, texrow);
 	// We don't need to set runparams.encoding since it is not used by
 	// latex().
 	OutputParams runparams(0);
@@ -636,14 +637,14 @@ void InsetExternal::read(Lexer & lex)
 }
 
 
-int InsetExternal::latex(otexstream & os, OutputParams const & runparams) const
+void InsetExternal::latex(otexstream & os, OutputParams const & runparams) const
 {
 	if (params_.draft) {
 		// FIXME UNICODE
 		os << "\\fbox{\\ttfamily{}"
 		   << from_utf8(params_.filename.outputFileName(buffer().filePath()))
 		   << "}\n";
-		return 1;
+		return;
 	}
 
 	// "nice" means that the buffer is exported to LaTeX format but not
@@ -659,25 +660,28 @@ int InsetExternal::latex(otexstream & os, OutputParams const & runparams) const
 		external::Template const * const et_ptr =
 			external::getTemplatePtr(params_);
 		if (!et_ptr)
-			return 0;
+			return;
 		external::Template const & et = *et_ptr;
 
 		external::Template::Formats::const_iterator cit =
 			et.formats.find("PDFLaTeX");
 
 		if (cit != et.formats.end()) {
-			return external::writeExternal(params_, "PDFLaTeX",
-						       buffer(), os.os(),
-						       *(runparams.exportdata),
-						       external_in_tmpdir,
-						       dryrun);
+			int l = external::writeExternal(params_, "PDFLaTeX",
+						        buffer(), os.os(),
+						        *(runparams.exportdata),
+						        external_in_tmpdir,
+						        dryrun);
+			os.texrow().newlines(l);
+			return;
 		}
 	}
 
-	return external::writeExternal(params_, "LaTeX", buffer(), os.os(),
-				       *(runparams.exportdata),
-				       external_in_tmpdir,
-				       dryrun);
+	int l = external::writeExternal(params_, "LaTeX", buffer(), os.os(),
+					*(runparams.exportdata),
+					external_in_tmpdir,
+					dryrun);
+	os.texrow().newlines(l);
 }
 
 

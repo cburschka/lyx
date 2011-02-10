@@ -38,7 +38,7 @@ public:
 	///
 	void read(Lexer &);
 	///
-	int latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const { return 0; }
 	///

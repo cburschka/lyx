@@ -213,7 +213,7 @@ ColorCode InsetNewpage::ColorName() const
 }
 
 
-int InsetNewpage::latex(otexstream & os, OutputParams const &) const
+void InsetNewpage::latex(otexstream & os, OutputParams const &) const
 {
 	switch (params_.kind) {
 		case InsetNewpageParams::NEWPAGE:
@@ -232,7 +232,6 @@ int InsetNewpage::latex(otexstream & os, OutputParams const &) const
 			os << "\\newpage{}";
 			break;
 	}
-	return 0;
 }
 
 

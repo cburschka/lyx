@@ -182,7 +182,7 @@ void InsetWrap::validate(LaTeXFeatures & features) const
 }
 
 
-int InsetWrap::latex(otexstream & os, OutputParams const & runparams_in) const
+void InsetWrap::latex(otexstream & os, OutputParams const & runparams_in) const
 {
 	OutputParams runparams(runparams_in);
 	runparams.inFloat = OutputParams::MAINFLOAT;
@@ -196,9 +196,8 @@ int InsetWrap::latex(otexstream & os, OutputParams const & runparams_in) const
 	if (over.value() != 0)
 		os << '[' << from_ascii(params_.overhang.asLatexString()) << ']';
 	os << '{' << from_ascii(params_.width.asLatexString()) << "}%\n";
-	int const i = InsetText::latex(os, runparams);
+	InsetText::latex(os, runparams);
 	os << "\\end{wrap" << from_ascii(params_.type) << "}%\n";
-	return i + 2;
 }
 
 

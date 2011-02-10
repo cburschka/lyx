@@ -746,8 +746,8 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 }
 
 
-int InsetGraphics::latex(otexstream & os,
-			 OutputParams const & runparams) const
+void InsetGraphics::latex(otexstream & os,
+			  OutputParams const & runparams) const
 {
 	// If there is no file specified or not existing,
 	// just output a message about it in the latex output.
@@ -796,8 +796,6 @@ int InsetGraphics::latex(otexstream & os,
 	os << from_utf8(latex_str);
 
 	LYXERR(Debug::GRAPHICS, "InsetGraphics::latex outputting:\n" << latex_str);
-	// Return how many newlines we issued.
-	return int(count(latex_str.begin(), latex_str.end(),'\n'));
 }
 
 

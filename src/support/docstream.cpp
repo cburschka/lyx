@@ -412,7 +412,7 @@ void otexstream::put(char_type const & c)
 	}
 	os_.put(c);
 	if (c == '\n') {
-		++lines_;
+		texrow_.newline();
 		canbreakline_ = false;
 	} else
 		canbreakline_ = true;
@@ -428,7 +428,7 @@ otexstream & operator<<(otexstream & ots, BreakLine)
 	if (ots.canBreakLine()) {
 		ots.os().put('\n');
 		ots.canBreakLine(false);
-		ots.addLines(1);
+		ots.texrow().newline();
 	}
 	ots.protectSpace(false);
 	return ots;
@@ -440,7 +440,7 @@ otexstream & operator<<(otexstream & ots, SafeBreakLine)
 	if (ots.canBreakLine()) {
 		ots.os() << "%\n";
 		ots.canBreakLine(false);
-		ots.addLines(1);
+		ots.texrow().newline();
 	}
 	ots.protectSpace(false);
 	return ots;
@@ -461,7 +461,7 @@ otexstream & operator<<(otexstream & ots, docstring const & s)
 		ots.protectSpace(false);
 	}
 	ots.os() << s;
-	ots.addLines(count(s.begin(), s.end(), '\n'));
+	ots.texrow().newlines(count(s.begin(), s.end(), '\n'));
 	ots.canBreakLine(s[len - 1] != '\n');
 	return ots;
 }
@@ -481,7 +481,7 @@ otexstream & operator<<(otexstream & ots, char const * s)
 		ots.protectSpace(false);
 	}
 	ots.os() << s;
-	ots.addLines(count(s, s + len, '\n'));
+	ots.texrow().newlines(count(s, s + len, '\n'));
 	ots.canBreakLine(s[len - 1] != '\n');
 	return ots;
 }
@@ -496,7 +496,7 @@ otexstream & operator<<(otexstream & ots, char c)
 	}
 	ots.os() << c;
 	if (c == '\n')
-		ots.addLines(1);
+		ots.texrow().newline();
 	ots.canBreakLine(c != '\n');
 	return ots;
 }

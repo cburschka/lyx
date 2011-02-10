@@ -58,6 +58,15 @@ namespace Alert {
 }
 
 
+// Dummy texrow support
+void TexRow::newline()
+{}
+
+
+void TexRow::newlines(int)
+{}
+
+
 // Dummy translation support
 Messages messages_;
 Messages const & getMessages(std::string const &)

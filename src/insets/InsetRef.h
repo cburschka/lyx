@@ -51,7 +51,7 @@ public:
 	///
 	DisplayType display() const { return Inline; }
 	///
-	int latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const;
 	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///

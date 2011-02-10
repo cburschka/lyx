@@ -109,7 +109,7 @@ public:
 	/// Update not loaded previews
 	void updatePreview();
 	/// \returns the number of rows (\n's) of generated code.
-	int latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const;
 	///
 	docstring contextMenuName() const;
 	///

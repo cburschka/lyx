@@ -63,7 +63,7 @@ private:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	int latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const;
 	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///

@@ -203,9 +203,10 @@ bool InsetBranch::isBranchSelected() const
 }
 
 
-int InsetBranch::latex(otexstream & os, OutputParams const & runparams) const
+void InsetBranch::latex(otexstream & os, OutputParams const & runparams) const
 {
-	return isBranchSelected() ?  InsetText::latex(os, runparams) : 0;
+	if (isBranchSelected())
+		InsetText::latex(os, runparams);
 }
 
 

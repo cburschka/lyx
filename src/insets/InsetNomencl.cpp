@@ -294,10 +294,9 @@ docstring nomenclWidest(Buffer const & buffer, OutputParams const & runparams)
 } // namespace anon
 
 
-int InsetPrintNomencl::latex(otexstream & os, OutputParams const & runparams_in) const
+void InsetPrintNomencl::latex(otexstream & os, OutputParams const & runparams_in) const
 {
 	OutputParams runparams = runparams_in;
-	int lines = 0;
 	if (getParam("set_width") == "auto") {
 		docstring widest = nomenclWidest(buffer(), runparams);
 		// Set the label width via nomencl's command \nomlabelwidth.
@@ -306,7 +305,6 @@ int InsetPrintNomencl::latex(otexstream & os, OutputParams const & runparams_in)
 			os << "\\settowidth{\\nomlabelwidth}{"
 			   << widest
 			   << "}\n";
-			++lines;
 		}
 	} else if (getParam("set_width") == "custom") {
 		// custom length as optional arg of \printnomenclature
@@ -317,11 +315,10 @@ int InsetPrintNomencl::latex(otexstream & os, OutputParams const & runparams_in)
 		   << '['
 		   << from_ascii(width)
 		   << "]{}";
-		return lines;
+		return;
 	}
 	// output the command \printnomenclature
 	os << getCommand(runparams);
-	return lines;
 }
 
 

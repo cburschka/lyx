@@ -61,7 +61,7 @@ private:
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
-	int latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const;
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
@@ -100,7 +100,7 @@ public:
 	///
 	InsetCode lyxCode() const { return INDEX_PRINT_CODE; }
 	///
-	int latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const;
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///

@@ -33,10 +33,8 @@ void InsetArgument::write(ostream & os) const
 }
 
 
-int InsetArgument::latex(otexstream &, OutputParams const &) const
-{
-	return 0;
-}
+void InsetArgument::latex(otexstream &, OutputParams const &) const
+{}
 
 
 int InsetArgument::plaintext(odocstream &, OutputParams const &) const
@@ -56,18 +54,18 @@ docstring InsetArgument::xhtml(XHTMLStream &, OutputParams const &) const
 	return docstring();
 }
 
-int InsetArgument::latexArgument(otexstream & os,
+void InsetArgument::latexArgument(otexstream & os,
 		OutputParams const & runparams, bool optional) const
 {
+	TexRow texrow;
 	odocstringstream ss;
-	otexstream ots(ss);
-	int ret = InsetText::latex(ots, runparams);
+	otexstream ots(ss, texrow);
+	InsetText::latex(ots, runparams);
 	docstring str = ss.str();
 	if (optional && str.find(']') != docstring::npos)
 		str = '{' + str + '}';
 	os << (optional ? '[' : '{') << str
 	   << (optional ? ']' : '}');
-	return ret;
 }
 
 

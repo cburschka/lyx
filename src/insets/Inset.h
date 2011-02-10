@@ -463,9 +463,8 @@ public:
 	 *  Don't use a temporary stringstream if the final output is
 	 *  supposed to go to a file.
 	 *  \sa Buffer::writeLaTeXSource for the reason.
-	 *  \return the number of rows (\n's) of generated LaTeX code.
 	 */
-	virtual int latex(otexstream &, OutputParams const &) const { return 0; }
+	virtual void latex(otexstream &, OutputParams const &) const {}
 	/// returns true to override begin and end inset in file
 	virtual bool directWrite() const;
 	///

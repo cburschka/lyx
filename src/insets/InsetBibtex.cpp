@@ -235,7 +235,7 @@ static string normalizeName(Buffer const & buffer,
 }
 
 
-int InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
+void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 {
 	// the sequence of the commands:
 	// 1. \bibliographystyle{style}
@@ -328,9 +328,6 @@ int InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 			style = split(style, bibtotoc, ',');
 	}
 
-	// line count
-	int nlines = 0;
-
 	if (!style.empty()) {
 		string base = normalizeName(buffer(), runparams, style, ".bst");
 		FileName const try_in_file = 
@@ -358,7 +355,6 @@ int InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 		os << "\\bibliographystyle{"
 		   << from_utf8(latex_path(normalizeName(buffer(), runparams, base, ".bst")))
 		   << "}\n";
-		nlines += 1;
 	}
 
 	// Post this warning only once.
@@ -378,7 +374,6 @@ int InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 			btprint = from_ascii("btPrintCited");
 		os << "\\" << btprint << "\n"
 		   << "\\end{btSect}\n";
-		nlines += 3;
 	}
 
 	// bibtotoc-Option
@@ -396,13 +391,9 @@ int InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 		docstring btprint = getParam("btprint");
 		if (btprint == "btPrintAll") {
 			os << "\\nocite{*}\n";
-			nlines += 1;
 		}
 		os << "\\bibliography{" << db_out << "}\n";
-		nlines += 1;
 	}
-
-	return nlines;
 }
 
 

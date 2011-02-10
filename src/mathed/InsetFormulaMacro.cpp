@@ -70,8 +70,8 @@ void InsetFormulaMacro::write(ostream & os) const
 }
 
 
-int InsetFormulaMacro::latex(otexstream & os,
-			     OutputParams const & runparams) const
+void InsetFormulaMacro::latex(otexstream & os,
+			      OutputParams const & runparams) const
 {
 	//lyxerr << "InsetFormulaMacro::latex" << endl;
 	WriteStream wi(os.os(), runparams.moving_arg, true,
@@ -80,7 +80,7 @@ int InsetFormulaMacro::latex(otexstream & os,
 	wi.canBreakLine(os.canBreakLine());
 	tmpl()->write(wi);
 	os.canBreakLine(wi.canBreakLine());
-	return 2;
+	os.texrow().newlines(wi.line());
 }
 
 

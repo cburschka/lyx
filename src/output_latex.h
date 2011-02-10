@@ -35,7 +35,7 @@ class Text;
 /// \p optargs optional ones. If not enough required
 /// ones are given, we'll output: {}. The optional ones
 /// must all come first.
-int latexArgInsets(Paragraph const & par,
+void latexArgInsets(Paragraph const & par,
 		otexstream & os, OutputParams const & runparams,
 		unsigned int reqargs, unsigned int optargs);
 
@@ -47,7 +47,6 @@ int latexArgInsets(Paragraph const & par,
 void latexParagraphs(Buffer const & buf,
 		     Text const & text,
 		     otexstream & ofs,
-		     TexRow & texrow,
 		     OutputParams const &,
 		     std::string const & everypar = std::string());
 
@@ -64,7 +63,7 @@ std::pair<bool, int> switchEncoding(odocstream & os,
 void TeXOnePar(Buffer const & buf,
 	           Text const & text,
 	           pit_type pit,
-	           otexstream & os, TexRow & texrow,
+	           otexstream & os,
 	           OutputParams const & runparams,
 	           std::string const & everypar = std::string(),
 	           int start_pos = -1, int end_pos = -1);

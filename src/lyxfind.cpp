@@ -718,18 +718,17 @@ private:
 static docstring buffer_to_latex(Buffer & buffer) 
 {
 	OutputParams runparams(&buffer.params().encoding());
+	TexRow texrow;
 	odocstringstream ods;
-	otexstream os(ods);
+	otexstream os(ods, texrow);
 	runparams.nice = true;
 	runparams.flavor = OutputParams::LATEX;
 	runparams.linelen = 80; //lyxrc.plaintext_linelen;
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
-	buffer.texrow().reset();
 	pit_type const endpit = buffer.paragraphs().size();
 	for (pit_type pit = 0; pit != endpit; ++pit) {
-		TeXOnePar(buffer, buffer.text(),
-			  pit, os, buffer.texrow(), runparams);
+		TeXOnePar(buffer, buffer.text(), pit, os, runparams);
 		LYXERR(Debug::FIND, "searchString up to here: " << ods.str());
 	}
 	return ods.str();
@@ -995,7 +994,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 
 	TexRow texrow;
 	odocstringstream ods;
-	otexstream os(ods);
+	otexstream os(ods, texrow);
 	OutputParams runparams(&buf.params().encoding());
 	runparams.nice = false;
 	runparams.flavor = OutputParams::LATEX;
@@ -1008,7 +1007,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 		pos_type endpos = cur.paragraph().size();
 		if (len != -1 && endpos > cur.pos() + len)
 			endpos = cur.pos() + len;
-		TeXOnePar(buf, *cur.innerText(), cur.pit(), os, texrow, runparams,
+		TeXOnePar(buf, *cur.innerText(), cur.pit(), os, runparams,
 			string(), cur.pos(), endpos);
 		LYXERR(Debug::FIND, "Latexified text: '" << lyx::to_utf8(ods.str()) << "'");
 	} else if (cur.inMathed()) {
@@ -1318,15 +1317,15 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 		LYXERR(Debug::FIND, "After pasteParagraphList() cur=" << cur << endl);
 		sel_len = repl_buffer.paragraphs().begin()->size();
 	} else {
+		TexRow texrow;
 		odocstringstream ods;
-		otexstream os(ods);
+		otexstream os(ods, texrow);
 		OutputParams runparams(&repl_buffer.params().encoding());
 		runparams.nice = false;
 		runparams.flavor = OutputParams::LATEX;
 		runparams.linelen = 8000; //lyxrc.plaintext_linelen;
 		runparams.dryrun = true;
-		TexRow texrow;
-		TeXOnePar(repl_buffer, repl_buffer.text(), 0, os, texrow, runparams);
+		TeXOnePar(repl_buffer, repl_buffer.text(), 0, os, runparams);
 		//repl_buffer.getSourceCode(ods, 0, repl_buffer.paragraphs().size(), false);
 		docstring repl_latex = ods.str();
 		LYXERR(Debug::FIND, "Latexified replace_buffer: '" << repl_latex << "'");

@@ -201,10 +201,9 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-int InsetVSpace::latex(otexstream & os, OutputParams const &) const
+void InsetVSpace::latex(otexstream & os, OutputParams const &) const
 {
 	os << from_ascii(space_.asLatexCommand(buffer().params())) << '\n';
-	return 1;
 }
 
 

@@ -228,12 +228,12 @@ bool InsetCaption::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-int InsetCaption::latex(otexstream & os,
-			OutputParams const & runparams_in) const
+void InsetCaption::latex(otexstream & os,
+			 OutputParams const & runparams_in) const
 {
 	if (runparams_in.inFloat == OutputParams::SUBFLOAT)
 		// caption is output as an optional argument
-		return 0;
+		return;
 	// This is a bit too simplistic to take advantage of
 	// caption options we must add more later. (Lgb)
 	// This code is currently only able to handle the simple
@@ -244,12 +244,11 @@ int InsetCaption::latex(otexstream & os,
 	// optional argument.
 	runparams.moving_arg = true;
 	os << "\\caption";
-	int l = latexArgInsets(paragraphs()[0], os, runparams, 0, 1);
+	latexArgInsets(paragraphs()[0], os, runparams, 0, 1);
 	os << '{';
-	l += InsetText::latex(os, runparams);
+	InsetText::latex(os, runparams);
 	os << "}\n";
 	runparams_in.encoding = runparams.encoding;
-	return l + 1;
 }
 
 
@@ -290,17 +289,17 @@ docstring InsetCaption::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 }
 
 
-int InsetCaption::getArgument(otexstream & os,
+void InsetCaption::getArgument(otexstream & os,
 			OutputParams const & runparams) const
 {
-	return InsetText::latex(os, runparams);
+	InsetText::latex(os, runparams);
 }
 
 
-int InsetCaption::getOptArg(otexstream & os,
+void InsetCaption::getOptArg(otexstream & os,
 			OutputParams const & runparams) const
 {
-	return latexArgInsets(paragraphs()[0], os, runparams, 0, 1);
+	latexArgInsets(paragraphs()[0], os, runparams, 0, 1);
 }
 
 

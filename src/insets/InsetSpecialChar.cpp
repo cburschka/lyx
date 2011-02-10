@@ -205,8 +205,8 @@ void InsetSpecialChar::read(Lexer & lex)
 }
 
 
-int InsetSpecialChar::latex(otexstream & os,
-			    OutputParams const & rp) const
+void InsetSpecialChar::latex(otexstream & os,
+			     OutputParams const & rp) const
 {
 	switch (kind_) {
 	case HYPHENATION:
@@ -236,7 +236,6 @@ int InsetSpecialChar::latex(otexstream & os,
 		os << "\\nobreakdash-";
 		break;
 	}
-	return 0;
 }
 
 

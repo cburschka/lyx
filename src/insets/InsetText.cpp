@@ -370,14 +370,13 @@ void InsetText::validate(LaTeXFeatures & features) const
 }
 
 
-int InsetText::latex(otexstream & os, OutputParams const & runparams) const
+void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 {
 	// This implements the standard way of handling the LaTeX
 	// output of a text inset, either a command or an
 	// environment. Standard collapsable insets should not
 	// redefine this, non-standard ones may call this.
 	InsetLayout const & il = getLayout();
-	int rows = 0;
 	if (!il.latexname().empty()) {
 		if (il.latextype() == InsetLayout::COMMAND) {
 			// FIXME UNICODE
@@ -388,8 +387,6 @@ int InsetText::latex(otexstream & os, OutputParams const & runparams) const
 				os << from_utf8(il.latexparam());
 			os << '{';
 		} else if (il.latextype() == InsetLayout::ENVIRONMENT) {
-			// clear counter
-			os.countLines();
 			if (il.isDisplay())
 			    os << breakln;
 			else
@@ -397,7 +394,6 @@ int InsetText::latex(otexstream & os, OutputParams const & runparams) const
 			os << "\\begin{" << from_utf8(il.latexname()) << "}\n";
 			if (!il.latexparam().empty())
 				os << from_utf8(il.latexparam());
-			rows += os.countLines();
 		}
 	}
 	OutputParams rp = runparams;
@@ -409,17 +405,13 @@ int InsetText::latex(otexstream & os, OutputParams const & runparams) const
 	rp.par_end = paragraphs().size();
 
 	// Output the contents of the inset
-	TexRow texrow;
-	latexParagraphs(buffer(), text_, os, texrow, rp);
-	rows += texrow.rows();
+	latexParagraphs(buffer(), text_, os, rp);
 	runparams.encoding = rp.encoding;
 
 	if (!il.latexname().empty()) {
 		if (il.latextype() == InsetLayout::COMMAND) {
 			os << "}";
 		} else if (il.latextype() == InsetLayout::ENVIRONMENT) {
-			// clear counter
-			os.countLines();
 			// A comment environment doesn't need a % before \n\end
 			if (il.isDisplay() || runparams.inComment)
 			    os << breakln;
@@ -428,10 +420,8 @@ int InsetText::latex(otexstream & os, OutputParams const & runparams) const
 			os << "\\end{" << from_utf8(il.latexname()) << "}\n";
 			if (!il.isDisplay())
 				os.protectSpace(true);
-			rows += os.countLines();
 		}
 	}
-	return rows;
 }
 
 

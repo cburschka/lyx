@@ -325,7 +325,7 @@ docstring InsetFloat::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 }
 
 
-int InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
+void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 {
 	if (runparams_in.inFloat != OutputParams::NONFLOAT) {
 		if (runparams_in.moving_arg)
@@ -339,10 +339,10 @@ int InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 		}
 		os << '{';
 		rp.inFloat = OutputParams::SUBFLOAT;
-		int const i = InsetText::latex(os, rp);
+		InsetText::latex(os, rp);
 		os << "}";
 	
-		return i + 1;
+		return;
 	}
 	OutputParams runparams(runparams_in);
 	runparams.inFloat = OutputParams::MAINFLOAT;
@@ -372,27 +372,18 @@ int InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 		placement = buf_placement;
 	}
 
-	// clear counter
-	os.countLines();
 	// Force \begin{<floatname>} to appear in a new line.
 	os << breakln << "\\begin{" << from_ascii(tmptype) << '}';
 	// We only output placement if different from the def_placement.
 	// sidewaysfloats always use their own page
-	if (!placement.empty() && !params_.sideways) {
+	if (!placement.empty() && !params_.sideways)
 		os << '[' << from_ascii(placement) << ']';
-	}
 	os << '\n';
-	int lines = os.countLines();
 
-	lines += InsetText::latex(os, runparams);
+	InsetText::latex(os, runparams);
 
-	// clear counter
-	os.countLines();
 	// Force \end{<floatname>} to appear in a new line.
 	os << breakln << "\\end{" << from_ascii(tmptype) << "}\n";
-	lines += os.countLines();
-
-	return lines;
 }
 
 
@@ -486,12 +477,13 @@ docstring InsetFloat::getCaption(OutputParams const & runparams) const
 	if (ins == 0)
 		return docstring();
 
+	TexRow texrow;
 	odocstringstream ods;
-	otexstream os(ods);
+	otexstream os(ods, texrow);
 	ins->getOptArg(os, runparams);
 	ods << '[';
 	odocstringstream odss;
-	otexstream oss(odss);
+	otexstream oss(odss, texrow);
 	ins->getArgument(oss, runparams);
 	docstring arg = odss.str();
 	// Protect ']'

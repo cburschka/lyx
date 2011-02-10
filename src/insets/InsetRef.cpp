@@ -136,7 +136,7 @@ docstring InsetRef::getEscapedLabel(OutputParams const & rp) const
 }
 
 
-int InsetRef::latex(otexstream & os, OutputParams const & rp) const
+void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 {
 	string const cmd = getCmdName();
 	if (cmd != "formatted") {
@@ -146,7 +146,7 @@ int InsetRef::latex(otexstream & os, OutputParams const & rp) const
 		docstring const ref = getParam("reference");
 		p["reference"] = ref;
 		os << p.getCommand(rp);
-		return 0;
+		return;
 	} 
 	
 	// so we're doing a formatted reference.
@@ -155,7 +155,6 @@ int InsetRef::latex(otexstream & os, OutputParams const & rp) const
 	docstring prefix;
 	docstring const fcmd = getFormattedCmd(data, label, prefix);
 	os << fcmd << '{' << label << '}';
-	return 0;
 }
 
 

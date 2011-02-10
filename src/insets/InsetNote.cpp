@@ -220,10 +220,10 @@ bool InsetNote::isMacroScope() const
 }
 
 
-int InsetNote::latex(otexstream & os, OutputParams const & runparams_in) const
+void InsetNote::latex(otexstream & os, OutputParams const & runparams_in) const
 {
 	if (params_.type == InsetNoteParams::Note)
-		return 0;
+		return;
 
 	OutputParams runparams(runparams_in);
 	if (params_.type == InsetNoteParams::Comment) {
@@ -231,13 +231,6 @@ int InsetNote::latex(otexstream & os, OutputParams const & runparams_in) const
 		// Ignore files that are exported inside a comment
 		runparams.exportdata.reset(new ExportData);
 	} 
-
-	odocstringstream ss;
-	otexstream ots(ss);
-	ots.canBreakLine(os.canBreakLine());
-	InsetCollapsable::latex(ots, runparams);
-	docstring const str = ss.str();
-	os << str;
 
 	// the space after the comment in 'a[comment] b' will be eaten by the
 	// comment environment since the space before b is ignored with the
@@ -250,13 +243,13 @@ int InsetNote::latex(otexstream & os, OutputParams const & runparams_in) const
 	//  b
 	//
 	// Adding {} before ' b' fixes this.
-	// The {} will be automatically added, but only if needed, by
-	// telling otexstream to protect an immediately following space.
-	os.protectSpace(ots.protectSpace());
+	// The {} will be automatically added, but only if needed, for all
+	// insets whose InsetLayout Display tag is false. This is achieved
+	// by telling otexstream to protect an immediately following space
+	// and is done for both comment and greyedout insets.
+	InsetCollapsable::latex(os, runparams);
 
 	runparams_in.encoding = runparams.encoding;
-	// Return how many newlines we issued.
-	return int(count(str.begin(), str.end(), '\n'));
 }
 
 

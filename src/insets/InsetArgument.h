@@ -30,7 +30,7 @@ public:
 	InsetArgument(Buffer *);
 
 	/// Outputting the parameter of a LaTeX command
-	int latexArgument(otexstream &, OutputParams const &,
+	void latexArgument(otexstream &, OutputParams const &,
 			bool optional) const;
 	///
 	bool hasSettings() const { return false; }
@@ -41,7 +41,7 @@ private:
 	///
 	docstring name() const { return from_ascii("Argument"); }
 	/// Standard LaTeX output -- short-circuited
-	int latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const;
 	/// Standard plain text output -- short-circuited
 	int plaintext(odocstream &, OutputParams const &) const;
 	/// Standard DocBook output -- short-circuited

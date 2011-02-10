@@ -55,7 +55,7 @@ private:
 	///
 	void read(Lexer & lex);
 	///
-	int latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const;
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///

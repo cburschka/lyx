@@ -1920,7 +1920,6 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 	++ms.tab(); ms.cr(); ms.os() << '<' << bname << '>';
 
 	odocstringstream ls;
-	otexstream ols(ls);
 	if (runparams.flavor == OutputParams::XML) {
 		ms << MTag("alt role='tex' ");
 		// Workaround for db2latex: db2latex always includes equations with
@@ -1936,8 +1935,12 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 		InsetMathGrid::mathmlize(ms);
 		ms << ETag("math");
 	} else {
+		TexRow texrow;
+		texrow.reset();
+		otexstream ols(ls, texrow);
 		ms << MTag("alt role='tex'");
-		res = latex(ols, runparams);
+		latex(ols, runparams);
+		res = texrow.rows();
 		ms << from_utf8(subst(subst(to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;"));
 		ms << ETag("alt");
 	}

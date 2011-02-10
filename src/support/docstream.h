@@ -12,6 +12,7 @@
 #ifndef LYX_DOCSTREAM_H
 #define LYX_DOCSTREAM_H
 
+#include "TexRow.h"
 #include "support/docstring.h"
 
 #if defined(_MSC_VER) && (_MSC_VER >= 1600) 
@@ -83,28 +84,26 @@ typedef std::basic_istringstream<char_type> idocstringstream;
 typedef std::basic_ostringstream<char_type> odocstringstream;
 
 /** Wrapper class for odocstream.
-    This class helps ensuring that no blank lines may be inadvertently output.
-    Use the special variables "breakln" and "safebreakln" as if they were
-    iomanip's to ensure that the next output will start at the beginning of
-    a line. Using "breakln", a '\n' char will be output if needed, while
-    using "safebreakln", "%\n" will be output if needed.
-    Use countLines() to retrieve the number of \n output since previous call.
+    This class is used to automatically count the lines of the exported latex
+    code and also to ensure that no blank lines may be inadvertently output.
+    To this end, use the special variables "breakln" and "safebreakln" as if
+    they were iomanip's to ensure that the next output will start at the
+    beginning of a line. Using "breakln", a '\n' char will be output if needed,
+    while using "safebreakln", "%\n" will be output if needed.
   */
 
 class otexstream {
 public:
 	///
-	explicit otexstream(odocstream & os)
-		: os_(os), lines_(0), canbreakline_(false), protectspace_(false)
-	{}
+	otexstream(odocstream & os, TexRow & texrow)
+		: os_(os), texrow_(texrow),
+		  canbreakline_(false), protectspace_(false) {}
 	///
 	odocstream & os() { return os_; }
 	///
+	TexRow & texrow() { return texrow_; }
+	///
 	void put(char_type const & c);
-	///
-	size_t countLines() { size_t l = lines_; lines_ = 0; return l; }
-	///
-	void addLines(size_t n) { lines_ += n; }
 	///
 	void canBreakLine(bool breakline) { canbreakline_ = breakline; }
 	///
@@ -117,7 +116,7 @@ private:
 	///
 	odocstream & os_;
 	///
-	size_t lines_;
+	TexRow & texrow_;
 	///
 	bool canbreakline_;
 	///

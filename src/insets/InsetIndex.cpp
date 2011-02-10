@@ -57,8 +57,7 @@ InsetIndex::InsetIndex(Buffer * buf, InsetIndexParams const & params)
 {}
 
 
-int InsetIndex::latex(otexstream & os,
-		      OutputParams const & runparams_in) const
+void InsetIndex::latex(otexstream & os, OutputParams const & runparams_in) const
 {
 	OutputParams runparams(runparams_in);
 	runparams.inIndexEntry = true;
@@ -72,11 +71,11 @@ int InsetIndex::latex(otexstream & os,
 		os << "\\index";
 		os << '{';
 	}
-	int i = 0;
 
 	// get contents of InsetText as LaTeX and plaintext
+	TexRow texrow;
 	odocstringstream ourlatex;
-	otexstream ots(ourlatex);
+	otexstream ots(ourlatex, texrow);
 	InsetText::latex(ots, runparams);
 	odocstringstream ourplain;
 	InsetText::plaintext(ourplain, runparams);
@@ -156,21 +155,17 @@ int InsetIndex::latex(otexstream & os,
 				subst(spart2, from_ascii("\\"), docstring());
 			os << ppart;
 			os << '@';
-			i += count_char(ppart, '\n');
 		}
 		docstring const tpart = *it;
 		os << tpart;
-		i += count_char(tpart, '\n');
 		if (it2 < levels_plain.end())
 			++it2;
 	}
 	// write the bit that followed "|"
 	if (!cmd.empty()) {
 		os << "|" << cmd;
-		i += count_char(cmd, '\n');
 	}
 	os << '}';
-	return i;
 }
 
 
@@ -558,16 +553,15 @@ bool InsetPrintIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-int InsetPrintIndex::latex(otexstream & os, OutputParams const & runparams_in) const
+void InsetPrintIndex::latex(otexstream & os, OutputParams const & runparams_in) const
 {
 	if (!buffer().masterBuffer()->params().use_indices) {
 		if (getParam("type") == from_ascii("idx"))
 			os << "\\printindex{}";
-		return 0;
+		return;
 	}
 	OutputParams runparams = runparams_in;
 	os << getCommand(runparams);
-	return 0;
 }
 
 

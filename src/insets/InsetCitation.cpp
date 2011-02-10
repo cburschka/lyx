@@ -556,7 +556,7 @@ void InsetCitation::forToc(docstring & os, size_t) const
 // the \cite command is valid. Eg, the user has natbib enabled, inputs some
 // citations and then changes his mind, turning natbib support off. The output
 // should revert to \cite[]{}
-int InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
+void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 {
 	CiteEngine cite_engine = buffer().params().citeEngine();
 	BiblioInfo const & bi = buffer().masterBibInfo();
@@ -584,8 +584,6 @@ int InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 
 	if (runparams.inulemcmd)
 		os << "}";
-
-	return 0;
 }
 
 

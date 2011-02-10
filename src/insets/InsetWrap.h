@@ -65,7 +65,7 @@ private:
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
-	int latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const;
 	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///

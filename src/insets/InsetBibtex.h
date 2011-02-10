@@ -50,7 +50,7 @@ public:
 	///
 	DisplayType display() const { return AlignCenter; }
 	///
-	int latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const;
 	///
 	void collectBibKeys(InsetIterator const &) const;
 	///

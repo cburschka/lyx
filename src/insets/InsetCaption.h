@@ -27,9 +27,9 @@ public:
 	///
 	docstring name() const;
 	/// return the mandatory argument (LaTeX format) only
-	int getArgument(otexstream & os, OutputParams const &) const;
+	void getArgument(otexstream & os, OutputParams const &) const;
 	/// return the optional argument(s) only
-	int getOptArg(otexstream & os, OutputParams const &) const;
+	void getOptArg(otexstream & os, OutputParams const &) const;
 	/// return the caption text
 	int getCaptionAsPlaintext(odocstream & os, OutputParams const &) const;
 	/// return the caption text as HTML
@@ -67,7 +67,7 @@ private:
 	// Update the counters of this inset and of its contents
 	void updateBuffer(ParIterator const &, UpdateType);
 	///
-	int latex(otexstream & os, OutputParams const &) const;
+	void latex(otexstream & os, OutputParams const &) const;
 	///
 	int plaintext(odocstream & os, OutputParams const & runparams) const;
 	///

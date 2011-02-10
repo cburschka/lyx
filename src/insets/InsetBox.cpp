@@ -237,7 +237,7 @@ bool InsetBox::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-int InsetBox::latex(otexstream & os, OutputParams const & runparams) const
+void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 {
 	BoxType btype = boxtranslator().find(params_.type);
 
@@ -271,7 +271,6 @@ int InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		}
 	}
 
-	int i = 0;
 	os << "%\n";
 	// Adapt to column/text width correctly also if paragraphs indented:
 	if (stdwidth)
@@ -282,7 +281,6 @@ int InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		break;
 	case Framed:
 		os << "\\begin{framed}%\n";
-		i += 1;
 		break;
 	case Boxed:
 		os << "\\framebox";
@@ -368,15 +366,13 @@ int InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		}
 
 		os << "%\n";
-		++i;
 	} // end if inner_box
 
 	if (btype == Shaded) {
 		os << "\\begin{shaded}%\n";
-		++i;
 	}
 
-	i += InsetText::latex(os, runparams);
+	InsetText::latex(os, runparams);
 
 	if (btype == Shaded)
 		os << "\\end{shaded}";
@@ -407,10 +403,6 @@ int InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		// already done
 		break;
 	}
-
-	i += 2;
-
-	return i;
 }
 
 

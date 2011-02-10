@@ -76,7 +76,7 @@ private:
 	///
 	bool neverIndent() const { return true; }
 	///
-	int latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const;
 	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///

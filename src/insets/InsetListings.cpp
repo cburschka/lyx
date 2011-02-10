@@ -126,12 +126,11 @@ void InsetListings::read(Lexer & lex)
 }
 
 
-int InsetListings::latex(otexstream & os, OutputParams const & runparams) const
+void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 {
 	string param_string = params().params();
 	// NOTE: I use {} to quote text, which is an experimental feature
 	// of the listings package (see page 25 of the manual)
-	int lines = 0;
 	bool const isInline = params().isInline();
 	// get the paragraphs. We can not output them directly to given odocstream
 	// because we can not yet determine the delimiter character of \lstinline
@@ -200,10 +199,8 @@ int InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 		++par;
 		// for the inline case, if there are multiple paragraphs
 		// they are simply joined. Otherwise, expect latex errors.
-		if (par != end && !isInline && !captionline) {
+		if (par != end && !isInline && !captionline)
 			code += "\n";
-			++lines;
-		}
 	}
 	if (isInline) {
 		char const * delimiter = lstinline_delimiters;
@@ -237,8 +234,6 @@ int InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 		OutputParams rp = runparams;
 		rp.moving_arg = true;
 		docstring const caption = getCaption(rp);
-		// clear counter
-		os.countLines();
 		if (param_string.empty() && caption.empty())
 			os << breakln << "\\begin{lstlisting}\n";
 		else {
@@ -251,7 +246,6 @@ int InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 			os << from_utf8(param_string) << "]\n";
 		}
 		os << code << breakln << "\\end{lstlisting}\n";
-		lines += os.countLines();
 	}
 
 	if (encoding_switched){
@@ -269,8 +263,6 @@ int InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 				  "not representable in the current encoding and have been omitted:\n%1$s."),
 			uncodable));
 	}
-
-	return lines;
 }
 
 
@@ -391,8 +383,9 @@ docstring InsetListings::getCaption(OutputParams const & runparams) const
 	if (ins == 0)
 		return docstring();
 
+	TexRow texrow;
 	odocstringstream ods;
-	otexstream os(ods);
+	otexstream os(ods, texrow);
 	ins->getOptArg(os, runparams);
 	ins->getArgument(os, runparams);
 	// the caption may contain \label{} but the listings

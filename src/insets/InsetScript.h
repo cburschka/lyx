@@ -88,7 +88,7 @@ public:
 	///
 	virtual void validate(LaTeXFeatures &) const;
 	///
-	int latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const;
 	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///

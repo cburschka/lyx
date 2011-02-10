@@ -73,7 +73,7 @@ public:
 	Text & text() { return text_; }
 	Text const & text() const { return text_; }
 	///
-	int latex(otexstream &, OutputParams const &) const;
+	void latex(otexstream &, OutputParams const &) const;
 	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///

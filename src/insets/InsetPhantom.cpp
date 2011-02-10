@@ -307,7 +307,7 @@ docstring InsetPhantom::toolTip(BufferView const &, int, int) const
 }
 
 
-int InsetPhantom::latex(otexstream & os, OutputParams const & runparams) const
+void InsetPhantom::latex(otexstream & os, OutputParams const & runparams) const
 {
 	if (params_.type == InsetPhantomParams::Phantom)
 		os << "\\phantom{";
@@ -315,10 +315,8 @@ int InsetPhantom::latex(otexstream & os, OutputParams const & runparams) const
 		os << "\\hphantom{";
 	else if (params_.type == InsetPhantomParams::VPhantom)
 		os << "\\vphantom{";
-	int const i = InsetCollapsable::latex(os, runparams);
+	InsetCollapsable::latex(os, runparams);
 	os << "}";
-
-	return i;
 }
 
 

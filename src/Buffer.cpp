@@ -1453,8 +1453,8 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	}
 
 	// the real stuff
-	otexstream ots(os);
-	latexParagraphs(*this, text(), ots, d->texrow, runparams);
+	otexstream ots(os, d->texrow);
+	latexParagraphs(*this, text(), ots, runparams);
 
 	// Restore the parenthood if needed
 	if (output_preamble)
@@ -3135,8 +3135,8 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 			xhtmlParagraphs(text(), *this, xs, runparams);
 		} else {
 			// latex or literate
-			otexstream ots(os);
-			latexParagraphs(*this, text(), ots, texrow, runparams);
+			otexstream ots(os, texrow);
+			latexParagraphs(*this, text(), ots, runparams);
 		}
 	}
 }

@@ -521,7 +521,7 @@ void InsetSpace::read(Lexer & lex)
 }
 
 
-int InsetSpace::latex(otexstream & os, OutputParams const & runparams) const
+void InsetSpace::latex(otexstream & os, OutputParams const & runparams) const
 {
 	switch (params_.kind) {
 	case InsetSpaceParams::NORMAL:
@@ -602,7 +602,6 @@ int InsetSpace::latex(otexstream & os, OutputParams const & runparams) const
 			os << "\\hspace*{" << from_ascii(params_.length.asLatexString()) << "}";
 		break;
 	}
-	return 0;
 }
 
 
