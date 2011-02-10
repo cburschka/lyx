@@ -177,7 +177,7 @@ bool GuiErrorList::goTo(int item)
 	pos_type const s = dit.paragraph().size();
 	pos_type const end = err.pos_end ? min(err.pos_end, s) : s;
 	pos_type const start = min(err.pos_start, end);
-	pos_type const range = end - start;
+	pos_type const range = end == start ? s - start : end - start;
 	dit.pos() = start;
 	BufferView * bv = const_cast<BufferView *>(bufferview());
 	// FIXME LFUN
