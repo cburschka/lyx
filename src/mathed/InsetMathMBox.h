@@ -46,7 +46,7 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
-	int latex(otexstream & os, OutputParams const & runparams) const;
+	void latex(otexstream & os, OutputParams const & runparams) const;
 	///
 	void mathmlize(MathStream &) const;
 	///
