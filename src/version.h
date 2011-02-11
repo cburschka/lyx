@@ -20,13 +20,13 @@ extern char const * lyx_version;
 extern const int lyx_version_major;
 extern const int lyx_version_minor;
 ///
-extern char const * lyx_release_date;
+extern char const * const lyx_release_date;
 
 /// Package identifier (lyx[-<version-suffix>])
-extern char const * lyx_package;
+extern char const * const lyx_package;
 
 /// This is the version information shown by 'lyx -version'
-extern char const * lyx_version_info;
+extern char const * const lyx_version_info;
 
 //} // namespace lyx
 

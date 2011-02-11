@@ -12,15 +12,15 @@
 #include <config.h>
 
 ///
-char const * lyx_version = PACKAGE_VERSION;
+extern char const * const lyx_version = PACKAGE_VERSION;
 ///
 extern const int lyx_version_major = LYX_MAJOR_VERSION;
 extern const int lyx_version_minor = LYX_MINOR_VERSION;
 ///
-char const * lyx_release_date = LYX_DATE;
+extern char const * const lyx_release_date = LYX_DATE;
 
 /// Package identifier (lyx[-<version-suffix>])
-char const * lyx_package = PACKAGE;
+extern char const * const lyx_package = PACKAGE;
 
 /// This is the version information shown by 'lyx --version'
-char const * lyx_version_info = VERSION_INFO;
+extern char const * const lyx_version_info = VERSION_INFO;
