@@ -15,7 +15,7 @@
 //namespace lyx {
 
 ///About dialog, inset info, export headers
-extern char const * lyx_version;
+extern char const * const lyx_version;
 //.lyx header. We don't want lyx_version because of VCS conflicts.
 extern const int lyx_version_major;
 extern const int lyx_version_minor;
