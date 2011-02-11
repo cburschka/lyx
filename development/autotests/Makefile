@@ -6,5 +6,8 @@ build-xvkbd:
 	cd xvkbd && xmkmf && make
 
 .PHONY:
-run-tests: xvkbd
+run-tests:
 	./run-tests.sh
+
+clean:
+	rm -rf locale out-*

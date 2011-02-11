@@ -60,7 +60,7 @@ if [ ! -d $LYX_HOME ]; then
 fi
 
 # Launch the emergency STOP button
-./stop_autotests.tcl &
+./stop_autotests.tcl > /dev/null 2>&1 &
 
 echo "Running test cases . . ."
 failed=0

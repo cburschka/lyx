@@ -389,6 +389,9 @@ while not failed:
         lang = c[5:].rstrip()
         print "Setting LANG=" + lang + "\n"
         os.environ['LANG'] = lang
+# If it doesn't exist, create a link <locale_dir>/<country-code>/LC_MESSAGES/lyx<version-suffix>.mo
+# pointing to the corresponding .gmo file. Needed to let lyx find the right translation files.
+# See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg165613.html
         idx = lang.rfind(".")
         if idx != -1:
             ccode = lang[0:idx]
@@ -400,14 +403,15 @@ while not failed:
         else:
             short_code = ccode
         lyx_dir = os.popen("dirname \"" + lyx_exe + "\"").read().rstrip()
+        print "Executing: grep 'PACKAGE =' " + lyx_dir + "/Makefile | sed -e 's/PACKAGE = \(.*\)/\\1/'"
+        lyx_name = os.popen("grep 'PACKAGE =' " + lyx_dir + "/Makefile | sed -e 's/PACKAGE = \(.*\)/\\1/'").read().rstrip()
         intr_system("mkdir -p " + locale_dir + "/" + ccode + "/LC_MESSAGES")
-# Append version suffix ?
         if lyx_dir[0:3] == "../":
             rel_dir = "../../" + lyx_dir
         else:
             rel_dir = lyx_dir
-        intr_system("rm -f " + locale_dir + "/" + ccode + "/LC_MESSAGES/lyx.mo")
-        intr_system("ln -s " + rel_dir + "/../po/" + short_code + ".gmo " +  locale_dir + "/" + ccode + "/LC_MESSAGES/lyx.mo")
+        intr_system("rm -f " + locale_dir + "/" + ccode + "/LC_MESSAGES/" + lyx_name + ".mo")
+        intr_system("ln -s " + rel_dir + "/../po/" + short_code + ".gmo " + locale_dir + "/" + ccode + "/LC_MESSAGES/" + lyx_name + ".mo")
     else:
         print "Unrecognised Command '" + c + "'\n"
         failed = True
