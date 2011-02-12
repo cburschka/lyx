@@ -136,6 +136,11 @@ using namespace std;
 using namespace lyx::support;
 
 namespace lyx {
+
+using support::addExtension;
+using support::changeExtension;
+using support::removeExtension;
+
 namespace frontend {
 
 namespace {
@@ -3466,12 +3471,19 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 
 		case LFUN_FORWARD_SEARCH: {
-			FileName const path(doc_buffer->temppath());
-			string const texname = doc_buffer->latexName();
+			Buffer const * doc_master = doc_buffer->masterBuffer();
+			FileName const path(doc_master->temppath());
+			string const texname = doc_master->isChild(doc_buffer)
+				? DocFileName(changeExtension(
+					doc_buffer->absFileName(),
+						"tex")).mangledFileName()
+				: doc_buffer->latexName();
+			string const mastername =
+				removeExtension(doc_master->latexName());
 			FileName const dviname(addName(path.absFileName(),
-				    support::changeExtension(texname, "dvi")));
+					addExtension(mastername, "dvi")));
 			FileName const pdfname(addName(path.absFileName(),
-				    support::changeExtension(texname, "pdf")));
+					addExtension(mastername, "pdf")));
 			if (!dviname.exists() && !pdfname.exists()) {
 				dr.setMessage(_("Please, preview the document first."));
 				break;

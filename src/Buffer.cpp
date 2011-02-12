@@ -3595,6 +3595,10 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 		ListOfBuffers::const_iterator const cen = clist.end();
 		for (; cit != cen; ++cit) {
 			if (d->cloned_buffer_) {
+				// Enable reverse search by copying back the
+				// texrow object to the cloned buffer.
+				// FIXME: this is not thread safe.
+				(*cit)->d->cloned_buffer_->d->texrow = (*cit)->d->texrow;
 				(*cit)->d->cloned_buffer_->d->errorLists[error_type] = 
 					(*cit)->d->errorLists[error_type];
 			} else
