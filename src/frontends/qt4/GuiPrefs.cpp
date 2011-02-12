@@ -378,7 +378,7 @@ PrefOutput::PrefOutput(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	dviCB->addItem("");
 	dviCB->addItem("xdvi -sourceposition '$$n:\\ $$t' $$o");
-	dviCB->addItem("yap -1 -s $$n$$t $$o");
+	dviCB->addItem("yap -1 -s \"$$n $$t\" $$o");
 	dviCB->addItem("okular --unique $$o#src:$$n$$t");
 	dviCB->addItem("synctex view -i $$n:0:$$t -o $$o -x \"evince -p %{page+1} $$o\"");
 	pdfCB->addItem("");
