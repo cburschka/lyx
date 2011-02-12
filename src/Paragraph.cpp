@@ -336,6 +336,7 @@ public:
 				   Change const & running_change,
 				   Layout const & style,
 				   pos_type & i,
+				   pos_type end_pos,
 				   unsigned int & column);
 
 	///
@@ -354,6 +355,7 @@ public:
 	bool latexSpecialPhrase(
 		otexstream & os,
 		pos_type & i,
+		pos_type end_pos,
 		unsigned int & column,
 		OutputParams const & runparams);
 
@@ -1148,6 +1150,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 					  Change const & running_change,
 					  Layout const & style,
 					  pos_type & i,
+					  pos_type end_pos,
 					  unsigned int & column)
 {
 	char_type const c = text_[i];
@@ -1237,7 +1240,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 
 	default:
 		// LyX, LaTeX etc.
-		if (latexSpecialPhrase(os, i, column, runparams))
+		if (latexSpecialPhrase(os, i, end_pos, column, runparams))
 			return;
 
 		if (c == '\0')
@@ -1323,7 +1326,10 @@ bool Paragraph::Private::latexSpecialTypewriter(char_type const c, otexstream & 
 }
 
 
-bool Paragraph::Private::latexSpecialPhrase(otexstream & os, pos_type & i,
+/// \param end_pos
+///   If [start_pos, end_pos) does not include entirely the special phrase, then
+///   do not apply the macro transformation.
+bool Paragraph::Private::latexSpecialPhrase(otexstream & os, pos_type & i, pos_type end_pos,
 	unsigned int & column, OutputParams const & runparams)
 {
 	// FIXME: if we have "LaTeX" with a font
@@ -1333,7 +1339,8 @@ bool Paragraph::Private::latexSpecialPhrase(otexstream & os, pos_type & i,
 	// "words" for some definition of word
 
 	for (size_t pnr = 0; pnr < phrases_nr; ++pnr) {
-		if (!isTextAt(special_phrases[pnr].phrase, i))
+		if (!isTextAt(special_phrases[pnr].phrase, i)
+		    || (end_pos != -1 && i + int(special_phrases[pnr].phrase.size()) > end_pos))
 			continue;
 		if (runparams.moving_arg)
 			os << "\\protect";
@@ -2499,7 +2506,7 @@ void Paragraph::latex(BufferParams const & bparams,
 			if (i >= start_pos && (end_pos == -1 || i < end_pos)) {
 				try {
 					d->latexSpecialChar(os, rp, running_font, runningChange,
-						style, i, column);
+							    style, i, end_pos, column);
 				} catch (EncodingException & e) {
 				if (runparams.dryrun) {
 					os << "<" << _("LyX Warning: ")
