@@ -84,7 +84,7 @@ static ParamInfo const & findInfo(InsetCode code, string const & cmdName)
 	default:
 		LASSERT(false, /**/);
 	}
-	static const ParamInfo pi;
+	static ParamInfo pi;
 	return pi; // to silence the warning
 }
 
