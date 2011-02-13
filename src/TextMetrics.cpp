@@ -313,6 +313,9 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos) const
 }
 
 
+// isRTLBoundary returns false on a real end-of-line boundary,
+// because otherwise the two boundary types get mixed up.
+// This is the whole purpose of this being in TextMetrics.
 bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos,
 		Font const & font) const
 {
