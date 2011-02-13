@@ -89,10 +89,9 @@ void PDFOptions::writeFile(ostream & os) const
 }
 
 
-int PDFOptions::writeLaTeX(OutputParams & runparams, odocstream & os,
+void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 			    bool hyperref_already_provided) const
 {
-	int lines = 0;
 	// FIXME Unicode
 	string opt;
 	string hyperset;
@@ -174,14 +173,11 @@ int PDFOptions::writeLaTeX(OutputParams & runparams, odocstream & os,
 		opt = "\\hypersetup{" + opt + hyperset + "}\n";
 	}
 
-	lines = int(count(opt.begin(), opt.end(), '\n'));
-
 	// hyperref expects utf8!
 	if (need_unicode && enc && enc->iconvName() != "UTF-8"
 	    &&!runparams.isFullUnicode()) {
 		os << "\\inputencoding{utf8}\n"
 		   << setEncoding("UTF-8");
-		++lines;
 	}
 	// FIXME: handle the case that hyperref is loaded by the document class and
 	// hyperset is empty, see bug #7048
@@ -192,9 +188,7 @@ int PDFOptions::writeLaTeX(OutputParams & runparams, odocstream & os,
 	    &&!runparams.isFullUnicode()) {
 		os << setEncoding(enc->iconvName())
 		   << "\\inputencoding{" << from_ascii(enc->latexName()) << "}\n";
-		++lines;
 	}
-	return lines;
 }
 
 

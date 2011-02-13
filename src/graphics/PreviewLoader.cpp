@@ -216,7 +216,7 @@ private:
 	/// Called by the ForkedCall process that generated the bitmap files.
 	void finishedGenerating(pid_t, int);
 	///
-	void dumpPreamble(odocstream &) const;
+	void dumpPreamble(otexstream &) const;
 	///
 	void dumpData(odocstream &, BitmapFile const &) const;
 
@@ -558,6 +558,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	}
 
 	TexRow texrow;
+	otexstream os(of, texrow);
 	OutputParams runparams(&enc);
 	LaTeXFeatures features(buffer_, buffer_.params(), runparams);
 
@@ -570,9 +571,9 @@ void PreviewLoader::Impl::startLoading(bool wait)
 		return;
 	}
 	of << "\\batchmode\n";
-	dumpPreamble(of);
+	dumpPreamble(os);
 	// handle inputenc etc.
-	buffer_.params().writeEncodingPreamble(of, features, texrow);
+	buffer_.params().writeEncodingPreamble(os, features);
 	of << "\n\\begin{document}\n";
 	dumpData(of, inprogress.snippets);
 	of << "\n\\end{document}\n";
@@ -698,7 +699,7 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 }
 
 
-void PreviewLoader::Impl::dumpPreamble(odocstream & os) const
+void PreviewLoader::Impl::dumpPreamble(otexstream & os) const
 {
 	// Dump the preamble only.
 	OutputParams runparams(&buffer_.params().encoding());

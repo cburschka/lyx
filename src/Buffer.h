@@ -280,19 +280,21 @@ public:
 	    method with a string stream if the output is supposed to go to a
 	    file. \code
 	    ofdocstream ofs;
+	    otexstream os(ofs, texrow);
 	    ofs.open("test.tex");
-	    writeLaTeXSource(ofs, ...);
+	    writeLaTeXSource(os, ...);
 	    ofs.close();
 	    \endcode is NOT equivalent to \code
 	    odocstringstream oss;
-	    writeLaTeXSource(oss, ...);
+	    otexstream os(oss, texrow);
+	    writeLaTeXSource(os, ...);
 	    ofdocstream ofs;
 	    ofs.open("test.tex");
 	    ofs << oss.str();
 	    ofs.close();
 	    \endcode
 	 */
-	void writeLaTeXSource(odocstream & os,
+	void writeLaTeXSource(otexstream & os,
 			   std::string const & original_path,
 			   OutputParams const &,
 			   bool output_preamble = true,
