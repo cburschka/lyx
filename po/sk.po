@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-02-13 10:29+0100\n"
-"PO-Revision-Date: 2011-02-06 17:32+0100\n"
+"PO-Revision-Date: 2011-02-13 10:41+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -1475,10 +1475,8 @@ msgid "FontUi"
 msgstr "FontUi"
 
 #: src/frontends/qt4/ui/FontUi.ui:19
-#, fuzzy
 msgid "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)"
-msgstr ""
-"Použiť  OpenType- a TrueType fonty priamo (potrebné XeTeX alebo LuaTeX)"
+msgstr "Použiť  OpenType a TrueType fonty priamo (potrebné XeTeX alebo LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:22
 msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
@@ -4349,9 +4347,8 @@ msgid "&Export formats:"
 msgstr "Exportné formáty:"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:111
-#, fuzzy
 msgid "&Send exported file to command:"
-msgstr "Poslať dokument ku príkazu"
+msgstr "Poslať exportovaný súbor ku príkazu:"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:13
 msgid "Edit shortcut"
@@ -20311,12 +20308,10 @@ msgid "None (no fontenc)"
 msgstr "Žiadne (bez fontenc)"
 
 #: src/frontends/qt4/GuiDocument.cpp:803
-#, fuzzy
 msgid ""
 "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)\n"
 "You need to install the package \"fontspec\" to use this feature"
-msgstr ""
-"Použiť  OpenType- a TrueType fonty priamo (potrebné XeTeX alebo LuaTeX)"
+msgstr "Použiť  OpenType a TrueType fonty priamo (potrebné XeTeX alebo LuaTeX)"
 
 #: src/frontends/qt4/GuiDocument.cpp:835
 msgid "empty"
@@ -21389,9 +21384,8 @@ msgid "Find and Replace"
 msgstr "Hľadať a nahradiť"
 
 #: src/frontends/qt4/GuiSendto.cpp:36
-#, fuzzy
 msgid "Export or Send Document"
-msgstr "OpenDocument"
+msgstr "Exportovať alebo Poslať Document"
 
 #: src/frontends/qt4/GuiShowFile.cpp:30
 msgid "Show File"
