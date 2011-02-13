@@ -269,7 +269,7 @@ struct BufferView::Private
 	/** kept to send setMouseHover(false).
 	  * Not owned, so don't delete.
 	  */
-	Inset * last_inset_;
+	Inset const * last_inset_;
 	/// are we hovering something that we can click
 	bool clickable_inset_;
 
@@ -1992,14 +1992,12 @@ void BufferView::updateHoveredInset() const
 		d->last_inset_ = 0;
 	}
 	
-	// const_cast because of setMouseHover().
-	Inset * inset = const_cast<Inset *>(covering_inset);
-	if (inset && inset->setMouseHover(this, true)) {
+	if (covering_inset && covering_inset->setMouseHover(this, true)) {
 		need_redraw = true;
 		// Only the insets that accept the hover state, do 
 		// clear the last_inset_, so only set the last_inset_
 		// member if the hovered setting is accepted.
-		d->last_inset_ = inset;
+		d->last_inset_ = covering_inset;
 	}
 
 	if (need_redraw) {

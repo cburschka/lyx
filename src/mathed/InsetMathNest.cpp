@@ -407,6 +407,7 @@ void InsetMathNest::latex(otexstream & os, OutputParams const & runparams) const
 
 
 bool InsetMathNest::setMouseHover(BufferView const * bv, bool mouse_hover)
+	const
 {
 	mouse_hover_[bv] = mouse_hover;
 	return true;
