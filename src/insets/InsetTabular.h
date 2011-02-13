@@ -920,8 +920,6 @@ private:
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	///
-	int scroll() const { return scx_; }
-	///
 	Inset * clone() const { return new InsetTabular(*this); }
 
 	///

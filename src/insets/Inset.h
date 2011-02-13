@@ -539,8 +539,6 @@ public:
 	///
 	virtual Dimension const dimension(BufferView const &) const;
 	///
-	int scroll() const { return 0; }
-	///
 	virtual ColorCode backgroundColor(PainterInfo const &) const;
 	///
 	virtual ColorCode labelColor() const;
