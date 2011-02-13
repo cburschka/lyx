@@ -29,6 +29,7 @@
 // *** Required Headers from the STL
 
 #include <algorithm>
+#include <cstddef>
 #include <functional>
 #include <istream>
 #include <ostream>
