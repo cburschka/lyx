@@ -1413,15 +1413,14 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 		}
 
+#if 0
+		// FIXME: The graphics cache no longer has a changeDisplay method.
 		string const graphicsbg = lcolor.getLyXName(Color_graphicsbg);
 		bool const graphicsbg_changed =
 				lyx_name == graphicsbg && x11_name != graphicsbg;
-		if (graphicsbg_changed) {
-			// FIXME: The graphics cache no longer has a changeDisplay method.
-#if 0
+		if (graphicsbg_changed)
 			graphics::GCache::get().changeDisplay(true);
 #endif
-		}
 
 		if (!lcolor.setColor(lyx_name, x11_name)) {
 			if (current_view_)
