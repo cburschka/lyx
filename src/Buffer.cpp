@@ -3582,7 +3582,7 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 		error_list);
 
 	// Emit the signal to show the error list or copy it back to the
-	// cloned Buffer so that it cab be emitted afterwards.
+	// cloned Buffer so that it can be emitted afterwards.
 	if (format != backend_format) {
 		if (d->cloned_buffer_) {
 			d->cloned_buffer_->d->errorLists[error_type] = 
