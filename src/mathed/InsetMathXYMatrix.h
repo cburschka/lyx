@@ -34,8 +34,6 @@ public:
 	virtual int rowsep() const;
 
 	///
-	void normalize();
-	///
 	void write(WriteStream & os) const;
 	///
 	void infoize(odocstream & os) const;

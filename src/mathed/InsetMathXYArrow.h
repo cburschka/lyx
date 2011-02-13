@@ -37,8 +37,6 @@ public:
 	InsetMathXYArrow * asXYArrowInset() { return this; }
 
 	///
-	void normalize();
-	///
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream &) const;
