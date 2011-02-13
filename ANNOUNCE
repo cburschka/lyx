@@ -1,23 +1,22 @@
-Pre-release of LyX version 2.0.0 (beta 4)
-==========================================
+Release of LyX version 2.0.0 (release candidate 1)
+==================================================
 
-We are pleased to announce the fourth public pre-release of LyX 2.0.0.
+We are pleased to announce the first release candidate of LyX 2.0.0.
 
-Except usual bugfixing we fixed random crashes connected with the
-new background export and compilation feature.
+Since the last beta releases became stable enough for a regular work
+we switched to release candidate, freezed new development and focused
+on bugfixing to make the final release even more polished.
 
-As far as new features is considered it is now possible to set the
-table width, customize the language package per document and
-export LyX files as a single archive containing linked material
-(e.g. images) directly via export menu.
+Except usual bugfixing.. 
 
-Since this is most probably the last beta release we also added
-convertor for old (1.6) preference files which are automatically
-checked on the startup now.
+The file RELEASE-NOTES lists some known issues and problems compared
+to the current stable releases (LyX 1.6). We strongly recommend to read
+this file for packagers of LyX on various platforms and distributions.
 
-Please report the problems and bugs at our lists or bug tracker and
-also note that this release is for testing purposes only. Users are
-encouraged to use current 1.6 stable release for any serious work.
+As with any major release we come with lot of new features but also
+bugs -- so while we encourage curious users to test this release, people
+who rely on solid and stable application should stay with 1.6 releases.
+Please report the problems and bugs at our lists or bug tracker.
 
 Tarballs and binaries can be found at ftp://ftp.lyx.org/pub/lyx/devel/
 Note that windows installers might not appear for this release.
