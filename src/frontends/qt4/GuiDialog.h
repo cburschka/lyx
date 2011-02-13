@@ -24,7 +24,7 @@ namespace frontend {
 /// Base class for historical LyX dialogs.
 /** 
   * \warning New dialogs should use the leaner classes \c DialogView or
-  * \c DockView depending on the intent. Eventally, old dialog should be
+  * \c DockView depending on the intent. Eventually, old dialogs should be
   * converted to \c DialogView too.
   */
 class GuiDialog : public QDialog, public Dialog
