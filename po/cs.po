@@ -1159,12 +1159,11 @@ msgid "Forma&t:"
 msgstr "&Formát:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:191
-#, fuzzy
 msgid ""
 "Enable LyX to preview this material; only if graphics previewing is not "
 "disabled at application level (see Preference dialog)."
 msgstr ""
-"Zapnout náhled tohoto obrázku. Pouze v pøípadì ¾e náhled obrázkù nenívypnutý "
+"Zapnout náhled tohoto obrázku. Pouze v pøípadì ¾e náhled obrázkù není vypnutý "
 "v Nastaveních."
 
 #: src/frontends/qt4/ui/ExternalUi.ui:194
@@ -1470,7 +1469,6 @@ msgid "FontUi"
 msgstr "FontUi"
 
 #: src/frontends/qt4/ui/FontUi.ui:19
-#, fuzzy
 msgid "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)"
 msgstr "Pou¾ívat OpenType a TrueType fonty pøímo (vy¾aduje XeTeX nebo LuaTeX)"
 
@@ -1479,7 +1477,6 @@ msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
 msgstr "Pou¾ít i fonty mimo distribuci TeX-u (&XeTeX/LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:42
-#, fuzzy
 msgid "&Default family:"
 msgstr ""
 "Stan&dardní\n"
@@ -1982,15 +1979,13 @@ msgstr "Konfigurace parametrù vlo¾ky"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:46
 msgid "Update dialog when moving context"
-msgstr ""
+msgstr "Aktualizovat dialog pøi pohybu v dokumentu"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:49
-#, fuzzy
 msgid "S&ynchronize Dialog"
 msgstr "S&ynchronizovat s výstupem"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:56
-#, fuzzy
 msgid "Apply settings immediately"
 msgstr "&Okam¾itì pou¾ít zmìny"
 
@@ -2695,7 +2690,6 @@ msgid "&Strict XHTML 1.1"
 msgstr "&Striktní XHTML 1.1"
 
 #: src/frontends/qt4/ui/OutputUi.ui:137
-#, fuzzy
 msgid "&Math output:"
 msgstr "&Výtup vzorcù:"
 
@@ -2723,7 +2717,6 @@ msgid "LaTeX"
 msgstr "LaTeX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:186
-#, fuzzy
 msgid "Math &image scaling:"
 msgstr "&Mìøítko obrázkù:"
 
@@ -3260,11 +3253,11 @@ msgstr "Formát &dokumentu"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:66
 msgid "Check this to show the current format in the File > Export menu"
-msgstr ""
+msgstr "Za¹krtnìte, pokud chcete tento formát v menu Soubor > Export"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:69
 msgid "Sho&w in export menu"
-msgstr ""
+msgstr "Zobrazit v menu &Export"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:76
 msgid "Vector &graphics format"
@@ -3997,7 +3990,6 @@ msgid "Automatic help"
 msgstr "Automatická nápovìda"
 
 #: src/frontends/qt4/ui/PrefUi.ui:76
-#, fuzzy
 msgid ""
 "Checking this allows the automatic display of helpful comments for insets in "
 "the main work area of an edited document"
@@ -4348,7 +4340,6 @@ msgid "Textual reference"
 msgstr "Doslovná reference"
 
 #: src/frontends/qt4/ui/SearchUi.ui:101
-#, fuzzy
 msgid "Case &sensitive[[search]]"
 msgstr "Velikost pís&men"
 
@@ -4365,9 +4356,8 @@ msgid "&Export formats:"
 msgstr "&Exportovat formáty:"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:111
-#, fuzzy
 msgid "&Send exported file to command:"
-msgstr "Ode¹li dokument pro pøíkaz"
+msgstr "&Výstupní soubor zpracovat pøíkazem:"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:13
 msgid "Edit shortcut"
@@ -4581,9 +4571,8 @@ msgid "Table-wide settings"
 msgstr "Celotabulkové nastavení"
 
 #: src/frontends/qt4/ui/TabularUi.ui:338
-#, fuzzy
 msgid "Table w&idth:"
-msgstr "Table note:"
+msgstr "©íøka tabulk&y:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:354
 msgid "Verti&cal alignment:"
@@ -4841,18 +4830,16 @@ msgid "Indent consecutive paragraphs"
 msgstr "Odsazení (indentace) po sobì jdoucích odstavcù"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:37
-#, fuzzy
 msgid "&Indentation:"
-msgstr "&Odsazení"
+msgstr "&Odsazení:"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:47
 msgid "Size of the indentation"
 msgstr "Velikost indentace"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:115
-#, fuzzy
 msgid "&Vertical space:"
-msgstr "&Vertikální mezera"
+msgstr "&Vertikální mezera:"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:125
 msgid "Size of the vertical space"
@@ -6084,14 +6071,12 @@ msgid "Dataset:"
 msgstr "Dataset:"
 
 #: lib/layouts/achemso.layout:100
-#, fuzzy
 msgid "Alt Affiliation"
-msgstr "AltAffiliation"
+msgstr "Alt Affiliation"
 
 #: lib/layouts/achemso.layout:105
-#, fuzzy
 msgid "Also Affiliation"
-msgstr "AltAffiliation"
+msgstr "Also Affiliation"
 
 #: lib/layouts/achemso.layout:110 lib/layouts/lettre.layout:41
 #: lib/layouts/lettre.layout:342 lib/layouts/scrlttr2.layout:191
@@ -9944,14 +9929,12 @@ msgid "Customisable Lists (enumitem)"
 msgstr "Pøizpùsobení seznamù (enumitem)"
 
 #: lib/layouts/enumitem.module:8
-#, fuzzy
 msgid ""
 "Control the layout of enumerate, itemize, description, and list/labeling "
 "with an optional argument. See http://mirror.ctan.org/macros/latex/contrib/"
 "enumitem/enumitem.pdf and example file shipped with LyX."
 msgstr ""
-"Ovládá prostøedí seznamu, výètu, popisu volitelným argumentem. Viz. http://"
-"dante.ctan.org/CTAN/macros/latex/contrib/enumitem/enumitem.pdf a také "
+"Ovládá prostøedí seznamu, výètu, popisu volitelným argumentem. Viz http://mirror.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf a také "
 "ukázkový soubor v pøíkladech LyX-u."
 
 #: lib/layouts/enumitem.module:109
@@ -9988,14 +9971,14 @@ msgstr ""
 
 #: lib/layouts/fix-cm.module:2
 msgid "Fix cm"
-msgstr ""
+msgstr "Fix cm"
 
 #: lib/layouts/fix-cm.module:8
 msgid ""
 "Fix-cm improves the appearance of Computer Modern fonts and makes them "
 "available with arbitrary sizes. For details see the documentation of the fix-"
 "cm.sty package: http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
-msgstr ""
+msgstr "Fix-cm vylep¹uje vzhled fontù Computer Modern a poskytuje je v libovolných velikostech. Pro detaily balíèku fix-cm.sty viz http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf ."
 
 #: lib/layouts/fixltx2e.module:2
 msgid "Fix LaTeX"
@@ -12744,7 +12727,7 @@ msgstr "Pou¾ívat zamykání souborù|z"
 
 #: lib/ui/stdmenus.inc:91
 msgid "More Formats & Options...|F"
-msgstr ""
+msgstr "Více formátù a voleb...|V"
 
 #: lib/ui/stdmenus.inc:100
 msgid "Redo|R"
@@ -16547,11 +16530,11 @@ msgstr "LyXBlogger"
 
 #: lib/configure.py:876
 msgid "LyX Archive (zip)"
-msgstr ""
+msgstr "LyX Archiv (zip)"
 
 #: lib/configure.py:879
 msgid "LyX Archive (tar.gz)"
-msgstr ""
+msgstr "LyX Archive (tar.gz)"
 
 #: src/BiblioInfo.cpp:247 src/frontends/qt4/GuiDocument.cpp:1932
 #, c-format
@@ -20338,11 +20321,10 @@ msgid "None (no fontenc)"
 msgstr "®ádné (bez fontenc)"
 
 #: src/frontends/qt4/GuiDocument.cpp:803
-#, fuzzy
 msgid ""
 "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)\n"
 "You need to install the package \"fontspec\" to use this feature"
-msgstr "Pou¾ívat OpenType a TrueType fonty pøímo (vy¾aduje XeTeX nebo LuaTeX)"
+msgstr "Pou¾ívat OpenType a TrueType fonty pøímo (vy¾aduje XeTeX nebo LuaTeX)\nK pou¾ívání této vlastnosti musí být nainstalován balíèek \"fontspec\"."
 
 #: src/frontends/qt4/GuiDocument.cpp:835
 msgid "empty"
@@ -21413,9 +21395,8 @@ msgid "Find and Replace"
 msgstr "Najít a zamìnit"
 
 #: src/frontends/qt4/GuiSendto.cpp:36
-#, fuzzy
 msgid "Export or Send Document"
-msgstr "OpenDocument"
+msgstr "Exportovat nebo zpracovat dokument"
 
 #: src/frontends/qt4/GuiShowFile.cpp:30
 msgid "Show File"
