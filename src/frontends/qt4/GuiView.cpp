@@ -3310,10 +3310,9 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 
 		case LFUN_DIALOG_TOGGLE: {
-			if (isDialogVisible(cmd.getArg(0)))
-				dispatch(FuncRequest(LFUN_DIALOG_HIDE, cmd.argument()), dr);
-			else
-				dispatch(FuncRequest(LFUN_DIALOG_SHOW, cmd.argument()), dr);
+			FuncCode const func_code = isDialogVisible(cmd.getArg(0))
+				? LFUN_DIALOG_HIDE : LFUN_DIALOG_SHOW;
+			dispatch(FuncRequest(func_code, cmd.argument()), dr);
 			break;
 		}
 
