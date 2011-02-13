@@ -498,19 +498,19 @@ def checkFormatEntries(dtl_tools):
 \Format asciiimage asc    "Plain text (image)"         "" ""	"%%"	""
 \Format asciixfig  asc    "Plain text (Xfig output)"   "" ""	"%%"	""
 \Format dateout    tmp    "date (output)"         "" ""	"%%"	""
-\Format docbook    sgml    DocBook                B  ""	"%%"	"document"
-\Format docbook-xml xml   "Docbook (XML)"         "" ""	"%%"	"document"
+\Format docbook    sgml    DocBook                B  ""	"%%"	"document,menu=export"
+\Format docbook-xml xml   "Docbook (XML)"         "" ""	"%%"	"document,menu=export"
 \Format dot        dot    "Graphviz Dot"          "" ""	"%%"	"vector"
-\Format platex     tex    "LaTeX (pLaTeX)"        "" "" "%%"    "document"
-\Format literate   nw      NoWeb                  N  ""	"%%"	"document"
-\Format sweave     Rnw    "Sweave"                S  "" "%%"    "document"
+\Format platex     tex    "LaTeX (pLaTeX)"        "" "" "%%"    "document,menu=export"
+\Format literate   nw      NoWeb                  N  ""	"%%"	"document,menu=export"
+\Format sweave     Rnw    "Sweave"                S  "" "%%"    "document,menu=export"
 \Format lilypond   ly     "LilyPond music"        "" ""	"%%"	"vector"
 \Format lilypond-book    lytex "LilyPond book (LaTeX)"   "" ""	"%%"	"document"
-\Format latex      tex    "LaTeX (plain)"         L  ""	"%%"	"document"
-\Format luatex     tex    "LaTeX (LuaTeX)"        "" ""	"%%"	"document"
-\Format pdflatex   tex    "LaTeX (pdflatex)"      "" ""	"%%"	"document"
-\Format xetex      tex    "LaTeX (XeTeX)"         "" ""	"%%"	"document"
-\Format text       txt    "Plain text"            a  ""	"%%"	"document"
+\Format latex      tex    "LaTeX (plain)"         L  ""	"%%"	"document,menu=export"
+\Format luatex     tex    "LaTeX (LuaTeX)"        "" ""	"%%"	"document,menu=export"
+\Format pdflatex   tex    "LaTeX (pdflatex)"      "" ""	"%%"	"document,menu=export"
+\Format xetex      tex    "LaTeX (XeTeX)"         "" ""	"%%"	"document,menu=export"
+\Format text       txt    "Plain text"            a  ""	"%%"	"document,menu=export"
 \Format text2      txt    "Plain text (pstotext)" "" ""	"%%"	"document"
 \Format text3      txt    "Plain text (ps2ascii)" "" ""	"%%"	"document"
 \Format text4      txt    "Plain text (catdvi)"   "" ""	"%%"	"document"
@@ -522,9 +522,9 @@ def checkFormatEntries(dtl_tools):
 \Format oocalc     ods    "OpenOffice spreadsheet" "" "" "%%"    "document"''']) 
  #
     path, xhtmlview = checkViewer('an HTML previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
-        rc_entry = [r'\Format xhtml      xhtml   "LyXHTML"              y "%%" ""    "document"'])
+        rc_entry = [r'\Format xhtml      xhtml   "LyXHTML"              y "%%" ""    "document,menu=export"'])
     if xhtmlview == "":
-        addToRC(r'\Format xhtml      xhtml   "LyXHTML"              y "" ""  "document"')
+        addToRC(r'\Format xhtml      xhtml   "LyXHTML"              y "" ""  "document,menu=export"')
  #
     checkEditor('a BibTeX editor', ['sensible-editor', 'jabref', 'JabRef', \
         'pybliographic', 'bibdesk', 'gbib', 'kbib', \
@@ -541,32 +541,32 @@ def checkFormatEntries(dtl_tools):
     # for xdg-open issues look here: http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg151818.html
     checkViewer('a PDF previewer', ['kpdf', 'okular', 'evince', 'kghostview', 'xpdf', 'acrobat', 'acroread', \
 		    'gv', 'ghostview'],
-        rc_entry = [r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""	"document,vector"
-\Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""	"document,vector"
-\Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""	"document,vector"
-\Format pdf4       pdf    "PDF (XeTeX)"           X  "%%"	""	"document,vector"
-\Format pdf5       pdf    "PDF (LuaTeX)"          u  "%%"	""	"document,vector"'''])
+        rc_entry = [r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""	"document,vector,menu=export"
+\Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""	"document,vector,menu=export"
+\Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""	"document,vector,menu=export"
+\Format pdf4       pdf    "PDF (XeTeX)"           X  "%%"	""	"document,vector,menu=export"
+\Format pdf5       pdf    "PDF (LuaTeX)"          u  "%%"	""	"document,vector,menu=export"'''])
     #
     checkViewer('a DVI previewer', ['xdvi', 'kdvi', 'okular', 'yap', 'dviout -Set=!m'],
-        rc_entry = [r'''\Format dvi        dvi     DVI                    D  "%%"	""	"document,vector"
-\Format dvi3       dvi     "DVI (LuaTeX)"          V  "%%"	""	"document,vector"'''])
+        rc_entry = [r'''\Format dvi        dvi     DVI                    D  "%%"	""	"document,vector,menu=export"
+\Format dvi3       dvi     "DVI (LuaTeX)"          V  "%%"	""	"document,vector,menu=export"'''])
     if dtl_tools:
         # Windows only: DraftDVI
         addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""	""	"vector"')
     #
     checkViewer('an HTML previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
-        rc_entry = [r'\Format html       html    HTML                   H  "%%"	""	"document"'])
+        rc_entry = [r'\Format html       html    HTML                   H  "%%"	""	"document,menu=export"'])
     #
     checkViewerEditor('Noteedit', ['noteedit'],
         rc_entry = [r'\Format noteedit   not     Noteedit               "" "%%"	"%%"	"vector"'])
     #
     checkViewerEditor('an OpenDocument/OpenOffice viewer', ['swriter', 'oowriter', 'abiword'],
-        rc_entry = [r'''\Format odt        odt     OpenDocument           "" "%%"	"%%"	"document,vector"
+        rc_entry = [r'''\Format odt        odt     OpenDocument           "" "%%"	"%%"	"document,vector,menu=export"
 \Format sxw        sxw    "OpenOffice.Org (sxw)"  "" ""	""	"document,vector"'''])
     # 
     checkViewerEditor('a Rich Text and Word viewer', ['swriter', 'oowriter', 'abiword'],
-        rc_entry = [r'''\Format rtf        rtf    "Rich Text Format"      "" "%%"	"%%"	"document,vector"
-\Format word       doc    "MS Word"               W  "%%"	"%%"	"document,vector"'''])
+        rc_entry = [r'''\Format rtf        rtf    "Rich Text Format"      "" "%%"	"%%"	"document,vector,menu=export"
+\Format word       doc    "MS Word"               W  "%%"	"%%"	"document,vector,menu=export"'''])
     #
     # entries that do not need checkProg
     addToRC(r'''\Format date       ""     "date command"          "" ""	""	""
@@ -576,7 +576,7 @@ def checkFormatEntries(dtl_tools):
 \Format lyx13x     13.lyx  "LyX 1.3.x"             "" ""	""	"document"
 \Format lyx14x     14.lyx  "LyX 1.4.x"             "" ""	""	"document"
 \Format lyx15x     15.lyx  "LyX 1.5.x"             "" ""	""	"document"
-\Format lyx16x     16.lyx  "LyX 1.6.x"             "" ""	""	"document"
+\Format lyx16x     16.lyx  "LyX 1.6.x"             "" ""	""	"document,menu=export"
 \Format clyx       cjklyx "CJK LyX 1.4.x (big5)"  "" ""	""	"document"
 \Format jlyx       cjklyx "CJK LyX 1.4.x (euc-jp)" "" ""	""	"document"
 \Format klyx       cjklyx "CJK LyX 1.4.x (euc-kr)" "" ""	""	"document"
@@ -873,10 +873,10 @@ def checkConverterEntries():
     # So, we configure the appropriate version according to the platform.
     cmd = r'\converter lyx %s "python -tt $$s/scripts/lyxpak.py $$r/$$i" ""'
     if os.name == 'nt':
-        addToRC(r'\Format lyxzip     zip    "LyX Archive (zip)"     "" "" ""  "document"')
+        addToRC(r'\Format lyxzip     zip    "LyX Archive (zip)"     "" "" ""  "document,menu=export"')
         addToRC(cmd % "lyxzip")
     else:
-        addToRC(r'\Format lyxgz      gz     "LyX Archive (tar.gz)"  "" "" ""  "document"')
+        addToRC(r'\Format lyxgz      gz     "LyX Archive (tar.gz)"  "" "" ""  "document,menu=export"')
         addToRC(cmd % "lyxgz")
         
     #

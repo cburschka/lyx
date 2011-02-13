@@ -33,7 +33,9 @@ public:
 		/// Some formats are both (e.g. pdf), they have this flag set.
 		document = 1,
 		/// Set if this format can contain vector graphics.
-		vector = 2
+		vector = 2,
+		/// This format should  appear in the File > Export menu
+		export_menu = 4
 	};
 	///
 	Format(std::string const & n, std::string const & e, std::string const & p,
@@ -76,6 +78,8 @@ public:
 	bool vectorFormat() const { return flags_ & vector; }
 	///
 	void setFlags(int v) { flags_ = v; }
+	///
+	bool inExportMenu() const { return flags_ & export_menu; }
 private:
 	/// Internal name. Needs to be unique.
 	std::string name_;

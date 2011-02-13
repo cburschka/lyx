@@ -1055,7 +1055,7 @@ void MenuDefinition::expandFormats(MenuItem::Kind kind, Buffer const * buf)
 				continue;
 			}
 		case MenuItem::ExportFormats:
-			if (!(*fit)->documentFormat())
+			if (!(*fit)->inExportMenu())
 				continue;
 			break;
 		default:

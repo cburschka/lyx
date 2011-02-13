@@ -1090,6 +1090,8 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 					flgs |= Format::document;
 				else if (flag == "vector")
 					flgs |= Format::vector;
+				else if (flag == "menu=export")
+					flgs |= Format::export_menu;
 				else
 					LYXERR0("Ignoring unknown flag `"
 					       << flag << "' for format `"

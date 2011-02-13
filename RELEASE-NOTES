@@ -17,7 +17,16 @@ the default print settings (which, of course, have to have been configured
 already). At present, not many commands can be used this way, but there will
 be more eventually.
 
-Bash completion script was added to the tarball.
+A bash completion script was added to the tarball.
+
+We have introduced a new flag to decide whether or not a given "document"
+format shall be listed in the File > Export menu. This was necessary since
+this menu got too large. If the flag "menu=export" is not explicitly set,
+the formats are not included in the menu. This means that you might need
+to click "Show in export menu" in Preferences > File Formats for your
+customized file formats if you want them to appear in the menu.
+Note, though, that you still can export to any possible format via
+File > Export > More Formats and Options ...
 
 The following pref variables were changed in 2.0:
 
