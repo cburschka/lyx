@@ -23,7 +23,7 @@
 #   Även mellanrum/mellanslag/blanksteg/tomrum/osv för "space/s" bör gås igenom.
 #   Och diverse: spool, cases, och förmodligen fler som jag nu inte kommer ihåg.
 #   Genvägar är som sagt inte heller färdiga, så den som vill hjälpa får det. :)
-#     /Jim
+#     /Jim (nästa som uppdaterar kan ta bort detta status/meddelande)
 #
 # Dictionary / Ordlista
 #
@@ -216,7 +216,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-02-12 23:16+0100\n"
-"PO-Revision-Date: 2011-02-12 12:21+0100\n"
+"PO-Revision-Date: 2011-02-12 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
 "Language: sv\n"
@@ -1375,12 +1375,11 @@ msgid "Forma&t:"
 msgstr "Forma&t:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:191
-#, fuzzy
 msgid ""
 "Enable LyX to preview this material; only if graphics previewing is not "
 "disabled at application level (see Preference dialog)."
 msgstr ""
-"Aktivera LyX att förhandsgranska denna grafik, men bara om "
+"Aktivera LyX att förhandsgranska detta material; men bara om "
 "förhandsgranskning av grafik är aktiverad på programnivå (se "
 "inställningsdialog)."
 
@@ -1687,7 +1686,6 @@ msgid "FontUi"
 msgstr "TeckensnittUi"
 
 #: src/frontends/qt4/ui/FontUi.ui:19
-#, fuzzy
 msgid "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)"
 msgstr ""
 "Använd OpenType- och TrueType-teckensnitt direkt (kräver XeTeX eller LuaTeX)"
@@ -4197,7 +4195,6 @@ msgid "Automatic help"
 msgstr "Automatisk hjälp"
 
 #: src/frontends/qt4/ui/PrefUi.ui:76
-#, fuzzy
 msgid ""
 "Checking this allows the automatic display of helpful comments for insets in "
 "the main work area of an edited document"
@@ -4570,9 +4567,8 @@ msgid "&Export formats:"
 msgstr "&Exportera format:"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:111
-#, fuzzy
 msgid "&Send exported file to command:"
-msgstr "Skicka dokument till kommando"
+msgstr "&Skicka exporterad fil till kommando:"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:13
 msgid "Edit shortcut"
@@ -4790,9 +4786,8 @@ msgid "Table-wide settings"
 msgstr "Tabellbreda inställningar"
 
 #: src/frontends/qt4/ui/TabularUi.ui:338
-#, fuzzy
 msgid "Table w&idth:"
-msgstr "Tabellnot:"
+msgstr "Tabellbredd:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:354
 msgid "Verti&cal alignment:"
@@ -9887,7 +9882,7 @@ msgstr "Idx"
 
 #: lib/layouts/stdinsets.inc:294
 msgid "opt"
-msgstr "opt"
+msgstr "val"
 
 #: lib/layouts/stdinsets.inc:375
 msgid "Preview"
@@ -11947,7 +11942,7 @@ msgstr "Teckensnittsändring"
 
 #: lib/ui/classic.ui:286
 msgid "Math Normal Font"
-msgstr "Matematik normalt teckensnitt"
+msgstr "Matematik teckensnitt normal"
 
 #: lib/ui/classic.ui:288
 msgid "Math Calligraphic Family"
@@ -11967,11 +11962,11 @@ msgstr "Matematik familj linjärer"
 
 #: lib/ui/classic.ui:293
 msgid "Math Bold Series"
-msgstr "Matematik fet serie"
+msgstr "Matematik serie fet"
 
 #: lib/ui/classic.ui:295
 msgid "Text Normal Font"
-msgstr "Text normalt teckensnitt"
+msgstr "Text teckensnitt normal"
 
 #: lib/ui/classic.ui:297 lib/ui/stdmenus.inc:273
 msgid "Text Roman Family"
@@ -11987,27 +11982,27 @@ msgstr "Text familj skrivmaskin"
 
 #: lib/ui/classic.ui:301 lib/ui/stdmenus.inc:277
 msgid "Text Bold Series"
-msgstr "Text fet serie"
+msgstr "Text serie fet"
 
 #: lib/ui/classic.ui:302 lib/ui/stdmenus.inc:278
 msgid "Text Medium Series"
-msgstr "Text medium serie"
+msgstr "Text serie medium"
 
 #: lib/ui/classic.ui:304 lib/ui/stdmenus.inc:280
 msgid "Text Italic Shape"
-msgstr "Text kursiv form"
+msgstr "Text form kursiv"
 
 #: lib/ui/classic.ui:305 lib/ui/stdmenus.inc:281
 msgid "Text Small Caps Shape"
-msgstr "Text kapitäler form"
+msgstr "Text form kapitäler"
 
 #: lib/ui/classic.ui:306 lib/ui/stdmenus.inc:282
 msgid "Text Slanted Shape"
-msgstr "Text lutande form"
+msgstr "Text form lutande"
 
 #: lib/ui/classic.ui:307 lib/ui/stdmenus.inc:283
 msgid "Text Upright Shape"
-msgstr "Text upprätt form"
+msgstr "Text form upprätt"
 
 #: lib/ui/classic.ui:312
 msgid "Floatflt Figure"
@@ -13144,7 +13139,7 @@ msgstr "Gör sista valfria till ett icke-valfritt argument"
 
 #: lib/ui/stdmenus.inc:261
 msgid "Math Normal Font|N"
-msgstr "Matematik normalt teckensnitt|n"
+msgstr "Matematik teckensnitt normal|n"
 
 #: lib/ui/stdmenus.inc:263
 msgid "Math Calligraphic Family|C"
@@ -13168,11 +13163,11 @@ msgstr "Matematik familj linjärer"
 
 #: lib/ui/stdmenus.inc:269
 msgid "Math Bold Series|B"
-msgstr "Matematik fet serie"
+msgstr "Matematik serie fet"
 
 #: lib/ui/stdmenus.inc:271
 msgid "Text Normal Font|T"
-msgstr "Text normalt teckensnitt|t"
+msgstr "Text teckensnitt normal|t"
 
 #: lib/ui/stdmenus.inc:287
 msgid "Octave|O"
@@ -16747,11 +16742,11 @@ msgstr "LyXBlogger"
 
 #: lib/configure.py:876
 msgid "LyX Archive (zip)"
-msgstr ""
+msgstr "LyX-arkiv (zip)"
 
 #: lib/configure.py:879
 msgid "LyX Archive (tar.gz)"
-msgstr ""
+msgstr "LyX-arkiv (tar.gz)"
 
 #: src/BiblioInfo.cpp:247 src/frontends/qt4/GuiDocument.cpp:1932
 #, c-format
@@ -18890,11 +18885,11 @@ msgstr "Fördröjning för komplettering på plats."
 
 #: src/LyXRC.cpp:3225
 msgid "Select to display the inline completion in math mode."
-msgstr "Välj för att visa komplettering på plats i matematikläge."
+msgstr "Välj för att visa kompletteringen på plats i matematikläge."
 
 #: src/LyXRC.cpp:3229
 msgid "Select to display the inline completion in text mode."
-msgstr "Välj för att visa komplettering på plats i textläge."
+msgstr "Välj för att visa kompletteringen på plats i textläge."
 
 #: src/LyXRC.cpp:3233
 msgid "Use \"...\" to shorten long completions."
@@ -20561,12 +20556,12 @@ msgid "None (no fontenc)"
 msgstr "Ingen (ingen fontenc)"
 
 #: src/frontends/qt4/GuiDocument.cpp:803
-#, fuzzy
 msgid ""
 "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)\n"
 "You need to install the package \"fontspec\" to use this feature"
 msgstr ""
-"Använd OpenType- och TrueType-teckensnitt direkt (kräver XeTeX eller LuaTeX)"
+"Använd OpenType- och TrueType-teckensnitt direkt (kräver XeTeX eller LuaTeX)\n"
+"Du måste installera paketet \"fontspec\" för att använda denna funktion"
 
 #: src/frontends/qt4/GuiDocument.cpp:835
 msgid "empty"
@@ -21640,9 +21635,8 @@ msgid "Find and Replace"
 msgstr "Hitta och ersätt"
 
 #: src/frontends/qt4/GuiSendto.cpp:36
-#, fuzzy
 msgid "Export or Send Document"
-msgstr "OpenDocument"
+msgstr "Exportera eller skicka dokument"
 
 #: src/frontends/qt4/GuiShowFile.cpp:30
 msgid "Show File"
@@ -22945,8 +22939,8 @@ msgid ""
 "representable in the current encoding and therefore have been omitted:\n"
 "%2$s."
 msgstr ""
-"Följande tecken som används i insättningen %1$s kan inte visas\n"
-"i aktuell kodning och har därför blivit utelämnade:\n"
+"Följande tecken som används i insättningen %1$s kan inte\n"
+"visas i aktuell kodning och har därför blivit utelämnade:\n"
 "%2$s."
 
 #: src/insets/InsetExternal.cpp:502
