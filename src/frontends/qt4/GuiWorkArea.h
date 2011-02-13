@@ -24,7 +24,6 @@
 #include <QAbstractScrollArea>
 #include <QMouseEvent>
 #include <QPixmap>
-#include <QResizeEvent>
 #include <QTabBar>
 #include <QTabWidget>
 #include <QTimer>
@@ -33,9 +32,10 @@ class QContextMenuEvent;
 class QDragEnterEvent;
 class QDropEvent;
 class QKeyEvent;
-class QWheelEvent;
 class QPaintEvent;
+class QResizeEvent;
 class QToolButton;
+class QWheelEvent;
 class QWidget;
 
 #ifdef CursorShape
