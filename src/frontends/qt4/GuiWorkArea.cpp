@@ -1275,11 +1275,11 @@ void GuiWorkArea::updateWindowTitle()
 	docstring maximize_title;
 	docstring minimize_title;
 
-	Buffer & buf = buffer_view_->buffer();
-	FileName const fileName = buf.fileName();
-	if (!fileName.empty()) {
-		maximize_title = fileName.displayName(130);
-		minimize_title = from_utf8(fileName.onlyFileName());
+	Buffer const & buf = buffer_view_->buffer();
+	FileName const file_name = buf.fileName();
+	if (!file_name.empty()) {
+		maximize_title = file_name.displayName(130);
+		minimize_title = from_utf8(file_name.onlyFileName());
 		if (buf.lyxvc().inUse()) {
 			if (buf.lyxvc().locking())
 				maximize_title +=  _(" (version control, locking)");
@@ -1294,14 +1294,12 @@ void GuiWorkArea::updateWindowTitle()
 			maximize_title += _(" (read only)");
 	}
 
-	QString title = windowTitle();
-	QString new_title = toqstr(maximize_title);
-	if (title == new_title)
-		return;
-
-	QWidget::setWindowTitle(new_title);
-	QWidget::setWindowIconText(toqstr(minimize_title));
-	titleChanged(this);
+	QString const new_title = toqstr(maximize_title);
+	if (new_title != windowTitle()) {
+		QWidget::setWindowTitle(new_title);
+		QWidget::setWindowIconText(toqstr(minimize_title));
+		titleChanged(this);
+	}
 }
 
 
