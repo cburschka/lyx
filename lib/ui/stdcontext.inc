@@ -130,6 +130,12 @@ Menuset
 		Item "Edit Database(s) Externally...|x" "inset-edit"
 	End
 
+#
+# InsetBibItem context menu
+#
+	Menu "context-bibitem"
+		Item "Settings...|S" "inset-settings"
+	End
 
 #
 # InsetCollapsable context menu
