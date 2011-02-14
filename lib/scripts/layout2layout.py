@@ -210,6 +210,8 @@ def convert(lines):
     re_InsetLayout = re.compile(r'^\s*InsetLayout\s+(?:Custom|CharStyle|Element):(\S+)\s*$')
     # with quotes
     re_QInsetLayout = re.compile(r'^\s*InsetLayout\s+"(?:Custom|CharStyle|Element):([^"]+)"\s*$')
+    re_InsetLayout_CopyStyle = re.compile(r'^\s*CopyStyle\s+(?:Custom|CharStyle|Element):(\S+)\s*$')
+    re_QInsetLayout_CopyStyle = re.compile(r'^\s*CopyStyle\s+"(?:Custom|CharStyle|Element):([^"]+)"\s*$')
     re_NeedsFloatPkg = re.compile(r'^(\s*)NeedsFloatPkg\s+(\w+)\s*$')
 
     # counters for sectioning styles (hardcoded in 1.3)
@@ -326,6 +328,14 @@ def convert(lines):
             match = re_QInsetLayout.match(lines[i])
             if match:
               lines[i] = "InsetLayout \"Flex:" + match.group(1) + "\""
+            else:
+              match = re_InsetLayout_CopyStyle.match(lines[i])
+              if match:
+                lines[i] = "\tCopyStyle Flex:" + match.group(1)
+              else:
+                match = re_QInsetLayout_CopyStyle.match(lines[i])
+                if match:
+                  lines[i] = "\tCopyStyle \"Flex:" + match.group(1) + "\""
           i += 1
           continue
         
