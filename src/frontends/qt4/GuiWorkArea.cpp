@@ -233,8 +233,7 @@ GuiWorkArea::GuiWorkArea(QWidget *)
 	: buffer_view_(0), lyx_view_(0),
 	cursor_visible_(false),
 	need_resize_(false), schedule_redraw_(false),
-	preedit_lines_(1), completer_(new GuiCompleter(this, this)),
-	context_target_pos_()
+	preedit_lines_(1), completer_(new GuiCompleter(this, this))
 {
 }
 
@@ -243,8 +242,7 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & gv)
 	: buffer_view_(0), read_only_(buffer.isReadonly()), lyx_view_(0),
 	cursor_visible_(false),
 	need_resize_(false), schedule_redraw_(false),
-	preedit_lines_(1), completer_(new GuiCompleter(this, this)),
-	context_target_pos_()
+	preedit_lines_(1), completer_(new GuiCompleter(this, this))
 {
 	setGuiView(gv);
 	setBuffer(buffer);
@@ -697,26 +695,28 @@ bool GuiWorkArea::event(QEvent * e)
 
 void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 {
-	QPoint pos;
+	docstring name;
 	if (e->reason() == QContextMenuEvent::Mouse)
-		// the position is set on mouse press
-		pos = context_target_pos_;
-	else
-		pos = e->pos();
-	Cursor const & cur = buffer_view_->cursor();
-	if (e->reason() == QContextMenuEvent::Keyboard && cur.inTexted()) {
-		// Do not access the context menu of math right in front of before
-		// the cursor. This does not work when the cursor is in text.
-		Inset * inset = cur.paragraph().getInset(cur.pos());
-		if (inset && inset->asInsetMath())
-			--pos.rx();
-		else if (cur.pos() > 0) {
-			Inset * inset = cur.paragraph().getInset(cur.pos() - 1);
-			if (inset)
-				++pos.rx();
+		// the menu name is set on mouse press
+		name = context_menu_name_;
+	else {
+		QPoint pos = e->pos();
+		Cursor const & cur = buffer_view_->cursor();
+		if (e->reason() == QContextMenuEvent::Keyboard && cur.inTexted()) {
+			// Do not access the context menu of math right in front of before
+			// the cursor. This does not work when the cursor is in text.
+			Inset * inset = cur.paragraph().getInset(cur.pos());
+			if (inset && inset->asInsetMath())
+				--pos.rx();
+			else if (cur.pos() > 0) {
+				Inset * inset = cur.paragraph().getInset(cur.pos() - 1);
+				if (inset)
+					++pos.rx();
+			}
 		}
+		name = buffer_view_->contextMenu(pos.x(), pos.y());
 	}
-	docstring name = buffer_view_->contextMenu(pos.x(), pos.y());
+	
 	if (name.empty()) {
 		QAbstractScrollArea::contextMenuEvent(e);
 		return;
@@ -763,8 +763,12 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 		return;
 	}
 
+	// Save the context menu on mouse press, because also the mouse
+	// cursor is set on mouse press. Afterwards, we can either release
+	// the mousebutton somewhere else, or the cursor might have moved
+	// due to the DEPM.
 	if (e->button() == Qt::RightButton)
-		context_target_pos_ = e->pos();
+		context_menu_name_ = buffer_view_->contextMenu(e->x(), e->y());
 
 	inputContext()->reset();
 

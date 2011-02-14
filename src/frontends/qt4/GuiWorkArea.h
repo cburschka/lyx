@@ -263,10 +263,11 @@ private:
 	/// Special mode in which Esc and Enter (with or without Shift)
 	/// are ignored
 	bool dialog_mode_;
-	/// store the position of the rightclick when the mouse is
+	/// store the name of the context menu when the mouse is
 	/// pressed. This is used to get the correct context menu 
-	/// when the menu is actually shown (after releasing on Windwos).
-	QPoint context_target_pos_;
+	/// when the menu is actually shown (after releasing on Windows)
+	/// and after the DEPM has done its job.
+	docstring context_menu_name_;
 }; // GuiWorkArea
 
 
