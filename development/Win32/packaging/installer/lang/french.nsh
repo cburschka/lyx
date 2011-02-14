@@ -12,11 +12,11 @@ ${LangFileString} TEXT_NO_PRIVILEDGES "Vous n'avez pas les privilèges d'administ
 
 ${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installation pour l'utilisateur courant)"
 
-${LangFileString} TEXT_WELCOME "Cet assistant va vous guider tout au long de l'installation de $(^NameDA), le constructeur de documents qui encourage une saisie fondée sur la structure du document plutôt que sur son apparence.$\r$\n$\r$\nCet assistant d'installation va paramétrer un environnement complet d'utilisation de ${APP_NAME}.$\r$\n$\r$\n$(^ClickNext)"
+${LangFileString} TEXT_WELCOME "Cet assistant va vous guider tout au long de l'installation de $(^NameDA), le constructeur de documents qui encourage une saisie fondée sur la structure du document plutôt que sur son apparence.$\r$\n$\r$\n$(^ClickNext)"
 
 ${LangFileString} TEXT_REINSTALL_TITLE "Réinstallation"
 ${LangFileString} TEXT_REINSTALL_SUBTITLE "Réinstallation éventuelle des fichiers programmes de $(^NameDA) ?"
-${LangFileString} TEXT_REINSTALL_INFO "$(^NameDA) est déjà installé. Cet assistant vous permettra de modifier le langage de l'interface ou l'emplacement des applications externes, ou de télécharger de nouveaux dictionnaires. Si vous souhaitez réinstaller aussi les fichiers programmes, cochez la case ci-dessous. $(^ClickNext)"
+${LangFileString} TEXT_REINSTALL_INFO "$(^NameDA) est déjà installé. Cet assistant vous permettra de modifier l'emplacement des applications externes, ou de télécharger de nouveaux dictionnaires. Si vous souhaitez réinstaller aussi les fichiers programmes, cochez la case ci-dessous. $(^ClickNext)"
 ${LangFileString} TEXT_REINSTALL_ENABLE "Réinstaller les fichiers programmes $(^NameDA)"
 
 ${LangFileString} TEXT_EXTERNAL_NOPRIVILEDGES "(Privilèges d'administration requis)"

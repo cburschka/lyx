@@ -10,11 +10,11 @@ Author: Andreas Deininger
 
 ${LangFileString} TEXT_NO_PRIVILEDGES "Sie gehören weder der Gruppe der Administratoren noch der Gruppe der Hauptbenutzer an.$\r$\nDie Werkzeuge zur Grafikkonvertierung können ohne diese Rechte nicht installiert werden."
 
-${LangFileString} TEXT_WELCOME "Dieses Installationsprogramm wird Sie durch die Installation von $(^NameDA) leiten, des Dokumentenverarbeitungsprogramms welches das Verfassen von Texten basierend auf ihrer Struktur unterstützt, nicht das Verfassen von Texten ausgerichtet auf ihr Erscheinungsbild.$\r$\n$\r$\nDieses Installationsprogramm wird ein Komplettsystem zur Nutzung von ${APP_NAME} auf Ihrem Rechner erzeugen.$\r$\n$\r$\n$(^ClickNext)"
+${LangFileString} TEXT_WELCOME "Dieses Installationsprogramm wird Sie durch die Installation von $(^NameDA) leiten, des Dokumentenverarbeitungsprogramms welches das Verfassen von Texten basierend auf ihrer Struktur unterstützt, nicht das Verfassen von Texten ausgerichtet auf ihr Erscheinungsbild.$\r$\n$\r$\n(^ClickNext)"
 
 ${LangFileString} TEXT_REINSTALL_TITLE "Erneute Installation"
 ${LangFileString} TEXT_REINSTALL_SUBTITLE "Wählen Sie aus, ob Sie die $(^NameDA) Programmdateien erneut installieren möchten."
-${LangFileString} TEXT_REINSTALL_INFO "$(^NameDA) ist bereits installiert. Das Installationsprogramm gestattet Ihnen die Spracheinstellungen der Benutzeroberfläche oder den Ort externer Anwendungen abzuändern, ferner können Sie zusätzliche Wörterbücher herunterladen. Falls Sie die Programmdateien erneut installieren möchten, markieren Sie das untenstehende Kästchen. $(^ClickNext)"
+${LangFileString} TEXT_REINSTALL_INFO "$(^NameDA) ist bereits installiert. Das Installationsprogramm gestattet Ihnen den Ort externer Anwendungen abzuändern, ferner können Sie zusätzliche Wörterbücher herunterladen. Falls Sie die Programmdateien erneut installieren möchten, markieren Sie das untenstehende Kästchen. $(^ClickNext)"
 ${LangFileString} TEXT_REINSTALL_ENABLE "$(^NameDA) Programmdateien erneut installieren"
 
 ${LangFileString} TEXT_EXTERNAL_NOPRIVILEDGES "(Rechte als Administrator oder Hauptbenutzer erforderlich)"
