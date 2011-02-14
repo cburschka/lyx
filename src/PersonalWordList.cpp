@@ -61,7 +61,7 @@ void PersonalWordList::load()
 	if (line == header()) {
 		while (ifs) {
 			getline(ifs, line);
-			if (!line.empty() && !line[0] == '#') {
+			if (!line.empty() && !(line[0] == '#')) {
 				docstring const word = from_utf8(line);
 				insert(word);
 			}
