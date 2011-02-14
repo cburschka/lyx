@@ -158,7 +158,7 @@ def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
         msg = '+checking for "' + ac_word + '"... '
         path = os.environ["PATH"].split(os.pathsep) + path
         extlist = ['']
-        if os.environ.has_key("PATHEXT"):
+        if "PATHEXT" in os.environ:
             extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
         for ac_dir in path:
             for ext in extlist:
@@ -199,7 +199,7 @@ def checkProgAlternatives(description, progs, rc_entry = [], alt_rc_entry = [], 
         msg = '+checking for "' + ac_word + '"... '
         path = os.environ["PATH"].split(os.pathsep) + path
         extlist = ['']
-        if os.environ.has_key("PATHEXT"):
+        if "PATHEXT" in os.environ:
             extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
         found_alt = False
         for ac_dir in path:
