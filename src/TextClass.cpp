@@ -1227,7 +1227,6 @@ InsetLayout const & DocumentClass::insetLayout(docstring const & name) const
 
 docstring const & TextClass::defaultLayoutName() const
 {
-	// This really should come from the actual layout... (Lgb)
 	return defaultlayout_;
 }
 
