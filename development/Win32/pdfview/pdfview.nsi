@@ -143,7 +143,7 @@ Section "View PDF file"
     IntOp $R5 $R1 & 0x0000FFFF ; $R5 now contains build
     StrCpy $ViewerVersion "$R2"
 
-    ${If} $ViewerVerion = 10
+    ${If} $ViewerVersion < 10
       StrCpy $DDEName "AcroView"
     ${Else}
       ${If} $Viewer == "AcroRd32.exe"
