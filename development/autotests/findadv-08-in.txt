@@ -6,13 +6,13 @@ KK: Nel mezzo del cammin di nostra vita\[Return]
 KK: mi ritrovai per una selva oscura\C\[Home]
 KK: \Cs
 KK: \CF
-KK: o\CR.* a\[Return]
+KK: o\Axregexp-mode\[Return].* a\[Return]
 TestEnd
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 8\n with len: 8' lyx-log.txt
 
 TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
 KK: \CF
-KK: o\CR[[:word:]]* a
+KK: o\Axregexp-mode\[Return][[:word:]]* a
 KD: 200
 KK: \Al\Ar\[Return]
 KD: 100
@@ -21,6 +21,6 @@ Assert pcregrep -M 'Putting selection at .*idx: 0 par: 1 pos: 26\n with len: 6' 
 
 TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
 KK: \CF
-KK: \CR.* \Al\Ar\[Return]\[Return]\[Return]
+KK: \Axregexp-mode\[Return].* \Al\Ar\[Return]\[Return]\[Return]
 TestEnd
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 10\n with len: 3' lyx-log.txt
