@@ -666,7 +666,7 @@ def convert(lines):
             # This emulates the hardcoded article style numbering of 1.3
             #
             if counter != "":
-                if counters.has_key(style):
+                if style in counters:
                     if labelstring_line < 0:
                         lines.insert(i, '%sLabelString "%s"' % (space1, counters[style]))
                         i += 1
@@ -675,7 +675,7 @@ def convert(lines):
                         lines[labelstring_line] = re_LabelString.sub(
                                 r'\1\2\3%s' % new_labelstring.replace("\\", "\\\\"),
                                 lines[labelstring_line])
-                if appendixcounters.has_key(style):
+                if style in appendixcounters:
                     if labelstringappendix_line < 0:
                         lines.insert(i, '%sLabelStringAppendix "%s"' % (space1, appendixcounters[style]))
                         i += 1
@@ -690,7 +690,7 @@ def convert(lines):
                 i += 1
 
             # Add the TocLevel setting for sectioning styles
-            if toclevel == "" and toclevels.has_key(style) and maxcounter <= toclevels[style]:
+            if toclevel == "" and style in toclevels and maxcounter <= toclevels[style]:
                 lines.insert(i, '%s\tTocLevel %d' % (space1, toclevels[style]))
                 i += 1
 
