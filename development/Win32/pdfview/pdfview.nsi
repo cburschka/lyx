@@ -51,6 +51,8 @@ Var OriginalDir
 Var PDFFile
 Var ViewerFileName
 Var Viewer
+Var ViewerVersion
+Var DDEName
 
 Var ChangeNotification
 Var WaitReturn
@@ -131,17 +133,36 @@ Section "View PDF file"
     ${OrIf} $Viewer == "Acrobat.exe"
     
     # Using Adobe viewer
-    
+
+    GetDLLVersion $ViewerFileName $R0 $R1
+    IntOp $R2 $R0 >> 16
+    IntOp $R2 $R2 & 0x0000FFFF ; $R2 now contains major version
+    IntOp $R3 $R0 & 0x0000FFFF ; $R3 now contains minor version
+    IntOp $R4 $R1 >> 16
+    IntOp $R4 $R4 & 0x0000FFFF ; $R4 now contains release
+    IntOp $R5 $R1 & 0x0000FFFF ; $R5 now contains build
+    StrCpy $ViewerVersion "$R2"
+
+    ${If} $ViewerVersion < 10
+      StrCpy $DDEName "AcroView"
+    ${Else}
+      ${If} $Viewer == "AcroRd32.exe"
+        StrCpy $DDEName "AcroViewR$ViewerVersion"
+      ${ElseIf} $Viewer == "Acrobat.exe"
+        StrCpy $DDEName "AcroViewA$ViewerVersion"
+      ${EndIf}
+    ${EndIf}
+
     # Close existing view
     ${If} ${FileExists} $PDFFile
-      !insertmacro HideConsole '"$EXEDIR\pdfclose.exe" --file "$PDFFile"'
+      !insertmacro HideConsole '"$EXEDIR\pdfclose.exe" --reader "$ViewerFileName" --ddename "$DDEName" --file "$PDFFile"'
     ${EndIf}
     
     # Copy PDF to temporary file to allow LyX to overwrite the original
     CopyFiles /SILENT $OriginalFile $PDFFile
     
     # Open a new view
-    !insertmacro HideConsole '"$EXEDIR\pdfopen.exe" --back --file "$PDFFile"'
+    !insertmacro HideConsole '"$EXEDIR\pdfopen.exe" --reader "$ViewerFileName" --ddename "$DDEName" --back --file "$PDFFile"'
     
     # Monitor for updates of the original file
     GetFileTime $OriginalFile $OriginalTimeHigh $OriginalTimeLow
@@ -176,9 +197,9 @@ Section "View PDF file"
         ${If} $OriginalTimeHigh != $CurrentTimeHigh
           ${OrIf} $OriginalTimeLow != $CurrentTimeLow
           # PDF has been modified, update view
-          !insertmacro HideConsole '"$EXEDIR\pdfclose.exe" --file "$PDFFile"'
+          !insertmacro HideConsole '"$EXEDIR\pdfclose.exe" --reader "$ViewerFileName" --ddename "$DDEName" --file "$PDFFile"'
           CopyFiles /SILENT $OriginalFile $PDFFile
-          !insertmacro HideConsole '"$EXEDIR\pdfopen.exe" --back --file "$PDFFile"'
+          !insertmacro HideConsole '"$EXEDIR\pdfopen.exe" --reader "$ViewerFileName" --ddename "$DDEName" --back --file "$PDFFile"'
           
           # Time of new file
           StrCpy $OriginalTimeHigh $CurrentTimeHigh
