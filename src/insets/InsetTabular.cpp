@@ -2492,8 +2492,11 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 			head.latex(os, newrp);
 			os << '&';
 			tail.latex(os, newrp);
-		} else if (!isPartOfMultiRow(row, c))
+		} else if (!isPartOfMultiRow(row, c)) {
+			if (!runparams.nice)
+				os.texrow().start(par.id(), 0);
 			inset->latex(os, newrp);
+		}
 
 		runparams.encoding = newrp.encoding;
 		if (rtl)
@@ -2501,7 +2504,10 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 
 		TeXCellPostamble(os, cell, ismulticol, ismultirow);
 		if (cell != getLastCellInRow(row)) { // not last cell in row
-			os << " & ";
+			if (runparams.nice)
+				os << " & ";
+			else
+				os << " &\n";
 		}
 	}
 	if (row_info[row].caption && !endfirsthead.empty && !haveLTFirstHead())
