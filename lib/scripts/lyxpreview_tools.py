@@ -61,7 +61,7 @@ def make_texcolor(hexcolor, graphics):
 
 def find_exe(candidates, path):
     extlist = ['']
-    if os.environ.has_key("PATHEXT"):
+    if "PATHEXT" in os.environ.has_key:
         extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
 
     for prog in candidates:

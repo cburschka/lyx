@@ -176,7 +176,7 @@ def find_lyx2lyx(progloc):
 
     # now we will try to query LyX itself to find the path.
     extlist = ['']
-    if os.environ.has_key("PATHEXT"):
+    if "PATHEXT" in os.environ:
         extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
     lyx_exe, full_path = find_exe(["lyxc", "lyx"], extlist, path)
     if lyx_exe == None:
