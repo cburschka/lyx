@@ -1453,8 +1453,7 @@ void Buffer::writeLaTeXSource(otexstream & os,
 		d->setParent(save_parent);
 
 	// add this just in case after all the paragraphs
-	os.os() << endl;
-	os.texrow().newline();
+	os << endl;
 
 	if (output_preamble) {
 		os << "\\end{document}\n";

@@ -83,6 +83,9 @@ typedef std::basic_istringstream<char_type> idocstringstream;
 /// UCS4 output stringstream
 typedef std::basic_ostringstream<char_type> odocstringstream;
 
+/// UCS4 output manipulator
+typedef odocstream & (*odocstream_manip)(odocstream &);
+
 /** Wrapper class for odocstream.
     This class is used to automatically count the lines of the exported latex
     code and also to ensure that no blank lines may be inadvertently output.
@@ -139,6 +142,8 @@ extern SafeBreakLine safebreakln;
 otexstream & operator<<(otexstream &, BreakLine);
 ///
 otexstream & operator<<(otexstream &, SafeBreakLine);
+///
+otexstream & operator<<(otexstream &, odocstream_manip);
 ///
 otexstream & operator<<(otexstream &, docstring const &);
 ///

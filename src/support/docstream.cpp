@@ -447,6 +447,15 @@ otexstream & operator<<(otexstream & ots, SafeBreakLine)
 }
 
 
+otexstream & operator<<(otexstream & ots, odocstream_manip pf)
+{
+	ots.os() << pf;
+	if (pf == static_cast<odocstream_manip>(endl))
+		ots.texrow().newline();
+	return ots;
+}
+
+
 otexstream & operator<<(otexstream & ots, docstring const & s)
 {
 	size_t const len = s.length();
