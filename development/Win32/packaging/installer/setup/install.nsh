@@ -38,7 +38,6 @@ Section -ProgramFiles SecProgramFiles
   !insertmacro FileListQtBin File "${FILES_QT}\bin\"
   !insertmacro FileListDll File "${FILES_DEPS}\bin\"
   !insertmacro FileListMSVC File "${FILES_MSVC}\"
-  !insertmacro FileListMSVC2008 File "${FILES_MSVC}\"
   !insertmacro FileListNetpbmBin File "${FILES_NETPBM}\"
   !insertmacro FileListDTLBin File "${FILES_DTL}\"
   !insertmacro FileListDvipostBin File "${FILES_DVIPOST}\"
