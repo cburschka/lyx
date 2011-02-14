@@ -25,23 +25,23 @@ Compiling with Microsoft Visual C++
 	The pre-compiled version of Qt cannot be used. It uses the 2008 version of the
 	MSVC runtime which will result in crashes.
 
-2	Install Python
+3	Install Python
 
 	Install the latest Python 2.x version from
 	http://www.python.org/download/
 
-3	Install CMake
+4	Install CMake
 
 	Install the latest CMake from http://www.cmake.org
 
-4	Install the dependencies
+5	Install the dependencies
 
 	Download
 	ftp://ftp.devel.lyx.org/pub/contrib/windows/lyx16-deps-msvc2010-x86.zip
 	Extract this file in the C:\LyX directory and verify that C:\LyX\deps
 	has been created.
 
-5	Configure
+6	Configure
 
 	- Run the CMake GUI.
 	 
@@ -65,14 +65,14 @@ Compiling with Microsoft Visual C++
 
 	- Click Generate.
 
-6	Compile
+7	Compile
 
 	A Microsoft Visual C++ solution should have been generated at
 	C:\LyX\lyx-16-build\lyx16.sln
 	Compile the INSTALL project to get a LyX installation in
 	C:\LyX\lyx-16-install
 
-6	Start LyX
+8	Start LyX
 
 	To start the just compiled lyx.exe, it is necessary to copy the following
 	files to C:\LyX\lyx-16-install\bin
