@@ -1992,7 +1992,7 @@ int TextMetrics::leftMargin(int max_width,
 	       || (layout.labeltype == LABEL_STATIC
 	           && layout.latextype == LATEX_ENVIRONMENT
 	           && !text_->isFirstInSequence(pit)))
-	    && align == LYX_ALIGN_BLOCK
+	    && (align == LYX_ALIGN_BLOCK || align == LYX_ALIGN_LEFT)
 	    && !par.params().noindent()
 	    // in some insets, paragraphs are never indented
 	    && !text_->inset().neverIndent()
