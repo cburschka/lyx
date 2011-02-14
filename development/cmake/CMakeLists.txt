@@ -76,9 +76,6 @@ endif()
 
 if(LYX_INSTALL)
 	set(LYX_NLS ON)
-	if(NOT LYX_3RDPARTY_DOWNLOAD)
-		set(LYX_ASPELL ON)
-	endif()
 	if (WIN32)
 		set(LYX_HUNSPELL ON)
 	endif()
@@ -94,38 +91,23 @@ else()
 	set(LYX_MERGE_REBUILD OFF)
 endif()
 
-if(LYX_3RDPARTY_DOWNLOAD)
+if(LYX_DEPENDENCIES_DOWNLOAD)
 	message(STATUS)
-	set(LYX_3RDPARTY_DIR ${CMAKE_BINARY_DIR}/msvc10-deps)
-	message(STATUS "Using downloaded 3rd party libraries in ${LYX_3RDPARTY_DIR}")
-	set(3rdparty_files
-		crt-msvc2010-x86.zip 
-		dict-hunspell-all.zip 
-		dtl-modified-msvc2010-x86.zip 
-		dvipost-1.1-modified-msvc2010-x86.zip 
-		gettext-tools-0.18.1-x86.zip 
-		ghostscript-8.71-msvc2010-x86.zip 
-		hunspell-1.2.11-msvc2010-x86.zip 
-		iconv-1.13.1-msvc2010-x86.zip 
-		imagemagick-6.6.3-0-modified-msvc2010-x86.zip 
-		libintl-0.18.1-msvc2010-x86.zip 
-		netpbm-pnmcrop-10.27-x86.zip 
-		pdftools-msvc2010-x86.zip 
-		pdfview-x86.zip 
-		python-2.6.5-msvc2010-x86.zip 
-		thes-mythes-all.zip 
-		zlib-1.2.5-msvc2010-x86.zip)
-	foreach(it ${3rdparty_files})
+	set(LYX_DEPENDENCIES_DIR ${CMAKE_BINARY_DIR}/msvc2010-deps)
+	message(STATUS "Using downloaded dependencies in ${LYX_DEPENDENCIES_DIR}")
+	set(deps_files
+		lyx20-deps-msvc2010-x86.zip)
+	foreach(it ${deps_files})
 		set(already_downloaded already_downloaded-NOTFOUND CACHE PATH "downloaded" FORCE)
-		find_file(already_downloaded ${it} "${LYX_3RDPARTY_DIR}/downloads")
+		find_file(already_downloaded ${it} "${LYX_DEPENDENCIES_DIR}/download")
 		if(NOT already_downloaded)
 			message(STATUS "Downloading ${it} ...")
-			file(DOWNLOAD ftp://ftp.devel.lyx.org/pub/contrib/windows/bin/${it} ${LYX_3RDPARTY_DIR}/downloads/${it} SHOW_PROGRESS)
-			execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${LYX_3RDPARTY_DIR}/downloads/${it}
-		                      WORKING_DIRECTORY ${LYX_3RDPARTY_DIR})
+			file(DOWNLOAD ftp://ftp.devel.lyx.org/pub/contrib/windows/${it} ${LYX_DEPENDENCIES_DIR}/download/${it} SHOW_PROGRESS)
+			execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${LYX_DEPENDENCIES_DIR}/download/${it}
+		                      WORKING_DIRECTORY ${LYX_DEPENDENCIES_DIR})
 		endif()
 	endforeach()
-	set(GNUWIN32_DIR ${LYX_3RDPARTY_DIR})
+	set(GNUWIN32_DIR ${LYX_DEPENDENCIES_DIR}/deps20)
 endif()
 
 
