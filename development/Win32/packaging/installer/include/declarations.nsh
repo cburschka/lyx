@@ -14,22 +14,22 @@ SetCompressor /SOLID lzma
 !ifdef FilesLyX
   !define FILES_LYX "${FilesLyX}"
 !else
-  !define FILES_LYX "..\..\..\..\..\lyx-1.6.7-install"
+  !define FILES_LYX "..\..\..\..\..\lyx-16-install"
 !endif
 
 !ifdef FilesDeps
   !define FILES_DEPS "${FilesDeps}"
 !else
-  !define FILES_DEPS "..\..\..\..\deps"
+  !define FILES_DEPS "..\..\..\..\..\deps"
 !endif
 
 !ifdef FilesBundle
   !define FILES_BUNDLE "${FilesBundle}"
 !else
-  !define FILES_BUNDLE "..\..\..\..\depsbundle"
+  !define FILES_BUNDLE "..\..\..\..\..\depsbundle"
 !endif
 
-!define FILES_QT "C:\Qt\4.6.3"
+!define FILES_QT "C:\Qt\qt-everywhere-opensource-src-4.7.1"
 
 #--------------------------------
 # File locations
@@ -79,7 +79,7 @@ SetCompressor /SOLID lzma
 !define APP_DIR "${APP_NAME}${APP_SERIES_KEY}"
 !define APP_DIR_USERDATA "${APP_NAME}${APP_SERIES_KEY}"
 !define APP_INFO "${APP_NAME} - The Document Processor"
-!define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-2010 LyX Team"
+!define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-2011 LyX Team"
 
 !define APP_RUN "bin\LyXLauncher.exe"
 
