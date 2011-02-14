@@ -58,7 +58,8 @@ Compiling with Microsoft Visual C++
 	- Enable the LYX_INSTALL option, set CMAKE_INSTALL_PREFIX to
 	  C:\LyX\lyx-16-install and click Configure.
 
-	- Set GETTEXT_MSGFMT_EXECUTABLE to C:\LyX\deps\bin\msgfmt.exe,
+	- Check the Advanced checkbox.
+	  Set GETTEXT_MSGFMT_EXECUTABLE to C:\LyX\deps\bin\msgfmt.exe,
 	  GETTEXT_MSGMERGE_EXECUTABLE to C:\LyX\deps\bin\msgmerge.exe
 	  etc. and click Configure.
 
