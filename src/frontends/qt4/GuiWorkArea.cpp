@@ -652,7 +652,11 @@ void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 		QAbstractScrollArea::contextMenuEvent(e);
 		return;
 	}
-	QMenu * menu = guiApp->menus().menu(toqstr(name), *lyx_view_);
+
+	// always show mnemonics when the keyboard is used to show the context menu
+	// FIXME: This should be fixed in Qt itself
+	bool const keyboard = (e->reason() == QContextMenuEvent::Keyboard);
+	QMenu * menu = guiApp->menus().menu(toqstr(name), *lyx_view_, keyboard);
 	if (!menu) {
 		QAbstractScrollArea::contextMenuEvent(e);
 		return;

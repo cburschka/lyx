@@ -65,6 +65,7 @@
 #include <QHash>
 #include <QList>
 #include <QMenuBar>
+#include <QProxyStyle>
 #include <QString>
 
 #include <boost/shared_ptr.hpp>
@@ -1223,13 +1224,35 @@ void Menu::Impl::populate(QMenu & qMenu, MenuDefinition const & menu)
 	}
 }
 
+
+#ifdef Q_WS_WIN
+class AlwaysMnemonicStyle : public QProxyStyle {
+public:
+	int styleHint(StyleHint hint, const QStyleOption *opt = 0, const QWidget *widget = 0,
+		QStyleHintReturn *returnData = 0) const 
+	{
+		if (hint == QStyle::SH_UnderlineShortcut)
+			return 1;
+		return QProxyStyle::styleHint(hint, opt, widget, returnData);
+	}
+};
+#endif
+
 /////////////////////////////////////////////////////////////////////
 // Menu implementation
 /////////////////////////////////////////////////////////////////////
 
-Menu::Menu(GuiView * gv, QString const & name, bool top_level)
+Menu::Menu(GuiView * gv, QString const & name, bool top_level,
+	bool keyboard)
 : QMenu(gv), d(new Menu::Impl)
 {
+	#ifdef Q_WS_WIN
+	if (keyboard)
+		setStyle(new AlwaysMnemonicStyle);
+	#else
+		(void) keyboard;
+	#endif
+
 	d->top_level_menu = top_level? new MenuDefinition : 0;
 	d->view = gv;
 	d->name = name;
@@ -1680,7 +1703,7 @@ void Menus::updateMenu(Menu * qmenu)
 }
 
 
-Menu * Menus::menu(QString const & name, GuiView & view)
+Menu * Menus::menu(QString const & name, GuiView & view, bool keyboard)
 {
 	LYXERR(Debug::GUI, "Context menu requested: " << name);
 	Menu * menu = d->name_map_[&view].value(name, 0);
@@ -1689,7 +1712,7 @@ Menu * Menus::menu(QString const & name, GuiView & view)
 		return 0;
 	}
 
-	menu = new Menu(&view, name, true);
+	menu = new Menu(&view, name, true, keyboard);
 	d->name_map_[&view][name] = menu;
 	return menu;
 }
