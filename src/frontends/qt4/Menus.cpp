@@ -1593,6 +1593,8 @@ Menu::Menu(GuiView * gv, QString const & name, bool top_level, bool keyboard)
 #ifdef Q_WS_WIN
 	if (keyboard)
 		setStyle(new AlwaysMnemonicStyle);
+#else
+	(void) keyboard;
 #endif
 	d->top_level_menu = top_level? new MenuDefinition : 0;
 	d->view = gv;
