@@ -414,6 +414,7 @@ BufferParams::BufferParams()
 	html_be_strict = false;
 	html_math_output = MathML;
 	html_math_img_scale = 1.0;
+	html_css_as_file = false;
 
 	output_sync = false;
 	use_refstyle = true;
@@ -850,6 +851,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		html_math_output = static_cast<MathOutput>(temp);
 	} else if (token == "\\html_be_strict") {
 		lex >> html_be_strict;
+	} else if (token == "\\html_css_as_file") {
+		lex >> html_css_as_file;
 	} else if (token == "\\html_math_img_scale") {
 		lex >> html_math_img_scale;
 	} else if (token == "\\html_latex_start") {
@@ -1088,9 +1091,10 @@ void BufferParams::writeFile(ostream & os) const
 	}
 
 	os << "\\tracking_changes " << convert<string>(trackChanges) << '\n'
-		 << "\\output_changes " << convert<string>(outputChanges) << '\n'
-		 << "\\html_math_output " << html_math_output << '\n'
-		 << "\\html_be_strict " << convert<string>(html_be_strict) << '\n';
+	   << "\\output_changes " << convert<string>(outputChanges) << '\n'
+	   << "\\html_math_output " << html_math_output << '\n'
+	   << "\\html_css_as_file" << html_css_as_file << '\n'
+	   << "\\html_be_strict " << convert<string>(html_be_strict) << '\n';
 	
 	if (html_math_img_scale != 1.0)
 		os << "\\html_math_img_scale " << convert<string>(html_math_img_scale) << '\n';

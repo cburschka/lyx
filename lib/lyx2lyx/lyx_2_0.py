@@ -2456,6 +2456,10 @@ def revert_tabularwidth(document):
     if document.body[features].find('alignment="tabularwidth"') != -1:
       remove_option(document.body, features, 'tabularwidth')
 
+def revert_html_css_as_file(document):
+  if not del_token(document.header, '\\html_css_as_file', 0):
+    document.warning("Malformed LyX document: Missing \\html_css_as_file.")
+
 
 ##
 # Conversion hub
@@ -2528,10 +2532,12 @@ convert = [[346, []],
            [409, [convert_use_xetex]],
            [410, []],
            [411, [convert_langpack]],
-           [412, []]
+           [412, []],
+           [413, []],
 ]
 
-revert =  [[411, [revert_tabularwidth]],
+revert =  [[412, [revert_html_css_as_file]],
+           [411, [revert_tabularwidth]],
            [410, [revert_langpack]],
            [409, [revert_labeling]],
            [408, [revert_use_xetex]],
