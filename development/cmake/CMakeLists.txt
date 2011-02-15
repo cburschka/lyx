@@ -67,7 +67,7 @@ LYX_OPTION(CONSOLE "Show console on Windows" ON MSVC)
 LYX_OPTION(VLD "Use VLD with MSVC" OFF MSVC)
 LYX_OPTION(WALL "Enable all warnings" OFF MSVC)
 LYX_OPTION(CONFIGURE_CHECKS "Also run configure checks for MSVC" OFF MSVC)
-LYX_OPTION(3RDPARTY_DOWNLOAD "Download precompiled 3rd party libraries for MSVC 10" OFF MSVC)
+LYX_OPTION(DEPENDENCIES_DOWNLOAD "Download dependencies for MSVC 10" OFF MSVC)
 
 # Check option dependencies
 if(LYX_CPACK)
@@ -95,8 +95,7 @@ if(LYX_DEPENDENCIES_DOWNLOAD)
 	message(STATUS)
 	set(LYX_DEPENDENCIES_DIR ${CMAKE_BINARY_DIR}/msvc2010-deps)
 	message(STATUS "Using downloaded dependencies in ${LYX_DEPENDENCIES_DIR}")
-	set(deps_files
-		lyx20-deps-msvc2010-x86.zip)
+	set(deps_files lyx20-deps-msvc2010-x86.zip)
 	foreach(it ${deps_files})
 		set(already_downloaded already_downloaded-NOTFOUND CACHE PATH "downloaded" FORCE)
 		find_file(already_downloaded ${it} "${LYX_DEPENDENCIES_DIR}/download")
