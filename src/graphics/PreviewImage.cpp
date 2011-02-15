@@ -133,7 +133,10 @@ void PreviewImage::Impl::statusChanged()
 	case ErrorUnknown:
 		//iloader_.filename().removeFile();
 		ploader_.remove(snippet_);
-		break;
+		// FIXME: We need to return here, because PreviewLoader::remove
+		// removes the preview image from the cache, which deletes this
+		// object, so we should not try to do anything here.
+		return;
 
 	case Ready:
 		iloader_.filename().removeFile();
