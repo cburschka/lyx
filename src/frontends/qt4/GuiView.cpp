@@ -1512,8 +1512,10 @@ void GuiView::autoSave()
 
 	Buffer * buffer = documentBufferView()
 		? &documentBufferView()->buffer() : 0;
-	if (!buffer)
+	if (!buffer) {
+		resetAutosaveTimers();
 		return;
+	}
 
 #if (QT_VERSION >= 0x040400)
 	GuiViewPrivate::busyBuffers.insert(buffer);
