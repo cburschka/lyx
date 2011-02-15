@@ -5173,28 +5173,11 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		if (len.zero()
 		    && tabular.getAlignment(cur.idx(), true) == LYX_ALIGN_BLOCK)
 			tabularFeatures(cur, Tabular::ALIGN_CENTER, string());
-		// check if there is a 1-column multicolumn cell
-		// if so it must get the same width
-		for (row_type r = 0; r < tabular.nrows(); ++r) {
-			if (tabular.isMultiColumn(tabular.cellIndex(r, column))
-				&& tabular.columnSpan(tabular.cellIndex(r, column)) == 1)
-				tabular.setMColumnPWidth(cur, tabular.cellIndex(r, column), len);
-		}
 		break;
 	}
 
 	case Tabular::SET_MPWIDTH:
 		tabular.setMColumnPWidth(cur, cur.idx(), Length(value));
-		// if the multicolumn only spans 1 column, the width of the whole column
-		// must have the same width, see bug #7055
-		if (tabular.columnSpan(cur.idx()) == 1)
-			for (row_type r = 0; r < tabular.nrows(); ++r) {
-				if (!tabular.isMultiColumn(tabular.cellIndex(r, column)))
-					tabular.setColumnPWidth(cur, tabular.cellIndex(r, column), Length(value));
-				else if (tabular.isMultiColumn(tabular.cellIndex(r, column))
-					&& tabular.columnSpan(tabular.cellIndex(r, column)) == 1)
-					tabular.setMColumnPWidth(cur, tabular.cellIndex(r, column), Length(value));
-			}
 		break;
 
 	case Tabular::SET_MROFFSET:
