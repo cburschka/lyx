@@ -35,7 +35,8 @@ class Menu : public QMenu
 	Q_OBJECT
 public:
 	///
-	Menu(GuiView * gv, QString const & name, bool top_level);
+	Menu(GuiView * gv, QString const & name, bool top_level,
+		bool keyboard = false);
 
 	///
 	~Menu();
@@ -70,7 +71,7 @@ public:
 	void fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial = false);
 
 	/// \return a top-level submenu given its name.
-	Menu * menu(QString const & name, GuiView & view);
+	Menu * menu(QString const & name, GuiView & view, bool keyboard = false);
 
 	///
 	void read(Lexer &);
