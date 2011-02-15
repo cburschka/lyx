@@ -69,7 +69,7 @@ GuiProgress::GuiProgress()
 
 QString GuiProgress::currentTime()
 {
-	return QTime::currentTime().toString("hh:mm:ss:zzz") + "ms";
+	return QTime::currentTime().toString("hh:mm:ss.zzz");
 }
 
 
