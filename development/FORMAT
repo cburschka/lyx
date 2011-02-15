@@ -11,8 +11,13 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2011-02-15 Richard Heck <rgheck@comcast.net>
+	* Format incremented to 413 (r37682)
+	  New buffer param \html_css_as_file to control whether
+	  CSS is output to header to to style file
+
 2011-02-03 Edwin Leuven <e.leuven@gmail.com>
-	* Format incremented to 411 (r37471)
+	* Format incremented to 412 (r37471)
 	  Support tabular* : add tabularwidth parameter to
 	  tabular features
 
