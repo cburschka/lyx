@@ -1045,6 +1045,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	numberingModule->tocTW->headerItem()->setText(0, qt_("Example"));
 	numberingModule->tocTW->headerItem()->setText(1, qt_("Numbered"));
 	numberingModule->tocTW->headerItem()->setText(2, qt_("Appears in TOC"));
+	numberingModule->tocTW->header()->setResizeMode(QHeaderView::ResizeToContents);
 
 
 	// biblio
@@ -1194,6 +1195,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 	// Modules
 	modulesModule = new UiWidget<Ui::ModulesUi>;
 	modulesModule->availableLV->header()->setVisible(false);
+	modulesModule->availableLV->header()->setResizeMode(QHeaderView::ResizeToContents);
+	modulesModule->availableLV->header()->setStretchLastSection(false);
 	selectionManager =
 		new ModuleSelectionManager(modulesModule->availableLV,
 			modulesModule->selectedLV,
