@@ -23,10 +23,11 @@ def usage(prog_name):
 
 def main(argv):
     # Parse and manipulate the command line arguments.
-    if len(argv) != 6:
+    if len(argv) != 6 and len(argv) != 7:
         error(usage(argv[0]))
     # The arguments of legacy_conversion are the same as 
-    # those used in LyX 1.3.x, except for the last argument.
+    # those used in LyX 1.3.x, except for the 6th argument.
+    # The 7th argument is just ignored, since we use platex always
     vec = [ argv[0], argv[2], argv[3], argv[1], argv[4], argv[5], "platex"]
     return legacy_conversion(vec)
 
