@@ -49,6 +49,13 @@ EnsureSConsVersion(0, 97)
 # get version number from configure.ac so that JMarc does
 # not have to change SConstruct during lyx release
 package_version, majmin_ver, lyx_date = utils.getVerFromConfigure(top_src_dir)
+try:
+    lyx_major_version = package_version.split('.')[0]
+    lyx_minor_version = package_version.split('.')[1]
+except IndexError, e:
+    lyx_major_version = majmin_ver[0]
+    lyx_minor_version = majmin_ver[1]
+
 package_cygwin_version = '%s-1' % package_version
 boost_version = ['1_34']
 
@@ -1024,6 +1031,10 @@ result = utils.createConfigFile(conf,
             'Define to the one symbol short name of this package.'),
         ('#define PACKAGE_VERSION "%s"' % package_version,
             'Define to the version of this package.'),
+        ('#define LYX_MAJOR_VERSION %d' % int(lyx_major_version),
+            'Define to the major version of this package.'),
+        ('#define LYX_MINOR_VERSION %d' % int(lyx_minor_version),
+            'Define to the minor version of this package.'),
         ('#define VERSION_INFO "%s"' % env['VERSION_INFO'].replace('\n', '\\n'),
             'Full version info'),
         ('#define LYX_DIR_VER "LYX_DIR_%sx"' % majmin_ver,
