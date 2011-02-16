@@ -546,9 +546,9 @@ string const replaceEnvironmentPath(string const & path)
 
 	static regex envvar_br_re("(.*)" + envvar_br + "(.*)");
 	static regex envvar_re("(.*)" + envvar + "(.*)");
-	smatch what;
 	string result = path;
 	while (1) {
+		smatch what;
 		regex_match(result, what, envvar_br_re);
 		if (!what[0].matched) {
 			regex_match(result, what, envvar_re);
