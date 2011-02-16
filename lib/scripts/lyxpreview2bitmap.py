@@ -112,11 +112,15 @@ def extract_metrics_info(dvipng_stdout):
     return results
 
 
-def color_pdf(latex_file, bg_color):
+def color_pdf(latex_file, bg_color, fg_color):
     use_preview_pdf_re = re.compile("(\s*\\\\usepackage\[[^]]+)(pdftex\]{preview})")
 
     tmp = mkstemp()
-
+    
+    fg = ""
+    if fg_color != "0.000000,0.000000,0.000000":
+        fg = '  \\AtBeginDocument{\\let\\oldpreview\\preview\\renewcommand\\preview{\\oldpreview\\color[rgb]{%s}}}\n' % (fg_color)
+    
     success = 0
     try:
         for line in open(latex_file, 'r').readlines():
@@ -127,8 +131,9 @@ def color_pdf(latex_file, bg_color):
             success = 1
             tmp.write("  \\usepackage{color}\n" \
                   "  \\pagecolor[rgb]{%s}\n" \
+                  "%s" \
                   "%s\n" \
-                  % (bg_color, match.group()))
+                  % (bg_color, fg, match.group()))
             continue
 
     except:
@@ -174,6 +179,7 @@ def main(argv):
     fg_color = make_texcolor(argv[4], False)
     bg_color = make_texcolor(argv[5], False)
 
+    fg_color_gr = make_texcolor(argv[4], True)
     bg_color_gr = make_texcolor(argv[5], True)
 
     # External programs used by the script.
@@ -197,7 +203,7 @@ def main(argv):
         pngtopnm = find_exe_or_terminate(["pngtopnm"], path)
 
     # Move color information for PDF into the latex file.
-    if not color_pdf(latex_file, bg_color_gr):
+    if not color_pdf(latex_file, bg_color_gr, fg_color_gr):
         error("Unable to move color info into the latex file")
 
     # Compile the latex file.
