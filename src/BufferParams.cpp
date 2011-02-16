@@ -1093,7 +1093,7 @@ void BufferParams::writeFile(ostream & os) const
 	os << "\\tracking_changes " << convert<string>(trackChanges) << '\n'
 	   << "\\output_changes " << convert<string>(outputChanges) << '\n'
 	   << "\\html_math_output " << html_math_output << '\n'
-	   << "\\html_css_as_file" << html_css_as_file << '\n'
+	   << "\\html_css_as_file " << html_css_as_file << '\n'
 	   << "\\html_be_strict " << convert<string>(html_be_strict) << '\n';
 	
 	if (html_math_img_scale != 1.0)
