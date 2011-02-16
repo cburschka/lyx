@@ -65,7 +65,9 @@
 #include <QHash>
 #include <QList>
 #include <QMenuBar>
+#if QT_VERSION >= 0x040600
 #include <QProxyStyle>
+#endif
 #include <QString>
 
 #include <boost/shared_ptr.hpp>
@@ -1225,7 +1227,7 @@ void Menu::Impl::populate(QMenu & qMenu, MenuDefinition const & menu)
 }
 
 
-#ifdef Q_WS_WIN
+#if defined(Q_WS_WIN) && (QT_VERSION >= 0x040600)
 class AlwaysMnemonicStyle : public QProxyStyle {
 public:
 	int styleHint(StyleHint hint, const QStyleOption *opt = 0, const QWidget *widget = 0,
@@ -1246,12 +1248,12 @@ Menu::Menu(GuiView * gv, QString const & name, bool top_level,
 	bool keyboard)
 : QMenu(gv), d(new Menu::Impl)
 {
-	#ifdef Q_WS_WIN
+#if defined(Q_WS_WIN) && (QT_VERSION >= 0x040600)
 	if (keyboard)
 		setStyle(new AlwaysMnemonicStyle);
-	#else
+#else
 		(void) keyboard;
-	#endif
+#endif
 
 	d->top_level_menu = top_level? new MenuDefinition : 0;
 	d->view = gv;
