@@ -4278,8 +4278,16 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		if (&cur.inset() != this || cmd.getArg(0) != "tabular") 
 			break;
 
-		string const s = cmd.getArg(1);
 		// FIXME: We only check for the very first argument...
+		string const s = cmd.getArg(1);
+		// We always enable the lfun if it is coming from the dialog
+		// because the dialog makes sure all the settings are valid,
+		// even though the first argument might not be valid now.
+		if (s == "from-dialog") {
+			status.setEnabled(true);
+			return true;
+		}
+
 		int action = Tabular::LAST_ACTION;
 		int i = 0;
 		for (; tabularFeature[i].action != Tabular::LAST_ACTION; ++i) {

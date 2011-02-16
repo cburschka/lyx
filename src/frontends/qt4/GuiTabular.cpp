@@ -408,7 +408,7 @@ void GuiTabular::setTableAlignment(string & param_str) const
 docstring GuiTabular::dialogToParams() const
 {
 	// FIXME: We should use Tabular directly.
-	string param_str = "tabular";
+	string param_str = "tabular from-dialog";
 
 	// table width
 	string tabwidth = widgetsToLength(tabularWidthED, tabularWidthUnitLC);
