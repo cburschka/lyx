@@ -4323,10 +4323,8 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			return true;
 
 		case Tabular::SET_TABULAR_WIDTH:
-			status.setEnabled(tabular.tabular_width.zero()
-				|| (!tabular.rotate &&  !tabular.is_long_tabular
-				    && tabular.tabular_valignment ==
-				    		Tabular::LYX_VALIGN_MIDDLE));
+			status.setEnabled(!tabular.rotate &&  !tabular.is_long_tabular
+				&& tabular.tabular_valignment == Tabular::LYX_VALIGN_MIDDLE);
 			break;
 
 		case Tabular::SET_DECIMAL_POINT:
