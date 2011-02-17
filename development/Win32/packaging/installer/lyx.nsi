@@ -1,10 +1,8 @@
 /*
 
-NSIS Script - LyX 1.5/1.6 Installer for Win32
+NSIS Script - LyX 2.0 Installer for Win32
 Authors: Joost Verburg, Angus Leeming, Uwe Stöhr
-Requires NSIS 2.36 or later
-
-Licence details for all installer scripts can be found in the file COPYING
+Compatible with NSIS 2.46
 
 */
 
@@ -18,7 +16,6 @@ Licence details for all installer scripts can be found in the file COPYING
 !include include\nsis.nsh
 
 !include include\filelist.nsh
-!include include\langlist.nsh
 
 !include include\detection.nsh
 !include include\gui.nsh
@@ -45,7 +42,6 @@ Licence details for all installer scripts can be found in the file COPYING
 # User interface (wizard pages)
 
 !include gui\external.nsh
-!include gui\langselect.nsh
 !include gui\reinstall.nsh
 
 #--------------------------------

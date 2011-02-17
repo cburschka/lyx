@@ -29,8 +29,7 @@ Section -ProgramFiles SecProgramFiles
   !insertmacro FileListLyXLauncher File "${FILES_LAUNCHER}\"  
   !insertmacro FileListQtBin File "${FILES_QT}\bin\"
   !insertmacro FileListDll File "${FILES_DEPS}\bin\"
-  !insertmacro FileListMSVCBin File "${FILES_MSVC}\"
-  !insertmacro FileListMSVCManifest File "..\"
+  !insertmacro FileListMSVC File "${FILES_MSVC}\"
   !insertmacro FileListNetpbmBin File "${FILES_NETPBM}\"
   !insertmacro FileListDTLBin File "${FILES_DTL}\"
   !insertmacro FileListDvipostBin File "${FILES_DVIPOST}\"
@@ -48,8 +47,7 @@ Section -ProgramFiles SecProgramFiles
   # Components of Python
   SetOutPath "$INSTDIR\python"
   !insertmacro FileListPythonBin File "${FILES_PYTHON}\"
-  !insertmacro FileListMSVCBin File "${FILES_MSVC}\"
-  !insertmacro FileListMSVCManifest File "..\"  
+  !insertmacro FileListMSVC File "${FILES_MSVC}\"
   SetOutPath "$INSTDIR\python\Lib"
   !insertmacro FileListPythonLib File "${FILES_PYTHON}\Lib\"
   SetOutPath "$INSTDIR\python\Lib\encodings"
@@ -67,20 +65,15 @@ Section -ProgramFiles SecProgramFiles
   Pop $PythonCompileReturn # Return value
   Delete "$INSTDIR\compilepy.py"
   
-  !ifdef BUNDLE_IMAGEMAGICK
   # Components of ImageMagick
   SetOutPath "$INSTDIR\imagemagick"
   !insertmacro FileListImageMagick File "${FILES_IMAGEMAGICK}\"
-  !insertmacro FileListMSVCBin File "${FILES_MSVC}\"
-  !insertmacro FileListMSVCManifest File "..\"
-  !endif  
+  !insertmacro FileListMSVC File "${FILES_MSVC}\"
   
-  !ifdef BUNDLE_GHOSTSCRIPT
   # Components of Ghostscript
   SetOutPath "$INSTDIR\ghostscript"
   !insertmacro FileListGhostscript File "${FILES_GHOSTSCRIPT}\"
-  !insertmacro FileListMSVCBin File "${FILES_MSVC}\"
-  !insertmacro FileListMSVCManifest File "..\"
+  !insertmacro FileListMSVC File "${FILES_MSVC}\"
   
   !endif  
   
@@ -194,44 +187,16 @@ Section -LaTeX ExternalLaTeX
   !insertmacro EXTERNAL LaTeX
 SectionEnd
 
-!ifndef BUNDLE_IMAGEMAGICK
-
-Section -ImageMagick ExternalImageMagick
-  !insertmacro EXTERNAL ImageMagick
-SectionEnd
-
-!endif
-
-!ifndef BUNDLE_GHOSTSCRIPT
-
-Section -Ghostscript ExternalGhostscript
-  !insertmacro EXTERNAL Ghostscript
-SectionEnd
-
-!endif
-
 Function InitExternal
 
   # Get sizes of external component installers
   
   SectionGetSize ${ExternalLaTeX} $SizeLaTeX
-  !ifndef BUNDLE_IMAGEMAGICK
-    SectionGetSize ${ExternalImageMagick} $SizeImageMagick
-  !endif
-  !ifndef BUNDLE_GHOSTSCRIPT
-    SectionGetSize ${ExternalGhostscript} $SizeGhostscript
-  !endif
   
   # Add download size
   
   !ifndef BUNDLESETUP_MIKTEX
     IntOp $SizeLaTeX $SizeLaTeX + ${SIZE_DOWNLOAD_LATEX}
-  !endif
-  !ifndef BUNDLE_IMAGEMAGICK & BUNDLESETUP_IMAGEMAGICK
-    IntOp $SizeImagemagick $SizeImagemagick + ${SIZE_DOWNLOAD_IMAGEMAGICK}
-  !endif
-  !ifndef BUNDLE_GHOSTSCRIPT & BUNDLESETUP_GHOSTSCRIPT
-    IntOp $SizeGhostscript $SizeGhostscript + ${SIZE_DOWNLOAD_GHOSTSCRIPT}
   !endif
 
 FunctionEnd

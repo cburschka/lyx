@@ -27,24 +27,6 @@ Var LaTeXSetup.State
 Var LaTeXExisting.State
 Var LaTeXNoInstall.State
 
-!ifndef BUNDLE_IMAGEMAGICK
-
-Var ImageMagickState
-Var ImageMagickSetup.State
-Var ImageMagickExisting.State
-Var ImageMagickNoInstall.State
-
-!endif
-
-!ifndef BUNDLE_GHOSTSCRIPT
-
-Var GhostscriptState
-Var GhostscriptSetup.State
-Var GhostscriptExisting.State
-Var GhostscriptNoInstall.State
-
-!endif
-
 Var ControlState
 Var ComponentSize
 
@@ -92,16 +74,7 @@ Var ComponentSize
   ${NSD_CreateRadioButton} 0u 120u 300u 10u $(TEXT_EXTERNAL_${COMPONENT}_NONE)
   Pop $ExternalPage.NoInstall
   nsDialogs::OnClick /NOUNLOAD $ExternalPage.NoInstall $ExternalPage.RadioButton.Click
-  
-  !if ${COMPONENT} != LaTeX
-  # ImageMagick and Ghostscript require Administrator or
-  # power user privileges for installation
-  ${If} $MultiUser.Privileges != "Admin"
-  ${AndIf} $MultiUser.Privileges != "Power"
-    EnableWindow $ExternalPage.Setup 0
-  ${EndIf}
-  !endif
-  
+   
   # Set the state of the controls to the previous user selection (or the default)
 
   ${If} $${COMPONENT}State == ""
@@ -237,27 +210,3 @@ FunctionEnd
 Function PageExternalLaTeXValidate
   !insertmacro EXTERNAL_VALIDATEDIALOG LaTeX
 FunctionEnd
-
-!ifndef BUNDLE_IMAGEMAGICK
-
-Function PageExternalImageMagick
-  !insertmacro EXTERNAL_SHOWDIALOG ImageMagick
-FunctionEnd
-
-Function PageExternalImageMagickValidate
-  !insertmacro EXTERNAL_VALIDATEDIALOG ImageMagick
-FunctionEnd
-
-!endif
-
-!ifndef BUNDLE_GHOSTSCRIPT
-
-Function PageExternalGhostscript
-  !insertmacro EXTERNAL_SHOWDIALOG Ghostscript
-FunctionEnd
-
-Function PageExternalGhostscriptValidate
-  !insertmacro EXTERNAL_VALIDATEDIALOG Ghostscript
-FunctionEnd
-
-!endif

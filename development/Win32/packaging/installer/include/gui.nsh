@@ -30,7 +30,6 @@ BrandingText " "
 
 # Installer
 
-!define MUI_WELCOMEPAGE_TITLE_3LINES
 !define MUI_WELCOMEPAGE_TEXT $(TEXT_WELCOME)
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_LICENSE "${FILES_LICENSE}"
@@ -38,13 +37,6 @@ BrandingText " "
 
 Page custom PageReinstall PageReinstallValidate
 Page custom PageExternalLaTeX PageExternalLaTeXValidate
-!ifndef BUNDLE_IMAGEMAGICK
-Page custom PageExternalImageMagick PageExternalImageMagickValidate
-!endif
-!ifndef BUNDLE_GHOSTSCRIPT
-Page custom PageExternalGhostscript PageExternalGhostscriptValidate
-!endif
-Page custom PageLanguage PageLanguageValidate
 
 !define MUI_PAGE_HEADER_TEXT $(TEXT_DICT_TITLE)
 !define MUI_PAGE_HEADER_SUBTEXT $(TEXT_DICT_SUBTITLE)
@@ -67,8 +59,6 @@ Page custom PageLanguage PageLanguageValidate
 
 # Uninstaller
 
-!define MUI_WELCOMEPAGE_TITLE_3LINES
-!define MUI_WELCOMEPAGE_TEXT $(UNTEXT_WELCOME)
 !insertmacro MUI_UNPAGE_WELCOME
 !insertmacro MUI_UNPAGE_CONFIRM
 !insertmacro MUI_UNPAGE_COMPONENTS

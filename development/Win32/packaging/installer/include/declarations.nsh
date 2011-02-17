@@ -14,20 +14,22 @@ SetCompressor /SOLID lzma
 !ifdef FilesLyX
   !define FILES_LYX "${FilesLyX}"
 !else
-  !define FILES_LYX "..\..\..\..\build-msvc"
+  !define FILES_LYX "..\..\..\..\..\lyx-20-install"
 !endif
 
 !ifdef FilesDeps
   !define FILES_DEPS "${FilesDeps}"
 !else
-  !define FILES_DEPS "..\..\..\..\lyx-windows-deps-msvc2008"
+  !define FILES_DEPS "..\..\..\..\..\deps20"
 !endif
 
 !ifdef FilesBundle
   !define FILES_BUNDLE "${FilesBundle}"
 !else
-  !define FILES_BUNDLE "..\..\..\..\lyx-windows-bundle-deps"
+  !define FILES_BUNDLE "..\..\..\..\..\depsbundle"
 !endif
+
+!define FILES_QT "C:\Qt\qt-everywhere-opensource-src-4.7.1"
 
 #--------------------------------
 # File locations
@@ -38,11 +40,7 @@ SetCompressor /SOLID lzma
 !define FILES_LAUNCHER "..\..\launcher"
 !define FILES_PDFVIEW "..\..\pdfview"
 
-!if ${COMPILER_OS} == VISTA 
-  !define FILES_MSVC "$%SystemRoot%\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.21022.8_none_bcb86ed6ac711f91"
-!else
-  !define FILES_MSVC "$%SystemRoot%\WinSxS\x86_Microsoft.VC90.CRT_1fc8b3b9a1e18e3b_9.0.21022.8_x-ww_d08d0375"
-!endif
+!define FILES_MSVC "${FILES_DEPS}\bin"
 !define FILES_PYTHON "${FILES_DEPS}\python"
 !define FILES_IMAGEMAGICK "${FILES_DEPS}\imagemagick"
 !define FILES_GHOSTSCRIPT "${FILES_DEPS}\ghostscript"
@@ -53,8 +51,6 @@ SetCompressor /SOLID lzma
 !define FILES_PDFTOOLS "${FILES_DEPS}\pdftools"
 !define FILES_METAFILE2EPS "${FILES_DEPS}\metafile2eps"
 
-!define FILES_QT "${FILES_DEPS}\qt-4"
-
 !define FILES_NSISPLUGINS "${FILES_DEPS}\nsis"
 
 #--------------------------------
@@ -63,15 +59,11 @@ SetCompressor /SOLID lzma
 # CTAN and SourceForge select a mirror automatically
 
 !define DOWNLOAD_LATEX "http://www.ctan.org/get/systems/win32/miktex/setup/${SETUPFILE_LATEX}"
-!define DOWNLOAD_IMAGEMAGICK "http://downloads.sourceforge.net/imagemagick/${SETUPFILE_IMAGEMAGICK}"
-!define DOWNLOAD_GHOSTSCRIPT "http://downloads.sourceforge.net/imagemagick/${SETUPFILE_GHOSTSCRIPT}"
 
 #--------------------------------
 # Locations of setup files for components (for bundled setup)
 
 !define INSTALL_LATEX "${SETUPFILE_LATEX}"
-!define INSTALL_IMAGEMAGICK "${SETUPFILE_IMAGEMAGICK}"
-!define INSTALL_GHOSTSCRIPT "${SETUPFILE_GHOSTSCRIPT}"
 
 #--------------------------------
 # Names and version
@@ -83,7 +75,7 @@ SetCompressor /SOLID lzma
 !define APP_DIR "${APP_NAME}${APP_SERIES_KEY}"
 !define APP_DIR_USERDATA "${APP_NAME}${APP_SERIES_KEY}"
 !define APP_INFO "${APP_NAME} - The Document Processor"
-!define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-2008 LyX Team"
+!define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-2011 LyX Team"
 
 !define APP_RUN "bin\LyXLauncher.exe"
 
@@ -105,22 +97,14 @@ SetCompressor /SOLID lzma
 !ifndef SETUPTYPE
   !define SETUPTYPE STANDARD
 !endif
-
-!if ${SETUPTYPE} == MINIMAL
-
-  !define SETUP_EXE ${MinimalExeFile}
  
-!else if ${SETUPTYPE} == STANDARD
+!if ${SETUPTYPE} == STANDARD
 
   !define SETUP_EXE ${ExeFile}
-  !define BUNDLE_IMAGEMAGICK
-  !define BUNDLE_GHOSTSCRIPT
 
 !else if ${SETUPTYPE} == BUNDLE
 
   !define SETUP_EXE ${BundleExeFile}
-  !define BUNDLE_IMAGEMAGICK
-  !define BUNDLE_GHOSTSCRIPT
   !define BUNDLESETUP_LATEX
 
 !endif
@@ -135,8 +119,6 @@ SetCompressor /SOLID lzma
 # Names of binaries to identify compontents
 
 !define BIN_LATEX "tex.exe"
-!define BIN_IMAGEMAGICK "convert.exe"
-!define BIN_GHOSTSCRIPT "gswin32c.exe"
 !define BIN_BIBTEXEDITOR "JabRef.exe"
 
 #--------------------------------

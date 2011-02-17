@@ -12,11 +12,11 @@ ${LangFileString} TEXT_NO_PRIVILEDGES "You don't have Administrator or Power Use
 
 ${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
 
-${LangFileString} TEXT_WELCOME "This wizard will guide you through the installation of $(^NameDA), the document processor that encourages an approach to writing based on the structure of your documents, not their appearance.$\r$\n$\r$\nThis installer will setup a complete environment to use ${APP_NAME}.$\r$\n$\r$\n$(^ClickNext)"
+${LangFileString} TEXT_WELCOME "This wizard will guide you through the installation of $(^NameDA), the document processor that encourages an approach to writing based on the structure of your documents, not their appearance.$\r$\n$\r$\n$(^ClickNext)"
 
 ${LangFileString} TEXT_REINSTALL_TITLE "Reinstall"
 ${LangFileString} TEXT_REINSTALL_SUBTITLE "Choose whether you want to reinstall the $(^NameDA) program files."
-${LangFileString} TEXT_REINSTALL_INFO "$(^NameDA) is already installed. This installer will allow you to change the interface language and locations of external applications or download additional dictionaries. If you also want to reinstall the program files, check the box below. $(^ClickNext)"
+${LangFileString} TEXT_REINSTALL_INFO "$(^NameDA) is already installed. This installer will allow you to change the location of your LaTeX system or download additional dictionaries. If you also want to reinstall the program files, check the box below. $(^ClickNext)"
 ${LangFileString} TEXT_REINSTALL_ENABLE "Reinstall $(^NameDA) program files"
 
 ${LangFileString} TEXT_EXTERNAL_NOPRIVILEDGES "(Administrator or Power User privileges required)"
@@ -88,5 +88,3 @@ ${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
 ${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
-
-${LangFileString} UNTEXT_WELCOME "This wizard will guide you through the uninstallation of $(^NameDA). Please close $(^NameDA) before you continue.$\r$\n$\r$\nNote that this wizard will only uninstall LyX itself. If you want to uninstall other applications you installed for use with LyX, uninstall them using their entry in Add/Remove Programs.$\r$\n$\r$\n$_CLICK"

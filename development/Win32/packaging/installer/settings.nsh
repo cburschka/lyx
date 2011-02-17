@@ -6,17 +6,12 @@ These typically need to be modified for each LyX release
 
 */
 
-#--------------------------------
-# Windows version on which the complier is running
-
-!define COMPILER_OS VISTA
-#!define COMPILER_OS XP
 
 #--------------------------------
 # Version number
 
-!define APP_VERSION_MAJOR 1
-!define APP_VERSION_MINOR 6
+!define APP_VERSION_MAJOR 2
+!define APP_VERSION_MINOR 0
 !define APP_VERSION_REVISION 0
 !define APP_VERSION_BUILD 0 # Start with 1 for the installer releases of each version
 
@@ -25,7 +20,7 @@ These typically need to be modified for each LyX release
 #--------------------------------
 # Installer file name
 
-# Typical names for the release are "LyX-1.5.4-1-Installer.exe" etc.
+# Typical names for the release are "LyX-2.0.0-1-Installer.exe" etc.
 
 !ifndef ExeFile
   !define /date ExeFile "LyX-${APP_VERSION_MAJOR}${APP_VERSION_MINOR}svn-%Y%m%d-Installer.exe"
@@ -38,22 +33,9 @@ These typically need to be modified for each LyX release
 !endif
 
 #--------------------------------
-# File names of component installers
+# MiKTeX
+# Sizes in KB
 
-!define SETUPFILE_LATEX "basic-miktex-2.7.3248.exe"
-!define SETUPFILE_IMAGEMAGEMAGICK "ImageMagick-6.4.1-0-Q16-windows-dll.exe"
-!define SETUPFILE_GHOSTSCRIPT "gs861w32.exe"
-
-#--------------------------------
-# Download size of components (in KB)
-
-!define SIZE_DOWNLOAD_LATEX 78493
-!define SIZE_DOWNLOAD_IMAGEMAGICK 8565
-!define SIZE_DOWNLOAD_GHOSTSCRIPT 12469
-
-#--------------------------------
-# Approximations of space required for components (in KB)
-
-!define SIZE_LATEX 225000
-!define SIZE_IMAGEMAGICK 34500
-!define SIZE_GHOSTSCRIPT 31500
+!define SETUPFILE_LATEX "basic-miktex-2.9.3972.exe"
+!define SIZE_DOWNLOAD_LATEX 141645
+!define SIZE_LATEX 380000

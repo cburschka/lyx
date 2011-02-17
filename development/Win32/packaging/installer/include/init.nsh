@@ -87,8 +87,6 @@ Function InitUser
   # Get directories of components from registry
   
   !insertmacro EXTERNAL_INIT LaTeX
-  !insertmacro EXTERNAL_INIT ImageMagick
-  !insertmacro EXTERNAL_INIT Ghostscript
   
   # Get LyX language
   
