@@ -49,7 +49,7 @@ SetCompressor /SOLID lzma
 !define APP_INFO "${APP_NAME} - The Document Processor"
 !define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-2011 LyX Team"
 
-!define APP_RUN "bin\LyXLauncher.exe"
+!define APP_RUN "bin\LyX.exe"
 
 !define APP_REGKEY "Software\${APP_NAME}${APP_SERIES_KEY}"
 !define APP_REGKEY_SETUP "Software\${APP_NAME}${APP_SERIES_KEY}\Setup"
