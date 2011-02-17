@@ -103,4 +103,7 @@ Compiling with Microsoft Visual C++
 Creating the Installer
 ======================
 
-	The installer for LyX 2.0 is currently being developed.
+	- Get NSIS from http://nsis.sourceforge.net
+	- In the LyX source directory, go to development\Win32\packaging\installer
+	- Check whether the file locations in settings.nsh match your setup.
+	- Right-click on lyx.nsi and click "Compile NSIS Script".
