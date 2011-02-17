@@ -57,6 +57,9 @@ public:
 	std::string const & variety() const { return variety_; }
 	/// set variety (needed for rc.spellchecker_alt_lang)
 	void setVariety(std::string const v) { variety_ = v; }
+	/// create a unique ID from lang code and variety
+	std::string const id() const {
+		return variety_.empty() ? code_ : code_ + "-" + variety_; }
 	/// preamble settings after babel was called
 	std::string const & babel_postsettings() const { return babel_postsettings_; }
 	/// preamble settings before babel is called

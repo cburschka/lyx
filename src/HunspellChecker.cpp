@@ -57,9 +57,9 @@ struct HunspellChecker::Private
 
 	const string dictPath(int selector);
 	bool haveLanguageFiles(string const & hpath);
-	bool haveDictionary(string const & lang, string & hpath);
-	bool haveDictionary(string const & lang);
-	Hunspell * addSpeller(string const & lang, string & hpath);
+	bool haveDictionary(Language const * lang, string & hpath);
+	bool haveDictionary(Language const * lang);
+	Hunspell * addSpeller(Language const * lang, string & hpath);
 	Hunspell * addSpeller(Language const * lang);
 	Hunspell * speller(Language const * lang);
 	/// ignored words
@@ -77,7 +77,7 @@ struct HunspellChecker::Private
 
 	/// the location below system/user directory
 	/// there the aff+dic files lookup will happen
-	const string dictDirectory(void) const { return "dict"; }
+	const string dictDirectory(void) const { return "dicts"; }
 	int maxLookupSelector(void) const { return 3; }
 };
 
@@ -132,43 +132,53 @@ const string HunspellChecker::Private::dictPath(int selector)
 }
 
 
-bool HunspellChecker::Private::haveDictionary(string const & lang, string & hpath)
+bool HunspellChecker::Private::haveDictionary(Language const * lang, string & hpath)
 {
 	if (hpath.empty()) {
 		return false;
 	}
 
 	LYXERR(Debug::FILES, "check hunspell path: " << hpath << " for language " << lang);
-	string h_path = addName(hpath, lang);
+	string h_path = addName(hpath, lang->code() + "-" + lang->variety());
+	// first we try lang code+variety
+	if (!lang->variety().empty() && haveLanguageFiles(h_path)) {
+		hpath = h_path;
+		return true;
+	}
+	// next we try lang code only
+	h_path = addName(hpath, lang->code());
+	if (haveLanguageFiles(h_path)) {
+		hpath = h_path;
+		return true;
+	}
+	// last try with '_' replaced by '-'
+	h_path = addName(hpath, subst(lang->code(), '_', '-'));
 	if (!haveLanguageFiles(h_path)) {
-		// try with '_' replaced by '-'
-		h_path = addName(hpath, subst(lang, '_', '-'));
-		if (!haveLanguageFiles(h_path)) {
-			// FIXME: We should indicate somehow that this language is not
-			// supported, probably by popping a warning. But we'll need to
-			// remember which warnings we've issued.
-			return false;
-		}
+		return false;
 	}
 	hpath = h_path;
 	return true;
 }
 
 
-bool HunspellChecker::Private::haveDictionary(string const & lang)
+bool HunspellChecker::Private::haveDictionary(Language const * lang)
 {
 	bool result = false;
 	for ( int p = 0; !result && p < maxLookupSelector(); p++ ) {
 		string lpath = dictPath(p);
 		result = haveDictionary(lang, lpath);
 	}
+	// FIXME: if result is false... 
+	// we should indicate somehow that this language is not
+	// supported, probably by popping a warning. But we'll need to
+	// remember which warnings we've issued.
 	return result;
 }
 
 
 Hunspell * HunspellChecker::Private::speller(Language const * lang)
 {
-	Spellers::iterator it = spellers_.find(lang->code());
+	Spellers::iterator it = spellers_.find(lang->id());
 	if (it != spellers_.end())
 		return it->second;
 
@@ -176,10 +186,10 @@ Hunspell * HunspellChecker::Private::speller(Language const * lang)
 }
 
 
-Hunspell * HunspellChecker::Private::addSpeller(string const & lang,string & path)
+Hunspell * HunspellChecker::Private::addSpeller(Language const * lang,string & path)
 {
 	if (!haveDictionary(lang, path)) {
-		spellers_[lang] = 0;
+		spellers_[lang->id()] = 0;
 		return 0;
 	}
 
@@ -187,7 +197,7 @@ Hunspell * HunspellChecker::Private::addSpeller(string const & lang,string & pat
 	FileName const dict(path + ".dic");
 	Hunspell * h = new Hunspell(affix.absFileName().c_str(), dict.absFileName().c_str());
 	LYXERR(Debug::FILES, "Hunspell speller for langage " << lang << " at " << dict << " found");
-	spellers_[lang] = h;
+	spellers_[lang->id()] = h;
 	return h;
 }
 
@@ -197,7 +207,7 @@ Hunspell * HunspellChecker::Private::addSpeller(Language const * lang)
 	Hunspell * h = 0;
 	for ( int p = 0; p < maxLookupSelector() && 0 == h; p++ ) {
 		string lpath = dictPath(p);
-		h = addSpeller(lang->code(), lpath);
+		h = addSpeller(lang, lpath);
 	}
 	if (0 != h) {
 		string const encoding = h->get_dic_encoding();
@@ -360,7 +370,7 @@ bool HunspellChecker::hasDictionary(Language const * lang) const
 {
 	if (!lang)
 		return false;
-	return (d->haveDictionary(lang->code()));
+	return (d->haveDictionary(lang));
 }
 
 
