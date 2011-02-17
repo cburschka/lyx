@@ -16,7 +16,6 @@ Section "un.Program Files" un.SecProgramFiles
   !insertmacro FileListQtBin Delete "$INSTDIR\bin\"
   !insertmacro FileListDll Delete "$INSTDIR\bin\"
   !insertmacro FileListMSVC Delete "$INSTDIR\bin\"
-  !insertmacro FileListMSVC2008 Delete "$INSTDIR\bin\"
   !insertmacro FileListNetpbmBin Delete "$INSTDIR\bin\"
   !insertmacro FileListDTLBin Delete "$INSTDIR\bin\"
   !insertmacro FileListDvipostBin Delete "$INSTDIR\bin\"
@@ -39,19 +38,16 @@ Section "un.Program Files" un.SecProgramFiles
   RMDir "$INSTDIR\python\Lib" 
   !insertmacro FileListPythonBin Delete "$INSTDIR\python\"
   !insertmacro FileListMSVC Delete "$INSTDIR\python\"
-  !insertmacro FileListMSVC2008 Delete "$INSTDIR\bin\"
   RMDir "$INSTDIR\python"
   
   # Components of ImageMagick
   !insertmacro FileListImageMagick Delete "$INSTDIR\imagemagick\"
   !insertmacro FileListMSVC Delete "$INSTDIR\imagemagick\"
-  !insertmacro FileListMSVC2008 Delete "$INSTDIR\bin\"
   RMDir "$INSTDIR\imagemagick"
   
   # Components of Ghostscript
   !insertmacro FileListGhostscript Delete "$INSTDIR\ghostscript\"
   !insertmacro FileListMSVC Delete "$INSTDIR\ghostscript\"
-  !insertmacro FileListMSVC2008 Delete "$INSTDIR\bin\"
   RMDir "$INSTDIR\ghostscript"
   
   # Shortcuts
