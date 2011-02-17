@@ -38,12 +38,6 @@ BrandingText " "
 Page custom PageReinstall PageReinstallValidate
 Page custom PageExternalLaTeX PageExternalLaTeXValidate
 
-!define MUI_PAGE_HEADER_TEXT $(TEXT_DICT_TITLE)
-!define MUI_PAGE_HEADER_SUBTEXT $(TEXT_DICT_SUBTITLE)
-!define MUI_COMPONENTSPAGE_TEXT_TOP $(TEXT_DICT_TOP)
-!define MUI_COMPONENTSPAGE_TEXT_COMPLIST $(TEXT_DICT_LIST)
-!insertmacro MUI_PAGE_COMPONENTS # For spell checker dictionaries
-
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
 
