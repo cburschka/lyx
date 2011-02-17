@@ -1342,8 +1342,9 @@ Tabular::idx_type Tabular::getFirstCellInRow(row_type row) const
 Tabular::idx_type Tabular::getLastCellInRow(row_type row) const
 {
 	col_type c = ncols() - 1;
-	while (cell_info[row][c].multirow == CELL_PART_OF_MULTIROW
-		|| cell_info[row][c].multicolumn == CELL_PART_OF_MULTICOLUMN)
+	while (c > 0
+	       && (cell_info[row][c].multirow == CELL_PART_OF_MULTIROW
+		   || cell_info[row][c].multicolumn == CELL_PART_OF_MULTICOLUMN))
 		--c;
 	return cell_info[row][c].cellno;
 }
@@ -2441,14 +2442,16 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 	for (col_type c = 0; c < ncols(); ++c) {
 		if (isPartOfMultiColumn(row, c))
 			continue;
-			
-		if (isPartOfMultiRow(row, c) && 
-			column_info[c].alignment != LYX_ALIGN_DECIMAL) {
-			os << " & "; 
+
+		cell = cellIndex(row, c);
+
+		if (isPartOfMultiRow(row, c)
+		    && column_info[c].alignment != LYX_ALIGN_DECIMAL) {
+			if (cell != getLastCellInRow(row))
+				os << " & "; 
 			continue;
 		}
 
-		cell = cellIndex(row, c);
 		TeXCellPreamble(os, cell, ismulticol, ismultirow);
 		shared_ptr<InsetTableCell> inset = cellInset(cell);
 
