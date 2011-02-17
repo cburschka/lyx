@@ -11,6 +11,7 @@ Installation of program files, dictionaries and external components
 
 Var PythonCompileFile
 Var PythonCompileReturn
+Var DownloadResult
 
 Section -ProgramFiles SecProgramFiles
 
@@ -26,7 +27,6 @@ Section -ProgramFiles SecProgramFiles
   # Binaries
   SetOutPath "$INSTDIR\bin"
   !insertmacro FileListLyXBin File "${FILES_LYX}\bin\"
-  !insertmacro FileListLyXLauncher File "${FILES_LAUNCHER}\"  
   !insertmacro FileListQtBin File "${FILES_QT}\bin\"
   !insertmacro FileListDll File "${FILES_DEPS}\bin\"
   !insertmacro FileListMSVC File "${FILES_MSVC}\"
@@ -35,8 +35,6 @@ Section -ProgramFiles SecProgramFiles
   !insertmacro FileListDvipostBin File "${FILES_DVIPOST}\"
   !insertmacro FileListPDFViewBin File "${FILES_PDFVIEW}\"
   !insertmacro FileListPDFToolsBin File "${FILES_PDFTOOLS}\"
-  !insertmacro FileListNSISPluginsStandard File "${NSISDIR}\Plugins\"
-  !insertmacro FileListNSISPlugins File "${FILES_NSISPLUGINS}\"
   !insertmacro FileListMetaFile2EPS File "${FILES_METAFILE2EPS}\"
   
   # Resources
@@ -75,8 +73,6 @@ Section -ProgramFiles SecProgramFiles
   !insertmacro FileListGhostscript File "${FILES_GHOSTSCRIPT}\"
   !insertmacro FileListMSVC File "${FILES_MSVC}\"
   
-  !endif  
-  
   # Create uninstaller
   WriteUninstaller "$INSTDIR\${SETUP_UNINSTALLER}"
 
@@ -87,7 +83,7 @@ SectionEnd
 
 !macro DOWNLOAD_FILE RET ID FILENAME APPEND
 
-  # Downloads a file using the Inetc plug-in (HTTP or FTP)
+  # Downloads a file
   
   # RET = Return value (OK if succesful)
   # ID = Name of the download in settings.nsh
@@ -95,12 +91,12 @@ SectionEnd
   # APPEND = Filename to append to server location in settings.nsh
 
   # Try first time
-  Inetc::get "${DOWNLOAD_${ID}}${APPEND}" "$PLUGINSDIR\${FILENAME}" /END
+  NSISdl::download "${DOWNLOAD_${ID}}${APPEND}" "$PLUGINSDIR\${FILENAME}"
   Pop ${RET} # Return value (OK if succesful)
 
   ${If} ${RET} != "OK"
     # Download failed, try again (usally we get a different mirror)
-    Inetc::get "${DOWNLOAD_${ID}}${APPEND}" "$PLUGINSDIR\${FILENAME}" /END
+    NSISdl::download "${DOWNLOAD_${ID}}${APPEND}" "$PLUGINSDIR\${FILENAME}"
     Pop ${RET}
   ${EndIf}
 

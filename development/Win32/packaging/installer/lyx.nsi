@@ -8,29 +8,16 @@ Compatible with NSIS 2.46
 
 !include settings.nsh
 
-#--------------------------------
-# Header files  
-
 !include include\declarations.nsh
 !include include\variables.nsh
 !include include\nsis.nsh
-
 !include include\filelist.nsh
-
 !include include\detection.nsh
 !include include\gui.nsh
 !include include\init.nsh
-
-#--------------------------------
-# Setup
-
 !include setup\install.nsh
 !include setup\uninstall.nsh
 !include setup\configure.nsh
-
-#--------------------------------
-# User interface (wizard pages)
-
 !include gui\external.nsh
 !include gui\reinstall.nsh
 

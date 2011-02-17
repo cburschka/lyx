@@ -6,7 +6,6 @@ These typically need to be modified for each LyX release
 
 */
 
-
 #--------------------------------
 # Version number
 
@@ -31,6 +30,14 @@ These typically need to be modified for each LyX release
 !ifndef MinimalExeFile
   !define /date MinimalExeFile "LyX-${APP_VERSION_MAJOR}${APP_VERSION_MINOR}svn-%Y%m%d-Installer-Minimal.exe"
 !endif
+
+#--------------------------------
+# File locations
+
+!define FILES_LYX "C:\LyX\lyx-20-install"
+!define FILES_DEPS "C:\LyX\lyx-20-build\msvc2010-deps\deps20"
+!define FILES_BUNDLE "C:\LyX\depsbundle"
+!define FILES_QT "C:\Qt\qt-everywhere-opensource-src-4.7.1"
 
 #--------------------------------
 # MiKTeX

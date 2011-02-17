@@ -9,49 +9,21 @@ Configuration of LyX installer
 SetCompressor /SOLID lzma
 
 #--------------------------------
-# Location of LyX files and dependencies
-
-!ifdef FilesLyX
-  !define FILES_LYX "${FilesLyX}"
-!else
-  !define FILES_LYX "..\..\..\..\..\lyx-20-install"
-!endif
-
-!ifdef FilesDeps
-  !define FILES_DEPS "${FilesDeps}"
-!else
-  !define FILES_DEPS "..\..\..\..\..\deps20"
-!endif
-
-!ifdef FilesBundle
-  !define FILES_BUNDLE "${FilesBundle}"
-!else
-  !define FILES_BUNDLE "..\..\..\..\..\depsbundle"
-!endif
-
-!define FILES_QT "C:\Qt\qt-everywhere-opensource-src-4.7.1"
-
-#--------------------------------
 # File locations
 
 !define FILES_LICENSE "license.rtf"
-
 !define FILES_ICONS "..\icons"
-!define FILES_LAUNCHER "..\..\launcher"
-!define FILES_PDFVIEW "..\..\pdfview"
-
+!define FILES_PDFVIEW "${FILES_DEPS}\bin"
 !define FILES_MSVC "${FILES_DEPS}\bin"
 !define FILES_PYTHON "${FILES_DEPS}\python"
 !define FILES_IMAGEMAGICK "${FILES_DEPS}\imagemagick"
 !define FILES_GHOSTSCRIPT "${FILES_DEPS}\ghostscript"
-!define FILES_NETPBM "${FILES_DEPS}\netpbm"
-!define FILES_DTL "${FILES_DEPS}\dtl"
-!define FILES_DVIPOST "${FILES_DEPS}\dvipost"
-!define FILES_DVIPOST_PKG "${FILES_DVIPOST}"
-!define FILES_PDFTOOLS "${FILES_DEPS}\pdftools"
-!define FILES_METAFILE2EPS "${FILES_DEPS}\metafile2eps"
-
-!define FILES_NSISPLUGINS "${FILES_DEPS}\nsis"
+!define FILES_NETPBM "${FILES_DEPS}\bin"
+!define FILES_DTL "${FILES_DEPS}\bin"
+!define FILES_DVIPOST "${FILES_DEPS}\bin"
+!define FILES_DVIPOST_PKG "${FILES_DEPS}\tex"
+!define FILES_PDFTOOLS "${FILES_DEPS}\bin"
+!define FILES_METAFILE2EPS "${FILES_DEPS}\bin"
 
 #--------------------------------
 # Locations of components to download

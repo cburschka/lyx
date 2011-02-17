@@ -75,6 +75,8 @@ Lists of files to include in the installer
 !macro FileListPDFViewBin COMMAND DIRECTORY
 
   ${FILE}pdfview.exe"
+  ${FILE}System.dll"
+  ${FILE}Console.dll"
 
 !macroend
 
@@ -262,18 +264,6 @@ Lists of files to include in the installer
   ${FILE}zlib_codec.py"
   ${FILE}__init__.py"
   
-!macroend
-
-!macro FileListNSISPluginsStandard COMMAND DIRECTORY
-
-  ${FILE}System.dll"
-
-!macroend
-
-!macro FileListNSISPlugins COMMAND DIRECTORY
-
-  ${FILE}Console.dll"
-
 !macroend
 
 !macro FileListMetaFile2EPS COMMAND DIRECTORY

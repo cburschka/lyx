@@ -12,7 +12,6 @@ Section "un.Program Files" un.SecProgramFiles
 
   # Binaries
   !insertmacro FileListLyXBin Delete "$INSTDIR\bin\"
-  !insertmacro FileListLyXLauncher Delete "$INSTDIR\bin\"  
   !insertmacro FileListQtBin Delete "$INSTDIR\bin\"
   !insertmacro FileListDll Delete "$INSTDIR\bin\"
   !insertmacro FileListMSVC Delete "$INSTDIR\bin\"
@@ -21,8 +20,6 @@ Section "un.Program Files" un.SecProgramFiles
   !insertmacro FileListDvipostBin Delete "$INSTDIR\bin\"
   !insertmacro FileListPDFToolsBin Delete "$INSTDIR\bin\"
   !insertmacro FileListPDFViewBin Delete "$INSTDIR\bin\"
-  !insertmacro FileListNSISPluginsStandard Delete "$INSTDIR\bin\"
-  !insertmacro FileListNSISPlugins Delete "$INSTDIR\bin\"
   !insertmacro FileListMetaFile2EPS Delete "$INSTDIR\bin\"
   RMDir "$INSTDIR\bin"
   
