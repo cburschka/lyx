@@ -22,16 +22,6 @@ Compatible with NSIS 2.46
 !include include\init.nsh
 
 #--------------------------------
-# The following commands use makensis to compile two applications.
-# Although these applications are written in NSIS, they do not install anything.
-
-# Compile the launcher
-!system '"${NSISDIR}\makensis.exe" "${FILES_LAUNCHER}\launcher.nsi"'
-
-# Compile Windows PDF view helper
-!system '"${NSISDIR}\makensis.exe" "${FILES_PDFVIEW}\pdfview.nsi"'
-
-#--------------------------------
 # Setup
 
 !include setup\install.nsh
