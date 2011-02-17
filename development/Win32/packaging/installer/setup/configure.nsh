@@ -84,7 +84,8 @@ Section -Configure
   # Append path prefix
   FileOpen $DistFile "$INSTDIR\Resources\lxrc.dist" a
 
-  StrCpy $PathPrefix "$LyXDir\bin;$LyXDir\python;$LyXDir\imagemagick;$LyXDir\ghostscript"
+  # $$ represents a literal $ in an NSIS string
+  StrCpy $PathPrefix "$$LyXDir\bin;$$LyXDir\python;$$LyXDir\imagemagick;$$LyXDir\ghostscript"
   
   ${If} $PathLaTeX != ""
     StrCpy $PathPrefix "$PathPrefix;$PathLaTeX"
