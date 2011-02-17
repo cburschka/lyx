@@ -691,13 +691,8 @@ docstring const KeySymbol::print(KeyModifier mod, bool forgui) const
 		tmpkey += Qt::ShiftModifier;
 	if (mod & ControlModifier)
 		tmpkey += Qt::ControlModifier;
-#ifdef Q_WS_MACX
-	if (mod & AltModifier)
-		tmpkey += Qt::MetaModifier;
-#else
 	if (mod & AltModifier)
 		tmpkey += Qt::AltModifier;
-#endif
 
 	QKeySequence seq(tmpkey);
 	QString str;
@@ -749,13 +744,8 @@ KeyModifier q_key_state(Qt::KeyboardModifiers state)
 		k |= ControlModifier;
 	if (state & Qt::ShiftModifier)
 		k |= ShiftModifier;
-#ifdef Q_WS_MACX
-	if (state & Qt::MetaModifier)
-		k |= AltModifier;
-#else
 	if (state & Qt::AltModifier || state & Qt::MetaModifier)
 		k |= AltModifier;
-#endif
 	return k;
 }
 
