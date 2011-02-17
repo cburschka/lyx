@@ -88,5 +88,3 @@ ${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
 ${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
-
-${LangFileString} UNTEXT_WELCOME "This wizard will guide you through the uninstallation of $(^NameDA). Please close $(^NameDA) before you continue.$\r$\n$\r$\nNote that this wizard will only uninstall LyX itself. If you want to uninstall other applications you installed for use with LyX, uninstall them using their entry in Add/Remove Programs.$\r$\n$\r$\n$_CLICK"

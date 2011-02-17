@@ -88,5 +88,3 @@ ${LangFileString} TEXT_CONFIGURE_LYX "Configuration de LyX (MiKTeX peut téléchar
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Créer un raccourci sur le bureau"
 ${LangFileString} TEXT_FINISH_WEBSITE "Consulter les dernières nouvelles, trucs et astuces sur le site lyx.org"
-
-${LangFileString} UNTEXT_WELCOME "Cet assistant va vous guider tout au long de la désinstallation de $(^NameDA). Merci de quitter $(^NameDA) avant de poursuivre.$\r$\n$\r$\nNotez bien que cet assistant ne désinstallera que LyX proprement dit. Si vous désirez désinstaller d'autres applications que vous avez installées pour les besoins de $(^NameDA), effectuez cette désinstallation via la page « Ajout/Suppression de programmes ».$\r$\n$\r$\n$_CLICK"

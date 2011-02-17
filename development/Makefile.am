@@ -41,7 +41,6 @@ Win32/packaging/installer/include/dictlist.nsh \
 Win32/packaging/installer/include/filelist.nsh \
 Win32/packaging/installer/include/gui.nsh \
 Win32/packaging/installer/include/init.nsh \
-Win32/packaging/installer/include/langlist.nsh \
 Win32/packaging/installer/include/nsis.nsh \
 Win32/packaging/installer/include/variables.nsh \
 Win32/packaging/installer/lang/english.nsh \

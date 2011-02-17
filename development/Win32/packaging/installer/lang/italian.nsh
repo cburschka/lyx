@@ -82,5 +82,3 @@ ${LangFileString} TEXT_NOTINSTALLED_DICT "L'installazione del dizionario ortogra
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Crea icona sul desktop"
 ${LangFileString} TEXT_FINISH_WEBSITE "Visitate lyx.org per ultime novità, aiuto e suggerimenti"
-
-${LangFileString} UNTEXT_WELCOME "Verrete guidati nella disinstallazione di $(^NameDA). Per favore, chiudete $(^NameDA) prima di continuare.$\r$\n$\r$\nNotate che verrà disinstallato solamente LyX. Se volete disinstallare le altre applicazioni installate insieme a LyX, dovrete farlo mediante la voce corrispondente in 'Installazione applicazioni'.$\r$\n$\r$\n$_CLICK"
