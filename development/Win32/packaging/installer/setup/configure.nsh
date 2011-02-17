@@ -75,14 +75,16 @@ SectionEnd
 
 Section -Configure
 
-  # Windows specific configuration in lyxrc.dist
+  # Set path prefix in lyxrc.dist
 
-  Delete "$INSTDIR\Resources\lyxrc.dist"
-  FileOpen $DistFile "$INSTDIR\Resources\lyxrc.dist" w
+  # Install standard lyxrc.dist file
+  SetOutPath "$INSTDIR\Resources"
+  File "${FILES_DEPS}\Resources\lyxrc.dist"
 
-  # Path prefix
+  # Append path prefix
+  FileOpen $DistFile "$INSTDIR\Resources\lxrc.dist" a
 
-  StrCpy $PathPrefix "$INSTDIR\bin;$INSTDIR\python;$INSTDIR\imagemagick;$INSTDIR\ghostscript"
+  StrCpy $PathPrefix "$LyXDir\bin;$LyXDir\python;$LyXDir\imagemagick;$LyXDir\ghostscript"
   
   ${If} $PathLaTeX != ""
     StrCpy $PathPrefix "$PathPrefix;$PathLaTeX"
@@ -92,16 +94,6 @@ Section -Configure
   ${EndIf}  
 
   FileWrite $DistFile '\path_prefix "$PathPrefix"$\r$\n'
-
-  # Default screen fonts
-  FileWrite $DistFile '\screen_font_roman "Times New Roman"$\r$\n'
-  FileWrite $DistFile '\screen_font_sans "Arial"$\r$\n'
-  FileWrite $DistFile '\screen_font_typewriter "Courier New"$\r$\n'
-  FileWrite $DistFile '\preview_scale_factor 1.0$\r$\n' # Fit instant preview font size to screen fonts
-  # PDF view helper
-  FileWrite $DistFile '\format "pdf" "pdf" "PDF (ps2pdf)" "P" "pdfview" "" "document,vector"$\r$\n'  
-  FileWrite $DistFile '\format "pdf2" "pdf" "PDF (pdflatex)" "F" "pdfview" "" "document,vector"$\r$\n'
-  FileWrite $DistFile '\format "pdf3" "pdf" "PDF (dvipdfm)" "m" "pdfview" "" "document,vector"$\r$\n'
 
   FileClose $DistFile
 
