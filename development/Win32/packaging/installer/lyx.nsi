@@ -17,7 +17,6 @@ Licence details for all installer scripts can be found in the file COPYING
 !include include\variables.nsh
 !include include\nsis.nsh
 
-!include include\dictlist.nsh
 !include include\filelist.nsh
 !include include\langlist.nsh
 

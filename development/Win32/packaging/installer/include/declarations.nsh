@@ -48,14 +48,12 @@ SetCompressor /SOLID lzma
 !define FILES_GHOSTSCRIPT "${FILES_DEPS}\ghostscript"
 !define FILES_NETPBM "${FILES_DEPS}\netpbm"
 !define FILES_DTL "${FILES_DEPS}\dtl"
-!define FILES_AIKSAURUS "${FILES_DEPS}\aiksaurus\"
 !define FILES_DVIPOST "${FILES_DEPS}\dvipost"
 !define FILES_DVIPOST_PKG "${FILES_DVIPOST}"
 !define FILES_PDFTOOLS "${FILES_DEPS}\pdftools"
 !define FILES_METAFILE2EPS "${FILES_DEPS}\metafile2eps"
 
 !define FILES_QT "${FILES_DEPS}\qt-4"
-!define FILES_ASPELLDATA "${FILES_DEPS}\aspell"
 
 !define FILES_NSISPLUGINS "${FILES_DEPS}\nsis"
 
@@ -67,7 +65,6 @@ SetCompressor /SOLID lzma
 !define DOWNLOAD_LATEX "http://www.ctan.org/get/systems/win32/miktex/setup/${SETUPFILE_LATEX}"
 !define DOWNLOAD_IMAGEMAGICK "http://downloads.sourceforge.net/imagemagick/${SETUPFILE_IMAGEMAGICK}"
 !define DOWNLOAD_GHOSTSCRIPT "http://downloads.sourceforge.net/imagemagick/${SETUPFILE_GHOSTSCRIPT}"
-!define DOWNLOAD_ASPELLDICTS "ftp://ftp.lyx.org/pub/lyx/contrib/aspell6-windows"
 
 #--------------------------------
 # Locations of setup files for components (for bundled setup)

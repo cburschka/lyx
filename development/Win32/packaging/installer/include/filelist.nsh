@@ -45,8 +45,7 @@ Lists of files to include in the installer
 
   ${FILE}iconv.dll"
   ${FILE}intl.dll"
-  ${FILE}aspell.dll"
-  ${FILE}Aiksaurus.dll"
+  ${FILE}libhunspell.dll"
   ${FILE}zlib1.dll"
 
 !macroend
@@ -267,13 +266,6 @@ Lists of files to include in the installer
   ${FILE}uu_codec.py"
   ${FILE}zlib_codec.py"
   ${FILE}__init__.py"
-  
-!macroend
-
-!macro FileListAiksaurusData COMMAND DIRECTORY
-
-  ${FILE}words.dat"
-  ${FILE}meanings.dat"
   
 !macroend
 

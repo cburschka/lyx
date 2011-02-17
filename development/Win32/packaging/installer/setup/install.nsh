@@ -84,25 +84,6 @@ Section -ProgramFiles SecProgramFiles
   
   !endif  
   
-  # Aspell
-
-  # Copy installer to pluginsdir (a temp dir)
-  File /oname=$PLUGINSDIR\AspellData.exe "${FILES_ASPELLDATA}\AspellData.exe"
-
-  # Silently install AspellData.exe (/S option)
-  ${If} $MultiUser.InstallMode == "CurrentUser"
-    ExecWait '"$PLUGINSDIR\AspellData.exe" /S /CurrentUser'
-  ${Else}
-    ExecWait '"$PLUGINSDIR\AspellData.exe" /S /AllUsers'
-  ${EndIf}
-
-  # Remove the installer
-  Delete "$PLUGINSDIR\AspellData.exe"
-
-  # Aiksarus data
-  SetOutPath "$INSTDIR\aiksaurus"
-  !insertmacro FileListAiksaurusData File "${FILES_AIKSAURUS}\"
-  
   # Create uninstaller
   WriteUninstaller "$INSTDIR\${SETUP_UNINSTALLER}"
 
@@ -131,89 +112,6 @@ SectionEnd
   ${EndIf}
 
 !macroend
-
-#--------------------------------
-# Aspell dictionaries
-
-Var DictionaryFile
-Var DictionaryLangName
-Var DictionaryLangCode
-Var DictionaryPath
-
-Var AspellHive
-Var AspellPath
-
-Var DownloadResult
-
-Section -AspellDicts
-
-  # Check whether the system or local version of Aspell should be used
-  # The patched Aspell uses the same logic
-
-  ReadRegStr $AspellPath HKCU "Software\Aspell" "Base Path"
-
-  ${If} $AspellPath == ""
-    StrCpy $AspellHive HKLM
-  ${Else}
-    StrCpy $AspellHive HKCU
-  ${EndIf}
-
-SectionEnd
-
-!macro SECTION_DICT FILE LANGNAME LANGCODE SIZE
-
-  # One section for each dictionary
-
-  Section /o "${LANGNAME}"
-
-    AddSize ${SIZE}
-
-    StrCpy $DictionaryFile "${FILE}"
-    StrCpy $DictionaryLangName "${LANGNAME}"
-    StrCpy $DictionaryLangCode ${LANGCODE}
-
-    Call DownloadDictionary
-
-  SectionEnd
-
-!macroend
-
-# Include all sections
-!insertmacro Dictionaries '!insertmacro SECTION_DICT'
-
-Function DownloadDictionary
-
-  # Download and install a dictionary
-
-  dict_download:
-  
-    !insertmacro DOWNLOAD_FILE $DownloadResult ASPELLDICTS aspell6-$DictionaryFile.exe /aspell6-$DictionaryFile.exe
-
-    ${If} $DownloadResult != "OK"
-      # Download failed
-      MessageBox MB_YESNO|MB_ICONEXCLAMATION "$(TEXT_DOWNLOAD_FAILED_DICT) ($DownloadResult)" IDYES dict_download
-      Goto dict_noinstall
-    ${EndIf}
-
-    install_dict:
-
-      ExecWait '"$PLUGINSDIR\aspell6-$DictionaryFile.exe" /NoDirChange /AutoClose'
-
-      ${If} $AspellHive == HKLM
-        ReadRegStr $DictionaryPath HKLM "Software\Aspell\Dictionaries" $DictionaryLangCode
-      ${Else}
-        ReadRegStr $DictionaryPath HKCU "Software\Aspell\Dictionaries" $DictionaryLangCode
-      ${EndIf}
-
-      ${If} $DictionaryPath == ""
-        MessageBox MB_YESNO|MB_ICONEXCLAMATION "$(TEXT_NOTINSTALLED_DICT)" IDYES install_dict
-      ${EndIf}
-
-      Delete "$PLUGINSDIR\aspell6-$DictionaryFile.exe"
-
-    dict_noinstall:
-
-FunctionEnd
 
 #--------------------------------
 # Extenral components

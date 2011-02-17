@@ -54,10 +54,6 @@ Section "un.Program Files" un.SecProgramFiles
   !insertmacro FileListMSVCManifest Delete "$INSTDIR\ghostscript\"
   RMDir "$INSTDIR\ghostscript"
   
-  # Aiksaurus Data
-  !insertmacro FileListAiksaurusData Delete "$INSTDIR\aiksaurus\"
-  RMDir "$INSTDIR\aiksaurus"
-  
   # Shortcuts
   Delete "$SMPROGRAMS\${APP_NAME} ${APP_SERIES_NAME}.lnk"
   Delete "$DESKTOP\${APP_NAME} ${APP_SERIES_NAME}.lnk"
