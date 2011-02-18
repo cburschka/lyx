@@ -270,14 +270,14 @@ AspellSpeller * AspellChecker::Private::addSpeller(Language const * lang)
 		initSessionDictionary(m, pd);
 	}
 	
-	spellers_[lang->id()] = m;
+	spellers_[lang->lang()] = m;
 	return m.e_speller ? to_aspell_speller(m.e_speller) : 0;
 }
 
 
 AspellSpeller * AspellChecker::Private::speller(Language const * lang)
 {
-	Spellers::iterator it = spellers_.find(lang->id());
+	Spellers::iterator it = spellers_.find(lang->lang());
 	if (it != spellers_.end())
 		return to_aspell_speller(it->second.e_speller);
 	
@@ -307,7 +307,7 @@ void AspellChecker::Private::remove(WordLangTuple const & word)
 	if (!pd)
 		return;
 	pd->remove(word.word());
-	Spellers::iterator it = spellers_.find(word.lang()->id());
+	Spellers::iterator it = spellers_.find(word.lang()->lang());
 	if (it != spellers_.end()) {
 		initSessionDictionary(it->second, pd);
 	}
@@ -316,7 +316,7 @@ void AspellChecker::Private::remove(WordLangTuple const & word)
 		
 void AspellChecker::Private::insert(WordLangTuple const & word)
 {
-	Spellers::iterator it = spellers_.find(word.lang()->id());
+	Spellers::iterator it = spellers_.find(word.lang()->lang());
 	if (it != spellers_.end()) {
 		AspellSpeller * speller = to_aspell_speller(it->second.e_speller);
 		aspell_speller_add_to_session(speller, to_utf8(word.word()).c_str(), -1);
@@ -380,7 +380,7 @@ void AspellChecker::insert(WordLangTuple const & word)
 
 void AspellChecker::accept(WordLangTuple const & word)
 {
-	Spellers::iterator it = d->spellers_.find(word.lang()->id());
+	Spellers::iterator it = d->spellers_.find(word.lang()->lang());
 	if (it != d->spellers_.end()) {
 		AspellSpeller * speller = to_aspell_speller(it->second.e_speller);
 		aspell_speller_add_to_session(speller, to_utf8(word.word()).c_str(), -1);

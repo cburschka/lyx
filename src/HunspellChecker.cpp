@@ -79,6 +79,11 @@ struct HunspellChecker::Private
 	/// there the aff+dic files lookup will happen
 	const string dictDirectory(void) const { return "dicts"; }
 	int maxLookupSelector(void) const { return 3; }
+	const string HunspellDictionaryName(Language const * lang) {
+		return lang->variety().empty() 
+			? lang->code()
+			: lang->code() + "-" + lang->variety();
+	}
 };
 
 
@@ -139,19 +144,13 @@ bool HunspellChecker::Private::haveDictionary(Language const * lang, string & hp
 	}
 
 	LYXERR(Debug::FILES, "check hunspell path: " << hpath << " for language " << lang);
-	string h_path = addName(hpath, lang->code() + "-" + lang->variety());
+	string h_path = addName(hpath, HunspellDictionaryName(lang));
 	// first we try lang code+variety
-	if (!lang->variety().empty() && haveLanguageFiles(h_path)) {
-		hpath = h_path;
-		return true;
-	}
-	// next we try lang code only
-	h_path = addName(hpath, lang->code());
 	if (haveLanguageFiles(h_path)) {
 		hpath = h_path;
 		return true;
 	}
-	// last try with '_' replaced by '-'
+	// another try with code, '_' replaced by '-'
 	h_path = addName(hpath, subst(lang->code(), '_', '-'));
 	if (!haveLanguageFiles(h_path)) {
 		return false;
@@ -178,7 +177,7 @@ bool HunspellChecker::Private::haveDictionary(Language const * lang)
 
 Hunspell * HunspellChecker::Private::speller(Language const * lang)
 {
-	Spellers::iterator it = spellers_.find(lang->id());
+	Spellers::iterator it = spellers_.find(lang->lang());
 	if (it != spellers_.end())
 		return it->second;
 
@@ -189,7 +188,7 @@ Hunspell * HunspellChecker::Private::speller(Language const * lang)
 Hunspell * HunspellChecker::Private::addSpeller(Language const * lang,string & path)
 {
 	if (!haveDictionary(lang, path)) {
-		spellers_[lang->id()] = 0;
+		spellers_[lang->lang()] = 0;
 		return 0;
 	}
 
@@ -197,7 +196,7 @@ Hunspell * HunspellChecker::Private::addSpeller(Language const * lang,string & p
 	FileName const dict(path + ".dic");
 	Hunspell * h = new Hunspell(affix.absFileName().c_str(), dict.absFileName().c_str());
 	LYXERR(Debug::FILES, "Hunspell speller for langage " << lang << " at " << dict << " found");
-	spellers_[lang->id()] = h;
+	spellers_[lang->lang()] = h;
 	return h;
 }
 
