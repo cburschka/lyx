@@ -4,11 +4,13 @@
 
 # This script automates creating universal binaries of LyX on Mac.
 # Author: Bennett Helm (and extended by Konrad Hofbauer)
-# modified by Stephan Witt
-# Last modified: 9 July 2010
+# latest changes by Stephan Witt
+# Last modified: January 2011
 
-Qt4SourceVersion="qt-everywhere-opensource-src-4.7.1"
-Qt4BuildSubDir="qt-4.7.1-build"
+CARBON=-carbon
+Qt4Version="4.6.3"
+Qt4SourceVersion="qt-everywhere-opensource-src-${Qt4Version}"
+Qt4BuildSubDir="qt-${Qt4Version}-build${CARBON}"
 
 # Prerequisite:
 # * a decent checkout of LyX sources (probably you have it already)
@@ -20,8 +22,8 @@ Qt4BuildSubDir="qt-4.7.1-build"
 #   the hunspell sources placed in a sibling directory (variable HunSpellSourceVersion)
 # * for dictionary deployment (per default thesauri only):
 #   - aspell:   the dictionary files of macports (in /opt/local/share/aspell and /opt/local/lib/aspell-0.60)
-#   - hunspell: the dictionary files in the sibling directory Dictionaries/dict
-#   - mythes:   the data and idx files in the sibling directory Dictionaries/thes
+#   - hunspell: the dictionary files in the sibling directory dictionaries/dicts
+#   - mythes:   the data and idx files in the sibling directory dictionaries/thes
 
 LyXConfigureOptions="--enable-warnings --enable-optimization=-Os --with-included-gettext --with-x=no"
 AspellConfigureOptions="--enable-warnings --enable-optimization=-O0 --enable-debug --disable-nls --enable-compile-in-filters --disable-pspell-compatibility"
@@ -29,6 +31,7 @@ HunspellConfigureOptions="--with-warnings --disable-nls --with-included-gettext 
 Qt4ConfigureOptions="-opensource -silent -shared -release -fast -no-exceptions"
 Qt4ConfigureOptions="${Qt4ConfigureOptions} -no-webkit -no-qt3support -no-javascript-jit -no-dbus"
 Qt4ConfigureOptions="${Qt4ConfigureOptions} -nomake examples -nomake demos -nomake docs -nomake tools"
+#Qt4ConfigureOptions="${Qt4ConfigureOptions} ${CARBON}"
 
 aspell_dictionaries="no"
 hunspell_dictionaries="no"
@@ -151,13 +154,6 @@ while [ $# -gt 0 ]; do
 	esac
 done
 
-# Set these variables -- to
-# (1) the location of your Qt4 installation
-# (2) the location of resulting DMG
-# (3) the version of private aspell installation
-#     (to define the location assign ASpellSourceDir instead)
-# (4) the list of architectures to build for
-
 if [ "${configure_qt4_frameworks}" != "yes" ]; then
 	QtInstallDir=${QTDIR:-"/opt/qt4"}
 fi
@@ -200,16 +196,15 @@ HunSpellSourceDir=${HUNSPELLDIR:-`dirname "${LyxSourceDir}"`/${HunSpellSourceVer
 HunSpellInstallDir=${HunSpellInstallDir:-"${LyxBuildDir}"/SpellChecker.lib}
 Qt4SourceDir=${QT4SOURCEDIR:-`dirname "${LyxSourceDir}"`/${Qt4SourceVersion}}
 Qt4BuildDir=${Qt4BuildDir:-"${LyxBuildDir}"/${Qt4BuildSubDir:-"qt4-build"}}
-DictionarySourceDir=${DICTIONARYDIR:-`dirname "${LyxSourceDir}"`/Dictionaries}
+DictionarySourceDir=${DICTIONARYDIR:-`dirname "${LyxSourceDir}"`/dictionaries}
 
 ASpellInstallHdr="${ASpellInstallDir}/include/aspell.h"
 HunSpellInstallHdr="${HunSpellInstallDir}/include/hunspell/hunspell.h"
 
 if [ -z "${LyXVersion}" ]; then
 	LyXVersion=`grep AC_INIT "${LyxSourceDir}"/configure.ac | cut -d, -f2 | tr -d " ()"`
-	LyXVersionSuffix=`echo "${LyXVersion}" | cut -d. -f1-2`
-	LyXVersionSuffix="${LyXVersionSuffix:-${LyXVersion}}"
 fi
+LyXVersionSuffix=${LyXVersionSuffix:-`echo "${LyXVersion}" | cut -d. -f1-2`}
 
 LyxName="LyX"
 LyxBase="${LyxName}-${LyXVersion}"
@@ -268,81 +263,7 @@ MYCFLAGS="-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}"
 HostSystem_i386="i686-apple-darwin8"
 HostSystem_ppc="powerpc-apple-darwin8"
 
-updateDictionaries() {
-	TMP_DIR="/tmp/lyx-build-$$"
-	mkdir -p "$1"/dict "$1"/thes
-	mkdir -p "$TMP_DIR" && (
-		for pack in "$1"/*.zip ; do
-			case "${pack}" in
-			*de_DE-pack.zip)
-				cd "$TMP_DIR" && unzip "${pack}" de_DE_comb.zip thes_de_DE_v2.zip
-				cd "$1"/dict && unzip -o "$TMP_DIR"/de_DE_comb.zip &&\
-					for suffix in .aff .dic ; do mv de_DE_comb$suffix de_DE$suffix; done
-				cd "$1"/thes && unzip -o "$TMP_DIR"/thes_de_DE_v2.zip
-				;;
-			*pl_PL-pack.zip)
-				cd "$TMP_DIR" && unzip "${pack}" pl_PL.zip thes_pl_PL_v2.zip
-				cd "$1"/dict && unzip -o "$TMP_DIR"/pl_PL.zip
-				cd "$1"/thes && unzip -o "$TMP_DIR"/thes_pl_PL_v2.zip
-				;;
-			*fr_FR-pack.zip)
-				cd "$TMP_DIR" && unzip "${pack}" fr_FR.zip thes_fr_FR_v2.zip
-				cd "$1"/dict && unzip -o "$TMP_DIR"/fr_FR.zip
-				cd "$1"/thes && unzip -o "$TMP_DIR"/thes_fr_FR_v2.zip
-				;;
-			*es_ES-pack.zip)
-				cd "$TMP_DIR" && unzip "${pack}" es_ES.zip es_MX.zip thes_es_ES_v2.zip
-				cd "$1"/dict && unzip -o "$TMP_DIR"/es_ES.zip
-				cd "$1"/dict && unzip -o "$TMP_DIR"/es_MX.zip
-				cd "$1"/thes && unzip -o "$TMP_DIR"/thes_es_ES_v2.zip
-				;;
-			*pt_PT-pack.zip)
-				cd "$TMP_DIR" && unzip "${pack}" pt_PT.zip
-				cd "$1"/dict && unzip -o "$TMP_DIR"/pt_PT.zip
-				cd "$1"/dict && unzip -o "$1"/pt_BR.zip
-				cd "$1"/thes && unzip -o "$1"/thes_pt_PT_v2.zip
-				;;
-			*it_IT-pack.zip)
-				cd "$TMP_DIR" && unzip "${pack}" it_IT.zip
-				cd "$1"/dict && unzip -o "$TMP_DIR"/it_IT.zip
-				cd "$1"/thes && unzip -o "$1"/thes_it_IT_v2.zip
-				;;
-			*ru_RU-pack.zip)
-				cd "$TMP_DIR" && unzip "${pack}" ru_RU.zip
-				cd "$1"/dict && unzip -o "$TMP_DIR"/ru_RU.zip
-				cd "$1"/thes && tar xvf "$1"/thes_ru_RU_v2.tar.bz2
-				;;
-			*en_EN-pack.zip)
-				cd "$TMP_DIR" && unzip "${pack}" en_AU.zip en_CA.zip en_GB.zip en_NZ.zip en_US.zip
-				for zipfile in en_AU.zip en_CA.zip en_GB.zip en_NZ.zip en_US.zip ; do
-					( cd "$1"/dict && unzip -o "$TMP_DIR/$zipfile" )
-				done
-				cd "$1"/thes && unzip -o "$1"/thes_en_US_v2.zip
-				;;
-			XXXX*-pack*)
-				cd "$TMP_DIR" && unzip -l "${pack}" | while read len date time zipfile ; do
-					case "$zipfile" in
-					thes*_v2.zip)
-						echo "$zipfile"
-						cd "$TMP_DIR" && unzip -o "${pack}" "$zipfile"
-						cd "$1"/thes && unzip -o "$TMP_DIR"/"$zipfile"
-						;;
-					[a-z][a-z]_[A-Z][A-Z].zip)
-						echo "$zipfile"
-						cd "$TMP_DIR" && unzip -o "${pack}" "$zipfile"
-						cd "$1"/dict && unzip -o "$TMP_DIR"/"$zipfile"
-						;;
-					esac
-				done
-				# echo Ignore dictionary package `basename "${pack}"`
-				;;
-			esac
-		done
-	)
-	rm -rf "$TMP_DIR"
-}
-
-if [ "${configure_qt4_frameworks}" != "yes" -a -d "${Qt4SourceDir}" -a ! -d "${Qt4BuildDir}" ]; then
+if [ "${configure_qt4_frameworks}" != "yes" -a -d "${Qt4SourceDir}" -a ! \( -d "${Qt4BuildDir}" -a -d "${QtInstallDir}" \) ]; then
 	echo Build Qt4 library ${Qt4SourceDir}
 	if [ "${QtInstallDir}" = "${Qt4BuildDir}" ]; then
 		echo Bad install directory for Qt.
@@ -367,9 +288,6 @@ if [ "${configure_qt4_frameworks}" != "yes" -a -d "${Qt4SourceDir}" -a ! -d "${Q
 		done
 	)
 fi
-
-# updateDictionaries "${DictionarySourceDir}"
-# exit
 
 if [ -d "${HunSpellSourceDir}" -a ! -f "${HunSpellInstallHdr}" ]; then
 	# we have a private HunSpell source tree at hand...
@@ -547,7 +465,7 @@ build_lyx() {
 	for arch in ${ARCH_LIST} ; do
 
 		if [ -d "${LyxBuildDir}" ];  then rm -r "${LyxBuildDir}"; fi
-		mkdir "${LyxBuildDir}" && cd "${LyxBuildDir}"
+		mkdir -p "${LyxBuildDir}" && cd "${LyxBuildDir}"
 
 		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"
 		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"
@@ -562,7 +480,8 @@ build_lyx() {
 			CPPFLAGS="${CPPFLAGS} -I${SDKROOT}/Library/Frameworks/QtCore.framework/Headers"
 			CPPFLAGS="${CPPFLAGS} -I${SDKROOT}/Library/Frameworks/QtGui.framework/Headers"
 		fi
-		LDFLAGS="${LDFLAGS} -framework Carbon -framework AppKit"
+		LDFLAGS="${LDFLAGS}"${CARBON:+" -framework Carbon"}
+		LDFLAGS="${LDFLAGS} -framework AppKit"
 
 		echo LDFLAGS="${LDFLAGS}"
 		export LDFLAGS
@@ -708,20 +627,19 @@ copy_dictionaries() {
 		if [ -d /opt/local/lib/aspell-0.60 ]; then ASpellInstallDir=/opt/local ; fi
 		mkdir -p "${ASpellResources}"
 		echo Copy Aspell dictionaries from "${ASpellInstallDir}"
-		mkdir -p "${ASpellResources}"/data "${ASpellResources}"/dict
+		mkdir -p "${ASpellResources}"/data "${ASpellResources}"/dicts
 		cp -p -r "${ASpellInstallDir}/lib/aspell-0.60"/* "${ASpellResources}"/data
-		cp -p -r "${ASpellInstallDir}/share/aspell"/* "${ASpellResources}"/dict
+		cp -p -r "${ASpellInstallDir}/share/aspell"/* "${ASpellResources}"/dicts
 	fi
 	if [ -d "${HunSpellInstallDir}" -a "yes" = "${hunspell_dictionaries}" ]; then
 		HunSpellResources="${LyxAppPrefix}/Contents/Resources"
 		if [ -d "${DictionarySourceDir}" ]; then
-			updateDictionaries "${DictionarySourceDir}"
-			cp -p -r "${DictionarySourceDir}/dict" "${HunSpellResources}"
+			( cd "${DictionarySourceDir}" && find dicts -name .svn -prune -o -type f -print | cpio -pmdv "${HunSpellResources}" )
 		fi
 	fi
 	if [ -d "${DictionarySourceDir}" -a "yes" = "${thesaurus_deployment}" ]; then
 		MyThesResources="${LyxAppPrefix}/Contents/Resources"
-		cp -p -r "${DictionarySourceDir}/thes" "${MyThesResources}"
+		( cd "${DictionarySourceDir}" && find thes -name .svn -prune -o -type f -print | cpio -pmdv "${MyThesResources}" )
 	fi
 }
 
