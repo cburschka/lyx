@@ -409,6 +409,50 @@ bool skip_braces(Parser & p)
 }
 
 
+/// replace LaTeX commands in \p s from the unicodesymbols file with their
+/// unciode points
+docstring convert_unicodesymbols(docstring s)
+{
+	odocstringstream os;
+	for (size_t i = 0; i < s.size();) {
+		if (s[i] != '\\') {
+			os << s[i++];
+			continue;
+		}
+		s = s.substr(i);
+		docstring rem;
+		docstring parsed = encodings.fromLaTeXCommand(s, rem,
+				Encodings::TEXT_CMD);
+		os << parsed;
+		s = rem;
+		i = 0;
+	}
+	return os.str();
+}
+
+
+/// try to convert \p s to a valid InsetCommand argument
+string convert_command_inset_arg(string s)
+{
+	if (isAscii(s))
+		// since we don't know the input encoding we can't use from_utf8
+		s = to_utf8(convert_unicodesymbols(from_ascii(s)));
+	// LyX cannot handle newlines in a latex command
+	return subst(s, "\n", " ");
+}
+
+
+void handle_backslash(ostream & os, string const & s)
+{
+	for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
+		if (*it == '\\')
+			os << "\n\\backslash\n";
+		else
+			os << *it;
+	}
+}
+
+
 void handle_ert(ostream & os, string const & s, Context & context)
 {
 	// We must have a valid layout before outputting the ERT inset.
@@ -438,12 +482,7 @@ void handle_comment(ostream & os, string const & s, Context & context)
 	begin_inset(os, "ERT");
 	os << "\nstatus collapsed\n";
 	newcontext.check_layout(os);
-	for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
-		if (*it == '\\')
-			os << "\n\\backslash\n";
-		else
-			os << *it;
-	}
+	handle_backslash(os, s);
 	// make sure that our comment is the last thing on the line
 	newcontext.new_paragraph(os);
 	newcontext.check_layout(os);
@@ -1917,10 +1956,19 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "bibitem") {
 			context.set_item();
 			context.check_layout(os);
-			begin_command_inset(os, "bibitem", "bibitem");
-			os << "label \"" << p.getArg('[', ']') << "\"\n";
-			os << "key \"" << p.verbatim_item() << "\"\n";
-			end_inset(os);
+			string label = convert_command_inset_arg(p.getArg('[', ']'));
+			string key = convert_command_inset_arg(p.verbatim_item());
+			if (contains(label, '\\') || contains(key, '\\')) {
+				// LyX can't handle LaTeX commands in labels or keys
+				handle_ert(os, t.asInput() + '[' + label +
+				               "]{" + p.verbatim_item() + '}',
+				           context);
+			} else {
+				begin_command_inset(os, "bibitem", "bibitem");
+				os << "label \"" << label << "\"\n"
+				      "key \"" << key << "\"\n";
+				end_inset(os);
+			}
 		}
 
 		else if (is_macro(p))
@@ -2352,10 +2400,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (opt.empty()) {
 				context.check_layout(os);
 				begin_command_inset(os, "ref", t.cs());
-				// LyX cannot handle newlines in a latex command
-				// FIXME: Move the substitution into parser::getOpt()?
 				os << "reference \""
-				   << subst(p.verbatim_item(), "\n", " ")
+				   << convert_command_inset_arg(p.verbatim_item())
 				   << "\"\n";
 				end_inset(os);
 			} else {
@@ -2363,7 +2409,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				handle_ert(os, t.asInput() + '[' + opt + "]{" +
 				               p.verbatim_item() + "}", context);
 			}
-
 		}
 
 		else if (use_natbib &&
@@ -2409,19 +2454,19 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (!after.empty()) {
 				after.erase(0, 1);
 				after.erase(after.length() - 1, 1);
-				// LyX cannot handle newlines in the parameter
-				after = subst(after, "\n", " ");
+				after = convert_command_inset_arg(after);
 			}
 			if (!before.empty()) {
 				before.erase(0, 1);
 				before.erase(before.length() - 1, 1);
-				// LyX cannot handle newlines in the parameter
-				before = subst(before, "\n", " ");
+				before = convert_command_inset_arg(before);
 			}
 			begin_command_inset(os, "citation", command);
 			os << "after " << '"' << after << '"' << "\n";
 			os << "before " << '"' << before << '"' << "\n";
-			os << "key " << '"' << p.verbatim_item() << '"' << "\n";
+			os << "key \""
+			   << convert_command_inset_arg(p.verbatim_item())
+			   << "\"\n";
 			end_inset(os);
 		}
 
@@ -2477,9 +2522,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "cite"
 			|| t.cs() == "nocite") {
 			context.check_layout(os);
-			// LyX cannot handle newlines in a latex command
-			string after = subst(p.getArg('[', ']'), "\n", " ");
-			string key = subst(p.verbatim_item(), "\n", " ");
+			string after = convert_command_inset_arg(p.getArg('[', ']'));
+			string key = convert_command_inset_arg(p.verbatim_item());
 			// store the case that it is "\nocite{*}" to use it later for
 			// the BibTeX inset
 			if (key != "*") {
@@ -2502,20 +2546,23 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "nomenclature") {
 			context.check_layout(os);
 			begin_command_inset(os, "nomenclature", "nomenclature");
-			// LyX cannot handle newlines in a latex command
-			string prefix = subst(p.getArg('[', ']'), "\n", " ");
+			string prefix = convert_command_inset_arg(p.getArg('[', ']'));
 			if (!prefix.empty())
 				os << "prefix " << '"' << prefix << '"' << "\n";
-			os << "symbol " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
-			os << "description " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
+			os << "symbol " << '"'
+			   << convert_command_inset_arg(p.verbatim_item());
+			os << "\"\ndescription \""
+			   << convert_command_inset_arg(p.verbatim_item())
+			   << "\"\n";
 			end_inset(os);
 		}
 		
 		else if (t.cs() == "label") {
 			context.check_layout(os);
 			begin_command_inset(os, "label", "label");
-			// LyX cannot handle newlines in a latex command
-			os << "name " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
+			os << "name \""
+			   << convert_command_inset_arg(p.verbatim_item())
+			   << "\"\n";
 			end_inset(os);
 		}
 

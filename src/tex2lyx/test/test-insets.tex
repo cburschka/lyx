@@ -95,14 +95,21 @@ Now the natbib things:
 
 \textbackslash{}nocite: \nocite{article-crossref}
 
-\bibliographystyle{unsrt}
 % Remove duplicate call of \bibliography since LaTeX throws an error.
+%\bibliographystyle{unsrt}
 % \bibliography{xampl}
 
 With \textbackslash{}nocite\{{*}\}:
 \bibliographystyle{unsrt}
 \nocite{*}
 \bibliography{xampl}
+
+From bug 7306:
+\citet{gur+04} have demonstrated that authors should not have umlauts
+in their names. It's OK to use them in the man\"{u}script, though.
+\begin{thebibliography}{References}
+\bibitem[{{G\"{u}rkan et~al.}(2004)}]{gur+04} Gürkan, M.~A., Freitag,
+M., \& Rasio, F.~A. 2004, ApJ, 604, 632\end{thebibliography}
 
 \section{Input files\index{Input files}}
 
