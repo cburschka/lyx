@@ -213,7 +213,7 @@ struct GuiView::GuiViewPrivate
 	{
 		// hardcode here the platform specific icon size
 		smallIconSize = 14;  // scaling problems
-		normalIconSize = 20; // ok, default
+		normalIconSize = 22; // ok, default
 		bigIconSize = 26;	// better for some math icons
 
 		splitter_ = new QSplitter;
