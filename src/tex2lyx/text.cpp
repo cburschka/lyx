@@ -2348,13 +2348,22 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (is_known(t.cs(), known_ref_commands)) {
-			context.check_layout(os);
-			begin_command_inset(os, "ref", t.cs());
-			// LyX cannot handle newlines in a latex command
-			// FIXME: Move the substitution into parser::getOpt()?
-			os << subst(p.getOpt(), "\n", " ");
-			os << "reference " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
-			end_inset(os);
+			string const opt = p.getOpt();
+			if (opt.empty()) {
+				context.check_layout(os);
+				begin_command_inset(os, "ref", t.cs());
+				// LyX cannot handle newlines in a latex command
+				// FIXME: Move the substitution into parser::getOpt()?
+				os << "reference \""
+				   << subst(p.verbatim_item(), "\n", " ")
+				   << "\"\n";
+				end_inset(os);
+			} else {
+				// LyX does not support optional arguments of ref commands
+				handle_ert(os, t.asInput() + '[' + opt + "]{" +
+				               p.verbatim_item() + "}", context);
+			}
+
 		}
 
 		else if (use_natbib &&
