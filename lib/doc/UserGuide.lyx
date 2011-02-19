@@ -129,6 +129,7 @@
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -712698321 "Jürgen Spitzmüller" 
 \author 5863208 "ab" 
 \author 1607599024 "Richard Heck" rgheck@comcast.net
 \end_header
@@ -30450,7 +30451,26 @@ th_en_EN_v2.dat
 \begin_layout Standard
 If you have OpenOffice and its thesaurus installed, these files should be
  already on your system.
- If not, you can get dictionaries from the site 
+ If not, you can get dictionaries 
+\change_inserted -712698321 1298121514
+either from 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1298121516
+
+http://www.lyx.org/trac/browser/dictionaries/trunk/thes
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ or 
+\change_unchanged
+from the site 
 \begin_inset Flex URL
 status collapsed
 
@@ -30462,6 +30482,8 @@ http://extensions.services.openoffice.org
 \end_inset
 
 .
+
+\change_deleted -712698321 1298121776
  Note that, as of OpenOffice 3.0, these files are usually packed in extension
  archives (
 \emph on
@@ -30471,6 +30493,44 @@ http://extensions.services.openoffice.org
  thesauri.
  These archives are simple zip files, so you can unpack them as you would
  unpack a zip archive.
+\change_inserted -712698321 1298121667
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1298121689
+Note that, as of OpenOffice 3.0, the files on 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1298121688
+
+http://extensions.services.openoffice.org
+\end_layout
+
+\end_inset
+
+ are usually packed in extension archives (
+\emph on
+*.oxt
+\emph default
+) that contain other files such as spellchecker dictionaries besides the
+ thesauri.
+ These archives are simple zip files, so you can unpack them as you would
+ unpack a zip archive.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ 
+\change_deleted -712698321 1298121653
+
 \end_layout
 
 \begin_layout Standard
