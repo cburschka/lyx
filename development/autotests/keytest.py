@@ -321,9 +321,9 @@ while not failed:
         lyx_pid=os.popen("pidof lyx").read()
         if lyx_pid != "":
             print "Found running instance(s) of LyX: " + lyx_pid + ": killing them all\n"
-            intr_system("killall lyx")
+            intr_system("killall lyx", True)
             time.sleep(0.5)
-            intr_system("killall -KILL lyx")
+            intr_system("killall -KILL lyx", True)
         time.sleep(0.2)
         print "Starting LyX . . ."
         if lyx_userdir is None:
@@ -376,7 +376,7 @@ while not failed:
     elif c[0:7] == 'TestEnd':
         time.sleep(0.5)
         print "Terminating lyx instance: " + str(lyx_pid) + "\n"
-        intr_system("kill -9 " + str(lyx_pid));
+        intr_system("kill -9 " + str(lyx_pid), True);
         while lyx_exists():
             print "Waiting for lyx to die...\n"
             time.sleep(0.5)
