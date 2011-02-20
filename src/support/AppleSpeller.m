@@ -249,5 +249,9 @@ void AppleSpeller_misspelledWord(AppleSpeller speller, int index, int * start, i
 
 int AppleSpeller_hasLanguage(AppleSpeller speller, const char * lang)
 {
+#if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 1050)
 	return toLanguage(speller, lang) != nil;
+#else
+	return true;
+#endif
 }
