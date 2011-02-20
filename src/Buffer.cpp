@@ -2437,6 +2437,8 @@ bool Buffer::isExternallyModified(CheckMethod method) const
 void Buffer::saveCheckSum() const
 {
 	FileName const & file = d->filename;
+
+	file.refresh();
 	if (file.exists()) {
 		d->timestamp_ = file.lastModified();
 		d->checksum_ = file.checksum();
