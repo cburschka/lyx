@@ -12,10 +12,13 @@
 
 
 Format 33
+
 Columns                 1
 Sides                   2
 PageStyle               Headers
 
+Provides amsmath         1
+Provides makeidx         1
 
 ClassOptions
 	FontSize   8|9|10|11|12
@@ -26,15 +29,15 @@ DefaultModule eqs-within-sections
 DefaultModule figs-within-sections
 
 Style Standard
-	Category              MainText
-	Margin                Static
-	LatexType             Paragraph
-	LatexName             dummy
-	ParIndent             MM
-	ParSkip               0.4
-	Align                 Block
-	AlignPossible         Block, Left, Right, Center
-	LabelType             No_Label
+	Category       MainText
+	Margin         Static
+	LatexType      Paragraph
+	LatexName      dummy
+	ParIndent      MM
+	ParSkip        0.4
+	Align          Block
+	AlignPossible  Block, Left, Right, Center
+	LabelType      No_Label
 End
 
 
@@ -49,10 +52,10 @@ Input numreport.inc
 
 
 Style Section
-	Align                 Center
+	Align          Center
 	Font
-	  Series              Bold
-	  Size                Large
+	  Series       Bold
+	  Size         Large
 	EndFont
 	TocLevel 1
 End
@@ -60,8 +63,8 @@ End
 
 Style Subsection
 	Font
-	  Series              Bold
-	  Size                Normal
+	  Series       Bold
+	  Size         Normal
 	EndFont
 	TocLevel 2
 End
@@ -69,37 +72,35 @@ End
 
 Style Subsubsection
 	Font
-	  Shape               Italic
-	  Size                Normal
+	  Shape        Italic
+	  Size         Normal
 	EndFont
 	TocLevel 3
 End
 
-
 Input stdstarsections.inc
 
-
 Style Section*
-	Align                 Center
+	Align          Center
 	Font
-	  Series              Bold
-	  Size                Large
+	  Series       Bold
+	  Size         Large
 	EndFont
 End
 
 
 Style Subsection*
 	Font
-	  Series              Bold
-	  Size                Normal
+	  Series       Bold
+	  Size         Normal
 	EndFont
 End
 
 
 Style Subsubsection*
 	Font
-	  Shape               Italic
-	  Size                Normal
+	  Shape        Italic
+	  Size         Normal
 	EndFont
 End
 
@@ -125,7 +126,7 @@ NoStyle Verse
 
 Style Paragraph
 	Font
-	  Series Medium
+	  Series       Medium
 	EndFont
 	TocLevel 4
 End

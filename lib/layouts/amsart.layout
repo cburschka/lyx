@@ -11,10 +11,13 @@
 # Moved "number within sections" to modules Aug '09 (Paul Rubin <rubin@msu.edu>)
 
 Format 33
+
 Columns                 1
 Sides                   2
 PageStyle               Headers
 
+Provides amsmath         1
+Provides makeidx         1
 
 ClassOptions
 	FontSize   8|9|10|11|12
@@ -25,15 +28,15 @@ DefaultModule eqs-within-sections
 DefaultModule figs-within-sections
 
 Style Standard
-	Category              MainText
-	Margin                Static
-	LatexType             Paragraph
-	LatexName             dummy
-	ParIndent             MM
-	ParSkip               0.4
-	Align                 Block
-	AlignPossible         Block, Left, Right, Center
-	LabelType             No_Label
+	Category      MainText
+	Margin        Static
+	LatexType     Paragraph
+	LatexName     dummy
+	ParIndent     MM
+	ParSkip       0.4
+	Align         Block
+	AlignPossible Block, Left, Right, Center
+	LabelType     No_Label
 End
 
 Input stdfloats.inc
@@ -46,68 +49,65 @@ Input stdlayouts.inc
 Input stdlists.inc
 Input amsdefs.inc
 
-NoStyle                 Chapter
-NoCounter                 chapter
-NoStyle                 Paragraph
-NoCounter                 paragraph
-NoStyle                 Subparagraph
-NoCounter                 subparagraph
-NoStyle                 Chapter*
-#NoStyle                Paragraph*
-#NoStyle                Subparagraph*
-
+NoStyle         Chapter
+NoCounter       chapter
+NoStyle         Paragraph
+NoCounter       paragraph
+NoStyle         Subparagraph
+NoCounter       subparagraph
+NoStyle         Chapter*
 NoStyle Verse    # Although mathematicians tend to be poets at times,
                  # we don't need this.
 
 
 Style Section
-	Align                 Center
+	Align        Center
 	Font
-	  Series              Medium
-	  Shape               Smallcaps
-	  Size                Normal
+	  Series     Medium
+	  Shape      Smallcaps
+	  Size       Normal
 	EndFont
 	TocLevel 1
 End
 
 
 Style Section*
-	Align                 Center
+	Align        Center
 	Font
-	  Series              Medium
-	  Shape               Smallcaps
-	  Size                Large
+	  Series     Medium
+	  Shape      Smallcaps
+	  Size       Large
 	EndFont
 End
 
 
 Style SpecialSection
-	CopyStyle	      Section
-	LatexName	      specialsection
+	CopyStyle   Section
+	LatexName   specialsection
 	Font
-	  Shape               Up
+	  Shape      Up
 	EndFont
 End
 
 
 Style SpecialSection*
-	CopyStyle	      SpecialSection
-	Category              Unnumbered
-	LatexName	      specialsection*
-	Margin                Static
-	LabelType             No_Label
-	LabelCounter	      ""	
-	OptionalArgs          0
+	CopyStyle    SpecialSection
+	Category     Unnumbered
+	LatexName    specialsection*
+	Margin       Static
+	LabelType    No_Label
+	LabelCounter ""
+	OptionalArgs 0
 End
 
 
 Style Subsection
 	Font
-	  Series              Bold
-	  Size                Normal
+	  Series     Bold
+	  Size       Normal
 	EndFont
 	LabelFont
-	  Series	      Medium
+	  Series     Medium
 	EndFont
 	TocLevel 2
 End
@@ -115,20 +115,20 @@ End
 
 Style Subsection*
 	Font
-	  Series              Bold
-	  Size                Normal
+	  Series     Bold
+	  Size       Normal
 	EndFont
 	LabelFont
-	  Series	      Medium
+	  Series     Medium
 	EndFont
 End
 
 
 Style Subsubsection
 	Font
-	  Shape               Italic
-	  Series	      Medium
-	  Size                Normal
+	  Shape      Italic
+	  Series     Medium
+	  Size       Normal
 	EndFont
 	TocLevel 3
 End
@@ -136,8 +136,8 @@ End
 
 Style Subsubsection*
 	Font
-	  Shape               Italic
-	  Series	      Medium
-	  Size                Normal
+	  Shape      Italic
+	  Series     Medium
+	  Size       Normal
 	EndFont
 End

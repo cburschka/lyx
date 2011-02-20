@@ -7,12 +7,6 @@
 # Including the maths stuff
 Format 33
 
-# The AMS documentclasses use the package amsmath and provide the
-# functionality of makeidx.sty.
-Provides amsmath         1
-Provides makeidx         1
-
-
 # the environments copied from the old amsart.layout are:
 # - Bibliography
 # - Title
