@@ -104,8 +104,10 @@ private:
 	int const yo_;    // current baseline
 	double x_;
 	int width_;
-	float line_thickness_;
-	int line_offset_;
+	float solid_line_thickness_;
+	int solid_line_offset_;
+	float dotted_line_thickness_;
+	int dotted_line_offset_;
 };
 
 } // namespace lyx
