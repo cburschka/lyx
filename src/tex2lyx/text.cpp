@@ -425,7 +425,10 @@ docstring convert_unicodesymbols(docstring s)
 				Encodings::TEXT_CMD);
 		os << parsed;
 		s = rem;
-		i = 0;
+		if (s.empty() || s[0] != '\\')
+			i = 0;
+		else
+			i = 1;
 	}
 	return os.str();
 }
