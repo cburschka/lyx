@@ -72,7 +72,11 @@ NSMutableDictionary* LinkBackServers = nil ;
 BOOL LinkBackServerIsSupported(NSString* name, id supportedServers)
 {
 	BOOL ret = NO ;
+#if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 1050)
 	NSUInteger idx ;
+#else
+	int idx ;
+#endif
 	NSString* curServer = supportedServers ;
 	
 	// NOTE: supportedServers may be nil, an NSArray, or NSString.
@@ -94,12 +98,13 @@ NSString* FindLinkBackServer(NSString* bundleIdentifier, NSString* serverName, N
 	NSString* ret = nil ;
 
 	NSFileManager* fm = [NSFileManager defaultManager] ;
-#if defined(__GNUC__) && (__GNUC__ == 4 && __GNUC_MINOR__ >= 2)
+#if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 1050)
 	NSArray* contents = [fm contentsOfDirectoryAtPath: dir error: nil] ;
+	NSUInteger idx ;
 #else
 	NSArray* contents = [fm directoryContentsAtPath: dir] ;
+	int idx ;
 #endif
-	NSUInteger idx ;
 	
 	// working info
 	NSString* cpath ;

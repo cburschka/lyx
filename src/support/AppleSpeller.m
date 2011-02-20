@@ -115,7 +115,11 @@ SpellCheckResult AppleSpeller_check(AppleSpeller speller, const char * word, con
 					result = SPELL_CHECK_LEARNED;
 			}
 		} else {
+#if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 1050)
 			NSUInteger capacity = [speller->misspelled count] + 1;
+#else
+			int capacity = [speller->misspelled count] + 1;
+#endif
 			NSMutableArray * misspelled = [NSMutableArray arrayWithCapacity:capacity];
 			[misspelled addObjectsFromArray:speller->misspelled];
 			[misspelled addObject:[NSValue valueWithRange:match]];
@@ -233,7 +237,11 @@ int AppleSpeller_numMisspelledWords(AppleSpeller speller)
 
 void AppleSpeller_misspelledWord(AppleSpeller speller, int index, int * start, int * length)
 {
+#if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 1050)
 	NSRange range = [[speller->misspelled objectAtIndex:(NSUInteger)index] rangeValue];
+#else
+	NSRange range = [[speller->misspelled objectAtIndex:index] rangeValue];
+#endif
 	*start = range.location;
 	*length = range.length;
 }
