@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 410
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass scrbook
@@ -68,6 +68,7 @@ EndPreamble
 End
 \end_local_layout
 \language english
+\language_package default
 \inputencoding latin1
 \fontencoding global
 \font_roman default
@@ -129,6 +130,7 @@ End
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict true
 \end_header
 
@@ -5085,7 +5087,7 @@ lyxpipe"
 
 \end_inset
 
- on Windows.
+ on Windows (but any working path can be used).
  You 
 \emph on
 must
