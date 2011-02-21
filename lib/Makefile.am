@@ -1309,6 +1309,11 @@ dist_tex_DATA = \
 	tex/lyxskak.sty \
 	tex/revtex.cls
 
+# subscript.sty is not in dist_tex_DATA since we don't want to install it
+# (it is part of TeXLive). We include it in our source package only so that
+# packagers may decide to install it (e.g. for MikTeX).
+dist_noinst_DATA += tex/subscript.sty
+
 uidir = $(pkgdatadir)/ui
 dist_ui_DATA = \
 	ui/classic.ui \
