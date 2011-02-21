@@ -8,7 +8,7 @@
 # ==================================================================
 
 #
-# This is the Mac flavour bind file for LyX/Mac 1.6.x, based on
+# This is the Mac flavour bind file for LyX/Mac 2.0.x, based on
 # bindings found in the Mac world.
 #
 # DO NOT CHANGE THIS DEFAULT BINDING FILE! It will be replaced
@@ -36,12 +36,14 @@ Format 1
 \bind "C-s"				"buffer-write"
 \bind "C-S-S"			"buffer-write-as"
 \bind "C-p"				"dialog-show print"
+\bind "C-r"				"buffer-view"
 \bind "C-d"				"buffer-view dvi"	# 'd' for dvi
 \bind "C-t"				"buffer-view pdf"
 \bind "C-M-t"			"master-buffer-view pdf"
 \bind "C-M-d"			"master-buffer-view dvi"
 \bind "C-S-D"			"buffer-update dvi"	# 'd' for dvi
 \bind "C-S-T"			"buffer-update pdf"    # (pdflatex; was "ps")
+\bind "C-S-R"			"buffer-update"
 \bind "C-M-S-T"			"master-buffer-update pdf"
 \bind "C-M-S-D"			"master-buffer-update dvi"
 \bind "C-q"				"lyx-quit"
@@ -59,7 +61,6 @@ Format 1
 
 \bind "C-m"				"math-mode"
 \bind "C-S-M"			"math-display"
-\bind "C-S-r"			"regexp-mode"
 \bind "C-M-n"			"command-sequence math-display; math-number-toggle;"
 
 \bind "C-f"				"dialog-show findreplace"
