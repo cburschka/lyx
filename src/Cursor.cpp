@@ -402,7 +402,7 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 		bool badcursor = notifyCursorLeavesOrEnters(old, *this);
 		if (badcursor) {
 			fixIfBroken();
-			bv().fixInlineCompletionPos();
+			bv().resetInlineCompletionPos();
 		}
 		old.endUndoGroup();
 	}
