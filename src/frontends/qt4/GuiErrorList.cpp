@@ -183,7 +183,7 @@ bool GuiErrorList::goTo(int item)
 	BufferView * bv = const_cast<BufferView *>(bufferview());
 	// FIXME LFUN
 	// If we used an LFUN, we would not need these lines:
-	bv->putSelectionAt(dit, max(range, 1), false);
+	bv->putSelectionAt(dit, max(range, pos_type(1)), false);
 	bv->processUpdateFlags(Update::Force | Update::FitCursor);
 	return true;
 }
