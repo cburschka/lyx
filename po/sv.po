@@ -4,7 +4,7 @@
 # Joacim Persson <sp2joap@ida.his.se> 1997, 1998.
 # Jim Rotmalm <jim.rotmalm@gmail.com>, 2010, 2011.
 #
-# Status 2011-02-12:
+# Status 2011-02-21:
 #   ~100% "acceptably done".
 #   ~269 shortcuts are not done.
 #   Improvements? Please tell me.
@@ -216,7 +216,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-02-12 23:16+0100\n"
-"PO-Revision-Date: 2011-02-12 21:12+0100\n"
+"PO-Revision-Date: 2011-02-21 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
 "Language: sv\n"
@@ -934,7 +934,7 @@ msgstr "S&pråk:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:161
 msgid "&Series:"
-msgstr "&Serier:"
+msgstr "&Serie:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:177
 msgid "&Color:"
@@ -3490,7 +3490,7 @@ msgstr "Ko&piator:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:165
 msgid "Specify the default output format when using (PDF)LaTeX"
-msgstr "Specificera standard utmatningsformat vid användning av (PDF)LaTeX"
+msgstr "Specificera standardformat för utmatning vid användning av (PDF)LaTeX"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:168
 msgid "Default Format"
@@ -3618,7 +3618,7 @@ msgstr "LaTeX-kommandot som avslutar en växling till ett främmande språk"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:134
 msgid "Default Decimal &Point:"
-msgstr "Standard decimaltecken:"
+msgstr "Standarddecimaltecken:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:160
 msgid ""
@@ -3704,7 +3704,7 @@ msgstr "Använd LaTe&X teckensnittskodning:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:41
 msgid "Default paper si&ze:"
-msgstr "Standard pappersstorlek:"
+msgstr "Standardpappersstorlek:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:57
 #: src/frontends/qt4/GuiDocument.cpp:847
@@ -4843,7 +4843,7 @@ msgstr "Fo&rmell"
 
 #: src/frontends/qt4/ui/TabularUi.ui:985
 msgid "Use default (grid-like) border style"
-msgstr "Använd standard (rutnätsliknande) kantstil"
+msgstr "Använd standardkantstil (rutnätsliknande)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:988
 msgid "De&fault"
@@ -9001,11 +9001,11 @@ msgstr "[Bildinnehåll]"
 
 #: lib/layouts/seminar.layout:87
 msgid "ProgressContents"
-msgstr "Framstegsinnehåll"
+msgstr "Förloppsinnehåll"
 
 #: lib/layouts/seminar.layout:90
 msgid "[Progress Contents]"
-msgstr "[Framstegsinnehåll]"
+msgstr "[Förloppsinnehåll]"
 
 #: lib/layouts/siamltex.layout:107 lib/layouts/theorems-order.inc:34
 #: lib/layouts/theorems-starred.inc:114
@@ -9732,23 +9732,23 @@ msgstr "\\alph{paragraph}."
 
 #: lib/layouts/scrclass.inc:110
 msgid "Addpart"
-msgstr "Del"
+msgstr "Extradel"
 
 #: lib/layouts/scrclass.inc:117
 msgid "Addchap"
-msgstr "Kapitel"
+msgstr "Extrakapitel"
 
 #: lib/layouts/scrclass.inc:124
 msgid "Addsec"
-msgstr "Avsnitt"
+msgstr "Extraavsnitt"
 
 #: lib/layouts/scrclass.inc:131
 msgid "Addchap*"
-msgstr "Kapitel*"
+msgstr "Extrakapitel*"
 
 #: lib/layouts/scrclass.inc:137
 msgid "Addsec*"
-msgstr "Avsnitt*"
+msgstr "Extraavsnitt*"
 
 #: lib/layouts/scrclass.inc:143
 msgid "Minisec"
@@ -16823,7 +16823,7 @@ msgstr "Okänd dokumentklass"
 #: src/Buffer.cpp:723
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
-msgstr "Använder standard dokumentklass, eftersom klassen %1$s är okänd."
+msgstr "Använder standarddokumentklass, eftersom klassen %1$s är okänd."
 
 #: src/Buffer.cpp:727 src/Text.cpp:477
 #, c-format
@@ -17366,9 +17366,9 @@ msgid ""
 msgstr ""
 "Utformningsfilen:\n"
 "%1$s\n"
-"kunde inte hittas. En standard textklass med standard\n"
-"utformningar kommer användas. LyX kommer inte att kunna\n"
-"producera korrekt utmatning."
+"kunde inte hittas. En standardtextklass med\n"
+"standardutformningar kommer att användas.\n"
+"LyX kommer inte att kunna producera korrekt utmatning."
 
 #: src/BufferParams.cpp:2017
 msgid "Document class not found"
@@ -17385,9 +17385,9 @@ msgid ""
 msgstr ""
 "På grund av något fel i den, kunde utformningsfilen:\n"
 "%1$s\n"
-"inte laddas. En standard textklass med standard\n"
-"utformningar kommer användas. LyX kommer inte att\n"
-"kunna producera korrekt utmatning."
+"inte laddas. En standardtextklass med\n"
+"standardutformningar kommer att användas.\n"
+"LyX kommer inte att kunna producera korrekt utmatning."
 
 #: src/BufferParams.cpp:2030 src/BufferView.cpp:1263 src/BufferView.cpp:1295
 msgid "Could not load class"
@@ -18243,7 +18243,7 @@ msgid ""
 "Unable to find the default bind file `cua.bind'.\n"
 "Please check your installation."
 msgstr ""
-"Kan inte hitta standard bindfil `cua.bind'.\n"
+"Kan inte hitta standardbindfil `cua.bind'.\n"
 "Vänligen kontrollera din installation."
 
 #: src/KeyMap.cpp:236
@@ -18699,7 +18699,7 @@ msgstr "Nya dokument kommer att tilldelas detta språk."
 
 #: src/LyXRC.cpp:3096
 msgid "Specify the default paper size."
-msgstr "Specificera standard för pappersstorlek"
+msgstr "Specificera standardpappersstorlek."
 
 #: src/LyXRC.cpp:3100
 msgid ""
@@ -18718,7 +18718,7 @@ msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
 msgstr ""
-"Standardsökväg för dina dokument. Ett tomt värde väljer katalogen som LyX "
+"Standardsökvägen för dina dokument. Ett tomt värde väljer katalogen som LyX "
 "startade från."
 
 #: src/LyXRC.cpp:3112
@@ -18910,12 +18910,12 @@ msgid ""
 "variable. Use the OS native format."
 msgstr ""
 "Specificera de kataloger som bör föregå PATH-miljövariabeln. Använd "
-"operativsystemets standard."
+"operativsystemets standardformat."
 
 #: src/LyXRC.cpp:3252
 msgid "Shows a typeset preview of things such as math"
 msgstr ""
-"Visar en förhandsgranskning av typsättning för sådana saker som matematik"
+"Visar en typsättningsförhandsgranskning för sådana saker som matematik"
 
 #: src/LyXRC.cpp:3256
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
@@ -21600,7 +21600,7 @@ msgstr "<Alla index>"
 
 #: src/frontends/qt4/GuiProgressView.cpp:52
 msgid "Progress/Debug Messages"
-msgstr "Framstegs- och avlusningsmeddelanden"
+msgstr "Förlopps- och avlusningsmeddelanden"
 
 #: src/frontends/qt4/GuiProgressView.cpp:82
 msgid "Debug Level"
