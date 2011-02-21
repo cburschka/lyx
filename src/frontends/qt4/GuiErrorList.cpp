@@ -178,11 +178,12 @@ bool GuiErrorList::goTo(int item)
 	pos_type const end = err.pos_end ? min(err.pos_end, s) : s;
 	pos_type const start = min(err.pos_start, end);
 	pos_type const range = end == start ? s - start : end - start;
-	dit.pos() = start;
+	// end-of-paragraph cannot be highlighted, so highlight the last thing
+	dit.pos() = range ? start : end - 1;
 	BufferView * bv = const_cast<BufferView *>(bufferview());
 	// FIXME LFUN
 	// If we used an LFUN, we would not need these lines:
-	bv->putSelectionAt(dit, range, false);
+	bv->putSelectionAt(dit, max(range, 1), false);
 	bv->processUpdateFlags(Update::Force | Update::FitCursor);
 	return true;
 }
