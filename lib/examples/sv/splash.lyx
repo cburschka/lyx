@@ -1,0 +1,192 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options false
+\maintain_unincluded_children false
+\language swedish
+\language_package default
+\inputencoding default
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 0
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language swedish
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Välkommen till LyX!
+\end_layout
+
+\begin_layout Section*
+Topp N saker att veta när man använder LyX
+\end_layout
+
+\begin_layout Enumerate
+LyX levereras med utmärkt
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+De svenska översättningarna kan vara en aning utdaterade, så om du vill
+ läsa dem på engelska, eller kanske något annat språk, behöver du ändra
+ användargränssnittets språk under Verktyg\SpecialChar \menuseparator
+Inställningar\SpecialChar \menuseparator
+Språkinställningar\SpecialChar \menuseparator
+Språk.
+ 
+\emph on
+(ö.anm.)
+\end_layout
+
+\end_inset
+
+ dokumentation — vänligen använd den! Börja med
+ 
+\family sans
+Hjälp\SpecialChar \menuseparator
+Introduktion
+\family default
+, som ger dig en väldigt kortfattad introduktion till dokumentationen.
+ Lär dig sedan om hur man använder LyX med 
+\family sans
+Hjälp\SpecialChar \menuseparator
+Nybörjarkurs
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+LyX är vad vi kallar en 
+\begin_inset Quotes eld
+\end_inset
+
+dokumentbehandlare
+\begin_inset Quotes erd
+\end_inset
+.
+ LyX är avsiktligt annorlunda från vanliga ordbehandlare — på ett sätt som
+ gör det lättare att skriva dokument.
+ Men bara lite annorlunda, så bli inte skrämd.
+ Dokumentationen klargör allt.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Har vi nämnt att du bör läsa dokumentationen?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Utmatningen från LyX ser fantastisk ut! Välj 
+\family sans
+Visa\SpecialChar \menuseparator
+Visa [PDF (pdflatex)]
+\family default
+ nu för att se det själv.
+\end_layout
+
+\begin_layout Enumerate
+Ja, LyX kan härma (nästan) all LaTeX-funktionalitet.
+ Och ja, LyX kan importera LaTeX-filer.
+ Erfarna LaTeX-användare bör skumma igenom resten av 
+\emph on
+Nybörjarkursen
+\emph default
+, och sedan läsa kapitlet  
+\begin_inset Quotes eld
+\end_inset
+
+LyX för LaTeX-användare
+\begin_inset Quotes erd
+\end_inset
+.
+ (Alla andra: oroa er inte, ni behöver inte kunna LaTeX för att använda LyX.) 
+\end_layout
+
+\begin_layout Enumerate
+LyX har massor av funktioner för oss som läser och skriver ett annat språk än
+ engelska.
+ Utöver det är tangentbindningarna, verktygsraderna, och många andra egenskaper
+ högst konfigurerbara.
+ Se 
+\family sans
+Hjälp\SpecialChar \menuseparator
+Anpassning
+\family default
+ för detaljer.
+\end_layout
+
+\begin_layout Enumerate
+Hemsidan för LyX är 
+\family typewriter
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/
+\end_layout
+
+\end_inset
+
+
+\family default
+.
+ Hämta information om LyX, prenumerera på sändlistor, ta den
+ grafiska rundturen, och mer.
+\end_layout
+
+\end_body
+\end_document
