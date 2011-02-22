@@ -1783,7 +1783,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				bool badcursor = notifyCursorLeaves(old, view()->cursor());
 				if (badcursor) {
 					view()->cursor().fixIfBroken();
-					view()->fixInlineCompletionPos();
+					view()->resetInlineCompletionPos();
 				}
 			}
 

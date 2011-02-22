@@ -2535,9 +2535,9 @@ DocIterator const & BufferView::inlineCompletionPos() const
 }
 
 
-bool BufferView::fixInlineCompletionPos()
+void BufferView::resetInlineCompletionPos()
 {
-	return d->inlineCompletionPos_.fixIfBroken();
+	d->inlineCompletionPos_ = DocIterator();
 }
 
 
