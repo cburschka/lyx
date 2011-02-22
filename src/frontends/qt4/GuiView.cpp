@@ -212,7 +212,7 @@ struct GuiView::GuiViewPrivate
 		in_show_(false)
 	{
 		// hardcode here the platform specific icon size
-		smallIconSize = 14;  // scaling problems
+		smallIconSize = 16;  // scaling problems
 		normalIconSize = 22; // ok, default
 		bigIconSize = 26;	// better for some math icons
 
