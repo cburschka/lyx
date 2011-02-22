@@ -63,8 +63,10 @@ private:
 	docstring name() const;
 	///
 	DisplayType display() const;
-	///
-	bool noFontChange() const { return params_.type != InsetNoteParams::Note; }
+	/** returns false if, when outputing LaTeX, font changes should
+	    be closed before generating this inset. This is needed for
+	    insets that may contain several paragraphs */
+	bool inheritFont() const { return params_.type == InsetNoteParams::Note; }
 	/// Is the content of this inset part of the output document?
 	bool producesOutput() const
 		{ return params_.type == InsetNoteParams::Greyedout; }

@@ -56,6 +56,14 @@ InsetLayout const & InsetFlex::getLayout() const
 }
 
 
+bool InsetFlex::resetFontEdit() const
+{
+	if (getLayout().resetsFont())
+		return true;
+	return InsetCollapsable::resetFontEdit();
+}
+
+
 InsetLayout::InsetDecoration InsetFlex::decoration() const
 {
 	InsetLayout::InsetDecoration const dec = getLayout().decoration();

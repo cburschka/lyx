@@ -1091,7 +1091,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 	// ArabTeX, though, cannot handle this special behavior, it seems.
 	bool arabtex = basefont.language()->lang() == "arabic_arabtex"
 		|| running_font.language()->lang() == "arabic_arabtex";
-	if (open_font && inset->noFontChange()) {
+	if (open_font && !inset->inheritFont()) {
 		bool closeLanguage = arabtex
 			|| basefont.isRightToLeft() == running_font.isRightToLeft();
 		unsigned int count = running_font.latexWriteEndChanges(os,

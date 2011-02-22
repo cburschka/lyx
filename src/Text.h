@@ -66,11 +66,9 @@ public:
 		Font const & font, Font const & display_font);
 
 	/** Needed to propagate font changes to all text cells of insets
-	 *  that are not allowed inside a font change (bug 1973).
+	 *  that are not allowed inside a font change (bugs 1973, 6919).
 	 *  Must not be called if \p pos denotes an ordinary character or an
 	 *  inset that is alowed inside a font change.
-	 *  FIXME: This should be removed, see documentation of noFontChange
-	 *  in insetbase.h
 	 */
 	void setInsetFont(BufferView const & bv, pit_type pit, pos_type pos,
 		Font const & font, bool toggleall = false);

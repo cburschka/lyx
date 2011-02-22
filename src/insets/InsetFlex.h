@@ -30,12 +30,14 @@ public:
 	InsetLayout const & getLayout() const;
 	///
 	InsetCode lyxCode() const { return FLEX_CODE; }
+	///
+	bool resetFontEdit() const;
 	/// Default looks
 	InsetLayout::InsetDecoration decoration() const;
 	///
 	void write(std::ostream &) const;
 	/// should paragraph indendation be ommitted in any case?
-	bool neverIndent() const { return true; }	
+	bool neverIndent() const { return true; }
 	///
 	bool hasSettings() const { return false; }
 	///

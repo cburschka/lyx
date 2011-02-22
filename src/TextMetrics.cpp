@@ -396,8 +396,6 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	}
 
 	// redo insets
-	// FIXME: We should always use getFont(), see documentation of
-	// noFontChange() in Inset.h.
 	Font const bufferfont = buffer.params().getFont();
 	InsetList::const_iterator ii = par.insetList().begin();
 	InsetList::const_iterator iend = par.insetList().end();
@@ -418,8 +416,8 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		Dimension dim;
 		int const w = max_width_ - leftMargin(max_width_, pit, ii->pos)
 			- right_margin;
-		Font const & font = ii->inset->noFontChange() ?
-			bufferfont : displayFont(pit, ii->pos);
+		Font const & font = ii->inset->inheritFont() ?
+			displayFont(pit, ii->pos) : bufferfont;
 		MacroContext mc(&buffer, parPos);
 		MetricsInfo mi(bv_, font.fontInfo(), w, mc);
 		ii->inset->metrics(mi, dim);

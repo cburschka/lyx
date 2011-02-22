@@ -167,7 +167,7 @@ void Text::setInsetFont(BufferView const & bv, pit_type pit,
 		pos_type pos, Font const & font, bool toggleall)
 {
 	Inset * const inset = pars_[pit].getInset(pos);
-	LASSERT(inset && inset->noFontChange(), /**/);
+	LASSERT(inset && inset->resetFontEdit(), /**/);
 
 	CursorSlice::idx_type endidx = inset->nargs();
 	for (CursorSlice cs(*inset); cs.idx() != endidx; ++cs.idx()) {
@@ -345,11 +345,9 @@ void Text::setFont(BufferView const & bv, CursorSlice const & begin,
 		pit_type const pit = dit.pit();
 		pos_type const pos = dit.pos();
 		Inset * inset = pars_[pit].getInset(pos);
-		if (inset && inset->noFontChange()) {
+		if (inset && inset->resetFontEdit()) {
 			// We need to propagate the font change to all
-			// text cells of the inset (bug 1973).
-			// FIXME: This should change, see documentation
-			// of noFontChange in Inset.h
+			// text cells of the inset (bugs 1973, 6919).
 			setInsetFont(bv, pit, pos, font, toggleall);
 		}
 		TextMetrics const & tm = bv.textMetrics(this);

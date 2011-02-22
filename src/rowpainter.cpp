@@ -125,11 +125,8 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 	// requires a full repaint
 	bool pi_full_repaint = pi_.full_repaint;
 
-	// FIXME: We should always use font, see documentation of
-	// noFontChange() in Inset.h.
-	pi_.base.font = inset->noFontChange() ?
-		pi_.base.bv->buffer().params().getFont().fontInfo() :
-		font.fontInfo();
+	pi_.base.font = inset->inheritFont() ? font.fontInfo() :
+		pi_.base.bv->buffer().params().getFont().fontInfo();
 	pi_.ltr_pos = (bidi_.level(pos) % 2 == 0);
 	pi_.change_ = change_.changed() ? change_ : par_.lookupChange(pos);
 
