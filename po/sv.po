@@ -4,7 +4,7 @@
 # Joacim Persson <sp2joap@ida.his.se> 1997, 1998.
 # Jim Rotmalm <jim.rotmalm@gmail.com>, 2010, 2011.
 #
-# Status 2011-02-12:
+# Status 2011-02-21:
 #   ~100% "acceptably done".
 #   ~234 shortcuts are not done.
 #   Improvements? Please tell me.
@@ -216,7 +216,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.10\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-02-05 09:13+0100\n"
-"PO-Revision-Date: 2011-02-12 21:12+0100\n"
+"PO-Revision-Date: 2011-02-21 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -852,7 +852,7 @@ msgstr "S&pråk:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:161
 msgid "&Series:"
-msgstr "&Serier:"
+msgstr "&Serie:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:177
 msgid "&Color:"
@@ -2939,7 +2939,7 @@ msgstr "Te&X-kodning:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:141
 msgid "Default paper si&ze:"
-msgstr "Standard pappersstorlek:"
+msgstr "Standardpappersstorlek:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:151
 msgid "BibTeX command and options"
@@ -3821,7 +3821,7 @@ msgstr "Fo&rmell"
 
 #: src/frontends/qt4/ui/TabularUi.ui:323
 msgid "Use default (grid-like) border style"
-msgstr "Använd standard (rutnätsliknande) kantstil"
+msgstr "Använd standardkantstil (rutnätsliknande)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:326
 msgid "De&fault"
@@ -7907,11 +7907,11 @@ msgstr "[Bildinnehåll]"
 
 #: lib/layouts/seminar.layout:87
 msgid "ProgressContents"
-msgstr "Framstegsinnehåll"
+msgstr "Förloppsinnehåll"
 
 #: lib/layouts/seminar.layout:90
 msgid "[Progress Contents]"
-msgstr "[Framstegsinnehåll]"
+msgstr "[Förloppsinnehåll]"
 
 #: lib/layouts/siamltex.layout:107 lib/layouts/theorems-order.inc:34
 #: lib/layouts/theorems-starred.inc:93
@@ -8823,23 +8823,23 @@ msgstr "\\alph{paragraph}."
 
 #: lib/layouts/scrclass.inc:99
 msgid "Addpart"
-msgstr "Del"
+msgstr "Extradel"
 
 #: lib/layouts/scrclass.inc:106
 msgid "Addchap"
-msgstr "Kapitel"
+msgstr "Extrakapitel"
 
 #: lib/layouts/scrclass.inc:113
 msgid "Addsec"
-msgstr "Avsnitt"
+msgstr "Extraavsnitt"
 
 #: lib/layouts/scrclass.inc:120
 msgid "Addchap*"
-msgstr "Kapitel*"
+msgstr "Extrakapitel*"
 
 #: lib/layouts/scrclass.inc:126
 msgid "Addsec*"
-msgstr "Avsnitt*"
+msgstr "Extraavsnitt*"
 
 #: lib/layouts/scrclass.inc:132
 msgid "Minisec"
@@ -15376,7 +15376,7 @@ msgstr "Okänd dokumentklass"
 #: src/Buffer.cpp:540
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
-msgstr "Använder standard dokumentklass, eftersom klassen %1$s är okänd."
+msgstr "Använder standarddokumentklass, eftersom klassen %1$s är okänd."
 
 #: src/Buffer.cpp:544 src/Text.cpp:241
 #, c-format
@@ -15817,9 +15817,10 @@ msgid ""
 "layouts will be used. LyX might not be able to produce output unless a "
 "correct textclass is selected from the document settings dialog."
 msgstr ""
-"Dokumentklassen %1$s kunde inte hittas. En standard textklass med standard "
-"utformningar kommer att användas. LyX kanske inte kan producera utmatning om "
-"inte en korrekt textklass är vald från dialogen för dokumentinställningar."
+"Dokumentklassen %1$s kunde inte hittas. En standardtextklass med "
+"standardutformningar kommer att användas. LyX kanske inte kan producera"
+"utmatning om inte en korrekt textklass är vald från dialogen för "
+"dokumentinställningar."
 
 #: src/BufferParams.cpp:1672
 msgid "Document class not found"
@@ -16767,8 +16768,8 @@ msgid ""
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
 msgstr ""
 "LyX kan inte fortsätta eftersom ingen textklass hittades. Du kan antingen "
-"omkonfigurera LyX normalt, eller omkonfigurera genom att använda standard "
-"textklasser, eller avsluta LyX."
+"omkonfigurera LyX normalt, eller omkonfigurera genom att använda "
+"standardtextklasser, eller avsluta LyX."
 
 #: src/LyX.cpp:504
 msgid "&Reconfigure"
@@ -16953,7 +16954,7 @@ msgid ""
 "Please reconfigure again if needed."
 msgstr ""
 "Systemets omkonfigurering misslyckades.\n"
-"Standard textklass används men LyX kanske inte fungerar som det ska.\n"
+"Standardtextklass används men LyX kanske inte fungerar som det ska.\n"
 "Vänligen omkonfigurera igen om det behövs."
 
 #: src/LyXFunc.cpp:137
@@ -17271,7 +17272,7 @@ msgstr "Nya dokument kommer att tilldelas detta språk."
 
 #: src/LyXRC.cpp:2615
 msgid "Specify the default paper size."
-msgstr "Specificera standard för pappersstorlek"
+msgstr "Specificera standardpappersstorlek."
 
 #: src/LyXRC.cpp:2619
 msgid ""
@@ -17290,7 +17291,7 @@ msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
 msgstr ""
-"Standardsökväg för dina dokument. Ett tomt värde väljer katalogen som LyX "
+"Standardsökvägen för dina dokument. Ett tomt värde väljer katalogen som LyX "
 "startade från."
 
 #: src/LyXRC.cpp:2632
@@ -17482,7 +17483,7 @@ msgid ""
 "variable. Use the OS native format."
 msgstr ""
 "Specificera de kataloger som bör föregå PATH-miljövariabeln. Använd "
-"operativsystemets standard."
+"operativsystemets standardformat."
 
 #: src/LyXRC.cpp:2773
 msgid ""
@@ -17493,7 +17494,7 @@ msgstr ""
 #: src/LyXRC.cpp:2777
 msgid "Shows a typeset preview of things such as math"
 msgstr ""
-"Visar en förhandsgranskning av typsättning för sådana saker som matematik"
+"Visar en typsättningsförhandsgranskning för sådana saker som matematik"
 
 #: src/LyXRC.cpp:2781
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
@@ -23800,7 +23801,7 @@ msgstr "Okänd användare"
 #~ msgstr "<Alla index>"
 
 #~ msgid "Progress/Debug Messages"
-#~ msgstr "Framstegs- och avlusningsmeddelanden"
+#~ msgstr "Förlopps- och avlusningsmeddelanden"
 
 #~ msgid "Debug Level"
 #~ msgstr "Avlusningsnivå"
