@@ -2161,6 +2161,7 @@ lib_tex_files = Split('''
     lyxchess.sty
     lyxskak.sty
     revtex.cls
+    subscript.sty
 ''')
 
 
