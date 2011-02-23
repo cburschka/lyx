@@ -45,8 +45,15 @@ string const KeyMap::printKeySym(KeySymbol const & key, KeyModifier mod)
 
 	if (mod & ControlModifier)
 		buf += "C-";
+#if defined(USE_MACOSX_PACKAGING) || defined(USE_META_KEYBINDING)
+	if (mod & MetaModifier)
+		buf += "M-";
+	if (mod & AltModifier)
+		buf += "A-";
+#else
 	if (mod & AltModifier)
 		buf += "M-";
+#endif
 	if (mod & ShiftModifier)
 		buf += "S-";
 

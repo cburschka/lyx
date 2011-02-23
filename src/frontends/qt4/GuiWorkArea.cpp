@@ -1009,8 +1009,21 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 	}
 #endif
 
+	KeyModifier m = q_key_state(ev->modifiers());
+
+	std::string str;
+	if (m & ShiftModifier)
+		str += "Shift-";
+	if (m & ControlModifier)
+		str += "Control-";
+	if (m & AltModifier)
+		str += "Alt-";
+	if (m & MetaModifier)
+		str += "Meta-";
+	
 	LYXERR(Debug::KEY, " count: " << ev->count() << " text: " << ev->text()
-		<< " isAutoRepeat: " << ev->isAutoRepeat() << " key: " << ev->key());
+		<< " isAutoRepeat: " << ev->isAutoRepeat() << " key: " << ev->key()
+		<< " keyState: " << str);
 
 	KeySymbol sym;
 	setKeySymbol(&sym, ev);

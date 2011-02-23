@@ -70,6 +70,12 @@ size_t KeySequence::parse(string const & s)
 				i += 2;
 				continue;
 			case 'm': case 'M':
+#if defined(USE_MACOSX_PACKAGING) || defined(USE_META_KEYBINDING)
+				mod |= MetaModifier;
+				i += 2;
+				continue;
+#endif
+			case 'a': case 'A':
 				mod |= AltModifier;
 				i += 2;
 				continue;
@@ -88,6 +94,12 @@ size_t KeySequence::parse(string const & s)
 				i += 3;
 				continue;
 			case 'm': case 'M':
+#if defined(USE_MACOSX_PACKAGING) || defined(USE_META_KEYBINDING)
+				nmod |= MetaModifier;
+				i += 3;
+				continue;
+#endif
+			case 'a': case 'A':
 				nmod |= AltModifier;
 				i += 3;
 				continue;
@@ -141,6 +153,10 @@ docstring const KeySequence::print(outputFormat format) const
 			if (mod & ControlModifier)
 				buf += "C-";
 			if (mod & AltModifier)
+#if defined(USE_MACOSX_PACKAGING) || defined(USE_META_KEYBINDING)
+				buf += "A-";
+			if (mod & MetaModifier)
+#endif
 				buf += "M-";
 			if (mod & ShiftModifier)
 				buf += "S-";

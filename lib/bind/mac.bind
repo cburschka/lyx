@@ -20,7 +20,6 @@
 
 # Free bindings:
 
-#\bind "C-h"
 #\bind "C-j"
 #\bind "C-y"
 
@@ -29,204 +28,333 @@
 
 Format 1
 
-\bind "C-n"				"buffer-new"
-\bind "C-S-N"			"buffer-new-template"
-\bind "C-o"				"file-open"
-\bind "C-w"				"buffer-close"
-\bind "C-s"				"buffer-write"
-\bind "C-S-S"			"buffer-write-as"
-\bind "C-p"				"dialog-show print"
-\bind "C-r"				"buffer-view"
-\bind "C-d"				"buffer-view dvi"	# 'd' for dvi
-\bind "C-t"				"buffer-view pdf"
-\bind "C-M-t"			"master-buffer-view pdf"
-\bind "C-M-d"			"master-buffer-view dvi"
-\bind "C-S-D"			"buffer-update dvi"	# 'd' for dvi
-\bind "C-S-T"			"buffer-update pdf"    # (pdflatex; was "ps")
-\bind "C-S-R"			"buffer-update"
-\bind "C-M-S-T"			"master-buffer-update pdf"
-\bind "C-M-S-D"			"master-buffer-update dvi"
-\bind "C-q"				"lyx-quit"
-\bind "M-Tab" 			"buffer-next"
-\bind "M-S-BackTab"		"buffer-previous"
+# based on the table at http://support.apple.com/kb/HT1343
+# Note: these bindings assume the swapped Meta and Control modifiers standard of Qt
+# Command - C
+# Option  - A
+# Control - M
 
-\bind "C-M-b"			"font-boldsymbol"
-\bind "C-b"				"font-bold"
-\bind "C-e"				"font-emph"
-# used below for line-delete-forward
-#\bind "C-k"			"font-noun"		# 'k' for capitals
-\bind "C-u"				"font-underline"
-\bind "C-S-P"			"font-typewriter" # 'P' for Program
-\bind "C-S-O"			"font-strikeout"
+# Status: "Key combination"	       What it does
+#  +: "Command-Space"                # Show or hide the Spotlight search field (if multiple languages are installed, may rotate through enabled script systems)
+#  +: "Option-Command-Space"         # Show the Spotlight search results window (if multiple languages are installed, may rotate through keyboard layouts and input methods within a script)
+#  +: "Command-esc"                  # Open Front Row (if installed)
+#  +: "Option-Eject"                 # Eject from secondary optical media drive (if one is installed)
+#  +: "Control-Eject"                # Show shutdown dialog
+#  +: "Option-Command-Eject"         # Put the computer to sleep
+#  +: "Control-Command-Eject"        # Quit all applications (after giving you a chance to save changes to open documents), then restart the computer
+#  +: "Control Option-Command-Eject" # Quit all applications (after giving you a chance to save changes to open documents), then shut down the computer
+#  +: "Command-Tab"                  # Move forward to the next most recently used application in a list of open applications
+#  +: "Shift-Command-Tab"            # Move backward through a list of open applications (sorted by recent use)
+#  -: "Control-A"                    # Move to beginning of line/paragraph
+# used by menu.bind - paragraph-params
+#  +: "Control-B"                    # Move one character backward
+\bind "M-b"                          "char-backward"
+#  +: "Control-D"                    # Delete the character in front of the cursor
+\bind "M-d"                          "char-delete-forward"
+#  +: "Control-E"                    # Move to end of line/paragraph
+\bind "M-e"                          "line-end"
+#  +: "Control-F"                    # Move one character forward
+\bind "M-f"                          "char-forward"
+#  +: "Control-H"                    # Delete the character behind the cursor
+\bind "M-h"                          "char-delete-backward"
+#  -: "Control-K"                    # Delete from the character in front of the cursor to the end of the line/paragraph
+# used by menu.bind - keymap
+#  +: "Control-L"                    # Center the cursor/selection in the visible area
+\bind "M-l"                          "screen-recenter"
+\bind "F5"                           "screen-recenter"
+#  +: "Control-N"                    # Move down one line
+\bind "M-n"                          "down"
+#  +: "Control-O"                    # Insert a new line after the cursor
+\bind "M-o"                          "break-paragraph"
+#  -: "Control-P"                    # Move up one line
+# used by menu.bind - layouts
+#  -: "Control-T"                    # Transpose the character behind the cursor and the character in front of the cursor
+#  +: "Control-V"                    # Move down one page
+\bind "M-v"                          "scroll page up"
+#  -: "Shift-Tab"                    # Navigate through controls in a reverse direction
+#  +: "Control-Tab"                  # Move focus to the next grouping of controls in a dialog or the next table (when Tab moves to the next cell)
+\bind "M-Tab"                        "buffer-next"
+#  +: "Shift-Control-Tab"            # Move focus to the previous grouping of controls
+\bind "M-S-BackTab"                  "buffer-previous"
+#  +: "fn-Delete"                    # Forward Delete (on portable Macs' built-in keyboard)
+\bind "Delete"                       "char-delete-forward"
+#  ?: "Control-F1"                   # Toggle full keyboard access on or off
+#  +: "Control-F2"                   # Move focus to the menu bar
+#  +: "Control-F3"                   # Move focus to the Dock
+#  +: "Control-F4"                   # Move focus to the active (or next) window
+#  +: "Shift-Control-F4"             # Move focus to the previously active window
+#  -: "Control-F5"                   # Move focus to the toolbar.
+#  -: "Control-F6"                   # Move focus to the first (or next) panel
+#  -: "Shift-Control-F6"             # Move focus to the previous panel
+#  -: "Control-F7"                   # Temporarily override the current keyboard access mode in windows and dialogs
+#  -: "F9"                           # Tile or untile all open windows
+#  -: "F10"                          # Tile or untile all open windows in the currently active application
+#  +: "F11"                          # Hide or show all open windows
+#  +: "F12"                          # Hide or display Dashboard
+#  -: "Command-`"                    # Activate the next open window in the frontmost application
+#  -: "Shift-Command-`"              # Activate the previous open window in the frontmost application
+#  -: "Option-Command-`"             # Move focus to the window drawer
+#  +: "Command- - (minus)"           # Decrease the size of the selected item
+\bind "C-minus"                      "buffer-zoom-out"
+#  ?: "Shift-Command-="              # Increase the size of the selected item
+\bind "C-plus"                       "buffer-zoom-in"
+#  -: "Command-{"                    # Left-align a selection
+#  -: "Command-}"                    # Right-align a selection
+#  -: "Command-|"                    # Center-align a selection
+#  -: "Command-:"                    # Display the Spelling window
+#  +: "Command-;"                    # Find misspelled words in the document
+\bind "C-S-semicolon"                "dialog-show spellchecker"
+#  +: "Command-,"                    # Open the front application's preferences window (if it supports this keyboard shortcut)
+\bind "C-comma"                      "dialog-show prefs"
+#  +: "Option-Control-Command-,"     # Decrease screen contrast
+#  +: "Option-Control-Command-."     # Increase screen contrast
+#  -: "Command-?"                    # Open the application's help in Help Viewer
+#  -: "Option-Command-/"             # Turn font smoothing on or off
+#  +: "Shift-Command-3"              # Capture the screen to a file
+#  +: "Shift-Control-Command-3"      # Capture the screen to the Clipboard
+#  +: "Shift-Command-4"              # Capture a selection to a file
+#  +: "Shift-Control-Command-4"      # Capture a selection to the Clipboard
+#  +: "Command-A"                    # Highlight every item in a document or window, or all characters in a text field
+\bind "C-a"                          "command-sequence buffer-begin ; buffer-end-select"
+\bind "C-M-a"                        "inset-select-all"
+#  +: "Command-B"                    # Boldface the selected text or toggle boldfaced text on and off
+\bind "C-M-b"                        "font-boldsymbol"
+\bind "C-b"                          "font-bold"
+#  +: "Command-C"                    # Copy the selected data to the Clipboard
+\bind "C-c"                          "copy"
+#  -: "Shift-Command-C"              # Display the Colors window
+#  -: "Option-Command-C"             # Copy the style of the selected text
+#  -: "Control-Command-C"            # Copy the formatting settings of the selected item and store on the Clipboard
+#  +: "Option-Command-D"             # Show or hide the Dock
+#  -: "Command-Control D"            # Display the definition of the selected word in the Dictionary application
+\bind "C-d"                          "buffer-view dvi"	# 'd' for dvi
+\bind "C-M-d"                        "master-buffer-view dvi"
+\bind "C-S-D"                        "buffer-update dvi"	# 'd' for dvi
+#  -: "Command-E"                    # Use the selection for a find
+\bind "C-e"                          "font-emph"
+#  +: "Command-F"                    # Open a Find window
+\bind "C-f"                          "dialog-show findreplace"
+\bind "C-S-f"                        "dialog-show findreplaceadv"
+#  -: "Option-Command-F"             # Move to the search field control
+#  +: "Command-G"                    # Find the next occurrence of the selection
+\bind "C-g"                          "word-find-forward"
+#  +: "Shift-Command-G"              # Find the previous occurrence of the selection
+\bind "C-S-g"                        "word-find-backward"
+#  +: "Command-H"                    # Hide the windows of the currently running application
+#  +: "Option-Command-H"             # Hide the windows of all other running applications
+#  -: "Command-I"                    # Italicize the selected text or toggle italic text on or off
+\bind "C-i"                          "inset-toggle" # 'i' for Inset
+#  -: "Option-Command-I"             # Display an inspector window
+#  -: "Command-J"                    # Scroll to a selection
+\bind "C-k"                          "line-delete-forward"
+#  -: "Command-M"                    # Minimize the active window to the Dock
+#  -: "Option-Command-M"             # Minimize all windows of the active application to the Dock
+\bind "C-m"                          "math-mode"
+\bind "C-S-M"                        "math-display"
+\bind "C-M-n"                        "command-sequence math-display; math-number-toggle;"
+#  +: "Command-N"                    # Create a new document in the frontmost application
+\bind "C-n"                          "buffer-new"
+\bind "C-S-N"                        "buffer-new-template"
+#  +: "Command-O"                    # Display a dialog for choosing a document to open in the frontmost application
+\bind "C-o"                          "file-open"
+#  +: "Command-P"                    # Display the Print dialog
+\bind "C-p"                          "dialog-show print"
+#  -: "Shift-Command-P"              # Display a dialog for specifying printing parameters (Page Setup)
+\bind "C-S-P"                        "font-typewriter" # 'P' for Program
+#  +: "Command-Q"                    # Quit the frontmost application
+\bind "C-q"                          "lyx-quit"
+\bind "C-r"                          "buffer-view"
+#  +: "Command-S"                    # Save the active document
+\bind "C-s"                          "buffer-write"
+#  +: "Shift-Command-S"              # Display the Save As dialog
+\bind "C-S-S"                        "buffer-write-as"
+#  -: "Command-T"                    # Display the Fonts window
+\bind "C-t"                          "buffer-view pdf"
+\bind "C-M-t"                        "master-buffer-view pdf"
+#  -: "Option-Command-T"             # Show or hide a toolbar
+#  -: "Command-U"                    # Underline the selected text or turn underlining on or off
+\bind "C-u"                          "font-underline"
+#  +: "Command-V"                    # Paste the Clipboard contents at the insertion point
+\bind "C-v"                          "paste"
+\bind "C-S-v"                        "clipboard-paste"
+#  -: "Option-Command-V"             # Apply the style of one object to the selected object (Paste Style)
+#  -: "Option-Shift-Command-V"       # Apply the style of the surrounding text to the inserted object (Paste and Match Style)
+#  -: "Control-Command-V"            # Apply formatting settings to the selected object (Paste Ruler Command)
+\bind "C-M-v"                        "primary-selection-paste"
+#  ?: "Command-W"                    # Close the frontmost window
+\bind "C-w"                          "buffer-close" # should be "window-close"
+#  +: "Shift-Command-W"              # Close a file and its associated windows
+\bind "C-S-w"                        "buffer-close"
+#  +: "Option-Command-W"             # Close all windows in the application without quitting it
+\bind "C-A-w"                        "buffer-close-all"
+#  +: "Command-X"                    # Remove the selection and store in the Clipboard
+\bind "C-x"                          "cut"
+\bind "M-x"                          "command-execute"
+#  -: "Command-Z"                    # Undo previous command (some applications allow for multiple Undos)
+\bind "C-z"                          "undo"
+#  -: "Shift-Command-Z"              # Redo previous command (some applications allow for multiple Redos)
+\bind "C-S-Z"                        "redo"
+#  -: "Control-Right Arrow"          # Move focus to another value or cell within a view, such as a table
+#  -: "Control-Left Arrow"           # Move focus to another value or cell within a view, such as a table
+#  -: "Control-Down Arrow"           # Move focus to another value or cell within a view, such as a table
+#  -: "Control-Up Arrow"             # Move focus to another value or cell within a view, such as a table
+#  +: "Command-Right Arrow"          # Move the text insertion point to the end of the current line
+\bind "C-Right"                      "line-end"
+#  +: "Command-Left Arrow"           # Move the text insertion point to the beginning of the current line
+\bind "C-Left"                       "line-begin"
+#  +: "Command-Down Arrow"           # Move the text insertion point to the end of the document
+\bind "C-Down"                       "buffer-end"
+\bind "M-A-Down"                     "inset-end" 
+#  +: "Command-Up Arrow"             # Move the text insertion point to the beginning of the document
+\bind "C-Up"                         "buffer-begin"
+\bind "M-A-Up"                       "inset-begin" 
+#  +: "Shift-Command-Right Arrow"    # Select text between the insertion point and the end of the current line (*)
+\bind "S-C-Right"                    "line-end-select"
+#  +: "Shift-Command-Left Arrow"     # Select text between the insertion point and the beginning of the current line (*)
+\bind "S-C-Left"                     "line-begin-select"
+#  +: "Shift-Right Arrow"            # Extend text selection one character to the right (*)
+\bind "S-Right"                      "char-right-select"
+#  +: "Shift-Left Arrow"             # Extend text selection one character to the left (*)
+\bind "S-Left"                       "char-left-select"
+#  +: "Shift-Command-Up Arrow"       # Select text between the insertion point and the beginning of the document (*)
+\bind "S-C-Up"                       "buffer-begin-select"
+#  +: "Shift-Command-Down Arrow"     # Select text between the insertion point and the end of the document (*)
+\bind "S-C-Down"                     "buffer-end-select"
+#  +: "Shift-Up Arrow"               # Extend text selection to the line above, to the nearest character boundary at the same horizontal location (*)
+\bind "S-Up"                         "up-select"
+#  +: "Shift-Down Arrow"             # Extend text selection to the line below, to the nearest character boundary at the same horizontal location (*)
+\bind "S-Down"                       "down-select"
+#  +: "Shift-Option-Right Arrow"     # Extend text selection to the end of the current word, then to the end of the following word if pressed again (*)
+\bind "A-Right"                      "word-right"
+\bind "S-A-Right"                    "word-right-select"
+#  +: "Shift-Option-Left Arrow"      # Extend text selection to the beginning of the current word, then to the beginning of the following word if pressed again (*)
+\bind "A-Left"                       "word-left"
+\bind "S-A-Left"                     "word-left-select"
+#  +: "Shift-Option-Down Arrow"      # Extend text selection to the end of the current paragraph, then to the end of the following paragraph if pressed again (*)
+\bind "A-Down"                       "paragraph-down"
+\bind "S-A-Down"                     "paragraph-down-select"
+\bind "S-M-A-Down"                   "inset-end-select" 
+#  +: "Shift-Option-Up Arrow"        # Extend text selection to the beginning of the current paragraph, then to the beginning of the following paragraph if pressed again (*)
+\bind "A-Up"                         "paragraph-up"
+\bind "S-A-Up"                       "paragraph-up-select"
+\bind "S-M-A-Up"                     "inset-begin-select" 
+#  -: "Control-Space"                # Toggle between the current and previous input sources
+#  -: "Option-Control-Space"         # Toggle through all enabled input sources
+#  +: "Option-Command-esc"           # Force Quit
 
-\bind "C-m"				"math-mode"
-\bind "C-S-M"			"math-display"
-\bind "C-M-n"			"command-sequence math-display; math-number-toggle;"
+# Additional commands
 
-\bind "C-f"				"dialog-show findreplace"
-\bind "C-S-f"			"dialog-show findreplaceadv"
-\bind "C-i"				"inset-toggle"		# 'i' for Inset
+\bind "C-S-O"                        "font-strikeout"
+\bind "C-S-T"                        "buffer-update pdf" # (pdflatex; was "ps")
+\bind "C-S-R"                        "buffer-update"
+\bind "C-M-S-T"                      "master-buffer-update pdf"
+\bind "C-M-S-D"                      "master-buffer-update dvi"
 
-\bind "C-c"				"copy"
-\bind "C-x"				"cut"
-\bind "C-v"				"paste"
-\bind "C-S-v"			"clipboard-paste"
-\bind "C-M-v"			"primary-selection-paste"
+\bind "C-S-E"                        "changes-track" # it's what MS Word uses
+\bind "~S-M-quotedbl"                "quote-insert single"
+\bind "~S-C-quotedbl"                "self-insert \""
+\bind "C-S-underscore"               "command-alternatives math-macro-fold;specialchar-insert hyphenation"
+\bind "C-M-minus"                    "specialchar-insert nobreakdash"
+\bind "M-C-Right"                    "depth-increment"
+\bind "M-C-Left"                     "depth-decrement"
+\bind "C-S-L"                        "specialchar-insert ligature-break"
+\bind "C-l"                          "ert-insert"		# 'l' for LaTeX
+\bind "C-S-I"                        "info-insert"
 
-\bind "C-z"				"undo"
-\bind "C-S-Z"			"redo"
+#bind "F1"                           "help"         # Not yet implemented!
+#bind "C-F1"                         "help-context" # Not yet implemented!
+\bind "F2"                           "buffer-write"
+\bind "C-F4"                         "buffer-close"
+\bind "C-A-Up"                       "scroll line up"
+\bind "C-A-Down"                     "scroll line down"
+\bind "C-A-Prior"                    "scroll page up"
+\bind "C-A-Next"                     "scroll page down"
+\bind "F7"                           "dialog-show spellchecker"
+\bind "S-F7"                         "thesaurus-entry"
 
-\bind "C-a"				"command-sequence buffer-begin ; buffer-end-select"   # select all
-\bind "C-M-a"			"inset-select-all"
-
-\bind "C-S-E"			"changes-track"  # it's what MS Word uses
-\bind "~S-M-quotedbl"	"quote-insert single"
-\bind "~S-C-quotedbl"	"self-insert \""
-\bind "C-S-underscore"			"command-alternatives math-macro-fold;specialchar-insert hyphenation"
-\bind "C-M-minus"		"specialchar-insert nobreakdash"
-\bind "M-C-Right"		"depth-increment"
-\bind "M-C-Left"		"depth-decrement"
-\bind "C-S-L"			"specialchar-insert ligature-break"
-\bind "C-l"				"ert-insert"		# 'l' for LaTeX
-\bind "C-S-I"			"info-insert"
-
-#bind "F1"				"help"			# Not yet implemented!
-#bind "C-F1"			"help-context"		# Not yet implemented!
-\bind "F2"				"buffer-write"
-\bind "C-g"				"word-find"
-\bind "C-F4"			"buffer-close"
-\bind "F5"				"screen-recenter"
-\bind "C-M-Up"			"scroll line up"
-\bind "C-M-Down"		"scroll line down"
-\bind "C-M-Prior"		"scroll page up"
-\bind "C-M-Next"		"scroll page down"
-\bind "F7"				"dialog-show spellchecker"
-\bind "S-F7"			"thesaurus-entry"
-
-\bind "M-x"				"command-execute"
-\bind "C-M-o"				"dialog-show toc"
-
-\bind "C-plus"			"buffer-zoom-in"
-\bind "C-minus"		"buffer-zoom-out"
+\bind "C-M-o"                        "dialog-show toc"
 
 #
-# Motion group
+# Additional Motion group
 #
 
-\bind "M-Right"			"word-right"
-\bind "M-Left"			"word-left"
-\bind "M-Up"			"paragraph-up"
-\bind "M-Down"			"paragraph-down"
-\bind "C-Up"			"buffer-begin"
-\bind "C-Down"			"buffer-end"
-\bind "M-C-Up"			"inset-begin" 
-\bind "M-C-Down"		"inset-end" 
-\bind "C-Right"			"line-end"
-\bind "C-Left"			"line-begin"
-
-\bind "C-~S-greater"	"label-goto"
-\bind "C-~S-less" 		"bookmark-goto 0"
-
+\bind "C-~S-greater"                 "label-goto"
+\bind "C-~S-less" 		             "bookmark-goto 0"
 
 #
-# Motion + select group
+# Additional Motion + select group
 #
 
-\bind "S-Right"			"char-right-select"
-\bind "S-Left"			"char-left-select"
-\bind "S-Up"			"up-select"
-\bind "S-Down"			"down-select"
-\bind "S-M-Right"		"word-right-select"
-\bind "S-M-Left"		"word-left-select"
-\bind "S-M-Up"			"paragraph-up-select"
-\bind "S-M-Down"		"paragraph-down-select"
-\bind "S-C-Left"		"line-begin-select"
-\bind "S-C-Right"		"line-end-select"
-\bind "S-Prior"			"screen-up-select"
-\bind "S-Next"			"screen-down-select"
-\bind "S-C-Up"			"buffer-begin-select"
-\bind "S-C-Down"		"buffer-end-select"
-\bind "S-M-C-Up"		"inset-begin-select" 
-\bind "S-M-C-Down"		"inset-end-select" 
-\bind "C-Insert"		"copy"
-\bind "S-Insert"		"paste"
-\bind "S-Delete"		"cut"
+\bind "S-Prior"                      "screen-up-select"
+\bind "S-Next"                       "screen-down-select"
+\bind "C-Insert"                     "copy"
+\bind "S-Insert"                     "paste"
+\bind "S-Delete"                     "cut"
 
 # Numeric keypad (if Shift+KP_XXX does not switch the NumLock state)
-\bind "S-KP_Right"		"char-right-select"
-\bind "S-KP_Left"		"char-left-select"
-\bind "S-KP_Up"			"up-select"
-\bind "S-KP_Down"		"down-select"
-\bind "S-M-KP_Right"	"word-right-select"
-\bind "S-M-KP_Left"		"word-left-select"
-\bind "S-M-KP_Up"		"paragraph-up-select"
-\bind "S-M-KP_Down"		"paragraph-down-select"
-\bind "S-KP_Home"		"line-begin-select"
-\bind "S-KP_End"		"line-end-select"
-\bind "S-KP_Prior"		"screen-up-select"
-\bind "S-KP_Next"		"screen-down-select"
-\bind "S-C-KP_Home"		"buffer-begin-select"
-\bind "S-C-KP_End"		"buffer-end-select"
-\bind "S-C-KP_Prior"	"buffer-begin-select"
-\bind "S-C-KP_Next"		"buffer-end-select"
-\bind "C-KP_Insert"		"copy"
-\bind "S-KP_Insert"		"paste"
-\bind "S-KP_Delete"
-
-
-"cut"
+\bind "S-KP_Right"                   "char-right-select"
+\bind "S-KP_Left"                    "char-left-select"
+\bind "S-KP_Up"                      "up-select"
+\bind "S-KP_Down"                    "down-select"
+\bind "S-M-KP_Right"                 "word-right-select"
+\bind "S-M-KP_Left"                  "word-left-select"
+\bind "S-M-KP_Up"                    "paragraph-up-select"
+\bind "S-M-KP_Down"                  "paragraph-down-select"
+\bind "S-KP_Home"                    "line-begin-select"
+\bind "S-KP_End"                     "line-end-select"
+\bind "S-KP_Prior"                   "screen-up-select"
+\bind "S-KP_Next"                    "screen-down-select"
+\bind "S-C-KP_Home"                  "buffer-begin-select"
+\bind "S-C-KP_End"                   "buffer-end-select"
+\bind "S-C-KP_Prior"                 "buffer-begin-select"
+\bind "S-C-KP_Next"                  "buffer-end-select"
+\bind "C-KP_Insert"                  "copy"
+\bind "S-KP_Insert"                  "paste"
+\bind "S-KP_Delete"                  "cut"
 
 #
 # bookmarks
 #
 
-\bind "C-~S-1"			"bookmark-goto 1"
-\bind "C-~S-2"			"bookmark-goto 2"
-\bind "C-~S-3"			"bookmark-goto 3"
-\bind "C-~S-4"			"bookmark-goto 4"
-\bind "C-~S-5"			"bookmark-goto 5"
-\bind "C-~S-6"			"bookmark-goto 6"
-\bind "C-~S-7"			"bookmark-goto 7"
-\bind "C-~S-8"			"bookmark-goto 8"
-\bind "C-~S-9"			"bookmark-goto 9"
-\bind "C-M-~S-1"		"bookmark-save 1"
-\bind "C-M-~S-2"		"bookmark-save 2"
-\bind "C-M-~S-3"		"bookmark-save 3"
-\bind "C-M-~S-4"		"bookmark-save 4"
-\bind "C-M-~S-5"		"bookmark-save 5"
-\bind "C-M-~S-6"		"bookmark-save 6"
-\bind "C-M-~S-7"		"bookmark-save 7"
-\bind "C-M-~S-8"		"bookmark-save 8"
-\bind "C-M-~S-9"		"bookmark-save 9"
-
+\bind "C-~S-1"                       "bookmark-goto 1"
+\bind "C-~S-2"                       "bookmark-goto 2"
+\bind "C-~S-3"                       "bookmark-goto 3"
+\bind "C-~S-4"                       "bookmark-goto 4"
+\bind "C-~S-5"                       "bookmark-goto 5"
+\bind "C-~S-6"                       "bookmark-goto 6"
+\bind "C-~S-7"                       "bookmark-goto 7"
+\bind "C-~S-8"                       "bookmark-goto 8"
+\bind "C-~S-9"                       "bookmark-goto 9"
+\bind "C-M-~S-1"                     "bookmark-save 1"
+\bind "C-M-~S-2"                     "bookmark-save 2"
+\bind "C-M-~S-3"                     "bookmark-save 3"
+\bind "C-M-~S-4"                     "bookmark-save 4"
+\bind "C-M-~S-5"                     "bookmark-save 5"
+\bind "C-M-~S-6"                     "bookmark-save 6"
+\bind "C-M-~S-7"                     "bookmark-save 7"
+\bind "C-M-~S-8"                     "bookmark-save 8"
+\bind "C-M-~S-9"                     "bookmark-save 9"
 
 #
-# Edit group
+# Additional Edit group
 #
 
-\bind "M-Delete"		"word-delete-forward"
-\bind "M-BackSpace"		"word-delete-backward"
-\bind "M-Return"		"break-paragraph inverse"
-\bind "C-Return"		"newline-insert newline"
-\bind "C-S-Return"		"newline-insert linebreak"
-\bind "C-k"				"line-delete-forward"
-\bind "M-space"			"space-insert protected"
-\bind "nobreakspace"	"space-insert protected"
-\bind "C-M-space"		"space-insert normal"
-\bind "S-M-space"		"space-insert thin"
-\bind "C-~S-slash"		"specialchar-insert slash"
-\bind "C-period"		"specialchar-insert end-of-sentence"
-\bind "M-period"		"specialchar-insert dots"
-\bind "Escape"			"cancel"
-\bind "C-M-Up"			"paragraph-move-up"
-\bind "C-M-Down"		"paragraph-move-down"
-#\bind "F9"				"meta-prefix"
-
-
-
-# LyX menu
-\bind "C-comma"			"dialog-show prefs"
-
+\bind "M-Delete"                     "word-delete-forward"
+\bind "M-BackSpace"                  "word-delete-backward"
+\bind "M-Return"                     "break-paragraph inverse"
+\bind "C-Return"                     "newline-insert newline"
+\bind "C-S-Return"                   "newline-insert linebreak"
+\bind "M-space"                      "space-insert protected"
+\bind "nobreakspace"                 "space-insert protected"
+\bind "C-M-space"                    "space-insert normal"
+\bind "S-M-space"                    "space-insert thin"
+\bind "C-~S-slash"                   "specialchar-insert slash"
+\bind "C-period"                     "specialchar-insert end-of-sentence"
+\bind "M-period"                     "specialchar-insert dots"
+\bind "Escape"                       "cancel"
+\bind "C-M-Up"                       "paragraph-move-up"
+\bind "C-M-Down"                     "paragraph-move-down"
+#\bind "F9"                          "meta-prefix"
 
 # Include menu and math bindings
 

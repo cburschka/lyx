@@ -687,16 +687,18 @@ docstring const KeySymbol::print(KeyModifier mod, bool forgui) const
 {
 	int tmpkey = key_;
 
-	if (mod & ShiftModifier)
+	if (mod & ShiftModifier && !(tmpkey == Qt::Key_Shift))
 		tmpkey += Qt::ShiftModifier;
-	if (mod & ControlModifier)
+	if (mod & ControlModifier && !(tmpkey == Qt::Key_Control))
 		tmpkey += Qt::ControlModifier;
-	if (mod & AltModifier)
+	if (mod & AltModifier && !(tmpkey == Qt::Key_Alt))
 		tmpkey += Qt::AltModifier;
+	if (mod & MetaModifier && !(tmpkey == Qt::Key_Meta))
+		tmpkey += Qt::MetaModifier;
 
 	QKeySequence seq(tmpkey);
 	QString str;
-	
+
 	if (forgui)
 		str = seq.toString(QKeySequence::NativeText);
 	else {
@@ -744,8 +746,15 @@ KeyModifier q_key_state(Qt::KeyboardModifiers state)
 		k |= ControlModifier;
 	if (state & Qt::ShiftModifier)
 		k |= ShiftModifier;
-	if (state & Qt::AltModifier || state & Qt::MetaModifier)
+	if (state & Qt::AltModifier)
 		k |= AltModifier;
+#ifdef USE_MACOSX_PACKAGING || defined(USE_META_KEYBINDING)
+	if (state & Qt::MetaModifier)
+		k |= MetaModifier;
+#else
+	if (state & Qt::MetaModifier)
+		k |= AltModifier;
+#endif
 	return k;
 }
 

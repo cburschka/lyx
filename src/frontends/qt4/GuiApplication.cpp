@@ -1686,7 +1686,6 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 	}
 
 	if (keysym.isModifier()) {
-		LYXERR(Debug::KEY, "isModifier true");
 		if (current_view_)
 			current_view_->restartCursor();
 		return;

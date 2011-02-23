@@ -21,8 +21,9 @@ namespace lyx {
 enum KeyModifier {
 	NoModifier       = 0, //< no modifiers held
 	ControlModifier  = 1, //< control button held
-	AltModifier      = 2, //< alt/meta key held
-	ShiftModifier    = 4  //< shift key held
+	AltModifier      = 2, //< alt key held
+	ShiftModifier    = 4, //< shift key held
+	MetaModifier     = 8  //< meta key held
 };
 
 
