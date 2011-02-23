@@ -215,7 +215,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-12 23:16+0100\n"
+"POT-Creation-Date: 2011-02-23 14:53+0100\n"
 "PO-Revision-Date: 2011-02-21 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
@@ -387,7 +387,7 @@ msgstr "Lä&gg till"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/buffer_funcs.cpp:110 src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1474
+#: src/frontends/qt4/GuiApplication.cpp:1473
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "Avbryt"
@@ -620,7 +620,7 @@ msgstr "Inre ruta -- behövs för fast bredd & radbrytningar"
 #: src/frontends/qt4/ui/TabularUi.ui:1104 src/frontends/qt4/GuiBox.cpp:193
 #: src/frontends/qt4/GuiBox.cpp:311 src/frontends/qt4/GuiBox.cpp:388
 #: src/frontends/qt4/GuiDocument.cpp:113 src/frontends/qt4/GuiGraphics.cpp:579
-#: src/frontends/qt4/GuiPrefs.cpp:2063 src/frontends/qt4/GuiPrefs.cpp:2086
+#: src/frontends/qt4/GuiPrefs.cpp:2070 src/frontends/qt4/GuiPrefs.cpp:2093
 msgid "None"
 msgstr "Ingen"
 
@@ -700,8 +700,8 @@ msgid "Remove the selected branch"
 msgstr "Ta bort vald gren"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3789
-#: src/Buffer.cpp:3802
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3783
+#: src/Buffer.cpp:3796
 msgid "&Remove"
 msgstr "Ta bo&rt"
 
@@ -735,16 +735,16 @@ msgstr "Lägg till a&lla"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
-#: src/Buffer.cpp:2282 src/Buffer.cpp:3764 src/Buffer.cpp:3827
+#: src/Buffer.cpp:2272 src/Buffer.cpp:3758 src/Buffer.cpp:3821
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:222 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
-#: src/frontends/qt4/GuiDocument.cpp:1798
+#: src/frontends/qt4/GuiDocument.cpp:1801
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:2075
-#: src/frontends/qt4/GuiView.cpp:2264 src/frontends/qt4/GuiView.cpp:2309
-#: src/frontends/qt4/GuiView.cpp:2524 src/frontends/qt4/GuiView.cpp:2531
-#: src/frontends/qt4/GuiView.cpp:2630 src/frontends/qt4/GuiView.cpp:2658
-#: src/frontends/qt4/GuiView.cpp:3238 src/insets/InsetBibtex.cpp:148
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:2077
+#: src/frontends/qt4/GuiView.cpp:2266 src/frontends/qt4/GuiView.cpp:2311
+#: src/frontends/qt4/GuiView.cpp:2526 src/frontends/qt4/GuiView.cpp:2533
+#: src/frontends/qt4/GuiView.cpp:2632 src/frontends/qt4/GuiView.cpp:2660
+#: src/frontends/qt4/GuiView.cpp:3240 src/insets/InsetBibtex.cpp:148
 msgid "&Cancel"
 msgstr "Avbr&yt"
 
@@ -778,17 +778,17 @@ msgstr "&Storlek:"
 #: src/frontends/qt4/GuiDocument.cpp:788 src/frontends/qt4/GuiDocument.cpp:793
 #: src/frontends/qt4/GuiDocument.cpp:834 src/frontends/qt4/GuiDocument.cpp:845
 #: src/frontends/qt4/GuiDocument.cpp:1003
-#: src/frontends/qt4/GuiDocument.cpp:1077
-#: src/frontends/qt4/GuiDocument.cpp:1653
-#: src/frontends/qt4/GuiDocument.cpp:1676
-#: src/frontends/qt4/GuiDocument.cpp:1677
-#: src/frontends/qt4/GuiDocument.cpp:1678
-#: src/frontends/qt4/GuiDocument.cpp:1753
-#: src/frontends/qt4/GuiDocument.cpp:2118
-#: src/frontends/qt4/GuiDocument.cpp:3217 src/frontends/qt4/GuiExternal.cpp:75
+#: src/frontends/qt4/GuiDocument.cpp:1078
+#: src/frontends/qt4/GuiDocument.cpp:1656
+#: src/frontends/qt4/GuiDocument.cpp:1679
+#: src/frontends/qt4/GuiDocument.cpp:1680
+#: src/frontends/qt4/GuiDocument.cpp:1681
+#: src/frontends/qt4/GuiDocument.cpp:1756
+#: src/frontends/qt4/GuiDocument.cpp:2121
+#: src/frontends/qt4/GuiDocument.cpp:3220 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:70 src/frontends/qt4/GuiIndices.cpp:57
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
-#: src/frontends/qt4/GuiPrefs.cpp:2207
+#: src/frontends/qt4/GuiPrefs.cpp:2214
 #: src/frontends/qt4/GuiPrintNomencl.cpp:47
 #: src/frontends/qt4/GuiViewSource.cpp:183
 msgid "Default"
@@ -915,8 +915,8 @@ msgstr "Teckensnittsserie"
 #: src/frontends/qt4/ui/CharacterUi.ui:108
 #: src/frontends/qt4/ui/CharacterUi.ui:145
 #: src/frontends/qt4/ui/ListingsUi.ui:339
-#: src/frontends/qt4/GuiDocument.cpp:1279 src/frontends/qt4/GuiPrefs.cpp:2166
-#: src/frontends/qt4/Menus.cpp:839
+#: src/frontends/qt4/GuiDocument.cpp:1282 src/frontends/qt4/GuiPrefs.cpp:2173
+#: src/frontends/qt4/Menus.cpp:842
 msgid "Language"
 msgstr "Språk"
 
@@ -987,8 +987,8 @@ msgstr "T&illämpa ändringar omedelbart"
 #: src/frontends/qt4/ui/ParagraphUi.ui:250 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:124 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
-#: src/frontends/qt4/GuiDocument.cpp:1874
-#: src/frontends/qt4/GuiDocument.cpp:3160
+#: src/frontends/qt4/GuiDocument.cpp:1877
+#: src/frontends/qt4/GuiDocument.cpp:3163
 msgid "&Apply"
 msgstr "Tillämp&a"
 
@@ -1499,8 +1499,9 @@ msgid "TabWidget"
 msgstr "Flikmanick"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:20
-msgid "Basi&c"
-msgstr "En&kel"
+#, fuzzy
+msgid "Sear&ch"
+msgstr "&Sök"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:26
 #: src/frontends/qt4/ui/LogUi.ui:28 src/frontends/qt4/ui/SearchUi.ui:28
@@ -1564,9 +1565,9 @@ msgid "Replace &All"
 msgstr "Ersätt &alla"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:163
-#: src/frontends/qt4/ui/ListingsUi.ui:444
-msgid "Ad&vanced"
-msgstr "A&vancerad"
+#, fuzzy
+msgid "S&ettings"
+msgstr "Inställningar"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:178
 msgid "The scope to which the search horizon is restricted"
@@ -1695,7 +1696,8 @@ msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
 msgstr "Använd &icke-TeX-teckensnitt (via XeTeX/LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:42
-msgid "&Default Family:"
+#, fuzzy
+msgid "&Default family:"
 msgstr "Stan&dardfamilj:"
 
 #: src/frontends/qt4/ui/FontUi.ui:52
@@ -1979,7 +1981,7 @@ msgstr "Infoga kägeln även efter en radbrytning"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:19
 #: src/frontends/qt4/ui/HyperlinkUi.ui:32 lib/layouts/scrlttr2.layout:207
-#: lib/layouts/amsdefs.inc:159 lib/layouts/stdinsets.inc:270
+#: lib/layouts/amsdefs.inc:153 lib/layouts/stdinsets.inc:270
 #: lib/layouts/minimalistic.module:26
 msgid "URL"
 msgstr "URL"
@@ -2488,6 +2490,10 @@ msgstr "Sista &linje:"
 msgid "The last line to be printed"
 msgstr "Sista linjen att skriva ut"
 
+#: src/frontends/qt4/ui/ListingsUi.ui:444
+msgid "Ad&vanced"
+msgstr "A&vancerad"
+
 #: src/frontends/qt4/ui/ListingsUi.ui:458
 msgid "More Parameters"
 msgstr "Fler parametrar"
@@ -2861,7 +2867,7 @@ msgid "Specify the default output format (for view/update)"
 msgstr "Specificera standardformat för utmatning (för visa/uppdatera)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:45
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:177
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:187
 msgid "De&fault Output Format:"
 msgstr "Standard&format för utmatning:"
 
@@ -2896,7 +2902,8 @@ msgid "&Strict XHTML 1.1"
 msgstr "&Strikt XHTML 1.1"
 
 #: src/frontends/qt4/ui/OutputUi.ui:137
-msgid "&Math Output:"
+#, fuzzy
+msgid "&Math output:"
 msgstr "&Matematikutmatning:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:153
@@ -2923,7 +2930,8 @@ msgid "LaTeX"
 msgstr "LaTeX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:186
-msgid "Math &Image Scaling:"
+#, fuzzy
+msgid "Math &image scaling:"
 msgstr "Matematikb&ildskalning:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:202
@@ -3060,7 +3068,7 @@ msgid "&Landscape"
 msgstr "&Landskap"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:161
-#: src/frontends/qt4/GuiDocument.cpp:1277
+#: src/frontends/qt4/GuiDocument.cpp:1280
 msgid "Page Layout"
 msgstr "Sidutformning"
 
@@ -3121,8 +3129,8 @@ msgstr "Dubbel"
 #: src/frontends/qt4/GuiDocument.cpp:846
 #: src/frontends/qt4/GuiDocument.cpp:1009 src/frontends/qt4/GuiHSpace.cpp:54
 #: src/frontends/qt4/GuiHSpace.cpp:63 src/frontends/qt4/GuiPrefs.cpp:810
-#: src/frontends/qt4/GuiPrefs.cpp:837 src/frontends/qt4/GuiPrefs.cpp:2065
-#: src/frontends/qt4/GuiPrefs.cpp:2088
+#: src/frontends/qt4/GuiPrefs.cpp:837 src/frontends/qt4/GuiPrefs.cpp:2072
+#: src/frontends/qt4/GuiPrefs.cpp:2095
 #: src/frontends/qt4/GuiPrintNomencl.cpp:51
 msgid "Custom"
 msgstr "Anpassad"
@@ -3323,7 +3331,7 @@ msgstr "&Modifiera"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2822 src/frontends/qt4/GuiPrefs.cpp:2886
+#: src/frontends/qt4/GuiPrefs.cpp:2829 src/frontends/qt4/GuiPrefs.cpp:2893
 msgid "Remo&ve"
 msgstr "Ta bort"
 
@@ -3461,38 +3469,46 @@ msgid "&Document format"
 msgstr "&Dokumentformat"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:66
+msgid "Check this to show the current format in the File > Export menu"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:69
+msgid "Sho&w in export menu"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:76
 msgid "Vector &graphics format"
 msgstr "Format för vektor&grafik"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:73
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:83
 msgid "S&hort Name:"
 msgstr "Kort namn:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:86
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:96
 msgid "E&xtension:"
 msgstr "Ändelse:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:99
-msgid "Shortc&ut:"
-msgstr "Genväg:"
-
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:112
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:109
 msgid "Ed&itor:"
 msgstr "Red&igerare:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:132
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:119
+msgid "Shortc&ut:"
+msgstr "Genväg:"
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:142
 msgid "&Viewer:"
 msgstr "&Visare:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:152
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:162
 msgid "Co&pier:"
 msgstr "Ko&piator:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:165
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:175
 msgid "Specify the default output format when using (PDF)LaTeX"
 msgstr "Specificera standardformat för utmatning vid användning av (PDF)LaTeX"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:168
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:178
 msgid "Default Format"
 msgstr "Standardformat"
 
@@ -3668,7 +3684,7 @@ msgstr "Märk &främmande språk"
 msgid "Right-to-left language support"
 msgstr "Stöd för höger-till-vänster-språk (HTV)"
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:215 src/LyXRC.cpp:3336
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:215 src/LyXRC.cpp:3338
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
@@ -3821,7 +3837,7 @@ msgstr "Åt&erställ klassalternativ när dokumentklass ändras"
 msgid "Output &line length:"
 msgstr "Utmatningens &linjelängd:"
 
-#: src/frontends/qt4/ui/PrefOutputUi.ui:37 src/LyXRC.cpp:3010
+#: src/frontends/qt4/ui/PrefOutputUi.ui:37 src/LyXRC.cpp:3012
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -4281,8 +4297,8 @@ msgstr ""
 msgid "&Single close-tab button"
 msgstr "Enkel flik&stängknapp"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:73 src/frontends/qt4/GuiView.cpp:2524
-#: src/frontends/qt4/GuiView.cpp:2531 src/frontends/qt4/GuiView.cpp:2630
+#: src/frontends/qt4/ui/PrefsUi.ui:73 src/frontends/qt4/GuiView.cpp:2526
+#: src/frontends/qt4/GuiView.cpp:2533 src/frontends/qt4/GuiView.cpp:2632
 msgid "&Save"
 msgstr "&Spara"
 
@@ -4410,7 +4426,7 @@ msgid "Select the index that shall be printed at this place of the document."
 msgstr "Välj index som skall skrivas på denna plats av dokumentet."
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
-#: src/frontends/qt4/GuiDocument.cpp:1290 src/frontends/qt4/GuiPrefs.cpp:230
+#: src/frontends/qt4/GuiDocument.cpp:1293 src/frontends/qt4/GuiPrefs.cpp:230
 msgid "Output"
 msgstr "Utmatning"
 
@@ -5044,7 +5060,8 @@ msgid "Indent consecutive paragraphs"
 msgstr "Indentera konsekutiva stycken"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:37
-msgid "&Indentation"
+#, fuzzy
+msgid "&Indentation:"
 msgstr "&Indentering"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:47
@@ -5052,7 +5069,8 @@ msgid "Size of the indentation"
 msgstr "Storlek på indenteringen"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:115
-msgid "&Vertical space"
+#, fuzzy
+msgid "&Vertical space:"
 msgstr "&Vertikalt mellanrum"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:125
@@ -5303,12 +5321,12 @@ msgstr "KortTitel"
 #: lib/layouts/entcs.layout:74 lib/layouts/iopart.layout:60
 #: lib/layouts/iopart.layout:130 lib/layouts/iopart.layout:149
 #: lib/layouts/iopart.layout:174 lib/layouts/iopart.layout:203
-#: lib/layouts/siamltex.layout:275 lib/layouts/siamltex.layout:295
+#: lib/layouts/siamltex.layout:279 lib/layouts/siamltex.layout:299
 #: lib/layouts/sigplanconf.layout:71 lib/layouts/sigplanconf.layout:124
 #: lib/layouts/sigplanconf.layout:157 lib/layouts/svglobal3.layout:85
-#: lib/layouts/tufte-handout.layout:49 lib/layouts/amsdefs.inc:31
-#: lib/layouts/amsdefs.inc:54 lib/layouts/amsdefs.inc:74
-#: lib/layouts/amsdefs.inc:98 lib/layouts/amsdefs.inc:125
+#: lib/layouts/tufte-handout.layout:49 lib/layouts/amsdefs.inc:25
+#: lib/layouts/amsdefs.inc:48 lib/layouts/amsdefs.inc:68
+#: lib/layouts/amsdefs.inc:92 lib/layouts/amsdefs.inc:119
 #: lib/layouts/lyxmacros.inc:45 lib/layouts/lyxmacros.inc:66
 #: lib/layouts/stdstruct.inc:16 lib/layouts/stdtitle.inc:50
 #: lib/layouts/stdtitle.inc:71 lib/layouts/stdtitle.inc:90
@@ -5367,13 +5385,13 @@ msgstr "Publikationsupplaga:"
 #: lib/layouts/latex8.layout:107 lib/layouts/llncs.layout:244
 #: lib/layouts/ltugboat.layout:171 lib/layouts/ltugboat.layout:185
 #: lib/layouts/paper.layout:130 lib/layouts/revtex.layout:139
-#: lib/layouts/revtex4.layout:223 lib/layouts/siamltex.layout:247
+#: lib/layouts/revtex4.layout:223 lib/layouts/siamltex.layout:251
 #: lib/layouts/sigplanconf.layout:153 lib/layouts/sigplanconf.layout:169
 #: lib/layouts/spie.layout:75 lib/layouts/svglobal.layout:37
 #: lib/layouts/svglobal3.layout:84 lib/layouts/svglobal3.layout:88
 #: lib/layouts/svjog.layout:40 lib/layouts/tufte-handout.layout:45
 #: lib/layouts/tufte-handout.layout:60 lib/layouts/agu_stdtitle.inc:193
-#: lib/layouts/amsdefs.inc:97 lib/layouts/db_stdstruct.inc:11
+#: lib/layouts/amsdefs.inc:91 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:238 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:209
 #: src/output_plaintext.cpp:133
@@ -5404,8 +5422,8 @@ msgstr "Erkännande."
 #: lib/layouts/beamer.layout:1057 lib/layouts/elsart.layout:259
 #: lib/layouts/foils.layout:218 lib/layouts/heb-article.layout:18
 #: lib/layouts/ijmpc.layout:196 lib/layouts/ijmpd.layout:199
-#: lib/layouts/llncs.layout:419 lib/layouts/siamltex.layout:62
-#: lib/layouts/siamltex.layout:112 lib/layouts/svjour.inc:437
+#: lib/layouts/llncs.layout:419 lib/layouts/siamltex.layout:66
+#: lib/layouts/siamltex.layout:116 lib/layouts/svjour.inc:437
 #: lib/layouts/theorems-ams-bytype.inc:50
 #: lib/layouts/theorems-ams-bytype.inc:51
 #: lib/layouts/theorems-ams-bytype.inc:238 lib/layouts/theorems-ams.inc:24
@@ -5427,7 +5445,7 @@ msgid "Theorem"
 msgstr "Teorem"
 
 #: lib/layouts/AEA.layout:112 lib/layouts/elsart.layout:343
-#: lib/layouts/powerdot.layout:405 lib/layouts/siamltex.layout:111
+#: lib/layouts/powerdot.layout:405 lib/layouts/siamltex.layout:115
 #: lib/layouts/stdfloats.inc:41
 #: lib/layouts/theorems-ams-extended-bytype.module:82
 #: lib/layouts/theorems-ams-extended.module:70
@@ -5499,7 +5517,7 @@ msgstr "Villkor"
 
 #: lib/layouts/AEA.layout:159 lib/layouts/elsart.layout:364
 #: lib/layouts/ijmpc.layout:289 lib/layouts/ijmpd.layout:299
-#: lib/layouts/llncs.layout:316 lib/layouts/siamltex.layout:102
+#: lib/layouts/llncs.layout:316 lib/layouts/siamltex.layout:106
 #: lib/layouts/svjour.inc:328 lib/layouts/theorems-ams-bytype.inc:121
 #: lib/layouts/theorems-ams.inc:119 lib/layouts/theorems-ams.inc:129
 #: lib/layouts/theorems-ams.inc:132 lib/layouts/theorems-bytype.inc:97
@@ -5516,7 +5534,7 @@ msgstr "Förmodan"
 #: lib/layouts/elsart.layout:322 lib/layouts/foils.layout:250
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:235
 #: lib/layouts/ijmpd.layout:236 lib/layouts/llncs.layout:323
-#: lib/layouts/siamltex.layout:72 lib/layouts/svjour.inc:335
+#: lib/layouts/siamltex.layout:76 lib/layouts/svjour.inc:335
 #: lib/layouts/theorems-ams-bytype.inc:85 lib/layouts/theorems-ams.inc:65
 #: lib/layouts/theorems-ams.inc:75 lib/layouts/theorems-ams.inc:78
 #: lib/layouts/theorems-bytype.inc:61 lib/layouts/theorems-order.inc:13
@@ -5542,7 +5560,7 @@ msgstr "Kriterium"
 #: lib/layouts/elsart.layout:350 lib/layouts/foils.layout:264
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:137
 #: lib/layouts/ijmpd.layout:134 lib/layouts/llncs.layout:337
-#: lib/layouts/siamltex.layout:121 lib/layouts/svjour.inc:349
+#: lib/layouts/siamltex.layout:125 lib/layouts/svjour.inc:349
 #: lib/layouts/theorems-ams-bytype.inc:145 lib/layouts/theorems-ams.inc:155
 #: lib/layouts/theorems-ams.inc:172 lib/layouts/theorems-ams.inc:175
 #: lib/layouts/theorems-bytype.inc:121 lib/layouts/theorems-order.inc:37
@@ -5586,7 +5604,7 @@ msgstr "Övning"
 #: lib/layouts/AEA.layout:202 lib/layouts/elsart.layout:315
 #: lib/layouts/foils.layout:243 lib/layouts/heb-article.layout:45
 #: lib/layouts/ijmpc.layout:244 lib/layouts/ijmpd.layout:249
-#: lib/layouts/llncs.layout:358 lib/layouts/siamltex.layout:82
+#: lib/layouts/llncs.layout:358 lib/layouts/siamltex.layout:86
 #: lib/layouts/svjour.inc:374 lib/layouts/theorems-ams-bytype.inc:97
 #: lib/layouts/theorems-ams.inc:83 lib/layouts/theorems-ams.inc:93
 #: lib/layouts/theorems-ams.inc:96 lib/layouts/theorems-bytype.inc:73
@@ -5628,7 +5646,7 @@ msgstr "Problem"
 #: lib/layouts/AEA.layout:225 lib/layouts/elsart.layout:329
 #: lib/layouts/foils.layout:257 lib/layouts/ijmpc.layout:253
 #: lib/layouts/ijmpd.layout:259 lib/layouts/llncs.layout:392
-#: lib/layouts/siamltex.layout:92 lib/layouts/svjour.inc:409
+#: lib/layouts/siamltex.layout:96 lib/layouts/svjour.inc:409
 #: lib/layouts/theorems-ams-bytype.inc:109 lib/layouts/theorems-ams.inc:101
 #: lib/layouts/theorems-ams.inc:111 lib/layouts/theorems-ams.inc:114
 #: lib/layouts/theorems-bytype.inc:85 lib/layouts/theorems-order.inc:25
@@ -5683,12 +5701,12 @@ msgstr "Sammanfattning"
 msgid "Caption"
 msgstr "Bildtext"
 
-#: lib/layouts/AEA.layout:260 lib/layouts/amsart.layout:28
-#: lib/layouts/amsbook.layout:29 lib/layouts/beamer.layout:33
+#: lib/layouts/AEA.layout:260 lib/layouts/amsart.layout:31
+#: lib/layouts/amsbook.layout:32 lib/layouts/beamer.layout:33
 #: lib/layouts/beamer.layout:908 lib/layouts/beamer.layout:927
 #: lib/layouts/beamer.layout:946 lib/layouts/beamer.layout:1066
 #: lib/layouts/beamer.layout:1090 lib/layouts/beamer.layout:1128
-#: lib/layouts/siamltex.layout:32 lib/layouts/svmono.layout:18
+#: lib/layouts/siamltex.layout:36 lib/layouts/svmono.layout:18
 #: lib/layouts/svmult.layout:83 lib/layouts/tufte-book.layout:196
 #: lib/layouts/lyxmacros.inc:13 lib/layouts/stdclass.inc:29
 #: lib/layouts/stdlayouts.inc:13 lib/layouts/stdlayouts.inc:34
@@ -5705,7 +5723,7 @@ msgstr "Bildtext: "
 #: lib/layouts/beamer.layout:1051 lib/layouts/elsart.layout:288
 #: lib/layouts/foils.layout:278 lib/layouts/heb-article.layout:95
 #: lib/layouts/ijmpc.layout:217 lib/layouts/ijmpd.layout:217
-#: lib/layouts/llncs.layout:378 lib/layouts/siamltex.layout:150
+#: lib/layouts/llncs.layout:378 lib/layouts/siamltex.layout:154
 #: lib/layouts/svjour.inc:395 lib/layouts/theorems-order.inc:76
 #: lib/layouts/theorems-proof-std.inc:6 lib/layouts/theorems-proof-std.inc:22
 #: lib/layouts/theorems-proof-std.inc:25 lib/layouts/theorems-proof.inc:13
@@ -5716,8 +5734,8 @@ msgstr "Bevis"
 #: lib/layouts/IEEEtran.layout:34 lib/layouts/aa.layout:27
 #: lib/layouts/aapaper.layout:34 lib/layouts/aastex.layout:52
 #: lib/layouts/achemso.layout:32 lib/layouts/acmsiggraph.layout:34
-#: lib/layouts/agutex.layout:31 lib/layouts/amsart.layout:27
-#: lib/layouts/amsbook.layout:28 lib/layouts/apa.layout:24
+#: lib/layouts/agutex.layout:31 lib/layouts/amsart.layout:30
+#: lib/layouts/amsbook.layout:31 lib/layouts/apa.layout:24
 #: lib/layouts/beamer.layout:32 lib/layouts/broadway.layout:173
 #: lib/layouts/chess.layout:29 lib/layouts/cl2emult.layout:126
 #: lib/layouts/dtk.layout:31 lib/layouts/egs.layout:18
@@ -5730,7 +5748,7 @@ msgstr "Bevis"
 #: lib/layouts/moderncv.layout:19 lib/layouts/paper.layout:13
 #: lib/layouts/powerdot.layout:109 lib/layouts/revtex.layout:22
 #: lib/layouts/revtex4.layout:40 lib/layouts/scrlettr.layout:7
-#: lib/layouts/scrlttr2.layout:10 lib/layouts/siamltex.layout:31
+#: lib/layouts/scrlttr2.layout:10 lib/layouts/siamltex.layout:35
 #: lib/layouts/sigplanconf.layout:37 lib/layouts/simplecv.layout:16
 #: lib/layouts/slides.layout:60 lib/layouts/tufte-book.layout:19
 #: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
@@ -5758,10 +5776,10 @@ msgstr "Standard"
 #: lib/layouts/ltugboat.layout:136 lib/layouts/paper.layout:110
 #: lib/layouts/powerdot.layout:41 lib/layouts/revtex.layout:94
 #: lib/layouts/revtex4.layout:125 lib/layouts/scrlettr.layout:188
-#: lib/layouts/scrlttr2.layout:271 lib/layouts/siamltex.layout:183
+#: lib/layouts/scrlttr2.layout:271 lib/layouts/siamltex.layout:187
 #: lib/layouts/sigplanconf.layout:104 lib/layouts/simplecv.layout:121
 #: lib/layouts/svprobth.layout:42 lib/layouts/tufte-book.layout:34
-#: lib/layouts/agu_stdtitle.inc:246 lib/layouts/amsdefs.inc:30
+#: lib/layouts/agu_stdtitle.inc:246 lib/layouts/amsdefs.inc:24
 #: lib/layouts/db_stdtitle.inc:13 lib/layouts/scrclass.inc:161
 #: lib/layouts/stdtitle.inc:47 lib/layouts/svjour.inc:124
 msgid "Title"
@@ -5790,10 +5808,10 @@ msgstr "gemener"
 #: lib/layouts/kluwer.layout:165 lib/layouts/llncs.layout:182
 #: lib/layouts/ltugboat.layout:155 lib/layouts/paper.layout:120
 #: lib/layouts/powerdot.layout:65 lib/layouts/revtex.layout:102
-#: lib/layouts/revtex4.layout:133 lib/layouts/siamltex.layout:205
+#: lib/layouts/revtex4.layout:133 lib/layouts/siamltex.layout:209
 #: lib/layouts/sigplanconf.layout:120 lib/layouts/svprobth.layout:59
 #: lib/layouts/tufte-book.layout:38 lib/layouts/agu_stdtitle.inc:167
-#: lib/layouts/amsdefs.inc:53 lib/layouts/db_stdtitle.inc:21
+#: lib/layouts/amsdefs.inc:47 lib/layouts/db_stdtitle.inc:21
 #: lib/layouts/scrclass.inc:177 lib/layouts/stdtitle.inc:68
 #: lib/layouts/svjour.inc:156
 msgid "Author"
@@ -5829,10 +5847,10 @@ msgstr "Abstrakt---"
 #: lib/layouts/ijmpc.layout:75 lib/layouts/ijmpd.layout:78
 #: lib/layouts/iopart.layout:199 lib/layouts/isprs.layout:52
 #: lib/layouts/kluwer.layout:282 lib/layouts/paper.layout:172
-#: lib/layouts/revtex4.layout:262 lib/layouts/siamltex.layout:299
+#: lib/layouts/revtex4.layout:262 lib/layouts/siamltex.layout:303
 #: lib/layouts/sigplanconf.layout:146 lib/layouts/spie.layout:41
 #: lib/layouts/svglobal3.layout:66 lib/layouts/agu_stdtitle.inc:120
-#: lib/layouts/amsdefs.inc:167 lib/layouts/svjour.inc:230
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svjour.inc:230
 msgid "Keywords"
 msgstr "Nyckelord"
 
@@ -5852,7 +5870,7 @@ msgstr "Bilagor"
 #: lib/layouts/agutex.layout:204 lib/layouts/beamer.layout:884
 #: lib/layouts/elsarticle.layout:276 lib/layouts/iopart.layout:243
 #: lib/layouts/iopart.layout:265 lib/layouts/iopart.layout:288
-#: lib/layouts/siamltex.layout:314 lib/layouts/sigplanconf.layout:184
+#: lib/layouts/siamltex.layout:318 lib/layouts/sigplanconf.layout:184
 #: lib/layouts/svglobal3.layout:94 lib/layouts/stdstruct.inc:57
 #: lib/layouts/svjour.inc:287
 msgid "BackMatter"
@@ -5862,7 +5880,7 @@ msgstr "EfterText"
 #: lib/layouts/aastex.layout:122 lib/layouts/aastex.layout:453
 #: lib/layouts/ijmpc.layout:315 lib/layouts/ijmpd.layout:326
 #: lib/layouts/kluwer.layout:321 lib/layouts/kluwer.layout:334
-#: src/rowpainter.cpp:525
+#: src/rowpainter.cpp:533
 msgid "Appendix"
 msgstr "Bilaga"
 
@@ -5882,12 +5900,12 @@ msgstr "Bilaga"
 #: lib/layouts/recipebook.layout:48 lib/layouts/report.layout:12
 #: lib/layouts/report.layout:14 lib/layouts/scrbook.layout:22
 #: lib/layouts/scrbook.layout:24 lib/layouts/scrreprt.layout:11
-#: lib/layouts/scrreprt.layout:13 lib/layouts/siamltex.layout:313
+#: lib/layouts/scrreprt.layout:13 lib/layouts/siamltex.layout:317
 #: lib/layouts/simplecv.layout:142 lib/layouts/tufte-book.layout:242
 #: lib/layouts/tufte-book.layout:244 lib/layouts/aguplus.inc:172
-#: lib/layouts/aguplus.inc:174 lib/layouts/amsdefs.inc:202
+#: lib/layouts/aguplus.inc:174 lib/layouts/amsdefs.inc:196
 #: lib/layouts/scrclass.inc:245 lib/layouts/stdstruct.inc:53
-#: lib/layouts/svjour.inc:283 src/frontends/qt4/GuiDocument.cpp:1282
+#: lib/layouts/svjour.inc:283 src/frontends/qt4/GuiDocument.cpp:1285
 msgid "Bibliography"
 msgstr "Bibliografi"
 
@@ -5898,8 +5916,8 @@ msgstr "Bibliografi"
 #: lib/layouts/egs.layout:573 lib/layouts/elsarticle.layout:287
 #: lib/layouts/iopart.layout:276 lib/layouts/iopart.layout:291
 #: lib/layouts/kluwer.layout:342 lib/layouts/kluwer.layout:354
-#: lib/layouts/llncs.layout:279 lib/layouts/siamltex.layout:328
-#: lib/layouts/amsdefs.inc:216 lib/layouts/stdstruct.inc:68
+#: lib/layouts/llncs.layout:279 lib/layouts/siamltex.layout:332
+#: lib/layouts/amsdefs.inc:210 lib/layouts/stdstruct.inc:68
 #: lib/layouts/svjour.inc:298 src/output_plaintext.cpp:145
 msgid "References"
 msgstr "Referenser"
@@ -5919,7 +5937,7 @@ msgstr "BiografiIngetFoto"
 #: lib/layouts/IEEEtran.layout:306 lib/layouts/beamer.layout:1054
 #: lib/layouts/foils.layout:281 lib/layouts/ijmpc.layout:225
 #: lib/layouts/ijmpd.layout:225 lib/layouts/llncs.layout:381
-#: lib/layouts/siamltex.layout:166 lib/layouts/svjour.inc:398
+#: lib/layouts/siamltex.layout:170 lib/layouts/svjour.inc:398
 #: lib/layouts/theorems-proof.inc:30
 msgid "Proof."
 msgstr "Bevis."
@@ -5927,7 +5945,7 @@ msgstr "Bevis."
 #: lib/layouts/aa.layout:42 lib/layouts/aa.layout:229
 #: lib/layouts/aapaper.layout:64 lib/layouts/aapaper.layout:137
 #: lib/layouts/aastex.layout:67 lib/layouts/aastex.layout:177
-#: lib/layouts/amsart.layout:63 lib/layouts/amsbook.layout:51
+#: lib/layouts/amsart.layout:63 lib/layouts/amsbook.layout:54
 #: lib/layouts/apa.layout:310 lib/layouts/beamer.layout:112
 #: lib/layouts/beamer.layout:143 lib/layouts/beamer.layout:144
 #: lib/layouts/beamer.layout:187 lib/layouts/egs.layout:30
@@ -5938,7 +5956,7 @@ msgstr "Bevis."
 #: lib/layouts/memoir.layout:70 lib/layouts/memoir.layout:134
 #: lib/layouts/moderncv.layout:33 lib/layouts/paper.layout:58
 #: lib/layouts/powerdot.layout:226 lib/layouts/revtex.layout:38
-#: lib/layouts/revtex4.layout:59 lib/layouts/siamltex.layout:353
+#: lib/layouts/revtex4.layout:59 lib/layouts/siamltex.layout:357
 #: lib/layouts/simplecv.layout:28 lib/layouts/spie.layout:20
 #: lib/layouts/tufte-book.layout:65 lib/layouts/tufte-book.layout:86
 #: lib/layouts/tufte-book.layout:87 lib/layouts/tufte-handout.layout:23
@@ -5954,7 +5972,7 @@ msgstr "Avsnitt"
 #: lib/layouts/aa.layout:46 lib/layouts/aa.layout:240
 #: lib/layouts/aapaper.layout:68 lib/layouts/aapaper.layout:147
 #: lib/layouts/aastex.layout:71 lib/layouts/aastex.layout:190
-#: lib/layouts/amsart.layout:104 lib/layouts/amsbook.layout:61
+#: lib/layouts/amsart.layout:104 lib/layouts/amsbook.layout:64
 #: lib/layouts/apa.layout:321 lib/layouts/beamer.layout:186
 #: lib/layouts/egs.layout:52 lib/layouts/ijmpc.layout:112
 #: lib/layouts/ijmpd.layout:108 lib/layouts/isprs.layout:168
@@ -5962,7 +5980,7 @@ msgstr "Avsnitt"
 #: lib/layouts/llncs.layout:55 lib/layouts/ltugboat.layout:65
 #: lib/layouts/memoir.layout:76 lib/layouts/moderncv.layout:53
 #: lib/layouts/paper.layout:67 lib/layouts/revtex.layout:50
-#: lib/layouts/revtex4.layout:71 lib/layouts/siamltex.layout:364
+#: lib/layouts/revtex4.layout:71 lib/layouts/siamltex.layout:368
 #: lib/layouts/simplecv.layout:49 lib/layouts/tufte-book.layout:110
 #: lib/layouts/agu_stdsections.inc:43 lib/layouts/aguplus.inc:44
 #: lib/layouts/db_stdsections.inc:39 lib/layouts/numrevtex.inc:15
@@ -5974,14 +5992,14 @@ msgstr "Underavsnitt"
 #: lib/layouts/aa.layout:50 lib/layouts/aa.layout:253
 #: lib/layouts/aapaper.layout:72 lib/layouts/aapaper.layout:159
 #: lib/layouts/aastex.layout:75 lib/layouts/aastex.layout:203
-#: lib/layouts/amsart.layout:127 lib/layouts/amsbook.layout:70
+#: lib/layouts/amsart.layout:127 lib/layouts/amsbook.layout:73
 #: lib/layouts/apa.layout:331 lib/layouts/ijmpc.layout:121
 #: lib/layouts/ijmpd.layout:117 lib/layouts/isprs.layout:178
 #: lib/layouts/kluwer.layout:79 lib/layouts/llncs.layout:64
 #: lib/layouts/ltugboat.layout:85 lib/layouts/memoir.layout:82
 #: lib/layouts/paper.layout:76 lib/layouts/recipebook.layout:97
 #: lib/layouts/revtex.layout:59 lib/layouts/revtex4.layout:80
-#: lib/layouts/siamltex.layout:373 lib/layouts/agu_stdsections.inc:54
+#: lib/layouts/siamltex.layout:377 lib/layouts/agu_stdsections.inc:54
 #: lib/layouts/db_stdsections.inc:48 lib/layouts/numrevtex.inc:24
 #: lib/layouts/scrclass.inc:84 lib/layouts/stdsections.inc:105
 #: lib/layouts/svjour.inc:73
@@ -6046,8 +6064,8 @@ msgstr "Undertitel"
 #: lib/layouts/iopart.layout:145 lib/layouts/isprs.layout:114
 #: lib/layouts/kluwer.layout:182 lib/layouts/revtex.layout:120
 #: lib/layouts/revtex4.layout:183 lib/layouts/scrlettr.layout:139
-#: lib/layouts/scrlttr2.layout:47 lib/layouts/siamltex.layout:274
-#: lib/layouts/aapaper.inc:29 lib/layouts/amsdefs.inc:124
+#: lib/layouts/scrlttr2.layout:47 lib/layouts/siamltex.layout:278
+#: lib/layouts/aapaper.inc:29 lib/layouts/amsdefs.inc:118
 #: lib/layouts/lyxmacros.inc:44
 msgid "Address"
 msgstr "Adress"
@@ -6072,9 +6090,9 @@ msgstr "Post"
 #: lib/layouts/lettre.layout:51 lib/layouts/lettre.layout:213
 #: lib/layouts/powerdot.layout:87 lib/layouts/revtex.layout:110
 #: lib/layouts/revtex4.layout:141 lib/layouts/scrlettr.layout:160
-#: lib/layouts/scrlttr2.layout:239 lib/layouts/siamltex.layout:224
+#: lib/layouts/scrlttr2.layout:239 lib/layouts/siamltex.layout:228
 #: lib/layouts/tufte-book.layout:42 lib/layouts/agu_stdtitle.inc:238
-#: lib/layouts/amsdefs.inc:73 lib/layouts/db_stdtitle.inc:35
+#: lib/layouts/amsdefs.inc:67 lib/layouts/db_stdtitle.inc:35
 #: lib/layouts/scrclass.inc:184 lib/layouts/stdtitle.inc:87
 #: lib/layouts/svjour.inc:185 lib/ui/stdmenus.inc:373
 #: lib/external_templates:340 lib/external_templates:341
@@ -6123,7 +6141,7 @@ msgstr "epost"
 #: lib/layouts/iopart.layout:160 lib/layouts/latex8.layout:64
 #: lib/layouts/lettre.layout:45 lib/layouts/lettre.layout:398
 #: lib/layouts/llncs.layout:236 lib/layouts/svglobal3.layout:45
-#: lib/layouts/aapaper.inc:46 lib/layouts/amsdefs.inc:151
+#: lib/layouts/aapaper.inc:46 lib/layouts/amsdefs.inc:145
 #: lib/layouts/db_stdcharstyles.inc:71 lib/layouts/db_stdcharstyles.inc:73
 msgid "Email"
 msgstr "Epost"
@@ -6134,7 +6152,7 @@ msgid "Thesaurus"
 msgstr "Synonymordbok"
 
 #: lib/layouts/aastex.layout:79 lib/layouts/agutex.layout:149
-#: lib/layouts/amsbook.layout:126 lib/layouts/apa.layout:341
+#: lib/layouts/amsbook.layout:127 lib/layouts/apa.layout:341
 #: lib/layouts/egs.layout:71 lib/layouts/kluwer.layout:89
 #: lib/layouts/llncs.layout:73 lib/layouts/ltugboat.layout:105
 #: lib/layouts/memoir.layout:88 lib/layouts/paper.layout:85
@@ -6222,10 +6240,10 @@ msgstr "Ämnesrubriker:"
 msgid "[Acknowledgements]"
 msgstr "[Erkännanden]"
 
-#: lib/layouts/aastex.layout:404 src/frontends/qt4/GuiDocument.cpp:1933
-#: src/frontends/qt4/GuiDocument.cpp:1945
-#: src/frontends/qt4/GuiDocument.cpp:2037
-#: src/frontends/qt4/GuiDocument.cpp:2056
+#: lib/layouts/aastex.layout:404 src/frontends/qt4/GuiDocument.cpp:1936
+#: src/frontends/qt4/GuiDocument.cpp:1948
+#: src/frontends/qt4/GuiDocument.cpp:2040
+#: src/frontends/qt4/GuiDocument.cpp:2059
 msgid "and"
 msgstr "och"
 
@@ -6382,8 +6400,8 @@ msgstr "Författare tillhörighet:"
 
 #: lib/layouts/agutex.layout:142 lib/layouts/egs.layout:502
 #: lib/layouts/kluwer.layout:271 lib/layouts/llncs.layout:258
-#: lib/layouts/siamltex.layout:260 lib/layouts/svglobal.layout:52
-#: lib/layouts/svjog.layout:55 lib/layouts/amsdefs.inc:111
+#: lib/layouts/siamltex.layout:264 lib/layouts/svglobal.layout:52
+#: lib/layouts/svjog.layout:55 lib/layouts/amsdefs.inc:105
 #: lib/layouts/svjour.inc:223
 msgid "Abstract."
 msgstr "Abstrakt."
@@ -6392,7 +6410,7 @@ msgstr "Abstrakt."
 msgid "Acknowledgments."
 msgstr "Erkännanden."
 
-#: lib/layouts/amsart.layout:74 lib/layouts/amsbook.layout:82
+#: lib/layouts/amsart.layout:74 lib/layouts/amsbook.layout:83
 #: lib/layouts/beamer.layout:176 lib/layouts/egs.layout:583
 #: lib/layouts/ijmpc.layout:105 lib/layouts/ijmpd.layout:101
 #: lib/layouts/isprs.layout:188 lib/layouts/spie.layout:31
@@ -6418,20 +6436,20 @@ msgstr "Specialavsnitt*"
 msgid "Unnumbered"
 msgstr "Onumrerat"
 
-#: lib/layouts/amsart.layout:116 lib/layouts/amsbook.layout:91
+#: lib/layouts/amsart.layout:116 lib/layouts/amsbook.layout:92
 #: lib/layouts/beamer.layout:220 lib/layouts/egs.layout:603
 #: lib/layouts/isprs.layout:199 lib/layouts/aguplus.inc:52
 #: lib/layouts/db_stdstarsections.inc:48 lib/layouts/stdstarsections.inc:45
 msgid "Subsection*"
 msgstr "Underavsnitt*"
 
-#: lib/layouts/amsart.layout:137 lib/layouts/amsbook.layout:99
+#: lib/layouts/amsart.layout:137 lib/layouts/amsbook.layout:100
 #: lib/layouts/isprs.layout:208 lib/layouts/db_stdstarsections.inc:60
 #: lib/layouts/stdstarsections.inc:56
 msgid "Subsubsection*"
 msgstr "Underunderavsnitt*"
 
-#: lib/layouts/amsbook.layout:135
+#: lib/layouts/amsbook.layout:136
 msgid "Chapter Exercises"
 msgstr "Kapitelövningar"
 
@@ -6957,7 +6975,7 @@ msgid "CURTAIN"
 msgstr "RIDÅ"
 
 #: lib/layouts/broadway.layout:212 lib/layouts/egs.layout:227
-#: lib/layouts/hollywood.layout:305 lib/layouts/siamltex.layout:294
+#: lib/layouts/hollywood.layout:305 lib/layouts/siamltex.layout:298
 #: lib/layouts/lyxmacros.inc:65
 msgid "Right Address"
 msgstr "Höger adress"
@@ -7080,8 +7098,8 @@ msgstr "Sänd till adress"
 #: lib/layouts/elsart.layout:139 lib/layouts/g-brief.layout:185
 #: lib/layouts/g-brief2.layout:726 lib/layouts/revtex.layout:132
 #: lib/layouts/revtex4.layout:186 lib/layouts/scrlettr.layout:142
-#: lib/layouts/scrlttr2.layout:62 lib/layouts/siamltex.layout:286
-#: lib/layouts/amsdefs.inc:136
+#: lib/layouts/scrlttr2.layout:62 lib/layouts/siamltex.layout:290
+#: lib/layouts/amsdefs.inc:130
 msgid "Address:"
 msgstr "Adress:"
 
@@ -7207,7 +7225,7 @@ msgstr "Lokalisering:"
 #: lib/layouts/g-brief2.layout:810 lib/layouts/lettre.layout:226
 #: lib/layouts/revtex.layout:112 lib/layouts/revtex4.layout:143
 #: lib/layouts/scrlettr.layout:163 lib/layouts/scrlttr2.layout:243
-#: lib/layouts/siamltex.layout:236 lib/layouts/amsdefs.inc:86
+#: lib/layouts/siamltex.layout:240 lib/layouts/amsdefs.inc:80
 msgid "Date:"
 msgstr "Datum:"
 
@@ -7576,12 +7594,12 @@ msgid "Author URL"
 msgstr "Författare URL"
 
 #: lib/layouts/elsart.layout:179 lib/layouts/revtex4.layout:219
-#: lib/layouts/amsdefs.inc:163
+#: lib/layouts/amsdefs.inc:157
 msgid "URL:"
 msgstr "URL:"
 
 #: lib/layouts/elsart.layout:191 lib/layouts/revtex4.layout:190
-#: lib/layouts/amsdefs.inc:174
+#: lib/layouts/amsdefs.inc:168
 msgid "Thanks"
 msgstr "Tack"
 
@@ -7685,7 +7703,7 @@ msgstr "Korresponderande författare"
 msgid "Corresponding author text:"
 msgstr "Korresponderande författare text:"
 
-#: lib/layouts/entcs.layout:110 lib/layouts/siamltex.layout:302
+#: lib/layouts/entcs.layout:110 lib/layouts/siamltex.layout:306
 #: lib/layouts/svjour.inc:244
 msgid "Key words:"
 msgstr "Nyckelord:"
@@ -7831,12 +7849,12 @@ msgstr "Proposition #."
 msgid "Definition #."
 msgstr "Definition #."
 
-#: lib/layouts/foils.layout:292 lib/layouts/siamltex.layout:68
+#: lib/layouts/foils.layout:292 lib/layouts/siamltex.layout:72
 #: lib/layouts/theorems-order.inc:10 lib/layouts/theorems-starred.inc:23
 msgid "Theorem*"
 msgstr "Teorem*"
 
-#: lib/layouts/foils.layout:299 lib/layouts/siamltex.layout:88
+#: lib/layouts/foils.layout:299 lib/layouts/siamltex.layout:92
 #: lib/layouts/theorems-order.inc:22 lib/layouts/theorems-starred.inc:80
 msgid "Lemma*"
 msgstr "Lemma*"
@@ -7845,12 +7863,12 @@ msgstr "Lemma*"
 msgid "Lemma."
 msgstr "Lemma."
 
-#: lib/layouts/foils.layout:306 lib/layouts/siamltex.layout:78
+#: lib/layouts/foils.layout:306 lib/layouts/siamltex.layout:82
 #: lib/layouts/theorems-order.inc:16 lib/layouts/theorems-starred.inc:63
 msgid "Corollary*"
 msgstr "Korollarium*"
 
-#: lib/layouts/foils.layout:313 lib/layouts/siamltex.layout:98
+#: lib/layouts/foils.layout:313 lib/layouts/siamltex.layout:102
 #: lib/layouts/theorems-order.inc:28 lib/layouts/theorems-starred.inc:97
 msgid "Proposition*"
 msgstr "Proposition*"
@@ -7859,7 +7877,7 @@ msgstr "Proposition*"
 msgid "Proposition."
 msgstr "Proposition."
 
-#: lib/layouts/foils.layout:320 lib/layouts/siamltex.layout:127
+#: lib/layouts/foils.layout:320 lib/layouts/siamltex.layout:131
 #: lib/layouts/theorems-order.inc:40 lib/layouts/theorems-starred.inc:148
 msgid "Definition*"
 msgstr "Definition*"
@@ -8825,7 +8843,7 @@ msgstr "Preprint"
 msgid "AltAffiliation"
 msgstr "AltTillhörighet"
 
-#: lib/layouts/revtex4.layout:193 lib/layouts/amsdefs.inc:177
+#: lib/layouts/revtex4.layout:193 lib/layouts/amsdefs.inc:171
 msgid "Thanks:"
 msgstr "Tack:"
 
@@ -9007,26 +9025,26 @@ msgstr "Förloppsinnehåll"
 msgid "[Progress Contents]"
 msgstr "[Förloppsinnehåll]"
 
-#: lib/layouts/siamltex.layout:107 lib/layouts/theorems-order.inc:34
+#: lib/layouts/siamltex.layout:111 lib/layouts/theorems-order.inc:34
 #: lib/layouts/theorems-starred.inc:114
 msgid "Conjecture*"
 msgstr "Förmodan*"
 
-#: lib/layouts/siamltex.layout:117
+#: lib/layouts/siamltex.layout:121
 #: lib/layouts/theorems-ams-extended-bytype.module:94
 #: lib/layouts/theorems-ams-extended.module:88
 msgid "Algorithm*"
 msgstr "Algoritm*"
 
-#: lib/layouts/siamltex.layout:131
+#: lib/layouts/siamltex.layout:135
 msgid "AMS"
 msgstr "AMS"
 
-#: lib/layouts/siamltex.layout:306 lib/layouts/amsdefs.inc:195
+#: lib/layouts/siamltex.layout:310 lib/layouts/amsdefs.inc:189
 msgid "Subjectclass"
 msgstr "Ämnesklass"
 
-#: lib/layouts/siamltex.layout:309
+#: lib/layouts/siamltex.layout:313
 msgid "AMS subject classifications:"
 msgstr "AMS ämnesklassifikationer:"
 
@@ -9589,39 +9607,39 @@ msgstr "Tabellbildtext"
 msgid "TableCaption"
 msgstr "Tabellbildtext"
 
-#: lib/layouts/amsdefs.inc:144
+#: lib/layouts/amsdefs.inc:138
 msgid "Current Address"
 msgstr "Aktuell adress"
 
-#: lib/layouts/amsdefs.inc:147
+#: lib/layouts/amsdefs.inc:141
 msgid "Current address:"
 msgstr "Aktuell adress:"
 
-#: lib/layouts/amsdefs.inc:155
+#: lib/layouts/amsdefs.inc:149
 msgid "E-mail address:"
 msgstr "E-postadress:"
 
-#: lib/layouts/amsdefs.inc:170
+#: lib/layouts/amsdefs.inc:164
 msgid "Key words and phrases:"
 msgstr "Nyckelord och fraser:"
 
-#: lib/layouts/amsdefs.inc:181
+#: lib/layouts/amsdefs.inc:175
 msgid "Dedicatory"
 msgstr "Dedikation"
 
-#: lib/layouts/amsdefs.inc:184 lib/layouts/svjour.inc:120
+#: lib/layouts/amsdefs.inc:178 lib/layouts/svjour.inc:120
 msgid "Dedication:"
 msgstr "Dedikation:"
 
-#: lib/layouts/amsdefs.inc:188
+#: lib/layouts/amsdefs.inc:182
 msgid "Translator"
 msgstr "Översättare"
 
-#: lib/layouts/amsdefs.inc:191
+#: lib/layouts/amsdefs.inc:185
 msgid "Translator:"
 msgstr "Översättare:"
 
-#: lib/layouts/amsdefs.inc:198
+#: lib/layouts/amsdefs.inc:192
 msgid "2000 Mathematics Subject Classification:"
 msgstr "2000 Mathematics Subject Classification:"
 
@@ -9872,7 +9890,7 @@ msgstr "Nedtonad"
 msgid "ERT"
 msgstr "ERT"
 
-#: lib/layouts/stdinsets.inc:168 src/frontends/qt4/GuiDocument.cpp:1287
+#: lib/layouts/stdinsets.inc:168 src/frontends/qt4/GuiDocument.cpp:1290
 msgid "Listings"
 msgstr "Listningar"
 
@@ -11344,7 +11362,7 @@ msgstr "Unicode (XeTeX) (utf8)"
 msgid "ASCII"
 msgstr "ASCII"
 
-#: lib/ui/classic.ui:34 lib/ui/stdcontext.inc:411 lib/ui/stdmenus.inc:30
+#: lib/ui/classic.ui:34 lib/ui/stdcontext.inc:417 lib/ui/stdmenus.inc:30
 msgid "File|F"
 msgstr "Arkiv|r"
 
@@ -11452,7 +11470,7 @@ msgstr "Ångra senaste inskickning"
 msgid "Show History...|H"
 msgstr "Visa historia...|h"
 
-#: lib/ui/classic.ui:84 lib/ui/stdmenus.inc:91
+#: lib/ui/classic.ui:84
 msgid "Custom...|C"
 msgstr "Anpassad..."
 
@@ -11588,7 +11606,7 @@ msgstr "Växla kolumner"
 msgid "Left|L"
 msgstr "Vänster"
 
-#: lib/ui/classic.ui:144 lib/ui/stdcontext.inc:385 lib/ui/stdmenus.inc:197
+#: lib/ui/classic.ui:144 lib/ui/stdcontext.inc:391 lib/ui/stdmenus.inc:197
 msgid "Center|C"
 msgstr "Centrerad|C"
 
@@ -11596,15 +11614,15 @@ msgstr "Centrerad|C"
 msgid "Right|R"
 msgstr "Höger|r"
 
-#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:389 lib/ui/stdmenus.inc:200
+#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:395 lib/ui/stdmenus.inc:200
 msgid "Top|T"
 msgstr "Topp|T"
 
-#: lib/ui/classic.ui:148 lib/ui/stdcontext.inc:390 lib/ui/stdmenus.inc:201
+#: lib/ui/classic.ui:148 lib/ui/stdcontext.inc:396 lib/ui/stdmenus.inc:201
 msgid "Middle|M"
 msgstr "Mitten|M"
 
-#: lib/ui/classic.ui:149 lib/ui/stdcontext.inc:391 lib/ui/stdmenus.inc:202
+#: lib/ui/classic.ui:149 lib/ui/stdcontext.inc:397 lib/ui/stdmenus.inc:202
 msgid "Bottom|B"
 msgstr "Botten|B"
 
@@ -11636,7 +11654,7 @@ msgstr "Justering"
 msgid "Add Row|R"
 msgstr "Lägg till rad|r"
 
-#: lib/ui/classic.ui:173 lib/ui/stdcontext.inc:394 lib/ui/stdmenus.inc:205
+#: lib/ui/classic.ui:173 lib/ui/stdcontext.inc:400 lib/ui/stdmenus.inc:205
 msgid "Delete Row|D"
 msgstr "Radera rad|d"
 
@@ -11644,7 +11662,7 @@ msgstr "Radera rad|d"
 msgid "Add Column|C"
 msgstr "Lägg till kolumn"
 
-#: lib/ui/classic.ui:178 lib/ui/stdcontext.inc:399 lib/ui/stdmenus.inc:210
+#: lib/ui/classic.ui:178 lib/ui/stdcontext.inc:405 lib/ui/stdmenus.inc:210
 msgid "Delete Column|e"
 msgstr "Radera kolumn|e"
 
@@ -11833,11 +11851,11 @@ msgstr "Ligaturbrytning"
 msgid "Protected Space|r"
 msgstr "Skyddat mellanrum|r"
 
-#: lib/ui/classic.ui:250 lib/ui/stdcontext.inc:196 lib/ui/stdmenus.inc:394
+#: lib/ui/classic.ui:250 lib/ui/stdcontext.inc:202 lib/ui/stdmenus.inc:394
 msgid "Interword Space|w"
 msgstr "Rum mellan ord"
 
-#: lib/ui/classic.ui:251 lib/ui/stdcontext.inc:198 lib/ui/stdcontext.inc:221
+#: lib/ui/classic.ui:251 lib/ui/stdcontext.inc:204 lib/ui/stdcontext.inc:227
 #: lib/ui/stdmenus.inc:395
 msgid "Thin Space|T"
 msgstr "Tunt mellanrum|T"
@@ -12012,7 +12030,7 @@ msgstr "Floatflt figur"
 msgid "Table of Contents|C"
 msgstr "Innehållsförteckning"
 
-#: lib/ui/classic.ui:318 src/frontends/qt4/Menus.cpp:1401
+#: lib/ui/classic.ui:318 src/frontends/qt4/Menus.cpp:1404
 msgid "Index List|I"
 msgstr "Indexlista|I"
 
@@ -12350,16 +12368,17 @@ msgstr "Textuell referens|x"
 
 #: lib/ui/stdcontext.inc:98 lib/ui/stdcontext.inc:110
 #: lib/ui/stdcontext.inc:120 lib/ui/stdcontext.inc:128
-#: lib/ui/stdcontext.inc:142 lib/ui/stdcontext.inc:149
-#: lib/ui/stdcontext.inc:214 lib/ui/stdcontext.inc:232
-#: lib/ui/stdcontext.inc:259 lib/ui/stdcontext.inc:353
-#: lib/ui/stdcontext.inc:366 lib/ui/stdcontext.inc:428
-#: lib/ui/stdcontext.inc:448 lib/ui/stdcontext.inc:459
-#: lib/ui/stdcontext.inc:467 lib/ui/stdcontext.inc:477
-#: lib/ui/stdcontext.inc:485 lib/ui/stdcontext.inc:493
-#: lib/ui/stdcontext.inc:501 lib/ui/stdcontext.inc:514
-#: lib/ui/stdcontext.inc:524 lib/ui/stdcontext.inc:545
-#: lib/ui/stdcontext.inc:553 lib/ui/stdcontext.inc:598 lib/ui/stdmenus.inc:506
+#: lib/ui/stdcontext.inc:137 lib/ui/stdcontext.inc:148
+#: lib/ui/stdcontext.inc:155 lib/ui/stdcontext.inc:220
+#: lib/ui/stdcontext.inc:238 lib/ui/stdcontext.inc:265
+#: lib/ui/stdcontext.inc:359 lib/ui/stdcontext.inc:372
+#: lib/ui/stdcontext.inc:434 lib/ui/stdcontext.inc:454
+#: lib/ui/stdcontext.inc:465 lib/ui/stdcontext.inc:473
+#: lib/ui/stdcontext.inc:483 lib/ui/stdcontext.inc:491
+#: lib/ui/stdcontext.inc:499 lib/ui/stdcontext.inc:507
+#: lib/ui/stdcontext.inc:520 lib/ui/stdcontext.inc:530
+#: lib/ui/stdcontext.inc:551 lib/ui/stdcontext.inc:559
+#: lib/ui/stdcontext.inc:604 lib/ui/stdmenus.inc:506
 msgid "Settings...|S"
 msgstr "Inställningar..."
 
@@ -12367,7 +12386,7 @@ msgstr "Inställningar..."
 msgid "Go Back|G"
 msgstr "Gå tillbaka|G"
 
-#: lib/ui/stdcontext.inc:108 lib/ui/stdcontext.inc:445
+#: lib/ui/stdcontext.inc:108 lib/ui/stdcontext.inc:451
 msgid "Copy as Reference|C"
 msgstr "Kopiera som referens"
 
@@ -12375,521 +12394,521 @@ msgstr "Kopiera som referens"
 msgid "Edit Database(s) Externally...|x"
 msgstr "Redigera databas(er) externt...|x"
 
-#: lib/ui/stdcontext.inc:138
+#: lib/ui/stdcontext.inc:144
 msgid "Open Inset|O"
 msgstr "Öppna insättning"
 
-#: lib/ui/stdcontext.inc:139
+#: lib/ui/stdcontext.inc:145
 msgid "Close Inset|C"
 msgstr "Stäng insättning"
 
-#: lib/ui/stdcontext.inc:141 lib/ui/stdcontext.inc:147
-#: lib/ui/stdcontext.inc:189 lib/ui/stdcontext.inc:561
+#: lib/ui/stdcontext.inc:147 lib/ui/stdcontext.inc:153
+#: lib/ui/stdcontext.inc:195 lib/ui/stdcontext.inc:567
 msgid "Dissolve Inset|D"
 msgstr "Lös upp insättning|L"
 
-#: lib/ui/stdcontext.inc:146
+#: lib/ui/stdcontext.inc:152
 msgid "Show Label|L"
 msgstr "Visa etikett"
 
-#: lib/ui/stdcontext.inc:157 lib/ui/stdmenus.inc:462
+#: lib/ui/stdcontext.inc:163 lib/ui/stdmenus.inc:462
 msgid "Frameless|l"
 msgstr "Ramlös|l"
 
-#: lib/ui/stdcontext.inc:158 lib/ui/stdmenus.inc:463
+#: lib/ui/stdcontext.inc:164 lib/ui/stdmenus.inc:463
 msgid "Simple Frame|F"
 msgstr "Enkel ram"
 
-#: lib/ui/stdcontext.inc:159
+#: lib/ui/stdcontext.inc:165
 msgid "Simple Frame, Page Breaks|P"
 msgstr "Enkel ram, sidbrytningar"
 
-#: lib/ui/stdcontext.inc:160 lib/ui/stdmenus.inc:464
+#: lib/ui/stdcontext.inc:166 lib/ui/stdmenus.inc:464
 msgid "Oval, Thin|a"
 msgstr "Oval, tunn|a"
 
-#: lib/ui/stdcontext.inc:161 lib/ui/stdmenus.inc:465
+#: lib/ui/stdcontext.inc:167 lib/ui/stdmenus.inc:465
 msgid "Oval, Thick|v"
 msgstr "Oval, tjock|v"
 
-#: lib/ui/stdcontext.inc:162 lib/ui/stdmenus.inc:466
+#: lib/ui/stdcontext.inc:168 lib/ui/stdmenus.inc:466
 msgid "Drop Shadow|w"
 msgstr "Fallskugga"
 
-#: lib/ui/stdcontext.inc:163 lib/ui/stdmenus.inc:467
+#: lib/ui/stdcontext.inc:169 lib/ui/stdmenus.inc:467
 msgid "Shaded Background|B"
 msgstr "Skuggad bakgrund|b"
 
-#: lib/ui/stdcontext.inc:164 lib/ui/stdmenus.inc:468
+#: lib/ui/stdcontext.inc:170 lib/ui/stdmenus.inc:468
 msgid "Double Frame|u"
 msgstr "Dubbel ram|u"
 
-#: lib/ui/stdcontext.inc:172 lib/ui/stdmenus.inc:472
+#: lib/ui/stdcontext.inc:178 lib/ui/stdmenus.inc:472
 msgid "LyX Note|N"
 msgstr "LyX-not|n"
 
-#: lib/ui/stdcontext.inc:173
+#: lib/ui/stdcontext.inc:179
 msgid "Comment|m"
 msgstr "Kommentar|m"
 
-#: lib/ui/stdcontext.inc:174 lib/ui/stdmenus.inc:474
+#: lib/ui/stdcontext.inc:180 lib/ui/stdmenus.inc:474
 msgid "Greyed Out|G"
 msgstr "Nedtonad"
 
-#: lib/ui/stdcontext.inc:176
+#: lib/ui/stdcontext.inc:182
 msgid "Open All Notes|A"
 msgstr "Öppna alla noter|a"
 
-#: lib/ui/stdcontext.inc:177
+#: lib/ui/stdcontext.inc:183
 msgid "Close All Notes|l"
 msgstr "Stäng alla noter|l"
 
-#: lib/ui/stdcontext.inc:185 lib/ui/stdmenus.inc:484
+#: lib/ui/stdcontext.inc:191 lib/ui/stdmenus.inc:484
 msgid "Phantom|P"
 msgstr "Fantom"
 
-#: lib/ui/stdcontext.inc:186 lib/ui/stdmenus.inc:485
+#: lib/ui/stdcontext.inc:192 lib/ui/stdmenus.inc:485
 msgid "Horizontal Phantom|H"
 msgstr "Horisontell fantom|H"
 
-#: lib/ui/stdcontext.inc:187 lib/ui/stdmenus.inc:486
+#: lib/ui/stdcontext.inc:193 lib/ui/stdmenus.inc:486
 msgid "Vertical Phantom|V"
 msgstr "Vertikal fantom|V"
 
-#: lib/ui/stdcontext.inc:197
+#: lib/ui/stdcontext.inc:203
 msgid "Protected Space|o"
 msgstr "Skyddat mellanrum"
 
-#: lib/ui/stdcontext.inc:199 lib/ui/stdcontext.inc:224
+#: lib/ui/stdcontext.inc:205 lib/ui/stdcontext.inc:230
 msgid "Negative Thin Space|N"
 msgstr "Negativt tunt mellanrum|N"
 
-#: lib/ui/stdcontext.inc:200 lib/ui/stdcontext.inc:227
+#: lib/ui/stdcontext.inc:206 lib/ui/stdcontext.inc:233
 msgid "Half Quad Space (Enskip)|k"
 msgstr "Halvt quad mellanrum (Enskip)|k"
 
-#: lib/ui/stdcontext.inc:201
+#: lib/ui/stdcontext.inc:207
 msgid "Protected Half Quad Space (Enspace)|E"
 msgstr "Skyddat halvt quad mellanrum (Enspace)|E"
 
-#: lib/ui/stdcontext.inc:202 lib/ui/stdcontext.inc:228
+#: lib/ui/stdcontext.inc:208 lib/ui/stdcontext.inc:234
 msgid "Quad Space|Q"
 msgstr "Quad mellanrum|Q"
 
-#: lib/ui/stdcontext.inc:203 lib/ui/stdcontext.inc:229
+#: lib/ui/stdcontext.inc:209 lib/ui/stdcontext.inc:235
 msgid "Double Quad Space|u"
 msgstr "Dubbelt quad mellanrum|u"
 
-#: lib/ui/stdcontext.inc:204
+#: lib/ui/stdcontext.inc:210
 msgid "Horizontal Fill|F"
 msgstr "Horisontell fyllning|f"
 
-#: lib/ui/stdcontext.inc:205
+#: lib/ui/stdcontext.inc:211
 msgid "Protected Horizontal Fill|i"
 msgstr "Skyddad horisontell fyllning|i"
 
-#: lib/ui/stdcontext.inc:206
+#: lib/ui/stdcontext.inc:212
 msgid "Horizontal Fill (Dots)|D"
 msgstr "Horisontell fyllning (punkter)"
 
-#: lib/ui/stdcontext.inc:207
+#: lib/ui/stdcontext.inc:213
 msgid "Horizontal Fill (Rule)|R"
 msgstr "Horisontell fyllning (linjal)|r"
 
-#: lib/ui/stdcontext.inc:208
+#: lib/ui/stdcontext.inc:214
 msgid "Horizontal Fill (Left Arrow)|L"
 msgstr "Horisontell fyllning (vänster pil)|l"
 
-#: lib/ui/stdcontext.inc:209
+#: lib/ui/stdcontext.inc:215
 msgid "Horizontal Fill (Right Arrow)|g"
 msgstr "Horisontell fyllning (höger pil)|g"
 
-#: lib/ui/stdcontext.inc:210
+#: lib/ui/stdcontext.inc:216
 msgid "Horizontal Fill (Up Brace)|p"
 msgstr "Horisontell fyllning (uppklammer)|p"
 
-#: lib/ui/stdcontext.inc:211
+#: lib/ui/stdcontext.inc:217
 msgid "Horizontal Fill (Down Brace)|B"
 msgstr "Horisontell fyllning (nedklammer)"
 
-#: lib/ui/stdcontext.inc:212 lib/ui/stdcontext.inc:230
+#: lib/ui/stdcontext.inc:218 lib/ui/stdcontext.inc:236
 msgid "Custom Length|C"
 msgstr "Anpassad längd"
 
-#: lib/ui/stdcontext.inc:222
+#: lib/ui/stdcontext.inc:228
 msgid "Medium Space|M"
 msgstr "Medium mellanrum|M"
 
-#: lib/ui/stdcontext.inc:223
+#: lib/ui/stdcontext.inc:229
 msgid "Thick Space|h"
 msgstr "Tjockt mellanrum"
 
-#: lib/ui/stdcontext.inc:225
+#: lib/ui/stdcontext.inc:231
 msgid "Negative Medium Space|u"
 msgstr "Negativt medium mellanrum|u"
 
-#: lib/ui/stdcontext.inc:226
+#: lib/ui/stdcontext.inc:232
 msgid "Negative Thick Space|i"
 msgstr "Negativt tjockt mellanrum|i"
 
-#: lib/ui/stdcontext.inc:239
+#: lib/ui/stdcontext.inc:245
 msgid "DefSkip|D"
 msgstr "Standard avstånd|d"
 
-#: lib/ui/stdcontext.inc:240
+#: lib/ui/stdcontext.inc:246
 msgid "SmallSkip|S"
 msgstr "Litet avstånd|s"
 
-#: lib/ui/stdcontext.inc:241
+#: lib/ui/stdcontext.inc:247
 msgid "MedSkip|M"
 msgstr "Medium avstånd|M"
 
-#: lib/ui/stdcontext.inc:242
+#: lib/ui/stdcontext.inc:248
 msgid "BigSkip|B"
 msgstr "Stort avstånd"
 
-#: lib/ui/stdcontext.inc:243
+#: lib/ui/stdcontext.inc:249
 msgid "VFill|F"
 msgstr "Vertikal fyllning|f"
 
-#: lib/ui/stdcontext.inc:244
+#: lib/ui/stdcontext.inc:250
 msgid "Custom|C"
 msgstr "Anpassad"
 
-#: lib/ui/stdcontext.inc:246
+#: lib/ui/stdcontext.inc:252
 msgid "Settings...|e"
 msgstr "Inställningar..."
 
-#: lib/ui/stdcontext.inc:253 lib/ui/stdcontext.inc:508
+#: lib/ui/stdcontext.inc:259 lib/ui/stdcontext.inc:514
 msgid "Include|c"
 msgstr "Inkludering"
 
-#: lib/ui/stdcontext.inc:254 lib/ui/stdcontext.inc:509
+#: lib/ui/stdcontext.inc:260 lib/ui/stdcontext.inc:515
 msgid "Input|p"
 msgstr "Inmatning"
 
-#: lib/ui/stdcontext.inc:255 lib/ui/stdcontext.inc:510
+#: lib/ui/stdcontext.inc:261 lib/ui/stdcontext.inc:516
 msgid "Verbatim|V"
 msgstr "Verbatim|V"
 
-#: lib/ui/stdcontext.inc:256 lib/ui/stdcontext.inc:511
+#: lib/ui/stdcontext.inc:262 lib/ui/stdcontext.inc:517
 msgid "Verbatim (marked blanks)|b"
 msgstr "Verbatim (märkta blanksteg)|b"
 
-#: lib/ui/stdcontext.inc:257 lib/ui/stdcontext.inc:512
+#: lib/ui/stdcontext.inc:263 lib/ui/stdcontext.inc:518
 msgid "Listing|L"
 msgstr "Listning|L"
 
-#: lib/ui/stdcontext.inc:261 lib/ui/stdcontext.inc:516
+#: lib/ui/stdcontext.inc:267 lib/ui/stdcontext.inc:522
 msgid "Edit Included File...|E"
 msgstr "Redigera inkluderad fil...|e"
 
-#: lib/ui/stdcontext.inc:268 lib/ui/stdmenus.inc:406
+#: lib/ui/stdcontext.inc:274 lib/ui/stdmenus.inc:406
 msgid "New Page|N"
 msgstr "Ny sida|N"
 
-#: lib/ui/stdcontext.inc:269 lib/ui/stdmenus.inc:407
+#: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:407
 msgid "Page Break|a"
 msgstr "Sidbrytning"
 
-#: lib/ui/stdcontext.inc:270 lib/ui/stdmenus.inc:408
+#: lib/ui/stdcontext.inc:276 lib/ui/stdmenus.inc:408
 msgid "Clear Page|C"
 msgstr "Rensa sida"
 
-#: lib/ui/stdcontext.inc:271 lib/ui/stdmenus.inc:409
+#: lib/ui/stdcontext.inc:277 lib/ui/stdmenus.inc:409
 msgid "Clear Double Page|D"
 msgstr "Rensa dubbel sida|d"
 
-#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:403
+#: lib/ui/stdcontext.inc:284 lib/ui/stdmenus.inc:403
 msgid "Ragged Line Break|R"
 msgstr "Skrovlig radbrytning|r"
 
-#: lib/ui/stdcontext.inc:279 lib/ui/stdmenus.inc:404
+#: lib/ui/stdcontext.inc:285 lib/ui/stdmenus.inc:404
 msgid "Justified Line Break|J"
 msgstr "Justerad radbrytning|J"
 
-#: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:102 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:587
+#: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:102 lib/ui/stdtoolbars.inc:80
+#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:588
 msgid "Cut"
 msgstr "Klipp"
 
-#: lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:103 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:596
+#: lib/ui/stdcontext.inc:295 lib/ui/stdmenus.inc:103 lib/ui/stdtoolbars.inc:81
+#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:597
 msgid "Copy"
 msgstr "Kopiera"
 
-#: lib/ui/stdcontext.inc:290 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:82
+#: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:82
 #: src/Text3.cpp:1175 src/mathed/InsetMathGrid.cpp:1327
-#: src/mathed/InsetMathNest.cpp:566
+#: src/mathed/InsetMathNest.cpp:567
 msgid "Paste"
 msgstr "Klistra"
 
-#: lib/ui/stdcontext.inc:291 lib/ui/stdmenus.inc:105
+#: lib/ui/stdcontext.inc:297 lib/ui/stdmenus.inc:105
 msgid "Paste Recent|e"
 msgstr "Klistra senaste|e"
 
-#: lib/ui/stdcontext.inc:293
+#: lib/ui/stdcontext.inc:299
 msgid "Jump Back to Saved Bookmark|B"
 msgstr "Hoppa tillbaka till sparat bokmärke|b"
 
-#: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:528
+#: lib/ui/stdcontext.inc:300 lib/ui/stdmenus.inc:528
 msgid "Forward search|F"
 msgstr "Framåtsökning|F"
 
-#: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:113
+#: lib/ui/stdcontext.inc:302 lib/ui/stdmenus.inc:113
 msgid "Move Paragraph Up|o"
 msgstr "Flytta stycke upp"
 
-#: lib/ui/stdcontext.inc:297 lib/ui/stdmenus.inc:114
+#: lib/ui/stdcontext.inc:303 lib/ui/stdmenus.inc:114
 msgid "Move Paragraph Down|v"
 msgstr "Flytta stycke ned"
 
-#: lib/ui/stdcontext.inc:299
+#: lib/ui/stdcontext.inc:305
 msgid "Promote Section|r"
 msgstr "Höj avsnitt"
 
-#: lib/ui/stdcontext.inc:300
+#: lib/ui/stdcontext.inc:306
 msgid "Demote Section|m"
 msgstr "Sänk avsnitt"
 
-#: lib/ui/stdcontext.inc:301
+#: lib/ui/stdcontext.inc:307
 msgid "Move Section Down|D"
 msgstr "Flytta avsnitt ned|d"
 
-#: lib/ui/stdcontext.inc:302 lib/ui/stdcontext.inc:581
+#: lib/ui/stdcontext.inc:308 lib/ui/stdcontext.inc:587
 msgid "Move Section Up|U"
 msgstr "Flytta avsnitt upp|u"
 
-#: lib/ui/stdcontext.inc:303
+#: lib/ui/stdcontext.inc:309
 msgid "Insert Short Title|T"
 msgstr "Infoga kort titel|t"
 
-#: lib/ui/stdcontext.inc:306 lib/ui/stdcontext.inc:570
+#: lib/ui/stdcontext.inc:312 lib/ui/stdcontext.inc:576
 msgid "Accept Change|c"
 msgstr "Godta ändring"
 
-#: lib/ui/stdcontext.inc:307
+#: lib/ui/stdcontext.inc:313
 msgid "Reject Change|j"
 msgstr "Avvisa ändring"
 
-#: lib/ui/stdcontext.inc:309
+#: lib/ui/stdcontext.inc:315
 msgid "Apply Last Text Style|A"
 msgstr "Tillämpa senaste textstil|a"
 
-#: lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:116
+#: lib/ui/stdcontext.inc:316 lib/ui/stdmenus.inc:116
 msgid "Text Style|S"
 msgstr "Textstil|s"
 
-#: lib/ui/stdcontext.inc:311 lib/ui/stdmenus.inc:118
+#: lib/ui/stdcontext.inc:317 lib/ui/stdmenus.inc:118
 msgid "Paragraph Settings...|P"
 msgstr "Styckeinställningar..."
 
-#: lib/ui/stdcontext.inc:314
+#: lib/ui/stdcontext.inc:320
 msgid "Fullscreen Mode"
 msgstr "Helskärmsläge"
 
-#: lib/ui/stdcontext.inc:322
+#: lib/ui/stdcontext.inc:328
 msgid "Anything|A"
 msgstr "Vad som helst|a"
 
-#: lib/ui/stdcontext.inc:323
+#: lib/ui/stdcontext.inc:329
 msgid "Anything Non-Empty|o"
 msgstr "Vad som helst icke-tomt|o"
 
-#: lib/ui/stdcontext.inc:324
+#: lib/ui/stdcontext.inc:330
 msgid "Any Word|W"
 msgstr "Vilket ord som helst"
 
-#: lib/ui/stdcontext.inc:325
+#: lib/ui/stdcontext.inc:331
 msgid "Any Number|N"
 msgstr "Vilket nummer som helst|n"
 
-#: lib/ui/stdcontext.inc:326
+#: lib/ui/stdcontext.inc:332
 msgid "User Defined|U"
 msgstr "Användardefinierat"
 
-#: lib/ui/stdcontext.inc:335 lib/ui/stdmenus.inc:241
+#: lib/ui/stdcontext.inc:341 lib/ui/stdmenus.inc:241
 msgid "Append Argument"
 msgstr "Tillfoga argument"
 
-#: lib/ui/stdcontext.inc:336 lib/ui/stdmenus.inc:242
+#: lib/ui/stdcontext.inc:342 lib/ui/stdmenus.inc:242
 msgid "Remove Last Argument"
 msgstr "Ta bort sista argument"
 
-#: lib/ui/stdcontext.inc:338
+#: lib/ui/stdcontext.inc:344
 msgid "Make First Non-Optional Into Optional Argument"
 msgstr "Gör första icke-valfria till ett valfritt argument"
 
-#: lib/ui/stdcontext.inc:339
+#: lib/ui/stdcontext.inc:345
 msgid "Make Last Optional Into Non-Optional Argument"
 msgstr "Gör sista valfria till ett icke-valfritt argument"
 
-#: lib/ui/stdcontext.inc:340 lib/ui/stdmenus.inc:246
+#: lib/ui/stdcontext.inc:346 lib/ui/stdmenus.inc:246
 msgid "Insert Optional Argument"
 msgstr "Infoga valfritt argument"
 
-#: lib/ui/stdcontext.inc:341 lib/ui/stdmenus.inc:247
+#: lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:247
 msgid "Remove Optional Argument"
 msgstr "Ta bort valfritt argument"
 
-#: lib/ui/stdcontext.inc:343 lib/ui/stdmenus.inc:249
+#: lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:249
 msgid "Append Argument Eating From the Right"
 msgstr "Tillfoga argument som äter från höger"
 
-#: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:250
+#: lib/ui/stdcontext.inc:350 lib/ui/stdmenus.inc:250
 msgid "Append Optional Argument Eating From the Right"
 msgstr "Tillfoga valfritt argument som äter från höger"
 
-#: lib/ui/stdcontext.inc:345 lib/ui/stdmenus.inc:251
+#: lib/ui/stdcontext.inc:351 lib/ui/stdmenus.inc:251
 msgid "Remove Last Argument Spitting Out to the Right"
 msgstr "Ta bort sista argument som spottar ut till höger"
 
-#: lib/ui/stdcontext.inc:354
+#: lib/ui/stdcontext.inc:360
 msgid "Reload|R"
 msgstr "Ladda om"
 
-#: lib/ui/stdcontext.inc:356 lib/ui/stdcontext.inc:368
-#: lib/ui/stdcontext.inc:469
+#: lib/ui/stdcontext.inc:362 lib/ui/stdcontext.inc:374
+#: lib/ui/stdcontext.inc:475
 msgid "Edit Externally...|x"
 msgstr "Redigera externt...|x"
 
-#: lib/ui/stdcontext.inc:376
+#: lib/ui/stdcontext.inc:382
 msgid "Multicolumn|u"
 msgstr "Multikolumn|u"
 
-#: lib/ui/stdcontext.inc:377
+#: lib/ui/stdcontext.inc:383
 msgid "Multirow|w"
 msgstr "Multirad"
 
-#: lib/ui/stdcontext.inc:379
+#: lib/ui/stdcontext.inc:385
 msgid "Top Line|n"
 msgstr "Topplinje|n"
 
-#: lib/ui/stdcontext.inc:380
+#: lib/ui/stdcontext.inc:386
 msgid "Bottom Line|i"
 msgstr "Bottenlinje|i"
 
-#: lib/ui/stdcontext.inc:381 lib/ui/stdmenus.inc:187
+#: lib/ui/stdcontext.inc:387 lib/ui/stdmenus.inc:187
 msgid "Left Line|L"
 msgstr "Vänster linje|l"
 
-#: lib/ui/stdcontext.inc:382 lib/ui/stdmenus.inc:188
+#: lib/ui/stdcontext.inc:388 lib/ui/stdmenus.inc:188
 msgid "Right Line|R"
 msgstr "Höger linje|r"
 
-#: lib/ui/stdcontext.inc:384
+#: lib/ui/stdcontext.inc:390
 msgid "Left|f"
 msgstr "Vänster"
 
-#: lib/ui/stdcontext.inc:386
+#: lib/ui/stdcontext.inc:392
 msgid "Right|h"
 msgstr "Höger|H"
 
-#: lib/ui/stdcontext.inc:387
+#: lib/ui/stdcontext.inc:393
 msgid "Decimal"
 msgstr "Decimal"
 
-#: lib/ui/stdcontext.inc:393
+#: lib/ui/stdcontext.inc:399
 msgid "Append Row|A"
 msgstr "Tillfoga rad|a"
 
-#: lib/ui/stdcontext.inc:395 lib/ui/stdmenus.inc:206
+#: lib/ui/stdcontext.inc:401 lib/ui/stdmenus.inc:206
 msgid "Copy Row|o"
 msgstr "Kopiera rad|o"
 
-#: lib/ui/stdcontext.inc:398
+#: lib/ui/stdcontext.inc:404
 msgid "Append Column|p"
 msgstr "Tillfoga kolumn"
 
-#: lib/ui/stdcontext.inc:400
+#: lib/ui/stdcontext.inc:406
 msgid "Copy Column|y"
 msgstr "Kopiera kolumn"
 
-#: lib/ui/stdcontext.inc:403
+#: lib/ui/stdcontext.inc:409
 msgid "Settings...|g"
 msgstr "Inställningar...|g"
 
-#: lib/ui/stdcontext.inc:412
+#: lib/ui/stdcontext.inc:418
 msgid "Path|P"
 msgstr "Sökväg"
 
-#: lib/ui/stdcontext.inc:413
+#: lib/ui/stdcontext.inc:419
 msgid "Class|C"
 msgstr "Klass"
 
-#: lib/ui/stdcontext.inc:415
+#: lib/ui/stdcontext.inc:421
 msgid "File Revision|R"
 msgstr "Filrevidering|r"
 
-#: lib/ui/stdcontext.inc:416
+#: lib/ui/stdcontext.inc:422
 msgid "Tree Revision|T"
 msgstr "Trädrevidering|T"
 
-#: lib/ui/stdcontext.inc:417
+#: lib/ui/stdcontext.inc:423
 msgid "Revision Author|A"
 msgstr "Revideringsförfattare|a"
 
-#: lib/ui/stdcontext.inc:418
+#: lib/ui/stdcontext.inc:424
 msgid "Revision Date|D"
 msgstr "Revideringsdatum|d"
 
-#: lib/ui/stdcontext.inc:419
+#: lib/ui/stdcontext.inc:425
 msgid "Revision Time|i"
 msgstr "Revideringstid|i"
 
-#: lib/ui/stdcontext.inc:421
+#: lib/ui/stdcontext.inc:427
 msgid "LyX Version|X"
 msgstr "LyX-version|x"
 
-#: lib/ui/stdcontext.inc:425
+#: lib/ui/stdcontext.inc:431
 msgid "Document Info|D"
 msgstr "Dokumentinfo|D"
 
-#: lib/ui/stdcontext.inc:427
+#: lib/ui/stdcontext.inc:433
 msgid "Copy Text|o"
 msgstr "Kopiera text|o"
 
-#: lib/ui/stdcontext.inc:436 lib/ui/stdcontext.inc:456
+#: lib/ui/stdcontext.inc:442 lib/ui/stdcontext.inc:462
 msgid "Activate Branch|A"
 msgstr "Aktivera gren|A"
 
-#: lib/ui/stdcontext.inc:437 lib/ui/stdcontext.inc:457
+#: lib/ui/stdcontext.inc:443 lib/ui/stdcontext.inc:463
 msgid "Deactivate Branch|e"
 msgstr "Inaktivera gren|e"
 
-#: lib/ui/stdcontext.inc:446
+#: lib/ui/stdcontext.inc:452
 msgid "Insert Reference at Cursor Position|I"
 msgstr "Infoga referens vid markörens position|I"
 
-#: lib/ui/stdcontext.inc:540
+#: lib/ui/stdcontext.inc:546
 msgid "All Indexes|A"
 msgstr "Alla index|A"
 
-#: lib/ui/stdcontext.inc:543
+#: lib/ui/stdcontext.inc:549
 msgid "Subindex|b"
 msgstr "Underindex"
 
-#: lib/ui/stdcontext.inc:571 lib/ui/stdmenus.inc:513
+#: lib/ui/stdcontext.inc:577 lib/ui/stdmenus.inc:513
 msgid "Reject Change|R"
 msgstr "Avvisa ändring|r"
 
-#: lib/ui/stdcontext.inc:579
+#: lib/ui/stdcontext.inc:585
 msgid "Promote Section|P"
 msgstr "Höj avsnitt"
 
-#: lib/ui/stdcontext.inc:580
+#: lib/ui/stdcontext.inc:586
 msgid "Demote Section|D"
 msgstr "Sänk avsnitt"
 
-#: lib/ui/stdcontext.inc:582
+#: lib/ui/stdcontext.inc:588
 msgid "Move Section Down|w"
 msgstr "Flytta avsnitt ned"
 
-#: lib/ui/stdcontext.inc:584
+#: lib/ui/stdcontext.inc:590
 msgid "Select Section|S"
 msgstr "Välj avsnitt|s"
 
-#: lib/ui/stdcontext.inc:591
+#: lib/ui/stdcontext.inc:597
 msgid "Wrap by Preview|P"
 msgstr "Svep med förhandsgranskning"
 
@@ -12940,6 +12959,10 @@ msgstr "Jämför med äldre revidering..."
 #: lib/ui/stdmenus.inc:82
 msgid "Use Locking Property|L"
 msgstr "Använd låsningsegenskap|l"
+
+#: lib/ui/stdmenus.inc:91
+msgid "More Formats & Options...|F"
+msgstr ""
 
 #: lib/ui/stdmenus.inc:100
 msgid "Redo|R"
@@ -13982,7 +14005,7 @@ msgid "Fractions"
 msgstr "Bråk"
 
 #: lib/ui/stdtoolbars.inc:276 lib/ui/stdtoolbars.inc:370
-#: src/frontends/qt4/GuiDocument.cpp:1275
+#: src/frontends/qt4/GuiDocument.cpp:1278
 msgid "Fonts"
 msgstr "Teckensnitt"
 
@@ -16748,7 +16771,7 @@ msgstr "LyX-arkiv (zip)"
 msgid "LyX Archive (tar.gz)"
 msgstr "LyX-arkiv (tar.gz)"
 
-#: src/BiblioInfo.cpp:247 src/frontends/qt4/GuiDocument.cpp:1932
+#: src/BiblioInfo.cpp:247 src/frontends/qt4/GuiDocument.cpp:1935
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s och %2$s"
@@ -16939,7 +16962,7 @@ msgstr ""
 "%1$s är från en nyare version av LyX och lyx2lyx-skriptet misslyckades med "
 "att omvandla den."
 
-#: src/Buffer.cpp:1025 src/Buffer.cpp:3774 src/Buffer.cpp:3836
+#: src/Buffer.cpp:1025 src/Buffer.cpp:3768 src/Buffer.cpp:3830
 msgid "File is read-only"
 msgstr "Filen är skrivskyddad"
 
@@ -16961,9 +16984,9 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "Skriv över modifierad fil?"
 
-#: src/Buffer.cpp:1038 src/Buffer.cpp:2282 src/Exporter.cpp:50
-#: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2075
-#: src/frontends/qt4/GuiView.cpp:2264
+#: src/Buffer.cpp:1038 src/Buffer.cpp:2272 src/Exporter.cpp:50
+#: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2077
+#: src/frontends/qt4/GuiView.cpp:2266
 msgid "&Overwrite"
 msgstr "Skriv över"
 
@@ -17028,12 +17051,12 @@ msgstr ""
 "Vänligen verifiera att stödmjukvaran för din kodning (%1$s) är korrekt "
 "installerad"
 
-#: src/Buffer.cpp:1282
+#: src/Buffer.cpp:1283
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr "Kunde inte hitta LaTeX-kommando för tecken '%1$s' (kodpunkt %2$s)"
 
-#: src/Buffer.cpp:1285
+#: src/Buffer.cpp:1286
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -17042,19 +17065,19 @@ msgstr ""
 "Några tecken i ditt dokument kanske inte kan visas i vald kodning.\n"
 "Att ändra dokumentkodningen till utf8 kan hjälpa."
 
-#: src/Buffer.cpp:1292
+#: src/Buffer.cpp:1293
 msgid "iconv conversion failed"
 msgstr "iconv omvandling misslyckades"
 
-#: src/Buffer.cpp:1297
+#: src/Buffer.cpp:1298
 msgid "conversion failed"
 msgstr "omvandling misslyckades"
 
-#: src/Buffer.cpp:1393
+#: src/Buffer.cpp:1391
 msgid "Uncodable character in file path"
 msgstr "Okodbart tecken i filsökväg"
 
-#: src/Buffer.cpp:1394
+#: src/Buffer.cpp:1392
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -17075,53 +17098,53 @@ msgstr ""
 "Välj en lämplig dokumentkodning (som utf8)\n"
 "eller ändra filens sökväg."
 
-#: src/Buffer.cpp:1680
+#: src/Buffer.cpp:1670
 msgid "Running chktex..."
 msgstr "Chktex körs..."
 
-#: src/Buffer.cpp:1694
+#: src/Buffer.cpp:1684
 msgid "chktex failure"
 msgstr "chktex-misslyckande"
 
-#: src/Buffer.cpp:1695
+#: src/Buffer.cpp:1685
 msgid "Could not run chktex successfully."
 msgstr "Kunde inte köra chktex framgångsrikt."
 
-#: src/Buffer.cpp:1954
+#: src/Buffer.cpp:1944
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Vet inte hur man exporterar till format: %1$s"
 
-#: src/Buffer.cpp:2026 src/frontends/qt4/GuiView.cpp:3093
+#: src/Buffer.cpp:2016 src/frontends/qt4/GuiView.cpp:3095
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Fel vid export till format: %1$s."
 
-#: src/Buffer.cpp:2109
+#: src/Buffer.cpp:2099
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "Gren \"%1$s\" finns redan."
 
-#: src/Buffer.cpp:2139
+#: src/Buffer.cpp:2129
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "Gren \"%1$s\" finns inte."
 
-#: src/Buffer.cpp:2199
+#: src/Buffer.cpp:2189
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Kan inte tolka \"%1$s\""
 
-#: src/Buffer.cpp:2206
+#: src/Buffer.cpp:2196
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Okänt mål \"%1$s\""
 
-#: src/Buffer.cpp:2216
+#: src/Buffer.cpp:2206
 msgid "Error exporting to DVI."
 msgstr "Fel vid export till DVI."
 
-#: src/Buffer.cpp:2278 src/Exporter.cpp:45
+#: src/Buffer.cpp:2268 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -17132,73 +17155,73 @@ msgstr ""
 "\n"
 "Vill du skriva över den filen?"
 
-#: src/Buffer.cpp:2281 src/Exporter.cpp:48
+#: src/Buffer.cpp:2271 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Skriv över fil?"
 
-#: src/Buffer.cpp:2298
+#: src/Buffer.cpp:2288
 msgid "Error running external commands."
 msgstr "Fel vid körning av externa kommandon."
 
-#: src/Buffer.cpp:3101
+#: src/Buffer.cpp:3093
 msgid "Preview source code"
 msgstr "Förhandsgranska källkod"
 
-#: src/Buffer.cpp:3117
+#: src/Buffer.cpp:3111
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Förhandsgranska källkod för stycke %1$d"
 
-#: src/Buffer.cpp:3121
+#: src/Buffer.cpp:3115
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Förhandsgranska källkod från stycke %1$s till %2$s"
 
-#: src/Buffer.cpp:3234
+#: src/Buffer.cpp:3228
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Autosparar %1$s"
 
-#: src/Buffer.cpp:3288
+#: src/Buffer.cpp:3282
 msgid "Autosave failed!"
 msgstr "Autosparning misslyckades!"
 
-#: src/Buffer.cpp:3349
+#: src/Buffer.cpp:3343
 msgid "Autosaving current document..."
 msgstr "Autosparar aktuellt dokument..."
 
-#: src/Buffer.cpp:3502
+#: src/Buffer.cpp:3496
 msgid "Couldn't export file"
 msgstr "Kunde inte exportera fil"
 
-#: src/Buffer.cpp:3503
+#: src/Buffer.cpp:3497
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Ingen information för att exportera formatet %1$s."
 
-#: src/Buffer.cpp:3566
+#: src/Buffer.cpp:3560
 msgid "File name error"
 msgstr "Filnamnsfel"
 
-#: src/Buffer.cpp:3567
+#: src/Buffer.cpp:3561
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Katalogsökvägen till dokumentet kan inte innehålla mellanrum."
 
-#: src/Buffer.cpp:3647
+#: src/Buffer.cpp:3641
 msgid "Document export cancelled."
 msgstr "Dokumentexport avbruten."
 
-#: src/Buffer.cpp:3657
+#: src/Buffer.cpp:3651
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument exporterat som %1$s till fil `%2$s'"
 
-#: src/Buffer.cpp:3663
+#: src/Buffer.cpp:3657
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument exporterat som %1$s"
 
-#: src/Buffer.cpp:3760
+#: src/Buffer.cpp:3754
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17209,19 +17232,19 @@ msgstr ""
 "\n"
 "Återhämta nödsparning?"
 
-#: src/Buffer.cpp:3763
+#: src/Buffer.cpp:3757
 msgid "Load emergency save?"
 msgstr "Ladda nödsparning?"
 
-#: src/Buffer.cpp:3764
+#: src/Buffer.cpp:3758
 msgid "&Recover"
 msgstr "Åte&rhämta"
 
-#: src/Buffer.cpp:3764
+#: src/Buffer.cpp:3758
 msgid "&Load Original"
 msgstr "&Ladda original"
 
-#: src/Buffer.cpp:3775
+#: src/Buffer.cpp:3769
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -17230,15 +17253,15 @@ msgstr ""
 "En nödfil laddades framgångsrikt, men originalfilen %1$s är märkt "
 "skrivskyddad. Vänligen se till att spara dokumentet som en annan fil."
 
-#: src/Buffer.cpp:3781
+#: src/Buffer.cpp:3775
 msgid "Document was successfully recovered."
 msgstr "Dokument återhämtades framgångsrikt."
 
-#: src/Buffer.cpp:3783
+#: src/Buffer.cpp:3777
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument återhämtades INTE framgångsrikt."
 
-#: src/Buffer.cpp:3784
+#: src/Buffer.cpp:3778
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17247,27 +17270,27 @@ msgstr ""
 "Ta bort nödfil nu?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3788 src/Buffer.cpp:3800
+#: src/Buffer.cpp:3782 src/Buffer.cpp:3794
 msgid "Delete emergency file?"
 msgstr "Radera nödfil?"
 
-#: src/Buffer.cpp:3789 src/Buffer.cpp:3802
+#: src/Buffer.cpp:3783 src/Buffer.cpp:3796
 msgid "&Keep"
 msgstr "Behåll"
 
-#: src/Buffer.cpp:3793
+#: src/Buffer.cpp:3787
 msgid "Emergency file deleted"
 msgstr "Nödfil raderad"
 
-#: src/Buffer.cpp:3794
+#: src/Buffer.cpp:3788
 msgid "Do not forget to save your file now!"
 msgstr "Glöm inte att spara din fil nu!"
 
-#: src/Buffer.cpp:3801
+#: src/Buffer.cpp:3795
 msgid "Remove emergency file now?"
 msgstr "Ta bort nödfil nu?"
 
-#: src/Buffer.cpp:3824
+#: src/Buffer.cpp:3818
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17278,19 +17301,19 @@ msgstr ""
 "\n"
 "Ladda säkerhetskopian i stället?"
 
-#: src/Buffer.cpp:3826
+#: src/Buffer.cpp:3820
 msgid "Load backup?"
 msgstr "Ladda säkerhetskopia?"
 
-#: src/Buffer.cpp:3827
+#: src/Buffer.cpp:3821
 msgid "&Load backup"
 msgstr "&Ladda säkerhetskopia"
 
-#: src/Buffer.cpp:3827
+#: src/Buffer.cpp:3821
 msgid "Load &original"
 msgstr "Ladda &original"
 
-#: src/Buffer.cpp:3837
+#: src/Buffer.cpp:3831
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17299,25 +17322,25 @@ msgstr ""
 "En säkerhetskopierad fil laddades framgångsrikt, men originalfilen %1$s är "
 "märkt skrivskyddad. Vänligen se till att spara dokumentet som en annan fil."
 
-#: src/Buffer.cpp:4142 src/insets/InsetCaption.cpp:338
+#: src/Buffer.cpp:4136 src/insets/InsetCaption.cpp:338
 msgid "Senseless!!! "
 msgstr "Meningslöst!!! "
 
-#: src/Buffer.cpp:4263
+#: src/Buffer.cpp:4257
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s laddades om."
 
-#: src/Buffer.cpp:4266
+#: src/Buffer.cpp:4260
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Kunde inte ladda om dokument %1$s"
 
-#: src/Buffer.cpp:4332
+#: src/Buffer.cpp:4326
 msgid "Included File Invalid"
 msgstr "Inkluderad fil ogiltig"
 
-#: src/Buffer.cpp:4333
+#: src/Buffer.cpp:4327
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17328,7 +17351,7 @@ msgstr ""
 "  %1$s\n"
 "oåtkomlig. Du måste uppdatera det inkluderade filnamnet."
 
-#: src/BufferParams.cpp:569
+#: src/BufferParams.cpp:570
 #, c-format
 msgid ""
 "The selected document class\n"
@@ -17351,11 +17374,11 @@ msgstr ""
 "Se avsnitt 3.1.2.2 (Klasstillgänglighet) i\n"
 "Handboken för mer information."
 
-#: src/BufferParams.cpp:578
+#: src/BufferParams.cpp:579
 msgid "Document class not available"
 msgstr "Dokumentklass inte tillgänglig"
 
-#: src/BufferParams.cpp:2011
+#: src/BufferParams.cpp:1977
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -17370,11 +17393,11 @@ msgstr ""
 "standardutformningar kommer att användas.\n"
 "LyX kommer inte att kunna producera korrekt utmatning."
 
-#: src/BufferParams.cpp:2017
+#: src/BufferParams.cpp:1983
 msgid "Document class not found"
 msgstr "Dokumentklass hittades inte"
 
-#: src/BufferParams.cpp:2024
+#: src/BufferParams.cpp:1990
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -17389,15 +17412,15 @@ msgstr ""
 "standardutformningar kommer att användas.\n"
 "LyX kommer inte att kunna producera korrekt utmatning."
 
-#: src/BufferParams.cpp:2030 src/BufferView.cpp:1263 src/BufferView.cpp:1295
+#: src/BufferParams.cpp:1996 src/BufferView.cpp:1263 src/BufferView.cpp:1295
 msgid "Could not load class"
 msgstr "Kunde inte ladda klass"
 
-#: src/BufferParams.cpp:2064
+#: src/BufferParams.cpp:2030
 msgid "Error reading internal layout information"
 msgstr "Fel vid läsning av intern utformningsinformation"
 
-#: src/BufferParams.cpp:2065 src/TextClass.cpp:1347
+#: src/BufferParams.cpp:2031 src/TextClass.cpp:1346
 msgid "Read Error"
 msgstr "Läsfel"
 
@@ -17512,22 +17535,22 @@ msgstr "Grennamn"
 msgid "Branch already exists"
 msgstr "Gren finns redan"
 
-#: src/BufferView.cpp:2519
+#: src/BufferView.cpp:2517
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Infogar dokument %1$s..."
 
-#: src/BufferView.cpp:2530
+#: src/BufferView.cpp:2528
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s infogat."
 
-#: src/BufferView.cpp:2532
+#: src/BufferView.cpp:2530
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunde inte infoga dokument %1$s"
 
-#: src/BufferView.cpp:2797
+#: src/BufferView.cpp:2795
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17538,11 +17561,11 @@ msgstr ""
 "%1$s\n"
 "på grund av fel: %2$s"
 
-#: src/BufferView.cpp:2799
+#: src/BufferView.cpp:2797
 msgid "Could not read file"
 msgstr "Kunde inte läsa fil"
 
-#: src/BufferView.cpp:2806
+#: src/BufferView.cpp:2804
 #, c-format
 msgid ""
 "%1$s\n"
@@ -17551,15 +17574,15 @@ msgstr ""
 "%1$s\n"
 " är inte läsbar."
 
-#: src/BufferView.cpp:2807 src/output.cpp:39
+#: src/BufferView.cpp:2805 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Kunde inte öppna fil"
 
-#: src/BufferView.cpp:2814
+#: src/BufferView.cpp:2812
 msgid "Reading not UTF-8 encoded file"
 msgstr "Läser fil som inte är kodad som UTF-8"
 
-#: src/BufferView.cpp:2815
+#: src/BufferView.cpp:2813
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -18080,19 +18103,19 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "Kopiera %1$s till %2$s misslyckades."
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:121
-#: src/frontends/qt4/GuiDocument.cpp:3217
+#: src/frontends/qt4/GuiDocument.cpp:3220
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Roman"
 msgstr "Antikva"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:122
-#: src/frontends/qt4/GuiDocument.cpp:3217
+#: src/frontends/qt4/GuiDocument.cpp:3220
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Sans Serif"
 msgstr "Linjärer"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:123
-#: src/frontends/qt4/GuiDocument.cpp:3217
+#: src/frontends/qt4/GuiDocument.cpp:3220
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Typewriter"
 msgstr "Skrivmaskin"
@@ -18186,7 +18209,7 @@ msgstr "Nummer %1$s"
 msgid "Cannot view file"
 msgstr "Kan inte visa fil"
 
-#: src/Format.cpp:268 src/Format.cpp:334 src/frontends/qt4/GuiView.cpp:2889
+#: src/Format.cpp:268 src/Format.cpp:334 src/frontends/qt4/GuiView.cpp:2891
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Filen finns inte: %1$s"
@@ -18558,7 +18581,7 @@ msgstr "Saknar filtyp [t.ex. latex, ps...] efter --import växel"
 msgid "Missing filename for --import"
 msgstr "Saknar filnamn för --import"
 
-#: src/LyXRC.cpp:3002
+#: src/LyXRC.cpp:3004
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
@@ -18566,14 +18589,14 @@ msgstr ""
 "Anse sammansatta ord, som \"iochförsig\" för \"i och för sig\" som "
 "godtagbara ord?"
 
-#: src/LyXRC.cpp:3006
+#: src/LyXRC.cpp:3008
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr ""
 "Specificera ett alternativt språk. Standard är att använda dokumentets språk."
 
-#: src/LyXRC.cpp:3014
+#: src/LyXRC.cpp:3016
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -18581,7 +18604,7 @@ msgstr ""
 "Välj bort om du inte vill att aktuellt urval ska ersättas automatiskt med "
 "vad du skriver."
 
-#: src/LyXRC.cpp:3018
+#: src/LyXRC.cpp:3020
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -18589,14 +18612,14 @@ msgstr ""
 "Välj bort om du inte vill att klassalternativen ska återställas till "
 "standardvärden efter klassändring."
 
-#: src/LyXRC.cpp:3022
+#: src/LyXRC.cpp:3024
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Tidsintervallet mellan autosparningar (i sekunder). 0 betyder ingen "
 "autosparning."
 
-#: src/LyXRC.cpp:3029
+#: src/LyXRC.cpp:3031
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -18605,7 +18628,7 @@ msgstr ""
 "kommer LyX att spara den säkerhetskopierade filen i samma katalog som "
 "originalfilen."
 
-#: src/LyXRC.cpp:3033
+#: src/LyXRC.cpp:3035
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
@@ -18613,12 +18636,12 @@ msgstr ""
 "Definiera alternativen för bibtex (jfr. man bibtex) eller välj en alternativ "
 "kompilator (t.ex. mlbibtex eller bibulus)."
 
-#: src/LyXRC.cpp:3037
+#: src/LyXRC.cpp:3039
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
 msgstr ""
 "Definiera alternativen för bibtex-programmet för PLaTeX (japansk LaTeX)."
 
-#: src/LyXRC.cpp:3041
+#: src/LyXRC.cpp:3043
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -18626,11 +18649,11 @@ msgstr ""
 "Tangentbindningsfil. Kan antingen specificera en absolut sökväg, eller så "
 "tittar LyX i dess globala och lokala bind/ kataloger."
 
-#: src/LyXRC.cpp:3045
+#: src/LyXRC.cpp:3047
 msgid "Select to check whether the lastfiles still exist."
 msgstr "Välj för att kontrollera huruvida senaste-filer fortfarande finns."
 
-#: src/LyXRC.cpp:3049
+#: src/LyXRC.cpp:3051
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -18638,7 +18661,7 @@ msgstr ""
 "Definiera hur chktex körs. T.ex. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
 "-n38\" Se dokumentationen för ChkTeX."
 
-#: src/LyXRC.cpp:3059
+#: src/LyXRC.cpp:3061
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -18646,7 +18669,7 @@ msgstr ""
 "LyX uppdaterar normalt inte markörpositionen om du flyttar rullningslistan. "
 "Sätt till sant om du föredrar att alltid ha markören på skärmen."
 
-#: src/LyXRC.cpp:3063
+#: src/LyXRC.cpp:3065
 msgid ""
 "LyX normally doesn't allow the user to scroll further than the bottom of the "
 "document. Set to true if you prefer to scroll the bottom of the document to "
@@ -18656,15 +18679,15 @@ msgstr ""
 "dokumentet. Sätt till sant om du föredrar att rulla botten av dokumentet "
 "till toppen av skärmen"
 
-#: src/LyXRC.cpp:3067
+#: src/LyXRC.cpp:3069
 msgid "Make Apple key act as Meta and Control key as Ctrl."
 msgstr "Använd Apple-tangent som Meta och Control-tangent som Ctrl."
 
-#: src/LyXRC.cpp:3071
+#: src/LyXRC.cpp:3073
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
 msgstr "Använd Mac OS X-konventioner för markörförflyttning på ordnivå"
 
-#: src/LyXRC.cpp:3075
+#: src/LyXRC.cpp:3077
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
@@ -18672,7 +18695,7 @@ msgstr ""
 "Visa en liten ruta runt ett matematikmakro med makronamnet när markören är "
 "inuti."
 
-#: src/LyXRC.cpp:3080
+#: src/LyXRC.cpp:3082
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -18681,7 +18704,7 @@ msgstr ""
 "Detta godtar normala strftime format; se \"man strftime\" för fullständig "
 "information. T.ex. \"%A, %e. %B %Y\"."
 
-#: src/LyXRC.cpp:3084
+#: src/LyXRC.cpp:3086
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
 "look in its global and local commands/ directories."
@@ -18689,19 +18712,19 @@ msgstr ""
 "Kommandodefinitionsfil. Kan antingen specificera en absolut sökväg, eller så "
 "tittar LyX i dess globala och lokala commands/ kataloger."
 
-#: src/LyXRC.cpp:3088
+#: src/LyXRC.cpp:3090
 msgid "The default format used with LFUN_BUFFER_[VIEW|UPDATE]."
 msgstr "Standardformatet som används med LFUN_BUFFER_[VIEW|UPDATE]."
 
-#: src/LyXRC.cpp:3092
+#: src/LyXRC.cpp:3094
 msgid "New documents will be assigned this language."
 msgstr "Nya dokument kommer att tilldelas detta språk."
 
-#: src/LyXRC.cpp:3096
+#: src/LyXRC.cpp:3098
 msgid "Specify the default paper size."
 msgstr "Specificera standardpappersstorlek."
 
-#: src/LyXRC.cpp:3100
+#: src/LyXRC.cpp:3102
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -18709,11 +18732,11 @@ msgstr ""
 "Ikonifiera dialogerna när huvudfönstret ikonifieras. (Påverkar bara dialoger "
 "som visas efter ändringen är gjord.)"
 
-#: src/LyXRC.cpp:3104
+#: src/LyXRC.cpp:3106
 msgid "Select how LyX will display any graphics."
 msgstr "Välj hur LyX visar grafik."
 
-#: src/LyXRC.cpp:3108
+#: src/LyXRC.cpp:3110
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -18721,11 +18744,11 @@ msgstr ""
 "Standardsökvägen för dina dokument. Ett tomt värde väljer katalogen som LyX "
 "startade från."
 
-#: src/LyXRC.cpp:3112
+#: src/LyXRC.cpp:3114
 msgid "Specify additional chars that can be part of a word."
 msgstr "Specificera ytterligare tecken som kan vara del av ett ord."
 
-#: src/LyXRC.cpp:3116
+#: src/LyXRC.cpp:3118
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
@@ -18733,7 +18756,7 @@ msgstr ""
 "Sökvägen som LyX sätter när den erbjuder att välja ett exempel. Ett tomt "
 "värde väljer katalogen som LyX startade från."
 
-#: src/LyXRC.cpp:3120
+#: src/LyXRC.cpp:3122
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -18741,7 +18764,7 @@ msgstr ""
 "Teckensnittskodningen som används för LaTeX2e-paketet fontenc. T1 är högst "
 "rekommenderad för icke-engelska språk."
 
-#: src/LyXRC.cpp:3127
+#: src/LyXRC.cpp:3129
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
@@ -18751,11 +18774,11 @@ msgstr ""
 "alternativ kompilator. T.ex., genom att använda xindy/make-regler skulle "
 "kommandosträngen bli \"makeindex.sh -m $$lang\"."
 
-#: src/LyXRC.cpp:3131
+#: src/LyXRC.cpp:3133
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
 msgstr "Definiera alternativen för indexprogrammet för PLaTeX (japansk LaTeX)"
 
-#: src/LyXRC.cpp:3135
+#: src/LyXRC.cpp:3137
 msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
@@ -18764,7 +18787,7 @@ msgstr ""
 "för nomenklaturer. Detta kan skilja sig från alternativen för "
 "indexbehandling."
 
-#: src/LyXRC.cpp:3144
+#: src/LyXRC.cpp:3146
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -18773,18 +18796,18 @@ msgstr ""
 "behöver detta om du t.ex. vill skriva tyska dokument på ett amerikanskt "
 "tangentbord."
 
-#: src/LyXRC.cpp:3148
+#: src/LyXRC.cpp:3150
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr "Välj om ett språkväxlingskommando behövs vid början av dokumentet."
 
-#: src/LyXRC.cpp:3152
+#: src/LyXRC.cpp:3154
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr "Välj om ett språkväxlingskommando behövs vid slutet av dokumentet."
 
-#: src/LyXRC.cpp:3156
+#: src/LyXRC.cpp:3158
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -18794,15 +18817,15 @@ msgstr ""
 "ex. \\selectlanguage{$$lang} där $$lang ersätts med namnet på det andra "
 "språket."
 
-#: src/LyXRC.cpp:3160
+#: src/LyXRC.cpp:3162
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "LaTeX-kommandot för att byta tillbaka till dokumentets språk."
 
-#: src/LyXRC.cpp:3164
+#: src/LyXRC.cpp:3166
 msgid "The LaTeX command for local changing of the language."
 msgstr "LaTeX-kommandot för lokal ändring av språket."
 
-#: src/LyXRC.cpp:3168
+#: src/LyXRC.cpp:3170
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
@@ -18810,7 +18833,7 @@ msgstr ""
 "Välj bort om du inte vill att språket/språken används som argument till "
 "\\documentclass."
 
-#: src/LyXRC.cpp:3172
+#: src/LyXRC.cpp:3174
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -18818,7 +18841,7 @@ msgstr ""
 "LaTeX-kommandot för att ladda språkpaketet. T.ex. \"\\usepackage{babel}\", "
 "\"\\usepackage{omega}\"."
 
-#: src/LyXRC.cpp:3176
+#: src/LyXRC.cpp:3178
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -18826,21 +18849,21 @@ msgstr ""
 "Välj bort om du inte vill att babel ska användas när dokumentets språk är "
 "standardspråket."
 
-#: src/LyXRC.cpp:3180
+#: src/LyXRC.cpp:3182
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr "Välj bort om du inte vill att LyX rullar till sparad position."
 
-#: src/LyXRC.cpp:3184
+#: src/LyXRC.cpp:3186
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 "Välj bort för att förhindra laddning av filer öppnade från den senaste LyX-"
 "sessionen."
 
-#: src/LyXRC.cpp:3188
+#: src/LyXRC.cpp:3190
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "Välj bort om du inte vill att LyX ska skapa säkerhetskopierade filer."
 
-#: src/LyXRC.cpp:3192
+#: src/LyXRC.cpp:3194
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -18848,30 +18871,30 @@ msgstr ""
 "Välj för att styra belysningen av ord med ett språk som är främmande för "
 "dokumentet."
 
-#: src/LyXRC.cpp:3196
+#: src/LyXRC.cpp:3198
 msgid "The scrolling speed of the mouse wheel."
 msgstr "Rullningshastigheten för mushjulet."
 
-#: src/LyXRC.cpp:3201
+#: src/LyXRC.cpp:3203
 msgid "The completion popup delay."
 msgstr "Fördröjning för kompletteringspopup."
 
-#: src/LyXRC.cpp:3205
+#: src/LyXRC.cpp:3207
 msgid "Select to display the completion popup in math mode."
 msgstr "Välj för att visa kompletteringspopup i matematikläge."
 
-#: src/LyXRC.cpp:3209
+#: src/LyXRC.cpp:3211
 msgid "Select to display the completion popup in text mode."
 msgstr "Välj för att visa kompletteringspopup i textläge."
 
-#: src/LyXRC.cpp:3213
+#: src/LyXRC.cpp:3215
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr ""
 "Visa kompletteringspopup utan fördröjning efter icke-unikt "
 "kompletteringsförsök."
 
-#: src/LyXRC.cpp:3217
+#: src/LyXRC.cpp:3219
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
@@ -18879,32 +18902,32 @@ msgstr ""
 "Visa en liten triangel på markören för att indikera att en komplettering "
 "finns tillgänglig."
 
-#: src/LyXRC.cpp:3221
+#: src/LyXRC.cpp:3223
 msgid "The inline completion delay."
 msgstr "Fördröjning för komplettering på plats."
 
-#: src/LyXRC.cpp:3225
+#: src/LyXRC.cpp:3227
 msgid "Select to display the inline completion in math mode."
 msgstr "Välj för att visa kompletteringen på plats i matematikläge."
 
-#: src/LyXRC.cpp:3229
+#: src/LyXRC.cpp:3231
 msgid "Select to display the inline completion in text mode."
 msgstr "Välj för att visa kompletteringen på plats i textläge."
 
-#: src/LyXRC.cpp:3233
+#: src/LyXRC.cpp:3235
 msgid "Use \"...\" to shorten long completions."
 msgstr "Använd \"...\" för att korta av långa kompletteringar."
 
-#: src/LyXRC.cpp:3237
+#: src/LyXRC.cpp:3239
 msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
 msgstr "Tillåt TeXMacs snabbskrift, som => omvandlas till \\Rightarrow."
 
-#: src/LyXRC.cpp:3241
+#: src/LyXRC.cpp:3243
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr "Max antal senaste-filer. Upp till %1$d kan visas i arkivmenyn."
 
-#: src/LyXRC.cpp:3246
+#: src/LyXRC.cpp:3248
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
@@ -18912,30 +18935,29 @@ msgstr ""
 "Specificera de kataloger som bör föregå PATH-miljövariabeln. Använd "
 "operativsystemets standardformat."
 
-#: src/LyXRC.cpp:3252
+#: src/LyXRC.cpp:3254
 msgid "Shows a typeset preview of things such as math"
-msgstr ""
-"Visar en typsättningsförhandsgranskning för sådana saker som matematik"
+msgstr "Visar en typsättningsförhandsgranskning för sådana saker som matematik"
 
-#: src/LyXRC.cpp:3256
+#: src/LyXRC.cpp:3258
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr ""
 "Förhandsgranskade ekvationer kommer att ha \"(#)\"-etiketter i stället för "
 "numrerade sådana"
 
-#: src/LyXRC.cpp:3260
+#: src/LyXRC.cpp:3262
 msgid "Scale the preview size to suit."
 msgstr "Skala förhandsgranskningens storlek så den passar."
 
-#: src/LyXRC.cpp:3264
+#: src/LyXRC.cpp:3266
 msgid "The option for specifying whether the copies should be collated."
 msgstr "Alternativet för att specificera huruvida kopiorna ska kollationeras."
 
-#: src/LyXRC.cpp:3268
+#: src/LyXRC.cpp:3270
 msgid "The option for specifying the number of copies to print."
 msgstr "Alternativet för att specificera antalet kopior att skriva ut."
 
-#: src/LyXRC.cpp:3272
+#: src/LyXRC.cpp:3274
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -18943,11 +18965,11 @@ msgstr ""
 "Standardskrivare att skriva ut på. Om ingen specificeras kommer LyX att "
 "använda miljövariabeln PRINTER."
 
-#: src/LyXRC.cpp:3276
+#: src/LyXRC.cpp:3278
 msgid "The option to print only even pages."
 msgstr "Alternativet för att skriva ut endast jämna sidor."
 
-#: src/LyXRC.cpp:3280
+#: src/LyXRC.cpp:3282
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -18955,37 +18977,37 @@ msgstr ""
 "Extra alternativ att förmedla till utskriftsprogrammet efter allt annat, men "
 "före filnamnet för DVI-filen som ska skrivas ut."
 
-#: src/LyXRC.cpp:3284
+#: src/LyXRC.cpp:3286
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "Ändelse för utskriftsprogrammets utmatningsfil. Vanligen \".ps\"."
 
-#: src/LyXRC.cpp:3288
+#: src/LyXRC.cpp:3290
 msgid "The option to print out in landscape."
 msgstr "Alternativet för att skriva ut i landskap."
 
-#: src/LyXRC.cpp:3292
+#: src/LyXRC.cpp:3294
 msgid "The option to print only odd pages."
 msgstr "Alternativet för att skriva ut endast udda sidor."
 
-#: src/LyXRC.cpp:3296
+#: src/LyXRC.cpp:3298
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr ""
 "Alternativet för att specificera en kommaseparerad lista över sidor att "
 "skriva ut."
 
-#: src/LyXRC.cpp:3300
+#: src/LyXRC.cpp:3302
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Alternativ för att specificera dimensionerna för utskriftspapperet."
 
-#: src/LyXRC.cpp:3304
+#: src/LyXRC.cpp:3306
 msgid "The option to specify paper type."
 msgstr "Alternativet för att specificera papperstyp."
 
-#: src/LyXRC.cpp:3308
+#: src/LyXRC.cpp:3310
 msgid "The option to reverse the order of the pages printed."
 msgstr "Alternativet för att göra omvänd följd av sidorna som skrivs ut."
 
-#: src/LyXRC.cpp:3312
+#: src/LyXRC.cpp:3314
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -18995,7 +19017,7 @@ msgstr ""
 "sedan ett separat utskriftspoolingprogram på den filen med det givna namnet "
 "och de givna argumenten."
 
-#: src/LyXRC.cpp:3316
+#: src/LyXRC.cpp:3318
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -19003,18 +19025,18 @@ msgstr ""
 "Om du specificerar ett skrivarnamn i utskriftsdialogen föregås följande "
 "argument tillsammans med skrivarnamnet efter spoolkommandot."
 
-#: src/LyXRC.cpp:3320
+#: src/LyXRC.cpp:3322
 msgid "Option to pass to the print program to print to a file."
 msgstr ""
 "Alternativ att förmedla till utskriftsprogrammet för att skriva till en fil."
 
-#: src/LyXRC.cpp:3324
+#: src/LyXRC.cpp:3326
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
 "Alternativ att förmedla till utskriftsprogrammet för att skriva ut på en "
 "specifik skrivare."
 
-#: src/LyXRC.cpp:3328
+#: src/LyXRC.cpp:3330
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
@@ -19022,18 +19044,18 @@ msgstr ""
 "Välj för LyX att förmedla namnet på destinationsskrivaren till ditt "
 "utskriftskommando."
 
-#: src/LyXRC.cpp:3332
+#: src/LyXRC.cpp:3334
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Ditt favoritutskriftsprogram, t.ex. \"dvips\", \"dvilj4\"."
 
-#: src/LyXRC.cpp:3340
+#: src/LyXRC.cpp:3342
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 "Välj för att ha bidi visuell markörförflyttning, välj bort för logisk "
 "förflyttning."
 
-#: src/LyXRC.cpp:3344
+#: src/LyXRC.cpp:3346
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -19041,11 +19063,11 @@ msgstr ""
 "DPI (dots per inch) för din skärm är automatiskt upptäckt av LyX. Om det "
 "blir fel, överskrid inställningen här."
 
-#: src/LyXRC.cpp:3350
+#: src/LyXRC.cpp:3352
 msgid "The screen fonts used to display the text while editing."
 msgstr "Skärmteckensnitten som används för att visa texten vid redigering."
 
-#: src/LyXRC.cpp:3359
+#: src/LyXRC.cpp:3361
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -19056,13 +19078,13 @@ msgstr ""
 "blockiga ut i LyX. Att välja bort detta val gör så att LyX använder den "
 "närmsta storleken för bitmapteckensnitt tillgänglig, i stället för skalning."
 
-#: src/LyXRC.cpp:3363
+#: src/LyXRC.cpp:3365
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 "Teckensnittsstorlekarna som används för att beräkna skalningen för "
 "skärmteckensnitten."
 
-#: src/LyXRC.cpp:3368
+#: src/LyXRC.cpp:3370
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -19071,11 +19093,11 @@ msgstr ""
 "Zoomningsprocenten för skärmteckensnitt. En inställning på 100% gör "
 "teckensnitten ungefär samma storlek som på papper."
 
-#: src/LyXRC.cpp:3372
+#: src/LyXRC.cpp:3374
 msgid "Allow session manager to save and restore windows geometry."
 msgstr "Tillåt sessionshanterare att spara och återställa fönstergeometri."
 
-#: src/LyXRC.cpp:3376
+#: src/LyXRC.cpp:3378
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -19083,11 +19105,11 @@ msgstr ""
 "Detta startar lyxservern. Slussarna får en ytterligare ändelse \".in\" och "
 "\".out\". Endast för avancerade användare."
 
-#: src/LyXRC.cpp:3383
+#: src/LyXRC.cpp:3385
 msgid "De-select if you don't want the startup banner."
 msgstr "Välj bort om du inte vill ha logotypen vid start."
 
-#: src/LyXRC.cpp:3387
+#: src/LyXRC.cpp:3389
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -19095,11 +19117,11 @@ msgstr ""
 "LyX kommer att placera sina tillfälliga kataloger i denna sökväg. De kommer "
 "att raderas när du avslutar LyX."
 
-#: src/LyXRC.cpp:3391
+#: src/LyXRC.cpp:3393
 msgid "This is the place where the files of the thesaurus library reside."
 msgstr "Detta är platsen där synonymordboksbibliotekets filer håller hus."
 
-#: src/LyXRC.cpp:3395
+#: src/LyXRC.cpp:3397
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -19107,7 +19129,7 @@ msgstr ""
 "Sökvägen som kommer att sättas när LyX erbjuder att välja en mall. Ett tomt "
 "värde väljer katalogen som LyX startades från."
 
-#: src/LyXRC.cpp:3405
+#: src/LyXRC.cpp:3407
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -19115,7 +19137,7 @@ msgstr ""
 "Användargränssnittsfilen (UI). Kan antingen specificera en absolut sökväg, "
 "eller så tittar LyX i dess globala och lokala ui/ kataloger."
 
-#: src/LyXRC.cpp:3415
+#: src/LyXRC.cpp:3417
 msgid ""
 "Enable use the system colors for some things like main window background and "
 "selection."
@@ -19123,16 +19145,16 @@ msgstr ""
 "Aktivera användning av systemfärger för saker som huvudfönstrets bakgrund "
 "och urval."
 
-#: src/LyXRC.cpp:3419
+#: src/LyXRC.cpp:3421
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr "Aktivera automatiskt uppdykande av verktygstips i arbetsområdet."
 
-#: src/LyXRC.cpp:3423
+#: src/LyXRC.cpp:3425
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr "Aktivera pixmapgömman som kan öka prestanda på Mac och Windows."
 
-#: src/LyXRC.cpp:3427
+#: src/LyXRC.cpp:3429
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Specificera papperskommandot till DVI-visaren (lämna tom eller använd \"-"
@@ -19171,7 +19193,7 @@ msgstr "(ingen inledande beskrivning)"
 msgid "(no log message)"
 msgstr "(inget loggmeddelande)"
 
-#: src/LyXVC.cpp:170 src/frontends/qt4/GuiView.cpp:2747
+#: src/LyXVC.cpp:170 src/frontends/qt4/GuiView.cpp:2749
 msgid "LyX VC: Log Message"
 msgstr "LyX Versionshantering: Loggmeddelande"
 
@@ -19192,7 +19214,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Återgå till lagrad version av dokument?"
 
-#: src/LyXVC.cpp:222 src/frontends/qt4/GuiView.cpp:3238
+#: src/LyXVC.cpp:222 src/frontends/qt4/GuiView.cpp:3240
 msgid "&Revert"
 msgstr "Åte&rgå"
 
@@ -19307,15 +19329,15 @@ msgstr ", Tecken: 0x"
 msgid ", Boundary: "
 msgstr ", Gräns: "
 
-#: src/Text2.cpp:386
+#: src/Text2.cpp:384
 msgid "No font change defined."
 msgstr "Ingen teckensnittsändring definierad."
 
-#: src/Text2.cpp:426
+#: src/Text2.cpp:424
 msgid "Nothing to index!"
 msgstr "Ingenting att indexera!"
 
-#: src/Text2.cpp:428
+#: src/Text2.cpp:426
 msgid "Cannot index more than one paragraph!"
 msgstr "Kan inte indexera mer än ett stycke!"
 
@@ -19327,7 +19349,7 @@ msgstr "Redigeringsläge för matematik"
 msgid "No valid math formula"
 msgstr "Ingen giltig matematikformel"
 
-#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1020
+#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1021
 msgid "Already in regular expression mode"
 msgstr "Redan i läge för reguljära uttryck"
 
@@ -19375,7 +19397,7 @@ msgstr "Korrupt fil"
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
 msgstr "Kunde inte läsa stdinsets.inc! Detta kan leda till dataförlust!"
 
-#: src/TextClass.cpp:1324
+#: src/TextClass.cpp:1323
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -19388,11 +19410,11 @@ msgstr ""
 "moduler. Om du installerade den nyss, måste\n"
 "du nog omkonfigurera LyX.\n"
 
-#: src/TextClass.cpp:1328
+#: src/TextClass.cpp:1327
 msgid "Module not available"
 msgstr "Modul inte tillgänglig"
 
-#: src/TextClass.cpp:1334
+#: src/TextClass.cpp:1333
 #, c-format
 msgid ""
 "The module %1$s requires a package that is not\n"
@@ -19409,11 +19431,11 @@ msgstr ""
 "\t%2$s\n"
 "Se avsnitt 3.1.2.3 i (Moduler) i Handboken för mer information."
 
-#: src/TextClass.cpp:1341
+#: src/TextClass.cpp:1340
 msgid "Package not available"
 msgstr "Paket inte tillgängligt"
 
-#: src/TextClass.cpp:1346
+#: src/TextClass.cpp:1345
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr "Fel vid läsning av modul %1$s\n"
@@ -19422,7 +19444,7 @@ msgstr "Fel vid läsning av modul %1$s\n"
 #: src/VCBackend.cpp:746 src/VCBackend.cpp:807 src/VCBackend.cpp:868
 #: src/VCBackend.cpp:876 src/VCBackend.cpp:1084 src/VCBackend.cpp:1177
 #: src/VCBackend.cpp:1183 src/VCBackend.cpp:1204
-#: src/frontends/qt4/GuiView.cpp:2709
+#: src/frontends/qt4/GuiView.cpp:2711
 msgid "Revision control error."
 msgstr "Revideringshanteringsfel"
 
@@ -19677,7 +19699,7 @@ msgstr ""
 msgid "Reload saved document?"
 msgstr "Ladda om sparat dokument?"
 
-#: src/buffer_funcs.cpp:76 src/frontends/qt4/GuiView.cpp:2658
+#: src/buffer_funcs.cpp:76 src/frontends/qt4/GuiView.cpp:2660
 msgid "&Reload"
 msgstr "Ladda om"
 
@@ -19890,7 +19912,7 @@ msgid "About %1"
 msgstr "Om %1"
 
 #: src/frontends/qt4/GuiApplication.cpp:486
-#: src/frontends/qt4/GuiPrefs.cpp:3088
+#: src/frontends/qt4/GuiPrefs.cpp:3095
 msgid "Preferences"
 msgstr "Inställningar"
 
@@ -19967,31 +19989,31 @@ msgstr "Öppnar hjälpfil %1$s..."
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntax: set-color <lyx_namn> <x11_namn>"
 
-#: src/frontends/qt4/GuiApplication.cpp:1429
+#: src/frontends/qt4/GuiApplication.cpp:1428
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\" misslyckades - färg är odefinierad eller kanske inte kan "
 "omdefinieras"
 
-#: src/frontends/qt4/GuiApplication.cpp:1609
+#: src/frontends/qt4/GuiApplication.cpp:1608
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Standardvärden för dokument sparade i %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:1613
+#: src/frontends/qt4/GuiApplication.cpp:1612
 msgid "Unable to save document defaults"
 msgstr "Kan inte spara standardvärden för dokument"
 
-#: src/frontends/qt4/GuiApplication.cpp:1751
+#: src/frontends/qt4/GuiApplication.cpp:1750
 msgid "Unknown function."
 msgstr "Okänd funktion."
 
-#: src/frontends/qt4/GuiApplication.cpp:2173
+#: src/frontends/qt4/GuiApplication.cpp:2172
 msgid "The current document was closed."
 msgstr "Det aktuella dokumentet stängdes."
 
-#: src/frontends/qt4/GuiApplication.cpp:2183
+#: src/frontends/qt4/GuiApplication.cpp:2182
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -20003,12 +20025,12 @@ msgstr ""
 "\n"
 "Undantag: "
 
-#: src/frontends/qt4/GuiApplication.cpp:2187
-#: src/frontends/qt4/GuiApplication.cpp:2193
+#: src/frontends/qt4/GuiApplication.cpp:2186
+#: src/frontends/qt4/GuiApplication.cpp:2192
 msgid "Software exception Detected"
 msgstr "Mjukvaruundantag upptäckt"
 
-#: src/frontends/qt4/GuiApplication.cpp:2191
+#: src/frontends/qt4/GuiApplication.cpp:2190
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -20016,12 +20038,12 @@ msgstr ""
 "LyX har fångat ett riktigt konstigt undantag, det kommer nu att försöka "
 "spara alla osparade dokument och avslutas."
 
-#: src/frontends/qt4/GuiApplication.cpp:2456
-#: src/frontends/qt4/GuiApplication.cpp:2468
+#: src/frontends/qt4/GuiApplication.cpp:2455
+#: src/frontends/qt4/GuiApplication.cpp:2467
 msgid "Could not find UI definition file"
 msgstr "Kunde inte hitta UI-definitionsfil"
 
-#: src/frontends/qt4/GuiApplication.cpp:2457
+#: src/frontends/qt4/GuiApplication.cpp:2456
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -20032,11 +20054,11 @@ msgstr ""
 "%1$s\n"
 "Vänligen kontrollera din installation."
 
-#: src/frontends/qt4/GuiApplication.cpp:2463
+#: src/frontends/qt4/GuiApplication.cpp:2462
 msgid "Could not find default UI file"
 msgstr "Kunde inte hitta standard UI-fil"
 
-#: src/frontends/qt4/GuiApplication.cpp:2464
+#: src/frontends/qt4/GuiApplication.cpp:2463
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -20044,7 +20066,7 @@ msgstr ""
 "LyX kunde inte hitta standardfilen för UI!\n"
 "Vänligen kontrollera din installation."
 
-#: src/frontends/qt4/GuiApplication.cpp:2469
+#: src/frontends/qt4/GuiApplication.cpp:2468
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -20065,11 +20087,11 @@ msgstr "BibTeX-bibliografi"
 
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
-#: src/frontends/qt4/GuiDocument.cpp:1840
+#: src/frontends/qt4/GuiDocument.cpp:1843
 #: src/frontends/qt4/GuiExternal.cpp:639 src/frontends/qt4/GuiGraphics.cpp:799
-#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1826
-#: src/frontends/qt4/GuiView.cpp:1884 src/frontends/qt4/GuiView.cpp:2025
-#: src/frontends/qt4/GuiView.cpp:2147 src/frontends/qt4/GuiView.cpp:2233
+#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1828
+#: src/frontends/qt4/GuiView.cpp:1886 src/frontends/qt4/GuiView.cpp:2027
+#: src/frontends/qt4/GuiView.cpp:2149 src/frontends/qt4/GuiView.cpp:2235
 msgid "Documents|#o#O"
 msgstr "Dokument|#o#O"
 
@@ -20155,8 +20177,8 @@ msgid "Filename Suffix"
 msgstr "Filnamnsändelse"
 
 #: src/frontends/qt4/GuiBranches.cpp:99 src/frontends/qt4/GuiBranches.cpp:107
-#: src/frontends/qt4/GuiDocument.cpp:2082
-#: src/frontends/qt4/GuiDocument.cpp:3103
+#: src/frontends/qt4/GuiDocument.cpp:2085
+#: src/frontends/qt4/GuiDocument.cpp:3106
 #: src/frontends/qt4/GuiProgressView.cpp:123
 #: src/frontends/qt4/GuiProgressView.cpp:137
 #: src/frontends/qt4/GuiProgressView.cpp:158
@@ -20164,8 +20186,8 @@ msgid "Yes"
 msgstr "Ja"
 
 #: src/frontends/qt4/GuiBranches.cpp:99 src/frontends/qt4/GuiBranches.cpp:107
-#: src/frontends/qt4/GuiDocument.cpp:2081
-#: src/frontends/qt4/GuiDocument.cpp:3102
+#: src/frontends/qt4/GuiDocument.cpp:2084
+#: src/frontends/qt4/GuiDocument.cpp:3105
 #: src/frontends/qt4/GuiProgressView.cpp:89
 #: src/frontends/qt4/GuiProgressView.cpp:122
 #: src/frontends/qt4/GuiProgressView.cpp:158
@@ -20317,10 +20339,10 @@ msgstr "%1$s filer"
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Välj ett filnamn att spara klistrad grafik som"
 
-#: src/frontends/qt4/GuiClipboard.cpp:210 src/frontends/qt4/GuiView.cpp:1903
-#: src/frontends/qt4/GuiView.cpp:2045 src/frontends/qt4/GuiView.cpp:2061
-#: src/frontends/qt4/GuiView.cpp:2078 src/frontends/qt4/GuiView.cpp:2164
-#: src/frontends/qt4/GuiView.cpp:2209
+#: src/frontends/qt4/GuiClipboard.cpp:210 src/frontends/qt4/GuiView.cpp:1905
+#: src/frontends/qt4/GuiView.cpp:2047 src/frontends/qt4/GuiView.cpp:2063
+#: src/frontends/qt4/GuiView.cpp:2080 src/frontends/qt4/GuiView.cpp:2166
+#: src/frontends/qt4/GuiView.cpp:2211
 msgid "Canceled."
 msgstr "Avbrutet."
 
@@ -20349,15 +20371,15 @@ msgstr "Jämför LyX-filer"
 msgid "Select document"
 msgstr "Välj dokument"
 
-#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:1830
-#: src/frontends/qt4/GuiView.cpp:1888 src/frontends/qt4/GuiView.cpp:2153
-#: src/frontends/qt4/GuiView.cpp:2241
+#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:1832
+#: src/frontends/qt4/GuiView.cpp:1890 src/frontends/qt4/GuiView.cpp:2155
+#: src/frontends/qt4/GuiView.cpp:2243
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-dokument (*.lyx)"
 
-#: src/frontends/qt4/GuiCompare.cpp:198 src/frontends/qt4/GuiDocument.cpp:1811
-#: src/frontends/qt4/GuiDocument.cpp:1886
-#: src/frontends/qt4/GuiDocument.cpp:3168
+#: src/frontends/qt4/GuiCompare.cpp:198 src/frontends/qt4/GuiDocument.cpp:1814
+#: src/frontends/qt4/GuiDocument.cpp:1889
+#: src/frontends/qt4/GuiDocument.cpp:3171
 msgid "Error"
 msgstr "Fel"
 
@@ -20531,7 +20553,7 @@ msgid "Document Settings"
 msgstr "Dokumentinställningar"
 
 #: src/frontends/qt4/GuiDocument.cpp:720 src/frontends/qt4/GuiInclude.cpp:48
-#: src/frontends/qt4/Menus.cpp:1385
+#: src/frontends/qt4/Menus.cpp:1388
 msgid "Child Document"
 msgstr "Barndokument"
 
@@ -20560,7 +20582,8 @@ msgid ""
 "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)\n"
 "You need to install the package \"fontspec\" to use this feature"
 msgstr ""
-"Använd OpenType- och TrueType-teckensnitt direkt (kräver XeTeX eller LuaTeX)\n"
+"Använd OpenType- och TrueType-teckensnitt direkt (kräver XeTeX eller "
+"LuaTeX)\n"
 "Du måste installera paketet \"fontspec\" för att använda denna funktion"
 
 #: src/frontends/qt4/GuiDocument.cpp:835
@@ -20711,110 +20734,110 @@ msgstr "Numrerad"
 msgid "Appears in TOC"
 msgstr "Visas i innehållsförteckning"
 
-#: src/frontends/qt4/GuiDocument.cpp:1071
+#: src/frontends/qt4/GuiDocument.cpp:1072
 msgid "Author-year"
 msgstr "Författare-år"
 
-#: src/frontends/qt4/GuiDocument.cpp:1072
+#: src/frontends/qt4/GuiDocument.cpp:1073
 msgid "Numerical"
 msgstr "Numerisk"
 
-#: src/frontends/qt4/GuiDocument.cpp:1164
+#: src/frontends/qt4/GuiDocument.cpp:1165
 #, c-format
 msgid "Unavailable: %1$s"
 msgstr "Otillgänglig: %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1267
-#: src/frontends/qt4/GuiDocument.cpp:1368
+#: src/frontends/qt4/GuiDocument.cpp:1270
+#: src/frontends/qt4/GuiDocument.cpp:1371
 msgid "Input listings parameters below. Enter ? for a list of parameters."
 msgstr ""
 "Mata in listningsparametrar nedan. Ange ? för en lista över parametrar."
 
-#: src/frontends/qt4/GuiDocument.cpp:1271
-#: src/frontends/qt4/GuiDocument.cpp:1292
-#: src/frontends/qt4/GuiDocument.cpp:2854
+#: src/frontends/qt4/GuiDocument.cpp:1274
+#: src/frontends/qt4/GuiDocument.cpp:1295
+#: src/frontends/qt4/GuiDocument.cpp:2857
 msgid "Document Class"
 msgstr "Dokumentklass"
 
-#: src/frontends/qt4/GuiDocument.cpp:1272
-#: src/frontends/qt4/GuiDocument.cpp:2852
-#: src/frontends/qt4/GuiDocument.cpp:2853
-#: src/frontends/qt4/GuiDocument.cpp:2856 src/frontends/qt4/qt_helpers.cpp:543
+#: src/frontends/qt4/GuiDocument.cpp:1275
+#: src/frontends/qt4/GuiDocument.cpp:2855
+#: src/frontends/qt4/GuiDocument.cpp:2856
+#: src/frontends/qt4/GuiDocument.cpp:2859 src/frontends/qt4/qt_helpers.cpp:543
 msgid "Child Documents"
 msgstr "Barndokument"
 
-#: src/frontends/qt4/GuiDocument.cpp:1273
+#: src/frontends/qt4/GuiDocument.cpp:1276
 msgid "Modules"
 msgstr "Moduler"
 
-#: src/frontends/qt4/GuiDocument.cpp:1274
+#: src/frontends/qt4/GuiDocument.cpp:1277
 msgid "Local Layout"
 msgstr "Lokal utformning"
 
-#: src/frontends/qt4/GuiDocument.cpp:1276
+#: src/frontends/qt4/GuiDocument.cpp:1279
 msgid "Text Layout"
 msgstr "Textutformning"
 
-#: src/frontends/qt4/GuiDocument.cpp:1278
+#: src/frontends/qt4/GuiDocument.cpp:1281
 msgid "Page Margins"
 msgstr "Sidmarginaler"
 
-#: src/frontends/qt4/GuiDocument.cpp:1280 src/frontends/qt4/GuiPrefs.cpp:1068
+#: src/frontends/qt4/GuiDocument.cpp:1283 src/frontends/qt4/GuiPrefs.cpp:1068
 msgid "Colors"
 msgstr "Färger"
 
-#: src/frontends/qt4/GuiDocument.cpp:1281
+#: src/frontends/qt4/GuiDocument.cpp:1284
 msgid "Numbering & TOC"
 msgstr "Numrering & innehållsförteckning"
 
-#: src/frontends/qt4/GuiDocument.cpp:1283
+#: src/frontends/qt4/GuiDocument.cpp:1286
 msgid "Indexes"
 msgstr "Index"
 
-#: src/frontends/qt4/GuiDocument.cpp:1284
+#: src/frontends/qt4/GuiDocument.cpp:1287
 msgid "PDF Properties"
 msgstr "PDF-egenskaper"
 
-#: src/frontends/qt4/GuiDocument.cpp:1285
+#: src/frontends/qt4/GuiDocument.cpp:1288
 msgid "Math Options"
 msgstr "Matematikalternativ"
 
-#: src/frontends/qt4/GuiDocument.cpp:1286
+#: src/frontends/qt4/GuiDocument.cpp:1289
 msgid "Float Placement"
 msgstr "Flotteplacering"
 
-#: src/frontends/qt4/GuiDocument.cpp:1288
+#: src/frontends/qt4/GuiDocument.cpp:1291
 msgid "Bullets"
 msgstr "Bomber"
 
-#: src/frontends/qt4/GuiDocument.cpp:1289
+#: src/frontends/qt4/GuiDocument.cpp:1292
 msgid "Branches"
 msgstr "Grenar"
 
-#: src/frontends/qt4/GuiDocument.cpp:1291
+#: src/frontends/qt4/GuiDocument.cpp:1294
 msgid "LaTeX Preamble"
 msgstr "LaTeX-ingress"
 
-#: src/frontends/qt4/GuiDocument.cpp:1693
-#: src/frontends/qt4/GuiDocument.cpp:1699
-#: src/frontends/qt4/GuiDocument.cpp:1705
+#: src/frontends/qt4/GuiDocument.cpp:1696
+#: src/frontends/qt4/GuiDocument.cpp:1702
+#: src/frontends/qt4/GuiDocument.cpp:1708
 msgid " (not installed)"
 msgstr " (inte installerad)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1780
+#: src/frontends/qt4/GuiDocument.cpp:1783
 msgid "Layouts|#o#O"
 msgstr "Utformningar|#o#O"
 
-#: src/frontends/qt4/GuiDocument.cpp:1782
+#: src/frontends/qt4/GuiDocument.cpp:1785
 msgid "LyX Layout (*.layout)"
 msgstr "LyX-utformning (*.layout)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1784
-#: src/frontends/qt4/GuiDocument.cpp:1793
+#: src/frontends/qt4/GuiDocument.cpp:1787
+#: src/frontends/qt4/GuiDocument.cpp:1796
 msgid "Local layout file"
 msgstr "Lokal utformningsfil"
 
-#: src/frontends/qt4/GuiDocument.cpp:1794
+#: src/frontends/qt4/GuiDocument.cpp:1797
 msgid ""
 "The layout file you have selected is a local layout\n"
 "file, not one in the system or user directory. Your\n"
@@ -20826,29 +20849,29 @@ msgstr ""
 "Ditt dokument kanske inte fungerar med denna utformning\n"
 "om du inte har utformningsfilen i dokumentkatalogen."
 
-#: src/frontends/qt4/GuiDocument.cpp:1798
+#: src/frontends/qt4/GuiDocument.cpp:1801
 msgid "&Set Layout"
 msgstr "&Sätt utformning"
 
-#: src/frontends/qt4/GuiDocument.cpp:1812
+#: src/frontends/qt4/GuiDocument.cpp:1815
 msgid "Unable to read local layout file."
 msgstr "Kan inte läsa lokal utformningsfil."
 
-#: src/frontends/qt4/GuiDocument.cpp:1834
+#: src/frontends/qt4/GuiDocument.cpp:1837
 msgid "Select master document"
 msgstr "Välj huvuddokument"
 
-#: src/frontends/qt4/GuiDocument.cpp:1838
+#: src/frontends/qt4/GuiDocument.cpp:1841
 msgid "LyX Files (*.lyx)"
 msgstr "LyX-filer (*.lyx)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1871
-#: src/frontends/qt4/GuiDocument.cpp:3157
+#: src/frontends/qt4/GuiDocument.cpp:1874
+#: src/frontends/qt4/GuiDocument.cpp:3160
 msgid "Unapplied changes"
 msgstr "Otillämpade ändringar"
 
-#: src/frontends/qt4/GuiDocument.cpp:1872
-#: src/frontends/qt4/GuiDocument.cpp:3158
+#: src/frontends/qt4/GuiDocument.cpp:1875
+#: src/frontends/qt4/GuiDocument.cpp:3161
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
@@ -20856,80 +20879,80 @@ msgstr ""
 "Några ändringar i dialogen har inte tillämpats än.\n"
 "Om du inte tillämpar nu kommer de att förloras efter denna handling."
 
-#: src/frontends/qt4/GuiDocument.cpp:1874
-#: src/frontends/qt4/GuiDocument.cpp:3160
+#: src/frontends/qt4/GuiDocument.cpp:1877
+#: src/frontends/qt4/GuiDocument.cpp:3163
 msgid "&Dismiss"
 msgstr "Avfär&da"
 
-#: src/frontends/qt4/GuiDocument.cpp:1886
-#: src/frontends/qt4/GuiDocument.cpp:3168
+#: src/frontends/qt4/GuiDocument.cpp:1889
+#: src/frontends/qt4/GuiDocument.cpp:3171
 msgid "Unable to set document class."
 msgstr "Kan inte sätta dokumentklass."
 
-#: src/frontends/qt4/GuiDocument.cpp:1939
+#: src/frontends/qt4/GuiDocument.cpp:1942
 #, c-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1944
+#: src/frontends/qt4/GuiDocument.cpp:1947
 #, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr "%1$s, %2$s, och %3$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1958
+#: src/frontends/qt4/GuiDocument.cpp:1961
 #, c-format
 msgid "%1$s (unavailable)"
 msgstr "%1$s (otillgänglig)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2033
+#: src/frontends/qt4/GuiDocument.cpp:2036
 msgid "Module provided by document class."
 msgstr "Modul försedd av dokumentklass."
 
-#: src/frontends/qt4/GuiDocument.cpp:2041
+#: src/frontends/qt4/GuiDocument.cpp:2044
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr "Paket som krävs: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2047
+#: src/frontends/qt4/GuiDocument.cpp:2050
 msgid "or"
 msgstr "eller"
 
-#: src/frontends/qt4/GuiDocument.cpp:2050
+#: src/frontends/qt4/GuiDocument.cpp:2053
 #, c-format
 msgid "Modules required: %1$s."
 msgstr "Moduler som krävs: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2059
+#: src/frontends/qt4/GuiDocument.cpp:2062
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr "Moduler som exkluderas: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2065
+#: src/frontends/qt4/GuiDocument.cpp:2068
 msgid "WARNING: Some required packages are unavailable!"
 msgstr "VARNING: Några paket som krävs är otillgängliga!"
 
-#: src/frontends/qt4/GuiDocument.cpp:2829
+#: src/frontends/qt4/GuiDocument.cpp:2832
 msgid "[No options predefined]"
 msgstr "[Inga alternativ fördefinierade]"
 
-#: src/frontends/qt4/GuiDocument.cpp:3180
+#: src/frontends/qt4/GuiDocument.cpp:3183
 msgid "Can't set layout!"
 msgstr "Kan inte sätta utformning!"
 
-#: src/frontends/qt4/GuiDocument.cpp:3181
+#: src/frontends/qt4/GuiDocument.cpp:3184
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Kan inte sätta utformning för ID: %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:3274
+#: src/frontends/qt4/GuiDocument.cpp:3277
 msgid "Not Found"
 msgstr "Hittades inte"
 
-#: src/frontends/qt4/GuiDocument.cpp:3328
+#: src/frontends/qt4/GuiDocument.cpp:3331
 msgid "Assigned master does not include this file"
 msgstr "Tilldelat huvud inkluderar inte denna fil"
 
-#: src/frontends/qt4/GuiDocument.cpp:3329
+#: src/frontends/qt4/GuiDocument.cpp:3332
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -20940,11 +20963,11 @@ msgstr ""
 "'%1$s' för att kunna använda huvuddokumentets\n"
 "funktion."
 
-#: src/frontends/qt4/GuiDocument.cpp:3333
+#: src/frontends/qt4/GuiDocument.cpp:3336
 msgid "Could not load master"
 msgstr "Kunde inte ladda huvud"
 
-#: src/frontends/qt4/GuiDocument.cpp:3334
+#: src/frontends/qt4/GuiDocument.cpp:3337
 #, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -21440,11 +21463,11 @@ msgstr "Omvandlare"
 msgid "File Formats"
 msgstr "Filformat"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1993 src/frontends/qt4/GuiPrefs.cpp:2145
+#: src/frontends/qt4/GuiPrefs.cpp:2000 src/frontends/qt4/GuiPrefs.cpp:2152
 msgid "Format in use"
 msgstr "Format som används"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1994
+#: src/frontends/qt4/GuiPrefs.cpp:2001
 msgid ""
 "You cannot change a format's short name if the format is used by a "
 "converter. Please remove the converter first."
@@ -21452,17 +21475,17 @@ msgstr ""
 "Du kan inte ändra ett formats korta namn om formatet används av en "
 "omvandlare. Vänligen ta bort omvandlaren först."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2146
+#: src/frontends/qt4/GuiPrefs.cpp:2153
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "Kan inte ta bort ett format som används av en omvandlare. Ta bort "
 "omvandlaren först."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2228
+#: src/frontends/qt4/GuiPrefs.cpp:2235
 msgid "LyX needs to be restarted!"
 msgstr "LyX behöver startas om!"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2229
+#: src/frontends/qt4/GuiPrefs.cpp:2236
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
@@ -21470,68 +21493,68 @@ msgstr ""
 "Ändringen av användargränssnittets språk kommer att ge full effekt endast "
 "efter en omstart."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2300
+#: src/frontends/qt4/GuiPrefs.cpp:2307
 msgid "Printer"
 msgstr "Skrivare"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2398 src/frontends/qt4/GuiPrefs.cpp:3131
+#: src/frontends/qt4/GuiPrefs.cpp:2405 src/frontends/qt4/GuiPrefs.cpp:3138
 msgid "User Interface"
 msgstr "Användargränssnitt"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2508
+#: src/frontends/qt4/GuiPrefs.cpp:2515
 msgid "Control"
 msgstr "Kontroll"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2592
+#: src/frontends/qt4/GuiPrefs.cpp:2599
 msgid "Shortcuts"
 msgstr "Genvägar"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2597
+#: src/frontends/qt4/GuiPrefs.cpp:2604
 msgid "Function"
 msgstr "Funktion"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2598
+#: src/frontends/qt4/GuiPrefs.cpp:2605
 msgid "Shortcut"
 msgstr "Genväg"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2677
+#: src/frontends/qt4/GuiPrefs.cpp:2684
 msgid "Cursor, Mouse and Editing Functions"
 msgstr "Markör, mus och redigeringsfunktioner"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2681
+#: src/frontends/qt4/GuiPrefs.cpp:2688
 msgid "Mathematical Symbols"
 msgstr "Matematiska symboler"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2685
+#: src/frontends/qt4/GuiPrefs.cpp:2692
 msgid "Document and Window"
 msgstr "Dokument och fönster"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2689
+#: src/frontends/qt4/GuiPrefs.cpp:2696
 msgid "Font, Layouts and Textclasses"
 msgstr "Teckensnitt, utformningar och textklasser"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2693
+#: src/frontends/qt4/GuiPrefs.cpp:2700
 msgid "System and Miscellaneous"
 msgstr "System och diverse"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2820 src/frontends/qt4/GuiPrefs.cpp:2866
+#: src/frontends/qt4/GuiPrefs.cpp:2827 src/frontends/qt4/GuiPrefs.cpp:2873
 msgid "Res&tore"
 msgstr "Åters&täll"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2977 src/frontends/qt4/GuiPrefs.cpp:2984
-#: src/frontends/qt4/GuiPrefs.cpp:3004 src/frontends/qt4/GuiPrefs.cpp:3023
+#: src/frontends/qt4/GuiPrefs.cpp:2984 src/frontends/qt4/GuiPrefs.cpp:2991
+#: src/frontends/qt4/GuiPrefs.cpp:3011 src/frontends/qt4/GuiPrefs.cpp:3030
 msgid "Failed to create shortcut"
 msgstr "Misslyckades med att skapa genväg"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2978
+#: src/frontends/qt4/GuiPrefs.cpp:2985
 msgid "Unknown or invalid LyX function"
 msgstr "Okänd eller ogiltig LyX-funktion"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2985
+#: src/frontends/qt4/GuiPrefs.cpp:2992
 msgid "Invalid or empty key sequence"
 msgstr "Ogiltig eller tom tangentsekvens"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3005
+#: src/frontends/qt4/GuiPrefs.cpp:3012
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
@@ -21542,35 +21565,35 @@ msgstr ""
 "%2$s\n"
 "Du måste ta bort den bindingen innan du skapar en ny."
 
-#: src/frontends/qt4/GuiPrefs.cpp:3024
+#: src/frontends/qt4/GuiPrefs.cpp:3031
 msgid "Can not insert shortcut to the list"
 msgstr "Kan inte infoga genväg till listan"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3055
+#: src/frontends/qt4/GuiPrefs.cpp:3062
 msgid "Identity"
 msgstr "Identitet"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3261
+#: src/frontends/qt4/GuiPrefs.cpp:3268
 msgid "Choose bind file"
 msgstr "Välj bindfil"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3262
+#: src/frontends/qt4/GuiPrefs.cpp:3269
 msgid "LyX bind files (*.bind)"
 msgstr "LyX bindfiler (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3268
+#: src/frontends/qt4/GuiPrefs.cpp:3275
 msgid "Choose UI file"
 msgstr "Välj UI-fil"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3269
+#: src/frontends/qt4/GuiPrefs.cpp:3276
 msgid "LyX UI files (*.ui)"
 msgstr "LyX UI-filer (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3275
+#: src/frontends/qt4/GuiPrefs.cpp:3282
 msgid "Choose keyboard map"
 msgstr "Välj tangentbordskarta"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3276
+#: src/frontends/qt4/GuiPrefs.cpp:3283
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "LyX tangentbordskartor (*.kmap)"
 
@@ -22096,59 +22119,59 @@ msgstr "Automatisk sparning klar."
 msgid "Automatic save failed!"
 msgstr "Automatisk sparning misslyckades!"
 
-#: src/frontends/qt4/GuiView.cpp:1548
+#: src/frontends/qt4/GuiView.cpp:1550
 msgid "Command not allowed without any document open"
 msgstr "Kommandot tillåts inte utan öppna dokument"
 
-#: src/frontends/qt4/GuiView.cpp:1650
+#: src/frontends/qt4/GuiView.cpp:1652
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Okänd verktygsrad \"%1$s\""
 
-#: src/frontends/qt4/GuiView.cpp:1825
+#: src/frontends/qt4/GuiView.cpp:1827
 msgid "Select template file"
 msgstr "Välj mallfil"
 
-#: src/frontends/qt4/GuiView.cpp:1827 src/frontends/qt4/GuiView.cpp:2234
+#: src/frontends/qt4/GuiView.cpp:1829 src/frontends/qt4/GuiView.cpp:2236
 msgid "Templates|#T#t"
 msgstr "Mallar"
 
-#: src/frontends/qt4/GuiView.cpp:1853
+#: src/frontends/qt4/GuiView.cpp:1855
 msgid "Document not loaded."
 msgstr "Dokument laddades inte."
 
-#: src/frontends/qt4/GuiView.cpp:1883
+#: src/frontends/qt4/GuiView.cpp:1885
 msgid "Select document to open"
 msgstr "Välj dokument att öppna"
 
-#: src/frontends/qt4/GuiView.cpp:1885 src/frontends/qt4/GuiView.cpp:2026
-#: src/frontends/qt4/GuiView.cpp:2148
+#: src/frontends/qt4/GuiView.cpp:1887 src/frontends/qt4/GuiView.cpp:2028
+#: src/frontends/qt4/GuiView.cpp:2150
 msgid "Examples|#E#e"
 msgstr "Exempel|#E#e"
 
-#: src/frontends/qt4/GuiView.cpp:1889
+#: src/frontends/qt4/GuiView.cpp:1891
 msgid "LyX-1.3.x Documents (*.lyx13)"
 msgstr "LyX-1.3.x-dokument (*.lyx13)"
 
-#: src/frontends/qt4/GuiView.cpp:1890
+#: src/frontends/qt4/GuiView.cpp:1892
 msgid "LyX-1.4.x Documents (*.lyx14)"
 msgstr "LyX-1.4.x-dokument (*.lyx14)"
 
-#: src/frontends/qt4/GuiView.cpp:1891
+#: src/frontends/qt4/GuiView.cpp:1893
 msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "LyX-1.5.x-dokument (*.lyx15)"
 
-#: src/frontends/qt4/GuiView.cpp:1892
+#: src/frontends/qt4/GuiView.cpp:1894
 msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "LyX-1.6.x-dokument (*.lyx16)"
 
-#: src/frontends/qt4/GuiView.cpp:1917 src/frontends/qt4/Validator.cpp:188
+#: src/frontends/qt4/GuiView.cpp:1919 src/frontends/qt4/Validator.cpp:188
 #: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:290
 #: src/insets/InsetGraphics.cpp:596 src/insets/InsetInclude.cpp:533
 msgid "Invalid filename"
 msgstr "Ogiltigt filnamn"
 
-#: src/frontends/qt4/GuiView.cpp:1918
+#: src/frontends/qt4/GuiView.cpp:1920
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -22159,40 +22182,40 @@ msgstr ""
 "%1$s\n"
 "finns inte."
 
-#: src/frontends/qt4/GuiView.cpp:1934
+#: src/frontends/qt4/GuiView.cpp:1936
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Öppnar dokument %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1939
+#: src/frontends/qt4/GuiView.cpp:1941
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s öppnat."
 
-#: src/frontends/qt4/GuiView.cpp:1942
+#: src/frontends/qt4/GuiView.cpp:1944
 msgid "Version control detected."
 msgstr "Versionshantering upptäckt."
 
-#: src/frontends/qt4/GuiView.cpp:1944
+#: src/frontends/qt4/GuiView.cpp:1946
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Kunde inte öppna dokument %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:1973
+#: src/frontends/qt4/GuiView.cpp:1975
 msgid "Couldn't import file"
 msgstr "Kunde inte importera fil"
 
-#: src/frontends/qt4/GuiView.cpp:1974
+#: src/frontends/qt4/GuiView.cpp:1976
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Ingen information för att importera formatet %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:2021
+#: src/frontends/qt4/GuiView.cpp:2023
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Välj %1$s fil att importera"
 
-#: src/frontends/qt4/GuiView.cpp:2072 src/frontends/qt4/GuiView.cpp:2259
+#: src/frontends/qt4/GuiView.cpp:2074 src/frontends/qt4/GuiView.cpp:2261
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -22203,52 +22226,52 @@ msgstr ""
 "\n"
 "Vill du skriva över det dokumentet?"
 
-#: src/frontends/qt4/GuiView.cpp:2074 src/frontends/qt4/GuiView.cpp:2263
+#: src/frontends/qt4/GuiView.cpp:2076 src/frontends/qt4/GuiView.cpp:2265
 msgid "Overwrite document?"
 msgstr "Skriv över dokument?"
 
-#: src/frontends/qt4/GuiView.cpp:2083
+#: src/frontends/qt4/GuiView.cpp:2085
 #, c-format
 msgid "Importing %1$s..."
 msgstr "Importerar %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:2086
+#: src/frontends/qt4/GuiView.cpp:2088
 msgid "imported."
 msgstr "importerad."
 
-#: src/frontends/qt4/GuiView.cpp:2088
+#: src/frontends/qt4/GuiView.cpp:2090
 msgid "file not imported!"
 msgstr "fil importerades inte!"
 
-#: src/frontends/qt4/GuiView.cpp:2113
+#: src/frontends/qt4/GuiView.cpp:2115
 msgid "newfile"
 msgstr "nyfil"
 
-#: src/frontends/qt4/GuiView.cpp:2146
+#: src/frontends/qt4/GuiView.cpp:2148
 msgid "Select LyX document to insert"
 msgstr "Välj LyX-dokument att infoga"
 
-#: src/frontends/qt4/GuiView.cpp:2182 src/frontends/qt4/GuiView.cpp:3149
+#: src/frontends/qt4/GuiView.cpp:2184 src/frontends/qt4/GuiView.cpp:3151
 msgid "Absolute filename expected."
 msgstr "Absolut filnamn förväntas."
 
-#: src/frontends/qt4/GuiView.cpp:2194
+#: src/frontends/qt4/GuiView.cpp:2196
 msgid "Select file to insert"
 msgstr "Välj fil att infoga"
 
-#: src/frontends/qt4/GuiView.cpp:2198
+#: src/frontends/qt4/GuiView.cpp:2200
 msgid "All Files (*)"
 msgstr "Alla filer (*)"
 
-#: src/frontends/qt4/GuiView.cpp:2231
+#: src/frontends/qt4/GuiView.cpp:2233
 msgid "Choose a filename to save document as"
 msgstr "Välj ett filnamn att spara dokument som"
 
-#: src/frontends/qt4/GuiView.cpp:2264 src/frontends/qt4/GuiView.cpp:2309
+#: src/frontends/qt4/GuiView.cpp:2266 src/frontends/qt4/GuiView.cpp:2311
 msgid "&Rename"
 msgstr "Byt namn"
 
-#: src/frontends/qt4/GuiView.cpp:2305
+#: src/frontends/qt4/GuiView.cpp:2307
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -22259,23 +22282,23 @@ msgstr ""
 "\n"
 "Vill du byta namn på dokumentet och försöka igen?"
 
-#: src/frontends/qt4/GuiView.cpp:2308
+#: src/frontends/qt4/GuiView.cpp:2310
 msgid "Rename and save?"
 msgstr "Byt namn och spara?"
 
-#: src/frontends/qt4/GuiView.cpp:2309
+#: src/frontends/qt4/GuiView.cpp:2311
 msgid "&Retry"
 msgstr "Fö&rsök igen"
 
-#: src/frontends/qt4/GuiView.cpp:2415
+#: src/frontends/qt4/GuiView.cpp:2417
 msgid "Close document"
 msgstr "Stäng dokument"
 
-#: src/frontends/qt4/GuiView.cpp:2416
+#: src/frontends/qt4/GuiView.cpp:2418
 msgid "Document could not be closed because it is being processed by LyX."
 msgstr "Dokument kunde inte stängas eftersom det behandlas av LyX."
 
-#: src/frontends/qt4/GuiView.cpp:2520 src/frontends/qt4/GuiView.cpp:2625
+#: src/frontends/qt4/GuiView.cpp:2522 src/frontends/qt4/GuiView.cpp:2627
 #, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
@@ -22286,11 +22309,11 @@ msgstr ""
 "\n"
 "Vill du spara dokumentet?"
 
-#: src/frontends/qt4/GuiView.cpp:2523 src/frontends/qt4/GuiView.cpp:2628
+#: src/frontends/qt4/GuiView.cpp:2525 src/frontends/qt4/GuiView.cpp:2630
 msgid "Save new document?"
 msgstr "Spara nytt dokument?"
 
-#: src/frontends/qt4/GuiView.cpp:2528
+#: src/frontends/qt4/GuiView.cpp:2530
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -22301,15 +22324,15 @@ msgstr ""
 "\n"
 "Vill du spara dokumentet eller kasta ändringarna?"
 
-#: src/frontends/qt4/GuiView.cpp:2530 src/frontends/qt4/GuiView.cpp:2622
+#: src/frontends/qt4/GuiView.cpp:2532 src/frontends/qt4/GuiView.cpp:2624
 msgid "Save changed document?"
 msgstr "Spara ändrat dokument?"
 
-#: src/frontends/qt4/GuiView.cpp:2531
+#: src/frontends/qt4/GuiView.cpp:2533
 msgid "&Discard"
 msgstr "Kasta"
 
-#: src/frontends/qt4/GuiView.cpp:2619
+#: src/frontends/qt4/GuiView.cpp:2621
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -22320,7 +22343,7 @@ msgstr ""
 "\n"
 "Vill du spara dokumentet?"
 
-#: src/frontends/qt4/GuiView.cpp:2654
+#: src/frontends/qt4/GuiView.cpp:2656
 #, c-format
 msgid ""
 "Document \n"
@@ -22332,56 +22355,56 @@ msgstr ""
 "har blivit externt modifierad. Ladda om nu? Alla lokala ändringar kommer att "
 "förloras."
 
-#: src/frontends/qt4/GuiView.cpp:2657
+#: src/frontends/qt4/GuiView.cpp:2659
 msgid "Reload externally changed document?"
 msgstr "Ladda om externt ändrat dokument?"
 
-#: src/frontends/qt4/GuiView.cpp:2710
+#: src/frontends/qt4/GuiView.cpp:2712
 msgid "Error when setting the locking property."
 msgstr "Fel vid sättning av låsningsegenskapen."
 
-#: src/frontends/qt4/GuiView.cpp:2756
+#: src/frontends/qt4/GuiView.cpp:2758
 msgid "Directory is not accessible."
 msgstr "Katalog är inte åtkomlig."
 
-#: src/frontends/qt4/GuiView.cpp:2832
+#: src/frontends/qt4/GuiView.cpp:2834
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Öppnar barndokument %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:2912
+#: src/frontends/qt4/GuiView.cpp:2914
 #, c-format
 msgid "Successful preview of format: %1$s"
 msgstr "Lyckad förhandsgranskning av format: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2913
+#: src/frontends/qt4/GuiView.cpp:2915
 #, c-format
 msgid "Error while previewing format: %1$s"
 msgstr "Fel vid förhandsgranskning av format: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2916
+#: src/frontends/qt4/GuiView.cpp:2918
 #, c-format
 msgid "Successful export to format: %1$s"
 msgstr "Lyckad export till format: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2917
+#: src/frontends/qt4/GuiView.cpp:2919
 #, c-format
 msgid "Error while exporting format: %1$s"
 msgstr "Fel vid export av format: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:3101 src/frontends/qt4/GuiView.cpp:3113
+#: src/frontends/qt4/GuiView.cpp:3103 src/frontends/qt4/GuiView.cpp:3115
 msgid "Exporting ..."
 msgstr "Exporterar ..."
 
-#: src/frontends/qt4/GuiView.cpp:3122
+#: src/frontends/qt4/GuiView.cpp:3124
 msgid "Previewing ..."
 msgstr "Förhandsgranskar ..."
 
-#: src/frontends/qt4/GuiView.cpp:3156
+#: src/frontends/qt4/GuiView.cpp:3158
 msgid "Document not loaded"
 msgstr "Dokument laddades inte"
 
-#: src/frontends/qt4/GuiView.cpp:3234
+#: src/frontends/qt4/GuiView.cpp:3236
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -22390,28 +22413,28 @@ msgstr ""
 "Ändringar kommer att förloras. Är du säker på att du vill återgå till den "
 "sparade versionen av dokumentet %1$s?"
 
-#: src/frontends/qt4/GuiView.cpp:3237
+#: src/frontends/qt4/GuiView.cpp:3239
 msgid "Revert to saved document?"
 msgstr "Återgå till sparat dokument?"
 
-#: src/frontends/qt4/GuiView.cpp:3263
+#: src/frontends/qt4/GuiView.cpp:3265
 msgid "Saving all documents..."
 msgstr "Sparar alla dokument..."
 
-#: src/frontends/qt4/GuiView.cpp:3273
+#: src/frontends/qt4/GuiView.cpp:3275
 msgid "All documents saved."
 msgstr "Alla dokument sparade."
 
-#: src/frontends/qt4/GuiView.cpp:3374
+#: src/frontends/qt4/GuiView.cpp:3375
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s okänt kommando!"
 
-#: src/frontends/qt4/GuiView.cpp:3488
+#: src/frontends/qt4/GuiView.cpp:3489
 msgid "Please, preview the document first."
 msgstr "Vänligen förhandsgranska dokumentet först."
 
-#: src/frontends/qt4/GuiView.cpp:3503
+#: src/frontends/qt4/GuiView.cpp:3504
 msgid "Couldn't proceed."
 msgstr "Kunde inte fortsätta."
 
@@ -22428,31 +22451,31 @@ msgstr "DocBook-källa"
 msgid "Literate Source"
 msgstr "Litterat källa"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1285
+#: src/frontends/qt4/GuiWorkArea.cpp:1292
 msgid " (version control, locking)"
 msgstr " (versionshantering, låser)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1287
+#: src/frontends/qt4/GuiWorkArea.cpp:1294
 msgid " (version control)"
 msgstr " (versionshantering)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1290
+#: src/frontends/qt4/GuiWorkArea.cpp:1297
 msgid " (changed)"
 msgstr " (ändrad)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1294
+#: src/frontends/qt4/GuiWorkArea.cpp:1301
 msgid " (read only)"
 msgstr " (skrivskyddad)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1449
+#: src/frontends/qt4/GuiWorkArea.cpp:1454
 msgid "Close File"
 msgstr "Stäng fil"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1891
+#: src/frontends/qt4/GuiWorkArea.cpp:1896
 msgid "Hide tab"
 msgstr "Dölj flik"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1893
+#: src/frontends/qt4/GuiWorkArea.cpp:1898
 msgid "Close tab"
 msgstr "Stäng flik"
 
@@ -22477,115 +22500,115 @@ msgstr "Ange tecken för att filtrera utformningslistan."
 msgid " (unknown)"
 msgstr " (okänd)"
 
-#: src/frontends/qt4/Menus.cpp:743
+#: src/frontends/qt4/Menus.cpp:746
 msgid "No Group"
 msgstr "Ingen grupp"
 
-#: src/frontends/qt4/Menus.cpp:771 src/frontends/qt4/Menus.cpp:772
+#: src/frontends/qt4/Menus.cpp:774 src/frontends/qt4/Menus.cpp:775
 msgid "More Spelling Suggestions"
 msgstr "Fler stavningsförslag"
 
-#: src/frontends/qt4/Menus.cpp:790
+#: src/frontends/qt4/Menus.cpp:793
 msgid "Add to personal dictionary|n"
 msgstr "Lägg till i personlig ordlista|n"
 
-#: src/frontends/qt4/Menus.cpp:792
+#: src/frontends/qt4/Menus.cpp:795
 msgid "Ignore all|I"
 msgstr "Ignorera alla|I"
 
-#: src/frontends/qt4/Menus.cpp:800
+#: src/frontends/qt4/Menus.cpp:803
 msgid "Remove from personal dictionary|r"
 msgstr "Ta bort från personlig ordlista|r"
 
-#: src/frontends/qt4/Menus.cpp:838
+#: src/frontends/qt4/Menus.cpp:841
 msgid "Language|L"
 msgstr "Språk"
 
-#: src/frontends/qt4/Menus.cpp:840
+#: src/frontends/qt4/Menus.cpp:843
 msgid "More Languages ...|M"
 msgstr "Fler språk ..."
 
-#: src/frontends/qt4/Menus.cpp:910 src/frontends/qt4/Menus.cpp:911
+#: src/frontends/qt4/Menus.cpp:913 src/frontends/qt4/Menus.cpp:914
 msgid "Hidden|H"
 msgstr "Dold"
 
-#: src/frontends/qt4/Menus.cpp:915
+#: src/frontends/qt4/Menus.cpp:918
 msgid "<No Documents Open>"
 msgstr "<Inga dokument öppnade>"
 
-#: src/frontends/qt4/Menus.cpp:978
+#: src/frontends/qt4/Menus.cpp:981
 msgid "<No Bookmarks Saved Yet>"
 msgstr "<Inga bokmärken sparade än>"
 
-#: src/frontends/qt4/Menus.cpp:1016
+#: src/frontends/qt4/Menus.cpp:1019
 msgid "View (Other Formats)|F"
 msgstr "Visa (andra format)|f"
 
-#: src/frontends/qt4/Menus.cpp:1017
+#: src/frontends/qt4/Menus.cpp:1020
 msgid "Update (Other Formats)|p"
 msgstr "Uppdatera (andra format)|p"
 
-#: src/frontends/qt4/Menus.cpp:1050
+#: src/frontends/qt4/Menus.cpp:1053
 #, c-format
 msgid "View [%1$s]|V"
 msgstr "Visa [%1$s]|V"
 
-#: src/frontends/qt4/Menus.cpp:1051
+#: src/frontends/qt4/Menus.cpp:1054
 #, c-format
 msgid "Update [%1$s]|U"
 msgstr "Uppdatera [%1$s]|U"
 
-#: src/frontends/qt4/Menus.cpp:1162
+#: src/frontends/qt4/Menus.cpp:1165
 msgid "No Custom Insets Defined!"
 msgstr "Inga anpassade insättningar definierade!"
 
-#: src/frontends/qt4/Menus.cpp:1234
+#: src/frontends/qt4/Menus.cpp:1237
 msgid "<No Document Open>"
 msgstr "<Inga dokument öppnade>"
 
-#: src/frontends/qt4/Menus.cpp:1244
+#: src/frontends/qt4/Menus.cpp:1247
 msgid "Master Document"
 msgstr "Huvuddokument"
 
-#: src/frontends/qt4/Menus.cpp:1261
+#: src/frontends/qt4/Menus.cpp:1264
 msgid "Open Navigator..."
 msgstr "Öppna navigator..."
 
-#: src/frontends/qt4/Menus.cpp:1282
+#: src/frontends/qt4/Menus.cpp:1285
 msgid "Other Lists"
 msgstr "Andra listor"
 
-#: src/frontends/qt4/Menus.cpp:1295
+#: src/frontends/qt4/Menus.cpp:1298
 msgid "<Empty Table of Contents>"
 msgstr "<Tom innehållsförteckning>"
 
-#: src/frontends/qt4/Menus.cpp:1330
+#: src/frontends/qt4/Menus.cpp:1333
 msgid "Other Toolbars"
 msgstr "Andra verktygsrader"
 
-#: src/frontends/qt4/Menus.cpp:1345
+#: src/frontends/qt4/Menus.cpp:1348
 msgid "No Branches Set for Document!"
 msgstr "Inga grenar satta för dokument!"
 
-#: src/frontends/qt4/Menus.cpp:1406
+#: src/frontends/qt4/Menus.cpp:1409
 msgid "Index Entry|d"
 msgstr "Indexpost|d"
 
-#: src/frontends/qt4/Menus.cpp:1421
+#: src/frontends/qt4/Menus.cpp:1424
 #, c-format
 msgid "Index: %1$s"
 msgstr "Index: %1$s"
 
-#: src/frontends/qt4/Menus.cpp:1426 src/frontends/qt4/Menus.cpp:1455
+#: src/frontends/qt4/Menus.cpp:1429 src/frontends/qt4/Menus.cpp:1458
 #, c-format
 msgid "Index Entry (%1$s)"
 msgstr "Indexpost (%1$s)"
 
-#: src/frontends/qt4/Menus.cpp:1472
+#: src/frontends/qt4/Menus.cpp:1475
 msgid "No Citation in Scope!"
 msgstr "Inget citat i omfång!"
 
-#: src/frontends/qt4/Menus.cpp:2053
+#: src/frontends/qt4/Menus.cpp:2075
 msgid "No Action Defined!"
 msgstr "Ingen handling definierad!"
 
@@ -23546,7 +23569,7 @@ msgstr "Skyddat horisontellt mellanrum (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Okänd innehållsförteckningstyp"
 
-#: src/insets/InsetTabular.cpp:4655
+#: src/insets/InsetTabular.cpp:4672
 msgid "Selection size should match clipboard content."
 msgstr "Urvalets storlek bör matcha klippbordets innehåll."
 
@@ -23784,23 +23807,23 @@ msgstr "Kan inte ändra antal kolumner i '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Kan inte lägga till horisontella rutnätslinjer i '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:1006
+#: src/mathed/InsetMathNest.cpp:1007
 msgid "create new math text environment ($...$)"
 msgstr "skapa ny matematiktextmiljö ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1009
+#: src/mathed/InsetMathNest.cpp:1010
 msgid "entered math text mode (textrm)"
 msgstr "gick in i matematiktextläge (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1031
+#: src/mathed/InsetMathNest.cpp:1032
 msgid "Regular expression editor mode"
 msgstr "Redigeringsläge för reguljära uttryck"
 
-#: src/mathed/InsetMathNest.cpp:1633 src/mathed/InsetMathNest.cpp:1753
+#: src/mathed/InsetMathNest.cpp:1634 src/mathed/InsetMathNest.cpp:1754
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Autokorrigering av ('!' för att starta)"
 
-#: src/mathed/InsetMathNest.cpp:1638 src/mathed/InsetMathNest.cpp:1755
+#: src/mathed/InsetMathNest.cpp:1639 src/mathed/InsetMathNest.cpp:1756
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Autokorrigering på (<mellanslag> för att avsluta)"
 
@@ -24022,6 +24045,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Okänd användare"
+
+#~ msgid "Basi&c"
+#~ msgstr "En&kel"
 
 #~ msgid "&Command:"
 #~ msgstr "Kommando:"
