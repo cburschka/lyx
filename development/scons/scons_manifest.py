@@ -2155,13 +2155,15 @@ lib_images_attic_extra_files = Split('''
 ''')
 
 
+# Do not add subscript.sty to lib_tex_files since we don't want to install it
+# (it is part of TeXLive). We include it in our source package only so that
+# packagers may decide to install it (e.g. for MikTeX).
 lib_tex_files = Split('''
     broadway.cls
     hollywood.cls
     lyxchess.sty
     lyxskak.sty
     revtex.cls
-    subscript.sty
 ''')
 
 
