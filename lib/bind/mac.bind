@@ -339,15 +339,15 @@ Format 1
 # Additional Edit group
 #
 
-\bind "M-Delete"                     "word-delete-forward"
-\bind "M-BackSpace"                  "word-delete-backward"
+\bind "A-Delete"                     "word-delete-forward"
+\bind "A-BackSpace"                  "word-delete-backward"
 \bind "M-Return"                     "break-paragraph inverse"
 \bind "C-Return"                     "newline-insert newline"
 \bind "C-S-Return"                   "newline-insert linebreak"
-\bind "M-space"                      "space-insert protected"
+\bind "A-space"                      "space-insert protected"
 \bind "nobreakspace"                 "space-insert protected"
-\bind "C-M-space"                    "space-insert normal"
-\bind "S-M-space"                    "space-insert thin"
+\bind "C-A-space"                    "space-insert normal"
+\bind "S-A-space"                    "space-insert thin"
 \bind "C-~S-slash"                   "specialchar-insert slash"
 \bind "C-period"                     "specialchar-insert end-of-sentence"
 \bind "M-period"                     "specialchar-insert dots"
