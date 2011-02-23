@@ -748,7 +748,7 @@ KeyModifier q_key_state(Qt::KeyboardModifiers state)
 		k |= ShiftModifier;
 	if (state & Qt::AltModifier)
 		k |= AltModifier;
-#ifdef USE_MACOSX_PACKAGING || defined(USE_META_KEYBINDING)
+#if defined(USE_MACOSX_PACKAGING) || defined(USE_META_KEYBINDING)
 	if (state & Qt::MetaModifier)
 		k |= MetaModifier;
 #else
