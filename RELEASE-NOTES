@@ -172,6 +172,12 @@ The following LyX key bindings have been changed:
 - LFUN_MATH_MACRO_UNFOLD ("math-macro-unfold")
   The binding to "C-plus" has changed to "C-S-asterisk".
 
+- On Mac OSX the modifier keys <Control> and <Option> are now treated separately.
+  The distributed key binding for Mac OSX no longer uses the <Option> key for
+  shortcuts with letters or numbers.
+
+  The custom key bindings for <Option>/<Control> are mapped to the <Control>
+  modifier only.
 
 New external programs and libraries:
 ------------------------------------
