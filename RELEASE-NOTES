@@ -58,70 +58,40 @@ The following pref variables are obsoleted in 2.0:
 The following new LyX functions have been introduced:
 
 - LFUN_WORD_FINDAD ("word-findadv").
-
 - LFUN_REGEXP_MODE ("regexp-mode").
-
 - LFUN_PHANTOM_INSERT ("phantom-insert").
-
 - LFUN_INSET_BEGIN ("inset-begin").
-
 - LFUN_INSET_END (""inset-end"").
-
 - LFUN_INSET_BEGIN_SELECT ("inset-begin-select").
-
 - LFUN_INSET_END_SELECT ("inset-end-select").
-
 - LFUN_CHANGE_PREVIOUS ("change-previous").
-
 - LFUN_LABEL_INSERT_AS_REF ("label-insert-as-reference").
-
 - LFUN_SECTION_SELECT ("section-select").
-
 - LFUN_FONT_UNDERLINE ("font-underline").
-
 - LFUN_FONT_STRIKEOUT ("font-strikeout").
-
 - LFUN_FONT_UULINE ("font-underunderline").
-
 - LFUN_FONT_UWAVE ("font-underwave").
-
 - LFUN_BRANCHES_RENAME ("branches-rename").
-
 - LFUN_BRANCH_ADD_INSERT ("branch-add-insert").
-
 - LFUN_BUFFER_CLOSE_ALL ("buffer-close-all").
-
 - LFUN_INSET_FORALL ("inset-forall").
-
 - LFUN_DEBUG_LEVEL_SET ("debug-level-set").
-
 - LFUN_INSET_SELECT_ALL ("inset-select-all").
-
 - LFUN_MATH_AMS_MATRIX ("math-ams-matrix").
-
 - LFUN_VC_COMPARE ("vc-compare").
-
 - LFUN_SPELLING_ADD ("spelling-add").
-
 - LFUN_SPELLING_IGNORE ("spelling-ignore").
-
 - LFUN_SPELLING_REMOVE ("spelling-remove").
-
 - LFUN_PREVIEW_INSERT ("preview-insert").
-
 - LFUN_FORWARD_SEARCH ("forward-search").
-
 - LFUN_INSET_COPY_AS ("inset-copy-as").
-
 - LFUN_BUFFER_TOGGLE_OUTPUT_SYNC ("buffer-toggle-output-sync").
 
 
 The following LyX functions have been removed:
 
 - LFUN_NEXT_INSET_TOGGLE ("next-inset-toggle"): use "inset-toggle" instead.
-
 - LFUN_NEXT_INSET_MODIFY ("next-inset-modify"): use "inset-modify" instead.
-
 - LFUN_PARAGRAPH_SPACING ("paragraph-spacing"): use "paragraph-params" instead.
 
 - LFUN_NOTES_MUTATE ("notes-mutate"): replace
