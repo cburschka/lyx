@@ -172,6 +172,10 @@ bool GuiErrorList::goTo(int item)
 		return false;
 	}
 
+	// This paragraph has zero size, so highlight the previous one
+	while (dit.paragraph().size() == 0)
+		dit.backwardPos();
+
 	// Now make the selection.
 	// if pos_end is 0, this means it is end-of-paragraph
 	pos_type const s = dit.paragraph().size();
