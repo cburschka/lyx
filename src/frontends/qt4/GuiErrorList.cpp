@@ -172,7 +172,7 @@ bool GuiErrorList::goTo(int item)
 		return false;
 	}
 
-	// This paragraph has zero size, so highlight the previous one
+	// If this paragraph has zero size, highlight the previous one
 	while (dit.paragraph().size() == 0)
 		dit.backwardPos();
 
