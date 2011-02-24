@@ -79,6 +79,7 @@ public:
 		RC_EXAMPLEPATH,
 		RC_EXPORT_OVERWRITE,
 		RC_FONT_ENCODING,
+		RC_FORCE_PAINT_SINGLE_CHAR,
 		RC_FILEFORMAT,
 		RC_FORWARD_SEARCH_DVI,
 		RC_FORWARD_SEARCH_PDF,
@@ -527,6 +528,8 @@ public:
 	};
 	///
 	ScrollWheelZoom scroll_wheel_zoom;
+	///
+	bool force_paint_single_char;
 };
 
 

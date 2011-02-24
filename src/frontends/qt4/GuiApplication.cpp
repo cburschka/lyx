@@ -1838,6 +1838,13 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow,
 	if (d->global_menubar_)
 		d->global_menubar_->releaseKeyboard();
 
+#if QT_VERSION < 0x040700
+	// the option to disable kerning in rowpainter
+	// is needed only with Qt4.7.0 or better
+	lyxrc.force_paint_single_char = false;
+	system_lyxrc.force_paint_single_char = false;
+#endif
+
 	// create new view
 	int id = view_id;
 	while (d->views_.find(id) != d->views_.end())

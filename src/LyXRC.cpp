@@ -99,6 +99,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\example_path", LyXRC::RC_EXAMPLEPATH },
 	{ "\\export_overwrite", LyXRC::RC_EXPORT_OVERWRITE },
 	{ "\\font_encoding", LyXRC::RC_FONT_ENCODING },
+	{ "\\force_paint_single_char", LyXRC::RC_FORCE_PAINT_SINGLE_CHAR },
 	{ "\\format", LyXRC::RC_FILEFORMAT },
 	{ "\\forward_search_dvi", LyXRC::RC_FORWARD_SEARCH_DVI },
 	{ "\\forward_search_pdf", LyXRC::RC_FORWARD_SEARCH_PDF },
@@ -422,6 +423,9 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 	if (!lexrc.isOK())
 		return ReadError;
 
+	// default for current rowpainter capabilities
+	force_paint_single_char = true;
+
 	// format prior to 2.0 and introduction of format tag
 	unsigned int format = 0;
 
@@ -523,6 +527,10 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			lexrc >> fontenc;
 			break;
 
+		case RC_FORCE_PAINT_SINGLE_CHAR:
+			lexrc >> force_paint_single_char;
+			break;
+				
 		case RC_PRINTER:
 			lexrc >> printer;
 			break;
@@ -2180,6 +2188,14 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 
+	case RC_FORCE_PAINT_SINGLE_CHAR:
+		if (ignore_system_lyxrc ||
+		    force_paint_single_char != system_lyxrc.force_paint_single_char) {
+			os << "\\force_paint_single_char \"" << force_paint_single_char << "\"\n";
+		}
+		if (tag != RC_LAST)
+			break;
+
 		os << "\n#\n"
 		   << "# FILE SECTION ######################################\n"
 		   << "#\n\n";
@@ -2880,6 +2896,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_ESC_CHARS:
 	case LyXRC::RC_EXAMPLEPATH:
 	case LyXRC::RC_FONT_ENCODING:
+	case LyXRC::RC_FORCE_PAINT_SINGLE_CHAR:
 	case LyXRC::RC_FILEFORMAT:
 	case LyXRC::RC_GROUP_LAYOUTS:
 	case LyXRC::RC_HUNSPELLDIR_PATH:
@@ -3120,6 +3137,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_FONT_ENCODING:
 		str = _("The font encoding used for the LaTeX2e fontenc package. T1 is highly recommended for non-English languages.");
+		break;
+
+	case RC_FORCE_PAINT_SINGLE_CHAR:
+		str = _("Disable any kerning and ligatures for text drawing on screen.");
 		break;
 
 	case RC_FILEFORMAT:

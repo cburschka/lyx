@@ -267,9 +267,9 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 		// Maybe a more general fix would be draw character by character
 		// for some predefined fonts on some platform. In arabic and
 		// Hebrew we already do paint this way.
-		if (prev_char == 'f')
+		if (prev_char == 'f' || lyxrc.force_paint_single_char)
 			break;
-		
+
 		pos = bidi_.vis2log(vpos);
 		if (pos < font_span.first || pos > font_span.last)
 			break;
