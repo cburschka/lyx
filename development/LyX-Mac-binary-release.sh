@@ -428,7 +428,7 @@ if [ ! -f "${LyxSourceDir}"/configure -o "${LyxSourceDir}"/configure -ot "${LyxS
 else
 	find "${LyxSourceDir}" -name Makefile.am -print | while read file ; do
 		dname=`dirname "$file"`
-		if [ "$dname/Makefile.in" -ot "$file" ]; then
+		if [ -f "$dname/Makefile.in" -a "$dname/Makefile.in" -ot "$file" ]; then
 			( cd "${LyxSourceDir}" && sh autogen.sh )
 			break
 		fi
