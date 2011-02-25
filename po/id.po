@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-23 14:53+0100\n"
-"PO-Revision-Date: 2011-02-05 10:23+0730\n"
+"POT-Creation-Date: 2011-02-25 01:17+0100\n"
+"PO-Revision-Date: 2011-02-25 07:58+0730\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Indonesian <was.uthm@gmail.com>\n"
 "Language: id\n"
@@ -1288,7 +1288,6 @@ msgid "TabWidget"
 msgstr "TabWidget"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:20
-#, fuzzy
 msgid "Sear&ch"
 msgstr "Cari"
 
@@ -1354,7 +1353,6 @@ msgid "Replace &All"
 msgstr "Ganti &Semua"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:163
-#, fuzzy
 msgid "S&ettings"
 msgstr "Pengaturan"
 
@@ -1474,10 +1472,9 @@ msgid "FontUi"
 msgstr "HurufUi"
 
 #: src/frontends/qt4/ui/FontUi.ui:19
-#, fuzzy
 msgid "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)"
 msgstr ""
-"Langsung menggunakan huruf OpenType- dan TrueType  (memerlukan eTeX atau "
+"Langsung menggunakan huruf OpenType dan TrueType  (memerlukan XeTeX atau "
 "LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:22
@@ -1485,9 +1482,8 @@ msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
 msgstr "&Gunakan huruf bukan-TeX (melalui XeTeX/LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:42
-#, fuzzy
 msgid "&Default family:"
-msgstr "&Huruf Utama:"
+msgstr "Keluarga &Huruf:"
 
 #: src/frontends/qt4/ui/FontUi.ui:52
 msgid "Select the default family for the document"
@@ -2687,7 +2683,6 @@ msgid "&Strict XHTML 1.1"
 msgstr "&Harus XHTML 1.1"
 
 #: src/frontends/qt4/ui/OutputUi.ui:137
-#, fuzzy
 msgid "&Math output:"
 msgstr "Keluaran &Matematika:"
 
@@ -2715,9 +2710,8 @@ msgid "LaTeX"
 msgstr "LaTeX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:186
-#, fuzzy
 msgid "Math &image scaling:"
-msgstr "Skala Gambar Rumus Matematika:"
+msgstr "Skala Gambar dan Rumus:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:202
 msgid "Scaling factor for images used for math output."
@@ -3256,11 +3250,11 @@ msgstr "Format &dokumen"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:66
 msgid "Check this to show the current format in the File > Export menu"
-msgstr ""
+msgstr "Pilih ini untuk menunjukkan format sekarang dari menu Berkas > Ekspor"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:69
 msgid "Sho&w in export menu"
-msgstr ""
+msgstr "Tampil di menu ekspor"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:76
 msgid "Vector &graphics format"
@@ -4368,9 +4362,8 @@ msgid "&Export formats:"
 msgstr "Format &ekspor:"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:111
-#, fuzzy
 msgid "&Send exported file to command:"
-msgstr "Perintah Kirim Dokumen"
+msgstr "Perintah kirim berkas ekspor:"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:13
 msgid "Edit shortcut"
@@ -4848,7 +4841,6 @@ msgid "Indent consecutive paragraphs"
 msgstr "Baris pertama pada paragraf berikutnya masuk dari batas kiri"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:37
-#, fuzzy
 msgid "&Indentation:"
 msgstr "&Indentasi"
 
@@ -4857,9 +4849,8 @@ msgid "Size of the indentation"
 msgstr "Ukuran masuk paragraf"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:115
-#, fuzzy
 msgid "&Vertical space:"
-msgstr "Spasi &Vertikal"
+msgstr "Spasi &Vertikal:"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:125
 msgid "Size of the vertical space"
@@ -12762,7 +12753,7 @@ msgstr "Gunakan Properti Pengunci|i"
 
 #: lib/ui/stdmenus.inc:91
 msgid "More Formats & Options...|F"
-msgstr ""
+msgstr "Tambahan Format dan Opsi..."
 
 #: lib/ui/stdmenus.inc:100
 msgid "Redo|R"
@@ -16565,11 +16556,11 @@ msgstr "LyXBlogger"
 
 #: lib/configure.py:876
 msgid "LyX Archive (zip)"
-msgstr ""
+msgstr "Arsip LyX (zip)"
 
 #: lib/configure.py:879
 msgid "LyX Archive (tar.gz)"
-msgstr ""
+msgstr "Arsip LyX (tar.gz)"
 
 #: src/BiblioInfo.cpp:247 src/frontends/qt4/GuiDocument.cpp:1935
 #, c-format
@@ -18043,11 +18034,11 @@ msgstr "Tidak ada informasi untuk menyunting  %1$s"
 msgid "Auto-edit file %1$s failed"
 msgstr "Suntingan otomatis %1$s gagal"
 
-#: src/KeyMap.cpp:220 src/KeyMap.cpp:235
+#: src/KeyMap.cpp:227 src/KeyMap.cpp:242
 msgid "Could not find bind file"
 msgstr "Tidak bisa menemukan berkas bind"
 
-#: src/KeyMap.cpp:221
+#: src/KeyMap.cpp:228
 #, c-format
 msgid ""
 "Unable to find the bind file\n"
@@ -18058,11 +18049,11 @@ msgstr ""
 "%1$s.\n"
 "Periksa instalasi anda."
 
-#: src/KeyMap.cpp:228
+#: src/KeyMap.cpp:235
 msgid "Could not find `cua.bind' file"
 msgstr "Tidak bisa menemukan berkas `cua.bind'"
 
-#: src/KeyMap.cpp:229
+#: src/KeyMap.cpp:236
 msgid ""
 "Unable to find the default bind file `cua.bind'.\n"
 "Please check your installation."
@@ -18070,7 +18061,7 @@ msgstr ""
 "Tidak bisa menemukan berkas `cua.bind'.\n"
 "Periksa kesempurnaan instalasi."
 
-#: src/KeyMap.cpp:236
+#: src/KeyMap.cpp:243
 #, c-format
 msgid ""
 "Unable to find the bind file\n"
@@ -18081,7 +18072,7 @@ msgstr ""
 "%1$s.\n"
 "Dikembalikan ke bawaan."
 
-#: src/KeySequence.cpp:166
+#: src/KeySequence.cpp:182
 msgid "   options: "
 msgstr "   pilihan: "
 
@@ -19818,15 +19809,15 @@ msgstr "Dokumen disimpan di %1$s"
 msgid "Unable to save document defaults"
 msgstr "Tidak dapat menyimpan dokumen bawaan"
 
-#: src/frontends/qt4/GuiApplication.cpp:1750
+#: src/frontends/qt4/GuiApplication.cpp:1749
 msgid "Unknown function."
 msgstr "Fungsi  tidak dikenal."
 
-#: src/frontends/qt4/GuiApplication.cpp:2172
+#: src/frontends/qt4/GuiApplication.cpp:2171
 msgid "The current document was closed."
 msgstr "Dokumen terkini sudah ditutup."
 
-#: src/frontends/qt4/GuiApplication.cpp:2182
+#: src/frontends/qt4/GuiApplication.cpp:2181
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -19838,12 +19829,12 @@ msgstr ""
 "\n"
 "Keanehan: "
 
-#: src/frontends/qt4/GuiApplication.cpp:2186
-#: src/frontends/qt4/GuiApplication.cpp:2192
+#: src/frontends/qt4/GuiApplication.cpp:2185
+#: src/frontends/qt4/GuiApplication.cpp:2191
 msgid "Software exception Detected"
 msgstr "Keanehan software Terdeteksi"
 
-#: src/frontends/qt4/GuiApplication.cpp:2190
+#: src/frontends/qt4/GuiApplication.cpp:2189
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -19851,12 +19842,12 @@ msgstr ""
 "LyX teleh mendeteksi hal yang sangat tidak wajar,sekarang akan menyimpan "
 "perubahan kemudian keluart."
 
-#: src/frontends/qt4/GuiApplication.cpp:2455
-#: src/frontends/qt4/GuiApplication.cpp:2467
+#: src/frontends/qt4/GuiApplication.cpp:2454
+#: src/frontends/qt4/GuiApplication.cpp:2466
 msgid "Could not find UI definition file"
 msgstr "Tidak bisa menemukan berkas definisi UI"
 
-#: src/frontends/qt4/GuiApplication.cpp:2456
+#: src/frontends/qt4/GuiApplication.cpp:2455
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -19867,11 +19858,11 @@ msgstr ""
 "%1$s.\n"
 "Periksa kesempurnaan instalasi."
 
-#: src/frontends/qt4/GuiApplication.cpp:2462
+#: src/frontends/qt4/GuiApplication.cpp:2461
 msgid "Could not find default UI file"
 msgstr "Tidak bisa menemukan berkas UI bawaan"
 
-#: src/frontends/qt4/GuiApplication.cpp:2463
+#: src/frontends/qt4/GuiApplication.cpp:2462
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -19879,7 +19870,7 @@ msgstr ""
 "LyX tidak bisa menemukan berkas UI bawaan!\n"
 "Periksa kesempurnaan instalasi."
 
-#: src/frontends/qt4/GuiApplication.cpp:2468
+#: src/frontends/qt4/GuiApplication.cpp:2467
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -20392,12 +20383,11 @@ msgid "None (no fontenc)"
 msgstr "Tidak ada (tidak ada fontenc)"
 
 #: src/frontends/qt4/GuiDocument.cpp:803
-#, fuzzy
 msgid ""
 "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)\n"
 "You need to install the package \"fontspec\" to use this feature"
 msgstr ""
-"Langsung menggunakan huruf OpenType- dan TrueType  (memerlukan eTeX atau "
+"Langsung menggunakan huruf OpenType dan TrueType  (memerlukan eTeX atau "
 "LuaTeX)"
 
 #: src/frontends/qt4/GuiDocument.cpp:835
@@ -21082,19 +21072,19 @@ msgstr "buffer"
 msgid "lyxinfo"
 msgstr "lyxinfo"
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:707
+#: src/frontends/qt4/GuiKeySymbol.cpp:709
 msgid "Shift-"
 msgstr "Shift-"
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:708
+#: src/frontends/qt4/GuiKeySymbol.cpp:710
 msgid "Control-"
 msgstr "Kontrol-"
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:709
+#: src/frontends/qt4/GuiKeySymbol.cpp:711
 msgid "Option-"
 msgstr "Opsion-"
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:710
+#: src/frontends/qt4/GuiKeySymbol.cpp:712
 msgid "Command-"
 msgstr "Perintah-"
 
@@ -21474,9 +21464,8 @@ msgid "Find and Replace"
 msgstr "Cari dan Ganti"
 
 #: src/frontends/qt4/GuiSendto.cpp:36
-#, fuzzy
 msgid "Export or Send Document"
-msgstr "OpenDocument"
+msgstr "Ekspor atau Kirim Dokumen"
 
 #: src/frontends/qt4/GuiShowFile.cpp:30
 msgid "Show File"
@@ -22269,31 +22258,31 @@ msgstr "Sumber DocBook"
 msgid "Literate Source"
 msgstr "Sumber Literate"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1292
+#: src/frontends/qt4/GuiWorkArea.cpp:1305
 msgid " (version control, locking)"
 msgstr " (kontrol versi, terkunci)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1294
+#: src/frontends/qt4/GuiWorkArea.cpp:1307
 msgid " (version control)"
 msgstr " (kontrol versi)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1297
+#: src/frontends/qt4/GuiWorkArea.cpp:1310
 msgid " (changed)"
 msgstr " (ada perubahan)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1301
+#: src/frontends/qt4/GuiWorkArea.cpp:1314
 msgid " (read only)"
 msgstr " (hanya bisa dibaca)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1454
+#: src/frontends/qt4/GuiWorkArea.cpp:1467
 msgid "Close File"
 msgstr "Tutup Berkas"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1896
+#: src/frontends/qt4/GuiWorkArea.cpp:1909
 msgid "Hide tab"
 msgstr "Sembunyikan Tab"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1898
+#: src/frontends/qt4/GuiWorkArea.cpp:1911
 msgid "Close tab"
 msgstr "Tutup Tab"
 
