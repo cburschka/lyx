@@ -29,14 +29,7 @@ What's new
 
 * USER INTERFACE
 
-- Fix a crash when loading a document with instant previewed math that
-  could not succesfully be previewed (bug 7263).
 
-- Fix a crash when requesting the wrong context menu due to paragraphs that
-  are automatically removed between the mouse press and release (bug 7209).
-
-- Show mnemonics in context menus that are requested by the keyboard
-  key (only Windows; bug 5414).
 
 
 * DOCUMENTATION AND LOCALIZATION
@@ -62,9 +55,17 @@ What's new
 
 * USER INTERFACE
 
-- Fix crash when editing the name of an unknown math macro with an argument
+- Fix a crash when editing the name of an unknown math macro with an argument
   which is immediately followed by another unknown math macro (bug 7316).
+  
+- Fix a crash when loading a document with instant previewed math that
+  could not succesfully be previewed (bug 7263).
 
+- Fix a crash when requesting the wrong context menu due to paragraphs that
+  are automatically removed between the mouse press and release (bug 7209).
+
+- Show mnemonics in context menus that are requested by the keyboard
+  key (only Windows; bug 5414).
 
 
 * DOCUMENTATION AND LOCALIZATION
