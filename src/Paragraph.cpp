@@ -863,18 +863,13 @@ void Paragraph::Private::latexSpecialChar(
 {
 	char_type const c = text_[i];
 
-	if (style.pass_thru) {
-		if (c != '\0')
-			// FIXME UNICODE: This can fail if c cannot
-			// be encoded in the current encoding.
+	if (style.pass_thru || runparams.verbatim) {
+		if (c != '\0') {
+			Encoding const * const enc = runparams.encoding;
+			if (enc && enc->latexChar(c, true).empty())
+				throw EncodingException(c);
 			os.put(c);
-		return;
-	}
-
-	if (runparams.verbatim) {
-		// FIXME UNICODE: This can fail if c cannot
-		// be encoded in the current encoding.
-		os.put(c);
+		}
 		return;
 	}
 

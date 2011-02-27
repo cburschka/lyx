@@ -52,6 +52,8 @@ What's new
 - Protect the math commands \overset and \underset in fragile context
   (bug 7252).
 
+- When exporting, alert about uncodable characters in ERT insets (bug 7310).
+
 
 * USER INTERFACE
 
