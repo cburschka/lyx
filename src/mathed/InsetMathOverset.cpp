@@ -74,6 +74,8 @@ bool InsetMathOverset::idxLast(Cursor & cur) const
 void InsetMathOverset::write(WriteStream & os) const
 {
 	MathEnsurer ensurer(os);
+	if (os.fragile())
+		os << "\\protect";
 	os << "\\overset{" << cell(0) << "}{" << cell(1) << '}';
 }
 
