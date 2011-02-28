@@ -560,9 +560,19 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 		Language const * const oldLang = runparams.master_language;
 		runparams.encoding = &tmp->params().encoding();
 		runparams.master_language = buffer().params().language;
-		tmp->makeLaTeXFile(writefile,
-				   masterFileName(buffer()).onlyPath().absFilename(),
-				   runparams, false);
+		if (!tmp->makeLaTeXFile(writefile, masterFileName(buffer()).
+				onlyPath().absFilename(), runparams, false)) {
+			docstring msg = bformat(_("Included file `%1$s' "
+					"was not exported correctly.\nWarning: "
+					"LaTeX export is probably incomplete."),
+					included_file.displayName());
+			ErrorList & el = tmp->errorList("Export");
+			if (!el.empty())
+				msg = bformat(from_ascii("%1$s\n\n%2$s\n\n%3$s"),
+						msg, el.begin()->error,
+						el.begin()->description);
+			Alert::warning(_("Export failure"), msg);
+		}
 		runparams.encoding = oldEnc;
 		runparams.master_language = oldLang;
 	} else {
