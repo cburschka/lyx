@@ -68,7 +68,8 @@ Format 1
 \bind "M-o"                          "break-paragraph"
 #  -: "Control-P"                    # Move up one line
 # used by menu.bind - layouts
-#  -: "Control-T"                    # Transpose the character behind the cursor and the character in front of the cursor
+#  +: "Control-T"                    # Transpose the character behind the cursor and the character in front of the cursor
+\bind "M-t"                          "chars-transpose"
 #  +: "Control-V"                    # Move down one page
 \bind "M-v"                          "scroll page up"
 #  -: "Shift-Tab"                    # Navigate through controls in a reverse direction
