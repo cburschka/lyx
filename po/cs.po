@@ -20778,11 +20778,12 @@ msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
+"Zahrnutý soubor `%1$s' nebyl korektnì exportován.\n"
+"Varaování: Export do LaTeX-u je pravdìpodobnì neúplný."
 
 #: src/insets/InsetInclude.cpp:574
-#, fuzzy
 msgid "Export failure"
-msgstr "Zálohování selhalo"
+msgstr "Export selhal"
 
 #: src/insets/InsetIndex.cpp:129
 msgid "Index sorting failed"
