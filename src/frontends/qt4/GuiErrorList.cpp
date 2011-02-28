@@ -176,8 +176,8 @@ bool GuiErrorList::goTo(int item)
 	while (dit.inset().lyxCode() == INFO_CODE)
 		dit.forwardPos();
 
-	// If this paragraph has zero size, highlight the previous one
-	while (dit.paragraph().size() == 0)
+	// If this paragraph is empty, highlight the previous one
+	while (dit.paragraph().empty())
 		dit.backwardPos();
 
 	// Now make the selection.
