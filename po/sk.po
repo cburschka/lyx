@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-02-28 07:27+0100\n"
-"PO-Revision-Date: 2011-02-26 14:02+0100\n"
+"PO-Revision-Date: 2011-02-28 09:52+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -22847,11 +22847,12 @@ msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
+"Zahrnutý súbor `%1$s'  nebol správne exportovaný.\n"
+"Upozornenie: Možné, že LaTeXov export nie je úplný."
 
 #: src/insets/InsetInclude.cpp:622
-#, fuzzy
 msgid "Export failure"
-msgstr "Založenie zlyhalo"
+msgstr "Exportovanie zlyhalo"
 
 #: src/insets/InsetInclude.cpp:728
 msgid "Unsupported Inclusion"
