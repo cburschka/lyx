@@ -530,6 +530,11 @@ void GuiView::processingThreadFinished(bool show_errors)
 	message(watcher->result());
 	updateToolbars();
 	if (show_errors) {
+		BufferView const * const bv = currentBufferView();
+		if (bv && !bv->buffer().errorList("Export").empty()) {
+			errors("Export");
+			return;
+		}
 		errors(d.last_export_format);
  	}
 }
