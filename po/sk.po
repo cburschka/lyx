@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-28 17:09+0100\n"
+"POT-Creation-Date: 2011-02-28 19:30+0100\n"
 "PO-Revision-Date: 2011-01-17 10:44+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16228,8 +16229,8 @@ msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
 "log %1$s."
 msgstr ""
-"LaTeX neprebehol úspešne. Čo viac, LyX nenašiel výstup pre protokol LaTeXu %1"
-"$s."
+"LaTeX neprebehol úspešne. Čo viac, LyX nenašiel výstup pre protokol LaTeXu "
+"%1$s."
 
 #: src/Converter.cpp:600
 msgid "LaTeX failed"
@@ -16445,11 +16446,11 @@ msgstr ""
 #: src/ISpell.cpp:395
 #, c-format
 msgid ""
-"Could not check word `%1$s' because it could not be converted to encoding `%2"
-"$s'."
+"Could not check word `%1$s' because it could not be converted to encoding `"
+"%2$s'."
 msgstr ""
-"Nedá sa kontrolovať slovo `%1$s', lebo ho nešlo skonvertovať do kódovania `%2"
-"$s'."
+"Nedá sa kontrolovať slovo `%1$s', lebo ho nešlo skonvertovať do kódovania `"
+"%2$s'."
 
 #: src/ISpell.cpp:406
 msgid "Could not communicate with the ispell spellchecker process."
@@ -16458,19 +16459,19 @@ msgstr "Nedá sa komunikovať s procesom kontroly pravopisu (ispell)."
 #: src/ISpell.cpp:466
 #, c-format
 msgid ""
-"Could not insert word `%1$s' because it could not be converted to encoding `%"
-"2$s'."
+"Could not insert word `%1$s' because it could not be converted to encoding `"
+"%2$s'."
 msgstr ""
 "Nedá sa vložiť slovo `%1$s', lebo ho nešlo skonvertovať do kódovania `%2$s'."
 
 #: src/ISpell.cpp:481
 #, c-format
 msgid ""
-"Could not accept word `%1$s' because it could not be converted to encoding `%"
-"2$s'."
+"Could not accept word `%1$s' because it could not be converted to encoding `"
+"%2$s'."
 msgstr ""
-"Nedá sa akceptovať slovo `%1$s', lebo ho nešlo skonvertovať do kódovania `%2"
-"$s'."
+"Nedá sa akceptovať slovo `%1$s', lebo ho nešlo skonvertovať do kódovania `"
+"%2$s'."
 
 #: src/KeySequence.cpp:166
 msgid "   options: "
@@ -17035,8 +17036,8 @@ msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
 "E.g.\"%A, %e. %B %Y\"."
 msgstr ""
-"Tu je akceptovaný bežný strftime formát; detaily sú v man strftime. Napr.\"%"
-"A, %e. %B %Y\"."
+"Tu je akceptovaný bežný strftime formát; detaily sú v man strftime. Napr."
+"\"%A, %e. %B %Y\"."
 
 #: src/LyXRC.cpp:2607
 msgid ""
@@ -17169,8 +17170,8 @@ msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
-"Príkaz LaTeXu pre načítanie jazykového balíka. Napr. \"\\usepackage{babel}"
-"\", \"\\usepackage{omega}\"."
+"Príkaz LaTeXu pre načítanie jazykového balíka. Napr. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 
 #: src/LyXRC.cpp:2700
 msgid ""
