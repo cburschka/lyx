@@ -1068,17 +1068,21 @@ def checkLatexConfig(check_config, bool_docbook):
     testclasses = list()
     for file in glob.glob( os.path.join('layouts', '*.layout') ) + \
         glob.glob( os.path.join(srcdir, 'layouts', '*.layout' ) ) :
+        nodeclaration = False
         if not os.path.isfile(file):
             continue
         classname = file.split(os.sep)[-1].split('.')[0]
         for line in open(file).readlines():
             if not empty.match(line) and line[0] != '#':
-                logger.error("Failed to find \Declare line for layout file `" + file + "'")
-                sys.exit(3)
+                logger.warning("Failed to find valid \Declare line for layout file `" + file + "'.\n\t=> Skipping this file!")
+                nodeclaration = True
+                break
             if declare.search(line) == None:
                 continue
             testclasses.append("\\TestDocClass{%s}{%s}" % (classname, line[1:].strip()))
             break
+        if nodeclaration:
+            continue
     testclasses.sort()
     cl = open('chklayouts.tex', 'w')
     for line in testclasses:
