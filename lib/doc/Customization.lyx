@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 410
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass scrbook
@@ -70,6 +70,7 @@ End
 #End
 \end_local_layout
 \language english
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
@@ -133,9 +134,10 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict true
 \author 34634807 "Jean-Pierre" 
 \end_header
@@ -16773,7 +16775,7 @@ misc %author%,
 \begin_inset Quotes erd
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
