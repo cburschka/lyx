@@ -26145,3 +26145,16 @@ msgstr "Neznámý u¾ivatel"
 #, fuzzy
 #~ msgid "Insets|n"
 #~ msgstr "Vlo¾it|V"
+
+#: src/insets/InsetInclude.cpp:565
+#, c-format
+msgid ""
+"Included file `%1$s' was not exported correctly.\n"
+"Warning: LaTeX export is probably incomplete."
+msgstr ""
+"Zahrnutý soubor `%1$s' nebyl korektnì exportován.\n"
+"Varaování: Export do LaTeX-u je pravdìpodobnì neúplný."
+
+#: src/insets/InsetInclude.cpp:574
+msgid "Export failure"
+msgstr "Export selhal"
