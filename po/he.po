@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-05 09:13+0100\n"
+"POT-Creation-Date: 2011-02-28 17:09+0100\n"
 "PO-Revision-Date: 2009-01-12 17:51+0100\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew <en@li.org>\n"
@@ -1527,8 +1527,8 @@ msgstr "קלט"
 msgid "Verbatim"
 msgstr "מילה במילה"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:996
-#: src/insets/InsetInclude.cpp:1002
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1006
+#: src/insets/InsetInclude.cpp:1012
 msgid "Program Listing"
 msgstr "רישום קוד"
 
@@ -16290,7 +16290,7 @@ msgstr ""
 "אז אנא שנה את הקידוד את ההקובץ\n"
 "ל- UTF-8 עם תוכנה אחרת.\n"
 
-#: src/Changes.cpp:363 src/Paragraph.cpp:2157
+#: src/Changes.cpp:363 src/Paragraph.cpp:2152
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:189
 #: src/insets/InsetBibitem.cpp:282 src/insets/InsetListings.cpp:185
 #: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
@@ -16298,7 +16298,7 @@ msgstr ""
 msgid "LyX Warning: "
 msgstr "אזהרת LyX:"
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2158 src/insets/InsetBibitem.cpp:190
+#: src/Changes.cpp:364 src/Paragraph.cpp:2153 src/insets/InsetBibitem.cpp:190
 #: src/insets/InsetBibitem.cpp:283 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:169
 msgid "uncodable character"
@@ -17005,16 +17005,16 @@ msgstr "   אפשרויות: "
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "מחכה להפעלת LaTeX מספר %1$d"
 
-#: src/LaTeX.cpp:264 src/LaTeX.cpp:353
+#: src/LaTeX.cpp:268 src/LaTeX.cpp:371
 #, fuzzy
 msgid "Running Index Processor."
 msgstr "מריץ MakeIndex."
 
-#: src/LaTeX.cpp:284 src/LaTeX.cpp:336
+#: src/LaTeX.cpp:294 src/LaTeX.cpp:354
 msgid "Running BibTeX."
 msgstr "מריץ BibTeX."
 
-#: src/LaTeX.cpp:434
+#: src/LaTeX.cpp:452
 #, fuzzy
 msgid "Running MakeIndex for nomencl."
 msgstr "מריץ MakeIndex."
@@ -17960,15 +17960,15 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "לחזור לגרסה השמורה של המסמך?"
 
-#: src/Paragraph.cpp:1599 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1594 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "חסר משמעות עם התצורה הזו!"
 
-#: src/Paragraph.cpp:1665
+#: src/Paragraph.cpp:1660
 msgid "Alignment not permitted"
 msgstr "יישור לא אפשרי"
 
-#: src/Paragraph.cpp:1666
+#: src/Paragraph.cpp:1661
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -17976,11 +17976,11 @@ msgstr ""
 "תצורת המסמך החדשה לא מאפשרת את היישור בו השתמשת.\n"
 "קובע יישור לברירת מחדל."
 
-#: src/Paragraph.cpp:2523
+#: src/Paragraph.cpp:2518
 msgid "Memory problem"
 msgstr ""
 
-#: src/Paragraph.cpp:2523
+#: src/Paragraph.cpp:2518
 msgid "Paragraph not properly initialized"
 msgstr ""
 
@@ -19557,7 +19557,7 @@ msgstr "מילוי אופקי"
 msgid "Hyperlink"
 msgstr "ייצר היפר-קישור"
 
-#: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1107
+#: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1110
 msgid "Child Document"
 msgstr "מסמך בת"
 
@@ -20763,35 +20763,35 @@ msgstr "DocBook"
 msgid "Literate Source"
 msgstr "מקור LaTeX"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1131
+#: src/frontends/qt4/GuiWorkArea.cpp:1140
 #, fuzzy
 msgid " (version control)"
 msgstr "בקרת גרסה"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1133
+#: src/frontends/qt4/GuiWorkArea.cpp:1142
 #, fuzzy
 msgid " (version control, locking)"
 msgstr "בקרת גרסה"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1136
+#: src/frontends/qt4/GuiWorkArea.cpp:1145
 msgid " (changed)"
 msgstr "(שונה)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1140
+#: src/frontends/qt4/GuiWorkArea.cpp:1149
 msgid " (read only)"
 msgstr "(לקריאה בלבד)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1230
+#: src/frontends/qt4/GuiWorkArea.cpp:1239
 #, fuzzy
 msgid "Close File"
 msgstr "סגור"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1640
+#: src/frontends/qt4/GuiWorkArea.cpp:1649
 #, fuzzy
 msgid "Hide tab"
 msgstr "delta"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1642
+#: src/frontends/qt4/GuiWorkArea.cpp:1651
 #, fuzzy
 msgid "Close tab"
 msgstr "סגור"
@@ -20804,58 +20804,58 @@ msgstr "הגדרות אובייקט צף עטוף טקסט"
 msgid "Click to detach"
 msgstr "לחץ כדי לנתק"
 
-#: src/frontends/qt4/Menus.cpp:661
+#: src/frontends/qt4/Menus.cpp:664
 msgid "No Group"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:712
+#: src/frontends/qt4/Menus.cpp:715
 msgid "No Documents Open!"
 msgstr "אין מסמכים פתוחים!"
 
-#: src/frontends/qt4/Menus.cpp:738 src/frontends/qt4/Menus.cpp:817
-#: src/frontends/qt4/Menus.cpp:837 src/frontends/qt4/Menus.cpp:859
-#: src/frontends/qt4/Menus.cpp:951 src/frontends/qt4/Menus.cpp:1057
-#: src/frontends/qt4/Menus.cpp:1118
+#: src/frontends/qt4/Menus.cpp:741 src/frontends/qt4/Menus.cpp:820
+#: src/frontends/qt4/Menus.cpp:840 src/frontends/qt4/Menus.cpp:862
+#: src/frontends/qt4/Menus.cpp:954 src/frontends/qt4/Menus.cpp:1060
+#: src/frontends/qt4/Menus.cpp:1121
 msgid "No Document Open!"
 msgstr "אין מסמך פתוח!"
 
-#: src/frontends/qt4/Menus.cpp:878
+#: src/frontends/qt4/Menus.cpp:881
 #, fuzzy
 msgid "No custom insets defined!"
 msgstr "לא הוגדר שינוי גופן"
 
-#: src/frontends/qt4/Menus.cpp:962
+#: src/frontends/qt4/Menus.cpp:965
 msgid "Master Document"
 msgstr "מסמך ראשי"
 
-#: src/frontends/qt4/Menus.cpp:979
+#: src/frontends/qt4/Menus.cpp:982
 msgid "Open Navigator..."
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:1000
+#: src/frontends/qt4/Menus.cpp:1003
 #, fuzzy
 msgid "Other Lists"
 msgstr "אובייקטים צפים אחרים"
 
-#: src/frontends/qt4/Menus.cpp:1009
+#: src/frontends/qt4/Menus.cpp:1012
 msgid "No Table of contents"
 msgstr "אין תוכן עניינים"
 
-#: src/frontends/qt4/Menus.cpp:1046
+#: src/frontends/qt4/Menus.cpp:1049
 #, fuzzy
 msgid "Other Toolbars"
 msgstr "אובייקטים צפים אחרים"
 
-#: src/frontends/qt4/Menus.cpp:1066
+#: src/frontends/qt4/Menus.cpp:1069
 msgid "No Branch in Document!"
 msgstr "אין ענף במסמך!"
 
-#: src/frontends/qt4/Menus.cpp:1126
+#: src/frontends/qt4/Menus.cpp:1129
 #, fuzzy
 msgid "No Citation in Scope!"
 msgstr "סגנון מובאה"
 
-#: src/frontends/qt4/Menus.cpp:1668
+#: src/frontends/qt4/Menus.cpp:1693
 #, fuzzy
 msgid "No action defined!"
 msgstr "לא הוגדר שינוי גופן"
@@ -21238,7 +21238,7 @@ msgstr "התוסף \"הערת תחתית\" פתוח"
 msgid "footnote"
 msgstr "הערת תחתית"
 
-#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:580
+#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:590
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -21269,11 +21269,11 @@ msgstr "מילה במילה"
 msgid "Verbatim Input*"
 msgstr "מילה במילה"
 
-#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:668
+#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:678
 msgid "Recursive input"
 msgstr "קלט רקורסיבי"
 
-#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:669
+#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:679
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "ניסיון לכלול את הקובץ %1$s בתוך עצמו. מתעלם מכלילת הקובץ."
@@ -21308,6 +21308,18 @@ msgstr ""
 #, fuzzy
 msgid "Module not found"
 msgstr "קובץ לא נמצא"
+
+#: src/insets/InsetInclude.cpp:565
+#, c-format
+msgid ""
+"Included file `%1$s' was not exported correctly.\n"
+"Warning: LaTeX export is probably incomplete."
+msgstr ""
+
+#: src/insets/InsetInclude.cpp:574
+#, fuzzy
+msgid "Export failure"
+msgstr "כשלון בגיבוי"
 
 #: src/insets/InsetIndex.cpp:129
 #, fuzzy

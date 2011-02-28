@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-05 09:13+0100\n"
+"POT-Creation-Date: 2011-02-28 17:09+0100\n"
 "PO-Revision-Date: 2010-11-26 17:08+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
@@ -1493,8 +1493,8 @@ msgstr ""
 msgid "Verbatim"
 msgstr ""
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:996
-#: src/insets/InsetInclude.cpp:1002
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1006
+#: src/insets/InsetInclude.cpp:1012
 msgid "Program Listing"
 msgstr ""
 
@@ -15577,7 +15577,7 @@ msgid ""
 "to UTF-8 with a program other than LyX.\n"
 msgstr ""
 
-#: src/Changes.cpp:363 src/Paragraph.cpp:2157
+#: src/Changes.cpp:363 src/Paragraph.cpp:2152
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:189
 #: src/insets/InsetBibitem.cpp:282 src/insets/InsetListings.cpp:185
 #: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
@@ -15585,7 +15585,7 @@ msgstr ""
 msgid "LyX Warning: "
 msgstr ""
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2158 src/insets/InsetBibitem.cpp:190
+#: src/Changes.cpp:364 src/Paragraph.cpp:2153 src/insets/InsetBibitem.cpp:190
 #: src/insets/InsetBibitem.cpp:283 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:169
 msgid "uncodable character"
@@ -16233,15 +16233,15 @@ msgstr ""
 msgid "Waiting for LaTeX run number %1$d"
 msgstr ""
 
-#: src/LaTeX.cpp:264 src/LaTeX.cpp:353
+#: src/LaTeX.cpp:268 src/LaTeX.cpp:371
 msgid "Running Index Processor."
 msgstr ""
 
-#: src/LaTeX.cpp:284 src/LaTeX.cpp:336
+#: src/LaTeX.cpp:294 src/LaTeX.cpp:354
 msgid "Running BibTeX."
 msgstr ""
 
-#: src/LaTeX.cpp:434
+#: src/LaTeX.cpp:452
 msgid "Running MakeIndex for nomencl."
 msgstr ""
 
@@ -17117,25 +17117,25 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr ""
 
-#: src/Paragraph.cpp:1599 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1594 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr ""
 
-#: src/Paragraph.cpp:1665
+#: src/Paragraph.cpp:1660
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1666
+#: src/Paragraph.cpp:1661
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2523
+#: src/Paragraph.cpp:2518
 msgid "Memory problem"
 msgstr ""
 
-#: src/Paragraph.cpp:2523
+#: src/Paragraph.cpp:2518
 msgid "Paragraph not properly initialized"
 msgstr ""
 
@@ -18611,7 +18611,7 @@ msgstr ""
 msgid "Hyperlink"
 msgstr ""
 
-#: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1107
+#: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1110
 msgid "Child Document"
 msgstr ""
 
@@ -19711,31 +19711,31 @@ msgstr ""
 msgid "Literate Source"
 msgstr ""
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1131
+#: src/frontends/qt4/GuiWorkArea.cpp:1140
 msgid " (version control)"
 msgstr ""
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1133
+#: src/frontends/qt4/GuiWorkArea.cpp:1142
 msgid " (version control, locking)"
 msgstr ""
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1136
+#: src/frontends/qt4/GuiWorkArea.cpp:1145
 msgid " (changed)"
 msgstr ""
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1140
+#: src/frontends/qt4/GuiWorkArea.cpp:1149
 msgid " (read only)"
 msgstr ""
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1230
+#: src/frontends/qt4/GuiWorkArea.cpp:1239
 msgid "Close File"
 msgstr ""
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1640
+#: src/frontends/qt4/GuiWorkArea.cpp:1649
 msgid "Hide tab"
 msgstr ""
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1642
+#: src/frontends/qt4/GuiWorkArea.cpp:1651
 msgid "Close tab"
 msgstr ""
 
@@ -19747,54 +19747,54 @@ msgstr ""
 msgid "Click to detach"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:661
+#: src/frontends/qt4/Menus.cpp:664
 msgid "No Group"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:712
+#: src/frontends/qt4/Menus.cpp:715
 msgid "No Documents Open!"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:738 src/frontends/qt4/Menus.cpp:817
-#: src/frontends/qt4/Menus.cpp:837 src/frontends/qt4/Menus.cpp:859
-#: src/frontends/qt4/Menus.cpp:951 src/frontends/qt4/Menus.cpp:1057
-#: src/frontends/qt4/Menus.cpp:1118
+#: src/frontends/qt4/Menus.cpp:741 src/frontends/qt4/Menus.cpp:820
+#: src/frontends/qt4/Menus.cpp:840 src/frontends/qt4/Menus.cpp:862
+#: src/frontends/qt4/Menus.cpp:954 src/frontends/qt4/Menus.cpp:1060
+#: src/frontends/qt4/Menus.cpp:1121
 msgid "No Document Open!"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:878
+#: src/frontends/qt4/Menus.cpp:881
 msgid "No custom insets defined!"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:962
+#: src/frontends/qt4/Menus.cpp:965
 msgid "Master Document"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:979
+#: src/frontends/qt4/Menus.cpp:982
 msgid "Open Navigator..."
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:1000
+#: src/frontends/qt4/Menus.cpp:1003
 msgid "Other Lists"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:1009
+#: src/frontends/qt4/Menus.cpp:1012
 msgid "No Table of contents"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:1046
+#: src/frontends/qt4/Menus.cpp:1049
 msgid "Other Toolbars"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:1066
+#: src/frontends/qt4/Menus.cpp:1069
 msgid "No Branch in Document!"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:1126
+#: src/frontends/qt4/Menus.cpp:1129
 msgid "No Citation in Scope!"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:1668
+#: src/frontends/qt4/Menus.cpp:1693
 msgid "No action defined!"
 msgstr ""
 
@@ -20136,7 +20136,7 @@ msgstr ""
 msgid "footnote"
 msgstr ""
 
-#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:580
+#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:590
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -20162,11 +20162,11 @@ msgstr ""
 msgid "Verbatim Input*"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:668
+#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:678
 msgid "Recursive input"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:669
+#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:679
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
@@ -20193,6 +20193,17 @@ msgstr ""
 
 #: src/insets/InsetInclude.cpp:546
 msgid "Module not found"
+msgstr ""
+
+#: src/insets/InsetInclude.cpp:565
+#, c-format
+msgid ""
+"Included file `%1$s' was not exported correctly.\n"
+"Warning: LaTeX export is probably incomplete."
+msgstr ""
+
+#: src/insets/InsetInclude.cpp:574
+msgid "Export failure"
 msgstr ""
 
 #: src/insets/InsetIndex.cpp:129

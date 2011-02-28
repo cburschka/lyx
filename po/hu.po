@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.xsvn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-05 09:13+0100\n"
+"POT-Creation-Date: 2011-02-28 17:09+0100\n"
 "PO-Revision-Date: 2010-11-08 19:40+0100\n"
 "Last-Translator: Szőke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -1502,8 +1502,8 @@ msgstr "Input"
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:996
-#: src/insets/InsetInclude.cpp:1002
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1006
+#: src/insets/InsetInclude.cpp:1012
 msgid "Program Listing"
 msgstr "Programlista"
 
@@ -15831,7 +15831,7 @@ msgstr ""
 "kérem változtassa meg a fájl kódolását\n"
 "UTF-8-ra, egy másik külső programmal.\n"
 
-#: src/Changes.cpp:363 src/Paragraph.cpp:2157
+#: src/Changes.cpp:363 src/Paragraph.cpp:2152
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:189
 #: src/insets/InsetBibitem.cpp:282 src/insets/InsetListings.cpp:185
 #: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
@@ -15839,7 +15839,7 @@ msgstr ""
 msgid "LyX Warning: "
 msgstr "LyX figyelmeztetés: "
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2158 src/insets/InsetBibitem.cpp:190
+#: src/Changes.cpp:364 src/Paragraph.cpp:2153 src/insets/InsetBibitem.cpp:190
 #: src/insets/InsetBibitem.cpp:283 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:169
 msgid "uncodable character"
@@ -16509,15 +16509,15 @@ msgstr "   opciók: "
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "Várakozás a %1$d. LaTeX futtatásra"
 
-#: src/LaTeX.cpp:264 src/LaTeX.cpp:353
+#: src/LaTeX.cpp:268 src/LaTeX.cpp:371
 msgid "Running Index Processor."
 msgstr "Tárgymutató feldolgozó futtatása."
 
-#: src/LaTeX.cpp:284 src/LaTeX.cpp:336
+#: src/LaTeX.cpp:294 src/LaTeX.cpp:354
 msgid "Running BibTeX."
 msgstr "BibTeX futtatása."
 
-#: src/LaTeX.cpp:434
+#: src/LaTeX.cpp:452
 msgid "Running MakeIndex for nomencl."
 msgstr "MakeIndex futtatása nomencl-hez."
 
@@ -17563,15 +17563,15 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Visszatérés a dokumentum korábbi tárolt változatához?"
 
-#: src/Paragraph.cpp:1599 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1594 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "Értelmetlen ezzel a formátummal!"
 
-#: src/Paragraph.cpp:1665
+#: src/Paragraph.cpp:1660
 msgid "Alignment not permitted"
 msgstr "Igazítás nincs engedlyezve"
 
-#: src/Paragraph.cpp:1666
+#: src/Paragraph.cpp:1661
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -17579,11 +17579,11 @@ msgstr ""
 "Az új formátumban nem engedélyezett az előző igazítás.\n"
 "Visszaállítva alapértékbe."
 
-#: src/Paragraph.cpp:2523
+#: src/Paragraph.cpp:2518
 msgid "Memory problem"
 msgstr "Memoria probléma"
 
-#: src/Paragraph.cpp:2523
+#: src/Paragraph.cpp:2518
 msgid "Paragraph not properly initialized"
 msgstr "Bekezdés nincs rendesen beállítva"
 
@@ -19172,7 +19172,7 @@ msgstr "Vízszintes kitöltés"
 msgid "Hyperlink"
 msgstr "Hiperhivatkozás"
 
-#: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1107
+#: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1110
 msgid "Child Document"
 msgstr "Aldokumentum"
 
@@ -20305,31 +20305,31 @@ msgstr "DocBook forrás"
 msgid "Literate Source"
 msgstr "Literális forrás"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1131
+#: src/frontends/qt4/GuiWorkArea.cpp:1140
 msgid " (version control)"
 msgstr "(verziókövetés)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1133
+#: src/frontends/qt4/GuiWorkArea.cpp:1142
 msgid " (version control, locking)"
 msgstr "(verziókövetés, zárolás)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1136
+#: src/frontends/qt4/GuiWorkArea.cpp:1145
 msgid " (changed)"
 msgstr " (megváltozott)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1140
+#: src/frontends/qt4/GuiWorkArea.cpp:1149
 msgid " (read only)"
 msgstr " (csak olvasható)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1230
+#: src/frontends/qt4/GuiWorkArea.cpp:1239
 msgid "Close File"
 msgstr "Fájl bezárása"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1640
+#: src/frontends/qt4/GuiWorkArea.cpp:1649
 msgid "Hide tab"
 msgstr "Fül elrejtése"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1642
+#: src/frontends/qt4/GuiWorkArea.cpp:1651
 msgid "Close tab"
 msgstr "Fül bezárása"
 
@@ -20341,54 +20341,54 @@ msgstr "Körbeúsztatási beállítások"
 msgid "Click to detach"
 msgstr "Kattintson ide a leválasztáshoz"
 
-#: src/frontends/qt4/Menus.cpp:661
+#: src/frontends/qt4/Menus.cpp:664
 msgid "No Group"
 msgstr "Nincs csoport"
 
-#: src/frontends/qt4/Menus.cpp:712
+#: src/frontends/qt4/Menus.cpp:715
 msgid "No Documents Open!"
 msgstr "Nincsenek nyitott dokumentumok!"
 
-#: src/frontends/qt4/Menus.cpp:738 src/frontends/qt4/Menus.cpp:817
-#: src/frontends/qt4/Menus.cpp:837 src/frontends/qt4/Menus.cpp:859
-#: src/frontends/qt4/Menus.cpp:951 src/frontends/qt4/Menus.cpp:1057
-#: src/frontends/qt4/Menus.cpp:1118
+#: src/frontends/qt4/Menus.cpp:741 src/frontends/qt4/Menus.cpp:820
+#: src/frontends/qt4/Menus.cpp:840 src/frontends/qt4/Menus.cpp:862
+#: src/frontends/qt4/Menus.cpp:954 src/frontends/qt4/Menus.cpp:1060
+#: src/frontends/qt4/Menus.cpp:1121
 msgid "No Document Open!"
 msgstr "Nincs nyitott dokumentum!"
 
-#: src/frontends/qt4/Menus.cpp:878
+#: src/frontends/qt4/Menus.cpp:881
 msgid "No custom insets defined!"
 msgstr "Nincs megadva saját betét!"
 
-#: src/frontends/qt4/Menus.cpp:962
+#: src/frontends/qt4/Menus.cpp:965
 msgid "Master Document"
 msgstr "Fődokumentum"
 
-#: src/frontends/qt4/Menus.cpp:979
+#: src/frontends/qt4/Menus.cpp:982
 msgid "Open Navigator..."
 msgstr "Navigátor megnyitása..."
 
-#: src/frontends/qt4/Menus.cpp:1000
+#: src/frontends/qt4/Menus.cpp:1003
 msgid "Other Lists"
 msgstr "Többi lista"
 
-#: src/frontends/qt4/Menus.cpp:1009
+#: src/frontends/qt4/Menus.cpp:1012
 msgid "No Table of contents"
 msgstr "Nincs tartalomjegyzék"
 
-#: src/frontends/qt4/Menus.cpp:1046
+#: src/frontends/qt4/Menus.cpp:1049
 msgid "Other Toolbars"
 msgstr "Többi eszköztár"
 
-#: src/frontends/qt4/Menus.cpp:1066
+#: src/frontends/qt4/Menus.cpp:1069
 msgid "No Branch in Document!"
 msgstr "A dokumentumban nincs változat megadva!"
 
-#: src/frontends/qt4/Menus.cpp:1126
+#: src/frontends/qt4/Menus.cpp:1129
 msgid "No Citation in Scope!"
 msgstr "Nincs hivatkozás az aktuális munkaterületen!"
 
-#: src/frontends/qt4/Menus.cpp:1668
+#: src/frontends/qt4/Menus.cpp:1693
 msgid "No action defined!"
 msgstr "Nincs megadva művelet!"
 
@@ -20745,7 +20745,7 @@ msgstr "Lábjegyzetbetét kinyitva"
 msgid "footnote"
 msgstr "lábjegyzet"
 
-#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:580
+#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:590
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -20773,11 +20773,11 @@ msgstr "Szó szerinti bevitel"
 msgid "Verbatim Input*"
 msgstr "Szó szerinti bevitel*"
 
-#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:668
+#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:678
 msgid "Recursive input"
 msgstr "Rekurzív bemenet"
 
-#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:669
+#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:679
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
@@ -20812,6 +20812,18 @@ msgstr ""
 #: src/insets/InsetInclude.cpp:546
 msgid "Module not found"
 msgstr "Modul nincs meg"
+
+#: src/insets/InsetInclude.cpp:565
+#, c-format
+msgid ""
+"Included file `%1$s' was not exported correctly.\n"
+"Warning: LaTeX export is probably incomplete."
+msgstr ""
+
+#: src/insets/InsetInclude.cpp:574
+#, fuzzy
+msgid "Export failure"
+msgstr "Biztonsági mentés hiba"
 
 #: src/insets/InsetIndex.cpp:129
 msgid "Index sorting failed"

@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-05 09:13+0100\n"
+"POT-Creation-Date: 2011-02-28 17:09+0100\n"
 "PO-Revision-Date: 2008-07-28 17:53+0100\n"
 "Last-Translator: joan <joan@montane.cat>\n"
 "Language-Team: Catalan\n"
@@ -1520,8 +1520,8 @@ msgstr "Entrada"
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:996
-#: src/insets/InsetInclude.cpp:1002
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1006
+#: src/insets/InsetInclude.cpp:1012
 msgid "Program Listing"
 msgstr "Llistat de programa"
 
@@ -16309,7 +16309,7 @@ msgstr ""
 "aleshores canvieu el joc de caràcters del fitxer\n"
 "a UTF 8 amb un programa diferent al LyX.\n"
 
-#: src/Changes.cpp:363 src/Paragraph.cpp:2157
+#: src/Changes.cpp:363 src/Paragraph.cpp:2152
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:189
 #: src/insets/InsetBibitem.cpp:282 src/insets/InsetListings.cpp:185
 #: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
@@ -16318,7 +16318,7 @@ msgstr ""
 msgid "LyX Warning: "
 msgstr "Versió del LyX"
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2158 src/insets/InsetBibitem.cpp:190
+#: src/Changes.cpp:364 src/Paragraph.cpp:2153 src/insets/InsetBibitem.cpp:190
 #: src/insets/InsetBibitem.cpp:283 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:169
 #, fuzzy
@@ -17009,16 +17009,16 @@ msgstr "   opcions: "
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "S'està esperant per a l'execució del LaTeX número %1$d"
 
-#: src/LaTeX.cpp:264 src/LaTeX.cpp:353
+#: src/LaTeX.cpp:268 src/LaTeX.cpp:371
 #, fuzzy
 msgid "Running Index Processor."
 msgstr "S'està executant el Makeindex."
 
-#: src/LaTeX.cpp:284 src/LaTeX.cpp:336
+#: src/LaTeX.cpp:294 src/LaTeX.cpp:354
 msgid "Running BibTeX."
 msgstr "S'està executant el BibTeX."
 
-#: src/LaTeX.cpp:434
+#: src/LaTeX.cpp:452
 msgid "Running MakeIndex for nomencl."
 msgstr "S'està executant el Makeindex per nomencl."
 
@@ -17997,25 +17997,25 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Seleccionar fins al final del document"
 
-#: src/Paragraph.cpp:1599 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1594 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "No té sentit amb aquest format !"
 
-#: src/Paragraph.cpp:1665
+#: src/Paragraph.cpp:1660
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1666
+#: src/Paragraph.cpp:1661
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2523
+#: src/Paragraph.cpp:2518
 msgid "Memory problem"
 msgstr ""
 
-#: src/Paragraph.cpp:2523
+#: src/Paragraph.cpp:2518
 msgid "Paragraph not properly initialized"
 msgstr ""
 
@@ -19641,7 +19641,7 @@ msgstr "Emplenament horitzontal"
 msgid "Hyperlink"
 msgstr "Hiperenllaç &generat"
 
-#: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1107
+#: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1110
 #, fuzzy
 msgid "Child Document"
 msgstr "Document fill...|d"
@@ -20822,33 +20822,33 @@ msgstr "Font DocBoook"
 msgid "Literate Source"
 msgstr "Codi font LaTeX"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1131
+#: src/frontends/qt4/GuiWorkArea.cpp:1140
 #, fuzzy
 msgid " (version control)"
 msgstr "Control de versions"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1133
+#: src/frontends/qt4/GuiWorkArea.cpp:1142
 #, fuzzy
 msgid " (version control, locking)"
 msgstr "Control de versions"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1136
+#: src/frontends/qt4/GuiWorkArea.cpp:1145
 msgid " (changed)"
 msgstr " (modificat)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1140
+#: src/frontends/qt4/GuiWorkArea.cpp:1149
 msgid " (read only)"
 msgstr " (només lectura)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1230
+#: src/frontends/qt4/GuiWorkArea.cpp:1239
 msgid "Close File"
 msgstr "Tanca el fitxer"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1640
+#: src/frontends/qt4/GuiWorkArea.cpp:1649
 msgid "Hide tab"
 msgstr "Amaga la pestanya"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1642
+#: src/frontends/qt4/GuiWorkArea.cpp:1651
 msgid "Close tab"
 msgstr "Tanca la pestanya"
 
@@ -20862,57 +20862,57 @@ msgstr "Paràmetres del flotant...|a"
 msgid "Click to detach"
 msgstr "Feu clic per detach"
 
-#: src/frontends/qt4/Menus.cpp:661
+#: src/frontends/qt4/Menus.cpp:664
 msgid "No Group"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:712
+#: src/frontends/qt4/Menus.cpp:715
 msgid "No Documents Open!"
 msgstr "No hi ha documents oberts!"
 
-#: src/frontends/qt4/Menus.cpp:738 src/frontends/qt4/Menus.cpp:817
-#: src/frontends/qt4/Menus.cpp:837 src/frontends/qt4/Menus.cpp:859
-#: src/frontends/qt4/Menus.cpp:951 src/frontends/qt4/Menus.cpp:1057
-#: src/frontends/qt4/Menus.cpp:1118
+#: src/frontends/qt4/Menus.cpp:741 src/frontends/qt4/Menus.cpp:820
+#: src/frontends/qt4/Menus.cpp:840 src/frontends/qt4/Menus.cpp:862
+#: src/frontends/qt4/Menus.cpp:954 src/frontends/qt4/Menus.cpp:1060
+#: src/frontends/qt4/Menus.cpp:1121
 msgid "No Document Open!"
 msgstr "No hi ha cap document obert!"
 
-#: src/frontends/qt4/Menus.cpp:878
+#: src/frontends/qt4/Menus.cpp:881
 #, fuzzy
 msgid "No custom insets defined!"
 msgstr "No s'ha definit cap acció!"
 
-#: src/frontends/qt4/Menus.cpp:962
+#: src/frontends/qt4/Menus.cpp:965
 msgid "Master Document"
 msgstr "Document mestre"
 
-#: src/frontends/qt4/Menus.cpp:979
+#: src/frontends/qt4/Menus.cpp:982
 msgid "Open Navigator..."
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:1000
+#: src/frontends/qt4/Menus.cpp:1003
 msgid "Other Lists"
 msgstr "Altres llistes"
 
-#: src/frontends/qt4/Menus.cpp:1009
+#: src/frontends/qt4/Menus.cpp:1012
 msgid "No Table of contents"
 msgstr "No hi ha taula de continguts"
 
-#: src/frontends/qt4/Menus.cpp:1046
+#: src/frontends/qt4/Menus.cpp:1049
 msgid "Other Toolbars"
 msgstr "Altres barres d'eines"
 
-#: src/frontends/qt4/Menus.cpp:1066
+#: src/frontends/qt4/Menus.cpp:1069
 #, fuzzy
 msgid "No Branch in Document!"
 msgstr "Imprimeix el document"
 
-#: src/frontends/qt4/Menus.cpp:1126
+#: src/frontends/qt4/Menus.cpp:1129
 #, fuzzy
 msgid "No Citation in Scope!"
 msgstr "No s'ha definit cap acció!"
 
-#: src/frontends/qt4/Menus.cpp:1668
+#: src/frontends/qt4/Menus.cpp:1693
 msgid "No action defined!"
 msgstr "No s'ha definit cap acció!"
 
@@ -21282,7 +21282,7 @@ msgstr "Taula oberta"
 msgid "footnote"
 msgstr "nota al peu"
 
-#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:580
+#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:590
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -21311,11 +21311,11 @@ msgstr "Entrada textual"
 msgid "Verbatim Input*"
 msgstr "Entrada textual*"
 
-#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:668
+#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:678
 msgid "Recursive input"
 msgstr "Entrada recursiva"
 
-#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:669
+#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:679
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
@@ -21344,6 +21344,18 @@ msgstr ""
 #: src/insets/InsetInclude.cpp:546
 msgid "Module not found"
 msgstr "No s'ha trobat el mòdul"
+
+#: src/insets/InsetInclude.cpp:565
+#, c-format
+msgid ""
+"Included file `%1$s' was not exported correctly.\n"
+"Warning: LaTeX export is probably incomplete."
+msgstr ""
+
+#: src/insets/InsetInclude.cpp:574
+#, fuzzy
+msgid "Export failure"
+msgstr "Fallada en la còpia de seguretat"
 
 #: src/insets/InsetIndex.cpp:129
 #, fuzzy

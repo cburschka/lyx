@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-05 09:13+0100\n"
+"POT-Creation-Date: 2011-02-28 17:09+0100\n"
 "PO-Revision-Date: 2010-03-21 22:45+0200\n"
 "Last-Translator: Mohamed Magdy <theblackdragon_100@hotmail.com>\n"
 "Language-Team: LyX team <theblackdragon_100@hotmail.com>\n"
@@ -1498,8 +1498,8 @@ msgstr "ادخل"
 msgid "Verbatim"
 msgstr "حرفياً"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:996
-#: src/insets/InsetInclude.cpp:1002
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1006
+#: src/insets/InsetInclude.cpp:1012
 msgid "Program Listing"
 msgstr "قائمة البرنامج"
 
@@ -15805,7 +15805,7 @@ msgstr ""
 "فمن فضلك غير ترميز الملف\n"
 "الى UTF-8 باستخدام برنامج أخر غير LyX.\n"
 
-#: src/Changes.cpp:363 src/Paragraph.cpp:2157
+#: src/Changes.cpp:363 src/Paragraph.cpp:2152
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:189
 #: src/insets/InsetBibitem.cpp:282 src/insets/InsetListings.cpp:185
 #: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
@@ -15813,7 +15813,7 @@ msgstr ""
 msgid "LyX Warning: "
 msgstr "تحذير ليك:"
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2158 src/insets/InsetBibitem.cpp:190
+#: src/Changes.cpp:364 src/Paragraph.cpp:2153 src/insets/InsetBibitem.cpp:190
 #: src/insets/InsetBibitem.cpp:283 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:169
 #, fuzzy
@@ -16488,15 +16488,15 @@ msgstr "الخيارات:"
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "انتظار LaTeX لاجراء عدد %1$d"
 
-#: src/LaTeX.cpp:264 src/LaTeX.cpp:353
+#: src/LaTeX.cpp:268 src/LaTeX.cpp:371
 msgid "Running Index Processor."
 msgstr "تشغيل صانع فهرس."
 
-#: src/LaTeX.cpp:284 src/LaTeX.cpp:336
+#: src/LaTeX.cpp:294 src/LaTeX.cpp:354
 msgid "Running BibTeX."
 msgstr "تشغيل BibTeX."
 
-#: src/LaTeX.cpp:434
+#: src/LaTeX.cpp:452
 #, fuzzy
 msgid "Running MakeIndex for nomencl."
 msgstr "تشغيل صانع فهرس."
@@ -17448,25 +17448,25 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "عودة للمستند المحفوظ؟"
 
-#: src/Paragraph.cpp:1599 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1594 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr ""
 
-#: src/Paragraph.cpp:1665
+#: src/Paragraph.cpp:1660
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1666
+#: src/Paragraph.cpp:1661
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2523
+#: src/Paragraph.cpp:2518
 msgid "Memory problem"
 msgstr "مشكلة في الذاكرة"
 
-#: src/Paragraph.cpp:2523
+#: src/Paragraph.cpp:2518
 msgid "Paragraph not properly initialized"
 msgstr "الفقرة لم تبدأ بشكل لائق"
 
@@ -19032,7 +19032,7 @@ msgstr "ملئ افقي"
 msgid "Hyperlink"
 msgstr "&وصلات"
 
-#: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1107
+#: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1110
 #, fuzzy
 msgid "Child Document"
 msgstr "مستند فرعي....|م"
@@ -20190,31 +20190,31 @@ msgstr "DocBook"
 msgid "Literate Source"
 msgstr "كود ليتك مصدري"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1131
+#: src/frontends/qt4/GuiWorkArea.cpp:1140
 msgid " (version control)"
 msgstr " (تحكم الاصدار)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1133
+#: src/frontends/qt4/GuiWorkArea.cpp:1142
 msgid " (version control, locking)"
 msgstr " (تحكم الاصدار، مغلق)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1136
+#: src/frontends/qt4/GuiWorkArea.cpp:1145
 msgid " (changed)"
 msgstr " (تم تغييره)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1140
+#: src/frontends/qt4/GuiWorkArea.cpp:1149
 msgid " (read only)"
 msgstr "(للقراءة فقط)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1230
+#: src/frontends/qt4/GuiWorkArea.cpp:1239
 msgid "Close File"
 msgstr "اغلاق الملف"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1640
+#: src/frontends/qt4/GuiWorkArea.cpp:1649
 msgid "Hide tab"
 msgstr "اخفاء علامة التبويب"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1642
+#: src/frontends/qt4/GuiWorkArea.cpp:1651
 msgid "Close tab"
 msgstr "اغلاق اللسان"
 
@@ -20227,55 +20227,55 @@ msgstr "اعدادات التعويم"
 msgid "Click to detach"
 msgstr "انقر للفصل"
 
-#: src/frontends/qt4/Menus.cpp:661
+#: src/frontends/qt4/Menus.cpp:664
 msgid "No Group"
 msgstr "لا مجموعة"
 
-#: src/frontends/qt4/Menus.cpp:712
+#: src/frontends/qt4/Menus.cpp:715
 msgid "No Documents Open!"
 msgstr "لم يتم فتح مستند!"
 
-#: src/frontends/qt4/Menus.cpp:738 src/frontends/qt4/Menus.cpp:817
-#: src/frontends/qt4/Menus.cpp:837 src/frontends/qt4/Menus.cpp:859
-#: src/frontends/qt4/Menus.cpp:951 src/frontends/qt4/Menus.cpp:1057
-#: src/frontends/qt4/Menus.cpp:1118
+#: src/frontends/qt4/Menus.cpp:741 src/frontends/qt4/Menus.cpp:820
+#: src/frontends/qt4/Menus.cpp:840 src/frontends/qt4/Menus.cpp:862
+#: src/frontends/qt4/Menus.cpp:954 src/frontends/qt4/Menus.cpp:1060
+#: src/frontends/qt4/Menus.cpp:1121
 msgid "No Document Open!"
 msgstr "لا مستند مفتوح!"
 
-#: src/frontends/qt4/Menus.cpp:878
+#: src/frontends/qt4/Menus.cpp:881
 msgid "No custom insets defined!"
 msgstr "لا اجراء محدد!"
 
-#: src/frontends/qt4/Menus.cpp:962
+#: src/frontends/qt4/Menus.cpp:965
 msgid "Master Document"
 msgstr "مستند رئيسي"
 
-#: src/frontends/qt4/Menus.cpp:979
+#: src/frontends/qt4/Menus.cpp:982
 msgid "Open Navigator..."
 msgstr "فتح مستكشف..."
 
-#: src/frontends/qt4/Menus.cpp:1000
+#: src/frontends/qt4/Menus.cpp:1003
 msgid "Other Lists"
 msgstr "قوائم أخرى"
 
-#: src/frontends/qt4/Menus.cpp:1009
+#: src/frontends/qt4/Menus.cpp:1012
 msgid "No Table of contents"
 msgstr "لا جدول في المحتوى"
 
-#: src/frontends/qt4/Menus.cpp:1046
+#: src/frontends/qt4/Menus.cpp:1049
 msgid "Other Toolbars"
 msgstr "اشرطة ادوات أخرى"
 
-#: src/frontends/qt4/Menus.cpp:1066
+#: src/frontends/qt4/Menus.cpp:1069
 msgid "No Branch in Document!"
 msgstr "لا فرع في المستند!"
 
-#: src/frontends/qt4/Menus.cpp:1126
+#: src/frontends/qt4/Menus.cpp:1129
 #, fuzzy
 msgid "No Citation in Scope!"
 msgstr "لا اجراء محدد"
 
-#: src/frontends/qt4/Menus.cpp:1668
+#: src/frontends/qt4/Menus.cpp:1693
 msgid "No action defined!"
 msgstr "لا اجراء محدد"
 
@@ -20637,7 +20637,7 @@ msgstr "فتح برواز|ف"
 msgid "footnote"
 msgstr "هامش"
 
-#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:580
+#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:590
 #, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
@@ -20665,11 +20665,11 @@ msgstr "حرفياً"
 msgid "Verbatim Input*"
 msgstr "حرفياً"
 
-#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:668
+#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:678
 msgid "Recursive input"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:669
+#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:679
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
@@ -20698,6 +20698,18 @@ msgstr ""
 #, fuzzy
 msgid "Module not found"
 msgstr "النموذج غير موجود"
+
+#: src/insets/InsetInclude.cpp:565
+#, c-format
+msgid ""
+"Included file `%1$s' was not exported correctly.\n"
+"Warning: LaTeX export is probably incomplete."
+msgstr ""
+
+#: src/insets/InsetInclude.cpp:574
+#, fuzzy
+msgid "Export failure"
+msgstr "فشل النسخ الاحتياطي"
 
 #: src/insets/InsetIndex.cpp:129
 #, fuzzy

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-05 09:13+0100\n"
+"POT-Creation-Date: 2011-02-28 17:09+0100\n"
 "PO-Revision-Date: 2007-06-26 17:10+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -1524,8 +1524,8 @@ msgstr "輸入"
 msgid "Verbatim"
 msgstr "逐字地"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:996
-#: src/insets/InsetInclude.cpp:1002
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1006
+#: src/insets/InsetInclude.cpp:1012
 msgid "Program Listing"
 msgstr "程式清單"
 
@@ -16411,7 +16411,7 @@ msgstr ""
 "就請以 LyX 以外的程式，\n"
 "將檔案的編碼變更為 UTF-8。\n"
 
-#: src/Changes.cpp:363 src/Paragraph.cpp:2157
+#: src/Changes.cpp:363 src/Paragraph.cpp:2152
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:189
 #: src/insets/InsetBibitem.cpp:282 src/insets/InsetListings.cpp:185
 #: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
@@ -16420,7 +16420,7 @@ msgstr ""
 msgid "LyX Warning: "
 msgstr "LyX 版本 "
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2158 src/insets/InsetBibitem.cpp:190
+#: src/Changes.cpp:364 src/Paragraph.cpp:2153 src/insets/InsetBibitem.cpp:190
 #: src/insets/InsetBibitem.cpp:283 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:169
 #, fuzzy
@@ -17108,16 +17108,16 @@ msgstr "   選項："
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "等待 LaTeX 的執行編號 %1$d"
 
-#: src/LaTeX.cpp:264 src/LaTeX.cpp:353
+#: src/LaTeX.cpp:268 src/LaTeX.cpp:371
 #, fuzzy
 msgid "Running Index Processor."
 msgstr "MakeIndex 執行中。"
 
-#: src/LaTeX.cpp:284 src/LaTeX.cpp:336
+#: src/LaTeX.cpp:294 src/LaTeX.cpp:354
 msgid "Running BibTeX."
 msgstr "BibTeX 執行中。"
 
-#: src/LaTeX.cpp:434
+#: src/LaTeX.cpp:452
 msgid "Running MakeIndex for nomencl."
 msgstr "正在執行 nomencl 的 MakeIndex。"
 
@@ -18087,15 +18087,15 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "還原成文件的已儲存版本？"
 
-#: src/Paragraph.cpp:1599 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1594 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "此版面配置沒有意義！"
 
-#: src/Paragraph.cpp:1665
+#: src/Paragraph.cpp:1660
 msgid "Alignment not permitted"
 msgstr "對齊方式不被允許"
 
-#: src/Paragraph.cpp:1666
+#: src/Paragraph.cpp:1661
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -18103,11 +18103,11 @@ msgstr ""
 "新的版面配置不允許之前使用的對齊方式。\n"
 "設定為預設值。"
 
-#: src/Paragraph.cpp:2523
+#: src/Paragraph.cpp:2518
 msgid "Memory problem"
 msgstr ""
 
-#: src/Paragraph.cpp:2523
+#: src/Paragraph.cpp:2518
 msgid "Paragraph not properly initialized"
 msgstr ""
 
@@ -19686,7 +19686,7 @@ msgstr "水平填充"
 msgid "Hyperlink"
 msgstr "產生超連結(&G)"
 
-#: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1107
+#: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1110
 msgid "Child Document"
 msgstr "子文件"
 
@@ -20899,35 +20899,35 @@ msgstr "書籤|B"
 msgid "Literate Source"
 msgstr "LaTeX 來源"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1131
+#: src/frontends/qt4/GuiWorkArea.cpp:1140
 #, fuzzy
 msgid " (version control)"
 msgstr "版本控制"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1133
+#: src/frontends/qt4/GuiWorkArea.cpp:1142
 #, fuzzy
 msgid " (version control, locking)"
 msgstr "版本控制"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1136
+#: src/frontends/qt4/GuiWorkArea.cpp:1145
 msgid " (changed)"
 msgstr " (已變更)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1140
+#: src/frontends/qt4/GuiWorkArea.cpp:1149
 msgid " (read only)"
 msgstr " (唯讀)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1230
+#: src/frontends/qt4/GuiWorkArea.cpp:1239
 #, fuzzy
 msgid "Close File"
 msgstr "關閉"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1640
+#: src/frontends/qt4/GuiWorkArea.cpp:1649
 #, fuzzy
 msgid "Hide tab"
 msgstr "δ"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1642
+#: src/frontends/qt4/GuiWorkArea.cpp:1651
 #, fuzzy
 msgid "Close tab"
 msgstr "關閉"
@@ -20941,58 +20941,58 @@ msgstr "浮動設定值"
 msgid "Click to detach"
 msgstr "按一下卸離"
 
-#: src/frontends/qt4/Menus.cpp:661
+#: src/frontends/qt4/Menus.cpp:664
 msgid "No Group"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:712
+#: src/frontends/qt4/Menus.cpp:715
 msgid "No Documents Open!"
 msgstr "沒有文件開啟！"
 
-#: src/frontends/qt4/Menus.cpp:738 src/frontends/qt4/Menus.cpp:817
-#: src/frontends/qt4/Menus.cpp:837 src/frontends/qt4/Menus.cpp:859
-#: src/frontends/qt4/Menus.cpp:951 src/frontends/qt4/Menus.cpp:1057
-#: src/frontends/qt4/Menus.cpp:1118
+#: src/frontends/qt4/Menus.cpp:741 src/frontends/qt4/Menus.cpp:820
+#: src/frontends/qt4/Menus.cpp:840 src/frontends/qt4/Menus.cpp:862
+#: src/frontends/qt4/Menus.cpp:954 src/frontends/qt4/Menus.cpp:1060
+#: src/frontends/qt4/Menus.cpp:1121
 msgid "No Document Open!"
 msgstr "沒有文件開啟！"
 
-#: src/frontends/qt4/Menus.cpp:878
+#: src/frontends/qt4/Menus.cpp:881
 #, fuzzy
 msgid "No custom insets defined!"
 msgstr "沒有字型變更定義。"
 
-#: src/frontends/qt4/Menus.cpp:962
+#: src/frontends/qt4/Menus.cpp:965
 msgid "Master Document"
 msgstr "主控文件"
 
-#: src/frontends/qt4/Menus.cpp:979
+#: src/frontends/qt4/Menus.cpp:982
 msgid "Open Navigator..."
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:1000
+#: src/frontends/qt4/Menus.cpp:1003
 #, fuzzy
 msgid "Other Lists"
 msgstr "其他浮動"
 
-#: src/frontends/qt4/Menus.cpp:1009
+#: src/frontends/qt4/Menus.cpp:1012
 msgid "No Table of contents"
 msgstr "沒有內容表"
 
-#: src/frontends/qt4/Menus.cpp:1046
+#: src/frontends/qt4/Menus.cpp:1049
 #, fuzzy
 msgid "Other Toolbars"
 msgstr "工具列|b"
 
-#: src/frontends/qt4/Menus.cpp:1066
+#: src/frontends/qt4/Menus.cpp:1069
 msgid "No Branch in Document!"
 msgstr "文件中沒有分支！"
 
-#: src/frontends/qt4/Menus.cpp:1126
+#: src/frontends/qt4/Menus.cpp:1129
 #, fuzzy
 msgid "No Citation in Scope!"
 msgstr "沒有字型變更定義。"
 
-#: src/frontends/qt4/Menus.cpp:1668
+#: src/frontends/qt4/Menus.cpp:1693
 #, fuzzy
 msgid "No action defined!"
 msgstr "沒有字型變更定義。"
@@ -21375,7 +21375,7 @@ msgstr "開啟的註腳內欄"
 msgid "footnote"
 msgstr "註腳"
 
-#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:580
+#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:590
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -21404,11 +21404,11 @@ msgstr "逐字地輸入"
 msgid "Verbatim Input*"
 msgstr "逐字地輸入*"
 
-#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:668
+#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:678
 msgid "Recursive input"
 msgstr "遞迴輸入"
 
-#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:669
+#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:679
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "試圖包含檔案 %1$s 於它自己中！忽略包含動作。"
@@ -21443,6 +21443,18 @@ msgstr ""
 #, fuzzy
 msgid "Module not found"
 msgstr "找不到檔案"
+
+#: src/insets/InsetInclude.cpp:565
+#, c-format
+msgid ""
+"Included file `%1$s' was not exported correctly.\n"
+"Warning: LaTeX export is probably incomplete."
+msgstr ""
+
+#: src/insets/InsetInclude.cpp:574
+#, fuzzy
+msgid "Export failure"
+msgstr "備份失敗"
 
 #: src/insets/InsetIndex.cpp:129
 #, fuzzy
