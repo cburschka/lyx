@@ -172,6 +172,10 @@ bool GuiErrorList::goTo(int item)
 		return false;
 	}
 
+	// Don't try to highlight the content of info insets
+	while (dit.inset().lyxCode() == INFO_CODE)
+		dit.forwardPos();
+
 	// If this paragraph has zero size, highlight the previous one
 	while (dit.paragraph().size() == 0)
 		dit.backwardPos();
