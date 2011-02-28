@@ -342,6 +342,7 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	temppath = cloned_buffer_->d->temppath;
 	file_fully_loaded = true;
 	params = cloned_buffer_->d->params;
+	gui_ = cloned_buffer->d->gui_;
 	bibfiles_cache_ = cloned_buffer_->d->bibfiles_cache_;
 	bibinfo_ = cloned_buffer_->d->bibinfo_;
 	bibinfo_cache_valid_ = cloned_buffer_->d->bibinfo_cache_valid_;
@@ -3553,8 +3554,14 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 	// LaTeX backend
 	else if (backend_format == format) {
 		runparams.nice = true;
-		if (!makeLaTeXFile(FileName(filename), string(), runparams))
+		if (!makeLaTeXFile(FileName(filename), string(), runparams)) {
+			if (d->cloned_buffer_) {
+				d->cloned_buffer_->d->errorLists["Export"] =
+					d->errorLists["Export"];
+				errors("Export");
+			}
 			return false;
+		}
 	} else if (!lyxrc.tex_allows_spaces
 		   && contains(filePath(), ' ')) {
 		Alert::error(_("File name error"),
@@ -3562,8 +3569,14 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 		return false;
 	} else {
 		runparams.nice = false;
-		if (!makeLaTeXFile(FileName(filename), filePath(), runparams))
+		if (!makeLaTeXFile(FileName(filename), filePath(), runparams)) {
+			if (d->cloned_buffer_) {
+				d->cloned_buffer_->d->errorLists["Export"] =
+					d->errorLists["Export"];
+				errors("Export");
+			}
 			return false;
+		}
 	}
 
 	string const error_type = (format == "program")
