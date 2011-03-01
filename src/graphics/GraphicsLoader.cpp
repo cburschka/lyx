@@ -368,7 +368,11 @@ void Loader::Impl::resetFile(FileName const & file)
 		// signal needs to be disconnected.
 		sc_.disconnect();
 		cached_item_.reset();
-		Cache::get().remove(old_file);
+		if (status_ != Converting) {
+			Cache::get().remove(old_file);
+		} else {
+			//TODO remove cache item when it is not busy any more
+		}
 	}
 
 	status_ = cached_item_.get() ? cached_item_->status() : WaitingToLoad;
