@@ -2346,7 +2346,7 @@ void LyXAction::init()
                        set-special-column|set-special-multicolumn|set-special-multirow|
                        set-booktabs|unset-booktabs|set-top-space|set-bottom-space|
                        set-interline-space|set-border-lines|tabular-valign-top|
-                       tabular-valign-middle|tabular-valign-bottom \n
+                       tabular-valign-middle|tabular-valign-bottom|set-tabular-width \n
                <ARG>: additional argument for some commands, use debug mode to explore its values.
  * \li Sample: inset-modify note Note Comment \n
 	       inset-modify changetype Ovalbox
