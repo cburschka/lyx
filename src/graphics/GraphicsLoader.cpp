@@ -371,7 +371,7 @@ void Loader::Impl::resetFile(FileName const & file)
 		if (status_ != Converting) {
 			Cache::get().remove(old_file);
 		} else {
-			//TODO remove cache item when it is not busy any more
+			//TODO remove cache item when it is not busy any more, see #7163
 		}
 	}
 
