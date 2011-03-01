@@ -165,9 +165,8 @@ public:
 		font.setStyleHint(QFont::SansSerif);
 		font.setWeight(QFont::Bold);
 		font.setPointSize(int(toqstr(lyxrc.font_sizes[FONT_SIZE_LARGE]).toDouble()));
-		int width = QFontMetrics(font).width(text);
 		pain.setFont(font);
-		pain.drawText(397 - width, 15, text);
+		pain.drawText(190, 225, text);
 		setFocusPolicy(Qt::StrongFocus);
 	}
 
