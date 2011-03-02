@@ -331,10 +331,10 @@ void InsetText::fixParagraphsFont()
 	ParagraphList::iterator par = paragraphs().begin();
 	ParagraphList::iterator const end = paragraphs().end();
 	while (par != end) {
-		if (par->isPassThru()) {
+		if (par->isPassThru())
 			par->resetFonts(font);
+		if (!par->allowParagraphCustomization())
 			par->params().clear();
-		}
 		++par;
 	}
 }
