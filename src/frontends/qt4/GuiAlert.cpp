@@ -49,68 +49,6 @@ namespace lyx {
 namespace frontend {
 
 
-
-
-static docstring const formatted(docstring const & text)
-{
-	const int w = 80;
-	docstring sout;
-
-	if (text.empty())
-		return sout;
-
-	size_t curpos = 0;
-	docstring line;
-
-	while (true) {
-		size_t const nxtpos1 = text.find(' ',  curpos);
-		size_t const nxtpos2 = text.find('\n', curpos);
-		size_t const nxtpos = min(nxtpos1, nxtpos2);
-
-		docstring const word =
-			nxtpos == docstring::npos ?
-			text.substr(curpos) :
-			text.substr(curpos, nxtpos - curpos);
-
-		bool const newline = (nxtpos2 != docstring::npos &&
-				      nxtpos2 < nxtpos1);
-
-		docstring const line_plus_word =
-			line.empty() ? word : line + char_type(' ') + word;
-
-		// FIXME: make w be size_t
-		if (int(line_plus_word.length()) >= w) {
-			sout += line + char_type('\n');
-			if (newline) {
-				sout += word + char_type('\n');
-				line.erase();
-			} else {
-				line = word;
-			}
-
-		} else if (newline) {
-			sout += line_plus_word + char_type('\n');
-			line.erase();
-
-		} else {
-			if (!line.empty())
-				line += char_type(' ');
-			line += word;
-		}
-
-		if (nxtpos == docstring::npos) {
-			if (!line.empty())
-				sout += line;
-			break;
-		}
-
-		curpos = nxtpos + 1;
-	}
-
-	return sout;
-}
-
-
 void noAppDialog(QString const & title, QString const & msg, QMessageBox::Icon mode)
 {
 	int argc = 1;
@@ -162,7 +100,7 @@ int doPrompt(docstring const & title0, docstring const & question,
 	//LYXERR0("FOCUS: " << qApp->focusWidget());
 	QPushButton * b[4] = { 0, 0, 0, 0 };
 	QMessageBox msg_box(QMessageBox::Information,
-			toqstr(title), toqstr(formatted(question)),
+			toqstr(title), toqstr(question),
 			QMessageBox::NoButton, qApp->focusWidget());
 	b[0] = msg_box.addButton(b1.empty() ? "OK" : toqstr(b1),
 					QMessageBox::ActionRole);
@@ -211,7 +149,7 @@ void doWarning(docstring const & title0, docstring const & message,
 	docstring const title = bformat(_("LyX: %1$s"), title0);
 
 	if (theApp() == 0) {
-		noAppDialog(toqstr(title), toqstr(formatted(message)), QMessageBox::Warning);
+		noAppDialog(toqstr(title), toqstr(message), QMessageBox::Warning);
 		return;
 	}
 
@@ -221,12 +159,12 @@ void doWarning(docstring const & title0, docstring const & message,
 	if (!askshowagain) {
 		ProgressInterface::instance()->warning(
 				toqstr(title),
-				toqstr(formatted(message)));
+				toqstr(message));
 	} else {
 		ProgressInterface::instance()->toggleWarning(
 				toqstr(title),
 				toqstr(message),
-				toqstr(formatted(message)));
+				toqstr(message));
 	}
 
 	qApp->restoreOverrideCursor();
@@ -255,7 +193,7 @@ void doError(docstring const & title0, docstring const & message)
 	docstring const title = bformat(_("LyX: %1$s"), title0);
 
 	if (theApp() == 0) {
-		noAppDialog(toqstr(title), toqstr(formatted(message)), QMessageBox::Critical);
+		noAppDialog(toqstr(title), toqstr(message), QMessageBox::Critical);
 		return;
 	}
 
@@ -264,7 +202,7 @@ void doError(docstring const & title0, docstring const & message)
 
 	ProgressInterface::instance()->error(
 		toqstr(title),
-		toqstr(formatted(message)));
+		toqstr(message));
 
 	qApp->restoreOverrideCursor();
 }
@@ -292,7 +230,7 @@ void doInformation(docstring const & title0, docstring const & message)
 	docstring const title = bformat(_("LyX: %1$s"), title0);
 
 	if (theApp() == 0) {
-		noAppDialog(toqstr(title), toqstr(formatted(message)), QMessageBox::Information);
+		noAppDialog(toqstr(title), toqstr(message), QMessageBox::Information);
 		return;
 	}
 
@@ -301,7 +239,7 @@ void doInformation(docstring const & title0, docstring const & message)
 
 	ProgressInterface::instance()->information(
 		toqstr(title),
-		toqstr(formatted(message)));
+		toqstr(message));
 
 	qApp->restoreOverrideCursor();
 }
