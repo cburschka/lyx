@@ -129,7 +129,7 @@ if(UNIX OR MINGW)
 else()
 	if(MSVC10)
 		set(LYX_USE_TR1 1)
-		set(LYX_USE_TR1_REGEX 1)
+		#set(LYX_USE_TR1_REGEX 1) #TODO should we use it in ECMAScript mode?
 	endif()
 endif()
 
