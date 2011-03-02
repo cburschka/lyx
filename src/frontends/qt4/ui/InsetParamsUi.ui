@@ -75,6 +75,9 @@
      </property>
      <item>
       <widget class="QPushButton" name="restorePB" >
+       <property name="toolTip" >
+        <string>Restore initial values in dialog</string>
+       </property>
        <property name="text" >
         <string>&amp;Restore</string>
        </property>
@@ -85,6 +88,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="newPB" >
+       <property name="toolTip" >
+        <string>Push new inset into the document</string>
+       </property>
        <property name="text" >
         <string>New Inset</string>
        </property>
