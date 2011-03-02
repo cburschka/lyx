@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 410
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass scrbook
@@ -153,6 +153,7 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language english
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
@@ -218,6 +219,7 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -2040,8 +2042,17 @@ Table
 
 Settings
 \family default
- Here you can set the horizontal alignment and the width of the current
- column.
+ Here you can set the table width
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Table ! Width
+\end_layout
+
+\end_inset
+
+, and the horizontal alignment and the width of the current column.
  The alignment 
 \family sans
 At
@@ -12234,7 +12245,8 @@ n
 \end_inset
 
 :
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 W_{g\, n}=(W_{g\,\mathrm{multicolumn}}+(1-n)\cdot(12.4\,\mathrm{pt}))/n\label{eq:Wgn}
 \end{equation}
 
@@ -12260,7 +12272,8 @@ reference "eq:Wgn"
 \end_inset
 
  becomes
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 W_{g\,2}=1.25\,\mathrm{cm}-6.2\,\mathrm{pt}
 \end{equation}
 
@@ -34878,7 +34891,8 @@ n
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 W_{\mathrm{tot}\, n}=n\cdot(W_{g\, n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_n}
 \end{equation}
 
@@ -34933,7 +34947,8 @@ reference "eq:Wtot_n"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 W_{\mathrm{tot\, mult}}=W_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_mult}
 \end{equation}
 
@@ -34977,7 +34992,8 @@ n
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 W_{g\, n}=(W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth}))/n
 \end{equation}
 
