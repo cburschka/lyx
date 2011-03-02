@@ -2083,13 +2083,11 @@ def convert_passthru(document):
         # by new instances of this layout. so we have repeated layouts
         # instead of newlines.
 
-        # first, though, we need to find out if the paragraph has any
-        # customization, so those can be propogated.
-        custom = []
-        i = beg + 1
-        while document.body[i].startswith("\\"):
-          custom.append(document.body[i])
-          i += 1
+        # if the paragraph has any customization, however, we do not want to
+        # do the replacement.
+        if document.body[beg + 1].startswith("\\"):
+          beg = end + 1
+          continue
 
         ns = beg
         while True:
@@ -2103,11 +2101,11 @@ def convert_passthru(document):
             continue
           if document.body[ne + 1] == "":
             ne += 1
-          subst = ["\\end_layout", "", "\\begin_layout " + lay] + custom
+          subst = ["\\end_layout", "", "\\begin_layout " + lay]
           document.body[ns:ne + 1] = subst
           # now we need to adjust end, in particular, but might as well
           # do ns properly, too
-          newlines = (ne - ns) - len(subst) + len(custom)
+          newlines = (ne - ns) - len(subst)
           ns += newlines + 2
           end += newlines + 2
 
