@@ -2253,7 +2253,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_CHANGE_REJECT
  * \li Action: Rejects tracked change inside the selection.
- * \li Syntax: change-accept
+ * \li Syntax: change-reject
  * \li Origin: Levon, 16 Oct 2002
  * \endvar
  */
