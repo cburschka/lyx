@@ -119,11 +119,12 @@ void GuiErrorList::paramsToDialog()
 
 ErrorList const & GuiErrorList::errorList() const
 {
-	if (&bufferview()->buffer() == buf_) {
-		error_list_ = from_master_ ?
-			bufferview()->buffer().masterBuffer()->errorList(error_type_)
-			: bufferview()->buffer().errorList(error_type_);
-	}
+	Buffer const * buffer = from_master_
+				? bufferview()->buffer().masterBuffer()
+				: &bufferview()->buffer();
+	if (buffer == buf_)
+		error_list_ = buffer->errorList(error_type_);
+
 	return error_list_;
 }
 
@@ -157,10 +158,6 @@ bool GuiErrorList::goTo(int item)
 	ErrorItem const & err = errorList()[item];
 
 	if (err.par_id == -1)
-		return false;
-
-	if (from_master_)
-		// FIXME: implement
 		return false;
 
 	DocIterator dit = buf_->getParFromID(err.par_id);
