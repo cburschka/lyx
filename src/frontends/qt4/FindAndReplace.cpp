@@ -170,7 +170,7 @@ static bool nextDocumentBuffer(Buffer * & buf)
 	LYXERR(Debug::FIND, "children.size()=" << children.size());
 	ListOfBuffers::const_iterator it =
 		find(children.begin(), children.end(), buf);
-	LASSERT(it != children.end(), /**/)
+	LASSERT(it != children.end(), /**/);
 	++it;
 	if (it == children.end()) {
 		buf = *children.begin();
@@ -293,11 +293,12 @@ docstring getQuestionString(FindAndReplaceOptions const & opt)
 }
 
 
-void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt)
+/// Return true if a match was found
+bool FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt, bool replace_all)
 {
 	BufferView * bv = view_.documentBufferView();
 	if (!bv)
-		return;
+		return false;
 	Buffer * buf = &bv->buffer();
 	Buffer * buf_orig = &bv->buffer();
 	DocIterator cur_orig(bv->cursor());
@@ -331,8 +332,10 @@ void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt)
 		LYXERR(Debug::FIND, "dispatched");
 		if (bv->cursor().result().dispatched()) {
 			// New match found and selected (old selection replaced if needed)
+			if (replace_all)
+				continue;
 			view_.setBusy(false);
-			return;
+			return true;
 		}
 
 		// No match found in current buffer (however old selection might have been replaced)
@@ -375,20 +378,22 @@ void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt)
 		cur_orig.pos() = cur_orig.lastpos();
 	bv->cursor().setCursor(cur_orig);
 	view_.setBusy(false);
+	return false;
 }
 
 
-void FindAndReplaceWidget::findAndReplace(
+/// Return true if a match was found
+bool FindAndReplaceWidget::findAndReplace(
 	bool casesensitive, bool matchword, bool backwards,
 	bool expandmacros, bool ignoreformat, bool replace,
-	bool keep_case)
+	bool keep_case, bool replace_all)
 {
 	Buffer & find_buf = find_work_area_->bufferView().buffer();
 	docstring const & find_buf_name = find_buf.fileName().absoluteFilePath();
 
 	if (find_buf.text().empty()) {
 		view_.message(_("Nothing to search"));
-		return;
+		return false;
 	}
 
 	Buffer & repl_buf = replace_work_area_->bufferView().buffer();
@@ -420,15 +425,15 @@ void FindAndReplaceWidget::findAndReplace(
 	FindAndReplaceOptions opt(find_buf_name, casesensitive, matchword,
 				  !backwards, expandmacros, ignoreformat,
 				  repl_buf_name, keep_case, scope);
-	findAndReplaceScope(opt);
+	return findAndReplaceScope(opt, replace_all);
 }
 
 
-void FindAndReplaceWidget::findAndReplace(bool backwards, bool replace)
+bool FindAndReplaceWidget::findAndReplace(bool backwards, bool replace, bool replace_all)
 {
 	if (! view_.currentMainWorkArea()) {
 		view_.message(_("No open document(s) in which to search"));
-		return;
+		return false;
 	}
 	// Finalize macros that are being typed, both in main document and in search or replacement WAs
 	if (view_.currentWorkArea()->bufferView().cursor().macroModeClose())
@@ -439,13 +444,14 @@ void FindAndReplaceWidget::findAndReplace(bool backwards, bool replace)
 	// FIXME: create a Dialog::returnFocus()
 	// or something instead of this:
 	view_.setCurrentWorkArea(view_.currentMainWorkArea());
-	findAndReplace(caseCB->isChecked(),
+	return findAndReplace(caseCB->isChecked(),
 		wordsCB->isChecked(),
 		backwards,
 		expandMacrosCB->isChecked(),
 		ignoreFormatCB->isChecked(),
 		replace,
-		keepCaseCB->isChecked());
+		keepCaseCB->isChecked(),
+		replace_all);
 }
 
 
@@ -471,6 +477,7 @@ void FindAndReplaceWidget::on_replacePB_clicked()
 
 void FindAndReplaceWidget::on_replaceallPB_clicked()
 {
+	findAndReplace(searchbackCB->isChecked(), true, true);
 	replace_work_area_->setFocus();
 }
 
