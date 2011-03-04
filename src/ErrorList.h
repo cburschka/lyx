@@ -31,8 +31,10 @@ public:
 	int par_id;
 	pos_type pos_start;
 	pos_type pos_end;
+	Buffer const * buffer;
 	ErrorItem(docstring const & error, docstring const & description,
-		  int parid, pos_type posstart, pos_type posend);
+		  int parid, pos_type posstart, pos_type posend,
+		  Buffer const * buf = 0);
 	ErrorItem();
 };
 

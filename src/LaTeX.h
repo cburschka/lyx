@@ -39,16 +39,20 @@ private:
 		///
 		Error () : error_in_line(0) {}
 		///
-		Error(int line, docstring const & desc, docstring const & text)
+		Error(int line, docstring const & desc, docstring const & text,
+		      std::string const & fname)
 			: error_in_line(line),
 			  error_desc(desc),
-			  error_text(text) {}
+			  error_text(text),
+			  child_name(fname) {}
 		/// what line in the TeX file the error occured in
 		int error_in_line;
 		/// The kind of error
 		docstring error_desc;
 		/// The line/cmd that caused the error.
 		docstring error_text;
+		/// The name of the child where error occurred, empty otherwise.
+		std::string child_name;
 	};
 public:
 	///
@@ -59,7 +63,8 @@ public:
 	Errors::const_iterator end() const { return errors.end(); }
 	///
 	void insertError(int line, docstring const & error_desc,
-			 docstring const & error_text);
+			 docstring const & error_text,
+			 std::string const & child_name = empty_string());
 private:
 	///
 	Errors errors;

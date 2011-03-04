@@ -149,20 +149,23 @@ bool GuiErrorList::initialiseParams(string const & data)
 
 bool GuiErrorList::goTo(int item)
 {
-	if (&buffer() != buf_) {
-		if (!theBufferList().isLoaded(buf_))
-			return false;
-		FuncRequest fr(LFUN_BUFFER_SWITCH, buf_->absFileName());
-		dispatch(fr);
-	}
 	ErrorItem const & err = errorList()[item];
 
 	if (err.par_id == -1)
 		return false;
 
-	DocIterator dit = buf_->getParFromID(err.par_id);
+	Buffer const * errbuf = err.buffer ? err.buffer : buf_;
 
-	if (dit == doc_iterator_end(buf_)) {
+	if (&buffer() != errbuf) {
+		if (!theBufferList().isLoaded(errbuf))
+			return false;
+		FuncRequest fr(LFUN_BUFFER_SWITCH, errbuf->absFileName());
+		dispatch(fr);
+	}
+
+	DocIterator dit = errbuf->getParFromID(err.par_id);
+
+	if (dit == doc_iterator_end(errbuf)) {
 		// FIXME: Happens when loading a read-only doc with 
 		// unknown layout. Should this be the case?
 		LYXERR0("par id " << err.par_id << " not found");

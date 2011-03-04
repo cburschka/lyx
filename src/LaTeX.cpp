@@ -32,6 +32,7 @@
 #include "support/regex.h"
 
 #include <fstream>
+#include <stack>
 
 
 using namespace std;
@@ -64,9 +65,10 @@ docstring runMessage(unsigned int count)
  */
 
 void TeXErrors::insertError(int line, docstring const & error_desc,
-			    docstring const & error_text)
+			    docstring const & error_text,
+			    string const & child_name)
 {
-	Error newerr(line, error_desc, error_text);
+	Error newerr(line, error_desc, error_text, child_name);
 	errors.push_back(newerr);
 }
 
@@ -621,9 +623,13 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 	ifstream ifs(fn.toFilesystemEncoding().c_str());
 	bool fle_style = false;
 	static regex file_line_error(".+\\.\\D+:[0-9]+: (.+)");
+	static regex child_file(".*([0-9]+[A-Za-z]*_.+\\.tex).*");
 	// Flag for 'File ended while scanning' message.
 	// We need to wait for subsequent processing.
 	string wait_for_error;
+	string child_name;
+	int pnest = 0;
+	stack <pair<string, int> > child;
 
 	string token;
 	while (getline(ifs, token)) {
@@ -639,6 +645,29 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 
 		if (token.empty())
 			continue;
+
+		// Track child documents
+		for (size_t i = 0; i < token.length(); ++i) {
+			if (token[i] == '(') {
+				++pnest;
+				size_t j = token.find('(', i + 1);
+				size_t len = j == string::npos
+						? token.substr(i + 1).length()
+						: j - i - 1;
+				if (regex_match(token.substr(i + 1, len),
+							sub, child_file)) {
+					string const name = sub.str(1);
+					child.push(make_pair(name, pnest));
+					i += len;
+				}
+			} else if (token[i] == ')') {
+				if (!child.empty()
+				    && child.top().second == pnest)
+					child.pop();
+				--pnest;
+			}
+		}
+		child_name = child.empty() ? empty_string() : child.top().first;
 
 		if (contains(token, "file:line:error style messages enabled"))
 			fle_style = true;
@@ -729,6 +758,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				do {
 					if (!getline(ifs, tmp))
 						break;
+					tmp = rtrim(tmp, "\r");
 					errstr += "\n" + tmp;
 					if (++count > 5)
 						break;
@@ -736,7 +766,8 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 
 				terr.insertError(0,
 						 from_local8bit("Emergency stop"),
-						 from_local8bit(errstr));
+						 from_local8bit(errstr),
+						 child_name);
 			}
 
 			// get the next line
@@ -745,6 +776,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 			do {
 				if (!getline(ifs, tmp))
 					break;
+				tmp = rtrim(tmp, "\r");
 				if (++count > 10)
 					break;
 			} while (!prefixIs(tmp, "l."));
@@ -763,6 +795,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				string errstr(tmp, tmp.find(' '));
 				errstr += '\n';
 				getline(ifs, tmp);
+				tmp = rtrim(tmp, "\r");
 				while (!contains(errstr, "l.")
 				       && !tmp.empty()
 				       && !prefixIs(tmp, "! ")
@@ -770,6 +803,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 					errstr += tmp;
 					errstr += "\n";
 					getline(ifs, tmp);
+					tmp = rtrim(tmp, "\r");
 				}
 				LYXERR(Debug::LATEX, "line: " << line << '\n'
 					<< "Desc: " << desc << '\n' << "Text: " << errstr);
@@ -790,7 +824,8 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 					// assume here it can be wrong.
 					terr.insertError(line,
 							 from_local8bit(desc),
-							 from_local8bit(errstr));
+							 from_local8bit(errstr),
+							 child_name);
 					++num_errors;
 				}
 			}
@@ -816,7 +851,8 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				retval |= ERRORS;
 					terr.insertError(0,
 							 from_local8bit("pdfTeX Error"),
-							 from_local8bit(token));
+							 from_local8bit(token),
+							 child_name);
 			}
 		}
 	}

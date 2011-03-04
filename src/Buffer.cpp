@@ -3888,24 +3888,49 @@ Buffer::ReadStatus Buffer::loadThisLyXFile(FileName const & fn)
 
 void Buffer::bufferErrors(TeXErrors const & terr, ErrorList & errorList) const
 {
-	TeXErrors::Errors::const_iterator cit = terr.begin();
+	TeXErrors::Errors::const_iterator it = terr.begin();
 	TeXErrors::Errors::const_iterator end = terr.end();
+	ListOfBuffers clist = getDescendents();
+	ListOfBuffers::const_iterator cen = clist.end();
 
-	for (; cit != end; ++cit) {
+	for (; it != end; ++it) {
 		int id_start = -1;
 		int pos_start = -1;
-		int errorRow = cit->error_in_line;
-		bool found = d->texrow.getIdFromRow(errorRow, id_start,
-						       pos_start);
+		int errorRow = it->error_in_line;
+		Buffer const * buf = 0;
+		Impl const * p = d;
+		p->texrow.getIdFromRow(errorRow, id_start, pos_start);
+		if (id_start == -1) {
+			// Check whether the error occurred in a child
+			ListOfBuffers::const_iterator cit = clist.begin();
+			for (; cit != cen; ++cit) {
+				string const child_name =
+					DocFileName(changeExtension(
+						(*cit)->absFileName(), "tex")).
+							mangledFileName();
+				if (it->child_name != child_name)
+					continue;
+				(*cit)->d->texrow.getIdFromRow(errorRow,
+							id_start, pos_start);
+				if (id_start != -1) {
+					buf = d->cloned_buffer_
+						? (*cit)->d->cloned_buffer_->d->owner_
+						: (*cit)->d->owner_;
+					p = (*cit)->d;
+					break;
+				}
+			}
+		}
 		int id_end = -1;
 		int pos_end = -1;
+		bool found;
 		do {
 			++errorRow;
-			found = d->texrow.getIdFromRow(errorRow, id_end, pos_end);
+			found = p->texrow.getIdFromRow(errorRow, id_end, pos_end);
 		} while (found && id_start == id_end && pos_start == pos_end);
 
-		errorList.push_back(ErrorItem(cit->error_desc,
-			cit->error_text, id_start, pos_start, pos_end));
+		errorList.push_back(ErrorItem(it->error_desc,
+			it->error_text, id_start, pos_start, pos_end, buf));
 	}
 }
 
