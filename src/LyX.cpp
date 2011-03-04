@@ -671,7 +671,7 @@ static void error_handler(int err_sig)
 			  "hope you have not lost any data.\n"
 			  "Please read the bug-reporting instructions "
 			  "in 'Help->Introduction' and send us a bug report, "
-			  "if necessary. Thanks !\nBye.");
+			  "if necessary. Thanks!\nBye.");
 		break;
 	case SIGINT:
 	case SIGTERM:
