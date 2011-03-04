@@ -3899,9 +3899,10 @@ void Buffer::bufferErrors(TeXErrors const & terr, ErrorList & errorList) const
 		int errorRow = it->error_in_line;
 		Buffer const * buf = 0;
 		Impl const * p = d;
-		p->texrow.getIdFromRow(errorRow, id_start, pos_start);
-		if (id_start == -1) {
-			// Check whether the error occurred in a child
+		if (it->child_name.empty())
+		    p->texrow.getIdFromRow(errorRow, id_start, pos_start);
+		else {
+			// The error occurred in a child
 			ListOfBuffers::const_iterator cit = clist.begin();
 			for (; cit != cen; ++cit) {
 				string const child_name =
