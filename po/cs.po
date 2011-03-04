@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-23 14:53+0100\n"
+"POT-Creation-Date: 2011-03-04 23:51+0100\n"
 "PO-Revision-Date: 2011-01-21 05:50+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgstr "Autorská práva"
 #: src/frontends/qt4/ui/ErrorListUi.ui:60
 #: src/frontends/qt4/ui/ExternalUi.ui:608
 #: src/frontends/qt4/ui/IncludeUi.ui:250
-#: src/frontends/qt4/ui/InsetParamsUi.ui:132 src/frontends/qt4/ui/LogUi.ui:87
+#: src/frontends/qt4/ui/InsetParamsUi.ui:138 src/frontends/qt4/ui/LogUi.ui:87
 #: src/frontends/qt4/ui/ParagraphUi.ui:260 src/frontends/qt4/ui/PrefsUi.ui:93
 #: src/frontends/qt4/ui/RefUi.ui:137 src/frontends/qt4/ui/SearchUi.ui:203
 #: src/frontends/qt4/ui/ShowFileUi.ui:55
@@ -229,7 +229,7 @@ msgstr "Pøidat bibliografii k O&bsahu"
 #: src/frontends/qt4/ui/ExternalUi.ui:588
 #: src/frontends/qt4/ui/GraphicsUi.ui:721
 #: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/IndexUi.ui:41
-#: src/frontends/qt4/ui/InsetParamsUi.ui:112
+#: src/frontends/qt4/ui/InsetParamsUi.ui:118
 #: src/frontends/qt4/ui/ListingsUi.ui:539
 #: src/frontends/qt4/ui/MathMatrixUi.ui:307 src/frontends/qt4/ui/NoteUi.ui:38
 #: src/frontends/qt4/ui/ParagraphUi.ui:240
@@ -488,8 +488,8 @@ msgid "Remove the selected branch"
 msgstr "Smazat vybranou vìtev"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3783
-#: src/Buffer.cpp:3796
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3793
+#: src/Buffer.cpp:3806
 msgid "&Remove"
 msgstr "&Smazat"
 
@@ -523,16 +523,16 @@ msgstr "Pøidat &v¹echny"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
-#: src/Buffer.cpp:2272 src/Buffer.cpp:3758 src/Buffer.cpp:3821
+#: src/Buffer.cpp:2272 src/Buffer.cpp:3768 src/Buffer.cpp:3831
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:222 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1801
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:2077
-#: src/frontends/qt4/GuiView.cpp:2266 src/frontends/qt4/GuiView.cpp:2311
-#: src/frontends/qt4/GuiView.cpp:2526 src/frontends/qt4/GuiView.cpp:2533
-#: src/frontends/qt4/GuiView.cpp:2632 src/frontends/qt4/GuiView.cpp:2660
-#: src/frontends/qt4/GuiView.cpp:3240 src/insets/InsetBibtex.cpp:148
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:2092
+#: src/frontends/qt4/GuiView.cpp:2281 src/frontends/qt4/GuiView.cpp:2326
+#: src/frontends/qt4/GuiView.cpp:2541 src/frontends/qt4/GuiView.cpp:2548
+#: src/frontends/qt4/GuiView.cpp:2647 src/frontends/qt4/GuiView.cpp:2675
+#: src/frontends/qt4/GuiView.cpp:3255 src/insets/InsetBibtex.cpp:148
 msgid "&Cancel"
 msgstr "&Zru¹it"
 
@@ -770,7 +770,7 @@ msgstr "&Okam¾itì pou¾ít zmìny"
 #: src/frontends/qt4/ui/DocumentUi.ui:77
 #: src/frontends/qt4/ui/ExternalUi.ui:598
 #: src/frontends/qt4/ui/GraphicsUi.ui:742
-#: src/frontends/qt4/ui/InsetParamsUi.ui:122
+#: src/frontends/qt4/ui/InsetParamsUi.ui:128
 #: src/frontends/qt4/ui/ListingsUi.ui:549
 #: src/frontends/qt4/ui/ParagraphUi.ui:250 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:124 src/frontends/qt4/ui/SendtoUi.ui:85
@@ -821,7 +821,7 @@ msgstr "&Dolù"
 #: src/frontends/qt4/ui/CitationUi.ui:174
 #: src/frontends/qt4/ui/DocumentUi.ui:44
 #: src/frontends/qt4/ui/GraphicsUi.ui:692
-#: src/frontends/qt4/ui/InsetParamsUi.ui:79
+#: src/frontends/qt4/ui/InsetParamsUi.ui:82
 #: src/frontends/qt4/ui/ParagraphUi.ui:217 src/frontends/qt4/ui/PrefsUi.ui:47
 #: src/frontends/qt4/ui/WrapUi.ui:121
 msgid "&Restore"
@@ -926,50 +926,50 @@ msgstr "V¹echny typy záznamù"
 msgid "Search as you &type"
 msgstr "&Vyhledávat pøi zadávání"
 
-#: src/frontends/qt4/ui/ColorUi.ui:25
+#: src/frontends/qt4/ui/ColorUi.ui:27
 msgid "Font colors"
 msgstr "Barva písma"
 
-#: src/frontends/qt4/ui/ColorUi.ui:40
+#: src/frontends/qt4/ui/ColorUi.ui:38
 msgid "Main text:"
 msgstr "Hlavní text:"
 
-#: src/frontends/qt4/ui/ColorUi.ui:64 src/frontends/qt4/ui/ColorUi.ui:135
-#: src/frontends/qt4/ui/ColorUi.ui:218 src/frontends/qt4/ui/ColorUi.ui:289
+#: src/frontends/qt4/ui/ColorUi.ui:54 src/frontends/qt4/ui/ColorUi.ui:115
+#: src/frontends/qt4/ui/ColorUi.ui:192 src/frontends/qt4/ui/ColorUi.ui:253
 msgid "Click to change the color"
 msgstr "Kliknìte pro zmìnu barvy"
 
-#: src/frontends/qt4/ui/ColorUi.ui:67 src/frontends/qt4/ui/ColorUi.ui:221
+#: src/frontends/qt4/ui/ColorUi.ui:57 src/frontends/qt4/ui/ColorUi.ui:195
 msgid "Default..."
 msgstr "Standardní..."
 
-#: src/frontends/qt4/ui/ColorUi.ui:80 src/frontends/qt4/ui/ColorUi.ui:151
-#: src/frontends/qt4/ui/ColorUi.ui:234 src/frontends/qt4/ui/ColorUi.ui:305
+#: src/frontends/qt4/ui/ColorUi.ui:70 src/frontends/qt4/ui/ColorUi.ui:131
+#: src/frontends/qt4/ui/ColorUi.ui:208 src/frontends/qt4/ui/ColorUi.ui:269
 msgid "Revert the color to the default"
 msgstr "Vrátit barvu na standardní"
 
-#: src/frontends/qt4/ui/ColorUi.ui:83 src/frontends/qt4/ui/ColorUi.ui:154
-#: src/frontends/qt4/ui/ColorUi.ui:237 src/frontends/qt4/ui/ColorUi.ui:308
+#: src/frontends/qt4/ui/ColorUi.ui:73 src/frontends/qt4/ui/ColorUi.ui:134
+#: src/frontends/qt4/ui/ColorUi.ui:211 src/frontends/qt4/ui/ColorUi.ui:272
 msgid "R&eset"
 msgstr "V&ynulovat"
 
-#: src/frontends/qt4/ui/ColorUi.ui:111
+#: src/frontends/qt4/ui/ColorUi.ui:99
 msgid "Greyed-out notes:"
 msgstr "Za¹edlé poznámky"
 
-#: src/frontends/qt4/ui/ColorUi.ui:138 src/frontends/qt4/ui/ColorUi.ui:292
+#: src/frontends/qt4/ui/ColorUi.ui:118 src/frontends/qt4/ui/ColorUi.ui:256
 msgid "&Change..."
 msgstr "&Zmìnit..."
 
-#: src/frontends/qt4/ui/ColorUi.ui:185
+#: src/frontends/qt4/ui/ColorUi.ui:165
 msgid "Background colors"
 msgstr "Barvy pozadí"
 
-#: src/frontends/qt4/ui/ColorUi.ui:194
+#: src/frontends/qt4/ui/ColorUi.ui:176
 msgid "Page:"
 msgstr "Stránka:"
 
-#: src/frontends/qt4/ui/ColorUi.ui:265
+#: src/frontends/qt4/ui/ColorUi.ui:237
 msgid "Shaded boxes:"
 msgstr "Stínované rámeèky:"
 
@@ -1422,43 +1422,43 @@ msgstr "Form"
 msgid "Float Type:"
 msgstr "Typ plovoucího objektu:"
 
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:42
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:36
 msgid "Use &default placement"
 msgstr "Po&u¾ij standardní umístìní"
 
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:49
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:43
 msgid "Advanced Placement Options"
 msgstr "Umístìní - roz¹íøené volby"
 
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:61
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:55
 msgid "&Top of page"
 msgstr "&Vr¹ek stránky"
 
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:68
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:62
 msgid "&Ignore LaTeX rules"
 msgstr "&Ignoruj pravidla LaTeX-u"
 
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:75
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:69
 msgid "Here de&finitely"
 msgstr "Urèitì zd&e"
 
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:82
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:76
 msgid "&Here if possible"
 msgstr "Pokud mo¾no &zde"
 
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:89
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:83
 msgid "&Page of floats"
 msgstr "Stránka &plovoucích objektù"
 
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:96
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:90
 msgid "&Bottom of page"
 msgstr "&Spodek stránky"
 
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:106
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:100
 msgid "&Span columns"
 msgstr "&Pøeklenout sloupce"
 
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:113
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:107
 msgid "&Rotate sideways"
 msgstr "Z&rotuj na bok"
 
@@ -1887,8 +1887,8 @@ msgstr "Vstup (lze rekurzivnì)"
 msgid "Verbatim"
 msgstr "Doslovnì"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1075
-#: src/insets/InsetInclude.cpp:1081
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1085
+#: src/insets/InsetInclude.cpp:1091
 msgid "Program Listing"
 msgstr "Výpis zdrojového kódu"
 
@@ -1993,7 +1993,16 @@ msgstr "&Okam¾itì pou¾ít zmìny"
 msgid "I&mmediate Apply"
 msgstr "O&kam¾itì pou¾ít"
 
-#: src/frontends/qt4/ui/InsetParamsUi.ui:89
+#: src/frontends/qt4/ui/InsetParamsUi.ui:79
+msgid "Restore initial values in dialog"
+msgstr ""
+
+#: src/frontends/qt4/ui/InsetParamsUi.ui:92
+#, fuzzy
+msgid "Push new inset into the document"
+msgstr "Znaèka tak, jak se objeví v dokumentu"
+
+#: src/frontends/qt4/ui/InsetParamsUi.ui:95
 msgid "New Inset"
 msgstr "Novou vlo¾ku"
 
@@ -3466,7 +3475,7 @@ msgstr "Oznaèit cizí &jazyk"
 msgid "Right-to-left language support"
 msgstr "Podpora psaní zprava-doleva"
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:215 src/LyXRC.cpp:3338
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:215 src/LyXRC.cpp:3359
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
@@ -3619,7 +3628,7 @@ msgstr "&Obnovit nastavení, kdy¾ se zmìní tøída dokumentu"
 msgid "Output &line length:"
 msgstr "&Délka øádku na výstupu:"
 
-#: src/frontends/qt4/ui/PrefOutputUi.ui:37 src/LyXRC.cpp:3012
+#: src/frontends/qt4/ui/PrefOutputUi.ui:37 src/LyXRC.cpp:3029
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -4074,8 +4083,8 @@ msgstr "Má se zavírací tlaèítko objevit na ka¾dém panelu zvlá¹»?"
 msgid "&Single close-tab button"
 msgstr "&Jediné tlaèítko pro zavírání panelu"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:73 src/frontends/qt4/GuiView.cpp:2526
-#: src/frontends/qt4/GuiView.cpp:2533 src/frontends/qt4/GuiView.cpp:2632
+#: src/frontends/qt4/ui/PrefsUi.ui:73 src/frontends/qt4/GuiView.cpp:2541
+#: src/frontends/qt4/GuiView.cpp:2548 src/frontends/qt4/GuiView.cpp:2647
 msgid "&Save"
 msgstr "&Ulo¾it"
 
@@ -16463,8 +16472,8 @@ msgstr "Pøíkaz pro datum"
 msgid "Table (CSV)"
 msgstr "Tabulka (CSV)"
 
-#: lib/configure.py:575 src/frontends/qt4/GuiView.cpp:1124
-#: src/frontends/qt4/GuiView.cpp:1125 src/mathed/MathMacroTemplate.cpp:543
+#: lib/configure.py:575 src/frontends/qt4/GuiView.cpp:1128
+#: src/frontends/qt4/GuiView.cpp:1129 src/mathed/MathMacroTemplate.cpp:543
 msgid "LyX"
 msgstr "LyX"
 
@@ -16729,7 +16738,7 @@ msgid ""
 "it."
 msgstr "%1$s je z novìj¹í verze LyX-u a skript lyx2lyx selhal pøi konverzi."
 
-#: src/Buffer.cpp:1025 src/Buffer.cpp:3768 src/Buffer.cpp:3830
+#: src/Buffer.cpp:1025 src/Buffer.cpp:3778 src/Buffer.cpp:3840
 msgid "File is read-only"
 msgstr "Dokument je jen ke ètení"
 
@@ -16751,8 +16760,8 @@ msgid "Overwrite modified file?"
 msgstr "Pøepsat modifikovaný soubor?"
 
 #: src/Buffer.cpp:1038 src/Buffer.cpp:2272 src/Exporter.cpp:50
-#: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2077
-#: src/frontends/qt4/GuiView.cpp:2266
+#: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2092
+#: src/frontends/qt4/GuiView.cpp:2281
 msgid "&Overwrite"
 msgstr "&Pøepsat"
 
@@ -16883,7 +16892,7 @@ msgstr "chktex nelze úspì¹nì spustit."
 msgid "Don't know how to export to format: %1$s"
 msgstr "Nedostatek informace pro export do formátu %1$s."
 
-#: src/Buffer.cpp:2016 src/frontends/qt4/GuiView.cpp:3095
+#: src/Buffer.cpp:2016 src/frontends/qt4/GuiView.cpp:3110
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Chyba pøi exportu do formátu %1$s."
@@ -16967,29 +16976,29 @@ msgstr "Nelze exportovat soubor"
 msgid "No information for exporting the format %1$s."
 msgstr "®ádná informace pro export formátu %1$s."
 
-#: src/Buffer.cpp:3560
+#: src/Buffer.cpp:3565
 msgid "File name error"
 msgstr "Chyba ve jménì souboru"
 
-#: src/Buffer.cpp:3561
+#: src/Buffer.cpp:3566
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Cesta k dokumentu nesmí obsahovat mezery."
 
-#: src/Buffer.cpp:3641
+#: src/Buffer.cpp:3651
 msgid "Document export cancelled."
 msgstr "Export dokumentu zru¹en."
 
-#: src/Buffer.cpp:3651
+#: src/Buffer.cpp:3661
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument exportován jako %1$s do souboru `%2$s'"
 
-#: src/Buffer.cpp:3657
+#: src/Buffer.cpp:3667
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument exportován jako %1$s"
 
-#: src/Buffer.cpp:3754
+#: src/Buffer.cpp:3764
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17000,19 +17009,19 @@ msgstr ""
 "\n"
 "Obnovit z nouzového ulo¾ení ?"
 
-#: src/Buffer.cpp:3757
+#: src/Buffer.cpp:3767
 msgid "Load emergency save?"
 msgstr "Naèíst nouzové ulo¾ení ?"
 
-#: src/Buffer.cpp:3758
+#: src/Buffer.cpp:3768
 msgid "&Recover"
 msgstr "&Obnovit"
 
-#: src/Buffer.cpp:3758
+#: src/Buffer.cpp:3768
 msgid "&Load Original"
 msgstr "&Naèíst pùvodní"
 
-#: src/Buffer.cpp:3769
+#: src/Buffer.cpp:3779
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -17022,15 +17031,15 @@ msgstr ""
 "má nastaveny atributy pouze pro ètení. Ujistìte se prosím, ¾e jste ulo¾ili "
 "tento dokument jako odli¹ný soubor."
 
-#: src/Buffer.cpp:3775
+#: src/Buffer.cpp:3785
 msgid "Document was successfully recovered."
 msgstr "Dokument byl úspì¹nì obnoven."
 
-#: src/Buffer.cpp:3777
+#: src/Buffer.cpp:3787
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument NEBYL úspì¹nì obnoven."
 
-#: src/Buffer.cpp:3778
+#: src/Buffer.cpp:3788
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17039,27 +17048,27 @@ msgstr ""
 "Smazat nyní soubor s nouzovým ulo¾ením ?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3782 src/Buffer.cpp:3794
+#: src/Buffer.cpp:3792 src/Buffer.cpp:3804
 msgid "Delete emergency file?"
 msgstr "Smazat nouzové ulo¾ení ?"
 
-#: src/Buffer.cpp:3783 src/Buffer.cpp:3796
+#: src/Buffer.cpp:3793 src/Buffer.cpp:3806
 msgid "&Keep"
 msgstr "&Ponechat"
 
-#: src/Buffer.cpp:3787
+#: src/Buffer.cpp:3797
 msgid "Emergency file deleted"
 msgstr "Soubor s nouzovým ulo¾ením smazán."
 
-#: src/Buffer.cpp:3788
+#: src/Buffer.cpp:3798
 msgid "Do not forget to save your file now!"
 msgstr "Nezapomeòte ulo¾it nyní vá¹ soubor!"
 
-#: src/Buffer.cpp:3795
+#: src/Buffer.cpp:3805
 msgid "Remove emergency file now?"
 msgstr "Smazat nyní soubor s nouzovým ulo¾ením ?"
 
-#: src/Buffer.cpp:3818
+#: src/Buffer.cpp:3828
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17070,19 +17079,19 @@ msgstr ""
 "\n"
 "Naèíst místo toho zálohu ?"
 
-#: src/Buffer.cpp:3820
+#: src/Buffer.cpp:3830
 msgid "Load backup?"
 msgstr "Naèíst zálohu ?"
 
-#: src/Buffer.cpp:3821
+#: src/Buffer.cpp:3831
 msgid "&Load backup"
 msgstr "&Naèíst zálohu"
 
-#: src/Buffer.cpp:3821
+#: src/Buffer.cpp:3831
 msgid "Load &original"
 msgstr "Naèíst &pùvodní"
 
-#: src/Buffer.cpp:3831
+#: src/Buffer.cpp:3841
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17092,25 +17101,25 @@ msgstr ""
 "nastaveny atributy pouze pro ètení. Ujistìte se prosím, ¾e jste ulo¾ili "
 "tento dokument jako odli¹ný soubor."
 
-#: src/Buffer.cpp:4136 src/insets/InsetCaption.cpp:338
+#: src/Buffer.cpp:4172 src/insets/InsetCaption.cpp:338
 msgid "Senseless!!! "
 msgstr "Nesmyslné! "
 
-#: src/Buffer.cpp:4257
+#: src/Buffer.cpp:4293
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s znovunaèten."
 
-#: src/Buffer.cpp:4260
+#: src/Buffer.cpp:4296
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Nelze znovunaèíst dokument %1$s"
 
-#: src/Buffer.cpp:4326
+#: src/Buffer.cpp:4362
 msgid "Included File Invalid"
 msgstr "Neplatný soubor k zahrnutí"
 
-#: src/Buffer.cpp:4327
+#: src/Buffer.cpp:4363
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17362,7 +17371,7 @@ msgstr ""
 "zmìnte prosím kódování souboru na\n"
 "UTF-8 jiným programem.\n"
 
-#: src/Changes.cpp:363 src/Paragraph.cpp:2512
+#: src/Changes.cpp:363 src/Paragraph.cpp:2514
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:300
 #: src/insets/InsetCommandParams.cpp:390 src/insets/InsetListings.cpp:183
 #: src/insets/InsetListings.cpp:191 src/insets/InsetListings.cpp:213
@@ -17370,7 +17379,7 @@ msgstr ""
 msgid "LyX Warning: "
 msgstr "Výstraha LyX-u: "
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2513 src/insets/InsetBibitem.cpp:301
+#: src/Changes.cpp:364 src/Paragraph.cpp:2515 src/insets/InsetBibitem.cpp:301
 #: src/insets/InsetCommandParams.cpp:391 src/insets/InsetListings.cpp:184
 #: src/insets/InsetListings.cpp:192 src/insets/InsetNomencl.cpp:286
 #: src/mathed/InsetMathString.cpp:162
@@ -17974,7 +17983,7 @@ msgstr "Èíslo %1$s"
 msgid "Cannot view file"
 msgstr "Soubor nelze prohlí¾et"
 
-#: src/Format.cpp:268 src/Format.cpp:334 src/frontends/qt4/GuiView.cpp:2891
+#: src/Format.cpp:268 src/Format.cpp:334 src/frontends/qt4/GuiView.cpp:2906
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Soubor neexistuje: %1$s"
@@ -18007,11 +18016,11 @@ msgstr "®ádná informace pro editaci %1$s"
 msgid "Auto-edit file %1$s failed"
 msgstr "Automatická editace souboru %1$s selhala"
 
-#: src/KeyMap.cpp:220 src/KeyMap.cpp:235
+#: src/KeyMap.cpp:227 src/KeyMap.cpp:242
 msgid "Could not find bind file"
 msgstr "Nelze nalézt soubor klávesových zkratek"
 
-#: src/KeyMap.cpp:221
+#: src/KeyMap.cpp:228
 #, c-format
 msgid ""
 "Unable to find the bind file\n"
@@ -18022,11 +18031,11 @@ msgstr ""
 "%1$s.\n"
 "Zkontrolujte prosím va¹i instalaci."
 
-#: src/KeyMap.cpp:228
+#: src/KeyMap.cpp:235
 msgid "Could not find `cua.bind' file"
 msgstr "Nelze nalézt soubor `cua.bind'"
 
-#: src/KeyMap.cpp:229
+#: src/KeyMap.cpp:236
 msgid ""
 "Unable to find the default bind file `cua.bind'.\n"
 "Please check your installation."
@@ -18034,7 +18043,7 @@ msgstr ""
 "LyX nena¹el standardní soubor klávesových zkratek `cua.bind'.\n"
 "Zkontrolujte prosím va¹i instalaci."
 
-#: src/KeyMap.cpp:236
+#: src/KeyMap.cpp:243
 #, c-format
 msgid ""
 "Unable to find the bind file\n"
@@ -18045,24 +18054,24 @@ msgstr ""
 "%1$s.\n"
 "Bude pou¾ito standardní nastavení."
 
-#: src/KeySequence.cpp:166
+#: src/KeySequence.cpp:182
 msgid "   options: "
 msgstr "   volby: "
 
-#: src/LaTeX.cpp:57
+#: src/LaTeX.cpp:58
 #, c-format
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "Èekání na bìh LaTeX-u èíslo %1$d"
 
-#: src/LaTeX.cpp:264 src/LaTeX.cpp:367
+#: src/LaTeX.cpp:266 src/LaTeX.cpp:369
 msgid "Running Index Processor."
 msgstr "Spou¹tím generátor rejstøíku."
 
-#: src/LaTeX.cpp:290 src/LaTeX.cpp:350
+#: src/LaTeX.cpp:292 src/LaTeX.cpp:352
 msgid "Running BibTeX."
 msgstr "Spou¹tím BibTeX."
 
-#: src/LaTeX.cpp:458
+#: src/LaTeX.cpp:460
 msgid "Running MakeIndex for nomencl."
 msgstr "Spou¹tím MakeIndex pro nomencl."
 
@@ -18159,11 +18168,12 @@ msgstr ""
 "Sbohem."
 
 #: src/LyX.cpp:669
+#, fuzzy
 msgid ""
 "SIGSEGV signal caught!\n"
 "Sorry, you have found a bug in LyX, hope you have not lost any data.\n"
 "Please read the bug-reporting instructions in 'Help->Introduction' and send "
-"us a bug report, if necessary. Thanks !\n"
+"us a bug report, if necessary. Thanks!\n"
 "Bye."
 msgstr ""
 "Zachycen signál SIGSEGV!\n"
@@ -18174,7 +18184,7 @@ msgstr ""
 msgid "LyX crashed!"
 msgstr "LyX zhavaroval!"
 
-#: src/LyX.cpp:719 src/frontends/qt4/GuiView.cpp:963
+#: src/LyX.cpp:719 src/frontends/qt4/GuiView.cpp:967
 msgid "LyX: "
 msgstr "LyX: "
 
@@ -18347,19 +18357,19 @@ msgstr "Chybí typ souboru [napø. latex, ps...] za pøepínaèem --import"
 msgid "Missing filename for --import"
 msgstr "Chybí jméno souboru za pøepínaèem --import"
 
-#: src/LyXRC.cpp:3004
+#: src/LyXRC.cpp:3021
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr "Pova¾ovat slo¾eniny typu \"kafemlejnek\" za legální slova ?"
 
-#: src/LyXRC.cpp:3008
+#: src/LyXRC.cpp:3025
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr "Nastavit alternativní jazyk. Standardnì se pou¾ívá jazyk dokumentu."
 
-#: src/LyXRC.cpp:3016
+#: src/LyXRC.cpp:3033
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -18367,7 +18377,7 @@ msgstr ""
 "Zru¹te volbu, pokud nechcete automaticky pøepisovat oznaèený text tím, co "
 "zrovna pí¹ete na klávesnici."
 
-#: src/LyXRC.cpp:3020
+#: src/LyXRC.cpp:3037
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -18375,14 +18385,14 @@ msgstr ""
 "Zru¹te volbu, pokud nechcete automatické standardní nastavení pro novì "
 "zvolenou tøídu."
 
-#: src/LyXRC.cpp:3024
+#: src/LyXRC.cpp:3041
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Èasový interval pro automatické ukládání (v sekundách).0 vypne automatické "
 "ukládání."
 
-#: src/LyXRC.cpp:3031
+#: src/LyXRC.cpp:3048
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -18390,7 +18400,7 @@ msgstr ""
 "Cesta pro zálo¾ní soubory. V pøípadì prázdného øetìzce LyX ulo¾í zálohy do "
 "stejného adresáøe, ve kterém je originální soubor."
 
-#: src/LyXRC.cpp:3035
+#: src/LyXRC.cpp:3052
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
@@ -18398,11 +18408,11 @@ msgstr ""
 "Zvolte nastavení pro bibtex (viz man bibtex) nebo zvolte alternativní "
 "pøkladaè (napø. mlbibtex or bibulus)."
 
-#: src/LyXRC.cpp:3039
+#: src/LyXRC.cpp:3056
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
 msgstr "Definuje volby pro program bibtex v PLaTeX-u (Japonský LaTeX)."
 
-#: src/LyXRC.cpp:3043
+#: src/LyXRC.cpp:3060
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -18410,11 +18420,11 @@ msgstr ""
 "Soubor klávesových zkratek. Lze nastavit absolutní cestu; jinak bude LyX "
 "hledat v jeho lokálních a globálních adresáøích bind/ ."
 
-#: src/LyXRC.cpp:3047
+#: src/LyXRC.cpp:3064
 msgid "Select to check whether the lastfiles still exist."
 msgstr "Kontrolovat existenci naposledy otevøených souborù."
 
-#: src/LyXRC.cpp:3051
+#: src/LyXRC.cpp:3068
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -18422,7 +18432,7 @@ msgstr ""
 "Nastavte zpùsob spu¹tìní chktex-u. Napø. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -"
 "n25 -n30 -n38\" Viz dokumentace ChkTeX-u."
 
-#: src/LyXRC.cpp:3061
+#: src/LyXRC.cpp:3078
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -18430,7 +18440,7 @@ msgstr ""
 "LyX za normální situace nemìní pozici kurzoru pøi pohybu posuvníkem. "
 "Nastavte true pokud chcete mít kurzor v¾dy na obrazovce."
 
-#: src/LyXRC.cpp:3065
+#: src/LyXRC.cpp:3082
 msgid ""
 "LyX normally doesn't allow the user to scroll further than the bottom of the "
 "document. Set to true if you prefer to scroll the bottom of the document to "
@@ -18440,16 +18450,16 @@ msgstr ""
 "spodek dokumentu. Nastavte true pokud chcete rolovat spodek dokumentu a¾ do "
 "horní èásti obrazovky."
 
-#: src/LyXRC.cpp:3069
+#: src/LyXRC.cpp:3086
 msgid "Make Apple key act as Meta and Control key as Ctrl."
 msgstr ""
 "Nastavte pro zmìnu kláves na Applu: Apple key -> Meta, Control -> Ctrl."
 
-#: src/LyXRC.cpp:3073
+#: src/LyXRC.cpp:3090
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
 msgstr "Pou¾ít konvence Mac OS X pro pohyb kurzoru po slovech"
 
-#: src/LyXRC.cpp:3077
+#: src/LyXRC.cpp:3094
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
@@ -18457,7 +18467,7 @@ msgstr ""
 "Zobrazit malý rámeèek kolem mat. makra spoleènì se jménem makra v pøípadì, "
 "¾e je kurzor uvnitø."
 
-#: src/LyXRC.cpp:3082
+#: src/LyXRC.cpp:3099
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -18466,7 +18476,7 @@ msgstr ""
 "Akceptován standardní strftime formát; detaily viz man strftime. Napø.\"%A, "
 "%e. %B %Y\"."
 
-#: src/LyXRC.cpp:3086
+#: src/LyXRC.cpp:3103
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
 "look in its global and local commands/ directories."
@@ -18474,19 +18484,19 @@ msgstr ""
 "Soubor definic pøíkazù. Lze buïto zadat absolutní cestu; jinak bude LyX "
 "hledat v jeho lokálních a globálních adresáøích command/ ."
 
-#: src/LyXRC.cpp:3090
+#: src/LyXRC.cpp:3107
 msgid "The default format used with LFUN_BUFFER_[VIEW|UPDATE]."
 msgstr "Standardní formát pou¾ívaný funkcí LFUN_BUFFER_[VIEW|UPDATE]."
 
-#: src/LyXRC.cpp:3094
+#: src/LyXRC.cpp:3111
 msgid "New documents will be assigned this language."
 msgstr "Nové dokumenty budou mít nastaven tento jazyk."
 
-#: src/LyXRC.cpp:3098
+#: src/LyXRC.cpp:3115
 msgid "Specify the default paper size."
 msgstr "Nastavení standardní velikosti papíru."
 
-#: src/LyXRC.cpp:3102
+#: src/LyXRC.cpp:3119
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -18494,11 +18504,11 @@ msgstr ""
 "Minimalizuj dialogová okna spoleènì s hlavním oknem LyX-u. (Vztahuje se "
 "pouze na dialogy zobrazené po zmìnì nastavení.)"
 
-#: src/LyXRC.cpp:3106
+#: src/LyXRC.cpp:3123
 msgid "Select how LyX will display any graphics."
 msgstr "Nastavení zpùsobu zobrazení obrázkù v LyX-u."
 
-#: src/LyXRC.cpp:3110
+#: src/LyXRC.cpp:3127
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -18506,11 +18516,11 @@ msgstr ""
 "Standardní cesta pro va¹e dokumenty. V pøípadì prázdného øetìzce LyX vybere "
 "adresáø, ze kterého byl spou¹tìn."
 
-#: src/LyXRC.cpp:3114
+#: src/LyXRC.cpp:3131
 msgid "Specify additional chars that can be part of a word."
 msgstr "Urèení dodateèných znakù, které mohou být souèástí slova."
 
-#: src/LyXRC.cpp:3118
+#: src/LyXRC.cpp:3135
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
@@ -18518,7 +18528,7 @@ msgstr ""
 "Cesta kterou LyX nastaví pøi výbìru pøíkladù. Prázdný øetìzec zpùsobí výbìr "
 "adresáøe, ze kterého byl LyX spu¹tìn."
 
-#: src/LyXRC.cpp:3122
+#: src/LyXRC.cpp:3139
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -18526,7 +18536,11 @@ msgstr ""
 "Kódování fontu který je pou¾íván balíèkem fontenc LaTeX2e. T1 je velmi "
 "doporuèen pro neanglické jazyky."
 
-#: src/LyXRC.cpp:3129
+#: src/LyXRC.cpp:3143
+msgid "Disable any kerning and ligatures for text drawing on screen."
+msgstr ""
+
+#: src/LyXRC.cpp:3150
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
@@ -18536,11 +18550,11 @@ msgstr ""
 "kompilátor - napø. za pou¾ití xindy/make-rules by pøíkaz vypadal \"makeindex."
 "sh -m $$lang\"."
 
-#: src/LyXRC.cpp:3133
+#: src/LyXRC.cpp:3154
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
 msgstr "Definuje volby programu pro rejstøík PLaTeX-u (Japonský LaTeX)."
 
-#: src/LyXRC.cpp:3137
+#: src/LyXRC.cpp:3158
 msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
@@ -18548,7 +18562,7 @@ msgstr ""
 "Definuje volby programu makeindex pou¾ívané pro nomenklatury. Ty se mohou "
 "li¹it od voleb pro generování rejstøíku."
 
-#: src/LyXRC.cpp:3146
+#: src/LyXRC.cpp:3167
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -18556,7 +18570,7 @@ msgstr ""
 "Pou¾ijte k nastavení souboru mapy kláves pro va¹i klávesnici. To lze napø. "
 "vyu¾ít v pøípadì, ¾e chcete psát dokumnety v èe¹tinì na anglické klávesnici."
 
-#: src/LyXRC.cpp:3150
+#: src/LyXRC.cpp:3171
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
@@ -18564,14 +18578,14 @@ msgstr ""
 "Vyberte v pøípadì, ¾e je tøeba pou¾ívat pøíkaz pro zmìnu jazyka na zaèátku "
 "dokumentu."
 
-#: src/LyXRC.cpp:3154
+#: src/LyXRC.cpp:3175
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr ""
 "Vyberte v pøípadì, ¾e je tøeba pou¾ívat pøíkaz pro zmìnu jazyka na konci "
 "dokumentu."
 
-#: src/LyXRC.cpp:3158
+#: src/LyXRC.cpp:3179
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -18580,15 +18594,15 @@ msgstr ""
 "Pøíkaz LaTeX-u, který pøepne z jazyka dokumentu na jiný jazyk. Napø. "
 "\\selectlanguage{$$lang} kde $$lang je jméno druhého jazyka."
 
-#: src/LyXRC.cpp:3162
+#: src/LyXRC.cpp:3183
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "Pøíkaz LaTeX-u, který pøepne zpìt na jazyk dokumentu."
 
-#: src/LyXRC.cpp:3166
+#: src/LyXRC.cpp:3187
 msgid "The LaTeX command for local changing of the language."
 msgstr "Pøíkaz LaTeX-u pro lokální zmìnu jazyka."
 
-#: src/LyXRC.cpp:3170
+#: src/LyXRC.cpp:3191
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
@@ -18596,7 +18610,7 @@ msgstr ""
 "Zru¹te volbu, nechcete-li pou¾ít jazyk(y) jako¾to parametr pro "
 "\\documentclass."
 
-#: src/LyXRC.cpp:3174
+#: src/LyXRC.cpp:3195
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -18604,7 +18618,7 @@ msgstr ""
 "Pøíkaz LaTeX-u pro naètení jazykového balíèku. Napø. \"\\usepackage{babel}\","
 "\"\\usepackage{omega}\"."
 
-#: src/LyXRC.cpp:3178
+#: src/LyXRC.cpp:3199
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -18612,21 +18626,21 @@ msgstr ""
 "Zru¹te volbu, nechcete-li pou¾ívat babel v pøípadì standardního nastavení "
 "jazyka dokumentu."
 
-#: src/LyXRC.cpp:3182
+#: src/LyXRC.cpp:3203
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr ""
 "Zru¹te volbu, nechcete-li aby LyX nastavoval kurzor na ulo¾enou pozici."
 
-#: src/LyXRC.cpp:3186
+#: src/LyXRC.cpp:3207
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 "Zru¹te volbu, pokud nechcete naèítat soubory otevøené v poslední relaci."
 
-#: src/LyXRC.cpp:3190
+#: src/LyXRC.cpp:3211
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "Zru¹te volbu, nechcete-li vytváøet zálo¾ní kopie souborù."
 
-#: src/LyXRC.cpp:3194
+#: src/LyXRC.cpp:3215
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -18634,60 +18648,60 @@ msgstr ""
 "Zvolte pro kontrolu zvýraznìní slov napsaných jazykem odli¹ným od "
 "standardního jazyka dokumentu."
 
-#: src/LyXRC.cpp:3198
+#: src/LyXRC.cpp:3219
 msgid "The scrolling speed of the mouse wheel."
 msgstr "Rychlost koleèka my¹i."
 
-#: src/LyXRC.cpp:3203
+#: src/LyXRC.cpp:3224
 msgid "The completion popup delay."
 msgstr "Prodleva pro doplnìní vyskakovacím menu"
 
-#: src/LyXRC.cpp:3207
+#: src/LyXRC.cpp:3228
 msgid "Select to display the completion popup in math mode."
 msgstr "Zvolit pro zobrazení vyskakovacího menu uvnitø mat. vzorcù"
 
-#: src/LyXRC.cpp:3211
+#: src/LyXRC.cpp:3232
 msgid "Select to display the completion popup in text mode."
 msgstr "Zvolit pro zobrazení vyskakovacího menu v textovém re¾imu"
 
-#: src/LyXRC.cpp:3215
+#: src/LyXRC.cpp:3236
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr "Pøi nejednoznaènosti zobrazit vyskakovací menu bez prodlevy."
 
-#: src/LyXRC.cpp:3219
+#: src/LyXRC.cpp:3240
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
 msgstr "Zobrazit malý trojúhelník za kurzorem pokud je doplnìní mo¾né."
 
-#: src/LyXRC.cpp:3223
+#: src/LyXRC.cpp:3244
 msgid "The inline completion delay."
 msgstr "Prodleva pro øádkové doplnìní."
 
-#: src/LyXRC.cpp:3227
+#: src/LyXRC.cpp:3248
 msgid "Select to display the inline completion in math mode."
 msgstr "Zvolit pro zobrazení øádkového doplnìní v matematickém módu."
 
-#: src/LyXRC.cpp:3231
+#: src/LyXRC.cpp:3252
 msgid "Select to display the inline completion in text mode."
 msgstr "Zvolit pro zobrazení øádkového doplnìní v textovém módu."
 
-#: src/LyXRC.cpp:3235
+#: src/LyXRC.cpp:3256
 msgid "Use \"...\" to shorten long completions."
 msgstr "Pou¾ít \"...\" pro zkrácení dlouhých doplnìní."
 
-#: src/LyXRC.cpp:3239
+#: src/LyXRC.cpp:3260
 msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
 msgstr "Povolit zkratku TeXMacs-u, jako napø. konverzi z => na \\Rightarrow."
 
-#: src/LyXRC.cpp:3243
+#: src/LyXRC.cpp:3264
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 "Maximální poèet souborù v historii. V menu se mù¾e objevit a¾ %1$d souborù."
 
-#: src/LyXRC.cpp:3248
+#: src/LyXRC.cpp:3269
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
@@ -18695,27 +18709,27 @@ msgstr ""
 "Urèete adresáøe, které by mìly být pøidány do promìnné prostøedí PATH pøed "
 "ostatní adresáøe. Pou¾ijte formát vlastní danému operaènímu systému."
 
-#: src/LyXRC.cpp:3254
+#: src/LyXRC.cpp:3275
 msgid "Shows a typeset preview of things such as math"
 msgstr "Zobrazovat náhled na vysázený text typu matematiky apod."
 
-#: src/LyXRC.cpp:3258
+#: src/LyXRC.cpp:3279
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr "Rovnice v náhledu budou oznaèeny pomocí \"(#)\" místo oèíslování."
 
-#: src/LyXRC.cpp:3262
+#: src/LyXRC.cpp:3283
 msgid "Scale the preview size to suit."
 msgstr "Nastavte mìøítko pro náhled."
 
-#: src/LyXRC.cpp:3266
+#: src/LyXRC.cpp:3287
 msgid "The option for specifying whether the copies should be collated."
 msgstr "Volba urèující, zda-li mají být kopie srovnány za sebou."
 
-#: src/LyXRC.cpp:3270
+#: src/LyXRC.cpp:3291
 msgid "The option for specifying the number of copies to print."
 msgstr "Volba urèující poèet kopií pro tisk."
 
-#: src/LyXRC.cpp:3274
+#: src/LyXRC.cpp:3295
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -18723,11 +18737,11 @@ msgstr ""
 "Standardní tiskárna pro tisk. Pokud neurèena, LyX pou¾ije promìnnou "
 "prostøedí PRINTER."
 
-#: src/LyXRC.cpp:3278
+#: src/LyXRC.cpp:3299
 msgid "The option to print only even pages."
 msgstr "Volba pro tisk pouze sudých stran."
 
-#: src/LyXRC.cpp:3282
+#: src/LyXRC.cpp:3303
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -18735,35 +18749,35 @@ msgstr ""
 "Volby navíc, které dostane program pro tisk za ostatními volbami, leè pøed "
 "jménem DVI souboru k tisku."
 
-#: src/LyXRC.cpp:3286
+#: src/LyXRC.cpp:3307
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "Pøípona výstupního tiskového souboru. Obvykle \".ps\"."
 
-#: src/LyXRC.cpp:3290
+#: src/LyXRC.cpp:3311
 msgid "The option to print out in landscape."
 msgstr "Volba pro tisk na ¹íøku"
 
-#: src/LyXRC.cpp:3294
+#: src/LyXRC.cpp:3315
 msgid "The option to print only odd pages."
 msgstr "Volba pro tisk pouze lichých stran."
 
-#: src/LyXRC.cpp:3298
+#: src/LyXRC.cpp:3319
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr "Volba urèující èárkami oddìlený seznam stránek k tisku."
 
-#: src/LyXRC.cpp:3302
+#: src/LyXRC.cpp:3323
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Volba urèující velikost papíru."
 
-#: src/LyXRC.cpp:3306
+#: src/LyXRC.cpp:3327
 msgid "The option to specify paper type."
 msgstr "Volba uèující typ papíru."
 
-#: src/LyXRC.cpp:3310
+#: src/LyXRC.cpp:3331
 msgid "The option to reverse the order of the pages printed."
 msgstr "Volba pro tisk stránek v opaèném poøadí"
 
-#: src/LyXRC.cpp:3314
+#: src/LyXRC.cpp:3335
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -18773,7 +18787,7 @@ msgstr ""
 "oddìlenì zavolá tiskový \"spool\" program, který dostane jako argumenty "
 "jméno souboru a v¹echny volby."
 
-#: src/LyXRC.cpp:3318
+#: src/LyXRC.cpp:3339
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -18781,30 +18795,30 @@ msgstr ""
 "Pokud urèíte jméno tiskárny v dialogovém oknì tisku, bude tento argument "
 "pøedøazen jménu tiskárny za pøíkazem \"spool\"-u."
 
-#: src/LyXRC.cpp:3322
+#: src/LyXRC.cpp:3343
 msgid "Option to pass to the print program to print to a file."
 msgstr "Volba pro tiskový program, je¾ nastavuje tisk do souboru."
 
-#: src/LyXRC.cpp:3326
+#: src/LyXRC.cpp:3347
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr "Volba pro tiskový program, je¾ nastavuje urèitou tiskárnu."
 
-#: src/LyXRC.cpp:3330
+#: src/LyXRC.cpp:3351
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr "Zvolte, pokud má LyX pøedávat jméno tiskárny tiskovému programu."
 
-#: src/LyXRC.cpp:3334
+#: src/LyXRC.cpp:3355
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Zvolte tiskový program, napø. \"dvips\", \"dvilj4\"."
 
-#: src/LyXRC.cpp:3342
+#: src/LyXRC.cpp:3363
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr "Vyberte pro visuální/logický pohyb kurzoru v dvojsmìrném módu (bidi)"
 
-#: src/LyXRC.cpp:3346
+#: src/LyXRC.cpp:3367
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -18812,11 +18826,11 @@ msgstr ""
 "DPI (poèet bodù na palec) va¹eho monitoru je automaticky detekováno LyX-em. "
 "Pøi selhání nastavte vlastní hodnotu."
 
-#: src/LyXRC.cpp:3352
+#: src/LyXRC.cpp:3373
 msgid "The screen fonts used to display the text while editing."
 msgstr "Fonty pou¾ívané k zobrazení editovaného textu na obrazovce."
 
-#: src/LyXRC.cpp:3361
+#: src/LyXRC.cpp:3382
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -18827,11 +18841,11 @@ msgstr ""
 "je tato volba vypnuta pou¾ije LyX nejbli¾¹í dostupnou velikostbitmapového "
 "fontu."
 
-#: src/LyXRC.cpp:3365
+#: src/LyXRC.cpp:3386
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr "Velikosti fontu pou¾ívané pøi výpoètech zmìny mìøítka na obrazovce."
 
-#: src/LyXRC.cpp:3370
+#: src/LyXRC.cpp:3391
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -18840,11 +18854,11 @@ msgstr ""
 "Zvìt¹ení fontù na obrazovce. Nastavení 100% hrubì odpovídá jejich "
 "velikostina papíru."
 
-#: src/LyXRC.cpp:3374
+#: src/LyXRC.cpp:3395
 msgid "Allow session manager to save and restore windows geometry."
 msgstr "Povolit ukládání a znovu-nastavení pozice okna."
 
-#: src/LyXRC.cpp:3378
+#: src/LyXRC.cpp:3399
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -18852,22 +18866,22 @@ msgstr ""
 "Spustit lyxserver. Roury (pipe) dostanou pøíponu \".in\" a \".out\". Jen pro "
 "pokroèilé u¾ivatele."
 
-#: src/LyXRC.cpp:3385
+#: src/LyXRC.cpp:3406
 msgid "De-select if you don't want the startup banner."
 msgstr "Zru¹te volbu, pokud nechcete zobrazovat úvodní obrazovku."
 
-#: src/LyXRC.cpp:3389
+#: src/LyXRC.cpp:3410
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
 msgstr ""
 "LyX umístí pomocné adresáøe do této cesty. Pøi ukonèení LyX-u budou smazány."
 
-#: src/LyXRC.cpp:3393
+#: src/LyXRC.cpp:3414
 msgid "This is the place where the files of the thesaurus library reside."
 msgstr "Zde jsou umístìné soubory pro knihovnu tezauru."
 
-#: src/LyXRC.cpp:3397
+#: src/LyXRC.cpp:3418
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -18875,7 +18889,7 @@ msgstr ""
 "Cesta kterou LyX nabídne pøi výbìru ¹ablony. Prázdný øetìzec zpùsobí výbìr "
 "adresáøe, ze kterého byl LyX spu¹tìn."
 
-#: src/LyXRC.cpp:3407
+#: src/LyXRC.cpp:3428
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -18883,24 +18897,24 @@ msgstr ""
 "Soubor u¾ivatelského rozhraní (UI). Lze zadat absolutní cestu; jinak bude "
 "LyX hledat v jeho lokálních a globálních adresáøích ui/ ."
 
-#: src/LyXRC.cpp:3417
+#: src/LyXRC.cpp:3438
 msgid ""
 "Enable use the system colors for some things like main window background and "
 "selection."
 msgstr "Pou¾ít systémové barvy pro pozadí hlavního okna, výbìr apod."
 
-#: src/LyXRC.cpp:3421
+#: src/LyXRC.cpp:3442
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr "Zapíná automatické zobrazování bublinové nápovìdy na pracovní plo¹e."
 
-#: src/LyXRC.cpp:3425
+#: src/LyXRC.cpp:3446
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 "Zapnout vyrovnávací pamì» pro pixmap, která mù¾e zlep¹it výkonnost na Mac-u "
 "a Windows."
 
-#: src/LyXRC.cpp:3429
+#: src/LyXRC.cpp:3450
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Urèete volbu nastavující papír v prohlí¾eèi DVI(nechte prázdné nebo pou¾ijte "
@@ -18939,7 +18953,7 @@ msgstr "(bez poèáteèního popisku)"
 msgid "(no log message)"
 msgstr "(no log message)"
 
-#: src/LyXVC.cpp:170 src/frontends/qt4/GuiView.cpp:2749
+#: src/LyXVC.cpp:170 src/frontends/qt4/GuiView.cpp:2764
 msgid "LyX VC: Log Message"
 msgstr "LyX SV: Zpráva Log-u"
 
@@ -18959,19 +18973,19 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Návrat k ulo¾ené verzi dokumentu ?"
 
-#: src/LyXVC.cpp:222 src/frontends/qt4/GuiView.cpp:3240
+#: src/LyXVC.cpp:222 src/frontends/qt4/GuiView.cpp:3255
 msgid "&Revert"
 msgstr "&Pùvodní verze"
 
-#: src/Paragraph.cpp:1951
+#: src/Paragraph.cpp:1953
 msgid "Senseless with this layout!"
 msgstr "Nesmyslné v tomto rozvr¾ení !"
 
-#: src/Paragraph.cpp:2013
+#: src/Paragraph.cpp:2015
 msgid "Alignment not permitted"
 msgstr "Zarovnání nepovoleno"
 
-#: src/Paragraph.cpp:2014
+#: src/Paragraph.cpp:2016
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -18979,11 +18993,11 @@ msgstr ""
 "Nové rozvr¾ení nepovoluje pou¾ívané zarovnání.\n"
 "Pøepnuto na standardní."
 
-#: src/Paragraph.cpp:3070
+#: src/Paragraph.cpp:3072
 msgid "Memory problem"
 msgstr "Interní chyba"
 
-#: src/Paragraph.cpp:3070
+#: src/Paragraph.cpp:3072
 msgid "Paragraph not properly initialized"
 msgstr "Odstavec není správnì inicializován"
 
@@ -19192,7 +19206,7 @@ msgstr "Chyba pøi ètení modulu %1$s\n"
 #: src/VCBackend.cpp:746 src/VCBackend.cpp:807 src/VCBackend.cpp:868
 #: src/VCBackend.cpp:876 src/VCBackend.cpp:1084 src/VCBackend.cpp:1177
 #: src/VCBackend.cpp:1183 src/VCBackend.cpp:1204
-#: src/frontends/qt4/GuiView.cpp:2711
+#: src/frontends/qt4/GuiView.cpp:2726
 msgid "Revision control error."
 msgstr "Chyba správy verzí."
 
@@ -19389,12 +19403,12 @@ msgstr ""
 "Pokraèovat?"
 
 #: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
-#: src/frontends/qt4/FindAndReplace.cpp:348
+#: src/frontends/qt4/FindAndReplace.cpp:351
 msgid "&Yes"
 msgstr "&Ano"
 
 #: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
-#: src/frontends/qt4/FindAndReplace.cpp:348
+#: src/frontends/qt4/FindAndReplace.cpp:351
 msgid "&No"
 msgstr "&Ne"
 
@@ -19451,7 +19465,7 @@ msgstr ""
 msgid "Reload saved document?"
 msgstr "Znovu naèíst dokument?"
 
-#: src/buffer_funcs.cpp:76 src/frontends/qt4/GuiView.cpp:2660
+#: src/buffer_funcs.cpp:76 src/frontends/qt4/GuiView.cpp:2675
 msgid "&Reload"
 msgstr "&Znovunaèíst"
 
@@ -19564,19 +19578,19 @@ msgstr ""
 "%1$s: bylo dosa¾eno zaèátku dokumentu pøi zpìtném vyhledávání.\n"
 "Pokraèovat ve vyhledávání od konce dokumentu?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:347
+#: src/frontends/qt4/FindAndReplace.cpp:350
 msgid "Wrap search?"
 msgstr "Vyhledávat od zaèátku/konce?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:390
+#: src/frontends/qt4/FindAndReplace.cpp:395
 msgid "Nothing to search"
 msgstr "Nic k vyhledávání"
 
-#: src/frontends/qt4/FindAndReplace.cpp:430
+#: src/frontends/qt4/FindAndReplace.cpp:435
 msgid "No open document(s) in which to search"
 msgstr "®ádné otevøené dokumenty pro vyhledávání"
 
-#: src/frontends/qt4/FindAndReplace.cpp:525
+#: src/frontends/qt4/FindAndReplace.cpp:532
 msgid "Advanced Find and Replace"
 msgstr "Pokroèilé vyhledávání"
 
@@ -19651,9 +19665,9 @@ msgstr "Adresáø s knihovnami: "
 msgid "User directory: "
 msgstr "U¾ivatelský adresáø: "
 
-#: src/frontends/qt4/GuiAlert.cpp:155 src/frontends/qt4/GuiAlert.cpp:211
-#: src/frontends/qt4/GuiAlert.cpp:255 src/frontends/qt4/GuiAlert.cpp:292
-#: src/frontends/qt4/GuiAlert.cpp:333
+#: src/frontends/qt4/GuiAlert.cpp:93 src/frontends/qt4/GuiAlert.cpp:149
+#: src/frontends/qt4/GuiAlert.cpp:193 src/frontends/qt4/GuiAlert.cpp:230
+#: src/frontends/qt4/GuiAlert.cpp:271
 #, c-format
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
@@ -19756,15 +19770,15 @@ msgstr "Standardní nastavení dokumentu ulo¾eno v %1$s"
 msgid "Unable to save document defaults"
 msgstr "Nelze ulo¾it standardní nastavení dokumentu"
 
-#: src/frontends/qt4/GuiApplication.cpp:1750
+#: src/frontends/qt4/GuiApplication.cpp:1749
 msgid "Unknown function."
 msgstr "Neznámá funkce."
 
-#: src/frontends/qt4/GuiApplication.cpp:2172
+#: src/frontends/qt4/GuiApplication.cpp:2178
 msgid "The current document was closed."
 msgstr "Aktuální dokukment byl uzavøen."
 
-#: src/frontends/qt4/GuiApplication.cpp:2182
+#: src/frontends/qt4/GuiApplication.cpp:2188
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -19776,12 +19790,12 @@ msgstr ""
 "\n"
 "Vyjímka: "
 
-#: src/frontends/qt4/GuiApplication.cpp:2186
 #: src/frontends/qt4/GuiApplication.cpp:2192
+#: src/frontends/qt4/GuiApplication.cpp:2198
 msgid "Software exception Detected"
 msgstr "Detekována softwarová vyjímka"
 
-#: src/frontends/qt4/GuiApplication.cpp:2190
+#: src/frontends/qt4/GuiApplication.cpp:2196
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -19789,12 +19803,12 @@ msgstr ""
 "LyX zachytil neobvyklou vyjímku a nyní se pokusí ulo¾it v¹echny neulo¾ené "
 "dokumenty a skonèit."
 
-#: src/frontends/qt4/GuiApplication.cpp:2455
-#: src/frontends/qt4/GuiApplication.cpp:2467
+#: src/frontends/qt4/GuiApplication.cpp:2461
+#: src/frontends/qt4/GuiApplication.cpp:2473
 msgid "Could not find UI definition file"
 msgstr "Nelze pøeèíst definièní soubor u¾ivatelského rozhraní"
 
-#: src/frontends/qt4/GuiApplication.cpp:2456
+#: src/frontends/qt4/GuiApplication.cpp:2462
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -19805,11 +19819,11 @@ msgstr ""
 "%1$s\n"
 "Zkontrolujte prosím va¹i instalaci."
 
-#: src/frontends/qt4/GuiApplication.cpp:2462
+#: src/frontends/qt4/GuiApplication.cpp:2468
 msgid "Could not find default UI file"
 msgstr "Nelze nalézt standardní soubor u¾ivatelského rozhraní"
 
-#: src/frontends/qt4/GuiApplication.cpp:2463
+#: src/frontends/qt4/GuiApplication.cpp:2469
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -19817,7 +19831,7 @@ msgstr ""
 "LyX nena¹el standardní soubor u¾ivatelského rozhraní (.ui)!\n"
 "Zkontrolujte prosím va¹i instalaci."
 
-#: src/frontends/qt4/GuiApplication.cpp:2468
+#: src/frontends/qt4/GuiApplication.cpp:2474
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -19840,9 +19854,9 @@ msgstr "Bibliografie BibTeX-u"
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
 #: src/frontends/qt4/GuiDocument.cpp:1843
 #: src/frontends/qt4/GuiExternal.cpp:639 src/frontends/qt4/GuiGraphics.cpp:799
-#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1828
-#: src/frontends/qt4/GuiView.cpp:1886 src/frontends/qt4/GuiView.cpp:2027
-#: src/frontends/qt4/GuiView.cpp:2149 src/frontends/qt4/GuiView.cpp:2235
+#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1843
+#: src/frontends/qt4/GuiView.cpp:1901 src/frontends/qt4/GuiView.cpp:2042
+#: src/frontends/qt4/GuiView.cpp:2164 src/frontends/qt4/GuiView.cpp:2250
 msgid "Documents|#o#O"
 msgstr "Dokumenty|#o#O"
 
@@ -20090,10 +20104,10 @@ msgstr "%1$s souborù"
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Zvolte jméno souboru pro ulo¾ení vkládaného obrázku"
 
-#: src/frontends/qt4/GuiClipboard.cpp:210 src/frontends/qt4/GuiView.cpp:1905
-#: src/frontends/qt4/GuiView.cpp:2047 src/frontends/qt4/GuiView.cpp:2063
-#: src/frontends/qt4/GuiView.cpp:2080 src/frontends/qt4/GuiView.cpp:2166
-#: src/frontends/qt4/GuiView.cpp:2211
+#: src/frontends/qt4/GuiClipboard.cpp:210 src/frontends/qt4/GuiView.cpp:1920
+#: src/frontends/qt4/GuiView.cpp:2062 src/frontends/qt4/GuiView.cpp:2078
+#: src/frontends/qt4/GuiView.cpp:2095 src/frontends/qt4/GuiView.cpp:2181
+#: src/frontends/qt4/GuiView.cpp:2226
 msgid "Canceled."
 msgstr "Zru¹eno."
 
@@ -20122,9 +20136,9 @@ msgstr "Porovnat soubory LyX-u"
 msgid "Select document"
 msgstr "Vybrat dokument"
 
-#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:1832
-#: src/frontends/qt4/GuiView.cpp:1890 src/frontends/qt4/GuiView.cpp:2155
-#: src/frontends/qt4/GuiView.cpp:2243
+#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:1847
+#: src/frontends/qt4/GuiView.cpp:1905 src/frontends/qt4/GuiView.cpp:2170
+#: src/frontends/qt4/GuiView.cpp:2258
 msgid "LyX Documents (*.lyx)"
 msgstr "Dokumenty LyX-u (*.lyx)"
 
@@ -20737,7 +20751,7 @@ msgstr "pLaTeX"
 msgid "Error List"
 msgstr "Výpis chyb"
 
-#: src/frontends/qt4/GuiErrorList.cpp:141
+#: src/frontends/qt4/GuiErrorList.cpp:142
 #, c-format
 msgid "%1$s Errors (%2$s)"
 msgstr "%1$s chyby (%2$s)"
@@ -21018,19 +21032,19 @@ msgstr "dokument"
 msgid "lyxinfo"
 msgstr "lyxinfo"
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:707
+#: src/frontends/qt4/GuiKeySymbol.cpp:709
 msgid "Shift-"
 msgstr "Shift-"
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:708
+#: src/frontends/qt4/GuiKeySymbol.cpp:710
 msgid "Control-"
 msgstr "Control-"
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:709
+#: src/frontends/qt4/GuiKeySymbol.cpp:711
 msgid "Option-"
 msgstr "Option-"
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:710
+#: src/frontends/qt4/GuiKeySymbol.cpp:712
 msgid "Command-"
 msgstr "Command-"
 
@@ -21837,91 +21851,91 @@ msgstr "verze "
 msgid "unknown version"
 msgstr "neznámá verze"
 
-#: src/frontends/qt4/GuiView.cpp:256
+#: src/frontends/qt4/GuiView.cpp:255
 msgid "Small-sized icons"
 msgstr "Malé ikony"
 
-#: src/frontends/qt4/GuiView.cpp:263
+#: src/frontends/qt4/GuiView.cpp:262
 msgid "Normal-sized icons"
 msgstr "Normální ikony"
 
-#: src/frontends/qt4/GuiView.cpp:270
+#: src/frontends/qt4/GuiView.cpp:269
 msgid "Big-sized icons"
 msgstr "Velké ikony"
 
-#: src/frontends/qt4/GuiView.cpp:797
+#: src/frontends/qt4/GuiView.cpp:801
 msgid "Exit LyX"
 msgstr "Ukonèit LyX"
 
-#: src/frontends/qt4/GuiView.cpp:798
+#: src/frontends/qt4/GuiView.cpp:802
 msgid "LyX could not be closed because documents are being processed by LyX."
 msgstr "LyX nelze ukonèit, proto¾e nìkteré dokumenty jsou právì zpracovávány."
 
-#: src/frontends/qt4/GuiView.cpp:1044
+#: src/frontends/qt4/GuiView.cpp:1048
 msgid "Welcome to LyX!"
 msgstr "Vítejte v LyXu!"
 
-#: src/frontends/qt4/GuiView.cpp:1503
+#: src/frontends/qt4/GuiView.cpp:1518
 msgid "Automatic save done."
 msgstr "Provedeno automatické ulo¾ení"
 
-#: src/frontends/qt4/GuiView.cpp:1504
+#: src/frontends/qt4/GuiView.cpp:1519
 msgid "Automatic save failed!"
 msgstr "Automatické ulo¾ení selhalo!"
 
-#: src/frontends/qt4/GuiView.cpp:1550
+#: src/frontends/qt4/GuiView.cpp:1565
 msgid "Command not allowed without any document open"
 msgstr "Pøíkaz není povolen bez otevøeného dokumentu"
 
-#: src/frontends/qt4/GuiView.cpp:1652
+#: src/frontends/qt4/GuiView.cpp:1667
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Neznámý panel nástrojù \"%1$s\""
 
-#: src/frontends/qt4/GuiView.cpp:1827
+#: src/frontends/qt4/GuiView.cpp:1842
 msgid "Select template file"
 msgstr "Vybrat soubor se ¹ablonou"
 
-#: src/frontends/qt4/GuiView.cpp:1829 src/frontends/qt4/GuiView.cpp:2236
+#: src/frontends/qt4/GuiView.cpp:1844 src/frontends/qt4/GuiView.cpp:2251
 msgid "Templates|#T#t"
 msgstr "©ablony|#A#a"
 
-#: src/frontends/qt4/GuiView.cpp:1855
+#: src/frontends/qt4/GuiView.cpp:1870
 msgid "Document not loaded."
 msgstr "Dokument nenaèten"
 
-#: src/frontends/qt4/GuiView.cpp:1885
+#: src/frontends/qt4/GuiView.cpp:1900
 msgid "Select document to open"
 msgstr "Vybrat dokument k otevøení"
 
-#: src/frontends/qt4/GuiView.cpp:1887 src/frontends/qt4/GuiView.cpp:2028
-#: src/frontends/qt4/GuiView.cpp:2150
+#: src/frontends/qt4/GuiView.cpp:1902 src/frontends/qt4/GuiView.cpp:2043
+#: src/frontends/qt4/GuiView.cpp:2165
 msgid "Examples|#E#e"
 msgstr "Pøíklady|#a#A"
 
-#: src/frontends/qt4/GuiView.cpp:1891
+#: src/frontends/qt4/GuiView.cpp:1906
 msgid "LyX-1.3.x Documents (*.lyx13)"
 msgstr "Dokumenty LyX-u 1.3 (*.lyx13)"
 
-#: src/frontends/qt4/GuiView.cpp:1892
+#: src/frontends/qt4/GuiView.cpp:1907
 msgid "LyX-1.4.x Documents (*.lyx14)"
 msgstr "Dokumenty LyX-u 1.4 (*.lyx14)"
 
-#: src/frontends/qt4/GuiView.cpp:1893
+#: src/frontends/qt4/GuiView.cpp:1908
 msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "Dokumenty LyX-u 1.5 (*.lyx15)"
 
-#: src/frontends/qt4/GuiView.cpp:1894
+#: src/frontends/qt4/GuiView.cpp:1909
 msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "Dokumenty LyX-u 1.6 (*.lyx16)"
 
-#: src/frontends/qt4/GuiView.cpp:1919 src/frontends/qt4/Validator.cpp:188
+#: src/frontends/qt4/GuiView.cpp:1934 src/frontends/qt4/Validator.cpp:188
 #: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:290
 #: src/insets/InsetGraphics.cpp:596 src/insets/InsetInclude.cpp:533
 msgid "Invalid filename"
 msgstr "Neplatný název souboru"
 
-#: src/frontends/qt4/GuiView.cpp:1920
+#: src/frontends/qt4/GuiView.cpp:1935
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -21932,40 +21946,40 @@ msgstr ""
 "%1$s\n"
 "neexistuje."
 
-#: src/frontends/qt4/GuiView.cpp:1936
+#: src/frontends/qt4/GuiView.cpp:1951
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Otvírání dokumentu %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1941
+#: src/frontends/qt4/GuiView.cpp:1956
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s otevøen."
 
-#: src/frontends/qt4/GuiView.cpp:1944
+#: src/frontends/qt4/GuiView.cpp:1959
 msgid "Version control detected."
 msgstr "Detekována správa verzí."
 
-#: src/frontends/qt4/GuiView.cpp:1946
+#: src/frontends/qt4/GuiView.cpp:1961
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Nelze otevøít dokument %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:1975
+#: src/frontends/qt4/GuiView.cpp:1990
 msgid "Couldn't import file"
 msgstr "Soubor nelze importovat"
 
-#: src/frontends/qt4/GuiView.cpp:1976
+#: src/frontends/qt4/GuiView.cpp:1991
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "®ádná informace pro import formátu %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:2023
+#: src/frontends/qt4/GuiView.cpp:2038
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Vybrat soubor %1$s k importu"
 
-#: src/frontends/qt4/GuiView.cpp:2074 src/frontends/qt4/GuiView.cpp:2261
+#: src/frontends/qt4/GuiView.cpp:2089 src/frontends/qt4/GuiView.cpp:2276
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -21976,52 +21990,52 @@ msgstr ""
 "\n"
 "Chcete jej pøepsat ?"
 
-#: src/frontends/qt4/GuiView.cpp:2076 src/frontends/qt4/GuiView.cpp:2265
+#: src/frontends/qt4/GuiView.cpp:2091 src/frontends/qt4/GuiView.cpp:2280
 msgid "Overwrite document?"
 msgstr "Pøepsat dokument ?"
 
-#: src/frontends/qt4/GuiView.cpp:2085
+#: src/frontends/qt4/GuiView.cpp:2100
 #, c-format
 msgid "Importing %1$s..."
 msgstr "Importování %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:2088
+#: src/frontends/qt4/GuiView.cpp:2103
 msgid "imported."
 msgstr "importováno."
 
-#: src/frontends/qt4/GuiView.cpp:2090
+#: src/frontends/qt4/GuiView.cpp:2105
 msgid "file not imported!"
 msgstr "soubor nebyl importován!"
 
-#: src/frontends/qt4/GuiView.cpp:2115
+#: src/frontends/qt4/GuiView.cpp:2130
 msgid "newfile"
 msgstr "newfile"
 
-#: src/frontends/qt4/GuiView.cpp:2148
+#: src/frontends/qt4/GuiView.cpp:2163
 msgid "Select LyX document to insert"
 msgstr "Vybrat dokument LyX-u ke vlo¾ení"
 
-#: src/frontends/qt4/GuiView.cpp:2184 src/frontends/qt4/GuiView.cpp:3151
+#: src/frontends/qt4/GuiView.cpp:2199 src/frontends/qt4/GuiView.cpp:3166
 msgid "Absolute filename expected."
 msgstr "Je oèekávána absolutní cesta k souboru."
 
-#: src/frontends/qt4/GuiView.cpp:2196
+#: src/frontends/qt4/GuiView.cpp:2211
 msgid "Select file to insert"
 msgstr "Vyber soubor pro vlo¾ení"
 
-#: src/frontends/qt4/GuiView.cpp:2200
+#: src/frontends/qt4/GuiView.cpp:2215
 msgid "All Files (*)"
 msgstr "V¹echny soubory (*)"
 
-#: src/frontends/qt4/GuiView.cpp:2233
+#: src/frontends/qt4/GuiView.cpp:2248
 msgid "Choose a filename to save document as"
 msgstr "Vybrat nové jméno souboru pro dokument"
 
-#: src/frontends/qt4/GuiView.cpp:2266 src/frontends/qt4/GuiView.cpp:2311
+#: src/frontends/qt4/GuiView.cpp:2281 src/frontends/qt4/GuiView.cpp:2326
 msgid "&Rename"
 msgstr "Pøe&jmenovat"
 
-#: src/frontends/qt4/GuiView.cpp:2307
+#: src/frontends/qt4/GuiView.cpp:2322
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -22032,23 +22046,23 @@ msgstr ""
 "\n"
 "Chcete ho pøejmenovat a zkusit znovu ulo¾it ?"
 
-#: src/frontends/qt4/GuiView.cpp:2310
+#: src/frontends/qt4/GuiView.cpp:2325
 msgid "Rename and save?"
 msgstr "Pøejmenovat a ulo¾it ?"
 
-#: src/frontends/qt4/GuiView.cpp:2311
+#: src/frontends/qt4/GuiView.cpp:2326
 msgid "&Retry"
 msgstr "&Opakovat"
 
-#: src/frontends/qt4/GuiView.cpp:2417
+#: src/frontends/qt4/GuiView.cpp:2432
 msgid "Close document"
 msgstr "Nový dokument"
 
-#: src/frontends/qt4/GuiView.cpp:2418
+#: src/frontends/qt4/GuiView.cpp:2433
 msgid "Document could not be closed because it is being processed by LyX."
 msgstr "Dokument nelze uzavøít, jeliko¾ je právì zpracováván."
 
-#: src/frontends/qt4/GuiView.cpp:2522 src/frontends/qt4/GuiView.cpp:2627
+#: src/frontends/qt4/GuiView.cpp:2537 src/frontends/qt4/GuiView.cpp:2642
 #, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
@@ -22059,11 +22073,11 @@ msgstr ""
 "\n"
 "Chcete jej ulo¾it ?"
 
-#: src/frontends/qt4/GuiView.cpp:2525 src/frontends/qt4/GuiView.cpp:2630
+#: src/frontends/qt4/GuiView.cpp:2540 src/frontends/qt4/GuiView.cpp:2645
 msgid "Save new document?"
 msgstr "Ulo¾it nový dokument ?"
 
-#: src/frontends/qt4/GuiView.cpp:2530
+#: src/frontends/qt4/GuiView.cpp:2545
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -22074,15 +22088,15 @@ msgstr ""
 "\n"
 "Chcete zmìny v dokumentu ulo¾it?"
 
-#: src/frontends/qt4/GuiView.cpp:2532 src/frontends/qt4/GuiView.cpp:2624
+#: src/frontends/qt4/GuiView.cpp:2547 src/frontends/qt4/GuiView.cpp:2639
 msgid "Save changed document?"
 msgstr "Ulo¾it zmìnìný soubor?"
 
-#: src/frontends/qt4/GuiView.cpp:2533
+#: src/frontends/qt4/GuiView.cpp:2548
 msgid "&Discard"
 msgstr "&Neukládat"
 
-#: src/frontends/qt4/GuiView.cpp:2621
+#: src/frontends/qt4/GuiView.cpp:2636
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -22093,7 +22107,7 @@ msgstr ""
 "\n"
 "Chcete jej ulo¾it ?"
 
-#: src/frontends/qt4/GuiView.cpp:2656
+#: src/frontends/qt4/GuiView.cpp:2671
 #, c-format
 msgid ""
 "Document \n"
@@ -22105,56 +22119,56 @@ msgstr ""
 " byl externì modifikován. Znovu naèíst? Jakékoliv editaèní zmìny budou "
 "ztraceny."
 
-#: src/frontends/qt4/GuiView.cpp:2659
+#: src/frontends/qt4/GuiView.cpp:2674
 msgid "Reload externally changed document?"
 msgstr "Znovunaèíst externì modifikovaný dokument?"
 
-#: src/frontends/qt4/GuiView.cpp:2712
+#: src/frontends/qt4/GuiView.cpp:2727
 msgid "Error when setting the locking property."
 msgstr "Chyba pøi nastavování zamykacího módu."
 
-#: src/frontends/qt4/GuiView.cpp:2758
+#: src/frontends/qt4/GuiView.cpp:2773
 msgid "Directory is not accessible."
 msgstr "Adresáø není pøístupný."
 
-#: src/frontends/qt4/GuiView.cpp:2834
+#: src/frontends/qt4/GuiView.cpp:2849
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Otvírání dokumentu potomka %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:2914
+#: src/frontends/qt4/GuiView.cpp:2929
 #, c-format
 msgid "Successful preview of format: %1$s"
 msgstr "Úspì¹né prohlí¾ení formátu: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2915
+#: src/frontends/qt4/GuiView.cpp:2930
 #, c-format
 msgid "Error while previewing format: %1$s"
 msgstr "Chyba pøi prohlí¾ení formátu: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2918
+#: src/frontends/qt4/GuiView.cpp:2933
 #, c-format
 msgid "Successful export to format: %1$s"
 msgstr "Úspì¹ný export do formátu: %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:2919
+#: src/frontends/qt4/GuiView.cpp:2934
 #, c-format
 msgid "Error while exporting format: %1$s"
 msgstr "Chyba pøi exportování formátu: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:3103 src/frontends/qt4/GuiView.cpp:3115
+#: src/frontends/qt4/GuiView.cpp:3118 src/frontends/qt4/GuiView.cpp:3130
 msgid "Exporting ..."
 msgstr "Exportování..."
 
-#: src/frontends/qt4/GuiView.cpp:3124
+#: src/frontends/qt4/GuiView.cpp:3139
 msgid "Previewing ..."
 msgstr "Náhled..."
 
-#: src/frontends/qt4/GuiView.cpp:3158
+#: src/frontends/qt4/GuiView.cpp:3173
 msgid "Document not loaded"
 msgstr "Dokument nenaèten"
 
-#: src/frontends/qt4/GuiView.cpp:3236
+#: src/frontends/qt4/GuiView.cpp:3251
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -22163,28 +22177,28 @@ msgstr ""
 "V¹echny zmìny budou ztraceny. Opravdu se chcete vrátit k pùvodní verzi "
 "dokumentu %1$s ?"
 
-#: src/frontends/qt4/GuiView.cpp:3239
+#: src/frontends/qt4/GuiView.cpp:3254
 msgid "Revert to saved document?"
 msgstr "Vrátit se k pùvodnímu dokumentu ?"
 
-#: src/frontends/qt4/GuiView.cpp:3265
+#: src/frontends/qt4/GuiView.cpp:3280
 msgid "Saving all documents..."
 msgstr "Ukládají se v¹echny dokumenty..."
 
-#: src/frontends/qt4/GuiView.cpp:3275
+#: src/frontends/qt4/GuiView.cpp:3290
 msgid "All documents saved."
 msgstr "V¹echny dokumenty ulo¾eny."
 
-#: src/frontends/qt4/GuiView.cpp:3375
+#: src/frontends/qt4/GuiView.cpp:3390
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s neznámý pøíkaz!"
 
-#: src/frontends/qt4/GuiView.cpp:3489
+#: src/frontends/qt4/GuiView.cpp:3504
 msgid "Please, preview the document first."
 msgstr "Prosím nejprve zobrazte výstupní dokument."
 
-#: src/frontends/qt4/GuiView.cpp:3504
+#: src/frontends/qt4/GuiView.cpp:3519
 msgid "Couldn't proceed."
 msgstr "Nebylo mo¾né postupovat dále."
 
@@ -22201,31 +22215,31 @@ msgstr "Zdrojový soubor DocBook-u"
 msgid "Literate Source"
 msgstr "Zdrojový kód dokumentovaného programování"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1292
+#: src/frontends/qt4/GuiWorkArea.cpp:1305
 msgid " (version control, locking)"
 msgstr " (správa verzí, zamykání)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1294
+#: src/frontends/qt4/GuiWorkArea.cpp:1307
 msgid " (version control)"
 msgstr " (správa verzí)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1297
+#: src/frontends/qt4/GuiWorkArea.cpp:1310
 msgid " (changed)"
 msgstr " (zmìnìno)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1301
+#: src/frontends/qt4/GuiWorkArea.cpp:1314
 msgid " (read only)"
 msgstr " (jen ke ètení)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1454
+#: src/frontends/qt4/GuiWorkArea.cpp:1467
 msgid "Close File"
 msgstr "Zavøít soubor"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1896
+#: src/frontends/qt4/GuiWorkArea.cpp:1909
 msgid "Hide tab"
 msgstr "Skrýt panel"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1898
+#: src/frontends/qt4/GuiWorkArea.cpp:1911
 msgid "Close tab"
 msgstr "Zavøít panel"
 
@@ -22761,7 +22775,7 @@ msgstr "Seznam %1$s"
 msgid "footnote"
 msgstr "poznámka pod èarou"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:628
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:638
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -22807,13 +22821,13 @@ msgstr "Vstup-doslovnì*"
 msgid "Include (excluded)"
 msgstr "Zahrnout (vyjmutý)"
 
-#: src/insets/InsetInclude.cpp:499 src/insets/InsetInclude.cpp:730
-#: src/insets/InsetInclude.cpp:775
+#: src/insets/InsetInclude.cpp:499 src/insets/InsetInclude.cpp:740
+#: src/insets/InsetInclude.cpp:785
 msgid "Recursive input"
 msgstr "Rekurzivní vstup"
 
-#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:731
-#: src/insets/InsetInclude.cpp:776
+#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:741
+#: src/insets/InsetInclude.cpp:786
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
@@ -22849,11 +22863,24 @@ msgstr ""
 msgid "Module not found"
 msgstr "Modul nenalezen"
 
-#: src/insets/InsetInclude.cpp:718
+#: src/insets/InsetInclude.cpp:613
+#, c-format
+msgid ""
+"Included file `%1$s' was not exported correctly.\n"
+"Warning: LaTeX export is probably incomplete."
+msgstr ""
+"Zahrnutý soubor `%1$s' nebyl korektnì exportován.\n"
+"Varaování: Export do LaTeX-u je pravdìpodobnì neúplný."
+
+#: src/insets/InsetInclude.cpp:622
+msgid "Export failure"
+msgstr "Export selhal"
+
+#: src/insets/InsetInclude.cpp:728
 msgid "Unsupported Inclusion"
 msgstr "Nepodporované vlo¾ení"
 
-#: src/insets/InsetInclude.cpp:719
+#: src/insets/InsetInclude.cpp:729
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
@@ -26145,16 +26172,3 @@ msgstr "Neznámý u¾ivatel"
 #, fuzzy
 #~ msgid "Insets|n"
 #~ msgstr "Vlo¾it|V"
-
-#: src/insets/InsetInclude.cpp:565
-#, c-format
-msgid ""
-"Included file `%1$s' was not exported correctly.\n"
-"Warning: LaTeX export is probably incomplete."
-msgstr ""
-"Zahrnutý soubor `%1$s' nebyl korektnì exportován.\n"
-"Varaování: Export do LaTeX-u je pravdìpodobnì neúplný."
-
-#: src/insets/InsetInclude.cpp:574
-msgid "Export failure"
-msgstr "Export selhal"
