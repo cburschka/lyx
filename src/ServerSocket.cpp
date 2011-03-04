@@ -143,6 +143,7 @@ void ServerSocket::dataCallback(int fd)
 			string const cmd = line.substr(pos + 1);
 			DispatchResult dr;
 			theApp()->dispatch(lyxaction.lookupFunc(cmd), dr);
+			theApp()->dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
 			string const rval = to_utf8(dr.message());
 			if (dr.error())
 				client->writeln("ERROR:" + cmd + ':' + rval);

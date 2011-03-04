@@ -1175,6 +1175,7 @@ void Server::callback(string const & msg)
 			FuncRequest const fr(lyxaction.lookupFunc(cmd), arg);
 			DispatchResult dr;
 			theApp()->dispatch(fr, dr);
+			theApp()->dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
 			string const rval = to_utf8(dr.message());
 
 			// all commands produce an INFO or ERROR message
