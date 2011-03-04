@@ -2543,7 +2543,7 @@ Buffer const * Buffer::parent() const
 ListOfBuffers Buffer::allRelatives() const
 {
 	ListOfBuffers lb = masterBuffer()->getDescendents();
-	lb.push_front(const_cast<Buffer *>(this));
+	lb.push_front(const_cast<Buffer *>(masterBuffer()));
 	return lb;
 }
 
