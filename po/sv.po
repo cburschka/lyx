@@ -4,7 +4,7 @@
 # Joacim Persson <sp2joap@ida.his.se> 1997, 1998.
 # Jim Rotmalm <jim.rotmalm@gmail.com>, 2010, 2011.
 #
-# Status 2011-02-21:
+# Status 2011-03-03:
 #   ~100% "acceptably done".
 #   ~234 shortcuts are not done.
 #   Improvements? Please tell me.
@@ -216,7 +216,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.10\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-02-28 17:09+0100\n"
-"PO-Revision-Date: 2011-02-21 21:12+0100\n"
+"PO-Revision-Date: 2011-03-03 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -2199,7 +2199,7 @@ msgstr "Nedtonad"
 
 #: src/frontends/qt4/ui/NumberingUi.ui:60
 msgid "&List in Table of Contents"
-msgstr "&Lista i innehållsförteckning"
+msgstr "&Listas i innehållsförteckning"
 
 #: src/frontends/qt4/ui/NumberingUi.ui:70
 msgid "&Numbering"
@@ -10678,7 +10678,7 @@ msgstr "URL...|U"
 
 #: lib/ui/classic.ui:226 lib/ui/stdmenus.inc:337
 msgid "Note|N"
-msgstr "Not|n"
+msgstr "Not|N"
 
 #: lib/ui/classic.ui:227
 msgid "Lists & TOC|O"
@@ -21007,11 +21007,12 @@ msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
+"Inkluderad fil `%1$s' exporterades inte korrekt.\n"
+"Varning: LaTeX-export är förmodligen ofullständig."
 
 #: src/insets/InsetInclude.cpp:574
-#, fuzzy
 msgid "Export failure"
-msgstr "Säkerhetskopieringsmisslyckande"
+msgstr "Exportmisslyckande"
 
 #: src/insets/InsetIndex.cpp:129
 msgid "Index sorting failed"
