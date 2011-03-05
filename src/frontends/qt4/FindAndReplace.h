@@ -53,10 +53,14 @@ private:
 	);
 
 	/// Perform the scope-related buffer switch while searching
-	void findAndReplaceScope(FindAndReplaceOptions & opt);
+	bool findAndReplaceScope(FindAndReplaceOptions & opt, bool replace_all);
 
 	/// Collect options from the GUI elements, then perform the search
-	void findAndReplace(bool backwards, bool replace);
+	bool findAndReplace(bool backwards, bool replace, bool replace_all = false);
+
+	bool findAndReplace(bool casesensitive, bool matchword, bool backwards,
+		bool expandmacros, bool ignoreformat, bool replace,
+		bool keep_case, bool replace_all);
 
 	bool eventFilter(QObject *obj, QEvent *event);
 
