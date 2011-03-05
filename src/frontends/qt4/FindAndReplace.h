@@ -45,22 +45,16 @@ private:
 	/// add a string to the combo if needed
 	void remember(std::string const & find, QComboBox & combo);
 
-	/// FIXME Probably to be merged with findAndReplace(bool, bool)
-	void findAndReplace(
-		bool casesensitive, bool matchword, bool backwards,
-		bool expandmacros, bool ignoreformat, bool replace,
-		bool keep_case
-	);
-
 	/// Perform the scope-related buffer switch while searching
-	bool findAndReplaceScope(FindAndReplaceOptions & opt, bool replace_all);
+	bool findAndReplaceScope(FindAndReplaceOptions & opt, bool replace_all = false);
 
 	/// Collect options from the GUI elements, then perform the search
 	bool findAndReplace(bool backwards, bool replace, bool replace_all = false);
 
+	/// FIXME Probably to be merged with findAndReplace(bool, bool, bool)
 	bool findAndReplace(bool casesensitive, bool matchword, bool backwards,
 		bool expandmacros, bool ignoreformat, bool replace,
-		bool keep_case, bool replace_all);
+		bool keep_case, bool replace_all = false);
 
 	bool eventFilter(QObject *obj, QEvent *event);
 
