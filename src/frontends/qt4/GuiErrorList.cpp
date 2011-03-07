@@ -172,9 +172,12 @@ bool GuiErrorList::goTo(int item)
 		return false;
 	}
 
-	// Don't try to highlight the content of info insets
-	while (dit.inset().lyxCode() == INFO_CODE)
+	// Don't try to highlight the content of info and ert insets
+	while (dit.inset().lyxCode() == INFO_CODE
+	       || dit.inset().lyxCode() == ERT_CODE) {
+		dit.pos() = dit.lastpos();
 		dit.forwardPos();
+	}
 
 	// If this paragraph is empty, highlight the previous one
 	while (dit.paragraph().empty())
