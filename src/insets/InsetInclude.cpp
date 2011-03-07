@@ -555,8 +555,14 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		// try to load it so we can write the associated latex
 		
 		Buffer * tmp = loadIfNeeded();
-		if (!tmp)
+		if (!tmp) {
+			docstring text = bformat(_("Could not load included "
+				"file\n`%1$s'\n"
+				"Please, check whether it actually exists."),
+				included_file.displayName());
+			Alert::warning(_("Missing included file"), text);
 			return;
+		}
 
 		if (tmp->params().baseClass() != masterBuffer->params().baseClass()) {
 			// FIXME UNICODE
