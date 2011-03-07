@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 401
+#LyX 2.0.0beta4 created this file. For more info see http://www.lyx.org/
+\lyxformat 412
 \begin_document
 \begin_header
 \textclass scrbook
@@ -63,7 +63,6 @@ Preamble
 \newcommand*{\menuitem}[1]{{\sffamily #1}}
 EndPreamble
 End
-
 # In case we need to do with sans...
 #InsetLayout CharStyle:Code
 #Font
@@ -75,13 +74,14 @@ End
 #End
 \end_local_layout
 \language ngerman
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -120,6 +120,7 @@ End
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
 \branch OutDated
 \selected 0
 \filename_suffix 0
@@ -156,7 +157,7 @@ Möglichkeiten für fortgeschrittene Benutzer
 \begin_layout Author
 vom LyX-Team
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Übersetzung: 
@@ -175,7 +176,11 @@ Hartmut
 \noun on
 Haase
 \noun default
-.
+ (
+\noun on
+HHa
+\noun default
+, bis März 2010).
 \end_layout
 
 \end_inset
@@ -4257,7 +4262,7 @@ Falls das Paket eine Datei mit der Endung
 \end_inset
 
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4311,7 +4316,7 @@ Benutzer
  Wo man diese Ordner anlegt, sofern sie nicht schon existieren, hängt von
  Ihrem System ab.
  Dazu schauen Sie in die Datei 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4331,7 +4336,7 @@ $TEXMF/web2c
 \family default
 .
  Falls nicht, führen Sie den Befehl 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4346,7 +4351,7 @@ kpsewhich texmf.cnf
 \end_inset
 
  Der Ort des lokalen TeX Ordners ist in der Variable 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4361,7 +4366,7 @@ TEXMFLOCAL
 \family default
  .
  Der Ort des Benutzer-TeX Ordners ist in der Variable 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4511,7 +4516,7 @@ Jetzt muss man LaTeX nur noch mitteilen, dass es neue Dateien gibt.
 \begin_deeper
 \begin_layout Enumerate
 Bei TeXLive führen Sie von einer Kommandozeile den Befehl 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4577,7 +4582,7 @@ konfigurieren
 \begin_layout Standard
 Nun ist das Paket installiert.
  In unserem Beispiel wird nun die Dokumentklasse 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout

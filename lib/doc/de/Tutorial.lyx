@@ -1,5 +1,5 @@
-#LyX 2.0.0beta3 created this file. For more info see http://www.lyx.org/
-\lyxformat 410
+#LyX 2.0.0beta4 created this file. For more info see http://www.lyx.org/
+\lyxformat 412
 \begin_document
 \begin_header
 \textclass book
@@ -38,6 +38,7 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language ngerman
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
@@ -115,12 +116,20 @@ Das LyX-Tutorium
 \begin_layout Author
 vom LyX-Team
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Deutsche Übersetzung 
 \noun on
-Hartmut Haase,
+Hartmut Haase 
+\noun default
+(
+\noun on
+HHa
+\noun default
+, bis März 2010)
+\noun on
+,
 \noun default
  
 \noun on
@@ -4606,7 +4615,8 @@ beispiel_roh.lyx
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 f(x)=\left\{ \begin{array}{cc}
 \log_{8}x & x>0\\
 0 & x=0\\
@@ -4641,7 +4651,8 @@ DVI
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 x=y+y+y+y+y
 \]
 
@@ -4651,7 +4662,8 @@ x=y+y+y+y+y
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 =5y
 \]
 
@@ -4667,7 +4679,8 @@ szeichen untereinander stehen; dies ist besonders wichtig, wenn in der zweiten
  Gleichung keine linke Seite vorhanden ist.
  LyX ermöglicht das Schreiben von mehrzeilige Gleichungen mit einigen Kontrollmö
 glichkeiten hinsichtlich der Ausrichtung: 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 x & = & y+y+y+y+y\\
  & = & 5y
 \end{eqnarray*}
@@ -4752,7 +4765,8 @@ Benutzerhandbuch
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 x & = & a+b+c+d\\
  &  & +e+f+g
 \end{eqnarray*}
@@ -4813,7 +4827,8 @@ Strg+Tab
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 E & = & mc^{2}\\
  & = & mc\times c
 \end{eqnarray*}
