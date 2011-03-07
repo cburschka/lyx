@@ -40506,6 +40506,29 @@ Toolbar ! View / Update
 \end_inset
 
 
+\change_inserted -712698321 1299491111
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1299491113
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1299491119
+FIXME: Needs update!
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -41806,6 +41829,25 @@ European
 
 8859-15) (latin 9) like the ISO-8859-1 encoding, but with the Euro currency
  sign, the œ-ligature and some characters used for French and Finnish
+\change_inserted -712698321 1299489919
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1299489987
+Finally, the document lets you select a specific language package for the
+ current document.
+ See 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sub:Prefs-Language"
+
+\end_inset
+
+ for more information on the language package.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -42040,6 +42082,149 @@ reference "sec:Branches"
 \end_inset
 
 .
+\change_inserted -712698321 1299490648
+
+\end_layout
+
+\begin_layout Section
+
+\change_inserted -712698321 1299490977
+Output
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Doc-Output"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1299490684
+Here you can define some output specifics for the current document:
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1299490858
+Default
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Format: The format that is used when you hit 
+\begin_inset Quotes eld
+\end_inset
+
+View
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Update
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+View Master Document
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+Update Master Document
+\begin_inset Quotes erd
+\end_inset
+
+ in the 
+\family sans
+Edit
+\family default
+ menu or the toolbar.
+ The default is set in 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File Formats; see 
+\family default
+
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:File-Formats"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1299490926
+Synchronize
+\begin_inset space ~
+\end_inset
+
+with
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1299490928
+TODO!
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1299490931
+XHTML
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Options
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1299490933
+TODO!
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -43397,6 +43582,17 @@ Settings ! Language
 
 \begin_layout Subsection
 Language
+\change_inserted -712698321 1299489311
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Prefs-Language"
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -43435,18 +43631,87 @@ Language
 \begin_inset space ~
 \end_inset
 
-package is a LaTeX-command to load a LaTeX-package that handles language
- issues.
- The default is the LaTeX-command 
+package 
+\change_deleted -712698321 1299488193
+is a
+\change_inserted -712698321 1299488196
+determines 
+\change_deleted -712698321 1299488202
+ LaTeX-command to load a
+\change_inserted -712698321 1299488203
+which
+\change_unchanged
+ LaTeX
+\change_inserted -712698321 1299488206
+ 
+\change_deleted -712698321 1299488206
+-
+\change_unchanged
+package 
+\change_deleted -712698321 1299488213
+that
+\change_inserted -712698321 1299488217
+should be loaded to
+\change_unchanged
+ handle
+\change_deleted -712698321 1299488219
+s
+\change_unchanged
+ language issues
+\change_inserted -712698321 1299488496
+.
+ Language issues which are handled by this package include proper hyphenation
+ as well as localization of dates and text strings such as 
+\begin_inset Quotes eld
+\end_inset
+
+Chapter
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+Table
+\begin_inset Quotes erd
+\end_inset
+
+
+\change_unchanged
+.
+ The 
+\change_deleted -712698321 1299488237
+default is the LaTeX-command 
 \family sans
 
 \backslash
 usepackage{babel}
 \family default
- that loads the package 
+ that loads the
+\change_inserted -712698321 1299488356
+most widespread language
+\change_unchanged
+ package
+\change_inserted -712698321 1299488356
+ is
+\change_unchanged
+ 
 \series bold
 babel
+\change_inserted -712698321 1299488633
+
 \series default
+, it's the default language package in classic LaTeX.
+ However, more recent typesetting engines such as XeTeX and LuaTeX come
+ with an alternative language package (
+\series bold
+polyglossia
+\series default
+) that is more suited for the multi-script support of these engines.
+ Furthermore, there are also specific language packages for languages not
+ covered by babel.
+\change_deleted -712698321 1299488271
 .
 \begin_inset Foot
 status collapsed
@@ -43469,9 +43734,77 @@ reference "sec:TeX-Code"
 \end_inset
 
 
+\change_unchanged
+
 \begin_inset Newline newline
 \end_inset
 
+
+\change_inserted -712698321 1299488707
+The available selections are:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\noindent
+
+\change_inserted -712698321 1299488784
+
+\series bold
+Automatic
+\series default
+:
+\series bold
+ 
+\series default
+Selects the most appropriate language package for the current typesetting
+ engine (default)
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\change_inserted -712698321 1299488874
+
+\series bold
+Always babel: 
+\series default
+Uses always babel, even if another package (such as polyglossia) would have
+ been preferred by automatic setting; this essentially allows to select
+ babel instead of polyglossia with XeTeX and LuaTeX
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\change_inserted -712698321 1299488983
+
+\series bold
+Custom: 
+\series default
+Lets you load some other language package (via 
+\family typewriter
+
+\backslash
+usepackage
+\series bold
+{
+\series default
+packagename}
+\family default
+)
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\change_inserted -712698321 1299488998
+
+\series bold
+None: 
+\series default
+Loads no language package at all
+\change_deleted -712698321 1299488523
 
 \series bold
 babel
@@ -43487,6 +43820,24 @@ Table
 \end_inset
 
  at the beginning of every table caption.
+\change_unchanged
+
+\end_layout
+
+\end_deeper
+\begin_layout Description
+
+\change_inserted -712698321 1299489281
+Default
+\begin_inset space ~
+\end_inset
+
+Decimal
+\begin_inset space ~
+\end_inset
+
+Point Define the default decimal point for the use in tables (decimal point
+ alignment)
 \end_layout
 
 \begin_layout Description
@@ -43542,6 +43893,8 @@ Command start
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -712698321 1299489034
 Use
 \begin_inset space ~
 \end_inset
@@ -43551,12 +43904,34 @@ babel Whether
 babel
 \series default
  is used or not.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
-Global When this option is set, the languages used in the document will
- be added as options to the document class options, so that they can be
- used by all LaTeX-packages.
+
+\change_inserted -712698321 1299489068
+Set
+\begin_inset space ~
+\end_inset
+
+languages
+\begin_inset space ~
+\end_inset
+
+
+\change_deleted -712698321 1299489066
+G
+\change_inserted -712698321 1299489071
+g
+\change_unchanged
+lobal
+\change_inserted -712698321 1299489073
+ly
+\change_unchanged
+ When this option is set, the languages used in the document will be added
+ as options to the document class options, so that they can be used by all
+ LaTeX-packages.
  Otherwise they will only be used as options for the 
 \series bold
 babel
@@ -44404,6 +44779,56 @@ Copiers
 Here you find the list of defined file formats that LyX can handle.
  You can modify the viewer and editor program that should be used for certain
  formats.
+\change_inserted -712698321 1299490494
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1299490573
+Furthermore, you can define the 
+\begin_inset Quotes eld
+\end_inset
+
+Default output format
+\begin_inset Quotes erd
+\end_inset
+
+ that is used when you hit 
+\begin_inset Quotes eld
+\end_inset
+
+View
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Update
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+View Master Document
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+Update Master Document
+\begin_inset Quotes erd
+\end_inset
+
+ in the Edit menu or the toolbar.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
