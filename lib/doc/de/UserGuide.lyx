@@ -35489,6 +35489,16 @@ Thesaurus
 
 \begin_layout Standard
 Thesaurus gibt es zur Zeit nur für die englische Sprache.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Update!
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -41161,49 +41171,40 @@ Standard-Sprache Hier wählen Sie die Standard-Sprache für alle Dokumente
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Language
-\begin_inset space ~
+Sprachpaket legt fest, welches LaTeX-Paket für die Sprachunterstützung geladen
+ werden soll.
+ Zur Sprachunterstützung zählen Silbentrennmuster ebenso wie die Lokalisation
+ von Daten und von Klassen verwendeten Ausdrücken wie 
+\begin_inset Quotes gld
 \end_inset
 
-package determines which LaTeX package should be loaded to handle language
- issues.
- Language issues which are handled by this package include proper hyphenation
- as well as localization of dates and text strings such as 
-\begin_inset Quotes eld
+Kapitel
+\begin_inset Quotes grd
 \end_inset
 
-Chapter
-\begin_inset Quotes erd
-\end_inset
-
- and 
-\begin_inset Quotes eld
-\end_inset
-
-Table
-\begin_inset Quotes erd
+ und Tabelle
+\begin_inset Quotes grd
 \end_inset
 
 .
- The most widespread language package is 
+ Das verbreitetste Sprachpaket ist 
 \series bold
 babel
 \series default
-, it's the default language package in classic LaTeX.
- However, more recent typesetting engines such as XeTeX and LuaTeX come
- with an alternative language package (
+, das Standard-Sprachpaket im klassischen LaTeX.
+ Für moderne TeX-Alternativen wie XeTeX und LuaTeX gibt es allerdings ein
+ alternatives Sprachpaket (
 \series bold
 polyglossia
 \series default
-) that is more suited for the multi-script support of these engines.
- Furthermore, there are also specific language packages for languages not
- covered by babel.
+), welches die umfassende Unterstützung dieser Programme für verschiedenartige
+ Schriftsysteme voll ausnutzt.
+ Außerdem gibt es auch noch spezifische Sprachpakete für Sprachen, die von
+ babel (noch) nicht unterstützt werden.
 \begin_inset Newline newline
 \end_inset
 
-The available selections are:
+Zur Auswahl steht:
 \end_layout
 
 \begin_deeper
@@ -41211,37 +41212,35 @@ The available selections are:
 \noindent
 
 \series bold
-\lang english
-Automatic
+Automatisch
 \series default
 :
 \series bold
  
 \series default
-Selects the most appropriate language package for the current typesetting
- engine (default)
+Wählt für das verwendete TeX-Programm geeignetste Sprachpaket automatisch
+ aus (Voreinstellung)
 \end_layout
 
 \begin_layout Itemize
 \noindent
 
 \series bold
-\lang english
-Always babel: 
+Immer Babel: 
 \series default
-Uses always babel, even if another package (such as polyglossia) would have
- been preferred by automatic setting; this essentially allows to select
- babel instead of polyglossia with XeTeX and LuaTeX
+Verwendet immer babel, auch wenn ein anderes Paket (bspw.
+ polyglossia) von der automatischen Einstellung vorgezogen worden wäre;
+ in erster Linie ermöglicht es diese Einstellung, XeTeX und LuaTeX mit babel
+ zu verwenden.
 \end_layout
 
 \begin_layout Itemize
 \noindent
 
 \series bold
-\lang english
-Custom: 
+Benutzerdefiniert: 
 \series default
-Lets you load some other language package (via 
+Hier können Sie ein beliebiges Sprachpaket (via 
 \family typewriter
 
 \backslash
@@ -41249,35 +41248,26 @@ usepackage
 \series bold
 {
 \series default
-packagename}
+Paketname}
 \family default
-)
+) definieren.
 \end_layout
 
 \begin_layout Itemize
 \noindent
 
 \series bold
-\lang english
 None: 
 \series default
-Loads no language package at all
+Lädt überhaupt kein Sprachpaket
 \end_layout
 
 \end_deeper
 \begin_layout Description
-
-\lang english
-Default
-\begin_inset space ~
-\end_inset
-
-Decimal
-\begin_inset space ~
-\end_inset
-
-Point Define the default decimal point for the use in tables (decimal point
- alignment)
+Standard-Dezimalzeichen Legen Sie hier den Standard-Dezimaltrenner fest,
+ welcher für die Ausrichtung am Dezimalzeichen in Tabellen verwendet wird
+ (voreingestellt ist derzeit der Punkt, obwohl im Deutschen in der Regel
+ Kommata verwendet werden).
 \end_layout
 
 \begin_layout Description
@@ -41427,24 +41417,48 @@ Rechts-nach-links-Sprachunterstützung für die entsprechenden Sprachen wie
 \end_layout
 
 \begin_layout Description
-RTL-Unterstützung
+RNL-Unterstützung
 \begin_inset space ~
 \end_inset
 
-aktivieren 
+aktivieren aktiviert Unterstützung für Sprachen, die von rechts nach links
+ geschrieben werden.
 \end_layout
 
 \begin_layout Description
-Cursorbewegung
+Cursorbewegung legt fest, wie der Cursor sich bei RNL-Sprachen verhält,
+ wenn sie die Pfeil-rechts- oder Pfeil-links-Taste drücken
 \end_layout
 
 \begin_deeper
 \begin_layout Description
-Logisch
+Logisch bedeutet, dass der Cursor nach links bewegt wird, wenn Sie die Pfeil-rec
+hts-Taste drücken, während sich der Cursor in einer RNL-Passage befindet
+ (da 
+\begin_inset Quotes gld
+\end_inset
+
+Pfeil rechts
+\begin_inset Quotes grd
+\end_inset
+
+ logisch -- aus der Logik einer Schriftkultur, die von links nach rechts
+ schreibt -- 
+\begin_inset Quotes gld
+\end_inset
+
+vom Anfang zum Ende
+\begin_inset Quotes grd
+\end_inset
+
+ bedeutet).
+ Diese Einstellung ist vor allem in gemischten Texten (RNL und LNR) sinnvoll,
+ da die Cursorbewegung dann einer einheitlichen Textlogik folgt.
 \end_layout
 
 \begin_layout Description
-Visuell
+Visuell bedeutet, dass sich der Cursor in die Richtung bewegt, in die auch
+ die Pfeile zeigen
 \end_layout
 
 \end_deeper
@@ -42001,6 +42015,50 @@ reference "Tipp-für-xdvi"
 Kopierer Hier legen Sie den Programmaufruf mitsamt Parametern fest.
 \end_layout
 
+\begin_layout Description
+Voreingestelltes
+\begin_inset space ~
+\end_inset
+
+Ausgabeformat Das Format, welches verwendet wird, wenn Sie im Menü 
+\family sans
+Ansicht
+\family default
+ oder der Werkzeugleiste 
+\begin_inset Quotes gld
+\end_inset
+
+Ansehen
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+Aktualisieren
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+Hauptdokument ansehen
+\begin_inset Quotes grd
+\end_inset
+
+ oder 
+\begin_inset Quotes gld
+\end_inset
+
+Hauptdokument aktualisieren
+\begin_inset Quotes grd
+\end_inset
+
+ anklicken.
+\end_layout
+
 \begin_layout Standard
 Damit eine Änderung wirksam wird, müssen Sie auf 
 \family sans
@@ -42266,27 +42324,27 @@ Sprache
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The document language und quote styles are set here.
- The Kodierung specifies how the document content is exported to LaTeX (the
- LyX file is always encoded in utf8).
- All characters that cannot be encoded using the specified Kodierung will
- be exported as LaTeX-Befehle (this can fail if a LaTeX-Befehl is not known
- für a particular character).
+Hier werden die Grundsprache des Dokuments und der Stil der Anführungszeichen
+ festgelegt, außerdem die Kodierung, in der das Dokument nach LaTeX exportiert
+ wird (das LyX-Dokument selbst ist immer in UTF8 kodiert).
+ LyX versucht, alle Zeichen, die in der ausgewählten Kodierung nicht enthalten
+ sind, in LaTeX-Befehle umzuwandeln; falls für ein bestimmtes Zeichen kein
+ LaTeX-Befehl bekannt ist, wird eine Fehlermeldung ausgegeben.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-The known Befehle are defined in a text file.
- You can add Befehle für unknown symbols to that file yourself, see the
- 
+LyX schaut die Befehle in einer Textdatei (
 \emph on
-Customization
+unicodesymbols
 \emph default
- manual für details.
+) nach, denen Sie leicht auch selbst fehlende Zeichen hinzufügen können,
+ wenn Sie den entsprechenden LaTeX-Befehl kennen.
+ Im Handbuch 
+\emph on
+Anpassung
+\emph default
+ ist dies genauer beschrieben.
 \end_layout
 
 \end_inset
@@ -42299,36 +42357,44 @@ Wird die Option
 \family sans
 Voreinstellung der Sprache
 \family default
- verwendet, legt LyX die Kodierung 
-\lang english
-of a text part from the language of this text.
- If the document contains text in more than one language you may get more
- than one Kodierung in the LaTeX file.
- If you do not use this option then the complete document will always use
- exactly one Kodierung.
- Checking this option is the preferred setting.
+ verwendet, wählt LyX die Standard-Kodierung für die Grundsprache und auch
+ für einzelne Textpassagen in anderen Sprachen.
+ Wenn Ihr Dokument also mehrsprachig ist, werden in diesem Fall gegebenenfalls
+ mehrere Kodierungen für das LaTeX-Dokument verwendet (LaTeX kann problemlos
+ mit Mehrfachkodierungen umgehen).
+ wenn Sie diese Option jedoch nicht wählen, wird die von Ihnen gewählte
+ Kodierung für alle Sprachen im Dokument verwendet, was zu Problemen führen
+ kann, wenn die gewählte Kodierung für eine der verwendeten Sprachen nicht
+ geeignet ist.
+ Die Option 
+\family sans
+Voreinstellung der Sprache
+\family default
+ wird deshalb empfohlen.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-LyX also supports Unicode output, which is particularly useful if you need
- lots of special symbols or non-alphabetic scripts, respectively.
- If you want to use this (und your LaTeX installation supports Unicode,
- for that matter), choose one of the four utf8 variants from the list below.
- Unfortunately the Unicode support of standard LaTeX is quite incomplete,
- so it is not uncommon that a file with lots of Unicode symbols works fine
- with 
+LyX unterstützt auch Unicode-Ausgabe.
+ Dies kann dann sinnvoll sein, wenn Sie sehr viele Sonderzeichen benötigen
+ oder mit nicht-alphabetischen Schriften arbeiten.
+ Wenn Sie Unicode benötigen (und vorausgesetzt, Ihre LaTeX-Version unterstützt
+ ebenfalls Unicode, was in modernen Distributionen der Fall ist), wählen
+ Sie eine der unten aufgeführten UTF8-Varianten.
+ Leider ist die Unicode-Unterstützung im klassischen LaTeX beschränkt; es
+ kann also gut sein, dass Dokumente mit vielen Sonderzeichen mit der Option
+ 
 \family sans
-Language Default
+Voreinstellung der Sprache
 \family default
- (when LyX uses its list of known LaTeX-Befehle), but does not work with
- a fixed utf8 Kodierung (when the list of known LaTeX-Befehle is not used,
- because all Unicode symbols can be encoded in utf8).
- The situation is much better with XeTeX und LuaTeX, two new alternative
- engines to standard LaTeX.
- Both engines support Unicode natively.
- LyX now also supports these two engines (via the output formats 
+ problemlos ausgegeben werden (da LyX die Zeichen in entsprechende Befehle
+ umwandelt), dass es aber eine UTF8-Kodierung Fehler produziert (da LyX
+ dort keine Zeichen in Befehle umwandelt, LaTeX aber nicht alle Zeichen
+ kennt).
+ Mit neueren TeX-Alternativen wir XeTeX und LuaTeX gibt es diese Probleme
+ in aller Regel nicht, denn sie wurden von Anfang an auf Unicode-Unterstützung
+ angelegt.
+ LyX unterstützt beide dieser TeX-Alternativen (über die Ausgabeformate
+ 
 \family sans
 PDF
 \begin_inset space ~
@@ -42374,7 +42440,7 @@ DVI
 
 (LuaTeX)
 \family default
-; see section
+; siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -42385,13 +42451,12 @@ reference "sub:Ausgabe-Dateiformate"
 
 \end_inset
 
-), so if the above options fail, you might try out one of these new engines.
+), Sie können also auf diese zurückgreifen, wenn Sie mit vielen Sonderzeichen
+ arbeiten und die oben beschriebenen Möglichkeiten scheitern.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is a list with the important Kodierungs:
+Im Folgenden werden die von LyX unterstützten Kodierungen kurz vorgestellt:
 \end_layout
 
 \begin_layout Description
@@ -42411,7 +42476,7 @@ Voreinstellung
 \family sans
 der Sprache
 \family default
-, aber das LaTeX-Paket 
+, das LaTeX-Paket 
 \series bold
 inputenc
 \series default
@@ -42425,20 +42490,17 @@ LaTeX-Paket ! inputenc
 
 \end_inset
 
- wird nicht verwendet.
- 
-\lang english
-When using this, you probably need to load some additional packages manually
- in the preamble und specify the used Kodierung für text parts in foreign
- Sprachen in TeX code.
+ wird jedoch nicht von LyX geladen.
+ Wenn Sie dies verwenden, müssen Sie wahrscheinlich zusätzliche Pakete in
+ der Präambel manuell laden und auch die Kodierung für fremdsprachige Texte
+ durch TeX-Code selbst angeben.
 \end_layout
 
 \begin_layout Description
-ASCII die ASCII Kodierung, deckt nur Standard-Englisch ab (7-bit ASCII).
-
-\lang english
- LyX converts all other characters in LaTeX Befehle, which may result in
- a big file when lots of LaTeX-Befehle are needed.
+ASCII die ASCII-Kodierung umfasst nur die im Standard-Englischen gebrauchten
+ Zeichen ab (7-bit ASCII).
+ LyX wandelt alle anderen Zeichen in LaTeX-Befehle um, was zu großen LaTeX-Datei
+en führen kann, wenn Sie viele Nicht-ASCII-Zeichen verwenden.
 \end_layout
 
 \begin_layout Description
@@ -42450,7 +42512,7 @@ Arabisch
 \begin_inset space ~
 \end_inset
 
-1256) MS Windows Zeichensatztabelle für Arabisch und Farsi
+1256) MS Windows Zeichensatztabelle für Arabisch und Farsi.
 \end_layout
 
 \begin_layout Description
@@ -42462,7 +42524,7 @@ Arabisch
 \begin_inset space ~
 \end_inset
 
-8859-6) für Arabisch und Farsi
+8859-6) für Arabisch und Farsi.
 \end_layout
 
 \begin_layout Description
@@ -42470,7 +42532,7 @@ Armenisch
 \begin_inset space ~
 \end_inset
 
-(ArmSCII8) für Armenisch
+(ArmSCII8) für Armenisch.
 \end_layout
 
 \begin_layout Description
@@ -42483,7 +42545,7 @@ Baltisch
 \end_inset
 
 1257) MS Windows Zeichensatztabelle für Estnisch, Lettisch und Litauisch,
- dasselbe wie die ISO-8859-13 Kodierung
+ dasselbe wie die ISO-8859-13-Kodierung.
 \end_layout
 
 \begin_layout Description
@@ -42495,8 +42557,8 @@ Baltisch
 \begin_inset space ~
 \end_inset
 
-8859-13) für Estnisch, Lettisch und Litauisch, eine Obermenge der ISO-8859-4
- Kodierung
+8859-13) für Estnisch, Lettisch und Litauisch, eine Obermenge der ISO-8859-4-Kod
+ierung.
 \end_layout
 
 \begin_layout Description
@@ -42508,8 +42570,8 @@ Baltisch
 \begin_inset space ~
 \end_inset
 
-8859-4) (latin 4) für Estnisch, Lettisch und Litauisch, eine Untermenge
- der ISO-8859-13 Kodierung
+8859-4) (latin4) für Estnisch, Lettisch und Litauisch, eine Untermenge der
+ ISO-8859-13-Kodierung.
 \end_layout
 
 \begin_layout Description
@@ -42521,11 +42583,10 @@ Chinesisch
 \begin_inset space ~
 \end_inset
 
-(EUC-CN) für vereinfachtes Chinesisch, 
-\lang english
-used especially on UNIX OSes, since 2001 this Kodierung is officially replaced
- by the Kodierung GB18030, as GB18030 is not available für LaTeX you should
- try to use the Kodierung Unicode
+(EUC-CN) für vereinfachtes Chinesisch, wird vor allem in UNIX-Betriebssystemen
+ verwendet.
+ Seit 2001 ist diese Kodierung obsolet und von der Kodierung GB-18030 abgelöst.
+ Da diese aber von LaTeX noch nicht unterstützt wird, sollten Sie Unicode
 \begin_inset space ~
 \end_inset
 
@@ -42533,7 +42594,7 @@ used especially on UNIX OSes, since 2001 this Kodierung is officially replaced
 \begin_inset space ~
 \end_inset
 
-(utf8)
+(utf8) verwenden.
 \end_layout
 
 \begin_layout Description
@@ -42545,12 +42606,10 @@ Chinesisch
 \begin_inset space ~
 \end_inset
 
-(GBK) für vereinfachtes Chinesisch, 
-\lang english
-is the same as the Windows Zeichensatztabelle CP 936 except für the Euro
- currency sign, since 2001 this Kodierung is officially replaced by the
- Kodierung GB18030, as GB18030 is not available für LaTeX you should try
- to use the Kodierung Unicode
+(GBK) für vereinfachtes Chinesisch, entspricht der Windows-Zeichensatztabelle
+ CP-936, mit Ausnahme des Eurozeichens.
+ Seit 2001 ist diese Kodierung obsolet und von der Kodierung GB-18030 abgelöst.
+ Da diese aber von LaTeX noch nicht unterstützt wird, sollten Sie Unicode
 \begin_inset space ~
 \end_inset
 
@@ -42558,7 +42617,7 @@ is the same as the Windows Zeichensatztabelle CP 936 except für the Euro
 \begin_inset space ~
 \end_inset
 
-(utf8)
+(utf8) verwenden.
 \end_layout
 
 \begin_layout Description
@@ -42570,7 +42629,7 @@ Chinesisch
 \begin_inset space ~
 \end_inset
 
-(EUC-TW) für traditionelles Chinesisch
+(EUC-TW) für traditionelles Chinesisch.
 \end_layout
 
 \begin_layout Description
@@ -42582,7 +42641,7 @@ Griechisch
 \begin_inset space ~
 \end_inset
 
-8859-7) für Griechisch
+8859-7) für Griechisch.
 \end_layout
 
 \begin_layout Description
@@ -42594,8 +42653,8 @@ Hebräisch
 \begin_inset space ~
 \end_inset
 
-1255) MS Windows Zeichensatztabelle für Hebräisch, eine Obermenge der ISO-8859-8
- Kodierung
+1255) MS-Windows-Zeichensatztabelle für Hebräisch, eine Obermenge der ISO-8859-8
+ Kodierung.
 \end_layout
 
 \begin_layout Description
@@ -42607,12 +42666,10 @@ Hebräisch
 \begin_inset space ~
 \end_inset
 
-8859-8) für Hebräisch
+8859-8) für Hebräisch.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 Japanisch
 \begin_inset space ~
 \end_inset
@@ -42621,12 +42678,11 @@ Japanisch
 \begin_inset space ~
 \end_inset
 
-(EUC-JP) EUC-JP Kodierung für Japanisch, uses the LaTeX-Paket 
+(EUC-JP) EUC-JP-Kodierung für Japanisch, verwendet das LaTeX-Paket 
 \series bold
 CJK
 \series default
-\lang ngerman
-
+.
 \begin_inset Index idx
 status collapsed
 
@@ -42636,16 +42692,14 @@ LaTeX-Paket ! CJK
 
 \end_inset
 
-
-\lang english
-, when using this, set the document language to 
+ Wählen Sie 
 \family sans
-Japanese (CJK)
+Japanisch (CJK)
+\family default
+ als Grundsprache, wenn Sie diese Kodierung verwenden.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 Japanisch
 \begin_inset space ~
 \end_inset
@@ -42654,36 +42708,45 @@ Japanisch
 \begin_inset space ~
 \end_inset
 
-(JIS) JIS Kodierung für Japanisch, uses the LaTeX-Paket 
+(JIS) JIS-Kodierung für Japanisch, verwendet das LaTeX-Paket 
 \series bold
 CJK
 \series default
-, when using this, set the document language to 
-\family sans
-Japanisch
-\begin_inset space ~
+.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! CJK
+\end_layout
+
 \end_inset
 
-(CJK)
+ Wählen Sie 
+\family sans
+Japanisch (CJK)
+\family default
+ als Grundsprache, wenn Sie diese Kodierung verwenden.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 Japanisch
 \begin_inset space ~
 \end_inset
 
-(non-CJK)
+(nicht
 \begin_inset space ~
 \end_inset
 
-(EUC-JP) EUC-JP Kodierung für Japanisch, uses the LaTeX-Paket 
+CJK)
+\begin_inset space ~
+\end_inset
+
+(EUC-JP) EUC-JP-Kodierung für Japanisch, verwendet das LaTeX-Paket 
 \series bold
 japanese
 \series default
-\lang ngerman
-
+.
 \begin_inset Index idx
 status collapsed
 
@@ -42693,51 +42756,79 @@ LaTeX-Paket ! japanese
 
 \end_inset
 
-
-\lang english
-, when using this, set the document language to 
+ Wählen Sie 
 \family sans
-Japanese
+Japanisch 
+\family default
+als Grundsprache, wenn Sie diese Kodierung verwenden.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 Japanisch
 \begin_inset space ~
 \end_inset
 
-(non-CJK)
+(nicht
 \begin_inset space ~
 \end_inset
 
-(JIS) JIS Kodierung für Japanisch, uses the LaTeX-Paket 
+CJK)
+\begin_inset space ~
+\end_inset
+
+(JIS) JIS-Kodierung für Japanisch, verwendet das LaTeX-Paket 
 \series bold
 japanese
 \series default
-, when using this, set the document language to 
+.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! japanese
+\end_layout
+
+\end_inset
+
+ Wählen Sie 
 \family sans
-Japanisch
+Japanisch 
+\family default
+als Grundsprache, wenn Sie diese Kodierung verwenden.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 Japanisch
 \begin_inset space ~
 \end_inset
 
-(non-CJK)
+(nicht
 \begin_inset space ~
 \end_inset
 
-(SJIS) SJIS Kodierung für Japanisch, uses the LaTeX-Paket 
+CJK)
+\begin_inset space ~
+\end_inset
+
+(SJIS) SJIS-Kodierung für Japanisch, verwendet das LaTeX-Paket 
 \series bold
 japanese
 \series default
-, when using this, set the document language to 
+.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! japanese
+\end_layout
+
+\end_inset
+
+ Wählen Sie 
 \family sans
-Japanisch
+Japanisch 
+\family default
+als Grundsprache, wenn Sie diese Kodierung verwenden.
 \end_layout
 
 \begin_layout Description
@@ -42745,7 +42836,7 @@ Koreanisch
 \begin_inset space ~
 \end_inset
 
-(EUC-KR) für Koreanisch
+(EUC-KR) für Koreanisch.
 \end_layout
 
 \begin_layout Description
@@ -42757,12 +42848,10 @@ Kyrillisch
 \begin_inset space ~
 \end_inset
 
-1251) MS Windows Zeichensatztabelle für Kyrillisch
+1251) MS-Windows-Zeichensatztabelle für Kyrillisch.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 Kyrillisch
 \begin_inset space ~
 \end_inset
@@ -42771,9 +42860,8 @@ Kyrillisch
 \begin_inset space ~
 \end_inset
 
-8859-5) deckt Belorussian, Bulgarian, Macedonian, Serbian
-\lang ngerman
- und Ukrainisch ab
+8859-5) deckt Weißrussisch, Bulgarisch, Makedonisch, Serbisch und Ukrainisch
+ ab.
 \end_layout
 
 \begin_layout Description
@@ -42781,7 +42869,7 @@ Kyrillisch
 \begin_inset space ~
 \end_inset
 
-(KOI8-R) Standard-Kyrillisch speziell für Russisch
+(KOI8-R) Standard-Kyrillisch speziell für Russisch.
 \end_layout
 
 \begin_layout Description
@@ -42789,7 +42877,7 @@ Kyrillisch
 \begin_inset space ~
 \end_inset
 
-(KOI8-U) Kyrillisch für Ukrainisch
+(KOI8-U) Kyrillisch für Ukrainisch.
 \end_layout
 
 \begin_layout Description
@@ -42801,7 +42889,7 @@ Kyrillisch
 \begin_inset space ~
 \end_inset
 
-154) Kyrillisch für Kasachisch
+154) Kyrillisch für Kasachisch.
 \end_layout
 
 \begin_layout Description
@@ -42813,17 +42901,15 @@ Mitteleuropäisch
 \begin_inset space ~
 \end_inset
 
-1250) MS Windows Zeichensatztabelle für ISO
+1250) MS-Windows-Zeichensatztabelle für ISO
 \begin_inset space ~
 \end_inset
 
-8859-2 (latin2)
+8859-2 (latin2).
 \end_layout
 
 \begin_layout Description
 Mitteleuropäisch
-\lang english
-
 \begin_inset space ~
 \end_inset
 
@@ -42831,13 +42917,11 @@ Mitteleuropäisch
 \begin_inset space ~
 \end_inset
 
-8859-2) (latin 2) deckt Albanisch, Czech, German, Hungarian, Kroatisch,
- Polish, Romanian, Slovak und Slovenian ab
+8859-2) (latin2) deckt Albanisch, Tschechisch, Deutsch, Ungarisch, Kroatisch,
+ Polnisch, Rumänisch, Slowakisch und Slowenisch ab.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 Südosteuropäisch
 \begin_inset space ~
 \end_inset
@@ -42846,12 +42930,10 @@ Südosteuropäisch
 \begin_inset space ~
 \end_inset
 
-8859-3) (latin 3) deckt Esperanto, Galician, Maltese und Türkisch ab
+8859-3) (latin3) deckt Esperanto, Galizisch, Maltesisch und Türkisch ab.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 Südosteuropäisch
 \begin_inset space ~
 \end_inset
@@ -42860,9 +42942,11 @@ Südosteuropäisch
 \begin_inset space ~
 \end_inset
 
-8859-16) (latin 10) deckt Albanisch, Finnisch, French, German, Hungarian,
- Irisches Gälisch, Italian, Kroatisch, Polish, Romanian und Slovenian ab,
- is designed to cover many Sprachen und characters with diacritics
+8859-16) (latin10) deckt Albanisch, Finnisch, Französisch, Deutsch, Ungarisch,
+ Irisches Gälisch, Italienisch, Kroatisch, Polnisch, Rumänisch und Slowenisch
+ ab.
+ Die Kodierung wurde entwickelt, um möglichst viele Sprachen, die Zeichen
+ mit Diakritika verwenden, abzudecken.
 \end_layout
 
 \begin_layout Description
@@ -42874,7 +42958,7 @@ Thailändisch
 \begin_inset space ~
 \end_inset
 
-620-0) für Thailändisch
+620-0) für Thailändisch.
 \end_layout
 
 \begin_layout Description
@@ -42886,8 +42970,8 @@ Türkisch
 \begin_inset space ~
 \end_inset
 
-8859-9) (latin 5) für Türkisch, wie the ISO-8859-1 Kodierung wobei die isländisc
-hen Buchstaben durch türkische ersetzt sind
+8859-9) (latin5) für Türkisch, ähnlich der ISO-8859-1-Kodierung, allerdings
+ wurden die isländischen Zeichen durch türkische ersetzt.
 \end_layout
 
 \begin_layout Description
@@ -42899,7 +42983,7 @@ Unicode
 \begin_inset space ~
 \end_inset
 
-(utf8) Unicode utf8 mit dem LaTeX-Paket 
+(utf8) Unicode (utf8) mit dem LaTeX-Paket 
 \series bold
 CJK
 \series default
@@ -42913,12 +42997,10 @@ LaTeX-Paket ! CJK
 
 \end_inset
 
- (für the Sprachen Chinesisch, Japanisch und Koreanisch)
+ (für die Sprachen Chinesisch, Japanisch und Koreanisch).
 \end_layout
 
 \begin_layout Description
-
-\lang english
 Unicode
 \begin_inset space ~
 \end_inset
@@ -42927,7 +43009,7 @@ Unicode
 \begin_inset space ~
 \end_inset
 
-(utf8) Unicode utf8 to be used with 
+(utf8) Unicode (utf8) für die TeX-Alternativen 
 \family sans
 XeTeX
 \family default
@@ -42935,14 +43017,14 @@ XeTeX
 \family sans
 LuaTeX
 \family default
-, which use Unicode directly, without the help of the LaTeX-package 
+, die Unicode nativ unterstützen, das LaTeX-Paket 
 \series bold
 inputenc
 \series default
-.
- LyX automatically selects this Kodierung if you export or preview XeTeX
- or LuaTeX.
- Normally you do not need to set this Kodierung manually.
+ also nicht benötigen.
+ LyX wählt diese Kodierung automatisch, wenn Sie nach XeTeX oder LuaTeX
+ exportieren.
+ Normalerweise müssen Sie diese Kodierung nicht manuell auswählen.
 \end_layout
 
 \begin_layout Description
@@ -42954,7 +43036,7 @@ Unicode
 \begin_inset space ~
 \end_inset
 
-(utf8x) Unicode utf8 basierend auf dem LaTeX-Paket 
+(utf8x) Unicode (utf8) basierend auf dem LaTeX-Paket 
 \series bold
 ucs
 \series default
@@ -42968,13 +43050,8 @@ LaTeX-Paket ! ucs
 
 \end_inset
 
- 
-\lang english
-(comprehensive, including
-\lang ngerman
- Latein, Griechisch, Kyrillisch und 
-\lang english
-CJK scripts).
+ (relativ umfassend, enthält lateinische, griechisch und kyrillische Alphabetzei
+chen sowie Chinesische, Koreanische und Japanische Zeichen).
 \end_layout
 
 \begin_layout Description
@@ -42982,7 +43059,7 @@ Unicode
 \begin_inset space ~
 \end_inset
 
-(utf8) Unicode utf8 basierend auf dem LaTeX-Paket 
+(utf8) Unicode (utf8) basierend auf dem LaTeX-Paket 
 \series bold
 inputenc
 \series default
@@ -42997,10 +43074,8 @@ LaTeX-Paket ! inputenc
 \end_inset
 
 .
- 
-\lang english
-Currently only a limited range of characters (mainly für Latin scripts)
- is supported.
+ Unterstützt derzeit nur einen eingeschränkten Teilbereich des Unicode-Spektrums
+ (hauptsächlich lateinisch-alphabetische Zeichen).
 \end_layout
 
 \begin_layout Description
@@ -43012,29 +43087,11 @@ Westeuropäisch
 \begin_inset space ~
 \end_inset
 
-1252) MS Windows Zeichensatztabelle für ISO
+1252) MS-Windows-Zeichensatztabelle für ISO
 \begin_inset space ~
 \end_inset
 
-8859-1 (latin1)
-\end_layout
-
-\begin_layout Description
-
-\lang english
-Westeuropäisch
-\begin_inset space ~
-\end_inset
-
-(ISO
-\begin_inset space ~
-\end_inset
-
-8859-1) (latin 1) deckt the Sprachen Albanisch, Dänisch, Dutch, Englisch,
- Faroese, Finnisch, French, Galician, German, Isländisch, Irisch, Italian
-\lang ngerman
-, Katalanisch, Norwegisch, Portugiesisch, Spanisch und Swedisch ab; man
- nimmt aber besser die ISO-8859-15 Kodierung
+8859-1 (latin1).
 \end_layout
 
 \begin_layout Description
@@ -43046,25 +43103,41 @@ Westeuropäisch
 \begin_inset space ~
 \end_inset
 
-8859-15) (latin 9) wie die ISO-8859-1 Kodierung, 
-\lang english
-but with the Euro currency sign, the œ-ligature und some characters used
- für French und Finnisch
+8859-1) (latin1) deckt die Sprachen Albanisch, Dänisch, Deutsch, Englisch,
+ Faröisch, Finnisch, Französisch, Galizisch, Holländisch, Isländisch, Irisch,
+ Italienisch, Katalanisch, Norwegisch, Portugiesisch, Spanisch und Schwedisch
+ ab; enthält aber im Gegensatz zur ISO-8859-15-Kodierung kein Eurozeichen.
+\end_layout
+
+\begin_layout Description
+Westeuropäisch
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-15) (latin9), weitgehend identisch zur ISO-8859-1-Kodierung, enthält
+ jedoch im Unterschied zu dieser das Eurozeichen, die œ-Ligatur und einige
+ französische und finnische Sonderzeichen.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Finally, the document lets you select a specific language package for the
- current document.
- See 
+Schließlich können Sie in diesem Dialog auch ein spezifisches Sprachpaket
+ für das aktuelle Dokument auswählen.
+ In 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "sub:Prefs-Sprache"
 
 \end_inset
 
- for more information on the language package.
+ finden Sie weitere Informationen zum Thema 
+\emph on
+Sprachpaket
+\emph default
+.
 \end_layout
 
 \begin_layout Section
@@ -43527,6 +43600,123 @@ reference "Zweige"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Section
+Ausgabe
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Dokument-Ausgabe"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hier können Sie einige Spezifika für die Ausgabe des Dokuments festlegen:
+\end_layout
+
+\begin_layout Description
+Voreingestelltes
+\begin_inset space ~
+\end_inset
+
+Ausgabeformat: Das Format, welches verwendet wird, wenn Sie im Menü 
+\family sans
+Ansicht
+\family default
+ oder der Werkzeugleiste 
+\begin_inset Quotes gld
+\end_inset
+
+Ansehen
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+Aktualisieren
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+Hauptdokument ansehen
+\begin_inset Quotes grd
+\end_inset
+
+ oder 
+\begin_inset Quotes gld
+\end_inset
+
+Hauptdokument aktualisieren
+\begin_inset Quotes grd
+\end_inset
+
+ anklicken.
+ Die Standard-Einstellung wird in 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Dateiformate
+\family default
+ festgelegt
+\family sans
+; siehe 
+\family default
+
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "Dateiformate"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Mit
+\begin_inset space ~
+\end_inset
+
+der
+\begin_inset space ~
+\end_inset
+
+Ausgabe
+\begin_inset space ~
+\end_inset
+
+synchronisieren
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+XHTML-Ausgabe-Optionen
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO!
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
