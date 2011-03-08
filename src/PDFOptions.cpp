@@ -102,7 +102,7 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 
 	// only use the hyperref settings if hyperref is enabled by the user
 	// see bug #7052
-	if(use_hyperref) {
+	if (use_hyperref) {
 		// try to extract author and title from document when none is
 		// explicitly given
 		if (pdfusetitle && title.empty() && author.empty())
@@ -141,7 +141,6 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 			hyperset += quoted_options;
 		}
 		hyperset = rtrim(hyperset,",");
-
 	}
 
 	// check if the hyperref settings use an encoding that exceeds
