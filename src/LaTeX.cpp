@@ -745,11 +745,18 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 			if (contains(token, "LaTeX Error:"))
 				retval |= LATEX_ERROR;
 
-			// bug 6445. At this point its not clear we finish with error.
 			if (prefixIs(token, "! File ended while scanning")){
-				wait_for_error = desc;
-				continue;
+				if (prefixIs(token, "! File ended while scanning use of \\Hy@setref@link.")){
+					// bug 7344. We must rerun LaTeX if hyperref has been toggled.
+					retval |= ERROR_RERUN;
+					LYXERR(Debug::LATEX, "Force rerun.");
+				} else {
+					// bug 6445. At this point its not clear we finish with error.
+					wait_for_error = desc;
+					continue;
+				}
 			}
+
 			if (!wait_for_error.empty() && prefixIs(token, "! Emergency stop.")){
 				retval |= LATEX_ERROR;
 				string errstr;
