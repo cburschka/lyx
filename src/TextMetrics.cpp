@@ -1050,16 +1050,14 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 	if (first == 0 && topBottomSpace) {
 		BufferParams const & bufparams = buffer.params();
 		// some parskips VERY EASY IMPLEMENTATION
-		if (bufparams.paragraph_separation
-		    == BufferParams::ParagraphSkipSeparation
-			&& inset.lyxCode() != ERT_CODE
-			&& inset.lyxCode() != LISTINGS_CODE
-			&& pit > 0
-			&& ((layout.isParagraph() && par.getDepth() == 0)
-			    || (pars[pit - 1].layout().isParagraph()
-				&& pars[pit - 1].getDepth() == 0)))
-		{
-				maxasc += bufparams.getDefSkip().inPixels(*bv_);
+		if (bufparams.paragraph_separation == BufferParams::ParagraphSkipSeparation
+		    && !inset.getLayout().parbreakIsNewline()
+		    && !par.layout().parbreak_is_newline
+		    && pit > 0
+		    && ((layout.isParagraph() && par.getDepth() == 0)
+			|| (pars[pit - 1].layout().isParagraph()
+			    && pars[pit - 1].getDepth() == 0))) {
+			maxasc += bufparams.getDefSkip().inPixels(*bv_);
 		}
 
 		if (par.params().startOfAppendix())
