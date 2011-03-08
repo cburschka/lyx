@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 410
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
@@ -9,11 +9,12 @@ sweave
 \end_modules
 \maintain_unincluded_children false
 \language english
+\language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman lmodern
-\font_sans lmss
-\font_typewriter lmtt
+\font_roman default
+\font_sans default
+\font_typewriter default
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
@@ -56,6 +57,7 @@ sweave
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -117,6 +119,10 @@ We can also emulate a simple calculator:
 \end_layout
 
 \begin_layout Chunk
+
+\end_layout
+
+\begin_layout Chunk
 <<echo=TRUE,print=TRUE>>=
 \end_layout
 
@@ -138,6 +144,10 @@ sin(pi/2)
 
 \begin_layout Standard
 Now we look at Gaussian data:
+\end_layout
+
+\begin_layout Chunk
+
 \end_layout
 
 \begin_layout Chunk
@@ -252,37 +262,32 @@ summary(iris)
 placement tbph
 wide false
 sideways false
-status open
+status collapsed
 
-\begin_layout Plain Layout
-\noindent
+\begin_layout Chunk
+
+\end_layout
+
+\begin_layout Chunk
+
+\end_layout
+
+\begin_layout Chunk
 \align center
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
 
 <<fig=TRUE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-library(graphics)
-\end_layout
-
-\begin_layout Plain Layout
-
-pairs(iris)
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
+\begin_inset Newline newline
 \end_inset
 
+library(graphics)
+\begin_inset Newline newline
+\end_inset
 
+pairs(iris)
+\begin_inset Newline newline
+\end_inset
+
+@
 \end_layout
 
 \begin_layout Plain Layout
@@ -307,32 +312,20 @@ Pairs plot of the iris data.
 placement tbph
 wide false
 sideways false
-status open
+status collapsed
 
-\begin_layout Plain Layout
-\noindent
+\begin_layout Chunk
 \align center
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
 
 <<fig=true>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-boxplot(Sepal.Length~Species,data=iris)
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
+\begin_inset Newline newline
 \end_inset
 
+boxplot(Sepal.Length~Species,data=iris)
+\begin_inset Newline newline
+\end_inset
 
+@
 \end_layout
 
 \begin_layout Plain Layout
@@ -370,30 +363,18 @@ wide false
 sideways false
 status open
 
-\begin_layout Plain Layout
-\noindent
+\begin_layout Chunk
 \align center
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
 
 <<fig=true>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-boxplot(Sepal.Length~Species,data=iris)
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
+\begin_inset Newline newline
 \end_inset
 
+boxplot(Sepal.Length~Species,data=iris)
+\begin_inset Newline newline
+\end_inset
 
+@
 \end_layout
 
 \begin_layout Plain Layout
