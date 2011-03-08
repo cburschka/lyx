@@ -45,7 +45,7 @@ using namespace std;
 namespace lyx {
 namespace frontend {
   
-const float Painter::thin_line = 0.5;
+const float Painter::thin_line = 0.0;
 
 GuiPainter::GuiPainter(QPaintDevice * device)
 	: QPainter(device), Painter(),
