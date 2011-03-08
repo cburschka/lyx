@@ -178,10 +178,14 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 		os << "\\inputencoding{utf8}\n"
 		   << setEncoding("UTF-8");
 	}
-	// FIXME: handle the case that hyperref is loaded by the document class and
-	// hyperset is empty, see bug #7048
-	if (!(hyperref_already_provided && hyperset.empty()))
-		os << from_utf8(opt);
+	// If hyperref is loaded by the document class, we output
+	// \hypersetup \AtBeginDocument, since the class might
+	// load hyperref late, see bug #7048.
+	if (hyperref_already_provided && !opt.empty())
+		os << "\\AtBeginDocument{%\n";
+	os << from_utf8(opt);
+	if (hyperref_already_provided && !opt.empty())
+		os << "}";
 
 	if (need_unicode && enc && enc->iconvName() != "UTF-8"
 	    &&!runparams.isFullUnicode()) {
