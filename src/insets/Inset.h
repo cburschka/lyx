@@ -428,7 +428,7 @@ public:
 	bool undefined() const;
 	/// used to toggle insets
 	/// is the inset open?
-	/// should this inset be handled like a normal charater
+	/// should this inset be handled like a normal character
 	virtual bool isChar() const { return false; }
 	/// is this equivalent to a letter?
 	virtual bool isLetter() const { return false; }
