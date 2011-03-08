@@ -152,6 +152,9 @@ string LyXVC::checkIn()
 	if (ok) {
 		if (response.empty())
 			response = _("(no log message)");
+		//shell collisions
+		response = subst(response, from_utf8("\""), from_utf8("\\\""));
+
 		log = vcs->checkIn(to_utf8(response));
 	} else {
 		LYXERR(Debug::LYXVC, "LyXVC: user cancelled");
