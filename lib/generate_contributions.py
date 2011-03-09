@@ -1470,6 +1470,14 @@ contributers = [
                  "Mar 2 2009",
                  u"Indonesian translation"),
 
+     contributer(u"Giovanni Sora",
+                 "g.sora () tiscali ! it",
+                 "GPL",
+                 "License ia.po",
+                 "m=129968786830788",
+                 "9 March 2011",
+                 u"Interlingua translation"),
+
      contributer(u"Andre Spiegel",
                  "spiegel () gnu ! org",
                  "GPL",
