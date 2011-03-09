@@ -55,9 +55,11 @@ AC_DEFUN([CHECK_WITH_HUNSPELL],
 		[lyx_use_hunspell=true; break;],
 		[lyx_use_hunspell=false])
 
-	AC_CHECK_LIB(hunspell, main, LIBS="-lhunspell $LIBS", lyx_use_hunspell=false)
-	if test x$lyx_use_hunspell = xfalse ; then
-	    AC_CHECK_LIB(hunspell-1.2, main, [LIBS="-lhunspell-1.2 $LIBS" lyx_use_hunspell=true], lyx_use_hunspell=false)
+	if test x$lyx_use_hunspell = xtrue ; then
+		AC_CHECK_LIB(hunspell, main, LIBS="-lhunspell $LIBS", lyx_use_hunspell=false)
+		if test x$lyx_use_hunspell = xfalse ; then
+			 AC_CHECK_LIB(hunspell-1.2, main, [LIBS="-lhunspell-1.2 $LIBS" lyx_use_hunspell=true], lyx_use_hunspell=false)
+		fi
 	fi
 	AC_MSG_CHECKING([whether to use hunspell])
 	if $lyx_use_hunspell ; then
