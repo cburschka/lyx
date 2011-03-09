@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-03-04 23:51+0100\n"
+"POT-Creation-Date: 2011-03-08 16:32+0100\n"
 "PO-Revision-Date: 2011-03-05 11:49+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -528,7 +528,7 @@ msgstr "Pridaj Všetko"
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
 #: src/Buffer.cpp:2272 src/Buffer.cpp:3768 src/Buffer.cpp:3831
-#: src/LyXVC.cpp:89 src/LyXVC.cpp:222 src/frontends/qt4/GuiBranches.cpp:177
+#: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1801
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -1883,8 +1883,8 @@ msgstr "Vstup"
 msgid "Verbatim"
 msgstr "Doslovne (Verbatim)"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1085
-#: src/insets/InsetInclude.cpp:1091
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1091
+#: src/insets/InsetInclude.cpp:1097
 msgid "Program Listing"
 msgstr "Výpis zdrojového kódu"
 
@@ -18951,7 +18951,7 @@ msgstr "(bez logovacej správy)"
 msgid "LyX VC: Log Message"
 msgstr "LyX VC: Protokolová správa"
 
-#: src/LyXVC.cpp:216
+#: src/LyXVC.cpp:218
 #, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
@@ -18964,11 +18964,11 @@ msgstr ""
 "\n"
 "Chcete prejsť späť k staršej uloženej verzii ?"
 
-#: src/LyXVC.cpp:221
+#: src/LyXVC.cpp:223
 msgid "Revert to stored version of document?"
 msgstr "Vrátiť sa k uloženej verzii dokumentu?"
 
-#: src/LyXVC.cpp:222 src/frontends/qt4/GuiView.cpp:3255
+#: src/LyXVC.cpp:224 src/frontends/qt4/GuiView.cpp:3255
 msgid "&Revert"
 msgstr "Vrátiť"
 
@@ -22761,7 +22761,7 @@ msgstr "Zoznam od %1$s"
 msgid "footnote"
 msgstr "Poznámka pod čiarou"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:638
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:644
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -22807,18 +22807,33 @@ msgstr "Doslovný vstup*"
 msgid "Include (excluded)"
 msgstr "Zahrnúť (vylúčené)"
 
-#: src/insets/InsetInclude.cpp:499 src/insets/InsetInclude.cpp:740
-#: src/insets/InsetInclude.cpp:785
+#: src/insets/InsetInclude.cpp:499 src/insets/InsetInclude.cpp:746
+#: src/insets/InsetInclude.cpp:791
 msgid "Recursive input"
 msgstr "Rekurzívny vstup"
 
-#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:741
-#: src/insets/InsetInclude.cpp:786
+#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:747
+#: src/insets/InsetInclude.cpp:792
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "Došlo k pokusu vložiť súbor %1$s do seba! Vklad ignorujem."
 
+#: src/insets/InsetInclude.cpp:559
+#, fuzzy, c-format
+msgid ""
+"Could not load included file\n"
+"`%1$s'\n"
+"Please, check whether it actually exists."
+msgstr ""
+"LyX nemohol vytvoriť záložnú kópiu v %1$s.\n"
+"Skontrolujte, či daný adresár existuje a je možné do neho zapisovať."
+
 #: src/insets/InsetInclude.cpp:563
+#, fuzzy
+msgid "Missing included file"
+msgstr "Zahrnúť súbor"
+
+#: src/insets/InsetInclude.cpp:569
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -22829,11 +22844,11 @@ msgstr ""
 "má triedu (textclass) `%2$s'\n"
 "zatiaľ čo rodičovský súbor má triedu `%3$s'."
 
-#: src/insets/InsetInclude.cpp:569
+#: src/insets/InsetInclude.cpp:575
 msgid "Different textclasses"
 msgstr "Rozdielne triedy (textclass)"
 
-#: src/insets/InsetInclude.cpp:584
+#: src/insets/InsetInclude.cpp:590
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -22844,11 +22859,11 @@ msgstr ""
 "používa modul `%2$s',\n"
 "ktorý sa nepoužíva v rodičovskom dokumente."
 
-#: src/insets/InsetInclude.cpp:588
+#: src/insets/InsetInclude.cpp:594
 msgid "Module not found"
 msgstr "Modul nenájdený"
 
-#: src/insets/InsetInclude.cpp:613
+#: src/insets/InsetInclude.cpp:619
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
@@ -22857,15 +22872,15 @@ msgstr ""
 "Zahrnutý súbor `%1$s'  nebol správne exportovaný.\n"
 "Upozornenie: Možné, že LaTeXov export nie je úplný."
 
-#: src/insets/InsetInclude.cpp:622
+#: src/insets/InsetInclude.cpp:628
 msgid "Export failure"
 msgstr "Exportovanie zlyhalo"
 
-#: src/insets/InsetInclude.cpp:728
+#: src/insets/InsetInclude.cpp:734
 msgid "Unsupported Inclusion"
 msgstr "Nepodporovaná Inklúzia"
 
-#: src/insets/InsetInclude.cpp:729
+#: src/insets/InsetInclude.cpp:735
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
