@@ -251,8 +251,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-03-04 23:51+0100\n"
-"PO-Revision-Date: 2011-02-01 17:44+0100\n"
+"POT-Creation-Date: 2011-03-09 23:15+0100\n"
+"PO-Revision-Date: 2011-03-09 09:23+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -776,7 +776,7 @@ msgstr "Ajouter &tout"
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
 #: src/Buffer.cpp:2272 src/Buffer.cpp:3768 src/Buffer.cpp:3831
-#: src/LyXVC.cpp:89 src/LyXVC.cpp:222 src/frontends/qt4/GuiBranches.cpp:177
+#: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1801
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -1419,7 +1419,6 @@ msgid "Forma&t:"
 msgstr "Forma&t :"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:191
-#, fuzzy
 msgid ""
 "Enable LyX to preview this material; only if graphics previewing is not "
 "disabled at application level (see Preference dialog)."
@@ -1543,7 +1542,6 @@ msgid "TabWidget"
 msgstr "TabWidget"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:20
-#, fuzzy
 msgid "Sear&ch"
 msgstr "&Rechercher"
 
@@ -1609,9 +1607,8 @@ msgid "Replace &All"
 msgstr "Remplacer &tout"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:163
-#, fuzzy
 msgid "S&ettings"
-msgstr "Paramètres"
+msgstr "P&aramètres"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:178
 msgid "The scope to which the search horizon is restricted"
@@ -1731,7 +1728,6 @@ msgid "FontUi"
 msgstr "FontUi"
 
 #: src/frontends/qt4/ui/FontUi.ui:19
-#, fuzzy
 msgid "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)"
 msgstr ""
 "Utiliser directement les polices OpenType et TrueType (utilisation de XeTeX "
@@ -1742,7 +1738,6 @@ msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
 msgstr "&Utiliser des polices non-TeX (via XeTeX/LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:42
-#, fuzzy
 msgid "&Default family:"
 msgstr "Famille im&plicite :"
 
@@ -2146,8 +2141,8 @@ msgstr "Incorporé (input)"
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1085
-#: src/insets/InsetInclude.cpp:1091
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1091
+#: src/insets/InsetInclude.cpp:1097
 msgid "Program Listing"
 msgstr "Listing de code source"
 
@@ -2255,12 +2250,11 @@ msgstr "Application i&mmédiate"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:79
 msgid "Restore initial values in dialog"
-msgstr ""
+msgstr "Restaurer les valeurs initiales dans le fenêtre de dialogue"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:92
-#, fuzzy
 msgid "Push new inset into the document"
-msgstr "Le nom de l'étiquette tel qu'elle apparaîtra dans le document"
+msgstr "Inclure le nouvel insert dans le document"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:95
 msgid "New Inset"
@@ -2968,9 +2962,8 @@ msgid "&Strict XHTML 1.1"
 msgstr "XHTML 1.1 &strict"
 
 #: src/frontends/qt4/ui/OutputUi.ui:137
-#, fuzzy
 msgid "&Math output:"
-msgstr "Résultat imprimable &maths :"
+msgstr "Résultat imprimable &mathématique :"
 
 #: src/frontends/qt4/ui/OutputUi.ui:153
 msgid "Format to use for math output."
@@ -2996,9 +2989,8 @@ msgid "LaTeX"
 msgstr "LaTeX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:186
-#, fuzzy
 msgid "Math &image scaling:"
-msgstr "Mise à l'échelle des &images maths :"
+msgstr "Mise à l'échelle des &images mathématiques :"
 
 #: src/frontends/qt4/ui/OutputUi.ui:202
 msgid "Scaling factor for images used for math output."
@@ -3544,11 +3536,11 @@ msgstr "Format de &document"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:66
 msgid "Check this to show the current format in the File > Export menu"
-msgstr ""
+msgstr "Cocher pour afficher le format courant du menu Fichier > Exporter"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:69
 msgid "Sho&w in export menu"
-msgstr ""
+msgstr "A&fficher dan le menu exporter"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:76
 msgid "Vector &graphics format"
@@ -4302,13 +4294,13 @@ msgid "Automatic help"
 msgstr "Aide automatique"
 
 #: src/frontends/qt4/ui/PrefUi.ui:76
-#, fuzzy
 msgid ""
 "Checking this allows the automatic display of helpful comments for insets in "
 "the main work area of an edited document"
 msgstr ""
-"Cocher ceci permet l'affichage automatique de commentaires d'aide dans la "
-"zone de travail principale d'un document en cours de modification"
+"Cocher ceci permet l'affichage automatique de commentaires d'aide pour les "
+"inserts dans la zone de travail principale d'un document en cours de "
+"modification"
 
 #: src/frontends/qt4/ui/PrefUi.ui:79
 msgid "&Enable tool tips in main work area"
@@ -4687,9 +4679,8 @@ msgid "&Export formats:"
 msgstr "&Formats d'exportation :"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:111
-#, fuzzy
 msgid "&Send exported file to command:"
-msgstr "Envoyer le document à la commande"
+msgstr "&Envoyer le document exporté à la commande :"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:13
 msgid "Edit shortcut"
@@ -4905,9 +4896,8 @@ msgid "Table-wide settings"
 msgstr "Paramètres globaux du tableau"
 
 #: src/frontends/qt4/ui/TabularUi.ui:338
-#, fuzzy
 msgid "Table w&idth:"
-msgstr "Note de tableau :"
+msgstr "Lar&geur de tableau :"
 
 #: src/frontends/qt4/ui/TabularUi.ui:354
 msgid "Verti&cal alignment:"
@@ -5168,18 +5158,16 @@ msgid "Indent consecutive paragraphs"
 msgstr "Les paragraphes successifs sont indentés"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:37
-#, fuzzy
 msgid "&Indentation:"
-msgstr "&Indentation"
+msgstr "&Indentation :"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:47
 msgid "Size of the indentation"
 msgstr "Taille de l'indentation"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:115
-#, fuzzy
 msgid "&Vertical space:"
-msgstr "&Espacement vertical"
+msgstr "&Espacement vertical :"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:125
 msgid "Size of the vertical space"
@@ -6411,14 +6399,12 @@ msgid "Dataset:"
 msgstr "Ensemble de données :"
 
 #: lib/layouts/achemso.layout:100
-#, fuzzy
 msgid "Alt Affiliation"
-msgstr "AffiliationAlt"
+msgstr "Affiliation autre"
 
 #: lib/layouts/achemso.layout:105
-#, fuzzy
 msgid "Also Affiliation"
-msgstr "AffiliationAlt"
+msgstr "Affiliation égale"
 
 #: lib/layouts/achemso.layout:110 lib/layouts/lettre.layout:41
 #: lib/layouts/lettre.layout:342 lib/layouts/scrlttr2.layout:191
@@ -13115,7 +13101,7 @@ msgstr "Utiliser la propriété de verrouillage|p"
 
 #: lib/ui/stdmenus.inc:91
 msgid "More Formats & Options...|F"
-msgstr ""
+msgstr "Plus de formats et d'options...|o"
 
 #: lib/ui/stdmenus.inc:100
 msgid "Redo|R"
@@ -16918,11 +16904,11 @@ msgstr "LyxBlogger"
 
 #: lib/configure.py:876
 msgid "LyX Archive (zip)"
-msgstr ""
+msgstr "Archive LyX (zip)"
 
 #: lib/configure.py:879
 msgid "LyX Archive (tar.gz)"
-msgstr ""
+msgstr "Archive LyX (tar.gz)"
 
 #: src/BiblioInfo.cpp:247 src/frontends/qt4/GuiDocument.cpp:1935
 #, c-format
@@ -18565,7 +18551,6 @@ msgstr ""
 "Au revoir."
 
 #: src/LyX.cpp:669
-#, fuzzy
 msgid ""
 "SIGSEGV signal caught!\n"
 "Sorry, you have found a bug in LyX, hope you have not lost any data.\n"
@@ -18946,7 +18931,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3143
 msgid "Disable any kerning and ligatures for text drawing on screen."
-msgstr ""
+msgstr "Inhiber tout crénage ou ligature dans l'affichage du texte à l'écran."
 
 #: src/LyXRC.cpp:3150
 msgid ""
@@ -19399,7 +19384,7 @@ msgstr "(aucun message de journal)"
 msgid "LyX VC: Log Message"
 msgstr "LyX CV : Message de journal"
 
-#: src/LyXVC.cpp:216
+#: src/LyXVC.cpp:218
 #, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
@@ -19412,11 +19397,11 @@ msgstr ""
 "\n"
 "Voulez-vous revenir à l'ancienne version ?"
 
-#: src/LyXVC.cpp:221
+#: src/LyXVC.cpp:223
 msgid "Revert to stored version of document?"
 msgstr "Revenir à la version enregistrée du document ?"
 
-#: src/LyXVC.cpp:222 src/frontends/qt4/GuiView.cpp:3255
+#: src/LyXVC.cpp:224 src/frontends/qt4/GuiView.cpp:3255
 msgid "&Revert"
 msgstr "&Revenir à la Sauvegarde"
 
@@ -20790,13 +20775,14 @@ msgid "None (no fontenc)"
 msgstr "Aucune (pas de fontenc)"
 
 #: src/frontends/qt4/GuiDocument.cpp:803
-#, fuzzy
 msgid ""
 "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)\n"
 "You need to install the package \"fontspec\" to use this feature"
 msgstr ""
 "Utiliser directement les polices OpenType et TrueType (utilisation de XeTeX "
-"ou LuaTeX indispensable)"
+"ou LuaTeX indispensable).\n"
+"Vous devez installer le paquetage « fontspec » pour utiliser cette "
+"fonctionnalité."
 
 #: src/frontends/qt4/GuiDocument.cpp:835
 msgid "empty"
@@ -21875,9 +21861,8 @@ msgid "Find and Replace"
 msgstr "Rechercher et remplacer"
 
 #: src/frontends/qt4/GuiSendto.cpp:36
-#, fuzzy
 msgid "Export or Send Document"
-msgstr "OpenDocument"
+msgstr "Exporter ou envoyer le document"
 
 #: src/frontends/qt4/GuiShowFile.cpp:30
 msgid "Show File"
@@ -23232,7 +23217,7 @@ msgstr "Liste des %1$s"
 msgid "footnote"
 msgstr "note de bas de page"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:638
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:644
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -23278,19 +23263,34 @@ msgstr "Incorporation verbatim*"
 msgid "Include (excluded)"
 msgstr "Inclure (exclus)"
 
-#: src/insets/InsetInclude.cpp:499 src/insets/InsetInclude.cpp:740
-#: src/insets/InsetInclude.cpp:785
+#: src/insets/InsetInclude.cpp:499 src/insets/InsetInclude.cpp:746
+#: src/insets/InsetInclude.cpp:791
 msgid "Recursive input"
 msgstr "Inclusions récursives"
 
-#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:741
-#: src/insets/InsetInclude.cpp:786
+#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:747
+#: src/insets/InsetInclude.cpp:792
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 "Tentative d'incorporer le fichier %1$s dans lui-même ! Inclusion ignorée."
 
+#: src/insets/InsetInclude.cpp:559
+#, fuzzy, c-format
+msgid ""
+"Could not load included file\n"
+"`%1$s'\n"
+"Please, check whether it actually exists."
+msgstr ""
+"LyX n'a pas pu faire de copie de sauvegarde dans %1$s.\n"
+"Veuillez vérifier l'existence du répertoire et ses droits d'écriture."
+
 #: src/insets/InsetInclude.cpp:563
+#, fuzzy
+msgid "Missing included file"
+msgstr "Fichier sous-document"
+
+#: src/insets/InsetInclude.cpp:569
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -23301,11 +23301,11 @@ msgstr ""
 "est de la classe '%2$s'\n"
 "alors que le document est de la classe '%3$s'."
 
-#: src/insets/InsetInclude.cpp:569
+#: src/insets/InsetInclude.cpp:575
 msgid "Different textclasses"
 msgstr "Classes de document différentes"
 
-#: src/insets/InsetInclude.cpp:584
+#: src/insets/InsetInclude.cpp:590
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -23316,27 +23316,28 @@ msgstr ""
 "utilise le module '%2$s'\n"
 "qui n'est pas utilisé par le document parent."
 
-#: src/insets/InsetInclude.cpp:588
+#: src/insets/InsetInclude.cpp:594
 msgid "Module not found"
 msgstr "Module introuvable"
 
-#: src/insets/InsetInclude.cpp:613
+#: src/insets/InsetInclude.cpp:619
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
+"Le fichier inclus « %1$s » n'a pas été correctement exporté.\n"
+"Attention : l'exportation LaTeX est probablement incomplète."
 
-#: src/insets/InsetInclude.cpp:622
-#, fuzzy
+#: src/insets/InsetInclude.cpp:628
 msgid "Export failure"
-msgstr "Échec de la copie de sauvegarde"
+msgstr "Échec de l'exportation"
 
-#: src/insets/InsetInclude.cpp:728
+#: src/insets/InsetInclude.cpp:734
 msgid "Unsupported Inclusion"
 msgstr "Inclusion non acceptée"
 
-#: src/insets/InsetInclude.cpp:729
+#: src/insets/InsetInclude.cpp:735
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
