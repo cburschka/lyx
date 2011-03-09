@@ -1890,7 +1890,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		Language const * lang = languages.getLanguage(to_utf8(cmd.argument()));
 		if (!lang)
 			break;
-		selectWordWhenUnderCursor(cur, WHOLE_WORD);
+		selectWordWhenUnderCursor(cur, WHOLE_WORD_STRICT);
 		Font font(ignore_font, lang);
 		toggleAndShow(cur, this, font);
 		break;
