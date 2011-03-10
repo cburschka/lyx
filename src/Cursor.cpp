@@ -522,7 +522,7 @@ void Cursor::setCursorToAnchor()
 
 void Cursor::markEditPosition()
 {
-	if (inTexted() && new_word_.empty()) {
+	if (lyxrc.spellcheck_continuously && inTexted() && new_word_.empty()) {
 		FontSpan ow = locateWord(WHOLE_WORD);
 		if (ow.size() == 1) {
 			LYXERR(Debug::DEBUG, "start new word: "
@@ -547,12 +547,15 @@ void Cursor::clearNewWordPosition()
 
 void Cursor::checkNewWordPosition()
 {
-	if (new_word_.empty())
+	if (!lyxrc.spellcheck_continuously || new_word_.empty())
 		return ;
 	if (!inTexted())
 		clearNewWordPosition();
 	else {
-		if (pit() != new_word_.pit())
+		// forget the position of the current started word
+		// 1) the paragraph changes or
+		// 2) the count of nested insets changes
+		if (pit() != new_word_.pit() || depth() != new_word_.depth())
 			clearNewWordPosition();
 		else {
 			FontSpan nw = locateWord(WHOLE_WORD);
