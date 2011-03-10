@@ -95,14 +95,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-03-04 23:51+0100\n"
-"PO-Revision-Date: 2011-02-28 08:51+0100\n"
+"POT-Creation-Date: 2011-03-10 13:48+0100\n"
+"PO-Revision-Date: 2011-03-10 13:54+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
-"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
 "X-Poedit-Basepath: D:\\LyXSVN\\lyx-devel\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
@@ -619,7 +619,7 @@ msgstr "A&lle hinzufügen"
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
 #: src/Buffer.cpp:2272 src/Buffer.cpp:3768 src/Buffer.cpp:3831
-#: src/LyXVC.cpp:89 src/LyXVC.cpp:222 src/frontends/qt4/GuiBranches.cpp:177
+#: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1801
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -1989,8 +1989,8 @@ msgstr "Input"
 msgid "Verbatim"
 msgstr "Unformatiert"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1085
-#: src/insets/InsetInclude.cpp:1091
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1091
+#: src/insets/InsetInclude.cpp:1097
 msgid "Program Listing"
 msgstr "Programmlisting"
 
@@ -2101,12 +2101,11 @@ msgstr "&Direkt übernehmen"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:79
 msgid "Restore initial values in dialog"
-msgstr ""
+msgstr "Ursprüngliche Einstellungen des Dialogs wiederherstellen"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:92
-#, fuzzy
 msgid "Push new inset into the document"
-msgstr "Die Marke, wie sie im Dokument erscheint"
+msgstr "Ein neues Exemplar dieses Objekts ins Dokument einfügen"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:95
 msgid "New Inset"
@@ -17213,8 +17212,8 @@ msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
-"Eine Notsicherung wurde zwar erfolgreich geladen, doch die Originaldatei "
-"%1$s ist schreibgeschützt.\n"
+"Eine Notsicherung wurde zwar erfolgreich geladen, doch die Originaldatei %1"
+"$s ist schreibgeschützt.\n"
 "Bitte speichern Sie die Datei unter einem neuen Namen."
 
 #: src/Buffer.cpp:3785
@@ -17284,8 +17283,8 @@ msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
-"Eine Sicherungskopie wurde zwar erfolgreich geladen, doch die Originaldatei "
-"%1$s ist schreibgeschützt.\n"
+"Eine Sicherungskopie wurde zwar erfolgreich geladen, doch die Originaldatei %"
+"1$s ist schreibgeschützt.\n"
 "Bitte speichern Sie die Datei unter einem neuen Namen."
 
 #: src/Buffer.cpp:4172 src/insets/InsetCaption.cpp:338
@@ -18366,7 +18365,6 @@ msgstr ""
 "Tschüs."
 
 #: src/LyX.cpp:669
-#, fuzzy
 msgid ""
 "SIGSEGV signal caught!\n"
 "Sorry, you have found a bug in LyX, hope you have not lost any data.\n"
@@ -19217,7 +19215,7 @@ msgstr "(keine Protokollmeldung)"
 msgid "LyX VC: Log Message"
 msgstr "LyX VK: Protokollmeldung"
 
-#: src/LyXVC.cpp:216
+#: src/LyXVC.cpp:218
 #, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
@@ -19230,11 +19228,11 @@ msgstr ""
 "\n"
 "Möchten Sie zur älteren Version zurückkehren?"
 
-#: src/LyXVC.cpp:221
+#: src/LyXVC.cpp:223
 msgid "Revert to stored version of document?"
 msgstr "Zur gespeicherten Version des Dokuments zurückkehren?"
 
-#: src/LyXVC.cpp:222 src/frontends/qt4/GuiView.cpp:3255
+#: src/LyXVC.cpp:224 src/frontends/qt4/GuiView.cpp:3255
 msgid "&Revert"
 msgstr "&Wiederherstellen"
 
@@ -23069,7 +23067,7 @@ msgstr "Liste der %1$s"
 msgid "footnote"
 msgstr "Fußnote"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:638
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:644
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -23115,20 +23113,34 @@ msgstr "Unformatiert*"
 msgid "Include (excluded)"
 msgstr "Include (ausgeschlossen)"
 
-#: src/insets/InsetInclude.cpp:499 src/insets/InsetInclude.cpp:740
-#: src/insets/InsetInclude.cpp:785
+#: src/insets/InsetInclude.cpp:499 src/insets/InsetInclude.cpp:746
+#: src/insets/InsetInclude.cpp:791
 msgid "Recursive input"
 msgstr "Rekursive Eingabe"
 
-#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:741
-#: src/insets/InsetInclude.cpp:786
+#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:747
+#: src/insets/InsetInclude.cpp:792
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 "Sie haben versucht, die Datei %1$s in sich selbst einzubetten! Die "
 "Einbettung wird ignoriert."
 
+#: src/insets/InsetInclude.cpp:559
+#, c-format
+msgid ""
+"Could not load included file\n"
+"`%1$s'\n"
+"Please, check whether it actually exists."
+msgstr ""
+"Die eingebettete Datei '%1$s' kann nicht gelanden werden.\n"
+"Bitte prüfen Sie, ob diese Datei existiert."
+
 #: src/insets/InsetInclude.cpp:563
+msgid "Missing included file"
+msgstr "Fehlende eingebettete Datei"
+
+#: src/insets/InsetInclude.cpp:569
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -23139,11 +23151,11 @@ msgstr ""
 "hat die Textklasse `%2$s',\n"
 "während die Hauptdatei die Textklasse `%3$s' hat."
 
-#: src/insets/InsetInclude.cpp:569
+#: src/insets/InsetInclude.cpp:575
 msgid "Different textclasses"
 msgstr "Unterschiedliche Textklassen"
 
-#: src/insets/InsetInclude.cpp:584
+#: src/insets/InsetInclude.cpp:590
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -23154,11 +23166,11 @@ msgstr ""
 "benutzt Modul `%2$s',\n"
 "das nicht in der Hauptdatei benutzt wird."
 
-#: src/insets/InsetInclude.cpp:588
+#: src/insets/InsetInclude.cpp:594
 msgid "Module not found"
 msgstr "Modul nicht gefunden"
 
-#: src/insets/InsetInclude.cpp:613
+#: src/insets/InsetInclude.cpp:619
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
@@ -23169,15 +23181,15 @@ msgstr ""
 "wurde nicht korrekt exportiert.\n"
 "Vorsicht, die LaTeX-Ausgabe ist vermutlich lückenhaft!"
 
-#: src/insets/InsetInclude.cpp:622
+#: src/insets/InsetInclude.cpp:628
 msgid "Export failure"
 msgstr "Exportfehler"
 
-#: src/insets/InsetInclude.cpp:728
+#: src/insets/InsetInclude.cpp:734
 msgid "Unsupported Inclusion"
 msgstr "Einbettung nicht unterstützt"
 
-#: src/insets/InsetInclude.cpp:729
+#: src/insets/InsetInclude.cpp:735
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
@@ -23444,8 +23456,8 @@ msgstr "Verfügbare Listing-Parameter sind %1$s"
 #, c-format
 msgid "Available listings parameters containing string \"%1$s\" are %2$s"
 msgstr ""
-"Verfügbare Listing-Parameter, die die Zeichenkette \"%1$s\" enthalten, sind "
-"%2$s"
+"Verfügbare Listing-Parameter, die die Zeichenkette \"%1$s\" enthalten, sind %"
+"2$s"
 
 #: src/insets/InsetListingsParams.cpp:653
 #, c-format
@@ -24269,15 +24281,15 @@ msgstr "Unbekannter Benutzer"
 #~ msgstr "Rechtschreibfehler"
 
 #~ msgid ""
-#~ "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%"
-#~ "\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]]"
-#~ "[[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages"
-#~ "%[[, %pages%]]}."
+#~ "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%\"{%"
+#~ "journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]][[{%"
+#~ "institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, %"
+#~ "pages%]]}."
 #~ msgstr ""
-#~ "{%Author%[[%Author%, ]][[{%Editor%[[%Editor%, ed., ]]}]]}\"%Titel%"
-#~ "\"{%Journal%[[, {!<i>!}%Journal%{!</i>!}]][[{%Herausgeber%[[, %Herausgeber"
-#~ "%]][[{%Institution%[[, %Institution%]]}]]}]]}{%Jahr%[[ (%Jahr%)]]}{%Seiten"
-#~ "%[[, %Seiten%]]}."
+#~ "{%Author%[[%Author%, ]][[{%Editor%[[%Editor%, ed., ]]}]]}\"%Titel%\"{%"
+#~ "Journal%[[, {!<i>!}%Journal%{!</i>!}]][[{%Herausgeber%[[, %Herausgeber%]]"
+#~ "[[{%Institution%[[, %Institution%]]}]]}]]}{%Jahr%[[ (%Jahr%)]]}{%Seiten%"
+#~ "[[, %Seiten%]]}."
 
 #~ msgid "Use the XeTeX processing engine"
 #~ msgstr "Den XeTeX-Prozessor verwenden"
