@@ -26,7 +26,7 @@ namespace lyx {
 class TexRow {
 public:
 	///
-	TexRow() : lastid(-1), lastpos(-1) {}
+	TexRow() : lastid(-1), lastpos(-1), started(false) {}
 
 	/// Clears structure
 	void reset();
@@ -90,6 +90,8 @@ private:
 	int lastid;
 	/// Last position
 	int lastpos;
+	/// Is id/pos already registered for current row?
+	bool started;
 };
 
 

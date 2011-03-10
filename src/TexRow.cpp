@@ -32,8 +32,12 @@ void TexRow::reset()
 
 void TexRow::start(int id, int pos)
 {
+	if (started)
+		return;
+
 	lastid = id;
 	lastpos = pos;
+	started = true;
 }
 
 
@@ -42,6 +46,7 @@ void TexRow::newline()
 	int const id = lastid;
 	RowList::value_type tmp(id, lastpos);
 	rowlist.push_back(tmp);
+	started = false;
 }
 
 void TexRow::newlines(int num_lines)
