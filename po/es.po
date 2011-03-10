@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-03-04 23:51+0100\n"
-"PO-Revision-Date: 2011-02-26 11:52+0100\n"
+"POT-Creation-Date: 2011-03-10 13:26+0100\n"
+"PO-Revision-Date: 2011-03-10 10:25+0100\n"
 "Last-Translator: Ignacio García <ignacio.gmorales@gmail.com>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
 "Language: es\n"
@@ -407,7 +407,7 @@ msgstr "Valor de ancho"
 
 #: src/frontends/qt4/ui/BoxUi.ui:269
 msgid "Inner box -- needed for fixed width & line breaks"
-msgstr "Cuadro interior --necesario para ancho fijo y saltos de línea"
+msgstr "Cuadro interior (necesario para ancho fijo y saltos de línea)"
 
 #: src/frontends/qt4/ui/BoxUi.ui:273 src/frontends/qt4/ui/HSpaceUi.ui:32
 #: src/frontends/qt4/ui/ListingsUi.ui:98
@@ -533,7 +533,7 @@ msgstr "Añadir &todo"
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
 #: src/Buffer.cpp:2272 src/Buffer.cpp:3768 src/Buffer.cpp:3831
-#: src/LyXVC.cpp:89 src/LyXVC.cpp:222 src/frontends/qt4/GuiBranches.cpp:177
+#: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1801
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -1890,8 +1890,8 @@ msgstr "Incorporar"
 msgid "Verbatim"
 msgstr "Literal"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1085
-#: src/insets/InsetInclude.cpp:1091
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1091
+#: src/insets/InsetInclude.cpp:1097
 msgid "Program Listing"
 msgstr "Listado de programa"
 
@@ -1999,16 +1999,15 @@ msgstr "Aplicar in&mediatamente"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:79
 msgid "Restore initial values in dialog"
-msgstr ""
+msgstr "Restaurar los valores iniciales en el diálogo"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:92
-#, fuzzy
 msgid "Push new inset into the document"
-msgstr "La etiqueta tal como aparece en el documento"
+msgstr "Insertar un nuevo recuadro en el documento"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:95
 msgid "New Inset"
-msgstr "Insertar"
+msgstr "Recuadro nuevo"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:19
 msgid "Document &class"
@@ -12236,7 +12235,7 @@ msgstr "Cerrar cuadro"
 #: lib/ui/stdcontext.inc:147 lib/ui/stdcontext.inc:153
 #: lib/ui/stdcontext.inc:195 lib/ui/stdcontext.inc:567
 msgid "Dissolve Inset|D"
-msgstr "Disolver cuadro|D"
+msgstr "Disolver cuadro|i"
 
 #: lib/ui/stdcontext.inc:152
 msgid "Show Label|L"
@@ -12793,7 +12792,7 @@ msgstr "Usar la propiedad de bloqueo|U"
 
 #: lib/ui/stdmenus.inc:91
 msgid "More Formats & Options...|F"
-msgstr "Más formatos y opciones...|f"
+msgstr "Más formatos y opciones...|s"
 
 #: lib/ui/stdmenus.inc:100
 msgid "Redo|R"
@@ -13197,7 +13196,7 @@ msgstr "Espacio vertical...|v"
 
 #: lib/ui/stdmenus.inc:399
 msgid "Phantom|m"
-msgstr "Fantasma|n"
+msgstr "Fantasma|F"
 
 #: lib/ui/stdmenus.inc:401
 msgid "Hyphenation Point|H"
@@ -18233,7 +18232,6 @@ msgstr ""
 "Adiós. "
 
 #: src/LyX.cpp:669
-#, fuzzy
 msgid ""
 "SIGSEGV signal caught!\n"
 "Sorry, you have found a bug in LyX, hope you have not lost any data.\n"
@@ -18243,7 +18241,7 @@ msgid ""
 msgstr ""
 "¡Señal SIGSEGV capturada!\n"
 "Lo sentimos, has encontrado un fallo en LyX, ojalá no hayas perdido datos.\n"
-"Por favor, lee las instrucciones de informe de fallos en "
+"Por favor, lee las instrucciones sobre informe de fallos en "
 "'Ayuda>Introducción' y envíanoslo, si es necesario. ¡Gracias!\n"
 "Adiós."
 
@@ -18611,6 +18609,7 @@ msgstr ""
 #: src/LyXRC.cpp:3143
 msgid "Disable any kerning and ligatures for text drawing on screen."
 msgstr ""
+"Deshabilitar el dibujo en pantalla de interletraje y ligaduras en el texto."
 
 #: src/LyXRC.cpp:3150
 msgid ""
@@ -19061,7 +19060,7 @@ msgstr "(sin mensaje de registro)"
 msgid "LyX VC: Log Message"
 msgstr "LyX CV: Mensaje de registro"
 
-#: src/LyXVC.cpp:216
+#: src/LyXVC.cpp:218
 #, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
@@ -19074,11 +19073,11 @@ msgstr ""
 "\n"
 "¿Desea volver a la versión guardada?"
 
-#: src/LyXVC.cpp:221
+#: src/LyXVC.cpp:223
 msgid "Revert to stored version of document?"
 msgstr "¿Revertir a la versión guardada del documento?"
 
-#: src/LyXVC.cpp:222 src/frontends/qt4/GuiView.cpp:3255
+#: src/LyXVC.cpp:224 src/frontends/qt4/GuiView.cpp:3255
 msgid "&Revert"
 msgstr "&Revertir"
 
@@ -22884,7 +22883,7 @@ msgstr "Lista de %1$s"
 msgid "footnote"
 msgstr "Nota al pie"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:638
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:644
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -22930,18 +22929,33 @@ msgstr "Entrada Literal*"
 msgid "Include (excluded)"
 msgstr "Anexar (excluido)"
 
-#: src/insets/InsetInclude.cpp:499 src/insets/InsetInclude.cpp:740
-#: src/insets/InsetInclude.cpp:785
+#: src/insets/InsetInclude.cpp:499 src/insets/InsetInclude.cpp:746
+#: src/insets/InsetInclude.cpp:791
 msgid "Recursive input"
 msgstr "Entrada recurrente"
 
-#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:741
-#: src/insets/InsetInclude.cpp:786
+#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:747
+#: src/insets/InsetInclude.cpp:792
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "¡Intentó incluir el archivo %1$s en sí mismo! Ignorando la inclusión."
 
+#: src/insets/InsetInclude.cpp:559
+#, fuzzy, c-format
+msgid ""
+"Could not load included file\n"
+"`%1$s'\n"
+"Please, check whether it actually exists."
+msgstr ""
+"No se ha podido crear copia de seguridad de %1$s.\n"
+"Comprueba si existe el directorio y permite escritura."
+
 #: src/insets/InsetInclude.cpp:563
+#, fuzzy
+msgid "Missing included file"
+msgstr "Incluir archivo"
+
+#: src/insets/InsetInclude.cpp:569
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -22952,11 +22966,11 @@ msgstr ""
 "tiene la clase de texto `%2$s'\n"
 "mientras que el archivo padre tiene la clase de texto `%3$s'."
 
-#: src/insets/InsetInclude.cpp:569
+#: src/insets/InsetInclude.cpp:575
 msgid "Different textclasses"
 msgstr "Clases de texto diferentes"
 
-#: src/insets/InsetInclude.cpp:584
+#: src/insets/InsetInclude.cpp:590
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -22967,27 +22981,28 @@ msgstr ""
 "utiliza el módulo `%2$s'\n"
 "que no es utilizado en el archivo padre."
 
-#: src/insets/InsetInclude.cpp:588
+#: src/insets/InsetInclude.cpp:594
 msgid "Module not found"
 msgstr "Módulo no encontrado"
 
-#: src/insets/InsetInclude.cpp:613
+#: src/insets/InsetInclude.cpp:619
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
+"El archivo incluido `%1$s' no se ha exportado correctamente.\n"
+"Atención: probablemente la exportación a LaTeX está incompleta."
 
-#: src/insets/InsetInclude.cpp:622
-#, fuzzy
+#: src/insets/InsetInclude.cpp:628
 msgid "Export failure"
-msgstr "fallo de copia de seguridad"
+msgstr "Fallo al exportar"
 
-#: src/insets/InsetInclude.cpp:728
+#: src/insets/InsetInclude.cpp:734
 msgid "Unsupported Inclusion"
 msgstr "Inclusión no soportada"
 
-#: src/insets/InsetInclude.cpp:729
+#: src/insets/InsetInclude.cpp:735
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
