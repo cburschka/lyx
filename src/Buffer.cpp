@@ -3930,6 +3930,12 @@ void Buffer::bufferErrors(TeXErrors const & terr, ErrorList & errorList) const
 			found = p->texrow.getIdFromRow(errorRow, id_end, pos_end);
 		} while (found && id_start == id_end && pos_start == pos_end);
 
+		if (id_start != id_end) {
+			// Next registered position is outside the inset where
+			// the error occurred, so signal end-of-paragraph
+			pos_end = 0;
+		}
+
 		errorList.push_back(ErrorItem(it->error_desc,
 			it->error_text, id_start, pos_start, pos_end, buf));
 	}
