@@ -73,11 +73,6 @@
 
 #include <cmath>
 
-#ifdef Q_WS_WIN
-int const CursorWidth = 2;
-#else
-int const CursorWidth = 1;
-#endif
 int const TabIndicatorWidth = 3;
 
 #undef KeyPress
@@ -128,7 +123,9 @@ namespace frontend {
 
 class CursorWidget {
 public:
-	CursorWidget() {}
+	CursorWidget() {
+		recomputeWidth();
+	}
 
 	void draw(QPainter & painter)
 	{
@@ -141,7 +138,7 @@ public:
 		int bot = rect_.bottom();
 
 		// draw vertical line
-		painter.fillRect(x_, y, CursorWidth, rect_.height(), color_);
+		painter.fillRect(x_, y, cursor_width_, rect_.height(), color_);
 
 		// draw RTL/LTR indication
 		painter.setPen(color_);
@@ -149,7 +146,7 @@ public:
 			if (rtl_)
 				painter.drawLine(x_, bot, x_ - l, bot);
 			else
-				painter.drawLine(x_, bot, x_ + CursorWidth + r, bot);
+				painter.drawLine(x_, bot, x_ + cursor_width_ + r, bot);
 		}
 
 		// draw completion triangle
@@ -160,8 +157,8 @@ public:
 				painter.drawLine(x_ - 1, m - d, x_ - 1 - d, m);
 				painter.drawLine(x_ - 1, m + d, x_ - 1 - d, m);
 			} else {
-				painter.drawLine(x_ + CursorWidth, m - d, x_ + CursorWidth + d, m);
-				painter.drawLine(x_ + CursorWidth, m + d, x_ + CursorWidth + d, m);
+				painter.drawLine(x_ + cursor_width_, m - d, x_ + cursor_width_ + d, m);
+				painter.drawLine(x_ + cursor_width_, m + d, x_ + cursor_width_ + d, m);
 			}
 		}
 	}
@@ -196,11 +193,17 @@ public:
 		}
 
 		// compute overall rectangle
-		rect_ = QRect(x - l, y, CursorWidth + r + l, h);
+		rect_ = QRect(x - l, y, cursor_width_ + r + l, h);
 	}
 
 	void show(bool set_show = true) { show_ = set_show; }
 	void hide() { show_ = false; }
+	int cursorWidth() const { return cursor_width_; }
+	void recomputeWidth() {
+		cursor_width_ = lyxrc.cursor_width
+			? lyxrc.cursor_width 
+			: 1 + int((lyxrc.zoom + 50) / 200.0);
+	}
 
 	QRect const & rect() { return rect_; }
 
@@ -219,6 +222,8 @@ private:
 	QRect rect_;
 	/// x position (were the vertical line is drawn)
 	int x_;
+	
+	int cursor_width_;
 };
 
 
@@ -600,6 +605,7 @@ void GuiWorkArea::showCursor()
 		&& !completer_->popupVisible()
 		&& !completer_->inlineVisible();
 	cursor_visible_ = true;
+	cursor_->recomputeWidth();
 	showCursor(p.x_, p.y_, h, l_shape, isrtl, completable);
 }
 

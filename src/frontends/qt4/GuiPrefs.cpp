@@ -2528,6 +2528,8 @@ PrefEdit::PrefEdit(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(macroEditStyleCO, SIGNAL(activated(int)),
 		this, SIGNAL(changed()));
+	connect(cursorWidthSB, SIGNAL(valueChanged(int)),
+		this, SIGNAL(changed()));
 	connect(fullscreenLimitGB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(fullscreenWidthSB, SIGNAL(valueChanged(int)),
@@ -2555,6 +2557,7 @@ void PrefEdit::apply(LyXRC & rc) const
 		case 1:	rc.macro_edit_style = LyXRC::MACRO_EDIT_INLINE; break;
 		case 2:	rc.macro_edit_style = LyXRC::MACRO_EDIT_LIST;	break;
 	}
+	rc.cursor_width = cursorWidthSB->value();
 	rc.full_screen_toolbars = toggleToolbarsCB->isChecked();
 	rc.full_screen_scrollbar = toggleScrollbarCB->isChecked();
 	rc.full_screen_tabbar = toggleTabbarCB->isChecked();
@@ -2572,6 +2575,7 @@ void PrefEdit::update(LyXRC const & rc)
 	sortEnvironmentsCB->setChecked(rc.sort_layouts);
 	groupEnvironmentsCB->setChecked(rc.group_layouts);
 	macroEditStyleCO->setCurrentIndex(rc.macro_edit_style);
+	cursorWidthSB->setValue(rc.cursor_width);
 	toggleScrollbarCB->setChecked(rc.full_screen_scrollbar);
 	toggleToolbarsCB->setChecked(rc.full_screen_toolbars);
 	toggleTabbarCB->setChecked(rc.full_screen_tabbar);

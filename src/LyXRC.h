@@ -65,6 +65,7 @@ public:
 		RC_CONVERTER_CACHE_MAXAGE,
 		RC_COPIER,
 		RC_CURSOR_FOLLOWS_SCROLLBAR,
+		RC_CURSOR_WIDTH,
 		RC_DATE_INSERT_FORMAT,
 		RC_DEFAULT_DECIMAL_POINT,
 		RC_DEFAULT_LANGUAGE,
@@ -530,6 +531,8 @@ public:
 	ScrollWheelZoom scroll_wheel_zoom;
 	///
 	bool force_paint_single_char;
+	///
+	int cursor_width;
 };
 
 

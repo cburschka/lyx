@@ -85,6 +85,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\converter_cache_maxage", LyXRC::RC_CONVERTER_CACHE_MAXAGE },
 	{ "\\copier", LyXRC::RC_COPIER },
 	{ "\\cursor_follows_scrollbar", LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR },
+	{ "\\cursor_width", LyXRC::RC_CURSOR_WIDTH },
 	{ "\\date_insert_format", LyXRC::RC_DATE_INSERT_FORMAT },
 	{ "\\def_file", LyXRC::RC_DEFFILE },
 	{ "\\default_decimal_point", LyXRC::RC_DEFAULT_DECIMAL_POINT },
@@ -360,6 +361,7 @@ void LyXRC::setDefaults()
 	completion_inline_dots = -1;
 	completion_inline_delay = 0.2;
 	default_decimal_point = ".";
+	cursor_width = 1;
 }
 
 
@@ -901,6 +903,10 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 
 		case RC_CURSOR_FOLLOWS_SCROLLBAR:
 			lexrc >> cursor_follows_scrollbar;
+			break;
+
+		case RC_CURSOR_WIDTH:
+			lexrc >> cursor_width;
 			break;
 
 		case RC_SCROLL_BELOW_DOCUMENT:
@@ -1751,6 +1757,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		    != system_lyxrc.cursor_follows_scrollbar) {
 			os << "\\cursor_follows_scrollbar "
 			   << convert<string>(cursor_follows_scrollbar) << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_CURSOR_WIDTH:
+		if (ignore_system_lyxrc ||
+			cursor_width
+			!= system_lyxrc.cursor_width) {
+			os << "\\cursor_width "
+			<< cursor_width << '\n';
 		}
 		if (tag != RC_LAST)
 			break;
@@ -3005,6 +3020,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_EXPORT_OVERWRITE:
 	case LyXRC::RC_DEFAULT_DECIMAL_POINT:
 	case LyXRC::RC_SCROLL_WHEEL_ZOOM:
+	case LyXRC::RC_CURSOR_WIDTH:
 	case LyXRC::RC_LAST:
 		break;
 	}
@@ -3076,6 +3092,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_CURSOR_FOLLOWS_SCROLLBAR:
 		str = _("LyX normally doesn't update the cursor position if you move the scrollbar. Set to true if you'd prefer to always have the cursor on screen.");
+		break;
+
+	case RC_CURSOR_WIDTH:
+		str = _("Configure the width of the text cursor. Automatic zoom controled cursor width used when set to 0.");
 		break;
 
 	case RC_SCROLL_BELOW_DOCUMENT:
