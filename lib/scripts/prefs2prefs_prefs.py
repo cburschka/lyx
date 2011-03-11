@@ -49,7 +49,7 @@ def remove_obsolete(line):
 def language_use_babel(line):
 	if not line.startswith("\language_use_babel"):
 		return no_match
-	re_lub = re.compile(r'^\\language_use_babel\s+(true|false)')
+	re_lub = re.compile(r'^\\language_use_babel\s+"?(true|false)')
 	m = re_lub.match(line)
 	val = m.group(1)
 	newval = '0'
