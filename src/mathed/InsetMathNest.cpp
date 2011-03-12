@@ -402,7 +402,14 @@ void InsetMathNest::latex(otexstream & os, OutputParams const & runparams) const
 	wi.canBreakLine(os.canBreakLine());
 	write(wi);
 	os.canBreakLine(wi.canBreakLine());
-	os.texrow().newlines(wi.line());
+
+	int lf = wi.line();
+	if (lf > 0 && runparams.lastid != -1) {
+		--lf;
+		os.texrow().newline();
+		os.texrow().start(runparams.lastid, runparams.lastpos);
+	}
+	os.texrow().newlines(lf);
 }
 
 

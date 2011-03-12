@@ -374,6 +374,8 @@ void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 
 	// Force \begin{<floatname>} to appear in a new line.
 	os << breakln << "\\begin{" << from_ascii(tmptype) << '}';
+	if (runparams.lastid != -1)
+		os.texrow().start(runparams.lastid, runparams.lastpos);
 	// We only output placement if different from the def_placement.
 	// sidewaysfloats always use their own page
 	if (!placement.empty() && !params_.sideways)

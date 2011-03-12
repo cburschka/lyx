@@ -218,6 +218,12 @@ public:
 	 */
 	mutable pit_type par_end;
 
+	/// Id of the last paragraph before an inset
+	mutable int lastid;
+
+	/// Last position in the last paragraph before an inset
+	mutable int lastpos;
+
 	/// is this the last paragraph in the current buffer/inset?
 	bool isLastPar;
 	

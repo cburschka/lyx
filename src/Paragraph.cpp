@@ -1117,6 +1117,8 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 	int prev_rows = os.texrow().rows();
 
 	try {
+		runparams.lastid = id_;
+		runparams.lastpos = i;
 		inset->latex(os, runparams);
 	} catch (EncodingException & e) {
 		// add location information and throw again.

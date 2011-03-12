@@ -27,7 +27,7 @@ OutputParams::OutputParams(Encoding const * enc)
 	  inComment(false), inTableCell(NO), inFloat(NONFLOAT),
 	  inIndexEntry(false), inDeletedInset(0),
 	  changeOfDeletedInset(Change::UNCHANGED),
-	  par_begin(0), par_end(0), isLastPar(false),
+	  par_begin(0), par_end(0), lastid(-1), lastpos(-1), isLastPar(false),
 	  dryrun(false), pass_thru(false), 
 	  html_disable_captions(false), html_in_par(false),
 	  html_make_pars(true), for_toc(false), includeall(false)

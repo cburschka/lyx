@@ -271,7 +271,10 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		}
 	}
 
-	os << "%\n";
+	os << safebreakln;
+	if (runparams.lastid != -1)
+		os.texrow().start(runparams.lastid, runparams.lastpos);
+
 	// Adapt to column/text width correctly also if paragraphs indented:
 	if (stdwidth)
 		os << "\\noindent";

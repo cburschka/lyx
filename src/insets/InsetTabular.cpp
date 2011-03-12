@@ -2563,6 +2563,10 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 	//+                      first the opening preamble                    +
 	//+---------------------------------------------------------------------
 
+	os << safebreakln;
+	if (runparams.lastid != -1)
+		os.texrow().start(runparams.lastid, runparams.lastpos);
+
 	if (rotate)
 		os << "\\begin{sideways}\n";
 
