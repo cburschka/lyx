@@ -943,9 +943,11 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 
 	// In which paragraph do we have to set the cursor ?
 	Cursor & cur = buffer_view_->cursor();
-	// FIXME: we use innerText() because we only know how to handle text.
-	// so this will not work nicely inside big equation.
-	TextMetrics const & tm = buffer_view_->textMetrics(cur.innerText());
+	// FIXME: we don't know howto handle math.
+	Text * text = cur.text();
+	if (!text)
+		return;
+	TextMetrics const & tm = buffer_view_->textMetrics(text);
 
 	pair<pit_type, const ParagraphMetrics *> p = up ? tm.first() : tm.last();
 	ParagraphMetrics const & pm = *p.second;
