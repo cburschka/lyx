@@ -158,6 +158,7 @@ pair<pit_type, ParagraphMetrics const *> TextMetrics::first() const
 
 pair<pit_type, ParagraphMetrics const *> TextMetrics::last() const
 {
+	LASSERT(!par_metrics_.empty(), /**/);
 	ParMetricsCache::const_reverse_iterator it = par_metrics_.rbegin();
 	return make_pair(it->first, &it->second);
 }

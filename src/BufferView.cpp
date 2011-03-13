@@ -2244,6 +2244,7 @@ TextMetrics const & BufferView::textMetrics(Text const * t) const
 
 TextMetrics & BufferView::textMetrics(Text const * t)
 {
+	LASSERT(t, /**/);
 	TextMetricsCache::iterator tmc_it  = d->text_metrics_.find(t);
 	if (tmc_it == d->text_metrics_.end()) {
 		tmc_it = d->text_metrics_.insert(
