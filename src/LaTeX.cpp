@@ -757,6 +757,12 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				}
 			}
 
+			if (prefixIs(token, "! Paragraph ended before \\Hy@setref@link was complete.")){
+					// bug 7344. We must rerun LaTeX if hyperref has been toggled.
+					retval |= ERROR_RERUN;
+					LYXERR(Debug::LATEX, "Force rerun.");
+			}
+
 			if (!wait_for_error.empty() && prefixIs(token, "! Emergency stop.")){
 				retval |= LATEX_ERROR;
 				string errstr;
