@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-03-13 10:57+0100\n"
-"PO-Revision-Date: 2011-03-09 19:24+0100\n"
+"PO-Revision-Date: 2011-03-13 11:09+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -3185,9 +3185,8 @@ msgid "Cursor &follows scrollbar"
 msgstr "Kurzor &sleduje posuvník"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:46
-#, fuzzy
 msgid "Cursor width (&pixels):"
-msgstr "Použitá šírka obrazovky (pixel):"
+msgstr "Použitá šírka kurzoru (pixel):"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:74
 msgid "Scroll &below end of document"
@@ -18449,6 +18448,8 @@ msgid ""
 "Configure the width of the text cursor. Automatic zoom controled cursor "
 "width used when set to 0."
 msgstr ""
+"Konfigurovanie šírky textového kurzoru. Pri danej veľkosti 0, je šírka "
+"kontrolovaná automaticky."
 
 #: src/LyXRC.cpp:3102
 msgid ""
