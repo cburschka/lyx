@@ -88,7 +88,7 @@ Menuset
 
 	Menu "file_export"
 		ExportFormats
-		Item "More Formats & Options...|F" "buffer-export custom"
+		Item "More Formats & Options...|O" "buffer-export custom"
 	End
 
 #
