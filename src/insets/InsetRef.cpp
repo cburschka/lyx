@@ -82,7 +82,8 @@ ParamInfo const & InsetRef::findInfo(string const & /* cmdName */)
 // the command: \pfxcmd{suffix}.
 // 
 // for prettyref, we return "\prettyref" and put ref into label
-// and pfx into prefix. this is because prettyref 
+// and pfx into prefix. this is because prettyref uses the whole
+// label, thus: \prettyref{pfx:suffix}.
 //
 docstring InsetRef::getFormattedCmd(docstring const & ref, 
 	docstring & label, docstring & prefix) const
@@ -139,7 +140,11 @@ docstring InsetRef::getEscapedLabel(OutputParams const & rp) const
 void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 {
 	string const cmd = getCmdName();
-	if (cmd != "formatted") {
+
+	// refstyle defines its own version of \eqref
+	if (cmd != "formatted" &&
+	    !(cmd == "eqref" && buffer().params().use_refstyle)
+	   ) {
 		// We don't want to output p_["name"], since that is only used 
 		// in docbook. So we construct new params, without it, and use that.
 		InsetCommandParams p(REF_CODE, cmd);
@@ -147,10 +152,18 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 		p["reference"] = ref;
 		os << p.getCommand(rp);
 		return;
-	} 
-	
-	// so we're doing a formatted reference.
+	}
+
+	// so we're doing a formatted reference of some kind.
 	docstring const data = getEscapedLabel(rp);
+
+	// what we say in the UI is that an "eqref" is supposed to surround the
+	// reference with parentheses, so let's do that.
+	if (cmd == "eqref" /* && buffer().params().use_refstyle */) {
+		os << '(' << from_ascii("\\ref{") << data << from_ascii("})");
+		return;
+	}
+
 	docstring label;
 	docstring prefix;
 	docstring const fcmd = getFormattedCmd(data, label, prefix);
