@@ -3095,7 +3095,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_CURSOR_WIDTH:
-		str = _("Configure the width of the text cursor. Automatic zoom controled cursor width used when set to 0.");
+		str = _("Configure the width of the text cursor. Automatic zoom-controlled cursor width used when set to 0.");
 		break;
 
 	case RC_SCROLL_BELOW_DOCUMENT:
