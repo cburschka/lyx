@@ -5,14 +5,16 @@
 # This file is distributed under the same license as the LyX package.
 #
 # Ran Rutenberg <ran.rutenberg@gmail.com>, 2007, 2008.
+# Richman Reuven <richman.reuven@gmail.com>, 2011.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-03-04 23:51+0100\n"
-"PO-Revision-Date: 2009-01-12 17:51+0100\n"
-"Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
-"Language-Team: Hebrew <en@li.org>\n"
+"PO-Revision-Date: 2011-03-11 01:59+0200\n"
+"Last-Translator: Richman Reuven <richman.reuven@gmail.com>\n"
+"Language-Team: Hebrew <>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -86,11 +88,12 @@ msgid "&Default (numerical)"
 msgstr "ברירת מחדל (ממוספרת)"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:38
-#, fuzzy
 msgid ""
 "Use the natbib styles for natural sciences and arts. Set additional "
 "parameters in document class options."
-msgstr "השתמש בסגנונות natbib עבור מדעי הטבע ואומנויות"
+msgstr ""
+"השתמש בסגנונות natbib עבור מדעי הטבע ואומנויות. ניתן לקבוע פרמטרים נוספים "
+"באפשרויות מחלקת המסמך."
 
 #: src/frontends/qt4/ui/BiblioUi.ui:41
 msgid "&Natbib"
@@ -119,24 +122,21 @@ msgstr "ביבליוגרפיה מחולקת לקטעים"
 #: src/frontends/qt4/ui/BiblioUi.ui:120
 msgid ""
 "Here you can define an alternative program to or specific options of BibTeX."
-msgstr ""
+msgstr "כאן ניתן להגדיר תוכנה חלופית או אפשרויות מסוימות של BibTeX."
 
 #: src/frontends/qt4/ui/BiblioUi.ui:123
 #: src/frontends/qt4/ui/PrefLatexUi.ui:127
-#, fuzzy
 msgid "Bibliography generation"
-msgstr "ביבליוגרפיה (פשוטה)"
+msgstr "יצירת ביבליוגרפיה"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:139
-#, fuzzy
 msgid "&Processor:"
-msgstr "מו&גן:"
+msgstr "מעבד"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
-#, fuzzy
 msgid "Select a processor"
-msgstr "בחר קובץ"
+msgstr "בחר מעבד"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:733
@@ -147,7 +147,7 @@ msgstr "&אפשרויות:"
 #: src/frontends/qt4/ui/BiblioUi.ui:178
 msgid ""
 "Define options such as --min-crossrefs (see the documentation of BibTeX)"
-msgstr ""
+msgstr "הגדרת אפשרויות כגון --min-crossrefs (ראה תיעוד עבור BibTeX)"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:21
 msgid "LyX: Add BibTeX Database"
@@ -155,7 +155,7 @@ msgstr "LyX: הוסף מסד נתונים של BibTeX"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:36 src/frontends/qt4/ui/BibtexUi.ui:47
 msgid "Scan for new databases and styles"
-msgstr ""
+msgstr "חיפוש מסדי נתונים וסגנונות חדשים"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:39 src/frontends/qt4/ui/BibtexUi.ui:50
 #: src/frontends/qt4/ui/TexinfoUi.ui:94
@@ -280,7 +280,7 @@ msgstr "מסדי-נתונים"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:269
 msgid "Add a BibTeX database file"
-msgstr "הוסף קובץ מסד נתונים של BibTeX"
+msgstr "LyX: הוסף מסד נתונים של BibTeX"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:272
 msgid "&Add..."
@@ -296,12 +296,11 @@ msgstr "מחק"
 
 #: src/frontends/qt4/ui/BoxUi.ui:28
 msgid "Check this if the box should break across pages"
-msgstr ""
+msgstr "סמן אם ניתן לפרוש את התיבה על מספר עמודים"
 
 #: src/frontends/qt4/ui/BoxUi.ui:31
-#, fuzzy
 msgid "Allow &page breaks"
-msgstr "שבירת עמוד"
+msgstr "א&פשר שבירת עמוד"
 
 #: src/frontends/qt4/ui/BoxUi.ui:38 src/frontends/qt4/ui/MathMatrixUi.ui:151
 #: src/frontends/qt4/ui/ParagraphUi.ui:153
@@ -453,21 +452,19 @@ msgstr "&חדש:"
 msgid ""
 "Append the name of this branch to the output filename, given the branch is "
 "active."
-msgstr ""
+msgstr "הוסף את שמו של ענף זה לפלט, במידה והענף פעיל."
 
 #: src/frontends/qt4/ui/BranchesUi.ui:38
-#, fuzzy
 msgid "Filename &Suffix"
-msgstr "שם קובץ"
+msgstr "סיומת שם הקובץ"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:61
 msgid "Show undefined branches used in this document."
-msgstr ""
+msgstr "הראה ענפים בלתי מוגדרים הנמצאים בשימוש במסך זה."
 
 #: src/frontends/qt4/ui/BranchesUi.ui:64
-#, fuzzy
 msgid "&Undefined Branches"
-msgstr "התוסף \"ענף\" פתוח"
+msgstr "ענפים בלתי מוגדרים"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:84
 msgid "A&vailable Branches:"
@@ -505,33 +502,28 @@ msgid "&Remove"
 msgstr "הסר"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:140
-#, fuzzy
 msgid "Change the name of the selected branch"
-msgstr "הסר את הענף המסומן"
+msgstr "שנה את שם הענף הנבחר"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:143
-#, fuzzy
 msgid "Re&name..."
 msgstr "שנה שם"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:25
-#, fuzzy
 msgid "Add the selected branches to the list."
-msgstr "הוסף ענף חדש לרשימה"
+msgstr "הוסף את הענפים הנבחרים לרשימה."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:28
-#, fuzzy
 msgid "&Add Selected"
-msgstr "מחק"
+msgstr "הוסף את הנבחרים"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:35
-#, fuzzy
 msgid "Add all unknown branches to the list."
-msgstr "הוסף ענף חדש לרשימה"
+msgstr "הוסף את כל הענפים הלא ידועים לרשימה."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:38
 msgid "Add A&ll"
-msgstr ""
+msgstr "הוסף הכל"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:58
 #: src/frontends/qt4/ui/CitationUi.ui:220
@@ -555,12 +547,11 @@ msgstr "ביטול"
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:65
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:78
 msgid "Undefined branches used in this document."
-msgstr ""
+msgstr "מסמך זה משתמש בענפים בלתי מוגדרים."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:68
-#, fuzzy
 msgid "&Undefined Branches:"
-msgstr "ענפים זמינים:"
+msgstr "ענפים בלתי מוגדרים:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:34
 msgid "&Font:"
@@ -663,14 +654,12 @@ msgid "Change:"
 msgstr "שינוי:"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:49
-#, fuzzy
 msgid "Go to previous change"
-msgstr "לך לשינוי הבא"
+msgstr "לך לשינוי הקודם"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:52
-#, fuzzy
 msgid "&Previous change"
-msgstr "לך לשינוי הבא"
+msgstr "לך לשינוי הקודם"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:62
 msgid "Go to next change"
@@ -782,7 +771,6 @@ msgid "Apply each change automatically"
 msgstr "החל כל שינוי אוטומטית"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:308
-#, fuzzy
 msgid "Apply changes &immediately"
 msgstr "החל שינויים לאלתר"
 
@@ -815,27 +803,24 @@ msgid "A&vailable Citations:"
 msgstr "מובאות זמינות:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:53
-#, fuzzy
 msgid "S&elected Citations:"
 msgstr "מובאות נבחרות:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:72
 msgid "Click or press Enter to add the selected citation to the list"
-msgstr ""
+msgstr "הקלק או לחץ Enter להוספת המובאה לרשימה."
 
 #: src/frontends/qt4/ui/CitationUi.ui:92
 msgid "Click or press Delete to delete the selected citation from the list"
-msgstr ""
+msgstr "הקלק או לחץ Delete להסרת המובאה מהרשימה."
 
 #: src/frontends/qt4/ui/CitationUi.ui:124
-#, fuzzy
 msgid "Move the selected citation up (Ctrl-Up)"
-msgstr "הזז את המובאה הנוכחית למעלה"
+msgstr "הזז את המובאה הנוכחית למעלה (Ctrl-Up)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:148
-#, fuzzy
 msgid "Move the selected citation down (Ctrl-Down)"
-msgstr "הזז את המובאה הנוכחית למטה"
+msgstr "הזז את המובאה הנוכחית למטה (Ctrl-Down)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:151
 msgid "&Down"
@@ -851,7 +836,6 @@ msgid "&Restore"
 msgstr "שחזר"
 
 #: src/frontends/qt4/ui/CitationUi.ui:210
-#, fuzzy
 msgid "App&ly"
 msgstr "החל"
 
@@ -876,7 +860,6 @@ msgid "Text to place before citation"
 msgstr "טקסט שימוקם לפני המובאה"
 
 #: src/frontends/qt4/ui/CitationUi.ui:285
-#, fuzzy
 msgid "Text a&fter:"
 msgstr "טקסט אחרי:"
 
@@ -897,7 +880,6 @@ msgid "Force upper case in citation"
 msgstr "השתמש באותיות רישיות בלבד (בלועזית) במובאה"
 
 #: src/frontends/qt4/ui/CitationUi.ui:336
-#, fuzzy
 msgid "Force u&pper case"
 msgstr "השתמש באותיות רישיות"
 
@@ -906,177 +888,152 @@ msgid "Search Citation"
 msgstr "חפש מובאה"
 
 #: src/frontends/qt4/ui/CitationUi.ui:363
-#, fuzzy
 msgid "Searc&h:"
-msgstr "שגיאת חיפוש"
+msgstr "חיפוש:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:376
 msgid ""
 "Enter the text to search for and press Enter or click the button to search"
-msgstr ""
+msgstr "הכנס את הטקסט לחיפוש ולחץ Enter או הקלק על הכפתור להתחילו"
 
 #: src/frontends/qt4/ui/CitationUi.ui:389
 msgid "Click or press Enter in the search box to search"
-msgstr ""
+msgstr "הקלק או לחץ Enter בשדה החיפוש בכדי להתחילו"
 
 #: src/frontends/qt4/ui/CitationUi.ui:392
-#, fuzzy
 msgid "&Search"
-msgstr "שגיאת חיפוש"
+msgstr "חיפוש"
 
 #: src/frontends/qt4/ui/CitationUi.ui:402
-#, fuzzy
 msgid "Search field:"
-msgstr "שגיאת חיפוש"
+msgstr "שדה חיפוש:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:422
 #: src/frontends/qt4/GuiCitation.cpp:322
-#, fuzzy
 msgid "All fields"
-msgstr "כל הקבצים"
+msgstr "כל השדות"
 
 #: src/frontends/qt4/ui/CitationUi.ui:443
-#, fuzzy
 msgid "Regular e&xpression"
 msgstr "ביטוי רגולרי"
 
 #: src/frontends/qt4/ui/CitationUi.ui:450
-#, fuzzy
 msgid "Case se&nsitive"
 msgstr "הבדל בין אותיות גדולות לקטנות"
 
 #: src/frontends/qt4/ui/CitationUi.ui:457
 msgid "Entry types:"
-msgstr ""
+msgstr "סוגי הפריטים:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:474
 #: src/frontends/qt4/GuiCitation.cpp:337
 msgid "All entry types"
-msgstr ""
+msgstr "כלל סוגי הפריטים"
 
 #: src/frontends/qt4/ui/CitationUi.ui:495
 msgid "Search as you &type"
-msgstr ""
+msgstr "חיפוש בעת ההקלדה"
 
 #: src/frontends/qt4/ui/ColorUi.ui:27
-#, fuzzy
 msgid "Font colors"
 msgstr "צבע גופן"
 
 #: src/frontends/qt4/ui/ColorUi.ui:38
-#, fuzzy
 msgid "Main text:"
 msgstr "טקסט רגיל"
 
 #: src/frontends/qt4/ui/ColorUi.ui:54 src/frontends/qt4/ui/ColorUi.ui:115
 #: src/frontends/qt4/ui/ColorUi.ui:192 src/frontends/qt4/ui/ColorUi.ui:253
-#, fuzzy
 msgid "Click to change the color"
-msgstr "הגדר או שנה את צבע הרקע"
+msgstr "הקלק לשינוי הצבע"
 
 #: src/frontends/qt4/ui/ColorUi.ui:57 src/frontends/qt4/ui/ColorUi.ui:195
-#, fuzzy
 msgid "Default..."
-msgstr "ברירת מחדל"
+msgstr "ברירת מחדל..."
 
 #: src/frontends/qt4/ui/ColorUi.ui:70 src/frontends/qt4/ui/ColorUi.ui:131
 #: src/frontends/qt4/ui/ColorUi.ui:208 src/frontends/qt4/ui/ColorUi.ui:269
 msgid "Revert the color to the default"
-msgstr ""
+msgstr "שחזר את הצבע להיות ברירת המחדל"
 
 #: src/frontends/qt4/ui/ColorUi.ui:73 src/frontends/qt4/ui/ColorUi.ui:134
 #: src/frontends/qt4/ui/ColorUi.ui:211 src/frontends/qt4/ui/ColorUi.ui:272
-#, fuzzy
 msgid "R&eset"
 msgstr "אתחל"
 
 #: src/frontends/qt4/ui/ColorUi.ui:99
-#, fuzzy
 msgid "Greyed-out notes:"
-msgstr "באפור"
+msgstr "הערות מואפרות:"
 
 #: src/frontends/qt4/ui/ColorUi.ui:118 src/frontends/qt4/ui/ColorUi.ui:256
-#, fuzzy
 msgid "&Change..."
 msgstr "שינוי:"
 
 #: src/frontends/qt4/ui/ColorUi.ui:165
-#, fuzzy
 msgid "Background colors"
-msgstr "רקע"
+msgstr "צבע הרקע"
 
 #: src/frontends/qt4/ui/ColorUi.ui:176
-#, fuzzy
 msgid "Page:"
 msgstr "עמוד: "
 
 #: src/frontends/qt4/ui/ColorUi.ui:237
-#, fuzzy
 msgid "Shaded boxes:"
-msgstr "רקע הערה"
+msgstr "תיבות מואפרות:"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:22
-#, fuzzy
 msgid "Compare Revisions"
-msgstr "סיומת של הקובץ:"
+msgstr "השווה גרסאות"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:30
-#, fuzzy
 msgid "&Revisions back"
-msgstr "היסטוריית שינויים"
+msgstr "גרסאות קושמות"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:83
-#, fuzzy
 msgid "&Between revisions"
-msgstr "&בין השורות:"
+msgstr "בין הגרסאות"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:96
 msgid "Old:"
-msgstr ""
+msgstr "קודם:"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:131
-#, fuzzy
 msgid "New:"
-msgstr "&חדש:"
+msgstr "חדש:"
 
 #: src/frontends/qt4/ui/CompareUi.ui:19
-#, fuzzy
 msgid "&New Document:"
-msgstr "מסמך חדש"
+msgstr "מסמך חדש:"
 
 #: src/frontends/qt4/ui/CompareUi.ui:52
-#, fuzzy
 msgid "&Old Document:"
-msgstr "מסמך בת"
+msgstr "מסמך קודם:"
 
 #: src/frontends/qt4/ui/CompareUi.ui:75 src/frontends/qt4/ui/PrefUi.ui:38
 msgid "Bro&wse..."
 msgstr "עיון..."
 
 #: src/frontends/qt4/ui/CompareUi.ui:91
-#, fuzzy
 msgid "Copy Document Settings from:"
-msgstr "הגדרות מסמך"
+msgstr "העתק הגדרות מסמך מ:"
 
 #: src/frontends/qt4/ui/CompareUi.ui:97
-#, fuzzy
 msgid "N&ew Document"
 msgstr "מסמך חדש"
 
 #: src/frontends/qt4/ui/CompareUi.ui:104
-#, fuzzy
 msgid "Ol&d Document"
-msgstr "מסמך בת"
+msgstr "מסמך קודם:"
 
 #: src/frontends/qt4/ui/CompareUi.ui:173
 msgid ""
 "Turns on the change tracking and showing changes in LaTeX output for the "
 "resulting document"
-msgstr ""
+msgstr "אפשר מעקב אחר שינויים והצגתם בפלט הLaTeX עבור המסמך הנוצר"
 
 #: src/frontends/qt4/ui/CompareUi.ui:176
 msgid "Enable &change tracking features in the output"
-msgstr ""
+msgstr "אפשר מעקב אחר שינויים בפלט"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:143
 #: src/frontends/qt4/GuiDelimiter.cpp:278
@@ -1141,30 +1098,26 @@ msgid "O&pen"
 msgstr "פתוח"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:36
-#, fuzzy
 msgid "For more information, refer to the complete log."
-msgstr "אין מידע לייצוא לפורמט %1$s."
+msgstr "למידע נוסף, ראה את היומן המלא."
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:43
-#, fuzzy
 msgid "&Errors:"
-msgstr "חץ"
+msgstr "שגיאות:"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:53
-#, fuzzy
 msgid "Description:"
-msgstr "&תיאור:"
+msgstr "תיאור:"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:83
 msgid "Open the LaTeX Log File dialog"
-msgstr ""
+msgstr "פתח את "
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:86
 msgid "View Complete &Log..."
-msgstr ""
+msgstr "ראה יומן מלא..."
 
 #: src/frontends/qt4/ui/ExternalUi.ui:35
-#, fuzzy
 msgid "F&ile"
 msgstr "קובץ"
 
@@ -1189,7 +1142,6 @@ msgid "&Draft"
 msgstr "טיוטה"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:84
-#, fuzzy
 msgid "&Template"
 msgstr "תבנית"
 
@@ -1203,9 +1155,8 @@ msgid "LaTe&X and LyX options"
 msgstr "אפשרויות LaTeX ו- LyX"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:144
-#, fuzzy
 msgid "LaTeX Options"
-msgstr "אפשרויות LaTeX:"
+msgstr "אפשרויות LaTeX"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:162
 msgid "O&ption:"
@@ -1220,6 +1171,8 @@ msgid ""
 "Enable LyX to preview this material; only if graphics previewing is not "
 "disabled at application level (see Preference dialog)."
 msgstr ""
+"אפשר תצוגה מוקדמת של פריט זה - רק במידה והצגה מוקדמת של גרפיקה מאופשרת ברמת "
+"היישום (ראה תפריט העדפות)."
 
 #: src/frontends/qt4/ui/ExternalUi.ui:194
 msgid "&Show in LyX"
@@ -1238,9 +1191,8 @@ msgid "Sca&le on Screen (%):"
 msgstr "קנה המידה על המסך (%):"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:271
-#, fuzzy
 msgid "Si&ze and Rotation"
-msgstr "כיוון הדף"
+msgstr "גודל וסיבוב"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:283
 msgid "Rotate"
@@ -1261,7 +1213,6 @@ msgid "The origin of the rotation"
 msgstr "ציר הסיבוב"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:341
-#, fuzzy
 msgid "Ori&gin:"
 msgstr "ציר:"
 
@@ -1340,9 +1291,8 @@ msgid "TabWidget"
 msgstr "רוחב תווית"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:20
-#, fuzzy
 msgid "Sear&ch"
-msgstr "שגיאת חיפוש"
+msgstr "חיפוש"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:26
 #: src/frontends/qt4/ui/LogUi.ui:28 src/frontends/qt4/ui/SearchUi.ui:28
@@ -1356,7 +1306,7 @@ msgstr "החלף עם:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:72
 msgid "Perform a case-sensitive search"
-msgstr ""
+msgstr "בצע חיפוש המבדיל בין אותיות גדולות לקטנות"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:75
 msgid "Case &sensitive"
@@ -1364,7 +1314,7 @@ msgstr "הבדל בין אותיות גדולות לקטנות"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:91
 msgid "Find next occurrence [Enter]"
-msgstr ""
+msgstr "מצא את המופע הבא [Enter]"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:94
 #: src/frontends/qt4/ui/SearchUi.ui:166
@@ -1372,18 +1322,16 @@ msgid "Find &Next"
 msgstr "חפש הבא"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:107
-#, fuzzy
 msgid "Restrict search to whole words only"
 msgstr "התאם מילים שלמות בלבד"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:110
-#, fuzzy
 msgid "W&hole words"
-msgstr "מילות מפתח"
+msgstr "מילים שלמות"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:126
 msgid "Replace and find next occurrence [Enter]"
-msgstr ""
+msgstr "החלף ומצא את המופע הבא [Enter]"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:129
 #: src/frontends/qt4/ui/SearchUi.ui:179
@@ -1398,9 +1346,8 @@ msgid "Search &backwards"
 msgstr "חפש אחורנית"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:152
-#, fuzzy
 msgid "Replace all occurences at once"
-msgstr "החלף מילה עם הבחירה הנוכחית"
+msgstr "החלף את כל מופעי המילה"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:155
 #: src/frontends/qt4/ui/SearchUi.ui:189
@@ -1409,74 +1356,68 @@ msgid "Replace &All"
 msgstr "החלף הכל"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:163
-#, fuzzy
 msgid "S&ettings"
 msgstr "הגדרות"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:178
 msgid "The scope to which the search horizon is restricted"
-msgstr ""
+msgstr "התחום אליו מוגבל אופק החיפוש"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:184
-#, fuzzy
 msgid "Sco&pe"
-msgstr "צורה:"
+msgstr "תחום"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:196
-#, fuzzy
 msgid "Current &document"
-msgstr "הדפס מסמך"
+msgstr "מסמך נוכחי"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:215
 msgid ""
 "Current document and all related documents belonging to the same master "
 "document"
-msgstr ""
+msgstr "מסמך נוכחי וכל המסמכים הקשורים לאותו המסמך הראשי"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:218
-#, fuzzy
 msgid "&Master document"
 msgstr "מסמך ראשי"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:228
-#, fuzzy
 msgid "All open documents"
-msgstr "פתח מסמך"
+msgstr "כל המסמכים הפתוחים"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:231
-#, fuzzy
 msgid "&Open documents"
-msgstr "פתח מסמך"
+msgstr "מסמכים פתוחים"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:241
 msgid "All ma&nuals"
-msgstr ""
+msgstr "כל המדריכים"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:254
 msgid ""
 "If unchecked, the search will be limited to occurrences of the selected text "
 "and paragraph style"
-msgstr ""
+msgstr "ללא סימון, יוגבל החיפוש למופעי הטקסט המסומן וסגנון הפסקה"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:257
-#, fuzzy
 msgid "Ignore &format"
-msgstr "לפורמט:"
+msgstr "התעלם מהפורמט"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:267
 msgid ""
 "Keep the case of the replacement's first letter as in each matching text "
 "first letter"
 msgstr ""
+"התאם את האות הראשונה (גדולה או קטנה) של הטקסט המחליף לאות הראשונה בכל מופע "
+"של הטקסט המוחלף"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:270
 msgid "&Preserve first case on replace"
-msgstr ""
+msgstr "השאר את האות הראשונה גדולה או קטנה בעת ההחלפה"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:280
-#, fuzzy
 msgid "&Expand macros"
-msgstr "מאקרו מתמטיקה"
+msgstr "פרוס מקרואים"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:13
 #: src/frontends/qt4/ui/OutputUi.ui:13 src/frontends/qt4/ui/PDFSupportUi.ui:13
@@ -1484,9 +1425,8 @@ msgid "Form"
 msgstr ""
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:19
-#, fuzzy
 msgid "Float Type:"
-msgstr "מידע TeX"
+msgstr "סוג שבר:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:36
 msgid "Use &default placement"
@@ -1534,34 +1474,31 @@ msgstr "ממשק גופנים"
 
 #: src/frontends/qt4/ui/FontUi.ui:19
 msgid "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)"
-msgstr ""
+msgstr "השתמש בפונטי OpenType ו-TrueType ישירות (דורש XeTeX או LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:22
 msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
 msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:42
-#, fuzzy
 msgid "&Default family:"
 msgstr "משפחת ברירת מחדל:"
 
 #: src/frontends/qt4/ui/FontUi.ui:52
-#, fuzzy
 msgid "Select the default family for the document"
-msgstr "חזור להגדרות ברירת המחדל עבור מחלקת המסמך"
+msgstr "בחר את משפחת ברירת המחדל עבור המסמך"
 
 #: src/frontends/qt4/ui/FontUi.ui:59
 msgid "&Base Size:"
 msgstr "גודל בסיס:"
 
 #: src/frontends/qt4/ui/FontUi.ui:76
-#, fuzzy
 msgid "LaTe&X font encoding:"
-msgstr "&קידוד TeX:"
+msgstr "קידוד פונט LaTeX:"
 
 #: src/frontends/qt4/ui/FontUi.ui:89 src/frontends/qt4/ui/PrefLatexUi.ui:34
 msgid "Specify the font encoding (e.g., T1)."
-msgstr ""
+msgstr "ציין את קידוד הפונט (לדוגמה T1)."
 
 #: src/frontends/qt4/ui/FontUi.ui:96
 msgid "&Roman:"
@@ -1725,6 +1662,8 @@ msgid ""
 "Enable LyX to preview this graphics, only if graphics previewing is not "
 "disabled at application level (see Preference dialog)."
 msgstr ""
+"אפשר תצוגה מוקדמת של פריט זה - רק במידה והצגה מוקדמת של גרפיקה מאופשרת ברמת "
+"היישום (ראה תפריט העדפות)."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:530
 msgid "Sho&w in LyX"
@@ -1732,28 +1671,27 @@ msgstr "הצג ב- LyX"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:595
 msgid "Assign the graphic to a group of graphics that share the same settings"
-msgstr ""
+msgstr "צרף פריט גרפי זה לקבוצת גרפיקה החולקת את אותן ההגדרות"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:598
-#, fuzzy
 msgid "Graphics Group"
-msgstr "תמונות"
+msgstr "קבוצת גרפיקה"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:637
 msgid "A&ssigned to group:"
-msgstr ""
+msgstr "שייך לקבוצה:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:647
 msgid "Click to define a new graphics group."
-msgstr ""
+msgstr "הקלק ליצירת קבוצת גרפיקה חדשה."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:650
 msgid "O&pen new group..."
-msgstr ""
+msgstr "פתח קבוצה חדשה..."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:657
 msgid "Select an existing group for the current graphics."
-msgstr ""
+msgstr "בחר בקבוצה קיימת עבור פריט גרפי זה."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:670
 msgid "Draft mode"
@@ -1765,7 +1703,7 @@ msgstr "מצב &טיוטה"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28
 msgid "Select a fill pattern style for HFills"
-msgstr ""
+msgstr "בחר בסגנון תבנית מילוי עבור פריטי HFill"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:37
 msgid "..............."
@@ -1804,14 +1742,12 @@ msgid "&Value:"
 msgstr "&ערך:"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:100 src/frontends/qt4/ui/VSpaceUi.ui:61
-#, fuzzy
 msgid "Custom value. Needs spacing type \"Custom\"."
 msgstr "ערך מותאם אישית. דורש סוג מרווח \"מותאם אישית\""
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:110
-#, fuzzy
 msgid "&Fill Pattern:"
-msgstr "קובץ:"
+msgstr "תבנית מילוי"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:123 src/frontends/qt4/ui/VSpaceUi.ui:45
 msgid "&Protect:"
@@ -1819,9 +1755,8 @@ msgstr "מו&גן:"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:133 src/frontends/qt4/GuiHSpace.cpp:207
 #: src/frontends/qt4/GuiHSpace.cpp:213
-#, fuzzy
 msgid "Insert the spacing even after a line break"
-msgstr "הכנס את המרווח גם אחרי שבירת עמוד"
+msgstr "הכנס את המרווח גם אחרי שבירת שורה"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:19
 #: src/frontends/qt4/ui/HyperlinkUi.ui:32 lib/layouts/scrlttr2.layout:207
@@ -1831,9 +1766,8 @@ msgid "URL"
 msgstr "URL"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:22
-#, fuzzy
 msgid "&Target:"
-msgstr "גדול אף יותר:"
+msgstr "יעד:"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:39
 #: src/frontends/qt4/ui/HyperlinkUi.ui:52
@@ -1846,42 +1780,36 @@ msgid "&Name:"
 msgstr "שם:"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:59
-#, fuzzy
 msgid "Specify the link target"
-msgstr "ציין את ברירת המחדל עבור גודל הדף."
+msgstr "ציין את יעד הקישור"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:62
 msgid "Link type"
-msgstr ""
+msgstr "סוג קישור"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:74
 msgid "Link to the web or to every other target"
-msgstr ""
+msgstr "קישור לרשת או לכל יעד אחר"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:77
-#, fuzzy
 msgid "&Web"
-msgstr "NoWeb"
+msgstr "רשת"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:87
-#, fuzzy
 msgid "Link to an email address"
-msgstr "כתובת הדוא\"ל שלך"
+msgstr "קישור לכתובת דוא\"ל"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:90
-#, fuzzy
 msgid "&Email"
 msgstr "דוא\"ל"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:97
-#, fuzzy
 msgid "Link to a file"
-msgstr "הדפס לקובץ"
+msgstr "קישור לקובץ"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:100
-#, fuzzy
 msgid "&File"
-msgstr "קובץ:"
+msgstr "קובץ"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:36
 msgid "Listing Parameters"
@@ -1961,84 +1889,73 @@ msgid "&Edit"
 msgstr "&עריכה"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59 src/frontends/qt4/ui/IndicesUi.ui:143
-#, fuzzy
 msgid "A&vailable Indexes:"
-msgstr "ענפים זמינים:"
+msgstr "מפתחות פנויים:"
 
 #: src/frontends/qt4/ui/IndexUi.ui:69
 msgid "Select the index this entry should be listed in."
-msgstr ""
+msgstr "בחר במפתח אליו רשומה זו צריכה להשתייך."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:19
 msgid ""
 "Here you can define an alternative index processor and specify its options."
-msgstr ""
+msgstr "כאן ניתן להגדיר מעבד מפתחות שונה ולקבוע את האפשרויות שלו."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:202
-#, fuzzy
 msgid "Index generation"
-msgstr "הזחה"
+msgstr "יצירת מפתח"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:64
 msgid "Define program options of the selected processor."
-msgstr ""
+msgstr "קביעת אפשרויות התוכנה של המעבד הנבחר."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:89
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
-msgstr ""
+msgstr "סמן במידה והנך זקוק למספר מפתחות (לדוגמה מפתח שמות)"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:92
-#, fuzzy
 msgid "&Use multiple indexes"
-msgstr "בטל את כל הקווים"
+msgstr "השתמש במספר מפתחות"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:124
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
-msgstr ""
+msgstr "הקלד את שם המפתח הרצוי (לדוגמה \"מפתח שמות\") והקלק על \"הוספה\""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:131
-#, fuzzy
 msgid "Add a new index to the list"
-msgstr "הוסף ענף חדש לרשימה"
+msgstr "הוסף מפתח חדש לרשימה"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149
 #: src/frontends/qt4/ui/RefUi.ui:349
-#, fuzzy
 msgid "1"
-msgstr "10"
+msgstr "1"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:162
-#, fuzzy
 msgid "Remove the selected index"
-msgstr "הסר את מסד-הנתונים המסומן"
+msgstr "הסר את המפתח המסומן"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:172
-#, fuzzy
 msgid "Rename the selected index"
-msgstr "הסר את מסד-הנתונים המסומן"
+msgstr "שנה את שם המפתח המסומן"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:175
-#, fuzzy
 msgid "R&ename..."
 msgstr "שנה שם"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:182
-#, fuzzy
 msgid "Define or change button color"
-msgstr "הגדר או שנה את צבע הרקע"
+msgstr "הגדר או שנה את צבע הכפתורים"
 
 #: src/frontends/qt4/ui/InfoUi.ui:24
-#, fuzzy
 msgid "Information Type:"
-msgstr "מידע TeX"
+msgstr "סוג מידע:"
 
 #: src/frontends/qt4/ui/InfoUi.ui:34
-#, fuzzy
 msgid "Information Name:"
-msgstr "מידע TeX"
+msgstr "שם המידע:"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:16
 #, fuzzy
@@ -2050,9 +1967,8 @@ msgid "Update dialog when moving context"
 msgstr ""
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:49
-#, fuzzy
 msgid "S&ynchronize Dialog"
-msgstr "תאריך (פלט)"
+msgstr "תיבת סינכרון"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:56
 #, fuzzy
@@ -2102,9 +2018,8 @@ msgid "Enable to use the options that are predefined in the layout file"
 msgstr ""
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:66
-#, fuzzy
 msgid "&Predefined:"
-msgstr "מדפסת:"
+msgstr "מוגדר מראש:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:73
 msgid ""
@@ -2132,14 +2047,12 @@ msgid "Select de&fault master document"
 msgstr "לחזור למסמך השמור?"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:150
-#, fuzzy
 msgid "&Master:"
-msgstr "&חיצוניים:"
+msgstr "ראשי:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:167
-#, fuzzy
 msgid "Enter the name of the default master document"
-msgstr "שם מדפסת ברירת המחדל"
+msgstr "הכנס את שם ברירת המחדל עבור המסמך האשי"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:186
 msgid "&Suppress default date on front page"
@@ -2164,9 +2077,8 @@ msgid "Language &Default"
 msgstr "ברירת המחדל של LaTeX"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:103
-#, fuzzy
 msgid "&Other:"
-msgstr "&חיצוניים:"
+msgstr "אחר:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:125
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:39
@@ -2176,7 +2088,7 @@ msgstr "חבילת שפה:"
 #: src/frontends/qt4/ui/LanguageUi.ui:135
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:51
 msgid "Select which language package LyX should use"
-msgstr ""
+msgstr "בחר בחבילת השפה בה אתה מעוניין ש-Lyx ישתמש"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:142
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:78
@@ -2200,12 +2112,11 @@ msgstr "שבור שורות ארוכות מאורך השורה"
 
 #: src/frontends/qt4/ui/LineUi.ui:94
 msgid "&Thickness:"
-msgstr ""
+msgstr "עובי:"
 
 #: src/frontends/qt4/ui/LineUi.ui:107
-#, fuzzy
 msgid "Value of the line thickness."
-msgstr "שבור שורות ארוכות מאורך השורה"
+msgstr "ערך עובי השורה"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:49
 #, fuzzy
@@ -24505,9 +24416,8 @@ msgid "Selection copy/paste mechanism"
 msgstr "בחירה כשורות"
 
 #: src/support/debug.cpp:71
-#, fuzzy
 msgid "Find and replace mechanism"
-msgstr "חיפוש והחלפה"
+msgstr "מנגנון חיפוש והחלפה"
 
 #: src/support/debug.cpp:72
 msgid "Developers' general debug messages"
