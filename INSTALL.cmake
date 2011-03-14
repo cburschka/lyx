@@ -22,8 +22,14 @@ Building LyX with CMake
         On Windows install the supplementary modules:
         * Visual Studio 2008: ftp://ftp.lyx.org/pub/lyx/contrib/lyx-windows-deps-msvc2008.zip
         * Visual Studio 2010: ftp://ftp.devel.lyx.org/pub/contrib/windows/bin
-                              or use the option LYX_3RDPARTY_DOWNLOAD
-        
+                or use the option LYX_DEPENDENCIES_DOWNLOAD, then you have to add
+                these paths to your PATH variable:
+                  <build-dir>\msvc2010-deps\deps20\bin
+                  <build-dir>\msvc2010-deps\deps20\python
+                  <build-dir>\msvc2010-deps\deps20\imagemagick
+                  <build-dir>\msvc2010-deps\deps20\ghostscript
+                  <build-dir>\msvc2010-deps\deps20\gettext-tools
+
         If cmake couldn't find these modules set GNUWIN32_DIR, eg. 
         -DGNUWIN32_DIR=c:\gnuwin32. By default cmake searches in your 
         program folder. Or use the cmake GUI to set the GNUWIN32_DIR path.
@@ -150,7 +156,7 @@ Build options
     -- LYX_VLD                  = OFF    : Use VLD with MSVC
     -- LYX_WALL                 = OFF    : Enable all warnings
     -- LYX_CONFIGURE_CHECKS     = OFF    : Also run configure checks for MSVC
-    -- LYX_3RDPARTY_DOWNLOAD    = OFF    : Download precompiled 3rd party libraries for MSVC 10
+    -- LYX_DEPENDENCIES_DOWNLOAD= OFF    : Download precompiled 3rd party libraries for MSVC 10
 
     
 
