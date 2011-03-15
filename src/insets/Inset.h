@@ -429,11 +429,11 @@ public:
 	virtual InsetLayout const & getLayout() const;
 	/// Is this inset's layout defined in the document's textclass?
 	bool undefined() const;
-	/// used to toggle insets
-	/// is the inset open?
-	/// should this inset be handled like a normal character
+	/// should this inset be handled like a normal character?
+	/// (a character can be a letter or punctuation)
 	virtual bool isChar() const { return false; }
 	/// is this equivalent to a letter?
+	/// (a letter is a character that is considered part of a word)
 	virtual bool isLetter() const { return false; }
 	/// is this equivalent to a space (which is BTW different from
 	/// a line separator)?
