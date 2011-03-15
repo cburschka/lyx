@@ -3343,11 +3343,11 @@ int Paragraph::find(docstring const & str, bool cs, bool mw,
 	int const strsize = str.length();
 	int i = 0;
 	pos_type const parsize = d->text_.size();
-	odocstringstream os;
 	for (i = 0; i < strsize && pos < parsize; ++i, ++pos) {
 		// Ignore "invisible" letters such as ligature breaks
 		// and hyphenation chars while searching
 		while (pos < parsize - 1 && isInset(pos)) {
+			odocstringstream os;
 			getInset(pos)->toString(os);
 			if (!getInset(pos)->isLetter() || !os.str().empty())
 				break;
