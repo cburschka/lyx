@@ -4006,7 +4006,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		else
 			cur.dispatched();
 
-		cur.screenUpdateFlags(Update::FitCursor);
+		cur.screenUpdateFlags(Update::Force | Update::FitCursor);
 		break;
 
 	}
