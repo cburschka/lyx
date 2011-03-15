@@ -54,6 +54,8 @@ def main(argv):
     latex_base, latex_ext = os.path.splitext(latex_file)
 
     # Read the input file and write the output file
+    if(not os.path.isfile(abs_from_file)):
+         error("%s is not a valid file.\n" % abs_from_file)
     from_file = open(abs_from_file, 'rb')
     to_file = open(abs_to_file, 'wb')
     lines = from_file.readlines()
