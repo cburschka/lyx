@@ -402,6 +402,9 @@ public:
 	/// Is the content of this inset part of the output document?
 	virtual bool producesOutput() const { return true; }
 
+	/// Skip this inset while searching?
+	virtual bool skipOnSearch() const { return false; }
+
 	/// \return Tool tip for this inset.
 	/// This default implementation returns an empty string.
 	virtual docstring toolTip(BufferView const & bv, int x, int y) const;

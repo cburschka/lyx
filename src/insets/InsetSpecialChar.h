@@ -81,6 +81,8 @@ public:
 	bool isChar() const { return true; }
 	/// is this equivalent to a letter?
 	bool isLetter() const;
+	/// Skip this inset while searching?
+	bool skipOnSearch() const;
 	// should we break lines after this inset?
 	bool isLineSeparator() const;
 private:

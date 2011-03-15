@@ -346,6 +346,12 @@ bool InsetSpecialChar::isLetter() const
 }
 
 
+bool InsetSpecialChar::skipOnSearch() const
+{
+	return kind_ == HYPHENATION || kind_ == LIGATURE_BREAK;
+}
+
+
 bool InsetSpecialChar::isLineSeparator() const
 {
 #if 0

@@ -3346,10 +3346,7 @@ int Paragraph::find(docstring const & str, bool cs, bool mw,
 	for (i = 0; i < strsize && pos < parsize; ++i, ++pos) {
 		// Ignore ligature break and hyphenation chars while searching
 		while (pos < parsize - 1 && isInset(pos)) {
-			const InsetSpecialChar *isc = dynamic_cast<const InsetSpecialChar*>(getInset(pos));
-			if (isc == 0
-			    || (isc->kind() != InsetSpecialChar::HYPHENATION
-				&& isc->kind() != InsetSpecialChar::LIGATURE_BREAK))
+			if (!getInset(pos)->skipOnSearch())
 				break;
 			pos++;
 		}
