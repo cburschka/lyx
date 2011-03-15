@@ -552,10 +552,16 @@ void Cursor::checkNewWordPosition()
 	if (!inTexted())
 		clearNewWordPosition();
 	else {
-		// forget the position of the current started word
+		// forget the position of the current new word if
 		// 1) the paragraph changes or
-		// 2) the count of nested insets changes
-		if (pit() != new_word_.pit() || depth() != new_word_.depth())
+		// 2) the count of nested insets changes or
+		// 3) the cursor pos is out of paragraph bound
+		if (pit() != new_word_.pit() ||
+			depth() != new_word_.depth() ||
+			new_word_.pos() > new_word_.lastpos()) {
+			clearNewWordPosition();
+		} else if (new_word_.fixIfBroken())
+			// 4) or the remembered position was "broken"
 			clearNewWordPosition();
 		else {
 			FontSpan nw = locateWord(WHOLE_WORD);
@@ -2271,6 +2277,7 @@ bool Cursor::fixIfBroken()
 	bool const broken_anchor = anchor_.fixIfBroken();
 	
 	if (broken_cursor || broken_anchor) {
+		clearNewWordPosition();
 		clearSelection();
 		return true;
 	}
