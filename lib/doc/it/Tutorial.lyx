@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass book
@@ -38,13 +38,14 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language italian
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -99,6 +100,7 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -188,12 +190,12 @@ Tra i motivi che vi avranno spinto alla lettura di questo documento vi saranno
 
  o tre righe vuote consecutive tra due paragrafi.
  La spiegazione a quella che può sembrare una mancanza è piuttosto semplice:
- Lyx mette l'utente nelle condizioni di potersi dedicare alla stesura del
+ LyX mette l'utente nelle condizioni di potersi dedicare alla stesura del
  testo e disinteressarsi della sua formattazione (contrariamente alla maggior
  parte dei programmi di videoscrittura, i quali obbligano l'utente non solo
  a scrivere il documento, ma anche ad aggiungere spazi, scegliere il carattere,
- etc.), operazione quest' ultima che verrà eseguita opportunamente dallo
- stesso LyX.
+ etc.), operazione quest'ultima che verrà eseguita opportunamente dallo stesso
+ LyX.
 \end_layout
 
 \begin_layout Standard
@@ -303,7 +305,7 @@ Dettagli relativi al LaTeX.
 \begin_layout Standard
 Pensate che avrebbe senso parlare del funzionamento del motore se a voi
  interessa soltanto che la macchina vi trasporti? Chi volesse imparare i
- trucchi del Latex, si riferisca piuttosto ai diversi testi esistenti sull'argom
+ trucchi del LaTeX, si riferisca piuttosto ai diversi testi esistenti sull'argom
 ento.
 \end_layout
 
@@ -506,8 +508,8 @@ examples/
 \emph on
 Tutorial
 \emph default
-, o quando siete confusi su come realizzare quacosa di elaborato, date una
- occhiata a questi file.
+, o quando siete confusi su come realizzare qualcosa di elaborato, date
+ una occhiata a questi file.
 \end_layout
 
 \begin_layout Subsection
@@ -770,7 +772,7 @@ Una volta finito potete chiudere la finestra oppure lasciarla aperta se
  vi fa più comodo.
  Molte delle finestre di dialogo
 \color none
-che compaiono in LyX — comprese quelle di 
+ che compaiono in LyX — comprese quelle di 
 \family sans
 Trova
 \begin_inset space ~
@@ -809,7 +811,7 @@ Apri
 \family default
 , non vi permettono di digitare nulla nella finestra principale di LyX fino
  a quando non provvedete a chiuderle.
- Siate sicuri di avere attiva la giustra finestra quando provate a scrivere
+ Siate sicuri di avere attiva la giusta finestra quando provate a scrivere
  nella finestra principale di LyX oppure volete eseguire un comando in qualche
  altra sua finestra.
 \end_layout
@@ -899,7 +901,7 @@ WYSIWYM: Spaziatura in LyX
 \end_layout
 
 \begin_layout Standard
-Una delle difficoltà più grandi per i nuovi utenti è costitutita dal modo
+Una delle difficoltà più grandi per i nuovi utenti è costituita dal modo
  in cui LyX gestisce gli spazi.
  Pur premendo il tasto 
 \family sans
@@ -928,7 +930,7 @@ Molti programmi di videoscrittura commerciali sono basati sul principio
 \begin_inset Quotes eld
 \end_inset
 
-Ciò che vedi è quanto otterai
+Ciò che vedi è quanto otterrai
 \begin_inset Foot
 status collapsed
 
@@ -1396,7 +1398,7 @@ Ambiente
 Sottosezione
 \family default
 .
- Come probabilmente vi aspettatavate, LyX numererà la sezione 
+ Come probabilmente vi aspettavate, LyX numererà la sezione 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1409,7 +1411,7 @@ Sottosezione
 \begin_inset space ~
 \end_inset
 
-2, questa verrà renumerata come Sezione
+2, questa verrà rinumerata come Sezione
 \begin_inset space ~
 \end_inset
 
@@ -1457,7 +1459,7 @@ i alla
 \emph on
 Guida dell'utente
 \emph default
- per effetuare delle modifiche al riguardo.
+ per effettuare delle modifiche al riguardo.
  Le intestazioni dei 
 \family sans
 Capitoli
@@ -1541,7 +1543,7 @@ LyX possiede parecchi ambienti per la formattazione delle liste, i quali
 \family sans
 Tab
 \family default
- un milione di volte durante la scrittura di un elenco o di renumerare l'intera
+ un milione di volte durante la scrittura di un elenco o di rinumerare l'intera
  lista se decideste di aggiungere un elemento in mezzo alla lista, lasciandovi
  concentrare sul contenuto della lista stessa.
 \begin_inset Foot
@@ -1613,7 +1615,7 @@ Elenchiamo un insieme di motivi per i quali LyX è migliore degli altri programm
 \begin_layout Standard
 
 \family typewriter
-Lyx è migliore degli altri programmi di videoscrittura perché:
+LyX è migliore degli altri programmi di videoscrittura perché:
 \end_layout
 
 \begin_layout Standard
@@ -1649,7 +1651,7 @@ La formattazione è fatta per voi.
 \end_layout
 
 \begin_layout LyX-Code
-La matematica is WYSIWYG
+La matematica è WYSIWYG
 \end_layout
 
 \begin_layout LyX-Code
@@ -1690,7 +1692,7 @@ C-Invio
 \family sans
 Standard
 \family default
- (oppure da tasiera, con 
+ (oppure da tastiera, con 
 \family sans
 M-p
 \begin_inset space ~
@@ -2349,7 +2351,7 @@ Firma
 \begin_layout Standard
 Un modello non è altro che un normale file di LyX, quindi una volta che
  riempite con i vostri dati i campi relativi all'indirizzo e alla firma,
- potete sarvarlo come un nuovo modello.
+ potete salvarlo come un nuovo modello.
  D'ora in poi, il nuovo modello vi farà risparmiare del tempo ogni volta
  che dovrete scrivere una lettera.
  Probabilmente non c'è bisogno di suggerirvi alcun esercizio a riguardo,
@@ -3544,7 +3546,7 @@ dvi
 
  come indice.
  Poiché si assume che le lettere, nella modalità matematica, siano delle
- variabili, esse verrano scritte in italico, mentre i numeri non muteranno
+ variabili, esse verranno scritte in italico, mentre i numeri non muteranno
  ovviamente il loro aspetto.
 \end_layout
 
@@ -3787,7 +3789,7 @@ _
 \begin_layout Standard
 
 \series bold
-Eserciczio
+Esercizio
 \series default
 : Riportate l'equazione 1 del file 
 \family typewriter
@@ -4416,8 +4418,8 @@ Le espressioni scritte fino ad ora si trovavano disposte su ciascuna riga
  Se tale caratterizzazione è utile nel caso di espressioni semplici e piuttosto
  brevi, è però necessario ricorrere alla modalità centrata qualora vogliate
  invece scrivere espressioni estese o che si distanzino dal testo.
- Inoltre, soltanto le espressoni centrate possono essere etichettate e numerate
- (riferitevi alla 
+ Inoltre, soltanto le espressioni centrate possono essere etichettate e
+ numerate (riferitevi alla 
 \emph on
 Guida dell'utente
 \emph default
@@ -4545,12 +4547,14 @@ casi
 \end_inset
 
 :
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 f(x)=\left\{ \begin{array}{cc}
 \log_{8}x & x>0\\
 0 & x=0\\
 \sum_{i=1}^{5}\alpha_{i}+\sqrt{-\frac{1}{x}} & x<0
-\end{array}\right.\]
+\end{array}\right.
+\]
 
 \end_inset
 
@@ -4576,7 +4580,7 @@ Etichettare e numerare le espressioni
 \end_layout
 
 \begin_layout Itemize
-Equazioni multilinea
+Equazioni multi-linea
 \end_layout
 
 \begin_layout Itemize
@@ -4596,7 +4600,7 @@ Scrivere le macro.
  Esse rappresentano uno strumento molto potente, in quanto, dopo averle
  definite una volta per tutte all'inizio, potrete sempre servirvene lungo
  il documento.
- Modificando la definizione della macro, i riferimenti alla macro verrano
+ Modificando la definizione della macro, i riferimenti alla macro verranno
  ovviamente aggiornati ed inoltre è importante sottolineare che le macro
  possono anche accettare argomenti.
 \end_layout
@@ -4779,7 +4783,7 @@ Funzionalità di controllo ortografico e sinonimi.
 
 \begin_layout Itemize
 Il campo testuale alla base della finestra di LyX è chiamata minibuffer
- (esisteuna funzione simile in 
+ (esiste una funzione simile in 
 \family typewriter
 emacs
 \family default
@@ -4850,7 +4854,7 @@ Modalità TeX
 
 \begin_layout Standard
 Qualunque cosa scriviate in modalità TeX verrà passata direttamente in LaTeX,
- e sarà riportata in rosso sullo schemo.
+ e sarà riportata in rosso sullo schermo.
  In LyX potete utilizzare comandi TeX mediante il comando 
 \family sans
 \bar under
@@ -5040,7 +5044,7 @@ Conversione di Documenti LyX in LaTeX
 
 \begin_layout Standard
 Potreste voler convertire un Documento scritto in LyX in un file LaTeX.
- Per esempio, un co-autore o qualcuno che lavora per voi, i quali non possiedono
+ Per esempio, un coautore o qualcuno che lavora per voi, i quali non possiedono
  LyX, potrebbero volerlo leggere.
  Questo fine è facilmente raggiungibile in LyX, vi basterà scegliere 
 \family sans
@@ -5210,7 +5214,7 @@ bibliographystyle{}
 
 \begin_layout Standard
 Dopo questa operazione, sarete in grado di fare riferimento ad un qualunque
- elemento appartente alle bibliografie che avete incluso con 
+ elemento appartenente alle bibliografie che avete incluso con 
 \family sans
 \bar under
 I

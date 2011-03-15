@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass scrbook
@@ -43,13 +43,14 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language italian
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -105,6 +106,7 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -321,7 +323,7 @@ Come la maggior parte delle applicazioni, LyX presenta la familiare barra
  dei menu nella parte alta della finestra principale.
  Al di sotto c'è un menu a tendina ed una serie di bottoni.
  C'è, naturalmente, una barra di scorrimento verticale ed un'area principale
- per l'editazione dei documenti.
+ per la modifica dei documenti.
  All'estremità inferiore è presente una piccola finestra che può contenere
  una singola linea di testo: questa finestra si chiama 
 \emph on
@@ -802,7 +804,7 @@ successivo
 \end_layout
 
 \begin_layout Standard
-Per sostituire in modo automatico tutte le occorenze
+Per sostituire in modo automatico tutte le occorrenze
 \color none
  di una parola nel documento, schiacciate 
 \family sans
@@ -1758,7 +1760,7 @@ impostazioni
 \begin_inset space ~
 \end_inset
 
-predifinite
+predefinite
 \begin_inset space ~
 \end_inset
 
@@ -2291,7 +2293,7 @@ Elementi indispensabili
 
 \begin_layout Standard
 Per stampare i documenti generati con LyX avete bisogno di effettuare dapprima
- alcune operazioni prelimiari.
+ alcune operazioni preliminari.
  In primo luogo la vostra stampante deve essere configurata correttamente
  [fate riferimento alla sezione che segue], quindi dovrete installare, qualora
  non siano già presenti sul sistema, i seguenti programmi (o eventualmente
@@ -2913,7 +2915,7 @@ Guida alla Stampante
 \begin_inset Quotes erd
 \end_inset
 
- presente all'intenro del manuale di 
+ presente all'interno del manuale di 
 \emph on
 Personalizzazione
 \emph default
@@ -4505,7 +4507,7 @@ reference "sec:nest"
  A volte comunque LyX mantiene il vecchio ambiente; ad oggi ciò dipende
  dal contesto, per cui in generale potete aspettarvi il comportamento usuale.
  Se desiderate che un paragrafo mantenga l'ambiente paragrafo e la profondità
- di nidificazionef, fate ricorso alla combinazione 
+ di nidificazione, fate ricorso alla combinazione 
 \family sans
 M-Invio
 \family default
@@ -6420,7 +6422,7 @@ parola
 \begin_inset Quotes erd
 \end_inset
 
- di ciscuna riga come etichetta dell'elemento.
+ di ciascuna riga come etichetta dell'elemento.
  Il primo 
 \family sans
 Spazio
@@ -6844,7 +6846,7 @@ Indirizzo
 
 destro
 \family default
- formatta il testo nello stile di un indirizzo gustificato a destra, utilizzato
+ formatta il testo nello stile di un indirizzo giustificato a destra, utilizzato
  in alcune nazioni per l'indirizzo del mittente e per la data.
  Segue un esempio di ciascuno di essi:
 \end_layout
@@ -7014,7 +7016,7 @@ L'ambiente
 \family sans
 Sunto
 \family default
- è utlizzato per il
+ è utilizzato per il
 \color none
   sunto di un articolo.
  Tecnicamente 
@@ -7814,7 +7816,7 @@ La grande scommessa
 \end_layout
 
 \begin_layout Standard
-Nelle sezioni precedenti vi abbiamo constantemente tartassati con la frase
+Nelle sezioni precedenti vi abbiamo costantemente tartassati con la frase
  
 \begin_inset Quotes eld
 \end_inset
@@ -8117,7 +8119,7 @@ Data
  Vi raccomandiamo di non farlo.
  LaTeX potrebbe avere strani comportamenti se provaste.
  Non lo sappiamo per certo.
- Comunque, non ha senso, contestualmente a questi ambienti, far risocorso
+ Comunque, non ha senso, contestualmente a questi ambienti, far ricorso
  all'annidamento, quindi perché mai dovreste volerlo?
 \end_layout
 
@@ -8730,7 +8732,7 @@ internamente
 \end_layout
 
 \begin_layout Standard
-In ultimo consideriamo i cosidetti 
+In ultimo consideriamo i cosiddetti 
 \family sans
 Oggetti Flottanti
 \family default
@@ -10264,7 +10266,7 @@ Si verificheranno sempre delle occasioni nelle quali avrete bisogno di un
  controllo più accurato, a tal fine LyX vi dà la possibilità di creare uno
  stile di carattere personalizzato.
  Per esempio, una rivista accademica o una azienda potrebbero avere un foglio
- di stile nel quale in determinate situzioni potrebbe essere necessario
+ di stile nel quale in determinate situazioni potrebbe essere necessario
  usare un font sans-serif.
 \begin_inset Foot
 status collapsed
@@ -11297,7 +11299,7 @@ one di documenti mediante LyX, probabilmente desiderate sapere in che modo
  di quello che accade dietro-le-quinte.
  L'argomento è maggiormente dettagliato all'interno del manuale 
 \emph on
-Caratterisitche estese
+Caratteristiche estese
 \emph default
 .
 \end_layout
@@ -11483,7 +11485,7 @@ LyX esegue per voi tutti questi passi in automatico.
 
 \begin_layout Standard
 Come avete potuto vedere, prima che possiate stampare od ottenere una anteprima
- del documento succedono un muccho di cose.
+ del documento succedono un mucchio di cose.
  Di conseguenza, non preoccupatevi se stampare richiede un po' più di tempo
  rispetto agli altri programmi di videoscrittura.
  Il risultato finale vale la vostra attesa.
@@ -11776,8 +11778,7 @@ capire
 File
 \family default
  Il nome del file sul quale stampare.
- Il risultato finale sarà nel formato Post\SpecialChar \-
-Script.
+ Il risultato finale sarà nel formato PostScript.
  Il file verrà generalmente salvato nella
 \color none
   cartella corrente, a meno che non venga specificato l'intero percorso.
@@ -13017,7 +13018,7 @@ Per chiudere questa nota a piè di pagina, cliccate sul rettangolo rosso
  Mentre continuate a digitare, non vedrete comparire alcun numero, ad ogni
  modo non avete nulla di cui preoccuparvi, LyX procederà alla numerazione
  delle note a piè di pagina al posto vostro, disponendo le stesse in fondo
- alle pagine corrispondenti, all'atto del processamento del vostro file.
+ alle pagine corrispondenti, all'atto dell'elaborazione del vostro file.
  Se desiderate convertire un testo già preesistente in una nota a piè di
  pagina, vi sarà sufficiente selezionarlo e premere il tasto relativo alla
  nota a piè di pagina sulla barra degli strumenti
@@ -14370,7 +14371,7 @@ ificatore dell'oggetto flottante per sceglierne il posizionamento.
  In maniera predefinita, un oggetto flottante utilizza le regole di posizionamen
 to previste dal documento.
  Queste possono essere modificate mediante la finestra di dialogo raggiungibile
- invoncando 
+ invocando 
 \family sans
 \bar under
 D
@@ -14551,7 +14552,7 @@ tbp
 \end_inset
 
 : prova dapprima in cima alla pagina di testo, quindi in fondo alla stessa,
- in ultimo in una pagina a sè.
+ in ultimo in una pagina a sé.
  Se volete che LyX tenti di posizionare, 
 \begin_inset Quotes eld
 \end_inset
@@ -14626,7 +14627,7 @@ p
 
 \begin_deeper
 \begin_layout Standard
-Inserisce sempre le figure in una pagina a sè stante.
+Inserisce sempre le figure in una pagina a sé stante.
 \end_layout
 
 \end_deeper
@@ -16232,12 +16233,12 @@ Ciascuna cella di una tabella è in grado di ospitare contemporaneamente
  figura.
  La dimensione e la forma del font possono essere modificate e conseguentemente
  la tabella si adatterà per rappresentarli correttamente.
- Non vi è però consentito inserire, all'interno della cella nè un ambiente
+ Non vi è però consentito inserire, all'interno della cella né un ambiente
  speciale (quale 
 \family sans
 Sezione*
 \family default
-, etc.), nè opzioni di spaziatura per il paragrafo contenuto al suo intenro.
+, etc.), né opzioni di spaziatura per il paragrafo contenuto al suo interno.
 \end_layout
 
 \begin_layout Subsection
@@ -16506,7 +16507,7 @@ Celle con righe multiple
 \end_layout
 
 \begin_layout Standard
-Defininendo una colonna di larghezza prestabilita nella finestra 
+Definendo una colonna di larghezza prestabilita nella finestra 
 \family sans
 Impostazioni
 \begin_inset space ~
@@ -16731,7 +16732,7 @@ Prima
 \begin_inset space ~
 \end_inset
 
-intestestazione
+intestazione
 \family default
 .
 \end_layout
@@ -16788,7 +16789,7 @@ coda,
 \family default
  
 \family sans
-Intestestazione,
+Intestazione,
 \family default
  
 \family sans
@@ -17288,7 +17289,7 @@ Elementi base
  A seguito di ciò, LyX visualizzerà un piccolo quadrato blu, contornato
  da marcatori di color magenta negli angoli.
  Il quadrato blu identifica la formula, mentre i marcatori magenta indicano
- la profondità di annidamento all'inteno della formula.
+ la profondità di annidamento all'interno della formula.
  Potete inserire un tipo particolare di formula matematica mediante 
 \family sans
 \bar under
@@ -17457,7 +17458,7 @@ Esc
 \family sans
 Tab
 \family default
- consente di muoversi orizzontalemente tra gli elementi della formula, ad
+ consente di muoversi orizzontalmente tra gli elementi della formula, ad
  esempio lungo le celle di una matrice o le varie posizioni in una equazione
  multilinea.
 \end_layout
@@ -17468,7 +17469,7 @@ Lo
 Spazio
 \family default
  sembra non produrre alcun effetto nell'ambito della modalità matematica,
- poiché, di fatto, non aggiunge spazi tra i caratteri, bensí consente di
+ poiché, di fatto, non aggiunge spazi tra i caratteri, bensì consente di
  uscire da una struttura nidificata.
  Per questo motivo è necessario che facciate attenzione nell'uso dello 
 \family sans
@@ -17568,12 +17569,14 @@ o disimparare qualcosa.
 In genere potete lasciare molte parti di una formula,
 \color none
   come questa matrice, riempite solo in parte:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left(\begin{array}{ccc}
 \lambda_{1}\\
  & \ddots\\
  &  & \lambda_{n}
-\end{array}\right).\]
+\end{array}\right).
+\]
 
 \end_inset
 
@@ -17754,11 +17757,13 @@ S
 u.
  Una frazione è in grado di ospitare al suo interno qualunque struttura
  matematica, come appare chiaro dal seguente esempio:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left[\frac{1}{\left(\begin{array}{cc}
 2 & 3\\
 4 & 5
-\end{array}\right)}\right]\]
+\end{array}\right)}\right]
+\]
 
 \end_inset
 
@@ -17799,8 +17804,10 @@ We haven't yet explained what display vs.
 \end_inset
 
 
-\begin_inset Formula \[
-\sum_{n=1}^{\infty}\frac{x^{n}}{n}=\ln\left(\frac{1}{1-x}\right).\]
+\begin_inset Formula 
+\[
+\sum_{n=1}^{\infty}\frac{x^{n}}{n}=\ln\left(\frac{1}{1-x}\right).
+\]
 
 \end_inset
 
@@ -17811,8 +17818,10 @@ Il segno di integrale, tuttavia, non posiziona i limiti sopra e sotto il
 \end_inset
 
 , e
-\begin_inset Formula \[
-\int_{-\infty}^{\infty}\frac{dx}{1+x^{2}}=\pi.\]
+\begin_inset Formula 
+\[
+\int_{-\infty}^{\infty}\frac{dx}{1+x^{2}}=\pi.
+\]
 
 \end_inset
 
@@ -17835,8 +17844,10 @@ l
 \begin_layout Standard
 Anche altre espressioni matematiche godono di questa proprietà, come ad
  esempio 
-\begin_inset Formula \[
-\lim_{x\rightarrow\infty}f(x),\]
+\begin_inset Formula 
+\[
+\lim_{x\rightarrow\infty}f(x),
+\]
 
 \end_inset
 
@@ -18160,8 +18171,10 @@ etc
 \end_inset
 
  in opposizione a
-\begin_inset Formula \[
-\lim_{x\rightarrow0}f(x)=L.\]
+\begin_inset Formula 
+\[
+\lim_{x\rightarrow0}f(x)=L.
+\]
 
 \end_inset
 
@@ -18756,24 +18769,30 @@ reference "sec:math-panel"
  con più livelli di parentesi.
  Per esempio, questo è il modo in cui vorreste apparissero le parentesi
  contenenti una matrice standard del tipo:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left[\begin{array}{cc}
 1 & 2\\
 3 & 4
-\end{array}\right],\]
+\end{array}\right],
+\]
 
 \end_inset
 
 e per rendere più semplice la rappresentazione dei livelli di parentesi
  presenti nel seguente abominio:
-\begin_inset Formula \[
-\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}\]
+\begin_inset Formula 
+\[
+\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}
+\]
 
 \end_inset
 
 o anche:
-\begin_inset Formula \[
-f\left(g\left(h\left(k\left(l\left(x\right)\right)\right)\right)\right).\]
+\begin_inset Formula 
+\[
+f\left(g\left(h\left(k\left(l\left(x\right)\right)\right)\right)\right).
+\]
 
 \end_inset
 
@@ -18859,8 +18878,10 @@ x^{y^z}
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-^{z}\quad\mathrm{è\; diverso\; da}\quad x^{{y^{z}}}\]
+\begin_inset Formula 
+\[
+^{z}\quad\mathrm{è\; diverso\; da}\quad x^{{y^{z}}}
+\]
 
 \end_inset
 
@@ -18902,12 +18923,14 @@ matematico
  è infatti presente un'icona contrassegnata da una matrice, che apre una
  finestra di dialogo nella quale fissare il numero di righe/colonne.
  Qui di seguito è riportato un esempio:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left(\begin{array}{ccc}
 1 & 2 & 3\\
 4 & 5 & 6\\
 7 & 8 & 9
-\end{array}\right).\]
+\end{array}\right).
+\]
 
 \end_inset
 
@@ -18927,7 +18950,7 @@ Shift
  All'atto della costruzione della matrice avete inoltre la possibilità di
  decidere se tutte le colonne (o solo alcune di esse) dovranno essere giustifica
 te a sinistra, a destra o al centro.
- L'assegnazione predefinità è 
+ L'assegnazione predefinita è 
 \family typewriter
 ccc
 \family default
@@ -18940,12 +18963,14 @@ lcr
  sta ad indicare che la prima colonna sarà giustificata a sinistra, la seconda
  al centro e la terza a destra.
  Essa apparirà nel seguente: 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \begin{array}{lcr}
 questa & questa\, colonna & questa\, colonna\\
 colonna & è & è\, allineata\\
 è\, allineata\, a\, sinistra & allineata\, al\, centro & a\, destra
-\end{array}.\]
+\end{array}.
+\]
 
 \end_inset
 
@@ -19047,7 +19072,8 @@ Tab
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 3 & = & 1+2\\
 4+5 & = & 9.
 \end{eqnarray*}
@@ -19111,14 +19137,18 @@ name "sec:math-label"
 \begin_layout Standard
 Numerare una equazione è in LyX un'operazione davvero molto semplice e consiste
  semplicemente nel modificare una equazione centrata come: 
-\begin_inset Formula \[
-1+2=3\]
+\begin_inset Formula 
+\[
+1+2=3
+\]
 
 \end_inset
 
 nella equazione numerata:
-\begin_inset Formula \begin{equation}
-1+2=3\label{mathed:first-eqn}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+1+2=3\label{mathed:first-eqn}
+\end{equation}
 
 \end_inset
 
@@ -19164,8 +19194,10 @@ numerazione
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-1+1=2.\end{equation}
+\begin_inset Formula 
+\begin{equation}
+1+1=2.
+\end{equation}
 
 \end_inset
 
@@ -19220,7 +19252,8 @@ reference "mathed:third-eqn"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 1 & = & 3-2\\
 2 & = & 4-2\label{mathed:third-eqn}\\
 4 & \leq & 7.
@@ -19252,10 +19285,11 @@ linea
 \family default
  mentre il cursore si trova sulla linea interessata della equazione numerata
  multilinea.
- Anche questa modalità può essere attivata o disattivata a piacemento mediante
+ Anche questa modalità può essere attivata o disattivata a piacimento mediante
  il medesimo comando da menu.
  Segue un esempio:
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 1 & = & 4-3\label{mathed:fourth-eqn}\\
 2 & = & 7-5\\
 1 & = & e^{2\pi i}\nonumber \\
@@ -19932,11 +19966,13 @@ text
 
 .
  Qui è riportato un esempio:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 f(x)=\begin{array}{cc}
 x & \textrm{in un caso}\\
 -x & \textrm{in tutti gli altri}
-\end{array}\]
+\end{array}
+\]
 
 \end_inset
 
@@ -20379,7 +20415,7 @@ Etichetta
 \family default
  
 \emph on
-al'interno
+all'interno
 \emph default
  dell'ambiente 
 \family sans
@@ -20642,8 +20678,8 @@ Nome
 \family default
  presente nella stessa finestra; essa sarà riportata come semplice testo
  immediatamente prima della URL.
- Per esempio, potrei dirvi che tutto il materiale riguardante LaTeX è diponibile
- al sito
+ Per esempio, potrei dirvi che tutto il materiale riguardante LaTeX è disponibil
+e al sito
 \begin_inset Newline newline
 \end_inset
 
@@ -20663,7 +20699,7 @@ http://ctan.tug.org
 \begin_inset Quotes eld
 \end_inset
 
-tutto il materiale riguardante LaTeX è diponibile al sito CTAN 
+tutto il materiale riguardante LaTeX è disponibile al sito CTAN 
 \family typewriter
 http://ctan.tug.org
 \family default
@@ -20710,7 +20746,7 @@ I titoli delle sezioni o dei capitoli possono, come in questo caso, essere
  limitatezza dello spazio disponibile orizzontalmente.
  Ad esempio, se l'intestazione della pagina è configurata per mostrare il
  titolo della sezione corrente, un titolo molto lungo causerà il superamento
- dei margini, ottenenendo una visualizzazione piuttosto scadente.
+ dei margini, ottenendo una visualizzazione piuttosto scadente.
  
 \end_layout
 
@@ -22067,7 +22103,7 @@ ortografico
  La verifica avrà inizio a partire dalla posizione corrente del cursore.
  A seguito di ciò comparirà sullo schermo una finestra contenente due righe,
  sulla prima delle quali sarà riportata qualunque parola errata (o sconosciuta)
- incontrata, parola che vi sarà possibile modificare e sostiture servendovi
+ incontrata, parola che vi sarà possibile modificare e sostituire servendovi
  della seconda riga.
  Quando una parola sconosciuta viene individuata, questa viene evidenziata
  e la finestra di testo aggiornata in modo da rendere visibile la parola.
@@ -22375,7 +22411,7 @@ LyX non è in grado di effettuare il controllo su documenti che contengono
 \family typewriter
 pspell
 \family default
- e abbiate indentificato correttamente le varie lingue.
+ e abbiate identificato correttamente le varie lingue.
 \end_layout
 
 \begin_layout Section

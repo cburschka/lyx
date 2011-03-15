@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
@@ -39,13 +39,14 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language italian
+\language_package default
 \inputencoding latin1
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -100,6 +101,7 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -155,7 +157,7 @@ Che cosa è LyX?
 
 \begin_layout Standard
 LyX è un sistema per la preparazione di documenti.
- Eccelle nel consertirvi di creare complessi scritti tecnici e scientifici,
+ Eccelle nel consentirvi di creare complessi scritti tecnici e scientifici,
  con elementi matematici, riferimenti incrociati, bibliografie, indici,
  eccetera.
  E' particolarmente efficace qualora siano richieste tipiche funzionalità
@@ -268,8 +270,8 @@ Quello che vedi è tutto quello che ottieni
 
 \begin_layout Standard
 Ecco dove LyX differisce da tutti gli altri word processor.
- Non dovete alambiccarvi circa la posizione che occuperà un determinato
- carattere.
+ Non dovete lambiccarvi il cervello circa la posizione che occuperà un determina
+to carattere.
  Direte semplicemente a LyX quello che state facendo, e lui si prenderà
  cura di tutto il resto, seguendo l'insieme di regole definite da ciò che
  viene chiamato uno 
@@ -374,7 +376,7 @@ Affrontiamo ora il problema della coerenza.
 
 \begin_layout Standard
 Vediamo un altro esempio.
- Immaginiamo che voi stiate scivendo un elenco.
+ Immaginiamo che voi stiate scrivendo un elenco.
  In altri word processor, l'elenco non è altro che un gruppo di tabulazioni
  e ritorni a capo.
  Siete obbligati a calcolare dove inserire l'etichetta di ogni elemento,
@@ -660,7 +662,7 @@ ta\SpecialChar \-
 zio\SpecialChar \-
 na\SpecialChar \-
 li, e incorporati in TeX: ecco perché i documenti prodotti
- con TeX hanno un'aspetto così eccellente.
+ con TeX hanno un aspetto così eccellente.
  L'ouput di TeX è un documento portabile di tipo 
 \emph on
 pdf
@@ -772,7 +774,7 @@ LyX: Word processor visuale di tipo WYSIWYM, che utilizza LaTeX per la sua
 In questa sezione abbiamo quindi cercato di spiegare le differenze tra LyX
  e gli altri word processor.
  In breve, la differenza è LaTeX.
- LyX – utillizzando LaTeX come substrato – vi aiuta a pensare maggiormente
+ LyX – utilizzando LaTeX come substrato – vi aiuta a pensare maggiormente
  a ciò che scrivete, e con quali parole scriverlo.
  Il computer poi si occupa della forma con la quale il vostro testo deve
  apparire.
@@ -922,7 +924,7 @@ Vai
 all'etichetta
 \family default
  nella finestra di dialogo sopra citata.
- Se volete tornare al puno in cui eravate, è semplice: fate clic sul pulsante
+ Se volete tornare al punto in cui eravate, è semplice: fate clic sul pulsante
  
 \family sans
 Torna indietro
@@ -1302,7 +1304,7 @@ Return
 Invio
 \family default
  si riferiscono entrambi al medesimo tasto.
- Alcune tastiere usano indiefferentemente l'una o l'altra etichetta; e alcune
+ Alcune tastiere usano indifferentemente l'una o l'altra etichetta; e alcune
  hanno proprio due tasti separati.
  Siccome per LyX sono la stessa cosa, useremo 
 \family sans
@@ -2105,11 +2107,11 @@ Segnalare un errore
 
 \begin_layout Standard
 Usando LyX, potreste notare un comportamento bizzarro, tale da essere considerat
-o un vero e prorio 
+o un vero e proprio 
 \begin_inset Quotes eld
 \end_inset
 
-buig
+bug
 \begin_inset Quotes erd
 \end_inset
 
@@ -2137,7 +2139,7 @@ bug
 \begin_inset Quotes erd
 \end_inset
 
-, raggiunigibile a 
+, raggiungibile a 
 \family typewriter
 
 \begin_inset Flex URL
@@ -2199,7 +2201,7 @@ http://www.lyx.org/
 
 \begin_layout Standard
 Per essere utile, una segnalazione di errore dovrebbe contenere almeno l'indicaz
-ione dela versione di LyX che presenta il problema.
+ione della versione di LyX che presenta il problema.
  Sono preferibili descrizioni accurate e dettagliate: il tempo perso dagli
  sviluppatori per individuare con esattezza un errore, infatti, non può
  essere impiegato per implementare ulteriori migliorie del programma.
@@ -2226,7 +2228,7 @@ Se avete effettuato delle modifiche al codice sorgente di LyX che a vostro
 \begin_inset Quotes eld
 \end_inset
 
-unfied
+unified
 \begin_inset Quotes erd
 \end_inset
 
