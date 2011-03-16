@@ -185,7 +185,7 @@ int countWords(DocIterator const & from, DocIterator const & to)
 	int count = 0;
 	bool inword = false;
 	
-	for (DocIterator dit = from ; dit != to ; ) {
+	for (DocIterator dit = from ; dit != to && !dit.empty(); ) {
 		if (!dit.inTexted()) {
 			dit.forwardPos();
 			continue;
@@ -202,6 +202,8 @@ int countWords(DocIterator const & from, DocIterator const & to)
 			if (ins && !ins->producesOutput()) {
 				//skip this inset
 				++dit.top().pos();
+				if (dit >= to)
+					break;
 				continue;
 			}
 			if (par.isWordSeparator(pos)) 
