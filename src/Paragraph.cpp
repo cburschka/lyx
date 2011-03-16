@@ -112,7 +112,7 @@ public:
 		if (range_.first > pos) {
 			range_.first += offset;
 			range_.last += offset;
-		} else if (range_.last > pos) {
+		} else if (range_.last >= pos) {
 			range_.last += offset;
 		}
 	}
