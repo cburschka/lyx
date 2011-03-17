@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-03-04 23:51+0100\n"
-"PO-Revision-Date: 2011-02-25 07:58+0730\n"
+"POT-Creation-Date: 2011-03-17 23:16+0100\n"
+"PO-Revision-Date: 2011-03-17 07:11+0730\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Indonesian <was.uthm@gmail.com>\n"
 "Language: id\n"
@@ -33,7 +33,7 @@ msgstr "Penghargaan"
 msgid "Copyright"
 msgstr "Hak cipta"
 
-#: src/frontends/qt4/ui/AboutUi.ui:131 src/frontends/qt4/ui/CompareUi.ui:155
+#: src/frontends/qt4/ui/AboutUi.ui:131 src/frontends/qt4/ui/CompareUi.ui:163
 #: src/frontends/qt4/ui/DelimiterUi.ui:286
 #: src/frontends/qt4/ui/ErrorListUi.ui:60
 #: src/frontends/qt4/ui/ExternalUi.ui:608
@@ -157,7 +157,7 @@ msgid "&Rescan"
 msgstr "Pindai &Ulang"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:46 src/frontends/qt4/ui/BibtexUi.ui:97
-#: src/frontends/qt4/ui/CompareUi.ui:42 src/frontends/qt4/ui/ExternalUi.ui:70
+#: src/frontends/qt4/ui/CompareUi.ui:50 src/frontends/qt4/ui/ExternalUi.ui:70
 #: src/frontends/qt4/ui/GraphicsUi.ui:58 src/frontends/qt4/ui/IncludeUi.ui:335
 #: src/frontends/qt4/ui/LaTeXUi.ui:160 src/frontends/qt4/ui/PrefInputUi.ui:110
 #: src/frontends/qt4/ui/PrintUi.ui:313
@@ -229,7 +229,7 @@ msgstr "&Masukkan bibliografi dalam Daftar Isi"
 #: src/frontends/qt4/ui/CharacterUi.ui:357
 #: src/frontends/qt4/ui/CitationUi.ui:197
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:183
-#: src/frontends/qt4/ui/CompareUi.ui:145 src/frontends/qt4/ui/DocumentUi.ui:67
+#: src/frontends/qt4/ui/CompareUi.ui:153 src/frontends/qt4/ui/DocumentUi.ui:67
 #: src/frontends/qt4/ui/ExternalUi.ui:588
 #: src/frontends/qt4/ui/GraphicsUi.ui:721
 #: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/IndexUi.ui:41
@@ -527,7 +527,7 @@ msgstr "Tambahkan &Semua"
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
 #: src/Buffer.cpp:2272 src/Buffer.cpp:3768 src/Buffer.cpp:3831
-#: src/LyXVC.cpp:89 src/LyXVC.cpp:222 src/frontends/qt4/GuiBranches.cpp:177
+#: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1801
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -997,31 +997,31 @@ msgstr "Lama:"
 msgid "New:"
 msgstr "Baru:"
 
-#: src/frontends/qt4/ui/CompareUi.ui:19
+#: src/frontends/qt4/ui/CompareUi.ui:27
 msgid "&New Document:"
 msgstr "Dokumen &Baru"
 
-#: src/frontends/qt4/ui/CompareUi.ui:52
+#: src/frontends/qt4/ui/CompareUi.ui:60
 msgid "&Old Document:"
 msgstr "&Dokumen lama:"
 
-#: src/frontends/qt4/ui/CompareUi.ui:75 src/frontends/qt4/ui/PrefUi.ui:38
+#: src/frontends/qt4/ui/CompareUi.ui:83 src/frontends/qt4/ui/PrefUi.ui:38
 msgid "Bro&wse..."
 msgstr "Ca&ri..."
 
-#: src/frontends/qt4/ui/CompareUi.ui:91
+#: src/frontends/qt4/ui/CompareUi.ui:99
 msgid "Copy Document Settings from:"
 msgstr "Salin Pengaturan Dokumen dari:"
 
-#: src/frontends/qt4/ui/CompareUi.ui:97
+#: src/frontends/qt4/ui/CompareUi.ui:105
 msgid "N&ew Document"
 msgstr "Dokumen B&aru"
 
-#: src/frontends/qt4/ui/CompareUi.ui:104
+#: src/frontends/qt4/ui/CompareUi.ui:112
 msgid "Ol&d Document"
 msgstr "Dokumen &lama"
 
-#: src/frontends/qt4/ui/CompareUi.ui:173
+#: src/frontends/qt4/ui/CompareUi.ui:178
 msgid ""
 "Turns on the change tracking and showing changes in LaTeX output for the "
 "resulting document"
@@ -1029,7 +1029,7 @@ msgstr ""
 "Mengaktifkan lacak perubahan dan menampilkan perubahan di keluaran LaTeX "
 "untuk hasil dokumen"
 
-#: src/frontends/qt4/ui/CompareUi.ui:176
+#: src/frontends/qt4/ui/CompareUi.ui:181
 msgid "Enable &change tracking features in the output"
 msgstr "Aktifkan fitur lacak perubahan di keluarannya"
 
@@ -1876,8 +1876,8 @@ msgstr "Kode Input"
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1085
-#: src/insets/InsetInclude.cpp:1091
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1091
+#: src/insets/InsetInclude.cpp:1097
 msgid "Program Listing"
 msgstr "Pemrograman"
 
@@ -1986,12 +1986,11 @@ msgstr "Terapkan se&gera"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:79
 msgid "Restore initial values in dialog"
-msgstr ""
+msgstr "Mengembalikan isian asal dalam dialog"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:92
-#, fuzzy
 msgid "Push new inset into the document"
-msgstr "Label yang muncul dalam dokumen"
+msgstr "Memasukkan sisipan baru kedalam dokumen"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:95
 msgid "New Inset"
@@ -3120,7 +3119,7 @@ msgstr "&Ubah"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2829 src/frontends/qt4/GuiPrefs.cpp:2893
+#: src/frontends/qt4/GuiPrefs.cpp:2833 src/frontends/qt4/GuiPrefs.cpp:2897
 msgid "Remo&ve"
 msgstr "&Hapus"
 
@@ -3185,63 +3184,74 @@ msgstr "Penyuntingan"
 msgid "Cursor &follows scrollbar"
 msgstr "Kursor mengikuti kotak &gulungan"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:44
+#: src/frontends/qt4/ui/PrefEditUi.ui:46 src/LyXRC.cpp:3098
+msgid ""
+"Configure the width of the text cursor. Automatic zoom-controlled cursor "
+"width used when set to 0."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefEditUi.ui:49
+#, fuzzy
+msgid "Cursor width (&pixels):"
+msgstr "&Layar menggunakan (pixels):"
+
+#: src/frontends/qt4/ui/PrefEditUi.ui:77
 msgid "Scroll &below end of document"
 msgstr "Menggulung dibawa&h akhir dokumen"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:51
+#: src/frontends/qt4/ui/PrefEditUi.ui:84
 msgid "Sort &environments alphabetically"
 msgstr "Urutkan lingkungan m&enurut alfabet"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:58
+#: src/frontends/qt4/ui/PrefEditUi.ui:91
 msgid "&Group environments by their category"
 msgstr "Kelompokkan lingkungan sesuai kata&gori"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:66
+#: src/frontends/qt4/ui/PrefEditUi.ui:99
 msgid "Edit Math Macros inline with a box around"
 msgstr "Sunting Makro Matematika pada baris dikelilingi kotak"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:71
+#: src/frontends/qt4/ui/PrefEditUi.ui:104
 msgid "Edit Math Macros inline with the name in the status bar"
 msgstr "Sunting Makro Matematika pada baris di kotak status"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:76
+#: src/frontends/qt4/ui/PrefEditUi.ui:109
 msgid "Edit Math Macros with a parameter list (like in LyX < 1.6)"
 msgstr "Sunting Makro Matematika dengan daftar parameter (spt pada LyX < 1.6)"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:97
+#: src/frontends/qt4/ui/PrefEditUi.ui:130
 msgid "Skip trailing non-word characters"
 msgstr "Melompati dibelakang karakter bukan kata"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:100
+#: src/frontends/qt4/ui/PrefEditUi.ui:133
 msgid "Use Mac-style for cursor moving between &words"
 msgstr "Gunakan kursor gaya Mac untuk berpindah anta&ra kata"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:110
+#: src/frontends/qt4/ui/PrefEditUi.ui:143
 msgid "Fullscreen"
 msgstr "Layar Penuh"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:128
+#: src/frontends/qt4/ui/PrefEditUi.ui:161
 msgid "&Hide toolbars"
 msgstr "Semb&unyikan kotakbantuan"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:135
+#: src/frontends/qt4/ui/PrefEditUi.ui:168
 msgid "Hide scr&ollbar"
 msgstr "Sembun&yikan kotak gulungan"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:142
+#: src/frontends/qt4/ui/PrefEditUi.ui:175
 msgid "Hide &tabbar"
 msgstr "Sembunyikan t&ab"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:149
+#: src/frontends/qt4/ui/PrefEditUi.ui:182
 msgid "Hide &menubar"
 msgstr "Sembunyikan kotak &menu"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:156
+#: src/frontends/qt4/ui/PrefEditUi.ui:189
 msgid "&Limit text width"
 msgstr "&Batasi area teks"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:168
+#: src/frontends/qt4/ui/PrefEditUi.ui:201
 msgid "Screen used (&pixels):"
 msgstr "&Layar menggunakan (pixels):"
 
@@ -3473,7 +3483,7 @@ msgstr "Tandai ba&hasa asing"
 msgid "Right-to-left language support"
 msgstr "Dukungan bahasa kanan-ke-kiri"
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:215 src/LyXRC.cpp:3359
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:215 src/LyXRC.cpp:3379
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
@@ -3625,7 +3635,7 @@ msgstr "&Atur ulang opsi class bila dokumen class berubah"
 msgid "Output &line length:"
 msgstr "Panjang &baris output:"
 
-#: src/frontends/qt4/ui/PrefOutputUi.ui:37 src/LyXRC.cpp:3029
+#: src/frontends/qt4/ui/PrefOutputUi.ui:37 src/LyXRC.cpp:3045
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -5543,7 +5553,7 @@ msgstr "Proof"
 #: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
 #: lib/layouts/scrclass.inc:17 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
-#: lib/ui/stdtoolbars.inc:69 src/insets/InsetRef.cpp:330
+#: lib/ui/stdtoolbars.inc:69 src/insets/InsetRef.cpp:343
 msgid "Standard"
 msgstr "Standar"
 
@@ -12428,18 +12438,18 @@ msgid "Justified Line Break|J"
 msgstr "Pemisah Baris dgn Perataan"
 
 #: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:102 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:588
+#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:595
 msgid "Cut"
 msgstr "Potong"
 
 #: lib/ui/stdcontext.inc:295 lib/ui/stdmenus.inc:103 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:597
+#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:604
 msgid "Copy"
 msgstr "Salin"
 
 #: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:82
 #: src/Text3.cpp:1175 src/mathed/InsetMathGrid.cpp:1327
-#: src/mathed/InsetMathNest.cpp:567
+#: src/mathed/InsetMathNest.cpp:574
 msgid "Paste"
 msgstr "Tempelkan"
 
@@ -12761,7 +12771,8 @@ msgid "Use Locking Property|L"
 msgstr "Gunakan Properti Pengunci|i"
 
 #: lib/ui/stdmenus.inc:91
-msgid "More Formats & Options...|F"
+#, fuzzy
+msgid "More Formats & Options...|O"
 msgstr "Tambahan Format dan Opsi..."
 
 #: lib/ui/stdmenus.inc:100
@@ -17121,25 +17132,25 @@ msgstr ""
 "Berkas cadangan berhasil dimuat, tetapi berkas asli %1$s hanya bisa dibaca. "
 "Pastikan simpan dokumen dengan nama berbeda."
 
-#: src/Buffer.cpp:4172 src/insets/InsetCaption.cpp:338
+#: src/Buffer.cpp:4178 src/insets/InsetCaption.cpp:338
 msgid "Senseless!!! "
 msgstr "TidakDiijinkan!!! "
 
-#: src/Buffer.cpp:4293
+#: src/Buffer.cpp:4299
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokumen %1$s dimuat ulang."
 
-#: src/Buffer.cpp:4296
+#: src/Buffer.cpp:4302
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Tidak bisa memuat ulang dokumen %1$s"
 
-#: src/Buffer.cpp:4362
+#: src/Buffer.cpp:4368
 msgid "Included File Invalid"
 msgstr "Berkas Ikutan tidak valid"
 
-#: src/Buffer.cpp:4363
+#: src/Buffer.cpp:4369
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17334,22 +17345,22 @@ msgstr "Cabang"
 msgid "Branch already exists"
 msgstr "Nama cabang sudah ada"
 
-#: src/BufferView.cpp:2517
+#: src/BufferView.cpp:2518
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Memasukkan dokumen %1$s..."
 
-#: src/BufferView.cpp:2528
+#: src/BufferView.cpp:2529
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumen %1$s dimasukkan."
 
-#: src/BufferView.cpp:2530
+#: src/BufferView.cpp:2531
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Tidak dapat memasukkan dokumen %1$s"
 
-#: src/BufferView.cpp:2795
+#: src/BufferView.cpp:2796
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17360,11 +17371,11 @@ msgstr ""
 "%1$s\n"
 "karena kesalahan: %2$s"
 
-#: src/BufferView.cpp:2797
+#: src/BufferView.cpp:2798
 msgid "Could not read file"
 msgstr "Tidak dapat membaca berkas"
 
-#: src/BufferView.cpp:2804
+#: src/BufferView.cpp:2805
 #, c-format
 msgid ""
 "%1$s\n"
@@ -17373,15 +17384,15 @@ msgstr ""
 "%1$s\n"
 "tidak bisa dibaca."
 
-#: src/BufferView.cpp:2805 src/output.cpp:39
+#: src/BufferView.cpp:2806 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Tidak bisa membuka berkas"
 
-#: src/BufferView.cpp:2812
+#: src/BufferView.cpp:2813
 msgid "Reading not UTF-8 encoded file"
 msgstr "Membaca berkas not UTF-8 encoded"
 
-#: src/BufferView.cpp:2813
+#: src/BufferView.cpp:2814
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -17395,7 +17406,7 @@ msgstr ""
 "coba dengan mengganti berkas encoding\n"
 "ke UTF-8 denga program lain bukan LyX.\n"
 
-#: src/Changes.cpp:363 src/Paragraph.cpp:2514
+#: src/Changes.cpp:363 src/Paragraph.cpp:2516
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:300
 #: src/insets/InsetCommandParams.cpp:390 src/insets/InsetListings.cpp:183
 #: src/insets/InsetListings.cpp:191 src/insets/InsetListings.cpp:213
@@ -17403,7 +17414,7 @@ msgstr ""
 msgid "LyX Warning: "
 msgstr "Peringatan LyX: "
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2515 src/insets/InsetBibitem.cpp:301
+#: src/Changes.cpp:364 src/Paragraph.cpp:2517 src/insets/InsetBibitem.cpp:301
 #: src/insets/InsetCommandParams.cpp:391 src/insets/InsetListings.cpp:184
 #: src/insets/InsetListings.cpp:192 src/insets/InsetNomencl.cpp:286
 #: src/mathed/InsetMathString.cpp:162
@@ -18195,7 +18206,6 @@ msgstr ""
 "Bye."
 
 #: src/LyX.cpp:669
-#, fuzzy
 msgid ""
 "SIGSEGV signal caught!\n"
 "Sorry, you have found a bug in LyX, hope you have not lost any data.\n"
@@ -18206,7 +18216,8 @@ msgstr ""
 "Sinyal SIGSEGV tertangkap!\n"
 "Maaf, anda menemukan kutu di LyX, semoga data anda tidak hilang.\n"
 "Silahkan membaca bagaimana melaporkan kutu, dari 'Bantuan->Pengantar' dan "
-"kirimkan pada kami, jika diperlukan. Terima kasih !"
+"kirimkan pada kami, jika diperlukan. Terima kasih !\n"
+"Semoga berhasil."
 
 #: src/LyX.cpp:685
 msgid "LyX crashed!"
@@ -18382,7 +18393,7 @@ msgstr "Tipe berkas tidak lengkap [misal latex, ps...] setelah --import switch"
 msgid "Missing filename for --import"
 msgstr "Kurang menuliskan nama berkas untuk --import"
 
-#: src/LyXRC.cpp:3021
+#: src/LyXRC.cpp:3037
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
@@ -18390,7 +18401,7 @@ msgstr ""
 "Pertimbangkan menggabungkan kata, seperti \"diskdrive\" untuk \"disk drive"
 "\", sebagai satu suku kata yang diterima?"
 
-#: src/LyXRC.cpp:3025
+#: src/LyXRC.cpp:3041
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
@@ -18398,7 +18409,7 @@ msgstr ""
 "Pilihlah bahasa alternatif. Bahasa standard menggunakan bahasa yang "
 "digunakan dokumen."
 
-#: src/LyXRC.cpp:3033
+#: src/LyXRC.cpp:3049
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -18406,7 +18417,7 @@ msgstr ""
 "Batalkan pilihan apabila anda tidak menginginkan pilihan yang sekarang "
 "digantikan secara otomatis dengan yang ditulis."
 
-#: src/LyXRC.cpp:3037
+#: src/LyXRC.cpp:3053
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -18414,14 +18425,14 @@ msgstr ""
 "Batalkan pilihan apabila anda tidak menginginkan opsi kelas dikembalikan ke "
 "bawaan setelah kelas berubah."
 
-#: src/LyXRC.cpp:3041
+#: src/LyXRC.cpp:3057
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Jeda waktu antara penyimpanan otomatis (dalam detik). 0 berarti tidak ada "
 "penyimpanan otomatis."
 
-#: src/LyXRC.cpp:3048
+#: src/LyXRC.cpp:3064
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -18429,7 +18440,7 @@ msgstr ""
 "Path lokasi dari berkas backup. Apabila tidak diisi, LyX akan menyimpan "
 "berkas backup pada direktori yang sama dengan berkas aslinya."
 
-#: src/LyXRC.cpp:3052
+#: src/LyXRC.cpp:3068
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
@@ -18437,11 +18448,11 @@ msgstr ""
 "Mendefinisikan opsi dari bibtex (lihat manual bibtex) atau menggunakan "
 "pengkompail alternatif (seperti  mlbibtex atau bibulus)."
 
-#: src/LyXRC.cpp:3056
+#: src/LyXRC.cpp:3072
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
 msgstr "Definisi pilihan program bibtex untuk PLaTeX (LaTeX Jepang)."
 
-#: src/LyXRC.cpp:3060
+#: src/LyXRC.cpp:3076
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -18449,11 +18460,11 @@ msgstr ""
 "Berkas kunci ikatan. Dapat dinyatakan secara lengkap dengan path absolut, "
 "atau LyX akan mencari di direktori global dan lokalnya."
 
-#: src/LyXRC.cpp:3064
+#: src/LyXRC.cpp:3080
 msgid "Select to check whether the lastfiles still exist."
 msgstr "Pilih untuk memeriksa apakah berkas yang terakhir masih ada."
 
-#: src/LyXRC.cpp:3068
+#: src/LyXRC.cpp:3084
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -18461,7 +18472,7 @@ msgstr ""
 "Mendefinisikan untuk menjalankan chktex. Contoh \"chktex -n11 -n1 -n3 -n6 -"
 "n9 -22 -n25 -n30 -n38\" Lihat dokumentasi ChkTeX."
 
-#: src/LyXRC.cpp:3078
+#: src/LyXRC.cpp:3094
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -18469,7 +18480,7 @@ msgstr ""
 "LyX normalnya tidak memperbarui posisi kursor apabila anda mengubah "
 "scrollbar. Pilih 'true' apabila ingin kursor selalu muncul pada layar."
 
-#: src/LyXRC.cpp:3082
+#: src/LyXRC.cpp:3102
 msgid ""
 "LyX normally doesn't allow the user to scroll further than the bottom of the "
 "document. Set to true if you prefer to scroll the bottom of the document to "
@@ -18478,16 +18489,16 @@ msgstr ""
 "LyX tidak mengijinkan pengguna menggulung lebih dari akhir dokumen. Pilih "
 "true apabila anda ingin merubah dari akhir dokumen ke atas layar."
 
-#: src/LyXRC.cpp:3086
+#: src/LyXRC.cpp:3106
 msgid "Make Apple key act as Meta and Control key as Ctrl."
 msgstr ""
 "Membuat tombol ketik Apple seperti tombol Meta dan Control sebagai Ctrl."
 
-#: src/LyXRC.cpp:3090
+#: src/LyXRC.cpp:3110
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
 msgstr "Gunakan konvensi Mac OS X untuk menggerakkan kursor di level kata"
 
-#: src/LyXRC.cpp:3094
+#: src/LyXRC.cpp:3114
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
@@ -18495,7 +18506,7 @@ msgstr ""
 "Tampilkan kotak kecil disekeliling Makro matematika dengan nama makro ketika "
 "kursor berada dalam kotak makro."
 
-#: src/LyXRC.cpp:3099
+#: src/LyXRC.cpp:3119
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -18504,7 +18515,7 @@ msgstr ""
 "IIni dapat menerima format strftime; lihat manual strftime untuk mengetahui "
 "lebih detail. Misal \"%A, %e. %B %Y\"."
 
-#: src/LyXRC.cpp:3103
+#: src/LyXRC.cpp:3123
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
 "look in its global and local commands/ directories."
@@ -18512,19 +18523,19 @@ msgstr ""
 "Berkas definisi perintah. Dapat menggunakan path absolut atau LyX akan "
 "mencari secara global dan di direktori lokal pengguna."
 
-#: src/LyXRC.cpp:3107
+#: src/LyXRC.cpp:3127
 msgid "The default format used with LFUN_BUFFER_[VIEW|UPDATE]."
 msgstr "Format bawaan digunakan dengan LFUN_BUFFER_[VIEW|UPDATE]."
 
-#: src/LyXRC.cpp:3111
+#: src/LyXRC.cpp:3131
 msgid "New documents will be assigned this language."
 msgstr "Dokumen baru akan disesuaikan dengan bahasa ini."
 
-#: src/LyXRC.cpp:3115
+#: src/LyXRC.cpp:3135
 msgid "Specify the default paper size."
 msgstr "Pilih ukuran kertas bawaan."
 
-#: src/LyXRC.cpp:3119
+#: src/LyXRC.cpp:3139
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -18532,11 +18543,11 @@ msgstr ""
 "Memberi ikon pada dialog apabila jendela utama juga ber ikon. (Pengaruh akan "
 "terlihat di dialog setelah perubahan dibuat.)"
 
-#: src/LyXRC.cpp:3123
+#: src/LyXRC.cpp:3143
 msgid "Select how LyX will display any graphics."
 msgstr "Pilih bagaimana LyX akan menampilkan gambar."
 
-#: src/LyXRC.cpp:3127
+#: src/LyXRC.cpp:3147
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -18544,11 +18555,11 @@ msgstr ""
 "Lokasi bawaan dari dokumen anda. Disini menunjukkan direktori LyX akan "
 "dimulai."
 
-#: src/LyXRC.cpp:3131
+#: src/LyXRC.cpp:3151
 msgid "Specify additional chars that can be part of a word."
 msgstr "Nyatakan tambahan karakter yang akan menjadi bagian dari suatu kata."
 
-#: src/LyXRC.cpp:3135
+#: src/LyXRC.cpp:3155
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
@@ -18556,7 +18567,7 @@ msgstr ""
 "Path lokasi yang akan di tuju LyX ketika akan memilih suatu berkas contoh. "
 "Path ini menunjukkan direktori yang dipilih LyX untuk memulai pencarian."
 
-#: src/LyXRC.cpp:3139
+#: src/LyXRC.cpp:3159
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -18564,11 +18575,11 @@ msgstr ""
 "Huruf encoding yang digunakan paket LaTeX2e fontenc. T1 adalah yang sangat "
 "direkomendasikan untuk bahasa-bahasa selain Ingris."
 
-#: src/LyXRC.cpp:3143
+#: src/LyXRC.cpp:3163
 msgid "Disable any kerning and ligatures for text drawing on screen."
-msgstr ""
+msgstr "Menghilangkan kerning dan ligatur untuk menampilkan teks di layar."
 
-#: src/LyXRC.cpp:3150
+#: src/LyXRC.cpp:3170
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
@@ -18578,11 +18589,11 @@ msgstr ""
 "kompiler alternatif. Misalnya, menggunakan xindy/make-rules, perintah string "
 "berbentuk \"makeindex.sh -m $$lang\"."
 
-#: src/LyXRC.cpp:3154
+#: src/LyXRC.cpp:3174
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
 msgstr "Definisi pilihan program indeks untuk PLaTeX (LaTeX Jepang)."
 
-#: src/LyXRC.cpp:3158
+#: src/LyXRC.cpp:3178
 msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
@@ -18590,7 +18601,7 @@ msgstr ""
 "Mendefinisikan opsi makeindex (lihat manual makeindex) untuk nomenklatur. "
 "Kemungkinan berbeda dengan opsi untuk proses membuat index."
 
-#: src/LyXRC.cpp:3167
+#: src/LyXRC.cpp:3187
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -18599,18 +18610,18 @@ msgstr ""
 "Anda tidak memerlukan ini apabila, misalnya ingin menulis dokumen berbahasa "
 "Jerman menggunakan papaen ketik sistem Amerika."
 
-#: src/LyXRC.cpp:3171
+#: src/LyXRC.cpp:3191
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr "Pilih apabila perintah merubah bahasa diperlukan di awal dokumen."
 
-#: src/LyXRC.cpp:3175
+#: src/LyXRC.cpp:3195
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr "Pilih apabila perintah merubah bahasa diperlukan di akhir dokumen."
 
-#: src/LyXRC.cpp:3179
+#: src/LyXRC.cpp:3199
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -18619,16 +18630,16 @@ msgstr ""
 "Perintah LaTeX untuk merubah bahasa dokumen ke bahasa yang lain. Misalnya "
 "\\selectlanguage{$$lang} dimana $$lang adalah nama bahasa penggantinya."
 
-#: src/LyXRC.cpp:3183
+#: src/LyXRC.cpp:3203
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr ""
 "Perintah LaTeX untuk memanggil balik bahasa yang digunakan dalam dokumen."
 
-#: src/LyXRC.cpp:3187
+#: src/LyXRC.cpp:3207
 msgid "The LaTeX command for local changing of the language."
 msgstr "Perintah LateX untuk merubah ke bahasa lokal."
 
-#: src/LyXRC.cpp:3191
+#: src/LyXRC.cpp:3211
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
@@ -18636,7 +18647,7 @@ msgstr ""
 "Lepaskan pilihan apabila anda tidak menginginkan bahasa yang dipilih sebagai "
 "argumen untuk \\documentclass."
 
-#: src/LyXRC.cpp:3195
+#: src/LyXRC.cpp:3215
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -18644,7 +18655,7 @@ msgstr ""
 "Perintah LaTeX untuk memuat paket bahasa. Misalnya \"\\usepackage{babel}\", "
 "\"\\usepackage{omega}\"."
 
-#: src/LyXRC.cpp:3199
+#: src/LyXRC.cpp:3219
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -18652,25 +18663,25 @@ msgstr ""
 "Lepaskan pilihan apabila anda tidak ingin babel digunakan ketika bahasa "
 "dokumen adalah bahasa bawwan."
 
-#: src/LyXRC.cpp:3203
+#: src/LyXRC.cpp:3223
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr ""
 "Lepaskan pilihan apabila anda tidak menginginkan LyX langsung menuju ke "
 "posisi ketika disimpan."
 
-#: src/LyXRC.cpp:3207
+#: src/LyXRC.cpp:3227
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 "Lepaskan pilihan untuk menghalangi memuat berkas yang sudah dibuka dari sesi "
 "LyX yang terakhir."
 
-#: src/LyXRC.cpp:3211
+#: src/LyXRC.cpp:3231
 msgid "De-select if you don't want LyX to create backup files."
 msgstr ""
 "Lepaskan pilihan apabila anda tidak menginginkan LyX untuk membuat berkas "
 "backup."
 
-#: src/LyXRC.cpp:3215
+#: src/LyXRC.cpp:3235
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -18678,29 +18689,29 @@ msgstr ""
 "Pilih untuk mengkontrol kata-kata yang di tandai dengan bahasa asing lain "
 "yang bukan bahasa dokumen."
 
-#: src/LyXRC.cpp:3219
+#: src/LyXRC.cpp:3239
 msgid "The scrolling speed of the mouse wheel."
 msgstr "Kecepatan scrolling dari tetikus beroda."
 
-#: src/LyXRC.cpp:3224
+#: src/LyXRC.cpp:3244
 msgid "The completion popup delay."
 msgstr "Penundaan waktu dari popup completion."
 
-#: src/LyXRC.cpp:3228
+#: src/LyXRC.cpp:3248
 msgid "Select to display the completion popup in math mode."
 msgstr "Pilih untuk menampilkan pop-up selesai di mode matematika."
 
-#: src/LyXRC.cpp:3232
+#: src/LyXRC.cpp:3252
 msgid "Select to display the completion popup in text mode."
 msgstr "Pilih untuk menampilkan pop-up selesai di mode teks."
 
-#: src/LyXRC.cpp:3236
+#: src/LyXRC.cpp:3256
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr ""
 "Tampilkan popup completion tanpa ada jeda waktu setelah completion usai."
 
-#: src/LyXRC.cpp:3240
+#: src/LyXRC.cpp:3260
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
@@ -18708,33 +18719,33 @@ msgstr ""
 "Tampilkan segitiga kecil di kursor untuk menunjukkan bahwa ada proses yang "
 "sudah selesai."
 
-#: src/LyXRC.cpp:3244
+#: src/LyXRC.cpp:3264
 msgid "The inline completion delay."
 msgstr "Jeda waktu inline completion."
 
-#: src/LyXRC.cpp:3248
+#: src/LyXRC.cpp:3268
 msgid "Select to display the inline completion in math mode."
 msgstr "Pilih untuk menampilkan 'inline completion' di mode matematika."
 
-#: src/LyXRC.cpp:3252
+#: src/LyXRC.cpp:3272
 msgid "Select to display the inline completion in text mode."
 msgstr "Pilih untuk menampilkan 'inline completion' di mode teks."
 
-#: src/LyXRC.cpp:3256
+#: src/LyXRC.cpp:3276
 msgid "Use \"...\" to shorten long completions."
 msgstr "Gunakan \"...\"  untuk menyingkat completion yang panjang."
 
-#: src/LyXRC.cpp:3260
+#: src/LyXRC.cpp:3280
 msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
 msgstr "Mengijinkan singkatan TeXMacs, seperti => menggantikan \\Rightarrow."
 
-#: src/LyXRC.cpp:3264
+#: src/LyXRC.cpp:3284
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 "Jumlah maksimal berkas. Jumlah sampai %1$d dapat dimunculkan di menu Berkas."
 
-#: src/LyXRC.cpp:3269
+#: src/LyXRC.cpp:3289
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
@@ -18742,29 +18753,29 @@ msgstr ""
 "Nyatakan direktori-direktori yang perlu ditambahkan di lingkungan variable "
 "PATH. Gunakan format yang seduai dengan sistem operasi."
 
-#: src/LyXRC.cpp:3275
+#: src/LyXRC.cpp:3295
 msgid "Shows a typeset preview of things such as math"
 msgstr "Tampilkan hasil pra tampilan dari berbagai hal, misalnya matematika."
 
-#: src/LyXRC.cpp:3279
+#: src/LyXRC.cpp:3299
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr ""
 "Pratampilan persamaan akan menunjukkan label  \"(#)\" bukan nomor "
 "sesungguhnya."
 
-#: src/LyXRC.cpp:3283
+#: src/LyXRC.cpp:3303
 msgid "Scale the preview size to suit."
 msgstr "Nyatakan ukuran skala untuk memperoleh tampilan yang sesuai."
 
-#: src/LyXRC.cpp:3287
+#: src/LyXRC.cpp:3307
 msgid "The option for specifying whether the copies should be collated."
 msgstr "Opsi untuk menyatakan apakah salinan harus disusun."
 
-#: src/LyXRC.cpp:3291
+#: src/LyXRC.cpp:3311
 msgid "The option for specifying the number of copies to print."
 msgstr "Opsi untuk menyatakan jumlah salinan yang akan dicetak."
 
-#: src/LyXRC.cpp:3295
+#: src/LyXRC.cpp:3315
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -18772,11 +18783,11 @@ msgstr ""
 "Mesin cetak bawaan yang digunakan untuk mencetak. Apabila tidak dinyatakan, "
 "LyX akan menggunakan variabel lingkungan PRINTER."
 
-#: src/LyXRC.cpp:3299
+#: src/LyXRC.cpp:3319
 msgid "The option to print only even pages."
 msgstr "Perintah opsi untuk mencetak hanya halaman genap."
 
-#: src/LyXRC.cpp:3303
+#: src/LyXRC.cpp:3323
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -18784,37 +18795,37 @@ msgstr ""
 "Perintah opsi ekstra untuk mengirim ke program pencetakan setelah yang lain "
 "selesai, tetapi sebelum mencetak berkas DVI."
 
-#: src/LyXRC.cpp:3307
+#: src/LyXRC.cpp:3327
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "Nama ekstensi berkas program mesin cetak. Biasanya \".ps\"."
 
-#: src/LyXRC.cpp:3311
+#: src/LyXRC.cpp:3331
 msgid "The option to print out in landscape."
 msgstr "Opsi untuk mencetak bentuk lansekap."
 
-#: src/LyXRC.cpp:3315
+#: src/LyXRC.cpp:3335
 msgid "The option to print only odd pages."
 msgstr "Opsi untuk mencetak hanya halaman ganjil."
 
-#: src/LyXRC.cpp:3319
+#: src/LyXRC.cpp:3339
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr ""
 "Opsi untuk mencetak halaman-halaman dengan menyatakan halaman yang dicetak "
 "dengan pemisah koma."
 
-#: src/LyXRC.cpp:3323
+#: src/LyXRC.cpp:3343
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Opsi untuk menyatakan dimensi dari kertas cetak."
 
-#: src/LyXRC.cpp:3327
+#: src/LyXRC.cpp:3347
 msgid "The option to specify paper type."
 msgstr "Opsi untuk menyatakan tipe kertas."
 
-#: src/LyXRC.cpp:3331
+#: src/LyXRC.cpp:3351
 msgid "The option to reverse the order of the pages printed."
 msgstr "Opsi untuk membalik urutan pencetakan dari halaman paling belakang."
 
-#: src/LyXRC.cpp:3335
+#: src/LyXRC.cpp:3355
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -18824,7 +18835,7 @@ msgstr ""
 "akan memanggil program spool mesin cetak untuk berkas yang dikenali dengan "
 "nama dan argumen."
 
-#: src/LyXRC.cpp:3339
+#: src/LyXRC.cpp:3359
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -18832,17 +18843,17 @@ msgstr ""
 "Apabila menyatakan nama mesin cetak di dialog mesin cetak, argumen berikut "
 "akan ditambahkan diawal dengan nama mesin cetak setelah perintah spool."
 
-#: src/LyXRC.cpp:3343
+#: src/LyXRC.cpp:3363
 msgid "Option to pass to the print program to print to a file."
 msgstr "Opsi untuk mengirim ke program pencetakan dan mencetak ke berkas."
 
-#: src/LyXRC.cpp:3347
+#: src/LyXRC.cpp:3367
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
 "Opsi untuk mengirim ke program pencetakan dan mencetak ke mesin cetak yang "
 "ditentukan."
 
-#: src/LyXRC.cpp:3351
+#: src/LyXRC.cpp:3371
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
@@ -18850,18 +18861,18 @@ msgstr ""
 "Pilih untuk memerintahkan LyX mengirim nama mesin cetak ke perintah "
 "pencetakan."
 
-#: src/LyXRC.cpp:3355
+#: src/LyXRC.cpp:3375
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Program pencetakan favorit anda, misal \"dvips\", \"dvilj4\"."
 
-#: src/LyXRC.cpp:3363
+#: src/LyXRC.cpp:3383
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 "Pilih untuk memperoleh pergerakan kursor visual bidi, lepaskan pilihan untuk "
 "pergerakan logical."
 
-#: src/LyXRC.cpp:3367
+#: src/LyXRC.cpp:3387
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -18869,13 +18880,13 @@ msgstr ""
 "DPI (dots per inch) dari monitor anda secara otomatis akan dideteksi oleh "
 "LyX. Apabila dirasa tidak tepat, silahkan ditindih dengan angka lain."
 
-#: src/LyXRC.cpp:3373
+#: src/LyXRC.cpp:3393
 msgid "The screen fonts used to display the text while editing."
 msgstr ""
 "Huruf di layar yang digunakan untuk menampilkan teks ketika proses "
 "menyunting."
 
-#: src/LyXRC.cpp:3382
+#: src/LyXRC.cpp:3402
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -18886,12 +18897,12 @@ msgstr ""
 "agak kotak di LyX. Dengan melepaskan pilihan untuk opsi ini, LyX akan "
 "menggunakan huruf bitmap yang terdekat ukurannya, tanpa melakukan skala."
 
-#: src/LyXRC.cpp:3386
+#: src/LyXRC.cpp:3406
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 "Ukuran huruf digunakan untuk menghitung pengaturan skala dari huruf di layar."
 
-#: src/LyXRC.cpp:3391
+#: src/LyXRC.cpp:3411
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -18900,13 +18911,13 @@ msgstr ""
 "Persentasi perbesaran untuk huruf di layar. Pengaturan 100% artinya huruf "
 "akan sebesar ukuran kertas."
 
-#: src/LyXRC.cpp:3395
+#: src/LyXRC.cpp:3415
 msgid "Allow session manager to save and restore windows geometry."
 msgstr ""
 "Memungkinkan manajer sesi untuk menyimpan dan memanggil kembali ukuran "
 "jendela."
 
-#: src/LyXRC.cpp:3399
+#: src/LyXRC.cpp:3419
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -18914,11 +18925,11 @@ msgstr ""
 "ini akan menjalankan lyxserver. Pipa-pipa akan memperoleh tambahan ekstensi "
 "berkas \".in\" and \".out\". hanya untuk pengguna yang memahami sekali."
 
-#: src/LyXRC.cpp:3406
+#: src/LyXRC.cpp:3426
 msgid "De-select if you don't want the startup banner."
 msgstr "Lepaskan pilihan apabila anda tidak ingin menampilkan gambar awal."
 
-#: src/LyXRC.cpp:3410
+#: src/LyXRC.cpp:3430
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -18926,11 +18937,11 @@ msgstr ""
 "LyX akan menempatkan direktori sementara di lokasi path ini. Berkas yang ada "
 "disini akan dihapus ketika keluar LyX."
 
-#: src/LyXRC.cpp:3414
+#: src/LyXRC.cpp:3434
 msgid "This is the place where the files of the thesaurus library reside."
 msgstr "Inilah lokasi dimana berkas pustaka padanan kata disimpan."
 
-#: src/LyXRC.cpp:3418
+#: src/LyXRC.cpp:3438
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -18938,7 +18949,7 @@ msgstr ""
 "Path yang digunakan LyX untuk mendefinisikan lokasi templet. Definisi path "
 "tanpa nama berkas merupakan lokasi pencarian templet bermula dari sini."
 
-#: src/LyXRC.cpp:3428
+#: src/LyXRC.cpp:3448
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -18946,7 +18957,7 @@ msgstr ""
 "Berkas antarmuka pengguna (UI). Dapat dinyatakan menurut lokasi path "
 "absolut, atau LyX mencari dalam direktori global dan lokal ui."
 
-#: src/LyXRC.cpp:3438
+#: src/LyXRC.cpp:3458
 msgid ""
 "Enable use the system colors for some things like main window background and "
 "selection."
@@ -18954,16 +18965,16 @@ msgstr ""
 "Menggunakan warna sistem untuk berbagai warna seperti layar jendela serta "
 "pilihan."
 
-#: src/LyXRC.cpp:3442
+#: src/LyXRC.cpp:3462
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr "Aktifkan tampilan otomatis dari bantuan tips di area kerja."
 
-#: src/LyXRC.cpp:3446
+#: src/LyXRC.cpp:3466
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr "Aktifkan pixmap cache yang dapat meningkatkan kinerja Mac dan Windows."
 
-#: src/LyXRC.cpp:3450
+#: src/LyXRC.cpp:3470
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Nyatakan perintah tipe kertas untuk penampil DVI (biarkan kosong atau "
@@ -19006,7 +19017,7 @@ msgstr "(tidak ada catatan log)"
 msgid "LyX VC: Log Message"
 msgstr "LyX KV: Catatan Pesan"
 
-#: src/LyXVC.cpp:216
+#: src/LyXVC.cpp:218
 #, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
@@ -19019,23 +19030,23 @@ msgstr ""
 "\n"
 "Apakah ingin memanggil versi terdahulu?"
 
-#: src/LyXVC.cpp:221
+#: src/LyXVC.cpp:223
 msgid "Revert to stored version of document?"
 msgstr "Memanggil versi yang disimpan dari dokumen?"
 
-#: src/LyXVC.cpp:222 src/frontends/qt4/GuiView.cpp:3255
+#: src/LyXVC.cpp:224 src/frontends/qt4/GuiView.cpp:3255
 msgid "&Revert"
 msgstr "&Kembalikan"
 
-#: src/Paragraph.cpp:1953
+#: src/Paragraph.cpp:1955
 msgid "Senseless with this layout!"
 msgstr "Tidak memungkinkan pada tataletak ini!"
 
-#: src/Paragraph.cpp:2015
+#: src/Paragraph.cpp:2017
 msgid "Alignment not permitted"
 msgstr "Pelurusan tidak diijinkan"
 
-#: src/Paragraph.cpp:2016
+#: src/Paragraph.cpp:2018
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -19044,11 +19055,11 @@ msgstr ""
 "sebelumnya.\n"
 "Pengaturan dikembalikan ke bawaan."
 
-#: src/Paragraph.cpp:3072
+#: src/Paragraph.cpp:3074
 msgid "Memory problem"
 msgstr "Masalah dengan memori"
 
-#: src/Paragraph.cpp:3072
+#: src/Paragraph.cpp:3074
 msgid "Paragraph not properly initialized"
 msgstr "Paragraf tidak diinisialisasi dengan tepat"
 
@@ -19160,7 +19171,7 @@ msgstr "Penyuntingan mode matematika"
 msgid "No valid math formula"
 msgstr "Rumus matematika tidak valid"
 
-#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1021
+#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1028
 msgid "Already in regular expression mode"
 msgstr "Sudah berada di mode ekspresi reguler"
 
@@ -19729,7 +19740,7 @@ msgid "About %1"
 msgstr "Tentang %1"
 
 #: src/frontends/qt4/GuiApplication.cpp:486
-#: src/frontends/qt4/GuiPrefs.cpp:3095
+#: src/frontends/qt4/GuiPrefs.cpp:3099
 msgid "Preferences"
 msgstr "Preferensi"
 
@@ -21317,7 +21328,7 @@ msgstr ""
 msgid "Printer"
 msgstr "Mesin Cetak"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2405 src/frontends/qt4/GuiPrefs.cpp:3138
+#: src/frontends/qt4/GuiPrefs.cpp:2405 src/frontends/qt4/GuiPrefs.cpp:3142
 msgid "User Interface"
 msgstr "Sistem Antarmuka"
 
@@ -21325,56 +21336,56 @@ msgstr "Sistem Antarmuka"
 msgid "Control"
 msgstr "Kontrol"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2599
+#: src/frontends/qt4/GuiPrefs.cpp:2603
 msgid "Shortcuts"
 msgstr "Cara pintas"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2604
+#: src/frontends/qt4/GuiPrefs.cpp:2608
 msgid "Function"
 msgstr "Fungsi"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2605
+#: src/frontends/qt4/GuiPrefs.cpp:2609
 msgid "Shortcut"
 msgstr "Cara Pintas"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2684
+#: src/frontends/qt4/GuiPrefs.cpp:2688
 msgid "Cursor, Mouse and Editing Functions"
 msgstr "Kursor, Tetikus dan fungsi-fungsi untuk mengedit"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2688
+#: src/frontends/qt4/GuiPrefs.cpp:2692
 msgid "Mathematical Symbols"
 msgstr "Simbol-simbol matematika"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2692
+#: src/frontends/qt4/GuiPrefs.cpp:2696
 msgid "Document and Window"
 msgstr "Dokumen dan Jendela"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2696
+#: src/frontends/qt4/GuiPrefs.cpp:2700
 msgid "Font, Layouts and Textclasses"
 msgstr "Huruf, Tataletak dan Kelas Dikumen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2700
+#: src/frontends/qt4/GuiPrefs.cpp:2704
 msgid "System and Miscellaneous"
 msgstr "Sistem dan Ruparupa"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2827 src/frontends/qt4/GuiPrefs.cpp:2873
+#: src/frontends/qt4/GuiPrefs.cpp:2831 src/frontends/qt4/GuiPrefs.cpp:2877
 msgid "Res&tore"
 msgstr "Res&tore"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2984 src/frontends/qt4/GuiPrefs.cpp:2991
-#: src/frontends/qt4/GuiPrefs.cpp:3011 src/frontends/qt4/GuiPrefs.cpp:3030
+#: src/frontends/qt4/GuiPrefs.cpp:2988 src/frontends/qt4/GuiPrefs.cpp:2995
+#: src/frontends/qt4/GuiPrefs.cpp:3015 src/frontends/qt4/GuiPrefs.cpp:3034
 msgid "Failed to create shortcut"
 msgstr "Gagal membuat cara pintas baru"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2985
+#: src/frontends/qt4/GuiPrefs.cpp:2989
 msgid "Unknown or invalid LyX function"
 msgstr "Fungsi LyX tidak dikenal atai tidak valid"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2992
+#: src/frontends/qt4/GuiPrefs.cpp:2996
 msgid "Invalid or empty key sequence"
 msgstr "Tidak valid atau menggunakan kunci yang kosong"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3012
+#: src/frontends/qt4/GuiPrefs.cpp:3016
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
@@ -21385,35 +21396,35 @@ msgstr ""
 "%2$s\n"
 "Anda perlu menghapus berkas kaitan sebelum membuat baru."
 
-#: src/frontends/qt4/GuiPrefs.cpp:3031
+#: src/frontends/qt4/GuiPrefs.cpp:3035
 msgid "Can not insert shortcut to the list"
 msgstr "Tidak bisa memasukkan cara pintas dalam daftar"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3062
+#: src/frontends/qt4/GuiPrefs.cpp:3066
 msgid "Identity"
 msgstr "Identitas"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3268
+#: src/frontends/qt4/GuiPrefs.cpp:3272
 msgid "Choose bind file"
 msgstr "Pilih berkas kaitan"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3269
+#: src/frontends/qt4/GuiPrefs.cpp:3273
 msgid "LyX bind files (*.bind)"
 msgstr "Berkas kaitan LyX (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3275
+#: src/frontends/qt4/GuiPrefs.cpp:3279
 msgid "Choose UI file"
 msgstr "Pilih berkas UI"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3276
+#: src/frontends/qt4/GuiPrefs.cpp:3280
 msgid "LyX UI files (*.ui)"
 msgstr "Berkas LyX UI (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3282
+#: src/frontends/qt4/GuiPrefs.cpp:3286
 msgid "Choose keyboard map"
 msgstr "Pilih peta papanketik"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3283
+#: src/frontends/qt4/GuiPrefs.cpp:3287
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "Peta papanketik LyX (*.kmap)"
 
@@ -22272,31 +22283,31 @@ msgstr "Sumber DocBook"
 msgid "Literate Source"
 msgstr "Sumber Literate"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1305
+#: src/frontends/qt4/GuiWorkArea.cpp:1315
 msgid " (version control, locking)"
 msgstr " (kontrol versi, terkunci)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1307
+#: src/frontends/qt4/GuiWorkArea.cpp:1317
 msgid " (version control)"
 msgstr " (kontrol versi)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1310
+#: src/frontends/qt4/GuiWorkArea.cpp:1320
 msgid " (changed)"
 msgstr " (ada perubahan)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1314
+#: src/frontends/qt4/GuiWorkArea.cpp:1324
 msgid " (read only)"
 msgstr " (hanya bisa dibaca)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1467
+#: src/frontends/qt4/GuiWorkArea.cpp:1477
 msgid "Close File"
 msgstr "Tutup Berkas"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1909
+#: src/frontends/qt4/GuiWorkArea.cpp:1919
 msgid "Hide tab"
 msgstr "Sembunyikan Tab"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1911
+#: src/frontends/qt4/GuiWorkArea.cpp:1921
 msgid "Close tab"
 msgstr "Tutup Tab"
 
@@ -22792,7 +22803,7 @@ msgstr ""
 msgid "External template %1$s is not installed"
 msgstr "Eksternal templet %1$s belum diinstal"
 
-#: src/insets/InsetFloat.cpp:275 src/insets/InsetFloat.cpp:454
+#: src/insets/InsetFloat.cpp:275 src/insets/InsetFloat.cpp:456
 msgid "float: "
 msgstr "ambangan: "
 
@@ -22801,15 +22812,15 @@ msgstr "ambangan: "
 msgid "ERROR: Unknown float type: %1$s"
 msgstr "KESALAHAN: Tipe ambangan tidak dikenal: %1$s"
 
-#: src/insets/InsetFloat.cpp:392
+#: src/insets/InsetFloat.cpp:394
 msgid "float"
 msgstr "ambangan"
 
-#: src/insets/InsetFloat.cpp:457
+#: src/insets/InsetFloat.cpp:459
 msgid "subfloat: "
 msgstr "anak-ambangan: "
 
-#: src/insets/InsetFloat.cpp:465
+#: src/insets/InsetFloat.cpp:467
 msgid " (sideways)"
 msgstr " (kesamping)"
 
@@ -22827,11 +22838,11 @@ msgstr "LyX tidak bisa membuat daftar %1$s"
 msgid "List of %1$s"
 msgstr "Daftar %1$s"
 
-#: src/insets/InsetFoot.cpp:108
+#: src/insets/InsetFoot.cpp:112
 msgid "footnote"
 msgstr "catatan kaki"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:638
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:644
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -22877,19 +22888,34 @@ msgstr "Verbatim Input*"
 msgid "Include (excluded)"
 msgstr "Ikutan (dipisahkan)"
 
-#: src/insets/InsetInclude.cpp:499 src/insets/InsetInclude.cpp:740
-#: src/insets/InsetInclude.cpp:785
+#: src/insets/InsetInclude.cpp:499 src/insets/InsetInclude.cpp:746
+#: src/insets/InsetInclude.cpp:791
 msgid "Recursive input"
 msgstr "Inpur rekursif"
 
-#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:741
-#: src/insets/InsetInclude.cpp:786
+#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:747
+#: src/insets/InsetInclude.cpp:792
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 "Ada usaha memasukkan berkas  %1$s ke diri sendiri! Tidak bisa dilakukan."
 
+#: src/insets/InsetInclude.cpp:559
+#, fuzzy, c-format
+msgid ""
+"Could not load included file\n"
+"`%1$s'\n"
+"Please, check whether it actually exists."
+msgstr ""
+"Tidak bisa membuat berkas cadangan %1$s.\n"
+"Coba periksa apakah lokasi penyimpanan ada dan boleh ditulis."
+
 #: src/insets/InsetInclude.cpp:563
+#, fuzzy
+msgid "Missing included file"
+msgstr "Panggil berkas anak dokumen"
+
+#: src/insets/InsetInclude.cpp:569
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -22900,11 +22926,11 @@ msgstr ""
 "memiliki class teks `%2$s'\n"
 "sementara berkas induk memiliki class teks `%3$s'."
 
-#: src/insets/InsetInclude.cpp:569
+#: src/insets/InsetInclude.cpp:575
 msgid "Different textclasses"
 msgstr "Ada perbedaan class teks"
 
-#: src/insets/InsetInclude.cpp:584
+#: src/insets/InsetInclude.cpp:590
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -22915,27 +22941,28 @@ msgstr ""
 "menggunakan modul `%2$s'\n"
 "yang tidak digunakan di berkas utama."
 
-#: src/insets/InsetInclude.cpp:588
+#: src/insets/InsetInclude.cpp:594
 msgid "Module not found"
 msgstr "Modul tidak ditemukan"
 
-#: src/insets/InsetInclude.cpp:613
+#: src/insets/InsetInclude.cpp:619
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
+"Berkas ikutan `%1$s' tidak diekspor dengan baik.\n"
+"Peringatan: LaTeX ekspor mungkin tidak lengkap."
 
-#: src/insets/InsetInclude.cpp:622
-#, fuzzy
+#: src/insets/InsetInclude.cpp:628
 msgid "Export failure"
-msgstr "Backup gagal"
+msgstr "Ekspor gagal"
 
-#: src/insets/InsetInclude.cpp:728
+#: src/insets/InsetInclude.cpp:734
 msgid "Unsupported Inclusion"
 msgstr "Ikutan tidak didukung"
 
-#: src/insets/InsetInclude.cpp:729
+#: src/insets/InsetInclude.cpp:735
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
@@ -23273,63 +23300,63 @@ msgstr "hphantom"
 msgid "vphantom"
 msgstr "vphantom"
 
-#: src/insets/InsetRef.cpp:211
+#: src/insets/InsetRef.cpp:224
 msgid "elsewhere"
 msgstr "dimana saja"
 
-#: src/insets/InsetRef.cpp:290
+#: src/insets/InsetRef.cpp:303
 msgid "BROKEN: "
 msgstr "RUSAK: "
 
-#: src/insets/InsetRef.cpp:330 src/mathed/InsetMathRef.cpp:225
+#: src/insets/InsetRef.cpp:343 src/mathed/InsetMathRef.cpp:225
 msgid "Ref: "
 msgstr "Ref: "
 
-#: src/insets/InsetRef.cpp:331 src/mathed/InsetMathRef.cpp:226
+#: src/insets/InsetRef.cpp:344 src/mathed/InsetMathRef.cpp:226
 msgid "Equation"
 msgstr "Persamaan"
 
-#: src/insets/InsetRef.cpp:331 src/mathed/InsetMathRef.cpp:226
+#: src/insets/InsetRef.cpp:344 src/mathed/InsetMathRef.cpp:226
 msgid "EqRef: "
 msgstr "PersRef: "
 
-#: src/insets/InsetRef.cpp:332 src/mathed/InsetMathRef.cpp:227
+#: src/insets/InsetRef.cpp:345 src/mathed/InsetMathRef.cpp:227
 msgid "Page Number"
 msgstr "Nomor Halaman"
 
-#: src/insets/InsetRef.cpp:332 src/mathed/InsetMathRef.cpp:227
+#: src/insets/InsetRef.cpp:345 src/mathed/InsetMathRef.cpp:227
 msgid "Page: "
 msgstr "Halaman: "
 
-#: src/insets/InsetRef.cpp:333 src/mathed/InsetMathRef.cpp:228
+#: src/insets/InsetRef.cpp:346 src/mathed/InsetMathRef.cpp:228
 msgid "Textual Page Number"
 msgstr "Nomor Halaman Tekstual"
 
-#: src/insets/InsetRef.cpp:333 src/mathed/InsetMathRef.cpp:228
+#: src/insets/InsetRef.cpp:346 src/mathed/InsetMathRef.cpp:228
 msgid "TextPage: "
 msgstr "HalamanTeks: "
 
-#: src/insets/InsetRef.cpp:334 src/mathed/InsetMathRef.cpp:229
+#: src/insets/InsetRef.cpp:347 src/mathed/InsetMathRef.cpp:229
 msgid "Standard+Textual Page"
 msgstr "Standar+Halaman Tekstual"
 
-#: src/insets/InsetRef.cpp:334 src/mathed/InsetMathRef.cpp:229
+#: src/insets/InsetRef.cpp:347 src/mathed/InsetMathRef.cpp:229
 msgid "Ref+Text: "
 msgstr "Ref+Teks: "
 
-#: src/insets/InsetRef.cpp:335
+#: src/insets/InsetRef.cpp:348
 msgid "Formatted"
 msgstr "Dengan format"
 
-#: src/insets/InsetRef.cpp:335
+#: src/insets/InsetRef.cpp:348
 msgid "Format: "
 msgstr "Format: "
 
-#: src/insets/InsetRef.cpp:336
+#: src/insets/InsetRef.cpp:349
 msgid "Reference to Name"
 msgstr "Referensi ke Nama"
 
-#: src/insets/InsetRef.cpp:336
+#: src/insets/InsetRef.cpp:349
 msgid "NameRef:"
 msgstr "NameRef:"
 
@@ -23403,7 +23430,7 @@ msgstr "Spasi Horizontal Protected (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Tipe Daftar Isi tidak dikenal"
 
-#: src/insets/InsetTabular.cpp:4672
+#: src/insets/InsetTabular.cpp:4680
 msgid "Selection size should match clipboard content."
 msgstr "Ukuran pilihan harus sesuai dengan isi dari klipboard."
 
@@ -23641,23 +23668,23 @@ msgstr "Tidak bisa merubah kolom di '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Tidak bisa menambah garis grid horisontal di  '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:1007
+#: src/mathed/InsetMathNest.cpp:1014
 msgid "create new math text environment ($...$)"
 msgstr "Membuat lingkungan baru matematika ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1010
+#: src/mathed/InsetMathNest.cpp:1017
 msgid "entered math text mode (textrm)"
 msgstr "Masuk dalam mode teks matematika (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1032
+#: src/mathed/InsetMathNest.cpp:1039
 msgid "Regular expression editor mode"
 msgstr "Mode penyunting ekspresi reguler"
 
-#: src/mathed/InsetMathNest.cpp:1634 src/mathed/InsetMathNest.cpp:1754
+#: src/mathed/InsetMathNest.cpp:1641 src/mathed/InsetMathNest.cpp:1761
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Otomatis koreksi mati ('!' untuk menuliskan)"
 
-#: src/mathed/InsetMathNest.cpp:1639 src/mathed/InsetMathNest.cpp:1756
+#: src/mathed/InsetMathNest.cpp:1646 src/mathed/InsetMathNest.cpp:1763
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Otomatis koreksi hidup (<spasi> untuk keluar)"
 
