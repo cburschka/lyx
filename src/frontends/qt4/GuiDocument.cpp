@@ -1508,7 +1508,7 @@ void GuiDocument::changeBackgroundColor()
 	// set the button color and text
 	colorModule->backgroundPB->setStyleSheet(
 		colorButtonStyleSheet(newColor));
-	colorModule->backgroundPB->setText(toqstr("Change..."));
+	colorModule->backgroundPB->setText(qt_("&Change..."));
 	// save color
 	set_backgroundcolor = rgbFromHexName(fromqstr(newColor.name()));
 	is_backgroundcolor = true;
@@ -1521,7 +1521,7 @@ void GuiDocument::deleteBackgroundColor()
 	// set the button color back to default by setting an epmty StyleSheet
 	colorModule->backgroundPB->setStyleSheet(QLatin1String(""));
 	// change button text
-	colorModule->backgroundPB->setText(toqstr("Default..."));
+	colorModule->backgroundPB->setText(qt_("&Default..."));
 	// save default color (white)
 	set_backgroundcolor = rgbFromHexName("#ffffff");
 	is_backgroundcolor = false;
@@ -1538,7 +1538,7 @@ void GuiDocument::changeFontColor()
 	// set the button color and text
 	colorModule->fontColorPB->setStyleSheet(
 		colorButtonStyleSheet(newColor));
-	colorModule->fontColorPB->setText(toqstr("Change..."));
+	colorModule->fontColorPB->setText(qt_("&Change..."));
 	// save color
 	set_fontcolor = rgbFromHexName(fromqstr(newColor.name()));
 	is_fontcolor = true;
@@ -1551,7 +1551,7 @@ void GuiDocument::deleteFontColor()
 	// set the button color back to default by setting an epmty StyleSheet
 	colorModule->fontColorPB->setStyleSheet(QLatin1String(""));
 	// change button text
-	colorModule->fontColorPB->setText(toqstr("Default..."));
+	colorModule->fontColorPB->setText(qt_("&Default..."));
 	// save default color (black)
 	set_fontcolor = rgbFromHexName("#000000");
 	is_fontcolor = false;
