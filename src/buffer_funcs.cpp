@@ -179,13 +179,19 @@ Buffer * newUnnamedFile(FileName const & path, string const & prefix,
  * are similar but, unfortunately, they seem to have a different
  * notion of what to count. Since nobody ever complained about that,
  * this proves (again) that any number beats no number ! (JMarc)
+ * We have two use cases:
+ * 1. Count the words of the given range for document statistics
+ * - ignore inset content without output. (skipNoOutput == true)
+ * 2. Count the words to present a progress bar for the spell checker
+ * - has to count whole content. (skipNoOutput == false)
  */
-int countWords(DocIterator const & from, DocIterator const & to)
+int countWords(DocIterator const & from, DocIterator const & to,
+			   bool skipNoOutput)
 {
 	int count = 0;
 	bool inword = false;
 	
-	for (DocIterator dit = from ; dit != to && !dit.empty(); ) {
+	for (DocIterator dit = from ; dit != to && !dit.atEnd(); ) {
 		if (!dit.inTexted()) {
 			dit.forwardPos();
 			continue;
@@ -199,10 +205,11 @@ int countWords(DocIterator const & from, DocIterator const & to)
 			inword = false;
 		} else if (!par.isDeleted(pos)) {
 			Inset const * ins = par.getInset(pos);
-			if (ins && !ins->producesOutput()) {
-				//skip this inset
+			if (ins && skipNoOutput && !ins->producesOutput()) {
+				// skip this inset
 				++dit.top().pos();
-				if (dit >= to)
+				// stop if end of range was skipped
+				if (!to.atEnd() && dit >= to)
 					break;
 				continue;
 			}

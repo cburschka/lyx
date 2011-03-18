@@ -270,8 +270,8 @@ bool GuiSpellchecker::initialiseParams(string const &)
 
 	DocIterator const begin = doc_iterator_begin(&buffer());
 	Cursor const & cur = bufferview()->cursor();
-	d->progress_ = countWords(begin, cur);
-	d->total_ = d->progress_ + countWords(cur, doc_iterator_end(&buffer()));
+	d->progress_ = countWords(begin, cur, false);
+	d->total_ = d->progress_ + countWords(cur, doc_iterator_end(&buffer()), false);
 	d->count_ = 0;
 	return true;
 }
