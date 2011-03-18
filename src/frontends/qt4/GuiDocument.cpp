@@ -1577,7 +1577,7 @@ void GuiDocument::changeNoteFontColor()
 void GuiDocument::deleteNoteFontColor()
 {
 	// set the button color back to pref
-	theApp()->getRgbColor(Color_notebg, set_notefontcolor);
+	theApp()->getRgbColor(Color_greyedouttext, set_notefontcolor);
 	colorModule->noteFontColorPB->setStyleSheet(
 		colorButtonStyleSheet(rgb2qcolor(set_notefontcolor)));
 	changed();
