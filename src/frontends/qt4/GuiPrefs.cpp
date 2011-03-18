@@ -1076,19 +1076,17 @@ PrefColors::PrefColors(GuiPreferences * form)
 	for (int i = 0; i < Color_ignore; ++i) {
 		ColorCode lc = static_cast<ColorCode>(i);
 		if (lc == Color_none
-			|| lc == Color_black
-			|| lc == Color_white
-			|| lc == Color_red
-			|| lc == Color_green
-			|| lc == Color_blue
-			|| lc == Color_cyan
-			|| lc == Color_magenta
-			|| lc == Color_yellow
-			|| lc == Color_inherit
-			|| lc == Color_ignore
-			|| lc == Color_greyedouttext
-			|| lc == Color_shadedbg) continue;
-
+		    || lc == Color_black
+		    || lc == Color_white
+		    || lc == Color_red
+		    || lc == Color_green
+		    || lc == Color_blue
+		    || lc == Color_cyan
+		    || lc == Color_magenta
+		    || lc == Color_yellow
+		    || lc == Color_inherit
+		    || lc == Color_ignore)
+			continue;
 		lcolors_.push_back(lc);
 	}
 	sort(lcolors_.begin(), lcolors_.end(), ColorSorter());
