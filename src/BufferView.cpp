@@ -2364,6 +2364,42 @@ void BufferView::putSelectionAt(DocIterator const & cur,
 }
 
 
+bool BufferView::selectIfEmpty(DocIterator & cur)
+{
+	if (!cur.paragraph().empty())
+		return false;
+
+	pit_type const beg_pit = cur.pit();
+	if (beg_pit > 0) {
+		// The paragraph associated to this item isn't
+		// the first one, so it can be selected
+		cur.backwardPos();
+	} else {
+		// We have to resort to select the space between the
+		// end of this item and the begin of the next one
+		cur.forwardPos();
+	}
+	if (cur.empty()) {
+		// If it is the only item in the document,
+		// nothing can be selected
+		return false;
+	}
+	pit_type const end_pit = cur.pit();
+	pos_type const end_pos = cur.pos();
+	d->cursor_.clearSelection();
+	d->cursor_.reset();
+	d->cursor_.setCursor(cur);
+	d->cursor_.pit() = beg_pit;
+	d->cursor_.pos() = 0;
+	d->cursor_.setSelection(false);
+	d->cursor_.resetAnchor();
+	d->cursor_.pit() = end_pit;
+	d->cursor_.pos() = end_pos;
+	d->cursor_.setSelection();
+	return true;
+}
+
+
 Cursor & BufferView::cursor()
 {
 	return d->cursor_;
