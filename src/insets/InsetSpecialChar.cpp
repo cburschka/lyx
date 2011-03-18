@@ -342,7 +342,8 @@ void InsetSpecialChar::validate(LaTeXFeatures & features) const
 
 bool InsetSpecialChar::isLetter() const
 {
-	return kind_ == HYPHENATION || kind_ == LIGATURE_BREAK;
+	return kind_ == HYPHENATION || kind_ == LIGATURE_BREAK
+		|| kind_ == NOBREAKDASH;
 }
 
 
@@ -353,7 +354,8 @@ bool InsetSpecialChar::isLineSeparator() const
 	// Paragraph::stripLeadingSpaces nukes the characters which
 	// have this property. I leave the code here, since it should
 	// eventually be made to work. (JMarc 20020327)
-	return kind_ == HYPHENATION || kind_ == MENU_SEPARATOR;
+	return kind_ == HYPHENATION || kind_ == MENU_SEPARATOR
+		|| kind_ == SLASH;
 #else
 	return false;
 #endif

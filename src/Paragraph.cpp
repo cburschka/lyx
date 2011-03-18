@@ -2850,6 +2850,14 @@ bool Paragraph::isWordSeparator(pos_type pos) const
 	if (pos == size())
 		return true;
 	char_type const c = d->text_[pos];
+	// if we have a hard hyphen (no en- or emdash),
+	// we pass this to the spell checker
+	if (c == '-') {
+		int j = pos + 1;
+		if ((j == size() || d->text_[j] != '-')
+		    && (pos == 0 || d->text_[pos - 1] != '-'))
+			return false;
+	}
 	// We want to pass the ' and escape chars to the spellchecker
 	static docstring const quote = from_utf8(lyxrc.spellchecker_esc_chars + '\'');
 	return (!isLetterChar(c) && !isDigitASCII(c) && !contains(quote, c));
