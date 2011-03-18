@@ -87,6 +87,7 @@ GuiSelectionManager::GuiSelectionManager(
 	
 	availableLV->installEventFilter(this);
 	selectedLV->installEventFilter(this);
+	selectedHasFocus_ = false;
 }
 
 
