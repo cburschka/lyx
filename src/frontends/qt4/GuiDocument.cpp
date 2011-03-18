@@ -1518,7 +1518,7 @@ void GuiDocument::changeBackgroundColor()
 
 void GuiDocument::deleteBackgroundColor()
 {
-	// set the button color back to default by setting an epmty StyleSheet
+	// set the button color back to default by setting an empty StyleSheet
 	colorModule->backgroundPB->setStyleSheet(QLatin1String(""));
 	// change button text
 	colorModule->backgroundPB->setText(qt_("&Default..."));
@@ -1548,7 +1548,7 @@ void GuiDocument::changeFontColor()
 
 void GuiDocument::deleteFontColor()
 {
-	// set the button color back to default by setting an epmty StyleSheet
+	// set the button color back to default by setting an empty StyleSheet
 	colorModule->fontColorPB->setStyleSheet(QLatin1String(""));
 	// change button text
 	colorModule->fontColorPB->setText(qt_("&Default..."));
@@ -1576,11 +1576,10 @@ void GuiDocument::changeNoteFontColor()
 
 void GuiDocument::deleteNoteFontColor()
 {
-	// set the button color back to light gray
+	// set the button color back to pref
+	theApp()->getRgbColor(Color_notebg, set_notefontcolor);
 	colorModule->noteFontColorPB->setStyleSheet(
-		colorButtonStyleSheet(QColor(204, 204, 204, 255)));
-	// save light gray as the set color
-	set_notefontcolor = rgbFromHexName("#cccccc");
+		colorButtonStyleSheet(rgb2qcolor(set_notefontcolor)));
 	changed();
 }
 
@@ -1602,11 +1601,10 @@ void GuiDocument::changeBoxBackgroundColor()
 
 void GuiDocument::deleteBoxBackgroundColor()
 {
-	// set the button color back to red
+	// set the button color back to pref
+	theApp()->getRgbColor(Color_shadedbg, set_boxbgcolor);
 	colorModule->boxBackgroundPB->setStyleSheet(
-		colorButtonStyleSheet(QColor(Qt::red)));
-	// save red as the set color
-	set_boxbgcolor = rgbFromHexName("#ff0000");
+		colorButtonStyleSheet(rgb2qcolor(set_boxbgcolor)));
 	changed();
 }
 
