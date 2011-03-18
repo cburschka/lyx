@@ -16,6 +16,9 @@ Compiling with Microsoft Visual C++
 	If you don't have Visual C++ 2010 installed, get the free Express edition from
 	http://www.microsoft.com/express/Downloads/
 
+	All dependencies are linked against the MSVC 2010 runtime and won't work in
+	combination with MSVC 2008. You'll get crashes and other unexpected issues.
+
 2	Compile Qt
 
 	Download the latest Qt everywhere open source version from
