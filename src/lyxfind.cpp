@@ -882,8 +882,9 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 			// plus the last subexpression, if a (.*?) was inserted in the constructor.
 			if (!braces_match(m[0].first, m[0].second, open_braces))
 				return 0;
-			// Check braces on segments that matched all (.*?) subexpressions.
-			for (size_t i = 1; i < m.size(); ++i)
+			// Check braces on segments that matched all (.*?) subexpressions,
+			// except the last "padding" one inserted by lyx.
+			for (size_t i = 1; i < m.size() - 1; ++i)
 				if (!braces_match(m[i].first, m[i].second))
 					return false;
 			// Exclude from the returned match length any length 
