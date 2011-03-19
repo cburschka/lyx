@@ -1151,7 +1151,9 @@ void GuiView::setBusy(bool busy)
 		return;
 
 	if (d.current_work_area_) {
-		d.current_work_area_->setUpdatesEnabled(!busy);
+		//Why would we want to stop updates only for one workarea and
+		//not for the others ? This leads to problems as in #7314 (vfr).
+		//d.current_work_area_->setUpdatesEnabled(!busy);
 		if (busy)
 			d.current_work_area_->stopBlinkingCursor();
 		else
@@ -1369,11 +1371,12 @@ void GuiView::setBuffer(Buffer * newBuffer)
 {
 	LYXERR(Debug::DEBUG, "Setting buffer: " << newBuffer << endl);
 	LASSERT(newBuffer, return);
-	setBusy(true);
-
+	
 	GuiWorkArea * wa = workArea(*newBuffer);
 	if (wa == 0) {
+		setBusy(true);
 		newBuffer->masterBuffer()->updateBuffer();
+		setBusy(false);
 		wa = addWorkArea(*newBuffer);
 		// scroll to the position when the BufferView was last closed
 		if (lyxrc.use_lastfilepos) {
@@ -1388,8 +1391,6 @@ void GuiView::setBuffer(Buffer * newBuffer)
 	connectBuffer(*newBuffer);
 	connectBufferView(wa->bufferView());
 	setCurrentWorkArea(wa);
-
-	setBusy(false);
 }
 
 
@@ -1865,10 +1866,10 @@ Buffer * GuiView::loadDocument(FileName const & filename, bool tolastfiles)
 		setBusy(false);
 		throw(e);
 	}
+	setBusy(false);
 
 	if (!newBuffer) {
 		message(_("Document not loaded."));
-		setBusy(false);
 		return 0;
 	}
 
@@ -1878,7 +1879,6 @@ Buffer * GuiView::loadDocument(FileName const & filename, bool tolastfiles)
 	if (tolastfiles)
 		theSession().lastFiles().add(filename);
 
-	setBusy(false);
 	return newBuffer;
 }
 
