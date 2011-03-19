@@ -49,10 +49,15 @@ GuiSelectionManager::GuiSelectionManager(
 	QPushButton * down,
 	QAbstractListModel * amod,
 	QAbstractListModel * smod)
-  : availableLV(avail), selectedLV(sel), addPB(add), deletePB(del),
-		upPB(up), downPB(down), availableModel(amod), selectedModel(smod),
-    selectedHasFocus_(false)
 {
+	availableLV = avail;
+	selectedLV = sel;
+	addPB = add;
+	deletePB = del;
+	upPB = up;
+	downPB = down;
+	availableModel = amod;
+	selectedModel = smod;
 	
 	selectedLV->setModel(smod);
 	availableLV->setModel(amod);
@@ -82,6 +87,7 @@ GuiSelectionManager::GuiSelectionManager(
 	
 	availableLV->installEventFilter(this);
 	selectedLV->installEventFilter(this);
+	selectedHasFocus_ = false;
 }
 
 
