@@ -247,6 +247,9 @@ public:
 	void putSelectionAt(DocIterator const & cur,
 		int length, bool backwards);
 
+	/// selects the item at cursor if its paragraph is empty.
+	bool selectIfEmpty(DocIterator & cur);
+
 	/// update the internal \c ViewMetricsInfo.
 	void updateMetrics();
 

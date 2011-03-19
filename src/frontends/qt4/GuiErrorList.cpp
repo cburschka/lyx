@@ -172,11 +172,17 @@ bool GuiErrorList::goTo(int item)
 		return false;
 	}
 
-	// If this paragraph is empty, highlight the previous one
-	while (dit.paragraph().empty())
-		dit.backwardPos();
-
 	// Now make the selection.
+	BufferView * bv = const_cast<BufferView *>(bufferview());
+	if (bv->selectIfEmpty(dit)) {
+		// The paragraph is empty but can be selected
+		bv->processUpdateFlags(Update::Force | Update::FitCursor);
+		return true;
+	}
+	if (dit.empty()) {
+		// The paragraph is empty and cannot be selected
+		return false;
+	}
 	// if pos_end is 0, this means it is end-of-paragraph
 	pos_type const s = dit.paragraph().size();
 	pos_type const end = err.pos_end ? min(err.pos_end, s) : s;
@@ -184,7 +190,6 @@ bool GuiErrorList::goTo(int item)
 	pos_type const range = end == start ? s - start : end - start;
 	// end-of-paragraph cannot be highlighted, so highlight the last thing
 	dit.pos() = range ? start : end - 1;
-	BufferView * bv = const_cast<BufferView *>(bufferview());
 	// FIXME LFUN
 	// If we used an LFUN, we would not need these lines:
 	bv->putSelectionAt(dit, max(range, pos_type(1)), false);
