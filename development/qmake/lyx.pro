@@ -775,11 +775,10 @@ HEADERS += \
 ../../src/frontends/mouse_state.h \
 ../../src/frontends/FontMetrics.h \
 ../../src/frontends/KeySymbol.h \
-../../src/frontends/Delegates.h \
+../../src/frontends/Delegates.h
 
 FORMS = \
 ../../src/frontends/qt4/ui/AboutUi.ui \
-../../src/frontends/qt4/ui/AskForTextUi.ui \
 ../../src/frontends/qt4/ui/BibitemUi.ui \
 ../../src/frontends/qt4/ui/BiblioUi.ui \
 ../../src/frontends/qt4/ui/BibtexAddUi.ui \
@@ -798,7 +797,6 @@ FORMS = \
 ../../src/frontends/qt4/ui/ExternalUi.ui \
 ../../src/frontends/qt4/ui/FindAndReplaceUi.ui \
 ../../src/frontends/qt4/ui/FloatPlacementUi.ui \
-../../src/frontends/qt4/ui/FloatUi.ui \
 ../../src/frontends/qt4/ui/FontUi.ui \
 ../../src/frontends/qt4/ui/GraphicsUi.ui \
 ../../src/frontends/qt4/ui/HSpaceUi.ui \
@@ -828,7 +826,6 @@ FORMS = \
 ../../src/frontends/qt4/ui/PrefColorsUi.ui \
 ../../src/frontends/qt4/ui/PrefCompletionUi.ui \
 ../../src/frontends/qt4/ui/PrefConvertersUi.ui \
-../../src/frontends/qt4/ui/PrefDateUi.ui \
 ../../src/frontends/qt4/ui/PrefDisplayUi.ui \
 ../../src/frontends/qt4/ui/PrefEditUi.ui \
 ../../src/frontends/qt4/ui/PrefFileformatsUi.ui \
@@ -837,7 +834,6 @@ FORMS = \
 ../../src/frontends/qt4/ui/PrefLanguageUi.ui \
 ../../src/frontends/qt4/ui/PrefLatexUi.ui \
 ../../src/frontends/qt4/ui/PrefPathsUi.ui \
-../../src/frontends/qt4/ui/PrefPlaintextUi.ui \
 ../../src/frontends/qt4/ui/PrefPrinterUi.ui \
 ../../src/frontends/qt4/ui/PrefScreenFontsUi.ui \
 ../../src/frontends/qt4/ui/PrefShortcutsUi.ui \
