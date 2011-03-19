@@ -81,6 +81,8 @@ public:
 
 	void add(T const * thing, Dimension const & dim)
 	{
+		if (!has(thing))
+			data_[thing].pos = Point(-10000, -10000);
 		data_[thing].dim = dim;
 	}
 
@@ -92,7 +94,7 @@ public:
 
 	Dimension const & dim(T const * thing) const
 	{
-		check(thing, "dim");
+		checkDim(thing, "dim");
 		return data_.find(thing)->second.dim;
 	}
 
@@ -116,6 +118,15 @@ public:
 
 	bool has(T const * thing) const
 	{
+		typename cache_type::const_iterator it = data_.find(thing);
+
+		if (it == data_.end())
+			return false;
+		return it->second.pos.x_ != -10000;
+	}
+
+	bool hasDim(T const * thing) const
+	{
 		return data_.find(thing) != data_.end();
 	}
 
@@ -135,6 +146,12 @@ public:
 
 private:
 	friend class CoordCache;
+
+	void checkDim(T const * thing, char const * hint) const
+	{
+		if (!hasDim(thing))
+			lyxbreaker(thing, hint, data_.size());
+	}
 
 	void check(T const * thing, char const * hint) const
 	{
