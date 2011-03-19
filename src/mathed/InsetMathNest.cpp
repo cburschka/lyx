@@ -1464,6 +1464,15 @@ void InsetMathNest::lfunMousePress(Cursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "## lfunMousePress: buttons: " << cmd.button() << endl;
 	BufferView & bv = cur.bv();
+	if (cmd.button() == mouse_button::button3) {
+		// Don't do anything if we right-click a
+		// selection, a context menu will popup.
+		if (bv.cursor().selection() && cur >= bv.cursor().selectionBegin()
+		      && cur < bv.cursor().selectionEnd()) {
+	 		cur.noScreenUpdate();
+			return;
+		}
+	}
 	bool do_selection = cmd.button() == mouse_button::button1
 		&& cmd.argument() == "region-select";
 	bv.mouseSetCursor(cur, do_selection);

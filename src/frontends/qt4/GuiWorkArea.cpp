@@ -772,18 +772,20 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 		return;
 	}
 
-	// Save the context menu on mouse press, because also the mouse
-	// cursor is set on mouse press. Afterwards, we can either release
-	// the mousebutton somewhere else, or the cursor might have moved
-	// due to the DEPM.
-	if (e->button() == Qt::RightButton)
-		context_menu_name_ = buffer_view_->contextMenu(e->x(), e->y());
-
 	inputContext()->reset();
 
 	FuncRequest const cmd(LFUN_MOUSE_PRESS, e->x(), e->y(),
 		q_button_state(e->button()));
 	dispatch(cmd, q_key_state(e->modifiers()));
+
+	// Save the context menu on mouse press, because also the mouse
+	// cursor is set on mouse press. Afterwards, we can either release
+	// the mousebutton somewhere else, or the cursor might have moved
+	// due to the DEPM. We need to do this after the mouse has been
+	// set in dispatch(), because the selection state might change.
+	if (e->button() == Qt::RightButton)
+		context_menu_name_ = buffer_view_->contextMenu(e->x(), e->y());
+
 	e->accept();
 }
 
