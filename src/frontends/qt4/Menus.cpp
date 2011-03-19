@@ -661,7 +661,7 @@ bool MenuDefinition::hasFunc(FuncRequest const & func) const
 void MenuDefinition::catSub(docstring const & name)
 {
 	add(MenuItem(MenuItem::Submenu,
-				qt_("More..."), toqstr(name), QString(), false));
+				qt_("&More..."), toqstr(name), QString(), false));
 }
 
 void MenuDefinition::cat(MenuDefinition const & other)
