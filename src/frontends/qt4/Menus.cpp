@@ -313,6 +313,8 @@ public:
 	const_iterator end() const { return items_.end(); }
 	///
 	void cat(MenuDefinition const & other);
+	///
+	void catSub(docstring const & name);
 	
 	// search for func in this menu iteratively, and put menu
 	// names in a stack.
@@ -655,6 +657,12 @@ bool MenuDefinition::hasFunc(FuncRequest const & func) const
 	return false;
 }
 
+
+void MenuDefinition::catSub(docstring const & name)
+{
+	add(MenuItem(MenuItem::Submenu,
+				qt_("More..."), toqstr(name), QString(), false));
+}
 
 void MenuDefinition::cat(MenuDefinition const & other)
 {
@@ -2067,7 +2075,15 @@ void Menus::updateMenu(Menu * qmenu)
 			continue;
 		}
 
-		fromLyxMenu.cat(d->getMenu(toqstr(menu_name)));
+		MenuDefinition cat_menu = d->getMenu(toqstr(menu_name));
+		//FIXME: 50 is a wild guess. We should take into account here
+		//the expansion of menu items, disabled optional items etc.
+		bool const in_sub_menu = fromLyxMenu.size() > 0 
+			&& fromLyxMenu.size() + cat_menu.size() > 50 ;
+		if (in_sub_menu)
+			fromLyxMenu.catSub(menu_name);
+		else
+			fromLyxMenu.cat(cat_menu);
 		fromLyxMenu.add(MenuItem(MenuItem::Separator));
 	}
 
