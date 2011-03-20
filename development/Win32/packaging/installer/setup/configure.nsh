@@ -83,6 +83,7 @@ Section -Configure
 
   # Append path prefix
   FileOpen $DistFile "$INSTDIR\Resources\lyxrc.dist" a
+  FileSeek $DistFile 0 END
 
   # $$ represents a literal $ in an NSIS string
   StrCpy $PathPrefix "$$LyXDir\bin;$$LyXDir\python;$$LyXDir\imagemagick;$$LyXDir\ghostscript"
