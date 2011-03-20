@@ -1965,6 +1965,9 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 bool InsetMathHull::haveNumbers() const
 {
 	bool havenumbers = false;
+	// inline formulas are never numbered (bug 7351 part 3)
+	if (getType() == hullSimple)
+		return havenumbers;
 	for (size_t i = 0; i != numbered_.size(); ++i) {
 		if (numbered_[i]) {
 			havenumbers = true;
