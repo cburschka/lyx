@@ -50,6 +50,8 @@ Section -ProgramFiles SecProgramFiles
   !insertmacro FileListPythonLib File "${FILES_PYTHON}\Lib\"
   SetOutPath "$INSTDIR\python\Lib\encodings"
   !insertmacro FileListPythonLibEncodings File "${FILES_PYTHON}\Lib\encodings\"
+  SetOutPath "$INSTDIR\python\Lib\logging"
+  !insertmacro FileListPythonLibLogging File "${FILES_PYTHON}\Lib\logging\"
   
   # Compile all Pyton files to byte-code
   # The user using the scripts may not have write access

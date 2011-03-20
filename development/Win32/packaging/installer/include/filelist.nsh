@@ -266,6 +266,14 @@ Lists of files to include in the installer
   
 !macroend
 
+!macro FileListPythonLibLogging COMMAND DIRECTORY
+
+  ${FILE}__init__.py"
+  ${FILE}config.py"
+  ${FILE}handlers.py"
+  
+!macroend
+
 !macro FileListMetaFile2EPS COMMAND DIRECTORY
 
   ${FILE}metafile2eps.exe"
