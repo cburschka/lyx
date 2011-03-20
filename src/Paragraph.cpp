@@ -2375,8 +2375,8 @@ void Paragraph::latex(BufferParams const & bparams,
 							    runparams);
 		}
 
-		Change const & change = runparams.inDeletedInset ? runparams.changeOfDeletedInset
-								 : lookupChange(i);
+		Change const & change = runparams.inDeletedInset
+			? runparams.changeOfDeletedInset : lookupChange(i);
 
 		if (bparams.outputChanges && runningChange != change) {
 			if (open_font) {
