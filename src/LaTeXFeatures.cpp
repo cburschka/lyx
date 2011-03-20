@@ -1215,13 +1215,20 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel, bool use_po
 					type, name,
 					from_ascii(buffer().language()->babel())));
 			for (lang_it lit = lbeg; lit != lend; ++lit) {
-				name = translateIfPossible(flname,
-					(*lit)->code());
-				if (use_polyglossia && flname != name)
+				string const code = (*lit)->code();
+				name = translateIfPossible(flname, code);
+				// we assume we have a suitable translation if
+				// either the language is English (we need to
+				// translate into English if English is a secondary
+				// language) or if translateIfPossible returns
+				// something different to the English source.
+				bool const have_translation =
+					(flname != name || contains(code, "en"));
+				if (use_polyglossia && have_translation)
 					snippets.insert(getFloatI18nPreamble(
 						type, name,
 						from_ascii((*lit)->polyglossia())));
-				else if (flname != name)
+				else if (have_translation)
 					snippets.insert(getFloatI18nPreamble(
 						type, name,
 						from_ascii((*lit)->babel())));
