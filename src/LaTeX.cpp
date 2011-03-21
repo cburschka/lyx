@@ -758,6 +758,12 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 					++num_errors;
 				}
 			}
+
+			if (prefixIs(token, "! Paragraph ended before \\Hy@setref@link was complete.")){
+					// bug 7344. We must rerun LaTeX if hyperref has been toggled.
+					retval |= ERROR_RERUN;
+					LYXERR(Debug::LATEX, "Force rerun.");
+			}
 		} else {
 			// information messages, TeX warnings and other
 			// warnings we have not caught earlier.
