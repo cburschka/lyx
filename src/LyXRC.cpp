@@ -532,7 +532,7 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 		case RC_FORCE_PAINT_SINGLE_CHAR:
 			lexrc >> force_paint_single_char;
 			break;
-				
+
 		case RC_PRINTER:
 			lexrc >> printer;
 			break;
@@ -1141,7 +1141,7 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 		case RC_DEFAULT_VIEW_FORMAT:
 			lexrc >> default_view_format;
 			break;
-			
+
 		case RC_DEFAULT_LANGUAGE:
 			lexrc >> default_language;
 			break;
@@ -1232,11 +1232,11 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 				run_mode = single_instance ? USE_REMOTE : NEW_INSTANCE;
 			break;
 		case RC_FORWARD_SEARCH_DVI:
-			if (lexrc.next(true)) 
+			if (lexrc.next(true))
 				forward_search_dvi = lexrc.getString();
 			break;
 		case RC_FORWARD_SEARCH_PDF:
-			if (lexrc.next(true)) 
+			if (lexrc.next(true))
 				forward_search_pdf = lexrc.getString();
 			break;
 		case RC_EXPORT_OVERWRITE:
@@ -1329,7 +1329,7 @@ namespace {
 
 	// Escape \ and " so that LyXLex can read the string later
 	string escapeCommand(string const & str) {
-		return subst(subst(str , "\\", "\\\\"), 
+		return subst(subst(str , "\\", "\\\\"),
 			     "\"", "\\\"");
 	}
 
@@ -1339,7 +1339,7 @@ namespace {
 void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) const
 {
 	LyXRCTags tag = RC_LAST;
-	
+
 	if (!name.empty()) {
 		for (int i = 0; i != lyxrcCount; ++i)
 			if ("\\" + name == lyxrcTags[i].tag)
@@ -2546,7 +2546,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		    language_package_selection != system_lyxrc.language_package_selection) {
 			os << "\\language_package_selection ";
 			switch (language_package_selection) {
-			case LP_AUTO: 
+			case LP_AUTO:
 				os << "0\n";
 				break;
 			case LP_BABEL:
@@ -2702,7 +2702,8 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			    format->viewer() != cit->viewer() ||
 			    format->editor() != cit->editor() ||
 			    format->documentFormat() != cit->documentFormat() ||
-			    format->vectorFormat() != cit->vectorFormat()) {
+			    format->vectorFormat() != cit->vectorFormat() ||
+			    format->inExportMenu() != cit->inExportMenu()) {
 				os << "\\format \"" << cit->name() << "\" \""
 				   << cit->extension() << "\" \""
 				   << cit->prettyname() << "\" \""
@@ -2714,6 +2715,9 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 					flags.push_back("document");
 				if (cit->vectorFormat())
 					flags.push_back("vector");
+				if (cit->inExportMenu())
+					flags.push_back("menu=export");
+
 				os << getStringFromVector(flags);
 				os << "\"\n";
 			}
@@ -2730,19 +2734,19 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 	case RC_VIEWER_ALTERNATIVES: {
 		Alternatives::const_iterator it = viewer_alternatives.begin();
 		Alternatives::const_iterator const en = viewer_alternatives.end();
-		Alternatives::const_iterator const sysend = 
+		Alternatives::const_iterator const sysend =
 				system_lyxrc.viewer_alternatives.end();
  		for (; it != en; ++it) {
 			string const & fmt = it->first;
 			CommandSet const & cmd = it->second;
 			CommandSet::const_iterator sit = cmd.begin();
 			CommandSet::const_iterator const sen = cmd.end();
-			Alternatives::const_iterator const sysfmt = ignore_system_lyxrc ? 
+			Alternatives::const_iterator const sysfmt = ignore_system_lyxrc ?
 					system_lyxrc.viewer_alternatives.begin() : // we won't use it in this case
 					system_lyxrc.viewer_alternatives.find(fmt);
 			for (; sit != sen; ++sit) {
 				string const & cmd = *sit;
-				if (ignore_system_lyxrc 
+				if (ignore_system_lyxrc
 				    || sysfmt == sysend               // format not found
 					 || sysfmt->second.count(cmd) == 0 // this command not found
 				   )
@@ -2755,19 +2759,19 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 	case RC_EDITOR_ALTERNATIVES: {
 		Alternatives::const_iterator it = editor_alternatives.begin();
 		Alternatives::const_iterator const en = editor_alternatives.end();
-		Alternatives::const_iterator const sysend = 
+		Alternatives::const_iterator const sysend =
 				system_lyxrc.editor_alternatives.end();
 		for (; it != en; ++it) {
 			string const & fmt = it->first;
 			CommandSet const & cmd = it->second;
 			CommandSet::const_iterator sit = cmd.begin();
 			CommandSet::const_iterator const sen = cmd.end();
-			Alternatives::const_iterator const sysfmt = ignore_system_lyxrc ? 
+			Alternatives::const_iterator const sysfmt = ignore_system_lyxrc ?
 					system_lyxrc.editor_alternatives.begin() : // we won't use it in this case
 					system_lyxrc.editor_alternatives.find(fmt);
 			for (; sit != sen; ++sit) {
 				string const & cmd = *sit;
-				if (ignore_system_lyxrc 
+				if (ignore_system_lyxrc
 				    || sysfmt == sysend               // format not found
 				    || sysfmt->second.count(cmd) == 0 // this command not found
 				   )
@@ -2817,7 +2821,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 				   << "\" \"" << cit->to << "\" \"\" \"\"\n";
 		if (tag != RC_LAST)
 			break;
-	
+
 	case RC_COPIER:
 		if (tag == RC_LAST)
 			os << "\n#\n"
