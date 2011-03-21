@@ -22,8 +22,8 @@ Initialization function
 Function .onInit
 
   ${IfNot} ${IsNT}
-  ${OrIfNot} ${AtLeastWin2000}
-    MessageBox MB_OK|MB_ICONSTOP "${APP_NAME} ${APP_VERSION} requires Windows 2000 or later."
+  ${OrIfNot} ${AtLeastWinXP}
+    MessageBox MB_OK|MB_ICONSTOP "${APP_NAME} ${APP_VERSION} requires Windows XP or later."
     Quit
   ${EndIf}
 
