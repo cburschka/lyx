@@ -51,15 +51,10 @@ AC_DEFUN([CHECK_WITH_HUNSPELL],
 	test "$with_hunspell" = "no" && lyx_use_hunspell=false
 
 	if $lyx_use_hunspell ; then
-	AC_CHECK_HEADERS(hunspell/hunspell.hxx,
-		[lyx_use_hunspell=true; break;],
+	  AC_CHECK_HEADERS(hunspell/hunspell.hxx,
+		[AC_SEARCH_LIBS(Hunspell_spell,
+		     [hunspell hunspell-1.2],, [lyx_use_hunspell=false])],
 		[lyx_use_hunspell=false])
-
-	if test x$lyx_use_hunspell = xtrue ; then
-		AC_CHECK_LIB(hunspell, main, LIBS="-lhunspell $LIBS", lyx_use_hunspell=false)
-		if test x$lyx_use_hunspell = xfalse ; then
-			 AC_CHECK_LIB(hunspell-1.2, main, [LIBS="-lhunspell-1.2 $LIBS" lyx_use_hunspell=true], lyx_use_hunspell=false)
-		fi
 	fi
 	AC_MSG_CHECKING([whether to use hunspell])
 	if $lyx_use_hunspell ; then
@@ -68,7 +63,6 @@ AC_DEFUN([CHECK_WITH_HUNSPELL],
 		lyx_flags="$lyx_flags use-hunspell"
 	else
 		AC_MSG_RESULT(no)
-	fi
 	fi
 	])
 
