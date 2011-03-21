@@ -360,7 +360,7 @@ bool Formats::edit(Buffer const & buffer, FileName const & filename,
 				prettyName(format_name)));
 		return false;
 	}
-	
+
 	// editor is 'auto'
 	if (format->editor() == "auto") {
 		if (os::autoOpenFile(filename.absFileName(), os::EDIT))
