@@ -96,7 +96,7 @@ def layouts_l10n(input_files, output, base):
     CiteFormat = re.compile(r'\s*CiteFormat')
     KeyVal = re.compile(r'^\s*_\w+\s+(.*)$')
     End = re.compile(r'\s*End')
-    
+
     for src in input_files:
         readingDescription = False
         readingI18nPreamble = False
@@ -137,10 +137,7 @@ def layouts_l10n(input_files, output, base):
             res = NameRE.search(line)
             if res != None:
                 string = res.group(1)
-                string = string.replace('\\', '\\\\').replace('"', '')
-                if string != "":
-                    print >> out, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
-                        (relativePath(src, base), lineno + 1, string)
+                writeString(out, src, base, lineno + 1, string)
                 continue
             res = Style.search(line)
             if res != None:
