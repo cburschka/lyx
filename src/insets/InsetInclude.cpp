@@ -511,8 +511,14 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 		 isLyXFilename(included_file.absFilename())) {
 		//if it's a LyX file and we're inputting or including,
 		//try to load it so we can write the associated latex
-		if (!loadIfNeeded(buffer()))
+		if (!loadIfNeeded(buffer())) {
+			docstring text = bformat(_("Could not load included "
+				"file\n`%1$s'\n"
+				"Please, check whether it actually exists."),
+				included_file.displayName());
+			Alert::warning(_("Missing included file"), text);
 			return false;
+		}
 
 		Buffer * tmp = theBufferList().getBuffer(included_file);
 
