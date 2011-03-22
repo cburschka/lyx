@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-03-18 17:49+0100\n"
-"PO-Revision-Date: 2011-03-18 17:51+0100\n"
+"PO-Revision-Date: 2011-03-22 17:23+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -1166,19 +1166,21 @@ msgstr "&Einfügen"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:112
 msgid "Reset to the default settings for the document class"
-msgstr "Auf die Standardeinstellungen der Dokumentklasse zurücksetzen"
+msgstr "Auf die Voreinstellungen der Dokumentklasse zurücksetzen"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:115
 msgid "Use Class Defaults"
-msgstr "Klassen-Standards verwenden"
+msgstr "Klassen-Voreinstellungen verwenden"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:130
 msgid "Save settings as LyX's default document settings"
-msgstr "Einstellungen als Standard-Dokument-Einstellungen für LyX speichern"
+msgstr ""
+"Derzeitige Einstellungen als Standard-Voreinstellungen für neue LyX-Dokumente "
+"speichern"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:133
 msgid "Save as Document Defaults"
-msgstr "Als Dokument-Standards speichern"
+msgstr "Als Dokument-Voreinstellung speichern"
 
 #: src/frontends/qt4/ui/ERTUi.ui:28 src/frontends/qt4/GuiPrefs.cpp:1190
 msgid "Display"
