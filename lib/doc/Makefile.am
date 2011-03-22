@@ -272,6 +272,7 @@ dist_sldoc_DATA = \
 svdocdir = $(docdir)/sv
 dist_svdoc_DATA = \
 	sv/Intro.lyx \
+	sv/Shortcuts.lyx \
 	sv/Tutorial.lyx
 
 ukdocdir = $(docdir)/uk
