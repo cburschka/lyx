@@ -4,9 +4,9 @@
 # Joacim Persson <sp2joap@ida.his.se> 1997, 1998.
 # Jim Rotmalm <jim.rotmalm@gmail.com>, 2010, 2011.
 #
-# Status 2011-03-03:
+# Status 2011-03-21:
 #   ~100% "acceptably done".
-#   ~234 shortcuts are not done.
+#   ~232 shortcuts are not done.
 #   Improvements? Please tell me.
 #   Mistakes are probably around.
 #
@@ -49,6 +49,7 @@
 #   border               -> kant
 #   box                  -> ruta
 #   brace                -> klammer(parentes)
+#   braille              -> braille, punktskrift, blindskrift (braille tills punktskrift får plats)
 #   branch               -> gren
 #   break                -> bryt
 #     ... break          -> brytning
@@ -77,7 +78,7 @@
 #   custom, customize    -> anpassad, anpassa
 #   cut                  -> klipp (-ut)
 #   debug                -> avlusa
-#   delimiter            -> skiljetecken, avgränsare?
+#   delimiter            -> skiljetecken, avskiljare?, avgränsare?
 #   directory            -> katalog
 #   discard              -> kasta (förkasta)
 #   dismiss              -> avfärda
@@ -132,7 +133,7 @@
 #   multicolumn        ? -> multikolumn? flerkolumn/ig? flerspalt/ig?
 #      ..line          ? -> multilinje? flerradig? flerlinje? flerlinjig?
 #      ..row           ? -> multirad? flerrad/ig? flerrader/s?
-#   (proper) noun        -> namnstil, egennamn?, substantiv?
+#   noun                 -> namn, namnstil?, egennamn?, substantiv?
 #   note                 -> not, anteckning?
 #   notice               -> notis, meddelande?
 #   notation             -> notation, notering?
@@ -182,7 +183,7 @@
 #   scope                -> omfång?
 #   set                  -> sätt
 #   setting(s)           -> inställning(ar)
-#   shortcut             -> genväg
+#   shortcut             -> genväg, snabbtangent
 #   show                 -> visa
 #   skip                 -> avstånd?
 #   slide                -> bild? diabild?
@@ -215,8 +216,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.10\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-28 17:09+0100\n"
-"PO-Revision-Date: 2011-03-03 21:12+0100\n"
+"POT-Creation-Date: 2011-03-21 12:21+0100\n"
+"PO-Revision-Date: 2011-03-21 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -296,7 +297,7 @@ msgstr "&Ok"
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:870
 #: src/Buffer.cpp:2765 src/Buffer.cpp:2811 src/Buffer.cpp:2846
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:871 src/LyXFunc.cpp:1048
-#: src/LyXFunc.cpp:1933 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:1933 src/LyXVC.cpp:199
 #: src/frontends/qt4/GuiClipboard.cpp:210
 #: src/frontends/qt4/GuiDocument.cpp:1262
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -2792,11 +2793,11 @@ msgstr "Kommandos&tart:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:92
 msgid "The LaTeX command that starts a switch to a foreign language"
-msgstr "LaTeX-kommandot som börjar en växling till ett främmande språk"
+msgstr "LaTeX-kommandot som startar en växling till ett främmande språk"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:99
 msgid "Command e&nd:"
-msgstr "Kommandoslut:"
+msgstr "Komma&ndoavslut:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:109
 msgid "The LaTeX command that ends a switch to a foreign language"
@@ -3610,7 +3611,7 @@ msgstr "Behandla den omvandlade filen med detta kommando ($$FName = filnamn)"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:101
 msgid "&Export formats:"
-msgstr "&Exportera format:"
+msgstr "&Exportformat:"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:111
 msgid "&Command:"
@@ -4158,7 +4159,7 @@ msgstr "Vertikal fyllning"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:36
 msgid "Complete source"
-msgstr "Fullständing källa"
+msgstr "Fullständig källa"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:43
 msgid "Automatic update"
@@ -7906,11 +7907,11 @@ msgstr "[Bildinnehåll]"
 
 #: lib/layouts/seminar.layout:87
 msgid "ProgressContents"
-msgstr "Förloppsinnehåll"
+msgstr "Förloppinnehåll"
 
 #: lib/layouts/seminar.layout:90
 msgid "[Progress Contents]"
-msgstr "[Förloppsinnehåll]"
+msgstr "[Förloppinnehåll]"
 
 #: lib/layouts/siamltex.layout:107 lib/layouts/theorems-order.inc:34
 #: lib/layouts/theorems-starred.inc:93
@@ -9122,67 +9123,67 @@ msgstr "Anmärkning."
 
 #: lib/layouts/braille.module:2
 msgid "Braille"
-msgstr "Punktskrift"
+msgstr "Braille"
 
 #: lib/layouts/braille.module:6
 msgid ""
 "Defines an environment to typeset Braille. For more details see Braille.lyx "
 "in examples."
 msgstr ""
-"Definierar en miljö för att typsätta punktskrift (Braille). För mer "
+"Definierar en miljö för att typsätta braille (punktskrift). För mer "
 "information se Braille.lyx i exempel."
 
 #: lib/layouts/braille.module:22
 msgid "Braille (default)"
-msgstr "Punktskrift (standard)"
+msgstr "Braille (standard)"
 
 #: lib/layouts/braille.module:36 lib/layouts/braille.module:59
 msgid "Braille:"
-msgstr "Punktskrift:"
+msgstr "Braille:"
 
 #: lib/layouts/braille.module:45
 msgid "Braille (textsize)"
-msgstr "Punktskrift (textstorlek)"
+msgstr "Braille (textstorlek)"
 
 #: lib/layouts/braille.module:68
 msgid "Braille (dots on)"
-msgstr "Punktskrift (punkter på)"
+msgstr "Braille (punkter på)"
 
 #: lib/layouts/braille.module:83
 msgid "Braille_dots_on"
-msgstr "Punktskrift_punkter_på"
+msgstr "Braille_punkter_på"
 
 #: lib/layouts/braille.module:92
 msgid "Braille (dots off)"
-msgstr "Punktskrift (punkter av)"
+msgstr "Braille (punkter av)"
 
 #: lib/layouts/braille.module:107
 msgid "Braille_dots_off"
-msgstr "Punktskrift_punkter_av"
+msgstr "Braille_punkter_av"
 
 #: lib/layouts/braille.module:116
 msgid "Braille (mirror on)"
-msgstr "Punktskrift (spegel på)"
+msgstr "Braille (spegel på)"
 
 #: lib/layouts/braille.module:131
 msgid "Braille_mirror_on"
-msgstr "Punktskrift_spegel_på"
+msgstr "Braille_spegel_på"
 
 #: lib/layouts/braille.module:140
 msgid "Braille (mirror off)"
-msgstr "Punktskrift (spegel av)"
+msgstr "Braille (spegel av)"
 
 #: lib/layouts/braille.module:155
 msgid "Braille_mirror_off"
-msgstr "Punktskrift_spegel_av"
+msgstr "Braille_spegel_av"
 
 #: lib/layouts/braille.module:163
 msgid "Braillebox"
-msgstr "Punktskriftsruta"
+msgstr "Brailleruta"
 
 #: lib/layouts/braille.module:167
 msgid "Braille box"
-msgstr "Punktskriftsruta"
+msgstr "Brailleruta"
 
 #: lib/layouts/endnotes.module:2
 msgid "Endnote"
@@ -9349,16 +9350,16 @@ msgid ""
 "Defines some character styles for logical markup: noun, emph, strong, and "
 "code."
 msgstr ""
-"Definierar några teckenstilar för logiskt märkspråk: namnstil, betoning, "
-"stark, och kod."
+"Definierar några teckenstilar för logiskt märkspråk: namn, betoning, stark, "
+"och kod."
 
 #: lib/layouts/logicalmkup.module:10
 msgid "CharStyle:Noun"
-msgstr "Teckenstil:Namnstil"
+msgstr "Teckenstil:Namn"
 
 #: lib/layouts/logicalmkup.module:12
 msgid "noun"
-msgstr "namnstil"
+msgstr "namn"
 
 #: lib/layouts/logicalmkup.module:22
 msgid "CharStyle:Emph"
@@ -12161,7 +12162,7 @@ msgstr "Lingvistikmanual|L"
 
 #: lib/ui/stdmenus.inc:549
 msgid "Braille Manual|B"
-msgstr "Punktskriftsmanual"
+msgstr "Braillemanual|B"
 
 #: lib/ui/stdmenus.inc:550
 msgid "XY-pic Manual|X"
@@ -12213,7 +12214,7 @@ msgstr "Växla betoning"
 
 #: lib/ui/stdtoolbars.inc:85
 msgid "Toggle noun"
-msgstr "Växla namnstil"
+msgstr "Växla namn"
 
 #: lib/ui/stdtoolbars.inc:86
 msgid "Apply last"
@@ -15519,7 +15520,7 @@ msgstr " kunde inte skriva fil!"
 
 #: src/Buffer.cpp:942
 msgid " done."
-msgstr " klar."
+msgstr " färdig."
 
 #: src/Buffer.cpp:957
 #, c-format
@@ -16585,7 +16586,7 @@ msgstr "Understrykning %1$s, "
 #: src/Font.cpp:179
 #, c-format
 msgid "Noun %1$s, "
-msgstr "Namnstil %1$s, "
+msgstr "Namn %1$s, "
 
 #: src/Font.cpp:193
 #, c-format
@@ -16732,7 +16733,7 @@ msgstr "LyX: omkonfigurerar användarkatalog"
 
 #: src/LyX.cpp:124
 msgid "Done!"
-msgstr "Klar!"
+msgstr "Färdig!"
 
 #: src/LyX.cpp:386
 #, c-format
@@ -17054,7 +17055,7 @@ msgstr ""
 msgid "Revert to saved document?"
 msgstr "Återgå till sparat dokument?"
 
-#: src/LyXFunc.cpp:871 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:871 src/LyXVC.cpp:199
 msgid "&Revert"
 msgstr "Åte&rgå"
 
@@ -17738,7 +17739,7 @@ msgstr "(ingen inledande beskrivning)"
 msgid "(no log message)"
 msgstr "(inget loggmeddelande)"
 
-#: src/LyXVC.cpp:192
+#: src/LyXVC.cpp:195
 #, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
@@ -17751,7 +17752,7 @@ msgstr ""
 "\n"
 "Vill du återgå till den äldre versionen?"
 
-#: src/LyXVC.cpp:195
+#: src/LyXVC.cpp:198
 msgid "Revert to stored version of document?"
 msgstr "Återgå till lagrad version av dokument?"
 
@@ -18627,7 +18628,7 @@ msgstr "Understreck"
 
 #: src/frontends/qt4/GuiCharacter.cpp:79
 msgid "Noun"
-msgstr "Namnstil"
+msgstr "Namn"
 
 #: src/frontends/qt4/GuiCharacter.cpp:89
 msgid "No color"
@@ -19844,7 +19845,7 @@ msgstr "Ett ord kontrollerat."
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:460
 msgid "Spelling check completed"
-msgstr "Stavningskontroll avslutad"
+msgstr "Stavningskontroll avklarad"
 
 #: src/frontends/qt4/GuiSymbols.cpp:54
 msgid "Basic Latin"
@@ -22071,7 +22072,7 @@ msgstr "Okänd användare"
 #~ msgstr "Öppna LaTeX-loggens fildialog"
 
 #~ msgid "View Complete &Log..."
-#~ msgstr "Visa den fullständiga lo&ggen..."
+#~ msgstr "Visa fullständig lo&gg..."
 
 #~ msgid "TabWidget"
 #~ msgstr "Flikmanick"
@@ -22413,7 +22414,7 @@ msgstr "Okänd användare"
 #~ msgstr "Autokorrigering"
 
 #~ msgid "Scroll &below end of document"
-#~ msgstr "Rulla nedanför dokumentetslut"
+#~ msgstr "Rulla nedanför dokumentslut"
 
 #~ msgid "Skip trailing non-word characters"
 #~ msgstr "Hoppa över efterföljande icke-ordstecken"
@@ -23648,7 +23649,7 @@ msgstr "Okänd användare"
 #~ msgstr "Avbrutet"
 
 #~ msgid "Finished"
-#~ msgstr "Färdig"
+#~ msgstr "Avslutad"
 
 #~ msgid "Aborting process..."
 #~ msgstr "Avbryter process..."
@@ -23812,7 +23813,7 @@ msgstr "Okänd användare"
 #~ msgstr "<Alla index>"
 
 #~ msgid "Progress/Debug Messages"
-#~ msgstr "Förlopps- och avlusningsmeddelanden"
+#~ msgstr "Förlopp/avlusningsmeddelanden"
 
 #~ msgid "Debug Level"
 #~ msgstr "Avlusningsnivå"
@@ -23834,7 +23835,7 @@ msgstr "Okänd användare"
 #~ msgstr "LyX kunde inte stängas eftersom dokument behandlas av LyX."
 
 #~ msgid "Automatic save done."
-#~ msgstr "Automatisk sparning klar."
+#~ msgstr "Automatisk sparning färdig."
 
 #~ msgid "Automatic save failed!"
 #~ msgstr "Automatisk sparning misslyckades!"
