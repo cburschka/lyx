@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-28 17:09+0100\n"
+"POT-Creation-Date: 2011-03-22 17:53+0100\n"
 "PO-Revision-Date: 2007-06-26 17:10+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -88,7 +89,7 @@ msgstr "確定(&O)"
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:870
 #: src/Buffer.cpp:2765 src/Buffer.cpp:2811 src/Buffer.cpp:2846
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:871 src/LyXFunc.cpp:1048
-#: src/LyXFunc.cpp:1933 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:1933 src/LyXVC.cpp:199
 #: src/frontends/qt4/GuiClipboard.cpp:210
 #: src/frontends/qt4/GuiDocument.cpp:1262
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -1524,8 +1525,8 @@ msgstr "輸入"
 msgid "Verbatim"
 msgstr "逐字地"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1006
-#: src/insets/InsetInclude.cpp:1012
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1012
+#: src/insets/InsetInclude.cpp:1018
 msgid "Program Listing"
 msgstr "程式清單"
 
@@ -17077,8 +17078,8 @@ msgstr ""
 #: src/ISpell.cpp:395
 #, c-format
 msgid ""
-"Could not check word `%1$s' because it could not be converted to encoding `%2"
-"$s'."
+"Could not check word `%1$s' because it could not be converted to encoding `"
+"%2$s'."
 msgstr "無法檢查字詞「%1$s」因為它無法轉換到編碼「%2$s」。"
 
 #: src/ISpell.cpp:406
@@ -17088,15 +17089,15 @@ msgstr "無法與 ispell 拼寫檢查器程序通訊。"
 #: src/ISpell.cpp:466
 #, c-format
 msgid ""
-"Could not insert word `%1$s' because it could not be converted to encoding `%"
-"2$s'."
+"Could not insert word `%1$s' because it could not be converted to encoding `"
+"%2$s'."
 msgstr "無法插入字詞「%1$s」因為它無法轉換到編碼「%2$s」。"
 
 #: src/ISpell.cpp:481
 #, c-format
 msgid ""
-"Could not accept word `%1$s' because it could not be converted to encoding `%"
-"2$s'."
+"Could not accept word `%1$s' because it could not be converted to encoding `"
+"%2$s'."
 msgstr "無法接受字詞「%1$s」因為它無法轉換到編碼「%2$s」。"
 
 #: src/KeySequence.cpp:166
@@ -17454,7 +17455,7 @@ msgstr "任何變更將會失去。確定要還原成儲存的文件版本 %1$s�
 msgid "Revert to saved document?"
 msgstr "恢復原儲存文件？"
 
-#: src/LyXFunc.cpp:871 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:871 src/LyXVC.cpp:199
 msgid "&Revert"
 msgstr "回復(&R)"
 
@@ -17640,8 +17641,8 @@ msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
 "E.g.\"%A, %e. %B %Y\"."
 msgstr ""
-"這裏接受一般的 strftime 格式；參看 man strftime 以獲得全部細節。例如：「%A, %"
-"e. %B %Y」。"
+"這裏接受一般的 strftime 格式；參看 man strftime 以獲得全部細節。例如：「%A, "
+"%e. %B %Y」。"
 
 #: src/LyXRC.cpp:2607
 #, fuzzy
@@ -18071,7 +18072,7 @@ msgstr "(無初始描述)"
 msgid "(no log message)"
 msgstr "(無記錄檔訊息)"
 
-#: src/LyXVC.cpp:192
+#: src/LyXVC.cpp:195
 #, fuzzy, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
@@ -18083,7 +18084,7 @@ msgstr ""
 "\n"
 "您要還原成儲存的版本嗎？"
 
-#: src/LyXVC.cpp:195
+#: src/LyXVC.cpp:198
 msgid "Revert to stored version of document?"
 msgstr "還原成文件的已儲存版本？"
 
@@ -21375,7 +21376,7 @@ msgstr "開啟的註腳內欄"
 msgid "footnote"
 msgstr "註腳"
 
-#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:590
+#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:596
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -21404,16 +21405,31 @@ msgstr "逐字地輸入"
 msgid "Verbatim Input*"
 msgstr "逐字地輸入*"
 
-#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:678
+#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:684
 msgid "Recursive input"
 msgstr "遞迴輸入"
 
-#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:679
+#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:685
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "試圖包含檔案 %1$s 於它自己中！忽略包含動作。"
 
-#: src/insets/InsetInclude.cpp:521
+#: src/insets/InsetInclude.cpp:515
+#, fuzzy, c-format
+msgid ""
+"Could not load included file\n"
+"`%1$s'\n"
+"Please, check whether it actually exists."
+msgstr ""
+"無法建立備份檔案 %1$s。\n"
+"請檢查是否目錄存在並為可寫。"
+
+#: src/insets/InsetInclude.cpp:519
+#, fuzzy
+msgid "Missing included file"
+msgstr "包含檔"
+
+#: src/insets/InsetInclude.cpp:527
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -21424,11 +21440,11 @@ msgstr ""
 "具有文字類別「%2$s」\n"
 "當上層檔案有文字類別「%3$s」。"
 
-#: src/insets/InsetInclude.cpp:527
+#: src/insets/InsetInclude.cpp:533
 msgid "Different textclasses"
 msgstr "不同的文字類別"
 
-#: src/insets/InsetInclude.cpp:542
+#: src/insets/InsetInclude.cpp:548
 #, fuzzy, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -21439,19 +21455,19 @@ msgstr ""
 "具有文字類別「%2$s」\n"
 "當上層檔案有文字類別「%3$s」。"
 
-#: src/insets/InsetInclude.cpp:546
+#: src/insets/InsetInclude.cpp:552
 #, fuzzy
 msgid "Module not found"
 msgstr "找不到檔案"
 
-#: src/insets/InsetInclude.cpp:565
+#: src/insets/InsetInclude.cpp:571
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:574
+#: src/insets/InsetInclude.cpp:580
 #, fuzzy
 msgid "Export failure"
 msgstr "備份失敗"
@@ -23001,14 +23017,6 @@ msgstr "不明的使用者"
 #, fuzzy
 #~ msgid "Save failure"
 #~ msgstr "備份失敗"
-
-#, fuzzy
-#~ msgid ""
-#~ "Cannot create file %1$s.\n"
-#~ "Please check whether the directory exists and is writeable."
-#~ msgstr ""
-#~ "無法建立備份檔案 %1$s。\n"
-#~ "請檢查是否目錄存在並為可寫。"
 
 #, fuzzy
 #~ msgid "Embedded Files"

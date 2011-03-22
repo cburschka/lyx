@@ -247,10 +247,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-28 17:09+0100\n"
+"POT-Creation-Date: 2011-03-22 17:53+0100\n"
 "PO-Revision-Date: 2010-12-01 17:17+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -328,7 +329,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:870
 #: src/Buffer.cpp:2765 src/Buffer.cpp:2811 src/Buffer.cpp:2846
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:871 src/LyXFunc.cpp:1048
-#: src/LyXFunc.cpp:1933 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:1933 src/LyXVC.cpp:199
 #: src/frontends/qt4/GuiClipboard.cpp:210
 #: src/frontends/qt4/GuiDocument.cpp:1262
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -1748,8 +1749,8 @@ msgstr "Incorporé (input)"
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1006
-#: src/insets/InsetInclude.cpp:1012
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1012
+#: src/insets/InsetInclude.cpp:1018
 msgid "Program Listing"
 msgstr "Listing de code source"
 
@@ -9505,7 +9506,8 @@ msgid ""
 "the table number, as in 'Table 2.1'."
 msgstr ""
 "Réinitialiser la numérotation des tableaux au début de chaque section et "
-"ajouter le numéro de section au numéro de tableau, comme dans « Tableau 2.1 »."
+"ajouter le numéro de section au numéro de tableau, comme dans « Tableau 2.1 "
+"»."
 
 #: lib/layouts/theorems-ams-bytype.module:2
 msgid "Theorems (AMS, Numbered by Type)"
@@ -9529,8 +9531,8 @@ msgstr ""
 "théorème 2, lemme 1, proposition 1, théorème 3, lemme 2, ..., et non pas "
 "théorème 1, théorème 2, lemme 3, proposition 4, ...). La numérotation porte "
 "sur le document entier. Pour les numérotation par chapitre ou par section, "
-"utiliser l'un des modules « numérotation par sections » ou « numérotation par "
-"chapitres », respectivement."
+"utiliser l'un des modules « numérotation par sections » ou « numérotation "
+"par chapitres », respectivement."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:2
 msgid "Theorems (AMS-Extended, Numbered by Type)"
@@ -16790,8 +16792,8 @@ msgstr ""
 #: src/ISpell.cpp:395
 #, c-format
 msgid ""
-"Could not check word `%1$s' because it could not be converted to encoding `%2"
-"$s'."
+"Could not check word `%1$s' because it could not be converted to encoding `"
+"%2$s'."
 msgstr ""
 "Vérification du mot '%1$s'  impossible parce qu'il ne peut être converti "
 "dans l'encodage '%2$s'."
@@ -16805,8 +16807,8 @@ msgstr ""
 #: src/ISpell.cpp:466
 #, c-format
 msgid ""
-"Could not insert word `%1$s' because it could not be converted to encoding `%"
-"2$s'."
+"Could not insert word `%1$s' because it could not be converted to encoding `"
+"%2$s'."
 msgstr ""
 "Insertion du mot '%1$s'  impossible parce qu'il ne peut être converti dans "
 "l'encodage '%2$s'."
@@ -16814,8 +16816,8 @@ msgstr ""
 #: src/ISpell.cpp:481
 #, c-format
 msgid ""
-"Could not accept word `%1$s' because it could not be converted to encoding `%"
-"2$s'."
+"Could not accept word `%1$s' because it could not be converted to encoding `"
+"%2$s'."
 msgstr ""
 "Le mot '%1$s' ne peut être accepté parce qu'il ne peut être converti dans "
 "l'encodage '%2$s'."
@@ -17023,7 +17025,8 @@ msgstr ""
 "                     où fmt est le format d'importation choisi\n"
 "                     et fichier.xxx le fichier à importer.\n"
 "\t-f [--force-overwrite] ceci\n"
-"                  où « ceci » est soit « all », soit « main », soit « none »,\n"
+"                  où « ceci » est soit « all », soit « main », soit « none "
+"»,\n"
 "                  spécifiant si tous les fichiers, seulement le fichier "
 "principal,\n"
 "                  ou aucun fichier (respectivement) seront écrasés pendant \n"
@@ -17192,7 +17195,7 @@ msgstr ""
 msgid "Revert to saved document?"
 msgstr "Revenir à la sauvegarde ?"
 
-#: src/LyXFunc.cpp:871 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:871 src/LyXVC.cpp:199
 msgid "&Revert"
 msgstr "&Revenir à la Sauvegarde"
 
@@ -17634,8 +17637,8 @@ msgstr ""
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
-"Spécifier un fichier de dictionnaire personnel. Par exemple « ispell_francais "
-"»."
+"Spécifier un fichier de dictionnaire personnel. Par exemple « "
+"ispell_francais »."
 
 #: src/LyXRC.cpp:2777
 msgid "Shows a typeset preview of things such as math"
@@ -17683,8 +17686,8 @@ msgstr ""
 #: src/LyXRC.cpp:2809
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr ""
-"Extension du fichier de sortie du programme d'impression. D'habitude c'est « ."
-"ps »."
+"Extension du fichier de sortie du programme d'impression. D'habitude c'est "
+"« .ps »."
 
 #: src/LyXRC.cpp:2813
 msgid "The option to print out in landscape."
@@ -17809,8 +17812,8 @@ msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
 msgstr ""
-"Démarrer le serveur LyX. Les tubes reçoivent l'extension supplémentaire « .in "
-"» et « .out ». Réservé aux utilisateurs avancés."
+"Démarrer le serveur LyX. Les tubes reçoivent l'extension supplémentaire « ."
+"in » et « .out ». Réservé aux utilisateurs avancés."
 
 #: src/LyXRC.cpp:2908
 msgid "De-select if you don't want the startup banner."
@@ -17894,7 +17897,7 @@ msgstr "(pas de description initiale)"
 msgid "(no log message)"
 msgstr "(aucun message de journal)"
 
-#: src/LyXVC.cpp:192
+#: src/LyXVC.cpp:195
 #, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
@@ -17907,7 +17910,7 @@ msgstr ""
 "\n"
 "Voulez-vous revenir à l'ancienne version ?"
 
-#: src/LyXVC.cpp:195
+#: src/LyXVC.cpp:198
 msgid "Revert to stored version of document?"
 msgstr "Revenir à la version enregistrée du document ?"
 
@@ -21106,7 +21109,7 @@ msgstr "Insert de note de bas de page ouvert"
 msgid "footnote"
 msgstr "note de bas de page"
 
-#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:590
+#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:596
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -21135,17 +21138,32 @@ msgstr "Incorporation verbatim"
 msgid "Verbatim Input*"
 msgstr "Incorporation verbatim*"
 
-#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:678
+#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:684
 msgid "Recursive input"
 msgstr "Inclusions récursives"
 
-#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:679
+#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:685
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 "Tentative d'incorporer le fichier %1$s dans lui-même ! Inclusion ignorée."
 
-#: src/insets/InsetInclude.cpp:521
+#: src/insets/InsetInclude.cpp:515
+#, fuzzy, c-format
+msgid ""
+"Could not load included file\n"
+"`%1$s'\n"
+"Please, check whether it actually exists."
+msgstr ""
+"LyX n'a pas pu faire de copie de sauvegarde dans %1$s.\n"
+"Veuillez vérifier l'existence du répertoire et ses droits d'écriture."
+
+#: src/insets/InsetInclude.cpp:519
+#, fuzzy
+msgid "Missing included file"
+msgstr "Fichier sous-document"
+
+#: src/insets/InsetInclude.cpp:527
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -21156,11 +21174,11 @@ msgstr ""
 "est de la classe '%2$s'\n"
 "alors que le document est de la classe '%3$s'."
 
-#: src/insets/InsetInclude.cpp:527
+#: src/insets/InsetInclude.cpp:533
 msgid "Different textclasses"
 msgstr "Classes de document différentes"
 
-#: src/insets/InsetInclude.cpp:542
+#: src/insets/InsetInclude.cpp:548
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -21171,18 +21189,18 @@ msgstr ""
 "utilise le module '%2$s'\n"
 "qui n'est pas utilisé par le document parent."
 
-#: src/insets/InsetInclude.cpp:546
+#: src/insets/InsetInclude.cpp:552
 msgid "Module not found"
 msgstr "Module introuvable"
 
-#: src/insets/InsetInclude.cpp:565
+#: src/insets/InsetInclude.cpp:571
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:574
+#: src/insets/InsetInclude.cpp:580
 #, fuzzy
 msgid "Export failure"
 msgstr "Échec de la copie de sauvegarde"
@@ -21814,8 +21832,8 @@ msgstr "Pas de lignes de grille verticales dans 'cases' : option %1$s"
 #, c-format
 msgid "Changing number of columns not allowed in 'cases': feature %1$s"
 msgstr ""
-"Interdiction de changer le nombre de colonnes dans 'cases' : fonctionnalité %"
-"1$s"
+"Interdiction de changer le nombre de colonnes dans 'cases' : fonctionnalité "
+"%1$s"
 
 #: src/mathed/InsetMathGrid.cpp:1380
 msgid "Only one row"

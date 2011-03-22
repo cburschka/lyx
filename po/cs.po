@@ -6,10 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-28 17:09+0100\n"
+"POT-Creation-Date: 2011-03-22 17:53+0100\n"
 "PO-Revision-Date: 2011-01-21 02:01+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -87,7 +88,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:870
 #: src/Buffer.cpp:2765 src/Buffer.cpp:2811 src/Buffer.cpp:2846
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:871 src/LyXFunc.cpp:1048
-#: src/LyXFunc.cpp:1933 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:1933 src/LyXVC.cpp:199
 #: src/frontends/qt4/GuiClipboard.cpp:210
 #: src/frontends/qt4/GuiDocument.cpp:1262
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -1511,8 +1512,8 @@ msgstr "Vstup (lze rekurzivnì)"
 msgid "Verbatim"
 msgstr "Doslovnì"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1006
-#: src/insets/InsetInclude.cpp:1012
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1012
+#: src/insets/InsetInclude.cpp:1018
 msgid "Program Listing"
 msgstr "Výpis zdrojového kódu"
 
@@ -16453,8 +16454,8 @@ msgstr ""
 #: src/ISpell.cpp:395
 #, c-format
 msgid ""
-"Could not check word `%1$s' because it could not be converted to encoding `%2"
-"$s'."
+"Could not check word `%1$s' because it could not be converted to encoding `"
+"%2$s'."
 msgstr ""
 "Nelze zkontrolovat slovo `%1$s', nebo» nelze zkonvertovat do kódování `%2$s'."
 
@@ -16465,16 +16466,16 @@ msgstr "Nelze komunikovat s kontrolou pravopisu (ispell)."
 #: src/ISpell.cpp:466
 #, c-format
 msgid ""
-"Could not insert word `%1$s' because it could not be converted to encoding `%"
-"2$s'."
+"Could not insert word `%1$s' because it could not be converted to encoding `"
+"%2$s'."
 msgstr ""
 "Nelze vlo¾it slovo `%1$s', nebo» nelze zkonvertovat do kódování `%2$s'."
 
 #: src/ISpell.cpp:481
 #, c-format
 msgid ""
-"Could not accept word `%1$s' because it could not be converted to encoding `%"
-"2$s'."
+"Could not accept word `%1$s' because it could not be converted to encoding `"
+"%2$s'."
 msgstr ""
 "Nelze pøijmout slovo `%1$s', nebo» nelze zkonvertovat do kódování `%2$s'."
 
@@ -16846,7 +16847,7 @@ msgstr ""
 msgid "Revert to saved document?"
 msgstr "Vrátit se k pùvodnímu dokumentu ?"
 
-#: src/LyXFunc.cpp:871 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:871 src/LyXVC.cpp:199
 msgid "&Revert"
 msgstr "&Pùvodní verze"
 
@@ -17042,8 +17043,8 @@ msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
 "E.g.\"%A, %e. %B %Y\"."
 msgstr ""
-"Akceptován standardní strftime formát; detaily viz man strftime. Napø.\"%A, %"
-"e. %B %Y\"."
+"Akceptován standardní strftime formát; detaily viz man strftime. Napø.\"%A, "
+"%e. %B %Y\"."
 
 #: src/LyXRC.cpp:2607
 msgid ""
@@ -17510,7 +17511,7 @@ msgstr "(bez poèáteèního popisku)"
 msgid "(no log message)"
 msgstr "(no log message)"
 
-#: src/LyXVC.cpp:192
+#: src/LyXVC.cpp:195
 #, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
@@ -17522,7 +17523,7 @@ msgstr ""
 "\n"
 "Chcete pøejít zpìt k star¹í ulo¾ené verzi ?"
 
-#: src/LyXVC.cpp:195
+#: src/LyXVC.cpp:198
 msgid "Revert to stored version of document?"
 msgstr "Návrat k ulo¾ené verzi dokumentu ?"
 
@@ -20703,7 +20704,7 @@ msgstr "Poznámka pod èarou - otevøená vlo¾ka"
 msgid "footnote"
 msgstr "poznámka pod èarou"
 
-#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:590
+#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:596
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -20732,17 +20733,32 @@ msgstr "Vstup-doslovnì"
 msgid "Verbatim Input*"
 msgstr "Vstup-doslovnì*"
 
-#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:678
+#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:684
 msgid "Recursive input"
 msgstr "Rekurzivní vstup"
 
-#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:679
+#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:685
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 "Do¹lo k pokusu vlo¾it soubor %1$s rekurzivnì do sebe! Ignoruji toto vlo¾ení."
 
-#: src/insets/InsetInclude.cpp:521
+#: src/insets/InsetInclude.cpp:515
+#, fuzzy, c-format
+msgid ""
+"Could not load included file\n"
+"`%1$s'\n"
+"Please, check whether it actually exists."
+msgstr ""
+"Nelze vytvoøit soubor %1$s.\n"
+"Zkontrolujte, zda-li daný adresáø existuje a lze do nìj zapisovat."
+
+#: src/insets/InsetInclude.cpp:519
+#, fuzzy
+msgid "Missing included file"
+msgstr "Zahrnout soubor"
+
+#: src/insets/InsetInclude.cpp:527
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -20753,11 +20769,11 @@ msgstr ""
 "je tøídy (textclass) `%2$s'\n"
 "zatímco rodièovský soubor má tøídu `%3$s'."
 
-#: src/insets/InsetInclude.cpp:527
+#: src/insets/InsetInclude.cpp:533
 msgid "Different textclasses"
 msgstr "Rozdílné tøídy (textclass)"
 
-#: src/insets/InsetInclude.cpp:542
+#: src/insets/InsetInclude.cpp:548
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -20768,11 +20784,11 @@ msgstr ""
 "pou¾ívá modul `%2$s',\n"
 "který není pou¾it v rodièovském dokumentu."
 
-#: src/insets/InsetInclude.cpp:546
+#: src/insets/InsetInclude.cpp:552
 msgid "Module not found"
 msgstr "Modul nenalezen"
 
-#: src/insets/InsetInclude.cpp:565
+#: src/insets/InsetInclude.cpp:571
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
@@ -20781,7 +20797,7 @@ msgstr ""
 "Zahrnutý soubor `%1$s' nebyl korektnì exportován.\n"
 "Varaování: Export do LaTeX-u je pravdìpodobnì neúplný."
 
-#: src/insets/InsetInclude.cpp:574
+#: src/insets/InsetInclude.cpp:580
 msgid "Export failure"
 msgstr "Export selhal"
 
@@ -22398,13 +22414,6 @@ msgstr "Neznámý u¾ivatel"
 
 #~ msgid "Save failure"
 #~ msgstr "Nepodaøilo se ulo¾it soubor"
-
-#~ msgid ""
-#~ "Cannot create file %1$s.\n"
-#~ "Please check whether the directory exists and is writeable."
-#~ msgstr ""
-#~ "Nelze vytvoøit soubor %1$s.\n"
-#~ "Zkontrolujte, zda-li daný adresáø existuje a lze do nìj zapisovat."
 
 #~ msgid "Embedded Files"
 #~ msgstr "Pøibalené soubory"

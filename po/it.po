@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-28 21:08+0100\n"
+"POT-Creation-Date: 2011-03-22 17:53+0100\n"
 "PO-Revision-Date: 2011-02-28 21:07+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
@@ -90,7 +90,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:870
 #: src/Buffer.cpp:2765 src/Buffer.cpp:2811 src/Buffer.cpp:2846
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:871 src/LyXFunc.cpp:1048
-#: src/LyXFunc.cpp:1933 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:1933 src/LyXVC.cpp:199
 #: src/frontends/qt4/GuiClipboard.cpp:210
 #: src/frontends/qt4/GuiDocument.cpp:1262
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -1507,8 +1507,8 @@ msgstr "Input"
 msgid "Verbatim"
 msgstr "Testuale"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1006
-#: src/insets/InsetInclude.cpp:1012
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1012
+#: src/insets/InsetInclude.cpp:1018
 msgid "Program Listing"
 msgstr "Listato di programma"
 
@@ -16897,7 +16897,7 @@ msgstr ""
 msgid "Revert to saved document?"
 msgstr "Ritorno all'ultimo salvataggio?"
 
-#: src/LyXFunc.cpp:871 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:871 src/LyXVC.cpp:199
 msgid "&Revert"
 msgstr "&Ripristina"
 
@@ -17599,7 +17599,7 @@ msgstr "(nessuna descrizione iniziale)"
 msgid "(no log message)"
 msgstr "(nessun messaggio di registro)"
 
-#: src/LyXVC.cpp:192
+#: src/LyXVC.cpp:195
 #, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
@@ -17612,7 +17612,7 @@ msgstr ""
 "\n"
 "Volete ripristinare la versione salvata?"
 
-#: src/LyXVC.cpp:195
+#: src/LyXVC.cpp:198
 msgid "Revert to stored version of document?"
 msgstr "Ripristino la versione salvata del documento?"
 
@@ -20805,7 +20805,7 @@ msgstr "È stato aperto l'inserto Nota a piè pagina"
 msgid "footnote"
 msgstr "Nota a piè pagina"
 
-#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:590
+#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:596
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -20834,16 +20834,31 @@ msgstr "Input testuale"
 msgid "Verbatim Input*"
 msgstr "Input* testuale"
 
-#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:678
+#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:684
 msgid "Recursive input"
 msgstr "Input ricorsivo"
 
-#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:679
+#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:685
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "Tentativo di inclusione del file %1$s in se stesso! Ignorato."
 
-#: src/insets/InsetInclude.cpp:521
+#: src/insets/InsetInclude.cpp:515
+#, fuzzy, c-format
+msgid ""
+"Could not load included file\n"
+"`%1$s'\n"
+"Please, check whether it actually exists."
+msgstr ""
+"Non riesco a creare il file di backup %1$s.\n"
+"Per favore, controllare se la cartella esiste ed è scrivibile."
+
+#: src/insets/InsetInclude.cpp:519
+#, fuzzy
+msgid "Missing included file"
+msgstr "Includi file"
+
+#: src/insets/InsetInclude.cpp:527
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -20854,11 +20869,11 @@ msgstr ""
 "ha `%2$s' come classe di documento\n"
 "mentre quella del genitore è invece `%3$s'."
 
-#: src/insets/InsetInclude.cpp:527
+#: src/insets/InsetInclude.cpp:533
 msgid "Different textclasses"
 msgstr "Classi di documento differenti"
 
-#: src/insets/InsetInclude.cpp:542
+#: src/insets/InsetInclude.cpp:548
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -20869,11 +20884,11 @@ msgstr ""
 "usa il modulo `%2$s'\n"
 "che non è usato nel file genitore."
 
-#: src/insets/InsetInclude.cpp:546
+#: src/insets/InsetInclude.cpp:552
 msgid "Module not found"
 msgstr "Modulo non trovato"
 
-#: src/insets/InsetInclude.cpp:565
+#: src/insets/InsetInclude.cpp:571
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
@@ -20882,7 +20897,7 @@ msgstr ""
 "Il file incluso `%1$s' non è stato esportato correttamente.\n"
 "Attenzione: l'esportazione LaTeX è probabilmente incompleta."
 
-#: src/insets/InsetInclude.cpp:574
+#: src/insets/InsetInclude.cpp:580
 msgid "Export failure"
 msgstr "Esportazione non riuscita"
 

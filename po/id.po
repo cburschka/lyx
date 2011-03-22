@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-28 17:09+0100\n"
+"POT-Creation-Date: 2011-03-22 17:53+0100\n"
 "PO-Revision-Date: 2010-11-30 21:10+0730\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Indonesian <was.uthm@gmail.com>\n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -87,7 +88,7 @@ msgstr "&Setuju"
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:870
 #: src/Buffer.cpp:2765 src/Buffer.cpp:2811 src/Buffer.cpp:2846
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:871 src/LyXFunc.cpp:1048
-#: src/LyXFunc.cpp:1933 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:1933 src/LyXVC.cpp:199
 #: src/frontends/qt4/GuiClipboard.cpp:210
 #: src/frontends/qt4/GuiDocument.cpp:1262
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -1495,8 +1496,8 @@ msgstr "Kode Input"
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1006
-#: src/insets/InsetInclude.cpp:1012
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1012
+#: src/insets/InsetInclude.cpp:1018
 msgid "Program Listing"
 msgstr "Pemrograman"
 
@@ -16465,8 +16466,8 @@ msgstr ""
 #: src/ISpell.cpp:395
 #, c-format
 msgid ""
-"Could not check word `%1$s' because it could not be converted to encoding `%2"
-"$s'."
+"Could not check word `%1$s' because it could not be converted to encoding `"
+"%2$s'."
 msgstr ""
 "Tidak bisa memeriksa kata `%1$s'  karena tidak bisa dikonversi untuk "
 "encoding `%2$s'."
@@ -16478,17 +16479,17 @@ msgstr "Tidak bisa berkomunikasi dengan proses pemeriksa ejaan ispell."
 #: src/ISpell.cpp:466
 #, c-format
 msgid ""
-"Could not insert word `%1$s' because it could not be converted to encoding `%"
-"2$s'."
+"Could not insert word `%1$s' because it could not be converted to encoding `"
+"%2$s'."
 msgstr ""
-"Tidak bisa menyisipkan kata`%1$s' karena tidak bisa dikonversi ke encoding `%"
-"2$s'."
+"Tidak bisa menyisipkan kata`%1$s' karena tidak bisa dikonversi ke encoding `"
+"%2$s'."
 
 #: src/ISpell.cpp:481
 #, c-format
 msgid ""
-"Could not accept word `%1$s' because it could not be converted to encoding `%"
-"2$s'."
+"Could not accept word `%1$s' because it could not be converted to encoding `"
+"%2$s'."
 msgstr ""
 "Tidak bisa mengenal kata `%1$s' karena tidak bisa dikonversi untuk encoding `"
 "%2$s'."
@@ -16858,7 +16859,7 @@ msgstr ""
 msgid "Revert to saved document?"
 msgstr "Mengembalikan ke dokumen yang disimpan"
 
-#: src/LyXFunc.cpp:871 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:871 src/LyXVC.cpp:199
 msgid "&Revert"
 msgstr "&Kembalikan"
 
@@ -17545,7 +17546,7 @@ msgstr "(tidak ada deskripsi awal)"
 msgid "(no log message)"
 msgstr "(tidak ada catatan log)"
 
-#: src/LyXVC.cpp:192
+#: src/LyXVC.cpp:195
 #, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
@@ -17558,7 +17559,7 @@ msgstr ""
 "\n"
 "Apakah ingin memanggil versi terdahulu?"
 
-#: src/LyXVC.cpp:195
+#: src/LyXVC.cpp:198
 msgid "Revert to stored version of document?"
 msgstr "Memanggil versi yang disimpan dari dokumen?"
 
@@ -18156,8 +18157,8 @@ msgstr ""
 "Silahkan lihat penjelasan terperinci dalam GNU General Public License.\n"
 "Anda perlu mendapatkan salinan dari GNU General Public License bersama "
 "dengan program ini; apabila tidak, silahkan meminta langsung ke Free "
-"Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-"
-"1301, USA."
+"Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA "
+"02110-1301, USA."
 
 #: src/frontends/qt4/GuiAbout.cpp:109
 msgid "not released yet"
@@ -20751,7 +20752,7 @@ msgstr "Sisipan catatan kaki dibuka"
 msgid "footnote"
 msgstr "catatan kaki"
 
-#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:590
+#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:596
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -20780,17 +20781,32 @@ msgstr "Verbatim Input"
 msgid "Verbatim Input*"
 msgstr "Verbatim Input*"
 
-#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:678
+#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:684
 msgid "Recursive input"
 msgstr "Inpur rekursif"
 
-#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:679
+#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:685
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 "Ada usaha memasukkan berkas  %1$s ke diri sendiri! Tidak bisa dilakukan."
 
-#: src/insets/InsetInclude.cpp:521
+#: src/insets/InsetInclude.cpp:515
+#, fuzzy, c-format
+msgid ""
+"Could not load included file\n"
+"`%1$s'\n"
+"Please, check whether it actually exists."
+msgstr ""
+"Tidak bisa membuat berkas backup %1$s.\n"
+"Coba periksa apakah lokasi penyimpanan ada dan boleh ditulis."
+
+#: src/insets/InsetInclude.cpp:519
+#, fuzzy
+msgid "Missing included file"
+msgstr "Panggil berkas anak dokumen"
+
+#: src/insets/InsetInclude.cpp:527
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -20801,11 +20817,11 @@ msgstr ""
 "memiliki class teks `%2$s'\n"
 "sementara berkas induk memiliki class teks `%3$s'."
 
-#: src/insets/InsetInclude.cpp:527
+#: src/insets/InsetInclude.cpp:533
 msgid "Different textclasses"
 msgstr "Ada perbedaan class teks"
 
-#: src/insets/InsetInclude.cpp:542
+#: src/insets/InsetInclude.cpp:548
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -20816,18 +20832,18 @@ msgstr ""
 "menggunakan modul `%2$s'\n"
 "yang tidak digunakan di berkas utama."
 
-#: src/insets/InsetInclude.cpp:546
+#: src/insets/InsetInclude.cpp:552
 msgid "Module not found"
 msgstr "Modul tidak ditemukan"
 
-#: src/insets/InsetInclude.cpp:565
+#: src/insets/InsetInclude.cpp:571
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:574
+#: src/insets/InsetInclude.cpp:580
 #, fuzzy
 msgid "Export failure"
 msgstr "Backup gagal"

@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_1.6.9_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-28 17:09+0100\n"
+"POT-Creation-Date: 2011-03-22 17:53+0100\n"
 "PO-Revision-Date: 2011-01-31 22:49+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
+"Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -90,7 +91,7 @@ msgstr "&Ados"
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:870
 #: src/Buffer.cpp:2765 src/Buffer.cpp:2811 src/Buffer.cpp:2846
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:871 src/LyXFunc.cpp:1048
-#: src/LyXFunc.cpp:1933 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:1933 src/LyXVC.cpp:199
 #: src/frontends/qt4/GuiClipboard.cpp:210
 #: src/frontends/qt4/GuiDocument.cpp:1262
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -1506,8 +1507,8 @@ msgstr "Sarrera"
 msgid "Verbatim"
 msgstr "Hitzez hitz"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1006
-#: src/insets/InsetInclude.cpp:1012
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1012
+#: src/insets/InsetInclude.cpp:1018
 msgid "Program Listing"
 msgstr "Programaren zerrenda"
 
@@ -3509,8 +3510,8 @@ msgid ""
 "Available categories depend on the document encoding. Select UTF-8 for the "
 "full range."
 msgstr ""
-"Kategoria erabilgarriak dokumentuaren kodeketaren arabera dago. Hautatu UTF-"
-"8 barruti osoarentzako."
+"Kategoria erabilgarriak dokumentuaren kodeketaren arabera dago. Hautatu "
+"UTF-8 barruti osoarentzako."
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:86
 msgid "Ca&tegory:"
@@ -16476,8 +16477,8 @@ msgstr ""
 #: src/ISpell.cpp:395
 #, c-format
 msgid ""
-"Could not check word `%1$s' because it could not be converted to encoding `%2"
-"$s'."
+"Could not check word `%1$s' because it could not be converted to encoding `"
+"%2$s'."
 msgstr ""
 "Ezin izan da '%1$s' hitza egiaztatu, ezin izan delako '%2$s' kodeketara "
 "bihurtu."
@@ -16489,8 +16490,8 @@ msgstr "Ezin izan da ispell zuzentzailearen prozesuarekin komunikatu."
 #: src/ISpell.cpp:466
 #, c-format
 msgid ""
-"Could not insert word `%1$s' because it could not be converted to encoding `%"
-"2$s'."
+"Could not insert word `%1$s' because it could not be converted to encoding `"
+"%2$s'."
 msgstr ""
 "Ezin izan da '%1$s' hitza txertatu, ezin izan delako '%2$s' kodeketara "
 "bihurtu."
@@ -16498,8 +16499,8 @@ msgstr ""
 #: src/ISpell.cpp:481
 #, c-format
 msgid ""
-"Could not accept word `%1$s' because it could not be converted to encoding `%"
-"2$s'."
+"Could not accept word `%1$s' because it could not be converted to encoding `"
+"%2$s'."
 msgstr ""
 "Ezin izan da '%1$s' hitza onartu, ezin izan delako '%2$s' kodeketara bihurtu."
 
@@ -16876,7 +16877,7 @@ msgstr ""
 msgid "Revert to saved document?"
 msgstr "Gordetako dokumentua leheneratu?"
 
-#: src/LyXFunc.cpp:871 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:871 src/LyXVC.cpp:199
 msgid "&Revert"
 msgstr "&Leheneratu"
 
@@ -17218,8 +17219,8 @@ msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
-"LaTeX komandoa hizkuntzaren paketea kargatzeko. Adib.  \"\\usepackage{babel}"
-"\", \"\\usepackage{omega}\"."
+"LaTeX komandoa hizkuntzaren paketea kargatzeko. Adib.  \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 
 #: src/LyXRC.cpp:2700
 msgid ""
@@ -17300,8 +17301,8 @@ msgstr "Erabili \"...\" osaketa luzeak laburtzeko."
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
-"Azken fitxategi-kopurua (erakutsiko direnak). Fitxategia menuan gehienez %1"
-"$d erakuts daiteke."
+"Azken fitxategi-kopurua (erakutsiko direnak). Fitxategia menuan gehienez "
+"%1$d erakuts daiteke."
 
 #: src/LyXRC.cpp:2766
 msgid ""
@@ -17564,7 +17565,7 @@ msgstr "(hasierako azalpenik ez)"
 msgid "(no log message)"
 msgstr "(egunkari-mezurik ez)"
 
-#: src/LyXVC.cpp:192
+#: src/LyXVC.cpp:195
 #, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
@@ -17577,7 +17578,7 @@ msgstr ""
 "\n"
 "Nahi duzu gordetako bertsio zaharrera leheneratzea?"
 
-#: src/LyXVC.cpp:195
+#: src/LyXVC.cpp:198
 msgid "Revert to stored version of document?"
 msgstr "Leheneratu dokumentuaren gordetako bertsiora?"
 
@@ -20766,7 +20767,7 @@ msgstr "Oin-oharren txertakuntza irekita"
 msgid "footnote"
 msgstr "oin-oharra"
 
-#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:590
+#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:596
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -20795,18 +20796,33 @@ msgstr "Hitzez hitzeko sarrera"
 msgid "Verbatim Input*"
 msgstr "Hitzez hitzeko sarrera*"
 
-#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:678
+#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:684
 msgid "Recursive input"
 msgstr "Sarrera errekurtsiboa"
 
-#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:679
+#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:685
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 "%1$s fitxategia bere barnean txertatzen saiatu da. Txertaketari ezikusi "
 "egiten."
 
-#: src/insets/InsetInclude.cpp:521
+#: src/insets/InsetInclude.cpp:515
+#, fuzzy, c-format
+msgid ""
+"Could not load included file\n"
+"`%1$s'\n"
+"Please, check whether it actually exists."
+msgstr ""
+"Ezin da %1$s(r)en babeseko kopiarik egin.\n"
+"Egiaztatu direktorioa existitzen dela, eta bertan idatz daitekela."
+
+#: src/insets/InsetInclude.cpp:519
+#, fuzzy
+msgid "Missing included file"
+msgstr "Sartu fitxategia"
+
+#: src/insets/InsetInclude.cpp:527
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -20817,11 +20833,11 @@ msgstr ""
 "'%2$s' testu-klasea du\n"
 "fitxategi gurasoak '%3$s' duen bitartean."
 
-#: src/insets/InsetInclude.cpp:527
+#: src/insets/InsetInclude.cpp:533
 msgid "Different textclasses"
 msgstr "Testu-klase desberdinak"
 
-#: src/insets/InsetInclude.cpp:542
+#: src/insets/InsetInclude.cpp:548
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -20832,18 +20848,18 @@ msgstr ""
 "'%2$s' modulua du\n"
 "fitxategi gurasoan ordea ez da erabiltzen."
 
-#: src/insets/InsetInclude.cpp:546
+#: src/insets/InsetInclude.cpp:552
 msgid "Module not found"
 msgstr "Ez da modulua aurkitu"
 
-#: src/insets/InsetInclude.cpp:565
+#: src/insets/InsetInclude.cpp:571
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:574
+#: src/insets/InsetInclude.cpp:580
 #, fuzzy
 msgid "Export failure"
 msgstr "Babeskopiak huts egin du"

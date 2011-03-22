@@ -69,10 +69,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-02-28 17:09+0100\n"
+"POT-Creation-Date: 2011-03-22 17:53+0100\n"
 "PO-Revision-Date: 2007-07-14 16:48+0100\n"
 "Last-Translator: Martin Vermeer <martin.vermeer@tkk.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -149,7 +150,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:870
 #: src/Buffer.cpp:2765 src/Buffer.cpp:2811 src/Buffer.cpp:2846
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:871 src/LyXFunc.cpp:1048
-#: src/LyXFunc.cpp:1933 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:1933 src/LyXVC.cpp:199
 #: src/frontends/qt4/GuiClipboard.cpp:210
 #: src/frontends/qt4/GuiDocument.cpp:1262
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -1585,8 +1586,8 @@ msgstr "Syötä"
 msgid "Verbatim"
 msgstr "Sinänsä"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1006
-#: src/insets/InsetInclude.cpp:1012
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1012
+#: src/insets/InsetInclude.cpp:1018
 msgid "Program Listing"
 msgstr "Ohjelmalistaus"
 
@@ -16919,8 +16920,8 @@ msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
 "log %1$s."
 msgstr ""
-"LaTeX-ajo ei onnistunut. Lisäksi LyX ei löytänyt LaTeX-ajon lokitiedostoa %1"
-"$s."
+"LaTeX-ajo ei onnistunut. Lisäksi LyX ei löytänyt LaTeX-ajon lokitiedostoa "
+"%1$s."
 
 #: src/Converter.cpp:600
 msgid "LaTeX failed"
@@ -17137,11 +17138,11 @@ msgstr ""
 #: src/ISpell.cpp:395
 #, c-format
 msgid ""
-"Could not check word `%1$s' because it could not be converted to encoding `%2"
-"$s'."
+"Could not check word `%1$s' because it could not be converted to encoding `"
+"%2$s'."
 msgstr ""
-"En voinut tarkistaa sana `%1$s' koska sitä ei saatu muunnetuksi merkistöön `%"
-"2$s'."
+"En voinut tarkistaa sana `%1$s' koska sitä ei saatu muunnetuksi merkistöön `"
+"%2$s'."
 
 #: src/ISpell.cpp:406
 msgid "Could not communicate with the ispell spellchecker process."
@@ -17150,20 +17151,20 @@ msgstr "Viestintä ispell- oikolukuohjelman prosessin kanssa epäonnistui."
 #: src/ISpell.cpp:466
 #, c-format
 msgid ""
-"Could not insert word `%1$s' because it could not be converted to encoding `%"
-"2$s'."
+"Could not insert word `%1$s' because it could not be converted to encoding `"
+"%2$s'."
 msgstr ""
-"En voinut lisätä sana `%1$s' koska sitä ei saatu muunnetuksi merkistöön `%2"
-"$s'."
+"En voinut lisätä sana `%1$s' koska sitä ei saatu muunnetuksi merkistöön `"
+"%2$s'."
 
 #: src/ISpell.cpp:481
 #, c-format
 msgid ""
-"Could not accept word `%1$s' because it could not be converted to encoding `%"
-"2$s'."
+"Could not accept word `%1$s' because it could not be converted to encoding `"
+"%2$s'."
 msgstr ""
-"En voinut hyväksyä sana `%1$s' koska sitä ei saatu muunnetuksi merkistöön `%2"
-"$s'."
+"En voinut hyväksyä sana `%1$s' koska sitä ei saatu muunnetuksi merkistöön `"
+"%2$s'."
 
 #: src/KeySequence.cpp:166
 msgid "   options: "
@@ -17520,7 +17521,7 @@ msgstr ""
 msgid "Revert to saved document?"
 msgstr "Perutaanko kaikki muokkaukset?"
 
-#: src/LyXFunc.cpp:871 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:871 src/LyXVC.cpp:199
 msgid "&Revert"
 msgstr "Hylkää muutokset"
 
@@ -18185,7 +18186,7 @@ msgstr "(ei alkuperäistä kuvausta)"
 msgid "(no log message)"
 msgstr "(ei lokiviestejä)"
 
-#: src/LyXVC.cpp:192
+#: src/LyXVC.cpp:195
 #, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
@@ -18194,7 +18195,7 @@ msgid ""
 "Do you want to revert to the older version?"
 msgstr ""
 
-#: src/LyXVC.cpp:195
+#: src/LyXVC.cpp:198
 msgid "Revert to stored version of document?"
 msgstr "Ladataanko levyllä oleva versio muistissa olevan asiakirjan päälle?"
 
@@ -21502,7 +21503,7 @@ msgstr "Alaviiteupote avattiin"
 msgid "footnote"
 msgstr "alaviite"
 
-#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:590
+#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:596
 #, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
@@ -21532,16 +21533,31 @@ msgstr "Sinänsä"
 msgid "Verbatim Input*"
 msgstr "Sinänsä*"
 
-#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:678
+#: src/insets/InsetInclude.cpp:465 src/insets/InsetInclude.cpp:684
 msgid "Recursive input"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:679
+#: src/insets/InsetInclude.cpp:466 src/insets/InsetInclude.cpp:685
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:521
+#: src/insets/InsetInclude.cpp:515
+#, fuzzy, c-format
+msgid ""
+"Could not load included file\n"
+"`%1$s'\n"
+"Please, check whether it actually exists."
+msgstr ""
+"En voi luoda varmuuskopiotiedostoa %1$s.\n"
+"Tarkista, onko hakemisto olemassa ja onko lupaa kirjoittaa."
+
+#: src/insets/InsetInclude.cpp:519
+#, fuzzy
+msgid "Missing included file"
+msgstr "Sisällytä tiedosto"
+
+#: src/insets/InsetInclude.cpp:527
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -21549,12 +21565,12 @@ msgid ""
 "while parent file has textclass `%3$s'."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:527
+#: src/insets/InsetInclude.cpp:533
 #, fuzzy
 msgid "Different textclasses"
 msgstr "Aiheluokka"
 
-#: src/insets/InsetInclude.cpp:542
+#: src/insets/InsetInclude.cpp:548
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -21562,19 +21578,19 @@ msgid ""
 "which is not used in parent file."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:546
+#: src/insets/InsetInclude.cpp:552
 #, fuzzy
 msgid "Module not found"
 msgstr "Tiedostoa ei löydy"
 
-#: src/insets/InsetInclude.cpp:565
+#: src/insets/InsetInclude.cpp:571
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:574
+#: src/insets/InsetInclude.cpp:580
 #, fuzzy
 msgid "Export failure"
 msgstr "Varmuuskopiointi epäonnistui"
@@ -23133,14 +23149,6 @@ msgstr "Tuntematon käyttäjä"
 #, fuzzy
 #~ msgid "Save failure"
 #~ msgstr "Varmuuskopiointi epäonnistui"
-
-#, fuzzy
-#~ msgid ""
-#~ "Cannot create file %1$s.\n"
-#~ "Please check whether the directory exists and is writeable."
-#~ msgstr ""
-#~ "En voi luoda varmuuskopiotiedostoa %1$s.\n"
-#~ "Tarkista, onko hakemisto olemassa ja onko lupaa kirjoittaa."
 
 #, fuzzy
 #~ msgid "Embedded Files"
