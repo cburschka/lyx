@@ -212,8 +212,20 @@ struct GuiView::GuiViewPrivate
 	{
 		// hardcode here the platform specific icon size
 		smallIconSize = 16;  // scaling problems
-		normalIconSize = 22; // ok, default
+		normalIconSize = 22; // ok, default if iconsize.png is missing
 		bigIconSize = 26;	// better for some math icons
+
+		// if it exists, use width of iconsize.png as normal size
+		FileName const fn = lyx::libFileSearch("images", "iconsize.png");
+		if (!fn.empty()) {
+			QImage image(toqstr(fn.absFileName()));
+			if (image.width() < int(smallIconSize))
+				normalIconSize = smallIconSize;
+			else if (image.width() > int(bigIconSize))
+				normalIconSize = bigIconSize;
+			else
+				normalIconSize = image.width();
+		}
 
 		splitter_ = new QSplitter;
 		bg_widget_ = new BackgroundWidget;
