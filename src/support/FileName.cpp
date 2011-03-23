@@ -543,7 +543,9 @@ unsigned long FileName::checksum() const
 		return result;
 
 	struct stat info;
-	fstat(fd, &info);
+	if (fstat(fd, &info))
+		// bug 5891
+		return result;
 
 	void * mm = mmap(0, info.st_size, PROT_READ,
 			 MAP_PRIVATE, fd, 0);
