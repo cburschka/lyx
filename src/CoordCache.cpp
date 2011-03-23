@@ -52,8 +52,8 @@ void CoordCache::dump() const
 {
 	LYXERR0("InsetCache contains:");
 	CoordCacheBase<Inset>::cache_type::const_iterator it =
-		getInsets().getData().begin();
-	for (; it != getInsets().getData().end(); ++it) {
+		getInsets().data_.begin();
+	for (; it != getInsets().data_.end(); ++it) {
 		// Warning: it is not guaranteed that inset is a valid pointer
 		// (therefore it has type 'void *') (see bug #7376).	
 		void const * inset = it->first;

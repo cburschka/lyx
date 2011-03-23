@@ -95,20 +95,18 @@ DocIterator bruteFind2(Cursor const & c, int x, int y)
 		int xo;
 		int yo;
 		Inset const * inset = &it.inset();
-		map<Inset const *, Geometry> const & data =
-			c.bv().coordCache().getInsets().getData();
-		map<Inset const *, Geometry>::const_iterator I = data.find(inset);
+		CoordCache const & cache = c.bv().coordCache();
 
 		// FIXME: in the case where the inset is not in the cache, this
 		// means that no part of it is visible on screen. In this case
 		// we don't do elaborate search and we just return the forwarded
 		// DocIterator at its beginning.
-		if (I == data.end()) {
+		if (!cache.getInsets().has(inset)) {
 			it.top().pos() = 0;
 			return it;
 		}
 
-		Point o = I->second.pos;
+		Point const o = cache.getInsets().xy(inset);
 		inset->cursorPos(c.bv(), it.top(), c.boundary(), xo, yo);
 		// Convert to absolute
 		xo += o.x_;

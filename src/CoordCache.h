@@ -161,9 +161,6 @@ private:
 
 	typedef std::map<T const *, Geometry> cache_type;
 	cache_type data_;
-
-public:
-	cache_type const & getData() const { return data_; }
 };
 
 /**
