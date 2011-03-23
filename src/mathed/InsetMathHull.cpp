@@ -1596,7 +1596,7 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// LABEL_INSERT?
 		bool const enable = (type_ == hullMultline)
 			? (nrows() - 1 == cur.row())
-			: display() != Inline && nrows() > 1;
+			: display() != Inline;
 		row_type const r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
 		status.setEnabled(enable);
 		status.setOnOff(enable && numbered(r));
