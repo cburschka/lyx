@@ -25,16 +25,19 @@ class docstring_list;
 
 namespace frontend {
 
-class GuiSpellchecker : public DockView
+class SpellcheckerWidget : public QWidget
 {
 	Q_OBJECT
 
 public:
-	GuiSpellchecker(GuiView & parent);
-	~GuiSpellchecker();
+	SpellcheckerWidget(GuiView * gv, QWidget * parent = 0);
+	~SpellcheckerWidget();
+	///
+	void updateView();
+	///
+	bool initialiseParams(std::string const & data);
 
 private Q_SLOTS:
-	void on_closePB_clicked();
 	void on_findNextPB_clicked();
 	void on_replaceAllPB_clicked();
 	void on_suggestionsLW_itemClicked(QListWidgetItem *);
@@ -46,29 +49,34 @@ private Q_SLOTS:
 	void on_replacePB_clicked();
 
 private:
-	/// update from controller
-	void updateSuggestions(docstring_list & words);
-
-	///{
-	void updateView();
-	bool initialiseParams(std::string const & data);
-	void clearParams() {}
-	void dispatchParams() {}
-	bool isBufferDependent() const { return true; }
-	bool needBufferOpen() const { return true; }
-	///}
-
-	/// move to next position after current word
-	void forward();
-	/// check text until next misspelled/unknown word
-	void check();
-	/// show count of checked words at normal exit
-	void showSummary();
-
+	///
 	bool eventFilter(QObject *obj, QEvent *event);
-
 	struct Private;
 	Private * const d;
+};
+
+
+class GuiSpellchecker : public DockView
+{
+	Q_OBJECT
+
+public:
+	GuiSpellchecker(
+		GuiView & parent, ///< the main window where to dock.
+		Qt::DockWidgetArea area = Qt::RightDockWidgetArea, ///< Position of the dock (and also drawer)
+		Qt::WindowFlags flags = 0);
+	~GuiSpellchecker();
+
+private:
+	///{
+	void updateView();
+	bool initialiseParams(std::string const &) { return true; }
+	void clearParams() {}
+	void dispatchParams() {}
+	bool isBufferDependent() const { return false; }
+	///}
+	/// The encapsulated widget.
+	SpellcheckerWidget * widget_;
 };
 
 } // namespace frontend

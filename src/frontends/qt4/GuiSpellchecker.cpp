@@ -41,8 +41,9 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
-#include <QListWidgetItem>
 #include <QKeyEvent>
+#include <QListWidgetItem>
+#include <QMessageBox>
 
 #include "SpellChecker.h"
 
@@ -55,27 +56,34 @@ namespace lyx {
 namespace frontend {
 
 
-struct GuiSpellchecker::Private
+struct SpellcheckerWidget::Private
 {
-	Private() : progress_(0), count_(0), stuck_(false) {}
+	Private(SpellcheckerWidget * parent)
+		: p(parent) {}
+	/// update from controller
+	void updateSuggestions(docstring_list & words);
+	/// move to next position after current word
+	void forward();
+	/// check text until next misspelled/unknown word
+	void check();
+	///
+	bool continueFromBeginning();
+	///
 	Ui::SpellcheckerUi ui;
+	///
+	SpellcheckerWidget * p;
+	///
+	GuiView * gv_;
 	/// current word being checked and lang code
 	WordLangTuple word_;
-	/// values for progress
-	int total_;
-	int progress_;
-	/// word count
-	int count_;
-	/// flag for last move forward success
-	bool stuck_;
 };
 
 
-GuiSpellchecker::GuiSpellchecker(GuiView & lv)
-	: DockView(lv, "spellchecker", qt_("Spellchecker"),
-	Qt::RightDockWidgetArea), d(new GuiSpellchecker::Private)
+SpellcheckerWidget::SpellcheckerWidget(GuiView * gv, QWidget * parent)
+	: QWidget(parent), d(new Private(this))
 {
 	d->ui.setupUi(this);
+	d->gv_ = gv;
 
 	connect(d->ui.suggestionsLW, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
 		this, SLOT(on_replacePB_clicked()));
@@ -93,19 +101,13 @@ GuiSpellchecker::GuiSpellchecker(GuiView & lv)
 }
 
 
-GuiSpellchecker::~GuiSpellchecker()
+SpellcheckerWidget::~SpellcheckerWidget()
 {
 	delete d;
 }
 
 
-void GuiSpellchecker::on_closePB_clicked()
-{
-	close();
-}
-
-
-bool GuiSpellchecker::eventFilter(QObject *obj, QEvent *event)
+bool SpellcheckerWidget::eventFilter(QObject *obj, QEvent *event)
 {
 	if (obj == d->ui.suggestionsLW && event->type() == QEvent::KeyPress) {
 		QKeyEvent *e = static_cast<QKeyEvent *> (event);
@@ -126,7 +128,7 @@ bool GuiSpellchecker::eventFilter(QObject *obj, QEvent *event)
 }
 
 
-void GuiSpellchecker::on_suggestionsLW_itemClicked(QListWidgetItem * item)
+void SpellcheckerWidget::on_suggestionsLW_itemClicked(QListWidgetItem * item)
 {
 	if (d->ui.replaceCO->count() != 0)
 		d->ui.replaceCO->setItemText(0, item->text());
@@ -137,7 +139,7 @@ void GuiSpellchecker::on_suggestionsLW_itemClicked(QListWidgetItem * item)
 }
 
 
-void GuiSpellchecker::on_replaceCO_highlighted(const QString & str)
+void SpellcheckerWidget::on_replaceCO_highlighted(const QString & str)
 {
 	QListWidget * lw = d->ui.suggestionsLW;
 	if (lw->currentItem() && lw->currentItem()->text() == str)
@@ -152,24 +154,48 @@ void GuiSpellchecker::on_replaceCO_highlighted(const QString & str)
 }
 
 
-void GuiSpellchecker::updateView()
+void SpellcheckerWidget::updateView()
 {
-	if (hasFocus() && d->count_ == 0)
-		check();
+	BufferView * bv = d->gv_->documentBufferView();
+	setEnabled(bv != 0);
+	if (bv && hasFocus())
+		d->check();
 }
 
 
-void GuiSpellchecker::forward()
+bool SpellcheckerWidget::Private::continueFromBeginning()
 {
-	DocIterator from = bufferview()->cursor();
+		QMessageBox::StandardButton const answer = QMessageBox::question(p,
+			qt_("Spell Checker"),
+			qt_("We reached the end of the document, would you like to "
+				"continue from the beginning?"),
+			QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
+		if (answer == QMessageBox::No)
+			return false;
+		dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
+		return true;
+}
+
+
+void SpellcheckerWidget::Private::forward()
+{
+	BufferView * bv = gv_->documentBufferView();
+	DocIterator from = bv->cursor();
 
 	dispatch(FuncRequest(LFUN_ESCAPE));
 	dispatch(FuncRequest(LFUN_CHAR_FORWARD));
-	d->stuck_ = from == bufferview()->cursor();
+	if (bv->cursor().atLastPos()) {
+		continueFromBeginning();
+		return;
+	}
+	if (from == bv->cursor()) {
+		//FIXME we must be at the end of a cell
+		dispatch(FuncRequest(LFUN_CHAR_FORWARD));
+ 	}
 }
 	
 	
-void GuiSpellchecker::on_languageCO_activated(int index)
+void SpellcheckerWidget::on_languageCO_activated(int index)
 {
 	string const lang =
 		fromqstr(d->ui.languageCO->itemData(index).toString());
@@ -177,37 +203,37 @@ void GuiSpellchecker::on_languageCO_activated(int index)
 		// nothing changed
 		return;
 	dispatch(FuncRequest(LFUN_LANGUAGE, lang));
-	check();
+	d->check();
 }
 
 
-void GuiSpellchecker::on_ignoreAllPB_clicked()
+void SpellcheckerWidget::on_ignoreAllPB_clicked()
 {
 	/// replace all occurrences of word
 	if (d->word_.lang() && !d->word_.word().empty())
 		theSpellChecker()->accept(d->word_);
-	forward();
-	check();
+	d->forward();
+	d->check();
 }
 
 
-void GuiSpellchecker::on_addPB_clicked()
+void SpellcheckerWidget::on_addPB_clicked()
 {
 	/// insert word in personal dictionary
 	theSpellChecker()->insert(d->word_);
-	forward();
-	check();
+	d->forward();
+	d->check();
 }
 
 
-void GuiSpellchecker::on_ignorePB_clicked()
+void SpellcheckerWidget::on_ignorePB_clicked()
 {
-	forward();
-	check();
+	d->forward();
+	d->check();
 }
 
 
-void GuiSpellchecker::on_findNextPB_clicked()
+void SpellcheckerWidget::on_findNextPB_clicked()
 {
 	docstring const data = find2string(
 				qstring_to_ucs4(d->ui.wordED->text()),
@@ -216,7 +242,7 @@ void GuiSpellchecker::on_findNextPB_clicked()
 }
 
 
-void GuiSpellchecker::on_replacePB_clicked()
+void SpellcheckerWidget::on_replacePB_clicked()
 {
 	docstring const replacement = qstring_to_ucs4(d->ui.replaceCO->currentText());
 	docstring const data = replace2string(
@@ -225,149 +251,115 @@ void GuiSpellchecker::on_replacePB_clicked()
 
 	LYXERR(Debug::GUI, "Replace (" << replacement << ")");
 	dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
-	forward();
-	check();
+	d->forward();
+	d->check();
 }
 
 
-void GuiSpellchecker::on_replaceAllPB_clicked()
+void SpellcheckerWidget::on_replaceAllPB_clicked()
 {
 	docstring const data = replace2string(
 		qstring_to_ucs4(d->ui.replaceCO->currentText()),
 		qstring_to_ucs4(d->ui.wordED->text()),
 		true, true, true, true);
 	dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
-	forward();
-	check(); // continue spellchecking
+	d->forward();
+	d->check(); // continue spellchecking
 }
 
 
-void GuiSpellchecker::updateSuggestions(docstring_list & words)
+void SpellcheckerWidget::Private::updateSuggestions(docstring_list & words)
 {
-	QString const suggestion = toqstr(d->word_.word());
-	d->ui.wordED->setText(suggestion);
-	QListWidget * lw = d->ui.suggestionsLW;
+	QString const suggestion = toqstr(word_.word());
+	ui.wordED->setText(suggestion);
+	QListWidget * lw = ui.suggestionsLW;
 	lw->clear();
 
 	if (words.empty()) {
-		on_suggestionsLW_itemClicked(new QListWidgetItem(suggestion));
+		p->on_suggestionsLW_itemClicked(new QListWidgetItem(suggestion));
 		return;
 	}
 	for (size_t i = 0; i != words.size(); ++i)
 		lw->addItem(toqstr(words[i]));
 
-	on_suggestionsLW_itemClicked(lw->item(0));
+	p->on_suggestionsLW_itemClicked(lw->item(0));
 	lw->setCurrentRow(0);
 }
 
 
-bool GuiSpellchecker::initialiseParams(string const &)
+void SpellcheckerWidget::Private::check()
 {
-	LYXERR(Debug::GUI, "Spellchecker::initialiseParams");
-
-	if (!theSpellChecker())
-		return false;
-
-	DocIterator const begin = doc_iterator_begin(&buffer());
-	Cursor const & cur = bufferview()->cursor();
-	d->progress_ = countWords(begin, cur, false);
-	d->total_ = d->progress_ + countWords(cur, doc_iterator_end(&buffer()), false);
-	d->count_ = 0;
-	return true;
-}
-
-
-void GuiSpellchecker::check()
-{
-	LYXERR(Debug::GUI, "Check the spelling of the words starting at " << d->progress_);
-
-	// last move forward failed
-	if (d->stuck_) {
-		d->stuck_ = false;
-		showSummary();
+	BufferView * bv = gv_->documentBufferView();
+	if (!bv)
 		return;
-	}
-	
-	DocIterator from = bufferview()->cursor();
+
+	DocIterator from = bv->cursor();
 	DocIterator to;
 	WordLangTuple word_lang;
 	docstring_list suggestions;
 
 	int progress;
 	try {
-		progress = buffer().spellCheck(from, to, word_lang, suggestions);
+		progress = bv->buffer().spellCheck(from, to, word_lang, suggestions);
 	} catch (ExceptionMessage const & message) {
 		if (message.type_ == WarningException) {
 			Alert::warning(message.title_, message.details_);
-			close();
 			return;
 		}
 		throw message;
 	}
-	d->count_ += progress;
-	d->progress_ += progress;
-	LYXERR(Debug::GUI, "Found word \"" << word_lang.word() << "\"" <<
-		   " at position " << d->progress_);
 
 	// end of document
-	if (from == doc_iterator_end(&buffer())) {
-		showSummary();
+	if (from == doc_iterator_end(&bv->buffer())) {
+		if (continueFromBeginning())
+			check();
 		return;
 	}
 
-	// current misspelled word has to be counted too.
-	++d->count_;
-	++d->progress_;
+	word_ = word_lang;
 
-	if (!isVisible())
-		show();
-
-	d->word_ = word_lang;
-
-	int const progress_bar = d->total_
-		? int(100.0 * float(d->progress_)/d->total_) : 100;
-	LYXERR(Debug::GUI, "Updating spell progress." <<
-		   " Now we have " << progress_bar << " percent.");
-	// set progress bar
-	d->ui.spellcheckPR->setValue(progress_bar);
 	// set suggestions
 	updateSuggestions(suggestions);
 	// set language
-	int const pos = d->ui.languageCO->findData(toqstr(word_lang.lang()->lang()));
+	int const pos = ui.languageCO->findData(toqstr(word_lang.lang()->lang()));
 	if (pos != -1)
-		d->ui.languageCO->setCurrentIndex(pos);
+		ui.languageCO->setCurrentIndex(pos);
 
 	// FIXME LFUN
 	// If we used a LFUN, dispatch would do all of this for us
 	int const size = to.pos() - from.pos();
-	BufferView * bv = const_cast<BufferView *>(bufferview());
 	bv->putSelectionAt(from, size, false);
-	bv->processUpdateFlags(Update::Force | Update::FitCursor);
-	
+	bv->processUpdateFlags(Update::Force | Update::FitCursor);	
 }
 
 
-void GuiSpellchecker::showSummary()
+GuiSpellchecker::GuiSpellchecker(GuiView & parent,
+		Qt::DockWidgetArea area, Qt::WindowFlags flags)
+	: DockView(parent, "spellchecker", qt_("Spellchecker"),
+		   area, flags)
 {
-	if (d->count_ == 0) {
-		close();
-		return;
-	}
+	widget_ = new SpellcheckerWidget(&parent);
+	setWidget(widget_);
+	setFocusProxy(widget_);
+}
 
-	docstring message;
-	if (d->count_ != 1)
-		message = bformat(_("%1$d words checked."), d->count_);
-	else
-		message = _("One word checked.");
 
-	close();
-	Alert::information(_("Spelling check completed"), message);
+GuiSpellchecker::~GuiSpellchecker()
+{
+	setFocusProxy(0);
+	delete widget_;
+}
+
+
+void GuiSpellchecker::updateView()
+{
+	widget_->updateView();
 }
 
 
 Dialog * createGuiSpellchecker(GuiView & lv) 
 { 
-	GuiSpellchecker * gui = new GuiSpellchecker(lv);
+	GuiSpellchecker * gui = new GuiSpellchecker(lv, Qt::RightDockWidgetArea);
 #ifdef Q_WS_MACX
 	gui->setFloating(true);
 #endif

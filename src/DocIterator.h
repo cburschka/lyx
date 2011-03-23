@@ -72,6 +72,8 @@ public:
 	bool empty() const { return slices_.empty(); }
 	/// is this the end position?
 	bool atEnd() const { return slices_.empty(); }
+	/// is this the last possible position?
+	bool atLastPos() const { return pit() == lastpit() && pos() == lastpos(); }
 
 	//
 	// access to slice at tip
