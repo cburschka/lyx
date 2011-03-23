@@ -2593,7 +2593,8 @@ string const BufferParams::loadFonts(string const & rm,
 		// didn't understand "Mapping=tex-text", while XeTeX
 		// understood both. With most recent versions, both
 		// variants are understood by both engines. However,
-		// we want to provide support for at least TeXLive 2009.
+		// we want to provide support for at least TeXLive 2009
+		// (for XeTeX; LuaTeX is only supported as of v.2)
 		string const texmapping =
 			(features.runparams().flavor == OutputParams::XETEX) ?
 			"Mapping=tex-text" : "Ligatures=TeX";
