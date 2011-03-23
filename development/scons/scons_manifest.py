@@ -3013,21 +3013,6 @@ lib_bind_files = Split('''
 ''')
 
 
-lib_bind_fi_files = Split('''
-    menus.bind
-''')
-
-
-lib_bind_sv_files = Split('''
-    menus.bind
-''')
-
-
-lib_bind_pt_files = Split('''
-    menus.bind
-''')
-
-
 lib_bind_de_files = Split('''
     menus.bind
 ''')

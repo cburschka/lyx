@@ -36,18 +36,6 @@ debinddir = $(pkgdatadir)/bind/de
 dist_debind_DATA = \
 	bind/de/menus.bind
 
-fibinddir = $(pkgdatadir)/bind/fi
-dist_fibind_DATA = \
-	bind/fi/menus.bind
-
-ptbinddir = $(pkgdatadir)/bind/pt
-dist_ptbind_DATA = \
-	bind/pt/menus.bind
-
-svbinddir = $(pkgdatadir)/bind/sv
-dist_svbind_DATA = \
-	bind/sv/menus.bind
-
 binddir = $(pkgdatadir)/bind
 dist_bind_DATA = \
 	bind/broadway.bind \
