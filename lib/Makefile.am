@@ -1308,7 +1308,6 @@ dist_noinst_DATA += tex/subscript.sty
 
 uidir = $(pkgdatadir)/ui
 dist_ui_DATA = \
-	ui/classic.ui \
 	ui/default.ui \
 	ui/stdcontext.inc \
 	ui/stdmenus.inc \

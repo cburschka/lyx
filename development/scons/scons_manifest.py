@@ -1402,7 +1402,6 @@ lib_templates_thesis_files = Split('''
 
 
 lib_ui_files = Split('''
-    classic.ui
     default.ui
     stdcontext.inc
     stdmenus.inc
