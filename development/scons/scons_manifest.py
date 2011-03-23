@@ -2474,6 +2474,7 @@ lib_doc_sk_files = Split('''
 
 lib_doc_sv_files = Split('''
     Intro.lyx
+    Shortcuts.lyx
     Tutorial.lyx
 ''')
 

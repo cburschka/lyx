@@ -1,4 +1,4 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 413
 \begin_document
 \begin_header
@@ -7,7 +7,7 @@
 \maintain_unincluded_children false
 \language swedish
 \language_package default
-\inputencoding default
+\inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
@@ -87,8 +87,7 @@ Språk.
 
 \end_inset
 
- — vänligen använd den! Börja med
- 
+ — vänligen använd den! Börja med 
 \family sans
 Hjälp\SpecialChar \menuseparator
 Introduktion
@@ -110,6 +109,7 @@ LyX är vad vi kallar en
 dokumentbehandlare
 \begin_inset Quotes srd
 \end_inset
+
 .
  LyX är avsiktligt annorlunda från vanliga ordbehandlare — på ett sätt som
  gör det lättare att skriva dokument.
@@ -150,13 +150,15 @@ Nybörjarkursen
 LyX för LaTeX-användare
 \begin_inset Quotes srd
 \end_inset
+
 .
- (Alla andra: oroa er inte, ni behöver inte kunna LaTeX för att använda LyX.) 
+ (Alla andra: oroa er inte, ni behöver inte kunna LaTeX för att använda
+ LyX.) 
 \end_layout
 
 \begin_layout Enumerate
-LyX har massor av funktioner för oss som läser och skriver ett annat språk än
- engelska.
+LyX har massor av funktioner för oss som läser och skriver ett annat språk
+ än engelska.
  Utöver det är tangentbindningarna, verktygsraderna, och många andra egenskaper
  högst konfigurerbara.
  Se 
@@ -184,8 +186,8 @@ http://www.lyx.org/
 
 \family default
 .
- Hämta information om LyX, prenumerera på sändlistor, ta den
- grafiska rundturen, och mer.
+ Hämta information om LyX, prenumerera på sändlistor, ta den grafiska rundturen,
+ och mer.
 \end_layout
 
 \end_body
