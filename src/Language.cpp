@@ -21,6 +21,7 @@
 
 #include "support/debug.h"
 #include "support/FileName.h"
+#include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/Messages.h"
 
@@ -37,6 +38,25 @@ Language const * default_language;
 Language const * ignore_language = &ignore_lang;
 Language const * latex_language = &latex_lang;
 Language const * reset_language = 0;
+
+
+docstring const Language::translateLayout(string const & m) const
+{
+	if (m.empty())
+		return docstring();
+
+	if (!isAscii(m)) {
+		lyxerr << "Warning: not translating `" << m
+		       << "' because it is not pure ASCII.\n";
+		return from_utf8(m);
+	}
+
+	TranslationMap::const_iterator it = layoutTranslations_.find(m);
+	if (it != layoutTranslations_.end())
+		return it->second;
+
+	return from_ascii(m);
+}
 
 
 bool Language::readLanguage(Lexer & lex)
@@ -173,6 +193,31 @@ bool Language::read(Lexer & lex)
 	return true;
 }
 
+
+bool Language::readLayoutTranslations(Lexer & lex)
+{
+	layoutTranslations_.clear();
+	while (lex.isOK()) {
+		if (lex.checkFor("End"))
+			break;
+		if (!lex.next(true))
+			return false;
+		string const key = lex.getString();
+		if (!lex.next(true))
+			return false;
+		docstring const val = lex.getDocString();
+		layoutTranslations_[key] = val;
+	}
+	return true;
+}
+
+
+void Language::readLayoutTranslations(Language const & lang)
+{
+	layoutTranslations_ = lang.layoutTranslations_;
+}
+
+
 void Languages::read(FileName const & filename)
 {
 	Lexer lex;
@@ -211,6 +256,61 @@ void Languages::read(FileName const & filename)
 		if (!default_language)
 			default_language = &(*languagelist.begin()).second;
 		LYXERR0("Using \"" << default_language->lang() << "\" instead!");
+	}
+
+	// Read layout translations
+	FileName const path = libFileSearch(string(), "layouttranslations");
+	readLayoutTranslations(path);
+}
+
+
+void Languages::readLayoutTranslations(support::FileName const & filename)
+{
+	Lexer lex;
+	lex.setFile(filename);
+	lex.setContext("Languages::read");
+	while (lex.isOK()) {
+		if (!lex.checkFor("Translation")) {
+			if (lex.isOK())
+				lex.printError("Unknown layout translation tag `$$Token'");
+			break;
+		}
+		if (!lex.next(true))
+			break;
+		string const code = lex.getString();
+		// we need to mimic gettext: code can be a two-letter code,
+		// which should match all variants, e.g. "de" should match
+		// "de_DE", "de_AT" etc.
+		Language * firstlang = 0;
+		LanguageList::iterator const end = languagelist.end();
+		for (LanguageList::iterator it = languagelist.begin(); it != end; ++it) {
+			// special case for chinese:
+			// simplified  => code == "zh_CN", langcode == "zh_CN"
+			// traditional => code == "zh_TW", langcode == "zh_CN"
+			string const langcode = it->second.code();
+			string const name = it->second.lang();
+			if ((code == langcode && name != "chinese-traditional") ||
+			    (code == "zh_TW" && name == "chinese-traditional") ||
+			    (code.size() == 2 && langcode.size() > 2 &&
+			     code + '_' == langcode.substr(0, 3))) {
+				if (firstlang)
+					it->second.readLayoutTranslations(*firstlang);
+				else {
+					if (!it->second.readLayoutTranslations(lex)) {
+						lex.printError("Could not read "
+						               "layout translations "
+						               "for language `" +
+						               code + "'");
+						break;
+					}
+					firstlang = &(it->second);
+				}
+			}
+		}
+		if (!firstlang) {
+			lex.printError("Unknown language `" + code + "'");
+			break;
+		}
 	}
 }
 

@@ -17,6 +17,8 @@
 # to output in gettext .pot format.
 #
 import sys, os, re, getopt
+if sys.version_info < (2, 4, 0):
+    from sets import Set as set
 
 def relativePath(path, base):
     '''return relative path from top source dir'''
@@ -74,7 +76,7 @@ def ui_l10n(input_files, output, base):
     output.close()
 
 
-def layouts_l10n(input_files, output, base):
+def layouts_l10n(input_files, output, base, layouttranslations):
     '''Generate pot file from lib/layouts/*.{layout,inc,module}'''
     out = open(output, 'w')
     Style = re.compile(r'^Style\s+(.*)', re.IGNORECASE)
@@ -95,11 +97,26 @@ def layouts_l10n(input_files, output, base):
     CounterFormat = re.compile(r'\s*PrettyFormat\s+"?(.*)"?')
     CiteFormat = re.compile(r'\s*CiteFormat')
     KeyVal = re.compile(r'^\s*_\w+\s+(.*)$')
+    Float = re.compile(r'\s*Float')
     End = re.compile(r'\s*End')
+    Comment = re.compile(r'\s*#')
+
+    languages = []
+    keyset = set()
+    if layouttranslations:
+        linguas_file = os.path.join(base, 'po/LINGUAS')
+        for line in open(linguas_file).readlines():
+            if Comment.search(line) == None:
+                languages.extend(line.split())
+    # walon is not a known document language
+    # FIXME: Do not hardcode, read from lib/languages!
+    if 'wa' in languages:
+        languages.remove('wa')
 
     for src in input_files:
         readingDescription = False
         readingI18nPreamble = False
+        readingFloat = False
         readingCiteFormats = False
         descStartLine = -1
         descLines = []
@@ -111,7 +128,8 @@ def layouts_l10n(input_files, output, base):
                 if res != None:
                     readingDescription = False
                     desc = " ".join(descLines)
-                    writeString(out, src, base, lineno + 1, desc)
+                    if not layouttranslations:
+                        writeString(out, src, base, lineno + 1, desc)
                     continue
                 descLines.append(line[1:].strip())
                 continue
@@ -128,7 +146,10 @@ def layouts_l10n(input_files, output, base):
                 res = I18nString.search(line)
                 if res != None:
                     string = res.group(1)
-                    writeString(out, src, base, lineno, string)
+                    if layouttranslations:
+                        keyset.add(string)
+                    else:
+                        writeString(out, src, base, lineno, string)
                 continue
             res = I18nPreamble.search(line)
             if res != None:
@@ -137,66 +158,126 @@ def layouts_l10n(input_files, output, base):
             res = NameRE.search(line)
             if res != None:
                 string = res.group(1)
-                writeString(out, src, base, lineno + 1, string)
+                if not layouttranslations:
+                    writeString(out, src, base, lineno + 1, string)
                 continue
             res = Style.search(line)
             if res != None:
                 string = res.group(1)
                 string = string.replace('_', ' ')
-                writeString(out, src, base, lineno, string)
+                if not layouttranslations:
+                    writeString(out, src, base, lineno, string)
                 continue
             res = LabelString.search(line)
             if res != None:
                 string = res.group(1)
-                writeString(out, src, base, lineno, string)
+                if not layouttranslations:
+                    writeString(out, src, base, lineno, string)
                 continue
             res = GuiName.search(line)
             if res != None:
                 string = res.group(1)
-                writeString(out, src, base, lineno, string)
+                if layouttranslations:
+                    # gui name must only be added for floats
+                    if readingFloat:
+                        keyset.add(string)
+                else:
+                    writeString(out, src, base, lineno, string)
                 continue
             res = CategoryName.search(line)
             if res != None:
                 string = res.group(1)
-                writeString(out, src, base, lineno, string)
+                if not layouttranslations:
+                    writeString(out, src, base, lineno, string)
                 continue
             res = ListName.search(line)
             if res != None:
                 string = res.group(1)
-                writeString(out, src, base, lineno, string)
+                if layouttranslations:
+                    keyset.add(string.strip('"'))
+                else:
+                    writeString(out, src, base, lineno, string)
                 continue
             res = InsetLayout.search(line)
             if res != None:
                 string = res.group(1)
                 string = string.replace('_', ' ')
                 #Flex:xxx is not used in translation
-                #writeString(out, src, base, lineno, string)
+                #if not layouttranslations:
+                #    writeString(out, src, base, lineno, string)
                 m = FlexCheck.search(string)
                 if m:
-                  writeString(out, src, base, lineno, m.group(1))
+                    if not layouttranslations:
+                        writeString(out, src, base, lineno, m.group(1))
                 continue
             res = Category.search(line)
             if res != None:
                 string = res.group(1)
-                writeString(out, src, base, lineno, string)
+                if not layouttranslations:
+                    writeString(out, src, base, lineno, string)
                 continue
             res = CounterFormat.search(line)
             if res != None:
                 string = res.group(1)
-                writeString(out, src, base, lineno, string)
+                if not layouttranslations:
+                    writeString(out, src, base, lineno, string)
+                continue
+            res = Float.search(line)
+            if res != None:
+                readingFloat = True
                 continue
             res = CiteFormat.search(line)
             if res != None:
                 readingCiteFormats = True
             res = End.search(line)
-            if res != None and readingCiteFormats:
+            if res != None:
                 readingCiteFormats = False
+                readingFloat = False
             if readingCiteFormats:
                 res = KeyVal.search(line)
                 if res != None:
                     val = res.group(1)
-                    writeString(out, src, base, lineno, val)
-                
+                    if not layouttranslations:
+                        writeString(out, src, base, lineno, val)
+
+    if layouttranslations:
+        # Extract translations of layout files
+        import polib
+
+        # Sort languages and key to minimize the diff between different runs
+        # with changed translations
+        languages.sort()
+        keys = []
+        for key in keyset:
+            keys.append(key)
+        keys.sort()
+
+        print >> out, '''# This file has been automatically generated by po/lyx_pot.py.
+# PLEASE DO NOT MODIFY ANYTHING HERE! If you want to regenerate this file
+# from the translations, run `make ../lib/layouttranslations' in po.'''
+        for lang in languages:
+            print >> out, '\nTranslation %s' % lang
+            poname = os.path.join(base, 'po/' + lang + '.po')
+            po = polib.pofile(poname)
+            # Iterate through po entries and not keys for speed reasons.
+            # FIXME: The code is still too slow
+            trans = dict()
+            for entry in po:
+                if not entry.translated():
+                    continue
+                if entry.msgid in keys:
+                    key = entry.msgid.replace('\\', '\\\\').replace('"', '\\"')
+                    val = entry.msgstr.replace('\\', '\\\\').replace('"', '\\"')
+                    # some translators keep untranslated entries
+                    if val != key:
+                        trans[key] = val
+            for key in keys:
+                if key in trans.keys():
+                    val = trans[key]
+                    print >> out, '\t"%s" "%s"' % \
+                             (key.encode('utf-8'), val.encode('utf-8'))
+            print >> out, 'End'
+
     out.close()
 
 
@@ -364,6 +445,7 @@ where
     --input_type can be
         ui: lib/ui/*
         layouts: lib/layouts/*
+        layouttranslations: create lib/layouttranslations from po/*.po and lib/layouts/*
         qt4: qt4 ui files
         languages: file lib/languages
         encodings: file lib/encodings
@@ -392,7 +474,7 @@ if __name__ == '__main__':
         elif opt in ['-s', '--src_file']:
             input_files = [f.strip() for f in open(value)]
 
-    if input_type not in ['ui', 'layouts', 'modules', 'qt4', 'languages', 'encodings', 'external', 'formats'] or output is None:
+    if input_type not in ['ui', 'layouts', 'layouttranslations', 'qt4', 'languages', 'encodings', 'external', 'formats'] or output is None:
         print 'Wrong input type or output filename.'
         sys.exit(1)
 
@@ -401,7 +483,9 @@ if __name__ == '__main__':
     if input_type == 'ui':
         ui_l10n(input_files, output, base)
     elif input_type == 'layouts':
-        layouts_l10n(input_files, output, base)
+        layouts_l10n(input_files, output, base, False)
+    elif input_type == 'layouttranslations':
+        layouts_l10n(input_files, output, base, True)
     elif input_type == 'qt4':
         qt4_l10n(input_files, output, base)
     elif input_type == 'external':

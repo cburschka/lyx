@@ -897,14 +897,7 @@ docstring const i18npreamble(Language const * lang, docstring const & templ, boo
 	smatch sub;
 	while (regex_search(preamble, sub, reg)) {
 		string const key = sub.str(1);
-		string translated;
-		if (isAscii(key))
-			translated = to_utf8(getMessages(lang->code()).get(key));
-		else {
-			lyxerr << "Warning: not translating `" << key
-			       << "' because it is not pure ASCII." << endl;
-			translated = key;
-		}
+		string translated = to_utf8(lang->translateLayout(key));
 		preamble = subst(preamble, sub.str(), translated);
 	}
 #endif

@@ -1288,6 +1288,7 @@ lib_files = Split('''
     encodings
     external_templates
     languages
+    layouttranslations
     symbols
     syntax.default
     unicodesymbols

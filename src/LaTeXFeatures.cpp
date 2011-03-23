@@ -1202,8 +1202,7 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel, bool use_po
 				continue;
 			docstring const type = from_ascii(fl.floattype());
 			docstring const flname = from_utf8(fl.name());
-			docstring name = translateIfPossible(flname,
-				buffer().language()->code());
+			docstring name = buffer().language()->translateLayout(fl.name());
 			// only request translation if we have a real translation
 			// (that differs from the source)
 			if (use_polyglossia && flname != name)

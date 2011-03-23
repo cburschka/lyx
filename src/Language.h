@@ -15,8 +15,9 @@
 #ifndef LANGUAGE_H
 #define LANGUAGE_H
 
+#include "support/docstring.h"
+
 #include <map>
-#include <string>
 
 
 namespace lyx {
@@ -45,6 +46,13 @@ public:
 	bool rightToLeft() const { return rightToLeft_; }
 	/// Is an (at least partial) translation of this language available?
 	bool translated() const { return translated_; }
+	/**
+	 * Translate a string from the layout files that appears in the output.
+	 * It takes the translations from lib/layouttranslations instead of
+	 * the .mo files. This should be used for every translation that
+	 * appears in the exported document, since the output must not depend
+	 * on installed locales. Non-ASCII keys are not translated. */
+	docstring const translateLayout(std::string const & msg) const;
 	/// default encoding
 	Encoding const * encoding() const { return encoding_; }
 	///
@@ -69,6 +77,10 @@ public:
 	bool read(Lexer & lex);
 	///
 	bool readLanguage(Lexer & lex);
+	///
+	bool readLayoutTranslations(Lexer & lex);
+	///
+	void readLayoutTranslations(Language const & lang);
 	// for the use in std::map
 	friend bool operator<(Language const & p, Language const & q);
 private:
@@ -102,6 +114,10 @@ private:
 	bool as_babel_options_;
 	///
 	bool translated_;
+	///
+	typedef std::map<std::string, docstring> TranslationMap;
+	///
+	TranslationMap layoutTranslations_;
 };
 
 
@@ -122,6 +138,8 @@ public:
 	typedef LanguageList::size_type size_type;
 	///
 	void read(support::FileName const & filename);
+	///
+	void readLayoutTranslations(support::FileName const & filename);
 	///
 	Language const * getLanguage(std::string const & language) const;
 	///
