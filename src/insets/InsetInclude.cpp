@@ -18,6 +18,7 @@
 #include "BufferList.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "Converter.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
 #include "Encoding.h"
@@ -546,6 +547,8 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 	LYXERR(Debug::LATEX, "exportfile:" << exportfile);
 	LYXERR(Debug::LATEX, "writefile:" << writefile);
 
+	string const tex_format = (runparams.flavor == OutputParams::LATEX) ?
+			"latex" : "pdflatex";
 	if (runparams.inComment || runparams.dryrun) {
 		//Don't try to load or copy the file if we're
 		//in a comment or doing a dryrun
@@ -597,6 +600,11 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 
 		tmp->markDepClean(masterBuffer->temppath());
 
+		// Don't assume the child's format is latex
+		string const inc_format = tmp->bufferFormat();
+		FileName const tmpwritefile(changeExtension(writefile.absFileName(),
+			formats.extension(inc_format)));
+
 		// FIXME: handle non existing files
 		// FIXME: Second argument is irrelevant!
 		// since only_body is true, makeLaTeXFile will not look at second
@@ -614,7 +622,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		runparams.master_language = buffer().params().language;
 		runparams.par_begin = 0;
 		runparams.par_end = tmp->paragraphs().size();
-		if (!tmp->makeLaTeXFile(writefile, masterFileName(buffer()).
+		if (!tmp->makeLaTeXFile(tmpwritefile, masterFileName(buffer()).
 				onlyPath().absFileName(), runparams, false)) {
 			docstring msg = bformat(_("Included file `%1$s' "
 					"was not exported correctly.\nWarning: "
@@ -629,6 +637,24 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		}
 		runparams.encoding = oldEnc;
 		runparams.master_language = oldLang;
+
+		// Use converters to produce a latex file from the child
+		ErrorList el;
+		bool const success =
+		theConverters().convert(tmp, tmpwritefile, writefile, included_file,
+			inc_format, tex_format, el);
+
+		if (!success) {
+			docstring msg = bformat(_("Included file `%1$s' "
+					"was not exported correctly.\nWarning: "
+					"LaTeX export is probably incomplete."),
+					included_file.displayName());
+			if (!el.empty())
+				msg = bformat(from_ascii("%1$s\n\n%2$s\n\n%3$s"),
+						msg, el.begin()->error,
+						el.begin()->description);
+			Alert::warning(_("Export failure"), msg);
+		}
 	} else {
 		// In this case, it's not a LyX file, so we copy the file
 		// to the temp dir, so that .aux files etc. are not created
@@ -649,8 +675,6 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		}
 	}
 
-	string const tex_format = (runparams.flavor == OutputParams::LATEX) ?
-			"latex" : "pdflatex";
 	switch (type(params())) {
 	case VERB:
 	case VERBAST: {
