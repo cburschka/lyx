@@ -78,3 +78,4 @@ lyx_install(${TOP_SRC_DIR}/lib tex          *      .)
 lyx_install(${TOP_SRC_DIR}/lib ui           *      .)
 lyx_install(${TOP_SRC_DIR}/lib .            *      .)
 
+lyx_install(${TOP_SRC_DIR}/lib templates/thesis    *      .)
