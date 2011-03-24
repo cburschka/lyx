@@ -1,24 +1,22 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
-\begin_preamble
-\date{}
-\end_preamble
 \use_default_options true
 \begin_modules
 lilypond
 \end_modules
 \maintain_unincluded_children false
 \language english
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -31,7 +29,18 @@ lilypond
 \index_command default
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_title "LilyPond-book and LyX"
+\pdf_author "Julien Rioux"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize default
 \use_geometry true
 \use_amsmath 1
@@ -42,7 +51,7 @@ lilypond
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
-\suppress_date false
+\suppress_date true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -63,18 +72,20 @@ lilypond
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict true
 \end_header
 
 \begin_body
 
 \begin_layout Title
-LilyPond-book + LyX
+LilyPond-book and LyX
 \end_layout
 
 \begin_layout Abstract
-This is an example file demonstrating the use of LilyPond music notation
- with LyX.
+This is an example file demonstrating the inclusion of musical snippets
+ in a LyX document, using the LilyPond music notation and the LilyPond-book
+ utility for processing.
 \end_layout
 
 \begin_layout Section
@@ -203,13 +214,13 @@ includegraphics{\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Standard
-Thus, the conversion toolchain is as follow: LyX\SpecialChar \menuseparator
+Thus, the conversion path is as follow: LyX\SpecialChar \menuseparator
 LilyPond-book\SpecialChar \menuseparator
 LaTeX.
- Every step of the toolchain obeys your spacing, so whether you put the
- musical extract inline or in its own paragraph, centered or left-aligned,
+ Every step of the tool chain obeys your spacing, so whether you put the
+ musical extract in line, or in its own paragraph, centered, left-aligned,
  etc., what you see in the LyX window should be respected in the final format.
- An example of inline use may be to display a chord name, such as
+ An example of in-line use may be to display a chord name, such as
 \begin_inset Flex LilyPond
 status open
 
@@ -286,6 +297,91 @@ Unfortunately, you might find that the preview isn't exactly instantaneous.
 
 \begin_layout Subsection
 Gotchas
+\end_layout
+
+\begin_layout Subsubsection
+Child documents
+\end_layout
+
+\begin_layout Standard
+A LyX document using the LilyPond module cannot have child documents using
+ the 
+\begin_inset Quotes eld
+\end_inset
+
+Input
+\begin_inset Quotes erd
+\end_inset
+
+ method.
+ If you select 
+\begin_inset Quotes eld
+\end_inset
+
+Input
+\begin_inset Quotes erd
+\end_inset
+
+ as the 
+\begin_inset Quotes eld
+\end_inset
+
+Include Type
+\begin_inset Quotes erd
+\end_inset
+
+ under Insert\SpecialChar \menuseparator
+File\SpecialChar \menuseparator
+Child Document, you will get an error when producing output.
+ This is due to the way LilyPond-book automatically processes these input
+ files recursively.
+ Since there is currently no command-line option to turn off this behavior
+ of LilyPond-book, it is suggested to use the 
+\begin_inset Quotes eld
+\end_inset
+
+Include
+\begin_inset Quotes erd
+\end_inset
+
+ method instead.
+\end_layout
+
+\begin_layout Standard
+Note that it is possible to insert child documents which make use of the
+ LilyPond module, using either the 
+\begin_inset Quotes eld
+\end_inset
+
+Input
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+Include
+\begin_inset Quotes erd
+\end_inset
+
+ method, in a master document which does not make use of the LilyPond module.
+ For this to work you might have to add the line
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+usepackage{graphicx}
+\end_layout
+
+\begin_layout Standard
+to your master document's preamble under Document\SpecialChar \menuseparator
+Settings.
+\end_layout
+
+\begin_layout Subsubsection
+Surrounding braces
 \end_layout
 
 \begin_layout Standard
@@ -367,6 +463,10 @@ score given
 
 \end_layout
 
+\begin_layout Subsubsection
+Fret diagrams
+\end_layout
+
 \begin_layout Standard
 Another gotcha is with subsequent lilypond snippets with 
 \family typewriter
@@ -438,8 +538,9 @@ reference "sub:Editorial-headword"
 
 \end_inset
 
- shows a complex example using many LilyPond constructs; some inline scheme
- code has been removed to be able to run in safe mode.
+ shows a complex example using many LilyPond constructs; some scheme code
+ has been removed from the original source of this snippet, to be able to
+ run in safe mode.
  Example 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -978,7 +1079,7 @@ http://lsr.dsi.unimi.it/LSR/Item?id=627
 
 \end_inset
 
-; inline scheme code removed, centering applied through the paragraph settings]
+; scheme code removed, centering applied through the paragraph settings]
 \end_layout
 
 \begin_layout Subsection
