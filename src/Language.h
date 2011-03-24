@@ -78,9 +78,9 @@ public:
 	///
 	bool readLanguage(Lexer & lex);
 	///
-	bool readLayoutTranslations(Lexer & lex);
+	typedef std::map<std::string, docstring> TranslationMap;
 	///
-	void readLayoutTranslations(Language const & lang);
+	void readLayoutTranslations(TranslationMap const & trans, bool replace);
 	// for the use in std::map
 	friend bool operator<(Language const & p, Language const & q);
 private:
@@ -114,8 +114,6 @@ private:
 	bool as_babel_options_;
 	///
 	bool translated_;
-	///
-	typedef std::map<std::string, docstring> TranslationMap;
 	///
 	TranslationMap layoutTranslations_;
 };
