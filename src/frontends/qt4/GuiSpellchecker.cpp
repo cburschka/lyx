@@ -24,6 +24,7 @@
 #include "BufferView.h"
 #include "buffer_funcs.h"
 #include "Cursor.h"
+#include "Text.h"
 #include "CutAndPaste.h"
 #include "FuncRequest.h"
 #include "Language.h"
@@ -290,7 +291,7 @@ void SpellcheckerWidget::Private::updateSuggestions(docstring_list & words)
 void SpellcheckerWidget::Private::check()
 {
 	BufferView * bv = gv_->documentBufferView();
-	if (!bv)
+	if (!bv || bv->buffer().text().empty())
 		return;
 
 	DocIterator from = bv->cursor();
