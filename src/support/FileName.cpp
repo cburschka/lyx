@@ -492,6 +492,22 @@ bool FileName::chdir() const
 }
 
 
+unsigned long checksum_ifstream_fallback(char const * file)
+{
+	unsigned long result = 0;
+	//LYXERR(Debug::FILES, "lyx::sum() using istreambuf_iterator (fast)");
+	ifstream ifs(file, ios_base::in | ios_base::binary);
+	if (!ifs)
+		return result;
+
+	istreambuf_iterator<char> beg(ifs);
+	istreambuf_iterator<char> end;
+	boost::crc_32_type crc;
+	crc = for_each(beg, end, crc);
+	result = crc.checksum();
+	return result;
+}
+
 unsigned long FileName::checksum() const
 {
 	unsigned long result = 0;
@@ -543,9 +559,11 @@ unsigned long FileName::checksum() const
 		return result;
 
 	struct stat info;
-	if (fstat(fd, &info))
+	if (fstat(fd, &info)){
 		// fstat fails on samba shares (bug 5891)
-		return result;
+		close(fd);
+		return checksum_ifstream_fallback(file);
+	}
 
 	void * mm = mmap(0, info.st_size, PROT_READ,
 			 MAP_PRIVATE, fd, 0);
@@ -566,18 +584,7 @@ unsigned long FileName::checksum() const
 	close(fd);
 
  #else // no SUM_WITH_MMAP
-
-	//LYXERR(Debug::FILES, "lyx::sum() using istreambuf_iterator (fast)");
-	ifstream ifs(file, ios_base::in | ios_base::binary);
-	if (!ifs)
-		return result;
-
-	istreambuf_iterator<char> beg(ifs);
-	istreambuf_iterator<char> end;
-	boost::crc_32_type crc;
-	crc = for_each(beg, end, crc);
-	result = crc.checksum();
-
+	result = checksum_ifstream_fallback(file);
  #endif // SUM_WITH_MMAP
 #endif // QT_VERSION
 
