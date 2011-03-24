@@ -189,8 +189,14 @@ def main(argv):
     lytex_file = latex_file_re.sub(".lytex", latex_file)
     shutil.copyfile(latex_file, lytex_file)
 
+    # Determine whether we need pdf or eps output
+    pdf_output = latex in ["lualatex", "pdflatex", "xelatex"]
+
     # Preprocess the latex file through lilypond-book.
-    lytex_call = '%s --safe --latex-program=%s "%s"' % (lilypond_book, latex, lytex_file)
+    if pdf_output:
+        lytex_call = '%s --safe --pdf --latex-program=%s "%s"' % (lilypond_book, latex, lytex_file)
+    else:
+        lytex_call = '%s --safe --latex-program=%s "%s"' % (lilypond_book, latex, lytex_file)
     lytex_status, lytex_stdout = run_command(lytex_call)
     if lytex_status != None:
         warning("%s failed to compile %s" \
