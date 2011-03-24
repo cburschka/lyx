@@ -22,7 +22,7 @@ Section -FileAssociations
   !define REG_FILETYPE 'WriteRegStr SHELL_CONTEXT "Software\Classes\${APP_REGNAME_DOC}'
   
   ${REG_FILETYPE}" "" "${APP_NAME} Document"
-  ${REG_FILETYPE}\DefaultIcon" "" "$INSTDIR\bin\LyXLauncher.exe,0"
+  ${REG_FILETYPE}\DefaultIcon" "" "$INSTDIR\${APP_RUN},0"
   ${REG_FILETYPE}\Shell\open\command" "" '"$INSTDIR\${APP_RUN}" "%1"'
   
   !define REG_FILEEXT 'WriteRegStr SHELL_CONTEXT "Software\Classes\${APP_EXT}"'
