@@ -601,7 +601,9 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		tmp->markDepClean(masterBuffer->temppath());
 
 		// Don't assume the child's format is latex
-		string const inc_format = tmp->bufferFormat();
+		string const inc_format = 
+			(tmp->bufferFormat() == "latex" && tex_format == "pdflatex") ?
+				"pdflatex" : tmp->bufferFormat();
 		FileName const tmpwritefile(changeExtension(writefile.absFileName(),
 			formats.extension(inc_format)));
 
@@ -641,8 +643,8 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		// Use converters to produce a latex file from the child
 		ErrorList el;
 		bool const success =
-		theConverters().convert(tmp, tmpwritefile, writefile, included_file,
-			inc_format, tex_format, el);
+			theConverters().convert(tmp, tmpwritefile, writefile, included_file,
+				                inc_format, tex_format, el);
 
 		if (!success) {
 			docstring msg = bformat(_("Included file `%1$s' "
