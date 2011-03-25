@@ -2443,7 +2443,7 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	lastfilesSB->setMaximum(maxlastfiles);
 
-	iconSetCO->addItem(qt_("Default"), "default");
+	iconSetCO->addItem(qt_("Default"), QString());
 	iconSetCO->addItem(qt_("Liber"), "liber");
 	iconSetCO->addItem(qt_("Oxygen"), "oxygen");
 }
