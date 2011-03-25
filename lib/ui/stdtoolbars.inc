@@ -68,49 +68,33 @@ ToolbarSet
 
 	Toolbar "standard" "Standard"
 		Layouts
-		Item "Default" "layout"
-		Item "Numbered list" "layout Enumerate"
-		Item "Itemized list" "layout Itemize"
-		Item "List" "layout List"
-		Item "Description" "layout Description"
-		Item "Increase depth" "depth-increment"
-		Item "Decrease depth" "depth-decrement"
-		Item "Paragraph settings" "layout-paragraph"
+		Item "New document" "buffer-new"
+		Item "Open document" "file-open"
+		Item "Save document" "buffer-write"
+		Item "Print document" "dialog-show print"
+		Separator
+		Item "Check spelling" "dialog-show spellchecker"
+		Separator
+		Item "Undo" "undo"
+		Item "Redo" "redo"
+		Item "Cut" "cut"
+		Item "Copy" "copy"
+		Item "Paste" "paste"
+		Item "Find and replace" "dialog-show findreplace"
+		Item "Find and replace (advanced)" "dialog-toggle findreplaceadv"
+		Item "Navigate back" "bookmark-goto 0"
 		Separator
 		Item "Toggle emphasis" "font-emph"
 		Item "Toggle noun" "font-noun"
 		Item "Apply last" "textstyle-apply"
-		Item "Text style" "dialog-show character"
 		Separator
 		Item "Insert math" "math-mode on"
 		Item "Insert graphics" "dialog-show-new-inset graphics"
 		TableInsert "Insert table"
 		Separator
-		Item "View" "buffer-view"
-		Separator
-		Item "Check spelling" "dialog-show spellchecker"
-		Item "Thesaurus" "thesaurus-entry"
-		Separator
 		Item "Toggle outline" "dialog-toggle toc"
-	End
-
-	Toolbar "file" "File"
-		Item "New document" "buffer-new"
-		Item "Open document" "file-open"
-		Item "Save document" "buffer-write"
-	End
-
-	Toolbar "edit" "Edit"
-		Item "Undo" "undo"
-		Item "Redo" "redo"
-		Separator
-		Item "Cut" "cut"
-		Item "Copy" "copy"
-		Item "Paste" "paste"
-		Separator
-		Item "Find and replace" "dialog-show findreplace"
-		Item "Find and replace (advanced)" "dialog-toggle findreplaceadv"
-		Item "Navigate back" "bookmark-goto 0"
+		Item "Toggle math toolbar" "toolbar-toggle math"
+		Item "Toggle table toolbar" "toolbar-toggle table"
 	End
 
 	Toolbar "view/update" "View/Update"
@@ -118,12 +102,21 @@ ToolbarSet
 		Item "Update" "buffer-update"
 		Item "View master document" "master-buffer-view"
 		Item "Update master document" "master-buffer-update"
+		Item "Enable Forward/Reverse Search" "buffer-toggle-output-sync"
 		Separator
 		StickyPopupMenu "view-others" "View other formats"
 		StickyPopupMenu "update-others" "Update other formats"
 	End
 
 	Toolbar "extra" "Extra"
+		Item "Default" "layout"
+		Item "Numbered list" "layout Enumerate"
+		Item "Itemized list" "layout Itemize"
+		Item "List" "layout List"
+		Item "Description" "layout Description"
+		Item "Increase depth" "depth-increment"
+		Item "Decrease depth" "depth-decrement"
+		Separator
 		Item "Insert figure float" "float-insert figure"
 		Item "Insert table float" "float-insert table"
 		Item "Insert label" "label-insert"
@@ -141,6 +134,9 @@ ToolbarSet
 		Item "Insert math macro" "math-macro newmacroname newcommand"
 		Item "Include file" "dialog-show-new-inset include"
 		Separator
+		Item "Text style" "dialog-show character"
+		Item "Paragraph settings" "layout-paragraph"
+		Item "Thesaurus" "thesaurus-entry"
 	End
 	
 	Toolbar "table" "Table"
