@@ -1193,7 +1193,6 @@ PrefDisplay::PrefDisplay(GuiPreferences * form)
 	connect(displayGraphicsCB, SIGNAL(toggled(bool)), this, SIGNAL(changed()));
 	connect(instantPreviewCO, SIGNAL(activated(int)), this, SIGNAL(changed()));
 	connect(previewSizeSB, SIGNAL(valueChanged(double)), this, SIGNAL(changed()));
-	connect(iconSetCO, SIGNAL(activated(int)), this, SIGNAL(changed()));
 	connect(paragraphMarkerCB, SIGNAL(toggled(bool)), this, SIGNAL(changed()));
 }
 
@@ -1225,15 +1224,6 @@ void PrefDisplay::apply(LyXRC & rc) const
 			break;
 	}
 
-	switch (iconSetCO->currentIndex()) {
-		case 0:
-			rc.icon_set.clear();
-			break;
-		default:
-			rc.icon_set = fromqstr(iconSetCO->currentText().toLower());
-			break;
-	}
-
 	rc.display_graphics = displayGraphicsCB->isChecked();
 	rc.preview_scale_factor = previewSizeSB->value();
 	rc.paragraph_markers = paragraphMarkerCB->isChecked();
@@ -1261,13 +1251,6 @@ void PrefDisplay::update(LyXRC const & rc)
 		instantPreviewCO->setCurrentIndex(2);
 		break;
 	}
-
-	string name = rc.icon_set.empty() ? "default" : rc.icon_set;
-	name[0] = uppercase(name[0]);
-	int iconset = iconSetCO->findText(qt_(name));
-	if (iconset < 0)
-		iconset = 0;
-	iconSetCO->setCurrentIndex(iconset);
 
 	displayGraphicsCB->setChecked(rc.display_graphics);
 	instantPreviewCO->setEnabled(rc.display_graphics);
@@ -2438,6 +2421,8 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form)
 		this, SLOT(selectUi()));
 	connect(uiFileED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
+	connect(iconSetCO, SIGNAL(activated(int)),
+		this, SIGNAL(changed()));
 	connect(restoreCursorCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(loadSessionCB, SIGNAL(clicked()),
@@ -2457,11 +2442,25 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form)
 	connect(tooltipCB, SIGNAL(toggled(bool)),
 		this, SIGNAL(changed()));
 	lastfilesSB->setMaximum(maxlastfiles);
+
+	icon_names_.clear();
+	icon_names_.push_back(make_pair("default", qt_("Default")));
+	icon_names_.push_back(make_pair("liber", qt_("Liber")));
+	icon_names_.push_back(make_pair("oxygen", qt_("Oxygen")));
+	iconSetCO->addItem(icon_names_[0].second);
+	iconSetCO->addItem(icon_names_[1].second);
+	iconSetCO->addItem(icon_names_[2].second);
 }
 
 
 void PrefUserInterface::apply(LyXRC & rc) const
 {
+	int const iconset = iconSetCO->currentIndex();
+	if (iconset > 0)
+		rc.icon_set = icon_names_[iconset].first;
+	else
+		rc.icon_set.clear();
+
 	rc.ui_file = internal_path(fromqstr(uiFileED->text()));
 	rc.use_lastfilepos = restoreCursorCB->isChecked();
 	rc.load_session = loadSessionCB->isChecked();
@@ -2482,6 +2481,17 @@ void PrefUserInterface::apply(LyXRC & rc) const
 
 void PrefUserInterface::update(LyXRC const & rc)
 {
+	unsigned int iconset = 0;
+	if (!rc.icon_set.empty()) {
+		for ( ; iconset < icon_names_.size(); ++iconset) {
+			if (rc.icon_set == icon_names_[iconset].first)
+				break;
+		}
+	}
+	iconset = iconSetCO->findText(icon_names_[iconset].second);
+	if (iconset < 0)
+		iconset = 0;
+	iconSetCO->setCurrentIndex(iconset);
 	uiFileED->setText(toqstr(external_path(rc.ui_file)));
 	restoreCursorCB->setChecked(rc.use_lastfilepos);
 	loadSessionCB->setChecked(rc.load_session);

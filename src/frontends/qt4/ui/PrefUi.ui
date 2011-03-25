@@ -52,7 +52,26 @@
      </property>
     </spacer>
    </item>
-   <item row="1" column="0" colspan="4">
+   <item row="1" column="0" >
+    <widget class="QLabel" name="iconSetLA" >
+     <property name="text" >
+      <string>&amp;Icon Set:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>iconSetCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" >
+    <widget class="QComboBox" name="iconSetCO" >
+     <property name="toolTip" >
+      <string>The icon set to use. Warning: size of icons may be wrong
+until you save the preferences, restart LyX and choose
+"Normal-sized icons" from the toolbar menu.</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="4">
     <widget class="QGroupBox" name="pixmapCacheGB_2">
      <property name="title">
       <string>Automatic help</string>
@@ -83,7 +102,7 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="0" colspan="4">
+   <item row="3" column="0" colspan="4">
     <widget class="QGroupBox" name="GeometryGB">
      <property name="title">
       <string>Session</string>
@@ -122,7 +141,7 @@
       <item row="3" column="0">
        <widget class="QPushButton" name="clearSessionPB">
         <property name="text">
-         <string>Clear all session &amp;information</string>
+         <string>&amp;Clear all session information</string>
         </property>
        </widget>
       </item>
@@ -142,7 +161,7 @@
      </layout>
     </widget>
    </item>
-   <item row="3" column="0" colspan="4">
+   <item row="4" column="0" colspan="4">
     <widget class="QGroupBox" name="documentsGB">
      <property name="title">
       <string>Documents</string>
@@ -262,7 +281,7 @@
      </layout>
     </widget>
    </item>
-   <item row="4" column="0" colspan="4">
+   <item row="5" column="0" colspan="4">
     <spacer>
      <property name="orientation">
       <enum>Qt::Vertical</enum>

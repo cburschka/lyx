@@ -46,6 +46,7 @@
 #include "ui_ShortcutUi.h"
 
 #include <string>
+#include <utility>
 #include <vector>
 
 
@@ -426,6 +427,10 @@ public:
 public Q_SLOTS:
 	void selectUi();
 	void on_clearSessionPB_clicked();
+
+private:
+	/// icon names and their translations
+	std::vector<std::pair<std::string, QString> > icon_names_;
 };
 
 
