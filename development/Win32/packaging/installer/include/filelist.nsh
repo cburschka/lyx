@@ -137,6 +137,7 @@ Lists of files to include in the installer
   ${FILE}stat.py"
   ${FILE}string.py"
   ${FILE}struct.py"  
+  ${FILE}subprocess.py"
   ${FILE}tempfile.py"
   ${FILE}tempfile.py"
   ${FILE}textwrap.py"
