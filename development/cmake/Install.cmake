@@ -68,7 +68,7 @@ lyx_install(${TOP_SRC_DIR}/lib doc/${_all_languages} *    clipart)
 
 lyx_install(${TOP_SRC_DIR}/lib examples     *      . ${_all_languages})
 lyx_install(${TOP_SRC_DIR}/lib fonts        *      .)
-lyx_install(${TOP_SRC_DIR}/lib images       *      . math commands attic)
+lyx_install(${TOP_SRC_DIR}/lib images       *      . math commands attic liber oxygen)
 lyx_install(${TOP_SRC_DIR}/lib kbd          *      .)
 lyx_install(${TOP_SRC_DIR}/lib layouts      *      .)
 lyx_install(${TOP_SRC_DIR}/lib lyx2lyx      *.py   .)
