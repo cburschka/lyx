@@ -2481,9 +2481,9 @@ void PrefUserInterface::apply(LyXRC & rc) const
 
 void PrefUserInterface::update(LyXRC const & rc)
 {
-	unsigned int iconset = 0;
+	int iconset = 0;
 	if (!rc.icon_set.empty()) {
-		for ( ; iconset < icon_names_.size(); ++iconset) {
+		for ( ; iconset < int(icon_names_.size()); ++iconset) {
 			if (rc.icon_set == icon_names_[iconset].first)
 				break;
 		}
