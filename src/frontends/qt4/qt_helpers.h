@@ -80,6 +80,10 @@ QString const qt_(std::string const & str);
 support::FileName libFileSearch(QString const & dir, QString const & name,
 				QString const & ext = QString());
 
+///
+support::FileName imageLibFileSearch(QString & dir, QString const & name,
+				     QString const & ext = QString());
+
 /** Wrapper around browseFile which tries to provide a filename
 	relative to relpath.  If the relative path is of the form "foo.txt"
 	or "bar/foo.txt", then it is returned as relative. OTOH, if it is

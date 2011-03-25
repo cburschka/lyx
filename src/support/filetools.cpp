@@ -21,6 +21,8 @@
 
 #include <config.h>
 
+#include "LyXRC.h"
+
 #include "support/filetools.h"
 
 #include "support/debug.h"
@@ -303,6 +305,21 @@ FileName const i18nLibFileSearch(string const & dir, string const & name,
 		lang = split(lang, l, ':');
 	}
 
+	return libFileSearch(dir, name, ext);
+}
+
+
+FileName const imageLibFileSearch(string & dir, string const & name,
+		  string const & ext)
+{
+	if (!lyx::lyxrc.icon_set.empty()) {
+		string const imagedir = addPath(dir, lyx::lyxrc.icon_set);
+		FileName const fn = libFileSearch(imagedir, name, ext);
+		if (fn.exists()) {
+			dir = imagedir;
+			return fn;
+		}
+	}
 	return libFileSearch(dir, name, ext);
 }
 

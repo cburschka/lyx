@@ -98,6 +98,13 @@ i18nLibFileSearch(std::string const & dir,
 		  std::string const & name,
 		  std::string const & ext = std::string());
 
+/** Same as libFileSearch(), but tries first to find a preferred
+  version of the file by appending the icon set name to the dir
+  */
+FileName const
+imageLibFileSearch(std::string & dir, std::string const & name,
+		   std::string const & ext = std::string());
+
 /// How to quote a filename
 enum quote_style {
 	/** Quote for the (OS dependant) shell. This is needed for command

@@ -65,6 +65,11 @@ using ::boost::scoped_ptr;
 
 namespace lyx {
 
+// Dummy LyXRC support
+struct LyXRC {
+	string icon_set;
+} lyxrc;
+
 // Keep the linker happy on Windows
 void lyx_exit(int)
 {}

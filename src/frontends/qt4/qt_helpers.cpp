@@ -66,6 +66,16 @@ FileName libFileSearch(QString const & dir, QString const & name,
 }
 
 
+FileName imageLibFileSearch(QString & dir, QString const & name,
+				QString const & ext)
+{
+	string tmp = fromqstr(dir);
+	FileName fn = support::imageLibFileSearch(tmp, fromqstr(name), fromqstr(ext));
+	dir = toqstr(tmp);
+	return fn;
+}
+
+
 namespace frontend {
 
 string widgetsToLength(QLineEdit const * input, LengthCombo const * combo)

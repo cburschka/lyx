@@ -174,11 +174,15 @@ MenuButton::MenuButton(GuiToolbar * bar, ToolbarItem const & item, bool const st
 	setStatusTip(label);
 	setText(label);
 	QString const name = toqstr(tbitem_.name_);
-	FileName const fname = libFileSearch("images/math/", name, "png");
-	if (fname.exists())
-	    setIcon(QIcon(getPixmap("images/math/", name, "png")));
-	else
-	    setIcon(QIcon(getPixmap("images/", name, "png")));
+	QString imagedir = "images/math/";
+	FileName const fname = imageLibFileSearch(imagedir, name, "png");
+	if (fname.exists()) {
+		setIcon(QIcon(getPixmap(imagedir, name, "png")));
+	} else {
+		imagedir = "images/";
+		imageLibFileSearch(imagedir, name, "png");
+		setIcon(QIcon(getPixmap(imagedir, name, "png")));
+	}
 	if (sticky)
 		connect(this, SIGNAL(triggered(QAction *)),
 			this, SLOT(actionTriggered(QAction *)));

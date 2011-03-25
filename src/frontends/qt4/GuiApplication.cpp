@@ -367,11 +367,12 @@ QString iconName(FuncRequest const & f, bool unknown)
 		}
 	}
 
-	FileName fname = libFileSearch("images/" + path, name1, "png");
+	QString imagedir = "images/" + path;
+	FileName fname = imageLibFileSearch(imagedir, name1, "png");
 	if (fname.exists())
 		return toqstr(fname.absFileName());
 
-	fname = libFileSearch("images/" + path, name2, "png");
+	fname = imageLibFileSearch(imagedir, name2, "png");
 	if (fname.exists())
 		return toqstr(fname.absFileName());
 
@@ -398,7 +399,8 @@ QString iconName(FuncRequest const & f, bool unknown)
 			   << '(' << to_utf8(f.argument()) << ")\"");
 
 	if (unknown) {
-		fname = libFileSearch(QString("images/"), "unknown", "png");
+		imagedir = "images/";
+		fname = imageLibFileSearch(imagedir, "unknown", "png");
 		if (fname.exists())
 			return toqstr(fname.absFileName());
 		return QString(":/images/unknown.png");
@@ -410,7 +412,8 @@ QString iconName(FuncRequest const & f, bool unknown)
 QPixmap getPixmap(QString const & path, QString const & name, QString const & ext)
 {
 	QPixmap pixmap;
-	FileName fname = libFileSearch(path, name, ext);
+	QString imagedir = path;
+	FileName fname = imageLibFileSearch(imagedir, name, ext);
 	QString path1 = toqstr(fname.absFileName());
 	QString path2 = ":/" + path + name + "." + ext;
 

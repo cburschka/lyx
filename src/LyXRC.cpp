@@ -113,6 +113,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\group_layouts", LyXRC::RC_GROUP_LAYOUTS },
 	{ "\\gui_language", LyXRC::RC_GUI_LANGUAGE },
 	{ "\\hunspelldir_path", LyXRC::RC_HUNSPELLDIR_PATH },
+	{ "\\icon_set", LyXRC::RC_ICON_SET },
 	{ "\\index_alternatives", LyXRC::RC_INDEX_ALTERNATIVES },
 	{ "\\index_command", LyXRC::RC_INDEX_COMMAND },
 	{ "\\input", LyXRC::RC_INPUT },
@@ -222,6 +223,7 @@ LyXRC::LyXRC()
 
 void LyXRC::setDefaults()
 {
+	icon_set = string();
 	bind_file = "cua";
 	def_file = "default";
 	ui_file = "default";
@@ -827,6 +829,10 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 
 		case RC_CHECKLASTFILES:
 			lexrc >> check_lastfiles;
+			break;
+
+		case RC_ICON_SET:
+			lexrc >> icon_set;
 			break;
 
 		case RC_SCREEN_FONT_ROMAN:
@@ -1728,6 +1734,16 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		os << "\n#\n"
 		   << "# SCREEN & FONTS SECTION ############################\n"
 		   << "#\n\n";
+
+	case RC_ICON_SET:
+		os << "\\icon_set \"" << icon_set << "\"\n";
+		if (ignore_system_lyxrc ||
+		    icon_set != system_lyxrc.icon_set) {
+			os << "\\icon_set \"" << icon_set
+			   << "\"\n";
+		}
+		if (tag != RC_LAST)
+			break;
 
 	case RC_SCREEN_DPI:
 		if (ignore_system_lyxrc ||
@@ -2919,6 +2935,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_FILEFORMAT:
 	case LyXRC::RC_GROUP_LAYOUTS:
 	case LyXRC::RC_HUNSPELLDIR_PATH:
+	case LyXRC::RC_ICON_SET:
 	case LyXRC::RC_INDEX_ALTERNATIVES:
 	case LyXRC::RC_INDEX_COMMAND:
 	case LyXRC::RC_JBIBTEX_COMMAND:

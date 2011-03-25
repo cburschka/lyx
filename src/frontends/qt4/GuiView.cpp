@@ -216,7 +216,8 @@ struct GuiView::GuiViewPrivate
 		bigIconSize = 26;	// better for some math icons
 
 		// if it exists, use width of iconsize.png as normal size
-		FileName const fn = lyx::libFileSearch("images", "iconsize.png");
+		QString const dir = toqstr(addPath("images", lyxrc.icon_set));
+		FileName const fn = lyx::libFileSearch(dir, "iconsize.png");
 		if (!fn.empty()) {
 			QImage image(toqstr(fn.absFileName()));
 			if (image.width() < int(smallIconSize))

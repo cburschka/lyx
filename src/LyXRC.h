@@ -94,6 +94,7 @@ public:
 		RC_GROUP_LAYOUTS,
 		RC_GUI_LANGUAGE,
 		RC_HUNSPELLDIR_PATH,
+		RC_ICON_SET,
 		RC_INDEX_ALTERNATIVES,
 		RC_INDEX_COMMAND,
 		RC_INPUT,
@@ -458,6 +459,8 @@ public:
 	std::string user_name;
 	/// user email
 	std::string user_email;
+	/// icon set name
+	std::string icon_set;
 	/// True if the TeX engine cannot handle posix paths
 	bool windows_style_tex_paths;
 	/// True if the TeX engine can handle file names containing spaces
