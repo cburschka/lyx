@@ -1193,6 +1193,7 @@ PrefDisplay::PrefDisplay(GuiPreferences * form)
 	connect(displayGraphicsCB, SIGNAL(toggled(bool)), this, SIGNAL(changed()));
 	connect(instantPreviewCO, SIGNAL(activated(int)), this, SIGNAL(changed()));
 	connect(previewSizeSB, SIGNAL(valueChanged(double)), this, SIGNAL(changed()));
+	connect(iconSetCO, SIGNAL(activated(int)), this, SIGNAL(changed()));
 	connect(paragraphMarkerCB, SIGNAL(toggled(bool)), this, SIGNAL(changed()));
 }
 
@@ -1224,6 +1225,15 @@ void PrefDisplay::apply(LyXRC & rc) const
 			break;
 	}
 
+	switch (iconSetCO->currentIndex()) {
+		case 0:
+			rc.icon_set.clear();
+			break;
+		default:
+			rc.icon_set = fromqstr(iconSetCO->currentText().toLower());
+			break;
+	}
+
 	rc.display_graphics = displayGraphicsCB->isChecked();
 	rc.preview_scale_factor = previewSizeSB->value();
 	rc.paragraph_markers = paragraphMarkerCB->isChecked();
@@ -1251,6 +1261,13 @@ void PrefDisplay::update(LyXRC const & rc)
 		instantPreviewCO->setCurrentIndex(2);
 		break;
 	}
+
+	string name = rc.icon_set.empty() ? "default" : rc.icon_set;
+	name[0] = uppercase(name[0]);
+	int iconset = iconSetCO->findText(qt_(name));
+	if (iconset < 0)
+		iconset = 0;
+	iconSetCO->setCurrentIndex(iconset);
 
 	displayGraphicsCB->setChecked(rc.display_graphics);
 	instantPreviewCO->setEnabled(rc.display_graphics);

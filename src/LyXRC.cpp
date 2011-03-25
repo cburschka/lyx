@@ -1736,7 +1736,6 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		   << "#\n\n";
 
 	case RC_ICON_SET:
-		os << "\\icon_set \"" << icon_set << "\"\n";
 		if (ignore_system_lyxrc ||
 		    icon_set != system_lyxrc.icon_set) {
 			os << "\\icon_set \"" << icon_set
@@ -2936,6 +2935,9 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_GROUP_LAYOUTS:
 	case LyXRC::RC_HUNSPELLDIR_PATH:
 	case LyXRC::RC_ICON_SET:
+		if (lyxrc_orig.icon_set != lyxrc_new.icon_set) {
+			lyxrc.icon_set = lyxrc_new.icon_set;
+		}
 	case LyXRC::RC_INDEX_ALTERNATIVES:
 	case LyXRC::RC_INDEX_COMMAND:
 	case LyXRC::RC_JBIBTEX_COMMAND:

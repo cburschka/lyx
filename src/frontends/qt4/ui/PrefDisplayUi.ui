@@ -108,7 +108,41 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2" >
+   <item row="2" column="0" >
+    <widget class="QLabel" name="iconSetLA" >
+     <property name="text" >
+      <string>Icon &amp;Set:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>iconSetCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" >
+    <widget class="QComboBox" name="iconSetCO" >
+     <property name="toolTip" >
+      <string>The icon set to use. Warning: size of icons may be wrong
+until you save the preferences, restart LyX and choose
+"Normal-sized icons" from the toolbar menu.</string>
+     </property>
+     <item>
+      <property name="text" >
+       <string>Default</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Liber</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Oxygen</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2" >
     <widget class="QCheckBox" name="paragraphMarkerCB" >
      <property name="toolTip" >
       <string>Mark end of paragraphs on screen with a pilcrow character.</string>
@@ -118,7 +152,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0" >
+   <item row="4" column="0" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
