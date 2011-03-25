@@ -2443,23 +2443,16 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	lastfilesSB->setMaximum(maxlastfiles);
 
-	icon_names_.clear();
-	icon_names_.push_back(make_pair("default", qt_("Default")));
-	icon_names_.push_back(make_pair("liber", qt_("Liber")));
-	icon_names_.push_back(make_pair("oxygen", qt_("Oxygen")));
-	iconSetCO->addItem(icon_names_[0].second);
-	iconSetCO->addItem(icon_names_[1].second);
-	iconSetCO->addItem(icon_names_[2].second);
+	iconSetCO->addItem(qt_("Default"), "default");
+	iconSetCO->addItem(qt_("Liber"), "liber");
+	iconSetCO->addItem(qt_("Oxygen"), "oxygen");
 }
 
 
 void PrefUserInterface::apply(LyXRC & rc) const
 {
-	int const iconset = iconSetCO->currentIndex();
-	if (iconset > 0)
-		rc.icon_set = icon_names_[iconset].first;
-	else
-		rc.icon_set.clear();
+	rc.icon_set = fromqstr(iconSetCO->itemData(
+		iconSetCO->currentIndex()).toString());
 
 	rc.ui_file = internal_path(fromqstr(uiFileED->text()));
 	rc.use_lastfilepos = restoreCursorCB->isChecked();
@@ -2481,14 +2474,7 @@ void PrefUserInterface::apply(LyXRC & rc) const
 
 void PrefUserInterface::update(LyXRC const & rc)
 {
-	int iconset = 0;
-	if (!rc.icon_set.empty()) {
-		for ( ; iconset < int(icon_names_.size()); ++iconset) {
-			if (rc.icon_set == icon_names_[iconset].first)
-				break;
-		}
-	}
-	iconset = iconSetCO->findText(icon_names_[iconset].second);
+	int iconset = iconSetCO->findData(toqstr(rc.icon_set));
 	if (iconset < 0)
 		iconset = 0;
 	iconSetCO->setCurrentIndex(iconset);
