@@ -5626,7 +5626,7 @@ msgstr "Problem"
 #: lib/layouts/theorems.inc:114 lib/layouts/theorems-chap-bytype.module:90
 #: lib/layouts/theorems-sec-bytype.module:78
 msgid "Proposition"
-msgstr "Proposition"
+msgstr "Satz"
 
 #: lib/layouts/AEA.layout:232 lib/layouts/elsart.layout:385
 #: lib/layouts/ijmpc.layout:178 lib/layouts/ijmpd.layout:176
@@ -7591,7 +7591,7 @@ msgstr "Korollar \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:332
 msgid "Proposition \\arabic{theorem}"
-msgstr "Proposition \\arabic{theorem}"
+msgstr "Satz \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:339
 msgid "Criterion \\arabic{theorem}"
@@ -7812,7 +7812,7 @@ msgstr "Korollar #."
 #: lib/layouts/foils.layout:260 lib/layouts/llncs.layout:395
 #: lib/layouts/svjour.inc:412
 msgid "Proposition #."
-msgstr "Proposition #."
+msgstr "Satz #."
 
 #: lib/layouts/foils.layout:267 lib/layouts/heb-article.layout:78
 #: lib/layouts/llncs.layout:340 lib/layouts/svjour.inc:352
@@ -7841,11 +7841,11 @@ msgstr "Korollar*"
 #: lib/layouts/foils.layout:313 lib/layouts/siamltex.layout:102
 #: lib/layouts/theorems-order.inc:28 lib/layouts/theorems-starred.inc:97
 msgid "Proposition*"
-msgstr "Proposition*"
+msgstr "Satz*"
 
 #: lib/layouts/foils.layout:316 lib/layouts/theorems-starred.inc:100
 msgid "Proposition."
-msgstr "Proposition."
+msgstr "Satz."
 
 #: lib/layouts/foils.layout:320 lib/layouts/siamltex.layout:131
 #: lib/layouts/theorems-order.inc:40 lib/layouts/theorems-starred.inc:148
@@ -8358,7 +8358,7 @@ msgstr "Lemma \\thelemma."
 #: lib/layouts/ijmpc.layout:257 lib/layouts/ijmpd.layout:263
 #: lib/layouts/theorems-ams-bytype.inc:112 lib/layouts/theorems-bytype.inc:88
 msgid "Proposition \\theproposition."
-msgstr "Proposition \\theproposition."
+msgstr "Satz \\theproposition."
 
 #: lib/layouts/ijmpc.layout:262 lib/layouts/ijmpd.layout:269
 msgid "Prop"
@@ -9938,7 +9938,7 @@ msgstr "Lemma \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:105 lib/layouts/theorems.inc:105
 msgid "Proposition \\thetheorem."
-msgstr "Proposition \\thetheorem."
+msgstr "Satz \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:123 lib/layouts/theorems.inc:123
 msgid "Conjecture \\thetheorem."
@@ -10466,8 +10466,8 @@ msgstr ""
 "Sowohl nummerierte als auch nicht-nummerierte Umgebungen werden "
 "bereitgestellt. Im Gegensatz zum normalen AMS-Theorem-Modul hat jeder der "
 "hier bereitgestellten Theorem-Typen einen eigenen Zähler (bspw. Theorem 1, "
-"Theorem 2, Lemma 1, Proposition 1, Theorem 3, Lemma 2, ..., und nicht "
-"Theorem 1, Theorem 2, Lemma 3, Proposition 4, ...). Die Nummerierung erfolgt "
+"Theorem 2, Lemma 1, Satz 1, Theorem 3, Lemma 2, ..., und nicht "
+"Theorem 1, Theorem 2, Lemma 3, Satz 4, ...). Die Nummerierung erfolgt "
 "durchgehend für das gesamte Dokument. Verwenden Sie für abschnitts- und "
 "kapitelweise Nummerierung eines der entsprechenden Module."
 
@@ -10736,9 +10736,9 @@ msgid ""
 msgstr ""
 "Definiert Theorem-Umgebungen für Nicht-AMS-Klassen. Im Gegensatz zum "
 "normalen Theorem-Modul hat jeder der hier bereitgestellten Theorem-Typen "
-"einen eigenen Zähler (bspw. Theorem 1, Theorem 2, Lemma 1, Proposition 1, "
+"einen eigenen Zähler (bspw. Theorem 1, Theorem 2, Lemma 1, Satz 1, "
 "Theorem 3, Lemma 2, ..., und nicht Theorem 1, Theorem 2, Lemma 3, "
-"Proposition 4, ...). Die Nummerierung erfolgt durchgehend für das gesamte "
+"Satz 4, ...). Die Nummerierung erfolgt durchgehend für das gesamte "
 "Dokument. Verwenden Sie für abschnitts- und kapitelweise Nummerierung eines "
 "der entsprechenden Module."
 
@@ -10756,9 +10756,9 @@ msgid ""
 msgstr ""
 "Definiert Theorem-Umgebungen für Nicht-AMS-Klassen. Im Gegensatz zum "
 "normalen Theorem-Modul hat jeder der hier bereitgestellten Theorem-Typen "
-"einen eigenen Zähler (bspw. Theorem 1, Theorem 2, Lemma 1, Proposition 1, "
+"einen eigenen Zähler (bspw. Theorem 1, Theorem 2, Lemma 1, Satz 1, "
 "Theorem 3, Lemma 2, ..., und nicht Theorem 1, Theorem 2, Lemma 3, "
-"Proposition 4, ...). Die Nummerierung wird außerdem am Kapitelbeginn "
+"Satz 4, ...). Die Nummerierung wird außerdem am Kapitelbeginn "
 "zurückgesetzt."
 
 #: lib/layouts/theorems-chap.module:2
@@ -10809,9 +10809,9 @@ msgid ""
 msgstr ""
 "Definiert Theorem-Umgebungen für Nicht-AMS-Klassen. Im Gegensatz zum "
 "normalen Theorem-Modul hat jeder der hier bereitgestellten Theorem-Typen "
-"einen eigenen Zähler (bspw. Theorem 1, Theorem 2, Lemma 1, Proposition 1, "
+"einen eigenen Zähler (bspw. Theorem 1, Theorem 2, Lemma 1, Satz 1, "
 "Theorem 3, Lemma 2, ..., und nicht Theorem 1, Theorem 2, Lemma 3, "
-"Proposition 4, ...). Die Nummerierung wird außerdem am Abschnittsbeginn "
+"Satz 4, ...). Die Nummerierung wird außerdem am Abschnittsbeginn "
 "zurückgesetzt."
 
 #: lib/layouts/theorems-sec.module:2
@@ -24779,7 +24779,7 @@ msgstr "Unbekannter Benutzer"
 #~ msgstr "Korollar #:"
 
 #~ msgid "Proposition #:"
-#~ msgstr "Proposition #:"
+#~ msgstr "Satz #:"
 
 #~ msgid "Conjecture #:"
 #~ msgstr "Vermutung #:"
