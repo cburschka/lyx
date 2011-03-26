@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-03-26 01:06+0100\n"
-"PO-Revision-Date: 2011-03-26 01:18+0100\n"
+"POT-Creation-Date: 2011-03-26 02:01+0100\n"
+"PO-Revision-Date: 2011-03-26 02:07+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -4093,75 +4093,85 @@ msgstr "File interfaccia &utente:"
 msgid "&Icon Set:"
 msgstr "Set di &icone:"
 
-#: src/frontends/qt4/ui/PrefUi.ui:77
+#: src/frontends/qt4/ui/PrefUi.ui:68
+msgid ""
+"The icon set to use. Warning: size of icons may be wrong\n"
+"until you save the preferences, restart LyX and choose\n"
+"\"Normal-sized icons\" from the toolbar menu."
+msgstr ""
+"Il set di icone da usare. Attenzione: la dimensione delle icone può\n"
+"non essere corretta finché non si salvano le preferenze, si rilancia\n"
+"LyX e si sceglie \"Icone normali\" dal menù della barra strumenti."
+
+#: src/frontends/qt4/ui/PrefUi.ui:75
 msgid "Automatic help"
 msgstr "Aiuto automatico"
 
-#: src/frontends/qt4/ui/PrefUi.ui:95
+#: src/frontends/qt4/ui/PrefUi.ui:93
 msgid "Checking this allows the automatic display of helpful comments for insets in the main work area of an edited document"
 msgstr ""
 "Consente la visualizzazione automatica di commenti utili relativi\n"
 "agli inserti nell'area principale del documento editato"
 
-#: src/frontends/qt4/ui/PrefUi.ui:98
+#: src/frontends/qt4/ui/PrefUi.ui:96
 msgid "&Enable tool tips in main work area"
 msgstr "Abili&ta commenti nell'area di lavoro principale"
 
-#: src/frontends/qt4/ui/PrefUi.ui:108
+#: src/frontends/qt4/ui/PrefUi.ui:106
 msgid "Session"
 msgstr "Sessione"
 
-#: src/frontends/qt4/ui/PrefUi.ui:120
+#: src/frontends/qt4/ui/PrefUi.ui:118
 msgid "Restore window layouts and &geometries"
 msgstr "Ripristina posizione e &geometria della finestra"
 
-#: src/frontends/qt4/ui/PrefUi.ui:127
+#: src/frontends/qt4/ui/PrefUi.ui:125
 msgid "Restore to the cursor position when the file was last closed"
 msgstr ""
 "Ripristina il cursore alla posizione in cui\n"
 "si trovava quando il file è stato chiuso"
 
-#: src/frontends/qt4/ui/PrefUi.ui:130
+#: src/frontends/qt4/ui/PrefUi.ui:128
 msgid "Restore cursor &positions"
 msgstr "Ripristina la posi&zione del cursore"
 
-#: src/frontends/qt4/ui/PrefUi.ui:137
+#: src/frontends/qt4/ui/PrefUi.ui:135
 msgid "&Load opened files from last session"
 msgstr "Riapri i &file aperti nell'ultima sessione"
 
-#: src/frontends/qt4/ui/PrefUi.ui:144
+#: src/frontends/qt4/ui/PrefUi.ui:142
 msgid "&Clear all session information"
 msgstr "&Cancella le informazioni di sessione"
 
-#: src/frontends/qt4/ui/PrefUi.ui:167
+#: src/frontends/qt4/ui/PrefUi.ui:165
 msgid "Documents"
 msgstr "Documenti"
 
-#: src/frontends/qt4/ui/PrefUi.ui:176
+#: src/frontends/qt4/ui/PrefUi.ui:174
 msgid "Backup original documents when saving"
 msgstr "C&onserva copia dei documenti originali quando si salva"
 
-#: src/frontends/qt4/ui/PrefUi.ui:183
+#: src/frontends/qt4/ui/PrefUi.ui:181
 msgid "&Backup documents, every"
 msgstr "Bac&kup dei documenti ogni"
 
-#: src/frontends/qt4/ui/PrefUi.ui:200
+#: src/frontends/qt4/ui/PrefUi.ui:198
 msgid "minutes"
 msgstr "minuti"
 
-#: src/frontends/qt4/ui/PrefUi.ui:220
+#: src/frontends/qt4/ui/PrefUi.ui:218
 msgid "&Save documents compressed by default"
 msgstr "Salva documenti nel formato &compresso"
 
-#: src/frontends/qt4/ui/PrefUi.ui:227
+#: src/frontends/qt4/ui/PrefUi.ui:225
 msgid "&Maximum last files:"
 msgstr "&Massimo numero di ultimi file:"
 
-#: src/frontends/qt4/ui/PrefUi.ui:257
+#: src/frontends/qt4/ui/PrefUi.ui:255
 msgid "&Open documents in tabs"
 msgstr "Apri i &documenti in linguette"
 
-#: src/frontends/qt4/ui/PrefUi.ui:264
+#: src/frontends/qt4/ui/PrefUi.ui:262
 msgid ""
 "Whether to open documents in an already running instance of LyX.\n"
 "(Set the LyXServer pipe path and restart LyX to enable this feature)"
@@ -4169,15 +4179,15 @@ msgstr ""
 "Usa una istanza di LyX già in esecuzione per aprire i documenti.\n"
 "(Per attivare, specificare la \"LyXServer pipe\" e rilanciare LyX)"
 
-#: src/frontends/qt4/ui/PrefUi.ui:267
+#: src/frontends/qt4/ui/PrefUi.ui:265
 msgid "S&ingle instance"
 msgstr "Singo&la istanza"
 
-#: src/frontends/qt4/ui/PrefUi.ui:274
+#: src/frontends/qt4/ui/PrefUi.ui:272
 msgid "Whether to place close button on each tab or only one in the top left."
 msgstr "Usa un solo pulsante di chiusura in alto a destra invece che un pulsante per linguetta."
 
-#: src/frontends/qt4/ui/PrefUi.ui:277
+#: src/frontends/qt4/ui/PrefUi.ui:275
 msgid "&Single close-tab button"
 msgstr "Singolo &pulsante per chiusura linguette"
 
