@@ -124,7 +124,7 @@
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
@@ -570,11 +570,9 @@ File
 
 \family sans
 New 
-\begin_inset Graphics
-	filename ../images/buffer-new.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "buffer-new"
 \end_inset
 
 
@@ -602,13 +600,9 @@ Template
 
 \family sans
 Open 
-\family default
-
-\begin_inset Graphics
-	filename ../images/file-open.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "file-open"
 \end_inset
 
 
@@ -624,13 +618,9 @@ Close
 
 \family sans
 Save 
-\family default
-
-\begin_inset Graphics
-	filename ../images/buffer-write.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "buffer-write"
 \end_inset
 
 
@@ -686,13 +676,9 @@ Export
 
 \family sans
 Print 
-\family default
-
-\begin_inset Graphics
-	filename ../images/dialog-show_print.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show print"
 \end_inset
 
 
@@ -898,11 +884,9 @@ Edit
 Cut 
 \family default
 
-\begin_inset Graphics
-	filename ../images/cut.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "cut"
 \end_inset
 
 
@@ -914,11 +898,9 @@ Cut
 Copy 
 \family default
 
-\begin_inset Graphics
-	filename ../images/copy.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "copy"
 \end_inset
 
 
@@ -930,11 +912,9 @@ Copy
 Paste 
 \family default
 
-\begin_inset Graphics
-	filename ../images/paste.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "paste"
 \end_inset
 
 
@@ -974,11 +954,9 @@ Find
 Replace 
 \family default
 
-\begin_inset Graphics
-	filename ../images/dialog-show_findreplace.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show findreplace"
 \end_inset
 
 
@@ -1298,11 +1276,9 @@ Edit\SpecialChar \menuseparator
 Undo
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/undo.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "undo"
 \end_inset
 
  to undo some mistake.
@@ -1312,11 +1288,9 @@ Edit\SpecialChar \menuseparator
 Redo
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/redo.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "redo"
 \end_inset
 
  to 
@@ -1496,11 +1470,9 @@ Document\SpecialChar \menuseparator
 Outline
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/dialog-toggle_toc.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-toggle toc"
 \end_inset
 
 .
@@ -1623,19 +1595,15 @@ With the buttons
 2.4.
  LyX will then automatically renumber the sections to the new order.
  With the buttons 
-\begin_inset Graphics
-	filename ../images/promote.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "depth-decrement"
 \end_inset
 
  and 
-\begin_inset Graphics
-	filename ../images/demote.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "depth-increment"
 \end_inset
 
  or the corresponding key bindings 
@@ -1664,11 +1632,9 @@ Shift-Tab
 
 \begin_layout Standard
 The toolbar button 
-\begin_inset Graphics
-	filename ../images/bookmark-goto_0.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "bookmark-goto 0"
 \end_inset
 
  jumps to the position in the document where you recently changed something.
@@ -7091,19 +7057,15 @@ Edit
  menu to change the nesting depth of the current paragraph (the status bar
  will tell you how far you are nested).
  Instead of the menu, you can also use the toolbar buttons 
-\begin_inset Graphics
-	filename ../images/depth-increment.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "depth-increment"
 \end_inset
 
  and 
-\begin_inset Graphics
-	filename ../images/depth-decrement.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "depth-decrement"
 \end_inset
 
  or the convenient key bindings 
@@ -11908,11 +11870,9 @@ Noun
 
 \begin_layout Itemize
 click on the toolbar button 
-\begin_inset Graphics
-	filename ../images/font-noun.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "font-noun"
 \end_inset
 
 
@@ -11973,11 +11933,9 @@ Emphasized
 
 \begin_layout Itemize
 clicking on the toolbar button 
-\begin_inset Graphics
-	filename ../images/font-emph.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "font-emph"
 \end_inset
 
 
@@ -12834,11 +12792,9 @@ Style
 \family default
  dialog, the settings are saved.
  You can activate them using the toolbar button 
-\begin_inset Graphics
-	filename ../images/textstyle-apply.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "textstyle-apply"
 \end_inset
 
 .
@@ -13883,8 +13839,9 @@ Document ! Preview
 \end_layout
 
 \begin_layout Standard
-To get a look at the final version of your document, with all of the pagebreaks
- in place, the footnotes correctly numbered, and so on, use the menu 
+To get a look at the final version of your document, with all of the page
+ breaks in place, the footnotes correctly numbered, and so on, use the menu
+ 
 \family sans
 View
 \family default
@@ -13984,11 +13941,9 @@ File\SpecialChar \menuseparator
 Print
 \family default
  or click on the toolbar button 
-\begin_inset Graphics
-	filename ../images/dialog-show_print.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show print"
 \end_inset
 
 .
@@ -15885,11 +15840,9 @@ As you can see in the example, the first line of greyed out notes is a bit
 
 \begin_layout Standard
 Notes are inserted with the toolbar button 
-\begin_inset Graphics
-	filename ../images/note-insert.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "note-insert"
 \end_inset
 
  or the menu 
@@ -15930,11 +15883,9 @@ Insert\SpecialChar \menuseparator
 Footnote
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/footnote-insert.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
 \end_inset
 
 , 
@@ -16089,11 +16040,9 @@ Marginal
 Note
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/marginalnote-insert.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "marginalnote-insert"
 \end_inset
 
 , you'll see 
@@ -16186,11 +16135,9 @@ name "sec:Graphics"
 \begin_layout Standard
 To insert an image in your document, place the cursor at the text position
  you want and click on the toolbar icon 
-\begin_inset Graphics
-	filename ../images/dialog-show-new-inset_graphics.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
 \end_inset
 
  or select 
@@ -21738,11 +21685,9 @@ Math ! Basics
 
 \begin_layout Standard
 To create a math formula, you can just click on the toolbar icon 
-\begin_inset Graphics
-	filename ../images/math-mode.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "math-mode on"
 \end_inset
 
 .
@@ -23470,11 +23415,9 @@ There are several brackets available through LyX.
  But if you want to surround a large structure, like a matrix or a fraction,
  or if you have several layers of brackets, it is better to use the math
  toolbar delimiter icon 
-\begin_inset Graphics
-	filename ../images/math/delim.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathdelimiter"
 \end_inset
 
 .
@@ -25019,11 +24962,9 @@ Insert\SpecialChar \menuseparator
 Label
 \family default
  or by pressing the toolbar button 
-\begin_inset Graphics
-	filename ../images/label-insert.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
 .
@@ -25100,11 +25041,9 @@ Insert\SpecialChar \menuseparator
 Cross-Reference
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/dialog-show-new-inset_ref.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
 .
@@ -25458,11 +25397,9 @@ Back
 \family default
  so that you can use it to set the cursor back to the cross-reference.
  You can also go back with the toolbar button 
-\begin_inset Graphics
-	filename ../images/bookmark-goto_0.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "bookmark-goto 0"
 \end_inset
 
 .
@@ -25749,11 +25686,9 @@ Insert\SpecialChar \menuseparator
 Hyperlink
 \family default
  or with the toolbar button 
-\begin_inset Graphics
-	filename ../images/href-insert.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "href-insert"
 \end_inset
 
 .
@@ -26038,11 +25973,9 @@ Insert\SpecialChar \menuseparator
 Citation
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/dialog-show-new-inset_citation.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset citation"
 \end_inset
 
 .
@@ -26488,11 +26421,9 @@ Index
 Entry
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/index-insert.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "index-insert"
 \end_inset
 
 .
@@ -27632,11 +27563,9 @@ omenclature
 Entry
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/nomencl-insert.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "nomencl-insert"
 \end_inset
 
 .
@@ -28992,11 +28921,9 @@ TeX
 Code
 \family default
  or by the toolbar button 
-\begin_inset Graphics
-	filename ../images/ert-insert.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "ert-insert"
 \end_inset
 
 .
@@ -29609,11 +29536,9 @@ arg   "dialog-show findreplaceadv"
 \end_inset
 
 ) or the toolbar button 
-\begin_inset Graphics
-	filename ../images/dialog-toggle_findreplaceadv.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-toggle findreplaceadv"
 \end_inset
 
 .
@@ -30169,11 +30094,9 @@ The menu
 Spellchecker
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/dialog-show_spellchecker.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show spellchecker"
 \end_inset
 
  starts the spell checking beginning from the current cursor position.
@@ -30564,11 +30487,9 @@ Tools\SpecialChar \menuseparator
 Thesaurus
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/thesaurus-entry.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "thesaurus-entry"
 \end_inset
 
  while the cursor is at the word you want to look up or while a word is
@@ -30781,11 +30702,9 @@ Color ! Change tracking
  The author and the date of the change are shown in LyX's status bar when
  the cursor is in changed text.
  The same information is shown when you use the toolbar button 
-\begin_inset Graphics
-	filename ../images/changes-merge.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "changes-merge"
 \end_inset
 
 .
