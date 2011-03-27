@@ -37085,6 +37085,75 @@ reference "sec:Previewing-snippets-of"
 \end_inset
 
 .
+\change_inserted -712698321 1301219943
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1301219959
+View Messages
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1301220076
+Opens a window showing console messages.
+ This is useful for debugging LyX (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., hunt for errors in the program) or to see what is going on in the background
+ while LaTeX is processing the document,
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1301220084
+View
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1301220342
+This menu entry generates the output you have specified as default output
+ format either in the preferences (see sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:File-Formats"
+
+\end_inset
+
+) or in the document settings (see sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Doc-Output"
+
+\end_inset
+
+), for instance PDF, and opens it in an appropriate viewer.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1301220353
+View (Other Formats)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1301220444
+With this submenu, you can view your document in alternative output formats.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -37092,8 +37161,159 @@ Update
 \end_layout
 
 \begin_layout Standard
-This menu entry allows you to update the view with your latest changes without
- opening a new view window.
+This menu entry allows you to update the view with your latest changes 
+\change_inserted -712698321 1301220297
+(in the default output format as described in the previous section) 
+\change_unchanged
+without opening a new view
+\change_inserted -712698321 1301220263
+er
+\change_unchanged
+ window.
+\change_inserted -712698321 1301220384
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1301220388
+Update (Other Formats)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1301220467
+With this submenu, you can update the view of alternative output formats
+ of your document without opening a new viewer window.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1301220487
+View Master Document
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1301220814
+This menu item is only visible if your document is included to another document,
+ which is then its 
+\begin_inset Quotes eld
+\end_inset
+
+master
+\begin_inset Quotes erd
+\end_inset
+
+ (see section 
+\emph on
+Child Documents
+\emph default
+ in the 
+\emph on
+Embedded Objects
+\emph default
+ manual for more information on this topic).
+ This item allows you to view the master document from within its child.
+ That is, if you are working on a child document which is a chapter of a
+ book, 
+\family sans
+View Master
+\family default
+ generates the output of the whole book, while 
+\family sans
+View
+\family default
+ will just output the chapter alone.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1301220854
+The format used by this function is the default output format as specified
+ in the preferences (see sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:File-Formats"
+
+\end_inset
+
+) or in the document settings (see sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Doc-Output"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1301220878
+Update Master Document
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1301220947
+This menu item is only visible if your document is included to another document,
+ which is then its 
+\begin_inset Quotes eld
+\end_inset
+
+master
+\begin_inset Quotes erd
+\end_inset
+
+ (see section 
+\emph on
+Child Documents
+\emph default
+ in the 
+\emph on
+Embedded Objects
+\emph default
+ manual for more information on this topic).
+ This item allows you to update the view of a master document from within
+ its child without the need to switch to the master document itself.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1301220879
+The format used by this function is the default output format as specified
+ in the preferences (see sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:File-Formats"
+
+\end_inset
+
+) or in the document settings (see sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Doc-Output"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Subsection
@@ -40509,27 +40729,6 @@ Toolbar ! View / Update
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1299491113
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted -712698321 1299491119
-FIXME: Needs update!
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Graphics
 	filename clipart/ViewToolbar.png
 
@@ -40559,7 +40758,7 @@ The view / update toolbar as shown above contains from left to right the
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
+<lyxtabular version="3" rows="7" columns="2">
 <features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -40572,7 +40771,7 @@ The view / update toolbar as shown above contains from left to right the
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "buffer-view dvi"
+arg   "buffer-view"
 \end_inset
 
 
@@ -40587,7 +40786,13 @@ arg   "buffer-view dvi"
 
 \family sans
 View\SpecialChar \menuseparator
+
+\change_deleted -712698321 1301219015
 DVI
+\change_inserted -712698321 1301219016
+View
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -40602,7 +40807,7 @@ DVI
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "buffer-update dvi"
+arg   "buffer-update"
 \end_inset
 
 
@@ -40617,8 +40822,12 @@ arg   "buffer-update dvi"
 
 \family sans
 View\SpecialChar \menuseparator
-Update\SpecialChar \menuseparator
+Update
+\change_deleted -712698321 1301219034
+\SpecialChar \menuseparator
 DVI
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -40633,7 +40842,7 @@ DVI
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "buffer-view pdf2"
+arg   "master-buffer-view"
 \end_inset
 
 
@@ -40648,7 +40857,13 @@ arg   "buffer-view pdf2"
 
 \family sans
 View\SpecialChar \menuseparator
+
+\change_deleted -712698321 1301219081
 PDF
+\change_inserted -712698321 1301219082
+Master
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -40663,7 +40878,7 @@ PDF
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "buffer-update pdf2"
+arg   "master-buffer-update"
 \end_inset
 
 
@@ -40678,8 +40893,14 @@ arg   "buffer-update pdf2"
 
 \family sans
 View\SpecialChar \menuseparator
-Update\SpecialChar \menuseparator
+Update
+\change_deleted -712698321 1301219101
+\SpecialChar \menuseparator
 PDF
+\change_inserted -712698321 1301219102
+Master
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -40694,7 +40915,7 @@ PDF
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "buffer-view ps"
+arg   "buffer-toggle-output-sync"
 \end_inset
 
 
@@ -40707,9 +40928,23 @@ arg   "buffer-view ps"
 
 \begin_layout Plain Layout
 
+\change_deleted -712698321 1301219324
+
 \family sans
-View\SpecialChar \menuseparator
+View
+\change_inserted -712698321 1301219325
+Document
+\change_unchanged
+\SpecialChar \menuseparator
+
+\change_deleted -712698321 1301219329
 Postscript
+\change_inserted -712698321 1301219342
+Settings\SpecialChar \menuseparator
+Output\SpecialChar \menuseparator
+Synchronize with Output
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -40721,13 +40956,27 @@ Postscript
 
 \begin_layout Plain Layout
 
+\change_inserted -712698321 1301219584
+\begin_inset Graphics
+	filename /usr/local/share/lyx/images/view-others.png
+	scale 85
+	groupId toolbarbuttons
+
+\end_inset
+
+
 \family sans
+*
+\change_deleted -712698321 1301219431
+
 \begin_inset Info
 type  "icon"
 arg   "buffer-update ps"
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -40738,9 +40987,52 @@ arg   "buffer-update ps"
 \begin_layout Plain Layout
 
 \family sans
-View\SpecialChar \menuseparator
+View
+\change_inserted -712698321 1301219507
+\SpecialChar \menuseparator
+
+\change_deleted -712698321 1301219457
+\SpecialChar \menuseparator
 Update\SpecialChar \menuseparator
 Postscript
+\change_inserted -712698321 1301219471
+View (Other Formats)
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1301219587
+\begin_inset Graphics
+	filename /usr/local/share/lyx/images/update-others.png
+	scale 85
+	groupId toolbarbuttons
+
+\end_inset
+
+*
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1301219513
+
+\family sans
+View\SpecialChar \menuseparator
+Update (Other Formats)
 \end_layout
 
 \end_inset
@@ -40750,6 +41042,17 @@ Postscript
 
 \end_inset
 
+
+\change_inserted -712698321 1301219552
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1301219630
+* These icons might look different for you if you do not use the default
+ icon set.
+\change_unchanged
 
 \end_layout
 
@@ -40834,11 +41137,7 @@ Settings
 e Save as Document Defaults
 \family default
  button in the dialog.
- This will create a template name
-\family typewriter
-d
-\family default
- 
+ This will create a template named 
 \family typewriter
 default.lyx
 \family default
