@@ -246,13 +246,18 @@
 # 4 novembre 2010 mise a jour en vue de 2.0beta
 #                 traduction de Flex: ??
 # ------------------------------------------------------------------
+# 25 mars 2011 2.0 approche... mise a jour avant rc2
+#              le menu contextuel a ete allege,
+#              reprise d'anciens raccourcis abandonnes
+#              pour cause de manque de lettres
+# ------------------------------------------------------------------
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-03-28 01:01+0200\n"
-"PO-Revision-Date: 2011-03-20 11:36+0100\n"
+"POT-Creation-Date: 2011-03-28 01:05+0200\n"
+"PO-Revision-Date: 2011-03-25 18:28+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -3465,11 +3470,12 @@ msgid ""
 "Configure the width of the text cursor. Automatic zoom-controlled cursor "
 "width used when set to 0."
 msgstr ""
+"Configurer le largeur du curseur de texte. Si la valeur vaut 0, une largeur "
+"de curseur avec zoom automatique est utilisée."
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:49
-#, fuzzy
 msgid "Cursor width (&pixels):"
-msgstr "Écran &utilisé (pixels) :"
+msgstr "Largeur du curseur (&pixels) :"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:77
 msgid "Scroll &below end of document"
@@ -4748,9 +4754,8 @@ msgstr ""
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:14
 #: src/frontends/qt4/GuiSpellchecker.cpp:170
-#, fuzzy
 msgid "Spell Checker"
-msgstr "Correcteur Orthographique"
+msgstr "Correcteur orthographique"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:38
 msgid ""
@@ -12428,7 +12433,6 @@ msgid "Use Locking Property|L"
 msgstr "Utiliser la propriété de verrouillage|p"
 
 #: lib/ui/stdmenus.inc:91
-#, fuzzy
 msgid "More Formats & Options...|O"
 msgstr "Plus de formats et d'options...|o"
 
@@ -20633,9 +20637,8 @@ msgstr "Préambule LaTeX"
 
 #: src/frontends/qt4/GuiDocument.cpp:1524
 #: src/frontends/qt4/GuiDocument.cpp:1554
-#, fuzzy
 msgid "&Default..."
-msgstr "Implicite..."
+msgstr "&Implicite..."
 
 #: src/frontends/qt4/GuiDocument.cpp:1694
 #: src/frontends/qt4/GuiDocument.cpp:1700
@@ -21504,7 +21507,7 @@ msgstr "Erreur -> Impossible de charger le fichier !"
 msgid ""
 "We reached the end of the document, would you like to continue from the "
 "beginning?"
-msgstr ""
+msgstr "Fin du document atteinte, continuer au début ?"
 
 #: src/frontends/qt4/GuiSymbols.cpp:54
 msgid "Basic Latin"
@@ -22329,9 +22332,8 @@ msgid " (unknown)"
 msgstr "(inconnu)"
 
 #: src/frontends/qt4/Menus.cpp:664
-#, fuzzy
 msgid "More...|M"
-msgstr "Comparer...|e"
+msgstr "Plus...|P"
 
 #: src/frontends/qt4/Menus.cpp:754
 msgid "No Group"
