@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-03-25 18:05+0100\n"
-"PO-Revision-Date: 2011-03-25 15:34+0100\n"
+"POT-Creation-Date: 2011-03-27 19:48+0200\n"
+"PO-Revision-Date: 2011-03-27 20:00+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -4006,74 +4006,84 @@ msgstr "Súbor s užívateľským rozhraním:"
 msgid "&Icon Set:"
 msgstr "Sada ikon:"
 
-#: src/frontends/qt4/ui/PrefUi.ui:77
+#: src/frontends/qt4/ui/PrefUi.ui:68
+msgid ""
+"The icon set to use. Warning: size of icons may be wrong\n"
+"until you save the preferences, restart LyX and choose\n"
+"\"Normal-sized icons\" from the toolbar menu."
+msgstr ""
+"Sada ikon na použitie. Pozor: Pokiaľ nie je uložený v preferenciách,\n"
+"je rozmer ikon možno nevhodný. Reštartuje LyX a zvoľte\n"
+"\"Normálne ikony\" v menu \"Lišty nástrojov\"."
+
+#: src/frontends/qt4/ui/PrefUi.ui:75
 msgid "Automatic help"
 msgstr "Automatická nápoveda"
 
-#: src/frontends/qt4/ui/PrefUi.ui:95
+#: src/frontends/qt4/ui/PrefUi.ui:93
 msgid ""
 "Checking this allows the automatic display of helpful comments for insets in "
 "the main work area of an edited document"
 msgstr "Zobrazuje komentáre s nápoveďou pre vložky v editovanom dokumente"
 
-#: src/frontends/qt4/ui/PrefUi.ui:98
+#: src/frontends/qt4/ui/PrefUi.ui:96
 msgid "&Enable tool tips in main work area"
 msgstr "Umožniť bublinové nápovede na hlavnej pracovnej ploche"
 
-#: src/frontends/qt4/ui/PrefUi.ui:108
+#: src/frontends/qt4/ui/PrefUi.ui:106
 msgid "Session"
 msgstr "Sedenie"
 
-#: src/frontends/qt4/ui/PrefUi.ui:120
+#: src/frontends/qt4/ui/PrefUi.ui:118
 msgid "Restore window layouts and &geometries"
 msgstr "Reštauruj formáty okien a ich geometrie"
 
-#: src/frontends/qt4/ui/PrefUi.ui:127
+#: src/frontends/qt4/ui/PrefUi.ui:125
 msgid "Restore to the cursor position when the file was last closed"
 msgstr ""
 "Reštauruj pozíciu kurzoru na miesto, kde bol pri poslednom zavretí súboru"
 
-#: src/frontends/qt4/ui/PrefUi.ui:130
+#: src/frontends/qt4/ui/PrefUi.ui:128
 msgid "Restore cursor &positions"
 msgstr "Reštauruj pozíciu kurzoru"
 
-#: src/frontends/qt4/ui/PrefUi.ui:137
+#: src/frontends/qt4/ui/PrefUi.ui:135
 msgid "&Load opened files from last session"
 msgstr "Nahraj súbory otvorené v predošlom sedení"
 
-#: src/frontends/qt4/ui/PrefUi.ui:144
+#: src/frontends/qt4/ui/PrefUi.ui:142
 msgid "&Clear all session information"
 msgstr "Zmazať všetky informácie týkajúce sa sedenia"
 
-#: src/frontends/qt4/ui/PrefUi.ui:167
+#: src/frontends/qt4/ui/PrefUi.ui:165
 msgid "Documents"
 msgstr "Dokumenty"
 
-#: src/frontends/qt4/ui/PrefUi.ui:176
+#: src/frontends/qt4/ui/PrefUi.ui:174
 msgid "Backup original documents when saving"
 msgstr "Zálohovať originálne dokumenty pri uložení"
 
-#: src/frontends/qt4/ui/PrefUi.ui:183
+#: src/frontends/qt4/ui/PrefUi.ui:181
 msgid "&Backup documents, every"
 msgstr "Zálohovať dokumenty, každých"
 
-#: src/frontends/qt4/ui/PrefUi.ui:200
+#: src/frontends/qt4/ui/PrefUi.ui:198
 msgid "minutes"
 msgstr "min."
 
-#: src/frontends/qt4/ui/PrefUi.ui:220
+#: src/frontends/qt4/ui/PrefUi.ui:218
 msgid "&Save documents compressed by default"
 msgstr "Štandardne ukladať dokumenty komprimované"
 
-#: src/frontends/qt4/ui/PrefUi.ui:227
+#: src/frontends/qt4/ui/PrefUi.ui:225
 msgid "&Maximum last files:"
 msgstr "Maximum posledných súborov:"
 
-#: src/frontends/qt4/ui/PrefUi.ui:257
+#: src/frontends/qt4/ui/PrefUi.ui:255
 msgid "&Open documents in tabs"
 msgstr "Otvoriť dokumenty v paneloch"
 
-#: src/frontends/qt4/ui/PrefUi.ui:264
+#: src/frontends/qt4/ui/PrefUi.ui:262
 msgid ""
 "Whether to open documents in an already running instance of LyX.\n"
 "(Set the LyXServer pipe path and restart LyX to enable this feature)"
@@ -4082,15 +4092,15 @@ msgstr ""
 "(Nastavit cestu k dátovodu pre LyXServer a reštartovať LyX umožní túto "
 "vlastnosť)"
 
-#: src/frontends/qt4/ui/PrefUi.ui:267
+#: src/frontends/qt4/ui/PrefUi.ui:265
 msgid "S&ingle instance"
 msgstr "Jednoduchá inštancia"
 
-#: src/frontends/qt4/ui/PrefUi.ui:274
+#: src/frontends/qt4/ui/PrefUi.ui:272
 msgid "Whether to place close button on each tab or only one in the top left."
 msgstr "Dať tlačidlo \"Zavrieť\" na každé podokno, alebo len jedno vľavo hore."
 
-#: src/frontends/qt4/ui/PrefUi.ui:277
+#: src/frontends/qt4/ui/PrefUi.ui:275
 msgid "&Single close-tab button"
 msgstr "Jedno tlačidlo na zavretie podokien"
 
