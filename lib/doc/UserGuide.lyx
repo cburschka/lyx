@@ -124,7 +124,7 @@
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
@@ -13845,14 +13845,74 @@ To get a look at the final version of your document, with all of the page
 \family sans
 View
 \family default
- and choose a file type.
- A viewing program will pop up showing the output.
- For 
+ and choose 
+\change_deleted -712698321 1301225765
+a file type
+\change_inserted -712698321 1301225910
+
+\family sans
+View
+\family default
+ or the toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
+
+
+\change_unchanged
+.
+ A viewing program will pop up showing the output
+\change_inserted -712698321 1301226025
+ in the defined default output format, which is globally set in the preferences
+ (see sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:File-Formats"
+
+\end_inset
+
+) and can also be altered for single documents in the document settings
+ (see sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Doc-Output"
+
+\end_inset
+
+)
+\change_unchanged
+.
+ 
+\change_deleted -712698321 1301226035
+For
+\change_inserted -712698321 1301226047
+Further output formats can be selected via 
+\change_deleted -712698321 1301226049
+ 
+\change_unchanged
+
 \family sans
 View\SpecialChar \menuseparator
+
+\change_deleted -712698321 1301226053
 DVI
+\change_inserted -712698321 1301226055
+Other Formats
+\change_unchanged
+
 \family default
- you can use the toolbar button 
+ 
+\change_deleted -712698321 1301226064
+you can use the toolbar button 
 \begin_inset Graphics
 	filename ../images/buffer-view_dvi.png
 	scale 85
@@ -13902,7 +13962,19 @@ type  "shortcut"
 arg   "buffer-view ps"
 \end_inset
 
-).
+)
+\change_inserted -712698321 1301226110
+or the toolbar button 
+\begin_inset Graphics
+	filename ../images/view-others.png
+	scale 85
+	groupId toolbarbuttons
+
+\end_inset
+
+
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Standard
@@ -13911,7 +13983,16 @@ If you have changed your document, you can refresh the output in the same
 \family sans
 View\SpecialChar \menuseparator
 Update
+\change_inserted -712698321 1301226188
+
 \family default
+ or 
+\family sans
+View\SpecialChar \menuseparator
+Update (Other Formats)
+\family default
+, respectively
+\change_unchanged
 .
 \end_layout
 
