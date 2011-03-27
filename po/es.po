@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-03-28 01:01+0200\n"
-"PO-Revision-Date: 2011-03-10 10:25+0100\n"
+"POT-Creation-Date: 2011-03-28 01:07+0200\n"
+"PO-Revision-Date: 2011-03-26 12:04+0100\n"
 "Last-Translator: Ignacio García <ignacio.gmorales@gmail.com>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
 "Language: es\n"
@@ -3209,11 +3209,12 @@ msgid ""
 "Configure the width of the text cursor. Automatic zoom-controlled cursor "
 "width used when set to 0."
 msgstr ""
+"Ajusta la anchura del cursor de texto. Si se pone 0, se usará control de "
+"zoom automático."
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:49
-#, fuzzy
 msgid "Cursor width (&pixels):"
-msgstr "Pa&ntalla utilizada (pixels):"
+msgstr "Anchura del cursor (&pixels):"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:77
 msgid "Scroll &below end of document"
@@ -4475,7 +4476,6 @@ msgstr ""
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:14
 #: src/frontends/qt4/GuiSpellchecker.cpp:170
-#, fuzzy
 msgid "Spell Checker"
 msgstr "Corrector ortográfico"
 
@@ -10743,7 +10743,7 @@ msgstr "Albanés"
 
 #: lib/languages:94
 msgid "English (USA)"
-msgstr "Inglés ("
+msgstr "Inglés (EEUU)"
 
 #: lib/languages:113
 msgid "Arabic (ArabTeX)"
@@ -12121,7 +12121,6 @@ msgid "Use Locking Property|L"
 msgstr "Usar la propiedad de bloqueo|U"
 
 #: lib/ui/stdmenus.inc:91
-#, fuzzy
 msgid "More Formats & Options...|O"
 msgstr "Más formatos y opciones...|s"
 
@@ -20305,9 +20304,8 @@ msgstr "Preámbulo LaTeX"
 
 #: src/frontends/qt4/GuiDocument.cpp:1524
 #: src/frontends/qt4/GuiDocument.cpp:1554
-#, fuzzy
 msgid "&Default..."
-msgstr "Predeterminado..."
+msgstr "&Predeterminado..."
 
 #: src/frontends/qt4/GuiDocument.cpp:1694
 #: src/frontends/qt4/GuiDocument.cpp:1700
@@ -21174,7 +21172,7 @@ msgstr "Error -> ¡No se puede cargar el archivo!"
 msgid ""
 "We reached the end of the document, would you like to continue from the "
 "beginning?"
-msgstr ""
+msgstr "Se ha llegado al final del documento, ¿continuar desde el principio?"
 
 #: src/frontends/qt4/GuiSymbols.cpp:54
 msgid "Basic Latin"
@@ -21996,9 +21994,8 @@ msgid " (unknown)"
 msgstr " (desconocido)"
 
 #: src/frontends/qt4/Menus.cpp:664
-#, fuzzy
 msgid "More...|M"
-msgstr "Comparar...|o"
+msgstr "Más...|M"
 
 #: src/frontends/qt4/Menus.cpp:754
 msgid "No Group"
@@ -22572,19 +22569,19 @@ msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "¡Intentó incluir el archivo %1$s en sí mismo! Ignorando la inclusión."
 
 #: src/insets/InsetInclude.cpp:562
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not load included file\n"
 "`%1$s'\n"
 "Please, check whether it actually exists."
 msgstr ""
-"No se ha podido crear copia de seguridad de %1$s.\n"
-"Comprueba si existe el directorio y permite escritura."
+"No se ha podido cargar el archivo incluido\n"
+"`%1$s'\n"
+"Comprueba si existe realmente."
 
 #: src/insets/InsetInclude.cpp:566
-#, fuzzy
 msgid "Missing included file"
-msgstr "Incluir archivo"
+msgstr "Archivo incluido ausente"
 
 #: src/insets/InsetInclude.cpp:572
 #, c-format
