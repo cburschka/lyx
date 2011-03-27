@@ -626,7 +626,16 @@ bool GuiView::restoreLayout()
 		return false;
 
 	//code below is skipped when when ~/.config/LyX is (re)created
-	setIconSize(settings.value(icon_key).toSize());
+	QSize icon_size = settings.value(icon_key).toSize();
+	// Check whether session size changed.
+	if (icon_size.width() != d.smallIconSize &&
+	    icon_size.width() != d.normalIconSize &&
+	    icon_size.width() != d.bigIconSize) {
+		icon_size.setWidth(d.normalIconSize);
+		icon_size.setHeight(d.normalIconSize);
+	}
+	setIconSize(icon_size);
+
 #ifdef Q_WS_X11
 	QPoint pos = settings.value("pos", QPoint(50, 50)).toPoint();
 	QSize size = settings.value("size", QSize(690, 510)).toSize();
