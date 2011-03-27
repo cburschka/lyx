@@ -1595,15 +1595,19 @@ With the buttons
 2.4.
  LyX will then automatically renumber the sections to the new order.
  With the buttons 
-\begin_inset Info
-type  "icon"
-arg   "depth-decrement"
+\begin_inset Graphics
+	filename /usr/local/share/lyx/images/promote.png
+	scale 85
+	groupId toolbarbuttons
+
 \end_inset
 
  and 
-\begin_inset Info
-type  "icon"
-arg   "depth-increment"
+\begin_inset Graphics
+	filename /usr/local/share/lyx/images/demote.png
+	scale 85
+	groupId toolbarbuttons
+
 \end_inset
 
  or the corresponding key bindings 
