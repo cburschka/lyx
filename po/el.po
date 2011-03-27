@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-03-24 21:26+0100\n"
+"POT-Creation-Date: 2011-03-28 01:01+0200\n"
 "PO-Revision-Date: 2010-07-07 02:31+0100\n"
 "Last-Translator: Οδυσσέας Δαγκλής <o2d@freemail.gr>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -176,7 +176,7 @@ msgstr "&Προσθήκη"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/buffer_funcs.cpp:110 src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1473
+#: src/frontends/qt4/GuiApplication.cpp:1476
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "Ακύρωση"
@@ -529,11 +529,11 @@ msgstr "Προσθήκη Όλ&ων"
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1799
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:2104
-#: src/frontends/qt4/GuiView.cpp:2293 src/frontends/qt4/GuiView.cpp:2338
-#: src/frontends/qt4/GuiView.cpp:2553 src/frontends/qt4/GuiView.cpp:2560
-#: src/frontends/qt4/GuiView.cpp:2659 src/frontends/qt4/GuiView.cpp:2687
-#: src/frontends/qt4/GuiView.cpp:3267 src/insets/InsetBibtex.cpp:148
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:2114
+#: src/frontends/qt4/GuiView.cpp:2303 src/frontends/qt4/GuiView.cpp:2348
+#: src/frontends/qt4/GuiView.cpp:2563 src/frontends/qt4/GuiView.cpp:2570
+#: src/frontends/qt4/GuiView.cpp:2669 src/frontends/qt4/GuiView.cpp:2697
+#: src/frontends/qt4/GuiView.cpp:3277 src/insets/InsetBibtex.cpp:148
 msgid "&Cancel"
 msgstr "&Ακύρωση"
 
@@ -577,7 +577,7 @@ msgstr "Μέγε&θος:"
 #: src/frontends/qt4/GuiDocument.cpp:3218 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:70 src/frontends/qt4/GuiIndices.cpp:57
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
-#: src/frontends/qt4/GuiPrefs.cpp:2212
+#: src/frontends/qt4/GuiPrefs.cpp:2212 src/frontends/qt4/GuiPrefs.cpp:2446
 #: src/frontends/qt4/GuiPrintNomencl.cpp:47
 #: src/frontends/qt4/GuiViewSource.cpp:183
 msgid "Default"
@@ -1902,8 +1902,8 @@ msgstr "Είσοδος"
 msgid "Verbatim"
 msgstr "Αυτολεξεί"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1115
-#: src/insets/InsetInclude.cpp:1121
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1117
+#: src/insets/InsetInclude.cpp:1123
 msgid "Program Listing"
 msgstr "Κώδικας Προγράμματος"
 
@@ -2748,7 +2748,7 @@ msgstr ""
 msgid "MathML"
 msgstr "Μαθηματικά|Μ"
 
-#: src/frontends/qt4/ui/OutputUi.ui:162 lib/configure.py:558
+#: src/frontends/qt4/ui/OutputUi.ui:162 lib/configure.py:591
 msgid "HTML"
 msgstr ""
 
@@ -3175,7 +3175,7 @@ msgstr "&Τροποποίηση"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2831 src/frontends/qt4/GuiPrefs.cpp:2895
+#: src/frontends/qt4/GuiPrefs.cpp:2844 src/frontends/qt4/GuiPrefs.cpp:2908
 msgid "Remo&ve"
 msgstr "Αφαί&ρεση"
 
@@ -3240,7 +3240,7 @@ msgstr "Επεξεργασία"
 msgid "Cursor &follows scrollbar"
 msgstr "Ο δρομέας ακολουθεί τη &μπάρα κύλισης"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:46 src/LyXRC.cpp:3102
+#: src/frontends/qt4/ui/PrefEditUi.ui:46 src/LyXRC.cpp:3121
 msgid ""
 "Configure the width of the text cursor. Automatic zoom-controlled cursor "
 "width used when set to 0."
@@ -3547,7 +3547,7 @@ msgstr "Σημειώστε &ξένες γλώσσες"
 msgid "Right-to-left language support"
 msgstr "Υποστήριξη γλωσσών από δεξιά προς τα αριστερά"
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:215 src/LyXRC.cpp:3383
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:215 src/LyXRC.cpp:3402
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
@@ -3699,7 +3699,7 @@ msgstr "Επαναφορά επιλογών κ&λάσης όταν αλλάζε�
 msgid "Output &line length:"
 msgstr "&Μήκος γραμμής στην έξοδο:"
 
-#: src/frontends/qt4/ui/PrefOutputUi.ui:37 src/LyXRC.cpp:3049
+#: src/frontends/qt4/ui/PrefOutputUi.ui:37 src/LyXRC.cpp:3068
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -4075,10 +4075,21 @@ msgid "&User interface file:"
 msgstr "Αρχείο &διεπαφής χρήστη:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:58
+#, fuzzy
+msgid "&Icon Set:"
+msgstr "Απόσταση μεταξύ στη&λών:"
+
+#: src/frontends/qt4/ui/PrefUi.ui:68
+msgid ""
+"The icon set to use. Warning: normal size of icons may be\n"
+"wrong until you save the preferences and restart LyX."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefUi.ui:75
 msgid "Automatic help"
 msgstr "Αυτόματη βοήθεια"
 
-#: src/frontends/qt4/ui/PrefUi.ui:76
+#: src/frontends/qt4/ui/PrefUi.ui:93
 #, fuzzy
 msgid ""
 "Checking this allows the automatic display of helpful comments for insets in "
@@ -4087,87 +4098,88 @@ msgstr ""
 "Ενεργοποίηση αυτού επιτρέπει την αυτόματη εμφάνιση χρήσιμων σχολίων ως "
 "ενθεμάτων στον κύριο χώρο εργασίας ενός επεξεργασμένου εγγράφου"
 
-#: src/frontends/qt4/ui/PrefUi.ui:79
+#: src/frontends/qt4/ui/PrefUi.ui:96
 msgid "&Enable tool tips in main work area"
 msgstr "&Ενεργοποίηση εργαλειοσυμβουλών στον κύριο χώρο εργασίας"
 
-#: src/frontends/qt4/ui/PrefUi.ui:89
+#: src/frontends/qt4/ui/PrefUi.ui:106
 msgid "Session"
 msgstr "Σύνοδος"
 
-#: src/frontends/qt4/ui/PrefUi.ui:101
+#: src/frontends/qt4/ui/PrefUi.ui:118
 msgid "Restore window layouts and &geometries"
 msgstr "Eπαναφορά της διάταξης και &γεωμετρίας των παραθύρων"
 
-#: src/frontends/qt4/ui/PrefUi.ui:108
+#: src/frontends/qt4/ui/PrefUi.ui:125
 msgid "Restore to the cursor position when the file was last closed"
 msgstr "Επαναφορά στη θέση του δρομέα κατά το τελευταίο κλείσιμο του αρχείου"
 
-#: src/frontends/qt4/ui/PrefUi.ui:111
+#: src/frontends/qt4/ui/PrefUi.ui:128
 msgid "Restore cursor &positions"
 msgstr "Επαναφορά &θέσεων δρομέα"
 
-#: src/frontends/qt4/ui/PrefUi.ui:118
+#: src/frontends/qt4/ui/PrefUi.ui:135
 msgid "&Load opened files from last session"
 msgstr "Φό&ρτωση ανοιγμένων αρχείων από την τελευταία σύνοδο"
 
-#: src/frontends/qt4/ui/PrefUi.ui:125
-msgid "Clear all session &information"
+#: src/frontends/qt4/ui/PrefUi.ui:142
+#, fuzzy
+msgid "&Clear all session information"
 msgstr "Καθαρισμός Πλ&ηροφοριών Συνόδου"
 
-#: src/frontends/qt4/ui/PrefUi.ui:148
+#: src/frontends/qt4/ui/PrefUi.ui:165
 msgid "Documents"
 msgstr "Έγγραφα"
 
-#: src/frontends/qt4/ui/PrefUi.ui:157
+#: src/frontends/qt4/ui/PrefUi.ui:174
 msgid "Backup original documents when saving"
 msgstr ""
 "Δημιουργία αντιγράφων ασφαλείας αυθεντικών εγγράφων κατά την αποθήκευση"
 
-#: src/frontends/qt4/ui/PrefUi.ui:164
+#: src/frontends/qt4/ui/PrefUi.ui:181
 msgid "&Backup documents, every"
 msgstr "&Αντίγραφα ασφαλείας εγγράφων, κάθε"
 
-#: src/frontends/qt4/ui/PrefUi.ui:181
+#: src/frontends/qt4/ui/PrefUi.ui:198
 msgid "minutes"
 msgstr "λεπτά"
 
-#: src/frontends/qt4/ui/PrefUi.ui:201
+#: src/frontends/qt4/ui/PrefUi.ui:218
 #, fuzzy
 msgid "&Save documents compressed by default"
 msgstr "Αποθήκευση ως Προεπιλογών για το Έγγραφο"
 
-#: src/frontends/qt4/ui/PrefUi.ui:208
+#: src/frontends/qt4/ui/PrefUi.ui:225
 msgid "&Maximum last files:"
 msgstr "&Μέγιστα πρόσφατα αρχεία:"
 
-#: src/frontends/qt4/ui/PrefUi.ui:238
+#: src/frontends/qt4/ui/PrefUi.ui:255
 msgid "&Open documents in tabs"
 msgstr "Άνοιγμα εγγράφων σε &καρτέλες"
 
-#: src/frontends/qt4/ui/PrefUi.ui:245
+#: src/frontends/qt4/ui/PrefUi.ui:262
 msgid ""
 "Whether to open documents in an already running instance of LyX.\n"
 "(Set the LyXServer pipe path and restart LyX to enable this feature)"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefUi.ui:248
+#: src/frontends/qt4/ui/PrefUi.ui:265
 #, fuzzy
 msgid "S&ingle instance"
 msgstr "Μονό Εισαγωγικό|Μ"
 
-#: src/frontends/qt4/ui/PrefUi.ui:255
+#: src/frontends/qt4/ui/PrefUi.ui:272
 msgid "Whether to place close button on each tab or only one in the top left."
 msgstr ""
 "Εάν θα τοποθετηθεί κουμπί κλεισίματος σε κάθε καρτέλα ή μόνο στην πάνω "
 "αριστερή."
 
-#: src/frontends/qt4/ui/PrefUi.ui:258
+#: src/frontends/qt4/ui/PrefUi.ui:275
 msgid "&Single close-tab button"
 msgstr "Απ&λό κουμπί κλεισίματος καρτέλας"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:73 src/frontends/qt4/GuiView.cpp:2553
-#: src/frontends/qt4/GuiView.cpp:2560 src/frontends/qt4/GuiView.cpp:2659
+#: src/frontends/qt4/ui/PrefsUi.ui:73 src/frontends/qt4/GuiView.cpp:2563
+#: src/frontends/qt4/GuiView.cpp:2570 src/frontends/qt4/GuiView.cpp:2669
 msgid "&Save"
 msgstr "Α&ποθήκευση"
 
@@ -4811,8 +4823,8 @@ msgstr "Επανάληψη αυτής της γραμμής ως κεφαλίδ�
 #: src/frontends/qt4/ui/TabularUi.ui:1242
 #: src/frontends/qt4/ui/TabularUi.ui:1283
 #: src/frontends/qt4/ui/TabularUi.ui:1314
-#: src/frontends/qt4/ui/TabularUi.ui:1352 src/frontends/qt4/GuiToolbar.cpp:358
-#: src/frontends/qt4/GuiToolbar.cpp:367
+#: src/frontends/qt4/ui/TabularUi.ui:1352 src/frontends/qt4/GuiToolbar.cpp:362
+#: src/frontends/qt4/GuiToolbar.cpp:371
 msgid "on"
 msgstr "επί"
 
@@ -6226,7 +6238,7 @@ msgstr "Προέλευση"
 
 #: lib/layouts/achemso.layout:110 lib/layouts/lettre.layout:41
 #: lib/layouts/lettre.layout:342 lib/layouts/scrlttr2.layout:191
-#: lib/configure.py:574
+#: lib/configure.py:607
 msgid "Fax"
 msgstr ""
 
@@ -10375,7 +10387,7 @@ msgid "literate"
 msgstr ""
 
 #: lib/layouts/sweave.module:2 lib/layouts/sweave.module:29
-#: lib/configure.py:506
+#: lib/configure.py:539
 msgid "Sweave"
 msgstr ""
 
@@ -15872,385 +15884,385 @@ msgstr ""
 msgid "Dia diagram.\n"
 msgstr ""
 
-#: lib/configure.py:444
+#: lib/configure.py:477
 msgid "Tgif"
 msgstr ""
 
-#: lib/configure.py:447
+#: lib/configure.py:480
 msgid "FIG"
 msgstr ""
 
-#: lib/configure.py:450
+#: lib/configure.py:483
 msgid "DIA"
 msgstr ""
 
-#: lib/configure.py:453
+#: lib/configure.py:486
 msgid "Grace"
 msgstr ""
 
-#: lib/configure.py:456
+#: lib/configure.py:489
 msgid "FEN"
 msgstr ""
 
-#: lib/configure.py:459
+#: lib/configure.py:492
 msgid "SVG"
 msgstr ""
 
-#: lib/configure.py:462 lib/configure.py:473 lib/configure.py:483
+#: lib/configure.py:495 lib/configure.py:506 lib/configure.py:516
 msgid "BMP"
 msgstr ""
 
-#: lib/configure.py:463 lib/configure.py:474 lib/configure.py:484
+#: lib/configure.py:496 lib/configure.py:507 lib/configure.py:517
 msgid "GIF"
 msgstr ""
 
-#: lib/configure.py:464 lib/configure.py:475 lib/configure.py:485
+#: lib/configure.py:497 lib/configure.py:508 lib/configure.py:518
 #: src/frontends/qt4/GuiClipboard.cpp:172
 msgid "JPEG"
 msgstr ""
 
-#: lib/configure.py:465 lib/configure.py:476 lib/configure.py:486
+#: lib/configure.py:498 lib/configure.py:509 lib/configure.py:519
 msgid "PBM"
 msgstr ""
 
-#: lib/configure.py:466 lib/configure.py:477 lib/configure.py:487
+#: lib/configure.py:499 lib/configure.py:510 lib/configure.py:520
 msgid "PGM"
 msgstr ""
 
-#: lib/configure.py:467 lib/configure.py:478 lib/configure.py:488
+#: lib/configure.py:500 lib/configure.py:511 lib/configure.py:521
 #: src/frontends/qt4/GuiClipboard.cpp:171
 msgid "PNG"
 msgstr ""
 
-#: lib/configure.py:468 lib/configure.py:479 lib/configure.py:489
+#: lib/configure.py:501 lib/configure.py:512 lib/configure.py:522
 msgid "PPM"
 msgstr ""
 
-#: lib/configure.py:469 lib/configure.py:480 lib/configure.py:490
+#: lib/configure.py:502 lib/configure.py:513 lib/configure.py:523
 msgid "TIFF"
 msgstr ""
 
-#: lib/configure.py:470 lib/configure.py:481 lib/configure.py:491
+#: lib/configure.py:503 lib/configure.py:514 lib/configure.py:524
 msgid "XBM"
 msgstr ""
 
-#: lib/configure.py:471 lib/configure.py:482 lib/configure.py:492
+#: lib/configure.py:504 lib/configure.py:515 lib/configure.py:525
 msgid "XPM"
 msgstr ""
 
-#: lib/configure.py:497
+#: lib/configure.py:530
 msgid "Plain text (chess output)"
 msgstr "Απλό κείμενο (έξοδος chess)"
 
-#: lib/configure.py:498
+#: lib/configure.py:531
 msgid "Plain text (image)"
 msgstr "Απλό κείμενο (εικόνα)"
 
-#: lib/configure.py:499
+#: lib/configure.py:532
 msgid "Plain text (Xfig output)"
 msgstr "Απλό κείμενο (έξοδος Xfig)"
 
-#: lib/configure.py:500
+#: lib/configure.py:533
 msgid "date (output)"
 msgstr "Ημερομηνία (έξοδος)"
 
-#: lib/configure.py:501 src/frontends/qt4/GuiErrorList.cpp:42
+#: lib/configure.py:534 src/frontends/qt4/GuiErrorList.cpp:42
 msgid "DocBook"
 msgstr ""
 
-#: lib/configure.py:501
+#: lib/configure.py:534
 msgid "DocBook|B"
 msgstr ""
 
-#: lib/configure.py:502
+#: lib/configure.py:535
 msgid "Docbook (XML)"
 msgstr ""
 
-#: lib/configure.py:503
+#: lib/configure.py:536
 msgid "Graphviz Dot"
 msgstr ""
 
-#: lib/configure.py:504
+#: lib/configure.py:537
 msgid "LaTeX (pLaTeX)"
 msgstr ""
 
-#: lib/configure.py:505
+#: lib/configure.py:538
 msgid "NoWeb"
 msgstr ""
 
-#: lib/configure.py:505
+#: lib/configure.py:538
 msgid "NoWeb|N"
 msgstr ""
 
-#: lib/configure.py:506
+#: lib/configure.py:539
 msgid "Sweave|S"
 msgstr ""
 
-#: lib/configure.py:507
+#: lib/configure.py:540
 msgid "LilyPond music"
 msgstr ""
 
-#: lib/configure.py:508
+#: lib/configure.py:541
 msgid "LilyPond book (LaTeX)"
 msgstr ""
 
-#: lib/configure.py:509
+#: lib/configure.py:542
 msgid "LaTeX (plain)"
 msgstr ""
 
-#: lib/configure.py:509
+#: lib/configure.py:542
 msgid "LaTeX (plain)|L"
 msgstr ""
 
-#: lib/configure.py:510
+#: lib/configure.py:543
 #, fuzzy
 msgid "LaTeX (LuaTeX)"
 msgstr "Τίτλος LaTeX"
 
-#: lib/configure.py:511
+#: lib/configure.py:544
 msgid "LaTeX (pdflatex)"
 msgstr ""
 
-#: lib/configure.py:512
+#: lib/configure.py:545
 msgid "LaTeX (XeTeX)"
 msgstr ""
 
-#: lib/configure.py:513
+#: lib/configure.py:546
 msgid "Plain text"
 msgstr "Απλό κείμενο"
 
-#: lib/configure.py:513
+#: lib/configure.py:546
 msgid "Plain text|a"
 msgstr "Απλό κείμενο|Α"
 
-#: lib/configure.py:514
+#: lib/configure.py:547
 msgid "Plain text (pstotext)"
 msgstr "Απλό κείμενο (pstotext)"
 
-#: lib/configure.py:515
+#: lib/configure.py:548
 msgid "Plain text (ps2ascii)"
 msgstr "Απλό κείμενο (ps2ascii)"
 
-#: lib/configure.py:516
+#: lib/configure.py:549
 msgid "Plain text (catdvi)"
 msgstr "Απλό κείμενο (catdvi)"
 
-#: lib/configure.py:517
+#: lib/configure.py:550
 msgid "Plain Text, Join Lines"
 msgstr "Απλό Κείμενο, Ένωση Γραμμών"
 
-#: lib/configure.py:520
+#: lib/configure.py:553
 msgid "Gnumeric spreadsheet"
 msgstr ""
 
-#: lib/configure.py:521
+#: lib/configure.py:554
 msgid "Excel spreadsheet"
 msgstr ""
 
-#: lib/configure.py:522
+#: lib/configure.py:555
 msgid "OpenOffice spreadsheet"
 msgstr ""
 
-#: lib/configure.py:525 lib/configure.py:527
+#: lib/configure.py:558 lib/configure.py:560
 msgid "LyXHTML"
 msgstr ""
 
-#: lib/configure.py:525 lib/configure.py:527
+#: lib/configure.py:558 lib/configure.py:560
 msgid "LyXHTML|y"
 msgstr ""
 
-#: lib/configure.py:534 src/frontends/qt4/GuiLog.cpp:230
+#: lib/configure.py:567 src/frontends/qt4/GuiLog.cpp:230
 msgid "BibTeX"
 msgstr ""
 
-#: lib/configure.py:539
+#: lib/configure.py:572
 msgid "EPS"
 msgstr ""
 
-#: lib/configure.py:540
+#: lib/configure.py:573
 msgid "Postscript"
 msgstr ""
 
-#: lib/configure.py:540
+#: lib/configure.py:573
 msgid "Postscript|t"
 msgstr ""
 
-#: lib/configure.py:544
+#: lib/configure.py:577
 msgid "PDF (ps2pdf)"
 msgstr ""
 
-#: lib/configure.py:544
+#: lib/configure.py:577
 msgid "PDF (ps2pdf)|P"
 msgstr ""
 
-#: lib/configure.py:545
+#: lib/configure.py:578
 msgid "PDF (pdflatex)"
 msgstr ""
 
-#: lib/configure.py:545
+#: lib/configure.py:578
 msgid "PDF (pdflatex)|F"
 msgstr ""
 
-#: lib/configure.py:546
+#: lib/configure.py:579
 msgid "PDF (dvipdfm)"
 msgstr ""
 
-#: lib/configure.py:546
+#: lib/configure.py:579
 msgid "PDF (dvipdfm)|m"
 msgstr ""
 
-#: lib/configure.py:547
+#: lib/configure.py:580
 msgid "PDF (XeTeX)"
 msgstr ""
 
-#: lib/configure.py:547
+#: lib/configure.py:580
 msgid "PDF (XeTeX)|X"
 msgstr ""
 
-#: lib/configure.py:548
+#: lib/configure.py:581
 msgid "PDF (LuaTeX)"
 msgstr ""
 
-#: lib/configure.py:548
+#: lib/configure.py:581
 msgid "PDF (LuaTeX)|u"
 msgstr ""
 
-#: lib/configure.py:551
+#: lib/configure.py:584
 msgid "DVI"
 msgstr ""
 
-#: lib/configure.py:551
+#: lib/configure.py:584
 msgid "DVI|D"
 msgstr ""
 
-#: lib/configure.py:552
+#: lib/configure.py:585
 msgid "DVI (LuaTeX)"
 msgstr ""
 
-#: lib/configure.py:552
+#: lib/configure.py:585
 #, fuzzy
 msgid "DVI (LuaTeX)|V"
 msgstr "Τίτλος LaTeX"
 
-#: lib/configure.py:555
+#: lib/configure.py:588
 msgid "DraftDVI"
 msgstr ""
 
-#: lib/configure.py:558
+#: lib/configure.py:591
 msgid "HTML|H"
 msgstr ""
 
-#: lib/configure.py:561
+#: lib/configure.py:594
 msgid "Noteedit"
 msgstr ""
 
-#: lib/configure.py:564
+#: lib/configure.py:597
 msgid "OpenDocument"
 msgstr ""
 
-#: lib/configure.py:565
+#: lib/configure.py:598
 msgid "OpenOffice.Org (sxw)"
 msgstr ""
 
-#: lib/configure.py:568
+#: lib/configure.py:601
 msgid "Rich Text Format"
 msgstr ""
 
-#: lib/configure.py:569
+#: lib/configure.py:602
 msgid "MS Word"
 msgstr ""
 
-#: lib/configure.py:569
+#: lib/configure.py:602
 msgid "MS Word|W"
 msgstr ""
 
-#: lib/configure.py:572
+#: lib/configure.py:605
 msgid "date command"
 msgstr "εντολή ημερομηνίας"
 
-#: lib/configure.py:573
+#: lib/configure.py:606
 msgid "Table (CSV)"
 msgstr "Πίνακας (CSV)"
 
-#: lib/configure.py:575 src/frontends/qt4/GuiView.cpp:1140
-#: src/frontends/qt4/GuiView.cpp:1141 src/mathed/MathMacroTemplate.cpp:543
+#: lib/configure.py:608 src/frontends/qt4/GuiView.cpp:1150
+#: src/frontends/qt4/GuiView.cpp:1151 src/mathed/MathMacroTemplate.cpp:543
 msgid "LyX"
 msgstr ""
 
-#: lib/configure.py:576
+#: lib/configure.py:609
 msgid "LyX 1.3.x"
 msgstr ""
 
-#: lib/configure.py:577
+#: lib/configure.py:610
 msgid "LyX 1.4.x"
 msgstr ""
 
-#: lib/configure.py:578
+#: lib/configure.py:611
 msgid "LyX 1.5.x"
 msgstr ""
 
-#: lib/configure.py:579
+#: lib/configure.py:612
 msgid "LyX 1.6.x"
 msgstr ""
 
-#: lib/configure.py:580
+#: lib/configure.py:613
 msgid "CJK LyX 1.4.x (big5)"
 msgstr ""
 
-#: lib/configure.py:581
+#: lib/configure.py:614
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr ""
 
-#: lib/configure.py:582
+#: lib/configure.py:615
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr ""
 
-#: lib/configure.py:583
+#: lib/configure.py:616
 msgid "LyX Preview"
 msgstr "Προεπισκόπηση LyX"
 
-#: lib/configure.py:584
+#: lib/configure.py:617
 #, fuzzy
 msgid "LyX Preview (LilyPond book)"
 msgstr "Προεπισκόπηση LyX (pLaTeX)"
 
-#: lib/configure.py:585
+#: lib/configure.py:618
 msgid "LyX Preview (pLaTeX)"
 msgstr "Προεπισκόπηση LyX (pLaTeX)"
 
-#: lib/configure.py:586
+#: lib/configure.py:619
 msgid "PDFTEX"
 msgstr ""
 
-#: lib/configure.py:587
+#: lib/configure.py:620
 msgid "Program"
 msgstr "Πρόγραμμα"
 
-#: lib/configure.py:588
+#: lib/configure.py:621
 msgid "PSTEX"
 msgstr ""
 
-#: lib/configure.py:589 src/frontends/qt4/GuiClipboard.cpp:168
+#: lib/configure.py:622 src/frontends/qt4/GuiClipboard.cpp:168
 msgid "Windows Metafile"
 msgstr ""
 
-#: lib/configure.py:590 src/frontends/qt4/GuiClipboard.cpp:167
+#: lib/configure.py:623 src/frontends/qt4/GuiClipboard.cpp:167
 msgid "Enhanced Metafile"
 msgstr ""
 
-#: lib/configure.py:591
+#: lib/configure.py:624
 msgid "HTML (MS Word)"
 msgstr ""
 
-#: lib/configure.py:675
+#: lib/configure.py:704
 msgid "LyXBlogger"
 msgstr ""
 
-#: lib/configure.py:876
+#: lib/configure.py:905
 msgid "LyX Archive (zip)"
 msgstr ""
 
-#: lib/configure.py:879
+#: lib/configure.py:908
 msgid "LyX Archive (tar.gz)"
 msgstr ""
 
@@ -16473,8 +16485,8 @@ msgid "Overwrite modified file?"
 msgstr "Αντικατάσταση τροποποιημένου αρχείου;"
 
 #: src/Buffer.cpp:1038 src/Buffer.cpp:2272 src/Exporter.cpp:50
-#: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2104
-#: src/frontends/qt4/GuiView.cpp:2293
+#: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2114
+#: src/frontends/qt4/GuiView.cpp:2303
 msgid "&Overwrite"
 msgstr "&Αντικατάσταση"
 
@@ -16600,7 +16612,7 @@ msgstr "Δεν ήταν δυνατή η επιτυχής εκτέλεση του
 msgid "Don't know how to export to format: %1$s"
 msgstr "Δεν υπάρχουν πληροφορίες για εξαγωγή σε τύπο: %1$s"
 
-#: src/Buffer.cpp:2016 src/frontends/qt4/GuiView.cpp:3122
+#: src/Buffer.cpp:2016 src/frontends/qt4/GuiView.cpp:3132
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Σφάλμα εξαγωγής σε τύπο: %1$s."
@@ -17675,7 +17687,7 @@ msgstr "  Αριθμός %1$s"
 msgid "Cannot view file"
 msgstr "Δεν είναι δυνατή η προβολή του αρχείου"
 
-#: src/Format.cpp:268 src/Format.cpp:334 src/frontends/qt4/GuiView.cpp:2918
+#: src/Format.cpp:268 src/Format.cpp:334 src/frontends/qt4/GuiView.cpp:2928
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Το αρχείο δεν υπάρχει: %1$s"
@@ -17870,7 +17882,7 @@ msgstr ""
 msgid "LyX crashed!"
 msgstr ""
 
-#: src/LyX.cpp:719 src/frontends/qt4/GuiView.cpp:979
+#: src/LyX.cpp:719 src/frontends/qt4/GuiView.cpp:989
 msgid "LyX: "
 msgstr ""
 
@@ -18032,7 +18044,7 @@ msgstr "Λείπει τύπος αρχείου [π.χ. latex, ps...] μετά τ
 msgid "Missing filename for --import"
 msgstr "Λείπει όνομα αρχείου για --import"
 
-#: src/LyXRC.cpp:3041
+#: src/LyXRC.cpp:3060
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
@@ -18040,7 +18052,7 @@ msgstr ""
 "Να θεωρηθούν λέξεις ζευγάρια, όπως \"diskdrive\" στη θέση του \"disk drive"
 "\", ως νόμιμες;"
 
-#: src/LyXRC.cpp:3045
+#: src/LyXRC.cpp:3064
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
@@ -18048,7 +18060,7 @@ msgstr ""
 "Ορίστε μια εναλλακτική γλώσσα. Από προεπιλογή θα χρησιμοποιηθεί η γλώσσα του "
 "εγγράφου."
 
-#: src/LyXRC.cpp:3053
+#: src/LyXRC.cpp:3072
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -18056,7 +18068,7 @@ msgstr ""
 "Αποεπιλέξτε εάν δεν θέλετε να αντικατασταθεί αυτόματα η τρέχουσα επιλογή από "
 "αυτό που γράφετε."
 
-#: src/LyXRC.cpp:3057
+#: src/LyXRC.cpp:3076
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -18064,14 +18076,14 @@ msgstr ""
 "Αποεπιλέξτε εάν δεν θέλετε να αρχικοποιηθούν οι επιλογές κλάσης από "
 "προεπιλογές μετά την αλλαγή κλάσης."
 
-#: src/LyXRC.cpp:3061
+#: src/LyXRC.cpp:3080
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Το χρονικό διάστημα μεταξύ αυτόματων αποθηκεύσεων (σε δευτερόλεπτα). 0 "
 "σημαίνει καμία ενέργεια."
 
-#: src/LyXRC.cpp:3068
+#: src/LyXRC.cpp:3087
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -18079,7 +18091,7 @@ msgstr ""
 "Το μονοπάτι αποθήκευσης αντιγράφων ασφαλείας. Αν είναι κενό, το LyX θα "
 "αποθηκεύσει το αντίγραφο στον ίδιο φάκελο με το αυθεντικό αρχείο."
 
-#: src/LyXRC.cpp:3072
+#: src/LyXRC.cpp:3091
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
@@ -18087,12 +18099,12 @@ msgstr ""
 "Ορίστε τις επιλογές του bibtex (δείτε man bibtex) ή επιλέξτε έναν "
 "εναλλακτικό compiler (π.χ. mlbibtex ή bibulus)."
 
-#: src/LyXRC.cpp:3076
+#: src/LyXRC.cpp:3095
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
 msgstr ""
 "Ορισμός επιλογών του προγράμματος bibtex για το PLaTeX (ιαπωνικό LaTeX)."
 
-#: src/LyXRC.cpp:3080
+#: src/LyXRC.cpp:3099
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -18100,11 +18112,11 @@ msgstr ""
 "Αρχείο αντιστοιχίας πλήκτρων. Μπορείτε να ορίσετε είτε ένα απόλυτο μονοπάτι, "
 "αλλιώς το LyX θα ψάξει στους καθολικούς  και τοπικούς bind/ φακέλους."
 
-#: src/LyXRC.cpp:3084
+#: src/LyXRC.cpp:3103
 msgid "Select to check whether the lastfiles still exist."
 msgstr "Επιλέξτε για να ελέγξετε εάν τα πρόσφατα αρχεία υπάρχουν ακόμα."
 
-#: src/LyXRC.cpp:3088
+#: src/LyXRC.cpp:3107
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -18112,7 +18124,7 @@ msgstr ""
 "Ορίστε πώς θα εκτελείται το chktex. Π.χ. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -"
 "n25 -n30 -n38\". Ανατρέξτε στην τεκμηρίωση του ChkTeX."
 
-#: src/LyXRC.cpp:3098
+#: src/LyXRC.cpp:3117
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -18120,24 +18132,24 @@ msgstr ""
 "Κανονικά το LyX  δεν ενημερώνει τη θέση του δρομέα με την κύλιση της μπάρας. "
 "Θέστε το αληθές εάν προτιμάτε να έχετε πάντα τον δρομέα στην οθόνη."
 
-#: src/LyXRC.cpp:3106
+#: src/LyXRC.cpp:3125
 msgid ""
 "LyX normally doesn't allow the user to scroll further than the bottom of the "
 "document. Set to true if you prefer to scroll the bottom of the document to "
 "the top of the screen"
 msgstr ""
 
-#: src/LyXRC.cpp:3110
+#: src/LyXRC.cpp:3129
 msgid "Make Apple key act as Meta and Control key as Ctrl."
 msgstr ""
 
-#: src/LyXRC.cpp:3114
+#: src/LyXRC.cpp:3133
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
 msgstr ""
 "Χρήση των συμβάσεων του Mac OS X για τις κινήσεις του δρομέα σε επίπεδο "
 "λέξης."
 
-#: src/LyXRC.cpp:3118
+#: src/LyXRC.cpp:3137
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
@@ -18145,7 +18157,7 @@ msgstr ""
 "Εμφάνιση γύρω από μια Μαθηματική Μακροεντολή ενός μικρού κουτιού με το όνομά "
 "της όταν ο δρομέας είναι εντός."
 
-#: src/LyXRC.cpp:3123
+#: src/LyXRC.cpp:3142
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -18154,7 +18166,7 @@ msgstr ""
 "Αυτό αποδέχεται την κανονική φόρμα strftime. Δείτε το εγχειρίδιο strftime "
 "για λεπτομέρεις. Π.χ. \"%A, %e. %B %Y\"."
 
-#: src/LyXRC.cpp:3127
+#: src/LyXRC.cpp:3146
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
 "look in its global and local commands/ directories."
@@ -18162,19 +18174,19 @@ msgstr ""
 "Αρχείο ορισμού εντολών. Είτε ορίζεται ένα απόλυτο μονοπάτι, είτε το LyX "
 "ψάχνει στους καθολικούς και τοπικούς φακέλους commands/."
 
-#: src/LyXRC.cpp:3131
+#: src/LyXRC.cpp:3150
 msgid "The default format used with LFUN_BUFFER_[VIEW|UPDATE]."
 msgstr ""
 
-#: src/LyXRC.cpp:3135
+#: src/LyXRC.cpp:3154
 msgid "New documents will be assigned this language."
 msgstr "Τα νέα έγγραφα θα έχουν αυτή τη γλώσσα."
 
-#: src/LyXRC.cpp:3139
+#: src/LyXRC.cpp:3158
 msgid "Specify the default paper size."
 msgstr "Ορισμός προεπιλεγμένου μεγέθους χαρτιού."
 
-#: src/LyXRC.cpp:3143
+#: src/LyXRC.cpp:3162
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -18182,11 +18194,11 @@ msgstr ""
 "Εικονίδιοποίηση των διαλόγων όταν το κυρίως μενού εικονιδιοποιείται. "
 "(Επηρεάζει μόνο τους διαλόγους που θα εμφανιστούν μετά την αλλαγή.)"
 
-#: src/LyXRC.cpp:3147
+#: src/LyXRC.cpp:3166
 msgid "Select how LyX will display any graphics."
 msgstr "Επιλογή τρόπου εμφάνισης γραφικών από το LyX."
 
-#: src/LyXRC.cpp:3151
+#: src/LyXRC.cpp:3170
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -18194,11 +18206,11 @@ msgstr ""
 "Το προκαθορισμένο μονοπάτι προς τα έγγραφά σας. Η κενή τιμή επιλέγει τον "
 "φάκελο εκκίνησης του LyX."
 
-#: src/LyXRC.cpp:3155
+#: src/LyXRC.cpp:3174
 msgid "Specify additional chars that can be part of a word."
 msgstr "Ορισμός επιπρόσθετων χαρακτήρων ως συστατικών λέξεων."
 
-#: src/LyXRC.cpp:3159
+#: src/LyXRC.cpp:3178
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
@@ -18206,7 +18218,7 @@ msgstr ""
 "Το μονοπάτι που θα θέσει το LyX όταν προσφέρει επιλογή παραδείγματος. Η κενή "
 "τιμή επιλέγει τον φάκελο εκκίνησης του LyX."
 
-#: src/LyXRC.cpp:3163
+#: src/LyXRC.cpp:3182
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -18214,11 +18226,11 @@ msgstr ""
 "Η κωδικοποίηση γραμματοσειράς που χρησιμοποιείται στο πακέτο LaTeX2e. Το Τ1 "
 "συνίσταται για μη-Αγγλικές γλώσσες."
 
-#: src/LyXRC.cpp:3167
+#: src/LyXRC.cpp:3186
 msgid "Disable any kerning and ligatures for text drawing on screen."
 msgstr ""
 
-#: src/LyXRC.cpp:3174
+#: src/LyXRC.cpp:3193
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
@@ -18228,12 +18240,12 @@ msgstr ""
 "εναλλακτικό compiler. Π.χ., με χρήση κανόνων xindy/make, η εντολή θα ήταν "
 "\"makeindex.sh -m $$lang\"."
 
-#: src/LyXRC.cpp:3178
+#: src/LyXRC.cpp:3197
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
 msgstr ""
 "Ορισμός επιλογών του προγράμματος ευρετηρίου για το PLaTeX (ιαπωνικό LaTeX)."
 
-#: src/LyXRC.cpp:3182
+#: src/LyXRC.cpp:3201
 msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
@@ -18242,7 +18254,7 @@ msgstr ""
 "για την επιστημονική ορολογία. Ίσως να διαφέρουν από αυτές της επεξεργασίας "
 "ευρετηρίου."
 
-#: src/LyXRC.cpp:3191
+#: src/LyXRC.cpp:3210
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -18251,20 +18263,20 @@ msgstr ""
 "πληκτρολόγιο. Θα το χρειαστείτε αν π.χ. θέλετε να γράψετε Γερμανικά έγγραφα "
 "σε Αμερικανικό πληκτρολόγιο."
 
-#: src/LyXRC.cpp:3195
+#: src/LyXRC.cpp:3214
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr ""
 "Επιλέξτε εάν απαιτείται μια εντολή αλλαγής γλώσσας στην αρχή του εγγράφου."
 
-#: src/LyXRC.cpp:3199
+#: src/LyXRC.cpp:3218
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr ""
 "Επιλέξτε εάν απαιτείται μια εντολή αλλαγής γλώσσας στο τέλος του εγγράφου."
 
-#: src/LyXRC.cpp:3203
+#: src/LyXRC.cpp:3222
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -18273,15 +18285,15 @@ msgstr ""
 "Η εντολή LaTeX για αλλαγή από την γλώσσα του εγγράφου σε άλλη. Π.χ. "
 "\\selectlanguage{$$lang} όπου $$lang είναι το όνομα της νέας γλώσσας."
 
-#: src/LyXRC.cpp:3207
+#: src/LyXRC.cpp:3226
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "Η εντολή LaTeX για επιστροφή στη γλώσσα του εγγράφου."
 
-#: src/LyXRC.cpp:3211
+#: src/LyXRC.cpp:3230
 msgid "The LaTeX command for local changing of the language."
 msgstr "Η εντολή LaTeX για τοπική αλλαγή γλώσσας."
 
-#: src/LyXRC.cpp:3215
+#: src/LyXRC.cpp:3234
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
@@ -18289,7 +18301,7 @@ msgstr ""
 "Απο-επιλέξτε εάν δεν επιθυμείτε να χρησιμοποιείται η γλώσσα ως όρισμα στο "
 "\\documentclass."
 
-#: src/LyXRC.cpp:3219
+#: src/LyXRC.cpp:3238
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -18297,7 +18309,7 @@ msgstr ""
 "Η εντολή LaTeX για τη φόρτωση του γλωσσικού πακέτου. Π.χ. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
 
-#: src/LyXRC.cpp:3223
+#: src/LyXRC.cpp:3242
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -18305,24 +18317,24 @@ msgstr ""
 "Από-επιλέξτε εάν δεν επιθυμείτε να χρησιμοποιείται το babel όταν η γλώσσα "
 "του εγγράφου είναι η προεπιλέγμένη."
 
-#: src/LyXRC.cpp:3227
+#: src/LyXRC.cpp:3246
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr ""
 "Από-επιλέξτε εάν δεν επιθυμείτε να κυλάει  το LyX  μέχρι την αποθηκευμένη "
 "θέση."
 
-#: src/LyXRC.cpp:3231
+#: src/LyXRC.cpp:3250
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 "Από-επιλέξτε για να αποτρέψετε τη φόρτωση αρχείων που άνοιξαν σε προηγούμενη "
 "σύνοδο του LyX."
 
-#: src/LyXRC.cpp:3235
+#: src/LyXRC.cpp:3254
 msgid "De-select if you don't want LyX to create backup files."
 msgstr ""
 "Απο-επιλέξτε εάν δεν επιθυμείτε να δημιουργεί το LyX αντίγραφα ασφαλείας."
 
-#: src/LyXRC.cpp:3239
+#: src/LyXRC.cpp:3258
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -18330,34 +18342,34 @@ msgstr ""
 "Επιλέξτε για να ελέγξετε την επισήμανση λέξεων σε γλώσσα διαφορετική από του "
 "εγγράφου."
 
-#: src/LyXRC.cpp:3243
+#: src/LyXRC.cpp:3262
 msgid "The scrolling speed of the mouse wheel."
 msgstr "Η ταχύτητα κύλισης της ρόδας του ποντικιού."
 
-#: src/LyXRC.cpp:3248
+#: src/LyXRC.cpp:3267
 msgid "The completion popup delay."
 msgstr "Η καθυστέρηση του αναδυόμενου συμπλήρωσης."
 
-#: src/LyXRC.cpp:3252
+#: src/LyXRC.cpp:3271
 msgid "Select to display the completion popup in math mode."
 msgstr ""
 "Επιλέξτε για να εμφανίζεται το αναδυόμενο συμπλήρωσης στην κατάσταση "
 "μαθηματικών."
 
-#: src/LyXRC.cpp:3256
+#: src/LyXRC.cpp:3275
 msgid "Select to display the completion popup in text mode."
 msgstr ""
 "Επιλέξτε για να εμφανίζεται το αναδυόμενο συμπλήρωσης στην κατάσταση "
 "κειμένου."
 
-#: src/LyXRC.cpp:3260
+#: src/LyXRC.cpp:3279
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr ""
 "Εμφάνιση του αναδυόμενου συμπλήρωσης μετά από μη-μοναδική απόπειρα "
 "συμπλήρωσης."
 
-#: src/LyXRC.cpp:3264
+#: src/LyXRC.cpp:3283
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
@@ -18365,38 +18377,38 @@ msgstr ""
 "Εμφάνιση ενός μικρού τριγώνου στο δρομέα για να σηματοδοτείται η "
 "διαθεσιμότητα συμπλήρωσης."
 
-#: src/LyXRC.cpp:3268
+#: src/LyXRC.cpp:3287
 msgid "The inline completion delay."
 msgstr "Η καθυστέρηση συμπλήρωσης εντός των γραμμών."
 
-#: src/LyXRC.cpp:3272
+#: src/LyXRC.cpp:3291
 msgid "Select to display the inline completion in math mode."
 msgstr ""
 "Επιλέξτε για να εμφανίζεται το αναδυόμενο συμπλήρωσης εντός γραμμών στην "
 "κατάσταση μαθηματικών."
 
-#: src/LyXRC.cpp:3276
+#: src/LyXRC.cpp:3295
 msgid "Select to display the inline completion in text mode."
 msgstr ""
 "Επιλέξτε για να εμφανίζεται το αναδυόμενο συμπλήρωσης εντός γραμμών στην "
 "κατάσταση κειμένου."
 
-#: src/LyXRC.cpp:3280
+#: src/LyXRC.cpp:3299
 msgid "Use \"...\" to shorten long completions."
 msgstr "Χρήση \"...\" για συντόμευση μακριών συμπληρώσεων."
 
-#: src/LyXRC.cpp:3284
+#: src/LyXRC.cpp:3303
 msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
 msgstr ""
 
-#: src/LyXRC.cpp:3288
+#: src/LyXRC.cpp:3307
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 "Μέγιστος αριθμός πρόσφατων αρχείων. Έως %1$d μπορούν να εμφανίζονται στο "
 "μενού αρχείων."
 
-#: src/LyXRC.cpp:3293
+#: src/LyXRC.cpp:3312
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
@@ -18404,28 +18416,28 @@ msgstr ""
 "Ορίστε τους καταλόγους που θα πρέπει να αποδοθούν στη μεταβλητή "
 "περιβάλλοντος PATH. Χρήση της εγγενούς μορφής του ΛΣ."
 
-#: src/LyXRC.cpp:3299
+#: src/LyXRC.cpp:3318
 msgid "Shows a typeset preview of things such as math"
 msgstr "Δείχνει μια τυπογραφική προεπισκόπηση αντικειμένων όπως τα μαθηματικά."
 
-#: src/LyXRC.cpp:3303
+#: src/LyXRC.cpp:3322
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr ""
 "Οι προεπισκοπημένες εξισώσεις θα έχουν \"(#)\" ετικέτες αντί για αριθμημένες"
 
-#: src/LyXRC.cpp:3307
+#: src/LyXRC.cpp:3326
 msgid "Scale the preview size to suit."
 msgstr "Κλιμάκωση της προεπισκόπησης εν τάξει."
 
-#: src/LyXRC.cpp:3311
+#: src/LyXRC.cpp:3330
 msgid "The option for specifying whether the copies should be collated."
 msgstr "Η επιλογή για ταξινόμηση των αντιγράφων."
 
-#: src/LyXRC.cpp:3315
+#: src/LyXRC.cpp:3334
 msgid "The option for specifying the number of copies to print."
 msgstr "Η επιλογή για καθορισμό του πλήθους των αντιγράφων."
 
-#: src/LyXRC.cpp:3319
+#: src/LyXRC.cpp:3338
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -18433,11 +18445,11 @@ msgstr ""
 "Ο προκαθορισμένος εκτυπωτής. Εάν δεν ορίστηκε κανένας, το LyX θα "
 "χρησιμοποιήσει τη μεταβλητή περιβάλλοντος PRINTER."
 
-#: src/LyXRC.cpp:3323
+#: src/LyXRC.cpp:3342
 msgid "The option to print only even pages."
 msgstr "Η επιλογή για εκτύπωση μόνο ζυγών σελίδων."
 
-#: src/LyXRC.cpp:3327
+#: src/LyXRC.cpp:3346
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -18445,36 +18457,36 @@ msgstr ""
 "Επιπλέον επιλογές για το πρόγραμμα εκτύπωσης μετά όλων των άλλων, αλλά πριν "
 "το όνομα του αρχείου DVI προς εκτύπωση."
 
-#: src/LyXRC.cpp:3331
+#: src/LyXRC.cpp:3350
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr ""
 "Κατάληξη του αρχείου εξόδου του προγράμματος εκτυπωτή. Συνήθως \".ps\"."
 
-#: src/LyXRC.cpp:3335
+#: src/LyXRC.cpp:3354
 msgid "The option to print out in landscape."
 msgstr "Η επιλογή οριζόντιας εκτύπωσης."
 
-#: src/LyXRC.cpp:3339
+#: src/LyXRC.cpp:3358
 msgid "The option to print only odd pages."
 msgstr "Η επιλογή εκτύπωσης μόνο μονών σελίδων."
 
-#: src/LyXRC.cpp:3343
+#: src/LyXRC.cpp:3362
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr "Η επιλογή καθορισμού λίστας σελίδων προς εκτύπωση χωρισμένων με κόμμα."
 
-#: src/LyXRC.cpp:3347
+#: src/LyXRC.cpp:3366
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Επιλογή καθορισμού διαστάσεων χαρτιού εκτύπωσης."
 
-#: src/LyXRC.cpp:3351
+#: src/LyXRC.cpp:3370
 msgid "The option to specify paper type."
 msgstr "Η επιλογή καθορισμού τύπου χαρτιού."
 
-#: src/LyXRC.cpp:3355
+#: src/LyXRC.cpp:3374
 msgid "The option to reverse the order of the pages printed."
 msgstr "Η επιλογή αντιστροφής της σειράς εκτύπωσης των σελίδων."
 
-#: src/LyXRC.cpp:3359
+#: src/LyXRC.cpp:3378
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -18484,7 +18496,7 @@ msgstr ""
 "ξεχωριστή διαδικασία spooling πάνω στο αρχείο με το δεδομένο όνομα και "
 "παραμέτρους."
 
-#: src/LyXRC.cpp:3363
+#: src/LyXRC.cpp:3382
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -18492,16 +18504,16 @@ msgstr ""
 "Εάν ορίσετε ένα όνομα εκτυπωτή στον διάλογο εκτύπωσης, η ακόλουθη παράμετρος "
 "προωθείται μαζί με το όνομα εκτυπωτή μετά την εντολή spool."
 
-#: src/LyXRC.cpp:3367
+#: src/LyXRC.cpp:3386
 msgid "Option to pass to the print program to print to a file."
 msgstr "Επιλογή προς το πρόγραμμα εκτύπωσης για εκτύπωση σε αρχείο."
 
-#: src/LyXRC.cpp:3371
+#: src/LyXRC.cpp:3390
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
 "Επιλογή προς το πρόγραμμα εκτύπωσης για εκτύπωση σε συγκεκριμένο εκτυπωτή."
 
-#: src/LyXRC.cpp:3375
+#: src/LyXRC.cpp:3394
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
@@ -18509,18 +18521,18 @@ msgstr ""
 "Επιλέξτε για να περάσει το LyX το όνομα του εκτυπωτή προορισμού στην εντολή "
 "σας εκτύπωσης."
 
-#: src/LyXRC.cpp:3379
+#: src/LyXRC.cpp:3398
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Το προτιμώμενο πρόγραμμα εκτύπωσης, π.χ. \"dvips\",\"dvilj4\"."
 
-#: src/LyXRC.cpp:3387
+#: src/LyXRC.cpp:3406
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 "Επιλέξτε για οπτική κίνηση του δρομέα σε δύο κατευθύνσεις, αποεπιλέξτε για "
 "λογική κίνηση."
 
-#: src/LyXRC.cpp:3391
+#: src/LyXRC.cpp:3410
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -18528,13 +18540,13 @@ msgstr ""
 "Το DPI της οθόνης εντοπίζεται αυτόματα από το LyX. Εάν αυτό πάει λάθος, "
 "παρακάμψτε τη ρύθμιση εδώ."
 
-#: src/LyXRC.cpp:3397
+#: src/LyXRC.cpp:3416
 msgid "The screen fonts used to display the text while editing."
 msgstr ""
 "Οι γραμματοσειρές οθόνης που χρησιμοποιούνται για το κείμενο κατά την "
 "επεξεργασία του."
 
-#: src/LyXRC.cpp:3406
+#: src/LyXRC.cpp:3425
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -18545,13 +18557,13 @@ msgstr ""
 "να φαίνονται χοντροκομμένοι στο LyX. Η αποεπιλογή κάνει το LyX να βρει το "
 "πλησιέστερο διαθέσιμο μέγεθος γραμματοσειράς bitmap, αντί για κλιμάκωση."
 
-#: src/LyXRC.cpp:3410
+#: src/LyXRC.cpp:3429
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 "Τα μεγέθη γραμματοσειρών για τον υπολογισμό της κλιμάκωσης των "
 "γραμματοσειρών οθόνης."
 
-#: src/LyXRC.cpp:3415
+#: src/LyXRC.cpp:3434
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -18560,13 +18572,13 @@ msgstr ""
 "Το ποσοστό μεγέθυνσης των γραμματοσειρών οθόνης. Το 100% κάνει τα γράμματα "
 "σχεδόν στο εκτυπωμένο μέγεθος."
 
-#: src/LyXRC.cpp:3419
+#: src/LyXRC.cpp:3438
 msgid "Allow session manager to save and restore windows geometry."
 msgstr ""
 "Να επιτρέπεται στον διαχειριστή συνόδου η αποθήκευση και αποκατάσταση της "
 "γεωμετρίας παραθύρων."
 
-#: src/LyXRC.cpp:3423
+#: src/LyXRC.cpp:3442
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -18574,11 +18586,11 @@ msgstr ""
 "Αυτό ξεκινά τον lyxserver. Τα pipes λαμβάνουν επιπρόσθετες καταλήξεις \".in"
 "\" και \".out\". Μόνο για προχωρημένους χρήστες."
 
-#: src/LyXRC.cpp:3430
+#: src/LyXRC.cpp:3449
 msgid "De-select if you don't want the startup banner."
 msgstr "Αποεπιλέξτε εάν δεν επιθυμείτε την εναρκτήρια σήμανση."
 
-#: src/LyXRC.cpp:3434
+#: src/LyXRC.cpp:3453
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -18586,11 +18598,11 @@ msgstr ""
 "Το LyX θα τοποθετήσει τους προσωρινούς φακέλους σε αυτό το μονοπάτι. Θα "
 "διαγραφούν μόλις κλείσετε το LyX."
 
-#: src/LyXRC.cpp:3438
+#: src/LyXRC.cpp:3457
 msgid "This is the place where the files of the thesaurus library reside."
 msgstr ""
 
-#: src/LyXRC.cpp:3442
+#: src/LyXRC.cpp:3461
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -18598,7 +18610,7 @@ msgstr ""
 "Το μονοπάτι που το LyX θα εμφανίσει κατά την προσφορά επιλογής προτύπου. Μια "
 "κενή τιμή επιλέγει τον φάκελο εκκίνησης."
 
-#: src/LyXRC.cpp:3452
+#: src/LyXRC.cpp:3471
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -18606,24 +18618,24 @@ msgstr ""
 "Το αρχείο διεπαφής χρήστη. Είτε ορίζει ένα απόλυτο μονοπάτι, είτε το LyX θα "
 "αναζητά στους καθολικούς και τοπικούς φακέλους ui/."
 
-#: src/LyXRC.cpp:3462
+#: src/LyXRC.cpp:3481
 msgid ""
 "Enable use the system colors for some things like main window background and "
 "selection."
 msgstr ""
 
-#: src/LyXRC.cpp:3466
+#: src/LyXRC.cpp:3485
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr "Ενεργοποίηση αυτόματης εμφάνισης συμβουλών στην περιοχή εργασίας."
 
-#: src/LyXRC.cpp:3470
+#: src/LyXRC.cpp:3489
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 "Ενεργοποίηση της pixmap cache που ίσως βελτιώσει την απόδοση σε Mac και "
 "Windows."
 
-#: src/LyXRC.cpp:3474
+#: src/LyXRC.cpp:3493
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Ορισμός της εντολής χαρτιού στον προβολέα DVI (αφήστε κενό ή χρησιμοποιείστε "
@@ -18662,7 +18674,7 @@ msgstr "(καμία αρχική περιγραφή)"
 msgid "(no log message)"
 msgstr "(κανένα μήνυμα ημερολογίου)"
 
-#: src/LyXVC.cpp:170 src/frontends/qt4/GuiView.cpp:2776
+#: src/LyXVC.cpp:170 src/frontends/qt4/GuiView.cpp:2786
 msgid "LyX VC: Log Message"
 msgstr "LyX Έλεγχος Έκδοσης: Μήνυμα Ημερολογίου"
 
@@ -18683,7 +18695,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Επιστροφή στην αποθηκευμένη εκδοχή του εγγράφου;"
 
-#: src/LyXVC.cpp:224 src/frontends/qt4/GuiView.cpp:3267
+#: src/LyXVC.cpp:224 src/frontends/qt4/GuiView.cpp:3277
 msgid "&Revert"
 msgstr "&Επαναφορά"
 
@@ -18836,7 +18848,7 @@ msgstr "Διάταξη"
 msgid " not known"
 msgstr " άγνωστο"
 
-#: src/Text3.cpp:1752 src/frontends/qt4/GuiApplication.cpp:1381
+#: src/Text3.cpp:1752 src/frontends/qt4/GuiApplication.cpp:1384
 msgid "Missing argument"
 msgstr "Λείπει όρισμα"
 
@@ -18912,7 +18924,7 @@ msgstr "Σφάλμα ανάγνωσης μονάδας %1$s\n"
 #: src/VCBackend.cpp:746 src/VCBackend.cpp:807 src/VCBackend.cpp:868
 #: src/VCBackend.cpp:876 src/VCBackend.cpp:1084 src/VCBackend.cpp:1177
 #: src/VCBackend.cpp:1183 src/VCBackend.cpp:1204
-#: src/frontends/qt4/GuiView.cpp:2738
+#: src/frontends/qt4/GuiView.cpp:2748
 msgid "Revision control error."
 msgstr "Σφάλμα ελέγχου αναθεώρησης."
 
@@ -19133,7 +19145,7 @@ msgstr ""
 msgid "Reload saved document?"
 msgstr "Επαναφόρτωση αποθηκευμένου εγγράφου;"
 
-#: src/buffer_funcs.cpp:76 src/frontends/qt4/GuiView.cpp:2687
+#: src/buffer_funcs.cpp:76 src/frontends/qt4/GuiView.cpp:2697
 msgid "&Reload"
 msgstr "&Επαναφόρτωση"
 
@@ -19345,53 +19357,53 @@ msgstr "Περί του LyX"
 msgid "LyX: %1$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:486
+#: src/frontends/qt4/GuiApplication.cpp:489
 msgid "About %1"
 msgstr "Περί %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:486
-#: src/frontends/qt4/GuiPrefs.cpp:3097
+#: src/frontends/qt4/GuiApplication.cpp:489
+#: src/frontends/qt4/GuiPrefs.cpp:3110
 msgid "Preferences"
 msgstr "Προτιμήσεις"
 
-#: src/frontends/qt4/GuiApplication.cpp:487
+#: src/frontends/qt4/GuiApplication.cpp:490
 msgid "Reconfigure"
 msgstr "Επαναρύθμιση"
 
-#: src/frontends/qt4/GuiApplication.cpp:487
+#: src/frontends/qt4/GuiApplication.cpp:490
 msgid "Quit %1"
 msgstr "Έξοδος %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:866
+#: src/frontends/qt4/GuiApplication.cpp:869
 msgid "Nothing to do"
 msgstr "Τίποτα να κάνω"
 
-#: src/frontends/qt4/GuiApplication.cpp:872
+#: src/frontends/qt4/GuiApplication.cpp:875
 msgid "Unknown action"
 msgstr "Άγνωστη ενέργεια"
 
-#: src/frontends/qt4/GuiApplication.cpp:916
+#: src/frontends/qt4/GuiApplication.cpp:919
 #, fuzzy
 msgid "Command not handled"
 msgstr "Η εντολή απενεργοποιήθηκε"
 
-#: src/frontends/qt4/GuiApplication.cpp:922
+#: src/frontends/qt4/GuiApplication.cpp:925
 msgid "Command disabled"
 msgstr "Η εντολή απενεργοποιήθηκε"
 
-#: src/frontends/qt4/GuiApplication.cpp:1214
+#: src/frontends/qt4/GuiApplication.cpp:1217
 msgid "Running configure..."
 msgstr "Εκτέλεση διαμόρφωσης..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1225
+#: src/frontends/qt4/GuiApplication.cpp:1228
 msgid "Reloading configuration..."
 msgstr "Επαναφόρτωση διαμόρφωσης..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1231
+#: src/frontends/qt4/GuiApplication.cpp:1234
 msgid "System reconfiguration failed"
 msgstr "Η επαναδιαμόρφωση του συστήματος απέτυχε"
 
-#: src/frontends/qt4/GuiApplication.cpp:1232
+#: src/frontends/qt4/GuiApplication.cpp:1235
 msgid ""
 "The system reconfiguration has failed.\n"
 "Default textclass is used but LyX may not be able to work properly.\n"
@@ -19402,11 +19414,11 @@ msgstr ""
 "αλλά το LyX ενδέχεται να μην δουλεύει σωστά.\n"
 "Επαναρυθμίστε ξανά εφόσον χρειάζεται."
 
-#: src/frontends/qt4/GuiApplication.cpp:1237
+#: src/frontends/qt4/GuiApplication.cpp:1240
 msgid "System reconfigured"
 msgstr "Το σύστημα επαναδιαμορφώθηκε"
 
-#: src/frontends/qt4/GuiApplication.cpp:1238
+#: src/frontends/qt4/GuiApplication.cpp:1241
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -19416,44 +19428,44 @@ msgstr ""
 "Πρέπει να επανακινήσετε το LyX για να χρησιμοποιήσετε\n"
 "τις ενημερωμένες προδιαγραφές των κλάσεων εγγράφων."
 
-#: src/frontends/qt4/GuiApplication.cpp:1311
+#: src/frontends/qt4/GuiApplication.cpp:1314
 msgid "Exiting."
 msgstr "Έξοδος."
 
-#: src/frontends/qt4/GuiApplication.cpp:1393
+#: src/frontends/qt4/GuiApplication.cpp:1396
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Άνοιγμα αρχείου βοήθειας %1$s..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1412
+#: src/frontends/qt4/GuiApplication.cpp:1415
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Σύνταξη: set-color <όνομα_lyx> <όνομα_x11>"
 
-#: src/frontends/qt4/GuiApplication.cpp:1428
+#: src/frontends/qt4/GuiApplication.cpp:1431
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Η set-color \"%1$s\" απέτυχε - το χρώμα δεν έχει οριστεί ή δεν μπορεί να "
 "επαναοριστεί"
 
-#: src/frontends/qt4/GuiApplication.cpp:1608
+#: src/frontends/qt4/GuiApplication.cpp:1611
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Οι προεπιλογές του εγγράφου αποθηκεύτηκαν στο %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:1612
+#: src/frontends/qt4/GuiApplication.cpp:1615
 msgid "Unable to save document defaults"
 msgstr "Αδυναμία αποθήκευσης των προεπιλεγμένων ρυθμίσεων του εγγράφου"
 
-#: src/frontends/qt4/GuiApplication.cpp:1749
+#: src/frontends/qt4/GuiApplication.cpp:1752
 msgid "Unknown function."
 msgstr "Άγνωστη συνάρτηση."
 
-#: src/frontends/qt4/GuiApplication.cpp:2178
+#: src/frontends/qt4/GuiApplication.cpp:2181
 msgid "The current document was closed."
 msgstr "Το τρέχον έγγραφο έκλεισε."
 
-#: src/frontends/qt4/GuiApplication.cpp:2188
+#: src/frontends/qt4/GuiApplication.cpp:2191
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -19465,12 +19477,12 @@ msgstr ""
 "\n"
 "Εξαίρεση:"
 
-#: src/frontends/qt4/GuiApplication.cpp:2192
-#: src/frontends/qt4/GuiApplication.cpp:2198
+#: src/frontends/qt4/GuiApplication.cpp:2195
+#: src/frontends/qt4/GuiApplication.cpp:2201
 msgid "Software exception Detected"
 msgstr "Ανιχνεύθηκε εξαίρεση λογισμικού"
 
-#: src/frontends/qt4/GuiApplication.cpp:2196
+#: src/frontends/qt4/GuiApplication.cpp:2199
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -19478,12 +19490,12 @@ msgstr ""
 "Το LyX εντόπισε μια αξιοπερίεργη εξαίρεση, θα επιχειρήσει τώρα να "
 "αποθηκεύσει όλα τα μη αποθηκευμένα έγγραφα και να τερματιστεί."
 
-#: src/frontends/qt4/GuiApplication.cpp:2461
-#: src/frontends/qt4/GuiApplication.cpp:2473
+#: src/frontends/qt4/GuiApplication.cpp:2464
+#: src/frontends/qt4/GuiApplication.cpp:2476
 msgid "Could not find UI definition file"
 msgstr "Δεν βρέθηκε το αρχείο ορισμού διεπαφής χρήστη"
 
-#: src/frontends/qt4/GuiApplication.cpp:2462
+#: src/frontends/qt4/GuiApplication.cpp:2465
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -19494,11 +19506,11 @@ msgstr ""
 "%1$s.\n"
 "Παρακαλούμε ελέγξτε την εγκατάστασή σας."
 
-#: src/frontends/qt4/GuiApplication.cpp:2468
+#: src/frontends/qt4/GuiApplication.cpp:2471
 msgid "Could not find default UI file"
 msgstr "Δεν ήταν δυνατή η εύρεση του προκαθορισμένου αρχείου διεπαφής χρήστη"
 
-#: src/frontends/qt4/GuiApplication.cpp:2469
+#: src/frontends/qt4/GuiApplication.cpp:2472
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -19507,7 +19519,7 @@ msgstr ""
 "%1$s.\n"
 "Ελέγξτε την εγκατάστασή σας."
 
-#: src/frontends/qt4/GuiApplication.cpp:2474
+#: src/frontends/qt4/GuiApplication.cpp:2477
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -19530,9 +19542,9 @@ msgstr "Βιβλιογραφία BibTeX"
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
 #: src/frontends/qt4/GuiDocument.cpp:1841
 #: src/frontends/qt4/GuiExternal.cpp:639 src/frontends/qt4/GuiGraphics.cpp:799
-#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1856
-#: src/frontends/qt4/GuiView.cpp:1913 src/frontends/qt4/GuiView.cpp:2054
-#: src/frontends/qt4/GuiView.cpp:2176 src/frontends/qt4/GuiView.cpp:2262
+#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1866
+#: src/frontends/qt4/GuiView.cpp:1923 src/frontends/qt4/GuiView.cpp:2064
+#: src/frontends/qt4/GuiView.cpp:2186 src/frontends/qt4/GuiView.cpp:2272
 msgid "Documents|#o#O"
 msgstr "Έγγραφα|#o#O"
 
@@ -19780,10 +19792,10 @@ msgstr "%1$s Αρχεία"
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Επιλέξτε ένα όνομα αρχείου για να αποθηκεύσετε το επικολλημένο γραφικό"
 
-#: src/frontends/qt4/GuiClipboard.cpp:210 src/frontends/qt4/GuiView.cpp:1932
-#: src/frontends/qt4/GuiView.cpp:2074 src/frontends/qt4/GuiView.cpp:2090
-#: src/frontends/qt4/GuiView.cpp:2107 src/frontends/qt4/GuiView.cpp:2193
-#: src/frontends/qt4/GuiView.cpp:2238
+#: src/frontends/qt4/GuiClipboard.cpp:210 src/frontends/qt4/GuiView.cpp:1942
+#: src/frontends/qt4/GuiView.cpp:2084 src/frontends/qt4/GuiView.cpp:2100
+#: src/frontends/qt4/GuiView.cpp:2117 src/frontends/qt4/GuiView.cpp:2203
+#: src/frontends/qt4/GuiView.cpp:2248
 msgid "Canceled."
 msgstr "Ακυρώθηκε."
 
@@ -19812,9 +19824,9 @@ msgstr "Σύγκριση αρχείων LyX"
 msgid "Select document"
 msgstr "Επιλογή εγγράφου"
 
-#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:1860
-#: src/frontends/qt4/GuiView.cpp:1917 src/frontends/qt4/GuiView.cpp:2182
-#: src/frontends/qt4/GuiView.cpp:2270
+#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:1870
+#: src/frontends/qt4/GuiView.cpp:1927 src/frontends/qt4/GuiView.cpp:2192
+#: src/frontends/qt4/GuiView.cpp:2280
 msgid "LyX Documents (*.lyx)"
 msgstr "Έγγραφα LyX (*.lyx)"
 
@@ -20205,7 +20217,7 @@ msgstr "Κλάση Εγγράφου"
 #: src/frontends/qt4/GuiDocument.cpp:1275
 #: src/frontends/qt4/GuiDocument.cpp:2853
 #: src/frontends/qt4/GuiDocument.cpp:2854
-#: src/frontends/qt4/GuiDocument.cpp:2857 src/frontends/qt4/qt_helpers.cpp:543
+#: src/frontends/qt4/GuiDocument.cpp:2857 src/frontends/qt4/qt_helpers.cpp:553
 msgid "Child Documents"
 msgstr "Έγγραφα-Παιδιά"
 
@@ -20937,66 +20949,74 @@ msgstr ""
 msgid "Printer"
 msgstr "Εκτυπωτής"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2403 src/frontends/qt4/GuiPrefs.cpp:3140
+#: src/frontends/qt4/GuiPrefs.cpp:2403 src/frontends/qt4/GuiPrefs.cpp:3153
 #, fuzzy
 msgid "User Interface"
 msgstr "Διεπαφή χρήστη"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2513
+#: src/frontends/qt4/GuiPrefs.cpp:2447
+msgid "Liber"
+msgstr ""
+
+#: src/frontends/qt4/GuiPrefs.cpp:2448
+msgid "Oxygen"
+msgstr ""
+
+#: src/frontends/qt4/GuiPrefs.cpp:2526
 msgid "Control"
 msgstr "Έλεγχος"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2601
+#: src/frontends/qt4/GuiPrefs.cpp:2614
 msgid "Shortcuts"
 msgstr "Συντομεύσεις"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2606
+#: src/frontends/qt4/GuiPrefs.cpp:2619
 msgid "Function"
 msgstr "Λειτουργία"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2607
+#: src/frontends/qt4/GuiPrefs.cpp:2620
 msgid "Shortcut"
 msgstr "Συντόμευση"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2686
+#: src/frontends/qt4/GuiPrefs.cpp:2699
 #, fuzzy
 msgid "Cursor, Mouse and Editing Functions"
 msgstr "Λειτουργίες Δείκτη, Ποντικιού και Επεξεργασίας"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2690
+#: src/frontends/qt4/GuiPrefs.cpp:2703
 msgid "Mathematical Symbols"
 msgstr "Μαθηματικά Σύμβολα"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2694
+#: src/frontends/qt4/GuiPrefs.cpp:2707
 msgid "Document and Window"
 msgstr "Έγγραφο και Παράθυρο"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2698
+#: src/frontends/qt4/GuiPrefs.cpp:2711
 msgid "Font, Layouts and Textclasses"
 msgstr "Γραμματοσειρά, Διάταξη και Κλάσεις κειμένου"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2702
+#: src/frontends/qt4/GuiPrefs.cpp:2715
 msgid "System and Miscellaneous"
 msgstr "Σύστημα και Διάφορα"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2829 src/frontends/qt4/GuiPrefs.cpp:2875
+#: src/frontends/qt4/GuiPrefs.cpp:2842 src/frontends/qt4/GuiPrefs.cpp:2888
 msgid "Res&tore"
 msgstr "Επανα&φορά"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2986 src/frontends/qt4/GuiPrefs.cpp:2993
-#: src/frontends/qt4/GuiPrefs.cpp:3013 src/frontends/qt4/GuiPrefs.cpp:3032
+#: src/frontends/qt4/GuiPrefs.cpp:2999 src/frontends/qt4/GuiPrefs.cpp:3006
+#: src/frontends/qt4/GuiPrefs.cpp:3026 src/frontends/qt4/GuiPrefs.cpp:3045
 msgid "Failed to create shortcut"
 msgstr "Η δημιουργία συντόμευσης απέτυχε"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2987
+#: src/frontends/qt4/GuiPrefs.cpp:3000
 msgid "Unknown or invalid LyX function"
 msgstr "Άγνωστη ή άκυρη λειτουργία LyX"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2994
+#: src/frontends/qt4/GuiPrefs.cpp:3007
 msgid "Invalid or empty key sequence"
 msgstr "Άκυρη ή κενή ακολουθία χαρακτήρων"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3014
+#: src/frontends/qt4/GuiPrefs.cpp:3027
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
@@ -21007,35 +21027,35 @@ msgstr ""
 "%2$s\n"
 "Πρέπει να διαγράψετε αυτή την ανάθεση πριν δημιουργήσετε μία νέα."
 
-#: src/frontends/qt4/GuiPrefs.cpp:3033
+#: src/frontends/qt4/GuiPrefs.cpp:3046
 msgid "Can not insert shortcut to the list"
 msgstr "Δεν είναι δυνατή η εισαγωγή της συντόμευσης στη λίστα"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3064
+#: src/frontends/qt4/GuiPrefs.cpp:3077
 msgid "Identity"
 msgstr "Ταυτότητα"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3270
+#: src/frontends/qt4/GuiPrefs.cpp:3283
 msgid "Choose bind file"
 msgstr "Επιλογή αρχείου δεσμού"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3271
+#: src/frontends/qt4/GuiPrefs.cpp:3284
 msgid "LyX bind files (*.bind)"
 msgstr "Αρχεία δεσμού LyX (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3277
+#: src/frontends/qt4/GuiPrefs.cpp:3290
 msgid "Choose UI file"
 msgstr "Επιλέξτε αρχείο Διεπαφής Χρήστη"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3278
+#: src/frontends/qt4/GuiPrefs.cpp:3291
 msgid "LyX UI files (*.ui)"
 msgstr "Αρχεία Διεπαφής Χρήστη του LyX (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3284
+#: src/frontends/qt4/GuiPrefs.cpp:3297
 msgid "Choose keyboard map"
 msgstr "Επιλέξτε keyboard map"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3285
+#: src/frontends/qt4/GuiPrefs.cpp:3298
 msgid "LyX keyboard maps (*.kmap)"
 msgstr ""
 
@@ -21502,15 +21522,15 @@ msgstr "Δεν υπάρχει διαθέσιμος θησαυρός για αυ�
 msgid "Outline"
 msgstr "Περίγραμμα"
 
-#: src/frontends/qt4/GuiToolbar.cpp:350 src/frontends/qt4/Toolbars.cpp:376
+#: src/frontends/qt4/GuiToolbar.cpp:354 src/frontends/qt4/Toolbars.cpp:376
 msgid "auto"
 msgstr "αυτόματο"
 
-#: src/frontends/qt4/GuiToolbar.cpp:355 src/frontends/qt4/GuiToolbar.cpp:364
+#: src/frontends/qt4/GuiToolbar.cpp:359 src/frontends/qt4/GuiToolbar.cpp:368
 msgid "off"
 msgstr ""
 
-#: src/frontends/qt4/GuiToolbar.cpp:371
+#: src/frontends/qt4/GuiToolbar.cpp:375
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr "Κατάσταση γραμμής εργαλείων \"%1$s\" σε %2$s"
@@ -21523,92 +21543,92 @@ msgstr "έκδοση"
 msgid "unknown version"
 msgstr "άγνωστη έκδοση"
 
-#: src/frontends/qt4/GuiView.cpp:267
+#: src/frontends/qt4/GuiView.cpp:268
 msgid "Small-sized icons"
 msgstr "Μικρά εικονίδια"
 
-#: src/frontends/qt4/GuiView.cpp:274
+#: src/frontends/qt4/GuiView.cpp:275
 msgid "Normal-sized icons"
 msgstr "Φυσιολογικά εικονίδια"
 
-#: src/frontends/qt4/GuiView.cpp:281
+#: src/frontends/qt4/GuiView.cpp:282
 msgid "Big-sized icons"
 msgstr "Μεγάλα εικονίδια"
 
-#: src/frontends/qt4/GuiView.cpp:813
+#: src/frontends/qt4/GuiView.cpp:823
 #, fuzzy
 msgid "Exit LyX"
 msgstr "Έ&ξοδος από το LyX"
 
-#: src/frontends/qt4/GuiView.cpp:814
+#: src/frontends/qt4/GuiView.cpp:824
 msgid "LyX could not be closed because documents are being processed by LyX."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1060
+#: src/frontends/qt4/GuiView.cpp:1070
 msgid "Welcome to LyX!"
 msgstr "Καλωσήρθατε στο LyX!"
 
-#: src/frontends/qt4/GuiView.cpp:1531
+#: src/frontends/qt4/GuiView.cpp:1541
 msgid "Automatic save done."
 msgstr "Η αυτόματη αποθήκευση έγινε."
 
-#: src/frontends/qt4/GuiView.cpp:1532
+#: src/frontends/qt4/GuiView.cpp:1542
 msgid "Automatic save failed!"
 msgstr "Η αυτόματη αποθήκευση απέτυχε!"
 
-#: src/frontends/qt4/GuiView.cpp:1578
+#: src/frontends/qt4/GuiView.cpp:1588
 msgid "Command not allowed without any document open"
 msgstr "Η εντολή δεν επιτρέπεται χωρίς κάποιο ανοιχτό έγγραφο"
 
-#: src/frontends/qt4/GuiView.cpp:1680
+#: src/frontends/qt4/GuiView.cpp:1690
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Άγνωστη γραμμή εργαλείων \"%1$s\""
 
-#: src/frontends/qt4/GuiView.cpp:1855
+#: src/frontends/qt4/GuiView.cpp:1865
 msgid "Select template file"
 msgstr "Επιλογή αρχείου προτύπου"
 
-#: src/frontends/qt4/GuiView.cpp:1857 src/frontends/qt4/GuiView.cpp:2263
+#: src/frontends/qt4/GuiView.cpp:1867 src/frontends/qt4/GuiView.cpp:2273
 msgid "Templates|#T#t"
 msgstr "Πρότυπα|#T#t"
 
-#: src/frontends/qt4/GuiView.cpp:1884
+#: src/frontends/qt4/GuiView.cpp:1894
 msgid "Document not loaded."
 msgstr "Το έγγραφο δεν φορτώθηκε."
 
-#: src/frontends/qt4/GuiView.cpp:1912
+#: src/frontends/qt4/GuiView.cpp:1922
 msgid "Select document to open"
 msgstr "Επιλογή εγγράφου για άνοιγμα"
 
-#: src/frontends/qt4/GuiView.cpp:1914 src/frontends/qt4/GuiView.cpp:2055
-#: src/frontends/qt4/GuiView.cpp:2177
+#: src/frontends/qt4/GuiView.cpp:1924 src/frontends/qt4/GuiView.cpp:2065
+#: src/frontends/qt4/GuiView.cpp:2187
 msgid "Examples|#E#e"
 msgstr "Παραδείγματα|#E#e"
 
-#: src/frontends/qt4/GuiView.cpp:1918
+#: src/frontends/qt4/GuiView.cpp:1928
 msgid "LyX-1.3.x Documents (*.lyx13)"
 msgstr "Έγγραφα LyX-1.3.x (*.lyx13)"
 
-#: src/frontends/qt4/GuiView.cpp:1919
+#: src/frontends/qt4/GuiView.cpp:1929
 msgid "LyX-1.4.x Documents (*.lyx14)"
 msgstr "Έγγραφα LyX-1.4.x (*.lyx14)"
 
-#: src/frontends/qt4/GuiView.cpp:1920
+#: src/frontends/qt4/GuiView.cpp:1930
 msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "Έγγραφα LyX-1.5.x (*.lyx15)"
 
-#: src/frontends/qt4/GuiView.cpp:1921
+#: src/frontends/qt4/GuiView.cpp:1931
 msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "Έγγραφα LyX-1.6.x (*.lyx16)"
 
-#: src/frontends/qt4/GuiView.cpp:1946 src/frontends/qt4/Validator.cpp:188
+#: src/frontends/qt4/GuiView.cpp:1956 src/frontends/qt4/Validator.cpp:188
 #: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:290
 #: src/insets/InsetGraphics.cpp:596 src/insets/InsetInclude.cpp:534
 msgid "Invalid filename"
 msgstr "Άκυρο όνομα αρχείου"
 
-#: src/frontends/qt4/GuiView.cpp:1947
+#: src/frontends/qt4/GuiView.cpp:1957
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -21619,40 +21639,40 @@ msgstr ""
 "%1$s\n"
 "δεν υπάρχει."
 
-#: src/frontends/qt4/GuiView.cpp:1963
+#: src/frontends/qt4/GuiView.cpp:1973
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Άνοιγμα εγγράφου %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1968
+#: src/frontends/qt4/GuiView.cpp:1978
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Το έγγραφο %1$s έχει ανοιχτεί."
 
-#: src/frontends/qt4/GuiView.cpp:1971
+#: src/frontends/qt4/GuiView.cpp:1981
 msgid "Version control detected."
 msgstr "Εντοπίστηκε έλεγχος έκδοσης."
 
-#: src/frontends/qt4/GuiView.cpp:1973
+#: src/frontends/qt4/GuiView.cpp:1983
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Δεν ήταν δυνατό το άνοιγμα του εγγράφου %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2002
+#: src/frontends/qt4/GuiView.cpp:2012
 msgid "Couldn't import file"
 msgstr "Δεν ήταν δυνατή η εισαγωγή του αρχείου"
 
-#: src/frontends/qt4/GuiView.cpp:2003
+#: src/frontends/qt4/GuiView.cpp:2013
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Καμιά πληροφορία για την εισαγωγή του τύπου %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:2050
+#: src/frontends/qt4/GuiView.cpp:2060
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Επιλογή %1$s αρχείου για εισαγωγή"
 
-#: src/frontends/qt4/GuiView.cpp:2101 src/frontends/qt4/GuiView.cpp:2288
+#: src/frontends/qt4/GuiView.cpp:2111 src/frontends/qt4/GuiView.cpp:2298
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -21663,52 +21683,52 @@ msgstr ""
 "\n"
 "Θέλετε να το αντικαταστήσετε;"
 
-#: src/frontends/qt4/GuiView.cpp:2103 src/frontends/qt4/GuiView.cpp:2292
+#: src/frontends/qt4/GuiView.cpp:2113 src/frontends/qt4/GuiView.cpp:2302
 msgid "Overwrite document?"
 msgstr "Αντικατάσταση εγγράφου;"
 
-#: src/frontends/qt4/GuiView.cpp:2112
+#: src/frontends/qt4/GuiView.cpp:2122
 #, c-format
 msgid "Importing %1$s..."
 msgstr "Εισαγωγή του %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:2115
+#: src/frontends/qt4/GuiView.cpp:2125
 msgid "imported."
 msgstr "εισήχθη."
 
-#: src/frontends/qt4/GuiView.cpp:2117
+#: src/frontends/qt4/GuiView.cpp:2127
 msgid "file not imported!"
 msgstr "το αρχείο δεν εισήχθη!"
 
-#: src/frontends/qt4/GuiView.cpp:2142
+#: src/frontends/qt4/GuiView.cpp:2152
 msgid "newfile"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2175
+#: src/frontends/qt4/GuiView.cpp:2185
 msgid "Select LyX document to insert"
 msgstr "Επιλέξτε έγγραφο LyX προς εισαγωγή"
 
-#: src/frontends/qt4/GuiView.cpp:2211 src/frontends/qt4/GuiView.cpp:3178
+#: src/frontends/qt4/GuiView.cpp:2221 src/frontends/qt4/GuiView.cpp:3188
 msgid "Absolute filename expected."
 msgstr "Αναμένεται απόλυτο όνομα αρχείου."
 
-#: src/frontends/qt4/GuiView.cpp:2223
+#: src/frontends/qt4/GuiView.cpp:2233
 msgid "Select file to insert"
 msgstr "Επιλέξτε αρχείο προς εισαγωγή"
 
-#: src/frontends/qt4/GuiView.cpp:2227
+#: src/frontends/qt4/GuiView.cpp:2237
 msgid "All Files (*)"
 msgstr "Όλα τα Αρχεία (*)"
 
-#: src/frontends/qt4/GuiView.cpp:2260
+#: src/frontends/qt4/GuiView.cpp:2270
 msgid "Choose a filename to save document as"
 msgstr "Επιλέξτε ένα όνομα αρχείου για αποθήκευση του εγγράφου"
 
-#: src/frontends/qt4/GuiView.cpp:2293 src/frontends/qt4/GuiView.cpp:2338
+#: src/frontends/qt4/GuiView.cpp:2303 src/frontends/qt4/GuiView.cpp:2348
 msgid "&Rename"
 msgstr "&Μετονομασία"
 
-#: src/frontends/qt4/GuiView.cpp:2334
+#: src/frontends/qt4/GuiView.cpp:2344
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -21719,24 +21739,24 @@ msgstr ""
 "\n"
 "Θέλετε να μετονομάσετε το έγγραφο και να προσπαθήσετε ξανά;"
 
-#: src/frontends/qt4/GuiView.cpp:2337
+#: src/frontends/qt4/GuiView.cpp:2347
 msgid "Rename and save?"
 msgstr "Μετονομασία και αποθήκευση;"
 
-#: src/frontends/qt4/GuiView.cpp:2338
+#: src/frontends/qt4/GuiView.cpp:2348
 msgid "&Retry"
 msgstr "Δοκιμή &Ξανά"
 
-#: src/frontends/qt4/GuiView.cpp:2444
+#: src/frontends/qt4/GuiView.cpp:2454
 #, fuzzy
 msgid "Close document"
 msgstr "Νέο έγγραφο"
 
-#: src/frontends/qt4/GuiView.cpp:2445
+#: src/frontends/qt4/GuiView.cpp:2455
 msgid "Document could not be closed because it is being processed by LyX."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2549 src/frontends/qt4/GuiView.cpp:2654
+#: src/frontends/qt4/GuiView.cpp:2559 src/frontends/qt4/GuiView.cpp:2664
 #, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
@@ -21747,11 +21767,11 @@ msgstr ""
 "\n"
 "Θέλετε να αποθηκεύσετε το έγγραφο;"
 
-#: src/frontends/qt4/GuiView.cpp:2552 src/frontends/qt4/GuiView.cpp:2657
+#: src/frontends/qt4/GuiView.cpp:2562 src/frontends/qt4/GuiView.cpp:2667
 msgid "Save new document?"
 msgstr "Αποθήκευση νέου εγγράφου;"
 
-#: src/frontends/qt4/GuiView.cpp:2557
+#: src/frontends/qt4/GuiView.cpp:2567
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -21762,15 +21782,15 @@ msgstr ""
 "\n"
 "Θέλετε να αποθηκεύσετε το έγγραφο ή να απορρίψετε τις αλλαγές;"
 
-#: src/frontends/qt4/GuiView.cpp:2559 src/frontends/qt4/GuiView.cpp:2651
+#: src/frontends/qt4/GuiView.cpp:2569 src/frontends/qt4/GuiView.cpp:2661
 msgid "Save changed document?"
 msgstr "Αποθήκευση τροποποιημένου εγγράφου;"
 
-#: src/frontends/qt4/GuiView.cpp:2560
+#: src/frontends/qt4/GuiView.cpp:2570
 msgid "&Discard"
 msgstr "&Απόρριψη"
 
-#: src/frontends/qt4/GuiView.cpp:2648
+#: src/frontends/qt4/GuiView.cpp:2658
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -21781,7 +21801,7 @@ msgstr ""
 "\n"
 "Θέλετε να αποθηκεύσετε το έγγραφο;"
 
-#: src/frontends/qt4/GuiView.cpp:2683
+#: src/frontends/qt4/GuiView.cpp:2693
 #, c-format
 msgid ""
 "Document \n"
@@ -21792,56 +21812,56 @@ msgstr ""
 "%1$s\n"
 " έχει τροποποιηθεί εξωτερικά. Επαναφόρτωση τώρα; Κάθε τοπική αλλαγή θα χαθεί."
 
-#: src/frontends/qt4/GuiView.cpp:2686
+#: src/frontends/qt4/GuiView.cpp:2696
 msgid "Reload externally changed document?"
 msgstr "Επαναφόρτωση εξωτερικά τροποποιημένου εγγράφου;"
 
-#: src/frontends/qt4/GuiView.cpp:2739
+#: src/frontends/qt4/GuiView.cpp:2749
 msgid "Error when setting the locking property."
 msgstr "Σφάλμα κατά τη θέση της ιδιότητας κλειδώματος."
 
-#: src/frontends/qt4/GuiView.cpp:2785
+#: src/frontends/qt4/GuiView.cpp:2795
 msgid "Directory is not accessible."
 msgstr "Ο φάκελος δεν είναι προσβάσιμος."
 
-#: src/frontends/qt4/GuiView.cpp:2861
+#: src/frontends/qt4/GuiView.cpp:2871
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Άνοιγμα εγγράφου παιδιού %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:2941
+#: src/frontends/qt4/GuiView.cpp:2951
 #, fuzzy, c-format
 msgid "Successful preview of format: %1$s"
 msgstr "Σφάλμα εξαγωγής σε τύπο: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2942
+#: src/frontends/qt4/GuiView.cpp:2952
 #, fuzzy, c-format
 msgid "Error while previewing format: %1$s"
 msgstr "Σφάλμα προεπισκόπησης τύπου: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2945
+#: src/frontends/qt4/GuiView.cpp:2955
 #, fuzzy, c-format
 msgid "Successful export to format: %1$s"
 msgstr "Σφάλμα εξαγωγής σε τύπο: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2946
+#: src/frontends/qt4/GuiView.cpp:2956
 #, fuzzy, c-format
 msgid "Error while exporting format: %1$s"
 msgstr "Σφάλμα εξαγωγής σε τύπο: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:3130 src/frontends/qt4/GuiView.cpp:3142
+#: src/frontends/qt4/GuiView.cpp:3140 src/frontends/qt4/GuiView.cpp:3152
 msgid "Exporting ..."
 msgstr "Εξαγωγή..."
 
-#: src/frontends/qt4/GuiView.cpp:3151
+#: src/frontends/qt4/GuiView.cpp:3161
 msgid "Previewing ..."
 msgstr "Προεπισκόπηση..."
 
-#: src/frontends/qt4/GuiView.cpp:3185
+#: src/frontends/qt4/GuiView.cpp:3195
 msgid "Document not loaded"
 msgstr "Το έγγραφο δεν φορτώθηκε"
 
-#: src/frontends/qt4/GuiView.cpp:3263
+#: src/frontends/qt4/GuiView.cpp:3273
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -21850,29 +21870,29 @@ msgstr ""
 "Οποιαδήποτε τροποποίηση θα χαθεί. Θέλετε σίγουρα να επαναφέρετε την "
 "αποθηκευμένη έκδοση του εγγράφου %1$s;"
 
-#: src/frontends/qt4/GuiView.cpp:3266
+#: src/frontends/qt4/GuiView.cpp:3276
 msgid "Revert to saved document?"
 msgstr "Επαναφορά στο αποθηκευμένο αρχείο;"
 
-#: src/frontends/qt4/GuiView.cpp:3292
+#: src/frontends/qt4/GuiView.cpp:3302
 msgid "Saving all documents..."
 msgstr "Αποθήκευση όλων των εγγράφων..."
 
-#: src/frontends/qt4/GuiView.cpp:3302
+#: src/frontends/qt4/GuiView.cpp:3312
 msgid "All documents saved."
 msgstr "Όλα τα έγγραφα αποθηκεύτηκαν."
 
-#: src/frontends/qt4/GuiView.cpp:3402
+#: src/frontends/qt4/GuiView.cpp:3412
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s άγνωστη εντολή!"
 
-#: src/frontends/qt4/GuiView.cpp:3516
+#: src/frontends/qt4/GuiView.cpp:3526
 #, fuzzy
 msgid "Please, preview the document first."
 msgstr "Αυτό το τμήμα του εγγράφου έχει διαγραφεί."
 
-#: src/frontends/qt4/GuiView.cpp:3531
+#: src/frontends/qt4/GuiView.cpp:3541
 #, fuzzy
 msgid "Couldn't proceed."
 msgstr "Δεν ήταν δυνατή η εξαγωγή του αρχείου"
@@ -22096,65 +22116,65 @@ msgstr ""
 "To LyX δεν παρέχει υποστήριξη LaTeX για ονόματα αρχείων που περιέχουν "
 "οποιονδήποτε από τους ακόλουθους χαρακτήρες:\n"
 
-#: src/frontends/qt4/qt_helpers.cpp:215
+#: src/frontends/qt4/qt_helpers.cpp:225
 msgid "Could not update TeX information"
 msgstr "Δεν ήταν δυνατή η ενημέρωση πληροφοριών TeX"
 
-#: src/frontends/qt4/qt_helpers.cpp:216
+#: src/frontends/qt4/qt_helpers.cpp:226
 #, c-format
 msgid "The script `%1$s' failed."
 msgstr "Το σενάριο `%1$s' απέτυχε."
 
-#: src/frontends/qt4/qt_helpers.cpp:468
+#: src/frontends/qt4/qt_helpers.cpp:478
 msgid "All Files "
 msgstr "Όλα τα Αρχεία"
 
-#: src/frontends/qt4/qt_helpers.cpp:541 src/insets/InsetTOC.cpp:58
+#: src/frontends/qt4/qt_helpers.cpp:551 src/insets/InsetTOC.cpp:58
 #: src/insets/InsetTOC.cpp:114
 msgid "Table of Contents"
 msgstr "Πίνακας Περιεχομένων"
 
-#: src/frontends/qt4/qt_helpers.cpp:545
+#: src/frontends/qt4/qt_helpers.cpp:555
 msgid "List of Graphics"
 msgstr "Λίστα Γραφικών"
 
-#: src/frontends/qt4/qt_helpers.cpp:547
+#: src/frontends/qt4/qt_helpers.cpp:557
 msgid "List of Equations"
 msgstr "Λίστα Εξισώσεων"
 
-#: src/frontends/qt4/qt_helpers.cpp:549
+#: src/frontends/qt4/qt_helpers.cpp:559
 msgid "List of Footnotes"
 msgstr "Λίστα Υποσέλιδων"
 
-#: src/frontends/qt4/qt_helpers.cpp:551
+#: src/frontends/qt4/qt_helpers.cpp:561
 msgid "List of Listings"
 msgstr "Λίστα Περιγραφών"
 
-#: src/frontends/qt4/qt_helpers.cpp:553
+#: src/frontends/qt4/qt_helpers.cpp:563
 msgid "List of Indexes"
 msgstr "Λίστα Ευρετηρίων"
 
-#: src/frontends/qt4/qt_helpers.cpp:555
+#: src/frontends/qt4/qt_helpers.cpp:565
 msgid "List of Marginal notes"
 msgstr "Λίστα Σημειώσεων Περιθωρίου"
 
-#: src/frontends/qt4/qt_helpers.cpp:557
+#: src/frontends/qt4/qt_helpers.cpp:567
 msgid "List of Notes"
 msgstr "Λίστα Σημειώσεων"
 
-#: src/frontends/qt4/qt_helpers.cpp:559
+#: src/frontends/qt4/qt_helpers.cpp:569
 msgid "List of Citations"
 msgstr "Λίστα Βιβλιογραφικών Αναφορών"
 
-#: src/frontends/qt4/qt_helpers.cpp:561
+#: src/frontends/qt4/qt_helpers.cpp:571
 msgid "Labels and References"
 msgstr "Ετικέτες και Παραπομπές"
 
-#: src/frontends/qt4/qt_helpers.cpp:563
+#: src/frontends/qt4/qt_helpers.cpp:573
 msgid "List of Branches"
 msgstr "Λίστα Κλάδων"
 
-#: src/frontends/qt4/qt_helpers.cpp:565
+#: src/frontends/qt4/qt_helpers.cpp:575
 msgid "List of Changes"
 msgstr "Λίστα Αλλαγών"
 
@@ -22466,7 +22486,7 @@ msgstr "Λίστα %1$s"
 msgid "footnote"
 msgstr "υποσημείωση"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:670
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:672
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -22513,13 +22533,13 @@ msgstr "Είσοδος Αυτολεξεί*"
 msgid "Include (excluded)"
 msgstr "Συμπερίληψη (αποκλεισμός)"
 
-#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:770
-#: src/insets/InsetInclude.cpp:815
+#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:772
+#: src/insets/InsetInclude.cpp:817
 msgid "Recursive input"
 msgstr "Αναδρομική είσοδος"
 
-#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:771
-#: src/insets/InsetInclude.cpp:816
+#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:773
+#: src/insets/InsetInclude.cpp:818
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
@@ -22563,23 +22583,23 @@ msgstr ""
 msgid "Module not found"
 msgstr "Η μονάδα δε βρέθηκε"
 
-#: src/insets/InsetInclude.cpp:627 src/insets/InsetInclude.cpp:648
+#: src/insets/InsetInclude.cpp:629 src/insets/InsetInclude.cpp:650
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:636 src/insets/InsetInclude.cpp:656
+#: src/insets/InsetInclude.cpp:638 src/insets/InsetInclude.cpp:658
 #, fuzzy
 msgid "Export failure"
 msgstr "Αποτυχία αντιγράφου ασφαλείας"
 
-#: src/insets/InsetInclude.cpp:758
+#: src/insets/InsetInclude.cpp:760
 msgid "Unsupported Inclusion"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:759
+#: src/insets/InsetInclude.cpp:761
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
