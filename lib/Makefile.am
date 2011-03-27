@@ -991,8 +991,23 @@ dist_imagesoxygen_DATA = \
 	images/oxygen/buffer-reload.png \
 	images/oxygen/buffer-toggle-output-sync.png \
 	images/oxygen/buffer-update.png \
+	images/oxygen/buffer-update_dvi.png \
+	images/oxygen/buffer-update_dvi3.png \
+	images/oxygen/buffer-update_pdf.png \
+	images/oxygen/buffer-update_pdf2.png \
+	images/oxygen/buffer-update_pdf3.png \
+	images/oxygen/buffer-update_pdf4.png \
+	images/oxygen/buffer-update_pdf5.png \
+	images/oxygen/buffer-update_ps.png \
 	images/oxygen/buffer-view.png \
 	images/oxygen/buffer-view_dvi.png \
+	images/oxygen/buffer-view_dvi3.png \
+	images/oxygen/buffer-view_pdf.png \
+	images/oxygen/buffer-view_pdf2.png \
+	images/oxygen/buffer-view_pdf3.png \
+	images/oxygen/buffer-view_pdf4.png \
+	images/oxygen/buffer-view_pdf5.png \
+	images/oxygen/buffer-view_ps.png \
 	images/oxygen/buffer-write-as.png \
 	images/oxygen/buffer-write.png \
 	images/oxygen/change-accept.png \
