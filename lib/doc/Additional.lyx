@@ -5529,7 +5529,7 @@ name "sub:rev-search"
 
 \end_inset
 
-Automatical enabling
+Automatic setup
 \end_layout
 
 \begin_layout Standard
@@ -5540,20 +5540,20 @@ status collapsed
 \begin_layout Plain Layout
 Document\SpecialChar \menuseparator
 Output\SpecialChar \menuseparator
-Output Sync
+Synchronize with Output
 \end_layout
 
 \end_inset
 
 .
- In such a case LyX will automatically insert SyncTeX macro (for PDF) or
- srcltx package (for DVI) respectively.
+ In such a case LyX will automatically insert the necessary SyncTeX macro
+ (for PDF) or load the srcltx package (for DVI) respectively.
  This option can be easily reached also on 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-View/update
+View/Update
 \end_layout
 
 \end_inset
@@ -5562,7 +5562,24 @@ View/update
 \end_layout
 
 \begin_layout Standard
-Plase note that including 
+If you need a different setting, you can select or input a custom macro
+ from the drop down box just below 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Document\SpecialChar \menuseparator
+Output\SpecialChar \menuseparator
+Synchronize with Output
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Please note that including the 
 \begin_inset Flex Code
 status collapsed
 
@@ -5582,18 +5599,52 @@ src-specials
 
 \end_inset
 
- sometimes have an impact on the typeset and you should switch them off
- for the final typesets.
+ sometimes has an undesired impact on the typesetting.
+ Thus, you should switch output synchronization off for the final typesetting
+ if you use the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+srcltx
+\end_layout
+
+\end_inset
+
+ package or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+src-specials
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-You can also define custom macro in preferences and in case you need some
- special tweaks read the next section about manual enabling.
- 
+In case you need some more special settings that are not covered by the
+ automatic settings, read the next section about how to set up output synchroniz
+ation manually.
+ If the automatic setup suits your needs, you can readily jump to section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:configuring-viewers"
+
+\end_inset
+
+, where the necessary configuration steps in your viewer -- needed both
+ with the automatic and the manual setup -- are described.
 \end_layout
 
 \begin_layout Subsection
-Manual enabling
+Manual setup
 \end_layout
 
 \begin_layout Standard
@@ -5959,6 +6010,13 @@ status collapsed
 
 \begin_layout Subsection
 Configuring and using specific viewers
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:configuring-viewers"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -6737,8 +6795,46 @@ Forward search
 \end_layout
 
 \begin_layout Standard
-To make forward search possible you need to provide generated output PDF/DVI
- file with additional information about TeX sources.
+Forward search is, as the name implies, in a sense the 
+\begin_inset Quotes eld
+\end_inset
+
+opposite
+\begin_inset Quotes erd
+\end_inset
+
+ to reverse search.
+ It allows you to let the viewer jump to a given position from within LyX.
+ If forward search is set up (as described in what follows), you can put
+ the cursor anywhere in your LyX document, and hit 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Navigate\SpecialChar \menuseparator
+Forward search
+\end_layout
+
+\end_inset
+
+ (or select 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Forward search
+\end_layout
+
+\end_inset
+
+ in the context menu via right mouse click), and then the viewer will jump
+ to that position as well.
+ This implies, of course, that your viewer supports this function.
+\end_layout
+
+\begin_layout Standard
+To make forward search possible, you first need to provide the generated
+ output PDF/DVI file with additional information about the TeX sources.
  This can be done via the methods described in the section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6750,11 +6846,12 @@ reference "sub:rev-search"
 \end_layout
 
 \begin_layout Standard
-Secondly you need to configure LyX for using your viewers in 
+Additionally, you need to configure LyX for using your viewers in 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
+Tools\SpecialChar \menuseparator
 Preferences\SpecialChar \menuseparator
 Output\SpecialChar \menuseparator
 General
@@ -6763,8 +6860,59 @@ General
 \end_inset
 
 .
- Only some of the viewers allows this operation --- yap, xdvi, okular, Sumatra
- PDF
+ We provide a range of tested configurations for some viewers, which you
+ can select from the drop down list.
+ If none of these configurations suits you, you have to find out and enter
+ a suitable configuration yourself.
+ The definition syntax uses the following placeholders: 
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$n
+\end_layout
+
+\end_inset
+
+: row number
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$t
+\end_layout
+
+\end_inset
+
+: name of the (temporary) exported .tex file
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$o
+\end_layout
+
+\end_inset
+
+: name of the exported output file (either dvi or pdf, depending on which
+ one exists in the temporary directory)
+\end_layout
+
+\begin_layout Standard
+Note that only some of the viewers provide full forward search functionality,
+ among them yap, xdvi, okular and Sumatra PDF
 \begin_inset Foot
 status collapsed
 
@@ -6776,49 +6924,35 @@ ip
 \end_inset
 
 .
- Some other viewers allow at least reloading and positioning to particular
- page of the file --- Evince or xpdf --- for these cases you can use external
- call of synctex.
- Please study the prepared examples in the Preferences dialog.
- The values replaced in the setting: 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-$$n
-\end_layout
-
+ While many of the widespread PDF viewers (most notably Adobe Reader) do
+ not support forward search at all, some other viewers -- e.
+\begin_inset space \thinspace{}
 \end_inset
 
- for row number, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-$$t
-\end_layout
-
+g.
+ evince and xpdf -- allow at least to reload the document and jump to a
+ specific page of the file, so you can at least navigate 
+\begin_inset Quotes eld
 \end_inset
 
- for exported temporary .tex file, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-$$o
-\end_layout
-
+near
+\begin_inset Quotes erd
 \end_inset
 
- exported output file (either dvi or pdf, depending on which one exists
- in the temp dir).
+.
+ These latter functionality is provided by an external call of synctex (see
+ the predefined example configurations).
  
 \end_layout
 
 \begin_layout Standard
-When viewing, LyX dynamically choose proper preview format based on the
- presence of .dvi or .pdf file in the temporary directory (i.e.
- what format have you used for viewing this particular document).
+Forward search works both with DVI and PDF output.
+ LyX simply checks which preview format you have used before (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., which format is already there in the temporary directory) and chooses
+ the appropriate configuration for the respective format.
  
 \end_layout
 
