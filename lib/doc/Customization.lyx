@@ -139,7 +139,6 @@ End
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author 34634807 "Jean-Pierre" 
 \end_header
 
 \begin_body
@@ -7405,12 +7404,8 @@ status collapsed
 
 \begin_layout Plain Layout
 Document\SpecialChar \menuseparator
-Settings
-\change_inserted 34634807 1296981553
-\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
 Modules
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -7466,14 +7461,10 @@ to
 
 \begin_layout Standard
 The module declaration should then be followed by lines like the following
-\change_inserted 34634807 1296981696
-
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1296981696
 Preferably in English if the module should be published with LyX.
  This description will appear in the list of messages to be translated and
  will be thus translated with the next interface update.
@@ -7481,8 +7472,6 @@ Preferably in English if the module should be published with LyX.
 
 \end_inset
 
-
-\change_unchanged
 :
 \end_layout
 
@@ -7525,12 +7514,8 @@ status collapsed
 
 \begin_layout Plain Layout
 Document\SpecialChar \menuseparator
-Settings
-\change_inserted 34634807 1296981581
-\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
 Modules
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -7609,17 +7594,7 @@ somemodule.module
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted 34634807 1296981875
-F
-\change_deleted 34634807 1296981874
-File f
-\change_unchanged
-ormat
-\change_inserted 34634807 1296981882
- number
-\change_unchanged
-
+Format number
 \end_layout
 
 \begin_layout Standard
@@ -9496,13 +9471,7 @@ A paragraph style description looks like this:
 status collapsed
 
 \begin_layout Plain Layout
-Note that this will either define a new 
-\change_deleted 34634807 1296982902
-layout
-\change_inserted 34634807 1296982902
-style
-\change_unchanged
- or modify an existing one.
+Note that this will either define a new style or modify an existing one.
 \end_layout
 
 \end_inset
@@ -9667,20 +9636,9 @@ Note that a `float' here is a real number, such as: 1.5.
 \end_inset
 
  The vertical space with which the last of a chain of paragraphs with this
- 
-\change_deleted 34634807 1296982906
-layout
-\change_inserted 34634807 1296982906
-style
-\change_unchanged
- is separated from the following paragraph.
- If the next paragraph has another 
-\change_deleted 34634807 1296982915
-layout
-\change_inserted 34634807 1296982915
-style
-\change_unchanged
-, the separations are not simply added, but the maximum is taken.
+ style is separated from the following paragraph.
+ If the next paragraph has another style, the separations are not simply
+ added, but the maximum is taken.
 \end_layout
 
 \begin_layout Description
@@ -9704,13 +9662,7 @@ status collapsed
 \end_inset
 
  The category for this style.
- This is used to group related styles in the 
-\change_deleted 34634807 1296982925
-Layout
-\change_inserted 34634807 1296982925
-style
-\change_unchanged
- combobox on the toolbar.
+ This is used to group related styles in the style combobox on the toolbar.
  Any string can be used, but you may want to use existing categories with
  your own styles.
  
@@ -9962,163 +9914,6 @@ EndLabelType
 \end_layout
 
 \begin_layout Description
-
-\change_deleted 34634807 1296982079
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Fill_Bottom
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-0
-\emph default
-,1
-\end_layout
-
-\end_inset
-
-] Similar to 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Fill_Top
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Description
-
-\change_deleted 34634807 1296982079
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Fill_Top
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-0
-\emph default
-,1
-\end_layout
-
-\end_inset
-
-] With this parameter the 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-Fill
-\end_layout
-
-\end_inset
-
- value of the 
-\begin_inset Quotes eld
-\end_inset
-
-Vertical space above
-\begin_inset Quotes erd
-\end_inset
-
- list of the 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-Edit\SpecialChar \menuseparator
-Paragraph
-\begin_inset space ~
-\end_inset
-
-Settings
-\end_layout
-
-\end_inset
-
- dialog can be set when initializing a paragraph with this style.
-\change_unchanged
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-Note from Jean-Marc:
-\emph default
- I'm not sure that this setting has much use, and it should probably be
- removed in later versions.
-\end_layout
-
-\end_inset
-
- 
-\change_inserted 34634807 1296982107
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 34634807 1296982125
-I do not find any 
-\begin_inset Quotes eld
-\end_inset
-
-Vertical space above
-\begin_inset Quotes erd
-\end_inset
-
- or 
-\begin_inset Quotes eld
-\end_inset
-
-Vertical space below
-\begin_inset Quotes erd
-\end_inset
-
- in Edit\SpecialChar \menuseparator
-Paragraph
-\begin_inset space ~
-\end_inset
-
-Settings, so this seems obsolete, as Jean-Marc noticed (Note by J.P.
- Chrétien, feb.
- 2011)
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\begin_layout Description
 \begin_inset Flex Code
 status collapsed
 
@@ -10282,23 +10077,11 @@ status collapsed
 
 \end_inset
 
- If 1, marks the 
-\change_deleted 34634807 1296982928
-layout
-\change_inserted 34634807 1296982928
-style
-\change_unchanged
- as to be included in the document preamble rather than in the document
- body.
+ If 1, marks the style as to be included in the document preamble rather
+ than in the document body.
  This is useful for document classes that want such information as the title
  and author to appear in the preamble.
- Note that this works only for 
-\change_deleted 34634807 1296982930
-layout
-\change_inserted 34634807 1296982930
-style
-\change_unchanged
-s for which the 
+ Note that this works only for styles for which the 
 \begin_inset Flex Code
 status collapsed
 
@@ -10351,13 +10134,7 @@ status collapsed
 
 \end_inset
 
- If 1, marks the 
-\change_deleted 34634807 1296982932
-layout
-\change_inserted 34634807 1296982932
-style
-\change_unchanged
- as being part of a title block (see also the 
+ If 1, marks the style as being part of a title block (see also the 
 \begin_inset Flex Code
 status collapsed
 
@@ -10400,20 +10177,9 @@ float=0
 
 \end_inset
 
-] This provides extra space between paragraphs that have the same 
-\change_deleted 34634807 1296982933
-layout
-\change_inserted 34634807 1296982933
-style
-\change_unchanged
-.
- If you put other 
-\change_deleted 34634807 1296982940
-layout
-\change_inserted 34634807 1296982940
-style
-\change_unchanged
-s into an environment, each is separated with the environment's 
+] This provides extra space between paragraphs that have the same style.
+ If you put other styles into an environment, each is separated with the
+ environment's 
 \begin_inset Flex Code
 status collapsed
 
@@ -10497,13 +10263,8 @@ status collapsed
  lead to empty LaTeX output.
  There are some cases where this could be desirable however: in a letter
  template, the required fields can be provided as empty fields, so that
- people do not forget them; in some special classes, a 
-\change_deleted 34634807 1296982945
-layout
-\change_inserted 34634807 1296982945
-style
-\change_unchanged
- can be used as some kind of break, which does not contain actual text.
+ people do not forget them; in some special classes, a style can be used
+ as some kind of break, which does not contain actual text.
 \end_layout
 
 \begin_layout Description
@@ -10594,13 +10355,7 @@ Counter
 \end_inset
 
 .
- In that case, the counter will be stepped each time the 
-\change_deleted 34634807 1296982948
-layout
-\change_inserted 34634807 1296982948
-style
-\change_unchanged
- appears.
+ In that case, the counter will be stepped each time the style appears.
  
 \begin_inset Newline newline
 \end_inset
@@ -11044,13 +10799,7 @@ Static
 
 .
  The label will be printed above the paragraph, but only at the top of an
- environment or the top of a chain of paragraphs with this 
-\change_deleted 34634807 1296982950
-layout
-\change_inserted 34634807 1296982950
-style
-\change_unchanged
-.
+ environment or the top of a chain of paragraphs with this style.
  This might be used with the 
 \begin_inset Flex MenuItem
 status collapsed
@@ -11061,13 +10810,7 @@ Abstract
 
 \end_inset
 
- 
-\change_deleted 34634807 1296982953
-layout
-\change_inserted 34634807 1296982953
-style
-\change_unchanged
-, for example.
+ style, for example.
 \end_layout
 
 \begin_layout Itemize
@@ -11350,13 +11093,7 @@ List_Environment, Bib_Environment
 
 \end_inset
 
-] How the 
-\change_deleted 34634807 1296982955
-layout
-\change_inserted 34634807 1296982955
-style
-\change_unchanged
- should be translated into LaTeX.
+] How the style should be translated into LaTeX.
 \begin_inset Foot
 status collapsed
 
@@ -11544,18 +11281,8 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_deleted 34634807 1296982208
-
-\bar under
-L
-\bar default
-ayout
-\change_inserted 34634807 1296982209
-
 \bar under
 Edit
-\change_unchanged
-
 \bar default
 \SpecialChar \menuseparator
 
@@ -11563,14 +11290,10 @@ Edit
 P
 \bar default
 aragraph
-\change_inserted 34634807 1296982216
-
 \begin_inset space ~
 \end_inset
 
 settings
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -11628,14 +11351,8 @@ string=""
 
 \end_inset
 
-] If you put 
-\change_deleted 34634807 1296982960
-layout
-\change_inserted 34634807 1296982960
-style
-\change_unchanged
-s into environments, the leftmargins are not simply added, but added with
- a factor 
+] If you put styles into environments, the leftmargins are not simply added,
+ but added with a factor 
 \begin_inset Formula $\frac{4}{depth+4}$
 \end_inset
 
@@ -11756,13 +11473,7 @@ Static
 \begin_inset Newline newline
 \end_inset
 
-The kind of margin that the 
-\change_deleted 34634807 1296982962
-layout
-\change_inserted 34634807 1296982962
-style
-\change_unchanged
- has on the left side.
+The kind of margin that the style has on the left side.
  
 \begin_inset Flex Code
 status collapsed
@@ -11905,13 +11616,7 @@ status collapsed
 
 \end_inset
 
-] Whether fragile commands in this 
-\change_deleted 34634807 1296982964
-layout
-\change_inserted 34634807 1296982964
-style
-\change_unchanged
- should be 
+] Whether fragile commands in this style should be 
 \begin_inset Flex Code
 status collapsed
 
@@ -12048,26 +11753,8 @@ ObsoletedBy
 
 \end_inset
 
- Name of a 
-\change_deleted 34634807 1296982966
-layout
-\change_inserted 34634807 1296982966
-style
-\change_unchanged
- that has replaced this 
-\change_deleted 34634807 1296982967
-layout
-\change_inserted 34634807 1296982967
-style
-\change_unchanged
-.
- This is used to rename a 
-\change_deleted 34634807 1296982969
-layout
-\change_inserted 34634807 1296982969
-style
-\change_unchanged
-, while keeping backward compatibility.
+ Name of a style that has replaced this style.
+ This is used to rename a style, while keeping backward compatibility.
 \end_layout
 
 \begin_layout Description
@@ -12090,13 +11777,7 @@ int=0
 
 \end_inset
 
-] The number of optional arguments that can be used with this 
-\change_deleted 34634807 1296982970
-layout
-\change_inserted 34634807 1296982970
-style
-\change_unchanged
-.
+] The number of optional arguments that can be used with this style.
  This is useful for things like section headings, and only makes sense with
  LaTeX.
  Note that, on output, the optional arguments will all precede any required
@@ -12211,66 +11892,9 @@ Parindent
 
 \end_inset
 
- will be fixed for a certain 
-\change_deleted 34634807 1296982972
-layout
-\change_inserted 34634807 1296982972
-style
-\change_unchanged
-.
- The exception is 
-\change_deleted 34634807 1296982262
-Standard
-\change_inserted 34634807 1296982262
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted 34634807 1296982262
-Standard
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
- 
-\change_deleted 34634807 1296982974
-layout
-\change_inserted 34634807 1296982974
-style
-\change_unchanged
-, since the indentation of a 
-\change_deleted 34634807 1296982283
-Standard
-\change_inserted 34634807 1296982283
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted 34634807 1296982283
-Standard
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
- 
-\change_deleted 34634807 1296982976
-layout
-\change_inserted 34634807 1296982976
-style
-\change_unchanged
- paragraph can be prohibited with 
+ will be fixed for a certain style.
+ The exception is the default style, since the indentation for these paragraphs
+ can be prohibited with 
 \begin_inset Flex Code
 status collapsed
 
@@ -12282,32 +11906,16 @@ NextNoIndent
 
 .
  Also, 
-\change_deleted 34634807 1296982295
-Standard
-\change_inserted 34634807 1296982295
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1296982295
 Standard
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
- 
-\change_deleted 34634807 1296982977
-layout
-\change_inserted 34634807 1296982977
-style
-\change_unchanged
- paragraphs inside environments use the 
+ style paragraphs inside environments use the 
 \begin_inset Flex Code
 status collapsed
 
@@ -12319,25 +11927,15 @@ Parindent
 
  of the environment, not their native one.
  For example, 
-\change_deleted 34634807 1296982308
-Standard
-\change_inserted 34634807 1296982308
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1296982308
 Standard
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
  paragraphs inside an enumeration are not indented.
 \end_layout
 
@@ -12361,13 +11959,7 @@ float=0
 
 \end_inset
 
-] The vertical space between two paragraphs of this 
-\change_deleted 34634807 1296982979
-layout
-\change_inserted 34634807 1296982979
-style
-\change_unchanged
-.
+] The vertical space between two paragraphs of this style.
 \end_layout
 
 \begin_layout Description
@@ -12432,13 +12024,7 @@ Paragraph
 \begin_inset Quotes erd
 \end_inset
 
- 
-\change_deleted 34634807 1296982981
-layout
-\change_inserted 34634807 1296982981
-style
-\change_unchanged
- is ignored and all paragraphs are separated by this parskip argument.
+ style is ignored and all paragraphs are separated by this parskip argument.
  The vertical space is calculated with 
 \begin_inset Flex Code
 status collapsed
@@ -12597,13 +12183,7 @@ int=0
 \end_inset
 
 ] The number of required arguments that the LaTeX command or environment
- corresponding to this 
-\change_deleted 34634807 1296982982
-layout
-\change_inserted 34634807 1296982982
-style
-\change_unchanged
- expects.
+ corresponding to this style expects.
  In the case of a command, these are required arguments 
 \emph on
 other than
@@ -12652,13 +12232,7 @@ name "des:Requires"
 
 \end_inset
 
-Whether the 
-\change_deleted 34634807 1296982984
-layout
-\change_inserted 34634807 1296982984
-style
-\change_unchanged
- requires the feature 
+Whether the style requires the feature 
 \begin_inset Flex Code
 status collapsed
 
@@ -12751,13 +12325,7 @@ single
 \emph on
 value
 \emph default
-] This defines what the default spacing should be in the 
-\change_deleted 34634807 1296982985
-layout
-\change_inserted 34634807 1296982985
-style
-\change_unchanged
-.
+] This defines what the default spacing should be in the style.
  The arguments 
 \begin_inset Flex Code
 status collapsed
@@ -12934,20 +12502,9 @@ float=0
 \end_inset
 
 ] The vertical space with which the very first of a chain of paragraphs
- with this 
-\change_deleted 34634807 1296982986
-layout
-\change_inserted 34634807 1296982986
-style
-\change_unchanged
- is separated from the previous paragraph.
- If the previous paragraph has another 
-\change_deleted 34634807 1296982988
-layout
-\change_inserted 34634807 1296982988
-style
-\change_unchanged
-, the separations are not simply added, but the maximum is taken.
+ with this style is separated from the previous paragraph.
+ If the previous paragraph has another style, the separations are not simply
+ added, but the maximum is taken.
 \end_layout
 
 \begin_layout Subsection
@@ -14899,25 +14456,15 @@ status collapsed
 \end_inset
 
 ] Indicates whether the 
-\change_deleted 34634807 1296982392
-PlainLayout
-\change_inserted 34634807 1296982392
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1296982392
 PlainLayout
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
  should be used or, instead, the user can change the paragraph style used
  in the inset.
  Default is false.
@@ -15074,45 +14621,25 @@ LabelString
 
  What will be displayed on the button or elsewhere as the inset label.
  Some inset types (
-\change_deleted 34634807 1296982426
-TeX code
-\change_inserted 34634807 1296982426
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1296982426
 TeX code
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
  and 
-\change_deleted 34634807 1296982433
-Branch
-\change_inserted 34634807 1296982433
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1296982433
 Branch
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 ) modify this label on the fly.
 \end_layout
 
@@ -15399,13 +14926,7 @@ status collapsed
 
 \end_inset
 
-] Whether fragile commands in this 
-\change_deleted 34634807 1296982465
-layout
-\change_inserted 34634807 1296982466
-inset
-\change_unchanged
- should be 
+] Whether fragile commands in this inset should be 
 \begin_inset Flex Code
 status collapsed
 
@@ -19598,15 +19119,9 @@ InputFormat
 
  The file format of the original file.
  This must be the name of a format that is known to LyX (see section
-\change_inserted 34634807 1296982650
-
 \begin_inset space ~
 \end_inset
 
-
-\change_deleted 34634807 1296982649
- 
-\change_unchanged
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -19748,25 +19263,7 @@ Format
 
 \end_inset
 
- section for all 
-\change_deleted 34634807 1296982695
-formats
-\change_inserted 34634807 1296982711
-templates
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 34634807 1296982711
-format or template here ?
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-.
+ section for all templates.
  Use a dummy text when no representation is available.
  Then you can at least see a reference to the external material in the exported
  document.
@@ -20134,22 +19631,9 @@ ools\SpecialChar \menuseparator
 \bar under
 P
 \bar default
-references
-\change_deleted 34634807 1296982746
-:Conversion
-\change_inserted 34634807 1296982770
-File
-\begin_inset space ~
-\end_inset
-
-handling\SpecialChar \menuseparator
-File
-\begin_inset space ~
-\end_inset
-
-Format
-\change_unchanged
-
+references\SpecialChar \menuseparator
+File Handling\SpecialChar \menuseparator
+File Format
 \end_layout
 
 \end_inset
