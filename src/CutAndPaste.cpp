@@ -672,13 +672,19 @@ void switchBetweenClasses(DocumentClass const * const oldone,
 			n == DocumentClass::plainInsetLayout().name();
 		if (!is_undefined)
 			continue;
+
 		// The flex inset is undefined in newtc
-		docstring const s = bformat(_(
-			"Flex inset %1$s is "
-			"undefined because of class "
-			"conversion from\n%2$s to %3$s"),
-			it->name(), from_utf8(oldtc.name()),
-			from_utf8(newtc.name()));
+		docstring const oldname = from_utf8(oldtc.name());
+		docstring const newname = from_utf8(newtc.name());
+		docstring s;
+		if (oldname == newname)
+			s = bformat(_("Flex inset %1$s is undefined after "
+				"reloading `%2$s' layout."),
+				it->name(), oldname);
+		else
+			s = bformat(_("Flex inset %1$s is undefined because of "
+				"conversion from `%2$s' layout to `%3$s'."),
+				it->name(), oldname, newname);
 		// To warn the user that something had to be done.
 		errorlist.push_back(ErrorItem(
 				_("Undefined flex inset"),
