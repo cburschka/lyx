@@ -73,18 +73,6 @@ docstring InsetCaption::layoutName() const
 }
 
 
-void InsetCaption::read(Lexer & lex)
-{
-#if 0
-	// We will enably this check again when the compability
-	// code is removed from Buffer::Read (Lgb)
-	lex.setContext("InsetCaption::Read: consistency check");
-	lex >> "Caption";
-#endif
-	InsetText::read(lex);
-}
-
-
 void InsetCaption::cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const
 {

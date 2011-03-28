@@ -38,8 +38,6 @@ private:
 	///
 	void write(std::ostream & os) const;
 	///
-	void read(Lexer & lex);
-	///
 	DisplayType display() const { return AlignCenter; }
 	///
 	bool neverIndent() const { return true; }
