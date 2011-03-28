@@ -214,10 +214,6 @@ public:
 	///
 	MarginType margintype;
 	///
-	bool fill_top;
-	///
-	bool fill_bottom;
-	///
 	bool newline_allowed;
 	///
 	bool nextnoindent;

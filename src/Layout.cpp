@@ -51,8 +51,6 @@ enum LayoutTags {
 	LT_END,
 	//LT_ENVIRONMENT_DEFAULT,
 	//LT_FANCYHDR,
-	LT_FILL_BOTTOM,
-	LT_FILL_TOP,
 	//LT_FIRST_COUNTER,
 	LT_FONT,
 	LT_FREE_SPACING,
@@ -141,8 +139,6 @@ Layout::Layout()
 	endlabeltype = END_LABEL_NO_LABEL;
 	// Should or should not. That is the question.
 	// spacing.set(Spacing::OneHalf);
-	fill_top = false;
-	fill_bottom = false;
 	newline_allowed = true;
 	free_spacing = false;
 	pass_thru = false;
@@ -173,8 +169,6 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		{ "end",            LT_END },
 		{ "endlabelstring", LT_ENDLABELSTRING },
 		{ "endlabeltype",   LT_ENDLABELTYPE },
-		{ "fill_bottom",    LT_FILL_BOTTOM },
-		{ "fill_top",       LT_FILL_TOP },
 		{ "font",           LT_FONT },
 		{ "freespacing",    LT_FREE_SPACING },
 		{ "htmlattr",       LT_HTMLATTR },
@@ -448,14 +442,6 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 
 		case LT_PARSEP:		// par. separation size
 			lex >> parsep;
-			break;
-
-		case LT_FILL_TOP:	// fill top flag
-			lex >> fill_top;
-			break;
-
-		case LT_FILL_BOTTOM:	// fill bottom flag
-			lex >> fill_bottom;
 			break;
 
 		case LT_NEWLINE:	// newlines allowed?

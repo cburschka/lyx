@@ -116,6 +116,9 @@ import os, re, string, sys
 # Incremented to format 33, 2 February 2011 by rgh
 # Changed NeedsFloatPkg to UsesFloatPkg
 
+# Incremented to format 34, 28 March 2011 by rgh
+# Remove obsolete Fill_(Top|Bottom) tags
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -123,7 +126,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 33
+currentFormat = 34
 
 
 def usage(prog_name):
@@ -213,6 +216,7 @@ def convert(lines):
     re_InsetLayout_CopyStyle = re.compile(r'^\s*CopyStyle\s+(?:Custom|CharStyle|Element):(\S+)\s*$')
     re_QInsetLayout_CopyStyle = re.compile(r'^\s*CopyStyle\s+"(?:Custom|CharStyle|Element):([^"]+)"\s*$')
     re_NeedsFloatPkg = re.compile(r'^(\s*)NeedsFloatPkg\s+(\w+)\s*$')
+    re_Fill = re.compile(r'^\s*Fill_(?:Top|Bottom).*$')
 
     # counters for sectioning styles (hardcoded in 1.3)
     counters = {"part"          : "\\Roman{part}",
@@ -300,6 +304,13 @@ def convert(lines):
             while i < len(lines) and not re_EndBabelPreamble.match(lines[i]):
                 i += 1
             continue
+
+        if format == 33:
+          m = re_Fill.match(lines[i])
+          if m:
+            lines[i] = ""
+          i += 1
+          continue
 
         if format == 32:
           match = re_NeedsFloatPkg.match(lines[i])
