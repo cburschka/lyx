@@ -68,7 +68,7 @@ void TexRow::newlines(int)
 
 
 // Dummy LyXRC support
-struct LyXRC {
+class LyXRC {
 	string icon_set;
 } lyxrc;
 
