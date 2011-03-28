@@ -111,7 +111,7 @@ InsetNote::~InsetNote()
 }
 
 
-docstring InsetNote::name() const 
+docstring InsetNote::layoutName() const
 {
 	return from_ascii("Note:" + notetranslator().find(params_.type));
 }

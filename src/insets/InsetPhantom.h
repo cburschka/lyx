@@ -60,7 +60,7 @@ private:
 	///
 	InsetCode lyxCode() const { return PHANTOM_CODE; }
 	///
-	docstring name() const;
+	docstring layoutName() const;
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///

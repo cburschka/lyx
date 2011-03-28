@@ -143,7 +143,7 @@ InsetScript::~InsetScript()
 }
 
 
-docstring InsetScript::name() const 
+docstring InsetScript::layoutName() const
 {
 	return from_ascii("script:" + scripttranslator().find(params_.type));
 }

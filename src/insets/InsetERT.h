@@ -44,7 +44,7 @@ private:
 	///
 	InsetCode lyxCode() const { return ERT_CODE; }
 	///
-	docstring name() const { return from_ascii("ERT"); }
+	docstring layoutName() const { return from_ascii("ERT"); }
 	///
 	void write(std::ostream & os) const;
 	///

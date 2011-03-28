@@ -68,7 +68,7 @@ public:
 	/// Direct access to inner/outer quotation marks
 	InsetQuotes(Buffer * buf, char_type c, QuoteTimes t);
 	///
-	docstring name() const;
+	docstring layoutName() const;
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///

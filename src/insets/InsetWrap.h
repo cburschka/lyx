@@ -83,7 +83,7 @@ private:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	docstring name() const;
+	docstring layoutName() const;
 	///
 	Inset * clone() const { return new InsetWrap(*this); }
 

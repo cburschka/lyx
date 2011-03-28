@@ -69,7 +69,7 @@ public:
 	InsetFloatParams const & params() const { return params_; }
 private:
 	///
-	docstring name() const;
+	docstring layoutName() const;
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///

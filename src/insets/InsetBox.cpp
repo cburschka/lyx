@@ -102,7 +102,7 @@ InsetBox::InsetBox(Buffer * buffer, string const & label)
 {}
 
 
-docstring InsetBox::name() const 
+docstring InsetBox::layoutName() const
 {
 	// FIXME: UNICODE
 	string name = "Box";

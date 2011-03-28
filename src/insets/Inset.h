@@ -415,13 +415,7 @@ public:
 	virtual docstring contextMenuName() const;
 
 
-	// FIXME This should really disappear in favor of 
-	//	docstring name() const { return from_ascii(insetName(lyxCode()))); }
-	// There's no reason to be using different names in different places.
-	// But to do this we would need to change the file format, since the names
-	// used there don't correspond to what is used here. 
-	///
-	virtual docstring name() const;
+	virtual docstring layoutName() const;
 	///
 	virtual InsetLayout const & getLayout() const;
 	/// Is this inset's layout defined in the document's textclass?

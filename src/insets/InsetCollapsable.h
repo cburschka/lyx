@@ -45,7 +45,7 @@ public:
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
-	docstring name() const { return from_ascii("Collapsable"); }
+	docstring layoutName() const { return from_ascii("Collapsable"); }
 	///
 	void read(Lexer &);
 	///

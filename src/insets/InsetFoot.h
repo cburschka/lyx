@@ -30,7 +30,7 @@ private:
 	///
 	InsetCode lyxCode() const { return FOOT_CODE; }
 	///
-	docstring name() const { return from_ascii("Foot"); }
+	docstring layoutName() const { return from_ascii("Foot"); }
 	///
 	void latex(otexstream &, OutputParams const &) const;
 	///

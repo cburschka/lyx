@@ -45,7 +45,7 @@ public:
 	
 	InsetCode lyxCode() const { return PREVIEW_CODE; }
 	
-	docstring name() const { return from_ascii("Preview"); }
+	docstring layoutName() const { return from_ascii("Preview"); }
 	
 	bool descendable(BufferView const & /*bv*/) const { return true; }
 

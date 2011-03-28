@@ -39,7 +39,7 @@ private:
 	/// code of the inset
 	InsetCode lyxCode() const { return ARG_CODE; }
 	///
-	docstring name() const { return from_ascii("Argument"); }
+	docstring layoutName() const { return from_ascii("Argument"); }
 	/// Standard LaTeX output -- short-circuited
 	void latex(otexstream &, OutputParams const &) const;
 	/// Standard plain text output -- short-circuited

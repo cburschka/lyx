@@ -49,7 +49,7 @@ private:
 	///
 	InsetCode lyxCode() const { return INDEX_CODE; }
 	///
-	docstring name() const { return from_ascii("Index"); }
+	docstring layoutName() const { return from_ascii("Index"); }
 	///
 	ColorCode labelColor() const;
 	///

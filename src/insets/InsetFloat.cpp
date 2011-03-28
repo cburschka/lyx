@@ -119,7 +119,7 @@ InsetFloat::InsetFloat(Buffer * buf, string params_str)
 }
 
 
-docstring InsetFloat::name() const 
+docstring InsetFloat::layoutName() const
 { 
 	return "Float:" + from_utf8(params_.type);
 }

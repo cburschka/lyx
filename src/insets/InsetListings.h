@@ -47,7 +47,7 @@ private:
 	/// lstinline is inlined, normal listing is displayed
 	DisplayType display() const;
 	///
-	docstring name() const { return from_ascii("Listings"); }
+	docstring layoutName() const { return from_ascii("Listings"); }
 	// Update the counters of this inset and of its contents
 	void updateBuffer(ParIterator const &, UpdateType);
 	///

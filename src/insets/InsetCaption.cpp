@@ -65,7 +65,7 @@ void InsetCaption::write(ostream & os) const
 }
 
 
-docstring InsetCaption::name() const
+docstring InsetCaption::layoutName() const
 {
 	if (type_.empty())
 		return from_ascii("Caption");

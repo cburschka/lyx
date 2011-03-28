@@ -315,7 +315,7 @@ docstring const InsetIndex::buttonLabel(BufferView const & bv) const
 
 void InsetIndex::write(ostream & os) const
 {
-	os << to_utf8(name());
+	os << to_utf8(layoutName());
 	params_.write(os);
 	InsetCollapsable::write(os);
 }

@@ -60,7 +60,7 @@ private:
 	///
 	InsetCode lyxCode() const { return NOTE_CODE; }
 	///
-	docstring name() const;
+	docstring layoutName() const;
 	///
 	DisplayType display() const;
 	/** returns false if, when outputing LaTeX, font changes should

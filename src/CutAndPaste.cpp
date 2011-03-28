@@ -667,7 +667,9 @@ void switchBetweenClasses(DocumentClass const * const oldone,
 		if (it->lyxCode() != FLEX_CODE)
 			// FIXME: Should we verify all InsetCollapsable?
 			continue;
-		docstring const & n = newone->insetLayout(it->name()).name();
+
+		docstring const layoutName = it->layoutName();
+		docstring const & n = newone->insetLayout(layoutName).name();
 		bool const is_undefined = n.empty() ||
 			n == DocumentClass::plainInsetLayout().name();
 		if (!is_undefined)
@@ -679,12 +681,11 @@ void switchBetweenClasses(DocumentClass const * const oldone,
 		docstring s;
 		if (oldname == newname)
 			s = bformat(_("Flex inset %1$s is undefined after "
-				"reloading `%2$s' layout."),
-				it->name(), oldname);
+				"reloading `%2$s' layout."), layoutName, oldname);
 		else
 			s = bformat(_("Flex inset %1$s is undefined because of "
 				"conversion from `%2$s' layout to `%3$s'."),
-				it->name(), oldname, newname);
+				layoutName, oldname, newname);
 		// To warn the user that something had to be done.
 		errorlist.push_back(ErrorItem(
 				_("Undefined flex inset"),

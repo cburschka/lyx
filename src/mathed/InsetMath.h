@@ -102,6 +102,8 @@ public:
 	InsetMath const * asInsetMath() const { return this; }
 	/// this is overridden in math text insets (i.e. mbox)
 	bool inMathed() const { return true; }
+	///
+	virtual docstring name() const;
 
 	/// this is overridden by specific insets
 	virtual mode_type currentMode() const { return MATH_MODE; }

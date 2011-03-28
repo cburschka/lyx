@@ -96,7 +96,7 @@ public:
 	///
 	InsetCode lyxCode() const { return INFO_CODE; }
 	///
-	docstring name() const;
+	docstring layoutName() const;
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
 	///

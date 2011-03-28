@@ -126,7 +126,7 @@ InsetPhantom::~InsetPhantom()
 }
 
 
-docstring InsetPhantom::name() const 
+docstring InsetPhantom::layoutName() const
 {
 	return from_ascii("Phantom:" + phantomtranslator().find(params_.type));
 }

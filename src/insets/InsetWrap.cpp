@@ -58,7 +58,7 @@ InsetWrap::~InsetWrap()
 }
 
 
-docstring InsetWrap::name() const
+docstring InsetWrap::layoutName() const
 {
 	return "Wrap:" + from_utf8(params_.type);
 }

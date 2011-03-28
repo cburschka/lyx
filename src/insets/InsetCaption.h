@@ -25,7 +25,7 @@ public:
 	///
 	std::string const & type() const { return type_; }
 	///
-	docstring name() const;
+	docstring layoutName() const;
 	/// return the mandatory argument (LaTeX format) only
 	void getArgument(otexstream & os, OutputParams const &) const;
 	/// return the optional argument(s) only

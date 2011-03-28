@@ -91,7 +91,7 @@ private:
 	///
 	InsetCode lyxCode() const { return BOX_CODE; }
 	///
-	docstring name() const;
+	docstring layoutName() const;
 	///
 	void write(std::ostream &) const;
 	///

@@ -107,7 +107,7 @@ string InsetInfo::infoType() const
 }
 
 
-docstring InsetInfo::name() const 
+docstring InsetInfo::layoutName() const
 {
 	return from_ascii("Info:" + infoType());
 }

@@ -29,7 +29,7 @@ public:
 	///
 	InsetCode lyxCode() const { return MARGIN_CODE; }
 	///
-	docstring name() const { return from_ascii("Marginal"); }
+	docstring layoutName() const { return from_ascii("Marginal"); }
 	///
 	int plaintext(odocstream &, OutputParams const & runparams) const;
 	///

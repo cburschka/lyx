@@ -27,6 +27,12 @@ using namespace std;
 
 namespace lyx {
 
+docstring InsetMath::name() const
+{
+	return from_utf8("Unknown");
+}
+
+
 MathData & InsetMath::cell(idx_type)
 {
 	static MathData dummyCell(&buffer());

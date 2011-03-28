@@ -1752,7 +1752,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			Inset * ins = cur.nextInset();
 			if (!ins)
 				break;
-			docstring insname = ins->name();
+			docstring insname = ins->layoutName();
 			while (!insname.empty()) {
 				if (insname == name || name == from_utf8("*")) {
 					cur.recordUndo();

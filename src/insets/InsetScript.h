@@ -65,7 +65,7 @@ public:
 	///
 	InsetCode lyxCode() const { return SCRIPT_CODE; }
 	///
-	docstring name() const;
+	docstring layoutName() const;
 	///
 	DisplayType display() const;
 	///

@@ -186,11 +186,10 @@ Buffer & Inset::buffer()
 {
 	if (!buffer_) {
 		odocstringstream s;
-		lyxerr << "Inset: " << this
-					<< " LyX Code: " << lyxCode()
-					<< " name: " << insetName(lyxCode())
-					<< std::endl;
-		s << "LyX Code: " << lyxCode() << " name: " << name();
+		string const iname = insetName(lyxCode());
+		LYXERR0("Inset: " << this << " LyX Code: " << lyxCode()
+					<< " name: " << iname);
+		s << "LyX Code: " << lyxCode() << " name: " << iname;
 		LASSERT(false, /**/);
 		throw ExceptionMessage(BufferException, 
 			from_ascii("Inset::buffer_ member not initialized!"), s.str());
@@ -218,7 +217,7 @@ bool Inset::isBufferValid() const
 }
 
 
-docstring Inset::name() const
+docstring Inset::layoutName() const
 {
 	return from_ascii("unknown");
 }
@@ -579,7 +578,7 @@ InsetLayout const & Inset::getLayout() const
 {
 	if (!buffer_)
 		return DocumentClass::plainInsetLayout();
-	return buffer().params().documentClass().insetLayout(name());
+	return buffer().params().documentClass().insetLayout(layoutName());
 }
 
 

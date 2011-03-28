@@ -114,7 +114,7 @@ InsetQuotes::InsetQuotes(Buffer * buf, char_type c, QuoteTimes t)
 }
 
 
-docstring InsetQuotes::name() const
+docstring InsetQuotes::layoutName() const
 {
 	return from_ascii("Quotes");
 }
