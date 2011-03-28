@@ -119,6 +119,9 @@ import os, re, string, sys
 # Incremented to format 34, 28 March 2011 by rgh
 # Remove obsolete Fill_(Top|Bottom) tags
 
+# Incremented to format 35, 28 March 2011 by rgh
+# Try to add "Flex:" to any flex insets that don't have it.
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -126,7 +129,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 34
+currentFormat = 35
 
 
 def usage(prog_name):
@@ -217,6 +220,10 @@ def convert(lines):
     re_QInsetLayout_CopyStyle = re.compile(r'^\s*CopyStyle\s+"(?:Custom|CharStyle|Element):([^"]+)"\s*$', re.IGNORECASE)
     re_NeedsFloatPkg = re.compile(r'^(\s*)NeedsFloatPkg\s+(\w+)\s*$', re.IGNORECASE)
     re_Fill = re.compile(r'^\s*Fill_(?:Top|Bottom).*$', re.IGNORECASE)
+    re_InsetLayout2 = re.compile(r'^\s*InsetLayout\s+(\S+)\s*$', re.IGNORECASE)
+    # with quotes
+    re_QInsetLayout2 = re.compile(r'^\s*InsetLayout\s+"([^"]+)"\s*$', re.IGNORECASE)
+    re_IsFlex = re.compile(r'\s*LyXType.*$', re.IGNORECASE)
 
     # counters for sectioning styles (hardcoded in 1.3)
     counters = {"part"          : "\\Roman{part}",
@@ -304,6 +311,33 @@ def convert(lines):
             while i < len(lines) and not re_EndBabelPreamble.match(lines[i]):
                 i += 1
             continue
+
+        if format == 34:
+          match = re_InsetLayout2.match(lines[i])
+          if not match:
+            match = re_QInsetLayout2.match(lines[i])
+          if not match:
+            i += 1
+            continue
+          name = match.group(1)
+          names = name.split(":", 1)
+          if len(names) > 1 and names[0] == "Flex":
+            i += 1
+            continue
+
+          isflex = False
+          for j in range(i + 1, len(lines)):
+            if re_IsFlex.match(lines[j]):
+              isflex = True
+              break
+            if re_End.match(lines[j]):
+              break
+
+          if isflex:
+            lines[i] = "InsetLayout \"Flex:" + name + "\""
+
+          i += 1
+          continue
 
         if format == 33:
           m = re_Fill.match(lines[i])

@@ -25,7 +25,7 @@ public:
 	///
 	InsetFlex(Buffer *, std::string const & layoutName);
 	///
-	docstring layoutName() const { return from_utf8(name_); }
+	docstring layoutName() const { return from_utf8("Flex:" + name_); }
 	///
 	InsetLayout const & getLayout() const;
 	///
