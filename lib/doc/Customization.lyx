@@ -13993,11 +13993,7 @@ status collapsed
 
 \end_inset
 
- may be be any valid identifier not used by a pre-existing inset.
- The identifier may include spaces, but in that case the whole thing must
- be wrapped in quotes.
- It may also include a namespace identifier, preceding a colon, such as
- 
+ must be of the form 
 \begin_inset Quotes eld
 \end_inset
 
@@ -14006,7 +14002,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-Flex:Code
+Flex:<name>
 \end_layout
 
 \end_inset
@@ -14015,7 +14011,19 @@ Flex:Code
 \begin_inset Quotes erd
 \end_inset
 
-.
+, where 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+name
+\end_layout
+
+\end_inset
+
+ may be be any valid identifier not used by a pre-existing Flex inset.
+ The identifier may include spaces, but in that case the whole thing must
+ be wrapped in quotes.
  Note that the definition of a flex inset 
 \emph on
 must 
