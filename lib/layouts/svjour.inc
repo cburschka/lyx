@@ -18,7 +18,7 @@
 # see www.springer.de/author/tex/help-journals.html for class files
 
 
-Format 33
+Format 34
 Columns                 2
 Sides                   1
 PageStyle               Plain
@@ -124,8 +124,6 @@ End
 Style Title
 	Align			Left
 	AlignPossible		Block, Center, Left, Right, Center
-	Fill_Top		1
-	Fill_Bottom		1
 	Font
 	  Family		Sans
 	  Series		Bold

@@ -8,7 +8,7 @@
 # Heavily modifed and enhanced by serveral developers.
 
 # Input general definitions
-Format 33
+Format 34
 Input stdclass.inc
 Sides			2
 Columns			2
@@ -100,9 +100,6 @@ Style Title
   Align                 Center
   AlignPossible         Block, Center, Left, Right
   LabelType             No_Label
-  Fill_Top		1
-  Fill_Bottom		1
-
 # standard font definition
   Font
     Series              Bold
@@ -121,9 +118,6 @@ Style Address
   Align                 Center
   AlignPossible         Block, Center, Left, Right
   LabelType             No_Label
-  Fill_Top		1
-  Fill_Bottom		1
-
 # standard font definition
   Font
     Size		Large
@@ -141,9 +135,6 @@ Style Commission
   Align                 Center
   AlignPossible         Block, Center, Left, Right
   LabelType             No_Label
-  Fill_Top		1
-  Fill_Bottom		1
-
 # standard font definition
   Font
     Series		Bold
