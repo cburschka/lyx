@@ -210,13 +210,13 @@ def convert(lines):
     re_Type = re.compile(r'\s*Type\s+(\w+)', re.IGNORECASE)
     re_Builtin = re.compile(r'^(\s*)LaTeXBuiltin\s+(\w*)', re.IGNORECASE)
     re_True = re.compile(r'^\s*(?:true|1)\s*$', re.IGNORECASE)
-    re_InsetLayout = re.compile(r'^\s*InsetLayout\s+(?:Custom|CharStyle|Element):(\S+)\s*$')
+    re_InsetLayout = re.compile(r'^\s*InsetLayout\s+(?:Custom|CharStyle|Element):(\S+)\s*$', re.IGNORECASE)
     # with quotes
-    re_QInsetLayout = re.compile(r'^\s*InsetLayout\s+"(?:Custom|CharStyle|Element):([^"]+)"\s*$')
-    re_InsetLayout_CopyStyle = re.compile(r'^\s*CopyStyle\s+(?:Custom|CharStyle|Element):(\S+)\s*$')
-    re_QInsetLayout_CopyStyle = re.compile(r'^\s*CopyStyle\s+"(?:Custom|CharStyle|Element):([^"]+)"\s*$')
-    re_NeedsFloatPkg = re.compile(r'^(\s*)NeedsFloatPkg\s+(\w+)\s*$')
-    re_Fill = re.compile(r'^\s*Fill_(?:Top|Bottom).*$')
+    re_QInsetLayout = re.compile(r'^\s*InsetLayout\s+"(?:Custom|CharStyle|Element):([^"]+)"\s*$', re.IGNORECASE)
+    re_InsetLayout_CopyStyle = re.compile(r'^\s*CopyStyle\s+(?:Custom|CharStyle|Element):(\S+)\s*$', re.IGNORECASE)
+    re_QInsetLayout_CopyStyle = re.compile(r'^\s*CopyStyle\s+"(?:Custom|CharStyle|Element):([^"]+)"\s*$', re.IGNORECASE)
+    re_NeedsFloatPkg = re.compile(r'^(\s*)NeedsFloatPkg\s+(\w+)\s*$', re.IGNORECASE)
+    re_Fill = re.compile(r'^\s*Fill_(?:Top|Bottom).*$', re.IGNORECASE)
 
     # counters for sectioning styles (hardcoded in 1.3)
     counters = {"part"          : "\\Roman{part}",
