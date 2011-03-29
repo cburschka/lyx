@@ -184,10 +184,12 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		// using the Lexer.
 		case IL_LYXTYPE: {
 			// make sure that we have the right sort of name.
-			if (name_.substr(0,5) != from_ascii("Flex:")) {
+			if (name_ != from_ascii("undefined")
+			    && name_.substr(0,5) != from_ascii("Flex:")) {
 				LYXERR0("Flex insets must have names of the form `Flex:<name>'.\n"
 				        "This one has the name `" << to_utf8(name_) << "'\n"
 				        "Ignoring LyXType declaration.");
+				break;
 			}
 			string lt;
 			lex >> lt;
