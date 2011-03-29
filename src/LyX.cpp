@@ -294,12 +294,8 @@ int LyX::exec(int & argc, char * argv[])
 			top_build_dir_is_one_level_up);
 	} catch (ExceptionMessage const & message) {
 		LYXERR(Debug::LOCALE, message.title_ + ", " + message.details_);
-#ifdef _WIN32
-		// no console and no Qt here so use a simple message box
-		MessageBoxA(0, to_ascii(message.details_).c_str(), to_ascii(message.title_).c_str(), 0);
-		return 1;
-#endif
 	}
+    // FIXME: This breaks out of source build under Windows.
 	locale_init();
 
 	// Here we need to parse the command line. At least
