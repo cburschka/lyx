@@ -25,7 +25,7 @@ class docstring_list;
 
 namespace frontend {
 
-class SpellcheckerWidget : public QWidget
+class SpellcheckerWidget : public QTabWidget
 {
 	Q_OBJECT
 

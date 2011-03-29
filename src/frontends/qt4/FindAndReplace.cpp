@@ -60,7 +60,7 @@ static void ApplyParams(Buffer &buf, BufferParams const & bp) {
 
 
 FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
-	:	view_(view)
+	: QTabWidget(&view), view_(view)
 {
 	setupUi(this);
 	find_work_area_->setGuiView(view_);

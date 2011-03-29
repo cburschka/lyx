@@ -81,7 +81,7 @@ struct SpellcheckerWidget::Private
 
 
 SpellcheckerWidget::SpellcheckerWidget(GuiView * gv, QWidget * parent)
-	: QWidget(parent), d(new Private(this))
+	: QTabWidget(parent), d(new Private(this))
 {
 	d->ui.setupUi(this);
 	d->gv_ = gv;
