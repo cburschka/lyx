@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-03-28 23:17+0200\n"
+"POT-Creation-Date: 2011-03-29 12:08+0200\n"
 "PO-Revision-Date: 2011-01-21 05:50+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -1888,8 +1888,8 @@ msgstr "Vstup (lze rekurzivnì)"
 msgid "Verbatim"
 msgstr "Doslovnì"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1117
-#: src/insets/InsetInclude.cpp:1123
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1118
+#: src/insets/InsetInclude.cpp:1124
 msgid "Program Listing"
 msgstr "Výpis zdrojového kódu"
 
@@ -2131,7 +2131,7 @@ msgstr "Zde vyplòte parametry výpisu"
 msgid "Feedback window"
 msgstr "Okno pro odezvu"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:344
+#: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:332
 #: src/insets/InsetListings.cpp:353 src/insets/InsetListings.cpp:355
 msgid "Listing"
 msgstr "Výpis"
@@ -16711,7 +16711,7 @@ msgstr ""
 "nastaveny atributy pouze pro ètení. Ujistìte se prosím, ¾e jste ulo¾ili "
 "tento dokument jako odli¹ný soubor."
 
-#: src/Buffer.cpp:4178 src/insets/InsetCaption.cpp:338
+#: src/Buffer.cpp:4178 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Nesmyslné! "
 
@@ -17452,16 +17452,23 @@ msgstr "Neznámá vìtev"
 msgid "&Don't Add"
 msgstr "&Nepøidávat"
 
-#: src/CutAndPaste.cpp:677
-#, c-format
-msgid ""
-"Flex inset %1$s is undefined because of class conversion from\n"
-"%2$s to %3$s"
+#: src/CutAndPaste.cpp:683
+#, fuzzy, c-format
+msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
 msgstr ""
 "Flexibilní vlo¾ka %1$s není definována kvùli konverzi tøídy z\n"
 "%2$s na %3$s"
 
-#: src/CutAndPaste.cpp:684
+#: src/CutAndPaste.cpp:686
+#, fuzzy, c-format
+msgid ""
+"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
+"%3$s'."
+msgstr ""
+"Flexibilní vlo¾ka %1$s není definována kvùli konverzi tøídy z\n"
+"%2$s na %3$s"
+
+#: src/CutAndPaste.cpp:691
 msgid "Undefined flex inset"
 msgstr "Nedefinovaná flexibilní vlo¾ka"
 
@@ -22299,7 +22306,7 @@ msgstr "Nedef: "
 msgid "branch"
 msgstr "vìtev"
 
-#: src/insets/InsetCaption.cpp:350
+#: src/insets/InsetCaption.cpp:338
 #, c-format
 msgid "Sub-%1$s"
 msgstr "Sub-%1$s"
@@ -22404,7 +22411,7 @@ msgstr "Seznam %1$s"
 msgid "footnote"
 msgstr "poznámka pod èarou"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:672
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:673
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -22450,13 +22457,13 @@ msgstr "Vstup-doslovnì*"
 msgid "Include (excluded)"
 msgstr "Zahrnout (vyjmutý)"
 
-#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:772
-#: src/insets/InsetInclude.cpp:817
+#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:773
+#: src/insets/InsetInclude.cpp:818
 msgid "Recursive input"
 msgstr "Rekurzivní vstup"
 
-#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:773
-#: src/insets/InsetInclude.cpp:818
+#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:774
+#: src/insets/InsetInclude.cpp:819
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
@@ -22507,7 +22514,7 @@ msgstr ""
 msgid "Module not found"
 msgstr "Modul nenalezen"
 
-#: src/insets/InsetInclude.cpp:629 src/insets/InsetInclude.cpp:650
+#: src/insets/InsetInclude.cpp:627 src/insets/InsetInclude.cpp:650
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
@@ -22516,15 +22523,15 @@ msgstr ""
 "Zahrnutý soubor `%1$s' nebyl korektnì exportován.\n"
 "Varaování: Export do LaTeX-u je pravdìpodobnì neúplný."
 
-#: src/insets/InsetInclude.cpp:638 src/insets/InsetInclude.cpp:658
+#: src/insets/InsetInclude.cpp:636 src/insets/InsetInclude.cpp:658
 msgid "Export failure"
 msgstr "Export selhal"
 
-#: src/insets/InsetInclude.cpp:760
+#: src/insets/InsetInclude.cpp:761
 msgid "Unsupported Inclusion"
 msgstr "Nepodporované vlo¾ení"
 
-#: src/insets/InsetInclude.cpp:761
+#: src/insets/InsetInclude.cpp:762
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
@@ -22597,11 +22604,6 @@ msgstr "ne"
 #: src/insets/InsetInfo.cpp:435
 msgid "No version control"
 msgstr "Bez správy verzí"
-
-#: src/insets/InsetInfo.cpp:451
-#, c-format
-msgid "%1$s unknown"
-msgstr "%1$s neznámý"
 
 #: src/insets/InsetLabel.cpp:74
 msgid "Label names must be unique!"
@@ -23474,6 +23476,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámý u¾ivatel"
+
+#~ msgid "%1$s unknown"
+#~ msgstr "%1$s neznámý"
 
 #~ msgid "Layout|L"
 #~ msgstr "Rozvr¾ení|R"
