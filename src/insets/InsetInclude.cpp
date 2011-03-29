@@ -556,7 +556,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		 isLyXFileName(included_file.absFileName())) {
 		// if it's a LyX file and we're inputting or including,
 		// try to load it so we can write the associated latex
-		
+
 		Buffer * tmp = loadIfNeeded();
 		if (!tmp) {
 			docstring text = bformat(_("Could not load included "
@@ -601,9 +601,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		tmp->markDepClean(masterBuffer->temppath());
 
 		// Don't assume the child's format is latex
-		string const inc_format = 
-			(tmp->bufferFormat() == "latex" && tex_format == "pdflatex") ?
-				"pdflatex" : tmp->bufferFormat();
+		string const inc_format = tmp->bufferFormat();
 		FileName const tmpwritefile(changeExtension(writefile.absFileName(),
 			formats.extension(inc_format)));
 
@@ -640,22 +638,25 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		runparams.encoding = oldEnc;
 		runparams.master_language = oldLang;
 
-		// Use converters to produce a latex file from the child
-		ErrorList el;
-		bool const success =
-			theConverters().convert(tmp, tmpwritefile, writefile, included_file,
-				                inc_format, tex_format, el);
+		// I needed, use converters to produce a latex file from the child
+		if (!tmp->isLatex()) {
+			ErrorList el;
+			bool const success =
+				theConverters().convert(tmp, tmpwritefile, writefile,
+							included_file,
+							inc_format, tex_format, el);
 
-		if (!success) {
-			docstring msg = bformat(_("Included file `%1$s' "
-					"was not exported correctly.\nWarning: "
-					"LaTeX export is probably incomplete."),
-					included_file.displayName());
-			if (!el.empty())
-				msg = bformat(from_ascii("%1$s\n\n%2$s\n\n%3$s"),
-						msg, el.begin()->error,
-						el.begin()->description);
-			Alert::warning(_("Export failure"), msg);
+			if (!success) {
+				docstring msg = bformat(_("Included file `%1$s' "
+						"was not exported correctly.\nWarning: "
+						"LaTeX export is probably incomplete."),
+						included_file.displayName());
+				if (!el.empty())
+					msg = bformat(from_ascii("%1$s\n\n%2$s\n\n%3$s"),
+							msg, el.begin()->error,
+							el.begin()->description);
+				Alert::warning(_("Export failure"), msg);
+			}
 		}
 	} else {
 		// In this case, it's not a LyX file, so we copy the file
