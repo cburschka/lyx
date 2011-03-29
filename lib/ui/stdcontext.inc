@@ -9,7 +9,7 @@
 # Full author contact details are available in file CREDITS.
 
 # The interface is designed (partially) following the KDE Human Interface
-# Guidelines (http://usability.kde.org/hig/)
+# Guidelines (http://techbase.kde.org/Projects/Usability/HIG)
 
 # Casing Rules:
 # Capitalize all words in the element, with the following exceptions: 

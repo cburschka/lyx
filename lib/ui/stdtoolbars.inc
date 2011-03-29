@@ -10,7 +10,7 @@
 # Full author contact details are available in file CREDITS.
 
 # The interface is designed (partially) following the KDE Human Interface
-# Guidelines (http://usability.kde.org/hig/)
+# Guidelines (http://techbase.kde.org/Projects/Usability/HIG)
 
 # Casing rules "The tooltip":
 # Capitalize the first letter of the first word, and any other words normally
