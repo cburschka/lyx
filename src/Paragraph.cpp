@@ -3651,6 +3651,7 @@ SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to,
 		return result;
 
 	if (needsSpellCheck() || check_learned) {
+		pos_type end = to;
 		if (!d->ignoreWord(word)) {
 			bool const trailing_dot = to < size() && d->text_[to] == '.';
 			result = speller->check(wl);
@@ -3662,28 +3663,33 @@ SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to,
 					   word << "\" [" <<
 					   from << ".." << to << "]");
 				} else {
-					// spell check with dot appended failed
+					// spell check with dot appended failed too
 					// restore original word/lang value
 					word = asString(from, to, AS_STR_INSETS | AS_STR_SKIPDELETE);
 					wl = WordLangTuple(word, lang);
 				}
 			}
 		}
-		d->setMisspelled(from, to, result);
+		if (!SpellChecker::misspelled(result)) {
+			// area up to the begin of the next word is not misspelled
+			while (end < size() && isWordSeparator(end))
+				++end;
+		}
+		d->setMisspelled(from, end, result);
 	} else {
 		result = d->speller_state_.getState(from);
 	}
 
-	bool const misspelled_ = SpellChecker::misspelled(result) ;
-	if (misspelled_ && do_suggestion)
-		speller->suggest(wl, suggestions);
-	else if (misspelled_)
+	if (do_suggestion)
+		suggestions.clear();
+
+	if (SpellChecker::misspelled(result)) {
 		LYXERR(Debug::GUI, "misspelled word: \"" <<
 			   word << "\" [" <<
 			   from << ".." << to << "]");
-	else
-		suggestions.clear();
-
+		if (do_suggestion)
+			speller->suggest(wl, suggestions);
+	}
 	return result;
 }
 
