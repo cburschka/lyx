@@ -594,7 +594,8 @@ Menuset
 # InsetERT context menu
 #
 	Menu "context-ert"
-		Item "Wrap by Preview|P" "command-sequence inset-toggle;char-forward;char-backward;char-forward-select;preview-insert;char-backward;char-backward;inset-toggle"
+		# repeat 1 is added as a work-around to not indicate this action as toggable
+		Item "Wrap by Preview|P" "command-sequence repeat 1;inset-toggle;char-forward;char-backward;char-forward-select;preview-insert;char-backward;char-backward;inset-toggle"
 	End
 
 #
