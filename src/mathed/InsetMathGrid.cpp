@@ -1191,7 +1191,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (cur.idx() > 0)
 			--cur.idx();
 		cur.pos() = cur.lastpos();
-
+		cur.forceBufferUpdate();
 		//mathcursor->normalize();
 		//cmd = FuncRequest(LFUN_FINISHED_BACKWARD);
 		break;
