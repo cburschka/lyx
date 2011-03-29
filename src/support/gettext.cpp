@@ -15,6 +15,7 @@
 
 #include "support/lstrings.h"
 #include "support/Messages.h"
+#include "support/Package.h"
 
 #ifdef HAVE_LOCALE_H
 #  include <locale.h>
@@ -37,7 +38,9 @@ void locale_init()
 	setlocale(LC_MESSAGES, "");
 #  endif
 	setlocale(LC_CTYPE, "");
-	Messages::init();
+	if (support::packageInitialized()) {
+		Messages::init();
+	}
 #endif
 	setlocale(LC_NUMERIC, "C");
 }

@@ -295,7 +295,6 @@ int LyX::exec(int & argc, char * argv[])
 	} catch (ExceptionMessage const & message) {
 		LYXERR(Debug::LOCALE, message.title_ + ", " + message.details_);
 	}
-    // FIXME: This breaks out of source build under Windows.
 	locale_init();
 
 	// Here we need to parse the command line. At least
