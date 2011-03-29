@@ -3195,12 +3195,11 @@ msgstr "&Kurzor následuje posuvník"
 msgid ""
 "Configure the width of the text cursor. Automatic zoom-controlled cursor "
 "width used when set to 0."
-msgstr ""
+msgstr "Automatická ¹íøka (dle zvìt¹ení) bude pou¾ita, pokud zvolíte hodnotu 0."
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:49
-#, fuzzy
 msgid "Cursor width (&pixels):"
-msgstr "©íøka v pi&xelech:"
+msgstr "©íøka kurzoru v pi&xelech:"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:77
 msgid "Scroll &below end of document"
@@ -4009,15 +4008,14 @@ msgid "&User interface file:"
 msgstr "Soubor s u¾&ivatelským rozhraním:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:58
-#, fuzzy
 msgid "&Icon Set:"
-msgstr "&Vzdálenost sloupcù:"
+msgstr "&Sada ikon:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:68
 msgid ""
 "The icon set to use. Warning: normal size of icons may be\n"
 "wrong until you save the preferences and restart LyX."
-msgstr ""
+msgstr "Sada ikon pro nástrojovou li¹tu. Upozornìní: velikost ikon\n mù¾e být nesprávná dokud neulo¾íte nastavení a restartujete LyX."
 
 #: src/frontends/qt4/ui/PrefUi.ui:75
 msgid "Automatic help"
@@ -4054,7 +4052,6 @@ msgid "&Load opened files from last session"
 msgstr "&Naèíst soubory otevøené v pøedchozí relaci"
 
 #: src/frontends/qt4/ui/PrefUi.ui:142
-#, fuzzy
 msgid "&Clear all session information"
 msgstr "Smazat ve¹kerá nastavení &rozvrhu oken"
 
@@ -4437,7 +4434,6 @@ msgstr ""
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:14
 #: src/frontends/qt4/GuiSpellchecker.cpp:170
-#, fuzzy
 msgid "Spell Checker"
 msgstr "Kontrola pravopisu"
 
@@ -12072,7 +12068,6 @@ msgid "Use Locking Property|L"
 msgstr "Pou¾ívat zamykání souborù|z"
 
 #: lib/ui/stdmenus.inc:91
-#, fuzzy
 msgid "More Formats & Options...|O"
 msgstr "Více formátù a voleb...|V"
 
@@ -17453,20 +17448,18 @@ msgid "&Don't Add"
 msgstr "&Nepøidávat"
 
 #: src/CutAndPaste.cpp:683
-#, fuzzy, c-format
+#, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
 msgstr ""
-"Flexibilní vlo¾ka %1$s není definována kvùli konverzi tøídy z\n"
-"%2$s na %3$s"
+"Flexibilní vlo¾ka %1$s není definována po znovunaètení rozvr¾ení `%2$s'."
 
 #: src/CutAndPaste.cpp:686
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
 "%3$s'."
 msgstr ""
-"Flexibilní vlo¾ka %1$s není definována kvùli konverzi tøídy z\n"
-"%2$s na %3$s"
+"Flexibilní vlo¾ka %1$s není definována kvùli konverzi rozvr¾ení z `%2$s' do `%3$s'."
 
 #: src/CutAndPaste.cpp:691
 msgid "Undefined flex inset"
@@ -20203,9 +20196,8 @@ msgstr "Preambule LaTeXu"
 
 #: src/frontends/qt4/GuiDocument.cpp:1524
 #: src/frontends/qt4/GuiDocument.cpp:1554
-#, fuzzy
 msgid "&Default..."
-msgstr "Standardní..."
+msgstr "&Standardní..."
 
 #: src/frontends/qt4/GuiDocument.cpp:1694
 #: src/frontends/qt4/GuiDocument.cpp:1700
@@ -20890,11 +20882,11 @@ msgstr "U¾ivatelské rozhraní"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2447
 msgid "Liber"
-msgstr ""
+msgstr "Liber"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2448
 msgid "Oxygen"
-msgstr ""
+msgstr "Oxygen"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2526
 msgid "Control"
@@ -21068,7 +21060,7 @@ msgstr "Chyba -> Nelze naèíst soubor!"
 msgid ""
 "We reached the end of the document, would you like to continue from the "
 "beginning?"
-msgstr ""
+msgstr "Byl dosa¾en konec dokumentu. Pokraèovat dále od zaèátku?"
 
 #: src/frontends/qt4/GuiSymbols.cpp:54
 msgid "Basic Latin"
@@ -21892,9 +21884,8 @@ msgid " (unknown)"
 msgstr "(neznámý)"
 
 #: src/frontends/qt4/Menus.cpp:664
-#, fuzzy
 msgid "More...|M"
-msgstr "Porovnat...|P"
+msgstr "Více...|V"
 
 #: src/frontends/qt4/Menus.cpp:754
 msgid "No Group"
@@ -22470,19 +22461,19 @@ msgstr ""
 "Do¹lo k pokusu vlo¾it soubor %1$s rekurzivnì do sebe! Ignoruji toto vlo¾ení."
 
 #: src/insets/InsetInclude.cpp:562
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not load included file\n"
 "`%1$s'\n"
 "Please, check whether it actually exists."
 msgstr ""
-"LyX nebyl schopen vytvoøit zálo¾ní soubor v %1$s.\n"
-"Zkontrolujte, zda-li daný adresáø existuje a lze do nìj zapisovat."
+"LyX nemohl naèíst soubor k zahrnutí:\n"
+"`%1$s'\n"
+"Zkontrolujte, zda-li daný soubor existuje."
 
 #: src/insets/InsetInclude.cpp:566
-#, fuzzy
 msgid "Missing included file"
-msgstr "Zahrnout soubor"
+msgstr "Nelze nalézt soubor k zahrnutí"
 
 #: src/insets/InsetInclude.cpp:572
 #, c-format
