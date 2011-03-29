@@ -16,7 +16,12 @@ Building LyX with CMake
         Linux/Unix: export PATH=<your path to qt>/bin:$PATH
         Windows   : set PATH=<your path to qt>\bin;%PATH%
     
-    
+    When you wanna run LyX without installing from a out-of-source
+    build directory you have to set the environment variable LYX_DIR_20x
+    and it must point to the lib dir in the source tree.
+        Linux/Unix: export LYX_DIR_20x=<lyx-source>/lib
+        Windows   : set LYX_DIR_20x=<lyx-source>\lib
+
     Windows specific
     
         On Windows install the supplementary modules:
