@@ -113,7 +113,7 @@ def extract_metrics_info(dvipng_stdout):
 
 
 def color_pdf(latex_file, bg_color, fg_color):
-    use_preview_pdf_re = re.compile("(\s*\\\\usepackage\[[^]]+)(pdftex|xetex\]{preview})")
+    use_preview_pdf_re = re.compile("(\s*\\\\usepackage\[[^]]+)((pdftex|xetex)\]{preview})")
 
     tmp = mkstemp()
     
