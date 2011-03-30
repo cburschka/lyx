@@ -638,8 +638,8 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		runparams.encoding = oldEnc;
 		runparams.master_language = oldLang;
 
-		// I needed, use converters to produce a latex file from the child
-		if (!tmp->isLatex()) {
+		// If needed, use converters to produce a latex file from the child
+		if (tmpwritefile != writefile) {
 			ErrorList el;
 			bool const success =
 				theConverters().convert(tmp, tmpwritefile, writefile,
