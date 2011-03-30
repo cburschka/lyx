@@ -1010,7 +1010,7 @@ contributers = [
                  u"Added native support for \makebox to mathed. Several bug fixes, both to the source code and to the llncs layout file"),
 
      contributer(u"LibreOffice Team",
-                 "http://http://www.libreoffice.org/",
+                 "http://www.libreoffice.org/",
                  "LGPL",
                  "",
                  "",
@@ -1162,7 +1162,7 @@ contributers = [
                  u"Improvements to the outliner."),
 
      contributer(u"Oxygen Team",
-                 "http://www.oxygen-icons.org",
+                 "http://www.oxygen-icons.org/",
                  "LGPL",
                  "",
                  "",
