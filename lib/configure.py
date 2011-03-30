@@ -890,8 +890,10 @@ def checkConverterEntries():
                 #       even when requested with --pdf. This is a problem if a user
                 #       clicks View PDF after having done a View DVI. To circumvent
                 #       this, use different output folders for eps and pdf outputs.
-                addToRC(r'\converter lilypond-book latex    "lilypond-book --safe --lily-output-dir=ly-eps $$i"                                ""')
-                addToRC(r'\converter lilypond-book pdflatex "lilypond-book --safe --pdf --latex-program=pdflatex --lily-output-dir=ly-pdf $$i" ""')
+                addToRC(r'\converter lilypond-book latex    "lilypond-book --safe --lily-output-dir=ly-eps $$i"                                "latex"')
+                addToRC(r'\converter lilypond-book pdflatex "lilypond-book --safe --pdf --latex-program=pdflatex --lily-output-dir=ly-pdf $$i" "latex=pdflatex"')
+                addToRC(r'\converter lilypond-book xetex    "lilypond-book --safe --pdf --latex-program=xelatex --lily-output-dir=ly-pdf $$i"  "latex=xelatex"')
+                addToRC(r'\converter lilypond-book luatex   "lilypond-book --safe --pdf --latex-program=lualatex --lily-output-dir=ly-pdf $$i" "latex=lualatex"')
                 logger.info('+  found LilyPond-book version %s.' % version_number)
             else:
                 logger.info('+  found LilyPond-book, but version %s is too old.' % version_number)
