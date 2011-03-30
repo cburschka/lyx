@@ -603,7 +603,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	   << theApp()->hexName(fg) << ' '
 	   << theApp()->hexName(bg);
 	// FIXME what about LuaTeX?
-	if (buffer_.bufferFormat() == "xetex")
+	if (buffer_.params().useNonTeXFonts)
 		cs << " xelatex";
 	// DVI output fails sometimes with hyperref
 	// (probably a preview-latex/hyperref bug)
