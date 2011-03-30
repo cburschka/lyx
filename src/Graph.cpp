@@ -83,7 +83,7 @@ Graph::EdgePath const
 
 Graph::EdgePath const
 	Graph::getReachable(int from, bool only_viewable,
-		bool clear_visited)
+		bool clear_visited, vector<int> excludes)
 {
 	EdgePath result;
 	queue<int> Q;
@@ -111,12 +111,32 @@ Graph::EdgePath const
 			int const cv = (*cit)->to;
 			if (!vertices_[cv].visited) {
 				vertices_[cv].visited = true;
-				Q.push(cv);
+				if (find(excludes.begin(), excludes.end(), cv) == excludes.end())
+					Q.push(cv);
 			}
 		}
 	}
 
 	return result;
+}
+
+
+Graph::EdgePath const
+	Graph::getReachable(int from, bool only_viewable,
+		bool clear_visited, int exclude)
+{
+	vector<int> excludes;
+	excludes.push_back(exclude);
+	return getReachable(from, only_viewable, clear_visited, excludes);
+}
+
+
+Graph::EdgePath const
+	Graph::getReachable(int from, bool only_viewable,
+		bool clear_visited)
+{
+	vector<int> excludes;
+	return getReachable(from, only_viewable, clear_visited, excludes);
 }
 
 

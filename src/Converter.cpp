@@ -695,6 +695,43 @@ Converters::getReachable(string const & from, bool const only_viewable,
 }
 
 
+vector<Format const *> const
+Converters::getReachable(string const & from, bool const only_viewable,
+			 bool const clear_visited, string const & exclude)
+{
+	vector<int> const & reachables =
+		G_.getReachable(formats.getNumber(from),
+				only_viewable,
+				clear_visited,
+				formats.getNumber(exclude));
+
+	return intToFormat(reachables);
+}
+
+
+vector<Format const *> const
+Converters::getReachable(string const & from, bool const only_viewable,
+			 bool const clear_visited, vector<string> const & excludes)
+{
+	vector<int> excluded_numbers(excludes.size());
+
+	vector<string>::const_iterator sit = excludes.begin();
+	vector<string>::const_iterator const end = excludes.end();
+	vector<int>::iterator it = excluded_numbers.begin();
+	for ( ; sit != end; ++sit, ++it) {
+		*it = formats.getNumber(*sit);
+	}
+
+	vector<int> const & reachables =
+		G_.getReachable(formats.getNumber(from),
+				only_viewable,
+				clear_visited,
+				excluded_numbers);
+
+	return intToFormat(reachables);
+}
+
+
 bool Converters::isReachable(string const & from, string const & to)
 {
 	return G_.isReachable(formats.getNumber(from),
