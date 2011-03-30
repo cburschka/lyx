@@ -325,11 +325,11 @@ def layouts_l10n(input_files, output, base, layouttranslations):
                     key = key.replace('\\', '\\\\').replace('"', '\\"')
                     print >> out, '\t"%s" "%s"' % \
                              (key.encode('utf-8'), val.encode('utf-8'))
-                # to print untranslated entries, uncomment the following lines
-                #else:
-                #    key = key.replace('\\', '\\\\').replace('"', '\\"')
-                #    print >> out, '\t"%s" "%s"' % \
-                #             (key.encode('utf-8'), key.encode('utf-8'))
+                # also print untranslated entries to help translators
+                elif not lang in oldlanguages:
+                    key = key.replace('\\', '\\\\').replace('"', '\\"')
+                    print >> out, '\t"%s" "%s"' % \
+                             (key.encode('utf-8'), key.encode('utf-8'))
             print >> out, 'End'
 
     out.close()
