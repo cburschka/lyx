@@ -1006,6 +1006,14 @@ contributers = [
                  "28 March 2005",
                  u"Added native support for \makebox to mathed. Several bug fixes, both to the source code and to the llncs layout file"),
 
+     contributer(u"LibreOffice Team",
+                 "http://http://www.libreoffice.org/",
+                 "LGPL",
+                 "",
+                 "",
+                 "",
+                 u"Libreoffice Icon Theme"),
+
      contributer(u"Tomasz Łuczak",
                  "tlu () technodat ! com ! pl",
                  "GPL",
@@ -1149,6 +1157,14 @@ contributers = [
                  "m=124615188102843",
                  "27 June 2009",
                  u"Improvements to the outliner."),
+
+     contributer(u"Oxygen Team",
+                 "http://www.oxygen-icons.org",
+                 "LGPL",
+                 "",
+                 "",
+                 "",
+                 u"Oxygen Icon Theme"),
 
      contributer(u"Carl Ollivier-Gooch",
                  "cfog () mech ! ubc ! ca",
