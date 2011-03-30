@@ -708,7 +708,10 @@ void PreviewLoader::Impl::dumpPreamble(otexstream & os) const
 {
 	// Dump the preamble only.
 	OutputParams runparams(&buffer_.params().encoding());
-	runparams.flavor = OutputParams::LATEX;
+	if (buffer_.params().useNonTeXFonts)
+		runparams.flavor = OutputParams::XETEX;
+	else
+		runparams.flavor = OutputParams::LATEX;
 	runparams.nice = true;
 	runparams.moving_arg = true;
 	runparams.free_spacing = true;
