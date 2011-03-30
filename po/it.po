@@ -544,15 +544,15 @@ msgstr "&Cancella"
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:65
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:78
 msgid "Undefined branches used in this document."
-msgstr "Questo documento usa rami indefiniti."
+msgstr "Questo documento usa rami non definiti."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:68
 msgid "&Undefined Branches:"
-msgstr "&Rami indefiniti:"
+msgstr "&Rami non definiti:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:34
 msgid "&Font:"
-msgstr "Cara&ttere: "
+msgstr "Cara&ttere:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:44
 #: src/frontends/qt4/ui/CharacterUi.ui:212
@@ -976,7 +976,7 @@ msgstr "Colori di sfondo"
 
 #: src/frontends/qt4/ui/ColorUi.ui:176
 msgid "Page:"
-msgstr "Pagina: "
+msgstr "Pagina:"
 
 #: src/frontends/qt4/ui/ColorUi.ui:237
 msgid "Shaded boxes:"
@@ -8668,7 +8668,7 @@ msgstr "EnumerazioneTipo1"
 
 #: lib/layouts/powerdot.layout:409 lib/layouts/stdfloats.inc:46
 msgid "List of Algorithms"
-msgstr "Elenco degli algoritmi|a"
+msgstr "Elenco degli algoritmi"
 
 #: lib/layouts/recipebook.layout:42 lib/layouts/scrbook.layout:17
 msgid "\\thechapter"
@@ -12951,7 +12951,7 @@ msgstr "Nuovo documento"
 
 #: lib/ui/stdtoolbars.inc:72
 msgid "Open document"
-msgstr "Apri documento "
+msgstr "Apri documento"
 
 #: lib/ui/stdtoolbars.inc:73
 msgid "Save document"
@@ -16258,7 +16258,7 @@ msgstr "La stampa del documento non è riuscita"
 
 #: src/Buffer.cpp:318
 msgid "Disk Error: "
-msgstr "Errore disco:"
+msgstr "Errore disco: "
 
 #: src/Buffer.cpp:319
 #, c-format
@@ -17445,7 +17445,7 @@ msgstr ""
 
 #: src/Converter.cpp:432 src/Format.cpp:319 src/Format.cpp:386
 msgid "Executing command: "
-msgstr "Comando in esecuzione:"
+msgstr "Comando in esecuzione: "
 
 #: src/Converter.cpp:472
 msgid "Build errors"
@@ -19161,7 +19161,7 @@ msgstr "Salto grande"
 
 #: src/VSpace.cpp:480
 msgid "Vertical fill"
-msgstr "Riempimento verticale "
+msgstr "Riempimento verticale"
 
 #: src/VSpace.cpp:487
 msgid "protected"
@@ -20723,7 +20723,7 @@ msgstr "Inserire il nome del nuovo indice"
 msgid "The index could not be renamed. Check if the new name already exists."
 msgstr ""
 "L'indice non può essere rinominato. Verificare che il nuovo nome non esista "
-"giaà."
+"già."
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "unknown"
@@ -22165,7 +22165,7 @@ msgstr "Lo script `%1$s' ha fallito."
 
 #: src/frontends/qt4/qt_helpers.cpp:478
 msgid "All Files "
-msgstr "Tutti i file"
+msgstr "Tutti i file "
 
 #: src/frontends/qt4/qt_helpers.cpp:551 src/insets/InsetTOC.cpp:58
 #: src/insets/InsetTOC.cpp:114
@@ -22398,7 +22398,7 @@ msgstr "Ramo (%1$s): %2$s"
 
 #: src/insets/InsetBranch.cpp:79
 msgid "Branch: "
-msgstr "Ramo:"
+msgstr "Ramo: "
 
 #: src/insets/InsetBranch.cpp:84
 msgid "Branch (child only): "
@@ -22733,7 +22733,7 @@ msgstr ""
 
 #: src/insets/InsetLabel.cpp:122
 msgid "DUPLICATE: "
-msgstr "DUPLICATA:"
+msgstr "DUPLICATA: "
 
 #: src/insets/InsetLine.cpp:64
 msgid "Horizontal line"
@@ -22990,7 +22990,7 @@ msgstr "altrove"
 
 #: src/insets/InsetRef.cpp:294
 msgid "BROKEN: "
-msgstr "SCORRETTA:"
+msgstr "SCORRETTA: "
 
 #: src/insets/InsetRef.cpp:334 src/mathed/InsetMathRef.cpp:225
 msgid "Ref: "
@@ -23276,7 +23276,7 @@ msgstr "Corrispondenza trovata!"
 #: src/mathed/InsetFormulaMacro.cpp:122
 #, c-format
 msgid " Macro: %1$s: "
-msgstr "Macro: %1$s: "
+msgstr " Macro: %1$s: "
 
 #: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1679
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
@@ -23317,7 +23317,7 @@ msgstr "Nessuna linea verticale da cancellare"
 #: src/mathed/InsetMathGrid.cpp:1511
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
-msgstr "La caratteristica della tabella '%1$s' è sconosciuta "
+msgstr "La caratteristica della tabella '%1$s' è sconosciuta"
 
 #: src/mathed/InsetMathHull.cpp:1271
 msgid "Bad math environment"
