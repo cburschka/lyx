@@ -158,6 +158,8 @@ private:
 	ConverterList converterlist_;
 	///
 	std::string latex_command_;
+	///
+	std::string xelatex_command_;
 	/// If \p from = /path/file.ext and \p to = /path2/file2.ext2 then
 	/// this method moves each /path/file*.ext file to /path2/file2*.ext2
 	bool move(std::string const & fmt,

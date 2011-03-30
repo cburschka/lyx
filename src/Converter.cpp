@@ -194,6 +194,10 @@ void Converters::add(string const & from, string const & to,
 	if (converter.latex
 	    && (latex_command_.empty() || converter.latex_flavor == "latex"))
 		latex_command_ = subst(command, token_from, "");
+	// Similarly, set xelatex_command to xelatex.
+	if (converter.latex
+	    && (xelatex_command_.empty() || converter.latex_flavor == "xelatex"))
+		xelatex_command_ = subst(command, token_from, "");
 
 	if (it == converterlist_.end()) {
 		converterlist_.push_back(converter);
@@ -397,9 +401,12 @@ bool Converters::convert(Buffer const * buffer,
 		} else {
 			if (conv.need_aux && !run_latex
 			    && !latex_command_.empty()) {
-				LYXERR(Debug::FILES, "Running " << latex_command_
+				string const command = (buffer && buffer->params().useNonTeXFonts) ?
+					xelatex_command_ : latex_command_;
+				LYXERR(Debug::FILES, "Running " << command
 					<< " to update aux file");
-				runLaTeX(*buffer, latex_command_, runparams, errorList);
+				if (!runLaTeX(*buffer, command, runparams, errorList))
+					return false;
 			}
 
 			// FIXME UNICODE
