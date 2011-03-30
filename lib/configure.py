@@ -659,10 +659,10 @@ def checkConverterEntries():
 \converter literate   pdflatex      "%%"	""'''])
     #
     checkProg('a Sweave -> LaTeX converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxsweave.R $$p$$i $$p$$o $$e $$r'],
-        rc_entry = [r'''\converter sweave   latex      "%%"	"latex"
-\converter sweave   pdflatex   "%%"	"latex=pdflatex"
-\converter sweave   xetex      "%%"	"latex=xelatex"
-\converter sweave   luatex     "%%"	"latex=lualatex"'''])
+        rc_entry = [r'''\converter sweave   latex      "%%"	""
+\converter sweave   pdflatex   "%%"	""
+\converter sweave   xetex      "%%"	""
+\converter sweave   luatex     "%%"	""'''])
     #
     checkProg('an HTML -> LaTeX converter', ['html2latex $$i', 'gnuhtml2latex $$i', \
         'htmltolatex -input $$i -output $$o', 'java -jar htmltolatex.jar -input $$i -output $$o'],
