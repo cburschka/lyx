@@ -540,7 +540,7 @@ def checkFormatEntries(dtl_tools):
 \Format literate   nw      NoWeb                  N  ""	"%%"	"document,menu=export"
 \Format sweave     Rnw    "Sweave"                S  "" "%%"    "document,menu=export"
 \Format lilypond   ly     "LilyPond music"        "" ""	"%%"	"vector"
-\Format lilypond-book    lytex "LilyPond book (LaTeX)"   "" ""	"%%"	"document"
+\Format lilypond-book    lytex "LilyPond book (LaTeX)"   "" ""	"%%"	"document,menu=export"
 \Format latex      tex    "LaTeX (plain)"         L  ""	"%%"	"document,menu=export"
 \Format luatex     tex    "LaTeX (LuaTeX)"        "" ""	"%%"	"document,menu=export"
 \Format pdflatex   tex    "LaTeX (pdflatex)"      "" ""	"%%"	"document,menu=export"
