@@ -152,9 +152,12 @@ function credits_contrib($name, $email, $msg) {
 $email = str_replace(' () ', '@', $email);
 $email = str_replace(' ! ', '.', $email);
 
-if (isset($email) && $email != "")
-        $output=$output. "<dt><b>[[mailto:${email} | ${name}]]</b>";
-else
+if (isset($email) && $email != "") {
+        if (strncasecmp($email,"http",4) == 0)
+            $output =$output. "<dt><b>[[${email} | ${name}]]</b>";
+         else
+            $output=$output. "<dt><b>[[mailto:${email} | ${name}]]</b>";
+} else
         $output=$output. "<dt><b>${name}</b>";
 
 $msg = ereg_replace("\\n *", "\\n  ", ltrim($msg));
