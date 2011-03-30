@@ -146,7 +146,8 @@ def layouts_l10n(input_files, output, base, layouttranslations):
                 print "Error: Unable to handle line:"
                 print line
         except IOError:
-            pass
+            print "Warning: Unable to open %s for reading." % output
+            print "         Old translations will be lost."
 
         # walon is not a known document language
         # FIXME: Do not hardcode, read from lib/languages!
