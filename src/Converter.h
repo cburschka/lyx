@@ -100,9 +100,6 @@ public:
 	///
 	std::vector<Format const *> const
 	getReachable(std::string const & from, bool only_viewable,
-		     bool clear_visited, std::string const & exclude);
-	std::vector<Format const *> const
-	getReachable(std::string const & from, bool only_viewable,
 	       bool clear_visited,
 	       std::vector<std::string> const & excludes = std::vector<std::string>());
 

@@ -691,20 +691,6 @@ Converters::getReachableTo(string const & target, bool const clear_visited)
 
 vector<Format const *> const
 Converters::getReachable(string const & from, bool const only_viewable,
-			 bool const clear_visited, string const & exclude)
-{
-	vector<int> const & reachables =
-		G_.getReachable(formats.getNumber(from),
-				only_viewable,
-				clear_visited,
-				formats.getNumber(exclude));
-
-	return intToFormat(reachables);
-}
-
-
-vector<Format const *> const
-Converters::getReachable(string const & from, bool const only_viewable,
 			 bool const clear_visited, vector<string> const & excludes)
 {
 	vector<int> excluded_numbers(excludes.size());

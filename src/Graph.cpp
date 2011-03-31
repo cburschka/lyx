@@ -121,16 +121,6 @@ Graph::EdgePath const
 }
 
 
-Graph::EdgePath const
-	Graph::getReachable(int from, bool only_viewable,
-		bool clear_visited, int exclude)
-{
-	vector<int> excludes;
-	excludes.push_back(exclude);
-	return getReachable(from, only_viewable, clear_visited, excludes);
-}
-
-
 bool Graph::isReachable(int from, int to)
 {
 	if (from == to)
