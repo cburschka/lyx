@@ -33,7 +33,7 @@ public:
 	EdgePath const getReachableTo(int to, bool clear_visited);
 	/// \return a vector of the reachable vertices, avoiding all "excludes"
 	EdgePath const getReachable(int from, bool only_viewable,
-		bool clear_visited, std::vector<int> excludes);
+		bool clear_visited, std::vector<int> excludes = std::vector<int>());
 	/// can "from" be reached from "to"?
 	bool isReachable(int from, int to);
 	/// find a path from "from" to "to". always returns one of the
