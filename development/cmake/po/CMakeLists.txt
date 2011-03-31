@@ -18,7 +18,11 @@ macro(add_gettext_python  _par _dir)
     list(SORT _s1)
     list(APPEND _sources ${_s1})
   endforeach(_arg)
-  SET(_dst "${CMAKE_CURRENT_BINARY_DIR}/${_par}_l10n.pot")
+  if (${_par} MATCHES "layouttranslations")
+    SET(_dst "${CMAKE_CURRENT_BINARY_DIR}/${_par}")
+  else ()
+    SET(_dst "${CMAKE_CURRENT_BINARY_DIR}/${_par}_l10n.pot")
+  endif()
   SET(_tmp_src_files "${CMAKE_CURRENT_BINARY_DIR}/${_par}_tmp_files")
   SET(_src_files "${CMAKE_CURRENT_BINARY_DIR}/${_par}_files")
   file(WRITE ${_tmp_src_files} "")
@@ -35,16 +39,31 @@ macro(add_gettext_python  _par _dir)
     COMMAND ${CMAKE_COMMAND} -E copy_if_different ${_tmp_src_files} ${_src_files}
     DEPENDS ${_tmp_src_files}
   )
-  ADD_CUSTOM_COMMAND(
-    OUTPUT "${_dst}"
-    PRE_BUILD
-    COMMAND ${LYX_PYTHON_EXECUTABLE}
-    ARGS "${TOP_SRC_DIR}/po/lyx_pot.py" -b "${TOP_SRC_DIR}" -o "${_dst}" -t ${_par1} "--src_file=${_src_files}"
-    DEPENDS ${_sources} ${_src_files}
-    )
+  if (${_par} MATCHES "layouttranslations")
+    ADD_CUSTOM_COMMAND(
+      OUTPUT "${_dst}"
+      PRE_BUILD
+      COMMAND  ${CMAKE_COMMAND} -E copy_if_different "${TOP_SRC_DIR}/lib/layouttranslations" "${_dst}"
+      COMMAND ${LYX_PYTHON_EXECUTABLE}
+      ARGS "${TOP_SRC_DIR}/po/lyx_pot.py" -b "${TOP_SRC_DIR}" -o "${_dst}" -t ${_par1} "--src_file=${_src_files}"
+      DEPENDS ${_sources} ${_src_files}
+      COMMENT "${LYX_PYTHON_EXECUTABLE} ${TOP_SRC_DIR}/po/lyx_pot.py -b ${TOP_SRC_DIR} -o  ${_dst} -t ${_par1} --src_file=${_src_files}"
+      )
+    ADD_CUSTOM_TARGET(layouttranslations ALL DEPENDS "${_dst}")
+    install(FILES "${_dst}" DESTINATION .)
+  else()
+    ADD_CUSTOM_COMMAND(
+      OUTPUT "${_dst}"
+      PRE_BUILD
+      COMMAND ${LYX_PYTHON_EXECUTABLE}
+      ARGS "${TOP_SRC_DIR}/po/lyx_pot.py" -b "${TOP_SRC_DIR}" -o "${_dst}" -t ${_par1} "--src_file=${_src_files}"
+      DEPENDS ${_sources} ${_src_files}
+      COMMENT "${LYX_PYTHON_EXECUTABLE} ${TOP_SRC_DIR}/po/lyx_pot.py -b ${TOP_SRC_DIR} -o  ${_dst} -t ${_par1} --src_file=${_src_files}"
+      )
+    LIST(APPEND _py_sources "${_dst}")
+  endif()
   SET_SOURCE_FILES_PROPERTIES("${_dst}" GENERATED)
   SET_SOURCE_FILES_PROPERTIES("${_src_files}" GENERATED)
-  LIST(APPEND _py_sources "${_dst}")
 endmacro(add_gettext_python)
 
 SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot" GENERATED)
@@ -58,6 +77,7 @@ add_gettext_python(encodings lib encodings)
 add_gettext_python(ui lib/ui *.ui *.inc)
 add_gettext_python(external lib external_templates)
 add_gettext_python(formats lib configure.py)
+add_gettext_python(layouttranslations lib/layouts *.layout *.inc *.module)
 
 ADD_CUSTOM_COMMAND(
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
