@@ -78,6 +78,9 @@ public:
 	///
 	typedef ConverterList::const_iterator const_iterator;
 	///
+	typedef std::vector<std::string> FormatList;
+
+	///
 	Converter const & get(int i) const { return converterlist_[i]; }
 	///
 	Converter const * getConverter(std::string const & from,
@@ -97,13 +100,11 @@ public:
 	///
 	std::vector<Format const *> const
 	getReachable(std::string const & from, bool only_viewable,
-		     bool clear_visited);
-	std::vector<Format const *> const
-	getReachable(std::string const & from, bool only_viewable,
 		     bool clear_visited, std::string const & exclude);
 	std::vector<Format const *> const
 	getReachable(std::string const & from, bool only_viewable,
-		     bool clear_visited, std::vector<std::string> const & excludes);
+	       bool clear_visited,
+	       std::vector<std::string> const & excludes = std::vector<std::string>());
 
 	std::vector<Format const *> importableFormats();
 	std::vector<Format const *> exportableFormats(bool only_viewable);
