@@ -2537,6 +2537,7 @@ lib_examples_files = Split('''
     linguistics.lyx
     listerrors.lyx
     Literate.lyx
+    localization_test.lyx
     modernCV.lyx
     multicol.lyx
     noweb2lyx.lyx

@@ -258,6 +258,7 @@ dist_examples_DATA = \
 	examples/lilypond.lyx \
 	examples/linguistics.lyx \
 	examples/listerrors.lyx \
+	examples/localization_test.lyx \
 	examples/modernCV.lyx \
 	examples/multicol.lyx \
 	examples/noweb2lyx.lyx \
