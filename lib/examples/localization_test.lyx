@@ -1,0 +1,445 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options false
+\begin_modules
+theorems-ams
+theorems-ams-extended
+linguistics
+\end_modules
+\maintain_unincluded_children false
+\language czech
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman lmodern
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+LyX localization test
+\end_layout
+
+\begin_layout Section
+Description
+\end_layout
+
+\begin_layout Standard
+This document contains large part
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Note that all of them can not be used simulataneously in one file, so few
+ strings will be missing.
+ 
+\end_layout
+
+\end_inset
+
+ of layout environments and insets which can be translated automatically
+ by LyX in case proper translation is provided in .po file (for a given language)
+ and layouttranslations file is generated from it.
+\end_layout
+
+\begin_layout Standard
+First of all change the language of this document to your own
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+You may need to save this document elsewhere, in case the file is readonly.
+\end_layout
+
+\end_inset
+
+ (or the one to be tested).
+ Then you can test how much is this language supported in
+\end_layout
+
+\begin_layout Itemize
+GUI
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+simply scroll through the whole document in LyX window and check all layouts/ins
+ets inside the sections 2&3 are properly translated.
+\end_layout
+
+\begin_layout Itemize
+click on the environments box (left top combo box) and scroll through the
+ listing.
+ The most important part is the section of mathematical environments.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+final document output - scroll through the whole document in output viewer
+ of ps/pdf file and again check proper translation.
+\end_layout
+
+\begin_layout Standard
+In case you are interested to improve or fix the support of your language,
+ please drop an email to LyX development list.
+\end_layout
+
+\begin_layout Section
+Test of environments
+\end_layout
+
+\begin_layout Assumption
+qasassa
+\end_layout
+
+\begin_layout Assumption*
+abbbbbb
+\end_layout
+
+\begin_layout Acknowledgement
+hggg
+\end_layout
+
+\begin_layout Acknowledgement*
+uuuu
+\end_layout
+
+\begin_layout Axiom
+jjjj
+\end_layout
+
+\begin_layout Axiom*
+uuuu
+\end_layout
+
+\begin_layout Case
+ddd
+\end_layout
+
+\begin_layout Claim
+kkkk
+\end_layout
+
+\begin_layout Claim*
+hhhh
+\end_layout
+
+\begin_layout Conclusion
+ffff
+\end_layout
+
+\begin_layout Conclusion*
+frrrr
+\end_layout
+
+\begin_layout Condition
+rrrr
+\end_layout
+
+\begin_layout Condition*
+hhhh
+\end_layout
+
+\begin_layout Conjecture
+uiiil
+\end_layout
+
+\begin_layout Conjecture*
+rrrrrr
+\end_layout
+
+\begin_layout Corollary
+nnn
+\end_layout
+
+\begin_layout Corollary*
+oioio
+\end_layout
+
+\begin_layout Criterion
+hhh
+\end_layout
+
+\begin_layout Criterion*
+asdas
+\end_layout
+
+\begin_layout Definition
+asdasd
+\end_layout
+
+\begin_layout Definition*
+asdad
+\end_layout
+
+\begin_layout Example
+asdaa
+\end_layout
+
+\begin_layout Example*
+wewe
+\end_layout
+
+\begin_layout Exercise
+oiuk
+\end_layout
+
+\begin_layout Exercise*
+asdae
+\end_layout
+
+\begin_layout Fact
+grt
+\end_layout
+
+\begin_layout Fact*
+reeer
+\end_layout
+
+\begin_layout Notation
+lhasdf
+\end_layout
+
+\begin_layout Notation*
+asdasd
+\end_layout
+
+\begin_layout Note
+asdfe
+\end_layout
+
+\begin_layout Problem
+sadasd
+\end_layout
+
+\begin_layout Problem*
+asdads
+\end_layout
+
+\begin_layout Proof
+asassa
+\end_layout
+
+\begin_layout Proposition
+sdfsdf
+\end_layout
+
+\begin_layout Proposition*
+erteer
+\end_layout
+
+\begin_layout Question
+sadas
+\end_layout
+
+\begin_layout Question*
+asdads
+\end_layout
+
+\begin_layout Remark
+sdfsdf
+\end_layout
+
+\begin_layout Remark*
+ghfdhg
+\end_layout
+
+\begin_layout Summary*
+as
+\end_layout
+
+\begin_layout Theorem
+asdasd
+\end_layout
+
+\begin_layout Theorem*
+asdasd
+\end_layout
+
+\begin_layout Section
+Test of insets and listings
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+gugu
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+huuu
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList table
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+hhh
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList algorithm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float tableau
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+fggf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList tableau
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
