@@ -691,16 +691,14 @@ Converters::getReachableTo(string const & target, bool const clear_visited)
 
 vector<Format const *> const
 Converters::getReachable(string const & from, bool const only_viewable,
-			 bool const clear_visited, vector<string> const & excludes)
+			 bool const clear_visited, set<string> const & excludes)
 {
-	vector<int> excluded_numbers(excludes.size());
+	set<int> excluded_numbers;;
 
-	vector<string>::const_iterator sit = excludes.begin();
-	vector<string>::const_iterator const end = excludes.end();
-	vector<int>::iterator it = excluded_numbers.begin();
-	for ( ; sit != end; ++sit, ++it) {
-		*it = formats.getNumber(*sit);
-	}
+	set<string>::const_iterator sit = excludes.begin();
+	set<string>::const_iterator const end = excludes.end();
+	for (; sit != end; ++sit)
+		excluded_numbers.insert(formats.getNumber(*sit));
 
 	vector<int> const & reachables =
 		G_.getReachable(formats.getNumber(from),

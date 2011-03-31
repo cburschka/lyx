@@ -16,6 +16,7 @@
 #include "OutputParams.h"
 
 #include <vector>
+#include <set>
 #include <string>
 
 
@@ -101,7 +102,7 @@ public:
 	std::vector<Format const *> const
 	getReachable(std::string const & from, bool only_viewable,
 	       bool clear_visited,
-	       std::vector<std::string> const & excludes = std::vector<std::string>());
+	       std::set<std::string> const & excludes = std::set<std::string>());
 
 	std::vector<Format const *> importableFormats();
 	std::vector<Format const *> exportableFormats(bool only_viewable);

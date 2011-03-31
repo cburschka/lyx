@@ -3712,10 +3712,10 @@ bool Buffer::isExportable(string const & format) const
 vector<Format const *> Buffer::exportableFormats(bool only_viewable) const
 {
 	vector<string> const backs = backends();
-	vector<string> excludes;
+	set<string> excludes;
 	if (params().useNonTeXFonts) {
-		excludes.push_back("latex");
-		excludes.push_back("pdflatex");
+		excludes.insert("latex");
+		excludes.insert("pdflatex");
 	}
 	vector<Format const *> result =
 		theConverters().getReachable(backs[0], only_viewable, true, excludes);
