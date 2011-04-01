@@ -152,10 +152,10 @@ void InsetMathFont::htmlize(HtmlStream & os) const
 		variant = "noun";
 	
 	docstring const beg = (tag.size() < 4) ? from_ascii("") : tag.substr(0, 4);
-	bool const textmode = (beg == "text");
 	if (!variant.empty()) {
-		SetHTMLMode sm(os, textmode, "class='" + variant + "'");
-		os << cell(0);
+		os << MTag("span", "class='" + variant + "'")
+		   << cell(0)
+		   << ETag("span");
 	} else
 		os << cell(0);
 }
@@ -190,12 +190,10 @@ void InsetMathFont::mathmlize(MathStream & os) const
 		variant = "monospace";
 	// no support at present for textipa, textsc, noun
 	
-	docstring const beg = (tag.size() < 4) ? from_ascii("") : tag.substr(0, 4);
-	bool const textmode = (beg == "text");
 	if (!variant.empty()) {
-		std::string const attrs = "mathvariant='" + variant + "'";
-		SetMode sm(os, textmode, attrs);
-		os << cell(0);
+		os << MTag("mstyle", "mathvariant='" + variant + "'")
+		   << cell(0)
+		   << ETag("mstyle");
 	} else
 		os << cell(0);
 }

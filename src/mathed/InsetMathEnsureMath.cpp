@@ -13,6 +13,7 @@
 
 #include "InsetMathEnsureMath.h"
 
+#include "LaTeXFeatures.h"
 #include "MathData.h"
 #include "MathStream.h"
 #include "MathSupport.h"
@@ -73,16 +74,18 @@ void InsetMathEnsureMath::write(WriteStream & os) const
 void InsetMathEnsureMath::mathmlize(MathStream & os) const
 {
 	SetMode mathmode(os, false);
-	os << cell(0);
+	os << MTag("mstyle", "class='math'")
+	   << cell(0)
+	   << ETag("mstyle");
 }
 
 
 void InsetMathEnsureMath::htmlize(HtmlStream & os) const
 {
-	os << "[EM]";
 	SetHTMLMode mathmode(os, false);
-	os << cell(0);
-	os << "[/EM]";
+	os << MTag("span", "class='math'")
+	   << cell(0)
+	   << ETag("span");
 }
 
 
@@ -91,5 +94,22 @@ void InsetMathEnsureMath::infoize(odocstream & os) const
 	os << "EnsureMath";
 }
 
+
+void InsetMathEnsureMath::validate(LaTeXFeatures & features) const
+{
+	// FIXME XHTML
+	// It'd be better to be able to get this from an InsetLayout, but at present
+	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
+	if (features.runparams().math_flavor == OutputParams::MathAsMathML)
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
+			"mstyle.math { font-style: italic; }\n"
+			"</style>");
+	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
+			"span.mathbox { font-style: italic; }\n"
+			"</style>");
+
+	InsetMathNest::validate(features);
+}
 
 } // namespace lyx

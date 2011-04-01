@@ -53,16 +53,20 @@ void InsetMathBox::normalize(NormalStream & os) const
 
 
 void InsetMathBox::mathmlize(MathStream & ms) const
-{	
-	SetMode textmode(ms, true, "class='mathbox'");
-	ms << cell(0);
+{
+	SetMode textmode(ms, true);
+	ms << MTag("mstyle", "class='mathbox'")
+	   << cell(0)
+	   << ETag("mstyle");
 }
 
 
 void InsetMathBox::htmlize(HtmlStream & ms) const
 {
 	SetHTMLMode textmode(ms, true);
-	ms << cell(0);
+	ms << MTag("span", "class='mathbox'")
+	   << cell(0)
+	   << ETag("span");
 }
 
 
@@ -90,10 +94,22 @@ void InsetMathBox::infoize(odocstream & os) const
 
 void InsetMathBox::validate(LaTeXFeatures & features) const
 {
+	// FIXME XHTML
+	// It'd be better to be able to get this from an InsetLayout, but at present
+	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
+	if (features.runparams().math_flavor == OutputParams::MathAsMathML)
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
+			"mstyle.mathbox { font-style: normal; }\n"
+			"</style>");
+	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
+			"span.mathbox { font-style: normal; }\n"
+			"</style>");
+
 	if (name_ == "tag" || name_ == "tag*")
 		features.require("amsmath");
 
-	cell(0).validate(features);
+	InsetMathNest::validate(features);
 }
 
 
@@ -144,15 +160,19 @@ void InsetMathFBox::normalize(NormalStream & os) const
 
 void InsetMathFBox::mathmlize(MathStream & ms) const
 {	
-	SetMode textmode(ms, true, "class='fbox'");
-	ms << cell(0);
+	SetMode textmode(ms, true);
+	ms << MTag("mstyle", "class='fbox'")
+	   << cell(0)
+	   << ETag("mstyle");
 }
 
 
 void InsetMathFBox::htmlize(HtmlStream & ms) const
 {
-	SetHTMLMode textmode(ms, true, "class='fbox'");
-	ms << cell(0);
+	SetHTMLMode textmode(ms, true);
+	ms << MTag("span", "class='fbox'")
+	   << cell(0)
+	   << ETag("span");
 }
 
 
@@ -169,12 +189,14 @@ void InsetMathFBox::validate(LaTeXFeatures & features) const
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
 	if (features.runparams().math_flavor == OutputParams::MathAsMathML)
 		features.addPreambleSnippet("<style type=\"text/css\">\n"
-			"mtext.fbox { border: 1px solid black; }\n"
+			"mstyle.fbox { border: 1px solid black; font-style: normal; padding: 0.5ex; }\n"
 			"</style>");
 	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
 		features.addPreambleSnippet("<style type=\"text/css\">\n"
-			"span.fbox { border: 1px solid black; }\n"
+			"span.fbox { border: 1px solid black; font-style: normal; padding: 0.5ex; }\n"
 			"</style>");
+
+	cell(0).validate(features);
 	InsetMathNest::validate(features);
 }
 
@@ -290,17 +312,21 @@ void InsetMathMakebox::mathmlize(MathStream & ms) const
 {
 	// FIXME We could do something with the other arguments.
 	std::string const cssclass = framebox_ ? "framebox" : "makebox";
-	SetMode textmode(ms, true, "class='" + cssclass + "'");
-	ms << cell(2);
+	SetMode textmode(ms, true);
+	ms << MTag("mstyle", "class='" + cssclass + "'")
+	   << cell(2)
+	   << ETag("mstyle");
 }
 
 
 void InsetMathMakebox::htmlize(HtmlStream & ms) const
 {
 	// FIXME We could do something with the other arguments.
+	SetHTMLMode textmode(ms, true);
 	std::string const cssclass = framebox_ ? "framebox" : "makebox";
-	SetHTMLMode textmode(ms, true, "class='" + cssclass + "'");
-	ms << cell(2);
+	ms << MTag("span", "class='" + cssclass + "'")
+	   << cell(2)
+	   << ETag("span");
 }
 
 
@@ -311,7 +337,7 @@ void InsetMathMakebox::validate(LaTeXFeatures & features) const
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
 	if (features.runparams().math_flavor == OutputParams::MathAsMathML)
 		features.addPreambleSnippet("<style type=\"text/css\">\n"
-			"span.framebox { border: 1px solid black; }\n"
+			"mstyle.framebox { border: 1px solid black; }\n"
 			"</style>");
 	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
 		features.addPreambleSnippet("<style type=\"text/css\">\n"
@@ -370,15 +396,17 @@ void InsetMathBoxed::infoize(odocstream & os) const
 
 void InsetMathBoxed::mathmlize(MathStream & ms) const
 {
-	SetMode mathmode(ms, false, "class='boxed'");
-	ms << cell(0);
+	ms << MTag("mstyle", "class='boxed'")
+	   << cell(0)
+	   << ETag("mstyle");
 }
 
 
 void InsetMathBoxed::htmlize(HtmlStream & ms) const
 {
-	SetHTMLMode mathmode(ms, false, "class='boxed'");
-	ms << cell(0);
+	ms << MTag("span", "class='boxed'")
+	   << cell(0)
+		 << ETag("span");
 }
 
 

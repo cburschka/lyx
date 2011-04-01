@@ -172,11 +172,10 @@ void InsetMathChar::mathmlize(MathStream & ms) const
 		case '<': entity = "&lt;"; break;
 		case '>': entity = "&gt;"; break;
 		case '&': entity = "&amp;"; break;
-		case ' ': 
-			if (!ms.inText())
-				break;
-			entity = "&ThinSpace;";
-			break;
+		case ' ': {
+			ms << from_ascii("&nsbp;");
+			return;
+		}
 		default: break;
 	}
 	
@@ -187,7 +186,7 @@ void InsetMathChar::mathmlize(MathStream & ms) const
 			ms << from_ascii(entity);
 		return;
 	}
-	
+
 	if (!entity.empty()) {
 		ms << "<mo>" << from_ascii(entity) << "</mo>";
 		return;
@@ -208,6 +207,7 @@ void InsetMathChar::htmlize(HtmlStream & ms) const
 		case '<': entity = "&lt;"; break;
 		case '>': entity = "&gt;"; break;
 		case '&': entity = "&amp;"; break;
+		case ' ': entity = "&nbsp;"; break;
 		default: break;
 	}
 	
@@ -222,6 +222,7 @@ void InsetMathChar::htmlize(HtmlStream & ms) const
 	}
 	
 	if (have_entity) {
+		// an operator, so give some space
 		ms << ' ' << from_ascii(entity) << ' ';
 		return;
 	}		

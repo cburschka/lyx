@@ -442,55 +442,16 @@ HtmlStream & operator<<(HtmlStream & ms, docstring const & s)
 
 
 SetMode::SetMode(MathStream & os, bool text)
-	: os_(os), opened_(false)
-{
-	init(text, "");
-}
-
-
-SetMode::SetMode(MathStream & os, bool text, string const & attrs)
-	: os_(os), opened_(false)
-{
-	init(text, attrs);
-}
-
-
-void SetMode::init(bool text, string const & attrs)
+	: os_(os)
 {
 	was_text_ = os_.inText();
-	if (was_text_)
-		os_ << "</mtext>";
-	if (text) {
-		os_.setTextMode();
-		os_ << "<mtext";
-		if (!attrs.empty())
-			os_ << " " << from_utf8(attrs);
-		os_ << ">";
-		opened_ = true;
-	} else {
-		if (!attrs.empty()) {
-			os_ << "<mstyle " << from_utf8(attrs) << ">";
-			opened_ = true;
-		}
-		os_.setMathMode();
-	}
+	os_.setTextMode(text);
 }
 
 
 SetMode::~SetMode()
 {
-	if (opened_) {
-		if (os_.inText())
-			os_ << "</mtext>";
-		else
-			os_ << "</mstyle>";
-	}
-	if (was_text_) {
-		os_.setTextMode();
-		os_ << "<mtext>";
-	} else {
-		os_.setMathMode();
-	}
+	os_.setTextMode(was_text_);
 }
 
 
@@ -498,42 +459,16 @@ SetMode::~SetMode()
 
 
 SetHTMLMode::SetHTMLMode(HtmlStream & os, bool text)
-	: os_(os), opened_(false)
-{
-	init(text, "");
-}
-
-
-SetHTMLMode::SetHTMLMode(HtmlStream & os, bool text, string attrs)
-	: os_(os), opened_(true)
-{
-	init(text, attrs);
-}
-
-
-void SetHTMLMode::init(bool text, string const & attrs)
+	: os_(os)
 {
 	was_text_ = os_.inText();
-	if (text) {
-		os_.setTextMode();
-		if (attrs.empty())
-			os_ << MTag("span");
-		else
-			os_ << MTag("span", attrs);
-		opened_ = true;
-	} else
-		os_.setMathMode();
+	os_.setTextMode(text);
 }
 
 
 SetHTMLMode::~SetHTMLMode()
 {
-	if (opened_)
-		os_ << ETag("span");
-	if (was_text_)
-		os_.setTextMode();
-	else
-		os_.setMathMode();
+	os_.setTextMode(was_text_);
 }
 
 

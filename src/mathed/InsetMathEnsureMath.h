@@ -42,6 +42,8 @@ public:
 	///
 	void infoize(odocstream & os) const;
 	///
+	void validate(LaTeXFeatures & features) const;
+	///
 	InsetCode lyxCode() const { return MATH_ENSUREMATH_CODE; }
 private:
 	virtual Inset * clone() const;

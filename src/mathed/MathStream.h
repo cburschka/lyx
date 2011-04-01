@@ -299,9 +299,7 @@ public:
 	bool inText() const { return in_text_; }
 private:
 	///
-	void setTextMode() { in_text_ = true; }
-	///
-	void setMathMode() { in_text_ = false; }
+	void setTextMode(bool t) { in_text_ = t; }
 	///
 	odocstream & os_;
 	///
@@ -335,29 +333,15 @@ MathStream & operator<<(MathStream &, ETag const &);
 
 
 /// A simpler version of ModeSpecifier, for MathML
-// FIXME There are still problems here with nesting, at least
-// potentially. The problem is that true nesting of text mode isn't
-// actually possible. I.e., we can't have: 
-//		<mtext><mtext></mtext></mtext>
-// So we have to have:
-//		<mtext></mtext><mtext></mtext><mtext></mtext>
-// instead, where the last is really a continuation of the first.
-// We'll need some kind of stack to remember all that.
 class SetMode {
 public:
-	///
-	explicit SetMode(MathStream & os, bool text, std::string const & attrs);
 	///
 	explicit SetMode(MathStream & os, bool text);
 	///
 	~SetMode();
 private:
 	///
-	void init(bool, std::string const &);
-	///
 	MathStream & os_;
-	///
-	bool opened_;
 	///
 	bool was_text_;
 };
@@ -387,9 +371,7 @@ public:
 	bool inText() const { return in_text_; }
 private:
 	///
-	void setTextMode() { in_text_ = true; }
-	///
-	void setMathMode() { in_text_ = false; }
+	void setTextMode(bool t) { in_text_ = t; }
 	///
 	odocstream & os_;
 	///
@@ -425,18 +407,12 @@ HtmlStream & operator<<(HtmlStream &, ETag const &);
 class SetHTMLMode {
 public:
 	///
-	explicit SetHTMLMode(HtmlStream & os, bool text, std::string attrs);
-	///
 	explicit SetHTMLMode(HtmlStream & os, bool text);
 	///
 	~SetHTMLMode();
 private:
 	///
-	void init(bool, std::string const &);
-	///
 	HtmlStream & os_;
-	///
-	bool opened_;
 	///
 	bool was_text_;
 };
