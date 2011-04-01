@@ -948,7 +948,7 @@ void extractLims(MathData & ar)
 
 void extractStructure(MathData & ar, ExternalMath kind)
 {
-	lyxerr << "\nStructure from: " << ar << endl;
+	//lyxerr << "\nStructure from: " << ar << endl;
 	if (kind != MATHML && kind != HTML)
 		splitScripts(ar);
 	extractDelims(ar);
@@ -965,7 +965,7 @@ void extractStructure(MathData & ar, ExternalMath kind)
 		extractLims(ar);
 		extractStrings(ar);
 	}
-	lyxerr << "\nStructure to: " << ar << endl;
+	//lyxerr << "\nStructure to: " << ar << endl;
 }
 
 
