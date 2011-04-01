@@ -700,7 +700,6 @@ CursorStatus BufferView::cursorStatus(DocIterator const & dit) const
 
 void BufferView::bookmarkEditPosition()
 {
-	d->cursor_.markEditPosition();
 	// Don't eat cpu time for each keystroke
 	if (d->cursor_.paragraph().id() == d->bookmark_edit_position_)
 		return;

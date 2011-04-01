@@ -518,14 +518,14 @@ void Cursor::setCursorToAnchor()
 }
 
 
-void Cursor::markEditPosition()
+void Cursor::markNewWordPosition()
 {
 	if (lyxrc.spellcheck_continuously && inTexted() && new_word_.empty()) {
-		FontSpan ow = locateWord(WHOLE_WORD);
-		if (ow.size() == 1) {
+		FontSpan nw = locateWord(WHOLE_WORD);
+		if (nw.size() == 1) {
 			LYXERR(Debug::DEBUG, "start new word: "
 				<< " par: " << pit()
-				<< " pos: " << ow.first);
+				<< " pos: " << nw.first);
 			new_word_ = *this;
 		}
 	}

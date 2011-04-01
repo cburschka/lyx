@@ -293,7 +293,7 @@ public:
 	void checkBufferStructure();
 
 	/// hook for text input to maintain the "new born word"
-	void markEditPosition();
+	void markNewWordPosition();
 
 	/// The position of the new born word
 	/// As the user is entering a word without leaving it
