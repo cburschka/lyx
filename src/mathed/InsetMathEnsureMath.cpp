@@ -72,7 +72,19 @@ void InsetMathEnsureMath::write(WriteStream & os) const
 
 void InsetMathEnsureMath::mathmlize(MathStream & os) const
 {
+	os << "[EM]";
+	SetMode mathmode(os, false);
 	os << cell(0);
+	os << "[/EM]";
+}
+
+
+void InsetMathEnsureMath::htmlize(HtmlStream & os) const
+{
+	os << "[EM]";
+	SetHTMLMode mathmode(os, false);
+	os << cell(0);
+	os << "[/EM]";
 }
 
 
