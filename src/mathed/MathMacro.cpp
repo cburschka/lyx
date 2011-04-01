@@ -753,8 +753,6 @@ void MathMacro::maple(MapleStream & os) const
 
 void MathMacro::mathmlize(MathStream & os) const
 {
-	MathData const & data = expanded_.cell(0);
-	data.dump();
 	os << expanded_.cell(0);
 }
 

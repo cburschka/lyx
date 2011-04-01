@@ -69,6 +69,8 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
+	void normalize(NormalStream & os) const;
+	///
 	void maple(MapleStream &) const;
 	///
 	void mathmlize(MathStream &) const;
