@@ -83,14 +83,15 @@ struct CompTag {
 	std::string attr_;
 };
 
+// trivial struct for output of newlines
+struct CR{};
+
 } // namespace html
 
 class XHTMLStream {
 public:
 	///
 	explicit XHTMLStream(odocstream & os);
-	///
-	void cr();
 	///
 	odocstream & os() { return os_; }
 	///
@@ -116,6 +117,8 @@ public:
 	XHTMLStream & operator<<(html::EndTag const &);
 	///
 	XHTMLStream & operator<<(html::CompTag const &);
+	///
+	XHTMLStream & operator<<(html::CR const &);
 	///
 	enum EscapeSettings {
 		ESCAPE_NONE,

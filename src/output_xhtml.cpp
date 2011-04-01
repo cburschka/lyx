@@ -197,13 +197,6 @@ XHTMLStream::XHTMLStream(odocstream & os)
 {}
 
 
-void XHTMLStream::cr() 
-{
-	// tabs?
-	os_ << from_ascii("\n");
-}
-
-
 void XHTMLStream::writeError(std::string const & s)
 {
 	LYXERR0(s);
@@ -326,7 +319,15 @@ XHTMLStream & XHTMLStream::operator<<(html::CompTag const & tag)
 	clearTagDeque();
 	// tabs?
 	os_ << tag.asTag();
-	cr();
+	*this << html::CR();
+	return *this;
+}
+
+
+XHTMLStream & XHTMLStream::operator<<(html::CR const &)
+{
+	// tabs?
+	os_ << from_ascii("\n");
 	return *this;
 }
 
@@ -612,7 +613,7 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 		// FIXME We should see if there's a label to be output and
 		// do something with it.
 		if (par != pbegin)
-			xs.cr();
+			xs << html::CR();
 
 		// If we are already in a paragraph, and this is the first one, then we
 		// do not want to open the paragraph tag.
@@ -637,11 +638,10 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 			|| (!opened && runparams.html_in_par && par == pbegin && nextpar != pend);
 		if (needclose) {
 			closeTag(xs, lay);
-			xs.cr();
+			xs << html::CR();
 		}
 		if (!deferred.empty()) {
-			xs << XHTMLStream::ESCAPE_NONE << deferred;
-			xs.cr();
+			xs << XHTMLStream::ESCAPE_NONE << deferred << html::CR();
 		}
 	}
 	return pend;
@@ -657,12 +657,12 @@ ParagraphList::const_iterator makeBibliography(Buffer const & buf,
 {
 	// FIXME XHTML
 	// Use TextClass::htmlTOCLayout() to figure out how we should look.
-	xs << html::StartTag("h2", "class='bibliography'");
-	xs << pbegin->layout().labelstring(false);
-	xs << html::EndTag("h2");
-	xs.cr();
+	xs << html::StartTag("h2", "class='bibliography'")
+	   << pbegin->layout().labelstring(false);
+	   << html::EndTag("h2");
+	xs << html::CR();
 	xs << html::StartTag("div", "class='bibliography'");
-	xs.cr();
+	xs << html::CR();
 	makeParagraphs(buf, xs, runparams, text, pbegin, pend);
 	xs << html::EndTag("div");
 	return pend;
@@ -690,7 +690,7 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 
 	// open tag for this environment
 	openTag(xs, bstyle);
-	xs.cr();
+	xs << html::CR();
 
 	// we will on occasion need to remember a layout from before.
 	Layout const * lastlay = 0;
@@ -747,20 +747,20 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 								xs << lbl;
 								closeLabelTag(xs, style);
 							}
-							xs.cr();
+							xs << html::CR();
 						}
 					}	else { // some kind of list
 						if (style.labeltype == LABEL_MANUAL) {
 							openLabelTag(xs, style);
 							sep = par->firstWordLyXHTML(xs, runparams);
 							closeLabelTag(xs, style);
-							xs.cr();
+							xs << html::CR();
 						}
 						else {
 							openLabelTag(xs, style);
 							xs << par->params().labelString();
 							closeLabelTag(xs, style);
-							xs.cr();
+							xs << html::CR();
 						}
 					}
 				} // end label output
@@ -784,7 +784,7 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 					lastlay = &style;
 				} else
 					closeItemTag(xs, style);
-				xs.cr();
+				xs << html::CR();
 			}
 			// The other possibility is that the depth has increased, in which
 			// case we need to recurse.
@@ -814,7 +814,7 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 	if (lastlay != 0)
 		closeItemTag(xs, *lastlay);
 	closeTag(xs, bstyle);
-	xs.cr();
+	xs << html::CR();
 	return pend;
 }
 
@@ -845,7 +845,7 @@ void makeCommand(Buffer const & buf,
 	pbegin->simpleLyXHTMLOnePar(buf, xs, runparams,
 			text.outerFont(distance(begin, pbegin)));
 	closeTag(xs, style);
-	xs.cr();
+	xs << html::CR();
 }
 
 } // end anonymous namespace

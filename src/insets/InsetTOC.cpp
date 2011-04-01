@@ -132,13 +132,13 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 			continue;
 		
 		if (depth > lastdepth) {
-			xs.cr();
+			xs << html::CR();
 			// open as many tags as we need to open to get to this level
 			// this includes the tag for the current level
 			for (int i = lastdepth + 1; i <= depth; ++i) {
 				stringstream attr;
 				attr << "class='lyxtoc-" << i << "'";
-				xs << html::StartTag("div", attr.str());
+				xs << html::StartTag("div", attr.str()) << html::CR();
 			}
 			lastdepth = depth;
 		}
@@ -146,18 +146,18 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 			// close as many as we have to close to get back to this level
 			// this includes closing the last tag at this level
 			for (int i = lastdepth; i >= depth; --i) 
-				xs << html::EndTag("div");
+				xs << html::EndTag("div") << html::CR();
 			// now open our tag
 			stringstream attr;
 			attr << "class='lyxtoc-" << depth << "'";
-			xs << html::StartTag("div", attr.str());
+			xs << html::StartTag("div", attr.str()) << html::CR();
 			lastdepth = depth;
 		} else {
 			// no change of level, so close and open
-			xs << html::EndTag("div");
+			xs << html::EndTag("div") << html::CR();
 			stringstream attr;
 			attr << "class='lyxtoc-" << depth << "'";
-			xs << html::StartTag("div", attr.str());
+			xs << html::StartTag("div", attr.str()) << html::CR();
 		}
 		
 		// Now output TOC info for this entry
@@ -182,8 +182,8 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 		xs << html::EndTag("a");		
 	}
 	for (int i = lastdepth; i > 0; --i) 
-		xs << html::EndTag("div");
-	xs << html::EndTag("div");
+		xs << html::EndTag("div") << html::CR();
+	xs << html::EndTag("div") << html::CR();
 	return ods.str();
 }
 

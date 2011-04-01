@@ -730,13 +730,11 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 				// close last entry or entries, depending.
 				if (level == 3) {
 					// close this sub-sub-entry
-					xs << html::EndTag("li");
-					xs.cr();
+					xs << html::EndTag("li") << html::CR();
 					// is this another sub-sub-entry within the same sub-entry?
 					if (!eit->same_sub(last)) {
 						// close this level
-						xs << html::EndTag("ul");
-						xs.cr();
+						xs << html::EndTag("ul") << html::CR();
 						level = 2;
 					}
 				}
@@ -747,13 +745,11 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 				// sub-entry. In that case, we do not want to close anything.
 				if (level == 2 && !eit->same_sub(last)) {
 					// close sub-entry 
-					xs << html::EndTag("li");
-					xs.cr();
+					xs << html::EndTag("li") << html::CR();
 					// is this another sub-entry with the same main entry?
 					if (!eit->same_main(last)) {
 						// close this level
-						xs << html::EndTag("ul");
-						xs.cr();
+						xs << html::EndTag("ul") << html::CR();
 						level = 1;
 					}
 				}
@@ -762,8 +758,7 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 				// close the entry.
 				if (level == 1 && !eit->same_main(last)) {
 					// close entry
-					xs << html::EndTag("li");
-					xs.cr();
+					xs << html::EndTag("li") << html::CR();
 				}
 			}
 
@@ -809,8 +804,8 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 					   << XHTMLStream::ESCAPE_NONE << sub;
 				if (!subsub.empty()) {
 					// it's actually a subsubentry, so we need to start that list
-					xs.cr();
-					xs << html::StartTag("ul", "class='subsubentry'") 
+					xs << html::CR()
+					   << html::StartTag("ul", "class='subsubentry'") 
 					   << html::StartTag("li", "class='subsubentry'") 
 					   << XHTMLStream::ESCAPE_NONE << subsub;
 					level = 3;
@@ -830,15 +825,15 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 					xs << html::StartTag("li", "class='main'") << main;
 				if (!sub.empty()) {
 					// there's a sub-entry, too
-					xs.cr();
-					xs << html::StartTag("ul", "class='subentry'") 
+					xs << html::CR()
+					   << html::StartTag("ul", "class='subentry'") 
 					   << html::StartTag("li", "class='subentry'") 
 					   << XHTMLStream::ESCAPE_NONE << sub;
 					level = 2;
 					if (!subsub.empty()) {
 						// and a sub-sub-entry
-						xs.cr();
-						xs << html::StartTag("ul", "class='subsubentry'") 
+						xs << html::CR()
+						   << html::StartTag("ul", "class='subsubentry'") 
 						   << html::StartTag("li", "class='subsubentry'") 
 						   << XHTMLStream::ESCAPE_NONE << subsub;
 						level = 3;
@@ -855,12 +850,10 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 	}
 	// now we have to close all the open levels
 	while (level > 0) {
-		xs << html::EndTag("li") << html::EndTag("ul");
-		xs.cr();
+		xs << html::EndTag("li") << html::EndTag("ul") << html::CR();
 		--level;
 	}
-	xs << html::EndTag("div");
-	xs.cr();
+	xs << html::EndTag("div") << html::CR();
 	return ods.str();
 }
 

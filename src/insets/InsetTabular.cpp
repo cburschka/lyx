@@ -2887,11 +2887,9 @@ docstring Tabular::xhtmlRow(XHTMLStream & xs, row_type row,
 		if (isMultiColumn(cell))
 			attr << " colspan='" << columnSpan(cell) << "'";
 
-		xs << html::StartTag(celltag, attr.str());
-		xs.cr();
+		xs << html::StartTag(celltag, attr.str()) << html::CR();
 		ret += cellInset(cell)->xhtml(xs, runparams);
-		xs << html::EndTag(celltag);
-		xs.cr();
+		xs << html::EndTag(celltag) << html::CR();
 		++cell;
 	}
 	xs << html::EndTag("tr");
@@ -2917,17 +2915,19 @@ docstring Tabular::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
 			align = "right";
 			break;
 		}
-		xs << html::StartTag("div", "class='longtable' style='text-align: " + align + ";'");
+		xs << html::StartTag("div", "class='longtable' style='text-align: " + align + ";'")
+		   << html::CR();
 		if (haveLTCaption()) {
-			xs << html::StartTag("div", "class='longtable-caption' style='text-align: " + align + ";'");
+			xs << html::StartTag("div", "class='longtable-caption' style='text-align: " + align + ";'")
+			   << html::CR();
 			for (row_type r = 0; r < nrows(); ++r)
 				if (row_info[r].caption)
 					ret += xhtmlRow(xs, r, runparams);
-			xs << html::EndTag("div");
+			xs << html::EndTag("div") << html::CR();
 		}
 	}
 
-	xs << html::StartTag("table");
+	xs << html::StartTag("table") << html::CR();
 
 	// output header info
 	bool const havefirsthead = haveLTFirstHead();
@@ -2936,40 +2936,42 @@ docstring Tabular::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
 	// in XHTML. this test accomplishes that.
 	bool const havehead = !havefirsthead && haveLTHead();
 	if (havehead || havefirsthead) {
-		xs << html::StartTag("thead");
+		xs << html::StartTag("thead") << html::CR();
 		for (row_type r = 0; r < nrows(); ++r) {
 			if ((havefirsthead && row_info[r].endfirsthead)
 			    || (havehead && row_info[r].endhead)) {
 				ret += xhtmlRow(xs, r, runparams, true);
 			}
 		}
-		xs << html::EndTag("thead");
+		xs << html::EndTag("thead") << html::CR();
 	}
 	// output footer info
 	bool const havelastfoot = haveLTLastFoot();
 	// as before.
 	bool const havefoot = !havelastfoot && haveLTFoot();
 	if (havefoot || havelastfoot) {
-		xs << html::StartTag("tfoot");
+		xs << html::StartTag("tfoot") << html::CR();
 		for (row_type r = 0; r < nrows(); ++r) {
 			if ((havelastfoot && row_info[r].endlastfoot)
 			    || (havefoot && row_info[r].endfoot)) {
 				ret += xhtmlRow(xs, r, runparams);
 			}
 		}
-		xs << html::EndTag("tfoot");
+		xs << html::EndTag("tfoot") << html::CR();
 	}
 
-	xs << html::StartTag("tbody");
+	xs << html::StartTag("tbody") << html::CR();
 	for (row_type r = 0; r < nrows(); ++r) {
 		if (isValidRow(r)) {
 			ret += xhtmlRow(xs, r, runparams);
 		}
 	}
 	xs << html::EndTag("tbody")
-	   << html::EndTag("table");
+	   << html::CR()
+	   << html::EndTag("table")
+	   << html::CR();
 	if (is_long_tabular)
-		xs << html::EndTag("div");
+		xs << html::EndTag("div") << html::CR();
 	return ret;
 }
 

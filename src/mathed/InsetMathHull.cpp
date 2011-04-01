@@ -2154,8 +2154,8 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 			FileName const & mathimg = pimage->filename();
 			xs << html::StartTag(tag)
 			   << html::CompTag("img", "src=\"" + mathimg.onlyFileName() + "\"")
-			   << html::EndTag(tag);
-			xs.cr();
+			   << html::EndTag(tag)
+			   << html::CR();
 			// add the file to the list of files to be exported
 			op.exportdata->addExternalFile("xhtml", mathimg);
 			success = true;
@@ -2182,8 +2182,8 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 		xs << html::StartTag(tag, "class='math'")
 		   << XHTMLStream::ESCAPE_AND
 		   << latex 
-		   << html::EndTag(tag);
-		xs.cr();
+		   << html::EndTag(tag)
+		   << html::CR();
 	}
 	return docstring();
 }
