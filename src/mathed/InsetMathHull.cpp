@@ -258,9 +258,8 @@ void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype)
 		// this has to be done separately
 		docstring const eqstr = from_ascii("equation");
 		if (cnts.hasCounter(eqstr)) {
-			if (utype == OutputUpdate) {
+			if (utype == OutputUpdate)
 				counter_map[eqstr] = cnts.value(eqstr);
-			LYXERR0(counter_map[eqstr]);}
 			for (size_t i = 0; i != label_.size(); ++i) {
 				if (numbered(i)) {
 					cnts.step(eqstr, utype);
