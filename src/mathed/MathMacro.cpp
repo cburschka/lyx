@@ -753,13 +753,23 @@ void MathMacro::maple(MapleStream & os) const
 
 void MathMacro::mathmlize(MathStream & os) const
 {
-	os << expanded_.cell(0);
+	MathData const & data = expanded_.cell(0);
+	if (data.empty()) {
+		// this means that we do not recognize the macro
+		throw MathExportException();
+	}
+	os << data;
 }
 
 
 void MathMacro::htmlize(HtmlStream & os) const
 {
-	os << expanded_.cell(0);
+	MathData const & data = expanded_.cell(0);
+	if (data.empty()) {
+		// this means that we do not recognize the macro
+		throw MathExportException();
+	}
+	os << data;
 }
 
 
