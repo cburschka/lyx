@@ -2145,7 +2145,7 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 	// but what follows is equivalent, since we'll enter only if either (a) we 
 	// tried and failed with MathML or HTML or (b) didn't try yet at all but
 	// aren't doing LaTeX, in which case we are doing Images.
-	if (!success && mathtype != BufferParams::LaTeX) {
+	if (!success && mathtype != BufferParams::LaTeX && !op.dryrun) {
 		loadPreview(docit_);
 		graphics::PreviewImage const * pimage = preview_->getPreviewImage(buffer());
 		if (pimage) {
