@@ -138,6 +138,15 @@ Inset * MathMacro::clone() const
 }
 
 
+void MathMacro::normalize(NormalStream & os) const
+{
+	os << "[macro " << name();
+	for (size_t i = 0; i < nargs(); ++i)
+		os << ' ' << cell(i);
+	os << ']';
+}
+
+
 docstring MathMacro::name() const
 {
 	if (displayMode_ == DISPLAY_UNFOLDED)
@@ -744,6 +753,8 @@ void MathMacro::maple(MapleStream & os) const
 
 void MathMacro::mathmlize(MathStream & os) const
 {
+	MathData const & data = expanded_.cell(0);
+	data.dump();
 	os << expanded_.cell(0);
 }
 
