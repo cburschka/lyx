@@ -4,9 +4,9 @@ TODO:
 
 
 These insets work but still need work:
-	InsetBibtex: There are a few issues here. 
-		- One is that the output is not very nice. This will be solved, though, by 
-			a patch of mine I seem to have forgotten to finish. 
+	InsetBibtex: There are a few issues here.
+		- One is that the output is not very nice. This will be solved, though, by
+			a patch of mine I seem to have forgotten to finish.
 		- Another issue concerns cross-references. At the moment, we simply use the
 			xref information for every entry, rather than listing the xref separately and
 			then referencing it. That should not be terribly hard, but it would take a bit
@@ -18,20 +18,20 @@ These insets work but still need work:
 	InsetFloatList: Seems to work well, but may need testing.
 	InsetGraphics: This works in a pretty primitive way, in that it outputs the graphic
 	  and appropriate img tag. But we don't yet do any sort of scaling, rotating, and
-		so forth. That won't be hard, since we can just call ImageMagick to do this for 
+		so forth. That won't be hard, since we can just call ImageMagick to do this for
 		us, but appropriate routines will need to be written.
-	InsetIndex and InsetPrintIndex: These work with limitations, as noted in the 
+	InsetIndex and InsetPrintIndex: These work with limitations, as noted in the
 		Additional Features manual.
 	InsetNomencl and InsetPrintNomencl: Do not work at all yet, but would be easy to do.
 		First, Nomencl would need to go to the TOC, which it should do anyway. Then just
 		do as for TOC and Index, more or less.
-	InsetTabular: Works reasonably well, but we don't do anything with any of the 
+	InsetTabular: Works reasonably well, but we don't do anything with any of the
 		arguments provided for longtable. There are probably other limitations, too,
 		since I'm very much not an expert with tables.
 
 
 Math
-  We have a fair bit of math now working via MathML output, but there are still some 
+  We have a fair bit of math now working via MathML output, but there are still some
   isues, and not all the insets work. Here are the ones I know still need work:
 	- Array: Should be able to use alignment information via appropriate attributes, for
 		mtable, mrow, and mtd.
@@ -41,7 +41,6 @@ Math
 		mean we always need to output <mtable>.
 	- Par?
 	- Phantom: There is some support for this in MathML....
-	- Ref: Needs to be deferred.
 	- Space: Needs checking.
 	- SpecialChar: Needs checking.
 	- Split: There are some alignment issues here, but it basically works.
@@ -53,13 +52,13 @@ Math
 Other math notes:
 	- AMSArray: Some of these should be handled via images. I need to investigate which.
 	- Hull:
-		-	Need to handle the equation hull type by outputting a counter. But that will 
-			have to wait for the counter patch. The counter probably goes with mlabeledtr, 
+		-	Need to handle the equation hull type by outputting a counter. But that will
+			have to wait for the counter patch. The counter probably goes with mlabeledtr,
 			which may mean we always need to output <mtable>.
 		- Similar issues about eqnarray.
 		- It's not clear if we need to do much about the other hull types.
 
 
 These insets do not work and are not yet scheduled to work:
-	InsetExternal: It may be that this won't be too hard, but I don't understand 
+	InsetExternal: It may be that this won't be too hard, but I don't understand
 		these so am not sure what to do. For now, it is disabled.
