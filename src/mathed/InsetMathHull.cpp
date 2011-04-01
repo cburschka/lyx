@@ -2145,19 +2145,26 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 	// but what follows is equivalent, since we'll enter only if either (a) we 
 	// tried and failed with MathML or HTML or (b) didn't try yet at all but
 	// aren't doing LaTeX, in which case we are doing Images.
-	if (!success && mathtype != BufferParams::LaTeX && !op.dryrun) {
-		loadPreview(docit_);
-		graphics::PreviewImage const * pimage = preview_->getPreviewImage(buffer());
-		if (pimage) {
+	if (!success && mathtype != BufferParams::LaTeX) {
+		graphics::PreviewImage const * pimage = 0;
+		if (!op.dryrun) {
+			loadPreview(docit_);
+			pimage = preview_->getPreviewImage(buffer());
 			// FIXME Do we always have png?
+		}
+
+		if (pimage || op.dryrun) {
+			string const filename = pimage ? pimage->filename().onlyFileName()
+			                               : "previewimage.png";
 			string const tag = (getType() == hullSimple) ? "span" : "div";
-			FileName const & mathimg = pimage->filename();
-			xs << html::StartTag(tag)
-			   << html::CompTag("img", "src=\"" + mathimg.onlyFileName() + "\"")
-			   << html::EndTag(tag)
-			   << html::CR();
-			// add the file to the list of files to be exported
-			op.exportdata->addExternalFile("xhtml", mathimg);
+			xs << html::CR()
+			   << html::StartTag(tag)
+				 << html::CompTag("img", "src=\"" + filename + "\"")
+				 << html::EndTag(tag)
+				 << html::CR();
+			if (pimage)
+				// add the file to the list of files to be exported
+				op.exportdata->addExternalFile("xhtml", pimage->filename());
 			success = true;
 		}
 	}
