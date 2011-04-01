@@ -128,15 +128,31 @@ void InsetMathSubstack::maple(MapleStream & os) const
 }
 
 
+void InsetMathSubstack::mathmlize(MathStream & os) const
+{
+	int movers = 0;
+	row_type const numrows = nrows();
+	for (row_type row = 0; row < nrows(); ++row) {
+		if (row < numrows - 1) {
+			movers ++;
+			os << MTag("munder");
+		}
+		os << MTag("mrow") << cell(index(row, 0)) << ETag("mrow");
+	}
+	for (int i = 1; i <= movers; ++i)
+		os << ETag("munder");
+}
+
+
 void InsetMathSubstack::htmlize(HtmlStream & os) const
 {
 	os << MTag("span", "class='substack'");
-	for (row_type row = 0; row < nrows(); ++row) 
+	for (row_type row = 0; row < nrows(); ++row)
 		os << MTag("span") << cell(index(row, 0)) << ETag("span");
 	os << ETag("span");
 }
 
-	
+
 void InsetMathSubstack::validate(LaTeXFeatures & features) const
 {
 	if (features.runparams().isLaTeX())
@@ -146,7 +162,7 @@ void InsetMathSubstack::validate(LaTeXFeatures & features) const
 			"span.substack{display: inline-block; vertical-align: middle; text-align:center; font-size: 75%;}\n"
 			"span.substack span{display: block;}\n"
 			"</style>");
-	
+
 	InsetMathGrid::validate(features);
 }
 

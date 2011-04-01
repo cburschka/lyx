@@ -39,6 +39,8 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
+	void mathmlize(MathStream &) const;
+	///
 	void htmlize(HtmlStream &) const;
 	///
 	void normalize(NormalStream &) const;

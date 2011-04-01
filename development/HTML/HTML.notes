@@ -44,8 +44,6 @@ Math
 	- Space: Needs checking.
 	- SpecialChar: Needs checking.
 	- Split: There are some alignment issues here, but it basically works.
-	- Substack: This is a stack of however many cells, all in a smaller style.
-		Probably do something with <mover>, again.
 	- Tabular: This is more or less a text-like table in math. Probably output it
 		as a table, but set the font.
 
