@@ -2888,8 +2888,10 @@ docstring Tabular::xhtmlRow(XHTMLStream & xs, row_type row,
 			attr << " colspan='" << columnSpan(cell) << "'";
 
 		xs << html::StartTag(celltag, attr.str());
+		xs.cr();
 		ret += cellInset(cell)->xhtml(xs, runparams);
 		xs << html::EndTag(celltag);
+		xs.cr();
 		++cell;
 	}
 	xs << html::EndTag("tr");
