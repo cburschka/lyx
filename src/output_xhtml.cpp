@@ -658,11 +658,11 @@ ParagraphList::const_iterator makeBibliography(Buffer const & buf,
 	// FIXME XHTML
 	// Use TextClass::htmlTOCLayout() to figure out how we should look.
 	xs << html::StartTag("h2", "class='bibliography'")
-	   << pbegin->layout().labelstring(false);
-	   << html::EndTag("h2");
-	xs << html::CR();
-	xs << html::StartTag("div", "class='bibliography'");
-	xs << html::CR();
+	   << pbegin->layout().labelstring(false)
+	   << html::EndTag("h2")
+	   << html::CR()
+	   << html::StartTag("div", "class='bibliography'")
+	   << html::CR();
 	makeParagraphs(buf, xs, runparams, text, pbegin, pend);
 	xs << html::EndTag("div");
 	return pend;
