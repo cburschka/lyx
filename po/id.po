@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-03-28 23:17+0200\n"
+"POT-Creation-Date: 2011-04-02 11:33+0200\n"
 "PO-Revision-Date: 2011-03-17 07:11+0730\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Indonesian <was.uthm@gmail.com>\n"
@@ -490,8 +490,8 @@ msgid "Remove the selected branch"
 msgstr "Hapus cabang yang sudah dipilih"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3793
-#: src/Buffer.cpp:3806
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3798
+#: src/Buffer.cpp:3811
 msgid "&Remove"
 msgstr "&Hapus"
 
@@ -525,7 +525,7 @@ msgstr "Tambahkan &Semua"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
-#: src/Buffer.cpp:2272 src/Buffer.cpp:3768 src/Buffer.cpp:3831
+#: src/Buffer.cpp:2272 src/Buffer.cpp:3773 src/Buffer.cpp:3836
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1799
@@ -717,7 +717,7 @@ msgstr "Warna huruf"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:148
 #: src/frontends/qt4/ui/LanguageUi.ui:19
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:22
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:28
 #: src/frontends/qt4/ui/ThesaurusUi.ui:22
 msgid "&Language:"
 msgstr "&Bahasa:"
@@ -1333,7 +1333,7 @@ msgstr "Mengganti kemudian mencari kata berikutnya [Enter]"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:129
 #: src/frontends/qt4/ui/SearchUi.ui:179
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:128
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:134
 #: src/frontends/qt4/ui/ThesaurusUi.ui:95
 msgid "&Replace"
 msgstr "&Ganti"
@@ -1349,7 +1349,7 @@ msgstr "Ganti semua kata sekaligus"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:155
 #: src/frontends/qt4/ui/SearchUi.ui:189
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:160
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:166
 msgid "Replace &All"
 msgstr "Ganti &Semua"
 
@@ -1877,8 +1877,8 @@ msgstr "Kode Input"
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1117
-#: src/insets/InsetInclude.cpp:1123
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1118
+#: src/insets/InsetInclude.cpp:1124
 msgid "Program Listing"
 msgstr "Pemrograman"
 
@@ -2121,7 +2121,7 @@ msgstr "Tulis parameter daftar disini"
 msgid "Feedback window"
 msgstr "Jendela informasi"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:344
+#: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:332
 #: src/insets/InsetListings.cpp:353 src/insets/InsetListings.cpp:355
 msgid "Listing"
 msgstr "Listing"
@@ -2584,7 +2584,7 @@ msgstr "&Yang tersedia:"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:100
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:187
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:211
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:217
 msgid "A&dd"
 msgstr "T&ambah"
 
@@ -2703,7 +2703,7 @@ msgstr "Format yang digunakan untuk hasil rumus matematika."
 msgid "MathML"
 msgstr "MathML"
 
-#: src/frontends/qt4/ui/OutputUi.ui:162 lib/configure.py:591
+#: src/frontends/qt4/ui/OutputUi.ui:162 lib/configure.py:593
 msgid "HTML"
 msgstr "HTML"
 
@@ -4438,66 +4438,66 @@ msgstr ""
 "Ketik cara pintas setelah klik kotak ini. Anda bisa menghapus dengan menekan "
 "butang 'Bersihkan'"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:14
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:20
 #: src/frontends/qt4/GuiSpellchecker.cpp:170
 #, fuzzy
 msgid "Spell Checker"
 msgstr "Koreksi ejaan"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:38
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:44
 msgid ""
 "The checked language. Switching this alters the language of the checked word."
 msgstr ""
 "Bahasa yang dipilih. Merubah ini berarti merubah bahasa kata yang sudah "
 "diperiksa."
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:54
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:60
 msgid "Unknown word:"
 msgstr "Kata tidak dikenal:"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:64
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:70
 msgid "Current word"
 msgstr "Kata sekarang ada di dokumen"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:77
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:125
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:157
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:83
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:131
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:163
 msgid "Replace word with current choice"
 msgstr "Ganti dengan kata pilihan yang sekarang"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:80
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:86
 msgid "&Find Next"
 msgstr "Berikutn&ya"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:87
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:93
 msgid "Re&placement:"
 msgstr "&Disarankan:"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:100
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:106
 msgid "Replace with selected word"
 msgstr "Ganti kata dengan kata pilihan lain"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:141
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:147
 msgid "S&uggestions:"
 msgstr "&Kata lain yang disarankan:"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:176
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:182
 msgid "Ignore this word"
 msgstr "Lupakan kata ini"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:179
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:185
 msgid "&Ignore"
 msgstr "&Lewat"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:192
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:198
 msgid "Ignore this word throughout this session"
 msgstr "Lupakan kata ini selama sesi penyuntingan"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:195
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:201
 msgid "I&gnore All"
 msgstr "Lewat &Semua"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:208
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:214
 msgid "Add the word to your personal dictionary"
 msgstr "Tambahkan kata baru dalam kamus pribadi"
 
@@ -6131,7 +6131,7 @@ msgstr "Afiliasi Lagi"
 
 #: lib/layouts/achemso.layout:110 lib/layouts/lettre.layout:41
 #: lib/layouts/lettre.layout:342 lib/layouts/scrlttr2.layout:191
-#: lib/configure.py:607
+#: lib/configure.py:609
 msgid "Fax"
 msgstr "Faks"
 
@@ -9522,7 +9522,7 @@ msgid "FirstName"
 msgstr "NamaDepan"
 
 #: lib/layouts/literate-scrap.inc:12 lib/layouts/noweb.module:11
-#: lib/layouts/sweave.module:48
+#: lib/layouts/sweave.module:49
 msgid "Scrap"
 msgstr "Sisa"
 
@@ -10114,7 +10114,7 @@ msgstr ""
 "LyX. Kode akan diproses untuk memberi keluaran. Silahkan lihat berkas contoh "
 "lilypond.lyx ."
 
-#: lib/layouts/lilypond.module:13 lib/external_templates:251
+#: lib/layouts/lilypond.module:14 lib/external_templates:251
 msgid "LilyPond"
 msgstr "LilyPond"
 
@@ -10254,8 +10254,8 @@ msgstr "Memungkinkan mengunakan Noweb sebagai piranti menulis kode program."
 msgid "literate"
 msgstr "literal"
 
-#: lib/layouts/sweave.module:2 lib/layouts/sweave.module:29
-#: lib/configure.py:539
+#: lib/layouts/sweave.module:2 lib/layouts/sweave.module:30
+#: lib/configure.py:541
 msgid "Sweave"
 msgstr "Sweave"
 
@@ -10267,19 +10267,19 @@ msgstr ""
 "Memungkinkan menggunakan  bahasa program statistika S/R sebagai alat "
 "pemrograman melalui paket Sweave. Lihat sweave.lyx yang ada di berkas contoh."
 
-#: lib/layouts/sweave.module:28
+#: lib/layouts/sweave.module:29
 msgid "Chunk"
 msgstr "Chunk"
 
-#: lib/layouts/sweave.module:53
+#: lib/layouts/sweave.module:54
 msgid "Sweave opts"
 msgstr "Sweave opts"
 
-#: lib/layouts/sweave.module:75
+#: lib/layouts/sweave.module:76
 msgid "S/R expr"
 msgstr "S/R expr"
 
-#: lib/layouts/sweave.module:97
+#: lib/layouts/sweave.module:98
 msgid "Sweave Input File"
 msgstr "Berkas Masukan Sweave"
 
@@ -11383,7 +11383,7 @@ msgstr "Referensi Tekstual"
 #: lib/ui/stdcontext.inc:499 lib/ui/stdcontext.inc:507
 #: lib/ui/stdcontext.inc:520 lib/ui/stdcontext.inc:530
 #: lib/ui/stdcontext.inc:551 lib/ui/stdcontext.inc:559
-#: lib/ui/stdcontext.inc:604 lib/ui/stdmenus.inc:506
+#: lib/ui/stdcontext.inc:605 lib/ui/stdmenus.inc:506
 msgid "Settings...|S"
 msgstr "Pengaturan...|a"
 
@@ -11949,7 +11949,7 @@ msgstr "Pindahkan SubBab Keatas|d"
 msgid "Select Section|S"
 msgstr "Pilih SubBab|S"
 
-#: lib/ui/stdcontext.inc:597
+#: lib/ui/stdcontext.inc:598
 msgid "Wrap by Preview|P"
 msgstr "Lipat menurut Pratampilan...|p"
 
@@ -12930,11 +12930,11 @@ msgstr "Cetak dokumen"
 msgid "Check spelling"
 msgstr "Periksa ejaan"
 
-#: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1313
+#: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1312
 msgid "Undo"
 msgstr "Batalkan"
 
-#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1323
+#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1322
 msgid "Redo"
 msgstr "Kembalikan"
 
@@ -15802,382 +15802,382 @@ msgstr "Dia: $$AbsOrRelPathParent$$Basename"
 msgid "Dia diagram.\n"
 msgstr "Diagram dari perangkat lunak Dia.\n"
 
-#: lib/configure.py:477
+#: lib/configure.py:479
 msgid "Tgif"
 msgstr "Tgif"
 
-#: lib/configure.py:480
+#: lib/configure.py:482
 msgid "FIG"
 msgstr "FIG"
 
-#: lib/configure.py:483
+#: lib/configure.py:485
 msgid "DIA"
 msgstr "DIA"
 
-#: lib/configure.py:486
+#: lib/configure.py:488
 msgid "Grace"
 msgstr "Grace"
 
-#: lib/configure.py:489
+#: lib/configure.py:491
 msgid "FEN"
 msgstr "FEN"
 
-#: lib/configure.py:492
+#: lib/configure.py:494
 msgid "SVG"
 msgstr "SVG"
 
-#: lib/configure.py:495 lib/configure.py:506 lib/configure.py:516
+#: lib/configure.py:497 lib/configure.py:508 lib/configure.py:518
 msgid "BMP"
 msgstr "BMP"
 
-#: lib/configure.py:496 lib/configure.py:507 lib/configure.py:517
+#: lib/configure.py:498 lib/configure.py:509 lib/configure.py:519
 msgid "GIF"
 msgstr "GIF"
 
-#: lib/configure.py:497 lib/configure.py:508 lib/configure.py:518
+#: lib/configure.py:499 lib/configure.py:510 lib/configure.py:520
 #: src/frontends/qt4/GuiClipboard.cpp:172
 msgid "JPEG"
 msgstr "JPEG"
 
-#: lib/configure.py:498 lib/configure.py:509 lib/configure.py:519
+#: lib/configure.py:500 lib/configure.py:511 lib/configure.py:521
 msgid "PBM"
 msgstr "PBM"
 
-#: lib/configure.py:499 lib/configure.py:510 lib/configure.py:520
+#: lib/configure.py:501 lib/configure.py:512 lib/configure.py:522
 msgid "PGM"
 msgstr "PGM"
 
-#: lib/configure.py:500 lib/configure.py:511 lib/configure.py:521
+#: lib/configure.py:502 lib/configure.py:513 lib/configure.py:523
 #: src/frontends/qt4/GuiClipboard.cpp:171
 msgid "PNG"
 msgstr "PNG"
 
-#: lib/configure.py:501 lib/configure.py:512 lib/configure.py:522
+#: lib/configure.py:503 lib/configure.py:514 lib/configure.py:524
 msgid "PPM"
 msgstr "PPM"
 
-#: lib/configure.py:502 lib/configure.py:513 lib/configure.py:523
+#: lib/configure.py:504 lib/configure.py:515 lib/configure.py:525
 msgid "TIFF"
 msgstr "TIFF"
 
-#: lib/configure.py:503 lib/configure.py:514 lib/configure.py:524
+#: lib/configure.py:505 lib/configure.py:516 lib/configure.py:526
 msgid "XBM"
 msgstr "XBM"
 
-#: lib/configure.py:504 lib/configure.py:515 lib/configure.py:525
+#: lib/configure.py:506 lib/configure.py:517 lib/configure.py:527
 msgid "XPM"
 msgstr "XPM"
 
-#: lib/configure.py:530
+#: lib/configure.py:532
 msgid "Plain text (chess output)"
 msgstr "Teks Plain (chess output)"
 
-#: lib/configure.py:531
+#: lib/configure.py:533
 msgid "Plain text (image)"
 msgstr "Teks Plain (image)"
 
-#: lib/configure.py:532
+#: lib/configure.py:534
 msgid "Plain text (Xfig output)"
 msgstr "Teks Plain (Xfig output)"
 
-#: lib/configure.py:533
+#: lib/configure.py:535
 msgid "date (output)"
 msgstr "Tanggal (output)"
 
-#: lib/configure.py:534 src/frontends/qt4/GuiErrorList.cpp:42
+#: lib/configure.py:536 src/frontends/qt4/GuiErrorList.cpp:42
 msgid "DocBook"
 msgstr "DocBook"
 
-#: lib/configure.py:534
+#: lib/configure.py:536
 msgid "DocBook|B"
 msgstr "DocBook|B"
 
-#: lib/configure.py:535
+#: lib/configure.py:537
 msgid "Docbook (XML)"
 msgstr "Docbook (XML)"
 
-#: lib/configure.py:536
+#: lib/configure.py:538
 msgid "Graphviz Dot"
 msgstr "Graphviz Dot"
 
-#: lib/configure.py:537
+#: lib/configure.py:539
 msgid "LaTeX (pLaTeX)"
 msgstr "LaTeX (pLaTeX)"
 
-#: lib/configure.py:538
+#: lib/configure.py:540
 msgid "NoWeb"
 msgstr "NoWeb"
 
-#: lib/configure.py:538
+#: lib/configure.py:540
 msgid "NoWeb|N"
 msgstr "NoWeb|N"
 
-#: lib/configure.py:539
+#: lib/configure.py:541
 msgid "Sweave|S"
 msgstr "Sweave|S"
 
-#: lib/configure.py:540
+#: lib/configure.py:542
 msgid "LilyPond music"
 msgstr "LilyPond musik"
 
-#: lib/configure.py:541
+#: lib/configure.py:543
 msgid "LilyPond book (LaTeX)"
 msgstr "LilyPond book (LaTeX)"
 
-#: lib/configure.py:542
+#: lib/configure.py:544
 msgid "LaTeX (plain)"
 msgstr "LaTeX (plain)"
 
-#: lib/configure.py:542
+#: lib/configure.py:544
 msgid "LaTeX (plain)|L"
 msgstr "LaTeX (plain)|L"
 
-#: lib/configure.py:543
+#: lib/configure.py:545
 msgid "LaTeX (LuaTeX)"
 msgstr "LaTeX (LuaTeX)"
 
-#: lib/configure.py:544
+#: lib/configure.py:546
 msgid "LaTeX (pdflatex)"
 msgstr "LaTeX (pdflatex)"
 
-#: lib/configure.py:545
+#: lib/configure.py:547
 msgid "LaTeX (XeTeX)"
 msgstr "LaTeX (XeTeX)"
 
-#: lib/configure.py:546
+#: lib/configure.py:548
 msgid "Plain text"
 msgstr "Plain text"
 
-#: lib/configure.py:546
+#: lib/configure.py:548
 msgid "Plain text|a"
 msgstr "Plain text|x"
 
-#: lib/configure.py:547
+#: lib/configure.py:549
 msgid "Plain text (pstotext)"
 msgstr "Plain text (pstotext)"
 
-#: lib/configure.py:548
+#: lib/configure.py:550
 msgid "Plain text (ps2ascii)"
 msgstr "Plain text (ps2ascii)"
 
-#: lib/configure.py:549
+#: lib/configure.py:551
 msgid "Plain text (catdvi)"
 msgstr "Plain text (catdvi)"
 
-#: lib/configure.py:550
+#: lib/configure.py:552
 msgid "Plain Text, Join Lines"
 msgstr "Plain Text, Join Lines"
 
-#: lib/configure.py:553
+#: lib/configure.py:555
 msgid "Gnumeric spreadsheet"
 msgstr "Lembarkerja Gnumeric"
 
-#: lib/configure.py:554
+#: lib/configure.py:556
 msgid "Excel spreadsheet"
 msgstr "Lembarkerja Excel"
 
-#: lib/configure.py:555
+#: lib/configure.py:557
 msgid "OpenOffice spreadsheet"
 msgstr "Lembarkerja OpenOffice"
 
-#: lib/configure.py:558 lib/configure.py:560
+#: lib/configure.py:560 lib/configure.py:562
 msgid "LyXHTML"
 msgstr "LyXHTML"
 
-#: lib/configure.py:558 lib/configure.py:560
+#: lib/configure.py:560 lib/configure.py:562
 msgid "LyXHTML|y"
 msgstr "LyXHTML|y"
 
-#: lib/configure.py:567 src/frontends/qt4/GuiLog.cpp:230
+#: lib/configure.py:569 src/frontends/qt4/GuiLog.cpp:230
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: lib/configure.py:572
+#: lib/configure.py:574
 msgid "EPS"
 msgstr "EPS"
 
-#: lib/configure.py:573
+#: lib/configure.py:575
 msgid "Postscript"
 msgstr "Postscript"
 
-#: lib/configure.py:573
+#: lib/configure.py:575
 msgid "Postscript|t"
 msgstr "Postscript|o"
 
-#: lib/configure.py:577
+#: lib/configure.py:579
 msgid "PDF (ps2pdf)"
 msgstr "PDF (ps2pdf)"
 
-#: lib/configure.py:577
+#: lib/configure.py:579
 msgid "PDF (ps2pdf)|P"
 msgstr "PDF (ps2pdf)"
 
-#: lib/configure.py:578
+#: lib/configure.py:580
 msgid "PDF (pdflatex)"
 msgstr "PDF (pdflatex)"
 
-#: lib/configure.py:578
+#: lib/configure.py:580
 msgid "PDF (pdflatex)|F"
 msgstr "PDF (pdflatex)|F"
 
-#: lib/configure.py:579
+#: lib/configure.py:581
 msgid "PDF (dvipdfm)"
 msgstr "PDF (dvipdfm)"
 
-#: lib/configure.py:579
+#: lib/configure.py:581
 msgid "PDF (dvipdfm)|m"
 msgstr "PDF (dvipdfm)|m"
 
-#: lib/configure.py:580
+#: lib/configure.py:582
 msgid "PDF (XeTeX)"
 msgstr "PDF (XeTeX)"
 
-#: lib/configure.py:580
+#: lib/configure.py:582
 msgid "PDF (XeTeX)|X"
 msgstr "PDF (XeTeX)|X"
 
-#: lib/configure.py:581
+#: lib/configure.py:583
 msgid "PDF (LuaTeX)"
 msgstr "PDF (LuaTeX)"
 
-#: lib/configure.py:581
+#: lib/configure.py:583
 msgid "PDF (LuaTeX)|u"
 msgstr "PDF (LuaTeX)|u"
 
-#: lib/configure.py:584
+#: lib/configure.py:586
 msgid "DVI"
 msgstr "DVI"
 
-#: lib/configure.py:584
+#: lib/configure.py:586
 msgid "DVI|D"
 msgstr "DVI"
 
-#: lib/configure.py:585
+#: lib/configure.py:587
 msgid "DVI (LuaTeX)"
 msgstr "DVI (LuaTeX)"
 
-#: lib/configure.py:585
+#: lib/configure.py:587
 msgid "DVI (LuaTeX)|V"
 msgstr "DVI (LuaTeX)|V"
 
-#: lib/configure.py:588
+#: lib/configure.py:590
 msgid "DraftDVI"
 msgstr "DraftDVI"
 
-#: lib/configure.py:591
+#: lib/configure.py:593
 msgid "HTML|H"
 msgstr "HTML|H"
 
-#: lib/configure.py:594
+#: lib/configure.py:596
 msgid "Noteedit"
 msgstr "Noteedit"
 
-#: lib/configure.py:597
+#: lib/configure.py:599
 msgid "OpenDocument"
 msgstr "OpenDocument"
 
-#: lib/configure.py:598
+#: lib/configure.py:600
 msgid "OpenOffice.Org (sxw)"
 msgstr "OpenOffice.Org (sxw)"
 
-#: lib/configure.py:601
+#: lib/configure.py:603
 msgid "Rich Text Format"
 msgstr "Rich Text Format"
 
-#: lib/configure.py:602
+#: lib/configure.py:604
 msgid "MS Word"
 msgstr "MS Word"
 
-#: lib/configure.py:602
+#: lib/configure.py:604
 msgid "MS Word|W"
 msgstr "MS Word|W"
 
-#: lib/configure.py:605
+#: lib/configure.py:607
 msgid "date command"
 msgstr "Perintah tanggal"
 
-#: lib/configure.py:606
+#: lib/configure.py:608
 msgid "Table (CSV)"
 msgstr "Tabel (CSV)"
 
-#: lib/configure.py:608 src/frontends/qt4/GuiView.cpp:1150
+#: lib/configure.py:610 src/frontends/qt4/GuiView.cpp:1150
 #: src/frontends/qt4/GuiView.cpp:1151 src/mathed/MathMacroTemplate.cpp:543
 msgid "LyX"
 msgstr "LyX"
 
-#: lib/configure.py:609
+#: lib/configure.py:611
 msgid "LyX 1.3.x"
 msgstr "LyX 1.3.x"
 
-#: lib/configure.py:610
+#: lib/configure.py:612
 msgid "LyX 1.4.x"
 msgstr "LyX 1.4.x"
 
-#: lib/configure.py:611
+#: lib/configure.py:613
 msgid "LyX 1.5.x"
 msgstr "LyX 1.5.x"
 
-#: lib/configure.py:612
+#: lib/configure.py:614
 msgid "LyX 1.6.x"
 msgstr "LyX 1.6.x"
 
-#: lib/configure.py:613
+#: lib/configure.py:615
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK LyX 1.4.x (big5)"
 
-#: lib/configure.py:614
+#: lib/configure.py:616
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr "CJK LyX 1.4.x (euc-jp)"
 
-#: lib/configure.py:615
+#: lib/configure.py:617
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr "CJK LyX 1.4.x (euc-kr)"
 
-#: lib/configure.py:616
+#: lib/configure.py:618
 msgid "LyX Preview"
 msgstr "Pra Tampilan LyX"
 
-#: lib/configure.py:617
+#: lib/configure.py:619
 msgid "LyX Preview (LilyPond book)"
 msgstr "Pra Tampilan LyX (LilyPond book)"
 
-#: lib/configure.py:618
+#: lib/configure.py:620
 msgid "LyX Preview (pLaTeX)"
 msgstr "Pra Tampilan LyX (pLaTeX)"
 
-#: lib/configure.py:619
+#: lib/configure.py:621
 msgid "PDFTEX"
 msgstr "PDFTEX"
 
-#: lib/configure.py:620
+#: lib/configure.py:622
 msgid "Program"
 msgstr "Program"
 
-#: lib/configure.py:621
+#: lib/configure.py:623
 msgid "PSTEX"
 msgstr "PSTEX"
 
-#: lib/configure.py:622 src/frontends/qt4/GuiClipboard.cpp:168
+#: lib/configure.py:624 src/frontends/qt4/GuiClipboard.cpp:168
 msgid "Windows Metafile"
 msgstr "Windows Metafile"
 
-#: lib/configure.py:623 src/frontends/qt4/GuiClipboard.cpp:167
+#: lib/configure.py:625 src/frontends/qt4/GuiClipboard.cpp:167
 msgid "Enhanced Metafile"
 msgstr "Enhanced Metafile"
 
-#: lib/configure.py:624
+#: lib/configure.py:626
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
-#: lib/configure.py:704
+#: lib/configure.py:708
 msgid "LyXBlogger"
 msgstr "LyXBlogger"
 
-#: lib/configure.py:905
+#: lib/configure.py:911
 msgid "LyX Archive (zip)"
 msgstr "Arsip LyX (zip)"
 
-#: lib/configure.py:908
+#: lib/configure.py:914
 msgid "LyX Archive (tar.gz)"
 msgstr "Arsip LyX (tar.gz)"
 
@@ -16275,12 +16275,12 @@ msgstr "\\begin_header tidak ada"
 msgid "\\begin_document is missing"
 msgstr "\\begin_document tidak ada"
 
-#: src/Buffer.cpp:773 src/Buffer.cpp:779 src/BufferView.cpp:1418
-#: src/BufferView.cpp:1424
+#: src/Buffer.cpp:773 src/Buffer.cpp:779 src/BufferView.cpp:1417
+#: src/BufferView.cpp:1423
 msgid "Changes not shown in LaTeX output"
 msgstr "Perubahan tidak dimunculkan di output LaTeX"
 
-#: src/Buffer.cpp:774 src/BufferView.cpp:1419
+#: src/Buffer.cpp:774 src/BufferView.cpp:1418
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -16292,7 +16292,7 @@ msgstr ""
 "Silahkan paket tersebut diinstal terlebih dahulu atau definisikan \\lyxadded "
 "dan \\lyxdeleted dalam LaTeX preamble."
 
-#: src/Buffer.cpp:780 src/BufferView.cpp:1425
+#: src/Buffer.cpp:780 src/BufferView.cpp:1424
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -16371,7 +16371,7 @@ msgid ""
 msgstr ""
 "%1$s dari versi LyX yang lebih baru, skrip lyx2lyx gagal untuk mengkonversi."
 
-#: src/Buffer.cpp:1025 src/Buffer.cpp:3778 src/Buffer.cpp:3840
+#: src/Buffer.cpp:1025 src/Buffer.cpp:3783 src/Buffer.cpp:3845
 msgid "File is read-only"
 msgstr "Dokumen hanya boleh dibaca"
 
@@ -16630,7 +16630,7 @@ msgstr "Dokumen yang diekspor dengan nama %1$s menjadi `%2$s'"
 msgid "Document exported as %1$s"
 msgstr "Dokumen diekspor dengan nama %1$s"
 
-#: src/Buffer.cpp:3764
+#: src/Buffer.cpp:3769
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -16641,19 +16641,19 @@ msgstr ""
 "\n"
 "Apakah akan memanggil kembali penyimpanan darurat?"
 
-#: src/Buffer.cpp:3767
+#: src/Buffer.cpp:3772
 msgid "Load emergency save?"
 msgstr "Apakah akan memuat penyimpanan darurat?"
 
-#: src/Buffer.cpp:3768
+#: src/Buffer.cpp:3773
 msgid "&Recover"
 msgstr "&Panggil Ulang"
 
-#: src/Buffer.cpp:3768
+#: src/Buffer.cpp:3773
 msgid "&Load Original"
 msgstr "&Muat Aslinya"
 
-#: src/Buffer.cpp:3779
+#: src/Buffer.cpp:3784
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -16662,15 +16662,15 @@ msgstr ""
 "Berkas darurat berhasil dimuat, tetapi berkas asli %1$s ditandai hanya bisa "
 "dibaca. Pastikan simpan dokumen dengan nama berbeda."
 
-#: src/Buffer.cpp:3785
+#: src/Buffer.cpp:3790
 msgid "Document was successfully recovered."
 msgstr "Dokumen berhasil diselamatkan."
 
-#: src/Buffer.cpp:3787
+#: src/Buffer.cpp:3792
 msgid "Document was NOT successfully recovered."
 msgstr "Dokumen TIDAK berhasil diselamatkan."
 
-#: src/Buffer.cpp:3788
+#: src/Buffer.cpp:3793
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -16679,27 +16679,27 @@ msgstr ""
 "Akan menghapus berkas darurat sekarang?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3792 src/Buffer.cpp:3804
+#: src/Buffer.cpp:3797 src/Buffer.cpp:3809
 msgid "Delete emergency file?"
 msgstr "Hapus berkas darurat?"
 
-#: src/Buffer.cpp:3793 src/Buffer.cpp:3806
+#: src/Buffer.cpp:3798 src/Buffer.cpp:3811
 msgid "&Keep"
 msgstr "Tetap"
 
-#: src/Buffer.cpp:3797
+#: src/Buffer.cpp:3802
 msgid "Emergency file deleted"
 msgstr "Berkas darurat sudah dihapus"
 
-#: src/Buffer.cpp:3798
+#: src/Buffer.cpp:3803
 msgid "Do not forget to save your file now!"
 msgstr "Jangan lupa menyimpan berkas sekarang juga!"
 
-#: src/Buffer.cpp:3805
+#: src/Buffer.cpp:3810
 msgid "Remove emergency file now?"
 msgstr "Akan menghapus berkas darurat?"
 
-#: src/Buffer.cpp:3828
+#: src/Buffer.cpp:3833
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -16710,19 +16710,19 @@ msgstr ""
 "\n"
 "Akan memuat backup?"
 
-#: src/Buffer.cpp:3830
+#: src/Buffer.cpp:3835
 msgid "Load backup?"
 msgstr "Memuat backup?"
 
-#: src/Buffer.cpp:3831
+#: src/Buffer.cpp:3836
 msgid "&Load backup"
 msgstr "&Muat backup"
 
-#: src/Buffer.cpp:3831
+#: src/Buffer.cpp:3836
 msgid "Load &original"
 msgstr "Muat &Aslinya"
 
-#: src/Buffer.cpp:3841
+#: src/Buffer.cpp:3846
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -16731,25 +16731,25 @@ msgstr ""
 "Berkas cadangan berhasil dimuat, tetapi berkas asli %1$s hanya bisa dibaca. "
 "Pastikan simpan dokumen dengan nama berbeda."
 
-#: src/Buffer.cpp:4178 src/insets/InsetCaption.cpp:338
+#: src/Buffer.cpp:4183 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "TidakDiijinkan!!! "
 
-#: src/Buffer.cpp:4299
+#: src/Buffer.cpp:4304
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokumen %1$s dimuat ulang."
 
-#: src/Buffer.cpp:4302
+#: src/Buffer.cpp:4307
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Tidak bisa memuat ulang dokumen %1$s"
 
-#: src/Buffer.cpp:4368
+#: src/Buffer.cpp:4373
 msgid "Included File Invalid"
 msgstr "Berkas Ikutan tidak valid"
 
-#: src/Buffer.cpp:4369
+#: src/Buffer.cpp:4374
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -16821,7 +16821,7 @@ msgstr ""
 "bawaan akan digunakan. LyX tidak bisa membuat\n"
 "keluaran yang diinginkan."
 
-#: src/BufferParams.cpp:1996 src/BufferView.cpp:1263 src/BufferView.cpp:1295
+#: src/BufferParams.cpp:1996 src/BufferView.cpp:1262 src/BufferView.cpp:1294
 msgid "Could not load class"
 msgstr "Tidak bisa memuat dokumen class"
 
@@ -16837,129 +16837,129 @@ msgstr "Kesalahan membaca"
 msgid "No more insets"
 msgstr "Tidak ada lagi sisipan"
 
-#: src/BufferView.cpp:729
+#: src/BufferView.cpp:728
 msgid "Save bookmark"
 msgstr "Simpan batas buku"
 
-#: src/BufferView.cpp:938
+#: src/BufferView.cpp:937
 msgid "Converting document to new document class..."
 msgstr "Mengkonversi dokumen ke kelas dokumen baru..."
 
-#: src/BufferView.cpp:981
+#: src/BufferView.cpp:980
 msgid "Document is read-only"
 msgstr "Dokumen hanya boleh dibaca"
 
-#: src/BufferView.cpp:990
+#: src/BufferView.cpp:989
 msgid "This portion of the document is deleted."
 msgstr "Bagian ini dari dokumen dihapus."
 
-#: src/BufferView.cpp:1261 src/BufferView.cpp:1293
+#: src/BufferView.cpp:1260 src/BufferView.cpp:1292
 #, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "Kelas dokumen '%1$s' tidak bisa dimuat."
 
-#: src/BufferView.cpp:1316
+#: src/BufferView.cpp:1315
 msgid "No further undo information"
 msgstr "Sudah tidak ada lagi informasi Batalkan"
 
-#: src/BufferView.cpp:1326
+#: src/BufferView.cpp:1325
 msgid "No further redo information"
 msgstr "Sudah tidak ada lagi informasi Kembalikan"
 
-#: src/BufferView.cpp:1513 src/lyxfind.cpp:374 src/lyxfind.cpp:392
+#: src/BufferView.cpp:1512 src/lyxfind.cpp:374 src/lyxfind.cpp:392
 msgid "String not found!"
 msgstr "String tidak ditemukan!"
 
-#: src/BufferView.cpp:1556
+#: src/BufferView.cpp:1555
 msgid "Mark off"
 msgstr "Tanda hilang"
 
-#: src/BufferView.cpp:1562
+#: src/BufferView.cpp:1561
 msgid "Mark on"
 msgstr "Tanda on"
 
-#: src/BufferView.cpp:1569
+#: src/BufferView.cpp:1568
 msgid "Mark removed"
 msgstr "Tanda dihilangkan"
 
-#: src/BufferView.cpp:1572
+#: src/BufferView.cpp:1571
 msgid "Mark set"
 msgstr "Beri Tanda"
 
-#: src/BufferView.cpp:1627
+#: src/BufferView.cpp:1626
 msgid "Statistics for the selection:"
 msgstr "Data statistik pilihan:"
 
-#: src/BufferView.cpp:1629
+#: src/BufferView.cpp:1628
 msgid "Statistics for the document:"
 msgstr "Data statistik dokumen:"
 
-#: src/BufferView.cpp:1632
+#: src/BufferView.cpp:1631
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d kata"
 
-#: src/BufferView.cpp:1634
+#: src/BufferView.cpp:1633
 msgid "One word"
 msgstr "Satu kata"
 
-#: src/BufferView.cpp:1637
+#: src/BufferView.cpp:1636
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d karakter (termasuk spasi)"
 
-#: src/BufferView.cpp:1640
+#: src/BufferView.cpp:1639
 msgid "One character (including blanks)"
 msgstr "Satu karakter (termasuk spasi)"
 
-#: src/BufferView.cpp:1643
+#: src/BufferView.cpp:1642
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d karakter (tidak termasuk spasi)"
 
-#: src/BufferView.cpp:1646
+#: src/BufferView.cpp:1645
 msgid "One character (excluding blanks)"
 msgstr "Satu karakter (tidak termasuk spasi)"
 
-#: src/BufferView.cpp:1648
+#: src/BufferView.cpp:1647
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/BufferView.cpp:1778
+#: src/BufferView.cpp:1777
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr "`inset-forall' dihentikan karena jumlah aksi lebih besar dari %1$d"
 
-#: src/BufferView.cpp:1780
+#: src/BufferView.cpp:1779
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "Terapkan sisipan \"%1$s\" ke %2$d"
 
-#: src/BufferView.cpp:1788
+#: src/BufferView.cpp:1787
 msgid "Branch name"
 msgstr "Cabang"
 
-#: src/BufferView.cpp:1795 src/frontends/qt4/GuiBranches.cpp:176
+#: src/BufferView.cpp:1794 src/frontends/qt4/GuiBranches.cpp:176
 msgid "Branch already exists"
 msgstr "Nama cabang sudah ada"
 
-#: src/BufferView.cpp:2554
+#: src/BufferView.cpp:2553
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Memasukkan dokumen %1$s..."
 
-#: src/BufferView.cpp:2565
+#: src/BufferView.cpp:2564
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumen %1$s dimasukkan."
 
-#: src/BufferView.cpp:2567
+#: src/BufferView.cpp:2566
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Tidak dapat memasukkan dokumen %1$s"
 
-#: src/BufferView.cpp:2832
+#: src/BufferView.cpp:2831
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -16970,11 +16970,11 @@ msgstr ""
 "%1$s\n"
 "karena kesalahan: %2$s"
 
-#: src/BufferView.cpp:2834
+#: src/BufferView.cpp:2833
 msgid "Could not read file"
 msgstr "Tidak dapat membaca berkas"
 
-#: src/BufferView.cpp:2841
+#: src/BufferView.cpp:2840
 #, c-format
 msgid ""
 "%1$s\n"
@@ -16983,15 +16983,15 @@ msgstr ""
 "%1$s\n"
 "tidak bisa dibaca."
 
-#: src/BufferView.cpp:2842 src/output.cpp:39
+#: src/BufferView.cpp:2841 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Tidak bisa membuka berkas"
 
-#: src/BufferView.cpp:2849
+#: src/BufferView.cpp:2848
 msgid "Reading not UTF-8 encoded file"
 msgstr "Membaca berkas not UTF-8 encoded"
 
-#: src/BufferView.cpp:2850
+#: src/BufferView.cpp:2849
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -17385,12 +17385,12 @@ msgstr "bingkai regexp"
 msgid "ignore"
 msgstr "lewati"
 
-#: src/Converter.cpp:322 src/Converter.cpp:477 src/Converter.cpp:500
-#: src/Converter.cpp:543
+#: src/Converter.cpp:326 src/Converter.cpp:484 src/Converter.cpp:507
+#: src/Converter.cpp:550
 msgid "Cannot convert file"
 msgstr "Tidak bisa mengkonversi berkas"
 
-#: src/Converter.cpp:323
+#: src/Converter.cpp:327
 #, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
@@ -17399,19 +17399,19 @@ msgstr ""
 "Tidak ada informasi untuk mengkonversi berkas %1$s ke %2$s.\n"
 "Definisikan pengkonversi yang diinginkan melalui preferensi."
 
-#: src/Converter.cpp:432 src/Format.cpp:319 src/Format.cpp:386
+#: src/Converter.cpp:439 src/Format.cpp:319 src/Format.cpp:386
 msgid "Executing command: "
 msgstr "Perintah Menjalankan: "
 
-#: src/Converter.cpp:472
+#: src/Converter.cpp:479
 msgid "Build errors"
 msgstr "Kesalahan Build"
 
-#: src/Converter.cpp:473
+#: src/Converter.cpp:480
 msgid "There were errors during the build process."
 msgstr "Ada beberapa kesalahan ketika prosess build."
 
-#: src/Converter.cpp:478
+#: src/Converter.cpp:485
 #, c-format
 msgid ""
 "An error occurred while running:\n"
@@ -17420,26 +17420,26 @@ msgstr ""
 "Ada kesalahan ketika menjalankan:\n"
 "%1$s"
 
-#: src/Converter.cpp:501
+#: src/Converter.cpp:508
 #, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr "Tidak bisa memindah direktori sementara dari  %1$s ke %2$s."
 
-#: src/Converter.cpp:545
+#: src/Converter.cpp:552
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Tidak dapat menyalin berkas sementara dari  %1$s ke %2$s."
 
-#: src/Converter.cpp:546
+#: src/Converter.cpp:553
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr "Tidak dapat memindah berkas sementara dari  %1$s ke %2$s."
 
-#: src/Converter.cpp:602
+#: src/Converter.cpp:609
 msgid "Running LaTeX..."
 msgstr "Menjalankan LaTeX..."
 
-#: src/Converter.cpp:620
+#: src/Converter.cpp:627
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
@@ -17448,15 +17448,15 @@ msgstr ""
 "LaTeX tidak berhasil dijalankan. Selain itu, LyX tidak bisa bisa menemukan "
 "LaTeX log %1$s."
 
-#: src/Converter.cpp:623
+#: src/Converter.cpp:630
 msgid "LaTeX failed"
 msgstr "LaTeX gagal"
 
-#: src/Converter.cpp:625
+#: src/Converter.cpp:632
 msgid "Output is empty"
 msgstr "Output kosong"
 
-#: src/Converter.cpp:626
+#: src/Converter.cpp:633
 msgid "An empty output file was generated."
 msgstr "Menghasilkan berkas output yang kosong"
 
@@ -17477,16 +17477,23 @@ msgstr "Cabang tidak dikenal"
 msgid "&Don't Add"
 msgstr "Jangan Tambahkan"
 
-#: src/CutAndPaste.cpp:677
-#, c-format
-msgid ""
-"Flex inset %1$s is undefined because of class conversion from\n"
-"%2$s to %3$s"
+#: src/CutAndPaste.cpp:683
+#, fuzzy, c-format
+msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
 msgstr ""
 "Sisipan flex  %1$s tidak terdefinisi karena konversi class dari\n"
 " %2$s to %3$s"
 
-#: src/CutAndPaste.cpp:684
+#: src/CutAndPaste.cpp:686
+#, fuzzy, c-format
+msgid ""
+"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
+"%3$s'."
+msgstr ""
+"Sisipan flex  %1$s tidak terdefinisi karena konversi class dari\n"
+" %2$s to %3$s"
+
+#: src/CutAndPaste.cpp:691
 msgid "Undefined flex inset"
 msgstr "Sisipan flex tidak terdefinisi"
 
@@ -17735,38 +17742,38 @@ msgstr "LyX: sedang konfigurasi ulang direktori pengguna"
 msgid "Done!"
 msgstr "Tuntas!"
 
-#: src/LyX.cpp:402
+#: src/LyX.cpp:401
 msgid "The following files could not be loaded:"
 msgstr "Berkas berikut tidak bisa dimuat:"
 
-#: src/LyX.cpp:439
+#: src/LyX.cpp:438
 #, c-format
 msgid "%1$s does not appear like a LyX created temporary directory."
 msgstr "%1$s bukan seperti berkas LyX yang dibuat di direktori sementara."
 
-#: src/LyX.cpp:441
+#: src/LyX.cpp:440
 msgid "Cannot remove temporary directory"
 msgstr "Tidak bisa menghapus direktori sementara"
 
-#: src/LyX.cpp:447
+#: src/LyX.cpp:446
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Tidak bisa menghapus direktori sementara  %1$s"
 
-#: src/LyX.cpp:449
+#: src/LyX.cpp:448
 msgid "Unable to remove temporary directory"
 msgstr "Tidak bisa menghapus direktori sementara"
 
-#: src/LyX.cpp:478
+#: src/LyX.cpp:477
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Salah perintah tambahan `%1$s'.. Keluar."
 
-#: src/LyX.cpp:552
+#: src/LyX.cpp:551
 msgid "No textclass is found"
 msgstr "Tidak ada class teks yang bisa ditemukan"
 
-#: src/LyX.cpp:553
+#: src/LyX.cpp:552
 msgid ""
 "LyX will only have minimal functionality because no textclasses have been "
 "found. You can either try to reconfigure LyX normally, try to reconfigure "
@@ -17776,19 +17783,19 @@ msgstr ""
 "lakukan konfigurasi ulang LyX secara normal, atau konfigurasi ulang tanpa "
 "melihat instalasi LaTeX atau meneruskan."
 
-#: src/LyX.cpp:557
+#: src/LyX.cpp:556
 msgid "&Reconfigure"
 msgstr "&Konfigurasi Ulang"
 
-#: src/LyX.cpp:558
+#: src/LyX.cpp:557
 msgid "&Without LaTeX"
 msgstr "Tanpa LaTeX"
 
-#: src/LyX.cpp:559 src/VCBackend.cpp:786 src/VCBackend.cpp:790
+#: src/LyX.cpp:558 src/VCBackend.cpp:786 src/VCBackend.cpp:790
 msgid "&Continue"
 msgstr "Lan&jutkan"
 
-#: src/LyX.cpp:662
+#: src/LyX.cpp:661
 msgid ""
 "SIGHUP signal caught!\n"
 "Bye."
@@ -17796,7 +17803,7 @@ msgstr ""
 "Sinyal SIGHUP tertangkap!\n"
 "Bye."
 
-#: src/LyX.cpp:666
+#: src/LyX.cpp:665
 msgid ""
 "SIGFPE signal caught!\n"
 "Bye."
@@ -17804,7 +17811,7 @@ msgstr ""
 "Sinyal SIGFPE tertangkap!\n"
 "Bye."
 
-#: src/LyX.cpp:669
+#: src/LyX.cpp:668
 msgid ""
 "SIGSEGV signal caught!\n"
 "Sorry, you have found a bug in LyX, hope you have not lost any data.\n"
@@ -17818,19 +17825,19 @@ msgstr ""
 "kirimkan pada kami, jika diperlukan. Terima kasih !\n"
 "Semoga berhasil."
 
-#: src/LyX.cpp:685
+#: src/LyX.cpp:684
 msgid "LyX crashed!"
 msgstr "LyX gagal!"
 
-#: src/LyX.cpp:719 src/frontends/qt4/GuiView.cpp:989
+#: src/LyX.cpp:718 src/frontends/qt4/GuiView.cpp:989
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:859
+#: src/LyX.cpp:858
 msgid "Could not create temporary directory"
 msgstr "Tidak bisa membuat direktori sementara"
 
-#: src/LyX.cpp:860
+#: src/LyX.cpp:859
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -17841,11 +17848,11 @@ msgstr ""
 "\"%1$s\"\n"
 "Pastikan lokasi folder ada dan boleh diakses, kemudian coba lagi."
 
-#: src/LyX.cpp:943
+#: src/LyX.cpp:942
 msgid "Missing user LyX directory"
 msgstr "Direktori pengguna LyX tidak ditemukan"
 
-#: src/LyX.cpp:944
+#: src/LyX.cpp:943
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -17854,37 +17861,37 @@ msgstr ""
 "Anda menggunakan direktori pengguna LyX yang tidak ada, %1$s.\n"
 "Anda perlu menggunakan konfigurasi anda sendiri."
 
-#: src/LyX.cpp:949
+#: src/LyX.cpp:948
 msgid "&Create directory"
 msgstr "Membuat &direktori"
 
-#: src/LyX.cpp:950
+#: src/LyX.cpp:949
 msgid "&Exit LyX"
 msgstr "K&eluar LyX"
 
-#: src/LyX.cpp:951
+#: src/LyX.cpp:950
 msgid "No user LyX directory. Exiting."
 msgstr "Tidak ada direktori pengguna LyX. Keluar."
 
-#: src/LyX.cpp:955
+#: src/LyX.cpp:954
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Membuat direktori %1$s"
 
-#: src/LyX.cpp:960
+#: src/LyX.cpp:959
 msgid "Failed to create directory. Exiting."
 msgstr "Gagal membuat direktori baru. Keluar."
 
-#: src/LyX.cpp:1033
+#: src/LyX.cpp:1032
 msgid "List of supported debug flags:"
 msgstr "Daftar debug flag yang tersedia:"
 
-#: src/LyX.cpp:1037
+#: src/LyX.cpp:1036
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Mengatur tingkatan debug ke  %1$s"
 
-#: src/LyX.cpp:1048
+#: src/LyX.cpp:1047
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -17955,40 +17962,40 @@ msgstr ""
 "\t-version        memberikan informasi versi dan build\n"
 "Silahkan lihat di manual LyX untuk informasi lebih detail."
 
-#: src/LyX.cpp:1100
+#: src/LyX.cpp:1099
 msgid "No system directory"
 msgstr "Direktori sistem tidak ada"
 
-#: src/LyX.cpp:1101
+#: src/LyX.cpp:1100
 msgid "Missing directory for -sysdir switch"
 msgstr "Direktori tidak ditemukan untuk  -sysdir switch"
 
-#: src/LyX.cpp:1112
+#: src/LyX.cpp:1111
 msgid "No user directory"
 msgstr "Tidak ada direktori pengguna"
 
-#: src/LyX.cpp:1113
+#: src/LyX.cpp:1112
 msgid "Missing directory for -userdir switch"
 msgstr "Direktori tidak ditemukan untuk - -userdir switch"
 
-#: src/LyX.cpp:1124
+#: src/LyX.cpp:1123
 msgid "Incomplete command"
 msgstr "Perintah tidak lengkap"
 
-#: src/LyX.cpp:1125
+#: src/LyX.cpp:1124
 msgid "Missing command string after --execute switch"
 msgstr "Perintah string tidak lengkap setelah  --execute switch"
 
-#: src/LyX.cpp:1136
+#: src/LyX.cpp:1135
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "Tipe berkas kurang lengkap [misal latex, ps...] setelah --export switch"
 
-#: src/LyX.cpp:1149
+#: src/LyX.cpp:1148
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Tipe berkas tidak lengkap [misal latex, ps...] setelah --import switch"
 
-#: src/LyX.cpp:1154
+#: src/LyX.cpp:1153
 msgid "Missing filename for --import"
 msgstr "Kurang menuliskan nama berkas untuk --import"
 
@@ -18786,15 +18793,15 @@ msgstr "Tataletak "
 msgid " not known"
 msgstr "tidak dikenal"
 
-#: src/Text3.cpp:1752 src/frontends/qt4/GuiApplication.cpp:1384
+#: src/Text3.cpp:1753 src/frontends/qt4/GuiApplication.cpp:1384
 msgid "Missing argument"
 msgstr "Argumen tidak lengkap"
 
-#: src/Text3.cpp:1901 src/Text3.cpp:1913
+#: src/Text3.cpp:1902 src/Text3.cpp:1914
 msgid "Character set"
 msgstr "Atur Karakter"
 
-#: src/Text3.cpp:2120 src/Text3.cpp:2131
+#: src/Text3.cpp:2121 src/Text3.cpp:2132
 msgid "Paragraph layout set"
 msgstr "Pengaturan tataletak paragraf"
 
@@ -20942,8 +20949,9 @@ msgid "User Interface"
 msgstr "Sistem Antarmuka"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2447
-msgid "Liber"
-msgstr ""
+#, fuzzy
+msgid "Classic"
+msgstr "Kelas|e"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2448
 msgid "Oxygen"
@@ -22357,7 +22365,7 @@ msgstr "Tidak Terdefinisi: "
 msgid "branch"
 msgstr "cabang"
 
-#: src/insets/InsetCaption.cpp:350
+#: src/insets/InsetCaption.cpp:338
 #, c-format
 msgid "Sub-%1$s"
 msgstr "Sub-%1$s"
@@ -22461,7 +22469,7 @@ msgstr "Daftar %1$s"
 msgid "footnote"
 msgstr "catatan kaki"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:672
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:673
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -22507,13 +22515,13 @@ msgstr "Verbatim Input*"
 msgid "Include (excluded)"
 msgstr "Ikutan (dipisahkan)"
 
-#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:772
-#: src/insets/InsetInclude.cpp:817
+#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:773
+#: src/insets/InsetInclude.cpp:818
 msgid "Recursive input"
 msgstr "Inpur rekursif"
 
-#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:773
-#: src/insets/InsetInclude.cpp:818
+#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:774
+#: src/insets/InsetInclude.cpp:819
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
@@ -22564,7 +22572,7 @@ msgstr ""
 msgid "Module not found"
 msgstr "Modul tidak ditemukan"
 
-#: src/insets/InsetInclude.cpp:629 src/insets/InsetInclude.cpp:650
+#: src/insets/InsetInclude.cpp:627 src/insets/InsetInclude.cpp:650
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
@@ -22573,15 +22581,15 @@ msgstr ""
 "Berkas ikutan `%1$s' tidak diekspor dengan baik.\n"
 "Peringatan: LaTeX ekspor mungkin tidak lengkap."
 
-#: src/insets/InsetInclude.cpp:638 src/insets/InsetInclude.cpp:658
+#: src/insets/InsetInclude.cpp:636 src/insets/InsetInclude.cpp:658
 msgid "Export failure"
 msgstr "Ekspor gagal"
 
-#: src/insets/InsetInclude.cpp:760
+#: src/insets/InsetInclude.cpp:761
 msgid "Unsupported Inclusion"
 msgstr "Ikutan tidak didukung"
 
-#: src/insets/InsetInclude.cpp:761
+#: src/insets/InsetInclude.cpp:762
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
@@ -22654,11 +22662,6 @@ msgstr "tidak"
 #: src/insets/InsetInfo.cpp:435
 msgid "No version control"
 msgstr "Tidak ada kontrol versi"
-
-#: src/insets/InsetInfo.cpp:451
-#, c-format
-msgid "%1$s unknown"
-msgstr "%1$s tidak diketahui"
 
 #: src/insets/InsetLabel.cpp:74
 msgid "Label names must be unique!"
@@ -23053,7 +23056,7 @@ msgstr "Spasi Horizontal Protected (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Tipe Daftar Isi tidak dikenal"
 
-#: src/insets/InsetTabular.cpp:4680
+#: src/insets/InsetTabular.cpp:4684
 msgid "Selection size should match clipboard content."
 msgstr "Ukuran pilihan harus sesuai dengan isi dari klipboard."
 
@@ -23215,7 +23218,7 @@ msgstr "Ditemukan yang sesuai!"
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1679
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1678
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -23256,11 +23259,11 @@ msgstr "Tidak ada garis vertikal yang dihapus"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Fitur tabular  '%1$s' tidak dikenal"
 
-#: src/mathed/InsetMathHull.cpp:1271
+#: src/mathed/InsetMathHull.cpp:1270
 msgid "Bad math environment"
 msgstr "Lingkungan matematika salah"
 
-#: src/mathed/InsetMathHull.cpp:1272
+#: src/mathed/InsetMathHull.cpp:1271
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
@@ -23268,25 +23271,25 @@ msgstr ""
 "Perhitungan tidak bisa dilakukan pada lingkungan matematika AMS.\n"
 "Ubah tipe rumus matematika dan coba lagi."
 
-#: src/mathed/InsetMathHull.cpp:1378 src/mathed/InsetMathHull.cpp:1387
+#: src/mathed/InsetMathHull.cpp:1377 src/mathed/InsetMathHull.cpp:1386
 msgid "No number"
 msgstr "Tanpa Nomor"
 
-#: src/mathed/InsetMathHull.cpp:1378 src/mathed/InsetMathHull.cpp:1387
+#: src/mathed/InsetMathHull.cpp:1377 src/mathed/InsetMathHull.cpp:1386
 msgid "Number"
 msgstr "Nomor"
 
-#: src/mathed/InsetMathHull.cpp:1652
+#: src/mathed/InsetMathHull.cpp:1651
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Tidak bisa merubah baris di '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1662
+#: src/mathed/InsetMathHull.cpp:1661
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Tidak bisa merubah kolom di '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1672
+#: src/mathed/InsetMathHull.cpp:1671
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Tidak bisa menambah garis grid horisontal di  '%1$s'"
@@ -23529,6 +23532,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Pemakai tidak dikenal"
+
+#~ msgid "%1$s unknown"
+#~ msgstr "%1$s tidak diketahui"
 
 #~ msgid "Layout|L"
 #~ msgstr "Tata Letak|L"

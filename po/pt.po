@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-03-28 23:17+0200\n"
+"POT-Creation-Date: 2011-04-02 11:33+0200\n"
 "PO-Revision-Date: 2010-11-18 05:48+0100\n"
 "Last-Translator: susana barbosa <sabarbosa@fc.ul.pt>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -495,8 +495,8 @@ msgid "Remove the selected branch"
 msgstr "Remover o ramo seleccionado"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3793
-#: src/Buffer.cpp:3806
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3798
+#: src/Buffer.cpp:3811
 msgid "&Remove"
 msgstr "&Remover"
 
@@ -535,7 +535,7 @@ msgstr ""
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
-#: src/Buffer.cpp:2272 src/Buffer.cpp:3768 src/Buffer.cpp:3831
+#: src/Buffer.cpp:2272 src/Buffer.cpp:3773 src/Buffer.cpp:3836
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1799
@@ -728,7 +728,7 @@ msgstr "Côr do tipo de letra"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:148
 #: src/frontends/qt4/ui/LanguageUi.ui:19
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:22
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:28
 #: src/frontends/qt4/ui/ThesaurusUi.ui:22
 msgid "&Language:"
 msgstr "&Lingua:"
@@ -1380,7 +1380,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:129
 #: src/frontends/qt4/ui/SearchUi.ui:179
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:128
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:134
 #: src/frontends/qt4/ui/ThesaurusUi.ui:95
 msgid "&Replace"
 msgstr "S&ubstituir"
@@ -1397,7 +1397,7 @@ msgstr "Substituir palavra por escolha actual"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:155
 #: src/frontends/qt4/ui/SearchUi.ui:189
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:160
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:166
 msgid "Replace &All"
 msgstr "Substituir T&udo"
 
@@ -1940,8 +1940,8 @@ msgstr "Entrada"
 msgid "Verbatim"
 msgstr "Palavra por palavra"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1117
-#: src/insets/InsetInclude.cpp:1123
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1118
+#: src/insets/InsetInclude.cpp:1124
 msgid "Program Listing"
 msgstr "Listagem de Programa"
 
@@ -2201,7 +2201,7 @@ msgstr "Nome de parâmetro de listagem inválido (vazio)."
 msgid "Feedback window"
 msgstr "Janela de feedback"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:344
+#: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:332
 #: src/insets/InsetListings.cpp:353 src/insets/InsetListings.cpp:355
 msgid "Listing"
 msgstr "Listagem"
@@ -2668,7 +2668,7 @@ msgstr "&Disponível:"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:100
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:187
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:211
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:217
 msgid "A&dd"
 msgstr "&Adicionar"
 
@@ -2794,7 +2794,7 @@ msgstr ""
 msgid "MathML"
 msgstr "Mat.|M"
 
-#: src/frontends/qt4/ui/OutputUi.ui:162 lib/configure.py:591
+#: src/frontends/qt4/ui/OutputUi.ui:162 lib/configure.py:593
 msgid "HTML"
 msgstr "HTML"
 
@@ -4585,67 +4585,67 @@ msgstr ""
 "Teclar atalho após clicar neste campo. Pode repôr o conteúdo com o botão "
 "'Limpar'"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:14
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:20
 #: src/frontends/qt4/GuiSpellchecker.cpp:170
 #, fuzzy
 msgid "Spell Checker"
 msgstr "Verificador ortográfico"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:38
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:44
 msgid ""
 "The checked language. Switching this alters the language of the checked word."
 msgstr ""
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:54
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:60
 msgid "Unknown word:"
 msgstr "Palavra desconhecida:"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:64
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:70
 msgid "Current word"
 msgstr "Palavra actual"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:77
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:125
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:157
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:83
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:131
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:163
 msgid "Replace word with current choice"
 msgstr "Substituir palavra por escolha actual"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:80
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:86
 #, fuzzy
 msgid "&Find Next"
 msgstr "Procurar &Próximo"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:87
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:93
 #, fuzzy
 msgid "Re&placement:"
 msgstr "Substituição:"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:100
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:106
 msgid "Replace with selected word"
 msgstr "Substituir por palavra seleccionada"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:141
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:147
 #, fuzzy
 msgid "S&uggestions:"
 msgstr "Sugestões:"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:176
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:182
 msgid "Ignore this word"
 msgstr "Ignorar esta palavra"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:179
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:185
 msgid "&Ignore"
 msgstr "&Ignorar"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:192
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:198
 msgid "Ignore this word throughout this session"
 msgstr "Ignorar esta palavra ao longo da sessão"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:195
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:201
 msgid "I&gnore All"
 msgstr "&Ignorar tudo"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:208
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:214
 msgid "Add the word to your personal dictionary"
 msgstr "Adicionar a palavra ao dicionário pessoal"
 
@@ -6330,7 +6330,7 @@ msgstr "AfiliaçãoAlternativa"
 
 #: lib/layouts/achemso.layout:110 lib/layouts/lettre.layout:41
 #: lib/layouts/lettre.layout:342 lib/layouts/scrlttr2.layout:191
-#: lib/configure.py:607
+#: lib/configure.py:609
 msgid "Fax"
 msgstr "Fax"
 
@@ -9816,7 +9816,7 @@ msgid "FirstName"
 msgstr "PrimeiroNome"
 
 #: lib/layouts/literate-scrap.inc:12 lib/layouts/noweb.module:11
-#: lib/layouts/sweave.module:48
+#: lib/layouts/sweave.module:49
 msgid "Scrap"
 msgstr "Lixo"
 
@@ -10412,7 +10412,7 @@ msgid ""
 "be processed in the output. See the lilypond.lyx example file."
 msgstr ""
 
-#: lib/layouts/lilypond.module:13 lib/external_templates:251
+#: lib/layouts/lilypond.module:14 lib/external_templates:251
 msgid "LilyPond"
 msgstr "LilyPond"
 
@@ -10558,8 +10558,8 @@ msgstr ""
 msgid "literate"
 msgstr "Literal"
 
-#: lib/layouts/sweave.module:2 lib/layouts/sweave.module:29
-#: lib/configure.py:539
+#: lib/layouts/sweave.module:2 lib/layouts/sweave.module:30
+#: lib/configure.py:541
 #, fuzzy
 msgid "Sweave"
 msgstr "&Guardar"
@@ -10570,21 +10570,21 @@ msgid ""
 "via Sweave package. See sweave.lyx in examples."
 msgstr ""
 
-#: lib/layouts/sweave.module:28
+#: lib/layouts/sweave.module:29
 msgid "Chunk"
 msgstr ""
 
-#: lib/layouts/sweave.module:53
+#: lib/layouts/sweave.module:54
 #, fuzzy
 msgid "Sweave opts"
 msgstr "Fontes de écran"
 
-#: lib/layouts/sweave.module:75
+#: lib/layouts/sweave.module:76
 #, fuzzy
 msgid "S/R expr"
 msgstr "expr."
 
-#: lib/layouts/sweave.module:97
+#: lib/layouts/sweave.module:98
 msgid "Sweave Input File"
 msgstr ""
 
@@ -11695,7 +11695,7 @@ msgstr "Próxima Referência-cruzada|P"
 #: lib/ui/stdcontext.inc:499 lib/ui/stdcontext.inc:507
 #: lib/ui/stdcontext.inc:520 lib/ui/stdcontext.inc:530
 #: lib/ui/stdcontext.inc:551 lib/ui/stdcontext.inc:559
-#: lib/ui/stdcontext.inc:604 lib/ui/stdmenus.inc:506
+#: lib/ui/stdcontext.inc:605 lib/ui/stdmenus.inc:506
 msgid "Settings...|S"
 msgstr "Configurações...|C"
 
@@ -12307,7 +12307,7 @@ msgstr "Mover Secção para Baixo|B"
 msgid "Select Section|S"
 msgstr "Selecção|S"
 
-#: lib/ui/stdcontext.inc:597
+#: lib/ui/stdcontext.inc:598
 #, fuzzy
 msgid "Wrap by Preview|P"
 msgstr "Pré-visualização LyX"
@@ -13319,11 +13319,11 @@ msgstr "Imprimir documento"
 msgid "Check spelling"
 msgstr "Verificar ortografia"
 
-#: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1313
+#: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1312
 msgid "Undo"
 msgstr "Desfazer"
 
-#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1323
+#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1322
 msgid "Redo"
 msgstr "Refazer"
 
@@ -16218,390 +16218,390 @@ msgstr "Bitmap: $$AbsOrRelPathParent$$Basename"
 msgid "Dia diagram.\n"
 msgstr ""
 
-#: lib/configure.py:477
+#: lib/configure.py:479
 msgid "Tgif"
 msgstr "Tgif"
 
-#: lib/configure.py:480
+#: lib/configure.py:482
 msgid "FIG"
 msgstr "FIG"
 
-#: lib/configure.py:483
+#: lib/configure.py:485
 msgid "DIA"
 msgstr "DIA"
 
-#: lib/configure.py:486
+#: lib/configure.py:488
 msgid "Grace"
 msgstr "Grace"
 
-#: lib/configure.py:489
+#: lib/configure.py:491
 msgid "FEN"
 msgstr "FEN"
 
-#: lib/configure.py:492
+#: lib/configure.py:494
 msgid "SVG"
 msgstr "SVG"
 
-#: lib/configure.py:495 lib/configure.py:506 lib/configure.py:516
+#: lib/configure.py:497 lib/configure.py:508 lib/configure.py:518
 msgid "BMP"
 msgstr "BMP"
 
-#: lib/configure.py:496 lib/configure.py:507 lib/configure.py:517
+#: lib/configure.py:498 lib/configure.py:509 lib/configure.py:519
 msgid "GIF"
 msgstr "GIF"
 
-#: lib/configure.py:497 lib/configure.py:508 lib/configure.py:518
+#: lib/configure.py:499 lib/configure.py:510 lib/configure.py:520
 #: src/frontends/qt4/GuiClipboard.cpp:172
 msgid "JPEG"
 msgstr "JPEG"
 
-#: lib/configure.py:498 lib/configure.py:509 lib/configure.py:519
+#: lib/configure.py:500 lib/configure.py:511 lib/configure.py:521
 msgid "PBM"
 msgstr "PBM"
 
-#: lib/configure.py:499 lib/configure.py:510 lib/configure.py:520
+#: lib/configure.py:501 lib/configure.py:512 lib/configure.py:522
 msgid "PGM"
 msgstr "PGM"
 
-#: lib/configure.py:500 lib/configure.py:511 lib/configure.py:521
+#: lib/configure.py:502 lib/configure.py:513 lib/configure.py:523
 #: src/frontends/qt4/GuiClipboard.cpp:171
 msgid "PNG"
 msgstr "PNG"
 
-#: lib/configure.py:501 lib/configure.py:512 lib/configure.py:522
+#: lib/configure.py:503 lib/configure.py:514 lib/configure.py:524
 msgid "PPM"
 msgstr "PPM"
 
-#: lib/configure.py:502 lib/configure.py:513 lib/configure.py:523
+#: lib/configure.py:504 lib/configure.py:515 lib/configure.py:525
 msgid "TIFF"
 msgstr "TIFF"
 
-#: lib/configure.py:503 lib/configure.py:514 lib/configure.py:524
+#: lib/configure.py:505 lib/configure.py:516 lib/configure.py:526
 msgid "XBM"
 msgstr "XBM"
 
-#: lib/configure.py:504 lib/configure.py:515 lib/configure.py:525
+#: lib/configure.py:506 lib/configure.py:517 lib/configure.py:527
 msgid "XPM"
 msgstr "XPM"
 
-#: lib/configure.py:530
+#: lib/configure.py:532
 msgid "Plain text (chess output)"
 msgstr "Texto simples (resultado xadrêz)"
 
-#: lib/configure.py:531
+#: lib/configure.py:533
 msgid "Plain text (image)"
 msgstr "Texto simples (imagem)"
 
-#: lib/configure.py:532
+#: lib/configure.py:534
 msgid "Plain text (Xfig output)"
 msgstr "Texto simples (resultado Xfig)"
 
-#: lib/configure.py:533
+#: lib/configure.py:535
 msgid "date (output)"
 msgstr "data (resultado)"
 
-#: lib/configure.py:534 src/frontends/qt4/GuiErrorList.cpp:42
+#: lib/configure.py:536 src/frontends/qt4/GuiErrorList.cpp:42
 msgid "DocBook"
 msgstr "DocBook"
 
-#: lib/configure.py:534
+#: lib/configure.py:536
 msgid "DocBook|B"
 msgstr "DocBook|B"
 
-#: lib/configure.py:535
+#: lib/configure.py:537
 msgid "Docbook (XML)"
 msgstr "Docbook (XML)"
 
-#: lib/configure.py:536
+#: lib/configure.py:538
 msgid "Graphviz Dot"
 msgstr "Graphviz Dot"
 
-#: lib/configure.py:537
+#: lib/configure.py:539
 msgid "LaTeX (pLaTeX)"
 msgstr "LaTeX (pLaTeX)"
 
-#: lib/configure.py:538
+#: lib/configure.py:540
 msgid "NoWeb"
 msgstr "NoWeb"
 
-#: lib/configure.py:538
+#: lib/configure.py:540
 msgid "NoWeb|N"
 msgstr "NoWeb|N"
 
-#: lib/configure.py:539
+#: lib/configure.py:541
 msgid "Sweave|S"
 msgstr "Sweave|S"
 
-#: lib/configure.py:540
+#: lib/configure.py:542
 #, fuzzy
 msgid "LilyPond music"
 msgstr "LilyPond"
 
-#: lib/configure.py:541
+#: lib/configure.py:543
 msgid "LilyPond book (LaTeX)"
 msgstr ""
 
-#: lib/configure.py:542
+#: lib/configure.py:544
 msgid "LaTeX (plain)"
 msgstr "LaTeX (simples)"
 
-#: lib/configure.py:542
+#: lib/configure.py:544
 msgid "LaTeX (plain)|L"
 msgstr "LaTeX (simples)|L"
 
-#: lib/configure.py:543
+#: lib/configure.py:545
 #, fuzzy
 msgid "LaTeX (LuaTeX)"
 msgstr "LaTeX (pLaTeX)"
 
-#: lib/configure.py:544
+#: lib/configure.py:546
 msgid "LaTeX (pdflatex)"
 msgstr "LaTeX (pdflatex)"
 
-#: lib/configure.py:545
+#: lib/configure.py:547
 msgid "LaTeX (XeTeX)"
 msgstr "LaTeX (XeTeX)"
 
-#: lib/configure.py:546
+#: lib/configure.py:548
 msgid "Plain text"
 msgstr "Texto simples"
 
-#: lib/configure.py:546
+#: lib/configure.py:548
 msgid "Plain text|a"
 msgstr "Texto simples|s"
 
-#: lib/configure.py:547
+#: lib/configure.py:549
 msgid "Plain text (pstotext)"
 msgstr "Texto simples (pstotext)"
 
-#: lib/configure.py:548
+#: lib/configure.py:550
 msgid "Plain text (ps2ascii)"
 msgstr "Texto simples (ps2ascii)"
 
-#: lib/configure.py:549
+#: lib/configure.py:551
 msgid "Plain text (catdvi)"
 msgstr "Texto simples (catdvi)"
 
-#: lib/configure.py:550
+#: lib/configure.py:552
 msgid "Plain Text, Join Lines"
 msgstr "Texto simples, Juntar Linhas"
 
-#: lib/configure.py:553
+#: lib/configure.py:555
 msgid "Gnumeric spreadsheet"
 msgstr ""
 
-#: lib/configure.py:554
+#: lib/configure.py:556
 msgid "Excel spreadsheet"
 msgstr ""
 
-#: lib/configure.py:555
+#: lib/configure.py:557
 msgid "OpenOffice spreadsheet"
 msgstr ""
 
-#: lib/configure.py:558 lib/configure.py:560
+#: lib/configure.py:560 lib/configure.py:562
 msgid "LyXHTML"
 msgstr "LyXHTML"
 
-#: lib/configure.py:558 lib/configure.py:560
+#: lib/configure.py:560 lib/configure.py:562
 #, fuzzy
 msgid "LyXHTML|y"
 msgstr "LyXHTML|X"
 
-#: lib/configure.py:567 src/frontends/qt4/GuiLog.cpp:230
+#: lib/configure.py:569 src/frontends/qt4/GuiLog.cpp:230
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: lib/configure.py:572
+#: lib/configure.py:574
 msgid "EPS"
 msgstr "EPS"
 
-#: lib/configure.py:573
+#: lib/configure.py:575
 msgid "Postscript"
 msgstr "Postscript"
 
-#: lib/configure.py:573
+#: lib/configure.py:575
 msgid "Postscript|t"
 msgstr "Postscript|t"
 
-#: lib/configure.py:577
+#: lib/configure.py:579
 msgid "PDF (ps2pdf)"
 msgstr "PDF (ps2pdf)"
 
-#: lib/configure.py:577
+#: lib/configure.py:579
 msgid "PDF (ps2pdf)|P"
 msgstr "PDF (ps2pdf)|P"
 
-#: lib/configure.py:578
+#: lib/configure.py:580
 msgid "PDF (pdflatex)"
 msgstr "PDF (pdflatex)"
 
-#: lib/configure.py:578
+#: lib/configure.py:580
 msgid "PDF (pdflatex)|F"
 msgstr "PDF (pdflatex)|F"
 
-#: lib/configure.py:579
+#: lib/configure.py:581
 msgid "PDF (dvipdfm)"
 msgstr "PDF (dvipdfm)"
 
-#: lib/configure.py:579
+#: lib/configure.py:581
 msgid "PDF (dvipdfm)|m"
 msgstr "PDF (dvipdfm)|m"
 
-#: lib/configure.py:580
+#: lib/configure.py:582
 msgid "PDF (XeTeX)"
 msgstr "PDF (XeTeX)"
 
-#: lib/configure.py:580
+#: lib/configure.py:582
 msgid "PDF (XeTeX)|X"
 msgstr "PDF (XeTeX)|X"
 
-#: lib/configure.py:581
+#: lib/configure.py:583
 #, fuzzy
 msgid "PDF (LuaTeX)"
 msgstr "PDF (XeTeX)"
 
-#: lib/configure.py:581
+#: lib/configure.py:583
 #, fuzzy
 msgid "PDF (LuaTeX)|u"
 msgstr "PDF (XeTeX)|X"
 
-#: lib/configure.py:584
+#: lib/configure.py:586
 msgid "DVI"
 msgstr "DVI"
 
-#: lib/configure.py:584
+#: lib/configure.py:586
 msgid "DVI|D"
 msgstr "DVI|D"
 
-#: lib/configure.py:585
+#: lib/configure.py:587
 #, fuzzy
 msgid "DVI (LuaTeX)"
 msgstr "LaTeX (pLaTeX)"
 
-#: lib/configure.py:585
+#: lib/configure.py:587
 #, fuzzy
 msgid "DVI (LuaTeX)|V"
 msgstr "LaTeX (pLaTeX)"
 
-#: lib/configure.py:588
+#: lib/configure.py:590
 msgid "DraftDVI"
 msgstr "DraftDVI"
 
-#: lib/configure.py:591
+#: lib/configure.py:593
 msgid "HTML|H"
 msgstr "HTML|H"
 
-#: lib/configure.py:594
+#: lib/configure.py:596
 msgid "Noteedit"
 msgstr "Noteedit"
 
-#: lib/configure.py:597
+#: lib/configure.py:599
 msgid "OpenDocument"
 msgstr "OpenDocument"
 
-#: lib/configure.py:598
+#: lib/configure.py:600
 msgid "OpenOffice.Org (sxw)"
 msgstr "OpenOffice.Org (sxw)"
 
-#: lib/configure.py:601
+#: lib/configure.py:603
 msgid "Rich Text Format"
 msgstr "Formato Rich Text"
 
-#: lib/configure.py:602
+#: lib/configure.py:604
 msgid "MS Word"
 msgstr "MS Word"
 
-#: lib/configure.py:602
+#: lib/configure.py:604
 msgid "MS Word|W"
 msgstr "MS Word|W"
 
-#: lib/configure.py:605
+#: lib/configure.py:607
 msgid "date command"
 msgstr "comando data"
 
-#: lib/configure.py:606
+#: lib/configure.py:608
 msgid "Table (CSV)"
 msgstr "Tabela (CSV)"
 
-#: lib/configure.py:608 src/frontends/qt4/GuiView.cpp:1150
+#: lib/configure.py:610 src/frontends/qt4/GuiView.cpp:1150
 #: src/frontends/qt4/GuiView.cpp:1151 src/mathed/MathMacroTemplate.cpp:543
 msgid "LyX"
 msgstr "LyX"
 
-#: lib/configure.py:609
+#: lib/configure.py:611
 msgid "LyX 1.3.x"
 msgstr "LyX 1.3.x"
 
-#: lib/configure.py:610
+#: lib/configure.py:612
 msgid "LyX 1.4.x"
 msgstr "LyX 1.4.x"
 
-#: lib/configure.py:611
+#: lib/configure.py:613
 msgid "LyX 1.5.x"
 msgstr "LyX 1.5.x"
 
-#: lib/configure.py:612
+#: lib/configure.py:614
 msgid "LyX 1.6.x"
 msgstr "LyX 1.6.x"
 
-#: lib/configure.py:613
+#: lib/configure.py:615
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK LyX 1.4.x (big5)"
 
-#: lib/configure.py:614
+#: lib/configure.py:616
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr "CJK LyX 1.4.x (euc-jp)"
 
-#: lib/configure.py:615
+#: lib/configure.py:617
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr "CJK LyX 1.4.x (euc-kr)"
 
-#: lib/configure.py:616
+#: lib/configure.py:618
 msgid "LyX Preview"
 msgstr "Pré-visualização LyX"
 
-#: lib/configure.py:617
+#: lib/configure.py:619
 #, fuzzy
 msgid "LyX Preview (LilyPond book)"
 msgstr "Pré-visualização Lyx (pLaTeX)"
 
-#: lib/configure.py:618
+#: lib/configure.py:620
 msgid "LyX Preview (pLaTeX)"
 msgstr "Pré-visualização Lyx (pLaTeX)"
 
-#: lib/configure.py:619
+#: lib/configure.py:621
 msgid "PDFTEX"
 msgstr "PDFTEX"
 
-#: lib/configure.py:620
+#: lib/configure.py:622
 msgid "Program"
 msgstr "Programa"
 
-#: lib/configure.py:621
+#: lib/configure.py:623
 msgid "PSTEX"
 msgstr "PSTEX"
 
-#: lib/configure.py:622 src/frontends/qt4/GuiClipboard.cpp:168
+#: lib/configure.py:624 src/frontends/qt4/GuiClipboard.cpp:168
 msgid "Windows Metafile"
 msgstr "Windows Metafile"
 
-#: lib/configure.py:623 src/frontends/qt4/GuiClipboard.cpp:167
+#: lib/configure.py:625 src/frontends/qt4/GuiClipboard.cpp:167
 msgid "Enhanced Metafile"
 msgstr "Enhanced Metafile"
 
-#: lib/configure.py:624
+#: lib/configure.py:626
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
-#: lib/configure.py:704
+#: lib/configure.py:708
 msgid "LyXBlogger"
 msgstr ""
 
-#: lib/configure.py:905
+#: lib/configure.py:911
 msgid "LyX Archive (zip)"
 msgstr ""
 
-#: lib/configure.py:908
+#: lib/configure.py:914
 msgid "LyX Archive (tar.gz)"
 msgstr ""
 
@@ -16703,12 +16703,12 @@ msgstr "\\begin_header em falta"
 msgid "\\begin_document is missing"
 msgstr "\\begin_document em falta"
 
-#: src/Buffer.cpp:773 src/Buffer.cpp:779 src/BufferView.cpp:1418
-#: src/BufferView.cpp:1424
+#: src/Buffer.cpp:773 src/Buffer.cpp:779 src/BufferView.cpp:1417
+#: src/BufferView.cpp:1423
 msgid "Changes not shown in LaTeX output"
 msgstr "Modificações não mostradas no resultado LaTeX"
 
-#: src/Buffer.cpp:774 src/BufferView.cpp:1419
+#: src/Buffer.cpp:774 src/BufferView.cpp:1418
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -16720,7 +16720,7 @@ msgstr ""
 "Por favor instalar estes pacotes ou redifinir \\lyxadded e \\lyxdeleted no "
 "preâmbulo LaTeX."
 
-#: src/Buffer.cpp:780 src/BufferView.cpp:1425
+#: src/Buffer.cpp:780 src/BufferView.cpp:1424
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -16802,7 +16802,7 @@ msgstr ""
 "%1$s é de uma versão do LyX diferente, mas o programa lyx2lyx falhou ao "
 "convertê-lo."
 
-#: src/Buffer.cpp:1025 src/Buffer.cpp:3778 src/Buffer.cpp:3840
+#: src/Buffer.cpp:1025 src/Buffer.cpp:3783 src/Buffer.cpp:3845
 #, fuzzy
 msgid "File is read-only"
 msgstr "O documento é apenas de leitura"
@@ -17063,7 +17063,7 @@ msgstr "Documento exportado como  %1$s para o ficheiro `%2$s'"
 msgid "Document exported as %1$s"
 msgstr "Documento exportado como %1$s"
 
-#: src/Buffer.cpp:3764
+#: src/Buffer.cpp:3769
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17074,64 +17074,64 @@ msgstr ""
 "\n"
 "Recuperar cópia de emergência?"
 
-#: src/Buffer.cpp:3767
+#: src/Buffer.cpp:3772
 msgid "Load emergency save?"
 msgstr "Carregar cópia de emergência?"
 
-#: src/Buffer.cpp:3768
+#: src/Buffer.cpp:3773
 msgid "&Recover"
 msgstr "&Recuperar"
 
-#: src/Buffer.cpp:3768
+#: src/Buffer.cpp:3773
 msgid "&Load Original"
 msgstr "&Carregar Original"
 
-#: src/Buffer.cpp:3779
+#: src/Buffer.cpp:3784
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:3785
+#: src/Buffer.cpp:3790
 msgid "Document was successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:3787
+#: src/Buffer.cpp:3792
 msgid "Document was NOT successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:3788
+#: src/Buffer.cpp:3793
 #, fuzzy, c-format
 msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
 msgstr "Carregar cópia de emergência?"
 
-#: src/Buffer.cpp:3792 src/Buffer.cpp:3804
+#: src/Buffer.cpp:3797 src/Buffer.cpp:3809
 #, fuzzy
 msgid "Delete emergency file?"
 msgstr "Selecionar ficheiro externo"
 
-#: src/Buffer.cpp:3793 src/Buffer.cpp:3806
+#: src/Buffer.cpp:3798 src/Buffer.cpp:3811
 #, fuzzy
 msgid "&Keep"
 msgstr "Manter"
 
-#: src/Buffer.cpp:3797
+#: src/Buffer.cpp:3802
 msgid "Emergency file deleted"
 msgstr ""
 
-#: src/Buffer.cpp:3798
+#: src/Buffer.cpp:3803
 msgid "Do not forget to save your file now!"
 msgstr ""
 
-#: src/Buffer.cpp:3805
+#: src/Buffer.cpp:3810
 #, fuzzy
 msgid "Remove emergency file now?"
 msgstr "Carregar cópia de emergência?"
 
-#: src/Buffer.cpp:3828
+#: src/Buffer.cpp:3833
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17142,45 +17142,45 @@ msgstr ""
 "\n"
 "Carregar antes a cópia de segurança?"
 
-#: src/Buffer.cpp:3830
+#: src/Buffer.cpp:3835
 msgid "Load backup?"
 msgstr "Carregar cópia de segurança?"
 
-#: src/Buffer.cpp:3831
+#: src/Buffer.cpp:3836
 msgid "&Load backup"
 msgstr "&Carregar cópia de segurança"
 
-#: src/Buffer.cpp:3831
+#: src/Buffer.cpp:3836
 msgid "Load &original"
 msgstr "Carregar &original"
 
-#: src/Buffer.cpp:3841
+#: src/Buffer.cpp:3846
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:4178 src/insets/InsetCaption.cpp:338
+#: src/Buffer.cpp:4183 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Sem sentido!!! "
 
-#: src/Buffer.cpp:4299
+#: src/Buffer.cpp:4304
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Documento %1$s recarregado."
 
-#: src/Buffer.cpp:4302
+#: src/Buffer.cpp:4307
 #, fuzzy, c-format
 msgid "Could not reload document %1$s."
 msgstr "Não é possível recarregar o documento %1$s"
 
-#: src/Buffer.cpp:4368
+#: src/Buffer.cpp:4373
 #, fuzzy
 msgid "Included File Invalid"
 msgstr "Incluir Ficheiro...|c"
 
-#: src/Buffer.cpp:4369
+#: src/Buffer.cpp:4374
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17238,7 +17238,7 @@ msgstr ""
 "de produzir o resultado a menos que uma classetexto correcta seja "
 "seleccionada da janela de configurações do documento."
 
-#: src/BufferParams.cpp:1996 src/BufferView.cpp:1263 src/BufferView.cpp:1295
+#: src/BufferParams.cpp:1996 src/BufferView.cpp:1262 src/BufferView.cpp:1294
 msgid "Could not load class"
 msgstr "Não é possível carregar classe"
 
@@ -17254,130 +17254,130 @@ msgstr "Erro de Leitura"
 msgid "No more insets"
 msgstr "Não mais insertos"
 
-#: src/BufferView.cpp:729
+#: src/BufferView.cpp:728
 msgid "Save bookmark"
 msgstr "Guardar favorito"
 
-#: src/BufferView.cpp:938
+#: src/BufferView.cpp:937
 msgid "Converting document to new document class..."
 msgstr "A converter o documento para a nova classe de documento..."
 
-#: src/BufferView.cpp:981
+#: src/BufferView.cpp:980
 msgid "Document is read-only"
 msgstr "O documento é apenas de leitura"
 
-#: src/BufferView.cpp:990
+#: src/BufferView.cpp:989
 msgid "This portion of the document is deleted."
 msgstr "Esta parte do documento é apagada."
 
-#: src/BufferView.cpp:1261 src/BufferView.cpp:1293
+#: src/BufferView.cpp:1260 src/BufferView.cpp:1292
 #, fuzzy, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "A classe de documento %1$s não pôde ser carregada."
 
-#: src/BufferView.cpp:1316
+#: src/BufferView.cpp:1315
 msgid "No further undo information"
 msgstr "Não existe mais infomação para anulação"
 
-#: src/BufferView.cpp:1326
+#: src/BufferView.cpp:1325
 msgid "No further redo information"
 msgstr "Não existe mais informação para refazer"
 
-#: src/BufferView.cpp:1513 src/lyxfind.cpp:374 src/lyxfind.cpp:392
+#: src/BufferView.cpp:1512 src/lyxfind.cpp:374 src/lyxfind.cpp:392
 msgid "String not found!"
 msgstr "Cadeia alfanumérica não encontrada!"
 
-#: src/BufferView.cpp:1556
+#: src/BufferView.cpp:1555
 msgid "Mark off"
 msgstr "Marca fora"
 
-#: src/BufferView.cpp:1562
+#: src/BufferView.cpp:1561
 msgid "Mark on"
 msgstr "Marca dentro"
 
-#: src/BufferView.cpp:1569
+#: src/BufferView.cpp:1568
 msgid "Mark removed"
 msgstr "Marca removida"
 
-#: src/BufferView.cpp:1572
+#: src/BufferView.cpp:1571
 msgid "Mark set"
 msgstr "Marca definida"
 
-#: src/BufferView.cpp:1627
+#: src/BufferView.cpp:1626
 msgid "Statistics for the selection:"
 msgstr "Estatísticas para a selecção:"
 
-#: src/BufferView.cpp:1629
+#: src/BufferView.cpp:1628
 msgid "Statistics for the document:"
 msgstr "Estatísticas para o documento:"
 
-#: src/BufferView.cpp:1632
+#: src/BufferView.cpp:1631
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d palavras"
 
-#: src/BufferView.cpp:1634
+#: src/BufferView.cpp:1633
 msgid "One word"
 msgstr "Uma palavra"
 
-#: src/BufferView.cpp:1637
+#: src/BufferView.cpp:1636
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d caracteres (incluindo espaços)"
 
-#: src/BufferView.cpp:1640
+#: src/BufferView.cpp:1639
 msgid "One character (including blanks)"
 msgstr "Um caracter (incluindo espaços)"
 
-#: src/BufferView.cpp:1643
+#: src/BufferView.cpp:1642
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d  caracteres (excluindo espaços)"
 
-#: src/BufferView.cpp:1646
+#: src/BufferView.cpp:1645
 msgid "One character (excluding blanks)"
 msgstr "Um caracter (excluindo espaços)"
 
-#: src/BufferView.cpp:1648
+#: src/BufferView.cpp:1647
 msgid "Statistics"
 msgstr "Estatísticas"
 
-#: src/BufferView.cpp:1778
+#: src/BufferView.cpp:1777
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
 
-#: src/BufferView.cpp:1780
+#: src/BufferView.cpp:1779
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr ""
 
-#: src/BufferView.cpp:1788
+#: src/BufferView.cpp:1787
 #, fuzzy
 msgid "Branch name"
 msgstr "Ramos"
 
-#: src/BufferView.cpp:1795 src/frontends/qt4/GuiBranches.cpp:176
+#: src/BufferView.cpp:1794 src/frontends/qt4/GuiBranches.cpp:176
 msgid "Branch already exists"
 msgstr ""
 
-#: src/BufferView.cpp:2554
+#: src/BufferView.cpp:2553
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "A inserir documento %1$s..."
 
-#: src/BufferView.cpp:2565
+#: src/BufferView.cpp:2564
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Documento %1$s inserido."
 
-#: src/BufferView.cpp:2567
+#: src/BufferView.cpp:2566
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Não é possível inserir documento %1$s"
 
-#: src/BufferView.cpp:2832
+#: src/BufferView.cpp:2831
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17388,11 +17388,11 @@ msgstr ""
 "%1$s\n"
 "devido ao erro: %2$s"
 
-#: src/BufferView.cpp:2834
+#: src/BufferView.cpp:2833
 msgid "Could not read file"
 msgstr "Não foi possível ler ficheiro"
 
-#: src/BufferView.cpp:2841
+#: src/BufferView.cpp:2840
 #, c-format
 msgid ""
 "%1$s\n"
@@ -17401,15 +17401,15 @@ msgstr ""
 "%1$s\n"
 "não é legível."
 
-#: src/BufferView.cpp:2842 src/output.cpp:39
+#: src/BufferView.cpp:2841 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Não foi possível abrir ficheiro"
 
-#: src/BufferView.cpp:2849
+#: src/BufferView.cpp:2848
 msgid "Reading not UTF-8 encoded file"
 msgstr "A ler ficheiro sem codificação UTF-8"
 
-#: src/BufferView.cpp:2850
+#: src/BufferView.cpp:2849
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -17802,12 +17802,12 @@ msgstr "moldura de inserto"
 msgid "ignore"
 msgstr "ignorar"
 
-#: src/Converter.cpp:322 src/Converter.cpp:477 src/Converter.cpp:500
-#: src/Converter.cpp:543
+#: src/Converter.cpp:326 src/Converter.cpp:484 src/Converter.cpp:507
+#: src/Converter.cpp:550
 msgid "Cannot convert file"
 msgstr "Não é possível converter ficheiro"
 
-#: src/Converter.cpp:323
+#: src/Converter.cpp:327
 #, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
@@ -17816,45 +17816,45 @@ msgstr ""
 "Não há informação para converter ficheiros de formato  %1$s para %2$s.\n"
 "Definir um conversor nas preferências."
 
-#: src/Converter.cpp:432 src/Format.cpp:319 src/Format.cpp:386
+#: src/Converter.cpp:439 src/Format.cpp:319 src/Format.cpp:386
 msgid "Executing command: "
 msgstr "A executar comando:"
 
-#: src/Converter.cpp:472
+#: src/Converter.cpp:479
 msgid "Build errors"
 msgstr "Erros de compilação"
 
-#: src/Converter.cpp:473
+#: src/Converter.cpp:480
 msgid "There were errors during the build process."
 msgstr "Ocorreram erros durante o processo de compilação."
 
-#: src/Converter.cpp:478
+#: src/Converter.cpp:485
 #, fuzzy, c-format
 msgid ""
 "An error occurred while running:\n"
 "%1$s"
 msgstr "Ocorreu um erro enquanto corria %1$s"
 
-#: src/Converter.cpp:501
+#: src/Converter.cpp:508
 #, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr "Não é possível mover uma pasta temporária de %1$s para %2$s."
 
-#: src/Converter.cpp:545
+#: src/Converter.cpp:552
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Não é possível copiar um ficheiro temporário de %1$s para %2$s."
 
-#: src/Converter.cpp:546
+#: src/Converter.cpp:553
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr "Não é possível mover um ficheiro temporário de %1$s para %2$s."
 
-#: src/Converter.cpp:602
+#: src/Converter.cpp:609
 msgid "Running LaTeX..."
 msgstr "A executar LaTeX..."
 
-#: src/Converter.cpp:620
+#: src/Converter.cpp:627
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
@@ -17863,15 +17863,15 @@ msgstr ""
 "O LaTeX não correu com sucesso. Para mais, o LyX não consegue localizar o "
 "registo LaTeX %1$s."
 
-#: src/Converter.cpp:623
+#: src/Converter.cpp:630
 msgid "LaTeX failed"
 msgstr "O LaTeX falhou"
 
-#: src/Converter.cpp:625
+#: src/Converter.cpp:632
 msgid "Output is empty"
 msgstr "Resultado é vazio"
 
-#: src/Converter.cpp:626
+#: src/Converter.cpp:633
 msgid "An empty output file was generated."
 msgstr "Foi gerado um ficheiro de saída vazio."
 
@@ -17894,16 +17894,23 @@ msgstr "Função desconhecida"
 msgid "&Don't Add"
 msgstr ""
 
-#: src/CutAndPaste.cpp:677
-#, c-format
-msgid ""
-"Flex inset %1$s is undefined because of class conversion from\n"
-"%2$s to %3$s"
+#: src/CutAndPaste.cpp:683
+#, fuzzy, c-format
+msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
 msgstr ""
 "Inserto flex  %1$s não está definido devido *a conversão de classe de\n"
 "%2$s para %3$s"
 
-#: src/CutAndPaste.cpp:684
+#: src/CutAndPaste.cpp:686
+#, fuzzy, c-format
+msgid ""
+"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
+"%3$s'."
+msgstr ""
+"Inserto flex  %1$s não está definido devido *a conversão de classe de\n"
+"%2$s para %3$s"
+
+#: src/CutAndPaste.cpp:691
 msgid "Undefined flex inset"
 msgstr "Inserto flex não definido"
 
@@ -18153,39 +18160,39 @@ msgstr "LyX: a reconfigurar pasta do utilizador"
 msgid "Done!"
 msgstr "Pronto!"
 
-#: src/LyX.cpp:402
+#: src/LyX.cpp:401
 #, fuzzy
 msgid "The following files could not be loaded:"
 msgstr "A classe de documento %1$s não pôde ser carregada."
 
-#: src/LyX.cpp:439
+#: src/LyX.cpp:438
 #, c-format
 msgid "%1$s does not appear like a LyX created temporary directory."
 msgstr "%1$s não parece uma pasta temporária criada pelo LyX."
 
-#: src/LyX.cpp:441
+#: src/LyX.cpp:440
 msgid "Cannot remove temporary directory"
 msgstr "Não é possível remover pasta temporária"
 
-#: src/LyX.cpp:447
+#: src/LyX.cpp:446
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Não é possível remover a pasta temporária %1$s"
 
-#: src/LyX.cpp:449
+#: src/LyX.cpp:448
 msgid "Unable to remove temporary directory"
 msgstr "Não é possível remover pasta temporária"
 
-#: src/LyX.cpp:478
+#: src/LyX.cpp:477
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Opção de linha de comando `%1$s' errada. A sair."
 
-#: src/LyX.cpp:552
+#: src/LyX.cpp:551
 msgid "No textclass is found"
 msgstr "Nenhuma classetexto foi encontrada"
 
-#: src/LyX.cpp:553
+#: src/LyX.cpp:552
 #, fuzzy
 msgid ""
 "LyX will only have minimal functionality because no textclasses have been "
@@ -18196,33 +18203,33 @@ msgstr ""
 "reconfigurar normalmente, ou reconfigurar usando classestexto pré-definidas, "
 "ou sair do LyX."
 
-#: src/LyX.cpp:557
+#: src/LyX.cpp:556
 msgid "&Reconfigure"
 msgstr "&Reconfigurar"
 
-#: src/LyX.cpp:558
+#: src/LyX.cpp:557
 #, fuzzy
 msgid "&Without LaTeX"
 msgstr "LaTeX"
 
-#: src/LyX.cpp:559 src/VCBackend.cpp:786 src/VCBackend.cpp:790
+#: src/LyX.cpp:558 src/VCBackend.cpp:786 src/VCBackend.cpp:790
 #, fuzzy
 msgid "&Continue"
 msgstr "Continuação"
 
-#: src/LyX.cpp:662
+#: src/LyX.cpp:661
 msgid ""
 "SIGHUP signal caught!\n"
 "Bye."
 msgstr ""
 
-#: src/LyX.cpp:666
+#: src/LyX.cpp:665
 msgid ""
 "SIGFPE signal caught!\n"
 "Bye."
 msgstr ""
 
-#: src/LyX.cpp:669
+#: src/LyX.cpp:668
 msgid ""
 "SIGSEGV signal caught!\n"
 "Sorry, you have found a bug in LyX, hope you have not lost any data.\n"
@@ -18231,19 +18238,19 @@ msgid ""
 "Bye."
 msgstr ""
 
-#: src/LyX.cpp:685
+#: src/LyX.cpp:684
 msgid "LyX crashed!"
 msgstr ""
 
-#: src/LyX.cpp:719 src/frontends/qt4/GuiView.cpp:989
+#: src/LyX.cpp:718 src/frontends/qt4/GuiView.cpp:989
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:859
+#: src/LyX.cpp:858
 msgid "Could not create temporary directory"
 msgstr "Não foi possível criar pasta temporária"
 
-#: src/LyX.cpp:860
+#: src/LyX.cpp:859
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -18255,11 +18262,11 @@ msgstr ""
 "Certifique-se de que este caminho (path) existe e é escrevível e tente "
 "novamente."
 
-#: src/LyX.cpp:943
+#: src/LyX.cpp:942
 msgid "Missing user LyX directory"
 msgstr "Pasta do utilizador Lyx em falta"
 
-#: src/LyX.cpp:944
+#: src/LyX.cpp:943
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -18268,37 +18275,37 @@ msgstr ""
 "Especificou uma pasta de utilizador LyX inexistente, %1$s.\n"
 "É necessária para manter a sua própria configuração."
 
-#: src/LyX.cpp:949
+#: src/LyX.cpp:948
 msgid "&Create directory"
 msgstr "&Criar pasta"
 
-#: src/LyX.cpp:950
+#: src/LyX.cpp:949
 msgid "&Exit LyX"
 msgstr "&Sair do LyX"
 
-#: src/LyX.cpp:951
+#: src/LyX.cpp:950
 msgid "No user LyX directory. Exiting."
 msgstr "Pasta de utilizador LyX inexistente. A sair."
 
-#: src/LyX.cpp:955
+#: src/LyX.cpp:954
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: A criar pasta %1$s"
 
-#: src/LyX.cpp:960
+#: src/LyX.cpp:959
 msgid "Failed to create directory. Exiting."
 msgstr "A criação de pasta falhou. A sair."
 
-#: src/LyX.cpp:1033
+#: src/LyX.cpp:1032
 msgid "List of supported debug flags:"
 msgstr "Lista de avisos de compilação suportados:"
 
-#: src/LyX.cpp:1037
+#: src/LyX.cpp:1036
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "A fixar nível de compilação em %1$s"
 
-#: src/LyX.cpp:1048
+#: src/LyX.cpp:1047
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -18359,39 +18366,39 @@ msgstr ""
 "\t-version        versão e informação de compilação\n"
 "Verificar a páginal man do LyX para mais detalhes."
 
-#: src/LyX.cpp:1100
+#: src/LyX.cpp:1099
 msgid "No system directory"
 msgstr "Sem pasta de sistema"
 
-#: src/LyX.cpp:1101
+#: src/LyX.cpp:1100
 msgid "Missing directory for -sysdir switch"
 msgstr "Pasta em falta para a opção -sysdir "
 
-#: src/LyX.cpp:1112
+#: src/LyX.cpp:1111
 msgid "No user directory"
 msgstr "Sem pasta de utilizador"
 
-#: src/LyX.cpp:1113
+#: src/LyX.cpp:1112
 msgid "Missing directory for -userdir switch"
 msgstr "Pasta em falta para a opção -userdir "
 
-#: src/LyX.cpp:1124
+#: src/LyX.cpp:1123
 msgid "Incomplete command"
 msgstr "Comando incompleto"
 
-#: src/LyX.cpp:1125
+#: src/LyX.cpp:1124
 msgid "Missing command string after --execute switch"
 msgstr "Cadeia alfa-numérica de comando em falta após opção --execute"
 
-#: src/LyX.cpp:1136
+#: src/LyX.cpp:1135
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Tipo de ficheiro em falta [ex latex, ps...] após opção --export"
 
-#: src/LyX.cpp:1149
+#: src/LyX.cpp:1148
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Tipo de ficheiro em falta [ex latex, ps...] após opção --import"
 
-#: src/LyX.cpp:1154
+#: src/LyX.cpp:1153
 msgid "Missing filename for --import"
 msgstr "Nome de ficheiro em falta para --import"
 
@@ -19198,15 +19205,15 @@ msgstr "Layout"
 msgid " not known"
 msgstr " desconhecido"
 
-#: src/Text3.cpp:1752 src/frontends/qt4/GuiApplication.cpp:1384
+#: src/Text3.cpp:1753 src/frontends/qt4/GuiApplication.cpp:1384
 msgid "Missing argument"
 msgstr "Argumento em falta"
 
-#: src/Text3.cpp:1901 src/Text3.cpp:1913
+#: src/Text3.cpp:1902 src/Text3.cpp:1914
 msgid "Character set"
 msgstr "Conjunto de caracteres"
 
-#: src/Text3.cpp:2120 src/Text3.cpp:2131
+#: src/Text3.cpp:2121 src/Text3.cpp:2132
 msgid "Paragraph layout set"
 msgstr "Conjunto disposição de parágrafo"
 
@@ -21371,8 +21378,9 @@ msgid "User Interface"
 msgstr "Interface do utilizador"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2447
-msgid "Liber"
-msgstr ""
+#, fuzzy
+msgid "Classic"
+msgstr "Fechar|c"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2448
 msgid "Oxygen"
@@ -22819,7 +22827,7 @@ msgstr " Indef:"
 msgid "branch"
 msgstr "ramo"
 
-#: src/insets/InsetCaption.cpp:350
+#: src/insets/InsetCaption.cpp:338
 #, c-format
 msgid "Sub-%1$s"
 msgstr "Sub-%1$s"
@@ -22925,7 +22933,7 @@ msgstr "Lista de %1$s"
 msgid "footnote"
 msgstr "nota de rodapé"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:672
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:673
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -22973,13 +22981,13 @@ msgstr "Entrada palavra por palavra*"
 msgid "Include (excluded)"
 msgstr "Incluir ficheiro"
 
-#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:772
-#: src/insets/InsetInclude.cpp:817
+#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:773
+#: src/insets/InsetInclude.cpp:818
 msgid "Recursive input"
 msgstr "Entrada recursiva"
 
-#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:773
-#: src/insets/InsetInclude.cpp:818
+#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:774
+#: src/insets/InsetInclude.cpp:819
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "Tentativa de incluir ficheiro %1$s em si próprio! Ignorar inclusão."
@@ -23029,23 +23037,23 @@ msgstr ""
 msgid "Module not found"
 msgstr "Módulo não encontrado"
 
-#: src/insets/InsetInclude.cpp:629 src/insets/InsetInclude.cpp:650
+#: src/insets/InsetInclude.cpp:627 src/insets/InsetInclude.cpp:650
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:638 src/insets/InsetInclude.cpp:658
+#: src/insets/InsetInclude.cpp:636 src/insets/InsetInclude.cpp:658
 #, fuzzy
 msgid "Export failure"
 msgstr "Falha na cópia de segurança"
 
-#: src/insets/InsetInclude.cpp:760
+#: src/insets/InsetInclude.cpp:761
 msgid "Unsupported Inclusion"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:761
+#: src/insets/InsetInclude.cpp:762
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
@@ -23121,11 +23129,6 @@ msgstr "não"
 #, fuzzy
 msgid "No version control"
 msgstr " (controlo de versão)"
-
-#: src/insets/InsetInfo.cpp:451
-#, fuzzy, c-format
-msgid "%1$s unknown"
-msgstr "%1$s comando desconhecido!"
 
 #: src/insets/InsetLabel.cpp:74
 msgid "Label names must be unique!"
@@ -23533,7 +23536,7 @@ msgstr "Espaço Horizontal Protegido (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Tipo de Índice desconhecido"
 
-#: src/insets/InsetTabular.cpp:4680
+#: src/insets/InsetTabular.cpp:4684
 msgid "Selection size should match clipboard content."
 msgstr "O tamanho da selecção deve corresponder ao conteúdo do clipboard."
 
@@ -23700,7 +23703,7 @@ msgstr "Módulo não encontrado!"
 msgid " Macro: %1$s: "
 msgstr " Macro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1679
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1678
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -23742,36 +23745,36 @@ msgstr "Não há vline para apagar"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Característica tabular desconhecida '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1271
+#: src/mathed/InsetMathHull.cpp:1270
 #, fuzzy
 msgid "Bad math environment"
 msgstr "Ambiente Juntar"
 
-#: src/mathed/InsetMathHull.cpp:1272
+#: src/mathed/InsetMathHull.cpp:1271
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1378 src/mathed/InsetMathHull.cpp:1387
+#: src/mathed/InsetMathHull.cpp:1377 src/mathed/InsetMathHull.cpp:1386
 msgid "No number"
 msgstr "Sem número"
 
-#: src/mathed/InsetMathHull.cpp:1378 src/mathed/InsetMathHull.cpp:1387
+#: src/mathed/InsetMathHull.cpp:1377 src/mathed/InsetMathHull.cpp:1386
 msgid "Number"
 msgstr "Número"
 
-#: src/mathed/InsetMathHull.cpp:1652
+#: src/mathed/InsetMathHull.cpp:1651
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Não é possível alterar o número de linhas em %1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1662
+#: src/mathed/InsetMathHull.cpp:1661
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Não é possível alterar o número de colunas em %1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1672
+#: src/mathed/InsetMathHull.cpp:1671
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Não é possível adicionar linhas de grelha horizontal em '%1$s'"
@@ -24018,6 +24021,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Utilizador desconhecido"
+
+#, fuzzy
+#~ msgid "%1$s unknown"
+#~ msgstr "%1$s comando desconhecido!"
 
 #~ msgid "Layout|L"
 #~ msgstr "Layout|L"
