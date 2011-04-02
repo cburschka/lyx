@@ -416,26 +416,12 @@ if [ -d "${ASpellSourceDir}" -a ! -f "${ASpellInstallHdr}" -a "yes" = "${aspell_
 	done
 fi
 
-# exit 0
-
 
 framework_name() {
 	echo "Frameworks/${1}.framework"
 }
 
-if [ ! -f "${LyxSourceDir}"/configure -o "${LyxSourceDir}"/configure -ot "${LyxSourceDir}"/configure.ac ]; then
-	( cd "${LyxSourceDir}" && sh autogen.sh )
-else
-	find "${LyxSourceDir}" -name Makefile.am -print | while read file ; do
-		dname=`dirname "$file"`
-		if [ -f "$dname/Makefile.in" -a "$dname/Makefile.in" -ot "$file" ]; then
-			( cd "${LyxSourceDir}" && sh autogen.sh )
-			break
-		fi
-	done
-fi
-
-FILE_LIST="lyx lyxclient tex2lyx"
+LYX_FILE_LIST="lyx lyxclient tex2lyx"
 BUNDLE_PATH="Contents/MacOS"
 LYX_BUNDLE_PATH="${LyxAppPrefix}/${BUNDLE_PATH}"
 build_lyx() {
@@ -443,6 +429,20 @@ build_lyx() {
 	if [ -n "${LyxAppZip}" -a -f "${LyxAppZip}" ]; then rm "${LyxAppZip}"; fi
 	if [ -d "${LyxAppPrefix}" ]; then rm -rf "${LyxAppPrefix}"; fi
 
+	# -------------------------------------
+	# Automate configure check
+	# -------------------------------------
+	if [ ! -f "${LyxSourceDir}"/configure -o "${LyxSourceDir}"/configure -ot "${LyxSourceDir}"/configure.ac ]; then
+		( cd "${LyxSourceDir}" && sh autogen.sh )
+	else
+		find "${LyxSourceDir}" -name Makefile.am -print | while read file ; do
+			dname=`dirname "$file"`
+			if [ -f "$dname/Makefile.in" -a "$dname/Makefile.in" -ot "$file" ]; then
+				( cd "${LyxSourceDir}" && sh autogen.sh )
+				break
+			fi
+		done
+	fi
 	# -------------------------------------
 	# Build LyX for different architectures
 	# -------------------------------------
@@ -494,7 +494,7 @@ build_lyx() {
 			${LyXConfigureOptions}\
 			--host="${HOSTSYSTEM}" --build="${BuildSystem}" --enable-build-type=rel && \
 		make -j2 && make install${strip}
-		for file in ${FILE_LIST} ; do
+		for file in ${LYX_FILE_LIST} ; do
 			if [ -f "${LYX_BUNDLE_PATH}/${file}" ]; then
 				mv "${LYX_BUNDLE_PATH}/${file}"\
 					"${LYX_BUNDLE_PATH}/${file}-${arch}" 
@@ -561,18 +561,20 @@ EOF
 			echo Set library id in "${condir}/${fwdir}/${version}${libnm}"
 			install_name_tool -id "@executable_path/../${fwdir}/${version}${libnm}" "${condir}/${fwdir}/${version}${libnm}"
 			find "${condir}/PlugIns" "${condir}/"`dirname "${fwdir}"` -name Headers -prune -o -type f -print | while read filename ; do
-				otool -L "${filename}" 2>/dev/null | while read library ; do
-					# pattern match for: /path/to/qt4/lib/QtGui.framework/Versions/4/QtGui (compatibility version 4.6.0, current version 4.6.2)
-					case "${library}" in
-					*"${libnm}"*"("*")"*)
-						echo Correct library id reference to "${libnm}" in "${filename}"
-						install_name_tool -change\
-							"${source}/lib/${dirname}/${version}${libnm}"\
-							"@executable_path/../${fwdir}/${version}${libnm}"\
-							"${filename}"
-						;;
-					esac
-				done
+				if [ "${filename}" != "${target}" ]; then
+					otool -L "${filename}" 2>/dev/null | sort -u | while read library ; do
+						# pattern match for: /path/to/qt4/lib/QtGui.framework/Versions/4/QtGui (compatibility version 4.6.0, current version 4.6.2)
+						case "${library}" in
+						*"${libnm}"*"("*version*")"*)
+							echo Correct library id reference to "${libnm}" in "${filename}"
+							install_name_tool -change\
+								"${source}/lib/${dirname}/${version}${libnm}"\
+								"@executable_path/../${fwdir}/${version}${libnm}"\
+								"${filename}"
+							;;
+						esac
+					done
+				fi
 			done
 		)
 		echo Correct library id reference to "${libnm}" in "${target}"
@@ -588,7 +590,7 @@ EOF
 # -------------------------
 convert_universal() {
 	cd "${LyxAppPrefix}"
-	for file in ${FILE_LIST} ; do
+	for file in ${LYX_FILE_LIST} ; do
 		OBJ_LIST=
 		for arch in ${ARCH_LIST} ; do
 			if [ -f "${BUNDLE_PATH}/${file}-${arch}" ]; then
@@ -643,7 +645,7 @@ copy_dictionaries() {
 	fi
 }
 
-function set_bundle_display_options() {
+set_bundle_display_options() {
 	osascript <<-EOF
     tell application "Finder"
         set f to POSIX file ("${1}" as string) as alias
@@ -673,7 +675,7 @@ function set_bundle_display_options() {
 EOF
 }
 
-function make_dmg() {
+make_dmg() {
 	cd "${1}"
 
 	BGSIZE=`file "$BACKGROUND" | awk -F , '/PNG/{print $2 }' | tr x ' '`
@@ -714,28 +716,30 @@ function make_dmg() {
 	rm -f "${DMGNAME}.sparseimage"
 }
 
-build_lyx
-convert_universal
-copy_dictionaries
-
 # ------------------------------
 # Building distribution packages
 # ------------------------------
 
-test -n "${LyxAppZip}" && (
-	cd "${LyxAppPrefix}" && zip -r "${LyxAppZip}" .
-)
+build_distribution() {
+	test -n "${LyxAppZip}" && (
+		cd "${LyxAppPrefix}" && zip -r "${LyxAppZip}" .
+	)
 
-test -n "${DMGLocation}" && (
-	make_dmg "${DMGLocation}"
-	if [ -d "${QtInstallDir}/lib/QtCore.framework/Versions/${QtFrameworkVersion}" -a "yes" = "${qt4_deployment}" ]; then
-		rm -f "${DMGLocation}/${DMGNAME}+qt4.dmg"
-		echo move to "${DMGLocation}/${DMGNAME}+qt4.dmg"
-		mv "${DMGLocation}/${DMGNAME}.dmg" "${DMGLocation}/${DMGNAME}+qt4.dmg"
-		#for libnm in ${QtLibraries} ; do
-		#	fwdir=`framework_name "$libnm"`
-		#	rm -rf "${LyxAppDir}.app/Contents/${fwdir}"
-		#done
-		#make_dmg "${DMGLocation}"
-	fi
-)
+	test -n "${DMGLocation}" && (
+		make_dmg "${DMGLocation}"
+		if [ -d "${QtInstallDir}/lib/QtCore.framework/Versions/${QtFrameworkVersion}" -a "yes" = "${qt4_deployment}" ]; then
+			rm -f "${DMGLocation}/${DMGNAME}+qt4.dmg"
+			echo move to "${DMGLocation}/${DMGNAME}+qt4.dmg"
+			mv "${DMGLocation}/${DMGNAME}.dmg" "${DMGLocation}/${DMGNAME}+qt4.dmg"
+		fi
+	)
+}
+
+# ------------------------------
+# main block
+# ------------------------------
+
+build_lyx
+convert_universal
+copy_dictionaries
+build_distribution
