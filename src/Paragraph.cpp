@@ -3781,9 +3781,9 @@ void Paragraph::spellCheck() const
 bool Paragraph::isMisspelled(pos_type pos, bool check_boundary) const
 {
 	bool result = SpellChecker::misspelled(d->speller_state_.getState(pos));
-	if (result || pos <= 0 || pos >= size())
+	if (result || pos <= 0 || pos > size())
 		return result;
-	if (check_boundary && isWordSeparator(pos))
+	if (check_boundary && (pos == size() || isWordSeparator(pos)))
 		result = SpellChecker::misspelled(d->speller_state_.getState(pos - 1));
 	return result;
 }
