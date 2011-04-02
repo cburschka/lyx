@@ -3457,6 +3457,11 @@ namespace {
 void Buffer::setExportStatus(bool e) const
 {
 	d->doing_export = e;	
+	ListOfBuffers clist = getDescendents();
+	ListOfBuffers::const_iterator cit = clist.begin();
+	ListOfBuffers::const_iterator const cen = clist.end();
+	for (; cit != cen; ++cit)
+		(*cit)->d->doing_export = e;
 }
 
 
