@@ -2,8 +2,13 @@
 \lyxformat 413
 \begin_document
 \begin_header
-\textclass article
+\textclass book
 \use_default_options false
+\begin_modules
+theorems-ams
+theorems-ams-extended
+logicalmkup
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -53,7 +58,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\html_math_output 0
+\html_math_output 2
 \html_css_as_file 0
 \html_be_strict true
 \end_header
