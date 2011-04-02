@@ -173,7 +173,7 @@ void InsetMathChar::mathmlize(MathStream & ms) const
 		case '>': entity = "&gt;"; break;
 		case '&': entity = "&amp;"; break;
 		case ' ': {
-			ms << from_ascii("&nsbp;");
+			ms << from_ascii("&nbsp;");
 			return;
 		}
 		default: break;
