@@ -53,6 +53,7 @@
 #include "support/convert.h"
 #include "support/lassert.h"
 #include "support/debug.h"
+#include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
@@ -2156,15 +2157,26 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 		if (pimage || op.dryrun) {
 			string const filename = pimage ? pimage->filename().onlyFileName()
 			                               : "previewimage.png";
+			if (pimage) {
+				// if we are not in the master buffer, then we need to see that the
+				// generated image is copied there; otherwise, preview fails.
+				Buffer const * mbuf = buffer().masterBuffer();
+				if (mbuf != &buffer()) {
+					string mbtmp = mbuf->temppath();
+					FileName const mbufimg(support::addName(mbtmp, filename));
+					LYXERR0(mbufimg);
+					pimage->filename().copyTo(mbufimg);
+				}
+				// add the file to the list of files to be exported
+				op.exportdata->addExternalFile("xhtml", pimage->filename());
+			}
+
 			string const tag = (getType() == hullSimple) ? "span" : "div";
 			xs << html::CR()
 			   << html::StartTag(tag)
 				 << html::CompTag("img", "src=\"" + filename + "\"")
 				 << html::EndTag(tag)
 				 << html::CR();
-			if (pimage)
-				// add the file to the list of files to be exported
-				op.exportdata->addExternalFile("xhtml", pimage->filename());
 			success = true;
 		}
 	}
