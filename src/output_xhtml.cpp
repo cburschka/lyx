@@ -145,7 +145,8 @@ docstring cleanAttr(docstring const & str)
 
 bool isFontTag(string const & s)
 {
-	return s == "em" || s == "strong"; // others?
+	// others?
+	return s == "em" || s == "strong" || s == "i" || s == "b";
 }
 
 
