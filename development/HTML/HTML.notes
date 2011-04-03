@@ -11,8 +11,6 @@ These insets work but still need work:
 			xref information for every entry, rather than listing the xref separately and
 			then referencing it. That should not be terribly hard, but it would take a bit
 			of work.
-	InsetBox: The CSS isn't there yet.
-	InsetFlex: I think this one is OK, but it needs some testing.
 	InsetFloat: This seems to work OK, but it will need testing and tweaking. There is
 		also no CSS yet for these.
 	InsetFloatList: Seems to work well, but may need testing.
@@ -20,8 +18,6 @@ These insets work but still need work:
 	  and appropriate img tag. But we don't yet do any sort of scaling, rotating, and
 		so forth. That won't be hard, since we can just call ImageMagick to do this for
 		us, but appropriate routines will need to be written.
-	InsetIndex and InsetPrintIndex: These work with limitations, as noted in the
-		Additional Features manual.
 	InsetNomencl and InsetPrintNomencl: Do not work at all yet, but would be easy to do.
 		First, Nomencl would need to go to the TOC, which it should do anyway. Then just
 		do as for TOC and Index, more or less.
@@ -35,10 +31,6 @@ Math
   isues, and not all the insets work. Here are the ones I know still need work:
 	- Array: Should be able to use alignment information via appropriate attributes, for
 		mtable, mrow, and mtd.
-	- Box: There is a general issue here with text mode nesting. See the FIXME attached
-		to the SetMode class.
-	- Lefteqn: For this, and numbering in general, probably need mlabeledtr, which may
-		mean we always need to output <mtable>.
 	- Par?
 	- Phantom: There is some support for this in MathML....
 	- Space: Needs checking.
@@ -50,11 +42,7 @@ Math
 Other math notes:
 	- AMSArray: Some of these should be handled via images. I need to investigate which.
 	- Hull:
-		-	Need to handle the equation hull type by outputting a counter. But that will
-			have to wait for the counter patch. The counter probably goes with mlabeledtr,
-			which may mean we always need to output <mtable>.
-		- Similar issues about eqnarray.
-		- It's not clear if we need to do much about the other hull types.
+		-	Need to check that we handle all the various types correctly.
 
 
 These insets do not work and are not yet scheduled to work:
