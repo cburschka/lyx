@@ -13,7 +13,7 @@ FIND_PROGRAM(LYX_PYTHON_EXECUTABLE python)
 
 file(GLOB _py_files ${TOP_SRC_DIR}/lib/${_project}/*.py)
 
-set(py_compile ${TOP_SRC_DIR}/config/py-compile)
+set(py_compile sh ${TOP_SRC_DIR}/config/py-compile)
 
 set(_generated)
 set(ENV{PYTHON} ${LYX_PYTHON_EXECUTABLE})
