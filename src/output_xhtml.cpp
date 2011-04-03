@@ -241,7 +241,6 @@ bool XHTMLStream::closeFontTags()
 		if (tagname == parsep_tag)
 			break;
 		writeError(it->tag_);
-		}
 	}
 	return false;
 }
