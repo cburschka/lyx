@@ -478,8 +478,11 @@ docstring InsetBox::xhtml(XHTMLStream & xs, OutputParams const & runparams) cons
 	// construct attributes
 	string attrs = "class='" + params_.type + "'";
 	string style;
-	if (!params_.width.empty())
-		style += ("width: " + params_.width.asHTMLString() + "; ");
+	if (!params_.width.empty()) {
+		string w = params_.width.asHTMLString();
+		if (w != "100%")
+			style += ("width: " + params_.width.asHTMLString() + "; ");
+	}
 	// The special heights don't really mean anything for us.
 	if (!params_.height.empty() && params_.height_special == "none")
 		style += ("height: " + params_.height.asHTMLString() + "; ");
