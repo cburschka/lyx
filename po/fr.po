@@ -256,8 +256,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-02 11:33+0200\n"
-"PO-Revision-Date: 2011-03-28 09:51+0100\n"
+"POT-Creation-Date: 2011-04-03 21:14+0200\n"
+"PO-Revision-Date: 2011-04-02 18:42+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -669,12 +669,12 @@ msgid "None"
 msgstr "Aucun"
 
 #: src/frontends/qt4/ui/BoxUi.ui:278 src/frontends/qt4/GuiBox.cpp:313
-#: src/frontends/qt4/GuiBox.cpp:391 src/insets/InsetBox.cpp:138
+#: src/frontends/qt4/GuiBox.cpp:391 src/insets/InsetBox.cpp:135
 msgid "Parbox"
 msgstr "Parbox"
 
 #: src/frontends/qt4/ui/BoxUi.ui:283 src/frontends/qt4/GuiBox.cpp:392
-#: src/insets/InsetBox.cpp:142
+#: src/insets/InsetBox.cpp:139
 msgid "Minipage"
 msgstr "Minipage"
 
@@ -744,8 +744,8 @@ msgid "Remove the selected branch"
 msgstr "Enlever la branche sélectionnée"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3798
-#: src/Buffer.cpp:3811
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3803
+#: src/Buffer.cpp:3816
 msgid "&Remove"
 msgstr "&Enlever"
 
@@ -779,7 +779,7 @@ msgstr "Ajouter &tout"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
-#: src/Buffer.cpp:2272 src/Buffer.cpp:3773 src/Buffer.cpp:3836
+#: src/Buffer.cpp:2272 src/Buffer.cpp:3778 src/Buffer.cpp:3841
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1799
@@ -2031,7 +2031,7 @@ msgstr "Insérer l'espacement même après un saut de page"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:19
 #: src/frontends/qt4/ui/HyperlinkUi.ui:32 lib/layouts/scrlttr2.layout:207
-#: lib/layouts/amsdefs.inc:153 lib/layouts/stdinsets.inc:270
+#: lib/layouts/amsdefs.inc:153 lib/layouts/stdinsets.inc:333
 #: lib/layouts/minimalistic.module:26
 msgid "URL"
 msgstr "URL"
@@ -2723,7 +2723,7 @@ msgstr "&Colonnes :"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:112
 msgid "Resize this to the correct table dimensions"
-msgstr "Repositionner ceci à la taille de table correcte"
+msgstr "Repositionner ceci à la taille de tableau correcte"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:163 src/frontends/qt4/ui/WrapUi.ui:195
 msgid "Vertical alignment"
@@ -3263,7 +3263,7 @@ msgstr "&Utiliser les couleurs du système"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:25
 msgid "In Math"
-msgstr "En mode mathétmatique"
+msgstr "En mode mathématique"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:40
 msgid ""
@@ -5123,11 +5123,11 @@ msgstr "&Saut de page dans la ligne"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1378
 msgid "Horizontal alignment of the longtable"
-msgstr "Alignement horizontal de la table longue"
+msgstr "Alignement horizontal du tableau long"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1381
 msgid "Longtable alignment"
-msgstr "Alignement de table longue"
+msgstr "Alignement de tableau long"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1433
 msgid "Current cell:"
@@ -5283,7 +5283,7 @@ msgid ""
 "tables, and others)"
 msgstr ""
 "Permuter entre la table des matières, la liste des figures, la liste des "
-"tableaux,et autres"
+"tableaux, et autres"
 
 #: src/frontends/qt4/ui/TocUi.ui:90
 msgid "Update navigation tree"
@@ -6261,7 +6261,7 @@ msgstr "Institut"
 msgid "E-Mail"
 msgstr "E-mail"
 
-#: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:260
+#: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:261
 msgid "email"
 msgstr "e-mail"
 
@@ -9402,7 +9402,7 @@ msgstr "Pleine largeur"
 
 #: lib/layouts/tufte-book.layout:218
 msgid "MarginTable"
-msgstr "Table en marge"
+msgstr "Tableau en marge"
 
 #: lib/layouts/tufte-book.layout:231
 msgid "MarginFigure"
@@ -10050,11 +10050,11 @@ msgstr "Listings"
 msgid "Idx"
 msgstr "Idx"
 
-#: lib/layouts/stdinsets.inc:294
+#: lib/layouts/stdinsets.inc:357
 msgid "opt"
 msgstr "opt"
 
-#: lib/layouts/stdinsets.inc:375
+#: lib/layouts/stdinsets.inc:438
 msgid "Preview"
 msgstr "Aperçu"
 
@@ -11543,7 +11543,7 @@ msgstr "Environnement Aligné|v"
 
 #: lib/ui/stdcontext.inc:33 lib/ui/stdmenus.inc:428
 msgid "AlignedAt Environment|v"
-msgstr "Environnement AlignéSur|S"
+msgstr "Environnement AlignéSur|é"
 
 #: lib/ui/stdcontext.inc:34 lib/ui/stdmenus.inc:429
 msgid "Gathered Environment|h"
@@ -12508,7 +12508,7 @@ msgstr "Paramètres de fantôme...|ô"
 
 #: lib/ui/stdmenus.inc:139
 msgid "Branch Settings...|B"
-msgstr "Paramètres de branche...|b"
+msgstr "Paramètres de branche...|P"
 
 #: lib/ui/stdmenus.inc:140
 msgid "Box Settings...|x"
@@ -13019,7 +13019,7 @@ msgstr "Flottant d'enrobage de figure|i"
 
 #: lib/ui/stdmenus.inc:441
 msgid "Table Wrap Float|T"
-msgstr "Flottant d'enrobage de table|n"
+msgstr "Flottant d'enrobage de tableau|n"
 
 #: lib/ui/stdmenus.inc:445
 msgid "Table of Contents|C"
@@ -16721,7 +16721,7 @@ msgstr ""
 "%1$s vient d'une version plus récente de LyX, et le script lyx2lyx n'a pas "
 "réussi à le convertir."
 
-#: src/Buffer.cpp:1025 src/Buffer.cpp:3783 src/Buffer.cpp:3845
+#: src/Buffer.cpp:1025 src/Buffer.cpp:3788 src/Buffer.cpp:3850
 msgid "File is read-only"
 msgstr "Fichier en lecture seule"
 
@@ -16952,38 +16952,38 @@ msgstr "La sauvegarde automatique a échoué !"
 msgid "Autosaving current document..."
 msgstr "Sauvegarde automatique du document..."
 
-#: src/Buffer.cpp:3496
+#: src/Buffer.cpp:3501
 msgid "Couldn't export file"
 msgstr "Exportation du fichier impossible"
 
-#: src/Buffer.cpp:3497
+#: src/Buffer.cpp:3502
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Pas d'information pour exporter au format %1$s."
 
-#: src/Buffer.cpp:3565
+#: src/Buffer.cpp:3570
 msgid "File name error"
 msgstr "Erreur de nom de fichier"
 
-#: src/Buffer.cpp:3566
+#: src/Buffer.cpp:3571
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Le chemin des répertoires du document ne doit pas contenir d'espaces."
 
-#: src/Buffer.cpp:3651
+#: src/Buffer.cpp:3656
 msgid "Document export cancelled."
 msgstr "Export du document annulé."
 
-#: src/Buffer.cpp:3661
+#: src/Buffer.cpp:3666
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Document exporté en tant que %1$s vers le fichier `%2$s'"
 
-#: src/Buffer.cpp:3667
+#: src/Buffer.cpp:3672
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Document exporté en tant que %1$s"
 
-#: src/Buffer.cpp:3769
+#: src/Buffer.cpp:3774
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -16994,19 +16994,19 @@ msgstr ""
 "\n"
 "Voulez-vous récupérer la sauvegarde d'urgence ?"
 
-#: src/Buffer.cpp:3772
+#: src/Buffer.cpp:3777
 msgid "Load emergency save?"
 msgstr "Charger la sauvegarde d'urgence ?"
 
-#: src/Buffer.cpp:3773
+#: src/Buffer.cpp:3778
 msgid "&Recover"
 msgstr "&Récupérer"
 
-#: src/Buffer.cpp:3773
+#: src/Buffer.cpp:3778
 msgid "&Load Original"
 msgstr "&Charger l'original"
 
-#: src/Buffer.cpp:3784
+#: src/Buffer.cpp:3789
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -17016,15 +17016,15 @@ msgstr ""
 "original %1$s est en lecture seule. Il faudra sauvegarder le document sous "
 "un autre nom."
 
-#: src/Buffer.cpp:3790
+#: src/Buffer.cpp:3795
 msgid "Document was successfully recovered."
 msgstr "Le document n'a pas été récupéré correctement."
 
-#: src/Buffer.cpp:3792
+#: src/Buffer.cpp:3797
 msgid "Document was NOT successfully recovered."
 msgstr "Le document n'a PAS été récupéré avec succès."
 
-#: src/Buffer.cpp:3793
+#: src/Buffer.cpp:3798
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17033,27 +17033,27 @@ msgstr ""
 "Supprimer la sauvegarde d'urgence maintenant ?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3797 src/Buffer.cpp:3809
+#: src/Buffer.cpp:3802 src/Buffer.cpp:3814
 msgid "Delete emergency file?"
 msgstr "Supprimer la sauvegarde d'urgence ?"
 
-#: src/Buffer.cpp:3798 src/Buffer.cpp:3811
+#: src/Buffer.cpp:3803 src/Buffer.cpp:3816
 msgid "&Keep"
 msgstr "&Conserver"
 
-#: src/Buffer.cpp:3802
+#: src/Buffer.cpp:3807
 msgid "Emergency file deleted"
 msgstr "Sauvegarde d'urgence supprimée"
 
-#: src/Buffer.cpp:3803
+#: src/Buffer.cpp:3808
 msgid "Do not forget to save your file now!"
 msgstr "N'oubliez pas d'enregistrer votre fichier maintenant !"
 
-#: src/Buffer.cpp:3810
+#: src/Buffer.cpp:3815
 msgid "Remove emergency file now?"
 msgstr "Supprimer la sauvegarde d'urgence maintenant ?"
 
-#: src/Buffer.cpp:3833
+#: src/Buffer.cpp:3838
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17064,19 +17064,19 @@ msgstr ""
 "\n"
 "Voulez-vous charger la sauvegarde automatique ?"
 
-#: src/Buffer.cpp:3835
+#: src/Buffer.cpp:3840
 msgid "Load backup?"
 msgstr "Charger la sauvegarde automatique ?"
 
-#: src/Buffer.cpp:3836
+#: src/Buffer.cpp:3841
 msgid "&Load backup"
 msgstr "&Charger la sauvegarde"
 
-#: src/Buffer.cpp:3836
+#: src/Buffer.cpp:3841
 msgid "Load &original"
 msgstr "Charger l'&original"
 
-#: src/Buffer.cpp:3846
+#: src/Buffer.cpp:3851
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17086,25 +17086,25 @@ msgstr ""
 "original %1$s est en lecture seule. Il faudra sauvegarder le document sous "
 "un autre nom."
 
-#: src/Buffer.cpp:4183 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4188 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Absurde ! "
 
-#: src/Buffer.cpp:4304
+#: src/Buffer.cpp:4309
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Document %1$s rechargé."
 
-#: src/Buffer.cpp:4307
+#: src/Buffer.cpp:4312
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Impossible de recharger le document %1$s."
 
-#: src/Buffer.cpp:4373
+#: src/Buffer.cpp:4378
 msgid "Included File Invalid"
 msgstr "Fichier inclus invalide"
 
-#: src/Buffer.cpp:4374
+#: src/Buffer.cpp:4379
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17837,22 +17837,20 @@ msgid "&Don't Add"
 msgstr "&Ne pas ajouter"
 
 #: src/CutAndPaste.cpp:683
-#, fuzzy, c-format
+#, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
 msgstr ""
-"Le style de caractère %1$s n'est pas défini à cause du changement de classe "
-"de\n"
-"%2$s à %3$s"
+"L'insert flexible %1$s n'est pas défini après rechargement du format « %2$s "
+"»."
 
 #: src/CutAndPaste.cpp:686
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
 "%3$s'."
 msgstr ""
-"Le style de caractère %1$s n'est pas défini à cause du changement de classe "
-"de\n"
-"%2$s à %3$s"
+"L'insert flexible %1$s n'est pas défini du fait de la conversion du format « "
+"%2$s » vers « %3$s »."
 
 # à revoir
 #: src/CutAndPaste.cpp:691
@@ -19045,11 +19043,11 @@ msgstr ""
 "précédemment.\n"
 "Utilise l'alignement implicite."
 
-#: src/Paragraph.cpp:3082
+#: src/Paragraph.cpp:3084
 msgid "Memory problem"
 msgstr "Problème mémoire"
 
-#: src/Paragraph.cpp:3082
+#: src/Paragraph.cpp:3084
 msgid "Paragraph not properly initialized"
 msgstr "Initialisation du paragraphe incorrecte"
 
@@ -19978,7 +19976,7 @@ msgid "Width"
 msgstr "Largeur"
 
 #: src/frontends/qt4/GuiBox.cpp:315 src/frontends/qt4/GuiBox.cpp:390
-#: src/insets/InsetBox.cpp:140
+#: src/insets/InsetBox.cpp:137
 msgid "Makebox"
 msgstr "Makebox"
 
@@ -21337,9 +21335,8 @@ msgid "User Interface"
 msgstr "Interface utilisateur"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2447
-#, fuzzy
 msgid "Classic"
-msgstr "Classe|C"
+msgstr "Classique"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2448
 msgid "Oxygen"
@@ -22590,7 +22587,7 @@ msgstr "Code TeX"
 msgid "Float"
 msgstr "Flottant"
 
-#: src/insets/Inset.cpp:109 src/insets/InsetBox.cpp:133
+#: src/insets/Inset.cpp:109 src/insets/InsetBox.cpp:130
 msgid "Box"
 msgstr "Boîte"
 
@@ -22712,12 +22709,12 @@ msgstr "fond ombré"
 msgid "double frame"
 msgstr "double cadre"
 
-#: src/insets/InsetBox.cpp:153 src/insets/InsetBox.cpp:156
+#: src/insets/InsetBox.cpp:150 src/insets/InsetBox.cpp:153
 #, c-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
-#: src/insets/InsetBox.cpp:159
+#: src/insets/InsetBox.cpp:156
 #, c-format
 msgid "%1$s (%2$s, %3$s)"
 msgstr "%1$s (%2$s, %3$s)"
@@ -22880,15 +22877,15 @@ msgstr "Aucune conversion de %1$s n'est nécessaire"
 msgid "Graphics file: %1$s"
 msgstr "Fichier graphique : %1$s"
 
-#: src/insets/InsetHyperlink.cpp:258
+#: src/insets/InsetHyperlink.cpp:259
 msgid "www"
 msgstr "www"
 
-#: src/insets/InsetHyperlink.cpp:262
+#: src/insets/InsetHyperlink.cpp:263
 msgid "file"
 msgstr "fichier"
 
-#: src/insets/InsetHyperlink.cpp:263
+#: src/insets/InsetHyperlink.cpp:264
 #, c-format
 msgid "Hyperlink (%1$s) to %2$s"
 msgstr "Hyperlien (%1$s) : %2$s"
@@ -23614,7 +23611,7 @@ msgstr "Chaîne de caractères reconnue !"
 msgid " Macro: %1$s: "
 msgstr "Macro  %1$s : "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1678
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1679
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -23658,11 +23655,11 @@ msgstr "Pas de ligne verticale à supprimer"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Option de tableau inconnue '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1270
+#: src/mathed/InsetMathHull.cpp:1271
 msgid "Bad math environment"
 msgstr "Environnement mathématique incorrect"
 
-#: src/mathed/InsetMathHull.cpp:1271
+#: src/mathed/InsetMathHull.cpp:1272
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
@@ -23670,25 +23667,25 @@ msgstr ""
 "Le calcul ne peut pas être effectué pour l'environnement mathématique AMS.\n"
 "Modifier le type de formule mathématique et réessayer."
 
-#: src/mathed/InsetMathHull.cpp:1377 src/mathed/InsetMathHull.cpp:1386
+#: src/mathed/InsetMathHull.cpp:1378 src/mathed/InsetMathHull.cpp:1387
 msgid "No number"
 msgstr "Pas de numéro"
 
-#: src/mathed/InsetMathHull.cpp:1377 src/mathed/InsetMathHull.cpp:1386
+#: src/mathed/InsetMathHull.cpp:1378 src/mathed/InsetMathHull.cpp:1387
 msgid "Number"
 msgstr "Numéro"
 
-#: src/mathed/InsetMathHull.cpp:1651
+#: src/mathed/InsetMathHull.cpp:1652
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Impossible de changer le nombre de lignes dans '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1661
+#: src/mathed/InsetMathHull.cpp:1662
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Impossible de changer le nombre de colonnes dans '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1671
+#: src/mathed/InsetMathHull.cpp:1672
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Impossible d'ajouter les lignes de grille horizontales dans '%1$s'"
