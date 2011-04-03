@@ -205,6 +205,12 @@ void XHTMLStream::writeError(std::string const & s)
 }
 
 
+namespace {
+	// an illegal tag for internal use
+	static string const parsep_tag = "&LyX_parsep_tag&";
+}
+
+
 bool XHTMLStream::closeFontTags()
 {
 	if (tag_stack_.empty())
@@ -221,19 +227,76 @@ bool XHTMLStream::closeFontTags()
 			return true;
 		curtag = tag_stack_.back();
 	}
-	// so we've hit a non-font tag. let's see if any of the
-	// remaining tags are font tags.
-	TagStack::const_iterator it = tag_stack_.begin();
-	TagStack::const_iterator en = tag_stack_.end();
-	bool noFontTags = true;
+
+	if (curtag.tag_ == parsep_tag)
+		return true;
+
+	// so we've hit a non-font tag.
+	writeError("Tags still open in closeFontTags(). Probably not a problem,\n"
+	           "but you might want to check these tags:");
+	TagStack::const_reverse_iterator it = tag_stack_.rbegin();
+	TagStack::const_reverse_iterator const en = tag_stack_.rend();
 	for (; it != en; ++it) {
-		if (html::isFontTag(it->tag_)) {
-			writeError("Font tag `" + it->tag_ + "' still open in closeFontTags().\n"
-				"This is likely not a problem, but you might want to check.");
-			noFontTags = false;
+		string const tagname = it->tag_;
+		if (tagname == parsep_tag)
+			break;
+		writeError(it->tag_);
 		}
 	}
-	return noFontTags;
+	return false;
+}
+
+
+void XHTMLStream::startParagraph()
+{
+	pending_tags_.push_back(html::StartTag(parsep_tag));
+}
+
+
+void XHTMLStream::endParagraph()
+{
+	if (!isTagOpen(parsep_tag)) {
+		// is it pending?
+		TagStack::const_iterator dit = pending_tags_.begin();
+		TagStack::const_iterator const den = pending_tags_.end();
+		bool found = false;
+		for (; dit != den; ++dit) {
+			if (dit->tag_ == parsep_tag) {
+				found = true;
+				break;
+			}
+		}
+
+		if (!found) {
+			writeError("No paragraph separation tag found in endParagraph().");
+			return;
+		}
+		
+		// this case is normal.
+		while (!pending_tags_.empty()) {
+			// clear all pending tags up to and including the parsep tag.
+			// note that we work from the back, because we want to get rid
+			// of everything that hasnt' been used.
+			html::StartTag const cur_tag = pending_tags_.back();
+			string const & tag = cur_tag.tag_;
+			tag_stack_.pop_back();
+			if (tag == parsep_tag)
+				break;
+		}
+		return;
+	}
+
+	// this case is also normal, if the parsep tag is the last one 
+	// on the stack. otherwise, it's an error.
+	while (!tag_stack_.empty()) {
+		html::StartTag const cur_tag = tag_stack_.back();
+		string const & tag = cur_tag.tag_;
+		tag_stack_.pop_back();
+		if (tag == parsep_tag)
+			break;
+		writeError("Tag `" + tag + "' still open at end of paragraph. Closing.");
+		os_ << cur_tag.asEndTag();
+	}
 }
 
 
@@ -241,8 +304,9 @@ void XHTMLStream::clearTagDeque()
 {
 	while (!pending_tags_.empty()) {
 		html::StartTag const & tag = pending_tags_.front();
-		// tabs?
-		os_ << tag.asTag();
+		if (tag.tag_ != parsep_tag)
+			// tabs?
+			os_ << tag.asTag();
 		tag_stack_.push_back(tag);
 		pending_tags_.pop_front();
 	}
@@ -476,7 +540,8 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 	html::StartTag curtag = tag_stack_.back();
 	while (curtag.tag_ != etag.tag_) {
 		writeError(curtag.tag_);
-		os_ << curtag.asEndTag();
+		if (curtag.tag_ != parsep_tag)
+			os_ << curtag.asEndTag();
 		tag_stack_.pop_back();
 		curtag = tag_stack_.back();
 	}
