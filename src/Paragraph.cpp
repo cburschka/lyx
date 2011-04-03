@@ -2731,7 +2731,6 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 
 	bool emph_flag = false;
 	bool bold_flag = false;
-	string closing_tag;
 
 	Layout const & style = *d->layout_;
 
