@@ -219,18 +219,81 @@ InsetLayout Box
 	  Size                Small
 	EndFont
 	MultiPar              true
+End
+
+InsetLayout Box:Frameless
+	CopyStyle Box
 	HTMLStyle
-		div.Frameless { font-family: sans-serif; }
+		div.Frameless { margin: 1em; }
 	EndHTMLStyle
 End
 
 InsetLayout Box:Shaded
-	BgColor               shaded
-	LabelFont
-	  Color               foreground
-	  Size                Small
-	EndFont
-	MultiPar              true
+	CopyStyle Box
+	BgColor shaded
+	HTMLStyle
+		div.Shaded { 
+			background-color: gray; 
+			padding: 0.5ex; 
+		}
+	EndHTMLStyle
+End
+
+InsetLayout Box:Boxed
+	CopyStyle Box
+	HTMLStyle
+		div.Boxed { 
+			border: solid thick black; 
+			padding: 0.5ex; 
+		}
+	EndHTMLStyle
+End
+
+InsetLayout Box:Framed
+	CopyStyle Box
+	HTMLStyle
+		div.Framed { 
+			border: solid thick black; 
+			padding: 0.5ex; 
+		}
+	EndHTMLStyle
+End
+
+InsetLayout Box:ovalbox
+	CopyStyle Box
+	HTMLStyle
+		div.ovalbox { 
+			border: groove medium black; 
+			padding: 0.5ex; 
+		}
+	EndHTMLStyle
+End
+
+InsetLayout Box:Ovalbox
+	CopyStyle Box
+	HTMLStyle
+		div.Ovalbox { 
+			border: ridge thick black; 
+			padding: 0.5ex; 
+		}
+	EndHTMLStyle
+End
+
+InsetLayout Box:Shadowbox
+	CopyStyle Box
+	HTMLStyle
+		div.Shadowbox { border: solid gray medium; border-bottom: solid black 1ex; border-right: solid black 1ex; padding: 0.5ex; }
+	EndHTMLStyle
+End
+
+InsetLayout Box:Doublebox
+	CopyStyle Box
+	HTMLStyle
+		div.Doublebox { 
+			border: double thick black; 
+			padding: 0.5ex; 
+		}
+	EndHTMLStyle
 End
 
 InsetLayout Float
