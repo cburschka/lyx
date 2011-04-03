@@ -105,10 +105,7 @@ InsetBox::InsetBox(Buffer * buffer, string const & label)
 docstring InsetBox::layoutName() const
 {
 	// FIXME: UNICODE
-	string name = "Box";
-	if (boxtranslator().find(params_.type) == Shaded)
-		name += ":Shaded";
-	return from_ascii(name);
+	return from_ascii("Box:" + params_.type);
 }
 
 
