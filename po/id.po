@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-02 16:15+0200\n"
-"PO-Revision-Date: 2011-04-02 20:35+0730\n"
+"POT-Creation-Date: 2011-04-03 21:10+0200\n"
+"PO-Revision-Date: 2011-04-03 20:49+0730\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Indonesian <was.uthm@gmail.com>\n"
 "Language: id\n"
@@ -416,12 +416,12 @@ msgid "None"
 msgstr "Kosong"
 
 #: src/frontends/qt4/ui/BoxUi.ui:278 src/frontends/qt4/GuiBox.cpp:313
-#: src/frontends/qt4/GuiBox.cpp:391 src/insets/InsetBox.cpp:138
+#: src/frontends/qt4/GuiBox.cpp:391 src/insets/InsetBox.cpp:135
 msgid "Parbox"
 msgstr "Parbox"
 
 #: src/frontends/qt4/ui/BoxUi.ui:283 src/frontends/qt4/GuiBox.cpp:392
-#: src/insets/InsetBox.cpp:142
+#: src/insets/InsetBox.cpp:139
 msgid "Minipage"
 msgstr "Halaman kecil"
 
@@ -1762,7 +1762,7 @@ msgstr "Menyisipkan spasi merata setelah pemisah baris"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:19
 #: src/frontends/qt4/ui/HyperlinkUi.ui:32 lib/layouts/scrlttr2.layout:207
-#: lib/layouts/amsdefs.inc:153 lib/layouts/stdinsets.inc:270
+#: lib/layouts/amsdefs.inc:153 lib/layouts/stdinsets.inc:333
 #: lib/layouts/minimalistic.module:26
 msgid "URL"
 msgstr "URL"
@@ -5234,7 +5234,7 @@ msgstr "Penghargaan"
 #: lib/layouts/theorems-ams-extended-bytype.module:235
 #: lib/layouts/theorems-ams-extended.module:296
 msgid "Acknowledgement."
-msgstr "Ucapan Terima Kasih."
+msgstr "Penghargaan."
 
 #: lib/layouts/AEA.layout:105 lib/layouts/IEEEtran.layout:290
 #: lib/layouts/beamer.layout:1057 lib/layouts/elsart.layout:259
@@ -5282,7 +5282,7 @@ msgstr "Algoritma"
 #: lib/layouts/theorems-ams-extended.module:132
 #: lib/layouts/theorems-ams-extended.module:135
 msgid "Axiom"
-msgstr "Axiom"
+msgstr "Aksioma"
 
 #: lib/layouts/AEA.layout:126 lib/layouts/elsart.layout:414
 #: lib/layouts/llncs.layout:286 lib/layouts/svmono.layout:96
@@ -5474,7 +5474,7 @@ msgstr "Masalah"
 #: lib/layouts/theorems.inc:114 lib/layouts/theorems-chap-bytype.module:90
 #: lib/layouts/theorems-sec-bytype.module:78
 msgid "Proposition"
-msgstr "Rencana"
+msgstr "Proposisi"
 
 #: lib/layouts/AEA.layout:232 lib/layouts/elsart.layout:385
 #: lib/layouts/ijmpc.layout:178 lib/layouts/ijmpd.layout:176
@@ -5949,7 +5949,7 @@ msgstr "Institute"
 msgid "E-Mail"
 msgstr "E-Mail"
 
-#: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:260
+#: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:261
 msgid "email"
 msgstr "email"
 
@@ -8238,7 +8238,7 @@ msgstr "Klaim \\theclaim."
 #: lib/layouts/ijmpc.layout:293 lib/layouts/ijmpd.layout:303
 #: lib/layouts/theorems-ams-bytype.inc:124 lib/layouts/theorems-bytype.inc:100
 msgid "Conjecture \\theconjecture."
-msgstr "Conjecture \\theconjecture."
+msgstr "Dugaan \\theconjecture."
 
 #: lib/layouts/ijmpc.layout:296 lib/layouts/ijmpd.layout:306
 msgid "Appendices Section"
@@ -8478,7 +8478,7 @@ msgstr "Klaim."
 
 #: lib/layouts/llncs.layout:317 lib/layouts/svjour.inc:329
 msgid "Conjecture #."
-msgstr "Perkiraan #."
+msgstr "Dugaan #."
 
 #: lib/layouts/llncs.layout:345 lib/layouts/svjour.inc:357
 msgid "Example #."
@@ -9716,11 +9716,11 @@ msgstr "Macam-macam Daftar"
 msgid "Idx"
 msgstr "Idx"
 
-#: lib/layouts/stdinsets.inc:294
+#: lib/layouts/stdinsets.inc:357
 msgid "opt"
 msgstr "JudulSingkat"
 
-#: lib/layouts/stdinsets.inc:375
+#: lib/layouts/stdinsets.inc:438
 msgid "Preview"
 msgstr "Pra Tampilan"
 
@@ -9790,7 +9790,7 @@ msgstr "Proposisi \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:123 lib/layouts/theorems.inc:123
 msgid "Conjecture \\thetheorem."
-msgstr "Conjecture \\thetheorem."
+msgstr "Dugaan \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:141 lib/layouts/theorems.inc:141
 msgid "Fact \\thetheorem."
@@ -9818,7 +9818,7 @@ msgstr "Catatan \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:260 lib/layouts/theorems.inc:260
 msgid "Claim \\thetheorem."
-msgstr "Claim \\thetheorem."
+msgstr "Klaim \\thetheorem."
 
 #: lib/layouts/theorems-order.inc:46 lib/layouts/theorems-starred.inc:173
 msgid "Example*"
@@ -9842,7 +9842,7 @@ msgstr "Klaim*"
 
 #: lib/layouts/theorems-starred.inc:117
 msgid "Conjecture."
-msgstr "Perkiraan."
+msgstr "Dugaan."
 
 #: lib/layouts/theorems-starred.inc:131
 msgid "Fact*"
@@ -9850,7 +9850,7 @@ msgstr "Fakta*"
 
 #: lib/layouts/theorems-starred.inc:193
 msgid "Problem."
-msgstr "Problem."
+msgstr "Masalah."
 
 #: lib/layouts/theorems-starred.inc:210
 msgid "Exercise."
@@ -9858,7 +9858,7 @@ msgstr "Latihan."
 
 #: lib/layouts/theorems-starred.inc:227
 msgid "Remark."
-msgstr "Remark."
+msgstr "Catatan."
 
 #: lib/layouts/braille.module:2
 msgid "Braille"
@@ -10433,12 +10433,12 @@ msgstr "Ringkasan."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:223
 msgid "Acknowledgement \\theacknowledgement."
-msgstr "Penghasgaan \\theacknowledgement."
+msgstr "Penghargaan \\theacknowledgement."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:232
 #: lib/layouts/theorems-ams-extended.module:293
 msgid "Acknowledgement*"
-msgstr "Acknowledgement*"
+msgstr "Penghargaan*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:246
 msgid "Conclusion \\theconclusion."
@@ -10447,12 +10447,12 @@ msgstr "Kesimpulan \\theconclusion."
 #: lib/layouts/theorems-ams-extended-bytype.module:255
 #: lib/layouts/theorems-ams-extended.module:327
 msgid "Conclusion*"
-msgstr "Simpulan*"
+msgstr "Kesimpulan*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:258
 #: lib/layouts/theorems-ams-extended.module:330
 msgid "Conclusion."
-msgstr "Simpulan."
+msgstr "Kesimpulan."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:266
 #: lib/layouts/theorems-ams-extended.module:344
@@ -10479,7 +10479,7 @@ msgstr "Asumsi."
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "Theorems (AMS-Extended)"
-msgstr "Theorema (AMS-Extended)"
+msgstr "Teorema (AMS-Extended)"
 
 #: lib/layouts/theorems-ams-extended.module:9
 msgid ""
@@ -10563,7 +10563,7 @@ msgid ""
 "the theorems are numbered consecutively throughout the document. This can be "
 "changed by loading one of the 'Theorems (Numbered by ...)' modules."
 msgstr ""
-"Mendefinisikan lingkungan teorema and proof menggunakan alat dari AMS-"
+"Mendefinisikan lingkungan teorema dam pruf menggunakan alat dari AMS-"
 "extended. Bentuk bernomor dan tanpa nomor dapat digunakan. Bentuk bawaan "
 "dari Teorema adalah bernomor secara urut di sepanjang dokumen. Hal ini dapat "
 "diubah dengan memuat salah satu modul Teorema (Nomor menurut ...)."
@@ -17476,20 +17476,18 @@ msgid "&Don't Add"
 msgstr "Jangan Tambahkan"
 
 #: src/CutAndPaste.cpp:683
-#, fuzzy, c-format
+#, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
-msgstr ""
-"Sisipan flex  %1$s tidak terdefinisi karena konversi class dari\n"
-" %2$s to %3$s"
+msgstr "Sisipan flex %1$s tidak terdefinisi setelah muat ulang `%2$s' layout."
 
 #: src/CutAndPaste.cpp:686
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
 "%3$s'."
 msgstr ""
-"Sisipan flex  %1$s tidak terdefinisi karena konversi class dari\n"
-" %2$s to %3$s"
+"Sisipan flex  %1$s tidak terdefinisi karena konversi dari `%2$s' layout ke `"
+"%3$s'."
 
 #: src/CutAndPaste.cpp:691
 msgid "Undefined flex inset"
@@ -18659,11 +18657,11 @@ msgstr ""
 "sebelumnya.\n"
 "Pengaturan dikembalikan ke bawaan."
 
-#: src/Paragraph.cpp:3082
+#: src/Paragraph.cpp:3084
 msgid "Memory problem"
 msgstr "Masalah dengan memori"
 
-#: src/Paragraph.cpp:3082
+#: src/Paragraph.cpp:3084
 msgid "Paragraph not properly initialized"
 msgstr "Paragraf tidak diinisialisasi dengan tepat"
 
@@ -19593,7 +19591,7 @@ msgid "Width"
 msgstr "Lebar"
 
 #: src/frontends/qt4/GuiBox.cpp:315 src/frontends/qt4/GuiBox.cpp:390
-#: src/insets/InsetBox.cpp:140
+#: src/insets/InsetBox.cpp:137
 msgid "Makebox"
 msgstr "Makebox"
 
@@ -20946,9 +20944,8 @@ msgid "User Interface"
 msgstr "Sistem Antarmuka"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2447
-#, fuzzy
 msgid "Classic"
-msgstr "Kelas|e"
+msgstr "Klasik"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2448
 msgid "Oxygen"
@@ -22197,7 +22194,7 @@ msgstr "TeX Code"
 msgid "Float"
 msgstr "Ambangan"
 
-#: src/insets/Inset.cpp:109 src/insets/InsetBox.cpp:133
+#: src/insets/Inset.cpp:109 src/insets/InsetBox.cpp:130
 msgid "Box"
 msgstr "Kotak"
 
@@ -22319,12 +22316,12 @@ msgstr "latar berwarna"
 msgid "double frame"
 msgstr "bingkai dua garis"
 
-#: src/insets/InsetBox.cpp:153 src/insets/InsetBox.cpp:156
+#: src/insets/InsetBox.cpp:150 src/insets/InsetBox.cpp:153
 #, c-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
-#: src/insets/InsetBox.cpp:159
+#: src/insets/InsetBox.cpp:156
 #, c-format
 msgid "%1$s (%2$s, %3$s)"
 msgstr "%1$s (%2$s, %3$s)"
@@ -22487,15 +22484,15 @@ msgstr "Tidak ada konversi dari  %1$s  diperlukan"
 msgid "Graphics file: %1$s"
 msgstr "Berkas gambar: %1$s"
 
-#: src/insets/InsetHyperlink.cpp:258
+#: src/insets/InsetHyperlink.cpp:259
 msgid "www"
 msgstr "www"
 
-#: src/insets/InsetHyperlink.cpp:262
+#: src/insets/InsetHyperlink.cpp:263
 msgid "file"
 msgstr "berkas "
 
-#: src/insets/InsetHyperlink.cpp:263
+#: src/insets/InsetHyperlink.cpp:264
 #, c-format
 msgid "Hyperlink (%1$s) to %2$s"
 msgstr "Tautan (%1$s) ke %2$s"
