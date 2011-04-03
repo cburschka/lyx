@@ -81,7 +81,11 @@ struct SpellcheckerWidget::Private
 
 
 SpellcheckerWidget::SpellcheckerWidget(GuiView * gv, QWidget * parent)
+#if QT_VERSION >= 0x040600
 	: QTabWidget(parent), d(new Private(this))
+#else
+	: QWidget(parent), d(new Private(this))
+#endif
 {
 	d->ui.setupUi(this);
 	d->gv_ = gv;
