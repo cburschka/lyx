@@ -2567,6 +2567,8 @@ lib_examples_ca_files = Split('''
 
 lib_examples_cs_files = Split('''
     splash.lyx
+    priklad_zLyXovany.lyx
+    priklad_syrovy.lyx
 ''')
 
 
