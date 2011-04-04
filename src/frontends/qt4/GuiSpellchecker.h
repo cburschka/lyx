@@ -16,6 +16,7 @@
 #define GUISPELLCHECKER_H
 
 #include "DockView.h"
+#include <QTabWidget>
 
 class QListWidgetItem;
 
@@ -25,11 +26,7 @@ class docstring_list;
 
 namespace frontend {
 
-#if QT_VERSION >= 0x040600
 class SpellcheckerWidget : public QTabWidget
-#else
-class SpellcheckerWidget : public QWidget
-#endif
 {
 	Q_OBJECT
 
