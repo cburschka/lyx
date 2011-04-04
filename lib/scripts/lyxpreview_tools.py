@@ -220,3 +220,53 @@ def write_metrics_info(metrics_info, metrics_file):
     for metric in metrics_info:
         metrics.write("Snippet %s %f\n" % metric)
     metrics.close()
+
+# Reads a .tex files and create an identical file but only with
+# pages whose index is in pages_to_keep
+def filter_pages(source_path, destination_path, pages_to_keep):
+    source_file = open(source_path, "r")
+    destination_file = open(destination_path, "w")
+
+    page_index = 0
+    skip_page = False
+    for line in source_file:
+        # We found a new page
+        if line.startswith("\\begin{preview}"):
+            page_index += 1
+            # If the page index isn't in pages_to_keep we don't copy it
+            skip_page = page_index not in pages_to_keep
+
+        if not skip_page:
+            destination_file.write(line)
+
+        # End of a page, we reset the skip_page bool
+        if line.startswith("\\end{preview}"):
+            skip_page = False
+
+    destination_file.close()
+    source_file.close()
+    
+# Joins two metrics list, that is a list of tuple (page_index, metric)
+# new_page_indexes contains the original page number of the pages in new_metrics
+# e.g. new_page_indexes[3] == 14 means that the 4th item in new_metrics is the 15th in the original counting
+# original_bitmap and destination_bitmap are file name models used to rename the new files
+# e.g. image_new%d.png and image_%d.png
+def join_metrics_and_rename(original_metrics, new_metrics, new_page_indexes, original_bitmap, destination_bitmap):
+    legacy_index = 0
+    for (index, metric) in new_metrics:
+        # If the file exists we rename it
+        if os.path.isfile(original_bitmap % (index)):
+            os.rename(original_bitmap % (index), destination_bitmap % new_page_indexes[index-1])
+
+        # Extract the original page index
+        index = new_page_indexes[index-1]
+        # Goes through the array until the end is reached or the correct index is found
+        while legacy_index < len(original_metrics) and original_metrics[legacy_index][0] < index:
+            legacy_index += 1
+        
+        
+        # Add or update the metric for this page
+        if legacy_index < len(original_metrics) and original_metrics[legacy_index][0] == index:
+            original_metrics[legacy_index] = (index, metric)
+        else:
+            original_metrics.insert(legacy_index, (index, metric))

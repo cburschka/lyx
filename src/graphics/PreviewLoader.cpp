@@ -24,7 +24,6 @@
 #include "LyXRC.h"
 #include "output.h"
 #include "OutputParams.h"
-#include "PDFOptions.h"
 #include "TexRow.h"
 
 #include "frontends/Application.h" // hexName
@@ -605,10 +604,6 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	// FIXME what about LuaTeX?
 	if (buffer_.params().useNonTeXFonts)
 		cs << " xelatex";
-	// DVI output fails sometimes with hyperref
-	// (probably a preview-latex/hyperref bug)
-	else if (buffer_.params().pdfoptions().use_hyperref)
-		cs << " pdflatex";
 
 	string const command = libScriptSearch(cs.str());
 

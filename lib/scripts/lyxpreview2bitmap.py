@@ -49,11 +49,11 @@
 import glob, os, re, string, sys
 
 from legacy_lyxpreview2ppm import legacy_conversion, \
-     legacy_conversion_step2, legacy_extract_metrics_info
-
+     legacy_conversion_step2, legacy_extract_metrics_info, filter_pages
+     
 from lyxpreview_tools import copyfileobj, error, find_exe, \
      find_exe_or_terminate, make_texcolor, mkstemp, run_command, warning, \
-     write_metrics_info
+     write_metrics_info, join_metrics_and_rename
 
 
 # Pre-compiled regular expressions.
@@ -103,7 +103,7 @@ def extract_metrics_info(dvipng_stdout):
             if frac < 0:
                 frac = 0.5
 
-        results.append((page, frac))
+        results.append((int(page), frac))
         pos = match.end() + 2
 
     if success == 0:
@@ -222,6 +222,11 @@ def main(argv):
     # The dvi output file name
     dvi_file = latex_file_re.sub(".dvi", latex_file)
 
+    # latex failed
+    # FIXME: try with pdflatex
+    if not os.path.isfile(dvi_file):
+        error("No DVI output.")
+        
     # Check for PostScript specials in the dvi, badly supported by dvipng
     # This is required for correct rendering of PSTricks and TikZ
     dv2dt = find_exe_or_terminate(["dv2dt"], path)
@@ -254,6 +259,7 @@ def main(argv):
             page_has_ps = True
 
     pages_parameter = ""
+    
     if len(ps_pages) == page_index:
         # All pages need PostScript, so directly use the legacy method.
         vec = [argv[0], argv[2], argv[3], argv[1], argv[4], argv[5], latex]
@@ -306,80 +312,45 @@ def main(argv):
         # FIXME: skip unnecessary dvips trial in legacy_conversion_step2
         return legacy_conversion_step2(latex_file, dpi, output_format)
 
+    dvipng_metrics = []
     if len(ps_pages) > 0:
         # Some pages require PostScript.
         # Create a new LaTeX file just for the snippets needing
         # the legacy method
-        original_latex = open(latex_file, "r")
         legacy_latex_file = latex_file_re.sub("_legacy.tex", latex_file)
-        legacy_latex = open(legacy_latex_file, "w")
-
-        page_index = 0
-        skip_page = False
-        for line in original_latex:
-            if line.startswith("\\begin{preview}"):
-                page_index += 1
-                # Skips all pages processed by dvipng
-                skip_page = page_index not in ps_pages
-
-            if not skip_page:
-                legacy_latex.write(line)
-
-            if line.startswith("\\end{preview}"):
-                skip_page = False
-
-        legacy_latex.close()
-        original_latex.close()
+        filter_pages(latex_file, legacy_latex_file, ps_pages)
 
         # Pass the new LaTeX file to the legacy method
         vec = [ argv[0], latex_file_re.sub("_legacy.tex", argv[2]), \
                 argv[3], argv[1], argv[4], argv[5], latex ]
-        legacy_conversion(vec, True)
-
+        legacy_metrics = legacy_conversion(vec, True)[1]
+        
         # Now we need to mix metrics data from dvipng and the legacy method
         metrics_file = latex_file_re.sub(".metrics", latex_file)
-
         dvipng_metrics = extract_metrics_info(dvipng_stdout)
-        legacy_metrics = legacy_extract_metrics_info(latex_file_re.sub("_legacy.log", latex_file))
+
+        original_bitmap = latex_file_re.sub("%d." + output_format, legacy_latex_file)
+        destination_bitmap = latex_file_re.sub("%d." + output_format, latex_file)
         
-        # Check whether a page is present in dvipng_metrics, otherwise
-        # add it getting the metrics from legacy_metrics
-        legacy_index = -1;
-        for i in range(page_index):
-            # If we exceed the array bounds or the dvipng_metrics doesn't
-            # match the current one, this page belongs to the legacy method
-            if (i > len(dvipng_metrics) - 1) or (dvipng_metrics[i][0] != str(i + 1)):
-                legacy_index += 1
-                
-                # Add this metric from the legacy output
-                dvipng_metrics.insert(i, (str(i + 1), legacy_metrics[legacy_index][1]))
-                # Legacy output filename
-                legacy_output = os.path.join(dir, latex_file_re.sub("_legacy%s.%s" % 
-                    (legacy_metrics[legacy_index][0], output_format), latex_file))
+        # Join metrics from dvipng and legacy, and rename legacy bitmaps
+        join_metrics_and_rename(dvipng_metrics, legacy_metrics, ps_pages, 
+            original_bitmap, destination_bitmap)
 
-                # Check whether legacy method actually created the file
-                if os.path.isfile(legacy_output):
-                    # Rename the file by removing the "_legacy" suffix
-                    # and adjusting the index
-                    bitmap_output = os.path.join(dir, latex_file_re.sub("%s.%s" % 
-                        (str(i + 1), output_format), latex_file))
-                    os.rename(legacy_output, bitmap_output)
-
-        # Actually create the .metrics file
-        write_metrics_info(dvipng_metrics, metrics_file)
     else:
         # Extract metrics info from dvipng_stdout.
         # In this case we just used dvipng, so no special metrics
         # handling is needed.
         metrics_file = latex_file_re.sub(".metrics", latex_file)
-        write_metrics_info(extract_metrics_info(dvipng_stdout), metrics_file)
+        dvipng_metrics = extract_metrics_info(dvipng_stdout)
 
     # Convert images to ppm format if necessary.
     if output_format == "ppm":
         convert_to_ppm_format(pngtopnm, latex_file_re.sub("", latex_file))
 
-    return 0
-
+    # Actually create the .metrics file
+    write_metrics_info(dvipng_metrics, metrics_file)
+    
+    return (0, dvipng_metrics)
 
 if __name__ == "__main__":
-    main(sys.argv)
+    exit(main(sys.argv)[0])

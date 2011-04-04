@@ -57,7 +57,7 @@ import glob, os, pipes, re, string, sys
 
 from lyxpreview_tools import copyfileobj, error, find_exe, \
      find_exe_or_terminate, make_texcolor, mkstemp, run_command, warning, \
-     write_metrics_info
+     write_metrics_info, filter_pages, join_metrics_and_rename
 
 # Pre-compiled regular expression.
 latex_file_re = re.compile("\.tex$")
@@ -109,7 +109,7 @@ def legacy_extract_metrics_info(log_file):
                     if frac < 0 or frac > 1:
                             frac = 0.5
 
-                results.append((match.group(1), frac))
+                results.append((int(match.group(1)), frac))
 
             else:
                 tp_descent = string.atof(match.group(2))
@@ -120,12 +120,11 @@ def legacy_extract_metrics_info(log_file):
         # the calling function will act on the value of 'success'.
         warning('Warning in legacy_extract_metrics_info! Unable to open "%s"' % log_file)
         warning(`sys.exc_type` + ',' + `sys.exc_value`)
-
+		
     if success == 0:
         error("Failed to extract metrics info from %s" % log_file)
         
     return results
-
 
 def extract_resolution(log_file, dpi):
     fontsize_re = re.compile("Preview: Fontsize")
@@ -305,8 +304,13 @@ def legacy_conversion_step2(latex_file, dpi, output_format, skipMetrics = False)
         gs_device = "pnmraw"
         gs_ext = "ppm"
 
+    # Extract the metrics from the log file
+    legacy_metrics = legacy_extract_metrics_info(log_file)
+    
+    # List of pages which failed to produce a correct output
+    failed_pages = []
+    
     # Generate the bitmap images
-
     if dvips_failed:
         gs_call = '%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=%s ' \
                   '-sOutputFile="%s%%d.%s" ' \
@@ -328,13 +332,52 @@ def legacy_conversion_step2(latex_file, dpi, output_format, skipMetrics = False)
         i = 0
         ps_files = glob.glob("%s.[0-9][0-9][0-9]" % latex_file_re.sub("", latex_file))
         ps_files.sort()
+        
+        # Call GhostScript for each page
         for file in ps_files:
             i = i + 1
             gs_status, gs_stdout = run_command(gs_call % (i, file))
             if gs_status != None:
-                warning("Failed: %s %s" % (os.path.basename(gs), file))
+                # gs failed, keep track of this
+                failed_pages.append(i)
+                
+    
+    # Pass failed pages to pdflatex
+    if len(failed_pages) > 0:
+        pdflatex = find_exe(["pdflatex"], path)
+        if pdflatex != None:
+            # Create a new LaTeX file from the original but only with failed pages
+            pdf_latex_file = latex_file_re.sub("_pdflatex.tex", latex_file)
+            filter_pages(latex_file, pdf_latex_file, failed_pages)
+            
+            # pdflatex call
+            pdflatex_call = '%s "%s"' % (pdflatex, pdf_latex_file)
+            pdflatex_status, pdflatex_stdout = run_command(pdflatex_call)
+            
+            pdf_file = latex_file_re.sub(".pdf", pdf_latex_file)
+            
+            # GhostScript call to produce bitmaps
+            gs_call = '%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=%s ' \
+                      '-sOutputFile="%s%%d.%s" ' \
+                      '-dGraphicsAlphaBit=%d -dTextAlphaBits=%d ' \
+                      '-r%f "%s"' \
+                      % (gs, gs_device, latex_file_re.sub("", pdf_latex_file), \
+                         gs_ext, alpha, alpha, resolution, pdf_file)
+
+            gs_status, gs_stdout = run_command(gs_call)
+            if gs_status != None:
+                # Give up!
+                warning("Some pages failed with all the possible routes")
             else:
-                os.remove(file)
+                # We've done it!
+                pdf_log_file = latex_file_re.sub(".log", pdf_latex_file)
+                pdf_metrics = legacy_extract_metrics_info(pdf_log_file)
+                
+                original_bitmap = latex_file_re.sub("%d." + output_format, pdf_latex_file)
+                destination_bitmap = latex_file_re.sub("%d." + output_format, latex_file)
+                
+                # Join the metrics with the those from dvips and rename the bitmap images
+                join_metrics_and_rename(legacy_metrics, pdf_metrics, failed_pages, original_bitmap, destination_bitmap)
 
     # Crop the images
     if pnmcrop != None:
@@ -345,10 +388,10 @@ def legacy_conversion_step2(latex_file, dpi, output_format, skipMetrics = False)
     if not skipMetrics:
         # Extract metrics info from the log file.
         metrics_file = latex_file_re.sub(".metrics", latex_file)
-        write_metrics_info(legacy_extract_metrics_info(log_file), metrics_file)
+        write_metrics_info(legacy_metrics, metrics_file)
 
-    return 0
+    return (0, legacy_metrics)
 
 
 if __name__ == "__main__":
-    legacy_conversion(sys.argv)
+    exit(legacy_conversion(sys.argv)[0])
