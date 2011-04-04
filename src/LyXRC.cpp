@@ -1139,7 +1139,10 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 		}
 		case RC_EDITOR_ALTERNATIVES:  {
 			string format, command;
-			lexrc >> format >> command;
+			if (lexrc.next())
+				format = lexrc.getString();
+			if (lexrc.eatLine())
+				command = lexrc.getString();
 			editor_alternatives[format].insert(command);
 			break;
 		}
