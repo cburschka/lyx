@@ -2164,7 +2164,6 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 				if (mbuf != &buffer()) {
 					string mbtmp = mbuf->temppath();
 					FileName const mbufimg(support::addName(mbtmp, filename));
-					LYXERR0(mbufimg);
 					pimage->filename().copyTo(mbufimg);
 				}
 				// add the file to the list of files to be exported
