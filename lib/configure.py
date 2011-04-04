@@ -458,7 +458,7 @@ def checkLuatex():
             if DVILUATEX != '':
                 addToRC(r'\converter luatex      dvi3        "%s"	"latex=lualatex"' % DVILUATEX)   
         # remove temporary files
-        removeFiles(['luatest.tex', 'luatest.log'])
+        removeFiles(['luatest.tex', 'luatest.log', 'luatest.aux', 'luatest.pdf'])
 
 
 def checkModule(module):
