@@ -1,0 +1,355 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language czech
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 0
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language german
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+TOTO JE NÁZEV DOKUMENTU
+\end_layout
+
+\begin_layout Author
+napsal Fe LyX
+\end_layout
+
+\begin_layout Date
+30.
+ března 2011
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Základní filosofie
+\end_layout
+
+\begin_layout Standard
+Základní filosofií LyXu je, že vy byste se měli starat o obsah toho co píšete
+ a ne o formu.
+\end_layout
+
+\begin_layout Subsection
+Jak to dělá LyX
+\end_layout
+
+\begin_layout Standard
+LyX používá LaTeX, systém pro přípravu dokumentů, který vytvořil Leslie
+ Lamport v roce 1985.
+ Tento systém je zase postaven nad sázecím jazykem zvaným TeX, vytvořeným
+ Donaldem Knuthem roku 1984.
+ LaTeX je postaven na podobné filosofii jako LyX.
+ Leslie Lamport jednou řekl (viz.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lamport"
+
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Quote
+Účelem typografického designu je pomoct čtenáři pochopit autorovy myšlenky.
+ Aby byl dokument snadno čitelný, musí jeho vizuální struktura odpovídat
+ jeho logické struktuře.
+ Logicky rozdílné části textu, jako třeba citáty a počítačové programy,
+ by měly být rozdílné i co se týče vzhledu...
+ Protože LaTeX nerozumí vašemu textu, musíte explicitně vyjádřit logickou
+ strukturu napsáním speciálních příkazů.
+ Při psaní dokumentu byste se měli zabývat jeho logickou strukturou a ne
+ jeho výsledným vzhledem.
+\end_layout
+
+\begin_layout Subsection
+Proč je LyX lepší
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:LyX_lepsi"
+
+\end_inset
+
+LyX může být užitečný pro více lidí než LaTeX.
+ Naučit se s ním pracovat je mnohem jednodušší, protože se nemusíte učit
+ LaTeX (což je v podstatě programovací jazyk).
+ LyX je podobný ostatním textovým procesorům typu 
+\begin_inset Quotes gld
+\end_inset
+
+what you see is what you get
+\begin_inset Quotes grd
+\end_inset
+
+ (vidíš to, co dostaneš) až na to, že LyX je 
+\begin_inset Quotes gld
+\end_inset
+
+what you see is what you mean
+\begin_inset Quotes grd
+\end_inset
+
+ (vidíš to, co jsi myslel).
+ Jednoduché používání textových procesorů tak kombinuje se silou LaTeXu,
+ což je skvělé.
+ Dále je formát souboru nezávislý na operačním systému.
+ A to nejlepší nakonec: LyX je zadarmo!
+\end_layout
+
+\begin_layout Section
+Vlastnosti LyXu
+\end_layout
+
+\begin_layout Standard
+LyX má spoustu vlastností, které usnadňují psaní dokumentů.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+nakonec, proč byste ho jinak chtěli používat?
+\end_layout
+
+\end_inset
+
+ Už se 
+\emph on
+nemůžu dočkat
+\emph default
+ až vám o nich povím.
+ Tady je seznam několika z nich:
+\end_layout
+
+\begin_layout Itemize
+LyX se stará o okraje stránky a číslování poznámek pod čarou za vás.
+\end_layout
+
+\begin_layout Itemize
+S LyXem je jednoduché psát a upravovat matematické vzorce.
+\end_layout
+
+\begin_layout Standard
+Filosofičtější pojednání o tom, proč je LyX lepší než spousta jiných textových
+ procesorů, najdete v Sekci 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LyX_lepsi"
+
+\end_inset
+
+, která je na straně 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "sub:LyX_lepsi"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Chabé pokusy o využití dalších možností LyXu
+\end_layout
+
+\begin_layout Standard
+Jednou jsem napsal program.
+ Vypadal takto.
+\end_layout
+
+\begin_layout LyX-Code
+5 VŠIMNĚTE SI MÉHO SKVĚLÉHO PROGRAMU
+\end_layout
+
+\begin_layout LyX-Code
+10 VYTISKNI 
+\begin_inset Quotes gld
+\end_inset
+
+JSEM SKVĚLÝ
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+20 JDI NA 10
+\end_layout
+
+\begin_layout Standard
+Po všem tom vědátorování jsem se začal cítit víc jako umělec, a tak jsem
+ napsal toto haiku.
+\end_layout
+
+\begin_layout Verse
+LyX je úžasný
+\end_layout
+
+\begin_layout Verse
+Sázecí prográmeček
+\end_layout
+
+\begin_layout Verse
+Ušetří nám čas
+\end_layout
+
+\begin_layout Section
+Matematika
+\end_layout
+
+\begin_layout Standard
+Moje nejoblíbenější rovnice, je řešení kvadratické rovnice.
+ Pokud 
+\lang english
+
+\begin_inset Formula $ax^{2}+bx+c=0$
+\end_inset
+
+
+\lang czech
+ (rov.
+ 1), pak 
+\lang english
+
+\begin_inset Formula $x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$
+\end_inset
+
+
+\lang czech
+ (rov.
+ 2).
+\end_layout
+
+\begin_layout Standard
+Moje další oblíbená rovnice je základem diferenciálního počtu: 
+\lang english
+
+\begin_inset Formula $f'(x)=\lim_{\Delta x\rightarrow0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
+\end_inset
+
+
+\lang czech
+ (rov.
+ 3).
+\end_layout
+
+\begin_layout Section
+Poznámky
+\end_layout
+
+\begin_layout Standard
+Několik poznámek o zLyXování tohoto dokumentu.
+\end_layout
+
+\begin_layout Itemize
+Odstranil jsem linky z pomlček.
+ Byly tu jen proto, aby oddělily titulek a reference od zbytku dokumentu.
+ LyX (LaTeX) umí tyto části dokumentu od zbytku oddělit automaticky vynecháním
+ místa.
+\end_layout
+
+\begin_layout Itemize
+Matematické rovnice jsem nedával do vzorce na celou řádku (display) a také
+ jsem nepoužil jejich automatické číslování, protože není popsané v 
+\emph on
+Průvodci LyXem.
+\end_layout
+
+\begin_layout Itemize
+Není třeba psát slovo 
+\begin_inset Quotes gld
+\end_inset
+
+Reference
+\begin_inset Quotes grd
+\end_inset
+
+ níže.
+ LyX ho napíše automaticky, když vyberete styl 
+\family sans
+Literatura.
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Reference
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Lamport"
+
+\end_inset
+
+Lamport, Leslie.
+ 
+\emph on
+LaTeX -- A document preparation system.
+
+\emph default
+ Massachusetts: Addison-Wesley, second edition, 1994.
+\end_layout
+
+\end_body
+\end_document

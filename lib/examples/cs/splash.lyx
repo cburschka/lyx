@@ -1,21 +1,29 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
 \use_default_options false
+\maintain_unincluded_children false
 \language czech
+\language_package default
 \inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -23,21 +31,31 @@
 \use_geometry false
 \use_amsmath 0
 \use_esint 0
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -59,8 +77,8 @@ LyX přichází s
 \size default
 \noun default
 \color inherit
-výbornou dokumentací—prosíme používejte ji! Český úvod můžete najít v menu
- 
+výbornou dokumentací — prosíme používejte ji! Český úvod můžete najít v
+ menu 
 \family sans
 Nápověda\SpecialChar \menuseparator
 Průvodce
@@ -102,9 +120,9 @@ Už jsme se zmínili o tom, že byste si mohli přečíst dokumnetaci?
 Výstup z LyXu vypadá skvěle! Zkuste vybrat v menu 
 \family sans
 Prohlížet\SpecialChar \menuseparator
-DVI
+Prohlížet [PDF (pdflatex)] 
 \family default
-, ať se přesvědčíte na vlastní oči.
+ať se přesvědčíte na vlastní oči.
 \end_layout
 
 \begin_layout Enumerate
@@ -135,13 +153,13 @@ LyX nabízí mnoho možností lidem, kteří čtou a píší jiným jazykem, ne�
  Viz 
 \family sans
 Nápověda\SpecialChar \menuseparator
-Přizpůsobení
+Přizpůsobení LyXu
 \family default
- LyXu.
+.
 \end_layout
 
 \begin_layout Enumerate
-Domácí stránka LyXu je na 
+Domovská stránka LyXu je na adrese 
 \family typewriter
 
 \begin_inset Flex URL

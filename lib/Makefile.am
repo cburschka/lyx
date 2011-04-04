@@ -65,7 +65,9 @@ dist_caexamples_DATA = \
 
 csexamplesdir = $(pkgdatadir)/examples/cs
 dist_csexamples_DATA = \
-	examples/cs/splash.lyx
+	examples/cs/splash.lyx \
+	priklad_syrovy.lyx \
+	priklad_zLyXovany.lyx
 
 daexamplesdir = $(pkgdatadir)/examples/da
 dist_daexamples_DATA = \
