@@ -18,23 +18,30 @@
 # Invocation:
 #    pocheck.pl po_file po_file ...
 
-foreach $pofilename ( @ARGV )
+use strict;
+use warnings;
+
+my %trans;
+
+foreach my $pofilename ( @ARGV )
 {
   print "Processing po file '$pofilename'...\n";
 
   open( INPUT, "<$pofilename" )
     || die "Cannot read po file '$pofilename'";
-  @pofile = <INPUT>;
+  my @pofile = <INPUT>;
   close( INPUT );
 
   undef( %trans );
   keys( %trans ) = 10000;
 
-  $noOfLines = $#pofile;
+  my $noOfLines = $#pofile;
 
-  $warn = 0;
+  my $warn = 0;
 
-  $i = 0;
+  my $i = 0;
+  my ($msgid, $msgstr, $more);
+
   while ($i <= $noOfLines) {
     ( $msgid ) = ( $pofile[$i] =~ m/^msgid "(.*)"/ );
     $i++;
@@ -61,16 +68,16 @@ foreach $pofilename ( @ARGV )
     next if ($msgid eq "" or $msgstr eq "");
 
     # Check for matching %1$s, etc.
-    @argstrs = ( $msgid =~ m/%(\d)\$s/g );
+    my @argstrs = ( $msgid =~ m/%(\d)\$s/g );
     if (@argstrs) {
-      $num = 0;
-      foreach $arg (@argstrs) { $num = $arg if $arg > $num; }
-      if ($num <= 0) { 
+      my $n = 0;
+      foreach my $arg (@argstrs) { $n = $arg if $arg > $n; }
+      if ($n <= 0) { 
         print "Problem finding arguments in:\n    $msgid!\n";
         $warn++;
       } else {
-        foreach $i (1..$num) {
-          $arg = "%$i\\\$s"; 
+        foreach my $i (1..$n) {
+          my $arg = "%$i\\\$s"; 
           if ( $msgstr !~ m/$arg/ ) {
             print "Missing argument `$arg'\n  '$msgid' ==> '$msgstr'\n";
             $warn++;
@@ -117,8 +124,8 @@ foreach $pofilename ( @ARGV )
     # we now collect these translations in a hash.
     # this will allow us to check below if we have translated
     # anything more than one way.
-    $msgid_clean  = lc($msgid);
-    $msgstr_clean = lc($msgstr);
+    my $msgid_clean  = lc($msgid);
+    my $msgstr_clean = lc($msgstr);
 
     $msgid_clean  =~ s/(.*)\|.*?$/$1/;  # strip menu shortcuts
     $msgstr_clean =~ s/(.*)\|.*?$/$1/;
@@ -134,9 +141,9 @@ foreach $pofilename ( @ARGV )
 
   foreach $msgid ( keys %trans ) {
     # so $ref is a reference to the inner hash.
-    $ref = $trans{$msgid};
+    my $ref = $trans{$msgid};
     # @msgstrkeys is an array of the keys of that inner hash.
-    @msgstrkeys = keys %$ref;
+    my @msgstrkeys = keys %$ref;
 
     # do we have more than one such key?
     if ( $#msgstrkeys > 0 ) {
