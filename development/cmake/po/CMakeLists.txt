@@ -46,10 +46,10 @@ macro(add_gettext_python  _par _dir)
       COMMAND  ${CMAKE_COMMAND} -E copy_if_different "${TOP_SRC_DIR}/lib/layouttranslations" "${_dst}"
       COMMAND ${LYX_PYTHON_EXECUTABLE}
       ARGS "${TOP_SRC_DIR}/po/lyx_pot.py" -b "${TOP_SRC_DIR}" -o "${_dst}" -t ${_par1} "--src_file=${_src_files}"
-      DEPENDS ${_sources} ${_src_files}
+      DEPENDS ${_sources} ${_src_files} "${TOP_SRC_DIR}/lib/layouttranslations"
       COMMENT "${LYX_PYTHON_EXECUTABLE} ${TOP_SRC_DIR}/po/lyx_pot.py -b ${TOP_SRC_DIR} -o  ${_dst} -t ${_par1} --src_file=${_src_files}"
       )
-    ADD_CUSTOM_TARGET(layouttranslations ALL DEPENDS "${_dst}")
+    ADD_CUSTOM_TARGET(layouttranslations1 ALL DEPENDS "${_dst}")
     install(FILES "${_dst}" DESTINATION .)
   else()
     ADD_CUSTOM_COMMAND(
