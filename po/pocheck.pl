@@ -45,7 +45,7 @@ foreach $pofilename ( @ARGV )
       $msgid = $msgid . $more;
       $i++;
     }
-
+    
     # now look for the associated msgstr.
     until ( ( $msgstr ) = ( $pofile[$i] =~ m/^msgstr "(.*)"/ ) ) { $i++; };
     $i++;
@@ -59,6 +59,25 @@ foreach $pofilename ( @ARGV )
     # nothing to do if one of them is empty. 
     # (surely that is always $msgstr?)
     next if ($msgid eq "" or $msgstr eq "");
+
+    # Check for matching %1$s, etc.
+    @argstrs = ( $msgid =~ m/%(\d)\$s/g );
+    if (@argstrs) {
+      $num = 0;
+      foreach $arg (@argstrs) { $num = $arg if $arg > $num; }
+      if ($num <= 0) { 
+        print "Problem finding arguments in:\n    $msgid!\n";
+        $warn++;
+      } else {
+        foreach $i (1..$num) {
+          $arg = "%$i\\\$s"; 
+          if ( $msgstr !~ m/$arg/ ) {
+            print "Missing argument `$arg'\n  '$msgid' ==> '$msgstr'\n";
+            $warn++;
+          }
+        }
+      }
+    }
 
     # Check colon at the end of a message
     if ( ( $msgid =~ m/: *(\|.*)?$/ ) != ( $msgstr =~ m/: *(\|.*)?$/ ) ) {
@@ -94,7 +113,7 @@ foreach $pofilename ( @ARGV )
       print( "  '$msgid' => '$msgstr'\n" );
       $warn++;
     }
-
+    
     # we now collect these translations in a hash.
     # this will allow us to check below if we have translated
     # anything more than one way.
