@@ -172,8 +172,8 @@ bool GuiErrorList::goTo(int item)
 		return false;
 	}
 
-	// Don't try to highlight the content of info insets
-	while (dit.inset().lyxCode() == INFO_CODE)
+	// Don't try to highlight the content of non-editable insets
+	while (!dit.inset().editable())
 		dit.backwardPos();
 
 	// Now make the selection.
