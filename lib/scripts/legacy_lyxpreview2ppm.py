@@ -15,7 +15,7 @@
 #   Paul A. Rubin, rubin@msu.edu.
 
 # This script takes a LaTeX file and generates a collection of
-# ppm image files, one per previewed snippet.
+# png or ppm image files, one per previewed snippet.
 # Example usage:
 # legacy_lyxpreview2bitmap.py 0lyxpreview.tex 128 ppm 000000 faf0e6
 
@@ -31,7 +31,7 @@
 # Decomposing TEXFILE's name as DIR/BASE.tex, this script will,
 # if executed successfully, leave in DIR:
 # * a (possibly large) number of image files with names
-#   like BASE[0-9]+.ppm
+#   like BASE[0-9]+.(ppm|png)
 # * a file BASE.metrics, containing info needed by LyX to position
 #   the images correctly on the screen.
 
@@ -40,6 +40,7 @@
 # * preview.sty;
 # * dvips;
 # * gs;
+# * pdflatex (optional);
 # * pnmcrop (optional).
 
 # preview.sty is part of the preview-latex project
@@ -47,11 +48,29 @@
 # Alternatively, it can be obtained from
 #   CTAN/support/preview-latex/
 
-# The script uses the deprecated dvi->ps->ppm conversion route.
-# If possible, please grab 'dvipng'; it's faster and more robust.
-# If you have it then this script will not be invoked by
-# lyxpreview2bitmap.py.
-# Warning: this legacy support will be removed one day...
+# What does this script do?
+# [legacy_conversion]
+# 1) Call latex to create a DVI file from LaTeX
+# [legacy_conversion_step2]
+# 2) Call dvips to create one PS file for each DVI page
+# 3) If dvips fails look for PDF and call gs to produce bitmaps
+# 4) Otherwise call gs on each PostScript file to produce bitmaps
+# [legacy_conversion_pdflatex]
+# 5) Keep track of pages on which gs failed and pass them to pdflatex
+# 6) Call gs on the PDF output from pdflatex to produce bitmaps
+# 7) Extract and write to file (or return to lyxpreview2bitmap) 
+#    metrics from both methods (standard and pdflatex)
+
+# The script uses the old dvi->ps->png conversion route,
+# which is good when using PSTricks, TikZ or other packages involving
+# PostScript literals (steps 1, 2, 4).
+# This script also generates bitmaps from PDF created by a call to
+# lyxpreview2bitmap.py passing "pdflatex" to the CONVERTER parameter
+# (step 3).
+# Finally, there's also has a fallback method based on pdflatex, which 
+# is required in certain cases, if hyperref is active for instance,
+# (step 5, 6).
+# If possible, dvipng should be used, as it's much faster.
 
 import glob, os, pipes, re, string, sys
 
@@ -62,6 +81,8 @@ from lyxpreview_tools import copyfileobj, error, find_exe, \
 # Pre-compiled regular expression.
 latex_file_re = re.compile("\.tex$")
 
+# PATH environment variable
+path  = string.split(os.environ["PATH"], os.pathsep)
 
 def usage(prog_name):
     return "Usage: %s <latex file> <dpi> ppm <fg color> <bg color>\n"\
@@ -249,7 +270,6 @@ def legacy_conversion(argv, skipMetrics = False):
     bg_color_gr = make_texcolor(argv[5], True)
 
     # External programs used by the script.
-    path  = string.split(os.environ["PATH"], os.pathsep)
     latex = find_exe_or_terminate(latex_commands, path)
 
     # Move color information into the latex file.
@@ -266,10 +286,53 @@ def legacy_conversion(argv, skipMetrics = False):
 
     return legacy_conversion_step2(latex_file, dpi, output_format, skipMetrics)
 
+# Creates a new LaTeX file from the original with pages specified in 
+# failed_pages, pass it through pdflatex and updates the metrics
+# from the standard legacy route
+def legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics, gs, 
+    gs_device, gs_ext, alpha, resolution, output_format):
+        
+    # Search for pdflatex executable
+    pdflatex = find_exe(["pdflatex"], path)
+    if pdflatex == None:
+        warning("Can't find pdflatex. Some pages failed with all the possible routes.")
+    else:
+        # Create a new LaTeX file from the original but only with failed pages
+        pdf_latex_file = latex_file_re.sub("_pdflatex.tex", latex_file)
+        filter_pages(latex_file, pdf_latex_file, failed_pages)
+            
+        # pdflatex call
+        pdflatex_call = '%s "%s"' % (pdflatex, pdf_latex_file)
+        pdflatex_status, pdflatex_stdout = run_command(pdflatex_call)
+            
+        pdf_file = latex_file_re.sub(".pdf", pdf_latex_file)
+            
+        # GhostScript call to produce bitmaps
+        gs_call = '%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=%s ' \
+                    '-sOutputFile="%s%%d.%s" ' \
+                    '-dGraphicsAlphaBit=%d -dTextAlphaBits=%d ' \
+                    '-r%f "%s"' \
+                    % (gs, gs_device, latex_file_re.sub("", pdf_latex_file), \
+                        gs_ext, alpha, alpha, resolution, pdf_file)
+        gs_status, gs_stdout = run_command(gs_call)
+        if gs_status != None:
+            # Give up!
+            warning("Some pages failed with all the possible routes")
+        else:
+            # We've done it!
+            pdf_log_file = latex_file_re.sub(".log", pdf_latex_file)
+            pdf_metrics = legacy_extract_metrics_info(pdf_log_file)
+                
+            original_bitmap = latex_file_re.sub("%d." + output_format, pdf_latex_file)
+            destination_bitmap = latex_file_re.sub("%d." + output_format, latex_file)
+                
+            # Join the metrics with the those from dvips and rename the bitmap images
+            join_metrics_and_rename(legacy_metrics, pdf_metrics, failed_pages, 
+                original_bitmap, destination_bitmap)
+
 
 def legacy_conversion_step2(latex_file, dpi, output_format, skipMetrics = False):
     # External programs used by the script.
-    path    = string.split(os.environ["PATH"], os.pathsep)
     dvips   = find_exe_or_terminate(["dvips"], path)
     gs      = find_exe_or_terminate(["gswin32c", "gs"], path)
     pnmcrop = find_exe(["pnmcrop"], path)
@@ -312,6 +375,7 @@ def legacy_conversion_step2(latex_file, dpi, output_format, skipMetrics = False)
     
     # Generate the bitmap images
     if dvips_failed:
+        # dvips failed, maybe there's a PDF, try to produce bitmaps
         gs_call = '%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=%s ' \
                   '-sOutputFile="%s%%d.%s" ' \
                   '-dGraphicsAlphaBit=%d -dTextAlphaBits=%d ' \
@@ -323,61 +387,31 @@ def legacy_conversion_step2(latex_file, dpi, output_format, skipMetrics = False)
         if gs_status != None:
             error("Failed: %s %s" % (os.path.basename(gs), ps_file))
     else:
+        # Model for calling gs on each file
         gs_call = '%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=%s ' \
                   '-sOutputFile="%s%%d.%s" ' \
                   '-dGraphicsAlphaBit=%d -dTextAlphaBits=%d ' \
                   '-r%f "%%s"' \
                   % (gs, gs_device, latex_file_re.sub("", latex_file), \
                      gs_ext, alpha, alpha, resolution)
+        
         i = 0
+        # Collect all the PostScript files (like *.001, *.002, ...)
         ps_files = glob.glob("%s.[0-9][0-9][0-9]" % latex_file_re.sub("", latex_file))
         ps_files.sort()
         
-        # Call GhostScript for each page
+        # Call GhostScript for each file
         for file in ps_files:
             i = i + 1
             gs_status, gs_stdout = run_command(gs_call % (i, file))
             if gs_status != None:
                 # gs failed, keep track of this
                 failed_pages.append(i)
-                
     
     # Pass failed pages to pdflatex
     if len(failed_pages) > 0:
-        pdflatex = find_exe(["pdflatex"], path)
-        if pdflatex != None:
-            # Create a new LaTeX file from the original but only with failed pages
-            pdf_latex_file = latex_file_re.sub("_pdflatex.tex", latex_file)
-            filter_pages(latex_file, pdf_latex_file, failed_pages)
-            
-            # pdflatex call
-            pdflatex_call = '%s "%s"' % (pdflatex, pdf_latex_file)
-            pdflatex_status, pdflatex_stdout = run_command(pdflatex_call)
-            
-            pdf_file = latex_file_re.sub(".pdf", pdf_latex_file)
-            
-            # GhostScript call to produce bitmaps
-            gs_call = '%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=%s ' \
-                      '-sOutputFile="%s%%d.%s" ' \
-                      '-dGraphicsAlphaBit=%d -dTextAlphaBits=%d ' \
-                      '-r%f "%s"' \
-                      % (gs, gs_device, latex_file_re.sub("", pdf_latex_file), \
-                         gs_ext, alpha, alpha, resolution, pdf_file)
-
-            gs_status, gs_stdout = run_command(gs_call)
-            if gs_status != None:
-                # Give up!
-                warning("Some pages failed with all the possible routes")
-            else:
-                # We've done it!
-                pdf_log_file = latex_file_re.sub(".log", pdf_latex_file)
-                pdf_metrics = legacy_extract_metrics_info(pdf_log_file)
-                
-                original_bitmap = latex_file_re.sub("%d." + output_format, pdf_latex_file)
-                destination_bitmap = latex_file_re.sub("%d." + output_format, latex_file)
-                
-                # Join the metrics with the those from dvips and rename the bitmap images
-                join_metrics_and_rename(legacy_metrics, pdf_metrics, failed_pages, original_bitmap, destination_bitmap)
+        legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics, gs, 
+            gs_device, gs_ext, alpha, resolution, output_format)
 
     # Crop the images
     if pnmcrop != None:
