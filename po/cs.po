@@ -506,7 +506,7 @@ msgstr "Pøidat vybrané vìtve do seznamu."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:28
 msgid "&Add Selected"
-msgstr "&Pøidat Vybrané:"
+msgstr "&Pøidat Vybrané"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:35
 msgid "Add all unknown branches to the list."
@@ -954,7 +954,7 @@ msgstr "V&ynulovat"
 
 #: src/frontends/qt4/ui/ColorUi.ui:99
 msgid "Greyed-out notes:"
-msgstr "Za¹edlé poznámky"
+msgstr "Za¹edlé poznámky:"
 
 #: src/frontends/qt4/ui/ColorUi.ui:118 src/frontends/qt4/ui/ColorUi.ui:256
 #: src/frontends/qt4/GuiDocument.cpp:1511
@@ -984,7 +984,7 @@ msgstr "&Revizí nazpìt"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:83
 msgid "&Between revisions"
-msgstr "&Mezi revizemi:"
+msgstr "&Mezi revizemi"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:96
 msgid "Old:"
@@ -1026,7 +1026,7 @@ msgstr "Zapne kontrolu revizí a zobrazí zmìny ve výstupním LaTeX-ovém souboru"
 
 #: src/frontends/qt4/ui/CompareUi.ui:181
 msgid "Enable &change tracking features in the output"
-msgstr "Zapnout kontrolu revizí na výstupu"
+msgstr "&Zapnout kontrolu revizí na výstupu"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:143
 #: src/frontends/qt4/GuiDelimiter.cpp:278
@@ -1407,7 +1407,7 @@ msgstr "Zachovat velikost prvního písmene pøi nahrazování"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:270
 msgid "&Preserve first case on replace"
-msgstr "Zachovat velikost prvního"
+msgstr "Zachovat velikost &prvního"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:280
 msgid "&Expand macros"
@@ -1987,7 +1987,7 @@ msgstr "S&ynchronizovat s výstupem"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:56
 msgid "Apply settings immediately"
-msgstr "&Okam¾itì pou¾ít zmìny"
+msgstr "O&kam¾itì pou¾ít zmìny"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:62
 #: src/frontends/qt4/ui/ParagraphUi.ui:44
@@ -2422,7 +2422,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:53
 msgid "&Maintain counters and references"
-msgstr "Udr¾ovat èíslování a reference"
+msgstr "&Udr¾ovat èíslování a reference"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:63
 msgid "Include all subdocuments in the output"
@@ -3438,7 +3438,7 @@ msgstr "Pøíkaz LaTeX-u, který ukonèuje pøepnutí zmìny jazyka."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:134
 msgid "Default Decimal &Point:"
-msgstr "Standardní znak &desetiné èárky"
+msgstr "Standardní znak &desetiné èárky:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:160
 msgid ""
@@ -3574,7 +3574,7 @@ msgstr "Pøíkaz a nastavení pro BibTeX"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:182
 #: src/frontends/qt4/ui/PrefLatexUi.ui:257
 msgid "Processor for &Japanese:"
-msgstr "Generátor pro &japon¹tinu"
+msgstr "Generátor pro &japon¹tinu:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:192
 msgid "Specific BibTeX command and options for pLaTeX (Japanese)"
@@ -3671,7 +3671,7 @@ msgstr "Pouze hlavní soubor"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:125
 msgid "All files"
-msgstr "V¹echny soubory "
+msgstr "V¹echny soubory"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:129
 msgid "What to do when existing files are going to be overwritten on export."
@@ -3797,7 +3797,7 @@ msgstr "Na ¹íø&ku:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:182
 msgid "&Number of copies:"
-msgstr "Poèet &kopií"
+msgstr "Poèet &kopií:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:192
 msgid "Option used to set number of copies."
@@ -4044,7 +4044,7 @@ msgstr "Povolit naètení/zápis rozvr¾ení oken a jejich &geometrie"
 
 #: src/frontends/qt4/ui/PrefUi.ui:125
 msgid "Restore to the cursor position when the file was last closed"
-msgstr "&Obnovit pozici kurzoru v místì, kde byl pøi posledním zavøení souboru"
+msgstr "Obnovit pozici kurzoru v místì, kde byl pøi posledním zavøení souboru"
 
 #: src/frontends/qt4/ui/PrefUi.ui:128
 msgid "Restore cursor &positions"
@@ -4298,7 +4298,7 @@ msgstr "Zadejte øetìzec pro filtrování seznamu znaèek"
 
 #: src/frontends/qt4/ui/RefUi.ui:59
 msgid "Filter case-sensitively"
-msgstr "Rozli¹ovat velikost pís&men pøi filtrování"
+msgstr "Rozli¹ovat velikost písmen pøi filtrování"
 
 #: src/frontends/qt4/ui/RefUi.ui:62
 msgid "Case-sensiti&ve"
@@ -4542,7 +4542,7 @@ msgstr "Na desetinné èárce"
 
 #: src/frontends/qt4/ui/TabularUi.ui:110
 msgid "&Decimal separator:"
-msgstr "&Znak desetinné èárky"
+msgstr "&Znak desetinné èárky:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:168
 msgid "Fixed width of the column"
@@ -5042,7 +5042,7 @@ msgstr "Výplò (VFill)"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:34
 msgid "&Output Format:"
-msgstr "&Výstupní formát"
+msgstr "&Výstupní formát:"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:44
 msgid "Select the output format"
@@ -9621,7 +9621,7 @@ msgstr "NEDEFINOVÁNO"
 
 #: lib/layouts/stdciteformats.inc:9
 msgid "pp."
-msgstr "str. "
+msgstr "str."
 
 #: lib/layouts/stdciteformats.inc:10
 msgid "ed."
@@ -10614,7 +10614,7 @@ msgstr "Teorémy (pojmenované)"
 msgid ""
 "Facilitates the use of named theorems. The name of the theorem goes into the "
 "'Short Title' inset."
-msgstr "Pojmenované teorémy. Jméno se vkládá do prostøedí 'Krátký titulek'. "
+msgstr "Pojmenované teorémy. Jméno se vkládá do prostøedí 'Krátký titulek'."
 
 #: lib/layouts/theorems-named.module:11
 msgid "Named Theorem"
@@ -17321,7 +17321,7 @@ msgstr "spodní oblast"
 
 #: src/Color.cpp:279
 msgid "new page"
-msgstr "nový strana"
+msgstr "nová strana"
 
 #: src/Color.cpp:280
 msgid "page break / line break"
@@ -19578,7 +19578,7 @@ msgstr "Ne"
 
 #: src/frontends/qt4/GuiBranches.cpp:168
 msgid "Enter new branch name"
-msgstr "Vlo¾te nové jméno vìtve:"
+msgstr "Vlo¾te nové jméno vìtve"
 
 #: src/frontends/qt4/GuiBranches.cpp:173
 #, c-format
@@ -20922,7 +20922,7 @@ msgstr "Dokument a okno"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2711
 msgid "Font, Layouts and Textclasses"
-msgstr "Font, Rozvr¾ení, "
+msgstr "Font, Rozvr¾ení a tøídy "
 
 #: src/frontends/qt4/GuiPrefs.cpp:2715
 msgid "System and Miscellaneous"
