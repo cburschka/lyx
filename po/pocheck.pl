@@ -175,7 +175,7 @@ foreach my $pofilename ( @ARGV )
     # cleaned versions of ORIGINAL strings. the keys of the inner hash 
     # are the cleaned versions of their TRANSLATIONS. The value for the 
     # inner hash is an array of the orignal string and translation.
-    $trans{$msgid_clean}{$msgstr_clean} = [ $msgid, $msgstr ];
+    $trans{$msgid_clean}{$msgstr_clean} = [ $msgid, $msgstr, $linenum ];
   }
 
   if ($check_trans) {
@@ -189,7 +189,7 @@ foreach my $pofilename ( @ARGV )
       if ( $#msgstrkeys > 0 ) {
         print( "Different translations for '$msgid':\n" );
         foreach $msgstr ( @msgstrkeys ) {
-          print( "  '" . $trans{$msgid}{$msgstr}[0] . "' => '" . $trans{$msgid}{$msgstr}[1] . "'\n" );
+          print( "Line $trans{$msgid}{$msgstr}[2]: '" . $trans{$msgid}{$msgstr}[0] . "' => '" . $trans{$msgid}{$msgstr}[1] . "'\n" );
         }
         $warn++;
       }
