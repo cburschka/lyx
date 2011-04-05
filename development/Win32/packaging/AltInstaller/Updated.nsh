@@ -10,7 +10,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\setup.py" # always here
  SetOutPath "$INSTDIR\Resources" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
- #File "${PRODUCT_SOURCEDIR}\Resources\chkconfig.ltx"
+ File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  #SetOutPath "$INSTDIR\Resources\doc"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Customization.lyx"
  SetOutPath "$INSTDIR\Resources\doc\sv"
