@@ -15,27 +15,31 @@ use Getopt::Std;
 my $usage = <<EOT;
 pocheck.pl [-acmpqst] po_file [po_file] ...
 
-This script performs some consistency checks on po files. It will check
-for everything listed under "Options" below, unless options are given, in
-which case it checks only those requested.
+This script performs some consistency checks on po files. 
 
-Options:
+We check for everything listed here, unless one or more of these 
+options is given, in which case we checks only for those requested.
 -a: Check arguments, like %1\$s
 -c: Check for colons at end
 -m: Check for menu shortcuts
 -p: Check for period at end
 -q: Check Qt shortcuts
 -s: Check for space at end
--t: Check for uniform translations
+-t: Check for uniform translation
+This option can be given with or without other options.
+-w: Only report summary total of errors
 EOT
 
 my %options;
-getopts(":hacmpqst", \%options);
+getopts(":hacmpqstw", \%options);
 
 if (defined($options{h})) { 
   print $usage; 
   exit 0; 
 }
+
+my $only_total = defined($options{w});
+delete $options{w} if $only_total;
 
 my $check_args = (!%options or defined($options{a}));
 my $check_colons = (!%options or defined($options{c}));
@@ -47,8 +51,8 @@ my $check_trans = (!%options or defined($options{t}));
 
 my %trans;
 
-foreach my $pofilename ( @ARGV )
-{
+foreach my $pofilename ( @ARGV ) {
+  my %bad;
   print "Processing po file '$pofilename'...\n";
 
   open( INPUT, "<$pofilename" )
@@ -99,13 +103,17 @@ foreach my $pofilename ( @ARGV )
         my $n = 0;
         foreach my $arg (@argstrs) { $n = $arg if $arg > $n; }
         if ($n <= 0) { 
-          print "Problem finding arguments in:\n    $msgid!\non line $linenum.\n";
+          print "Line $linenum: Problem finding arguments in:\n    $msgid!\n"
+            unless $only_total;
+          ++$bad{"Missing arguments"};
           $warn++;
         } else {
           foreach my $i (1..$n) {
             my $arg = "%$i\\\$s"; 
             if ( $msgstr !~ m/$arg/ ) {
-              print "Line $linenum: Missing argument `$arg'\n  '$msgid' ==> '$msgstr'\n";
+              print "Line $linenum: Missing argument `$arg'\n  '$msgid' ==> '$msgstr'\n"
+                unless $only_total;
+              ++$bad{"Missing arguments"};
               $warn++;
             }
           }
@@ -116,8 +124,9 @@ foreach my $pofilename ( @ARGV )
     if ($check_colons) {
       # Check colon at the end of a message
       if ( ( $msgid =~ m/: *(\|.*)?$/ ) != ( $msgstr =~ m/: *(\|.*)?$/ ) ) {
-        print( "Line $linenum: Missing or unexpected colon:\n" );
-        print( "  '$msgid' => '$msgstr'\n" );
+        print "Line $linenum: Missing or unexpected colon:\n  '$msgid' => '$msgstr'\n"
+          unless $only_total;
+        ++$bad{"Bad colons"};
         $warn++;
       }
     }
@@ -125,8 +134,9 @@ foreach my $pofilename ( @ARGV )
     if ($check_periods) {
       # Check period at the end of a message; uncomment code if you are paranoid
       if ( ( $msgid =~ m/\. *(\|.*)?$/ ) != ( $msgstr =~ m/\. *(\|.*)?$/ ) ) {
-       print( "Line $linenum: Missing or unexpected period:\n" );
-       print( "  '$msgid' => '$msgstr'\n" );
+       print "Line $linenum: Missing or unexpected period:\n  '$msgid' => '$msgstr'\n"
+        unless $only_total;
+      ++$bad{"Bad periods"};
        $warn++;
       }
     }
@@ -134,8 +144,9 @@ foreach my $pofilename ( @ARGV )
     if ($check_spaces) {
       # Check space at the end of a message
       if ( ( $msgid =~ m/  *?(\|.*)?$/ ) != ( $msgstr =~ m/  *?(\|.*)?$/ ) ) {
-        print( "Line $linenum: Missing or unexpected space:\n" );
-        print( "  '$msgid' => '$msgstr'\n" );
+        print "Line $linenum: Missing or unexpected space:\n  '$msgid' => '$msgstr'\n"
+          unless $only_total;
+        ++$bad{"Bad spaces"};
         $warn++;
       }
     }
@@ -143,8 +154,9 @@ foreach my $pofilename ( @ARGV )
     if ($check_qt) {
       # Check for "&" shortcuts
       if ( ( $msgid =~ m/&[^ ]/ ) != ( $msgstr =~ m/&[^ ]/ ) ) {
-        print( "Line $linenum: Missing or unexpected Qt shortcut:\n" );
-        print( "  '$msgid' => '$msgstr'\n" );
+        print "Line $linenum: Missing or unexpected Qt shortcut:\n  '$msgid' => '$msgstr'\n"
+          unless $only_total;
+        ++$bad{"Bad Qt shortcuts"};
         $warn++;
       }
     }
@@ -152,8 +164,9 @@ foreach my $pofilename ( @ARGV )
     if ($check_menu) {
       # Check for "|..." shortcuts
       if ( ( $msgid =~ m/\|[^ ]/ ) != ( $msgstr =~ m/\|[^ ]/ ) ) {
-        print( "Line $linenum: Missing or unexpected menu shortcut:\n" );
-        print( "  '$msgid' => '$msgstr'\n" );
+        print "Line $linenum: Missing or unexpected menu shortcut:\n  '$msgid' => '$msgstr'\n"
+          unless $only_total;
+        ++$bad{"Bad menu shortcuts"};
         $warn++;
       }
     }
@@ -187,16 +200,21 @@ foreach my $pofilename ( @ARGV )
 
       # do we have more than one such key?
       if ( $#msgstrkeys > 0 ) {
-        print( "Different translations for '$msgid':\n" );
-        foreach $msgstr ( @msgstrkeys ) {
-          print( "Line $ref->{$msgstr}[2]: '" . 
-            $ref->{$msgstr}[0] . "' => '" . 
-            $ref->{$msgstr}[1] . "'\n" );
+        if (!$only_total) {
+          print "Different translations for '$msgid':\n";
+          foreach $msgstr ( @msgstrkeys ) {
+            print "Line $ref->{$msgstr}[2]: '" . 
+              $ref->{$msgstr}[0] . "' => '" . 
+              $ref->{$msgstr}[1] . "'\n";
+          }
         }
+        ++$bad{"Inconsistent translations"};
         $warn++;
       }
     }
   }
 
-  print( "\nTotal number of warnings: $warn\n\n" );
+  print "\n";
+  while (my ($k, $v) = each %bad) { print "$k: $v warnings\n"; }
+  print "Total number of warnings: $warn\n\n";
 }
