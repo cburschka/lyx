@@ -172,6 +172,10 @@ bool GuiErrorList::goTo(int item)
 		return false;
 	}
 
+	// Don't try to highlight the content of info insets
+	while (dit.inset().lyxCode() == INFO_CODE)
+		dit.backwardPos();
+
 	// Now make the selection.
 	BufferView * bv = const_cast<BufferView *>(bufferview());
 	if (bv->selectIfEmpty(dit)) {
