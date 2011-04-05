@@ -67,6 +67,7 @@ foreach my $pofilename ( @ARGV )
   my ($msgid, $msgstr, $more);
 
   while ($i <= $noOfLines) {
+    my $linenum = $i;
     ( $msgid ) = ( $pofile[$i] =~ m/^msgid "(.*)"/ );
     $i++;
     next unless $msgid;
@@ -98,13 +99,13 @@ foreach my $pofilename ( @ARGV )
         my $n = 0;
         foreach my $arg (@argstrs) { $n = $arg if $arg > $n; }
         if ($n <= 0) { 
-          print "Problem finding arguments in:\n    $msgid!\n";
+          print "Problem finding arguments in:\n    $msgid!\non line $linenum.\n";
           $warn++;
         } else {
           foreach my $i (1..$n) {
             my $arg = "%$i\\\$s"; 
             if ( $msgstr !~ m/$arg/ ) {
-              print "Missing argument `$arg'\n  '$msgid' ==> '$msgstr'\n";
+              print "Line $linenum: Missing argument `$arg'\n  '$msgid' ==> '$msgstr'\n";
               $warn++;
             }
           }
@@ -115,7 +116,7 @@ foreach my $pofilename ( @ARGV )
     if ($check_colons) {
       # Check colon at the end of a message
       if ( ( $msgid =~ m/: *(\|.*)?$/ ) != ( $msgstr =~ m/: *(\|.*)?$/ ) ) {
-        print( "Missing or unexpected colon:\n" );
+        print( "Line $linenum: Missing or unexpected colon:\n" );
         print( "  '$msgid' => '$msgstr'\n" );
         $warn++;
       }
@@ -124,7 +125,7 @@ foreach my $pofilename ( @ARGV )
     if ($check_periods) {
       # Check period at the end of a message; uncomment code if you are paranoid
       if ( ( $msgid =~ m/\. *(\|.*)?$/ ) != ( $msgstr =~ m/\. *(\|.*)?$/ ) ) {
-       print( "Missing or unexpected period:\n" );
+       print( "Line $linenum: Missing or unexpected period:\n" );
        print( "  '$msgid' => '$msgstr'\n" );
        $warn++;
       }
@@ -133,7 +134,7 @@ foreach my $pofilename ( @ARGV )
     if ($check_spaces) {
       # Check space at the end of a message
       if ( ( $msgid =~ m/  *?(\|.*)?$/ ) != ( $msgstr =~ m/  *?(\|.*)?$/ ) ) {
-        print( "Missing or unexpected space:\n" );
+        print( "Line $linenum: Missing or unexpected space:\n" );
         print( "  '$msgid' => '$msgstr'\n" );
         $warn++;
       }
@@ -142,7 +143,7 @@ foreach my $pofilename ( @ARGV )
     if ($check_qt) {
       # Check for "&" shortcuts
       if ( ( $msgid =~ m/&[^ ]/ ) != ( $msgstr =~ m/&[^ ]/ ) ) {
-        print( "Missing or unexpected Qt shortcut:\n" );
+        print( "Line $linenum: Missing or unexpected Qt shortcut:\n" );
         print( "  '$msgid' => '$msgstr'\n" );
         $warn++;
       }
@@ -151,7 +152,7 @@ foreach my $pofilename ( @ARGV )
     if ($check_menu) {
       # Check for "|..." shortcuts
       if ( ( $msgid =~ m/\|[^ ]/ ) != ( $msgstr =~ m/\|[^ ]/ ) ) {
-        print( "Missing or unexpected menu shortcut:\n" );
+        print( "Line $linenum: Missing or unexpected menu shortcut:\n" );
         print( "  '$msgid' => '$msgstr'\n" );
         $warn++;
       }
