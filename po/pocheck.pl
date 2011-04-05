@@ -214,7 +214,13 @@ foreach my $pofilename ( @ARGV ) {
     }
   }
 
+  if ($warn) {
+    while (my ($k, $v) = each %bad) { print "$k: $v\n"; }
+    if (scalar(keys %bad) > 1) {
+      print "Total warnings: $warn\n";
+    }
+  } else {
+    print "No warnings!\n";
+  }
   print "\n";
-  while (my ($k, $v) = each %bad) { print "$k: $v warnings\n"; }
-  print "Total number of warnings: $warn\n\n";
 }
