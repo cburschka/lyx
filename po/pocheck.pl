@@ -7,19 +7,43 @@
 #
 # author: Michael Gerz, michael.gerz@teststep.org
 #
-# This script performs some consistency checks on po files:
-#
-#   1. Uniform translation of messages that are identical except
-#      for capitalization, shortcuts, and shortcut notation.
-#   2. Usage of the following elements in both the original and
-#      the translated message (or no usage at all):
-#      shortcuts ("&" and "|..."), trailing space, trailing colon
-#
-# Invocation:
-#    pocheck.pl po_file po_file ...
 
 use strict;
 use warnings;
+use Getopt::Std;
+
+my $usage = <<EOT;
+pocheck.pl [-acmpqst] po_file [po_file] ...
+
+This script performs some consistency checks on po files. It will check
+for everything listed under "Options" below, unless options are given, in
+which case it checks only those requested.
+
+Options:
+-a: Check arguments, like %1\$s
+-c: Check for colons at end
+-m: Check for menu shortcuts
+-p: Check for period at end
+-q: Check Qt shortcuts
+-s: Check for space at end
+-t: Check for uniform translations
+EOT
+
+my %options;
+getopts(":hacmpqst", \%options);
+
+if (defined($options{h})) { 
+  print $usage; 
+  exit 0; 
+}
+
+my $check_args = (!%options or defined($options{a}));
+my $check_colons = (!%options or defined($options{c}));
+my $check_spaces = (!%options or defined($options{m}));
+my $check_periods = (!%options or defined($options{p}));
+my $check_qt = (!%options or defined($options{q}));
+my $check_menu = (!%options or defined($options{s}));
+my $check_trans = (!%options or defined($options{t}));
 
 my %trans;
 
@@ -68,58 +92,72 @@ foreach my $pofilename ( @ARGV )
     next if ($msgid eq "" or $msgstr eq "");
 
     # Check for matching %1$s, etc.
-    my @argstrs = ( $msgid =~ m/%(\d)\$s/g );
-    if (@argstrs) {
-      my $n = 0;
-      foreach my $arg (@argstrs) { $n = $arg if $arg > $n; }
-      if ($n <= 0) { 
-        print "Problem finding arguments in:\n    $msgid!\n";
-        $warn++;
-      } else {
-        foreach my $i (1..$n) {
-          my $arg = "%$i\\\$s"; 
-          if ( $msgstr !~ m/$arg/ ) {
-            print "Missing argument `$arg'\n  '$msgid' ==> '$msgstr'\n";
-            $warn++;
+      if ($check_args) {
+      my @argstrs = ( $msgid =~ m/%(\d)\$s/g );
+      if (@argstrs) {
+        my $n = 0;
+        foreach my $arg (@argstrs) { $n = $arg if $arg > $n; }
+        if ($n <= 0) { 
+          print "Problem finding arguments in:\n    $msgid!\n";
+          $warn++;
+        } else {
+          foreach my $i (1..$n) {
+            my $arg = "%$i\\\$s"; 
+            if ( $msgstr !~ m/$arg/ ) {
+              print "Missing argument `$arg'\n  '$msgid' ==> '$msgstr'\n";
+              $warn++;
+            }
           }
         }
       }
     }
 
-    # Check colon at the end of a message
-    if ( ( $msgid =~ m/: *(\|.*)?$/ ) != ( $msgstr =~ m/: *(\|.*)?$/ ) ) {
-      print( "Missing or unexpected colon:\n" );
-      print( "  '$msgid' => '$msgstr'\n" );
-      $warn++;
+    if ($check_colons) {
+      # Check colon at the end of a message
+      if ( ( $msgid =~ m/: *(\|.*)?$/ ) != ( $msgstr =~ m/: *(\|.*)?$/ ) ) {
+        print( "Missing or unexpected colon:\n" );
+        print( "  '$msgid' => '$msgstr'\n" );
+        $warn++;
+      }
     }
 
-    # Check period at the end of a message; uncomment code if you are paranoid
-    #if ( ( $msgid =~ m/\. *(\|.*)?$/ ) != ( $msgstr =~ m/\. *(\|.*)?$/ ) ) {
-    #  print( "Missing or unexpected period:\n" );
-    #  print( "  '$msgid' => '$msgstr'\n" );
-    #  $warn++;
-    #}
-
-    # Check space at the end of a message
-    if ( ( $msgid =~ m/  *?(\|.*)?$/ ) != ( $msgstr =~ m/  *?(\|.*)?$/ ) ) {
-      print( "Missing or unexpected space:\n" );
-      print( "  '$msgid' => '$msgstr'\n" );
-      $warn++;
+    if ($check_periods) {
+      # Check period at the end of a message; uncomment code if you are paranoid
+      if ( ( $msgid =~ m/\. *(\|.*)?$/ ) != ( $msgstr =~ m/\. *(\|.*)?$/ ) ) {
+       print( "Missing or unexpected period:\n" );
+       print( "  '$msgid' => '$msgstr'\n" );
+       $warn++;
+      }
     }
 
-    # Check for "&" shortcuts
-    if ( ( $msgid =~ m/&[^ ]/ ) != ( $msgstr =~ m/&[^ ]/ ) ) {
-      print( "Missing or unexpected Qt shortcut:\n" );
-      print( "  '$msgid' => '$msgstr'\n" );
-      $warn++;
+    if ($check_spaces) {
+      # Check space at the end of a message
+      if ( ( $msgid =~ m/  *?(\|.*)?$/ ) != ( $msgstr =~ m/  *?(\|.*)?$/ ) ) {
+        print( "Missing or unexpected space:\n" );
+        print( "  '$msgid' => '$msgstr'\n" );
+        $warn++;
+      }
     }
 
-    # Check for "|..." shortcuts
-    if ( ( $msgid =~ m/\|[^ ]/ ) != ( $msgstr =~ m/\|[^ ]/ ) ) {
-      print( "Missing or unexpected menu shortcut:\n" );
-      print( "  '$msgid' => '$msgstr'\n" );
-      $warn++;
+    if ($check_qt) {
+      # Check for "&" shortcuts
+      if ( ( $msgid =~ m/&[^ ]/ ) != ( $msgstr =~ m/&[^ ]/ ) ) {
+        print( "Missing or unexpected Qt shortcut:\n" );
+        print( "  '$msgid' => '$msgstr'\n" );
+        $warn++;
+      }
     }
+
+    if ($check_menu) {
+      # Check for "|..." shortcuts
+      if ( ( $msgid =~ m/\|[^ ]/ ) != ( $msgstr =~ m/\|[^ ]/ ) ) {
+        print( "Missing or unexpected menu shortcut:\n" );
+        print( "  '$msgid' => '$msgstr'\n" );
+        $warn++;
+      }
+    }
+    
+    next unless $check_trans;
     
     # we now collect these translations in a hash.
     # this will allow us to check below if we have translated
@@ -139,19 +177,21 @@ foreach my $pofilename ( @ARGV )
     $trans{$msgid_clean}{$msgstr_clean} = [ $msgid, $msgstr ];
   }
 
-  foreach $msgid ( keys %trans ) {
-    # so $ref is a reference to the inner hash.
-    my $ref = $trans{$msgid};
-    # @msgstrkeys is an array of the keys of that inner hash.
-    my @msgstrkeys = keys %$ref;
+  if ($check_trans) {
+    foreach $msgid ( keys %trans ) {
+      # so $ref is a reference to the inner hash.
+      my $ref = $trans{$msgid};
+      # @msgstrkeys is an array of the keys of that inner hash.
+      my @msgstrkeys = keys %$ref;
 
-    # do we have more than one such key?
-    if ( $#msgstrkeys > 0 ) {
-      print( "Different translations for '$msgid':\n" );
-      foreach $msgstr ( @msgstrkeys ) {
-        print( "  '" . $trans{$msgid}{$msgstr}[0] . "' => '" . $trans{$msgid}{$msgstr}[1] . "'\n" );
+      # do we have more than one such key?
+      if ( $#msgstrkeys > 0 ) {
+        print( "Different translations for '$msgid':\n" );
+        foreach $msgstr ( @msgstrkeys ) {
+          print( "  '" . $trans{$msgid}{$msgstr}[0] . "' => '" . $trans{$msgid}{$msgstr}[1] . "'\n" );
+        }
+        $warn++;
       }
-      $warn++;
     }
   }
 
