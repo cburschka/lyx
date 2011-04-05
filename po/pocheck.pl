@@ -189,7 +189,9 @@ foreach my $pofilename ( @ARGV )
       if ( $#msgstrkeys > 0 ) {
         print( "Different translations for '$msgid':\n" );
         foreach $msgstr ( @msgstrkeys ) {
-          print( "Line $trans{$msgid}{$msgstr}[2]: '" . $trans{$msgid}{$msgstr}[0] . "' => '" . $trans{$msgid}{$msgstr}[1] . "'\n" );
+          print( "Line $ref->{$msgstr}[2]: '" . 
+            $ref->{$msgstr}[0] . "' => '" . 
+            $ref->{$msgstr}[1] . "'\n" );
         }
         $warn++;
       }
