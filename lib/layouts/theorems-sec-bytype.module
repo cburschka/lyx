@@ -54,7 +54,7 @@ End
 Style Theorem
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem{thm}{Theorem}[section]
+	  \newtheorem{thm}{\protect\theoremname}[section]
 	EndPreamble
 End
 
@@ -62,7 +62,7 @@ End
 Style Corollary
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem{cor}{Corollary}[section]
+	  \newtheorem{cor}{\protect\corollaryname}[section]
 	EndPreamble
 End
 
@@ -70,7 +70,7 @@ End
 Style Lemma
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem{lem}{Lemma}[section]
+	  \newtheorem{lem}{\protect\lemmaname}[section]
 	EndPreamble
 End
 
@@ -78,7 +78,7 @@ End
 Style Proposition
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem{prop}{Proposition}[section]
+	  \newtheorem{prop}{\protect\propositionname}[section]
 	EndPreamble
 End
 
@@ -86,7 +86,7 @@ End
 Style Conjecture
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem{conjecture}{Conjecture}[section]
+	  \newtheorem{conjecture}{\protect\conjecturename}[section]
 	EndPreamble
 End
 
@@ -94,7 +94,7 @@ End
 Style Fact
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem{fact}{Fact}[section]
+	  \newtheorem{fact}{\protect\factname}[section]
 	EndPreamble
 End
 
@@ -102,7 +102,7 @@ End
 Style Definition
 	Preamble
 	  \theoremstyle{definition}
-	  \newtheorem{defn}{Definition}[section]
+	  \newtheorem{defn}{\protect\definitionname}[section]
 	EndPreamble
 End
 
@@ -110,7 +110,7 @@ End
 Style Example
 	Preamble
 	  \theoremstyle{definition}
-	  \newtheorem{example}{Example}[section]
+	  \newtheorem{example}{\protect\examplename}[section]
 	EndPreamble
 End
 
@@ -118,7 +118,7 @@ End
 Style Problem
 	Preamble
 	  \theoremstyle{definition}
-	  \newtheorem{problem}{Problem}[section]
+	  \newtheorem{problem}{\protect\problemname}[section]
 	EndPreamble
 End
 
@@ -126,7 +126,7 @@ End
 Style Exercise
 	Preamble
 	  \theoremstyle{definition}
-	  \newtheorem{xca}{Exercise}[section]
+	  \newtheorem{xca}{\protect\exercisename}[section]
 	EndPreamble
 End
 
@@ -134,7 +134,7 @@ End
 Style Remark
 	Preamble
 	  \theoremstyle{remark}
-	  \newtheorem{rem}{Remark}[section]
+	  \newtheorem{rem}{\protect\remarkname}[section]
 	EndPreamble
 End
 
@@ -142,6 +142,6 @@ End
 Style Claim
 	Preamble
 	  \theoremstyle{remark}
-	  \newtheorem{claim}{Claim}[section]
+	  \newtheorem{claim}{\protect\claimname}[section]
 	EndPreamble
 End
