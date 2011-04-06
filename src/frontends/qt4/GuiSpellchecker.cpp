@@ -70,6 +70,8 @@ struct SpellcheckerWidget::Private
 	///
 	bool continueFromBeginning();
 	///
+	void setLanguage(Language const * lang);
+	///
 	Ui::SpellcheckerUi ui;
 	///
 	SpellcheckerWidget * p;
@@ -159,8 +161,16 @@ void SpellcheckerWidget::updateView()
 {
 	BufferView * bv = d->gv_->documentBufferView();
 	setEnabled(bv != 0);
-	if (bv && hasFocus())
+	if (bv && hasFocus()) {
+
+		BufferView * bv = d->gv_->documentBufferView();
+		std::set<Language const *> languages = 
+		bv->buffer().masterBuffer()->getLanguages();
+		if (!languages.empty())
+			d->setLanguage(*languages.begin());
+		
 		d->check();
+	}
 }
 
 
@@ -194,8 +204,8 @@ void SpellcheckerWidget::Private::forward()
 		dispatch(FuncRequest(LFUN_CHAR_FORWARD));
  	}
 }
-	
-	
+
+
 void SpellcheckerWidget::on_languageCO_activated(int index)
 {
 	string const lang =
@@ -288,6 +298,14 @@ void SpellcheckerWidget::Private::updateSuggestions(docstring_list & words)
 }
 
 
+void SpellcheckerWidget::Private::setLanguage(Language const * lang)
+{
+	int const pos = ui.languageCO->findData(toqstr(lang->lang()));
+	if (pos != -1)
+		ui.languageCO->setCurrentIndex(pos);
+}
+
+
 void SpellcheckerWidget::Private::check()
 {
 	BufferView * bv = gv_->documentBufferView();
@@ -322,9 +340,7 @@ void SpellcheckerWidget::Private::check()
 	// set suggestions
 	updateSuggestions(suggestions);
 	// set language
-	int const pos = ui.languageCO->findData(toqstr(word_lang.lang()->lang()));
-	if (pos != -1)
-		ui.languageCO->setCurrentIndex(pos);
+	setLanguage(word_lang.lang());
 
 	// FIXME LFUN
 	// If we used a LFUN, dispatch would do all of this for us
