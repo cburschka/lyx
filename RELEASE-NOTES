@@ -222,6 +222,17 @@ Known issues in version 2.0.0
 Caveats when upgrading from earlier versions to 2.0.x
 -------------------------------------------------------
 
+- The typeset of your documents with non-english language can slightly
+  change in case of math environments and floats (this is usually the case
+  with certain modules which provide specific environments like AMS ones
+  or provide specific floats like the linguistic one).
+
+  LyX now uses its own translation machinery which will automatically provide
+  localization strings used so far only in GUI. The status of translation to
+  your language can be seen in lib/layouttranslation file. This is not meant as
+  a babel replacement (still used), but rather extension for strings not
+  translated by babel at all.
+
 - The syntax of the languages file has been changed. If you use a modified
   languages file, you will need to adapt it to the new syntax, as LyX 2.0
   is not able to read old languages file anymore.
