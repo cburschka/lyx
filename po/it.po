@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-04-02 11:33+0200\n"
-"PO-Revision-Date: 2011-04-02 19:16+0100\n"
+"PO-Revision-Date: 2011-04-06 01:15+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
 "Language: it\n"
@@ -4527,7 +4527,7 @@ msgstr "Correttore ortografico"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:44
 msgid "The checked language. Switching this alters the language of the checked word."
-msgstr "La lingua selezionata. Cambiandola, cambia lalingua di riferimento della parola selezionata."
+msgstr "La lingua selezionata. Cambiandola, cambia la lingua di riferimento della parola selezionata."
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:60
 msgid "Unknown word:"
@@ -4720,7 +4720,7 @@ msgstr "Imposta bordi"
 
 #: src/frontends/qt4/ui/TabularUi.ui:924
 msgid "Set borders of the current (selected) cell(s)"
-msgstr "Importa i bordi della cella corrente (o di quelle selezionate)"
+msgstr "Imposta i bordi della cella corrente (o di quelle selezionate)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:937
 msgid "All Borders"
@@ -4728,7 +4728,7 @@ msgstr "Tutti i bordi"
 
 #: src/frontends/qt4/ui/TabularUi.ui:943
 msgid "Set all borders of the current (selected) cell(s)"
-msgstr "Imposta tutti i bordi delle celle correnti (selezionate)"
+msgstr "Imposta tutti i bordi della cella corrente (o di quelle selezionate)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:946
 msgid "&Set"
@@ -4736,7 +4736,7 @@ msgstr "&Imposta"
 
 #: src/frontends/qt4/ui/TabularUi.ui:953
 msgid "Unset all borders of the current (selected) cell(s)"
-msgstr "Rimuovi tutti i bordi delle celle ora selezionate"
+msgstr "Rimuovi tutti i bordi della cella corrente (o di quelle selezionate)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:972
 msgid "Use formal (a.k.a. booktabs) border style (no vertical borders)"
@@ -7024,7 +7024,7 @@ msgstr "Latin off"
 #: lib/layouts/beamer.layout:230
 #: lib/layouts/scrarticle-beamer.layout:22
 msgid "BeginFrame"
-msgstr "Fotogramma"
+msgstr "DIapositiva"
 
 #: lib/layouts/article.layout:19
 #: lib/layouts/beamer.layout:111
@@ -7082,31 +7082,31 @@ msgstr "\\arabic{section}.\\arabic{subsection}"
 #: lib/layouts/beamer.layout:350
 #: lib/layouts/beamer.layout:379
 msgid "Frames"
-msgstr "Fotogrammi"
+msgstr "DIapositive"
 
 #: lib/layouts/beamer.layout:248
 msgid "Frame"
-msgstr "Fotogramma"
+msgstr "Diapositiva"
 
 #: lib/layouts/beamer.layout:272
 msgid "BeginPlainFrame"
-msgstr "Fotogramma semplice"
+msgstr "Diapositiva semplice"
 
 #: lib/layouts/beamer.layout:289
 msgid "Frame (no head/foot/sidebars)"
-msgstr "Fotogramma semplice"
+msgstr "Diapositiva (semplice)"
 
 #: lib/layouts/beamer.layout:310
 msgid "AgainFrame"
-msgstr "Ripeti fotogramma"
+msgstr "Ripeti diapositiva"
 
 #: lib/layouts/beamer.layout:327
 msgid "Again frame with label"
-msgstr "Ripeti fotogramma di nome"
+msgstr "Ripeti diapositiva con etichetta"
 
 #: lib/layouts/beamer.layout:349
 msgid "EndFrame"
-msgstr "Fine fotogramma"
+msgstr "Fine diapositiva"
 
 #: lib/layouts/beamer.layout:363
 msgid "________________________________"
@@ -7114,7 +7114,7 @@ msgstr "________________________________"
 
 #: lib/layouts/beamer.layout:378
 msgid "FrameSubtitle"
-msgstr "Sottotitolo fotogramma"
+msgstr "Sottotitolo diapositiva"
 
 #: lib/layouts/beamer.layout:401
 msgid "Column"
@@ -7135,19 +7135,19 @@ msgstr "Inizio colonna di larghezza:"
 
 #: lib/layouts/beamer.layout:455
 msgid "ColumnsCenterAligned"
-msgstr "Colonne Centrate"
+msgstr "Colonne centrate"
 
 #: lib/layouts/beamer.layout:467
 msgid "Columns (center aligned)"
-msgstr "Colonne Centrate"
+msgstr "Colonne (centrate)"
 
 #: lib/layouts/beamer.layout:486
 msgid "ColumnsTopAligned"
-msgstr "Colonne Allineate"
+msgstr "Colonne allineate"
 
 #: lib/layouts/beamer.layout:498
 msgid "Columns (top aligned)"
-msgstr "Colonne Allineate"
+msgstr "Colonne (allineate)"
 
 #: lib/layouts/beamer.layout:518
 msgid "Pause"
@@ -7235,7 +7235,7 @@ msgstr "Titolatura"
 
 #: lib/layouts/beamer.layout:762
 msgid "Title (Plain Frame)"
-msgstr "Titolo (fotogramma semplice)"
+msgstr "Titolo diapositiva"
 
 #: lib/layouts/beamer.layout:842
 msgid "Institute mark"
@@ -7265,7 +7265,7 @@ msgstr "Verso"
 
 #: lib/layouts/beamer.layout:963
 msgid "TitleGraphic"
-msgstr "Titolo Grafico"
+msgstr "Titolo grafico"
 
 #: lib/layouts/beamer.layout:988
 #: lib/layouts/theorems-std.module:2
@@ -7359,7 +7359,7 @@ msgstr "Nota:"
 #: lib/layouts/beamer.layout:1155
 #: lib/layouts/beamer.layout:1157
 msgid "Alert"
-msgstr "Blocco avviso"
+msgstr "Avviso"
 
 #: lib/layouts/beamer.layout:1166
 #: lib/layouts/beamer.layout:1168
@@ -7599,7 +7599,7 @@ msgstr "DinBrief"
 #: lib/layouts/lettre.layout:481
 #: lib/layouts/stdletter.inc:35
 msgid "Send To Address"
-msgstr "Indirizzo destinatario"
+msgstr "Destinatario"
 
 #: lib/layouts/dinbrief.layout:49
 #: lib/layouts/ectaart.layout:66
@@ -7622,7 +7622,7 @@ msgstr "Indirizzo:"
 #: lib/layouts/lettre.layout:137
 #: lib/layouts/stdletter.inc:24
 msgid "My Address"
-msgstr "Mio indirizzo"
+msgstr "Mittente"
 
 #: lib/layouts/dinbrief.layout:63
 #: lib/layouts/scrlttr2.layout:179
@@ -7641,11 +7641,11 @@ msgstr "Indirizzo di ritorno:"
 
 #: lib/layouts/dinbrief.layout:81
 msgid "Postal comment"
-msgstr "Commento postale"
+msgstr "Classificazione"
 
 #: lib/layouts/dinbrief.layout:83
 msgid "Postal Remark:"
-msgstr "Commento postale:"
+msgstr "Classificazione:"
 
 #: lib/layouts/dinbrief.layout:88
 msgid "Handling"
@@ -7661,7 +7661,7 @@ msgstr "Trattamento:"
 #: lib/layouts/lettre.layout:59
 #: lib/layouts/lettre.layout:450
 msgid "YourRef"
-msgstr "Vostro rif."
+msgstr "Vostro riferimento"
 
 #: lib/layouts/dinbrief.layout:96
 #: lib/layouts/scrlettr.layout:206
@@ -7675,13 +7675,13 @@ msgstr "Vostro rif.:"
 #: lib/layouts/lettre.layout:61
 #: lib/layouts/lettre.layout:466
 msgid "MyRef"
-msgstr "Il mio riferimento"
+msgstr "Nostro riferimento"
 
 #: lib/layouts/dinbrief.layout:102
 #: lib/layouts/scrlettr.layout:227
 #: lib/layouts/scrlttr2.layout:316
 msgid "Our ref.:"
-msgstr "Nostro riferimento:"
+msgstr "Nostro rif.:"
 
 #: lib/layouts/dinbrief.layout:106
 msgid "Writer"
@@ -7715,7 +7715,7 @@ msgstr "Firma:"
 
 #: lib/layouts/dinbrief.layout:119
 msgid "Bottomtext"
-msgstr "In basso a sinistra"
+msgstr "Testo a piè pagina"
 
 #: lib/layouts/dinbrief.layout:121
 msgid "Bottom text:"
@@ -7751,14 +7751,14 @@ msgstr "Telefono:"
 #: lib/layouts/scrlttr2.layout:263
 #: lib/layouts/stdletter.inc:119
 msgid "Location"
-msgstr "Sede"
+msgstr "Luogo"
 
 #: lib/layouts/dinbrief.layout:144
 #: lib/layouts/scrlettr.layout:184
 #: lib/layouts/scrlttr2.layout:267
 #: lib/layouts/stdletter.inc:122
 msgid "Location:"
-msgstr "Sede:"
+msgstr "Luogo:"
 
 #: lib/layouts/dinbrief.layout:154
 #: lib/layouts/g-brief.layout:192
@@ -7836,7 +7836,7 @@ msgstr "Chiusura:"
 #: lib/layouts/lettre.layout:605
 #: lib/layouts/stdletter.inc:111
 msgid "encl"
-msgstr "encl"
+msgstr "Allegati"
 
 #: lib/layouts/dinbrief.layout:201
 #: lib/layouts/lettre.layout:610
@@ -7853,7 +7853,7 @@ msgstr "Allegati:"
 #: lib/layouts/lettre.layout:628
 #: lib/layouts/stdletter.inc:99
 msgid "cc"
-msgstr "cc"
+msgstr "Copia carbone"
 
 #: lib/layouts/dinbrief.layout:216
 #: lib/layouts/g-brief.layout:227
@@ -7889,45 +7889,45 @@ msgstr "Indirizzo di ritorno"
 
 #: lib/layouts/dinbrief.layout:245
 msgid "RetourAdresse"
-msgstr "RetourAdresse"
+msgstr "Indirizzo del mittente"
 
 #: lib/layouts/dinbrief.layout:255
 msgid "Adresse"
-msgstr "Adresse"
+msgstr "Indirizzo"
 
 #: lib/layouts/dinbrief.layout:260
 msgid "Postvermerk"
-msgstr "Postvermerk"
+msgstr "Classificazione"
 
 #: lib/layouts/dinbrief.layout:265
 msgid "Zusatz"
-msgstr "Zusatz"
+msgstr "Supplemento"
 
 #: lib/layouts/dinbrief.layout:270
 msgid "IhrZeichen"
-msgstr "IhrZeichen"
+msgstr "Vostro riferimento"
 
 #: lib/layouts/dinbrief.layout:275
 #: lib/layouts/g-brief.layout:110
 #: lib/layouts/g-brief2.layout:779
 msgid "YourMail"
-msgstr "La tua posta"
+msgstr "Vostra lettera"
 
 #: lib/layouts/dinbrief.layout:280
 msgid "IhrSchreiben"
-msgstr "IhrSchreiben"
+msgstr "Vostra lettera"
 
 #: lib/layouts/dinbrief.layout:285
 msgid "MeinZeichen"
-msgstr "MeinZeichen"
+msgstr "Firma"
 
 #: lib/layouts/dinbrief.layout:290
 msgid "Unterschrift"
-msgstr "Unterschrift"
+msgstr "Firma"
 
 #: lib/layouts/dinbrief.layout:300
 msgid "Telefon"
-msgstr "Telefon"
+msgstr "Telefono"
 
 #: lib/layouts/dinbrief.layout:305
 #: lib/layouts/lettre.layout:47
@@ -7939,7 +7939,7 @@ msgstr "Luogo"
 
 #: lib/layouts/dinbrief.layout:310
 msgid "Stadt"
-msgstr "Stadt"
+msgstr "Città"
 
 #: lib/layouts/dinbrief.layout:315
 #: lib/layouts/g-brief.layout:75
@@ -7948,11 +7948,11 @@ msgstr "Città"
 
 #: lib/layouts/dinbrief.layout:320
 msgid "Ort"
-msgstr "Ort"
+msgstr "Luogo"
 
 #: lib/layouts/dinbrief.layout:325
 msgid "Datum"
-msgstr "Datum"
+msgstr "Data"
 
 #: lib/layouts/dinbrief.layout:330
 #: lib/layouts/g-brief.layout:196
@@ -7962,11 +7962,11 @@ msgstr "Riferimento"
 
 #: lib/layouts/dinbrief.layout:335
 msgid "Betreff"
-msgstr "Betreff"
+msgstr "Oggetto"
 
 #: lib/layouts/dinbrief.layout:340
 msgid "Anrede"
-msgstr "Anrede"
+msgstr "Titolo"
 
 #: lib/layouts/dinbrief.layout:345
 #: lib/layouts/g-brief.layout:17
@@ -7982,7 +7982,7 @@ msgstr "Testo riassuntivo"
 
 #: lib/layouts/dinbrief.layout:355
 msgid "Gruss"
-msgstr "Gruss"
+msgstr "Saluti"
 
 #: lib/layouts/dinbrief.layout:359
 msgid "ps"
@@ -7992,7 +7992,7 @@ msgstr "ps"
 #: lib/layouts/g-brief.layout:214
 #: lib/layouts/g-brief2.layout:911
 msgid "Encl."
-msgstr "All."
+msgstr "Allegati"
 
 #: lib/layouts/dinbrief.layout:369
 msgid "Anlagen"
@@ -8006,7 +8006,7 @@ msgstr "CC"
 
 #: lib/layouts/dinbrief.layout:379
 msgid "Verteiler"
-msgstr "Verteiler"
+msgstr "Distribuzione"
 
 #: lib/layouts/ectaart.layout:21
 msgid "RunTitle"
@@ -8555,11 +8555,11 @@ msgstr "Via:"
 
 #: lib/layouts/g-brief.layout:68
 msgid "Addition"
-msgstr "Addizione"
+msgstr "Supplemento"
 
 #: lib/layouts/g-brief.layout:71
 msgid "Addition:"
-msgstr "Addizione:"
+msgstr "Supplemento:"
 
 #: lib/layouts/g-brief.layout:78
 msgid "Town:"
@@ -8589,18 +8589,18 @@ msgstr "Indirizzo di ritorno:"
 #: lib/layouts/g-brief2.layout:747
 #: lib/layouts/lettre.layout:472
 msgid "MyRef:"
-msgstr "Il mio riferimento:"
+msgstr "Nostro riferimento:"
 
 #: lib/layouts/g-brief.layout:106
 #: lib/layouts/g-brief2.layout:768
 #: lib/layouts/lettre.layout:456
 msgid "YourRef:"
-msgstr "Il tuo riferimento:"
+msgstr "Vostro riferimento:"
 
 #: lib/layouts/g-brief.layout:113
 #: lib/layouts/g-brief2.layout:789
 msgid "YourMail:"
-msgstr "La tua posta:"
+msgstr "Vostra lettera:"
 
 #: lib/layouts/g-brief.layout:120
 msgid "Phone:"
@@ -8667,12 +8667,12 @@ msgstr "Accredito bancario:"
 #: lib/layouts/g-brief.layout:173
 #: lib/layouts/g-brief2.layout:695
 msgid "PostalComment"
-msgstr "Commento postale"
+msgstr "Classificazione"
 
 #: lib/layouts/g-brief.layout:176
 #: lib/layouts/g-brief2.layout:705
 msgid "PostalComment:"
-msgstr "Commento postale:"
+msgstr "Classificazione:"
 
 #: lib/layouts/g-brief.layout:201
 #: lib/layouts/g-brief2.layout:832
@@ -8682,255 +8682,255 @@ msgstr "Riferimento:"
 #: lib/layouts/g-brief.layout:218
 #: lib/layouts/g-brief2.layout:922
 msgid "Encl.:"
-msgstr "All.:"
+msgstr "Allegati:"
 
 #: lib/layouts/g-brief2.layout:77
 msgid "NameRowA"
-msgstr "NomeRigaA"
+msgstr "Nome riga A"
 
 #: lib/layouts/g-brief2.layout:88
 msgid "NameRowA:"
-msgstr "NomeRigaA:"
+msgstr "Nome riga A:"
 
 #: lib/layouts/g-brief2.layout:97
 msgid "NameRowB"
-msgstr "NomeRigaB"
+msgstr "Nome riga B"
 
 #: lib/layouts/g-brief2.layout:107
 msgid "NameRowB:"
-msgstr "NomeRigaB:"
+msgstr "Nome riga B:"
 
 #: lib/layouts/g-brief2.layout:116
 msgid "NameRowC"
-msgstr "NomeRigaC"
+msgstr "Nome riga C"
 
 #: lib/layouts/g-brief2.layout:126
 msgid "NameRowC:"
-msgstr "NomeRigaC:"
+msgstr "Nome riga C:"
 
 #: lib/layouts/g-brief2.layout:135
 msgid "NameRowD"
-msgstr "NomeRigaD"
+msgstr "Nome riga D"
 
 #: lib/layouts/g-brief2.layout:145
 msgid "NameRowD:"
-msgstr "NomeRigaD:"
+msgstr "Nome riga D:"
 
 #: lib/layouts/g-brief2.layout:154
 msgid "NameRowE"
-msgstr "NomeRigaE"
+msgstr "Nome riga E"
 
 #: lib/layouts/g-brief2.layout:164
 msgid "NameRowE:"
-msgstr "NomeRigaE:"
+msgstr "Nome riga E:"
 
 #: lib/layouts/g-brief2.layout:173
 msgid "NameRowF"
-msgstr "NomeRigaF"
+msgstr "Nome riga F"
 
 #: lib/layouts/g-brief2.layout:183
 msgid "NameRowF:"
-msgstr "NomeRigaF:"
+msgstr "Nome riga F:"
 
 #: lib/layouts/g-brief2.layout:192
 msgid "NameRowG"
-msgstr "NomeRigaG"
+msgstr "Nome riga G"
 
 #: lib/layouts/g-brief2.layout:202
 msgid "NameRowG:"
-msgstr "NomeRigaG:"
+msgstr "Nome riga G:"
 
 #: lib/layouts/g-brief2.layout:212
 msgid "AddressRowA"
-msgstr "IndirizzoRigaA"
+msgstr "Indirizzo riga A"
 
 #: lib/layouts/g-brief2.layout:223
 msgid "AddressRowA:"
-msgstr "IndirizzoRigaA:"
+msgstr "Indirizzo riga A:"
 
 #: lib/layouts/g-brief2.layout:232
 msgid "AddressRowB"
-msgstr "IndirizzoRigaB"
+msgstr "Indirizzo riga B"
 
 #: lib/layouts/g-brief2.layout:242
 msgid "AddressRowB:"
-msgstr "IndirizzoRigaB:"
+msgstr "Indirizzo riga B:"
 
 #: lib/layouts/g-brief2.layout:251
 msgid "AddressRowC"
-msgstr "IndirizzoRigaC"
+msgstr "Indirizzo riga C"
 
 #: lib/layouts/g-brief2.layout:261
 msgid "AddressRowC:"
-msgstr "IndirizzoRigaC:"
+msgstr "Indirizzo riga C:"
 
 #: lib/layouts/g-brief2.layout:270
 msgid "AddressRowD"
-msgstr "IndirizzoRigaD"
+msgstr "Indirizzo riga D"
 
 #: lib/layouts/g-brief2.layout:280
 msgid "AddressRowD:"
-msgstr "IndirizzoRigaD:"
+msgstr "Indirizzo riga D:"
 
 #: lib/layouts/g-brief2.layout:289
 msgid "AddressRowE"
-msgstr "IndirizzoRigaE"
+msgstr "Indirizzo riga E"
 
 #: lib/layouts/g-brief2.layout:299
 msgid "AddressRowE:"
-msgstr "IndirizzoRigaE:"
+msgstr "Indirizzo riga E:"
 
 #: lib/layouts/g-brief2.layout:308
 msgid "AddressRowF"
-msgstr "IndirizzoRigaF"
+msgstr "Indirizzo riga F"
 
 #: lib/layouts/g-brief2.layout:318
 msgid "AddressRowF:"
-msgstr "IndirizzoRigaF:"
+msgstr "Indirizzo riga F:"
 
 #: lib/layouts/g-brief2.layout:327
 msgid "TelephoneRowA"
-msgstr "TelefonoRigaA"
+msgstr "Telefono riga A"
 
 #: lib/layouts/g-brief2.layout:338
 msgid "TelephoneRowA:"
-msgstr "TelefonoRigaA:"
+msgstr "Telefono riga A:"
 
 #: lib/layouts/g-brief2.layout:347
 msgid "TelephoneRowB"
-msgstr "TelefonoRigaB"
+msgstr "Telefono riga B"
 
 #: lib/layouts/g-brief2.layout:357
 msgid "TelephoneRowB:"
-msgstr "TelefonoRigaB:"
+msgstr "Telefono riga B:"
 
 #: lib/layouts/g-brief2.layout:366
 msgid "TelephoneRowC"
-msgstr "TelefonoRigaC"
+msgstr "Telefono riga C"
 
 #: lib/layouts/g-brief2.layout:376
 msgid "TelephoneRowC:"
-msgstr "TelefonoRigaC:"
+msgstr "Telefono riga C:"
 
 #: lib/layouts/g-brief2.layout:385
 msgid "TelephoneRowD"
-msgstr "TelefonoRigaD"
+msgstr "Telefono riga D"
 
 #: lib/layouts/g-brief2.layout:395
 msgid "TelephoneRowD:"
-msgstr "TelefonoRigaD:"
+msgstr "Telefono riga D:"
 
 #: lib/layouts/g-brief2.layout:404
 msgid "TelephoneRowE"
-msgstr "TelefonoRigaE"
+msgstr "Telefono riga E"
 
 #: lib/layouts/g-brief2.layout:414
 msgid "TelephoneRowE:"
-msgstr "TelefonoRigaE:"
+msgstr "Telefono riga E:"
 
 #: lib/layouts/g-brief2.layout:423
 msgid "TelephoneRowF"
-msgstr "TelefonoRigaF"
+msgstr "Telefono riga F"
 
 #: lib/layouts/g-brief2.layout:433
 msgid "TelephoneRowF:"
-msgstr "TelefonoRigaF:"
+msgstr "Telefono riga F:"
 
 #: lib/layouts/g-brief2.layout:442
 msgid "InternetRowA"
-msgstr "InternetRigaA"
+msgstr "Internet riga A"
 
 #: lib/layouts/g-brief2.layout:453
 msgid "InternetRowA:"
-msgstr "InternetRigaA:"
+msgstr "Internet riga A:"
 
 #: lib/layouts/g-brief2.layout:462
 msgid "InternetRowB"
-msgstr "InternetRigaB"
+msgstr "Internet riga B"
 
 #: lib/layouts/g-brief2.layout:472
 msgid "InternetRowB:"
-msgstr "InternetRigaB:"
+msgstr "Internet riga B:"
 
 #: lib/layouts/g-brief2.layout:481
 msgid "InternetRowC"
-msgstr "InternetRigaC"
+msgstr "Internet riga C"
 
 #: lib/layouts/g-brief2.layout:491
 msgid "InternetRowC:"
-msgstr "InternetRigaC:"
+msgstr "Internet riga C:"
 
 #: lib/layouts/g-brief2.layout:500
 msgid "InternetRowD"
-msgstr "InternetRigaD"
+msgstr "Internet riga D"
 
 #: lib/layouts/g-brief2.layout:510
 msgid "InternetRowD:"
-msgstr "InternetRigaD:"
+msgstr "Internet riga D:"
 
 #: lib/layouts/g-brief2.layout:519
 msgid "InternetRowE"
-msgstr "InternetRigaE"
+msgstr "Internet riga E"
 
 #: lib/layouts/g-brief2.layout:529
 msgid "InternetRowE:"
-msgstr "InternetRigaE:"
+msgstr "Internet riga E:"
 
 #: lib/layouts/g-brief2.layout:538
 msgid "InternetRowF"
-msgstr "InternetRigaF"
+msgstr "Internet riga F"
 
 #: lib/layouts/g-brief2.layout:548
 msgid "InternetRowF:"
-msgstr "InternetRigaF:"
+msgstr "Internet riga F:"
 
 #: lib/layouts/g-brief2.layout:557
 msgid "BankRowA"
-msgstr "BancaRigaA"
+msgstr "Banca riga A"
 
 #: lib/layouts/g-brief2.layout:568
 msgid "BankRowA:"
-msgstr "BancaRigaA:"
+msgstr "Banca riga A:"
 
 #: lib/layouts/g-brief2.layout:577
 msgid "BankRowB"
-msgstr "BancaRigaB"
+msgstr "Banca riga B"
 
 #: lib/layouts/g-brief2.layout:587
 msgid "BankRowB:"
-msgstr "BancaRigaB:"
+msgstr "Banca riga B:"
 
 #: lib/layouts/g-brief2.layout:596
 msgid "BankRowC"
-msgstr "BancaRigaC"
+msgstr "Banca riga C"
 
 #: lib/layouts/g-brief2.layout:606
 msgid "BankRowC:"
-msgstr "BancaRigaC:"
+msgstr "Banca riga C:"
 
 #: lib/layouts/g-brief2.layout:615
 msgid "BankRowD"
-msgstr "BancaRigaD"
+msgstr "Banca riga D"
 
 #: lib/layouts/g-brief2.layout:625
 msgid "BankRowD:"
-msgstr "BancaRigaD:"
+msgstr "Banca riga D:"
 
 #: lib/layouts/g-brief2.layout:634
 msgid "BankRowE"
-msgstr "BancaRigaE"
+msgstr "Banca riga E"
 
 #: lib/layouts/g-brief2.layout:644
 msgid "BankRowE:"
-msgstr "BancaRigaE:"
+msgstr "Banca riga E:"
 
 #: lib/layouts/g-brief2.layout:653
 msgid "BankRowF"
-msgstr "BancaRigaF"
+msgstr "Banca riga F"
 
 #: lib/layouts/g-brief2.layout:663
 msgid "BankRowF:"
-msgstr "BancaRigaF:"
+msgstr "Banca riga F:"
 
 #: lib/layouts/heb-article.layout:68
 msgid "Claim #."
@@ -9229,25 +9229,25 @@ msgstr "Autore corrente:"
 #: lib/layouts/lettre.layout:39
 #: lib/layouts/lettre.layout:316
 msgid "NoTelephone"
-msgstr "Telefono"
+msgstr "NoTelefono"
 
 #: lib/layouts/lettre.layout:43
 #: lib/layouts/lettre.layout:372
 #: lib/layouts/lettre.layout:380
 msgid "NoFax"
-msgstr "Fax"
+msgstr "NoFax"
 
 #: lib/layouts/lettre.layout:49
 #: lib/layouts/lettre.layout:187
 #: lib/layouts/lettre.layout:194
 msgid "NoPlace"
-msgstr "Luogo"
+msgstr "NoLuogo"
 
 #: lib/layouts/lettre.layout:53
 #: lib/layouts/lettre.layout:236
 #: lib/layouts/lettre.layout:244
 msgid "NoDate"
-msgstr "Data"
+msgstr "NoData"
 
 #: lib/layouts/lettre.layout:73
 #: lib/layouts/lettre.layout:649
@@ -9292,7 +9292,7 @@ msgstr "Tel:"
 
 #: lib/layouts/lettre.layout:324
 msgid "NoTel"
-msgstr "Tel"
+msgstr "NoTel"
 
 #: lib/layouts/lettre.layout:355
 msgid "Fax:"
@@ -9519,7 +9519,7 @@ msgstr "    "
 
 #: lib/layouts/powerdot.layout:145
 msgid "EndSlide"
-msgstr "Fine Lucido"
+msgstr "Fine lucido"
 
 #: lib/layouts/powerdot.layout:159
 msgid "~=~"
@@ -9527,11 +9527,11 @@ msgstr "~=~"
 
 #: lib/layouts/powerdot.layout:172
 msgid "WideSlide"
-msgstr "Lucido Esteso"
+msgstr "Lucido esteso"
 
 #: lib/layouts/powerdot.layout:184
 msgid "EmptySlide"
-msgstr "Lucido Vuoto"
+msgstr "Lucido vuoto"
 
 #: lib/layouts/powerdot.layout:188
 msgid "Empty slide:"
@@ -9544,11 +9544,11 @@ msgstr "\\arabic{section}"
 
 #: lib/layouts/powerdot.layout:261
 msgid "ItemizeType1"
-msgstr "PuntatoTipo1"
+msgstr "Elenco puntato (tipo 1)"
 
 #: lib/layouts/powerdot.layout:287
 msgid "EnumerateType1"
-msgstr "EnumerazioneTipo1"
+msgstr "Elenco numerato (tipo 1)"
 
 #: lib/layouts/powerdot.layout:409
 #: lib/layouts/stdfloats.inc:46
@@ -9749,7 +9749,7 @@ msgstr "Lucido*"
 
 #: lib/layouts/seminar.layout:52
 msgid "EndOfSlide"
-msgstr "Fine Lucido"
+msgstr "Fine lucido"
 
 #: lib/layouts/seminar.layout:57
 msgid "SlideHeading"
@@ -14110,7 +14110,7 @@ msgstr "Elimina colonna"
 
 #: lib/ui/stdtoolbars.inc:148
 msgid "Set top line"
-msgstr "Seleziona linea superiore"
+msgstr "Imposta linea superiore"
 
 #: lib/ui/stdtoolbars.inc:149
 msgid "Set bottom line"
@@ -14134,7 +14134,7 @@ msgstr "Imposta tutte le linee"
 
 #: lib/ui/stdtoolbars.inc:154
 msgid "Unset all lines"
-msgstr "Togli tutte le linee"
+msgstr "Rimuovi tutte le linee"
 
 #: lib/ui/stdtoolbars.inc:156
 msgid "Align left"
