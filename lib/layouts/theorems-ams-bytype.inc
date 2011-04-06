@@ -76,7 +76,7 @@ Style Theorem
 	EndFont
 	Preamble
 		\theoremstyle{plain}
-		\newtheorem{thm}{Theorem}
+		\newtheorem{thm}{\protect\theoremname}
 	EndPreamble
 	LangPreamble
 		\providecommand{\theoremname}{_(Theorem)}
@@ -94,7 +94,7 @@ Style Corollary
 	LabelString           "Corollary \thecorollary."
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem{cor}{Corollary}
+	  \newtheorem{cor}{\protect\corollaryname}
 	EndPreamble
 	LabelCounter          corollary
 	LangPreamble
@@ -112,7 +112,7 @@ Style Lemma
 	LabelString           "Lemma \thelemma."
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem{lem}{Lemma}
+	  \newtheorem{lem}{\protect\lemmaname}
 	EndPreamble
 	LangPreamble
 	  \providecommand{\lemmaname}{_(Lemma)}
@@ -130,7 +130,7 @@ Style Proposition
 	LabelString           "Proposition \theproposition."
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem{prop}{Proposition}
+	  \newtheorem{prop}{\protect\propositionname}
 	EndPreamble
 	LangPreamble
 	  \providecommand{\propositionname}{_(Proposition)}
@@ -148,7 +148,7 @@ Style Conjecture
 	LabelString           "Conjecture \theconjecture."
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem{conjecture}{Conjecture}
+	  \newtheorem{conjecture}{\protect\conjecturename}
 	EndPreamble
 	LangPreamble
 	  \providecommand{\conjecturename}{_(Conjecture)}
@@ -166,7 +166,7 @@ Style Fact
 	LabelString           "Fact \thefact."
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem{fact}{Fact}
+	  \newtheorem{fact}{\protect\factname}
 	EndPreamble
 	LangPreamble
 	  \providecommand{\factname}{_(Fact)}
@@ -191,7 +191,7 @@ Style Definition
 	EndFont
 	Preamble
 	  \theoremstyle{definition}
-	  \newtheorem{defn}{Definition}
+	  \newtheorem{defn}{\protect\definitionname}
 	EndPreamble
 	LangPreamble
 	  \providecommand{\definitionname}{_(Definition)}
@@ -209,7 +209,7 @@ Style Example
 	LabelString           "Example \theexample."
 	Preamble
 	 \theoremstyle{definition}
-	  \newtheorem{example}{Example}
+	  \newtheorem{example}{\protect\examplename}
 	EndPreamble
 	Requires              amsthm
 	LangPreamble
@@ -228,7 +228,7 @@ Style Problem
 	LabelString           "Problem \theproblem."
 	Preamble
 	  \theoremstyle{definition}
-	  \newtheorem{problem}{Problem}
+	  \newtheorem{problem}{\protect\problemname}
 	EndPreamble
 	Requires              amsthm
 	LangPreamble
@@ -247,7 +247,7 @@ Style Exercise
 	LabelString           "Exercise \theexercise."
 	Preamble
 	  \theoremstyle{definition}
-	  \newtheorem{xca}{Exercise}
+	  \newtheorem{xca}{\protect\exercisename}
 	EndPreamble
 	Requires              amsthm
 	LangPreamble
@@ -274,7 +274,7 @@ Style Remark
 	EndFont
 	Preamble
 	  \theoremstyle{remark}
-	  \newtheorem{rem}{Remark}
+	  \newtheorem{rem}{\protect\remarkname}
 	EndPreamble
 	LangPreamble
 	  \providecommand{\remarkname}{_(Remark)}
@@ -292,7 +292,7 @@ Style Claim
 	LabelString           "Claim \theclaim."
 	Preamble
 	  \theoremstyle{remark}
-	  \newtheorem{claim}{Claim}
+	  \newtheorem{claim}{\protect\claimname}
 	EndPreamble
 	Requires              amsthm
 	LangPreamble
@@ -330,7 +330,7 @@ Style Case
 	Preamble
 	  \newcounter{casectr}
 	  \newenvironment{caseenv}
-	  {\begin{list}{{\itshape\ Case} \arabic{casectr}.}{%
+	  {\begin{list}{{\itshape\ \protect\casename} \arabic{casectr}.}{%
 	   \setlength{\leftmargin}{\labelwidth}
 	   \addtolength{\leftmargin}{\parskip}
 	   \setlength{\itemindent}{\listparindent}
