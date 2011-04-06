@@ -27,12 +27,13 @@ options is given, in which case we checks only for those requested.
 -s: Check for space at end
 -t: Check for uniform translation
 These options can be given with or without other options.
--f: Ignore fuzzy translations.
+-f: Ignore fuzzy translations
 -w: Only report summary total of errors
+-i: Silent mode, report only errors
 EOT
 
 my %options;
-getopts(":hacfmpqstw", \%options);
+getopts(":hacfmpqstwi", \%options);
 
 if (defined($options{h})) { 
   print $usage; 
@@ -43,6 +44,8 @@ my $only_total = defined($options{w});
 delete $options{w} if $only_total;
 my $ignore_fuzzy = defined($options{f});
 delete $options{f} if $ignore_fuzzy;
+my $silent_mode = defined($options{i});
+delete $options{i} if $silent_mode;
 
 my $check_args = (!%options or defined($options{a}));
 my $check_colons = (!%options or defined($options{c}));
@@ -56,7 +59,9 @@ my %trans;
 
 foreach my $pofilename ( @ARGV ) {
   my %bad;
-  print "Processing po file '$pofilename'...\n";
+  if (!$silent_mode) {
+    print "Processing po file '$pofilename'...\n";
+  }
 
   open( INPUT, "<$pofilename" )
     || die "Cannot read po file '$pofilename'";
@@ -110,7 +115,7 @@ foreach my $pofilename ( @ARGV ) {
         my $n = 0;
         foreach my $arg (@argstrs) { $n = $arg if $arg > $n; }
         if ($n <= 0) { 
-          print "Line $linenum: Problem finding arguments in:\n    $msgid!\n"
+          print "$pofilename, line $linenum: Problem finding arguments in:\n    $msgid!\n"
             unless $only_total;
           ++$bad{"Missing arguments"};
           $warn++;
@@ -118,7 +123,7 @@ foreach my $pofilename ( @ARGV ) {
           foreach my $i (1..$n) {
             my $arg = "%$i\\\$s"; 
             if ( $msgstr !~ m/$arg/ ) {
-              print "Line $linenum: Missing argument `$arg'\n  '$msgid' ==> '$msgstr'\n"
+              print "$pofilename, line $linenum: Missing argument `$arg'\n  '$msgid' ==> '$msgstr'\n"
                 unless $only_total;
               ++$bad{"Missing arguments"};
               $warn++;
@@ -220,14 +225,15 @@ foreach my $pofilename ( @ARGV ) {
       }
     }
   }
-
-  if ($warn) {
-    while (my ($k, $v) = each %bad) { print "$k: $v\n"; }
-    if (scalar(keys %bad) > 1) {
-      print "Total warnings: $warn\n";
+  if (!$silent_mode) {
+    if ($warn) {
+      while (my ($k, $v) = each %bad) { print "$k: $v\n"; }
+      if (scalar(keys %bad) > 1) {
+        print "Total warnings: $warn\n";
+      }
+    } else {
+      print "No warnings!\n";
     }
-  } else {
-    print "No warnings!\n";
+    print "\n";
   }
-  print "\n";
 }
