@@ -299,7 +299,8 @@ def layouts_l10n(input_files, output, base, layouttranslations):
 # this file from the translations, run `make ../lib/layouttranslations' in po.
 # Python polib library is needed for building the output file.
 #
-# This file should remain fixed during minor LyX releases.'''
+# This file should remain fixed during minor LyX releases.
+# For more comments see README.localization file.'''
         for lang in languages:
             print >> out, '\nTranslation %s' % lang
             if lang in oldtrans.keys():
