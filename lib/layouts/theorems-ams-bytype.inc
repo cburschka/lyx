@@ -78,6 +78,12 @@ Style Theorem
 		\theoremstyle{plain}
 		\newtheorem{thm}{Theorem}
 	EndPreamble
+	LangPreamble
+		\providecommand{\theoremname}{_(Theorem)}
+	EndLangPreamble
+	BabelPreamble
+		\addto\captions$$lang{\renewcommand{\theoremname}{_(Theorem)}}
+	EndBabelPreamble
 	Requires              amsthm
 End
 
@@ -91,6 +97,12 @@ Style Corollary
 	  \newtheorem{cor}{Corollary}
 	EndPreamble
 	LabelCounter          corollary
+	LangPreamble
+		\providecommand{\corollaryname}{_(Corollary)}
+	EndLangPreamble
+	BabelPreamble
+		\addto\captions$$lang{\renewcommand{\corollaryname}{_(Corollary)}}
+	EndBabelPreamble
 End
 
 
@@ -102,6 +114,12 @@ Style Lemma
 	  \theoremstyle{plain}
 	  \newtheorem{lem}{Lemma}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\lemmaname}{_(Lemma)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\lemmaname}{_(Lemma)}}
+	EndBabelPreamble
 	LabelCounter          lemma
 End
 
@@ -114,6 +132,12 @@ Style Proposition
 	  \theoremstyle{plain}
 	  \newtheorem{prop}{Proposition}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\propositionname}{_(Proposition)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\propositionname}{_(Proposition)}}
+	EndBabelPreamble
 	LabelCounter          proposition
 End
 
@@ -126,6 +150,12 @@ Style Conjecture
 	  \theoremstyle{plain}
 	  \newtheorem{conjecture}{Conjecture}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\conjecturename}{_(Conjecture)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\conjecturename}{_(Conjecture)}}
+	EndBabelPreamble
 	LabelCounter          conjecture
 End
 
@@ -138,6 +168,12 @@ Style Fact
 	  \theoremstyle{plain}
 	  \newtheorem{fact}{Fact}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\factname}{_(Fact)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\factname}{_(Fact)}}
+	EndBabelPreamble
 	LabelCounter          fact
 End
 
@@ -157,6 +193,12 @@ Style Definition
 	  \theoremstyle{definition}
 	  \newtheorem{defn}{Definition}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\definitionname}{_(Definition)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\definitionname}{_(Definition)}}
+	EndBabelPreamble
 	LabelCounter          definition
 End
 
@@ -170,6 +212,12 @@ Style Example
 	  \newtheorem{example}{Example}
 	EndPreamble
 	Requires              amsthm
+	LangPreamble
+	  \providecommand{\examplename}{_(Example)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\examplename}{_(Example)}}
+	EndBabelPreamble
 	LabelCounter          example
 End
 
@@ -183,6 +231,12 @@ Style Problem
 	  \newtheorem{problem}{Problem}
 	EndPreamble
 	Requires              amsthm
+	LangPreamble
+	  \providecommand{\problemname}{_(Problem)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\problemname}{_(Problem)}}
+	EndBabelPreamble
 	LabelCounter          problem
 End
 
@@ -196,6 +250,12 @@ Style Exercise
 	  \newtheorem{xca}{Exercise}
 	EndPreamble
 	Requires              amsthm
+	LangPreamble
+	  \providecommand{\exercisename}{_(Exercise)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\exercisename}{_(Exercise)}}
+	EndBabelPreamble
 	LabelCounter          exercise
 End
 
@@ -216,6 +276,12 @@ Style Remark
 	  \theoremstyle{remark}
 	  \newtheorem{rem}{Remark}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\remarkname}{_(Remark)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\remarkname}{_(Remark)}}
+	EndBabelPreamble
 	LabelCounter          remark
 End
 
@@ -229,6 +295,12 @@ Style Claim
 	  \newtheorem{claim}{Claim}
 	EndPreamble
 	Requires              amsthm
+	LangPreamble
+	  \providecommand{\claimname}{_(Claim)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\claimname}{_(Claim)}}
+	EndBabelPreamble
 	LabelCounter          claim
 End
 
@@ -268,4 +340,10 @@ Style Case
 	   \usecounter{casectr}}
 	  {\end{list}}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\casename}{_(Case)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\casename}{_(Case)}}
+	EndBabelPreamble
 End
