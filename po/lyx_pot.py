@@ -96,7 +96,9 @@ def layouts_l10n(input_files, output, base, layouttranslations):
     CounterFormat = re.compile(r'\s*PrettyFormat\s+"?(.*)"?')
     CiteFormat = re.compile(r'\s*CiteFormat')
     KeyVal = re.compile(r'^\s*_\w+\s+(.*)$')
-    Float = re.compile(r'\s*Float')
+    Float = re.compile(r'\s*Float\s*$')
+    UsesFloatPkg = re.compile(r'\s*UsesFloatPkg\s+(.*)')
+    IsPredefined = re.compile(r'\s*IsPredefined\s+(.*)')
     End = re.compile(r'\s*End')
     Comment = re.compile(r'\s*#')
     Translation = re.compile(r'\s*Translation\s+(.*)\s*$')
@@ -160,6 +162,10 @@ def layouts_l10n(input_files, output, base, layouttranslations):
         readingI18nPreamble = False
         readingFloat = False
         readingCiteFormats = False
+        isPredefined = False
+        usesFloatPkg = True
+        listname = ''
+        floatname = ''
         descStartLine = -1
         descLines = []
         lineno = 0
@@ -222,7 +228,7 @@ def layouts_l10n(input_files, output, base, layouttranslations):
                 if layouttranslations:
                     # gui name must only be added for floats
                     if readingFloat:
-                        keyset.add(string)
+                        floatname = string
                 else:
                     writeString(out, src, base, lineno, string)
                 continue
@@ -236,7 +242,7 @@ def layouts_l10n(input_files, output, base, layouttranslations):
             if res != None:
                 string = res.group(1)
                 if layouttranslations:
-                    keyset.add(string.strip('"'))
+                    listname = string.strip('"')
                 else:
                     writeString(out, src, base, lineno, string)
                 continue
@@ -268,13 +274,44 @@ def layouts_l10n(input_files, output, base, layouttranslations):
             if res != None:
                 readingFloat = True
                 continue
+            res = IsPredefined.search(line)
+            if res != None:
+                string = res.group(1).lower()
+                if string == 'true':
+                    isPredefined = True
+                else:
+                    isPredefined = False
+                continue
+            res = UsesFloatPkg.search(line)
+            if res != None:
+                string = res.group(1).lower()
+                if string == 'true':
+                    usesFloatPkg = True
+                else:
+                    usesFloatPkg = False
+                continue
             res = CiteFormat.search(line)
             if res != None:
                 readingCiteFormats = True
+                continue
             res = End.search(line)
             if res != None:
+                # If a float is predefined by the package and it does not need
+                # the float package then it uses the standard babel translations.
+                # This is even true for MarginFigure, MarginTable (both from
+                # tufte-book.layout) and Planotable, Plate (both from aguplus.inc).
+                if layouttranslations and readingFloat and usesFloatPkg and not isPredefined:
+                    if floatname != '':
+                        keyset.add(floatname)
+                    if listname != '':
+                        keyset.add(listname)
+                isPredefined = False
+                usesFloatPkg = True
+                listname = ''
+                floatname = ''
                 readingCiteFormats = False
                 readingFloat = False
+                continue
             if readingCiteFormats:
                 res = KeyVal.search(line)
                 if res != None:
