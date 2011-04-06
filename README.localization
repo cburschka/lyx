@@ -1,9 +1,12 @@
 
 	Localization/Translation FAQ
+                (2007-2011)
               
     by Ran Rutenberg, Pavel Sanda, Michael Gerz
 
-    February 2007
+
+PART I - Interface translation
+------------------------------
 
 This file is mainly intended for those who have no or little experience using 
 .po files, but want to contribute by translating the LyX interface (i.e. menu
@@ -137,3 +140,25 @@ have a look at
 
 Consider subscribing to the documentation list at lyx-docs@lists.lyx.org (rather
 silent one) or developer's mailing list lyx-devel@lists.lyx.org (high volume).
+
+
+
+PART II - Translation of Math environments and Floats in the final output
+-------------------------------------------------------------------------
+
+As of 2.0 LyX allows automatic translation in tex/dvi/ps/pdf output for math
+environment strings (and some floats) which are not automatically translated via
+babel package to the localized form.  For example the environment "Exercise"
+becomes "Aufgabe" in the output of the documents with language set to german.
+
+These translations are taken from the previously translated .po file before the
+final major LyX release (e.g. 2.0.0) and are fixed for all next minor releases
+(e.g. 2.0.x) in order to have fixed output of LyX documents.
+
+The current translation for your language can be found in lib/layouttranslations
+file. Easy way to check many of the translation is to simply load 
+lib/examples/localization_test.lyx in LyX and read its instructions.
+
+The problematic strings can be then fixed in the .po file. For inspiration the
+typical places in .po files, where to fix the translation, can be seen on the
+following commit: http://www.lyx.org/trac/changeset/38169 .
