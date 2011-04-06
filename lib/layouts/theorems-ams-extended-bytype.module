@@ -396,11 +396,11 @@ Style Assumption*
 	Preamble
 	  \theoremstyle{plain}
 	  \newtheorem*{assumption*}{\protect\assumptionname}
+	EndPreamble
 	LangPreamble
 	  \providecommand{\assumptionname}{_(Assumption)}
 	EndLangPreamble
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\assumptionname}{_(Assumption)}}
 	EndBabelPreamble
-	EndPreamble
 End
