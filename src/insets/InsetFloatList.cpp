@@ -120,10 +120,12 @@ void InsetFloatList::latex(otexstream & os, OutputParams const &) const
 
 	if (cit != floats.end()) {
 		Floating const & fl = cit->second;
-		if (fl.usesFloatPkg())
+		if (fl.usesFloatPkg()) {
+			docstring const name =
+				buffer().language()->translateLayout(fl.listName());
 			os << "\\listof{" << getParam("type") << "}{"
-			   << buffer().B_(fl.listName()) << "}\n"; 
-		else {
+			   << name << "}\n";
+		} else {
 			if (!fl.listCommand().empty())
 				os << "\\" << from_ascii(fl.listCommand()) << "\n";
 			else 
@@ -132,9 +134,10 @@ void InsetFloatList::latex(otexstream & os, OutputParams const &) const
 				   << "\n";
 		}
 	} else {
+		string const flName = "List of " + to_utf8(getParam("type"));
+		docstring const name = buffer().language()->translateLayout(flName);
 		os << "%%\\listof{" << getParam("type") << "}{"
-		   << bformat(_("List of %1$s"), getParam("type"))
-		   << "}\n";
+		   << name << "}\n";
 	}
 }
 
