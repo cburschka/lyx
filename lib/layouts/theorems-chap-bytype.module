@@ -55,9 +55,9 @@ Style Theorem
 	Preamble
 	  \theoremstyle{plain}
 	  \ifx\thechapter\undefined
-	    \newtheorem{thm}{Theorem}
+	    \newtheorem{thm}{\protect\theoremname}
 	  \else
-	    \newtheorem{thm}{Theorem}[chapter]
+	    \newtheorem{thm}{\protect\theoremname}[chapter]
 	  \fi
 	EndPreamble
 End
@@ -67,9 +67,9 @@ Style Corollary
 	Preamble
 	  \theoremstyle{plain}
 	  \ifx\thechapter\undefined
-	    \newtheorem{cor}{Corollary}
+	    \newtheorem{cor}{\protect\corollaryname}
 	  \else
-	    \newtheorem{cor}{Corollary}[chapter]
+	    \newtheorem{cor}{\protect\corollaryname}[chapter]
 	  \fi
 	EndPreamble
 End
@@ -79,9 +79,9 @@ Style Lemma
 	Preamble
 	  \theoremstyle{plain}
 	  \ifx\thechapter\undefined
-	    \newtheorem{lem}{Lemma}
+	    \newtheorem{lem}{\protect\lemmaname}
 	  \else
-	    \newtheorem{lem}{Lemma}[chapter]
+	    \newtheorem{lem}{\protect\lemmaname}[chapter]
 	  \fi
 	EndPreamble
 End
@@ -91,9 +91,9 @@ Style Proposition
 	Preamble
 	  \theoremstyle{plain}
 	  \ifx\thechapter\undefined
-	    \newtheorem{prop}{Proposition}
+	    \newtheorem{prop}{\protect\propositionname}
 	  \else
-	    \newtheorem{prop}{Proposition}[chapter]
+	    \newtheorem{prop}{\protect\propositionname}[chapter]
 	  \fi
 	EndPreamble
 End
@@ -103,9 +103,9 @@ Style Conjecture
 	Preamble
 	  \theoremstyle{plain}
 	  \ifx\thechapter\undefined
-	    \newtheorem{conjecture}{Conjecture}
+	    \newtheorem{conjecture}{\protect\conjecturename}
 	  \else
-	    \newtheorem{conjecture}{Conjecture}[chapter]
+	    \newtheorem{conjecture}{\protect\conjecturename}[chapter]
 	  \fi
 	EndPreamble
 End
@@ -115,9 +115,9 @@ Style Fact
 	Preamble
 	  \theoremstyle{plain}
 	  \ifx\thechapter\undefined
-	    \newtheorem{fact}{Fact}
+	    \newtheorem{fact}{\protect\factname}
 	  \else
-	    \newtheorem{fact}{Fact}[chapter]
+	    \newtheorem{fact}{\protect\factname}[chapter]
 	  \fi
 	EndPreamble
 End
@@ -127,9 +127,9 @@ Style Definition
 	Preamble
 	  \theoremstyle{definition}
 	  \ifx\thechapter\undefined
-	    \newtheorem{defn}{Definition}
+	    \newtheorem{defn}{\protect\definitionname}
 	  \else
-	    \newtheorem{defn}{Definition}[chapter]
+	    \newtheorem{defn}{\protect\definitionname}[chapter]
 	  \fi
 	EndPreamble
 End
@@ -139,9 +139,9 @@ Style Example
 	Preamble
 	  \theoremstyle{definition}
 	  \ifx\thechapter\undefined
-	    \newtheorem{example}{Example}
+	    \newtheorem{example}{\protect\examplename}
 	  \else
-	    \newtheorem{example}{Example}[chapter]
+	    \newtheorem{example}{\protect\examplename}[chapter]
 	  \fi
 	EndPreamble
 End
@@ -151,9 +151,9 @@ Style Problem
 	Preamble
 	  \theoremstyle{definition}
 	  \ifx\thechapter\undefined
-	    \newtheorem{problem}{Problem}
+	    \newtheorem{problem}{\protect\problemname}
 	  \else
-	    \newtheorem{problem}{Problem}[chapter]
+	    \newtheorem{problem}{\protect\problemname}[chapter]
 	  \fi
 	EndPreamble
 End
@@ -163,9 +163,9 @@ Style Exercise
 	Preamble
 	  \theoremstyle{definition}
 	  \ifx\thechapter\undefined
-	    \newtheorem{xca}{Exercise}
+	    \newtheorem{xca}{\protect\exercisename}
 	  \else
-	    \newtheorem{xca}{Exercise}[chapter]
+	    \newtheorem{xca}{\protect\exercisename}[chapter]
 	  \fi
 	EndPreamble
 End
@@ -175,9 +175,9 @@ Style Remark
 	Preamble
 	  \theoremstyle{remark}
 	  \ifx\thechapter\undefined
-	    \newtheorem{rem}{Remark}
+	    \newtheorem{rem}{\protect\remarkname}
 	  \else
-	    \newtheorem{rem}{Remark}[chapter]
+	    \newtheorem{rem}{\protect\remarkname}[chapter]
 	  \fi
 	EndPreamble
 End
@@ -187,9 +187,9 @@ Style Claim
 	Preamble
 	  \theoremstyle{remark}
 	  \ifx\thechapter\undefined
-	    \newtheorem{claim}{Claim}
+	    \newtheorem{claim}{\protect\claimname}
 	  \else
-	    \newtheorem{claim}{Claim}[chapter]
+	    \newtheorem{claim}{\protect\claimname}[chapter]
 	  \fi
 	EndPreamble
 End
