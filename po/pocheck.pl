@@ -26,12 +26,13 @@ options is given, in which case we checks only for those requested.
 -q: Check Qt shortcuts
 -s: Check for space at end
 -t: Check for uniform translation
-This option can be given with or without other options.
+These options can be given with or without other options.
+-f: Ignore fuzzy translations.
 -w: Only report summary total of errors
 EOT
 
 my %options;
-getopts(":hacmpqstw", \%options);
+getopts(":hacfmpqstw", \%options);
 
 if (defined($options{h})) { 
   print $usage; 
@@ -40,6 +41,8 @@ if (defined($options{h})) {
 
 my $only_total = defined($options{w});
 delete $options{w} if $only_total;
+my $ignore_fuzzy = defined($options{f});
+delete $options{f} if $ignore_fuzzy;
 
 my $check_args = (!%options or defined($options{a}));
 my $check_colons = (!%options or defined($options{c}));
@@ -75,6 +78,10 @@ foreach my $pofilename ( @ARGV ) {
     ( $msgid ) = ( $pofile[$i] =~ m/^msgid "(.*)"/ );
     $i++;
     next unless $msgid;
+    if ($ignore_fuzzy) {
+      my $previous = $pofile[$i - 2];
+      next if $previous =~ m/#,.*fuzzy/;
+    }
     
     # some msgid's are more than one line long, so add those.
     while ( ( $more ) = $pofile[$i] =~ m/^"(.*)"/ ) {
