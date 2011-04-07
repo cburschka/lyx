@@ -87,7 +87,18 @@ Note that all of them can not be used simulataneously in one file, so few
 \end_inset
 
  of layout environments and insets which can be translated automatically
- by LyX in case proper translation is provided in .po file (for a given language)
+ by LyX
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+ These are on the top of normal babel translations and could be regarded
+ as an extension.
+\end_layout
+
+\end_inset
+
+ in case proper translation is provided in .po file (for a given language)
  and layouttranslations file is generated from it.
 \end_layout
 
@@ -307,74 +318,6 @@ asdasd
 
 \begin_layout Section
 Test of insets and listings
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-gugu
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FloatList figure
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-huuu
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FloatList table
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
