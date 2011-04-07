@@ -1215,7 +1215,7 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel, bool use_po
 					from_ascii(buffer().language()->babel())));
 			for (lang_it lit = lbeg; lit != lend; ++lit) {
 				string const code = (*lit)->code();
-				name = translateIfPossible(flname, code);
+				name = (*lit)->translateLayout(fl.name());
 				// we assume we have a suitable translation if
 				// either the language is English (we need to
 				// translate into English if English is a secondary
@@ -1347,9 +1347,8 @@ void LaTeXFeatures::getFloatDefinitions(odocstream & os) const
 			docstring const ext = from_ascii(fl.ext());
 			docstring const within = from_ascii(fl.within());
 			docstring const style = from_ascii(fl.style());
-			docstring const name = translateIfPossible(
-					from_utf8(fl.name()),
-					buffer().language()->code());
+			docstring const name =
+				buffer().language()->translateLayout(fl.name());
 			os << "\\floatstyle{" << style << "}\n"
 			   << "\\newfloat{" << type << "}{" << placement
 			   << "}{" << ext << '}';
