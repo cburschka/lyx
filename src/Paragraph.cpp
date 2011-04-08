@@ -2847,22 +2847,40 @@ bool Paragraph::isLineSeparator(pos_type pos) const
 
 bool Paragraph::isWordSeparator(pos_type pos) const
 {
-	if (Inset const * inset = getInset(pos))
-		return !inset->isLetter();
 	if (pos == size())
 		return true;
-	char_type const c = d->text_[pos];
-	// if we have a hard hyphen (no en- or emdash),
+	if (Inset const * inset = getInset(pos))
+		return !inset->isLetter();
+	// if we have a hard hyphen (no en- or emdash) or apostrophe
 	// we pass this to the spell checker
-	if (c == '-') {
-		int j = pos + 1;
-		if ((j == size() || d->text_[j] != '-')
-		    && (pos == 0 || d->text_[pos - 1] != '-'))
-			return false;
-	}
-	// We want to pass the ' and escape chars to the spellchecker
-	static docstring const quote = from_utf8(lyxrc.spellchecker_esc_chars + '\'');
-	return (!isLetterChar(c) && !isDigitASCII(c) && !contains(quote, c));
+	// FIXME: this method is subject to change, visit
+	// https://bugzilla.mozilla.org/show_bug.cgi?id=355178
+	// to get an impression how complex this is.
+	if (isHardHyphenOrApostrophe(pos))
+		return false;
+	char_type const c = d->text_[pos];
+	// We want to pass the escape chars to the spellchecker
+	docstring const escape_chars = from_utf8(lyxrc.spellchecker_esc_chars);
+	return !isLetterChar(c) && !isDigitASCII(c) && !contains(escape_chars, c);
+}
+
+
+bool Paragraph::isHardHyphenOrApostrophe(pos_type pos) const
+{
+	pos_type const psize = size();
+	if (pos >= psize)
+		return false;
+	char_type const c = d->text_[pos];
+	if (c != '-' && c != '\'')
+		return false;
+	int nextpos = pos + 1;
+	int prevpos = pos > 0 ? pos - 1 : 0;
+	if ((nextpos == psize || isSpace(nextpos))
+		&& (pos == 0 || isSpace(prevpos)))
+		return false;
+	return c == '\''
+		|| ((nextpos == psize || d->text_[nextpos] != '-')
+		&& (pos == 0 || d->text_[prevpos] != '-'));
 }
 
 

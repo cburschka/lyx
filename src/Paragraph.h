@@ -420,6 +420,9 @@ public:
 	bool isChar(pos_type pos) const;
 	/// True if the element at this point is a space
 	bool isSpace(pos_type pos) const;
+	/// True if the element at this point is a hard hyphen or a apostrophe
+	/// If it is enclosed by spaces return false
+	bool isHardHyphenOrApostrophe(pos_type pos) const;
 
 	/// returns true if at least one line break or line separator has been deleted
 	/// at the beginning of the paragraph (either physically or logically)
