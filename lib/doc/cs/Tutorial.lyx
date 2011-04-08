@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass book
@@ -38,13 +38,14 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language czech
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -99,6 +100,7 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -851,29 +853,29 @@ vzhledu
 Zde je seznam:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 TeX: Jazyk pro sazbu s možností rozšíření makry.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 LaTeX: Balíček maker nad TeXem\SpecialChar \@.
 
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 třídy: Popis typů dokumentů pomocí LaTeXu\SpecialChar \@.
 
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 styly: Změna chování LaTeXu v některém směru.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 LyX: Vizuální, WYSIWYM textový procesor používající LaTeX v celé jeho kráse
  pro tisk.
@@ -1040,7 +1042,7 @@ A v neposlední řadě, napsali jsme pro vás soubor na vyzkoušení vaší znal
  LyXu.
  Jmenuje se 
 \family typewriter
-example_raw.lyx
+priklad_syrovy.lyx
 \family default
 .
  Představte si, že byl napsán někým, kdo neznal žádnou z velkých výhod LyXu
@@ -1049,7 +1051,7 @@ example_raw.lyx
  Jestli chcete napovídat (nebo si ověřit vaše výsledky), je zde také soubor
  
 \family typewriter
-example_lyxified.lyx
+priklad_zLyXovany.lyx
 \family default
 , který obsahuje tentýž text napsaný zkušeným uživatelem LyXu (oba soubory
  naleznete v příkladech).
@@ -2068,7 +2070,7 @@ Cvičení
 \series default
 : Opravte nadpisy oddílů a pododdílů v 
 \family typewriter
-example_raw.lyx
+priklad_syrovy.lyx
 \family default
 .
  Tento dokument najdete v adresáři 
@@ -2349,7 +2351,7 @@ Cvičení
 \series default
 : Vysázejte seznam v souboru 
 \family typewriter
-example_raw.lyx.
+priklad_syrovy.lyx.
 \end_layout
 
 \begin_layout Standard
@@ -2440,7 +2442,7 @@ Verš
 \family default
  v 
 \family typewriter
-example_raw.lyx.
+priklad_syrovy.lyx.
 \end_layout
 
 \begin_layout Chapter
@@ -2965,7 +2967,7 @@ Cvičení
 \series default
 : Opravte sázení titulku, data a autora v 
 \family typewriter
-example_raw.lyx.
+priklad_syrovy.lyx.
 \end_layout
 
 \begin_layout Section
@@ -3175,7 +3177,7 @@ Cvičení
 \series default
 : Opravte odkazy v 
 \family typewriter
-example_raw.lyx.
+priklad_syrovy.lyx.
 \end_layout
 
 \begin_layout Section
@@ -3361,7 +3363,7 @@ Cvičení
 \series default
 : Opravte poznámky pod čarou v souboru 
 \family typewriter
-example_raw.lyx.
+priklad_syrovy.lyx.
 \end_layout
 
 \begin_layout Section
@@ -3461,7 +3463,7 @@ Cvičení:
 \series default
  Opravte citace v 
 \family typewriter
-example_raw.lyx.
+priklad_syrovy.lyx.
 \end_layout
 
 \begin_layout Section
@@ -3535,7 +3537,7 @@ Cvičení
 \series default
 : Opravte obsah v souboru 
 \family typewriter
-example_raw.lyx.
+priklad_syrovy.lyx.
 \end_layout
 
 \begin_layout Chapter
@@ -3939,7 +3941,7 @@ Cvičení
 \series default
 : Předělejte rovnici 1 z 
 \family typewriter
-example_raw.lyx
+priklad_syrovy.lyx
 \family default
  do matematického režimu.
 \end_layout
@@ -4200,7 +4202,7 @@ Cvičení
 \series default
 : Předělejte rovnici 2 z 
 \family typewriter
-example_raw.lyx
+priklad_syrovy.lyx
 \family default
  do matematického režimu..
 \end_layout
@@ -4381,7 +4383,7 @@ Cvičení
 \series default
 : Předělejte rovnici 3 z 
 \family typewriter
-example_raw.lyx
+priklad_syrovy.lyx
 \family default
  do matematického režimu.
 \end_layout
@@ -4546,7 +4548,7 @@ Cvičení
 \series default
 : Změňte režim zobrazení pro různé rovnice v 
 \family typewriter
-example_raw.lyx
+priklad_syrovy.lyx
 \family default
  a prohlédněte si rozdíly.
 \end_layout
@@ -4558,12 +4560,14 @@ Cvičení
 \series default
 : Zkuste si sami s použitím právě nabytých znalostí napsat výraz, jako je
  tento: 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 f(x)=\left\{ \begin{array}{cc}
 \log_{8}x & x>0\\
 0 & x=0\\
 \sum_{i=1}^{5}\alpha_{i}+\sqrt{-\frac{1}{x}} & x<0
-\end{array}\right.\]
+\end{array}\right.
+\]
 
 \end_inset
 
@@ -4590,8 +4594,10 @@ dvi
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-x=y+y+y+y+y\]
+\begin_inset Formula 
+\[
+x=y+y+y+y+y
+\]
 
 \end_inset
 
@@ -4599,8 +4605,10 @@ x=y+y+y+y+y\]
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-=5y\]
+\begin_inset Formula 
+\[
+=5y
+\]
 
 \end_inset
 
@@ -4612,7 +4620,8 @@ To vůbec nevypadá dobře.
  Jestliže píšete dvě a více rovnic pod sebou, vypadají podstatně lépe, jsou-li
  rovnítka zarovnána pod sebou; zvlášť, nemá-li druhá rovnice levou stranu.
  LyX umožňuje psát víceřádkové rovnice s řízením jejich zarovnání.
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 x & = & y+y+y+y+y\\
  & = & 5y
 \end{eqnarray*}
@@ -4649,7 +4658,8 @@ Tab
  Povšimněte si, že je možno nechat jeden i více vkládacích bodů prázdných.
  To je výhodné pro rovnice podobné těm nahoře nebo pro zápis velmi dlouhých
  výrazů, jako například:
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 x & = & a+b+c+d\\
  &  & +e+f+g
 \end{eqnarray*}
@@ -4702,7 +4712,8 @@ C-Tab
 \end_inset
 
  na
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 E & = & mc^{2}\\
  & = & mc\times c
 \end{eqnarray*}
