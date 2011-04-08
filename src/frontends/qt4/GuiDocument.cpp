@@ -1674,16 +1674,16 @@ void GuiDocument::updateFontlist()
 
 	// With XeTeX, we have access to all system fonts, but not the LaTeX fonts
 	if (fontModule->osFontsCB->isChecked()) {
-		fontModule->fontsRomanCO->addItem(qt_("Default"));
-		fontModule->fontsSansCO->addItem(qt_("Default"));
-		fontModule->fontsTypewriterCO->addItem(qt_("Default"));
+		fontModule->fontsRomanCO->addItem(qt_("Default"), QString("default"));
+		fontModule->fontsSansCO->addItem(qt_("Default"), QString("default"));
+		fontModule->fontsTypewriterCO->addItem(qt_("Default"), QString("default"));
 	
 		QFontDatabase fontdb;
 		QStringList families(fontdb.families());
 		for (QStringList::Iterator it = families.begin(); it != families.end(); ++it) {
-			fontModule->fontsRomanCO->addItem(*it);
-			fontModule->fontsSansCO->addItem(*it);
-			fontModule->fontsTypewriterCO->addItem(*it);
+			fontModule->fontsRomanCO->addItem(*it, *it);
+			fontModule->fontsSansCO->addItem(*it, *it);
+			fontModule->fontsTypewriterCO->addItem(*it, *it);
 		}
 		return;
 	}
@@ -1692,19 +1692,19 @@ void GuiDocument::updateFontlist()
 		QString font = qt_(tex_fonts_roman_gui[n]);
 		if (!isFontAvailable(tex_fonts_roman[n]))
 			font += qt_(" (not installed)");
-		fontModule->fontsRomanCO->addItem(font);
+		fontModule->fontsRomanCO->addItem(font, qt_(tex_fonts_roman[n]));
 	}
 	for (int n = 0; tex_fonts_sans[n][0]; ++n) {
 		QString font = qt_(tex_fonts_sans_gui[n]);
 		if (!isFontAvailable(tex_fonts_sans[n]))
 			font += qt_(" (not installed)");
-		fontModule->fontsSansCO->addItem(font);
+		fontModule->fontsSansCO->addItem(font, qt_(tex_fonts_sans[n]));
 	}
 	for (int n = 0; tex_fonts_monospaced[n][0]; ++n) {
 		QString font = qt_(tex_fonts_monospaced_gui[n]);
 		if (!isFontAvailable(tex_fonts_monospaced[n]))
 			font += qt_(" (not installed)");
-		fontModule->fontsTypewriterCO->addItem(font);
+		fontModule->fontsTypewriterCO->addItem(font, qt_(tex_fonts_monospaced[n]));
 	}
 }
 
@@ -2447,34 +2447,17 @@ void GuiDocument::applyView()
 	bp_.html_math_img_scale = outputModule->mathimgSB->value();
 
 	// fonts
-	if (nontexfonts) {
-		if (fontModule->fontsRomanCO->currentIndex() == 0)
-			bp_.fonts_roman = "default";
-		else
-			bp_.fonts_roman =
-				fromqstr(fontModule->fontsRomanCO->currentText());
-	
-		if (fontModule->fontsSansCO->currentIndex() == 0)
-			bp_.fonts_sans = "default";
-		else
-			bp_.fonts_sans =
-				fromqstr(fontModule->fontsSansCO->currentText());
-	
-		if (fontModule->fontsTypewriterCO->currentIndex() == 0)
-			bp_.fonts_typewriter = "default";
-		else
-			bp_.fonts_typewriter =
-				fromqstr(fontModule->fontsTypewriterCO->currentText());
-	} else {
-		bp_.fonts_roman =
-			tex_fonts_roman[fontModule->fontsRomanCO->currentIndex()];
-	
-		bp_.fonts_sans =
-			tex_fonts_sans[fontModule->fontsSansCO->currentIndex()];
-	
-		bp_.fonts_typewriter =
-			tex_fonts_monospaced[fontModule->fontsTypewriterCO->currentIndex()];
-	}
+	bp_.fonts_roman =
+		fromqstr(fontModule->fontsRomanCO->
+			itemData(fontModule->fontsRomanCO->currentIndex()).toString());
+
+	bp_.fonts_sans =
+		fromqstr(fontModule->fontsSansCO->
+			itemData(fontModule->fontsSansCO->currentIndex()).toString());
+
+	bp_.fonts_typewriter =
+		fromqstr(fontModule->fontsTypewriterCO->
+			itemData(fontModule->fontsTypewriterCO->currentIndex()).toString());
 
 	if (fontModule->fontencCO->currentIndex() == 0)
 		bp_.fontenc = "global";
@@ -2898,51 +2881,41 @@ void GuiDocument::paramsToDialog()
 	updateFontsize(documentClass().opt_fontsize(),
 			bp_.fontsize);
 
+	QString font = toqstr(bp_.fonts_roman);
+	int rpos = fontModule->fontsRomanCO->findData(font);
+	if (rpos == -1) {
+		rpos = fontModule->fontsRomanCO->count();
+		fontModule->fontsRomanCO->addItem(font + qt_(" (not installed)"), font);
+	}
+	fontModule->fontsRomanCO->setCurrentIndex(rpos);
+
+	font = toqstr(bp_.fonts_sans);
+	int spos = fontModule->fontsSansCO->findData(font);
+	if (spos == -1) {
+		spos = fontModule->fontsSansCO->count();
+		fontModule->fontsSansCO->addItem(font + qt_(" (not installed)"), font);
+	}
+	fontModule->fontsSansCO->setCurrentIndex(spos);
+
+	font = toqstr(bp_.fonts_typewriter);
+	int tpos = fontModule->fontsTypewriterCO->findData(font);
+	if (tpos == -1) {
+		tpos = fontModule->fontsTypewriterCO->count();
+		fontModule->fontsTypewriterCO->addItem(font + qt_(" (not installed)"), font);
+	}
+	fontModule->fontsTypewriterCO->setCurrentIndex(tpos);
+
 	if (bp_.useNonTeXFonts && os_fonts_available) {
 		fontModule->fontencLA->setEnabled(false);
 		fontModule->fontencCO->setEnabled(false);
 		fontModule->fontencLE->setEnabled(false);
-		for (int i = 0; i < fontModule->fontsRomanCO->count(); ++i) {
-			if (fontModule->fontsRomanCO->itemText(i) == toqstr(bp_.fonts_roman)) {
-				fontModule->fontsRomanCO->setCurrentIndex(i);
-				break;
-			}
-		}
-		
-		for (int i = 0; i < fontModule->fontsSansCO->count(); ++i) {
-			if (fontModule->fontsSansCO->itemText(i) == toqstr(bp_.fonts_sans)) {
-				fontModule->fontsSansCO->setCurrentIndex(i);
-				break;
-			}
-		}
-		for (int i = 0; i < fontModule->fontsTypewriterCO->count(); ++i) {
-			if (fontModule->fontsTypewriterCO->itemText(i) == 
-				toqstr(bp_.fonts_typewriter)) {
-				fontModule->fontsTypewriterCO->setCurrentIndex(i);
-				break;
-			}
-		}
 	} else {
 		fontModule->fontencLA->setEnabled(true);
 		fontModule->fontencCO->setEnabled(true);
 		fontModule->fontencLE->setEnabled(true);
-		int n = findToken(tex_fonts_roman, bp_.fonts_roman);
-		if (n >= 0) {
-			fontModule->fontsRomanCO->setCurrentIndex(n);
-			romanChanged(n);
-		}
-	
-		n = findToken(tex_fonts_sans, bp_.fonts_sans);
-		if (n >= 0) {
-			fontModule->fontsSansCO->setCurrentIndex(n);
-			sansChanged(n);
-		}
-	
-		n = findToken(tex_fonts_monospaced, bp_.fonts_typewriter);
-		if (n >= 0) {
-			fontModule->fontsTypewriterCO->setCurrentIndex(n);
-			ttChanged(n);
-		}
+		romanChanged(rpos);
+		sansChanged(spos);
+		ttChanged(tpos);
 	}
 
 	if (!bp_.fonts_cjk.empty())
