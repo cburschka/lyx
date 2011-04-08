@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-03 21:10+0200\n"
+"POT-Creation-Date: 2011-04-09 00:23+0200\n"
 "PO-Revision-Date: 2011-04-03 20:49+0730\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Indonesian <was.uthm@gmail.com>\n"
@@ -44,7 +44,7 @@ msgstr "Hak cipta"
 #: src/frontends/qt4/ui/ShowFileUi.ui:55 src/frontends/qt4/ui/SymbolsUi.ui:66
 #: src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:138 src/frontends/qt4/ui/WrapUi.ui:173
-#: src/frontends/qt4/GuiParagraph.cpp:161
+#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/ui_RefUi.h:294
 msgid "&Close"
 msgstr "T&utup"
 
@@ -57,7 +57,7 @@ msgid "The label as it appears in the document"
 msgstr "Label yang muncul dalam dokumen"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:36
-#: src/frontends/qt4/ui/RefUi.ui:332
+#: src/frontends/qt4/ui/RefUi.ui:332 src/frontends/qt4/ui_RefUi.h:324
 msgid "&Label:"
 msgstr "&Label:"
 
@@ -124,16 +124,18 @@ msgstr "Pembuat Bibliografi"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:139
+#: src/frontends/qt4/ui_IndicesUi.h:193
 msgid "&Processor:"
 msgstr "&Pemroses:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
+#: src/frontends/qt4/ui_IndicesUi.h:195
 msgid "Select a processor"
 msgstr "Pilih program pemroses yang dinginkan"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:733
-#: src/frontends/qt4/GuiPrefs.cpp:828
+#: src/frontends/qt4/GuiPrefs.cpp:828 src/frontends/qt4/ui_IndicesUi.h:197
 msgid "&Options:"
 msgstr "O&psi:"
 
@@ -170,7 +172,7 @@ msgstr "Tuliskan nama berkas pangkalan data BibTeX"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:110
 #: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:350
+#: src/CutAndPaste.cpp:350 src/frontends/qt4/ui_IndicesUi.h:212
 msgid "&Add"
 msgstr "&Gabung"
 
@@ -242,7 +244,7 @@ msgstr "&Masukkan bibliografi dalam Daftar Isi"
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
-#: src/frontends/qt4/ui/WrapUi.ui:150
+#: src/frontends/qt4/ui/WrapUi.ui:150 src/frontends/qt4/ui_RefUi.h:292
 msgid "&OK"
 msgstr "&Setuju"
 
@@ -438,6 +440,7 @@ msgid "Select your branch"
 msgstr "Pilih cabang anda"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25 src/frontends/qt4/ui/IndicesUi.ui:114
+#: src/frontends/qt4/ui_IndicesUi.h:205
 msgid "&New:"
 msgstr "&Baru:"
 
@@ -481,7 +484,7 @@ msgid "Define or change background color"
 msgstr "Mengganti atau merubah warna background"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:123
-#: src/frontends/qt4/ui/IndicesUi.ui:185
+#: src/frontends/qt4/ui/IndicesUi.ui:185 src/frontends/qt4/ui_IndicesUi.h:227
 msgid "Alter Co&lor..."
 msgstr "Ganti War&na..."
 
@@ -491,7 +494,7 @@ msgstr "Hapus cabang yang sudah dipilih"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
 #: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3803
-#: src/Buffer.cpp:3816
+#: src/Buffer.cpp:3816 src/frontends/qt4/ui_IndicesUi.h:219
 msgid "&Remove"
 msgstr "&Hapus"
 
@@ -575,7 +578,7 @@ msgstr "Uku&ran:"
 #: src/frontends/qt4/GuiDocument.cpp:1679
 #: src/frontends/qt4/GuiDocument.cpp:1754
 #: src/frontends/qt4/GuiDocument.cpp:2119
-#: src/frontends/qt4/GuiDocument.cpp:3218 src/frontends/qt4/GuiExternal.cpp:75
+#: src/frontends/qt4/GuiDocument.cpp:3191 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:70 src/frontends/qt4/GuiIndices.cpp:57
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
 #: src/frontends/qt4/GuiPrefs.cpp:2212 src/frontends/qt4/GuiPrefs.cpp:2446
@@ -778,7 +781,7 @@ msgstr "Gunakan semua perubahan segera"
 #: src/frontends/qt4/ui/RefUi.ui:124 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:1875
-#: src/frontends/qt4/GuiDocument.cpp:3161
+#: src/frontends/qt4/GuiDocument.cpp:3134 src/frontends/qt4/ui_RefUi.h:293
 msgid "&Apply"
 msgstr "&Terapkan"
 
@@ -1778,6 +1781,7 @@ msgstr "Tuliskan nama pengenal untuk URL"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:42
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:251
+#: src/frontends/qt4/ui_RefUi.h:309
 msgid "&Name:"
 msgstr "&Nama:"
 
@@ -1891,6 +1895,7 @@ msgid "&Edit"
 msgstr "Suntin&g"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59 src/frontends/qt4/ui/IndicesUi.ui:143
+#: src/frontends/qt4/ui_IndicesUi.h:213
 msgid "A&vailable Indexes:"
 msgstr "Inde&ks yang tersedia:"
 
@@ -1898,7 +1903,7 @@ msgstr "Inde&ks yang tersedia:"
 msgid "Select the index this entry should be listed in."
 msgstr "Pilih daftar indeks untuk entri yang ini"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:19
+#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:190
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr ""
@@ -1907,52 +1912,54 @@ msgstr ""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:202
+#: src/frontends/qt4/ui_IndicesUi.h:192
 msgid "Index generation"
 msgstr "Pembuat Indeks"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:64
+#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:199
 msgid "Define program options of the selected processor."
 msgstr "Definisikan program opsi untuk pemroses yang anda pilih."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:89
+#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:202
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr ""
 "Aktifkan jika anda ingin menggunakan indeks ganda (misalnya, Indeks Penulis)"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:92
+#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:204
 msgid "&Use multiple indexes"
 msgstr "&Gunakan indeks ganda"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:124
+#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
 "Tuliskan nama dari indeks yang diinginkan (misal, \"Indeks Penulis\") dan "
 "tekan \"Gabung\""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:131
+#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:210
 msgid "Add a new index to the list"
 msgstr "Tambah indeks baru dalam daftar"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149
-#: src/frontends/qt4/ui/RefUi.ui:349
+#: src/frontends/qt4/ui/RefUi.ui:349 src/frontends/qt4/ui_IndicesUi.h:215
+#: src/frontends/qt4/ui_RefUi.h:326
 msgid "1"
 msgstr "1"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:162
+#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:217
 msgid "Remove the selected index"
 msgstr "Hapus indeks yang dipilih"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:172
+#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:221
 msgid "Rename the selected index"
 msgstr "Ganti nama indeks yang dipilih"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:175
+#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:223
 msgid "R&ename..."
 msgstr "&Nama Lain"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:182
+#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:225
 msgid "Define or change button color"
 msgstr "Mengganti atau merubah warna tombol"
 
@@ -2323,7 +2330,7 @@ msgid "Update the display"
 msgstr "Perbarui tampilan"
 
 #: src/frontends/qt4/ui/LogUi.ui:77 src/frontends/qt4/ui/RefUi.ui:88
-#: src/frontends/qt4/ui/ViewSourceUi.ui:74
+#: src/frontends/qt4/ui/ViewSourceUi.ui:74 src/frontends/qt4/ui_RefUi.h:291
 msgid "&Update"
 msgstr "Perbar&ui"
 
@@ -2835,7 +2842,7 @@ msgstr "Format Kertas"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:19
-#: src/frontends/qt4/ui/RefUi.ui:271
+#: src/frontends/qt4/ui/RefUi.ui:271 src/frontends/qt4/ui_RefUi.h:310
 msgid "&Format:"
 msgstr "&Format:"
 
@@ -3185,7 +3192,7 @@ msgstr "Penyuntingan"
 msgid "Cursor &follows scrollbar"
 msgstr "Kursor mengikuti kotak &gulungan"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:46 src/LyXRC.cpp:3121
+#: src/frontends/qt4/ui/PrefEditUi.ui:46 src/LyXRC.cpp:3124
 msgid ""
 "Configure the width of the text cursor. Automatic zoom-controlled cursor "
 "width used when set to 0."
@@ -3485,7 +3492,7 @@ msgstr "Tandai ba&hasa asing"
 msgid "Right-to-left language support"
 msgstr "Dukungan bahasa kanan-ke-kiri"
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:215 src/LyXRC.cpp:3402
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:215 src/LyXRC.cpp:3405
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
@@ -3637,7 +3644,7 @@ msgstr "&Atur ulang opsi class bila dokumen class berubah"
 msgid "Output &line length:"
 msgstr "Panjang &baris output:"
 
-#: src/frontends/qt4/ui/PrefOutputUi.ui:37 src/LyXRC.cpp:3068
+#: src/frontends/qt4/ui/PrefOutputUi.ui:37 src/LyXRC.cpp:3071
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -4288,27 +4295,27 @@ msgstr "Menampilkan kotak status untuk pesan?"
 msgid "&Statusbar messages"
 msgstr "Kotak status pesan"
 
-#: src/frontends/qt4/ui/RefUi.ui:36
+#: src/frontends/qt4/ui/RefUi.ui:36 src/frontends/qt4/ui_RefUi.h:279
 msgid "Fil&ter:"
 msgstr "Ta&pis:"
 
-#: src/frontends/qt4/ui/RefUi.ui:49
+#: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:281
 msgid "Enter string to filter the label list"
 msgstr "Tulis kata untuk menapis dari daftar label"
 
-#: src/frontends/qt4/ui/RefUi.ui:59
+#: src/frontends/qt4/ui/RefUi.ui:59 src/frontends/qt4/ui_RefUi.h:285
 msgid "Filter case-sensitively"
 msgstr "Menapis dengan pertimbangan &huruf besar/kecil"
 
-#: src/frontends/qt4/ui/RefUi.ui:62
+#: src/frontends/qt4/ui/RefUi.ui:62 src/frontends/qt4/ui_RefUi.h:287
 msgid "Case-sensiti&ve"
 msgstr "Cermati &huruf besar/kecil"
 
-#: src/frontends/qt4/ui/RefUi.ui:85
+#: src/frontends/qt4/ui/RefUi.ui:85 src/frontends/qt4/ui_RefUi.h:289
 msgid "Update the label list"
 msgstr "Perbarui daftar"
 
-#: src/frontends/qt4/ui/RefUi.ui:165
+#: src/frontends/qt4/ui/RefUi.ui:165 src/frontends/qt4/ui_RefUi.h:296
 msgid ""
 "Sort labels in alphabetical order (case-insensitively unless the Case-"
 "sensitive option is checked)"
@@ -4316,63 +4323,64 @@ msgstr ""
 "Mengurutkan label munurut abjad (tanpa mempertimbangkan huruf besar kecuali "
 "dinyatakan)"
 
-#: src/frontends/qt4/ui/RefUi.ui:168
+#: src/frontends/qt4/ui/RefUi.ui:168 src/frontends/qt4/ui_RefUi.h:298
 msgid "&Sort"
 msgstr "U&rutkan"
 
-#: src/frontends/qt4/ui/RefUi.ui:178
+#: src/frontends/qt4/ui/RefUi.ui:178 src/frontends/qt4/ui_RefUi.h:300
 msgid "Sort labels case-sensitively in alphabetical order"
 msgstr "Urutkan label menurut urutan alfabet"
 
-#: src/frontends/qt4/ui/RefUi.ui:181
+#: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/ui_RefUi.h:302
 msgid "Cas&e-sensitive"
 msgstr "Cermati &huruf besar/kecil"
 
-#: src/frontends/qt4/ui/RefUi.ui:188
+#: src/frontends/qt4/ui/RefUi.ui:188 src/frontends/qt4/ui_RefUi.h:304
 msgid "Group labels by prefix (e.g. \"sec:\")"
 msgstr "Grup label menurut awalan (misal, \"sec:\")"
 
-#: src/frontends/qt4/ui/RefUi.ui:191
+#: src/frontends/qt4/ui/RefUi.ui:191 src/frontends/qt4/ui_RefUi.h:306
 msgid "Grou&p"
 msgstr "&Grup"
 
 #: src/frontends/qt4/ui/RefUi.ui:219 src/frontends/qt4/GuiRef.cpp:314
+#: src/frontends/qt4/ui_RefUi.h:307
 msgid "&Go to Label"
 msgstr "Langsung ke label"
 
-#: src/frontends/qt4/ui/RefUi.ui:228
+#: src/frontends/qt4/ui/RefUi.ui:228 src/frontends/qt4/ui_RefUi.h:308
 msgid "La&bels in:"
 msgstr "La&bel di:"
 
-#: src/frontends/qt4/ui/RefUi.ui:290
+#: src/frontends/qt4/ui/RefUi.ui:290 src/frontends/qt4/ui_RefUi.h:322
 msgid "Cross-reference as it appears in output"
 msgstr "Referensi silang yang akan muncul di output"
 
-#: src/frontends/qt4/ui/RefUi.ui:294
+#: src/frontends/qt4/ui/RefUi.ui:294 src/frontends/qt4/ui_RefUi.h:313
 msgid "<reference>"
 msgstr "<referensi>"
 
-#: src/frontends/qt4/ui/RefUi.ui:299
+#: src/frontends/qt4/ui/RefUi.ui:299 src/frontends/qt4/ui_RefUi.h:314
 msgid "(<reference>)"
 msgstr "(<referensi>)"
 
-#: src/frontends/qt4/ui/RefUi.ui:304
+#: src/frontends/qt4/ui/RefUi.ui:304 src/frontends/qt4/ui_RefUi.h:315
 msgid "<page>"
 msgstr "<halaman>"
 
-#: src/frontends/qt4/ui/RefUi.ui:309
+#: src/frontends/qt4/ui/RefUi.ui:309 src/frontends/qt4/ui_RefUi.h:316
 msgid "on page <page>"
 msgstr "pada halaman <halaman>"
 
-#: src/frontends/qt4/ui/RefUi.ui:314
+#: src/frontends/qt4/ui/RefUi.ui:314 src/frontends/qt4/ui_RefUi.h:317
 msgid "<reference> on page <page>"
 msgstr "<referensi> pada halaman <halaman>"
 
-#: src/frontends/qt4/ui/RefUi.ui:319
+#: src/frontends/qt4/ui/RefUi.ui:319 src/frontends/qt4/ui_RefUi.h:318
 msgid "Formatted reference"
 msgstr "Referensi dgn fomat tertentu"
 
-#: src/frontends/qt4/ui/RefUi.ui:324
+#: src/frontends/qt4/ui/RefUi.ui:324 src/frontends/qt4/ui_RefUi.h:319
 msgid "Textual reference"
 msgstr "Referensi tekstual"
 
@@ -4440,7 +4448,7 @@ msgstr ""
 "butang 'Bersihkan'"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:20
-#: src/frontends/qt4/GuiSpellchecker.cpp:170
+#: src/frontends/qt4/GuiSpellchecker.cpp:195
 msgid "Spell Checker"
 msgstr "Pemeriksa Ejaan"
 
@@ -5220,7 +5228,11 @@ msgstr "Abstrak"
 #: lib/layouts/aa.layout:205 lib/layouts/aapaper.layout:103
 #: lib/layouts/egs.layout:532 lib/layouts/elsart.layout:424
 #: lib/layouts/aapaper.inc:80 lib/layouts/svjour.inc:274
-#: lib/layouts/theorems-ams-extended-bytype.module:220
+#: lib/layouts/theorems-ams-extended-bytype.module:304
+#: lib/layouts/theorems-ams-extended-bytype.module:313
+#: lib/layouts/theorems-ams-extended-bytype.module:316
+#: lib/layouts/theorems-ams-extended-bytype.module:331
+#: lib/layouts/theorems-ams-extended-bytype.module:334
 #: lib/layouts/theorems-ams-extended.module:276
 #: lib/layouts/theorems-ams-extended.module:285
 #: lib/layouts/theorems-ams-extended.module:288
@@ -5231,7 +5243,7 @@ msgstr "Penghargaan"
 
 #: lib/layouts/AEA.layout:100 lib/layouts/egs.layout:546
 #: lib/layouts/svjour.inc:277
-#: lib/layouts/theorems-ams-extended-bytype.module:235
+#: lib/layouts/theorems-ams-extended-bytype.module:325
 #: lib/layouts/theorems-ams-extended.module:296
 msgid "Acknowledgement."
 msgstr "Penghargaan."
@@ -5244,11 +5256,14 @@ msgstr "Penghargaan."
 #: lib/layouts/siamltex.layout:116 lib/layouts/svjour.inc:435
 #: lib/layouts/theorems-ams-bytype.inc:50
 #: lib/layouts/theorems-ams-bytype.inc:51
-#: lib/layouts/theorems-ams-bytype.inc:238 lib/layouts/theorems-ams.inc:24
+#: lib/layouts/theorems-ams-bytype.inc:82
+#: lib/layouts/theorems-ams-bytype.inc:85
+#: lib/layouts/theorems-ams-bytype.inc:310 lib/layouts/theorems-ams.inc:24
 #: lib/layouts/theorems-ams.inc:25 lib/layouts/theorems-ams.inc:56
 #: lib/layouts/theorems-ams.inc:59 lib/layouts/theorems-ams.inc:276
 #: lib/layouts/theorems-bytype.inc:26 lib/layouts/theorems-bytype.inc:27
-#: lib/layouts/theorems-bytype.inc:214 lib/layouts/theorems-order.inc:7
+#: lib/layouts/theorems-bytype.inc:58 lib/layouts/theorems-bytype.inc:61
+#: lib/layouts/theorems-bytype.inc:286 lib/layouts/theorems-order.inc:7
 #: lib/layouts/theorems-proof.inc:14
 #: lib/layouts/theorems-starred-equivalents.inc:6
 #: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems-starred.inc:54
@@ -5265,7 +5280,11 @@ msgstr "Teorema"
 #: lib/layouts/AEA.layout:112 lib/layouts/elsart.layout:343
 #: lib/layouts/powerdot.layout:405 lib/layouts/siamltex.layout:115
 #: lib/layouts/stdfloats.inc:41
-#: lib/layouts/theorems-ams-extended-bytype.module:82
+#: lib/layouts/theorems-ams-extended-bytype.module:94
+#: lib/layouts/theorems-ams-extended-bytype.module:103
+#: lib/layouts/theorems-ams-extended-bytype.module:106
+#: lib/layouts/theorems-ams-extended-bytype.module:121
+#: lib/layouts/theorems-ams-extended-bytype.module:124
 #: lib/layouts/theorems-ams-extended.module:70
 #: lib/layouts/theorems-ams-extended.module:80
 #: lib/layouts/theorems-ams-extended.module:83
@@ -5275,7 +5294,11 @@ msgid "Algorithm"
 msgstr "Algoritma"
 
 #: lib/layouts/AEA.layout:119
-#: lib/layouts/theorems-ams-extended-bytype.module:105
+#: lib/layouts/theorems-ams-extended-bytype.module:129
+#: lib/layouts/theorems-ams-extended-bytype.module:138
+#: lib/layouts/theorems-ams-extended-bytype.module:141
+#: lib/layouts/theorems-ams-extended-bytype.module:156
+#: lib/layouts/theorems-ams-extended-bytype.module:159
 #: lib/layouts/theorems-ams-extended.module:105
 #: lib/layouts/theorems-ams-extended.module:115
 #: lib/layouts/theorems-ams-extended.module:118
@@ -5286,11 +5309,14 @@ msgstr "Aksioma"
 
 #: lib/layouts/AEA.layout:126 lib/layouts/elsart.layout:414
 #: lib/layouts/llncs.layout:286 lib/layouts/svmono.layout:96
-#: lib/layouts/svmult.layout:94 lib/layouts/theorems-ams-bytype.inc:237
-#: lib/layouts/theorems-ams.inc:275 lib/layouts/theorems-ams.inc:310
-#: lib/layouts/theorems-ams.inc:313 lib/layouts/theorems-bytype.inc:213
-#: lib/layouts/theorems-order.inc:73 lib/layouts/theorems.inc:275
-#: lib/layouts/theorems.inc:300 lib/layouts/theorems.inc:303
+#: lib/layouts/svmult.layout:94 lib/layouts/theorems-ams-bytype.inc:309
+#: lib/layouts/theorems-ams-bytype.inc:344
+#: lib/layouts/theorems-ams-bytype.inc:347 lib/layouts/theorems-ams.inc:275
+#: lib/layouts/theorems-ams.inc:310 lib/layouts/theorems-ams.inc:313
+#: lib/layouts/theorems-bytype.inc:285 lib/layouts/theorems-bytype.inc:310
+#: lib/layouts/theorems-bytype.inc:313 lib/layouts/theorems-order.inc:73
+#: lib/layouts/theorems.inc:275 lib/layouts/theorems.inc:300
+#: lib/layouts/theorems.inc:303
 msgid "Case"
 msgstr "Kasus"
 
@@ -5301,10 +5327,12 @@ msgstr "Kasus \\thecase."
 #: lib/layouts/AEA.layout:136 lib/layouts/elsart.layout:399
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:280
 #: lib/layouts/ijmpd.layout:289 lib/layouts/llncs.layout:307
-#: lib/layouts/svjour.inc:304 lib/layouts/theorems-ams-bytype.inc:223
-#: lib/layouts/theorems-ams.inc:257 lib/layouts/theorems-ams.inc:266
-#: lib/layouts/theorems-ams.inc:269 lib/layouts/theorems-bytype.inc:199
-#: lib/layouts/theorems-order.inc:67
+#: lib/layouts/svjour.inc:304 lib/layouts/theorems-ams-bytype.inc:289
+#: lib/layouts/theorems-ams-bytype.inc:299
+#: lib/layouts/theorems-ams-bytype.inc:302 lib/layouts/theorems-ams.inc:257
+#: lib/layouts/theorems-ams.inc:266 lib/layouts/theorems-ams.inc:269
+#: lib/layouts/theorems-bytype.inc:265 lib/layouts/theorems-bytype.inc:275
+#: lib/layouts/theorems-bytype.inc:278 lib/layouts/theorems-order.inc:67
 #: lib/layouts/theorems-starred-equivalents.inc:76
 #: lib/layouts/theorems-starred.inc:258 lib/layouts/theorems-starred.inc:261
 #: lib/layouts/theorems.inc:257 lib/layouts/theorems.inc:266
@@ -5314,7 +5342,11 @@ msgid "Claim"
 msgstr "Klaim"
 
 #: lib/layouts/AEA.layout:143
-#: lib/layouts/theorems-ams-extended-bytype.module:243
+#: lib/layouts/theorems-ams-extended-bytype.module:339
+#: lib/layouts/theorems-ams-extended-bytype.module:348
+#: lib/layouts/theorems-ams-extended-bytype.module:351
+#: lib/layouts/theorems-ams-extended-bytype.module:366
+#: lib/layouts/theorems-ams-extended-bytype.module:369
 #: lib/layouts/theorems-ams-extended.module:310
 #: lib/layouts/theorems-ams-extended.module:319
 #: lib/layouts/theorems-ams-extended.module:322
@@ -5324,7 +5356,11 @@ msgid "Conclusion"
 msgstr "Kesimpulan"
 
 #: lib/layouts/AEA.layout:151
-#: lib/layouts/theorems-ams-extended-bytype.module:128
+#: lib/layouts/theorems-ams-extended-bytype.module:164
+#: lib/layouts/theorems-ams-extended-bytype.module:173
+#: lib/layouts/theorems-ams-extended-bytype.module:176
+#: lib/layouts/theorems-ams-extended-bytype.module:191
+#: lib/layouts/theorems-ams-extended-bytype.module:194
 #: lib/layouts/theorems-ams-extended.module:140
 #: lib/layouts/theorems-ams-extended.module:149
 #: lib/layouts/theorems-ams-extended.module:152
@@ -5336,10 +5372,12 @@ msgstr "Kondisi"
 #: lib/layouts/AEA.layout:159 lib/layouts/elsart.layout:364
 #: lib/layouts/ijmpc.layout:289 lib/layouts/ijmpd.layout:299
 #: lib/layouts/llncs.layout:314 lib/layouts/siamltex.layout:106
-#: lib/layouts/svjour.inc:326 lib/layouts/theorems-ams-bytype.inc:121
-#: lib/layouts/theorems-ams.inc:119 lib/layouts/theorems-ams.inc:129
-#: lib/layouts/theorems-ams.inc:132 lib/layouts/theorems-bytype.inc:97
-#: lib/layouts/theorems-order.inc:31
+#: lib/layouts/svjour.inc:326 lib/layouts/theorems-ams-bytype.inc:145
+#: lib/layouts/theorems-ams-bytype.inc:154
+#: lib/layouts/theorems-ams-bytype.inc:157 lib/layouts/theorems-ams.inc:119
+#: lib/layouts/theorems-ams.inc:129 lib/layouts/theorems-ams.inc:132
+#: lib/layouts/theorems-bytype.inc:121 lib/layouts/theorems-bytype.inc:130
+#: lib/layouts/theorems-bytype.inc:133 lib/layouts/theorems-order.inc:31
 #: lib/layouts/theorems-starred-equivalents.inc:34
 #: lib/layouts/theorems-starred.inc:123 lib/layouts/theorems-starred.inc:126
 #: lib/layouts/theorems.inc:119 lib/layouts/theorems.inc:129
@@ -5353,9 +5391,12 @@ msgstr "Dugaan"
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:235
 #: lib/layouts/ijmpd.layout:236 lib/layouts/llncs.layout:321
 #: lib/layouts/siamltex.layout:76 lib/layouts/svjour.inc:333
-#: lib/layouts/theorems-ams-bytype.inc:85 lib/layouts/theorems-ams.inc:65
+#: lib/layouts/theorems-ams-bytype.inc:91
+#: lib/layouts/theorems-ams-bytype.inc:101
+#: lib/layouts/theorems-ams-bytype.inc:104 lib/layouts/theorems-ams.inc:65
 #: lib/layouts/theorems-ams.inc:75 lib/layouts/theorems-ams.inc:78
-#: lib/layouts/theorems-bytype.inc:61 lib/layouts/theorems-order.inc:13
+#: lib/layouts/theorems-bytype.inc:67 lib/layouts/theorems-bytype.inc:76
+#: lib/layouts/theorems-bytype.inc:79 lib/layouts/theorems-order.inc:13
 #: lib/layouts/theorems-starred-equivalents.inc:13
 #: lib/layouts/theorems-starred.inc:72 lib/layouts/theorems-starred.inc:75
 #: lib/layouts/theorems.inc:65 lib/layouts/theorems.inc:75
@@ -5366,6 +5407,10 @@ msgstr "Korolari"
 
 #: lib/layouts/AEA.layout:173 lib/layouts/elsart.layout:336
 #: lib/layouts/theorems-ams-extended-bytype.module:60
+#: lib/layouts/theorems-ams-extended-bytype.module:69
+#: lib/layouts/theorems-ams-extended-bytype.module:72
+#: lib/layouts/theorems-ams-extended-bytype.module:86
+#: lib/layouts/theorems-ams-extended-bytype.module:89
 #: lib/layouts/theorems-ams-extended.module:36
 #: lib/layouts/theorems-ams-extended.module:46
 #: lib/layouts/theorems-ams-extended.module:49
@@ -5379,9 +5424,12 @@ msgstr "Kriteria"
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:137
 #: lib/layouts/ijmpd.layout:134 lib/layouts/llncs.layout:335
 #: lib/layouts/siamltex.layout:125 lib/layouts/svjour.inc:347
-#: lib/layouts/theorems-ams-bytype.inc:145 lib/layouts/theorems-ams.inc:155
+#: lib/layouts/theorems-ams-bytype.inc:181
+#: lib/layouts/theorems-ams-bytype.inc:197
+#: lib/layouts/theorems-ams-bytype.inc:200 lib/layouts/theorems-ams.inc:155
 #: lib/layouts/theorems-ams.inc:172 lib/layouts/theorems-ams.inc:175
-#: lib/layouts/theorems-bytype.inc:121 lib/layouts/theorems-order.inc:37
+#: lib/layouts/theorems-bytype.inc:157 lib/layouts/theorems-bytype.inc:173
+#: lib/layouts/theorems-bytype.inc:176 lib/layouts/theorems-order.inc:37
 #: lib/layouts/theorems-starred-equivalents.inc:41
 #: lib/layouts/theorems-starred.inc:165 lib/layouts/theorems-starred.inc:168
 #: lib/layouts/theorems.inc:155 lib/layouts/theorems.inc:172
@@ -5393,10 +5441,12 @@ msgstr "Definisi"
 #: lib/layouts/AEA.layout:188 lib/layouts/beamer.layout:1027
 #: lib/layouts/elsart.layout:371 lib/layouts/ijmpc.layout:169
 #: lib/layouts/ijmpd.layout:166 lib/layouts/llncs.layout:342
-#: lib/layouts/svjour.inc:354 lib/layouts/theorems-ams-bytype.inc:164
-#: lib/layouts/theorems-ams.inc:180 lib/layouts/theorems-ams.inc:189
-#: lib/layouts/theorems-ams.inc:192 lib/layouts/theorems-bytype.inc:140
-#: lib/layouts/theorems-order.inc:43
+#: lib/layouts/svjour.inc:354 lib/layouts/theorems-ams-bytype.inc:206
+#: lib/layouts/theorems-ams-bytype.inc:216
+#: lib/layouts/theorems-ams-bytype.inc:219 lib/layouts/theorems-ams.inc:180
+#: lib/layouts/theorems-ams.inc:189 lib/layouts/theorems-ams.inc:192
+#: lib/layouts/theorems-bytype.inc:182 lib/layouts/theorems-bytype.inc:192
+#: lib/layouts/theorems-bytype.inc:195 lib/layouts/theorems-order.inc:43
 #: lib/layouts/theorems-starred-equivalents.inc:48
 #: lib/layouts/theorems-starred.inc:182 lib/layouts/theorems-starred.inc:185
 #: lib/layouts/theorems.inc:180 lib/layouts/theorems.inc:189
@@ -5407,10 +5457,12 @@ msgid "Example"
 msgstr "Contoh"
 
 #: lib/layouts/AEA.layout:195 lib/layouts/llncs.layout:349
-#: lib/layouts/svjour.inc:361 lib/layouts/theorems-ams-bytype.inc:190
-#: lib/layouts/theorems-ams.inc:214 lib/layouts/theorems-ams.inc:223
-#: lib/layouts/theorems-ams.inc:226 lib/layouts/theorems-bytype.inc:166
-#: lib/layouts/theorems-order.inc:55
+#: lib/layouts/svjour.inc:361 lib/layouts/theorems-ams-bytype.inc:244
+#: lib/layouts/theorems-ams-bytype.inc:254
+#: lib/layouts/theorems-ams-bytype.inc:257 lib/layouts/theorems-ams.inc:214
+#: lib/layouts/theorems-ams.inc:223 lib/layouts/theorems-ams.inc:226
+#: lib/layouts/theorems-bytype.inc:220 lib/layouts/theorems-bytype.inc:230
+#: lib/layouts/theorems-bytype.inc:233 lib/layouts/theorems-order.inc:55
 #: lib/layouts/theorems-starred-equivalents.inc:62
 #: lib/layouts/theorems-starred.inc:216 lib/layouts/theorems-starred.inc:219
 #: lib/layouts/theorems.inc:214 lib/layouts/theorems.inc:223
@@ -5423,10 +5475,12 @@ msgstr "Latihan"
 #: lib/layouts/foils.layout:243 lib/layouts/heb-article.layout:45
 #: lib/layouts/ijmpc.layout:244 lib/layouts/ijmpd.layout:249
 #: lib/layouts/llncs.layout:356 lib/layouts/siamltex.layout:86
-#: lib/layouts/svjour.inc:372 lib/layouts/theorems-ams-bytype.inc:97
-#: lib/layouts/theorems-ams.inc:83 lib/layouts/theorems-ams.inc:93
-#: lib/layouts/theorems-ams.inc:96 lib/layouts/theorems-bytype.inc:73
-#: lib/layouts/theorems-order.inc:19
+#: lib/layouts/svjour.inc:372 lib/layouts/theorems-ams-bytype.inc:109
+#: lib/layouts/theorems-ams-bytype.inc:118
+#: lib/layouts/theorems-ams-bytype.inc:121 lib/layouts/theorems-ams.inc:83
+#: lib/layouts/theorems-ams.inc:93 lib/layouts/theorems-ams.inc:96
+#: lib/layouts/theorems-bytype.inc:85 lib/layouts/theorems-bytype.inc:94
+#: lib/layouts/theorems-bytype.inc:97 lib/layouts/theorems-order.inc:19
 #: lib/layouts/theorems-starred-equivalents.inc:20
 #: lib/layouts/theorems-starred.inc:89 lib/layouts/theorems-starred.inc:92
 #: lib/layouts/theorems.inc:83 lib/layouts/theorems.inc:93
@@ -5438,7 +5492,11 @@ msgstr "Lemma"
 #: lib/layouts/AEA.layout:209 lib/layouts/agutex.layout:157
 #: lib/layouts/agutex.layout:169 lib/layouts/ijmpc.layout:187
 #: lib/layouts/ijmpd.layout:186
-#: lib/layouts/theorems-ams-extended-bytype.module:174
+#: lib/layouts/theorems-ams-extended-bytype.module:234
+#: lib/layouts/theorems-ams-extended-bytype.module:243
+#: lib/layouts/theorems-ams-extended-bytype.module:246
+#: lib/layouts/theorems-ams-extended-bytype.module:261
+#: lib/layouts/theorems-ams-extended-bytype.module:264
 #: lib/layouts/theorems-ams-extended.module:208
 #: lib/layouts/theorems-ams-extended.module:217
 #: lib/layouts/theorems-ams-extended.module:220
@@ -5449,10 +5507,12 @@ msgstr "Notasi"
 
 #: lib/layouts/AEA.layout:217 lib/layouts/elsart.layout:378
 #: lib/layouts/llncs.layout:369 lib/layouts/svmono.layout:102
-#: lib/layouts/svjour.inc:386 lib/layouts/theorems-ams-bytype.inc:177
-#: lib/layouts/theorems-ams.inc:197 lib/layouts/theorems-ams.inc:206
-#: lib/layouts/theorems-ams.inc:209 lib/layouts/theorems-bytype.inc:153
-#: lib/layouts/theorems-order.inc:49
+#: lib/layouts/svjour.inc:386 lib/layouts/theorems-ams-bytype.inc:225
+#: lib/layouts/theorems-ams-bytype.inc:235
+#: lib/layouts/theorems-ams-bytype.inc:238 lib/layouts/theorems-ams.inc:197
+#: lib/layouts/theorems-ams.inc:206 lib/layouts/theorems-ams.inc:209
+#: lib/layouts/theorems-bytype.inc:201 lib/layouts/theorems-bytype.inc:211
+#: lib/layouts/theorems-bytype.inc:214 lib/layouts/theorems-order.inc:49
 #: lib/layouts/theorems-starred-equivalents.inc:55
 #: lib/layouts/theorems-starred.inc:199 lib/layouts/theorems-starred.inc:202
 #: lib/layouts/theorems.inc:197 lib/layouts/theorems.inc:206
@@ -5465,9 +5525,12 @@ msgstr "Masalah"
 #: lib/layouts/foils.layout:257 lib/layouts/ijmpc.layout:253
 #: lib/layouts/ijmpd.layout:259 lib/layouts/llncs.layout:390
 #: lib/layouts/siamltex.layout:96 lib/layouts/svjour.inc:407
-#: lib/layouts/theorems-ams-bytype.inc:109 lib/layouts/theorems-ams.inc:101
+#: lib/layouts/theorems-ams-bytype.inc:127
+#: lib/layouts/theorems-ams-bytype.inc:136
+#: lib/layouts/theorems-ams-bytype.inc:139 lib/layouts/theorems-ams.inc:101
 #: lib/layouts/theorems-ams.inc:111 lib/layouts/theorems-ams.inc:114
-#: lib/layouts/theorems-bytype.inc:85 lib/layouts/theorems-order.inc:25
+#: lib/layouts/theorems-bytype.inc:103 lib/layouts/theorems-bytype.inc:112
+#: lib/layouts/theorems-bytype.inc:115 lib/layouts/theorems-order.inc:25
 #: lib/layouts/theorems-starred-equivalents.inc:27
 #: lib/layouts/theorems-starred.inc:106 lib/layouts/theorems-starred.inc:109
 #: lib/layouts/theorems.inc:101 lib/layouts/theorems.inc:111
@@ -5479,9 +5542,12 @@ msgstr "Proposisi"
 #: lib/layouts/AEA.layout:232 lib/layouts/elsart.layout:385
 #: lib/layouts/ijmpc.layout:178 lib/layouts/ijmpd.layout:176
 #: lib/layouts/llncs.layout:403 lib/layouts/svjour.inc:421
-#: lib/layouts/theorems-ams-bytype.inc:203 lib/layouts/theorems-ams.inc:231
+#: lib/layouts/theorems-ams-bytype.inc:263
+#: lib/layouts/theorems-ams-bytype.inc:280
+#: lib/layouts/theorems-ams-bytype.inc:283 lib/layouts/theorems-ams.inc:231
 #: lib/layouts/theorems-ams.inc:249 lib/layouts/theorems-ams.inc:252
-#: lib/layouts/theorems-bytype.inc:179 lib/layouts/theorems-order.inc:61
+#: lib/layouts/theorems-bytype.inc:239 lib/layouts/theorems-bytype.inc:256
+#: lib/layouts/theorems-bytype.inc:259 lib/layouts/theorems-order.inc:61
 #: lib/layouts/theorems-starred-equivalents.inc:69
 #: lib/layouts/theorems-starred.inc:241 lib/layouts/theorems-starred.inc:244
 #: lib/layouts/theorems.inc:231 lib/layouts/theorems.inc:249
@@ -5491,8 +5557,8 @@ msgid "Remark"
 msgstr "Catatan"
 
 #: lib/layouts/AEA.layout:234 lib/layouts/ijmpc.layout:182
-#: lib/layouts/ijmpd.layout:180 lib/layouts/theorems-ams-bytype.inc:206
-#: lib/layouts/theorems-bytype.inc:182
+#: lib/layouts/ijmpd.layout:180 lib/layouts/theorems-ams-bytype.inc:266
+#: lib/layouts/theorems-bytype.inc:242
 msgid "Remark \\theremark."
 msgstr "Catatan \\theremark."
 
@@ -5506,7 +5572,11 @@ msgid "Solution \\thesolution."
 msgstr "Penyelesaian \\thesolution."
 
 #: lib/layouts/AEA.layout:250 lib/layouts/elsart.layout:406
-#: lib/layouts/theorems-ams-extended-bytype.module:197
+#: lib/layouts/theorems-ams-extended-bytype.module:269
+#: lib/layouts/theorems-ams-extended-bytype.module:278
+#: lib/layouts/theorems-ams-extended-bytype.module:281
+#: lib/layouts/theorems-ams-extended-bytype.module:296
+#: lib/layouts/theorems-ams-extended-bytype.module:299
 #: lib/layouts/theorems-ams-extended.module:242
 #: lib/layouts/theorems-ams-extended.module:251
 #: lib/layouts/theorems-ams-extended.module:254
@@ -6328,7 +6398,11 @@ msgstr "CopNum"
 #: lib/layouts/iopart.layout:95 lib/layouts/llncs.layout:362
 #: lib/layouts/powerdot.layout:200 lib/layouts/slides.layout:167
 #: lib/layouts/stdinsets.inc:96 lib/layouts/svjour.inc:379
-#: lib/layouts/theorems-ams-extended-bytype.module:151
+#: lib/layouts/theorems-ams-extended-bytype.module:199
+#: lib/layouts/theorems-ams-extended-bytype.module:208
+#: lib/layouts/theorems-ams-extended-bytype.module:211
+#: lib/layouts/theorems-ams-extended-bytype.module:226
+#: lib/layouts/theorems-ams-extended-bytype.module:229
 #: lib/layouts/theorems-ams-extended.module:174
 #: lib/layouts/theorems-ams-extended.module:183
 #: lib/layouts/theorems-ams-extended.module:186
@@ -6651,12 +6725,15 @@ msgstr "Contoh-contoh"
 msgid "Examples."
 msgstr "Contoh-contoh."
 
-#: lib/layouts/beamer.layout:1045 lib/layouts/theorems-ams-bytype.inc:133
-#: lib/layouts/theorems-ams.inc:137 lib/layouts/theorems-ams.inc:147
-#: lib/layouts/theorems-ams.inc:150 lib/layouts/theorems-bytype.inc:109
-#: lib/layouts/theorems-starred.inc:140 lib/layouts/theorems-starred.inc:143
-#: lib/layouts/theorems.inc:137 lib/layouts/theorems.inc:147
-#: lib/layouts/theorems.inc:150 lib/layouts/theorems-chap-bytype.module:114
+#: lib/layouts/beamer.layout:1045 lib/layouts/theorems-ams-bytype.inc:163
+#: lib/layouts/theorems-ams-bytype.inc:172
+#: lib/layouts/theorems-ams-bytype.inc:175 lib/layouts/theorems-ams.inc:137
+#: lib/layouts/theorems-ams.inc:147 lib/layouts/theorems-ams.inc:150
+#: lib/layouts/theorems-bytype.inc:139 lib/layouts/theorems-bytype.inc:148
+#: lib/layouts/theorems-bytype.inc:151 lib/layouts/theorems-starred.inc:140
+#: lib/layouts/theorems-starred.inc:143 lib/layouts/theorems.inc:137
+#: lib/layouts/theorems.inc:147 lib/layouts/theorems.inc:150
+#: lib/layouts/theorems-chap-bytype.module:114
 #: lib/layouts/theorems-sec-bytype.module:94
 msgid "Fact"
 msgstr "Fakta"
@@ -6725,7 +6802,7 @@ msgstr "Tabel"
 
 #: lib/layouts/beamer.layout:1204 lib/layouts/powerdot.layout:385
 #: lib/layouts/tufte-book.layout:223 lib/layouts/stdfloats.inc:16
-#: src/insets/InsetFloatList.cpp:174
+#: src/insets/InsetFloatList.cpp:177
 msgid "List of Tables"
 msgstr "Daftar Tabel"
 
@@ -6736,7 +6813,7 @@ msgstr "Gambar"
 
 #: lib/layouts/beamer.layout:1218 lib/layouts/powerdot.layout:397
 #: lib/layouts/tufte-book.layout:236 lib/layouts/stdfloats.inc:31
-#: src/insets/InsetFloatList.cpp:177
+#: src/insets/InsetFloatList.cpp:180
 msgid "List of Figures"
 msgstr "Daftar Gambar"
 
@@ -8165,7 +8242,7 @@ msgid "Classification Codes"
 msgstr "Kode Klasifikasi"
 
 #: lib/layouts/ijmpc.layout:146 lib/layouts/ijmpd.layout:143
-#: lib/layouts/theorems-ams-bytype.inc:148 lib/layouts/theorems-bytype.inc:124
+#: lib/layouts/theorems-ams-bytype.inc:184 lib/layouts/theorems-bytype.inc:160
 msgid "Definition \\thedefinition."
 msgstr "Definisi \\thedefinition."
 
@@ -8178,12 +8255,12 @@ msgid "Step \\thestep."
 msgstr "Step \\thestep."
 
 #: lib/layouts/ijmpc.layout:173 lib/layouts/ijmpd.layout:170
-#: lib/layouts/theorems-ams-bytype.inc:167 lib/layouts/theorems-bytype.inc:143
+#: lib/layouts/theorems-ams-bytype.inc:209 lib/layouts/theorems-bytype.inc:185
 msgid "Example \\theexample."
 msgstr "Contoh \\theexample."
 
 #: lib/layouts/ijmpc.layout:191 lib/layouts/ijmpd.layout:190
-#: lib/layouts/theorems-ams-extended-bytype.module:177
+#: lib/layouts/theorems-ams-extended-bytype.module:237
 msgid "Notation \\thenotation."
 msgstr "Notasi \\thenotation."
 
@@ -8194,17 +8271,17 @@ msgid "Theorem \\thetheorem."
 msgstr "Teorema \\thetheorem."
 
 #: lib/layouts/ijmpc.layout:239 lib/layouts/ijmpd.layout:240
-#: lib/layouts/theorems-ams-bytype.inc:88 lib/layouts/theorems-bytype.inc:64
+#: lib/layouts/theorems-ams-bytype.inc:94 lib/layouts/theorems-bytype.inc:70
 msgid "Corollary \\thecorollary."
 msgstr "Korolari \\thecorollary."
 
 #: lib/layouts/ijmpc.layout:248 lib/layouts/ijmpd.layout:253
-#: lib/layouts/theorems-ams-bytype.inc:100 lib/layouts/theorems-bytype.inc:76
+#: lib/layouts/theorems-ams-bytype.inc:112 lib/layouts/theorems-bytype.inc:88
 msgid "Lemma \\thelemma."
 msgstr "Lemma \\thelemma."
 
 #: lib/layouts/ijmpc.layout:257 lib/layouts/ijmpd.layout:263
-#: lib/layouts/theorems-ams-bytype.inc:112 lib/layouts/theorems-bytype.inc:88
+#: lib/layouts/theorems-ams-bytype.inc:130 lib/layouts/theorems-bytype.inc:106
 msgid "Proposition \\theproposition."
 msgstr "Proposition \\theproposition."
 
@@ -8231,12 +8308,12 @@ msgid "Question \\thequestion."
 msgstr "Pertanyaan \\thequestion."
 
 #: lib/layouts/ijmpc.layout:284 lib/layouts/ijmpd.layout:293
-#: lib/layouts/theorems-ams-bytype.inc:226 lib/layouts/theorems-bytype.inc:202
+#: lib/layouts/theorems-ams-bytype.inc:292 lib/layouts/theorems-bytype.inc:268
 msgid "Claim \\theclaim."
 msgstr "Klaim \\theclaim."
 
 #: lib/layouts/ijmpc.layout:293 lib/layouts/ijmpd.layout:303
-#: lib/layouts/theorems-ams-bytype.inc:124 lib/layouts/theorems-bytype.inc:100
+#: lib/layouts/theorems-ams-bytype.inc:148 lib/layouts/theorems-bytype.inc:124
 msgid "Conjecture \\theconjecture."
 msgstr "Dugaan \\theconjecture."
 
@@ -8465,8 +8542,8 @@ msgid "TOC Author:"
 msgstr "Daftar Isi Penulis:"
 
 #: lib/layouts/llncs.layout:300 lib/layouts/svmono.layout:99
-#: lib/layouts/svmult.layout:97 lib/layouts/theorems-ams-bytype.inc:253
-#: lib/layouts/theorems-ams.inc:291 lib/layouts/theorems-bytype.inc:219
+#: lib/layouts/svmult.layout:97 lib/layouts/theorems-ams-bytype.inc:325
+#: lib/layouts/theorems-ams.inc:291 lib/layouts/theorems-bytype.inc:291
 #: lib/layouts/theorems.inc:281
 msgid "Case #."
 msgstr "Kasus #."
@@ -8849,7 +8926,7 @@ msgid "Conjecture*"
 msgstr "Dugaan*"
 
 #: lib/layouts/siamltex.layout:121
-#: lib/layouts/theorems-ams-extended-bytype.module:94
+#: lib/layouts/theorems-ams-extended-bytype.module:112
 #: lib/layouts/theorems-ams-extended.module:88
 msgid "Algorithm*"
 msgstr "Algorithm*"
@@ -9764,15 +9841,15 @@ msgstr "Cetakan lepas"
 msgid "Offprints:"
 msgstr "Cetakan lepas:"
 
-#: lib/layouts/theorems-ams-bytype.inc:136 lib/layouts/theorems-bytype.inc:112
+#: lib/layouts/theorems-ams-bytype.inc:166 lib/layouts/theorems-bytype.inc:142
 msgid "Fact \\thefact."
 msgstr "Fakta \\thefact."
 
-#: lib/layouts/theorems-ams-bytype.inc:180 lib/layouts/theorems-bytype.inc:156
+#: lib/layouts/theorems-ams-bytype.inc:228 lib/layouts/theorems-bytype.inc:204
 msgid "Problem \\theproblem."
 msgstr "Problem \\theproblem."
 
-#: lib/layouts/theorems-ams-bytype.inc:193 lib/layouts/theorems-bytype.inc:169
+#: lib/layouts/theorems-ams-bytype.inc:247 lib/layouts/theorems-bytype.inc:223
 msgid "Exercise \\theexercise."
 msgstr "Latihan \\theexercise."
 
@@ -10346,115 +10423,119 @@ msgstr ""
 msgid "Criterion \\thecriterion."
 msgstr "Kriteria \\thecriterion."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:71
+#: lib/layouts/theorems-ams-extended-bytype.module:77
 #: lib/layouts/theorems-ams-extended.module:53
 msgid "Criterion*"
 msgstr "Kriteria*"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:74
+#: lib/layouts/theorems-ams-extended-bytype.module:80
 #: lib/layouts/theorems-ams-extended.module:56
 msgid "Criterion."
 msgstr "Kriteria"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:85
+#: lib/layouts/theorems-ams-extended-bytype.module:97
 msgid "Algorithm \\thealgorithm."
 msgstr "Algoritma \\thealgorithm."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:97
+#: lib/layouts/theorems-ams-extended-bytype.module:115
 #: lib/layouts/theorems-ams-extended.module:91
 msgid "Algorithm."
 msgstr "Algoritma."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:108
+#: lib/layouts/theorems-ams-extended-bytype.module:132
 msgid "Axiom \\theaxiom."
 msgstr "Aksioma \\theaxiom."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:117
+#: lib/layouts/theorems-ams-extended-bytype.module:147
 #: lib/layouts/theorems-ams-extended.module:123
 msgid "Axiom*"
 msgstr "Aksioma*"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:120
+#: lib/layouts/theorems-ams-extended-bytype.module:150
 #: lib/layouts/theorems-ams-extended.module:126
 msgid "Axiom."
 msgstr "Aksioma."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:131
+#: lib/layouts/theorems-ams-extended-bytype.module:167
 msgid "Condition \\thecondition."
 msgstr "Kondisi \\thecondition."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:140
+#: lib/layouts/theorems-ams-extended-bytype.module:182
 #: lib/layouts/theorems-ams-extended.module:157
 msgid "Condition*"
 msgstr "Kondisi*"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:143
+#: lib/layouts/theorems-ams-extended-bytype.module:185
 #: lib/layouts/theorems-ams-extended.module:160
 msgid "Condition."
 msgstr "Kondisi."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:154
+#: lib/layouts/theorems-ams-extended-bytype.module:202
 msgid "Note \\thenote."
 msgstr "Nota \\thenote."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:163
+#: lib/layouts/theorems-ams-extended-bytype.module:217
 #: lib/layouts/theorems-ams-extended.module:191
 msgid "Note*"
 msgstr "Nota*"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:166
+#: lib/layouts/theorems-ams-extended-bytype.module:220
 #: lib/layouts/theorems-ams-extended.module:194
 msgid "Note."
 msgstr "Nota."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:186
+#: lib/layouts/theorems-ams-extended-bytype.module:252
 #: lib/layouts/theorems-ams-extended.module:225
 msgid "Notation*"
 msgstr "Notasi*"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:189
+#: lib/layouts/theorems-ams-extended-bytype.module:255
 #: lib/layouts/theorems-ams-extended.module:228
 msgid "Notation."
 msgstr "Notasi."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:200
+#: lib/layouts/theorems-ams-extended-bytype.module:272
 msgid "Summary \\thesummary."
 msgstr "Ringkasan \\thesummary."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:209
+#: lib/layouts/theorems-ams-extended-bytype.module:287
 #: lib/layouts/theorems-ams-extended.module:259
 msgid "Summary*"
 msgstr "Ringkasan*"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:212
+#: lib/layouts/theorems-ams-extended-bytype.module:290
 #: lib/layouts/theorems-ams-extended.module:262
 msgid "Summary."
 msgstr "Ringkasan."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:223
+#: lib/layouts/theorems-ams-extended-bytype.module:307
 msgid "Acknowledgement \\theacknowledgement."
 msgstr "Penghargaan \\theacknowledgement."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:232
+#: lib/layouts/theorems-ams-extended-bytype.module:322
 #: lib/layouts/theorems-ams-extended.module:293
 msgid "Acknowledgement*"
 msgstr "Penghargaan*"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:246
+#: lib/layouts/theorems-ams-extended-bytype.module:342
 msgid "Conclusion \\theconclusion."
 msgstr "Kesimpulan \\theconclusion."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:255
+#: lib/layouts/theorems-ams-extended-bytype.module:357
 #: lib/layouts/theorems-ams-extended.module:327
 msgid "Conclusion*"
 msgstr "Kesimpulan*"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:258
+#: lib/layouts/theorems-ams-extended-bytype.module:360
 #: lib/layouts/theorems-ams-extended.module:330
 msgid "Conclusion."
 msgstr "Kesimpulan."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:266
+#: lib/layouts/theorems-ams-extended-bytype.module:374
+#: lib/layouts/theorems-ams-extended-bytype.module:383
+#: lib/layouts/theorems-ams-extended-bytype.module:386
+#: lib/layouts/theorems-ams-extended-bytype.module:401
+#: lib/layouts/theorems-ams-extended-bytype.module:404
 #: lib/layouts/theorems-ams-extended.module:344
 #: lib/layouts/theorems-ams-extended.module:354
 #: lib/layouts/theorems-ams-extended.module:357
@@ -10463,16 +10544,16 @@ msgstr "Kesimpulan."
 msgid "Assumption"
 msgstr "Asumsi"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:269
+#: lib/layouts/theorems-ams-extended-bytype.module:377
 msgid "Assumption \\theassumption."
 msgstr "Asumsi \\theassumption."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:278
+#: lib/layouts/theorems-ams-extended-bytype.module:392
 #: lib/layouts/theorems-ams-extended.module:362
 msgid "Assumption*"
 msgstr "Asumsi*"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:281
+#: lib/layouts/theorems-ams-extended-bytype.module:395
 #: lib/layouts/theorems-ams-extended.module:365
 msgid "Assumption."
 msgstr "Asumsi."
@@ -17515,19 +17596,19 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "Menyalin dari %1$s sampai %2$s gagal."
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:121
-#: src/frontends/qt4/GuiDocument.cpp:3218
+#: src/frontends/qt4/GuiDocument.cpp:3191
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Roman"
 msgstr "Roman"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:122
-#: src/frontends/qt4/GuiDocument.cpp:3218
+#: src/frontends/qt4/GuiDocument.cpp:3191
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:123
-#: src/frontends/qt4/GuiDocument.cpp:3218
+#: src/frontends/qt4/GuiDocument.cpp:3191
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Typewriter"
 msgstr "Mesin ketik"
@@ -17995,7 +18076,7 @@ msgstr "Tipe berkas tidak lengkap [misal latex, ps...] setelah --import switch"
 msgid "Missing filename for --import"
 msgstr "Kurang menuliskan nama berkas untuk --import"
 
-#: src/LyXRC.cpp:3060
+#: src/LyXRC.cpp:3063
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
@@ -18003,7 +18084,7 @@ msgstr ""
 "Pertimbangkan menggabungkan kata, seperti \"diskdrive\" untuk \"disk drive"
 "\", sebagai satu suku kata yang diterima?"
 
-#: src/LyXRC.cpp:3064
+#: src/LyXRC.cpp:3067
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
@@ -18011,7 +18092,7 @@ msgstr ""
 "Pilihlah bahasa alternatif. Bahasa standard menggunakan bahasa yang "
 "digunakan dokumen."
 
-#: src/LyXRC.cpp:3072
+#: src/LyXRC.cpp:3075
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -18019,7 +18100,7 @@ msgstr ""
 "Batalkan pilihan apabila anda tidak menginginkan pilihan yang sekarang "
 "digantikan secara otomatis dengan yang ditulis."
 
-#: src/LyXRC.cpp:3076
+#: src/LyXRC.cpp:3079
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -18027,14 +18108,14 @@ msgstr ""
 "Batalkan pilihan apabila anda tidak menginginkan opsi kelas dikembalikan ke "
 "bawaan setelah kelas berubah."
 
-#: src/LyXRC.cpp:3080
+#: src/LyXRC.cpp:3083
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Jeda waktu antara penyimpanan otomatis (dalam detik). 0 berarti tidak ada "
 "penyimpanan otomatis."
 
-#: src/LyXRC.cpp:3087
+#: src/LyXRC.cpp:3090
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -18042,7 +18123,7 @@ msgstr ""
 "Path lokasi dari berkas backup. Apabila tidak diisi, LyX akan menyimpan "
 "berkas backup pada direktori yang sama dengan berkas aslinya."
 
-#: src/LyXRC.cpp:3091
+#: src/LyXRC.cpp:3094
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
@@ -18050,11 +18131,11 @@ msgstr ""
 "Mendefinisikan opsi dari bibtex (lihat manual bibtex) atau menggunakan "
 "pengkompail alternatif (seperti  mlbibtex atau bibulus)."
 
-#: src/LyXRC.cpp:3095
+#: src/LyXRC.cpp:3098
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
 msgstr "Definisi pilihan program bibtex untuk PLaTeX (LaTeX Jepang)."
 
-#: src/LyXRC.cpp:3099
+#: src/LyXRC.cpp:3102
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -18062,11 +18143,11 @@ msgstr ""
 "Berkas kunci ikatan. Dapat dinyatakan secara lengkap dengan path absolut, "
 "atau LyX akan mencari di direktori global dan lokalnya."
 
-#: src/LyXRC.cpp:3103
+#: src/LyXRC.cpp:3106
 msgid "Select to check whether the lastfiles still exist."
 msgstr "Pilih untuk memeriksa apakah berkas yang terakhir masih ada."
 
-#: src/LyXRC.cpp:3107
+#: src/LyXRC.cpp:3110
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -18074,7 +18155,7 @@ msgstr ""
 "Mendefinisikan untuk menjalankan chktex. Contoh \"chktex -n11 -n1 -n3 -n6 -"
 "n9 -22 -n25 -n30 -n38\" Lihat dokumentasi ChkTeX."
 
-#: src/LyXRC.cpp:3117
+#: src/LyXRC.cpp:3120
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -18082,7 +18163,7 @@ msgstr ""
 "LyX normalnya tidak memperbarui posisi kursor apabila anda mengubah "
 "scrollbar. Pilih 'true' apabila ingin kursor selalu muncul pada layar."
 
-#: src/LyXRC.cpp:3125
+#: src/LyXRC.cpp:3128
 msgid ""
 "LyX normally doesn't allow the user to scroll further than the bottom of the "
 "document. Set to true if you prefer to scroll the bottom of the document to "
@@ -18091,16 +18172,16 @@ msgstr ""
 "LyX tidak mengijinkan pengguna menggulung lebih dari akhir dokumen. Pilih "
 "true apabila anda ingin merubah dari akhir dokumen ke atas layar."
 
-#: src/LyXRC.cpp:3129
+#: src/LyXRC.cpp:3132
 msgid "Make Apple key act as Meta and Control key as Ctrl."
 msgstr ""
 "Membuat tombol ketik Apple seperti tombol Meta dan Control sebagai Ctrl."
 
-#: src/LyXRC.cpp:3133
+#: src/LyXRC.cpp:3136
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
 msgstr "Gunakan konvensi Mac OS X untuk menggerakkan kursor di level kata"
 
-#: src/LyXRC.cpp:3137
+#: src/LyXRC.cpp:3140
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
@@ -18108,7 +18189,7 @@ msgstr ""
 "Tampilkan kotak kecil disekeliling Makro matematika dengan nama makro ketika "
 "kursor berada dalam kotak makro."
 
-#: src/LyXRC.cpp:3142
+#: src/LyXRC.cpp:3145
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -18117,7 +18198,7 @@ msgstr ""
 "IIni dapat menerima format strftime; lihat manual strftime untuk mengetahui "
 "lebih detail. Misal \"%A, %e. %B %Y\"."
 
-#: src/LyXRC.cpp:3146
+#: src/LyXRC.cpp:3149
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
 "look in its global and local commands/ directories."
@@ -18125,19 +18206,19 @@ msgstr ""
 "Berkas definisi perintah. Dapat menggunakan path absolut atau LyX akan "
 "mencari secara global dan di direktori lokal pengguna."
 
-#: src/LyXRC.cpp:3150
+#: src/LyXRC.cpp:3153
 msgid "The default format used with LFUN_BUFFER_[VIEW|UPDATE]."
 msgstr "Format bawaan digunakan dengan LFUN_BUFFER_[VIEW|UPDATE]."
 
-#: src/LyXRC.cpp:3154
+#: src/LyXRC.cpp:3157
 msgid "New documents will be assigned this language."
 msgstr "Dokumen baru akan disesuaikan dengan bahasa ini."
 
-#: src/LyXRC.cpp:3158
+#: src/LyXRC.cpp:3161
 msgid "Specify the default paper size."
 msgstr "Pilih ukuran kertas bawaan."
 
-#: src/LyXRC.cpp:3162
+#: src/LyXRC.cpp:3165
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -18145,11 +18226,11 @@ msgstr ""
 "Memberi ikon pada dialog apabila jendela utama juga ber ikon. (Pengaruh akan "
 "terlihat di dialog setelah perubahan dibuat.)"
 
-#: src/LyXRC.cpp:3166
+#: src/LyXRC.cpp:3169
 msgid "Select how LyX will display any graphics."
 msgstr "Pilih bagaimana LyX akan menampilkan gambar."
 
-#: src/LyXRC.cpp:3170
+#: src/LyXRC.cpp:3173
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -18157,11 +18238,11 @@ msgstr ""
 "Lokasi bawaan dari dokumen anda. Disini menunjukkan direktori LyX akan "
 "dimulai."
 
-#: src/LyXRC.cpp:3174
+#: src/LyXRC.cpp:3177
 msgid "Specify additional chars that can be part of a word."
 msgstr "Nyatakan tambahan karakter yang akan menjadi bagian dari suatu kata."
 
-#: src/LyXRC.cpp:3178
+#: src/LyXRC.cpp:3181
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
@@ -18169,7 +18250,7 @@ msgstr ""
 "Path lokasi yang akan di tuju LyX ketika akan memilih suatu berkas contoh. "
 "Path ini menunjukkan direktori yang dipilih LyX untuk memulai pencarian."
 
-#: src/LyXRC.cpp:3182
+#: src/LyXRC.cpp:3185
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -18177,11 +18258,11 @@ msgstr ""
 "Huruf encoding yang digunakan paket LaTeX2e fontenc. T1 adalah yang sangat "
 "direkomendasikan untuk bahasa-bahasa selain Ingris."
 
-#: src/LyXRC.cpp:3186
+#: src/LyXRC.cpp:3189
 msgid "Disable any kerning and ligatures for text drawing on screen."
 msgstr "Menghilangkan kerning dan ligatur untuk menampilkan teks di layar."
 
-#: src/LyXRC.cpp:3193
+#: src/LyXRC.cpp:3196
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
@@ -18191,11 +18272,11 @@ msgstr ""
 "kompiler alternatif. Misalnya, menggunakan xindy/make-rules, perintah string "
 "berbentuk \"makeindex.sh -m $$lang\"."
 
-#: src/LyXRC.cpp:3197
+#: src/LyXRC.cpp:3200
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
 msgstr "Definisi pilihan program indeks untuk PLaTeX (LaTeX Jepang)."
 
-#: src/LyXRC.cpp:3201
+#: src/LyXRC.cpp:3204
 msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
@@ -18203,7 +18284,7 @@ msgstr ""
 "Mendefinisikan opsi makeindex (lihat manual makeindex) untuk nomenklatur. "
 "Kemungkinan berbeda dengan opsi untuk proses membuat index."
 
-#: src/LyXRC.cpp:3210
+#: src/LyXRC.cpp:3213
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -18212,18 +18293,18 @@ msgstr ""
 "Anda tidak memerlukan ini apabila, misalnya ingin menulis dokumen berbahasa "
 "Jerman menggunakan papaen ketik sistem Amerika."
 
-#: src/LyXRC.cpp:3214
+#: src/LyXRC.cpp:3217
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr "Pilih apabila perintah merubah bahasa diperlukan di awal dokumen."
 
-#: src/LyXRC.cpp:3218
+#: src/LyXRC.cpp:3221
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr "Pilih apabila perintah merubah bahasa diperlukan di akhir dokumen."
 
-#: src/LyXRC.cpp:3222
+#: src/LyXRC.cpp:3225
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -18232,16 +18313,16 @@ msgstr ""
 "Perintah LaTeX untuk merubah bahasa dokumen ke bahasa yang lain. Misalnya "
 "\\selectlanguage{$$lang} dimana $$lang adalah nama bahasa penggantinya."
 
-#: src/LyXRC.cpp:3226
+#: src/LyXRC.cpp:3229
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr ""
 "Perintah LaTeX untuk memanggil balik bahasa yang digunakan dalam dokumen."
 
-#: src/LyXRC.cpp:3230
+#: src/LyXRC.cpp:3233
 msgid "The LaTeX command for local changing of the language."
 msgstr "Perintah LateX untuk merubah ke bahasa lokal."
 
-#: src/LyXRC.cpp:3234
+#: src/LyXRC.cpp:3237
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
@@ -18249,7 +18330,7 @@ msgstr ""
 "Lepaskan pilihan apabila anda tidak menginginkan bahasa yang dipilih sebagai "
 "argumen untuk \\documentclass."
 
-#: src/LyXRC.cpp:3238
+#: src/LyXRC.cpp:3241
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -18257,7 +18338,7 @@ msgstr ""
 "Perintah LaTeX untuk memuat paket bahasa. Misalnya \"\\usepackage{babel}\", "
 "\"\\usepackage{omega}\"."
 
-#: src/LyXRC.cpp:3242
+#: src/LyXRC.cpp:3245
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -18265,25 +18346,25 @@ msgstr ""
 "Lepaskan pilihan apabila anda tidak ingin babel digunakan ketika bahasa "
 "dokumen adalah bahasa bawwan."
 
-#: src/LyXRC.cpp:3246
+#: src/LyXRC.cpp:3249
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr ""
 "Lepaskan pilihan apabila anda tidak menginginkan LyX langsung menuju ke "
 "posisi ketika disimpan."
 
-#: src/LyXRC.cpp:3250
+#: src/LyXRC.cpp:3253
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 "Lepaskan pilihan untuk menghalangi memuat berkas yang sudah dibuka dari sesi "
 "LyX yang terakhir."
 
-#: src/LyXRC.cpp:3254
+#: src/LyXRC.cpp:3257
 msgid "De-select if you don't want LyX to create backup files."
 msgstr ""
 "Lepaskan pilihan apabila anda tidak menginginkan LyX untuk membuat berkas "
 "backup."
 
-#: src/LyXRC.cpp:3258
+#: src/LyXRC.cpp:3261
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -18291,29 +18372,29 @@ msgstr ""
 "Pilih untuk mengkontrol kata-kata yang di tandai dengan bahasa asing lain "
 "yang bukan bahasa dokumen."
 
-#: src/LyXRC.cpp:3262
+#: src/LyXRC.cpp:3265
 msgid "The scrolling speed of the mouse wheel."
 msgstr "Kecepatan scrolling dari tetikus beroda."
 
-#: src/LyXRC.cpp:3267
+#: src/LyXRC.cpp:3270
 msgid "The completion popup delay."
 msgstr "Penundaan waktu dari popup completion."
 
-#: src/LyXRC.cpp:3271
+#: src/LyXRC.cpp:3274
 msgid "Select to display the completion popup in math mode."
 msgstr "Pilih untuk menampilkan pop-up selesai di mode matematika."
 
-#: src/LyXRC.cpp:3275
+#: src/LyXRC.cpp:3278
 msgid "Select to display the completion popup in text mode."
 msgstr "Pilih untuk menampilkan pop-up selesai di mode teks."
 
-#: src/LyXRC.cpp:3279
+#: src/LyXRC.cpp:3282
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr ""
 "Tampilkan popup completion tanpa ada jeda waktu setelah completion usai."
 
-#: src/LyXRC.cpp:3283
+#: src/LyXRC.cpp:3286
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
@@ -18321,33 +18402,33 @@ msgstr ""
 "Tampilkan segitiga kecil di kursor untuk menunjukkan bahwa ada proses yang "
 "sudah selesai."
 
-#: src/LyXRC.cpp:3287
+#: src/LyXRC.cpp:3290
 msgid "The inline completion delay."
 msgstr "Jeda waktu inline completion."
 
-#: src/LyXRC.cpp:3291
+#: src/LyXRC.cpp:3294
 msgid "Select to display the inline completion in math mode."
 msgstr "Pilih untuk menampilkan 'inline completion' di mode matematika."
 
-#: src/LyXRC.cpp:3295
+#: src/LyXRC.cpp:3298
 msgid "Select to display the inline completion in text mode."
 msgstr "Pilih untuk menampilkan 'inline completion' di mode teks."
 
-#: src/LyXRC.cpp:3299
+#: src/LyXRC.cpp:3302
 msgid "Use \"...\" to shorten long completions."
 msgstr "Gunakan \"...\"  untuk menyingkat completion yang panjang."
 
-#: src/LyXRC.cpp:3303
+#: src/LyXRC.cpp:3306
 msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
 msgstr "Mengijinkan singkatan TeXMacs, seperti => menggantikan \\Rightarrow."
 
-#: src/LyXRC.cpp:3307
+#: src/LyXRC.cpp:3310
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 "Jumlah maksimal berkas. Jumlah sampai %1$d dapat dimunculkan di menu Berkas."
 
-#: src/LyXRC.cpp:3312
+#: src/LyXRC.cpp:3315
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
@@ -18355,29 +18436,29 @@ msgstr ""
 "Nyatakan direktori-direktori yang perlu ditambahkan di lingkungan variable "
 "PATH. Gunakan format yang seduai dengan sistem operasi."
 
-#: src/LyXRC.cpp:3318
+#: src/LyXRC.cpp:3321
 msgid "Shows a typeset preview of things such as math"
 msgstr "Tampilkan hasil pra tampilan dari berbagai hal, misalnya matematika."
 
-#: src/LyXRC.cpp:3322
+#: src/LyXRC.cpp:3325
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr ""
 "Pratampilan persamaan akan menunjukkan label  \"(#)\" bukan nomor "
 "sesungguhnya."
 
-#: src/LyXRC.cpp:3326
+#: src/LyXRC.cpp:3329
 msgid "Scale the preview size to suit."
 msgstr "Nyatakan ukuran skala untuk memperoleh tampilan yang sesuai."
 
-#: src/LyXRC.cpp:3330
+#: src/LyXRC.cpp:3333
 msgid "The option for specifying whether the copies should be collated."
 msgstr "Opsi untuk menyatakan apakah salinan harus disusun."
 
-#: src/LyXRC.cpp:3334
+#: src/LyXRC.cpp:3337
 msgid "The option for specifying the number of copies to print."
 msgstr "Opsi untuk menyatakan jumlah salinan yang akan dicetak."
 
-#: src/LyXRC.cpp:3338
+#: src/LyXRC.cpp:3341
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -18385,11 +18466,11 @@ msgstr ""
 "Mesin cetak bawaan yang digunakan untuk mencetak. Apabila tidak dinyatakan, "
 "LyX akan menggunakan variabel lingkungan PRINTER."
 
-#: src/LyXRC.cpp:3342
+#: src/LyXRC.cpp:3345
 msgid "The option to print only even pages."
 msgstr "Perintah opsi untuk mencetak hanya halaman genap."
 
-#: src/LyXRC.cpp:3346
+#: src/LyXRC.cpp:3349
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -18397,37 +18478,37 @@ msgstr ""
 "Perintah opsi ekstra untuk mengirim ke program pencetakan setelah yang lain "
 "selesai, tetapi sebelum mencetak berkas DVI."
 
-#: src/LyXRC.cpp:3350
+#: src/LyXRC.cpp:3353
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "Nama ekstensi berkas program mesin cetak. Biasanya \".ps\"."
 
-#: src/LyXRC.cpp:3354
+#: src/LyXRC.cpp:3357
 msgid "The option to print out in landscape."
 msgstr "Opsi untuk mencetak bentuk lansekap."
 
-#: src/LyXRC.cpp:3358
+#: src/LyXRC.cpp:3361
 msgid "The option to print only odd pages."
 msgstr "Opsi untuk mencetak hanya halaman ganjil."
 
-#: src/LyXRC.cpp:3362
+#: src/LyXRC.cpp:3365
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr ""
 "Opsi untuk mencetak halaman-halaman dengan menyatakan halaman yang dicetak "
 "dengan pemisah koma."
 
-#: src/LyXRC.cpp:3366
+#: src/LyXRC.cpp:3369
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Opsi untuk menyatakan dimensi dari kertas cetak."
 
-#: src/LyXRC.cpp:3370
+#: src/LyXRC.cpp:3373
 msgid "The option to specify paper type."
 msgstr "Opsi untuk menyatakan tipe kertas."
 
-#: src/LyXRC.cpp:3374
+#: src/LyXRC.cpp:3377
 msgid "The option to reverse the order of the pages printed."
 msgstr "Opsi untuk membalik urutan pencetakan dari halaman paling belakang."
 
-#: src/LyXRC.cpp:3378
+#: src/LyXRC.cpp:3381
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -18437,7 +18518,7 @@ msgstr ""
 "akan memanggil program spool mesin cetak untuk berkas yang dikenali dengan "
 "nama dan argumen."
 
-#: src/LyXRC.cpp:3382
+#: src/LyXRC.cpp:3385
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -18445,17 +18526,17 @@ msgstr ""
 "Apabila menyatakan nama mesin cetak di dialog mesin cetak, argumen berikut "
 "akan ditambahkan diawal dengan nama mesin cetak setelah perintah spool."
 
-#: src/LyXRC.cpp:3386
+#: src/LyXRC.cpp:3389
 msgid "Option to pass to the print program to print to a file."
 msgstr "Opsi untuk mengirim ke program pencetakan dan mencetak ke berkas."
 
-#: src/LyXRC.cpp:3390
+#: src/LyXRC.cpp:3393
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
 "Opsi untuk mengirim ke program pencetakan dan mencetak ke mesin cetak yang "
 "ditentukan."
 
-#: src/LyXRC.cpp:3394
+#: src/LyXRC.cpp:3397
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
@@ -18463,18 +18544,18 @@ msgstr ""
 "Pilih untuk memerintahkan LyX mengirim nama mesin cetak ke perintah "
 "pencetakan."
 
-#: src/LyXRC.cpp:3398
+#: src/LyXRC.cpp:3401
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Program pencetakan favorit anda, misal \"dvips\", \"dvilj4\"."
 
-#: src/LyXRC.cpp:3406
+#: src/LyXRC.cpp:3409
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 "Pilih untuk memperoleh pergerakan kursor visual bidi, lepaskan pilihan untuk "
 "pergerakan logical."
 
-#: src/LyXRC.cpp:3410
+#: src/LyXRC.cpp:3413
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -18482,13 +18563,13 @@ msgstr ""
 "DPI (dots per inch) dari monitor anda secara otomatis akan dideteksi oleh "
 "LyX. Apabila dirasa tidak tepat, silahkan ditindih dengan angka lain."
 
-#: src/LyXRC.cpp:3416
+#: src/LyXRC.cpp:3419
 msgid "The screen fonts used to display the text while editing."
 msgstr ""
 "Huruf di layar yang digunakan untuk menampilkan teks ketika proses "
 "menyunting."
 
-#: src/LyXRC.cpp:3425
+#: src/LyXRC.cpp:3428
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -18499,12 +18580,12 @@ msgstr ""
 "agak kotak di LyX. Dengan melepaskan pilihan untuk opsi ini, LyX akan "
 "menggunakan huruf bitmap yang terdekat ukurannya, tanpa melakukan skala."
 
-#: src/LyXRC.cpp:3429
+#: src/LyXRC.cpp:3432
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 "Ukuran huruf digunakan untuk menghitung pengaturan skala dari huruf di layar."
 
-#: src/LyXRC.cpp:3434
+#: src/LyXRC.cpp:3437
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -18513,13 +18594,13 @@ msgstr ""
 "Persentasi perbesaran untuk huruf di layar. Pengaturan 100% artinya huruf "
 "akan sebesar ukuran kertas."
 
-#: src/LyXRC.cpp:3438
+#: src/LyXRC.cpp:3441
 msgid "Allow session manager to save and restore windows geometry."
 msgstr ""
 "Memungkinkan manajer sesi untuk menyimpan dan memanggil kembali ukuran "
 "jendela."
 
-#: src/LyXRC.cpp:3442
+#: src/LyXRC.cpp:3445
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -18527,11 +18608,11 @@ msgstr ""
 "ini akan menjalankan lyxserver. Pipa-pipa akan memperoleh tambahan ekstensi "
 "berkas \".in\" and \".out\". hanya untuk pengguna yang memahami sekali."
 
-#: src/LyXRC.cpp:3449
+#: src/LyXRC.cpp:3452
 msgid "De-select if you don't want the startup banner."
 msgstr "Lepaskan pilihan apabila anda tidak ingin menampilkan gambar awal."
 
-#: src/LyXRC.cpp:3453
+#: src/LyXRC.cpp:3456
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -18539,11 +18620,11 @@ msgstr ""
 "LyX akan menempatkan direktori sementara di lokasi path ini. Berkas yang ada "
 "disini akan dihapus ketika keluar LyX."
 
-#: src/LyXRC.cpp:3457
+#: src/LyXRC.cpp:3460
 msgid "This is the place where the files of the thesaurus library reside."
 msgstr "Inilah lokasi dimana berkas pustaka padanan kata disimpan."
 
-#: src/LyXRC.cpp:3461
+#: src/LyXRC.cpp:3464
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -18551,7 +18632,7 @@ msgstr ""
 "Path yang digunakan LyX untuk mendefinisikan lokasi templet. Definisi path "
 "tanpa nama berkas merupakan lokasi pencarian templet bermula dari sini."
 
-#: src/LyXRC.cpp:3471
+#: src/LyXRC.cpp:3474
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -18559,7 +18640,7 @@ msgstr ""
 "Berkas antarmuka pengguna (UI). Dapat dinyatakan menurut lokasi path "
 "absolut, atau LyX mencari dalam direktori global dan lokal ui."
 
-#: src/LyXRC.cpp:3481
+#: src/LyXRC.cpp:3484
 msgid ""
 "Enable use the system colors for some things like main window background and "
 "selection."
@@ -18567,16 +18648,16 @@ msgstr ""
 "Menggunakan warna sistem untuk berbagai warna seperti layar jendela serta "
 "pilihan."
 
-#: src/LyXRC.cpp:3485
+#: src/LyXRC.cpp:3488
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr "Aktifkan tampilan otomatis dari bantuan tips di area kerja."
 
-#: src/LyXRC.cpp:3489
+#: src/LyXRC.cpp:3492
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr "Aktifkan pixmap cache yang dapat meningkatkan kinerja Mac dan Windows."
 
-#: src/LyXRC.cpp:3493
+#: src/LyXRC.cpp:3496
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Nyatakan perintah tipe kertas untuk penampil DVI (biarkan kosong atau "
@@ -18657,11 +18738,11 @@ msgstr ""
 "sebelumnya.\n"
 "Pengaturan dikembalikan ke bawaan."
 
-#: src/Paragraph.cpp:3084
+#: src/Paragraph.cpp:3102
 msgid "Memory problem"
 msgstr "Masalah dengan memori"
 
-#: src/Paragraph.cpp:3084
+#: src/Paragraph.cpp:3102
 msgid "Paragraph not properly initialized"
 msgstr "Paragraf tidak diinisialisasi dengan tepat"
 
@@ -19613,7 +19694,7 @@ msgstr "Status Akhiran"
 
 #: src/frontends/qt4/GuiBranches.cpp:99 src/frontends/qt4/GuiBranches.cpp:107
 #: src/frontends/qt4/GuiDocument.cpp:2083
-#: src/frontends/qt4/GuiDocument.cpp:3104
+#: src/frontends/qt4/GuiDocument.cpp:3077
 #: src/frontends/qt4/GuiProgressView.cpp:123
 #: src/frontends/qt4/GuiProgressView.cpp:137
 #: src/frontends/qt4/GuiProgressView.cpp:158
@@ -19622,7 +19703,7 @@ msgstr "Ya"
 
 #: src/frontends/qt4/GuiBranches.cpp:99 src/frontends/qt4/GuiBranches.cpp:107
 #: src/frontends/qt4/GuiDocument.cpp:2082
-#: src/frontends/qt4/GuiDocument.cpp:3103
+#: src/frontends/qt4/GuiDocument.cpp:3076
 #: src/frontends/qt4/GuiProgressView.cpp:89
 #: src/frontends/qt4/GuiProgressView.cpp:122
 #: src/frontends/qt4/GuiProgressView.cpp:158
@@ -19815,7 +19896,7 @@ msgstr "Dokumen LyX (*.lyx)"
 
 #: src/frontends/qt4/GuiCompare.cpp:198 src/frontends/qt4/GuiDocument.cpp:1812
 #: src/frontends/qt4/GuiDocument.cpp:1887
-#: src/frontends/qt4/GuiDocument.cpp:3169
+#: src/frontends/qt4/GuiDocument.cpp:3142
 msgid "Error"
 msgstr "kesalahan"
 
@@ -20191,14 +20272,14 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1274
 #: src/frontends/qt4/GuiDocument.cpp:1295
-#: src/frontends/qt4/GuiDocument.cpp:2855
+#: src/frontends/qt4/GuiDocument.cpp:2838
 msgid "Document Class"
 msgstr "Kelas Dokumen"
 
 #: src/frontends/qt4/GuiDocument.cpp:1275
-#: src/frontends/qt4/GuiDocument.cpp:2853
-#: src/frontends/qt4/GuiDocument.cpp:2854
-#: src/frontends/qt4/GuiDocument.cpp:2857 src/frontends/qt4/qt_helpers.cpp:553
+#: src/frontends/qt4/GuiDocument.cpp:2836
+#: src/frontends/qt4/GuiDocument.cpp:2837
+#: src/frontends/qt4/GuiDocument.cpp:2840 src/frontends/qt4/qt_helpers.cpp:553
 msgid "Child Documents"
 msgstr "Anak dokumen"
 
@@ -20262,6 +20343,9 @@ msgstr "Bawaan..."
 #: src/frontends/qt4/GuiDocument.cpp:1694
 #: src/frontends/qt4/GuiDocument.cpp:1700
 #: src/frontends/qt4/GuiDocument.cpp:1706
+#: src/frontends/qt4/GuiDocument.cpp:2888
+#: src/frontends/qt4/GuiDocument.cpp:2896
+#: src/frontends/qt4/GuiDocument.cpp:2904
 msgid " (not installed)"
 msgstr "(belum di install)"
 
@@ -20307,12 +20391,12 @@ msgid "LyX Files (*.lyx)"
 msgstr "Berkas LyX (*.lyx)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1872
-#: src/frontends/qt4/GuiDocument.cpp:3158
+#: src/frontends/qt4/GuiDocument.cpp:3131
 msgid "Unapplied changes"
 msgstr "Perubahan tidak bisa digunakan"
 
 #: src/frontends/qt4/GuiDocument.cpp:1873
-#: src/frontends/qt4/GuiDocument.cpp:3159
+#: src/frontends/qt4/GuiDocument.cpp:3132
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
@@ -20321,12 +20405,12 @@ msgstr ""
 "Apabila tidak diterapkan sekarang, akan hilang setelah ini."
 
 #: src/frontends/qt4/GuiDocument.cpp:1875
-#: src/frontends/qt4/GuiDocument.cpp:3161
+#: src/frontends/qt4/GuiDocument.cpp:3134
 msgid "&Dismiss"
 msgstr "&Keluar"
 
 #: src/frontends/qt4/GuiDocument.cpp:1887
-#: src/frontends/qt4/GuiDocument.cpp:3169
+#: src/frontends/qt4/GuiDocument.cpp:3142
 msgid "Unable to set document class."
 msgstr "Tidak bisa memilih dokumen class."
 
@@ -20372,28 +20456,28 @@ msgstr "Modul yang tidak termasuk: %1$s."
 msgid "WARNING: Some required packages are unavailable!"
 msgstr "PERHATIAN: Beberapa paket yang diperlukan tidak tersedia"
 
-#: src/frontends/qt4/GuiDocument.cpp:2830
+#: src/frontends/qt4/GuiDocument.cpp:2813
 msgid "[No options predefined]"
 msgstr "[Belum ada opsi yang sudah didefinisikan]"
 
-#: src/frontends/qt4/GuiDocument.cpp:3181
+#: src/frontends/qt4/GuiDocument.cpp:3154
 msgid "Can't set layout!"
 msgstr "Tidak bisa memilih tataletak!"
 
-#: src/frontends/qt4/GuiDocument.cpp:3182
+#: src/frontends/qt4/GuiDocument.cpp:3155
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Tidak dapat mengatur tataletak untuk ID: %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:3275
+#: src/frontends/qt4/GuiDocument.cpp:3248
 msgid "Not Found"
 msgstr "Tidak Ditemukan"
 
-#: src/frontends/qt4/GuiDocument.cpp:3329
+#: src/frontends/qt4/GuiDocument.cpp:3302
 msgid "Assigned master does not include this file"
 msgstr "menyatakan bahwa dokumen utama tidak mengikutkan berkas ini"
 
-#: src/frontends/qt4/GuiDocument.cpp:3330
+#: src/frontends/qt4/GuiDocument.cpp:3303
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -20403,11 +20487,11 @@ msgstr ""
 "Anda harus mengikutkan berkas ini dalam dokumen\n"
 "'%1$s' agar dapat digunakan dalam fitur dokumen utama."
 
-#: src/frontends/qt4/GuiDocument.cpp:3334
+#: src/frontends/qt4/GuiDocument.cpp:3307
 msgid "Could not load master"
 msgstr "Tidak bisa memuat master"
 
-#: src/frontends/qt4/GuiDocument.cpp:3335
+#: src/frontends/qt4/GuiDocument.cpp:3308
 #, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -20877,7 +20961,7 @@ msgid "Give a filename for the LyX server pipe"
 msgstr "Berilah nama berkas untuk pipa LyX server"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1427
-#: src/frontends/qt4/GuiSpellchecker.cpp:339
+#: src/frontends/qt4/GuiSpellchecker.cpp:405
 msgid "Spellchecker"
 msgstr "Koreksi ejaan"
 
@@ -21119,7 +21203,7 @@ msgstr "Tunjukkan berkas"
 msgid "Error -> Cannot load file!"
 msgstr "Kesalahan -> Tidak dapat memuat berkas!"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:171
+#: src/frontends/qt4/GuiSpellchecker.cpp:196
 msgid ""
 "We reached the end of the document, would you like to continue from the "
 "beginning?"
@@ -21896,31 +21980,31 @@ msgstr "Sumber DocBook"
 msgid "Literate Source"
 msgstr "Sumber Literate"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1317
+#: src/frontends/qt4/GuiWorkArea.cpp:1321
 msgid " (version control, locking)"
 msgstr " (kontrol versi, terkunci)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1319
+#: src/frontends/qt4/GuiWorkArea.cpp:1323
 msgid " (version control)"
 msgstr " (kontrol versi)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1322
+#: src/frontends/qt4/GuiWorkArea.cpp:1326
 msgid " (changed)"
 msgstr " (ada perubahan)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1326
+#: src/frontends/qt4/GuiWorkArea.cpp:1330
 msgid " (read only)"
 msgstr " (hanya bisa dibaca)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1479
+#: src/frontends/qt4/GuiWorkArea.cpp:1483
 msgid "Close File"
 msgstr "Tutup Berkas"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1921
+#: src/frontends/qt4/GuiWorkArea.cpp:1925
 msgid "Hide tab"
 msgstr "Sembunyikan Tab"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1923
+#: src/frontends/qt4/GuiWorkArea.cpp:1927
 msgid "Close tab"
 msgstr "Tutup Tab"
 
@@ -22449,15 +22533,10 @@ msgstr " (kesamping)"
 msgid "ERROR: Nonexistent float type!"
 msgstr "KESALAHAN: tipe ambangan tidak ada!"
 
-#: src/insets/InsetFloatList.cpp:131
+#: src/insets/InsetFloatList.cpp:133
 #, c-format
 msgid "LyX cannot generate a list of %1$s"
 msgstr "LyX tidak bisa membuat daftar %1$s"
-
-#: src/insets/InsetFloatList.cpp:136
-#, c-format
-msgid "List of %1$s"
-msgstr "Daftar %1$s"
 
 #: src/insets/InsetFoot.cpp:112
 msgid "footnote"
@@ -23526,6 +23605,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Pemakai tidak dikenal"
+
+#~ msgid "List of %1$s"
+#~ msgstr "Daftar %1$s"
 
 #~ msgid "Liber"
 #~ msgstr "Liber"

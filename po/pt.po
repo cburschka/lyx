@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-08 18:32+0100\n"
+"POT-Creation-Date: 2011-04-09 00:23+0200\n"
 "PO-Revision-Date: 2010-11-18 05:48+0100\n"
 "Last-Translator: susana barbosa <sabarbosa@fc.ul.pt>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -589,7 +589,7 @@ msgstr "Ta&manho:"
 #: src/frontends/qt4/GuiDocument.cpp:1679
 #: src/frontends/qt4/GuiDocument.cpp:1754
 #: src/frontends/qt4/GuiDocument.cpp:2119
-#: src/frontends/qt4/GuiDocument.cpp:3218 src/frontends/qt4/GuiExternal.cpp:75
+#: src/frontends/qt4/GuiDocument.cpp:3191 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:70 src/frontends/qt4/GuiIndices.cpp:57
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
 #: src/frontends/qt4/GuiPrefs.cpp:2212 src/frontends/qt4/GuiPrefs.cpp:2446
@@ -793,7 +793,7 @@ msgstr "Aplicar alterações imediatamente"
 #: src/frontends/qt4/ui/RefUi.ui:124 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:1875
-#: src/frontends/qt4/GuiDocument.cpp:3161 src/frontends/qt4/ui_RefUi.h:293
+#: src/frontends/qt4/GuiDocument.cpp:3134 src/frontends/qt4/ui_RefUi.h:293
 msgid "&Apply"
 msgstr "Ap&licar"
 
@@ -17045,9 +17045,7 @@ msgstr ""
 msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
-msgstr ""
-"Remover cópia de emergência agora?"
-"(%1$s)"
+msgstr "Remover cópia de emergência agora?(%1$s)"
 
 #: src/Buffer.cpp:3802 src/Buffer.cpp:3814
 msgid "Delete emergency file?"
@@ -17826,9 +17824,7 @@ msgstr "Não adicionar"
 #: src/CutAndPaste.cpp:683
 #, fuzzy, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
-msgstr ""
-"Inserto flex  %1$s está indefinido depois de recarregar o estilo"
-"%2$s"
+msgstr "Inserto flex  %1$s está indefinido depois de recarregar o estilo%2$s"
 
 #: src/CutAndPaste.cpp:686
 #, fuzzy, c-format
@@ -17865,19 +17861,19 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "A cópia de %1$s para %2$s falhou."
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:121
-#: src/frontends/qt4/GuiDocument.cpp:3218
+#: src/frontends/qt4/GuiDocument.cpp:3191
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Roman"
 msgstr "Roman"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:122
-#: src/frontends/qt4/GuiDocument.cpp:3218
+#: src/frontends/qt4/GuiDocument.cpp:3191
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:123
-#: src/frontends/qt4/GuiDocument.cpp:3218
+#: src/frontends/qt4/GuiDocument.cpp:3191
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Typewriter"
 msgstr "Typewriter"
@@ -19916,7 +19912,7 @@ msgstr "Sufixo do ficheiro"
 
 #: src/frontends/qt4/GuiBranches.cpp:99 src/frontends/qt4/GuiBranches.cpp:107
 #: src/frontends/qt4/GuiDocument.cpp:2083
-#: src/frontends/qt4/GuiDocument.cpp:3104
+#: src/frontends/qt4/GuiDocument.cpp:3077
 #: src/frontends/qt4/GuiProgressView.cpp:123
 #: src/frontends/qt4/GuiProgressView.cpp:137
 #: src/frontends/qt4/GuiProgressView.cpp:158
@@ -19925,7 +19921,7 @@ msgstr "Sim"
 
 #: src/frontends/qt4/GuiBranches.cpp:99 src/frontends/qt4/GuiBranches.cpp:107
 #: src/frontends/qt4/GuiDocument.cpp:2082
-#: src/frontends/qt4/GuiDocument.cpp:3103
+#: src/frontends/qt4/GuiDocument.cpp:3076
 #: src/frontends/qt4/GuiProgressView.cpp:89
 #: src/frontends/qt4/GuiProgressView.cpp:122
 #: src/frontends/qt4/GuiProgressView.cpp:158
@@ -20118,7 +20114,7 @@ msgstr "Documentos LyX (*.lyx)"
 
 #: src/frontends/qt4/GuiCompare.cpp:198 src/frontends/qt4/GuiDocument.cpp:1812
 #: src/frontends/qt4/GuiDocument.cpp:1887
-#: src/frontends/qt4/GuiDocument.cpp:3169
+#: src/frontends/qt4/GuiDocument.cpp:3142
 msgid "Error"
 msgstr "Erro"
 
@@ -20491,14 +20487,14 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1274
 #: src/frontends/qt4/GuiDocument.cpp:1295
-#: src/frontends/qt4/GuiDocument.cpp:2855
+#: src/frontends/qt4/GuiDocument.cpp:2838
 msgid "Document Class"
 msgstr "Classe de Documento"
 
 #: src/frontends/qt4/GuiDocument.cpp:1275
-#: src/frontends/qt4/GuiDocument.cpp:2853
-#: src/frontends/qt4/GuiDocument.cpp:2854
-#: src/frontends/qt4/GuiDocument.cpp:2857 src/frontends/qt4/qt_helpers.cpp:553
+#: src/frontends/qt4/GuiDocument.cpp:2836
+#: src/frontends/qt4/GuiDocument.cpp:2837
+#: src/frontends/qt4/GuiDocument.cpp:2840 src/frontends/qt4/qt_helpers.cpp:553
 msgid "Child Documents"
 msgstr "Documentos filhos"
 
@@ -20562,6 +20558,9 @@ msgstr "Por omissão..."
 #: src/frontends/qt4/GuiDocument.cpp:1694
 #: src/frontends/qt4/GuiDocument.cpp:1700
 #: src/frontends/qt4/GuiDocument.cpp:1706
+#: src/frontends/qt4/GuiDocument.cpp:2888
+#: src/frontends/qt4/GuiDocument.cpp:2896
+#: src/frontends/qt4/GuiDocument.cpp:2904
 msgid " (not installed)"
 msgstr " (não instalado)"
 
@@ -20607,12 +20606,12 @@ msgid "LyX Files (*.lyx)"
 msgstr "Ficheiros LyX (*.lyx)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1872
-#: src/frontends/qt4/GuiDocument.cpp:3158
+#: src/frontends/qt4/GuiDocument.cpp:3131
 msgid "Unapplied changes"
 msgstr "Alterações não aplicadas"
 
 #: src/frontends/qt4/GuiDocument.cpp:1873
-#: src/frontends/qt4/GuiDocument.cpp:3159
+#: src/frontends/qt4/GuiDocument.cpp:3132
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
@@ -20621,12 +20620,12 @@ msgstr ""
 " Se não as aplicar agora, serão perdidas após esta acção."
 
 #: src/frontends/qt4/GuiDocument.cpp:1875
-#: src/frontends/qt4/GuiDocument.cpp:3161
+#: src/frontends/qt4/GuiDocument.cpp:3134
 msgid "&Dismiss"
 msgstr "&Retirar"
 
 #: src/frontends/qt4/GuiDocument.cpp:1887
-#: src/frontends/qt4/GuiDocument.cpp:3169
+#: src/frontends/qt4/GuiDocument.cpp:3142
 msgid "Unable to set document class."
 msgstr "Não é possível especificar classe de documento."
 
@@ -20672,28 +20671,28 @@ msgstr "Módulos excluidos: %1$s."
 msgid "WARNING: Some required packages are unavailable!"
 msgstr "AVISO: Alguns pacotes necessários não estão disponíveis!"
 
-#: src/frontends/qt4/GuiDocument.cpp:2830
+#: src/frontends/qt4/GuiDocument.cpp:2813
 msgid "[No options predefined]"
 msgstr "[Sem opções pré-definidas]"
 
-#: src/frontends/qt4/GuiDocument.cpp:3181
+#: src/frontends/qt4/GuiDocument.cpp:3154
 msgid "Can't set layout!"
 msgstr "Não é possível especificar layout!"
 
-#: src/frontends/qt4/GuiDocument.cpp:3182
+#: src/frontends/qt4/GuiDocument.cpp:3155
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Não é possível especificar layout para ID: %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:3275
+#: src/frontends/qt4/GuiDocument.cpp:3248
 msgid "Not Found"
 msgstr "Não encontrado"
 
-#: src/frontends/qt4/GuiDocument.cpp:3329
+#: src/frontends/qt4/GuiDocument.cpp:3302
 msgid "Assigned master does not include this file"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:3330
+#: src/frontends/qt4/GuiDocument.cpp:3303
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -20703,11 +20702,11 @@ msgstr ""
 "Deve incluir este ficheiro no documento\n"
 "'%1$s'  de modo a usar caracteristica do documento principal."
 
-#: src/frontends/qt4/GuiDocument.cpp:3334
+#: src/frontends/qt4/GuiDocument.cpp:3307
 msgid "Could not load master"
 msgstr "Não foi possível carregar ficheiro mestre"
 
-#: src/frontends/qt4/GuiDocument.cpp:3335
+#: src/frontends/qt4/GuiDocument.cpp:3308
 #, fuzzy, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -22200,32 +22199,32 @@ msgstr "Fonte DocBook"
 msgid "Literate Source"
 msgstr "Fonte Literada"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1317
+#: src/frontends/qt4/GuiWorkArea.cpp:1321
 #, fuzzy
 msgid " (version control, locking)"
 msgstr " (controlo de versão)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1319
+#: src/frontends/qt4/GuiWorkArea.cpp:1323
 msgid " (version control)"
 msgstr " (controlo de versão)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1322
+#: src/frontends/qt4/GuiWorkArea.cpp:1326
 msgid " (changed)"
 msgstr " (alterado)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1326
+#: src/frontends/qt4/GuiWorkArea.cpp:1330
 msgid " (read only)"
 msgstr " (somente leitura)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1479
+#: src/frontends/qt4/GuiWorkArea.cpp:1483
 msgid "Close File"
 msgstr "Fechar Ficheiro"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1921
+#: src/frontends/qt4/GuiWorkArea.cpp:1925
 msgid "Hide tab"
 msgstr "Esconder tab"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1923
+#: src/frontends/qt4/GuiWorkArea.cpp:1927
 msgid "Close tab"
 msgstr "Fechar tab"
 
