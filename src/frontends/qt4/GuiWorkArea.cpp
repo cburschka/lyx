@@ -1015,9 +1015,13 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 	// it looks like this is only needed on X11
 #ifdef Q_WS_X11
 	if (qApp->hasPendingEvents() && ev->isAutoRepeat()) {
-		LYXERR(Debug::KEY, "system is busy: keyPress event ignored");
-		ev->ignore();
-		return;
+		switch (ev->key()) {
+		case Qt::Key_PageDown:
+		case Qt::Key_PageUp:
+			LYXERR(Debug::KEY, "system is busy: scroll key event ignored");
+			ev->ignore();
+			return;
+		}
 	}
 #endif
 
