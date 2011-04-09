@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-09 00:23+0200\n"
-"PO-Revision-Date: 2011-04-08 19:36+0200\n"
+"POT-Creation-Date: 2011-04-09 23:43+0200\n"
+"PO-Revision-Date: 2011-04-09 15:24+0200\n"
 "Last-Translator: Ingar Pareliussen <ingar.pareliussen@_dmmh_no>\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
 "Language: nn\n"
@@ -5206,14 +5206,14 @@ msgstr "Samandrag"
 #: lib/layouts/theorems-ams-extended.module:302
 #: lib/layouts/theorems-ams-extended.module:305
 msgid "Acknowledgement"
-msgstr "Takk til"
+msgstr "Takk"
 
 #: lib/layouts/AEA.layout:100 lib/layouts/egs.layout:546
 #: lib/layouts/svjour.inc:277
 #: lib/layouts/theorems-ams-extended-bytype.module:325
 #: lib/layouts/theorems-ams-extended.module:296
 msgid "Acknowledgement."
-msgstr "Takk til."
+msgstr "Takk."
 
 #: lib/layouts/AEA.layout:105 lib/layouts/IEEEtran.layout:290
 #: lib/layouts/beamer.layout:1057 lib/layouts/elsart.layout:259
@@ -5966,7 +5966,7 @@ msgstr "Brevbyt med:"
 #: lib/layouts/aa.layout:217 lib/layouts/egs.layout:521
 #: lib/layouts/svjour.inc:263
 msgid "Acknowledgements."
-msgstr "Takk til."
+msgstr "Takk."
 
 #: lib/layouts/aa.layout:303
 msgid "institute mark"
@@ -6037,7 +6037,7 @@ msgstr "Og"
 #: lib/layouts/svglobal3.layout:91 lib/layouts/svglobal3.layout:95
 #: lib/layouts/aapaper.inc:91 lib/layouts/svjour.inc:249
 msgid "Acknowledgements"
-msgstr "Takk til"
+msgstr "Takk"
 
 #: lib/layouts/aastex.layout:128 lib/layouts/aastex.layout:413
 msgid "PlaceFigure"
@@ -6093,7 +6093,7 @@ msgstr "Subjekt overskrifter:"
 
 #: lib/layouts/aastex.layout:383
 msgid "[Acknowledgements]"
-msgstr "[Takk til]"
+msgstr "[Takk]"
 
 #: lib/layouts/aastex.layout:404 src/frontends/qt4/GuiDocument.cpp:1934
 #: src/frontends/qt4/GuiDocument.cpp:1946
@@ -6195,7 +6195,7 @@ msgstr "Liste over diagram"
 
 #: lib/layouts/achemso.layout:166 lib/layouts/achemso.layout:177
 msgid "Graph"
-msgstr "Grafar"
+msgstr "Graf"
 
 #: lib/layouts/achemso.layout:171
 msgid "List of Graphs"
@@ -6380,7 +6380,7 @@ msgstr "Notis"
 
 #: lib/layouts/apa.layout:234
 msgid "Acknowledgements:"
-msgstr "Takk til:"
+msgstr "Takk:"
 
 #: lib/layouts/apa.layout:248
 msgid "ThickLine"
@@ -8367,7 +8367,7 @@ msgstr "Kommisjon"
 
 #: lib/layouts/isprs.layout:218
 msgid "ACKNOWLEDGEMENTS"
-msgstr "TAKK TIL"
+msgstr "TAKK"
 
 #: lib/layouts/kluwer.layout:198
 msgid "AddressForOffprints"
@@ -9459,7 +9459,7 @@ msgstr "Plate"
 
 #: lib/layouts/aguplus.inc:195
 msgid "Planotable"
-msgstr "Plano- tabell"
+msgstr "Plano-tabell"
 
 #: lib/layouts/aguplus.inc:207
 msgid "Table Caption"
@@ -10368,7 +10368,7 @@ msgid ""
 msgstr ""
 "Gir fleire teorem miljø for bruk med AMS teorempakkar. Inkluderer: "
 "Kriterium, Algoritme, Aksiom, Kondisjon, Notis, Notatasjon, Oppsummering, "
-"Takk, Konklusjon, Asumpsjon, Kasus. Både nummererte og unummererte er "
+"Takk, Konklusjon, Føresetnad, Kasus. Både nummererte og unummererte er "
 "mogeleg. I motsetning til det vanlege AMS-teorem dei ulike teorema er "
 "nummererte separat (slik at du får Kriterium 1, Kriterium 2, Aksiom 1, Notis "
 "1 i staden for Kriterium 1, Kriterium 2, Aksiom 3, Notis 4)."
@@ -10469,7 +10469,7 @@ msgstr "Takk \\theacknowledgement"
 #: lib/layouts/theorems-ams-extended-bytype.module:322
 #: lib/layouts/theorems-ams-extended.module:293
 msgid "Acknowledgement*"
-msgstr "Takk til*"
+msgstr "Takk*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:342
 msgid "Conclusion \\theconclusion."
@@ -10525,7 +10525,7 @@ msgid ""
 msgstr ""
 "Gir noke ekstra teoremmiljø yil bruk saman med andre AMS teorempakkar. Slik "
 "som: Algoritme, Vilkår, Notis, Notasjon, Samandraag, Takk, Konklusjon, "
-"Fakta, Asumpsjon, Kasus og Spørsmål. Både nummererte og unummererte."
+"Fakta, Føresetnad, Kasus og Spørsmål. Både nummererte og unummererte."
 
 #: lib/layouts/theorems-ams-extended.module:10
 #: lib/layouts/theorems-ams.module:9 lib/layouts/theorems-chap.module:9
