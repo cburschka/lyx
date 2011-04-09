@@ -1326,12 +1326,6 @@ docstring bformat(docstring const & fmt, unsigned int arg1)
 template<>
 docstring bformat(docstring const & fmt, docstring arg1)
 {
-  //TODO remove when bug #7371 is fixed
-  if (!contains(fmt, from_ascii("%1$s"))) {
-    std::cout << "Error in: docstring bformat(docstring const & fmt, docstring arg1)";
-    std::cout << "'%1$s' not in sting:";
-    std::cout << to_ascii(fmt);
-  }
 	LASSERT(contains(fmt, from_ascii("%1$s")), /**/);
 	docstring const str = subst(fmt, from_ascii("%1$s"), arg1);
 	return subst(str, from_ascii("%%"), from_ascii("%"));
