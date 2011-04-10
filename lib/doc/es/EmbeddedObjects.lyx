@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 410
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass scrbook
@@ -161,6 +161,7 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language spanish
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
@@ -226,13 +227,14 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
 \begin_body
 
 \begin_layout Title
-Manual detallado de Figuras, Tablas, Flotantes, Notas, Cuadros y Archivos
+Manual detallado de Figuras, Cuadros, Flotantes, Notas, Marcos y Archivos
  en LyX
 \end_layout
 
@@ -503,7 +505,6 @@ proporción
 \end_inset
 
 Las imágenes se pueden abrir en el programa de tu elección con la entrada
- 
 \family sans
  Editar
 \begin_inset space ~
@@ -1588,12 +1589,44 @@ Normalmente no es posible convertir una imagen bitmap a escalable pero sí
 \end_layout
 
 \begin_layout Chapter
-Tablas
+Cuadros y tablas
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Tablas
+Cuadros
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Tablas|see 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Cuadros
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1604,10 +1637,10 @@ Tablas
 \begin_layout Section
 Introducción
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas ! Introducción
+Cuadros ! Introducción
 \end_layout
 
 \end_inset
@@ -1616,7 +1649,7 @@ Tablas ! Introducción
 \end_layout
 
 \begin_layout Standard
-Puede insertarse una tabla mediante el botón 
+Puede insertarse un cuadro mediante el botón 
 \begin_inset Graphics
 	filename ../../images/tabular-insert.png
 	scale 85
@@ -1626,21 +1659,21 @@ Puede insertarse una tabla mediante el botón
  o el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
-Tabla
+Cuadro
 \family default
 .
  El botón ofrece una selección gráfica: moviendo el puntero se puede definir
- el número de filas y de columnas de la tabla.
+ el número de filas y de columnas del cuadro.
  Si usas el menú aparece un diálogo en el que se pide el número de filas
  y columnas.
  
 \begin_inset Newline newline
 \end_inset
 
-Por omisión, la tabla tiene líneas que enmarcan cada celda y la primera
- fila aparece separada por una línea doble: la línea inferior de la primera
- fila y la línea superior de la segunda fila.
- Ejemplo de tabla:
+Por omisión, el cuadro tiene líneas que enmarcan cada celda y la primera
+ fila aparece separada por una línea doble: el borde inferior de la primera
+ fila y el borde superior de la segunda fila.
+ Ejemplo de cuadro:
 \end_layout
 
 \begin_layout Standard
@@ -1852,12 +1885,12 @@ C
 \end_layout
 
 \begin_layout Section
-Diálogo de tablas
+Diálogo de cuadros
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas ! Diálogo
+Cuadros ! Configuración
 \end_layout
 
 \end_inset
@@ -1866,8 +1899,8 @@ Tablas ! Diálogo
 \end_layout
 
 \begin_layout Standard
-Una tabla se puede cambiar mediante el cuadro de diálogo que aparece al
- pinchar sobre ella con el botón derecho del ratón.
+Un cuadro se puede cambiar mediante el diálogo que aparece al pulsar sobre
+ ella con el botón derecho del ratón.
  Se pueden ajustar los parámetros de la celda y fila/columna en la que se
  encuentra el cursor.
  La mayoría de opciones también trabajan sobre una selección de celdas,
@@ -1906,18 +1939,23 @@ Configuración
 \begin_inset space ~
 \end_inset
 
-de
+del
 \begin_inset space ~
 \end_inset
 
-la
-\begin_inset space ~
-\end_inset
-
-tabla
+cuadro
 \family default
  Aquí puedes establecer la alineación horizontal y la anchura de la columna
- actual.
+ actual o del cuadro completo.
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Cuadros ! Anchura
+\end_layout
+
+\end_inset
+
  La alineación 
 \family sans
 Al separador decimal
@@ -1980,7 +2018,7 @@ reference "sub:Multifilas"
 \begin_inset Newline newline
 \end_inset
 
-Las casillas de giro rotan la celda actual, una selección o toda la tabla
+Las casillas de giro rotan la celda actual, una selección o toda el cuadro
  90º en el sentido de las agujas del reloj.
  La rotación no se ve en LyX, sí en la salida.
 \begin_inset Newline newline
@@ -2004,12 +2042,12 @@ Nota:
 \begin_inset Newline newline
 \end_inset
 
-La alineación vertical de tabla completa se usa para tablas en líneas de
- texto:
+La alineación vertical del cuadro completo se usa para cuadros en líneas
+ de texto:
 \begin_inset Newline newline
 \end_inset
 
-Línea con tablas con diferentes alineaciones: 
+Línea con cuadros con diferentes alineaciones: 
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features tabularvalignment="top">
@@ -2182,7 +2220,7 @@ reference "sub:Cálculos-en-Multicolumnas"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Tablas-Coloreadas"
+reference "sec:Cuadros-Coloreados"
 
 \end_inset
 
@@ -2195,7 +2233,7 @@ reference "sec:Tablas-Coloreadas"
 Bordes
 \family default
  En esta solapa puedes añadir y quitar bordes para la fila/columna actual.
- Puedes elegir para la tabla un estilo 
+ Puedes elegir para el cuadro un estilo 
 \family sans
 Formal
 \family default
@@ -2206,7 +2244,7 @@ Formal
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Tablas-Formales"
+reference "sec:Cuadros-Formales"
 
 \end_inset
 
@@ -2232,15 +2270,15 @@ reference "sub:Espacio-adicional"
 \begin_layout Description
 
 \family sans
-Tabla
+Cuadro
 \begin_inset space ~
 \end_inset
 
-larga
+largo
 \family default
  Para hacer 
 \emph on
-tablas largas
+cuadros largos
 \emph default
  que pueden extenderse por varias páginas.
  Las secciones
@@ -2250,14 +2288,14 @@ tablas largas
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Tablas-Largas"
+reference "sec:Cuadros-Largos"
 
 \end_inset
 
  y 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Particularidades-tablas-largas"
+reference "sec:Particularidades-cuadros-largos"
 
 \end_inset
 
@@ -2265,12 +2303,12 @@ reference "sec:Particularidades-tablas-largas"
 \end_layout
 
 \begin_layout Section
-Barra de herramientas de tabla
+Barra de herramientas de cuadros
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas ! Barra de herramientas
+Cuadros ! Barra de herramientas
 \end_layout
 
 \end_inset
@@ -2279,11 +2317,11 @@ Tablas ! Barra de herramientas
 \end_layout
 
 \begin_layout Standard
-La barra de herramientas de tabla es una alternativa al cuadro de diálogo
- para cambiar las tablas de manera más rápida.
+La barra de herramientas de cuadros es una alternativa al cuadro de diálogo
+ para cambiar los cuadros de manera más rápida.
  Normalmente debería aparecer en la parte inferior de la ventana principal
- de LyX cuando el cursor está dentro de una tabla.
- En cualquier momento se puede presentar esta barra pinchando con el botón
+ de LyX cuando el cursor está dentro de un cuadro.
+ En cualquier momento se puede presentar esta barra pulsando con el botón
  derecho del ratón en cualquier punto de la barra principal de menú.
 \end_layout
 
@@ -2481,7 +2519,7 @@ La barra de herramientas tiene los siguientes iconos:
 
 \end_inset
 
- gira toda la tabla 90° como agujas del reloj
+ gira todo el cuadro 90° como agujas del reloj
 \end_layout
 
 \begin_layout Labeling
@@ -2524,12 +2562,12 @@ Nota:
 \end_layout
 
 \begin_layout Section
-Menú Editar Tabla
+Menú Editar cuadro
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas ! Editar
+Cuadros ! Editar
 \end_layout
 
 \end_inset
@@ -2541,37 +2579,37 @@ Tablas ! Editar
 Además del diálogo y la barra de herramientas, el menú 
 \family sans
 Editar\SpecialChar \menuseparator
-Tabla
+Cuadro
 \family default
  permite añadir y borrar bordes para la fila/columna actual y establecer
  la selección como multicolumna.
- El menú sólo está disponible si el cursor está en la tabla.
+ El menú sólo está disponible si el cursor está en el cuadro.
 \end_layout
 
 \begin_layout Section
-Tablas flotantes
+Cuadros flotantes
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Tablas-Flotantes"
+name "sec:Cuadros-Flotantes"
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Flotantes ! Tablas
+Flotantes ! Cuadros
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas ! Flotantes
+Cuadros ! Flotantes
 \end_layout
 
 \end_inset
@@ -2607,11 +2645,11 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:una tabla flotante"
+name "tab:un cuadro flotante"
 
 \end_inset
 
-Una tabla flotante.
+Un cuadro flotante.
 \end_layout
 
 \end_inset
@@ -2820,11 +2858,11 @@ c & d
 \end_layout
 
 \begin_layout Standard
-Las tablas flotantes pueden insertarse con el menú 
+Los cuadros flotantes pueden insertarse con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Flotante\SpecialChar \menuseparator
-Tabla
+Cuadro
 \family default
  o con el botón 
 \begin_inset Graphics
@@ -2837,38 +2875,38 @@ Tabla
 \end_layout
 
 \begin_layout Standard
-El flotante se muestra como un cuadro desplegable con la etiqueta «Tabla
+El flotante se muestra como un recuadro desplegable con la etiqueta «Cuadro
 \begin_inset space ~
 \end_inset
 
 #:» (# es el número actual).
- El texto que sigue a dicha etiqueta es la leyenda de la tabla.
- Para insertar una tabla en el flotante se sitúa el cursor al final del
+ El texto que sigue a dicha etiqueta es la leyenda del cuadro.
+ Para insertar un cuadro en el flotante se sitúa el cursor al final del
  texto del encabezado y se pulsa 
 \family sans
 Entrar
 \family default
 .
- La leyenda se imprime encima de la tabla.
+ La leyenda se imprime encima del cuadro.
 \end_layout
 
 \begin_layout Standard
-La tabla
+El cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:una tabla flotante"
+reference "tab:un cuadro flotante"
 
 \end_inset
 
- es un ejemplo de tabla flotante.
+ es un ejemplo de cuadro flotante.
 \end_layout
 
 \begin_layout Standard
-Lo habitual es poner la leyenda sobre la tabla, lo que desafortunadamente
+Lo habitual es poner la leyenda sobre el cuadro, lo que desafortunadamente
  no es soportado en las clases estándar de LaTeX.
  Esto significa que si estás usando las clases de documento 
 \family sans
@@ -2886,7 +2924,7 @@ letter
 \family sans
 report
 \family default
- no habrá espacio entre la leyenda y la tabla.
+ no habrá espacio entre la leyenda y el cuadro.
  Para añadir un espacio entre ellos hay que poner en el preámbulo LaTeX
  del documento la siguiente opción al comando del paquete LaTeX 
 \series bold
@@ -2954,16 +2992,16 @@ reference "sec:Formato-de-leyendas"
 
 \begin_layout Standard
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Referencias ! a tablas
+Referencias ! a cuadros
 \end_layout
 
 \end_inset
 
-Las tablas pueden tener referencias cruzadas en el texto referenciando su
- etiqueta.
+Los cuadros pueden tener referencias cruzadas en el texto referenciando
+ su etiqueta.
  Para hacerlo inserta una etiqueta en la leyenda con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -3012,31 +3050,21 @@ reference "sec:Referencias-a-Flotantes"
 \end_layout
 
 \begin_layout Section
-Tablas largas
+Cuadros largos
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Tablas-Largas"
+name "sec:Cuadros-Largos"
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas largas
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Tablas ! Largas|see
+Cuadros ! Largos|see
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3045,9 +3073,9 @@ status collapsed
 
 \end_inset
 
-Tablas largas
+Cuadros largos
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3065,34 +3093,34 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Si la tabla es demasiado larga para una página, puedes usar la opción 
+Si el cuadro es demasiado largo para una página, puedes usar la opción 
 \family sans
 Usar
 \begin_inset space ~
 \end_inset
 
-tabla
+cuadro
 \begin_inset space ~
 \end_inset
 
-larga
+largo
 \family default
  en la solapa 
 \family sans
-Tabla
+Cuadro
 \begin_inset space ~
 \end_inset
 
-larga
+largo
 \family default
- del diálogo de tablas, para repartir automáticamente la tabla en varias
+ del diálogo de cuadros, para repartir automáticamente el cuadro en varias
  páginas.
  Al hacerlo se habilitan las siguientes opciones:
 \end_layout
 
 \begin_layout Description
 Encabezado: La fila actual se define como encabezado que aparecerá en todas
- las páginas de la tabla, excepto para la primera página si 
+ las páginas del cuadro, excepto para la primera página si 
 \family sans
 Primer
 \begin_inset space ~
@@ -3110,12 +3138,12 @@ Primer
 \end_inset
 
 encabezado: La fila actual se define como encabezado de la primera página
- de la tabla.
+ del cuadro.
 \end_layout
 
 \begin_layout Description
 Pie: La fila actual se define como pie que aparecerá en todas las páginas
- de la tabla, excepto para la última página si se define 
+ del cuadrotabla, excepto para la última página si se define 
 \family sans
 Último
 \begin_inset space ~
@@ -3133,20 +3161,20 @@ pie:
 \family sans
  
 \family default
-La fila actual se define como pie de la última página de la tabla.
+La fila actual se define como pie de la última página del cuadro.
 \end_layout
 
 \begin_layout Description
-Leyenda: La fila actual contiene la leyenda de la tabla.
+Leyenda: La fila actual contiene la leyenda del cuadro.
  La primera fila se reajusta como columna única y se inserta una leyenda.
- Más detalles sobre leyendas en tablas largas en la sec.
+ Más detalles sobre leyendas en cuadros largos en la sec.
 \begin_inset space \thinspace{}
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Leyendas-en-Tablas"
+reference "sub:Leyendas-en-Cuadros"
 
 \end_inset
 
@@ -3154,13 +3182,9 @@ reference "sub:Leyendas-en-Tablas"
 \end_layout
 
 \begin_layout Standard
-También se puede especificar en el diálogo en qué fila se ha de cortar la
- tabla.
- La siguiente tabla muestra cómo funciona:
-\end_layout
-
-\begin_layout Standard
-
+También se puede especificar en el diálogo en qué fila se ha de cortar el
+ cuadro.
+ El siguiente cuadro muestra cómo funciona:
 \end_layout
 
 \begin_layout Standard
@@ -5337,7 +5361,7 @@ Para comprender el uso de este comando, lee al final de la sección
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Leyendas-en-Tablas"
+reference "sub:Leyendas-en-Cuadros"
 
 \end_inset
 
@@ -5351,19 +5375,19 @@ reference "sub:Leyendas-en-Tablas"
 \end_layout
 
 \begin_layout Subsection
-Notas al pie en tablas largas
+Notas al pie en cuadros largos
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Notas-al-pie-en-Tablas-Largas"
+name "sub:Notas-al-pie-en-Cuadros-Largos"
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas largas ! Notas al pie
+Cuadros largos ! Notas al pie
 \end_layout
 
 \end_inset
@@ -5372,10 +5396,10 @@ Tablas largas ! Notas al pie
 \end_layout
 
 \begin_layout Standard
-Se pueden insertar notas al pie en cada celda de una tabla larga.
+Se pueden insertar notas al pie en cada celda de un cuadro largo.
  Las notas se muestran en la parte inferior de la página en la que esté
  la celda con la nota.
- La tabla
+ El cuadro
 \begin_inset space ~
 \end_inset
 
@@ -5390,12 +5414,12 @@ reference "tab:DifLeyendas"
 \end_layout
 
 \begin_layout Subsection
-Alineación de tablas largas
+Alineación de cuadros largos
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas largas ! Alineación
+Cuadros largos ! Alineación
 \end_layout
 
 \end_inset
@@ -5404,10 +5428,11 @@ Tablas largas ! Alineación
 \end_layout
 
 \begin_layout Standard
-La alineación horizontal de tablas largas se puede establecer en el diálogo
- de configuración de tablas.
- Para las alineaciones izquierda y derecha la tabla irá al borde de la página.
- Para poner espacio entre la tabla y el borde hay que poner la alineación
+La alineación horizontal de cuadros largos se puede establecer en el diálogo
+ de configuración de cuadros.
+ Para las alineaciones izquierda y derecha el cuadro irá al borde de la
+ página.
+ Para poner espacio entre el cuadro y el borde hay que poner la alineación
  al centro y cambiar el valor de las longitudes 
 \series bold
 
@@ -5420,8 +5445,8 @@ LTleft
 \backslash
 LTright 
 \series default
-insertando la línea siguiente en código TeX antes de la correspondiente
- tabla larga:
+insertando la línea siguiente en código TeX antes del correspondiente cuadro
+ largo:
 \end_layout
 
 \begin_layout Standard
@@ -5453,7 +5478,7 @@ reference "tab:Unidades"
 \backslash
 LTlent 
 \series default
-controla la distancia entre el borde izquierdo de la página y la tabla.
+controla la distancia entre el borde izquierdo de la página y el cuadro.
  
 \series bold
 
@@ -5471,7 +5496,7 @@ fill
 \end_layout
 
 \begin_layout Standard
-La siguiente tabla larga se ha alineado centrada y 
+El siguiente cuadro largo se ha alineado centrado y 
 \series bold
 
 \backslash
@@ -5783,7 +5808,7 @@ addtocounter{table}{-1}
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Para comprender el uso de este comando, lee al final de la sección
@@ -5793,7 +5818,7 @@ Para comprender el uso de este comando, lee al final de la sección
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Leyendas-en-Tablas"
+reference "sub:Leyendas-en-Cuadros"
 
 \end_inset
 
@@ -5807,12 +5832,12 @@ reference "sub:Leyendas-en-Tablas"
 \end_layout
 
 \begin_layout Subsection
-Leyendas en tablas largas
+Leyendas en cuadros largos
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas largas ! Leyendas
+Cuadros largos ! Leyendas
 \end_layout
 
 \end_inset
@@ -5820,7 +5845,7 @@ Tablas largas ! Leyendas
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Leyendas-en-Tablas"
+name "sub:Leyendas-en-Cuadros"
 
 \end_inset
 
@@ -5828,10 +5853,10 @@ name "sub:Leyendas-en-Tablas"
 \end_layout
 
 \begin_layout Standard
-Una tabla larga no se puede poner flotante porque los flotantes sólo pueden
+Un cuadro largo no se puede poner flotante porque los flotantes sólo pueden
  estar en una página.
- Pero el entorno leyenda de flotantes sí puede usarse para tablas largas
- utilizando para una fila de una tabla larga la opción 
+ Pero el entorno leyenda de flotantes sí puede usarse para cuadros largos
+ utilizando para una fila de un cuadro largo la opción 
 \family sans
 Leyenda
 \family default
@@ -5842,7 +5867,7 @@ Leyenda
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Tablas-Largas"
+reference "sec:Cuadros-Largos"
 
 \end_inset
 
@@ -5851,7 +5876,7 @@ reference "sec:Tablas-Largas"
 \end_layout
 
 \begin_layout Standard
-He aquí una pequeña tabla larga para mostrar cómo funciona:
+He aquí un pequeño cuadro largo para mostrar cómo funciona:
 \end_layout
 
 \begin_layout Standard
@@ -5871,12 +5896,12 @@ He aquí una pequeña tabla larga para mostrar cómo funciona:
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Tabla larga con leyenda
+Cuadro largo con leyenda
 \begin_inset Argument
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tabla larga
+Cuadro largo
 \end_layout
 
 \end_inset
@@ -6187,22 +6212,22 @@ Nota
 
 1:
 \series default
- El número de la tabla se incrementa para cada tabla larga, aunque no pongas
+ El número del cuadro se incrementa para cada cuadro largo, aunque no pongas
  leyenda en alguna de ellas.
  Por esto podría suceder que, p.
 \begin_inset space \thinspace{}
 \end_inset
 
-e., la tabla
+e., el cuadro
 \begin_inset space ~
 \end_inset
 
-2.4 siga a la tabla
+2.4 siga al cuadro
 \begin_inset space ~
 \end_inset
 
-2.1 en la lista de tablas debido a que hay dos tablas largas sin leyenda.
- Para evitarlo, añade detrás de cada tabla larga sin leyenda este comando
+2.1 en el índice de cuadros debido a que hay dos cuadros largos sin leyenda.
+ Para evitarlo, añade detrás de cada cuadro largo sin leyenda este comando
  en código TeX:
 \end_layout
 
@@ -6215,7 +6240,7 @@ addtocounter{table}{-1}
 \end_layout
 
 \begin_layout Plain Layout
-Esto no es necesario si ninguna de las tablas largas tiene leyenda y añades
+Esto no es necesario si ninguna de los cuadros largos tiene leyenda y añades
  el siguiente código en el preámbulo del documento:
 \end_layout
 
@@ -6283,7 +6308,7 @@ del diálogo
 \family sans
 Configuración del documento 
 \family default
-para enlazar referencias cruzadas en la salida, los enlaces a tablas largas
+para enlazar referencias cruzadas en la salida, los enlaces a cuadros largos
  llevan siempre al principio del documento.
 \end_layout
 
@@ -6293,12 +6318,12 @@ para enlazar referencias cruzadas en la salida, los enlaces a tablas largas
 \end_layout
 
 \begin_layout Subsubsection
-Referencias a tablas largas
+Referencias a cuadros largos
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas largas ! Referencias a
+Cuadros largos ! Referencias a
 \end_layout
 
 \end_inset
@@ -6323,7 +6348,7 @@ Tablas largas ! Referencias a
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Tabla larga referenciada
+Cuadro largo con referencia
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:RefEjemplo"
@@ -6620,12 +6645,12 @@ asd
 \end_layout
 
 \begin_layout Standard
-Para referenciar una tabla larga, inserta una etiqueta en la leyenda.
+Para referenciar un cuadro largo, inserta una etiqueta en la leyenda.
  
 \end_layout
 
 \begin_layout Standard
-Esto es una referencia a la tabla
+Esto es una referencia al cuadro
 \begin_inset space ~
 \end_inset
 
@@ -6672,10 +6697,10 @@ reference "sec:Formato-de-leyendas"
 \begin_layout Subsubsection
 Anchura de la leyenda
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas largas ! Anchura de la leyenda
+Cuadros largos ! Anchura de la leyenda
 \end_layout
 
 \end_inset
@@ -6701,7 +6726,7 @@ in (4
 
 pulgadas).
  Para cambiarla añade el siguiente comando en el preámbulo o en código TeX
- en el propio documento antes de la tabla larga a la que deba afectar
+ en el propio documento antes del cuadro largo al que deba afectar
 \end_layout
 
 \begin_layout Standard
@@ -6730,7 +6755,7 @@ reference "cap:Unidades-disponibles-en"
 \end_layout
 
 \begin_layout Standard
-Las tablas siguientes muestran la diferencia:
+Los cuadros siguientes muestran la diferencia:
 \end_layout
 
 \begin_layout Standard
@@ -7489,10 +7514,10 @@ caption
 \begin_layout Subsubsection
 Leyendas distintas para cada página
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas largas ! Leyendas distintas para cada página
+Cuadros largos ! Leyendas ! distintas para cada página
 \end_layout
 
 \end_inset
@@ -7502,7 +7527,7 @@ Tablas largas ! Leyendas distintas para cada página
 
 \begin_layout Standard
 Cuando las leyendas para las páginas siguientes hayan de ser diferentes
- de la leyenda de la primera página de la tabla, se insertan con el comando
+ de la leyenda de la primera página del cuadro, se insertan con el comando
  en código TeX
 \end_layout
 
@@ -7520,7 +7545,7 @@ caption*{texto de la leyenda}
 
 \begin_layout Standard
 en una fila postiza que se marca como encabezado.
- La tabla
+ El cuadro
 \begin_inset space ~
 \end_inset
 
@@ -7531,8 +7556,8 @@ reference "tab:DifLeyendas"
 
 \end_inset
 
- es un ejemplo de tabla larga con encabezados distintos donde el segundo
- no incluye número de tabla.
+ es un ejemplo de cuadro largo con encabezados distintos donde el segundo
+ no incluye número de cuadro.
 \end_layout
 
 \begin_layout Standard
@@ -9429,10 +9454,10 @@ Roberto
 \end_layout
 
 \begin_layout Section
-Particularidades de las tablas largas
+Particularidades de los cuadros largos
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Particularidades-tablas-largas"
+name "sec:Particularidades-cuadros-largos"
 
 \end_inset
 
@@ -9442,10 +9467,10 @@ name "sec:Particularidades-tablas-largas"
 \begin_layout Subsection
 Cálculos
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas largas ! Cálculos
+Cuadros largos ! Cálculos
 \end_layout
 
 \end_inset
@@ -9454,11 +9479,11 @@ Tablas largas ! Cálculos
 \end_layout
 
 \begin_layout Standard
-LaTeX calcula la altura de las páginas con tabla y sus saltos de página
- utilizando los denominados «trozos», que son partes de la tabla presentes
+LaTeX calcula la altura de las páginas con cuadro y sus saltos de página
+ utilizando los denominados «trozos», que son partes del cuadro presentes
  en la memoria de LaTeX.
  El valor predeterminado está establecido a sólo 20 filas.
- Si estás usando tablas largas con muchas páginas, la generación del documento
+ Si estás usando cuadros largos con muchas páginas, la generación del documento
  puede hacerse muy lenta.
  No hay problema en aumentar el tamaño de los trozos hasta 100-1000 añadiendo
  el siguiente comando en el preámbulo del documento:
@@ -9473,12 +9498,12 @@ setcounter{LTchunksize}{100}
 \end_layout
 
 \begin_layout Subsection
-Flotantes y tablas largas
+Flotantes y cuadros largos
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas largas ! Flotantes
+Cuadros largos ! Flotantes
 \end_layout
 
 \end_inset
@@ -9488,7 +9513,7 @@ Tablas largas ! Flotantes
 
 \begin_layout Standard
 Podría haber problemas si un flotante aparece en la misma página donde comienza
- una tabla larga.
+ un cuadro largo.
  Para evitarlo, añade un 
 \begin_inset Quotes fld
 \end_inset
@@ -9507,16 +9532,16 @@ Limpiar
 
 página
 \family default
-) antes de la tabla.
+) antes del cuadro.
 \end_layout
 
 \begin_layout Subsection
 Saltos de página forzados
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas largas ! Saltos de página forzados
+Cuadros largos ! Saltos de página forzados
 \end_layout
 
 \end_inset
@@ -9525,7 +9550,7 @@ Tablas largas ! Saltos de página forzados
 \end_layout
 
 \begin_layout Standard
-Por omisión, las tablas sólo se cortan entre filas.
+Por omisión, los cuadros sólo se cortan entre filas.
  Si tienes una celda con líneas múltiples y necesitas un salto de página
  dentro de la celda, inserta el comando de nueva línea «
 \series bold
@@ -9548,7 +9573,7 @@ Por omisión, las tablas sólo se cortan entre filas.
 \series bold
 &
 \series default
-» como columnas siguientes de la tabla.
+» como columnas siguientes del cuadro.
  
 \series bold
 &
@@ -9576,7 +9601,7 @@ Detrás del comando
 &
 \series default
  como columnas haya delante de la actual.
- En la tabla
+ Enl cuadro
 \begin_inset space ~
 \end_inset
 
@@ -9623,7 +9648,7 @@ newpage
 \series default
 es necesario solo si en esta posición debiera ir definitivamente un salto
  de página, de otro modo es sólamente una posibilidad de salto.
- Si la fila más baja de la tabla larga no tiene, por alguna razón, línea
+ Si la fila más baja de la cuadro largo no tiene, por alguna razón, línea
  superior pero quisieras una línea horizontal donde se corta la celda, usa
  este comando alternativo:
 \end_layout
@@ -9680,7 +9705,7 @@ debe insertarse en código TeX al principio de la celda.
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Tabla con salto de página forzado en celda
+Cuadro con salto de página forzado en celda
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Saltos de Página Forzados"
@@ -9689,10 +9714,10 @@ name "tab:Saltos de Página Forzados"
 
 
 \begin_inset Argument
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tabla con salto de página forzado en celda
+Cuadro con salto de página forzado
 \end_layout
 
 \end_inset
@@ -10953,10 +10978,10 @@ Lineas@Líneas múltiples en celdas
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas ! Saltos de línea
+Cuadros ! Saltos de línea
 \end_layout
 
 \end_inset
@@ -10978,11 +11003,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Tabla-con-múltiples"
+name "tab:Cuadro-con-múltiples"
 
 \end_inset
 
-Tabla con líneas múltiples en celda
+Cuadro con líneas múltiples en celda
 \end_layout
 
 \end_inset
@@ -11107,18 +11132,18 @@ Al ajustar anchura fija en una columna se habilita la entrada de texto como
 \end_layout
 
 \begin_layout Standard
-Para generar la tabla
+Para generar el cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Tabla-con-múltiples"
+reference "tab:Cuadro-con-múltiples"
 
 \end_inset
 
-, crea una tabla 3×3, marca la primera celda y haz clic derecho sobre ella.
+, crea un cuadro 3×3, marca la primera celda y haz clic derecho sobre ella.
  En el diálogo que surge establece una anchura de 2.5
 \begin_inset space \thinspace{}
 \end_inset
@@ -11156,7 +11181,7 @@ pt delante de la palabra.
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Tabla-con-y"
+reference "tab:Cuadro-con-y"
 
 \end_inset
 
@@ -11176,11 +11201,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Tabla-con-y"
+name "tab:Cuadro-con-y"
 
 \end_inset
 
-Tablas con y sin guión
+Cuadros con y sin guión
 \end_layout
 
 \end_inset
@@ -11418,7 +11443,7 @@ name "sub:Multicolumnas"
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Multicolumnas
@@ -11428,10 +11453,10 @@ Multicolumnas
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas ! Multicolumnas
+Cuadros ! Multicolumnas
 \end_layout
 
 \end_inset
@@ -11440,7 +11465,7 @@ Tablas ! Multicolumnas
 \end_layout
 
 \begin_layout Subsubsection
-Fundamentos de multicolumna
+Fundamentos de multicolumnas
 \end_layout
 
 \begin_layout Standard
@@ -11455,7 +11480,7 @@ Para extender una celda sobre varias columnas, se marcan las celdas que
 , el menú 
 \family sans
 Editar\SpecialChar \menuseparator
-Tabla\SpecialChar \menuseparator
+Cuadro\SpecialChar \menuseparator
 Multicolumna
 \family default
 , o clic derecho sobre las celdas marcadas y elige 
@@ -11622,10 +11647,10 @@ name "sub:Cálculos-en-Multicolumnas"
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Multicolumnas ! Cálculos
+Cuadros ! Multicolumnas ! Cálculos
 \end_layout
 
 \end_inset
@@ -11651,17 +11676,17 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Tabla-con-centrado"
+name "tab:Cuadro-con-centrado"
 
 \end_inset
 
-Tabla con texto centrado en multicolumna sobre dos columnas que tienen exactamen
-te la mitad de anchura que la celda multicolumna
+Cuadro con texto centrado en multicolumna sobre dos columnas que tienen
+ exactamente la mitad de anchura que la celda multicolumna
 \begin_inset Argument
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tabla multicolumna perfecta
+Cuadro multicolumna perfecta
 \end_layout
 
 \end_inset
@@ -11782,18 +11807,18 @@ i
 \end_layout
 
 \begin_layout Standard
-Por ejemplo, para crear la tabla
+Por ejemplo, para crear el cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Tabla-con-centrado"
+reference "tab:Cuadro-con-centrado"
 
 \end_inset
 
-, marca las dos primeras celdas en la primera fila de una tabla 3×3 y haz
+, marca las dos primeras celdas en la primera fila deun cuadro 3×3 y haz
  clic derecho.
  En el diálogo marca 
 \emph on
@@ -11819,14 +11844,14 @@ cm para la primera columna.
 \end_inset
 
 cm de anchura.
- Para la tabla
+ Para el cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Tabla-sin-mitad"
+reference "tab:Cuadro-sin-mitad"
 
 \end_inset
 
@@ -11845,17 +11870,17 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Tabla-sin-mitad"
+name "tab:Cuadro-sin-mitad"
 
 \end_inset
 
-Tabla en la que las columnas combinadas no tienen exactamente la mitad de
- anchura que la celda multicolumna
+Cuadro en el que las columnas combinadas no tienen exactamente la mitad
+ de anchura que la celda multicolumna
 \begin_inset Argument
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tabla multicolumna imperfecta
+Cuadro multicolumna imperfecta
 \end_layout
 
 \end_inset
@@ -12016,7 +12041,8 @@ n
 \end_inset
 
 :
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 W_{g\, n}=(W_{g\,\mathrm{multicolumn}}+(1-n)\cdot(12.4\,\mathrm{pt}))/n\label{eq:Wgn}
 \end{equation}
 
@@ -12050,7 +12076,8 @@ reference "eq:Wgn"
 \end_inset
 
  queda
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 W_{g\,2}=1.25\,\mathrm{cm}-6.2\,\mathrm{pt}
 \end{equation}
 
@@ -12202,10 +12229,10 @@ Multifilas
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas ! Multifilas
+Cuadros ! Multifilas
 \end_layout
 
 \end_inset
@@ -12226,7 +12253,7 @@ Para extender una celda sobre varias filas, se marcan las celdas que se
 , el menú 
 \family sans
 Editar\SpecialChar \menuseparator
-Tabla\SpecialChar \menuseparator
+Cuadro\SpecialChar \menuseparator
 Multifila
 \family default
 , o haz clic derecho sobre las celdas marcadas y elige 
@@ -12237,7 +12264,7 @@ en el menú contextual.
 \end_layout
 
 \begin_layout Standard
-Aquí hay un ejemplo de tabla con una multifila en la primera columna:
+Aquí hay un ejemplo de cuadro con una multifila en la primera columna:
 \end_layout
 
 \begin_layout Standard
@@ -12381,8 +12408,8 @@ centering}
 \begin_layout Standard
 en el preámbulo del documento.
  Entonces se centran todas las entradas de celdas multifila en el documento.
- Si sólo queremos centrar en algunas tablas, se puede renombrar el comando
- en código TeX justo antes de la tabla en lugar de en el preámbulo.
+ Si sólo queremos centrar en algunos cuadros, se puede renombrar el comando
+ en código TeX justo antes del cuadro en lugar de en el preámbulo.
  Si el texto debe estar alineado a la derecha, reemplaza 
 \series bold
 
@@ -12406,7 +12433,7 @@ raggedright
 \end_layout
 
 \begin_layout Standard
-Este es un ejemplo de tabla con una celda multifila alineada a la derecha
+Este es un ejemplo de cuadro con una celda multifila alineada a la derecha
  que tiene un desplazamiento vertical de -4
 \begin_inset space \thinspace{}
 \end_inset
@@ -12585,19 +12612,19 @@ raggedright}
 \end_layout
 
 \begin_layout Section
-Tablas formales
+Cuadros formales
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Tablas-Formales"
+name "sec:Cuadros-Formales"
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas ! Formales
+Cuadros ! Formales
 \end_layout
 
 \end_inset
@@ -12606,25 +12633,25 @@ Tablas ! Formales
 \end_layout
 
 \begin_layout Standard
-En los libros, las tablas se suelen presentar en un formato como el de la
- tabla 
+En los libros, los cuadros se suelen presentar en un formato como el del
+ cuadro 
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Ejemplo-tabla-formal"
+reference "tab:Ejemplo-cuadro-formal"
 
 \end_inset
 
 .
- Se denominan tablas 
+ Se denominan cuadros 
 \emph on
 formales
 \emph default
 .
- Para hacer tablas con este diseño, elige 
+ Para hacer cuadros con este diseño, elige 
 \family sans
 Estilo
 \family default
@@ -12640,7 +12667,7 @@ Formal
 \family sans
 Bordes
 \family default
- del cuadro de diálogo de tablas.
+ del diálogo de cuadros.
 \end_layout
 
 \begin_layout Standard
@@ -12656,11 +12683,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Ejemplo-tabla-formal"
+name "tab:Ejemplo-cuadro-formal"
 
 \end_inset
 
-Ejemplo de tabla formal
+Ejemplo de cuadro formal
 \end_layout
 
 \end_inset
@@ -13043,7 +13070,7 @@ in % of pixel size
 \end_layout
 
 \begin_layout Standard
-Se puede añadir espacio adicional a las filas de la tabla mediante los botones
+Se puede añadir espacio adicional a las filas del cuadro mediante los botones
  correspondientes que se encuentran en la solapa 
 \family sans
 Bordes 
@@ -13054,15 +13081,11 @@ del diálogo
 \begin_inset space ~
 \end_inset
 
-de
+del
 \begin_inset space ~
 \end_inset
 
-la
-\begin_inset space ~
-\end_inset
-
-tabla
+cuadro
 \family default
 , como se explica en la sección
 \begin_inset space ~
@@ -13079,9 +13102,9 @@ reference "sub:Espacio-adicional"
 \end_layout
 
 \begin_layout Standard
-A diferencia de las tablas normales, las tablas formales no tienen líneas
+A diferencia de los cuadros normales, los cuadros formales no tienen líneas
  verticales.
- Las líneas horizontales se pueden poner o no como en las tablas normales,
+ Las líneas horizontales se pueden poner o no como en los cuadros normales,
  pero en la salida se mostrarán con distinto grosor:
 \begin_inset Newline newline
 \end_inset
@@ -13166,7 +13189,7 @@ reference "cap:Unidades-disponibles-en"
 \end_layout
 
 \begin_layout Standard
-Para dibujar líneas que no se extiendan a todas las columnas de la tabla,
+Para dibujar líneas que no se extiendan a todas las columnas del cuadro,
  puedes marcarlas como celdas multicolumna y entonces ponerles borde.
  LyX empleará internamente el comando 
 \series bold
@@ -13252,7 +13275,7 @@ l{2pt}
 \end_inset
 
 pt por su izquierda.
- Si no se especifica el tamaño  las líneas se recortan por omisión en 0.5
+ Si no se especifica el tamaño las líneas se recortan por omisión en 0.5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -13263,10 +13286,6 @@ em.
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -13274,14 +13293,14 @@ em.
 \end_layout
 
 \begin_layout Standard
-La tabla
+El cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Ejemplo-tabla-formal"
+reference "tab:Ejemplo-cuadro-formal"
 
 \end_inset
 
@@ -13334,14 +13353,14 @@ Quizá quieras superponer líneas
 \backslash
 cmidrules
 \series default
- como en la tabla
+ como enl cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Tabla-formal-especial"
+reference "tab:Cuadro-formal-especial"
 
 \end_inset
 
@@ -13358,14 +13377,14 @@ morecmidrules
 \end_layout
 
 \begin_layout Standard
-El comando que se ha utilizado para la segunda fila de la tabla
+El comando que se ha utilizado para la segunda fila del cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Tabla-formal-especial"
+reference "tab:Cuadro-formal-especial"
 
 \end_inset
 
@@ -13465,11 +13484,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Tabla-formal-especial"
+name "tab:Cuadro-formal-especial"
 
 \end_inset
 
-Tabla formal especial
+Cuadro formal especial
 \end_layout
 
 \end_inset
@@ -13891,12 +13910,12 @@ in % of pixel size
 \end_layout
 
 \begin_layout Section
-Alineación vertical de tablas
+Alineación vertical de cuadros
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas ! Alineación vertical
+Cuadros ! Alineación vertical
 \end_layout
 
 \end_inset
@@ -13905,9 +13924,9 @@ Tablas ! Alineación vertical
 \end_layout
 
 \begin_layout Standard
-Para alinear tablas verticalmente en una línea de texto la tabla debe estar
- en un cuadro.
- Entonces el cuadro se puede alinear verticalmente como se describe en la
+Para alinear cuadros verticalmente en una línea de texto, el cuadro debe
+ estar en un marco.
+ Después el marco se puede alinear verticalmente como se describe en la
  sección
 \begin_inset space ~
 \end_inset
@@ -13915,7 +13934,7 @@ Para alinear tablas verticalmente en una línea de texto la tabla debe estar
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Diálogo-Cuadros"
+reference "sec:Diálogo-Marcos"
 
 \end_inset
 
@@ -13924,9 +13943,9 @@ reference "sec:Diálogo-Cuadros"
 \end_layout
 
 \begin_layout Standard
-En el ejemplo siguiente las tablas están en un cuadro tipo minipágina
+En el ejemplo siguiente los cuadros están en un marco tipo minipágina
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Las minipáginas se describen en la sección
@@ -14603,7 +14622,7 @@ status collapsed
 
 \begin_layout Standard
 Como ves, los contenidos de la primera y última filas no se alinean correctament
-e con la línea de texto donde está la tabla.
+e con la línea de texto donde está el cuadro.
  Para conseguir esta alineación, el cuadro (minipágina) debe ponerse en
  un cuadro elevado («raisebox»
 \begin_inset Foot
@@ -14633,7 +14652,7 @@ reference "sub:Alineación-Vertical"
 \end_inset
 
 ).
- En el ejemplo anterior, la segunda tabla del primer ítem está alineada
+ En el ejemplo anterior, el segundo marco del primer ítem está alineado
  usando el comando en código TeX
 \end_layout
 
@@ -14648,13 +14667,13 @@ baselineskip}{
 \end_layout
 
 \begin_layout Standard
-antes del cuadro.
+antes del marco.
  Tras él, se pone la llave de cierre 
 \series bold
 }
 \series default
  también en código TeX.
- Para la segunda tabla en el tercer ítem se usa el comando 
+ Para el segundo marco en el tercer ítem se usa el comando 
 \end_layout
 
 \begin_layout Standard
@@ -14685,7 +14704,7 @@ a: La alineación del contenido de la fila con la línea del texto adyacente
 raisebox
 \series default
  para este alineamiento depende de la fuente del documento, del tamaño de
- la fuente y del grosor de línea de la tabla.
+ la fuente y del grosor de línea del cuadro.
 \end_layout
 
 \end_inset
@@ -14694,10 +14713,10 @@ raisebox
 \end_layout
 
 \begin_layout Section
-Tablas coloreadas
+Cuadros coloreados
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Tablas-Coloreadas"
+name "sec:Cuadros-Coloreados"
 
 \end_inset
 
@@ -14707,20 +14726,20 @@ name "sec:Tablas-Coloreadas"
 \begin_layout Subsection
 Celdas coloreadas
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas ! Coloreadas ! Celdas
+Cuadros ! Color ! en celdas
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Color ! en celdas de tablas
+Color ! en celdas de cuadros
 \end_layout
 
 \end_inset
@@ -14741,20 +14760,20 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Tabla-coloreada-sin"
+name "tab:Cuadro-coloreado-sin"
 
 \end_inset
 
-Tabla coloreada sin usar el paquete 
+Cuadro coloreado sin usar el paquete 
 \series bold
 colortbl
 \series default
 
 \begin_inset Argument
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tabla sin colortbl
+Cuadro sin colortbl
 \end_layout
 
 \end_inset
@@ -14908,14 +14927,14 @@ del
 Texto
 \family default
 .
- Esto se ha hecho en la tabla
+ Esto se ha hecho enl cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Tabla-coloreada-sin"
+reference "tab:Cuadro-coloreado-sin"
 
 \end_inset
 
@@ -14969,7 +14988,7 @@ colortbl
 \end_layout
 
 \begin_layout Standard
-Para crear tablas coloreadas, 
+Para crear cuadros coloreados, 
 \series bold
 colortbl
 \series default
@@ -15168,7 +15187,7 @@ Ambos comandos se insertan al principio de una celda en código TeX.
 \end_layout
 
 \begin_layout Standard
-Para colorear caracteres en la tabla marca las celdas y usa el menú 
+Para colorear caracteres enl cuadro marca las celdas y usa el menú 
 \family sans
 Editar\SpecialChar \menuseparator
 Estilo
@@ -15211,14 +15230,14 @@ Nota:
 \end_layout
 
 \begin_layout Standard
-Para crear la tabla
+Para crear el cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Tabla-coloreada-con"
+reference "tab:Cuadro-coloreado-con"
 
 \end_inset
 
@@ -15297,20 +15316,20 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Tabla-coloreada-con"
+name "tab:Cuadro-coloreado-con"
 
 \end_inset
 
-Tabla coloreada con el paquete 
+Cuadro coloreado con el paquete 
 \series bold
 colortbl
 \series default
 
 \begin_inset Argument
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tabla con 
+Cuadro con 
 \series bold
 colortbl
 \end_layout
@@ -15532,20 +15551,20 @@ fi
 \begin_layout Subsection
 Líneas coloreadas
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas ! Coloreadas ! Líneas
+Cuadros ! Color ! en líneas
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Color ! en bordes de tabla
+Color ! en bordes de cuadros
 \end_layout
 
 \end_inset
@@ -15565,7 +15584,7 @@ reference "sub:Grosor-de-Líneas"
 
 \end_inset
 
-, el grosor para todas las líneas en una tabla puede ajustarse con el comando
+, el grosor para todas las líneas en un cuadro puede ajustarse con el comando
  
 \series bold
 
@@ -15577,7 +15596,7 @@ arrayrulewidth
 \begin_inset space \thinspace{}
 \end_inset
 
-pt para todas las tablas de esta sección.
+pt para todos los cuadros de esta sección.
 \begin_inset ERT
 status collapsed
 
@@ -15625,14 +15644,14 @@ vline}}
 \end_layout
 
 \begin_layout Standard
-Para la tabla
+Para el cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Tabla-con-verticales-coloreadas"
+reference "tab:Cuadro-con-verticales-coloreadas"
 
 \end_inset
 
@@ -15664,11 +15683,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Tabla-con-verticales-coloreadas"
+name "tab:Cuadro-con-verticales-coloreadas"
 
 \end_inset
 
-Tabla con líneas verticales coloreadas
+Cuadro con líneas verticales coloreadas
 \end_layout
 
 \end_inset
@@ -15787,18 +15806,18 @@ sd
 \begin_inset VSpace bigskip
 \end_inset
 
-Para colorear líneas horizontales, por ejemplo en rojo, como en la tabla
+Para colorear líneas horizontales, por ejemplo en rojo, como en el cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Tabla-con-horizontales-coloreadas"
+reference "tab:Cuadro-con-horizontales-coloreadas"
 
 \end_inset
 
-, inserta estos comandos en código TeX antes de la tabla o del flotante:
+, inserta estos comandos en código TeX antes del cuadro o del flotante:
 \end_layout
 
 \begin_layout Standard
@@ -15896,11 +15915,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Tabla-con-horizontales-coloreadas"
+name "tab:Cuadro-con-horizontales-coloreadas"
 
 \end_inset
 
-Tabla con líneas horizontales coloreadas
+Cuadro con líneas horizontales coloreadas
 \end_layout
 
 \end_inset
@@ -16017,7 +16036,7 @@ sd
 
 \begin_layout Standard
 Para volver al color de línea negro predeterminado inserta este comando
- en código TeX detrás de la tabla o el flotante:
+ en código TeX detrás del cuadro o el flotante:
 \end_layout
 
 \begin_layout Standard
@@ -16033,14 +16052,14 @@ myHlineC}
 \end_layout
 
 \begin_layout Standard
-La tabla
+El cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Tabla-con-líneas-coloreadas"
+reference "tab:Cuadro-con-líneas-coloreadas"
 
 \end_inset
 
@@ -16060,11 +16079,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Tabla-con-líneas-coloreadas"
+name "tab:Cuadro-con-líneas-coloreadas"
 
 \end_inset
 
-Tabla con líneas coloreadas
+Cuadro con líneas coloreadas
 \end_layout
 
 \end_inset
@@ -16218,22 +16237,12 @@ arrayrulewidth}{0.4pt}
 \end_layout
 
 \begin_layout Section
-Personalización de tablas
+Personalización de cuadros
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Personalización de tablas
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Tablas ! Personalización
+Cuadros ! Personalización
 \end_layout
 
 \end_inset
@@ -16251,10 +16260,10 @@ name "sub:Espacio-adicional"
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Personalización de tablas ! Espacio adicional en filas
+Cuadros ! Personalización ! Espacio adicional en filas
 \end_layout
 
 \end_inset
@@ -16263,12 +16272,12 @@ Personalización de tablas ! Espacio adicional en filas
 \end_layout
 
 \begin_layout Standard
-Es posible añadir espacio vertical a las filas de una tabla en la solapa
+Es posible añadir espacio vertical a las filas de un cuadro en la solapa
  
 \family sans
 Bordes
 \family default
- del diálogo de configuración de tablas.
+ del diálogo de configuración de cuadros.
  En el marco 
 \family sans
 Espacio
@@ -16294,19 +16303,19 @@ la
 \end_inset
 
 fila añade espacio sobre los caracteres de la fila.
- Si la tabla es de estilo formal
+ Si el cuadro es de estilo formal
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Las tablas formales se explican en la sección
+Los cuadros formales se explican en la sección
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Tablas-Formales"
+reference "sec:Cuadros-Formales"
 
 \end_inset
 
@@ -16320,8 +16329,8 @@ reference "sec:Tablas-Formales"
 \end_inset
 
 em por omisión.
- Si la tabla es de estilo normal el espacio adicional destruirá las líneas
- verticales, como se ve en la tabla siguiente:
+ Si el cuadro es de estilo normal el espacio adicional destruirá las líneas
+ verticales, como se ve en el cuadro siguiente:
 \begin_inset VSpace medskip
 \end_inset
 
@@ -16401,8 +16410,8 @@ C
 \begin_inset Newline newline
 \end_inset
 
-Así pues, insertar espacio superior en tablas normales sólo es útil en tablas
- sin líneas verticales.
+Así pues, insertar espacio superior en cuadros normales sólo es útil en
+ cuadros sin líneas verticales.
 \end_layout
 
 \begin_layout Description
@@ -16419,11 +16428,11 @@ la
 \end_inset
 
 fila añade espacio bajo los caracteres de la fila.
- Si la tabla es formal LyX inserta por omisión 0.5
+ Si el cuadro es formal LyX inserta por omisión 0.5
 \begin_inset space \thinspace{}
 \end_inset
 
-em; si la tabla es normal inserta 2
+em; si el cuadro es normal inserta 2
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -16441,13 +16450,13 @@ las
 \end_inset
 
 filas añade espacio entre la fila actual y la siguiente.
- Si la tabla es formal LyX inserta 0.5
+ Si el cuadro es formal LyX inserta 0.5
 \begin_inset space \thinspace{}
 \end_inset
 
 em por omisión.
- En tablas normales, el espacio adicional destruirá las líneas verticales
- de la tabla, como se ve en la siguiente:
+ En cuadros normales, el espacio adicional destruirá las líneas verticales
+ del cuadro, como se ve en la siguiente:
 \begin_inset VSpace medskip
 \end_inset
 
@@ -16541,15 +16550,15 @@ mm entre las filas
 \begin_inset Newline newline
 \end_inset
 
-Así pues, los espacios adicionales entre filas de tablas normales sólo sirven
- para tablas sin líneas verticales.
+Así pues, los espacios adicionales entre filas de cuadros normales sólo
+ sirven para cuadros sin líneas verticales.
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
-Para añadir altura vertical extra a todas las celdas de todas las tablas,
+Para añadir altura vertical extra a todas las celdas de todos los cuadros,
  utiliza los siguientes comandos en el preámbulo:
 \end_layout
 
@@ -16597,7 +16606,7 @@ Esto tiene el inconveniente de que el texto de las celdas no estará exactamente
 \series bold
 array
 \series default
- cuando uses formatos de tabla autodefinidos.
+ cuando uses formatos de cuadro autodefinidos.
  Para evitar que sea cargado dos veces se pone al principio el comando 
 \series bold
 
@@ -16608,16 +16617,16 @@ array
 \end_layout
 
 \begin_layout Standard
-En el caso de usar fuentes de mayor tamaño que el normal, los bordes de
- la tabla están a veces demasiado cerca de las letras.
+En el caso de usar fuentes de mayor tamaño que el normal, los bordes del
+ cuadro están a veces demasiado cerca de las letras.
  Esto se puede corregir insertando el comando 
 \series bold
 
 \backslash
 strut
 \series default
- en código TeX al principio de la fila de la tabla.
- La tabla
+ en código TeX al principio de la fila del cuadro.
+ El cuadro
 \begin_inset space ~
 \end_inset
 
@@ -16665,13 +16674,13 @@ Alineación vertical de texto con fuentes grandes
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Tabla normal
+Cuadro normal
 \end_layout
 
 \end_inset
@@ -16779,13 +16788,13 @@ Más enorme
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Tabla con comando 
+Cuadro con comando 
 \series bold
 
 \backslash
@@ -16973,10 +16982,10 @@ name "sub:Alineación-especial-de"
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Personalización de tablas ! Alineación especial de celdas
+Cuadros ! Personalización ! Alineación especial de celdas
 \end_layout
 
 \end_inset
@@ -16994,14 +17003,14 @@ e.
 \begin_inset space ~
 \end_inset
 
-el separador decimal, como en la tabla
+el separador decimal, como en el cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-celdas-alineadas"
+reference "tab:Cuadro-celdas-alineadas"
 
 \end_inset
 
@@ -17019,7 +17028,7 @@ reference "tab:Table-celdas-alineadas"
 \family sans
 Al separador decimal
 \family default
- en la configuración de la tabla.
+ en la configuración del cuadro.
  Ahí se puede especificar también el carácter deseado para la alineación.
 \end_layout
 
@@ -17035,11 +17044,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Table-celdas-alineadas"
+name "tab:Cuadro-celdas-alineadas"
 
 \end_inset
 
-Tabla con celdas alineadas al separador decimal.
+Cuadro con celdas alineadas con el separador decimal.
 \end_layout
 
 \end_inset
@@ -17121,11 +17130,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Tabla-con-celdas-de"
+name "tab:Cuadro-con-celdas-de"
 
 \end_inset
 
-Tabla con celdas alineadas a los operadores.
+Cuadro con celdas alineadas con los operadores.
 \end_layout
 
 \end_inset
@@ -17253,19 +17262,19 @@ leyenda
 \begin_layout Standard
 Para alinear con caracteres en ecuaciones este método no funciona porque
  el campo para especificar el carácter no permite ecuaciones.
- En este caso hay que usar el método de la tabla
+ En este caso hay que usar el método del cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Tabla-con-celdas-de"
+reference "tab:Cuadro-con-celdas-de"
 
 \end_inset
 
 .
- Es una tabla 4×2.
+ Es un cuadro 4×2.
  La leyenda es una multicolumna centrada.
  La primera columna está alineada a la derecha y contiene la primera parte
  incluyendo el operador.
@@ -17283,7 +17292,7 @@ reference "tab:Tabla-con-celdas-de"
 \end_layout
 
 \begin_layout Standard
-La tabla
+El cuadro
 \begin_inset space ~
 \end_inset
 
@@ -17296,14 +17305,14 @@ reference "tab:Varias-alineaciones"
 
  muestra varios ejemplos de alineación.
  Para alinear al signo de relación se ha añadido un pequeño espacio como
- en la segunda columna de la tabla
+ en la segunda columna del cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Tabla-con-celdas-de"
+reference "tab:Cuadro-con-celdas-de"
 
 \end_inset
 
@@ -17327,7 +17336,7 @@ name "tab:Varias-alineaciones"
 
 \end_inset
 
-Tabla con varias alineaciones.
+Cuadro con varias alineaciones.
 \end_layout
 
 \end_inset
@@ -17641,10 +17650,10 @@ name "sub:Formato-Personalizado"
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Personalización de tablas ! Formato de celda/columna
+Cuadros ! Personalización ! Formato de celda/columna
 \end_layout
 
 \end_inset
@@ -17665,9 +17674,9 @@ reference "sub:Cálculos-en-Multicolumnas"
 
 \end_inset
 
- es muy pesado si tienes varias tablas con multicolumnas.
+ es muy pesado si tienes varios cuadros con multicolumnas.
  Para hacerlo más fácil, puedes definir en el preámbulo un formato de celda/colu
-mna aplicable a todas las tablas del documento.
+mna aplicable a todos los cuadros del documento.
  El formato se define con el comando
 \end_layout
 
@@ -17747,7 +17756,7 @@ M{ancho}
 \end_layout
 
 \begin_layout Standard
-como argumento LaTeX en el diálogo de tabla para crear una multicolumna.
+como argumento LaTeX en el diálogo de cuadros para crear una multicolumna.
 \end_layout
 
 \begin_layout Standard
@@ -17868,14 +17877,14 @@ como argumento LaTeX.
 \end_layout
 
 \begin_layout Standard
-Para crear la tabla
+Para crear el cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Tabla-con-formatos-definidos-por"
+reference "tab:Cuadro-con-formatos-definidos-por"
 
 \end_inset
 
@@ -17925,11 +17934,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Tabla-con-formatos-definidos-por"
+name "tab:Cuadro-con-formatos-definidos-por"
 
 \end_inset
 
-Tabla con formatos definidos por el usuario
+Cuadro con formatos definidos por el usuario
 \end_layout
 
 \end_inset
@@ -17951,7 +17960,7 @@ Tabla con formatos definidos por el usuario
 \begin_inset Text
 
 \begin_layout Plain Layout
-palabramuylargaenceldadetabla
+palabramuylargaenceldadecuadro
 \end_layout
 
 \end_inset
@@ -18082,10 +18091,10 @@ name "sub:Grosor-de-Líneas"
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Personalización de tablas ! Grosor de línea
+Cuadros ! Personalización ! Grosor de línea
 \end_layout
 
 \end_inset
@@ -18094,7 +18103,7 @@ Personalización de tablas ! Grosor de línea
 \end_layout
 
 \begin_layout Standard
-El grosor para todas las líneas de una tabla puede ajustarse con la longitud
+El grosor para todas las líneas de un cuadro puede ajustarse con la longitud
  
 \series bold
 
@@ -18106,14 +18115,14 @@ arrayrulewidth
 \begin_inset space \thinspace{}
 \end_inset
 
-pt, como en la tabla
+pt, como en el cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Tabla-con-líneas"
+reference "tab:Cuadro-con-líneas"
 
 \end_inset
 
@@ -18131,8 +18140,8 @@ arrayrulewidth}{1.5pt}
 \end_layout
 
 \begin_layout Standard
-en código TeX antes de la tabla o flotante.
- Este cambio es válido para todas las siguientes tablas.
+en código TeX antes del cuadro o flotante.
+ Este cambio es válido para todos los siguientes cuadros.
  Para volver al valor predeterminado, define 
 \series bold
 
@@ -18143,7 +18152,7 @@ arrayrulewidth
 \begin_inset space \thinspace{}
 \end_inset
 
-pt en código TeX detrás de la tabla o flotante.
+pt en código TeX detrás del cuadro o flotante.
 \end_layout
 
 \begin_layout Standard
@@ -18173,11 +18182,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Tabla-con-líneas"
+name "tab:Cuadro-con-líneas"
 
 \end_inset
 
-Tabla con líneas de grosor 1.5
+Cuadro con líneas de grosor 1.5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -18319,18 +18328,18 @@ Para definir un grosor de 1.5
 \begin_inset space \thinspace{}
 \end_inset
 
-pt sólo para líneas horizontales, como en la tabla
+pt sólo para líneas horizontales, como en el cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Tabla-con-horizontales"
+reference "tab:Cuadro-con-horizontales"
 
 \end_inset
 
-, inserta estos comandos en código TeX antes de la tabla o flotante:
+, inserta estos comandos en código TeX antes del cuadro o flotante:
 \end_layout
 
 \begin_layout Standard
@@ -18364,7 +18373,7 @@ arrayrulewidth 1.5pt}
 \begin_inset Newline newline
 \end_inset
 
-  
+ 
 \backslash
 myHline
 \backslash
@@ -18377,7 +18386,7 @@ arrayrulewidth 0.4pt}}
 
 \begin_layout Standard
 Para volver al grosor predeterminado, inserta este comando en código TeX
- detrás de la tabla o flotante:
+ detrás del cuadro o flotante:
 \end_layout
 
 \begin_layout Standard
@@ -18454,11 +18463,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Tabla-con-horizontales"
+name "tab:Cuadro-con-horizontales"
 
 \end_inset
 
-Tabla con líneas horizontales de 1.5
+Cuadro con líneas horizontales de 1.5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -18625,14 +18634,14 @@ vrule width 1.5pt}}
 \end_layout
 
 \begin_layout Standard
-Para la tabla
+Para el cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Tabla-con-verticales"
+reference "tab:Cuadro-con-verticales"
 
 \end_inset
 
@@ -18671,11 +18680,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Tabla-con-verticales"
+name "tab:Cuadro-con-verticales"
 
 \end_inset
 
-Tabla con líneas verticales de 1.5
+Cuadro con líneas verticales de 1.5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -18797,10 +18806,10 @@ sd
 \begin_layout Subsection
 Líneas de trazos
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Personalización de tablas ! Líneas de trazos
+Cuadros ! Personalización ! Líneas de trazos
 \end_layout
 
 \end_inset
@@ -18852,11 +18861,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Tabla-con-trazos"
+name "tab:Cuadro-con-trazos"
 
 \end_inset
 
-Tabla con líneas de trazos
+Cuadro con líneas de trazos
 \end_layout
 
 \end_inset
@@ -19178,7 +19187,7 @@ Para hacer una línea vertical a trazos, introduce dos puntos «
 :
 \series default
 » junto con el carácter para alineación horizontal como argumento LaTeX
- en el diálogo de celda de tabla.
+ en el diálogo de celdas de cuadros.
 \end_layout
 
 \begin_layout Standard
@@ -19235,14 +19244,14 @@ como primer elemento de la primera celda en la fila de la multicolumna.
 \end_layout
 
 \begin_layout Standard
-La tabla
+El cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Tabla-con-trazos"
+reference "tab:Cuadro-con-trazos"
 
 \end_inset
 
@@ -19298,19 +19307,19 @@ LaTeX-paquetes ! colortbl
 
 \end_inset
 
- que se usa para tablas coloreadas en la sección
+ que se usa para cuadros coloreados en la sección
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Tablas-Coloreadas"
+reference "sec:Cuadros-Coloreados"
 
 \end_inset
 
 .
- Esto implica que las tablas coloreadas no pueden tener líneas de trazos.
+ Esto implica que los cuadros coloreados no pueden tener líneas de trazos.
 \end_layout
 
 \end_inset
@@ -19442,9 +19451,9 @@ margen
 
 \begin_layout Standard
 Los flotantes permiten composiciones de alta calidad.
- Imágenes y tablas se pueden distribuir equitativamente en las páginas para
- impedir espacios en blanco y páginas sin texto.
- Como el flotante destruye a menudo el contexto entre texto e imagen o tabla,
+ Imágenes y cuadros se pueden distribuir equitativamente en las páginas
+ para impedir espacios en blanco y páginas sin texto.
+ Como el flotante destruye a menudo el contexto entre texto e imagen o cuadro,
  cada flotante puede ser referenciado en el texto.
  Por lo tanto los flotantes están numerados.
  Las referencias se describen en la sección
@@ -19475,7 +19484,7 @@ Leyenda,
  un cuadro con una etiqueta.
  La etiqueta se traducirá automáticamente al idioma del documento.
  Tras la etiqueta puedes insertar el texto de la leyenda.
- La imagen o tabla se inserta encima o debajo de la leyenda en un párrafo
+ La imagen o cuadro se inserta encima o debajo de la leyenda en un párrafo
  separado dentro del flotante.
  La colocación de leyendas se describe en la sección
 \begin_inset space ~
@@ -19507,7 +19516,7 @@ Se recomienda insertar flotantes como párrafos separados para evitar posibles
 \end_layout
 
 \begin_layout Standard
-Figuras o tablas ya existentes pueden ponerse en un flotante marcándolas
+Figuras o cuadros ya existentes pueden ponerse en un flotante marcándolas
  y pinchando el botón correspondiente de la barra de herramientas para un
  flotante nuevo.
 \end_layout
@@ -19517,7 +19526,7 @@ Tipos de flotantes
 \end_layout
 
 \begin_layout Standard
-Además de los flotantes de imagen y de tabla que se describen en la sección
+Además de los flotantes de imagen y de cuadro que se describen en la sección
 \begin_inset space ~
 \end_inset
 
@@ -19531,7 +19540,7 @@ reference "sec:Figuras-Flotantes"
  y 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Tablas-Flotantes"
+reference "sec:Cuadros-Flotantes"
 
 \end_inset
 
@@ -19693,14 +19702,6 @@ algoritmo
 Para insertar el índice de algoritmos puedes usar el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
-Lista
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
 Índice\SpecialChar \menuseparator
 Índice de algoritmos
 \family default
@@ -19721,17 +19722,17 @@ donde
 \family sans
 nombre
 \family default
- es «
+ es, por ejemplo, «
 \emph on
-Lista de algoritmos
+Índice de algoritmos
 \emph default
 » en el idioma del documento.
 \end_layout
 
 \begin_layout Standard
 Los algoritmos flotantes no se numeran por omisión según el esquema habitual
- para tablas e imágenes flotantes en muchas clases de documento, «capítulo.algori
-tmo».
+ para cuadros e imágenes flotantes en muchas clases de documento, «capítulo.algor
+itmo».
  Para numerarlos con ese esquema, añade este comando en el preámbulo del
  documento:
 \end_layout
@@ -19829,7 +19830,7 @@ Figura envuelta en el texto
 
 \end_inset
 
- Este tipo de flotante se usa para adosar una figura o una tabla al texto,
+ Este tipo de flotante se usa para adosar una figura o un cuadro al texto,
  de modo que ocupe sólo una parte del ancho de columna.
  Se inserta con el menú 
 \family sans
@@ -19851,11 +19852,11 @@ envuelta
 
 
 \family sans
-Tabla
+Cuadro
 \begin_inset space ~
 \end_inset
 
-envuelta
+envuelto
 \family default
  si está instalado el paquete LaTeX 
 \series bold
@@ -20022,7 +20023,7 @@ Los flotantes envueltos en párrafos consecutivos pueden dar problemas, así
 \end_layout
 
 \begin_layout Itemize
-Los flotantes envueltos no están permitidos en cabeceras de sección o tablas.
+Los flotantes envueltos no están permitidos en cabeceras de sección o cuadros.
 \end_layout
 
 \begin_layout Section
@@ -20069,8 +20070,8 @@ roman{table}}
 \backslash
 thetable 
 \series default
-es el comando que imprime el número de la tabla, para figuras flotantes
- el comando sería 
+es el comando que imprime el número del cuadro, para figuras flotantes el
+ comando sería 
 \series bold
 
 \backslash
@@ -20083,7 +20084,7 @@ thefigure
 \backslash
 roman
 \series default
- imprime el número de tabla en números romanos en minúscula.
+ imprime el número de cuadro en números romanos en minúscula.
 \end_layout
 
 \begin_layout Standard
@@ -20240,7 +20241,7 @@ cruzada
 
 .
  Aparece una ventana de referencia cruzada con todas las etiquetas del documento.
- Si tienes abiertos varios documentos LyX, escoge aquel con el  que estás
+ Si tienes abiertos varios documentos LyX, escoge aquel con el que estás
  trabajando de la lista desplegable de la parte superior del diálogo.
  Puedes ordenar las etiquetas alfabéticamente y elegir una.
  Se inserta un cuadro gris como este: 
@@ -21529,7 +21530,7 @@ Se puede hacer lo mismo para todas las cabeceras de sección, capítulos y
 \begin_inset VSpace bigskip
 \end_inset
 
-En ciertos casos se quieren tener todas las figuras/tablas al final del
+En ciertos casos se quieren tener todas las figuras/cuadros al final del
  documento.
  Para estos casos está el paquete LaTeX 
 \series bold
@@ -21546,7 +21547,7 @@ LaTeX-paquetes ! endfloat
 \end_inset
 
 .
- Pone todas las figuras y tablas flotantes al final del documento en secciones
+ Pone todas las figuras y cuadros flotantes al final del documento en secciones
  propias.
  En la posición original del flotante se inserta una indicación como «
 \family sans
@@ -21573,7 +21574,7 @@ usepackage[options]{endfloat}
 \end_layout
 
 \begin_layout Standard
-Hay varias opciones para diseñar las secciones figura/tabla creadas.
+Hay varias opciones para diseñar las secciones figura/cuadro creadas.
  Para más información véase la documentación 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -21679,7 +21680,7 @@ Flotantes ! Rotación
 \end_layout
 
 \begin_layout Standard
-Podrías necesitar girar flotantes, especialmente con tablas grandes.
+Podrías necesitar girar flotantes, especialmente con cuadros grandes.
  Para girar todo el flotante y su leyenda, pincha sobre su cuadro y marca
  la opción 
 \family sans
@@ -21728,14 +21729,14 @@ figuresright
 
 \begin_layout Standard
 Los flotantes girados se refieren igual que los normales, y el formato de
- la leyenda también es el mismo: un ejemplo es la tabla
+ la leyenda también es el mismo: un ejemplo es el cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Tabla-girada"
+reference "tab:Cuadro-girado"
 
 \end_inset
 
@@ -21751,7 +21752,7 @@ status open
 \series bold
 Nota:
 \series default
- No todos los visores DVI pueden mostrar tablas giradas.
+ No todos los visores DVI pueden mostrar cuadros girados.
 \end_layout
 
 \end_inset
@@ -21771,11 +21772,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Tabla-girada"
+name "tab:Cuadro-girado"
 
 \end_inset
 
-Tabla girada
+Cuadro girado
 \end_layout
 
 \end_inset
@@ -21871,14 +21872,14 @@ Los subflotantes se usan cuando, por ejemplo, una figura consta de varias
  imágenes.
  Se crean insertando un flotante dentro de otro.
  La colocación de los subflotantes puede controlarse como si fueran párrafos,
- como se muestra en las tablas
+ como se muestra en los cuadros
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Dos-subtablas-adosadas"
+reference "tab:Dos-subcuadros-adosados"
 
 \end_inset
 
@@ -21889,7 +21890,7 @@ reference "tab:Dos-subtablas-adosadas"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Dos-subtablas-una-sobre"
+reference "tab:Dos-subcuadros-uno-sobre"
 
 \end_inset
 
@@ -21898,36 +21899,36 @@ reference "tab:Dos-subtablas-una-sobre"
 
 \begin_layout Standard
 Las referencias a subflotantes funcionan como en los flotantes normales:
- la tabla
+ el cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Esta-es-la-subtabla-a"
+reference "tab:Este-es-el-subcuadro-a"
 
 \end_inset
 
- y la tabla
+ y el cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Esta-es-la-subtabla-b"
+reference "tab:Este-es-el-subcuadro-b"
 
 \end_inset
 
- son subtablas de la tabla
+ son subcuadros del cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Dos-subtablas-adosadas"
+reference "tab:Dos-subcuadros-adosados"
 
 \end_inset
 
@@ -21946,11 +21947,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Dos-subtablas-adosadas"
+name "tab:Dos-subcuadros-adosados"
 
 \end_inset
 
-Dos subtablas adosadas
+Dos subcuadros adosados
 \end_layout
 
 \end_inset
@@ -21966,7 +21967,7 @@ Dos subtablas adosadas
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -21974,11 +21975,11 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Esta-es-la-subtabla-a"
+name "tab:Este-es-el-subcuadro-a"
 
 \end_inset
 
-Esta es la subtabla a
+Este es el subcuadro a
 \end_layout
 
 \end_inset
@@ -22060,7 +22061,7 @@ e
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -22068,7 +22069,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Esta-es-la-subtabla-b"
+name "tab:Este-es-el-subcuadro-b"
 
 \end_inset
 
@@ -22144,10 +22145,6 @@ test
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -22174,12 +22171,12 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Dos-subtablas-una-sobre"
+name "tab:Dos-subcuadros-uno-sobre"
 
 \end_inset
 
-Dos subtablas colocadas una sobre otra.
- La tabla (a) con 4 celdas, la (b) con 5 celdas.
+Dos subcuadros colocados una sobre otra.
+ El cuadro (a) con 4 celdas, el (b) con 5 celdas.
 \end_layout
 
 \end_inset
@@ -22193,7 +22190,7 @@ Dos subtablas colocadas una sobre otra.
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -22261,10 +22258,6 @@ test
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -22275,11 +22268,7 @@ test
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -22354,10 +22343,6 @@ e
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -22663,7 +22648,7 @@ usepackage[definición de formato]{caption}
 
 \begin_layout Standard
 Para poner, por ejemplo, la etiqueta y el número en sans-serif negrita y
- las leyendas de tabla siempre sobre ella como en este documento, usa el
+ las leyendas de cuadro siempre sobre él como en este documento, usa el
  comando:
 \end_layout
 
@@ -22707,14 +22692,14 @@ reference "fig:Esto-es-una-fig"
 
 \end_inset
 
- y la tabla
+ y el cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Esto-es-una-tab"
+reference "tab:Esto-es-un-cuadro"
 
 \end_inset
 
@@ -23041,23 +23026,23 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Esto-es-una-tab"
+name "tab:Esto-es-un-cuadro"
 
 \end_inset
 
 
 \begin_inset Argument
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tabla con leyenda muy larga
+Cuadro con leyenda muy larga
 \end_layout
 
 \end_inset
 
-Este es un ejemplo de leyenda de tabla mayor que una línea para mostrar
+Este es un ejemplo de leyenda de cuadro mayor que una línea para mostrar
  el formato diferente.
- Aquí se usa el formato de leyenda estándar para las tablas.
+ Aquí se usa el formato de leyenda estándar para los cuadros.
 \end_layout
 
 \end_inset
@@ -23174,12 +23159,12 @@ Figura: La leyenda al pie de la figura
 \end_layout
 
 \begin_layout Description
-Tabla: La leyenda sobre la tabla
+cuadro: La leyenda sobre el cuadro
 \end_layout
 
 \begin_layout Standard
 Desafortunadamente, las clases estándar de LaTeX no soportan leyendas sobre
- la tabla.
+ el cuadro.
  Esto implica que si usas las clases de documento 
 \family sans
 article
@@ -23196,7 +23181,7 @@ letter
 \family sans
 report
 \family default
- no habrá espacio entre la leyenda y la tabla.
+ no habrá espacio entre la leyenda y el cuadro.
  Para insertar el espacio adecuado añade la siguiente opción al comando
  del paquete LaTeX 
 \series bold
@@ -23286,7 +23271,7 @@ captions=tableheading
 \begin_inset VSpace bigskip
 \end_inset
 
-También es posible poner la leyenda junto a una figura o tabla.
+También es posible poner la leyenda junto a una figura o cuadro.
  Para conseguirlo hay que cargar el paquete LaTeX 
 \series bold
 sidecap
@@ -23716,7 +23701,7 @@ en código TeX para volver a la definición original de flotantes.
 \end_layout
 
 \begin_layout Standard
-Para tablas flotantes usa los comandos correspondientes
+Para cuadros flotantes usa los comandos correspondientes
 \end_layout
 
 \begin_layout Standard
@@ -23745,7 +23730,7 @@ reference "fig:encab-al-lado"
 
 \end_inset
 
- y la tabla
+ y el cuadro
 \begin_inset space ~
 \end_inset
 
@@ -23761,7 +23746,7 @@ reference "tab:encab-al-lado"
 
 \begin_layout Standard
 En los ejemplos puedes ver que el texto del título aparece encima del flotante
- en tablas flotantes y debajo en las figuras flotantes.
+ en cuadros flotantes y debajo en las figuras flotantes.
  Para cambiarlo, puedes usar el comando
 \end_layout
 
@@ -23970,7 +23955,7 @@ name "tab:encab-al-lado"
 
 \end_inset
 
-Leyenda al lado de una tabla.
+Leyenda al lado de un cuadro.
 \end_layout
 
 \end_inset
@@ -24346,14 +24331,6 @@ Igual que en el índice general se listan las secciones del documento, hay
  Se pueden insertar mediante los submenús 
 \family sans
 Insertar\SpecialChar \menuseparator
-Lista
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
 Índice
 \family default
 .
@@ -24366,7 +24343,7 @@ Las entradas de los índices son las leyendas del flotante o su título breve,
 \end_layout
 
 \begin_layout Standard
-Puedes encontrar los índices de figuras y tablas al final de este documento.
+Puedes encontrar los índices de figuras y cuadros al final de este documento.
 \end_layout
 
 \begin_layout Chapter
@@ -24697,7 +24674,7 @@ Los colores disponibles y el método para definir nuestros propios colores
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Tablas-Coloreadas"
+reference "sec:Cuadros-Coloreados"
 
 \end_inset
 
@@ -24726,16 +24703,6 @@ status collapsed
 
 \begin_layout Plain Layout
 Notas ! al pie
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Notas al pie
 \end_layout
 
 \end_inset
@@ -24909,7 +24876,7 @@ reference "pie:Esto-es-una"
 \end_layout
 
 \begin_layout Standard
-Debido a razones técnicas, LaTeX no imprime las notas al pie en tablas.
+Debido a razones técnicas, LaTeX no imprime las notas al pie en cuadros.
  No obstante, hay otro método para imprimirlas: en lugar de la nota al pie
  se inserta el comando 
 \series bold
@@ -24924,11 +24891,11 @@ footnotemark{}
 \backslash
 footnotetext
 \series default
- después de la tabla.
+ después del cuadro.
 \begin_inset Newline newline
 \end_inset
 
-Esto es lo que se ha hecho para la siguiente tabla con el comando
+Esto es lo que se ha hecho para el siguiente cuadro con el comando
 \end_layout
 
 \begin_layout Standard
@@ -24938,7 +24905,7 @@ Esto es lo que se ha hecho para la siguiente tabla con el comando
 \backslash
 footnotetext{
 \series default
-Texto de la nota de la tabla.
+Texto de la nota del cuadro.
 \series bold
 }
 \end_layout
@@ -25010,7 +24977,7 @@ footnotetext{
 
 \end_inset
 
-Texto de la nota de la tabla.
+Texto de la nota del cuadro.
 \begin_inset ERT
 status collapsed
 
@@ -25025,14 +24992,14 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Las notas al pie en tablas largas se describen en la sección
+Las notas al pie en cuadros largos se describen en la sección
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Notas-al-pie-en-Tablas-Largas"
+reference "sub:Notas-al-pie-en-Cuadros-Largos"
 
 \end_inset
 
@@ -25157,7 +25124,7 @@ status collapsed
 
 \begin_layout Standard
 Para hacer referencia a la misma nota varias veces sin imprimir su texto
- cada vez, usa el comando  
+ cada vez, usa el comando 
 \series bold
 
 \backslash
@@ -25277,10 +25244,10 @@ name "sub:Numeración-de-Notas-al-Pie"
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Notas al pie ! Numeración
+Notas ! al pie ! numeración
 \end_layout
 
 \end_inset
@@ -25642,10 +25609,10 @@ Roman{footnote}}
 \begin_layout Subsection
 Colocación de notas al pie
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Notas al pie ! Colocación
+Notas ! al pie ! colocación
 \end_layout
 
 \end_inset
@@ -26009,8 +25976,8 @@ Notas al final: notas impresas en párrafo separado al final de la sección
 
 La cabecera de párrafo para las notas finales no se traduce automáticamente
  al lenguaje del documento, hay que hacerlo manualmente.
-  El siguiente comando de preámbulo traduce el nombre en inglés «Notes»
- al español «Notas»:
+ El siguiente comando de preámbulo traduce el nombre en inglés «Notes» al
+ español «Notas»:
 \end_layout
 
 \begin_layout Standard
@@ -26081,7 +26048,7 @@ endnote
 \end_layout
 
 \begin_layout Standard
-Para notas al final hay el comando  el comando 
+Para notas al final hay el comando el comando 
 \series bold
 
 \backslash
@@ -26422,8 +26389,8 @@ status open
 \series bold
 Nota:
 \series default
- Normalmente no pueden utilizarse notas al margen en tablas, flotantes y
- notas al pie.
+ Normalmente no pueden utilizarse notas al margen en cuadros, flotantes
+ y notas al pie.
 \end_layout
 
 \end_inset
@@ -26532,7 +26499,7 @@ marginnote
 \end_layout
 
 \begin_layout Standard
-donde desplazamiento es una longitud en una de las unidades de la tabla
+donde desplazamiento es una longitud en una de las unidades del cuadro
 \begin_inset space ~
 \end_inset
 
@@ -27028,16 +26995,16 @@ fi
 \end_layout
 
 \begin_layout Chapter
-Cuadros
+Marcos
 \end_layout
 
 \begin_layout Section
 Introducción
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Cuadros ! Introducción
+Marcos ! Introducción
 \end_layout
 
 \end_inset
@@ -27046,7 +27013,7 @@ Cuadros ! Introducción
 \end_layout
 
 \begin_layout Standard
-Los cuadros se emplean para dar formato a bloques de texto.
+Los marcos se emplean para dar formato a bloques de texto.
  Se pueden usar para escribir documentos con varios idiomas, véase sección
 \begin_inset space ~
 \end_inset
@@ -27098,7 +27065,7 @@ reference "sub:Alineación-Vertical"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Cuadros-Coloreados"
+reference "sec:Marcos-Coloreados"
 
 \end_inset
 
@@ -27109,7 +27076,7 @@ reference "sec:Cuadros-Coloreados"
 Se insertan con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
-Cuadro
+Marco
 \family default
  o con el botón 
 \begin_inset Graphics
@@ -27121,7 +27088,7 @@ Cuadro
 .
  Surge un recuadro gris con la etiqueta 
 \family sans
-Cuadro (Minipágina)
+Marco (Minipágina)
 \family default
 : 
 \begin_inset Graphics
@@ -27132,15 +27099,15 @@ Cuadro (Minipágina)
 \end_inset
 
 .
- El tipo de cuadro se puede elegir al hacer clic derecho sobre él y seleccionand
-o 
+ El tipo de marco se puede elegir al hacer clic derecho sobre él y seleccionando
+ 
 \family sans
 Configuración
 \family default
 .
  Sale un diálogo en el que 
 \family sans
-Cuadro
+Marco
 \family default
 
 \begin_inset space ~
@@ -27156,18 +27123,18 @@ interior
 \family default
 , 
 \family sans
-Cuadro de párrafo
+Marco de párrafo
 \family default
  y 
 \family sans
-Cuadro de 
+Marco de 
 \family default
 línea.
  
 \family sans
 Minipágina
 \family default
- es el predeterminado para nuevos cuadros y se explica en la sección
+ es el predeterminado para nuevos marcos y se explica en la sección
 \begin_inset space ~
 \end_inset
 
@@ -27180,7 +27147,7 @@ reference "sec:Minipáginas"
 
 ; el tipo 
 \family sans
-Cuadro de párrafo
+Marco de párrafo
 \family default
  se describe en la sección
 \begin_inset space ~
@@ -27189,13 +27156,13 @@ Cuadro de párrafo
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Cuadros-de-Párrafo"
+reference "sec:Marcos-de-Párrafo"
 
 \end_inset
 
  y el tipo 
 \family sans
-Cuadro de línea
+Marco de línea
 \family default
  se describe en la sección
 \begin_inset space ~
@@ -27212,8 +27179,8 @@ reference "sec:Evitar-la-Partición"
 \end_layout
 
 \begin_layout Standard
-Los cuadros no se numeran y por tanto no se pueden referenciar como los
- flotantes o las notas al pie.
+Los marcos no se numeran y por tanto no se pueden referenciar como los flotantes
+ o las notas al pie.
 \end_layout
 
 \begin_layout Standard
@@ -27225,7 +27192,7 @@ status open
 \series bold
 Nota:
 \series default
- Los cuadros no deben ser el ítem en un entorno 
+ Los marcos no deben ser el ítem en un entorno 
 \family sans
 Enumeración*
 \family default
@@ -27252,7 +27219,7 @@ Nota:
 \series default
  Por razones desconocidas sólo se puede poner el tipo 
 \family sans
-Cuadro
+Marco
 \begin_inset space ~
 \end_inset
 
@@ -27262,16 +27229,16 @@ interior
 \family sans
 Ninguno
 \family default
- cuando se emplea un cuadro enmarcado.
- Los cuadros sin ningún tipo de 
+ cuando se emplea un marco enmarcado.
+ Los marcos sin ningún tipo de 
 \family sans
-Cuadro
+Marco
 \begin_inset space ~
 \end_inset
 
 interior
 \family default
- y sin marcos se explican en la sección
+ y sin bordes se explican en la sección
 \begin_inset space ~
 \end_inset
 
@@ -27291,19 +27258,19 @@ reference "sec:Evitar-la-Partición"
 \end_layout
 
 \begin_layout Section
-Diálogo de cuadros
+Diálogo de marcos
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Diálogo-Cuadros"
+name "sec:Diálogo-Marcos"
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Cuadros ! Configuración
+Marcos ! Configuración
 \end_layout
 
 \end_inset
@@ -27314,10 +27281,10 @@ Cuadros ! Configuración
 \begin_layout Subsection
 Tamaño
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Cuadros ! Tamaño
+Marcos ! Tamaño
 \end_layout
 
 \end_inset
@@ -27326,7 +27293,7 @@ Cuadros ! Tamaño
 \end_layout
 
 \begin_layout Standard
-En el diálogo puedes ajustar la geometría del cuadro en los campos 
+En el diálogo puedes ajustar la geometría del marco en los campos 
 \family sans
 Ancho
 \family default
@@ -27335,7 +27302,7 @@ Ancho
 Alto
 \family default
 .
- Las unidades disponibles para la geometría se describen en la tabla
+ Las unidades disponibles para la geometría se describen en el cuadro
 \begin_inset space ~
 \end_inset
 
@@ -27355,9 +27322,21 @@ Alto
 \end_layout
 
 \begin_layout Description
-Profundidad Este es el texto plano «alto».
+Profundidad Es la 
+\begin_inset Quotes fld
+\end_inset
+
+altura
+\begin_inset Quotes frd
+\end_inset
+
+ del texto plano.
  Ignora la profundidad total cuando hay múltiples líneas de texto en el
- cuadro:
+ marco:
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -27385,7 +27364,7 @@ status open
 
 \begin_layout Plain Layout
 \align center
-Cuadro con altura establecida en 1
+Marco con altura establecida en 1
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -27406,7 +27385,7 @@ Profundidad
 \end_layout
 
 \begin_layout Description
-Alto Es la altura del texto que está dentro del cuadro.
+Alto Es la altura del texto que está dentro del marco.
  Un valor de, p.
 \begin_inset space \thinspace{}
 \end_inset
@@ -27415,7 +27394,7 @@ e.
 \begin_inset space ~
 \end_inset
 
-2 para este tamaño fijará la altura del cuadro a 2 veces la altura del texto:
+2 para este tamaño fijará la altura del marco a 2 veces la altura del texto:
  
 \begin_inset Box Boxed
 position "c"
@@ -27432,7 +27411,7 @@ status open
 
 \begin_layout Plain Layout
 \align center
-Cuadro con altura puesta en 2
+Marco con altura puesta en 2
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -27473,7 +27452,7 @@ status open
 
 \begin_layout Plain Layout
 \align center
-Cuadro con altura puesta a 1
+Marco con altura puesta a 1
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -27490,7 +27469,7 @@ total
 \end_layout
 
 \begin_layout Description
-Ancho Esto determina al ancho del cuadro como altura: 
+Ancho Esto determina al ancho del marco como altura: 
 \begin_inset Box Boxed
 position "c"
 hor_pos "c"
@@ -27506,7 +27485,7 @@ status open
 
 \begin_layout Plain Layout
 \align center
-Cuadro con altura puesta en 1
+Marco con altura puesta en 1
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -27524,7 +27503,7 @@ Alineación
 status collapsed
 
 \begin_layout Plain Layout
-Cuadros ! Alineación
+Marcos ! Alineación
 \end_layout
 
 \end_inset
@@ -27535,13 +27514,13 @@ Cuadros ! Alineación
 \begin_layout Standard
 Si has elegido un 
 \family sans
-Cuadro
+Marco
 \begin_inset space ~
 \end_inset
 
 interior
 \family default
-, la alineación vertical del cuadro puede ser:
+, la alineación vertical del marco puede ser:
 \end_layout
 
 \begin_layout Description
@@ -27562,7 +27541,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \align center
-Cuadro alineado arriba.
+marco alineado arriba.
 \end_layout
 
 \end_inset
@@ -27588,7 +27567,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \align center
-Cuadro alineado en medio.
+marco alineado en medio.
 \end_layout
 
 \end_inset
@@ -27614,7 +27593,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \align center
-Cuadro alineado abajo.
+marco alineado abajo.
 \end_layout
 
 \end_inset
@@ -27631,7 +27610,7 @@ status open
 \series bold
 Nota:
 \series default
- La alineación vertical puede desaparecer en la salida si hay dos cuadros
+ La alineación vertical puede desaparecer en la salida si hay dos marcos
  en una línea y, p.
 \begin_inset space \thinspace{}
 \end_inset
@@ -27645,8 +27624,8 @@ e., uno de ellos tiene sombreado y el otro no.
 \end_layout
 
 \begin_layout Standard
-La alineación horizontal del cuadro puede establecerse en el diálogo de
- configuración de párrafo de LyX si colocas el cuadro en su propio párrafo.
+La alineación horizontal del marco puede establecerse en el diálogo de configura
+ción de párrafo de LyX si colocas el marco en su propio párrafo.
 \end_layout
 
 \begin_layout Standard
@@ -27655,7 +27634,7 @@ La alineación horizontal del cuadro puede establecerse en el diálogo de
 
 Si has escogido un 
 \family sans
-Cuadro
+Marco
 \begin_inset space ~
 \end_inset
 
@@ -27682,7 +27661,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \align center
-Cuadro con texto alineado arriba.
+marco con texto alineado arriba.
 \end_layout
 
 \end_inset
@@ -27708,7 +27687,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \align center
-Cuadro con texto alineado en medio.
+marco con texto alineado en medio.
 \end_layout
 
 \end_inset
@@ -27734,7 +27713,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \align center
-Cuadro con texto alineado abajo.
+marco con texto alineado abajo.
 \end_layout
 
 \end_inset
@@ -27790,7 +27769,7 @@ Para estirar el contenido debe tener más de un párrafo.
 Para estirar horizontalmente el contenido usa el diálogo de párrafos de
  LyX cuando hayas escogido un 
 \family sans
-Cuadro
+Marco
 \begin_inset space ~
 \end_inset
 
@@ -27816,7 +27795,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \align left
-Cuadro
+marco
 \end_layout
 
 \begin_layout Plain Layout
@@ -27837,14 +27816,14 @@ estirado
 \begin_layout Standard
 Si no has establecido un 
 \family sans
-Cuadro
+Marco
 \begin_inset space ~
 \end_inset
 
 interior
 \family default
-, puedes alinear horizontalmente el contenido del cuadro en el diálogo de
- cuadro.
+, puedes alinear horizontalmente el contenido del marco en el diálogo de
+ marcos.
 \end_layout
 
 \begin_layout Standard
@@ -27860,10 +27839,9 @@ width "90col%"
 special "none"
 height "1.25in"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
-\align left
 Texto estirado horizontalmente.
 \end_layout
 
@@ -27882,10 +27860,10 @@ name "sec:Decoración"
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Cuadros ! Decoración
+Marcos ! Decoración
 \end_layout
 
 \end_inset
@@ -27894,13 +27872,13 @@ Cuadros ! Decoración
 \end_layout
 
 \begin_layout Standard
-El estilo de marco del cuadro se puede determinar en la lista desplegable
+El estilo de borde del marco se puede determinar en la lista desplegable
  
 \family sans
 Tipo
 \family default
- del diálogo de cuadros.
- Son posibles los siguientes marcos:
+ del diálogo de marcos.
+ Son posibles los siguientes bordes:
 \end_layout
 
 \begin_layout Description
@@ -27908,11 +27886,11 @@ Sin
 \begin_inset space ~
 \end_inset
 
-marco No se dibuja ninguno.
+borde No se dibuja ninguno.
 \end_layout
 
 \begin_layout Description
-Marco
+Borde
 \begin_inset space ~
 \end_inset
 
@@ -27920,8 +27898,8 @@ rectangular
 \begin_inset space ~
 \end_inset
 
-sencillo Dibuja un marco rectangular alrededor del cuadro.
- El grosor del marco depende de 
+sencillo Dibuja un borde rectangular alrededor del marco.
+ El grosor del borde depende de 
 \series bold
 
 \backslash
@@ -27944,7 +27922,7 @@ status open
 
 \begin_layout Plain Layout
 \align center
-Cuadro rectangular
+Marco rectangular
 \end_layout
 
 \end_inset
@@ -27953,7 +27931,7 @@ Cuadro rectangular
 \end_layout
 
 \begin_layout Description
-Marco
+Borde
 \begin_inset space ~
 \end_inset
 
@@ -27961,7 +27939,7 @@ ovalado,
 \begin_inset space ~
 \end_inset
 
-fino Dibuja un marco ovalado cuya línea tiene un grosor de 0.4
+fino Dibuja un borde ovalado cuya línea tiene un grosor de 0.4
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -27982,7 +27960,7 @@ status open
 
 \begin_layout Plain Layout
 \align center
-Marco ovalado, fino
+Borde ovalado, fino
 \end_layout
 
 \end_inset
@@ -27991,7 +27969,7 @@ Marco ovalado, fino
 \end_layout
 
 \begin_layout Description
-Marco
+Borde
 \begin_inset space ~
 \end_inset
 
@@ -27999,7 +27977,7 @@ ovalado,
 \begin_inset space ~
 \end_inset
 
-grueso Dibuja un marco ovalado cuya línea tiene un grosor de 0.8
+grueso Dibuja un borde ovalado cuya línea tiene un grosor de 0.8
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -28020,7 +27998,7 @@ status open
 
 \begin_layout Plain Layout
 \align center
-Cuadro ovalado, grueso
+Borde ovalado, grueso
 \end_layout
 
 \end_inset
@@ -28029,11 +28007,11 @@ Cuadro ovalado, grueso
 \end_layout
 
 \begin_layout Description
-Marco
+Borde
 \begin_inset space ~
 \end_inset
 
-sombreado Dibuja un marco rectangular de sombra alrededor del cuadro.
+sombreado Dibuja un borde rectangular de sombra alrededor del marco.
  El grosor de la línea tiene el tamaño dado por 
 \series bold
 
@@ -28061,7 +28039,7 @@ status open
 
 \begin_layout Plain Layout
 \align center
-Marco sombrado
+Borde sombrado
 \end_layout
 
 \end_inset
@@ -28074,7 +28052,7 @@ Fondo
 \begin_inset space ~
 \end_inset
 
-sombreado Dibuja un cuadro con fondo de color rojo.
+coloreado Dibuja un cuadro con fondo de color rojo.
  A diferencia de los cuadros coloreados,
 \begin_inset Foot
 status collapsed
@@ -28084,7 +28062,7 @@ véase sec.
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Cuadros-Coloreados"
+reference "sec:Marcos-Coloreados"
 
 \end_inset
 
@@ -28117,7 +28095,7 @@ Cuadro con fondo sombreado
 \end_layout
 
 \begin_layout Description
-Marco
+Borde
 \begin_inset space ~
 \end_inset
 
@@ -28125,7 +28103,7 @@ rectangular
 \begin_inset space ~
 \end_inset
 
-doble Dibuja un rectángulo de línea doble alrededor del cuadro.
+doble Dibuja un rectángulo de línea doble alrededor.
  El grosor de la línea interior es 0.75
 \begin_inset space \thinspace{}
 \end_inset
@@ -28186,7 +28164,7 @@ status open
 
 \begin_layout Plain Layout
 \align center
-Marco doble
+Borde doble
 \end_layout
 
 \end_inset
@@ -28195,8 +28173,8 @@ Marco doble
 \end_layout
 
 \begin_layout Standard
-La etiqueta del cuadro en LyX reflejará el estilo de marco elegido.
- Para poder utilizar los distintos marcos, debe estar instalado el paquete
+La etiqueta del marco en LyX reflejará el estilo de borde elegido.
+ Para poder utilizar los distintos bordes, debe estar instalado el paquete
  LaTeX 
 \series bold
 fancybox
@@ -28220,12 +28198,12 @@ LaTeX-paquetes ! fancybox
 
 Si usas la decoración 
 \family sans
-marco rectangular sencillo
+borde rectangular sencillo
 \family default
- sin cuadro interior, puedes permitir saltos de página dentro del cuadro.
- Ten en cuenta que en ese caso, al contrario que otros cuadros enmarcados,
- el marco usa siempre todo el ancho de columna, el cuadro va en un párrafo
- propio y 
+ sin marco interior, puedes permitir saltos de página dentro del marco.
+ Ten en cuenta que en ese caso, al contrario que otros marcos con bordes,
+ el borde usa siempre todo el ancho de columna, el marco se establece como
+ su párrafo propio y 
 \series bold
 
 \backslash
@@ -28238,7 +28216,7 @@ fboxrule
 fboxsep
 \series default
  no funcionan.
- El grosor del marco tiene el tamaño de 
+ El grosor del borde tiene el tamaño de 
 \series bold
 
 \backslash
@@ -28268,12 +28246,12 @@ Cuadro que permite saltos de página
 \end_layout
 
 \begin_layout Section
-Personalización de cuadros
+Personalización de marcos
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Cuadros ! Personalizar
+Marcos ! Personalizar
 \end_layout
 
 \end_inset
@@ -28353,7 +28331,7 @@ status open
 
 \begin_layout Plain Layout
 \align center
-Cuadro rectangular con 
+Marco rectangular con 
 \series bold
 
 \backslash
@@ -28398,7 +28376,7 @@ fboxrule}{0.4pt}
 \begin_inset VSpace bigskip
 \end_inset
 
-El espacio entre el marco y el contenido del cuadro es 3
+El espacio entre el borde y el contenido del cuadro es 3
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -28428,7 +28406,7 @@ determina un valor de 10
 \begin_inset space \thinspace{}
 \end_inset
 
-pt, como en el siguiente cuadro:
+pt, como en el siguiente marco:
 \end_layout
 
 \begin_layout Standard
@@ -28462,7 +28440,7 @@ status open
 
 \begin_layout Plain Layout
 \align center
-Cuadro rectangular con 
+Marco rectangular con 
 \series bold
 
 \backslash
@@ -28507,7 +28485,7 @@ fboxsep}{3pt}
 \begin_inset VSpace bigskip
 \end_inset
 
-El diámetro de las esquinas de los cuadros ovalados se puede modificar con
+El diámetro de las esquinas de los bordes ovalados se puede modificar con
  el comando 
 \series bold
 
@@ -28558,7 +28536,7 @@ mínimo
 \family default
  
 \family sans
-(ancho y alto del cuadro)
+(ancho y alto del marco)
 \family default
 .
  Por omisión es 
@@ -28599,7 +28577,7 @@ status open
 
 \begin_layout Plain Layout
 \align center
-Cuadro ovalado con 
+Marco ovalado con 
 \series bold
 
 \backslash
@@ -28653,7 +28631,7 @@ shadowsize
 \begin_inset space \thinspace{}
 \end_inset
 
-pt en el cuadro siguiente:
+pt en el marco siguiente:
 \end_layout
 
 \begin_layout Standard
@@ -28697,7 +28675,7 @@ status open
 
 \begin_layout Plain Layout
 \align center
-Cuadro sombreado con 
+Borde sombreado con 
 \series bold
 
 \backslash
@@ -28768,7 +28746,7 @@ pt; puede cambiarse con el valor de
 FrameSep
 \series default
 .
- Por ejemplo, el marco del cuadro siguiente se establece con los comandos
+ Por ejemplo, el borde del marco siguiente se establece con los comandos
  en código TeX
 \end_layout
 
@@ -28829,31 +28807,16 @@ height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-Texto en un 
+Texto en un marco con borde sencillo de 5
+\begin_inset space \thinspace{}
+\end_inset
+
+pt.
+ que permite
 \family sans
-marco
-\begin_inset space ~
-\end_inset
-
-sencillo
-\begin_inset space ~
-\end_inset
-
-con
-\begin_inset space ~
-\end_inset
-
-salto
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-página
+ 
 \family default
-.
+salto de página.
 \end_layout
 
 \end_inset
@@ -28893,15 +28856,15 @@ FrameSep}{9pt}
 \end_layout
 
 \begin_layout Standard
-Para los cuadros con 
+Para los marcos con 
 \family sans
 fondo
 \begin_inset space ~
 \end_inset
 
-sombreado
+coloreado
 \family default
- el espacio por omisión entre el contenido y el marco es 3
+ el espacio por omisión entre el contenido y el borde es 3
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -28936,11 +28899,11 @@ Colores
 \SpecialChar \menuseparator
 
 \family sans
-cuadro
+marco
 \begin_inset space ~
 \end_inset
 
-sombreado
+coloreado
 \family default
 .
  El esquema del comando 
@@ -28956,7 +28919,7 @@ definecolor
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Tablas-Coloreadas"
+reference "sec:Cuadros-Coloreados"
 
 \end_inset
 
@@ -28982,7 +28945,7 @@ color
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Cuadros-Coloreados"
+reference "sec:Marcos-Coloreados"
 
 \end_inset
 
@@ -29053,11 +29016,7 @@ status open
 \begin_layout Plain Layout
 
 \color yellow
-Texto amarillo en un cuadro con 
-\family sans
-fondo sombreado 
-\family default
- en color verde oscuro.
+Texto amarillo en un marco con fondo coloreado en verde oscuro.
 \end_layout
 
 \end_inset
@@ -29091,7 +29050,7 @@ definecolor{shadecolor}{rgb}{1,0,0}
 \begin_inset VSpace bigskip
 \end_inset
 
-Los cambios en las dimensiones son válidos para todos los cuadros que siguen
+Los cambios en las dimensiones son válidos para todos los marcos que siguen
  a los comandos.
 \end_layout
 
@@ -29105,10 +29064,10 @@ name "sec:Minipáginas"
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Cuadros ! Minipáginas
+Marcos ! Minipáginas
 \end_layout
 
 \end_inset
@@ -29131,7 +29090,7 @@ A continuación hay dos ejemplos de minipáginas adosadas.
 \begin_inset space \thinspace{}
 \end_inset
 
-% y separadas por un relleno horizontal, insertado vía el menú 
+% y separadas por un relleno horizontal, insertado mediante el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Formato\SpecialChar \menuseparator
@@ -29300,7 +29259,7 @@ status open
 Nota:
 \series default
  No puedes tener flotantes o notas al margen en minipáginas pero sí puedes
- tener minipáginas en tablas, flotantes, y otros cuadros.
+ tener minipáginas en cuadros, en flotantes, y en otros marcos.
 \end_layout
 
 \end_inset
@@ -29309,19 +29268,19 @@ Nota:
 \end_layout
 
 \begin_layout Section
-Cuadros de párrafo
+Marcos de párrafo
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Cuadros-de-Párrafo"
+name "sec:Marcos-de-Párrafo"
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Cuadros ! de párrafo
+Marcos ! de párrafo
 \end_layout
 
 \end_inset
@@ -29330,7 +29289,7 @@ Cuadros ! de párrafo
 \end_layout
 
 \begin_layout Standard
-Los cuadros de párrafo son similares a las minipáginas con la diferencia
+Los marcos de párrafo son similares a las minipáginas con la diferencia
  de que no pueden contener notas al pie.
 \end_layout
 
@@ -29347,17 +29306,17 @@ width "33col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Texto en un cuadro de párrafo.
- Texto en un cuadro de párrafo.
+Texto en un marco de párrafo.
+ Texto en un marco de párrafo.
  Esta nota no aparece:
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Esta es una nota en cuadro de párrafo y por eso no aparecerá.
+Esta es una nota en un marco de párrafo y por eso no aparecerá.
 \end_layout
 
 \end_inset
@@ -29371,12 +29330,12 @@ Esta es una nota en cuadro de párrafo y por eso no aparecerá.
 \end_layout
 
 \begin_layout Section
-Cuadros para palabras y caracteres
+Marcos para palabras y caracteres
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Cuadros ! para palabras y caracteres
+Marcos ! para palabras y caracteres
 \end_layout
 
 \end_inset
@@ -29394,10 +29353,10 @@ name "sec:Evitar-la-Partición"
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Cuadros ! para evitar la partición de palabras
+Marcos ! para evitar partición de palabras
 \end_layout
 
 \end_inset
@@ -29406,9 +29365,9 @@ Cuadros ! para evitar la partición de palabras
 \end_layout
 
 \begin_layout Standard
-El cuadro tipo 
+El marco tipo 
 \family sans
-Cuadro de línea
+Marco de línea
 \family default
  sirve para evitar que una palabra sea partida con guión.
 \begin_inset Newline newline
@@ -29424,13 +29383,13 @@ palabra».
 
 \begin_layout Standard
 Para evitar la división de la palabra «estalarguísimapalabra», ponla en
- un cuadro, establece el 
+ un marco, establece el 
 \family sans
-Cuadro interior
+Marco interior
 \family default
  en 
 \family sans
-Cuadro de línea
+Marco de línea
 \family default
  y el ancho en 
 \family sans
@@ -29559,10 +29518,10 @@ name "sub:Alineación-Vertical"
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Cuadros ! para alineación vertical
+Marcos ! para alineación vertical
 \end_layout
 
 \end_inset
@@ -29596,7 +29555,7 @@ raisebox{elevación}[altura][profundidad]{contenido del cuadro}
 \end_layout
 
 \begin_layout Standard
-La elevación puede ser un valor positivo para subir el cuadro o negativo
+La elevación puede ser un valor positivo para subir el marco o negativo
  para bajarlo.
 \end_layout
 
@@ -29732,7 +29691,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Si por alguna razón quieres impedir esto, pon la altura de cuadro a cero.
+Si por alguna razón quieres impedir esto, pon la altura del marco a cero.
  Por ejemplo
 \end_layout
 
@@ -29805,19 +29764,19 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-Cuadros coloreados
+Marcos coloreados
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Cuadros-Coloreados"
+name "sec:Marcos-Coloreados"
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Cuadros ! Color
+Marcos ! Colorear
 \end_layout
 
 \end_inset
@@ -29826,12 +29785,12 @@ Cuadros ! Color
 \end_layout
 
 \begin_layout Subsection
-Color en texto
+Colorear el fondo de un texto
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Color ! en texto
+Color ! de fondo en un texto
 \end_layout
 
 \end_inset
@@ -29840,7 +29799,7 @@ Color ! en texto
 \end_layout
 
 \begin_layout Standard
-Para colorear el fondo de un texto, éste debe ponerse en un cuadro coloreado.
+Para colorear el fondo de un texto, éste debe ponerse en un marco coloreado.
  Esto requiere cargar el paquete LaTeX 
 \series bold
 color
@@ -29917,7 +29876,7 @@ ined
 \begin_inset VSpace medskip
 \end_inset
 
-Los cuadros coloreados se crean con el comando 
+Los marcos coloreados se crean con el comando 
 \series bold
 
 \backslash
@@ -29931,12 +29890,12 @@ colorbox
 \series bold
 
 \backslash
-colorbox{color}{contenido del cuadro}
+colorbox{color}{contenido del marco}
 \end_layout
 
 \begin_layout Standard
-El contenido también puede ser un cuadro y los cuadros coloreados también
- pueden estar en otros cuadros.
+El contenido también puede ser un marco y los marcos coloreados también
+ pueden estar en otros marcos.
 \end_layout
 
 \begin_layout Standard
@@ -29982,7 +29941,7 @@ También puedes definir tus propios colores según se explica en la sección
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Tablas-Coloreadas"
+reference "sec:Cuadros-Coloreados"
 
 \end_inset
 
@@ -30046,7 +30005,7 @@ status collapsed
 \begin_inset VSpace bigskip
 \end_inset
 
-Si quieres un marco de distinto color, puedes emplear el comando 
+Si quieres un borde de distinto color, puedes emplear el comando 
 \series bold
 
 \backslash
@@ -30060,7 +30019,7 @@ fcolorbox
 \series bold
 
 \backslash
-fcolorbox{color del marco}{color del cuadro}{contenido del cuadro}
+fcolorbox{color del borde}{color del fondo}{contenido del marco}
 \end_layout
 
 \begin_layout Standard
@@ -30077,7 +30036,7 @@ fcolorbox
 colorbox
 \series default
 .
- El grosor del marco y el espacio entre él y el contenido se puede ajustar
+ El grosor del borde y el espacio entre él y el contenido se puede ajustar
  con las longitudes 
 \series bold
 
@@ -30121,7 +30080,7 @@ Este es un ejemplo en el que se ha puesto un grosor de 1
 \begin_inset space \thinspace{}
 \end_inset
 
-mm para la línea del marco:
+mm para la línea del borde:
 \begin_inset Newline newline
 \end_inset
 
@@ -30153,7 +30112,7 @@ fcolorbox{cyan}{magenta}{
 
 \end_inset
 
-Texto en un marco coloreado y enmarcado.
+Texto en un marco con fondo y borde en distintos colores.
 \begin_inset ERT
 status collapsed
 
@@ -30171,7 +30130,7 @@ status collapsed
 \begin_inset VSpace bigskip
 \end_inset
 
-Por supuesto también puedes colorear el texto en un marco coloreado:
+Por supuesto, también puedes colorear el texto en un marco coloreado:
 \begin_inset Newline newline
 \end_inset
 
@@ -30190,7 +30149,7 @@ fcolorbox{cyan}{magenta}{
 
 
 \color yellow
-Texto coloreado en un marco sombreado y coloreado.
+Marco con texto, fondo y borde en distintos colores.
 \color none
 
 \begin_inset ERT
@@ -30239,8 +30198,8 @@ status open
 \series bold
 Nota:
 \series default
- El texto en cuadros coloreados no puede tener saltos de línea.
- Para colorear líneas o párrafos múltiples, usa un cuadro dentro de un cuadro
+ El texto en marcos con fondo coloreado no puede tener saltos de línea.
+ Para colorear líneas o párrafos múltiples, usa un marco dentro de un marco
  coloreado como se describe a continuación.
 \end_layout
 
@@ -30250,7 +30209,7 @@ Nota:
 \end_layout
 
 \begin_layout Subsection
-Color en párrafos
+Colorear el fondo de párrafos
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Color-en-Párrafos"
@@ -30290,7 +30249,7 @@ colorbox{color}{
 \end_layout
 
 \begin_layout Standard
- Detrás de la minipágina inserta una llave de cierre «
+Detrás de la minipágina inserta una llave de cierre «
 \series bold
 }
 \series default
@@ -30343,7 +30302,7 @@ Otro ejemplo de nota
 
 \end_inset
 
- y puede incluir tablas y figuras.
+ y puede incluir cuadros y figuras.
 \end_layout
 
 \begin_layout Plain Layout
@@ -30469,7 +30428,7 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-Cuadros rotados y escalados
+Marcos rotados y escalados
 \end_layout
 
 \begin_layout Standard
@@ -30546,7 +30505,7 @@ status open
 \series bold
 Nota:
 \series default
- Los cuadros rotados o escalados no pueden contener flotantes.
+ Los marcos rotados o escalados no pueden contener flotantes.
 \end_layout
 
 \end_inset
@@ -30555,12 +30514,12 @@ Nota:
 \end_layout
 
 \begin_layout Subsection
-Cuadros rotados
+Marcos rotados
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Cuadros ! Rotar
+Marcos ! Rotar
 \end_layout
 
 \end_inset
@@ -30587,10 +30546,10 @@ Figuras ! Rotar
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas ! Rotar
+Cuadros ! Rotar
 \end_layout
 
 \end_inset
@@ -30599,8 +30558,8 @@ Tablas ! Rotar
 \end_layout
 
 \begin_layout Standard
-Para rotar material debes ponerlo en un cuadro rotado.
- Los cuadros rotados se crean con el comando 
+Para rotar material debes ponerlo en un marco rotado.
+ Los marcos rotados se crean con el comando 
 \series bold
 
 \backslash
@@ -30614,7 +30573,7 @@ rotatebox
 \series bold
 
 \backslash
-rotatebox[origen de rotación]{ángulo de rotación}{contenido del cuadro}
+rotatebox[origen de rotación]{ángulo de rotación}{contenido del marco}
 \end_layout
 
 \begin_layout Standard
@@ -30649,7 +30608,7 @@ t
 lt
 \emph default
  significa que el origen de rotación es la esquina superior izquierda del
- cuadro.
+ marco.
  Si no se especifica origen de rotación se usará la posición 
 \emph on
 l
@@ -30667,7 +30626,7 @@ En el siguiente ejemplo se ha insertado el comando
 rotatebox[origin=c]{60}{ 
 \series default
 como código TeX delante del texto «con rotación»; después del texto, el
- cuadro se ha cerrado con llave de cierre en código TeX.
+ marco se ha cerrado con llave en código TeX.
 \end_layout
 
 \begin_layout Standard
@@ -30699,8 +30658,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-El contenido del cuadro puede ser también otro cuadro o una ecuación en
- línea:
+El contenido del marco puede ser también otro marco o una ecuación en línea:
 \end_layout
 
 \begin_layout Standard
@@ -30780,7 +30738,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-O una imagen o una tabla:
+O una imagen o un cuadro:
 \end_layout
 
 \begin_layout Standard
@@ -30816,7 +30774,7 @@ status collapsed
 
 \end_inset
 
- y una tabla girada 
+ y un cuadro girado 
 \begin_inset ERT
 status collapsed
 
@@ -30894,42 +30852,42 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-Cuadros escalados
+Marcos para variar la escala
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Cuadros ! Escalar
+Marcos ! para variar la escala
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Material escalado
+Material a escala
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Figuras ! Escalar
+Figuras ! a escala
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tablas ! Escalar
+Cuadros ! a escala
 \end_layout
 
 \end_inset
@@ -30938,7 +30896,8 @@ Tablas ! Escalar
 \end_layout
 
 \begin_layout Standard
-Para escalar material se pueden usar los comandos 
+Para modificar las proporciones de un material se pueden usar los comandos
+ 
 \series bold
 
 \backslash
@@ -30968,7 +30927,7 @@ scalebox
 \series bold
 
 \backslash
-scalebox{horizontal}[vertical]{contenido del cuadro}
+scalebox{horizontal}[vertical]{contenido del marco}
 \end_layout
 
 \begin_layout Standard
@@ -31047,7 +31006,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Si un factor de escala es negativo el contenido del cuadro es reflejado.
+Si un factor de escala es negativo el contenido del marco es reflejado.
  Por eso el comando 
 \series bold
 
@@ -31144,8 +31103,8 @@ El comando
 \backslash
 resizebox
 \series default
- sirve para escalar el cuadro a una altura y anchura definidas, según el
- esquema:
+ sirve para variar la escala del marco a una altura y anchura definidas,
+ según el esquema:
 \end_layout
 
 \begin_layout Standard
@@ -31153,7 +31112,7 @@ resizebox
 \series bold
 
 \backslash
-resizebox{anchura}{altura}{contenido del cuadro}
+resizebox{anchura}{altura}{contenido del marco}
 \end_layout
 
 \begin_layout Standard
@@ -31161,8 +31120,8 @@ Si uno de los argumentos del comando es un signo de exclamación,
 \series bold
 !
 \series default
-, la escala se produce de forma que se mantiene la relación de las dimensiones
- originales del contenido del cuadro.
+, la escala se hace de forma que se mantiene la relación de las dimensiones
+ originales del contenido del marco.
  
 \end_layout
 
@@ -31277,7 +31236,7 @@ resizebox
 \end_layout
 
 \begin_layout Standard
-Los cuadros se pueden combinar en cualquier orden.
+Los marcos se pueden combinar en cualquier orden.
  Por ejemplo, el comando
 \series bold
 
@@ -31334,12 +31293,7 @@ status collapsed
 
 \begin_layout Standard
 \noindent
-Un cuadro puede contener imágenes, tablas y ecuaciones en línea:
-\end_layout
-
-\begin_layout Standard
-\noindent
-
+Un marco puede contener imágenes, cuadros y ecuaciones en línea:
 \end_layout
 
 \begin_layout Standard
@@ -31507,7 +31461,7 @@ Si «fleqn» se añade a las opciones de clase del documento.
 
 \end_inset
 
- también pueden escalarse las ecuaciones en estilo presentación.
+ también se puede variar la escala de las ecuaciones en estilo presentación.
 \end_layout
 
 \begin_layout Chapter
@@ -31719,7 +31673,7 @@ Fecha
 today
 \series default
  en código TeX.
- Los distintos métodos se comparan en la tabla
+ Los distintos métodos se comparan en el cuadro
 \begin_inset space ~
 \end_inset
 
@@ -31915,7 +31869,7 @@ LyX
 \begin_inset Text
 
 \begin_layout Plain Layout
-como cuadro
+como recuadro
 \end_layout
 
 \end_inset
@@ -32048,7 +32002,7 @@ Material Externo
 
 
 \family default
-El material externo se muestra en LyX como un cuadro del tipo:
+El material externo se muestra en LyX como un recuadro del tipo:
 \family sans
  
 \family default
@@ -32127,7 +32081,7 @@ Clase del documento
 
 \begin_layout Standard
 Los documentos incluidos como hijos se muestran en la pantalla de LyX como
- cuadros del tipo: 
+ recuadros del tipo: 
 \begin_inset Graphics
 	filename clipart/DocumentoHijoQt4.png
 	scale 80
@@ -32446,7 +32400,7 @@ status open
 \series bold
 Nota:
 \series default
- Incluir el mismo documento dos veces  con métodos diferentes podría causar
+ Incluir el mismo documento dos veces con métodos diferentes podría causar
  problemas en LaTeX.
 \end_layout
 
@@ -32456,65 +32410,48 @@ Nota:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you want to view/export only selected children of your master document,
- either because you want to save compiling time or because you want to distribut
-e single chapters of the book you are just writing, you can exclude children
- from the output.
- This is done via the menu 
+Si quieres ver o exportar solo determinados hijos del documento maestro,
+ bien por ahorrar tiempo de compilación, bien para distribuir capítulos
+ individuales del libro, puedes excluir hijos en la salida.
+ Esto se consigue mediante el menú 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Child Documents
+Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Documento hijo
 \family default
 .
- You can exclude\SpecialChar \slash{}
-include children by double-clicking on the 
-\family sans
-include to output
-\family default
- column of the respective child document in the list (note that this only
- works for documents embedded via 
-\begin_inset Quotes eld
+ Puedes excluir o incluir hijos con doble clic sobre sus nombres en la lista;
+ (esto solo funciona para documentos insertados mediante 
+\begin_inset Quotes fld
 \end_inset
 
-Include
-\begin_inset Quotes erd
+Anexar
+\begin_inset Quotes frd
 \end_inset
 
-, not with 
-\begin_inset Quotes eld
+, no con 
+\begin_inset Quotes fld
 \end_inset
 
-Input
-\begin_inset Quotes erd
+Incorporar
+\begin_inset Quotes frd
 \end_inset
 
 ).
- If the option 
+ Si se marca la opción 
 \family sans
-Maintain counters and references
+Mantener contadores y referencias
 \family default
- is enabled, LyX will assure that all page numbers, references etc.
-\begin_inset space ~
-\end_inset
-
-are correct as if the whole document was processed.
- This is useful if you want the selected sub-documents to look exactly as
- in the context of the whole document.
- However, LyX needs to process the whole document in the background for
- this feature.
- So if you want to save compile time and if counters and references do not
- need to be correct, disable this checkbox.
+ LyX garantiza que todos los números de página, referencias, etc., se respetan
+ como si se procesara el documento completo.
+ No obstante, LyX tiene que procesar el documento entero en segundo plano
+ para que esta característica funcione.
+ Por tanto, si quieres ahorrar tiempo de compilación, y no es preciso mantener
+ los contadores y referencias, desmarca esta casilla.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Alternatively
-\lang spanish
-, se puede poner cada archivo incluido en una rama.
+Alternativamente, se puede poner cada archivo incluido en una rama.
 \begin_inset Foot
 status collapsed
 
@@ -32532,12 +32469,19 @@ Guía del usuario
 
 \end_inset
 
- Habilitando/deshabilitando las ramas puedes decidir qué archivos incluidos
+ Habilitando o deshabilitando las ramas puedes decidir qué archivos incluidos
  aparecerán en la salida.
- 
-\lang english
-This has the advantage that it also works with Input'ed sub-documents.
- However, counters and references will not be maintained with this approach.
+ Esto tiene la ventaja de que también funciona con hijos incluidos con 
+\begin_inset Quotes fld
+\end_inset
+
+Incorporar
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Sin embargo, los contadores y las referencias no se mantendrán usando este
+ método.
 \end_layout
 
 \begin_layout Chapter
@@ -32731,7 +32675,7 @@ Leyenda
 \family default
 
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Para traducir la etiqueta 
@@ -32742,7 +32686,8 @@ Listado
 \begin_inset Quotes erd
 \end_inset
 
- de la leyenda, se añade al preámbulo del documento el comando 
+ de la leyenda en la salida, se añade al preámbulo LaTeX del documento el
+ comando 
 \series bold
 
 \backslash
@@ -32902,7 +32847,7 @@ Además, puedes especificar un rango de líneas para que sólo éstas aparezcan
  en la salida.
  La opción 
 \family sans
-Tabla
+Mapa
 \begin_inset space ~
 \end_inset
 
@@ -32914,7 +32859,11 @@ caracteres
 \begin_inset space ~
 \end_inset
 
-extendida
+tradicional
+\begin_inset space ~
+\end_inset
+
+mejorado
 \family default
  debería emplearse si se usan en el código caracteres nacionales como la
  diéresis alemana.
@@ -32922,8 +32871,8 @@ extendida
 \end_inset
 
 A continuación hay un ejemplo con numeración de líneas a la izquierda, paso
- «3», lenguaje «Python», opciones de estilo «Tabla de caracteres extendida»
- y «Espacio como símbolo», rango de líneas 3-8:
+ «3», lenguaje «Python», opciones de estilo «Mapa de caracteres tradicional
+ mejorado» y «Espacio como símbolo», rango de líneas 3-8:
 \begin_inset listings
 lstparams "extendedchars=true,firstline=3,language=Python,lastline=8,numbers=left,showspaces=true,stepnumber=3"
 inline false
@@ -34281,7 +34230,7 @@ La anchura total de
 \emph on
 n
 \emph default
- celdas de una tabla 
+ celdas de un cuadro 
 \begin_inset Formula $W_{\mathrm{tot\, n}}$
 \end_inset
 
@@ -34289,7 +34238,8 @@ n
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 W_{\mathrm{tot}\, n}=n\cdot(W_{g\, n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_n}
 \end{equation}
 
@@ -34348,7 +34298,8 @@ reference "eq:Wtot_n"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 W_{\mathrm{tot\, mult}}=W_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_mult}
 \end{equation}
 
@@ -34384,7 +34335,7 @@ reference "eq:Wtot_mult"
 \emph on
 n
 \emph default
- columnas, de forma que cada una de ellas tiene una anchura total  
+ columnas, de forma que cada una de ellas tiene una anchura total 
 \begin_inset Formula $W_{\mathrm{tot\, mult}}/n$
 \end_inset
 
@@ -34392,7 +34343,8 @@ n
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 W_{g\, n}=(W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth}))/n
 \end{equation}
 

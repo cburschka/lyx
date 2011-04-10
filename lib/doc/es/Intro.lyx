@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
@@ -39,13 +39,14 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language spanish
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -100,6 +101,7 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -201,7 +203,7 @@ _
 \end_inset
 
 , se convirtió en una forma de resaltar texto.
- Para crear una tabla, establecías a mano el ancho de cada columna y ponías
+ Para crear un cuadro, establecías a mano el ancho de cada columna y ponías
  las tabulaciones necesarias.
  Lo mismo se aplicaba para cartas y otros textos sangrados a la derecha.
  Además, la ruptura de palabras al final de línea requería ser muy cuidadoso
@@ -552,7 +554,7 @@ Matemáticas
 \end_layout
 
 \begin_layout Itemize
-Tablas
+Cuadros y tablas
 \end_layout
 
 \begin_layout Itemize
@@ -561,8 +563,8 @@ Referencias cruzadas
 
 \begin_layout Standard
 Por supuesto, muchos procesadores de texto modernos manejan símbolos matemáticos
-, tablas, división de palabras a final de línea, e incluso comienzan a aproximar
-se a las definiciones de estilo y al concepto WYSIWYM.
+, cuadros o tablas, división de palabras a final de línea, e incluso comienzan
+ a aproximarse a las definiciones de estilo y al concepto WYSIWYM.
  Sin embargo, acaban de empezar a incluir estas características, mientras
  que LyX está construido sobre el sistema de proceso de documentos LaTeX.
  LaTeX lleva más de 20 años con ellas, y 
@@ -659,7 +661,7 @@ TeX no es sólo un motor de tipografía, también te permite definir macros.
  Aquí es donde Leslie Lamport entra en escena.
  Él buscaba un paquete de macros que estuviera más orientado al usuario
  que al tipógrafo, con un conjunto de comandos para componer cosas como
- secciones, tablas o fórmulas de manera consistente y uniforme.
+ secciones, cuadros o fórmulas de manera consistente y uniforme.
  Así es como nació LaTeX.
  
 \end_layout
@@ -706,8 +708,8 @@ comportamiento
  dos archivos de estilo de LaTeX distintos diseñados para esos fines.
  Hay archivos de estilo para un montón de cosas: imprimir sobres o etiquetas,
  cambiar el sangrado, añadir fuentes nuevas, manipular gráficos, personalizar
- los encabezados o la bibliografía, alterar la colocación y la apariencia
- de notas al pie, tablas y figuras, personalizar listas, etc.
+ los encabezados o la bibliografía, alterar la colocación y el aspecto de
+ notas al pie, cuadros o tablas y figuras, personalizar listas, etc.
 \end_layout
 
 \begin_layout Standard
@@ -1295,7 +1297,7 @@ Unidades empleadas en los manuales
 \end_layout
 
 \begin_layout Standard
-Para entender las unidades empleadas en esta documentación, la tabla
+Para entender las unidades empleadas en esta documentación, el cuadro
 \begin_inset space ~
 \end_inset
 
@@ -1925,7 +1927,8 @@ insertados Ampliación de la
 Guía del usuario
 \emph default
 .
- Explica con detalle el empleo de tablas, gráficos, flotantes, notas y cuadros.
+ Explica con detalle el empleo de cuadros, gráficos, flotantes, notas y
+ marcos.
  Además incluye muchos trucos de expertos en LaTeX.
 \end_layout
 
@@ -1967,7 +1970,7 @@ de
 \begin_inset space ~
 \end_inset
 
-teclado Contiene tablas con las combinaciones de teclas definidas actualmente
+teclado Contiene cuadros con las combinaciones de teclas definidas actualmente
  en LyX.
 \end_layout
 

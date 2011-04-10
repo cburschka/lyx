@@ -1,5 +1,5 @@
-#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass scrbook
@@ -52,6 +52,7 @@ logicalmkup
 theorems-ams
 theorems-ams-extended
 \end_modules
+\maintain_unincluded_children false
 \begin_local_layout
 Format 7
 InsetLayout 	      EstiloCarácter:ItemMenú
@@ -68,17 +69,24 @@ EndPreamble
 End
 \end_local_layout
 \language spanish
+\language_package default
 \inputencoding latin1
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -100,21 +108,31 @@ End
 \use_geometry false
 \use_amsmath 0
 \use_esint 0
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Índice
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language french
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
 \end_header
 
 \begin_body
@@ -137,7 +155,7 @@ Richard Heck
 .
  Si tienes correcciones o comentarios, envíalos, por favor, a la lista de
  correo de Documentación de LyX, 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -336,7 +354,7 @@ Fuente
  
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -446,7 +464,7 @@ Cuando LyX ejecuta LaTeX sobre el archivo que estás editando, lleva a cabo
 
 \begin_layout Enumerate
 Convierte el documento a LaTeX y guarda un archivo con extensión 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -470,7 +488,7 @@ LaTeX sobre el archivo
  
 \family default
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -486,7 +504,7 @@ status collapsed
  
 \family default
 (quizá varias veces) y cualesquiera otros comandos (como 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -496,7 +514,7 @@ bibtex
 \end_inset
 
  o 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -569,7 +587,7 @@ dvips
 Ejecuta un visor PostScript, como 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -614,7 +632,7 @@ LaTeX
 \family default
 .
  Esto llamará al programa llamado 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -624,7 +642,7 @@ tex2lyx
 \end_inset
 
  que generará un archivo 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -634,7 +652,7 @@ foo.lyx
 \end_inset
 
  a partir del archivo 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -648,7 +666,7 @@ foo.tex
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -666,7 +684,7 @@ tex2lyx
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -678,7 +696,7 @@ tex2lyx
  traducirá casi todo el LaTeX legal, pero no todo.
  Dejará en modo TeX (ERT) cosas que no comprende, así que después de importar
  un archivo con 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -715,7 +733,7 @@ Todo lo que se puede hacer en LaTeX se puede hacer en LyX, por una razón
  de LaTeX.
  Si necesitas incluir comandos LaTeX en tu documento, puedes usar los cuadros
  de 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -743,10 +761,6 @@ Código TeX
 \begin_layout Standard
 Aquí hay un ejemplo de inserción de comandos LaTeX en un documento LyX.
  El código se ve así:
-\begin_inset VSpace defskip
-\end_inset
-
-
 \end_layout
 
 \begin_layout LyX-Code
@@ -834,7 +848,7 @@ end{tabular}
 
 \begin_layout Standard
 El cuadro en 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -991,7 +1005,7 @@ hijo
 para incluir ese archivo (deberías seleccionar el tipo 
 \family sans
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1008,7 +1022,7 @@ Entrada
  Recomendamos hacer esto solo si dispones de un archivo 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1140,7 +1154,7 @@ Los paquetes LaTeX suministran comandos especiales, que solo estarán disponible
  Por ejemplo, el paquete 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1179,7 +1193,7 @@ configurarse globalmente desde dentro del preámbulo para conseguir el efecto
 Declarar comandos definidos por el usuario (con 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1197,7 +1211,7 @@ newcommand
  o 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1235,7 +1249,7 @@ antes
 LyX añade su propio conjunto de definiciones al preámbulo del archivo 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1315,7 +1329,7 @@ LyX no comprueba esto por ti.
 \end_inset
 
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1344,14 +1358,14 @@ Aquí tenemos algunos ejemplos de lo que puedes añadir a un preámbulo y del
 \end_layout
 
 \begin_layout Subsubsection
-Ejemplo #1: Offsets
+Ejemplo 1: Ajustes del área de impresión
 \end_layout
 
 \begin_layout Standard
 Hay dos variables en LaTeX, 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1369,7 +1383,7 @@ hoffset
  y 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1393,7 +1407,7 @@ voffset
  Entonces intervienen 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1411,7 +1425,7 @@ hoffset
  y 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1438,7 +1452,7 @@ El
  valor predeterminado para 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1456,7 +1470,7 @@ hoffset
  y 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1476,17 +1490,15 @@ voffset
 \end_inset
 
 pt., no cambia la composición de la página.
-\end_layout
-
-\begin_layout Standard
-Desafortunadamente, algunos drivers DVI siempre parecen alterar la paginación.
+ Desafortunadamente, algunos controladores DVI siempre parecen alterar la
+ paginación.
  No tenemos ni idea de la causa de esto ni de por qué el administrador del
  sistema no lo arregla.
- Si estás usando LyX en un sistema que no administras personalmente, y el
- responsable no lo soluciona, 
+ Si estás usando LyX en un sistema que no administras personalmente y el
+ responsable es un inepto, 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1506,7 +1518,7 @@ hoffset
 y 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1551,7 +1563,7 @@ ahora los márgenes deberían ser correctos.
 \end_layout
 
 \begin_layout Subsubsection
-Ejemplo #2: Etiquetas
+Ejemplo 2: Etiquetas
 \end_layout
 
 \begin_layout Standard
@@ -1559,7 +1571,7 @@ Supongamos que quieres imprimir un puñado de etiquetas para direcciones.
  Hay un paquete estupendo disponible en CTAN, llamado 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1582,7 +1594,7 @@ labels.sty
 Primero, comprueba que estás utilizando la clase de documento 
 \family sans
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1647,7 +1659,7 @@ Esta es la configuración para hojas de etiquetas Avery®, stock #5360.
  LaTeX, poniendo los comandos 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1665,7 +1677,7 @@ begin{labels}
  y 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1693,7 +1705,7 @@ labels.sty
 Algún día, alguien escribirá un archivo de formato (
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1711,7 +1723,7 @@ status collapsed
 \end_layout
 
 \begin_layout Subsubsection
-Ejemplo #3: Sangrado de párrafos
+Ejemplo 3: Sangrado de párrafos
 \end_layout
 
 \begin_layout Standard
@@ -1720,6 +1732,47 @@ Los americanos están acostumbrados a sangrar la primera línea de
 todos
 \emph default
  los párrafos.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Por omisión, el estilo 
+\family typewriter
+spanish (babel)
+\family default
+ también sangra la primera línea de todos los párrafos.
+ Se puede cambiar con el comando 
+\family typewriter
+
+\backslash
+def
+\backslash
+spanishoptions{es-noindentfirst}
+\family default
+ en el preámbulo.
+ (Las opciones de 
+\family typewriter
+spanish
+\family default
+ 
+\emph on
+no
+\emph default
+ funcionan si se usa soporte 
+\family typewriter
+hyperref
+\family default
+).
+ (
+\emph on
+N.
+ del T)
+\emph default
+.
+\end_layout
+
+\end_inset
+
 
 \emph on
  
@@ -1728,15 +1781,15 @@ Igual que con otras de sus peculiares manías, casi todos ellos se lamentarán
  y gimotearán hasta que no consigan hacerlo a su manera y puedan sangrar
  la primera línea de todos los párrafos.
  (Sí, estamos de guasa.
- (¿Lo estamos?) Oh, yes.)
+ ¿Lo estamos? ¡Oh, yes!)
 \end_layout
 
 \begin_layout Standard
-Por supuesto, este comportamiento no es el estándar en tipografía.
+Por supuesto, este ajuste no es el estándar en tipografía.
  En los libros, habitualmente solo se sangra la primera línea de un párrafo
  
 \emph on
-cuando 
+si 
 \emph default
 sigue a otro.
  La idea que subyace tras el hecho de sangrar la primera línea de un párrafo
@@ -1764,7 +1817,7 @@ Si tu distribución de TeX no está descerebrada, tendrás este paquete, y
 \end_layout
 
 \begin_layout Subsubsection
-Ejemplo #4: Este documento
+Ejemplo 4: Este documento
 \end_layout
 
 \begin_layout Standard
@@ -1813,7 +1866,7 @@ post-mortem
  Pulsando sobre cualquiera de ellos el cursor se desplazará al lugar del
  archivo donde está el error.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Generalmente.
@@ -1821,7 +1874,7 @@ Generalmente.
  con el lugar correcto.
  Además hay casos en que LaTeX informa del error en una línea, pero el error
  preciso es anterior.
- Esto no es como olvidar una llave de cierre en un programa; Obtendrás error
+ Esto no es como olvidar una llave de cierre en un programa; obtendrás error
  pero más tarde.
 \end_layout
 
@@ -1874,7 +1927,7 @@ Hay algunos mensajes de error y alertas que son frecuentes.
 \begin_layout Itemize
 
 \family typewriter
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1910,7 +1963,7 @@ depurar
 \begin_layout Itemize
 
 \family typewriter
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1936,7 +1989,7 @@ Otro mensaje de aviso, esta vez sobre fuentes que LaTeX no encuentra.
 \begin_layout Itemize
 
 \family typewriter
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -1992,7 +2045,7 @@ das.
 \begin_layout Itemize
 
 \family typewriter
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2021,7 +2074,7 @@ No tan común como su primo.
 \begin_layout Itemize
 
 \family typewriter
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2039,7 +2092,7 @@ vbox
  y 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2069,7 +2122,7 @@ al saltar página.
 \begin_layout Itemize
 
 \family typewriter
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2103,12 +2156,12 @@ Xxxx
 \end_inset
 
  no está instalado en el sistema.
- Generalmente esto aparece porque algún paquete requqerido por el documento
+ Generalmente esto aparece porque algún paquete requerido por el documento
  no está instalado.
  Si no has tocado el preámbulo o no has usado el comando 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2178,7 +2231,7 @@ Reconfigurar
 Si has utilizado el comando 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2202,7 +2255,7 @@ pero el paquete en cuestión no está instalado, deberás instalarlo.
 \begin_layout Itemize
 
 \family typewriter
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2227,7 +2280,7 @@ Los mensajes de error que comienzan así te informan de que has especificado
 \begin_layout Itemize
 
 \family typewriter
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2255,7 +2308,7 @@ Si has insertado código LaTeX con errores de tipografía tendrás un aviso
 Hay otros mensajes de aviso y de error.
  Algunos se explican por sí mismos.
  Estos son generalmente mensajes de LaTeX.
- Otros son fráncamente crípticos.
+ Otros son francamente crípticos.
  Estos realmente son mensajes de error de TeX, y no tenemos pistas sobre
  su significado o sobre cómo descifrarlos.
  
@@ -2280,7 +2333,7 @@ Si observas un puñado de cuadros de error amontonados muy al principio del
 \end_inset
 
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2312,7 +2365,7 @@ De acuerdo, no faltan paquetes.
  de 
 \family sans
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2332,7 +2385,7 @@ protegidos
 \end_inset
 
 , 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2364,7 +2417,7 @@ línea
 o 
 \family sans
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2400,7 +2453,7 @@ página
 \begin_layout Enumerate
 Todo es correcto, no has utilizado ninguna de las opciones de ajuste fino,
  y has cumplido las reglas.
- ¿Has intentado hacer una fantástica maniobra? ¿Quizá  has hecho algo 
+ ¿Has intentado hacer una fantástica maniobra? ¿Quizá has hecho algo 
 \emph on
 funky
 \emph default
@@ -2416,7 +2469,7 @@ funky
  Si esto no es una opción, puedes envolver el texto en un 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2449,7 +2502,7 @@ Vale, no recibes ningún mensaje de error, pero la salida es horrorosa.
 
 \begin_deeper
 \begin_layout Enumerate
-reescalar la figura a la página.
+ajustar el tamaño de la figura a la página.
 \end_layout
 
 \begin_layout Enumerate
@@ -2544,7 +2597,7 @@ Knuth 1984a
  LyX soporta dos paquetes que suministra este estilo, 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2560,7 +2613,7 @@ natbib
  y 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2587,7 +2640,7 @@ emplear un archivo de estilo sin contador, probablemente tu elección debería
  ser 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2605,7 +2658,7 @@ natbib
  ibidem, etc., deberías considerar el nuevo paquete 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2766,7 +2819,7 @@ En ocasiones, es posible que necesites dividir la bibliografía en secciones.
 LyX provee soporte nativo para uno de estos paquetes, 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2803,7 +2856,7 @@ ftp://ctan.tug.org/tex-archive/macros/latex/contrib/bibtopic/
  La ventaja de este paquete (comparado con otros como 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2846,7 +2899,7 @@ ej.
 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2862,7 +2915,7 @@ fuentes.bib
  y 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2943,7 +2996,7 @@ secciones
  de datos 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -2959,7 +3012,7 @@ fuentes.bib
  y otra para la base de datos 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3030,7 +3083,7 @@ Trabajos científicos
  Como 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3064,7 +3117,7 @@ una bibliografía para cada sección o capítulo del documento, pero el paquete
  
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3080,7 +3133,7 @@ bibtopic
 , que sirve para crear bibliografías por secciones (véase la sección previa),
  provee una sencilla manera de hacer esta tarea si estás dispuesto a emplear
  un poco de 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3192,7 +3245,7 @@ secciones
  bibliografía (incluyendo la propia referencia BibTeX), entre 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3210,7 +3263,7 @@ begin{btUnit}
  y 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3226,7 +3279,7 @@ end{btUnit}
 
 \family default
  (estos comandos deben insertarse en 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3240,7 +3293,7 @@ código TeX
  el actual 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3265,7 +3318,7 @@ cada
 referencia de cita debe estar dentro de alguna 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3280,7 +3333,7 @@ btUnit
 \family default
 .
  Además, 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3332,7 +3385,7 @@ ej., libro y artículo—.
  (es decir, debe eliminarse todo lo que precede a 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3350,7 +3403,7 @@ begin{document}
 , así como esta misma línea y también
 \family typewriter
  
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3545,6 +3598,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100col%"
 special "none"
 height "1in"
@@ -3590,6 +3644,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100col%"
 special "none"
 height "1in"
@@ -3610,7 +3665,7 @@ Esta sección también requiere actualización.
 Copia la lista de bibliografía con todas las entradas en todos los subdocumentos
  y transfórmalas en un comentario.
  De esta forma LyX encontrará los archivos 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3627,7 +3682,7 @@ status collapsed
 Como la lista de bibliografía está en un comentario, LaTeX no la usará y
  las referencias se mostrarán así: [?], en lugar de así : [1].
  Una solución es usar el paquete LaTeX 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3675,7 +3730,7 @@ Encabezados y pies de página elaborados
 El formato de página predeterminado es más bien simple; para la clase 
 \family sans
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3692,7 +3747,7 @@ article
  El presente documento es de la clase 
 \family sans
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3760,7 +3815,7 @@ derecha
  
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3778,7 +3833,7 @@ lhead
 , 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3796,7 +3851,7 @@ chead
 , 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3814,7 +3869,7 @@ rhead
 , 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3969,7 +4024,7 @@ today}
 Los comandos 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -3987,7 +4042,7 @@ thesection
  y 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4007,7 +4062,7 @@ thepage
  
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4060,7 +4115,7 @@ La configuración del encabezado y/o el pie para páginas individuales se
  puede alterar con comandos como
 \family typewriter
  
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4074,7 +4129,7 @@ thispagestyle{empty}
 \end_inset
 
 , 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4096,7 +4151,7 @@ thispagestyle{plain}
  
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4113,7 +4168,7 @@ thispagestyle{fancy}
 \family default
 .
  Simplemente se inserta en 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4135,7 +4190,7 @@ Hay comandos más complejos que permiten introducir cosas en páginas impares,
  
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4185,7 +4240,7 @@ includegraphics{logo.eps}}}
 (quizá sea necesario anteponer 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4291,14 +4346,14 @@ Los seis paneles de
  Fuente
 \family default
  corresponden a los distintos paquetes requeridos.
- La tabla siguiente recoge los nombres y sus paquetes asociados:
+ El cuadro siguiente recoge los nombres y sus paquetes asociados:
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -4661,7 +4716,7 @@ sharp
 
 \begin_layout Itemize
 Usa el comando LaTeX 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4712,7 +4767,7 @@ Observa que el nivel de profundidad se especifica en números romanos como
  parte del comando 
 \family typewriter
 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4747,7 +4802,7 @@ star
 
  Especifica cada entrada individual empezando cada ítem con el símbolo escogido
  encerrado entre corchetes y en 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4758,7 +4813,7 @@ código TeX
 
 .
  Por ejemplo, este ítem se inicia con 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4822,6 +4877,762 @@ savelabelitemi}
 \end_layout
 
 \begin_layout Chapter
+LyX e internet
+\end_layout
+
+\begin_layout Standard
+LyX soporta desde hace tiempo la exportación de documentos a varios formatos
+ adecuados para la web, como HTML.
+ Sin embargo, antes de la versión 2.0, la exportación a HTML siempre se hacía
+ mediante el uso de convertidores externos.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Véase la sección 
+\size normal
+\emph on
+Convertidores
+\emph default
+ del manual 
+\emph on
+Personalización
+\emph default
+.
+\end_layout
+
+\end_inset
+
+ Pueden actuar de dos maneras: usando LaTeX como formato intermedio, como
+ 
+\family typewriter
+htlatex
+\family default
+, 
+\family typewriter
+html2latex
+\family default
+ y 
+\family typewriter
+plastex
+\family default
+, encargándose LyX de la generación del LaTeX, o trabajando directamente
+ sobre archivos LyX, como 
+\family typewriter
+eLyXer
+\family default
+.
+ Cada método tiene distintas ventajas e inconvenientes.
+ 
+\end_layout
+
+\begin_layout Standard
+Los convertidores basados en LaTeX tienen la ventaja de que, en principio,
+ lo saben todo sobre el documento que exporta LaTeX.
+ Estos convertidores no se preocupan, por ejemplo, de si determinado bloque
+ de código fue generado por LyX o si era 
+\emph on
+Evil Red Text
+\emph default
+.
+ Saben manejar archivos 
+\family typewriter
+aux
+\family default
+, contadores, referencias, y generalmente pueden manejar archivos 
+\family typewriter
+bbl
+\family default
+ generados por BibTeX.
+ Por otra parte, LaTeX es un lenguage complejo de analizar ---a veces se
+ comenta que solo TeX comprende a TeX--- y los convertidores basados en
+ LaTeX se atascan a menudo con estructuras aparentemente simples; las complejas
+ pueden ahogarlos totalmente; en el momento de escribir esto, por ejemplo,
+ el manual 
+\emph on
+Objetos insertados
+\emph default
+ no se puede exportar con 
+\family typewriter
+htlatex
+\family default
+, sí con los otros.
+ Las matemáticas son otro tema: estos convertidores suelen convertir las
+ ecuaciones en pequeñas imágenes que se enlazan posteriormente al documento
+ HTML.
+ Puesto que realmente las ecuaciones son generadas por LaTeX, son correctas.
+ Pero no escalan bien, y ajustar su aspecto al que debería tener en el documento
+ ---de forma que los tamaños de fuente parezcan aproxidamente iguales---
+ puede ser un reto.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\family typewriter
+eLyXer
+\end_layout
+
+\end_inset
+
+
+\family default
+, de Alex Fernández, (
+\begin_inset CommandInset href
+LatexCommand href
+name "http://elyxer.nongnu.org/"
+target "http://elyxer.nongnu.org/"
+
+\end_inset
+
+) resuelve algunos de estos problemas.
+ En particular, las ecuaciones generadas escalan perfectamente, ya que las
+ procesa usando una combinación de HTML y CSS en lugar de convertirlas a
+ imágenes.
+ Pero incluso expresiones moderadamente complejas tienen un aspecto no tan
+ bueno como con 
+\family typewriter
+htlatex
+\family default
+; esto refleja las limitaciones de HTML.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Dicho esto, 
+\family typewriter
+eLyXer
+\family default
+ también puede usar jsMath y MathJax, pero estas opciones solo están disponibles
+ globalmente y requieren acceso al servidor que ejecuta el entorno.
+\end_layout
+
+\end_inset
+
+ Y más importante (al menos desde la versión 1.1.1), 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+eLyXer
+\end_layout
+
+\end_inset
+
+ tiene soporte limitado para macros de ecuación y no lo tiene para párrafos
+ o estilos de texto definidos por el usuario.
+ Estas limitaciones hacen a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+eLyXer
+\end_layout
+
+\end_inset
+
+ inadecuado para muchos documentos de LyX.
+ En principio, por supuesto, estos problemas se podrían resolver, pero los
+ desarrolladores de LyX han decidido seguir una vía diferente y hacer al
+ propio LyX capaz de escribir XHTML, igual que es capaz de escribir LaTeX,
+ DocBook o texto simple.
+\end_layout
+
+\begin_layout Standard
+En el momento de escribir esto, La salida XHTML está en desarrollo y debería
+ considerarse como 
+\begin_inset Quotes fld
+\end_inset
+
+experimental
+\begin_inset Quotes frd
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+El archivo 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+development/HTML.notes
+\end_layout
+
+\end_inset
+
+ que está en las fuentes de LyX o 
+\begin_inset CommandInset href
+LatexCommand href
+name "accessed online"
+target "http://www.lyx.org/trac/browser/lyx-devel/trunk/development/HTML/HTML.notes"
+
+\end_inset
+
+, contiene información actualizada sobre el estado de XHTML.
+ Véase también la lista de fallos en XHTML en 
+\begin_inset CommandInset href
+LatexCommand href
+name "the bug tracker"
+target "http://www.lyx.org/trac/query?status=reopened&status=assigned&status=new&max=0&component=xhtml+export&order=id&col=id&col=summary&col=reporter&col=keywords&keywords=%21%7Efixedintrunk&desc=1"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ Aún así, los desarrolladores han escogido este camino porque tiene ventajas
+ potenciales sobre los otros dos.
+\end_layout
+
+\begin_layout Standard
+Estas ventajas se deben, en primer lugar, al hecho de que las rutinas para
+ exportar XHTML, ya que son parte de LyX, conocen todo lo que LyX sabe sobre
+ el documento a exportar.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Otra ventaja es que, puesto que estas rutinas son internas de LyX, son inmunes
+ a los cambios en el formato de los archivos de LyX o en la semántica de
+ los recuadros insertados.
+ 
+\end_layout
+
+\end_inset
+
+ Así pues, conocen sobre los índices (mostrados en el contorno), sobre los
+ contadores asociados a estilos de párrafo, y sobre estilos personalizados.
+ Las rutinas XHTML también saben sobre internacionalización lo mismo que
+ LyX, de modo que la salida dirá 
+\begin_inset Quotes fld
+\end_inset
+
+Capítulo 1
+\begin_inset Quotes frd
+\end_inset
+
+ o 
+\begin_inset Quotes fld
+\end_inset
+
+Kapitel 1
+\begin_inset Quotes frd
+\end_inset
+
+ según el idioma activo.
+\end_layout
+
+\begin_layout Standard
+En general, las rutinas de salida saben lo mismo que LyX sobre el formato
+ del documento, es decir, sobre cómo se mostrará el documento en pantalla.
+ Usamos esta información cuando exportamos a XHTML.
+ En particular, LyX genera 
+\emph on
+automáticamente
+\emph default
+ la información de estilo CSS correspondiente a la información que maneja
+ para mostrar el documento en pantalla: si los encabezados de sección son
+ sans-serif en negrita en pantalla, entonces también (por omisión) serán
+ sans-serif negrita en un navegador web.
+ Y esto es cierto no solo para estilos predefinidos, como una sección, sino
+ para cualquier estilo, incluyendo los definidos por el usuario.
+ En realidad, las rutinas XHTML no distinguen entre estilos de texto y de
+ párrafo personalizados y los predefinidos por el propio LyX: en cada caso
+ todo lo que LyX sabe sobre estilos está contenido en los archivos de formato.
+ Y lo mismo se puede afirmar en relación a los recuadros de texto predefinidos,
+ como notas al pie y varios recuadros personalizados.
+\end_layout
+
+\begin_layout Standard
+El resultado es que la salida XHTML se puede personalizar y extender de
+ igual forma que se puede hacer con la salida LaTeX: mediante archivos de
+ formato y módulos.
+ Véase el capítulo 5 del manual 
+\emph on
+Personalización
+\emph default
+ para más detalles.
+\end_layout
+
+\begin_layout Standard
+El resto de este capítulo contiene información más detallada sobre la salida
+ XHTML, sus limitaciones y formas de evitarlas.
+\end_layout
+
+\begin_layout Section
+Las ecuaciones en XHTML
+\end_layout
+
+\begin_layout Standard
+LyX ofrece cuatro posibilidades para el procesamiento de matemáticas.
+ Cada una tiene sus ventajas y sus inconvenientes.
+\end_layout
+
+\begin_layout Itemize
+MathML
+\begin_inset Newline newline
+\end_inset
+
+MathML es un dialecto de XML diseñado específicamente para matemáticas en
+ la web, y habitualmente rinde muy bien en los navegadores que lo soportan.
+ La desventaja es que no todos los navegadores soportan MathML, y el soporte
+ no es completo en navegadores basados en Gecko, como Firefox.
+\begin_inset Newline newline
+\end_inset
+
+Si LyX no es capaz de procesar una fórmula como MathML ---por ejemplo, si
+ la ecuación usa el paquete 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+xymatrix
+\end_layout
+
+\end_inset
+
+ o ERT--- la transformará en imagen.
+\end_layout
+
+\begin_layout Itemize
+HTML
+\begin_inset Newline newline
+\end_inset
+
+Como se ha dicho antes, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+eLyXer
+\end_layout
+
+\end_inset
+
+ procesa las matemáticas como HTML usando estilos CSS.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+LyX ha tomado de 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+eLyXer
+\end_layout
+
+\end_inset
+
+ parte del CSS para su salida HTML.
+\end_layout
+
+\end_inset
+
+ Para ecuaciones simple funciona bastante bien, aunque con expresiones más
+ complejas tiende a fallar.
+ Aún así, este método tiene la ventaja de que es ampliamente soportado y
+ puede ser apropiado para documentos que tengan pocas y sencillas ecuaciones.
+\begin_inset Newline newline
+\end_inset
+
+Si LyX es incapaz de procesar una ecuación como HTML ---por ejemplo, si
+ la ecuación usa el paquete 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+xymatrix
+\end_layout
+
+\end_inset
+
+ o ERT--- la transformará en imagen.
+\end_layout
+
+\begin_layout Itemize
+Imágenes
+\begin_inset Newline newline
+\end_inset
+
+Como 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+htlatex
+\end_layout
+
+\end_inset
+
+, LyX transformará las ecuaciones en imágenes, las mismas, de hecho, que
+ se usan para la visualización instantánea.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+No
+\emph default
+ es preciso que esté activa la previsualización instantánea para ver las
+ imágenes en la salida.
+\end_layout
+
+\end_inset
+
+ La ventaja de este método es que las imágenes son simplemente generadas
+ por LaTeX, por lo que son muy precisas.
+ La desventaja, como ya hemos dicho, es que son imágenes en mapa d3e bits,
+ por lo que no se escalan nada bien y no se pueden copiar, etc.
+ (Además, en estos momentos hay problemas con la numeración de ecuaciones.
+ Véase 
+\begin_inset CommandInset href
+LatexCommand href
+name "bug 6894"
+target "http://www.lyx.org/trac/ticket/6894"
+
+\end_inset
+
+.)
+\begin_inset Newline newline
+\end_inset
+
+El tamaño de las imágenes se puede controlar estableciendo el parámetro
+ 
+\begin_inset Quotes fld
+\end_inset
+
+Escala de imágenes de ecuaciones
+\begin_inset Quotes frd
+\end_inset
+
+ en 
+\begin_inset Flex EstiloCarácter:ItemMenú
+status collapsed
+
+\begin_layout Plain Layout
+Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Salidas
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Por si interesa: esto controla la resolución de la imagen en puntos por
+ pulgada, y se basa en un valor inicial de 75 ppp.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Si, por alguna razón, LyX falla al crear una imagen para una ecuación (p.
+\begin_inset space ~
+\end_inset
+
+ej., si no está instalado un paquete LaTeX requerido), genrará la salida
+ en LaTeX puro.
+\end_layout
+
+\begin_layout Itemize
+LaTeX
+\begin_inset Newline newline
+\end_inset
+
+Para acabar, LyX generará salida alegremente las ecuaciones como LaTeX.
+ Siendo la solución de último recurso, este método puede usarse con herramientas
+ como 
+\begin_inset CommandInset href
+LatexCommand href
+name "jsMath"
+target "http://www.math.union.edu/~dpvc/jsMath/"
+
+\end_inset
+
+, que usa JavaScript para insertar LaTeX en documentos HTML.
+ LyX envuelve el LaTeX en un 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+span
+\end_layout
+
+\end_inset
+
+ (para fórmulas en línea) o en un 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+div
+\end_layout
+
+\end_inset
+
+ (para fórmulas presentadas) con 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+class='math'
+\end_layout
+
+\end_inset
+
+, tal como requiere jsMath.
+\end_layout
+
+\begin_layout Standard
+Debemos seleccionar uno de estos métodos en 
+\begin_inset Flex EstiloCarácter:ItemMenú
+status collapsed
+
+\begin_layout Plain Layout
+Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Salidas
+\end_layout
+
+\end_inset
+
+.
+ Por omisión, LyX genera MathML.
+ Se trata de una configuración para todo el documento.
+\end_layout
+
+\begin_layout Standard
+Eventualmente, LyX ofrecerá al usuario la opción de seleccionar un método
+ alternativo para algún recuadro en particular, en el caso de que no se
+ procese adecuadamente con MathML.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Dicho esto, como LyX recurre a imágenes si el recuadro contiene ERT, es
+ posible forzar la salida como imagen poniendo algún ERT inocuo en la ecuación,
+ por ejemplo 
+\begin_inset Formula $a=b\relax$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Bibliografía y citas
+\end_layout
+
+\begin_layout Standard
+XHTML soporta totalmente bibliografías y citas.
+\end_layout
+
+\begin_layout Standard
+Las etiquetas de citas se generan con el mismo mecanismo que genera las
+ etiquetas en la pantalla de LyX, así que las etiquetas tendrán el mismo
+ aspecto que en LyX, o incluso mejor.
+ Si se usan citas numeradas, LyX generará etiquetas numeradas, como [1],
+ [17], en vez de mostrar las claves de las citas entre corchetes, como hace
+ en pantalla.
+ Si se usan citas autor-año, LyX añadirá letras minúsculas a los años, como
+ hace BibTeX, si encuentra más de una cita para una combinación dada autor-año.
+ Las etiquetas se imprimirán con las entradas bibliográficas.
+ Hay que advertir que, por el momento, no hay forma de personalizar el aspecto
+ de las etiquetas, por ejemplo para elegir entre corchetes o paréntesis.
+\end_layout
+
+\begin_layout Standard
+Para la salida de la bibliografía interviene el mismo mecanismo que maneja
+ la presentación de la información de las referencias en el diálogo de citas,
+ de modo que se verán en XHTML como se ven en el diálogo de citas.
+ El formato se puede personalizar en un archivo de usuario o, preferiblemente,
+ en un módulo.
+ Véase el manual 
+\emph on
+Personalización
+\emph default
+ para más detalles.
+\end_layout
+
+\begin_layout Standard
+El defecto principal en estos momentos es que la información de las referencias
+ cruzadas se imprime junto con cada entrada con la que está asociada.
+ Entonces, puedes ver cosas como estas:
+\end_layout
+
+\begin_layout Quote
+Jason Stanley, 
+\begin_inset Quotes eld
+\end_inset
+
+Context and Logical Form
+\begin_inset Quotes erd
+\end_inset
+
+, in 
+\emph on
+Language in Context: Selected Essays
+\emph default
+ (Oxford: Oxford University Press, 2007), pp.
+ 30--68.
+\end_layout
+
+\begin_layout Quote
+Jason Stanley, 
+\begin_inset Quotes eld
+\end_inset
+
+Semantics in Context
+\begin_inset Quotes erd
+\end_inset
+
+, in 
+\emph on
+Language in Context: Selected Essays
+\emph default
+ (Oxford: Oxford University Press, 2007), pp.
+ 201--30.
+\end_layout
+
+\begin_layout Standard
+Esto debería estar pronto solucionado.
+\end_layout
+
+\begin_layout Standard
+De momento no hay soporte para bibliografías por secciones.
+ Si tienes múltiples bibliografías, LyX imprimirá la misma una y otra vez.
+\end_layout
+
+\begin_layout Section
+Índices
+\end_layout
+
+\begin_layout Standard
+Afortunadamente, LyX exportará los índices como XHTML, aunque con ciertas
+ limitaciones, por el momento.
+\end_layout
+
+\begin_layout Standard
+La exportación de índices será más fiable si no intentas usar las elegantes
+ estructuras que se describen en la sección sobre índices de ls 
+\emph on
+Guía del usuario
+\emph default
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+La cuestión principal es que LyX no maneja esto por sí mismo.
+ Solo deja que introduzcas lo que deberías introducir en LaTeX puro.
+\end_layout
+
+\end_inset
+
+ Describiremos cómo se manejan usando los encabezados de subsección de esta
+ sección.
+\end_layout
+
+\begin_layout Itemize
+Agrupación de entradas de índice (subentradas): LyX se esfuerza en soportar
+ esto, pero las entradas deben separarse por 
+\begin_inset Quotes fld
+\end_inset
+
+ ! 
+\begin_inset Quotes frd
+\end_inset
+
+, es decir, debe haber espacios alrededor del signo de exclamación.
+ Esto es porque de otra manera sería complicado comprobar puntos de exclamación
+ escapados en matemáticas, etc.
+\end_layout
+
+\begin_layout Itemize
+Rangos de páginas: no hay soporte para rangos de páginas, puesto que esto
+ no tiene sentido en XHTML.
+ En su lugar, solo se mostrarán dos entradas de índice, uno en cada extremo.
+\end_layout
+
+\begin_layout Itemize
+Referencias cruzadas: no hay soporte para esto.
+ Si LyX encuentra una entrada de la forma 
+\begin_inset Quotes fld
+\end_inset
+
+|see...
+\begin_inset Quotes frd
+\end_inset
+
+ la ignora y el resto lo considera como una entrada de índice ordinaria.
+\end_layout
+
+\begin_layout Itemize
+Orden de las entradas de índice: LyX no soporta maniobras para fijar el
+ orden de las entradas.
+ Tomará lo que está antes del primer @ que encuentre y lo usará para ordenarlo,
+ tomando lo que sigue a @ como la entrada real.
+ Por el momento LyX no identifica la @ escapada, por tanto no intentes indexar
+ direcciones de correo.
+\end_layout
+
+\begin_layout Itemize
+Formato de entradas de índice: Se pueden formatear entradas mediante el
+ diálogo de estilo del texto, o con otro método disponible en LyX.
+ No hay soporte para estructuras como 
+\begin_inset Quotes fld
+\end_inset
+
+entrada|textbf
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Si LyX encuentra un símbolo de tubería, '|' en una entrada lo borrará,
+ y todo lo que sigue.
+\end_layout
+
+\begin_layout Itemize
+Índices múltiples: no hay soporte para esto.
+ Todas las entradas de estos índices se imprimirán como un solo índice.
+ Para evitar la impresión de varias versiones del índice, imprimiremos solo
+ el índice principal, de modo que asegúrate de tener uno.
+\end_layout
+
+\begin_layout Section
+Nomenclatura y glosario
+\end_layout
+
+\begin_layout Standard
+Por ahora no hay soporte para glosarios.
+ Añadirlo debería ser bastante trivial, y bienvenido.
+\end_layout
+
+\begin_layout Chapter
 El servidor LyX
 \end_layout
 
@@ -4845,24 +5656,6 @@ empuje
  a las citas en LyX.
 \end_layout
 
-\begin_layout Standard
-Ten en cuenta que, por ahora, 
-\emph on
-el servidor no funciona en Windows.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-No hay razón para que no pueda hacerlo.
- Pero ninguno de los desarrolladores de Windows ha implementado aún esta
- funcionalidad.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Iniciar el servidor LyX
 \end_layout
@@ -4870,7 +5663,7 @@ Iniciar el servidor LyX
 \begin_layout Standard
 El servidor LyX funciona mediante el uso de un par de las denominadas tuberías.
  Estas se encuentran generalmente en 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4880,7 +5673,7 @@ UserDir
 \end_inset
 
  con los nombres 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4890,7 +5683,7 @@ lyxpipe.in
 \end_inset
 
  y 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4901,7 +5694,7 @@ lyxpipe.out
 
 .
  Los programas externos escriben en 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4911,7 +5704,7 @@ lyxpipe.in
 \end_inset
 
  y leen datos de 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4928,7 +5721,7 @@ Herramientas\SpecialChar \menuseparator
 Preferencias
 \family default
 , por ejemplo, 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4937,7 +5730,25 @@ status collapsed
 
 \end_inset
 
+ o 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+"
+\backslash
+
+\backslash
 .
+\backslash
+pipe
+\backslash
+lyxpipe"
+\end_layout
+
+\end_inset
+
+ en Windows..
  
 \emph on
 Debes
@@ -4947,7 +5758,7 @@ Debes
 
 \begin_layout Standard
 LyX añadirá las extensiones '
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4957,7 +5768,7 @@ status collapsed
 \end_inset
 
 ' y '
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -4987,7 +5798,7 @@ vieja
 Para tener al mismo tiempo varios procesos con servidores hay que usar diferente
 s configuraciones, quizás usando distintos directorios de usuario, cada
  uno con su propio archivo 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5003,7 +5814,7 @@ preferences
 Si estás desarrollando un programa cliente, podría ser útil activar la informaci
 ón de depuración del servidor de LyX.
  Esto se hace inciando LyX con 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5016,26 +5827,13 @@ lyx -dbg lyxserver
 \end_layout
 
 \begin_layout Standard
-Además de esto hay que considerar otros puntos:
-\end_layout
-
-\begin_layout Itemize
-Tanto el servidor como los clientes deben correr en máquinas UNIX o OS/2.
- La comunicación entre LyX en UNIX y clientes en OS/2 o viveversa no es
- posibles por ahora.
-\end_layout
-
-\begin_layout Itemize
-En OS/2 solo se puede conectar un único cliente al servidor LyX.
-\end_layout
-
-\begin_layout Itemize
-En OS/2 los clientes deben abrir la tubería de entrada en modo 
-\begin_inset Flex CharStyle:Code
+Puedes encontrar un ejemplo completo de cliente escrito en C en la distribución
+ fuente como 
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-O_WRONLY
+development/lyxserver/server_monitor.c
 \end_layout
 
 \end_inset
@@ -5044,13 +5842,12 @@ O_WRONLY
 \end_layout
 
 \begin_layout Standard
-Puedes encontrar un ejemplo completo de cliente escrito en C en la distribución
- fuente como 
-\begin_inset Flex CharStyle:Code
+Otra herramienta útil es el cliente en línea de comandos 
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-development/lyxserver/server_monitor.c
+src/client/lyxclient
 \end_layout
 
 \end_inset
@@ -5226,7 +6023,7 @@ notify
 \end_layout
 
 \begin_layout Quote
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -5326,6 +6123,1285 @@ bye
 \end_inset
 
  enviado desde LyX informará a los clientes que LyX se ha cerrado.
+\end_layout
+
+\begin_layout Section
+Búsqueda inversa DVI/PDF
+\end_layout
+
+\begin_layout Standard
+Algunos visores DVI/PDF
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Okular en KDE/Linux, Skim en Mac OSX y SumatraPDF en Windows.
+\end_layout
+
+\end_inset
+
+ ofrecen la posibilidad de 
+\emph on
+búsqueda inversa
+\emph default
+.
+ Esto quiere decir que puedes indicar a LyX que coloque el cursor en una
+ línea determinada en el documento haciendo clic en la posición correspondiente
+ en la salida DVI/PDF.
+ Para ello, el visor ha de ser capaz de comunicarse con LyX.
+ Esto se consigue mediante el servidor LyX usando la tubería (
+\emph on
+lyxpipe
+\emph default
+) o el zócalo de dominio UNIX (
+\emph on
+lyxsocket
+\emph default
+) que LyX crea en su directorio temporal (esta es la forma en que LyX se
+ comunica con el programa 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxclient
+\end_layout
+
+\end_inset
+
+.
+ En algunos casos, hará falta un guión de apoyo que medie entre el visor
+ y LyX, en otros, el visor se podrá comunicar directamente con LyX.
+ Esto depende del visor seleccionado y del sistema operativo.
+ Lo mismo es aplicable a la forma en que los visores deben configurarse
+ y la forma en que la búsqueda inversa se lleva a cabo realmente.
+ En lo que sigue, describiremos cómo se configura la búsqueda en visores
+ determinados.
+ Antes, sin embargo, explicamos lo que hay que hacer en general para habilitar
+ la búsqueda inversa en el DVI/PDF.
+\end_layout
+
+\begin_layout Subsection
+Activación automática
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Activación-automática"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En la mayoría de los casos LyX funcionará marcando la opción 
+\begin_inset Flex EstiloCarácter:ItemMenú
+status collapsed
+
+\begin_layout Plain Layout
+Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Salidas\SpecialChar \menuseparator
+Sincronizar con salida
+\end_layout
+
+\end_inset
+
+.
+ En estos casos LyX insertará automáticamente la macro 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+SyncTeX
+\end_layout
+
+\end_inset
+
+ (para PDF) o el paquete 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+srcltx
+\end_layout
+
+\end_inset
+
+ (para DVI).
+ Esta opción está fácilmente disponible, además, en la barra de herramientas
+ 
+\begin_inset Flex EstiloCarácter:ItemMenú
+status collapsed
+
+\begin_layout Plain Layout
+Ver/Actualizar
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Si necesitas una configuración diferente, puedes seleccionar o introducir
+ una macro personalizada desde el cuadro desplegable bajo 
+\begin_inset Flex EstiloCarácter:ItemMenú
+status collapsed
+
+\begin_layout Plain Layout
+Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Salidas\SpecialChar \menuseparator
+Sincronizar con salida
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Advirtamos que la inclusión de los paquetes 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+srcltx
+\end_layout
+
+\end_inset
+
+ o 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+src-specials
+\end_layout
+
+\end_inset
+
+ puede tener a veces un impacto no deseado en la tipografía; entonces, si
+ se usa alguno de dichos paquetes habría que desactivar la sincronización
+ para la composición final.
+\end_layout
+
+\begin_layout Standard
+En caso de necesitar otros ajustes más específicos no cubiertos por la configura
+ción automática, lee la sección siguiente sobre activación manual.
+ Si la configuración automática cubre tus necesidades, puedes pasar directamente
+ a la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Configuración-y-uso-de-visores"
+
+\end_inset
+
+, en la que se describen los pasos necesarios para configurar el visor ---necesa
+rios tanto para configuración automática como manual.
+\end_layout
+
+\begin_layout Subsection
+Activación manual
+\end_layout
+
+\begin_layout Standard
+LaTeX proporciona varios métodos para la búsqueda inversa.
+ Algunos son parte del programa 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+latex/pdflatex
+\end_layout
+
+\end_inset
+
+, otros forman parte de paquetes externos.
+ La elección depende de si la distribución LaTeX instalada ya proporciona
+ un método (los métodos incorporados son bastante nuevos) y si el visor
+ a usar puede enfrentarse a este.
+ Describimos a continuación los métodos disponibles.
+\end_layout
+
+\begin_layout Subsubsection*
+Buscador DVI incorporado vía src-specials (solo DVI)
+\end_layout
+
+\begin_layout Standard
+Este método proporciona el archivo DVI con la información necesaria para
+ realizar búsqueda inversa.
+ Está disponible en LaTeX desde hace tiempo (cualquier distribución reciente
+ lo debe incluir) y es fiable.
+ Para habilitarlo, cambia el convertidor 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX (plain)->DVI
+\end_layout
+
+\end_inset
+
+ o 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX (plain)->DraftDVI
+\end_layout
+
+\end_inset
+
+ en 
+\begin_inset Flex EstiloCarácter:ItemMenú
+status collapsed
+
+\begin_layout Plain Layout
+Herramientas\SpecialChar \menuseparator
+Preferencias\SpecialChar \menuseparator
+Gestión de archivos\SpecialChar \menuseparator
+Convertidores
+\end_layout
+
+\end_inset
+
+ por 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+latex -src-specials $$i
+\end_layout
+
+\end_inset
+
+.
+ Si no funciona, comprueba si tu maquinaria TeX necesita opciones diferentes
+ (la sintaxis podría diferir en algunas distribuciones).
+\end_layout
+
+\begin_layout Subsubsection*
+Paquetes externos (PDFSync y srcltx)
+\end_layout
+
+\begin_layout Standard
+Los paquetes 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+PDFSync
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+srcltx
+\end_layout
+
+\end_inset
+
+ proporcionan la función búsqueda inversa para PDF (vía pdflatex) y DVI,
+ respectivamente.
+ Para habilitarlos carga el paquete en el preámbulo LaTeX:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+usepackage{pdfsync}
+\end_layout
+
+\end_inset
+
+ para búsqueda inversa en PDF
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+usepackage[active]{srcltx}
+\end_layout
+
+\end_inset
+
+ para búsqueda inversa en DVI
+\end_layout
+
+\begin_layout Standard
+Para habilitar el uso de ambos inserta las siguientes líneas:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+usepackage{ifpdf}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+ifpdf
+\begin_inset Newline newline
+\end_inset
+
+  
+\backslash
+usepackage{pdfsync}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+else
+\begin_inset Newline newline
+\end_inset
+
+  
+\backslash
+usepackage[active]{srcltx}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+fi
+\end_layout
+
+\begin_layout Standard
+Así, el archivo se puede ver tanto como DVI como PDF (pdflatex), usando
+ el paquete adecuado.
+\end_layout
+
+\begin_layout Standard
+Advirtamos que PDFSync podría afectar el formato de salida del documento.
+ Por eso es conveniente deshabilitar PDFSync para componer el documento
+ final.
+\end_layout
+
+\begin_layout Subsubsection*
+Búsqueda inversa incorporada vía SyncTeX (DVI y PDF)
+\end_layout
+
+\begin_layout Standard
+Las recientes versiones de 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+(pdf)latex
+\end_layout
+
+\end_inset
+
+ incorporan soporte para búsqueda inversa en PDF y DVI.
+ La instalación llamada 
+\emph on
+SyncTeX
+\emph default
+ es básicamente el resultado de integrar el paquete PDFSync en pdftex y
+ su fusión con el enfoque 
+\emph on
+src-specials
+\emph default
+.
+ Para usarla hace falta al menos TeXLive 2008 o una distribución MikTeX
+ reciente.
+ Además, solo unos pocos visores PDF (Skim en Mac, SumatraPDF en Windows)
+ proporcionan por ahora soporte para SyncTeX.
+\end_layout
+
+\begin_layout Standard
+Para activar SyncTeX en DVI, cambia el convertidor 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX (plain) -> DVI
+\end_layout
+
+\end_inset
+
+ o 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX (plain) -> DraftDVI
+\end_layout
+
+\end_inset
+
+ en 
+\begin_inset Flex EstiloCarácter:ItemMenú
+status collapsed
+
+\begin_layout Plain Layout
+Herramientas\SpecialChar \menuseparator
+Preferencias\SpecialChar \menuseparator
+Gestión de archivos\SpecialChar \menuseparator
+Convertidores
+\end_layout
+
+\end_inset
+
+ por 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+latex -synctex=1 $$i
+\end_layout
+
+\end_inset
+
+, y para PDF cambia 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX (pdflatex) -> PDF (pdflatex)
+\end_layout
+
+\end_inset
+
+ por 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+pdflatex -synctex=1 $$i
+\end_layout
+
+\end_inset
+
+.
+ Consulta en la documentación de tu visor si necesita ser configurado para
+ usarlo con SyncTeX.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+La opción 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+-synctex=1
+\end_layout
+
+\end_inset
+
+ permite compresión gzip.
+ Si el visor no lo soporta, entonces usa 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+-synctex=-1
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Configuración y uso de visores específicos
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Configuración-y-uso-de-visores"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Xdvi (todas las plataformas)
+\end_layout
+
+\begin_layout Standard
+Si usas 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+xdvi
+\end_layout
+
+\end_inset
+
+ no necesitas hacer nada para utilizar la búsqueda inversa en DVI, ya que
+ LyX proporciona los ganchos necesarios para usar automáticamente el programa
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxclient
+\end_layout
+
+\end_inset
+
+.
+ Basta con configurar tu documento como se describió antes (la búsqueda
+ inversa se inicia con Ctrl-clic o Alt-clic en Mac OSX).
+\end_layout
+
+\begin_layout Standard
+Sin embargo, si por la razón que sea quieres usar la tubería en vez del
+ zócalo para comunicar con LyX, simplemente cambia el visor DVI en 
+\begin_inset Flex EstiloCarácter:ItemMenú
+status collapsed
+
+\begin_layout Plain Layout
+Herramientas\SpecialChar \menuseparator
+Preferencias\SpecialChar \menuseparator
+Gestión de archivos\SpecialChar \menuseparator
+Formatos de archivo
+\end_layout
+
+\end_inset
+
+ a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+xdvi -editor 'lyxeditor.sh %f %l'
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+En Mac OSX hay que usar 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DISPLAY=:0.0 xdvi -editor 'lyxeditor.sh %f %l'
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ donde 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxeditor.sh
+\end_layout
+
+\end_inset
+
+ es un guión apropiado.
+ Por ejemplo, un mínimo guión de shell es el siguiente:
+\end_layout
+
+\begin_layout LyX-Code
+#!/bin/sh
+\begin_inset Newline newline
+\end_inset
+
+LYXPIPE="/ruta/a/lyxpipe"
+\begin_inset Newline newline
+\end_inset
+
+COMMAND="LYXCMD:revdvi:server-goto-file-row:$1 $2"
+\begin_inset Newline newline
+\end_inset
+
+echo "$COMMAND" > "${LYXPIPE}".in || exit
+\begin_inset Newline newline
+\end_inset
+
+read < "${LYXPIPE}".out || exit
+\end_layout
+
+\begin_layout Standard
+donde 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+/ruta/a/lyxpipe
+\end_layout
+
+\end_inset
+
+ es la ruta de la tubería LyXServer especificada en 
+\begin_inset Flex EstiloCarácter:ItemMenú
+status collapsed
+
+\begin_layout Plain Layout
+Herramientas\SpecialChar \menuseparator
+Preferencias\SpecialChar \menuseparator
+Rutas
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+En la carpeta 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+development/tools
+\end_layout
+
+\end_inset
+
+ de una distribución fuente puedes encontrar un guión 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxeditor
+\end_layout
+
+\end_inset
+
+ que puede localizar 
+\size normal
+\emph on
+lyxpipe
+\emph default
+ basado en tus preferencias.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+MacDviX (Mac OSX)
+\end_layout
+
+\begin_layout Standard
+Al final de 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+/Applications/MacDviX_Folder/calleditor.script
+\end_layout
+
+\end_inset
+
+, añade las líneas:
+\end_layout
+
+\begin_layout LyX-Code
+/Applications/Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X.app/Contents/MacOS/lyxeditor "$2" $1
+\begin_inset Newline newline
+\end_inset
+
+exit 1
+\end_layout
+
+\begin_layout Standard
+Modifica las líneas si LyX está instalado en algún otro lugar distinto de
+ la carpeta 'Applications'.
+\end_layout
+
+\begin_layout Standard
+La búsqueda inversa se lanza con Alt-clic (OPCIÓN-clic).
+\end_layout
+
+\begin_layout Subsubsection*
+Skim (Mac OSX)
+\end_layout
+
+\begin_layout Standard
+Introduce 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+open -a Skim.app $$i
+\end_layout
+
+\end_inset
+
+ en la configuración del visor en 
+\begin_inset Flex EstiloCarácter:ItemMenú
+status collapsed
+
+\begin_layout Plain Layout
+Herramientas\SpecialChar \menuseparator
+Preferencias\SpecialChar \menuseparator
+Gestión de archivos\SpecialChar \menuseparator
+PDF (pdflatex)
+\end_layout
+
+\end_inset
+
+, y luego en 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Skim\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+Sync
+\end_layout
+
+\end_inset
+
+ selecciona LyX.
+\end_layout
+
+\begin_layout Standard
+La búsqueda inversa se inicia con COMANDO-MAYÚSCULAS-clic.
+\end_layout
+
+\begin_layout Subsubsection*
+Okular (KDE)
+\end_layout
+
+\begin_layout Standard
+En 
+\begin_inset Flex EstiloCarácter:ItemMenú
+status collapsed
+
+\begin_layout Plain Layout
+Configurar\SpecialChar \menuseparator
+Configurar Okular\SpecialChar \menuseparator
+Editor
+\end_layout
+
+\end_inset
+
+, selecciona 
+\begin_inset Quotes fld
+\end_inset
+
+Editor personalizado
+\begin_inset Quotes frd
+\end_inset
+
+ y añade el comando 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxclient -g %f %l
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+La búsqueda inversa se inicia con MAYÚSCULAS-clic.
+\end_layout
+
+\begin_layout Subsubsection*
+YAP (Windows)
+\end_layout
+
+\begin_layout Standard
+En yap, en el menú Ver Opciones marca 
+\begin_inset Quotes fld
+\end_inset
+
+Búsqueda inversa DVI
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Botón 
+\begin_inset Quotes fld
+\end_inset
+
+Nuevo
+\begin_inset Quotes frd
+\end_inset
+
+ e introduce 
+\begin_inset Quotes fld
+\end_inset
+
+LyX editor
+\begin_inset Quotes frd
+\end_inset
+
+ en 
+\begin_inset Quotes fld
+\end_inset
+
+Nombre
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Abre el diálogo 
+\begin_inset Quotes fld
+\end_inset
+
+...
+\begin_inset Quotes frd
+\end_inset
+
+ y busca el archivo lyxeditor.bat, con los argumentos %f %l.
+\end_layout
+
+\begin_layout LyX-Code
+@echo off
+\begin_inset Newline newline
+\end_inset
+
+echo LYXCMD:revdvi:server-goto-file-row:%1 %2> 
+\backslash
+
+\backslash
+.
+\backslash
+pipe
+\backslash
+lyxpipe.in
+\begin_inset Newline newline
+\end_inset
+
+type 
+\backslash
+
+\backslash
+.
+\backslash
+pipe
+\backslash
+lyxpipe.out
+\end_layout
+
+\begin_layout Standard
+Se lanza con doble clic.
+\end_layout
+
+\begin_layout Subsubsection*
+SumatraPDF (Windows)
+\end_layout
+
+\begin_layout Standard
+Introduce 
+\family typewriter
+SumatraPDF -inverse-search "lyxeditor.bat %f %l" 
+\family default
+en
+\family typewriter
+ 
+\family default
+
+\begin_inset Flex EstiloCarácter:ItemMenú
+status collapsed
+
+\begin_layout Plain Layout
+Herramientas\SpecialChar \menuseparator
+Preferencias\SpecialChar \menuseparator
+Gestión de archivos\SpecialChar \menuseparator
+PDF (pdflatex)
+\end_layout
+
+\end_inset
+
+, donde 
+\family typewriter
+lyxeditor.bat es el anterior.
+ Si SumatraPDF.exe
+\family default
+ no está en la ruta de comandos usa su nombre completo.
+\end_layout
+
+\begin_layout Standard
+Se inicia con doble clic.
+\end_layout
+
+\begin_layout Subsubsection*
+YAP (Cygwin)
+\end_layout
+
+\begin_layout Standard
+Si yap es el visor por defecto en Windows, ejecuta y elige 
+\family sans
+Ver Opciones
+\family default
+ y 
+\begin_inset Quotes fld
+\end_inset
+
+Búsqueda inversa DVI
+\begin_inset Quotes frd
+\end_inset
+
+.
+ EN el botón 
+\begin_inset Quotes fld
+\end_inset
+
+Nuevo...
+\begin_inset Quotes frd
+\end_inset
+
+ escribe 
+\begin_inset Quotes fld
+\end_inset
+
+LyX editor
+\begin_inset Quotes frd
+\end_inset
+
+ en el campo 
+\begin_inset Quotes fld
+\end_inset
+
+Nombre
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Ahora, en el botón 
+\begin_inset Quotes fld
+\end_inset
+
+...
+\begin_inset Quotes frd
+\end_inset
+
+ y navega hasta el directorio del ejecutable 
+\family typewriter
+lyxeditor.exe.
+
+\family default
+ Especifica los argumentos -g %f %l.
+ Así, se usará el zócalo 
+\emph on
+lyxsocket
+\emph default
+ para comunicar con LyX.
+ Si prefieres usar 
+\emph on
+lyxpipe
+\emph default
+ omite -g y escribe la tubería LyXServer en las preferencias de LyX.
+\end_layout
+
+\begin_layout Standard
+Se lanza con doble clic.
+\end_layout
+
+\begin_layout Subsubsection*
+SumatraPDF (Cygwin)
+\end_layout
+
+\begin_layout Standard
+En 
+\begin_inset Flex EstiloCarácter:ItemMenú
+status collapsed
+
+\begin_layout Plain Layout
+Herramientas\SpecialChar \menuseparator
+Preferencias\SpecialChar \menuseparator
+Gestión de archivos\SpecialChar \menuseparator
+PDF (pdflatex)
+\end_layout
+
+\end_inset
+
+ introduce 
+\family typewriter
+SumatraPDF.sh
+\family default
+ en la configuración del visor, donde 
+\family typewriter
+SumatraPDF.sh
+\family default
+ es el guión siguiente (para ser puesto en la ruta (PATH) de comandos, lo
+ mejor 
+\family typewriter
+/usr/local/bin
+\family default
+):
+\end_layout
+
+\begin_layout LyX-Code
+#!/bin/bash
+\begin_inset Newline newline
+\end_inset
+
+cd $(dirname $1)
+\begin_inset Newline newline
+\end_inset
+
+SumatraPDF -inverse-search "lyxeditor -g %f %l" $(basename $1)
+\end_layout
+
+\begin_layout Standard
+Este guión es necesario porque SumatraPDF es una aplicación nativa de Windows
+ y no comprende las rutas POSIX usadas por la versión Gygwin de LyX.
+ Si SumatraPDF.exe no está en la ruta de comandos usa su ruta posix completa
+ en el guión.
+ La -g habilita comunicación vía 
+\emph on
+lyxsocket
+\emph default
+.
+ Sin la -g, se usa 
+\emph on
+lyxpipe
+\emph default
+, y verifica la ruta de LyXServer en las preferencias de LyX.
+\end_layout
+
+\begin_layout Standard
+Se inicia con doble clic.
+\end_layout
+
+\begin_layout Section
+Búsqueda directa
+\end_layout
+
+\begin_layout Standard
+La búsqueda directa, como su nombre indica, es en cierto sentido lo 
+\begin_inset Quotes fld
+\end_inset
+
+opuesto
+\begin_inset Quotes frd
+\end_inset
+
+ a búsqueda inversa.
+ Permite saltar a una posición determinada del documento en el visor desde
+ dentro de LyX.
+ Si la búsqueda directa está habilitada (como se describe a continuación),
+ puedes poner el cursor en cualquier punto del documento en LyX y, con el
+ menú 
+\family sans
+Navegar\SpecialChar \menuseparator
+Búsqueda directa
+\family default
+ (o seleccionando 
+\family sans
+Búsqueda directa
+\family default
+ en el menú contextual mediante clic derecho), en el visor se mostrará esa
+ misma posición.
+ Esto implica, por supuesto, que el visor soporte esta función.
+\end_layout
+
+\begin_layout Standard
+Para posibilitar la búsqueda directa hay que proporcionar al archivo DVI/PDF
+ de salida información adicional sobre el código TeX.
+ Se puede hacer mediante los métodos descritos en la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Activación-automática"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Adicionalmente, hay que configurar LyX para usar los visores en 
+\begin_inset Flex EstiloCarácter:ItemMenú
+status collapsed
+
+\begin_layout Plain Layout
+Herramientas\SpecialChar \menuseparator
+Preferencias\SpecialChar \menuseparator
+Salidas\SpecialChar \menuseparator
+General
+\end_layout
+
+\end_inset
+
+.
+ Proporcionamos un conjunto de configuraciones comprobadas para algunos
+ visores, que pueden seleccionarse en la lista desplegable.
+ Si ninguna de estas configuraciones te satisface, tienes que introducir
+ a mano una configuración adecuada.
+ La sintaxis de las definiciones usa los siguientes marcadores:
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$n
+\end_layout
+
+\end_inset
+
+: número de fila
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$t
+\end_layout
+
+\end_inset
+
+: nombre del archivo .tex exportado (temporal)name of the (temporary) exported
+ .tex file
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$o
+\end_layout
+
+\end_inset
+
+: nombre del archivo de salida exportado (dvi o pdf, según el que exista
+ en el directorio temporal)name of the exported output file (either dvi
+ or pdf, depending on which one exists in the temporary directory)
+\end_layout
+
+\begin_layout Standard
+Solo algunos visores permiten completamente la búsqueda directa, entre ellos
+ yap, xdvi, okular y SumatraPDF.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Para Sumatra se necesita CMCDDE, disponible en http://www.istri.fr/zip/CMCDDE.zip.
+\end_layout
+
+\end_inset
+
+ Aunque algunos de los visores PDF más conocidos (como Adobe Reader) no
+ soportan búsqueda directa, otros (como evince y pdf) permiten al menos
+ recargar el documento y mostrar una página determinada, por lo que al menos
+ permiten una navegación 
+\begin_inset Quotes fld
+\end_inset
+
+cercana
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Esta última funcionalidad es facilitada mediante una llamada externa a
+ synctex (consulta los ejemplos predefinidos en Preferencias).
+ 
+\end_layout
+
+\begin_layout Standard
+La búsqueda directa funciona con DVI y PDF.
+ LyX comprueba qué formato de vista preliminar has usado antes (o sea, el
+ que ya está en el directorio temporal) y elige dinámicamente la configuración
+ adecuada para el formato en cuestión.
 \end_layout
 
 \begin_layout Chapter
@@ -6081,7 +8157,7 @@ Introducción
 \end_layout
 
 \begin_layout Standard
-AASTeX es un conjunto de macros producidas por la  
+AASTeX es un conjunto de macros producidas por la 
 \emph on
 American Astronomical Society
 \emph default
@@ -6970,7 +9046,7 @@ Cosas que no pueden implementarse
 \begin_layout Standard
 \SpecialChar \ldots{}
  al menos de forma significativa, así que sugiero ignorarlas.
- Están los entornos  
+ Están los entornos 
 \family sans
 references
 \family default
@@ -7359,7 +9435,7 @@ Los formatos por sí mismos solo contienen el mínimo necesario para usar
  En particular, no contienen ninguno de los entornos 'teorema' utilizados
  para establecer teoremas, lemas y demás.
  Estos se encuentran, en cambio, en el módulo 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -7372,7 +9448,7 @@ Teoremas (AMS)
  (Además se puede usar con otras clases y se puede quitar, si prefieres
  usar otra cosa).
  Hay entornos menos utilizados en el módulo 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -7387,7 +9463,7 @@ Teoremas (AMS-Extendido)
 \begin_layout Standard
 Por omisión, los teoremas y demás se numeran consecutivamente a lo largo
  del documento, pero esto se puede modificar cargando el módulo 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -7397,7 +9473,7 @@ Teoremas (por secciones)
 \end_inset
 
  o, si estás usando 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -7407,7 +9483,7 @@ book (AMS)
 \end_inset
 
 , el módulo 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -7430,7 +9506,7 @@ Teoremas (por capítulos)
 solo
 \emph default
  resultados sin numerar, el módulo 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -7449,7 +9525,7 @@ Hay que tener en cuenta que estos módulos no
 \emph default
 utilizarse con las clases AMS.
  Es perfectamente posible usar el módulo 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -7459,7 +9535,7 @@ Teoremas (AMS)
 \end_inset
 
  y los otros mencionados con otras clases, como 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -7469,7 +9545,7 @@ article
 \end_inset
 
 , 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -7479,7 +9555,7 @@ report
 \end_inset
 
 , 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -7506,7 +9582,7 @@ Estos formatos proporcionan una larga lista de entornos incluidos.
 
 \begin_layout Standard
 Los siguientes entornos —así como los entornos estándar como 
-\begin_inset Flex CharStyle:Noun
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7516,7 +9592,7 @@ sección
 \end_inset
 
 , 
-\begin_inset Flex CharStyle:Noun
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7526,7 +9602,7 @@ bibliografía
 \end_inset
 
 , 
-\begin_inset Flex CharStyle:Noun
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7536,7 +9612,7 @@ título
 \end_inset
 
 , 
-\begin_inset Flex CharStyle:Noun
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7546,7 +9622,7 @@ autor
 \end_inset
 
 , y 
-\begin_inset Flex CharStyle:Noun
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7556,7 +9632,7 @@ Fecha
 \end_inset
 
 — son suministrados por 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -7566,7 +9642,7 @@ article (AMS)
 \end_inset
 
  y 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -7632,7 +9708,7 @@ Traductor
 
 \begin_layout Standard
 Los siguientes entornos son suministrados por ambos módulos 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -7642,7 +9718,7 @@ Teoremas
 \end_inset
 
  y 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -7655,7 +9731,7 @@ Teoremas (AMS)
  (sin asterisco).
  Estos mismos entornos son suministrados solo en la versión con asterisco
  por el módulo 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -7748,7 +9824,7 @@ Guía del usuario
 
 \begin_layout Standard
 Y estos son los entornos suministrados por 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -8047,7 +10123,7 @@ Problemas especiales
 \end_layout
 
 \begin_layout Standard
-Los mismos que en el caso de  
+Los mismos que en el caso de 
 \family sans
 Hollywood
 \family default
@@ -9601,7 +11677,7 @@ Lista
 \family sans
 Cruzada
 \family default
-, están diseñadas para facilitar la creación de listas del tipo  
+, están diseñadas para facilitar la creación de listas del tipo 
 \begin_inset Quotes fld
 \end_inset
 
@@ -10800,7 +12876,7 @@ Appendices Section
  que marca el inicio de los apéndices.
  Este entorno debería dejarse en blanco; lo único que hace es enviar un
  comando LaTeX pero realmente no se imprime nada.
- En LyX, la palabra  
+ En LyX, la palabra 
 \begin_inset Quotes fld
 \end_inset
 
@@ -13953,7 +16029,7 @@ poema
 
 \begin_layout Section
 Article (mwart), book (mwbk) y report (mwrep)
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -14199,7 +16275,7 @@ Debes instalar RevTeX
 \end_inset
 
 4 como se describe en el archivo README del paquete.
- El paquete se puede encontrar en el sitio web de  RevTeX 4: 
+ El paquete se puede encontrar en el sitio web de RevTeX 4: 
 \begin_inset Flex URL
 status collapsed
 
@@ -16789,7 +18865,7 @@ Quizá quieras abordar tú la tarea\SpecialChar \ldots{}
 
 \begin_layout Chapter
 Características de LyX que requieren software adicional
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -16816,14 +18892,28 @@ Introducción
 \end_layout
 
 \begin_layout Standard
-Bajo el menú 
+Si está instalado 
+\family typewriter
+chktex
+\family default
+,
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Aún no disponible en la distribución MikTeX.
+\end_layout
+
+\end_inset
+
+ bajo el menú 
 \family sans
 \bar under
 H
 \bar default
 erramientas
 \family default
-, encontrarás la opción 
+ encontrarás la opción 
 \family sans
 \bar under
 C
@@ -17283,24 +19373,12 @@ Preferencias
 -w#
 \family default
  para activarlo.
- Las entradas en énfasis 
-\end_layout
-
-\begin_layout Standard
-están desactivadas por omisión, porque de forma predeterminada se ejecuta
- como 
-\begin_inset Quotes fld
-\end_inset
-
-
+ Las entradas en énfasis están desactivadas por omisión, porque de forma
+ predeterminada se ejecuta como "
 \family typewriter
 chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38
 \family default
-
-\begin_inset Quotes frd
-\end_inset
-
-.
+".
 \end_layout
 
 \begin_layout Standard
@@ -18252,7 +20330,7 @@ por
 \noun on
  Lars Gullik Bjønnes
 \noun default
-, actualizado por 
+ y 
 \noun on
 Pavel Sanda
 \end_layout
@@ -18268,13 +20346,32 @@ Un amigo mío quería probar LyX para un proyecto de grupo.
  Esto me indignó un poco, así que pensé que debería dar soporte, al menos,
  para RCS (con la posibilidad de ampliar en el futuro a CVS y/o SCCS).
  Ya está hecho.
- LyX soporta ya algunos comandos básicos de RCS.
- Si necesitas algo más sofisticado tendrás que hacerlo a mano en un xterm.
+ LyX soporta ya algunos comandos básicos de RCS/CVS/SVN.
+ Si necesitas algo más sofisticado tendrás que hacerlo a mano en un terminal.
 \end_layout
 
 \begin_layout Standard
 Antes de empezar con las características del control de versiones en LyX,
- deberías leer 
+ deberías estar familiarizado con RCS/CVS/SVN.
+ Además, hay que tener en cuenta que el soporte de CVS no es tan bueno como
+ el de subversion, por lo que recomendamos SVN.
+ Para empezar con Subversion es conveniente consultar SVN Book.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://svnbook.red-bean.com/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Para RCS deberías leer 
 \begin_inset Quotes fld
 \end_inset
 
@@ -18282,11 +20379,11 @@ rcsintro
 \begin_inset Quotes frd
 \end_inset
 
- (un archivo de manual, léelo con 
-\family typewriter
-man rcsintro
-\family default
-).
+ (archivo 
+\emph on
+man
+\emph default
+ de manual).
  Este archivo describe todas las características básicas de RCS.
  Deberías fijarte especialmente en el comentario sobre el directorio RCS
  y las nociones sobre el archivo maestro RCS (el que acaba en 
@@ -18297,17 +20394,19 @@ man rcsintro
 \end_layout
 
 \begin_layout Standard
-Se ha añadido el reciente soporte básico de CVS/SVN.
- Deberías estar familiarizado con el uso de CVS/SVN antes de empezar a usarlo
- en LyX.
+La implementación en LyX asume el uso de versiones recientes de los paquetes
+ GNU RCS o CVS/SVN ---no hay garantías con versiones antiguas---.
  La mayoría de los mensajes de registro no son actualmente mostrados tras
- las operaciones —puedes comprobarlos en una ventana de terminal si no estás
- seguro.
+ las operaciones —puedes comprobarlos en el panel Messages si no estás seguro.
 \end_layout
 
 \begin_layout Standard
-La implementación en LyX asume una reciente versión del paquete GNU RCS
- o CVS/SVN —no hay garantías para versiones antiguas—.
+Para introducir tus propios comandos externos consulta vc-command en el
+ manual 
+\emph on
+Funciones de LyX
+\emph default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -18338,6 +20437,7 @@ de
 versiones
 \family default
 .
+ LyX se probó con la versión RCS 5.7.
 \end_layout
 
 \begin_layout Subsubsection
@@ -18390,7 +20490,11 @@ antes de hacer cambios en él.
 \begin_inset Quotes frd
 \end_inset
 
- junto al nombre de archivo en el minibuffer.
+ junto al nombre de archivo en el 
+\emph on
+minibuffer
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -18538,18 +20642,166 @@ man rlog
  para más información.
 \end_layout
 
+\begin_layout Subsubsection
+Información de revisión
+\end_layout
+
+\begin_layout Standard
+LyX soporta información de número de versión RCS (solo), véase 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:VCS-Información-de-revisión"
+
+\end_inset
+
+ para detalles.
+\end_layout
+
 \begin_layout Subsection
 Comandos CVS en LyX
 \end_layout
 
 \begin_layout Standard
-Ahora LyX soporta parcialmente CVS.
+Ahora LyX soporta un subconjunto de operaciones CVS.
  Puedes ver los comandos en el submenú 
 \family sans
 Archivo\SpecialChar \menuseparator
 Control de versiones
 \family default
 .
+ El sistema de control de versiones SVN es más poderoso, por lo que úsalo
+ en lugar de CVS, si es posible.
+\end_layout
+
+\begin_layout Subsubsection
+Uso general de CVS
+\end_layout
+
+\begin_layout Standard
+Si comienzas desde cero con CVS debes crear tu repositorio y comprobar la
+ copia de trabajo con herramientas externas.
+ Si usas una configuración cliente-servidor puedes necesitar registrarte
+ antes de hacer la primera comprobación del repositorio.
+\end_layout
+
+\begin_layout Standard
+Si tus documentos están bajo control de revisión y otros usan el mismo repositor
+io surgen problemas cuando se hacen cambios en el mismo documento y en el
+ mism lugar.
+ Los repositorios estándar CVS no operan con bloqueo de archivos, Esto puede
+ sorprender, pero los conflictos solo suceden si la gente discrepa sobre
+ el adecuado contenido de la misma parte de un documento.
+ Por tanto, si los colaboradores acostumbran a comunicarse regularmente,
+ los conflictos ocurren raramente.
+ Si no se comunican, tienen un problema fundamental de todos modos.
+ Con todo, algunos prefieren trabajar con las denominadas 
+\begin_inset Quotes fld
+\end_inset
+
+Comprobaciones reservadas
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Si hacen así, la copia de trabajo de todos los archivos es de solo lectura
+ al principio y el usuario comienza la edición después de usar un comando
+ especial para hacer posible la escritura en la copia de trabajo.
+ Cuando los cambios son ingresados la copia de trabajo vuelve al estado
+ solo lectura.
+ Con LyX, uno debe editar el archivo 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+.cvsrc
+\end_layout
+
+\end_inset
+
+ y añadir la línea 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+cvs -r
+\end_layout
+
+\end_inset
+
+ para trabajar con revisiones reservadas.
+ El beneficio es la posibilidad de ver quién está usando una copia con acceso
+ a escritura de algún documento.
+ No está garantizado que solo un usuario hace copias con permiso de escritura.
+\end_layout
+
+\begin_layout Standard
+LyX intenta averiguar si estás usando copia reservada o no.
+ Si la copia de trabajo es solo lectura asume que es reservada, si admite
+ escritura y una copia adicional del documento existe en el subdirectorio
+ CVS/Base, asume es no reservada.
+ Si se detecta una copia reservada debes usar 
+\begin_inset Flex EstiloCarácter:ItemMenú
+status collapsed
+
+\begin_layout Plain Layout
+Check Out
+\end_layout
+
+\end_inset
+
+ para poder escribir en ella.
+ Después de hacerlo, la operación 
+\begin_inset Flex EstiloCarácter:ItemMenú
+status collapsed
+
+\begin_layout Plain Layout
+Check In
+\end_layout
+
+\end_inset
+
+ es posible y esto hace que tu copia de trabajo se haga de nuevo solo lectura
+ después de transferir los cambios al repositorio.
+\end_layout
+
+\begin_layout Standard
+Más información sobre CVS se puede encontrar en 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.nongnu.org/cvs
+\end_layout
+
+\end_inset
+
+ y en 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://ximbiot.com/cvs
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Consulta 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+man cvs
+\end_layout
+
+\end_inset
+
+ para comprender los sub-comandos y conmutadores mencionados abajo.
 \end_layout
 
 \begin_layout Subsubsection
@@ -18579,14 +20831,34 @@ Registrar
 \end_layout
 
 \begin_layout Standard
-Este comando registra tu documento en CVS SOLO en el caso de que ya tengas
- el directorio de documentos bajo control CVS (en particular, existe el
- archivo 
+Este comando registra tu documento en CVS 
+\begin_inset Flex Emph
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Flex Strong
+status collapsed
+
+\begin_layout Plain Layout
+solo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ en el caso de que ya tengas el directorio de documentos bajo control CVS
+ (en particular, existe el archivo 
 \family typewriter
 CVS/Entries
 \family default
 ).
- Esto significa que debes comprobar el archivo por ti mismo.
+ Esto significa que debes comprobar el archivo por ti mismo usando herramientas
+ externas.
+ (En caso de olvidar este paso, LyX registra el documento con RCS).
 \end_layout
 
 \begin_layout Standard
@@ -18613,11 +20885,28 @@ cvs -q add -m
 \end_layout
 
 \begin_layout Standard
-Lee 
+El término 
 \family typewriter
-man cvs
+
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
 \family default
- para comprender las alternativas.
+ es una abreviación para 
+\begin_inset Quotes fld
+\end_inset
+
+cambiar el directorio de trabajo actual a la ubicación del archivo y usa
+ el nombre de archivo sin el componente ruta como argumento
+\begin_inset Quotes frd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -18627,13 +20916,92 @@ Ingresar cambios
 \begin_layout Standard
 Cuando has terminado de editar un archivo se graban los cambios.
  Al hacerlo se te pide una descripción de los mismos.
- Después, los cambios son ingresados.
+ Después, los cambios son ingresados en el repositorio.
+ En caso de que no hayas cambiado el documento y se detecte una copia reservada
+ se deshace la reserva hecha con 
+\begin_inset Flex EstiloCarácter:ItemMenú
+status collapsed
+
+\begin_layout Plain Layout
+Check Out
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Comando
+\begin_inset space ~
+\end_inset
+
+CVS: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\family typewriter
+cvs -q commit -m"<description>" <file-name>
+\end_layout
+
+\end_inset
+
+ 
+\family default
+o
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+cvs -q unedit "<file-name>"
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Descargar cambios
+\end_layout
+
+\begin_layout Standard
+Cuando estás compartiendo un repositorio con otros, puede que tengas que
+ incorporar sus cambios en tu copia de trabajo.
 \end_layout
 
 \begin_layout Standard
 Comando CVS: 
 \family typewriter
-cvs -q commit -m"<description>" <file-name>
+cvs -q update "<file-name>"
+\end_layout
+
+\begin_layout Standard
+Si se detecta una descarga solo lectura la copia se hace reservada y accesible
+ a escritura.
+\end_layout
+
+\begin_layout Standard
+Comando CVS: 
+\family typewriter
+cvs -q edit "<file-name>"
 \end_layout
 
 \begin_layout Subsubsection
@@ -18653,7 +21021,7 @@ Esto descargará todos los cambios hechos en el documento desde la última
 \begin_layout Standard
 Comando CVS: 
 \family typewriter
-cvs update 
+cvs -q update 
 \begin_inset Quotes eld
 \end_inset
 
@@ -18662,6 +21030,164 @@ cvs update
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Si se detecta una copia reservada y la copia de trabajo no tiene cambios
+ solo se deshace la reserva.
+\end_layout
+
+\begin_layout Standard
+Comando CVS: 
+\family typewriter
+cvs -q unedit 
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Actualizar el directorio local de descarga desde el repositorio
+\end_layout
+
+\begin_layout Standard
+Conforme tus documentos son más complejos, conteniendo sub-documentos y
+ figuras e incluyendo archivos externos 
+\family typewriter
+.tex
+\family default
+ y demás, el uso de control de versiones se hace más complicado.
+ LyX soporta la actualización del árbol completo en el que reside el documento.
+ Esto es especialmente útil cuando colaboras con gente que ni tiene conocimiento
+ detallado de CVS ni tiene interés en ingresar material adicional al repositorio.
+ Tienes que organizar la estructura de archivos para que los archivos externos
+ residan en el mismo directorio o subdirectorio del documento.
+ Es una buena práctica de todos modos almacenar los documentos multi-parte
+ en un directorio extra.
+\end_layout
+
+\begin_layout Standard
+El comando 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Update local directory from repository
+\end_layout
+
+\end_inset
+
+ actualiza el directorio completo.
+ Si se detectan cambios locales el usuario es advertido antes de iniciar
+ la actualización.
+ En caso de conflictos en la fusión ambas versiones de las partes conflictivas
+ se sitúan al final del documento.
+ Debes revisar y corregir el resultado de la fusión.
+ Los conflictos los verás encerrados entre pares de 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<<<<<<<
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+>>>>>>>
+\end_layout
+
+\end_inset
+
+ separados por 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+=======
+\end_layout
+
+\end_inset
+
+.
+ La parte primera es tu versión antes de la operación de actualización con
+ pecedida del nombre del documento.
+ La segunda es la versión del repositorio con el número de la versión tras
+ la secuencia de signos 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+>
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Comandos
+\begin_inset space ~
+\end_inset
+
+CVS: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+cd $path; cvs diff "."
+\end_layout
+
+\end_inset
+
+ (Para ver si se detectan cambios)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+cd $path; cvs -q update "."
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$path
+\end_layout
+
+\end_inset
+
+ es la ruta al documento.
 \end_layout
 
 \begin_layout Subsubsection
@@ -18699,6 +21225,24 @@ Control de versiones
 .
  Ten en cuenta que si utilizas acceso protegido con contraseña al repositorio
  vía ssh, se te pedirá en una ventana de terminal.
+ LyX se ha probado con SVN 1.5 y 1.6.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+La mayoría de los comandos funcionarán también con 1.4, véase 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:SVN-Actualizar-el-directorio"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -18716,9 +21260,14 @@ Registrar
 \end_layout
 
 \begin_layout Standard
-Este comando registra tu documento en SVN SOLO en el caso de que ya tengas
- el directorio de documentos bajo control SVN ( en particular, existe el
- archivo 
+Este comando registra tu documento en SVN 
+\series bold
+\emph on
+solo
+\series default
+\emph default
+ en el caso de que ya tengas el directorio de documentos bajo control SVN
+ ( en particular, existe el archivo 
 \family typewriter
 .svn/entries
 \family default
@@ -18764,7 +21313,25 @@ Cuando has terminado de editar un archivo, grabas los cambios.
 \end_layout
 
 \begin_layout Standard
-Comando SVN: 
+Comando SVN:
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+En el caso de que el bloqueo no esté habilitado.
+ Véase la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:SVN-Bloqueo-de-archivos"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
 \family typewriter
 svn commit -q -m"<description>" <file-name>
 \end_layout
@@ -18781,9 +21348,19 @@ Actualiza los cambios de este archivo desde el repositorio.
 \end_layout
 
 \begin_layout Standard
-Comando SVN: 
+Comando SVN:
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ídem.
+\end_layout
+
+\end_inset
+
+ 
 \family typewriter
-svn update 
+svn update --non-interactive 
 \begin_inset Quotes eld
 \end_inset
 
@@ -18819,6 +21396,121 @@ svn revert -q
 \end_layout
 
 \begin_layout Subsubsection
+Actualizar el directorio local de descarga desde el repositio
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Ten en cuenta que este comando solo funcionará con 
+\begin_inset Formula $\geqq1.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:SVN-Actualizar-el-directorio"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Todos los comandos anteriores tienen un defecto: solo negocian con el documento
+ actual.
+ Una vez que el documento contiene figuras, archivos externos 
+\family typewriter
+.tex
+\family default
+, etc., su administración se hace más complicada.
+ Ahora LyX soporta la actualización del árbol completo en el que reside
+ el documento.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Hay que organizar la estructura de archivos de modo que todos los archivos
+ externos estén en el mismo directorio o subdirectorios del documento.
+\end_layout
+
+\end_inset
+
+ Esto es especialmente útil cuando colaboras con gente que ni tiene conocimiento
+ detallado de CVS ni tiene interés en ingresar material adicional al repositorio.
+\end_layout
+
+\begin_layout Standard
+El comando 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Update local directory from repository
+\end_layout
+
+\end_inset
+
+ actualiza el directorio completo y en caso de conflictos se deja la versión
+ local de los archivos, para que no haya pérdida indeseada de datos.
+ Si se detectan cambios locales se avisa al usuario antes de iniciar la
+ actualización.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Comandos
+\begin_inset space ~
+\end_inset
+
+SVN: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+svn diff $path
+\end_layout
+
+\end_inset
+
+ (Para ver si se detectan cambios.)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+svn update --accept mine-full $path
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde 
+\family typewriter
+$path
+\family default
+ es la ruta al documento.
+\end_layout
+
+\begin_layout Subsubsection
 Mostrar historial
 \end_layout
 
@@ -18837,6 +21529,573 @@ svn log
 \end_inset
 
  se muestra en un buscador.
+\end_layout
+
+\begin_layout Subsubsection
+Bloqueo de archivos
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:SVN-Bloqueo-de-archivos"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El intercambio de archivos entre varios sistemas de control de revisiones
+ tiene el problema de conflictos en las fusiones en el caso de que dos usuarios
+ intenten editar el mismo documento (o partes de él).
+ Cuando sucede un conflicto requiere una solución manual, y una alternativa
+ razonable es proveer algún tipo de mecanismo de bloqueo que garantice que
+ solo un usuario pueda editar el archivo al mismo tiempo.
+\end_layout
+
+\begin_layout Standard
+SVN dispone de dos de estos mecanismos que garantizan exclusividad en el
+ acceso a archivos, bloqueos y configuración automática de permisos de escritura
+ (véase la sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:SVN-Bloqueo-automático"
+
+\end_inset
+
+), basados en propiedad de archivos svn 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+svn:needs-lock
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://svnbook.red-bean.com/en/1.2/svn.advanced.locking.html"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Si esta propiedad se detecta para determinado documento, LyX empieza automática
+mente a usar bloqueo SVN para la edición del documento, y el mecanismo completo
+ de ingreso/descarga conmuta al mismo régimen que para RCS.
+ En particular, esto quiere decir que hay dos modos diferentes de uso archivos
+ en LyX:
+\end_layout
+
+\begin_layout Itemize
+Estado no bloqueado.
+ EL archivo cargado está en modo solo lectura.
+ Para editar hay que descargarlo.
+ 
+\emph on
+Descarga
+\emph default
+ consiste en actualizar desde el repositorio y adquisición de bloqueo de
+ escritura.
+ Si no es posible obtener el bloqueo permanece el estado no bloquedo.
+\end_layout
+
+\begin_layout Itemize
+Estado bloqueado.
+ El archivo cargado está en modo 'normal' de edición.
+ Ningún otro usuario tiene permiso para editar el archivo.
+ 
+\emph on
+Ingresar
+\emph default
+ consiste en eingresar los cambios y obtención de bloqueo de escritura.
+ Si no se han hecho cambios en el documento, no se producirá ningún ingreso
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+No te extrañe si de todas formas se te pide un mensaje de ingreso.
+\end_layout
+
+\end_inset
+
+ y solo se realizará el bloqueo de escritura.
+\end_layout
+
+\begin_layout Standard
+SVN commands:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Check-in:
+\family typewriter
+ svn commit -q -m"<description>" "<file-name>"
+\begin_inset Newline newline
+\end_inset
+
+svn unlock "<file-name>"
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Check-out: 
+\family typewriter
+svn update "<file-name>"
+\begin_inset Newline newline
+\end_inset
+
+svn lock "<file-name>"
+\end_layout
+
+\begin_layout Subsubsection
+Propiedad de bloqueo automático
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:SVN-Bloqueo-automático"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La configuración automática de los permisos de escritura del archivo .lyx
+ se establece con 
+\begin_inset Flex EstiloCarácter:ItemMenú
+status collapsed
+
+\begin_layout Plain Layout
+Archivo\SpecialChar \menuseparator
+Control de versiones\SpecialChar \menuseparator
+Cambiar propiedad de bñoqueo
+\end_layout
+
+\end_inset
+
+.
+ Este comando está activo solo cuando el archivo no está bloqueado en el
+ servidor svn (es decir, debes descargar antes de proceder).
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Comandos
+\begin_inset space ~
+\end_inset
+
+SVN:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Activar:
+\family typewriter
+ svn propset svn:needs-lock ON "<file-name>"
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Desactivar: 
+\family typewriter
+svn propdel svn:needs-lock "<file-name>"
+\end_layout
+
+\begin_layout Subsubsection
+Información de revisión en documentos
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:VCS-Información-de-revisión"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hay más posibilidades para activar la información de revisión en nuestro
+ documento.
+\end_layout
+
+\begin_layout Itemize
+LyX lo soporta directamente.
+\end_layout
+
+\begin_layout Itemize
+Información de revisión del árbol (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+vcs-tree-revision
+\end_layout
+
+\end_inset
+
+).
+ El resultado es la salida del comando 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+svnversion
+\end_layout
+
+\end_inset
+
+; el siguiente cuadro da una idea de la interpretación de los resultados.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Salida
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Significado
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4123:4168
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+revisión mezclada de la copia de trabajo
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4168M
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+copia de trabajo modificada
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4123S
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+copia de trabajo conmutada
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4123P
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+copia de trabajo parcial, de una descarga dispersa
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4123:4168MS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+copia de trabajo de revisión mezclada, modificada, conmutada
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Información de revisión del archivo.
+ El resultado del análisis de la salida de 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+svn
+\begin_inset space ~
+\end_inset
+
+info
+\begin_inset space ~
+\end_inset
+
+--xml
+\begin_inset space ~
+\end_inset
+
+file.lyx
+\end_layout
+
+\end_inset
+
+.
+ Los argumentos soportados son:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+número de versión del último ingreso (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+vcs-revision
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+autordel último ingreso (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+vcs-author
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+fecha del último ingreso (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+vcs-date
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+hora del último ingreso (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+vcs-time
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Puedes obtener esta información mediante InsetInfo (p.
+\begin_inset space \thinspace{}
+\end_inset
+
+ej.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+info-insert buffer vcs-date
+\end_layout
+
+\end_inset
+
+).
+ La información estará disponible solo cuando tengas el arvhivo almacenado
+ bajo administración svn (es decir, el directorio 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+.svn
+\end_layout
+
+\end_inset
+
+ está disponible con tu documento).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Otra posibilidad es usar claves svn 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+http://svnbook.red-bean.com/en/1.4/svn.advanced.props.special.keywords.html
+\end_layout
+
+\end_inset
+
+.
+ Estableces la propiedad de claves de archivo (p.
+\begin_inset space \thinspace{}
+\end_inset
+
+ej.
+ 
+\family sans
+svn propset svn:keywords 'Rev' file.lyx
+\family default
+) y luego pegas la clave en código TeX
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Esta es una manera fácil de asegurar que LyX no quiebre la línea en mitad
+ de la clave.
+\end_layout
+
+\end_inset
+
+ en tu documento (p.
+\begin_inset space \thinspace{}
+\end_inset
+
+ej.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$Rev$
+\end_layout
+
+\end_inset
+
+).
+ De esta manera el cliente svn sustituirá automáticamente el número de revisión
+ (p.
+\begin_inset space \thinspace{}
+\end_inset
+
+ej.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$Rev: 59 $
+\end_layout
+
+\end_inset
+
+) tras cada actualización e ingreso.
+ Hay otros problemas con este enfoque.
+ Primero, el carácter '$' se usa en TeX para expresiones matemáticas, de
+ modo que cualquier aparición de una fórmula 
+\begin_inset Formula $Rev$
+\end_inset
+
+ se convierte en 
+\begin_inset Formula $Rev:59$
+\end_inset
+
+ en tu documento LyX.
+ Lo mismo sucederá con otras claves como Id, Date, Author, etc.
+ Segundo, la salida svn es dependiente del idioma, por lo que es fácil que
+ svn produzca alguna cadena problemática al usar Date.
+ Tercero, se obtiene la cadena completa 'Rev: 59' en tu documento en vez
+ de solo el número.
+ Hasta que subversion implemente claves personalizadas por el usuario será
+ pesado usar este enfoque con fiabilidad o permitir a LyX soportarlo directament
+e.
 \end_layout
 
 \begin_layout Subsection
@@ -19004,6 +22263,282 @@ Control de versiones
  
 \end_layout
 
+\begin_layout Subsubsection
+SSH tunnel con SVN bajo Windows
+\end_layout
+
+\begin_layout Standard
+Comparado con la configuración del cliente svn en Linux para comunicar sobre
+ ssh, bajo Windows es una tarea es bastante más molesta.
+ Al menos ofreceremos algunas indicaciones para configurar el cliente, pero
+ hay que aclarar antes algo sobre ssh y la línea de comandos en Windows
+ y estar preparados para grandes dosis de frustración\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Enumerate
+Obtén un cliente svn para windows, como se describe en secciones anteriores.
+ Si es una instalación nueva ejecuta algún comando para crear los archivos
+ de configuración (p.
+\begin_inset space \thinspace{}
+\end_inset
+
+ej.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+svn --version
+\end_layout
+
+\end_inset
+
+), que deberás cambiar más tarde.
+\end_layout
+
+\begin_layout Enumerate
+Elige un cliente ssh para Windows.
+ Hay varias opciones, aquí usaremos el de Putty tools
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ Tendrás que configurar la conexión para que el cliente no pia contraseña.
+ Para facilitar las cosas usaremos solo claves sin ninguna protección adicional
+ de contraseña, etc.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Genera las claves con 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+puttygen
+\end_layout
+
+\end_inset
+
+.
+ Guarda tu clave privada .ppk y pon la pública en el servidor.
+ Si el servidor SVN corre bajo Linux, ten en cuenta que el formato de la
+ clave pública no es compatible con openssh Linux y tendrás que copiar y
+ pegar directamente la clave desde el campo de edición “
+\emph on
+Public key for pasting into OpenSSH authorized_keys file
+\emph default
+:” en el archivo del servidor 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+~/.ssh/authorized_keys
+\end_layout
+
+\end_inset
+
+/ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+authorized_keys2
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Obtén el 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+plink
+\end_layout
+
+\end_inset
+
+ de Putty.
+ En el archivo de configuración SVN
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+La ruta exacta depende de la versión de Windows, usualmente algo como 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+c:
+\backslash
+Documents and Settings
+\backslash
+user
+\backslash
+Application Data
+\backslash
+Subversion
+\backslash
+config
+\end_layout
+
+\end_inset
+
+ / 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+AppData
+\backslash
+Roaming
+\backslash
+Subversion
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+, sección [tunnels], configura el comando ssh, p.
+\begin_inset space \thinspace{}
+\end_inset
+
+ej.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ssh=c:/path/plink.exe -i c:/path/private_key.ppk
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Usualmente toma tiempo conseguir el comando exacto y depende de muchas cosas.
+ Por ejemplo, no tener algún servidor remoto guardado como predeterminado
+ en Putty etc.
+ Si falla, intenta primero conectar vía plink sin SVN.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Descarga el archivo SVN, p.
+\begin_inset space \thinspace{}
+\end_inset
+
+ej.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+svn co svn+ssh://user@server/repository_path
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Conversiones de los finales de línea
+\end_layout
+
+\begin_layout Standard
+Cuando los colaboradores mezclan entornos Linux y Windows, LyX usará distintos
+ finales de línea en los archivos .lyx.
+ Esto no es un problema en lo que concierne a la funcionalidad de LyX, pero
+ los archivos diff de los ingresos serán enormes y propensos a conflictos
+ de fusión.
+ Afortunadamente SVN sabe por sí mismo
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://svnbook.red-bean.com/en/1.4/svn.advanced.props.file-portability.html
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ como manejar problemas con retornos y saltos de línea (CR/LF) cuando cambia
+ archivos .lyx al modo 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+native
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Para los perezosos: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+svn propset svn:eol-style native FILE_NAME
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Ajustes adicionales
 \end_layout
@@ -19020,7 +22555,7 @@ Como ejemplo puedes ver cómo integrar directamente dos comandos TortoiseSVN:
 
 \begin_layout Description
 Commit: 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -19034,7 +22569,7 @@ vc-command DS "." "TortoiseProc /command:commit /path:$$p"
 
 \begin_layout Description
 Revert: 
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -19044,6 +22579,75 @@ vc-command DR "." "TortoiseProc /command:revert /path:$$p"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Control de versiones y comparación de documentos
+\end_layout
+
+\begin_layout Standard
+Uno de los usos típicos del control de versiones es inspeccionar los cambios
+ entre revisiones, usualmente creando volcados 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+diff
+\end_layout
+
+\end_inset
+
+.
+ Aunque esto es útil para archivos de texto sencillo, es mucho menos útil
+ en archivos de LyX, que tienen una estructura más complicada.
+ Por tanto, proporcionamos caminos para la característica de comparar documentos.
+ Hay dos maneras de iniciar esta función, una por llamada directa a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+VC_COMPARE
+\end_layout
+
+\end_inset
+
+ (véase el manual Funciones de LyX para detalles) y otra con el icono o
+ menú 
+\begin_inset Flex EstiloCarácter:ItemMenú
+status collapsed
+
+\begin_layout Plain Layout
+Comparar con revisión anterior...
+\end_layout
+
+\end_inset
+
+.
+ Se pueden comparar dos revisiones determinadas o se puede simplemente comparar
+ la versión actual del texto editado con revisiones anteriores (donde '
+\lang english
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+
+\lang spanish
+' revisiones atrás quiere decir comparar el archivo en edición con la última
+ revisión remitida).
+ 
+\end_layout
+
+\begin_layout Standard
+Esta característica está soportada por SVN y RCS, aunque debido al esquema
+ de versiones más complicado de RCS hay una restricción, en la dirección
+ de las revisiones en el diálogo, los números siempre apuntan al último
+ número en el número de revisión de RCS, es decir, '35' en '1.2.35'.
 \end_layout
 
 \begin_layout Section
@@ -19231,7 +22835,7 @@ Literate Programming
 \end_layout
 
 \begin_layout Quote
-Literate Programming FAQ:  
+Literate Programming FAQ: 
 \begin_inset Flex URL
 status collapsed
 
@@ -20462,7 +24066,7 @@ LaTeX
 \family sans
 Código-LyX
 \family default
-, y  
+, y 
 \family sans
 Fragmento
 \family default
@@ -21044,7 +24648,7 @@ Numeración en el entorno de párrafo
 Enumeración
 \family default
 
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -21575,8 +25179,8 @@ yinit
 \begin_inset Quotes frd
 \end_inset
 
-,  una fuente alemana de fantasía específicamente diseñada para letras capitular
-es.
+, una fuente alemana de fantasía específicamente diseñada para letras capitulare
+s.
  El cuarto argumento es la letra (o letras) capitulares.
  El paquete 
 \family typewriter
@@ -21888,10 +25492,6 @@ es el número de líneas de texto que define el párrafo.
  de línea se mide desde ese punto.
  La forma es aplicada únicamente al párrafo actual; todo se reinicia a lo
  normal en el párrafo siguiente.
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Standard

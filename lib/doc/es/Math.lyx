@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 410
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -149,6 +149,7 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language spanish
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
@@ -211,9 +212,10 @@
 \bullet 1 0 6 -1
 \bullet 2 2 35 -1
 \bullet 3 2 7 -1
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -254,7 +256,7 @@ target "lyx-docs@lists.lyx.org?subject=LyX's Math manual"
 status collapsed
 
 \begin_layout Plain Layout
-autor: Uwe Stöhr, traducción: Ignacio Garcia
+autor: Uwe Stöhr, traducción: Ignacio García
 \end_layout
 
 \end_inset
@@ -560,7 +562,7 @@ displaystyle
 \end_layout
 
 \begin_layout Standard
-En las tablas sólo se permiten ecuaciones en línea.
+En los cuadros sólo se permiten ecuaciones en línea.
 \end_layout
 
 \begin_layout Standard
@@ -737,7 +739,7 @@ Filas y columnas
 \family default
  o la barra de herramientas de 
 \family sans
-Tabla
+Cuadro
 \family default
 .
  Cuando las líneas y columnas se intercambian mediante el menú, la columna
@@ -2034,7 +2036,8 @@ cfrac
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{align*}
+\begin_inset Formula 
+\begin{align*}
 \textrm{creada con \textbf{\textbackslash frac}} &  & \textrm{creada con \textbf{\textbackslash cfrac}}\\
 \frac{A}{B+\frac{C+\frac{E}{F}}{D}} &  & \cfrac{A}{B+\cfrac{C+\cfrac{E}{F}}{D}}
 \end{align*}
@@ -2226,7 +2229,8 @@ cfrac
 frac
 \series default
 :
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \cfrac{A}{B+\cfrac{C+\frac{E}{F}}{D}}
 \]
 
@@ -2359,7 +2363,7 @@ sqrt
 
 \end_inset
 
- de la barra de  ecuaciones; todas las demás raíces con el comando 
+ de la barra de ecuaciones; todas las demás raíces con el comando 
 \series bold
 
 \backslash
@@ -3228,7 +3232,7 @@ Ctrl+Entrar
 
 \end_inset
 
- de la barra de tablas.
+ de la barra de cuadros.
 \end_layout
 
 \begin_layout Standard
@@ -4982,7 +4986,8 @@ hdotsfor[2]{4}
 dots
 \series default
 .
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left(\begin{array}{cccc}
 A & B & C & D\\
 \hdotsfor[2]{4}\\
@@ -5796,7 +5801,7 @@ vmatrix
 \begin_inset Newline newline
 \end_inset
 
-Hay que tener en cuenta que las matrices decoradas ignoran el alineaiento
+Hay que tener en cuenta que las matrices decoradas ignoran el alineamiento
  vertical.
 \begin_inset VSpace bigskip
 \end_inset
@@ -6741,7 +6746,8 @@ spce
 bigg>
 \backslash
 Bigg)^0,5
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \Bigg(\exp\bigg<\Big[\big\{\ln(3x)\big\}^{2}\sen(x)\Big]^{A}\bigg>\Bigg)^{0,5}
 \]
 
@@ -7189,7 +7195,8 @@ spce
 )
 \series default
  genera
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \ln(\frac{A}{C})
 \]
 
@@ -7252,7 +7259,8 @@ spce
 right)
 \series default
  genera
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \ln\left(\frac{A}{C}\right)
 \]
 
@@ -7370,7 +7378,8 @@ spce
 right}
 \series default
  da lugar a:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left.\frac{A}{B}\right\} 
 \]
 
@@ -7428,7 +7437,8 @@ middle
 \end_inset
 
 e., para vectores físicos: 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left\langle \phi\;\middle|\; J=\frac{3}{2}\,,\, M_{J}\right\rangle 
 \]
 
@@ -7851,7 +7861,8 @@ reference "sec:Ecuaciones-multilínea"
 \end_inset
 
 :
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 A & = & \underbrace{gggg+bbqq}_{r}+\: dddd\\
  &  & \hphantom{gggg+\:}\underbrace{\hphantom{bbqq+dddd}}_{s}
 \end{eqnarray*}
@@ -7992,7 +8003,8 @@ jot}{-6pt}
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
  &  & \hphantom{gggg+\:}\overbrace{\hphantom{bbqq+dddd}}^{s}\\
 A & = & \underbrace{gggg+bbqq}_{r}+\: dddd
 \end{eqnarray*}
@@ -9475,10 +9487,6 @@ reference "sub:Tamaño-automático-de"
 .
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Section
 Acentos
 \begin_inset CommandInset label
@@ -10604,7 +10612,8 @@ spce
 n
 \series default
  genera:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \sideset{}{'}\sum_{k=1}^{n}
 \]
 
@@ -10657,7 +10666,8 @@ spce
 a
 \series default
  genera:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \overset{a}{\maltese}
 \]
 
@@ -11136,7 +11146,8 @@ widehat
 \series default
  sólo pueden abarcar tres caracteres en la salida, como se muestra en este
  ejemplo:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \widetilde{A+B=C-D}
 \]
 
@@ -11208,7 +11219,8 @@ A=B
 ***
 \series default
  da:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \underset{***}{A=B}
 \]
 
@@ -12384,7 +12396,7 @@ B=B
 
 \begin_layout Standard
 En el último ejemplo el espacio disponible viene dado por la entrada más
- larga de columna en la tabla.
+ larga de columna en el cuadro.
  En una ecuación en línea el espacio depende de la longitud de la línea
  en la que se inserta 
 \series bold
@@ -12641,7 +12653,7 @@ pt.
 \end_layout
 
 \begin_layout Section
-Cuadros y marcos
+Marcos y bordes
 \begin_inset Index idx
 status collapsed
 
@@ -12652,44 +12664,12 @@ Marcos
 \end_inset
 
 
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Marcos|see
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-Cuadros
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-Los cuadros para texto se describen en el capítulo 
+Los marcos para texto se describen en el capítulo 
 \emph on
-Cuadros
+Marcos
 \emph default
  del manual 
 \emph on
@@ -12699,19 +12679,19 @@ Objetos insertados
 \end_layout
 
 \begin_layout Subsection
-Cuadros con marco
+Marcos con bordes
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Cuadros-con-marco"
+name "sub:Marcos-con-bordes"
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Cuadros ! con marco
+Marcos ! bordes
 \end_layout
 
 \end_inset
@@ -12761,7 +12741,7 @@ boxed
 
 \begin_layout Standard
 Cuando uno de estos comandos se inserta en una ecuación, aparece un recuadro
- azul en un marco donde se introduce parte de una ecuación.
+ azul en un marco donde se introducen partes de una ecuación.
  Para 
 \series bold
 
@@ -12827,7 +12807,7 @@ framebox
 \backslash
 fbox
 \series default
-, que permite especificar además la anchura del marco yla alineación.
+, que permite especificar además la anchura del marco y la alineación.
  
 \series bold
 
@@ -12858,7 +12838,7 @@ r
 \emph on
 l
 \emph default
- alinea la ecuación a la izquierda del cuadro, 
+ alinea la ecuación a la izquierda del marcro, 
 \emph on
 r
 \emph default
@@ -12868,7 +12848,7 @@ r
 \end_inset
 
 Si no se pone anchura tampoco puede darse posición.
- En este caso la anchura del marco se ajusta al contenido del cuadro, como
+ En este caso la anchura del borde se ajusta al contenido del cuadro, como
  con 
 \series bold
 
@@ -13175,7 +13155,7 @@ B
 \end_layout
 
 \begin_layout Standard
-El grosor del marco también se puede ajustar.
+El grosor del borde también se puede ajustar.
  Para ello hay que insertar los siguientes comandos en modo TeX antes de
  la fórmula:
 \end_layout
@@ -13226,7 +13206,7 @@ distancia
 \begin_inset Quotes frd
 \end_inset
 
- especifica la distancia mínima entre el marco y el primer carácter en el
+ especifica la distancia mínima entre el borde y el primer carácter en el
  cuadro.
  Un ejemplo de esto es la siguiente ecuación enmarcada:
 \begin_inset ERT
@@ -13244,7 +13224,8 @@ fboxsep 3mm
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \boxed{A+B=C}
 \]
 
@@ -13281,7 +13262,7 @@ fboxsep
 
 \begin_layout Standard
 en modo TeX.
- Los valores dados se usan para todos los cuadros siguientes.
+ Los valores dados se usan para todos los marcos siguientes.
 \end_layout
 
 \begin_layout Standard
@@ -13332,19 +13313,19 @@ en modo TeX antes de la ecuación siguiente.
 \end_layout
 
 \begin_layout Subsection
-Cuadros sin marco
+Marcos sin bordes
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Cuadros-sin-marco"
+name "sub:Marcos-sin-bordes"
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Cuadros ! sin marco
+Marcos ! sin borde
 \end_layout
 
 \end_inset
@@ -13353,7 +13334,7 @@ Cuadros ! sin marco
 \end_layout
 
 \begin_layout Standard
-Para cuadros sin marco hay los comandos: 
+Para marcos sin borde hay los comandos: 
 \series bold
 
 \backslash
@@ -13417,8 +13398,8 @@ Con
 \backslash
 raisebox
 \series default
- se puede poner un cuadro subíndice o superíndice, pero a diferencia de
- los normales, los caracteres en el cuadro mantienen su tamaño de fuente.
+ se puede poner un marco subíndice o superíndice, pero a diferencia de los
+ normales, los caracteres en el marco mantienen su tamaño de fuente.
  
 \series bold
 
@@ -13437,7 +13418,7 @@ raisebox{altura}{contenido del marco}
 \end_layout
 
 \begin_layout Standard
-Cuando el cuadro tenga que contener una ecuación, hace falta una ecuación
+Cuando el marco tenga que contener una ecuación, hace falta una ecuación
  extra, como con 
 \series bold
 
@@ -13661,19 +13642,19 @@ framebox
 \end_layout
 
 \begin_layout Subsection
-Cuadros coloreados
+Marcos coloreados
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Cuadros-coloreados"
+name "sub:Marcos-coloreados"
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Cuadros ! coloreados
+Marcos ! coloreados
 \end_layout
 
 \end_inset
@@ -13755,7 +13736,7 @@ usepackage{color}
 \end_layout
 
 \begin_layout Standard
-Para colorear cuadros se usa el comando 
+Para colorear marcos se usa el comando 
 \series bold
 
 \backslash
@@ -13781,18 +13762,18 @@ colorbox
 \series bold
 
 \backslash
-colorbox{color}{contenido del cuadro}
+colorbox{color}{contenido del marco}
 \end_layout
 
 \begin_layout Standard
-El contenido del cuadro puede ser otro cuadro, y también un 
+El contenido del marco puede ser otro marco, y también un 
 \backslash
 
 \series bold
 colorbox
 \series default
- puede ser parte de otro cuadro (véanse los ejemplos 2º y 3º).
- Si el cuadro debe contener una ecuación debe crearse una ecuación extra,
+ puede ser parte de otro marco (véanse los ejemplos 2º y 3º).
+ Si el marco debe contener una ecuación debe crearse una ecuación extra,
  como con 
 \series bold
 
@@ -14055,7 +14036,7 @@ C=D
 \backslash
 colorbox
 \series default
- sólo colorea el cuadro pero no los caracteres.
+ sólo colorea el marco pero no los caracteres.
  Para colorear todos los caracteres se selecciona toda la ecuación y se
  elige un color en el diálogo 
 \family sans
@@ -14101,7 +14082,8 @@ Personalizado
 Un ejemplo:
 \color red
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 {\color{red}\int A=B}\label{eq:rojo}
 \end{equation}
 
@@ -14110,7 +14092,8 @@ Un ejemplo:
 
 \color green
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 {\color{green}{\color{red}\int A=B}}\label{eq:rojoverde}
 \end{equation}
 
@@ -14150,8 +14133,7 @@ reference "eq:rojoverde"
 \end_layout
 
 \begin_layout Standard
-Para colorear diferente el marco y el resto del cuadro se usa el comando
- 
+Para colorear diferente el borde y el marcose usa el comando 
 \series bold
 
 \backslash
@@ -14177,7 +14159,7 @@ fcolorbox
 \series bold
 
 \backslash
-fcolorbox{color del marco}{color}{contenido del cuadro}
+fcolorbox{color del borde}{color}{contenido del marco}
 \end_layout
 
 \begin_layout Standard
@@ -14194,7 +14176,7 @@ fcolorbox
 colorbox
 \series default
 .
- La anchura del marco se establece, como para 
+ La anchura del borde se establece, como para 
 \series bold
 
 \backslash
@@ -14229,7 +14211,8 @@ fboxsep 1mm
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \fcolorbox{cyan}{magenta}{A=B}
 \]
 
@@ -14384,14 +14367,15 @@ gray
 \end_layout
 
 \begin_layout Standard
-Como ejemplo he aquí un cuadro enmarcado con el nuevo color definido 
+Como ejemplo he aquí un marco con el nuevo color definido 
 \series bold
 verdeoscuro
 \series default
  y los caracteres en color amarillo:
 \color black
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \colorbox{verdeoscuro}{\color{yellow}\boxed{\int A\,\mathrm{d}x=\frac{\sqrt[3]{B}}{\ln\left(\frac{1}{3}\right)}}}
 \end{equation}
 
@@ -14485,19 +14469,19 @@ textcolor{color}{caracteres a colorear}
 \end_layout
 
 \begin_layout Subsection
-Cuadros de párrafo
+Marcos de párrafo
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Cuadros-de-párrafo"
+name "sub:Marcos-de-párrafo"
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Cuadros ! para párrafos
+Marcos ! para párrafos
 \end_layout
 
 \end_inset
@@ -14506,11 +14490,11 @@ Cuadros ! para párrafos
 \end_layout
 
 \begin_layout Standard
-Un cuadro que puede contener varias líneas y párrafos, denominado cuadro
- de párrafo (parbox), se puede generar con el menú 
+Un marco que puede contener varias líneas y párrafos, denominado marco de
+ párrafo (parbox), se puede generar con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
-Cuadro
+Marco
 \family default
  o con el botón 
 \begin_inset Graphics
@@ -14523,7 +14507,7 @@ Cuadro
 \end_layout
 
 \begin_layout Standard
-El siguiente ejemplo muestra un cuadro de párrafo enmarcado en una línea:
+El siguiente ejemplo muestra un marco de párrafo en línea:
 \begin_inset VSpace medskip
 \end_inset
 
@@ -14542,7 +14526,7 @@ height_special "totalheight"
 status collapsed
 
 \begin_layout Plain Layout
-Esto es un cuadro de párrafo.
+Esto es un marco de párrafo.
  Tiene exactamente 5
 \begin_inset space \thinspace{}
 \end_inset
@@ -14560,19 +14544,19 @@ cm de largo y además puede contener ecuaciones:
 \begin_inset space ~
 \end_inset
 
- un cuadro de párrafo.
+ un marco de párrafo.
 \begin_inset VSpace medskip
 \end_inset
 
-Ese cuadro se compone haciendo clic derecho sobre el rectángulo gris insertado.
- Surge un diálogo con las propiedades del cuadro.
+Ese marco se compone haciendo clic derecho sobre el rectángulo gris insertado.
+ Surge un diálogo con las propiedades del marco.
  En este caso: 
 \emph on
 Decoración
 \emph default
 : Marco rectangular, 
 \emph on
-Cuadro interior
+marco interior
 \emph default
 : Párrafo, 
 \emph on
@@ -14588,7 +14572,7 @@ Alineación Vertical
 \emph default
  
 \emph on
-Cuadro
+marco
 \emph default
 : Medio.
 \end_layout
@@ -14597,7 +14581,7 @@ Cuadro
 \begin_inset VSpace medskip
 \end_inset
 
-En LaTeX, un cuadro de párrafo se inserta con el comando 
+En LaTeX, un marco de párrafo se inserta con el comando 
 \series bold
 
 \backslash
@@ -14647,7 +14631,7 @@ bottom
 \begin_inset Quotes frd
 \end_inset
 
- (abajo), que alinea la última línea del cuadro con el texto de alrededor.
+ (abajo), que alinea la última línea del marco con el texto de alrededor.
  Con 
 \emph on
 t
@@ -14661,10 +14645,10 @@ top
 \end_inset
 
  (arriba), la alineación se hace con la primera línea.
- Si no se da posición, el cuadro se centrará verticalmente, véase la sección
+ Si no se da posición, el marco se centrará verticalmente, véase la sección
  
 \emph on
-Cuadros
+Marcos
 \emph default
  del manual 
 \emph on
@@ -14678,7 +14662,7 @@ Objetos insertados
 \end_inset
 
 Para enmarcar ecuaciones completas, incluso el número de la ecuación, deben
- ponerse en un cuadro de párrafo.
+ ponerse en un marco de párrafo.
  Para ello se inserta el comando
 \begin_inset Newline newline
 \end_inset
@@ -14721,7 +14705,7 @@ linewidth
 \end_inset
 
  es la anchura de línea establecida para el documento.
- Como el marco está por fuera del cuadro de párrafo, hay que restar de dicha
+ Como el marco está por fuera del marco de párrafo, hay que restar de dicha
  anchura dos veces la separación del marco y el grosor.
  Como LyX no lo hace automáticamente debido a un fallo,
 \begin_inset Foot
@@ -14782,7 +14766,7 @@ usepackage{calc}
 \end_layout
 
 \begin_layout Standard
-Detrás de la ecuación se cierran ambos cuadros con 
+Detrás de la ecuación se cierran ambos marcos con 
 \series bold
 }}
 \series default
@@ -14827,7 +14811,8 @@ fboxrule}{
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}
 \end{equation}
 
@@ -14873,7 +14858,7 @@ fboxsep 3pt
 \end_layout
 
 \begin_layout Standard
-Como se ha usado el cuadro de párrafo como argumento de 
+Como se ha usado el marco de párrafo como argumento de 
 \series bold
 
 \backslash
@@ -14903,7 +14888,7 @@ boxed
 \end_layout
 
 \begin_layout Standard
-Los cuadros de párrafo son muy útiles para comentar ecuaciones directamente.
+Los marcos de párrafo son muy útiles para comentar ecuaciones directamente.
  Para hacerlo, se usa 
 \series bold
 
@@ -15076,7 +15061,8 @@ comentado
 \end_inset
 
  usando el modo texto matemático:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 5x-7b=3b\textrm{ Esto es una descripción. No está separada de la ecuación...}
 \]
 
@@ -16325,7 +16311,8 @@ L
 
 \begin_layout Standard
 El tipo de límites por omisión es:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \sum_{x=0}^{\infty}\frac{1}{x^{2}}
 \]
 
@@ -16340,7 +16327,8 @@ Así se ven si se cambia el tipo de límites a
 Alineado
 \series default
 :
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \sum\nolimits _{x=0}^{\infty}\frac{1}{x^{2}}
 \]
 
@@ -16374,7 +16362,8 @@ ointop
 Presentado
 \series default
  para poner el límite debajo:
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \iiint\limits _{V}X\,\mathrm{d}V=U\label{eq:IntVol}
 \end{equation}
 
@@ -16422,7 +16411,8 @@ substack
 
 .
  Por ejemplo, para componer la expresión
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \sum_{\begin{subarray}{c}
 0<k<1000\\
 \\
@@ -16456,7 +16446,7 @@ spce
 _
 \series default
 .
- Ahora el cursor está en un cuadro azul bajo el operador sumatorio y ahí
+ Ahora el cursor está en un marco azul bajo el operador sumatorio y ahí
  se inserta el comando 
 \series bold
 
@@ -16477,7 +16467,7 @@ spce
 \end_inset
 
 .
- Ahora el cuadro azul está en un marco púrpura donde pueden escribirse líneas
+ Ahora el marco azul está en un marco púrpura donde pueden escribirse líneas
  distintas.
  Cada línea nueva se crea con un salto de línea (
 \family sans
@@ -16502,7 +16492,7 @@ aparece debajo un nuevo marco para la línea nueva.
 \begin_layout Standard
 La alineación de las líneas puede cambiarse a la izquierda con la 
 \family sans
-barra de herramientas de tabla
+barra de herramientas de cuadros
 \family default
  o con el menú 
 \family sans
@@ -16686,7 +16676,8 @@ spce
 \begin_layout Standard
 para componer el límite inferior.
  Ahora el sumando está junto al sumatorio:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \sum_{\mathclap{\substack{0<k<1000\\
 \\
 k\,\in\,\mathbb{N}
@@ -17949,7 +17940,8 @@ reference "sub:Símbolos-misceláneos"
 \end_inset
 
 .
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \Lozenge_{n=1}^{\infty}
 \]
 
@@ -18051,7 +18043,8 @@ mathbin
 mathop
 \series default
  se puede usar, p.e., para poner un límite a varios operadores:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \mathop{\sum\negmedspace\sum}_{i,j=1}^{N}
 \]
 
@@ -18816,7 +18809,8 @@ mathnormal
 
 \begin_layout Standard
 Los comandos de estilo funcionan también en estructuras matemáticas:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \mathfrak{A=\frac{b}{C}}
 \]
 
@@ -18903,7 +18897,8 @@ mathbf
 \series default
 , porque no funciona con minúsculas griegas.
  Además, siempre imprime en redonda las letras latinas, como en la ecuación:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \mathbf{\int_{n}^{2}f(\theta)=\Gamma}\qquad\textrm{ecuación con \textbackslash mathbf}
 \]
 
@@ -18918,7 +18913,8 @@ Para presentar la ecuación correctamente se usa el comando
 boldsymbol
 \series default
 :
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \boldsymbol{\int_{n}^{2}f(\theta)=\Gamma}\qquad\textrm{ecuación con \textbackslash boldsymbol}
 \]
 
@@ -18983,7 +18979,8 @@ boldmath
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \int_{n}^{2}f(\theta)=\Gamma\qquad\textrm{ecuación en un entorno boldmath}
 \]
 
@@ -19030,7 +19027,8 @@ Estilo del texto
 \family default
 .
  Aquí hay una ecuación en magenta:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 {\color{magenta}\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}}
 \]
 
@@ -19043,7 +19041,7 @@ También puedes definir tus propios colores como se describe en
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Cuadros-coloreados"
+reference "sub:Marcos-coloreados"
 
 \end_inset
 
@@ -19103,7 +19101,8 @@ textcolor{verdeoscuro}{
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \int A\,\mathrm{d}x=\frac{{\color{red}\sqrt[5]{B}}}{\ln\left(\frac{1}{3}\right)}
 \]
 
@@ -19454,7 +19453,7 @@ scriptscriptstyle
 \end_layout
 
 \begin_layout Standard
-Después de introcucir estos comandos, aparece un marco azul en el que se
+Después de introducir estos comandos, aparece un marco azul en el que se
  insertan las partes de la fórmula.
 \end_layout
 
@@ -19486,14 +19485,16 @@ huge
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 A=\frac{B}{c}\cdot\maltese
 \]
 
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \maltese A\textrm{\Large\maltese\textit{A}}\textrm{\tiny\maltese\textit{A}}
 \]
 
@@ -23118,7 +23119,8 @@ ifeurosym
 status collapsed
 
 \begin_layout Plain Layout
-La tabla siguiente sólo se mostrará si está instalado el paquete LaTeX 
+El cuadro siguiente sólo se mostrará si está instalado el paquete LaTeX
+ 
 \series bold
 eurosym
 \series default
@@ -26370,7 +26372,8 @@ x=B
 
 \begin_layout Standard
 En una ecuación presentada el límite se imprime debajo, como es habitual:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \lim\limits _{x\rightarrow A}=B
 \]
 
@@ -26399,7 +26402,8 @@ La función módulo es especial, porque existe en cuatro variantes.
 
 \begin_layout Standard
 En una ecuación presentada:
-\begin_inset Formula \begin{align*}
+\begin_inset Formula 
+\begin{align*}
 \underline{\textrm{Comando}} &  & \underline{\textrm{Resultado}}\\
 \mathrm{a\backslash mod\textrm{\spce}b} &  & a\mod b\\
 \mathrm{a\backslash pmod\textrm{\spce}b} &  & a\pmod b\\
@@ -28035,7 +28039,7 @@ status collapsed
 véase 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Cuadros-sin-marco"
+reference "sub:Marcos-sin-bordes"
 
 \end_inset
 
@@ -28645,7 +28649,8 @@ Ecuación ! multilínea ! separación de filas
 
 \begin_layout Standard
 A veces no hay suficiente espacio entre las líneas de una ecuación multilínea:
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 B^{2}(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2})+4x_{0}^{2}x^{2}+4x_{0}xD & = & \textrm{-}4x^{2}B^{2}+4x_{0}xB^{2}\\
 4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right) & = & 0
 \end{eqnarray*}
@@ -28850,7 +28855,8 @@ jot}{3mm+3pt}
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 B^{2}(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2})+4x_{0}^{2}x^{2}+4x_{0}xD & = & \textrm{-}4x^{2}B^{2}+4x_{0}xB^{2}\\
 4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right) & = & 0
 \end{eqnarray*}
@@ -29005,7 +29011,8 @@ arraycolsep}{1cm}
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 A & = & B\\
 C & \ne & A
 \end{eqnarray*}
@@ -29032,7 +29039,8 @@ arraycolsep}{5pt}
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 A & = & B\\
 C & \ne & A
 \end{eqnarray*}
@@ -29063,7 +29071,8 @@ Se pueden componer ecuaciones largas mediante estos métodos:
 \begin_layout Itemize
 Si un lado de la ecuación es mucho más corto que la anchura de línea, este
  se elige para el lado izquierdo y el derecho se imprime en dos líneas:
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 H & = & W_{SB}+W_{mv}+W_{D}-\frac{\hbar^{2}}{2m_{0}}\Delta-\frac{\hbar^{2}}{2m_{1}}\Delta_{1}-\frac{\hbar^{2}}{2m_{2}}\Delta_{2}-\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{1}|}\nonumber \\
  &  & -\hspace{3pt}\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{2}|}+\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{R}_{1}-\mathbf{R}_{2}|}\label{eq:cortolargo}
 \end{eqnarray}
@@ -29143,7 +29152,8 @@ lefteqn
 .
  Se inserta en la primer columna de la primera línea y hace que todas las
  inserciones posteriores sobreescriban las columnas siguientes:
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \lefteqn{4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right)+D^{2}}\nonumber \\
  &  & -\hspace{3pt}B^{2}-2B\sqrt{r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}+r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}\nonumber \\
  &  & =B^{2}+2\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)+\frac{\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)^{2}}{B^{2}}\label{eq:lefteqn}
@@ -29240,7 +29250,7 @@ reference "sub:Entorno-multilínea"
  y 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Partes-de-una-multilínea"
+reference "sub:Partes-multilínea"
 
 \end_inset
 
@@ -29270,7 +29280,8 @@ Delimitadores ! para varias líneas
 
 \begin_layout Standard
 Para poner delimitadores que cubran varias líneas hay un problema:
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 A & = & \sen(x)\left[\prod_{R=1}^{\infty}\frac{1}{R}+\cdots\right.\\
  &  & \left.\cdots+B-D\right]
 \end{eqnarray*}
@@ -29441,7 +29452,8 @@ vphantom
 
 \begin_layout Standard
 El resultado es: 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 A & = & \sen(x)\left[\prod_{R=1}^{\infty}\frac{1}{R}+\cdots\right.\\
  &  & \left.\vphantom{\prod_{R=1}^{\infty}}\cdots+B-D\right]
 \end{eqnarray*}
@@ -29543,7 +29555,8 @@ Entorno AMS align
 \begin_layout Standard
 Un ejemplo para dos ecuaciones adosadas, que se componen con un entorno
  align de cuatro columnas:
-\begin_inset Formula \begin{align*}
+\begin_inset Formula 
+\begin{align*}
 A & =\sen(B) & C & =D\\
 C & \neq A & B & \neq D
 \end{align*}
@@ -29643,7 +29656,8 @@ El ejemplo anterior en el entorno alignat, con un espacio de 1
 \end_inset
 
 cm al comienzo da la segunda ecuación:
-\begin_inset Formula \begin{alignat*}{2}
+\begin_inset Formula 
+\begin{alignat*}{2}
 A & =\sen(B)\hspace{1cm} & C & =D\\
 C & \neq A & B & \neq D
 \end{alignat*}
@@ -29679,7 +29693,8 @@ Ecuación ! multilínea ! entorno flalign
 En este entorno las dos primeras columnas están siempre tan a la izquierda
  como sea posible y las dos últimas a la derecha.
  Ejemplo:
-\begin_inset Formula \begin{flalign*}
+\begin_inset Formula 
+\begin{flalign*}
 A & =1 & B & =2 & C & =3\\
 X & =\mbox{-}1 & Y & =\mbox{-}2 & Z & =4
 \end{flalign*}
@@ -29701,7 +29716,8 @@ reference "eq:IntVol"
 \end_inset
 
 :
-\begin_inset Formula \begin{flalign}
+\begin_inset Formula 
+\begin{flalign}
 \hspace{30pt}\iiint_{V}X\mbox{d}V & =U & {}
 \end{flalign}
 
@@ -29756,7 +29772,8 @@ Al introducir este entorno aparecen tres marcos azules.
  El contenido del primero se alinea a la derecha, el del último a la izquierda.
  El contenido del marco central está centrado y algo más pequeño, porque
  está diseñado para insertar sólo caracteres de relación.
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \frac{ABC}{D} & \frac{ABC}{D} & \frac{ABC}{D}\\
 AB & AB & AB\\
 A & = & A
@@ -29784,7 +29801,8 @@ Ecuación ! multilínea ! entorno gather
 \begin_layout Standard
 Este entorno consta de una sola columna centrada.
  Se puede numerar cada línea.
-\begin_inset Formula \begin{gather}
+\begin_inset Formula 
+\begin{gather}
 A=1\\
 X=\mbox{-}1
 \end{gather}
@@ -29832,7 +29850,8 @@ reference "eq:lefteqn"
 \end_inset
 
  en entorno multilínea:
-\begin_inset Formula \begin{multline}
+\begin_inset Formula 
+\begin{multline}
 4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right)+D^{2}\\
 -B^{2}-2B\sqrt{r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}+r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}\\
 =B^{2}+2\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)+\frac{\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)^{2}}{B^{2}}
@@ -29983,7 +30002,8 @@ multlinegap}{2cm}
 \end_inset
 
 
-\begin_inset Formula \begin{multline}
+\begin_inset Formula 
+\begin{multline}
 4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right)+D^{2}\\
 \shoveleft{-B^{2}-2B\sqrt{r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}+r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}\\
 =B^{2}+2\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)+\frac{\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)^{2}}{B^{2}}
@@ -30016,19 +30036,19 @@ shoveleft
 \end_layout
 
 \begin_layout Subsection
-Partes de una ecuación multilínea
+Ecuación con partes multilínea
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Partes-de-una-multilínea"
+name "sub:Partes-multilínea"
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Ecuación ! multilínea ! partes de
+Ecuación ! multilínea ! solo parte
 \end_layout
 
 \end_inset
@@ -30037,8 +30057,8 @@ Ecuación ! multilínea ! partes de
 \end_layout
 
 \begin_layout Standard
-Para mostrar sólo partes de una ecuación multilínea usa uno de los siguientes
- entornos: 
+Para mostrar solo partes de una ecuación en modo multilínea usa uno de los
+ siguientes entornos: 
 \series bold
 aligned
 \series default
@@ -30067,7 +30087,8 @@ Ecuación
 Los tres primeros tienen las mismas propiedades que los correspondientes
  entornos multilínea, pero es posible poner al lado más partes de la ecuación.
  Un ejemplo:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left.\begin{aligned}\Delta x\Delta p & \ge\frac{\hbar}{2}\\
 \Delta E\Delta t & \ge\frac{\hbar}{2}
 \end{aligned}
@@ -30115,7 +30136,8 @@ reference "eq:cortolargo"
 \end_inset
 
  en entorno aligned: 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \begin{aligned}H=\; & W_{SB}+W_{mv}+W_{D}-\frac{\hbar^{2}}{2m_{0}}\Delta-\frac{\hbar^{2}}{2m_{1}}\Delta_{1}-\frac{\hbar^{2}}{2m_{2}}\Delta_{2}-\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{1}|}\\
  & -\hspace{3pt}\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{2}|}+\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{R}_{1}-\mathbf{R}_{2}|}
 \end{aligned}
@@ -30226,7 +30248,7 @@ Ecuación ! multilínea ! texto en
 \end_layout
 
 \begin_layout Standard
-En los entornos Align, multilínea y gather, se puede insertar texto que
+En los entornos align, multilínea y gather, se puede insertar texto que
  se mostrará en una línea separada y que no afecta la alineación de columna.
  Para esto se usa el comando 
 \series bold
@@ -30276,7 +30298,8 @@ intertext
  debe por tanto estar al comienzo de una línea y en la salida se presenta
  sobre esta línea.
  Un ejemplo en el que se ha insertado texto al inicio de la segunda línea:
-\begin_inset Formula \begin{align}
+\begin_inset Formula 
+\begin{align}
 I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
 \intertext{\text{el integrando es simétrico para \ensuremath{\phi=\pi}, por tanto}} & =2a\sqrt{2}\int_{0}^{\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi
 \end{align}
@@ -30450,7 +30473,7 @@ Ecuación ! referencias cruzadas a
 \end_layout
 
 \begin_layout Standard
-Todas las ecuaciones con etiqueta se pueden referenciar.
+Todas las ecuaciones con etiqueta se pueden referir.
  La etiqueta se añade con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -30615,11 +30638,11 @@ reference "sub:Numeración-personalizada"
  contiene un marco, como se describe en la 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Cuadros-de-párrafo"
+reference "sub:Marcos-de-párrafo"
 
 \end_inset
 
-, no se puede referenciar la ecuación.
+, no se puede referir la ecuación.
 \end_layout
 
 \begin_layout Subsection
@@ -30654,7 +30677,8 @@ end{subequations}
 
 \begin_layout Standard
 Ejemplo:
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 A=C-B\label{eq:a}
 \end{equation}
 
@@ -30691,14 +30715,16 @@ begin{subequations}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 B=C-A\label{eq:b}
 \end{equation}
 
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 C=A+B\label{eq:c}
 \end{equation}
 
@@ -30913,7 +30939,8 @@ begin{subequations}
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 A & = & (B-Z)^{2}=(B-Z)(B-Z)\label{eq:d}\\
  & = & B^{2}-ZB-BZ+Z^{2}\nonumber \\
  & = & B^{2}-2BZ+Z^{2}\label{eq:f}
@@ -31026,7 +31053,8 @@ tag
 
 \series default
 :
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 A+B=C\tag{algo}\label{eq:tag}
 \end{equation}
 
@@ -31075,7 +31103,8 @@ spce
 algo
 \series default
  no se imprimen los paréntesis:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 A+B=C\tag*{algo}
 \]
 
@@ -31480,7 +31509,8 @@ numberwithin{equation}{section}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 A+B=C
 \end{equation}
 
@@ -31490,11 +31520,11 @@ A+B=C
 \end_layout
 
 \begin_layout Standard
-Para numerar tablas de modo que, p.
+Para numerar cuadros de modo que, p.
 \begin_inset space \thinspace{}
 \end_inset
 
-e., 
+ej., 
 \begin_inset Quotes fld
 \end_inset
 
@@ -31931,7 +31961,8 @@ roman{equation}}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 A=\textrm{romanos en minúscula}
 \end{equation}
 
@@ -31955,7 +31986,8 @@ Roman{equation}}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 B=\textrm{romanos en mayúscula}\label{eq:Rom}
 \end{equation}
 
@@ -31979,7 +32011,8 @@ alph{equation}}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 C=\textrm{latinas en minúscula}
 \end{equation}
 
@@ -32003,7 +32036,8 @@ Alph{equation}}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 D=\textrm{latinas en mayúscula}\label{eq:Lat}
 \end{equation}
 
@@ -32058,7 +32092,8 @@ arabic{equation}}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 E=\mbox{arábigos}
 \end{equation}
 
@@ -32217,7 +32252,7 @@ Un ejemplo de texto de química:
 \end_layout
 
 \begin_layout Quote
-El ión 
+El ion 
 \begin_inset Formula $\mathrm{SO_{4}^{2-}}$
 \end_inset
 
@@ -32231,7 +32266,8 @@ El ión
 
 .
  La ecuación química es:
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:reaccion-quimica}
 \end{equation}
 
@@ -32305,14 +32341,14 @@ Paquetes ! mhchem
 \end_inset
 
 .
- Al insertar  
+ Al insertar 
 \series bold
 
 \backslash
 ce
 \series default
  en modo matemático aparece un nuevo marco azul en el que se pueden escribir
-  ecuaciones químicas de una forma intuitiva.
+ ecuaciones químicas de una forma intuitiva.
 \end_layout
 
 \begin_layout Standard
@@ -32824,14 +32860,14 @@ status open
 \series bold
 Nota:
 \series default
- Insertar una ecuación en un marco  
+ Insertar una ecuación en un marco 
 \series bold
 
 \backslash
 ce
 \series default
  provocará errores de LaTeX.
- En estos casos hay que usar código TeX, como en  
+ En estos casos hay que usar código TeX, como en 
 \series bold
 
 \backslash
@@ -33004,7 +33040,8 @@ reference "eq:TEOS-reac-2"
 
  son un ejemplo de reacción química multifase en la que cada ecuación tiene
  su propio número.
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \ce{TEOS + 4O} & \ce{->} & \ce{Si(OH)4 + 4C2H4O}\label{eq:TEOS-reac-1}\\
 \ce{Si(OH)4} & \ce{->} & \ce{SiO2 + 2H2O}\label{eq:TEOS-reac-2}
 \end{eqnarray}
@@ -33097,7 +33134,8 @@ Diagramas ! amscd
 \begin_layout Standard
 Los diagramas de este tipo visualizan relaciones mediante líneas o flechas
  verticales y horizontales:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \begin{CD}A@)))B@)))C\\
 @AAA@.@VVV\\
 F@(((E@(((D
@@ -33289,7 +33327,8 @@ V
 
 \begin_layout Standard
 Como ejemplo un diagrama con todas las relaciones posibles:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \begin{CD}A@)j))B@))k)C@=F\\
 @AmAA@.@VV{V}V@|\\
 D@((j\,(E@)k))F@=C
@@ -33852,7 +33891,7 @@ framebox
 , véase 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Cuadros-con-marco"
+reference "sub:Marcos-con-bordes"
 
 \end_inset
 
@@ -33866,7 +33905,7 @@ Para crear un nuevo comando para
 \backslash
 fcolorbox
 \series default
- donde no es necesario especificar el color para el cuadro, el argumento
+ donde no es necesario especificar el color para el marco, el argumento
  para el color se define opcional:
 \begin_inset VSpace medskip
 \end_inset
@@ -34200,14 +34239,16 @@ Los comandos definidos por el usuario son especialmente convenientes para
  Por ejemplo, si estás trabajando en un documento con ecuaciones cuadráticas,
  el mismo tipo de solución se repite varias veces.
  La forma general de una ecuación de segundo grado es:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 0=\lambda^{2}+p\lambda+q
 \]
 
 \end_inset
 
 La forma general de la solución es:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \lambda_{1,2}=-\frac{p}{2}\pm\sqrt{\frac{p²}{4}-q}
 \]
 
@@ -34528,7 +34569,8 @@ Aquí tenemos nuestro ejemplo de macro con los argumentos
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \qG x{\ln(x)}B
 \]
 
@@ -35078,11 +35120,10 @@ Sistema algebraico computacional
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-LyX offers the exchange between mathematical expressions written in LyX's
- math editor and external applications or user defined scripts.
- Currently supported applications are 
+LyX permite el intercambio entre expresiones matemáticas escritas con su
+ editor de ecuaciones y aplicaciones externas o guiones definidos por el
+ usuario.
+ Las aplicaciones soportadas actualmente son 
 \family sans
 Maple
 \family default
@@ -35094,51 +35135,37 @@ Mathematica
 \family sans
 Maxima
 \family default
- and 
+ y 
 \family sans
 Octave
 \family default
 .
- Note that the set of supported mathematical constructs is limited only
- to very simple cases.
+ Hay que advertir que el conjunto de estructuras matemáticas soportadas
+ se limita a casos muy simples.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Usage
+Utilización
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Write some expression in a formula, go to the 
+Escribe alguna expresión en una ecuación, despliega el menú 
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
-Use Computer Algebra System
+Editar\SpecialChar \menuseparator
+Ecuaciones\SpecialChar \menuseparator
+Usar programa de álgebra
 \family default
- menu and choose the application you have installed on the computer.
- After that the result of computation should show on the right side of the
- expression together with the 
-\begin_inset Quotes eld
-\end_inset
-
-=
-\begin_inset Quotes erd
-\end_inset
-
- operator.
+ y elige la aplicación que esté instalada en tu ordenador.
+ Después de eso el resultado de la computación debería mostrarse a la derecha
+ de la expresión junto con el operador "=".
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here are few simple examples (with results from 
-\family typewriter
+A continuación hay unos ejemplos sencillos (con resultados de 
+\family sans
 Maxima
 \family default
-) to show what kind of computations can be performed:
+) que muestran qué tipos de computación se pueden realizar:
 \end_layout
 
 \begin_layout Itemize
@@ -35156,7 +35183,7 @@ Maxima
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\int_{1}^{2}\sin(x)dx=\cos1-\cos2$
+\begin_inset Formula $\int_{1}^{2}\sen(x)dx=\cos1-\cos2$
 \end_inset
 
 
@@ -35181,59 +35208,35 @@ Maxima
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Keyboard shortcut
+Atajos de teclado
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Currently there is no keyboard shortcut for calling the algebra applications.
- One can easily bind a shortcut to the 
+Actualmente no hay atajos de teclado para ejecutar las aplicaciones de álgebra.
+ Se puede vincular fácilmente una combinación de teclas a la función 
 \family sans
 math-extern
 \family default
- LyX function (see the 
-\family sans
+ de Lyx (véase el manual 
 \emph on
-LyX Functions
-\family default
+Funciones de LyX
 \emph default
- manual).
- One could e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
-\end_inset
-
-bind the 
+).
+ Por ejemplo, para vincular la tecla 
 \family sans
-Return
+Entrar
 \family default
- key inside the math editor.
- To bind it to 
-\family typewriter
+ en el editor de ecuaciones a 
+\family sans
 Maxima
 \family default
- one would use this shortcut definition command:
+ se podría usar este comando para definir el atajo de teclado:
 \end_layout
 
 \begin_layout Standard
 
 \series bold
 command-alternatives break-paragraph;math-extern maxima
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -35524,7 +35527,7 @@ ifbraket
 status open
 
 \begin_layout Plain Layout
-La tabla siguiente sólo se mostrará en la salida si el paquete LaTeX 
+El cuadro siguiente sólo se mostrará en la salida si el paquete LaTeX 
 \series bold
 braket
 \series default
@@ -35667,7 +35670,8 @@ Braket
 \series default
  asegura que todas las barras verticales tienen el tamaño de los delimitadores
  circundantes:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \Braket{\phi|J=\frac{3}{2}\,,\, M_{J}}
 \]
 
@@ -36044,7 +36048,8 @@ genfrac{}{}{#1}{}{#2}{#3}}
 
 \begin_layout Standard
 Un ensayo:
-\begin_inset Formula \begin{align*}
+\begin_inset Formula 
+\begin{align*}
 \text{Comando} &  & \mathrm{\backslash fracS[1mm]\backslash\{A\to\backslash\{B} &  & \mathrm{\backslash fracS[5mm]\backslash\{A\to\backslash\{B}\\
 \text{Resultado} &  & \fracS[1mm]{A}{B} &  & \fracS[5mm]{A}{B}
 \end{align*}
@@ -36114,7 +36119,7 @@ ifcancel
 status open
 
 \begin_layout Plain Layout
-La tabla siguiente sólo se mostrará en la salida si el paquete LaTeX 
+El cuadro siguiente sólo se mostrará en la salida si el paquete LaTeX 
 \series bold
 cancel
 \series default
@@ -36359,7 +36364,8 @@ cancelto
 \series default
  es especialmente apropiada para visualizar la simplificación de fracciones
  en una ecuación:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \frac{\left(x_{0}+bB\right)^{2}}{\left(1+b^{2}\right)^{\cancelto{2}{3}}}=\frac{x_{0}^{2}+B^{2}-r_{g}^{2}}{\cancel{1+b^{2}}}
 \]
 
@@ -36882,7 +36888,8 @@ end{multicols}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 S(t)=S_{0}(t)\int_{-\infty}^{\infty}P(\phi,t)\mathrm{e}^{\mathrm{i}\phi}\,\mathrm{d}\phi
 \end{equation}
 
@@ -37106,7 +37113,8 @@ reference "eq:within"
 
  consta de cinco columnas ya que las dos primeras contienen la fórmula,
  la tercera la matriz y la última una llave TeX vacía.
-\begin_inset Formula \begin{flalign}
+\begin_inset Formula 
+\begin{flalign}
 \hspace{30pt} & F_{A}=\rho\cdot V\cdot g & \footnotesize\begin{array}{ll}
 \rho & \mbox{densidad}\\
 V & \mbox{volumen}\\
@@ -37231,7 +37239,7 @@ ifupgreek
 status open
 
 \begin_layout Plain Layout
-Lo siguinente sólo se podrá ver si está instalado el paquete LaTeX 
+Lo siguiente sólo se podrá ver si está instalado el paquete LaTeX 
 \series bold
 upgreek
 \series default
@@ -37260,7 +37268,8 @@ uptau
 
 \begin_layout Standard
 Con estos comandos se pueden escribir reacciones entre partículas elementales:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \uppi^{+}\rightarrow\upmu^{+}+\upnu_{\upmu}
 \]
 
@@ -37509,7 +37518,7 @@ Esta sección es un resumen de las normas tipográficas ISO más importantes.
 status collapsed
 
 \begin_layout Plain Layout
-Este compendio se ha tomado parcialmente del diccionario semioficial alemán
+Este compendio se ha tomado parcialmente del diccionario semi-oficial alemán
  
 \begin_inset Quotes fld
 \end_inset
@@ -37601,7 +37610,7 @@ Esta norma la cumple automáticamente el comando
 unittwo
 \series default
 .
- Si se introduce en una fórmula aparecen dos cuadros.
+ Si se introduce en una fórmula aparecen dos marcos.
  En el primero se inserta el valor y en el segundo la unidad, y se obtiene,
  como antes, 
 \begin_inset Formula $\unit[30]{km/h}$
@@ -37796,7 +37805,7 @@ Sinónimos
 Algunos caracteres y símbolos se pueden componer con varios comandos sinónimos
  como los que se recogen en esta lista:
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 véase también 
@@ -37811,10 +37820,6 @@ reference "fn:sinónimos"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 
 \end_layout
 

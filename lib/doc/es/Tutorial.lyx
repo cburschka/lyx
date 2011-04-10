@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass book
@@ -38,13 +38,14 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language spanish
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -99,6 +100,7 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -2209,10 +2211,6 @@ Objetos insertados
 s.
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Subsection
 Tu primera etiqueta
 \end_layout
@@ -2568,10 +2566,6 @@ Ejercicio
 : Arregla las referencias en el archivo 
 \family typewriter
 ejemplo_sin_lyx.lyx
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Section
@@ -3897,7 +3891,7 @@ Abajo
 
 .
  ¡Acabas de hacer una fracción! Por supuesto, puedes escribir cualquier
- cosa dentro de cada uno de los dos cuadros: variables con exponentes, raíces
+ cosa dentro de cada uno de los dos marcos: variables con exponentes, raíces
  cuadradas, otras fracciones, cualquier cosa.
 \end_layout
 
@@ -4263,7 +4257,7 @@ y
 
 columnas
 \family default
- o los botones de la barra de herramientas de tabla 
+ o los botones de la barra de herramientas de cuadros 
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-row.png
 	scale 75
@@ -4305,9 +4299,9 @@ Guía del usuario
 \emph default
  para obtener información sobre cómo cambiar la alineación de cada columna
  y la posición vertical de la matriz completa.
- Si lo que quieres es escribir una tabla que contenga texto, deberías usar
- el magnífico soporte de tablas de LyX, en lugar de tratar de escribir texto
- en una matriz.
+ Si lo que quieres es escribir un cuadro que contenga texto, deberías usar
+ el magnífico soporte de cuadros de LyX, en lugar de tratar de escribir
+ texto en una matriz.
 \end_layout
 
 \begin_layout Subsection
@@ -4448,12 +4442,14 @@ Casos
 \end_inset
 
 : 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 f(x)=\left\{ \begin{array}{cc}
 \log_{8}x & x>0\\
 0 & x=0\\
 \sum_{i=1}^{5}\alpha_{i}+\sqrt{-\frac{1}{x}} & x<0
-\end{array}\right.\]
+\end{array}\right.
+\]
 
 \end_inset
 
@@ -4535,11 +4531,11 @@ Objetos insertados
 \end_layout
 
 \begin_layout Itemize
-LyX posee soporte WYSIWYG para tablas.
+LyX posee soporte WYSIWYG para cuadros.
  Usa la instrucción 
 \family sans
 Insertar\SpecialChar \menuseparator
-Tabla
+Cuadro/Tabla
 \family default
  (botón 
 \begin_inset Graphics
@@ -4549,8 +4545,8 @@ Tabla
 
 \end_inset
 
-) para crear una.
- Pincha en la tabla con el 
+) para crear uno.
+ Pincha en el cuadro con el 
 \emph on
 botón derecho
 \emph default
@@ -4560,9 +4556,9 @@ Editar
 \begin_inset space ~
 \end_inset
 
-tabla
+cuadro
 \family default
-, que te ofrece extensas posibilidades de edición de la tabla.
+, que te ofrece extensas posibilidades de edición del cuadro.
 \end_layout
 
 \begin_layout Itemize
@@ -4583,8 +4579,8 @@ Imagen
 )\SpecialChar \@.
  Después pincha en la figura para elegir el archivo que quieres incluir,
  rotarla, escalarla, etc.
- Tanto las tablas como las figuras pueden tener etiqueta, y LyX genera automátic
-amente listas de figuras y de tablas.
+ Tanto los cuadros como las figuras pueden tener etiqueta, y LyX genera
+ automáticamente listas de figuras y de cuadros.
 \end_layout
 
 \begin_layout Itemize
@@ -4719,10 +4715,6 @@ Objetos insertados
  y LaTeX, y de cómo hacer varios trucos de LaTeX en LyX.
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Subsection
 Modo TeX
 \end_layout
@@ -4835,7 +4827,7 @@ LyX no puede hacer absolutamente todo lo que hace LaTeX.
  funcionan pero no son WYSIWYM.
  El modo TeX permite a los usuarios disponer de la completa flexibilidad
  de LaTeX, a la vez que gozan de las útiles características de LyX, como
- las matemáticas WYSIWYM, las tablas y la edición de texto.
+ las matemáticas WYSIWYM, los cuadros y la edición de texto.
  LyX no podrá abarcar nunca todos los paquetes de LaTeX.
  Sin embargo, escribiendo 
 \family typewriter
@@ -4894,7 +4886,7 @@ foo.lyx
 foo.tex
 \family default
 , y después abrirá ese archivo.
-  Si la traducción no funciona, puedes probar a ejecutar
+ Si la traducción no funciona, puedes probar a ejecutar
 \family typewriter
  tex2lyx
 \family default
@@ -4908,11 +4900,11 @@ tex2lyx
 \family default
  traducirá la mayoría de las instrucciones legales de LaTeX, pero no todo.
  Dejará lo que no entienda en modo TeX, así que después de la traducción
- con  
+ con 
 \family typewriter
 tex2lyx
 \family default
-,  puedes buscar el texto en rojo y editarlo a mano para tratar de arreglarlo.
+, puedes buscar el texto en rojo y editarlo a mano para tratar de arreglarlo.
 \end_layout
 
 \begin_layout Standard
@@ -5142,10 +5134,6 @@ BibTeX
 .
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Section
 ¡Errores!
 \end_layout
@@ -5169,10 +5157,6 @@ LaTeX
  Pulsando sobre un error en dicho diálogo, se mostrará información detallada
  de LaTeX sobre dicho error y en el documento aparecerá seleccionado el
  lugar en el que está el error.
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \end_body

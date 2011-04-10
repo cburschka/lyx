@@ -1,5 +1,5 @@
-#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
@@ -9,24 +9,32 @@
 %\restylefloat{tableau}
 
 %% translate the float caption label
-\floatname{tableau}{Tabla (TO)}
+%\floatname{tableau}{Cuadro}
 \end_preamble
 \use_default_options false
 \begin_modules
 linguistics
 \end_modules
+\maintain_unincluded_children false
 \language spanish
+\language_package default
 \inputencoding auto
+\fontencoding global
 \font_roman lmodern
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
 \spacing single
 \use_hyperref true
@@ -43,21 +51,31 @@ linguistics
 \use_geometry false
 \use_amsmath 1
 \use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Índice
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language french
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -82,11 +100,18 @@ type "mailto:"
 
 \end_layout
 
+\begin_layout Date
+14/09/2008
+\end_layout
+
 \begin_layout Abstract
 Este artículo describe algunas características que LyX provee para lingüistas.
  Muestra cómo usar algún soporte nativo con el fin de generar ejemplos numerados
-, glosas, tablas de Teoría de la Optimidad, notación semántica y símbolos
- fonéticos (IPA).
+, glosas, cuadros de Teoría de la Optimidad (
+\emph on
+Tableaux
+\emph default
+), notación semántica y símbolos fonéticos (IPA).
 \end_layout
 
 \begin_layout Section
@@ -220,13 +245,13 @@ key "float"
 
 \end_inset
 
-: necesario para las 
+: necesario para los cuadros flotantes
 \emph on
-tablas flotantes de Teoría de la Optimidad
+ Tableau
 \emph default
  y el 
 \emph on
-índice de tablas (TO)
+Índice de Tableaux
 \emph default
 .
  Este paquete estará incluido en cualquier distribución de LaTeX.
@@ -357,35 +382,24 @@ He aquí un sencillo ejemplo:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Custom:Glosse
+\begin_inset Flex Glosse
 status open
 
 \begin_layout Plain Layout
 
-\lang english
 C'est un exemple simple
 \end_layout
 
 \begin_layout Plain Layout
 
-\lang english
 {Esto es} un ejemplo sencillo
 \end_layout
 
 \begin_layout Plain Layout
 
-\lang english
 
 \backslash
-glt 
-\begin_inset Quotes els
-\end_inset
-
-Esto es un ejemplo sencillo
-\begin_inset Quotes ers
-\end_inset
-
-
+glt Esto es un ejemplo sencillo
 \end_layout
 
 \end_inset
@@ -394,6 +408,7 @@ Esto es un ejemplo sencillo
 \end_layout
 
 \begin_layout Standard
+\noindent
 Observa cómo las llaves contienen expresiones con varias palabras.
 \end_layout
 
@@ -402,41 +417,29 @@ De igual modo podemos hacer una glosa de tres líneas:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Custom:Tri-Glosse
-status collapsed
+\begin_inset Flex Tri-Glosse
+status open
 
 \begin_layout Plain Layout
 
-\lang english
 C'est un exemple simple
 \end_layout
 
 \begin_layout Plain Layout
 
-\lang english
 {Das ist} ein Beispiel einfach
 \end_layout
 
 \begin_layout Plain Layout
 
-\lang english
 {Esto es} un ejemplo sencillo
 \end_layout
 
 \begin_layout Plain Layout
 
-\lang english
 
 \backslash
-glt 
-\begin_inset Quotes els
-\end_inset
-
-Esto es un ejemplo sencillo
-\begin_inset Quotes ers
-\end_inset
-
-
+glt Esto es un ejemplo sencillo
 \end_layout
 
 \end_inset
@@ -445,46 +448,35 @@ Esto es un ejemplo sencillo
 \end_layout
 
 \begin_layout Standard
+\noindent
 Si quieres tener glosas numeradas, puedes simplemente insertar el recuadro
  glosa en un párrafo de ejemplo numerado, como sigue:
 \end_layout
 
 \begin_layout Numbered Examples (consecutive)
-\begin_inset Flex Custom:Tri-Glosse
+\begin_inset Flex Tri-Glosse
 status open
 
 \begin_layout Plain Layout
 
-\lang english
 Mein Luftkissenfahrzeug ist voller Aale
 \end_layout
 
 \begin_layout Plain Layout
 
-\lang english
 My skeertuig is vol palings
 \end_layout
 
 \begin_layout Plain Layout
 
-\lang english
 Mi hidrodeslizador está {lleno de} anguilas
 \end_layout
 
 \begin_layout Plain Layout
 
-\lang english
 
 \backslash
-glt 
-\begin_inset Quotes els
-\end_inset
-
-Do you have matches?
-\begin_inset Quotes ers
-\end_inset
-
-
+glt Do you have matches?
 \end_layout
 
 \end_inset
@@ -499,9 +491,9 @@ Ten en cuenta que los cambios de fuente no están permitidos en las glosas.
 Estilo de carácter
 \family default
  esté desactivado.
- Puesto que las glosas no están separadas con guión, no se requiere una
- configuración explícita de idioma en la salida LaTeX, (de hecho, podría
- romper la salida, pues covington no lo soporta).
+ Puesto que las glosas no se separan con guión, no se requiere una configuración
+ explícita de idioma en la salida LaTeX, (de hecho, podría romper la salida,
+ pues covington no lo soporta).
  No obstante, puede darse el caso de querer establecer el idioma para una
  revisión ortográfica adecuada.
  Por ahora, esto hay que hacerlo como sigue: selecciona el texto, después
@@ -544,25 +536,31 @@ spanish
 \end_layout
 
 \begin_layout Section
-Tablas de Teoría de la Optimidad
+Cuadros de Teoría de la Optimidad:
+\emph on
+ Tableaux
 \end_layout
 
 \begin_layout Standard
-Las tablas de Teoría de la Optimidad, por supuesto se pueden insertar simplement
-e como tablas ordinarias (para características específicas como líneas discontin
-uas y celdas sombreadas, véase el manual 
+Los cuadros de Teoría de la Optimidad o 
+\emph on
+Tableaux
+\emph default
+, por supuesto, se pueden insertar simplemente como cuadros ordinarios (para
+ características específicas como líneas discontinuas y celdas sombreadas,
+ véase el manual 
 \emph on
 Objetos insertados
 \emph default
 ).
- Sin embargo, podría ser el caso que quieras tener estas tablas numeradas
+ Sin embargo, podría darse el caso de querer tener estos cuadros numerados
  a lo largo del documento, y disponer de un 
 \emph on
-Índice de tablas (TO)
+Índice de Tableaux
 \emph default
- similar al 
+ independiente similar al 
 \emph on
-Índice de tablas
+Índice de cuadros
 \emph default
  normales.
 \end_layout
@@ -574,24 +572,29 @@ El módulo Lingüística proporciona soporte para ambas cosas.
 Insertar\SpecialChar \menuseparator
 Flotante
 \family default
- encontrarás la entrada Tabla (TO)
+ encontrarás la entrada 
+\family sans
+Tableaux
+\family default
+
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-Para traducir la etiqueta de la leyenda 
+Para cambiar la traducción de la etiqueta de la leyenda 
 \begin_inset Quotes fld
 \end_inset
 
-Tabla (TO)
+Tableaux
 \begin_inset Quotes frd
 \end_inset
 
- en la salida, se ha insertado en el preámbulo LaTeX el comando 
+ en la salida (por ej., por Cuadro semántico, o Árbol...), inserta en el preámbulo
+ LaTeX el comando 
 \family typewriter
 
 \backslash
-floatname{tableau}{Tabla (TO)}
+floatname{tableau}{Cuadro semántico}
 \family default
 .
  (
@@ -615,13 +618,13 @@ del T.
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -888,7 +891,9 @@ a.ti.kap
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Ejemplo de tabla TO
+Ejemplo de cuadro 
+\emph on
+Tableau
 \end_layout
 
 \end_inset
@@ -902,9 +907,9 @@ Ejemplo de tabla TO
 \end_layout
 
 \begin_layout Standard
-Observa que, por omisión, la leyenda siempre se coloca bajo la tabla en
+Observa que, por omisión, la leyenda siempre se coloca bajo el cuadro en
  la salida, no importa donde la pongas en LyX.
- Para poner las leyendas encima de las tablas, hay que añadir el siguiente
+ Para poner las leyendas encima de los cuadros, hay que añadir el siguiente
  código en 
 \family sans
 Documento\SpecialChar \menuseparator
@@ -947,18 +952,13 @@ restylefloat{tableau}
 En 
 \family sans
 Insertar\SpecialChar \menuseparator
-Lista
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
 Índice
 \family default
- puedes encontrar un Índice de tablas (TO) que se incorporará como recuadro
- en LyX.
+ puedes encontrar un 
+\family sans
+Índice de Tableaux
+\family default
+ que se incorporará como recuadro en LyX.
  Aunque habitualmente se coloca al principio o al final del documento, lo
  insertamos aquí a modo de ejemplo:
 \end_layout
@@ -982,11 +982,11 @@ El módulo Lingüística viene con algunos estilos de carácter que son de uso
 
 \begin_layout Enumerate
 Concepto (versalitas): 
-\begin_inset Flex CharStyle:Concepts
+\begin_inset Flex Concepts
 status collapsed
 
 \begin_layout Plain Layout
-concept
+concepto
 \end_layout
 
 \end_inset
@@ -996,7 +996,7 @@ concept
 
 \begin_layout Enumerate
 Expresión (énfasis): 
-\begin_inset Flex CharStyle:Expression
+\begin_inset Flex Expression
 status collapsed
 
 \begin_layout Plain Layout
@@ -1010,7 +1010,7 @@ expresión
 
 \begin_layout Enumerate
 Significado (entre comillas simples): 
-\begin_inset Flex CharStyle:Meaning
+\begin_inset Flex Meaning
 status collapsed
 
 \begin_layout Plain Layout
@@ -1139,7 +1139,7 @@ x está instalado y que has activado la previsualización instantánea, (en
 Herramientas\SpecialChar \menuseparator
 Preferencias\SpecialChar \menuseparator
 Apariencia\SpecialChar \menuseparator
-Gráficos
+Visualización
 \family default
 ), en cuanto el cursor abandone el marco verás el bonito aspecto final.
 \end_layout
@@ -1189,7 +1189,7 @@ kerning
 \end_layout
 
 \begin_layout Standard
-Así pues, a menos que sólo necesites insertar caracteres IPA individuales,
+Así pues, a menos que solo necesites insertar caracteres IPA individuales,
  se recomienda el primer método, y vale la pena aprender la (bastante intuitiva)
  notación IPA.
 \end_layout
@@ -1215,6 +1215,7 @@ key "linguistlyx"
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Referencias
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "covington"
@@ -1236,6 +1237,7 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/covington/
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Referencias
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "csquotes"
@@ -1257,6 +1259,7 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/csquotes/
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Referencias
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "enumitem"
@@ -1278,6 +1281,7 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/enumitem/
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Referencias
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "float"
@@ -1299,6 +1303,7 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/float/
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Referencias
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "linguistlyx"
@@ -1322,6 +1327,7 @@ http://wiki.lyx.org/LyX/LinguistLyX
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Referencias
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "preview"
@@ -1343,6 +1349,7 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/preview/
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Referencias
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "tipa"
