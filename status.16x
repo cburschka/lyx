@@ -62,6 +62,10 @@ What's new
 
 * USER INTERFACE
 
+- Fix corruption of localized messages while changing color preferences,
+  which could result in a non-functional lyx instance, an assertion and
+  dataloss (bug 7371).
+
 - Fix a crash when editing the name of an unknown math macro with an argument
   which is immediately followed by another unknown math macro (bug 7316).
   

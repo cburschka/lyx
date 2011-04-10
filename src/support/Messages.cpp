@@ -154,6 +154,11 @@ docstring const Messages::get(string const & m) const
 #endif
 	}
 
+	// FIXME: gettext sometimes "forgets" the ucs4_codeset we set
+	// in init(), which leads to severe message corruption (#7371)
+	// We set it again here unconditionally. A real fix must be found!
+	LASSERT(bind_textdomain_codeset(PACKAGE, ucs4_codeset), /**/);
+
 	char const * m_c = m.c_str();
 	char const * trans_c = gettext(m_c);
 	docstring trans;
