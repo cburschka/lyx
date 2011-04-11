@@ -42,9 +42,9 @@ typedef std::basic_istream<char_type> idocstream;
     \endcode, not \code
     os << c;
     \endcode . The latter will not output the character, but the code point
-    as number. This is because we can't overload operator<< (our character
-    type is not a real type but a typedef). Narrow characters of type char
-    can be output as usual.
+    as number if USE_WCHAR_T is not defined. This is because we can't overload
+    operator<< (our character type is not always a real type but sometimes a
+    typedef). Narrow characters of type char can be output as usual.
  */
 typedef std::basic_ostream<char_type> odocstream;
 

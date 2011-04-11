@@ -410,13 +410,13 @@ bool skip_braces(Parser & p)
 
 
 /// replace LaTeX commands in \p s from the unicodesymbols file with their
-/// unciode points
+/// unicode points
 docstring convert_unicodesymbols(docstring s)
 {
 	odocstringstream os;
 	for (size_t i = 0; i < s.size();) {
 		if (s[i] != '\\') {
-			os << s[i++];
+			os.put(s[i++]);
 			continue;
 		}
 		s = s.substr(i);
