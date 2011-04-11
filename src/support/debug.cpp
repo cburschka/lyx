@@ -22,6 +22,15 @@
 #include <iostream>
 #include <iomanip>
 
+//#define LYX_CALLSTACK_PRINTING
+#ifdef LYX_CALLSTACK_PRINTING
+#include <stdio.h>
+#include <stdlib.h>
+#include <execinfo.h>
+#endif
+
+
+
 using namespace std;
 using namespace lyx::support;
 
@@ -241,5 +250,24 @@ LyXErr & operator<<(LyXErr & l, ios_base &(*t)(ios_base &))
 
 // The global instance
 LyXErr lyxerr;
+
+
+void Debug::printCallStack()
+{
+#ifdef LYX_CALLSTACK_PRINTING
+	const int depth = 50;
+	
+	// get void*'s for all entries on the stack
+	void* array[depth];
+	size_t size = backtrace(array, depth);
+	
+	char** messages = backtrace_symbols(array, size);
+	
+	for (size_t i = 0; i < size && messages != NULL; i++) {
+		fprintf(stderr, "[LyX's bt]: (%d) %s\n", i, messages[i]);
+	}
+#endif
+}
+
 
 } // namespace lyx

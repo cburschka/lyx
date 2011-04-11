@@ -124,6 +124,9 @@ namespace Debug {
 	/// Show all the possible tags that can be used for debugging
 	void showTags(std::ostream & os);
 
+	/// Print simple callstack to stderr
+	void printCallStack();
+
 } // namespace Debug
 
 
