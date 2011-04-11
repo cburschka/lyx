@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ui version="4.0">
+<ui version="4.0" >
  <class>SpellcheckerUi</class>
- <widget class="QWidget" name="SpellcheckerUi">
-  <property name="geometry">
+ <widget class="QWidget" name="SpellcheckerUi" >
+  <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
@@ -11,222 +10,222 @@
    </rect>
   </property>
   <property name="minimumSize" >
-    <size>
-      <width>260</width>
-      <height>320</height>
-    </size>
+   <size>
+    <width>260</width>
+    <height>320</height>
+   </size>
   </property>
-  <property name="windowTitle">
+  <property name="windowTitle" >
    <string>Spell Checker</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0" colspan="2">
-    <layout class="QHBoxLayout" name="horizontalLayout">
+  <layout class="QGridLayout" name="gridLayout" >
+   <item row="0" column="0" colspan="2" >
+    <layout class="QHBoxLayout" name="horizontalLayout" >
      <item>
-      <widget class="QLabel" name="languageLA">
-       <property name="text">
+      <widget class="QLabel" name="languageLA" >
+       <property name="text" >
         <string>&amp;Language:</string>
        </property>
-       <property name="buddy">
+       <property name="buddy" >
         <cstring>languageCO</cstring>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="languageCO">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+      <widget class="QComboBox" name="languageCO" >
+       <property name="sizePolicy" >
+        <sizepolicy vsizetype="Minimum" hsizetype="Expanding" >
          <horstretch>100</horstretch>
          <verstretch>32</verstretch>
         </sizepolicy>
        </property>
-       <property name="toolTip">
+       <property name="toolTip" >
         <string>The checked language. Switching this alters the language of the checked word.</string>
        </property>
       </widget>
      </item>
     </layout>
    </item>
-   <item row="1" column="0" colspan="2">
-    <widget class="Line" name="line">
-     <property name="orientation">
+   <item row="1" column="0" colspan="2" >
+    <widget class="Line" name="line" >
+     <property name="orientation" >
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="TextLabel3">
-     <property name="text">
+   <item row="2" column="0" >
+    <widget class="QLabel" name="TextLabel3" >
+     <property name="text" >
       <string>Unknown word:</string>
      </property>
-     <property name="buddy">
+     <property name="buddy" >
       <cstring>wordED</cstring>
      </property>
     </widget>
    </item>
-   <item row="3" column="0">
-    <widget class="QLineEdit" name="wordED">
-     <property name="toolTip">
+   <item row="3" column="0" >
+    <widget class="QLineEdit" name="wordED" >
+     <property name="toolTip" >
       <string>Current word</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
-    <widget class="QPushButton" name="findNextPB">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+   <item row="3" column="1" >
+    <widget class="QPushButton" name="findNextPB" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
        <horstretch>100</horstretch>
        <verstretch>32</verstretch>
       </sizepolicy>
      </property>
-     <property name="toolTip">
+     <property name="toolTip" >
       <string>Replace word with current choice</string>
      </property>
-     <property name="text">
+     <property name="text" >
       <string>&amp;Find Next</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="TextLabel1">
-     <property name="text">
+   <item row="4" column="0" >
+    <widget class="QLabel" name="TextLabel1" >
+     <property name="text" >
       <string>Re&amp;placement:</string>
      </property>
-     <property name="buddy">
+     <property name="buddy" >
       <cstring>replaceCO</cstring>
      </property>
     </widget>
    </item>
-   <item row="5" column="0">
-    <widget class="QComboBox" name="replaceCO">
-     <property name="focusPolicy">
+   <item row="5" column="0" >
+    <widget class="QComboBox" name="replaceCO" >
+     <property name="focusPolicy" >
       <enum>Qt::StrongFocus</enum>
      </property>
-     <property name="toolTip">
+     <property name="toolTip" >
       <string>Replace with selected word</string>
      </property>
-     <property name="editable">
+     <property name="editable" >
       <bool>true</bool>
      </property>
-     <property name="insertPolicy">
+     <property name="insertPolicy" >
       <enum>QComboBox::InsertAtTop</enum>
      </property>
-     <property name="autoCompletion">
+     <property name="autoCompletion" >
       <bool>true</bool>
      </property>
-     <property name="duplicatesEnabled">
+     <property name="duplicatesEnabled" >
       <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="5" column="1">
-    <widget class="QPushButton" name="replacePB">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+   <item row="5" column="1" >
+    <widget class="QPushButton" name="replacePB" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
        <horstretch>100</horstretch>
        <verstretch>32</verstretch>
       </sizepolicy>
      </property>
-     <property name="toolTip">
+     <property name="toolTip" >
       <string>Replace word with current choice</string>
      </property>
-     <property name="text">
+     <property name="text" >
       <string>&amp;Replace</string>
      </property>
     </widget>
    </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="TextLabel2">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+   <item row="6" column="0" >
+    <widget class="QLabel" name="TextLabel2" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Maximum" hsizetype="Preferred" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="text">
+     <property name="text" >
       <string>S&amp;uggestions:</string>
      </property>
-     <property name="buddy">
+     <property name="buddy" >
       <cstring>suggestionsLW</cstring>
      </property>
     </widget>
    </item>
-   <item row="6" column="1">
-    <widget class="QPushButton" name="replaceAllPB">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+   <item row="6" column="1" >
+    <widget class="QPushButton" name="replaceAllPB" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
        <horstretch>100</horstretch>
        <verstretch>32</verstretch>
       </sizepolicy>
      </property>
-     <property name="toolTip">
+     <property name="toolTip" >
       <string>Replace word with current choice</string>
      </property>
-     <property name="text">
+     <property name="text" >
       <string>Replace &amp;All</string>
      </property>
     </widget>
    </item>
-   <item row="7" column="0" rowspan="4">
-    <widget class="QListWidget" name="suggestionsLW"/>
+   <item rowspan="4" row="7" column="0" >
+    <widget class="QListWidget" name="suggestionsLW" />
    </item>
-   <item row="7" column="1">
-    <widget class="QPushButton" name="ignorePB">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+   <item row="7" column="1" >
+    <widget class="QPushButton" name="ignorePB" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Maximum" hsizetype="Preferred" >
        <horstretch>100</horstretch>
        <verstretch>32</verstretch>
       </sizepolicy>
      </property>
-     <property name="toolTip">
+     <property name="toolTip" >
       <string>Ignore this word</string>
      </property>
-     <property name="text">
+     <property name="text" >
       <string>&amp;Ignore</string>
      </property>
     </widget>
    </item>
-   <item row="8" column="1">
-    <widget class="QPushButton" name="ignoreAllPB">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+   <item row="8" column="1" >
+    <widget class="QPushButton" name="ignoreAllPB" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Maximum" hsizetype="Preferred" >
        <horstretch>100</horstretch>
        <verstretch>32</verstretch>
       </sizepolicy>
      </property>
-     <property name="toolTip">
+     <property name="toolTip" >
       <string>Ignore this word throughout this session</string>
      </property>
-     <property name="text">
+     <property name="text" >
       <string>I&amp;gnore All</string>
      </property>
     </widget>
    </item>
-   <item row="9" column="1">
-    <widget class="QPushButton" name="addPB">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+   <item row="9" column="1" >
+    <widget class="QPushButton" name="addPB" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Maximum" hsizetype="Preferred" >
        <horstretch>100</horstretch>
        <verstretch>32</verstretch>
       </sizepolicy>
      </property>
-     <property name="toolTip">
+     <property name="toolTip" >
       <string>Add the word to your personal dictionary</string>
      </property>
-     <property name="text">
+     <property name="text" >
       <string>A&amp;dd</string>
      </property>
     </widget>
    </item>
-   <item row="10" column="1">
+   <item row="10" column="1" >
     <spacer>
-     <property name="orientation">
+     <property name="orientation" >
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeType">
+     <property name="sizeType" >
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" stdset="0">
+     <property name="sizeHint" stdset="0" >
       <size>
        <width>74</width>
        <height>98</height>
