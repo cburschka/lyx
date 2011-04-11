@@ -29,10 +29,6 @@
 #include "Paragraph.h"
 #include "TextClass.h"
 
-#include "frontends/alert.h"
-#include "frontends/Application.h"
-
-#include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
