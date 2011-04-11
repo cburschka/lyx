@@ -110,11 +110,8 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 	xs << html::StartTag("div", "class='toc'");
 
 	// Title of TOC
-	Language const * lang = buffer().params().language;
 	static string toctitle = N_("Table of Contents");
-	docstring title = lang 
-			? translateIfPossible(from_ascii(toctitle), lang->code())
-			: translateIfPossible(from_ascii(toctitle));
+	docstring title = buffer().B_(toctitle);
 	xs << html::StartTag("div", tocattr)
 		 << title
 		 << html::EndTag("div");
