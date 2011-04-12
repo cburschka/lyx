@@ -1,20 +1,19 @@
 # translation of it.po to italiano
 # Copyright (C) 2008 LyX Developers
-# basate sur le traduction initial in italiano
+# basate sur le version initial in italiano
 # g.sora <g.sora@tiscali.it>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-12 01:15+0200\n"
-"PO-Revision-Date: 2011-04-11 11:10+0200\n"
+"POT-Creation-Date: 2011-04-12 10:04+0200\n"
+"PO-Revision-Date: 2011-04-12 09:51+0200\n"
 "Last-Translator: g.sora <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <g.sora@tiscali.it>\n"
 "Language: ia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-" Language: ia\n"
 "X-Generator: Lokalize 1.2\n"
 "X-Poedit-Basepath: C:/cygwin/usr/local/src/lyx/lyx-devel\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -721,7 +720,7 @@ msgstr "Color de Font"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:148
 #: src/frontends/qt4/ui/LanguageUi.ui:19
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:28
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:27
 #: src/frontends/qt4/ui/ThesaurusUi.ui:22
 msgid "&Language:"
 msgstr "&Linguage:"
@@ -1337,7 +1336,7 @@ msgstr "Substitue e trova le occurrentia proxime [Enter]"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:129
 #: src/frontends/qt4/ui/SearchUi.ui:179
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:134
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:133
 #: src/frontends/qt4/ui/ThesaurusUi.ui:95
 msgid "&Replace"
 msgstr "&Substitue"
@@ -1353,7 +1352,7 @@ msgstr "Substitue omne occurrentias in un vice"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:155
 #: src/frontends/qt4/ui/SearchUi.ui:189
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:166
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:165
 msgid "Replace &All"
 msgstr "Substitue &totes"
 
@@ -2593,7 +2592,7 @@ msgstr "Di&sponibile:"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:100
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:187
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:217
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:216
 msgid "A&dd"
 msgstr "A&dde"
 
@@ -3429,7 +3428,7 @@ msgstr "Sempre Babel"
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:70
 #: src/frontends/qt4/GuiDocument.cpp:1011
 msgid "None[[language package]]"
-msgstr "Nulle[[language package]]"
+msgstr "Nulle"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:87
 msgid "Command s&tart:"
@@ -4172,7 +4171,7 @@ msgstr "Numero del pagina ex le qual on imprime"
 
 #: src/frontends/qt4/ui/PrintUi.ui:66
 msgid "&To:[[as in 'From page x to page y']]"
-msgstr "&A:[[como in 'Ex pagina x a pagina y']]"
+msgstr "&A:"
 
 #: src/frontends/qt4/ui/PrintUi.ui:79
 msgid "Page number to print to"
@@ -4470,64 +4469,62 @@ msgstr ""
 "Typa le via breve post cliccar sur iste campo. Tu pote remover\n"
 "le contento con le button de 'Netta'."
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:20
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:19
 #: src/frontends/qt4/GuiSpellchecker.cpp:195
 msgid "Spell Checker"
 msgstr "Controlator Orthographic"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:44
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:43
 msgid ""
 "The checked language. Switching this alters the language of the checked word."
 msgstr ""
 "Le linguage seligite. Commutar lo altera le linguage del parola marcate."
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:60
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:59
 msgid "Unknown word:"
 msgstr "Parola incognite:"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:70
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:69
 msgid "Current word"
 msgstr "Parola currente"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:83
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:131
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:163
-msgid "Replace word with current choice"
-msgstr "Reimplacia le parola con lo currentemente seligite"
-
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:86
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:85
 msgid "&Find Next"
 msgstr "&Trova proxime"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:93
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:92
 msgid "Re&placement:"
 msgstr "Reim&placiamento:"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:106
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:105
 msgid "Replace with selected word"
 msgstr "Reimplacia con le parola seligite"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:147
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:130
+msgid "Replace word with current choice"
+msgstr "Reimplacia le parola con lo currentemente seligite"
+
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:146
 msgid "S&uggestions:"
 msgstr "S&uggestiones:"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:182
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:181
 msgid "Ignore this word"
 msgstr "Ignora iste parola"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:185
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:184
 msgid "&Ignore"
 msgstr "&Ignora"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:198
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:197
 msgid "Ignore this word throughout this session"
 msgstr "Ignora iste parola per iste session"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:201
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:200
 msgid "I&gnore All"
 msgstr "I&gnora omne"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:214
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:213
 msgid "Add the word to your personal dictionary"
 msgstr "Adde le parola al proprie dictionario personal"
 
@@ -12623,7 +12620,7 @@ msgstr "File|F"
 
 #: lib/ui/stdmenus.inc:354
 msgid "Box[[Menu]]"
-msgstr "Quadrato[[Menu]]"
+msgstr "Quadrato"
 
 #: lib/ui/stdmenus.inc:357
 msgid "Citation...|C"
@@ -12675,7 +12672,7 @@ msgstr "Codice TeX|X"
 
 #: lib/ui/stdmenus.inc:372
 msgid "Program Listing[[Menu]]"
-msgstr "Listato de programma[[Menu]]"
+msgstr "Listato de programma"
 
 #: lib/ui/stdmenus.inc:374
 msgid "Preview|w"
@@ -13403,7 +13400,7 @@ msgstr "Linea de commando"
 
 #: lib/ui/stdtoolbars.inc:217
 msgid "Review[[Toolbar]]"
-msgstr "Revision[[Toolbar]]"
+msgstr "Revision"
 
 #: lib/ui/stdtoolbars.inc:218
 msgid "Track changes"
@@ -19300,7 +19297,7 @@ msgstr "Non pote leger le patrono"
 
 #: src/frontends/qt4/BulletsModule.cpp:41
 msgid "Standard[[Bullets]]"
-msgstr "Standard[[Bullets]]"
+msgstr "Standard"
 
 #: src/frontends/qt4/BulletsModule.cpp:42
 msgid "Maths"
@@ -19964,19 +19961,19 @@ msgstr "Compara revisiones diverse"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:57
 msgid "big[[delimiter size]]"
-msgstr "Grosse (big) [[dimension de delimitator]]"
+msgstr "Grosse (big)"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:58
 msgid "Big[[delimiter size]]"
-msgstr "Grosse (Big)[[dimension de delimitator]]"
+msgstr "Grosse (Big)"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:59
 msgid "bigg[[delimiter size]]"
-msgstr "Grosse(bigg) [[dimension de delimitator]]"
+msgstr "Grosse(bigg)"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:60
 msgid "Bigg[[delimiter size]]"
-msgstr "Grosse(Bigg) [[dimension de delimitator]]"
+msgstr "Grosse(Bigg)"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:165
 msgid "Math Delimiter"
@@ -23433,7 +23430,7 @@ msgstr "Auto-correction activate (<spatio> per exi)"
 
 #: src/mathed/InsetMathRef.cpp:225
 msgid "Standard[[mathref]]"
-msgstr "Standard[[mathref]]"
+msgstr "Standard"
 
 #: src/mathed/InsetMathRef.cpp:230
 msgid "PrettyRef"
