@@ -1343,6 +1343,7 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 	LYXERR(Debug::FIND, "Putting selection at cur=" << cur << " with len: " << sel_len);
 	bv->putSelectionAt(DocIterator(cur), sel_len, !opt.forward);
 	bv->processUpdateFlags(Update::Force);
+	bv->buffer().updatePreviews();
 }
 
 
