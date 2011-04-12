@@ -294,7 +294,7 @@ def checkFormatEntries(dtl_tools):
 \Format xpm        xpm     XPM                    "" "%s"	"%s"	""''' % \
         (iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie) )
     #
-    checkViewer('a text editor', ['sensible-editor', 'xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
+    checkViewer('a text editor', ['xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
         'nedit', 'gedit', 'notepad'],
         rc_entry = [r'''\Format asciichess asc    "Plain text (chess output)"  "" ""	"%%"	""
 \Format asciiimage asc    "Plain text (image)"         "" ""	"%%"	""
@@ -314,7 +314,7 @@ def checkFormatEntries(dtl_tools):
 \Format text4      txt    "Plain text (catdvi)"   "" ""	"%%"	"document"
 \Format textparagraph txt "Plain Text, Join Lines" "" ""	"%%"	"document"''' ])
  #
-    checkViewer('a BibTeX editor', ['sensible-editor', 'jabref', 'JabRef', \
+    checkViewer('a BibTeX editor', ['jabref', 'JabRef', \
         'pybliographic', 'bibdesk', 'gbib', 'kbib', \
         'kbibtex', 'sixpack', 'bibedit', 'tkbibtex' \
         'xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
