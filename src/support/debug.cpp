@@ -23,6 +23,7 @@
 #include <iomanip>
 
 //#define LYX_CALLSTACK_PRINTING
+// must be linked with -rdynamic
 #ifdef LYX_CALLSTACK_PRINTING
 #include <stdio.h>
 #include <stdlib.h>
