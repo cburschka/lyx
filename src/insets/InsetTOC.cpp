@@ -159,6 +159,10 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 		
 		// Now output TOC info for this entry
 		Paragraph const & par = it->dit().innerParagraph();
+
+		string const attr = "href='#" + par.magicLabel() + "' class='tocentry'";
+		xs << html::StartTag("a", attr);
+
 		// First the label, if there is one
 		docstring const & label = par.params().labelString();
 		if (!label.empty())
@@ -168,7 +172,9 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 		ours.for_toc = true;
 		Font const dummy;
 		par.simpleLyXHTMLOnePar(buffer(), xs, ours, dummy);
-		xs << " ";
+
+		xs << html::EndTag("a") << " ";
+
 		// Now a link to that paragraph
 		string const parattr = "href='#" + par.magicLabel() + "' class='tocarrow'";
 		xs << html::StartTag("a", parattr);

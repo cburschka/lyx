@@ -34,6 +34,11 @@ AddToHTMLPreamble
 	div.lyxtoc-4 { margin: 0em 0em 0em 1em; }
 	div.lyxtoc-5 { margin: 0em 0em 0em 1em; }
 	div.lyxtoc-6 { margin: 0em 0em 0em 1em; }
+	a.tocentry {
+		text-decoration: none;
+		color: black;
+	}
+	a.tocentry:visited { color: black; }
 	a.tocarrow { 
 		font-weight: bold; 
 		text-decoration: none; 
