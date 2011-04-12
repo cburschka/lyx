@@ -830,6 +830,8 @@ vector<docstring> const BiblioInfo::getAuthorYearStrings(
 void BiblioInfo::mergeBiblioInfo(BiblioInfo const & info)
 {
 	bimap_.insert(info.begin(), info.end());
+	field_names_.insert(info.field_names_.begin(), info.field_names_.end());
+	entry_types_.insert(info.entry_types_.begin(), info.entry_types_.end());
 }
 
 
