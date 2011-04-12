@@ -527,7 +527,7 @@ def checkFormatEntries(dtl_tools):
 \Format xpm        xpm     XPM                    "" "%s"	"%s"	""''' % \
         (iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie) )
     #
-    checkViewerEditor('a text editor', ['sensible-editor', 'xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
+    checkViewerEditor('a text editor', ['xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
         'nedit', 'gedit', 'notepad'],
         rc_entry = [r'''\Format asciichess asc    "Plain text (chess output)"  "" ""	"%%"	""
 \Format asciiimage asc    "Plain text (image)"         "" ""	"%%"	""
@@ -561,7 +561,7 @@ def checkFormatEntries(dtl_tools):
     if xhtmlview == "":
         addToRC(r'\Format xhtml      xhtml   "LyXHTML"              y "" ""  "document,menu=export"')
  #
-    checkEditor('a BibTeX editor', ['sensible-editor', 'jabref', 'JabRef', \
+    checkEditor('a BibTeX editor', ['jabref', 'JabRef', \
         'pybliographic', 'bibdesk', 'gbib', 'kbib', \
         'kbibtex', 'sixpack', 'bibedit', 'tkbibtex' \
         'xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
