@@ -138,6 +138,16 @@ void EnchantChecker::insert(WordLangTuple const & word)
 		advanceChangeNumber();
 	}
 }
+	
+	
+void EnchantChecker::remove(WordLangTuple const & word)
+{
+	Spellers::iterator it = d->spellers_.find(word.lang()->code());
+	if (it != d->spellers_.end()) {
+		it->second.speller->remove(to_utf8(word.word()));
+		advanceChangeNumber();
+	}
+}
 
 
 void EnchantChecker::accept(WordLangTuple const & word)
