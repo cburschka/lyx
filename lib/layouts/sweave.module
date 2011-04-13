@@ -21,7 +21,6 @@ End
 
 Preamble
 	<<echo=F>>=
-	  if(exists("ls.dir")) setwd(ls.dir)
 	  if(exists("ls.enc")) options(encoding=ls.enc)
 	@
 EndPreamble

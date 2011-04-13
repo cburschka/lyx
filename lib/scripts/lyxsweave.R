@@ -1,25 +1,40 @@
+# file lyxsweave.R
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+
+# author Jean-Marc Lasgouttes
+
+# Full author contact details are available in file CREDITS
+
 # Wrapper around Sweave that sets up some things for LyX
 # argument 1 is the absolute name of the input file
 # argument 2 is the absolute name of the output file
 # argument 3 is the iconv name for the encoding of the file
 # argument 4 is the original document directory
 
-ls.args <- commandArgs(trailingOnly=T)
+ls.args <- commandArgs(trailingOnly=TRUE)
 
-# check whether Sweave.sty is seen by LaTeX
-ls.sweavesty <- system("kpsewhich Sweave.sty", intern=T, ignore.stderr=T)
+# check whether Sweave.sty is seen by LaTeX. if it is not, we will
+# pass the option stylepath=TRUE to sweave so that a full path is given
+# to \usepackage.
+ls.sweavesty <- system("kpsewhich Sweave.sty", intern=TRUE, ignore.stderr=TRUE)
 ls.sp <- (length(ls.sweavesty) == 0)
 
-# set default encoding to the one of the file; it will be reset to previous
-# default by the sweave module
+# set default encoding for input and output files; ls.enc is used in
+# the sweave module preamble to reset the encoding to what it was.
 ls.enc <- getOption("encoding")
 options(encoding=ls.args[3])
 
-# pass document dir to sweave module
-ls.dir <- ls.args[4]
+# Change current directory to the document directory, so that R can find 
+# data files.
+setwd(ls.args[4])
 
-# this is used to tell where temporary files should go
+# this is passed as a prefix.string to tell where temporary files should go
 ls.pr <- sub("\\.tex$", "", ls.args[2])
+
+# Replace the default pdf device by the null device (tip from Yihui Xie)
+# See: http://yihui.name/en/2010/12/a-special-graphics-device-in-r-the-null-device/ 
+.Call("R_GD_nullDevice", PACKAGE = "grDevices")
 
 
 # finally run sweave
