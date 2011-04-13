@@ -20,6 +20,11 @@ AddToHTMLPreamble
 		padding: 1em 0em; 
 	}
 	div.tochead { font-size: x-large; font-weight: bold; }
+	div.lyxtoc-0 {
+		margin: 2em 0em 0em 0em;
+		font-size: xx-large;
+		font-weight: bold;
+	}
 	div.lyxtoc-1 { 
 		margin: 1em 0em 0em 0em; 
 		font-size: x-large; 
@@ -30,10 +35,10 @@ AddToHTMLPreamble
 		font-size: large; 
 		font-weight: normal; 
 	}
-	div.lyxtoc-3 { margin: 0em 0em 0em 1em; font-size: medium; }
-	div.lyxtoc-4 { margin: 0em 0em 0em 1em; }
-	div.lyxtoc-5 { margin: 0em 0em 0em 1em; }
-	div.lyxtoc-6 { margin: 0em 0em 0em 1em; }
+	div.lyxtoc-3 { margin: 0em 0em 0em 0.5em; font-size: medium; }
+	div.lyxtoc-4 { margin: 0em 0em 0em 0.5em; }
+	div.lyxtoc-5 { margin: 0em 0em 0em 0.5em; }
+	div.lyxtoc-6 { margin: 0em 0em 0em 0.5em; }
 	a.tocentry {
 		text-decoration: none;
 		color: black;
