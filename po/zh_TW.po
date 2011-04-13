@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-09 00:23+0200\n"
+"POT-Creation-Date: 2011-04-13 19:57+0200\n"
 "PO-Revision-Date: 2007-06-26 17:10+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -733,7 +733,7 @@ msgstr "字型顏色"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:148
 #: src/frontends/qt4/ui/LanguageUi.ui:19
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:28
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:27
 #: src/frontends/qt4/ui/ThesaurusUi.ui:22
 msgid "&Language:"
 msgstr "語言(&L)："
@@ -1390,7 +1390,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:129
 #: src/frontends/qt4/ui/SearchUi.ui:179
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:134
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:133
 #: src/frontends/qt4/ui/ThesaurusUi.ui:95
 msgid "&Replace"
 msgstr "置換(&R)"
@@ -1407,7 +1407,7 @@ msgstr "以目前選擇置換字詞"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:155
 #: src/frontends/qt4/ui/SearchUi.ui:189
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:166
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:165
 msgid "Replace &All"
 msgstr "全部置換(&A)"
 
@@ -2693,7 +2693,7 @@ msgstr "可用分支(&V)："
 
 #: src/frontends/qt4/ui/ModulesUi.ui:100
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:187
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:217
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:216
 msgid "A&dd"
 msgstr "加入(&D)"
 
@@ -4663,67 +4663,65 @@ msgid ""
 "the 'Clear' button"
 msgstr ""
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:20
-#: src/frontends/qt4/GuiSpellchecker.cpp:195
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:19
+#: src/frontends/qt4/GuiSpellchecker.cpp:190
 #, fuzzy
 msgid "Spell Checker"
 msgstr "拼寫檢查器"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:44
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:43
 msgid ""
 "The checked language. Switching this alters the language of the checked word."
 msgstr ""
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:60
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:59
 msgid "Unknown word:"
 msgstr "不明的字詞："
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:70
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:69
 msgid "Current word"
 msgstr "目前字詞"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:83
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:131
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:163
-msgid "Replace word with current choice"
-msgstr "以目前選擇置換字詞"
-
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:86
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:85
 #, fuzzy
 msgid "&Find Next"
 msgstr "找下一個(&N)"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:93
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:92
 #, fuzzy
 msgid "Re&placement:"
 msgstr "置換："
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:106
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:105
 msgid "Replace with selected word"
 msgstr "置換成已選取的字詞"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:147
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:130
+msgid "Replace word with current choice"
+msgstr "以目前選擇置換字詞"
+
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:146
 #, fuzzy
 msgid "S&uggestions:"
 msgstr "建議："
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:182
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:181
 msgid "Ignore this word"
 msgstr "忽略此字詞"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:185
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:184
 msgid "&Ignore"
 msgstr "忽略(&I)"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:198
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:197
 msgid "Ignore this word throughout this session"
 msgstr "此執行階段全期忽略此字詞"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:201
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:200
 msgid "I&gnore All"
 msgstr "忽略所有(&G)"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:214
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:213
 msgid "Add the word to your personal dictionary"
 msgstr "加入字詞到您的個人的字典"
 
@@ -5403,8 +5401,8 @@ msgstr "簡短標題"
 #: lib/layouts/amsdefs.inc:48 lib/layouts/amsdefs.inc:68
 #: lib/layouts/amsdefs.inc:92 lib/layouts/amsdefs.inc:119
 #: lib/layouts/lyxmacros.inc:45 lib/layouts/lyxmacros.inc:66
-#: lib/layouts/stdstruct.inc:16 lib/layouts/stdtitle.inc:50
-#: lib/layouts/stdtitle.inc:71 lib/layouts/stdtitle.inc:90
+#: lib/layouts/stdstruct.inc:16 lib/layouts/stdtitle.inc:60
+#: lib/layouts/stdtitle.inc:81 lib/layouts/stdtitle.inc:100
 #: lib/layouts/customHeadersFooters.module:11
 msgid "FrontMatter"
 msgstr "FrontMatter"
@@ -5931,7 +5929,7 @@ msgstr "標準"
 #: lib/layouts/svprobth.layout:42 lib/layouts/tufte-book.layout:34
 #: lib/layouts/agu_stdtitle.inc:246 lib/layouts/amsdefs.inc:24
 #: lib/layouts/db_stdtitle.inc:13 lib/layouts/scrclass.inc:161
-#: lib/layouts/stdtitle.inc:47 lib/layouts/svjour.inc:124
+#: lib/layouts/stdtitle.inc:57 lib/layouts/svjour.inc:124
 msgid "Title"
 msgstr "標題"
 
@@ -5963,7 +5961,7 @@ msgstr "小寫|L"
 #: lib/layouts/sigplanconf.layout:120 lib/layouts/svprobth.layout:59
 #: lib/layouts/tufte-book.layout:38 lib/layouts/agu_stdtitle.inc:167
 #: lib/layouts/amsdefs.inc:47 lib/layouts/db_stdtitle.inc:21
-#: lib/layouts/scrclass.inc:177 lib/layouts/stdtitle.inc:68
+#: lib/layouts/scrclass.inc:177 lib/layouts/stdtitle.inc:78
 #: lib/layouts/svjour.inc:154
 msgid "Author"
 msgstr "作者"
@@ -6249,7 +6247,7 @@ msgstr "郵件"
 #: lib/layouts/scrlttr2.layout:239 lib/layouts/siamltex.layout:228
 #: lib/layouts/tufte-book.layout:42 lib/layouts/agu_stdtitle.inc:238
 #: lib/layouts/amsdefs.inc:67 lib/layouts/db_stdtitle.inc:35
-#: lib/layouts/scrclass.inc:184 lib/layouts/stdtitle.inc:87
+#: lib/layouts/scrclass.inc:184 lib/layouts/stdtitle.inc:97
 #: lib/layouts/svjour.inc:183 lib/ui/stdmenus.inc:373
 #: lib/external_templates:340 lib/external_templates:341
 #: lib/external_templates:345
@@ -10035,7 +10033,7 @@ msgid "FirstName"
 msgstr "名字"
 
 #: lib/layouts/literate-scrap.inc:12 lib/layouts/noweb.module:11
-#: lib/layouts/sweave.module:49
+#: lib/layouts/sweave.module:48
 msgid "Scrap"
 msgstr "Scrap"
 
@@ -10227,8 +10225,8 @@ msgstr "頁腳"
 msgid "Greyedout"
 msgstr "灰色顯示"
 
-#: lib/layouts/stdinsets.inc:136 src/insets/InsetERT.cpp:150
-#: src/insets/InsetERT.cpp:152
+#: lib/layouts/stdinsets.inc:136 src/insets/InsetERT.cpp:146
+#: src/insets/InsetERT.cpp:148
 msgid "ERT"
 msgstr "ERT"
 
@@ -10797,7 +10795,7 @@ msgstr ""
 msgid "literate"
 msgstr "實文"
 
-#: lib/layouts/sweave.module:2 lib/layouts/sweave.module:30
+#: lib/layouts/sweave.module:2 lib/layouts/sweave.module:29
 #: lib/configure.py:541
 #, fuzzy
 msgid "Sweave"
@@ -10809,21 +10807,21 @@ msgid ""
 "via Sweave package. See sweave.lyx in examples."
 msgstr ""
 
-#: lib/layouts/sweave.module:29
+#: lib/layouts/sweave.module:28
 msgid "Chunk"
 msgstr ""
 
-#: lib/layouts/sweave.module:54
+#: lib/layouts/sweave.module:53
 #, fuzzy
 msgid "Sweave opts"
 msgstr "螢幕字型"
 
-#: lib/layouts/sweave.module:76
+#: lib/layouts/sweave.module:75
 #, fuzzy
 msgid "S/R expr"
 msgstr "exp"
 
-#: lib/layouts/sweave.module:98
+#: lib/layouts/sweave.module:97
 msgid "Sweave Input File"
 msgstr ""
 
@@ -12338,6 +12336,11 @@ msgstr "關閉區段"
 #, fuzzy
 msgid "Insert Short Title|T"
 msgstr "短標題|S"
+
+#: lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:355
+#, fuzzy
+msgid "Insert Regular Expression"
+msgstr "正規表示式(&X)"
 
 #: lib/ui/stdcontext.inc:312 lib/ui/stdcontext.inc:576
 #, fuzzy
@@ -21663,7 +21666,7 @@ msgid "Give a filename for the LyX server pipe"
 msgstr "給出用於 LyX 伺服器管道的檔名"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1427
-#: src/frontends/qt4/GuiSpellchecker.cpp:405
+#: src/frontends/qt4/GuiSpellchecker.cpp:422
 msgid "Spellchecker"
 msgstr "拼寫檢查器"
 
@@ -21921,7 +21924,7 @@ msgstr "顯示檔案"
 msgid "Error -> Cannot load file!"
 msgstr "無法編輯檔案"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:196
+#: src/frontends/qt4/GuiSpellchecker.cpp:191
 msgid ""
 "We reached the end of the document, would you like to continue from the "
 "beginning?"
@@ -22997,7 +23000,7 @@ msgid "All Files "
 msgstr "所有檔案 (*)"
 
 #: src/frontends/qt4/qt_helpers.cpp:551 src/insets/InsetTOC.cpp:58
-#: src/insets/InsetTOC.cpp:114
+#: src/insets/InsetTOC.cpp:113
 msgid "Table of Contents"
 msgstr "內容表"
 
@@ -24126,17 +24129,17 @@ msgstr "已置換字串。"
 msgid "%1$d strings have been replaced."
 msgstr " 已置換字串。"
 
-#: src/lyxfind.cpp:1365
+#: src/lyxfind.cpp:1366
 #, fuzzy
 msgid "Invalid regular expression!"
 msgstr "無效的 LaTeX 長度運算式。"
 
-#: src/lyxfind.cpp:1370
+#: src/lyxfind.cpp:1371
 #, fuzzy
 msgid "Match not found!"
 msgstr "找不到字串！"
 
-#: src/lyxfind.cpp:1374
+#: src/lyxfind.cpp:1375
 #, fuzzy
 msgid "Match found!"
 msgstr "找不到檔案"
@@ -24291,149 +24294,149 @@ msgstr "摘要："
 msgid "References: "
 msgstr "參考："
 
-#: src/support/debug.cpp:40
+#: src/support/debug.cpp:50
 #, fuzzy
 msgid "No debugging messages"
 msgstr "沒有偵錯訊息"
 
-#: src/support/debug.cpp:41
+#: src/support/debug.cpp:51
 msgid "General information"
 msgstr "一般資訊"
 
-#: src/support/debug.cpp:42
+#: src/support/debug.cpp:52
 msgid "Program initialisation"
 msgstr "程式初始化"
 
-#: src/support/debug.cpp:43
+#: src/support/debug.cpp:53
 msgid "Keyboard events handling"
 msgstr "鍵盤事件處理"
 
-#: src/support/debug.cpp:44
+#: src/support/debug.cpp:54
 msgid "GUI handling"
 msgstr "GUI 處理"
 
-#: src/support/debug.cpp:45
+#: src/support/debug.cpp:55
 msgid "Lyxlex grammar parser"
 msgstr "Lyxlex 文法剖析器"
 
-#: src/support/debug.cpp:46
+#: src/support/debug.cpp:56
 msgid "Configuration files reading"
 msgstr "組態檔案讀取中"
 
-#: src/support/debug.cpp:47
+#: src/support/debug.cpp:57
 msgid "Custom keyboard definition"
 msgstr "自訂鍵盤定義"
 
-#: src/support/debug.cpp:48
+#: src/support/debug.cpp:58
 msgid "LaTeX generation/execution"
 msgstr "LaTeX 產生/執行"
 
-#: src/support/debug.cpp:49
+#: src/support/debug.cpp:59
 msgid "Math editor"
 msgstr "數學編輯器"
 
-#: src/support/debug.cpp:50
+#: src/support/debug.cpp:60
 msgid "Font handling"
 msgstr "字型處理"
 
-#: src/support/debug.cpp:51
+#: src/support/debug.cpp:61
 msgid "Textclass files reading"
 msgstr "Textclass 檔案讀取中"
 
-#: src/support/debug.cpp:52
+#: src/support/debug.cpp:62
 msgid "Version control"
 msgstr "版本控制"
 
-#: src/support/debug.cpp:53
+#: src/support/debug.cpp:63
 msgid "External control interface"
 msgstr "外部控制介面"
 
-#: src/support/debug.cpp:54
+#: src/support/debug.cpp:64
 msgid "Undo/Redo mechanism"
 msgstr ""
 
-#: src/support/debug.cpp:55
+#: src/support/debug.cpp:65
 msgid "User commands"
 msgstr "使用者命令"
 
-#: src/support/debug.cpp:56
+#: src/support/debug.cpp:66
 #, fuzzy
 msgid "The LyX Lexer"
 msgstr "LyX Lexxer"
 
-#: src/support/debug.cpp:57
+#: src/support/debug.cpp:67
 msgid "Dependency information"
 msgstr "相依性資訊"
 
-#: src/support/debug.cpp:58
+#: src/support/debug.cpp:68
 msgid "LyX Insets"
 msgstr "LyX 內欄"
 
-#: src/support/debug.cpp:59
+#: src/support/debug.cpp:69
 msgid "Files used by LyX"
 msgstr "LyX 所使用的檔案"
 
-#: src/support/debug.cpp:60
+#: src/support/debug.cpp:70
 msgid "Workarea events"
 msgstr "工作區域事件"
 
-#: src/support/debug.cpp:61
+#: src/support/debug.cpp:71
 msgid "Insettext/tabular messages"
 msgstr "Insettext/tabular 訊息"
 
-#: src/support/debug.cpp:62
+#: src/support/debug.cpp:72
 msgid "Graphics conversion and loading"
 msgstr "圖形轉換和載入"
 
-#: src/support/debug.cpp:63
+#: src/support/debug.cpp:73
 msgid "Change tracking"
 msgstr "變更追蹤"
 
-#: src/support/debug.cpp:64
+#: src/support/debug.cpp:74
 msgid "External template/inset messages"
 msgstr "外部模板/內欄訊息"
 
-#: src/support/debug.cpp:65
+#: src/support/debug.cpp:75
 msgid "RowPainter profiling"
 msgstr "RowPainter 側寫中"
 
-#: src/support/debug.cpp:66
+#: src/support/debug.cpp:76
 #, fuzzy
 msgid "Scrolling debugging"
 msgstr "捲動"
 
-#: src/support/debug.cpp:67
+#: src/support/debug.cpp:77
 #, fuzzy
 msgid "Math macros"
 msgstr "數學巨集"
 
-#: src/support/debug.cpp:68
+#: src/support/debug.cpp:78
 msgid "RTL/Bidi"
 msgstr ""
 
-#: src/support/debug.cpp:69
+#: src/support/debug.cpp:79
 msgid "Locale/Internationalisation"
 msgstr ""
 
-#: src/support/debug.cpp:70
+#: src/support/debug.cpp:80
 #, fuzzy
 msgid "Selection copy/paste mechanism"
 msgstr "選擇多列|L"
 
-#: src/support/debug.cpp:71
+#: src/support/debug.cpp:81
 #, fuzzy
 msgid "Find and replace mechanism"
 msgstr "尋找和置換"
 
-#: src/support/debug.cpp:72
+#: src/support/debug.cpp:82
 msgid "Developers' general debug messages"
 msgstr "開發人員的一般除錯訊息"
 
-#: src/support/debug.cpp:73
+#: src/support/debug.cpp:83
 msgid "All debugging messages"
 msgstr "所有偵錯訊息"
 
-#: src/support/debug.cpp:152
+#: src/support/debug.cpp:162
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "偵錯「%1$s」(%2$s)"
@@ -25620,10 +25623,6 @@ msgstr "不明的使用者"
 #, fuzzy
 #~ msgid "&Find..."
 #~ msgstr "尋找(&F)："
-
-#, fuzzy
-#~ msgid "Insert Re&gular Expression..."
-#~ msgstr "正規表示式(&X)"
 
 #, fuzzy
 #~ msgid "&Next"

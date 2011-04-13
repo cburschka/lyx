@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.xsvn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-09 00:23+0200\n"
+"POT-Creation-Date: 2011-04-13 19:57+0200\n"
 "PO-Revision-Date: 2010-11-18 05:45+0100\n"
 "Last-Translator: Szőke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -726,7 +726,7 @@ msgstr "Betűszín"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:148
 #: src/frontends/qt4/ui/LanguageUi.ui:19
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:28
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:27
 #: src/frontends/qt4/ui/ThesaurusUi.ui:22
 msgid "&Language:"
 msgstr "Nye&lv:"
@@ -1381,7 +1381,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:129
 #: src/frontends/qt4/ui/SearchUi.ui:179
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:134
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:133
 #: src/frontends/qt4/ui/ThesaurusUi.ui:95
 msgid "&Replace"
 msgstr "Cse&rél"
@@ -1398,7 +1398,7 @@ msgstr "Szó kicserélése az aktuális választással"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:155
 #: src/frontends/qt4/ui/SearchUi.ui:189
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:166
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:165
 msgid "Replace &All"
 msgstr "M&indet cseréli"
 
@@ -2672,7 +2672,7 @@ msgstr "&Elérhető:"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:100
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:187
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:217
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:216
 msgid "A&dd"
 msgstr "&Hozzáadás"
 
@@ -4577,66 +4577,64 @@ msgstr ""
 "Nyomja le a kívánt gyorsbillentyűt, miután rákattintott erre a mezőre. "
 "Törölhet azt a 'Törlés' gombbal."
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:20
-#: src/frontends/qt4/GuiSpellchecker.cpp:195
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:19
+#: src/frontends/qt4/GuiSpellchecker.cpp:190
 #, fuzzy
 msgid "Spell Checker"
 msgstr "Helyesírás-ellenőrző"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:44
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:43
 msgid ""
 "The checked language. Switching this alters the language of the checked word."
 msgstr ""
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:60
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:59
 msgid "Unknown word:"
 msgstr "Ismeretlen szó:"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:70
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:69
 msgid "Current word"
 msgstr "Aktuális szó"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:83
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:131
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:163
-msgid "Replace word with current choice"
-msgstr "Szó kicserélése az aktuális választással"
-
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:86
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:85
 #, fuzzy
 msgid "&Find Next"
 msgstr "&Következő..."
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:93
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:92
 msgid "Re&placement:"
 msgstr "Új &szó:"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:106
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:105
 msgid "Replace with selected word"
 msgstr "Választott szóra cserél"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:147
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:130
+msgid "Replace word with current choice"
+msgstr "Szó kicserélése az aktuális választással"
+
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:146
 #, fuzzy
 msgid "S&uggestions:"
 msgstr "&Javaslatok:"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:182
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:181
 msgid "Ignore this word"
 msgstr "Mellőzze ezt a szót"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:185
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:184
 msgid "&Ignore"
 msgstr "&Mellőz"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:198
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:197
 msgid "Ignore this word throughout this session"
 msgstr "Elfogadja a szót ebben az ellenőrzésben"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:201
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:200
 msgid "I&gnore All"
 msgstr "Mellőzze m&indet"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:214
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:213
 msgid "Add the word to your personal dictionary"
 msgstr "Szó hozzáadása személyes szótárhoz"
 
@@ -5311,8 +5309,8 @@ msgstr "Rövid cím"
 #: lib/layouts/amsdefs.inc:48 lib/layouts/amsdefs.inc:68
 #: lib/layouts/amsdefs.inc:92 lib/layouts/amsdefs.inc:119
 #: lib/layouts/lyxmacros.inc:45 lib/layouts/lyxmacros.inc:66
-#: lib/layouts/stdstruct.inc:16 lib/layouts/stdtitle.inc:50
-#: lib/layouts/stdtitle.inc:71 lib/layouts/stdtitle.inc:90
+#: lib/layouts/stdstruct.inc:16 lib/layouts/stdtitle.inc:60
+#: lib/layouts/stdtitle.inc:81 lib/layouts/stdtitle.inc:100
 #: lib/layouts/customHeadersFooters.module:11
 msgid "FrontMatter"
 msgstr "Főtéma"
@@ -5831,7 +5829,7 @@ msgstr "Normál szöveg"
 #: lib/layouts/svprobth.layout:42 lib/layouts/tufte-book.layout:34
 #: lib/layouts/agu_stdtitle.inc:246 lib/layouts/amsdefs.inc:24
 #: lib/layouts/db_stdtitle.inc:13 lib/layouts/scrclass.inc:161
-#: lib/layouts/stdtitle.inc:47 lib/layouts/svjour.inc:124
+#: lib/layouts/stdtitle.inc:57 lib/layouts/svjour.inc:124
 msgid "Title"
 msgstr "Cím"
 
@@ -5863,7 +5861,7 @@ msgstr "Kisbetű|K"
 #: lib/layouts/sigplanconf.layout:120 lib/layouts/svprobth.layout:59
 #: lib/layouts/tufte-book.layout:38 lib/layouts/agu_stdtitle.inc:167
 #: lib/layouts/amsdefs.inc:47 lib/layouts/db_stdtitle.inc:21
-#: lib/layouts/scrclass.inc:177 lib/layouts/stdtitle.inc:68
+#: lib/layouts/scrclass.inc:177 lib/layouts/stdtitle.inc:78
 #: lib/layouts/svjour.inc:154
 msgid "Author"
 msgstr "Szerző"
@@ -6148,7 +6146,7 @@ msgstr "Levél"
 #: lib/layouts/scrlttr2.layout:239 lib/layouts/siamltex.layout:228
 #: lib/layouts/tufte-book.layout:42 lib/layouts/agu_stdtitle.inc:238
 #: lib/layouts/amsdefs.inc:67 lib/layouts/db_stdtitle.inc:35
-#: lib/layouts/scrclass.inc:184 lib/layouts/stdtitle.inc:87
+#: lib/layouts/scrclass.inc:184 lib/layouts/stdtitle.inc:97
 #: lib/layouts/svjour.inc:183 lib/ui/stdmenus.inc:373
 #: lib/external_templates:340 lib/external_templates:341
 #: lib/external_templates:345
@@ -9773,7 +9771,7 @@ msgid "FirstName"
 msgstr "Keresztnév"
 
 #: lib/layouts/literate-scrap.inc:12 lib/layouts/noweb.module:11
-#: lib/layouts/sweave.module:49
+#: lib/layouts/sweave.module:48
 msgid "Scrap"
 msgstr "Töredék"
 
@@ -9964,8 +9962,8 @@ msgstr "lábjegyzet"
 msgid "Greyedout"
 msgstr "Kiszürkített"
 
-#: lib/layouts/stdinsets.inc:136 src/insets/InsetERT.cpp:150
-#: src/insets/InsetERT.cpp:152
+#: lib/layouts/stdinsets.inc:136 src/insets/InsetERT.cpp:146
+#: src/insets/InsetERT.cpp:148
 msgid "ERT"
 msgstr "ERT"
 
@@ -10511,7 +10509,7 @@ msgstr ""
 msgid "literate"
 msgstr "Literate"
 
-#: lib/layouts/sweave.module:2 lib/layouts/sweave.module:30
+#: lib/layouts/sweave.module:2 lib/layouts/sweave.module:29
 #: lib/configure.py:541
 msgid "Sweave"
 msgstr ""
@@ -10522,20 +10520,20 @@ msgid ""
 "via Sweave package. See sweave.lyx in examples."
 msgstr ""
 
-#: lib/layouts/sweave.module:29
+#: lib/layouts/sweave.module:28
 msgid "Chunk"
 msgstr ""
 
-#: lib/layouts/sweave.module:54
+#: lib/layouts/sweave.module:53
 msgid "Sweave opts"
 msgstr ""
 
-#: lib/layouts/sweave.module:76
+#: lib/layouts/sweave.module:75
 #, fuzzy
 msgid "S/R expr"
 msgstr "expr."
 
-#: lib/layouts/sweave.module:98
+#: lib/layouts/sweave.module:97
 msgid "Sweave Input File"
 msgstr ""
 
@@ -11967,6 +11965,11 @@ msgstr "Szakasz mozgatása fel|S"
 #: lib/ui/stdcontext.inc:309
 msgid "Insert Short Title|T"
 msgstr "Rövid cím beszúrása|d"
+
+#: lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:355
+#, fuzzy
+msgid "Insert Regular Expression"
+msgstr "Reguláris kifejez&és"
 
 #: lib/ui/stdcontext.inc:312 lib/ui/stdcontext.inc:576
 #, fuzzy
@@ -21239,7 +21242,7 @@ msgid "Give a filename for the LyX server pipe"
 msgstr "Adja meg a fájlnevet a LyX szerver csőhöz"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1427
-#: src/frontends/qt4/GuiSpellchecker.cpp:405
+#: src/frontends/qt4/GuiSpellchecker.cpp:422
 msgid "Spellchecker"
 msgstr "Helyesírás-ellenőrző"
 
@@ -21494,7 +21497,7 @@ msgstr "Fájl megjelenítése"
 msgid "Error -> Cannot load file!"
 msgstr "Hiba -> A fájl nem tölthető be!"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:196
+#: src/frontends/qt4/GuiSpellchecker.cpp:191
 msgid ""
 "We reached the end of the document, would you like to continue from the "
 "beginning?"
@@ -22507,7 +22510,7 @@ msgid "All Files "
 msgstr "Minden fájl "
 
 #: src/frontends/qt4/qt_helpers.cpp:551 src/insets/InsetTOC.cpp:58
-#: src/insets/InsetTOC.cpp:114
+#: src/insets/InsetTOC.cpp:113
 msgid "Table of Contents"
 msgstr "Tartalomjegyzék"
 
@@ -23612,17 +23615,17 @@ msgstr "Szöveget kicseréltem."
 msgid "%1$d strings have been replaced."
 msgstr " szöveget cseréltem ki."
 
-#: src/lyxfind.cpp:1365
+#: src/lyxfind.cpp:1366
 #, fuzzy
 msgid "Invalid regular expression!"
 msgstr "A LaTeX hosszúság kifejezés rossz."
 
-#: src/lyxfind.cpp:1370
+#: src/lyxfind.cpp:1371
 #, fuzzy
 msgid "Match not found!"
 msgstr "Nem találtam meg a szöveget!"
 
-#: src/lyxfind.cpp:1374
+#: src/lyxfind.cpp:1375
 #, fuzzy
 msgid "Match found!"
 msgstr "Nincs meg a modul!"
@@ -23775,147 +23778,147 @@ msgstr "Kivonat: "
 msgid "References: "
 msgstr "Hivatkozások: "
 
-#: src/support/debug.cpp:40
+#: src/support/debug.cpp:50
 #, fuzzy
 msgid "No debugging messages"
 msgstr "Nincs hibakeresési üzenet"
 
-#: src/support/debug.cpp:41
+#: src/support/debug.cpp:51
 msgid "General information"
 msgstr "General information"
 
-#: src/support/debug.cpp:42
+#: src/support/debug.cpp:52
 msgid "Program initialisation"
 msgstr "Program initialisation"
 
-#: src/support/debug.cpp:43
+#: src/support/debug.cpp:53
 msgid "Keyboard events handling"
 msgstr "Billentyűzet eseménykezelés"
 
-#: src/support/debug.cpp:44
+#: src/support/debug.cpp:54
 msgid "GUI handling"
 msgstr "GUI handling"
 
-#: src/support/debug.cpp:45
+#: src/support/debug.cpp:55
 msgid "Lyxlex grammar parser"
 msgstr "Lyxlex nyelvtani elemző"
 
-#: src/support/debug.cpp:46
+#: src/support/debug.cpp:56
 msgid "Configuration files reading"
 msgstr "Konfigurációs fájlok olvasása"
 
-#: src/support/debug.cpp:47
+#: src/support/debug.cpp:57
 msgid "Custom keyboard definition"
 msgstr "Egyedi billentyűzetdefiníció"
 
-#: src/support/debug.cpp:48
+#: src/support/debug.cpp:58
 msgid "LaTeX generation/execution"
 msgstr "LaTeX generálás/végrehajtás"
 
-#: src/support/debug.cpp:49
+#: src/support/debug.cpp:59
 msgid "Math editor"
 msgstr "Képletszerkesztő"
 
-#: src/support/debug.cpp:50
+#: src/support/debug.cpp:60
 msgid "Font handling"
 msgstr "Betűkészlet-kezelés"
 
-#: src/support/debug.cpp:51
+#: src/support/debug.cpp:61
 msgid "Textclass files reading"
 msgstr "Szövegosztályfájlok olvasása"
 
-#: src/support/debug.cpp:52
+#: src/support/debug.cpp:62
 msgid "Version control"
 msgstr "Verziókövetés"
 
-#: src/support/debug.cpp:53
+#: src/support/debug.cpp:63
 msgid "External control interface"
 msgstr "Külső vezérlőfelület"
 
-#: src/support/debug.cpp:54
+#: src/support/debug.cpp:64
 msgid "Undo/Redo mechanism"
 msgstr "Visszavonás/mégis mechanizmus"
 
-#: src/support/debug.cpp:55
+#: src/support/debug.cpp:65
 msgid "User commands"
 msgstr "Felhasználói parancsok"
 
-#: src/support/debug.cpp:56
+#: src/support/debug.cpp:66
 #, fuzzy
 msgid "The LyX Lexer"
 msgstr "A LyX Lexx"
 
-#: src/support/debug.cpp:57
+#: src/support/debug.cpp:67
 msgid "Dependency information"
 msgstr "Függőségi információ"
 
-#: src/support/debug.cpp:58
+#: src/support/debug.cpp:68
 msgid "LyX Insets"
 msgstr "LyX betétek"
 
-#: src/support/debug.cpp:59
+#: src/support/debug.cpp:69
 msgid "Files used by LyX"
 msgstr "LyX által használt fájlok"
 
-#: src/support/debug.cpp:60
+#: src/support/debug.cpp:70
 msgid "Workarea events"
 msgstr "Munkaterület eseményei"
 
-#: src/support/debug.cpp:61
+#: src/support/debug.cpp:71
 msgid "Insettext/tabular messages"
 msgstr "Betétszöveg/táblázat üzenetek"
 
-#: src/support/debug.cpp:62
+#: src/support/debug.cpp:72
 msgid "Graphics conversion and loading"
 msgstr "Képkonverzió és betöltés"
 
-#: src/support/debug.cpp:63
+#: src/support/debug.cpp:73
 msgid "Change tracking"
 msgstr "Változások követése"
 
-#: src/support/debug.cpp:64
+#: src/support/debug.cpp:74
 msgid "External template/inset messages"
 msgstr "Külső sablon/betét üzenetek"
 
-#: src/support/debug.cpp:65
+#: src/support/debug.cpp:75
 msgid "RowPainter profiling"
 msgstr "RowPainter profiling"
 
-#: src/support/debug.cpp:66
+#: src/support/debug.cpp:76
 #, fuzzy
 msgid "Scrolling debugging"
 msgstr "scrolling debugging"
 
-#: src/support/debug.cpp:67
+#: src/support/debug.cpp:77
 msgid "Math macros"
 msgstr "Képlet makrók"
 
-#: src/support/debug.cpp:68
+#: src/support/debug.cpp:78
 msgid "RTL/Bidi"
 msgstr "RTL/Bidi"
 
-#: src/support/debug.cpp:69
+#: src/support/debug.cpp:79
 msgid "Locale/Internationalisation"
 msgstr "Locale/Internationalisation"
 
-#: src/support/debug.cpp:70
+#: src/support/debug.cpp:80
 msgid "Selection copy/paste mechanism"
 msgstr "Kijelölés másol/beilleszt mechanizmus"
 
-#: src/support/debug.cpp:71
+#: src/support/debug.cpp:81
 #, fuzzy
 msgid "Find and replace mechanism"
 msgstr "Keres és cserél"
 
-#: src/support/debug.cpp:72
+#: src/support/debug.cpp:82
 msgid "Developers' general debug messages"
 msgstr "Developers' general debug messages"
 
-#: src/support/debug.cpp:73
+#: src/support/debug.cpp:83
 msgid "All debugging messages"
 msgstr "Minden nyomkövetési üzenet"
 
-#: src/support/debug.cpp:152
+#: src/support/debug.cpp:162
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Nyomkövetés `%1$s' (%2$s)"

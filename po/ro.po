@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-09 00:23+0200\n"
+"POT-Creation-Date: 2011-04-13 19:57+0200\n"
 "PO-Revision-Date: 2009-08-20 17:06+0100\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -732,7 +732,7 @@ msgstr "Culoare font"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:148
 #: src/frontends/qt4/ui/LanguageUi.ui:19
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:28
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:27
 #: src/frontends/qt4/ui/ThesaurusUi.ui:22
 msgid "&Language:"
 msgstr "&Limbaj:"
@@ -1388,7 +1388,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:129
 #: src/frontends/qt4/ui/SearchUi.ui:179
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:134
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:133
 #: src/frontends/qt4/ui/ThesaurusUi.ui:95
 msgid "&Replace"
 msgstr "În&locuieşte"
@@ -1405,7 +1405,7 @@ msgstr "Înlocuieşte cuvîntul cu alegerea curentă"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:155
 #: src/frontends/qt4/ui/SearchUi.ui:189
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:166
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:165
 msgid "Replace &All"
 msgstr "Înlocuieşte &toate apariţiile"
 
@@ -2687,7 +2687,7 @@ msgstr "Disponibile:"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:100
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:187
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:217
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:216
 msgid "A&dd"
 msgstr "&Adaugă"
 
@@ -4657,67 +4657,65 @@ msgstr ""
 "conținutul folosind\n"
 "butonul 'Șterge'"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:20
-#: src/frontends/qt4/GuiSpellchecker.cpp:195
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:19
+#: src/frontends/qt4/GuiSpellchecker.cpp:190
 #, fuzzy
 msgid "Spell Checker"
 msgstr "Verificator ortografic"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:44
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:43
 msgid ""
 "The checked language. Switching this alters the language of the checked word."
 msgstr ""
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:60
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:59
 msgid "Unknown word:"
 msgstr "Cuvînt necunoscut:"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:70
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:69
 msgid "Current word"
 msgstr "Cuvîntul curent"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:83
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:131
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:163
-msgid "Replace word with current choice"
-msgstr "Înlocuieşte cuvîntul cu alegerea curentă"
-
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:86
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:85
 #, fuzzy
 msgid "&Find Next"
 msgstr "Caută în &continuare"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:93
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:92
 #, fuzzy
 msgid "Re&placement:"
 msgstr "Înlocuitor:|#l"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:106
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:105
 msgid "Replace with selected word"
 msgstr "Înlocuieşte cu cuvîntul selectat"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:147
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:130
+msgid "Replace word with current choice"
+msgstr "Înlocuieşte cuvîntul cu alegerea curentă"
+
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:146
 #, fuzzy
 msgid "S&uggestions:"
 msgstr "Sugestii:"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:182
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:181
 msgid "Ignore this word"
 msgstr "Ignoră acest cuvînt"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:185
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:184
 msgid "&Ignore"
 msgstr "&Ignoră"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:198
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:197
 msgid "Ignore this word throughout this session"
 msgstr "Acceptă cuvîntul pentru această sesiune"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:201
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:200
 msgid "I&gnore All"
 msgstr "Ignoră t&ot"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:214
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:213
 msgid "Add the word to your personal dictionary"
 msgstr "Adaugă cuvîntul la dicţionarul personal"
 
@@ -5395,8 +5393,8 @@ msgstr "TitluScurt"
 #: lib/layouts/amsdefs.inc:48 lib/layouts/amsdefs.inc:68
 #: lib/layouts/amsdefs.inc:92 lib/layouts/amsdefs.inc:119
 #: lib/layouts/lyxmacros.inc:45 lib/layouts/lyxmacros.inc:66
-#: lib/layouts/stdstruct.inc:16 lib/layouts/stdtitle.inc:50
-#: lib/layouts/stdtitle.inc:71 lib/layouts/stdtitle.inc:90
+#: lib/layouts/stdstruct.inc:16 lib/layouts/stdtitle.inc:60
+#: lib/layouts/stdtitle.inc:81 lib/layouts/stdtitle.inc:100
 #: lib/layouts/customHeadersFooters.module:11
 msgid "FrontMatter"
 msgstr "FrontMatter"
@@ -5921,7 +5919,7 @@ msgstr "Standard"
 #: lib/layouts/svprobth.layout:42 lib/layouts/tufte-book.layout:34
 #: lib/layouts/agu_stdtitle.inc:246 lib/layouts/amsdefs.inc:24
 #: lib/layouts/db_stdtitle.inc:13 lib/layouts/scrclass.inc:161
-#: lib/layouts/stdtitle.inc:47 lib/layouts/svjour.inc:124
+#: lib/layouts/stdtitle.inc:57 lib/layouts/svjour.inc:124
 msgid "Title"
 msgstr "Titlu"
 
@@ -5953,7 +5951,7 @@ msgstr "Minuscule|s"
 #: lib/layouts/sigplanconf.layout:120 lib/layouts/svprobth.layout:59
 #: lib/layouts/tufte-book.layout:38 lib/layouts/agu_stdtitle.inc:167
 #: lib/layouts/amsdefs.inc:47 lib/layouts/db_stdtitle.inc:21
-#: lib/layouts/scrclass.inc:177 lib/layouts/stdtitle.inc:68
+#: lib/layouts/scrclass.inc:177 lib/layouts/stdtitle.inc:78
 #: lib/layouts/svjour.inc:154
 msgid "Author"
 msgstr "Autor"
@@ -6239,7 +6237,7 @@ msgstr "Mail"
 #: lib/layouts/scrlttr2.layout:239 lib/layouts/siamltex.layout:228
 #: lib/layouts/tufte-book.layout:42 lib/layouts/agu_stdtitle.inc:238
 #: lib/layouts/amsdefs.inc:67 lib/layouts/db_stdtitle.inc:35
-#: lib/layouts/scrclass.inc:184 lib/layouts/stdtitle.inc:87
+#: lib/layouts/scrclass.inc:184 lib/layouts/stdtitle.inc:97
 #: lib/layouts/svjour.inc:183 lib/ui/stdmenus.inc:373
 #: lib/external_templates:340 lib/external_templates:341
 #: lib/external_templates:345
@@ -9949,7 +9947,7 @@ msgid "FirstName"
 msgstr "Prenume"
 
 #: lib/layouts/literate-scrap.inc:12 lib/layouts/noweb.module:11
-#: lib/layouts/sweave.module:49
+#: lib/layouts/sweave.module:48
 msgid "Scrap"
 msgstr "Ciornă"
 
@@ -10140,8 +10138,8 @@ msgstr "subsol"
 msgid "Greyedout"
 msgstr "Deschidere"
 
-#: lib/layouts/stdinsets.inc:136 src/insets/InsetERT.cpp:150
-#: src/insets/InsetERT.cpp:152
+#: lib/layouts/stdinsets.inc:136 src/insets/InsetERT.cpp:146
+#: src/insets/InsetERT.cpp:148
 msgid "ERT"
 msgstr "ERT"
 
@@ -10686,7 +10684,7 @@ msgstr ""
 msgid "literate"
 msgstr "Literal"
 
-#: lib/layouts/sweave.module:2 lib/layouts/sweave.module:30
+#: lib/layouts/sweave.module:2 lib/layouts/sweave.module:29
 #: lib/configure.py:541
 #, fuzzy
 msgid "Sweave"
@@ -10698,21 +10696,21 @@ msgid ""
 "via Sweave package. See sweave.lyx in examples."
 msgstr ""
 
-#: lib/layouts/sweave.module:29
+#: lib/layouts/sweave.module:28
 msgid "Chunk"
 msgstr ""
 
-#: lib/layouts/sweave.module:54
+#: lib/layouts/sweave.module:53
 #, fuzzy
 msgid "Sweave opts"
 msgstr "Fonturi ecran"
 
-#: lib/layouts/sweave.module:76
+#: lib/layouts/sweave.module:75
 #, fuzzy
 msgid "S/R expr"
 msgstr "expresie"
 
-#: lib/layouts/sweave.module:98
+#: lib/layouts/sweave.module:97
 msgid "Sweave Input File"
 msgstr ""
 
@@ -12225,6 +12223,11 @@ msgstr "Închide Secţiunea"
 #, fuzzy
 msgid "Insert Short Title|T"
 msgstr "Titlu scurt"
+
+#: lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:355
+#, fuzzy
+msgid "Insert Regular Expression"
+msgstr "Expresie regulară"
 
 #: lib/ui/stdcontext.inc:312 lib/ui/stdcontext.inc:576
 #, fuzzy
@@ -21525,7 +21528,7 @@ msgid "Give a filename for the LyX server pipe"
 msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:1427
-#: src/frontends/qt4/GuiSpellchecker.cpp:405
+#: src/frontends/qt4/GuiSpellchecker.cpp:422
 msgid "Spellchecker"
 msgstr "Verificator ortografic"
 
@@ -21798,7 +21801,7 @@ msgstr "TitluScurt"
 msgid "Error -> Cannot load file!"
 msgstr "Înlocuieşte"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:196
+#: src/frontends/qt4/GuiSpellchecker.cpp:191
 msgid ""
 "We reached the end of the document, would you like to continue from the "
 "beginning?"
@@ -22865,7 +22868,7 @@ msgid "All Files "
 msgstr "Închide"
 
 #: src/frontends/qt4/qt_helpers.cpp:551 src/insets/InsetTOC.cpp:58
-#: src/insets/InsetTOC.cpp:114
+#: src/insets/InsetTOC.cpp:113
 #, fuzzy
 msgid "Table of Contents"
 msgstr "Cuprins|C"
@@ -24020,17 +24023,17 @@ msgstr "Înlocuieşte"
 msgid "%1$d strings have been replaced."
 msgstr "Înlocuieşte"
 
-#: src/lyxfind.cpp:1365
+#: src/lyxfind.cpp:1366
 #, fuzzy
 msgid "Invalid regular expression!"
 msgstr "Expresie regulară"
 
-#: src/lyxfind.cpp:1370
+#: src/lyxfind.cpp:1371
 #, fuzzy
 msgid "Match not found!"
 msgstr "Reconfigurează|R"
 
-#: src/lyxfind.cpp:1374
+#: src/lyxfind.cpp:1375
 #, fuzzy
 msgid "Match found!"
 msgstr "Reconfigurează|R"
@@ -24192,162 +24195,162 @@ msgstr "Abstract "
 msgid "References: "
 msgstr "Referinţe"
 
-#: src/support/debug.cpp:40
+#: src/support/debug.cpp:50
 #, fuzzy
 msgid "No debugging messages"
 msgstr "(nu există mesaje)"
 
-#: src/support/debug.cpp:41
+#: src/support/debug.cpp:51
 #, fuzzy
 msgid "General information"
 msgstr "Configurare LaTeX|L"
 
-#: src/support/debug.cpp:42
+#: src/support/debug.cpp:52
 #, fuzzy
 msgid "Program initialisation"
 msgstr "Listare program"
 
-#: src/support/debug.cpp:43
+#: src/support/debug.cpp:53
 #, fuzzy
 msgid "Keyboard events handling"
 msgstr "Modificare font|f"
 
-#: src/support/debug.cpp:44
+#: src/support/debug.cpp:54
 #, fuzzy
 msgid "GUI handling"
 msgstr "Modificare font|f"
 
-#: src/support/debug.cpp:45
+#: src/support/debug.cpp:55
 msgid "Lyxlex grammar parser"
 msgstr ""
 
-#: src/support/debug.cpp:46
+#: src/support/debug.cpp:56
 #, fuzzy
 msgid "Configuration files reading"
 msgstr "Listă de slide-uri"
 
-#: src/support/debug.cpp:47
+#: src/support/debug.cpp:57
 msgid "Custom keyboard definition"
 msgstr ""
 
-#: src/support/debug.cpp:48
+#: src/support/debug.cpp:58
 msgid "LaTeX generation/execution"
 msgstr ""
 
-#: src/support/debug.cpp:49
+#: src/support/debug.cpp:59
 #, fuzzy
 msgid "Math editor"
 msgstr "MathLetters"
 
-#: src/support/debug.cpp:50
+#: src/support/debug.cpp:60
 #, fuzzy
 msgid "Font handling"
 msgstr "Modificare font|f"
 
-#: src/support/debug.cpp:51
+#: src/support/debug.cpp:61
 msgid "Textclass files reading"
 msgstr ""
 
-#: src/support/debug.cpp:52
+#: src/support/debug.cpp:62
 #, fuzzy
 msgid "Version control"
 msgstr "Controlul versiunii|v"
 
-#: src/support/debug.cpp:53
+#: src/support/debug.cpp:63
 #, fuzzy
 msgid "External control interface"
 msgstr "Material extern"
 
-#: src/support/debug.cpp:54
+#: src/support/debug.cpp:64
 msgid "Undo/Redo mechanism"
 msgstr ""
 
-#: src/support/debug.cpp:55
+#: src/support/debug.cpp:65
 #, fuzzy
 msgid "User commands"
 msgstr "Comenzi utilizator"
 
-#: src/support/debug.cpp:56
+#: src/support/debug.cpp:66
 msgid "The LyX Lexer"
 msgstr ""
 
-#: src/support/debug.cpp:57
+#: src/support/debug.cpp:67
 #, fuzzy
 msgid "Dependency information"
 msgstr "Configurare LaTeX|L"
 
-#: src/support/debug.cpp:58
+#: src/support/debug.cpp:68
 #, fuzzy
 msgid "LyX Insets"
 msgstr "Inserare|I"
 
-#: src/support/debug.cpp:59
+#: src/support/debug.cpp:69
 msgid "Files used by LyX"
 msgstr ""
 
-#: src/support/debug.cpp:60
+#: src/support/debug.cpp:70
 msgid "Workarea events"
 msgstr ""
 
-#: src/support/debug.cpp:61
+#: src/support/debug.cpp:71
 msgid "Insettext/tabular messages"
 msgstr ""
 
-#: src/support/debug.cpp:62
+#: src/support/debug.cpp:72
 msgid "Graphics conversion and loading"
 msgstr ""
 
-#: src/support/debug.cpp:63
+#: src/support/debug.cpp:73
 #, fuzzy
 msgid "Change tracking"
 msgstr "Modifică limbajul"
 
-#: src/support/debug.cpp:64
+#: src/support/debug.cpp:74
 #, fuzzy
 msgid "External template/inset messages"
 msgstr "Aplicaţii externe"
 
-#: src/support/debug.cpp:65
+#: src/support/debug.cpp:75
 msgid "RowPainter profiling"
 msgstr ""
 
-#: src/support/debug.cpp:66
+#: src/support/debug.cpp:76
 #, fuzzy
 msgid "Scrolling debugging"
 msgstr "Urmărind bara de defilare"
 
-#: src/support/debug.cpp:67
+#: src/support/debug.cpp:77
 #, fuzzy
 msgid "Math macros"
 msgstr "fundal mod matematic"
 
-#: src/support/debug.cpp:68
+#: src/support/debug.cpp:78
 msgid "RTL/Bidi"
 msgstr ""
 
-#: src/support/debug.cpp:69
+#: src/support/debug.cpp:79
 msgid "Locale/Internationalisation"
 msgstr ""
 
-#: src/support/debug.cpp:70
+#: src/support/debug.cpp:80
 #, fuzzy
 msgid "Selection copy/paste mechanism"
 msgstr "Selecţa ca linii|l"
 
-#: src/support/debug.cpp:71
+#: src/support/debug.cpp:81
 #, fuzzy
 msgid "Find and replace mechanism"
 msgstr "Găsește și Înlocuieşte"
 
-#: src/support/debug.cpp:72
+#: src/support/debug.cpp:82
 msgid "Developers' general debug messages"
 msgstr ""
 
-#: src/support/debug.cpp:73
+#: src/support/debug.cpp:83
 msgid "All debugging messages"
 msgstr ""
 
-#: src/support/debug.cpp:152
+#: src/support/debug.cpp:162
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr ""
@@ -25512,10 +25515,6 @@ msgstr "Cuvînt necunoscut:"
 #, fuzzy
 #~ msgid "&Find..."
 #~ msgstr "C&aută:"
-
-#, fuzzy
-#~ msgid "Insert Re&gular Expression..."
-#~ msgstr "Expresie regulară"
 
 #, fuzzy
 #~ msgid "&Next"

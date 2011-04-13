@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.6.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-09 00:23+0200\n"
+"POT-Creation-Date: 2011-04-13 19:57+0200\n"
 "PO-Revision-Date: 2009-08-19 17:52+0100\n"
 "Last-Translator: Helge Hafting <helge.hafting@aitel.hist.no>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -725,7 +725,7 @@ msgstr "Farge på skriften"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:148
 #: src/frontends/qt4/ui/LanguageUi.ui:19
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:28
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:27
 #: src/frontends/qt4/ui/ThesaurusUi.ui:22
 msgid "&Language:"
 msgstr "Spr&åk:"
@@ -1378,7 +1378,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:129
 #: src/frontends/qt4/ui/SearchUi.ui:179
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:134
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:133
 #: src/frontends/qt4/ui/ThesaurusUi.ui:95
 msgid "&Replace"
 msgstr "&Erstatt"
@@ -1395,7 +1395,7 @@ msgstr "Bytt det gale ordet med dette"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:155
 #: src/frontends/qt4/ui/SearchUi.ui:189
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:166
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:165
 msgid "Replace &All"
 msgstr "Erstatt &Alle"
 
@@ -2660,7 +2660,7 @@ msgstr "&Tilgjengelige:"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:100
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:187
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:217
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:216
 msgid "A&dd"
 msgstr "Leg&g til"
 
@@ -4557,67 +4557,65 @@ msgstr ""
 "Klikk her, tast derette hurtigtasten(e). Innholdet kan fjernes med 'Fjern'-"
 "knappen."
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:20
-#: src/frontends/qt4/GuiSpellchecker.cpp:195
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:19
+#: src/frontends/qt4/GuiSpellchecker.cpp:190
 #, fuzzy
 msgid "Spell Checker"
 msgstr "Stavekontroll"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:44
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:43
 msgid ""
 "The checked language. Switching this alters the language of the checked word."
 msgstr ""
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:60
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:59
 msgid "Unknown word:"
 msgstr "Ukjent ord:"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:70
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:69
 msgid "Current word"
 msgstr "Ukjent ord"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:83
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:131
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:163
-msgid "Replace word with current choice"
-msgstr "Bytt det gale ordet med dette"
-
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:86
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:85
 #, fuzzy
 msgid "&Find Next"
 msgstr "Finn &Neste"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:93
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:92
 #, fuzzy
 msgid "Re&placement:"
 msgstr "Byttes med:"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:106
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:105
 msgid "Replace with selected word"
 msgstr "Bytt ut med valgt ord"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:147
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:130
+msgid "Replace word with current choice"
+msgstr "Bytt det gale ordet med dette"
+
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:146
 #, fuzzy
 msgid "S&uggestions:"
 msgstr "Forslag:"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:182
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:181
 msgid "Ignore this word"
 msgstr "Ignorer dette ordet"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:185
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:184
 msgid "&Ignore"
 msgstr "Ignorer"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:198
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:197
 msgid "Ignore this word throughout this session"
 msgstr "Godta dette ordet i denne omgangen"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:201
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:200
 msgid "I&gnore All"
 msgstr "Ignorer alle"
 
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:214
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:213
 msgid "Add the word to your personal dictionary"
 msgstr "Legg til i personlig ordliste"
 
@@ -5284,8 +5282,8 @@ msgstr "Kort tittel"
 #: lib/layouts/amsdefs.inc:48 lib/layouts/amsdefs.inc:68
 #: lib/layouts/amsdefs.inc:92 lib/layouts/amsdefs.inc:119
 #: lib/layouts/lyxmacros.inc:45 lib/layouts/lyxmacros.inc:66
-#: lib/layouts/stdstruct.inc:16 lib/layouts/stdtitle.inc:50
-#: lib/layouts/stdtitle.inc:71 lib/layouts/stdtitle.inc:90
+#: lib/layouts/stdstruct.inc:16 lib/layouts/stdtitle.inc:60
+#: lib/layouts/stdtitle.inc:81 lib/layouts/stdtitle.inc:100
 #: lib/layouts/customHeadersFooters.module:11
 msgid "FrontMatter"
 msgstr ""
@@ -5811,7 +5809,7 @@ msgstr "Standard"
 #: lib/layouts/svprobth.layout:42 lib/layouts/tufte-book.layout:34
 #: lib/layouts/agu_stdtitle.inc:246 lib/layouts/amsdefs.inc:24
 #: lib/layouts/db_stdtitle.inc:13 lib/layouts/scrclass.inc:161
-#: lib/layouts/stdtitle.inc:47 lib/layouts/svjour.inc:124
+#: lib/layouts/stdtitle.inc:57 lib/layouts/svjour.inc:124
 msgid "Title"
 msgstr "Tittel"
 
@@ -5843,7 +5841,7 @@ msgstr "Små bokstaver|å"
 #: lib/layouts/sigplanconf.layout:120 lib/layouts/svprobth.layout:59
 #: lib/layouts/tufte-book.layout:38 lib/layouts/agu_stdtitle.inc:167
 #: lib/layouts/amsdefs.inc:47 lib/layouts/db_stdtitle.inc:21
-#: lib/layouts/scrclass.inc:177 lib/layouts/stdtitle.inc:68
+#: lib/layouts/scrclass.inc:177 lib/layouts/stdtitle.inc:78
 #: lib/layouts/svjour.inc:154
 msgid "Author"
 msgstr "Forfatter"
@@ -6129,7 +6127,7 @@ msgstr "Post"
 #: lib/layouts/scrlttr2.layout:239 lib/layouts/siamltex.layout:228
 #: lib/layouts/tufte-book.layout:42 lib/layouts/agu_stdtitle.inc:238
 #: lib/layouts/amsdefs.inc:67 lib/layouts/db_stdtitle.inc:35
-#: lib/layouts/scrclass.inc:184 lib/layouts/stdtitle.inc:87
+#: lib/layouts/scrclass.inc:184 lib/layouts/stdtitle.inc:97
 #: lib/layouts/svjour.inc:183 lib/ui/stdmenus.inc:373
 #: lib/external_templates:340 lib/external_templates:341
 #: lib/external_templates:345
@@ -9869,7 +9867,7 @@ msgid "FirstName"
 msgstr "Fornavn"
 
 #: lib/layouts/literate-scrap.inc:12 lib/layouts/noweb.module:11
-#: lib/layouts/sweave.module:49
+#: lib/layouts/sweave.module:48
 msgid "Scrap"
 msgstr ""
 
@@ -10059,8 +10057,8 @@ msgstr "fot"
 msgid "Greyedout"
 msgstr "Grået ut"
 
-#: lib/layouts/stdinsets.inc:136 src/insets/InsetERT.cpp:150
-#: src/insets/InsetERT.cpp:152
+#: lib/layouts/stdinsets.inc:136 src/insets/InsetERT.cpp:146
+#: src/insets/InsetERT.cpp:148
 msgid "ERT"
 msgstr "ERT"
 
@@ -10615,7 +10613,7 @@ msgstr ""
 msgid "literate"
 msgstr "LaTeX kildekode"
 
-#: lib/layouts/sweave.module:2 lib/layouts/sweave.module:30
+#: lib/layouts/sweave.module:2 lib/layouts/sweave.module:29
 #: lib/configure.py:541
 #, fuzzy
 msgid "Sweave"
@@ -10627,21 +10625,21 @@ msgid ""
 "via Sweave package. See sweave.lyx in examples."
 msgstr ""
 
-#: lib/layouts/sweave.module:29
+#: lib/layouts/sweave.module:28
 msgid "Chunk"
 msgstr ""
 
-#: lib/layouts/sweave.module:54
+#: lib/layouts/sweave.module:53
 #, fuzzy
 msgid "Sweave opts"
 msgstr "Skrifter på skjermen"
 
-#: lib/layouts/sweave.module:76
+#: lib/layouts/sweave.module:75
 #, fuzzy
 msgid "S/R expr"
 msgstr "exp"
 
-#: lib/layouts/sweave.module:98
+#: lib/layouts/sweave.module:97
 msgid "Sweave Input File"
 msgstr ""
 
@@ -12091,6 +12089,11 @@ msgstr "Flytt seksjonen opp|p"
 #: lib/ui/stdcontext.inc:309
 msgid "Insert Short Title|T"
 msgstr "Sett inn kort tittel|k"
+
+#: lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:355
+#, fuzzy
+msgid "Insert Regular Expression"
+msgstr "Regul&ært uttrykk"
 
 #: lib/ui/stdcontext.inc:312 lib/ui/stdcontext.inc:576
 #, fuzzy
@@ -21256,7 +21259,7 @@ msgid "Give a filename for the LyX server pipe"
 msgstr "Oppgi filnavn for LyXServer datarør (pipe)"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1427
-#: src/frontends/qt4/GuiSpellchecker.cpp:405
+#: src/frontends/qt4/GuiSpellchecker.cpp:422
 msgid "Spellchecker"
 msgstr "Stavekontroll"
 
@@ -21514,7 +21517,7 @@ msgstr "Vis fil"
 msgid "Error -> Cannot load file!"
 msgstr "Kan ikke redigere filen"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:196
+#: src/frontends/qt4/GuiSpellchecker.cpp:191
 msgid ""
 "We reached the end of the document, would you like to continue from the "
 "beginning?"
@@ -22538,7 +22541,7 @@ msgid "All Files "
 msgstr "Alle filer "
 
 #: src/frontends/qt4/qt_helpers.cpp:551 src/insets/InsetTOC.cpp:58
-#: src/insets/InsetTOC.cpp:114
+#: src/insets/InsetTOC.cpp:113
 msgid "Table of Contents"
 msgstr "Innholdsfortegnelse"
 
@@ -23649,17 +23652,17 @@ msgstr "En streng har blitt erstattet."
 msgid "%1$d strings have been replaced."
 msgstr " strenger har blitt erstattet."
 
-#: src/lyxfind.cpp:1365
+#: src/lyxfind.cpp:1366
 #, fuzzy
 msgid "Invalid regular expression!"
 msgstr "Ugyldig LaTeX-lengde"
 
-#: src/lyxfind.cpp:1370
+#: src/lyxfind.cpp:1371
 #, fuzzy
 msgid "Match not found!"
 msgstr "Streng ikke funnet!"
 
-#: src/lyxfind.cpp:1374
+#: src/lyxfind.cpp:1375
 #, fuzzy
 msgid "Match found!"
 msgstr "Fil ikke funnet"
@@ -23817,149 +23820,149 @@ msgstr "Sammendrag: "
 msgid "References: "
 msgstr "Referanser: "
 
-#: src/support/debug.cpp:40
+#: src/support/debug.cpp:50
 #, fuzzy
 msgid "No debugging messages"
 msgstr "Ingen debug meldinge"
 
-#: src/support/debug.cpp:41
+#: src/support/debug.cpp:51
 msgid "General information"
 msgstr "Generel informasjon"
 
-#: src/support/debug.cpp:42
+#: src/support/debug.cpp:52
 msgid "Program initialisation"
 msgstr "Initialisering av programmet"
 
-#: src/support/debug.cpp:43
+#: src/support/debug.cpp:53
 msgid "Keyboard events handling"
 msgstr "Håntering av tastaturhendelser"
 
-#: src/support/debug.cpp:44
+#: src/support/debug.cpp:54
 msgid "GUI handling"
 msgstr "GUI håndtering"
 
-#: src/support/debug.cpp:45
+#: src/support/debug.cpp:55
 msgid "Lyxlex grammar parser"
 msgstr "Lyxlex gramatikk parser"
 
-#: src/support/debug.cpp:46
+#: src/support/debug.cpp:56
 msgid "Configuration files reading"
 msgstr "Lesning av konfigurasjons filer"
 
-#: src/support/debug.cpp:47
+#: src/support/debug.cpp:57
 msgid "Custom keyboard definition"
 msgstr "Egen definert tastatur definisjon"
 
-#: src/support/debug.cpp:48
+#: src/support/debug.cpp:58
 msgid "LaTeX generation/execution"
 msgstr "LaTeX generering/kjøring"
 
-#: src/support/debug.cpp:49
+#: src/support/debug.cpp:59
 msgid "Math editor"
 msgstr "Matte editor"
 
-#: src/support/debug.cpp:50
+#: src/support/debug.cpp:60
 msgid "Font handling"
 msgstr "Font håndtering"
 
-#: src/support/debug.cpp:51
+#: src/support/debug.cpp:61
 msgid "Textclass files reading"
 msgstr "Lesing av tekstklassefiler"
 
-#: src/support/debug.cpp:52
+#: src/support/debug.cpp:62
 msgid "Version control"
 msgstr "Versjonskontroll"
 
-#: src/support/debug.cpp:53
+#: src/support/debug.cpp:63
 msgid "External control interface"
 msgstr "Eksternt kontrolgrensesnitt"
 
-#: src/support/debug.cpp:54
+#: src/support/debug.cpp:64
 msgid "Undo/Redo mechanism"
 msgstr ""
 
-#: src/support/debug.cpp:55
+#: src/support/debug.cpp:65
 msgid "User commands"
 msgstr "Bruker kommandoer"
 
-#: src/support/debug.cpp:56
+#: src/support/debug.cpp:66
 msgid "The LyX Lexer"
 msgstr ""
 
-#: src/support/debug.cpp:57
+#: src/support/debug.cpp:67
 msgid "Dependency information"
 msgstr "Informasjon om avhengiheter"
 
-#: src/support/debug.cpp:58
+#: src/support/debug.cpp:68
 msgid "LyX Insets"
 msgstr "LyX \"insets\""
 
-#: src/support/debug.cpp:59
+#: src/support/debug.cpp:69
 msgid "Files used by LyX"
 msgstr "Filer brukt av LyX"
 
-#: src/support/debug.cpp:60
+#: src/support/debug.cpp:70
 msgid "Workarea events"
 msgstr "Arbeidsområde hendelser"
 
-#: src/support/debug.cpp:61
+#: src/support/debug.cpp:71
 msgid "Insettext/tabular messages"
 msgstr "Insettext/tabell meldinger"
 
-#: src/support/debug.cpp:62
+#: src/support/debug.cpp:72
 msgid "Graphics conversion and loading"
 msgstr "Grafikk konvertering og nedlasting"
 
-#: src/support/debug.cpp:63
+#: src/support/debug.cpp:73
 msgid "Change tracking"
 msgstr "Spore endringer"
 
-#: src/support/debug.cpp:64
+#: src/support/debug.cpp:74
 #, fuzzy
 msgid "External template/inset messages"
 msgstr "Ekstern mal %1$s er ikke"
 
-#: src/support/debug.cpp:65
+#: src/support/debug.cpp:75
 msgid "RowPainter profiling"
 msgstr ""
 
-#: src/support/debug.cpp:66
+#: src/support/debug.cpp:76
 #, fuzzy
 msgid "Scrolling debugging"
 msgstr "Rullefelt"
 
-#: src/support/debug.cpp:67
+#: src/support/debug.cpp:77
 #, fuzzy
 msgid "Math macros"
 msgstr "matte bakgrunn"
 
-#: src/support/debug.cpp:68
+#: src/support/debug.cpp:78
 msgid "RTL/Bidi"
 msgstr ""
 
-#: src/support/debug.cpp:69
+#: src/support/debug.cpp:79
 msgid "Locale/Internationalisation"
 msgstr ""
 
-#: src/support/debug.cpp:70
+#: src/support/debug.cpp:80
 #, fuzzy
 msgid "Selection copy/paste mechanism"
 msgstr "som linjer|l"
 
-#: src/support/debug.cpp:71
+#: src/support/debug.cpp:81
 #, fuzzy
 msgid "Find and replace mechanism"
 msgstr "Finn og erstatt"
 
-#: src/support/debug.cpp:72
+#: src/support/debug.cpp:82
 msgid "Developers' general debug messages"
 msgstr "Generelle debug-meldinger"
 
-#: src/support/debug.cpp:73
+#: src/support/debug.cpp:83
 msgid "All debugging messages"
 msgstr "Alle debug meldinger"
 
-#: src/support/debug.cpp:152
+#: src/support/debug.cpp:162
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Debugger `%1$s' (%2$s)"
@@ -25029,10 +25032,6 @@ msgstr "Ukjent bruker"
 #, fuzzy
 #~ msgid "&Find..."
 #~ msgstr "&Finn:"
-
-#, fuzzy
-#~ msgid "Insert Re&gular Expression..."
-#~ msgstr "Regul&ært uttrykk"
 
 #, fuzzy
 #~ msgid "&Next"

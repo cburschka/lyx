@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-12 10:04+0200\n"
+"POT-Creation-Date: 2011-04-13 19:57+0200\n"
 "PO-Revision-Date: 2011-04-12 09:51+0200\n"
 "Last-Translator: g.sora <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <g.sora@tiscali.it>\n"
@@ -47,7 +47,7 @@ msgstr "Copyright"
 #: src/frontends/qt4/ui/ShowFileUi.ui:55 src/frontends/qt4/ui/SymbolsUi.ui:66
 #: src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:138 src/frontends/qt4/ui/WrapUi.ui:173
-#: src/frontends/qt4/GuiParagraph.cpp:161
+#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/ui_RefUi.h:294
 msgid "&Close"
 msgstr "&Claude"
 
@@ -60,7 +60,7 @@ msgid "The label as it appears in the document"
 msgstr "Il es le etiquetta como il appare in  le documento"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:36
-#: src/frontends/qt4/ui/RefUi.ui:332
+#: src/frontends/qt4/ui/RefUi.ui:332 src/frontends/qt4/ui_RefUi.h:324
 msgid "&Label:"
 msgstr "&Etiquetta:"
 
@@ -125,16 +125,18 @@ msgstr "Generation de bibliographia"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:139
+#: src/frontends/qt4/ui_IndicesUi.h:193
 msgid "&Processor:"
 msgstr "&Processor:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
+#: src/frontends/qt4/ui_IndicesUi.h:195
 msgid "Select a processor"
 msgstr "Selige un processor"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:733
-#: src/frontends/qt4/GuiPrefs.cpp:828
+#: src/frontends/qt4/GuiPrefs.cpp:828 src/frontends/qt4/ui_IndicesUi.h:197
 msgid "&Options:"
 msgstr "&Optiones:"
 
@@ -171,7 +173,7 @@ msgstr "Inserta le nomine de catalogo BibTeX de usar se"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:110
 #: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:350
+#: src/CutAndPaste.cpp:350 src/frontends/qt4/ui_IndicesUi.h:212
 msgid "&Add"
 msgstr "&Adde"
 
@@ -243,7 +245,7 @@ msgstr "Adde bibliographia al &indice general (Tabula de Contentos)"
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
-#: src/frontends/qt4/ui/WrapUi.ui:150
+#: src/frontends/qt4/ui/WrapUi.ui:150 src/frontends/qt4/ui_RefUi.h:292
 msgid "&OK"
 msgstr "&OK"
 
@@ -440,6 +442,7 @@ msgid "Select your branch"
 msgstr "Selige tu ramo"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25 src/frontends/qt4/ui/IndicesUi.ui:114
+#: src/frontends/qt4/ui_IndicesUi.h:205
 msgid "&New:"
 msgstr "&Nove:"
 
@@ -484,7 +487,7 @@ msgid "Define or change background color"
 msgstr "Defini o cambia le color del fundo"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:123
-#: src/frontends/qt4/ui/IndicesUi.ui:185
+#: src/frontends/qt4/ui/IndicesUi.ui:185 src/frontends/qt4/ui_IndicesUi.h:227
 msgid "Alter Co&lor..."
 msgstr "Modifica co&lor..."
 
@@ -494,7 +497,7 @@ msgstr "Remove le ramo seligite"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
 #: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3803
-#: src/Buffer.cpp:3816
+#: src/Buffer.cpp:3816 src/frontends/qt4/ui_IndicesUi.h:219
 msgid "&Remove"
 msgstr "&Remove"
 
@@ -781,7 +784,7 @@ msgstr "Applica modificationes &immediatemente"
 #: src/frontends/qt4/ui/RefUi.ui:124 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:1875
-#: src/frontends/qt4/GuiDocument.cpp:3134
+#: src/frontends/qt4/GuiDocument.cpp:3134 src/frontends/qt4/ui_RefUi.h:293
 msgid "&Apply"
 msgstr "&Applica"
 
@@ -1788,6 +1791,7 @@ msgstr "Nomine associate con le URL"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:42
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:251
+#: src/frontends/qt4/ui_RefUi.h:309
 msgid "&Name:"
 msgstr "&Nomine:"
 
@@ -1901,6 +1905,7 @@ msgid "&Edit"
 msgstr "&Edita"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59 src/frontends/qt4/ui/IndicesUi.ui:143
+#: src/frontends/qt4/ui_IndicesUi.h:213
 msgid "A&vailable Indexes:"
 msgstr "&Indices disponibile:"
 
@@ -1908,58 +1913,60 @@ msgstr "&Indices disponibile:"
 msgid "Select the index this entry should be listed in."
 msgstr "Selige le indice ubi iste elemento deberea esser monstrate."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:19
+#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:190
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr "Ci tu pote specifica un processor de indice alternative e su optiones."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:202
+#: src/frontends/qt4/ui_IndicesUi.h:192
 msgid "Index generation"
 msgstr "Generation de indice"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:64
+#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:199
 msgid "Define program options of the selected processor."
 msgstr "Optiones de programma del processor seligite."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:89
+#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:202
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr "Marca si tu necessita de indices multiple (p.ex. un indice de nomines)"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:92
+#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:204
 msgid "&Use multiple indexes"
 msgstr "&Usa indices multiple"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:124
+#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
 "Entra le nomine del indice desirate (p.ex.. \"Indice de nomines\") e pressa "
 "\"Adde\""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:131
+#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:210
 msgid "Add a new index to the list"
 msgstr "Adde un nove indice al lista"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149
-#: src/frontends/qt4/ui/RefUi.ui:349
+#: src/frontends/qt4/ui/RefUi.ui:349 src/frontends/qt4/ui_IndicesUi.h:215
+#: src/frontends/qt4/ui_RefUi.h:326
 msgid "1"
 msgstr "1"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:162
+#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:217
 msgid "Remove the selected index"
 msgstr "Remove le indice seligite"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:172
+#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:221
 msgid "Rename the selected index"
 msgstr "Renomina le indice seligite"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:175
+#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:223
 msgid "R&ename..."
 msgstr "&Renomina..."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:182
+#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:225
 msgid "Define or change button color"
 msgstr "Defini o cambia le color del button"
 
@@ -2330,7 +2337,7 @@ msgid "Update the display"
 msgstr "Actualisa le schermo"
 
 #: src/frontends/qt4/ui/LogUi.ui:77 src/frontends/qt4/ui/RefUi.ui:88
-#: src/frontends/qt4/ui/ViewSourceUi.ui:74
+#: src/frontends/qt4/ui/ViewSourceUi.ui:74 src/frontends/qt4/ui_RefUi.h:291
 msgid "&Update"
 msgstr "Act&ualisa"
 
@@ -2843,7 +2850,7 @@ msgstr "Formato de papiro"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:19
-#: src/frontends/qt4/ui/RefUi.ui:271
+#: src/frontends/qt4/ui/RefUi.ui:271 src/frontends/qt4/ui_RefUi.h:310
 msgid "&Format:"
 msgstr "&Formato:"
 
@@ -4316,27 +4323,27 @@ msgstr "Monstra messages del barra de stato?"
 msgid "&Statusbar messages"
 msgstr "Messages barra de &stato"
 
-#: src/frontends/qt4/ui/RefUi.ui:36
+#: src/frontends/qt4/ui/RefUi.ui:36 src/frontends/qt4/ui_RefUi.h:279
 msgid "Fil&ter:"
 msgstr "Fil&tro:"
 
-#: src/frontends/qt4/ui/RefUi.ui:49
+#: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:281
 msgid "Enter string to filter the label list"
 msgstr "Inserta mascara per filtrar le lista del etiquettas"
 
-#: src/frontends/qt4/ui/RefUi.ui:59
+#: src/frontends/qt4/ui/RefUi.ui:59 src/frontends/qt4/ui_RefUi.h:285
 msgid "Filter case-sensitively"
 msgstr "Filtra differentiante inter majusculas e minusculas"
 
-#: src/frontends/qt4/ui/RefUi.ui:62
+#: src/frontends/qt4/ui/RefUi.ui:62 src/frontends/qt4/ui_RefUi.h:287
 msgid "Case-sensiti&ve"
 msgstr "Majuscu&le/minuscule"
 
-#: src/frontends/qt4/ui/RefUi.ui:85
+#: src/frontends/qt4/ui/RefUi.ui:85 src/frontends/qt4/ui_RefUi.h:289
 msgid "Update the label list"
 msgstr "Actualisa le lista de etiquettas"
 
-#: src/frontends/qt4/ui/RefUi.ui:165
+#: src/frontends/qt4/ui/RefUi.ui:165 src/frontends/qt4/ui_RefUi.h:296
 msgid ""
 "Sort labels in alphabetical order (case-insensitively unless the Case-"
 "sensitive option is checked)"
@@ -4345,65 +4352,66 @@ msgstr ""
 "minusculas,\n"
 " a minus que on non ha seligite le option correspondente)"
 
-#: src/frontends/qt4/ui/RefUi.ui:168
+#: src/frontends/qt4/ui/RefUi.ui:168 src/frontends/qt4/ui_RefUi.h:298
 msgid "&Sort"
 msgstr "&Ordina"
 
-#: src/frontends/qt4/ui/RefUi.ui:178
+#: src/frontends/qt4/ui/RefUi.ui:178 src/frontends/qt4/ui_RefUi.h:300
 msgid "Sort labels case-sensitively in alphabetical order"
 msgstr ""
 "Ordina alphabeticamente le etiquettas distinguente inter majusculas e "
 "minusculas"
 
-#: src/frontends/qt4/ui/RefUi.ui:181
+#: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/ui_RefUi.h:302
 msgid "Cas&e-sensitive"
 msgstr "&Majusculas/minusculas"
 
-#: src/frontends/qt4/ui/RefUi.ui:188
+#: src/frontends/qt4/ui/RefUi.ui:188 src/frontends/qt4/ui_RefUi.h:304
 msgid "Group labels by prefix (e.g. \"sec:\")"
 msgstr "Gruppa etiquettas per prefixo (p.ex. \"sec:\")"
 
-#: src/frontends/qt4/ui/RefUi.ui:191
+#: src/frontends/qt4/ui/RefUi.ui:191 src/frontends/qt4/ui_RefUi.h:306
 msgid "Grou&p"
 msgstr "Gru&ppa"
 
 #: src/frontends/qt4/ui/RefUi.ui:219 src/frontends/qt4/GuiRef.cpp:314
+#: src/frontends/qt4/ui_RefUi.h:307
 msgid "&Go to Label"
 msgstr "&Vade a etiquetta"
 
-#: src/frontends/qt4/ui/RefUi.ui:228
+#: src/frontends/qt4/ui/RefUi.ui:228 src/frontends/qt4/ui_RefUi.h:308
 msgid "La&bels in:"
 msgstr "Etiquett&as in:"
 
-#: src/frontends/qt4/ui/RefUi.ui:290
+#: src/frontends/qt4/ui/RefUi.ui:290 src/frontends/qt4/ui_RefUi.h:322
 msgid "Cross-reference as it appears in output"
 msgstr "Le referentias cruciate  como appare in exito"
 
-#: src/frontends/qt4/ui/RefUi.ui:294
+#: src/frontends/qt4/ui/RefUi.ui:294 src/frontends/qt4/ui_RefUi.h:313
 msgid "<reference>"
 msgstr "<reference>"
 
-#: src/frontends/qt4/ui/RefUi.ui:299
+#: src/frontends/qt4/ui/RefUi.ui:299 src/frontends/qt4/ui_RefUi.h:314
 msgid "(<reference>)"
 msgstr "(<reference>)"
 
-#: src/frontends/qt4/ui/RefUi.ui:304
+#: src/frontends/qt4/ui/RefUi.ui:304 src/frontends/qt4/ui_RefUi.h:315
 msgid "<page>"
 msgstr "<page>"
 
-#: src/frontends/qt4/ui/RefUi.ui:309
+#: src/frontends/qt4/ui/RefUi.ui:309 src/frontends/qt4/ui_RefUi.h:316
 msgid "on page <page>"
 msgstr "a pagina <page>"
 
-#: src/frontends/qt4/ui/RefUi.ui:314
+#: src/frontends/qt4/ui/RefUi.ui:314 src/frontends/qt4/ui_RefUi.h:317
 msgid "<reference> on page <page>"
 msgstr "<reference> a pagina <page>"
 
-#: src/frontends/qt4/ui/RefUi.ui:319
+#: src/frontends/qt4/ui/RefUi.ui:319 src/frontends/qt4/ui_RefUi.h:318
 msgid "Formatted reference"
 msgstr "Referentias pre-formate"
 
-#: src/frontends/qt4/ui/RefUi.ui:324
+#: src/frontends/qt4/ui/RefUi.ui:324 src/frontends/qt4/ui_RefUi.h:319
 msgid "Textual reference"
 msgstr "Referentias textual"
 
@@ -4470,7 +4478,7 @@ msgstr ""
 "le contento con le button de 'Netta'."
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:19
-#: src/frontends/qt4/GuiSpellchecker.cpp:195
+#: src/frontends/qt4/GuiSpellchecker.cpp:190
 msgid "Spell Checker"
 msgstr "Controlator Orthographic"
 
@@ -5172,8 +5180,8 @@ msgstr "Titulo breve"
 #: lib/layouts/amsdefs.inc:48 lib/layouts/amsdefs.inc:68
 #: lib/layouts/amsdefs.inc:92 lib/layouts/amsdefs.inc:119
 #: lib/layouts/lyxmacros.inc:45 lib/layouts/lyxmacros.inc:66
-#: lib/layouts/stdstruct.inc:16 lib/layouts/stdtitle.inc:50
-#: lib/layouts/stdtitle.inc:71 lib/layouts/stdtitle.inc:90
+#: lib/layouts/stdstruct.inc:16 lib/layouts/stdtitle.inc:60
+#: lib/layouts/stdtitle.inc:81 lib/layouts/stdtitle.inc:100
 #: lib/layouts/customHeadersFooters.module:11
 msgid "FrontMatter"
 msgstr "Material anterior"
@@ -5687,7 +5695,7 @@ msgstr "Standard"
 #: lib/layouts/svprobth.layout:42 lib/layouts/tufte-book.layout:34
 #: lib/layouts/agu_stdtitle.inc:246 lib/layouts/amsdefs.inc:24
 #: lib/layouts/db_stdtitle.inc:13 lib/layouts/scrclass.inc:161
-#: lib/layouts/stdtitle.inc:47 lib/layouts/svjour.inc:124
+#: lib/layouts/stdtitle.inc:57 lib/layouts/svjour.inc:124
 msgid "Title"
 msgstr "Titulo"
 
@@ -5718,7 +5726,7 @@ msgstr "minuscule"
 #: lib/layouts/sigplanconf.layout:120 lib/layouts/svprobth.layout:59
 #: lib/layouts/tufte-book.layout:38 lib/layouts/agu_stdtitle.inc:167
 #: lib/layouts/amsdefs.inc:47 lib/layouts/db_stdtitle.inc:21
-#: lib/layouts/scrclass.inc:177 lib/layouts/stdtitle.inc:68
+#: lib/layouts/scrclass.inc:177 lib/layouts/stdtitle.inc:78
 #: lib/layouts/svjour.inc:154
 msgid "Author"
 msgstr "Autor"
@@ -5999,7 +6007,7 @@ msgstr "Posta"
 #: lib/layouts/scrlttr2.layout:239 lib/layouts/siamltex.layout:228
 #: lib/layouts/tufte-book.layout:42 lib/layouts/agu_stdtitle.inc:238
 #: lib/layouts/amsdefs.inc:67 lib/layouts/db_stdtitle.inc:35
-#: lib/layouts/scrclass.inc:184 lib/layouts/stdtitle.inc:87
+#: lib/layouts/scrclass.inc:184 lib/layouts/stdtitle.inc:97
 #: lib/layouts/svjour.inc:183 lib/ui/stdmenus.inc:373
 #: lib/external_templates:340 lib/external_templates:341
 #: lib/external_templates:345
@@ -9617,7 +9625,7 @@ msgid "FirstName"
 msgstr "Nomine"
 
 #: lib/layouts/literate-scrap.inc:12 lib/layouts/noweb.module:11
-#: lib/layouts/sweave.module:49
+#: lib/layouts/sweave.module:48
 msgid "Scrap"
 msgstr "Retalio"
 
@@ -10345,7 +10353,7 @@ msgstr "Il permitte de usare Noweb como instrumento de programmation experte."
 msgid "literate"
 msgstr "programmation experte"
 
-#: lib/layouts/sweave.module:2 lib/layouts/sweave.module:30
+#: lib/layouts/sweave.module:2 lib/layouts/sweave.module:29
 #: lib/configure.py:541
 msgid "Sweave"
 msgstr "Sweave"
@@ -10358,19 +10366,19 @@ msgstr ""
 "Il permitte de usar le linguage statistic S/R como instrumento de "
 "programmation experte via Sweave. Vide le file de exemplo sweave.lyx."
 
-#: lib/layouts/sweave.module:29
+#: lib/layouts/sweave.module:28
 msgid "Chunk"
 msgstr "Chunk"
 
-#: lib/layouts/sweave.module:54
+#: lib/layouts/sweave.module:53
 msgid "Sweave opts"
 msgstr "Opt. sweave"
 
-#: lib/layouts/sweave.module:76
+#: lib/layouts/sweave.module:75
 msgid "S/R expr"
 msgstr "Expr. S/R"
 
-#: lib/layouts/sweave.module:98
+#: lib/layouts/sweave.module:97
 msgid "Sweave Input File"
 msgstr "File de ingresso Sweave"
 
@@ -11788,6 +11796,11 @@ msgstr "Move section in alto|s"
 #: lib/ui/stdcontext.inc:309
 msgid "Insert Short Title|T"
 msgstr "Inserta titulo breve|t"
+
+#: lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:355
+#, fuzzy
+msgid "Insert Regular Expression"
+msgstr "Inserisci espressione re&golare..."
 
 #: lib/ui/stdcontext.inc:312 lib/ui/stdcontext.inc:576
 msgid "Accept Change|c"
@@ -20995,7 +21008,7 @@ msgid "Give a filename for the LyX server pipe"
 msgstr "Da un nomine de file per le pipe del servitor LyX"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1427
-#: src/frontends/qt4/GuiSpellchecker.cpp:405
+#: src/frontends/qt4/GuiSpellchecker.cpp:422
 msgid "Spellchecker"
 msgstr "Corrector orthographic"
 
@@ -21237,7 +21250,7 @@ msgstr "Monstra file"
 msgid "Error -> Cannot load file!"
 msgstr "Error -> Non pote aperir le file!"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:196
+#: src/frontends/qt4/GuiSpellchecker.cpp:191
 msgid ""
 "We reached the end of the document, would you like to continue from the "
 "beginning?"
@@ -23314,15 +23327,15 @@ msgstr "Le catena ha essite reimplaciate."
 msgid "%1$d strings have been replaced."
 msgstr "%1$d catenas ha essite reimplaciate."
 
-#: src/lyxfind.cpp:1365
+#: src/lyxfind.cpp:1366
 msgid "Invalid regular expression!"
 msgstr "Expression regular invalide"
 
-#: src/lyxfind.cpp:1370
+#: src/lyxfind.cpp:1371
 msgid "Match not found!"
 msgstr "Nulle correspondentia trovate!"
 
-#: src/lyxfind.cpp:1374
+#: src/lyxfind.cpp:1375
 msgid "Match found!"
 msgstr "Correspondentia trovate!"
 
@@ -23474,143 +23487,143 @@ msgstr "Summario: "
 msgid "References: "
 msgstr "Referentias: "
 
-#: src/support/debug.cpp:49
+#: src/support/debug.cpp:50
 msgid "No debugging messages"
 msgstr "Nulle message de verifica (cribrar)"
 
-#: src/support/debug.cpp:50
+#: src/support/debug.cpp:51
 msgid "General information"
 msgstr "Information general"
 
-#: src/support/debug.cpp:51
+#: src/support/debug.cpp:52
 msgid "Program initialisation"
 msgstr "Initialisation de programma"
 
-#: src/support/debug.cpp:52
+#: src/support/debug.cpp:53
 msgid "Keyboard events handling"
 msgstr "Maneante eventos de claviero"
 
-#: src/support/debug.cpp:53
+#: src/support/debug.cpp:54
 msgid "GUI handling"
 msgstr "Gestion de GUI"
 
-#: src/support/debug.cpp:54
+#: src/support/debug.cpp:55
 msgid "Lyxlex grammar parser"
 msgstr "Analysator grammatical Lyxlex"
 
-#: src/support/debug.cpp:55
+#: src/support/debug.cpp:56
 msgid "Configuration files reading"
 msgstr "Lectura de files de configuration"
 
-#: src/support/debug.cpp:56
+#: src/support/debug.cpp:57
 msgid "Custom keyboard definition"
 msgstr "Definition personalisate de claviero"
 
-#: src/support/debug.cpp:57
+#: src/support/debug.cpp:58
 msgid "LaTeX generation/execution"
 msgstr "Generation/Execution de LaTeX"
 
-#: src/support/debug.cpp:58
+#: src/support/debug.cpp:59
 msgid "Math editor"
 msgstr "Editor mathematic"
 
-#: src/support/debug.cpp:59
+#: src/support/debug.cpp:60
 msgid "Font handling"
 msgstr "Gestion de Font"
 
-#: src/support/debug.cpp:60
+#: src/support/debug.cpp:61
 msgid "Textclass files reading"
 msgstr "Lectura de files Textclass"
 
-#: src/support/debug.cpp:61
+#: src/support/debug.cpp:62
 msgid "Version control"
 msgstr "Controlo de version"
 
-#: src/support/debug.cpp:62
+#: src/support/debug.cpp:63
 msgid "External control interface"
 msgstr "Interfacie de controlo externe"
 
-#: src/support/debug.cpp:63
+#: src/support/debug.cpp:64
 msgid "Undo/Redo mechanism"
 msgstr "Mechanismo de Annulla/Re-face"
 
-#: src/support/debug.cpp:64
+#: src/support/debug.cpp:65
 msgid "User commands"
 msgstr "Commandos de usator"
 
-#: src/support/debug.cpp:65
+#: src/support/debug.cpp:66
 msgid "The LyX Lexer"
 msgstr "Le Lexer de LyX"
 
-#: src/support/debug.cpp:66
+#: src/support/debug.cpp:67
 msgid "Dependency information"
 msgstr "Informationes re dependentias"
 
-#: src/support/debug.cpp:67
+#: src/support/debug.cpp:68
 msgid "LyX Insets"
 msgstr "Insertos de LyX"
 
-#: src/support/debug.cpp:68
+#: src/support/debug.cpp:69
 msgid "Files used by LyX"
 msgstr "Files usate per LyX"
 
-#: src/support/debug.cpp:69
+#: src/support/debug.cpp:70
 msgid "Workarea events"
 msgstr "Eventos de area de travalio"
 
-#: src/support/debug.cpp:70
+#: src/support/debug.cpp:71
 msgid "Insettext/tabular messages"
 msgstr "Messages Insettext/tabular"
 
-#: src/support/debug.cpp:71
+#: src/support/debug.cpp:72
 msgid "Graphics conversion and loading"
 msgstr "Conversion  e cargamento graphicos"
 
-#: src/support/debug.cpp:72
+#: src/support/debug.cpp:73
 msgid "Change tracking"
 msgstr "Modifica modo de traciar"
 
-#: src/support/debug.cpp:73
+#: src/support/debug.cpp:74
 msgid "External template/inset messages"
 msgstr "Messages de inserto/patrono externe"
 
-#: src/support/debug.cpp:74
+#: src/support/debug.cpp:75
 msgid "RowPainter profiling"
 msgstr "Creation profilo RowPainter"
 
-#: src/support/debug.cpp:75
+#: src/support/debug.cpp:76
 msgid "Scrolling debugging"
 msgstr "Verifica (cribra) rolar"
 
-#: src/support/debug.cpp:76
+#: src/support/debug.cpp:77
 msgid "Math macros"
 msgstr "Macros mathematic"
 
-#: src/support/debug.cpp:77
+#: src/support/debug.cpp:78
 msgid "RTL/Bidi"
 msgstr "RTL/Bidi"
 
-#: src/support/debug.cpp:78
+#: src/support/debug.cpp:79
 msgid "Locale/Internationalisation"
 msgstr "Localisation/Internationalisation"
 
-#: src/support/debug.cpp:79
+#: src/support/debug.cpp:80
 msgid "Selection copy/paste mechanism"
 msgstr "Mechanismo de copia/colla selection"
 
-#: src/support/debug.cpp:80
+#: src/support/debug.cpp:81
 msgid "Find and replace mechanism"
 msgstr "Mechanismo de trova e reimplacia"
 
-#: src/support/debug.cpp:81
+#: src/support/debug.cpp:82
 msgid "Developers' general debug messages"
 msgstr "Messages general de cribrar per developpatores"
 
-#: src/support/debug.cpp:82
+#: src/support/debug.cpp:83
 msgid "All debugging messages"
 msgstr "Omne messages de cribrar"
 
-#: src/support/debug.cpp:161
+#: src/support/debug.cpp:162
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Cribrante `%1$s' (%2$s)"
@@ -24777,9 +24790,6 @@ msgstr "Usator incognite"
 
 #~ msgid "Choose one of the pre-arranged regular expressions."
 #~ msgstr "Scegliere una delle espressioni regolari predisposte."
-
-#~ msgid "Insert Re&gular Expression..."
-#~ msgstr "Inserisci espressione re&golare..."
 
 #~ msgid "&Next"
 #~ msgstr "&Successivo"
