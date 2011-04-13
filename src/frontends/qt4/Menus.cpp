@@ -764,9 +764,11 @@ void MenuDefinition::expandSpellingSuggestions(BufferView const * bv)
 {
 	if (!bv)
 		return;
+	Cursor const & cur = bv->cursor();
+	if (!cur.inTexted())
+		return;
 	WordLangTuple wl;
 	docstring_list suggestions;
-	Cursor const & cur = bv->cursor();
 	Paragraph const & par = cur.paragraph();
 	pos_type from = cur.pos();
 	pos_type to = from;
