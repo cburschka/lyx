@@ -307,7 +307,7 @@ Menuset
 		OptItem "Move Section Down|D" "outline-down"
 		OptItem "Move Section Up|U" "outline-up"
 		OptItem "Insert Short Title|T" "argument-insert"
-		OptSubMenu "Insert Regular Expression..." "context-edit-regexp"
+		OptSubmenu "Insert Regular Expression" "context-edit-regexp"
 		Separator
 		OptItem "Accept Change|c" "change-accept"
 		OptItem "Reject Change|j" "change-reject"
