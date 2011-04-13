@@ -60,7 +60,7 @@ namespace frontend {
 struct SpellcheckerWidget::Private
 {
 	Private(SpellcheckerWidget * parent, DockView * dv)
-		: p(parent), dv_(dv), start_(true), incheck_(false) {}
+		: p(parent), dv_(dv), incheck_(false), wrap_around_(false) {}
 	/// update from controller
 	void updateSuggestions(docstring_list & words);
 	/// move to next position after current word
@@ -90,9 +90,11 @@ struct SpellcheckerWidget::Private
 	/// current word being checked and lang code
 	WordLangTuple word_;
 	///
-	bool start_;
+	DocIterator start_;
 	///
 	bool incheck_;
+	///
+	bool wrap_around_;
 };
 
 
@@ -175,15 +177,8 @@ void SpellcheckerWidget::updateView()
 {
 	BufferView * bv = d->gv_->documentBufferView();
 	setEnabled(bv != 0);
-	if (bv && hasFocus() && d->start_) {
-		d->start_ = false;
-
-		BufferView * bv = d->gv_->documentBufferView();
-		std::set<Language const *> languages = 
-		bv->buffer().masterBuffer()->getLanguages();
-		if (!languages.empty())
-			d->setLanguage(*languages.begin());
-		
+	if (bv && hasFocus() && d->start_.empty()) {
+		d->start_ = bv->cursor();
 		d->check();
 	}
 }
@@ -191,17 +186,18 @@ void SpellcheckerWidget::updateView()
 
 bool SpellcheckerWidget::Private::continueFromBeginning()
 {
-		QMessageBox::StandardButton const answer = QMessageBox::question(p,
-			qt_("Spell Checker"),
-			qt_("We reached the end of the document, would you like to "
-				"continue from the beginning?"),
-			QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
-		if (answer == QMessageBox::No) {
-			dv_->hide();
-			return false;
-		}
-		dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
-		return true;
+	QMessageBox::StandardButton const answer = QMessageBox::question(p,
+		qt_("Spell Checker"),
+		qt_("We reached the end of the document, would you like to "
+			"continue from the beginning?"),
+		QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
+	if (answer == QMessageBox::No) {
+		dv_->hide();
+		return false;
+	}
+	dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
+	wrap_around_ = true;
+	return true;
 }
 
 
@@ -220,6 +216,9 @@ void SpellcheckerWidget::Private::forward()
 		//FIXME we must be at the end of a cell
 		dispatch(FuncRequest(LFUN_CHAR_FORWARD));
  	}
+	if (wrap_around_ && start_ < bv->cursor()) {
+		dv_->hide();
+	}
 }
 
 
@@ -237,7 +236,16 @@ void SpellcheckerWidget::on_languageCO_activated(int index)
 
 bool SpellcheckerWidget::initialiseParams(std::string const &)
 {
-	d->start_ = true;
+	BufferView * bv = d->gv_->documentBufferView();
+	if (bv == 0)
+		return false;
+	std::set<Language const *> languages = 
+	bv->buffer().masterBuffer()->getLanguages();
+	if (!languages.empty())
+		d->setLanguage(*languages.begin());
+	d->start_ = DocIterator();
+	d->wrap_around_ = false;
+	d->incheck_ = false;
 	return true;
 }
 
@@ -380,8 +388,17 @@ void SpellcheckerWidget::Private::check()
 
 	// end of document
 	if (from == doc_iterator_end(&bv->buffer())) {
+		if (wrap_around_ || start_ == doc_iterator_begin(&bv->buffer())) {
+			dv_->hide();
+			return;
+		}
 		if (continueFromBeginning())
 			check();
+		return;
+	}
+
+	if (wrap_around_ && start_ < from) {
+		dv_->hide();
 		return;
 	}
 
