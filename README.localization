@@ -162,3 +162,12 @@ lib/examples/localization_test.lyx in LyX and read its instructions.
 The problematic strings can be then fixed in the .po file. For inspiration the
 typical places in .po files, where to fix the translation, can be seen on the
 following commit: http://www.lyx.org/trac/changeset/38169 .
+
+If you need to manually regenerate layouttranslations file from .po files run
+`make ../lib/layouttranslations' in po directory. Python polib library is
+needed for building the output file.
+
+Q: Running make ../lib/layouttranslations return with just saying
+   ../lib/layouttranslations is up to date.
+A: To force regerenation, use something like (XX is your language)
+   make -W XX.po ../lib/layouttranslations
