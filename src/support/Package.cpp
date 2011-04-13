@@ -88,8 +88,6 @@ void buildDirs(FileName const & abs_binary,
 
 FileName const get_document_dir(FileName const & home_dir);
 
-FileName const get_home_dir();
-
 FileName const get_locale_dir(FileName const & system_support_dir);
 
 FileName const get_system_support_dir(FileName const & abs_binary,
@@ -100,8 +98,9 @@ FileName const get_default_user_support_dir(FileName const & home_dir);
 bool userSupportDir(FileName const & default_user_support_dir,
 		     string const & command_line_user_support_dir, FileName & result);
 
-
 string const & with_version_suffix();
+
+string const fix_dir_name(string const & name);
 
 } // namespace anon
 
@@ -112,12 +111,11 @@ Package::Package(string const & command_line_arg0,
 		 exe_build_dir_to_top_build_dir top_build_dir_location)
 	: explicit_user_support_dir_(false)
 {
-	home_dir_ = get_home_dir();
 	// Specification of temp_dir_ may be reset by LyXRC,
 	// but the default is fixed for a given OS.
 	system_temp_dir_ = FileName::tempPath();
 	temp_dir_ = system_temp_dir_;
-	document_dir_ = get_document_dir(home_dir_);
+	document_dir_ = get_document_dir(get_home_dir());
 
 	FileName const abs_binary = abs_path_from_binary_name(command_line_arg0);
 	binary_dir_ = FileName(onlyPath(abs_binary.absFileName()));
@@ -156,7 +154,7 @@ Package::Package(string const & command_line_arg0,
 	locale_dir_ = get_locale_dir(system_support_dir_);
 
 	FileName const default_user_support_dir =
-		get_default_user_support_dir(home_dir_);
+		get_default_user_support_dir(get_home_dir());
 
 	explicit_user_support_dir_ = userSupportDir(default_user_support_dir,
 				     command_line_user_support_dir, user_support_dir_);
@@ -174,7 +172,7 @@ Package::Package(string const & command_line_arg0,
 		<< "\tlocale_dir " << locale_dir().absFileName() << '\n'
 		<< "\tdocument_dir " << document_dir().absFileName() << '\n'
 		<< "\ttemp_dir " << temp_dir().absFileName() << '\n'
-		<< "\thome_dir " << home_dir().absFileName() << '\n'
+		<< "\thome_dir " << get_home_dir().absFileName() << '\n'
 		<< "</package>\n");
 }
 
@@ -185,6 +183,19 @@ void Package::set_temp_dir(FileName const & temp_dir) const
 		temp_dir_ = system_temp_dir_;
 	else
 		temp_dir_ = temp_dir;
+}
+
+// The specification of home_dir_ is fixed for a given OS.
+// A typical example on Windows: "C:/Documents and Settings/USERNAME"
+// and on a Posix-like machine: "/home/USERNAME".
+FileName const & Package::get_home_dir()
+{
+#if defined (USE_WINDOWS_PACKAGING)
+	static FileName const home_dir(getEnv("USERPROFILE"));
+#else // Posix-like.
+	static FileName const home_dir(getEnv("HOME"));
+#endif
+	return home_dir;
 }
 
 
@@ -338,20 +349,6 @@ FileName const get_document_dir(FileName const & home_dir)
 #endif
 }
 
-
-// The specification of home_dir_ is fixed for a given OS.
-// A typical example on Windows: "C:/Documents and Settings/USERNAME"
-// and on a Posix-like machine: "/home/USERNAME".
-FileName const get_home_dir()
-{
-#if defined (USE_WINDOWS_PACKAGING)
-	string const home_dir = getEnv("USERPROFILE");
-#else // Posix-like.
-	string const home_dir = getEnv("HOME");
-#endif
-
-	return FileName(fix_dir_name(home_dir));
-}
 
 
 // Several sources are probed to ascertain the locale directory.

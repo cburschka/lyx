@@ -138,7 +138,7 @@ public:
 	 *  for the dump.
 	 *  This may be empty (e. g. when run under a CGI environment)
 	 */
-	FileName const & home_dir() const { return home_dir_; }
+	static FileName const & get_home_dir();
 
 	/** Command to run the configure script.
 	 *  Caution: This is "ready-to-run", i.e. in the locale encoding, not
@@ -157,7 +157,6 @@ private:
 	mutable FileName document_dir_;
 	mutable FileName temp_dir_;
 	FileName system_temp_dir_;
-	FileName home_dir_;
 	std::string configure_command_;
 	bool explicit_user_support_dir_;
 };

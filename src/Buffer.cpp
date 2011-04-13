@@ -1147,7 +1147,7 @@ docstring Buffer::emergencyWrite()
 	}
 
 	// 2) In HOME directory.
-	string s = addName(package().home_dir().absFileName(), absFileName());
+	string s = addName(Package::get_home_dir().absFileName(), absFileName());
 	s += ".emergency";
 	lyxerr << ' ' << s << endl;
 	if (writeFile(FileName(s))) {

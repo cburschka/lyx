@@ -444,7 +444,7 @@ FileName const makeAbsPath(string const & relPath, string const & basePath)
 	// Split by first /
 	rTemp = split(rTemp, temp, '/');
 	if (temp == "~") {
-		tempBase = package().home_dir().absFileName();
+		tempBase = Package::get_home_dir().absFileName();
 		tempRel = rTemp;
 	}
 
@@ -540,7 +540,7 @@ string const expandPath(string const & path)
 		return FileName::getcwd().absFileName() + '/' + rTemp;
 
 	if (temp == "~")
-		return package().home_dir().absFileName() + '/' + rTemp;
+		return Package::get_home_dir().absFileName() + '/' + rTemp;
 
 	if (temp == "..")
 		return makeAbsPath(copy).absFileName();
@@ -726,7 +726,7 @@ docstring const makeDisplayPath(string const & path, unsigned int threshold)
 		return from_utf8("[" + str.erase(0, system.length()) + "]");
 
 	// replace /home/blah with ~/
-	string const home = package().home_dir().absFileName();
+	string const home = Package::get_home_dir().absFileName();
 	if (!home.empty() && prefixIs(str, home))
 		str = subst(str, home, "~");
 
