@@ -1,0 +1,12 @@
+# Replacing the last buffer element with some math that matches
+# again the search pattern, should not result in a double replacement
+# (#7442)
+#
+Lang it_IT.utf8
+TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
+KK: a\C\[Home]
+KK: \CF
+KK: a\[Tab]
+KK: \Cm\\bar a\[Return]\[Return]
+TestEnd
+Assert ! pcregrep -M 'against.*bar' lyx-log.txt
