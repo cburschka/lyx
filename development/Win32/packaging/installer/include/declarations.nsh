@@ -61,7 +61,7 @@ SetCompressor /SOLID lzma
 
 # CTAN and SourceForge select a mirror automatically
 
-!define DOWNLOAD_LATEX "http://www.ctan.org/get/systems/win32/miktex/setup/${SETUPFILE_LATEX}"
+!define DOWNLOAD_LATEX "http://mirrors.ctan.org/systems/win32/miktex/setup/${SETUPFILE_LATEX}"
 !define DOWNLOAD_ASPELLDICTS "ftp://ftp.lyx.org/pub/lyx/contrib/aspell6-windows"
 
 #--------------------------------
