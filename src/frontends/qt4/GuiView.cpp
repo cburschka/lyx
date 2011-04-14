@@ -3063,7 +3063,7 @@ void GuiView::dispatchToBufferView(FuncRequest const & cmd, DispatchResult & dr)
 
 	// Try with the document BufferView dispatch if any.
 	BufferView * doc_bv = documentBufferView();
-	if (doc_bv) {
+	if (doc_bv && doc_bv != bv) {
 		doc_bv->dispatch(cmd, dr);
 		if (dr.dispatched())
 			return;
