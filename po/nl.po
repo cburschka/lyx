@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.5pre1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-14 17:15+0200\n"
+"POT-Creation-Date: 2011-04-14 17:16+0200\n"
 "PO-Revision-Date: 2010-12-03 08:18+0100\n"
 "Last-Translator: Vincent van Ravesteijn <vfr@lyx.org>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -5763,7 +5763,7 @@ msgstr ""
 #: lib/layouts/theorems-ams-extended.module:302
 #: lib/layouts/theorems-ams-extended.module:305
 msgid "Acknowledgement"
-msgstr ""
+msgstr "Erkenning"
 
 #: lib/layouts/AEA.layout:100 lib/layouts/egs.layout:546
 #: lib/layouts/svjour.inc:277
@@ -5799,7 +5799,7 @@ msgstr ""
 #: lib/layouts/theorems-sec-bytype.module:54
 #: lib/layouts/theorems-sec.module:18
 msgid "Theorem"
-msgstr ""
+msgstr "Theorem"
 
 #: lib/layouts/AEA.layout:112 lib/layouts/elsart.layout:343
 #: lib/layouts/powerdot.layout:405 lib/layouts/siamltex.layout:115
@@ -5814,9 +5814,8 @@ msgstr ""
 #: lib/layouts/theorems-ams-extended.module:83
 #: lib/layouts/theorems-ams-extended.module:97
 #: lib/layouts/theorems-ams-extended.module:100
-#, fuzzy
 msgid "Algorithm"
-msgstr "Lijst van Algoritmen"
+msgstr "Algoritme"
 
 #: lib/layouts/AEA.layout:119
 #: lib/layouts/theorems-ams-extended-bytype.module:129
@@ -5865,7 +5864,7 @@ msgstr "Subsectie"
 #: lib/layouts/theorems.inc:269 lib/layouts/theorems-chap-bytype.module:186
 #: lib/layouts/theorems-sec-bytype.module:142
 msgid "Claim"
-msgstr ""
+msgstr "Claim"
 
 #: lib/layouts/AEA.layout:143
 #: lib/layouts/theorems-ams-extended-bytype.module:339
@@ -5892,9 +5891,8 @@ msgstr "Conclusie"
 #: lib/layouts/theorems-ams-extended.module:152
 #: lib/layouts/theorems-ams-extended.module:166
 #: lib/layouts/theorems-ams-extended.module:169
-#, fuzzy
 msgid "Condition"
-msgstr "Voorwaarde"
+msgstr "Conditie"
 
 #: lib/layouts/AEA.layout:159 lib/layouts/elsart.layout:364
 #: lib/layouts/ijmpc.layout:289 lib/layouts/ijmpd.layout:299
@@ -5911,7 +5909,7 @@ msgstr "Voorwaarde"
 #: lib/layouts/theorems.inc:132 lib/layouts/theorems-chap-bytype.module:102
 #: lib/layouts/theorems-sec-bytype.module:86
 msgid "Conjecture"
-msgstr ""
+msgstr "Conjectuur"
 
 #: lib/layouts/AEA.layout:166 lib/layouts/beamer.layout:987
 #: lib/layouts/elsart.layout:322 lib/layouts/foils.layout:250
@@ -5930,7 +5928,7 @@ msgstr ""
 #: lib/layouts/theorems.inc:78 lib/layouts/theorems-chap-bytype.module:66
 #: lib/layouts/theorems-sec-bytype.module:62
 msgid "Corollary"
-msgstr ""
+msgstr "Corollary"
 
 #: lib/layouts/AEA.layout:173 lib/layouts/elsart.layout:336
 #: lib/layouts/theorems-ams-extended-bytype.module:60
@@ -5943,9 +5941,8 @@ msgstr ""
 #: lib/layouts/theorems-ams-extended.module:49
 #: lib/layouts/theorems-ams-extended.module:62
 #: lib/layouts/theorems-ams-extended.module:65
-#, fuzzy
 msgid "Criterion"
-msgstr "Aanhaling"
+msgstr "Criterium"
 
 #: lib/layouts/AEA.layout:181 lib/layouts/beamer.layout:1015
 #: lib/layouts/elsart.layout:350 lib/layouts/foils.layout:264
@@ -6030,9 +6027,8 @@ msgstr "Lemma"
 #: lib/layouts/theorems-ams-extended.module:220
 #: lib/layouts/theorems-ams-extended.module:234
 #: lib/layouts/theorems-ams-extended.module:237
-#, fuzzy
 msgid "Notation"
-msgstr "Roteren"
+msgstr "Notatie"
 
 #: lib/layouts/AEA.layout:217 lib/layouts/elsart.layout:378
 #: lib/layouts/llncs.layout:369 lib/layouts/svmono.layout:102
@@ -6047,9 +6043,8 @@ msgstr "Roteren"
 #: lib/layouts/theorems.inc:197 lib/layouts/theorems.inc:206
 #: lib/layouts/theorems.inc:209 lib/layouts/theorems-chap-bytype.module:150
 #: lib/layouts/theorems-sec-bytype.module:118
-#, fuzzy
 msgid "Problem"
-msgstr "Dubbel"
+msgstr "Probleem"
 
 #: lib/layouts/AEA.layout:225 lib/layouts/elsart.layout:329
 #: lib/layouts/foils.layout:257 lib/layouts/ijmpc.layout:253
@@ -6067,7 +6062,7 @@ msgstr "Dubbel"
 #: lib/layouts/theorems.inc:114 lib/layouts/theorems-chap-bytype.module:90
 #: lib/layouts/theorems-sec-bytype.module:78
 msgid "Proposition"
-msgstr ""
+msgstr "Voorstel"
 
 #: lib/layouts/AEA.layout:232 lib/layouts/elsart.layout:385
 #: lib/layouts/ijmpc.layout:178 lib/layouts/ijmpd.layout:176
@@ -6152,7 +6147,7 @@ msgstr "O&nderschrift:"
 #: lib/layouts/theorems-proof-std.inc:25 lib/layouts/theorems-proof.inc:13
 #: lib/layouts/theorems-bytype.module:46
 msgid "Proof"
-msgstr ""
+msgstr "Bewijs"
 
 #: lib/layouts/IEEEtran.layout:34 lib/layouts/aa.layout:27
 #: lib/layouts/aapaper.layout:34 lib/layouts/aastex.layout:52
@@ -6788,34 +6783,28 @@ msgid "Phone"
 msgstr "Telefoongids"
 
 #: lib/layouts/achemso.layout:122 lib/layouts/achemso.layout:133
-#, fuzzy
 msgid "Scheme"
-msgstr "Tweede"
+msgstr "Schema"
 
 #: lib/layouts/achemso.layout:127
-#, fuzzy
 msgid "List of Schemes"
-msgstr "Lijst van Tabellen"
+msgstr "Ljist van Schema's"
 
 #: lib/layouts/achemso.layout:144 lib/layouts/achemso.layout:155
-#, fuzzy
 msgid "Chart"
-msgstr "Hoofdstuk"
+msgstr "Grafiek"
 
 #: lib/layouts/achemso.layout:149
-#, fuzzy
 msgid "List of Charts"
-msgstr "Lijst van Tabellen"
+msgstr "Lijst van Grafieken"
 
 #: lib/layouts/achemso.layout:166 lib/layouts/achemso.layout:177
-#, fuzzy
 msgid "Graph"
-msgstr "Plaatjes"
+msgstr "Grafiek"
 
 #: lib/layouts/achemso.layout:171
-#, fuzzy
 msgid "List of Graphs"
-msgstr "Lijst van Tabellen"
+msgstr "Lijst van Grafieken"
 
 #: lib/layouts/achemso.layout:219
 #, fuzzy
@@ -7462,7 +7451,6 @@ msgstr "Tabel"
 #: lib/layouts/beamer.layout:1204 lib/layouts/powerdot.layout:385
 #: lib/layouts/tufte-book.layout:223 lib/layouts/stdfloats.inc:16
 #: src/insets/InsetFloatList.cpp:177
-#, fuzzy
 msgid "List of Tables"
 msgstr "Lijst van Tabellen"
 
@@ -7474,9 +7462,8 @@ msgstr "Figuur"
 #: lib/layouts/beamer.layout:1218 lib/layouts/powerdot.layout:397
 #: lib/layouts/tufte-book.layout:236 lib/layouts/stdfloats.inc:31
 #: src/insets/InsetFloatList.cpp:180
-#, fuzzy
 msgid "List of Figures"
-msgstr "Lijst van Tabellen"
+msgstr "Lijst van Figuren"
 
 #: lib/layouts/broadway.layout:31 lib/layouts/hollywood.layout:40
 msgid "Dialogue"
@@ -9148,9 +9135,8 @@ msgstr ""
 #: lib/layouts/theorems-ams-extended.module:391
 #: lib/layouts/theorems-ams-extended.module:404
 #: lib/layouts/theorems-ams-extended.module:407
-#, fuzzy
 msgid "Question"
-msgstr "Oostenrijks"
+msgstr "Vraag"
 
 #: lib/layouts/ijmpc.layout:275 lib/layouts/ijmpd.layout:283
 #, fuzzy
@@ -9620,7 +9606,6 @@ msgid "EnumerateType1"
 msgstr ""
 
 #: lib/layouts/powerdot.layout:409 lib/layouts/stdfloats.inc:46
-#, fuzzy
 msgid "List of Algorithms"
 msgstr "Lijst van Algoritmen"
 
@@ -11367,14 +11352,12 @@ msgid "meaning"
 msgstr "Opening"
 
 #: lib/layouts/linguistics.module:168
-#, fuzzy
 msgid "Tableau"
-msgstr "Tabel"
+msgstr "Tableau"
 
 #: lib/layouts/linguistics.module:173
-#, fuzzy
 msgid "List of Tableaux"
-msgstr "Lijst van Tabellen"
+msgstr "Lijst van Tableaus"
 
 #: lib/layouts/logicalmkup.module:2
 #, fuzzy
@@ -11654,7 +11637,7 @@ msgstr "Conclusie"
 #: lib/layouts/theorems-ams-extended.module:371
 #: lib/layouts/theorems-ams-extended.module:374
 msgid "Assumption"
-msgstr ""
+msgstr "Aanname"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:377
 #, fuzzy
