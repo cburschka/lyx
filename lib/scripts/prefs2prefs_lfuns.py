@@ -134,6 +134,17 @@ def paragraph_spacing(line):
 def tabular_feature(line):
 	return simple_renaming(line, "tabular-feature", "inset-modify tabular")
 
+re_Bar2bar = re.compile(r'^(\\(?:bind|unbind))\s+"([^"]*)Bar"(\s+"[^"]+")')
+def Bar2bar(line):
+	m = re_Bar2bar.search(line)
+	if not m:
+		return no_match
+
+	btype = m.group(1)
+	mod = m.group(2)
+	rest = m.group(3)
+	newline = btype + " \"" + mod + "bar\"" + rest
+	return (True, newline)
 
 #
 #
@@ -152,7 +163,8 @@ conversions = [
 		line_insert,
 		toc_insert,
 		paragraph_spacing,
-		tabular_feature
+		tabular_feature,
+		Bar2bar
 	] # end conversions for format 0
 ]
 
