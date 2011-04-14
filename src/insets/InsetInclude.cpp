@@ -547,8 +547,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 	LYXERR(Debug::LATEX, "exportfile:" << exportfile);
 	LYXERR(Debug::LATEX, "writefile:" << writefile);
 
-	string const tex_format = (runparams.flavor == OutputParams::LATEX) ?
-			"latex" : "pdflatex";
+	string const tex_format = flavor2format(runparams.flavor);
 	if (runparams.inComment || runparams.dryrun) {
 		//Don't try to load or copy the file if we're
 		//in a comment or doing a dryrun

@@ -21,10 +21,12 @@
 #include "support/debug.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Systemcall.h"
 #include "support/textutils.h"
+#include "support/Translator.h"
 
 #include <algorithm>
 
@@ -413,7 +415,41 @@ string const Formats::extension(string const & name) const
 }
 
 
+namespace {
+typedef Translator<OutputParams::FLAVOR, string> FlavorTranslator;
 
+FlavorTranslator initFlavorTranslator()
+{
+	FlavorTranslator f(OutputParams::LATEX, "latex");
+	f.addPair(OutputParams::LUATEX, "luatex");
+	f.addPair(OutputParams::PDFLATEX, "pdflatex");
+	f.addPair(OutputParams::XETEX, "xetex");
+	f.addPair(OutputParams::XML, "docbook-xml");
+	f.addPair(OutputParams::HTML, "xhtml");
+	f.addPair(OutputParams::TEXT, "text");
+	return f;
+}
+
+
+FlavorTranslator const & flavorTranslator()
+{
+	static FlavorTranslator translator = initFlavorTranslator();
+	return translator;
+}
+}
+
+
+std::string flavor2format(OutputParams::FLAVOR flavor)
+{
+	return flavorTranslator().find(flavor);
+}
+
+
+/* Not currently needed, but I'll leave the code in case it is.
+OutputParams::FLAVOR format2flavor(std::string fmt)
+{
+	return flavorTranslator().find(fmt);
+} */
 
 Formats formats;
 

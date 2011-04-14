@@ -14,6 +14,8 @@
 
 #include "support/docstring.h"
 
+#include "OutputParams.h"
+
 #include <vector>
 
 
@@ -167,6 +169,11 @@ private:
 	///
 	FormatList formatlist;
 };
+
+///
+std::string flavor2format(OutputParams::FLAVOR flavor);
+// Not currently used.
+// OutputParams::FLAVOR format2flavor(std::string fmt);
 
 extern Formats formats;
 

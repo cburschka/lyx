@@ -611,8 +611,7 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 
 	FileName source_file = runparams.nice ? FileName(params().filename) : temp_file;
 	// determine the export format
-	string const tex_format = (runparams.flavor == OutputParams::LATEX) ?
-			"latex" : "pdflatex";
+	string const tex_format = flavor2format(runparams.flavor);
 
 	// If the file is compressed and we have specified that it
 	// should not be uncompressed, then just return its name and
