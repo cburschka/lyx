@@ -2314,12 +2314,13 @@ bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 	d->cursor_.macroModeClose();
 
 	// Has the cursor just left the inset?
-	bool leftinset = (&d->cursor_.inset() != &cur.inset());
+	bool const leftinset = (&d->cursor_.inset() != &cur.inset());
 	if (leftinset)
 		d->cursor_.fixIfBroken();
 
 	// FIXME: shift-mouse selection doesn't work well across insets.
-	bool do_selection = select && &d->cursor_.normalAnchor().inset() == &cur.inset();
+	bool const do_selection = 
+			select && &d->cursor_.normalAnchor().inset() == &cur.inset();
 
 	// do the dEPM magic if needed
 	// FIXME: (1) move this to InsetText::notifyCursorLeaves?
