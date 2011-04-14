@@ -2190,6 +2190,8 @@ void BufferView::setCursorFromRow(int row)
 		buffer_.text().setCursor(d->cursor_, 0, 0);
 	else
 		buffer_.text().setCursor(d->cursor_, buffer_.getParFromID(tmpid).pit(), tmppos);
+	d->cursor_.setSelection(false);
+	d->cursor_.resetAnchor();
 	recenter();
 }
 
