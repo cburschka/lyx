@@ -1169,32 +1169,22 @@ def checkModulesConfig():
 ## configuration change. 
 ## "ModuleName" "filename" "Description" "Packages" "Requires" "Excludes" "Category"
 ''')
-
   # build the list of available modules
-  seen = []
-  # note that this searches the local directory first, then the
-  # system directory. that way, we pick up the user's version first.
+  foundClasses = []
   for file in glob.glob( os.path.join('layouts', '*.module') ) + \
       glob.glob( os.path.join(srcdir, 'layouts', '*.module' ) ) :
       # valid file?
       logger.info(file)
       if not os.path.isfile(file): 
           continue
-
-      filename = file.split(os.sep)[-1]
-      filename = filename[:-7]
-      if seen.count(filename):
-          continue
-
-      seen.append(filename)
-      retval = processModuleFile(file, filename, bool_docbook)
+      retval = processModuleFile(file, bool_docbook)
       if retval != "":
           tx.write(retval)
   tx.close()
   logger.info('\tdone')
 
 
-def processModuleFile(file, filename, bool_docbook):
+def processModuleFile(file, bool_docbook):
     ''' process module file and get a line of result
 
         The top of a module file should look like this:
@@ -1219,6 +1209,8 @@ def processModuleFile(file, filename, bool_docbook):
     modname = desc = pkgs = req = excl = catgy = ""
     readingDescription = False
     descLines = []
+    filename = file.split(os.sep)[-1]
+    filename = filename[:-7]
 
     for line in open(file).readlines():
       if readingDescription:
