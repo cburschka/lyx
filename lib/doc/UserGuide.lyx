@@ -12059,8 +12059,16 @@ Text
 \end_inset
 
 Style
+\change_inserted 5863208 1302821857
+\SpecialChar \menuseparator
+Customized\SpecialChar \ldots{}
+
 \family default
- dialog.
+ 
+\change_deleted 5863208 1302821862
+ 
+\change_unchanged
+dialog.
  There are several boxes on this dialog, each corresponding to a different
  font property which you can choose.
  You can choose an option for one of these properties, or select 
@@ -12587,6 +12595,78 @@ arg   "font-size giant"
 \end_inset
 
 )
+\change_inserted 5863208 1302821897
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted 5863208 1302821911
+
+\family sans
+Increase
+\family default
+ This increases the size by one step (for instance, from 
+\begin_inset Quotes eld
+\end_inset
+
+Largest
+\begin_inset Quotes erd
+\end_inset
+
+ to 
+\begin_inset Quotes eld
+\end_inset
+
+Huge
+\begin_inset Quotes erd
+\end_inset
+
+).
+ (key binding 
+\begin_inset Info
+type  "shortcut"
+arg   "font-size increase"
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted 5863208 1302821911
+
+\family sans
+Decrease
+\family default
+ This decreases the size by one step (for instance, from 
+\begin_inset Quotes eld
+\end_inset
+
+Normal
+\begin_inset Quotes erd
+\end_inset
+
+ to 
+\begin_inset Quotes eld
+\end_inset
+
+Small
+\begin_inset Quotes erd
+\end_inset
+
+).
+ (key binding 
+\begin_inset Info
+type  "shortcut"
+arg   "font-size decrease"
+\end_inset
+
+)
+\change_unchanged
+
 \end_layout
 
 \end_deeper
@@ -12672,6 +12752,95 @@ Avoid using underbar if you can! It's a hangover from the typewriter days,
 may
 \emph default
  need it in order to follow style sheets for journal submissions.
+\change_inserted 5863208 1302821962
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted 5863208 1302821963
+
+\family sans
+Double
+\begin_inset space ~
+\end_inset
+
+underbar
+\family default
+ 
+\uuline on
+This is text with Double underbar on.
+
+\uuline default
+ (key binding 
+\begin_inset Info
+type  "shortcut"
+arg   "font-underunderline"
+\end_inset
+
+)
+\begin_inset Newline newline
+\end_inset
+
+If we just warned you against using underbar, you can imagine what we think
+ about double underbar.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted 5863208 1302821963
+
+\family sans
+Wavy
+\begin_inset space ~
+\end_inset
+
+underbar
+\family default
+ 
+\uwave on
+This is text with Wavy underbar on.
+
+\uwave default
+ (key binding 
+\begin_inset Info
+type  "shortcut"
+arg   "font-underwave"
+\end_inset
+
+)
+\begin_inset Newline newline
+\end_inset
+
+Use this only if a journal absolutely insists on it.
+ Keep antinausea pills handy.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted 5863208 1302821963
+
+\family sans
+Strikeout
+\family default
+ 
+\strikeout on
+This is text with Strikeout on.
+
+\strikeout default
+ (key binding 
+\begin_inset Info
+type  "shortcut"
+arg   "font-strikeout"
+\end_inset
+
+) This is frequently used to indicate an older version of text that has
+ since changed.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Labeling
@@ -12802,8 +12971,15 @@ arg   "textstyle-apply"
 \end_inset
 
 .
- The button lets you toggle the state of your custom character style even
- when the dialog isn't visible.
+ The button lets you 
+\change_deleted 5863208 1302822001
+toggle the state
+\change_inserted 5863208 1302822005
+apply
+\change_deleted 5863208 1302822014
+ of
+\change_unchanged
+ your custom character style even when the dialog isn't visible.
  
 \end_layout
 
@@ -12991,6 +13167,109 @@ Sans serif
  don't use serifs.
  This font type is therefore often used for headings and short texts.
  We use it in this document to highlight menu names.
+\change_inserted 5863208 1302822046
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1302822061
+\begin_inset Quotes eld
+\end_inset
+
+Toggling
+\begin_inset Quotes erd
+\end_inset
+
+ refers to applying or removing font properties.
+ When a property is marked for toggling in the Text Style dialog, applying
+ the style to text that already has the property will cause the property
+ to be removed.
+ If you apply a style with properties A, B and C to text that currently
+ has font properties B, C, F and G, and if B is set to toggle and C is set
+ not to toggle, the text ends up with properties A, C, F and G.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Never toggled
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+always toggled
+\begin_inset Quotes erd
+\end_inset
+
+ mean that you do not control the toggling behavior.
+ For the properties on the left side of the dialog (
+\begin_inset Quotes eld
+\end_inset
+
+Family
+\begin_inset Quotes erd
+\end_inset
+
+ etc.), toggling behavior is up to you.
+ If 
+\begin_inset Quotes eld
+\end_inset
+
+Toggle all
+\begin_inset Quotes erd
+\end_inset
+
+ is checked, all of the left side properties are toggled; by default, none
+ of them are.
+ Finally, 
+\begin_inset Quotes eld
+\end_inset
+
+Reset
+\begin_inset Quotes erd
+\end_inset
+
+ is never toggled.
+ If you set 
+\begin_inset Quotes eld
+\end_inset
+
+Series
+\begin_inset Quotes erd
+\end_inset
+
+ to 
+\begin_inset Quotes eld
+\end_inset
+
+Reset
+\begin_inset Quotes erd
+\end_inset
+
+ and select 
+\begin_inset Quotes eld
+\end_inset
+
+Toggle all
+\begin_inset Quotes erd
+\end_inset
+
+, then apply the style to bold face text, the text will revert to the default
+ series (
+\begin_inset Quotes eld
+\end_inset
+
+Medium
+\begin_inset Quotes erd
+\end_inset
+
+), no matter how many times you apply the style.
+ 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
