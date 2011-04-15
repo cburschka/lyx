@@ -4,7 +4,7 @@
 # Jason Waskiewicz <jason.waskiewicz@sendit.nodak.edu>, 2009/10/18
 # Modified by Uwe Stöhr <uwestoehr@web.de>, 2009/11/15
 
-Format 34
+Format 35
 
 Provides geometry 1
 Provides natbib-internal 1
@@ -121,7 +121,7 @@ Style Subsection
 	EndFont
 End
 
-InsetLayout Sidenote
+InsetLayout "Flex:Sidenote"
 	LyxType		custom
 	LatexType	command
 	LatexName	sidenote
@@ -141,7 +141,7 @@ InsetLayout Sidenote
 End
 
 InsetLayout Marginnote
-	CopyStyle	Sidenote
+	CopyStyle	"Flex:Sidenote"
 	LatexName	marginnote
 	Decoration	classic
 	LabelString	"marginnote"
@@ -153,7 +153,7 @@ InsetLayout Marginnote
 	MultiPar	true
 End
 
-InsetLayout NewThought
+InsetLayout "Flex:NewThought"
 	LyXType		charstyle
 	LatexType	Command
 	LatexName	newthought
@@ -168,7 +168,7 @@ InsetLayout NewThought
 End
 
 InsetLayout AllCaps
-	CopyStyle	NewThought
+	CopyStyle	"Flex:NewThought"
 	LatexName	allcaps
 	LabelString	"allcaps"
 	Font
@@ -181,7 +181,7 @@ InsetLayout AllCaps
 End
 
 InsetLayout SmallCaps
-	CopyStyle	NewThought
+	CopyStyle	"Flex:NewThought"
 	LatexName	smallcaps
 	LabelString	"smallcaps"
 	LabelFont

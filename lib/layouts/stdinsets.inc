@@ -4,7 +4,7 @@
 #
 # Detailled format description is available in the customization manual
 
-Format 34
+Format 35
 
 Provides stdinsets 1
 
@@ -327,7 +327,7 @@ InsetLayout Wrap
 	EndHTMLStyle
 End
 
-InsetLayout URL
+InsetLayout "Flex:URL"
 	LyXType               standard
 	Decoration            classic
 	LabelString           URL

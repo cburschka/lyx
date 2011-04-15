@@ -3,7 +3,7 @@
 # elsarticle textclass definition file.
 # Author: Uwe Stöhr (uwestoehr@web.de)
 
-Format 34
+Format 35
 
 Columns			1
 Sides			1
@@ -72,7 +72,7 @@ Style Title
 End
 
 
-InsetLayout Titlenotemark
+InsetLayout "Flex:Titlenotemark"
 	LyxType			custom
 	LatexType		command
 	LatexName		tnoteref
@@ -134,7 +134,7 @@ Style Author
 End
 
 
-InsetLayout Authormark
+InsetLayout "Flex:Authormark"
 	LyxType			custom
 	LatexType		command
 	LatexName		fnref
@@ -163,7 +163,7 @@ Style "Author footnote"
 End
 
 
-InsetLayout CorAuthormark
+InsetLayout "Flex:CorAuthormark"
 	LyxType			custom
 	LatexType		command
 	LatexName		corref

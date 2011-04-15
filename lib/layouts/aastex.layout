@@ -33,7 +33,7 @@
 #                        - new environments for \altaffiltext and \tablenotetext
 
 
-Format 34
+Format 35
 Columns                 1
 Sides                   1
 #SecNumDepth            3
@@ -302,7 +302,7 @@ Style Altaffilation
 End
 
 
-InsetLayout altaffilmark
+InsetLayout "Flex:altaffilmark"
 	LyxType			custom
 	LatexType		command
 	LatexName		altaffilmark
@@ -585,7 +585,7 @@ Style "Table note"
 End
 
 
-InsetLayout tablenotemark
+InsetLayout "Flex:tablenotemark"
 	LyxType			custom
 	LatexType		command
 	LatexName		tablenotemark

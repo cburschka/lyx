@@ -10,7 +10,7 @@
 # ACM style files can be obtained at
 # http://www.acm.org/sigs/pubs/proceed/template.html
 
-Format 34
+Format 35
 
 Columns                 1
 Sides                   1
@@ -84,7 +84,7 @@ Input stdtitle.inc
 Input stdstruct.inc
 
 
-InsetLayout CRcat
+InsetLayout "Flex:CRcat"
 	LyxType			custom
 	LatexType		command
 	LatexName		CRcat

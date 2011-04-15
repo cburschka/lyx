@@ -16,7 +16,7 @@
 # 2008-10-26  Updated for aa.cls version 6.1
 
 
-Format 34
+Format 35
 Columns                 2
 Sides                   2
 SecNumDepth             3
@@ -296,7 +296,7 @@ Style Date
 End
 
 
-InsetLayout institutemark
+InsetLayout "Flex:institutemark"
 	LyxType			custom
 	LatexType		command
 	LatexName		inst
@@ -407,7 +407,7 @@ InsetLayout Flex:E-Mail
 End
 
 
-InsetLayout Email
+InsetLayout "Flex:Email"
 	LyxType			custom
 	LatexType		command
 	LatexName		email

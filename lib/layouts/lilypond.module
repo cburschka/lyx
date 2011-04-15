@@ -7,10 +7,10 @@
 
 # Author: Julien Rioux <jrioux@physics.utoronto.ca>
 
-Format 34
+Format 35
 OutputFormat           lilypond-book
 
-InsetLayout LilyPond
+InsetLayout "Flex:LilyPond"
 	LabelString           LilyPond
 	LaTeXType             Environment
 	LaTeXName             lilypond

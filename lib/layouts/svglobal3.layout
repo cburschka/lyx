@@ -13,7 +13,7 @@
 #
 # see ftp://ftp.springer.de/pub/tex/latex/svjour3/ for class files
 
-Format 34
+Format 35
 
 Input svjour.inc
 
@@ -38,7 +38,7 @@ Preamble
 EndPreamble
 
 
-InsetLayout Email
+InsetLayout "Flex:Email"
 	LyxType			custom
 	LatexType		command
 	LatexName		email
@@ -61,21 +61,21 @@ End
 
 
 InsetLayout Keywords
-	CopyStyle		Email
+	CopyStyle		"Flex:Email"
 	LatexName		keywords
 	LabelString		"Keywords"
 End
 
 
 InsetLayout PACS
-	CopyStyle		Email
+	CopyStyle		"Flex:Email"
 	LatexName		PACS
 	LabelString		"PACS"
 End
 
 
 InsetLayout Subclass
-	CopyStyle		Email
+	CopyStyle		"Flex:Email"
 	LatexName		subclass
 	LabelString		"Subclass"
 End

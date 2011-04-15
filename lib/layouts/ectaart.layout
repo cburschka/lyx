@@ -2,7 +2,7 @@
 #  \DeclareLaTeXClass[ectaart]{article (Econometrica)}
 # Author : Koji Yokota <yok...@res.otaru-uc.ac.jp>
 
-Format 34
+Format 35
 Input article.layout
 
 TitleLatexType		Environment
@@ -149,7 +149,7 @@ Style Emphasize
 	EndPreamble
 End
 
-InsetLayout Thanks_Reference
+InsetLayout "Flex:Thanks_Reference"
 	LyxType		custom
 	LatexType	Command
 	LatexName	thanksref
@@ -162,47 +162,47 @@ InsetLayout Thanks_Reference
 End
 
 InsetLayout Internet_Address_Reference
-	CopyStyle	Thanks_Reference
+	CopyStyle	"Flex:Thanks_Reference"
 	LatexName	printead
 	LabelString	"Internet Addess Ref"
 End
 
 InsetLayout Corresponding_Author
-	CopyStyle	Thanks_Reference
+	CopyStyle	"Flex:Thanks_Reference"
 	LatexName	corref
 	LabelString	"Corresponding Author"
 	BgColor		black
 End
 
 InsetLayout Author
-	CopyStyle	Thanks_Reference
+	CopyStyle	"Flex:Thanks_Reference"
 	LatexName	author
 	LabelString	"Author"
 	BgColor		green
 End
 
 InsetLayout Name_(First_Name)
-	CopyStyle	Thanks_Reference
+	CopyStyle	"Flex:Thanks_Reference"
 	LatexName	fnms
 	LabelString	"First Name"
 	BgColor		background
 End
 
 InsetLayout Name_(Surname)
-	CopyStyle	Thanks_Reference
+	CopyStyle	"Flex:Thanks_Reference"
 	LatexName	snm
 	LabelString	"Surname"
 	BgColor		background
 End
 
 InsetLayout Keyword
-	CopyStyle	Thanks_Reference
+	CopyStyle	"Flex:Thanks_Reference"
 	LatexName	kwd
 	LabelString	"Keyword"
 End
 
 InsetLayout By_Same_Author_(bib)
-	CopyStyle	Thanks_Reference
+	CopyStyle	"Flex:Thanks_Reference"
 	LatexName	bysame
 	LabelString	"bysame"
 	BgColor		blue

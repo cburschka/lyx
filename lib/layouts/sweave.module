@@ -11,7 +11,7 @@
 # - \setkeys{Gin}{width=0.8\textwidth} How to add such a "beast"? This is used to define
 #   the size of produced plots.
 
-Format 34
+Format 35
 OutputType             literate
 OutputFormat           sweave
 
@@ -49,7 +49,7 @@ Style Scrap
 	ObsoletedBy           Chunk
 End
 
-InsetLayout "Sweave Options"
+InsetLayout "Flex:Sweave Options"
 	LabelString           "Sweave opts"
 	LatexType             Command
 	LaTexName             SweaveOpts
@@ -71,7 +71,7 @@ InsetLayout "Sweave Options"
 	ForceLTR              true
 End
 
-InsetLayout "S/R expression"
+InsetLayout "Flex:S/R expression"
 	LabelString           "S/R expr"
 	LatexType             Command
 	LaTexName             Sexpr
@@ -93,7 +93,7 @@ InsetLayout "S/R expression"
 	ForceLTR              true
 End
 
-InsetLayout "Sweave Input File"
+InsetLayout "Flex:Sweave Input File"
 	LabelString           "Sweave Input File"
 	LatexType             Command
 	LaTexName             SweaveInput

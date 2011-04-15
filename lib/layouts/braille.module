@@ -5,7 +5,7 @@
 #DescriptionEnd
 # Author: Uwe Stöhr <uwestoehr@web.de>
 
-Format 34
+Format 35
 
 AddToPreamble
 	\usepackage{braille}
@@ -160,7 +160,7 @@ Style Braille_(mirror_off)
 End
 
 
-InsetLayout Braillebox
+InsetLayout "Flex:Braillebox"
 	LyxType			custom
 	LatexType		command
 	LatexName		braillebox

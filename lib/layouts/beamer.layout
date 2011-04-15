@@ -5,7 +5,7 @@
 # $Header: /cvsroot/latex-beamer/latex-beamer/lyx/layouts/beamer.layout,v 1.16 2004/10/07 20:53:07 tantau Exp $
 
 # Includes
-Format 34
+Format 35
 Input stdcounters.inc
 Input stdinsets.inc
 
@@ -835,7 +835,7 @@ Style Institute
   EndFont
 End
 
-InsetLayout InstituteMark
+InsetLayout "Flex:InstituteMark"
   LyxType          custom
   LatexType        command
   LatexName        inst
