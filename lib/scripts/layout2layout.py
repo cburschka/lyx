@@ -224,6 +224,7 @@ def convert(lines):
     # with quotes
     re_QInsetLayout2 = re.compile(r'^\s*InsetLayout\s+"([^"]+)"\s*$', re.IGNORECASE)
     re_IsFlex = re.compile(r'\s*LyXType.*$', re.IGNORECASE)
+    re_CopyStyle2 = re.compile(r'(\s*CopyStyle\s+)"?([^"]+)"?\s*$')
 
     # counters for sectioning styles (hardcoded in 1.3)
     counters = {"part"          : "\\Roman{part}",
@@ -269,6 +270,7 @@ def convert(lines):
     format = 1
     formatline = 0
     usemodules = []
+    flexstyles = []
 
     while i < len(lines):
         # Skip comments and empty lines
@@ -317,8 +319,17 @@ def convert(lines):
           if not match:
             match = re_QInsetLayout2.match(lines[i])
           if not match:
+            match = re_CopyStyle2.match(lines[i])
+            if not match:
+              i += 1
+              continue
+            style = match.group(2)
+            
+            if flexstyles.count(style):
+              lines[i] = match.group(1) + "\"Flex:" + style + "\""
             i += 1
             continue
+
           name = match.group(1)
           names = name.split(":", 1)
           if len(names) > 1 and names[0] == "Flex":
@@ -334,6 +345,7 @@ def convert(lines):
               break
 
           if isflex:
+            flexstyles.append(name)
             lines[i] = "InsetLayout \"Flex:" + name + "\""
 
           i += 1
