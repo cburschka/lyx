@@ -1456,6 +1456,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		buffer_.text().cursorBottom(cur);
 		// accept everything in a single step to support atomic undo
 		buffer_.text().acceptOrRejectChanges(cur, Text::ACCEPT);
+		cur.resetAnchor();
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
 		dr.screenUpdate(Update::Force | Update::FitCursor);
 		dr.forceBufferUpdate();
@@ -1469,6 +1470,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		// reject everything in a single step to support atomic undo
 		// Note: reject does not work recursively; the user may have to repeat the operation
 		buffer_.text().acceptOrRejectChanges(cur, Text::REJECT);
+		cur.resetAnchor();
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
 		dr.screenUpdate(Update::Force | Update::FitCursor);
 		dr.forceBufferUpdate();
@@ -1681,6 +1683,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 		d->text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_,
 			true, act == LFUN_SCREEN_UP); 
+		cur.resetAnchor();
 		//FIXME: what to do with cur.x_target()?
 		bool update = in_texted && cur.bv().checkDepm(cur, old);
 		cur.finishUndo();
