@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-04-13 19:57+0200\n"
-"PO-Revision-Date: 2011-04-11 18:18+0900\n"
+"PO-Revision-Date: 2011-04-15 11:10+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-doc@lists.lyx.org>\n"
 "Language: \n"
@@ -895,8 +895,7 @@ msgstr "検索フィールド(&H):"
 #: src/frontends/qt4/ui/CitationUi.ui:376
 msgid ""
 "Enter the text to search for and press Enter or click the button to search"
-msgstr ""
-"検索する語句を入力してEnterを押すか、ボタンをクリックして検索してください"
+msgstr "検索する語句を入力してEnterを押すか、ボタンをクリックして検索してください"
 
 #: src/frontends/qt4/ui/CitationUi.ui:389
 msgid "Click or press Enter in the search box to search"
@@ -1406,14 +1405,13 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:257
 msgid "Ignore &format"
-msgstr "書式を無視(&F)"
+msgstr "様式を無視(&F)"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:267
 msgid ""
 "Keep the case of the replacement's first letter as in each matching text "
 "first letter"
-msgstr ""
-"置換後の語句の最初の文字の大小を、置換前の語句の最初の文字の大小に合わせる。"
+msgstr "置換後の語句の最初の文字の大小を、置換前の語句の最初の文字の大小に合わせる。"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:270
 msgid "&Preserve first case on replace"
@@ -2553,8 +2551,7 @@ msgstr "&esintパッケージを使う"
 msgid ""
 "The LaTeX package mathdots is only used if the command \\iddots is inserted "
 "into formulas"
-msgstr ""
-"数式に\\iddotsが挿入されたときに限り、LaTeXパッケージmathdotsが読み込まれます"
+msgstr "数式に\\iddotsが挿入されたときに限り、LaTeXパッケージmathdotsが読み込まれます"
 
 #: src/frontends/qt4/ui/MathsUi.ui:68
 msgid "Use math&dots package automatically"
@@ -2660,7 +2657,7 @@ msgstr "連番を振る(&N)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:19
 msgid "Output Format"
-msgstr "出力書式"
+msgstr "出力形式"
 
 #: src/frontends/qt4/ui/OutputUi.ui:42 src/frontends/qt4/ui/OutputUi.ui:55
 msgid "Specify the default output format (for view/update)"
@@ -2669,7 +2666,7 @@ msgstr "既定の用紙寸法を指定してください(表示・更新用)"
 #: src/frontends/qt4/ui/OutputUi.ui:45
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:187
 msgid "De&fault Output Format:"
-msgstr "既定出力書式(&F):"
+msgstr "既定出力形式(&F):"
 
 #: src/frontends/qt4/ui/OutputUi.ui:67
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
@@ -2705,7 +2702,7 @@ msgstr "数式出力(&M):"
 
 #: src/frontends/qt4/ui/OutputUi.ui:153
 msgid "Format to use for math output."
-msgstr "数式の出力に使用する書式。"
+msgstr "数式の出力に使用する形式。"
 
 #: src/frontends/qt4/ui/OutputUi.ui:157
 msgid "MathML"
@@ -2843,7 +2840,7 @@ msgstr "用紙書式"
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:19
 #: src/frontends/qt4/ui/RefUi.ui:271 src/frontends/qt4/ui_RefUi.h:310
 msgid "&Format:"
-msgstr "書式(&F):"
+msgstr "形式(&F):"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:44
 msgid "Choose a particular paper size, or set your own with \"Custom\""
@@ -3056,8 +3053,7 @@ msgstr "一般"
 msgid ""
 "After the cursor has not moved for this time, the inline completion is shown "
 "if it is available."
-msgstr ""
-"これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
+msgstr "これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:154
 msgid "s inline completion dela&y"
@@ -3079,8 +3075,7 @@ msgstr "秒のポップアップ遅延(&E)"
 msgid ""
 "When the TAB completion is not unique, there won't be a delay of the popup. "
 "It will be shown right away."
-msgstr ""
-"タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
+msgstr "タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:228
 msgid "Sho&w popup without delay for non-unique completions"
@@ -3104,11 +3099,11 @@ msgstr "追加フラグ(&X):"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:121
 msgid "&From format:"
-msgstr "変換元の書式(&F):"
+msgstr "変換元の形式(&F):"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:153
 msgid "&To format:"
-msgstr "変換先の書式(&T):"
+msgstr "変換先の形式(&T):"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:194
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:54
@@ -3264,12 +3259,11 @@ msgstr "削除(&M)"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:59
 msgid "&Document format"
-msgstr "文書書式(&D)"
+msgstr "文書形式(&D)"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:66
 msgid "Check this to show the current format in the File > Export menu"
-msgstr ""
-"この書式をファイル→書き出しメニューに表示させたいときには有効にしてください"
+msgstr "この形式をファイル→書き出しメニューに表示させたいときには有効にしてください"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:69
 msgid "Sho&w in export menu"
@@ -3277,7 +3271,7 @@ msgstr "書き出しメニューに表示(&W)"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:76
 msgid "Vector &graphics format"
-msgstr "ベクトル画像書式(&G)"
+msgstr "ベクトル画像形式(&G)"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:83
 msgid "S&hort Name:"
@@ -3309,7 +3303,7 @@ msgstr "(PDF)LaTeX使用時の既定用紙寸法を指定してください"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:178
 msgid "Default Format"
-msgstr "既定書式"
+msgstr "既定形式"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -4126,8 +4120,7 @@ msgstr "ユーザー設定幅(&W):"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:52
 msgid "Custom value. \"List Indentation\" needs to be set to \"Custom\"."
-msgstr ""
-"任意設定の値。「リストの行頭下げ」を「任意設定」に設定する必要があります。"
+msgstr "任意設定の値。「リストの行頭下げ」を「任意設定」に設定する必要があります。"
 
 #: src/frontends/qt4/ui/PrintUi.ui:28
 msgid "Pages"
@@ -4386,7 +4379,7 @@ msgstr "変換されたファイルをこのコマンドで処理する($$FName�
 
 #: src/frontends/qt4/ui/SendtoUi.ui:101
 msgid "&Export formats:"
-msgstr "書き出し書式(&E):"
+msgstr "書き出し形式(&E):"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:111
 msgid "&Send exported file to command:"
@@ -4943,8 +4936,7 @@ msgstr "見出しを選択語で置換"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:102
 msgid "Click to select a proposal, double click to look it up."
-msgstr ""
-"クリックすれば候補が選択されます。ダブルクリックするとその意味を引きます。"
+msgstr "クリックすれば候補が選択されます。ダブルクリックするとその意味を引きます。"
 
 #: src/frontends/qt4/ui/TocUi.ui:36
 msgid "Filter:"
@@ -5008,8 +5000,7 @@ msgstr "LyX: 入力して下さい"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:44
 msgid "If you check this, LyX will not warn you again in the given case."
-msgstr ""
-"これを有効にすると、LyXは当該ケースについて今後警告することはなくなります。"
+msgstr "これを有効にすると、LyXは当該ケースについて今後警告することはなくなります。"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:47
 msgid "&Do not show this warning again!"
@@ -5041,11 +5032,11 @@ msgstr "垂直フィル"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:34
 msgid "&Output Format:"
-msgstr "出力書式(&O):"
+msgstr "出力形式(&O):"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:44
 msgid "Select the output format"
-msgstr "出力書式を指定して下さい"
+msgstr "出力形式を指定して下さい"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:54
 msgid "Complete source"
@@ -11292,7 +11283,7 @@ msgstr "行内数式(I)|I"
 
 #: lib/ui/stdcontext.inc:52 lib/ui/stdmenus.inc:299
 msgid "Displayed Formula|D"
-msgstr "別行建て数式(D)|D"
+msgstr "別行立て数式(D)|D"
 
 #: lib/ui/stdcontext.inc:53 lib/ui/stdmenus.inc:300 lib/ui/stdmenus.inc:417
 msgid "Eqnarray Environment|E"
@@ -11736,9 +11727,8 @@ msgid "Insert Short Title|T"
 msgstr "短縮タイトルを挿入(T)|T"
 
 #: lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:355
-#, fuzzy
 msgid "Insert Regular Expression"
-msgstr "正規表現(&X)"
+msgstr "正規表現を挿入"
 
 #: lib/ui/stdcontext.inc:312 lib/ui/stdcontext.inc:576
 msgid "Accept Change|c"
@@ -12135,7 +12125,7 @@ msgstr "ロック特性を使用(L)|L"
 
 #: lib/ui/stdmenus.inc:91
 msgid "More Formats & Options...|O"
-msgstr "他の書式とオプション(O)...|O"
+msgstr "他の形式とオプション(O)...|O"
 
 #: lib/ui/stdmenus.inc:99
 msgid "Undo|U"
@@ -12379,7 +12369,7 @@ msgstr "既定値(T)|T"
 
 #: lib/ui/stdmenus.inc:256
 msgid "Display|D"
-msgstr "別行建て形式(D)|D"
+msgstr "別行立て形式(D)|D"
 
 #: lib/ui/stdmenus.inc:257
 msgid "Inline|I"
@@ -12703,7 +12693,7 @@ msgstr "合字回避指定(K)|K"
 
 #: lib/ui/stdmenus.inc:415
 msgid "Display Formula|D"
-msgstr "別行建て数式(D)|D"
+msgstr "別行立て数式(D)|D"
 
 #: lib/ui/stdmenus.inc:416
 msgid "Numbered Formula|N"
@@ -12855,7 +12845,7 @@ msgstr "しおり消去(C)|C"
 
 #: lib/ui/stdmenus.inc:541
 msgid "Navigate Back|B"
-msgstr "戻る(B)|B"
+msgstr "元の位置に戻る(B)|B"
 
 #: lib/ui/stdmenus.inc:550
 msgid "Spellchecker...|S"
@@ -12991,7 +12981,7 @@ msgstr "検索・置換(詳細)"
 
 #: lib/ui/stdtoolbars.inc:85
 msgid "Navigate back"
-msgstr "戻る"
+msgstr "元の位置に戻る"
 
 #: lib/ui/stdtoolbars.inc:87
 msgid "Toggle emphasis"
@@ -13055,11 +13045,11 @@ msgstr "前方/後方検索を有効にする"
 
 #: lib/ui/stdtoolbars.inc:107
 msgid "View other formats"
-msgstr "他の書式を表示"
+msgstr "他の形式を表示"
 
 #: lib/ui/stdtoolbars.inc:108
 msgid "Update other formats"
-msgstr "他の書式を更新"
+msgstr "他の形式を更新"
 
 #: lib/ui/stdtoolbars.inc:111
 msgid "Extra"
@@ -13391,11 +13381,11 @@ msgstr "次の注釈"
 
 #: lib/ui/stdtoolbars.inc:233
 msgid "View Other Formats"
-msgstr "他の書式を表示"
+msgstr "他の形式を表示"
 
 #: lib/ui/stdtoolbars.inc:237
 msgid "Update Other Formats"
-msgstr "他の書式を更新"
+msgstr "他の形式を更新"
 
 #: lib/ui/stdtoolbars.inc:257 src/frontends/qt4/GuiLog.cpp:243
 msgid "Version Control"
@@ -13745,7 +13735,7 @@ msgstr "行内分数\t\\tfrac"
 
 #: lib/ui/stdtoolbars.inc:361
 msgid "Display fraction\t\\dfrac"
-msgstr "別行建て用分数\t\\dfrac"
+msgstr "別行立て用分数\t\\dfrac"
 
 #: lib/ui/stdtoolbars.inc:362
 msgid "Continued fraction\t\\cfrac"
@@ -13769,7 +13759,7 @@ msgstr "行内二項係数\t\\tbinom"
 
 #: lib/ui/stdtoolbars.inc:367
 msgid "Display binomial\t\\dbinom"
-msgstr "別行建て用二項係数\t\\dbinom"
+msgstr "別行立て用二項係数\t\\dbinom"
 
 #: lib/ui/stdtoolbars.inc:371
 msgid "Roman\t\\mathrm"
@@ -16400,16 +16390,14 @@ msgstr "変換スクリプトが失敗しました"
 msgid ""
 "%1$s is from an older version of LyX and the lyx2lyx script failed to "
 "convert it."
-msgstr ""
-"%1$s は旧版のLyXで作成されており，スクリプトlyx2lyxは変換に失敗 しました。"
+msgstr "%1$s は旧版のLyXで作成されており，スクリプトlyx2lyxは変換に失敗 しました。"
 
 #: src/Buffer.cpp:1004
 #, c-format
 msgid ""
 "%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
 "it."
-msgstr ""
-"%1$s は新版のLyXファイルなので，スクリプトlyx2lyxが変換に失敗しました。"
+msgstr "%1$s は新版のLyXファイルなので，スクリプトlyx2lyxが変換に失敗しました。"
 
 #: src/Buffer.cpp:1025 src/Buffer.cpp:3788 src/Buffer.cpp:3850
 msgid "File is read-only"
@@ -16565,12 +16553,12 @@ msgstr "Chktexをうまく実行することができませんでした。"
 #: src/Buffer.cpp:1944
 #, c-format
 msgid "Don't know how to export to format: %1$s"
-msgstr "%1$s書式に書き出す方法を知りません"
+msgstr "%1$s形式に書き出す方法を知りません"
 
 #: src/Buffer.cpp:2016 src/frontends/qt4/GuiView.cpp:3132
 #, c-format
 msgid "Error exporting to format: %1$s."
-msgstr "%1$s書式への書き出し時にエラーが起こりました"
+msgstr "%1$s形式への書き出し時にエラーが起こりました"
 
 #: src/Buffer.cpp:2099
 #, c-format
@@ -17524,8 +17512,7 @@ msgstr "追加しない(&D)"
 #: src/CutAndPaste.cpp:683
 #, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
-msgstr ""
-"「%2$s」レイアウトを読み込み直したため自由差込枠%1$sは未定義になりました。"
+msgstr "「%2$s」レイアウトを読み込み直したため自由差込枠%1$sは未定義になりました。"
 
 #: src/CutAndPaste.cpp:686
 #, c-format
@@ -18094,8 +18081,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3098
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
-msgstr ""
-"pLaTeX(日本語LaTeX)用のbibtexプログラムのオプションを定義してください。"
+msgstr "pLaTeX(日本語LaTeX)用のbibtexプログラムのオプションを定義してください。"
 
 #: src/LyXRC.cpp:3102
 msgid ""
@@ -18107,8 +18093,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3106
 msgid "Select to check whether the lastfiles still exist."
-msgstr ""
-"最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
+msgstr "最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
 
 #: src/LyXRC.cpp:3110
 msgid ""
@@ -18137,8 +18122,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3132
 msgid "Make Apple key act as Meta and Control key as Ctrl."
-msgstr ""
-"アップルキーをMetaキーとして、コントロールキーをCtrlキーとして動作させます。"
+msgstr "アップルキーをMetaキーとして、コントロールキーをCtrlキーとして動作させます。"
 
 #: src/LyXRC.cpp:3136
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
@@ -18148,8 +18132,7 @@ msgstr "単語間のカーソル移動にMac OS X式の方法を使う。"
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
-msgstr ""
-"カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
+msgstr "カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
 
 #: src/LyXRC.cpp:3145
 #, no-c-format
@@ -18196,8 +18179,7 @@ msgstr "LyX が画像をどのように表示するかを選びます。"
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
-msgstr ""
-"文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
+msgstr "文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
 
 #: src/LyXRC.cpp:3177
 msgid "Specify additional chars that can be part of a word."
@@ -18308,8 +18290,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3249
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr ""
-"LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
+msgstr "LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
 
 #: src/LyXRC.cpp:3253
 msgid "De-select to prevent loading files opened from the last LyX session."
@@ -18356,8 +18337,7 @@ msgstr "複数の補完候補がある際、遅延なしに補完ポップアッ
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
-msgstr ""
-"補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
+msgstr "補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
 
 #: src/LyXRC.cpp:3290
 msgid "The inline completion delay."
@@ -18382,8 +18362,7 @@ msgstr "=>を\\Rightarrowに変換するなどのTeXMacs用簡略記法を許可
 #: src/LyXRC.cpp:3310
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
-msgstr ""
-"最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
+msgstr "最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
 
 #: src/LyXRC.cpp:3315
 msgid ""
@@ -18716,8 +18695,7 @@ msgstr "未知のトークン"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr ""
-"空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
+msgstr "空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
 
 #: src/Text.cpp:947
 msgid "You cannot type two spaces this way. Please read the Tutorial."
@@ -18849,8 +18827,7 @@ msgstr "破損ファイル"
 
 #: src/TextClass.cpp:746
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
-msgstr ""
-"stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
+msgstr "stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
 
 #: src/TextClass.cpp:1323
 #, c-format
@@ -20931,7 +20908,7 @@ msgstr "変換子"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1821
 msgid "File Formats"
-msgstr "ファイル書式"
+msgstr "ファイル形式"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1998 src/frontends/qt4/GuiPrefs.cpp:2150
 msgid "Format in use"
@@ -20942,7 +20919,7 @@ msgid ""
 "You cannot change a format's short name if the format is used by a "
 "converter. Please remove the converter first."
 msgstr ""
-"書式が変換子によって使用されている場合、書式の短縮名を変更することは できませ"
+"形式が変換子によって使用されている場合、形式の短縮名を変更することは できませ"
 "ん。変換子を先に削除してください。"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2151
@@ -21677,7 +21654,7 @@ msgstr "ファイルを読み込みできません"
 #: src/frontends/qt4/GuiView.cpp:2013
 #, c-format
 msgid "No information for importing the format %1$s."
-msgstr "書式%1$sを読み込みするのに必要な情報がありません"
+msgstr "形式%1$sを読み込みするのに必要な情報がありません"
 
 #: src/frontends/qt4/GuiView.cpp:2060
 #, c-format
@@ -21844,22 +21821,22 @@ msgstr "子文書%1$sを開いています..."
 #: src/frontends/qt4/GuiView.cpp:2951
 #, c-format
 msgid "Successful preview of format: %1$s"
-msgstr "書式 %1$s のプレビューに成功"
+msgstr "形式 %1$s のプレビューに成功"
 
 #: src/frontends/qt4/GuiView.cpp:2952
 #, c-format
 msgid "Error while previewing format: %1$s"
-msgstr "書式 %1$s のプレビューに失敗"
+msgstr "形式 %1$s のプレビューに失敗"
 
 #: src/frontends/qt4/GuiView.cpp:2955
 #, c-format
 msgid "Successful export to format: %1$s"
-msgstr "書式 %1$s への書き出しに成功しました"
+msgstr "形式 %1$s への書き出しに成功しました"
 
 #: src/frontends/qt4/GuiView.cpp:2956
 #, c-format
 msgid "Error while exporting format: %1$s"
-msgstr "書式 %1$s に書き出す際にエラーが発生しました"
+msgstr "形式 %1$s に書き出す際にエラーが発生しました"
 
 #: src/frontends/qt4/GuiView.cpp:3140 src/frontends/qt4/GuiView.cpp:3152
 msgid "Exporting ..."
@@ -22021,7 +21998,7 @@ msgstr "表示（他の形式）(F)|F"
 
 #: src/frontends/qt4/Menus.cpp:1028
 msgid "Update (Other Formats)|p"
-msgstr "更新（他の書式）(P)|P"
+msgstr "更新（他の形式）(P)|P"
 
 #: src/frontends/qt4/Menus.cpp:1061
 #, c-format
@@ -23096,7 +23073,7 @@ msgstr "読み込み中です..."
 
 #: src/insets/RenderGraphic.cpp:93
 msgid "Converting to loadable format..."
-msgstr "読み込み可能な書式に変換中です..."
+msgstr "読み込み可能な形式に変換中です..."
 
 #: src/insets/RenderGraphic.cpp:96
 msgid "Loaded into memory. Generating pixmap..."
@@ -23116,7 +23093,7 @@ msgstr "ファイルが見つかりません！"
 
 #: src/insets/RenderGraphic.cpp:108
 msgid "Error converting to loadable format"
-msgstr "読み込み可能な書式に変換するのに失敗しました"
+msgstr "読み込み可能な形式に変換するのに失敗しました"
 
 #: src/insets/RenderGraphic.cpp:111
 msgid "Error loading file into memory"
