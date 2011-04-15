@@ -587,7 +587,8 @@ docstring Counters::prettyCounter(docstring const & name,
 	Counter const & ctr = it->second;
 
 	docstring const value = theCounter(name, lang);
-	docstring const & format = ctr.prettyFormat();
+	docstring const & format =
+	    translateIfPossible(ctr.prettyFormat(), lang);
 	if (format.empty())
 		return value;
 	return subst(format, from_ascii("##"), value);
