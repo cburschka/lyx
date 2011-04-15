@@ -1122,8 +1122,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		docstring label = cmd.argument();
 		if (label.empty()) {
 			InsetRef * inset =
-				getInsetByCode<InsetRef>(d->cursor_,
-							 REF_CODE);
+				getInsetByCode<InsetRef>(cur, REF_CODE);
 			if (inset) {
 				label = inset->getParam("reference");
 				// persistent=false: use temp_bookmark
@@ -1248,23 +1247,25 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_ALL_CHANGES_ACCEPT:
 		// select complete document
-		d->cursor_.reset(buffer_.inset());
-		d->cursor_.selHandle(true);
-		buffer_.text().cursorBottom(d->cursor_);
+		cur.reset(buffer_.inset());
+		cur.selHandle(true);
+		buffer_.text().cursorBottom(cur);
 		// accept everything in a single step to support atomic undo
-		buffer_.text().acceptOrRejectChanges(d->cursor_, Text::ACCEPT);
+		buffer_.text().acceptOrRejectChanges(cur, Text::ACCEPT);
+		cur.resetAnchor();
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
 		processUpdateFlags(Update::Force | Update::FitCursor);
 		break;
 
 	case LFUN_ALL_CHANGES_REJECT:
 		// select complete document
-		d->cursor_.reset(buffer_.inset());
-		d->cursor_.selHandle(true);
-		buffer_.text().cursorBottom(d->cursor_);
+		cur.reset(buffer_.inset());
+		cur.selHandle(true);
+		buffer_.text().cursorBottom(cur);
 		// reject everything in a single step to support atomic undo
 		// Note: reject does not work recursively; the user may have to repeat the operation
-		buffer_.text().acceptOrRejectChanges(d->cursor_, Text::REJECT);
+		buffer_.text().acceptOrRejectChanges(cur, Text::REJECT);
+		cur.resetAnchor();
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
 		processUpdateFlags(Update::Force | Update::FitCursor);
 		break;
@@ -1336,7 +1337,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_BIBTEX_DATABASE_ADD: {
-		Cursor tmpcur = d->cursor_;
+		Cursor tmpcur = cur;
 		findInset(tmpcur, BIBTEX_CODE, false);
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
 						BIBTEX_CODE);
@@ -1348,7 +1349,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_BIBTEX_DATABASE_DEL: {
-		Cursor tmpcur = d->cursor_;
+		Cursor tmpcur = cur;
 		findInset(tmpcur, BIBTEX_CODE, false);
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
 						BIBTEX_CODE);
@@ -1507,6 +1508,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		buffer_.changed();
 		d->text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_,
 			true, cmd.action == LFUN_SCREEN_UP); 
+		cur.resetAnchor();
 		//FIXME: what to do with cur.x_target()?
 		bool update = false;
 		if (in_texted)
@@ -1867,6 +1869,8 @@ void BufferView::setCursorFromRow(int row)
 		buffer_.text().setCursor(d->cursor_, 0, 0);
 	else
 		buffer_.text().setCursor(d->cursor_, buffer_.getParFromID(tmpid).pit(), tmppos);
+	d->cursor_.setSelection(false);
+	d->cursor_.resetAnchor();
 }
 
 
