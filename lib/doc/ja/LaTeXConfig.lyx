@@ -1,21 +1,29 @@
-#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
 \use_default_options false
+\maintain_unincluded_children false
 \language japanese
+\language_package default
 \inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -23,21 +31,31 @@
 \use_geometry false
 \use_amsmath 0
 \use_esint 0
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index 索引
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -152,6 +170,120 @@ texhash
 \end_layout
 
 \begin_layout Subsection
+Almost European (AE)
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "ae"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family sans
+fonts/ae/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+AE
+\family default
+パッケージは、LaTeXの標準フォント（Computer Modern）の擬似的なPostScript®版を提供します。特別な事情がなければ、このフォントではな
+く、
+\family sans
+Latin Modern
+\family default
+を使用することを推奨します。
+\end_layout
+
+\begin_layout Subsection
+Bera
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "bera"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family sans
+fonts/bera
+\end_layout
+
+\begin_layout Description
+備考： beraフォントは、Bitstream Veraのクローンであり、Bera Serif（slab-serifのローマン体）、Bera Sans（Frut
+igerの後継）、およびBera Mono（等間隔／タイプライタ）を含みます。
+\end_layout
+
+\begin_layout Subsection
+CM bright
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "cmbright"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family sans
+fonts/cmbright
+\end_layout
+
+\begin_layout Description
+備考： CM brightは、すばらしいサンセリフ数式フォントも同時に提供する、サンセリフフォントです。
+\end_layout
+
+\begin_layout Subsection
+Concrete
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "ccfonts"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family sans
+macros/latex/contrib/ccfonts/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+ccfonts
+\family default
+パッケージは、Donald Knuthが書籍『
+\emph on
+Concrete Mathematics
+\emph default
+』ためにデザインしたフォントのサポートを提供します。本の題名からconcreteフォントと呼ばれています。
+\end_layout
+
+\begin_layout Subsection
 ECフォント
 \end_layout
 
@@ -196,6 +328,116 @@ ec
 \end_layout
 
 \begin_layout Subsection
+Eco
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "eco"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family sans
+fonts/eco/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+eco
+\family default
+パッケージは、LyXが
+\family sans
+Computer Modern
+\family default
+フォント族の旧式の数字にアクセスするのに使用します。
+\end_layout
+
+\begin_layout Subsection
+feyn
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "feyn"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family sans
+fonts/feyn/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+feyn
+\family default
+パッケージは、数式中で
+\family sans
+ファインマン
+\family default
+図を使う際（LaTeXコマンド
+\series bold
+
+\backslash
+Diagram
+\series default
+）に使用されます。
+\end_layout
+
+\begin_layout Subsection
+fourier-GUTenberg
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "fourier"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family sans
+fonts/fourier-GUT
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+fourier
+\family default
+パッケージは、Utopia PostScript®フォントのサポートを提供します。
+\family sans
+PSNFSS
+\family default
+群に付いてくる
+\family sans
+utopia
+\family default
+パッケージとは異なり、これは適当な数学フォントも提供します。もしこのパッケージが装備されていれば、Utopiaフォントを選択した際に、
+\family sans
+utopia
+\family default
+の代わりにこれが使われるようになります。
+\end_layout
+
+\begin_layout Subsection
 Latin Modern
 \end_layout
 
@@ -229,14 +471,14 @@ Latin Modern
 \end_layout
 
 \begin_layout Subsection
-Almost European (AE)
+LuxiMono
 \end_layout
 
 \begin_layout Description
 検出： 
 \begin_inset Info
 type  "package"
-arg   "ae"
+arg   "luximono"
 \end_inset
 
 
@@ -245,52 +487,15 @@ arg   "ae"
 \begin_layout Description
 CTAN： 
 \family sans
-fonts/ae/
+fonts/LuxiMono/
 \end_layout
 
 \begin_layout Description
 備考： 
 \family sans
-AE
+luximono
 \family default
-パッケージは、LaTeXの標準フォント（Computer Modern）の擬似的なPostScript®版を提供します。特別な事情がなければ、このフォントではな
-く、
-\family sans
-Latin Modern
-\family default
-を使用することを推奨します。
-\end_layout
-
-\begin_layout Subsection
-Eco
-\end_layout
-
-\begin_layout Description
-検出： 
-\begin_inset Info
-type  "package"
-arg   "eco"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN： 
-\family sans
-fonts/eco/
-\end_layout
-
-\begin_layout Description
-備考： 
-\family sans
-eco
-\family default
-パッケージは、LyXが
-\family sans
-Computer Modern
-\family default
-フォント族の旧式の数字にアクセスするのに使用します。
+パッケージは、等間隔フォントであるLuxida Monoフォントのサポートを提供します。
 \end_layout
 
 \begin_layout Subsection
@@ -532,155 +737,6 @@ arg   "chancery"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-fourier-GUTenberg
-\end_layout
-
-\begin_layout Description
-検出： 
-\begin_inset Info
-type  "package"
-arg   "fourier"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN： 
-\family sans
-fonts/fourier-GUT
-\end_layout
-
-\begin_layout Description
-備考： 
-\family sans
-fourier
-\family default
-パッケージは、Utopia PostScript®フォントのサポートを提供します。
-\family sans
-PSNFSS
-\family default
-群に付いてくる
-\family sans
-utopia
-\family default
-パッケージとは異なり、これは適当な数学フォントも提供します。もしこのパッケージが装備されていれば、Utopiaフォントを選択した際に、
-\family sans
-utopia
-\family default
-の代わりにこれが使われるようになります。
-\end_layout
-
-\begin_layout Subsection
-CM bright
-\end_layout
-
-\begin_layout Description
-検出： 
-\begin_inset Info
-type  "package"
-arg   "cmbright"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN： 
-\family sans
-fonts/cmbright
-\end_layout
-
-\begin_layout Description
-備考： CM brightは、すばらしいサンセリフ数式フォントも同時に提供する、サンセリフフォントです。
-\end_layout
-
-\begin_layout Subsection
-Bera
-\end_layout
-
-\begin_layout Description
-検出： 
-\begin_inset Info
-type  "package"
-arg   "bera"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN： 
-\family sans
-fonts/bera
-\end_layout
-
-\begin_layout Description
-備考： beraフォントは、Bitstream Veraのクローンであり、Bera Serif（slab-serifのローマン体）、Bera Sans（Frut
-igerの後継）、およびBera Mono（等間隔／タイプライタ）を含みます。
-\end_layout
-
-\begin_layout Subsection
-Concrete
-\end_layout
-
-\begin_layout Description
-検出： 
-\begin_inset Info
-type  "package"
-arg   "ccfonts"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN： 
-\family sans
-macros/latex/contrib/ccfonts/
-\end_layout
-
-\begin_layout Description
-備考： 
-\family sans
-ccfonts
-\family default
-パッケージは、Donald Knuthが書籍『
-\emph on
-Concrete Mathematics
-\emph default
-』ためにデザインしたフォントのサポートを提供します。本の題名からconcreteフォントと呼ばれています。
-\end_layout
-
-\begin_layout Subsection
-LuxiMono
-\end_layout
-
-\begin_layout Description
-検出： 
-\begin_inset Info
-type  "package"
-arg   "luximono"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN： 
-\family sans
-fonts/LuxiMono/
-\end_layout
-
-\begin_layout Description
-備考： 
-\family sans
-luximono
-\family default
-パッケージは、等間隔フォントであるLuxida Monoフォントのサポートを提供します。
 \end_layout
 
 \begin_layout Subsection
@@ -3086,6 +3142,34 @@ http://www.photogrammetry.ethz.ch/tarasp_workshop/isprs.cls
 \end_layout
 
 \begin_layout Subsection
+amstext
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "amstext"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/required/amslatex/math/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+amstext
+\family default
+パッケージは、unicodeシンボルを数式内で上付きや下付き文字にする際、LyXが正しい寸法に調整するのに必要とします。
+\end_layout
+
+\begin_layout Subsection
 array
 \end_layout
 
@@ -3278,6 +3362,34 @@ booktabs
 \end_layout
 
 \begin_layout Subsection
+calc
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "calc"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/required/tools/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+calc
+\family default
+パッケージは、LyXが長さやカウンタを処理する際に必要です。
+\end_layout
+
+\begin_layout Subsection
 color
 \end_layout
 
@@ -3308,6 +3420,35 @@ color
 graphics
 \family default
 パッケージに同梱されています。
+\end_layout
+
+\begin_layout Subsection
+float
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "float"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/float/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+float
+\family default
+パッケージは、LyXが非標準のフロートオブジェクトを作成するのに使用されます。また、フロート配置で「なんとしても現在位置に置く」という設定を利用できるようにしま
+す。
 \end_layout
 
 \begin_layout Subsection
@@ -3363,6 +3504,34 @@ status collapsed
 \end_inset
 
 であると決定しました。
+\end_layout
+
+\begin_layout Subsection
+hhline
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "hhline"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/required/tools/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+hhline
+\family default
+パッケージは、表や行列における水平線の質を改善します。これは、表計算外部差込枠が使用できるようになるために必要です。
 \end_layout
 
 \begin_layout Subsection
@@ -3423,34 +3592,6 @@ longtable
 
 \begin_layout Description
 
-\end_layout
-
-\begin_layout Subsection
-amstext
-\end_layout
-
-\begin_layout Description
-検出: 
-\begin_inset Info
-type  "package"
-arg   "amstext"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN: 
-\family typewriter
-macros/latex/required/amslatex/math/
-\end_layout
-
-\begin_layout Description
-備考: 
-\family sans
-amstext
-\family default
-パッケージは、unicodeシンボルを数式内で上付きや下付き文字にする際、LyXが正しい寸法に調整するのに必要とします。
 \end_layout
 
 \begin_layout Subsection
@@ -3588,6 +3729,78 @@ endnotes
 \end_layout
 
 \begin_layout Subsection
+点字モジュール
+\end_layout
+
+\begin_layout Subsubsection
+braille
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "braille"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/braille/
+\end_layout
+
+\begin_layout Description
+脚注: 
+\family sans
+braille
+\family default
+パッケージは、視覚障害者のための点字を組版することを可能にします。
+\end_layout
+
+\begin_layout Subsection
+イニシャルモジュール
+\end_layout
+
+\begin_layout Subsubsection
+lettrine
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "lettrine"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/lettrine/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+lettrine
+\family default
+パッケージは、
+\begin_inset CommandInset href
+LatexCommand href
+name "イニシャル"
+target "http://en.wikipedia.org/wiki/Initial"
+
+\end_inset
+
+を作成するのに使用されます。
+\end_layout
+
+\begin_layout Subsection
 言語学モジュール
 \end_layout
 
@@ -3675,36 +3888,196 @@ enumitem
 パッケージは、リスト（番号・記号・記述）の外観を調整するのに多くの可能性を提供します。言語学モジュールが、下位連番用例の外観を微調整するのに使用します。
 \end_layout
 
-\begin_layout Subsection
-点字モジュール
+\begin_layout Section
+
+\series bold
+\size large
+言語パッケージ
 \end_layout
 
-\begin_layout Subsubsection
-braille
+\begin_layout Subsection
+arabi
 \end_layout
 
 \begin_layout Description
-検出: 
+検出： 
 \begin_inset Info
 type  "package"
-arg   "braille"
+arg   "arabi"
 \end_inset
 
 
 \end_layout
 
 \begin_layout Description
-CTAN: 
+CTAN： 
 \family typewriter
-macros/latex/contrib/braille/
+language/arabic/arabi/
 \end_layout
 
 \begin_layout Description
-脚注: 
+備考： 
 \family sans
-braille
+arabi
 \family default
-パッケージは、視覚障害者のための点字を組版することを可能にします。
+パッケージは、文書言語がアラビア語やペルシア語の文書を、LyXが出力するために必要です。
+\end_layout
+
+\begin_layout Subsection
+japanese
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "japanese"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+language/japanese/japanese
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+babel japanese
+\family default
+オプションは、文書言語が「日本語」の時に、LyXが節見出しと日付を日本語で出力するために必要です。このオプションを使用するためには、日本語TeXシステムのpTe
+X（CTAN
+\family typewriter
+：language/japanese/ptex
+\family default
+）が必要です。
+\end_layout
+
+\begin_layout Subsection
+lithuanian
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "lithuanian"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+language/lithuanian/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+lithuanian
+\family default
+パッケージは、文書言語がリトアニア語の文書を、LyXが出力するために必要です。
+\end_layout
+
+\begin_layout Subsection
+mongolian-babel
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "mongolian"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+language/mongolian/babel/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+mongolian-babel
+\family default
+パッケージは、文書言語がモンゴル語の文書を、LyXが出力するために必要です。
+\end_layout
+
+\begin_layout Subsection
+polyglossia
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "polyglossia"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/xetex/latex/polyglossia/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+polyglossia
+\family default
+パッケージは、XeTeX用の言語インタフェースを提供します。これは、
+\family sans
+babel
+\family default
+パッケージに取り代わって、XeTeXの多言語機能と多スクリプト機能を利用するようにします。導入されていれば、XeTeXを出力書式に指定したとき、
+\family sans
+babel
+\family default
+の代わりに
+\family sans
+polyglossia
+\family default
+が言語処理に使用されます。
+\end_layout
+
+\begin_layout Subsection
+turkmen
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "turkmen"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+language/turkmen/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+turkmen
+\family default
+パッケージは、文書言語がトルクメン語の文書を、LyXが出力するために必要です。
 \end_layout
 
 \begin_layout Section
@@ -3794,14 +4167,37 @@ macros/latex/contrib/bibtopic/
 \begin_layout Description
 備考： 
 \family sans
-CJKutf8
+bibtopic
 \family default
-パッケージ（
+パッケージは、BibTeXが生成する書誌情報を節に分けるのに使用されます。
+\end_layout
+
+\begin_layout Subsection
+breakurl
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "breakurl"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/breakurl/
+\end_layout
+
+\begin_layout Description
+備考： 
 \family sans
-CJK
+breakurl
 \family default
-バンドルの一部）は、LaTeX本体とCJKのUTF-8サポートとを統合します。これは、CJKとUTF-8エンコーディングおよびhyperrefとを同時に使ったと
-きに正しい出力を得るために必要です。
+パッケージは、hyperrefが使用されているときに、DVI出力中のURLが行末で正しく改行されるようにします。
 \end_layout
 
 \begin_layout Subsection
@@ -3827,9 +4223,14 @@ language/chinese/CJK/
 \begin_layout Description
 備考： 
 \family sans
-dvipost
+CJKutf8
 \family default
-はLaTeXやTeXが生成したDVIファイルの後処理器です。LyXが、変更追尾記号のDVI出力あるいはPo
+パッケージ（
+\family sans
+CJK
+\family default
+バンドルの一部）は、LaTeX本体とCJKのUTF-8サポートとを統合します。これは、CJKとUTF-8エンコーディングおよびhyperrefとを同時に使ったと
+きに正しい出力を得るために必要です。
 \end_layout
 
 \begin_layout Subsection
@@ -3965,6 +4366,66 @@ fancyheadings
 \end_layout
 
 \begin_layout Subsection
+fixltx2e
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "fixltx2e"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/unpacked/fixltx2e.sty
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+fixltx2e
+\family default
+パッケージは、LaTeXカーネル中のバグを修正します。これは、
+\family sans
+fixltx2e
+\family default
+モジュールを取り込むことで使用することができます。
+\end_layout
+
+\begin_layout Subsection
+hyphenat
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "hyphenat"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/hyphenat/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+hyphenat
+\family default
+パッケージは、いくつかの文書クラスと文書言語において、ハイフネーションを無効にするのに必要です。
+\end_layout
+
+\begin_layout Subsection
 ifthen
 \end_layout
 
@@ -4000,39 +4461,6 @@ if
  else
 \emph default
 ）を提供します。この機能は、いくつかのクラスやモジュールが必要とします。
-\end_layout
-
-\begin_layout Subsection
-japanese
-\end_layout
-
-\begin_layout Description
-検出： 
-\begin_inset Info
-type  "package"
-arg   "japanese"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN： 
-\family typewriter
-language/japanese/japanese
-\end_layout
-
-\begin_layout Description
-備考： 
-\family sans
-babel japanese
-\family default
-オプションは、文書言語が「日本語」の時に、LyXが節見出しと日付を日本語で出力するために必要です。このオプションを使用するためには、日本語TeXシステムのpTe
-X（CTAN
-\family typewriter
-：language/japanese/ptex
-\family default
-）が必要です。
 \end_layout
 
 \begin_layout Subsection
@@ -4115,6 +4543,100 @@ listings
 \end_layout
 
 \begin_layout Subsection
+luainputenc
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "luainputenc"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/luatex/latex/luainputenc/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+luainputenc
+\family default
+パッケージは、LuaTeX用に入力エンコーディング機能を再実装します。TeXフォントを使用し、かつLuaTeXが出力書式に指定されてするときに必要とされます。
+\end_layout
+
+\begin_layout Subsection
+mathrsfs
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "mathrsfs"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/jknappen/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+mathrsfs
+\family default
+パッケージは、数式様式「フォーマルスクリプト体」を出力する際、LyXが使用します。
+\end_layout
+
+\begin_layout Subsection
+mathdots
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "mathdots"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/generic/mathdots/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+mathdots
+\family default
+パッケージは、LyXが数式コマンド
+\family sans
+
+\backslash
+iddots
+\family default
+を解析する際に使用されます。これは、文書設定の
+\family sans
+数式オプション
+\family default
+タブで読み込ませることができ、文書中すべての数式ドットの外観を変更することもできます。
+\end_layout
+
+\begin_layout Subsection
 mhchem
 \end_layout
 
@@ -4140,6 +4662,34 @@ macros/latex/contrib/mhchem/
 mhchem
 \family default
 パッケージは、LyXが、化学式と反応式を数式中で生成するのに必要です。
+\end_layout
+
+\begin_layout Subsection
+multirow
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "multirow"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/multirow/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+multirow
+\family default
+パッケージは、LyXが複数行の表セルを連結するのに使用され、同時に表計算外部差込枠のサポートも提供します。
 \end_layout
 
 \begin_layout Subsection
@@ -4421,6 +4971,38 @@ slashed
 \end_layout
 
 \begin_layout Subsection
+splitidx
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "splitidx"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/splitindex/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+splitidx
+\family default
+パッケージは、LyXが複数の分割された索引を生成するのに使用されます。同梱の
+\family sans
+splitindex
+\family default
+変換プログラムのうち、一つを導入する必要があることに注意してください。
+\end_layout
+
+\begin_layout Subsection
 subfig
 \end_layout
 
@@ -4445,8 +5027,40 @@ macros/latex/contrib/subfig
 \family sans
 subfig
 \family default
-パッケージは、LyXがサブフロート（subfigure・subtable等）を生成するのに使用します。サブフロートは、それぞれにサブキャプションを付けて、他のフ
-ロート内に埋め込むことができるフロートです。
+パッケージは、LyXがサブフロート（subfigure・subtable等）を生成するのに使用されます。サブフロートは、それぞれにサブキャプションを付けて、他の
+フロート内に埋め込むことができるフロートです。
+\end_layout
+
+\begin_layout Subsection
+subscript
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "subscript"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/fragments/subscript.sty
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+subscript
+\family default
+パッケージは、LyXが、一部の文書クラスにおいて下付き文字を出力するのに使用されます。TeX頒布版においては、通常
+\family sans
+fragments
+\family default
+パッケージの一部となっています。
 \end_layout
 
 \begin_layout Subsection
@@ -4560,6 +5174,34 @@ macros/latex/contrib/misc/url.sty
 url
 \family default
 パッケージは、LyXがURLを正しく出力するのに必要です。
+\end_layout
+
+\begin_layout Subsection
+wasysym
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "wasysym"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/wasysym/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+wasysym
+\family default
+パッケージは、LyXがwasyフォント由来の追加文字を出力するのに必要です。
 \end_layout
 
 \begin_layout Subsection

@@ -1,12 +1,12 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 410
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass jbook
 \begin_preamble
 %% Added by the translator
 %   Correction for PDF bookmarks
-\usepackage[dvipdfm,bookmarks=true,bookmarksnumbered=true,bookmarkstype=toc]{hyperref}
+%\usepackage[dvipdfm,bookmarks=true,bookmarksnumbered=true,bookmarkstype=toc]{hyperref}
 \ifnum 42146=\euc"A4A2 \AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}\else
 \AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}}\fi
 
@@ -167,6 +167,7 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language japanese
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
@@ -236,13 +237,14 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
 \begin_body
 
 \begin_layout Title
-LyXにおける図表・フロート・注釈・ボックス・外部素材の詳細についての説明書
+LyXの図表・フロート・注釈・ボックス・外部素材に関する詳細説明書
 \end_layout
 
 \begin_layout Author
@@ -300,7 +302,7 @@ LatexCommand tableofcontents
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 本文書の全体をPDFやPS、DVIに書き出すには、
@@ -1642,23 +1644,12 @@ status collapsed
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-With the dialog option 
+ダイアログオプションの
 \family sans
-Immediate
-\begin_inset space ~
-\end_inset
-
-Apply
+直ちに適用
 \family default
- every change you make in the dialog is directly applied.
- If you move the cursor to another table cell the dialog will then also
- be updated with the parameters of the new cell.
- If you change length values in the dialog you must press return to get
- the change applied.
-\lang japanese
-
+を使用すると、ダイアログ中に行った変更が直ちに適用されるようになります。カーソルを別のセルに移動すると、ダイアログも新しいセルのパラメーターに更新されます。ダイ
+アログ中の長さの値を変更した場合には、リターンを押さないと変更が適用されません。
 \begin_inset Newline newline
 \end_inset
 
@@ -1671,29 +1662,18 @@ Apply
 表の設定
 \family default
  ここでは、現在列の幅と水平揃えを設定することができます。
-\lang english
-The alignment 
 \family sans
-At
-\begin_inset space ~
-\end_inset
-
-Decimal
-\begin_inset space ~
-\end_inset
-
-Separator
+小数点で
 \family default
- is described in
-\lang japanese
- 第
+とある揃えは、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:特殊なセル揃え"
 
 \end_inset
 
-。幅を設定した場合には、現在行の垂直揃えも調整することができます。列幅を与えると、改行や多段落の文章をセルに入れることができます。これに関しては、第
+で説明されています。幅を設定した場合には、現在行の垂直揃えも調整することができます。列幅を与えると、改行や多段落の文章をセルに入れることができます。これに関して
+は、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:複数行"
@@ -1711,22 +1691,14 @@ reference "sub:連結列"
 
 \end_inset
 
-節をご参照下さい 
-\lang english
-or the cells of one column as multirow cell, see section
-\lang japanese
-
-\begin_inset space ~
-\end_inset
-
-
+節をご参照下さい。あるいは同一列のセルを連結行セルとして指定することもできます。これについては、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:連結行"
 
 \end_inset
 
-。
+節をご参照ください。
 \begin_inset Newline newline
 \end_inset
 
@@ -1752,15 +1724,11 @@ DVIビューアのすべてが回転を表示できるわけではありませ�
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-The table-wide vertical alignment is used for tables within text lines:
+下記は、本文行中の表に、表全体の垂直揃えを適用したものです。
 \begin_inset Newline newline
 \end_inset
 
-A line with tables with different alignments
-\lang japanese
-: 
+各種の揃えを適用した同一行中の表：
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features tabularvalignment="top">
@@ -2165,9 +2133,7 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-aligns the content of the current column at a character
+は、現在セルの内容を特定文字位置で揃えます。
 \end_layout
 
 \begin_layout Labeling
@@ -2244,9 +2210,7 @@ aligns the content of the current column at a character
 
 \end_inset
 
- 
-\lang english
-sets the current cell or selection as a multirow
+は、現在セルあるいは選択範囲を連結行にします。
 \end_layout
 
 \begin_layout Standard
@@ -5041,25 +5005,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The horizontal alignment of longtables can be set in the table settings
- dialog.
- For left- and right-alignment the table will be directly at the page border.
- To add space between the table and the border one has to set the alignment
- to center and change the value of the LaTeX-lengths 
-\series bold
-
-\backslash
-LTleft 
-\series default
-or 
-\series bold
-
-\backslash
-LTright
-\series default
- by inserting this line as TeX-Code before the longtable:
+表設定ダイアログでは、長尺表の水平揃えを指定することができます。左揃えや右揃えでは、表は直接ページ境界に寄せられます。表と境界の間に余白を加えるには、中央揃えに
+設定してから
 \end_layout
 
 \begin_layout Standard
@@ -5114,27 +5061,19 @@ fill
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The following longtable was centered and
-\lang japanese
- 
+以下の長尺表は、中央揃えの上、
 \series bold
 
 \backslash
 LTleft
 \series default
- 
-\lang english
-set to
-\lang japanese
- 
+を
 \family sans
 0.1
 \backslash
 columnwidth
 \family default
-:
+に設定してあります。
 \begin_inset ERT
 status collapsed
 
@@ -11536,7 +11475,8 @@ n
 \end_inset
 
 は、
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 W_{\mbox{指}:n}=(W_{\mbox{指}:\text{連結列}}+(1-n)\cdot(12.4\,\mathrm{pt}))/n\label{eq:Wgn}
 \end{equation}
 
@@ -11562,7 +11502,8 @@ reference "eq:Wgn"
 \end_inset
 
 式は
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 W_{\text{指}:2}=1.25\,\mathrm{cm}-6.2\,\mathrm{pt}
 \end{equation}
 
@@ -11722,44 +11663,34 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To merge cells over multiple rows, select as many cells within a column
- as you want to merge and use either the table-toolbar button
-\lang japanese
- 
+複数行にかかるセルを連結するには、同一列中の統合したいセルをすべて選択し、ツールバーボタン
 \begin_inset Graphics
-	filename ../../images/tabular-feature_multirow.png
+	filename /Users/uji/Documents/CommonWealth/oth/comp/lyx/translation/images/tabular-feature_multirow.png
 	scale 85
 	scaleBeforeRotation
 
 \end_inset
 
-, 
-\lang english
-or the menu 
+を押すか、メニュー
 \family sans
-Edit\SpecialChar \menuseparator
-Table\SpecialChar \menuseparator
-Multirow
+編集\SpecialChar \menuseparator
+表\SpecialChar \menuseparator
+連結行
 \family default
-, or right click on the marked cells and choose 
+を選ぶか、選択したセルを右クリックして、コンテクストメニューから
 \family sans
-Multirow
+\SpecialChar \menuseparator
+連結行
 \family default
- in the context menu.
+を選んでください。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is an example table with a multirow in the first column:
+下記は一列目に連結列を適用した表の例です。
 \end_layout
 
 \begin_layout Standard
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
@@ -11771,9 +11702,7 @@ Here is an example table with a multirow in the first column:
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-a long cell entry
+長いセル項目
 \end_layout
 
 \end_inset
@@ -11782,9 +11711,7 @@ a long cell entry
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-b
+ろ
 \end_layout
 
 \end_inset
@@ -11793,9 +11720,7 @@ b
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-c
+は
 \end_layout
 
 \end_inset
@@ -11806,9 +11731,7 @@ c
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-multirow
+連結列
 \end_layout
 
 \end_inset
@@ -11817,9 +11740,7 @@ multirow
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-e
+に
 \end_layout
 
 \end_inset
@@ -11828,9 +11749,7 @@ e
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-f
+ほ
 \end_layout
 
 \end_inset
@@ -11850,9 +11769,7 @@ f
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-h
+と
 \end_layout
 
 \end_inset
@@ -11861,9 +11778,7 @@ h
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-i
+ち
 \end_layout
 
 \end_inset
@@ -11877,30 +11792,15 @@ i
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The width of multirow cells is set by setting the width and alignment for
- the whole column.
- The 
+連結列の幅は、列全体の幅と揃えを設定することによって設定することができます。
 \family sans
-Vertical Offset
+垂直オフセット
 \family default
- shifts the content of the multirow up/down if the offset is positive/negative.
+は、正または負の値を与えると、連結列の内容を上下にシフトします。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If the column of a multirow cell has no explicit width, the multirow cell
- inherits the alignment of the column.
- Otherwise it is by default left-aligned.
- To override the default, renew the command 
-\series bold
-
-\backslash
-multirowsetup
-\series default
- with the command
+連結行セルの列に明示的な幅が与えられていない場合、連結行セルは当該列の揃えを継承します。それもなければ左揃えです。既定値を上書きするには、
 \end_layout
 
 \begin_layout Standard
@@ -11945,18 +11845,7 @@ raggedright
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This is an example table with a right-aligned multirow cell that has a vertical
- offset of -4
-\begin_inset space \thinspace{}
-\end_inset
-
-mm and is in a 3
-\begin_inset space \thinspace{}
-\end_inset
-
-cm wide column:
+下記は、-4ミリの垂直オフセットを設定し、3センチ幅の列中にある右揃えの連結列セルがある表の例です。
 \end_layout
 
 \begin_layout Standard
@@ -11990,7 +11879,7 @@ raggedleft}
 \begin_inset Text
 
 \begin_layout Plain Layout
-a long cell entry
+長いセル項目
 \end_layout
 
 \end_inset
@@ -11999,7 +11888,7 @@ a long cell entry
 \begin_inset Text
 
 \begin_layout Plain Layout
-b
+ろ
 \end_layout
 
 \end_inset
@@ -12008,7 +11897,7 @@ b
 \begin_inset Text
 
 \begin_layout Plain Layout
-c
+は
 \end_layout
 
 \end_inset
@@ -12019,7 +11908,7 @@ c
 \begin_inset Text
 
 \begin_layout Plain Layout
-t
+り
 \end_layout
 
 \end_inset
@@ -12028,7 +11917,7 @@ t
 \begin_inset Text
 
 \begin_layout Plain Layout
-n
+ぬ
 \end_layout
 
 \end_inset
@@ -12037,7 +11926,7 @@ n
 \begin_inset Text
 
 \begin_layout Plain Layout
-m
+る
 \end_layout
 
 \end_inset
@@ -12048,7 +11937,7 @@ m
 \begin_inset Text
 
 \begin_layout Plain Layout
-multirow
+連結列
 \end_layout
 
 \end_inset
@@ -12057,7 +11946,7 @@ multirow
 \begin_inset Text
 
 \begin_layout Plain Layout
-e
+に
 \end_layout
 
 \end_inset
@@ -12066,7 +11955,7 @@ e
 \begin_inset Text
 
 \begin_layout Plain Layout
-f
+ほ
 \end_layout
 
 \end_inset
@@ -12086,7 +11975,7 @@ f
 \begin_inset Text
 
 \begin_layout Plain Layout
-h
+と
 \end_layout
 
 \end_inset
@@ -12095,7 +11984,7 @@ h
 \begin_inset Text
 
 \begin_layout Plain Layout
-i
+ち
 \end_layout
 
 \end_inset
@@ -16284,12 +16173,7 @@ reference "tab:表セル"
 
 \end_inset
 
-の小数点のように、同一列の各セルの内容が、特定の文字で揃えられた方が見栄えの良いことがあります。 
-\lang english
-This alignment is achieved by setting the cursor into the column and then
- either pressing the toolbar button
-\lang japanese
- 
+の小数点のように、同一列の各セルの内容が、特定の文字で揃えられた方が見栄えの良いことがあります。この揃え方は、当該列にカーソルを置いて、ツールバーボタン
 \begin_inset Graphics
 	filename ../../images/tabular-feature_align-decimal.png
 	scale 85
@@ -16297,23 +16181,11 @@ This alignment is achieved by setting the cursor into the column and then
 
 \end_inset
 
- 
-\lang english
-or setting the alignment in the table settings to 
+を押すか、表設定中で揃えを
 \family sans
-At
-\begin_inset space ~
-\end_inset
-
-Decimal
-\begin_inset space ~
-\end_inset
-
-Separator
+小数点で
 \family default
-.
- The alignment character can be a character of your choice and is specified
- in the table settings.
+に設定します。
 \end_layout
 
 \begin_layout Standard
@@ -16416,13 +16288,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Table-align-operator"
+name "tab:演算子揃え表"
 
 \end_inset
 
-
-\lang english
-Table cells of a column aligned with the operators.
+一列が演算子で揃えられた表セル
 \end_layout
 
 \end_inset
@@ -16548,32 +16418,16 @@ Table cells of a column aligned with the operators.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For alignments at characters in formulas this method does not work because
- the field to specify the alignment character does not allow formulas.
- In this case one need to use the method from 
-\lang japanese
-表
-\lang english
-
+揃え文字を指定するフィールドには、数式を用いることができないので、この方法を使って、数式中の文字で揃えることはできません。このような場合には、表
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-align-operator"
+reference "tab:演算子揃え表"
 
 \end_inset
 
-.
- This table was created with a 4×2 table.
- The heading is a centered multicolumn.
- The first column is right-aligned and contains the first part including
- the operator.
- The second column is left aligned and contains the rest.
- A small space was added at the beginning of each cell of the second column
- to get the space that is usually around operators.
-
-\lang japanese
- 第2列には、小数点以下の各桁が左揃えで収められています。通常、表の列間に加えられる余白を削るために、
+のような方法を用いる必要があります。この表は、4×2表として作成されており、見出しは中央揃え連結列です。第1列には、右揃えで演算子を含む前半部を収め、第2列には
+、左揃えで残りを収めます。演算子の周りに通常加えられる空白を得るために、第2列の各セルの冒頭には、小空白が加えられています。通常、表の列間に加えられる余白を削る
+ために、
 \end_layout
 
 \begin_layout Standard
@@ -16594,19 +16448,14 @@ reference "tab:表セル揃え"
 
 \end_inset
 
-は、揃え方の例をいくつか示しています。
-\lang english
-For the alignment with the relation sign, a small space was added like for
- the second column of
-\lang japanese
- 表
+は、揃え方の例をいくつか示しています。関係子で揃えるために、表
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-align-operator"
+reference "tab:演算子揃え表"
 
 \end_inset
 
-.
+の冒頭には、小空白が加えられています。
 \end_layout
 
 \begin_layout Standard
@@ -19414,13 +19263,7 @@ reference "fig:歪められた二つの像"
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Formatted
-\begin_inset space ~
-\end_inset
-
-reference: prints a self-defined cross-reference format.
+整形された参照: これは自製の相互参照書式で出力します。
 \begin_inset Newline newline
 \end_inset
 
@@ -19429,21 +19272,15 @@ reference: prints a self-defined cross-reference format.
 status open
 
 \begin_layout Plain Layout
-
-\series bold
-\lang english
-Note:
-\series default
- This feature is only available when you have the LaTeX-package 
+【註】この機能は、LaTeXパッケージ
 \series bold
 prettyref
 \series default
- or 
+または
 \series bold
 refstyle
 \series default
-\lang japanese
-
+が導入されている場合のみ使用することができます。
 \begin_inset Index idx
 status collapsed
 
@@ -19464,61 +19301,41 @@ LaTeXぱっけーじ@LaTeXパッケージ ! refstyle
 \end_inset
 
 
-\lang english
- installed.
 \end_layout
 
 \end_inset
 
 
-\lang japanese
-
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-You can select which LaTeX-package should be used for this feature by setting
- the option 
+メニュー
 \family sans
-Use refstyle (not prettyref) for cross-references
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+文書クラス
 \family default
- in the menu 
+でオプション
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Document Class
+相互参照に(prettyrefではなく)refstyleを使用
 \family default
-.
- The format is specified by adding the command 
+を設定すると、この機能で使用するLaTeXパッケージを選択することができます。書式は、文書プリアンブルに
 \series bold
 
 \backslash
 newrefformat
 \series default
- (prettyref) or 
+コマンド（prettyrefの場合）あるいは
 \series bold
 
 \backslash
 newref
 \series default
- (refstyle) to the preamble of the document.
- For example redefining all references to figures (which have the label
- shortcut 
-\begin_inset Quotes eld
-\end_inset
-
-
+コマンド（refstyleの場合）を書き加えることによって指定することができます。たとえば、図への参照（これは短絡ラベル「
 \family sans
 fig
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
-) can be done with this command
-\lang japanese
-
+」を持ちます）をすべて定義し直すには、
 \begin_inset Newline newline
 \end_inset
 
@@ -19526,42 +19343,26 @@ fig
 \series bold
 
 \backslash
-newref{fig}{refcmd={
-\lang english
-Image on page
-\lang japanese
- 
+newref{fig}{refcmd={Image on page 
 \backslash
 pageref{#1}}}
-\series default
-
 \begin_inset Newline newline
 \end_inset
 
 
-\lang english
-For more information about the format, have a look at the package documentations
-\lang japanese
-, 
+\series default
+というコマンドを用います。書式についての詳細は、パッケージの取扱説明書
 \begin_inset CommandInset citation
 LatexCommand cite
 key "prettyref,refstyle"
 
 \end_inset
 
-.
+をご覧ください。
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Textual
-\begin_inset space ~
-\end_inset
-
-reference: prints the caption of the reference
-\lang japanese
-: 
+名称参照: これは、右のように参照のキャプションを出力します。 
 \begin_inset CommandInset ref
 LatexCommand nameref
 reference "fig:歪められた二つの像"
@@ -19574,69 +19375,40 @@ reference "fig:歪められた二つの像"
 \begin_layout Standard
 
 \family sans
-\lang english
-<page>
+<参照ページ>
 \family default
- will not print the page number if the label is on the previous, the same,
- or the next page.
- You will e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-see the text 
-\begin_inset Quotes eld
-\end_inset
-
-
+は、ラベルが同一あるいは前後ページにある場合には、ページ番号を出力しません。その代わりに「
 \family sans
 on this page
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
- instead.
- The style 
+」のような文章が表示されます。様式
 \family sans
-<reference> on page <page>
+<参照> on page <参照ページ>
 \family default
- will not print anything about the page if the label is on the same page.
+では、ラベルが同一ページにある場合には、ページに関することは出力されません。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The number and current page of the part of the document referred to in the
- output is automatically calculated by LaTeX.
- The varieties are adjusted in the field 
+出力中で参照されている頁番号と文書中の位置は、LaTeXが自動的に計算します。参照の種類は、相互参照ボックスをクリックすると現れる相互参照ウィンドウ中の
 \family sans
-Format
+書式
 \family default
- of the cross-reference window that appears when you click on the cross-referenc
-e box.
+フィールドで選ぶことができます。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Note:
 \series default
  It is recommended to use the LaTeX-package 
 \series bold
 refstyle
 \series default
-\lang japanese
 
 \begin_inset Index idx
 status collapsed
@@ -19647,13 +19419,10 @@ LaTeXぱっけーじ@LaTeXパッケージ ! refstyle
 
 \end_inset
 
-
-\lang english
  because 
 \series bold
 prettyref
 \series default
-\lang japanese
 
 \begin_inset Index idx
 status collapsed
@@ -19664,15 +19433,11 @@ LaTeXぱっけーじ@LaTeXパッケージ! prettyref
 
 \end_inset
 
-
-\lang english
  does not know all of LyX's possible label shortcuts
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Quotes eld
 \end_inset
 
@@ -23086,7 +22851,7 @@ status open
 コメント この注釈も出力には現れませんが、
 \family sans
 ファイル\SpecialChar \menuseparator
-エクスポート\SpecialChar \menuseparator
+書き出し\SpecialChar \menuseparator
 LaTeX (pdflatex) / (平文)
 \family default
  メニューを使って文書をLaTeXにエクスポートする際には、LaTeXコメントとして出力されます。注釈ボックスは、以下のように表示されます。
@@ -23441,47 +23206,44 @@ reference "fn:これは脚注の一例"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Footnotes in tables are not printed by LaTeX due to technical reasons.
- However there exists another method to print them: Instead of the footnote
- the command 
+LaTeXでは、技術的要因により、表中の脚注は印字されません。しかし、それを行うには他の方法があり、まず脚注の代わりにTeXコードで
 \series bold
 
 \backslash
 footnotemark{}
 \series default
- is inserted as TeX-code.
- The text of the footnote is entered as an argument of the TeX-code command
- 
+コマンドを入れてください。脚注の本文は、表の後でTeXコード
 \series bold
 
 \backslash
 footnotetext
 \series default
- after the table.
+コマンドの引数として入力します。
 \begin_inset Newline newline
 \end_inset
 
-This was done for the following table with the command
-\end_layout
+以下の表ではコマンド
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 footnotetext{
 \series default
-Printed table footnote.
+出力される脚注の表
 \series bold
 }
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+を用いています。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="1">
 <features tabularvalignment="middle">
@@ -23491,16 +23253,12 @@ Printed table footnote.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-This an example text.
+これは例文です。
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-This footnote will not be printed!
+この脚注は出力されません!
 \end_layout
 
 \end_inset
@@ -23516,9 +23274,7 @@ This footnote will not be printed!
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-This an example text.
+これは例文です。
 \begin_inset ERT
 status collapsed
 
@@ -23554,7 +23310,7 @@ footnotetext{
 
 \end_inset
 
-Printed table footnote.
+出力される脚注の表
 \begin_inset ERT
 status collapsed
 
@@ -23569,65 +23325,40 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Footnotes in longtables are described in section
-\begin_inset space ~
-\end_inset
-
-
-\lang japanese
-
+長尺表中の脚注は、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:長尺表での脚注"
 
 \end_inset
 
-
-\lang english
-.
+節で述べられています。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Footnotes in minipage boxes are printed, but inside the box and with a different
- numbering because a minipage box is like a page inside a page.
- (For more about minipages, see section
-\begin_inset space ~
-\end_inset
-
-
-\lang japanese
-
+ミニページ中の脚注は出力されますが、ミニボックスは頁中の頁のようなものなので、ボックス内に独立した連番として出力されます（ミニページについての詳細は、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:ミニページ"
 
 \end_inset
 
-
-\lang english
-.) To get a footnote in the minipage that is output at the bottom of the
- page like normal footnotes, also use the method of 
+節を参照）。通常の脚注のように頁底部に出力されるミニページを得るには、やはり
 \series bold
 
 \backslash
 footnotemark{}
 \series default
- and 
+と
 \series bold
 
 \backslash
-footnotetext
+footntoetext
 \series default
-.
+による方法を用いてください。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -23642,16 +23373,12 @@ height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-This an example text in a minipage.
+これはミニページ中の例文です。
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-Footnote in the minipage.
+ミニページ中の脚注です。
 \end_layout
 
 \end_inset
@@ -23660,9 +23387,7 @@ Footnote in the minipage.
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
-This an example text in a minipage.
+これはミニページ中の例文です。
 \begin_inset ERT
 status collapsed
 
@@ -23684,8 +23409,6 @@ footnotemark{}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -23698,7 +23421,7 @@ footnotetext{
 
 \end_inset
 
-Footnote outside the minipage.
+ミニページ外の脚注です。
 \begin_inset ERT
 status collapsed
 
@@ -23710,11 +23433,6 @@ status collapsed
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-
-\lang english
 \begin_inset VSpace defskip
 \end_inset
 
@@ -23722,44 +23440,29 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To refer to the same footnote several times without printing the footnote
- text every time, use the command 
+毎回脚注本文を出力せずに、同じ脚注を何度か参照したい場合には、TeXコードでコマンド
 \series bold
 
 \backslash
-footnotemark[number]
+footnotemark[番号]
 \series default
- in TeX-code.
+を使用してください。
 \begin_inset Newline newline
 \end_inset
 
-As you do not know the number of the repeating footnote while you are writing
- the text, you have to store its number.
- For the following footnote mark example, these commands were inserted in
- TeX-code after Footnote
-\begin_inset space ~
-\end_inset
-
-
-\lang japanese
-
+文章を書いている途中には、繰り返す脚注の数はわからないので、その番号は保存しておかなくてはなりません。以下の脚注例では、脚注
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fn:これは脚注の一例"
 
 \end_inset
 
-
-\lang english
- to store the footnote number:
+の後に、TeXコードで
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 newcounter{MyRepeatFoot}
@@ -23774,15 +23477,12 @@ thefootnote}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The footnote mark was then created with this command:
+というコマンドを挿入しています。そして脚注マークは、
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 footnotemark[
@@ -23791,13 +23491,11 @@ theMyRepeatFoot]
 \end_layout
 
 \begin_layout Standard
+で作成します。
+\end_layout
 
-\lang english
-Here is a repeated footnote:
-\family roman
-\series medium
-\bar no
-
+\begin_layout Standard
+これは繰り返し脚注の例です。
 \begin_inset ERT
 status collapsed
 
@@ -23816,16 +23514,12 @@ theMyRepeatFoot]
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you want to repeat the previous footnote, you can omit the storage of
- the footnote number and just use this command instead:
+直前の脚注を繰り返すには、脚注番号の保存を行わないで、直ちに
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 footnotemark[
@@ -23834,13 +23528,11 @@ thefootnote]
 \end_layout
 
 \begin_layout Standard
+を使用してください。
+\end_layout
 
-\lang english
-Here is another repeated footnote:
-\family roman
-\series medium
-\bar no
-
+\begin_layout Standard
+これは繰り返し脚注の例です。
 \begin_inset ERT
 status collapsed
 
@@ -25522,29 +25214,25 @@ reference "sec:ミニページ"
 \family sans
 parbox
 \family default
-型は、第
+型については第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Parboxes"
 
 \end_inset
 
-節で述べます 
-\lang english
-and the type 
+節、
 \family sans
-Makebox
+makebox
 \family default
- in 
-\lang japanese
-
+型については第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:ハイフネーションの回避"
 
 \end_inset
 
-。
+節で述べます。
 \end_layout
 
 \begin_layout Standard
@@ -26095,7 +25783,6 @@ height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-\align left
 このボックスの文章は水平方向に広げてあります。
 \end_layout
 
@@ -26134,13 +25821,7 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
-No
-\begin_inset space ~
-\end_inset
-
-frame Nothing is drawn.
+縁なし 枠を描きません。
 \end_layout
 
 \begin_layout Description
@@ -27806,15 +27487,11 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can use the box type 
+単語や文章がハイフネートされるのを防ぐには、
 \family sans
-Makebox
+makebox
 \family default
- to prevent words or text from being hyphenated.
-\lang japanese
-
+型ボックスを使うことができます。
 \begin_inset Newline newline
 \end_inset
 
@@ -27834,33 +27511,15 @@ veryverylongword
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To prevent the hyphenation of the word 
-\begin_inset Quotes eld
-\end_inset
-
-veryverylongword
-\begin_inset Quotes erd
-\end_inset
-
-, put the word into a box, set the 
+単語「veryverylongword」がハイフネートされるのを防ぐには、単語をボックスの中に入れて、
 \family sans
-Inner
-\begin_inset space ~
-\end_inset
-
-box
+内部ボックス
 \family default
- to 
+を
 \family sans
-Makebox
+makeboxコマンド
 \family default
- and its width to 1
-\begin_inset space \thinspace{}
-\end_inset
-
-Width.
+に設定し、幅を1幅にします。
 \end_layout
 
 \begin_layout Standard
@@ -30601,6 +30260,51 @@ reference "sub:外部文書の第1小節"
 \end_layout
 
 \begin_layout Standard
+大きな文書のうち、特定の章だけの作業を行っている際に、コンパイル時間を短縮したい場合、取り込んだファイルの各々を派生枝の中に入れる方法があります
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+派生枝は、LyX
+\emph on
+ユーザーの手引き
+\emph default
+の
+\emph on
+派生枝
+\emph default
+の節に説明されています。
+\end_layout
+
+\end_inset
+
+。派生枝を有効化したり無効化したりすることによって、取り込んだファイルのどれを出力に表示させるかを決めることができます。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+【註】
+\series default
+LyXのバグにより、どのファイルを取り込むかを決める他の方法として、現在のところ、LaTeXコマンドの
+\series bold
+
+\backslash
+includeonly
+\series default
+を使用することはできません。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Greyedout
 status open
 
@@ -30641,15 +30345,13 @@ Inputファイルは、LyX設定の操作性
 \end_layout
 
 \begin_layout Itemize
+LaTeXコマンドの
+\series bold
 
-\lang english
-You cannot exclude Input files via the menu 
-\family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Child Documents
-\family default
-.
+\backslash
+includeonly
+\series default
+は使用することができません。
 \end_layout
 
 \end_deeper
@@ -30793,92 +30495,6 @@ status open
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-If you want to view/export only selected children of your master document,
- either because you want to save compiling time or because you want to distribut
-e single chapters of the book you are just writing, you can exclude children
- from the output.
- This is done via the menu 
-\family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Child Documents
-\family default
-.
- You can exclude\SpecialChar \slash{}
-include children by double-clicking on the 
-\family sans
-include to output
-\family default
- column of the respective child document in the list (note that this only
- works for documents embedded via 
-\begin_inset Quotes eld
-\end_inset
-
-Include
-\begin_inset Quotes erd
-\end_inset
-
-, not with 
-\begin_inset Quotes eld
-\end_inset
-
-Input
-\begin_inset Quotes erd
-\end_inset
-
-).
- If the option 
-\family sans
-Maintain counters and references
-\family default
- is enabled, LyX will assure that all page numbers, references etc.
-\begin_inset space ~
-\end_inset
-
-are correct as if the whole document was processed.
- This is useful if you want the selected sub-documents to look exactly as
- in the context of the whole document.
- However, LyX needs to process the whole document in the background for
- this feature.
- So if you want to save compile time and if counters and references do not
- need to be correct, disable this checkbox.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Alternatively, you can put each included file into a branch.
-\lang japanese
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-派生枝は、LyX
-\emph on
-ユーザーの手引き
-\emph default
-の
-\emph on
-派生枝
-\emph default
-の節に説明されています。
-\end_layout
-
-\end_inset
-
-
-\lang english
- By enabling\SpecialChar \slash{}
-disabling branches you can decide which included files will
- appear in the output.
- This has the advantage that it also works with Input'ed sub-documents.
- However, counters and references will not be maintained with this approach.
 \end_layout
 
 \begin_layout Chapter
@@ -31027,14 +30643,10 @@ h
 \family sans
 キャプション
 \family default
-メニューを使えば、プログラムリストにキャプションを付けることができます。プログラムリストは、フロート同様、Listing
-\begin_inset space ~
-\end_inset
-
-
+メニューを使えば、プログラムリストにキャプションを付けることができます。プログラムリストは、フロート同様、リスト
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lst:Example-Listing"
+reference "lst:リストフロート"
 
 \end_inset
 
@@ -31054,11 +30666,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "lst:Example-Listing"
+name "lst:リストフロート"
 
 \end_inset
 
-Example Listing float
+Example Listing Float
 \end_layout
 
 \end_inset
@@ -31363,15 +30975,15 @@ lstparams "breaklines=true,caption={Lines 10 - 15 of this LyX file},extendedchar
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Inserting a formula into a listing can be done the following way:
+リストに数式を入れるには、以下のようにします。
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Open the listings dialog and add
+リストダイアログを開き、
+\family sans
+詳細
+\family default
+タブのフィールド中に
 \begin_inset Newline newline
 \end_inset
 
@@ -31383,54 +30995,31 @@ mathescape=true
 \begin_inset Newline newline
 \end_inset
 
-to the field of the 
-\family sans
-Advanced
-\family default
- tab.
+と書き加えます。
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Create a formula outside the listing
+リスト外で数式を作成します。
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Copy the content of the formula (not the formula inset) to the clipboard
- (shortcut 
+数式の内容（数式差込枠ではなく）をクリップボードにコピーします（短縮キー
 \begin_inset Info
 type  "shortcut"
 arg   "copy"
 \end_inset
 
-)
+）。
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-In the listing write 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family sans
-$$
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- and copy from the clipboard between the dollar-signs (shortcut 
+リストに「$$」と書き、クリップボードの内容をドルマークの間に貼り付けます（短縮キー
 \begin_inset Info
 type  "shortcut"
 arg   "paste"
 \end_inset
 
-)
+）。
 \end_layout
 
 \begin_layout Standard
@@ -31444,8 +31033,6 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\lang english
 Example Listing float containing a formula
 \end_layout
 
@@ -31502,16 +31089,13 @@ frac{1}{x^{2}}$
 \SpecialChar \menuseparator
 
 \family sans
-\lang english
-Listings
+リスト
 \family default
- dialog
-\lang japanese
-。ここで利用できるオプションの一覧を得るには、
+ダイアログで設定することができます。ここで利用できるオプションの一覧を得るには、
 \family sans
 プログラムリスト設定
 \family default
-フィールドで疑問符「?」。
+フィールドで疑問符「?」を打鍵してください。
 \end_layout
 
 \begin_layout Standard
@@ -32268,7 +31852,7 @@ status open
 \series bold
 PSTricks
 \series default
- 
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "pstricks"
@@ -32506,7 +32090,8 @@ name "cha:式の説明"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 W_{\mathrm{tot}\, n}=n\cdot(W_{g\, n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_n}
 \end{equation}
 
@@ -32559,7 +32144,8 @@ reference "eq:Wtot_n"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 W_{\mathrm{tot\, mult}}=W_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_mult}
 \end{equation}
 
@@ -32599,7 +32185,8 @@ reference "eq:Wtot_mult"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 W_{g\, n}=(W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth}))/n
 \end{equation}
 

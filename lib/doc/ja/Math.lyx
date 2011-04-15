@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 410
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass jarticle
@@ -146,6 +146,7 @@
 \use_default_options true
 \maintain_unincluded_children false
 \language japanese
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
@@ -212,6 +213,7 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -280,10 +282,18 @@ LatexCommand tableofcontents
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 この文書をPDFやPS、DVIに書き出すには、LaTeXパッケージの
+\series bold
+braket
+\series default
+・
+\series bold
+cancel
+\series default
+・
 \series bold
 eurosym
 \series default
@@ -293,9 +303,9 @@ mhchem
 \series default
 ・
 \series bold
-wasが導入されている必要があります。
+was
 \series default
-これらが導入されていなくても文書はエクスポートできますが、パッケージを必要とする節は出力には現れません。また、
+が導入されている必要があります。これらが導入されていなくても文書はエクスポートできますが、パッケージを必要とする節は出力には現れません。また、
 \series bold
 mhchem
 \series default
@@ -336,7 +346,7 @@ http://wiki.lyx.org/LyX/DocumentationDevelopment#Math
 
 \begin_layout Standard
 この文書は、LyXの数式機能の説明書であると同時に、なによりも数式記号および数式要素に使用されるLaTeXコマンドのコレクションでもあります。説明は、コマンドの
-使用を念頭に置いています。したがいまして、ユーザーの手引きの
+使用を念頭に置いています。したがって、ユーザーの手引きの
 \family typewriter
 数式
 \family default
@@ -1569,6 +1579,8 @@ frac
 
 \backslash
 dfrac
+\series default
+
 \begin_inset Index idx
 status collapsed
 
@@ -1581,8 +1593,12 @@ dfrac
 \end_inset
 
 を使えば、つねに別行建て数式の大きさを持つ分数を作成することができます。また、コマンド
+\series bold
+
 \backslash
 tfrac
+\series default
+
 \begin_inset Index idx
 status collapsed
 
@@ -1867,7 +1883,8 @@ cfrac
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{align*}
+\begin_inset Formula 
+\begin{align*}
 \textrm{\textbf{\textbackslash frac}を使用して作成} &  & \textrm{\textbf{\textbackslash cfrac}を使用して作成}\\
 \frac{A}{B+\frac{C+\frac{E}{F}}{D}} &  & \cfrac{A}{B+\cfrac{C+\cfrac{E}{F}}{D}}
 \end{align*}
@@ -2053,7 +2070,8 @@ cfrac
 frac
 \series default
 を組み合わせて使うと便利です。
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \cfrac{A}{B+\cfrac{C+\frac{E}{F}}{D}}
 \]
 
@@ -2594,7 +2612,11 @@ dbinom
 
 \end_inset
 
+
+\series default
 および
+\series bold
+
 \backslash
 tbinom
 \series default
@@ -3277,10 +3299,10 @@ reference "sec:関係子"
 \end_layout
 
 \begin_layout Subsection
-空打ち文字
+埋め草
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:空打ち文字"
+name "sub:埋め草"
 
 \end_inset
 
@@ -3289,7 +3311,7 @@ name "sub:空打ち文字"
 status collapsed
 
 \begin_layout Plain Layout
-からうちもじ@空打ち文字
+うめくさ@埋め草
 \end_layout
 
 \end_inset
@@ -3517,13 +3539,14 @@ status collapsed
 \backslash
 phantom
 \series default
-を挿入すると、二つの赤い矢印が重なった青枠が表示されます。矢印は、箱の中身の幅と高さの両方が、空打ち文字として適用されることを示しています。したがって、
+を挿入すると、二つの赤い矢印が重なった青枠が表示されます。矢印は、箱の中身の幅と高さの両方が、埋め草（指定した文字と同じ大きさの余白を確保するために使われる空打
+ち文字）として適用されることを示しています。したがって、
 \series bold
 
 \backslash
 phantom
 \series default
-の作る文字は、箱の中身の文字の大きさを持つ空打ち文字となります。
+の作る文字は、箱の中身の文字の大きさを持つ埋め草となります。
 \end_layout
 
 \begin_layout Standard
@@ -3916,22 +3939,17 @@ reference "sub:多行にわたる括弧"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Placeholders can also be used for text when it is inserted via the menu
- 
+埋め草は、メニュー
 \family sans
-Insert\SpecialChar \menuseparator
-Formatting\SpecialChar \menuseparator
-Phantom
+挿入\SpecialChar \menuseparator
+整形\SpecialChar \menuseparator
+埋め草
 \family default
-:
+を使えば、以下のように本文中でも使用することができます。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This is a sentence.
+これは本文です。
 \begin_inset Newline newline
 \end_inset
 
@@ -3940,14 +3958,12 @@ This is a sentence.
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-This
+これは
 \end_layout
 
 \end_inset
 
- is a sentence.
+本文です。
 \end_layout
 
 \begin_layout Subsection
@@ -4302,6 +4318,8 @@ rule{2cm}{1pt}
 \begin_inset Newline newline
 \end_inset
 
+
+\series default
 というコマンドを用いて作成したふたつの例を例示します。
 \end_layout
 
@@ -4315,29 +4333,18 @@ rule{2cm}{1pt}
 
 \begin_layout Standard
 
-\series bold
-\lang english
-
 \backslash
-rule
-\series default
- can also be used for text when a line is inserted via the menu 
+ruleは、メニュー
 \family sans
-Insert\SpecialChar \menuseparator
-Formatting\SpecialChar \menuseparator
-Horizontal
-\begin_inset space ~
-\end_inset
-
-Line
+挿入\SpecialChar \menuseparator
+整形\SpecialChar \menuseparator
+水平線
 \family default
-:
+を使っても、本文に挿入することができます。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This is a sentence 
+これは一行の
 \begin_inset CommandInset line
 LatexCommand rule
 offset "0.5ex"
@@ -4346,7 +4353,7 @@ height "1pt"
 
 \end_inset
 
- with one line.
+文章です。
 \end_layout
 
 \begin_layout Subsection
@@ -4805,35 +4812,28 @@ ldots
 \end_inset
 
 
-\lang english
-To use 
 \series bold
 
 \backslash
 iddots
 \series default
-, one of the options 
+を使うには、文書設定の
 \family sans
-Use mathdots package (automatically)
+数式オプション
 \family default
- must be set in the document settings under 
+にある
 \family sans
-Math
-\begin_inset space ~
-\end_inset
-
-Options
+mathdotsパッケージを（自動的に）使う
 \family default
-.
+オプションのうちいずれかを有効にしなくてはなりません。
 \begin_inset Newline newline
 \end_inset
 
-Using the option 
+
 \family sans
-Use mathdots package
+mathdotsパッケージを使う
 \family default
- will improve the appearance of all dots in the documents if their font
- style or size is not the default.
+オプションを使用すると、文書中のフォント様式や寸法が既定値でないときのあらゆるドットの表示が改善されます。
 \end_layout
 
 \begin_layout Standard
@@ -4887,7 +4887,8 @@ hdotsfor[2]{4}
 dots
 \series default
 コマンドの2倍の点間距離を持つ省略符号を挿入しています。
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left(\begin{array}{cccc}
 A & B & C & D\\
 \hdotsfor[2]{4}\\
@@ -4969,9 +4970,9 @@ B
 \end_layout
 
 \begin_layout Standard
-のようになります。
+のようになります。点々を使う
 \series bold
-点々を使う
+
 \backslash
 dotfill
 \series default
@@ -5042,9 +5043,7 @@ status collapsed
 数式\SpecialChar \menuseparator
 行列
 \family default
-メニューで挿入することができます。すると、行列の列数及び行数、さらに配置方法を尋ねられます。ここで垂直配置は、行内数式内の行列でのみ意味を持ちます。
-\lang english
-and the decoration
+メニューで挿入することができます。すると、行列の行数・列数・配置方法・装飾を尋ねられます。ここで垂直配置は、行内数式内の行列でのみ意味を持ちます。
 \end_layout
 
 \begin_layout Standard
@@ -5181,15 +5180,14 @@ arg   "newline-insert newline"
 \end_inset
 
 
-\lang english
-The 
+\end_layout
+
+\begin_layout Standard
+
 \family sans
-Decoration
+装飾
 \family default
- adds parentheses in the selected style around the matrix.
- Alternatively, parentheses can can either be created with the
-\lang japanese
- 行列を囲む括弧は、
+は、行列の前後に選択した様式の括弧を加えます。他にも括弧は、
 \series bold
 
 \backslash
@@ -5225,13 +5223,13 @@ right
 
 \end_inset
 
-コマンドで作成することができます（短絡キー
+コマンドで作成することもできます（短絡キー
 \family sans
 Alt+M
 \begin_inset space ~
 \end_inset
 
-Parenthesis
+括弧
 \family default
 ）。第
 \begin_inset CommandInset ref
@@ -5317,11 +5315,7 @@ spce
 \series bold
 ×
 \series default
-2
-\begin_inset space \thinspace{}
-\end_inset
-
-matrix
+2行列
 \end_layout
 
 \end_inset
@@ -5366,11 +5360,7 @@ spce
 \series bold
 ×
 \series default
-2
-\begin_inset space \thinspace{}
-\end_inset
-
-matrix
+2行列
 \end_layout
 
 \end_inset
@@ -5415,11 +5405,7 @@ spce
 \series bold
 ×
 \series default
-2
-\begin_inset space \thinspace{}
-\end_inset
-
-matrix
+2行列
 \end_layout
 
 \end_inset
@@ -5498,11 +5484,7 @@ spce
 \series bold
 ×
 \series default
-2
-\begin_inset space \thinspace{}
-\end_inset
-
-matrix
+2行列
 \end_layout
 
 \end_inset
@@ -5547,11 +5529,7 @@ spce
 \series bold
 ×
 \series default
-2
-\begin_inset space \thinspace{}
-\end_inset
-
-matrix
+2行列
 \end_layout
 
 \end_inset
@@ -5596,11 +5574,7 @@ spce
 \series bold
 ×
 \series default
-2
-\begin_inset space \thinspace{}
-\end_inset
-
-matrix
+2行列
 \end_layout
 
 \end_inset
@@ -7035,7 +7009,8 @@ spce
 )
 \series default
 というコマンドは
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \ln(\frac{A}{C})
 \]
 
@@ -7089,7 +7064,8 @@ spce
 right)
 \series default
 というコマンドは
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \ln\left(\frac{A}{C}\right)
 \]
 
@@ -7199,13 +7175,18 @@ right}
 というコマンドは
 \series bold
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left.\frac{A}{B}\right\} 
 \]
 
 \end_inset
 
+
+\series default
 を生成します。
+\series bold
+
 \backslash
 left
 \series default
@@ -7281,7 +7262,8 @@ biggm
 \end_inset
 
 。このコマンドでは、物理ベクトル
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left\langle \phi\:\biggm|\: J=\frac{3}{2}\,,\, M_{J}\right\rangle 
 \]
 
@@ -7692,7 +7674,8 @@ reference "sec:多行数式"
 \end_inset
 
 節に説明されているように、次のような多行数式を使わなくてはなりません。
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 A & = & \underbrace{gggg+bbqq}_{r}+\: dddd\\
  &  & \hphantom{gggg+\:}\underbrace{\hphantom{bbqq+dddd}}_{s}
 \end{eqnarray*}
@@ -7773,7 +7756,7 @@ hphantom
 に関する詳細は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:空打ち文字"
+reference "sub:埋め草"
 
 \end_inset
 
@@ -7808,7 +7791,8 @@ jot}{-6pt}
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
  &  & \hphantom{gggg+\:}\overbrace{\hphantom{bbqq+dddd}}^{s}\\
 A & = & \underbrace{gggg+bbqq}_{r}+\: dddd
 \end{eqnarray*}
@@ -10328,7 +10312,8 @@ spce
 n
 \series default
 というコマンドを入力すると、
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \sideset{}{'}\sum_{k=1}^{n}
 \]
 
@@ -10381,7 +10366,8 @@ spce
 a
 \series default
 というコマンドならば、
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \overset{a}{\maltese}
 \]
 
@@ -10834,7 +10820,8 @@ widetilde
 widehat
 \series default
 のアクセントは、以下の例のように、出力では3文字分の長さにしかなりません。
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \widetilde{A+B=C-D}
 \]
 
@@ -10904,7 +10891,8 @@ A=B
 ***
 \series default
 というコマンドは、
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \underset{***}{A=B}
 \]
 
@@ -12849,7 +12837,8 @@ fboxsep 3mm
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \boxed{A+B=C}
 \]
 
@@ -13685,7 +13674,8 @@ colorbox
 \begin_layout Standard
 
 \color red
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \int A=B\label{eq:red}
 \end{equation}
 
@@ -13694,7 +13684,8 @@ colorbox
 
 \color green
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \textcolor{red}{\int A=B}\label{eq:redgreen}
 \end{equation}
 
@@ -13775,7 +13766,11 @@ colorbox
 \series bold
 
 \backslash
-frameboxと同様に、縁の厚みは
+framebox
+\series default
+と同様に、縁の厚みは
+\series bold
+
 \backslash
 fboxrule
 \series default
@@ -13801,7 +13796,8 @@ fboxsep 1mm
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \fcolorbox{cyan}{magenta}{A=B}
 \]
 
@@ -13974,7 +13970,8 @@ yellow
 darkgreen
 \series default
 という色を持つ縁付きボックスを挙げておきます。
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \colorbox{darkgreen}{\color{yellow}\boxed{\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}}}
 \end{equation}
 
@@ -14395,7 +14392,8 @@ fboxrule}{
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}
 \end{equation}
 
@@ -14617,7 +14615,8 @@ reference "sec:数式様式"
 parbox
 \series default
 を使う利点は、数式テキストモードを使用して「コメントを付けた」以下の例と比較すると、よくわかるでしょう。
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 5x-7b=3b\textrm{これは説明です。数式本体から離れていません...}
 \]
 
@@ -15746,7 +15745,8 @@ arg   "math-limits"
 
 \begin_layout Standard
 既定の範囲形式は、以下のようになっています。
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \sum_{x=0}^{\infty}\frac{1}{x^{2}}
 \]
 
@@ -15759,7 +15759,8 @@ arg   "math-limits"
 \family default
 \series default
 に変更したときの表示です。
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \sum\nolimits _{x=0}^{\infty}\frac{1}{x^{2}}
 \]
 
@@ -15787,7 +15788,8 @@ op
 別行建て形式
 \series default
 にして積分記号の下に置くようにしています。
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \iiint\limits _{V}X\,\mathrm{d}V=U\label{eq:VolInt}
 \end{equation}
 
@@ -15837,7 +15839,8 @@ substack
 \end_inset
 
 コマンドを使用します。たとえば、以下の表記 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \sum_{\begin{subarray}{c}
 0<k<1000\\
 \\
@@ -16116,7 +16119,8 @@ k
 
 \begin_layout Standard
 を使用して下限を作成することになります。これによって、足される要素は、和演算子の直後に来ることになります。
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \sum_{\mathclap{\substack{0<k<1000\\
 \\
 k\,\in\,\mathbb{N}
@@ -17376,7 +17380,8 @@ reference "sub:その他の記号"
 Lozenge
 \series default
 を定義します。
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \Lozenge_{n=1}^{\infty}
 \]
 
@@ -17485,7 +17490,8 @@ mathop
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \mathop{\sum\negmedspace\sum}_{i,j=1}^{N}
 \]
 
@@ -18301,7 +18307,8 @@ mathnormal
 
 \begin_layout Standard
 書体様式コマンドは、以下のように数式構成要素内の文字に対しても機能します。
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \mathfrak{A=\frac{b}{C}}
 \]
 
@@ -18387,7 +18394,8 @@ mathbf
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \mathbf{\int_{n}^{2}f(\theta)=\Gamma}\qquad\textrm{\textbackslash mathbfを使用した数式}
 \]
 
@@ -18404,7 +18412,8 @@ mathbf
 boldsymbol
 \series default
 コマンドを使用します。
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \boldsymbol{\int_{n}^{2}f(\theta)=\Gamma\qquad\textrm{\textbackslash boldsymbolを使用した数式}}
 \]
 
@@ -18464,7 +18473,8 @@ boldmath
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \int_{n}^{2}f(\theta)=\Gamma\qquad\textrm{boldmath環境に置いた数式}
 \]
 
@@ -18502,7 +18512,8 @@ status collapsed
 
 \begin_layout Standard
 数式も、通常の本文と同様、色を付けることができます。数式あるいは数式の一部を選択して、文字様式ダイアログを使用して下さい。下記は、マゼンタ色にした数式です。
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 {\color{magenta}\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}}
 \]
 
@@ -18566,7 +18577,8 @@ textcolor{darkgreen}{
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \int A\,\mathrm{d}x=\frac{{\color{red}\sqrt[5]{B}}}{\ln\left(\frac{1}{3}\right)}
 \]
 
@@ -18941,14 +18953,16 @@ huge
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 A=\frac{B}{c}\cdot\maltese
 \]
 
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \maltese A\textrm{\Large\maltese\textit{A}}\textrm{\tiny\maltese\textit{A}}
 \]
 
@@ -19151,12 +19165,8 @@ status collapsed
 
 \end_inset
 
-からでも挿入することができます。 
-\lang english
-All international typesetting norms purport that Greek letters in math have
- to be typeset italic/slanted.
- In some languages, like French or Russian, they are nevertheless sometimes
- typeset upright.
+からでも挿入することができます。各国の組版規則では、数式内のギリシャ文字はどれもイタリック体か斜体で組版されなくてはならないことになっていますが、フランス語やロ
+シア語などいくつかの言語では、それにもかかわらず立体で組版されることがあります。
 \end_layout
 
 \begin_layout Subsection
@@ -20477,8 +20487,7 @@ Omega
 \begin_inset VSpace medskip
 \end_inset
 
-大文字のギリシャ文字がアップライト体で表示されるのは、TeXの開発途上に生じたデザイン上のバグによるものです。正しいイタリック体の大文字を得るためには、各コマン
-ドの頭に
+大文字のギリシャ文字が立体で表示されるのは、TeXの開発途上に生じたデザイン上のバグによるものです。正しいイタリック体の大文字を得るためには、各コマンドの頭に
 \series bold
 var
 \series default
@@ -20492,11 +20501,7 @@ varGamma
 \begin_inset Formula $\varGamma$
 \end_inset
 
-を生成します。 
-\lang english
-Another way is to load the package
-\lang japanese
- 
+を生成します。もう一つの方法は、パッケージ
 \series bold
 fixmath
 \series default
@@ -20551,9 +20556,7 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-with the LaTeX-preamble line
+をLaTeXプリアンブル行に
 \end_layout
 
 \begin_layout Standard
@@ -20565,9 +20568,7 @@ usepackage{fixmath}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Then all big Greek letters in a document will automatically be typeset italic.
+と書いて読み込む方法です。すると、文書中の大きなギリシャ文字は、すべて自動的にイタリック体として組版されます。
 \end_layout
 
 \begin_layout Subsection
@@ -25571,7 +25572,8 @@ x=B
 
 \begin_layout Standard
 別行建て数式では、極限は、以下のように通常どおり下に置かれます。
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \lim_{x\to A}x=B
 \]
 
@@ -25632,7 +25634,8 @@ status collapsed
 
 \begin_layout Standard
 以下は、別行建て数式での派生型です。
-\begin_inset Formula \begin{align*}
+\begin_inset Formula 
+\begin{align*}
 \underline{\textrm{コマンド}\raisebox{-0.9mm}{}} &  & \underline{\textrm{出力}}\\
 \mathrm{a\backslash mod\textrm{\spce}b} &  & a\mod b\\
 \mathrm{a\backslash pmod\textrm{\spce}b} &  & a\pmod b\\
@@ -27819,7 +27822,8 @@ status collapsed
 
 \begin_layout Standard
 以下のように、多行数式において行のあいだの空白が足りないことが、ときどき起こります。
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 B^{2}(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2})+4x_{0}^{2}x^{2}+4x_{0}xD & = & \textrm{-}4x^{2}B^{2}+4x_{0}xB^{2}\\
 4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right) & = & 0
 \end{eqnarray*}
@@ -28017,7 +28021,8 @@ jot}{3mm+3pt}
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 B^{2}(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2})+4x_{0}^{2}x^{2}+4x_{0}xD & = & \textrm{-}4x^{2}B^{2}+4x_{0}xB^{2}\\
 4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right) & = & 0
 \end{eqnarray*}
@@ -28170,7 +28175,8 @@ arraycolsep}{1cm}
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 A & = & B\\
 C & \ne & A
 \end{eqnarray*}
@@ -28197,7 +28203,8 @@ arraycolsep}{5pt}
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 A & = & B\\
 C & \ne & A
 \end{eqnarray*}
@@ -28227,7 +28234,8 @@ status collapsed
 
 \begin_layout Itemize
 左辺ないし右辺の一方が、行幅よりもかなり短いときには、以下のように、短い方を左辺に置き、右辺を二行に分けて組版します。
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 H & = & W_{SB}+W_{mv}+W_{D}-\frac{\hbar^{2}}{2m_{0}}\Delta-\frac{\hbar^{2}}{2m_{1}}\Delta_{1}-\frac{\hbar^{2}}{2m_{2}}\Delta_{2}-\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{1}|}\nonumber \\
  &  & -\hspace{3pt}\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{2}|}+\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{R}_{1}-\mathbf{R}_{2}|}\label{eq:shortlong}
 \end{eqnarray}
@@ -28303,7 +28311,8 @@ lefteqn
 \end_inset
 
 コマンドを使います。これを最初の行の第一列に入れると、以下のように、続きの内容が他の列にかかって表示されます。
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \lefteqn{4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right)+D^{2}}\nonumber \\
  &  & -\hspace{3pt}B^{2}-2B\sqrt{r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}+r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}\nonumber \\
  &  & =B^{2}+2\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)+\frac{\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)^{2}}{B^{2}}\label{eq:lefteqn}
@@ -28418,7 +28427,8 @@ status collapsed
 
 \begin_layout Standard
 多行にわたる括弧を作ろうとすると、以下のような問題が生じます。
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 A & = & \sin(x)\left[\prod_{R=1}^{\infty}\frac{1}{R}+\cdots\right.\\
  &  & \left.\cdots+B-D\right]
 \end{eqnarray*}
@@ -28586,7 +28596,8 @@ vphantom
 
 \begin_layout Standard
 その結果が以下の数式です。
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 A & = & \sin(x)\left[\prod_{R=1}^{\infty}\frac{1}{R}+\cdots\right.\\
  &  & \left.\vphantom{\prod_{R=1}^{\infty}}\cdots+B-D\right]
 \end{eqnarray*}
@@ -28685,7 +28696,8 @@ AMS align環境
 
 \begin_layout Standard
 以下は、二つの数式を横に並べた例ですが、これは4列からなるalign環境として作ります。
-\begin_inset Formula \begin{align*}
+\begin_inset Formula 
+\begin{align*}
 A & =\sin(B) & C & =D\\
 C & \ne A & B & \ne D
 \end{align*}
@@ -28786,7 +28798,8 @@ reference "sub:空白"
 \end_inset
 
 cmの空白を入れたものです。
-\begin_inset Formula \begin{alignat*}{2}
+\begin_inset Formula 
+\begin{alignat*}{2}
 A & =\sin(B) & \hspace{1cm}C & =D\\
 C & \ne A & B & \ne D
 \end{alignat*}
@@ -28819,7 +28832,8 @@ status collapsed
 
 \begin_layout Standard
 この環境では、つねに、最初の二列をできるだけ左寄せにし、最後の二列をできるだけ右寄せにするように設定されます。以下がその例です。
-\begin_inset Formula \begin{flalign*}
+\begin_inset Formula 
+\begin{flalign*}
 A & =1 & B & =2 & C & =3\\
 X & =\textrm{-}1 & Y & =\textrm{-}2 & Z & =4
 \end{flalign*}
@@ -28842,7 +28856,8 @@ reference "eq:VolInt"
 \end_inset
 
 式を行頭下げにしたものです。
-\begin_inset Formula \begin{flalign}
+\begin_inset Formula 
+\begin{flalign}
 \hspace{30pt}\iiint\limits _{V}X\,\mathrm{d}V & =U & {}
 \end{flalign}
 
@@ -28879,7 +28894,8 @@ status collapsed
 \begin_layout Standard
 この環境を作成すると、三つの青枠が現れます。最初の枠の内容は右寄せに設定され、最後の枠の内容は左寄せに設定されます。中央の枠は、関係子のみを入れることを想定して
 いるので、その内容は中央揃えで少し小さく設定されます。
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \frac{ABC}{D} & \frac{ABC}{D} & \frac{ABC}{D}\\
 AB & AB & AB\\
 A & = & A
@@ -28906,7 +28922,8 @@ status collapsed
 
 \begin_layout Standard
 この環境には、中央揃えに設定された列一つしかありません。行はすべて付番することができます。
-\begin_inset Formula \begin{gather}
+\begin_inset Formula 
+\begin{gather}
 A=1\\
 X=\textrm{-}1
 \end{gather}
@@ -28947,7 +28964,8 @@ reference "eq:lefteqn"
 \end_inset
 
 式をmultline環境に置いたものを示します。
-\begin_inset Formula \begin{multline}
+\begin_inset Formula 
+\begin{multline}
 4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right)+D^{2}\\
 -B^{2}-2B\sqrt{r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}+r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}\\
 =B^{2}+2\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)+\frac{\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)^{2}}{B^{2}}
@@ -29089,7 +29107,8 @@ multlinegap}{2cm}
 \end_inset
 
 
-\begin_inset Formula \begin{multline}
+\begin_inset Formula 
+\begin{multline}
 4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right)+D^{2}\\
 \shoveleft{-B^{2}-2B\sqrt{r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}+r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}\\
 =B^{2}+2\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)+\frac{\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)^{2}}{B^{2}}
@@ -29173,7 +29192,8 @@ split
 ed
 \series default
 を省いた同名の多行数式環境と同じ性格を持ちますが、環境の前後に数式を続けることが可能です。たとえば、
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left.\begin{aligned}\Delta x\Delta p & \ge\frac{\hbar}{2}\\
 \Delta E\Delta t & \ge\frac{\hbar}{2}
 \end{aligned}
@@ -29218,7 +29238,8 @@ reference "eq:shortlong"
 \end_inset
 
 式にaligned環境を適用したものを示します。
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \begin{aligned}H=\; & W_{SB}+W_{mv}+W_{D}-\frac{\hbar^{2}}{2m_{0}}\Delta-\frac{\hbar^{2}}{2m_{1}}\Delta_{1}-\frac{\hbar^{2}}{2m_{2}}\Delta_{2}-\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{1}|}\\
  & -\hspace{3pt}\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{2}|}+\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{R}_{1}-\mathbf{R}_{2}|}
 \end{aligned}
@@ -29373,7 +29394,8 @@ intertext
 intertext
 \series default
 は行頭になくてはならず、当該行の上に出力されます。以下は、二行めの行頭にテキストを入れた例です。
-\begin_inset Formula \begin{align}
+\begin_inset Formula 
+\begin{align}
 I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
 \intertext{\text{integrand is symmetric to \ensuremath{\phi=\pi}, therefore}} & =2a\sqrt{2}\int_{0}^{\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi
 \end{align}
@@ -29678,7 +29700,8 @@ end{subequations}
 
 \begin_layout Standard
 たとえば、
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 A=C-B\label{eq:a}
 \end{equation}
 
@@ -29715,14 +29738,16 @@ begin{subequations}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 B=C-A\label{eq:b}
 \end{equation}
 
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 C=A+B\label{eq:c}
 \end{equation}
 
@@ -29940,7 +29965,8 @@ begin{subequations}
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 A & = & (B-Z)^{2}=(B-Z)(B-Z)\label{eq:d}\\
  & = & B^{2}-ZB-BZ+Z^{2}\nonumber \\
  & = & B^{2}-2BZ+Z^{2}\label{eq:f}
@@ -30069,7 +30095,8 @@ tag
 \end_inset
 
 コマンドを使います。
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 A+B=C\tag{何とかかんとか}\label{eq:tag}
 \end{equation}
 
@@ -30118,7 +30145,8 @@ spce
 何とかかんとか
 \series default
 というコマンドを使うと、星印は表現の周りの括弧を抑制するので、以下のようになります。
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 A+B=C\tag*{something}
 \]
 
@@ -30496,7 +30524,8 @@ numberwithin{equation}{section}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 A+B=C
 \end{equation}
 
@@ -30882,7 +30911,8 @@ roman{equation}}
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 A=\textrm{小文字ローマ数字}
 \end{equation}
 
@@ -30906,7 +30936,8 @@ Roman{equation}}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 B=\textrm{大文字ローマ数字}\label{eq:Rom}
 \end{equation}
 
@@ -30930,7 +30961,8 @@ alph{equation}}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 C=\textrm{小文字ラテン文字}
 \end{equation}
 
@@ -30954,7 +30986,8 @@ Alph{equation}}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 D=\textrm{大文字ラテン文字}\label{eq:Lat}
 \end{equation}
 
@@ -31009,7 +31042,8 @@ arabic{equation}}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 E=\textrm{アラビア数字}
 \end{equation}
 
@@ -31092,7 +31126,8 @@ status collapsed
 \end_inset
 
 を形成します。この化学式は以下のようになります。
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:chem-reaction}
 \end{equation}
 
@@ -31854,7 +31889,8 @@ reference "eq:TEOS-reaction-2"
 \end_inset
 
 式は、多段化学反応式の例で、一つの式毎に番号が振られています。
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \ce{TEOS + 4O} & \ce{->} & \ce{Si(OH)4 + 4C2H4O}\label{eq:TEOS-reaction-1}\\
 \ce{Si(OH)4} & \ce{->} & \ce{SiO2 + 2H2O}\label{eq:TEOS-reaction-2}
 \end{eqnarray}
@@ -31952,7 +31988,8 @@ status collapsed
 
 \begin_layout Standard
 この型の図解は、以下のように、関係を縦横の線や矢印で図示します。
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \begin{CD}A@>>>B@>>>C\\
 @AAA@.@VVV\\
 F@<<<E@<<<D
@@ -32069,7 +32106,8 @@ arg   "newline-insert newline"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \begin{CD}A@>j>>B@>>k>C@=F\\
 @AmAA@.@VV{V}V@|\\
 D@<<j<E@>k>>F@=C
@@ -32264,19 +32302,14 @@ XY-pic説明書
 \end_layout
 
 \begin_layout Subsection
-
-\noun on
-\lang english
-Feynman
-\noun default
- Diagrams
-\lang japanese
+ファインマン・ダイアグラム
+\series medium
 
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-ずかい@図解 ! Feynman
+ずかい@図解 ! ファインマン
 \end_layout
 
 \end_inset
@@ -32285,62 +32318,37 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To be able to use 
-\noun on
-Feynman
-\noun default
--diagrams, the LaTeX-package 
+ファインマン・ダイアグラムを使うには、LaTeXパッケージ
 \series bold
 feyn
 \series default
- must be installed.
- A 
-\noun on
-Feynman
-\noun default
--diagram is created by inserting the command 
+を導入しておかなくてはなりません。すると、ファインマン・ダイアグラムは、数式中で
 \series bold
 
 \backslash
 Diagram
 \series default
- in a formula.
- Then you are able to add new matrix columns and rows like for normal matrices,
- see
-\lang japanese
- 
+コマンドを挿入すれば生成されます。通常の行列で行うのと同じようにして新規行や新規列を加えることができます（第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:行列"
 
 \end_inset
 
-.
+節参照）。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Examples how to create 
-\noun on
-Feynman-
-\noun default
-diagrams in LyX is given in the 
-\emph on
-Feynman-diagram manual
-\emph default
- that you find in the menu 
+LyXでのファインマン・ダイアグラムの作り方は、メニュー
 \family sans
-Help\SpecialChar \menuseparator
-Specific
-\begin_inset space ~
-\end_inset
-
-Manuals
+ヘルプ\SpecialChar \menuseparator
+用途別説明書
 \family default
-.
+内の『
+\emph on
+ファインマン・ダイアグラム
+\emph default
+』にあります。
 \end_layout
 
 \begin_layout Standard
@@ -32997,14 +33005,16 @@ status collapsed
 \begin_layout Standard
 ユーザー定義コマンドは、複雑な表現を使うときに特に便利です。たとえば、文書中で二次方程式を扱っているとすると、同じような解の形が何度も出てきます。二次方程式の一
 般型は、
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 0=\lambda^{2}+p\lambda+q
 \]
 
 \end_inset
 
 であり、その解の一般型は
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \lambda_{1,2}=-\frac{p}{2}\pm\sqrt{\frac{p²}{4}-q}
 \]
 
@@ -33287,7 +33297,8 @@ qG
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \qG x{\ln(x)}B
 \]
 
@@ -33814,162 +33825,6 @@ status open
 
 \end_layout
 
-\begin_layout Section
-
-\lang english
-Computer Algebra Systems
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-LyX offers the exchange between mathematical expressions written in LyX's
- math editor and external applications or user defined scripts.
- Currently supported applications are 
-\family sans
-Maple
-\family default
-, 
-\family sans
-Mathematica
-\family default
-, 
-\family sans
-Maxima
-\family default
- and 
-\family sans
-Octave
-\family default
-.
- Note that the set of supported mathematical constructs is limited only
- to very simple cases.
-\end_layout
-
-\begin_layout Subsection
-
-\lang english
-Usage
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Write some expression in a formula, go to the 
-\family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
-Use Computer Algebra System
-\family default
- menu and choose the application you have installed on the computer.
- After that the result of computation should show on the right side of the
- expression together with the 
-\begin_inset Quotes eld
-\end_inset
-
-=
-\begin_inset Quotes erd
-\end_inset
-
- operator.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Here are few simple examples (with results from 
-\family typewriter
-Maxima
-\family default
-) to show what kind of computations can be performed:
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\frac{37}{3}*2-\sum_{i=1}^{3}i^{i}=-\frac{22}{3}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\frac{37.0}{3}=12.33333333333333$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\int_{1}^{2}\sin(x)dx=\cos1-\cos2$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\det\left[\begin{array}{ccc}
-1 & 6 & 7\\
-2 & 5 & 8\\
-3 & 4 & 17
-\end{array}\right]=-56$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\lim_{x\rightarrow0}\left(\frac{\sin(x)}{x}\right)=1$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-
-\lang english
-Keyboard shortcut
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Currently there is no keyboard shortcut for calling the algebra applications.
- One can easily bind a shortcut to the 
-\family sans
-math-extern
-\family default
- LyX function (see the 
-\family sans
-\emph on
-LyX Functions
-\family default
-\emph default
- manual).
- One could e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
-\end_inset
-
-bind the 
-\family sans
-Return
-\family default
- key inside the math editor.
- To bind it to 
-\family typewriter
-Maxima
-\family default
- one would use this shortcut definition command:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-command-alternatives break-paragraph;math-extern maxima
-\end_layout
-
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -34453,7 +34308,8 @@ phi
 Braket
 \series default
 コマンドを使うと、以下のように、すべての縦棒がそれを囲む括弧と同じ大きさに設定されます。
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \Braket{\phi|J=\frac{3}{2}\,,\, M_{J}}
 \]
 
@@ -34832,7 +34688,8 @@ genfrac{}{}{#1}{}{#2}{#3}}
 
 \begin_layout Standard
 以下は、そのテストです。
-\begin_inset Formula \begin{align*}
+\begin_inset Formula 
+\begin{align*}
 \text{コマンド} &  & \mathrm{\backslash fracS[1mm]\backslash\{A\to\backslash\{B} &  & \mathrm{\backslash fracS[5mm]\backslash\{A\to\backslash\{B}\\
 \text{出力} &  & \fracS[1mm]{A}{B} &  & \fracS[5mm]{A}{B}
 \end{align*}
@@ -35128,7 +34985,8 @@ A=B
 cancelto
 \series default
 は、以下のように、とくに数式中の分数を約分を表示するのに適しています。
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \frac{\left(x_{0}+bB\right)^{2}}{\left(1+b^{2}\right)^{\cancelto{2}{3}}}=\frac{x_{0}^{2}+B^{2}-r_{g}^{2}}{\cancel{1+b^{2}}}
 \]
 
@@ -35578,7 +35436,8 @@ end{multicols}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 S(t)=S_{0}(t)\int_{-\infty}^{\infty}P(\phi,t)\mathrm{e}^{\mathrm{i}\phi}\,\mathrm{d}\phi
 \end{equation}
 
@@ -35801,7 +35660,8 @@ reference "eq:within"
 \end_inset
 
 式には5列があり、最初の2列には数式、3列めには行列、最終列には空のTeX括弧が入っています。
-\begin_inset Formula \begin{flalign}
+\begin_inset Formula 
+\begin{flalign}
 \hspace{30pt}F_{A} & =\rho·V·g & \footnotesize\begin{array}{ll}
 \rho & \textrm{density}\\
 V & \textrm{volume}\\
@@ -35953,7 +35813,8 @@ uptau
 
 \begin_layout Standard
 これらのコマンドを使えば、以下のような素粒子の反応を組版することができるようになります。
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \uppi^{+}\to\upmu^{+}+\upnu_{\upmu}
 \]
 
@@ -37151,25 +37012,6 @@ target "ftp://ftp.dante.de/tex-archive/info/math/voss/mathmode/Mathmode.pdf"
 \labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "Voss"
-
-\end_inset
-
-LaTeXの技と秘訣の
-\begin_inset CommandInset href
-LatexCommand href
-name "ページ"
-target "http://tug.org/TeXnik/"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\labelwidthstring 参考文献
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
 key "AMS"
 
 \end_inset
@@ -37254,6 +37096,39 @@ target "http://www.tug.org/applications/hyperref/ftp/doc/manual.pdf"
 \labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "mhchem"
+
+\end_inset
+
+LaTeX 
+\series bold
+mhchem
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ぱっけーじ@パッケージ ! mhchem
+\end_layout
+
+\end_inset
+
+パッケージの
+\begin_inset CommandInset href
+LatexCommand href
+name "取扱説明書"
+target "http://www.tug.org/applications/hyperref/ftp/doc/manual.pdf"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring 参考文献
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "Mathclap"
 
 \end_inset
@@ -37309,6 +37184,25 @@ Duden Band 1
 .
  22.
  Auflage, Duden 2001
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring 参考文献
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Checklist"
+
+\end_inset
+
+原稿見直しの
+\begin_inset CommandInset href
+LatexCommand href
+name "チェックリスト"
+target "http://physics.nist.gov/Document/checklist.pdf"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection*
