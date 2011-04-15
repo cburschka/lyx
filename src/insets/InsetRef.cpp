@@ -215,7 +215,7 @@ docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const &) const
 			display_string = _("elsewhere");
 		else if (cmd == "eqref")
 			display_string = bformat(from_ascii("equation (%1$s)"), value);
-		else if (cmd == "prettyref" 
+		else if (cmd == "formatted"
 		         // we don't really have the ability to handle these 
 		         // properly in XHTML output
 		         || cmd == "nameref")
