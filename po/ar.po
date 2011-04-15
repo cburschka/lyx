@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-13 19:57+0200\n"
+"POT-Creation-Date: 2011-04-15 10:39+0200\n"
 "PO-Revision-Date: 2010-03-21 22:45+0200\n"
 "Last-Translator: Mohamed Magdy <theblackdragon_100@hotmail.com>\n"
 "Language-Team: LyX team <theblackdragon_100@hotmail.com>\n"
@@ -718,7 +718,7 @@ msgstr "سلسلة الخط"
 #: src/frontends/qt4/ui/CharacterUi.ui:145
 #: src/frontends/qt4/ui/ListingsUi.ui:339
 #: src/frontends/qt4/GuiDocument.cpp:1282 src/frontends/qt4/GuiPrefs.cpp:2171
-#: src/frontends/qt4/Menus.cpp:850
+#: src/frontends/qt4/Menus.cpp:852
 msgid "Language"
 msgstr "اللغة"
 
@@ -1815,8 +1815,8 @@ msgstr "أدرج مباعدة حتى بعد نهاية السطر"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:19
 #: src/frontends/qt4/ui/HyperlinkUi.ui:32 lib/layouts/scrlttr2.layout:207
-#: lib/layouts/amsdefs.inc:153 lib/layouts/stdinsets.inc:333
-#: lib/layouts/minimalistic.module:26
+#: lib/layouts/amsdefs.inc:153 lib/layouts/stdinsets.inc:330
+#: lib/layouts/stdinsets.inc:333 lib/layouts/minimalistic.module:26
 msgid "URL"
 msgstr "رابط"
 
@@ -1931,8 +1931,8 @@ msgstr "ادخل"
 msgid "Verbatim"
 msgstr "حرفياً"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1118
-#: src/insets/InsetInclude.cpp:1124
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1117
+#: src/insets/InsetInclude.cpp:1123
 msgid "Program Listing"
 msgstr "قائمة البرنامج"
 
@@ -2999,9 +2999,9 @@ msgstr "مزدوج"
 #: src/frontends/qt4/ui/TabularUi.ui:1047
 #: src/frontends/qt4/ui/TabularUi.ui:1066
 #: src/frontends/qt4/ui/TabularUi.ui:1114 src/frontends/qt4/ui/VSpaceUi.ui:107
-#: src/frontends/qt4/GuiDocument.cpp:686 src/frontends/qt4/GuiDocument.cpp:690
-#: src/frontends/qt4/GuiDocument.cpp:698 src/frontends/qt4/GuiDocument.cpp:794
-#: src/frontends/qt4/GuiDocument.cpp:846
+#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:686
+#: src/frontends/qt4/GuiDocument.cpp:690 src/frontends/qt4/GuiDocument.cpp:698
+#: src/frontends/qt4/GuiDocument.cpp:794 src/frontends/qt4/GuiDocument.cpp:846
 #: src/frontends/qt4/GuiDocument.cpp:1009 src/frontends/qt4/GuiHSpace.cpp:54
 #: src/frontends/qt4/GuiHSpace.cpp:63 src/frontends/qt4/GuiPrefs.cpp:810
 #: src/frontends/qt4/GuiPrefs.cpp:837 src/frontends/qt4/GuiPrefs.cpp:2070
@@ -5793,7 +5793,7 @@ msgstr "اساسي"
 msgid "Title"
 msgstr "العنوان"
 
-#: lib/layouts/IEEEtran.layout:88
+#: lib/layouts/IEEEtran.layout:84 lib/layouts/IEEEtran.layout:88
 msgid "IEEE membership"
 msgstr ""
 
@@ -6127,6 +6127,10 @@ msgstr ""
 msgid "Acknowledgements."
 msgstr ""
 
+#: lib/layouts/aa.layout:299
+msgid "institutemark"
+msgstr "علامة أستهلالية"
+
 #: lib/layouts/aa.layout:303
 msgid "institute mark"
 msgstr "علامة أستهلالية"
@@ -6145,20 +6149,21 @@ msgstr "إستهلال"
 msgid "E-Mail"
 msgstr "البريد الالكتروني"
 
-#: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:261
-msgid "email"
-msgstr "البريد الالكتروني"
-
-#: lib/layouts/aapaper.layout:88 lib/layouts/aastex.layout:104
-#: lib/layouts/aastex.layout:354 lib/layouts/achemso.layout:89
-#: lib/layouts/ectaart.layout:69 lib/layouts/elsarticle.layout:212
-#: lib/layouts/iopart.layout:160 lib/layouts/latex8.layout:64
-#: lib/layouts/lettre.layout:45 lib/layouts/lettre.layout:398
-#: lib/layouts/llncs.layout:234 lib/layouts/svglobal3.layout:45
+#: lib/layouts/aa.layout:410 lib/layouts/aapaper.layout:88
+#: lib/layouts/aastex.layout:104 lib/layouts/aastex.layout:354
+#: lib/layouts/achemso.layout:89 lib/layouts/ectaart.layout:69
+#: lib/layouts/elsarticle.layout:212 lib/layouts/iopart.layout:160
+#: lib/layouts/latex8.layout:64 lib/layouts/lettre.layout:45
+#: lib/layouts/lettre.layout:398 lib/layouts/llncs.layout:234
+#: lib/layouts/svglobal3.layout:41 lib/layouts/svglobal3.layout:45
 #: lib/layouts/aapaper.inc:46 lib/layouts/amsdefs.inc:145
 #: lib/layouts/db_stdcharstyles.inc:71 lib/layouts/db_stdcharstyles.inc:73
 msgid "Email"
 msgstr "بريد الكتروني"
+
+#: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:261
+msgid "email"
+msgstr "البريد الالكتروني"
 
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.inc:103
 #: lib/ui/stdtoolbars.inc:139 src/frontends/qt4/GuiThesaurus.cpp:45
@@ -6243,6 +6248,11 @@ msgstr "منتسب"
 msgid "Alternative affiliation:"
 msgstr "منتسب متناوب:"
 
+#: lib/layouts/aastex.layout:305
+#, fuzzy
+msgid "altaffilmark"
+msgstr "منتسب"
+
 #: lib/layouts/aastex.layout:309
 #, fuzzy
 msgid "altaffiliation mark"
@@ -6294,6 +6304,11 @@ msgstr "ملاحظة الجدول"
 #: lib/layouts/aastex.layout:581
 msgid "Table note:"
 msgstr "ملاحظة الجدول:"
+
+#: lib/layouts/aastex.layout:588
+#, fuzzy
+msgid "tablenotemark"
+msgstr "خط الجدول"
 
 #: lib/layouts/aastex.layout:592
 msgid "tablenote mark"
@@ -6364,6 +6379,11 @@ msgstr "رسم بياني"
 msgid "List of Graphs"
 msgstr "قائمة الرسوم البيانية"
 
+#: lib/layouts/achemso.layout:215
+#, fuzzy
+msgid "Bibnote"
+msgstr "مدونة"
+
 #: lib/layouts/achemso.layout:219
 #, fuzzy
 msgid "bibnote"
@@ -6382,6 +6402,11 @@ msgstr "رأس"
 #, fuzzy
 msgid "Teaser image:"
 msgstr "صفحة فارغة"
+
+#: lib/layouts/acmsiggraph.layout:87
+#, fuzzy
+msgid "CRcat"
+msgstr "hat"
 
 #: lib/layouts/acmsiggraph.layout:92
 msgid "CR category"
@@ -6408,7 +6433,7 @@ msgstr "اعترافات بالجميل"
 msgid "Authors"
 msgstr "المؤلف"
 
-#: lib/layouts/agutex.layout:94
+#: lib/layouts/agutex.layout:90 lib/layouts/agutex.layout:94
 #, fuzzy
 msgid "Affiliation Mark"
 msgstr "منتسب"
@@ -6807,6 +6832,10 @@ msgstr "عنونة"
 #: lib/layouts/beamer.layout:762
 msgid "Title (Plain Frame)"
 msgstr "عنوان (اظار مبسط)"
+
+#: lib/layouts/beamer.layout:838
+msgid "InstituteMark"
+msgstr "علامة إستهلال"
 
 #: lib/layouts/beamer.layout:842
 msgid "Institute mark"
@@ -7536,6 +7565,11 @@ msgstr ""
 msgid "Emphasize"
 msgstr "نسق داكن|ن"
 
+#: lib/layouts/ectaart.layout:152
+#, fuzzy
+msgid "Thanks Reference"
+msgstr "مرجع"
+
 #: lib/layouts/ectaart.layout:159
 #, fuzzy
 msgid "Thanks Ref"
@@ -7721,6 +7755,11 @@ msgstr ""
 msgid "Case \\arabic{case}"
 msgstr ""
 
+#: lib/layouts/elsarticle.layout:75
+#, fuzzy
+msgid "Titlenotemark"
+msgstr "حاشية"
+
 #: lib/layouts/elsarticle.layout:79
 #, fuzzy
 msgid "Titlenote mark"
@@ -7734,6 +7773,11 @@ msgstr "عنوان الهامش"
 msgid "Title footnote:"
 msgstr "عنوان الهامش:"
 
+#: lib/layouts/elsarticle.layout:137
+#, fuzzy
+msgid "Authormark"
+msgstr "المؤلف"
+
 #: lib/layouts/elsarticle.layout:141
 #, fuzzy
 msgid "Author mark"
@@ -7746,6 +7790,11 @@ msgstr "معلومات المؤلف"
 #: lib/layouts/elsarticle.layout:162
 msgid "Author footnote:"
 msgstr "معلومات المؤلف:"
+
+#: lib/layouts/elsarticle.layout:166
+#, fuzzy
+msgid "CorAuthormark"
+msgstr "اربعة مؤلفين"
 
 #: lib/layouts/elsarticle.layout:170
 #, fuzzy
@@ -9301,9 +9350,17 @@ msgstr "شكر القائمين على التعدلات"
 msgid "List of Contributors"
 msgstr "قائمة بأسماء المساهمين"
 
+#: lib/layouts/svmult.layout:229
+msgid "Inst"
+msgstr "ادراج"
+
 #: lib/layouts/svmult.layout:231
 msgid "Institute #"
 msgstr "استهلال#"
+
+#: lib/layouts/tufte-book.layout:124
+msgid "Sidenote"
+msgstr "ملحوظة جانبية"
 
 #: lib/layouts/tufte-book.layout:129
 msgid "sidenote"
@@ -9312,6 +9369,10 @@ msgstr "ملحوظة جانبية"
 #: lib/layouts/tufte-book.layout:147
 msgid "marginnote"
 msgstr "ملحوظة هامشية"
+
+#: lib/layouts/tufte-book.layout:156
+msgid "NewThought"
+msgstr "فكرة جديدة"
 
 #: lib/layouts/tufte-book.layout:160
 msgid "new thought"
@@ -10191,6 +10252,10 @@ msgstr ""
 msgid "Braille_mirror_off"
 msgstr ""
 
+#: lib/layouts/braille.module:163
+msgid "Braillebox"
+msgstr "صندوق برايل"
+
 #: lib/layouts/braille.module:167
 msgid "Braille box"
 msgstr "صندوق برايل"
@@ -10378,7 +10443,8 @@ msgid ""
 "be processed in the output. See the lilypond.lyx example file."
 msgstr ""
 
-#: lib/layouts/lilypond.module:14 lib/external_templates:251
+#: lib/layouts/lilypond.module:13 lib/layouts/lilypond.module:14
+#: lib/external_templates:251
 msgid "LilyPond"
 msgstr "LilyPond"
 
@@ -10534,15 +10600,25 @@ msgstr ""
 msgid "Chunk"
 msgstr ""
 
+#: lib/layouts/sweave.module:52
+#, fuzzy
+msgid "Sweave Options"
+msgstr "خيارات لتيك"
+
 #: lib/layouts/sweave.module:53
 msgid "Sweave opts"
 msgstr ""
+
+#: lib/layouts/sweave.module:74
+#, fuzzy
+msgid "S/R expression"
+msgstr "التعبير العاديه"
 
 #: lib/layouts/sweave.module:75
 msgid "S/R expr"
 msgstr ""
 
-#: lib/layouts/sweave.module:97
+#: lib/layouts/sweave.module:96 lib/layouts/sweave.module:97
 msgid "Sweave Input File"
 msgstr ""
 
@@ -17176,102 +17252,102 @@ msgstr "لا تراجع عن مزيد من المعلومات"
 msgid "No further redo information"
 msgstr "لا تكرار لمزيد من المعلومات"
 
-#: src/BufferView.cpp:1512 src/lyxfind.cpp:374 src/lyxfind.cpp:392
+#: src/BufferView.cpp:1514 src/lyxfind.cpp:374 src/lyxfind.cpp:392
 #, fuzzy
 msgid "String not found!"
 msgstr "الملف غير موجود"
 
-#: src/BufferView.cpp:1555
+#: src/BufferView.cpp:1557
 msgid "Mark off"
 msgstr ""
 
-#: src/BufferView.cpp:1561
+#: src/BufferView.cpp:1563
 msgid "Mark on"
 msgstr ""
 
-#: src/BufferView.cpp:1568
+#: src/BufferView.cpp:1570
 msgid "Mark removed"
 msgstr ""
 
-#: src/BufferView.cpp:1571
+#: src/BufferView.cpp:1573
 msgid "Mark set"
 msgstr ""
 
-#: src/BufferView.cpp:1626
+#: src/BufferView.cpp:1628
 msgid "Statistics for the selection:"
 msgstr "احصاءات المحدد:"
 
-#: src/BufferView.cpp:1628
+#: src/BufferView.cpp:1630
 msgid "Statistics for the document:"
 msgstr "احصاءات المستند:"
 
-#: src/BufferView.cpp:1631
+#: src/BufferView.cpp:1633
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d كلمة"
 
-#: src/BufferView.cpp:1633
+#: src/BufferView.cpp:1635
 msgid "One word"
 msgstr "كلمة واحدة"
 
-#: src/BufferView.cpp:1636
+#: src/BufferView.cpp:1638
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d حرفاً (تشمل المسافات)"
 
-#: src/BufferView.cpp:1639
+#: src/BufferView.cpp:1641
 msgid "One character (including blanks)"
 msgstr "حرفاًواحد (تشمل المسافات)"
 
-#: src/BufferView.cpp:1642
+#: src/BufferView.cpp:1644
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d حرفاً(ماعدا المسافات)"
 
-#: src/BufferView.cpp:1645
+#: src/BufferView.cpp:1647
 msgid "One character (excluding blanks)"
 msgstr "حرفاًواحدا(ماعدا المسافات)"
 
-#: src/BufferView.cpp:1647
+#: src/BufferView.cpp:1649
 msgid "Statistics"
 msgstr "احصاءات"
 
-#: src/BufferView.cpp:1777
+#: src/BufferView.cpp:1780
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
 
-#: src/BufferView.cpp:1779
+#: src/BufferView.cpp:1782
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr ""
 
-#: src/BufferView.cpp:1787
+#: src/BufferView.cpp:1790
 #, fuzzy
 msgid "Branch name"
 msgstr "فروع"
 
-#: src/BufferView.cpp:1794 src/frontends/qt4/GuiBranches.cpp:176
+#: src/BufferView.cpp:1797 src/frontends/qt4/GuiBranches.cpp:176
 msgid "Branch already exists"
 msgstr ""
 
-#: src/BufferView.cpp:2553
+#: src/BufferView.cpp:2564
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "ادراج المستند %1$s..."
 
-#: src/BufferView.cpp:2564
+#: src/BufferView.cpp:2575
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "المستند %1$s ادرج."
 
-#: src/BufferView.cpp:2566
+#: src/BufferView.cpp:2577
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "لم يدرج المستند %1$s"
 
-#: src/BufferView.cpp:2831
+#: src/BufferView.cpp:2842
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17282,11 +17358,11 @@ msgstr ""
 "%1$s\n"
 "بسبب الخطأ التالي:%2$s"
 
-#: src/BufferView.cpp:2833
+#: src/BufferView.cpp:2844
 msgid "Could not read file"
 msgstr "لم يُقرأ الملف"
 
-#: src/BufferView.cpp:2840
+#: src/BufferView.cpp:2851
 #, c-format
 msgid ""
 "%1$s\n"
@@ -17295,15 +17371,15 @@ msgstr ""
 "%1$s\n"
 "لايمكن قراءته"
 
-#: src/BufferView.cpp:2841 src/output.cpp:39
+#: src/BufferView.cpp:2852 src/output.cpp:39
 msgid "Could not open file"
 msgstr "لم يتم فتح الملف"
 
-#: src/BufferView.cpp:2848
+#: src/BufferView.cpp:2859
 msgid "Reading not UTF-8 encoded file"
 msgstr ""
 
-#: src/BufferView.cpp:2849
+#: src/BufferView.cpp:2860
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -17721,7 +17797,7 @@ msgstr ""
 "لاتوجد معلومات لتحويل الملفات من الصيغة %1$s الى ملفات بالصيغة %2$s.\n"
 "حدد المحول من التفضيلات."
 
-#: src/Converter.cpp:439 src/Format.cpp:319 src/Format.cpp:386
+#: src/Converter.cpp:439 src/Format.cpp:320 src/Format.cpp:387
 msgid "Executing command: "
 msgstr "تنفيذ امر:"
 
@@ -17942,39 +18018,39 @@ msgstr "اللغة: %1$s, "
 msgid "Number %1$s"
 msgstr "رقم %1$s"
 
-#: src/Format.cpp:267 src/Format.cpp:280 src/Format.cpp:290
+#: src/Format.cpp:268 src/Format.cpp:281 src/Format.cpp:291
 msgid "Cannot view file"
 msgstr "فشل عرض ملف"
 
-#: src/Format.cpp:268 src/Format.cpp:334 src/frontends/qt4/GuiView.cpp:2928
+#: src/Format.cpp:269 src/Format.cpp:335 src/frontends/qt4/GuiView.cpp:2928
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "ملف غير موجود: %1$s"
 
-#: src/Format.cpp:281
+#: src/Format.cpp:282
 #, c-format
 msgid "No information for viewing %1$s"
 msgstr "لا معلومات لعرض %1$s"
 
-#: src/Format.cpp:291
+#: src/Format.cpp:292
 #, c-format
 msgid "Auto-view file %1$s failed"
 msgstr "فشل العرض الآلي للملف  %1$s "
 
-#: src/Format.cpp:333 src/Format.cpp:345 src/Format.cpp:358 src/Format.cpp:369
+#: src/Format.cpp:334 src/Format.cpp:346 src/Format.cpp:359 src/Format.cpp:370
 msgid "Cannot edit file"
 msgstr "لم يحرر الملف"
 
-#: src/Format.cpp:346
+#: src/Format.cpp:347
 msgid "LinkBack files can only be edited on Apple Mac OSX."
 msgstr ""
 
-#: src/Format.cpp:359
+#: src/Format.cpp:360
 #, c-format
 msgid "No information for editing %1$s"
 msgstr "لا معلومات لتحرير %1$s"
 
-#: src/Format.cpp:370
+#: src/Format.cpp:371
 #, c-format
 msgid "Auto-edit file %1$s failed"
 msgstr "فشل التحرير الآلي للملف %1$s"
@@ -20194,7 +20270,7 @@ msgid "Document Settings"
 msgstr "اعدادات المستند"
 
 #: src/frontends/qt4/GuiDocument.cpp:720 src/frontends/qt4/GuiInclude.cpp:48
-#: src/frontends/qt4/Menus.cpp:1396
+#: src/frontends/qt4/Menus.cpp:1398
 #, fuzzy
 msgid "Child Document"
 msgstr "مستند فرعي....|م"
@@ -22202,127 +22278,127 @@ msgstr "اختياري...|ا"
 msgid "No Group"
 msgstr "لا مجموعة"
 
-#: src/frontends/qt4/Menus.cpp:782 src/frontends/qt4/Menus.cpp:783
+#: src/frontends/qt4/Menus.cpp:784 src/frontends/qt4/Menus.cpp:785
 msgid "More Spelling Suggestions"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:801
+#: src/frontends/qt4/Menus.cpp:803
 #, fuzzy
 msgid "Add to personal dictionary|n"
 msgstr "اختر المسار الشخصي"
 
-#: src/frontends/qt4/Menus.cpp:803
+#: src/frontends/qt4/Menus.cpp:805
 #, fuzzy
 msgid "Ignore all|I"
 msgstr "&تجاهل الكل"
 
-#: src/frontends/qt4/Menus.cpp:811
+#: src/frontends/qt4/Menus.cpp:813
 #, fuzzy
 msgid "Remove from personal dictionary|r"
 msgstr "اختر المسار الشخصي"
 
-#: src/frontends/qt4/Menus.cpp:849
+#: src/frontends/qt4/Menus.cpp:851
 #, fuzzy
 msgid "Language|L"
 msgstr "اللغة"
 
-#: src/frontends/qt4/Menus.cpp:851
+#: src/frontends/qt4/Menus.cpp:853
 #, fuzzy
 msgid "More Languages ...|M"
 msgstr "دمج التغييرات..."
 
-#: src/frontends/qt4/Menus.cpp:921 src/frontends/qt4/Menus.cpp:922
+#: src/frontends/qt4/Menus.cpp:923 src/frontends/qt4/Menus.cpp:924
 msgid "Hidden|H"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:926
+#: src/frontends/qt4/Menus.cpp:928
 #, fuzzy
 msgid "<No Documents Open>"
 msgstr "لم يتم فتح مستند!"
 
-#: src/frontends/qt4/Menus.cpp:989
+#: src/frontends/qt4/Menus.cpp:991
 msgid "<No Bookmarks Saved Yet>"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:1027
+#: src/frontends/qt4/Menus.cpp:1029
 msgid "View (Other Formats)|F"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:1028
+#: src/frontends/qt4/Menus.cpp:1030
 #, fuzzy
 msgid "Update (Other Formats)|p"
 msgstr "تحديث العرض"
 
-#: src/frontends/qt4/Menus.cpp:1061
+#: src/frontends/qt4/Menus.cpp:1063
 #, fuzzy, c-format
 msgid "View [%1$s]|V"
 msgstr "عرض|ع"
 
-#: src/frontends/qt4/Menus.cpp:1062
+#: src/frontends/qt4/Menus.cpp:1064
 #, fuzzy, c-format
 msgid "Update [%1$s]|U"
 msgstr "تحديث"
 
-#: src/frontends/qt4/Menus.cpp:1173
+#: src/frontends/qt4/Menus.cpp:1175
 #, fuzzy
 msgid "No Custom Insets Defined!"
 msgstr "لا اجراء محدد!"
 
-#: src/frontends/qt4/Menus.cpp:1245
+#: src/frontends/qt4/Menus.cpp:1247
 #, fuzzy
 msgid "<No Document Open>"
 msgstr "لا مستند مفتوح!"
 
-#: src/frontends/qt4/Menus.cpp:1255
+#: src/frontends/qt4/Menus.cpp:1257
 msgid "Master Document"
 msgstr "مستند رئيسي"
 
-#: src/frontends/qt4/Menus.cpp:1272
+#: src/frontends/qt4/Menus.cpp:1274
 msgid "Open Navigator..."
 msgstr "فتح مستكشف..."
 
-#: src/frontends/qt4/Menus.cpp:1293
+#: src/frontends/qt4/Menus.cpp:1295
 msgid "Other Lists"
 msgstr "قوائم أخرى"
 
-#: src/frontends/qt4/Menus.cpp:1306
+#: src/frontends/qt4/Menus.cpp:1308
 #, fuzzy
 msgid "<Empty Table of Contents>"
 msgstr "جدول المحتويات"
 
-#: src/frontends/qt4/Menus.cpp:1341
+#: src/frontends/qt4/Menus.cpp:1343
 msgid "Other Toolbars"
 msgstr "اشرطة ادوات أخرى"
 
-#: src/frontends/qt4/Menus.cpp:1356
+#: src/frontends/qt4/Menus.cpp:1358
 #, fuzzy
 msgid "No Branches Set for Document!"
 msgstr "لا فرع في المستند!"
 
-#: src/frontends/qt4/Menus.cpp:1412
+#: src/frontends/qt4/Menus.cpp:1414
 msgid "Index List|I"
 msgstr "قائمة الفهرس"
 
-#: src/frontends/qt4/Menus.cpp:1417
+#: src/frontends/qt4/Menus.cpp:1419
 msgid "Index Entry|d"
 msgstr "مدخل فهرس|م"
 
-#: src/frontends/qt4/Menus.cpp:1432
+#: src/frontends/qt4/Menus.cpp:1434
 #, fuzzy, c-format
 msgid "Index: %1$s"
 msgstr "الخط: %1$s"
 
-#: src/frontends/qt4/Menus.cpp:1437 src/frontends/qt4/Menus.cpp:1466
+#: src/frontends/qt4/Menus.cpp:1439 src/frontends/qt4/Menus.cpp:1468
 #, fuzzy, c-format
 msgid "Index Entry (%1$s)"
 msgstr "مدخل فهرس|م"
 
-#: src/frontends/qt4/Menus.cpp:1483
+#: src/frontends/qt4/Menus.cpp:1485
 #, fuzzy
 msgid "No Citation in Scope!"
 msgstr "لا اجراء محدد"
 
-#: src/frontends/qt4/Menus.cpp:2091
+#: src/frontends/qt4/Menus.cpp:2093
 #, fuzzy
 msgid "No Action Defined!"
 msgstr "لا اجراء محدد"
@@ -22720,7 +22796,7 @@ msgstr ""
 msgid "footnote"
 msgstr "هامش"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:673
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:672
 #, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
@@ -22728,12 +22804,12 @@ msgid ""
 "into the temporary directory."
 msgstr "تعذر انشاء مسار الذاكرة المؤقتة"
 
-#: src/insets/InsetGraphics.cpp:720 src/insets/InsetGraphics.cpp:935
+#: src/insets/InsetGraphics.cpp:719 src/insets/InsetGraphics.cpp:934
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr ""
 
-#: src/insets/InsetGraphics.cpp:812
+#: src/insets/InsetGraphics.cpp:811
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "ملف الصورة : %1$s"
@@ -22767,18 +22843,18 @@ msgstr "حرفياً"
 msgid "Include (excluded)"
 msgstr "ملف مضمن"
 
-#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:773
-#: src/insets/InsetInclude.cpp:818
+#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:772
+#: src/insets/InsetInclude.cpp:817
 msgid "Recursive input"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:774
-#: src/insets/InsetInclude.cpp:819
+#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:773
+#: src/insets/InsetInclude.cpp:818
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:562
+#: src/insets/InsetInclude.cpp:561
 #, fuzzy, c-format
 msgid ""
 "Could not load included file\n"
@@ -22788,12 +22864,12 @@ msgstr ""
 "تعذر انشاء نسخة احتياطية من الملف%1$s.\n"
 "من فضلك تاكد من وجود المجلد و انه يمكن الكتابة فيه."
 
-#: src/insets/InsetInclude.cpp:566
+#: src/insets/InsetInclude.cpp:565
 #, fuzzy
 msgid "Missing included file"
 msgstr "ملف مضمن"
 
-#: src/insets/InsetInclude.cpp:572
+#: src/insets/InsetInclude.cpp:571
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -22801,11 +22877,11 @@ msgid ""
 "while parent file has textclass `%3$s'."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:578
+#: src/insets/InsetInclude.cpp:577
 msgid "Different textclasses"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:593
+#: src/insets/InsetInclude.cpp:592
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -22813,28 +22889,28 @@ msgid ""
 "which is not used in parent file."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:597
+#: src/insets/InsetInclude.cpp:596
 #, fuzzy
 msgid "Module not found"
 msgstr "النموذج غير موجود"
 
-#: src/insets/InsetInclude.cpp:627 src/insets/InsetInclude.cpp:650
+#: src/insets/InsetInclude.cpp:626 src/insets/InsetInclude.cpp:649
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:636 src/insets/InsetInclude.cpp:658
+#: src/insets/InsetInclude.cpp:635 src/insets/InsetInclude.cpp:657
 #, fuzzy
 msgid "Export failure"
 msgstr "فشل النسخ الاحتياطي"
 
-#: src/insets/InsetInclude.cpp:761
+#: src/insets/InsetInclude.cpp:760
 msgid "Unsupported Inclusion"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:762
+#: src/insets/InsetInclude.cpp:761
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
@@ -24131,9 +24207,6 @@ msgstr "مستخدم مجهول"
 #~ msgid "&Global"
 #~ msgstr "&شامل"
 
-#~ msgid "institutemark"
-#~ msgstr "علامة أستهلالية"
-
 #, fuzzy
 #~ msgid "Flex:Institute"
 #~ msgstr "إستهلال"
@@ -24141,10 +24214,6 @@ msgstr "مستخدم مجهول"
 #, fuzzy
 #~ msgid "Flex:E-Mail"
 #~ msgstr "البريد الالكتروني"
-
-#, fuzzy
-#~ msgid "tablenotemark"
-#~ msgstr "خط الجدول"
 
 #~ msgid "scheme"
 #~ msgstr "مخطط"
@@ -24155,19 +24224,8 @@ msgstr "مستخدم مجهول"
 #~ msgid "graph"
 #~ msgstr "رسم بياني"
 
-#, fuzzy
-#~ msgid "Bibnote"
-#~ msgstr "مدونة"
-
 #~ msgid "Chemistry"
 #~ msgstr "كيمياء"
-
-#, fuzzy
-#~ msgid "CRcat"
-#~ msgstr "hat"
-
-#~ msgid "InstituteMark"
-#~ msgstr "علامة إستهلال"
 
 #, fuzzy
 #~ msgid "Flex:Alert"
@@ -24186,10 +24244,6 @@ msgstr "مستخدم مجهول"
 #~ msgstr "عرض تقديمي"
 
 #, fuzzy
-#~ msgid "Thanks Reference"
-#~ msgstr "مرجع"
-
-#, fuzzy
 #~ msgid "Internet Address Reference"
 #~ msgstr "ادراج اسناد ترافقي"
 
@@ -24202,32 +24256,11 @@ msgstr "مستخدم مجهول"
 #~ msgstr "عنصر:لقب"
 
 #, fuzzy
-#~ msgid "Titlenotemark"
-#~ msgstr "حاشية"
-
-#, fuzzy
-#~ msgid "Authormark"
-#~ msgstr "المؤلف"
-
-#, fuzzy
-#~ msgid "CorAuthormark"
-#~ msgstr "اربعة مؤلفين"
-
-#, fuzzy
 #~ msgid "Lowercase"
 #~ msgstr "حروف صغيرة"
 
-#~ msgid "Inst"
-#~ msgstr "ادراج"
-
-#~ msgid "Sidenote"
-#~ msgstr "ملحوظة جانبية"
-
 #~ msgid "Marginnote"
 #~ msgstr "ملحوظة هامشية"
-
-#~ msgid "NewThought"
-#~ msgstr "فكرة جديدة"
 
 #, fuzzy
 #~ msgid "AllCaps"
@@ -24357,9 +24390,6 @@ msgstr "مستخدم مجهول"
 #~ msgid "Info:shortcuts"
 #~ msgstr "معلومة:اختصارات"
 
-#~ msgid "Braillebox"
-#~ msgstr "صندوق برايل"
-
 #, fuzzy
 #~ msgid "Flex:Endnote"
 #~ msgstr "نهاية مدونة"
@@ -24383,14 +24413,6 @@ msgstr "مستخدم مجهول"
 #, fuzzy
 #~ msgid "Noweb literate programming"
 #~ msgstr "لا يوجد ملف سجل تحكم اصدار"
-
-#, fuzzy
-#~ msgid "Sweave Options"
-#~ msgstr "خيارات لتيك"
-
-#, fuzzy
-#~ msgid "S/R expression"
-#~ msgstr "التعبير العاديه"
 
 #~ msgid "Norsk"
 #~ msgstr "Norsk"

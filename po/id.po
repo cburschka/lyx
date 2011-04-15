@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-13 19:57+0200\n"
+"POT-Creation-Date: 2011-04-15 10:39+0200\n"
 "PO-Revision-Date: 2011-04-03 20:49+0730\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Indonesian <was.uthm@gmail.com>\n"
@@ -709,7 +709,7 @@ msgstr "Seri huruf"
 #: src/frontends/qt4/ui/CharacterUi.ui:145
 #: src/frontends/qt4/ui/ListingsUi.ui:339
 #: src/frontends/qt4/GuiDocument.cpp:1282 src/frontends/qt4/GuiPrefs.cpp:2171
-#: src/frontends/qt4/Menus.cpp:850
+#: src/frontends/qt4/Menus.cpp:852
 msgid "Language"
 msgstr "Bahasa"
 
@@ -1765,8 +1765,8 @@ msgstr "Menyisipkan spasi merata setelah pemisah baris"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:19
 #: src/frontends/qt4/ui/HyperlinkUi.ui:32 lib/layouts/scrlttr2.layout:207
-#: lib/layouts/amsdefs.inc:153 lib/layouts/stdinsets.inc:333
-#: lib/layouts/minimalistic.module:26
+#: lib/layouts/amsdefs.inc:153 lib/layouts/stdinsets.inc:330
+#: lib/layouts/stdinsets.inc:333 lib/layouts/minimalistic.module:26
 msgid "URL"
 msgstr "URL"
 
@@ -1881,8 +1881,8 @@ msgstr "Kode Input"
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1118
-#: src/insets/InsetInclude.cpp:1124
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1117
+#: src/insets/InsetInclude.cpp:1123
 msgid "Program Listing"
 msgstr "Pemrograman"
 
@@ -2920,9 +2920,9 @@ msgstr "Dua"
 #: src/frontends/qt4/ui/TabularUi.ui:1047
 #: src/frontends/qt4/ui/TabularUi.ui:1066
 #: src/frontends/qt4/ui/TabularUi.ui:1114 src/frontends/qt4/ui/VSpaceUi.ui:107
-#: src/frontends/qt4/GuiDocument.cpp:686 src/frontends/qt4/GuiDocument.cpp:690
-#: src/frontends/qt4/GuiDocument.cpp:698 src/frontends/qt4/GuiDocument.cpp:794
-#: src/frontends/qt4/GuiDocument.cpp:846
+#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:686
+#: src/frontends/qt4/GuiDocument.cpp:690 src/frontends/qt4/GuiDocument.cpp:698
+#: src/frontends/qt4/GuiDocument.cpp:794 src/frontends/qt4/GuiDocument.cpp:846
 #: src/frontends/qt4/GuiDocument.cpp:1009 src/frontends/qt4/GuiHSpace.cpp:54
 #: src/frontends/qt4/GuiHSpace.cpp:63 src/frontends/qt4/GuiPrefs.cpp:810
 #: src/frontends/qt4/GuiPrefs.cpp:837 src/frontends/qt4/GuiPrefs.cpp:2070
@@ -5671,7 +5671,7 @@ msgstr "Standar"
 msgid "Title"
 msgstr "Judul"
 
-#: lib/layouts/IEEEtran.layout:88
+#: lib/layouts/IEEEtran.layout:84 lib/layouts/IEEEtran.layout:88
 msgid "IEEE membership"
 msgstr "Keanggotaan IEEE"
 
@@ -5999,6 +5999,10 @@ msgstr "Correspondence to:"
 msgid "Acknowledgements."
 msgstr "Ucapan Terima Kasih."
 
+#: lib/layouts/aa.layout:299
+msgid "institutemark"
+msgstr "institutemark"
+
 #: lib/layouts/aa.layout:303
 msgid "institute mark"
 msgstr "institute mark"
@@ -6017,20 +6021,21 @@ msgstr "Institute"
 msgid "E-Mail"
 msgstr "E-Mail"
 
-#: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:261
-msgid "email"
-msgstr "email"
-
-#: lib/layouts/aapaper.layout:88 lib/layouts/aastex.layout:104
-#: lib/layouts/aastex.layout:354 lib/layouts/achemso.layout:89
-#: lib/layouts/ectaart.layout:69 lib/layouts/elsarticle.layout:212
-#: lib/layouts/iopart.layout:160 lib/layouts/latex8.layout:64
-#: lib/layouts/lettre.layout:45 lib/layouts/lettre.layout:398
-#: lib/layouts/llncs.layout:234 lib/layouts/svglobal3.layout:45
+#: lib/layouts/aa.layout:410 lib/layouts/aapaper.layout:88
+#: lib/layouts/aastex.layout:104 lib/layouts/aastex.layout:354
+#: lib/layouts/achemso.layout:89 lib/layouts/ectaart.layout:69
+#: lib/layouts/elsarticle.layout:212 lib/layouts/iopart.layout:160
+#: lib/layouts/latex8.layout:64 lib/layouts/lettre.layout:45
+#: lib/layouts/lettre.layout:398 lib/layouts/llncs.layout:234
+#: lib/layouts/svglobal3.layout:41 lib/layouts/svglobal3.layout:45
 #: lib/layouts/aapaper.inc:46 lib/layouts/amsdefs.inc:145
 #: lib/layouts/db_stdcharstyles.inc:71 lib/layouts/db_stdcharstyles.inc:73
 msgid "Email"
 msgstr "Email"
+
+#: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:261
+msgid "email"
+msgstr "email"
 
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.inc:103
 #: lib/ui/stdtoolbars.inc:139 src/frontends/qt4/GuiThesaurus.cpp:45
@@ -6114,6 +6119,10 @@ msgstr "AfiliasiAlternatif"
 msgid "Alternative affiliation:"
 msgstr "Afiliasi alternatif:"
 
+#: lib/layouts/aastex.layout:305
+msgid "altaffilmark"
+msgstr "altaffilmark"
+
 #: lib/layouts/aastex.layout:309
 msgid "altaffiliation mark"
 msgstr "altaffiliation mark"
@@ -6164,6 +6173,10 @@ msgstr "Nota Tabel"
 #: lib/layouts/aastex.layout:581
 msgid "Table note:"
 msgstr "Nota Tabel:"
+
+#: lib/layouts/aastex.layout:588
+msgid "tablenotemark"
+msgstr "tandanotatabel"
 
 #: lib/layouts/aastex.layout:592
 msgid "tablenote mark"
@@ -6232,6 +6245,10 @@ msgstr "Grafik"
 msgid "List of Graphs"
 msgstr "Daftar Grafik"
 
+#: lib/layouts/achemso.layout:215
+msgid "Bibnote"
+msgstr "Bibnote"
+
 #: lib/layouts/achemso.layout:219
 msgid "bibnote"
 msgstr "bibnote"
@@ -6247,6 +6264,10 @@ msgstr "Teaser"
 #: lib/layouts/acmsiggraph.layout:75
 msgid "Teaser image:"
 msgstr "Teaser image:"
+
+#: lib/layouts/acmsiggraph.layout:87
+msgid "CRcat"
+msgstr "CRcat"
 
 #: lib/layouts/acmsiggraph.layout:92
 msgid "CR category"
@@ -6272,7 +6293,7 @@ msgstr "Ucapan terima kasih"
 msgid "Authors"
 msgstr "Penulis"
 
-#: lib/layouts/agutex.layout:94
+#: lib/layouts/agutex.layout:90 lib/layouts/agutex.layout:94
 msgid "Affiliation Mark"
 msgstr "Tanda Afiliasi "
 
@@ -6664,6 +6685,10 @@ msgstr "Titling"
 #: lib/layouts/beamer.layout:762
 msgid "Title (Plain Frame)"
 msgstr "Title (Plain Frame)"
+
+#: lib/layouts/beamer.layout:838
+msgid "InstituteMark"
+msgstr "InstituteMark"
 
 #: lib/layouts/beamer.layout:842
 msgid "Institute mark"
@@ -7378,6 +7403,10 @@ msgstr "Terimakasih \\theThanks:"
 msgid "Emphasize"
 msgstr "Penekanan"
 
+#: lib/layouts/ectaart.layout:152
+msgid "Thanks Reference"
+msgstr "Referensi Terimakasih"
+
 #: lib/layouts/ectaart.layout:159
 msgid "Thanks Ref"
 msgstr "Ref Terimakasih"
@@ -7560,6 +7589,10 @@ msgstr "Ringkasan \\arabic{summ}"
 msgid "Case \\arabic{case}"
 msgstr "Kasus \\arabic{case}"
 
+#: lib/layouts/elsarticle.layout:75
+msgid "Titlenotemark"
+msgstr "TandaJudulNota"
+
 #: lib/layouts/elsarticle.layout:79
 msgid "Titlenote mark"
 msgstr "Tanda JudulNota"
@@ -7572,6 +7605,10 @@ msgstr "Judul Catatankaki"
 msgid "Title footnote:"
 msgstr "Judul Catatankaki:"
 
+#: lib/layouts/elsarticle.layout:137
+msgid "Authormark"
+msgstr "TandaPenulis"
+
 #: lib/layouts/elsarticle.layout:141
 msgid "Author mark"
 msgstr "Tanda Penulis"
@@ -7583,6 +7620,10 @@ msgstr "Penulis Catatankaki"
 #: lib/layouts/elsarticle.layout:162
 msgid "Author footnote:"
 msgstr "Penulis catatankaki:"
+
+#: lib/layouts/elsarticle.layout:166
+msgid "CorAuthormark"
+msgstr "TandaPenulisKontak"
 
 #: lib/layouts/elsarticle.layout:170
 msgid "CorAuthor mark"
@@ -9113,9 +9154,17 @@ msgstr "Untuk Penyunting"
 msgid "List of Contributors"
 msgstr "Daftar Penyumbang"
 
+#: lib/layouts/svmult.layout:229
+msgid "Inst"
+msgstr "Inst"
+
 #: lib/layouts/svmult.layout:231
 msgid "Institute #"
 msgstr "Institut #"
+
+#: lib/layouts/tufte-book.layout:124
+msgid "Sidenote"
+msgstr "Nota samping"
 
 #: lib/layouts/tufte-book.layout:129
 msgid "sidenote"
@@ -9124,6 +9173,10 @@ msgstr "Nota samping"
 #: lib/layouts/tufte-book.layout:147
 msgid "marginnote"
 msgstr "Nota tepi"
+
+#: lib/layouts/tufte-book.layout:156
+msgid "NewThought"
+msgstr "PemikiranBaru"
 
 #: lib/layouts/tufte-book.layout:160
 msgid "new thought"
@@ -9991,6 +10044,10 @@ msgstr "Braille (mirror off)"
 msgid "Braille_mirror_off"
 msgstr "Braille_mirror_off"
 
+#: lib/layouts/braille.module:163
+msgid "Braillebox"
+msgstr "Braillebox"
+
 #: lib/layouts/braille.module:167
 msgid "Braille box"
 msgstr "Braille box"
@@ -10189,7 +10246,8 @@ msgstr ""
 "LyX. Kode akan diproses untuk memberi keluaran. Silahkan lihat berkas contoh "
 "lilypond.lyx ."
 
-#: lib/layouts/lilypond.module:14 lib/external_templates:251
+#: lib/layouts/lilypond.module:13 lib/layouts/lilypond.module:14
+#: lib/external_templates:251
 msgid "LilyPond"
 msgstr "LilyPond"
 
@@ -10346,15 +10404,25 @@ msgstr ""
 msgid "Chunk"
 msgstr "Chunk"
 
+#: lib/layouts/sweave.module:52
+#, fuzzy
+msgid "Sweave Options"
+msgstr "Opsi LaTeX"
+
 #: lib/layouts/sweave.module:53
 msgid "Sweave opts"
 msgstr "Sweave opts"
+
+#: lib/layouts/sweave.module:74
+#, fuzzy
+msgid "S/R expression"
+msgstr "Pernyataan &Reguler"
 
 #: lib/layouts/sweave.module:75
 msgid "S/R expr"
 msgstr "S/R expr"
 
-#: lib/layouts/sweave.module:97
+#: lib/layouts/sweave.module:96 lib/layouts/sweave.module:97
 msgid "Sweave Input File"
 msgstr "Berkas Masukan Sweave"
 
@@ -16948,100 +17016,100 @@ msgstr "Sudah tidak ada lagi informasi Batalkan"
 msgid "No further redo information"
 msgstr "Sudah tidak ada lagi informasi Kembalikan"
 
-#: src/BufferView.cpp:1512 src/lyxfind.cpp:374 src/lyxfind.cpp:392
+#: src/BufferView.cpp:1514 src/lyxfind.cpp:374 src/lyxfind.cpp:392
 msgid "String not found!"
 msgstr "String tidak ditemukan!"
 
-#: src/BufferView.cpp:1555
+#: src/BufferView.cpp:1557
 msgid "Mark off"
 msgstr "Tanda hilang"
 
-#: src/BufferView.cpp:1561
+#: src/BufferView.cpp:1563
 msgid "Mark on"
 msgstr "Tanda on"
 
-#: src/BufferView.cpp:1568
+#: src/BufferView.cpp:1570
 msgid "Mark removed"
 msgstr "Tanda dihilangkan"
 
-#: src/BufferView.cpp:1571
+#: src/BufferView.cpp:1573
 msgid "Mark set"
 msgstr "Beri Tanda"
 
-#: src/BufferView.cpp:1626
+#: src/BufferView.cpp:1628
 msgid "Statistics for the selection:"
 msgstr "Data statistik pilihan:"
 
-#: src/BufferView.cpp:1628
+#: src/BufferView.cpp:1630
 msgid "Statistics for the document:"
 msgstr "Data statistik dokumen:"
 
-#: src/BufferView.cpp:1631
+#: src/BufferView.cpp:1633
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d kata"
 
-#: src/BufferView.cpp:1633
+#: src/BufferView.cpp:1635
 msgid "One word"
 msgstr "Satu kata"
 
-#: src/BufferView.cpp:1636
+#: src/BufferView.cpp:1638
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d karakter (termasuk spasi)"
 
-#: src/BufferView.cpp:1639
+#: src/BufferView.cpp:1641
 msgid "One character (including blanks)"
 msgstr "Satu karakter (termasuk spasi)"
 
-#: src/BufferView.cpp:1642
+#: src/BufferView.cpp:1644
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d karakter (tidak termasuk spasi)"
 
-#: src/BufferView.cpp:1645
+#: src/BufferView.cpp:1647
 msgid "One character (excluding blanks)"
 msgstr "Satu karakter (tidak termasuk spasi)"
 
-#: src/BufferView.cpp:1647
+#: src/BufferView.cpp:1649
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/BufferView.cpp:1777
+#: src/BufferView.cpp:1780
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr "`inset-forall' dihentikan karena jumlah aksi lebih besar dari %1$d"
 
-#: src/BufferView.cpp:1779
+#: src/BufferView.cpp:1782
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "Terapkan sisipan \"%1$s\" ke %2$d"
 
-#: src/BufferView.cpp:1787
+#: src/BufferView.cpp:1790
 msgid "Branch name"
 msgstr "Cabang"
 
-#: src/BufferView.cpp:1794 src/frontends/qt4/GuiBranches.cpp:176
+#: src/BufferView.cpp:1797 src/frontends/qt4/GuiBranches.cpp:176
 msgid "Branch already exists"
 msgstr "Nama cabang sudah ada"
 
-#: src/BufferView.cpp:2553
+#: src/BufferView.cpp:2564
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Memasukkan dokumen %1$s..."
 
-#: src/BufferView.cpp:2564
+#: src/BufferView.cpp:2575
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumen %1$s dimasukkan."
 
-#: src/BufferView.cpp:2566
+#: src/BufferView.cpp:2577
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Tidak dapat memasukkan dokumen %1$s"
 
-#: src/BufferView.cpp:2831
+#: src/BufferView.cpp:2842
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17052,11 +17120,11 @@ msgstr ""
 "%1$s\n"
 "karena kesalahan: %2$s"
 
-#: src/BufferView.cpp:2833
+#: src/BufferView.cpp:2844
 msgid "Could not read file"
 msgstr "Tidak dapat membaca berkas"
 
-#: src/BufferView.cpp:2840
+#: src/BufferView.cpp:2851
 #, c-format
 msgid ""
 "%1$s\n"
@@ -17065,15 +17133,15 @@ msgstr ""
 "%1$s\n"
 "tidak bisa dibaca."
 
-#: src/BufferView.cpp:2841 src/output.cpp:39
+#: src/BufferView.cpp:2852 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Tidak bisa membuka berkas"
 
-#: src/BufferView.cpp:2848
+#: src/BufferView.cpp:2859
 msgid "Reading not UTF-8 encoded file"
 msgstr "Membaca berkas not UTF-8 encoded"
 
-#: src/BufferView.cpp:2849
+#: src/BufferView.cpp:2860
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -17481,7 +17549,7 @@ msgstr ""
 "Tidak ada informasi untuk mengkonversi berkas %1$s ke %2$s.\n"
 "Definisikan pengkonversi yang diinginkan melalui preferensi."
 
-#: src/Converter.cpp:439 src/Format.cpp:319 src/Format.cpp:386
+#: src/Converter.cpp:439 src/Format.cpp:320 src/Format.cpp:387
 msgid "Executing command: "
 msgstr "Perintah Menjalankan: "
 
@@ -17701,41 +17769,41 @@ msgstr "Bahasa: %1$s, "
 msgid "Number %1$s"
 msgstr "Angka %1$s"
 
-#: src/Format.cpp:267 src/Format.cpp:280 src/Format.cpp:290
+#: src/Format.cpp:268 src/Format.cpp:281 src/Format.cpp:291
 msgid "Cannot view file"
 msgstr "Tidak bisa menampilkan berkas"
 
-#: src/Format.cpp:268 src/Format.cpp:334 src/frontends/qt4/GuiView.cpp:2928
+#: src/Format.cpp:269 src/Format.cpp:335 src/frontends/qt4/GuiView.cpp:2928
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Berkas tidak ada: %1$s"
 
-#: src/Format.cpp:281
+#: src/Format.cpp:282
 #, c-format
 msgid "No information for viewing %1$s"
 msgstr "Tidak ada informasi untuk menampilkan %1$s"
 
-#: src/Format.cpp:291
+#: src/Format.cpp:292
 #, c-format
 msgid "Auto-view file %1$s failed"
 msgstr "Tampilan otomatis berkas %1$s gagal"
 
-#: src/Format.cpp:333 src/Format.cpp:345 src/Format.cpp:358 src/Format.cpp:369
+#: src/Format.cpp:334 src/Format.cpp:346 src/Format.cpp:359 src/Format.cpp:370
 msgid "Cannot edit file"
 msgstr "Tidak bisa menyunting berkas"
 
-#: src/Format.cpp:346
+#: src/Format.cpp:347
 msgid "LinkBack files can only be edited on Apple Mac OSX."
 msgstr ""
 "Berkas LinkBack hanya dapat disunting dengan  dalam sistem operasi Apple Mac "
 "OSX."
 
-#: src/Format.cpp:359
+#: src/Format.cpp:360
 #, c-format
 msgid "No information for editing %1$s"
 msgstr "Tidak ada informasi untuk menyunting  %1$s"
 
-#: src/Format.cpp:370
+#: src/Format.cpp:371
 #, c-format
 msgid "Auto-edit file %1$s failed"
 msgstr "Suntingan otomatis %1$s gagal"
@@ -20073,7 +20141,7 @@ msgid "Document Settings"
 msgstr "Pengaturan Dokumen"
 
 #: src/frontends/qt4/GuiDocument.cpp:720 src/frontends/qt4/GuiInclude.cpp:48
-#: src/frontends/qt4/Menus.cpp:1396
+#: src/frontends/qt4/Menus.cpp:1398
 msgid "Child Document"
 msgstr "Anak dokumen"
 
@@ -22041,115 +22109,115 @@ msgstr "Lainnya..."
 msgid "No Group"
 msgstr "Tidak Ada Grup"
 
-#: src/frontends/qt4/Menus.cpp:782 src/frontends/qt4/Menus.cpp:783
+#: src/frontends/qt4/Menus.cpp:784 src/frontends/qt4/Menus.cpp:785
 msgid "More Spelling Suggestions"
 msgstr "Saran Ejaan Lain"
 
-#: src/frontends/qt4/Menus.cpp:801
+#: src/frontends/qt4/Menus.cpp:803
 msgid "Add to personal dictionary|n"
 msgstr "Tambah ke kamus pribadi"
 
-#: src/frontends/qt4/Menus.cpp:803
+#: src/frontends/qt4/Menus.cpp:805
 msgid "Ignore all|I"
 msgstr "Abaikan semua|s"
 
-#: src/frontends/qt4/Menus.cpp:811
+#: src/frontends/qt4/Menus.cpp:813
 msgid "Remove from personal dictionary|r"
 msgstr "Hapus kamus pribadi|r"
 
-#: src/frontends/qt4/Menus.cpp:849
+#: src/frontends/qt4/Menus.cpp:851
 msgid "Language|L"
 msgstr "Bahasa"
 
-#: src/frontends/qt4/Menus.cpp:851
+#: src/frontends/qt4/Menus.cpp:853
 msgid "More Languages ...|M"
 msgstr "Bahasa Lainnya ...|y"
 
-#: src/frontends/qt4/Menus.cpp:921 src/frontends/qt4/Menus.cpp:922
+#: src/frontends/qt4/Menus.cpp:923 src/frontends/qt4/Menus.cpp:924
 msgid "Hidden|H"
 msgstr "Sembunyikan|y"
 
-#: src/frontends/qt4/Menus.cpp:926
+#: src/frontends/qt4/Menus.cpp:928
 msgid "<No Documents Open>"
 msgstr "<Tidak Ada Dokumen Dibuka>"
 
-#: src/frontends/qt4/Menus.cpp:989
+#: src/frontends/qt4/Menus.cpp:991
 msgid "<No Bookmarks Saved Yet>"
 msgstr "<Tidak Ada Batas Buku Disimpan>"
 
-#: src/frontends/qt4/Menus.cpp:1027
+#: src/frontends/qt4/Menus.cpp:1029
 msgid "View (Other Formats)|F"
 msgstr "Tampilkan (Format Lain)|F"
 
-#: src/frontends/qt4/Menus.cpp:1028
+#: src/frontends/qt4/Menus.cpp:1030
 msgid "Update (Other Formats)|p"
 msgstr "Perbarui (Format Lain)|P"
 
-#: src/frontends/qt4/Menus.cpp:1061
+#: src/frontends/qt4/Menus.cpp:1063
 #, c-format
 msgid "View [%1$s]|V"
 msgstr "Tampilkan [%1$s]"
 
-#: src/frontends/qt4/Menus.cpp:1062
+#: src/frontends/qt4/Menus.cpp:1064
 #, c-format
 msgid "Update [%1$s]|U"
 msgstr "Perbarui [%1$s]|u"
 
-#: src/frontends/qt4/Menus.cpp:1173
+#: src/frontends/qt4/Menus.cpp:1175
 msgid "No Custom Insets Defined!"
 msgstr "Tidak ada sisipan yang didefinisikan!"
 
-#: src/frontends/qt4/Menus.cpp:1245
+#: src/frontends/qt4/Menus.cpp:1247
 msgid "<No Document Open>"
 msgstr "<Tidak Ada Dokumen Dibuka>"
 
-#: src/frontends/qt4/Menus.cpp:1255
+#: src/frontends/qt4/Menus.cpp:1257
 msgid "Master Document"
 msgstr "Dokumen Utama"
 
-#: src/frontends/qt4/Menus.cpp:1272
+#: src/frontends/qt4/Menus.cpp:1274
 msgid "Open Navigator..."
 msgstr "Buka Navigator..."
 
-#: src/frontends/qt4/Menus.cpp:1293
+#: src/frontends/qt4/Menus.cpp:1295
 msgid "Other Lists"
 msgstr "Daftar Lainnya"
 
-#: src/frontends/qt4/Menus.cpp:1306
+#: src/frontends/qt4/Menus.cpp:1308
 msgid "<Empty Table of Contents>"
 msgstr "<Daftar Isi Kosong>"
 
-#: src/frontends/qt4/Menus.cpp:1341
+#: src/frontends/qt4/Menus.cpp:1343
 msgid "Other Toolbars"
 msgstr "Kotak Bantuan Lain"
 
-#: src/frontends/qt4/Menus.cpp:1356
+#: src/frontends/qt4/Menus.cpp:1358
 msgid "No Branches Set for Document!"
 msgstr "Tidak Ada Cabang Dalam Dokumen!"
 
-#: src/frontends/qt4/Menus.cpp:1412
+#: src/frontends/qt4/Menus.cpp:1414
 msgid "Index List|I"
 msgstr "Indeks|I"
 
-#: src/frontends/qt4/Menus.cpp:1417
+#: src/frontends/qt4/Menus.cpp:1419
 msgid "Index Entry|d"
 msgstr "Catat dalam Index|d"
 
-#: src/frontends/qt4/Menus.cpp:1432
+#: src/frontends/qt4/Menus.cpp:1434
 #, c-format
 msgid "Index: %1$s"
 msgstr "Indeks: %1$s"
 
-#: src/frontends/qt4/Menus.cpp:1437 src/frontends/qt4/Menus.cpp:1466
+#: src/frontends/qt4/Menus.cpp:1439 src/frontends/qt4/Menus.cpp:1468
 #, c-format
 msgid "Index Entry (%1$s)"
 msgstr "Entri Indeks (%1$s)"
 
-#: src/frontends/qt4/Menus.cpp:1483
+#: src/frontends/qt4/Menus.cpp:1485
 msgid "No Citation in Scope!"
 msgstr "Tidak Ada Acuan di Scope!"
 
-#: src/frontends/qt4/Menus.cpp:2091
+#: src/frontends/qt4/Menus.cpp:2093
 msgid "No Action Defined!"
 msgstr "Tidak ada aksi disini!"
 
@@ -22545,7 +22613,7 @@ msgstr "LyX tidak bisa membuat daftar %1$s"
 msgid "footnote"
 msgstr "catatan kaki"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:673
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:672
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -22556,12 +22624,12 @@ msgstr ""
 "%1$s\n"
 "dalam ditektori sementara."
 
-#: src/insets/InsetGraphics.cpp:720 src/insets/InsetGraphics.cpp:935
+#: src/insets/InsetGraphics.cpp:719 src/insets/InsetGraphics.cpp:934
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Tidak ada konversi dari  %1$s  diperlukan"
 
-#: src/insets/InsetGraphics.cpp:812
+#: src/insets/InsetGraphics.cpp:811
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Berkas gambar: %1$s"
@@ -22591,19 +22659,19 @@ msgstr "Verbatim Input*"
 msgid "Include (excluded)"
 msgstr "Ikutan (dipisahkan)"
 
-#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:773
-#: src/insets/InsetInclude.cpp:818
+#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:772
+#: src/insets/InsetInclude.cpp:817
 msgid "Recursive input"
 msgstr "Inpur rekursif"
 
-#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:774
-#: src/insets/InsetInclude.cpp:819
+#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:773
+#: src/insets/InsetInclude.cpp:818
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 "Ada usaha memasukkan berkas  %1$s ke diri sendiri! Tidak bisa dilakukan."
 
-#: src/insets/InsetInclude.cpp:562
+#: src/insets/InsetInclude.cpp:561
 #, c-format
 msgid ""
 "Could not load included file\n"
@@ -22614,11 +22682,11 @@ msgstr ""
 "`%1$s'\n"
 "Pastikan berkas memang ada."
 
-#: src/insets/InsetInclude.cpp:566
+#: src/insets/InsetInclude.cpp:565
 msgid "Missing included file"
 msgstr "Berkas ikutan tidak ditemukan"
 
-#: src/insets/InsetInclude.cpp:572
+#: src/insets/InsetInclude.cpp:571
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -22629,11 +22697,11 @@ msgstr ""
 "memiliki class teks `%2$s'\n"
 "sementara berkas induk memiliki class teks `%3$s'."
 
-#: src/insets/InsetInclude.cpp:578
+#: src/insets/InsetInclude.cpp:577
 msgid "Different textclasses"
 msgstr "Ada perbedaan class teks"
 
-#: src/insets/InsetInclude.cpp:593
+#: src/insets/InsetInclude.cpp:592
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -22644,11 +22712,11 @@ msgstr ""
 "menggunakan modul `%2$s'\n"
 "yang tidak digunakan di berkas utama."
 
-#: src/insets/InsetInclude.cpp:597
+#: src/insets/InsetInclude.cpp:596
 msgid "Module not found"
 msgstr "Modul tidak ditemukan"
 
-#: src/insets/InsetInclude.cpp:627 src/insets/InsetInclude.cpp:650
+#: src/insets/InsetInclude.cpp:626 src/insets/InsetInclude.cpp:649
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
@@ -22657,15 +22725,15 @@ msgstr ""
 "Berkas ikutan `%1$s' tidak diekspor dengan baik.\n"
 "Peringatan: LaTeX ekspor mungkin tidak lengkap."
 
-#: src/insets/InsetInclude.cpp:636 src/insets/InsetInclude.cpp:658
+#: src/insets/InsetInclude.cpp:635 src/insets/InsetInclude.cpp:657
 msgid "Export failure"
 msgstr "Ekspor gagal"
 
-#: src/insets/InsetInclude.cpp:761
+#: src/insets/InsetInclude.cpp:760
 msgid "Unsupported Inclusion"
 msgstr "Ikutan tidak didukung"
 
-#: src/insets/InsetInclude.cpp:762
+#: src/insets/InsetInclude.cpp:761
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
@@ -24065,9 +24133,6 @@ msgstr "Pemakai tidak dikenal"
 #~ msgid "&Global"
 #~ msgstr "&Global"
 
-#~ msgid "institutemark"
-#~ msgstr "institutemark"
-
 #, fuzzy
 #~ msgid "Flex:Institute"
 #~ msgstr "Institute"
@@ -24075,12 +24140,6 @@ msgstr "Pemakai tidak dikenal"
 #, fuzzy
 #~ msgid "Flex:E-Mail"
 #~ msgstr "E-Mail"
-
-#~ msgid "altaffilmark"
-#~ msgstr "altaffilmark"
-
-#~ msgid "tablenotemark"
-#~ msgstr "tandanotatabel"
 
 #~ msgid "scheme"
 #~ msgstr "skema"
@@ -24091,17 +24150,8 @@ msgstr "Pemakai tidak dikenal"
 #~ msgid "graph"
 #~ msgstr "grafik"
 
-#~ msgid "Bibnote"
-#~ msgstr "Bibnote"
-
 #~ msgid "Chemistry"
 #~ msgstr "Kimia"
-
-#~ msgid "CRcat"
-#~ msgstr "CRcat"
-
-#~ msgid "InstituteMark"
-#~ msgstr "InstituteMark"
 
 #, fuzzy
 #~ msgid "Flex:Alert"
@@ -24119,9 +24169,6 @@ msgstr "Pemakai tidak dikenal"
 #~ msgid "Flex:PresentationMode"
 #~ msgstr "Custom:PresentationMode"
 
-#~ msgid "Thanks Reference"
-#~ msgstr "Referensi Terimakasih"
-
 #~ msgid "Internet Address Reference"
 #~ msgstr "Referensi Alamat Internet"
 
@@ -24134,30 +24181,12 @@ msgstr "Pemakai tidak dikenal"
 #~ msgid "By Same Author (bib)"
 #~ msgstr "Berdasar Penulis Sama (bib)"
 
-#~ msgid "Titlenotemark"
-#~ msgstr "TandaJudulNota"
-
-#~ msgid "Authormark"
-#~ msgstr "TandaPenulis"
-
-#~ msgid "CorAuthormark"
-#~ msgstr "TandaPenulisKontak"
-
 #, fuzzy
 #~ msgid "Lowercase"
 #~ msgstr "Hurufkecil semua|l"
 
-#~ msgid "Inst"
-#~ msgstr "Inst"
-
-#~ msgid "Sidenote"
-#~ msgstr "Nota samping"
-
 #~ msgid "Marginnote"
 #~ msgstr "Nota tepi"
-
-#~ msgid "NewThought"
-#~ msgstr "PemikiranBaru"
 
 #~ msgid "AllCaps"
 #~ msgstr "SemuaHurufBesar"
@@ -24348,9 +24377,6 @@ msgstr "Pemakai tidak dikenal"
 #~ msgid "Info:shortcuts"
 #~ msgstr "Info:cara pintas"
 
-#~ msgid "Braillebox"
-#~ msgstr "Braillebox"
-
 #, fuzzy
 #~ msgid "Flex:Endnote"
 #~ msgstr "Endnote"
@@ -24386,14 +24412,6 @@ msgstr "Pemakai tidak dikenal"
 #, fuzzy
 #~ msgid "Noweb literate programming"
 #~ msgstr "Berkas catatan proses build literate programming tidak ditemukan."
-
-#, fuzzy
-#~ msgid "Sweave Options"
-#~ msgstr "Opsi LaTeX"
-
-#, fuzzy
-#~ msgid "S/R expression"
-#~ msgstr "Pernyataan &Reguler"
 
 #~ msgid "Norsk"
 #~ msgstr "Norsk"

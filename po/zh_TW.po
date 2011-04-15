@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-13 19:57+0200\n"
+"POT-Creation-Date: 2011-04-15 10:39+0200\n"
 "PO-Revision-Date: 2007-06-26 17:10+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -722,7 +722,7 @@ msgstr "字型系列"
 #: src/frontends/qt4/ui/CharacterUi.ui:145
 #: src/frontends/qt4/ui/ListingsUi.ui:339
 #: src/frontends/qt4/GuiDocument.cpp:1282 src/frontends/qt4/GuiPrefs.cpp:2171
-#: src/frontends/qt4/Menus.cpp:850
+#: src/frontends/qt4/Menus.cpp:852
 msgid "Language"
 msgstr "語言"
 
@@ -1828,8 +1828,8 @@ msgstr "甚至於分頁之後插入間隔"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:19
 #: src/frontends/qt4/ui/HyperlinkUi.ui:32 lib/layouts/scrlttr2.layout:207
-#: lib/layouts/amsdefs.inc:153 lib/layouts/stdinsets.inc:333
-#: lib/layouts/minimalistic.module:26
+#: lib/layouts/amsdefs.inc:153 lib/layouts/stdinsets.inc:330
+#: lib/layouts/stdinsets.inc:333 lib/layouts/minimalistic.module:26
 msgid "URL"
 msgstr "URL"
 
@@ -1950,8 +1950,8 @@ msgstr "輸入"
 msgid "Verbatim"
 msgstr "逐字地"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1118
-#: src/insets/InsetInclude.cpp:1124
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1117
+#: src/insets/InsetInclude.cpp:1123
 msgid "Program Listing"
 msgstr "程式清單"
 
@@ -3054,9 +3054,9 @@ msgstr "雙倍"
 #: src/frontends/qt4/ui/TabularUi.ui:1047
 #: src/frontends/qt4/ui/TabularUi.ui:1066
 #: src/frontends/qt4/ui/TabularUi.ui:1114 src/frontends/qt4/ui/VSpaceUi.ui:107
-#: src/frontends/qt4/GuiDocument.cpp:686 src/frontends/qt4/GuiDocument.cpp:690
-#: src/frontends/qt4/GuiDocument.cpp:698 src/frontends/qt4/GuiDocument.cpp:794
-#: src/frontends/qt4/GuiDocument.cpp:846
+#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:686
+#: src/frontends/qt4/GuiDocument.cpp:690 src/frontends/qt4/GuiDocument.cpp:698
+#: src/frontends/qt4/GuiDocument.cpp:794 src/frontends/qt4/GuiDocument.cpp:846
 #: src/frontends/qt4/GuiDocument.cpp:1009 src/frontends/qt4/GuiHSpace.cpp:54
 #: src/frontends/qt4/GuiHSpace.cpp:63 src/frontends/qt4/GuiPrefs.cpp:810
 #: src/frontends/qt4/GuiPrefs.cpp:837 src/frontends/qt4/GuiPrefs.cpp:2070
@@ -5933,7 +5933,7 @@ msgstr "標準"
 msgid "Title"
 msgstr "標題"
 
-#: lib/layouts/IEEEtran.layout:88
+#: lib/layouts/IEEEtran.layout:84 lib/layouts/IEEEtran.layout:88
 msgid "IEEE membership"
 msgstr ""
 
@@ -6267,6 +6267,11 @@ msgstr "信件給："
 msgid "Acknowledgements."
 msgstr "致謝。"
 
+#: lib/layouts/aa.layout:299
+#, fuzzy
+msgid "institutemark"
+msgstr "慣例"
+
 #: lib/layouts/aa.layout:303
 #, fuzzy
 msgid "institute mark"
@@ -6286,21 +6291,22 @@ msgstr "慣例"
 msgid "E-Mail"
 msgstr "電子郵件"
 
-#: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:261
-#, fuzzy
-msgid "email"
-msgstr "電子郵件："
-
-#: lib/layouts/aapaper.layout:88 lib/layouts/aastex.layout:104
-#: lib/layouts/aastex.layout:354 lib/layouts/achemso.layout:89
-#: lib/layouts/ectaart.layout:69 lib/layouts/elsarticle.layout:212
-#: lib/layouts/iopart.layout:160 lib/layouts/latex8.layout:64
-#: lib/layouts/lettre.layout:45 lib/layouts/lettre.layout:398
-#: lib/layouts/llncs.layout:234 lib/layouts/svglobal3.layout:45
+#: lib/layouts/aa.layout:410 lib/layouts/aapaper.layout:88
+#: lib/layouts/aastex.layout:104 lib/layouts/aastex.layout:354
+#: lib/layouts/achemso.layout:89 lib/layouts/ectaart.layout:69
+#: lib/layouts/elsarticle.layout:212 lib/layouts/iopart.layout:160
+#: lib/layouts/latex8.layout:64 lib/layouts/lettre.layout:45
+#: lib/layouts/lettre.layout:398 lib/layouts/llncs.layout:234
+#: lib/layouts/svglobal3.layout:41 lib/layouts/svglobal3.layout:45
 #: lib/layouts/aapaper.inc:46 lib/layouts/amsdefs.inc:145
 #: lib/layouts/db_stdcharstyles.inc:71 lib/layouts/db_stdcharstyles.inc:73
 msgid "Email"
 msgstr "電子郵件"
+
+#: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:261
+#, fuzzy
+msgid "email"
+msgstr "電子郵件："
 
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.inc:103
 #: lib/ui/stdtoolbars.inc:139 src/frontends/qt4/GuiThesaurus.cpp:45
@@ -6386,6 +6392,11 @@ msgstr "AltAffiliation"
 msgid "Alternative affiliation:"
 msgstr "替代語言(&T)："
 
+#: lib/layouts/aastex.layout:305
+#, fuzzy
+msgid "altaffilmark"
+msgstr "AltAffiliation"
+
 #: lib/layouts/aastex.layout:309
 #, fuzzy
 msgid "altaffiliation mark"
@@ -6439,6 +6450,11 @@ msgstr "表格線"
 #, fuzzy
 msgid "Table note:"
 msgstr "註腳"
+
+#: lib/layouts/aastex.layout:588
+#, fuzzy
+msgid "tablenotemark"
+msgstr "表格線"
 
 #: lib/layouts/aastex.layout:592
 msgid "tablenote mark"
@@ -6515,6 +6531,11 @@ msgstr "圖形"
 msgid "List of Graphs"
 msgstr "表格列表"
 
+#: lib/layouts/achemso.layout:215
+#, fuzzy
+msgid "Bibnote"
+msgstr "註記"
+
 #: lib/layouts/achemso.layout:219
 #, fuzzy
 msgid "bibnote"
@@ -6533,6 +6554,11 @@ msgstr "頁首"
 #, fuzzy
 msgid "Teaser image:"
 msgstr "RasterImage"
+
+#: lib/layouts/acmsiggraph.layout:87
+#, fuzzy
+msgid "CRcat"
+msgstr "hat"
 
 #: lib/layouts/acmsiggraph.layout:92
 #, fuzzy
@@ -6561,7 +6587,7 @@ msgstr "致謝"
 msgid "Authors"
 msgstr "作者"
 
-#: lib/layouts/agutex.layout:94
+#: lib/layouts/agutex.layout:90 lib/layouts/agutex.layout:94
 #, fuzzy
 msgid "Affiliation Mark"
 msgstr "合作"
@@ -6967,6 +6993,11 @@ msgstr "列表"
 #: lib/layouts/beamer.layout:762
 msgid "Title (Plain Frame)"
 msgstr "標題 (單純框架)"
+
+#: lib/layouts/beamer.layout:838
+#, fuzzy
+msgid "InstituteMark"
+msgstr "慣例"
 
 #: lib/layouts/beamer.layout:842
 #, fuzzy
@@ -7709,6 +7740,11 @@ msgstr ""
 msgid "Emphasize"
 msgstr "強調樣式|E"
 
+#: lib/layouts/ectaart.layout:152
+#, fuzzy
+msgid "Thanks Reference"
+msgstr "參考"
+
 #: lib/layouts/ectaart.layout:159
 #, fuzzy
 msgid "Thanks Ref"
@@ -7895,6 +7931,11 @@ msgstr "Summary \\arabic{summ}"
 msgid "Case \\arabic{case}"
 msgstr "Case \\arabic{case}"
 
+#: lib/layouts/elsarticle.layout:75
+#, fuzzy
+msgid "Titlenotemark"
+msgstr "註腳"
+
 #: lib/layouts/elsarticle.layout:79
 #, fuzzy
 msgid "Titlenote mark"
@@ -7910,6 +7951,11 @@ msgstr "註腳"
 msgid "Title footnote:"
 msgstr "註腳"
 
+#: lib/layouts/elsarticle.layout:137
+#, fuzzy
+msgid "Authormark"
+msgstr "作者-年份"
+
 #: lib/layouts/elsarticle.layout:141
 #, fuzzy
 msgid "Author mark"
@@ -7924,6 +7970,11 @@ msgstr "註腳"
 #, fuzzy
 msgid "Author footnote:"
 msgstr "作者資訊："
+
+#: lib/layouts/elsarticle.layout:166
+#, fuzzy
+msgid "CorAuthormark"
+msgstr "協同作者："
 
 #: lib/layouts/elsarticle.layout:170
 #, fuzzy
@@ -9520,10 +9571,20 @@ msgstr "鳴謝"
 msgid "List of Contributors"
 msgstr "表格列表"
 
+#: lib/layouts/svmult.layout:229
+#, fuzzy
+msgid "Inst"
+msgstr "插入(&I)"
+
 #: lib/layouts/svmult.layout:231
 #, fuzzy
 msgid "Institute #"
 msgstr "慣例"
+
+#: lib/layouts/tufte-book.layout:124
+#, fuzzy
+msgid "Sidenote"
+msgstr "註記"
 
 #: lib/layouts/tufte-book.layout:129
 #, fuzzy
@@ -9534,6 +9595,10 @@ msgstr "註記"
 #, fuzzy
 msgid "marginnote"
 msgstr "邊界"
+
+#: lib/layouts/tufte-book.layout:156
+msgid "NewThought"
+msgstr ""
 
 #: lib/layouts/tufte-book.layout:160
 msgid "new thought"
@@ -10457,6 +10522,11 @@ msgstr ""
 msgid "Braille_mirror_off"
 msgstr ""
 
+#: lib/layouts/braille.module:163
+#, fuzzy
+msgid "Braillebox"
+msgstr "平行"
+
 #: lib/layouts/braille.module:167
 #, fuzzy
 msgid "Braille box"
@@ -10640,7 +10710,8 @@ msgid ""
 "be processed in the output. See the lilypond.lyx example file."
 msgstr ""
 
-#: lib/layouts/lilypond.module:14 lib/external_templates:251
+#: lib/layouts/lilypond.module:13 lib/layouts/lilypond.module:14
+#: lib/external_templates:251
 msgid "LilyPond"
 msgstr "LilyPond"
 
@@ -10811,17 +10882,27 @@ msgstr ""
 msgid "Chunk"
 msgstr ""
 
+#: lib/layouts/sweave.module:52
+#, fuzzy
+msgid "Sweave Options"
+msgstr "LaTeX 選項(&O)："
+
 #: lib/layouts/sweave.module:53
 #, fuzzy
 msgid "Sweave opts"
 msgstr "螢幕字型"
+
+#: lib/layouts/sweave.module:74
+#, fuzzy
+msgid "S/R expression"
+msgstr "正規表示式(&X)"
 
 #: lib/layouts/sweave.module:75
 #, fuzzy
 msgid "S/R expr"
 msgstr "exp"
 
-#: lib/layouts/sweave.module:97
+#: lib/layouts/sweave.module:96 lib/layouts/sweave.module:97
 msgid "Sweave Input File"
 msgstr ""
 
@@ -17681,105 +17762,105 @@ msgstr "無進一步的復原資訊"
 msgid "No further redo information"
 msgstr "無進一步的重做資訊"
 
-#: src/BufferView.cpp:1512 src/lyxfind.cpp:374 src/lyxfind.cpp:392
+#: src/BufferView.cpp:1514 src/lyxfind.cpp:374 src/lyxfind.cpp:392
 msgid "String not found!"
 msgstr "找不到字串！"
 
-#: src/BufferView.cpp:1555
+#: src/BufferView.cpp:1557
 msgid "Mark off"
 msgstr "標記關閉"
 
-#: src/BufferView.cpp:1561
+#: src/BufferView.cpp:1563
 msgid "Mark on"
 msgstr "標記開啟"
 
-#: src/BufferView.cpp:1568
+#: src/BufferView.cpp:1570
 msgid "Mark removed"
 msgstr "標記移除"
 
-#: src/BufferView.cpp:1571
+#: src/BufferView.cpp:1573
 msgid "Mark set"
 msgstr "標記設定"
 
-#: src/BufferView.cpp:1626
+#: src/BufferView.cpp:1628
 #, fuzzy
 msgid "Statistics for the selection:"
 msgstr "切換至文件(&S)"
 
-#: src/BufferView.cpp:1628
+#: src/BufferView.cpp:1630
 #, fuzzy
 msgid "Statistics for the document:"
 msgstr "切換至文件(&S)"
 
-#: src/BufferView.cpp:1631
+#: src/BufferView.cpp:1633
 #, fuzzy, c-format
 msgid "%1$d words"
 msgstr "%1$d 個字詞已勾選。"
 
-#: src/BufferView.cpp:1633
+#: src/BufferView.cpp:1635
 #, fuzzy
 msgid "One word"
 msgstr "關鍵字"
 
-#: src/BufferView.cpp:1636
+#: src/BufferView.cpp:1638
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1639
+#: src/BufferView.cpp:1641
 msgid "One character (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1642
+#: src/BufferView.cpp:1644
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1645
+#: src/BufferView.cpp:1647
 msgid "One character (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1647
+#: src/BufferView.cpp:1649
 #, fuzzy
 msgid "Statistics"
 msgstr "狀態"
 
-#: src/BufferView.cpp:1777
+#: src/BufferView.cpp:1780
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
 
-#: src/BufferView.cpp:1779
+#: src/BufferView.cpp:1782
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr ""
 
-#: src/BufferView.cpp:1787
+#: src/BufferView.cpp:1790
 #, fuzzy
 msgid "Branch name"
 msgstr "分支"
 
-#: src/BufferView.cpp:1794 src/frontends/qt4/GuiBranches.cpp:176
+#: src/BufferView.cpp:1797 src/frontends/qt4/GuiBranches.cpp:176
 msgid "Branch already exists"
 msgstr ""
 
-#: src/BufferView.cpp:2553
+#: src/BufferView.cpp:2564
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "插入文件 %1$s…"
 
-#: src/BufferView.cpp:2564
+#: src/BufferView.cpp:2575
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "文件 %1$s 已插入。"
 
-#: src/BufferView.cpp:2566
+#: src/BufferView.cpp:2577
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "無法插入文件 %1$s"
 
-#: src/BufferView.cpp:2831
+#: src/BufferView.cpp:2842
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17790,26 +17871,26 @@ msgstr ""
 "%1$s\n"
 "由於錯誤：%2$s"
 
-#: src/BufferView.cpp:2833
+#: src/BufferView.cpp:2844
 msgid "Could not read file"
 msgstr "無法讀取檔案"
 
-#: src/BufferView.cpp:2840
+#: src/BufferView.cpp:2851
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "%1$s 無法讀取。"
 
-#: src/BufferView.cpp:2841 src/output.cpp:39
+#: src/BufferView.cpp:2852 src/output.cpp:39
 msgid "Could not open file"
 msgstr "無法開啟檔案"
 
-#: src/BufferView.cpp:2848
+#: src/BufferView.cpp:2859
 msgid "Reading not UTF-8 encoded file"
 msgstr "讀取非 UTF-8 編碼的檔案"
 
-#: src/BufferView.cpp:2849
+#: src/BufferView.cpp:2860
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -18243,7 +18324,7 @@ msgstr ""
 "沒有關於轉換 %1$s 格式檔案到 %2$s 的資訊。\n"
 "請在偏好設定中定義一個轉換器。"
 
-#: src/Converter.cpp:439 src/Format.cpp:319 src/Format.cpp:386
+#: src/Converter.cpp:439 src/Format.cpp:320 src/Format.cpp:387
 msgid "Executing command: "
 msgstr "執行命令："
 
@@ -18466,39 +18547,39 @@ msgstr "語言：%1$s，"
 msgid "Number %1$s"
 msgstr "  數字 %1$s"
 
-#: src/Format.cpp:267 src/Format.cpp:280 src/Format.cpp:290
+#: src/Format.cpp:268 src/Format.cpp:281 src/Format.cpp:291
 msgid "Cannot view file"
 msgstr "無法檢視檔案"
 
-#: src/Format.cpp:268 src/Format.cpp:334 src/frontends/qt4/GuiView.cpp:2928
+#: src/Format.cpp:269 src/Format.cpp:335 src/frontends/qt4/GuiView.cpp:2928
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "檔案不存在：%1$s"
 
-#: src/Format.cpp:281
+#: src/Format.cpp:282
 #, c-format
 msgid "No information for viewing %1$s"
 msgstr "沒有資訊用於觀看 %1$s"
 
-#: src/Format.cpp:291
+#: src/Format.cpp:292
 #, c-format
 msgid "Auto-view file %1$s failed"
 msgstr "自動檢視檔案 %1$s 失敗"
 
-#: src/Format.cpp:333 src/Format.cpp:345 src/Format.cpp:358 src/Format.cpp:369
+#: src/Format.cpp:334 src/Format.cpp:346 src/Format.cpp:359 src/Format.cpp:370
 msgid "Cannot edit file"
 msgstr "無法編輯檔案"
 
-#: src/Format.cpp:346
+#: src/Format.cpp:347
 msgid "LinkBack files can only be edited on Apple Mac OSX."
 msgstr ""
 
-#: src/Format.cpp:359
+#: src/Format.cpp:360
 #, c-format
 msgid "No information for editing %1$s"
 msgstr "沒有資訊用於編輯 %1$s"
 
-#: src/Format.cpp:370
+#: src/Format.cpp:371
 #, c-format
 msgid "Auto-edit file %1$s failed"
 msgstr "自動編輯檔案 %1$s 失敗"
@@ -20732,7 +20813,7 @@ msgid "Document Settings"
 msgstr "文件設定值"
 
 #: src/frontends/qt4/GuiDocument.cpp:720 src/frontends/qt4/GuiInclude.cpp:48
-#: src/frontends/qt4/Menus.cpp:1396
+#: src/frontends/qt4/Menus.cpp:1398
 msgid "Child Document"
 msgstr "子文件"
 
@@ -22828,129 +22909,129 @@ msgstr "自訂…|C"
 msgid "No Group"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:782 src/frontends/qt4/Menus.cpp:783
+#: src/frontends/qt4/Menus.cpp:784 src/frontends/qt4/Menus.cpp:785
 msgid "More Spelling Suggestions"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:801
+#: src/frontends/qt4/Menus.cpp:803
 #, fuzzy
 msgid "Add to personal dictionary|n"
 msgstr "選擇個人字典"
 
-#: src/frontends/qt4/Menus.cpp:803
+#: src/frontends/qt4/Menus.cpp:805
 #, fuzzy
 msgid "Ignore all|I"
 msgstr "忽略所有(&G)"
 
-#: src/frontends/qt4/Menus.cpp:811
+#: src/frontends/qt4/Menus.cpp:813
 #, fuzzy
 msgid "Remove from personal dictionary|r"
 msgstr "選擇個人字典"
 
-#: src/frontends/qt4/Menus.cpp:849
+#: src/frontends/qt4/Menus.cpp:851
 #, fuzzy
 msgid "Language|L"
 msgstr "語言"
 
-#: src/frontends/qt4/Menus.cpp:851
+#: src/frontends/qt4/Menus.cpp:853
 #, fuzzy
 msgid "More Languages ...|M"
 msgstr "合併變更…|M"
 
-#: src/frontends/qt4/Menus.cpp:921 src/frontends/qt4/Menus.cpp:922
+#: src/frontends/qt4/Menus.cpp:923 src/frontends/qt4/Menus.cpp:924
 msgid "Hidden|H"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:926
+#: src/frontends/qt4/Menus.cpp:928
 #, fuzzy
 msgid "<No Documents Open>"
 msgstr "沒有文件開啟！"
 
-#: src/frontends/qt4/Menus.cpp:989
+#: src/frontends/qt4/Menus.cpp:991
 msgid "<No Bookmarks Saved Yet>"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:1027
+#: src/frontends/qt4/Menus.cpp:1029
 msgid "View (Other Formats)|F"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:1028
+#: src/frontends/qt4/Menus.cpp:1030
 #, fuzzy
 msgid "Update (Other Formats)|p"
 msgstr "更新顯示"
 
-#: src/frontends/qt4/Menus.cpp:1061
+#: src/frontends/qt4/Menus.cpp:1063
 #, fuzzy, c-format
 msgid "View [%1$s]|V"
 msgstr "檢視|V"
 
-#: src/frontends/qt4/Menus.cpp:1062
+#: src/frontends/qt4/Menus.cpp:1064
 #, fuzzy, c-format
 msgid "Update [%1$s]|U"
 msgstr "更新|U"
 
-#: src/frontends/qt4/Menus.cpp:1173
+#: src/frontends/qt4/Menus.cpp:1175
 #, fuzzy
 msgid "No Custom Insets Defined!"
 msgstr "沒有字型變更定義。"
 
-#: src/frontends/qt4/Menus.cpp:1245
+#: src/frontends/qt4/Menus.cpp:1247
 #, fuzzy
 msgid "<No Document Open>"
 msgstr "沒有文件開啟！"
 
-#: src/frontends/qt4/Menus.cpp:1255
+#: src/frontends/qt4/Menus.cpp:1257
 msgid "Master Document"
 msgstr "主控文件"
 
-#: src/frontends/qt4/Menus.cpp:1272
+#: src/frontends/qt4/Menus.cpp:1274
 msgid "Open Navigator..."
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:1293
+#: src/frontends/qt4/Menus.cpp:1295
 #, fuzzy
 msgid "Other Lists"
 msgstr "其他浮動"
 
-#: src/frontends/qt4/Menus.cpp:1306
+#: src/frontends/qt4/Menus.cpp:1308
 #, fuzzy
 msgid "<Empty Table of Contents>"
 msgstr "內容表"
 
-#: src/frontends/qt4/Menus.cpp:1341
+#: src/frontends/qt4/Menus.cpp:1343
 #, fuzzy
 msgid "Other Toolbars"
 msgstr "工具列|b"
 
-#: src/frontends/qt4/Menus.cpp:1356
+#: src/frontends/qt4/Menus.cpp:1358
 #, fuzzy
 msgid "No Branches Set for Document!"
 msgstr "文件中沒有分支！"
 
-#: src/frontends/qt4/Menus.cpp:1412
+#: src/frontends/qt4/Menus.cpp:1414
 msgid "Index List|I"
 msgstr "索引清單|I"
 
-#: src/frontends/qt4/Menus.cpp:1417
+#: src/frontends/qt4/Menus.cpp:1419
 msgid "Index Entry|d"
 msgstr "索引項目|d"
 
-#: src/frontends/qt4/Menus.cpp:1432
+#: src/frontends/qt4/Menus.cpp:1434
 #, fuzzy, c-format
 msgid "Index: %1$s"
 msgstr "字型：%1$s"
 
-#: src/frontends/qt4/Menus.cpp:1437 src/frontends/qt4/Menus.cpp:1466
+#: src/frontends/qt4/Menus.cpp:1439 src/frontends/qt4/Menus.cpp:1468
 #, fuzzy, c-format
 msgid "Index Entry (%1$s)"
 msgstr "索引項目"
 
-#: src/frontends/qt4/Menus.cpp:1483
+#: src/frontends/qt4/Menus.cpp:1485
 #, fuzzy
 msgid "No Citation in Scope!"
 msgstr "沒有字型變更定義。"
 
-#: src/frontends/qt4/Menus.cpp:2091
+#: src/frontends/qt4/Menus.cpp:2093
 #, fuzzy
 msgid "No Action Defined!"
 msgstr "沒有字型變更定義。"
@@ -23378,7 +23459,7 @@ msgstr ""
 msgid "footnote"
 msgstr "註腳"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:673
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:672
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -23389,12 +23470,12 @@ msgstr ""
 "%1$s\n"
 "進入暫存目錄。"
 
-#: src/insets/InsetGraphics.cpp:720 src/insets/InsetGraphics.cpp:935
+#: src/insets/InsetGraphics.cpp:719 src/insets/InsetGraphics.cpp:934
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "完全沒有所需的 %1$s 轉換"
 
-#: src/insets/InsetGraphics.cpp:812
+#: src/insets/InsetGraphics.cpp:811
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "圖形檔案：%1$s"
@@ -23426,18 +23507,18 @@ msgstr "逐字地輸入*"
 msgid "Include (excluded)"
 msgstr "包含檔"
 
-#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:773
-#: src/insets/InsetInclude.cpp:818
+#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:772
+#: src/insets/InsetInclude.cpp:817
 msgid "Recursive input"
 msgstr "遞迴輸入"
 
-#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:774
-#: src/insets/InsetInclude.cpp:819
+#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:773
+#: src/insets/InsetInclude.cpp:818
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "試圖包含檔案 %1$s 於它自己中！忽略包含動作。"
 
-#: src/insets/InsetInclude.cpp:562
+#: src/insets/InsetInclude.cpp:561
 #, fuzzy, c-format
 msgid ""
 "Could not load included file\n"
@@ -23447,12 +23528,12 @@ msgstr ""
 "無法建立備份檔案 %1$s。\n"
 "請檢查是否目錄存在並為可寫。"
 
-#: src/insets/InsetInclude.cpp:566
+#: src/insets/InsetInclude.cpp:565
 #, fuzzy
 msgid "Missing included file"
 msgstr "包含檔"
 
-#: src/insets/InsetInclude.cpp:572
+#: src/insets/InsetInclude.cpp:571
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -23463,11 +23544,11 @@ msgstr ""
 "具有文字類別「%2$s」\n"
 "當上層檔案有文字類別「%3$s」。"
 
-#: src/insets/InsetInclude.cpp:578
+#: src/insets/InsetInclude.cpp:577
 msgid "Different textclasses"
 msgstr "不同的文字類別"
 
-#: src/insets/InsetInclude.cpp:593
+#: src/insets/InsetInclude.cpp:592
 #, fuzzy, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -23478,28 +23559,28 @@ msgstr ""
 "具有文字類別「%2$s」\n"
 "當上層檔案有文字類別「%3$s」。"
 
-#: src/insets/InsetInclude.cpp:597
+#: src/insets/InsetInclude.cpp:596
 #, fuzzy
 msgid "Module not found"
 msgstr "找不到檔案"
 
-#: src/insets/InsetInclude.cpp:627 src/insets/InsetInclude.cpp:650
+#: src/insets/InsetInclude.cpp:626 src/insets/InsetInclude.cpp:649
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:636 src/insets/InsetInclude.cpp:658
+#: src/insets/InsetInclude.cpp:635 src/insets/InsetInclude.cpp:657
 #, fuzzy
 msgid "Export failure"
 msgstr "備份失敗"
 
-#: src/insets/InsetInclude.cpp:761
+#: src/insets/InsetInclude.cpp:760
 msgid "Unsupported Inclusion"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:762
+#: src/insets/InsetInclude.cpp:761
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
@@ -24934,20 +25015,12 @@ msgstr "不明的使用者"
 #~ msgstr "全域(&G)"
 
 #, fuzzy
-#~ msgid "institutemark"
-#~ msgstr "慣例"
-
-#, fuzzy
 #~ msgid "Flex:Institute"
 #~ msgstr "慣例"
 
 #, fuzzy
 #~ msgid "Flex:E-Mail"
 #~ msgstr "電子郵件"
-
-#, fuzzy
-#~ msgid "tablenotemark"
-#~ msgstr "表格線"
 
 #, fuzzy
 #~ msgid "chart"
@@ -24958,20 +25031,8 @@ msgstr "不明的使用者"
 #~ msgstr "Epigraph"
 
 #, fuzzy
-#~ msgid "Bibnote"
-#~ msgstr "註記"
-
-#, fuzzy
 #~ msgid "Chemistry"
 #~ msgstr "infty"
-
-#, fuzzy
-#~ msgid "CRcat"
-#~ msgstr "hat"
-
-#, fuzzy
-#~ msgid "InstituteMark"
-#~ msgstr "慣例"
 
 #, fuzzy
 #~ msgid "Flex:Alert"
@@ -24990,10 +25051,6 @@ msgstr "不明的使用者"
 #~ msgstr "方向"
 
 #, fuzzy
-#~ msgid "Thanks Reference"
-#~ msgstr "參考"
-
-#, fuzzy
 #~ msgid "Internet Address Reference"
 #~ msgstr "插入交叉參照"
 
@@ -25006,28 +25063,8 @@ msgstr "不明的使用者"
 #~ msgstr "姓氏"
 
 #, fuzzy
-#~ msgid "Titlenotemark"
-#~ msgstr "註腳"
-
-#, fuzzy
-#~ msgid "Authormark"
-#~ msgstr "作者-年份"
-
-#, fuzzy
-#~ msgid "CorAuthormark"
-#~ msgstr "協同作者："
-
-#, fuzzy
 #~ msgid "Lowercase"
 #~ msgstr "小寫|L"
-
-#, fuzzy
-#~ msgid "Inst"
-#~ msgstr "插入(&I)"
-
-#, fuzzy
-#~ msgid "Sidenote"
-#~ msgstr "註記"
 
 #, fuzzy
 #~ msgid "Marginnote"
@@ -25214,10 +25251,6 @@ msgstr "不明的使用者"
 #~ msgstr "捷徑(&H)："
 
 #, fuzzy
-#~ msgid "Braillebox"
-#~ msgstr "平行"
-
-#, fuzzy
 #~ msgid "Flex:Endnote"
 #~ msgstr "註記"
 
@@ -25256,14 +25289,6 @@ msgstr "不明的使用者"
 #, fuzzy
 #~ msgid "Noweb literate programming"
 #~ msgstr "找不到讀寫程式設計組建記錄檔。"
-
-#, fuzzy
-#~ msgid "Sweave Options"
-#~ msgstr "LaTeX 選項(&O)："
-
-#, fuzzy
-#~ msgid "S/R expression"
-#~ msgstr "正規表示式(&X)"
 
 #~ msgid "Norsk"
 #~ msgstr "諾斯克語"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-13 19:57+0200\n"
+"POT-Creation-Date: 2011-04-15 10:39+0200\n"
 "PO-Revision-Date: 2009-05-25 16:49+0100\n"
 "Last-Translator: H. İbrahim Güngör <h.ibrahim.gungor@gmail.com>\n"
 "Language-Team: Turkish <kde-i18n-doc@kde.org>\n"
@@ -720,7 +720,7 @@ msgstr "Font serileri"
 #: src/frontends/qt4/ui/CharacterUi.ui:145
 #: src/frontends/qt4/ui/ListingsUi.ui:339
 #: src/frontends/qt4/GuiDocument.cpp:1282 src/frontends/qt4/GuiPrefs.cpp:2171
-#: src/frontends/qt4/Menus.cpp:850
+#: src/frontends/qt4/Menus.cpp:852
 msgid "Language"
 msgstr "Dil"
 
@@ -1816,8 +1816,8 @@ msgstr "Satır kesmesi sonunda bile boşluk bırak"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:19
 #: src/frontends/qt4/ui/HyperlinkUi.ui:32 lib/layouts/scrlttr2.layout:207
-#: lib/layouts/amsdefs.inc:153 lib/layouts/stdinsets.inc:333
-#: lib/layouts/minimalistic.module:26
+#: lib/layouts/amsdefs.inc:153 lib/layouts/stdinsets.inc:330
+#: lib/layouts/stdinsets.inc:333 lib/layouts/minimalistic.module:26
 msgid "URL"
 msgstr "URL"
 
@@ -1932,8 +1932,8 @@ msgstr "Giriş"
 msgid "Verbatim"
 msgstr "Olduğu gibi"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1118
-#: src/insets/InsetInclude.cpp:1124
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1117
+#: src/insets/InsetInclude.cpp:1123
 msgid "Program Listing"
 msgstr "Program Listeleme"
 
@@ -2998,9 +2998,9 @@ msgstr "Çift"
 #: src/frontends/qt4/ui/TabularUi.ui:1047
 #: src/frontends/qt4/ui/TabularUi.ui:1066
 #: src/frontends/qt4/ui/TabularUi.ui:1114 src/frontends/qt4/ui/VSpaceUi.ui:107
-#: src/frontends/qt4/GuiDocument.cpp:686 src/frontends/qt4/GuiDocument.cpp:690
-#: src/frontends/qt4/GuiDocument.cpp:698 src/frontends/qt4/GuiDocument.cpp:794
-#: src/frontends/qt4/GuiDocument.cpp:846
+#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:686
+#: src/frontends/qt4/GuiDocument.cpp:690 src/frontends/qt4/GuiDocument.cpp:698
+#: src/frontends/qt4/GuiDocument.cpp:794 src/frontends/qt4/GuiDocument.cpp:846
 #: src/frontends/qt4/GuiDocument.cpp:1009 src/frontends/qt4/GuiHSpace.cpp:54
 #: src/frontends/qt4/GuiHSpace.cpp:63 src/frontends/qt4/GuiPrefs.cpp:810
 #: src/frontends/qt4/GuiPrefs.cpp:837 src/frontends/qt4/GuiPrefs.cpp:2070
@@ -5817,7 +5817,7 @@ msgstr "Standart"
 msgid "Title"
 msgstr "Başlık"
 
-#: lib/layouts/IEEEtran.layout:88
+#: lib/layouts/IEEEtran.layout:84 lib/layouts/IEEEtran.layout:88
 msgid "IEEE membership"
 msgstr ""
 
@@ -6151,6 +6151,10 @@ msgstr ""
 msgid "Acknowledgements."
 msgstr "Teşekkürlerler."
 
+#: lib/layouts/aa.layout:299
+msgid "institutemark"
+msgstr "enstitüimi"
+
 #: lib/layouts/aa.layout:303
 msgid "institute mark"
 msgstr "enstitü imi"
@@ -6169,20 +6173,21 @@ msgstr "Enstitü"
 msgid "E-Mail"
 msgstr "E-Posta"
 
-#: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:261
-msgid "email"
-msgstr "eposta"
-
-#: lib/layouts/aapaper.layout:88 lib/layouts/aastex.layout:104
-#: lib/layouts/aastex.layout:354 lib/layouts/achemso.layout:89
-#: lib/layouts/ectaart.layout:69 lib/layouts/elsarticle.layout:212
-#: lib/layouts/iopart.layout:160 lib/layouts/latex8.layout:64
-#: lib/layouts/lettre.layout:45 lib/layouts/lettre.layout:398
-#: lib/layouts/llncs.layout:234 lib/layouts/svglobal3.layout:45
+#: lib/layouts/aa.layout:410 lib/layouts/aapaper.layout:88
+#: lib/layouts/aastex.layout:104 lib/layouts/aastex.layout:354
+#: lib/layouts/achemso.layout:89 lib/layouts/ectaart.layout:69
+#: lib/layouts/elsarticle.layout:212 lib/layouts/iopart.layout:160
+#: lib/layouts/latex8.layout:64 lib/layouts/lettre.layout:45
+#: lib/layouts/lettre.layout:398 lib/layouts/llncs.layout:234
+#: lib/layouts/svglobal3.layout:41 lib/layouts/svglobal3.layout:45
 #: lib/layouts/aapaper.inc:46 lib/layouts/amsdefs.inc:145
 #: lib/layouts/db_stdcharstyles.inc:71 lib/layouts/db_stdcharstyles.inc:73
 msgid "Email"
 msgstr "Eposta"
+
+#: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:261
+msgid "email"
+msgstr "eposta"
 
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.inc:103
 #: lib/ui/stdtoolbars.inc:139 src/frontends/qt4/GuiThesaurus.cpp:45
@@ -6266,6 +6271,10 @@ msgstr "Altİlişki"
 msgid "Alternative affiliation:"
 msgstr "Alternatif ilişki:"
 
+#: lib/layouts/aastex.layout:305
+msgid "altaffilmark"
+msgstr "altilişkiimi"
+
 #: lib/layouts/aastex.layout:309
 msgid "altaffiliation mark"
 msgstr "altilişki imi"
@@ -6316,6 +6325,10 @@ msgstr "Tablo notu"
 #: lib/layouts/aastex.layout:581
 msgid "Table note:"
 msgstr "Tablo notu:"
+
+#: lib/layouts/aastex.layout:588
+msgid "tablenotemark"
+msgstr "tablonotişareti"
 
 #: lib/layouts/aastex.layout:592
 msgid "tablenote mark"
@@ -6386,6 +6399,11 @@ msgstr ""
 msgid "List of Graphs"
 msgstr ""
 
+#: lib/layouts/achemso.layout:215
+#, fuzzy
+msgid "Bibnote"
+msgstr "not"
+
 #: lib/layouts/achemso.layout:219
 msgid "bibnote"
 msgstr ""
@@ -6401,6 +6419,10 @@ msgstr ""
 #: lib/layouts/acmsiggraph.layout:75
 msgid "Teaser image:"
 msgstr ""
+
+#: lib/layouts/acmsiggraph.layout:87
+msgid "CRcat"
+msgstr "CRcat"
 
 #: lib/layouts/acmsiggraph.layout:92
 msgid "CR category"
@@ -6427,7 +6449,7 @@ msgstr "Teşekkürler"
 msgid "Authors"
 msgstr "Yazar"
 
-#: lib/layouts/agutex.layout:94
+#: lib/layouts/agutex.layout:90 lib/layouts/agutex.layout:94
 #, fuzzy
 msgid "Affiliation Mark"
 msgstr "İlişki"
@@ -6828,6 +6850,10 @@ msgstr "Başlık"
 #: lib/layouts/beamer.layout:762
 msgid "Title (Plain Frame)"
 msgstr "Başlık (Düz Çerçeve)"
+
+#: lib/layouts/beamer.layout:838
+msgid "InstituteMark"
+msgstr "Enstitüİmi"
 
 #: lib/layouts/beamer.layout:842
 msgid "Institute mark"
@@ -7559,6 +7585,11 @@ msgstr ""
 msgid "Emphasize"
 msgstr "Vurgulu Stili|V"
 
+#: lib/layouts/ectaart.layout:152
+#, fuzzy
+msgid "Thanks Reference"
+msgstr "Referans"
+
 #: lib/layouts/ectaart.layout:159
 #, fuzzy
 msgid "Thanks Ref"
@@ -7745,6 +7776,10 @@ msgstr "Özet \\arabic{summ}"
 msgid "Case \\arabic{case}"
 msgstr "Durum \\arabic{case}"
 
+#: lib/layouts/elsarticle.layout:75
+msgid "Titlenotemark"
+msgstr "Başlıknotuimi"
+
 #: lib/layouts/elsarticle.layout:79
 msgid "Titlenote mark"
 msgstr "Başlıknotu imi"
@@ -7757,6 +7792,10 @@ msgstr "Başlık dipnotu"
 msgid "Title footnote:"
 msgstr "Başlık dipnotu:"
 
+#: lib/layouts/elsarticle.layout:137
+msgid "Authormark"
+msgstr "Yazarimi"
+
 #: lib/layouts/elsarticle.layout:141
 msgid "Author mark"
 msgstr "Yazar imi"
@@ -7768,6 +7807,10 @@ msgstr "Yazar dipnotu"
 #: lib/layouts/elsarticle.layout:162
 msgid "Author footnote:"
 msgstr "Yazar dipnotu:"
+
+#: lib/layouts/elsarticle.layout:166
+msgid "CorAuthormark"
+msgstr "İlgiliYazarimi"
 
 #: lib/layouts/elsarticle.layout:170
 msgid "CorAuthor mark"
@@ -9328,10 +9371,20 @@ msgstr "Yazarlar"
 msgid "List of Contributors"
 msgstr "Alıntı Listesi"
 
+#: lib/layouts/svmult.layout:229
+#, fuzzy
+msgid "Inst"
+msgstr "&Ekle"
+
 #: lib/layouts/svmult.layout:231
 #, fuzzy
 msgid "Institute #"
 msgstr "Enstitü"
+
+#: lib/layouts/tufte-book.layout:124
+#, fuzzy
+msgid "Sidenote"
+msgstr "Slaytİçeriği"
 
 #: lib/layouts/tufte-book.layout:129
 #, fuzzy
@@ -9342,6 +9395,10 @@ msgstr "not"
 #, fuzzy
 msgid "marginnote"
 msgstr "kenar"
+
+#: lib/layouts/tufte-book.layout:156
+msgid "NewThought"
+msgstr ""
 
 #: lib/layouts/tufte-book.layout:160
 msgid "new thought"
@@ -10226,6 +10283,10 @@ msgstr "c"
 msgid "Braille_mirror_off"
 msgstr "Braille_mirror_off"
 
+#: lib/layouts/braille.module:163
+msgid "Braillebox"
+msgstr "Braillebox"
+
 #: lib/layouts/braille.module:167
 msgid "Braille box"
 msgstr "Braille box"
@@ -10410,7 +10471,8 @@ msgid ""
 "be processed in the output. See the lilypond.lyx example file."
 msgstr ""
 
-#: lib/layouts/lilypond.module:14 lib/external_templates:251
+#: lib/layouts/lilypond.module:13 lib/layouts/lilypond.module:14
+#: lib/external_templates:251
 msgid "LilyPond"
 msgstr "LilyPond"
 
@@ -10571,17 +10633,27 @@ msgstr ""
 msgid "Chunk"
 msgstr ""
 
+#: lib/layouts/sweave.module:52
+#, fuzzy
+msgid "Sweave Options"
+msgstr "LaTeX Seçenekleri"
+
 #: lib/layouts/sweave.module:53
 #, fuzzy
 msgid "Sweave opts"
 msgstr "Ekran fontları"
+
+#: lib/layouts/sweave.module:74
+#, fuzzy
+msgid "S/R expression"
+msgstr "Düzenli &İfade"
 
 #: lib/layouts/sweave.module:75
 #, fuzzy
 msgid "S/R expr"
 msgstr "ifade."
 
-#: lib/layouts/sweave.module:97
+#: lib/layouts/sweave.module:96 lib/layouts/sweave.module:97
 msgid "Sweave Input File"
 msgstr ""
 
@@ -17243,101 +17315,101 @@ msgstr "Başka geri alma bilgisi yok"
 msgid "No further redo information"
 msgstr "Başka ileri alma bilgisi yok"
 
-#: src/BufferView.cpp:1512 src/lyxfind.cpp:374 src/lyxfind.cpp:392
+#: src/BufferView.cpp:1514 src/lyxfind.cpp:374 src/lyxfind.cpp:392
 msgid "String not found!"
 msgstr "Dizge bulunamadı!"
 
-#: src/BufferView.cpp:1555
+#: src/BufferView.cpp:1557
 msgid "Mark off"
 msgstr "İşaret kapalı"
 
-#: src/BufferView.cpp:1561
+#: src/BufferView.cpp:1563
 msgid "Mark on"
 msgstr "İşaret açık"
 
-#: src/BufferView.cpp:1568
+#: src/BufferView.cpp:1570
 msgid "Mark removed"
 msgstr "İşaret kaldırıldı"
 
-#: src/BufferView.cpp:1571
+#: src/BufferView.cpp:1573
 msgid "Mark set"
 msgstr "İşaret kondu"
 
-#: src/BufferView.cpp:1626
+#: src/BufferView.cpp:1628
 msgid "Statistics for the selection:"
 msgstr "Seçim istatistikleri:"
 
-#: src/BufferView.cpp:1628
+#: src/BufferView.cpp:1630
 msgid "Statistics for the document:"
 msgstr "Belge istatistikleri:"
 
-#: src/BufferView.cpp:1631
+#: src/BufferView.cpp:1633
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d kelime"
 
-#: src/BufferView.cpp:1633
+#: src/BufferView.cpp:1635
 msgid "One word"
 msgstr "Tek kelime"
 
-#: src/BufferView.cpp:1636
+#: src/BufferView.cpp:1638
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d karakter (boşluklar dahil)"
 
-#: src/BufferView.cpp:1639
+#: src/BufferView.cpp:1641
 msgid "One character (including blanks)"
 msgstr "Tek karakter (boşluklar dahil)"
 
-#: src/BufferView.cpp:1642
+#: src/BufferView.cpp:1644
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d karakter (boşluklar hariç)"
 
-#: src/BufferView.cpp:1645
+#: src/BufferView.cpp:1647
 msgid "One character (excluding blanks)"
 msgstr "Tek karakter (boşluklar hariç)"
 
-#: src/BufferView.cpp:1647
+#: src/BufferView.cpp:1649
 msgid "Statistics"
 msgstr "İstatistikler"
 
-#: src/BufferView.cpp:1777
+#: src/BufferView.cpp:1780
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
 
-#: src/BufferView.cpp:1779
+#: src/BufferView.cpp:1782
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr ""
 
-#: src/BufferView.cpp:1787
+#: src/BufferView.cpp:1790
 #, fuzzy
 msgid "Branch name"
 msgstr "Dallar"
 
-#: src/BufferView.cpp:1794 src/frontends/qt4/GuiBranches.cpp:176
+#: src/BufferView.cpp:1797 src/frontends/qt4/GuiBranches.cpp:176
 msgid "Branch already exists"
 msgstr ""
 
-#: src/BufferView.cpp:2553
+#: src/BufferView.cpp:2564
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Belge %1$s ekleniyor..."
 
-#: src/BufferView.cpp:2564
+#: src/BufferView.cpp:2575
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Belge %1$s eklendi."
 
-#: src/BufferView.cpp:2566
+#: src/BufferView.cpp:2577
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Belge %1$s eklenemedi"
 
-#: src/BufferView.cpp:2831
+#: src/BufferView.cpp:2842
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17348,11 +17420,11 @@ msgstr ""
 "şu sebeplerden\n"
 "okunamadı: %2$s"
 
-#: src/BufferView.cpp:2833
+#: src/BufferView.cpp:2844
 msgid "Could not read file"
 msgstr "Dosya okunamıyor"
 
-#: src/BufferView.cpp:2840
+#: src/BufferView.cpp:2851
 #, c-format
 msgid ""
 "%1$s\n"
@@ -17361,15 +17433,15 @@ msgstr ""
 "%1$s\n"
 " okunabilir değil."
 
-#: src/BufferView.cpp:2841 src/output.cpp:39
+#: src/BufferView.cpp:2852 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Dosya açılamıyor"
 
-#: src/BufferView.cpp:2848
+#: src/BufferView.cpp:2859
 msgid "Reading not UTF-8 encoded file"
 msgstr "UTF-8 kodlanmayan dosya okunuyor"
 
-#: src/BufferView.cpp:2849
+#: src/BufferView.cpp:2860
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -17776,7 +17848,7 @@ msgstr ""
 "%1$s biçimli dosyayı %2$s biçimine çevrimde bilgi yok.\n"
 "Tercihlerde dönüştürücüyü tanımlayın."
 
-#: src/Converter.cpp:439 src/Format.cpp:319 src/Format.cpp:386
+#: src/Converter.cpp:439 src/Format.cpp:320 src/Format.cpp:387
 msgid "Executing command: "
 msgstr "Komut çalıştırılıyor: "
 
@@ -17996,39 +18068,39 @@ msgstr "Dil: %1$s, "
 msgid "Number %1$s"
 msgstr "  Numara %1$s"
 
-#: src/Format.cpp:267 src/Format.cpp:280 src/Format.cpp:290
+#: src/Format.cpp:268 src/Format.cpp:281 src/Format.cpp:291
 msgid "Cannot view file"
 msgstr "Dosya gösterilemiyor"
 
-#: src/Format.cpp:268 src/Format.cpp:334 src/frontends/qt4/GuiView.cpp:2928
+#: src/Format.cpp:269 src/Format.cpp:335 src/frontends/qt4/GuiView.cpp:2928
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Dosya mevcut değil: %1$s"
 
-#: src/Format.cpp:281
+#: src/Format.cpp:282
 #, c-format
 msgid "No information for viewing %1$s"
 msgstr "%1$s görüntülenmesi için bilgi yok"
 
-#: src/Format.cpp:291
+#: src/Format.cpp:292
 #, c-format
 msgid "Auto-view file %1$s failed"
 msgstr "%1$s dosyası otomatik gösterilemedi"
 
-#: src/Format.cpp:333 src/Format.cpp:345 src/Format.cpp:358 src/Format.cpp:369
+#: src/Format.cpp:334 src/Format.cpp:346 src/Format.cpp:359 src/Format.cpp:370
 msgid "Cannot edit file"
 msgstr "Dosya değiştirilemiyor"
 
-#: src/Format.cpp:346
+#: src/Format.cpp:347
 msgid "LinkBack files can only be edited on Apple Mac OSX."
 msgstr "LinkBack dosyaları sadece Apple Mac OSXde düzenlenebilir."
 
-#: src/Format.cpp:359
+#: src/Format.cpp:360
 #, c-format
 msgid "No information for editing %1$s"
 msgstr "%1$s i düzenlemek için bilgi yok"
 
-#: src/Format.cpp:370
+#: src/Format.cpp:371
 #, c-format
 msgid "Auto-edit file %1$s failed"
 msgstr "%1$s dosyası oto-düzenleme başarısız"
@@ -20273,7 +20345,7 @@ msgid "Document Settings"
 msgstr "Belge Ayarları"
 
 #: src/frontends/qt4/GuiDocument.cpp:720 src/frontends/qt4/GuiInclude.cpp:48
-#: src/frontends/qt4/Menus.cpp:1396
+#: src/frontends/qt4/Menus.cpp:1398
 msgid "Child Document"
 msgstr "Alt Belge"
 
@@ -22257,127 +22329,127 @@ msgstr "Özel...|Ö"
 msgid "No Group"
 msgstr "Grup Yok"
 
-#: src/frontends/qt4/Menus.cpp:782 src/frontends/qt4/Menus.cpp:783
+#: src/frontends/qt4/Menus.cpp:784 src/frontends/qt4/Menus.cpp:785
 msgid "More Spelling Suggestions"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:801
+#: src/frontends/qt4/Menus.cpp:803
 #, fuzzy
 msgid "Add to personal dictionary|n"
 msgstr "Kişisel sözlüğü değiştir"
 
-#: src/frontends/qt4/Menus.cpp:803
+#: src/frontends/qt4/Menus.cpp:805
 #, fuzzy
 msgid "Ignore all|I"
 msgstr "&Hepsini Yoksay"
 
-#: src/frontends/qt4/Menus.cpp:811
+#: src/frontends/qt4/Menus.cpp:813
 #, fuzzy
 msgid "Remove from personal dictionary|r"
 msgstr "Kişisel sözlüğü değiştir"
 
-#: src/frontends/qt4/Menus.cpp:849
+#: src/frontends/qt4/Menus.cpp:851
 #, fuzzy
 msgid "Language|L"
 msgstr "Dil"
 
-#: src/frontends/qt4/Menus.cpp:851
+#: src/frontends/qt4/Menus.cpp:853
 #, fuzzy
 msgid "More Languages ...|M"
 msgstr "Değişiklikleri Birleştir...|B"
 
-#: src/frontends/qt4/Menus.cpp:921 src/frontends/qt4/Menus.cpp:922
+#: src/frontends/qt4/Menus.cpp:923 src/frontends/qt4/Menus.cpp:924
 msgid "Hidden|H"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:926
+#: src/frontends/qt4/Menus.cpp:928
 #, fuzzy
 msgid "<No Documents Open>"
 msgstr "Açık Belge Yok!"
 
-#: src/frontends/qt4/Menus.cpp:989
+#: src/frontends/qt4/Menus.cpp:991
 #, fuzzy
 msgid "<No Bookmarks Saved Yet>"
 msgstr "<Henüz yerimi kaydedilmemiş>"
 
-#: src/frontends/qt4/Menus.cpp:1027
+#: src/frontends/qt4/Menus.cpp:1029
 msgid "View (Other Formats)|F"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:1028
+#: src/frontends/qt4/Menus.cpp:1030
 #, fuzzy
 msgid "Update (Other Formats)|p"
 msgstr "Görüntüyü güncelle"
 
-#: src/frontends/qt4/Menus.cpp:1061
+#: src/frontends/qt4/Menus.cpp:1063
 #, fuzzy, c-format
 msgid "View [%1$s]|V"
 msgstr "Görünüm|G"
 
-#: src/frontends/qt4/Menus.cpp:1062
+#: src/frontends/qt4/Menus.cpp:1064
 #, fuzzy, c-format
 msgid "Update [%1$s]|U"
 msgstr "Güncelle|G"
 
-#: src/frontends/qt4/Menus.cpp:1173
+#: src/frontends/qt4/Menus.cpp:1175
 #, fuzzy
 msgid "No Custom Insets Defined!"
 msgstr "Özel ekleme tanımlı değil!"
 
-#: src/frontends/qt4/Menus.cpp:1245
+#: src/frontends/qt4/Menus.cpp:1247
 #, fuzzy
 msgid "<No Document Open>"
 msgstr "Açık Belge Yok!"
 
-#: src/frontends/qt4/Menus.cpp:1255
+#: src/frontends/qt4/Menus.cpp:1257
 msgid "Master Document"
 msgstr "Ana Belge"
 
-#: src/frontends/qt4/Menus.cpp:1272
+#: src/frontends/qt4/Menus.cpp:1274
 msgid "Open Navigator..."
 msgstr "Gezgini Aç..."
 
-#: src/frontends/qt4/Menus.cpp:1293
+#: src/frontends/qt4/Menus.cpp:1295
 msgid "Other Lists"
 msgstr "Diğer Listeler"
 
-#: src/frontends/qt4/Menus.cpp:1306
+#: src/frontends/qt4/Menus.cpp:1308
 #, fuzzy
 msgid "<Empty Table of Contents>"
 msgstr "<İçerik tablosu boş>"
 
-#: src/frontends/qt4/Menus.cpp:1341
+#: src/frontends/qt4/Menus.cpp:1343
 msgid "Other Toolbars"
 msgstr "Diğer Araç Çubukları"
 
-#: src/frontends/qt4/Menus.cpp:1356
+#: src/frontends/qt4/Menus.cpp:1358
 #, fuzzy
 msgid "No Branches Set for Document!"
 msgstr "Belgede dallanma yok!"
 
-#: src/frontends/qt4/Menus.cpp:1412
+#: src/frontends/qt4/Menus.cpp:1414
 msgid "Index List|I"
 msgstr "İndeks Listesi|İ"
 
-#: src/frontends/qt4/Menus.cpp:1417
+#: src/frontends/qt4/Menus.cpp:1419
 msgid "Index Entry|d"
 msgstr "İndeks Girdisi|i"
 
-#: src/frontends/qt4/Menus.cpp:1432
+#: src/frontends/qt4/Menus.cpp:1434
 #, fuzzy, c-format
 msgid "Index: %1$s"
 msgstr "Font: %1$s"
 
-#: src/frontends/qt4/Menus.cpp:1437 src/frontends/qt4/Menus.cpp:1466
+#: src/frontends/qt4/Menus.cpp:1439 src/frontends/qt4/Menus.cpp:1468
 #, fuzzy, c-format
 msgid "Index Entry (%1$s)"
 msgstr "İndeks Girişi"
 
-#: src/frontends/qt4/Menus.cpp:1483
+#: src/frontends/qt4/Menus.cpp:1485
 msgid "No Citation in Scope!"
 msgstr "Kapsamda Alıntı Yok!"
 
-#: src/frontends/qt4/Menus.cpp:2091
+#: src/frontends/qt4/Menus.cpp:2093
 #, fuzzy
 msgid "No Action Defined!"
 msgstr "Eylem tanımsız!"
@@ -22776,7 +22848,7 @@ msgstr ""
 msgid "footnote"
 msgstr "dipnot"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:673
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:672
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -22787,12 +22859,12 @@ msgstr ""
 "geçici dizine\n"
 "kopyalanamadı."
 
-#: src/insets/InsetGraphics.cpp:720 src/insets/InsetGraphics.cpp:935
+#: src/insets/InsetGraphics.cpp:719 src/insets/InsetGraphics.cpp:934
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "%1$s için çevrime gerek yok"
 
-#: src/insets/InsetGraphics.cpp:812
+#: src/insets/InsetGraphics.cpp:811
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafik dosyası: %1$s"
@@ -22824,18 +22896,18 @@ msgstr "Olduğu Gibi Girdi*"
 msgid "Include (excluded)"
 msgstr "Dosya ekle"
 
-#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:773
-#: src/insets/InsetInclude.cpp:818
+#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:772
+#: src/insets/InsetInclude.cpp:817
 msgid "Recursive input"
 msgstr "Özyinelemeli girdi"
 
-#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:774
-#: src/insets/InsetInclude.cpp:819
+#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:773
+#: src/insets/InsetInclude.cpp:818
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "%1$s i kendine dahil etmeye çalışıldı! İşlem yoksayıldı."
 
-#: src/insets/InsetInclude.cpp:562
+#: src/insets/InsetInclude.cpp:561
 #, fuzzy, c-format
 msgid ""
 "Could not load included file\n"
@@ -22845,12 +22917,12 @@ msgstr ""
 "Yedek dosyası %1$s oluşturulamıyor.\n"
 "Dizinin mevcut ya da yazılabilir olduğu kontrol edin."
 
-#: src/insets/InsetInclude.cpp:566
+#: src/insets/InsetInclude.cpp:565
 #, fuzzy
 msgid "Missing included file"
 msgstr "Dosya ekle"
 
-#: src/insets/InsetInclude.cpp:572
+#: src/insets/InsetInclude.cpp:571
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -22861,11 +22933,11 @@ msgstr ""
 "`%2$s' metin sınıfında\n"
 "oysa ana dosya `%3$s' metin sınıfında."
 
-#: src/insets/InsetInclude.cpp:578
+#: src/insets/InsetInclude.cpp:577
 msgid "Different textclasses"
 msgstr "Farkı metinsınıfları"
 
-#: src/insets/InsetInclude.cpp:593
+#: src/insets/InsetInclude.cpp:592
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -22876,27 +22948,27 @@ msgstr ""
 "`%2$s' modülünü kullanıyor\n"
 "oysa ana dosya kullanmıyor."
 
-#: src/insets/InsetInclude.cpp:597
+#: src/insets/InsetInclude.cpp:596
 msgid "Module not found"
 msgstr "Modül bulunamadı"
 
-#: src/insets/InsetInclude.cpp:627 src/insets/InsetInclude.cpp:650
+#: src/insets/InsetInclude.cpp:626 src/insets/InsetInclude.cpp:649
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:636 src/insets/InsetInclude.cpp:658
+#: src/insets/InsetInclude.cpp:635 src/insets/InsetInclude.cpp:657
 #, fuzzy
 msgid "Export failure"
 msgstr "Yedekleme başarısız"
 
-#: src/insets/InsetInclude.cpp:761
+#: src/insets/InsetInclude.cpp:760
 msgid "Unsupported Inclusion"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:762
+#: src/insets/InsetInclude.cpp:761
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
@@ -24276,9 +24348,6 @@ msgstr "Bilinmeyen kullanıcı"
 #~ msgid "&Global"
 #~ msgstr "&Genel"
 
-#~ msgid "institutemark"
-#~ msgstr "enstitüimi"
-
 #, fuzzy
 #~ msgid "Flex:Institute"
 #~ msgstr "Enstitü"
@@ -24287,20 +24356,8 @@ msgstr "Bilinmeyen kullanıcı"
 #~ msgid "Flex:E-Mail"
 #~ msgstr "E-Posta"
 
-#~ msgid "altaffilmark"
-#~ msgstr "altilişkiimi"
-
-#~ msgid "tablenotemark"
-#~ msgstr "tablonotişareti"
-
 #~ msgid "scheme"
 #~ msgstr "plan"
-
-#~ msgid "CRcat"
-#~ msgstr "CRcat"
-
-#~ msgid "InstituteMark"
-#~ msgstr "Enstitüİmi"
 
 #, fuzzy
 #~ msgid "Flex:Alert"
@@ -24319,10 +24376,6 @@ msgstr "Bilinmeyen kullanıcı"
 #~ msgstr "Özel:SunumModu"
 
 #, fuzzy
-#~ msgid "Thanks Reference"
-#~ msgstr "Referans"
-
-#, fuzzy
 #~ msgid "Internet Address Reference"
 #~ msgstr "Çapraz referans ekle"
 
@@ -24334,26 +24387,9 @@ msgstr "Bilinmeyen kullanıcı"
 #~ msgid "Name (Surname)"
 #~ msgstr "Soyad"
 
-#~ msgid "Titlenotemark"
-#~ msgstr "Başlıknotuimi"
-
-#~ msgid "Authormark"
-#~ msgstr "Yazarimi"
-
-#~ msgid "CorAuthormark"
-#~ msgstr "İlgiliYazarimi"
-
 #, fuzzy
 #~ msgid "Lowercase"
 #~ msgstr "Küçük Harf|K"
-
-#, fuzzy
-#~ msgid "Inst"
-#~ msgstr "&Ekle"
-
-#, fuzzy
-#~ msgid "Sidenote"
-#~ msgstr "Slaytİçeriği"
 
 #, fuzzy
 #~ msgid "Marginnote"
@@ -24551,9 +24587,6 @@ msgstr "Bilinmeyen kullanıcı"
 #~ msgid "Info:shortcuts"
 #~ msgstr "Bilgi:kısayollar"
 
-#~ msgid "Braillebox"
-#~ msgstr "Braillebox"
-
 #, fuzzy
 #~ msgid "Flex:Endnote"
 #~ msgstr "Sonnot"
@@ -24593,14 +24626,6 @@ msgstr "Bilinmeyen kullanıcı"
 #, fuzzy
 #~ msgid "Noweb literate programming"
 #~ msgstr "Edebiyat programlama inşa kaydı dosyası bulunamadı."
-
-#, fuzzy
-#~ msgid "Sweave Options"
-#~ msgstr "LaTeX Seçenekleri"
-
-#, fuzzy
-#~ msgid "S/R expression"
-#~ msgstr "Düzenli &İfade"
 
 #~ msgid "Norsk"
 #~ msgstr "Norveççe"

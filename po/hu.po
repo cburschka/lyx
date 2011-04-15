@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.xsvn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-13 19:57+0200\n"
+"POT-Creation-Date: 2011-04-15 10:39+0200\n"
 "PO-Revision-Date: 2010-11-18 05:45+0100\n"
 "Last-Translator: Szőke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -715,7 +715,7 @@ msgstr "Betűtestesség"
 #: src/frontends/qt4/ui/CharacterUi.ui:145
 #: src/frontends/qt4/ui/ListingsUi.ui:339
 #: src/frontends/qt4/GuiDocument.cpp:1282 src/frontends/qt4/GuiPrefs.cpp:2171
-#: src/frontends/qt4/Menus.cpp:850
+#: src/frontends/qt4/Menus.cpp:852
 msgid "Language"
 msgstr "Nyelv"
 
@@ -1822,8 +1822,8 @@ msgstr "Kihagyás beszúrása még sortörés után is"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:19
 #: src/frontends/qt4/ui/HyperlinkUi.ui:32 lib/layouts/scrlttr2.layout:207
-#: lib/layouts/amsdefs.inc:153 lib/layouts/stdinsets.inc:333
-#: lib/layouts/minimalistic.module:26
+#: lib/layouts/amsdefs.inc:153 lib/layouts/stdinsets.inc:330
+#: lib/layouts/stdinsets.inc:333 lib/layouts/minimalistic.module:26
 msgid "URL"
 msgstr "URL"
 
@@ -1938,8 +1938,8 @@ msgstr "Input"
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1118
-#: src/insets/InsetInclude.cpp:1124
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1117
+#: src/insets/InsetInclude.cpp:1123
 msgid "Program Listing"
 msgstr "Programlista"
 
@@ -3010,9 +3010,9 @@ msgstr "Kétszeres"
 #: src/frontends/qt4/ui/TabularUi.ui:1047
 #: src/frontends/qt4/ui/TabularUi.ui:1066
 #: src/frontends/qt4/ui/TabularUi.ui:1114 src/frontends/qt4/ui/VSpaceUi.ui:107
-#: src/frontends/qt4/GuiDocument.cpp:686 src/frontends/qt4/GuiDocument.cpp:690
-#: src/frontends/qt4/GuiDocument.cpp:698 src/frontends/qt4/GuiDocument.cpp:794
-#: src/frontends/qt4/GuiDocument.cpp:846
+#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:686
+#: src/frontends/qt4/GuiDocument.cpp:690 src/frontends/qt4/GuiDocument.cpp:698
+#: src/frontends/qt4/GuiDocument.cpp:794 src/frontends/qt4/GuiDocument.cpp:846
 #: src/frontends/qt4/GuiDocument.cpp:1009 src/frontends/qt4/GuiHSpace.cpp:54
 #: src/frontends/qt4/GuiHSpace.cpp:63 src/frontends/qt4/GuiPrefs.cpp:810
 #: src/frontends/qt4/GuiPrefs.cpp:837 src/frontends/qt4/GuiPrefs.cpp:2070
@@ -5833,7 +5833,7 @@ msgstr "Normál szöveg"
 msgid "Title"
 msgstr "Cím"
 
-#: lib/layouts/IEEEtran.layout:88
+#: lib/layouts/IEEEtran.layout:84 lib/layouts/IEEEtran.layout:88
 msgid "IEEE membership"
 msgstr ""
 
@@ -6166,6 +6166,10 @@ msgstr "Levelezés vele:"
 msgid "Acknowledgements."
 msgstr "Köszönetnyilvánítások."
 
+#: lib/layouts/aa.layout:299
+msgid "institutemark"
+msgstr "Intézet jele"
+
 #: lib/layouts/aa.layout:303
 msgid "institute mark"
 msgstr "Intézet jele"
@@ -6184,20 +6188,21 @@ msgstr "Intézet"
 msgid "E-Mail"
 msgstr "E-mail"
 
-#: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:261
-msgid "email"
-msgstr "email"
-
-#: lib/layouts/aapaper.layout:88 lib/layouts/aastex.layout:104
-#: lib/layouts/aastex.layout:354 lib/layouts/achemso.layout:89
-#: lib/layouts/ectaart.layout:69 lib/layouts/elsarticle.layout:212
-#: lib/layouts/iopart.layout:160 lib/layouts/latex8.layout:64
-#: lib/layouts/lettre.layout:45 lib/layouts/lettre.layout:398
-#: lib/layouts/llncs.layout:234 lib/layouts/svglobal3.layout:45
+#: lib/layouts/aa.layout:410 lib/layouts/aapaper.layout:88
+#: lib/layouts/aastex.layout:104 lib/layouts/aastex.layout:354
+#: lib/layouts/achemso.layout:89 lib/layouts/ectaart.layout:69
+#: lib/layouts/elsarticle.layout:212 lib/layouts/iopart.layout:160
+#: lib/layouts/latex8.layout:64 lib/layouts/lettre.layout:45
+#: lib/layouts/lettre.layout:398 lib/layouts/llncs.layout:234
+#: lib/layouts/svglobal3.layout:41 lib/layouts/svglobal3.layout:45
 #: lib/layouts/aapaper.inc:46 lib/layouts/amsdefs.inc:145
 #: lib/layouts/db_stdcharstyles.inc:71 lib/layouts/db_stdcharstyles.inc:73
 msgid "Email"
 msgstr "E-mail"
+
+#: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:261
+msgid "email"
+msgstr "email"
 
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.inc:103
 #: lib/ui/stdtoolbars.inc:139 src/frontends/qt4/GuiThesaurus.cpp:45
@@ -6281,6 +6286,10 @@ msgstr "Másik tagság"
 msgid "Alternative affiliation:"
 msgstr "Másik tagság (jábjegyzetjel):"
 
+#: lib/layouts/aastex.layout:305
+msgid "altaffilmark"
+msgstr "altaffilmark"
+
 #: lib/layouts/aastex.layout:309
 msgid "altaffiliation mark"
 msgstr "Másik tagság (jábjegyzetjel)"
@@ -6331,6 +6340,10 @@ msgstr "Táblázat jegyzet"
 #: lib/layouts/aastex.layout:581
 msgid "Table note:"
 msgstr "Táblázat jegyzet:"
+
+#: lib/layouts/aastex.layout:588
+msgid "tablenotemark"
+msgstr "táblázat jegyzet jel"
 
 #: lib/layouts/aastex.layout:592
 msgid "tablenote mark"
@@ -6401,6 +6414,10 @@ msgstr "Grafika"
 msgid "List of Graphs"
 msgstr "Ábrák listája"
 
+#: lib/layouts/achemso.layout:215
+msgid "Bibnote"
+msgstr "Bibmegjegyzés"
+
 #: lib/layouts/achemso.layout:219
 msgid "bibnote"
 msgstr "bibmegjegyzés"
@@ -6416,6 +6433,10 @@ msgstr "Fejtörő"
 #: lib/layouts/acmsiggraph.layout:75
 msgid "Teaser image:"
 msgstr "Fejtörő kép:"
+
+#: lib/layouts/acmsiggraph.layout:87
+msgid "CRcat"
+msgstr "CRcat"
 
 #: lib/layouts/acmsiggraph.layout:92
 msgid "CR category"
@@ -6441,7 +6462,7 @@ msgstr "Köszönetnyilvánítások"
 msgid "Authors"
 msgstr "Szerzők"
 
-#: lib/layouts/agutex.layout:94
+#: lib/layouts/agutex.layout:90 lib/layouts/agutex.layout:94
 msgid "Affiliation Mark"
 msgstr "Kapcsolat jele"
 
@@ -6836,6 +6857,10 @@ msgstr "Címzés"
 #: lib/layouts/beamer.layout:762
 msgid "Title (Plain Frame)"
 msgstr "Cím (egyszerű fólia)"
+
+#: lib/layouts/beamer.layout:838
+msgid "InstituteMark"
+msgstr "IntézetJel"
 
 #: lib/layouts/beamer.layout:842
 msgid "Institute mark"
@@ -7552,6 +7577,10 @@ msgstr "Köszönet \\theThanks:"
 msgid "Emphasize"
 msgstr "Kiemelés"
 
+#: lib/layouts/ectaart.layout:152
+msgid "Thanks Reference"
+msgstr "Köszönet hivatkozás"
+
 #: lib/layouts/ectaart.layout:159
 msgid "Thanks Ref"
 msgstr "Köszönet hiv."
@@ -7734,6 +7763,10 @@ msgstr "\\arabic{summ}. összegzés"
 msgid "Case \\arabic{case}"
 msgstr "\\arabic{case}. eset"
 
+#: lib/layouts/elsarticle.layout:75
+msgid "Titlenotemark"
+msgstr "Cím lábjegyzet jel"
+
 #: lib/layouts/elsarticle.layout:79
 msgid "Titlenote mark"
 msgstr "Cím lábjegyzet jel"
@@ -7746,6 +7779,10 @@ msgstr "Cím lábjegyzet"
 msgid "Title footnote:"
 msgstr "Cím lábjegyzet:"
 
+#: lib/layouts/elsarticle.layout:137
+msgid "Authormark"
+msgstr "Szerző (lábjegyzetjel)"
+
 #: lib/layouts/elsarticle.layout:141
 msgid "Author mark"
 msgstr "Szerző jel"
@@ -7757,6 +7794,10 @@ msgstr "Szerző lábjegyzet"
 #: lib/layouts/elsarticle.layout:162
 msgid "Author footnote:"
 msgstr "Szerző lábjegyzet:"
+
+#: lib/layouts/elsarticle.layout:166
+msgid "CorAuthormark"
+msgstr "Megfelelő szerző (lábjegyzetjel)"
 
 #: lib/layouts/elsarticle.layout:170
 msgid "CorAuthor mark"
@@ -9287,9 +9328,17 @@ msgstr "Szerkesztőknek"
 msgid "List of Contributors"
 msgstr "Közreműködők listája"
 
+#: lib/layouts/svmult.layout:229
+msgid "Inst"
+msgstr "Intézet"
+
 #: lib/layouts/svmult.layout:231
 msgid "Institute #"
 msgstr "Intézet #"
+
+#: lib/layouts/tufte-book.layout:124
+msgid "Sidenote"
+msgstr "Oldaljegyzet"
 
 #: lib/layouts/tufte-book.layout:129
 msgid "sidenote"
@@ -9298,6 +9347,10 @@ msgstr "oldaljegyzet"
 #: lib/layouts/tufte-book.layout:147
 msgid "marginnote"
 msgstr "széljegyzet"
+
+#: lib/layouts/tufte-book.layout:156
+msgid "NewThought"
+msgstr "ÚjGondolat"
 
 #: lib/layouts/tufte-book.layout:160
 msgid "new thought"
@@ -10175,6 +10228,10 @@ msgstr "Braille (tükrözve ki)"
 msgid "Braille_mirror_off"
 msgstr "Braille_tükrözve_ki"
 
+#: lib/layouts/braille.module:163
+msgid "Braillebox"
+msgstr "Brailledoboz"
+
 #: lib/layouts/braille.module:167
 msgid "Braille box"
 msgstr "Braille doboz"
@@ -10363,7 +10420,8 @@ msgid ""
 "be processed in the output. See the lilypond.lyx example file."
 msgstr ""
 
-#: lib/layouts/lilypond.module:14 lib/external_templates:251
+#: lib/layouts/lilypond.module:13 lib/layouts/lilypond.module:14
+#: lib/external_templates:251
 msgid "LilyPond"
 msgstr "LilyPond"
 
@@ -10524,16 +10582,26 @@ msgstr ""
 msgid "Chunk"
 msgstr ""
 
+#: lib/layouts/sweave.module:52
+#, fuzzy
+msgid "Sweave Options"
+msgstr "LaTeX opciók"
+
 #: lib/layouts/sweave.module:53
 msgid "Sweave opts"
 msgstr ""
+
+#: lib/layouts/sweave.module:74
+#, fuzzy
+msgid "S/R expression"
+msgstr "Reguláris kifejez&és"
 
 #: lib/layouts/sweave.module:75
 #, fuzzy
 msgid "S/R expr"
 msgstr "expr."
 
-#: lib/layouts/sweave.module:97
+#: lib/layouts/sweave.module:96 lib/layouts/sweave.module:97
 msgid "Sweave Input File"
 msgstr ""
 
@@ -17212,101 +17280,101 @@ msgstr "Nincs több visszavonás"
 msgid "No further redo information"
 msgstr "Minden visszavonás semlegesítve"
 
-#: src/BufferView.cpp:1512 src/lyxfind.cpp:374 src/lyxfind.cpp:392
+#: src/BufferView.cpp:1514 src/lyxfind.cpp:374 src/lyxfind.cpp:392
 msgid "String not found!"
 msgstr "Nem találtam meg a szöveget!"
 
-#: src/BufferView.cpp:1555
+#: src/BufferView.cpp:1557
 msgid "Mark off"
 msgstr "Jel ki"
 
-#: src/BufferView.cpp:1561
+#: src/BufferView.cpp:1563
 msgid "Mark on"
 msgstr "Jel be"
 
-#: src/BufferView.cpp:1568
+#: src/BufferView.cpp:1570
 msgid "Mark removed"
 msgstr "Jel eltávolítva"
 
-#: src/BufferView.cpp:1571
+#: src/BufferView.cpp:1573
 msgid "Mark set"
 msgstr "Jel beállítva"
 
-#: src/BufferView.cpp:1626
+#: src/BufferView.cpp:1628
 msgid "Statistics for the selection:"
 msgstr "Statisztika a kijelölésre:"
 
-#: src/BufferView.cpp:1628
+#: src/BufferView.cpp:1630
 msgid "Statistics for the document:"
 msgstr "A dokumentum statisztikája: "
 
-#: src/BufferView.cpp:1631
+#: src/BufferView.cpp:1633
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d szó"
 
-#: src/BufferView.cpp:1633
+#: src/BufferView.cpp:1635
 msgid "One word"
 msgstr "Egy szó"
 
-#: src/BufferView.cpp:1636
+#: src/BufferView.cpp:1638
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d karakter (szóközökkel)"
 
-#: src/BufferView.cpp:1639
+#: src/BufferView.cpp:1641
 msgid "One character (including blanks)"
 msgstr "Egy karakter (szóközökkel)"
 
-#: src/BufferView.cpp:1642
+#: src/BufferView.cpp:1644
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d karakter (szóközök nélkül)"
 
-#: src/BufferView.cpp:1645
+#: src/BufferView.cpp:1647
 msgid "One character (excluding blanks)"
 msgstr "Egy karakter (szóközök nélkül)"
 
-#: src/BufferView.cpp:1647
+#: src/BufferView.cpp:1649
 msgid "Statistics"
 msgstr "Statisztika"
 
-#: src/BufferView.cpp:1777
+#: src/BufferView.cpp:1780
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
 
-#: src/BufferView.cpp:1779
+#: src/BufferView.cpp:1782
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr ""
 
-#: src/BufferView.cpp:1787
+#: src/BufferView.cpp:1790
 #, fuzzy
 msgid "Branch name"
 msgstr "Változatok"
 
-#: src/BufferView.cpp:1794 src/frontends/qt4/GuiBranches.cpp:176
+#: src/BufferView.cpp:1797 src/frontends/qt4/GuiBranches.cpp:176
 msgid "Branch already exists"
 msgstr ""
 
-#: src/BufferView.cpp:2553
+#: src/BufferView.cpp:2564
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Dokumentum beszúrása %1$s..."
 
-#: src/BufferView.cpp:2564
+#: src/BufferView.cpp:2575
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumentum: %1$s beszúrása megtörtént."
 
-#: src/BufferView.cpp:2566
+#: src/BufferView.cpp:2577
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nem tudom beszúrni a dokumentumot %1$s"
 
-#: src/BufferView.cpp:2831
+#: src/BufferView.cpp:2842
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17317,11 +17385,11 @@ msgstr ""
 "nem olvasható,\n"
 "%2$s hiba miatt"
 
-#: src/BufferView.cpp:2833
+#: src/BufferView.cpp:2844
 msgid "Could not read file"
 msgstr "A fájl nem olvasható"
 
-#: src/BufferView.cpp:2840
+#: src/BufferView.cpp:2851
 #, c-format
 msgid ""
 "%1$s\n"
@@ -17330,15 +17398,15 @@ msgstr ""
 "%1$s\n"
 " nem olvasható.."
 
-#: src/BufferView.cpp:2841 src/output.cpp:39
+#: src/BufferView.cpp:2852 src/output.cpp:39
 msgid "Could not open file"
 msgstr "A fájl nem nyitható meg"
 
-#: src/BufferView.cpp:2848
+#: src/BufferView.cpp:2859
 msgid "Reading not UTF-8 encoded file"
 msgstr "Nem UTF-8 kódolású fájl olvasása"
 
-#: src/BufferView.cpp:2849
+#: src/BufferView.cpp:2860
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -17750,7 +17818,7 @@ msgstr ""
 "Nincs információ a %1$s formátumú fájl, %2$s-ra alakítására.\n"
 "Adjon meg átalakítót a beállításokban."
 
-#: src/Converter.cpp:439 src/Format.cpp:319 src/Format.cpp:386
+#: src/Converter.cpp:439 src/Format.cpp:320 src/Format.cpp:387
 msgid "Executing command: "
 msgstr "Parancs végrehajtása:"
 
@@ -17972,39 +18040,39 @@ msgstr "Nyelv: %1$s, "
 msgid "Number %1$s"
 msgstr "  Szám %1$s"
 
-#: src/Format.cpp:267 src/Format.cpp:280 src/Format.cpp:290
+#: src/Format.cpp:268 src/Format.cpp:281 src/Format.cpp:291
 msgid "Cannot view file"
 msgstr "A fájl nem nézhető meg"
 
-#: src/Format.cpp:268 src/Format.cpp:334 src/frontends/qt4/GuiView.cpp:2928
+#: src/Format.cpp:269 src/Format.cpp:335 src/frontends/qt4/GuiView.cpp:2928
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "A fájl nem létezik: %1$s"
 
-#: src/Format.cpp:281
+#: src/Format.cpp:282
 #, c-format
 msgid "No information for viewing %1$s"
 msgstr "Nincs információ a %1$s nézetéhez "
 
-#: src/Format.cpp:291
+#: src/Format.cpp:292
 #, c-format
 msgid "Auto-view file %1$s failed"
 msgstr "Automatikus nézet %1$s sikertelen"
 
-#: src/Format.cpp:333 src/Format.cpp:345 src/Format.cpp:358 src/Format.cpp:369
+#: src/Format.cpp:334 src/Format.cpp:346 src/Format.cpp:359 src/Format.cpp:370
 msgid "Cannot edit file"
 msgstr "A fájl nem szerkeszthető"
 
-#: src/Format.cpp:346
+#: src/Format.cpp:347
 msgid "LinkBack files can only be edited on Apple Mac OSX."
 msgstr "LinkBack fájlok szerkesztése csak Apple Mac OSX-en lehetséges."
 
-#: src/Format.cpp:359
+#: src/Format.cpp:360
 #, c-format
 msgid "No information for editing %1$s"
 msgstr "Nincs információ a %1$s szerkesztéséhez"
 
-#: src/Format.cpp:370
+#: src/Format.cpp:371
 #, c-format
 msgid "Auto-edit file %1$s failed"
 msgstr "Automatikus fájl szerkesztés %1$s sikertelen"
@@ -20336,7 +20404,7 @@ msgid "Document Settings"
 msgstr "Dokumentumbeállítások"
 
 #: src/frontends/qt4/GuiDocument.cpp:720 src/frontends/qt4/GuiInclude.cpp:48
-#: src/frontends/qt4/Menus.cpp:1396
+#: src/frontends/qt4/Menus.cpp:1398
 msgid "Child Document"
 msgstr "Aldokumentum"
 
@@ -22340,126 +22408,126 @@ msgstr "Egyéb...|E"
 msgid "No Group"
 msgstr "Nincs csoport"
 
-#: src/frontends/qt4/Menus.cpp:782 src/frontends/qt4/Menus.cpp:783
+#: src/frontends/qt4/Menus.cpp:784 src/frontends/qt4/Menus.cpp:785
 msgid "More Spelling Suggestions"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:801
+#: src/frontends/qt4/Menus.cpp:803
 #, fuzzy
 msgid "Add to personal dictionary|n"
 msgstr "Adja meg a személyes szótárat"
 
-#: src/frontends/qt4/Menus.cpp:803
+#: src/frontends/qt4/Menus.cpp:805
 #, fuzzy
 msgid "Ignore all|I"
 msgstr "Mellőzze m&indet"
 
-#: src/frontends/qt4/Menus.cpp:811
+#: src/frontends/qt4/Menus.cpp:813
 #, fuzzy
 msgid "Remove from personal dictionary|r"
 msgstr "Adja meg a személyes szótárat"
 
-#: src/frontends/qt4/Menus.cpp:849
+#: src/frontends/qt4/Menus.cpp:851
 #, fuzzy
 msgid "Language|L"
 msgstr "Nyelv"
 
-#: src/frontends/qt4/Menus.cpp:851
+#: src/frontends/qt4/Menus.cpp:853
 #, fuzzy
 msgid "More Languages ...|M"
 msgstr "Változások elfogadása...|s"
 
-#: src/frontends/qt4/Menus.cpp:921 src/frontends/qt4/Menus.cpp:922
+#: src/frontends/qt4/Menus.cpp:923 src/frontends/qt4/Menus.cpp:924
 msgid "Hidden|H"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:926
+#: src/frontends/qt4/Menus.cpp:928
 #, fuzzy
 msgid "<No Documents Open>"
 msgstr "Nincsenek nyitott dokumentumok!"
 
-#: src/frontends/qt4/Menus.cpp:989
+#: src/frontends/qt4/Menus.cpp:991
 msgid "<No Bookmarks Saved Yet>"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:1027
+#: src/frontends/qt4/Menus.cpp:1029
 msgid "View (Other Formats)|F"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:1028
+#: src/frontends/qt4/Menus.cpp:1030
 #, fuzzy
 msgid "Update (Other Formats)|p"
 msgstr "Képernyő frissítése"
 
-#: src/frontends/qt4/Menus.cpp:1061
+#: src/frontends/qt4/Menus.cpp:1063
 #, fuzzy, c-format
 msgid "View [%1$s]|V"
 msgstr "Nézet|z"
 
-#: src/frontends/qt4/Menus.cpp:1062
+#: src/frontends/qt4/Menus.cpp:1064
 #, fuzzy, c-format
 msgid "Update [%1$s]|U"
 msgstr "Frissítés|i"
 
-#: src/frontends/qt4/Menus.cpp:1173
+#: src/frontends/qt4/Menus.cpp:1175
 #, fuzzy
 msgid "No Custom Insets Defined!"
 msgstr "Nincs megadva saját betét!"
 
-#: src/frontends/qt4/Menus.cpp:1245
+#: src/frontends/qt4/Menus.cpp:1247
 #, fuzzy
 msgid "<No Document Open>"
 msgstr "Nincs nyitott dokumentum!"
 
-#: src/frontends/qt4/Menus.cpp:1255
+#: src/frontends/qt4/Menus.cpp:1257
 msgid "Master Document"
 msgstr "Fődokumentum"
 
-#: src/frontends/qt4/Menus.cpp:1272
+#: src/frontends/qt4/Menus.cpp:1274
 msgid "Open Navigator..."
 msgstr "Navigátor megnyitása..."
 
-#: src/frontends/qt4/Menus.cpp:1293
+#: src/frontends/qt4/Menus.cpp:1295
 msgid "Other Lists"
 msgstr "Többi lista"
 
-#: src/frontends/qt4/Menus.cpp:1306
+#: src/frontends/qt4/Menus.cpp:1308
 #, fuzzy
 msgid "<Empty Table of Contents>"
 msgstr "Tartalomjegyzék"
 
-#: src/frontends/qt4/Menus.cpp:1341
+#: src/frontends/qt4/Menus.cpp:1343
 msgid "Other Toolbars"
 msgstr "Többi eszköztár"
 
-#: src/frontends/qt4/Menus.cpp:1356
+#: src/frontends/qt4/Menus.cpp:1358
 #, fuzzy
 msgid "No Branches Set for Document!"
 msgstr "A dokumentumban nincs változat megadva!"
 
-#: src/frontends/qt4/Menus.cpp:1412
+#: src/frontends/qt4/Menus.cpp:1414
 msgid "Index List|I"
 msgstr "Tárgymutatólista|l"
 
-#: src/frontends/qt4/Menus.cpp:1417
+#: src/frontends/qt4/Menus.cpp:1419
 msgid "Index Entry|d"
 msgstr "Tárgyszó|s"
 
-#: src/frontends/qt4/Menus.cpp:1432
+#: src/frontends/qt4/Menus.cpp:1434
 #, fuzzy, c-format
 msgid "Index: %1$s"
 msgstr "Betűkészlet: %1$s"
 
-#: src/frontends/qt4/Menus.cpp:1437 src/frontends/qt4/Menus.cpp:1466
+#: src/frontends/qt4/Menus.cpp:1439 src/frontends/qt4/Menus.cpp:1468
 #, fuzzy, c-format
 msgid "Index Entry (%1$s)"
 msgstr "Tárgyszó"
 
-#: src/frontends/qt4/Menus.cpp:1483
+#: src/frontends/qt4/Menus.cpp:1485
 msgid "No Citation in Scope!"
 msgstr "Nincs hivatkozás az aktuális munkaterületen!"
 
-#: src/frontends/qt4/Menus.cpp:2091
+#: src/frontends/qt4/Menus.cpp:2093
 #, fuzzy
 msgid "No Action Defined!"
 msgstr "Nincs megadva művelet!"
@@ -22866,7 +22934,7 @@ msgstr ""
 msgid "footnote"
 msgstr "lábjegyzet"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:673
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:672
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -22876,12 +22944,12 @@ msgstr ""
 "A %1$s fájl\n"
 "nem másolható az ideiglenes könyvtárba."
 
-#: src/insets/InsetGraphics.cpp:720 src/insets/InsetGraphics.cpp:935
+#: src/insets/InsetGraphics.cpp:719 src/insets/InsetGraphics.cpp:934
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Nincs szükség %1$s átalakítására"
 
-#: src/insets/InsetGraphics.cpp:812
+#: src/insets/InsetGraphics.cpp:811
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Képfájl: %1$s"
@@ -22913,19 +22981,19 @@ msgstr "Szó szerinti bevitel*"
 msgid "Include (excluded)"
 msgstr "Fájl csatolása"
 
-#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:773
-#: src/insets/InsetInclude.cpp:818
+#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:772
+#: src/insets/InsetInclude.cpp:817
 msgid "Recursive input"
 msgstr "Rekurzív bemenet"
 
-#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:774
-#: src/insets/InsetInclude.cpp:819
+#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:773
+#: src/insets/InsetInclude.cpp:818
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 "Kísérlet '%1$s' sajátmagába csatolásához! Csatolás figyelmen kívűl hagyása."
 
-#: src/insets/InsetInclude.cpp:562
+#: src/insets/InsetInclude.cpp:561
 #, fuzzy, c-format
 msgid ""
 "Could not load included file\n"
@@ -22935,12 +23003,12 @@ msgstr ""
 "Biztonsági másolat készítése nem lehetséges %1$s.\n"
 "Kérem ellenőrizze a könyvtár meglétét és írhatóságát."
 
-#: src/insets/InsetInclude.cpp:566
+#: src/insets/InsetInclude.cpp:565
 #, fuzzy
 msgid "Missing included file"
 msgstr "Fájl csatolása"
 
-#: src/insets/InsetInclude.cpp:572
+#: src/insets/InsetInclude.cpp:571
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -22951,11 +23019,11 @@ msgstr ""
 "a `%2$s' szövegosztályt használja,\n"
 "a szülődokumentum viszont a `%3$s' szövegosztályt."
 
-#: src/insets/InsetInclude.cpp:578
+#: src/insets/InsetInclude.cpp:577
 msgid "Different textclasses"
 msgstr "Különböző szövegosztályok"
 
-#: src/insets/InsetInclude.cpp:593
+#: src/insets/InsetInclude.cpp:592
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -22966,27 +23034,27 @@ msgstr ""
 "használja a `%2$s' modult\n"
 "ami nincs használatban a szülő fájlban."
 
-#: src/insets/InsetInclude.cpp:597
+#: src/insets/InsetInclude.cpp:596
 msgid "Module not found"
 msgstr "Modul nincs meg"
 
-#: src/insets/InsetInclude.cpp:627 src/insets/InsetInclude.cpp:650
+#: src/insets/InsetInclude.cpp:626 src/insets/InsetInclude.cpp:649
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:636 src/insets/InsetInclude.cpp:658
+#: src/insets/InsetInclude.cpp:635 src/insets/InsetInclude.cpp:657
 #, fuzzy
 msgid "Export failure"
 msgstr "Biztonsági mentés hiba"
 
-#: src/insets/InsetInclude.cpp:761
+#: src/insets/InsetInclude.cpp:760
 msgid "Unsupported Inclusion"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:762
+#: src/insets/InsetInclude.cpp:761
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
@@ -24420,9 +24488,6 @@ msgstr "Ismeretlen felhasználó"
 #~ msgid "&Global"
 #~ msgstr "&Globális nyelv"
 
-#~ msgid "institutemark"
-#~ msgstr "Intézet jele"
-
 #, fuzzy
 #~ msgid "Flex:Institute"
 #~ msgstr "Intézet"
@@ -24430,12 +24495,6 @@ msgstr "Ismeretlen felhasználó"
 #, fuzzy
 #~ msgid "Flex:E-Mail"
 #~ msgstr "E-mail"
-
-#~ msgid "altaffilmark"
-#~ msgstr "altaffilmark"
-
-#~ msgid "tablenotemark"
-#~ msgstr "táblázat jegyzet jel"
 
 #~ msgid "scheme"
 #~ msgstr "séma"
@@ -24446,17 +24505,8 @@ msgstr "Ismeretlen felhasználó"
 #~ msgid "graph"
 #~ msgstr "kép"
 
-#~ msgid "Bibnote"
-#~ msgstr "Bibmegjegyzés"
-
 #~ msgid "Chemistry"
 #~ msgstr "Kémia"
-
-#~ msgid "CRcat"
-#~ msgstr "CRcat"
-
-#~ msgid "InstituteMark"
-#~ msgstr "IntézetJel"
 
 #, fuzzy
 #~ msgid "Flex:Alert"
@@ -24474,9 +24524,6 @@ msgstr "Ismeretlen felhasználó"
 #~ msgid "Flex:PresentationMode"
 #~ msgstr "Saját:PrezentációMód"
 
-#~ msgid "Thanks Reference"
-#~ msgstr "Köszönet hivatkozás"
-
 #~ msgid "Internet Address Reference"
 #~ msgstr "Internet cím hivatkozás"
 
@@ -24489,30 +24536,12 @@ msgstr "Ismeretlen felhasználó"
 #~ msgid "By Same Author (bib)"
 #~ msgstr "Azonos szerő szerint (bib)"
 
-#~ msgid "Titlenotemark"
-#~ msgstr "Cím lábjegyzet jel"
-
-#~ msgid "Authormark"
-#~ msgstr "Szerző (lábjegyzetjel)"
-
-#~ msgid "CorAuthormark"
-#~ msgstr "Megfelelő szerző (lábjegyzetjel)"
-
 #, fuzzy
 #~ msgid "Lowercase"
 #~ msgstr "Kisbetű|K"
 
-#~ msgid "Inst"
-#~ msgstr "Intézet"
-
-#~ msgid "Sidenote"
-#~ msgstr "Oldaljegyzet"
-
 #~ msgid "Marginnote"
 #~ msgstr "Széljegyzet"
-
-#~ msgid "NewThought"
-#~ msgstr "ÚjGondolat"
 
 #~ msgid "AllCaps"
 #~ msgstr "Nagybetűs"
@@ -24703,9 +24732,6 @@ msgstr "Ismeretlen felhasználó"
 #~ msgid "Info:shortcuts"
 #~ msgstr "Info:gyorsbillentyűk"
 
-#~ msgid "Braillebox"
-#~ msgstr "Brailledoboz"
-
 #, fuzzy
 #~ msgid "Flex:Endnote"
 #~ msgstr "Végjegyzet"
@@ -24741,14 +24767,6 @@ msgstr "Ismeretlen felhasználó"
 #, fuzzy
 #~ msgid "Noweb literate programming"
 #~ msgstr "Nem találtam literális programfordítási naplótfájlt."
-
-#, fuzzy
-#~ msgid "Sweave Options"
-#~ msgstr "LaTeX opciók"
-
-#, fuzzy
-#~ msgid "S/R expression"
-#~ msgstr "Reguláris kifejez&és"
 
 #~ msgid "Norsk"
 #~ msgstr "Norvég"
