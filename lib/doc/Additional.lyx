@@ -132,6 +132,7 @@ End
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author 711066561 "Enrico Forestieri" 
 \author 1414654397 "Richard Heck" 
 \end_header
 
@@ -3122,9 +3123,32 @@ bundle
 
  a LyX file together with all the images (and other files) on which it depends,
  either for sending to a publisher or for sharing with a co-author.
- LyX 2.0 includes a Python script (written by Enrico Forestieri) that automates
- this process.
+ LyX 2.0 includes a Python script 
+\change_inserted 711066561 1302968890
+(
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 711066561 1302968879
+lyxpak.py
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+) 
+\change_deleted 711066561 1302967226
+(written by Enrico Forestieri) 
+\change_inserted 1414654397 1302963893
+that automates this process.
  To use it, you must have either 
+\change_inserted 711066561 1302967360
+the 
+\change_inserted 1414654397 1302963893
+
 \begin_inset Flex Code
 status collapsed
 
@@ -3132,6 +3156,8 @@ status collapsed
 
 \change_inserted 1414654397 1302963710
 zip
+\change_inserted 711066561 1302967333
+file
 \change_unchanged
 
 \end_layout
@@ -3146,14 +3172,44 @@ status collapsed
 
 \change_inserted 1414654397 1302963714
 tar
+\change_inserted 711066561 1302967339
+file
 \change_unchanged
 
 \end_layout
 
 \end_inset
 
- installed on your system.
- At present, the script prefers 
+ 
+\change_inserted 711066561 1302967345
+python modules 
+\change_inserted 1414654397 1302963893
+installed on your system.
+ 
+\change_deleted 711066561 1302967469
+At present, t
+\change_inserted 711066561 1302968934
+By deafult, t
+\change_inserted 1414654397 1302963893
+he script prefers 
+\change_inserted 711066561 1302967645
+the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 711066561 1302967636
+gzip
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+-compressed 
+\change_inserted 1414654397 1302963893
+
 \begin_inset Flex Code
 status collapsed
 
@@ -3167,7 +3223,29 @@ tar
 
 \end_inset
 
- and, if it is available, then it will compress the archive using 
+ 
+\change_inserted 711066561 1302967527
+format on Unix-like systems 
+\change_inserted 1414654397 1302963893
+and
+\change_inserted 711066561 1302967699
+ the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 711066561 1302967678
+zip
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ format on Windows.
+\change_deleted 711066561 1302967705
+, if it is available, then it will compress the archive using 
 \begin_inset Flex Code
 status collapsed
 
@@ -3211,14 +3289,19 @@ zip
 \end_inset
 
  is available, then it will use that.) 
+\change_inserted 1414654397 1302963893
+
 \end_layout
 
 \begin_layout Standard
 
+\change_deleted 711066561 1302967868
+If the appropriate programs are available, then
+\change_inserted 711066561 1302967868
+The
 \change_inserted 1414654397 1302963889
-If the appropriate programs are available, then LyX's configuration process
- will set the script up to export a `LyX Archive', and this format will
- then be available under 
+ LyX's configuration process will set the script up to export a `LyX Archive',
+ and this format will then be available under 
 \begin_inset Flex Code
 status collapsed
 
@@ -3234,6 +3317,105 @@ Export
 \end_inset
 
 .
+\change_inserted 711066561 1302968080
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 711066561 1302970799
+Independently of the platform, the generation of a particular archive format
+ can be forced by adding either the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 711066561 1302968170
+-t
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ (for the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 711066561 1302968192
+tar
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ format) or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 711066561 1302968216
+-z
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ (for the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 711066561 1302968265
+zip
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ format) switch to the 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 711066561 1302968420
+LyX\SpecialChar \menuseparator
+LyX Archive
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ converter in 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 711066561 1302968494
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File Handling\SpecialChar \menuseparator
+Converters
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ (pay attention to add the switch after the script name, not before it).
+\change_inserted 1414654397 1302963889
+
 \end_layout
 
 \begin_layout Section
