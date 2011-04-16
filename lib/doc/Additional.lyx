@@ -127,11 +127,12 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author 1414654397 "Richard Heck" 
 \end_header
 
 \begin_body
@@ -3095,6 +3096,139 @@ status collapsed
 \begin_layout Plain Layout
 
 http://wiki.lyx.org/FAQ/Unsorted#toc31
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 1414654397 1302963669
+LyX Archives
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1414654397 1302963893
+Users sometimes need to be able to 
+\begin_inset Quotes eld
+\end_inset
+
+bundle
+\begin_inset Quotes erd
+\end_inset
+
+ a LyX file together with all the images (and other files) on which it depends,
+ either for sending to a publisher or for sharing with a co-author.
+ LyX 2.0 includes a Python script (written by Enrico Forestieri) that automates
+ this process.
+ To use it, you must have either 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1302963710
+zip
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1302963714
+tar
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ installed on your system.
+ At present, the script prefers 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1302963720
+tar
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ and, if it is available, then it will compress the archive using 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1302963726
+gzip
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1302963730
+bunzip2
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+ (If only 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1302963866
+zip
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ is available, then it will use that.) 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1414654397 1302963889
+If the appropriate programs are available, then LyX's configuration process
+ will set the script up to export a `LyX Archive', and this format will
+ then be available under 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1302963776
+File\SpecialChar \menuseparator
+Export
+\change_unchanged
+
 \end_layout
 
 \end_inset
