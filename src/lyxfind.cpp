@@ -1337,8 +1337,9 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 		LYXERR(Debug::FIND, "Replacing by niceInsert()ing latex: '" << repl_latex << "'");
 		sel_len = cur.niceInsert(repl_latex);
 	}
-	cur.pos() -= sel_len;
-	if (cur.pos() < 0)
+	if (cur.pos() >= sel_len)
+		cur.pos() -= sel_len;
+	else
 		cur.pos() = 0;
 	LYXERR(Debug::FIND, "Putting selection at cur=" << cur << " with len: " << sel_len);
 	bv->putSelectionAt(DocIterator(cur), sel_len, !opt.forward);
