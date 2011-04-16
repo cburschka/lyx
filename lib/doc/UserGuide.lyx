@@ -3001,8 +3001,8 @@ Document ! Settings
 \end_inset
 
  dialog.
- Highlighting a module in the dialog will bring up a description of the
- module.
+ Highlighting a module in the dialog will bring up a description of what
+ it does.the module.
 \end_layout
 
 \begin_layout Standard
@@ -3031,8 +3031,11 @@ package
 prerequisites
 \change_unchanged
 .
- If you want to be able to produce output, then you need to install the
- missing 
+ If you want to be able to produce 
+\change_inserted 1414654397 1302961839
+this kind of 
+\change_unchanged
+output, then you need to install the missing 
 \change_deleted 1607599024 1294953855
 package
 \change_inserted 1607599024 1294953855
@@ -3083,6 +3086,54 @@ Note:
 
 \end_inset
 
+
+\change_inserted 1414654397 1302961851
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 1414654397 1302961879
+Local Layout
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1302961873
+Document ! Local Layout
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1414654397 1302962459
+Modules are to LyX much as packages are to LaTeX: They are intended to be
+ used in a variety of different documents, and if you often find yourself
+ needing the same sort of thing in different documents, you should consider
+ writing a module for this purpose.
+ Sometimes, however, a particular document has very special needs, and you
+ find yourself wanting a specific inset or character style, but only that
+ one time.
+ You want something that is like a document's own LaTeX preamble.
+ What you want is LyX's 
+\begin_inset Quotes eld
+\end_inset
+
+Local Layout
+\begin_inset Quotes erd
+\end_inset
+
+.
+ See chapter 5 of the Customization manual for information on how to use
+ it.
+\change_unchanged
 
 \end_layout
 
