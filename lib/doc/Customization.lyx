@@ -11834,7 +11834,9 @@ status collapsed
 
 \end_inset
 
-] Whether the following Paragraph is allowed to indent its very first row.
+] 
+\change_deleted 1414654397 1302985166
+Whether the following Paragraph is allowed to indent its very first row.
  
 \begin_inset Flex Code
 status collapsed
@@ -11856,6 +11858,40 @@ status collapsed
 \end_inset
 
  means it could do so if it wants to.
+\change_inserted 1414654397 1302985275
+If set to true, and if 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1302985206
+DefaultStyle
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ (usually 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1302985230
+Standard
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+) paragraphs are being indented, then the indentation of such a paragraph
+ following one of this type will be suppressed.
+ (So this will not affect the display of non-default paragraphs.)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
