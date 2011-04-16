@@ -131,6 +131,7 @@
 \html_be_strict true
 \author -712698321 "Jürgen Spitzmüller" 
 \author 5863208 "ab" 
+\author 1414654397 "Richard Heck" 
 \author 1607599024 "Richard Heck" rgheck@comcast.net
 \end_header
 
@@ -1451,36 +1452,140 @@ Navigating
 \end_layout
 
 \begin_layout Standard
-LyX offers you two ways to navigate in documents:
+LyX offers you 
+\change_deleted 1414654397 1302960211
+two 
+\change_inserted 1414654397 1302960212
+several 
+\change_unchanged
+ways to navigate in documents:
 \end_layout
 
 \begin_layout Itemize
-The menu 
+The 
 \family sans
 Navigate
 \family default
- lists all sections of the document as submenu entries that you can click
- to jump to the corresponding document part.
+ menu lists all sections of the document as submenu entries that you can
+ click to jump to the corresponding document part.
 \end_layout
 
 \begin_layout Itemize
-The menu 
+The `Outline', which is accessed either by the menu 
 \family sans
 Document\SpecialChar \menuseparator
 Outline
 \family default
- or the toolbar button 
+ or by the toolbar button 
 \begin_inset Info
 type  "icon"
 arg   "dialog-toggle toc"
 \end_inset
 
 .
+\change_inserted 1414654397 1302960291
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 1414654397 1302960282
+You can set bookmarks in your document under 
+\family sans
+Navigate\SpecialChar \menuseparator
+Bookmarks
+\family default
+ and use the same menu to return to them.
+ Note that bookmarks are saved between sessions.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-The outline window shows you the content of the document's table of contents
- (TOC) that is described in section
+
+\change_inserted 1414654397 1302961047
+The toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "bookmark-goto 0"
+\end_inset
+
+ (also 
+\family sans
+Navigate\SpecialChar \menuseparator
+Bookmarks\SpecialChar \menuseparator
+NavigateBack
+\family default
+) jumps to the position in the document where you recently changed something.
+ This is useful when you have a large document and have navigated or scrolled
+ to another document part to look for something, and want to go back to
+ your last editing position.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 1414654397 1302960155
+The Outliner
+\end_layout
+
+\begin_layout Standard
+The Outline
+\change_inserted 1414654397 1302960739
+ was known in earlier versions of LyX as the 
+\begin_inset Quotes eld
+\end_inset
+
+TOC
+\begin_inset Quotes erd
+\end_inset
+
+, since its original purpose was to display the document's table of contents.
+ The Outline has become much more powerful now, however.
+ In the pull-down box at the top of the outline window, you can choose between
+ several different lists, including other TOC-like objects, such as lists
+ of tables and figures, but also lists of footnotes, or labels and cross-referen
+ces (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Cross-References"
+
+\end_inset
+
+), or notes, or citations (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Bibliography"
+
+\end_inset
+
+).
+ Clicking on any of these will take you to the corresponding object in your
+ document.
+ The Outline has become much more powerful now, however.
+ In the pull-down box at the top of the outline window, you can choose between
+ several different lists, including other TOC-like objects, such as lists
+ of tables and figures, but also lists of footnotes, or labels and cross-referen
+ces (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Cross-References"
+
+\end_inset
+
+), or notes, or of citations (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Bibliography"
+
+\end_inset
+
+).
+ Clicking on any of these will take you to the corresponding object in your
+ document.
+
+\change_deleted 1414654397 1302960743
+ window shows you the content of the document's table of contents (TOC)
+ that is described in section
 \begin_inset space ~
 \end_inset
 
@@ -1508,11 +1613,61 @@ reference "sub:List-of-Figures"
 \end_inset
 
 .
- The 
+ 
+\change_inserted 1414654397 1302961073
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1414654397 1302961268
+Right-clicking on elements in the Outline will in many cases open a context
+ menu that will allow for direct modification of those elements.
+ For example, with citations, the context menu allows you to open the citation
+ dialog and to modify the citation.
+ Right-clicking a change will allow you to accept or reject it.
+ And so on.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1414654397 1302961348
+The `Filter' field at the top allows you to restrict which entries appear
+ in the Outline.
+ For example, if you are displaying the list of Labels and References and
+ wish to see only references to subsections, you can enter the text 
+\begin_inset Quotes eld
+\end_inset
+
+sub:
+\begin_inset Quotes erd
+\end_inset
+
+ in the filter, and only entries containing that text will be displayed.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1414654397 1302961396
+At the bottom of the outline are several buttons and the like that allow
+ you further to control the display.
+ 
+\change_unchanged
+The 
 \family sans
 Sort
 \family default
- option sorts the current list, and the 
+ option sorts the current list
+\change_inserted 1414654397 1302961441
+ alphabetically.
+ Otherwise, the elements appear in the order in which they occur in the
+ document.
+\change_deleted 1414654397 1302961448
+, and t
+\change_inserted 1414654397 1302961449
+T
+\change_unchanged
+he 
 \family sans
 Keep
 \family default
@@ -1547,9 +1702,24 @@ Keep
 \end_inset
 
 3.
+
+\change_inserted 1414654397 1302961566
+ Finally, the slider at the left can be used to open the Outline to a given
+ 
+\begin_inset Quotes eld
+\end_inset
+
+depth
+\begin_inset Quotes erd
+\end_inset
+
+.
+ It is best just to experiment with it to see how it works.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 1414654397 1302960914
 With the buttons 
 \begin_inset space \space{}
 \end_inset
@@ -1582,9 +1752,64 @@ With the buttons
 \begin_inset space ~
 \end_inset
 
- at the bottom of the outline window you can change the position of sections
- in your document.
- So you can for example move section
+ at the bottom of the outline window you can 
+\change_inserted 1414654397 1302961517
+The 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Graphics
+	filename /cvs/lyx-devel/trunk/lib/images/reload.png
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+button refreshes the TOC (though this should not usually be necessary).
+ Next to it are buttons that allow you to 
+\change_unchanged
+change the position of sections in your document.
+ 
+\change_inserted 1414654397 1302960951
+The 
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../images/down.png
+	scale 85
+	groupId toolbarbuttons
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+ and 
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../images/up.png
+	scale 85
+	groupId toolbarbuttons
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+ buttons move sections up and down in the document.
+ 
+\change_unchanged
+So, for example, you can move section
 \begin_inset space ~
 \end_inset
 
@@ -1592,7 +1817,15 @@ With the buttons
 \begin_inset space ~
 \end_inset
 
-2.4.
+2.4
+\change_inserted 1414654397 1302960981
+ or after section
+\begin_inset space ~
+\end_inset
+
+2.6
+\change_unchanged
+.
  LyX will then automatically renumber the sections to the new order.
  With the buttons 
 \begin_inset Graphics
@@ -1610,7 +1843,11 @@ With the buttons
 
 \end_inset
 
- or the corresponding key bindings 
+ 
+\change_inserted 1414654397 1302960990
+(
+\change_unchanged
+or the corresponding key bindings 
 \family sans
 Tab
 \family default
@@ -1618,12 +1855,12 @@ Tab
 \family sans
 Shift-Tab
 \family default
- you can change the sectioning level of sections.
+) you can change the level of sections.
  So you can for example make section
 \begin_inset space ~
 \end_inset
 
-2.5 to chapter
+2.5 chapter
 \begin_inset space ~
 \end_inset
 
@@ -1635,20 +1872,29 @@ Shift-Tab
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 1414654397 1302960144
 The toolbar button 
 \begin_inset Info
 type  "icon"
 arg   "bookmark-goto 0"
 \end_inset
 
- jumps to the position in the document where you recently changed something.
- This is for example useful when you have a large document and navigated
- or scrolled to another document part to look for something, and want to
- go back to your last editing position.
+ (
+\family sans
+Navigate\SpecialChar \menuseparator
+Bookmarks\SpecialChar \menuseparator
+NavigateBack
+\family default
+) jumps to the position in the document where you recently changed something.
+ This is useful when you have a large document and navigated or scrolled
+ to another document part to look for something, and want to go back to
+ your last editing position.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
-Input / Word Completion
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Input-Completion"
@@ -1697,7 +1943,7 @@ status collapsed
 
 \end_inset
 
-
+Input / Word Completion
 \end_layout
 
 \begin_layout Standard
