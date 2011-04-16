@@ -19,7 +19,7 @@ The following programs are needed by the testing framework:
          be built before running the tests
 - wmctrl
 - pcregrep
-- Tcl/Tk
+- Tcl/Tk (wish8.5)
 
 
 USAGE
@@ -68,3 +68,7 @@ the condition we're waiting for).
 Allow for tests with multiple LyX instances, e.g., for copy&paste
 across LyX instances, or multiple applications, i.e., for testing
 the interaction between LyX and other applications.
+
+The modified xvkbd forces the focus on the specified target window
+(for safety reasons).  Allow for a temporary disable of this within
+the scripts, whenever we need to interact with a pop-up dialog.
