@@ -292,7 +292,7 @@ def main(args):
 
     # Create the archive
     try:
-        if os.name == 'nt':
+        if makezip:
             zip = zipfile.ZipFile(ar_name, "w", zipfile.ZIP_DEFLATED)
             for file in incfiles:
                 zip.write(file)
