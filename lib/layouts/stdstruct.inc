@@ -25,7 +25,7 @@ Style Abstract
 	Align                 Block
 	LabelType             Centered_Top_Environment
 	LabelString           "Abstract"
-	LabelBottomSep    0.5
+	LabelBottomSep        0.5
 	Font
 	  Size                Small
 	EndFont
@@ -44,7 +44,7 @@ Style Abstract
 			padding-top: 1ex;
 		}
 		div.abstract_label {
-			font-weight: bold;	
+			font-weight: bold;
 		}
 	EndHTMLStyle
 End

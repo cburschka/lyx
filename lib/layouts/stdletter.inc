@@ -128,4 +128,3 @@ Style Telephone
 	LatexName             thispagestyle{firstpage}\telephone
 	LabelString           "Telephone:"
 End
-

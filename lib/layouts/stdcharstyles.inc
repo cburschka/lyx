@@ -12,4 +12,3 @@ InsetLayout Flex
 	  Color               error
 	EndFont
 End
-

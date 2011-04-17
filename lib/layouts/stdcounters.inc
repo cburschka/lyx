@@ -6,7 +6,7 @@
 
 Format 35
 Counter part
-	LabelString	         "\Roman{part}"
+	LabelString          "\Roman{part}"
 	PrettyFormat         "Part \Roman{part}"
 End
 

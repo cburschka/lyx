@@ -1,4 +1,4 @@
-# The special "LyXList". Separated out for inclusion where the 
+# The special "LyXList". Separated out for inclusion where the
 # whole of stdlist.inc is not needed.
 
 Format 35

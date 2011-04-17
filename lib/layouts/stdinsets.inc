@@ -23,10 +23,10 @@ InsetLayout Marginal
 	NeedProtect           true
 	HTMLStyle
 		div.marginal {
-			border: 2px solid black; 
-			padding: 1ex; 
-			margin: 1ex; 
-			background-color: #F0F0F0; 
+			border: 2px solid black;
+			padding: 1ex;
+			margin: 1ex;
+			background-color: #F0F0F0;
 			float:right;
 			font-size: small;
 			font-weight: medium;
@@ -58,8 +58,8 @@ InsetLayout Foot
 			font-weight: bold;
 			text-decoration: underline;
 		}
-		div.foot { 
-			display: inline; 
+		div.foot {
+			display: inline;
 			font-size: small;
 			font-weight: medium;
 			font-family: serif;
@@ -67,9 +67,9 @@ InsetLayout Foot
 			font-style: normal;
 		}
 		div.foot_inner { display: none; }
-		div.foot:hover div.foot_inner { 
-			display: block; 
-			border: 1px double black; 
+		div.foot:hover div.foot_inner {
+			display: block;
+			border: 1px double black;
 			margin: 0em 1em;
 			padding: 1em;
 		}
@@ -122,9 +122,9 @@ InsetLayout Note:Greyedout
 	MultiPar              true
 	Display               false
 	HTMLStyle
-		div.note_greyedout { 
+		div.note_greyedout {
 			display: inline;
-			color: #A0A0A0; 
+			color: #A0A0A0;
 			padding-left: 1ex;
 			padding-right: 1ex;
 		}
@@ -232,9 +232,9 @@ InsetLayout Box:Shaded
 	CopyStyle Box
 	BgColor shaded
 	HTMLStyle
-		div.Shaded { 
-			background-color: gray; 
-			padding: 0.5ex; 
+		div.Shaded {
+			background-color: gray;
+			padding: 0.5ex;
 		}
 	EndHTMLStyle
 End
@@ -242,9 +242,9 @@ End
 InsetLayout Box:Boxed
 	CopyStyle Box
 	HTMLStyle
-		div.Boxed { 
-			border: solid thick black; 
-			padding: 0.5ex; 
+		div.Boxed {
+			border: solid thick black;
+			padding: 0.5ex;
 		}
 	EndHTMLStyle
 End
@@ -252,9 +252,9 @@ End
 InsetLayout Box:Framed
 	CopyStyle Box
 	HTMLStyle
-		div.Framed { 
-			border: solid thick black; 
-			padding: 0.5ex; 
+		div.Framed {
+			border: solid thick black;
+			padding: 0.5ex;
 		}
 	EndHTMLStyle
 End
@@ -262,9 +262,9 @@ End
 InsetLayout Box:ovalbox
 	CopyStyle Box
 	HTMLStyle
-		div.ovalbox { 
-			border: groove medium black; 
-			padding: 0.5ex; 
+		div.ovalbox {
+			border: groove medium black;
+			padding: 0.5ex;
 		}
 	EndHTMLStyle
 End
@@ -272,9 +272,9 @@ End
 InsetLayout Box:Ovalbox
 	CopyStyle Box
 	HTMLStyle
-		div.Ovalbox { 
-			border: ridge thick black; 
-			padding: 0.5ex; 
+		div.Ovalbox {
+			border: ridge thick black;
+			padding: 0.5ex;
 		}
 	EndHTMLStyle
 End
@@ -289,9 +289,9 @@ End
 InsetLayout Box:Doublebox
 	CopyStyle Box
 	HTMLStyle
-		div.Doublebox { 
-			border: double thick black; 
-			padding: 0.5ex; 
+		div.Doublebox {
+			border: double thick black;
+			padding: 0.5ex;
 		}
 	EndHTMLStyle
 End
@@ -318,7 +318,7 @@ InsetLayout Wrap
 	MultiPar              true
 	RefPrefix             wrap
 	HTMLStyle
-		div.wrap { 
+		div.wrap {
 			float: right;
 			border: 2px solid black;
 			padding: 1ex;
@@ -367,8 +367,8 @@ InsetLayout Info
 	HTMLStyle
 		span.info { font-family: sans-serif; }
 	EndHTMLStyle
-	HTMLTag            span
-	MultiPar           false
+	HTMLTag               span
+	MultiPar              false
 End
 
 InsetLayout Info:menu
@@ -382,7 +382,7 @@ InsetLayout Info:menu
 	Font
 	  Family              sans
 	EndFont
-	HTMLAttr          "class='info menu'"
+	HTMLAttr              "class='info menu'"
 	HTMLStyle
 		span.menu { font-family: sans-serif; }
 	EndHTMLStyle
@@ -399,7 +399,7 @@ InsetLayout Info:shortcut
 	Font
 	  Family              sans
 	EndFont
-	HTMLAttr          "class='info shortcut'"
+	HTMLAttr              "class='info shortcut'"
 	HTMLStyle
 		span.shortcut { font-family: sans-serif; }
 	EndHTMLStyle
@@ -416,7 +416,7 @@ InsetLayout Info:shortcuts
 	Font
 	  Family              sans
 	EndFont
-	HTMLAttr          "class='info shortcut'"
+	HTMLAttr              "class='info shortcut'"
 	HTMLStyle
 		span.shortcuts { font-family: sans-serif; }
 	EndHTMLStyle
