@@ -70,30 +70,10 @@ End
 # Customisable LyX List
 # ---------------------
 
-# We expect this already to be defined, but there may be some classes
-# that do not include stdlists.inc or do not declare Labeling. So we
-# have copied the info from stdlists.inc.
-# To make sure that we are starting fresh, we first clear everything.
-NoStyle Labeling
+Input stdlyxlist.inc
 
 Style Labeling
-	# copied from stdlists.inc
-	Category              List
 	LatexName             elabeling
-	OptionalArgs          1
-	Margin                Manual
-	LatexType             List_Environment
-	NextNoindent          1
-	LabelSep              xxx
-	ParSkip               0.4
-	TopSep                0.7
-	BottomSep             0.7
-	ParSep                0.5
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Manual
-	LabelString           "00.00.0000"
-
 	# FIXME This should probably be defined using \newlist instead
 	Preamble
 	% labeling-like list based on enumitem's description list with
@@ -104,24 +84,6 @@ Style Labeling
 				leftmargin=\lyxlabelwidth,#1]}
 		{\end{description}}
 	EndPreamble
-
-	HTMLTag               ol
-	HTMLAttr              class='lyxlist'
-	HTMLItem              li
-	HTMLLabel             span
-	HTMLLabelAttr         class='lyxlist'
-	HTMLStyle
-		ol.lyxlist {
-			list-style-type: none;
-		}
-		li.labeling_item {
-			text-indent: -5em;
-			margin-left: 5em;
-		}
-		span.lyxlist {
-			margin-right: 1em;
-		}
-	EndHTMLStyle
 End
 
 
