@@ -19,7 +19,7 @@ ClassOptions
 	Other          "noae"
 End
 
-Preamble
+AddToPreamble
 	<<echo=F>>=
 	  if(exists("ls.enc")) options(encoding=ls.enc)
 	@
