@@ -68,8 +68,14 @@ End
 # Customisable LyX List
 # ---------------------
 
+# We expect this already to be defined, but there may be some classes
+# that do not include stdlists.inc or do not declare Labeling. So we
+# have copied the info from stdlists.inc.
+# To make sure that we are starting fresh, we first clear everything.
+NoStyle Labeling
+
 Style Labeling
-        # verbatim insert definition of List environment, 
+	# verbatim insert definition of List environment, 
 	# The KOMA script classes replace List with Labeling, 
 	# this leads to an error with "CopyStyle List"!
 	Category              List
@@ -87,17 +93,17 @@ Style Labeling
 	LabelString           "00.00.0000"
 	# en of verbatim copy
 	
-        LatexName             elabeling
-        OptionalArgs          1
-        Preamble
+	LatexName             elabeling
+	OptionalArgs          1
+	Preamble
 	% labeling-like list based on enumitem's description list with
 	% mandatory second argument (label-pattern):
-	\newenvironment{elabeling}[2][]%
-          {\settowidth{\lyxlabelwidth}{#2}
-           \begin{description}[font=\normalfont,style=sameline,
-			       leftmargin=\lyxlabelwidth,#1]}
-          {\end{description}}
-        EndPreamble
+		\newenvironment{elabeling}[2][]%
+		{\settowidth{\lyxlabelwidth}{#2}
+			\begin{description}[font=\normalfont,style=sameline,
+				leftmargin=\lyxlabelwidth,#1]}
+		{\end{description}}
+	EndPreamble
 End
 
 
