@@ -1437,6 +1437,7 @@ dist_layouts_DATA =\
 	layouts/stdlayouts.inc \
 	layouts/stdletter.inc \
 	layouts/stdlists.inc \
+	layouts/stdlyxlist.inc \
 	layouts/stdrefprefix.inc \
 	layouts/stdsections.inc \
 	layouts/stdstarsections.inc \
