@@ -47,23 +47,25 @@ AddToPreamble
 	\newlength{\lyxlabelwidth}      % auxiliary length 
 EndPreamble
 
+
 # Customisable Basic Lists
 # ------------------------
 
 # With enumitem, the three standard list environments take an optional
 # argument. See enumitem.pdf_ for possible values.
 
-Style Itemize
+IfStyle Itemize
 	OptionalArgs          1
 End
 
-Style Enumerate
+IfStyle Enumerate
 	OptionalArgs          1
 End
 
-Style Description
+IfStyle Description
 	OptionalArgs          1
 End
+
 
 # Customisable LyX List
 # ---------------------
@@ -75,10 +77,10 @@ End
 NoStyle Labeling
 
 Style Labeling
-	# verbatim insert definition of List environment, 
-	# The KOMA script classes replace List with Labeling, 
-	# this leads to an error with "CopyStyle List"!
+	# copied from stdlists.inc
 	Category              List
+	LatexName             elabeling
+	OptionalArgs          1
 	Margin                Manual
 	LatexType             List_Environment
 	NextNoindent          1
@@ -91,10 +93,8 @@ Style Labeling
 	AlignPossible         Block, Left
 	LabelType             Manual
 	LabelString           "00.00.0000"
-	# en of verbatim copy
-	
-	LatexName             elabeling
-	OptionalArgs          1
+
+	# FIXME This should probably be defined using \newlist instead
 	Preamble
 	% labeling-like list based on enumitem's description list with
 	% mandatory second argument (label-pattern):
@@ -104,6 +104,24 @@ Style Labeling
 				leftmargin=\lyxlabelwidth,#1]}
 		{\end{description}}
 	EndPreamble
+
+	HTMLTag               ol
+	HTMLAttr              class='lyxlist'
+	HTMLItem              li
+	HTMLLabel             span
+	HTMLLabelAttr         class='lyxlist'
+	HTMLStyle
+		ol.lyxlist {
+			list-style-type: none;
+		}
+		li.labeling_item {
+			text-indent: -5em;
+			margin-left: 5em;
+		}
+		span.lyxlist {
+			margin-right: 1em;
+		}
+	EndHTMLStyle
 End
 
 
