@@ -490,9 +490,15 @@ docstring InsetText::xhtml(XHTMLStream & xs, OutputParams const & runparams) con
 // if so, try to close fonts, etc. 
 // There are probably limits to how well we can do here, though, and we will
 // have to rely upon users not putting footnotes inside noun-type insets.
-docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & runparams,
+docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & rp,
                                   XHTMLOptions opts) const
 {
+	// we will always want to output all our paragraphs when we are
+	// called this way.
+	OutputParams runparams = rp;
+	runparams.par_begin = 0;
+	runparams.par_end = text().paragraphs().size();
+	
 	if (undefined()) {
 		xhtmlParagraphs(text_, buffer(), xs, runparams);
 		return docstring();
