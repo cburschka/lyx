@@ -251,13 +251,21 @@
 #              reprise d'anciens raccourcis abandonnes
 #              pour cause de manque de lettres
 # ------------------------------------------------------------------
-#
+# 17 avril 2011 derniere revue avant 2.0
+#               harmonisation traduction table en tableau
+#               (dans le contexte d'un tableau de donnees)
+#               revue de traductions suite mise en place
+#               layouttranslations, voir les listes
+#               de messagerie
+#               Manuel Fonctionnalites supplementaires:
+#               titre modifi� en 'Options avancees'
+# ------------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-15 10:39+0200\n"
-"PO-Revision-Date: 2011-04-02 18:42+0100\n"
+"POT-Creation-Date: 2011-04-18 12:28+0200\n"
+"PO-Revision-Date: 2011-04-18 08:48+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -5549,14 +5557,14 @@ msgstr "Résumé"
 #: lib/layouts/theorems-ams-extended.module:302
 #: lib/layouts/theorems-ams-extended.module:305
 msgid "Acknowledgement"
-msgstr "Remerciement"
+msgstr "Remerciements"
 
 #: lib/layouts/AEA.layout:100 lib/layouts/egs.layout:546
 #: lib/layouts/svjour.inc:277
 #: lib/layouts/theorems-ams-extended-bytype.module:325
 #: lib/layouts/theorems-ams-extended.module:296
 msgid "Acknowledgement."
-msgstr "Remerciement."
+msgstr "Remerciements."
 
 #: lib/layouts/AEA.layout:105 lib/layouts/IEEEtran.layout:290
 #: lib/layouts/beamer.layout:1057 lib/layouts/elsart.layout:259
@@ -6209,7 +6217,7 @@ msgstr "SousSousSection"
 #: lib/layouts/beamer.layout:46 lib/layouts/egs.layout:168
 #: lib/layouts/powerdot.layout:244 lib/layouts/simplecv.layout:79
 #: lib/layouts/agu_stdlists.inc:13 lib/layouts/db_stdlists.inc:12
-#: lib/layouts/stdlists.inc:12 lib/layouts/enumitem.module:56
+#: lib/layouts/stdlists.inc:13
 msgid "Itemize"
 msgstr "ListePuces"
 
@@ -6217,8 +6225,7 @@ msgstr "ListePuces"
 #: lib/layouts/aastex.layout:86 lib/layouts/apa.layout:380
 #: lib/layouts/beamer.layout:65 lib/layouts/egs.layout:149
 #: lib/layouts/powerdot.layout:269 lib/layouts/agu_stdlists.inc:21
-#: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:34
-#: lib/layouts/enumitem.module:60
+#: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:35
 msgid "Enumerate"
 msgstr "Énumération"
 
@@ -6228,8 +6235,7 @@ msgstr "Énumération"
 #: lib/layouts/paper.layout:101 lib/layouts/scrlettr.layout:17
 #: lib/layouts/scrlttr2.layout:21 lib/layouts/agu_stdlists.inc:29
 #: lib/layouts/db_stdlists.inc:26 lib/layouts/scrclass.inc:36
-#: lib/layouts/stdlists.inc:57 lib/layouts/enumitem.module:64
-#: lib/ui/stdtoolbars.inc:116
+#: lib/layouts/stdlists.inc:58 lib/ui/stdtoolbars.inc:116
 msgid "Description"
 msgstr "Description"
 
@@ -6237,10 +6243,10 @@ msgstr "Description"
 #: lib/layouts/aastex.layout:92 lib/layouts/beamer.layout:47
 #: lib/layouts/beamer.layout:66 lib/layouts/beamer.layout:86
 #: lib/layouts/egs.layout:132 lib/layouts/scrlettr.layout:32
-#: lib/layouts/scrlttr2.layout:37 lib/layouts/stdlists.inc:13
-#: lib/layouts/stdlists.inc:35 lib/layouts/stdlists.inc:58
-#: lib/layouts/stdlists.inc:89 lib/layouts/stdlists.inc:135
-#: lib/layouts/enumitem.module:75 lib/ui/stdtoolbars.inc:115
+#: lib/layouts/scrlttr2.layout:37 lib/layouts/stdlists.inc:14
+#: lib/layouts/stdlists.inc:36 lib/layouts/stdlists.inc:59
+#: lib/layouts/stdlists.inc:89 lib/layouts/stdlyxlist.inc:7
+#: lib/ui/stdtoolbars.inc:115
 msgid "List"
 msgstr "Liste"
 
@@ -6777,7 +6783,7 @@ msgstr "SousParagraphe"
 
 #: lib/layouts/apa.layout:376 lib/layouts/beamer.layout:61
 #: lib/layouts/egs.layout:182 lib/layouts/powerdot.layout:258
-#: lib/layouts/simplecv.layout:93 lib/layouts/stdlists.inc:27
+#: lib/layouts/simplecv.layout:93 lib/layouts/stdlists.inc:28
 msgid "*"
 msgstr "*"
 
@@ -6829,7 +6835,7 @@ msgid "Part*"
 msgstr "Partie*"
 
 #: lib/layouts/beamer.layout:101 lib/layouts/egs.layout:201
-#: lib/layouts/stdlists.inc:73
+#: lib/layouts/stdlists.inc:74
 msgid "MM"
 msgstr "MM"
 
@@ -7737,11 +7743,11 @@ msgstr "En évidence"
 
 #: lib/layouts/ectaart.layout:152
 msgid "Thanks Reference"
-msgstr "Référence à remerciement"
+msgstr "Référence aux remerciements"
 
 #: lib/layouts/ectaart.layout:159
 msgid "Thanks Ref"
-msgstr "Ref. à remerciements"
+msgstr "Ref. aux remerciements"
 
 #: lib/layouts/ectaart.layout:167
 msgid "Internet Addess Ref"
@@ -7765,8 +7771,7 @@ msgstr "Nom"
 msgid "bysame"
 msgstr "du même"
 
-#: lib/layouts/egs.layout:145 lib/layouts/stdlists.inc:102
-#: lib/layouts/enumitem.module:87
+#: lib/layouts/egs.layout:145 lib/layouts/stdlyxlist.inc:20
 msgid "00.00.0000"
 msgstr "00.00.0000"
 
@@ -9128,8 +9133,8 @@ msgid "PACS number:"
 msgstr "Numéro PACS :"
 
 #: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:28
-#: lib/layouts/scrclass.inc:42 lib/layouts/stdlists.inc:88
-#: lib/layouts/enumitem.module:71
+#: lib/layouts/scrclass.inc:42 lib/layouts/stdlyxlist.inc:6
+#: lib/layouts/enumitem.module:75
 msgid "Labeling"
 msgstr "Étiquetage"
 
@@ -9877,11 +9882,11 @@ msgstr "Planche"
 
 #: lib/layouts/aguplus.inc:195
 msgid "Planotable"
-msgstr "PlancheTableau"
+msgstr "Planche de tableaux"
 
 #: lib/layouts/aguplus.inc:207
 msgid "Table Caption"
-msgstr "Légende tableau"
+msgstr "Légende de tableau"
 
 #: lib/layouts/aguplus.inc:217
 msgid "TableCaption"
@@ -10456,7 +10461,7 @@ msgstr ""
 "macros/latex/contrib/enumitem/enumitem.pdf et le fichier exemple de la "
 "distribution LyX."
 
-#: lib/layouts/enumitem.module:109
+#: lib/layouts/enumitem.module:95
 msgid "Enumerate-Resume"
 msgstr "Énumération-reprise"
 
@@ -10811,7 +10816,7 @@ msgid ""
 msgstr ""
 "Définir certains environnements  additionnels de théorèmes pour l'usage des "
 "paquetages de théorèmes AMS. Inclut Critère, Algorithme, Axiome, Condition, "
-"Note, Notation, Résumé, Remerciement, Conclusion, Hypothèse et Cas, "
+"Note, Notation, Résumé, Remerciements, Conclusion, Hypothèse et Cas, "
 "numérotés ou non numérotés. Au contraire du module AMS étendu ordinaire, les "
 "différents types de théorème disponibles ont un compteur séparé (e.g. "
 "critère 1, critère 2, axiome 1, hypothèse 1, critère 3, ..., et non pas "
@@ -10908,7 +10913,7 @@ msgstr "Résumé."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:307
 msgid "Acknowledgement \\theacknowledgement."
-msgstr "Remerciement \\theacknowledgement."
+msgstr "Remerciements \\theacknowledgement."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:322
 #: lib/layouts/theorems-ams-extended.module:293
@@ -10969,7 +10974,7 @@ msgid ""
 msgstr ""
 "Définir certains environnements  additionnels de théorèmes pour l'usage des "
 "paquetages de théorèmes AMS. Inclut Critère, Algorithme, Axiome, Condition, "
-"Note, Notation, Résumé, Remerciement, Conclusion, Fait, Hypothèse, Cas et "
+"Note, Notation, Résumé, Remerciements, Conclusion, Fait, Hypothèse, Cas et "
 "Question, numérotés ou non numérotés."
 
 #: lib/layouts/theorems-ams-extended.module:10
@@ -11009,7 +11014,7 @@ msgstr "Résumé \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:279
 msgid "Acknowledgement \\thetheorem."
-msgstr "Remerciement \\thetheorem."
+msgstr "Remerciements \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:313
 msgid "Conclusion \\thetheorem."
@@ -12184,9 +12189,8 @@ msgid "Insert Short Title|T"
 msgstr "Insérer un titre court|c"
 
 #: lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:355
-#, fuzzy
 msgid "Insert Regular Expression"
-msgstr "Insérer une e&xpression régulière"
+msgstr "Insérer une expression régulière"
 
 #: lib/ui/stdcontext.inc:312 lib/ui/stdcontext.inc:576
 msgid "Accept Change|c"
@@ -13358,7 +13362,7 @@ msgstr "Guide de l'utilisateur|u"
 
 #: lib/ui/stdmenus.inc:571
 msgid "Additional Features|F"
-msgstr "Fonctionnalités supplémentaires|o"
+msgstr "Options avancées|O"
 
 #: lib/ui/stdmenus.inc:572
 msgid "Embedded Objects|O"
@@ -23742,15 +23746,15 @@ msgstr "Chaîne remplacée."
 msgid "%1$d strings have been replaced."
 msgstr "%1$d chaînes remplacées."
 
-#: src/lyxfind.cpp:1366
+#: src/lyxfind.cpp:1367
 msgid "Invalid regular expression!"
 msgstr "Expression régulière invalide !"
 
-#: src/lyxfind.cpp:1371
+#: src/lyxfind.cpp:1372
 msgid "Match not found!"
 msgstr "Chaîne de caractères introuvable !"
 
-#: src/lyxfind.cpp:1375
+#: src/lyxfind.cpp:1376
 msgid "Match found!"
 msgstr "Chaîne de caractères reconnue !"
 
