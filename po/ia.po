@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-04-15 23:31+0200\n"
-"PO-Revision-Date: 2011-04-13 13:29+0200\n"
+"PO-Revision-Date: 2011-04-18 14:02+0200\n"
 "Last-Translator: g.sora <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <g.sora@tiscali.it>\n"
 "Language: ia\n"
@@ -340,7 +340,7 @@ msgstr "Alineamento vertical del contento intra le quadrato"
 #: src/frontends/qt4/ui/MathMatrixUi.ui:167
 #: src/frontends/qt4/ui/TabularUi.ui:210 src/frontends/qt4/ui/TabularUi.ui:371
 msgid "Top"
-msgstr "Alto (Culmine)"
+msgstr "Culmine"
 
 #: src/frontends/qt4/ui/BoxUi.ui:101 src/frontends/qt4/ui/BoxUi.ui:128
 #: src/frontends/qt4/ui/MathMatrixUi.ui:172
@@ -977,7 +977,7 @@ msgstr "Colores de fundo"
 
 #: src/frontends/qt4/ui/ColorUi.ui:176
 msgid "Page:"
-msgstr "Pagina: "
+msgstr "Pagina:"
 
 #: src/frontends/qt4/ui/ColorUi.ui:237
 msgid "Shaded boxes:"
@@ -993,7 +993,7 @@ msgstr "&Revisiones retro"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:83
 msgid "&Between revisions"
-msgstr "In&ter revisiones:"
+msgstr "In&ter revisiones"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:96
 msgid "Old:"
@@ -1046,7 +1046,7 @@ msgstr "Codice TeX: "
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:167
 msgid "Match delimiter types"
-msgstr "Corresponde typos de delimitator "
+msgstr "Corresponde typos de delimitator"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:170
 msgid "&Keep matched"
@@ -1771,7 +1771,7 @@ msgstr "&Protege:"
 #: src/frontends/qt4/ui/HSpaceUi.ui:133 src/frontends/qt4/GuiHSpace.cpp:207
 #: src/frontends/qt4/GuiHSpace.cpp:213
 msgid "Insert the spacing even after a line break"
-msgstr "Inserta le inter-distantia anque post un interruption de linea."
+msgstr "Inserta le inter-distantia anque post un interruption de linea"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:19
 #: src/frontends/qt4/ui/HyperlinkUi.ui:32 lib/layouts/scrlttr2.layout:207
@@ -1861,7 +1861,7 @@ msgstr "Sublinea spatios in exito generate"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:186
 msgid "&Mark spaces in output"
-msgstr "&Evidentia spatios in exito."
+msgstr "&Evidentia spatios in exito"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:201
 msgid "Show LaTeX preview"
@@ -2113,11 +2113,11 @@ msgstr "Dis&placiamento:"
 
 #: src/frontends/qt4/ui/LineUi.ui:35
 msgid "Value of the vertical line offset."
-msgstr "Valor del displaciamento de linea vertical"
+msgstr "Valor del displaciamento de linea vertical."
 
 #: src/frontends/qt4/ui/LineUi.ui:71
 msgid "Value of the line width."
-msgstr "Largessa del linea"
+msgstr "Largessa del linea."
 
 #: src/frontends/qt4/ui/LineUi.ui:94
 msgid "&Thickness:"
@@ -2129,7 +2129,7 @@ msgstr "Valor de spissor del linea."
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:49
 msgid "Input here the listings parameters"
-msgstr "Inserta ci le parametros per le listar."
+msgstr "Inserta ci le parametros per le listar"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:67
 #: src/frontends/qt4/ui/ListingsUi.ui:477
@@ -2175,7 +2175,7 @@ msgstr "Specifica le placiamento (htbp) del listar flottante"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:78
 msgid "Line numbering"
-msgstr "&Numeration de linea"
+msgstr "Numeration de linea"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:84
 msgid "&Side:"
@@ -2216,7 +2216,7 @@ msgstr "Dimension basic del font"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:231
 msgid "Font Famil&y:"
-msgstr "Familia de font"
+msgstr "Famil&ia de font"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:252
 msgid "The content's base font style"
@@ -2363,7 +2363,7 @@ msgstr "Va al proxime message de error."
 
 #: src/frontends/qt4/ui/LogUi.ui:150
 msgid "Next &Error"
-msgstr "&Error proxime."
+msgstr "&Error proxime"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:28
 msgid "Use the margin settings provided by the document class"
@@ -3105,7 +3105,7 @@ msgstr ""
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:228
 msgid "Sho&w popup without delay for non-unique completions"
 msgstr ""
-"&Monstra le menu de popup sin retardo per consilios a completamento non unic."
+"&Monstra le menu de popup sin retardo per consilios a completamento non unic"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:235
 msgid "Long completions are cut-off and shown with \"...\"."
@@ -3705,7 +3705,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:151
 msgid "Forward search"
-msgstr "Cerca avante"
+msgstr "Recerca avante"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:171
 msgid "DV&I command:"
@@ -3864,7 +3864,7 @@ msgstr "Fo&rmato de papiro:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:279
 msgid "Any other options you'd like to use with the printer command."
-msgstr "Ulle altere optiones de usar con le commando de imprimer"
+msgstr "Ulle altere optiones de usar con le commando de imprimer."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:282
 msgid "E&xtra options:"
@@ -3906,7 +3906,7 @@ msgstr "Sans seri&f (sin gratias):"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:107
 msgid "T&ypewriter:"
-msgstr "Mono-spa&tio (machina de scriber):"
+msgstr "Mono-spa&tio:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:117
 msgid "R&oman:"
@@ -4550,7 +4550,7 @@ msgstr "Ca&tegoria:"
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:116
 msgid "Select this to display all available characters at once"
-msgstr "Selige iste per monstrar omne characteres disponibile in un sol vice."
+msgstr "Selige iste per monstrar omne characteres disponibile in un sol vice"
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:119
 msgid "&Display all"
@@ -4780,7 +4780,7 @@ msgstr "Repite iste linea como capite pro cata pagina (excepte le prime)"
 #: src/frontends/qt4/ui/TabularUi.ui:1352 src/frontends/qt4/GuiToolbar.cpp:362
 #: src/frontends/qt4/GuiToolbar.cpp:371
 msgid "on"
-msgstr "activate"
+msgstr "activate (on)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1215
 #: src/frontends/qt4/ui/TabularUi.ui:1222
@@ -6149,7 +6149,7 @@ msgstr "Affiliation alternative:"
 
 #: lib/layouts/aastex.layout:305
 msgid "altaffilmark"
-msgstr "Nota affiliazione alt."
+msgstr "Nota affiliation alt."
 
 #: lib/layouts/aastex.layout:309
 msgid "altaffiliation mark"
@@ -6581,7 +6581,7 @@ msgstr "Photogramma simple"
 
 #: lib/layouts/beamer.layout:289
 msgid "Frame (no head/foot/sidebars)"
-msgstr "Photogramma semplice "
+msgstr "Photogramma semplice"
 
 #: lib/layouts/beamer.layout:310
 msgid "AgainFrame"
@@ -6665,7 +6665,7 @@ msgstr "Revela"
 
 #: lib/layouts/beamer.layout:608
 msgid "Uncovered on slides"
-msgstr "Revelate sur diapositivas "
+msgstr "Revelate sur diapositivas"
 
 #: lib/layouts/beamer.layout:623
 msgid "Only"
@@ -7279,7 +7279,7 @@ msgstr "IhrZeichen"
 #: lib/layouts/dinbrief.layout:275 lib/layouts/g-brief.layout:110
 #: lib/layouts/g-brief2.layout:779
 msgid "YourMail"
-msgstr "Tu posta"
+msgstr "Vostre posta"
 
 #: lib/layouts/dinbrief.layout:280
 msgid "IhrSchreiben"
@@ -7559,7 +7559,7 @@ msgstr "Theorema \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:304
 msgid "PROOF."
-msgstr "PROVA."
+msgstr "Demonstration."
 
 #: lib/layouts/elsart.layout:318
 msgid "Lemma \\arabic{theorem}"
@@ -9192,7 +9192,7 @@ msgstr "Instituto #"
 
 #: lib/layouts/tufte-book.layout:124
 msgid "Sidenote"
-msgstr "Nota a lato"
+msgstr "Nota a latere"
 
 #: lib/layouts/tufte-book.layout:129
 msgid "sidenote"
@@ -9579,7 +9579,7 @@ msgstr "Didascalia tabella"
 
 #: lib/layouts/aguplus.inc:217
 msgid "TableCaption"
-msgstr "Didascalia tabella:"
+msgstr "Didascalia tabella"
 
 #: lib/layouts/amsdefs.inc:138
 msgid "Current Address"
@@ -9788,7 +9788,7 @@ msgstr "INDEFINITE"
 
 #: lib/layouts/stdciteformats.inc:9
 msgid "pp."
-msgstr "pp. "
+msgstr "pp."
 
 #: lib/layouts/stdciteformats.inc:10
 msgid "ed."
@@ -11084,7 +11084,7 @@ msgstr "Norvegiano"
 
 #: lib/languages:607
 msgid "Norwegian (Nynorsk)"
-msgstr "Norvegiano Nynorsk "
+msgstr "Norvegiano Nynorsk"
 
 #: lib/languages:632
 msgid "Polish"
@@ -11156,7 +11156,7 @@ msgstr "Ucrainiano"
 
 #: lib/languages:810
 msgid "Upper Sorbian"
-msgstr "Alto Sorbiano "
+msgstr "Alto Sorbiano"
 
 #: lib/languages:828
 msgid "Vietnamese"
@@ -11164,7 +11164,7 @@ msgstr "Vietnamese"
 
 #: lib/languages:837
 msgid "Welsh"
-msgstr "Gallese "
+msgstr "Gallese"
 
 #: lib/encodings:14
 msgid "Unicode (utf8)"
@@ -11360,7 +11360,7 @@ msgstr "ASCII"
 
 #: lib/ui/stdcontext.inc:30 lib/ui/stdmenus.inc:425
 msgid "Array Environment|y"
-msgstr "Contexto vector |v"
+msgstr "Contexto vector|v"
 
 #: lib/ui/stdcontext.inc:31 lib/ui/stdmenus.inc:426
 msgid "Cases Environment|C"
@@ -11464,11 +11464,11 @@ msgstr "Adde linea in basso|b"
 
 #: lib/ui/stdcontext.inc:67
 msgid "Delete Line Above|v"
-msgstr "Elimina linea in alto|m"
+msgstr "Dele linea in alto|m"
 
 #: lib/ui/stdcontext.inc:68
 msgid "Delete Line Below|w"
-msgstr "Elimina linea in basso|n"
+msgstr "Dele linea in basso|n"
 
 #: lib/ui/stdcontext.inc:70 lib/ui/stdmenus.inc:234
 msgid "Add Line to Left"
@@ -11693,7 +11693,7 @@ msgstr "Completamento horizontal (punctos)|p"
 
 #: lib/ui/stdcontext.inc:213
 msgid "Horizontal Fill (Rule)|R"
-msgstr "Completamento horizontal (linea)|r"
+msgstr "Completamento horizontal (regula)|r"
 
 #: lib/ui/stdcontext.inc:214
 msgid "Horizontal Fill (Left Arrow)|L"
@@ -11825,7 +11825,7 @@ msgstr "Colla"
 
 #: lib/ui/stdcontext.inc:297 lib/ui/stdmenus.inc:105
 msgid "Paste Recent|e"
-msgstr "Colla recente |e"
+msgstr "Colla recente|e"
 
 #: lib/ui/stdcontext.inc:299
 msgid "Jump Back to Saved Bookmark|B"
@@ -11833,7 +11833,7 @@ msgstr "Vade retro a marcator salveguardate|V"
 
 #: lib/ui/stdcontext.inc:300 lib/ui/stdmenus.inc:528
 msgid "Forward search|F"
-msgstr "Recerca avante |v"
+msgstr "Recerca avante|v"
 
 #: lib/ui/stdcontext.inc:302 lib/ui/stdmenus.inc:113
 msgid "Move Paragraph Up|o"
@@ -11864,9 +11864,8 @@ msgid "Insert Short Title|T"
 msgstr "Inserta titulo breve|t"
 
 #: lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:355
-#, fuzzy
 msgid "Insert Regular Expression"
-msgstr "Inserisci espressione re&golare..."
+msgstr "Inserta expression regular"
 
 #: lib/ui/stdcontext.inc:312 lib/ui/stdcontext.inc:576
 msgid "Accept Change|c"
@@ -12015,7 +12014,7 @@ msgstr "Adde linea|A"
 
 #: lib/ui/stdcontext.inc:400 lib/ui/stdmenus.inc:205
 msgid "Delete Row|D"
-msgstr "Dele|D"
+msgstr "Dele linea|D"
 
 #: lib/ui/stdcontext.inc:401 lib/ui/stdmenus.inc:206
 msgid "Copy Row|o"
@@ -12175,7 +12174,7 @@ msgstr "Claude|C"
 
 #: lib/ui/stdmenus.inc:51
 msgid "Close All"
-msgstr "Claude omne|u"
+msgstr "Claude omne"
 
 #: lib/ui/stdmenus.inc:52
 msgid "Save|S"
@@ -12275,7 +12274,7 @@ msgstr "Reface|R"
 
 #: lib/ui/stdmenus.inc:106
 msgid "Paste Special"
-msgstr "Colla special|s"
+msgstr "Colla special"
 
 #: lib/ui/stdmenus.inc:108
 msgid "Select All"
@@ -12287,7 +12286,7 @@ msgstr "Trova e reimplacia (rapide)...|v"
 
 #: lib/ui/stdmenus.inc:111
 msgid "Find & Replace (Advanced)..."
-msgstr "Trova e Reimplacia (avantiate)...|T"
+msgstr "Trova & Reimplacia (avantiate)..."
 
 #: lib/ui/stdmenus.inc:121
 msgid "Table|T"
@@ -12415,7 +12414,7 @@ msgstr "Omne minuscule|i"
 
 #: lib/ui/stdmenus.inc:182
 msgid "Multicolumn|M"
-msgstr "Multi-columna|M"
+msgstr "Multi columna|M"
 
 #: lib/ui/stdmenus.inc:183
 msgid "Multirow|u"
@@ -12467,7 +12466,7 @@ msgstr "Cambia typo de limites|y"
 
 #: lib/ui/stdmenus.inc:219
 msgid "Macro Definition"
-msgstr "Definition de macro|m"
+msgstr "Definition de macro"
 
 #: lib/ui/stdmenus.inc:221
 msgid "Change Formula Type|F"
@@ -12479,11 +12478,11 @@ msgstr "Stilo de texto|t"
 
 #: lib/ui/stdmenus.inc:225
 msgid "Use Computer Algebra System|S"
-msgstr "Usa systema de algebra de computator |s"
+msgstr "Usa systema de algebra de computator|s"
 
 #: lib/ui/stdmenus.inc:229
 msgid "Add Line Above|A"
-msgstr "Adde linea in alto"
+msgstr "Adde linea in alto|A"
 
 #: lib/ui/stdmenus.inc:231
 msgid "Delete Line Above|D"
@@ -12507,7 +12506,7 @@ msgstr "Predefinite|t"
 
 #: lib/ui/stdmenus.inc:256
 msgid "Display|D"
-msgstr "Monstra |M"
+msgstr "Monstra|M"
 
 #: lib/ui/stdmenus.inc:257
 msgid "Inline|I"
@@ -12539,7 +12538,7 @@ msgstr "Familia Sans serif (sin gratias) de mathematica|s"
 
 #: lib/ui/stdmenus.inc:269
 msgid "Math Bold Series|B"
-msgstr "Serie grosse de mathematica"
+msgstr "Serie grosse de mathematica|g"
 
 #: lib/ui/stdmenus.inc:271
 msgid "Text Normal Font|T"
@@ -12847,7 +12846,7 @@ msgstr "Tabella inveloppate de texto flottante|T"
 
 #: lib/ui/stdmenus.inc:445
 msgid "Table of Contents|C"
-msgstr "Indice general|g"
+msgstr "Indice general(Tabula de Contentos)|g"
 
 #: lib/ui/stdmenus.inc:448
 msgid "Nomenclature|N"
@@ -12887,7 +12886,7 @@ msgstr "Inserta nove ramo...|I"
 
 #: lib/ui/stdmenus.inc:498
 msgid "Change Tracking|C"
-msgstr "Tracia modificationes|T"
+msgstr "Modifica modo de traciar|t"
 
 #: lib/ui/stdmenus.inc:499
 msgid "Build Program|B"
@@ -13019,7 +13018,7 @@ msgstr "Preferentias...|P"
 
 #: lib/ui/stdmenus.inc:568
 msgid "Introduction|I"
-msgstr "Introduction |I"
+msgstr "Introduction|I"
 
 #: lib/ui/stdmenus.inc:569
 msgid "Tutorial|T"
@@ -13039,7 +13038,7 @@ msgstr "Objectos incorporate|O"
 
 #: lib/ui/stdmenus.inc:574
 msgid "Customization|C"
-msgstr "Personalisation |P"
+msgstr "Personalisation|P"
 
 #: lib/ui/stdmenus.inc:575
 msgid "Shortcuts|S"
@@ -13087,7 +13086,7 @@ msgstr "Nove documento"
 
 #: lib/ui/stdtoolbars.inc:72
 msgid "Open document"
-msgstr "Aperi documento "
+msgstr "Aperi documento"
 
 #: lib/ui/stdtoolbars.inc:73
 msgid "Save document"
@@ -13435,7 +13434,7 @@ msgstr "Commuta pannellos mathematic"
 
 #: lib/ui/stdtoolbars.inc:198
 msgid "Math Macros"
-msgstr "Macro mathematic"
+msgstr "Macros mathematic"
 
 #: lib/ui/stdtoolbars.inc:199
 msgid "Remove last argument"
@@ -13491,7 +13490,7 @@ msgstr "Monstra modificationes in exito"
 
 #: lib/ui/stdtoolbars.inc:221
 msgid "Next change"
-msgstr "Modifica proxime"
+msgstr "Modification proxime"
 
 #: lib/ui/stdtoolbars.inc:222
 msgid "Accept change inside selection"
@@ -13503,7 +13502,7 @@ msgstr "Rejecta modifica intra selection"
 
 #: lib/ui/stdtoolbars.inc:225
 msgid "Merge changes"
-msgstr "Fusiona modificationes..."
+msgstr "Fusiona modificationes"
 
 #: lib/ui/stdtoolbars.inc:226
 msgid "Accept all changes"
@@ -16117,27 +16116,27 @@ msgstr "LaTeX (XeTeX)"
 
 #: lib/configure.py:548
 msgid "Plain text"
-msgstr "Texto simplice"
+msgstr "Texto plan"
 
 #: lib/configure.py:548
 msgid "Plain text|a"
-msgstr "Texto simplice|s"
+msgstr "Texto plan|s"
 
 #: lib/configure.py:549
 msgid "Plain text (pstotext)"
-msgstr "Texto simplice (pstotext)"
+msgstr "Texto plan (pstotext)"
 
 #: lib/configure.py:550
 msgid "Plain text (ps2ascii)"
-msgstr "Texto simplice (ps2ascii)"
+msgstr "Texto plan (ps2ascii)"
 
 #: lib/configure.py:551
 msgid "Plain text (catdvi)"
-msgstr "Texto simplice (catdvi)"
+msgstr "Texto plan (catdvi)"
 
 #: lib/configure.py:552
 msgid "Plain Text, Join Lines"
-msgstr "Texto simplice, uni lineas"
+msgstr "Texto plan, uni lineas"
 
 #: lib/configure.py:555
 msgid "Gnumeric spreadsheet"
@@ -16500,7 +16499,7 @@ msgstr "%1$s non es un documento LyX legibile."
 
 #: src/Buffer.cpp:961
 msgid "Conversion failed"
-msgstr "Conversion fallite"
+msgstr "Conversion falleva"
 
 #: src/Buffer.cpp:962
 #, c-format
@@ -16513,7 +16512,7 @@ msgstr ""
 
 #: src/Buffer.cpp:972
 msgid "Conversion script not found"
-msgstr "Script de conversion non trovate."
+msgstr "Script de conversion non trovate"
 
 #: src/Buffer.cpp:973
 #, c-format
@@ -16705,7 +16704,7 @@ msgstr "On non sape como exportar al formato: %1$s"
 #: src/Buffer.cpp:2016 src/frontends/qt4/GuiView.cpp:3132
 #, c-format
 msgid "Error exporting to format: %1$s."
-msgstr "Error durante que on exportava al formato: %1$s"
+msgstr "Error durante que on exportava al formato: %1$s."
 
 #: src/Buffer.cpp:2099
 #, c-format
@@ -17584,7 +17583,7 @@ msgstr ""
 
 #: src/Converter.cpp:439 src/Format.cpp:320 src/Format.cpp:387
 msgid "Executing command: "
-msgstr "Commando executante:"
+msgstr "Commando executante: "
 
 #: src/Converter.cpp:479
 msgid "Build errors"
@@ -17664,7 +17663,7 @@ msgstr "&Non adde lo"
 #, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
 msgstr ""
-"Le inserto flexibile %1$s non es definite post recargar disposition `%2$s' "
+"Le inserto flexibile %1$s non es definite post recargar disposition `%2$s'."
 
 #: src/CutAndPaste.cpp:686
 #, c-format
@@ -18485,7 +18484,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3265
 msgid "The scrolling speed of the mouse wheel."
-msgstr "Le velocitate de rolar del rota del mus"
+msgstr "Le velocitate de rolar del rota del mus."
 
 #: src/LyXRC.cpp:3270
 msgid "The completion popup delay."
@@ -18539,7 +18538,7 @@ msgstr "Usa \"...\" per abbreviar le completamentos de adjuta longe."
 
 #: src/LyXRC.cpp:3306
 msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
-msgstr "Permitte vias breve de typo TeXmacs, per.ex. => deveni \\Rightarrow"
+msgstr "Permitte vias breve de typo TeXmacs, per.ex. => deveni \\Rightarrow."
 
 #: src/LyXRC.cpp:3310
 #, c-format
@@ -18559,13 +18558,13 @@ msgstr ""
 #: src/LyXRC.cpp:3321
 msgid "Shows a typeset preview of things such as math"
 msgstr ""
-"Monstra un vista preliminar de imprimer de cosas como formulas mathematic."
+"Monstra un vista preliminar de imprimer de cosas como formulas mathematic"
 
 #: src/LyXRC.cpp:3325
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr ""
 "Le equationes in vista preliminar habera etiquettas symbolic \"(#)\" in vice "
-"que numeric."
+"que numeric"
 
 #: src/LyXRC.cpp:3329
 msgid "Scale the preview size to suit."
@@ -18782,7 +18781,7 @@ msgstr ""
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Specifica le commando de papiro al visor DVI (lassa lo vacue o usa \"-paper"
-"\")."
+"\")"
 
 #: src/LyXVC.cpp:86
 #, c-format
@@ -18893,7 +18892,7 @@ msgstr ""
 
 #: src/Text.cpp:947
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr "Non pote typar duo spatios in iste modo. Per favor, lege le Tutorial!"
+msgstr "Non pote typar duo spatios in iste modo. Per favor, lege le Tutorial."
 
 #: src/Text.cpp:1767
 msgid "[Change Tracking] "
@@ -18983,7 +18982,7 @@ msgstr "Modo de editor de regexp"
 
 #: src/Text3.cpp:1287
 msgid "Layout "
-msgstr "Disposition"
+msgstr "Disposition "
 
 #: src/Text3.cpp:1288
 msgid " not known"
@@ -19304,7 +19303,7 @@ msgstr "Salto grande"
 
 #: src/VSpace.cpp:480
 msgid "Vertical fill"
-msgstr "Reimple vertical "
+msgstr "Reimple vertical"
 
 #: src/VSpace.cpp:487
 msgid "protected"
@@ -19464,7 +19463,7 @@ msgstr "Per favor, installa LyX correctemente pro estimar le enorme\n"
 msgid "amount of work other people have done for the LyX project."
 msgstr ""
 "quantitate de travalio que altere personas ha facite e es facente per le "
-"projecto LyX!"
+"projecto LyX."
 
 #: src/frontends/qt4/GuiAbout.cpp:84
 #, c-format
@@ -19625,7 +19624,7 @@ msgstr "Syntaxe: set-color <nomine_lyx> <nomine_X11>"
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Il falleva a fixar le color \"%1$s\" : le color non es definite o non pote "
-"esser re-definite."
+"esser re-definite"
 
 #: src/frontends/qt4/GuiApplication.cpp:1611
 #, c-format
@@ -19714,7 +19713,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiBibtex.cpp:53
 msgid "BibTeX Bibliography"
-msgstr "Bibliographia BibTeX..."
+msgstr "Bibliographia BibTeX"
 
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
@@ -19848,7 +19847,7 @@ msgstr "Il falleva a renominar"
 
 #: src/frontends/qt4/GuiBranches.cpp:186
 msgid "The branch could not be renamed."
-msgstr "Le ramo non poteva esser re-nominate"
+msgstr "Le ramo non poteva esser re-nominate."
 
 #: src/frontends/qt4/GuiChanges.cpp:39
 msgid "Merge Changes"
@@ -21195,7 +21194,7 @@ msgstr "Il falleva a crear via breve"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3000
 msgid "Unknown or invalid LyX function"
-msgstr "Function de LyX incognite o invalide."
+msgstr "Function de LyX incognite o invalide"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3007
 msgid "Invalid or empty key sequence"
@@ -21278,7 +21277,7 @@ msgstr "Nivello de verifica"
 
 #: src/frontends/qt4/GuiProgressView.cpp:83
 msgid "Set"
-msgstr "Fixate"
+msgstr "Fixa"
 
 #: src/frontends/qt4/GuiRef.cpp:44
 msgid "Cross-reference"
@@ -21404,7 +21403,7 @@ msgstr "Tibetano"
 
 #: src/frontends/qt4/GuiSymbols.cpp:78
 msgid "Georgian"
-msgstr "Georgian "
+msgstr "Georgian"
 
 #: src/frontends/qt4/GuiSymbols.cpp:79
 msgid "Hangul Jamo"
@@ -21412,7 +21411,7 @@ msgstr "Hangul Jamo"
 
 #: src/frontends/qt4/GuiSymbols.cpp:80
 msgid "Phonetic Extensions"
-msgstr "Extensiones Phonetic "
+msgstr "Extensiones Phonetic"
 
 #: src/frontends/qt4/GuiSymbols.cpp:81
 msgid "Latin Extended Additional"
@@ -22065,7 +22064,7 @@ msgstr "Salveguardante omne documentos..."
 
 #: src/frontends/qt4/GuiView.cpp:3312
 msgid "All documents saved."
-msgstr "Omne documentos salveguardate"
+msgstr "Omne documentos salveguardate."
 
 #: src/frontends/qt4/GuiView.cpp:3412
 #, c-format
@@ -22312,7 +22311,7 @@ msgstr "Omne files "
 #: src/frontends/qt4/qt_helpers.cpp:551 src/insets/InsetTOC.cpp:58
 #: src/insets/InsetTOC.cpp:113
 msgid "Table of Contents"
-msgstr "Tabula de contentos"
+msgstr "Indice general (Tabula de contentos)"
 
 #: src/frontends/qt4/qt_helpers.cpp:555
 msgid "List of Graphics"
@@ -22540,7 +22539,7 @@ msgstr "Ramo (%1$s): %2$s"
 
 #: src/insets/InsetBranch.cpp:79
 msgid "Branch: "
-msgstr "Ramo:"
+msgstr "Ramo: "
 
 #: src/insets/InsetBranch.cpp:84
 msgid "Branch (child only): "
@@ -22865,7 +22864,7 @@ msgstr ""
 
 #: src/insets/InsetLabel.cpp:122
 msgid "DUPLICATE: "
-msgstr "DUPLICATE:"
+msgstr "DUPLICATE: "
 
 #: src/insets/InsetLine.cpp:64
 msgid "Horizontal line"
@@ -23001,7 +23000,7 @@ msgstr "Entra alcun cosa como \\color{white}"
 
 #: src/insets/InsetListingsParams.cpp:318
 msgid "Expect a number with an optional * before it"
-msgstr "On expecta un numero con un prefixo * optional "
+msgstr "On expecta un numero con un prefixo * optional"
 
 #: src/insets/InsetListingsParams.cpp:402
 msgid "auto, last or a number"
@@ -23122,7 +23121,7 @@ msgstr "in altere loco"
 
 #: src/insets/InsetRef.cpp:294
 msgid "BROKEN: "
-msgstr "RUINATE:"
+msgstr "RUINATE: "
 
 #: src/insets/InsetRef.cpp:334 src/mathed/InsetMathRef.cpp:225
 msgid "Ref: "
@@ -23382,7 +23381,7 @@ msgstr "Le catena de cerca es vacue"
 
 #: src/lyxfind.cpp:377
 msgid "String found."
-msgstr "Catena trovate"
+msgstr "Catena trovate."
 
 #: src/lyxfind.cpp:379
 msgid "String has been replaced."
@@ -23450,7 +23449,7 @@ msgstr "Nulle linea vertical de deler"
 #: src/mathed/InsetMathGrid.cpp:1511
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
-msgstr "Incognite characteristica del tabella '%1$s'  "
+msgstr "Incognite characteristica del tabella '%1$s'"
 
 #: src/mathed/InsetMathHull.cpp:1271
 msgid "Bad math environment"
@@ -23725,1999 +23724,3 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Usator incognite"
-
-#~ msgid "List of %1$s"
-#~ msgstr "Lista de %1$s"
-
-#~ msgid "%1$s unknown"
-#~ msgstr "%1$s incognite"
-
-#~ msgid "Layout|L"
-#~ msgstr "Disposition|D"
-
-#~ msgid "Documents|D"
-#~ msgstr "Documentos|D"
-
-#~ msgid "New from Template...|T"
-#~ msgstr "Nove ex patrono...|u"
-
-#~ msgid "Revert|R"
-#~ msgstr "Reverte|R"
-
-#~ msgid "Custom...|C"
-#~ msgstr "Personalisate...|z"
-
-#~ msgid "Redo|d"
-#~ msgstr "Re-face|f"
-
-#~ msgid "Cut|C"
-#~ msgstr "Talia|g"
-
-#~ msgid "Copy|o"
-#~ msgstr "Copia"
-
-#~ msgid "Paste|a"
-#~ msgstr "Colla|I"
-
-#~ msgid "Paste External Selection|x"
-#~ msgstr "Colla selection externe|e"
-
-#~ msgid "Find & Replace...|F"
-#~ msgstr "Trova e Reimplacia...|T"
-
-#~ msgid "Tabular|T"
-#~ msgstr "Tabular|b"
-
-#~ msgid "Thesaurus..."
-#~ msgstr "Dictionario lexical...|l"
-
-#~ msgid "Statistics...|i"
-#~ msgstr "Statisticas...|S"
-
-#~ msgid "Change Tracking|g"
-#~ msgstr "Tracia modificationes|d"
-
-#~ msgid "Selection as Lines|L"
-#~ msgstr "Selige como lineas|l"
-
-#~ msgid "Selection as Paragraphs|P"
-#~ msgstr "Selige como paragraphos|p"
-
-#~ msgid "Line Top|T"
-#~ msgstr "Linea in alto|a"
-
-#~ msgid "Line Bottom|B"
-#~ msgstr "Linea in basso|b"
-
-#~ msgid "Line Left|L"
-#~ msgstr "Linea sinistre|s"
-
-#~ msgid "Line Right|R"
-#~ msgstr "Linea dextere|d"
-
-#~ msgid "Alignment|i"
-#~ msgstr "Alineamento|n"
-
-#~ msgid "Delete Row|w"
-#~ msgstr "Dele linea|g"
-
-#~ msgid "Copy Row"
-#~ msgstr "Copia linea"
-
-#~ msgid "Swap Rows"
-#~ msgstr "Excambia lineas"
-
-#~ msgid "Delete Column|D"
-#~ msgstr "Dele columna|E"
-
-#~ msgid "Copy Column"
-#~ msgstr "Copia columna"
-
-#~ msgid "Swap Columns"
-#~ msgstr "Excambia columna"
-
-#~ msgid "Toggle Numbering|N"
-#~ msgstr "Commuta numeration|n"
-
-#~ msgid "Toggle Numbering of Line|u"
-#~ msgstr "Commuta numeration de linea|z"
-
-#~ msgid "Alignment|A"
-#~ msgstr "Alineamento|A"
-
-#~ msgid "Add Row|R"
-#~ msgstr "Adde linea|r"
-
-#~ msgid "Add Column|C"
-#~ msgstr "Adde columna|o"
-
-#~ msgid "Octave"
-#~ msgstr "Octave"
-
-#~ msgid "Maxima"
-#~ msgstr "Maxima"
-
-#~ msgid "Mathematica"
-#~ msgstr "Mathematica"
-
-#~ msgid "Maple, simplify"
-#~ msgstr "Maple, simplify"
-
-#~ msgid "Maple, factor"
-#~ msgstr "Maple, factor"
-
-#~ msgid "Maple, evalm"
-#~ msgstr "Maple, evalm"
-
-#~ msgid "Maple, evalf"
-#~ msgstr "Maple, evalf"
-
-#~ msgid "Eqnarray Environment|q"
-#~ msgstr "Contexto eqnarray|q"
-
-#~ msgid "Align Environment|A"
-#~ msgstr "Contexto align|a"
-
-#~ msgid "AlignAt Environment"
-#~ msgstr "Contexto alignat"
-
-#~ msgid "Flalign Environment|F"
-#~ msgstr "Contexto flalign|f"
-
-#~ msgid "Gather Environment"
-#~ msgstr "Contexto gather"
-
-#~ msgid "Multline Environment"
-#~ msgstr "Contexto multline"
-
-#~ msgid "Special Character|S"
-#~ msgstr "Character special|s"
-
-#~ msgid "Cross-reference...|r"
-#~ msgstr "Referentia cruciate...|R"
-
-#~ msgid "Short Title"
-#~ msgstr "Titulo breve"
-
-#~ msgid "Index Entry|I"
-#~ msgstr "Elemento de indice|I"
-
-#~ msgid "Nomenclature Entry"
-#~ msgstr "Elemento de nomenclatura"
-
-#~ msgid "URL...|U"
-#~ msgstr "URL...|U"
-
-#~ msgid "Lists & TOC|O"
-#~ msgstr "Listas & Indice general|h"
-
-#~ msgid "TeX Code|T"
-#~ msgstr "Codice TeX|T"
-
-#~ msgid "Minipage|p"
-#~ msgstr "Mini-pagina|p"
-
-#~ msgid "Tabular Material...|b"
-#~ msgstr "Material de tabular...|b"
-
-#~ msgid "Floats|a"
-#~ msgstr "Objectos flottante|O"
-
-#~ msgid "Include File...|d"
-#~ msgstr "Include file...|d"
-
-#~ msgid "Insert File|e"
-#~ msgstr "Inserta file|f"
-
-#~ msgid "External Material...|x"
-#~ msgstr "Material externe...|l"
-
-#~ msgid "Hyphenation Point|P"
-#~ msgstr "Puncto de syllabation|u"
-
-#~ msgid "Protected Space|r"
-#~ msgstr "Spatio protegite|e"
-
-#~ msgid "Vertical Space..."
-#~ msgstr "Spaio verticale..."
-
-#~ msgid "Line Break|L"
-#~ msgstr "Interruption de linea|l"
-
-#~ msgid "Protected Dash|D"
-#~ msgstr "Tracto protegite"
-
-#~ msgid "Single Quote|Q"
-#~ msgstr "Virgulettas simplice|V"
-
-#~ msgid "Ordinary Quote|O"
-#~ msgstr "Virgulettas normal|n"
-
-#~ msgid "Horizontal Line"
-#~ msgstr "Linea horizontal"
-
-#~ msgid "Font Change|o"
-#~ msgstr "Cambio font|b"
-
-#~ msgid "Math Normal Font"
-#~ msgstr "Font mathematic normal"
-
-#~ msgid "Math Calligraphic Family"
-#~ msgstr "Familia calligraphic de mathematica"
-
-#~ msgid "Math Fraktur Family"
-#~ msgstr "Familia gothic de mathematica"
-
-#~ msgid "Math Roman Family"
-#~ msgstr "Familia roman de mathematica"
-
-#~ msgid "Math Sans Serif Family"
-#~ msgstr "Familia Sans Serif (sin gratias) de mathematica"
-
-#~ msgid "Math Bold Series"
-#~ msgstr "Serie grosso de mathematica"
-
-#~ msgid "Text Normal Font"
-#~ msgstr "Font normal de texto"
-
-#~ msgid "Floatflt Figure"
-#~ msgstr "Figura floatflt"
-
-#~ msgid "Accept All Changes|A"
-#~ msgstr "Da acceptation a omne modificationes|u"
-
-#~ msgid "Reject All Changes|R"
-#~ msgstr "Rejecta omne modificationes|f"
-
-#~ msgid "Character...|C"
-#~ msgstr "Character ...|C"
-
-#~ msgid "Paragraph...|P"
-#~ msgstr "Paragrapho...|P"
-
-#~ msgid "Document...|D"
-#~ msgstr "Documento...|D"
-
-#~ msgid "Tabular...|T"
-#~ msgstr "Tabular...|b"
-
-#~ msgid "Emphasize Style|E"
-#~ msgstr "Stilo accentuate|e"
-
-#~ msgid "Noun Style|N"
-#~ msgstr "Stilo substantivo|n"
-
-#~ msgid "Bold Style|B"
-#~ msgstr "Stilo grosso|g"
-
-#~ msgid "Decrease Environment Depth|v"
-#~ msgstr "Diminue profunditate de contexto|m"
-
-#~ msgid "Increase Environment Depth|i"
-#~ msgstr "Augmenta profunditate de contexto|u"
-
-#~ msgid "Start Appendix Here|S"
-#~ msgstr "Initia hic appendice|S"
-
-#~ msgid "Update|U"
-#~ msgstr "Actualisa exito|A"
-
-#~ msgid "TeX Information|X"
-#~ msgstr "Informationes TeX|X"
-
-#~ msgid "Go to Bookmark 1|1"
-#~ msgstr "Vade a marcator 1|1"
-
-#~ msgid "Go to Bookmark 2|2"
-#~ msgstr "Vade a marcator 2|2"
-
-#~ msgid "Go to Bookmark 3|3"
-#~ msgstr "Vade a marcator 3|3"
-
-#~ msgid "Go to Bookmark 4|4"
-#~ msgstr "Vade a marcator 4|4"
-
-#~ msgid "Go to Bookmark 5|5"
-#~ msgstr "Vade a marcator 5|5"
-
-#~ msgid "Extended Features|E"
-#~ msgstr "Characteristicas avantiate|C"
-
-#~ msgid "Embedded Objects|m"
-#~ msgstr "Objectos insertate|O"
-
-#~ msgid "Preferences..."
-#~ msgstr "Preferentias..."
-
-#~ msgid "Quit LyX"
-#~ msgstr "Quita LyX"
-
-#~ msgid "%1$d words checked."
-#~ msgstr " %1$d parolas controlate."
-
-#~ msgid "One word checked."
-#~ msgstr "Una parola controlate."
-
-#~ msgid "Spelling check completed"
-#~ msgstr "Controlo orthographic completate"
-
-#~ msgid "&Command:"
-#~ msgstr "&Comando:"
-
-#~ msgid "Search text is empty!"
-#~ msgstr "Il testo di ricerca è vuoto!"
-
-#~ msgid ""
-#~ "Use to define an external program to render tables in plain text output. "
-#~ "E.g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If "
-#~ "\"\" is specified, an internal routine is used."
-#~ msgstr ""
-#~ "Usare questa opzione per definire un programma che restituisca tabelle in "
-#~ "forma di testo semplice. Cioè: \"groff -t -Tlatin1 $$FName\" dove $$FName "
-#~ "è il file di input. Verrà usato un programma interno se invece è stato "
-#~ "specificato \"\"."
-
-#~ msgid "LyX binary not found"
-#~ msgstr "Eseguibile di LyX non trovato"
-
-#~ msgid ""
-#~ "Unable to determine the path to the LyX binary from the command line %1$s"
-#~ msgstr ""
-#~ "Impossibile determinare la locazione dell'eseguibile di LyX dalla linea "
-#~ "di comando %1$s"
-
-#~ msgid ""
-#~ "Unable to determine the system directory having searched\n"
-#~ "\t%1$s\n"
-#~ "Use the '-sysdir' command line parameter or set the environment variable\n"
-#~ "%2$s to the LyX system directory containing the file `chkconfig.ltx'."
-#~ msgstr ""
-#~ "Impossibile individuare la cartella di sistema avendo cercato in\n"
-#~ "\t%1$s\n"
-#~ "Usate il parametro '-sysdir' da linea di comando o impostate la variabile "
-#~ "d'ambiente\n"
-#~ "%2$s alla cartella di sistema di LyX contenente il file `chkconfig.ltx'."
-
-#~ msgid "File not found"
-#~ msgstr "File non trovato"
-
-#~ msgid ""
-#~ "Invalid %1$s switch.\n"
-#~ "Directory %2$s does not contain %3$s."
-#~ msgstr ""
-#~ "Il parametro %1$s non è valido.\n"
-#~ "La cartella %2$s non contiene %3$s."
-
-#~ msgid ""
-#~ "Invalid %1$s environment variable.\n"
-#~ "Directory %2$s does not contain %3$s."
-#~ msgstr ""
-#~ "La variabile d'ambiente %1$s non è valida.\n"
-#~ "La cartella %2$s non contiene %3$s."
-
-#~ msgid ""
-#~ "Invalid %1$s environment variable.\n"
-#~ "%2$s is not a directory."
-#~ msgstr ""
-#~ "La variabile d'ambiente %1$s non è valida.\n"
-#~ "%2$s non è una cartella."
-
-#~ msgid "Directory not found"
-#~ msgstr "Cartella non trovata"
-
-#~ msgid "Custom value. Needs spacing type &quot;Custom&quot;."
-#~ msgstr ""
-#~ "Valore personalizzato. Necessita spaziatura di tipo \"Personalizzato\"."
-
-#~ msgid "Affilation:"
-#~ msgstr "Affiliazione:"
-
-#~ msgid "varGamma"
-#~ msgstr "varGamma"
-
-#~ msgid "varDelta"
-#~ msgstr "varDelta"
-
-#~ msgid "varTheta"
-#~ msgstr "varTheta"
-
-#~ msgid "varLambda"
-#~ msgstr "varLambda"
-
-#~ msgid "varXi"
-#~ msgstr "varXi"
-
-#~ msgid "varPi"
-#~ msgstr "varPi"
-
-#~ msgid "varSigma"
-#~ msgstr "varSigma"
-
-#~ msgid "varUpsilon"
-#~ msgstr "varUpsilon"
-
-#~ msgid "varPhi"
-#~ msgstr "varPhi"
-
-#~ msgid "varPsi"
-#~ msgstr "varPsi"
-
-#~ msgid "varOmega"
-#~ msgstr "varOmega"
-
-#~ msgid "Group labels by prefix (e.g. &quot;sec:&quot;)"
-#~ msgstr "Raggruppa le etichette per prefisso (p.es. \"sec:\")"
-
-#~ msgid "DockWidget"
-#~ msgstr "DockWidget"
-
-#~ msgid "X; "
-#~ msgstr "X; "
-
-#~ msgid "value of the optional vertical offset"
-#~ msgstr "Valore dello sfalsamento verticale opzionale"
-
-#~ msgid "comment"
-#~ msgstr "Commento"
-
-#~ msgid "greyedout"
-#~ msgstr "Sbiadita"
-
-#~ msgid "Open Target...|O"
-#~ msgstr "Apri link|A"
-
-#~ msgid "&Use Defaults"
-#~ msgstr "Classi &predefinite"
-
-#~ msgid "Note[[InsetNote]]"
-#~ msgstr "Nota"
-
-#~ msgid ""
-#~ "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%"
-#~ "\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]]"
-#~ "[[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages"
-#~ "%[[, %pages%]]}."
-#~ msgstr ""
-#~ "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%"
-#~ "\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]]"
-#~ "[[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages"
-#~ "%[[, %pages%]]}."
-
-#~ msgid "Use the XeTeX processing engine"
-#~ msgstr "Usa XeTeX per la compilazione"
-
-#~ msgid "Use &XeTeX"
-#~ msgstr "Usa &XeTeX"
-
-#~ msgid "Use the babel package for multilingual support"
-#~ msgstr "Usa il pacchetto babel per il supporto multilingua"
-
-#~ msgid "&Use babel"
-#~ msgstr "Usa &babel"
-
-#~ msgid "&Global"
-#~ msgstr "&Globale"
-
-#~ msgid "Flex:Institute"
-#~ msgstr "Istituto"
-
-#~ msgid "Flex:E-Mail"
-#~ msgstr "Email"
-
-#~ msgid "scheme"
-#~ msgstr "schema"
-
-#~ msgid "chart"
-#~ msgstr "diagramma"
-
-#~ msgid "graph"
-#~ msgstr "grafico"
-
-#~ msgid "Chemistry"
-#~ msgstr "Chimica"
-
-#~ msgid "Flex:Alert"
-#~ msgstr "Avviso"
-
-#~ msgid "Flex:Structure"
-#~ msgstr "Struttura"
-
-#~ msgid "Flex:ArticleMode"
-#~ msgstr "Modo articolo"
-
-#~ msgid "Flex:PresentationMode"
-#~ msgstr "Modo presentazione"
-
-#~ msgid "Internet Address Reference"
-#~ msgstr "Rif. posta elettronica"
-
-#~ msgid "Name (First Name)"
-#~ msgstr "Nome"
-
-#~ msgid "Name (Surname)"
-#~ msgstr "Cognome"
-
-#~ msgid "By Same Author (bib)"
-#~ msgstr "Stesso autore (bib)"
-
-#~ msgid "Lowercase"
-#~ msgstr "Minuscolo"
-
-#~ msgid "Marginnote"
-#~ msgstr "Nota a margine"
-
-#~ msgid "AllCaps"
-#~ msgstr "Maiuscolo"
-
-#~ msgid "SmallCaps"
-#~ msgstr "Maiuscoletto"
-
-#~ msgid "Flex:Firstname"
-#~ msgstr "Nome"
-
-#~ msgid "Flex:Fname"
-#~ msgstr "Nome"
-
-#~ msgid "Flex:Surname"
-#~ msgstr "Cognome"
-
-#~ msgid "Flex:Filename"
-#~ msgstr "Nome file"
-
-#~ msgid "Flex:Literal"
-#~ msgstr "Letterale"
-
-#~ msgid "Flex:Emph"
-#~ msgstr "Enfatizzato"
-
-#~ msgid "Flex:Abbrev"
-#~ msgstr "Abbrev"
-
-#~ msgid "Flex:Citation-number"
-#~ msgstr "Numero citazione"
-
-#~ msgid "Flex:Volume"
-#~ msgstr "Volume"
-
-#~ msgid "Flex:Day"
-#~ msgstr "Giorno"
-
-#~ msgid "Flex:Month"
-#~ msgstr "Mese"
-
-#~ msgid "Flex:Year"
-#~ msgstr "Anno"
-
-#~ msgid "Flex:Issue-number"
-#~ msgstr "Numero-edizione"
-
-#~ msgid "Flex:Issue-day"
-#~ msgstr "Giorno-edizione"
-
-#~ msgid "Flex:Issue-months"
-#~ msgstr "Mesi-edizione"
-
-#~ msgid "Flex:ISSN"
-#~ msgstr "ISSN"
-
-#~ msgid "Flex:CODEN"
-#~ msgstr "CODEN"
-
-#~ msgid "Flex:SS-Code"
-#~ msgstr "Codice-SS"
-
-#~ msgid "Flex:SS-Title"
-#~ msgstr "Titolo-SS"
-
-#~ msgid "Flex:CCC-Code"
-#~ msgstr "Codice-CCC"
-
-#~ msgid "Flex:Code"
-#~ msgstr "Codice"
-
-#~ msgid "Flex:Dscr"
-#~ msgstr "Dscr"
-
-#~ msgid "Flex:Keyword"
-#~ msgstr "Parola chiave"
-
-#~ msgid "Flex:Orgdiv"
-#~ msgstr "Orgdiv"
-
-#~ msgid "Flex:Orgname"
-#~ msgstr "Orgname"
-
-#~ msgid "Flex:Street"
-#~ msgstr "Via"
-
-#~ msgid "Flex:City"
-#~ msgstr "Città"
-
-#~ msgid "Flex:State"
-#~ msgstr "Stato"
-
-#~ msgid "Flex:Postcode"
-#~ msgstr "Codice postale"
-
-#~ msgid "Flex:Country"
-#~ msgstr "Paese"
-
-#~ msgid "Flex:Directory"
-#~ msgstr "Cartella"
-
-#~ msgid "Flex:Email"
-#~ msgstr "Email"
-
-#~ msgid "Flex:KeyCombo"
-#~ msgstr "KeyCombo"
-
-#~ msgid "Flex:KeyCap"
-#~ msgstr "KeyCap"
-
-#~ msgid "Flex:GuiMenu"
-#~ msgstr "GuiMenu"
-
-#~ msgid "Flex:GuiMenuItem"
-#~ msgstr "GuiMenuItem"
-
-#~ msgid "Flex:GuiButton"
-#~ msgstr "GuiButton"
-
-#~ msgid "Flex:MenuChoice"
-#~ msgstr "MenuChoice"
-
-#~ msgid "Flex"
-#~ msgstr "Flex"
-
-#~ msgid "Foot"
-#~ msgstr "Nota a piè pagina"
-
-#~ msgid "Note:Comment"
-#~ msgstr "Commento"
-
-#~ msgid "Note:Note"
-#~ msgstr "Nota"
-
-#~ msgid "Note:Greyedout"
-#~ msgstr "Sbiadita"
-
-#~ msgid "Box:Shaded"
-#~ msgstr "Sfondo colorato"
-
-#~ msgid "Wrap"
-#~ msgstr "Cinto"
-
-#~ msgid "Argument"
-#~ msgstr "Argomento"
-
-#~ msgid "Info:menu"
-#~ msgstr "Info:menu"
-
-#~ msgid "Info:shortcut"
-#~ msgstr "Info:scorciatoia"
-
-#~ msgid "Info:shortcuts"
-#~ msgstr "Info:scorciatoie"
-
-#~ msgid "Flex:Endnote"
-#~ msgstr "Note finali"
-
-#~ msgid "Flex:Initial"
-#~ msgstr "Capolettera"
-
-#~ msgid "Flex:Glosse"
-#~ msgstr "Glosse"
-
-#~ msgid "Flex:Tri-Glosse"
-#~ msgstr "Tri-Glosse"
-
-#~ msgid "Flex:Expression"
-#~ msgstr "Espressione"
-
-#~ msgid "Flex:Concepts"
-#~ msgstr "Concetti"
-
-#~ msgid "Flex:Meaning"
-#~ msgstr "Significato"
-
-#~ msgid "Flex:Noun"
-#~ msgstr "Sostantivazione"
-
-#~ msgid "Flex:Strong"
-#~ msgstr "Forte"
-
-#~ msgid "Noweb literate programming"
-#~ msgstr "Programmazione esperta noweb"
-
-#~ msgid "Norsk"
-#~ msgstr "Norvegese"
-
-#~ msgid "Nynorsk"
-#~ msgstr "Neonorvegese"
-
-#~ msgid "file[[scope]]"
-#~ msgstr "del file"
-
-#~ msgid "master document[[scope]]"
-#~ msgstr "del documento padre"
-
-#~ msgid "open files[[scope]]"
-#~ msgstr "dei file aperti"
-
-#~ msgid "manuals[[scope]]"
-#~ msgstr "dei manuali"
-
-#, fuzzy
-#~ msgid "Keywordsr"
-#~ msgstr "Parole chiave"
-
-#~ msgid "Current paragraph"
-#~ msgstr "Paragrafo attuale"
-
-#~ msgid "Current &paragraph"
-#~ msgstr "Paragrafo attua&le"
-
-#~ msgid "A&vailable indices:"
-#~ msgstr "&Rami disponibili:"
-
-#~ msgid "Width:"
-#~ msgstr "Larghezza:"
-
-#~ msgid "&Horiz. Phantom"
-#~ msgstr "Segnaposto &orizzontale"
-
-#~ msgid "&Vert. Phantom"
-#~ msgstr "Segnaposto &verticale"
-
-#~ msgid "Horiz. Phantom"
-#~ msgstr "Segnaposto orizzontale"
-
-#~ msgid "Vert. Phantom"
-#~ msgstr "Segnaposto verticale"
-
-#~ msgid "Successful "
-#~ msgstr "Riuscito/a"
-
-#~ msgid "Error "
-#~ msgstr "Errore "
-
-#~ msgid "All indices"
-#~ msgstr "Tutti gli indici"
-
-#~ msgid "&Ok"
-#~ msgstr "&OK"
-
-#~ msgid "Cust&om:"
-#~ msgstr "Pers&onalizzato:"
-
-#~ msgid ""
-#~ "%1$s is from a newer version of LyX and cannot be converted by the "
-#~ "lyx2lyx script."
-#~ msgstr ""
-#~ "Il file %1$s è stato generato da una versione\n"
-#~ "di LyX più recente e lo script lyx2lyx non può convertirlo."
-
-#~ msgid ""
-#~ "The specified document\n"
-#~ "%1$s\n"
-#~ "could not be read."
-#~ msgstr ""
-#~ "Il documento specificato\n"
-#~ "%1$s\n"
-#~ "non ha potuto essere letto."
-
-#~ msgid "Could not read document"
-#~ msgstr "Non riesco a leggere il documento "
-
-#~ msgid "&Keep it"
-#~ msgstr "&Tienilo"
-
-#~ msgid "Cannot view URL"
-#~ msgstr "Non riesco a mostrare URL"
-
-#~ msgid "Hyperlink"
-#~ msgstr "Ipercollegamento"
-
-#~ msgid "Label"
-#~ msgstr "Etichetta"
-
-#~ msgid "Successful compilation to format: %1$s"
-#~ msgstr "Riuscita compilazione al formato: %1$s"
-
-#~ msgid "Error compiling format: %1$s"
-#~ msgstr "Errore durante la compilazione al formato: %1$s"
-
-#~ msgid "Invisible"
-#~ msgstr "Invisibili"
-
-#~ msgid "Height:"
-#~ msgstr "Altezza:"
-
-#~ msgid "Value of the line height."
-#~ msgstr "Spessore della linea"
-
-#~ msgid "CharStyle:Institute"
-#~ msgstr "Istituto"
-
-#~ msgid "CharStyle:E-Mail"
-#~ msgstr "E-Mail"
-
-#~ msgid "CharStyle:Alert"
-#~ msgstr "Avviso"
-
-#~ msgid "CharStyle:Structure"
-#~ msgstr "Struttura"
-
-#~ msgid "Element:Firstname"
-#~ msgstr "Nome"
-
-#~ msgid "Element:Fname"
-#~ msgstr "Nome"
-
-#~ msgid "Element:Filename"
-#~ msgstr "Nome file"
-
-#~ msgid "Element:Citation-number"
-#~ msgstr "Numero citazione"
-
-#~ msgid "Element:Issue-number"
-#~ msgstr "Numero-edizione"
-
-#~ msgid "Element:Issue-day"
-#~ msgstr "Giorno-edizione"
-
-#~ msgid "Element:Issue-months"
-#~ msgstr "Mesi-edizione"
-
-#~ msgid "Element:SS-Title"
-#~ msgstr "Titolo-SS"
-
-#~ msgid "Element:CCC-Code"
-#~ msgstr "Codice-CCC"
-
-#~ msgid "Element:Postcode"
-#~ msgstr "Codice postale"
-
-#~ msgid "Element:Directory"
-#~ msgstr "Cartella"
-
-#~ msgid "Element:KeyCombo"
-#~ msgstr "KeyCombo"
-
-#~ msgid "Element:GuiMenuItem"
-#~ msgstr "GuiMenuItem"
-
-#~ msgid "Element:GuiButton"
-#~ msgstr "GuiButton"
-
-#~ msgid "Element:MenuChoice"
-#~ msgstr "MenuChoice"
-
-#~ msgid "CharStyle"
-#~ msgstr "Stile"
-
-#~ msgid "Custom:Endnote"
-#~ msgstr "Note finali"
-
-#~ msgid "CharStyle:Initial"
-#~ msgstr "Capolettera"
-
-#~ msgid "Custom:Tri-Glosse"
-#~ msgstr "Tri-Glossa"
-
-#~ msgid "CharStyle:Noun"
-#~ msgstr "Sostantivo"
-
-#~ msgid "CharStyle:Emph"
-#~ msgstr "Enfatizzato"
-
-#~ msgid "CharStyle:Code"
-#~ msgstr "Codice"
-
-#~ msgid "FrmtRef: "
-#~ msgstr "FrmtRef: "
-
-#~ msgid "Glossary term"
-#~ msgstr "Voce di glossario"
-
-#~ msgid "Middle|d"
-#~ msgstr "Centrale|a"
-
-#~ msgid "caption frame"
-#~ msgstr "Didascalia (cornice)"
-
-#~ msgid "top/bottom line"
-#~ msgstr "Linea superiore/inferiore"
-
-#~ msgid "Decimal point:"
-#~ msgstr "Separatore decimale:"
-
-#~ msgid "SyncTeX  for PDF, srcltx for DVI"
-#~ msgstr "SyncTeX  per PDF, srcltx per DVI"
-
-#~ msgid "Output Sync (Resources for Forward/Backward Search)"
-#~ msgstr "Abilita ricerca diretta/inversa"
-
-#~ msgid "Screen &DPI:"
-#~ msgstr "&DPI dello schermo:"
-
-#~ msgid "Textual reference plus <page>"
-#~ msgstr "Riferimento testuale più <pagina>"
-
-#~ msgid "ColorUi"
-#~ msgstr "ColorUi"
-
-#~ msgid "Block ( ERT[{title}] body ):"
-#~ msgstr "Blocco (ERT[{titolo}] corpo):"
-
-#~ msgid "Block ( ERT[{title}] example text ):"
-#~ msgstr "Esempio (ERT[{titolo}] testo):"
-
-#~ msgid "Block ( ERT[{title}] alert text ):"
-#~ msgstr "Avviso (ERT[{titolo}] testo):"
-
-#~ msgid "Publisher ID"
-#~ msgstr "Identificativo editoriale"
-
-#~ msgid "OptArg"
-#~ msgstr "ArgOpz"
-
-#~ msgid "TheoremTemplate"
-#~ msgstr "Modello di teorema"
-
-#~ msgid "Theorem #:"
-#~ msgstr "Teorema #:"
-
-#~ msgid "Lemma #:"
-#~ msgstr "Lemma #:"
-
-#~ msgid "Corollary #:"
-#~ msgstr "Corollario #:"
-
-#~ msgid "Proposition #:"
-#~ msgstr "Proposizione #:"
-
-#~ msgid "Conjecture #:"
-#~ msgstr "Congettura #:"
-
-#~ msgid "Criterion #:"
-#~ msgstr "Criterio #:"
-
-#~ msgid "Fact #:"
-#~ msgstr "Fatto #:"
-
-#~ msgid "Axiom #:"
-#~ msgstr "Assioma #:"
-
-#~ msgid "Definition #:"
-#~ msgstr "Definizione #:"
-
-#~ msgid "Example #:"
-#~ msgstr "Esempio #:"
-
-#~ msgid "Condition #:"
-#~ msgstr "Condizione #:"
-
-#~ msgid "Problem #:"
-#~ msgstr "Problema #:"
-
-#~ msgid "Exercise #:"
-#~ msgstr "Esercizio #:"
-
-#~ msgid "Remark #:"
-#~ msgstr "Osservazione #:"
-
-#~ msgid "Claim #:"
-#~ msgstr "Asserzione #:"
-
-#~ msgid "Note #:"
-#~ msgstr "Nota #:"
-
-#~ msgid "Notation #:"
-#~ msgstr "Notazione #:"
-
-#~ msgid "Case #:"
-#~ msgstr "Caso #:"
-
-#~ msgid "Footernote"
-#~ msgstr "Nota a piè pagina"
-
-#~ msgid "Inter-word Space|w"
-#~ msgstr "Spazio tra parole|p"
-
-#~ msgid "Should I continue asking for overwriting files?"
-#~ msgstr ""
-#~ "Devo continuare a chiedere il permesso prima di sovrascrivere i file?"
-
-#~ msgid "Overwrite all files?"
-#~ msgstr "Sovrascrivo tutti i file?"
-
-#~ msgid "Continue &asking"
-#~ msgstr "&Continua a chiedere"
-
-#~ msgid "Some layouts may not be available."
-#~ msgstr "Alcuni layout potrebbero non essere disponibili."
-
-#~ msgid "Thin space"
-#~ msgstr "Spazio sottile"
-
-#~ msgid "Medium space"
-#~ msgstr "Spazio medio"
-
-#~ msgid "Thick space"
-#~ msgstr "Spazio spesso"
-
-#~ msgid "Negative thin space"
-#~ msgstr "Spazio sottile negativo"
-
-#~ msgid "Negative medium space"
-#~ msgstr "Spazio medio negativo"
-
-#~ msgid "Negative thick space"
-#~ msgstr "Spazio spesso negativo"
-
-#~ msgid "Inter-word space"
-#~ msgstr "Spazio tra parole"
-
-#~ msgid "Date format"
-#~ msgstr "Formato data"
-
-#~ msgid "Unknown buffer info"
-#~ msgstr "Informazione buffer sconosciuta"
-
-#~ msgid "QQuad Space"
-#~ msgstr "Spazio qquad"
-
-#~ msgid "Preview\t"
-#~ msgstr "Anteprima\t"
-
-#~ msgid "Revert to Repository Version|R"
-#~ msgstr "Ripristina la versione del repository|R"
-
-#~ msgid "Options"
-#~ msgstr "Opzioni"
-
-#~ msgid "Find LyX Text"
-#~ msgstr "Trova testo LyX"
-
-#~ msgid "Enter the text to replace in this full-featured LyX editing area"
-#~ msgstr ""
-#~ "Inserire il testo da sostituire in quest'area con piena funzionalità LyX"
-
-#~ msgid "&Replace with..."
-#~ msgstr "Sostituisci &con..."
-
-#~ msgid "Ne&xt"
-#~ msgstr "S&uccessivo"
-
-#~ msgid "Replace and find previous occurrence [Shift+Enter]"
-#~ msgstr "Sostituisci e trova l'occorrenza precedente [Shift+Enter]"
-
-#~ msgid "Pre&vious"
-#~ msgstr "P&recedente"
-
-#~ msgid "&Keep case"
-#~ msgstr "&Mantieni iniziale"
-
-#~ msgid "Enter the text to search for in this full-featured LyX editing area"
-#~ msgstr ""
-#~ "Inserire il testo da cercare in quest'area con piena funzionalità LyX"
-
-#~ msgid "&Find..."
-#~ msgstr "T&rova..."
-
-#~ msgid "Choose one of the pre-arranged regular expressions."
-#~ msgstr "Scegliere una delle espressioni regolari predisposte."
-
-#~ msgid "&Next"
-#~ msgstr "&Successivo"
-
-#~ msgid "Find previous occurrence [Shift+Enter]"
-#~ msgstr "Trova l'occorrenza precedente [Shift+Enter]"
-
-#~ msgid "&Previous"
-#~ msgstr "&Precedente"
-
-#~ msgid "Ch. "
-#~ msgstr "Cap. "
-
-#~ msgid ""
-#~ "The layout file requested by this document,\n"
-#~ "%1$s.layout,\n"
-#~ "is not usable. This is probably because a LaTeX\n"
-#~ "class or style file required by it is not\n"
-#~ "available. See the Customization documentation\n"
-#~ "for more information.\n"
-#~ msgstr ""
-#~ "Il file di layout richiesto da questo documento,\n"
-#~ "%1$s.layout,\n"
-#~ "non è usabile. Probabilmente perché una necessaria\n"
-#~ "classe o stile di LaTeX non è disponibile. Consultare\n"
-#~ "la documentazione per maggiori informazioni.\n"
-
-#~ msgid "LyX will not be able to produce output."
-#~ msgstr "LyX non sarà in grado di produrre alcun risultato."
-
-#~ msgid "Maximum number of words in the initialization string for a new label"
-#~ msgstr ""
-#~ "Massimo numero di parole nella stringa di inizializzazione per una nuova "
-#~ "etichetta."
-
-#~ msgid "Any &word"
-#~ msgstr "Qualsiasi &parola"
-
-#~ msgid ""
-#~ "Shortcut `%1$s' is already bound to:\n"
-#~ "%2$s"
-#~ msgstr ""
-#~ "La scorciatoia `%1$s' è già associata a:\n"
-#~ "%2$s"
-
-#~ msgid "TextLabel"
-#~ msgstr "Etichetta"
-
-#~ msgid "Merge cells"
-#~ msgstr "Unisci celle"
-
-#~ msgid "Bibliography Entry Settings"
-#~ msgstr "Impostazioni voce bibliografica"
-
-#~ msgid "Branch Settings"
-#~ msgstr "Impostazioni ramo"
-
-#~ msgid "Horizontal Space Settings"
-#~ msgstr "Impostazioni spazio orizzontale"
-
-#~ msgid "Table Settings"
-#~ msgstr "Impostazioni tabella"
-
-#~ msgid "Vertical Space Settings"
-#~ msgstr "Impostazioni spazio verticale"
-
-#~ msgid "Language ...|L"
-#~ msgstr "Lingua ...|L"
-
-#~ msgid "Find next occurrence and replace it [Enter]"
-#~ msgstr "Trova l'occorrenza successiva e la sostituisce [Enter]"
-
-#~ msgid "Find previous occurrence and replace it [Shift+Enter]"
-#~ msgstr "Trova l'occorrenza precedente e la sostituisce [Shift+Enter]"
-
-#~ msgid "&Debug messages"
-#~ msgstr "Messaggi di verifica"
-
-#~ msgid "Clear &automatically"
-#~ msgstr "Cancella automaticamente"
-
-#~ msgid "Dissolve Inset|l"
-#~ msgstr "Dissolvi l'inserto"
-
-#~ msgid "Box Settings"
-#~ msgstr "Impostazioni casella"
-
-#~ msgid "TeX Code Settings"
-#~ msgstr "Impostazioni codice TeX"
-
-#~ msgid "Float Settings"
-#~ msgstr "Impostazioni oggetti flottanti"
-
-#~ msgid "Match found and replaced !"
-#~ msgstr "Corrispondenza trovata e sostituita!"
-
-#~ msgid "Close this panel"
-#~ msgstr "Chiude questa finestra di dialogo"
-
-#~ msgid "Prev"
-#~ msgstr "Precedente"
-
-#~ msgid "Match..."
-#~ msgstr "Corrispondenza..."
-
-#~ msgid "Find LyX Dialog"
-#~ msgstr "Trova testo LyX"
-
-#~ msgid "The Enter key works, too"
-#~ msgstr "Funziona anche il tasto Enter"
-
-#~ msgid "The delete key works, too"
-#~ msgstr "Funziona anche il tasto delete"
-
-#~ msgid "D&elete"
-#~ msgstr "&Elimina"
-
-#~ msgid "F&ind:"
-#~ msgstr "&Trova:"
-
-#~ msgid "Current &Paragraph"
-#~ msgstr "&Paragrafo attuale"
-
-#~ msgid "Document in current file"
-#~ msgstr "Documento nel file attuale"
-
-#~ msgid "End"
-#~ msgstr "Fine"
-
-#~ msgid "begin"
-#~ msgstr "dall'inizio"
-
-#~ msgid "end"
-#~ msgstr "dalla fine"
-
-#~ msgid "forward"
-#~ msgstr "in avanti"
-
-#~ msgid "backwards"
-#~ msgstr "all'indietro"
-
-#~ msgid " of "
-#~ msgstr " di "
-
-#~ msgid " reached while searching "
-#~ msgstr " raggiunto cercando "
-
-#~ msgid "Continue searching from "
-#~ msgstr "Continuo la ricerca "
-
-#~ msgid "&Dummy"
-#~ msgstr "&Fittizio"
-
-#~ msgid "&Automatic clear"
-#~ msgstr "&Pulizia automatica"
-
-#~ msgid "----- Debugging levels -----"
-#~ msgstr "----- Livelli di verifica -----"
-
-#~ msgid "Show progress messages"
-#~ msgstr "Monitora avanzamento"
-
-#~ msgid "(cancelling)"
-#~ msgstr "(annullamento)"
-
-#~ msgid "Anschrift:"
-#~ msgstr "Anschrift:"
-
-#~ msgid "Briefkopf:"
-#~ msgstr "Briefkopf:"
-
-#~ msgid "Absender:"
-#~ msgstr "Absender:"
-
-#~ msgid "Zusatz:"
-#~ msgstr "Zusatz:"
-
-#~ msgid "Ihre Zeichen:"
-#~ msgstr "Ihre Zeichen:"
-
-#~ msgid "Unsere Zeichen:"
-#~ msgstr "Unsere Zeichen:"
-
-#~ msgid "Sachbearbeiter:"
-#~ msgstr "Sachbearbeiter:"
-
-#~ msgid "Unterschrift:"
-#~ msgstr "Unterschrift:"
-
-#~ msgid "Fusszeile(n):"
-#~ msgstr "Fusszeile(n):"
-
-#~ msgid "Vorwahl:"
-#~ msgstr "Vorwahl:"
-
-#~ msgid "Telefon:"
-#~ msgstr "Telefon:"
-
-#~ msgid "Ort:"
-#~ msgstr "Ort:"
-
-#~ msgid "Datum:"
-#~ msgstr "Datum:"
-
-#~ msgid "Betreff:"
-#~ msgstr "Betreff:"
-
-#~ msgid "Anrede:"
-#~ msgstr "Anrede:"
-
-#~ msgid "Gruss:"
-#~ msgstr "Gruss:"
-
-#~ msgid "Anlage(n):"
-#~ msgstr "Anlage(n):"
-
-#~ msgid "Verteiler:"
-#~ msgstr "Verteiler:"
-
-#~ msgid "Text:"
-#~ msgstr "Testo:"
-
-#~ msgid "Strasse"
-#~ msgstr "Strasse"
-
-#~ msgid "Strasse:"
-#~ msgstr "Strasse:"
-
-#~ msgid "Land"
-#~ msgstr "Land"
-
-#~ msgid "Land:"
-#~ msgstr "Land:"
-
-#~ msgid "RetourAdresse:"
-#~ msgstr "RetourAdresse:"
-
-#~ msgid "MeinZeichen:"
-#~ msgstr "MeinZeichen:"
-
-#~ msgid "IhrZeichen:"
-#~ msgstr "IhrZeichen:"
-
-#~ msgid "IhrSchreiben:"
-#~ msgstr "IhrSchreiben:"
-
-#~ msgid "BLZ"
-#~ msgstr "BLZ"
-
-#~ msgid "BLZ:"
-#~ msgstr "BLZ:"
-
-#~ msgid "Konto"
-#~ msgstr "Konto"
-
-#~ msgid "Konto:"
-#~ msgstr "Konto:"
-
-#~ msgid "Adresse:"
-#~ msgstr "Adresse:"
-
-#~ msgid "Anlagen:"
-#~ msgstr "Anlagen:"
-
-#~ msgid "No LaTeX log file found."
-#~ msgstr "Non ho trovato alcun file di registro di LaTeX."
-
-#~ msgid "Numbers theorems and the like by section."
-#~ msgstr "Numera teoremi e simili per sezione."
-
-#~ msgid "Latex"
-#~ msgstr "Latex"
-
-#~ msgid "View Output|V"
-#~ msgstr "Mostra output|M"
-
-#~ msgid "Update Output|U"
-#~ msgstr "Aggiorna output|A"
-
-#, fuzzy
-#~ msgid "Advanced Search"
-#~ msgstr "Avanzata"
-
-#~ msgid "Replace Ne&xt"
-#~ msgstr "Sostituisci &successivo"
-
-#~ msgid "Find &Prev"
-#~ msgstr "Trova &precedente"
-
-#~ msgid "Replace P&rev"
-#~ msgstr "Sostituisci &precedente"
-
-#~ msgid "Current buffer only"
-#~ msgstr "Solo buffer attuale"
-
-#~ msgid "Buffer"
-#~ msgstr "Buffer"
-
-#~ msgid "Current file and all included files"
-#~ msgstr "File attuale e tutti i file inclusi"
-
-#~ msgid "Document"
-#~ msgstr "Documento"
-
-#~ msgid "All open buffers"
-#~ msgstr "Tutti i buffer aperti"
-
-#~ msgid "Dropped Capitals"
-#~ msgstr "Capolettere"
-
-#~ msgid "CharStyle:DropCapital"
-#~ msgstr "Capolettera"
-
-#~ msgid "Dropped Capital"
-#~ msgstr "Capolettera"
-
-#~ msgid "Find LyX...|X"
-#~ msgstr "Trova LyX...|X"
-
-#~ msgid "Close Tab Group|G"
-#~ msgstr "Chiudi vista (gruppo linguette)|g"
-
-#~ msgid "Regexp"
-#~ msgstr "Regexp"
-
-#~ msgid "No file open!"
-#~ msgstr "Nessun file aperto!"
-
-#~ msgid "Jump to the label"
-#~ msgstr "Salta all'etichetta"
-
-#~ msgid "Unknown author index for deletion: %1$d\n"
-#~ msgstr "L'indice autore è sconosciuto per la cancellazione: %1$d\n"
-
-#, fuzzy
-#~ msgid "Click to edit the settings of the child document"
-#~ msgstr "Ripristina le impostazioni predefinite della classe del documento"
-
-#, fuzzy
-#~ msgid "Master Settings"
-#~ msgstr "Impostazioni nota"
-
-#~ msgid "Column Width"
-#~ msgstr "Larghezza colonna"
-
-#~ msgid "Listing settings"
-#~ msgstr "Impostazioni per listati di programmi"
-
-#, fuzzy
-#~ msgid "\\alph{enumii}."
-#~ msgstr "(\\alph{enumii})"
-
-#~ msgid "Insert|n"
-#~ msgstr "Inserisci|s"
-
-#~ msgid "Unknown spacing argument: "
-#~ msgstr "L'argomento di spaziatura è sconosciuto: "
-
-#~ msgid ""
-#~ "Input listings parameters on the right. Enter ? for a list of parameters."
-#~ msgstr ""
-#~ "Inserire i parametri per i listati a destra. Digitare ? per una lista dei "
-#~ "parametri."
-
-#~ msgid "Length"
-#~ msgstr "Lunghezza"
-
-#~ msgid "Opened inset"
-#~ msgstr "È stato aperto l'inserto"
-
-#~ msgid "Opened Box Inset"
-#~ msgstr "È stato aperto l'inserto Casella"
-
-#~ msgid "Opened Branch Inset"
-#~ msgstr "È stato aperto l'inserto Ramo"
-
-#~ msgid "Opened Caption Inset"
-#~ msgstr "È stato aperto l'inserto Didascalia"
-
-#~ msgid "Opened ERT Inset"
-#~ msgstr "È stato aperto l'inserto ERT"
-
-#~ msgid "Opened Flex Inset"
-#~ msgstr "È stato aperto l'inserto Flessibile"
-
-#~ msgid "Opened Float Inset"
-#~ msgstr "È stato aperto l'inserto flottante"
-
-#~ msgid "Opened Footnote Inset"
-#~ msgstr "È stato aperto l'inserto Nota a piè pagina"
-
-#~ msgid "Opened Listing Inset"
-#~ msgstr "È stato aperto l'inserto Listato"
-
-#~ msgid "Opened Marginal Note Inset"
-#~ msgstr "È stato aperto l'inserto Nota a margine"
-
-#~ msgid "Opened Note Inset"
-#~ msgstr "È stato aperto l'inserto Nota"
-
-#~ msgid "Opened Optional Argument Inset"
-#~ msgstr "È stato aperto l'inserto Argomento opzionale"
-
-#~ msgid "Opened Phantom Inset"
-#~ msgstr "È stato aperto l'inserto Fantasma"
-
-#~ msgid "Opened table"
-#~ msgstr "La tabella è stata aperta"
-
-#~ msgid "Opened Text Inset"
-#~ msgstr "È stato aperto l'inserto Testo"
-
-#~ msgid "Opened Wrap Inset"
-#~ msgstr "È stato aperto l'inserto cinto dal testo"
-
-#~ msgid "Select the default language of your documents"
-#~ msgstr "Selezionare la lingua predefinta per i documenti"
-
-#~ msgid "Personal &dictionary:"
-#~ msgstr "&Dizionario personale:"
-
-#~ msgid "Specify a personal dictionary file other than the default"
-#~ msgstr ""
-#~ "Specifica un dizionario personale alternativo\n"
-#~ "diverso da quello prestabilito"
-
-#~ msgid "Use input encod&ing"
-#~ msgstr "Usa cod&ifica di ingresso"
-
-#~ msgid "Toggle Label|L"
-#~ msgstr "Commuta etichetta|C"
-
-#~ msgid "Move Section down|d"
-#~ msgstr "Sposta sezione giù|g"
-
-#~ msgid "Move Section up|u"
-#~ msgstr "Sposta sezione su|s"
-
-#~ msgid "The spellchecker has failed."
-#~ msgstr "Il correttore ortografico ha fallito."
-
-#~ msgid ""
-#~ "Specify an alternate personal dictionary file. E.g. \".aspell_english\"."
-#~ msgstr ""
-#~ "Specifica un dizionario personale alternativo. Per esempio: \"."
-#~ "aspell_english\"."
-
-#~ msgid ""
-#~ "Specify whether to pass the -T input encoding option to aspell. Enable "
-#~ "this if you cannot check the spelling of words containing accented "
-#~ "letters. This may not work with all dictionaries."
-#~ msgstr ""
-#~ "Specifica quando passare l'opzione di codifica -T ad aspell. Abilitate "
-#~ "questa opzione se non si riescono a verificare parole contenenti lettere "
-#~ "accentate. Può non funzionare con tutti i dizionari."
-
-#~ msgid "*.pws"
-#~ msgstr "*.pws"
-
-#, fuzzy
-#~ msgid "Accept Change|C"
-#~ msgstr "Accetta modifica|A"
-
-#, fuzzy
-#~ msgid "C&ommand:"
-#~ msgstr "&Comando:"
-
-#~ msgid "&BibTeX command:"
-#~ msgstr "Comando &BibTeX:"
-
-#~ msgid "BibTeX command (&Japanese):"
-#~ msgstr "Comando BibTeX (&giapponese):"
-
-#~ msgid "Index command (Ja&panese):"
-#~ msgstr "Comando per indice (gia&pponese):"
-
-#~ msgid "Toggle Labeling/Numbering|T"
-#~ msgstr "Commuta etichetta/numerazione|n"
-
-#~ msgid "Copy Label as Reference|C"
-#~ msgstr "Copia etichetta come riferimento|C"
-
-#~ msgid "View|V[[show]]"
-#~ msgstr "Mostra output|M"
-
-#~ msgid "View DVI"
-#~ msgstr "Mostra DVI"
-
-#~ msgid "View PDF (pdflatex)"
-#~ msgstr "Mostra PDF (pdflatex)"
-
-#~ msgid "View PostScript"
-#~ msgstr "Mostra Postscript"
-
-#~ msgid "Update DVI"
-#~ msgstr "Aggiorna DVI"
-
-#~ msgid "Update PDF (pdflatex)"
-#~ msgstr "Aggiorna PDF (pdflatex)"
-
-#~ msgid "Update PostScript"
-#~ msgstr "Aggiorna Postscript"
-
-#~ msgid "Thesaurus failure"
-#~ msgstr "Ricerca lessicale fallita"
-
-#~ msgid ""
-#~ "Aiksaurus returned the following error:\n"
-#~ "\n"
-#~ "%1$s."
-#~ msgstr ""
-#~ "Aiksaurus ha ritornato il seguente errore:\n"
-#~ "\n"
-#~ "%1$s."
-
-#~ msgid "Indices"
-#~ msgstr "Indici"
-
-#~ msgid "You cannot paste into a multicell selection."
-#~ msgstr "Non è possibile incollare in una selezione multipla di celle."
-
-#~ msgid "B&rowse..."
-#~ msgstr "S&foglia..."
-
-#~ msgid "Number of Co&pies:"
-#~ msgstr "Numero di copie"
-
-#~ msgid "Sa&ns Serif:"
-#~ msgstr "Se&nza Grazie:"
-
-#~ msgid "Ne&w"
-#~ msgstr "&Nuovo"
-
-#~ msgid "No horizontal line\t\\atop"
-#~ msgstr "Senza linea\t\\atop"
-
-#~ msgid "Native OS API not yet supported."
-#~ msgstr "Le API del sistema operativo nativo non sono ancora supportate."
-
-#~ msgid "Spellchecker error"
-#~ msgstr "Errore del correttore ortografico"
-
-#~ msgid ""
-#~ "The spellchecker has died for some reason.\n"
-#~ "Maybe it has been killed."
-#~ msgstr ""
-#~ "Il correttore ortografico si è interrotto per qualche motivo.\n"
-#~ "Forse è stato terminato."
-
-#~ msgid "The spellchecker has failed"
-#~ msgstr "Il correttore ortografico ha fallito"
-
-#~ msgid "LangHeader"
-#~ msgstr "Etichetta Lingua"
-
-#~ msgid "Language Header:"
-#~ msgstr "Etichetta Lingua:"
-
-#~ msgid "Language:"
-#~ msgstr "Lingua:"
-
-#~ msgid "LastLanguage"
-#~ msgstr "Ultima Lingua"
-
-#~ msgid "Last Language:"
-#~ msgstr "Ultima Lingua:"
-
-#~ msgid "LangFooter"
-#~ msgstr "Riferimento Lingua"
-
-#~ msgid "Language Footer:"
-#~ msgstr "Riferimento Lingua:"
-
-#~ msgid "Computer"
-#~ msgstr "Computer"
-
-#~ msgid "Computer:"
-#~ msgstr "Computer:"
-
-#~ msgid "EmptySection"
-#~ msgstr "Sezione vuota"
-
-#~ msgid "Empty Section"
-#~ msgstr "Sezione vuota"
-
-#~ msgid "CloseSection"
-#~ msgstr "Chiudi sezione"
-
-#~ msgid "Close Section"
-#~ msgstr "Chiudi sezione"
-
-#~ msgid "Go back to Reference|G"
-#~ msgstr "Ritorna al riferimento|R"
-
-#, fuzzy
-#~ msgid "Phantom Text"
-#~ msgstr "Testo semplice, per linee|T"
-
-#~ msgid "RegExp"
-#~ msgstr "RegExp"
-
-#~ msgid "&Initialize Group Name:"
-#~ msgstr "&Identificativo di gruppo:"
-
-#~ msgid "Group Name to be set up from the current parameters"
-#~ msgstr "Identificativo di gruppo a cui estendere i parametri correnti"
-
-#~ msgid "&Postscript driver:"
-#~ msgstr "&Driver postscript:"
-
-#~ msgid "Append Parameter"
-#~ msgstr "Aggiungi parametro"
-
-#~ msgid "Remove Last Parameter"
-#~ msgstr "Rimuovi l'ultimo parametro"
-
-#~ msgid "Make First Non-Optional into Optional Parameter"
-#~ msgstr "Cambia il primo parametro non-opzionale in opzionale"
-
-#~ msgid "Make Last Optional into Non-Optional Parameter"
-#~ msgstr "Cambia l'ultimo parametro opzionale in non-opzionale"
-
-#~ msgid "Insert Optional Parameter"
-#~ msgstr "Inserisci parametro opzionale"
-
-#~ msgid "Remove Optional Parameter"
-#~ msgstr "Rimuovi parametro opzionale"
-
-#~ msgid "Append Parameter Eating From The Right"
-#~ msgstr "Aggiungi parametro inglobando da destra"
-
-#~ msgid "Append Optional Parameter Eating From The Right"
-#~ msgstr "Aggiungi parametro opzionale inglobando da destra"
-
-#~ msgid "Remove Last Parameter Spitting Out To The Right"
-#~ msgstr "Rimuovi ultimo parametro rilasciando a destra"
-
-#~ msgid "&Default language:"
-#~ msgstr "Lingua &predefinita:"
-
-#~ msgid "External app for formating tables in plain text output"
-#~ msgstr ""
-#~ "Applicazione esterna per formattare\n"
-#~ "tabelle in formato testo semplice"
-
-#~ msgid "Spellchec&ker executable:"
-#~ msgstr "Eseguibile del &correttore ortografico:"
-
-#~ msgid "Can't create pipe for spellchecker."
-#~ msgstr "Non posso creare la pipe per il controllore ortografico."
-
-#~ msgid "Can't open pipe for spellchecker."
-#~ msgstr "Non posso aprire la pipe per il controllore ortografico."
-
-#~ msgid ""
-#~ "Could not create an ispell process.\n"
-#~ "You may not have the right languages installed."
-#~ msgstr ""
-#~ "Non riesco ad avviare alcun processo ispell.\n"
-#~ "Potreste non avere installato il linguaggio corretto."
-
-#~ msgid ""
-#~ "The ispell process returned an error.\n"
-#~ "Perhaps it has been configured wrongly ?"
-#~ msgstr ""
-#~ "Il processo ispell ha riportato un errore.\n"
-#~ "Forse è stato configurato in modo sbagliato?"
-
-#~ msgid ""
-#~ "Could not check word `%1$s' because it could not be converted to encoding "
-#~ "`%2$s'."
-#~ msgstr ""
-#~ "Non sono riuscito a verificare `%1$s' perché non può essere convertita "
-#~ "nella codifica `%2$s'."
-
-#~ msgid "Could not communicate with the ispell spellchecker process."
-#~ msgstr ""
-#~ "Non riesco a comunicare con il processo di controllo ortografico ispell."
-
-#~ msgid ""
-#~ "Could not insert word `%1$s' because it could not be converted to "
-#~ "encoding `%2$s'."
-#~ msgstr ""
-#~ "Non sono riuscito ad inserire la parola `%1$s' perché non può essere "
-#~ "convertita nella codifica `%2$s'."
-
-#~ msgid ""
-#~ "Could not accept word `%1$s' because it could not be converted to "
-#~ "encoding `%2$s'."
-#~ msgstr ""
-#~ "Non posso accettare la parola `%1$s' perché non può essere convertita "
-#~ "nella codifica `%2$s'."
-
-#~ msgid "What command runs the spellchecker?"
-#~ msgstr "Quale comando avvia il correttore ortografico?"
-
-#~ msgid "ispell"
-#~ msgstr "ispell"
-
-#~ msgid "pspell (library)"
-#~ msgstr "pspell (libreria)"
-
-#~ msgid "aspell (library)"
-#~ msgstr "aspell (libreria)"
-
-#~ msgid "*.ispell"
-#~ msgstr "*.ispell"
-
-#~ msgid "figure"
-#~ msgstr "Figura"
-
-#~ msgid "table"
-#~ msgstr "Tabella"
-
-#~ msgid "algorithm"
-#~ msgstr "Algoritmo"
-
-#~ msgid "tableau"
-#~ msgstr "tableau"
-
-#~ msgid "Filtering layouts with \""
-#~ msgstr "Filtraggio layout con \""
-
-#~ msgid "keywords"
-#~ msgstr "parole chiave"
-
-#~ msgid "Table of Contents|a"
-#~ msgstr "Indice generale|g"
-
-#~ msgid "FAQ|F"
-#~ msgstr "FAQ|F"
-
-#~ msgid "Adds \"backlink\" text to the end of each item in the bibliography"
-#~ msgstr ""
-#~ "Aggiunge testo \"backlink\" alla fine di ciascuna voce bibliografica"
-
-#~ msgid "Backreference by pa&ge number"
-#~ msgstr "Riferimento inverso per numero di &pagina"
-
-#~ msgid "Slidecontents"
-#~ msgstr "Contenuti dei lucidi"
-
-#~ msgid "Progress Contents"
-#~ msgstr "Contenuti svolgimento"
-
-#~ msgid "."
-#~ msgstr "."
-
-#~ msgid "American"
-#~ msgstr "Americano"
-
-#~ msgid "Austrian (old spelling)"
-#~ msgstr "Austriaco (vecchia sillabazione)"
-
-#~ msgid "Austrian"
-#~ msgstr "Austriaco"
-
-#~ msgid "Bahasa Malaysia"
-#~ msgstr "Bahasa Malesia"
-
-#~ msgid "British"
-#~ msgstr "Britannico"
-
-#~ msgid "Canadian"
-#~ msgstr "Canadese"
-
-#~ msgid "LinuxDoc"
-#~ msgstr "LinuxDoc"
-
-#~ msgid "LinuxDoc|x"
-#~ msgstr "LinuxDoc|x"
-
-#, fuzzy
-#~ msgid "Gruß:"
-#~ msgstr "Gruss:"
-
-#, fuzzy
-#~ msgid "Reference\t"
-#~ msgstr "Riferimento"
-
-#, fuzzy
-#~ msgid "SenderAddress\t# scrletter"
-#~ msgstr "Indirizzo mittente"
-
-#, fuzzy
-#~ msgid "Backaddress\t# scrletter"
-#~ msgstr "Indirizzo di ritorno"
-
-#, fuzzy
-#~ msgid "RetourAdresse\t# g-brief-de"
-#~ msgstr "RetourAdresse"
-
-#, fuzzy
-#~ msgid "Postvermerk\t# g-brief-de"
-#~ msgstr "Postvermerk"
-
-#, fuzzy
-#~ msgid "IhrZeichen\t# g-brief-de"
-#~ msgstr "IhrZeichen"
-
-#, fuzzy
-#~ msgid "IhrSchreiben\t# g-brief-de"
-#~ msgstr "IhrSchreiben"
-
-#, fuzzy
-#~ msgid "MeinZeichen\t# g-brief-de"
-#~ msgstr "MeinZeichen"
-
-#, fuzzy
-#~ msgid "Unterschrift\t# g-brief-de"
-#~ msgstr "Unterschrift"
-
-#~ msgid "Stadt:"
-#~ msgstr "Stadt:"
-
-#~ msgid "Braille mirror off"
-#~ msgstr "Braille mirror off"
-
-#~ msgid "Vertical alignment for fixed width columns"
-#~ msgstr "Allineamento verticale per colonne di larghezza fissa"
-
-#~ msgid "LaTeX default"
-#~ msgstr "LaTeX default"
-
-#~ msgid "Left-click to collapse the inset"
-#~ msgstr "Cliccare per chiudere l'inserto"
-
-#~ msgid "Left-click to open the inset"
-#~ msgstr "Cliccare per aprire l'inserto"
-
-#~ msgid "Keep *roff temporary files"
-#~ msgstr "Conserva i file temporanei tipo *roff"
-
-#~ msgid "Middle European (ISO 8859-3)"
-#~ msgstr "Europa meridionale (ISO 8859-3)"
-
-#~ msgid "Type shortcut while the cursor is in this field"
-#~ msgstr "Battere la scorciatoia mentre il cursore si trova in questo campo"
-
-#~ msgid "Split View Horizontally|i"
-#~ msgstr "Dividi vista orizzontalmente|o"
-
-#~ msgid "Split View Vertically|V"
-#~ msgstr "Dividi vista verticalmente|v"
-
-#~ msgid "The document class %1$s could not be found."
-#~ msgstr "Classe di documento %1$s non trovata."
-
-#~ msgid ""
-#~ "Layout had to be changed from\n"
-#~ "%1$s to %2$s\n"
-#~ "because of class conversion from\n"
-#~ "%3$s to %4$s"
-#~ msgstr ""
-#~ "Ho dovuto modificare il layout da\n"
-#~ "%1$s a %2$s\n"
-#~ "a causa della conversione della classe da\n"
-#~ "%3$s a %4$s"
-
-#~ msgid "Changed Layout"
-#~ msgstr "Layout modificato"
-
-#~ msgid "Unknown layout"
-#~ msgstr "Layout sconosciuto"
-
-#~ msgid ""
-#~ "Layout '%1$s' does not exist in textclass '%2$s'\n"
-#~ "Trying to use the default instead.\n"
-#~ msgstr ""
-#~ "Il layout '%1$s' non esiste nella classe di documento '%2$s'\n"
-#~ "Cerco di usare quello predefinito al suo posto.\n"
-
-#~ msgid "Adds an environment for hanging paragraphs."
-#~ msgstr "Aggiunge un ambiente per paragrafi con rientro."
-
-#~ msgid "Opened Environment Inset: "
-#~ msgstr "È stato aperto l'inserto Ambiente:"
-
-#~ msgid "Display image in LyX"
-#~ msgstr "Visualizza l'immagine in LyX"
-
-#~ msgid "Screen display"
-#~ msgstr "Visualizzazione a schermo"
-
-#~ msgid "Monochrome"
-#~ msgstr "Bianco e nero"
-
-#~ msgid "Grayscale"
-#~ msgstr "Scala di grigi"
-
-#~ msgid "%"
-#~ msgstr "%"
-
-#~ msgid "&Display:"
-#~ msgstr "&Visualizzazione:"
-
-#~ msgid "Sca&le:"
-#~ msgstr "Sca&la:"
-
-#~ msgid "Scr&een Display:"
-#~ msgstr "Visualizzazion&e a schermo"
-
-#~ msgid "Do not display"
-#~ msgstr "Non mostrare"
-
-#~ msgid "Unknown Info: "
-#~ msgstr "Informazione sconosciuta:"
-
-#~ msgid "Unknown action %1$s"
-#~ msgstr "Azione sconosciuta %1$s"
-
-#~ msgid "No menu entry for action %1$s"
-#~ msgstr "Nessuna voce di menù per l'azione %1$s"
