@@ -925,6 +925,7 @@ void xhtmlParagraphs(Text const & text,
 	ParagraphList::const_iterator par = paragraphs.begin();
 	ParagraphList::const_iterator pend = paragraphs.end();
 
+	OutputParams ourparams = runparams;
 	while (par != pend) {
 		if (par->params().startOfAppendix()) {
 			// FIXME: only the counter corresponding to toplevel
@@ -942,13 +943,13 @@ void xhtmlParagraphs(Text const & text,
 			// The files with which we are working never have more than
 			// one paragraph in a command structure.
 			// FIXME 
-			// if (runparams.html_in_par)
+			// if (ourparams.html_in_par)
 			//   fix it so we don't get sections inside standard, e.g.
 			// note that we may then need to make runparams not const, so we
 			// can communicate that back.
 			// FIXME Maybe this fix should be in the routines themselves, in case
 			// they are called from elsewhere.
-			makeCommand(buf, xs, runparams, text, par);
+			makeCommand(buf, xs, ourparams, text, par);
 			++par;
 			break;
 		}
@@ -957,18 +958,18 @@ void xhtmlParagraphs(Text const & text,
 		case LATEX_ITEM_ENVIRONMENT: {
 			// FIXME Same fix here.
 			send = searchEnvironmentHtml(par, pend);
-			par = makeEnvironmentHtml(buf, xs, runparams, text, par, send);
+			par = makeEnvironmentHtml(buf, xs, ourparams, text, par, send);
 			break;
 		}
 		case LATEX_BIB_ENVIRONMENT: {
 			// FIXME Same fix here.
 			send = searchEnvironmentHtml(par, pend);
-			par = makeBibliography(buf, xs, runparams, text, par, send);
+			par = makeBibliography(buf, xs, ourparams, text, par, send);
 			break;
 		}
 		case LATEX_PARAGRAPH:
 			send = searchParagraphHtml(par, pend);
-			par = makeParagraphs(buf, xs, runparams, text, par, send);
+			par = makeParagraphs(buf, xs, ourparams, text, par, send);
 			break;
 		}
 		// FIXME??
