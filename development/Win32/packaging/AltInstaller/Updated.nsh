@@ -13,6 +13,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  #SetOutPath "$INSTDIR\Resources\doc"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Customization.lyx"
+ SetOutPath "$INSTDIR\Resources\doc\fr"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Tutorial.lyx"
  SetOutPath "$INSTDIR\Resources\doc\sv"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\sv\Shortcuts.lyx"
  SetOutPath "$INSTDIR\Resources\examples\sv"
