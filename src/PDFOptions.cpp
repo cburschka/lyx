@@ -169,7 +169,7 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 		// FIXME: rename in this case the PDF settings dialog checkbox
 		//  label from "Use Hyperref" to "Customize Hyperref Settings"
 		//  as discussd in bug #6293
-		opt = "\\hypersetup{" + opt + hyperset + "}\n";
+		opt = "\\hypersetup{" + rtrim(opt + hyperset, ",") + "}\n";
 	}
 
 	// hyperref expects utf8!
@@ -179,13 +179,19 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 		   << setEncoding("UTF-8");
 	}
 	// If hyperref is loaded by the document class, we output
-	// \hypersetup \AtBeginDocument, since the class might
-	// load hyperref late, see bug #7048.
-	if (hyperref_already_provided && !opt.empty())
-		os << "\\AtBeginDocument{%\n";
-	os << from_utf8(opt);
-	if (hyperref_already_provided && !opt.empty())
-		os << "}";
+	// \hypersetup \AtBeginDocument if hypersetup is not (yet)
+	// defined. In this case, the class loads hyperref late
+	// (see bug #7048).
+	if (hyperref_already_provided && !opt.empty()) {
+		os << "\\ifx\\hypersetup\\undefined\n"
+		   << "  \\AtBeginDocument{%\n    "
+		   << from_utf8(opt)
+		   << "  }\n"
+		   << "\\else\n  "
+		   << from_utf8(opt)
+		   << "\\fi\n";
+	} else
+		os << from_utf8(opt);
 
 	if (need_unicode && enc && enc->iconvName() != "UTF-8"
 	    &&!runparams.isFullUnicode()) {
