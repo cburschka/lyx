@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-15 10:39+0200\n"
-"PO-Revision-Date: 2011-04-03 20:49+0730\n"
+"POT-Creation-Date: 2011-04-19 02:46+0200\n"
+"PO-Revision-Date: 2011-04-19 07:27+0730\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Indonesian <was.uthm@gmail.com>\n"
 "Language: id\n"
@@ -5897,7 +5897,7 @@ msgstr "Sub-SubSubBab"
 #: lib/layouts/beamer.layout:46 lib/layouts/egs.layout:168
 #: lib/layouts/powerdot.layout:244 lib/layouts/simplecv.layout:79
 #: lib/layouts/agu_stdlists.inc:13 lib/layouts/db_stdlists.inc:12
-#: lib/layouts/stdlists.inc:12 lib/layouts/enumitem.module:56
+#: lib/layouts/stdlists.inc:13
 msgid "Itemize"
 msgstr "Bersimbol"
 
@@ -5905,8 +5905,7 @@ msgstr "Bersimbol"
 #: lib/layouts/aastex.layout:86 lib/layouts/apa.layout:380
 #: lib/layouts/beamer.layout:65 lib/layouts/egs.layout:149
 #: lib/layouts/powerdot.layout:269 lib/layouts/agu_stdlists.inc:21
-#: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:34
-#: lib/layouts/enumitem.module:60
+#: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:35
 msgid "Enumerate"
 msgstr "Bernonor"
 
@@ -5916,8 +5915,7 @@ msgstr "Bernonor"
 #: lib/layouts/paper.layout:101 lib/layouts/scrlettr.layout:17
 #: lib/layouts/scrlttr2.layout:21 lib/layouts/agu_stdlists.inc:29
 #: lib/layouts/db_stdlists.inc:26 lib/layouts/scrclass.inc:36
-#: lib/layouts/stdlists.inc:57 lib/layouts/enumitem.module:64
-#: lib/ui/stdtoolbars.inc:116
+#: lib/layouts/stdlists.inc:58 lib/ui/stdtoolbars.inc:116
 msgid "Description"
 msgstr "Deskripsi"
 
@@ -5925,10 +5923,10 @@ msgstr "Deskripsi"
 #: lib/layouts/aastex.layout:92 lib/layouts/beamer.layout:47
 #: lib/layouts/beamer.layout:66 lib/layouts/beamer.layout:86
 #: lib/layouts/egs.layout:132 lib/layouts/scrlettr.layout:32
-#: lib/layouts/scrlttr2.layout:37 lib/layouts/stdlists.inc:13
-#: lib/layouts/stdlists.inc:35 lib/layouts/stdlists.inc:58
-#: lib/layouts/stdlists.inc:89 lib/layouts/stdlists.inc:135
-#: lib/layouts/enumitem.module:75 lib/ui/stdtoolbars.inc:115
+#: lib/layouts/scrlttr2.layout:37 lib/layouts/stdlists.inc:14
+#: lib/layouts/stdlists.inc:36 lib/layouts/stdlists.inc:59
+#: lib/layouts/stdlists.inc:89 lib/layouts/stdlyxlist.inc:7
+#: lib/ui/stdtoolbars.inc:115
 msgid "List"
 msgstr "Daftar"
 
@@ -6465,7 +6463,7 @@ msgstr "Subparagraf"
 
 #: lib/layouts/apa.layout:376 lib/layouts/beamer.layout:61
 #: lib/layouts/egs.layout:182 lib/layouts/powerdot.layout:258
-#: lib/layouts/simplecv.layout:93 lib/layouts/stdlists.inc:27
+#: lib/layouts/simplecv.layout:93 lib/layouts/stdlists.inc:28
 msgid "*"
 msgstr "*"
 
@@ -6516,7 +6514,7 @@ msgid "Part*"
 msgstr "Bagian*"
 
 #: lib/layouts/beamer.layout:101 lib/layouts/egs.layout:201
-#: lib/layouts/stdlists.inc:73
+#: lib/layouts/stdlists.inc:74
 msgid "MM"
 msgstr "MM"
 
@@ -7433,8 +7431,7 @@ msgstr "Nama keluarga"
 msgid "bysame"
 msgstr "SesuaiSama"
 
-#: lib/layouts/egs.layout:145 lib/layouts/stdlists.inc:102
-#: lib/layouts/enumitem.module:87
+#: lib/layouts/egs.layout:145 lib/layouts/stdlyxlist.inc:20
 msgid "00.00.0000"
 msgstr "00.00.0000"
 
@@ -8794,8 +8791,8 @@ msgid "PACS number:"
 msgstr "Nomor PACS:"
 
 #: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:28
-#: lib/layouts/scrclass.inc:42 lib/layouts/stdlists.inc:88
-#: lib/layouts/enumitem.module:71
+#: lib/layouts/scrclass.inc:42 lib/layouts/stdlyxlist.inc:6
+#: lib/layouts/enumitem.module:75
 msgid "Labeling"
 msgstr "Pelabelan"
 
@@ -10121,7 +10118,7 @@ msgstr ""
 "dengan opsi argumen. Lihat http://mirror.ctan.org/macros/latex/contrib/"
 "enumitem/enumitem.pdf. Contoh berkas ada dalam instalasi LyX."
 
-#: lib/layouts/enumitem.module:109
+#: lib/layouts/enumitem.module:95
 msgid "Enumerate-Resume"
 msgstr "Daftar Bernonor-Resume"
 
@@ -10405,18 +10402,16 @@ msgid "Chunk"
 msgstr "Chunk"
 
 #: lib/layouts/sweave.module:52
-#, fuzzy
 msgid "Sweave Options"
-msgstr "Opsi LaTeX"
+msgstr "Opsi Sweave"
 
 #: lib/layouts/sweave.module:53
 msgid "Sweave opts"
 msgstr "Sweave opts"
 
 #: lib/layouts/sweave.module:74
-#, fuzzy
 msgid "S/R expression"
-msgstr "Pernyataan &Reguler"
+msgstr "Ekspresi S/R"
 
 #: lib/layouts/sweave.module:75
 msgid "S/R expr"
@@ -11843,9 +11838,8 @@ msgid "Insert Short Title|T"
 msgstr "Sisipkan Judul Singkat|J"
 
 #: lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:355
-#, fuzzy
 msgid "Insert Regular Expression"
-msgstr "Pernyataan &Reguler"
+msgstr "Sisipkan Ekspresi Reguler"
 
 #: lib/ui/stdcontext.inc:312 lib/ui/stdcontext.inc:576
 msgid "Accept Change|c"
@@ -23345,15 +23339,15 @@ msgstr "String telah diganti"
 msgid "%1$d strings have been replaced."
 msgstr "%1$d kata sudah dirubah."
 
-#: src/lyxfind.cpp:1366
+#: src/lyxfind.cpp:1367
 msgid "Invalid regular expression!"
 msgstr "Ekspresi reguler tidak sah!"
 
-#: src/lyxfind.cpp:1371
+#: src/lyxfind.cpp:1372
 msgid "Match not found!"
 msgstr "Tidak ditemukan yang sesuai!"
 
-#: src/lyxfind.cpp:1375
+#: src/lyxfind.cpp:1376
 msgid "Match found!"
 msgstr "Ditemukan yang sesuai!"
 
