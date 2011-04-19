@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: uk-163\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-03-22 17:53+0100\n"
-"PO-Revision-Date: 2011-01-20 18:49+0200\n"
+"PO-Revision-Date: 2011-04-19 19:02+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian <translation@linux.org.ua>\n"
+"Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.2\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
@@ -20805,19 +20805,19 @@ msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "Спроба включити файл %1$s у самого себе! Включення ігнорується."
 
 #: src/insets/InsetInclude.cpp:515
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not load included file\n"
 "`%1$s'\n"
 "Please, check whether it actually exists."
 msgstr ""
-"Не вдалося створити файл резервної копії %1$s.\n"
-"Будь ласка перевірте чи існує відповідна тека і чи доступна вона для запису."
+"Не вдалося завантажити включений файл\n"
+"«%1$s»\n"
+"Будь ласка, переконайтеся, що цей файл насправді існує."
 
 #: src/insets/InsetInclude.cpp:519
-#, fuzzy
 msgid "Missing included file"
-msgstr "Вставити файл"
+msgstr "Не вистачає включеного файла"
 
 #: src/insets/InsetInclude.cpp:527
 #, c-format
@@ -20855,11 +20855,12 @@ msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
+"Включений файл «%1$s» не було експортовано належним чином.\n"
+"Попередження: експорт даних LaTeX, ймовірно, є неповним."
 
 #: src/insets/InsetInclude.cpp:580
-#, fuzzy
 msgid "Export failure"
-msgstr "Помилка резервного копіювання"
+msgstr "Помилка експортування"
 
 #: src/insets/InsetIndex.cpp:129
 msgid "Index sorting failed"
