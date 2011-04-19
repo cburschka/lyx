@@ -1,23 +1,22 @@
-Public release of LyX version 1.6.9
-===================================
+Public release of LyX version 1.6.10
+====================================
 
-We are pleased to announce the release of LyX 1.6.9. This is the 10th
-maintenance release in the 1.6.x series.
+We are pleased to announce the release of LyX 1.6.10. This is the 11th
+and final maintenance release in the 1.6.x series.
 
-LyX 1.6.9 is the result of our ongoing efforts to make our stable version
-even more reliable and stable. We have fixed yet another number of crashes
-that have been reported to us and ironed out many small glitches. Also,
-some features and additions from the forthcoming 2.x series, such as
-support for CVS revision control and a new Swedish localization, have been
-backported to LyX 1.6.9.
+LyX 1.6.10 concludes the successful 1.6 series, which has been our stable
+series for the past two and a half years. The most notable new feature of
+this version is that it is able to read and import documents of our new
+stable series, LyX 2.0.x. This is for the benefit of users who want to
+stick with LyX 1.6.x for the time being, but still want to cooperate with
+users of the new version. Note that LyX 1.6.10 still writes the 1.6 format,
+so it cannot produce (but only interpret) LyX 2.0's new features.
 
-A detailed list of changes is appended below, remaining known problems
-are listed in the file RELEASE-NOTES.
+Read on below what has been changed and fixed in this version apart from that.
+Remaining known problems are listed in the file RELEASE-NOTES.
 
-While our next major release, LyX 2.0, comes closer and already can be
-tried out by the curious and brave, LyX 1.6.9 is the release for everyone
-who is relying on a rock solid and polished application. We thus encourage
-all users to upgrade to this version.
+Anyone who intends to stick with the 1.6 series is strongly encouraged to
+upgrade to this version.
 
 In case you are wondering what LyX is, here is what
 http://www.lyx.org/ has to say on the subject:
@@ -43,39 +42,39 @@ http://www.lyx.org/ has to say on the subject:
    internationalized application running natively on Unix/Linux, the
    Macintosh and modern Windows platforms.
 
-You can download LyX 1.6.9 here (the .bz2 are compressed with bzip2,
+You can download LyX 1.6.10 here (the .bz2 are compressed with bzip2,
 which yields smaller files):
 
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.9.tar.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.9.tar.bz2
-	ftp://ftp.devel.lyx.org/pub/lyx/stable/lyx-1.6.9.tar.gz
-	ftp://ftp.devel.lyx.org/pub/lyx/stable/lyx-1.6.9.tar.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.10.tar.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.10.tar.bz2
+	ftp://ftp.devel.lyx.org/pub/lyx/stable/lyx-1.6.10.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/stable/lyx-1.6.10.tar.bz2
 
 and it should propagate shortly to the following mirrors (which will
 also host the .bz2 versions):
 
-	ftp://ftp.lip6.fr/pub/lyx/stable/1.6.x/lyx-1.6.9.tar.gz
-	http://lyx.cybermirror.org/stable/1.6.x/lyx-1.6.9.tar.gz
-	ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/1.6.x/lyx-1.6.9.tar.gz
-	ftp://ftp.ntua.gr/pub/X11/LyX/stable/1.6.x/lyx-1.6.9.tar.gz
-	http://sunsite.icm.edu.pl/pub/unix/editors/lyx/stable/1.6.x/lyx-1.6.9.tar.gz
-	http://lyx.mirror.fr/stable/1.6.x/lyx-1.6.9.tar.gz
+	ftp://ftp.lip6.fr/pub/lyx/stable/1.6.x/lyx-1.6.10.tar.gz
+	http://lyx.cybermirror.org/stable/1.6.x/lyx-1.6.10.tar.gz
+	ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/1.6.x/lyx-1.6.10.tar.gz
+	ftp://ftp.ntua.gr/pub/X11/LyX/stable/1.6.x/lyx-1.6.10.tar.gz
+	http://sunsite.icm.edu.pl/pub/unix/editors/lyx/stable/1.6.x/lyx-1.6.10.tar.gz
+	http://lyx.mirror.fr/stable/1.6.x/lyx-1.6.10.tar.gz
 
 Prebuilt binaries (rpms for Linux distributions, Mac OS X and Windows
 installers) should soon be available at:
 
-	ftp://ftp.lyx.org/pub/lyx/bin/1.6.9/
+	ftp://ftp.lyx.org/pub/lyx/bin/1.6.10/
 
 If you already have the sources of the previous release (1.6.8), you may
 want to apply one of the following patches instead:
 
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.9.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.9.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.10.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.10.bz2
 
 Note that for this release, some binaries have been added that are not produced
 by the patch.
 
-If you find what you think is a bug in LyX 1.6.9, you may either
+If you find what you think is a bug in LyX 1.6.10, you may either
 e-mail the LyX developers' mailing list (lyx-devel <at> lists.lyx.org),
 or open a bug report at http://www.lyx.org/trac/
 
@@ -88,198 +87,6 @@ Enjoy!
 The LyX team.
 
 
-What's new in version 1.6.9?
+What's new in version 1.6.10?
 ----------------------------
 
-** Updates:
-***********
-
-* DOCUMENT INPUT/OUTPUT
-
-- eLyXer is now always run as a script, not as a python module.
-
-
-* USER INTERFACE
-
-- CVS support:
-  + Synchronization of whole directories (bug 6255).
-  + Add implementation of checkOut operation.
-  + Utilize read-only checkouts with "cvs edit".
-  + Check for conflicts when doing checkIn/checkOut operation.
-
-- Allow Ctrl+Arrow to move between table cells (bug 1839).
-
-- Add support for showing on screen italic uppercase Greek letters,
-  either inserted in a \mathit inset or through AMS macros (bug 4606).
-
-
-* DOCUMENTATION AND LOCALIZATION
-
-- Re-introduce Swedish User Interface localization. 
-
-- Updated Basque, Czech, French, German, Indonesian, Italian,
-  Norwegian (Nynorsk), Portugues, Serbian (Latin), Slovak and
-  Ukrainian User Interface localizations.
-
-- Updated French translation of the Customization manual, the Embedded
-  Objects manual und the Linguistics manual.
-
-- Updated German translation of the User Guide.
-
-
-* BUILD/INSTALLATION
-
-- Allow using autoconf 2.66 and 2.68.
-
-
-** Bug fixes:
-*************
-
-* DOCUMENT INPUT/OUTPUT
-
-- Correctly break URLs at the end of lines in DVI output when hyperref
-  is used (bug 7033).
-
-- Escape "]" in subfloat captions to prevent LaTeX failure. 
-
-- Fix DVI output of the document class "letter (lettre)".
-
-- Do not output PDF settings if these are disabled in the document
-  settings (bug 7052).
-
-- Avoid inserting a blank line before the end of an environment when
-  exporting a custom inset to LaTeX (bug 7254).
-
-- Correctly check for RTF and DOC viewers.
-
-- KOMA classes: Support the optional argument of Addpart, Addchap and
-  Addsec.
-
-- Letter class: Support Quote, Quotation and Separator.
-
-- Don't pass the letterpaper option to the geometry package when using
-  default paper format and margins are explicitly set.
-
-
-* USER INTERFACE
-
-- Fix crash when using a computer algebra system from within AMS math
-  environments (bug 7058).
-
-- Fix crash when pressing up or down arrow while editing a macro name and
-  an inline completion is suggested (bug 7068).
-
-- Fix crash when removing a math macro argument while instant preview
-  is active (bug 7090).
-
-- Fix crash when inserting quotes with a selection spanning multiple
-  paragraphs (bug 7200).
-
-- Fix crash when clicking on the beginning of an unfinished command in
-  math when autocompletion is active (bug 7209).
-
-- Fix assertion when pasting a column in a math matrix (bug 7106).
-
-- Remove traces of long removed index settings dialog. This fixes a crash
-  when issueing the non-functional lfuns "dialog-show index" and
-  "dialog-show-new-inset index" (bug 7180).
-
-- Clear column width field in the tabular dialog when moving in a column
-  without a fixed width (bug 6976).
-  
-- Correctly save the settings of UI components. They could disappear when
-  starting LyX with a modified default.ui file and changing the
-  preferences afterwards (bug 7099).
-
-- Fix the painting of the workarea for a non-standard DPI and using
-  emulated scaling on Windows Vista and Windows 7 (bug 7187).
-
-- Fix insertion of a user math macro through the math-insert lfun when a
-  selection is present (bug 6939).
-
-- Don't shadow user math macros defined in child documents (bug 7183).
-
-- Make the modules description in the menu "Document > Settings" fully
-  translatable (bug 6987).
-
-- Fix table line bug when unsetting a multicolumn cell via the table
-  dialog (bug 7000). 
-
-- Fix the display of table cell alignment in the context menu (bug 7053).
-
-- Don't allow to make tables within floats "long" as this could lead to
-  LaTeX errors (bug 6585).
-
-- Don't use absolute paths on internal copy/paste operations on Mac
-  (bug 6538).
-
-- Correct the denomination of the languages Norsk and Nynorsk.
-
-- Do not allow to put the cursor in an InsetInfo. Instead, a context
-  menu item is added to facilitate copying of the contents (bug 5446).
-  
-- Fix the display of the horizontal alignment of table cells (bug 7007).
-
-- Numbered items in insets that do not produce any output (e.g. Notes)
-  no longer have a number associated with them (bug 6315).
-
-- Update the status of the buttons in the Text Style dialog when the
-  cursor is moved (bug 6952).
-
-- Correctly toggle the numbering of an equation when issueing the menu
-  "Insert > Numbered equation" on a displayed equation (bug 6709).
-  
-- Fix the painting of non-text insets with a transparent background
-  (such as quotation marks) as well as the description of a caption
-  (bug 4889).
-
-- Fix painting of math-macro templates while moving the cursor or
-  performing a selection with the mouse (bug 7193).
-
-- Fix unexpected behavior when inserting big math delimiters around a
-  matrix (bug 7088).
-
-- Fix saving of personal dictionary path to preferences (bug 6688).
-
-- Fix unexpected behavior of some "insert math" menu/toolbar entries
-  (bug 6709).
-
-- In the table dialog, disable the column width and column alignment if
-  there is a LaTeX argument (bug 3517).
-  
-- Fix aspell spellchecking with Farsi (bug 7171).
-
-- Fix the enabling of LFUN_SPLIT_CELL in the math context menu (bug 4849).
-
-- Recognize the program listings' parameter 'breakatwhitespace'
-  (bug 7077).
-
-- Wake up from waiting state after encountering a file parsing error
-  (bug 6950).
-
-- Fix enabling/disabling of Instant Preview widgets in the preferences
-  dialog (bug 7190).
-
-- Allow to undo the insertion of math macros (bug 7125).
-
-- Add some visual aids to distinguish opened files: full paths in
-  statusbar for recent files items, absolute paths in tooltips of tabs,
-  and longer paths in the window title (bug 7182).
-
-- Fix the response of the update button of the view source window after
-  reopening a file (bug 5600).
-
-- Don't allow to set an alignment for rows in math substack environments
-  (bug 2498).
-
-- Allow paragraph breaks and nested environments in framed boxes.
-
-- Trigger LaTeX rerun if requested by the package "etaremune".
-
-- Fix EndFont tag in the svmult.layout (bug 7257).
-
-
-* DOCUMENTATION AND LOCALIZATION
-
-- Fix LaTeX errors in modernCV.lyx example file with recent versions
-  of the LaTeX package modernCV (bug 7272).
