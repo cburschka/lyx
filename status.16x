@@ -79,6 +79,8 @@ What's new
 
 - Fix a crash when moving the cursor up when there is an inset right
   above cursor which is not placed at the beginning of the line (bug 7261).
+  
+- Fix a crash when deleting an inset and using -dbg any (bug 7376).
 
 - Fix assertion when selecting with shift+click immediately after reverse
   search, accept/reject all changes, or page down/up operations (bug 7394).
