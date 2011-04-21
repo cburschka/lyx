@@ -244,7 +244,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		// otherwise do a manual metrics call
 		CoordCache & coords = mi.base.bv->coordCache();
 		for (idx_type i = 0; i < nargs(); ++i) {
-			if (!coords.getArrays().has(&cell(i))) {
+			if (!coords.getArrays().hasDim(&cell(i))) {
 				Dimension tdim;
 				cell(i).metrics(mi, tdim);
 			}
