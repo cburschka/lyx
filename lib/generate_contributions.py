@@ -337,6 +337,14 @@ contributers = [
                  "21 February 2005",
                  u"General hacking of user interface stuff and those other bits and pieces"),
 
+     contributer(u"Jesper Stemann Andersen",
+                 "jesper () sait ! dk",
+                 "GPL",
+                 "Contributions GPLed",
+                 "m=130336947315984",
+                 "21 April 2011",
+                 u"Danish translation"),
+
      contributer(u"Pascal André",
                  "andre () via ! ecp ! fr",
                  "GPL",
