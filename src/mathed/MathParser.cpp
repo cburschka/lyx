@@ -251,7 +251,7 @@ bool innerHull(docstring const & name)
 	return name == "array" || name == "cases" || name == "aligned"
 		|| name == "alignedat" || name == "gathered" || name == "split"
 		|| name == "subarray" || name == "tabular" || name == "matrix"
-		|| name.substr(1) == "matrix";
+		|| name == "smallmatrix" || name.substr(1) == "matrix";
 }
 
 
