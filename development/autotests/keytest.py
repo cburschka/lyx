@@ -375,11 +375,15 @@ while not failed:
         print "result=" + str(result) + ", failed=" + str(failed)
     elif c[0:7] == 'TestEnd':
         time.sleep(0.5)
-        print "Terminating lyx instance: " + str(lyx_pid) + "\n"
-        intr_system("kill -9 " + str(lyx_pid), True);
-        while lyx_exists():
-            print "Waiting for lyx to die...\n"
-            time.sleep(0.5)
+        if not lyx_exists():
+            print "LyX instance not found because of crash or assert !\n"
+            failed = true
+        else:
+            print "Terminating lyx instance: " + str(lyx_pid) + "\n"
+            intr_system("kill -9 " + str(lyx_pid), True);
+            while lyx_exists():
+                print "Waiting for lyx to die...\n"
+                time.sleep(0.5)
         cmd = c[8:].rstrip()
         print "Executing " + cmd
         result = intr_system(cmd)
