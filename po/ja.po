@@ -2,20 +2,20 @@
 # Japanese translation for LyX
 # Copyright (C) 2007 LyX Developers
 # This file is distributed under the same license as the LyX package.
-# Koji Yokota <yokota@res.otaru-uc.ac.jp>, 2007, 2008, 2009, 2010.
+# Koji Yokota <yokota@res.otaru-uc.ac.jp>, 2007, 2008, 2009, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-03-22 17:53+0100\n"
-"PO-Revision-Date: 2010-11-09 18:23+0900\n"
+"PO-Revision-Date: 2011-04-23 19:09+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
-"Language-Team: 日本語 <lyx-doc@lists.lyx.org>\n"
+"Language-Team: Japanese <lyx-doc@lists.lyx.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
@@ -2286,8 +2286,7 @@ msgstr "一般"
 msgid ""
 "After the cursor has not moved for this time, the inline completion is shown "
 "if it is available."
-msgstr ""
-"これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
+msgstr "これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:147
 msgid "s inline completion dela&y"
@@ -2309,8 +2308,7 @@ msgstr "秒のポップアップ遅延(&E)"
 msgid ""
 "When the TAB completion is not unique, there won't be a delay of the popup. "
 "It will be shown right away."
-msgstr ""
-"タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
+msgstr "タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:221
 msgid "Sho&w popup without delay for non-unique completions"
@@ -2800,8 +2798,7 @@ msgstr "書き出し時の上書き(&O):"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:114
 msgid "What to do when existing files are going to be overwritten on export."
-msgstr ""
-"書き出し時に、既存のファイルが上書きされようとしているときにどうするか。"
+msgstr "書き出し時に、既存のファイルが上書きされようとしているときにどうするか。"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:118
 msgid "Ask permission"
@@ -3905,8 +3902,7 @@ msgstr "選択した項目を1つ上げる"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:44
 msgid "If you check this, LyX will not warn you again in the given case."
-msgstr ""
-"これを有効にすると、LyXは当該ケースについて今後警告することはなくなります。"
+msgstr "これを有効にすると、LyXは当該ケースについて今後警告することはなくなります。"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:47
 msgid "&Do not show this warning again!"
@@ -9753,11 +9749,11 @@ msgstr "モンゴル語"
 
 #: lib/languages:67
 msgid "Norwegian (Bokmaal)"
-msgstr ""
+msgstr "Norwegian (Bokmål)"
 
 #: lib/languages:68
 msgid "Norwegian (Nynorsk)"
-msgstr ""
+msgstr "ノルウェー語(ニーノシュク)"
 
 #: lib/languages:69
 msgid "Polish"
@@ -11384,19 +11380,16 @@ msgid "Edit Externally...|x"
 msgstr "外部で編集(X)...|X"
 
 #: lib/ui/stdcontext.inc:367
-#, fuzzy
 msgid "Multicolumn|u"
-msgstr "連結列(M)|M"
+msgstr "連結列(U)|U"
 
 #: lib/ui/stdcontext.inc:369
-#, fuzzy
 msgid "Top Line|n"
-msgstr "上の罫線(T)|T"
+msgstr "上の罫線(N)|N"
 
 #: lib/ui/stdcontext.inc:370
-#, fuzzy
 msgid "Bottom Line|i"
-msgstr "下の罫線(B)|B"
+msgstr "下の罫線(I)|I"
 
 #: lib/ui/stdcontext.inc:371 lib/ui/stdmenus.inc:177
 msgid "Left Line|L"
@@ -11407,38 +11400,32 @@ msgid "Right Line|R"
 msgstr "右の罫線(R)|R"
 
 #: lib/ui/stdcontext.inc:374
-#, fuzzy
 msgid "Left|f"
-msgstr "左(L)|L"
+msgstr "左(F)|F"
 
 #: lib/ui/stdcontext.inc:376
-#, fuzzy
 msgid "Right|h"
-msgstr "右(R)|R"
+msgstr "右(H)|H"
 
 #: lib/ui/stdcontext.inc:384 lib/ui/stdmenus.inc:193
 msgid "Copy Row|o"
 msgstr "行をコピー(O)|O"
 
 #: lib/ui/stdcontext.inc:387
-#, fuzzy
 msgid "Add Column|p"
-msgstr "列を追加(U)|U"
+msgstr "列を追加(P)|P"
 
 #: lib/ui/stdcontext.inc:389
-#, fuzzy
 msgid "Copy Column|y"
-msgstr "列をコピー(P)|P"
+msgstr "列をコピー(Y)|Y"
 
 #: lib/ui/stdcontext.inc:392
-#, fuzzy
 msgid "Settings...|g"
-msgstr "設定(S)...|S"
+msgstr "設定(G)...|G"
 
 #: lib/ui/stdcontext.inc:401
-#, fuzzy
 msgid "Copy Text|o"
-msgstr "コピー(O)|O"
+msgstr "語句をコピー(O)|O"
 
 #: lib/ui/stdmenus.inc:33
 msgid "Document|D"
@@ -16980,8 +16967,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2562
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
-msgstr ""
-"pLaTeX(日本語LaTeX)用のbibtexプログラムのオプションを定義してください。"
+msgstr "pLaTeX(日本語LaTeX)用のbibtexプログラムのオプションを定義してください。"
 
 #: src/LyXRC.cpp:2566
 msgid ""
@@ -16993,8 +16979,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2570
 msgid "Select to check whether the lastfiles still exist."
-msgstr ""
-"最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
+msgstr "最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
 
 #: src/LyXRC.cpp:2574
 msgid ""
@@ -17020,8 +17005,7 @@ msgstr "単語間のカーソル移動にMac OS X式の方法を使う。"
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
-msgstr ""
-"カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
+msgstr "カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
 
 #: src/LyXRC.cpp:2603
 #, no-c-format
@@ -17064,8 +17048,7 @@ msgstr "LyX が画像をどのように表示するかを選びます。"
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
-msgstr ""
-"文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
+msgstr "文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
 
 #: src/LyXRC.cpp:2632
 msgid "Specify additional chars that can be part of a word."
@@ -17176,8 +17159,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2704
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr ""
-"LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
+msgstr "LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
 
 #: src/LyXRC.cpp:2708
 msgid "De-select to prevent loading files opened from the last LyX session."
@@ -17224,8 +17206,7 @@ msgstr "複数の補完候補がある際、遅延なしに補完ポップアッ
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
-msgstr ""
-"補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
+msgstr "補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
 
 #: src/LyXRC.cpp:2745
 msgid "The inline completion delay."
@@ -17246,8 +17227,7 @@ msgstr "長い補完を短縮するのに\"...\"を使用する。"
 #: src/LyXRC.cpp:2761
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
-msgstr ""
-"最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
+msgstr "最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
 
 #: src/LyXRC.cpp:2766
 msgid ""
@@ -17577,8 +17557,7 @@ msgstr "未知のトークン"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr ""
-"空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
+msgstr "空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
 
 #: src/Text.cpp:535
 msgid "You cannot type two spaces this way. Please read the Tutorial."
@@ -17702,8 +17681,7 @@ msgstr "破損ファイル"
 
 #: src/TextClass.cpp:668
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
-msgstr ""
-"stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
+msgstr "stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
 
 #: src/Thesaurus.cpp:60
 msgid "Thesaurus failure"
@@ -17730,41 +17708,40 @@ msgstr ""
 "エラーが発生しました。"
 
 #: src/VCBackend.cpp:382
-#, fuzzy
 msgid "Up-to-date"
-msgstr "更新(&U)"
+msgstr "最新版になっています"
 
 #: src/VCBackend.cpp:384
-#, fuzzy
 msgid "Locally Modified"
-msgstr "ローカルのレイアウトファイル"
+msgstr "ローカルに修正されています"
 
 #: src/VCBackend.cpp:386
-#, fuzzy
 msgid "Locally Added"
-msgstr "ローカルのレイアウトファイル"
+msgstr "ローカルに追加されています"
 
 #: src/VCBackend.cpp:388
 msgid "Needs Merge"
-msgstr ""
+msgstr "統合が必要"
 
 #: src/VCBackend.cpp:390
 msgid "Needs Checkout"
-msgstr ""
+msgstr "チェックアウトが必要"
 
 #: src/VCBackend.cpp:392
 msgid "No CVS file"
-msgstr ""
+msgstr "CVSファイルがありません"
 
 #: src/VCBackend.cpp:394
 msgid "Cannot retrieve CVS status"
-msgstr ""
+msgstr "CVS状態を取得できません"
 
 #: src/VCBackend.cpp:521
 msgid ""
 "The repository version is newer then the current check out.\n"
 "You have to update from repository first or revert your changes."
 msgstr ""
+"リポジトリのバージョンが現在のチェックアウトよりも新しいです。\n"
+"まずリポジトリから更新を行うか、あなたの変更を復帰させる必要があります。"
 
 #: src/VCBackend.cpp:526
 #, c-format
@@ -17774,9 +17751,13 @@ msgid ""
 "'%1$s'\n"
 "\n"
 msgstr ""
+"変更点をチェックしている間に不良状態を得ました。\n"
+"\n"
+"「%1$s」\n"
+"\n"
 
 #: src/VCBackend.cpp:567
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error when updating from repository.\n"
 "You have to manually resolve the conflicts NOW!\n"
@@ -17788,10 +17769,10 @@ msgstr ""
 "手動で「ただちに」矛盾を解決する必要があります。\n"
 "'%1$s'.\n"
 "\n"
-"OKを押すと、LyXは文書を再度開きます。"
+"OKを押すと、LyXは、文書を解決済みとして、再度開くことを試みます。"
 
 #: src/VCBackend.cpp:599
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There were detected changes in the working directory:\n"
 "%1$s\n"
@@ -17802,10 +17783,8 @@ msgstr ""
 "作業ディレクトリ%1$sに\n"
 "変更があったことを検出しました。\n"
 "\n"
-"ファイルの衝突がある場合には、ローカルディレクトリのファイルが優先されま"
-"す。\n"
-"\n"
-"続けますか？"
+"ファイルの衝突がある場合には、手動で解消するか、リポジトリのバージョンに戻す"
+"必要があります。"
 
 #: src/VCBackend.cpp:603 src/VCBackend.cpp:607 src/VCBackend.cpp:970
 #: src/VCBackend.cpp:974
@@ -17813,14 +17792,12 @@ msgid "Changes detected"
 msgstr "変更が検出されました"
 
 #: src/VCBackend.cpp:604 src/VCBackend.cpp:608
-#, fuzzy
 msgid "&Continue"
-msgstr "引き続き"
+msgstr "続ける(&C)"
 
 #: src/VCBackend.cpp:604 src/VCBackend.cpp:608
-#, fuzzy
 msgid "&Abort"
-msgstr "整序(&S)"
+msgstr "終了(&A)"
 
 #: src/VCBackend.cpp:604 src/VCBackend.cpp:971
 msgid "View &Log ..."
@@ -17832,6 +17809,8 @@ msgid ""
 "The document %1$s is not in repository.\n"
 "You have to check in the first revision before you can revert."
 msgstr ""
+"文書%1$sはレポジトリにありません。\n"
+"復帰する前に最初のリビジョンを検査する必要があります。"
 
 #: src/VCBackend.cpp:675
 #, c-format
@@ -17839,6 +17818,8 @@ msgid ""
 "Cannot revert document %1$s to repository version.\n"
 "The status '%2$s' is unexpected."
 msgstr ""
+"文書%1$sをリポジトリ版に復帰させることができません。\n"
+"状態「%2$s」は予期せぬ結果です。"
 
 #: src/VCBackend.cpp:776 src/VCBackend.cpp:823 src/VCBackend.cpp:918
 #: src/VCBackend.cpp:955 src/VCBackend.cpp:1011
@@ -18852,7 +18833,7 @@ msgstr "%1$s、%2$sおよび%3$s"
 #: src/frontends/qt4/GuiDocument.cpp:1407
 #, c-format
 msgid "%1$s (unavailable)"
-msgstr ""
+msgstr "%1$s (利用不能)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1479
 msgid "Module provided by document class."
@@ -20742,19 +20723,19 @@ msgstr ""
 "す。"
 
 #: src/insets/InsetInclude.cpp:515
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not load included file\n"
 "`%1$s'\n"
 "Please, check whether it actually exists."
 msgstr ""
-"LyXはバックアップファイル %1$s を生成することができませんでした。\n"
-"ディレクトリが存在して書込可能になっていることを確認してください。"
+"インクルードファイル「%1$s」\n"
+"読み込むことができません。\n"
+"このファイルが存在していることを確認してください。"
 
 #: src/insets/InsetInclude.cpp:519
-#, fuzzy
 msgid "Missing included file"
-msgstr "ファイルを取り込む"
+msgstr "存在しないインクルードファイル"
 
 #: src/insets/InsetInclude.cpp:527
 #, c-format
@@ -20792,11 +20773,12 @@ msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
+"インクルードされているファイル「%1$s」は、正しく書き出されませんでした。\n"
+"警告：LaTeXへの書き出しが、おそらく不完全になっています。"
 
 #: src/insets/InsetInclude.cpp:580
-#, fuzzy
 msgid "Export failure"
-msgstr "バックアップ失敗"
+msgstr "書き出し失敗"
 
 #: src/insets/InsetIndex.cpp:129
 msgid "Index sorting failed"
@@ -21439,15 +21421,16 @@ msgid "Unknown tabular feature '%1$s'"
 msgstr "「%1$s」は未知の表の特性です"
 
 #: src/mathed/InsetMathHull.cpp:1152
-#, fuzzy
 msgid "Bad math environment"
-msgstr "Gather環境"
+msgstr "不良な数式環境です"
 
 #: src/mathed/InsetMathHull.cpp:1153
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
 msgstr ""
+"AMS数式環境では、計算を行うことができません。\n"
+"数式型を変更して再度試みてください。"
 
 #: src/mathed/InsetMathHull.cpp:1257 src/mathed/InsetMathHull.cpp:1265
 msgid "No number"
@@ -21485,9 +21468,9 @@ msgid "Standard[[mathref]]"
 msgstr "標準"
 
 #: src/mathed/InsetMathSubstack.cpp:80
-#, fuzzy, c-format
+#, c-format
 msgid "Can't change horizontal alignment in '%1$s'"
-msgstr "「%1$s」に水平境界線を加えることができません。"
+msgstr "「%1$s」の水平揃えを変更することができません。"
 
 #: src/mathed/MathMacroTemplate.cpp:495
 msgid "optional"
