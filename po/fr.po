@@ -244,12 +244,14 @@
 # ------------------------------------------------------------------
 # 25 mars 2011 derniere revue avant 1.6.10
 # ------------------------------------------------------------------
+# 22 avril 2011 Advanced features -> Options avancees
+# ------------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-03-22 17:53+0100\n"
-"PO-Revision-Date: 2011-03-25 18:31+0100\n"
+"PO-Revision-Date: 2011-04-22 18:27+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: \n"
@@ -2247,7 +2249,7 @@ msgstr "&Colonnes :"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:136
 msgid "Resize this to the correct table dimensions"
-msgstr "Repositionner ceci à la taille de table correcte"
+msgstr "Repositionner ceci à la taille de tableau correcte"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:211
 #: src/frontends/qt4/ui/WrapUi.ui:195
@@ -2594,7 +2596,7 @@ msgstr "&Modifier..."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:25
 msgid "In Math"
-msgstr "En mode mathétmatique"
+msgstr "En mode mathématique"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:40
 msgid "Show the grey inline completion behind the cursor in math mode after the delay."
@@ -4163,7 +4165,7 @@ msgstr "Remplacer l'entrée par la sélection"
 
 #: src/frontends/qt4/ui/TocUi.ui:30
 msgid "Switch between available lists (table of contents, list of figures, list of tables, and others)"
-msgstr "Permuter entre la table des matières, la liste des figures, la liste des tableaux,et autres"
+msgstr "Permuter entre la table des matières, la liste des figures, la liste des tableaux, et autres"
 
 #: src/frontends/qt4/ui/TocUi.ui:57
 msgid "Adjust the depth of the navigation tree"
@@ -9155,7 +9157,7 @@ msgstr "Pleine largeur"
 
 #: lib/layouts/tufte-book.layout:194
 msgid "MarginTable"
-msgstr "Table en marge"
+msgstr "Tableau en marge"
 
 #: lib/layouts/tufte-book.layout:205
 msgid "MarginFigure"
@@ -13184,7 +13186,7 @@ msgstr "Flottant d'enrobage de figure|i"
 
 #: lib/ui/stdmenus.inc:425
 msgid "Table Wrap Float|T"
-msgstr "Flottant d'enrobage de table|n"
+msgstr "Flottant d'enrobage de tableau|n"
 
 #: lib/ui/stdmenus.inc:441
 msgid "External Material...|M"
@@ -13260,7 +13262,7 @@ msgstr "Informations TeX|X"
 
 #: lib/ui/stdmenus.inc:535
 msgid "Additional Features|F"
-msgstr "Fonctionnalités supplémentaires|o"
+msgstr "Options avancées|O"
 
 #: lib/ui/stdmenus.inc:536
 msgid "Embedded Objects|O"
