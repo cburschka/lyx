@@ -51,7 +51,11 @@ macro(add_gettext_python  _par _dir)
       COMMENT "${LYX_PYTHON_EXECUTABLE} ${TOP_SRC_DIR}/po/lyx_pot.py -b ${TOP_SRC_DIR} -o  ${_dst} -t ${_par1} --src_file=${_src_files}"
       )
     ADD_CUSTOM_TARGET(layouttranslations1 DEPENDS "${_dst}")
-    install(FILES "${TOP_SRC_DIR}/lib/layouttranslations" DESTINATION ${LYX_DATA_SUBDIR})
+    if (LYX_DATA_SUBDIR STREQUAL "")
+      install(FILES "${TOP_SRC_DIR}/lib/layouttranslations" DESTINATION .)
+    else()
+      install(FILES "${TOP_SRC_DIR}/lib/layouttranslations" DESTINATION ${LYX_DATA_SUBDIR})
+    endif()
   else()
     ADD_CUSTOM_COMMAND(
       OUTPUT "${_dst}"
