@@ -522,7 +522,7 @@ InsetTableCell splitCell(InsetTableCell & head, docstring const align_d, bool & 
 
 	DocIterator dit = doc_iterator_begin(&head.buffer(), &head);
 	for (; dit; dit.forwardChar())
-		if (dit.inTexted() && dit.depth()==1
+		if (dit.inTexted() && dit.depth() == 1
 			&& dit.paragraph().find(align_d, false, false, dit.pos()))
 			break;
 

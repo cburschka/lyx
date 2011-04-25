@@ -401,6 +401,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	InsetList::const_iterator ii = par.insetList().begin();
 	InsetList::const_iterator iend = par.insetList().end();
 	for (; ii != iend; ++ii) {
+		// FIXME Doesn't this HAVE to be non-empty?
 		// position already initialized?
 		if (!parPos.empty()) {
 			parPos.pos() = ii->pos;
