@@ -771,7 +771,7 @@ def revert_author_id(document):
     " Remove the author_id from the \\author definition "
     i = 0
     anum = 0
-    rx = re.compile(r'(\\author)\s+(\d+)\s+(\".*\")\s*(.*)$')
+    rx = re.compile(r'(\\author)\s+(-?\d+)\s+(\".*\")\s*(.*)$')
     idmap = dict()
 
     while True:
