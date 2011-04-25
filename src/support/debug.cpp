@@ -22,16 +22,6 @@
 #include <iostream>
 #include <iomanip>
 
-//#define LYX_CALLSTACK_PRINTING
-// must be linked with -rdynamic
-#ifdef LYX_CALLSTACK_PRINTING
-#include <stdio.h>
-#include <stdlib.h>
-#include <execinfo.h>
-#include <cxxabi.h>
-#endif
-
-
 
 using namespace std;
 using namespace lyx::support;
@@ -253,43 +243,6 @@ LyXErr & operator<<(LyXErr & l, ios_base &(*t)(ios_base &))
 // The global instance
 LyXErr lyxerr;
 
-
-void Debug::printCallStack()
-{
-#ifdef LYX_CALLSTACK_PRINTING
-	const int depth = 50;
-	
-	// get void*'s for all entries on the stack
-	void* array[depth];
-	size_t size = backtrace(array, depth);
-	
-	char** messages = backtrace_symbols(array, size);
-	
-	for (size_t i = 0; i < size && messages != NULL; i++) {
-		std::string orig(messages[i]);
-		// extract mangled: bin/lyx2.0(_ZN3lyx7support7packageEv+0x32) [0x8a2e02b]
-		char* mangled = 0;
-		for (char *p = messages[i]; *p; ++p) {
-			if (*p == '(') {
-				*p = 0;
-				mangled = p + 1;
-			} else if (*p == '+') {
-				*p = 0;
-				break;
-			}
-		}
-		int err = 0;
-		char* demangled = abi::__cxa_demangle(mangled, 0, 0, &err);
-		if (err == 0) {
-			fprintf(stderr, "[bt]: (%d) %s %s\n", i, messages[i], demangled);
-			free((void*)demangled);
-		} else {
-			fprintf(stderr, "[bt]: (%d) %s\n", i, orig.c_str());
-		}
-		
-	}
-#endif
-}
 
 
 } // namespace lyx

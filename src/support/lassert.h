@@ -18,6 +18,10 @@ namespace lyx {
 
 void doAssert(char const * expr, char const * file, long line);
 
+/// Print demangled callstack to stderr
+void printCallStack();
+
+
 } // namespace lyx
 
 #define LASSERT(expr, escape) \
