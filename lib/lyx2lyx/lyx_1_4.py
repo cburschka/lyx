@@ -24,7 +24,7 @@ import re
 from os import access, F_OK
 import os.path
 from parser_tools import check_token, find_token, \
-                         get_value, del_token, is_nonempty_line, \
+                         get_value, is_nonempty_line, \
                          find_tokens, find_end_of, find_beginning_of, find_token_exact, find_tokens_exact, \
                          find_re, find_tokens_backwards
 from sys import stdin
@@ -83,6 +83,21 @@ def get_next_paragraph(lines, i, format):
 def find_end_of_inset(lines, i):
     "Finds the matching \end_inset"
     return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
+
+def del_token(lines, token, start, end):
+    """ del_token(lines, token, start, end) -> int
+
+    Find the lower line in lines where token is the first element and
+    delete that line.
+
+    Returns the number of lines remaining."""
+
+    k = find_token_exact(lines, token, start, end)
+    if k == -1:
+        return end
+    else:
+        del lines[k]
+        return end - 1
 
 # End of helper functions
 ####################################################################

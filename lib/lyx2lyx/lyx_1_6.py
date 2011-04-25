@@ -22,10 +22,26 @@ import re
 import unicodedata
 import sys, os
 
-from parser_tools import find_token, find_end_of, find_tokens, get_value, get_value_string
+from parser_tools import find_token, find_end_of, find_tokens, get_value
 
 ####################################################################
 # Private helper functions
+
+
+def get_value_string(lines, token, start, end = 0, trim = False, default = ""):
+    """ get_value_string(lines, token, start[[, end], trim, default]) -> string
+
+    Return tokens after token as string, in lines, where
+    token is the first element. When trim is used, the first and last character
+    of the string is trimmed."""
+
+    val = get_value(lines, token, start, end, "")
+    if not val:
+      return default
+    if trim:
+      return val[1:-1]
+    return val
+
 
 def find_end_of_inset(lines, i):
     " Find end of inset, where lines[i] is included."
@@ -472,6 +488,7 @@ def revert_ltcaption(document):
         j = find_end_of_inset(document.body, i + 1)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of tabular.")
+            i += 1
             continue
 
         m = i + 1
@@ -571,9 +588,10 @@ def revert_tablines(document):
         i = find_token(document.body, "\\begin_inset Tabular", i)
         if i == -1:
             return
-        j = find_end_of_inset(document.body, i + 1)
+        j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of tabular.")
+            i += 1
             continue
 
         m = i + 1
@@ -781,7 +799,6 @@ def revert_flex(document):
         document.body[i] = document.body[i].replace('\\begin_inset Flex', '\\begin_inset CharStyle')
 
 
-#  Discard PDF options for hyperref
 def revert_pdf_options(document):
         "Revert PDF options for hyperref."
         # store the PDF options and delete the entries from the Lyx file
@@ -1760,7 +1777,7 @@ def revert_module_names(document):
     return
   newmodlist = []
   for mod in modlist:
-    if modulemap.has_key(mod):
+    if mod in modulemap:
       newmodlist.append(modulemap[mod])
     else:
       document.warning("Can't find module %s in the module map!" % mod)

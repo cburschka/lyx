@@ -13,6 +13,8 @@ dist_lyx2lyx_PYTHON = \
 	lyx2lyx_lang.py \
 	generate_encoding_info.py \
 	parser_tools.py \
+	lyx2lyx_tools.py \
+	unicode_symbols.py \
 	LyX.py \
 	lyx_0_06.py \
 	lyx_0_08.py \
@@ -28,6 +30,7 @@ dist_lyx2lyx_PYTHON = \
 	lyx_1_4.py \
 	lyx_1_5.py \
 	lyx_1_6.py \
+	lyx_2_0.py \
 	profiling.py \
 	test_parser_tools.py
 

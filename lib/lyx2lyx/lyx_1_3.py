@@ -21,7 +21,7 @@
 
 import re
 from parser_tools import find_token, find_end_of, get_value,\
-                         find_token_exact, del_token
+                         find_token_exact
 
 ####################################################################
 # Private helper functions
@@ -29,6 +29,22 @@ from parser_tools import find_token, find_end_of, get_value,\
 def find_end_of_inset(lines, i):
     "Finds the matching \end_inset"
     return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
+
+
+def del_token(lines, token, start, end):
+    """ del_token(lines, token, start, end) -> int
+
+    Find the lower line in lines where token is the first element and
+    delete that line.
+
+    Returns the number of lines remaining."""
+
+    k = find_token_exact(lines, token, start, end)
+    if k == -1:
+        return end
+    else:
+        del lines[k]
+        return end - 1
 
 # End of helper functions
 ####################################################################
