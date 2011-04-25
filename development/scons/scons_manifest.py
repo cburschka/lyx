@@ -2626,6 +2626,7 @@ lib_lyx2lyx_files = Split('''
     LyX.py
     lyx2lyx
     lyx2lyx_lang.py
+    lyx2lyx_tools.py
     lyx_0_06.py
     lyx_0_08.py
     lyx_0_10.py
@@ -2640,9 +2641,11 @@ lib_lyx2lyx_files = Split('''
     lyx_1_4.py
     lyx_1_5.py
     lyx_1_6.py
+    lyx_2_0.py
     parser_tools.py
     profiling.py
     test_parser_tools.py
+    unicode_symbols.py
 ''')
 
 
