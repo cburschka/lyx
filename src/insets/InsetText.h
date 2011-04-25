@@ -164,6 +164,8 @@ public:
 	/// Update the counters of this inset and of its contents
 	virtual void updateBuffer(ParIterator const &, UpdateType);
 	/// 
+	void setMacrocontextPositionRecursive(DocIterator const & pos);
+	///
 	void toString(odocstream &) const;
 	///
 	void forToc(docstring &, size_t) const;

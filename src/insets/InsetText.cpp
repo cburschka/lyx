@@ -99,6 +99,26 @@ void InsetText::setBuffer(Buffer & buf)
 }
 
 
+void InsetText::setMacrocontextPositionRecursive(DocIterator const & pos)
+{
+	text_.setMacrocontextPosition(pos);
+
+	ParagraphList::const_iterator pit = paragraphs().begin();
+	ParagraphList::const_iterator pend = paragraphs().end();
+	for (; pit != pend; ++pit) {
+		InsetList::const_iterator iit = pit->insetList().begin();
+		InsetList::const_iterator end = pit->insetList().end();
+		for (; iit != end; ++iit) {
+			if (InsetText * txt = iit->inset->asInsetText()) {
+				DocIterator ppos(pos);
+				ppos.push_back(CursorSlice(*txt));
+				iit->inset->asInsetText()->setMacrocontextPositionRecursive(ppos);
+			}
+		}
+	}
+}
+
+
 void InsetText::clear()
 {
 	ParagraphList & pars = paragraphs();
