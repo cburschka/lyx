@@ -2151,12 +2151,12 @@ En el campo
 status collapsed
 
 \begin_layout Plain Layout
-Opción extra
+Indicador adicional
 \end_layout
 
 \end_inset
 
- puedes introducir las siguientes, separadas por comas:
+ puedes introducir los siguientes, separados por comas:
 \end_layout
 
 \begin_layout Labeling
@@ -4339,7 +4339,7 @@ f
 \end_inset
 
  traza el mapa de las cadenas que los símbolos generan para los caracteres
- en la fuente actual.
+ en la tipografía actual.
  La distribución de LyX actualmente incluye al menos los archivos 
 \begin_inset Flex Code
 status collapsed
@@ -5833,6 +5833,99 @@ ad de LyX en estas situaciones, errores sintácticos y similares en el archivo
  del módulo podrían causar extraños comportamientos.
 \end_layout
 
+\begin_layout Subsubsection
+Formato local
+\end_layout
+
+\begin_layout Standard
+Los módulos son a LyX lo que los paquetes a LaTeX.
+ Sin embargo, a veces puede suceder que necesites un recuadro específico
+ o un estilo de carácter solo para un documento, y escribir un módulo que
+ estará disponible también para otros documentos tiene poco sentido.
+ En estos casos, lo que necesitas es el 
+\begin_inset Quotes fld
+\end_inset
+
+Formato local
+\begin_inset Quotes frd
+\end_inset
+
+ de LyX.
+\end_layout
+
+\begin_layout Standard
+Se encuentra en 
+\family sans
+Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Formato local
+\family default
+.
+ El gran cuadro de texto permite introducir todo lo que podría incluirse
+ en un archivo de formato o en un módulo.
+ De hecho, el formato local de un documento se puede considerar como un
+ módulo que le pertenece solo a él.
+ Por tanto, en particular, hay que introducir una etiqueta 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Format
+\end_layout
+
+\end_inset
+
+.
+ Cualquier formato es aceptable, pero debería usarse normalmente el actual
+ formato.
+ (En LyX 2.0 el formato actual es 35).
+ Debes tener en cuenta que el formato local no es soportado por versiones
+ de LyX anteriores a 1.6, por tanto no deberías usarlo si quieres poder exportar
+ el documento a LyX 1.5 o anteriores sin perder la información del formato
+ local.
+ Si quieres poder exportar a 1.6 ---el formato local es soportado pero no
+ hay IU par él---, deberías usar formato 11 y, por supuesto, usar solo estructur
+as que estuvieran disponibles en LyX 1.6.
+\end_layout
+
+\begin_layout Standard
+Una vez introducido algo en el panel 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Local Layout
+\end_layout
+
+\end_inset
+
+, LyX habilitará el botón 
+\begin_inset Quotes fld
+\end_inset
+
+Validar
+\begin_inset Quotes frd
+\end_inset
+
+ de debajo.
+ Pulsando ese botón LyX determinará si lo introducido es información válida
+ para el formato elegido.
+ LyX informará del resultado pero, desafortunadamente, no indicará qué errores
+ pudiera haber habido.
+ Sin embargo, si LyX se ha arrancado en una terminal se verán ahí los errores.
+ El formato local no se podrá guardar hasta que se haya introducido algo
+ válido.
+\end_layout
+
+\begin_layout Standard
+Las advertencias al final de la sección anterior se aplican también aquí.
+ Es mejor no enredar con formato local mientras se está trabajando, especialment
+e si no se ha guardado el documento.
+ Dicho esto, usar formato local en un documento de prueba puede ser una
+ forma muy conveniente de probar ideas de formato, o incluso de empezar
+ a desarrollar un módulo.
+\end_layout
+
 \begin_layout Subsection
 Formato para archivos 
 \begin_inset Flex MenuItem
@@ -6070,8 +6163,6 @@ Input stdclass.inc
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 stdsections.inc
 \end_layout
 
@@ -6307,7 +6398,7 @@ plantilla
 Las plantillas se crean exactamente igual que un documento normal: usando
  LyX.
  La única diferencia es que los documentos corrientes tienen todos los ajustes
- posibles, incluso el esquema de fuentes y el tamaño del papel.
+ posibles, incluso el esquema de tipografías y el tamaño del papel.
  Generalmente, un usuario no desea que una plantilla sobrescriba sus ajustes
  preferidos para dichos parámetros.
  Por esta razón, el diseñador de una plantilla debería quitar comandos como
@@ -7543,7 +7634,7 @@ DefaultFont
 
 \end_inset
 
- Establece la fuente por omisión para presentar el documento.
+ Establece la tipografía por omisión para presentar el documento.
  Véase la sección
 \begin_inset space ~
 \end_inset
@@ -7551,11 +7642,11 @@ DefaultFont
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Fuentes"
+reference "sub:Tipografías"
 
 \end_inset
 
- para cómo declarar fuentes.
+ para cómo declarar tipografías.
  Debe terminar con 
 \begin_inset Quotes fld
 \end_inset
@@ -8853,7 +8944,7 @@ string="10|11|12"
 
 \end_inset
 
-] La lista de los tamaños de fuente disponibles para la fuente principal
+] La lista de los tamaños de carácter disponibles para la tipografía principal
  del documento, separados por 
 \begin_inset Quotes fld
 \end_inset
@@ -9529,7 +9620,7 @@ Font
 
 \end_inset
 
- La fuente usada para el cuerpo del texto 
+ La tipografía usada para el cuerpo del texto 
 \emph on
 y
 \emph default
@@ -9541,13 +9632,13 @@ y
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Fuentes"
+reference "sub:Tipografías"
 
 \end_inset
 
 .
- Anotar que al definir esta fuente se define automáticamente la de la etiqueta,
- 
+ Anotar que al definir esta tipografía se define automáticamente la de la
+ etiqueta, 
 \begin_inset Flex Code
 status collapsed
 
@@ -10086,7 +10177,7 @@ LabelFont
 
 \end_inset
 
- La fuente usada para la etiqueta.
+ La tipografía usada para la etiqueta.
  Véase la sección
 \begin_inset space ~
 \end_inset
@@ -10094,7 +10185,7 @@ LabelFont
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Fuentes"
+reference "sub:Tipografías"
 
 \end_inset
 
@@ -11049,7 +11140,7 @@ MM
 \begin_inset Quotes frd
 \end_inset
 
- en la fuente normal.
+ en la tipografía normal.
  Se puede obtener una anchura negativa anteponiendo 
 \begin_inset Quotes fld
 \end_inset
@@ -11070,7 +11161,7 @@ status collapsed
 
  a la cadena.
  Se eligió este método para que el aspecto sea el mismo con cada una de
- las fuentes de pantalla usadas.
+ las tipografías de pantalla usadas.
 \end_layout
 
 \begin_layout Description
@@ -11709,8 +11800,8 @@ DefaultHeight
 
 \end_inset
 
- es la altura de una fila con la fuente normal.
- De esta forma, el aspecto queda igual con diferentes fuentes de pantalla.
+ es la altura de una fila con la tipografía normal.
+ De esta forma, el aspecto queda igual con diferentes tipografías de pantalla.
 \end_layout
 
 \begin_layout Description
@@ -12106,11 +12197,11 @@ TextFont
 
 \end_inset
 
- La fuente para el cuerpo del texto.
+ La tipografía para el cuerpo del texto.
  Véase la sección 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Fuentes"
+reference "sub:Tipografías"
 
 \end_inset
 
@@ -14063,7 +14154,7 @@ Font
 
 \end_inset
 
- La fuente usada tanto para el cuerpo del texto como para la etiqueta.
+ La tipografía usada tanto para el cuerpo del texto como para la etiqueta.
  Véase la sección
 \begin_inset space ~
 \end_inset
@@ -14071,13 +14162,13 @@ Font
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Fuentes"
+reference "sub:Tipografías"
 
 \end_inset
 
 .
- Anotar que al definir esta fuente se define automáticamente el mismo valor
- para la etiqueta, 
+ Anotar que al definir esta tipografía se define automáticamente el mismo
+ valor para la etiqueta, 
 \begin_inset Flex Code
 status collapsed
 
@@ -14287,7 +14378,7 @@ LabelFont
 
 \end_inset
 
- La fuente para la etiqueta.
+ La tipografía para la etiqueta.
  Véase la sección
 \begin_inset space ~
 \end_inset
@@ -14295,7 +14386,7 @@ LabelFont
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Fuentes"
+reference "sub:Tipografías"
 
 \end_inset
 
@@ -14816,8 +14907,8 @@ status collapsed
 
 \end_inset
 
-] Si este recuadro debería usar la fuente de su entorno o la suya propia.
- Por omisión es su propia fuente.
+] Si este recuadro debería usar la tipografía de su entorno o la suya propia.
+ Por omisión es su propia tipografía.
 \end_layout
 
 \begin_layout Description
@@ -15392,10 +15483,10 @@ section
 \end_layout
 
 \begin_layout Subsection
-Descripción de las fuentes
+Descripción de las tipografías
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Fuentes"
+name "sub:Tipografías"
 
 \end_inset
 
@@ -15403,7 +15494,7 @@ name "sub:Fuentes"
 \end_layout
 
 \begin_layout Standard
-Una descripción de una fuente se ve como:
+Una descripción de una tipografía se ve como:
 \end_layout
 
 \begin_layout LyX-Code
@@ -15689,7 +15780,7 @@ no_emph
 \begin_inset Newline newline
 \end_inset
 
-Si esto último parece superfluo, recordemos que la configuración de fuentes
+Si esto último parece superfluo, recordemos que la configuración de tipografías
  para el presente contexto se hereda generalmente del contexto circundante.
  Por eso 
 \begin_inset Flex Code
@@ -18075,8 +18166,8 @@ Hemos mencionado ya que LyX generará reglas de estilo CSS predeterminadas
 \end_layout
 
 \begin_layout Standard
-Actualmente, LyX auto-genera CSS solo para información sobre fuentes, haciendo
- uso de 
+Actualmente, LyX auto-genera CSS solo para información sobre tipografías,
+ haciendo uso de 
 \begin_inset Flex Code
 status collapsed
 
@@ -18130,7 +18221,7 @@ Font
  (Véase 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Fuentes"
+reference "sub:Tipografías"
 
 \end_inset
 

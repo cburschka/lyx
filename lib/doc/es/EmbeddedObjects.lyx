@@ -473,16 +473,16 @@ Puedes girar los gráficos en el sentido de las agujas de reloj estableciendo
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Figuras ! Escalar
+Figuras ! Redimensionar
 \end_layout
 
 \end_inset
 
-Las imágenes se pueden escalar mediante un porcentaje o fijando explícitamente
- la altura y la anchura.
+Las imágenes se pueden redimensionar mediante un porcentaje o fijando explícitam
+ente la altura y la anchura.
  Si fijas sólo la anchura o sólo la altura, la otra dimensión se establece
  automáticamente.
  Si fijas ambas dimensiones
@@ -499,7 +499,7 @@ Mantener
 proporción
 \family default
 .
- En ese caso la imagen será escalada de forma que su anchura y su altura
+ En ese caso la imagen será modificada de forma que su anchura y su altura
  no excedan de las dimensiones especificadas.
 \begin_inset Newline newline
 \end_inset
@@ -518,8 +518,8 @@ Las imágenes se pueden abrir en el programa de tu elección con la entrada
 \end_layout
 
 \begin_layout Description
-Recorte Alternativamente al escalado, es posible establecer las coordenadas
- de la imagen para ajustar su altura y anchura en la salida.
+Recorte Como alternativa para cambiar el tamaño, es posible establecer las
+ coordenadas de la imagen para ajustar su altura y anchura en la salida.
  Además, las coordenadas se pueden calcular automáticamente pinchando el
  botón 
 \family sans
@@ -605,11 +605,7 @@ al
 
 exportar
 \family default
- sólo afecta a los gráficos EPS comprimidos, p.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
+ sólo afecta a los gráficos EPS comprimidos, por ejemplo
 \begin_inset space ~
 \end_inset
 
@@ -1256,7 +1252,7 @@ reference "cap:Formatos-de-Archivos-de-Salida"
 \end_layout
 
 \begin_layout Standard
-Como en el caso de las fuentes, hay dos tipos de formatos de imagen:
+Como en el caso de las tipografías, hay dos tipos de formatos de imagen:
 \end_layout
 
 \begin_layout Description
@@ -1401,16 +1397,16 @@ Imágenes
 \end_inset
 
 vectoriales se generan mediante una descripción de una serie de trazos (vectores
-) y por tanto pueden escalarse a cualquier tamaño sin pérdidas.
- La posibilidad de escalado hace falta para crear presentaciones, porque
- éstas siempre son escaladas por el proyector.
- El escalado también es útil en los documentos en línea para permitir el
- zoom en diagramas.
+) y por tanto su tamaño puede modificarse a cualquier escala sin pérdidas.
+ La posibilidad de variar la escala hace falta para crear presentaciones,
+ porque éstas siempre son redimensionadas por el proyector.
+ La modificación de la escala también es útil en los documentos en línea
+ para permitir el zoom en diagramas.
 \begin_inset Newline newline
 \end_inset
 
-Formatos de imagen escalables pueden ser «Scalable Vector Graphics» (SVG,
- extensión «
+Formatos de imagen que admiten escala pueden ser «Scalable Vector Graphics»
+ (SVG, extensión «
 \family typewriter
 .svg
 \family default
@@ -1557,8 +1553,8 @@ status collapsed
 .
  Escribimos «pueden ser» porque se puede convertir cualquier imagen bitmap
  a PDF o EPS y el resultado será todavía una imagen bitmap.
- En estos casos sólo se añade una cabecera con las propiedades de la imagen
- a la imagen original.
+ En estos casos sólo se añade a la imagen original una cabecera con las
+ propiedades de la imagen.
 \begin_inset Foot
 status collapsed
 
@@ -1576,8 +1572,8 @@ Adobe Photoshop
 \end_layout
 
 \begin_layout Standard
-Normalmente no es posible convertir una imagen bitmap a escalable pero sí
- al contrario.
+Normalmente no es posible convertir una imagen bitmap a un formato que admite
+ escala pero sí al contrario.
  Sólo los formatos de imagen PDF y EPS pueden empotrarse directamente en
  archivos de salida PDF y PostScript, respectivamente.
  Las imágenes SVG y WMF son recalculadas a bitmaps cuando se genera el archivo
@@ -1659,7 +1655,7 @@ Puede insertarse un cuadro mediante el botón
  o el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
-Cuadro
+Cuadro/Tabla
 \family default
 .
  El botón ofrece una selección gráfica: moviendo el puntero se puede definir
@@ -2317,7 +2313,7 @@ Cuadros ! Barra de herramientas
 \end_layout
 
 \begin_layout Standard
-La barra de herramientas de cuadros es una alternativa al cuadro de diálogo
+La barra de herramientas de cuadros es una alternativa a la ventana de diálogo
  para cambiar los cuadros de manera más rápida.
  Normalmente debería aparecer en la parte inferior de la ventana principal
  de LyX cuando el cursor está dentro de un cuadro.
@@ -2579,7 +2575,7 @@ Cuadros ! Editar
 Además del diálogo y la barra de herramientas, el menú 
 \family sans
 Editar\SpecialChar \menuseparator
-Cuadro
+Cuadro/Tabla
 \family default
  permite añadir y borrar bordes para la fila/columna actual y establecer
  la selección como multicolumna.
@@ -14703,8 +14699,8 @@ a: La alineación del contenido de la fila con la línea del texto adyacente
 \backslash
 raisebox
 \series default
- para este alineamiento depende de la fuente del documento, del tamaño de
- la fuente y del grosor de línea del cuadro.
+ para este alineamiento depende de la tipografía del documento, del tamaño
+ de letra y del grosor de línea del cuadro.
 \end_layout
 
 \end_inset
@@ -16617,8 +16613,8 @@ array
 \end_layout
 
 \begin_layout Standard
-En el caso de usar fuentes de mayor tamaño que el normal, los bordes del
- cuadro están a veces demasiado cerca de las letras.
+En el caso de usar tipografías de mayor tamaño que el normal, los bordes
+ del cuadro están a veces demasiado cerca de las letras.
  Esto se puede corregir insertando el comando 
 \series bold
 
@@ -16658,7 +16654,7 @@ name "tab:Alineación-vertical"
 
 \end_inset
 
-Alineación vertical de texto con fuentes grandes
+Alineación vertical de texto con letras grandes
 \end_layout
 
 \end_inset
@@ -20743,12 +20739,8 @@ Configuración
 sección
 \emph default
 ).
- Así, p.
-\begin_inset space \thinspace{}
-\end_inset
-
-e., no tendrás que escribir la palabra «Figura» delante de cada referencia
- a una figura.
+ Así, por ejemplo, no tendrás que escribir la palabra «Figura» delante de
+ cada referencia a una figura.
  Para usar esta característica habilita el soporte para 
 \series bold
 hyperref
@@ -22613,8 +22605,8 @@ Figura #
 \family default
 :» seguida por el texto.
  «#» es el número real de referencia.
- Por omisión la etiqueta y el número usan la misma fuente que el texto de
- la leyenda y el signo dos puntos sigue al número para separar la etiqueta
+ Por omisión la etiqueta y el número usan la misma tipografía que el texto
+ de la leyenda y el signo dos puntos sigue al número para separar la etiqueta
  del texto.
  El entorno leyenda no es apropiado para todos los tipos de documento.
  
@@ -30428,7 +30420,7 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-Marcos rotados y escalados
+Marcos girados y a escala
 \end_layout
 
 \begin_layout Standard
@@ -30488,7 +30480,7 @@ status open
 \series bold
 Nota: 
 \series default
-Algunos visores DVI no pueden mostrar material rotado o escalado.
+Algunos visores DVI no pueden mostrar material girado o a escala.
 \end_layout
 
 \end_inset
@@ -30505,7 +30497,7 @@ status open
 \series bold
 Nota:
 \series default
- Los marcos rotados o escalados no pueden contener flotantes.
+ Los marcos girados o a escala no pueden contener flotantes.
 \end_layout
 
 \end_inset
@@ -30514,12 +30506,12 @@ Nota:
 \end_layout
 
 \begin_layout Subsection
-Marcos rotados
+Marcos girados
 \begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
-Marcos ! Rotar
+Marcos ! Girar
 \end_layout
 
 \end_inset
@@ -30549,7 +30541,7 @@ Figuras ! Rotar
 status open
 
 \begin_layout Plain Layout
-Cuadros ! Rotar
+Cuadros ! Girar
 \end_layout
 
 \end_inset
@@ -30558,8 +30550,8 @@ Cuadros ! Rotar
 \end_layout
 
 \begin_layout Standard
-Para rotar material debes ponerlo en un marco rotado.
- Los marcos rotados se crean con el comando 
+Para girar material debes ponerlo en un marco girado.
+ Los marcos girados se crean con el comando 
 \series bold
 
 \backslash
@@ -31103,8 +31095,8 @@ El comando
 \backslash
 resizebox
 \series default
- sirve para variar la escala del marco a una altura y anchura definidas,
- según el esquema:
+ sirve para redimensionar el marco a una altura y anchura definidas, según
+ el esquema:
 \end_layout
 
 \begin_layout Standard
@@ -31638,7 +31630,7 @@ Día-Mes-Año.
  A continuación hay una fecha insertada como material externo: 
 \begin_inset External
 	template Date
-	filename ...
+	filename es/...
 
 \end_inset
 
@@ -32112,10 +32104,10 @@ hijo
 \end_layout
 
 \begin_layout Description
-Incluir Puedes incluir documentos LyX y documentos LaTeX.
+Anexar Puedes incluir documentos LyX y documentos LaTeX.
  Al pulsar el botón 
 \family sans
-Cargar
+Aceptar
 \family default
  en el diálogo 
 \family sans
@@ -32128,7 +32120,7 @@ Documento hijo
 \begin_layout Standard
 Aquí hay un archivo insertado con el método 
 \family sans
-Incluir
+Anexar
 \family default
 : 
 \begin_inset CommandInset include
@@ -32145,7 +32137,7 @@ La numeración de secciones tiene en cuenta las secciones de los archivos
  incluidos en el orden en que están insertados en el documento maestro.
  El documento incluido de ejemplo tiene una subsección que se numera como
  subsección de la presente sección.
- Las etiquetas de los documentos incluidos se pueden referenciar: Subsección
+ Las etiquetas de los documentos incluidos pueden tener referencias: Subsección
 \begin_inset space ~
 \end_inset
 
@@ -32164,7 +32156,7 @@ El preámbulo del documento hijo se ignora, sólo se utiliza el preámbulo
  del documento maestro.
  Las ramas en los documentos hijos serán ignoradas por el documento maestro
  si éste no tiene una rama con el mismo nombre.
- Los documentos incluidos se insertan comenzando una página nueva y acabando
+ Los documentos anexados se insertan comenzando una página nueva y acabando
  con un salto de página.
 \end_layout
 
@@ -32188,9 +32180,9 @@ Nota:
 \end_layout
 
 \begin_layout Description
-Entrada Este método es muy parecido al método 
+Incorporar Este método es muy parecido al método 
 \family sans
-Incluir
+Anexar
 \family default
 .
  Las diferencias son:
@@ -32198,12 +32190,12 @@ Incluir
 
 \begin_deeper
 \begin_layout Itemize
-Los archivos del tipo Entrada no comienzan en página nueva ni acaban con
- un salto de página.
+Los archivos incorporados no comienzan en página nueva ni acaban con un
+ salto de página.
 \end_layout
 
 \begin_layout Itemize
-Los archivos del tipo Entrada se pueden visualizar en LyX si la 
+Los archivos incorporados pueden visualizar en LyX si la 
 \family sans
 Vista
 \begin_inset space ~
@@ -32223,19 +32215,17 @@ Preferencias
 , apartado 
 \family sans
 Apariencia\SpecialChar \menuseparator
-Gráficos
+Visualización
 \family default
 .
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-You cannot exclude Input files via the menu 
+Los archivos incorporados no se pueden excluir mediante el menú 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Child Documents
+Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Documentos hijo
 \family default
 .
 \end_layout
@@ -32244,7 +32234,7 @@ Child Documents
 \begin_layout Standard
 Aquí hay un documento hijo insertado con el método 
 \family sans
-Entrada
+Incorporar
 \family default
 :
 \end_layout
@@ -32260,7 +32250,7 @@ filename "DocumentoPostizo2.lyx"
 \end_layout
 
 \begin_layout Description
-Literal Con este método se puede incluir todo archivo de texto.
+Literal Con este método se puede incluir cualquier archivo de texto.
  El archivo aparece en la salida con su código fuente, y si contiene comandos
  no se ejecutan.
  Con la opción 
@@ -32786,9 +32776,9 @@ status open
 \series bold
 Nota:
 \series default
- Si no consigues caracteres en negrita cuando usas fuentes typewriter, se
- debe probablemente a que dicha fuente no suministra negritas.
- En este caso selecciona una fuente distinta en el menú 
+ Si no consigues caracteres en negrita cuando usas tipografías de ancho
+ fijo, se debe probablemente a que dicha tipografía no suministra negritas.
+ En este caso selecciona una tipografía distinta en el menú 
 \family sans
 Documento
 \family default
@@ -32800,10 +32790,10 @@ Configuración
 \SpecialChar \menuseparator
 
 \family sans
-Fuentes.
+Tipografías.
  
 \family default
-(Las fuentes 
+(Las tipografías 
 \emph on
 LuxiMono, BeraMono
 \emph default
@@ -33426,7 +33416,7 @@ sp
 \begin_inset Text
 
 \begin_layout Plain Layout
-punto escalado (65536
+punto a escala (65536
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -33716,7 +33706,7 @@ altura de la letra
 \emph on
 x
 \emph default
- en la fuente actual
+ en la tipografía actual
 \end_layout
 
 \end_inset
@@ -33740,7 +33730,7 @@ anchura de la letra
 \emph on
 M
 \emph default
- en la fuente actual
+ en la tipografía actual
 \end_layout
 
 \end_inset

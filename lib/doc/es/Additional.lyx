@@ -1980,8 +1980,8 @@ LaTeX Font Warning
 \begin_inset Newline newline
 \end_inset
 
-Otro mensaje de aviso, esta vez sobre fuentes que LaTeX no encuentra.
- El resto del mensaje dirá algo sobre reemplazo de fuentes que ha hecho
+Otro mensaje de aviso, esta vez sobre tipografías que LaTeX no encuentra.
+ El resto del mensaje dirá algo sobre reemplazo de tipografías que ha hecho
  LaTeX.
  Puedes ignorarlos sin problema.
 \end_layout
@@ -3346,7 +3346,7 @@ btUnits
 \end_layout
 
 \begin_layout Section
-Documentos multipartes
+Documentos divididos en varios
 \end_layout
 
 \begin_layout Subsection
@@ -3355,10 +3355,10 @@ Operación general
 
 \begin_layout Standard
 Cuando trabajas en un extenso documento con muchas secciones, o si tienes
- una parte en la que una tabla puede cambiar de vez en cuando pero no el
+ una parte en la que un cuadro puede cambiar de vez en cuando pero no el
  texto precedente, suele ser conveniente dividir el documento en varios
  archivos.
- En estos casos, deberías considerar seriamente el uso de documentos multipartes.
+ En estos casos, deberías considerar seriamente el uso de documentos hijo.
  Por ejemplo, los artículos científicos suelen tener cinco secciones principales
 : introducción, observaciones, resultados, discusión y conclusiones.
  Cada una de ellas debería estar en su propio archivo LyX.
@@ -3418,7 +3418,7 @@ end{document}
 
 
 \family default
-), de lo contrario se generarán errores al procesar el archivo DVI.
+), de lo contrario se generarán errores al procesar el archivo.
 \end_layout
 
 \begin_layout Standard
@@ -3459,7 +3459,7 @@ Los métodos de inclusión de un archivo son
 \begin_inset Quotes fld
 \end_inset
 
-Entrada
+Anexar
 \begin_inset Quotes frd
 \end_inset
 
@@ -3467,7 +3467,7 @@ Entrada
 \begin_inset Quotes fld
 \end_inset
 
-Incluir
+Incorporar
 \begin_inset Quotes frd
 \end_inset
 
@@ -3484,7 +3484,7 @@ Literal
 \begin_inset Quotes fld
 \end_inset
 
-Entrada
+Anexar
 \begin_inset Quotes frd
 \end_inset
 
@@ -3492,7 +3492,7 @@ Entrada
 \begin_inset Quotes fld
 \end_inset
 
-Incluir
+Incorporar
 \begin_inset Quotes frd
 \end_inset
 
@@ -3508,19 +3508,19 @@ LaTeXpertos
 \begin_inset Quotes fld
 \end_inset
 
-entrados
+anexados
 \begin_inset Quotes frd
 \end_inset
 
- se imprimen en la página actual, mientras que los archivos 
+ se imprimen en una página independiente, mientras que los archivos 
 \begin_inset Quotes fld
 \end_inset
 
-incluidos
+incorporados
 \begin_inset Quotes frd
 \end_inset
 
- se imprimen en una nueva página.
+ se imprimen en la página en la que estén insertados.
  
 \end_layout
 
@@ -3540,11 +3540,11 @@ Literal
 \end_inset
 
  permite incluirlo tal cual es, de forma literal, con los caracteres en
- fuente 
+ tipografía de 
 \family typewriter
-typewriter
+ancho fijo
 \family default
- de ancho fijo.
+.
  Normalmente los espacios en este tipo de inclusión son invisibles, aunque
  se conservan dos espacios consecutivos, a diferencia del normal tratamiento
  de los espacios en LyX.
@@ -3720,6 +3720,179 @@ http://wiki.lyx.org/FAQ/Unsorted#toc31
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Section
+Archivos LyX
+\end_layout
+
+\begin_layout Standard
+A veces, los usuarios necesitan 
+\begin_inset Quotes fld
+\end_inset
+
+empaquetar
+\begin_inset Quotes frd
+\end_inset
+
+ un archivo LyX junto con las imágenes (y otros archivos) de los que depende,
+ bien para enviarlo a un editor o para compartirlo con un co-autor.
+ LyX 2.0 incluye un guión en Python (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxpak.py
+\end_layout
+
+\end_inset
+
+) que automatiza el proceso.
+ Para usarlo, deben estar instalados los módulos Python 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+zipfile
+\end_layout
+
+\end_inset
+
+ o 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+tarfile
+\end_layout
+
+\end_inset
+
+.
+ Por omisión, el guión prefiere el formato 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+tar
+\end_layout
+
+\end_inset
+
+ comprimido con 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+gzip
+\end_layout
+
+\end_inset
+
+ en sistemas tipo Unix y el formato 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+zip
+\end_layout
+
+\end_inset
+
+ en Windows.
+\end_layout
+
+\begin_layout Standard
+El proceso de configuración de LyX preparará el guión para exportar a 
+\begin_inset Quotes fld
+\end_inset
+
+Archivo LyX
+\begin_inset Quotes frd
+\end_inset
+
+, que estará disponible en el menú 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Archivo\SpecialChar \menuseparator
+Exportar
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Independientemente de la plataforma, la generación de un formato determinado
+ de archivo puede controlarse añadiendo el conmutador 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+-t
+\end_layout
+
+\end_inset
+
+ (para el formato 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+tar
+\end_layout
+
+\end_inset
+
+) o el conmutador 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+-z
+\end_layout
+
+\end_inset
+
+ (para el formato 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+zip
+\end_layout
+
+\end_inset
+
+) al convertidor 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LyX\SpecialChar \menuseparator
+LyX Archive
+\end_layout
+
+\end_inset
+
+ en 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Herramientas\SpecialChar \menuseparator
+Preferencias\SpecialChar \menuseparator
+Gestión de archivos\SpecialChar \menuseparator
+Convertidores
+\end_layout
+
+\end_inset
+
+.
+ (Asegúrate de añadir el conmutador tras el nombre del guión, no delante.)
 \end_layout
 
 \begin_layout Section
@@ -4328,7 +4501,7 @@ Marcas
 El diálogo suministra una tabla de símbolos para las marcas.
  En el cuadro 
 \family sans
-Fuente 
+Tipografía 
 \family default
 hay una lista desplegable con seis paneles de símbolos.
  La lista 
@@ -4336,14 +4509,14 @@ hay una lista desplegable con seis paneles de símbolos.
 Nivel
 \family default
  permite elegir el nivel para el que elegimos la marca.
- Un campo de texto bajo la tabla permite escoger un símbolo personalizado
+ Un campo de texto bajo el cuadro permite escoger un símbolo personalizado
  poniendo su código LaTeX.
 \end_layout
 
 \begin_layout Standard
 Los seis paneles de
 \family sans
- Fuente
+ Tipografía
 \family default
  corresponden a los distintos paquetes requeridos.
  El cuadro siguiente recoge los nombres y sus paquetes asociados:
@@ -4370,7 +4543,7 @@ Los seis paneles de
 \bar no
 \noun off
 \color none
-Fuente
+Tipografía
 \end_layout
 
 \end_inset
@@ -4388,7 +4561,7 @@ Fuente
 \bar no
 \noun off
 \color none
-Paquetes requeridos
+Paquete requerido
 \end_layout
 
 \end_inset
@@ -4658,7 +4831,7 @@ Selecciona la profundidad de nivel y luego elige la marca y su tamaño.
 Se puede reiniciar una marca a su valor predeterminado con clic-derecha
  sobre el botón apropiado de nivel de profundidad.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Si quieres tener varios conjuntos de párrafos con diferentes conjuntos de
@@ -4961,9 +5134,9 @@ htlatex
  ecuaciones en pequeñas imágenes que se enlazan posteriormente al documento
  HTML.
  Puesto que realmente las ecuaciones son generadas por LaTeX, son correctas.
- Pero no escalan bien, y ajustar su aspecto al que debería tener en el documento
- ---de forma que los tamaños de fuente parezcan aproxidamente iguales---
- puede ser un reto.
+ Pero no redimensionan bien su tamaño, y ajustar su aspecto al que debería
+ tener en el documento ---de forma que los tamaños de los caracteres parezcan
+ aproxidamente iguales--- puede ser un reto.
  
 \end_layout
 
@@ -4992,9 +5165,9 @@ target "http://elyxer.nongnu.org/"
 \end_inset
 
 ) resuelve algunos de estos problemas.
- En particular, las ecuaciones generadas escalan perfectamente, ya que las
- procesa usando una combinación de HTML y CSS en lugar de convertirlas a
- imágenes.
+ En particular, las ecuaciones generadas redimensionan el tamaño perfectamente,
+ ya que las procesa usando una combinación de HTML y CSS en lugar de convertirla
+s a imágenes.
  Pero incluso expresiones moderadamente complejas tienen un aspecto no tan
  bueno como con 
 \family typewriter
@@ -5056,7 +5229,7 @@ experimental
 
 .
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 El archivo 
@@ -5069,7 +5242,7 @@ development/HTML.notes
 
 \end_inset
 
- que está en las fuentes de LyX o 
+ que está en el código fuente de LyX o 
 \begin_inset CommandInset href
 LatexCommand href
 name "accessed online"
@@ -5294,8 +5467,8 @@ No
 
  La ventaja de este método es que las imágenes son simplemente generadas
  por LaTeX, por lo que son muy precisas.
- La desventaja, como ya hemos dicho, es que son imágenes en mapa d3e bits,
- por lo que no se escalan nada bien y no se pueden copiar, etc.
+ La desventaja, como ya hemos dicho, es que son imágenes mapa de bits, por
+ lo que no se redimensionan nada bien y no se pueden copiar, etc.
  (Además, en estos momentos hay problemas con la numeración de ecuaciones.
  Véase 
 \begin_inset CommandInset href
@@ -9879,7 +10052,7 @@ Se usa en forma parecida a Proposición, aunque quizá a una menor escala.
 \end_layout
 
 \begin_layout Standard
-Además, Las clases AMS suministran automáticamente los paquetes de fuentes
+Además, Las clases AMS suministran automáticamente los paquetes de tipografía
  AMS LaTeX y AMS.
  Deben estar disponibles en tu sistema para usar estos entornos.
 \end_layout
@@ -10735,11 +10908,11 @@ foils
 \end_layout
 
 \begin_layout Itemize
-El tamaño de fuente por omisión es 20
+El tamaño de letra por omisión es 20
 \begin_inset space \thinspace{}
 \end_inset
 
-pt, y las oras opciones son 17
+pt, y las otras opciones son 17
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -10755,7 +10928,7 @@ pt.
 \end_layout
 
 \begin_layout Itemize
-La fuente predeterminada es 
+La tipografía predeterminada es 
 \family sans
 sans
 \family default
@@ -10763,7 +10936,7 @@ sans
 \family sans
 serif
 \family default
-, pero en las ecuaciones matemáticas se usa la habitual fuente roman.
+, pero en las ecuaciones matemáticas se usa la habitual fuente romana.
 \end_layout
 
 \begin_layout Itemize
@@ -12179,11 +12352,11 @@ rito de trámite
  familiar y fácil de leer por los actores.
  Cada página de un guión debería representar un minuto de película.
  En el guión no hay nada que no veas u oigas en la pantalla.
- La fuente courier 12
+ Debe emplearse el tipo de letra courier 12
 \begin_inset space \thinspace{}
 \end_inset
 
-pt debe emplearse en todo el guión.
+pt en todo el guión.
  Sin cursivas.
 \end_layout
 
@@ -12603,7 +12776,7 @@ ijmpd.lyx
 \end_layout
 
 \begin_layout Enumerate
-LyX no permite el cambio del tamaño de fuente ni del estilo de página porque
+LyX no permite el cambio del tamaño de letra ni del estilo de página porque
  estos paquetes no lo permiten.
 \end_layout
 
@@ -13784,9 +13957,10 @@ se ponen en sans serif negrita.
 status collapsed
 
 \begin_layout Plain Layout
-Hay una gran diferencia entre las antiguas fuentes cm sans serif negrita
- y las nuevas fuentes ec, especialmente en cuanto al aspecto de los encabezados.
- En comparación, las fuentes ec sans serif negrita se ven algo más delgadas.
+Hay una gran diferencia entre las antiguas tipografías cm sans serif negrita
+ y las nuevas tipografías ec, especialmente en cuanto al aspecto de los
+ encabezados.
+ En comparación, las tipografías ec sans serif negrita se ven algo más delgadas.
  El paquete LaTeX 
 \family typewriter
 cmsd.sty 
@@ -13803,7 +13977,7 @@ habitual
 \begin_inset Quotes frd
 \end_inset
 
- cuando se emplean las fuentes ec.
+ cuando se emplean las tipografías ec.
 \end_layout
 
 \end_inset
@@ -14877,7 +15051,7 @@ io (
 \family sans
 Carta
 \family default
-) en fuente sans serif pequeña, subrayado.
+) en tipografía sans serif pequeña, subrayado.
 \end_layout
 
 \begin_layout Itemize
@@ -15617,8 +15791,8 @@ de
 \begin_inset space ~
 \end_inset
 
-fuente: Memoir tiene un amplio rango de tamaños de fuente: 9, 10, 11, 12,
- 14, 17
+tipografía: Memoir tiene un amplio rango de tamaños de tipografía: 9, 10,
+ 11, 12, 14, 17
 \end_layout
 
 \begin_layout Description
@@ -15815,7 +15989,7 @@ de
 \begin_inset space ~
 \end_inset
 
-fuente
+tipografía
 \begin_inset space ~
 \end_inset
 
@@ -15823,8 +15997,8 @@ antiguos: por omisión,
 \family sans
 Memoir
 \family default
- no permite el uso de los comandos de fuente obsoletos que se usaban en
- la antigua versión de LaTeX, 2.09 (p.
+ no permite el uso de los comandos de tipografía obsoletos que se usaban
+ en la antigua versión de LaTeX, 2.09 (p.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -17179,7 +17353,7 @@ La primera cosa que observarás cuando inicies un documento
 \family sans
 slides
 \family default
- es el tipo y tamaño de fuente: 
+ es el tipo y tamaño de tipografía: 
 \family sans
 Sans
 \begin_inset space ~
@@ -17192,7 +17366,7 @@ Serif
 Grandísima
 \family default
 .
- Es también la fuente que se utiliza en la salida.
+ Es también la tipografía que se utiliza en la salida.
  Interpreta esto como un 
 \begin_inset Quotes fld
 \end_inset
@@ -17202,9 +17376,10 @@ apunte visual
 \end_inset
 
  que te recuerda que es una transparencia.
- En realidad las transparencias finales pueden usar una fuente más grande,
+ En realidad las transparencias finales pueden usar una tipografía más grande,
  por tanto dispondrás de menos espacio.
- Es decir, la fuente grande en pantalla no es WYSIWYG, es solo un recordatorio.
+ Es decir, la tipografía grande en pantalla no es WYSIWYG, es solo un recordator
+io.
 \end_layout
 
 \begin_layout Standard
@@ -17716,8 +17891,8 @@ línea ASCII
 \end_inset
 
  tiene un aspecto diferente en estilo y longitud.
- Las fuentes de las etiquetas de las tres también son diferentes unas de
- otras.
+ La tipografía de las etiquetas de las tres también es diferente en cada
+ una de ellas.
 \end_layout
 
 \begin_layout Standard
@@ -24199,7 +24374,7 @@ Preferencias
 \family sans
 fragmento 
 \family default
-utiliza fuente LaTeX y hay mucho código en los documentos de programación
+utiliza código LaTeX y hay mucho código en los documentos de programación
  literaria, puedes acabar harto de ver tanto rojo.
  Así pues, puedes cambiarlo si quieres en 
 \family sans
@@ -25161,7 +25336,7 @@ dropcaps.sty
  El primer argumento es el espacio de sangrado; en este caso el signo menos
  roba espacio al margen.
  El segundo argumento es la altura de la letra en líneas de texto.
- El tercer argumento es el nombre de la fuente: virtualmente cualquiera
+ El tercer argumento es el nombre de la tipografía: virtualmente cualquiera
  que tenga archivo tfm debería funcionar (bucea por el directorio 
 \family typewriter
 .../texmf/fonts/tfm 
@@ -25179,8 +25354,8 @@ yinit
 \begin_inset Quotes frd
 \end_inset
 
-, una fuente alemana de fantasía específicamente diseñada para letras capitulare
-s.
+, una tipografía alemana de fantasía específicamente diseñada para letras
+ capitulares.
  El cuarto argumento es la letra (o letras) capitulares.
  El paquete 
 \family typewriter
@@ -25517,8 +25692,8 @@ Resumen
 \begin_layout Standard
 Como has podido observar, los ejemplos de esta sección van desde lo más
  útil hasta lo más caprichoso.
- Aunque espero que nadie necesitará nunca formas de párrafo como el de la
- sección anterior, el punto a destacar es que puedes hacer casi cualquier
+ Aunque espero que nadie necesitará nunca formas de párrafo como las de
+ la sección anterior, el punto a destacar es que puedes hacer casi cualquier
  cosa que quieras en LyX, siempre que estés dispuesto a imaginar cómo hacerlo
  con TeX y LaTeX.
  TeX es un sistema de composición tipográfica fantásticamente poderoso y

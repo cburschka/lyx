@@ -76,7 +76,7 @@
 \spacing single
 \use_hyperref true
 \pdf_title "Guía del usuario de LyX"
-\pdf_author "LyX Team, Spanish translation: Ignacio Garcia"
+\pdf_author "LyX Team"
 \pdf_subject "LyX"
 \pdf_keywords "LyX"
 \pdf_bookmarks true
@@ -128,8 +128,7 @@
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
-\html_be_strict false
-\author 223325401 "IG,,," 
+\html_be_strict true
 \end_header
 
 \begin_body
@@ -261,8 +260,9 @@ Observa que no hay barra de desplazamiento horizontal.
  Hay tres casos en que podrías necesitar una barra de desplazamiento horizontal.
  El primero es el caso de tener grandes figuras mostradas en modo WYSIWYG.
  Esto, sin embargo, se debe a un fallo en la rutina encargada de dibujar
- los gráficos en LyX en modo WYSIWYG; los gráficos deberían escalarse para
- rellenar la ventana, de igual manera que se ajusta un gráfico a una página.
+ los gráficos en LyX en modo WYSIWYG; los gráficos deberían ser redimensionados
+ para ajustarlos a la ventana, de igual manera que se ajusta un gráfico
+ a una página.
  Los otros dos casos son cuadros y ecuaciones más anchas que la ventana
  de LyX.
  Puedes usar las teclas de flecha para desplazarte horizontalmente por el
@@ -339,7 +339,7 @@ Preferencias
 
 \family default
  Aunque esta configuración ya se ha hecho al instalar LyX en el sistema,
- podría haber algunos apartados que has instalado localmente, p.
+ podría haber algunas cosas que hayas instalado localmente, p.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -347,7 +347,7 @@ e.
 \begin_inset space ~
 \end_inset
 
-nuevas clases de LaTeX, que no son encontrados por LyX.
+nuevas clases de LaTeX, que LyX no encontró cuando se instaló.
  Para forzar nuevas exploraciones del sistema, usa 
 \family sans
 Herramientas\SpecialChar \menuseparator
@@ -1376,7 +1376,7 @@ Navegación
 \end_layout
 
 \begin_layout Standard
-LyX ofrece dos formas de navegar por los documentos:
+LyX ofrece varias formas de navegar por los documentos:
 \end_layout
 
 \begin_layout Itemize
@@ -1403,61 +1403,157 @@ arg   "dialog-toggle toc"
  .
 \end_layout
 
+\begin_layout Itemize
+Estableciendo marcadores mediante 
+\family sans
+Navegar\SpecialChar \menuseparator
+Marcadores,
+\family default
+ y de puede volver a ellos mediante el mismo menú.
+ Los marcadores se guardan para nuevas sesiones.
+\end_layout
+
 \begin_layout Standard
-La ventana de contorno muestra el índice general, que se describe en la
- sección
+El botón 
+\begin_inset Info
+type  "icon"
+arg   "bookmark-goto 0"
+\end_inset
+
+ (también 
+\family sans
+Navegar\SpecialChar \menuseparator
+Marcadores\SpecialChar \menuseparator
+Navegar atrás
+\family default
+) lleva a la posición del documento en la que se ha cambiado algo recientemente.
+ Esto es útil en documentos largos, si has ido o deslizado a otra parte
+ del documento a comprobar algo y quieres volver a tu última posición editada.
+\end_layout
+
+\begin_layout Subsection
+El navegador de contorno
+\end_layout
+
+\begin_layout Standard
+El navegador de contorno es el equivalente actual del llamado 
+\begin_inset Quotes fld
+\end_inset
+
+Índice general
+\begin_inset Quotes frd
+\end_inset
+
+ en versiones anteriores de LyX, puesto que su propósito original era mostrar
+ el índice del contenido del documento.
+ Sin embargo, el actual Navegador de contorno es mucho más versátil.
+ En el cuadro desplegable de la parte superior de la ventana de contorno
+ se puede elegir entre varias listas e índices diferentes de una variedad
+ de objetos, tales como índices de cuadros y figuras, listas de varios tipos
+ de notas, etiquetas y referencias (véase la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Referencias-cruzadas"
+
+\end_inset
+
+), citas (véase la sección
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:IG"
+reference "sec:Bibliografía"
 
 \end_inset
 
-.
- Con un clic puedes saltar a la parte del documento correspondiente.
- En la parte superior hay un cuadro desplegable en el que puedes escoger
- entre varias listas e índices de recuadros insertados, como notas al pie.
- Algunos de éstos, como los índices de cuadros, de figuras y de algoritmos,
- se pueden añadir al documento, véase
-\begin_inset space ~
+)...
+ Haciendo clic en cualquiera de ellos el documento se desplazará en la pantalla
+ hasta la posición correspondiente.
+ 
+\end_layout
+
+\begin_layout Standard
+En ciertos casos, al hacer clic derecho sobre un elemento se abre un menú
+ contextual que permite la modificación directa de dicho elemento.
+ Por ejemplo, con las citas, el menú contextual permite abrir el diálogo
+ de citas y modificarlas.
+ Con los cambios, permite aceptarlos o rechazarlos.
+ Y así con otros elementos.
+\end_layout
+
+\begin_layout Standard
+El campo 
+\begin_inset Quotes fld
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Índices-de"
-
+Filtro
+\begin_inset Quotes frd
 \end_inset
 
-.
+ permite restringir las entradas que deben aparecer en el Navegador.
+ Por ejemplo, si está abierta la lista de Etiquetas y referencias y quieres
+ ver solamente las referencias a subsecciones, introduce el texto 
+\begin_inset Quotes fld
+\end_inset
+
+sub:
+\begin_inset Quotes frd
+\end_inset
+
+ como filtro y solo se mostrarán las entradas de la lista que contengan
+ ese texto.
+\end_layout
+
+\begin_layout Standard
+En la parte inferior del Contorno hay varios botones y similares que permiten
+ controlar otros aspectos.
  La opción 
 \family sans
 Ordenar
 \family default
- ordena la lista actual, la opción 
+ ordena alfabéticamente la lista actual; si no, los elementos aperecen en
+ el orden en que se encuentran en el documento.
+ La opción 
 \family sans
 Mantener
 \family default
  mantiene la visualización actual.
- Mantener quiere decir que si, p.
-\begin_inset space \thinspace{}
-\end_inset
-
-e., están mostradas las subsecciones de las secciones 2 y 4 y haces clic
- sobre la sección 3, las subsecciones de las secciones 2 y 4 permanecerán
- mostradas.
+ Mantener quiere decir que si, por ejemplo, están desplegadas las subsecciones
+ de las secciones 2 y 4 y haces clic sobre la sección 3, las subsecciones
+ de las secciones 2 y 4 permanecerán como están.
  Sin la opción 
 \family sans
 Mantener
 \family default
  éstas se ocultarán y se resaltará la sección 3.
+ Por último, el deslizador se puede usar para controlar el número de subniveles
+ de sección que se muestran.
+ Lo mejor es experimentar con él para ver cómo funciona.
+ 
 \end_layout
 
 \begin_layout Standard
-Con los botones 
+El botón 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../../images/reload.png
+	scale 85
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+refresca el IG (aunque esto no será necesario, normalmente).
+ Cerca de este hay botones que permiten cambiar la posición de las secciones
+ en el documento.
+ Los botones 
 \begin_inset space \space{}
 \end_inset
 
@@ -1465,7 +1561,7 @@ Con los botones
 \begin_inset Graphics
 	filename ../../images/down.png
 	scale 85
-	groupId botonesbh
+	groupId toolbarbuttons
 
 \end_inset
 
@@ -1481,7 +1577,7 @@ Con los botones
 \begin_inset Graphics
 	filename ../../images/up.png
 	scale 85
-	groupId botonesbh
+	groupId toolbarbuttons
 
 \end_inset
 
@@ -1489,9 +1585,8 @@ Con los botones
 \begin_inset space ~
 \end_inset
 
- de la parte inferior de la ventana de contorno puedes cambiar la posición
- de las secciones en el documento.
- Así, puedes por ejemplo mover la sección
+ mueven las secciones hacia arriba y hacia abajo.
+ Así, por ejemplo, puedes poner la sección
 \begin_inset space ~
 \end_inset
 
@@ -1499,25 +1594,45 @@ Con los botones
 \begin_inset space ~
 \end_inset
 
-2.4.
- LyX reordena automáticamente la numeración.
+2.4 o detrás de la sección
+\begin_inset space ~
+\end_inset
+
+2.6.
+ LyX reordenará automáticamente la numeración.
  Con los botones 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Graphics
 	filename ../../images/promote.png
 	scale 85
-	groupId botonesbh
+	groupId toolbarbuttons
 
+\end_inset
+
+
+\begin_inset space ~
 \end_inset
 
  y 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Graphics
 	filename ../../images/demote.png
 	scale 85
-	groupId botonesbh
+	groupId toolbarbuttons
 
 \end_inset
 
- o los correspondientes atajos de teclado 
+
+\begin_inset space ~
+\end_inset
+
+ (o los correspondientes atajos de teclado 
 \family sans
 Tab
 \family default
@@ -1525,7 +1640,7 @@ Tab
 \family sans
 Mayúsculas+Tab
 \family default
- puedes cambiar el nivel de anidamiento.
+) puedes cambiar el nivel de una sección.
  Por ejemplo, puedes convertir la sección
 \begin_inset space ~
 \end_inset
@@ -1539,19 +1654,6 @@ Mayúsculas+Tab
 \end_inset
 
 2.4.1.
-\end_layout
-
-\begin_layout Standard
-El botón 
-\begin_inset Info
-type  "icon"
-arg   "bookmark-goto 0"
-\end_inset
-
- de la barra de herramientas salta a la posición del documento en la que
- ha cambiado algo recientemente.
- Esto es útil para, por ejemplo, desplazarte a alguna parte de un documento
- extenso para mirar algo y volver a la última posición de edición.
 \end_layout
 
 \begin_layout Section
@@ -1586,8 +1688,8 @@ Autocompletar
 \end_layout
 
 \begin_layout Standard
-LyX facilita la finalización de palabras mediante la exploración de todos
- los documentos que están abiertos en ese momento.
+LyX facilita la finalización automática de palabras mediante la exploración
+ de todos los documentos que están abiertos en ese momento.
  Cada palabra que aparece en estos documentos se añade a una base de datos
  que se utiliza para proponer terminaciones.
 \end_layout
@@ -2604,6 +2706,45 @@ bles.
 \end_layout
 
 \begin_layout Subsubsection
+Formato local
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Documentos ! Formato local
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Los módulos son a LyX lo que los paquetes son a LaTeX: están pensados para
+ ser usados en una variedad de documentos diferentes, y cuando necesitas
+ a menudo la misma clase de cosas para diferentes documentos, lo mejor sería
+ escribir un módulo con ese propósito.
+ No obstante, algunas veces surgen requerimientos muy concretos para un
+ solo documento determinado, como algún recuadro específico o cierto estilo
+ de carácter.
+ En esos casos, lo que necesitamos es algo como el preámbulo LaTeX de un
+ documento.
+ Se trata del 
+\begin_inset Quotes fld
+\end_inset
+
+Formato local
+\begin_inset Quotes frd
+\end_inset
+
+ de LyX, cuyo uso se describe en el capítulo 5 del manual 
+\emph on
+Personalización
+\emph default
+.
+\end_layout
+
+\begin_layout Subsubsection
 Propiedades
 \end_layout
 
@@ -3136,11 +3277,7 @@ Formato de un documento
 status collapsed
 
 \begin_layout Plain Layout
-Documentos !
-\change_deleted 223325401 1302329403
- 
-\change_unchanged
- Formato
+Documentos ! Formato
 \end_layout
 
 \end_inset
@@ -3201,11 +3338,8 @@ documento,
 \family default
  puedes introducir opciones especiales para la clase de documento elegida
  en forma de lista separada por comas.
- Esto sólo es preciso si LyX no soporta
-\change_deleted 223325401 1302329403
- 
-\change_unchanged
- las opciones especiales que quieras usar.
+ Esto sólo es preciso si LyX no soporta las opciones especiales que quieras
+ usar.
  Para saber más sobre tu clase LaTeX favorita y sus opciones, tienes que
  leer su manual.
 \end_layout
@@ -3241,7 +3375,7 @@ de
 \begin_inset space ~
 \end_inset
 
-página
+encabezado y pie
 \family default
  controla el tipo de encabezamiento y de numeración de las páginas.
  Puedes escoger entre las siguientes cinco opciones:
@@ -3271,14 +3405,14 @@ Vacío
 \family sans
 Simple
 \family default
- Sólo números de página.
+ Solo números de página.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
-Encabezados
+Encabezado
 \family default
  Número de página y el capítulo actual o el título y número de sección,
  dependiendo del nivel máximo de secciones de la clase.
@@ -3565,7 +3699,7 @@ Documentos ! Configuración
 \begin_layout Standard
 Si usas la clase de documento KOMA-Script, puedes dejar los valores predetermina
 dos, porque KOMA-Script calcula automáticamente el espacio de impresión
- en función del formato del papel y el tamaño de fuente.
+ en función del formato del papel y el tamaño de letra.
 \end_layout
 
 \begin_layout Subsection
@@ -4756,11 +4890,7 @@ no
 Normal
 \family default
 .
- Así, puedes escribir tu
-\change_deleted 223325401 1302329403
- 
-\change_unchanged
- verso y alegremente pulsar 
+ Así, puedes escribir tu verso y alegremente pulsar 
 \family sans
 Entrar
 \family default
@@ -5265,10 +5395,6 @@ Estas son las marcas predeterminadas para una lista
 Enumeración*
 \family default
 .
-
-\change_deleted 223325401 1302329403
- 
-\change_unchanged
  Puedes personalizar estas marcas en el submenú 
 \family sans
 Documento\SpecialChar \menuseparator
@@ -5550,12 +5676,8 @@ todos los documentos nuevos usan este idioma.
 \series bold
 babel
 \series default
- (opción 
-\family sans
-Usar babel
-\family default
- marcada) con la opción del idioma del documento y, al procesar el archivo
- con LaTeX, interviene el estilo 
+ con la opción del idioma del documento y, al procesar el archivo con LaTeX,
+ interviene el estilo 
 \family typewriter
 spanish
 \family default
@@ -5803,8 +5925,8 @@ e
 \series bold
 hyperref,
 \series default
- si se habilita el soporte hyperref en el documento dicho comando deja de
- funcionar.
+ si se habilita el soporte hyperref en el documento el comando anterior
+ deja de funcionar.
 \end_layout
 
 \end_inset
@@ -6098,7 +6220,7 @@ Configuración
 \begin_inset space ~
 \end_inset
 
-de
+del
 \begin_inset space ~
 \end_inset
 
@@ -6122,9 +6244,9 @@ más
 
 
 \family sans
-larga d
+larga
 \family default
-el cuadro 
+ bajo 
 \family sans
 Ancho
 \family default
@@ -6968,12 +7090,7 @@ No puedes usar
 \family sans
 Ctrl+Entrar
 \family default
- al principio de un nuevo párrafo (p.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
- no puedes hacer 
+ al principio de un nuevo párrafo (por ejemplo, no puedes hacer 
 \family sans
 Ctrl+Entrar
 \family default
@@ -7097,8 +7214,8 @@ Hello world!
 \family sans
 Código-LyX
 \family default
- tiene un propósito: escribir código, tales como fuentes de programa, guiones
- de shell, archivos rc, y otros.
+ tiene un propósito: escribir lenguaje informático, tales como código de
+ programa, guiones de shell, archivos rc, y otros.
  Úsalo sólo en casos muy especiales en los que necesites generar texto como
  en una máquina de escribir.
 \begin_inset Index idx
@@ -10951,8 +11068,8 @@ status collapsed
 Nota:
 \series default
  Es posible que no todos los símbolos insertados con ese diálogo se muestren
- en pantalla con determinadas fuentes disponibles en las preferencias de
- LyX.
+ en pantalla con determinadas tipografías disponibles en las preferencias
+ de LyX.
  Pero en todo caso, los símbolos aparecerán en la salida.
 \end_layout
 
@@ -10973,12 +11090,12 @@ name "sec:Estilo-de-letra"
 \end_layout
 
 \begin_layout Subsection
-Tipos de fuentes
+Clasestipográficas
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Fuentes ! Tipos
+Tipografías ! Clases
 \end_layout
 
 \end_inset
@@ -10987,50 +11104,51 @@ Fuentes ! Tipos
 \end_layout
 
 \begin_layout Standard
-Hay dos clases de fuentes:
+Hay dos clases de tipografías:
 \end_layout
 
 \begin_layout Description
-Fuentes
+Tipografías
 \begin_inset space ~
 \end_inset
 
 vectoriales
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Fuentes ! Vectoriales
+Tipografías ! Vectoriales
 \end_layout
 
 \end_inset
 
- construidas a partir de trazos de formas simples (p.
+ construidos a partir de trazos de formas simples (p.
 \begin_inset space \thinspace{}
 \end_inset
 
 e.
  caracteres).
  Significa que cada símbolo se define mediante curvas matemáticas que son
- adecuadas para escalar a cualquier tamaño requerido.
- Esta definición matemática es interpretada por el servidor de fuentes y
- la curva se rellena con píxeles de acuerdo con el tamaño.
- Esto conlleva que las fuentes trazadas pintan muy bien en todos los tamaños.
+ adecuadas para adaptarse a cualquier tamaño requerido.
+ Esta definición matemática es interpretada por el servidor de tipos y la
+ curva se rellena con píxeles de acuerdo con el tamaño.
+ Esto conlleva que las letras trazadas pintan muy bien en todos los tamaños.
  Sólo a muy pequeños tamaños podría resultar complicado suministrar una
  buena apariencia, ya que cada píxel debe ser computado muy cuidadosamente
  para generar una buena imagen.
 \begin_inset Newline newline
 \end_inset
 
-Podría pensarse que sólo hace falta definir un tamaño y escalarlo.
- Pero para conseguir buena calidad, muchas fuentes están definidas en varios
- tamaños.
+Podría pensarse que solo hace falta definir un tamaño y redimensionar los
+ demás a escala.
+ Pero para conseguir buena calidad, muchas tipografías están definidas en
+ varios tamaños.
  Esto mejora la apariencia, porque se necesitan más detalles para tamaños
  grandes que para tamaños pequeños.
 \begin_inset Newline newline
 \end_inset
 
-Los tipos de fuente 
+Las tipografías 
 \family typewriter
 TrueType
 \family default
@@ -11046,11 +11164,11 @@ Type
 
 1
 \family default
- son fuentes vectoriales.
+ son vectoriales.
 \end_layout
 
 \begin_layout Description
-Fuentes
+Tipografías
 \begin_inset space ~
 \end_inset
 
@@ -11064,31 +11182,31 @@ de
 
 bits
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Fuentes ! Mapa de bits
+Tipografías ! Mapa de bits
 \end_layout
 
 \end_inset
 
  que se definen mediante gráficos en mapa de bits desde el principio, así
  que se verán muy bien en todos los tamaños para los que estén definidas.
- Sin embargo, no se escalan bien, porque para escalar una forma, cada píxel
- debe desdoblarse en varios píxeles.
+ Sin embargo, no se redimensionan bien, porque para variar una forma cada
+ píxel debe desdoblarse en varios píxeles.
  Es el mismo efecto que se produce cuando aumentas el zoom para ver una
  imagen.
- Con el fin de mitigar este efecto, las fuentes de mapa de bits se suelen
+ Con el fin de mitigar este efecto, las tipografías mapa de bits se suelen
  suministrar en varios tamaños, los que se consideran más útiles.
- La ventaja de las fuentes de mapa de bits es que no se necesitan complicados
+ La ventaja de las tipografías mapa de bits es que no se necesitan complicados
  cálculos para diseñar cada carácter, y por tanto se procesan más rápidamente
- que las fuentes escalables.
+ que las tipografías de tamaño variable.
  La desventaja es que los tamaños que no existen de forma predefinida tienen
- que escalarse desdoblando píxeles y entonces no pintan muy bien.
+ que redimensionarse desdoblando píxeles y entonces no pintan muy bien.
 \begin_inset Newline newline
 \end_inset
 
-Las fuentes de mapa de bits se conocen como 
+Las tipografías mapa de bits se conocen como 
 \family typewriter
 Type
 \begin_inset space ~
@@ -11100,24 +11218,24 @@ Type
 \end_layout
 
 \begin_layout Standard
-La conclusión de todo esto es que las fuentes de mapa de bits son mejores
- en aquellos tamaños para los que están diseñadas, mientras que las fuentes
- escalables son buenas para casi todos los tamaños.
- Se necesitan menos definiciones de tamaño para fuentes escalables.
+La conclusión de todo esto es que las tipografías mapa de bits son mejores
+ en aquellos tamaños para los que están diseñadas, mientras que las tipografías
+ ajustables son buenas para casi todos los tamaños.
+ Se necesitan menos definiciones de tamaño para tipografías variables.
  Esta es la razón por la que casi todos los programas de tipografía y servidores
- de texto emplean fuentes escalables.
+ de texto emplean tipografías ajustables.
 \end_layout
 
 \begin_layout Standard
-Para averiguar qué tipo de fuentes se usan en un documento PDF, puedes echar
+Para averiguar qué tipografías se usan en un documento PDF, puedes echar
  una mirada a sus propiedades.
 \end_layout
 
 \begin_layout Standard
 Muchos modernos lenguajes de diseño y de tipografía han comenzado a migrar
- hacia estilos de especificación de caracteres más bien que de especificación
- de una fuente particular.
- Por ejemplo, en lugar de cambiar a una versión en cursiva de la fuente
+ hacia estilos de especificación de caracteres en vez de especificación
+ de una tipografía particular.
+ Por ejemplo, en lugar de cambiar a una versión en cursiva de la tipografía
  actual para enfatizar un texto, puedes usar un 
 \begin_inset Quotes fld
 \end_inset
@@ -11128,15 +11246,15 @@ estilo énfasis
 
 .
  Este concepto encaja perfectamente en LyX.
- LyX hace las cosas basándose en el contexto antes bien que fijándose en
- los detalles de la tipografía.
+ En LyX haces las cosas basándote en el contexto en lugar de estar pendiente
+ de los detalles de la tipografía.
 \end_layout
 
 \begin_layout Subsection
-Soporte de fuentes LaTeX
+Soporte de tipografías LaTeX
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Soporte-de-fuentes-LaTeX"
+name "sub:Soporte-de-tipografías-LaTeX"
 
 \end_inset
 
@@ -11144,20 +11262,20 @@ name "sub:Soporte-de-fuentes-LaTeX"
 \end_layout
 
 \begin_layout Standard
-Tradicionalmente, LaTeX usa sus propias fuentes.
- Es decir, no puedes acceder directamente a las fuentes instaladas en tu
- sistema operativo, sino que has de usar las fuentes específicas proporcionadas
- por tu distribución LaTeX.
- La razón es que LaTeX necesita cierta información extra sobre las fuentes
+Tradicionalmente, LaTeX usa sus propias tipografías.
+ Es decir, no puedes acceder directamente a las tipografías instaladas en
+ el sistema operativo, sino que has de usar las tipografías específicas
+ proporcionadas por la distribución LaTeX.
+ La razón es que LaTeX necesita cierta información extra sobre las tipografías
  que debe ser suministrada por archivos y paquetes adicionales.
- La desventaja de esto es que la elección de fuentes está algo limitada
+ La desventaja de esto es que la elección de tipografías está algo limitada
  en comparación con los habituales procesadores de texto.
- Por otra parte, tiene la ventaja de que las fuentes proporcionadas son,
- en general, de muy buena calidad y que los archivos LaTeX son portables
+ Por otra parte, tiene la ventaja de que las tipografías proporcionadas
+ son, en general, de muy buena calidad y que los archivos LaTeX son portables
  a diferentes máquinas.
- Además, el rango de fuentes soportadas por el tradicional LaTeX ha ido
- aumentando considerablemente y se pueden encontrar paquetes para muchas
- fuentes libres y comerciales.
+ Además, el rango de tipografías soportadas por el tradicional LaTeX ha
+ ido aumentando considerablemente y se pueden encontrar paquetes para muchas
+ tipografías libres y comerciales.
  En LyX, solo un subconjunto de estas es directamente accesible en la interfaz
  de usuario, (véase la sección
 \begin_inset space ~
@@ -11173,18 +11291,18 @@ reference "sub:Formato-de-documento"
  para más detalle).
  No obstante, todas las demás son accesibles si se introduce el correspondiente
  código LaTeX en el preámbulo del documento (por favor, consulta la documentació
-n de la fuente deseada).
+n de la tipografía deseada).
  
 \end_layout
 
 \begin_layout Standard
 Por otra parte, desarrollos recientes han aportado algunos nuevos ingenios
- LaTeX que son capaces de acceder directamente a las fuentes instaladas
+ LaTeX que son capaces de acceder directamente a las tipografías instaladas
  por el sistema operativo (SO), a saber, XeTeX y LuaTeX.
  Ambos ingenios son soportados ya por LyX.
- Con ellos, teóricamente se puede usar cualquier fuente OpenType o TrueType
+ Con ellos, teóricamente se puede usar cualquier tipografía OpenType o TrueType
  instalada en el sistema.
- La siguiente sección describe cómo usar estas fuentes del SO.
+ La siguiente sección describe cómo usar estas tipografías del SO.
 \end_layout
 
 \begin_layout Standard
@@ -11197,7 +11315,7 @@ status collapsed
 \color none
 Nota
 \series default
-: En la práctica, algunas fuentes podrían no funcionar debido a métricas
+: En la práctica, algunas tipografías podrían no funcionar debido a métricas
  defectuosas u otras deficiencias, de modo que puede que tengas que experimentar.
 \end_layout
 
@@ -11226,29 +11344,29 @@ Nota
 \end_layout
 
 \begin_layout Subsection
-Tipo y tamaño de fuente en un documento
+Tipo y tamaño de letra en un documento
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Fuentes-de-documento"
+name "sub:Tipografía-del-documento"
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Fuentes ! Tamaño
+Tipografías ! Tamaño
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Documentos ! Fuentes
+Documentos ! Tipografías
 \end_layout
 
 \end_inset
@@ -11257,14 +11375,14 @@ Documentos ! Fuentes
 \end_layout
 
 \begin_layout Standard
-Las fuentes de un documento se establecen en 
+Las tipografías de un documento se establecen en 
 \family sans
 Documento\SpecialChar \menuseparator
 Configuración
 \family default
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Documentos ! Configuración
@@ -11275,9 +11393,9 @@ Documentos ! Configuración
 .
  En la sección 
 \family sans
-Fuentes
+Tipografías
 \family default
- se puede especificar la fuente a usar para las tres formas ―romana (serif),
+ se puede especificar la tipografía a usar para cada forma ―romana (serif),
  
 \family sans
 sans
@@ -11286,19 +11404,19 @@ sans
 
 serif
 \family default
- y 
+ (palo seco) y 
 \family typewriter
-typewriter
+ancho fijo
 \family default
- (ancho fijo)―, el tamaño base de la fuente y factores de escala para (algunas)
- fuentes sans serif y typewriter por si fuera necesario ajustarlas a la
- fuente romana.
+―, el tamaño base de la tipografía y factores de escala para determinadas
+ tipografías sans serif y ancho fijo por si fuera necesario ajustarlas a
+ la tipografía romana.
 \end_layout
 
 \begin_layout Standard
 Si se selecciona
 \family sans
- Usar fuentes no T
+ Usar tipografías no T
 \begin_inset ERT
 status collapsed
 
@@ -11311,7 +11429,7 @@ status collapsed
 
 eX
 \family default
-, se puede acceder a las fuentes instaladas en el sistema operativo.
+, se puede acceder a las tipografías instaladas en el sistema operativo.
  Esto requiere el uso de 
 \family sans
 PDF (XeT
@@ -11365,34 +11483,34 @@ eX)
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Soporte-de-fuentes-LaTeX"
+reference "sub:Soporte-de-tipografías-LaTeX"
 
 \end_inset
 
 ).
- En ese caso no habrá acceso a las fuentes propias de TeX (la selección
+ En ese caso no habrá acceso a las tipografías propias de TeX (la selección
  que se describe más abajo).
- Hay que señalar que LyX lista todas las fuentes disponibles en cualquiera
- de las tres listas (romana, sans serif y typewriter), puesto que LyX no
+ Hay que señalar que LyX lista todas las tipografías disponibles en cualquiera
+ de las tres listas (romana, sans serif y ancho fijo), puesto que LyX no
  puede determinar la familia.
- Además, la salida podría fallar con algunas de las fuentes listadas, debido
- a la codificación o a fallos de las propias fuentes.
+ Además, la salida podría fallar con algunas de las tipografías listadas,
+ debido a la codificación o a fallos de las propias tipografías.
  De nuevo, LyX no puede detectar esto de antemano, por lo que podría ser
  necesario experimentar.
 \end_layout
 
 \begin_layout Standard
-Si se usan fuentes TeX (opción por omisión), las opciones posibles incluyen
+Si se usan tipografías TeX (opción por omisión), las opciones posibles incluyen
  
 \family sans
 Predeterminado
 \family default
- y una lista de las fuentes disponibles en el sistema.
+ y una lista de las tipografías disponibles en el sistema.
  La opción 
 \family sans
 Predeterminado
 \family default
- usa las fuentes estándar de TeX, conocidas como 
+ usa las tipografías estándar de TeX, conocidas como 
 \begin_inset Quotes fld
 \end_inset
 
@@ -11436,7 +11554,7 @@ cm
 \family typewriter
 ec
 \family default
- son fuentes en mapa de bits, a menudo se ven pixeladas en la salida PDF,
+ son tipografías mapa de bits, a menudo se ven pixeladas en la salida PDF,
  sobre todo si se lee con ampliación.
 \begin_inset Foot
 status collapsed
@@ -11451,18 +11569,18 @@ Adobe
 Reader
 \family default
  versión 6 o posterior, porque este programa incluye un servidor especial
- de fuentes en mapa de bits.
+ de tipografías mapa de bits.
 \end_layout
 
 \end_inset
 
- Pero en general, para evitar fuentes pixeladas hay que usar fuentes de
- trazos.
+ Pero en general, para evitar caracteres pixelados hay que usar tipografías
+ vectoriales.
  Veamos tres posibilidades para usarlas:
 \end_layout
 
 \begin_layout Itemize
-Utilizar fuentes 
+Utilizar la tipografía 
 \family typewriter
 Latin Modern
 \family default
@@ -11471,22 +11589,22 @@ Latin Modern
 lm
 \family default
 ).
- Estas fuentes han sido desarrolladas por la comunidad LaTeX para reemplazar
+ Esta tipografía ha sido desarrollada por la comunidad LaTeX para reemplazar
  a 
 \family typewriter
 cm
 \family default
- como fuentes predeterminadas.
+ como tipografías predeterminadas.
  En la mayoría de los casos tienen un aspecto semejante a 
 \family typewriter
 cm
 \family default
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Una diferencia es un interletraje mejorado en las fuentes 
+Una diferencia es un interletraje mejorado en las tipografías 
 \family typewriter
 lm
 \family default
@@ -11511,7 +11629,7 @@ ec
 \end_layout
 
 \begin_layout Itemize
-Elegir la fuente 
+Elegir la tipografía 
 \family typewriter
 AE
 \family default
@@ -11544,7 +11662,7 @@ Almost European
 \begin_inset Quotes frd
 \end_inset
 
- y es una fuente virtual.
+ y es una tipografía virtual.
  Virtual significa que 
 \begin_inset Quotes fld
 \end_inset
@@ -11553,7 +11671,7 @@ roba
 \begin_inset Quotes frd
 \end_inset
 
- perfiles de otras fuentes.
+ perfiles de otras tipografías.
  Esto tiene la desventaja de que algunos caracteres se pierden, como las
  comillas francesas, (
 \begin_inset Quotes eld
@@ -11590,10 +11708,6 @@ LaTeX, paquetes ! aeguill
 
 \end_inset
 
-
-\change_deleted 223325401 1302329403
- 
-\change_unchanged
  en el preámbulo, con la línea
 \begin_inset Newline newline
 \end_inset
@@ -11617,16 +11731,12 @@ dos
 \emph default
  caracteres, el acento y la letra.
  Por esto no puedes buscar palabras con acentos en documentos creados con
- la fuente 
+ la tipografía 
 \family typewriter
 AE
 \family default
 .
- P.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
+ Por ejemplo.
  si buscas la palabra francesa 
 \begin_inset Quotes fld
 \end_inset
@@ -11669,7 +11779,7 @@ Si no nos agrada el aspecto de
 \family typewriter
 ec
 \family default
-, podemos seleccionar una de las otras fuentes vectoriales suministradas,
+, podemos seleccionar una de las otras tipografías vectoriales suministradas,
  por ejemplo, 
 \family sans
 Times Roman
@@ -11681,13 +11791,13 @@ Times Roman
 Palatino
 \family default
 .
- La mayoría de fuentes romanas vectoriales seleccionarán automáticamente
- las correspondientes fuentes sans serif y typewriter
+ La mayoría de tipografías romanas vectoriales seleccionarán automáticamente
+ las correspondientes tipografías sans serif y ancho fijo
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-A veces corresponden otras fuentes, (p.
+A veces corresponden otras tipografías, (p.
 \begin_inset space ~
 \end_inset
 
@@ -11712,11 +11822,11 @@ Latin Modern
 \family typewriter
 Computer Modern
 \family default
-, diferentes formas de la misma fuente, o sea, una 
+, diferentes formas de la misma letra, o sea, una 
 \emph on
 familia
 \emph default
- real de fuentes.
+ real de letras.
  
 \end_layout
 
@@ -11727,9 +11837,9 @@ familia
 \begin_inset Newline newline
 \end_inset
 
-Las diferencias entre fuentes 
+Las diferencias entre las tipografías romana
 \family sans
-roman,
+,
 \family default
  
 \family sans
@@ -11740,8 +11850,8 @@ sans
 serif 
 \family default
 y 
-\family sans
-typewriter
+\family typewriter
+ancho fijo
 \family default
  se explican en la sección
 \begin_inset space ~
@@ -11758,15 +11868,15 @@ reference "sub:Ajuste-fino-con"
 \begin_inset Newline newline
 \end_inset
 
-La fuente 
-\family typewriter
+La tipografía 
+\family sans
 Times Roman
 \family default
  se diseñó originalmente para periódicos.
- Esto significa que sus formas son más pequeñas que las de otras fuentes
+ Esto significa que sus formas son más pequeñas que las de otras tipografías
  para encajar en las pequeñas columnas de un periódico.
  Así pues, 
-\family typewriter
+\family sans
 Times Roman
 \family default
  no es la elección óptima para documentos extensos como los libros.
@@ -11780,7 +11890,7 @@ Times Roman
 \end_layout
 
 \begin_layout Standard
-Para el tamaño de fuente hay cuatro valores posibles: 
+Para el tamaño de carácter hay cuatro valores posibles: 
 \family sans
 Predeterminado, 10
 \family default
@@ -11803,14 +11913,14 @@ predeterminado
 \end_layout
 
 \begin_layout Standard
-Los tamaños de fuente son 
+Los tamaños de carácter son 
 \emph on
 tamaños base
 \emph default
 .
- Realmente LyX escala todos los otros tamaños posibles (tales como los que
- se usan en notas, exponentes y subíndices) según este valor.
- Siempre podrás afinar el tamaño de fuente en aquellas partes de texto en
+ En realidad, LyX redimensiona todos los otros tamaños posibles (tales como
+ los que se usan en notas, exponentes y subíndices) según este valor.
+ Siempre podrás afinar el tamaño de letra en aquellas partes de texto en
  que lo necesites mediante el diálogo 
 \family sans
 Estilo
@@ -11843,8 +11953,8 @@ La selección
 \family sans
 Familia predeterminada
 \family default
- permite especificar si la fuente base del documento debe ser romana, sans
- serif o typewriter.
+ permite especificar si la tipografía base del documento debe ser romana,
+ sans serif o ancho fijo.
  La opción 
 \family sans
 Predeterminado
@@ -11866,7 +11976,7 @@ La selección
 \family typewriter
  
 \family sans
-Codificación de fuentes LaTe
+Codificación de tipografías LaTe
 \begin_inset ERT
 status collapsed
 
@@ -11894,21 +12004,21 @@ Predeterminado
 \end_layout
 
 \begin_layout Standard
-Con algunas fuentes, las casillas 
+Con algunas tipografías, las casillas 
 \family sans
 Usar versalitas verdaderas
 \family default
  y 
 \family sans
-Usar estilo antiguo para las cifras se activan
+Usar estilo antiguo para las cifras
 \family default
-.
- Son características adicionales suministradas por algunas fuentes.
+ se activan.
+ Son características adicionales suministradas por algunas tipografías.
  Si se marca 
 \family sans
 Usar estilo antiguo para las cifras
 \family default
-, la fuente utiliza números en estilo antiguo (también llamado medieval,
+, la tipografía utiliza números en estilo antiguo (también llamado medieval,
  elzeviriano o de texto), es decir, cifras con altura variable que se adaptan
  graciosamente a las minúsculas.
  
@@ -11916,9 +12026,9 @@ Usar estilo antiguo para las cifras
 Usar versalitas verdaderas
 \family default
  determina que se usarán versalitas auténticas en lugar de falsas versalitas
- construidas con mayúsculas escaladas.
+ construidas con mayúsculas redimensionadas.
  Las versalitas auténticas suelen formar parte de colecciones expertas de
- fuentes; generalmente su aspecto es mejor que el de las falsas versalitas,
+ tipografías; generalmente su aspecto es mejor que el de las falsas versalitas,
  aunque a veces se deben adquirir separadamente.
 \end_layout
 
@@ -11928,12 +12038,12 @@ El campo
 CJK
 \family default
  permite a usuarios de los idiomas chino, japonés o coreano (CJK) especificar
- una fuente para los caracteres de los guiones.
+ una tipografía para la escritura de caracteres.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-La fuente será el argumento para los comandos del paquete LaTeX 
+La tipografía será el argumento para los comandos del paquete LaTeX 
 \series bold
 CJK
 \series default
@@ -11967,13 +12077,13 @@ status collapsed
 \series bold
 Nota: 
 \series default
-Cuando cambias una fuente o su tamaño en el documento, ¡LyX 
+Cuando cambias una tipografía o su tamaño en el documento, ¡LyX 
 \emph on
 no
 \emph default
- cambia la fuente en pantalla! Sólo verás la diferencia en la salida impresa;
- esto es parte del concepto WYSIWYM.
- Las fuentes en pantalla se pueden determinar en el diálogo 
+ cambia la tipografía en pantalla! Sólo verás la diferencia en la salida
+ impresa; esto es parte del concepto WYSIWYM.
+ Las tipografías en pantalla se pueden determinar en el diálogo 
 \family sans
 Herramientas\SpecialChar \menuseparator
 Preferencias
@@ -11985,7 +12095,7 @@ Preferencias
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Fuentes-de-pantalla"
+reference "sub:Tipografías-en-pantalla"
 
 \end_inset
 
@@ -12124,7 +12234,7 @@ Normalmente el estilo
 Énfasis
 \family default
  equivale a letra cursiva aunque algunas clases de documento o paquetes
- LaTeX usan una fuente diferente.
+ LaTeX usan una tipografía diferente.
 \end_layout
 
 \begin_layout Standard
@@ -12150,7 +12260,7 @@ Es un aviso además de un ejemplo.
 \end_layout
 
 \begin_layout Standard
-Siempre se puede restablecer la fuente predeterminada con la combinación
+Siempre se puede restablecer la tipografía predeterminada con la combinación
  
 \family sans
 Alt+C
@@ -12192,7 +12302,7 @@ Estilo del texto
 Siempre hay ocasiones en las que necesitas afinar el estilo del texto, por
  eso LyX permite crear estilos personalizados.
  Por ejemplo, una publicación académica o corporativa que tienen una hoja
- de estilo que requiere una letra sans-serif en ciertas situaciones.
+ de estilo que requiere una letra sans serif en ciertas situaciones.
  También, escritores que a veces usan letra diferente para distinguir reflexione
 s del diálogo ordinario.
 \end_layout
@@ -12240,7 +12350,7 @@ Reiniciar
 \end_layout
 
 \begin_layout Standard
-Las propiedades de fuente y sus opciones (además de 
+Las propiedades de letra y sus opciones (además de 
 \family sans
 Ningún
 \begin_inset space ~
@@ -12261,7 +12371,7 @@ Reiniciar
 \family sans
 Familia
 \family default
- Apariencia general de la fuente.
+ Apariencia general de la tipografía.
  Las opciones posibles son:
 \end_layout
 
@@ -12270,10 +12380,10 @@ Familia
 \labelwidthstring 00.00.0000
 
 \family sans
-Roman
+Romana
 \family default
  Esta es la familia de tipos romanos.
- Normalmente una fuente serif.
+ Normalmente una tipografía serif (con remates).
  Es la familia predeterminada.
  (combinación 
 \family sans
@@ -12296,11 +12406,11 @@ Sans
 
 Serif
 \family default
- Esta es la familia de fuentes 
+ Esta es la familia de tipografías 
 \family sans
-Sans Serif.
-
+Sans Serif
 \family default
+, (palo seco).
  (combinación 
 \family sans
 Alt+C
@@ -12316,11 +12426,11 @@ S
 \labelwidthstring 00.00.0000
 
 \family sans
-Typewriter
+Ancho fijo
 \family default
- Esta es la familia de fuentes 
+ Esta es la familia de tipografías de 
 \family typewriter
-Typewriter.
+Ancho fijo.
 
 \family default
  (combinación 
@@ -12333,7 +12443,7 @@ Control+Mayúsculas+P)
 \labelwidthstring 00.00.0000
 
 \family sans
-Serie
+Grosor
 \family default
  Esto corresponde a la intensidad de impresión.
  Las opciones son:
@@ -12346,7 +12456,7 @@ Serie
 \family sans
 Medio
 \family default
- Esta es la serie Medio.
+ Este es el grosor Medio.
  Es el valor predeterminado.
 \end_layout
 
@@ -12358,7 +12468,11 @@ Negrita
 \family default
  
 \series bold
-Esta es la serie Negrita.
+Este es 
+\series default
+el grosor
+\series bold
+ Negrita.
 
 \series default
  (combinaciones 
@@ -12445,9 +12559,9 @@ Esta es la forma de letra Versalitas
 \family sans
 Tamaño
 \family default
- Altera el tamaño de la fuente.
+ Establece el tamaño del carácter.
  Encontrarás aquí valores no numéricos; todos los tamaños posibles son en
- realidad proporcionales al tamaño de fuente del documento.
+ realidad proporcionales al tamaño de la tipografía del documento.
  Insistimos, no das los detalles a LyX, sino una indicación general de lo
  que quieres hacer.
  Las opciones son:
@@ -12473,7 +12587,7 @@ Diminuta
 .
 
 \size default
- (combinaciones 
+ (Combinaciones 
 \family sans
 Alt+S
 \begin_inset space ~
@@ -12511,7 +12625,7 @@ Pequeñísima
 
 \size default
 .
- (combinación 
+ (Combinación 
 \family sans
 Alt+S
 \begin_inset space ~
@@ -12545,7 +12659,7 @@ Más Pequeña
 .
 
 \size default
- (combinaciones 
+ (Combinaciones 
 \family sans
 Alt+S
 \begin_inset space ~
@@ -12583,7 +12697,7 @@ Pequeña
 .
 
 \size default
- (combinaciones 
+ (Combinaciones 
 \family sans
 Alt+S
 \begin_inset space ~
@@ -12618,7 +12732,7 @@ Normal
 
 .
  Es el valor por omisión.
- (combinaciones 
+ (Combinaciones 
 \family sans
 Alt+S
 \begin_inset space ~
@@ -12656,7 +12770,7 @@ Grande
 .
 
 \size default
- (combinaciones 
+ (Combinaciones 
 \family sans
 Alt+S
 \begin_inset space ~
@@ -12698,7 +12812,7 @@ Más grande
 .
 
 \size default
- (combinaciones 
+ (Combinaciones 
 \family sans
 Alt+S
 \begin_inset space ~
@@ -12736,7 +12850,7 @@ Grandísima
 .
 
 \size default
- (combinación 
+ (Combinación 
 \family sans
 Alt+S
 \begin_inset space ~
@@ -12766,7 +12880,7 @@ Enorme
 .
 
 \size default
- (combinaciones 
+ (Combinaciones 
 \family sans
 Alt+S Mayúsculas
 \begin_inset space ~
@@ -12808,7 +12922,7 @@ Más enorme
 .
 
 \size default
- (combinaciones 
+ (Combinaciones 
 \family sans
 Alt+S
 \begin_inset space ~
@@ -12823,6 +12937,66 @@ Alt+S
 \end_inset
 
 0
+\family default
+)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+Aumentar
+\family default
+ Aumenta el tamaño un escalón (por ejemplo, de 
+\begin_inset Quotes fld
+\end_inset
+
+Grandísima
+\begin_inset Quotes frd
+\end_inset
+
+ a 
+\begin_inset Quotes fld
+\end_inset
+
+Enorme
+\begin_inset Quotes frd
+\end_inset
+
+).
+ (Combinación 
+\family sans
+Alt+S+
+\family default
+)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+Disminuir
+\family default
+ Disminuye el tamaño un escalón (por ejemplo, de 
+\begin_inset Quotes fld
+\end_inset
+
+Normal
+\begin_inset Quotes frd
+\end_inset
+
+ a 
+\begin_inset Quotes fld
+\end_inset
+
+Pequeña
+\begin_inset Quotes frd
+\end_inset
+
+).
+ (Combinación 
+\family sans
+Alt+S-
 \family default
 )
 \end_layout
@@ -12865,7 +13039,19 @@ conmutado
 Texto con énfasis.
 
 \emph default
- Podría parecer igual que 
+ (Combinaciones C
+\family sans
+trl+E, Alt+C
+\begin_inset space ~
+\end_inset
+
+E)
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+Podría parecer igual que 
 \shape italic
 Cursiva
 \shape default
@@ -12875,7 +13061,7 @@ Cursiva
 lógico
 \emph default
 .
- Esto significa que cada clase de documento puede definir su propia fuente
+ Esto significa que cada clase de documento puede definir su propia tipografía
  para dar énfasis a un texto.
  Normalmente equivale a cursiva.
 \end_layout
@@ -12891,7 +13077,7 @@ Subrayado
 Esto es un texto subrayado.
 
 \bar default
- (combinaciones C
+ (Combinaciones C
 \family sans
 trl+U, Alt+C
 \begin_inset space ~
@@ -12906,8 +13092,104 @@ U)
 ¡Evita usar subrayado si es posible! Es un recurso de los tiempos de las
  máquinas de escribir, cuando no era posible cambiar de letra.
  Ahora no necesitamos resaltar texto subrayando.
- Se incluye en LyX sólo por si alguien lo necesita para respetar algunas
- hojas de estilo.
+ Se incluye en LyX sólo por si alguien lo necesita para respetar hojas de
+ estilo de algunas publicaciones.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+Doble
+\begin_inset space ~
+\end_inset
+
+subrayado
+\family default
+ 
+\bar under
+\uuline on
+Esto es un texto con doble subrayado.
+
+\bar default
+\uuline default
+ (Combinación 
+\family sans
+Alt+C
+\begin_inset space ~
+\end_inset
+
+D)
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+Si acabamos de advertir contra el uso de subrayado, imagina lo que pensamos
+ sobre el doble subrayado.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+Subrayado
+\begin_inset space ~
+\end_inset
+
+ondulado
+\family default
+ 
+\uwave on
+Esto es un texto con subrayado ondulado.
+
+\uwave default
+ (Combinación 
+\family sans
+Alt+C
+\begin_inset space ~
+\end_inset
+
+W
+\family default
+)
+\family sans
+
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+Úsalo solo si alguna publicación insiste en ello.
+ Ten a mano píldoras para el mareo.
+
+\family sans
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+Tachado
+\family default
+ 
+\strikeout on
+Esto es un texto tachado.
+
+\strikeout default
+ (Combinación 
+\family sans
+Ctrl+Mayúsculas+O
+\family default
+).
+\begin_inset Newline newline
+\end_inset
+
+Se usa frecuentemente para señalar la versión antigua de un texto cambiado.
+
+\strikeout on
+ 
 \end_layout
 
 \begin_layout Labeling
@@ -12919,9 +13201,25 @@ Versalitas
  
 \noun on
 Este texto está en Versalitas.
+ 
+\noun default
+(Combinación 
+\family sans
+Alt+C
+\begin_inset space ~
+\end_inset
+
+C
+\family default
+).
+\noun on
+
+\begin_inset Newline newline
+\end_inset
+
 
 \noun default
- Como 
+Como 
 \family sans
 Énfasis
 \family default
@@ -13022,7 +13320,7 @@ Estilo del texto
 \end_inset
 
 .
- Ese botón te permite alternar el estado de tu estilo personalizado cuando
+ Ese botón te permite aplicar el estado del estilo personalizado cuando
  el diálogo no está visible.
  
 \end_layout
@@ -13071,7 +13369,7 @@ Aceptar
 
 \begin_layout Standard
 Deberías también saber un poco sobre las diferencias entre los tres tipos
- principales de fuentes 
+ principales de tipografías 
 \family sans
 serif
 \family default
@@ -13085,7 +13383,7 @@ serif
 \family default
 , y 
 \family sans
-typewriter
+ancho fijo
 \family default
 :
 \end_layout
@@ -13093,9 +13391,9 @@ typewriter
 \begin_layout Itemize
 
 \family sans
-Typewriter
+Ancho fijo
 \family default
- es una fuente de 
+ es una tipografía de 
 \begin_inset Quotes fld
 \end_inset
 
@@ -13103,7 +13401,7 @@ ancho fijo
 \begin_inset Quotes frd
 \end_inset
 
-, significa que cada carácter tiene la misma anchura, la 
+ (mono), significa que cada carácter tiene la misma anchura, la 
 \begin_inset Quotes fld
 \end_inset
 
@@ -13125,32 +13423,18 @@ m
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Phantom HPhantom
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-phantom{
-\end_layout
-
-\end_inset
-
-sin 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+sin
 \end_layout
 
 \end_inset
 
 
 \family typewriter
-texto en typewriter
+texto en ancho fijo
 \family default
 
 \begin_inset Note Note
@@ -13179,7 +13463,7 @@ reference "sub:Otros-espacios"
 \begin_inset Newline newline
 \end_inset
 
-sin texto en typewriter
+sin texto en ancho fijo
 \end_layout
 
 \begin_layout Itemize
@@ -13187,11 +13471,19 @@ sin texto en typewriter
 \family sans
 Serif
 \family default
- son fuentes formadas por caracteres con pequeños 
+ son tipografías formadas por caracteres con pequeños 
 \begin_inset Quotes fld
 \end_inset
 
 apéndices
+\begin_inset Quotes frd
+\end_inset
+
+ o 
+\begin_inset Quotes fld
+\end_inset
+
+remates
 \begin_inset Quotes frd
 \end_inset
 
@@ -13200,34 +13492,132 @@ apéndices
 \begin_inset Newline newline
 \end_inset
 
-texto con letras serif
+texto con letras serif, con remates
 \begin_inset Newline newline
 \end_inset
 
 
 \family sans
-texto con letras no serif
+texto con letras no serif, sin remates
 \family default
 
 \begin_inset Newline newline
 \end_inset
 
 Los caracteres serif facilitan una cómoda y ágil lectura.
- Por esto se usan como fuente predeterminada (conocida por 
+ Por esto se usan como tipografía predeterminada (conocida por 
 \family sans
 roman
 \family default
-).
+a).
 \end_layout
 
 \begin_layout Itemize
-Las fuentes 
+Las tipografías 
 \family sans
 Sans serif
 \family default
- no tienen apéndices.
- Por eso este tipo de fuente se suele usar para encabezados y textos cortos.
+ (palo seco) no tienen apéndices.
+ Por eso este tipo de letra se suele usar para encabezados y textos cortos.
  En este documento la usamos para resaltar nombres de menú.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes fld
+\end_inset
+
+Conmutar
+\begin_inset Quotes frd
+\end_inset
+
+ significa cambiar entre dos estados excluyentes de una propiedad de estilo
+ del texto.
+ Cuando una propiedad que está marcada para conmutar en el diálogo Estilo
+ del texto se aplica a un texto que ya la tenía, se le quitará al texto
+ dicha característica.
+ Si aplicas un estilo con las propiedades A, B y C a un texto que actualmente
+ tiene las propiedades B, C, F y G, y si B es conmutable y C no lo es, el
+ texto acabará por tener las propiedades A, C, F y G.
+ 
+\begin_inset Quotes fld
+\end_inset
+
+Nunca conmutado
+\begin_inset Quotes frd
+\end_inset
+
+ y 
+\begin_inset Quotes fld
+\end_inset
+
+Sempre conmutado
+\begin_inset Quotes frd
+\end_inset
+
+ implican que no tienes control sobre este comportamiento.
+ Para las propiedades de la parte izquierda del diálogo (
+\begin_inset Quotes fld
+\end_inset
+
+Familia
+\begin_inset Quotes frd
+\end_inset
+
+, etc.), la conmutación depende de tu elección.
+ Si 
+\begin_inset Quotes fld
+\end_inset
+
+Conmutar todo
+\begin_inset Quotes frd
+\end_inset
+
+ está marcado, todas las propiedades de esa parte se conmutan; por omisión
+ no lo está ninguna de ellas.
+ Por último, 
+\begin_inset Quotes fld
+\end_inset
+
+Reiniciar
+\begin_inset Quotes frd
+\end_inset
+
+ nunca se conmuta.
+ Si eliges 
+\begin_inset Quotes fld
+\end_inset
+
+Reiniciar
+\begin_inset Quotes frd
+\end_inset
+
+ el 
+\begin_inset Quotes fld
+\end_inset
+
+Grosor
+\begin_inset Quotes frd
+\end_inset
+
+ y marcas 
+\begin_inset Quotes fld
+\end_inset
+
+Conmutar todo
+\begin_inset Quotes frd
+\end_inset
+
+, y luego aplicas el estilo a texto en negrita, este texto volverá al grosor
+ por omisión, (
+\begin_inset Quotes fld
+\end_inset
+
+Medio
+\begin_inset Quotes frd
+\end_inset
+
+), independientemente del número de veces que apliques el estilo.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -13262,7 +13652,7 @@ LyX usa el programa LaTeX como soporte.
  LaTeX es un paquete de macros para el sistema de tipografía TeX, pero para
  evitar confusión, sólo nos referiremos a LaTeX.
  LyX es lo que utilizas para escribir realmente.
- Después, LyX invoca a LaTeX para volcar tus escritos en una salida imprimible.
+ Después, LyX ejecuta LaTeX para volcar tus escritos en una salida imprimible.
  Esto tiene lugar en dos pasos:
 \end_layout
 
@@ -13349,11 +13739,7 @@ American Standard Code for Information Interchange
 \end_layout
 
 \begin_layout Standard
-Puedes exportar el documento a ASCII con el menú
-\change_deleted 223325401 1302329403
- 
-\change_unchanged
- 
+Puedes exportar el documento a ASCII con el menú 
 \family sans
 Archivo\SpecialChar \menuseparator
 Exportar\SpecialChar \menuseparator
@@ -13363,11 +13749,9 @@ Texto
 
 simple
 \family default
- o 
+ o con la opción
 \family sans
-Archivo\SpecialChar \menuseparator
-Exportar\SpecialChar \menuseparator
-Texto
+ Texto
 \begin_inset space ~
 \end_inset
 
@@ -13375,7 +13759,13 @@ simple
 \begin_inset space ~
 \end_inset
 
-(ps2ascii)
+(ps2ascii) 
+\family default
+disponible en 
+\family sans
+Archivo\SpecialChar \menuseparator
+Exportar\SpecialChar \menuseparator
+Más formatos y opciones
 \family default
 .
  Esta última será exportada internamente primero a PostScript y luego convertida
@@ -13540,14 +13930,14 @@ LuaTeX
 LuaTeX
 \family default
  es un motor que proporciona soporte directo de Unicode y acceso directo
- a fuentes (véase la sección
+ a tipografías (véase la sección
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Soporte-de-fuentes-LaTeX"
+reference "sub:Soporte-de-tipografías-LaTeX"
 
 \end_inset
 
@@ -13873,14 +14263,14 @@ XeTeX
 XeTeX
 \family default
  es un nuevo motor que suministra soporte directo de Unicode y acceso directo
- a fuentes (véase la sección
+ a tipografías (véase la sección
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Soporte-de-fuentes-LaTeX"
+reference "sub:Soporte-de-tipografías-LaTeX"
 
 \end_inset
 
@@ -13918,14 +14308,14 @@ LuaTeX
 pdflatex
 \family default
 , que también proporciona soporte directo de Unicode y soporte para acceso
- directo a fuentes (véase la sección
+ directo a tipografías (véase la sección
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Soporte-de-fuentes-LaTeX"
+reference "sub:Soporte-de-tipografías-LaTeX"
 
 \end_inset
 
@@ -13949,7 +14339,7 @@ pdftex
 \family default
  soporta todas las características de las versiones actuales de PDF, es
  rápido y estable.
- Si confías en el soporte multiguion y en fuentes específicas OpenType,
+ Si confías en el soporte multiguion y en tipografías específicas OpenType,
  te podría interesar probar en su lugar 
 \family sans
 PDF
@@ -14096,60 +14486,57 @@ Para echar un vistazo a tu documento, o ver su versión final con sus saltos
 \family sans
 Ver
 \family default
- y elige el tipo de archivo.
- Se mostrará un programa visor donde podemos ver la salida.
- Para 
-\family sans
-Ver\SpecialChar \menuseparator
-DVI
-\family default
- puedes usar el botón 
-\begin_inset Graphics
-	filename ../../images/buffer-view_dvi.png
-	scale 85
-	groupId botonesbh
+ y elige el tipo de archivo o el botón 
+\emph on
 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
 \end_inset
 
- (atajo 
-\family sans
-Ctrl+D
-\family default
-), para 
-\family sans
-Ver\SpecialChar \menuseparator
-PDF
+
+\emph default
+.
+ Se abrirá un programa visor donde podemos ver la salida en el formato de
+ salida definido como predeterminado, que se establece globalmente en las
+ preferencias (véase la sec.
 \begin_inset space ~
 \end_inset
 
-(pdflatex)
-\family default
- puedes usar el botón 
-\begin_inset Graphics
-	filename ../../images/buffer-view_pdf2.png
-	scale 85
-	groupId botonesbh
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formatos-de-archivo"
 
 \end_inset
 
-, y para 
+), y que puede cambiarse para documentos concretos en la configuración del
+ documento (véase la sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Salidas"
+
+\end_inset
+
+).
+ Se pueden seleccionar otros formatos de salida en el menú 
 \family sans
 Ver\SpecialChar \menuseparator
-Postscript
+Otros formatos
 \family default
- el botón 
+ o con el botón 
 \begin_inset Graphics
-	filename ../../images/buffer-view_ps.png
+	filename ../../images/view-others.png
 	scale 85
-	groupId botonesbh
+	groupId toolbarbuttons
 
 \end_inset
 
- (atajo 
-\family sans
-Ctrl+T
-\family default
-).
+.
 \end_layout
 
 \begin_layout Standard
@@ -14159,7 +14546,12 @@ Si has hecho cambios en tu documento, puedes refrescar la salida en la misma
 Ver\SpecialChar \menuseparator
 Actualizar
 \family default
-.
+ o 
+\family sans
+Ver\SpecialChar \menuseparator
+Actualizar (Otros formatos)
+\family default
+, respectivamente.
 \end_layout
 
 \begin_layout Standard
@@ -14718,9 +15110,9 @@ Configuración
 
 \begin_layout Standard
 LaTeX realiza la separación silábica casi a la perfección, sólo tiene dificultad
-es con texto en fuente 
+es con texto en letra de 
 \family sans
-typewriter
+ancho fijo
 \family default
  y con estructuras inusuales, como 
 \begin_inset Quotes fld
@@ -14736,7 +15128,7 @@ h3knix/m0n0wall
 \family sans
 Insertar\SpecialChar \menuseparator
 Formato\SpecialChar \menuseparator
-Guión silábico
+Guión de división silábica
 \family default
 .
  Estos guiones extras sólo son recomendaciones para LaTeX.
@@ -14807,7 +15199,7 @@ name "sub:Abreviaturas"
 \end_layout
 
 \begin_layout Standard
-Cuando LyX invoca a LaTeX para generar la versión final del documento, LaTeX
+Cuando LyX ejecuta LaTeX para generar la versión final del documento, LaTeX
  distingue automáticamente entre palabras, frases y abreviaturas.
  LaTeX añade entonces la 
 \begin_inset Quotes fld
@@ -14866,13 +15258,16 @@ Y aquí hay un ejemplo de mal funcionamiento del algoritmo:
 
 \begin_layout Itemize
 p.
- e.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
  ¡aquí hay demasiado espacio!
 \end_layout
 
 \begin_layout Itemize
 Apartado B.
- Esto es correcto.
+ Este es correcto.
 \end_layout
 
 \begin_layout Standard
@@ -15076,19 +15471,16 @@ abrir cerrar
 \end_inset
 
 .
- El carácter del teclado, 
+ La tecla con el carácter 
 \family sans
 "
 \family default
-, las genera automáticamente.
-\end_layout
-
-\begin_layout Standard
-Puedes cambiar el comportamiento de la tecla 
+ las genera automáticamente.
+ El tipo de comillas generado por la tecla 
 \family sans
 "
 \family default
- en el submenú 
+ se puede cambiar en el submenú 
 \family sans
 Idioma
 \family default
@@ -15097,9 +15489,9 @@ Idioma
 Documento\SpecialChar \menuseparator
 Configuración
 \family default
-
+.
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Documentos ! Configuración
@@ -15107,34 +15499,7 @@ Documentos ! Configuración
 
 \end_inset
 
-.
- Si se selecciona el botón 
-\family sans
-Dobles
-\family default
-, la tecla 
-\family sans
-" 
-\family default
-genera comillas dobles 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-.
- Si se selecciona el botón 
-\family sans
-Simples 
-\family default
-genera `'.
- 
-\end_layout
-
-\begin_layout Standard
-En el cuadro 
+ En el cuadro 
 \family sans
 Estilo
 \begin_inset space ~
@@ -15146,7 +15511,7 @@ de
 
 cita
 \family default
- puedes seleccionar comillas para distintos idiomas.
+ se pueden seleccionar comillas para distintos idiomas.
  Hay seis opciones:
 \end_layout
 
@@ -15332,8 +15697,7 @@ Estas opciones afectan al carácter generado por la tecla
 \end_layout
 
 \begin_layout Standard
-Por otra parte, si quieres generar un carácter comillas en texto simple,
- teclea 
+Por otra parte, para generar comillas en texto simple, teclea 
 \family sans
 Ctrl+Mayúsculas+"
 \family default
@@ -15432,7 +15796,8 @@ ffl
 \end_layout
 
 \begin_layout Standard
-Algunos idiomas usan otras ligaduras si la fuente del documento las soporta.
+Algunos idiomas usan otras ligaduras si la tipografía del documento las
+ soporta.
 \end_layout
 
 \begin_layout Standard
@@ -15454,23 +15819,6 @@ cufflink
 \end_inset
 
  o la alemana «Dorffest».
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-N.
- del t.
-\emph default
-: Son palabras compuestas, «cuff-link» y «Dorf-fest».
- En español, el uso de esta opción será muy infrecuente porque es muy raro
- encontrar palabras compuestas con esas ligaduras.
- 
-\end_layout
-
-\end_inset
-
  Para romper una ligadura, usa 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -16558,7 +16906,7 @@ reference "sub:Formatos-de-salida"
 \end_layout
 
 \begin_layout Standard
-Como en el caso de las fuentes, hay dos tipos de archivos de imagen:
+Como en el caso de las tipografías, hay dos tipos de archivos de imagen:
 \end_layout
 
 \begin_layout Description
@@ -16977,7 +17325,7 @@ del diálogo de gráficos.
 \end_layout
 
 \begin_layout Section
-Cuadros y Tablas
+Cuadros y tablas
 \begin_inset Index idx
 status open
 
@@ -17030,7 +17378,7 @@ name "sec:Cuadros"
 \end_layout
 
 \begin_layout Standard
-Puede insertarse uncuadro mediante el botón 
+Un cuadro se inserta mediante el botón 
 \begin_inset Info
 type  "icon"
 arg   "tabular-insert"
@@ -17310,8 +17658,8 @@ reference "sub:Celdas-de-cuadros"
 \end_layout
 
 \begin_layout Standard
-Puedes seleccionar varias celdas de una fila como celda multicolumna/fila
- marcando el cuadro 
+Puedes seleccionar varias celdas de una fila/columna para hacer una celda
+ multicolumna/multifila, marcando el cuadro 
 \family sans
 Multicolumna 
 \family default
@@ -17550,7 +17898,7 @@ Los expertos pueden añadir argumentos especiales de LaTeX al cuadro, necesarios
  para formatos de cuadro especiales, como multifilas; se explican en la
  sección 
 \emph on
-Cuadros y Tablas
+Cuadros y tablas
 \emph default
  del manual 
 \emph on
@@ -19925,7 +20273,7 @@ name "sub:Celdas-de-cuadros"
 Una celda puede contener texto, una ecuación en línea, una figura, u otro
  cuadro.
  Todas estas clases de objetos pueden colocarse en la misma celda.
- Se puede alterar el tamaño y la forma de la fuente.
+ Se puede alterar el tamaño y la forma de la letra.
  Pero no puedes poner determinados entornos (como 
 \family sans
 Sección*
@@ -22419,7 +22767,7 @@ spce
 y
 \series default
 .
- Para poner en el exponente caracteres que serían acentuados con el circunflejo
+ Para poner como exponentes caracteres que serían acentuados con el circunflejo
  «^», debes teclear un 
 \family sans
 Espacio
@@ -22433,11 +22781,7 @@ Espacio
 \end_inset
 
  y el carácter.
- P.
-\begin_inset space \thinspace{}
-\end_inset
-
-e., para 
+ Por ejemplo, para 
 \begin_inset Formula $x^{a}$
 \end_inset
 
@@ -22479,10 +22823,6 @@ Este será el método a usar habitualmente en teclados en español para entrar
 
 \end_inset
 
-
-\change_deleted 223325401 1302329403
- 
-\change_unchanged
  Los subíndices se ponen con guión bajo 
 \begin_inset Quotes fld
 \end_inset
@@ -22724,11 +23064,7 @@ Alt+M
 
 L
 \family default
- o con el menú
-\change_deleted 223325401 1302329403
- 
-\change_unchanged
- 
+ o con el menú 
 \family sans
 Editar\SpecialChar \menuseparator
 Ecuaciones\SpecialChar \menuseparator
@@ -22904,9 +23240,9 @@ Ctrl+Espacio
 
 \end_inset
 
- del 
+ de los 
 \family sans
-Panel de ecuaciones
+Paneles de ecuaciones
 \family default
 .
  Se genera un espacio señalado con un pequeño marcador en la pantalla.
@@ -23829,9 +24165,9 @@ Decoraciones
 
 \end_inset
 
- del 
+ de los 
 \family sans
-Panel de ecuaciones
+Paneles de ecuaciones
 \family default
 ; esto se aplicará también a cualquier selección que hayas hecho en una
  fórmula.
@@ -24133,7 +24469,7 @@ Hay otros ordenamientos utilizados en ecuaciones, tales como una presentación
  Para ello se usa el submenú 
 \family sans
 Insertar\SpecialChar \menuseparator
-Ecuaciones\SpecialChar \menuseparator
+Ecuación\SpecialChar \menuseparator
 Entorno
 \begin_inset space ~
 \end_inset
@@ -24308,12 +24644,8 @@ name "sec:Numeración-y-referencia"
 Para numerar una ecuación, pon el cursor en ella y usa el menú 
 \family sans
 Editar\SpecialChar \menuseparator
-Ecuaciones\SpecialChar \menuseparator
-Conmutar
-\begin_inset space ~
-\end_inset
-
-numeración
+Ecuación\SpecialChar \menuseparator
+Numerar la ecuación
 \family default
  o el atajo 
 \family sans
@@ -24370,20 +24702,8 @@ Las ecuaciones multilínea se pueden numerar línea por línea, mediante el
  menú 
 \family sans
 Editar\SpecialChar \menuseparator
-Ecuaciones\SpecialChar \menuseparator
-Conmutar
-\begin_inset space ~
-\end_inset
-
-numeración
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-línea
+Ecuación\SpecialChar \menuseparator
+Numerar la línea
 \family default
  o el atajo 
 \family sans
@@ -24556,16 +24876,16 @@ Macros de ecuaciones
 \end_layout
 
 \begin_layout Section
-Afinando
+Ajuste fino
 \end_layout
 
 \begin_layout Subsection
-Estilo del texto
+Estilos de la tipografía
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Matemáticas ! Estilo del texto
+Matemáticas ! Estilos de la tipografía
 \end_layout
 
 \end_inset
@@ -24574,8 +24894,8 @@ Matemáticas ! Estilo del texto
 \end_layout
 
 \begin_layout Standard
-La fuente estándar para el texto es cursiva, y para números es romana.
- Para determinar una fuente en una ecuación usa el botón 
+La tipografía estándar para el texto es cursiva, y para números es romana.
+ Para establecer una tipografía en una ecuación usa el botón 
 \begin_inset Graphics
 	filename ../../images/math/font.png
 	scale 85
@@ -24583,9 +24903,9 @@ La fuente estándar para el texto es cursiva, y para números es romana.
 
 \end_inset
 
- del 
+ de 
 \family sans
-Panel de ecuaciones
+Paneles de ecuaciones
 \family default
 , o introduce directamente el comando adecuado, según el cuadro
 \begin_inset space ~
@@ -24637,7 +24957,7 @@ Estilos del texto y comandos correspondientes.
 \begin_inset Text
 
 \begin_layout Plain Layout
-Fuente
+Tipografía
 \end_layout
 
 \end_inset
@@ -24957,18 +25277,15 @@ f(x)=\sqrt{x}\:;\: x\in\mathbb{N}
 \end_layout
 
 \begin_layout Standard
-Los estilos de texto son anidables, lo que puede causar confusión.
- P.
-\begin_inset space \thinspace{}
-\end_inset
-
-e., poner un carácter en 
+Los estilos de texto se pueden anidar unos en otros, lo que puede causar
+ confusión.
+ Por ejemplo, puedes poner un carácter en 
 \family sans
 Fraktur
 \family default
- en un cuadro para 
+ en un marco en 
 \family sans
-Typewriter
+Ancho fijo
 \family default
 : 
 \begin_inset Formula $\mathtt{abc\mathfrak{d}e}$
@@ -25014,10 +25331,10 @@ boldsymbol
 \end_layout
 
 \begin_layout Standard
-Hay más opciones para fuentes en el menú 
+Hay más opciones para tipografías en el menú 
 \family sans
 Editar\SpecialChar \menuseparator
-Ecuaciones\SpecialChar \menuseparator
+Ecuación\SpecialChar \menuseparator
 Estilo
 \begin_inset space ~
 \end_inset
@@ -25026,7 +25343,7 @@ del
 \begin_inset space ~
 \end_inset
 
-texto
+texto.
 \end_layout
 
 \begin_layout Subsection
@@ -25044,11 +25361,12 @@ Matemáticas ! Texto en una ecuación
 \end_layout
 
 \begin_layout Standard
-Los estilos de letra son útiles para escribir ciertos caracteres pero no
- para texto.
- Para escribir texto en una ecuación es mejor usar la entrada 
+Los estilos de tipografía son útiles para escribir ciertos caracteres pero
+ no para texto.
+ Para escribir partes más largas de texto en una ecuación es mejor usar
+ 
 \family sans
-Texto
+Modo texto
 \begin_inset space ~
 \end_inset
 
@@ -25062,9 +25380,9 @@ normal
 
 \end_inset
 
- del 
+ de los 
 \family sans
-Panel de ecuaciones
+Paneles de ecuaciones
 \family default
  (o bien el atajo 
 \family sans
@@ -25082,8 +25400,8 @@ Espacio
 \begin_inset Formula 
 \[
 f(x)=\begin{cases}
-x & \textrm{en este caso }\\
--x & \textrm{en algún otro}
+x & \mbox{en este caso}\\
+-x & \mbox{en otro caso}
 \end{cases}
 \]
 
@@ -25093,12 +25411,12 @@ x & \textrm{en este caso }\\
 \end_layout
 
 \begin_layout Subsection
-Tamaños de fuente
+Tamaños de la tipografía
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Matemáticas ! Tamaños de fuente
+Matemáticas ! Tamaños de la tipografía
 \end_layout
 
 \end_inset
@@ -25107,8 +25425,8 @@ Matemáticas ! Tamaños de fuente
 \end_layout
 
 \begin_layout Standard
-Hay cuatro estilos de fuente (tamaños relativos) disponibles en modo matemático,
- que son automáticamente escogidos en la mayoría de situaciones.
+Hay cuatro estilos tipográficos (tamaños relativos) disponibles en modo
+ matemático, que son automáticamente escogidos en la mayoría de situaciones.
  Son los estilos 
 \family sans
 presentación
@@ -25166,7 +25484,11 @@ presentación.
 \family default
  Excepto para algunos operadores, que se redimensionan de acuerdo con la
  situación, todo el texto se pondrá en el estilo que LaTeX considere apropiado.
- La elección de LaTeX puede ser cambiada con el botón 
+ La elección de LaTeX puede ser cambiada en el 
+\family sans
+Panel de ecuaciones con el
+\family default
+ botón 
 \begin_inset Graphics
 	filename ../../images/math/style.png
 	scale 85
@@ -25174,10 +25496,6 @@ presentación.
 
 \end_inset
 
- del 
-\family sans
-Panel de ecuaciones
-\family default
 .
  Aparece un rectángulo de tamaño adecuado al estilo elegido en el que puedes
  insertar la estructura matemática.
@@ -25225,8 +25543,9 @@ presentación
 \end_layout
 
 \begin_layout Standard
-Todos estos tamaños de fuentes en modo ecuación son relativos, lo que significa
- que si se ha puesto un cierto tamaño predeterminado con el menú de 
+Todos estos tamaños de la tipografía en modo ecuación son relativos, lo
+ que significa que si se ha puesto un cierto tamaño predeterminado con el
+ menú de 
 \family sans
 Editar\SpecialChar \menuseparator
 Estilo
@@ -25241,9 +25560,9 @@ texto,
 \family default
  los tamaños en la fórmula se ajustarán en relación a dicho tamaño predeterminad
 o.
- De forma que, si el tamaño base de la fuente del documento se cambia, todas
- las fuentes serán reajustadas.
- Como ejemplo una ecuación con letra de tamaño 
+ De forma que, si el tamaño base de la tipografía del documento se cambia,
+ todos los caracteres serán reajustados.
+ Como ejemplo una ecuación con letra en tamaño 
 \begin_inset Quotes fld
 \end_inset
 
@@ -26222,7 +26541,7 @@ http://www.lyx.org
 El estilo del texto del enlace no se puede cambiar, el texto del URL se
  mostrará siempre en 
 \family typewriter
-Typewriter
+Ancho fijo
 \family default
 .
  Para poder cambiar el formato del texto del URL usa hiperenlaces, como
@@ -27555,7 +27874,7 @@ makeindex
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Fuentes-de-documento"
+reference "sub:Tipografía-del-documento"
 
 \end_inset
 
@@ -28319,7 +28638,7 @@ textbf
 \series default
 , para 
 \family typewriter
-typewriter
+ancho fijo
 \family default
  usa 
 \series bold
@@ -29393,12 +29712,8 @@ Como LyX funciona sobre LaTeX, soporta muchos comandos y estructuras LaTeX,
 \end_layout
 
 \begin_layout Standard
-Pero no
-\change_deleted 223325401 1302329403
- 
-\change_unchanged
- temas, LyX puede insertar directamente cualquier comando LaTeX dentro de
- un cuadro de código TeX.
+Pero no temas, LyX puede insertar directamente cualquier comando LaTeX dentro
+ de un cuadro de código TeX.
  Los cuadros de código TeX se insertan con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -29619,7 +29934,7 @@ caption
 \series bold
 labelfont=bf
 \series default
- pondrá en negrita la fuente de todos los títulos de figuras y cuadros.
+ pondrá en negrita la letra de todos los títulos de figuras y cuadros.
  Así que añades al preámbulo el comando
 \end_layout
 
@@ -29777,12 +30092,13 @@ inmediata
 \family sans
 Herramientas\SpecialChar \menuseparator
 Preferencias\SpecialChar \menuseparator
-Pantalla
+Apariencia\SpecialChar \menuseparator
+Visualización
 \family default
 .
  El 
 \family sans
-Tamaño de la vista preliminar
+Tamaño de la vista
 \family default
  es el factor de multiplicación para el tamaño.
 \end_layout
@@ -29871,7 +30187,7 @@ pnmcrop,
 \family typewriter
 netpbm
 \family default
-; en Windows este programa se instala automáticamente junto con LyX..
+; en Windows este programa se instala automáticamente junto con LyX.
 \end_layout
 
 \begin_layout Standard
@@ -30289,11 +30605,7 @@ Encontrar
 \family sans
 Insertar\SpecialChar \menuseparator
 Expresión regular
-\change_deleted 223325401 1302329403
-
 \family default
- 
-\change_unchanged
  estando el cursor en el editor 
 \family sans
 Encontrar
@@ -30482,11 +30794,7 @@ idioma
 \end_layout
 
 \begin_layout Standard
-En
-\change_deleted 223325401 1302329403
- 
-\change_unchanged
- Windows, el cuadro de selección del programa corrector está desactivado
+En Windows, el cuadro de selección del programa corrector está desactivado
  pues sólo se puede usar
 \family sans
  
@@ -30801,11 +31109,8 @@ th_es_ES_v2.dat
 \end_layout
 
 \begin_layout Standard
-Si están instalados OpenOffice y su tesauro, estos archivos deberían
-\change_deleted 223325401 1302329403
- 
-\change_unchanged
- estar ya en tu sistema.
+Si están instalados OpenOffice y su tesauro, estos archivos deberían estar
+ ya en tu sistema.
  Si no, puedes obtener diccionarios en los sitios 
 \begin_inset Flex URL
 status open
@@ -30817,11 +31122,7 @@ http://www.lyx.org/trac/browser/dictionaries/trunk/thes
 
 \end_inset
 
- o
-\change_deleted 223325401 1302329403
- 
-\change_unchanged
- 
+ o 
 \begin_inset Flex URL
 status open
 
@@ -31855,7 +32156,7 @@ latin1
 Documento\SpecialChar \menuseparator
 Configuración,
 \family default
- los usuarios que sólo disponen de fuentes 
+ los usuarios que sólo disponen de tipografías 
 \family typewriter
 T1
 \family default
@@ -36476,7 +36777,7 @@ umlaut húngaro
 
 \end_deeper
 \begin_layout Standard
-Todos los caracteres anteriores son soportados activamente por las fuentes
+Todos los caracteres anteriores son soportados activamente por las tipografías
  TeX.
  Además, TeX permite acentos diacríticos en casi todos los caracteres.
  Asegúrate de estar usando la codificación 
@@ -36747,8 +37048,8 @@ Word) formato HTML especial que puede ser importado en
 \family sans
 MS Word
 \family default
-, en el que las fórmulas se transforman en fuentes bitmap y no en el formato
- 
+, en el que las fórmulas se transforman en tipografías bitmap y no en el
+ formato 
 \family sans
 MathML
 \family default
@@ -37378,7 +37679,7 @@ Reconfiguración de LyX
 \end_layout
 
 \begin_layout Standard
-Al invocar una opción del menú se iniciará un programa visor, el cuál se
+Al pulsar una opción del menú se iniciará un programa visor, el cuál se
  puede elegir y configurar en las preferencias, véase la sección
 \begin_inset space ~
 \end_inset
@@ -37836,15 +38137,15 @@ No todos los caracteres serán visibles en el diálogo
 \family sans
 Símbolos
 \family default
- porque ninguna de las fuentes de pantalla disponibles en el diálogo de
- preferencias (véase sec.
+ porque ninguna de las tipografías de pantalla disponibles en el diálogo
+ de preferencias (véase sec.
 \begin_inset space \thinspace{}
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Fuentes-de-pantalla"
+reference "sub:Tipografías-en-pantalla"
 
 \end_inset
 
@@ -41640,11 +41941,11 @@ reference "sub:Módulos"
 \end_layout
 
 \begin_layout Section
-Fuentes
+Tipografías
 \end_layout
 
 \begin_layout Standard
-La configuración de las fuentes del documento se explica en la sección
+La configuración de las tipografías del documento se explica en la sección
 \begin_inset space ~
 \end_inset
 
@@ -41797,12 +42098,8 @@ Lyx soporta salida en Unicode, que es especialmente útil en el caso de tener
 Idioma predeterminado
 \family default
 , (cuando LyX usa su lista de comandos LaTeX conocidos), y sin embargo no
- funcione con una
-\change_deleted 223325401 1302329403
- 
-\change_unchanged
- codificación fija utf8, (cuando no se usa la lista de comandos conocidos,
- pues todos los símbolos unicode se codifican en utf8).
+ funcione con una codificación fija utf8, (cuando no se usa la lista de
+ comandos conocidos, pues todos los símbolos unicode se codifican en utf8).
  La situación es mucho mejor con XeTeX y LuaTeX, dos nuevos motores alternativos
  al estándar LaTeX.
  Ambos motores soportan Unicode de forma nativa.
@@ -42651,7 +42948,7 @@ Opciones para ecuaciones
 \end_layout
 
 \begin_layout Standard
-Permite escoger si habilitar o no los paquetes LaTeX de matemáticas
+Permite escoger si habilitar o no los paquetes LaTeX para matemáticas
 \family sans
  
 \family default
@@ -42668,13 +42965,13 @@ LaTeX, paquetes ! amsmath
 
 \end_inset
 
- y 
+, 
 \series bold
 esint
 \series default
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
 LaTeX, paquetes ! esint
@@ -42682,11 +42979,35 @@ LaTeX, paquetes ! esint
 
 \end_inset
 
+ y 
+\series bold
+mathdots
+\series default
 
-\family sans
-,
-\family default
- o si usarlos automáticamente.
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+LaTeX, paquetes ! mathdots
+\end_layout
+
+\end_inset
+
+, y para química 
+\series bold
+mhchem
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+LaTeX, paquetes ! mhchem
+\end_layout
+
+\end_inset
+
+, o si usarlos automáticamente.
 \end_layout
 
 \begin_layout Standard
@@ -42704,6 +43025,22 @@ es necesario para numerosas estructuras; si recibes mensajes de error en
 esint
 \series default
  se usa para ciertos caracteres en integrales.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+mathdots
+\series default
+ se usa para insertar distintos tipos de puntos.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+mhchem
+\series default
+ suministra comandos para escribir fórmulas y ecuaciones químicas.
 \end_layout
 
 \begin_layout Section
@@ -42796,11 +43133,7 @@ salida
 \begin_inset space ~
 \end_inset
 
-predeterminado: El formato a utilizar cuando pulsas
-\change_deleted 223325401 1302329403
- 
-\change_unchanged
- 
+predeterminado: El formato a utilizar cuando pulsas 
 \begin_inset Quotes eld
 \end_inset
 
@@ -42842,11 +43175,15 @@ Ver
 Herramientas\SpecialChar \menuseparator
 Preferencias\SpecialChar \menuseparator
 Gestión de archivos\SpecialChar \menuseparator
-Formatos de archivo; véase 
+Formatos de archivo
 \family default
+; véase la sección
+\begin_inset space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
-LatexCommand formatted
+LatexCommand ref
 reference "sec:Formatos-de-archivo"
 
 \end_inset
@@ -42942,7 +43279,7 @@ Preferencias
 \end_layout
 
 \begin_layout Standard
-El diálogo Preferencias se invoca con el menú 
+El diálogo Preferencias se abre con el menú 
 \family sans
 Herramientas
 \family default
@@ -43176,10 +43513,10 @@ Sesión
 \begin_layout Standard
 Con la opción 
 \family sans
-Permitir guardar/restaurar el formato de la ventana y la geometría
+Restaurar formatos y geometrías de la ventana,
 \family default
- la ventana principal de LyX se abrirá con el tamaño y diseño que se usaron
- en la última sesión de LyX.
+ la ventana principal de LyX se abrirá con el tamaño y diseño que tenía
+ en la última sesión.
 \end_layout
 
 \begin_layout Standard
@@ -43194,7 +43531,7 @@ Restaurar posiciones del cursor
 \begin_layout Standard
 La opción 
 \family sans
-Cargar archivos abiertos de la última sesión
+Cargar los archivos abiertos de la última sesión
 \family default
  hace que se abran todos los archivos que estuvieran abiertos en la última
  sesión de LyX.
@@ -43233,7 +43570,7 @@ Copias de seguridad
 \begin_layout Standard
 
 \family sans
-Máximo de documentos recientes
+Documentos recientes
 \family default
  es el número de últimos archivos abiertos que LyX mostrará en el menú 
 \family sans
@@ -43254,12 +43591,12 @@ Abrir documentos en pestañas
 \end_layout
 
 \begin_layout Subsection
-Fuentes de pantalla
+Tipografías de pantalla
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Fuentes ! en pantalla
+Tipografías ! en pantalla
 \end_layout
 
 \end_inset
@@ -43267,7 +43604,7 @@ Fuentes ! en pantalla
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Fuentes-de-pantalla"
+name "sub:Tipografías-en-pantalla"
 
 \end_inset
 
@@ -43275,7 +43612,7 @@ name "sub:Fuentes-de-pantalla"
 \end_layout
 
 \begin_layout Standard
-Son las fuentes usadas para mostrar los documentos en la pantalla.
+Son las tipografías usadas para mostrar los documentos en la pantalla.
 \end_layout
 
 \begin_layout Standard
@@ -43287,12 +43624,12 @@ status collapsed
 \series bold
 Nota: 
 \series default
-Se refiere a las fuentes mostradas en la 
+Se refiere a las tipografías mostradas en la 
 \emph on
 pantalla
 \emph default
  de LyX, exclusivamente.
- Las fuentes que aparecerán en el documento de 
+ Las tipografías que aparecerán en el documento de 
 \emph on
 salida
 \emph default
@@ -43320,7 +43657,7 @@ Arial
 \family typewriter
 Helvetica
 \family default
- (depende del sistema) como fuente sans serif, y 
+ (depende del sistema) como tipografía sans serif, y 
 \family typewriter
 Courier
 \family default
@@ -43328,7 +43665,7 @@ Courier
 \end_layout
 
 \begin_layout Standard
-El tamaño de fuente se puede cambiar con 
+El tamaño de letra se puede cambiar con 
 \family sans
 Zoom.
 
@@ -43337,44 +43674,7 @@ Zoom.
 \end_layout
 
 \begin_layout Standard
-
-\family sans
-DPI Pantalla
-\family default
- es la resolución de pantalla en dpi (
-\begin_inset Quotes fld
-\end_inset
-
-dots per inch
-\begin_inset Quotes frd
-\end_inset
-
-, puntos por pulgada).
- Los tamaños de las fuentes se expresan como altura de letra en puntos.
- 72
-\begin_inset space \thinspace{}
-\end_inset
-
-puntos equivalen a 1
-\begin_inset space \thinspace{}
-\end_inset
-
-pulgada, véase el apéndice
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cap:Unidades-disponibles"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-El tamaño de fuente por omisión es 10
+El tamaño de letra por omisión es 10
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -43386,7 +43686,7 @@ pt.
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Fuentes-de-documento"
+reference "sub:Tipografía-del-documento"
 
 \end_inset
 
@@ -43396,7 +43696,7 @@ reference "sub:Fuentes-de-documento"
 \begin_layout Standard
 Con la opción 
 \family sans
-Usar Pixmap Cache
+Usar Pixmap Cache para acelerar el rendimiento
 \family default
  marcada, LyX necesita refrescar la pantalla con menor frecuencia.
  Esto conlleva un mejor rendimiento, especialmente en sistemas lentos.
@@ -43482,8 +43782,8 @@ preliminar
 \family sans
 inmediata
 \family default
- sirve para ver directamente en la pantalla de LyX objetos gráficos como
- imágenes o ecuaciones, como se explica en la sección
+ sirve para habilitar, o no, la vista en LyX de ciertas partes del documento.
+ Se explica en la sección
 \begin_inset space ~
 \end_inset
 
@@ -43498,11 +43798,7 @@ reference "sec:Vista-preliminar-inmediata"
 \end_layout
 
 \begin_layout Standard
-La opción
-\change_deleted 223325401 1302329403
- 
-\change_unchanged
- 
+La opción 
 \family sans
 Marcar
 \begin_inset space ~
@@ -43569,12 +43865,8 @@ Agrupar entornos por categorías
 \end_layout
 
 \begin_layout Standard
-La opción Editar macros de ecuación determina el estilo de edición, véase
- la sección
-\change_deleted 223325401 1302329403
- 
-\change_unchanged
- 
+Las opciones deedición de macros de ecuación determina el estilo de edición,
+ véase la sección 
 \emph on
 Macros de ecuaciones
 \emph default
@@ -43596,7 +43888,7 @@ Aquí puedes determinar qué partes ocultar en el modo pantalla completa.
 Limitar anchura del texto
 \family default
  especifica la anchura del texto en pantalla completa.
- De esta manera puedes mostrar el texto más pequeño que la pantalla, el
+ De esta manera puedes mostrar el texto más pequeño que la pantalla; el
  texto se ve centrado.
 \end_layout
 
@@ -43652,12 +43944,7 @@ broadway.bind
 \emph default
 , y para ciertos idiomas.
  El nombre de los archivos para idiomas comienza con el código del idioma.
- p.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
- «pt» para portugués.
+ por ejemplo, «pt» para portugués.
  Si usas LyX con determinados idiomas, LyX intentará usar el archivo de
  teclas apropiado.
 \end_layout
@@ -43721,11 +44008,7 @@ Ayuda
 \end_layout
 
 \begin_layout Standard
-Para añadir, p.
-\begin_inset space \thinspace{}
-\end_inset
-
-e., el atajo 
+Para añadir, por ejemplo, el atajo 
 \family sans
 Alt+Q
 \family default
@@ -43813,13 +44096,8 @@ Configuración ! Mapa de teclado
 \begin_layout Standard
 Normalmente la configuración del teclado se hace en el sistema operativo.
  Para casos en los que no es posible, LyX suministra mapas de teclado.
- Si tienes p.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
- un teclado checo pero quieres escribir en él como en un teclado rumano,
- puedes usar el mapa de teclado 
+ Si tienes, por ejemplo, un teclado checo pero quieres escribir en él como
+ en un teclado rumano, puedes usar el mapa de teclado 
 \emph on
 romanian.kmap
 \emph default
@@ -44328,15 +44606,11 @@ Permite cargar otro paquete de idiomas (con
 \end_inset
 
  
-\family typewriter
+\series bold
 
 \backslash
-usepackage
-\series bold
-{
+usepackage{nombre_paquete}
 \series default
-nombre_paquete}
-\family default
 )
 \end_layout
 
@@ -44346,7 +44620,7 @@ nombre_paquete}
 \series bold
 Ninguno: 
 \series default
-No carga ningún paquete de idiomasl
+No carga ningún paquete de idiomas
 \end_layout
 
 \end_deeper
@@ -44360,7 +44634,7 @@ decimal
 \end_inset
 
 predeterminado Define el símbolo por omisión para separar decimales en cuadros
- (alineación del separador decimal)
+ (alineación del separador decimal).
 \end_layout
 
 \begin_layout Description
@@ -44375,10 +44649,13 @@ del
 comando Cuando hace falta algún paquete LaTeX especial para escribir en
  determinado idioma, aquí puedes poner el comando para cargarlo.
  Un ejemplo es el comando 
-\family sans
+\series bold
 
 \backslash
-begin{arabtext} 
+begin{arabtext}
+\family sans
+\series default
+ 
 \family default
 para cargar el paquete 
 \series bold
@@ -44399,17 +44676,13 @@ key "Arabic"
 Por omisión, es el comando de 
 \series bold
 babel
-\change_deleted 223325401 1302329403
-
 \series default
  
-\change_unchanged
- 
-\family sans
+\series bold
 
 \backslash
 selectlanguage{$$lang}
-\family default
+\series default
 .
 \end_layout
 
@@ -44476,10 +44749,6 @@ comando
 \family default
  se establece explícitamente al inicio del documento en la salida de LaTeX.
  Esto asegura que se usa el idioma correcto cuando pongas un
-\change_deleted 223325401 1302329403
- 
-\change_unchanged
-
 \family sans
  Comienzo
 \begin_inset space ~
@@ -44490,10 +44759,6 @@ del
 \end_inset
 
 comando
-\change_deleted 223325401 1302329403
- 
-\change_unchanged
-
 \family default
  distinto al predeterminado.
 \end_layout
@@ -44903,7 +45168,8 @@ status collapsed
 
 \end_inset
 
-X Esta es la codificación predeterminada de la fuente del documento, 
+X Esta es la codificación predeterminada de la tipografía del documento,
+ 
 \family sans
 T1
 \family default
@@ -45280,7 +45546,7 @@ Convertidor
 \family default
  y/o 
 \family sans
-Opción extra
+Indicador adicional
 \family default
 , y pulsas el botón 
 \family sans
@@ -45302,11 +45568,11 @@ Añadir
 \begin_layout Standard
 Si se activa la opción 
 \family sans
-Caché de archivo del conversor
+Caché del convertidor
 \family default
 , las conversiones se conservarán durante el tiempo especificado en 
 \family sans
-Edad máxima (en días)
+Tiempo máximo (en días)
 \family default
 .
  Esto significa que las imágenes no necesitan ser convertidas de nuevo al
@@ -45976,7 +46242,7 @@ altura de la letra
 \emph on
 x
 \emph default
- en la fuente actual
+ en la tipografía actual
 \end_layout
 
 \end_inset
@@ -46000,7 +46266,7 @@ ancho de la letra
 \emph on
 M
 \emph default
- en la fuente actual
+ en la tipografía actual
 \end_layout
 
 \end_inset
@@ -46551,7 +46817,7 @@ key "fancyhdr"
 
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentation"
+name "Documentación"
 target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf"
 
 \end_inset
@@ -46599,7 +46865,7 @@ key "hyperref"
 
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentation"
+name "Documentación"
 target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf"
 
 \end_inset
@@ -46647,7 +46913,7 @@ key "nomencl"
 
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentation"
+name "Documentación"
 target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf"
 
 \end_inset
@@ -46791,7 +47057,7 @@ key "Arabic"
 
 \begin_inset CommandInset href
 LatexCommand href
-name "Página Wiki"
+name "Página wiki"
 target "http://wiki.lyx.org/Windows/Arabic"
 
 \end_inset
@@ -46825,7 +47091,7 @@ key "Armenian"
 
 \begin_inset CommandInset href
 LatexCommand href
-name "Página Wiki"
+name "Página wiki"
 target "http://wiki.lyx.org/Windows/Armenian"
 
 \end_inset
@@ -46859,7 +47125,7 @@ key "Farsi"
 
 \begin_inset CommandInset href
 LatexCommand href
-name "Página Wiki"
+name "Página wiki"
 target "http://wiki.lyx.org/Windows/Farsi"
 
 \end_inset
@@ -46893,7 +47159,7 @@ key "Hebrew"
 
 \begin_inset CommandInset href
 LatexCommand href
-name "Página Wiki"
+name "Página wiki"
 target "http://wiki.lyx.org/Windows/Hebrew"
 
 \end_inset
@@ -46927,7 +47193,7 @@ key "Japanese"
 
 \begin_inset CommandInset href
 LatexCommand href
-name "Página Wiki"
+name "Página wiki"
 target "http://wiki.lyx.org/Windows/Japanese"
 
 \end_inset
@@ -46961,7 +47227,7 @@ key "Latvian"
 
 \begin_inset CommandInset href
 LatexCommand href
-name "Página Wiki"
+name "Página wiki"
 target "http://wiki.lyx.org/Windows/Latvian"
 
 \end_inset
@@ -46995,7 +47261,7 @@ key "Lithuanian"
 
 \begin_inset CommandInset href
 LatexCommand href
-name "Página Wiki"
+name "Página wiki"
 target "http://wiki.lyx.org/Windows/Lithuanian"
 
 \end_inset
@@ -47029,7 +47295,7 @@ key "Mongolian"
 
 \begin_inset CommandInset href
 LatexCommand href
-name "Página Wiki"
+name "Página wiki"
 target "http://wiki.lyx.org/Windows/Mongolian"
 
 \end_inset
@@ -47063,7 +47329,7 @@ key "Vietnamese"
 
 \begin_inset CommandInset href
 LatexCommand href
-name "Página Wiki"
+name "Página wiki"
 target "http://wiki.lyx.org/Windows/Vietnamese"
 
 \end_inset
@@ -47144,7 +47410,7 @@ target "http://www.tex-tipografia.com/spanish.html"
 \family sans
 spanish 
 \family default
-incluido en el paquete 
+del paquete 
 \series bold
 babel
 \series default
@@ -47245,6 +47511,8 @@ set_width "none"
 
 \end_inset
 
+
+\series default
 
 \begin_inset CommandInset index_print
 LatexCommand printindex

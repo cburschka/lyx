@@ -382,7 +382,7 @@ Usar el paquete de ecuaciones AMS
 \family sans
 Documento\SpecialChar \menuseparator
 Configuración\SpecialChar \menuseparator
-Ecuaciones
+Opciones de ecuación
 \family default
 )
 \begin_inset Foot
@@ -572,7 +572,7 @@ Ecuaciones
 \family default
  y 
 \family sans
-Panel de ecuaciones 
+Paneles de ecuaciones 
 \family default
 se pueden visualizar mediante el menú 
 \family sans
@@ -592,7 +592,7 @@ Ecuaciones
 \begin_inset Quotes fld
 \end_inset
 
-Panel de ecuaciones
+Paneles de ecuaciones
 \begin_inset Quotes frd
 \end_inset
 
@@ -610,7 +610,7 @@ Ecuaciones
 \begin_inset Quotes fld
 \end_inset
 
-Panel de ecuaciones
+Paneles de ecuaciones
 \begin_inset Quotes frd
 \end_inset
 
@@ -639,7 +639,7 @@ T@TeX ! modo
 
 \end_inset
 
- se invoca pulsando el botón 
+ se inicia pulsando el botón 
 \begin_inset Graphics
 	filename ../../images/ert-insert.png
 	scale 85
@@ -791,7 +791,7 @@ reference "sub:Texto-en-multilínea"
 
 \end_inset
 
- Este modo se invoca con el atajo 
+ Este modo se inicia con el atajo 
 \family sans
 Alt+M
 \begin_inset space ~
@@ -1292,7 +1292,7 @@ x
 \begin_inset Quotes frd
 \end_inset
 
- en la fuente actual
+ en la tipografía actual
 \end_layout
 
 \end_inset
@@ -1324,7 +1324,7 @@ M
 \begin_inset Quotes frd
 \end_inset
 
- en la fuente actual
+ en la tipografía actual
 \end_layout
 
 \end_inset
@@ -1532,7 +1532,7 @@ Comando
 \begin_layout Plain Layout
 Resultado
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1710,8 +1710,8 @@ frac
 \end_inset
 
  de la barra de herramientas.
- El tamaño de fuente se ajusta automáticamente, dependiendo de si la fracción
- está en línea o en estilo presentación.
+ El tamaño de tipografía se ajusta automáticamente, dependiendo de si la
+ fracción está en línea o en estilo presentación.
  Con el botón 
 \begin_inset Graphics
 	filename ../../images/math/frac-square.png
@@ -4465,7 +4465,7 @@ Puntos
 \begin_layout Standard
 Hay distintos tipos de puntos disponibles.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 En la barra de herramientas de ecuaciones, en el panel del botón 
@@ -4929,7 +4929,7 @@ La opción
 Usar paquete mathdots
 \family default
  mejorará el aspecto de todos los puntos en los documentos si su estilo
- o tamaño de fuente no son los predeterminados.
+ o tamaño de tipografía no son los predeterminados.
 \end_layout
 
 \begin_layout Standard
@@ -7436,7 +7436,7 @@ middle
 \begin_inset space \thinspace{}
 \end_inset
 
-e., para vectores físicos: 
+e., para vectores cuánticos: 
 \begin_inset Formula 
 \[
 \left\langle \phi\;\middle|\; J=\frac{3}{2}\,,\, M_{J}\right\rangle 
@@ -7448,10 +7448,15 @@ e., para vectores físicos:
 \end_layout
 
 \begin_layout Standard
-Para vectores físicos hay un paquete LaTeX especial que se describe en 
+Para este tipo de vectores hay un paquete LaTeX específico que se describe
+ en
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Vectores-físicos"
+reference "sub:Vectores-cuánticos"
 
 \end_inset
 
@@ -10233,7 +10238,15 @@ A
 \end_layout
 
 \begin_layout Standard
-En ecuaciones se pueden insertar acentos como é directamente.
+En ecuaciones se pueden insertar acentos como 
+\begin_inset Quotes fld
+\end_inset
+
+é
+\begin_inset Quotes frd
+\end_inset
+
+ directamente.
  LyX los transformará al comando de acento correspondiente.
  Para poner diéresis
 \begin_inset Index idx
@@ -11317,8 +11330,8 @@ Espacio
 \end_inset
 
  de la barra de ecuaciones o con comandos especiales.
- Independientemente del comando insertado, se puede seleccionar de nuevo
- el tamaño pulsando acto seguido 
+ Independientemente del comando insertado, se puede seleccionar un nuevo
+ tamaño pulsando acto seguido 
 \family sans
 Espacio.
  
@@ -11702,11 +11715,8 @@ Resultado
 
 \begin_layout Standard
 Los espacios negativos pueden llegar a solapar unos caracteres con otros.
- Así, se pueden usar para forzar ligaduras, lo que es apropiado, p.
-\begin_inset space \thinspace{}
-\end_inset
-
-e., para operadores suma: 
+ Así, se pueden usar para forzar ligaduras, lo que es apropiado, por ejemplo,
+ para operadores suma: 
 \end_layout
 
 \begin_layout Standard
@@ -12691,7 +12701,7 @@ name "sub:Marcos-con-bordes"
 status open
 
 \begin_layout Plain Layout
-Marcos ! bordes
+Marcos ! con bordes
 \end_layout
 
 \end_inset
@@ -13399,7 +13409,7 @@ Con
 raisebox
 \series default
  se puede poner un marco subíndice o superíndice, pero a diferencia de los
- normales, los caracteres en el marco mantienen su tamaño de fuente.
+ normales, los caracteres en el marco mantienen su tamaño de tipografía.
  
 \series bold
 
@@ -15134,7 +15144,7 @@ Usar paquete esint automáticamente
 \family default
  en el apartado 
 \family sans
-Ecuaciones
+Opciones de ecuación
 \family default
  de la configuración del documento.
  
@@ -15841,7 +15851,7 @@ status collapsed
 véase estilos de letras en 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Estilos-de-fuentes"
+reference "sub:Estilos-de-tipografías"
 
 \end_inset
 
@@ -18110,12 +18120,12 @@ _i,j=1
 \end_layout
 
 \begin_layout Section
-Fuentes
+Tipografías
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Fuentes
+Tipografías
 \end_layout
 
 \end_inset
@@ -18124,19 +18134,19 @@ Fuentes
 \end_layout
 
 \begin_layout Subsection
-Estilos de fuentes
+Estilos de tipografías
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Estilos-de-fuentes"
+name "sub:Estilos-de-tipografías"
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Fuentes ! estilos de
+Tipografías ! estilos de
 \end_layout
 
 \end_inset
@@ -18820,8 +18830,8 @@ Los comandos de estilo funcionan también en estructuras matemáticas:
 \end_layout
 
 \begin_layout Standard
-Los caracteres en texto matemático no aparecen en un estilo de letra de
- ecuaciones sino en el estilo 
+Los caracteres en texto matemático no aparecen en un estilo tipográfico
+ de ecuaciones sino en el estilo tipográfico de texto 
 \series bold
 
 \backslash
@@ -18831,7 +18841,7 @@ textrm
  Este estilo no se puede poner correctamente con el diálogo de estilo de
  texto por un fallo de LyX.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset CommandInset href
@@ -19145,19 +19155,19 @@ target "http://www.lyx.org/trac/ticket/5269"
 \end_layout
 
 \begin_layout Subsection
-Tamaños de fuentes
+Tamaños de tipografías
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Tamaños-de-fuentes"
+name "sub:Tamaños-de-tipografías"
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Fuentes ! tamaño
+Tipografías ! tamaño
 \end_layout
 
 \end_inset
@@ -19237,8 +19247,8 @@ tiny
 \end_layout
 
 \begin_layout Standard
-El tamaño dado por los comandos depende del tamaño base de la fuente en
- el documento, dado por el comando 
+El tamaño dado por los comandos depende del tamaño base de la tipografía
+ en el documento, dado por el comando 
 \series bold
 
 \backslash
@@ -19252,8 +19262,8 @@ normalsize
 normalsize
 \series default
 .
- No obstante, puede que el tamaño de fuente no exceda de cierto valor.
- Si, por ejemplo, la fuente del documento es de 12
+ No obstante, puede que el tamaño de tipografía no exceda de cierto valor.
+ Si, por ejemplo, la tipografía del documento es de 12
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -19458,7 +19468,7 @@ Después de introducir estos comandos, aparece un marco azul en el que se
 \end_layout
 
 \begin_layout Standard
-Hay un método más para cambiar el tamaño de fuente, aunque solo funciona
+Hay un método más para cambiar el tamaño de tipografía, aunque solo funciona
  para símbolos o letras en texto matemático.
  Para usarlo se inserta en texto matemático uno de los comandos de tamaño
  de texto anteriores.
@@ -21098,7 +21108,7 @@ Letras griegas ! en negrita
 \end_layout
 
 \begin_layout Standard
-Las letras griegas no admiten diferentes estilos de fuente como las latinas.
+Las letras griegas no admiten diferentes estilos de letra como las latinas.
  Sólo se pueden poner en negrita con el comando 
 \series bold
 
@@ -22967,7 +22977,7 @@ reference "sub:Caracteres-especiales-misceláneos"
 Algunos símbolos pueden presentarse en distintos tamaños, véase 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Tamaños-de-fuentes"
+reference "sub:Tamaños-de-tipografías"
 
 \end_inset
 
@@ -28015,7 +28025,7 @@ status collapsed
 véase 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Tamaños-de-fuentes"
+reference "sub:Tamaños-de-tipografías"
 
 \end_inset
 
@@ -28292,7 +28302,7 @@ status collapsed
 El símbolo grado ° puede no obstante insertarse directamente si el preámbulo
  LaTeX contiene la línea:
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Más sobre este asunto en 
@@ -28408,11 +28418,7 @@ mathindent
 \begin_inset space \thinspace{}
 \end_inset
 
-mm, p.
-\begin_inset space \thinspace{}
-\end_inset
-
-e., se inserta esta línea de comando en el preámbulo LaTeX:
+mm, por ejemplo, se inserta esta línea de comando en el preámbulo LaTeX:
 \end_layout
 
 \begin_layout Standard
@@ -29509,7 +29515,7 @@ Para añadir o quitar columnas se pueden usar los botones
 
 \end_inset
 
-de la barra de ecuaciones o el menú 
+ de la barra de ecuaciones o el menú 
 \family sans
 Editar\SpecialChar \menuseparator
 Filas y columnas
@@ -30375,11 +30381,7 @@ Ecuación
  
 \family sans
 \SpecialChar \menuseparator
-Ecuación
-\begin_inset space ~
-\end_inset
-
-numerada
+Numerada
 \family default
  (atajo 
 \family sans
@@ -30394,11 +30396,7 @@ N
 \family sans
 Editar\SpecialChar \menuseparator
 Ecuación\SpecialChar \menuseparator
-Conmutar
-\begin_inset space ~
-\end_inset
-
-numeración
+Numerar la ecuación
 \family default
  (atajo
 \family sans
@@ -30421,19 +30419,7 @@ Si se activa la numeración en ecuaciones multilínea se numerarán todas las
 \family sans
 Editar\SpecialChar \menuseparator
 Ecuación\SpecialChar \menuseparator
-Conmutar
-\begin_inset space ~
-\end_inset
-
-numeración
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-línea
+Numerar la línea
 \family default
  (atajo
 \family sans
@@ -31928,7 +31914,7 @@ Alph
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -32292,10 +32278,10 @@ R
 status collapsed
 
 \begin_layout Plain Layout
-véase estilos de fuentes en 
+véase estilos de tipografías en 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Estilos-de-fuentes"
+reference "sub:Estilos-de-tipografías"
 
 \end_inset
 
@@ -32860,7 +32846,7 @@ status open
 \series bold
 Nota:
 \series default
- Insertar una ecuación en un marco 
+ Insertar modo matemático en un marco 
 \series bold
 
 \backslash
@@ -32909,13 +32895,9 @@ El comando
 \backslash
 ce
 \series default
- para la ecuación
-\begin_inset space ~
-\end_inset
-
-
+ para la 
 \begin_inset CommandInset ref
-LatexCommand eqref
+LatexCommand ref
 reference "eq:reaccion-quimica"
 
 \end_inset
@@ -33021,25 +33003,27 @@ reference "sec:Ecuaciones-multilínea"
 .
  Después se utiliza el comando 
 \series bold
-/ce
+
+\backslash
+ce
 \series default
  en cada cuadrito azul de la ecuación.
- 
+ La 
 \begin_inset CommandInset ref
-LatexCommand eqref
+LatexCommand ref
 reference "eq:TEOS-reac-1"
 
 \end_inset
 
- y 
+ y la 
 \begin_inset CommandInset ref
-LatexCommand eqref
+LatexCommand ref
 reference "eq:TEOS-reac-2"
 
 \end_inset
 
- son un ejemplo de reacción química multifase en la que cada ecuación tiene
- su propio número.
+ son ejemplos de una reacción química en dos fases en la que cada ecuación
+ tiene su propio número.
 \begin_inset Formula 
 \begin{eqnarray}
 \ce{TEOS + 4O} & \ce{->} & \ce{Si(OH)4 + 4C2H4O}\label{eq:TEOS-reac-1}\\
@@ -33582,7 +33566,7 @@ Comandos de usuario
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -33685,7 +33669,7 @@ newcommand
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -33694,12 +33678,7 @@ Nota:
 \series default
  Asegúrate de que el nombre del nuevo comando no está definido ya en el
  documento o en paquetes LaTeX que uses.
- Si p.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
- defines el comando 
+ Por ejemplo, si defines el comando 
 \series bold
 
 \backslash
@@ -33717,7 +33696,7 @@ Leftarrow,
 \backslash
 le
 \series default
- ya existe como comando para 
+ ya existe para 
 \begin_inset Quotes fld
 \end_inset
 
@@ -33845,12 +33824,7 @@ Para
 \backslash
 framebox
 \series default
- se puede p.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
- definir el comando 
+ se puede definir, por ejemplo, el comando 
 \series bold
 
 \backslash
@@ -34348,11 +34322,8 @@ lambda
 
 \begin_layout Standard
 La definición del nuevo comando no es intuitiva porque hay que conocer los
- esquemas de todos los comandos LaTeX usados, p.
-\begin_inset space \thinspace{}
-\end_inset
-
-e., que una fracción se inserta en LaTeX como
+ esquemas de todos los comandos LaTeX usados, por ejemplo, que una fracción
+ se inserta en LaTeX como
 \series bold
  
 \backslash
@@ -34400,7 +34371,7 @@ Macro
 
 
 \begin_inset Graphics
-	filename ../clipart/macrobox.png
+	filename /usr/local/share/lyx-2.0.0rc3/doc/clipart/macrobox.png
 
 \end_inset
 
@@ -34541,7 +34512,7 @@ qG
 
 
 \begin_inset Graphics
-	filename ../clipart/macrouse.png
+	filename /usr/local/share/lyx-2.0.0rc3/doc/clipart/macrouse.png
 
 \end_inset
 
@@ -34693,7 +34664,7 @@ Cuando el cursor está en un recuadro de definición de macro, verás en LyX
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename ../clipart/MacroToolbar.png
+	filename /usr/local/share/lyx-2.0.0rc3/doc/clipart/MacroToolbar.png
 
 \end_inset
 
@@ -35152,7 +35123,7 @@ Utilización
 Escribe alguna expresión en una ecuación, despliega el menú 
 \family sans
 Editar\SpecialChar \menuseparator
-Ecuaciones\SpecialChar \menuseparator
+Ecuación\SpecialChar \menuseparator
 Usar programa de álgebra
 \family default
  y elige la aplicación que esté instalada en tu ordenador.
@@ -35240,12 +35211,12 @@ command-alternatives break-paragraph;math-extern maxima
 \end_layout
 
 \begin_layout Section
-Indicaciones
+Consejos prácticos
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Indicaciones
+Consejos prácticos
 \end_layout
 
 \end_inset
@@ -35463,19 +35434,29 @@ usepackage{icomma}
 \end_layout
 
 \begin_layout Subsection
-Vectores físicos
+Vectores cuánticos y notación bra-ket
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Vectores-físicos"
+name "sub:Vectores-cuánticos"
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Vectores físicos
+Vectores cuánticos
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Notación bra-ket
 \end_layout
 
 \end_inset
@@ -35498,7 +35479,16 @@ Paquetes ! braket
 
 \end_inset
 
- suministra vectores predefinidos; se carga con la línea de preámbulo LaTeX:
+ suministra comandos para escribir paréntesis angulares que se usan en mecánica
+ cuántica: la notación 
+\begin_inset Quotes fld
+\end_inset
+
+bra-ket
+\begin_inset Quotes frd
+\end_inset
+
+; se carga con la línea de preámbulo LaTeX:
 \end_layout
 
 \begin_layout Standard
@@ -36727,7 +36717,7 @@ usepackage{multicol}
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Ten en cuenta que la opción 
@@ -36814,7 +36804,7 @@ Sangrado
 \series default
 ,
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 véase estilos de ecuación en 
@@ -37005,8 +36995,8 @@ reference "sec:Matrices"
 
 \end_inset
 
- Para poner la descripción en tamaño más pequeño se inserta, p.e, el comando
- 
+ Para poner la descripción en tamaño más pequeño se inserta, por ejemplo,
+ el comando 
 \series bold
 
 \backslash
@@ -37017,10 +37007,10 @@ footnotesize
 status collapsed
 
 \begin_layout Plain Layout
-véase tamaños de fuentes en 
+véase tamaños de tipografías en 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Tamaños-de-fuentes"
+reference "sub:Tamaños-de-tipografías"
 
 \end_inset
 
@@ -37149,8 +37139,8 @@ Letras griegas ! en redonda
 \end_layout
 
 \begin_layout Standard
-La mayoría de las fuentes sólo suministran letras griegas minúsculas en
- cursiva.
+La mayoría de las tipografías sólo suministran letras griegas minúsculas
+ en cursiva.
  Pero para símbolos de partículas elementales como piones y neutrinos hacen
  falta letras griegas en redonda.
  El archivo 
@@ -37501,10 +37491,10 @@ i}
 \start_of_appendix
 Notas sobre tipografía
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tipografía, notas
+Tipografía, normas
 \end_layout
 
 \end_inset
@@ -37572,10 +37562,10 @@ en redonda
 status collapsed
 
 \begin_layout Plain Layout
-véase estilos de fuentes en 
+véase estilos de tipografías en 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Estilos-de-fuentes"
+reference "sub:Estilos-de-tipografías"
 
 \end_inset
 
@@ -38730,9 +38720,6 @@ target "http://www.tex-tipografia.com/archive/ortomatem.pdf"
 \end_layout
 
 \begin_layout Standard
-
-\family sans
-\series bold
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
