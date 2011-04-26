@@ -1353,6 +1353,14 @@ contributers = [
                  "24 February 2005",
                  u"documentation maintainer, AASTeX support"),
 
+     contributer(u"Richman Reuven",
+                 "richman.reuven () gmail ! com",
+                 "GPL",
+                 "gpl 2+ ok :)",
+                 "m=130368087529359",
+                 "24 April 2011",
+                 u"Hebrew localisation"),
+
      contributer(u"Christian Ridderström",
                  "christian.ridderstrom () gmail ! com",
                  "GPL",
