@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-15 10:39+0200\n"
+"POT-Creation-Date: 2011-04-26 12:58+0200\n"
 "PO-Revision-Date: 2011-04-19 16:06+0900\n"
 "Last-Translator: Koji Yokota <yokota33@gmail.com>\n"
 "Language-Team: Japanese <lyx-doc@lists.lyx.org>\n"
@@ -895,7 +895,8 @@ msgstr "検索フィールド(&H):"
 #: src/frontends/qt4/ui/CitationUi.ui:376
 msgid ""
 "Enter the text to search for and press Enter or click the button to search"
-msgstr "検索する語句を入力してEnterを押すか、ボタンをクリックして検索してください"
+msgstr ""
+"検索する語句を入力してEnterを押すか、ボタンをクリックして検索してください"
 
 #: src/frontends/qt4/ui/CitationUi.ui:389
 msgid "Click or press Enter in the search box to search"
@@ -1411,7 +1412,8 @@ msgstr "様式を無視(&F)"
 msgid ""
 "Keep the case of the replacement's first letter as in each matching text "
 "first letter"
-msgstr "置換後の語句の最初の文字の大小を、置換前の語句の最初の文字の大小に合わせる。"
+msgstr ""
+"置換後の語句の最初の文字の大小を、置換前の語句の最初の文字の大小に合わせる。"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:270
 msgid "&Preserve first case on replace"
@@ -2551,7 +2553,8 @@ msgstr "&esintパッケージを使う"
 msgid ""
 "The LaTeX package mathdots is only used if the command \\iddots is inserted "
 "into formulas"
-msgstr "数式に\\iddotsが挿入されたときに限り、LaTeXパッケージmathdotsが読み込まれます"
+msgstr ""
+"数式に\\iddotsが挿入されたときに限り、LaTeXパッケージmathdotsが読み込まれます"
 
 #: src/frontends/qt4/ui/MathsUi.ui:68
 msgid "Use math&dots package automatically"
@@ -2664,7 +2667,7 @@ msgid "Specify the default output format (for view/update)"
 msgstr "既定の用紙寸法を指定してください(表示・更新用)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:45
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:187
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:177
 msgid "De&fault Output Format:"
 msgstr "既定出力形式(&F):"
 
@@ -3053,7 +3056,8 @@ msgstr "一般"
 msgid ""
 "After the cursor has not moved for this time, the inline completion is shown "
 "if it is available."
-msgstr "これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
+msgstr ""
+"これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:154
 msgid "s inline completion dela&y"
@@ -3075,7 +3079,8 @@ msgstr "秒のポップアップ遅延(&E)"
 msgid ""
 "When the TAB completion is not unique, there won't be a delay of the popup. "
 "It will be shown right away."
-msgstr "タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
+msgstr ""
+"タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:228
 msgid "Sho&w popup without delay for non-unique completions"
@@ -3263,7 +3268,8 @@ msgstr "文書形式(&D)"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:66
 msgid "Check this to show the current format in the File > Export menu"
-msgstr "この形式をファイル→書き出しメニューに表示させたいときには有効にしてください"
+msgstr ""
+"この形式をファイル→書き出しメニューに表示させたいときには有効にしてください"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:69
 msgid "Sho&w in export menu"
@@ -3282,28 +3288,28 @@ msgid "E&xtension:"
 msgstr "拡張子(&X):"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:109
-msgid "Ed&itor:"
-msgstr "編集プログラム(&I):"
-
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:119
 msgid "Shortc&ut:"
 msgstr "短絡キー(&U):"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:142
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:132
 msgid "&Viewer:"
 msgstr "閲覧プログラム(&V):"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:162
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:152
 msgid "Co&pier:"
 msgstr "複写子(&P):"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:175
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:165
 msgid "Specify the default output format when using (PDF)LaTeX"
 msgstr "(PDF)LaTeX使用時の既定用紙寸法を指定してください"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:178
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:168
 msgid "Default Format"
 msgstr "既定形式"
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:219
+msgid "Ed&itor:"
+msgstr "編集プログラム(&I):"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -4120,7 +4126,8 @@ msgstr "ユーザー設定幅(&W):"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:52
 msgid "Custom value. \"List Indentation\" needs to be set to \"Custom\"."
-msgstr "任意設定の値。「リストの行頭下げ」を「任意設定」に設定する必要があります。"
+msgstr ""
+"任意設定の値。「リストの行頭下げ」を「任意設定」に設定する必要があります。"
 
 #: src/frontends/qt4/ui/PrintUi.ui:28
 msgid "Pages"
@@ -4936,7 +4943,8 @@ msgstr "見出しを選択語で置換"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:102
 msgid "Click to select a proposal, double click to look it up."
-msgstr "クリックすれば候補が選択されます。ダブルクリックするとその意味を引きます。"
+msgstr ""
+"クリックすれば候補が選択されます。ダブルクリックするとその意味を引きます。"
 
 #: src/frontends/qt4/ui/TocUi.ui:36
 msgid "Filter:"
@@ -5000,7 +5008,8 @@ msgstr "LyX: 入力して下さい"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:44
 msgid "If you check this, LyX will not warn you again in the given case."
-msgstr "これを有効にすると、LyXは当該ケースについて今後警告することはなくなります。"
+msgstr ""
+"これを有効にすると、LyXは当該ケースについて今後警告することはなくなります。"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:47
 msgid "&Do not show this warning again!"
@@ -5870,7 +5879,7 @@ msgstr "小々節"
 #: lib/layouts/beamer.layout:46 lib/layouts/egs.layout:168
 #: lib/layouts/powerdot.layout:244 lib/layouts/simplecv.layout:79
 #: lib/layouts/agu_stdlists.inc:13 lib/layouts/db_stdlists.inc:12
-#: lib/layouts/stdlists.inc:12 lib/layouts/enumitem.module:56
+#: lib/layouts/stdlists.inc:13
 msgid "Itemize"
 msgstr "箇条書き(記号)"
 
@@ -5878,8 +5887,7 @@ msgstr "箇条書き(記号)"
 #: lib/layouts/aastex.layout:86 lib/layouts/apa.layout:380
 #: lib/layouts/beamer.layout:65 lib/layouts/egs.layout:149
 #: lib/layouts/powerdot.layout:269 lib/layouts/agu_stdlists.inc:21
-#: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:34
-#: lib/layouts/enumitem.module:60
+#: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:35
 msgid "Enumerate"
 msgstr "箇条書き(連番)"
 
@@ -5889,8 +5897,7 @@ msgstr "箇条書き(連番)"
 #: lib/layouts/paper.layout:101 lib/layouts/scrlettr.layout:17
 #: lib/layouts/scrlttr2.layout:21 lib/layouts/agu_stdlists.inc:29
 #: lib/layouts/db_stdlists.inc:26 lib/layouts/scrclass.inc:36
-#: lib/layouts/stdlists.inc:57 lib/layouts/enumitem.module:64
-#: lib/ui/stdtoolbars.inc:116
+#: lib/layouts/stdlists.inc:58 lib/ui/stdtoolbars.inc:116
 msgid "Description"
 msgstr "箇条書き(記述)"
 
@@ -5898,10 +5905,10 @@ msgstr "箇条書き(記述)"
 #: lib/layouts/aastex.layout:92 lib/layouts/beamer.layout:47
 #: lib/layouts/beamer.layout:66 lib/layouts/beamer.layout:86
 #: lib/layouts/egs.layout:132 lib/layouts/scrlettr.layout:32
-#: lib/layouts/scrlttr2.layout:37 lib/layouts/stdlists.inc:13
-#: lib/layouts/stdlists.inc:35 lib/layouts/stdlists.inc:58
-#: lib/layouts/stdlists.inc:89 lib/layouts/stdlists.inc:135
-#: lib/layouts/enumitem.module:75 lib/ui/stdtoolbars.inc:115
+#: lib/layouts/scrlttr2.layout:37 lib/layouts/stdlists.inc:14
+#: lib/layouts/stdlists.inc:36 lib/layouts/stdlists.inc:59
+#: lib/layouts/stdlists.inc:89 lib/layouts/stdlyxlist.inc:7
+#: lib/ui/stdtoolbars.inc:115
 msgid "List"
 msgstr "箇条書き(一覧)"
 
@@ -6438,7 +6445,7 @@ msgstr "小段落"
 
 #: lib/layouts/apa.layout:376 lib/layouts/beamer.layout:61
 #: lib/layouts/egs.layout:182 lib/layouts/powerdot.layout:258
-#: lib/layouts/simplecv.layout:93 lib/layouts/stdlists.inc:27
+#: lib/layouts/simplecv.layout:93 lib/layouts/stdlists.inc:28
 msgid "*"
 msgstr "*"
 
@@ -6489,7 +6496,7 @@ msgid "Part*"
 msgstr "部*"
 
 #: lib/layouts/beamer.layout:101 lib/layouts/egs.layout:201
-#: lib/layouts/stdlists.inc:73
+#: lib/layouts/stdlists.inc:74
 msgid "MM"
 msgstr "MM"
 
@@ -7406,8 +7413,7 @@ msgstr "姓"
 msgid "bysame"
 msgstr "同上"
 
-#: lib/layouts/egs.layout:145 lib/layouts/stdlists.inc:102
-#: lib/layouts/enumitem.module:87
+#: lib/layouts/egs.layout:145 lib/layouts/stdlyxlist.inc:20
 msgid "00.00.0000"
 msgstr "00.00.0000"
 
@@ -8767,8 +8773,8 @@ msgid "PACS number:"
 msgstr "PACS 番号:"
 
 #: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:28
-#: lib/layouts/scrclass.inc:42 lib/layouts/stdlists.inc:88
-#: lib/layouts/enumitem.module:71
+#: lib/layouts/scrclass.inc:42 lib/layouts/stdlyxlist.inc:6
+#: lib/layouts/enumitem.module:75
 msgid "Labeling"
 msgstr "ラベリング"
 
@@ -10093,7 +10099,7 @@ msgstr ""
 "ます。 http://mirror.ctan.org/macros/latex/contrib/enumitem/enumitem.pdfおよ"
 "び LyX付属の用例ファイルを参照のこと。"
 
-#: lib/layouts/enumitem.module:109
+#: lib/layouts/enumitem.module:95
 msgid "Enumerate-Resume"
 msgstr "箇条書き(連番)-復帰"
 
@@ -10230,8 +10236,8 @@ msgid ""
 "examples."
 msgstr ""
 "言語学に便利な特別な環境をいくつか（付番用例や語句注解、セマンティック・マー"
-"クアップ、タブローフロート）定義します。exampleディレクトリのlinguistics.lyxファ"
-"イルをご参照ください。"
+"クアップ、タブローフロート）定義します。exampleディレクトリのlinguistics.lyx"
+"ファイルをご参照ください。"
 
 #: lib/layouts/linguistics.module:13
 msgid "Numbered Example (multiline)"
@@ -10595,8 +10601,8 @@ msgid ""
 "in both numbered and non-numbered forms."
 msgstr ""
 "AMS定理パッケージを使う定理環境をいくつか追加定義します。中には、基準・アルゴ"
-"リズム・公理・条件・注釈・記法・要約・謝辞・結論・事実・仮定・場合・問が、"
-"連番ありと連番なしの両方の形で含まれています。"
+"リズム・公理・条件・注釈・記法・要約・謝辞・結論・事実・仮定・場合・問が、連"
+"番ありと連番なしの両方の形で含まれています。"
 
 #: lib/layouts/theorems-ams-extended.module:10
 #: lib/layouts/theorems-ams.module:9 lib/layouts/theorems-chap.module:9
@@ -16456,14 +16462,16 @@ msgstr "変換スクリプトが失敗しました"
 msgid ""
 "%1$s is from an older version of LyX and the lyx2lyx script failed to "
 "convert it."
-msgstr "%1$s は旧版のLyXで作成されており，スクリプトlyx2lyxは変換に失敗 しました。"
+msgstr ""
+"%1$s は旧版のLyXで作成されており，スクリプトlyx2lyxは変換に失敗 しました。"
 
 #: src/Buffer.cpp:1004
 #, c-format
 msgid ""
 "%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
 "it."
-msgstr "%1$s は新版のLyXファイルなので，スクリプトlyx2lyxが変換に失敗しました。"
+msgstr ""
+"%1$s は新版のLyXファイルなので，スクリプトlyx2lyxが変換に失敗しました。"
 
 #: src/Buffer.cpp:1025 src/Buffer.cpp:3788 src/Buffer.cpp:3850
 msgid "File is read-only"
@@ -17578,7 +17586,8 @@ msgstr "追加しない(&D)"
 #: src/CutAndPaste.cpp:683
 #, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
-msgstr "「%2$s」レイアウトを読み込み直したため自由差込枠%1$sは未定義になりました。"
+msgstr ""
+"「%2$s」レイアウトを読み込み直したため自由差込枠%1$sは未定義になりました。"
 
 #: src/CutAndPaste.cpp:686
 #, c-format
@@ -18147,7 +18156,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:3098
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
-msgstr "pLaTeX(日本語LaTeX)用のbibtexプログラムのオプションを定義してください。"
+msgstr ""
+"pLaTeX(日本語LaTeX)用のbibtexプログラムのオプションを定義してください。"
 
 #: src/LyXRC.cpp:3102
 msgid ""
@@ -18159,7 +18169,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:3106
 msgid "Select to check whether the lastfiles still exist."
-msgstr "最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
+msgstr ""
+"最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
 
 #: src/LyXRC.cpp:3110
 msgid ""
@@ -18188,7 +18199,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:3132
 msgid "Make Apple key act as Meta and Control key as Ctrl."
-msgstr "アップルキーをMetaキーとして、コントロールキーをCtrlキーとして動作させます。"
+msgstr ""
+"アップルキーをMetaキーとして、コントロールキーをCtrlキーとして動作させます。"
 
 #: src/LyXRC.cpp:3136
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
@@ -18198,7 +18210,8 @@ msgstr "単語間のカーソル移動にMac OS X式の方法を使う。"
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
-msgstr "カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
+msgstr ""
+"カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
 
 #: src/LyXRC.cpp:3145
 #, no-c-format
@@ -18245,7 +18258,8 @@ msgstr "LyX が画像をどのように表示するかを選びます。"
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
-msgstr "文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
+msgstr ""
+"文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
 
 #: src/LyXRC.cpp:3177
 msgid "Specify additional chars that can be part of a word."
@@ -18356,7 +18370,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:3249
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr "LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
+msgstr ""
+"LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
 
 #: src/LyXRC.cpp:3253
 msgid "De-select to prevent loading files opened from the last LyX session."
@@ -18403,7 +18418,8 @@ msgstr "複数の補完候補がある際、遅延なしに補完ポップアッ
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
-msgstr "補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
+msgstr ""
+"補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
 
 #: src/LyXRC.cpp:3290
 msgid "The inline completion delay."
@@ -18428,7 +18444,8 @@ msgstr "=>を\\Rightarrowに変換するなどのTeXMacs用簡略記法を許可
 #: src/LyXRC.cpp:3310
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
-msgstr "最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
+msgstr ""
+"最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
 
 #: src/LyXRC.cpp:3315
 msgid ""
@@ -18761,7 +18778,8 @@ msgstr "未知のトークン"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr "空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
+msgstr ""
+"空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
 
 #: src/Text.cpp:947
 msgid "You cannot type two spaces this way. Please read the Tutorial."
@@ -18893,7 +18911,8 @@ msgstr "破損ファイル"
 
 #: src/TextClass.cpp:746
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
-msgstr "stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
+msgstr ""
+"stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
 
 #: src/TextClass.cpp:1323
 #, c-format
@@ -23117,7 +23136,7 @@ msgstr "保護された水平スペース（%1$s）"
 msgid "Unknown TOC type"
 msgstr "未知の目次型"
 
-#: src/insets/InsetTabular.cpp:4684
+#: src/insets/InsetTabular.cpp:4693
 msgid "Selection size should match clipboard content."
 msgstr "選択した大きさが、クリップボードの内容と一致していなくてはなりません。"
 
@@ -23262,15 +23281,15 @@ msgstr "文字列が置換されました。"
 msgid "%1$d strings have been replaced."
 msgstr "%1$d個の文字列が置換されました。"
 
-#: src/lyxfind.cpp:1366
+#: src/lyxfind.cpp:1367
 msgid "Invalid regular expression!"
 msgstr "有効な正規表現ではありません！"
 
-#: src/lyxfind.cpp:1371
+#: src/lyxfind.cpp:1372
 msgid "Match not found!"
 msgstr "一致するものが見つかりません！"
 
-#: src/lyxfind.cpp:1375
+#: src/lyxfind.cpp:1376
 msgid "Match found!"
 msgstr "一致箇所が見つかりました！"
 
@@ -23421,143 +23440,143 @@ msgstr "要約: "
 msgid "References: "
 msgstr "引用: "
 
-#: src/support/debug.cpp:50
+#: src/support/debug.cpp:41
 msgid "No debugging messages"
 msgstr "デバッグ用メッセージはありません"
 
-#: src/support/debug.cpp:51
+#: src/support/debug.cpp:42
 msgid "General information"
 msgstr "一般情報"
 
-#: src/support/debug.cpp:52
+#: src/support/debug.cpp:43
 msgid "Program initialisation"
 msgstr "プログラム初期化"
 
-#: src/support/debug.cpp:53
+#: src/support/debug.cpp:44
 msgid "Keyboard events handling"
 msgstr "キーボードイベント処理"
 
-#: src/support/debug.cpp:54
+#: src/support/debug.cpp:45
 msgid "GUI handling"
 msgstr "GUI処理"
 
-#: src/support/debug.cpp:55
+#: src/support/debug.cpp:46
 msgid "Lyxlex grammar parser"
 msgstr "Lyxlex文法解析器"
 
-#: src/support/debug.cpp:56
+#: src/support/debug.cpp:47
 msgid "Configuration files reading"
 msgstr "設定ファイル読込"
 
-#: src/support/debug.cpp:57
+#: src/support/debug.cpp:48
 msgid "Custom keyboard definition"
 msgstr "個人用のキーボード定義"
 
-#: src/support/debug.cpp:58
+#: src/support/debug.cpp:49
 msgid "LaTeX generation/execution"
 msgstr "LaTeX生成・実行"
 
-#: src/support/debug.cpp:59
+#: src/support/debug.cpp:50
 msgid "Math editor"
 msgstr "数式エディタ"
 
-#: src/support/debug.cpp:60
+#: src/support/debug.cpp:51
 msgid "Font handling"
 msgstr "フォント処理"
 
-#: src/support/debug.cpp:61
+#: src/support/debug.cpp:52
 msgid "Textclass files reading"
 msgstr "textclassファイル読込"
 
-#: src/support/debug.cpp:62
+#: src/support/debug.cpp:53
 msgid "Version control"
 msgstr "バージョン管理"
 
-#: src/support/debug.cpp:63
+#: src/support/debug.cpp:54
 msgid "External control interface"
 msgstr "外部制御インタフェース"
 
-#: src/support/debug.cpp:64
+#: src/support/debug.cpp:55
 msgid "Undo/Redo mechanism"
 msgstr "元に戻す/やり直すの動作"
 
-#: src/support/debug.cpp:65
+#: src/support/debug.cpp:56
 msgid "User commands"
 msgstr "ユーザーコマンド"
 
-#: src/support/debug.cpp:66
+#: src/support/debug.cpp:57
 msgid "The LyX Lexer"
 msgstr "LyX Lexer"
 
-#: src/support/debug.cpp:67
+#: src/support/debug.cpp:58
 msgid "Dependency information"
 msgstr "依存情報"
 
-#: src/support/debug.cpp:68
+#: src/support/debug.cpp:59
 msgid "LyX Insets"
 msgstr "LyX差込枠"
 
-#: src/support/debug.cpp:69
+#: src/support/debug.cpp:60
 msgid "Files used by LyX"
 msgstr "LyX が使用するファイル"
 
-#: src/support/debug.cpp:70
+#: src/support/debug.cpp:61
 msgid "Workarea events"
 msgstr "ワークエリア・イベント"
 
-#: src/support/debug.cpp:71
+#: src/support/debug.cpp:62
 msgid "Insettext/tabular messages"
 msgstr "差込枠テキスト・表メッセージ"
 
-#: src/support/debug.cpp:72
+#: src/support/debug.cpp:63
 msgid "Graphics conversion and loading"
 msgstr "画像の変換と読込"
 
-#: src/support/debug.cpp:73
+#: src/support/debug.cpp:64
 msgid "Change tracking"
 msgstr "変更追跡機能"
 
-#: src/support/debug.cpp:74
+#: src/support/debug.cpp:65
 msgid "External template/inset messages"
 msgstr "外部ひな型・差込枠メッセージ"
 
-#: src/support/debug.cpp:75
+#: src/support/debug.cpp:66
 msgid "RowPainter profiling"
 msgstr "RowPainterが輪郭を描いています"
 
-#: src/support/debug.cpp:76
+#: src/support/debug.cpp:67
 msgid "Scrolling debugging"
 msgstr "スクロールデバッグ"
 
-#: src/support/debug.cpp:77
+#: src/support/debug.cpp:68
 msgid "Math macros"
 msgstr "数式マクロ"
 
-#: src/support/debug.cpp:78
+#: src/support/debug.cpp:69
 msgid "RTL/Bidi"
 msgstr "RTL/Bidi"
 
-#: src/support/debug.cpp:79
+#: src/support/debug.cpp:70
 msgid "Locale/Internationalisation"
 msgstr "ロケール・国際化"
 
-#: src/support/debug.cpp:80
+#: src/support/debug.cpp:71
 msgid "Selection copy/paste mechanism"
 msgstr "選択部のコピー/貼り付けの動作"
 
-#: src/support/debug.cpp:81
+#: src/support/debug.cpp:72
 msgid "Find and replace mechanism"
 msgstr "検索・置換機構"
 
-#: src/support/debug.cpp:82
+#: src/support/debug.cpp:73
 msgid "Developers' general debug messages"
 msgstr "開発者向けの一般的デバッグメッセージ"
 
-#: src/support/debug.cpp:83
+#: src/support/debug.cpp:74
 msgid "All debugging messages"
 msgstr "全デバッグメッセージ"
 
-#: src/support/debug.cpp:162
+#: src/support/debug.cpp:153
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "`%1$s' (%2$s)をデバッグしています"

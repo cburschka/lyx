@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-15 10:39+0200\n"
+"POT-Creation-Date: 2011-04-26 12:58+0200\n"
 "PO-Revision-Date: 2009-05-25 16:49+0100\n"
 "Last-Translator: H. İbrahim Güngör <h.ibrahim.gungor@gmail.com>\n"
 "Language-Team: Turkish <kde-i18n-doc@kde.org>\n"
@@ -2737,7 +2737,7 @@ msgid "Specify the default output format (for view/update)"
 msgstr "Öntanımlı kağıt boyunu belirleyin."
 
 #: src/frontends/qt4/ui/OutputUi.ui:45
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:187
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:177
 #, fuzzy
 msgid "De&fault Output Format:"
 msgstr "&Öntanımlı yazıcı:"
@@ -3386,30 +3386,30 @@ msgid "E&xtension:"
 msgstr "&Uzantı:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:109
-msgid "Ed&itor:"
-msgstr "Dü&zenleyici:"
-
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:119
 msgid "Shortc&ut:"
 msgstr "&Kısayol:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:142
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:132
 msgid "&Viewer:"
 msgstr "&Gösterici:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:162
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:152
 msgid "Co&pier:"
 msgstr "Ko&pyalar:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:175
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:165
 #, fuzzy
 msgid "Specify the default output format when using (PDF)LaTeX"
 msgstr "Öntanımlı kağıt boyunu belirleyin."
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:178
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:168
 #, fuzzy
 msgid "Default Format"
 msgstr "Tarih biçimi"
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:219
+msgid "Ed&itor:"
+msgstr "Dü&zenleyici:"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -6049,7 +6049,7 @@ msgstr "Altaltbölüm"
 #: lib/layouts/beamer.layout:46 lib/layouts/egs.layout:168
 #: lib/layouts/powerdot.layout:244 lib/layouts/simplecv.layout:79
 #: lib/layouts/agu_stdlists.inc:13 lib/layouts/db_stdlists.inc:12
-#: lib/layouts/stdlists.inc:12 lib/layouts/enumitem.module:56
+#: lib/layouts/stdlists.inc:13
 msgid "Itemize"
 msgstr "Öğe"
 
@@ -6057,8 +6057,7 @@ msgstr "Öğe"
 #: lib/layouts/aastex.layout:86 lib/layouts/apa.layout:380
 #: lib/layouts/beamer.layout:65 lib/layouts/egs.layout:149
 #: lib/layouts/powerdot.layout:269 lib/layouts/agu_stdlists.inc:21
-#: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:34
-#: lib/layouts/enumitem.module:60
+#: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:35
 msgid "Enumerate"
 msgstr "Sıralı öğe"
 
@@ -6068,8 +6067,7 @@ msgstr "Sıralı öğe"
 #: lib/layouts/paper.layout:101 lib/layouts/scrlettr.layout:17
 #: lib/layouts/scrlttr2.layout:21 lib/layouts/agu_stdlists.inc:29
 #: lib/layouts/db_stdlists.inc:26 lib/layouts/scrclass.inc:36
-#: lib/layouts/stdlists.inc:57 lib/layouts/enumitem.module:64
-#: lib/ui/stdtoolbars.inc:116
+#: lib/layouts/stdlists.inc:58 lib/ui/stdtoolbars.inc:116
 msgid "Description"
 msgstr "Açıklama"
 
@@ -6077,10 +6075,10 @@ msgstr "Açıklama"
 #: lib/layouts/aastex.layout:92 lib/layouts/beamer.layout:47
 #: lib/layouts/beamer.layout:66 lib/layouts/beamer.layout:86
 #: lib/layouts/egs.layout:132 lib/layouts/scrlettr.layout:32
-#: lib/layouts/scrlttr2.layout:37 lib/layouts/stdlists.inc:13
-#: lib/layouts/stdlists.inc:35 lib/layouts/stdlists.inc:58
-#: lib/layouts/stdlists.inc:89 lib/layouts/stdlists.inc:135
-#: lib/layouts/enumitem.module:75 lib/ui/stdtoolbars.inc:115
+#: lib/layouts/scrlttr2.layout:37 lib/layouts/stdlists.inc:14
+#: lib/layouts/stdlists.inc:36 lib/layouts/stdlists.inc:59
+#: lib/layouts/stdlists.inc:89 lib/layouts/stdlyxlist.inc:7
+#: lib/ui/stdtoolbars.inc:115
 msgid "List"
 msgstr "Liste"
 
@@ -6627,7 +6625,7 @@ msgstr "Alt paragraf"
 
 #: lib/layouts/apa.layout:376 lib/layouts/beamer.layout:61
 #: lib/layouts/egs.layout:182 lib/layouts/powerdot.layout:258
-#: lib/layouts/simplecv.layout:93 lib/layouts/stdlists.inc:27
+#: lib/layouts/simplecv.layout:93 lib/layouts/stdlists.inc:28
 msgid "*"
 msgstr "*"
 
@@ -6678,7 +6676,7 @@ msgid "Part*"
 msgstr "Kısım*"
 
 #: lib/layouts/beamer.layout:101 lib/layouts/egs.layout:201
-#: lib/layouts/stdlists.inc:73
+#: lib/layouts/stdlists.inc:74
 msgid "MM"
 msgstr "MM"
 
@@ -7620,8 +7618,7 @@ msgstr "Soyad"
 msgid "bysame"
 msgstr "Ad"
 
-#: lib/layouts/egs.layout:145 lib/layouts/stdlists.inc:102
-#: lib/layouts/enumitem.module:87
+#: lib/layouts/egs.layout:145 lib/layouts/stdlyxlist.inc:20
 msgid "00.00.0000"
 msgstr "00.00.0000"
 
@@ -8996,8 +8993,8 @@ msgid "PACS number:"
 msgstr "PACS numarası:"
 
 #: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:28
-#: lib/layouts/scrclass.inc:42 lib/layouts/stdlists.inc:88
-#: lib/layouts/enumitem.module:71
+#: lib/layouts/scrclass.inc:42 lib/layouts/stdlyxlist.inc:6
+#: lib/layouts/enumitem.module:75
 msgid "Labeling"
 msgstr "Etiketlendirme"
 
@@ -10360,7 +10357,7 @@ msgid ""
 "enumitem/enumitem.pdf and example file shipped with LyX."
 msgstr ""
 
-#: lib/layouts/enumitem.module:109
+#: lib/layouts/enumitem.module:95
 #, fuzzy
 msgid "Enumerate-Resume"
 msgstr "Sıralı öğe"
@@ -23444,7 +23441,7 @@ msgstr "Korumalı Yatay Boşluk (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Bilinmeyen içindekiler tipi"
 
-#: src/insets/InsetTabular.cpp:4684
+#: src/insets/InsetTabular.cpp:4693
 msgid "Selection size should match clipboard content."
 msgstr ""
 
@@ -23590,16 +23587,16 @@ msgstr "Dizge değiştirildi."
 msgid "%1$d strings have been replaced."
 msgstr " dizge değiştirildi."
 
-#: src/lyxfind.cpp:1366
+#: src/lyxfind.cpp:1367
 msgid "Invalid regular expression!"
 msgstr "Geçersiz düzenli ifade!"
 
-#: src/lyxfind.cpp:1371
+#: src/lyxfind.cpp:1372
 #, fuzzy
 msgid "Match not found!"
 msgstr "Dizge bulunamadı!"
 
-#: src/lyxfind.cpp:1375
+#: src/lyxfind.cpp:1376
 #, fuzzy
 msgid "Match found!"
 msgstr "Modül bulunamadı!"
@@ -23752,146 +23749,146 @@ msgstr "Özet: "
 msgid "References: "
 msgstr "Referanslar: "
 
-#: src/support/debug.cpp:50
+#: src/support/debug.cpp:41
 #, fuzzy
 msgid "No debugging messages"
 msgstr "Hata bulma iletisi yok"
 
-#: src/support/debug.cpp:51
+#: src/support/debug.cpp:42
 msgid "General information"
 msgstr "Genel bilgiler"
 
-#: src/support/debug.cpp:52
+#: src/support/debug.cpp:43
 msgid "Program initialisation"
 msgstr "Program açılışı"
 
-#: src/support/debug.cpp:53
+#: src/support/debug.cpp:44
 msgid "Keyboard events handling"
 msgstr "Klavye olayları"
 
-#: src/support/debug.cpp:54
+#: src/support/debug.cpp:45
 msgid "GUI handling"
 msgstr "Arabirim yönetimi"
 
-#: src/support/debug.cpp:55
+#: src/support/debug.cpp:46
 msgid "Lyxlex grammar parser"
 msgstr "Lyxlex gramer ayrıştırıcı"
 
-#: src/support/debug.cpp:56
+#: src/support/debug.cpp:47
 msgid "Configuration files reading"
 msgstr "Ayar dosyalarının okunması"
 
-#: src/support/debug.cpp:57
+#: src/support/debug.cpp:48
 msgid "Custom keyboard definition"
 msgstr "Özel klavye tanımı"
 
-#: src/support/debug.cpp:58
+#: src/support/debug.cpp:49
 msgid "LaTeX generation/execution"
 msgstr "LaTeX üretimi/işletimi"
 
-#: src/support/debug.cpp:59
+#: src/support/debug.cpp:50
 msgid "Math editor"
 msgstr "Matematik düzenleyici"
 
-#: src/support/debug.cpp:60
+#: src/support/debug.cpp:51
 msgid "Font handling"
 msgstr "Font yönetimi"
 
-#: src/support/debug.cpp:61
+#: src/support/debug.cpp:52
 msgid "Textclass files reading"
 msgstr "Metinsınıfı dosyaları okunması"
 
-#: src/support/debug.cpp:62
+#: src/support/debug.cpp:53
 msgid "Version control"
 msgstr "Sürüm yönetimi"
 
-#: src/support/debug.cpp:63
+#: src/support/debug.cpp:54
 msgid "External control interface"
 msgstr "Harici kontrol arayüzü"
 
-#: src/support/debug.cpp:64
+#: src/support/debug.cpp:55
 msgid "Undo/Redo mechanism"
 msgstr "Geri/İleri al mekanizması"
 
-#: src/support/debug.cpp:65
+#: src/support/debug.cpp:56
 msgid "User commands"
 msgstr "Kullanıcı komutları"
 
-#: src/support/debug.cpp:66
+#: src/support/debug.cpp:57
 #, fuzzy
 msgid "The LyX Lexer"
 msgstr "LyX Lexxer"
 
-#: src/support/debug.cpp:67
+#: src/support/debug.cpp:58
 msgid "Dependency information"
 msgstr "Bağımlılık bilgisi"
 
-#: src/support/debug.cpp:68
+#: src/support/debug.cpp:59
 msgid "LyX Insets"
 msgstr "Lyx eklemeleri"
 
-#: src/support/debug.cpp:69
+#: src/support/debug.cpp:60
 msgid "Files used by LyX"
 msgstr "LyX tarafından kullanılan dosyalar"
 
-#: src/support/debug.cpp:70
+#: src/support/debug.cpp:61
 msgid "Workarea events"
 msgstr "Çalışma alanı olayları"
 
-#: src/support/debug.cpp:71
+#: src/support/debug.cpp:62
 msgid "Insettext/tabular messages"
 msgstr "Ekleme metni/tablo mesajları"
 
-#: src/support/debug.cpp:72
+#: src/support/debug.cpp:63
 msgid "Graphics conversion and loading"
 msgstr "Grafik çevrimi ve yüklenmesi"
 
-#: src/support/debug.cpp:73
+#: src/support/debug.cpp:64
 msgid "Change tracking"
 msgstr "İzlemeyi değiştir"
 
-#: src/support/debug.cpp:74
+#: src/support/debug.cpp:65
 msgid "External template/inset messages"
 msgstr "Harici şablon/ekleme mesajları"
 
-#: src/support/debug.cpp:75
+#: src/support/debug.cpp:66
 msgid "RowPainter profiling"
 msgstr ""
 
-#: src/support/debug.cpp:76
+#: src/support/debug.cpp:67
 msgid "Scrolling debugging"
 msgstr ""
 
-#: src/support/debug.cpp:77
+#: src/support/debug.cpp:68
 msgid "Math macros"
 msgstr "Matematik makroları"
 
-#: src/support/debug.cpp:78
+#: src/support/debug.cpp:69
 msgid "RTL/Bidi"
 msgstr "RTL/Bidi"
 
-#: src/support/debug.cpp:79
+#: src/support/debug.cpp:70
 msgid "Locale/Internationalisation"
 msgstr "Yerelleştirme/Uluslararasılaştıma"
 
-#: src/support/debug.cpp:80
+#: src/support/debug.cpp:71
 msgid "Selection copy/paste mechanism"
 msgstr "Seçimlik kopyala/yapıştır mekanizması"
 
-#: src/support/debug.cpp:81
+#: src/support/debug.cpp:72
 #, fuzzy
 msgid "Find and replace mechanism"
 msgstr "Bul ve değiştir"
 
-#: src/support/debug.cpp:82
+#: src/support/debug.cpp:73
 msgid "Developers' general debug messages"
 msgstr "Geliştiricilerin genel hata kaydı mesajları"
 
-#: src/support/debug.cpp:83
+#: src/support/debug.cpp:74
 msgid "All debugging messages"
 msgstr "Tüm hata bulma iletileri"
 
-#: src/support/debug.cpp:162
+#: src/support/debug.cpp:153
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "`%1$s' (%2$s) hatası ayıklanıyor"

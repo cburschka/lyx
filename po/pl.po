@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-19 01:49+0200\n"
+"POT-Creation-Date: 2011-04-26 12:58+0200\n"
 "PO-Revision-Date: 2011-04-18 23:24+0200\n"
 "Last-Translator: Michał Fita <michal.fita@gmail.com>\n"
 "Language-Team: No team\n"
@@ -2700,7 +2700,7 @@ msgid "Specify the default output format (for view/update)"
 msgstr "Określ domyślny format wynikowy (dla podglądu/aktualizacji)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:45
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:187
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:177
 msgid "De&fault Output Format:"
 msgstr "Do&myślny format wynikowy:"
 
@@ -3341,29 +3341,29 @@ msgid "E&xtension:"
 msgstr "&Rozszerzenie:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:109
-msgid "Ed&itor:"
-msgstr "Ed&ytor:"
-
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:119
 msgid "Shortc&ut:"
 msgstr "Skró&t:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:142
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:132
 msgid "&Viewer:"
 msgstr "&Przeglądarka:"
 
 # "Kopista" bo tylko tak można nazwać kogoś/coś co kopiuje.
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:162
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:152
 msgid "Co&pier:"
 msgstr "Ko&pista:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:175
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:165
 msgid "Specify the default output format when using (PDF)LaTeX"
 msgstr "Określa domyślny format wyjściowy w czasie użycia (PDF)LaTeX"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:178
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:168
 msgid "Default Format"
 msgstr "Domyślny format"
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:219
+msgid "Ed&itor:"
+msgstr "Ed&ytor:"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -23497,7 +23497,7 @@ msgstr "Chroniony odstęp poziomy (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Nieznany typ spisu"
 
-#: src/insets/InsetTabular.cpp:4684
+#: src/insets/InsetTabular.cpp:4693
 msgid "Selection size should match clipboard content."
 msgstr "Rozmiar zaznaczenia musi odpowiadać zawartości schowka."
 
@@ -23801,143 +23801,143 @@ msgstr "Streszczenie: "
 msgid "References: "
 msgstr "Odnośniki: "
 
-#: src/support/debug.cpp:50
+#: src/support/debug.cpp:41
 msgid "No debugging messages"
 msgstr "Brak komunikatów diagnostycznych"
 
-#: src/support/debug.cpp:51
+#: src/support/debug.cpp:42
 msgid "General information"
 msgstr "Informacje podstawowe"
 
-#: src/support/debug.cpp:52
+#: src/support/debug.cpp:43
 msgid "Program initialisation"
 msgstr "Inicjacja programu"
 
-#: src/support/debug.cpp:53
+#: src/support/debug.cpp:44
 msgid "Keyboard events handling"
 msgstr "Obsługa zdarzeń klawiatury"
 
-#: src/support/debug.cpp:54
+#: src/support/debug.cpp:45
 msgid "GUI handling"
 msgstr "Obsługa GUI"
 
-#: src/support/debug.cpp:55
+#: src/support/debug.cpp:46
 msgid "Lyxlex grammar parser"
 msgstr "Analizator gramatyki Lyxlex"
 
-#: src/support/debug.cpp:56
+#: src/support/debug.cpp:47
 msgid "Configuration files reading"
 msgstr "Wczytywanie plików konfiguracyjnych"
 
-#: src/support/debug.cpp:57
+#: src/support/debug.cpp:48
 msgid "Custom keyboard definition"
 msgstr "Własna definicja klawiatury"
 
-#: src/support/debug.cpp:58
+#: src/support/debug.cpp:49
 msgid "LaTeX generation/execution"
 msgstr "Wykonywanie/generowanie LaTeX-a"
 
-#: src/support/debug.cpp:59
+#: src/support/debug.cpp:50
 msgid "Math editor"
 msgstr "Edytor matematyczny"
 
-#: src/support/debug.cpp:60
+#: src/support/debug.cpp:51
 msgid "Font handling"
 msgstr "Obsługa czcionek"
 
-#: src/support/debug.cpp:61
+#: src/support/debug.cpp:52
 msgid "Textclass files reading"
 msgstr "Wczytywanie plików klasy"
 
-#: src/support/debug.cpp:62
+#: src/support/debug.cpp:53
 msgid "Version control"
 msgstr "Kontrola wersji"
 
-#: src/support/debug.cpp:63
+#: src/support/debug.cpp:54
 msgid "External control interface"
 msgstr "Zewnętrzny interfejs kontroli"
 
-#: src/support/debug.cpp:64
+#: src/support/debug.cpp:55
 msgid "Undo/Redo mechanism"
 msgstr "Mechanizm Cofnij/Ponów"
 
-#: src/support/debug.cpp:65
+#: src/support/debug.cpp:56
 msgid "User commands"
 msgstr "Polecenia użytkownika"
 
-#: src/support/debug.cpp:66
+#: src/support/debug.cpp:57
 msgid "The LyX Lexer"
 msgstr "LyX Lekser"
 
-#: src/support/debug.cpp:67
+#: src/support/debug.cpp:58
 msgid "Dependency information"
 msgstr "Informacje o zależnościach"
 
-#: src/support/debug.cpp:68
+#: src/support/debug.cpp:59
 msgid "LyX Insets"
 msgstr "Wstawki LyX'a"
 
-#: src/support/debug.cpp:69
+#: src/support/debug.cpp:60
 msgid "Files used by LyX"
 msgstr "Pliki używane przez LyX'a"
 
-#: src/support/debug.cpp:70
+#: src/support/debug.cpp:61
 msgid "Workarea events"
 msgstr "Zdarzenia obszaru roboczego"
 
-#: src/support/debug.cpp:71
+#: src/support/debug.cpp:62
 msgid "Insettext/tabular messages"
 msgstr "Komunikaty wstawek tekstowych/tabel"
 
-#: src/support/debug.cpp:72
+#: src/support/debug.cpp:63
 msgid "Graphics conversion and loading"
 msgstr "Konwersja i wczytywanie grafiki"
 
-#: src/support/debug.cpp:73
+#: src/support/debug.cpp:64
 msgid "Change tracking"
 msgstr "Śledzenie zmian"
 
-#: src/support/debug.cpp:74
+#: src/support/debug.cpp:65
 msgid "External template/inset messages"
 msgstr "Szablon zewnętrzny/komunikaty wstawek"
 
-#: src/support/debug.cpp:75
+#: src/support/debug.cpp:66
 msgid "RowPainter profiling"
 msgstr "Profilowanie RowPainter-a"
 
-#: src/support/debug.cpp:76
+#: src/support/debug.cpp:67
 msgid "Scrolling debugging"
 msgstr "Odpluskwianie przewijania"
 
-#: src/support/debug.cpp:77
+#: src/support/debug.cpp:68
 msgid "Math macros"
 msgstr "Makra matematyczne"
 
-#: src/support/debug.cpp:78
+#: src/support/debug.cpp:69
 msgid "RTL/Bidi"
 msgstr ""
 
-#: src/support/debug.cpp:79
+#: src/support/debug.cpp:70
 msgid "Locale/Internationalisation"
 msgstr "Lokalizacja/Internacjonalizacja"
 
-#: src/support/debug.cpp:80
+#: src/support/debug.cpp:71
 msgid "Selection copy/paste mechanism"
 msgstr "Mechanizm kopiowania/wklejania zaznaczenia"
 
-#: src/support/debug.cpp:81
+#: src/support/debug.cpp:72
 msgid "Find and replace mechanism"
 msgstr "Mechanizm wynajdowania i zastępowania"
 
-#: src/support/debug.cpp:82
+#: src/support/debug.cpp:73
 msgid "Developers' general debug messages"
 msgstr "Komunikaty diagnostyczne"
 
-#: src/support/debug.cpp:83
+#: src/support/debug.cpp:74
 msgid "All debugging messages"
 msgstr "Wszystkie komunikaty diagnostyczne"
 
-#: src/support/debug.cpp:162
+#: src/support/debug.cpp:153
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Diagnostyka %1$s (%2$s)"

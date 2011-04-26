@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-15 10:39+0200\n"
+"POT-Creation-Date: 2011-04-26 12:58+0200\n"
 "PO-Revision-Date: 2010-04-27 16:59+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -2716,7 +2716,7 @@ msgid "Specify the default output format (for view/update)"
 msgstr "Zehaztu irteerako formatu lehenetsia (ikusi/eguneratu menuentzako)."
 
 #: src/frontends/qt4/ui/OutputUi.ui:45
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:187
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:177
 msgid "De&fault Output Format:"
 msgstr "Irteerako formatu &lehenetsia:"
 
@@ -3358,28 +3358,28 @@ msgid "E&xtension:"
 msgstr "L&uzapena:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:109
-msgid "Ed&itor:"
-msgstr "Ed&itorea:"
-
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:119
 msgid "Shortc&ut:"
 msgstr "L&asterbidea:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:142
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:132
 msgid "&Viewer:"
 msgstr "&Ikustailea:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:162
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:152
 msgid "Co&pier:"
 msgstr "&Kopiatzailea:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:175
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:165
 msgid "Specify the default output format when using (PDF)LaTeX"
 msgstr "Zehaztu irteerako formatu lehenetsia (PDF)LaTeX erabiltzean."
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:178
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:168
 msgid "Default Format"
 msgstr "Formatu lehenetsia"
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:219
+msgid "Ed&itor:"
+msgstr "Ed&itorea:"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -6012,7 +6012,7 @@ msgstr "Azpiazpiatala"
 #: lib/layouts/beamer.layout:46 lib/layouts/egs.layout:168
 #: lib/layouts/powerdot.layout:244 lib/layouts/simplecv.layout:79
 #: lib/layouts/agu_stdlists.inc:13 lib/layouts/db_stdlists.inc:12
-#: lib/layouts/stdlists.inc:12 lib/layouts/enumitem.module:56
+#: lib/layouts/stdlists.inc:13
 msgid "Itemize"
 msgstr "Elementuak"
 
@@ -6020,8 +6020,7 @@ msgstr "Elementuak"
 #: lib/layouts/aastex.layout:86 lib/layouts/apa.layout:380
 #: lib/layouts/beamer.layout:65 lib/layouts/egs.layout:149
 #: lib/layouts/powerdot.layout:269 lib/layouts/agu_stdlists.inc:21
-#: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:34
-#: lib/layouts/enumitem.module:60
+#: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:35
 msgid "Enumerate"
 msgstr "Zenbatua"
 
@@ -6031,8 +6030,7 @@ msgstr "Zenbatua"
 #: lib/layouts/paper.layout:101 lib/layouts/scrlettr.layout:17
 #: lib/layouts/scrlttr2.layout:21 lib/layouts/agu_stdlists.inc:29
 #: lib/layouts/db_stdlists.inc:26 lib/layouts/scrclass.inc:36
-#: lib/layouts/stdlists.inc:57 lib/layouts/enumitem.module:64
-#: lib/ui/stdtoolbars.inc:116
+#: lib/layouts/stdlists.inc:58 lib/ui/stdtoolbars.inc:116
 msgid "Description"
 msgstr "Azalpena"
 
@@ -6040,10 +6038,10 @@ msgstr "Azalpena"
 #: lib/layouts/aastex.layout:92 lib/layouts/beamer.layout:47
 #: lib/layouts/beamer.layout:66 lib/layouts/beamer.layout:86
 #: lib/layouts/egs.layout:132 lib/layouts/scrlettr.layout:32
-#: lib/layouts/scrlttr2.layout:37 lib/layouts/stdlists.inc:13
-#: lib/layouts/stdlists.inc:35 lib/layouts/stdlists.inc:58
-#: lib/layouts/stdlists.inc:89 lib/layouts/stdlists.inc:135
-#: lib/layouts/enumitem.module:75 lib/ui/stdtoolbars.inc:115
+#: lib/layouts/scrlttr2.layout:37 lib/layouts/stdlists.inc:14
+#: lib/layouts/stdlists.inc:36 lib/layouts/stdlists.inc:59
+#: lib/layouts/stdlists.inc:89 lib/layouts/stdlyxlist.inc:7
+#: lib/ui/stdtoolbars.inc:115
 msgid "List"
 msgstr "Zerrenda"
 
@@ -6587,7 +6585,7 @@ msgstr "Azpiparagrafoa"
 
 #: lib/layouts/apa.layout:376 lib/layouts/beamer.layout:61
 #: lib/layouts/egs.layout:182 lib/layouts/powerdot.layout:258
-#: lib/layouts/simplecv.layout:93 lib/layouts/stdlists.inc:27
+#: lib/layouts/simplecv.layout:93 lib/layouts/stdlists.inc:28
 msgid "*"
 msgstr "*"
 
@@ -6638,7 +6636,7 @@ msgid "Part*"
 msgstr "Zatia*"
 
 #: lib/layouts/beamer.layout:101 lib/layouts/egs.layout:201
-#: lib/layouts/stdlists.inc:73
+#: lib/layouts/stdlists.inc:74
 msgid "MM"
 msgstr "MM"
 
@@ -7575,8 +7573,7 @@ msgstr "Abizena"
 msgid "bysame"
 msgstr "Izena"
 
-#: lib/layouts/egs.layout:145 lib/layouts/stdlists.inc:102
-#: lib/layouts/enumitem.module:87
+#: lib/layouts/egs.layout:145 lib/layouts/stdlyxlist.inc:20
 msgid "00.00.0000"
 msgstr "00.00.0000"
 
@@ -8951,8 +8948,8 @@ msgid "PACS number:"
 msgstr "PACS zenbakia:"
 
 #: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:28
-#: lib/layouts/scrclass.inc:42 lib/layouts/stdlists.inc:88
-#: lib/layouts/enumitem.module:71
+#: lib/layouts/scrclass.inc:42 lib/layouts/stdlyxlist.inc:6
+#: lib/layouts/enumitem.module:75
 msgid "Labeling"
 msgstr "Etiketatua"
 
@@ -10280,7 +10277,7 @@ msgid ""
 "enumitem/enumitem.pdf and example file shipped with LyX."
 msgstr ""
 
-#: lib/layouts/enumitem.module:109
+#: lib/layouts/enumitem.module:95
 #, fuzzy
 msgid "Enumerate-Resume"
 msgstr "Zenbatua"
@@ -23400,7 +23397,7 @@ msgstr "Babestutako tarte horizontala (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Aurkibide mota ezezaguna"
 
-#: src/insets/InsetTabular.cpp:4684
+#: src/insets/InsetTabular.cpp:4693
 msgid "Selection size should match clipboard content."
 msgstr "Hautapenaren tamainak bat etorri behar du arbeleko edukiarekin."
 
@@ -23546,15 +23543,15 @@ msgstr "Katea ordeztu da."
 msgid "%1$d strings have been replaced."
 msgstr " kate ordeztu dira."
 
-#: src/lyxfind.cpp:1366
+#: src/lyxfind.cpp:1367
 msgid "Invalid regular expression!"
 msgstr "Adierazpen erregular baliogabea."
 
-#: src/lyxfind.cpp:1371
+#: src/lyxfind.cpp:1372
 msgid "Match not found!"
 msgstr "Ez da parekorik aurkitu."
 
-#: src/lyxfind.cpp:1375
+#: src/lyxfind.cpp:1376
 msgid "Match found!"
 msgstr "Bat datorrena aurkituta."
 
@@ -23704,143 +23701,143 @@ msgstr "Laburpena: "
 msgid "References: "
 msgstr "Erreferentziak: "
 
-#: src/support/debug.cpp:50
+#: src/support/debug.cpp:41
 msgid "No debugging messages"
 msgstr "Arazketa-mezurik ez"
 
-#: src/support/debug.cpp:51
+#: src/support/debug.cpp:42
 msgid "General information"
 msgstr "Informazio orokorra"
 
-#: src/support/debug.cpp:52
+#: src/support/debug.cpp:43
 msgid "Program initialisation"
 msgstr "Programaren hasieratzea"
 
-#: src/support/debug.cpp:53
+#: src/support/debug.cpp:44
 msgid "Keyboard events handling"
 msgstr "Teklatuaren gertakari-kudeaketa"
 
-#: src/support/debug.cpp:54
+#: src/support/debug.cpp:45
 msgid "GUI handling"
 msgstr "GUI kudeaketa"
 
-#: src/support/debug.cpp:55
+#: src/support/debug.cpp:46
 msgid "Lyxlex grammar parser"
 msgstr "Lyxlex gramatika-analizatzailea"
 
-#: src/support/debug.cpp:56
+#: src/support/debug.cpp:47
 msgid "Configuration files reading"
 msgstr "Konfigurazioko fitxategiak irakurtzen"
 
-#: src/support/debug.cpp:57
+#: src/support/debug.cpp:48
 msgid "Custom keyboard definition"
 msgstr "Teklatu pertsonalizatuaren definizioa"
 
-#: src/support/debug.cpp:58
+#: src/support/debug.cpp:49
 msgid "LaTeX generation/execution"
 msgstr "LaTeX sorkuntza/exekuzioa"
 
-#: src/support/debug.cpp:59
+#: src/support/debug.cpp:50
 msgid "Math editor"
 msgstr "Mat. editorea"
 
-#: src/support/debug.cpp:60
+#: src/support/debug.cpp:51
 msgid "Font handling"
 msgstr "Letra-tipoen kudeaketa"
 
-#: src/support/debug.cpp:61
+#: src/support/debug.cpp:52
 msgid "Textclass files reading"
 msgstr "Testu-klasearen fitxategiak irakurtzen"
 
-#: src/support/debug.cpp:62
+#: src/support/debug.cpp:53
 msgid "Version control"
 msgstr "Bertsio-kontrola"
 
-#: src/support/debug.cpp:63
+#: src/support/debug.cpp:54
 msgid "External control interface"
 msgstr "Kanpoko kontrol-interfazea"
 
-#: src/support/debug.cpp:64
+#: src/support/debug.cpp:55
 msgid "Undo/Redo mechanism"
 msgstr "Desegin/Berregin mekanismoa"
 
-#: src/support/debug.cpp:65
+#: src/support/debug.cpp:56
 msgid "User commands"
 msgstr "Erabiltzailearen komandoak"
 
-#: src/support/debug.cpp:66
+#: src/support/debug.cpp:57
 msgid "The LyX Lexer"
 msgstr "LyX Lexer-a"
 
-#: src/support/debug.cpp:67
+#: src/support/debug.cpp:58
 msgid "Dependency information"
 msgstr "Mendekotasun-informazioa"
 
-#: src/support/debug.cpp:68
+#: src/support/debug.cpp:59
 msgid "LyX Insets"
 msgstr "LyX-eko barnekoak"
 
-#: src/support/debug.cpp:69
+#: src/support/debug.cpp:60
 msgid "Files used by LyX"
 msgstr "LyX-ek darabilzkien fitxategiak"
 
-#: src/support/debug.cpp:70
+#: src/support/debug.cpp:61
 msgid "Workarea events"
 msgstr "Laneko areako gertaerak"
 
-#: src/support/debug.cpp:71
+#: src/support/debug.cpp:62
 msgid "Insettext/tabular messages"
 msgstr "Barne-testuaren/-taularen mezuak"
 
-#: src/support/debug.cpp:72
+#: src/support/debug.cpp:63
 msgid "Graphics conversion and loading"
 msgstr "Grafikoak bihurtzea eta kargatzea"
 
-#: src/support/debug.cpp:73
+#: src/support/debug.cpp:64
 msgid "Change tracking"
 msgstr "Aldaketen jarraipena"
 
-#: src/support/debug.cpp:74
+#: src/support/debug.cpp:65
 msgid "External template/inset messages"
 msgstr "Kanpoko txantiloiaren/txertakuntzaren mezuak"
 
-#: src/support/debug.cpp:75
+#: src/support/debug.cpp:66
 msgid "RowPainter profiling"
 msgstr "ErrenkadaMargotzeko profila"
 
-#: src/support/debug.cpp:76
+#: src/support/debug.cpp:67
 msgid "Scrolling debugging"
 msgstr "Arazketa korritzea"
 
-#: src/support/debug.cpp:77
+#: src/support/debug.cpp:68
 msgid "Math macros"
 msgstr "Matematikako makroak"
 
-#: src/support/debug.cpp:78
+#: src/support/debug.cpp:69
 msgid "RTL/Bidi"
 msgstr "EskEzk/Bidi"
 
-#: src/support/debug.cpp:79
+#: src/support/debug.cpp:70
 msgid "Locale/Internationalisation"
 msgstr "Lokalizazioa/Nazioartekotzea"
 
-#: src/support/debug.cpp:80
+#: src/support/debug.cpp:71
 msgid "Selection copy/paste mechanism"
 msgstr "Hautapena kopiatu/itsasteko mekanismoa"
 
-#: src/support/debug.cpp:81
+#: src/support/debug.cpp:72
 msgid "Find and replace mechanism"
 msgstr "Bilatu eta ordeztu mekanismoa"
 
-#: src/support/debug.cpp:82
+#: src/support/debug.cpp:73
 msgid "Developers' general debug messages"
 msgstr "Garatzaileen arazketa-mezu orokorra"
 
-#: src/support/debug.cpp:83
+#: src/support/debug.cpp:74
 msgid "All debugging messages"
 msgstr "Arazketa-mezu guztiak"
 
-#: src/support/debug.cpp:162
+#: src/support/debug.cpp:153
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "%1$s' (%2$s) arazten"

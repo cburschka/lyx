@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-19 02:46+0200\n"
+"POT-Creation-Date: 2011-04-26 12:58+0200\n"
 "PO-Revision-Date: 2011-04-19 07:27+0730\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Indonesian <was.uthm@gmail.com>\n"
@@ -2664,7 +2664,7 @@ msgid "Specify the default output format (for view/update)"
 msgstr "Nyatakan format keluaran bawaan (untuk melihat hasil/memperbarui)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:45
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:187
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:177
 msgid "De&fault Output Format:"
 msgstr "Format Keluaran Bawaan:"
 
@@ -3297,28 +3297,28 @@ msgid "E&xtension:"
 msgstr "&Ekstensi:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:109
-msgid "Ed&itor:"
-msgstr "Pen&yunting:"
-
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:119
 msgid "Shortc&ut:"
 msgstr "&Cara pintas:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:142
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:132
 msgid "&Viewer:"
 msgstr "Pen&ampil:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:162
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:152
 msgid "Co&pier:"
 msgstr "Penya&lin:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:175
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:165
 msgid "Specify the default output format when using (PDF)LaTeX"
 msgstr "Nyatakan format keluaran bawaan ketika menggunakan (PDF)LaTeX"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:178
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:168
 msgid "Default Format"
 msgstr "Format Bawaan"
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:219
+msgid "Ed&itor:"
+msgstr "Pen&yunting:"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -23194,7 +23194,7 @@ msgstr "Spasi Horizontal Protected (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Tipe Daftar Isi tidak dikenal"
 
-#: src/insets/InsetTabular.cpp:4684
+#: src/insets/InsetTabular.cpp:4693
 msgid "Selection size should match clipboard content."
 msgstr "Ukuran pilihan harus sesuai dengan isi dari klipboard."
 
@@ -23498,143 +23498,143 @@ msgstr "Abstrak: "
 msgid "References: "
 msgstr "Referensi: "
 
-#: src/support/debug.cpp:50
+#: src/support/debug.cpp:41
 msgid "No debugging messages"
 msgstr "Tidak ada pesan awakutu"
 
-#: src/support/debug.cpp:51
+#: src/support/debug.cpp:42
 msgid "General information"
 msgstr "Informasi umum"
 
-#: src/support/debug.cpp:52
+#: src/support/debug.cpp:43
 msgid "Program initialisation"
 msgstr "Inisialisasi program"
 
-#: src/support/debug.cpp:53
+#: src/support/debug.cpp:44
 msgid "Keyboard events handling"
 msgstr "Penanganan papanketik"
 
-#: src/support/debug.cpp:54
+#: src/support/debug.cpp:45
 msgid "GUI handling"
 msgstr "Penanganan GUI"
 
-#: src/support/debug.cpp:55
+#: src/support/debug.cpp:46
 msgid "Lyxlex grammar parser"
 msgstr "Pengurai tatabahasa Lyxlex"
 
-#: src/support/debug.cpp:56
+#: src/support/debug.cpp:47
 msgid "Configuration files reading"
 msgstr "Membaca berkas konfigurasi"
 
-#: src/support/debug.cpp:57
+#: src/support/debug.cpp:48
 msgid "Custom keyboard definition"
 msgstr "Definisi papanketik sendiri"
 
-#: src/support/debug.cpp:58
+#: src/support/debug.cpp:49
 msgid "LaTeX generation/execution"
 msgstr "Penulisan/Menjalankan LaTeX"
 
-#: src/support/debug.cpp:59
+#: src/support/debug.cpp:50
 msgid "Math editor"
 msgstr "Editor Matematika"
 
-#: src/support/debug.cpp:60
+#: src/support/debug.cpp:51
 msgid "Font handling"
 msgstr "Penanganan Huruf"
 
-#: src/support/debug.cpp:61
+#: src/support/debug.cpp:52
 msgid "Textclass files reading"
 msgstr "Membaca berkas class teks"
 
-#: src/support/debug.cpp:62
+#: src/support/debug.cpp:53
 msgid "Version control"
 msgstr "Kontrol versi"
 
-#: src/support/debug.cpp:63
+#: src/support/debug.cpp:54
 msgid "External control interface"
 msgstr "Kontrol antarmuka eksternal"
 
-#: src/support/debug.cpp:64
+#: src/support/debug.cpp:55
 msgid "Undo/Redo mechanism"
 msgstr "Mekanisme Batalkan/Kembalikan"
 
-#: src/support/debug.cpp:65
+#: src/support/debug.cpp:56
 msgid "User commands"
 msgstr "Perintah Pengguna"
 
-#: src/support/debug.cpp:66
+#: src/support/debug.cpp:57
 msgid "The LyX Lexer"
 msgstr "LyX Lexxer"
 
-#: src/support/debug.cpp:67
+#: src/support/debug.cpp:58
 msgid "Dependency information"
 msgstr "Informasi dependensi"
 
-#: src/support/debug.cpp:68
+#: src/support/debug.cpp:59
 msgid "LyX Insets"
 msgstr "Sisipan LyX"
 
-#: src/support/debug.cpp:69
+#: src/support/debug.cpp:60
 msgid "Files used by LyX"
 msgstr "Berkas-berkas digunakan oleh LyX"
 
-#: src/support/debug.cpp:70
+#: src/support/debug.cpp:61
 msgid "Workarea events"
 msgstr "Kejadian Daerah Kerja"
 
-#: src/support/debug.cpp:71
+#: src/support/debug.cpp:62
 msgid "Insettext/tabular messages"
 msgstr "Pesan-pesan sisipan teks/tabular"
 
-#: src/support/debug.cpp:72
+#: src/support/debug.cpp:63
 msgid "Graphics conversion and loading"
 msgstr "Pnegkonversian dan Pemuatan Gambar"
 
-#: src/support/debug.cpp:73
+#: src/support/debug.cpp:64
 msgid "Change tracking"
 msgstr "Pelacakan Perubahan"
 
-#: src/support/debug.cpp:74
+#: src/support/debug.cpp:65
 msgid "External template/inset messages"
 msgstr "Pesan-pesan templet/sisipan eksternal"
 
-#: src/support/debug.cpp:75
+#: src/support/debug.cpp:66
 msgid "RowPainter profiling"
 msgstr "RowPainter profiling"
 
-#: src/support/debug.cpp:76
+#: src/support/debug.cpp:67
 msgid "Scrolling debugging"
 msgstr "Menggulung pesan awakutu"
 
-#: src/support/debug.cpp:77
+#: src/support/debug.cpp:68
 msgid "Math macros"
 msgstr "Makro Matematika"
 
-#: src/support/debug.cpp:78
+#: src/support/debug.cpp:69
 msgid "RTL/Bidi"
 msgstr "RTL/Bidi"
 
-#: src/support/debug.cpp:79
+#: src/support/debug.cpp:70
 msgid "Locale/Internationalisation"
 msgstr "Lokal/Internasionalisasi"
 
-#: src/support/debug.cpp:80
+#: src/support/debug.cpp:71
 msgid "Selection copy/paste mechanism"
 msgstr "Mekanisme pemilihan salin/tempel"
 
-#: src/support/debug.cpp:81
+#: src/support/debug.cpp:72
 msgid "Find and replace mechanism"
 msgstr "Mekanisme cari dan ganti"
 
-#: src/support/debug.cpp:82
+#: src/support/debug.cpp:73
 msgid "Developers' general debug messages"
 msgstr "Pesan debug umum dari developer"
 
-#: src/support/debug.cpp:83
+#: src/support/debug.cpp:74
 msgid "All debugging messages"
 msgstr "Semua pesan debugging"
 
-#: src/support/debug.cpp:162
+#: src/support/debug.cpp:153
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Debugging `%1$s' (%2$s)"

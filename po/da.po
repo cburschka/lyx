@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-20 15:34+0200\n"
+"POT-Creation-Date: 2011-04-26 12:58+0200\n"
 "PO-Revision-Date: 2011-04-20 12:00+0200\n"
 "Last-Translator: Jesper Stemann Andersen <jesper@sait.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -2690,7 +2690,7 @@ msgid "Specify the default output format (for view/update)"
 msgstr "Angiv standard-papirformat."
 
 #: src/frontends/qt4/ui/OutputUi.ui:45
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:187
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:177
 #, fuzzy
 msgid "De&fault Output Format:"
 msgstr "Standard-papir&format:"
@@ -3370,32 +3370,32 @@ msgstr "&Udvidelse:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:109
 #, fuzzy
-msgid "Ed&itor:"
-msgstr "Redigering"
-
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:119
-#, fuzzy
 msgid "Shortc&ut:"
 msgstr "&Genvej:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:142
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:132
 msgid "&Viewer:"
 msgstr "Frem&viser"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:162
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:152
 #, fuzzy
 msgid "Co&pier:"
 msgstr "Kopier:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:175
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:165
 #, fuzzy
 msgid "Specify the default output format when using (PDF)LaTeX"
 msgstr "Angiv standard-papirformat."
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:178
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:168
 #, fuzzy
 msgid "Default Format"
 msgstr "Datoformat"
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:219
+#, fuzzy
+msgid "Ed&itor:"
+msgstr "Redigering"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -23582,7 +23582,7 @@ msgstr "Beskyttet, vandret mellemrum (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Ukendt indholdsfortegnelse-type"
 
-#: src/insets/InsetTabular.cpp:4684
+#: src/insets/InsetTabular.cpp:4693
 msgid "Selection size should match clipboard content."
 msgstr "Udvalgsstørrelse bør passe med klippebrættets indhold."
 
@@ -23886,143 +23886,143 @@ msgstr "Sammendrag: "
 msgid "References: "
 msgstr "Referencer: "
 
-#: src/support/debug.cpp:50
+#: src/support/debug.cpp:41
 msgid "No debugging messages"
 msgstr "Ingen fejlsporingsbesked"
 
-#: src/support/debug.cpp:51
+#: src/support/debug.cpp:42
 msgid "General information"
 msgstr "Generel information"
 
-#: src/support/debug.cpp:52
+#: src/support/debug.cpp:43
 msgid "Program initialisation"
 msgstr "Klargøring af programmet"
 
-#: src/support/debug.cpp:53
+#: src/support/debug.cpp:44
 msgid "Keyboard events handling"
 msgstr "Håndtering af tastaturhændelser"
 
-#: src/support/debug.cpp:54
+#: src/support/debug.cpp:45
 msgid "GUI handling"
 msgstr "GUI håndtering"
 
-#: src/support/debug.cpp:55
+#: src/support/debug.cpp:46
 msgid "Lyxlex grammar parser"
 msgstr "Lyxlex-grammatikfortolker"
 
-#: src/support/debug.cpp:56
+#: src/support/debug.cpp:47
 msgid "Configuration files reading"
 msgstr "Læsning af konfigurationsfiler"
 
-#: src/support/debug.cpp:57
+#: src/support/debug.cpp:48
 msgid "Custom keyboard definition"
 msgstr "Tilpasset tastaturdefinition"
 
-#: src/support/debug.cpp:58
+#: src/support/debug.cpp:49
 msgid "LaTeX generation/execution"
 msgstr "LaTeX-dannelse/-kørsel"
 
-#: src/support/debug.cpp:59
+#: src/support/debug.cpp:50
 msgid "Math editor"
 msgstr "Matematikredigeringsværktøj"
 
-#: src/support/debug.cpp:60
+#: src/support/debug.cpp:51
 msgid "Font handling"
 msgstr "Skrift-håndtering"
 
-#: src/support/debug.cpp:61
+#: src/support/debug.cpp:52
 msgid "Textclass files reading"
 msgstr "Læsning af tekstklassefiler"
 
-#: src/support/debug.cpp:62
+#: src/support/debug.cpp:53
 msgid "Version control"
 msgstr "Versionsstyring"
 
-#: src/support/debug.cpp:63
+#: src/support/debug.cpp:54
 msgid "External control interface"
 msgstr "Ekstern kontrolgrænseflade"
 
-#: src/support/debug.cpp:64
+#: src/support/debug.cpp:55
 msgid "Undo/Redo mechanism"
 msgstr ""
 
-#: src/support/debug.cpp:65
+#: src/support/debug.cpp:56
 msgid "User commands"
 msgstr "Brugerkommandoer"
 
-#: src/support/debug.cpp:66
+#: src/support/debug.cpp:57
 msgid "The LyX Lexer"
 msgstr "LyX-Lexer'en"
 
-#: src/support/debug.cpp:67
+#: src/support/debug.cpp:58
 msgid "Dependency information"
 msgstr "Afhængighedsoplysning"
 
-#: src/support/debug.cpp:68
+#: src/support/debug.cpp:59
 msgid "LyX Insets"
 msgstr "LyX-indstik"
 
-#: src/support/debug.cpp:69
+#: src/support/debug.cpp:60
 msgid "Files used by LyX"
 msgstr "Filer benyttet af LyX"
 
-#: src/support/debug.cpp:70
+#: src/support/debug.cpp:61
 msgid "Workarea events"
 msgstr "Arbejdsfeltshændelser"
 
-#: src/support/debug.cpp:71
+#: src/support/debug.cpp:62
 msgid "Insettext/tabular messages"
 msgstr "Indstikstekst/tabular-beskeder"
 
-#: src/support/debug.cpp:72
+#: src/support/debug.cpp:63
 msgid "Graphics conversion and loading"
 msgstr "Grafikkonvertering og -indlæsning"
 
-#: src/support/debug.cpp:73
+#: src/support/debug.cpp:64
 msgid "Change tracking"
 msgstr "Skift sporing"
 
-#: src/support/debug.cpp:74
+#: src/support/debug.cpp:65
 msgid "External template/inset messages"
 msgstr "Eksterne skabelon/indstik-beskeder"
 
-#: src/support/debug.cpp:75
+#: src/support/debug.cpp:66
 msgid "RowPainter profiling"
 msgstr ""
 
-#: src/support/debug.cpp:76
+#: src/support/debug.cpp:67
 msgid "Scrolling debugging"
 msgstr ""
 
-#: src/support/debug.cpp:77
+#: src/support/debug.cpp:68
 msgid "Math macros"
 msgstr "matematikmakroer"
 
-#: src/support/debug.cpp:78
+#: src/support/debug.cpp:69
 msgid "RTL/Bidi"
 msgstr "RTL/Bidi"
 
-#: src/support/debug.cpp:79
+#: src/support/debug.cpp:70
 msgid "Locale/Internationalisation"
 msgstr "Lokalitet/Internationalisering"
 
-#: src/support/debug.cpp:80
+#: src/support/debug.cpp:71
 msgid "Selection copy/paste mechanism"
 msgstr "Udvalg kopiér/sæt-ind-mekanisme"
 
-#: src/support/debug.cpp:81
+#: src/support/debug.cpp:72
 msgid "Find and replace mechanism"
 msgstr "Søg og erstat-mekanisme"
 
-#: src/support/debug.cpp:82
+#: src/support/debug.cpp:73
 msgid "Developers' general debug messages"
 msgstr "Udviklernes generelle fejlsporingsbeskeder"
 
-#: src/support/debug.cpp:83
+#: src/support/debug.cpp:74
 msgid "All debugging messages"
 msgstr "Alle fejlsporingsbeskeder"
 
-#: src/support/debug.cpp:162
+#: src/support/debug.cpp:153
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Fejlsporer '%1$s' (%2$s)"

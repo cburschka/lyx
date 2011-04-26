@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.6.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-15 10:39+0200\n"
+"POT-Creation-Date: 2011-04-26 12:58+0200\n"
 "PO-Revision-Date: 2009-08-19 17:52+0100\n"
 "Last-Translator: Helge Hafting <helge.hafting@aitel.hist.no>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -2735,7 +2735,7 @@ msgid "Specify the default output format (for view/update)"
 msgstr "Sett standard arkstørrelse."
 
 #: src/frontends/qt4/ui/OutputUi.ui:45
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:187
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:177
 #, fuzzy
 msgid "De&fault Output Format:"
 msgstr "Standard &skriver:"
@@ -3379,30 +3379,30 @@ msgid "E&xtension:"
 msgstr "Etternavn på fil:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:109
-msgid "Ed&itor:"
-msgstr "Redigeringsprogram:"
-
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:119
 msgid "Shortc&ut:"
 msgstr "&Hurtigtast:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:142
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:132
 msgid "&Viewer:"
 msgstr "Frem&viser:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:162
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:152
 msgid "Co&pier:"
 msgstr "Ko&piprogram:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:175
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:165
 #, fuzzy
 msgid "Specify the default output format when using (PDF)LaTeX"
 msgstr "Sett standard arkstørrelse."
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:178
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:168
 #, fuzzy
 msgid "Default Format"
 msgstr "Datoformat"
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:219
+msgid "Ed&itor:"
+msgstr "Redigeringsprogram:"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -6045,7 +6045,7 @@ msgstr "UnderUnderSeksjon"
 #: lib/layouts/beamer.layout:46 lib/layouts/egs.layout:168
 #: lib/layouts/powerdot.layout:244 lib/layouts/simplecv.layout:79
 #: lib/layouts/agu_stdlists.inc:13 lib/layouts/db_stdlists.inc:12
-#: lib/layouts/stdlists.inc:12 lib/layouts/enumitem.module:56
+#: lib/layouts/stdlists.inc:13
 msgid "Itemize"
 msgstr "Punktliste"
 
@@ -6053,8 +6053,7 @@ msgstr "Punktliste"
 #: lib/layouts/aastex.layout:86 lib/layouts/apa.layout:380
 #: lib/layouts/beamer.layout:65 lib/layouts/egs.layout:149
 #: lib/layouts/powerdot.layout:269 lib/layouts/agu_stdlists.inc:21
-#: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:34
-#: lib/layouts/enumitem.module:60
+#: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:35
 msgid "Enumerate"
 msgstr "Nummerert liste"
 
@@ -6064,8 +6063,7 @@ msgstr "Nummerert liste"
 #: lib/layouts/paper.layout:101 lib/layouts/scrlettr.layout:17
 #: lib/layouts/scrlttr2.layout:21 lib/layouts/agu_stdlists.inc:29
 #: lib/layouts/db_stdlists.inc:26 lib/layouts/scrclass.inc:36
-#: lib/layouts/stdlists.inc:57 lib/layouts/enumitem.module:64
-#: lib/ui/stdtoolbars.inc:116
+#: lib/layouts/stdlists.inc:58 lib/ui/stdtoolbars.inc:116
 msgid "Description"
 msgstr "Beskrivelse"
 
@@ -6073,10 +6071,10 @@ msgstr "Beskrivelse"
 #: lib/layouts/aastex.layout:92 lib/layouts/beamer.layout:47
 #: lib/layouts/beamer.layout:66 lib/layouts/beamer.layout:86
 #: lib/layouts/egs.layout:132 lib/layouts/scrlettr.layout:32
-#: lib/layouts/scrlttr2.layout:37 lib/layouts/stdlists.inc:13
-#: lib/layouts/stdlists.inc:35 lib/layouts/stdlists.inc:58
-#: lib/layouts/stdlists.inc:89 lib/layouts/stdlists.inc:135
-#: lib/layouts/enumitem.module:75 lib/ui/stdtoolbars.inc:115
+#: lib/layouts/scrlttr2.layout:37 lib/layouts/stdlists.inc:14
+#: lib/layouts/stdlists.inc:36 lib/layouts/stdlists.inc:59
+#: lib/layouts/stdlists.inc:89 lib/layouts/stdlyxlist.inc:7
+#: lib/ui/stdtoolbars.inc:115
 msgid "List"
 msgstr "Liste"
 
@@ -6636,7 +6634,7 @@ msgstr "Underavsnitt"
 
 #: lib/layouts/apa.layout:376 lib/layouts/beamer.layout:61
 #: lib/layouts/egs.layout:182 lib/layouts/powerdot.layout:258
-#: lib/layouts/simplecv.layout:93 lib/layouts/stdlists.inc:27
+#: lib/layouts/simplecv.layout:93 lib/layouts/stdlists.inc:28
 msgid "*"
 msgstr "*"
 
@@ -6687,7 +6685,7 @@ msgid "Part*"
 msgstr "Del*"
 
 #: lib/layouts/beamer.layout:101 lib/layouts/egs.layout:201
-#: lib/layouts/stdlists.inc:73
+#: lib/layouts/stdlists.inc:74
 msgid "MM"
 msgstr "MM"
 
@@ -7638,8 +7636,7 @@ msgstr "Etternavn"
 msgid "bysame"
 msgstr "Navn"
 
-#: lib/layouts/egs.layout:145 lib/layouts/stdlists.inc:102
-#: lib/layouts/enumitem.module:87
+#: lib/layouts/egs.layout:145 lib/layouts/stdlyxlist.inc:20
 msgid "00.00.0000"
 msgstr "00.00.0000"
 
@@ -9028,8 +9025,8 @@ msgid "PACS number:"
 msgstr ""
 
 #: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:28
-#: lib/layouts/scrclass.inc:42 lib/layouts/stdlists.inc:88
-#: lib/layouts/enumitem.module:71
+#: lib/layouts/scrclass.inc:42 lib/layouts/stdlyxlist.inc:6
+#: lib/layouts/enumitem.module:75
 msgid "Labeling"
 msgstr ""
 
@@ -10418,7 +10415,7 @@ msgid ""
 "enumitem/enumitem.pdf and example file shipped with LyX."
 msgstr ""
 
-#: lib/layouts/enumitem.module:109
+#: lib/layouts/enumitem.module:95
 #, fuzzy
 msgid "Enumerate-Resume"
 msgstr "Nummerert liste"
@@ -23584,7 +23581,7 @@ msgstr "Hardt mellomrom (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Innholdsfortegnelse av ukjent type"
 
-#: src/insets/InsetTabular.cpp:4684
+#: src/insets/InsetTabular.cpp:4693
 msgid "Selection size should match clipboard content."
 msgstr ""
 
@@ -23731,17 +23728,17 @@ msgstr "En streng har blitt erstattet."
 msgid "%1$d strings have been replaced."
 msgstr " strenger har blitt erstattet."
 
-#: src/lyxfind.cpp:1366
+#: src/lyxfind.cpp:1367
 #, fuzzy
 msgid "Invalid regular expression!"
 msgstr "Ugyldig LaTeX-lengde"
 
-#: src/lyxfind.cpp:1371
+#: src/lyxfind.cpp:1372
 #, fuzzy
 msgid "Match not found!"
 msgstr "Streng ikke funnet!"
 
-#: src/lyxfind.cpp:1375
+#: src/lyxfind.cpp:1376
 #, fuzzy
 msgid "Match found!"
 msgstr "Fil ikke funnet"
@@ -23899,149 +23896,149 @@ msgstr "Sammendrag: "
 msgid "References: "
 msgstr "Referanser: "
 
-#: src/support/debug.cpp:50
+#: src/support/debug.cpp:41
 #, fuzzy
 msgid "No debugging messages"
 msgstr "Ingen debug meldinge"
 
-#: src/support/debug.cpp:51
+#: src/support/debug.cpp:42
 msgid "General information"
 msgstr "Generel informasjon"
 
-#: src/support/debug.cpp:52
+#: src/support/debug.cpp:43
 msgid "Program initialisation"
 msgstr "Initialisering av programmet"
 
-#: src/support/debug.cpp:53
+#: src/support/debug.cpp:44
 msgid "Keyboard events handling"
 msgstr "Håntering av tastaturhendelser"
 
-#: src/support/debug.cpp:54
+#: src/support/debug.cpp:45
 msgid "GUI handling"
 msgstr "GUI håndtering"
 
-#: src/support/debug.cpp:55
+#: src/support/debug.cpp:46
 msgid "Lyxlex grammar parser"
 msgstr "Lyxlex gramatikk parser"
 
-#: src/support/debug.cpp:56
+#: src/support/debug.cpp:47
 msgid "Configuration files reading"
 msgstr "Lesning av konfigurasjons filer"
 
-#: src/support/debug.cpp:57
+#: src/support/debug.cpp:48
 msgid "Custom keyboard definition"
 msgstr "Egen definert tastatur definisjon"
 
-#: src/support/debug.cpp:58
+#: src/support/debug.cpp:49
 msgid "LaTeX generation/execution"
 msgstr "LaTeX generering/kjøring"
 
-#: src/support/debug.cpp:59
+#: src/support/debug.cpp:50
 msgid "Math editor"
 msgstr "Matte editor"
 
-#: src/support/debug.cpp:60
+#: src/support/debug.cpp:51
 msgid "Font handling"
 msgstr "Font håndtering"
 
-#: src/support/debug.cpp:61
+#: src/support/debug.cpp:52
 msgid "Textclass files reading"
 msgstr "Lesing av tekstklassefiler"
 
-#: src/support/debug.cpp:62
+#: src/support/debug.cpp:53
 msgid "Version control"
 msgstr "Versjonskontroll"
 
-#: src/support/debug.cpp:63
+#: src/support/debug.cpp:54
 msgid "External control interface"
 msgstr "Eksternt kontrolgrensesnitt"
 
-#: src/support/debug.cpp:64
+#: src/support/debug.cpp:55
 msgid "Undo/Redo mechanism"
 msgstr ""
 
-#: src/support/debug.cpp:65
+#: src/support/debug.cpp:56
 msgid "User commands"
 msgstr "Bruker kommandoer"
 
-#: src/support/debug.cpp:66
+#: src/support/debug.cpp:57
 msgid "The LyX Lexer"
 msgstr ""
 
-#: src/support/debug.cpp:67
+#: src/support/debug.cpp:58
 msgid "Dependency information"
 msgstr "Informasjon om avhengiheter"
 
-#: src/support/debug.cpp:68
+#: src/support/debug.cpp:59
 msgid "LyX Insets"
 msgstr "LyX \"insets\""
 
-#: src/support/debug.cpp:69
+#: src/support/debug.cpp:60
 msgid "Files used by LyX"
 msgstr "Filer brukt av LyX"
 
-#: src/support/debug.cpp:70
+#: src/support/debug.cpp:61
 msgid "Workarea events"
 msgstr "Arbeidsområde hendelser"
 
-#: src/support/debug.cpp:71
+#: src/support/debug.cpp:62
 msgid "Insettext/tabular messages"
 msgstr "Insettext/tabell meldinger"
 
-#: src/support/debug.cpp:72
+#: src/support/debug.cpp:63
 msgid "Graphics conversion and loading"
 msgstr "Grafikk konvertering og nedlasting"
 
-#: src/support/debug.cpp:73
+#: src/support/debug.cpp:64
 msgid "Change tracking"
 msgstr "Spore endringer"
 
-#: src/support/debug.cpp:74
+#: src/support/debug.cpp:65
 #, fuzzy
 msgid "External template/inset messages"
 msgstr "Ekstern mal %1$s er ikke"
 
-#: src/support/debug.cpp:75
+#: src/support/debug.cpp:66
 msgid "RowPainter profiling"
 msgstr ""
 
-#: src/support/debug.cpp:76
+#: src/support/debug.cpp:67
 #, fuzzy
 msgid "Scrolling debugging"
 msgstr "Rullefelt"
 
-#: src/support/debug.cpp:77
+#: src/support/debug.cpp:68
 #, fuzzy
 msgid "Math macros"
 msgstr "matte bakgrunn"
 
-#: src/support/debug.cpp:78
+#: src/support/debug.cpp:69
 msgid "RTL/Bidi"
 msgstr ""
 
-#: src/support/debug.cpp:79
+#: src/support/debug.cpp:70
 msgid "Locale/Internationalisation"
 msgstr ""
 
-#: src/support/debug.cpp:80
+#: src/support/debug.cpp:71
 #, fuzzy
 msgid "Selection copy/paste mechanism"
 msgstr "som linjer|l"
 
-#: src/support/debug.cpp:81
+#: src/support/debug.cpp:72
 #, fuzzy
 msgid "Find and replace mechanism"
 msgstr "Finn og erstatt"
 
-#: src/support/debug.cpp:82
+#: src/support/debug.cpp:73
 msgid "Developers' general debug messages"
 msgstr "Generelle debug-meldinger"
 
-#: src/support/debug.cpp:83
+#: src/support/debug.cpp:74
 msgid "All debugging messages"
 msgstr "Alle debug meldinger"
 
-#: src/support/debug.cpp:162
+#: src/support/debug.cpp:153
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Debugger `%1$s' (%2$s)"

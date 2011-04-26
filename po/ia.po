@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-15 23:31+0200\n"
+"POT-Creation-Date: 2011-04-26 12:58+0200\n"
 "PO-Revision-Date: 2011-04-18 14:02+0200\n"
 "Last-Translator: g.sora <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <g.sora@tiscali.it>\n"
@@ -2672,7 +2672,7 @@ msgid "Specify the default output format (for view/update)"
 msgstr "Specifica le formato predefinite del exito (per monstra/actualisa)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:45
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:187
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:177
 msgid "De&fault Output Format:"
 msgstr "Formato de exito prede&finite:"
 
@@ -3309,28 +3309,28 @@ msgid "E&xtension:"
 msgstr "E&xtension:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:109
-msgid "Ed&itor:"
-msgstr "Ed&itor:"
-
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:119
 msgid "Shortc&ut:"
 msgstr "Via b&reve:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:142
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:132
 msgid "&Viewer:"
 msgstr "&Visor :"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:162
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:152
 msgid "Co&pier:"
 msgstr "Co&piator:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:175
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:165
 msgid "Specify the default output format when using (PDF)LaTeX"
 msgstr "Specifica le formato predefinite del exito quando on usa (PDF)LaTeX"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:178
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:168
 msgid "Default Format"
 msgstr "Formato predefinite"
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:219
+msgid "Ed&itor:"
+msgstr "Ed&itor:"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -5925,7 +5925,7 @@ msgstr "Sub sub-section"
 #: lib/layouts/beamer.layout:46 lib/layouts/egs.layout:168
 #: lib/layouts/powerdot.layout:244 lib/layouts/simplecv.layout:79
 #: lib/layouts/agu_stdlists.inc:13 lib/layouts/db_stdlists.inc:12
-#: lib/layouts/stdlists.inc:12 lib/layouts/enumitem.module:56
+#: lib/layouts/stdlists.inc:13
 msgid "Itemize"
 msgstr "Lista punctate"
 
@@ -5933,8 +5933,7 @@ msgstr "Lista punctate"
 #: lib/layouts/aastex.layout:86 lib/layouts/apa.layout:380
 #: lib/layouts/beamer.layout:65 lib/layouts/egs.layout:149
 #: lib/layouts/powerdot.layout:269 lib/layouts/agu_stdlists.inc:21
-#: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:34
-#: lib/layouts/enumitem.module:60
+#: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:35
 msgid "Enumerate"
 msgstr "Lista numerate"
 
@@ -5944,8 +5943,7 @@ msgstr "Lista numerate"
 #: lib/layouts/paper.layout:101 lib/layouts/scrlettr.layout:17
 #: lib/layouts/scrlttr2.layout:21 lib/layouts/agu_stdlists.inc:29
 #: lib/layouts/db_stdlists.inc:26 lib/layouts/scrclass.inc:36
-#: lib/layouts/stdlists.inc:57 lib/layouts/enumitem.module:64
-#: lib/ui/stdtoolbars.inc:116
+#: lib/layouts/stdlists.inc:58 lib/ui/stdtoolbars.inc:116
 msgid "Description"
 msgstr "Description"
 
@@ -5953,10 +5951,10 @@ msgstr "Description"
 #: lib/layouts/aastex.layout:92 lib/layouts/beamer.layout:47
 #: lib/layouts/beamer.layout:66 lib/layouts/beamer.layout:86
 #: lib/layouts/egs.layout:132 lib/layouts/scrlettr.layout:32
-#: lib/layouts/scrlttr2.layout:37 lib/layouts/stdlists.inc:13
-#: lib/layouts/stdlists.inc:35 lib/layouts/stdlists.inc:58
-#: lib/layouts/stdlists.inc:89 lib/layouts/stdlists.inc:135
-#: lib/layouts/enumitem.module:75 lib/ui/stdtoolbars.inc:115
+#: lib/layouts/scrlttr2.layout:37 lib/layouts/stdlists.inc:14
+#: lib/layouts/stdlists.inc:36 lib/layouts/stdlists.inc:59
+#: lib/layouts/stdlists.inc:89 lib/layouts/stdlyxlist.inc:7
+#: lib/ui/stdtoolbars.inc:115
 msgid "List"
 msgstr "Lista"
 
@@ -6493,7 +6491,7 @@ msgstr "Sub-paragrapho"
 
 #: lib/layouts/apa.layout:376 lib/layouts/beamer.layout:61
 #: lib/layouts/egs.layout:182 lib/layouts/powerdot.layout:258
-#: lib/layouts/simplecv.layout:93 lib/layouts/stdlists.inc:27
+#: lib/layouts/simplecv.layout:93 lib/layouts/stdlists.inc:28
 msgid "*"
 msgstr "*"
 
@@ -6544,7 +6542,7 @@ msgid "Part*"
 msgstr "Parte*"
 
 #: lib/layouts/beamer.layout:101 lib/layouts/egs.layout:201
-#: lib/layouts/stdlists.inc:73
+#: lib/layouts/stdlists.inc:74
 msgid "MM"
 msgstr "MM"
 
@@ -7461,8 +7459,7 @@ msgstr "Nomine de Familia"
 msgid "bysame"
 msgstr "Idem"
 
-#: lib/layouts/egs.layout:145 lib/layouts/stdlists.inc:102
-#: lib/layouts/enumitem.module:87
+#: lib/layouts/egs.layout:145 lib/layouts/stdlyxlist.inc:20
 msgid "00.00.0000"
 msgstr "00.00.0000"
 
@@ -8822,8 +8819,8 @@ msgid "PACS number:"
 msgstr "Numero PACS:"
 
 #: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:28
-#: lib/layouts/scrclass.inc:42 lib/layouts/stdlists.inc:88
-#: lib/layouts/enumitem.module:71
+#: lib/layouts/scrclass.inc:42 lib/layouts/stdlyxlist.inc:6
+#: lib/layouts/enumitem.module:75
 msgid "Labeling"
 msgstr "Etiquetta"
 
@@ -10149,7 +10146,7 @@ msgstr ""
 "CTAN/macros/latex/contrib/enumitem/enumitem.pdf e le file de exemplo "
 "distribuite con LyX."
 
-#: lib/layouts/enumitem.module:109
+#: lib/layouts/enumitem.module:95
 msgid "Enumerate-Resume"
 msgstr "Lista numerate (resume)"
 
@@ -23245,7 +23242,7 @@ msgstr "Spatio horizontal protegite (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Typo de indice incognite"
 
-#: src/insets/InsetTabular.cpp:4684
+#: src/insets/InsetTabular.cpp:4693
 msgid "Selection size should match clipboard content."
 msgstr ""
 "Le grandor del selection debe corresponder al contento in le area de "
@@ -23392,15 +23389,15 @@ msgstr "Le catena ha essite reimplaciate."
 msgid "%1$d strings have been replaced."
 msgstr "%1$d catenas ha essite reimplaciate."
 
-#: src/lyxfind.cpp:1366
+#: src/lyxfind.cpp:1367
 msgid "Invalid regular expression!"
 msgstr "Expression regular invalide"
 
-#: src/lyxfind.cpp:1371
+#: src/lyxfind.cpp:1372
 msgid "Match not found!"
 msgstr "Nulle correspondentia trovate!"
 
-#: src/lyxfind.cpp:1375
+#: src/lyxfind.cpp:1376
 msgid "Match found!"
 msgstr "Correspondentia trovate!"
 
@@ -23552,143 +23549,143 @@ msgstr "Summario: "
 msgid "References: "
 msgstr "Referentias: "
 
-#: src/support/debug.cpp:50
+#: src/support/debug.cpp:41
 msgid "No debugging messages"
 msgstr "Nulle message de verifica (cribrar)"
 
-#: src/support/debug.cpp:51
+#: src/support/debug.cpp:42
 msgid "General information"
 msgstr "Information general"
 
-#: src/support/debug.cpp:52
+#: src/support/debug.cpp:43
 msgid "Program initialisation"
 msgstr "Initialisation de programma"
 
-#: src/support/debug.cpp:53
+#: src/support/debug.cpp:44
 msgid "Keyboard events handling"
 msgstr "Maneante eventos de claviero"
 
-#: src/support/debug.cpp:54
+#: src/support/debug.cpp:45
 msgid "GUI handling"
 msgstr "Gestion de GUI"
 
-#: src/support/debug.cpp:55
+#: src/support/debug.cpp:46
 msgid "Lyxlex grammar parser"
 msgstr "Analysator grammatical Lyxlex"
 
-#: src/support/debug.cpp:56
+#: src/support/debug.cpp:47
 msgid "Configuration files reading"
 msgstr "Lectura de files de configuration"
 
-#: src/support/debug.cpp:57
+#: src/support/debug.cpp:48
 msgid "Custom keyboard definition"
 msgstr "Definition personalisate de claviero"
 
-#: src/support/debug.cpp:58
+#: src/support/debug.cpp:49
 msgid "LaTeX generation/execution"
 msgstr "Generation/Execution de LaTeX"
 
-#: src/support/debug.cpp:59
+#: src/support/debug.cpp:50
 msgid "Math editor"
 msgstr "Editor mathematic"
 
-#: src/support/debug.cpp:60
+#: src/support/debug.cpp:51
 msgid "Font handling"
 msgstr "Gestion de Font"
 
-#: src/support/debug.cpp:61
+#: src/support/debug.cpp:52
 msgid "Textclass files reading"
 msgstr "Lectura de files Textclass"
 
-#: src/support/debug.cpp:62
+#: src/support/debug.cpp:53
 msgid "Version control"
 msgstr "Controlo de version"
 
-#: src/support/debug.cpp:63
+#: src/support/debug.cpp:54
 msgid "External control interface"
 msgstr "Interfacie de controlo externe"
 
-#: src/support/debug.cpp:64
+#: src/support/debug.cpp:55
 msgid "Undo/Redo mechanism"
 msgstr "Mechanismo de Annulla/Re-face"
 
-#: src/support/debug.cpp:65
+#: src/support/debug.cpp:56
 msgid "User commands"
 msgstr "Commandos de usator"
 
-#: src/support/debug.cpp:66
+#: src/support/debug.cpp:57
 msgid "The LyX Lexer"
 msgstr "Le Lexer de LyX"
 
-#: src/support/debug.cpp:67
+#: src/support/debug.cpp:58
 msgid "Dependency information"
 msgstr "Informationes re dependentias"
 
-#: src/support/debug.cpp:68
+#: src/support/debug.cpp:59
 msgid "LyX Insets"
 msgstr "Insertos de LyX"
 
-#: src/support/debug.cpp:69
+#: src/support/debug.cpp:60
 msgid "Files used by LyX"
 msgstr "Files usate per LyX"
 
-#: src/support/debug.cpp:70
+#: src/support/debug.cpp:61
 msgid "Workarea events"
 msgstr "Eventos de area de travalio"
 
-#: src/support/debug.cpp:71
+#: src/support/debug.cpp:62
 msgid "Insettext/tabular messages"
 msgstr "Messages Insettext/tabular"
 
-#: src/support/debug.cpp:72
+#: src/support/debug.cpp:63
 msgid "Graphics conversion and loading"
 msgstr "Conversion  e cargamento graphicos"
 
-#: src/support/debug.cpp:73
+#: src/support/debug.cpp:64
 msgid "Change tracking"
 msgstr "Modifica modo de traciar"
 
-#: src/support/debug.cpp:74
+#: src/support/debug.cpp:65
 msgid "External template/inset messages"
 msgstr "Messages de inserto/patrono externe"
 
-#: src/support/debug.cpp:75
+#: src/support/debug.cpp:66
 msgid "RowPainter profiling"
 msgstr "Creation profilo RowPainter"
 
-#: src/support/debug.cpp:76
+#: src/support/debug.cpp:67
 msgid "Scrolling debugging"
 msgstr "Verifica (cribra) rolar"
 
-#: src/support/debug.cpp:77
+#: src/support/debug.cpp:68
 msgid "Math macros"
 msgstr "Macros mathematic"
 
-#: src/support/debug.cpp:78
+#: src/support/debug.cpp:69
 msgid "RTL/Bidi"
 msgstr "RTL/Bidi"
 
-#: src/support/debug.cpp:79
+#: src/support/debug.cpp:70
 msgid "Locale/Internationalisation"
 msgstr "Localisation/Internationalisation"
 
-#: src/support/debug.cpp:80
+#: src/support/debug.cpp:71
 msgid "Selection copy/paste mechanism"
 msgstr "Mechanismo de copia/colla selection"
 
-#: src/support/debug.cpp:81
+#: src/support/debug.cpp:72
 msgid "Find and replace mechanism"
 msgstr "Mechanismo de trova e reimplacia"
 
-#: src/support/debug.cpp:82
+#: src/support/debug.cpp:73
 msgid "Developers' general debug messages"
 msgstr "Messages general de cribrar per developpatores"
 
-#: src/support/debug.cpp:83
+#: src/support/debug.cpp:74
 msgid "All debugging messages"
 msgstr "Omne messages de cribrar"
 
-#: src/support/debug.cpp:162
+#: src/support/debug.cpp:153
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Cribrante `%1$s' (%2$s)"
