@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-04-15 10:39+0200\n"
-"PO-Revision-Date: 2011-04-22 18:22+0300\n"
+"PO-Revision-Date: 2011-04-26 06:17+0300\n"
 "Last-Translator: Richman Reuven <richman.reuven@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
 "Language: he\n"
@@ -5357,7 +5357,7 @@ msgstr "אקסיומה"
 #: lib/layouts/theorems.inc:275 lib/layouts/theorems.inc:300
 #: lib/layouts/theorems.inc:303
 msgid "Case"
-msgstr "תנאי"
+msgstr "מקרה"
 
 #: lib/layouts/AEA.layout:130
 #, fuzzy
@@ -5393,7 +5393,7 @@ msgstr "טענה"
 #: lib/layouts/theorems-ams-extended.module:336
 #: lib/layouts/theorems-ams-extended.module:339
 msgid "Conclusion"
-msgstr ""
+msgstr "סיכום"
 
 #: lib/layouts/AEA.layout:151
 #: lib/layouts/theorems-ams-extended-bytype.module:164
@@ -5424,7 +5424,7 @@ msgstr "תנאי"
 #: lib/layouts/theorems.inc:132 lib/layouts/theorems-chap-bytype.module:102
 #: lib/layouts/theorems-sec-bytype.module:86
 msgid "Conjecture"
-msgstr ""
+msgstr "השערה"
 
 #: lib/layouts/AEA.layout:166 lib/layouts/beamer.layout:987
 #: lib/layouts/elsart.layout:322 lib/layouts/foils.layout:250
@@ -5543,7 +5543,7 @@ msgstr "למה"
 #: lib/layouts/theorems-ams-extended.module:234
 #: lib/layouts/theorems-ams-extended.module:237
 msgid "Notation"
-msgstr ""
+msgstr "צורת רישום"
 
 #: lib/layouts/AEA.layout:217 lib/layouts/elsart.layout:378
 #: lib/layouts/llncs.layout:369 lib/layouts/svmono.layout:102
@@ -5601,7 +5601,7 @@ msgstr "הערה"
 #: lib/layouts/ijmpd.layout:180 lib/layouts/theorems-ams-bytype.inc:266
 #: lib/layouts/theorems-bytype.inc:242
 msgid "Remark \\theremark."
-msgstr ""
+msgstr "הערה \\theremark."
 
 #: lib/layouts/AEA.layout:240 lib/layouts/llncs.layout:410
 #: lib/layouts/svmono.layout:108 lib/layouts/svjour.inc:428
@@ -6188,14 +6188,14 @@ msgstr ""
 
 #: lib/layouts/aastex.layout:383
 msgid "[Acknowledgements]"
-msgstr ""
+msgstr "[הכרת תודות]"
 
 #: lib/layouts/aastex.layout:404 src/frontends/qt4/GuiDocument.cpp:1934
 #: src/frontends/qt4/GuiDocument.cpp:1946
 #: src/frontends/qt4/GuiDocument.cpp:2038
 #: src/frontends/qt4/GuiDocument.cpp:2057
 msgid "and"
-msgstr ""
+msgstr "וגם"
 
 #: lib/layouts/aastex.layout:424
 msgid "Place Figure here:"
@@ -6283,32 +6283,27 @@ msgstr "טלפון"
 
 #: lib/layouts/achemso.layout:122 lib/layouts/achemso.layout:133
 msgid "Scheme"
-msgstr ""
+msgstr "סכמה"
 
 #: lib/layouts/achemso.layout:127
-#, fuzzy
 msgid "List of Schemes"
-msgstr "רשימת טבלאות"
+msgstr "רשימת סכמות"
 
 #: lib/layouts/achemso.layout:144 lib/layouts/achemso.layout:155
-#, fuzzy
 msgid "Chart"
-msgstr "hat"
+msgstr "תרשים"
 
 #: lib/layouts/achemso.layout:149
-#, fuzzy
 msgid "List of Charts"
-msgstr "רשימת טבלאות"
+msgstr "רשימת תרשימים"
 
 #: lib/layouts/achemso.layout:166 lib/layouts/achemso.layout:177
-#, fuzzy
 msgid "Graph"
-msgstr "תמונות"
+msgstr "גרף"
 
 #: lib/layouts/achemso.layout:171
-#, fuzzy
 msgid "List of Graphs"
-msgstr "רשימת טבלאות"
+msgstr "רשימת גרפים"
 
 #: lib/layouts/achemso.layout:215
 #, fuzzy
@@ -6322,7 +6317,7 @@ msgstr "הערה"
 
 #: lib/layouts/achemso.layout:264
 msgid "chemistry"
-msgstr ""
+msgstr "כימיה"
 
 #: lib/layouts/acmsiggraph.layout:64
 #, fuzzy
@@ -7647,7 +7642,7 @@ msgstr ""
 
 #: lib/layouts/elsart.layout:275
 msgid "Theorem \\arabic{theorem}"
-msgstr ""
+msgstr "משפט \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:304
 msgid "PROOF."
@@ -7655,19 +7650,19 @@ msgstr "הוכחה."
 
 #: lib/layouts/elsart.layout:318
 msgid "Lemma \\arabic{theorem}"
-msgstr ""
+msgstr "למה \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:325
 msgid "Corollary \\arabic{theorem}"
-msgstr ""
+msgstr "מסקנה \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:332
 msgid "Proposition \\arabic{theorem}"
-msgstr ""
+msgstr "הצעה \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:339
 msgid "Criterion \\arabic{theorem}"
-msgstr ""
+msgstr "קריטריון \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:346
 msgid "Algorithm \\arabic{theorem}"
@@ -7675,39 +7670,39 @@ msgstr ""
 
 #: lib/layouts/elsart.layout:353
 msgid "Definition \\arabic{theorem}"
-msgstr ""
+msgstr "הגדרה \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:367
 msgid "Conjecture \\arabic{theorem}"
-msgstr ""
+msgstr "השערה \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:374
 msgid "Example \\arabic{theorem}"
-msgstr ""
+msgstr "דוגמה \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:381
 msgid "Problem \\arabic{theorem}"
-msgstr ""
+msgstr "בעיה \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:388
 msgid "Remark \\arabic{theorem}"
-msgstr ""
+msgstr "הערה \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:395
 msgid "Note \\arabic{theorem}"
-msgstr ""
+msgstr "הערה \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:402
 msgid "Claim \\arabic{theorem}"
-msgstr ""
+msgstr "טענה \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:410
 msgid "Summary \\arabic{summ}"
-msgstr ""
+msgstr "סיכום \\arabic{summ}"
 
 #: lib/layouts/elsart.layout:418
 msgid "Case \\arabic{case}"
-msgstr ""
+msgstr "מקרה \\arabic{case}"
 
 #: lib/layouts/elsarticle.layout:75
 #, fuzzy
@@ -7908,7 +7903,7 @@ msgstr "מסקנה #."
 #: lib/layouts/foils.layout:260 lib/layouts/llncs.layout:393
 #: lib/layouts/svjour.inc:410
 msgid "Proposition #."
-msgstr ""
+msgstr "הצעה #."
 
 #: lib/layouts/foils.layout:267 lib/layouts/heb-article.layout:78
 #: lib/layouts/llncs.layout:338 lib/layouts/svjour.inc:350
@@ -7937,11 +7932,11 @@ msgstr "מסקנה*"
 #: lib/layouts/foils.layout:313 lib/layouts/siamltex.layout:102
 #: lib/layouts/theorems-order.inc:28 lib/layouts/theorems-starred.inc:97
 msgid "Proposition*"
-msgstr ""
+msgstr "הצעה*"
 
 #: lib/layouts/foils.layout:316 lib/layouts/theorems-starred.inc:100
 msgid "Proposition."
-msgstr ""
+msgstr "הצעה."
 
 #: lib/layouts/foils.layout:320 lib/layouts/siamltex.layout:131
 #: lib/layouts/theorems-order.inc:40 lib/layouts/theorems-starred.inc:148
@@ -8346,11 +8341,11 @@ msgstr "טענה #."
 
 #: lib/layouts/heb-article.layout:85
 msgid "Remarks"
-msgstr ""
+msgstr "הערות"
 
 #: lib/layouts/heb-article.layout:88
 msgid "Remarks #."
-msgstr ""
+msgstr "הערות #."
 
 #: lib/layouts/heb-article.layout:110
 msgid "Proof:"
@@ -8435,7 +8430,7 @@ msgstr "דוגמה #."
 #: lib/layouts/ijmpc.layout:191 lib/layouts/ijmpd.layout:190
 #: lib/layouts/theorems-ams-extended-bytype.module:237
 msgid "Notation \\thenotation."
-msgstr ""
+msgstr "צורת רישום \\thenotation."
 
 #: lib/layouts/ijmpc.layout:206 lib/layouts/ijmpd.layout:209
 #: lib/layouts/theorems-ams-bytype.inc:68 lib/layouts/theorems-ams.inc:42
@@ -8453,12 +8448,12 @@ msgstr "מסקנה #."
 #: lib/layouts/ijmpc.layout:248 lib/layouts/ijmpd.layout:253
 #: lib/layouts/theorems-ams-bytype.inc:112 lib/layouts/theorems-bytype.inc:88
 msgid "Lemma \\thelemma."
-msgstr ""
+msgstr "למה \\thelemma."
 
 #: lib/layouts/ijmpc.layout:257 lib/layouts/ijmpd.layout:263
 #: lib/layouts/theorems-ams-bytype.inc:130 lib/layouts/theorems-bytype.inc:106
 msgid "Proposition \\theproposition."
-msgstr ""
+msgstr "הצעה \\theproposition."
 
 #: lib/layouts/ijmpc.layout:262 lib/layouts/ijmpd.layout:269
 msgid "Prop"
@@ -8486,12 +8481,12 @@ msgstr "שאלה #."
 #: lib/layouts/ijmpc.layout:284 lib/layouts/ijmpd.layout:293
 #: lib/layouts/theorems-ams-bytype.inc:292 lib/layouts/theorems-bytype.inc:268
 msgid "Claim \\theclaim."
-msgstr ""
+msgstr "טענה \\theclaim."
 
 #: lib/layouts/ijmpc.layout:293 lib/layouts/ijmpd.layout:303
 #: lib/layouts/theorems-ams-bytype.inc:148 lib/layouts/theorems-bytype.inc:124
 msgid "Conjecture \\theconjecture."
-msgstr ""
+msgstr "השערה \\theconjecture."
 
 #: lib/layouts/ijmpc.layout:296 lib/layouts/ijmpd.layout:306
 msgid "Appendices Section"
@@ -8736,7 +8731,7 @@ msgstr "מחבר תוכן עניינים:"
 #: lib/layouts/theorems-ams.inc:291 lib/layouts/theorems-bytype.inc:291
 #: lib/layouts/theorems.inc:281
 msgid "Case #."
-msgstr "תנאי #."
+msgstr "מקרה #."
 
 #: lib/layouts/llncs.layout:310 lib/layouts/svjour.inc:319
 #: lib/layouts/theorems-starred.inc:252
@@ -8745,7 +8740,7 @@ msgstr "טענה."
 
 #: lib/layouts/llncs.layout:317 lib/layouts/svjour.inc:329
 msgid "Conjecture #."
-msgstr ""
+msgstr "השערה #."
 
 #: lib/layouts/llncs.layout:345 lib/layouts/svjour.inc:357
 msgid "Example #."
@@ -9124,7 +9119,7 @@ msgstr "תוכן"
 #: lib/layouts/siamltex.layout:111 lib/layouts/theorems-order.inc:34
 #: lib/layouts/theorems-starred.inc:114
 msgid "Conjecture*"
-msgstr ""
+msgstr "השערה*"
 
 #: lib/layouts/siamltex.layout:121
 #: lib/layouts/theorems-ams-extended-bytype.module:112
@@ -10118,7 +10113,7 @@ msgstr ""
 
 #: lib/layouts/theorems-ams-bytype.inc:166 lib/layouts/theorems-bytype.inc:142
 msgid "Fact \\thefact."
-msgstr ""
+msgstr "עובדה \\thefact."
 
 #: lib/layouts/theorems-ams-bytype.inc:228 lib/layouts/theorems-bytype.inc:204
 #, fuzzy
@@ -10137,7 +10132,7 @@ msgstr "מסקנה #."
 
 #: lib/layouts/theorems-ams.inc:87 lib/layouts/theorems.inc:87
 msgid "Lemma \\thetheorem."
-msgstr ""
+msgstr "למה \\thetheorem."
 
 # לבדוק מה זה
 #: lib/layouts/theorems-ams.inc:105 lib/layouts/theorems.inc:105
@@ -10147,11 +10142,11 @@ msgstr "הצעה #:"
 
 #: lib/layouts/theorems-ams.inc:123 lib/layouts/theorems.inc:123
 msgid "Conjecture \\thetheorem."
-msgstr ""
+msgstr "השערה \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:141 lib/layouts/theorems.inc:141
 msgid "Fact \\thetheorem."
-msgstr ""
+msgstr "עובדה \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:159 lib/layouts/theorems.inc:159
 #, fuzzy
@@ -10175,11 +10170,11 @@ msgstr "תרגיל #."
 
 #: lib/layouts/theorems-ams.inc:235 lib/layouts/theorems.inc:235
 msgid "Remark \\thetheorem."
-msgstr ""
+msgstr "הערה \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:260 lib/layouts/theorems.inc:260
 msgid "Claim \\thetheorem."
-msgstr ""
+msgstr "טענה \\thetheorem."
 
 #: lib/layouts/theorems-order.inc:46 lib/layouts/theorems-starred.inc:173
 msgid "Example*"
@@ -10203,7 +10198,7 @@ msgstr "טענה*"
 
 #: lib/layouts/theorems-starred.inc:117
 msgid "Conjecture."
-msgstr ""
+msgstr "השערה."
 
 #: lib/layouts/theorems-starred.inc:131
 msgid "Fact*"
@@ -10730,7 +10725,7 @@ msgstr "אלגוריתם."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:132
 msgid "Axiom \\theaxiom."
-msgstr ""
+msgstr "אקסיומה \\theaxiom."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:147
 #: lib/layouts/theorems-ams-extended.module:123
@@ -10775,16 +10770,16 @@ msgstr "הערה."
 #: lib/layouts/theorems-ams-extended-bytype.module:252
 #: lib/layouts/theorems-ams-extended.module:225
 msgid "Notation*"
-msgstr ""
+msgstr "צורת רישום*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:255
 #: lib/layouts/theorems-ams-extended.module:228
 msgid "Notation."
-msgstr ""
+msgstr "צורת רישום."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:272
 msgid "Summary \\thesummary."
-msgstr ""
+msgstr "סיכום \\thesummary."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:287
 #: lib/layouts/theorems-ams-extended.module:259
@@ -10814,12 +10809,12 @@ msgstr "שאלה #."
 #: lib/layouts/theorems-ams-extended-bytype.module:357
 #: lib/layouts/theorems-ams-extended.module:327
 msgid "Conclusion*"
-msgstr ""
+msgstr "סיכום*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:360
 #: lib/layouts/theorems-ams-extended.module:330
 msgid "Conclusion."
-msgstr ""
+msgstr "סיכום."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:374
 #: lib/layouts/theorems-ams-extended-bytype.module:383
@@ -10832,12 +10827,11 @@ msgstr ""
 #: lib/layouts/theorems-ams-extended.module:371
 #: lib/layouts/theorems-ams-extended.module:374
 msgid "Assumption"
-msgstr ""
+msgstr "הנחה"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:377
-#, fuzzy
 msgid "Assumption \\theassumption."
-msgstr "שאלה #."
+msgstr "הנחה \\theassumption."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:392
 #: lib/layouts/theorems-ams-extended.module:362
@@ -10847,7 +10841,7 @@ msgstr "הנחה*"
 #: lib/layouts/theorems-ams-extended-bytype.module:395
 #: lib/layouts/theorems-ams-extended.module:365
 msgid "Assumption."
-msgstr ""
+msgstr "הנחה."
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "Theorems (AMS-Extended)"
@@ -10881,7 +10875,7 @@ msgstr "אלגוריתם."
 
 #: lib/layouts/theorems-ams-extended.module:109
 msgid "Axiom \\thetheorem."
-msgstr ""
+msgstr "אקסיומה \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:143
 #, fuzzy
@@ -10890,33 +10884,31 @@ msgstr "תנאי."
 
 #: lib/layouts/theorems-ams-extended.module:177
 msgid "Note \\thetheorem."
-msgstr ""
+msgstr "הערה \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:211
 msgid "Notation \\thetheorem."
-msgstr ""
+msgstr "צורת רישום \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:245
 msgid "Summary \\thetheorem."
-msgstr ""
+msgstr "סיכום \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:279
-#, fuzzy
 msgid "Acknowledgement \\thetheorem."
-msgstr "הכרת תודה."
+msgstr "הכרת תודה \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:313
 msgid "Conclusion \\thetheorem."
-msgstr ""
+msgstr "סיכום \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:348
 msgid "Assumption \\thetheorem."
-msgstr ""
+msgstr "הנחה \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:382
-#, fuzzy
 msgid "Question \\thetheorem."
-msgstr "הגדרה #."
+msgstr "שאלה \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:395
 #, fuzzy
@@ -21911,7 +21903,7 @@ msgstr "סמלים פונטיים"
 
 #: src/frontends/qt4/GuiSymbols.cpp:139
 msgid "Ancient Greek Musical Notation"
-msgstr ""
+msgstr "צורת רישום מוזיקלית יוונית עתיקה"
 
 #: src/frontends/qt4/GuiSymbols.cpp:140
 msgid "Tai Xuan Jing Symbols"
