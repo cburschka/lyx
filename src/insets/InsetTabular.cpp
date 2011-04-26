@@ -4036,11 +4036,15 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			// setting also the right targetX.
 			cur.selHandle(act == LFUN_DOWN_SELECT);
 			if (tabular.cellRow(cur.idx()) != tabular.nrows() - 1) {
+				int const xtarget = cur.targetX();
+				// WARNING: Once cur.idx() has been reset, the cursor is in
+				// an inconsistent state until pos() has been set. Be careful
+				// what you do with it!
 				cur.idx() = tabular.cellBelow(cur.idx());
 				cur.pit() = 0;
 				TextMetrics const & tm =
 					cur.bv().textMetrics(cell(cur.idx())->getText(0));
-				cur.pos() = tm.x2pos(cur.pit(), 0, cur.targetX());
+				cur.pos() = tm.x2pos(cur.pit(), 0, xtarget);
 				cur.setCurrentFont();
 			}
 		}
@@ -4070,13 +4074,17 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			// setting also the right targetX.
 			cur.selHandle(act == LFUN_UP_SELECT);
 			if (tabular.cellRow(cur.idx()) != 0) {
+				int const xtarget = cur.targetX();
+				// WARNING: Once cur.idx() has been reset, the cursor is in
+				// an inconsistent state until pos() has been set. Be careful
+				// what you do with it!
 				cur.idx() = tabular.cellAbove(cur.idx());
 				cur.pit() = cur.lastpit();
 				Text const * text = cell(cur.idx())->getText(0);
 				TextMetrics const & tm = cur.bv().textMetrics(text);
 				ParagraphMetrics const & pm =
 					tm.parMetrics(cur.lastpit());
-				cur.pos() = tm.x2pos(cur.pit(), pm.rows().size()-1, cur.targetX());
+				cur.pos() = tm.x2pos(cur.pit(), pm.rows().size()-1, xtarget);
 				cur.setCurrentFont();
 			}
 		}
