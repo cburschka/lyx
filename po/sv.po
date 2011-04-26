@@ -4,11 +4,11 @@
 # Joacim Persson <sp2joap@ida.his.se> 1997, 1998.
 # Jim Rotmalm <jim.rotmalm@gmail.com>, 2010, 2011.
 #
-# Status 2011-03-28:
-#   ~100% "acceptably done".
-#   ~269 shortcuts are not done.
-#   Improvements? Please tell me.
-#   Mistakes are probably around.
+# Information 2011-04-26:
+#    Bad Qt shortcuts: 122
+#    Inconsistent translations: 6
+#    Bad menu shortcuts: 133
+#    Total warnings: 261
 #
 #   Jag har försökt att balansera allt mellan vad som är vanligt i dessa dagar,
 #   hålla mig någorlunda till existerande dokumentation så man inte helt tappar
@@ -18,20 +18,19 @@
 #
 #   Allt var relativt snabbt gjort, så det finns säkerligen misstag här och där.
 #   Men jag hoppas att det är bra nog och att något inte är helt ute och cyklar.
-#   Nu har vi åtminstone en grund att utveckla vidare på.
+#   Nu finns det åtminstone en grund att utveckla vidare på.
 #
 #   Behöver förbättras:
 #     Kolumn/kolonn/linje/rad/spalt/osv
-#     Kägel/utslutning/avstånd/mellanrum/mellanslag/blanksteg/tomrum/osv
-#     Och alla andra svenska typografiska benämningar
+#     Utslutning/avstånd/mellanrum/mellanslag/blanksteg/tomrum/luft/kött/ljusrum
 #
 #   Och diverse: spool, cases, och förmodligen fler som jag nu inte kommer ihåg.
-#   Genvägar är som sagt inte heller färdiga, så den som vill hjälpa får det. :)
+#   Genvägar är tydligen inte heller färdiga, så den som vill hjälpa får det. :)
 #     /Jim (nästa som uppdaterar kan ta bort detta status/meddelande)
 #
 # Dictionary / Ordlista
 #
-#   acknowledgement      -> erkännande, bekräftelse? tacksägelse?
+#   acknowledgement      -> tacksägelse, erkännande? tack?
 #   add                  -> lägg till, addera?
 #   addition             -> tillägg
 #   advanced             -> avancerat(d)
@@ -58,7 +57,7 @@
 #   break                -> bryt
 #     ... break          -> brytning
 #   browse               -> bläddra
-#   bullet               -> bomb, punkt?
+#   bullet               -> bomb, kula? punkt?
 #   button               -> knapp
 #   caption              -> bildtext
 #   cache                -> gömma? cache? (mer svenskt med gömma)
@@ -77,7 +76,7 @@
 #   conjecture           -> förmodan
 #   control              -> styr/a, hanter/a/ing, kontroll/era
 #   convert(er)          -> omvandla(re)
-#   cross-reference      -> korsreferens? korshänvisning?
+#   cross-reference      -> korsreferens, korshänvisning?
 #   current              -> aktuell, nuvarande?
 #   custom, customize    -> anpassad, anpassa
 #   cut                  -> klipp (-ut)
@@ -99,6 +98,7 @@
 #   ERT                  -> ERT, röd text?
 #   extension            -> ändelse, utökning
 #   extra ...            -> extra
+#   feature              -> finess
 #   feedback             -> respons
 #   file                 -> fil, arkiv
 #   find & replace       -> hitta & ersätt
@@ -108,13 +108,14 @@
 #     .. family          -> teckensnittsfamilj (teckenfamilj?)
 #     .. size            -> teckensnittsstorlek, grad? (teckenstorlek?)
 #   frame(d)             -> ram (inramad)
+#   function             -> funktion
 #   graphics             -> grafik
 #   grid                 -> rutnät
 #   include              -> inkludera
-#   indent/ation         -> indentera/indentering, (indrag/ning?)
+#   indent/ation         -> indrag, indentera/indentering
 #   index                -> index
 #   index entry          -> indexpost
-#   inline             ? -> på plats, inom/på rad? i linje med? inline?
+#   inline             ? -> plats, på plats, inom/på rad? i linje med? inline?
 #   input                -> inmatning, mata in
 #   insert               -> infoga
 #   inset                -> insättning?
@@ -140,11 +141,11 @@
 #   noun                 -> namn, namnstil?, egennamn?, substantiv?
 #   note                 -> not, anteckning?
 #   notice               -> notis, meddelande?
-#   notation             -> notation, notering?
+#   notation             -> notation, beteckning? notering?
 #   offprint             -> särtryck
 #   offset             ? -> offset, position? förskjutning?
 #   option/s             -> alternativ
-#   outline              -> översikt? disposition? kontur?
+#   outline              -> disposition, översikt? överblick? kontur?
 #   overlay              -> överlägg
 #   parse/r              -> tolk\a?
 #   paste                -> klistra (-in)
@@ -161,7 +162,7 @@
 #   quotation            -> citation
 #   range                -> intervall
 #   recover              -> återhämta
-#   reference          ? -> referens? hänvisning? (referens för tillfället)
+#   reference          ? -> referens, hänvisning? (referens för tillfället)
 #   reject               -> avvisa, avslå?
 #   relation/s           -> relation/er, förhållande/n?
 #   remove               -> ta bort
@@ -193,7 +194,7 @@
 #   slide                -> bild? diabild?
 #   slideshow            -> bildspel
 #   space              ? -> mellanrum, mellanslag? blanksteg? tomrum? utrymme? ..?
-#   spacing(s)         ? -> avstånd, mellanrum? utslutning? kägel? rad/avstånd?
+#   spacing(s)         ? -> utslutning, avstånd? mellanrum? kägel? rad/avstånd?
 #   special              -> special, speciell
 #   specify              -> specificera
 #   spool(er)          ? -> ? försvenska till spol? buffert? kö, men queue då? utskriftshanterare?
@@ -220,8 +221,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-26 12:58+0200\n"
-"PO-Revision-Date: 2011-03-28 12:21+0100\n"
+"POT-Creation-Date: 2011-04-26 18:53+0200\n"
+"PO-Revision-Date: 2011-04-26 12:21+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
 "Language: sv\n"
@@ -766,7 +767,7 @@ msgstr "&Odefinierade grenar:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:34
 msgid "&Font:"
-msgstr "&Teckensnitt:"
+msgstr "&Typsnitt:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:44
 #: src/frontends/qt4/ui/CharacterUi.ui:212
@@ -844,12 +845,12 @@ msgstr "Störst"
 #: src/frontends/qt4/ui/BulletsUi.ui:111 src/Font.cpp:72
 #: src/frontends/qt4/GuiCharacter.cpp:64
 msgid "Huge"
-msgstr "Störstare"
+msgstr "Enorm"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:116 src/Font.cpp:72
 #: src/frontends/qt4/GuiCharacter.cpp:65
 msgid "Huger"
-msgstr "Störstast"
+msgstr "Enormare"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:144
 msgid "&Custom Bullet:"
@@ -899,7 +900,7 @@ msgstr "Avvisa"
 #: src/frontends/qt4/ui/CharacterUi.ui:44
 #: src/frontends/qt4/ui/CharacterUi.ui:123
 msgid "Font family"
-msgstr "Teckensnittsfamilj"
+msgstr "Typsnittsfamilj"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:47
 msgid "&Family:"
@@ -908,7 +909,7 @@ msgstr "&Familj:"
 #: src/frontends/qt4/ui/CharacterUi.ui:65
 #: src/frontends/qt4/ui/CharacterUi.ui:72
 msgid "Font shape"
-msgstr "Teckensnittsform"
+msgstr "Typsnittsform"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:75
 msgid "S&hape:"
@@ -917,7 +918,7 @@ msgstr "F&orm:"
 #: src/frontends/qt4/ui/CharacterUi.ui:93
 #: src/frontends/qt4/ui/CharacterUi.ui:158
 msgid "Font series"
-msgstr "Teckensnittsserie"
+msgstr "Typsnittsserie"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:108
 #: src/frontends/qt4/ui/CharacterUi.ui:145
@@ -930,7 +931,7 @@ msgstr "Språk"
 #: src/frontends/qt4/ui/CharacterUi.ui:138
 #: src/frontends/qt4/ui/CharacterUi.ui:174
 msgid "Font color"
-msgstr "Teckensnittsfärg"
+msgstr "Typsnittsfärg"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:148
 #: src/frontends/qt4/ui/LanguageUi.ui:19
@@ -954,12 +955,12 @@ msgstr "Växlas aldrig"
 #: src/frontends/qt4/ui/CharacterUi.ui:209
 #: src/frontends/qt4/ui/CharacterUi.ui:230
 msgid "Font size"
-msgstr "Teckensnittsstorlek"
+msgstr "Typsnittsstorlek"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:240
 #: src/frontends/qt4/ui/CharacterUi.ui:273
 msgid "Other font settings"
-msgstr "Andra teckensnittsalternativ"
+msgstr "Andra typsnittsalternativ"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:243
 msgid "Always Toggled"
@@ -971,7 +972,7 @@ msgstr "&Diverse:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:295
 msgid "toggle font on all of the above"
-msgstr "växla teckensnitt på alla ovan"
+msgstr "växla typsnitt på alla ovan"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:298
 msgid "&Toggle all"
@@ -1149,7 +1150,7 @@ msgstr "Sök &medan du skriver"
 
 #: src/frontends/qt4/ui/ColorUi.ui:27
 msgid "Font colors"
-msgstr "Teckensnittsfärger"
+msgstr "Typsnittsfärger"
 
 #: src/frontends/qt4/ui/ColorUi.ui:38
 msgid "Main text:"
@@ -1250,7 +1251,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/CompareUi.ui:181
 msgid "Enable &change tracking features in the output"
-msgstr "Aktivera &funktioner för ändringsspårning i utmatningen"
+msgstr "Aktivera &finesser för ändringsspårning i utmatningen"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:143
 #: src/frontends/qt4/GuiDelimiter.cpp:278
@@ -1691,16 +1692,16 @@ msgstr "&Rotera i sidled"
 
 #: src/frontends/qt4/ui/FontUi.ui:13
 msgid "FontUi"
-msgstr "TeckensnittUi"
+msgstr "TypsnittUi"
 
 #: src/frontends/qt4/ui/FontUi.ui:19
 msgid "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)"
 msgstr ""
-"Använd OpenType- och TrueType-teckensnitt direkt (kräver XeTeX eller LuaTeX)"
+"Använd OpenType- och TrueType-typsnitt direkt (kräver XeTeX eller LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:22
 msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
-msgstr "Använd &icke-TeX-teckensnitt (via XeTeX/LuaTeX)"
+msgstr "Använd &icke-TeX-typsnitt (via XeTeX/LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:42
 msgid "&Default family:"
@@ -1716,11 +1717,11 @@ msgstr "&Grundstorlek:"
 
 #: src/frontends/qt4/ui/FontUi.ui:76
 msgid "LaTe&X font encoding:"
-msgstr "LaTe&X-teckensnittskodning:"
+msgstr "LaTe&X-typsnittskodning:"
 
 #: src/frontends/qt4/ui/FontUi.ui:89 src/frontends/qt4/ui/PrefLatexUi.ui:34
 msgid "Specify the font encoding (e.g., T1)."
-msgstr "Specificera teckensnittskodningen (t.ex., T1)."
+msgstr "Specificera typsnittskodningen (t.ex., T1)."
 
 #: src/frontends/qt4/ui/FontUi.ui:96
 msgid "&Roman:"
@@ -1744,8 +1745,7 @@ msgstr "S&kala (%):"
 
 #: src/frontends/qt4/ui/FontUi.ui:140
 msgid "Scale the Sans Serif font to match the base font's dimensions"
-msgstr ""
-"Skala linjärteckensnittet så den matchar grundteckensnittets dimensioner"
+msgstr "Skala linjärtypsnittet så den matchar grundtypsnittets dimensioner"
 
 #: src/frontends/qt4/ui/FontUi.ui:153
 msgid "&Typewriter:"
@@ -1762,8 +1762,7 @@ msgstr "Sk&ala (%):"
 #: src/frontends/qt4/ui/FontUi.ui:180
 msgid "Scale the Typewriter font to match the base font's dimensions"
 msgstr ""
-"Skala skrivmaskinsteckensnittet så den matchar grundteckensnittets "
-"dimensioner"
+"Skala skrivmaskinstypsnittet så den matchar grundtypsnittets dimensioner"
 
 #: src/frontends/qt4/ui/FontUi.ui:193
 msgid "C&JK:"
@@ -1772,12 +1771,12 @@ msgstr "C&JK:"
 #: src/frontends/qt4/ui/FontUi.ui:203
 msgid "Input the font to be used for Chinese, Japanese or Korean (CJK) script"
 msgstr ""
-"Mata in teckensnittet som ska användas för kinesisk, japansk, eller koreansk "
+"Mata in typsnittet som ska användas för kinesisk, japansk, eller koreansk "
 "(CJK) skrift"
 
 #: src/frontends/qt4/ui/FontUi.ui:210
 msgid "Use a real small caps shape, if the font provides one"
-msgstr "Använd en riktigt liten kapitälform, om teckensnittet förser en"
+msgstr "Använd en riktigt liten kapitälform, om typsnittet förser en"
 
 #: src/frontends/qt4/ui/FontUi.ui:213
 msgid "Use true S&mall Caps"
@@ -2365,11 +2364,11 @@ msgstr "Placering"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:35
 msgid "Check for inline listings"
-msgstr "Kolla efter listningar på plats"
+msgstr "Kolla efter platslistningar"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:38
 msgid "&Inline listing"
-msgstr "Listning på plats"
+msgstr "Platsl&istning"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:45
 msgid "Check for floating listings"
@@ -2397,7 +2396,7 @@ msgstr "&Sida:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:94
 msgid "On which side should line numbers be printed?"
-msgstr "På vilken sida bör linjenumren skrivas ut?"
+msgstr "På vilken sida bör radnumren skrivas ut?"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:119
 msgid "S&tep:"
@@ -2405,15 +2404,15 @@ msgstr "S&teg:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:132
 msgid "Difference between two numbered lines"
-msgstr "Skillnad mellan två numrerade linjer"
+msgstr "Skillnad mellan två numrerade rader"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:148
 msgid "Font si&ze:"
-msgstr "Teckensn&ittsstorlek:"
+msgstr "Typsnittsstorlek:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:169
 msgid "Choose the font size for line numbers"
-msgstr "Välj teckensnittsstorlek för linjenumren"
+msgstr "Välj typsnittsstorlek för radnumren"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:188
 #: src/frontends/qt4/ui/TabularUi.ui:966
@@ -2422,27 +2421,27 @@ msgstr "Stil"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:194
 msgid "F&ont size:"
-msgstr "Teckensnittsst&orlek:"
+msgstr "Typsnittsstorlek:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:215
 msgid "The content's base font size"
-msgstr "Innehållets grundstorlek för teckensnitt"
+msgstr "Innehållets grundstorlek för typsnitt"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:231
 msgid "Font Famil&y:"
-msgstr "Teckensnittsfamil&j:"
+msgstr "Typsnittsfamil&j:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:252
 msgid "The content's base font style"
-msgstr "Innehållets grundteckensnittsstil"
+msgstr "Innehållets grundstil för typsnitt"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:268
 msgid "Break lines longer than the linewidth"
-msgstr "Bryt linjer längre än linjebredden"
+msgstr "Bryt rader längre än radbredden"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:271
 msgid "&Break long lines"
-msgstr "&Bryt långa linjer"
+msgstr "&Bryt långa rader"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:281
 msgid "Make spaces visible by a special symbol"
@@ -2494,19 +2493,19 @@ msgstr "Intervall"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:388
 msgid "Fi&rst line:"
-msgstr "Fö&rsta linje:"
+msgstr "Fö&rsta raden:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:401
 msgid "The first line to be printed"
-msgstr "Första linjen att skriva ut"
+msgstr "Första raden att skriva ut"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:414
 msgid "&Last line:"
-msgstr "Sista &linje:"
+msgstr "Sista raden:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:427
 msgid "The last line to be printed"
-msgstr "Sista linjen att skriva ut"
+msgstr "Sista raden att skriva ut"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:444
 msgid "Ad&vanced"
@@ -3007,11 +3006,11 @@ msgstr "H&yperlänkar"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:222
 msgid "Allows link text to break across lines."
-msgstr "Tillåter länktext att bryta över linjer."
+msgstr "Tillåter länktext att bryta över rader."
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:225
 msgid "B&reak links over lines"
-msgstr "B&ryt länkar över linjer"
+msgstr "B&ryt länkar över rader"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:232
 msgid "No &frames around links"
@@ -3153,7 +3152,7 @@ msgstr "Anpassad"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:146
 msgid "&Indent Paragraph"
-msgstr "&Indentera stycke"
+msgstr "Gör &indrag för stycke"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:168
 msgid "&Justified"
@@ -3181,7 +3180,7 @@ msgstr "Styckets stan&dard"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:60
 msgid "Horizontal and vertical space of the phantom content"
-msgstr "Horisontellt och vertikalt mellanrum för fantominnehållet"
+msgstr "Horisontellt och vertikalt tomrum för fantominnehållet"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:63
 msgid "&Phantom"
@@ -3189,7 +3188,7 @@ msgstr "Fantom"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:70
 msgid "Horizontal space of the phantom content"
-msgstr "Horisontellt mellanrum för fantominnehållet"
+msgstr "Horisontellt tomrum för fantominnehållet"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:73
 msgid "&Horizontal Phantom"
@@ -3197,7 +3196,7 @@ msgstr "&Horisontell fantom"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:80
 msgid "Vertical space of the phantom content"
-msgstr "Vertikalt mellanrum för fantominnehållet"
+msgstr "Vertikalt tomrum för fantominnehållet"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:83
 msgid "&Vertical Phantom"
@@ -3220,12 +3219,12 @@ msgid ""
 "Show the grey inline completion behind the cursor in math mode after the "
 "delay."
 msgstr ""
-"Visa den gråa kompletteringen på plats bakom markören i matematikläge efter "
+"Visa den gråa platskompletteringen bakom markören i matematikläge efter "
 "fördröjningen."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:43
 msgid "Automatic in&line completion"
-msgstr "Automatisk komplettering på p&lats"
+msgstr "Automatisk p&latskomplettering"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:50
 msgid "Show the popup in math mode after the delay."
@@ -3248,12 +3247,12 @@ msgid ""
 "Show the grey inline completion behind the cursor in text mode after the "
 "delay."
 msgstr ""
-"Visa den gråa kompletteringen på plats bakom markören i textläge efter "
+"Visa den gråa platskompletteringen bakom markören i textläge efter "
 "fördröjningen."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:88
 msgid "Automatic &inline completion"
-msgstr "Automatisk kompletter&ing på plats"
+msgstr "Automatisk platskompletter&ing"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:95
 msgid "Show the popup after the set delay in text mode."
@@ -3286,11 +3285,11 @@ msgid ""
 "if it is available."
 msgstr ""
 "Efter att markören inte har förflyttat på sig under denna tid visas "
-"kompletteringen på plats om den är tillgänglig."
+"platskompletteringen om den är tillgänglig."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:154
 msgid "s inline completion dela&y"
-msgstr "sekunders fördröjning för komplettering på plats"
+msgstr "sekunders fördröjning för platskomplettering"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:187
 msgid ""
@@ -3357,7 +3356,7 @@ msgstr "Omvandlarens defi&nitioner"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:252
 msgid "Converter File Cache"
-msgstr "Omvandlarens filgömma"
+msgstr "Omvandlarens filgömma (cache)"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:272
 msgid "&Enabled"
@@ -3498,11 +3497,11 @@ msgstr "&Dokumentformat"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:66
 msgid "Check this to show the current format in the File > Export menu"
-msgstr "Markera detta för att visa aktuellt format i Arkiv > Exportmenyn"
+msgstr "Markera detta för att visa aktuellt format i menyn Arkiv > Exportera"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:69
 msgid "Sho&w in export menu"
-msgstr "Visa i exportmeny"
+msgstr "Visa i menyn exportera"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:76
 msgid "Vector &graphics format"
@@ -3739,12 +3738,11 @@ msgstr "&Visuell"
 msgid ""
 "Enable if a specific font encoding (such as T1) should be used (via fontenc)"
 msgstr ""
-"Aktivera om en specifik teckensnittskodning (som T1) ska användas (via "
-"fontenc)"
+"Aktivera om en specifik typsnittskodning (som T1) ska användas (via fontenc)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:27
 msgid "Use LaTe&X font encoding:"
-msgstr "Använd LaTe&X teckensnittskodning:"
+msgstr "Använd LaTe&X typsnittskodning:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:41
 msgid "Default paper si&ze:"
@@ -3863,7 +3861,7 @@ msgstr "Åt&erställ klassalternativ när dokumentklass ändras"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:21
 msgid "Output &line length:"
-msgstr "Utmatningens &linjelängd:"
+msgstr "Utmatningens rad&längd:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:37 src/LyXRC.cpp:3071
 msgid ""
@@ -3871,9 +3869,9 @@ msgid ""
 "0, paragraphs are output in a single line; if the line length is > 0, "
 "paragraphs are separated by a blank line."
 msgstr ""
-"Max linjelängd för exporterade vanlig text/LaTeX/SGML-filer. Om satt till 0 "
-"matas stycken ut i en enkel linje; om linjelängd är > 0 så separeras stycken "
-"med en blank linje."
+"Max radlängd för exporterade vanlig text/LaTeX/SGML-filer. Om satt till 0 "
+"matas stycken ut på en enkel rad; om radlängd är > 0 så separeras stycken "
+"med en blank rad."
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:64
 msgid "&Date format:"
@@ -4118,7 +4116,7 @@ msgstr "&Zoom %:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:206
 msgid "Font Sizes"
-msgstr "Teckensnittsstorlekar"
+msgstr "Typsnittsstorlekar (grader)"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:245
 msgid "&Large:"
@@ -4134,11 +4132,11 @@ msgstr "&Störst:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:278
 msgid "&Huge:"
-msgstr "S&törstare:"
+msgstr "&Enorm:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:288
 msgid "&Hugest:"
-msgstr "S&törstast:"
+msgstr "&Enormast:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:298
 msgid "S&mallest:"
@@ -4165,12 +4163,12 @@ msgid ""
 "Checking this improves performance, but might decrease the on-screen quality "
 "of fonts"
 msgstr ""
-"Markera detta för att öka prestanda, men det kan försämra teckensnittens "
+"Markera detta för att öka prestanda, men det kan försämra typsnittens "
 "kvalitet på skärmen."
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:367
 msgid "&Use pixmap cache to speed up font rendering"
-msgstr "Använd pixmapgömma (cache) för att påskynda teckensnittsrendering"
+msgstr "Använd pixmapgömma (cache) för att påskynda typsnittsrendering"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:68
 msgid "&New"
@@ -4284,7 +4282,7 @@ msgstr "&Ladda öppnade filer från senaste session"
 
 #: src/frontends/qt4/ui/PrefUi.ui:142
 msgid "&Clear all session information"
-msgstr "Rensa all sessions&information"
+msgstr "Rensa all sessionsinformation"
 
 #: src/frontends/qt4/ui/PrefUi.ui:165
 msgid "Documents"
@@ -4321,7 +4319,7 @@ msgid ""
 msgstr ""
 "Huruvida dokument ska öppnas i en redan körande instans av LyX.\n"
 "(Sätt sökväg för LyXServerns sluss och starta om LyX för att aktivera denna "
-"funktion)"
+"finess)"
 
 #: src/frontends/qt4/ui/PrefUi.ui:265
 msgid "S&ingle instance"
@@ -4335,7 +4333,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefUi.ui:275
 msgid "&Single close-tab button"
-msgstr "Enkel flik&stängknapp"
+msgstr "Enkel &stängknapp för flikar"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:73 src/frontends/qt4/GuiView.cpp:2563
 #: src/frontends/qt4/GuiView.cpp:2570 src/frontends/qt4/GuiView.cpp:2669
@@ -4349,11 +4347,11 @@ msgstr "Nomenklaturinställningar"
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:19
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:32
 msgid "Define hanging indentation/label length for the nomenclature list."
-msgstr "Definiera hängande indentering/etikettslängd för nomenklaturlistan."
+msgstr "Definiera hängande indrag/etikettslängd för nomenklaturlistan."
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:22
 msgid "&List Indentation:"
-msgstr "&Listindentering:"
+msgstr "&Listindrag:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:39
 msgid "Custom &Width:"
@@ -4361,7 +4359,7 @@ msgstr "Anpassad bredd:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:52
 msgid "Custom value. \"List Indentation\" needs to be set to \"Custom\"."
-msgstr "Anpassat värde. \"Listindentering\" behöver sättas till \"Anpassad\"."
+msgstr "Anpassat värde. \"Listindrag\" behöver sättas till \"Anpassad\"."
 
 #: src/frontends/qt4/ui/PrintUi.ui:28
 msgid "Pages"
@@ -5101,23 +5099,23 @@ msgstr "Separera stycken med"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:34
 msgid "Indent consecutive paragraphs"
-msgstr "Indentera konsekutiva stycken"
+msgstr "Gör indrag för konsekutiva stycken"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:37
 msgid "&Indentation:"
-msgstr "&Indentering:"
+msgstr "&Indrag:"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:47
 msgid "Size of the indentation"
-msgstr "Storlek på indenteringen"
+msgstr "Storlek på indraget"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:115
 msgid "&Vertical space:"
-msgstr "&Vertikalt mellanrum:"
+msgstr "&Vertikalt tomrum:"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:125
 msgid "Size of the vertical space"
-msgstr "Storlek på det vertikala mellanrummet"
+msgstr "Storlek på det vertikala tomrummet"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:190
 msgid "Spacing"
@@ -5297,15 +5295,15 @@ msgstr "Enhet för breddvärde"
 
 #: src/frontends/qt4/ui/WrapUi.ui:68
 msgid "number of needed lines"
-msgstr "antal behövda linjer"
+msgstr "antal behövda rader"
 
 #: src/frontends/qt4/ui/WrapUi.ui:75
 msgid "use number of lines"
-msgstr "använd antal linjer"
+msgstr "använd antal rader"
 
 #: src/frontends/qt4/ui/WrapUi.ui:78
 msgid "&Line span:"
-msgstr "&Linjens spännvidd:"
+msgstr "Radens spännvidd:"
 
 #: src/frontends/qt4/ui/WrapUi.ui:199
 msgid "Outer (default)"
@@ -5438,7 +5436,7 @@ msgstr "Publikationsupplaga:"
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:207
 #: src/output_plaintext.cpp:133
 msgid "Abstract"
-msgstr "Abstrakt"
+msgstr "Sammandrag"
 
 #: lib/layouts/AEA.layout:98 lib/layouts/aa.layout:91
 #: lib/layouts/aa.layout:205 lib/layouts/aapaper.layout:103
@@ -5455,14 +5453,14 @@ msgstr "Abstrakt"
 #: lib/layouts/theorems-ams-extended.module:302
 #: lib/layouts/theorems-ams-extended.module:305
 msgid "Acknowledgement"
-msgstr "Erkännande"
+msgstr "Tacksägelse"
 
 #: lib/layouts/AEA.layout:100 lib/layouts/egs.layout:546
 #: lib/layouts/svjour.inc:277
 #: lib/layouts/theorems-ams-extended-bytype.module:325
 #: lib/layouts/theorems-ams-extended.module:296
 msgid "Acknowledgement."
-msgstr "Erkännande."
+msgstr "Tacksägelse."
 
 #: lib/layouts/AEA.layout:105 lib/layouts/IEEEtran.layout:290
 #: lib/layouts/beamer.layout:1057 lib/layouts/elsart.layout:259
@@ -5860,7 +5858,7 @@ msgstr "Bevis"
 #: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
 #: lib/ui/stdtoolbars.inc:69 src/insets/InsetRef.cpp:334
 msgid "Standard"
-msgstr "Brödtext"
+msgstr "Standard"
 
 #: lib/layouts/IEEEtran.layout:64 lib/layouts/aa.layout:67
 #: lib/layouts/aa.layout:264 lib/layouts/aapaper.layout:76
@@ -5943,7 +5941,7 @@ msgstr "Publikation ID"
 
 #: lib/layouts/IEEEtran.layout:197
 msgid "Abstract---"
-msgstr "Abstrakt---"
+msgstr "Sammandrag---"
 
 #: lib/layouts/IEEEtran.layout:210 lib/layouts/aa.layout:352
 #: lib/layouts/aastex.layout:116 lib/layouts/aastex.layout:327
@@ -6213,7 +6211,7 @@ msgstr "Korrespondens till:"
 #: lib/layouts/aa.layout:217 lib/layouts/egs.layout:521
 #: lib/layouts/svjour.inc:263
 msgid "Acknowledgements."
-msgstr "Erkännanden."
+msgstr "Tacksägelser."
 
 #: lib/layouts/aa.layout:299
 msgid "institutemark"
@@ -6289,7 +6287,7 @@ msgstr "Och"
 #: lib/layouts/svglobal3.layout:91 lib/layouts/svglobal3.layout:95
 #: lib/layouts/aapaper.inc:91 lib/layouts/svjour.inc:249
 msgid "Acknowledgements"
-msgstr "Erkännanden"
+msgstr "Tacksägelser"
 
 #: lib/layouts/aastex.layout:128 lib/layouts/aastex.layout:413
 msgid "PlaceFigure"
@@ -6336,9 +6334,8 @@ msgid "Alternative affiliation:"
 msgstr "Alternativ tillhörighet:"
 
 #: lib/layouts/aastex.layout:305
-#, fuzzy
 msgid "altaffilmark"
-msgstr "alttillhörighetsmärke"
+msgstr "alttillhörmärke"
 
 #: lib/layouts/aastex.layout:309
 msgid "altaffiliation mark"
@@ -6350,7 +6347,7 @@ msgstr "Ämnesrubriker:"
 
 #: lib/layouts/aastex.layout:383
 msgid "[Acknowledgements]"
-msgstr "[Erkännanden]"
+msgstr "[Tacksägelser]"
 
 #: lib/layouts/aastex.layout:404 src/frontends/qt4/GuiDocument.cpp:1934
 #: src/frontends/qt4/GuiDocument.cpp:1946
@@ -6392,7 +6389,6 @@ msgid "Table note:"
 msgstr "Tabellnot:"
 
 #: lib/layouts/aastex.layout:588
-#, fuzzy
 msgid "tablenotemark"
 msgstr "tabellnotmärke"
 
@@ -6485,7 +6481,7 @@ msgstr "Teaserbild:"
 
 #: lib/layouts/acmsiggraph.layout:87
 msgid "CRcat"
-msgstr ""
+msgstr "CR-kat"
 
 #: lib/layouts/acmsiggraph.layout:92
 msgid "CR category"
@@ -6505,7 +6501,7 @@ msgstr "Computing Review-kategorier"
 #: lib/layouts/revtex4.layout:233 lib/layouts/sigplanconf.layout:181
 #: lib/layouts/sigplanconf.layout:188 lib/layouts/spie.layout:90
 msgid "Acknowledgments"
-msgstr "Erkännanden"
+msgstr "Tacksägelser"
 
 #: lib/layouts/agutex.layout:72
 msgid "Authors"
@@ -6529,11 +6525,11 @@ msgstr "Författare tillhörighet:"
 #: lib/layouts/svjog.layout:55 lib/layouts/amsdefs.inc:105
 #: lib/layouts/svjour.inc:221
 msgid "Abstract."
-msgstr "Abstrakt."
+msgstr "Sammandrag."
 
 #: lib/layouts/agutex.layout:189
 msgid "Acknowledgments."
-msgstr "Erkännanden."
+msgstr "Tacksägelser."
 
 #: lib/layouts/amsart.layout:74 lib/layouts/amsbook.layout:83
 #: lib/layouts/beamer.layout:176 lib/layouts/egs.layout:581
@@ -6588,7 +6584,7 @@ msgstr "Höger huvud:"
 
 #: lib/layouts/apa.layout:83
 msgid "Abstract:"
-msgstr "Abstrakt:"
+msgstr "Sammandrag:"
 
 #: lib/layouts/apa.layout:100
 msgid "Short title:"
@@ -6650,7 +6646,7 @@ msgstr "Not"
 
 #: lib/layouts/apa.layout:234
 msgid "Acknowledgements:"
-msgstr "Erkännanden:"
+msgstr "Tacksägelser:"
 
 #: lib/layouts/apa.layout:248
 msgid "ThickLine"
@@ -6977,11 +6973,11 @@ msgstr "Exempel."
 #: lib/layouts/theorems-chap-bytype.module:114
 #: lib/layouts/theorems-sec-bytype.module:94
 msgid "Fact"
-msgstr "Fakta"
+msgstr "Faktum"
 
 #: lib/layouts/beamer.layout:1048 lib/layouts/theorems-starred.inc:134
 msgid "Fact."
-msgstr "Fakta."
+msgstr "Faktum."
 
 #: lib/layouts/beamer.layout:1060 lib/layouts/foils.layout:295
 #: lib/layouts/theorems-starred.inc:29
@@ -7622,9 +7618,8 @@ msgid "Emphasize"
 msgstr "Betona"
 
 #: lib/layouts/ectaart.layout:152
-#, fuzzy
 msgid "Thanks Reference"
-msgstr "Tackref"
+msgstr "Tackreferens"
 
 #: lib/layouts/ectaart.layout:159
 msgid "Thanks Ref"
@@ -7808,7 +7803,6 @@ msgid "Case \\arabic{case}"
 msgstr "Fall \\arabic{case}"
 
 #: lib/layouts/elsarticle.layout:75
-#, fuzzy
 msgid "Titlenotemark"
 msgstr "Titelnotmärke"
 
@@ -7825,7 +7819,6 @@ msgid "Title footnote:"
 msgstr "Titelfotnot:"
 
 #: lib/layouts/elsarticle.layout:137
-#, fuzzy
 msgid "Authormark"
 msgstr "Författare märke"
 
@@ -7928,7 +7921,7 @@ msgstr "_/"
 
 #: lib/layouts/foils.layout:101
 msgid "CrossList"
-msgstr "KryssLista"
+msgstr "Krysslista"
 
 #: lib/layouts/foils.layout:116
 msgid "><"
@@ -8511,7 +8504,7 @@ msgstr "Steg"
 
 #: lib/layouts/ijmpc.layout:160 lib/layouts/ijmpd.layout:157
 msgid "Step \\thestep."
-msgstr "Steg \\thestep"
+msgstr "Steg \\thestep."
 
 #: lib/layouts/ijmpc.layout:173 lib/layouts/ijmpd.layout:170
 #: lib/layouts/theorems-ams-bytype.inc:209 lib/layouts/theorems-bytype.inc:185
@@ -8647,7 +8640,7 @@ msgstr "Bibliografirubrik"
 
 #: lib/layouts/isprs.layout:38
 msgid "ABSTRACT:"
-msgstr "ABSTRAKT:"
+msgstr "SAMMANDRAG:"
 
 #: lib/layouts/isprs.layout:66
 msgid "KEY WORDS:"
@@ -8659,7 +8652,7 @@ msgstr "Kommission"
 
 #: lib/layouts/isprs.layout:218
 msgid "ACKNOWLEDGEMENTS"
-msgstr "ERKÄNNANDEN"
+msgstr "TACKSÄGELSER"
 
 #: lib/layouts/kluwer.layout:198
 msgid "AddressForOffprints"
@@ -8753,11 +8746,11 @@ msgstr "Avslutningar"
 
 #: lib/layouts/lettre.layout:525
 msgid "EndOfMessage."
-msgstr "SlutPåMeddelande"
+msgstr "SlutPåMeddelande."
 
 #: lib/layouts/lettre.layout:537
 msgid "EndOfFile."
-msgstr "SlutPåFil"
+msgstr "SlutPåFil."
 
 #: lib/layouts/lettre.layout:657
 msgid "P.S.:"
@@ -9007,7 +9000,7 @@ msgstr "Elektronisk adress:"
 
 #: lib/layouts/revtex4.layout:241
 msgid "acknowledgments"
-msgstr "erkännanden"
+msgstr "tacksägelser"
 
 #: lib/layouts/revtex4.layout:258
 msgid "PACS number:"
@@ -9284,11 +9277,11 @@ msgstr "Författarinfo:"
 
 #: lib/layouts/spie.layout:80
 msgid "ABSTRACT"
-msgstr "ABSTRAKT"
+msgstr "SAMMANDRAG"
 
 #: lib/layouts/spie.layout:95
 msgid "ACKNOWLEDGMENTS"
-msgstr "ERKÄNNANDEN"
+msgstr "TACKSÄGELSER"
 
 #: lib/layouts/svglobal3.layout:80
 msgid "Subclass"
@@ -9375,9 +9368,8 @@ msgid "List of Contributors"
 msgstr "Lista över medarbetare"
 
 #: lib/layouts/svmult.layout:229
-#, fuzzy
 msgid "Inst"
-msgstr "Institut"
+msgstr "Inst"
 
 #: lib/layouts/svmult.layout:231
 msgid "Institute #"
@@ -9396,9 +9388,8 @@ msgid "marginnote"
 msgstr "marginalnot"
 
 #: lib/layouts/tufte-book.layout:156
-#, fuzzy
 msgid "NewThought"
-msgstr "ny tanke"
+msgstr "NyTanke"
 
 #: lib/layouts/tufte-book.layout:160
 msgid "new thought"
@@ -9761,7 +9752,7 @@ msgstr "SlugKommentar:"
 
 #: lib/layouts/aguplus.inc:184
 msgid "Plate"
-msgstr "Platta"
+msgstr "Plate"
 
 #: lib/layouts/aguplus.inc:195
 msgid "Planotable"
@@ -10116,7 +10107,7 @@ msgstr "Särtryck:"
 
 #: lib/layouts/theorems-ams-bytype.inc:166 lib/layouts/theorems-bytype.inc:142
 msgid "Fact \\thefact."
-msgstr "Fakta \\thefact."
+msgstr "Faktum \\thefact."
 
 #: lib/layouts/theorems-ams-bytype.inc:228 lib/layouts/theorems-bytype.inc:204
 msgid "Problem \\theproblem."
@@ -10144,7 +10135,7 @@ msgstr "Förmodan \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:141 lib/layouts/theorems.inc:141
 msgid "Fact \\thetheorem."
-msgstr "Fakta \\thetheorem."
+msgstr "Faktum \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:159 lib/layouts/theorems.inc:159
 msgid "Definition \\thetheorem."
@@ -10196,7 +10187,7 @@ msgstr "Förmodan."
 
 #: lib/layouts/theorems-starred.inc:131
 msgid "Fact*"
-msgstr "Fakta*"
+msgstr "Faktum*"
 
 #: lib/layouts/theorems-starred.inc:193
 msgid "Problem."
@@ -10286,7 +10277,7 @@ msgid ""
 msgstr ""
 "Lägger till miljöer för att definiera huvud och fotlinjer. NOTERA: För att "
 "använda denna modul måste du sätta 'Rubrikstil' i menyn Dokument -> "
-"Inställningar -> Sidutformning till 'snygg'!"
+"Inställningar -> Sidutformning till 'häftig'!"
 
 #: lib/layouts/customHeadersFooters.module:29
 msgid "Center Header"
@@ -10384,9 +10375,9 @@ msgid ""
 "available with arbitrary sizes. For details see the documentation of the fix-"
 "cm.sty package: http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
 msgstr ""
-"Fix-cm förbättrar utseendet av Computer Modern-teckensnitt och gör dem "
-"tillgängliga med godtyckliga storlekar. För information se dokumentationen "
-"för paketet fix-cm.sty: http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
+"Fix-cm förbättrar utseendet av Computer Modern-typsnitt och gör dem "
+"tillgängliga med godtyckliga grader. För information se dokumentationen för "
+"paketet fix-cm.sty: http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
 
 #: lib/layouts/fixltx2e.module:2
 msgid "Fix LaTeX"
@@ -10429,8 +10420,8 @@ msgid ""
 "are indented."
 msgstr ""
 "Lägger till en miljö för hängande stycken. Ett hängande stycke är ett stycke "
-"i vilken den första linjen är satt till den vänstra marginalen, men alla "
-"följande linjer är indenterade."
+"i vilken den första raden är satt till den vänstra marginalen, men alla "
+"följande rader är indragna."
 
 #: lib/layouts/initials.module:2
 msgid "Initials"
@@ -10442,7 +10433,7 @@ msgid ""
 "font styles like Fractur or the Calligraphic one."
 msgstr ""
 "Definiera teckenstil för initialer. Tips: försök att använda matematik och "
-"dess artistiska teckensnittsstilar som fraktur eller den kalligrafiska."
+"dess artistiska typsnittsstilar som fraktur eller den kalligrafiska."
 
 #: lib/layouts/initials.module:6 lib/layouts/logicalmkup.module:5
 msgid "charstyles"
@@ -10597,7 +10588,7 @@ msgstr "Noweb"
 
 #: lib/layouts/noweb.module:5
 msgid "Allows to use Noweb as a literate programming tool."
-msgstr "Tillåter bruk av Noweb som ett litterat programmeringsverktyg"
+msgstr "Tillåter bruk av Noweb som ett litterat programmeringsverktyg."
 
 #: lib/layouts/noweb.module:5 lib/layouts/sweave.module:6
 msgid "literate"
@@ -10629,9 +10620,8 @@ msgid "Sweave opts"
 msgstr "Sweave alt"
 
 #: lib/layouts/sweave.module:74
-#, fuzzy
 msgid "S/R expression"
-msgstr "Uttryck"
+msgstr "S/R uttryck"
 
 #: lib/layouts/sweave.module:75
 msgid "S/R expr"
@@ -10692,7 +10682,7 @@ msgid ""
 msgstr ""
 "Definierar några ytterligare teoremmiljöer för användning med AMS "
 "teorempaketen. Inkluderar kriterium, algoritm, axiom, villkor, not, "
-"notation, sammanfattning, erkännande, slutsats, antagande, och fall, i både "
+"notation, sammanfattning, tacksägelse, slutsats, antagande, och fall, i både "
 "numrerade och onumrerade former. I motsats till den vanliga AMS-utökad "
 "modulen, har de olika teoremtyperna försedda här varsin separat räknare (t."
 "ex. kriterium 1, kriterium 2, axiom 1, antagande 1, kriterium 3, ..., i "
@@ -10789,12 +10779,12 @@ msgstr "Sammanfattning."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:307
 msgid "Acknowledgement \\theacknowledgement."
-msgstr "Erkännande \\theacknowledgement."
+msgstr "Tacksägelse \\theacknowledgement."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:322
 #: lib/layouts/theorems-ams-extended.module:293
 msgid "Acknowledgement*"
-msgstr "Erkännande*"
+msgstr "Tacksägelse*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:342
 msgid "Conclusion \\theconclusion."
@@ -10850,8 +10840,8 @@ msgid ""
 msgstr ""
 "Definierar några ytterligare teoremmiljöer för användning med AMS "
 "teorempaketen. Inkluderar kriterium, algoritm, axiom, villkor, not, "
-"notation, sammanfattning, erkännande, slutsats, fakta, antagande, fall, och "
-"fråga, i både numrerade och onumrerade former."
+"notation, sammanfattning, tacksägelse, slutsats, faktum, antagande, fall, "
+"och fråga, i både numrerade och onumrerade former."
 
 #: lib/layouts/theorems-ams-extended.module:10
 #: lib/layouts/theorems-ams.module:9 lib/layouts/theorems-chap.module:9
@@ -10890,7 +10880,7 @@ msgstr "Sammanfattning \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:279
 msgid "Acknowledgement \\thetheorem."
-msgstr "Erkännande \\thetheorem."
+msgstr "Tacksägelse \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:313
 msgid "Conclusion \\thetheorem."
@@ -11606,7 +11596,7 @@ msgstr "AMS multline-miljö|m"
 
 #: lib/ui/stdcontext.inc:51 lib/ui/stdmenus.inc:298 lib/ui/stdmenus.inc:414
 msgid "Inline Formula|I"
-msgstr "Formel på plats"
+msgstr "Platsformel"
 
 #: lib/ui/stdcontext.inc:52 lib/ui/stdmenus.inc:299
 msgid "Displayed Formula|D"
@@ -11626,7 +11616,7 @@ msgstr "Numrera hel formel|N"
 
 #: lib/ui/stdcontext.inc:57 lib/ui/stdmenus.inc:217
 msgid "Number This Line|u"
-msgstr "Numrera denna linje|u"
+msgstr "Numrera denna rad|u"
 
 #: lib/ui/stdcontext.inc:58
 msgid "Equation Label|L"
@@ -11646,35 +11636,35 @@ msgstr "Infoga"
 
 #: lib/ui/stdcontext.inc:65
 msgid "Add Line Above|o"
-msgstr "Lägg till linje ovan|o"
+msgstr "Lägg till rad ovan|o"
 
 #: lib/ui/stdcontext.inc:66 lib/ui/stdmenus.inc:230
 msgid "Add Line Below|B"
-msgstr "Lägg till linje nedan"
+msgstr "Lägg till rad nedan"
 
 #: lib/ui/stdcontext.inc:67
 msgid "Delete Line Above|v"
-msgstr "Radera linje ovan|v"
+msgstr "Radera rad ovan|v"
 
 #: lib/ui/stdcontext.inc:68
 msgid "Delete Line Below|w"
-msgstr "Radera linje nedan"
+msgstr "Radera rad nedan"
 
 #: lib/ui/stdcontext.inc:70 lib/ui/stdmenus.inc:234
 msgid "Add Line to Left"
-msgstr "Lägg till linje till vänster"
+msgstr "Lägg till rad till vänster"
 
 #: lib/ui/stdcontext.inc:71 lib/ui/stdmenus.inc:235
 msgid "Add Line to Right"
-msgstr "Lägg till linje till höger"
+msgstr "Lägg till rad till höger"
 
 #: lib/ui/stdcontext.inc:72 lib/ui/stdmenus.inc:236
 msgid "Delete Line to Left"
-msgstr "Radera linje till vänster"
+msgstr "Radera rad till vänster"
 
 #: lib/ui/stdcontext.inc:73 lib/ui/stdmenus.inc:237
 msgid "Delete Line to Right"
-msgstr "Radera linje till höger"
+msgstr "Radera rad till höger"
 
 #: lib/ui/stdcontext.inc:75
 msgid "Show Math Toolbar"
@@ -12054,9 +12044,8 @@ msgid "Insert Short Title|T"
 msgstr "Infoga kort titel|t"
 
 #: lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:355
-#, fuzzy
 msgid "Insert Regular Expression"
-msgstr "Reguljära uttr&yck"
+msgstr "Infoga reguljära uttryck"
 
 #: lib/ui/stdcontext.inc:312 lib/ui/stdcontext.inc:576
 msgid "Accept Change|c"
@@ -12673,15 +12662,15 @@ msgstr "Använd datoralgebrasystem|s"
 
 #: lib/ui/stdmenus.inc:229
 msgid "Add Line Above|A"
-msgstr "Lägg till linje ovan|a"
+msgstr "Lägg till rad ovan|a"
 
 #: lib/ui/stdmenus.inc:231
 msgid "Delete Line Above|D"
-msgstr "Radera linje ovan|d"
+msgstr "Radera rad ovan|d"
 
 #: lib/ui/stdmenus.inc:232
 msgid "Delete Line Below|e"
-msgstr "Radera linje nedan|e"
+msgstr "Radera rad nedan|e"
 
 #: lib/ui/stdmenus.inc:244
 msgid "Make First Non-Optional into Optional Argument"
@@ -12705,7 +12694,7 @@ msgstr "På plats"
 
 #: lib/ui/stdmenus.inc:261
 msgid "Math Normal Font|N"
-msgstr "Matematik teckensnitt normal|n"
+msgstr "Matematik typsnitt normal|n"
 
 #: lib/ui/stdmenus.inc:263
 msgid "Math Calligraphic Family|C"
@@ -12733,7 +12722,7 @@ msgstr "Matematik serie fet"
 
 #: lib/ui/stdmenus.inc:271
 msgid "Text Normal Font|T"
-msgstr "Text teckensnitt normal|t"
+msgstr "Text typsnitt normal|t"
 
 #: lib/ui/stdmenus.inc:273
 msgid "Text Roman Family"
@@ -13005,7 +12994,7 @@ msgstr "Horisontell linje...|l"
 
 #: lib/ui/stdmenus.inc:398
 msgid "Vertical Space...|V"
-msgstr "Vertikalt mellanrum...|V"
+msgstr "Vertikalt tomrum...|V"
 
 #: lib/ui/stdmenus.inc:399
 msgid "Phantom|m"
@@ -13089,7 +13078,7 @@ msgstr "LaTeX-logg|L"
 
 #: lib/ui/stdmenus.inc:501
 msgid "Outline|O"
-msgstr "Översikt"
+msgstr "Disposition|o"
 
 #: lib/ui/stdmenus.inc:502
 msgid "Start Appendix Here|A"
@@ -13337,7 +13326,7 @@ msgstr "Infoga tabell"
 
 #: lib/ui/stdtoolbars.inc:95
 msgid "Toggle outline"
-msgstr "Växla översikt"
+msgstr "Växla disposition"
 
 #: lib/ui/stdtoolbars.inc:96
 msgid "Toggle math toolbar"
@@ -13765,7 +13754,7 @@ msgstr "Matematikpaneler"
 
 #: lib/ui/stdtoolbars.inc:273
 msgid "Math spacings"
-msgstr "Matematikavstånd"
+msgstr "Matematikmellanrum"
 
 #: lib/ui/stdtoolbars.inc:274 lib/ui/stdtoolbars.inc:346
 msgid "Styles"
@@ -13778,7 +13767,7 @@ msgstr "Bråk"
 #: lib/ui/stdtoolbars.inc:276 lib/ui/stdtoolbars.inc:370
 #: src/frontends/qt4/GuiDocument.cpp:1278
 msgid "Fonts"
-msgstr "Teckensnitt"
+msgstr "Typsnitt"
 
 #: lib/ui/stdtoolbars.inc:277 lib/ui/stdtoolbars.inc:293
 msgid "Functions"
@@ -13967,7 +13956,7 @@ msgstr "Pr"
 
 #: lib/ui/stdtoolbars.inc:329
 msgid "Spacings"
-msgstr "Avstånd"
+msgstr "Mellanrum"
 
 #: lib/ui/stdtoolbars.inc:330
 msgid "Thin space\t\\,"
@@ -16683,7 +16672,7 @@ msgstr "%1$s slutade oväntat, vilket betyder att den förmodligen är korrupt."
 #: src/Buffer.cpp:936
 #, c-format
 msgid "%1$s is not a readable LyX document."
-msgstr "%1$s är inte ett läsbart LyX-dokument"
+msgstr "%1$s är inte ett läsbart LyX-dokument."
 
 #: src/Buffer.cpp:961
 msgid "Conversion failed"
@@ -17105,7 +17094,7 @@ msgstr "Dokument %1$s laddades om."
 #: src/Buffer.cpp:4312
 #, c-format
 msgid "Could not reload document %1$s."
-msgstr "Kunde inte ladda om dokument %1$s"
+msgstr "Kunde inte ladda om dokument %1$s."
 
 #: src/Buffer.cpp:4378
 msgid "Included File Invalid"
@@ -17177,7 +17166,7 @@ msgid ""
 "layouts will be used. LyX will not be able to produce\n"
 "correct output."
 msgstr ""
-"På grund av något fel i den, kunde utformningsfilen:\n"
+"På grund av något fel i den kunde utformningsfilen:\n"
 "%1$s\n"
 "inte laddas. En standardtextklass med\n"
 "standardutformningar kommer att användas.\n"
@@ -17477,11 +17466,11 @@ msgstr "LaTeX-text"
 
 #: src/Color.cpp:217
 msgid "inline completion"
-msgstr "komplettering på plats"
+msgstr "platskomplettering"
 
 #: src/Color.cpp:219
 msgid "non-unique inline completion"
-msgstr "icke-unik komplettering på plats"
+msgstr "icke-unik platskomplettering"
 
 #: src/Color.cpp:221
 msgid "previewed snippet"
@@ -17840,20 +17829,19 @@ msgid "&Don't Add"
 msgstr "Lägg inte till"
 
 #: src/CutAndPaste.cpp:683
-#, fuzzy, c-format
+#, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
 msgstr ""
-"Flex-insättning %1$s är odefinierad på grund av klassomvandling från\n"
-"%2$s till %3$s"
+"Flex-insättning %1$s är odefinierad efter omladdning av utformning `%2$s'."
 
 #: src/CutAndPaste.cpp:686
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
 "%3$s'."
 msgstr ""
-"Flex-insättning %1$s är odefinierad på grund av klassomvandling från\n"
-"%2$s till %3$s"
+"Flex-insättning %1$s är odefinierad på grund av omvandling från utformning `"
+"%2$s' till `%3$s'."
 
 #: src/CutAndPaste.cpp:691
 msgid "Undefined flex inset"
@@ -18295,9 +18283,9 @@ msgstr ""
 "\t-userdir dir       sätt användarkatalog till dir\n"
 "\t-sysdir dir        sätt systemkatalog till dir\n"
 "\t-geometry WxH+X+Y  sätt geometri för huvudfönster\n"
-"\t-dbg funktion[,funktion]...\n"
-"                  välj funktionerna att avlusa.\n"
-"                  Skriv `lyx -dbg' för att se en lista över funktioner.\n"
+"\t-dbg feature[,feature]...\n"
+"                  välj finesserna att avlusa.\n"
+"                  Skriv `lyx -dbg' för att se en lista över finesser.\n"
 "\t-x [--execute] kommando\n"
 "                  där kommandot är ett lyx-kommando.\n"
 "\t-e [--export] fmt\n"
@@ -18539,7 +18527,7 @@ msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
 msgstr ""
-"Teckensnittskodningen som används för LaTeX2e-paketet fontenc. T1 är högst "
+"Typsnittskodningen som används för LaTeX2e-paketet fontenc. T1 är högst "
 "rekommenderad för icke-engelska språk."
 
 #: src/LyXRC.cpp:3189
@@ -18558,7 +18546,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3200
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
-msgstr "Definiera alternativen för indexprogrammet för PLaTeX (japansk LaTeX)"
+msgstr "Definiera alternativen för indexprogrammet för PLaTeX (japansk LaTeX)."
 
 #: src/LyXRC.cpp:3204
 msgid ""
@@ -18686,15 +18674,15 @@ msgstr ""
 
 #: src/LyXRC.cpp:3290
 msgid "The inline completion delay."
-msgstr "Fördröjning för komplettering på plats."
+msgstr "Fördröjning för platskomplettering."
 
 #: src/LyXRC.cpp:3294
 msgid "Select to display the inline completion in math mode."
-msgstr "Välj för att visa kompletteringen på plats i matematikläge."
+msgstr "Välj för att visa platskompletteringen i matematikläge."
 
 #: src/LyXRC.cpp:3298
 msgid "Select to display the inline completion in text mode."
-msgstr "Välj för att visa kompletteringen på plats i textläge."
+msgstr "Välj för att visa platskompletteringen i textläge."
 
 #: src/LyXRC.cpp:3302
 msgid "Use \"...\" to shorten long completions."
@@ -18842,12 +18830,12 @@ msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
 msgstr ""
-"DPI (dots per inch) för din skärm är automatiskt upptäckt av LyX. Om det "
-"blir fel, överskrid inställningen här."
+"DPI (dots per inch) för din skärm upptäcks automatiskt av LyX. Om det blir "
+"fel, överskrid inställningen här."
 
 #: src/LyXRC.cpp:3419
 msgid "The screen fonts used to display the text while editing."
-msgstr "Skärmteckensnitten som används för att visa texten vid redigering."
+msgstr "Skärmtypsnitten som används för att visa texten vid redigering."
 
 #: src/LyXRC.cpp:3428
 msgid ""
@@ -18856,15 +18844,14 @@ msgid ""
 "makes LyX use the nearest bitmap font size available, instead of scaling."
 msgstr ""
 "Tillåt bitmapteckensnitt att bli storleksändrade. Om du använder ett "
-"bitmapteckensnitt och väljer detta kan det göra att vissa teckensnitt ser "
-"blockiga ut i LyX. Att välja bort detta val gör så att LyX använder den "
-"närmsta storleken för bitmapteckensnitt tillgänglig, i stället för skalning."
+"bitmaptypsnitt och väljer detta kan det göra att vissa typsnitt ser blockiga "
+"ut i LyX. Att välja bort detta val gör så att LyX använder den närmsta "
+"storleken för bitmaptypsnitt tillgänglig, i stället för skalning."
 
 #: src/LyXRC.cpp:3432
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
-"Teckensnittsstorlekarna som används för att beräkna skalningen för "
-"skärmteckensnitten."
+"Typsnittsgraderna som används för att beräkna skalningen för skärmtypsnitten."
 
 #: src/LyXRC.cpp:3437
 #, no-c-format
@@ -18872,8 +18859,8 @@ msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
 msgstr ""
-"Zoomningsprocenten för skärmteckensnitt. En inställning på 100% gör "
-"teckensnitten ungefär samma storlek som på papper."
+"Zoomningsprocenten för skärmtypsnitt. En inställning på 100% gör typsnitten "
+"ungefär samma storlek som på papper."
 
 #: src/LyXRC.cpp:3441
 msgid "Allow session manager to save and restore windows geometry."
@@ -18934,7 +18921,8 @@ msgstr "Aktivera automatiskt uppdykande av verktygstips i arbetsområdet."
 #: src/LyXRC.cpp:3492
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
-msgstr "Aktivera pixmapgömman som kan öka prestanda på Mac och Windows."
+msgstr ""
+"Aktivera pixmapgömman (cache) som kan öka prestanda på Mac och Windows."
 
 #: src/LyXRC.cpp:3496
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
@@ -19068,7 +19056,7 @@ msgstr " vid "
 #: src/Text.cpp:1787
 #, c-format
 msgid "Font: %1$s"
-msgstr "Teckensnitt: %1$s"
+msgstr "Typsnitt: %1$s"
 
 #: src/Text.cpp:1792
 #, c-format
@@ -19113,7 +19101,7 @@ msgstr ", Gräns: "
 
 #: src/Text2.cpp:384
 msgid "No font change defined."
-msgstr "Ingen teckensnittsändring definierad."
+msgstr "Ingen typsnittsändring definierad."
 
 #: src/Text2.cpp:424
 msgid "Nothing to index!"
@@ -19137,7 +19125,7 @@ msgstr "Redan i läge för reguljära uttryck"
 
 #: src/Text3.cpp:216
 msgid "Regexp editor mode"
-msgstr "Redigeringsläge för reguljära uttryck (regexp)"
+msgstr "Redigeringsläge för reguljära uttryck"
 
 #: src/Text3.cpp:1287
 msgid "Layout "
@@ -19228,7 +19216,7 @@ msgstr "Fel vid läsning av modul %1$s\n"
 #: src/VCBackend.cpp:1183 src/VCBackend.cpp:1204
 #: src/frontends/qt4/GuiView.cpp:2748
 msgid "Revision control error."
-msgstr "Revideringshanteringsfel"
+msgstr "Revideringshanteringsfel."
 
 #: src/VCBackend.cpp:61
 #, c-format
@@ -19446,7 +19434,7 @@ msgstr "Glöm inte att arkivera låsningegenskapen till förrådet."
 
 #: src/VSpace.cpp:468
 msgid "Default skip"
-msgstr "Standard avstånd"
+msgstr "Vanligt avstånd"
 
 #: src/VSpace.cpp:471
 msgid "Small skip"
@@ -19538,7 +19526,7 @@ msgstr "Standard[[Bomber]]"
 
 #: src/frontends/qt4/BulletsModule.cpp:42
 msgid "Maths"
-msgstr "Matematik"
+msgstr "Maths"
 
 #: src/frontends/qt4/BulletsModule.cpp:43
 msgid "Dings 1"
@@ -20046,15 +20034,15 @@ msgstr "Återställ"
 
 #: src/frontends/qt4/GuiCharacter.cpp:78
 msgid "Underbar"
-msgstr "Understreck"
+msgstr "Understrykning"
 
 #: src/frontends/qt4/GuiCharacter.cpp:79
 msgid "Double underbar"
-msgstr "Dubbla understreck"
+msgstr "Dubbel understrykning"
 
 #: src/frontends/qt4/GuiCharacter.cpp:80
 msgid "Wavy underbar"
-msgstr "Vågiga understreck"
+msgstr "Vågig understrykning"
 
 #: src/frontends/qt4/GuiCharacter.cpp:81
 msgid "Strikeout"
@@ -20368,9 +20356,8 @@ msgid ""
 "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)\n"
 "You need to install the package \"fontspec\" to use this feature"
 msgstr ""
-"Använd OpenType- och TrueType-teckensnitt direkt (kräver XeTeX eller "
-"LuaTeX)\n"
-"Du måste installera paketet \"fontspec\" för att använda denna funktion"
+"Använd OpenType- och TrueType-typsnitt direkt (kräver XeTeX eller LuaTeX)\n"
+"Du måste installera paketet \"fontspec\" för att använda denna finess"
 
 #: src/frontends/qt4/GuiDocument.cpp:835
 msgid "empty"
@@ -20386,7 +20373,7 @@ msgstr "rubriker"
 
 #: src/frontends/qt4/GuiDocument.cpp:838
 msgid "fancy"
-msgstr "snygg"
+msgstr "häftig"
 
 #: src/frontends/qt4/GuiDocument.cpp:850
 msgid "A0"
@@ -20755,7 +20742,7 @@ msgid ""
 msgstr ""
 "Du måste inkludera denna fil i dokumentet\n"
 "'%1$s' för att kunna använda huvuddokumentets\n"
-"funktion."
+"finess."
 
 #: src/frontends/qt4/GuiDocument.cpp:3307
 msgid "Could not load master"
@@ -20979,7 +20966,7 @@ msgid ""
 msgstr ""
 "Infoga avståndet även efter en radbrytning.\n"
 "Notera att en skyddad halvfyrkant kommer att förvandlas till\n"
-"ett vertikalt mellanrum om det används vid början på ett stycke!"
+"ett vertikalt tomrum om det används vid början på ett stycke!"
 
 #: src/frontends/qt4/GuiInclude.cpp:120 src/frontends/qt4/GuiInclude.cpp:182
 #: src/frontends/qt4/GuiListings.cpp:239 src/frontends/qt4/GuiListings.cpp:375
@@ -21190,7 +21177,7 @@ msgstr "Ko&mmando:"
 
 #: src/frontends/qt4/GuiPrefs.cpp:891
 msgid "Screen Fonts"
-msgstr "Skärmteckensnitt"
+msgstr "Skärmtypsnitt"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1272
 msgid "Paths"
@@ -21296,9 +21283,8 @@ msgid "User Interface"
 msgstr "Användargränssnitt"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2447
-#, fuzzy
 msgid "Classic"
-msgstr "Klass"
+msgstr "Klassisk"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2448
 msgid "Oxygen"
@@ -21334,7 +21320,7 @@ msgstr "Dokument och fönster"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2711
 msgid "Font, Layouts and Textclasses"
-msgstr "Teckensnitt, utformningar och textklasser"
+msgstr "Typsnitt, utformningar och textklasser"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2715
 msgid "System and Miscellaneous"
@@ -21500,7 +21486,7 @@ msgstr "IPA utökningar"
 
 #: src/frontends/qt4/GuiSymbols.cpp:59
 msgid "Spacing Modifier Letters"
-msgstr "Avståndsmodifierande bokstäver"
+msgstr "Mellanrumsmodifierande bokstäver"
 
 #: src/frontends/qt4/GuiSymbols.cpp:60
 msgid "Combining Diacritical Marks"
@@ -21860,7 +21846,7 @@ msgstr "Ingen synonymordbok tillgänglig för detta språk!"
 
 #: src/frontends/qt4/GuiToc.cpp:36
 msgid "Outline"
-msgstr "Översikt"
+msgstr "Disposition"
 
 #: src/frontends/qt4/GuiToolbar.cpp:354 src/frontends/qt4/Toolbars.cpp:376
 msgid "auto"
@@ -22555,7 +22541,7 @@ msgstr "Horisontellt mellanrum"
 
 #: src/insets/Inset.cpp:112 src/insets/InsetVSpace.cpp:112
 msgid "Vertical Space"
-msgstr "Vertikalt mellanrum"
+msgstr "Vertikalt tomrum"
 
 #: src/insets/Inset.cpp:115
 msgid "Info"
@@ -22624,7 +22610,7 @@ msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
 msgstr ""
-"Det finns mellanrum i sökvägarna till dina BibTeX-databaser.\n"
+"Det finns mellanslag i sökvägarna till dina BibTeX-databaser.\n"
 "BibTeX kommer inte att kunna hitta dem."
 
 #: src/insets/InsetBibtex.cpp:365
@@ -22632,7 +22618,7 @@ msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
 msgstr ""
-"Det finns mellanrum i sökvägen till din BibTeX stilfil.\n"
+"Det finns mellanslag i sökvägen till din BibTeX stilfil.\n"
 "BibTeX kommer inte att kunna hitta den."
 
 #: src/insets/InsetBox.cpp:66
@@ -22823,7 +22809,7 @@ msgstr ""
 #: src/insets/InsetGraphics.cpp:719 src/insets/InsetGraphics.cpp:934
 #, c-format
 msgid "No conversion of %1$s is needed after all"
-msgstr "En omvandling av %1$s behövs ändå inte."
+msgstr "En omvandling av %1$s behövs ändå inte"
 
 #: src/insets/InsetGraphics.cpp:811
 #, c-format
@@ -23039,7 +23025,7 @@ msgid ""
 "For the time being, I have replaced '!' by a warning, but you\n"
 "must investigate!"
 msgstr ""
-"För programlistningar på plats måste ett tecken reserveras som ett\n"
+"För platsprogramlistningar måste ett tecken reserveras som ett\n"
 "skiljetecken. En av listningarna använder dock alla tillgängliga\n"
 "tecken, så inget finns kvar för skiljeteckensyften.\n"
 "Under tiden har jag ersatt '!' med en varning, men du\n"
@@ -23566,12 +23552,12 @@ msgstr "Kan inte lägga till vertikala rutnätslinjer i '%1$s'"
 #: src/mathed/InsetMathCases.cpp:110
 #, c-format
 msgid "No vertical grid lines in 'cases': feature %1$s"
-msgstr "Inga vertikala rutnätslinjer i 'cases': funktion %1$s"
+msgstr "Inga vertikala rutnätslinjer i 'cases': finess %1$s"
 
 #: src/mathed/InsetMathCases.cpp:117
 #, c-format
 msgid "Changing number of columns not allowed in 'cases': feature %1$s"
-msgstr "Ändring av antal kolumner tillåts inte i 'cases': funktion %1$s"
+msgstr "Ändring av antal kolumner tillåts inte i 'cases': finess %1$s"
 
 #: src/mathed/InsetMathGrid.cpp:1453
 msgid "Cursor not in table"
@@ -23596,7 +23582,7 @@ msgstr "Ingen vline att radera"
 #: src/mathed/InsetMathGrid.cpp:1511
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
-msgstr "Okänd tabellarisk funktion '%1$s'"
+msgstr "Okänd tabellarisk finess '%1$s'"
 
 #: src/mathed/InsetMathHull.cpp:1271
 msgid "Bad math environment"
@@ -23693,7 +23679,7 @@ msgstr ""
 
 #: src/output_plaintext.cpp:136
 msgid "Abstract: "
-msgstr "Abstrakt: "
+msgstr "Sammandrag: "
 
 #: src/output_plaintext.cpp:148
 msgid "References: "
@@ -23741,7 +23727,7 @@ msgstr "Matematikredigerare"
 
 #: src/support/debug.cpp:51
 msgid "Font handling"
-msgstr "Teckensnittshantering"
+msgstr "Typsnittshantering"
 
 #: src/support/debug.cpp:52
 msgid "Textclass files reading"
@@ -23872,11 +23858,11 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Okänd användare"
 
-#~ msgid "List of %1$s"
-#~ msgstr "Lista över %1$s"
-
 #~ msgid "Liber"
 #~ msgstr "Liber"
+
+#~ msgid "List of %1$s"
+#~ msgstr "Lista över %1$s"
 
 #~ msgid "%1$s unknown"
 #~ msgstr "%1$s okänd"
@@ -24493,7 +24479,7 @@ msgstr "Okänd användare"
 #~ msgstr "Kriterium #:"
 
 #~ msgid "Fact #:"
-#~ msgstr "Fakta #:"
+#~ msgstr "Faktum #:"
 
 #~ msgid "Definition #:"
 #~ msgstr "Definition #:"
@@ -24920,7 +24906,7 @@ msgstr "Okänd användare"
 #~ msgstr "Exempel. "
 
 #~ msgid "Fact. "
-#~ msgstr "Fakta. "
+#~ msgstr "Faktum. "
 
 #~ msgid "note: "
 #~ msgstr "not: "
