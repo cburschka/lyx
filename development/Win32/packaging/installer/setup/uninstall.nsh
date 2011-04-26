@@ -22,23 +22,13 @@ Section "un.Program Files" un.SecProgramFiles
   !insertmacro FileListPDFViewBin Delete "$INSTDIR\bin\"
   !insertmacro FileListMetaFile2EPS Delete "$INSTDIR\bin\"
   RMDir "$INSTDIR\bin"
+
   
   # Resources
   RMDir /r "$INSTDIR\Resources"
   
-  # Components of Python
-  !insertmacro FileListPythonLibEncodings Delete "$INSTDIR\python\Lib\encodings\"
-  Delete "$INSTDIR\python\Lib\encodings\*.pyc"
-  RMDir "$INSTDIR\python\Lib\encodings"
-  !insertmacro FileListPythonLibLogging Delete "$INSTDIR\python\Lib\logging\"
-  Delete "$INSTDIR\python\Lib\logging\*.pyc"
-  RMDir "$INSTDIR\python\Lib\logging"
-  !insertmacro FileListPythonLib Delete "$INSTDIR\python\Lib\"
-  Delete "$INSTDIR\python\Lib\*.pyc"  
-  RMDir "$INSTDIR\python\Lib" 
-  !insertmacro FileListPythonBin Delete "$INSTDIR\python\"
-  !insertmacro FileListMSVC Delete "$INSTDIR\python\"
-  RMDir "$INSTDIR\python"
+  # Python
+  RMDir /r "$INSTDIR\python"
   
   # Components of ImageMagick
   !insertmacro FileListImageMagick Delete "$INSTDIR\imagemagick\"

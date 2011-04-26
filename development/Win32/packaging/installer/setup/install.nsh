@@ -42,16 +42,14 @@ Section -ProgramFiles SecProgramFiles
   # recursively copy all files under Resources
   File /r "${FILES_LYX}\Resources"
   
-  # Components of Python
+  # Python
+  SetOutPath "$INSTDIR"
+  # recursively copy all files under Python
+  File /r "${FILES_PYTHON}"
+  # add MSVC runtimes
   SetOutPath "$INSTDIR\python"
-  !insertmacro FileListPythonBin File "${FILES_PYTHON}\"
   !insertmacro FileListMSVC File "${FILES_MSVC}\"
-  SetOutPath "$INSTDIR\python\Lib"
-  !insertmacro FileListPythonLib File "${FILES_PYTHON}\Lib\"
-  SetOutPath "$INSTDIR\python\Lib\encodings"
-  !insertmacro FileListPythonLibEncodings File "${FILES_PYTHON}\Lib\encodings\"
-  SetOutPath "$INSTDIR\python\Lib\logging"
-  !insertmacro FileListPythonLibLogging File "${FILES_PYTHON}\Lib\logging\"
+  
   
   # Compile all Pyton files to byte-code
   # The user using the scripts may not have write access
