@@ -11,14 +11,14 @@ msgstr ""
 "Project-Id-Version: pt\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-03-22 17:53+0100\n"
-"PO-Revision-Date: 2011-02-03 21:18+0100\n"
+"PO-Revision-Date: 2011-04-26 08:23+0200\n"
 "Last-Translator: Susana Barbosa <susanabarb@gmail.com>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
@@ -1143,9 +1143,8 @@ msgid "Use a real small caps shape, if the font provides one"
 msgstr "Usar uma forma minuscula verdadeira, se fornecida pelo tipo de letra "
 
 #: src/frontends/qt4/ui/FontUi.ui:84
-#, fuzzy
 msgid "Use true S&mall Caps"
-msgstr "Usar letras Mi&nusculas verdadeiras"
+msgstr "Usar Versaletes true"
 
 #: src/frontends/qt4/ui/FontUi.ui:91
 msgid "Select the default family for the document"
@@ -2418,7 +2417,7 @@ msgstr "Factor para o tamanho de pré-visualização"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:114
 msgid "Mark end of paragraphs on screen with a pilcrow character."
-msgstr ""
+msgstr "Marcar no ecran o fim de paragrafos com o caracter marca de paragrafo."
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:117
 msgid "&Mark end of paragraphs"
@@ -4760,9 +4759,8 @@ msgid "Teaser image:"
 msgstr "ImagemRaster"
 
 #: lib/layouts/acmsiggraph.layout:84
-#, fuzzy
 msgid "CRcat"
-msgstr "chapéu"
+msgstr "CRcat"
 
 #: lib/layouts/acmsiggraph.layout:89
 msgid "CR category"
@@ -4774,7 +4772,7 @@ msgstr "categorias CR"
 
 #: lib/layouts/acmsiggraph.layout:141
 msgid "Computing Review Categories"
-msgstr ""
+msgstr "Categorias Computing Review"
 
 #: lib/layouts/acmsiggraph.layout:149 lib/layouts/acmsiggraph.layout:156
 #: lib/layouts/agutex.layout:175 lib/layouts/apa.layout:242
@@ -7947,11 +7945,11 @@ msgstr "Instituto e e-mail: "
 
 #: lib/layouts/svmult.layout:62
 msgid "MiniTOC"
-msgstr ""
+msgstr "TOCmini"
 
 #: lib/layouts/svmult.layout:67
 msgid "TOC depth (provide a number):"
-msgstr ""
+msgstr "profundidade TOC (indicar um numero):"
 
 #: lib/layouts/svmult.layout:73
 msgid "List of Abbreviations & Symbols"
@@ -8012,14 +8010,12 @@ msgid "allcaps"
 msgstr "Caixa Baixa"
 
 #: lib/layouts/tufte-book.layout:159
-#, fuzzy
 msgid "SmallCaps"
-msgstr "Caixa Baixa"
+msgstr "Versalete"
 
 #: lib/layouts/tufte-book.layout:162
-#, fuzzy
 msgid "smallcaps"
-msgstr "Caixa Baixa"
+msgstr "versaletess"
 
 #: lib/layouts/tufte-book.layout:168
 msgid "Full Width"
@@ -10760,16 +10756,15 @@ msgstr "Texto Forma Itálico"
 
 #: lib/ui/classic.ui:303 lib/ui/stdmenus.inc:267
 msgid "Text Small Caps Shape"
-msgstr "Texto Forma Letras de Caixa"
+msgstr "Texto Forma Versalete"
 
 #: lib/ui/classic.ui:304 lib/ui/stdmenus.inc:268
 msgid "Text Slanted Shape"
 msgstr "Texto Forma Inclinado"
 
 #: lib/ui/classic.ui:305 lib/ui/stdmenus.inc:269
-#, fuzzy
 msgid "Text Upright Shape"
-msgstr "Texto Forma Superiordireito"
+msgstr "Texto Forma Upright"
 
 #: lib/ui/classic.ui:310
 msgid "Floatflt Figure"
@@ -11084,19 +11079,16 @@ msgid "Go to Label|G"
 msgstr "Ir para Etiqueta|I"
 
 #: lib/ui/stdcontext.inc:86
-#, fuzzy
 msgid "<Reference>|R"
-msgstr "<reference>|r"
+msgstr "<Reference>|R"
 
 #: lib/ui/stdcontext.inc:87
-#, fuzzy
 msgid "(<Reference>)|e"
-msgstr "(<reference>)|e"
+msgstr "(<Reference>)|e"
 
 #: lib/ui/stdcontext.inc:88
-#, fuzzy
 msgid "<Page>|P"
-msgstr "<page>|p"
+msgstr "<Page>|P"
 
 #: lib/ui/stdcontext.inc:89
 msgid "On Page <Page>|O"
@@ -11763,14 +11755,12 @@ msgid "Maple, Factor|F"
 msgstr "Maple, Factorizar|F"
 
 #: lib/ui/stdmenus.inc:279
-#, fuzzy
 msgid "Maple, Evalm|E"
-msgstr "Maple, evalm"
+msgstr "Maple, Evalm|E"
 
 #: lib/ui/stdmenus.inc:280
-#, fuzzy
 msgid "Maple, Evalf|v"
-msgstr "Maple, evalf"
+msgstr "Maple, Evalf|v"
 
 #: lib/ui/stdmenus.inc:299
 msgid "Open All Insets|O"
@@ -11833,9 +11823,8 @@ msgid "Branch|B"
 msgstr "Ramo|R"
 
 #: lib/ui/stdmenus.inc:339
-#, fuzzy
 msgid "Custom Insets"
-msgstr "Personalizar insertos"
+msgstr "Personalizar Insertos"
 
 #: lib/ui/stdmenus.inc:340
 msgid "File|e"
@@ -12027,7 +12016,7 @@ msgstr "Manual Braille|B"
 
 #: lib/ui/stdmenus.inc:550
 msgid "XY-pic Manual|X"
-msgstr ""
+msgstr "Manual XY-pic|XMa"
 
 #: lib/ui/stdmenus.inc:551
 msgid "Multicolumn Manual|M"
@@ -14863,13 +14852,12 @@ msgid "Dia"
 msgstr "Dia"
 
 #: lib/external_templates:334 lib/external_templates:337
-#, fuzzy
 msgid "Dia: $$AbsOrRelPathParent$$Basename"
-msgstr "Bitmap: $$AbsOrRelPathParent$$Basename"
+msgstr "Dia: $$AbsOrRelPathParent$$Basename"
 
 #: lib/external_templates:336
 msgid "Dia diagram.\n"
-msgstr ""
+msgstr "Diagrana Dia.\n"
 
 #: lib/configure.py:264
 msgid "Tgif"
@@ -15192,7 +15180,7 @@ msgstr ""
 
 #: src/BiblioInfo.cpp:309
 msgid "pp. "
-msgstr ""
+msgstr "pp."
 
 #: src/BiblioInfo.cpp:448 src/BiblioInfo.cpp:451
 msgid "No year"
@@ -16718,7 +16706,6 @@ msgid "Setting debug level to %1$s"
 msgstr "A fixar nível de compilação em %1$s"
 
 #: src/LyX.cpp:976
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -16764,7 +16751,7 @@ msgstr ""
 "                  onde fmt é o formato escolhido para exportação.\n"
 "                  Ver em Ferramentas->Preferências->Formatos de Ficheiros-"
 ">Formato\n"
-"                  para ter uma ideia dos parâmetros\n"
+"                  para ter uma ideia dos parâmetros a passar\n"
 "\t-i [--import] fmt file.xxx\n"
 "                  onde fmt é o formato escolhido para importação\n"
 "                  e file.xxx é o ficheiro a ser importado.\n"
@@ -16772,11 +16759,11 @@ msgstr ""
 "                  onde what é ou `todos', ou `principal' ou `nenhum',\n"
 "                  para especificar se todos os ficheiros, ou o principal, ou "
 "nenhum,\n"
-"                  respectivamente, devem ser sobre-escritosexport.\n"
-"                  Anything else is equivalent to `all', but is not "
-"consumed.\n"
-"\t-version        summarize version and build info\n"
-"Check the LyX man page for more details."
+"                  respectivamente, devem ser sobre-escritos durante "
+"exportação em modo batch.\n"
+"                  Tudo o resto é equivalente a 'todos'.\n"
+"\t-versao        resumo da versão e informação de compilação\n"
+"Verificar a pagina man do LyX para mais detalhes."
 
 #: src/LyX.cpp:1021
 msgid "No system directory"
@@ -17902,6 +17889,10 @@ msgid ""
 "'%1$s'\n"
 "\n"
 msgstr ""
+"Mau estado ao submeter alterações.\n"
+"\n"
+"'%1$s'\n"
+"\n"
 
 #: src/VCBackend.cpp:567
 #, c-format
@@ -18047,7 +18038,7 @@ msgstr "&Não"
 
 #: src/VCBackend.cpp:1037
 msgid "VCN File Locking"
-msgstr ""
+msgstr "Ficheiro VCN fechado"
 
 #: src/VCBackend.cpp:1038
 msgid "Locking property unset."
@@ -20873,19 +20864,19 @@ msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "Tentativa de incluir ficheiro %1$s em si próprio! Ignorar inclusão."
 
 #: src/insets/InsetInclude.cpp:515
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not load included file\n"
 "`%1$s'\n"
 "Please, check whether it actually exists."
 msgstr ""
-"Não é possível criar ficheiro de cópia de segurança %1$s.\n"
-"Por favor verifique se a pasta existe e se é possível escrever."
+"Não é possível carregar o ficheiro incluido \n"
+"`%1$s'\n"
+"Verifique pf se de facto existe."
 
 #: src/insets/InsetInclude.cpp:519
-#, fuzzy
 msgid "Missing included file"
-msgstr "Incluir ficheiro"
+msgstr "Ficheiro incluido em falta"
 
 #: src/insets/InsetInclude.cpp:527
 #, c-format
@@ -20923,11 +20914,12 @@ msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
+"O ficheiro incluido `%1$s'  não foi exportado correctamente.\n"
+"Aviso: a exportação LaTeX esta provavemente incompleta."
 
 #: src/insets/InsetInclude.cpp:580
-#, fuzzy
 msgid "Export failure"
-msgstr "Falha na cópia de segurança"
+msgstr "Exportação falhadasdFalha"
 
 #: src/insets/InsetIndex.cpp:129
 msgid "Index sorting failed"
@@ -21582,6 +21574,8 @@ msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
 msgstr ""
+"O calculo não pode ser efectuado para ambientes mat AMS.\n"
+"Alterar a formula mat e tentar novamente."
 
 #: src/mathed/InsetMathHull.cpp:1257 src/mathed/InsetMathHull.cpp:1265
 msgid "No number"
@@ -21619,9 +21613,9 @@ msgid "Standard[[mathref]]"
 msgstr "Padrão[[mathref]]"
 
 #: src/mathed/InsetMathSubstack.cpp:80
-#, fuzzy, c-format
+#, c-format
 msgid "Can't change horizontal alignment in '%1$s'"
-msgstr "Não é possível adicionar linhas de grelha horizontal em '%1$s'"
+msgstr "Não é possível alterar o alinhamento horizontal em  '%1$s'"
 
 #: src/mathed/MathMacroTemplate.cpp:495
 msgid "optional"
