@@ -66,6 +66,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -128,9 +129,10 @@
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author -712698321 "Jürgen Spitzmüller"
-\author 5863208 "ab"
-\author 1414654397 "Richard Heck"
+\author -712698321 "Jürgen Spitzmüller" 
+\author 5863208 "ab" 
+\author 1414654397 "Richard Heck" 
+\author 1556375488 "Stephan Witt" 
 \author 1607599024 "Richard Heck" rgheck@comcast.net
 \end_header
 
@@ -30689,25 +30691,88 @@ Spell checking
 \end_layout
 
 \begin_layout Standard
-LyX itself has no built-in spell checker.
- Rather it uses one of the external programs 
+LyX 
+\change_deleted 1556375488 1303941439
+itself 
+\change_unchanged
+has 
+\change_deleted 1556375488 1303941464
+no
+\change_inserted 1556375488 1303941464
+a
+\change_unchanged
+ built-in spell checker.
+ 
+\change_deleted 1556375488 1303941484
+Rather i
+\change_inserted 1556375488 1303941484
+I
+\change_unchanged
+t uses one of the 
+\change_deleted 1556375488 1303941504
+external programs
+\change_inserted 1556375488 1303940735
+libraries
+\change_unchanged
+ 
 \family typewriter
 aspell
+\change_deleted 1556375488 1303940758
+
 \family default
 , 
 \family typewriter
 ispell
+\change_unchanged
+
 \family default
 , 
 \family typewriter
-hspell
+h
+\change_inserted 1556375488 1303940761
+un
+\change_unchanged
+spell
 \family default
 , or 
+\change_deleted 1556375488 1303940769
+
 \family typewriter
 pspell
+\change_inserted 1556375488 1303944461
+enchant
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 1556375488 1303945189
+Enchant itself is a wrapper library having different configurable back-ends.
+ Please consult the documentation or man-page of it to learn more.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \family default
- as backend.
- This section assumes you have already installed and set up one of these
+ as back
+\change_inserted 1556375488 1303943654
+-
+\change_unchanged
+end.
+ 
+\change_inserted 1556375488 1303943734
+Which back-ends are available depends on the platform and the build-time
+ configuration of the LyX program.
+ E.
+ g., on a Mac the operating system provides a spell checking service; there
+ it is available as an additional back-end to choose from.
+\change_deleted 1556375488 1303941812
+This section assumes you have already installed and set up one of these
  programs.
  
 \family typewriter
@@ -30728,19 +30793,41 @@ ispell
 hspell
 \family default
  is a Hebrew spell-checker.
- The used spell checker and its settings are specified in LyX's preferences
+ 
+\change_inserted 1556375488 1303943789
+ 
+\change_unchanged
+The used spell checker and its settings are specified in LyX's preferences
  under 
 \family sans
 Language Settings
 \family default
 .
+\change_inserted 1556375488 1303941721
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1556375488 1303943659
+LyX can correctly spell check documents containing multiple languages.
+ This does work with all back-ends, assuming you have marked the different
+ languages appropriately and the dictionaries installed.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 For LyX on Windows, the selection box for the spell checking program is
  greyed out in the preferences dialog because only 
+\change_deleted 1556375488 1303943857
+
 \family typewriter
-aspell
+a
+\change_inserted 1556375488 1303943858
+hun
+\change_unchanged
+spell
 \family default
  can be used.
 \end_layout
@@ -30784,18 +30871,86 @@ Document\SpecialChar \menuseparator
 Settings
 \family default
  dialog.
- If you do not have a dictionary for the document language, spell checking
- will bring an error message.
- In this case, you can specify another dictionary file in the dialog by
- specifying a different 
+ If you 
+\change_deleted 1556375488 1303944090
+do not
+\change_unchanged
+ have 
+\change_inserted 1556375488 1303944022
+m
+\change_unchanged
+a
+\change_inserted 1556375488 1303944025
+rked
+\change_unchanged
+ 
+\change_deleted 1556375488 1303944046
+dictionary for 
+\change_unchanged
+the
+\change_deleted 1556375488 1303944053
+ document
+\change_unchanged
+ 
+\change_inserted 1556375488 1303944162
+different 
+\change_unchanged
+language
+\change_inserted 1556375488 1303944177
+s in your document
+\change_unchanged
+, spell checking will 
+\change_deleted 1556375488 1303944190
+bring an error message
+\change_inserted 1556375488 1303944217
+automatically switch to the appropriate dictionaries
+\change_unchanged
+.
+ 
+\change_deleted 1556375488 1303944236
+In this case, y
+\change_inserted 1556375488 1303944236
+Y
+\change_unchanged
+ou can specify 
+\change_deleted 1556375488 1303944256
+another dictionary file
+\change_inserted 1556375488 1303944268
+the language of a word
+\change_unchanged
+ in the 
+\change_inserted 1556375488 1303944284
+spellchecker 
+\change_unchanged
+dialog by 
+\change_deleted 1556375488 1303944339
+specifying
+\change_inserted 1556375488 1303944340
+choosing
+\change_unchanged
+ a different
+\change_inserted 1556375488 1303944323
+ one
+\change_deleted 1556375488 1303944351
+ 
 \family sans
 Alternative language
 \family default
- in preferences dialog.
+ in preferences
+\change_inserted 1556375488 1303944359
+ at the top of the
+\change_unchanged
+ dialog.
+\change_deleted 1556375488 1303943130
+
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 1556375488 1303943130
 After a spell check you will be informed about the number of checked words.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -30822,12 +30977,16 @@ Replace
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 1556375488 1303941691
 LyX cannot correctly spell check documents containing multiple languages.
  This does work with 
 \family typewriter
 pspell
 \family default
 , assuming you have marked the different languages appropriately.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -30891,15 +31050,29 @@ passthrough
 \end_layout
 
 \begin_layout Description
+
+\change_deleted 1556375488 1303936874
 Use
+\change_inserted 1556375488 1303936879
+Spellcheck
+\change_unchanged
+
 \begin_inset space ~
 \end_inset
 
+
+\change_deleted 1556375488 1303936885
 input
 \begin_inset space ~
 \end_inset
 
-encoding Uses the document encoding that is set in the 
+encoding
+\change_inserted 1556375488 1303936887
+continously
+\change_unchanged
+ 
+\change_deleted 1556375488 1303936911
+Uses the document encoding that is set in the 
 \family sans
 Document\SpecialChar \menuseparator
 Settings
@@ -30935,7 +31108,39 @@ ispell
 \family default
  and can't spell check words with international letters in them.
  There have been reports that this does not work with all dictionaries,
- so this is disabled by default.
+ so this is disabled by default
+\change_inserted 1556375488 1303937021
+Check the spelling of your document as you type it
+\change_unchanged
+.
+
+\change_inserted 1556375488 1303943477
+ Misspelled words gets underlined with a dotted red line.
+ The suggestions by the spell checker will be added to the context menu
+ of a misspelled word if there were some found.
+ Choosing one of them will replace the misspelled word with the suggested
+ word.
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1556375488 1303937867
+Spellcheck
+\begin_inset space ~
+\end_inset
+
+notes
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+comments The spelling of non-printed document contents is checked as well.
+ You may disable this by deactivating this option.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -43787,6 +43992,22 @@ Cursor follows scrollbar
 \family default
  sets the cursor to the top of the currently displayed document part when
  scrolling.
+\change_inserted 1556375488 1303935761
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1556375488 1303936683
+You can adjust the thickness of the cursor with the 
+\family sans
+Cursor width
+\family default
+ setting.
+ If you set the value to zero the thickness of the cursor scales relative
+ to the zoom value you choose for the screen fonts.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
