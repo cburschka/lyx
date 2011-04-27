@@ -7,8 +7,8 @@
 # Information 2011-04-26:
 #    Bad Qt shortcuts: 122
 #    Inconsistent translations: 6
-#    Bad menu shortcuts: 133
-#    Total warnings: 261
+#    Bad menu shortcuts: 136
+#    Total warnings: 264
 #
 #   Jag har försökt att balansera allt mellan vad som är vanligt i dessa dagar,
 #   hålla mig någorlunda till existerande dokumentation så man inte helt tappar
@@ -124,7 +124,7 @@
 #   justify(ed)          -> justera(d)
 #   key                  -> nyckel
 #   keyword              -> nyckelord
-#   label                -> etikett
+#   label                -> etikett, märke?
 #   layout               -> utformning, layout?
 #   line               ? -> linje? rad?
 #   list                 -> lista
@@ -221,8 +221,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-26 18:53+0200\n"
-"PO-Revision-Date: 2011-04-26 12:21+0100\n"
+"POT-Creation-Date: 2011-04-27 13:47+0200\n"
+"PO-Revision-Date: 2011-04-26 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
 "Language: sv\n"
@@ -2388,7 +2388,7 @@ msgstr "Specificera placering (htbp) för flytande listningar"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:78
 msgid "Line numbering"
-msgstr "Linjenumrering"
+msgstr "Radnumrering"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:84
 msgid "&Side:"
@@ -4234,14 +4234,14 @@ msgstr "Användargränssnittsfil:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:58
 msgid "&Icon Set:"
-msgstr "&Ikonsamling:"
+msgstr "&Ikonuppsättning:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:68
 msgid ""
 "The icon set to use. Warning: normal size of icons may be\n"
 "wrong until you save the preferences and restart LyX."
 msgstr ""
-"Ikonsamlingen att använda. Varning: normalstorleken på ikoner kan\n"
+"Ikonuppsättningen att använda. Varning: normalstorleken på ikoner kan\n"
 "vara fel tills du har sparat inställningarna och startat om LyX."
 
 #: src/frontends/qt4/ui/PrefUi.ui:75
@@ -5255,7 +5255,7 @@ msgstr "Infoga avståndet även efter en sidbrytning"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:82
 msgid "DefSkip"
-msgstr "Standard avstånd"
+msgstr "Vanligt avstånd"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:87 src/frontends/qt4/GuiDocument.cpp:687
 msgid "SmallSkip"
@@ -6323,7 +6323,7 @@ msgstr "Objektnamn"
 
 #: lib/layouts/aastex.layout:153 lib/layouts/aastex.layout:678
 msgid "Dataset"
-msgstr "Datasats"
+msgstr "Datauppsättning"
 
 #: lib/layouts/aastex.layout:289
 msgid "Altaffilation"
@@ -6414,7 +6414,7 @@ msgstr "Obj:"
 
 #: lib/layouts/aastex.layout:690
 msgid "Dataset:"
-msgstr "Datasats:"
+msgstr "Datauppsättning:"
 
 #: lib/layouts/achemso.layout:100
 msgid "Alt Affiliation"
@@ -6851,7 +6851,7 @@ msgstr "Avtäck"
 
 #: lib/layouts/beamer.layout:608
 msgid "Uncovered on slides"
-msgstr "Avtäck på bilder"
+msgstr "Avtäckt på bilder"
 
 #: lib/layouts/beamer.layout:623
 msgid "Only"
@@ -7114,11 +7114,11 @@ msgstr "Höger adress"
 
 #: lib/layouts/chess.layout:35
 msgid "Mainline"
-msgstr "Huvudlinje"
+msgstr "Huvudrad"
 
 #: lib/layouts/chess.layout:42
 msgid "Mainline:"
-msgstr "Huvudlinje:"
+msgstr "Huvudrad:"
 
 #: lib/layouts/chess.layout:61
 msgid "Variation"
@@ -9445,7 +9445,7 @@ msgstr "Betoning"
 
 #: lib/layouts/agu_stdclass.inc:124 lib/layouts/agu_stdclass.inc:126
 msgid "Abbrev"
-msgstr "Förkortning"
+msgstr "Förkort"
 
 #: lib/layouts/agu_stdclass.inc:135 lib/layouts/agu_stdclass.inc:137
 #: lib/layouts/agu_stdtitle.inc:56
@@ -9658,11 +9658,11 @@ msgstr "Tabeller:"
 
 #: lib/layouts/agu_stdtitle.inc:311
 msgid "Datasets"
-msgstr "Datasats"
+msgstr "Datauppsättningar"
 
 #: lib/layouts/agu_stdtitle.inc:314
 msgid "Datasets:"
-msgstr "Datasats:"
+msgstr "Datauppsättningar:"
 
 #: lib/layouts/agu_stdtitle.inc:321 lib/layouts/agu_stdtitle.inc:323
 msgid "ISSN"
@@ -11913,7 +11913,7 @@ msgstr "Negativt tjockt mellanrum|i"
 
 #: lib/ui/stdcontext.inc:245
 msgid "DefSkip|D"
-msgstr "Standard avstånd|d"
+msgstr "Vanligt avstånd|d"
 
 #: lib/ui/stdcontext.inc:246
 msgid "SmallSkip|S"
@@ -12546,7 +12546,7 @@ msgstr "Vanlig text|t"
 
 #: lib/ui/stdmenus.inc:153
 msgid "Plain Text, Join Lines|J"
-msgstr "Vanlig text, anknyt linjer|j"
+msgstr "Vanlig text, anknyt rader"
 
 #: lib/ui/stdmenus.inc:155
 msgid "Selection|S"
@@ -12554,7 +12554,7 @@ msgstr "Urval"
 
 #: lib/ui/stdmenus.inc:156
 msgid "Selection, Join Lines|i"
-msgstr "Urval, anknyt linjer|i"
+msgstr "Urval, anknyt rader"
 
 #: lib/ui/stdmenus.inc:158
 msgid "Paste as LinkBack PDF"
@@ -13046,7 +13046,7 @@ msgstr "Vanlig text...|t"
 
 #: lib/ui/stdmenus.inc:455
 msgid "Plain Text, Join Lines...|J"
-msgstr "Vanlig text, anknyt linjer...|j"
+msgstr "Vanlig text, anknyt rader..."
 
 #: lib/ui/stdmenus.inc:457
 msgid "External Material...|M"
@@ -16316,7 +16316,7 @@ msgstr "Vanlig text (catdvi)"
 
 #: lib/configure.py:552
 msgid "Plain Text, Join Lines"
-msgstr "Vanlig text, anknyt linjer"
+msgstr "Vanlig text, anknyt rader"
 
 #: lib/configure.py:555
 msgid "Gnumeric spreadsheet"
@@ -17590,7 +17590,7 @@ msgstr "matematikhörn"
 
 #: src/Color.cpp:250
 msgid "math line"
-msgstr "matematiklinje"
+msgstr "matematikrad"
 
 #: src/Color.cpp:252
 msgid "math macro hovered background"
@@ -18432,7 +18432,7 @@ msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
 msgstr ""
-"LyX uppdaterar normalt inte markörpositionen om du flyttar rullningslistan. "
+"LyX uppdaterar normalt inte markörpositionen om du flyttar rullningslisten. "
 "Sätt till sant om du föredrar att alltid ha markören på skärmen."
 
 #: src/LyXRC.cpp:3128
@@ -19039,7 +19039,7 @@ msgstr ""
 
 #: src/Text.cpp:947
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr "Du kan inte skriva två mellanrum i rad. Vänligen läs Nybörjarkursen."
+msgstr "Du kan inte skriva två mellanslag i rad. Vänligen läs Nybörjarkursen."
 
 #: src/Text.cpp:1767
 msgid "[Change Tracking] "
@@ -23381,7 +23381,7 @@ msgstr "Skyddat horisontellt mellanrum (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Okänd innehållsförteckningstyp"
 
-#: src/insets/InsetTabular.cpp:4693
+#: src/insets/InsetTabular.cpp:4701
 msgid "Selection size should match clipboard content."
 msgstr "Urvalets storlek bör matcha klippbordets innehåll."
 
@@ -23495,7 +23495,7 @@ msgstr "Sidbredd %"
 
 #: src/lengthcommon.cpp:40
 msgid "Line Width %"
-msgstr "Linjebredd %"
+msgstr "Radbredd %"
 
 #: src/lengthcommon.cpp:41
 msgid "Text Height %"
