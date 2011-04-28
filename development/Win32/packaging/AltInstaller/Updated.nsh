@@ -10,11 +10,13 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\setup.py" # always here
  SetOutPath "$INSTDIR\Resources" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
+ File /r "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  #SetOutPath "$INSTDIR\Resources\doc"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Customization.lyx"
  SetOutPath "$INSTDIR\Resources\doc\fr"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Tutorial.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Userguide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\sv"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\sv\Shortcuts.lyx"
  SetOutPath "$INSTDIR\Resources\examples\sv"
