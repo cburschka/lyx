@@ -21,7 +21,7 @@
 #   Nu finns det åtminstone en grund att utveckla vidare på.
 #
 #   Behöver förbättras:
-#     Kolumn/kolonn/linje/rad/spalt/osv
+#     Kolumn/kolonn/linje/streck/rad/spalt/osv
 #     Utslutning/avstånd/mellanrum/mellanslag/blanksteg/tomrum/luft/kött/ljusrum
 #
 #   Och diverse: spool, cases, och förmodligen fler som jag nu inte kommer ihåg.
@@ -126,7 +126,7 @@
 #   keyword              -> nyckelord
 #   label                -> etikett, märke?
 #   layout               -> utformning, layout?
-#   line               ? -> linje? rad?
+#   line               ? -> linje? rad? streck?
 #   list                 -> lista
 #   listing              -> listning?
 #   main text            -> brödtext
@@ -221,7 +221,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-27 13:47+0200\n"
+"POT-Creation-Date: 2011-04-28 22:09+0200\n"
 "PO-Revision-Date: 2011-04-26 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
@@ -2068,11 +2068,11 @@ msgstr "Fle&r parametrar"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:183
 msgid "Underline spaces in generated output"
-msgstr "Understryk mellanrum i genererad utmatning"
+msgstr "Understryk mellanslag i genererad utmatning"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:186
 msgid "&Mark spaces in output"
-msgstr "&Märk mellanrum i utmatning"
+msgstr "&Märk mellanslag i utmatning"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:201
 msgid "Show LaTeX preview"
@@ -2445,19 +2445,19 @@ msgstr "&Bryt långa rader"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:281
 msgid "Make spaces visible by a special symbol"
-msgstr "Gör mellanrum synliga med en speciell symbol"
+msgstr "Gör mellanslag synliga med en speciell symbol"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:284
 msgid "S&pace as symbol"
-msgstr "&Mellanrum som symbol"
+msgstr "&Mellanslag som symbol"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:294
 msgid "Make spaces in strings visible by a special symbol"
-msgstr "Gör mellanrum i strängar synliga med en speciell symbol"
+msgstr "Gör mellanslag i strängar synliga med en speciell symbol"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:297
 msgid "Space i&n string as symbol"
-msgstr "Mellanrum i strä&ng som symbol"
+msgstr "Mellanslag i strä&ng som symbol"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:307
 msgid "Tab&ulator size:"
@@ -2583,7 +2583,7 @@ msgstr "Använd marginalinställningarna försedda av dokumentklassen"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:31
 msgid "&Default Margins"
-msgstr "Stan&dardmaginaler"
+msgstr "Stan&dardmarginaler"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:89
 msgid "&Top:"
@@ -11636,35 +11636,35 @@ msgstr "Infoga"
 
 #: lib/ui/stdcontext.inc:65
 msgid "Add Line Above|o"
-msgstr "Lägg till rad ovan|o"
+msgstr "Lägg till linje ovan|o"
 
 #: lib/ui/stdcontext.inc:66 lib/ui/stdmenus.inc:230
 msgid "Add Line Below|B"
-msgstr "Lägg till rad nedan"
+msgstr "Lägg till linje nedan"
 
 #: lib/ui/stdcontext.inc:67
 msgid "Delete Line Above|v"
-msgstr "Radera rad ovan|v"
+msgstr "Radera linje ovan|v"
 
 #: lib/ui/stdcontext.inc:68
 msgid "Delete Line Below|w"
-msgstr "Radera rad nedan"
+msgstr "Radera linje nedan"
 
 #: lib/ui/stdcontext.inc:70 lib/ui/stdmenus.inc:234
 msgid "Add Line to Left"
-msgstr "Lägg till rad till vänster"
+msgstr "Lägg till linje till vänster"
 
 #: lib/ui/stdcontext.inc:71 lib/ui/stdmenus.inc:235
 msgid "Add Line to Right"
-msgstr "Lägg till rad till höger"
+msgstr "Lägg till linje till höger"
 
 #: lib/ui/stdcontext.inc:72 lib/ui/stdmenus.inc:236
 msgid "Delete Line to Left"
-msgstr "Radera rad till vänster"
+msgstr "Radera linje till vänster"
 
 #: lib/ui/stdcontext.inc:73 lib/ui/stdmenus.inc:237
 msgid "Delete Line to Right"
-msgstr "Radera rad till höger"
+msgstr "Radera linje till höger"
 
 #: lib/ui/stdcontext.inc:75
 msgid "Show Math Toolbar"
@@ -12662,15 +12662,15 @@ msgstr "Använd datoralgebrasystem|s"
 
 #: lib/ui/stdmenus.inc:229
 msgid "Add Line Above|A"
-msgstr "Lägg till rad ovan|a"
+msgstr "Lägg till linje ovan|a"
 
 #: lib/ui/stdmenus.inc:231
 msgid "Delete Line Above|D"
-msgstr "Radera rad ovan|d"
+msgstr "Radera linje ovan|d"
 
 #: lib/ui/stdmenus.inc:232
 msgid "Delete Line Below|e"
-msgstr "Radera rad nedan|e"
+msgstr "Radera linje nedan|e"
 
 #: lib/ui/stdmenus.inc:244
 msgid "Make First Non-Optional into Optional Argument"
@@ -16965,7 +16965,7 @@ msgstr "Filnamnsfel"
 
 #: src/Buffer.cpp:3571
 msgid "The directory path to the document cannot contain spaces."
-msgstr "Katalogsökvägen till dokumentet kan inte innehålla mellanrum."
+msgstr "Katalogsökvägen till dokumentet kan inte innehålla mellanslag."
 
 #: src/Buffer.cpp:3656
 msgid "Document export cancelled."
@@ -18851,7 +18851,8 @@ msgstr ""
 #: src/LyXRC.cpp:3432
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
-"Typsnittsgraderna som används för att beräkna skalningen för skärmtypsnitten."
+"Typsnittsstorlekarna som används för att beräkna skalningen för "
+"skärmtypsnitten."
 
 #: src/LyXRC.cpp:3437
 #, no-c-format
@@ -19034,7 +19035,7 @@ msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr ""
-"Du kan inte infoga ett mellanrum i början på ett stycke. Vänligen läs "
+"Du kan inte infoga ett mellanslag i början på ett stycke. Vänligen läs "
 "Nybörjarkursen."
 
 #: src/Text.cpp:947
@@ -21610,7 +21611,7 @@ msgstr "Omslutna alfanumeriska"
 
 #: src/frontends/qt4/GuiSymbols.cpp:95
 msgid "Box Drawing"
-msgstr "Ramritning"
+msgstr "Rutritning"
 
 #: src/frontends/qt4/GuiSymbols.cpp:96
 msgid "Block Elements"
@@ -23495,7 +23496,7 @@ msgstr "Sidbredd %"
 
 #: src/lengthcommon.cpp:40
 msgid "Line Width %"
-msgstr "Radbredd %"
+msgstr "Linjebredd %"
 
 #: src/lengthcommon.cpp:41
 msgid "Text Height %"
