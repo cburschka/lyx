@@ -124,16 +124,12 @@
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author -712698321 "Jürgen Spitzmüller" 
 \author 5863208 "ab" 
-\author 1414654397 "Richard Heck" 
-\author 1556375488 "Stephan Witt" 
-\author 1607599024 "Richard Heck" rgheck@comcast.net
 \end_header
 
 \begin_body
@@ -1453,13 +1449,7 @@ Navigating
 \end_layout
 
 \begin_layout Standard
-LyX offers you 
-\change_deleted 1414654397 1302960211
-two 
-\change_inserted 1414654397 1302960212
-several 
-\change_unchanged
-ways to navigate in documents:
+LyX offers you several ways to navigate in documents:
 \end_layout
 
 \begin_layout Itemize
@@ -1484,13 +1474,9 @@ arg   "dialog-toggle toc"
 \end_inset
 
 .
-\change_inserted 1414654397 1302960291
-
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted 1414654397 1302960282
 You can set bookmarks in your document under 
 \family sans
 Navigate\SpecialChar \menuseparator
@@ -1498,13 +1484,9 @@ Bookmarks
 \family default
  and use the same menu to return to them.
  Note that bookmarks are saved between sessions.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1414654397 1302961047
 The toolbar button 
 \begin_inset Info
 type  "icon"
@@ -1524,15 +1506,11 @@ NavigateBack
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted 1414654397 1302960155
 The Outliner
 \end_layout
 
 \begin_layout Standard
-The Outline
-\change_inserted 1414654397 1302960739
- was known in earlier versions of LyX as the 
+The Outline was known in earlier versions of LyX as the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1583,45 +1561,9 @@ reference "sec:Bibliography"
 ).
  Clicking on any of these will take you to the corresponding object in your
  document.
-
-\change_deleted 1414654397 1302960743
- window shows you the content of the document's table of contents (TOC)
- that is described in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Table-of-Contents"
-
-\end_inset
-
-.
- You can click there on entries to jump to the corresponding document part.
- In the pull-down box at the top of the outline window, you can choose between
- different lists of document objects, like the list of footnotes.
- Some of them, the list of tables, figures, and algorithms can also be added
- to the document, see section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:List-of-Figures"
-
-\end_inset
-
-.
- 
-\change_inserted 1414654397 1302961073
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1414654397 1302961268
 Right-clicking on elements in the Outline will in many cases open a context
  menu that will allow for direct modification of those elements.
  For example, with citations, the context menu allows you to open the citation
@@ -1631,8 +1573,6 @@ Right-clicking on elements in the Outline will in many cases open a context
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1414654397 1302961348
 The `Filter' field at the top allows you to restrict which entries appear
  in the Outline.
  For example, if you are displaying the list of Labels and References and
@@ -1648,27 +1588,15 @@ sub:
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1414654397 1302961396
 At the bottom of the outline are several buttons and the like that allow
  you further to control the display.
- 
-\change_unchanged
-The 
+ The 
 \family sans
 Sort
 \family default
- option sorts the current list
-\change_inserted 1414654397 1302961441
- alphabetically.
+ option sorts the current list alphabetically.
  Otherwise, the elements appear in the order in which they occur in the
- document.
-\change_deleted 1414654397 1302961448
-, and t
-\change_inserted 1414654397 1302961449
-T
-\change_unchanged
-he 
+ document.The 
 \family sans
 Keep
 \family default
@@ -1703,8 +1631,6 @@ Keep
 \end_inset
 
 3.
-
-\change_inserted 1414654397 1302961566
  Finally, the slider at the left can be used to open the Outline to a given
  
 \begin_inset Quotes eld
@@ -1719,42 +1645,6 @@ depth
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 1414654397 1302960914
-With the buttons 
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../images/down.png
-	scale 85
-	groupId toolbarbuttons
-
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
- and 
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../images/up.png
-	scale 85
-	groupId toolbarbuttons
-
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
- at the bottom of the outline window you can 
-\change_inserted 1414654397 1302961517
 The 
 \begin_inset space ~
 \end_inset
@@ -1770,12 +1660,9 @@ The
 \end_inset
 
 button refreshes the TOC (though this should not usually be necessary).
- Next to it are buttons that allow you to 
-\change_unchanged
-change the position of sections in your document.
- 
-\change_inserted 1414654397 1302960951
-The 
+ Next to it are buttons that allow you to change the position of sections
+ in your document.
+ The 
 \begin_inset space \space{}
 \end_inset
 
@@ -1808,9 +1695,7 @@ The
 \end_inset
 
  buttons move sections up and down in the document.
- 
-\change_unchanged
-So, for example, you can move section
+ So, for example, you can move section
 \begin_inset space ~
 \end_inset
 
@@ -1818,15 +1703,11 @@ So, for example, you can move section
 \begin_inset space ~
 \end_inset
 
-2.4
-\change_inserted 1414654397 1302960981
- or after section
+2.4 or after section
 \begin_inset space ~
 \end_inset
 
-2.6
-\change_unchanged
-.
+2.6.
  LyX will then automatically renumber the sections to the new order.
  With the buttons 
 \begin_inset Graphics
@@ -1844,11 +1725,7 @@ So, for example, you can move section
 
 \end_inset
 
- 
-\change_inserted 1414654397 1302960990
-(
-\change_unchanged
-or the corresponding key bindings 
+ (or the corresponding key bindings 
 \family sans
 Tab
 \family default
@@ -1870,29 +1747,6 @@ Shift-Tab
 \end_inset
 
 2.4.1.
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 1414654397 1302960144
-The toolbar button 
-\begin_inset Info
-type  "icon"
-arg   "bookmark-goto 0"
-\end_inset
-
- (
-\family sans
-Navigate\SpecialChar \menuseparator
-Bookmarks\SpecialChar \menuseparator
-NavigateBack
-\family default
-) jumps to the position in the document where you recently changed something.
- This is useful when you have a large document and navigated or scrolled
- to another document part to look for something, and want to go back to
- your last editing position.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Section
@@ -2809,13 +2663,7 @@ Availability
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 1607599024 1294953623
-New users are sometimes puzzled by the fact
-\change_inserted 1607599024 1294953628
-You will probably find
-\change_unchanged
- that many of the document classes listed under 
+You will probably find that many of the document classes listed under 
 \family sans
 Document\SpecialChar \menuseparator
 Settings\SpecialChar \menuseparator
@@ -2840,63 +2688,23 @@ Unavailable
 \end_inset
 
 .
- 
-\change_inserted 1607599024 1294953653
-If you open a document that uses such a class, you will 
-\change_deleted 1607599024 1294953655
-Or they are surprised that, when they open e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
-\end_inset
-
-the 
-\family sans
-iop-article
-\family default
- template, they 
-\change_unchanged
-receive a warning saying that 
-\change_inserted 1607599024 1294953700
-there are files that are required to produce output that are not installed.
- 
-\change_deleted 1607599024 1294953702
-the document requires files that are not installed to produce output.
- 
-\change_unchanged
-So it 
-\change_inserted 1607599024 1294953709
-may 
-\change_unchanged
-seem
-\change_deleted 1607599024 1294953710
-s
-\change_unchanged
- that something is wrong.
+ If you open a document that uses such a class, you will receive a warning
+ saying that there are files that are required to produce output that are
+ not installed.
+ So it may seem that something is wrong.
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 1607599024 1294953717
-But n
-\change_inserted 1607599024 1294953719
-N
-\change_unchanged
-othing is wrong.
+Nothing is wrong.
  LyX includes many more document classes than you will ever need to use,
  and some of them, like 
 \family sans
 IOP
 \family default
 , are highly specialized.
-
-\change_inserted 1607599024 1294953729
- 
-\change_unchanged
-LyX tries to support as many different types of documents as possible, and
- it includes almost one hundred different layout files, with a growing number.
+ LyX tries to support as many different types of documents as possible,
+ and it includes almost one hundred different layout files, with a growing
+ number.
  No LaTeX distribution will install by default all files that might be needed
  by some document class.
  There are just too many of them.
@@ -3007,42 +2815,16 @@ Document ! Settings
 \end_layout
 
 \begin_layout Standard
-Some modules require LaTeX packages 
-\change_inserted 1607599024 1294953807
-or file format converters 
-\change_unchanged
-that are not always installed by default.
- LyX will warn you if you do not have 
-\change_inserted 1607599024 1294953817
-a 
-\change_deleted 1607599024 1294953818
-the 
-\change_unchanged
-needed package
-\change_inserted 1607599024 1294953887
- or converter, and it will tell you what exactly you are missing
-\change_unchanged
-.
+Some modules require LaTeX packages or file format converters that are not
+ always installed by default.
+ LyX will warn you if you do not have a needed package or converter, and
+ it will tell you what exactly you are missing.
  You can still use the module while editing your file, but you will not
  be able to export to PDF or print your document, since LyX will not be
- able to compile the LaTeX file without the missing 
-\change_deleted 1607599024 1294953839
-package
-\change_inserted 1607599024 1294953843
-prerequisites
-\change_unchanged
-.
- If you want to be able to produce 
-\change_inserted 1414654397 1302961839
-this kind of 
-\change_unchanged
-output, then you need to install the missing 
-\change_deleted 1607599024 1294953855
-package
-\change_inserted 1607599024 1294953855
-prerequisites
-\change_unchanged
- and then reconfigure LyX by selecting 
+ able to compile the LaTeX file without the missing prerequisites.
+ If you want to be able to produce this kind of output, then you need to
+ install the missing prerequisites and then reconfigure LyX by selecting
+ 
 \family sans
 Tools\SpecialChar \menuseparator
 Reconfigure
@@ -3088,23 +2870,15 @@ Note:
 \end_inset
 
 
-\change_inserted 1414654397 1302961851
-
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted 1414654397 1302961879
 Local Layout
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1302961873
 Document ! Local Layout
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3113,8 +2887,6 @@ Document ! Local Layout
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1414654397 1302962459
 Modules are to LyX much as packages are to LaTeX: They are intended to be
  used in a variety of different documents, and if you often find yourself
  needing the same sort of thing in different documents, you should consider
@@ -3134,8 +2906,6 @@ Local Layout
 .
  See chapter 5 of the Customization manual for information on how to use
  it.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -11006,10 +10776,6 @@ height "1pt"
 
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Section
 Characters and Symbols
 \end_layout
@@ -12356,17 +12122,11 @@ Text
 \begin_inset space ~
 \end_inset
 
-Style
-\change_inserted 5863208 1302821857
-\SpecialChar \menuseparator
+Style\SpecialChar \menuseparator
 Customized\SpecialChar \ldots{}
 
 \family default
- 
-\change_deleted 5863208 1302821862
- 
-\change_unchanged
-dialog.
+ dialog.
  There are several boxes on this dialog, each corresponding to a different
  font property which you can choose.
  You can choose an option for one of these properties, or select 
@@ -12893,14 +12653,10 @@ arg   "font-size giant"
 \end_inset
 
 )
-\change_inserted 5863208 1302821897
-
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\change_inserted 5863208 1302821911
 
 \family sans
 Increase
@@ -12934,8 +12690,6 @@ arg   "font-size increase"
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
-\change_inserted 5863208 1302821911
-
 \family sans
 Decrease
 \family default
@@ -12963,8 +12717,6 @@ arg   "font-size decrease"
 \end_inset
 
 )
-\change_unchanged
-
 \end_layout
 
 \end_deeper
@@ -13050,14 +12802,10 @@ Avoid using underbar if you can! It's a hangover from the typewriter days,
 may
 \emph default
  need it in order to follow style sheets for journal submissions.
-\change_inserted 5863208 1302821962
-
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\change_inserted 5863208 1302821963
 
 \family sans
 Double
@@ -13088,8 +12836,6 @@ If we just warned you against using underbar, you can imagine what we think
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
-\change_inserted 5863208 1302821963
-
 \family sans
 Wavy
 \begin_inset space ~
@@ -13119,8 +12865,6 @@ Use this only if a journal absolutely insists on it.
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
-\change_inserted 5863208 1302821963
-
 \family sans
 Strikeout
 \family default
@@ -13137,8 +12881,6 @@ arg   "font-strikeout"
 
 ) This is frequently used to indicate an older version of text that has
  since changed.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Labeling
@@ -13269,15 +13011,8 @@ arg   "textstyle-apply"
 \end_inset
 
 .
- The button lets you 
-\change_deleted 5863208 1302822001
-toggle the state
-\change_inserted 5863208 1302822005
-apply
-\change_deleted 5863208 1302822014
- of
-\change_unchanged
- your custom character style even when the dialog isn't visible.
+ The button lets you apply your custom character style even when the dialog
+ isn't visible.
  
 \end_layout
 
@@ -13465,13 +13200,9 @@ Sans serif
  don't use serifs.
  This font type is therefore often used for headings and short texts.
  We use it in this document to highlight menu names.
-\change_inserted 5863208 1302822046
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 5863208 1302822061
 \begin_inset Quotes eld
 \end_inset
 
@@ -13566,8 +13297,6 @@ Medium
 
 ), no matter how many times you apply the style.
  
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -14427,10 +14156,6 @@ To get a look at the final version of your document, with all of the page
 View
 \family default
  and choose 
-\change_deleted -712698321 1301225765
-a file type
-\change_inserted -712698321 1301225910
-
 \family sans
 View
 \family default
@@ -14440,13 +14165,9 @@ type  "icon"
 arg   "buffer-view"
 \end_inset
 
-
-\change_unchanged
 .
- A viewing program will pop up showing the output
-\change_inserted -712698321 1301226025
- in the defined default output format, which is globally set in the preferences
- (see sec.
+ A viewing program will pop up showing the output in the defined default
+ output format, which is globally set in the preferences (see sec.
 \begin_inset space ~
 \end_inset
 
@@ -14469,83 +14190,13 @@ reference "sec:Doc-Output"
 
 \end_inset
 
-)
-\change_unchanged
-.
- 
-\change_deleted -712698321 1301226035
-For
-\change_inserted -712698321 1301226047
-Further output formats can be selected via 
-\change_deleted -712698321 1301226049
- 
-\change_unchanged
-
+).
+ Further output formats can be selected via 
 \family sans
 View\SpecialChar \menuseparator
-
-\change_deleted -712698321 1301226053
-DVI
-\change_inserted -712698321 1301226055
 Other Formats
-\change_unchanged
-
 \family default
- 
-\change_deleted -712698321 1301226064
-you can use the toolbar button 
-\begin_inset Graphics
-	filename ../images/buffer-view_dvi.png
-	scale 85
-	groupId toolbarbuttons
-
-\end_inset
-
- (shortcut 
-\begin_inset Info
-type  "shortcut"
-arg   "buffer-view dvi"
-\end_inset
-
-), for 
-\family sans
-View\SpecialChar \menuseparator
-PDF
-\begin_inset space ~
-\end_inset
-
-(pdflatex)
-\family default
- the toolbar button 
-\begin_inset Graphics
-	filename ../images/buffer-view_pdf2.png
-	scale 85
-	groupId toolbarbuttons
-
-\end_inset
-
-, and for 
-\family sans
-View\SpecialChar \menuseparator
-Postscript
-\family default
- the toolbar button 
-\begin_inset Graphics
-	filename ../images/buffer-view_ps.png
-	scale 85
-	groupId toolbarbuttons
-
-\end_inset
-
- (shortcut 
-\begin_inset Info
-type  "shortcut"
-arg   "buffer-view ps"
-\end_inset
-
-)
-\change_inserted -712698321 1301226110
-or the toolbar button 
+ or the toolbar button 
 \begin_inset Graphics
 	filename ../images/view-others.png
 	scale 85
@@ -14553,8 +14204,6 @@ or the toolbar button
 
 \end_inset
 
-
-\change_unchanged
 .
 \end_layout
 
@@ -14564,17 +14213,13 @@ If you have changed your document, you can refresh the output in the same
 \family sans
 View\SpecialChar \menuseparator
 Update
-\change_inserted -712698321 1301226188
-
 \family default
  or 
 \family sans
 View\SpecialChar \menuseparator
 Update (Other Formats)
 \family default
-, respectively
-\change_unchanged
-.
+, respectively.
 \end_layout
 
 \begin_layout Standard
@@ -27774,8 +27419,11 @@ reference "sub:Index-Program"
 xindy
 \family default
 , however, this won't work for anything other than bold or italic text.
- This is because xindy requires you  to define semantic elements before
- they can be used, see 
+ This is because xindy requires you
+\change_deleted 5863208 1304031984
+ 
+\change_unchanged
+ to define semantic elements before they can be used, see 
 \begin_inset CommandInset citation
 LatexCommand cite
 after "p. 678 ff."
@@ -30294,14 +29942,8 @@ Style-aware search
 \begin_layout Standard
 It is also possible to search for text with specific styles.
  This is done by switching to the 
-\change_inserted 5863208 1297987029
-
 \family sans
 Settings
-\change_deleted 5863208 1297987031
-Advanced
-\change_unchanged
-
 \family default
  tab of the dialog and unchecking the 
 \family sans
@@ -30452,14 +30094,8 @@ Case sensitive
 Ignore format
 \family default
  option in the 
-\change_inserted 5863208 1297987051
-
 \family sans
 Settings
-\change_deleted 5863208 1297987053
-Advanced
-\change_unchanged
-
 \family default
  tab, in order to avoid replacing all 
 \begin_inset Quotes eld
@@ -30522,17 +30158,7 @@ Find
 Insert\SpecialChar \menuseparator
 Insert Regular Expression
 \family default
- 
-\change_deleted 5863208 1297986810
-(shortcut 
-\begin_inset Info
-type  "shortcut"
-arg   "regexp-mode"
-\end_inset
-
-) 
-\change_unchanged
-while the cursor is in the 
+ while the cursor is in the 
 \family sans
 Find
 \family default
@@ -30589,14 +30215,8 @@ Searching for all text with a given style: for example, after unchecking
 Ignore format
 \family default
  option from the 
-\change_inserted 5863208 1297987063
-
 \family sans
 Settings
-\change_deleted 5863208 1297987065
-Advanced
-\change_unchanged
-
 \family default
  tab, entering a 
 \series bold
@@ -30691,143 +30311,55 @@ Spell checking
 \end_layout
 
 \begin_layout Standard
-LyX 
-\change_deleted 1556375488 1303941439
-itself 
-\change_unchanged
-has 
-\change_deleted 1556375488 1303941464
-no
-\change_inserted 1556375488 1303941464
-a
-\change_unchanged
- built-in spell checker.
- 
-\change_deleted 1556375488 1303941484
-Rather i
-\change_inserted 1556375488 1303941484
-I
-\change_unchanged
-t uses one of the 
-\change_deleted 1556375488 1303941504
-external programs
-\change_inserted 1556375488 1303940735
-libraries
-\change_unchanged
- 
+LyX has a built-in spell checker.
+ It uses one of the libraries 
 \family typewriter
 aspell
-\change_deleted 1556375488 1303940758
-
 \family default
 , 
 \family typewriter
-ispell
-\change_unchanged
-
-\family default
-, 
-\family typewriter
-h
-\change_inserted 1556375488 1303940761
-un
-\change_unchanged
-spell
+hunspell
 \family default
 , or 
-\change_deleted 1556375488 1303940769
-
 \family typewriter
-pspell
-\change_inserted 1556375488 1303944461
 enchant
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 1556375488 1303945189
 Enchant itself is a wrapper library having different configurable back-ends.
  Please consult the documentation or man-page of it to learn more.
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
 
-\change_unchanged
-
 \family default
- as back
-\change_inserted 1556375488 1303943654
--
-\change_unchanged
-end.
- 
-\change_inserted 1556375488 1303943734
-Which back-ends are available depends on the platform and the build-time
+ as back-end.
+ Which back-ends are available depends on the platform and the build-time
  configuration of the LyX program.
  E.
  g., on a Mac the operating system provides a spell checking service; there
  it is available as an additional back-end to choose from.
-\change_deleted 1556375488 1303941812
-This section assumes you have already installed and set up one of these
- programs.
- 
-\family typewriter
-aspell
-\family default
- can be seen as the successor to 
-\family typewriter
-ispell
-\family default
-, and contrary to 
-\family typewriter
-ispell
-\family default
-, it supports multiple languages in parallel, so it is recommended to use
- aspell.
- 
-\family typewriter
-hspell
-\family default
- is a Hebrew spell-checker.
- 
-\change_inserted 1556375488 1303943789
- 
-\change_unchanged
-The used spell checker and its settings are specified in LyX's preferences
+ The used spell checker and its settings are specified in LyX's preferences
  under 
 \family sans
 Language Settings
 \family default
 .
-\change_inserted 1556375488 1303941721
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1556375488 1303943659
 LyX can correctly spell check documents containing multiple languages.
  This does work with all back-ends, assuming you have marked the different
  languages appropriately and the dictionaries installed.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
 For LyX on Windows, the selection box for the spell checking program is
  greyed out in the preferences dialog because only 
-\change_deleted 1556375488 1303943857
-
 \family typewriter
-a
-\change_inserted 1556375488 1303943858
-hun
-\change_unchanged
-spell
+hunspell
 \family default
  can be used.
 \end_layout
@@ -30871,86 +30403,14 @@ Document\SpecialChar \menuseparator
 Settings
 \family default
  dialog.
- If you 
-\change_deleted 1556375488 1303944090
-do not
-\change_unchanged
- have 
-\change_inserted 1556375488 1303944022
-m
-\change_unchanged
-a
-\change_inserted 1556375488 1303944025
-rked
-\change_unchanged
+ If you
+\change_deleted 5863208 1304031984
  
-\change_deleted 1556375488 1303944046
-dictionary for 
 \change_unchanged
-the
-\change_deleted 1556375488 1303944053
- document
-\change_unchanged
- 
-\change_inserted 1556375488 1303944162
-different 
-\change_unchanged
-language
-\change_inserted 1556375488 1303944177
-s in your document
-\change_unchanged
-, spell checking will 
-\change_deleted 1556375488 1303944190
-bring an error message
-\change_inserted 1556375488 1303944217
-automatically switch to the appropriate dictionaries
-\change_unchanged
-.
- 
-\change_deleted 1556375488 1303944236
-In this case, y
-\change_inserted 1556375488 1303944236
-Y
-\change_unchanged
-ou can specify 
-\change_deleted 1556375488 1303944256
-another dictionary file
-\change_inserted 1556375488 1303944268
-the language of a word
-\change_unchanged
- in the 
-\change_inserted 1556375488 1303944284
-spellchecker 
-\change_unchanged
-dialog by 
-\change_deleted 1556375488 1303944339
-specifying
-\change_inserted 1556375488 1303944340
-choosing
-\change_unchanged
- a different
-\change_inserted 1556375488 1303944323
- one
-\change_deleted 1556375488 1303944351
- 
-\family sans
-Alternative language
-\family default
- in preferences
-\change_inserted 1556375488 1303944359
- at the top of the
-\change_unchanged
- dialog.
-\change_deleted 1556375488 1303943130
-
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 1556375488 1303943130
-After a spell check you will be informed about the number of checked words.
-\change_unchanged
-
+ have marked the different languages in your document, spell checking will
+ automatically switch to the appropriate dictionaries.
+ You can specify the language of a word in the spellchecker dialog by choosing
+ a different one at the top of the dialog.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -30974,19 +30434,6 @@ Find
 Replace
 \family default
  dialog for that.
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 1556375488 1303941691
-LyX cannot correctly spell check documents containing multiple languages.
- This does work with 
-\family typewriter
-pspell
-\family default
-, assuming you have marked the different languages appropriately.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsubsection*
@@ -31050,71 +30497,11 @@ passthrough
 \end_layout
 
 \begin_layout Description
-
-\change_deleted 1556375488 1303936874
-Use
-\change_inserted 1556375488 1303936879
 Spellcheck
-\change_unchanged
-
 \begin_inset space ~
 \end_inset
 
-
-\change_deleted 1556375488 1303936885
-input
-\begin_inset space ~
-\end_inset
-
-encoding
-\change_inserted 1556375488 1303936887
-continously
-\change_unchanged
- 
-\change_deleted 1556375488 1303936911
-Uses the document encoding that is set in the 
-\family sans
-Document\SpecialChar \menuseparator
-Settings
-\family default
- dialog under 
-\family sans
-Language
-\family default
- also for the spellchecker.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-The encodings are explained in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cha:The-Document-Settings"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- Only enable this if you use 
-\family typewriter
-ispell
-\family default
- and can't spell check words with international letters in them.
- There have been reports that this does not work with all dictionaries,
- so this is disabled by default
-\change_inserted 1556375488 1303937021
-Check the spelling of your document as you type it
-\change_unchanged
-.
-
-\change_inserted 1556375488 1303943477
+continously Check the spelling of your document as you type it.
  Misspelled words gets underlined with a dotted red line.
  The suggestions by the spell checker will be added to the context menu
  of a misspelled word if there were some found.
@@ -31123,8 +30510,6 @@ Check the spelling of your document as you type it
 \end_layout
 
 \begin_layout Description
-
-\change_inserted 1556375488 1303937867
 Spellcheck
 \begin_inset space ~
 \end_inset
@@ -31139,8 +30524,6 @@ and
 
 comments The spelling of non-printed document contents is checked as well.
  You may disable this by deactivating this option.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Section
@@ -31237,26 +30620,18 @@ th_en_EN_v2.dat
 \begin_layout Standard
 If you have OpenOffice and its thesaurus installed, these files should be
  already on your system.
- If not, you can get dictionaries 
-\change_inserted -712698321 1298121514
-either from 
+ If not, you can get dictionaries either from 
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1298121516
-
 http://www.lyx.org/trac/browser/dictionaries/trunk/thes
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
- or 
-\change_unchanged
-from the site 
+ or from the site 
 \begin_inset Flex URL
 status collapsed
 
@@ -31268,32 +30643,15 @@ http://extensions.services.openoffice.org
 \end_inset
 
 .
-
-\change_deleted -712698321 1298121776
- Note that, as of OpenOffice 3.0, these files are usually packed in extension
- archives (
-\emph on
-*.oxt
-\emph default
-) that contain other files such as spellchecker dictionaries besides the
- thesauri.
- These archives are simple zip files, so you can unpack them as you would
- unpack a zip archive.
-\change_inserted -712698321 1298121667
-
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1298121689
 Note that, as of OpenOffice 3.0, the files on 
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1298121688
 
 http://extensions.services.openoffice.org
 \end_layout
@@ -31308,19 +30666,11 @@ http://extensions.services.openoffice.org
  thesauri.
  These archives are simple zip files, so you can unpack them as you would
  unpack a zip archive.
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
- 
-\change_deleted -712698321 1298121653
-
-\end_layout
-
-\begin_layout Standard
-Put the 
+ Put the 
 \emph on
 *.idx
 \emph default
@@ -37867,19 +37217,13 @@ reference "sec:Previewing-snippets-of"
 \end_inset
 
 .
-\change_inserted -712698321 1301219943
-
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -712698321 1301219959
 View Messages
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1301220076
 Opens a window showing console messages.
  This is useful for debugging LyX (i.
 \begin_inset space \thinspace{}
@@ -37890,14 +37234,10 @@ e., hunt for errors in the program) or to see what is going on in the background
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -712698321 1301220084
 View
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1301220342
 This menu entry generates the output you have specified as default output
  format either in the preferences (see sec.
 \begin_inset space ~
@@ -37925,17 +37265,11 @@ reference "sec:Doc-Output"
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -712698321 1301220353
 View (Other Formats)
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1301220444
 With this submenu, you can view your document in alternative output formats.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
@@ -37943,41 +37277,25 @@ Update
 \end_layout
 
 \begin_layout Standard
-This menu entry allows you to update the view with your latest changes 
-\change_inserted -712698321 1301220297
-(in the default output format as described in the previous section) 
-\change_unchanged
-without opening a new view
-\change_inserted -712698321 1301220263
-er
-\change_unchanged
- window.
-\change_inserted -712698321 1301220384
-
+This menu entry allows you to update the view with your latest changes (in
+ the default output format as described in the previous section) without
+ opening a new viewer window.
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -712698321 1301220388
 Update (Other Formats)
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1301220467
 With this submenu, you can update the view of alternative output formats
  of your document without opening a new viewer window.
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -712698321 1301220487
 View Master Document
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1301220814
 This menu item is only visible if your document is included to another document,
  which is then its 
 \begin_inset Quotes eld
@@ -38010,8 +37328,6 @@ View
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1301220854
 The format used by this function is the default output format as specified
  in the preferences (see sec.
 \begin_inset space ~
@@ -38039,14 +37355,10 @@ reference "sec:Doc-Output"
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -712698321 1301220878
 Update Master Document
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1301220947
 This menu item is only visible if your document is included to another document,
  which is then its 
 \begin_inset Quotes eld
@@ -38070,8 +37382,6 @@ Embedded Objects
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1301220879
 The format used by this function is the default output format as specified
  in the preferences (see sec.
 \begin_inset space ~
@@ -41504,8 +40814,6 @@ Toolbar ! View / Update
 \end_inset
 
 
-\change_inserted -712698321 1299491111
-
 \end_layout
 
 \begin_layout Standard
@@ -41566,13 +40874,7 @@ arg   "buffer-view"
 
 \family sans
 View\SpecialChar \menuseparator
-
-\change_deleted -712698321 1301219015
-DVI
-\change_inserted -712698321 1301219016
 View
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -41603,11 +40905,6 @@ arg   "buffer-update"
 \family sans
 View\SpecialChar \menuseparator
 Update
-\change_deleted -712698321 1301219034
-\SpecialChar \menuseparator
-DVI
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -41637,13 +40934,7 @@ arg   "master-buffer-view"
 
 \family sans
 View\SpecialChar \menuseparator
-
-\change_deleted -712698321 1301219081
-PDF
-\change_inserted -712698321 1301219082
 Master
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -41673,14 +40964,7 @@ arg   "master-buffer-update"
 
 \family sans
 View\SpecialChar \menuseparator
-Update
-\change_deleted -712698321 1301219101
-\SpecialChar \menuseparator
-PDF
-\change_inserted -712698321 1301219102
-Master
-\change_unchanged
-
+UpdateMaster
 \end_layout
 
 \end_inset
@@ -41708,23 +40992,11 @@ arg   "buffer-toggle-output-sync"
 
 \begin_layout Plain Layout
 
-\change_deleted -712698321 1301219324
-
 \family sans
-View
-\change_inserted -712698321 1301219325
-Document
-\change_unchanged
-\SpecialChar \menuseparator
-
-\change_deleted -712698321 1301219329
-Postscript
-\change_inserted -712698321 1301219342
+Document\SpecialChar \menuseparator
 Settings\SpecialChar \menuseparator
 Output\SpecialChar \menuseparator
 Synchronize with Output
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -41735,8 +41007,6 @@ Synchronize with Output
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1301219584
 \begin_inset Graphics
 	filename ../images/view-others.png
 	scale 85
@@ -41747,16 +41017,6 @@ Synchronize with Output
 
 \family sans
 *
-\change_deleted -712698321 1301219431
-
-\begin_inset Info
-type  "icon"
-arg   "buffer-update ps"
-\end_inset
-
-
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -41767,18 +41027,8 @@ arg   "buffer-update ps"
 \begin_layout Plain Layout
 
 \family sans
-View
-\change_inserted -712698321 1301219507
-\SpecialChar \menuseparator
-
-\change_deleted -712698321 1301219457
-\SpecialChar \menuseparator
-Update\SpecialChar \menuseparator
-Postscript
-\change_inserted -712698321 1301219471
+View\SpecialChar \menuseparator
 View (Other Formats)
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -41789,8 +41039,6 @@ View (Other Formats)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1301219587
 \begin_inset Graphics
 	filename ../images/update-others.png
 	scale 85
@@ -41808,8 +41056,6 @@ View (Other Formats)
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1301219513
-
 \family sans
 View\SpecialChar \menuseparator
 Update (Other Formats)
@@ -41823,17 +41069,11 @@ Update (Other Formats)
 \end_inset
 
 
-\change_inserted -712698321 1301219552
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1301219630
 * These icons might look different for you if you do not use the default
  icon set.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
@@ -42906,13 +42146,9 @@ European
 
 8859-15) (latin 9) like the ISO-8859-1 encoding, but with the Euro currency
  sign, the œ-ligature and some characters used for French and Finnish
-\change_inserted -712698321 1299489919
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1299575911
 Finally, the dialog lets you select a specific language package for the
  current document.
  See 
@@ -42923,8 +42159,6 @@ reference "sub:Prefs-Language"
 \end_inset
 
  for more information on the language package.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Section
@@ -43159,13 +42393,9 @@ reference "sec:Branches"
 \end_inset
 
 .
-\change_inserted -712698321 1299490648
-
 \end_layout
 
 \begin_layout Section
-
-\change_inserted -712698321 1299490977
 Output
 \begin_inset CommandInset label
 LatexCommand label
@@ -43177,14 +42407,10 @@ name "sec:Doc-Output"
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1299490684
 Here you can define some output specifics for the current document:
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1299575868
 Default
 \begin_inset space ~
 \end_inset
@@ -43247,8 +42473,6 @@ reference "sec:File-Formats"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1299490926
 Synchronize
 \begin_inset space ~
 \end_inset
@@ -43262,11 +42486,7 @@ Output
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1299490928
 TODO!
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -43275,8 +42495,6 @@ TODO!
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1299490931
 XHTML
 \begin_inset space ~
 \end_inset
@@ -43290,17 +42508,11 @@ Options
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1299490933
 TODO!
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -43992,13 +43204,9 @@ Cursor follows scrollbar
 \family default
  sets the cursor to the top of the currently displayed document part when
  scrolling.
-\change_inserted 1556375488 1303935761
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1556375488 1303936683
 You can adjust the thickness of the cursor with the 
 \family sans
 Cursor width
@@ -44006,8 +43214,6 @@ Cursor width
  setting.
  If you set the value to zero the thickness of the cursor scales relative
  to the zoom value you choose for the screen fonts.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -44675,16 +43881,12 @@ Settings ! Language
 
 \begin_layout Subsection
 Language
-\change_inserted -712698321 1299489311
-
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Prefs-Language"
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -44724,35 +43926,8 @@ Language
 \begin_inset space ~
 \end_inset
 
-package 
-\change_deleted -712698321 1299488193
-is a
-\change_inserted -712698321 1299488196
-determines 
-\change_deleted -712698321 1299488202
- LaTeX-command to load a
-\change_inserted -712698321 1299488203
-which
-\change_unchanged
- LaTeX
-\change_inserted -712698321 1299488206
- 
-\change_deleted -712698321 1299488206
--
-\change_unchanged
-package 
-\change_deleted -712698321 1299488213
-that
-\change_inserted -712698321 1299488217
-should be loaded to
-\change_unchanged
- handle
-\change_deleted -712698321 1299488219
-s
-\change_unchanged
- language issues
-\change_inserted -712698321 1299488496
-.
+package determines which LaTeX package should be loaded to handle language
+ issues.
  Language issues which are handled by this package include proper hyphenation
  as well as localization of dates and text strings such as 
 \begin_inset Quotes eld
@@ -44770,30 +43945,10 @@ Table
 \begin_inset Quotes erd
 \end_inset
 
-
-\change_unchanged
 .
- The 
-\change_deleted -712698321 1299488237
-default is the LaTeX-command 
-\family sans
-
-\backslash
-usepackage{babel}
-\family default
- that loads the
-\change_inserted -712698321 1299488356
-most widespread language
-\change_unchanged
- package
-\change_inserted -712698321 1299488356
- is
-\change_unchanged
- 
+ The most widespread language package is 
 \series bold
 babel
-\change_inserted -712698321 1299488633
-
 \series default
 , it's the default language package in classic LaTeX.
  However, more recent typesetting engines such as XeTeX and LuaTeX come
@@ -44804,44 +43959,15 @@ polyglossia
 ) that is more suited for the multi-script support of these engines.
  Furthermore, there are also specific language packages for languages not
  covered by babel.
-\change_deleted -712698321 1299488271
-.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-For an introduction to the LaTeX-Syntax, have a look at section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:TeX-Code"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
 \begin_inset Newline newline
 \end_inset
 
-
-\change_inserted -712698321 1299488707
 The available selections are:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 \noindent
-
-\change_inserted -712698321 1299488784
 
 \series bold
 Automatic
@@ -44857,8 +43983,6 @@ Selects the most appropriate language package for the current typesetting
 \begin_layout Itemize
 \noindent
 
-\change_inserted -712698321 1299488874
-
 \series bold
 Always babel: 
 \series default
@@ -44869,8 +43993,6 @@ Uses always babel, even if another package (such as polyglossia) would have
 
 \begin_layout Itemize
 \noindent
-
-\change_inserted -712698321 1299488983
 
 \series bold
 Custom: 
@@ -44891,36 +44013,14 @@ packagename}
 \begin_layout Itemize
 \noindent
 
-\change_inserted -712698321 1299488998
-
 \series bold
 None: 
 \series default
 Loads no language package at all
-\change_deleted -712698321 1299488523
-
-\series bold
-babel
-\series default
- automatically translates in the background the text labels of documents
- to the document language.
- A text label is, for instance, the word 
-\begin_inset Quotes eld
-\end_inset
-
-Table
-\begin_inset Quotes erd
-\end_inset
-
- at the beginning of every table caption.
-\change_unchanged
-
 \end_layout
 
 \end_deeper
 \begin_layout Description
-
-\change_inserted -712698321 1299489281
 Default
 \begin_inset space ~
 \end_inset
@@ -44986,24 +44086,6 @@ Command start
 \end_layout
 
 \begin_layout Description
-
-\change_deleted -712698321 1299489034
-Use
-\begin_inset space ~
-\end_inset
-
-babel Whether 
-\series bold
-babel
-\series default
- is used or not.
-\change_unchanged
-
-\end_layout
-
-\begin_layout Description
-
-\change_inserted -712698321 1299489068
 Set
 \begin_inset space ~
 \end_inset
@@ -45012,19 +44094,9 @@ languages
 \begin_inset space ~
 \end_inset
 
-
-\change_deleted -712698321 1299489066
-G
-\change_inserted -712698321 1299489071
-g
-\change_unchanged
-lobal
-\change_inserted -712698321 1299489073
-ly
-\change_unchanged
- When this option is set, the languages used in the document will be added
- as options to the document class options, so that they can be used by all
- LaTeX-packages.
+globally When this option is set, the languages used in the document will
+ be added as options to the document class options, so that they can be
+ used by all LaTeX-packages.
  Otherwise they will only be used as options for the 
 \series bold
 babel
@@ -45872,13 +44944,9 @@ Copiers
 Here you find the list of defined file formats that LyX can handle.
  You can modify the viewer and editor program that should be used for certain
  formats.
-\change_inserted -712698321 1299490494
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1299490573
 Furthermore, you can define the 
 \begin_inset Quotes eld
 \end_inset
@@ -45920,8 +44988,6 @@ Update Master Document
 \end_inset
 
  in the Edit menu or the toolbar.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard

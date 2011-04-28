@@ -80,6 +80,7 @@ End
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -126,12 +127,11 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author 1414654397 "Richard Heck"
 \end_header
 
 \begin_body
@@ -3100,19 +3100,13 @@ http://wiki.lyx.org/FAQ/Unsorted#toc31
 \end_inset
 
 .
-\change_inserted 1414654397 1302984017
-
 \end_layout
 
 \begin_layout Section
-
-\change_inserted 1414654397 1302984017
 LyX Archives
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1414654397 1302984082
 Users sometimes need to be able to 
 \begin_inset Quotes eld
 \end_inset
@@ -3128,8 +3122,6 @@ bundle
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1302984017
 lyxpak.py
 \end_layout
 
@@ -3141,11 +3133,7 @@ lyxpak.py
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1302984053
 zipfile
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3155,11 +3143,7 @@ zipfile
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1302984046
 tarfile
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3170,11 +3154,7 @@ tarfile
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1302984059
 gzip
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3184,11 +3164,7 @@ gzip
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1302984063
 tar
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3198,11 +3174,7 @@ tar
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1302984068
 zip
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3211,20 +3183,14 @@ zip
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1414654397 1302984108
 LyX's configuration process will set the script up to export a `LyX Archive',
  and this format will then be available under 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1302984108
 File\SpecialChar \menuseparator
 Export
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3233,19 +3199,13 @@ Export
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1414654397 1302984150
 Independently of the platform, the generation of a particular archive format
  can be forced by adding either the 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1302984113
 -t
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3255,11 +3215,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1302984117
 tar
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3269,11 +3225,7 @@ tar
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1302984121
 -z
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3283,11 +3235,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1302984125
 zip
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3297,12 +3245,8 @@ zip
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1302984131
 LyX\SpecialChar \menuseparator
 LyX Archive
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3312,22 +3256,16 @@ LyX Archive
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1302984137
 Tools\SpecialChar \menuseparator
 Preferences\SpecialChar \menuseparator
 File Handling\SpecialChar \menuseparator
 Converters
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
 .
  (Make sure you add the switch after the script name, not before it.)
-\change_unchanged
-
 \end_layout
 
 \begin_layout Section
@@ -6006,7 +5944,6 @@ usepackage{pdfsync}
 \end_layout
 
 \begin_layout Itemize
- 
 \begin_inset Flex Code
 status collapsed
 

@@ -82,6 +82,7 @@ End
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -133,12 +134,11 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author 1414654397 "Richard Heck"
 \end_header
 
 \begin_body
@@ -6206,19 +6206,13 @@ usly working on actual documents
 .
  Though of course the developers strive to keep LyX stable in such situations,
  syntax errors and the like in your module file could cause strange behavior.
-\change_inserted 1414654397 1302962370
-
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted 1414654397 1302962375
 Local Layout
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1414654397 1302962524
 Modules are to LyX as packages are to LaTeX.
  Sometimes, however, you find yourself wanting a specific inset or character
  style just for one document and writing a module that will also be available
@@ -6235,8 +6229,6 @@ Local Layout
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1414654397 1302963263
 You will find it under 
 \family sans
 Document\SpecialChar \menuseparator
@@ -6253,11 +6245,7 @@ Local Layout
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1302962556
 Format
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -6275,18 +6263,12 @@ Format
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1414654397 1302963275
 When you have entered something in the 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1302963275
 Local Layout
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -6311,15 +6293,11 @@ Validate
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1414654397 1302963364
 The warnings at the end of the previous section apply here, too.
  Do not play with local layout while you are actually working, especially
  if you have not saved your document.
  That said, using local layout with a test document can be a very convenient
  way to try out layout ideas, or even to start developing a module.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
@@ -11833,41 +11811,12 @@ status collapsed
 
 \end_inset
 
-] 
-\change_deleted 1414654397 1302985166
-Whether the following Paragraph is allowed to indent its very first row.
- 
+] If set to true, and if 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-
- means that it is not allowed to do so; 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-0
-\end_layout
-
-\end_inset
-
- means it could do so if it wants to.
-\change_inserted 1414654397 1302985275
-If set to true, and if 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted 1414654397 1302985206
 DefaultStyle
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -11877,11 +11826,7 @@ DefaultStyle
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1302985230
 Standard
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -11889,8 +11834,6 @@ Standard
 ) paragraphs are being indented, then the indentation of such a paragraph
  following one of this type will be suppressed.
  (So this will not affect the display of non-default paragraphs.)
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
