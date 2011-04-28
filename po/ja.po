@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-26 12:58+0200\n"
-"PO-Revision-Date: 2011-04-19 16:06+0900\n"
-"Last-Translator: Koji Yokota <yokota33@gmail.com>\n"
+"POT-Creation-Date: 2011-04-28 10:07+0200\n"
+"PO-Revision-Date: 2011-04-15 11:10+0900\n"
+"Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-doc@lists.lyx.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -5219,7 +5219,7 @@ msgstr "概要"
 #: lib/layouts/theorems-ams-extended.module:302
 #: lib/layouts/theorems-ams-extended.module:305
 msgid "Acknowledgement"
-msgstr "謝辞(Acknowledgement)"
+msgstr "謝辞"
 
 #: lib/layouts/AEA.layout:100 lib/layouts/egs.layout:546
 #: lib/layouts/svjour.inc:277
@@ -7384,6 +7384,7 @@ msgid "Emphasize"
 msgstr "強調"
 
 #: lib/layouts/ectaart.layout:152
+#, fuzzy
 msgid "Thanks Reference"
 msgstr "Thanks参照"
 
@@ -8319,11 +8320,11 @@ msgstr "命題(Prop)\\theprop."
 #: lib/layouts/theorems-ams-extended.module:404
 #: lib/layouts/theorems-ams-extended.module:407
 msgid "Question"
-msgstr "問"
+msgstr "問題"
 
 #: lib/layouts/ijmpc.layout:275 lib/layouts/ijmpd.layout:283
 msgid "Question \\thequestion."
-msgstr "問\\thequestion."
+msgstr "問題\\thequestion."
 
 #: lib/layouts/ijmpc.layout:284 lib/layouts/ijmpd.layout:293
 #: lib/layouts/theorems-ams-bytype.inc:292 lib/layouts/theorems-bytype.inc:268
@@ -10236,8 +10237,8 @@ msgid ""
 "examples."
 msgstr ""
 "言語学に便利な特別な環境をいくつか（付番用例や語句注解、セマンティック・マー"
-"クアップ、タブローフロート）定義します。exampleディレクトリのlinguistics.lyx"
-"ファイルをご参照ください。"
+"クアップ、絵画フロート）定義します。exampleディレクトリのlinguistics.lyxファ"
+"イルをご参照ください。"
 
 #: lib/layouts/linguistics.module:13
 msgid "Numbered Example (multiline)"
@@ -10297,11 +10298,11 @@ msgstr "意味"
 
 #: lib/layouts/linguistics.module:168
 msgid "Tableau"
-msgstr "タブロー"
+msgstr "絵画"
 
 #: lib/layouts/linguistics.module:173
 msgid "List of Tableaux"
-msgstr "タブロー一覧"
+msgstr "絵画一覧"
 
 #: lib/layouts/logicalmkup.module:2
 msgid "Logical Markup"
@@ -10385,8 +10386,9 @@ msgid "Sweave opts"
 msgstr "Sweaveオプション"
 
 #: lib/layouts/sweave.module:74
+#, fuzzy
 msgid "S/R expression"
-msgstr "S/R表現"
+msgstr "表現"
 
 #: lib/layouts/sweave.module:75
 msgid "S/R expr"
@@ -10601,8 +10603,8 @@ msgid ""
 "in both numbered and non-numbered forms."
 msgstr ""
 "AMS定理パッケージを使う定理環境をいくつか追加定義します。中には、基準・アルゴ"
-"リズム・公理・条件・注釈・記法・要約・謝辞・結論・事実・仮定・場合・問が、連"
-"番ありと連番なしの両方の形で含まれています。"
+"リズム・公理・条件・注釈・記法・要約・謝辞・結論・事実・仮定・場合・問題が、"
+"連番ありと連番なしの両方の形で含まれています。"
 
 #: lib/layouts/theorems-ams-extended.module:10
 #: lib/layouts/theorems-ams.module:9 lib/layouts/theorems-chap.module:9
@@ -10653,15 +10655,15 @@ msgstr "仮定 \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:382
 msgid "Question \\thetheorem."
-msgstr "問 \\thetheorem."
+msgstr "問題 \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:395
 msgid "Question*"
-msgstr "問*"
+msgstr "問題*"
 
 #: lib/layouts/theorems-ams-extended.module:398
 msgid "Question."
-msgstr "問."
+msgstr "問題."
 
 #: lib/layouts/theorems-ams.module:2
 msgid "Theorems (AMS)"
@@ -23136,7 +23138,7 @@ msgstr "保護された水平スペース（%1$s）"
 msgid "Unknown TOC type"
 msgstr "未知の目次型"
 
-#: src/insets/InsetTabular.cpp:4693
+#: src/insets/InsetTabular.cpp:4701
 msgid "Selection size should match clipboard content."
 msgstr "選択した大きさが、クリップボードの内容と一致していなくてはなりません。"
 
