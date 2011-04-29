@@ -4871,7 +4871,7 @@ LyX je vyvíjen týmem programátorů na pěti kontinentech.
 \end_layout
 
 \begin_layout Itemize
-LyX umí číst dokumenty v LaTeXu.
+LyX umí načíst dokumenty v LaTeXu.
 \end_layout
 
 \begin_layout Itemize
@@ -4879,7 +4879,7 @@ LyX umí pracovat s revizemi daného dokumentu (Dokument->Změnit
 \begin_inset space ~
 \end_inset
 
-revize)
+revize).
 \end_layout
 
 \begin_layout Itemize
@@ -4915,7 +4915,15 @@ Kontrola se děje vždy od pozice kurzoru do konce dokumentu.
 
 \end_inset
 
+ Případně lze zapnout automatickou kontrolu pravopisu v textu (
+\family sans
+Nástroje -> Nastavení
+\family default
+).
+\end_layout
 
+\begin_layout Itemize
+LyX umí porovnávat dokumenty.
 \end_layout
 
 \begin_layout Itemize
