@@ -1,4 +1,4 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.10svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -32,12 +33,15 @@
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\quotes_language swedish
+\defskip medskip
+\quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
 \tracking_changes false
 \output_changes false
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -47,7 +51,7 @@ Tangentbordsgenvägar för LyX
 \end_layout
 
 \begin_layout Author
-av LyX-teamet
+av LyX-gruppen
 \end_layout
 
 \begin_layout Standard
@@ -62,11 +66,11 @@ arg   "bind_file"
 
 \family default
 .
- Du kan ändra genvägarna genom att välja en annan bindfil i 
+ Du kan ändra genvägarna genom att välja en annan bindfil i panelen 
 \family sans
-Användargränssnittets 
+Användargränssnitt 
 \family default
-panel i inställningsdialogen (
+i inställningsdialogen (
 \family sans
 
 \begin_inset Info
@@ -77,7 +81,6 @@ arg   "dialog-show prefs"
 
 \family default
 ).
- 
 \end_layout
 
 \begin_layout Subsection*
@@ -442,7 +445,7 @@ arg   "buffer-previous"
 \end_layout
 
 \begin_layout Subsection*
-Redigera
+Redigering
 \end_layout
 
 \begin_layout Standard
@@ -610,7 +613,7 @@ arg   "paste"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Betona
+Betoning
 \end_layout
 
 \end_inset
@@ -752,7 +755,7 @@ arg   "undo"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Understreck
+Understrykning
 \end_layout
 
 \end_inset
@@ -1024,7 +1027,7 @@ Tillfoga kolumn
 \begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
-arg   "inset-modify tabular append-column"
+arg   "tabular-feature append-column"
 \end_inset
 
 
@@ -1047,7 +1050,7 @@ Tillfoga rad
 \begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
-arg   "inset-modify tabular append-row"
+arg   "tabular-feature append-row"
 \end_inset
 
 
@@ -1070,7 +1073,7 @@ Kopiera kolumn
 \begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
-arg   "inset-modify tabular copy-column"
+arg   "tabular-feature copy-column"
 \end_inset
 
 
@@ -1095,7 +1098,7 @@ Radera kolumn
 \begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
-arg   "inset-modify tabular delete-column"
+arg   "tabular-feature delete-column"
 \end_inset
 
 
@@ -1118,7 +1121,7 @@ Radera rad
 \begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
-arg   "inset-modify tabular delete-row"
+arg   "tabular-feature delete-row"
 \end_inset
 
 
@@ -1141,7 +1144,7 @@ Kopiera rad
 \begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
-arg   "inset-modify tabular copy-row"
+arg   "tabular-feature copy-row"
 \end_inset
 
 
@@ -2296,7 +2299,7 @@ Matematiska symboler
 \begin_inset Text
 
 \begin_layout Plain Layout
- Symbol 
+Symbol
 \end_layout
 
 \end_inset
@@ -2352,7 +2355,7 @@ Genväg
 \begin_inset Text
 
 \begin_layout Plain Layout
-Matteläge
+Platsformel
 \end_layout
 
 \end_inset
@@ -2429,7 +2432,7 @@ arg   "math-insert \\bar"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Visningsmatte
+Visningsformel
 \end_layout
 
 \end_inset
