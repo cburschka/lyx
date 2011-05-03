@@ -1,0 +1,184 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrartcl
+\use_default_options true
+\maintain_unincluded_children false
+\language french
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman palatino
+\font_sans lmss
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Installation rapide de LyX 2.0
+\end_layout
+
+\begin_layout Date
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pour installer LyX, la marche à suivre est la suivante :
+\end_layout
+
+\begin_layout Enumerate
+Préparation du système
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Si c'est votre première installation de LyX, assurez-vous d'avoir une version
+ récente de MacTeX 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.tug.org/mactex
+\end_layout
+
+\end_inset
+
+.
+ LyX s'appuie sur LaTeX pour composer les documents et ne peut pas produire
+ de documents imprimables sans cela.
+\end_layout
+
+\begin_layout Itemize
+Si vous utilisiez précédemment 
+\begin_inset Quotes fld
+\end_inset
+
+LyX 1.6
+\begin_inset Quotes frd
+\end_inset
+
+ et que vous voulez continuer à utiliser vos réglages, procédez comme suit
+ :
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Dans le Finder, sélectionnez le dossier LyX-1.6 dans Bibliothèque>Application
+ Support.
+\end_layout
+
+\begin_layout Itemize
+Dupliquez ce dossier (Fichier > Dupliquer).
+\end_layout
+
+\begin_layout Itemize
+Renommez la copie en 
+\begin_inset Quotes fld
+\end_inset
+
+LyX-2.0
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+Ouvrez l'image disque de LyX 2.0 (ce que vous avez probablement déjà fait
+ si vous lisez ceci).
+\end_layout
+
+\begin_layout Enumerate
+Glissez l'icône LyX dans le dossier Applications.
+\end_layout
+
+\begin_layout Enumerate
+Démarrez LyX.
+\end_layout
+
+\begin_layout Enumerate
+Vous trouverez une liste des nouvelles fonctionnalités de LyX 2.0 (malheureusemen
+t en anglais) à 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/LyX/NewInLyX20
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document
