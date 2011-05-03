@@ -143,10 +143,13 @@ bool HunspellChecker::Private::haveDictionary(Language const * lang, string & hp
 		return false;
 	}
 
-	LYXERR(Debug::FILES, "check hunspell path: " << hpath << " for language " << lang);
+	LYXERR(Debug::FILES, "check hunspell path: " << hpath
+				<< " for language " << (lang ? lang->lang() : "NULL" ));
+
 	string h_path = addName(hpath, HunspellDictionaryName(lang));
 	// first we try lang code+variety
 	if (haveLanguageFiles(h_path)) {
+		LYXERR(Debug::FILES, "  found " << h_path);
 		hpath = h_path;
 		return true;
 	}
@@ -155,6 +158,7 @@ bool HunspellChecker::Private::haveDictionary(Language const * lang, string & hp
 	if (!haveLanguageFiles(h_path)) {
 		return false;
 	}
+	LYXERR(Debug::FILES, "  found " << h_path);
 	hpath = h_path;
 	return true;
 }
