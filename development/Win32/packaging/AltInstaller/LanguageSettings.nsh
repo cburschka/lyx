@@ -699,6 +699,12 @@
    StrCpy ${LangEnc} "cp-1250"
   ${endif}
 
+  ${if} ${Name} == "Svenska"
+   StrCpy ${LangCde} "sv_SE"
+   StrCpy ${LangNmeLyX} "swedish"
+   StrCpy ${LangEnc} "cp-1252"
+  ${endif}
+  
   ${if} ${Name} == "Suomi"
    StrCpy ${LangCde} "fi_FI"
    StrCpy ${LangNmeLyX} "finnish"
