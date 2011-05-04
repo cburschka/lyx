@@ -55,6 +55,9 @@ std::string current_root();
 ///
 shell_type shell();
 
+/// Returns no. of minutes allowed for a command to complete.
+int timeout_min();
+
 /// Name of the python interpreter
 std::string const python();
 
