@@ -10,11 +10,13 @@ CLEANFILES += $(BUILT_SOURCES)
 # Use _() for localization instead of tr() or trUtf8()
 UIC4FLAGS=-tr lyx::qt_
 
+# The ui_%.h pattern must match the filter in ../../../po/Rules-lyx
 ui_%.h: ui/%.ui
 	$(AM_V_GEN)$(UIC4) $(UIC4FLAGS) $< -o $@
 
 MOCEDFILES = $(MOCHEADER:%.h=moc_%.cpp)
 
+# The moc_%.cpp pattern must match the filter in ../../../po/Rules-lyx
 moc_%.cpp: %.h
 	$(AM_V_GEN)$(MOC4) -o $@ $<
 
