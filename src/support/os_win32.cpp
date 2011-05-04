@@ -423,6 +423,12 @@ shell_type shell()
 }
 
 
+int timeout_min()
+{
+	return 30;
+}
+
+
 char path_separator()
 {
 	return ';';

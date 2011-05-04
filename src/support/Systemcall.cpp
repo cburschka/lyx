@@ -225,8 +225,8 @@ int Systemcall::startscript(Starttype how, string const & what, bool process_eve
 		return 0;
 	}
 
-	int timeout_min = 30;
-	if (!d.waitWhile(SystemcallPrivate::Running, process_events, timeout_min * 60 * 1000)) {
+	if (!d.waitWhile(SystemcallPrivate::Running, process_events,
+			 os::timeout_min() * 60 * 1000)) {
 		LYXERR0("Systemcall: '" << cmd << "' did not finish!");
 		LYXERR0("error " << d.errorMessage());
 		LYXERR0("status " << d.exitStatusMessage());
