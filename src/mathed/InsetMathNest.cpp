@@ -371,6 +371,7 @@ MathData InsetMathNest::glue() const
 
 void InsetMathNest::write(WriteStream & os) const
 {
+	MathEnsurer ensurer(os, currentMode() == MATH_MODE);
 	ModeSpecifier specifier(os, currentMode(), lockedMode());
 	docstring const latex_name = name();
 	os << '\\' << latex_name;
