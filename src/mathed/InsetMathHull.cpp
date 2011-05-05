@@ -245,7 +245,8 @@ void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype)
 	if (haveNumbers()) {
 		BufferParams const & bp = buffer_->params();
 		string const & lang = it->getParLanguage(bp)->code();
-		Counters & cnts = bp.documentClass().counters();
+		Counters & cnts =
+			buffer_->masterBuffer()->params().documentClass().counters();
 
 		// right now, we only need to do this at export time
 		if (utype == OutputUpdate) {
