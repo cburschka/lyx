@@ -32,7 +32,7 @@ try:
     import lyx2lyx_version
     version__ = lyx2lyx_version.version
 except: # we are running from build directory so assume the last version
-    version__ = '2.0'
+    version__ = '2.1'
 
 default_debug__ = 2
 
@@ -80,8 +80,9 @@ format_relation = [("0_06",    [200], minor_versions("0.6" , 4)),
                    ("1_3",     [221], minor_versions("1.3" , 7)),
                    ("1_4", range(222,246), minor_versions("1.4" , 5)),
                    ("1_5", range(246,277), minor_versions("1.5" , 7)),
-                   ("1_6", range(277,346), minor_versions("1.6" , 0)),
-                   ("2_0",     [],    minor_versions("2.0", 0))]
+                   ("1_6", range(277,346), minor_versions("1.6" , 10)),
+                   ("2_0", range(347,414), minor_versions("2.0", 0)),
+                   ("2_1",     [], minor_versions("2.1", 0))]
 
 ####################################################################
 # This is useful just for development versions                     #
