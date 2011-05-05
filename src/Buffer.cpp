@@ -3523,6 +3523,7 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 				   formats.extension(backend_format));
 
 	// fix macros
+	updateMacros();
 	updateMacroInstances();
 
 	// Plain text backend
