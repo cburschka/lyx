@@ -37,6 +37,11 @@ void writePlaintextFile(Buffer const & buf, FileName const & fname,
 	ofdocstream ofs;
 	if (!openFileWrite(ofs, fname))
 		return;
+
+	// make sure we are ready to export
+	buf.updateBuffer();
+	buf.updateMacroInstances();
+
 	writePlaintextFile(buf, ofs, runparams);
 }
 

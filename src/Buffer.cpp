@@ -1086,6 +1086,11 @@ bool Buffer::save() const
 
 bool Buffer::writeFile(FileName const & fname) const
 {
+	// FIXME Do we need to do these here? I don't think writing
+	// the LyX file depends upon it. (RGH)
+	// updateBuffer();
+	// updateMacroInstances();
+
 	if (d->read_only && fname == d->filename)
 		return false;
 
@@ -1270,6 +1275,14 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 	errorList.clear();
 	bool failed_export = false;
 	otexstream os(ofs, d->texrow);
+
+	// make sure we are ready to export
+	// this needs to be done before we validate
+	// FIXME Do we need to do this all the time? I.e., in children
+	// of a master we are exporting?
+	updateBuffer();
+	updateMacroInstances();
+
 	try {
 		os.texrow().reset();
 		writeLaTeXSource(os, original_path,
@@ -1342,15 +1355,6 @@ void Buffer::writeLaTeXSource(otexstream & os,
 			"you are doing.\n";
 	}
 	LYXERR(Debug::INFO, "lyx document header finished");
-
-	// Don't move this behind the parent_buffer=0 code below,
-	// because then the macros will not get the right "redefinition"
-	// flag as they don't see the parent macros which are output before.
-	updateBuffer();
-
-	// fold macros if possible, still with parent buffer as the
-	// macros will be put in the prefix anyway.
-	updateMacroInstances();
 
 	// There are a few differences between nice LaTeX and usual files:
 	// usual is \batchmode and has a
@@ -1505,6 +1509,11 @@ void Buffer::makeDocBookFile(FileName const & fname,
 	if (!openFileWrite(ofs, fname))
 		return;
 
+	// make sure we are ready to export
+	// this needs to be done before we validate
+	updateBuffer();
+	updateMacroInstances();
+
 	writeDocBookSource(ofs, fname.absFileName(), runparams, body_only);
 
 	ofs.close();
@@ -1579,8 +1588,6 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 
 	params().documentClass().counters().reset();
 
-	updateMacros();
-
 	sgml::openTag(os, top);
 	os << '\n';
 	docbookParagraphs(text(), *this, os, runparams);
@@ -1598,6 +1605,11 @@ void Buffer::makeLyXHTMLFile(FileName const & fname,
 	if (!openFileWrite(ofs, fname))
 		return;
 
+	// make sure we are ready to export
+	// this has to be done before we validate
+	updateBuffer(UpdateMaster, OutputUpdate);
+	updateMacroInstances();
+
 	writeLyXHTMLSource(ofs, runparams, body_only);
 
 	ofs.close();
@@ -1612,10 +1624,7 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 {
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
-	updateBuffer(UpdateMaster, OutputUpdate);
 	d->bibinfo_.makeCitationLabels(*this);
-	updateMacros();
-	updateMacroInstances();
 
 	if (!only_body) {
 		os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
@@ -1700,8 +1709,6 @@ int Buffer::runChktex()
 void Buffer::validate(LaTeXFeatures & features) const
 {
 	params().validate(features);
-
-	updateMacros();
 
 	for_each(paragraphs().begin(), paragraphs().end(),
 		 bind(&Paragraph::validate, _1, ref(features)));
@@ -3521,10 +3528,6 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 	filename = addName(temppath(), filename);
 	filename = changeExtension(filename,
 				   formats.extension(backend_format));
-
-	// fix macros
-	updateMacros();
-	updateMacroInstances();
 
 	// Plain text backend
 	if (backend_format == "text") {
