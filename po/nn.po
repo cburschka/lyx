@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-03-22 17:53+0100\n"
+"POT-Creation-Date: 2011-05-06 09:35+0200\n"
 "PO-Revision-Date: 2011-01-04 22:49+0100\n"
 "Last-Translator: Ingar Pareliussen <ingar.pareliussen@_dmmh_no>\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
@@ -7151,7 +7151,7 @@ msgid "NoTelephone"
 msgstr "UtanTelefon"
 
 #: lib/layouts/lettre.layout:43 lib/layouts/lettre.layout:339
-#: lib/layouts/scrlttr2.layout:189 lib/configure.py:356
+#: lib/layouts/scrlttr2.layout:189 lib/configure.py:358
 msgid "Fax"
 msgstr "Faks"
 
@@ -14760,308 +14760,308 @@ msgstr "Dia: $$AbsOrRelPathParent$$Basename"
 msgid "Dia diagram.\n"
 msgstr "Dia diagram.\n"
 
-#: lib/configure.py:264
+#: lib/configure.py:266
 msgid "Tgif"
 msgstr "Tgif"
 
-#: lib/configure.py:267
+#: lib/configure.py:269
 msgid "FIG"
 msgstr "FIG"
 
-#: lib/configure.py:270
+#: lib/configure.py:272
 msgid "DIA"
 msgstr "DIA"
 
-#: lib/configure.py:273
+#: lib/configure.py:275
 msgid "Grace"
 msgstr "Grace"
 
-#: lib/configure.py:276
+#: lib/configure.py:278
 msgid "FEN"
 msgstr "FEN"
 
-#: lib/configure.py:279
+#: lib/configure.py:281
 msgid "SVG"
 msgstr "SVG"
 
-#: lib/configure.py:283
+#: lib/configure.py:285
 msgid "BMP"
 msgstr "BMP"
 
-#: lib/configure.py:284
+#: lib/configure.py:286
 msgid "GIF"
 msgstr "GIF"
 
-#: lib/configure.py:285 src/frontends/qt4/GuiClipboard.cpp:140
+#: lib/configure.py:287 src/frontends/qt4/GuiClipboard.cpp:140
 msgid "JPEG"
 msgstr "JPEG"
 
-#: lib/configure.py:286
+#: lib/configure.py:288
 msgid "PBM"
 msgstr "PBM"
 
-#: lib/configure.py:287
+#: lib/configure.py:289
 msgid "PGM"
 msgstr "PGM"
 
-#: lib/configure.py:288 src/frontends/qt4/GuiClipboard.cpp:139
+#: lib/configure.py:290 src/frontends/qt4/GuiClipboard.cpp:139
 msgid "PNG"
 msgstr "PNG"
 
-#: lib/configure.py:289
+#: lib/configure.py:291
 msgid "PPM"
 msgstr "PPM"
 
-#: lib/configure.py:290
+#: lib/configure.py:292
 msgid "TIFF"
 msgstr "TIFF"
 
-#: lib/configure.py:291
+#: lib/configure.py:293
 msgid "XBM"
 msgstr "XBM"
 
-#: lib/configure.py:292
+#: lib/configure.py:294
 msgid "XPM"
 msgstr "XPM"
 
-#: lib/configure.py:297
+#: lib/configure.py:299
 msgid "Plain text (chess output)"
 msgstr "Rein tekst (Sjakkbrett)"
 
-#: lib/configure.py:298
+#: lib/configure.py:300
 msgid "Plain text (image)"
 msgstr "Rein tekst (Bilete)"
 
-#: lib/configure.py:299
+#: lib/configure.py:301
 msgid "Plain text (Xfig output)"
 msgstr "Rein tekst (Xfig)"
 
-#: lib/configure.py:300
+#: lib/configure.py:302
 msgid "date (output)"
 msgstr "Dato"
 
-#: lib/configure.py:301 src/frontends/qt4/GuiErrorList.cpp:41
+#: lib/configure.py:303 src/frontends/qt4/GuiErrorList.cpp:41
 msgid "DocBook"
 msgstr "DocBook"
 
-#: lib/configure.py:301
+#: lib/configure.py:303
 msgid "DocBook|B"
 msgstr "DocBook|B"
 
-#: lib/configure.py:302
+#: lib/configure.py:304
 msgid "Docbook (XML)"
 msgstr "Docbook (XML)"
 
-#: lib/configure.py:303
+#: lib/configure.py:305
 msgid "Graphviz Dot"
 msgstr "Graphviz Dot"
 
-#: lib/configure.py:304
+#: lib/configure.py:306
 msgid "LaTeX (pLaTeX)"
 msgstr "LaTeX (pLaTeX)"
 
-#: lib/configure.py:305
+#: lib/configure.py:307
 msgid "NoWeb"
 msgstr "NoWeb"
 
-#: lib/configure.py:305
+#: lib/configure.py:307
 msgid "NoWeb|N"
 msgstr "NoWeb|N"
 
-#: lib/configure.py:306
+#: lib/configure.py:308
 msgid "LilyPond music"
 msgstr "LilyPond musikk"
 
-#: lib/configure.py:307
+#: lib/configure.py:309
 msgid "LaTeX (plain)"
 msgstr "LaTeX (enkel)"
 
-#: lib/configure.py:307
+#: lib/configure.py:309
 msgid "LaTeX (plain)|L"
 msgstr "LaTeX (enkel)|L"
 
-#: lib/configure.py:308
+#: lib/configure.py:310
 msgid "LaTeX (pdflatex)"
 msgstr "LaTeX (pdflatex)"
 
-#: lib/configure.py:309 src/frontends/qt4/GuiPrefs.cpp:335
+#: lib/configure.py:311 src/frontends/qt4/GuiPrefs.cpp:335
 msgid "Plain text"
 msgstr "Rein tekst"
 
-#: lib/configure.py:309
+#: lib/configure.py:311
 msgid "Plain text|a"
 msgstr "Rein tekst|e"
 
-#: lib/configure.py:310
+#: lib/configure.py:312
 msgid "Plain text (pstotext)"
 msgstr "Rein tekst (pstotext)"
 
-#: lib/configure.py:311
+#: lib/configure.py:313
 msgid "Plain text (ps2ascii)"
 msgstr "Rein tekst (ps2ascii)"
 
-#: lib/configure.py:312
+#: lib/configure.py:314
 msgid "Plain text (catdvi)"
 msgstr "Rein tekst (catdvi)"
 
-#: lib/configure.py:313
+#: lib/configure.py:315
 msgid "Plain Text, Join Lines"
 msgstr "Rein tekst, knyt saman linjer"
 
-#: lib/configure.py:320
+#: lib/configure.py:322
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: lib/configure.py:325
+#: lib/configure.py:327
 msgid "EPS"
 msgstr "EPS"
 
-#: lib/configure.py:326
+#: lib/configure.py:328
 msgid "Postscript"
 msgstr "Postscript"
 
-#: lib/configure.py:326
+#: lib/configure.py:328
 msgid "Postscript|t"
 msgstr "Postscript|t"
 
-#: lib/configure.py:330
+#: lib/configure.py:332
 msgid "PDF (ps2pdf)"
 msgstr "PDF (ps2pdf)"
 
-#: lib/configure.py:330
+#: lib/configure.py:332
 msgid "PDF (ps2pdf)|P"
 msgstr "PDF (ps2pdf)|P"
 
-#: lib/configure.py:331
+#: lib/configure.py:333
 msgid "PDF (pdflatex)"
 msgstr "PDF (pdflatex)"
 
-#: lib/configure.py:331
+#: lib/configure.py:333
 msgid "PDF (pdflatex)|F"
 msgstr "PDF (pdflatex)|F"
 
-#: lib/configure.py:332
+#: lib/configure.py:334
 msgid "PDF (dvipdfm)"
 msgstr "PDF (dvipdfm)"
 
-#: lib/configure.py:332
+#: lib/configure.py:334
 msgid "PDF (dvipdfm)|m"
 msgstr "PDF (dvipdfm)|m"
 
-#: lib/configure.py:335
+#: lib/configure.py:337
 msgid "DVI"
 msgstr "DVI"
 
-#: lib/configure.py:335
+#: lib/configure.py:337
 msgid "DVI|D"
 msgstr "DVI|D"
 
-#: lib/configure.py:338
+#: lib/configure.py:340
 msgid "DraftDVI"
 msgstr "DraftDVI"
 
-#: lib/configure.py:341
+#: lib/configure.py:343
 msgid "HTML"
 msgstr "HTML"
 
-#: lib/configure.py:341
+#: lib/configure.py:343
 msgid "HTML|H"
 msgstr "HTML|H"
 
-#: lib/configure.py:344
+#: lib/configure.py:346
 msgid "Noteedit"
 msgstr "Noteedit"
 
-#: lib/configure.py:347
+#: lib/configure.py:349
 msgid "OpenDocument"
 msgstr "OpenDocument"
 
-#: lib/configure.py:350
+#: lib/configure.py:352
 msgid "Rich Text Format"
 msgstr "Rikt tekst format"
 
-#: lib/configure.py:351
+#: lib/configure.py:353
 msgid "MS Word"
 msgstr "MS Word"
 
-#: lib/configure.py:351
+#: lib/configure.py:353
 msgid "MS Word|W"
 msgstr "MS Word|W"
 
-#: lib/configure.py:354
+#: lib/configure.py:356
 msgid "date command"
 msgstr "Dato kommando"
 
-#: lib/configure.py:355
+#: lib/configure.py:357
 msgid "Table (CSV)"
 msgstr "Tabell (CSV)"
 
-#: lib/configure.py:357 src/frontends/qt4/GuiView.cpp:922
+#: lib/configure.py:359 src/frontends/qt4/GuiView.cpp:922
 #: src/frontends/qt4/GuiView.cpp:923 src/mathed/MathMacroTemplate.cpp:543
 msgid "LyX"
 msgstr "LyX"
 
-#: lib/configure.py:358
+#: lib/configure.py:360
 msgid "LyX 1.3.x"
 msgstr "LyX 1.3.x"
 
-#: lib/configure.py:359
+#: lib/configure.py:361
 msgid "LyX 1.4.x"
 msgstr "LyX 1.4.x"
 
-#: lib/configure.py:360
+#: lib/configure.py:362
 msgid "LyX 1.5.x"
 msgstr "LyX 1.5.x"
 
-#: lib/configure.py:361
+#: lib/configure.py:363
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK LyX 1.4.x (big5)"
 
-#: lib/configure.py:362
+#: lib/configure.py:364
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr "CJK LyX 1.4.x (euc-jp)"
 
-#: lib/configure.py:363
+#: lib/configure.py:365
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr "CJK LyX 1.4.x (euc-kr)"
 
-#: lib/configure.py:364
+#: lib/configure.py:366
 msgid "LyX Preview"
 msgstr "LyX førehandsvising"
 
-#: lib/configure.py:365
+#: lib/configure.py:367
 msgid "LyX Preview (pLaTeX)"
 msgstr "LyX førehandsvising (pLaTeX)"
 
-#: lib/configure.py:366
+#: lib/configure.py:368
 msgid "PDFTEX"
 msgstr "PDFTEX"
 
-#: lib/configure.py:367
+#: lib/configure.py:369
 msgid "Program"
 msgstr "Program"
 
-#: lib/configure.py:368
+#: lib/configure.py:370
 msgid "PSTEX"
 msgstr "PSTEX"
 
-#: lib/configure.py:369
+#: lib/configure.py:371
 msgid "OpenOffice.Org (sxw)"
 msgstr "OpenOffice.Org (sxw)"
 
-#: lib/configure.py:370 src/frontends/qt4/GuiClipboard.cpp:136
+#: lib/configure.py:372 src/frontends/qt4/GuiClipboard.cpp:136
 msgid "Windows Metafile"
 msgstr "Windows Metafile"
 
-#: lib/configure.py:371 src/frontends/qt4/GuiClipboard.cpp:135
+#: lib/configure.py:373 src/frontends/qt4/GuiClipboard.cpp:135
 msgid "Enhanced Metafile"
 msgstr "Enhanced Metafile"
 
-#: lib/configure.py:372
+#: lib/configure.py:374
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
-#: lib/configure.py:442
+#: lib/configure.py:444
 msgid "LyXBlogger"
 msgstr "LyXBlogger"
 
@@ -15149,12 +15149,12 @@ msgstr "\\begin_header manglar"
 msgid "\\begin_document is missing"
 msgstr "\\begin_document manglar"
 
-#: src/Buffer.cpp:590 src/Buffer.cpp:596 src/BufferView.cpp:1215
-#: src/BufferView.cpp:1221
+#: src/Buffer.cpp:590 src/Buffer.cpp:596 src/BufferView.cpp:1214
+#: src/BufferView.cpp:1220
 msgid "Changes not shown in LaTeX output"
 msgstr "Endring blir ikkje vist i LaTeX eksporten"
 
-#: src/Buffer.cpp:591 src/BufferView.cpp:1216
+#: src/Buffer.cpp:591 src/BufferView.cpp:1215
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -15166,7 +15166,7 @@ msgstr ""
 "Installer desse pakkane eller endre \\lyxadded og \\lyxdeleted i LaTeX "
 "fortekst."
 
-#: src/Buffer.cpp:597 src/BufferView.cpp:1222
+#: src/Buffer.cpp:597 src/BufferView.cpp:1221
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -15653,81 +15653,81 @@ msgstr "Ikkje meir \"Angre\" informasjon"
 msgid "No further redo information"
 msgstr "Ikkje meir \"Gjer om\" informasjon"
 
-#: src/BufferView.cpp:1283 src/lyxfind.cpp:303 src/lyxfind.cpp:321
+#: src/BufferView.cpp:1284 src/lyxfind.cpp:303 src/lyxfind.cpp:321
 msgid "String not found!"
 msgstr "Kan ikkje finne teksten."
 
-#: src/BufferView.cpp:1308
+#: src/BufferView.cpp:1309
 msgid "Mark off"
 msgstr "Merke slått av"
 
-#: src/BufferView.cpp:1315
+#: src/BufferView.cpp:1316
 msgid "Mark on"
 msgstr "Merke på"
 
-#: src/BufferView.cpp:1322
+#: src/BufferView.cpp:1323
 msgid "Mark removed"
 msgstr "Fjerna merke"
 
-#: src/BufferView.cpp:1325
+#: src/BufferView.cpp:1326
 msgid "Mark set"
 msgstr "Merke sett"
 
-#: src/BufferView.cpp:1376
+#: src/BufferView.cpp:1377
 msgid "Statistics for the selection:"
 msgstr "Statistikk for utvalet:"
 
-#: src/BufferView.cpp:1378
+#: src/BufferView.cpp:1379
 msgid "Statistics for the document:"
 msgstr "Statistikk for dokumentet:"
 
-#: src/BufferView.cpp:1381
+#: src/BufferView.cpp:1382
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d ord"
 
-#: src/BufferView.cpp:1383
+#: src/BufferView.cpp:1384
 msgid "One word"
 msgstr "Eitt ord"
 
-#: src/BufferView.cpp:1386
+#: src/BufferView.cpp:1387
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d teikn (med mellomrom)"
 
-#: src/BufferView.cpp:1389
+#: src/BufferView.cpp:1390
 msgid "One character (including blanks)"
 msgstr "Eitt teikn (med mellomrom)"
 
-#: src/BufferView.cpp:1392
+#: src/BufferView.cpp:1393
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d teikn (utan mellomrom)"
 
-#: src/BufferView.cpp:1395
+#: src/BufferView.cpp:1396
 msgid "One character (excluding blanks)"
 msgstr "Eitt teikn (utan mellomrom)"
 
-#: src/BufferView.cpp:1397
+#: src/BufferView.cpp:1398
 msgid "Statistics"
 msgstr "Statistikk"
 
-#: src/BufferView.cpp:2195
+#: src/BufferView.cpp:2199
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Set inn dokument %1$s..."
 
-#: src/BufferView.cpp:2206
+#: src/BufferView.cpp:2210
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s er sett inn."
 
-#: src/BufferView.cpp:2208
+#: src/BufferView.cpp:2212
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunne ikkje sette inn dokumentet %1$s"
 
-#: src/BufferView.cpp:2470
+#: src/BufferView.cpp:2474
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15738,26 +15738,26 @@ msgstr ""
 "%1$s\n"
 "på grunn av feilen: %2$s"
 
-#: src/BufferView.cpp:2472
+#: src/BufferView.cpp:2476
 msgid "Could not read file"
 msgstr "Kan ikkje lese fila"
 
-#: src/BufferView.cpp:2479
+#: src/BufferView.cpp:2483
 #, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "Kan ikkje lese %1$s."
 
-#: src/BufferView.cpp:2480 src/output.cpp:39
+#: src/BufferView.cpp:2484 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Kan ikkje opnafila"
 
-#: src/BufferView.cpp:2487
+#: src/BufferView.cpp:2491
 msgid "Reading not UTF-8 encoded file"
 msgstr "Les fil som ikkje er koda i UTF-8"
 
-#: src/BufferView.cpp:2488
+#: src/BufferView.cpp:2492
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"

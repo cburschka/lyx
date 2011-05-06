@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-03-22 17:53+0100\n"
+"POT-Creation-Date: 2011-05-06 09:35+0200\n"
 "PO-Revision-Date: 2007-06-26 17:10+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -7398,7 +7398,7 @@ msgid "NoTelephone"
 msgstr "電話"
 
 #: lib/layouts/lettre.layout:43 lib/layouts/lettre.layout:339
-#: lib/layouts/scrlttr2.layout:189 lib/configure.py:356
+#: lib/layouts/scrlttr2.layout:189 lib/configure.py:358
 msgid "Fax"
 msgstr "傳真"
 
@@ -15371,342 +15371,342 @@ msgstr "點陣圖：$$AbsOrRelPathParent$$Basename"
 msgid "Dia diagram.\n"
 msgstr ""
 
-#: lib/configure.py:264
+#: lib/configure.py:266
 msgid "Tgif"
 msgstr ""
 
-#: lib/configure.py:267
+#: lib/configure.py:269
 msgid "FIG"
 msgstr ""
 
-#: lib/configure.py:270
+#: lib/configure.py:272
 msgid "DIA"
 msgstr ""
 
-#: lib/configure.py:273
+#: lib/configure.py:275
 #, fuzzy
 msgid "Grace"
 msgstr "灰階"
 
-#: lib/configure.py:276
+#: lib/configure.py:278
 msgid "FEN"
 msgstr ""
 
-#: lib/configure.py:279
+#: lib/configure.py:281
 msgid "SVG"
 msgstr ""
 
-#: lib/configure.py:283
+#: lib/configure.py:285
 msgid "BMP"
 msgstr ""
 
-#: lib/configure.py:284
+#: lib/configure.py:286
 msgid "GIF"
 msgstr ""
 
-#: lib/configure.py:285 src/frontends/qt4/GuiClipboard.cpp:140
+#: lib/configure.py:287 src/frontends/qt4/GuiClipboard.cpp:140
 msgid "JPEG"
 msgstr ""
 
-#: lib/configure.py:286
+#: lib/configure.py:288
 msgid "PBM"
 msgstr ""
 
-#: lib/configure.py:287
+#: lib/configure.py:289
 msgid "PGM"
 msgstr ""
 
-#: lib/configure.py:288 src/frontends/qt4/GuiClipboard.cpp:139
+#: lib/configure.py:290 src/frontends/qt4/GuiClipboard.cpp:139
 msgid "PNG"
 msgstr ""
 
-#: lib/configure.py:289
+#: lib/configure.py:291
 msgid "PPM"
 msgstr ""
 
-#: lib/configure.py:290
+#: lib/configure.py:292
 msgid "TIFF"
 msgstr ""
 
-#: lib/configure.py:291
+#: lib/configure.py:293
 msgid "XBM"
 msgstr ""
 
-#: lib/configure.py:292
+#: lib/configure.py:294
 msgid "XPM"
 msgstr ""
 
-#: lib/configure.py:297
-msgid "Plain text (chess output)"
-msgstr ""
-
-#: lib/configure.py:298
-#, fuzzy
-msgid "Plain text (image)"
-msgstr "純文字"
-
 #: lib/configure.py:299
-msgid "Plain text (Xfig output)"
+msgid "Plain text (chess output)"
 msgstr ""
 
 #: lib/configure.py:300
 #, fuzzy
+msgid "Plain text (image)"
+msgstr "純文字"
+
+#: lib/configure.py:301
+msgid "Plain text (Xfig output)"
+msgstr ""
+
+#: lib/configure.py:302
+#, fuzzy
 msgid "date (output)"
 msgstr "更新 PostScript"
 
-#: lib/configure.py:301 src/frontends/qt4/GuiErrorList.cpp:41
+#: lib/configure.py:303 src/frontends/qt4/GuiErrorList.cpp:41
 msgid "DocBook"
-msgstr ""
-
-#: lib/configure.py:301
-#, fuzzy
-msgid "DocBook|B"
-msgstr "書籤|B"
-
-#: lib/configure.py:302
-msgid "Docbook (XML)"
 msgstr ""
 
 #: lib/configure.py:303
 #, fuzzy
+msgid "DocBook|B"
+msgstr "書籤|B"
+
+#: lib/configure.py:304
+msgid "Docbook (XML)"
+msgstr ""
+
+#: lib/configure.py:305
+#, fuzzy
 msgid "Graphviz Dot"
 msgstr "圖形"
 
-#: lib/configure.py:304
+#: lib/configure.py:306
 #, fuzzy
 msgid "LaTeX (pLaTeX)"
 msgstr "LaTeX 選項(&O)："
 
-#: lib/configure.py:305
+#: lib/configure.py:307
 #, fuzzy
 msgid "NoWeb"
 msgstr "無"
 
-#: lib/configure.py:305
+#: lib/configure.py:307
 #, fuzzy
 msgid "NoWeb|N"
 msgstr "註記|N"
 
-#: lib/configure.py:306
+#: lib/configure.py:308
 #, fuzzy
 msgid "LilyPond music"
 msgstr "LilyPond"
 
-#: lib/configure.py:307
+#: lib/configure.py:309
 #, fuzzy
 msgid "LaTeX (plain)"
 msgstr "LaTeX 選項(&O)："
 
-#: lib/configure.py:307
+#: lib/configure.py:309
 #, fuzzy
 msgid "LaTeX (plain)|L"
 msgstr "LaTeX 選項(&O)："
 
-#: lib/configure.py:308
+#: lib/configure.py:310
 #, fuzzy
 msgid "LaTeX (pdflatex)"
 msgstr "更新 PDF (pdflatex)"
 
-#: lib/configure.py:309 src/frontends/qt4/GuiPrefs.cpp:335
+#: lib/configure.py:311 src/frontends/qt4/GuiPrefs.cpp:335
 msgid "Plain text"
-msgstr "純文字"
-
-#: lib/configure.py:309
-#, fuzzy
-msgid "Plain text|a"
-msgstr "純文字"
-
-#: lib/configure.py:310
-#, fuzzy
-msgid "Plain text (pstotext)"
 msgstr "純文字"
 
 #: lib/configure.py:311
 #, fuzzy
-msgid "Plain text (ps2ascii)"
+msgid "Plain text|a"
 msgstr "純文字"
 
 #: lib/configure.py:312
 #, fuzzy
-msgid "Plain text (catdvi)"
+msgid "Plain text (pstotext)"
 msgstr "純文字"
 
 #: lib/configure.py:313
+#, fuzzy
+msgid "Plain text (ps2ascii)"
+msgstr "純文字"
+
+#: lib/configure.py:314
+#, fuzzy
+msgid "Plain text (catdvi)"
+msgstr "純文字"
+
+#: lib/configure.py:315
 msgid "Plain Text, Join Lines"
 msgstr "純文字，聯結線"
 
-#: lib/configure.py:320
+#: lib/configure.py:322
 #, fuzzy
 msgid "BibTeX"
 msgstr "LaTeX"
 
-#: lib/configure.py:325
+#: lib/configure.py:327
 #, fuzzy
 msgid "EPS"
 msgstr "PS"
 
-#: lib/configure.py:326
+#: lib/configure.py:328
 #, fuzzy
 msgid "Postscript"
 msgstr "Post Scriptum："
 
-#: lib/configure.py:326
+#: lib/configure.py:328
 #, fuzzy
 msgid "Postscript|t"
 msgstr "Post Scriptum："
 
-#: lib/configure.py:330
+#: lib/configure.py:332
 msgid "PDF (ps2pdf)"
 msgstr ""
 
-#: lib/configure.py:330
+#: lib/configure.py:332
 msgid "PDF (ps2pdf)|P"
 msgstr ""
 
-#: lib/configure.py:331
+#: lib/configure.py:333
 #, fuzzy
 msgid "PDF (pdflatex)"
 msgstr "檢視 PDF (pdflatex)"
 
-#: lib/configure.py:331
+#: lib/configure.py:333
 #, fuzzy
 msgid "PDF (pdflatex)|F"
 msgstr "檢視 PDF (pdflatex)"
 
-#: lib/configure.py:332
+#: lib/configure.py:334
 msgid "PDF (dvipdfm)"
 msgstr ""
 
-#: lib/configure.py:332
+#: lib/configure.py:334
 msgid "PDF (dvipdfm)|m"
 msgstr ""
 
-#: lib/configure.py:335
+#: lib/configure.py:337
 msgid "DVI"
 msgstr ""
 
-#: lib/configure.py:335
+#: lib/configure.py:337
 msgid "DVI|D"
 msgstr ""
 
-#: lib/configure.py:338
+#: lib/configure.py:340
 #, fuzzy
 msgid "DraftDVI"
 msgstr "草稿(&D)"
 
-#: lib/configure.py:341
+#: lib/configure.py:343
 msgid "HTML"
 msgstr ""
 
-#: lib/configure.py:341
+#: lib/configure.py:343
 msgid "HTML|H"
 msgstr ""
 
-#: lib/configure.py:344
+#: lib/configure.py:346
 #, fuzzy
 msgid "Noteedit"
 msgstr "NoteToEditor"
 
-#: lib/configure.py:347
+#: lib/configure.py:349
 #, fuzzy
 msgid "OpenDocument"
 msgstr "開啟文件"
 
-#: lib/configure.py:350
+#: lib/configure.py:352
 #, fuzzy
 msgid "Rich Text Format"
 msgstr "文字一般字型"
 
-#: lib/configure.py:351
+#: lib/configure.py:353
 #, fuzzy
 msgid "MS Word"
 msgstr "字詞"
 
-#: lib/configure.py:351
+#: lib/configure.py:353
 #, fuzzy
 msgid "MS Word|W"
 msgstr "計數字詞|W"
 
-#: lib/configure.py:354
+#: lib/configure.py:356
 #, fuzzy
 msgid "date command"
 msgstr "下一個命令"
 
-#: lib/configure.py:355
+#: lib/configure.py:357
 #, fuzzy
 msgid "Table (CSV)"
 msgstr "表格"
 
-#: lib/configure.py:357 src/frontends/qt4/GuiView.cpp:922
+#: lib/configure.py:359 src/frontends/qt4/GuiView.cpp:922
 #: src/frontends/qt4/GuiView.cpp:923 src/mathed/MathMacroTemplate.cpp:543
 msgid "LyX"
 msgstr "LyX"
 
-#: lib/configure.py:358
+#: lib/configure.py:360
 msgid "LyX 1.3.x"
 msgstr ""
 
-#: lib/configure.py:359
+#: lib/configure.py:361
 msgid "LyX 1.4.x"
 msgstr ""
 
-#: lib/configure.py:360
+#: lib/configure.py:362
 msgid "LyX 1.5.x"
 msgstr ""
 
-#: lib/configure.py:361
+#: lib/configure.py:363
 msgid "CJK LyX 1.4.x (big5)"
 msgstr ""
 
-#: lib/configure.py:362
+#: lib/configure.py:364
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr ""
 
-#: lib/configure.py:363
+#: lib/configure.py:365
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr ""
 
-#: lib/configure.py:364
+#: lib/configure.py:366
 #, fuzzy
 msgid "LyX Preview"
 msgstr "預覽"
 
-#: lib/configure.py:365
+#: lib/configure.py:367
 #, fuzzy
 msgid "LyX Preview (pLaTeX)"
 msgstr "預覽"
 
-#: lib/configure.py:366
+#: lib/configure.py:368
 msgid "PDFTEX"
 msgstr ""
 
-#: lib/configure.py:367
+#: lib/configure.py:369
 #, fuzzy
 msgid "Program"
 msgstr "程式清單"
 
-#: lib/configure.py:368
+#: lib/configure.py:370
 msgid "PSTEX"
 msgstr ""
 
-#: lib/configure.py:369
+#: lib/configure.py:371
 msgid "OpenOffice.Org (sxw)"
 msgstr ""
 
-#: lib/configure.py:370 src/frontends/qt4/GuiClipboard.cpp:136
+#: lib/configure.py:372 src/frontends/qt4/GuiClipboard.cpp:136
 #, fuzzy
 msgid "Windows Metafile"
 msgstr "列印到檔案"
 
-#: lib/configure.py:371 src/frontends/qt4/GuiClipboard.cpp:135
+#: lib/configure.py:373 src/frontends/qt4/GuiClipboard.cpp:135
 msgid "Enhanced Metafile"
 msgstr ""
 
-#: lib/configure.py:372
+#: lib/configure.py:374
 msgid "HTML (MS Word)"
 msgstr ""
 
-#: lib/configure.py:442
+#: lib/configure.py:444
 msgid "LyXBlogger"
 msgstr ""
 
@@ -15796,12 +15796,12 @@ msgstr "\\begin_header 缺少"
 msgid "\\begin_document is missing"
 msgstr "\\begin_document 缺少"
 
-#: src/Buffer.cpp:590 src/Buffer.cpp:596 src/BufferView.cpp:1215
-#: src/BufferView.cpp:1221
+#: src/Buffer.cpp:590 src/Buffer.cpp:596 src/BufferView.cpp:1214
+#: src/BufferView.cpp:1220
 msgid "Changes not shown in LaTeX output"
 msgstr "在 LaTeX 輸出中未顯示變更"
 
-#: src/Buffer.cpp:591 src/BufferView.cpp:1216
+#: src/Buffer.cpp:591 src/BufferView.cpp:1215
 #, fuzzy
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
@@ -15813,7 +15813,7 @@ msgstr ""
 "安裝。\n"
 "請安裝這些套件，或者在 LaTeX 前文中重新定義 \\lyxadded 和 \\lyxdeleted。"
 
-#: src/Buffer.cpp:597 src/BufferView.cpp:1222
+#: src/Buffer.cpp:597 src/BufferView.cpp:1221
 #, fuzzy
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
@@ -16289,86 +16289,86 @@ msgstr "無進一步的復原資訊"
 msgid "No further redo information"
 msgstr "無進一步的重做資訊"
 
-#: src/BufferView.cpp:1283 src/lyxfind.cpp:303 src/lyxfind.cpp:321
+#: src/BufferView.cpp:1284 src/lyxfind.cpp:303 src/lyxfind.cpp:321
 msgid "String not found!"
 msgstr "找不到字串！"
 
-#: src/BufferView.cpp:1308
+#: src/BufferView.cpp:1309
 msgid "Mark off"
 msgstr "標記關閉"
 
-#: src/BufferView.cpp:1315
+#: src/BufferView.cpp:1316
 msgid "Mark on"
 msgstr "標記開啟"
 
-#: src/BufferView.cpp:1322
+#: src/BufferView.cpp:1323
 msgid "Mark removed"
 msgstr "標記移除"
 
-#: src/BufferView.cpp:1325
+#: src/BufferView.cpp:1326
 msgid "Mark set"
 msgstr "標記設定"
 
-#: src/BufferView.cpp:1376
+#: src/BufferView.cpp:1377
 #, fuzzy
 msgid "Statistics for the selection:"
 msgstr "切換至文件(&S)"
 
-#: src/BufferView.cpp:1378
+#: src/BufferView.cpp:1379
 #, fuzzy
 msgid "Statistics for the document:"
 msgstr "切換至文件(&S)"
 
-#: src/BufferView.cpp:1381
+#: src/BufferView.cpp:1382
 #, fuzzy, c-format
 msgid "%1$d words"
 msgstr "%1$d 個字詞已勾選。"
 
-#: src/BufferView.cpp:1383
+#: src/BufferView.cpp:1384
 #, fuzzy
 msgid "One word"
 msgstr "關鍵字"
 
-#: src/BufferView.cpp:1386
+#: src/BufferView.cpp:1387
 #, fuzzy, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "特殊字元"
 
-#: src/BufferView.cpp:1389
+#: src/BufferView.cpp:1390
 #, fuzzy
 msgid "One character (including blanks)"
 msgstr "特殊字元"
 
-#: src/BufferView.cpp:1392
+#: src/BufferView.cpp:1393
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1395
+#: src/BufferView.cpp:1396
 msgid "One character (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1397
+#: src/BufferView.cpp:1398
 #, fuzzy
 msgid "Statistics"
 msgstr "狀態"
 
-#: src/BufferView.cpp:2195
+#: src/BufferView.cpp:2199
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "插入文件 %1$s…"
 
-#: src/BufferView.cpp:2206
+#: src/BufferView.cpp:2210
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "文件 %1$s 已插入。"
 
-#: src/BufferView.cpp:2208
+#: src/BufferView.cpp:2212
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "無法插入文件 %1$s"
 
-#: src/BufferView.cpp:2470
+#: src/BufferView.cpp:2474
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -16379,26 +16379,26 @@ msgstr ""
 "%1$s\n"
 "由於錯誤：%2$s"
 
-#: src/BufferView.cpp:2472
+#: src/BufferView.cpp:2476
 msgid "Could not read file"
 msgstr "無法讀取檔案"
 
-#: src/BufferView.cpp:2479
+#: src/BufferView.cpp:2483
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "%1$s 無法讀取。"
 
-#: src/BufferView.cpp:2480 src/output.cpp:39
+#: src/BufferView.cpp:2484 src/output.cpp:39
 msgid "Could not open file"
 msgstr "無法開啟檔案"
 
-#: src/BufferView.cpp:2487
+#: src/BufferView.cpp:2491
 msgid "Reading not UTF-8 encoded file"
 msgstr "讀取非 UTF-8 編碼的檔案"
 
-#: src/BufferView.cpp:2488
+#: src/BufferView.cpp:2492
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"

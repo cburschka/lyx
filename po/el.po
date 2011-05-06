@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-03-22 17:53+0100\n"
+"POT-Creation-Date: 2011-05-06 09:35+0200\n"
 "PO-Revision-Date: 2010-07-07 02:31+0100\n"
 "Last-Translator: Οδυσσέας Δαγκλής <o2d@freemail.gr>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -7258,7 +7258,7 @@ msgid "NoTelephone"
 msgstr "Τηλέφωνο"
 
 #: lib/layouts/lettre.layout:43 lib/layouts/lettre.layout:339
-#: lib/layouts/scrlttr2.layout:189 lib/configure.py:356
+#: lib/layouts/scrlttr2.layout:189 lib/configure.py:358
 msgid "Fax"
 msgstr ""
 
@@ -14827,308 +14827,308 @@ msgstr ""
 msgid "Dia diagram.\n"
 msgstr ""
 
-#: lib/configure.py:264
+#: lib/configure.py:266
 msgid "Tgif"
 msgstr ""
 
-#: lib/configure.py:267
+#: lib/configure.py:269
 msgid "FIG"
 msgstr ""
 
-#: lib/configure.py:270
+#: lib/configure.py:272
 msgid "DIA"
 msgstr ""
 
-#: lib/configure.py:273
+#: lib/configure.py:275
 msgid "Grace"
 msgstr ""
 
-#: lib/configure.py:276
+#: lib/configure.py:278
 msgid "FEN"
 msgstr ""
 
-#: lib/configure.py:279
+#: lib/configure.py:281
 msgid "SVG"
 msgstr ""
 
-#: lib/configure.py:283
+#: lib/configure.py:285
 msgid "BMP"
 msgstr ""
 
-#: lib/configure.py:284
+#: lib/configure.py:286
 msgid "GIF"
 msgstr ""
 
-#: lib/configure.py:285 src/frontends/qt4/GuiClipboard.cpp:140
+#: lib/configure.py:287 src/frontends/qt4/GuiClipboard.cpp:140
 msgid "JPEG"
 msgstr ""
 
-#: lib/configure.py:286
+#: lib/configure.py:288
 msgid "PBM"
 msgstr ""
 
-#: lib/configure.py:287
+#: lib/configure.py:289
 msgid "PGM"
 msgstr ""
 
-#: lib/configure.py:288 src/frontends/qt4/GuiClipboard.cpp:139
+#: lib/configure.py:290 src/frontends/qt4/GuiClipboard.cpp:139
 msgid "PNG"
 msgstr ""
 
-#: lib/configure.py:289
+#: lib/configure.py:291
 msgid "PPM"
 msgstr ""
 
-#: lib/configure.py:290
+#: lib/configure.py:292
 msgid "TIFF"
 msgstr ""
 
-#: lib/configure.py:291
+#: lib/configure.py:293
 msgid "XBM"
 msgstr ""
 
-#: lib/configure.py:292
+#: lib/configure.py:294
 msgid "XPM"
 msgstr ""
 
-#: lib/configure.py:297
+#: lib/configure.py:299
 msgid "Plain text (chess output)"
 msgstr "Απλό κείμενο (έξοδος chess)"
 
-#: lib/configure.py:298
+#: lib/configure.py:300
 msgid "Plain text (image)"
 msgstr "Απλό κείμενο (εικόνα)"
 
-#: lib/configure.py:299
+#: lib/configure.py:301
 msgid "Plain text (Xfig output)"
 msgstr "Απλό κείμενο (έξοδος Xfig)"
 
-#: lib/configure.py:300
+#: lib/configure.py:302
 msgid "date (output)"
 msgstr "Ημερομηνία (έξοδος)"
 
-#: lib/configure.py:301 src/frontends/qt4/GuiErrorList.cpp:41
+#: lib/configure.py:303 src/frontends/qt4/GuiErrorList.cpp:41
 msgid "DocBook"
 msgstr ""
 
-#: lib/configure.py:301
+#: lib/configure.py:303
 msgid "DocBook|B"
 msgstr ""
 
-#: lib/configure.py:302
+#: lib/configure.py:304
 msgid "Docbook (XML)"
 msgstr ""
 
-#: lib/configure.py:303
+#: lib/configure.py:305
 msgid "Graphviz Dot"
 msgstr ""
 
-#: lib/configure.py:304
+#: lib/configure.py:306
 msgid "LaTeX (pLaTeX)"
 msgstr ""
 
-#: lib/configure.py:305
+#: lib/configure.py:307
 msgid "NoWeb"
 msgstr ""
 
-#: lib/configure.py:305
+#: lib/configure.py:307
 msgid "NoWeb|N"
 msgstr ""
 
-#: lib/configure.py:306
+#: lib/configure.py:308
 msgid "LilyPond music"
 msgstr ""
 
-#: lib/configure.py:307
+#: lib/configure.py:309
 msgid "LaTeX (plain)"
 msgstr ""
 
-#: lib/configure.py:307
+#: lib/configure.py:309
 msgid "LaTeX (plain)|L"
 msgstr ""
 
-#: lib/configure.py:308
+#: lib/configure.py:310
 msgid "LaTeX (pdflatex)"
 msgstr ""
 
-#: lib/configure.py:309 src/frontends/qt4/GuiPrefs.cpp:335
+#: lib/configure.py:311 src/frontends/qt4/GuiPrefs.cpp:335
 msgid "Plain text"
 msgstr "Απλό κείμενο"
 
-#: lib/configure.py:309
+#: lib/configure.py:311
 msgid "Plain text|a"
 msgstr "Απλό κείμενο|Α"
 
-#: lib/configure.py:310
+#: lib/configure.py:312
 msgid "Plain text (pstotext)"
 msgstr "Απλό κείμενο (pstotext)"
 
-#: lib/configure.py:311
+#: lib/configure.py:313
 msgid "Plain text (ps2ascii)"
 msgstr "Απλό κείμενο (ps2ascii)"
 
-#: lib/configure.py:312
+#: lib/configure.py:314
 msgid "Plain text (catdvi)"
 msgstr "Απλό κείμενο (catdvi)"
 
-#: lib/configure.py:313
+#: lib/configure.py:315
 msgid "Plain Text, Join Lines"
 msgstr "Απλό Κείμενο, Ένωση Γραμμών"
 
-#: lib/configure.py:320
+#: lib/configure.py:322
 msgid "BibTeX"
 msgstr ""
 
-#: lib/configure.py:325
+#: lib/configure.py:327
 msgid "EPS"
 msgstr ""
 
-#: lib/configure.py:326
+#: lib/configure.py:328
 msgid "Postscript"
 msgstr ""
 
-#: lib/configure.py:326
+#: lib/configure.py:328
 msgid "Postscript|t"
 msgstr ""
 
-#: lib/configure.py:330
+#: lib/configure.py:332
 msgid "PDF (ps2pdf)"
 msgstr ""
 
-#: lib/configure.py:330
+#: lib/configure.py:332
 msgid "PDF (ps2pdf)|P"
 msgstr ""
 
-#: lib/configure.py:331
+#: lib/configure.py:333
 msgid "PDF (pdflatex)"
 msgstr ""
 
-#: lib/configure.py:331
+#: lib/configure.py:333
 msgid "PDF (pdflatex)|F"
 msgstr ""
 
-#: lib/configure.py:332
+#: lib/configure.py:334
 msgid "PDF (dvipdfm)"
 msgstr ""
 
-#: lib/configure.py:332
+#: lib/configure.py:334
 msgid "PDF (dvipdfm)|m"
 msgstr ""
 
-#: lib/configure.py:335
+#: lib/configure.py:337
 msgid "DVI"
 msgstr ""
 
-#: lib/configure.py:335
+#: lib/configure.py:337
 msgid "DVI|D"
 msgstr ""
 
-#: lib/configure.py:338
+#: lib/configure.py:340
 msgid "DraftDVI"
 msgstr ""
 
-#: lib/configure.py:341
+#: lib/configure.py:343
 msgid "HTML"
 msgstr ""
 
-#: lib/configure.py:341
+#: lib/configure.py:343
 msgid "HTML|H"
 msgstr ""
 
-#: lib/configure.py:344
+#: lib/configure.py:346
 msgid "Noteedit"
 msgstr ""
 
-#: lib/configure.py:347
+#: lib/configure.py:349
 msgid "OpenDocument"
 msgstr ""
 
-#: lib/configure.py:350
+#: lib/configure.py:352
 msgid "Rich Text Format"
 msgstr ""
 
-#: lib/configure.py:351
+#: lib/configure.py:353
 msgid "MS Word"
 msgstr ""
 
-#: lib/configure.py:351
+#: lib/configure.py:353
 msgid "MS Word|W"
 msgstr ""
 
-#: lib/configure.py:354
+#: lib/configure.py:356
 msgid "date command"
 msgstr "εντολή ημερομηνίας"
 
-#: lib/configure.py:355
+#: lib/configure.py:357
 msgid "Table (CSV)"
 msgstr "Πίνακας (CSV)"
 
-#: lib/configure.py:357 src/frontends/qt4/GuiView.cpp:922
+#: lib/configure.py:359 src/frontends/qt4/GuiView.cpp:922
 #: src/frontends/qt4/GuiView.cpp:923 src/mathed/MathMacroTemplate.cpp:543
 msgid "LyX"
 msgstr ""
 
-#: lib/configure.py:358
+#: lib/configure.py:360
 msgid "LyX 1.3.x"
 msgstr ""
 
-#: lib/configure.py:359
+#: lib/configure.py:361
 msgid "LyX 1.4.x"
 msgstr ""
 
-#: lib/configure.py:360
+#: lib/configure.py:362
 msgid "LyX 1.5.x"
 msgstr ""
 
-#: lib/configure.py:361
+#: lib/configure.py:363
 msgid "CJK LyX 1.4.x (big5)"
 msgstr ""
 
-#: lib/configure.py:362
+#: lib/configure.py:364
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr ""
 
-#: lib/configure.py:363
+#: lib/configure.py:365
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr ""
 
-#: lib/configure.py:364
+#: lib/configure.py:366
 msgid "LyX Preview"
 msgstr "Προεπισκόπηση LyX"
 
-#: lib/configure.py:365
+#: lib/configure.py:367
 msgid "LyX Preview (pLaTeX)"
 msgstr "Προεπισκόπηση LyX (pLaTeX)"
 
-#: lib/configure.py:366
+#: lib/configure.py:368
 msgid "PDFTEX"
 msgstr ""
 
-#: lib/configure.py:367
+#: lib/configure.py:369
 msgid "Program"
 msgstr "Πρόγραμμα"
 
-#: lib/configure.py:368
+#: lib/configure.py:370
 msgid "PSTEX"
 msgstr ""
 
-#: lib/configure.py:369
+#: lib/configure.py:371
 msgid "OpenOffice.Org (sxw)"
 msgstr ""
 
-#: lib/configure.py:370 src/frontends/qt4/GuiClipboard.cpp:136
+#: lib/configure.py:372 src/frontends/qt4/GuiClipboard.cpp:136
 msgid "Windows Metafile"
 msgstr ""
 
-#: lib/configure.py:371 src/frontends/qt4/GuiClipboard.cpp:135
+#: lib/configure.py:373 src/frontends/qt4/GuiClipboard.cpp:135
 msgid "Enhanced Metafile"
 msgstr ""
 
-#: lib/configure.py:372
+#: lib/configure.py:374
 msgid "HTML (MS Word)"
 msgstr ""
 
-#: lib/configure.py:442
+#: lib/configure.py:444
 msgid "LyXBlogger"
 msgstr ""
 
@@ -15219,12 +15219,12 @@ msgstr "\\λείπει το begin_header"
 msgid "\\begin_document is missing"
 msgstr "\\λείπει το begin_document"
 
-#: src/Buffer.cpp:590 src/Buffer.cpp:596 src/BufferView.cpp:1215
-#: src/BufferView.cpp:1221
+#: src/Buffer.cpp:590 src/Buffer.cpp:596 src/BufferView.cpp:1214
+#: src/BufferView.cpp:1220
 msgid "Changes not shown in LaTeX output"
 msgstr "Οι αλλαγές δεν εμφανίζονται στην έξοδο LaTeX"
 
-#: src/Buffer.cpp:591 src/BufferView.cpp:1216
+#: src/Buffer.cpp:591 src/BufferView.cpp:1215
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -15236,7 +15236,7 @@ msgstr ""
 "Εγκαταστείστε αυτά τα πακέτα ή ορίστε ξανά τα \\lyxadded και \\lyxdeleted "
 "στο προοίμιο LaTeX."
 
-#: src/Buffer.cpp:597 src/BufferView.cpp:1222
+#: src/Buffer.cpp:597 src/BufferView.cpp:1221
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -15718,81 +15718,81 @@ msgstr "Όχι άλλες πληροφορίες αναίρεσης"
 msgid "No further redo information"
 msgstr "Όχι άλλες πληροφορίες επανάληψης"
 
-#: src/BufferView.cpp:1283 src/lyxfind.cpp:303 src/lyxfind.cpp:321
+#: src/BufferView.cpp:1284 src/lyxfind.cpp:303 src/lyxfind.cpp:321
 msgid "String not found!"
 msgstr "Η συμβολοσειρά δε βρέθηκε!"
 
-#: src/BufferView.cpp:1308
+#: src/BufferView.cpp:1309
 msgid "Mark off"
 msgstr "Σημάδι ενεργοποιημένο"
 
-#: src/BufferView.cpp:1315
+#: src/BufferView.cpp:1316
 msgid "Mark on"
 msgstr "Σημάδι απενεργοποιημένο"
 
-#: src/BufferView.cpp:1322
+#: src/BufferView.cpp:1323
 msgid "Mark removed"
 msgstr "Το σημάδι αφαιρέθηκε"
 
-#: src/BufferView.cpp:1325
+#: src/BufferView.cpp:1326
 msgid "Mark set"
 msgstr "Το σημάδι τοποθετήθηκε"
 
-#: src/BufferView.cpp:1376
+#: src/BufferView.cpp:1377
 msgid "Statistics for the selection:"
 msgstr "Στατιστικά για την επιλογή:"
 
-#: src/BufferView.cpp:1378
+#: src/BufferView.cpp:1379
 msgid "Statistics for the document:"
 msgstr "Στατιστικά για το έγγραφο:"
 
-#: src/BufferView.cpp:1381
+#: src/BufferView.cpp:1382
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d λέξεις"
 
-#: src/BufferView.cpp:1383
+#: src/BufferView.cpp:1384
 msgid "One word"
 msgstr "Μία λέξη"
 
-#: src/BufferView.cpp:1386
+#: src/BufferView.cpp:1387
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d χαρακτήρες (μαζί με κενά)"
 
-#: src/BufferView.cpp:1389
+#: src/BufferView.cpp:1390
 msgid "One character (including blanks)"
 msgstr "Ένας χαρακτήρας (μαζί με κενά)"
 
-#: src/BufferView.cpp:1392
+#: src/BufferView.cpp:1393
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d χαρακτήρες (χωρίς κενά)"
 
-#: src/BufferView.cpp:1395
+#: src/BufferView.cpp:1396
 msgid "One character (excluding blanks)"
 msgstr "Ένας χαρακτήρας (χωρίς κενά)"
 
-#: src/BufferView.cpp:1397
+#: src/BufferView.cpp:1398
 msgid "Statistics"
 msgstr "Στατιστικά"
 
-#: src/BufferView.cpp:2195
+#: src/BufferView.cpp:2199
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Εισαγωγή εγγράφου %1$s..."
 
-#: src/BufferView.cpp:2206
+#: src/BufferView.cpp:2210
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Το έγγραφο %1$s εισήχθη."
 
-#: src/BufferView.cpp:2208
+#: src/BufferView.cpp:2212
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Δεν ήταν δυνατή η εισαγωγή του εγγράφου %1$s"
 
-#: src/BufferView.cpp:2470
+#: src/BufferView.cpp:2474
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15803,11 +15803,11 @@ msgstr ""
 "%1$s\n"
 "λόγω του σφάλματος: %2$s"
 
-#: src/BufferView.cpp:2472
+#: src/BufferView.cpp:2476
 msgid "Could not read file"
 msgstr "Δεν ήταν δυνατή η ανάγνωση του αρχείου"
 
-#: src/BufferView.cpp:2479
+#: src/BufferView.cpp:2483
 #, c-format
 msgid ""
 "%1$s\n"
@@ -15816,15 +15816,15 @@ msgstr ""
 "Το %1$s\n"
 "δεν είναι αναγνώσιμο."
 
-#: src/BufferView.cpp:2480 src/output.cpp:39
+#: src/BufferView.cpp:2484 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Δεν ήταν δυνατό το άνοιγμα του αρχείου"
 
-#: src/BufferView.cpp:2487
+#: src/BufferView.cpp:2491
 msgid "Reading not UTF-8 encoded file"
 msgstr "Ανάγνωση μη-UTF-8 κωδικοποιημένου αρχείου"
 
-#: src/BufferView.cpp:2488
+#: src/BufferView.cpp:2492
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"

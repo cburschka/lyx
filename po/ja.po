@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-03-22 17:53+0100\n"
+"POT-Creation-Date: 2011-05-06 09:35+0200\n"
 "PO-Revision-Date: 2011-04-23 19:09+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-doc@lists.lyx.org>\n"
@@ -2286,7 +2286,8 @@ msgstr "一般"
 msgid ""
 "After the cursor has not moved for this time, the inline completion is shown "
 "if it is available."
-msgstr "これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
+msgstr ""
+"これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:147
 msgid "s inline completion dela&y"
@@ -2308,7 +2309,8 @@ msgstr "秒のポップアップ遅延(&E)"
 msgid ""
 "When the TAB completion is not unique, there won't be a delay of the popup. "
 "It will be shown right away."
-msgstr "タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
+msgstr ""
+"タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:221
 msgid "Sho&w popup without delay for non-unique completions"
@@ -2798,7 +2800,8 @@ msgstr "書き出し時の上書き(&O):"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:114
 msgid "What to do when existing files are going to be overwritten on export."
-msgstr "書き出し時に、既存のファイルが上書きされようとしているときにどうするか。"
+msgstr ""
+"書き出し時に、既存のファイルが上書きされようとしているときにどうするか。"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:118
 msgid "Ask permission"
@@ -3902,7 +3905,8 @@ msgstr "選択した項目を1つ上げる"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:44
 msgid "If you check this, LyX will not warn you again in the given case."
-msgstr "これを有効にすると、LyXは当該ケースについて今後警告することはなくなります。"
+msgstr ""
+"これを有効にすると、LyXは当該ケースについて今後警告することはなくなります。"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:47
 msgid "&Do not show this warning again!"
@@ -7158,7 +7162,7 @@ msgid "NoTelephone"
 msgstr "電話なし"
 
 #: lib/layouts/lettre.layout:43 lib/layouts/lettre.layout:339
-#: lib/layouts/scrlttr2.layout:189 lib/configure.py:356
+#: lib/layouts/scrlttr2.layout:189 lib/configure.py:358
 msgid "Fax"
 msgstr "ファックス"
 
@@ -14767,308 +14771,308 @@ msgstr "Dia: $$AbsOrRelPathParent$$Basename"
 msgid "Dia diagram.\n"
 msgstr "Dia ダイアグラム\n"
 
-#: lib/configure.py:264
+#: lib/configure.py:266
 msgid "Tgif"
 msgstr "Tgif"
 
-#: lib/configure.py:267
+#: lib/configure.py:269
 msgid "FIG"
 msgstr "FIG"
 
-#: lib/configure.py:270
+#: lib/configure.py:272
 msgid "DIA"
 msgstr "DIA"
 
-#: lib/configure.py:273
+#: lib/configure.py:275
 msgid "Grace"
 msgstr "Grace"
 
-#: lib/configure.py:276
+#: lib/configure.py:278
 msgid "FEN"
 msgstr "FEN"
 
-#: lib/configure.py:279
+#: lib/configure.py:281
 msgid "SVG"
 msgstr "SVG"
 
-#: lib/configure.py:283
+#: lib/configure.py:285
 msgid "BMP"
 msgstr "BMP"
 
-#: lib/configure.py:284
+#: lib/configure.py:286
 msgid "GIF"
 msgstr "GIF"
 
-#: lib/configure.py:285 src/frontends/qt4/GuiClipboard.cpp:140
+#: lib/configure.py:287 src/frontends/qt4/GuiClipboard.cpp:140
 msgid "JPEG"
 msgstr "JPEG"
 
-#: lib/configure.py:286
+#: lib/configure.py:288
 msgid "PBM"
 msgstr "PBM"
 
-#: lib/configure.py:287
+#: lib/configure.py:289
 msgid "PGM"
 msgstr "PGM"
 
-#: lib/configure.py:288 src/frontends/qt4/GuiClipboard.cpp:139
+#: lib/configure.py:290 src/frontends/qt4/GuiClipboard.cpp:139
 msgid "PNG"
 msgstr "PNG"
 
-#: lib/configure.py:289
+#: lib/configure.py:291
 msgid "PPM"
 msgstr "PPM"
 
-#: lib/configure.py:290
+#: lib/configure.py:292
 msgid "TIFF"
 msgstr "TIFF"
 
-#: lib/configure.py:291
+#: lib/configure.py:293
 msgid "XBM"
 msgstr "XBM"
 
-#: lib/configure.py:292
+#: lib/configure.py:294
 msgid "XPM"
 msgstr "XPM"
 
-#: lib/configure.py:297
+#: lib/configure.py:299
 msgid "Plain text (chess output)"
 msgstr "平文（チェス出力）"
 
-#: lib/configure.py:298
+#: lib/configure.py:300
 msgid "Plain text (image)"
 msgstr "平文（イメージ）"
 
-#: lib/configure.py:299
+#: lib/configure.py:301
 msgid "Plain text (Xfig output)"
 msgstr "平文（Xfig出力）"
 
-#: lib/configure.py:300
+#: lib/configure.py:302
 msgid "date (output)"
 msgstr "日付（出力）"
 
-#: lib/configure.py:301 src/frontends/qt4/GuiErrorList.cpp:41
+#: lib/configure.py:303 src/frontends/qt4/GuiErrorList.cpp:41
 msgid "DocBook"
 msgstr "DocBook"
 
-#: lib/configure.py:301
+#: lib/configure.py:303
 msgid "DocBook|B"
 msgstr "DocBook|B"
 
-#: lib/configure.py:302
+#: lib/configure.py:304
 msgid "Docbook (XML)"
 msgstr "Docbook (XML)"
 
-#: lib/configure.py:303
+#: lib/configure.py:305
 msgid "Graphviz Dot"
 msgstr "Graphviz Dot"
 
-#: lib/configure.py:304
+#: lib/configure.py:306
 msgid "LaTeX (pLaTeX)"
 msgstr "LaTeX (pLaTeX)"
 
-#: lib/configure.py:305
+#: lib/configure.py:307
 msgid "NoWeb"
 msgstr "NoWeb"
 
-#: lib/configure.py:305
+#: lib/configure.py:307
 msgid "NoWeb|N"
 msgstr "NoWeb|N"
 
-#: lib/configure.py:306
+#: lib/configure.py:308
 msgid "LilyPond music"
 msgstr "LilyPond音楽"
 
-#: lib/configure.py:307
+#: lib/configure.py:309
 msgid "LaTeX (plain)"
 msgstr "LaTeX (plain)"
 
-#: lib/configure.py:307
+#: lib/configure.py:309
 msgid "LaTeX (plain)|L"
 msgstr "LaTeX (plain)|L"
 
-#: lib/configure.py:308
+#: lib/configure.py:310
 msgid "LaTeX (pdflatex)"
 msgstr "LaTeX (pdflatex)"
 
-#: lib/configure.py:309 src/frontends/qt4/GuiPrefs.cpp:335
+#: lib/configure.py:311 src/frontends/qt4/GuiPrefs.cpp:335
 msgid "Plain text"
 msgstr "平文"
 
-#: lib/configure.py:309
+#: lib/configure.py:311
 msgid "Plain text|a"
 msgstr "平文(A)|A"
 
-#: lib/configure.py:310
+#: lib/configure.py:312
 msgid "Plain text (pstotext)"
 msgstr "平文（pstotext）"
 
-#: lib/configure.py:311
+#: lib/configure.py:313
 msgid "Plain text (ps2ascii)"
 msgstr "平文（ps2ascii）"
 
-#: lib/configure.py:312
+#: lib/configure.py:314
 msgid "Plain text (catdvi)"
 msgstr "平文（catdvi）"
 
-#: lib/configure.py:313
+#: lib/configure.py:315
 msgid "Plain Text, Join Lines"
 msgstr "平文(行を連結して)"
 
-#: lib/configure.py:320
+#: lib/configure.py:322
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: lib/configure.py:325
+#: lib/configure.py:327
 msgid "EPS"
 msgstr "EPS"
 
-#: lib/configure.py:326
+#: lib/configure.py:328
 msgid "Postscript"
 msgstr "Postscript"
 
-#: lib/configure.py:326
+#: lib/configure.py:328
 msgid "Postscript|t"
 msgstr "Postscript|t"
 
-#: lib/configure.py:330
+#: lib/configure.py:332
 msgid "PDF (ps2pdf)"
 msgstr "PDF (ps2pdf)"
 
-#: lib/configure.py:330
+#: lib/configure.py:332
 msgid "PDF (ps2pdf)|P"
 msgstr "PDF (ps2pdf)|P"
 
-#: lib/configure.py:331
+#: lib/configure.py:333
 msgid "PDF (pdflatex)"
 msgstr "PDF (pdflatex)"
 
-#: lib/configure.py:331
+#: lib/configure.py:333
 msgid "PDF (pdflatex)|F"
 msgstr "PDF (pdflatex)|F"
 
-#: lib/configure.py:332
+#: lib/configure.py:334
 msgid "PDF (dvipdfm)"
 msgstr "PDF (dvipdfm)"
 
-#: lib/configure.py:332
+#: lib/configure.py:334
 msgid "PDF (dvipdfm)|m"
 msgstr "PDF (dvipdfm)|m"
 
-#: lib/configure.py:335
+#: lib/configure.py:337
 msgid "DVI"
 msgstr "DVI"
 
-#: lib/configure.py:335
+#: lib/configure.py:337
 msgid "DVI|D"
 msgstr "DVI|D"
 
-#: lib/configure.py:338
+#: lib/configure.py:340
 msgid "DraftDVI"
 msgstr "DraftDVI"
 
-#: lib/configure.py:341
+#: lib/configure.py:343
 msgid "HTML"
 msgstr "HTML"
 
-#: lib/configure.py:341
+#: lib/configure.py:343
 msgid "HTML|H"
 msgstr "HTML|H"
 
-#: lib/configure.py:344
+#: lib/configure.py:346
 msgid "Noteedit"
 msgstr "Noteedit"
 
-#: lib/configure.py:347
+#: lib/configure.py:349
 msgid "OpenDocument"
 msgstr "OpenDocument"
 
-#: lib/configure.py:350
+#: lib/configure.py:352
 msgid "Rich Text Format"
 msgstr "リッチテキスト形式"
 
-#: lib/configure.py:351
+#: lib/configure.py:353
 msgid "MS Word"
 msgstr "MS Word"
 
-#: lib/configure.py:351
+#: lib/configure.py:353
 msgid "MS Word|W"
 msgstr "MS Word|W"
 
-#: lib/configure.py:354
+#: lib/configure.py:356
 msgid "date command"
 msgstr "dateコマンド"
 
-#: lib/configure.py:355
+#: lib/configure.py:357
 msgid "Table (CSV)"
 msgstr "表（CSV）"
 
-#: lib/configure.py:357 src/frontends/qt4/GuiView.cpp:922
+#: lib/configure.py:359 src/frontends/qt4/GuiView.cpp:922
 #: src/frontends/qt4/GuiView.cpp:923 src/mathed/MathMacroTemplate.cpp:543
 msgid "LyX"
 msgstr "LyX"
 
-#: lib/configure.py:358
+#: lib/configure.py:360
 msgid "LyX 1.3.x"
 msgstr "LyX 1.3.x"
 
-#: lib/configure.py:359
+#: lib/configure.py:361
 msgid "LyX 1.4.x"
 msgstr "LyX 1.4.x"
 
-#: lib/configure.py:360
+#: lib/configure.py:362
 msgid "LyX 1.5.x"
 msgstr "LyX 1.5.x"
 
-#: lib/configure.py:361
+#: lib/configure.py:363
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK LyX 1.4.x (big5)"
 
-#: lib/configure.py:362
+#: lib/configure.py:364
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr "CJK LyX 1.4.x (euc-jp)"
 
-#: lib/configure.py:363
+#: lib/configure.py:365
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr "CJK LyX 1.4.x (euc-kr)"
 
-#: lib/configure.py:364
+#: lib/configure.py:366
 msgid "LyX Preview"
 msgstr "LyXプレビュー"
 
-#: lib/configure.py:365
+#: lib/configure.py:367
 msgid "LyX Preview (pLaTeX)"
 msgstr "LyXプレビュー (pLaTeX)"
 
-#: lib/configure.py:366
+#: lib/configure.py:368
 msgid "PDFTEX"
 msgstr "PDFTEX"
 
-#: lib/configure.py:367
+#: lib/configure.py:369
 msgid "Program"
 msgstr "プログラム"
 
-#: lib/configure.py:368
+#: lib/configure.py:370
 msgid "PSTEX"
 msgstr "PSTEX"
 
-#: lib/configure.py:369
+#: lib/configure.py:371
 msgid "OpenOffice.Org (sxw)"
 msgstr "OpenOffice.Org (sxw)"
 
-#: lib/configure.py:370 src/frontends/qt4/GuiClipboard.cpp:136
+#: lib/configure.py:372 src/frontends/qt4/GuiClipboard.cpp:136
 msgid "Windows Metafile"
 msgstr "Windowsメタファイル"
 
-#: lib/configure.py:371 src/frontends/qt4/GuiClipboard.cpp:135
+#: lib/configure.py:373 src/frontends/qt4/GuiClipboard.cpp:135
 msgid "Enhanced Metafile"
 msgstr "拡張メタファイル"
 
-#: lib/configure.py:372
+#: lib/configure.py:374
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
-#: lib/configure.py:442
+#: lib/configure.py:444
 msgid "LyXBlogger"
 msgstr "LyXBlogger"
 
@@ -15157,12 +15161,12 @@ msgstr "\\begin_headerがありません"
 msgid "\\begin_document is missing"
 msgstr "\\begin_documentがありません"
 
-#: src/Buffer.cpp:590 src/Buffer.cpp:596 src/BufferView.cpp:1215
-#: src/BufferView.cpp:1221
+#: src/Buffer.cpp:590 src/Buffer.cpp:596 src/BufferView.cpp:1214
+#: src/BufferView.cpp:1220
 msgid "Changes not shown in LaTeX output"
 msgstr "変更箇所はLaTeXの出力に表示されません。"
 
-#: src/Buffer.cpp:591 src/BufferView.cpp:1216
+#: src/Buffer.cpp:591 src/BufferView.cpp:1215
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -15174,7 +15178,7 @@ msgstr ""
 "これらのパッケージをインストールするか，LaTeXプリアンブルの中で\\lyxaddedと"
 "\\lyxdeletedを再定義してください"
 
-#: src/Buffer.cpp:597 src/BufferView.cpp:1222
+#: src/Buffer.cpp:597 src/BufferView.cpp:1221
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -15664,81 +15668,81 @@ msgstr "これ以上元に戻すことはできません"
 msgid "No further redo information"
 msgstr "これ以上やり直すことはできません"
 
-#: src/BufferView.cpp:1283 src/lyxfind.cpp:303 src/lyxfind.cpp:321
+#: src/BufferView.cpp:1284 src/lyxfind.cpp:303 src/lyxfind.cpp:321
 msgid "String not found!"
 msgstr "文字列が見つかりません！"
 
-#: src/BufferView.cpp:1308
+#: src/BufferView.cpp:1309
 msgid "Mark off"
 msgstr "マーク切"
 
-#: src/BufferView.cpp:1315
+#: src/BufferView.cpp:1316
 msgid "Mark on"
 msgstr "マーク入"
 
-#: src/BufferView.cpp:1322
+#: src/BufferView.cpp:1323
 msgid "Mark removed"
 msgstr "マーク削除"
 
-#: src/BufferView.cpp:1325
+#: src/BufferView.cpp:1326
 msgid "Mark set"
 msgstr "マーク設定"
 
-#: src/BufferView.cpp:1376
+#: src/BufferView.cpp:1377
 msgid "Statistics for the selection:"
 msgstr "選択範囲の統計:"
 
-#: src/BufferView.cpp:1378
+#: src/BufferView.cpp:1379
 msgid "Statistics for the document:"
 msgstr "文書の統計:"
 
-#: src/BufferView.cpp:1381
+#: src/BufferView.cpp:1382
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d語"
 
-#: src/BufferView.cpp:1383
+#: src/BufferView.cpp:1384
 msgid "One word"
 msgstr "1語"
 
-#: src/BufferView.cpp:1386
+#: src/BufferView.cpp:1387
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d字(空白含む)"
 
-#: src/BufferView.cpp:1389
+#: src/BufferView.cpp:1390
 msgid "One character (including blanks)"
 msgstr "1字(空白含む)"
 
-#: src/BufferView.cpp:1392
+#: src/BufferView.cpp:1393
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d字(空白除く)"
 
-#: src/BufferView.cpp:1395
+#: src/BufferView.cpp:1396
 msgid "One character (excluding blanks)"
 msgstr "1字(空白除く)"
 
-#: src/BufferView.cpp:1397
+#: src/BufferView.cpp:1398
 msgid "Statistics"
 msgstr "統計"
 
-#: src/BufferView.cpp:2195
+#: src/BufferView.cpp:2199
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "文書「%1$s」を挿入しています..."
 
-#: src/BufferView.cpp:2206
+#: src/BufferView.cpp:2210
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "文書「%1$s」が挿入されました。"
 
-#: src/BufferView.cpp:2208
+#: src/BufferView.cpp:2212
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "文書「%1$s」を挿入することができませんでした"
 
-#: src/BufferView.cpp:2470
+#: src/BufferView.cpp:2474
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15749,11 +15753,11 @@ msgstr ""
 "%1$s\n"
 "を読むことができませんでした。"
 
-#: src/BufferView.cpp:2472
+#: src/BufferView.cpp:2476
 msgid "Could not read file"
 msgstr "ファイルを読むことができませんでした"
 
-#: src/BufferView.cpp:2479
+#: src/BufferView.cpp:2483
 #, c-format
 msgid ""
 "%1$s\n"
@@ -15762,15 +15766,15 @@ msgstr ""
 "%1$s\n"
 "は読み込み不能です。"
 
-#: src/BufferView.cpp:2480 src/output.cpp:39
+#: src/BufferView.cpp:2484 src/output.cpp:39
 msgid "Could not open file"
 msgstr "ファイルを開くことができませんでした"
 
-#: src/BufferView.cpp:2487
+#: src/BufferView.cpp:2491
 msgid "Reading not UTF-8 encoded file"
 msgstr "UTF-8でエンコードされていないファイルを読んでいます"
 
-#: src/BufferView.cpp:2488
+#: src/BufferView.cpp:2492
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -16967,7 +16971,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:2562
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
-msgstr "pLaTeX(日本語LaTeX)用のbibtexプログラムのオプションを定義してください。"
+msgstr ""
+"pLaTeX(日本語LaTeX)用のbibtexプログラムのオプションを定義してください。"
 
 #: src/LyXRC.cpp:2566
 msgid ""
@@ -16979,7 +16984,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:2570
 msgid "Select to check whether the lastfiles still exist."
-msgstr "最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
+msgstr ""
+"最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
 
 #: src/LyXRC.cpp:2574
 msgid ""
@@ -17005,7 +17011,8 @@ msgstr "単語間のカーソル移動にMac OS X式の方法を使う。"
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
-msgstr "カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
+msgstr ""
+"カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
 
 #: src/LyXRC.cpp:2603
 #, no-c-format
@@ -17048,7 +17055,8 @@ msgstr "LyX が画像をどのように表示するかを選びます。"
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
-msgstr "文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
+msgstr ""
+"文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
 
 #: src/LyXRC.cpp:2632
 msgid "Specify additional chars that can be part of a word."
@@ -17159,7 +17167,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:2704
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr "LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
+msgstr ""
+"LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
 
 #: src/LyXRC.cpp:2708
 msgid "De-select to prevent loading files opened from the last LyX session."
@@ -17206,7 +17215,8 @@ msgstr "複数の補完候補がある際、遅延なしに補完ポップアッ
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
-msgstr "補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
+msgstr ""
+"補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
 
 #: src/LyXRC.cpp:2745
 msgid "The inline completion delay."
@@ -17227,7 +17237,8 @@ msgstr "長い補完を短縮するのに\"...\"を使用する。"
 #: src/LyXRC.cpp:2761
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
-msgstr "最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
+msgstr ""
+"最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
 
 #: src/LyXRC.cpp:2766
 msgid ""
@@ -17557,7 +17568,8 @@ msgstr "未知のトークン"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr "空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
+msgstr ""
+"空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
 
 #: src/Text.cpp:535
 msgid "You cannot type two spaces this way. Please read the Tutorial."
@@ -17681,7 +17693,8 @@ msgstr "破損ファイル"
 
 #: src/TextClass.cpp:668
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
-msgstr "stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
+msgstr ""
+"stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
 
 #: src/Thesaurus.cpp:60
 msgid "Thesaurus failure"
