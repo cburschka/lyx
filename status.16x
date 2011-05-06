@@ -1,7 +1,7 @@
 -*- text -*-
 
-This file describes what has been done in the preparation of LyX 1.6.10
-All comments are welcome.
+This file describes what has been done in the preparation of LyX 1.6.11
+(a.k.a. Duke Nukem Forever). All comments are welcome.
 
 I'd be glad if some of you could take the time to check it out (or fix
 a bug or two if you are feeling adventurous). Let me recall that all
@@ -24,24 +24,14 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Read files produced by LyX 2.0.
-
-- Run biber instead of bibtex if requested (bug 7281).
 
 
 * USER INTERFACE
 
 
 
-
 * DOCUMENTATION AND LOCALIZATION
 
-- New Swedish translation of the Splash and the Shortcuts manual.
-
-- Updated French translation of the Tutorial and the User Guide.
-
-- Updated Czech, French, German, Hungarian,Italian, Japanese, Portuguese,
-  Slovak, Spanish, Swedish and Ukrainian User Interface Localization.
 
 
 * BUILD/INSTALLATION
@@ -54,62 +44,16 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Protect the math commands \overset and \underset in fragile context
-  (bug 7252).
-
-- When exporting, alert about uncodable characters in ERT insets (bug 7310).
-
-- When exporting, alert about uncodable characters in child docs (bug 7326).
-
-- Prevent LaTeX error when toggling hyperref (bug 7344).
 
 
 * USER INTERFACE
 
-- Fix corruption of localized messages while changing color preferences,
-  which could result in a non-functional lyx instance, an assertion and
-  dataloss (bug 7371).
-
-- Fix a crash when editing the name of an unknown math macro with an argument
-  which is immediately followed by another unknown math macro (bug 7316).
-  
-- Fix a crash when loading a document with instant previewed math that
-  could not succesfully be previewed (bug 7263).
-
-- Fix a crash when requesting the wrong context menu due to paragraphs that
-  are automatically removed between the mouse press and release (bug 7209).
-
-- Fix a crash when moving the cursor up when there is an inset right
-  above cursor which is not placed at the beginning of the line (bug 7261).
-  
-- Fix a crash when deleting an inset and using -dbg any (bug 7376).
-
-- Fix assertion when selecting with shift+click immediately after reverse
-  search, accept/reject all changes, or page down/up operations (bug 7394).
-
-- Show mnemonics in context menus that are requested by the keyboard
-  key (only Windows; bug 5414).
-
-- Fix broken commits in VCS when message contains quotes (bug 7338).
-
-- Issue a warning when an included file could not be loaded (bug 7343).
-
-- Fix freezing of LyX at samba shares (bug 5891).
-
-- Fix deletion of empty last row for \smallmatrix (part of bug 7484).
 
 
 * DOCUMENTATION AND LOCALIZATION
 
 
 
-
 * BUILD/INSTALLATION
 
-- Fix compilation with gcc 4.6 (bug 7285).
-
-- Fix reconfigure script: allow LaTeX-less install of LyX under Windows.
-
-- Do not configure LyX to use "sensible-editor" as a text editor/viewer,
-  since this is not necessarily a GUI editor (bug 7448).
 
