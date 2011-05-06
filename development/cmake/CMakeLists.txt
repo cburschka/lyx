@@ -314,7 +314,11 @@ if(LYX_EXTERNAL_LIBINTL)
 	find_package(Libintl REQUIRED)
 	add_definitions(-DHAVE_GETTEXT) #TODO move to config.h
 else()
-	add_subdirectory(intl)
+	if(LYX_NLS)
+		add_subdirectory(intl)
+	else()
+		# do not compile if nls disabled
+	endif()
 endif()
 
 if(LYX_EXTERNAL_BOOST)

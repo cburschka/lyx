@@ -52,8 +52,6 @@ void init_package(std::string const & command_line_arg0,
 		  std::string const & command_line_user_support_dir,
 		  exe_build_dir_to_top_build_dir);
 
-bool packageInitialized();
-
 /** Accessor to the global data.
  *  Asserts that init_package() has been called first.
  */

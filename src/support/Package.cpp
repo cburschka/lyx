@@ -65,12 +65,6 @@ void init_package(string const & command_line_arg0,
 }
 
 
-bool packageInitialized()
-{
-	return initialised_;
-}
-
-
 Package const & package()
 {
 	LASSERT(initialised_, /**/);

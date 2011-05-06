@@ -38,32 +38,8 @@ endif()
 
 file(GLOB intl_headers ${TOP_SRC_DIR}/intl/*.h)
 
-set(intl_sources 
-	bindtextdom.c
-	dcgettext.c
-	dgettext.c
-	gettext.c
-	finddomain.c
-	loadmsgcat.c
-	localealias.c
-	textdomain.c
-	l10nflist.c
-	explodename.c
-	dcigettext.c
-	dcngettext.c
-	dngettext.c
-	ngettext.c
-	plural.c
-	plural-exp.c
-	localcharset.c
-	relocatable.c
-	localename.c
-	log.c
-	printf.c
-	osdep.c
-	intl-compat.c
-	langprefs.c
-)
+file(GLOB intl_sources RELATIVE "${TOP_SRC_DIR}/intl" "${TOP_SRC_DIR}/intl/*.c")
+list(REMOVE_ITEM intl_sources vasnprintf.c version.c printf-parse.c os2compat.c)
 
 lyx_add_path(intl_sources ${TOP_SRC_DIR}/intl)
 

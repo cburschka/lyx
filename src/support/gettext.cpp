@@ -38,9 +38,7 @@ void locale_init()
 	setlocale(LC_MESSAGES, "");
 #  endif
 	setlocale(LC_CTYPE, "");
-	if (support::packageInitialized()) {
-		Messages::init();
-	}
+	Messages::init();
 #endif
 	setlocale(LC_NUMERIC, "C");
 }

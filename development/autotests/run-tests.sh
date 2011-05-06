@@ -4,7 +4,7 @@
 # Tests are identified as having a file name of *-in.txt
 # For failed tests, the collected output is kept in the corresponding folder
 
-export LYX_EXE=../../../src/lyx
+#export LYX_EXE=../../../src/lyx
 
 if [ "$XVKBD_HACKED" != "" ]; then
     export XVKBD_EXE=${XVKBD:-./xvkbd/xvkbd};

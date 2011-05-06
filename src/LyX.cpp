@@ -292,10 +292,11 @@ int LyX::exec(int & argc, char * argv[])
 	try {
 		init_package(os::utf8_argv(0), string(), string(),
 			top_build_dir_is_one_level_up);
+		// we do not get to this point when init_package throws an exception
+		locale_init();
 	} catch (ExceptionMessage const & message) {
 		LYXERR(Debug::LOCALE, message.title_ + ", " + message.details_);
 	}
-	locale_init();
 
 	// Here we need to parse the command line. At least
 	// we need to parse for "-dbg" and "-help"
