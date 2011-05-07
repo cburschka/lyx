@@ -169,7 +169,7 @@ particularly applies to spell checking and the thesaurus.
   provides automatic access to many spell checking libraries (ispell,
   aspell, hspell, hunspell, etc.).
   System-wide hunspell dictionaries are in standard Linux installs
-  looked up at /usr/share/lyx/dicts/.
+  looked up at /usr/local/share/lyx/dicts/.
 
 * On Mac OSX, Apple's Spell Server is preconfigured as the "native" spell 
   checker.
@@ -193,7 +193,7 @@ platform/distribution.
   dictionaries needs to be set in Tools > Preferences. Please refer to the
   UserGuide, sec. 6.14, for further instructions.
   In standard Linux installs the system-wide thesauri are looked up at
-  /usr/share/lyx/thes/.
+  /usr/local/share/lyx/thes/.
 
 Packagers are advised to preset the thesaurus for their distribution/
 platform. Packagers of installation bundles (on Windows and the Mac)
