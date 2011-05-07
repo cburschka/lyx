@@ -41,6 +41,8 @@ public:
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
 	InsetCode lyxCode() const { return CITE_CODE; }
 	///
 	void latex(otexstream &, OutputParams const &) const;
@@ -102,14 +104,10 @@ private:
 	static ParamInfo param_info_;
 
 	///
-	class Cache {
-	public:
+	struct Cache {
+		Cache() : recalculate(true) {};
 		///
-		Cache() : engine(ENGINE_BASIC), params(CITE_CODE) {}
-		///
-		CiteEngine engine;
-		///
-		InsetCommandParams params;
+		bool recalculate;
 		///
 		docstring generated_label;
 		///

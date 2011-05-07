@@ -257,6 +257,10 @@ public:
 	mutable bool bibfile_cache_valid_;
 	/// Cache of timestamps of .bib files
 	map<FileName, time_t> bibfile_status_;
+	/// Indicates whether the bibinfo has changed since the last time
+	/// we ran updateBuffer(), i.e., whether citation labels may need
+	/// to be updated.
+	mutable bool cite_labels_valid_;
 
 	mutable RefCache ref_cache_;
 
@@ -329,8 +333,8 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	  read_only(readonly_), filename(file), file_fully_loaded(false),
 	  toc_backend(owner), macro_lock(false), timestamp_(0),
 	  checksum_(0), wa_(0), gui_(0), undo_(*owner), bibinfo_cache_valid_(false),
-		bibfile_cache_valid_(false), cloned_buffer_(cloned_buffer), 
-		doing_export(false), parent_buffer(0)
+	  bibfile_cache_valid_(false), cite_labels_valid_(false),
+	  cloned_buffer_(cloned_buffer), doing_export(false), parent_buffer(0)
 {
 	if (!cloned_buffer_) {
 		temppath = createBufferTmpDir();
@@ -347,6 +351,7 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	bibinfo_cache_valid_ = cloned_buffer_->d->bibinfo_cache_valid_;
 	bibfile_cache_valid_ = cloned_buffer_->d->bibfile_cache_valid_;
 	bibfile_status_ = cloned_buffer_->d->bibfile_status_;
+	cite_labels_valid_ = cloned_buffer_->d->cite_labels_valid_;
 }
 
 
@@ -1771,12 +1776,14 @@ void Buffer::updateBibfilesCache(UpdateScope scope) const
 	}
 	d->bibfile_cache_valid_ = true;
 	d->bibinfo_cache_valid_ = false;
+	d->cite_labels_valid_ = false;
 }
 
 
 void Buffer::invalidateBibinfoCache() const
 {
 	d->bibinfo_cache_valid_ = false;
+	d->cite_labels_valid_ = false;
 	// also invalidate the cache for the parent buffer
 	Buffer const * const pbuf = d->parent();
 	if (pbuf)
@@ -1788,6 +1795,7 @@ void Buffer::invalidateBibfileCache() const
 {
 	d->bibfile_cache_valid_ = false;
 	d->bibinfo_cache_valid_ = false;
+	d->cite_labels_valid_ = false;
 	// also invalidate the cache for the parent buffer
 	Buffer const * const pbuf = d->parent();
 	if (pbuf)
@@ -1837,6 +1845,7 @@ void Buffer::checkIfBibInfoCacheIsValid() const
 		time_t prevw = d->bibfile_status_[*ei];
 		if (lastw != prevw) {
 			d->bibinfo_cache_valid_ = false;
+			d->cite_labels_valid_ = false;
 			d->bibfile_status_[*ei] = lastw;
 		}
 	}
@@ -1884,6 +1893,12 @@ void Buffer::addBibTeXInfo(docstring const & key, BibTeXInfo const & bi) const
 	BiblioInfo & masterbi = (tmp == this) ?
 		d->bibinfo_ : tmp->d->bibinfo_;
 	masterbi[key] = bi;
+}
+
+
+bool Buffer::citeLabelsValid() const
+{
+	return masterBuffer()->d->cite_labels_valid_;
 }
 
 
@@ -4015,6 +4030,7 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 		return;
 
 	d->bibinfo_cache_valid_ = true;
+	d->cite_labels_valid_ = true;
 	cbuf.tocBackend().update();
 	if (scope == UpdateMaster)
 		cbuf.structureChanged();
