@@ -86,24 +86,24 @@ Using cmake
     Here some examples, assuming the build folder is in the same folder as the source tree:
 
     * Makefiles on Linux
-        cmake ../trunk/development/cmake
+        cmake ../trunk
     
     * Project files for QtCreator:
-        Open the trunk/development/cmake/CMakeLists.txt file and select the build folder
+        Open the trunk/CMakeLists.txt file and select the build folder
         or create the files in the command line using the -G"CodeBlocks *" option, eg
-            cmake ../trunk/development/cmake -G"CodeBlocks - Unix Makefiles"
+            cmake ../trunk -G"CodeBlocks - Unix Makefiles"
     
     * Project files for Xcode
-        cmake ../trunk/development/cmake -GXcode
+        cmake ../trunk -GXcode
         
     * Project files for Visual Studio 10
-        cmake ..\trunk\development\cmake -G"Visual Studio 10"
+        cmake ..\trunk -G"Visual Studio 10"
 
     * NMake files for Visual Studio
-        cmake ..\trunk\development\cmake -G"NMake Makefiles"
+        cmake ..\trunk -G"NMake Makefiles"
 
     * Makefiles for MinGW
-        cmake ..\trunk\development\cmake -G"MinGW Makefiles"
+        cmake ..\trunk -G"MinGW Makefiles"
 
 
     Daily work:
