@@ -28,6 +28,8 @@ What's new
   except on Windows, where 30 minutes are allowed. This is because the Windows
   installer may trigger MiKTeX updates that suffer from network latencies.
 
+- Macros that use other macros now output properly to XHTML (bug 7532).
+
 
 * USER INTERFACE
 
