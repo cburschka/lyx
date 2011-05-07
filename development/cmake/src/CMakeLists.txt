@@ -126,7 +126,7 @@ target_link_libraries(${_lyx}
 	${QT_QTMAIN_LIBRARY}
 	${vld_dll})
 
-if(NOT LYX_EXTERNAL_LIBINTL)
+if(NOT LYX_EXTERNAL_LIBINTL OR WIN32)
   target_link_libraries(${_lyx} intl)
 endif()
 
