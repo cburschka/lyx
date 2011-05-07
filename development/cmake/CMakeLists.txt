@@ -18,8 +18,7 @@ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 # Supress regeneration
 set(CMAKE_SUPPRESS_REGENERATION FALSE)
 
-# where to look first for cmake modules,
-# before ${CMAKE_ROOT}/Modules is checked
+
 include(LyXMacros)
 
 
