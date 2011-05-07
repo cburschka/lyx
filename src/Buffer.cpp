@@ -830,7 +830,7 @@ bool Buffer::readDocument(Lexer & lex)
 	}
 	usermacros.clear();
 	updateMacros();
-	updateMacroInstances();
+	updateMacroInstances(InternalUpdate);
 	return res;
 }
 
@@ -1350,7 +1350,7 @@ void Buffer::writeLaTeXSource(otexstream & os,
 
 	// fold macros if possible, still with parent buffer as the
 	// macros will be put in the prefix anyway.
-	updateMacroInstances();
+	updateMacroInstances(OutputUpdate);
 
 	// There are a few differences between nice LaTeX and usual files:
 	// usual is \batchmode and has a
@@ -1615,7 +1615,7 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 	updateBuffer(UpdateMaster, OutputUpdate);
 	d->bibinfo_.makeCitationLabels(*this);
 	updateMacros();
-	updateMacroInstances();
+	updateMacroInstances(OutputUpdate);
 
 	if (!only_body) {
 		os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
@@ -2920,7 +2920,7 @@ void Buffer::getUsedBranches(std::list<docstring> & result, bool const from_mast
 }
 
 
-void Buffer::updateMacroInstances() const
+void Buffer::updateMacroInstances(UpdateType utype) const
 {
 	LYXERR(Debug::MACROS, "updateMacroInstances for "
 		<< d->filename.onlyFileName());
@@ -2938,7 +2938,7 @@ void Buffer::updateMacroInstances() const
 		MacroContext mc = MacroContext(this, it);
 		for (DocIterator::idx_type i = 0; i < n; ++i) {
 			MathData & data = minset->cell(i);
-			data.updateMacros(0, mc);
+			data.updateMacros(0, mc, utype);
 		}
 	}
 }
@@ -3524,7 +3524,7 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 
 	// fix macros
 	updateMacros();
-	updateMacroInstances();
+	updateMacroInstances(OutputUpdate);
 
 	// Plain text backend
 	if (backend_format == "text") {
