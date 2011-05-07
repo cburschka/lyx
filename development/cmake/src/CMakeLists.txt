@@ -91,7 +91,7 @@ if (LYX_VLD)
 endif()
 
 if(WIN32)
-	set(FILE_RC ${CMAKE_SOURCE_DIR}/lyx.rc)
+	set(FILE_RC ${TOP_SRC_DIR}/development/cmake/lyx.rc)
 	message(STATUS "Using icon defined in resource file: ${FILE_RC}")
 endif()
 

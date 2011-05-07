@@ -372,8 +372,8 @@ if(LYX_PCH)
 	# PCHs not supported by cmake: http://www.cmake.org/Bug/view.php?id=1260
 	# Not sure if it works for all non-msvc compilers
 	include(PCHSupport_26)
-	configure_file(${CMAKE_SOURCE_DIR}/pcheaders.h ${TOP_BINARY_DIR}/pcheaders.h)
-	configure_file(${CMAKE_SOURCE_DIR}/config.cpp.cmake ${TOP_BINARY_DIR}/config_pch.cpp)
+	configure_file(${TOP_SRC_DIR}/development/cmake/pcheaders.h      ${TOP_BINARY_DIR}/pcheaders.h)
+	configure_file(${TOP_SRC_DIR}/development/cmake/config.cpp.cmake ${TOP_BINARY_DIR}/config_pch.cpp)
 	add_definitions(-DLYX_ENABLE_PCH)
 
 	if(MSVC)
