@@ -22,6 +22,7 @@ if (${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
 else()
 	message(STATUS "Building out-of-source")
 	set(TOP_BINARY_DIR "${CMAKE_BINARY_DIR}")
+	cmake_policy(SET CMP0013 OLD)
 endif()
 
 add_subdirectory(development/cmake "${TOP_BINARY_DIR}")
