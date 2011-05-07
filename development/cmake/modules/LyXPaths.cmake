@@ -85,9 +85,6 @@ else()
 endif()
 
 
-get_filename_component(lyx_dir_readme ${CMAKE_SOURCE_DIR}/../../README ABSOLUTE)
-get_filename_component(TOP_SRC_DIR ${lyx_dir_readme} PATH)
-
 if(WIN32)
 	set(locale_dir Resources/locale)
 else()	

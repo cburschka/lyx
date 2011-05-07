@@ -13,9 +13,6 @@ if(COMMAND cmake_policy)
 	cmake_policy(SET CMP0005 OLD)
 endif()
 
-set(LYX_PROJECT lyx)
-project(${LYX_PROJECT})
-
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
 # Supress regeneration
@@ -23,7 +20,6 @@ set(CMAKE_SUPPRESS_REGENERATION FALSE)
 
 # where to look first for cmake modules,
 # before ${CMAKE_ROOT}/Modules is checked
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/modules")
 include(LyXMacros)
 
 
@@ -93,7 +89,7 @@ endif()
 
 if(LYX_DEPENDENCIES_DOWNLOAD)
 	message(STATUS)
-	set(LYX_DEPENDENCIES_DIR ${CMAKE_BINARY_DIR}/msvc2010-deps)
+	set(LYX_DEPENDENCIES_DIR ${TOP_BINARY_DIR}/msvc2010-deps)
 	message(STATUS "Using downloaded dependencies in ${LYX_DEPENDENCIES_DIR}")
 	set(deps_files lyx20-deps-msvc2010-x86.zip)
 	foreach(it ${deps_files})
@@ -112,8 +108,8 @@ endif()
 
 message(STATUS)
 
-set(EXECUTABLE_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/bin)
-set(LIBRARY_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/lib)
+set(EXECUTABLE_OUTPUT_PATH  ${TOP_BINARY_DIR}/bin)
+set(LIBRARY_OUTPUT_PATH  ${TOP_BINARY_DIR}/lib)
 
 
 
@@ -283,7 +279,7 @@ find_package(Qt4 REQUIRED)
 find_package(ICONV REQUIRED)
 find_package(ZLIB REQUIRED)
 
-include_directories(${CMAKE_BINARY_DIR} ${TOP_SRC_DIR}/src)
+include_directories(${TOP_BINARY_DIR} ${TOP_SRC_DIR}/src)
   
 if(LYX_ASPELL)
 	find_package(ASPELL)
@@ -377,18 +373,18 @@ if(LYX_PCH)
 	# PCHs not supported by cmake: http://www.cmake.org/Bug/view.php?id=1260
 	# Not sure if it works for all non-msvc compilers
 	include(PCHSupport_26)
-	configure_file(${CMAKE_SOURCE_DIR}/pcheaders.h ${CMAKE_BINARY_DIR}/pcheaders.h)
-	configure_file(${CMAKE_SOURCE_DIR}/config.cpp.cmake ${CMAKE_BINARY_DIR}/config_pch.cpp)
+	configure_file(${CMAKE_SOURCE_DIR}/pcheaders.h ${TOP_BINARY_DIR}/pcheaders.h)
+	configure_file(${CMAKE_SOURCE_DIR}/config.cpp.cmake ${TOP_BINARY_DIR}/config_pch.cpp)
 	add_definitions(-DLYX_ENABLE_PCH)
 
 	if(MSVC)
 		macro(lyx_add_msvc_pch name_)
 			set_source_files_properties(${${name_}_sources} PROPERTIES
 				COMPILE_FLAGS "/Yuconfig.h /Fp\$(IntDir)/config.pch")
-			set_source_files_properties(${CMAKE_BINARY_DIR}/config_pch.cpp PROPERTIES
+			set_source_files_properties(${TOP_BINARY_DIR}/config_pch.cpp PROPERTIES
 				COMPILE_FLAGS "/Ycconfig.h /Fp\$(IntDir)/config.pch")
-			set(${name_}_sources ${${name_}_sources} ${CMAKE_BINARY_DIR}/config_pch.cpp
-				${CMAKE_BINARY_DIR}/pcheaders.h)
+			set(${name_}_sources ${${name_}_sources} ${TOP_BINARY_DIR}/config_pch.cpp
+				${TOP_BINARY_DIR}/pcheaders.h)
 			set(CMAKE_CXX_FLAGS_DEBUG	"${CMAKE_CXX_FLAGS_DEBUG} /DLYX_PCH_STL /DLYX_PCH_BOOST /DLYX_PCH_QT4")
 			set(CMAKE_CXX_FLAGS_RELEASE	"${CMAKE_CXX_FLAGS_RELEASE} /DLYX_PCH_STL /DLYX_PCH_BOOST /DLYX_PCH_QT4")
 			set(CMAKE_CXX_FLAGS_MINSIZEREL	"${CMAKE_CXX_FLAGS_MINSIZEREL} /DLYX_PCH_STL /DLYX_PCH_BOOST")			
@@ -400,7 +396,7 @@ if(LYX_PCH)
 		endmacro()
 		macro(lyx_add_gcc_pch name_)
 			add_definitions(-DLYX_PCH_STL -DLYX_PCH_BOOST -DLYX_PCH_QT4)
-			ADD_PRECOMPILED_HEADER(${name_} ${CMAKE_BINARY_DIR}/config_pch.cpp ${CMAKE_BINARY_DIR}/config.h.gch)
+			ADD_PRECOMPILED_HEADER(${name_} ${TOP_BINARY_DIR}/config_pch.cpp ${TOP_BINARY_DIR}/config.h.gch)
 		endmacro()
 	endif()
 else()
@@ -477,13 +473,13 @@ endif()
 
 # compiler tests, config.h generation
 if(MSVC AND NOT LYX_CONFIGURE_CHECKS)
-	configure_file(configCompiler.h.msvc ${CMAKE_BINARY_DIR}/configCompiler.h)
+	configure_file(configCompiler.h.msvc ${TOP_BINARY_DIR}/configCompiler.h)
 else()
 	include(ConfigureChecks.cmake)
-	configure_file(configCompiler.h.cmake ${CMAKE_BINARY_DIR}/configCompiler.h)
+	configure_file(configCompiler.h.cmake ${TOP_BINARY_DIR}/configCompiler.h)
 endif()
 
-configure_file(config.h.cmake ${CMAKE_BINARY_DIR}/config.h)
+configure_file(config.h.cmake ${TOP_BINARY_DIR}/config.h)
 
 
 add_subdirectory(src)

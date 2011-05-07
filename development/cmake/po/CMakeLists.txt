@@ -87,7 +87,7 @@ add_gettext_python(layouttranslations lib/layouts *.layout *.inc *.module)
 ADD_CUSTOM_COMMAND(
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
     COMMAND ${LYX_PYTHON_EXECUTABLE}
-    ARGS   "${CMAKE_SOURCE_DIR}/po/cat.py" ${_py_sources} > "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
+    ARGS   "${TOP_SRC_DIR}/development/cmake/po/cat.py" ${_py_sources} > "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
     DEPENDS ${_py_sources}
     )
 
