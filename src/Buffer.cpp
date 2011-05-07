@@ -830,7 +830,7 @@ bool Buffer::readDocument(Lexer & lex)
 	}
 	usermacros.clear();
 	updateMacros();
-	updateMacroInstances();
+	updateMacroInstances(InternalUpdate);
 	return res;
 }
 
@@ -1281,7 +1281,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 	// FIXME Do we need to do this all the time? I.e., in children
 	// of a master we are exporting?
 	updateBuffer();
-	updateMacroInstances();
+	updateMacroInstances(OutputUpdate);
 
 	try {
 		os.texrow().reset();
@@ -1512,7 +1512,7 @@ void Buffer::makeDocBookFile(FileName const & fname,
 	// make sure we are ready to export
 	// this needs to be done before we validate
 	updateBuffer();
-	updateMacroInstances();
+	updateMacroInstances(OutputUpdate);
 
 	writeDocBookSource(ofs, fname.absFileName(), runparams, body_only);
 
@@ -1608,7 +1608,7 @@ void Buffer::makeLyXHTMLFile(FileName const & fname,
 	// make sure we are ready to export
 	// this has to be done before we validate
 	updateBuffer(UpdateMaster, OutputUpdate);
-	updateMacroInstances();
+	updateMacroInstances(OutputUpdate);
 
 	writeLyXHTMLSource(ofs, runparams, body_only);
 
@@ -2927,7 +2927,7 @@ void Buffer::getUsedBranches(std::list<docstring> & result, bool const from_mast
 }
 
 
-void Buffer::updateMacroInstances() const
+void Buffer::updateMacroInstances(UpdateType utype) const
 {
 	LYXERR(Debug::MACROS, "updateMacroInstances for "
 		<< d->filename.onlyFileName());
@@ -2945,7 +2945,7 @@ void Buffer::updateMacroInstances() const
 		MacroContext mc = MacroContext(this, it);
 		for (DocIterator::idx_type i = 0; i < n; ++i) {
 			MathData & data = minset->cell(i);
-			data.updateMacros(0, mc);
+			data.updateMacros(0, mc, utype);
 		}
 	}
 }

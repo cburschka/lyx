@@ -530,7 +530,7 @@ public:
 	/// Collect macro definitions in paragraphs
 	void updateMacros() const;
 	/// Iterate through the whole buffer and try to resolve macros
-	void updateMacroInstances() const;
+	void updateMacroInstances(UpdateType) const;
 
 	/// List macro names of this buffer, the parent and the children
 	void listMacroNames(MacroNameSet & macros) const;

@@ -252,7 +252,7 @@ void MathData::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 
 	Cursor & cur = mi.base.bv->cursor();
-	const_cast<MathData*>(this)->updateMacros(&cur, mi.macrocontext);
+	const_cast<MathData*>(this)->updateMacros(&cur, mi.macrocontext, InternalUpdate);
 
 	DocIterator const & inlineCompletionPos = mi.base.bv->inlineCompletionPos();
 	MathData const * inlineCompletionData = 0;
@@ -387,7 +387,8 @@ void MathData::updateBuffer(ParIterator const & it, UpdateType utype)
 }
 
 
-void MathData::updateMacros(Cursor * cur, MacroContext const & mc)
+void MathData::updateMacros(Cursor * cur, MacroContext const & mc,
+		UpdateType utype)
 {
 	// If we are editing a macro, we cannot update it immediately,
 	// otherwise wrong undo steps will be recorded (bug 6208).
@@ -484,7 +485,7 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc)
 		if (inset->asScriptInset())
 			inset = inset->asScriptInset()->nuc()[0].nucleus();
 		LASSERT(inset->asMacro(), /**/);
-		inset->asMacro()->updateRepresentation();
+		inset->asMacro()->updateRepresentation(cur, mc, utype);
 	}
 }
 

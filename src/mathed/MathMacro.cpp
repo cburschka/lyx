@@ -311,7 +311,8 @@ void MathMacro::updateMacro(MacroContext const & mc)
 }
 
 
-void MathMacro::updateRepresentation()
+void MathMacro::updateRepresentation(Cursor * cur, MacroContext const & mc,
+		UpdateType utype)
 {
 	// known macro?
 	if (macro_ == 0)
@@ -342,6 +343,8 @@ void MathMacro::updateRepresentation()
 	}
 	// expanding macro with the values
 	macro_->expand(values, expanded_.cell(0));
+	if (utype == OutputUpdate && !expanded_.cell(0).empty())
+		expanded_.cell(0).updateMacros(cur, mc, utype);
 	// get definition for list edit mode
 	docstring const & display = macro_->display();
 	asArray(display.empty() ? macro_->definition() : display, definition_);
