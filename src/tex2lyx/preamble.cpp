@@ -48,6 +48,7 @@ const char * const modules_placeholder = "\001modules\001";
 
 // needed to handle encodings with babel
 bool one_language = true;
+string h_inputencoding = "auto";
 
 namespace {
 
@@ -165,7 +166,6 @@ string h_textclass               = "article";
 string h_use_default_options     = "false";
 string h_options;
 string h_language                = "english";
-string h_inputencoding           = "auto";
 string h_font_roman              = "default";
 string h_font_sans               = "default";
 string h_font_typewriter         = "default";
@@ -517,7 +517,7 @@ void handle_package(Parser &p, string const & name, string const & opts,
 	else if (name == "fontenc")
 		 ;// ignore this
 
-	else if (name == "inputenc") {
+	else if (name == "inputenc" || name == "luainputenc") {
 		// h_inputencoding is only set when there is not more than one
 		// inputenc option because otherwise h_inputencoding must be
 		// set to "auto" (the default encoding of the document language)

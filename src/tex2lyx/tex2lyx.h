@@ -52,6 +52,7 @@ extern std::string babel2lyx(std::string const & language);
 /// used packages with options
 extern std::map<std::string, std::vector<std::string> > used_packages;
 extern const char * const modules_placeholder;
+extern std::string h_inputencoding;
 
 /// in text.cpp
 std::string translate_len(std::string const &);
