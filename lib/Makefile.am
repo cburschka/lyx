@@ -947,6 +947,7 @@ dist_imagesmath_DATA = \
 	images/math/upsilon2.png \
 	images/math/upuparrows.png \
 	images/math/urcorner.png \
+	images/math/utilde.png \
 	images/math/varepsilon.png \
 	images/math/varkappa.png \
 	images/math/varnothing.png \

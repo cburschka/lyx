@@ -26,6 +26,10 @@ underleftarrow      decoration none       amsmath
 underleftrightarrow decoration none       amsmath
 underline           decoration none
 underrightarrow     decoration none       amsmath
+#Do not load automatically, since it might conflict with user macros and we
+#don't have a possibility to turn automatic loading off like for ams
+#utilde              decoration none       undertilde
+utilde              decoration none
 vec                 decoration none
 widehat             decoration none
 widetilde           decoration none

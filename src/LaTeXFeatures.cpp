@@ -614,7 +614,8 @@ char const * simplefeatures[] = {
 	"amscd",
 	"slashed",
 	"multirow",
-	"tfrupee"
+	"tfrupee",
+	"undertilde",
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
