@@ -51,6 +51,7 @@ endif()
 
 add_library(intl STATIC ${intl_sources} ${intl_headers})
 set(LIBINTL_LIBRARIES intl)
+add_custom_target(intl_target DEPENDS intl)
 
 if(ICONV_FOUND)
 	target_link_libraries(intl ${ICONV_LIBRARY})

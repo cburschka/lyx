@@ -128,6 +128,7 @@ target_link_libraries(${_lyx}
 
 if(NOT LYX_EXTERNAL_LIBINTL OR WIN32)
   target_link_libraries(${_lyx} intl)
+  add_dependencies(${_lyx} intl_target)
 endif()
 
 if(HUNSPELL_FOUND)
