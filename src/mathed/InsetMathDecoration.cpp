@@ -94,6 +94,7 @@ bool InsetMathDecoration::wide() const
 			key_->name == "underleftarrow" ||
 			key_->name == "underrightarrow" ||
 			key_->name == "underleftrightarrow" ||
+			key_->name == "undertilde" ||
 			key_->name == "utilde";
 }
 
@@ -205,6 +206,7 @@ namespace {
 		// this is the macron, again, but it works
 		t["underline"] = Attributes(false, "&macr;");
 		t["underrightarrow"] = Attributes(false, "&xrarr;");
+		t["undertilde"] = Attributes(false, "&Tilde;");
 		t["utilde"] = Attributes(false, "&Tilde;");
 		t["vec"] = Attributes(true, "&rarr;");
 		t["widehat"] = Attributes(true, "&Hat;");

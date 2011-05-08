@@ -936,6 +936,7 @@ dist_imagesmath_DATA = \
 	images/math/underrightarrow.png \
 	images/math/underscore.png \
 	images/math/underset.png \
+	images/math/undertilde.png \
 	images/math/uparrow.png \
 	images/math/uparrow2.png \
 	images/math/updownarrow.png \

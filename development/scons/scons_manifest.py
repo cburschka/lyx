@@ -2074,6 +2074,7 @@ lib_images_math_files = Split('''
     underrightarrow.png
     underscore.png
     underset.png
+    undertilde.png
     uparrow.png
     uparrow2.png
     updownarrow.png
