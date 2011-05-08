@@ -624,11 +624,22 @@ namespace {
  *  You must ensure that \p parentFilePath is properly set before calling
  *  this function!
  */
-void tex2lyx(idocstream & is, ostream & os, string const & encoding)
+void tex2lyx(idocstream & is, ostream & os, string encoding)
 {
+	// Set a sensible default encoding.
+	// This is used until an encoding command is found.
+	// For child documents use the encoding of the master, else latin1,
+	// since latin1 does not cause an iconv error if the actual encoding
+	// is different (bug 7509).
+	if (encoding.empty()) {
+		if (h_inputencoding == "auto")
+			encoding = "latin1";
+		else
+			encoding = h_inputencoding;
+	}
+
 	Parser p(is);
-	if (!encoding.empty())
-		p.setEncoding(encoding);
+	p.setEncoding(encoding);
 	//p.dump();
 
 	ostringstream ps;
