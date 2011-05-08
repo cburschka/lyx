@@ -537,6 +537,7 @@ LocalLayout::LocalLayout() : current_id_(0), is_valid_(false)
 {
 	connect(locallayoutTE, SIGNAL(textChanged()), this, SLOT(textChanged()));
 	connect(validatePB, SIGNAL(clicked()), this, SLOT(validatePressed()));
+	connect(convertPB, SIGNAL(clicked()), this, SLOT(convertPressed()));
 }
 
 
@@ -567,8 +568,30 @@ void LocalLayout::textChanged()
 	static const QString unknown = qt_("Press button to check validity...");
 
 	is_valid_ = false;
-	infoLB->setText(unknown);
+	validLB->setText(unknown);
 	validatePB->setEnabled(true);
+	convertPB->setEnabled(false);
+	changed();
+}
+
+
+void LocalLayout::convert() {
+	string const layout =
+		fromqstr(locallayoutTE->document()->toPlainText().trimmed());
+	string const newlayout = TextClass::convert(layout);
+	LYXERR0(newlayout);
+	if (newlayout.empty()) {
+		Alert::error(_("Conversion Failed!"),
+		      _("Failed to convert local layout to current format."));
+	} else {
+		locallayoutTE->setPlainText(toqstr(newlayout));
+	}
+	validate();
+}
+
+
+void LocalLayout::convertPressed() {
+	convert();
 	changed();
 }
 
@@ -587,12 +610,25 @@ void LocalLayout::validate() {
 		fromqstr(locallayoutTE->document()->toPlainText().trimmed());
 	if (layout.empty()) {
 		is_valid_ = true;
-		infoLB->setText("");
+		validatePB->setEnabled(false);
+		validLB->setText("");
+		convertPB->hide();
+		convertLB->hide();
 	} else {
-		is_valid_ = TextClass::validate(layout);
-		infoLB->setText(is_valid_ ? vtext : ivtext);
+		TextClass::ReturnValues const ret = TextClass::validate(layout);
+		is_valid_ = (ret == TextClass::OK) || (ret == TextClass::OK_OLDFORMAT);
+		validatePB->setEnabled(false);
+		validLB->setText(is_valid_ ? vtext : ivtext);
+		if (ret == TextClass::OK_OLDFORMAT) {
+			convertPB->show();
+			convertPB->setEnabled(true);
+			convertLB->setText(qt_("Convert to current format"));
+			convertLB->show();
+		} else {
+			convertPB->hide();
+			convertLB->hide();
+		}
 	}
-	validatePB->setEnabled(false);
 }
 
 

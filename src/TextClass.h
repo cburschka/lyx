@@ -153,19 +153,23 @@ public:
 	/// return values for read()
 	enum ReturnValues {
 		OK,
+		OK_OLDFORMAT,
 		ERROR,
 		FORMAT_MISMATCH
 	};
 
 	/// Performs the read of the layout file.
 	/// \return true on success.
+	// FIXME Should return ReturnValues....
 	bool read(support::FileName const & filename, ReadType rt = BASECLASS);
 	///
-	bool read(std::string const & str, ReadType rt = BASECLASS);
+	ReturnValues read(std::string const & str, ReadType rt = MODULE);
 	///
 	ReturnValues read(Lexer & lex, ReadType rt = BASECLASS);
 	/// validates the layout information passed in str
-	static bool validate(std::string const & str);
+	static ReturnValues validate(std::string const & str);
+	///
+	static std::string convert(std::string const & str);
 
 	///////////////////////////////////////////////////////////////////
 	// loading

@@ -2026,7 +2026,9 @@ void BufferParams::makeDocumentClass()
 	doc_class_ = &(DocumentClassBundle::get().makeDocumentClass(*baseClass(), layout_modules_));
 
 	if (!local_layout.empty()) {
-		if (!doc_class_->read(local_layout, TextClass::MODULE)) {
+		TextClass::ReturnValues success =
+			doc_class_->read(local_layout, TextClass::MODULE);
+		if (success != TextClass::OK && success != TextClass::OK_OLDFORMAT) {
 			docstring const msg = _("Error reading internal layout information");
 			frontend::Alert::warning(_("Read Error"), msg);
 		}

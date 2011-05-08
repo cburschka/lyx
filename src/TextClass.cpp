@@ -268,6 +268,29 @@ bool TextClass::convertLayoutFormat(support::FileName const & filename, ReadType
 }
 
 
+std::string TextClass::convert(std::string const & str)
+{
+	FileName const fn = FileName::tempName("locallayout");
+	ofstream os(fn.toFilesystemEncoding().c_str());
+	os << str;
+	os.close();
+	FileName const tempfile = FileName::tempName("convert_locallayout");
+	bool success = layout2layout(fn, tempfile);
+	if (!success)
+		return "";
+	ifstream is(tempfile.toFilesystemEncoding().c_str());
+	string ret;
+	string tmp;
+	while (!is.eof()) {
+		getline(is, tmp);
+		ret += tmp + '\n';
+	}
+	is.close();
+	tempfile.removeFile();
+	return ret;
+}
+
+
 TextClass::ReturnValues TextClass::readWithoutConv(FileName const & filename, ReadType rt)
 {
 	if (!filename.isReadableFile()) {
@@ -303,23 +326,21 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 		return retval == OK;
 
 	bool const worx = convertLayoutFormat(filename, rt);
-	if (!worx) {
+	if (!worx)
 		LYXERR0 ("Unable to convert " << filename << 
 			" to format " << LAYOUT_FORMAT);
-		return false;
-	}
-	return true;
+	return worx;
 }
 
 
-bool TextClass::validate(std::string const & str)
+TextClass::ReturnValues TextClass::validate(std::string const & str)
 {
 	TextClass tc;
 	return tc.read(str, VALIDATION);
 }
 
 
-bool TextClass::read(std::string const & str, ReadType rt) 
+TextClass::ReturnValues TextClass::read(std::string const & str, ReadType rt)
 {
 	Lexer lexrc(textClassTags);
 	istringstream is(str);
@@ -327,14 +348,14 @@ bool TextClass::read(std::string const & str, ReadType rt)
 	ReturnValues retval = read(lexrc, rt);
 
 	if (retval != FORMAT_MISMATCH) 
-		return retval == OK;
+		return retval;
 
 	// write the layout string to a temporary file
 	FileName const tempfile = FileName::tempName("TextClass_read");
 	ofstream os(tempfile.toFilesystemEncoding().c_str());
 	if (!os) {
 		LYXERR0("Unable to create temporary file");
-		return false;
+		return ERROR;
 	}
 	os << str;
 	os.close();
@@ -344,9 +365,10 @@ bool TextClass::read(std::string const & str, ReadType rt)
 	if (!worx) {
 		LYXERR0("Unable to convert internal layout information to format " 
 			<< LAYOUT_FORMAT);
+		return ERROR;
 	}
 	tempfile.removeFile();
-	return worx;
+	return OK_OLDFORMAT;
 }
 
 

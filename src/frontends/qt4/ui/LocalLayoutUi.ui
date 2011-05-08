@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>LocalLayoutUi</class>
  <widget class="QWidget" name="LocalLayoutUi">
@@ -6,14 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>377</width>
-    <height>371</height>
+    <height>434</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string/>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0" colspan="4">
+   <item row="0" column="0" colspan="2">
     <widget class="QTextEdit" name="locallayoutTE">
      <property name="toolTip">
       <string>Document-specific layout information</string>
@@ -26,8 +27,18 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="1" colspan="3">
-    <widget class="QLabel" name="infoLB">
+   <item row="1" column="0">
+    <widget class="QPushButton" name="validatePB">
+     <property name="toolTip">
+      <string/>
+     </property>
+     <property name="text">
+      <string>&amp;Validate</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLabel" name="validLB">
      <property name="contextMenuPolicy">
       <enum>Qt::NoContextMenu</enum>
      </property>
@@ -35,7 +46,7 @@
       <string>Errors reported in terminal.</string>
      </property>
      <property name="text">
-      <string>Press button to check validity...</string>
+      <string/>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -43,12 +54,25 @@
     </widget>
    </item>
    <item row="2" column="0">
-    <widget class="QPushButton" name="validatePB">
+    <widget class="QPushButton" name="convertPB">
+     <property name="text">
+      <string>Convert</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLabel" name="convertLB">
+     <property name="contextMenuPolicy">
+      <enum>Qt::NoContextMenu</enum>
+     </property>
      <property name="toolTip">
-      <string/>
+      <string>Errors reported in terminal.</string>
      </property>
      <property name="text">
-      <string>&amp;Validate</string>
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>

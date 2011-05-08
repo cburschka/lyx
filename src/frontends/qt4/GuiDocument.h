@@ -289,9 +289,11 @@ Q_SIGNALS:
 
 private:
 	void validate();
+	void convert();
 private Q_SLOTS:
 	void textChanged();
 	void validatePressed();
+	void convertPressed();
 
 private:
 	BufferId current_id_;
