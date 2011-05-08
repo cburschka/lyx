@@ -185,8 +185,6 @@ public:
 	/// swap two columns
 	virtual void swapCol(col_type c);
 	///
-	virtual void appendRow();
-	///
 	idx_type index(row_type r, col_type c) const;
 	///
 	bool idxBetween(idx_type idx, idx_type from, idx_type to) const;

@@ -688,17 +688,6 @@ void InsetMathGrid::addRow(row_type row)
 }
 
 
-void InsetMathGrid::appendRow()
-{
-	rowinfo_.push_back(RowInfo());
-	//cells_.insert(cells_.end(), ncols(), MathData());
-	for (col_type col = 0; col < ncols(); ++col) {
-		cells_.push_back(cells_type::value_type());
-		cellinfo_.push_back(CellInfo());
-	}
-}
-
-
 void InsetMathGrid::delRow(row_type row)
 {
 	if (nrows() == 1)
