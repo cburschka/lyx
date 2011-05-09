@@ -1655,8 +1655,9 @@ bool Text::dissolveInset(Cursor & cur)
 		// restore position
 		cur.pit() = min(cur.lastpit(), spit);
 		cur.pos() = min(cur.lastpos(), spos);
-	} else
-		cur.forceBufferUpdate();
+	}
+
+	cur.forceBufferUpdate();
 
 	// Ensure the current language is set correctly (bug 6292)
 	cur.text()->setCursor(cur, cur.pit(), cur.pos());
