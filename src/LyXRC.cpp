@@ -192,6 +192,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\template_path", LyXRC::RC_TEMPLATEPATH },
 	{ "\\tex_allows_spaces", LyXRC::RC_TEX_ALLOWS_SPACES },
 	{ "\\tex_expects_windows_paths", LyXRC::RC_TEX_EXPECTS_WINDOWS_PATHS },
+	{ "\\texinputs_prefix", LyXRC::RC_TEXINPUTS_PREFIX },
 	{ "\\thesaurusdir_path", LyXRC::RC_THESAURUSDIRPATH },
 	{ "\\ui_file", LyXRC::RC_UIFILE },
 	{ "\\use_converter_cache", LyXRC::RC_USE_CONVERTER_CACHE },
@@ -227,6 +228,8 @@ void LyXRC::setDefaults()
 	bind_file = "cua";
 	def_file = "default";
 	ui_file = "default";
+	// The current document directory
+	texinputs_prefix = ".";
 	// Get printer from the environment. If fail, use default "",
 	// assuming that everything is set up correctly.
 	printer = getEnv("PRINTER");
@@ -497,6 +500,10 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 
 		case RC_TEX_ALLOWS_SPACES:
 			lexrc >> tex_allows_spaces;
+			break;
+
+		case RC_TEXINPUTS_PREFIX:
+			lexrc >> texinputs_prefix;
 			break;
 
 		case RC_KBMAP:
@@ -2213,6 +2220,14 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		   << "# TEX SECTION #######################################\n"
 		   << "#\n\n";
 
+	case RC_TEXINPUTS_PREFIX:
+		if (ignore_system_lyxrc ||
+		    texinputs_prefix != system_lyxrc.texinputs_prefix) {
+			os << "\\texinputs_prefix \"" << texinputs_prefix << "\"\n";
+		}
+		if (tag != RC_LAST)
+			break;
+
 	case RC_FONT_ENCODING:
 		if (ignore_system_lyxrc ||
 		    fontenc != system_lyxrc.fontenc) {
@@ -3020,6 +3035,10 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 		if (lyxrc_orig.windows_style_tex_paths != lyxrc_new.windows_style_tex_paths) {
 			os::windows_style_tex_paths(lyxrc_new.windows_style_tex_paths);
 		}
+	case LyXRC::RC_TEXINPUTS_PREFIX:
+		if (lyxrc_orig.texinputs_prefix != lyxrc_new.texinputs_prefix) {
+			lyxrc.texinputs_prefix = lyxrc_new.texinputs_prefix;
+		}
 	case LyXRC::RC_THESAURUSDIRPATH:
 	case LyXRC::RC_UIFILE:
 	case LyXRC::RC_USER_EMAIL:
@@ -3468,6 +3487,13 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_TEX_EXPECTS_WINDOWS_PATHS:
+		break;
+
+	case RC_TEXINPUTS_PREFIX:
+		str = _("Specify those directories which should be "
+			 "prepended to the TEXINPUTS environment variable. "
+			 "A '.' represents the current document directory. "
+			 "Use the OS native format.");
 		break;
 
 	case RC_UIFILE:

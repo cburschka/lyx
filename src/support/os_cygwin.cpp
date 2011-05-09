@@ -15,12 +15,16 @@
 
 #include <config.h>
 
+#include "LyXRC.h"
+
 #include "support/os.h"
 
+#include "support/debug.h"
+#include "support/environment.h"
 #include "support/FileName.h"
+#include "support/filetools.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
-#include "support/debug.h"
 
 #include <windows.h>
 #include <io.h>
@@ -343,6 +347,19 @@ string latex_path(string const & p)
 }
 
 
+string latex_path_list(string const & p)
+{
+	// We may need a posix style path or a windows style path (depending
+	// on windows_style_tex_paths_), but we use always forward slashes,
+	// since this is standard for all tex engines.
+
+	if (windows_style_tex_paths_)
+		return convert_path_list(p, PathStyle(windows));
+
+	return convert_path_list(p, PathStyle(posix));
+}
+
+
 bool is_valid_strftime(string const & p)
 {
 	string::size_type pos = p.find_first_of('%');
@@ -387,8 +404,11 @@ int timeout_min()
 }
 
 
-char path_separator()
+char path_separator(path_type type)
 {
+	if (type == TEXENGINE)
+		return windows_style_tex_paths_ ? ';' : ':';
+
 	return ':';
 }
 
@@ -415,13 +435,30 @@ bool canAutoOpenFile(string const & ext, auto_open_mode const mode)
 }
 
 
-bool autoOpenFile(string const & filename, auto_open_mode const mode)
+bool autoOpenFile(string const & filename, auto_open_mode const mode,
+		  string const & path)
 {
+	string const texinputs = os::latex_path_list(
+			replaceCurdirPath(path, lyxrc.texinputs_prefix));
+	string const sep = windows_style_tex_paths_ ? ";" : ":";
+	string const oldval = getEnv("TEXINPUTS");
+	string const newval = "." + sep + texinputs + sep + oldval;
+	if (!path.empty() && !lyxrc.texinputs_prefix.empty()) {
+		setEnv("TEXINPUTS", newval);
+		cygwin_internal(CW_SYNC_WINENV);
+	}
+
 	// reference: http://msdn.microsoft.com/en-us/library/bb762153.aspx
 	string const win_path = to_local8bit(from_utf8(convert_path(filename, PathStyle(windows))));
 	char const * action = (mode == VIEW) ? "open" : "edit";
-	return reinterpret_cast<int>(ShellExecute(NULL, action,
-		win_path.c_str(), NULL, NULL, 1)) > 32;
+	bool success = reinterpret_cast<int>(ShellExecute(NULL, action,
+					win_path.c_str(), NULL, NULL, 1)) > 32;
+
+	if (!path.empty() && !lyxrc.texinputs_prefix.empty()) {
+		setEnv("TEXINPUTS", oldval);
+		cygwin_internal(CW_SYNC_WINENV);
+	}
+	return success;
 }
 
 

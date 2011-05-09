@@ -307,7 +307,7 @@ bool Converters::convert(Buffer const * buffer,
 			LYXERR(Debug::FILES, "No converter defined! "
 				   "I use convertDefault.py:\n\t" << command);
 			Systemcall one;
-			one.startscript(Systemcall::Wait, command);
+			one.startscript(Systemcall::Wait, command, buffer->filePath());
 			if (to_file.isReadableFile()) {
 				if (conversionflags & try_cache)
 					ConverterCache::get().add(orig_from,
@@ -443,12 +443,14 @@ bool Converters::convert(Buffer const * buffer,
 			int res;
 			if (dummy) {
 				res = one.startscript(Systemcall::DontWait,
-					to_filesystem8bit(from_utf8(command)));
+					to_filesystem8bit(from_utf8(command)),
+					buffer->filePath());
 				// We're not waiting for the result, so we can't do anything
 				// else here.
 			} else {
 				res = one.startscript(Systemcall::Wait,
-						to_filesystem8bit(from_utf8(command)));
+						to_filesystem8bit(from_utf8(command)),
+						buffer->filePath());
 				if (!real_outfile.empty()) {
 					Mover const & mover = getMover(conv.to);
 					if (!mover.rename(outfile, real_outfile))
@@ -468,7 +470,8 @@ bool Converters::convert(Buffer const * buffer,
 						" < " + quoteName(infile2 + ".out") +
 						" > " + quoteName(logfile);
 					one.startscript(Systemcall::Wait,
-						to_filesystem8bit(from_utf8(command2)));
+						to_filesystem8bit(from_utf8(command2)),
+						buffer->filePath());
 					if (!scanLog(*buffer, command, makeAbsPath(logfile, path), errorList))
 						return false;
 				}
@@ -612,7 +615,8 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 
 	// do the LaTeX run(s)
 	string const name = buffer.latexName();
-	LaTeX latex(command, runparams, FileName(makeAbsPath(name)));
+	LaTeX latex(command, runparams, FileName(makeAbsPath(name)),
+		    buffer.filePath());
 	TeXErrors terr;
 	ShowMessage show(buffer);
 	latex.message.connect(show);
