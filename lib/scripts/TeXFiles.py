@@ -73,9 +73,7 @@ else:
 # Create a variable that holds the right character to be used by the scripts.
 path_sep = os.pathsep
 if sys.platform == 'cygwin':
-    # MikTeX's kpsewhich says "kpathsea emulation version x.x.x", whereas
-    # teTeX's simply "kpathsea version x.x.x".
-    if 'emulation' in cmdOutput('kpsewhich --version'):
+    if ';' in cmdOutput('kpsewhich --show-path=.tex'):
         path_sep = ';'
     else:
         path_sep = ':'
