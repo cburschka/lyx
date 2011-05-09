@@ -936,6 +936,7 @@ dist_imagesmath_DATA = \
 	images/math/underrightarrow.png \
 	images/math/underscore.png \
 	images/math/underset.png \
+	images/math/undertilde.png \
 	images/math/uparrow.png \
 	images/math/uparrow2.png \
 	images/math/updownarrow.png \
@@ -947,6 +948,7 @@ dist_imagesmath_DATA = \
 	images/math/upsilon2.png \
 	images/math/upuparrows.png \
 	images/math/urcorner.png \
+	images/math/utilde.png \
 	images/math/varepsilon.png \
 	images/math/varkappa.png \
 	images/math/varnothing.png \

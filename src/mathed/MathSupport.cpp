@@ -287,6 +287,8 @@ named_deco_struct deco_table[] = {
 	{"underleftarrow",      arrow,    1 },
 	{"underrightarrow",     arrow,    3 },
 	{"underleftrightarrow", udarrow,  1 },
+	{"undertilde",          tilde,    0 },
+	{"utilde",              tilde,    0 },
 
 	// Delimiters
 	{"(",              parenth,    0 },
