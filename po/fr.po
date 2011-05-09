@@ -258,14 +258,14 @@
 #               layouttranslations, voir les listes
 #               de messagerie
 #               Manuel Fonctionnalites supplementaires:
-#               titre modifié 'Options avancees'
+#               titre modifie en 'Options avancees'
 # ------------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-29 00:54+0200\n"
-"PO-Revision-Date: 2011-04-18 08:48+0200\n"
+"POT-Creation-Date: 2011-05-09 18:41+0200\n"
+"PO-Revision-Date: 2011-05-08 18:10+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -752,8 +752,8 @@ msgid "Remove the selected branch"
 msgstr "Enlever la branche sélectionnée"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3803
-#: src/Buffer.cpp:3816
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3804
+#: src/Buffer.cpp:3817
 msgid "&Remove"
 msgstr "&Enlever"
 
@@ -787,7 +787,7 @@ msgstr "Ajouter &tout"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
-#: src/Buffer.cpp:2272 src/Buffer.cpp:3778 src/Buffer.cpp:3841
+#: src/Buffer.cpp:2272 src/Buffer.cpp:3779 src/Buffer.cpp:3842
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1799
@@ -10546,14 +10546,14 @@ msgstr ""
 
 #: lib/layouts/initials.module:2
 msgid "Initials"
-msgstr "Initiales"
+msgstr "Lettrines"
 
 #: lib/layouts/initials.module:6
 msgid ""
 "Define character style for initials. Hint: try to use math and its artistic "
 "font styles like Fractur or the Calligraphic one."
 msgstr ""
-"Définir le style de caractères pour les initiales. Suggestion : essayer "
+"Définir le style de caractères pour les lettrines. Suggestion : essayer "
 "d'utiliser les polices artistiques comme Fraktur ou Calligraphique"
 
 #: lib/layouts/initials.module:6 lib/layouts/logicalmkup.module:5
@@ -10562,7 +10562,7 @@ msgstr "styles de caractères"
 
 #: lib/layouts/initials.module:10 lib/layouts/initials.module:12
 msgid "Initial"
-msgstr "Initial"
+msgstr "Lettrine"
 
 #: lib/layouts/lilypond.module:2
 msgid "LilyPond Book"
@@ -12125,18 +12125,18 @@ msgid "Justified Line Break|J"
 msgstr "Passage à la ligne (justifié)|j"
 
 #: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:102 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:595
+#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:596
 msgid "Cut"
 msgstr "Couper"
 
 #: lib/ui/stdcontext.inc:295 lib/ui/stdmenus.inc:103 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:604
+#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:605
 msgid "Copy"
 msgstr "Copier"
 
 #: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:82
 #: src/Text3.cpp:1175 src/mathed/InsetMathGrid.cpp:1327
-#: src/mathed/InsetMathNest.cpp:574
+#: src/mathed/InsetMathNest.cpp:575
 msgid "Paste"
 msgstr "Coller"
 
@@ -16867,7 +16867,7 @@ msgstr ""
 "%1$s vient d'une version plus récente de LyX, et le script lyx2lyx n'a pas "
 "réussi à le convertir."
 
-#: src/Buffer.cpp:1025 src/Buffer.cpp:3788 src/Buffer.cpp:3850
+#: src/Buffer.cpp:1025 src/Buffer.cpp:3789 src/Buffer.cpp:3851
 msgid "File is read-only"
 msgstr "Fichier en lecture seule"
 
@@ -17107,29 +17107,29 @@ msgstr "Exportation du fichier impossible"
 msgid "No information for exporting the format %1$s."
 msgstr "Pas d'information pour exporter au format %1$s."
 
-#: src/Buffer.cpp:3570
+#: src/Buffer.cpp:3571
 msgid "File name error"
 msgstr "Erreur de nom de fichier"
 
-#: src/Buffer.cpp:3571
+#: src/Buffer.cpp:3572
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Le chemin des répertoires du document ne doit pas contenir d'espaces."
 
-#: src/Buffer.cpp:3656
+#: src/Buffer.cpp:3657
 msgid "Document export cancelled."
 msgstr "Export du document annulé."
 
-#: src/Buffer.cpp:3666
+#: src/Buffer.cpp:3667
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Document exporté en tant que %1$s vers le fichier `%2$s'"
 
-#: src/Buffer.cpp:3672
+#: src/Buffer.cpp:3673
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Document exporté en tant que %1$s"
 
-#: src/Buffer.cpp:3774
+#: src/Buffer.cpp:3775
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17140,19 +17140,19 @@ msgstr ""
 "\n"
 "Voulez-vous récupérer la sauvegarde d'urgence ?"
 
-#: src/Buffer.cpp:3777
+#: src/Buffer.cpp:3778
 msgid "Load emergency save?"
 msgstr "Charger la sauvegarde d'urgence ?"
 
-#: src/Buffer.cpp:3778
+#: src/Buffer.cpp:3779
 msgid "&Recover"
 msgstr "&Récupérer"
 
-#: src/Buffer.cpp:3778
+#: src/Buffer.cpp:3779
 msgid "&Load Original"
 msgstr "&Charger l'original"
 
-#: src/Buffer.cpp:3789
+#: src/Buffer.cpp:3790
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -17162,15 +17162,15 @@ msgstr ""
 "original %1$s est en lecture seule. Il faudra sauvegarder le document sous "
 "un autre nom."
 
-#: src/Buffer.cpp:3795
+#: src/Buffer.cpp:3796
 msgid "Document was successfully recovered."
 msgstr "Le document n'a pas été récupéré correctement."
 
-#: src/Buffer.cpp:3797
+#: src/Buffer.cpp:3798
 msgid "Document was NOT successfully recovered."
 msgstr "Le document n'a PAS été récupéré avec succès."
 
-#: src/Buffer.cpp:3798
+#: src/Buffer.cpp:3799
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17179,27 +17179,27 @@ msgstr ""
 "Supprimer la sauvegarde d'urgence maintenant ?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3802 src/Buffer.cpp:3814
+#: src/Buffer.cpp:3803 src/Buffer.cpp:3815
 msgid "Delete emergency file?"
 msgstr "Supprimer la sauvegarde d'urgence ?"
 
-#: src/Buffer.cpp:3803 src/Buffer.cpp:3816
+#: src/Buffer.cpp:3804 src/Buffer.cpp:3817
 msgid "&Keep"
 msgstr "&Conserver"
 
-#: src/Buffer.cpp:3807
+#: src/Buffer.cpp:3808
 msgid "Emergency file deleted"
 msgstr "Sauvegarde d'urgence supprimée"
 
-#: src/Buffer.cpp:3808
+#: src/Buffer.cpp:3809
 msgid "Do not forget to save your file now!"
 msgstr "N'oubliez pas d'enregistrer votre fichier maintenant !"
 
-#: src/Buffer.cpp:3815
+#: src/Buffer.cpp:3816
 msgid "Remove emergency file now?"
 msgstr "Supprimer la sauvegarde d'urgence maintenant ?"
 
-#: src/Buffer.cpp:3838
+#: src/Buffer.cpp:3839
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17210,19 +17210,19 @@ msgstr ""
 "\n"
 "Voulez-vous charger la sauvegarde automatique ?"
 
-#: src/Buffer.cpp:3840
+#: src/Buffer.cpp:3841
 msgid "Load backup?"
 msgstr "Charger la sauvegarde automatique ?"
 
-#: src/Buffer.cpp:3841
+#: src/Buffer.cpp:3842
 msgid "&Load backup"
 msgstr "&Charger la sauvegarde"
 
-#: src/Buffer.cpp:3841
+#: src/Buffer.cpp:3842
 msgid "Load &original"
 msgstr "Charger l'&original"
 
-#: src/Buffer.cpp:3851
+#: src/Buffer.cpp:3852
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17232,25 +17232,25 @@ msgstr ""
 "original %1$s est en lecture seule. Il faudra sauvegarder le document sous "
 "un autre nom."
 
-#: src/Buffer.cpp:4188 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4189 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Absurde ! "
 
-#: src/Buffer.cpp:4309
+#: src/Buffer.cpp:4310
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Document %1$s rechargé."
 
-#: src/Buffer.cpp:4312
+#: src/Buffer.cpp:4313
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Impossible de recharger le document %1$s."
 
-#: src/Buffer.cpp:4378
+#: src/Buffer.cpp:4379
 msgid "Included File Invalid"
 msgstr "Fichier inclus invalide"
 
-#: src/Buffer.cpp:4379
+#: src/Buffer.cpp:4380
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -19306,7 +19306,7 @@ msgstr "Mode éditeur mathématique"
 msgid "No valid math formula"
 msgstr "Pas de formule mathématique valide"
 
-#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1028
+#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1029
 msgid "Already in regular expression mode"
 msgstr "Déjà en mode « expression régulière »"
 
@@ -19598,12 +19598,12 @@ msgstr ""
 "Poursuivre ?"
 
 #: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
-#: src/frontends/qt4/FindAndReplace.cpp:351
+#: src/frontends/qt4/FindAndReplace.cpp:337
 msgid "&Yes"
 msgstr "&Oui"
 
 #: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
-#: src/frontends/qt4/FindAndReplace.cpp:351
+#: src/frontends/qt4/FindAndReplace.cpp:337
 msgid "&No"
 msgstr "&Non"
 
@@ -19739,23 +19739,23 @@ msgstr "Dings 4"
 msgid "Directories"
 msgstr "Répertoires"
 
-#: src/frontends/qt4/FindAndReplace.cpp:272
+#: src/frontends/qt4/FindAndReplace.cpp:258
 msgid "File"
 msgstr "Fichier"
 
-#: src/frontends/qt4/FindAndReplace.cpp:275
+#: src/frontends/qt4/FindAndReplace.cpp:261
 msgid "Master document"
 msgstr "Document maître"
 
-#: src/frontends/qt4/FindAndReplace.cpp:278
+#: src/frontends/qt4/FindAndReplace.cpp:264
 msgid "Open files"
 msgstr "Ouvrir les fichiers"
 
-#: src/frontends/qt4/FindAndReplace.cpp:281
+#: src/frontends/qt4/FindAndReplace.cpp:267
 msgid "Manuals"
 msgstr "Manuels"
 
-#: src/frontends/qt4/FindAndReplace.cpp:285
+#: src/frontends/qt4/FindAndReplace.cpp:271
 #, c-format
 msgid ""
 "%1$s: the end was reached while searching forward.\n"
@@ -19764,7 +19764,7 @@ msgstr ""
 "%1$s : fin atteinte lors de la recherche en avant.\n"
 "Continuer la recherche depuis le début ?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:288
+#: src/frontends/qt4/FindAndReplace.cpp:274
 #, c-format
 msgid ""
 "%1$s: the beginning was reached while searching backward.\n"
@@ -19773,19 +19773,19 @@ msgstr ""
 "%1$s : début atteint lors de la recherche en arrière.\n"
 "Continuer la recherche depuis la fin ?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:350
+#: src/frontends/qt4/FindAndReplace.cpp:336
 msgid "Wrap search?"
 msgstr "Recherche récursive ?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:395
+#: src/frontends/qt4/FindAndReplace.cpp:381
 msgid "Nothing to search"
 msgstr "Rien à rechercher"
 
-#: src/frontends/qt4/FindAndReplace.cpp:435
+#: src/frontends/qt4/FindAndReplace.cpp:421
 msgid "No open document(s) in which to search"
 msgstr "Aucun document ouvert dans lequel rechercher"
 
-#: src/frontends/qt4/FindAndReplace.cpp:532
+#: src/frontends/qt4/FindAndReplace.cpp:517
 msgid "Advanced Find and Replace"
 msgstr "Rechercher et remplacer (avancé)"
 
@@ -20766,7 +20766,7 @@ msgstr "Index"
 
 #: src/frontends/qt4/GuiDocument.cpp:1287
 msgid "PDF Properties"
-msgstr "Propriété du PDF"
+msgstr "Propriétés du PDF"
 
 #: src/frontends/qt4/GuiDocument.cpp:1288
 msgid "Math Options"
@@ -23592,7 +23592,7 @@ msgstr "Espace horizontal insécable (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Type de TDM inconnu"
 
-#: src/insets/InsetTabular.cpp:4701
+#: src/insets/InsetTabular.cpp:4707
 msgid "Selection size should match clipboard content."
 msgstr ""
 "La taille de la sélection doit correspondre au contenu du presse-papier"
@@ -23755,7 +23755,7 @@ msgstr "Chaîne de caractères reconnue !"
 msgid " Macro: %1$s: "
 msgstr "Macro  %1$s : "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1679
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1680
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -23799,11 +23799,11 @@ msgstr "Pas de ligne verticale à supprimer"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Option de tableau inconnue '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1271
+#: src/mathed/InsetMathHull.cpp:1272
 msgid "Bad math environment"
 msgstr "Environnement mathématique incorrect"
 
-#: src/mathed/InsetMathHull.cpp:1272
+#: src/mathed/InsetMathHull.cpp:1273
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
@@ -23811,46 +23811,46 @@ msgstr ""
 "Le calcul ne peut pas être effectué pour l'environnement mathématique AMS.\n"
 "Modifier le type de formule mathématique et réessayer."
 
-#: src/mathed/InsetMathHull.cpp:1378 src/mathed/InsetMathHull.cpp:1387
+#: src/mathed/InsetMathHull.cpp:1379 src/mathed/InsetMathHull.cpp:1388
 msgid "No number"
 msgstr "Pas de numéro"
 
-#: src/mathed/InsetMathHull.cpp:1378 src/mathed/InsetMathHull.cpp:1387
+#: src/mathed/InsetMathHull.cpp:1379 src/mathed/InsetMathHull.cpp:1388
 msgid "Number"
 msgstr "Numéro"
 
-#: src/mathed/InsetMathHull.cpp:1652
+#: src/mathed/InsetMathHull.cpp:1653
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Impossible de changer le nombre de lignes dans '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1662
+#: src/mathed/InsetMathHull.cpp:1663
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Impossible de changer le nombre de colonnes dans '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1672
+#: src/mathed/InsetMathHull.cpp:1673
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Impossible d'ajouter les lignes de grille horizontales dans '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:1014
+#: src/mathed/InsetMathNest.cpp:1015
 msgid "create new math text environment ($...$)"
 msgstr "créé un nouvel environnement texte math ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1017
+#: src/mathed/InsetMathNest.cpp:1018
 msgid "entered math text mode (textrm)"
 msgstr "entré en mode texte math (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1039
+#: src/mathed/InsetMathNest.cpp:1040
 msgid "Regular expression editor mode"
 msgstr "Mode d'édition « expression régulière »"
 
-#: src/mathed/InsetMathNest.cpp:1650 src/mathed/InsetMathNest.cpp:1770
+#: src/mathed/InsetMathNest.cpp:1651 src/mathed/InsetMathNest.cpp:1771
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Autocorrection inhibée ('!' pour commencer)"
 
-#: src/mathed/InsetMathNest.cpp:1655 src/mathed/InsetMathNest.cpp:1772
+#: src/mathed/InsetMathNest.cpp:1656 src/mathed/InsetMathNest.cpp:1773
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Autocorrection active (<espace> pour quitter)"
 
@@ -24045,11 +24045,11 @@ msgstr "Débogage de '%1$s' (%2$s)"
 msgid "[[Replace with the code of your language]]"
 msgstr "fr"
 
-#: src/support/os_win32.cpp:444
+#: src/support/os_win32.cpp:450
 msgid "System file not found"
 msgstr "Fichier système introuvable !"
 
-#: src/support/os_win32.cpp:445
+#: src/support/os_win32.cpp:451
 msgid ""
 "Unable to load shfolder.dll\n"
 "Please install."
@@ -24057,11 +24057,11 @@ msgstr ""
 "Impossible de charger shfolder.dll\n"
 "Veuillez l'installer."
 
-#: src/support/os_win32.cpp:450
+#: src/support/os_win32.cpp:456
 msgid "System function not found"
 msgstr "Fonction système introuvable !"
 
-#: src/support/os_win32.cpp:451
+#: src/support/os_win32.cpp:457
 msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."
