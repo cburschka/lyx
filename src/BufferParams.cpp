@@ -2085,6 +2085,18 @@ void BufferParams::readLocalLayout(Lexer & lex)
 }
 
 
+bool BufferParams::setLanguage(string const & lang)
+{
+	Language const *new_language = languages.getLanguage(lang);
+	if (!new_language) {
+		// Language lang was not found
+		return false;
+	}
+	language = new_language;
+	return true;
+}
+
+
 void BufferParams::readLanguage(Lexer & lex)
 {
 	if (!lex.next()) return;
@@ -2092,8 +2104,7 @@ void BufferParams::readLanguage(Lexer & lex)
 	string const tmptok = lex.getString();
 
 	// check if tmptok is part of tex_babel in tex-defs.h
-	language = languages.getLanguage(tmptok);
-	if (!language) {
+	if (!setLanguage(tmptok)) {
 		// Language tmptok was not found
 		language = default_language;
 		lyxerr << "Warning: Setting language `"

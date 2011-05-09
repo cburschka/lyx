@@ -414,6 +414,10 @@ public:
 	/// use refstyle? or prettyref?
 	bool use_refstyle;
 
+	/// Return true if language could be set to lang,
+	/// otherwise return false and do not change language
+	bool setLanguage(std::string const & lang);
+
 private:
 	///
 	void readPreamble(Lexer &);

@@ -45,20 +45,6 @@ namespace lyx {
 namespace frontend {
 
 
-/// Apply to buf the parameters supplied through bp
-static void ApplyParams(Buffer &buf, BufferParams const & bp) {
-	ostringstream ss;
-	ss << "\\begin_header\n";
-	bp.writeFile(ss);
-	ss << "\\end_header\n";
-	istringstream iss(ss.str());
-	Lexer lex;
-	lex.setStream(iss);
-	int unknown_tokens = buf.readHeader(lex);
-	LASSERT(unknown_tokens == 0, /* */);
-}
-
-
 FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 	: QTabWidget(&view), view_(view)
 {
@@ -489,18 +475,17 @@ void FindAndReplaceWidget::showEvent(QShowEvent * /* ev */)
 	if (bv) {
 		Buffer & doc_buf = bv->buffer();
 		BufferParams & doc_bp = doc_buf.params();
+		string const & lang = doc_bp.language->lang();
 		Buffer & find_buf = find_work_area_->bufferView().buffer();
 		LYXERR(Debug::FIND, "Applying document params to find buffer");
-		ApplyParams(find_buf, doc_bp);
+		find_buf.params().setLanguage(lang);
 		Buffer & replace_buf = replace_work_area_->bufferView().buffer();
 		LYXERR(Debug::FIND, "Applying document params to replace buffer");
-		ApplyParams(replace_buf, doc_bp);
+		replace_buf.params().setLanguage(lang);
 
-		string lang = doc_bp.language->lang();
 		LYXERR(Debug::FIND, "Setting current editing language to " << lang << endl);
-		FuncRequest cmd(LFUN_LANGUAGE, lang);
-		find_buf.text().dispatch(find_work_area_->bufferView().cursor(), cmd);
-		replace_buf.text().dispatch(replace_work_area_->bufferView().cursor(), cmd);
+		find_work_area_->bufferView().cursor().current_font.setLanguage(doc_bp.language);
+		replace_work_area_->bufferView().cursor().current_font.setLanguage(doc_bp.language);
 	}
 
 	find_work_area_->installEventFilter(this);
