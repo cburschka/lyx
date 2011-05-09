@@ -1641,7 +1641,17 @@ bool Text::dissolveInset(Cursor & cur)
 	spit += cur.pit();
 	Buffer & b = *cur.buffer();
 	cur.paragraph().eraseChar(cur.pos(), b.params().trackChanges);
+
 	if (!plist.empty()) {
+		// see bug 7319
+		// we clear the cache so that we won't get conflicts with labels
+		// that get pasted into the buffer. we should update this before
+		// its being empty matters. if not (i.e., if we encounter bugs),
+		// then this should instead be:
+		//	  cur.buffer().updateBuffer();
+		// but we'll try the cheaper solution here.
+		cur.buffer()->clearReferenceCache();
+
 		// ERT paragraphs have the Language latex_language.
 		// This is invalid outside of ERT, so we need to
 		// change it to the buffer language.
