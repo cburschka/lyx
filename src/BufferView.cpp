@@ -2086,6 +2086,11 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 	// Do we have a selection?
 	theSelection().haveSelection(cursor().selection());
 
+	if (cur.needBufferUpdate()) {
+		cur.clearBufferUpdate();
+		buffer().updateBuffer();
+	}
+
 	// If the command has been dispatched,
 	if (cur.result().dispatched() || cur.result().screenUpdate())
 		processUpdateFlags(cur.result().screenUpdate());
