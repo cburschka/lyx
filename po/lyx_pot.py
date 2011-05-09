@@ -44,12 +44,12 @@ def writeString(outfile, infile, basefile, lineno, string):
 def ui_l10n(input_files, output, base):
     '''Generate pot file from lib/ui/*'''
     output = open(output, 'w')
-    Submenu = re.compile(r'^[^#]*Submenu\s+"([^"]*)"')
-    Popupmenu = re.compile(r'^[^#]*PopupMenu\s+"[^"]+"\s+"([^"]*)"')
-    IconPalette = re.compile(r'^[^#]*IconPalette\s+"[^"]+"\s+"([^"]*)"')
-    Toolbar = re.compile(r'^[^#]*Toolbar\s+"[^"]+"\s+"([^"]*)"')
-    Item = re.compile(r'[^#]*Item\s+"([^"]*)"')
-    TableInsert = re.compile(r'[^#]*TableInsert\s+"([^"]*)"')
+    Submenu = re.compile(r'^[^#]*Submenu\s+"([^"]*)"', re.IGNORECASE)
+    Popupmenu = re.compile(r'^[^#]*PopupMenu\s+"[^"]+"\s+"([^"]*)"', re.IGNORECASE)
+    IconPalette = re.compile(r'^[^#]*IconPalette\s+"[^"]+"\s+"([^"]*)"', re.IGNORECASE)
+    Toolbar = re.compile(r'^[^#]*Toolbar\s+"[^"]+"\s+"([^"]*)"', re.IGNORECASE)
+    Item = re.compile(r'[^#]*Item\s+"([^"]*)"', re.IGNORECASE)
+    TableInsert = re.compile(r'[^#]*TableInsert\s+"([^"]*)"', re.IGNORECASE)
     for src in input_files:
         input = open(src)
         for lineno, line in enumerate(input.readlines()):
@@ -78,30 +78,30 @@ def ui_l10n(input_files, output, base):
 
 def layouts_l10n(input_files, output, base, layouttranslations):
     '''Generate pot file from lib/layouts/*.{layout,inc,module}'''
-    Style = re.compile(r'^Style\s+(.*)', re.IGNORECASE)
-    # include ???LabelString???, but exclude comment lines
-    LabelString = re.compile(r'^[^#]*LabelString\S*\s+(.*)')
-    GuiName = re.compile(r'\s*GuiName\s+(.*)')
-    ListName = re.compile(r'\s*ListName\s+(.*)')
-    CategoryName = re.compile(r'\s*Category\s+(.*)')
-    NameRE = re.compile(r'DeclareLyXModule.*{(.*)}')
-    InsetLayout = re.compile(r'^InsetLayout\s+\"?(.*)\"?')
-    FlexCheck = re.compile(r'^Flex:(.*)')
-    DescBegin = re.compile(r'#+\s*DescriptionBegin\s*$')
-    DescEnd = re.compile(r'#+\s*DescriptionEnd\s*$')
-    Category = re.compile(r'#Category: (.*)$')
-    I18nPreamble = re.compile(r'\s*(Lang)|(Babel)Preamble\s*$')
-    EndI18nPreamble = re.compile(r'\s*End(Lang)|(Babel)Preamble\s*$')
+    Style = re.compile(r'^\s*Style\s+(.*)\s*$', re.IGNORECASE)
+    # match LabelString, EndLabelString, LabelStringAppendix and maybe others but no comments
+    LabelString = re.compile(r'^[^#]*LabelString\S*\s+(.*)\s*$', re.IGNORECASE)
+    GuiName = re.compile(r'^\s*GuiName\s+(.*)\s*$', re.IGNORECASE)
+    ListName = re.compile(r'^\s*ListName\s+(.*)\s*$', re.IGNORECASE)
+    CategoryName = re.compile(r'^\s*Category\s+(.*)\s*$', re.IGNORECASE)
+    NameRE = re.compile(r'^\s*#\s*\\DeclareLyXModule.*{(.*)}$', re.IGNORECASE)
+    InsetLayout = re.compile(r'^InsetLayout\s+\"?(.*)\"?\s*$', re.IGNORECASE)
+    FlexCheck = re.compile(r'^Flex:(.*)', re.IGNORECASE)
+    DescBegin = re.compile(r'^\s*#DescriptionBegin\s*$', re.IGNORECASE)
+    DescEnd = re.compile(r'^\s*#\s*DescriptionEnd\s*$', re.IGNORECASE)
+    Category = re.compile(r'^\s*#\s*Category:\s+(.*)\s*$', re.IGNORECASE)
+    I18nPreamble = re.compile(r'^\s*((Lang)|(Babel))Preamble\s*$', re.IGNORECASE)
+    EndI18nPreamble = re.compile(r'^\s*End((Lang)|(Babel))Preamble\s*$', re.IGNORECASE)
     I18nString = re.compile(r'_\(([^\)]+)\)')
-    CounterFormat = re.compile(r'\s*PrettyFormat\s+"?(.*)"?')
-    CiteFormat = re.compile(r'\s*CiteFormat')
-    KeyVal = re.compile(r'^\s*_\w+\s+(.*)$')
-    Float = re.compile(r'\s*Float\s*$')
-    UsesFloatPkg = re.compile(r'\s*UsesFloatPkg\s+(.*)')
-    IsPredefined = re.compile(r'\s*IsPredefined\s+(.*)')
-    End = re.compile(r'\s*End')
-    Comment = re.compile(r'\s*#')
-    Translation = re.compile(r'\s*Translation\s+(.*)\s*$')
+    CounterFormat = re.compile(r'^\s*PrettyFormat\s+"?(.*)"?\s*$', re.IGNORECASE)
+    CiteFormat = re.compile(r'^\s*CiteFormat', re.IGNORECASE)
+    KeyVal = re.compile(r'^\s*_\w+\s+(.*)\s*$')
+    Float = re.compile(r'^\s*Float\s*$', re.IGNORECASE)
+    UsesFloatPkg = re.compile(r'^\s*UsesFloatPkg\s+(.*)\s*$', re.IGNORECASE)
+    IsPredefined = re.compile(r'^\s*IsPredefined\s+(.*)\s*$', re.IGNORECASE)
+    End = re.compile(r'^\s*End', re.IGNORECASE)
+    Comment = re.compile(r'^(.*)#')
+    Translation = re.compile(r'^\s*Translation\s+(.*)\s*$', re.IGNORECASE)
     KeyValPair = re.compile(r'\s*"(.*)"\s+"(.*)"')
 
     oldlanguages = []
@@ -111,7 +111,10 @@ def layouts_l10n(input_files, output, base, layouttranslations):
     if layouttranslations:
         linguas_file = os.path.join(base, 'po/LINGUAS')
         for line in open(linguas_file).readlines():
-            if Comment.search(line) == None:
+            res = Comment.search(line)
+            if res:
+                line = res.group(1)
+            if line.strip() != '':
                 languages.extend(line.split())
 
         # read old translations if available
@@ -121,7 +124,7 @@ def layouts_l10n(input_files, output, base, layouttranslations):
             for line in input.readlines():
                 res = Comment.search(line)
                 if res:
-                    continue
+                    line = res.group(1)
                 if line.strip() == '':
                     continue
                 res = Translation.search(line)
@@ -213,8 +216,10 @@ def layouts_l10n(input_files, output, base, layouttranslations):
             if res != None:
                 string = res.group(1)
                 string = string.replace('_', ' ')
-                if not layouttranslations:
-                    writeString(out, src, base, lineno, string)
+                # Style means something else inside a float definition
+                if not readingFloat:
+                    if not layouttranslations:
+                        writeString(out, src, base, lineno, string)
                 continue
             res = LabelString.search(line)
             if res != None:
@@ -406,7 +411,7 @@ def qt4_l10n(input_files, output, base):
 def languages_l10n(input_files, output, base):
     '''Generate pot file from lib/languages'''
     out = open(output, 'w')
-    GuiName = re.compile(r'^[^#]*GuiName\s+(.*)')
+    GuiName = re.compile(r'^[^#]*GuiName\s+(.*)', re.IGNORECASE)
     
     for src in input_files:
         descStartLine = -1
@@ -426,11 +431,11 @@ def languages_l10n(input_files, output, base):
 def external_l10n(input_files, output, base):
     '''Generate pot file from lib/external_templates'''
     output = open(output, 'w')
-    Template = re.compile(r'^Template\s+(.*)')
-    GuiName = re.compile(r'\s*GuiName\s+(.*)')
-    HelpTextStart = re.compile(r'\s*HelpText\s')
+    Template = re.compile(r'^Template\s+(.*)', re.IGNORECASE)
+    GuiName = re.compile(r'\s*GuiName\s+(.*)', re.IGNORECASE)
+    HelpTextStart = re.compile(r'\s*HelpText\s', re.IGNORECASE)
     HelpTextSection = re.compile(r'\s*(\S.*)\s*$')
-    HelpTextEnd = re.compile(r'\s*HelpTextEnd\s')
+    HelpTextEnd = re.compile(r'\s*HelpTextEnd\s', re.IGNORECASE)
     i = -1
     for src in input_files:
         input = open(src)
@@ -475,8 +480,8 @@ def external_l10n(input_files, output, base):
 def formats_l10n(input_files, output, base):
     '''Generate pot file from configure.py'''
     output = open(output, 'w')
-    GuiName = re.compile(r'.*\Format\s+\S+\s+\S+\s+"([^"]*)"\s+(\S*)\s+.*')
-    GuiName2 = re.compile(r'.*\Format\s+\S+\s+\S+\s+([^"]\S+)\s+(\S*)\s+.*')
+    GuiName = re.compile(r'.*\\Format\s+\S+\s+\S+\s+"([^"]*)"\s+(\S*)\s+.*', re.IGNORECASE)
+    GuiName2 = re.compile(r'.*\\Format\s+\S+\s+\S+\s+([^"]\S+)\s+(\S*)\s+.*', re.IGNORECASE)
     input = open(input_files[0])
     for lineno, line in enumerate(input.readlines()):
         label = ""
