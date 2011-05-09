@@ -51,6 +51,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix output of decimally aligned columns in unviewed (on screen) tables.
+
 - Avoid LaTeX errors if font changing commands are used in the wrong mode
   by assuring to switch to the right mode on export.
 
