@@ -28,8 +28,6 @@ What's new
   except on Windows, where 30 minutes are allowed. This is because the Windows
   installer may trigger MiKTeX updates that suffer from network latencies.
 
-- Macros that use other macros now output properly to XHTML (bug 7532).
-
 
 * USER INTERFACE
 
@@ -61,8 +59,14 @@ What's new
 - Improve import of LaTeX documents with non-ASCII contents before loading
   the inputenc package (bug #7509).
 
+- Macros that use other macros now output properly to XHTML (bug #7532).
+
 
 * USER INTERFACE
+
+- Advanced F&R would previously ask to open a master document under some
+  circumstances, or do strange things with \selectlanguage(bug #6560). This
+  has been mostly fixed. Please see the bug report for remaining issues.
 
 
 
