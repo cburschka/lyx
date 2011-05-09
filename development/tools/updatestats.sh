@@ -1,8 +1,17 @@
 #!/bin/sh
 # A script to update the LyX i18n.inc statistics
 
-FARM="/cvs/lyx-www/farm/cookbook/LyX";
+# The script expects an environment variable FARM that 
+# will provide it with the location of the LyX www tree.
 
+if [ -z "$FARM" ]; then
+  echo "You must set the FARM variable to run this script, e.g.:";
+  echo "# FARM=/cvs/lyx-www/ bash updatestats.sh";
+  exit 1;
+fi
+
+FARM=${FARM%/};
+FARM="$FARM/farm/cookbook/LyX";
 # Sanity check
 if [ ! -f "$FARM/i18n.php" ]; then 
   echo "$FARM does not look like LyX's www tree!";
@@ -14,8 +23,8 @@ MYDIR=${0%updatestats.sh};
 if [ -n "$MYDIR" ]; then
   cd $MYDIR;
 fi
-LYXROOT=$(pwd);
 cd ../../;
+LYXROOT=$(pwd);
 
 # Are we in trunk or branch?
 TRUNK="TRUE";
