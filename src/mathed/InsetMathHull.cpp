@@ -884,20 +884,21 @@ void InsetMathHull::addRow(row_type row)
 		return;
 
 	bool numbered = numberedType();
-	docstring lab;
+	// Move the number and raw pointer, do not call label() (bug 7511)
+	InsetLabel * label = dummy_pointer;
+	docstring number = empty_docstring();
 	if (type_ == hullMultline) {
 		if (row + 1 == nrows())  {
 			numbered_[row] = false;
-			lab = label(row);
+			swap(label, label_[row]);
+			swap(number, numbers_[row]);
 		} else
 			numbered = false;
 	}
 
 	numbered_.insert(numbered_.begin() + row + 1, numbered);
-	numbers_.insert(numbers_.begin() + row + 1, empty_docstring());
-	label_.insert(label_.begin() + row + 1, dummy_pointer);
-	if (!lab.empty())
-		label(row + 1, lab);
+	numbers_.insert(numbers_.begin() + row + 1, number);
+	label_.insert(label_.begin() + row + 1, label);
 	InsetMathGrid::addRow(row);
 }
 
