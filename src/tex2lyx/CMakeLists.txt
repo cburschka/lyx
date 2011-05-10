@@ -54,6 +54,11 @@ if(APPLE)
 	target_link_libraries(${_tex2lyx} "-framework Carbon")
 endif()
 
+if(NOT LYX_EXTERNAL_LIBINTL OR WIN32)
+  target_link_libraries(${_tex2lyx} intl)
+  add_dependencies(${_tex2lyx} intl_target)
+endif()
+
 project_source_group("${GROUP_CODE}" tex2lyx_sources tex2lyx_headers)
 
 install(TARGETS ${_tex2lyx} DESTINATION bin)

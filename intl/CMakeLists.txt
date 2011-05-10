@@ -7,8 +7,8 @@
 project(intl) 
 
 # libgnuintl.h.in => libintl.h
-configure_file(libgnuintl.h ${CMAKE_CURRENT_BINARY_DIR}/libgnuintl.h COPYONLY)
-configure_file(libgnuintl.h ${CMAKE_CURRENT_BINARY_DIR}/libintl.h COPYONLY)
+configure_file("${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/intl/libgnuintl.h" ${CMAKE_CURRENT_BINARY_DIR}/libgnuintl.h COPYONLY)
+configure_file("${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/intl/libgnuintl.h" ${CMAKE_CURRENT_BINARY_DIR}/libintl.h COPYONLY)
 
 
 add_definitions(
@@ -39,7 +39,7 @@ endif()
 file(GLOB intl_headers ${TOP_SRC_DIR}/intl/*.h)
 
 file(GLOB intl_sources RELATIVE "${TOP_SRC_DIR}/intl" "${TOP_SRC_DIR}/intl/*.c")
-list(REMOVE_ITEM intl_sources vasnprintf.c version.c printf-parse.c os2compat.c)
+list(REMOVE_ITEM intl_sources vasnprintf.c version.c printf-parse.c os2compat.c intl-exports.c)
 
 lyx_add_path(intl_sources ${TOP_SRC_DIR}/intl)
 
