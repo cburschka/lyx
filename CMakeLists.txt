@@ -1,12 +1,31 @@
-
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
 # Copyright (c) 2006-2011 Peter Kümmel, <syntheticpp@gmx.net>
 # Copyright (c) 2008-2011 Kornel Benko, <Kornel.Benko@berlin.de>
 
-
 cmake_minimum_required(VERSION 2.6.4)
+
+set(LYX_PROJECT lyx)
+project(${LYX_PROJECT})
+
+set(LYX_CMAKE_DIR "development/cmake")
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/${LYX_CMAKE_DIR}/modules")
+
+get_filename_component(lyx_dir_readme ${CMAKE_SOURCE_DIR}/README ABSOLUTE)
+get_filename_component(TOP_SRC_DIR ${lyx_dir_readme} PATH)
+
+set(CMAKE_PROJECT_NAME ${LYX_PROJECT})
+
+if (${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR}) 
+	message(STATUS "Building in-source")
+	set(TOP_BINARY_DIR "${CMAKE_BINARY_DIR}/build")
+else()
+	message(STATUS "Building out-of-source")
+	set(TOP_BINARY_DIR "${CMAKE_BINARY_DIR}")
+	#cmake_policy(SET CMP0013 OLD)
+endif()
+
 
 if(COMMAND cmake_policy)
 	cmake_policy(SET CMP0003 OLD)
@@ -20,7 +39,6 @@ set(CMAKE_SUPPRESS_REGENERATION FALSE)
 
 
 include(LyXMacros)
-
 
 # Usage LYX_OPTION
 # 1. parameter: option name without prefix 'LYX_'
@@ -302,7 +320,7 @@ if(LYX_NLS)
 	endif()
 	find_package(LyXGettext REQUIRED)
 	include_directories(${TOP_SRC_DIR}/po)
-	add_subdirectory(po)
+	add_subdirectory(${LYX_CMAKE_DIR}/po "${TOP_BINARY_DIR}/po")
 endif()
 
 if(LYX_EXTERNAL_LIBINTL)
@@ -310,7 +328,7 @@ if(LYX_EXTERNAL_LIBINTL)
 	add_definitions(-DHAVE_GETTEXT) #TODO move to config.h
 else()
 	if(LYX_NLS)
-		add_subdirectory(intl)
+		add_subdirectory(${LYX_CMAKE_DIR}/intl "${TOP_BINARY_DIR}/intl")
 	else()
 		# do not compile if nls disabled
 	endif()
@@ -334,7 +352,7 @@ else()
 	endif()
 	add_definitions(-DBOOST_USER_CONFIG="<config.h>")
 	include_directories(${TOP_SRC_DIR}/boost)
-	add_subdirectory(boost)
+	add_subdirectory(${LYX_CMAKE_DIR}/boost "${TOP_BINARY_DIR}/boost")
 endif()
 
 
@@ -372,8 +390,8 @@ if(LYX_PCH)
 	# PCHs not supported by cmake: http://www.cmake.org/Bug/view.php?id=1260
 	# Not sure if it works for all non-msvc compilers
 	include(PCHSupport_26)
-	configure_file(${TOP_SRC_DIR}/development/cmake/pcheaders.h      ${TOP_BINARY_DIR}/pcheaders.h)
-	configure_file(${TOP_SRC_DIR}/development/cmake/config.cpp.cmake ${TOP_BINARY_DIR}/config_pch.cpp)
+	configure_file(${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/pcheaders.h      ${TOP_BINARY_DIR}/pcheaders.h)
+	configure_file(${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/config.cpp.cmake ${TOP_BINARY_DIR}/config_pch.cpp)
 	add_definitions(-DLYX_ENABLE_PCH)
 
 	if(MSVC)
@@ -472,18 +490,18 @@ endif()
 
 # compiler tests, config.h generation
 if(MSVC AND NOT LYX_CONFIGURE_CHECKS)
-	configure_file(configCompiler.h.msvc ${TOP_BINARY_DIR}/configCompiler.h)
+	configure_file(${LYX_CMAKE_DIR}/configCompiler.h.msvc ${TOP_BINARY_DIR}/configCompiler.h)
 else()
-	include(ConfigureChecks.cmake)
-	configure_file(configCompiler.h.cmake ${TOP_BINARY_DIR}/configCompiler.h)
+	include(${LYX_CMAKE_DIR}/ConfigureChecks.cmake)
+	configure_file(${LYX_CMAKE_DIR}/configCompiler.h.cmake ${TOP_BINARY_DIR}/configCompiler.h)
 endif()
 
-configure_file(config.h.cmake ${TOP_BINARY_DIR}/config.h)
+configure_file(${LYX_CMAKE_DIR}/config.h.cmake ${TOP_BINARY_DIR}/config.h)
 
 
-add_subdirectory(src)
-add_subdirectory(lyx2lyx)
-add_subdirectory(scripts)
+add_subdirectory(${LYX_CMAKE_DIR}/src "${TOP_BINARY_DIR}/src")
+add_subdirectory(${LYX_CMAKE_DIR}/lyx2lyx "${TOP_BINARY_DIR}/lyx2lyx")
+add_subdirectory(${LYX_CMAKE_DIR}/scripts "${TOP_BINARY_DIR}/scripts")
 
 
 if(LYX_INSTALL)
@@ -491,8 +509,8 @@ if(LYX_INSTALL)
 	if(${LYX_PERL_EXECUTABLE} MATCHES "-NOTFOUND")
 		message(FATAL_ERROR "Perl required!")
 	endif()
-	add_subdirectory(man)
-	add_subdirectory(doc)
+	add_subdirectory(${LYX_CMAKE_DIR}/man "${TOP_BINARY_DIR}/man")
+	add_subdirectory(${LYX_CMAKE_DIR}/doc "${TOP_BINARY_DIR}/doc")
 	include(../Install)
 endif()
 
@@ -505,7 +523,7 @@ LYX_OPTION_LIST_ALL()
 
 set(CPACK_PACKAGE_VERSION_MAJOR "${LYX_MAJOR_VERSION}")
 set(CPACK_PACKAGE_VERSION_MINOR "${LYX_MINOR_VERSION}")
-FILE(STRINGS "${TOP_SRC_DIR}/development/cmake/LyX_summary.txt" CPACK_PACKAGE_DESCRIPTION_SUMMARY)
+FILE(STRINGS "${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/LyX_summary.txt" CPACK_PACKAGE_DESCRIPTION_SUMMARY)
 
 set(CPACK_SOURCE_GENERATOR TGZ ZIP TBZ2)
 set(CPACK_SOURCE_INSTALLED_DIRECTORIES "${TOP_SRC_DIR};/") # http://www.mail-archive.com/cmake@cmake.org/msg33720.html
@@ -517,7 +535,7 @@ set(CPACK_SOURCE_INSTALLED_DIRECTORIES "${TOP_SRC_DIR};/") # http://www.mail-arc
 #
 # needed by rpm
 set(CPACK_SET_DESTDIR "ON")
-FILE(READ "${TOP_SRC_DIR}/development/cmake/LyX_license.txt" CPACK_RPM_PACKAGE_LICENSE)
+FILE(READ "${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/LyX_license.txt" CPACK_RPM_PACKAGE_LICENSE)
 set(CPACK_RPM_PACKAGE_GROUP "Applications/Publishing")
 set(CPACK_RPM_PACKAGE_VENDOR "The LyX team")
 #
@@ -540,8 +558,8 @@ if(LYX_EXTERNAL_BOOST)
 endif()
 #
 # for the next ones, cpack insists on data with values in some file
-set(CPACK_PACKAGE_DESCRIPTION_FILE "${TOP_SRC_DIR}/development/cmake/LyX_description.txt")
-set(CPACK_RESOURCE_FILE_LICENSE "${TOP_SRC_DIR}/development/cmake/LyX_license.txt")
+set(CPACK_PACKAGE_DESCRIPTION_FILE "${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/LyX_description.txt")
+set(CPACK_RESOURCE_FILE_LICENSE "${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/LyX_license.txt")
 
 # Find the revision number and use it as the release in rpm-package-build.
 # This way we may omit the otherwise needed "--force" parameter when
@@ -585,3 +603,5 @@ endif()
 # install   # rpm -U lyx-2.0.1-Linux.rpm                # dpkg -i lyx-2.0.1-Linux.deb
 #
 message(STATUS)
+
+
