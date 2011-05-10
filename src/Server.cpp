@@ -1015,7 +1015,8 @@ bool LyXComm::loadFilesInOtherInstance()
 			break;
 		string const cmd = "LYXCMD:pipe:file-open:" +
 					fname.absFileName() + '\n';
-		::write(pipefd, cmd.c_str(), cmd.length());
+		if (::write(pipefd, cmd.c_str(), cmd.length()) < 0)
+			LYXERR0("Cannot write to pipe!");
 		::close(pipefd);
 		++loaded_files;
 		it = theFilesToLoad().erase(it);
