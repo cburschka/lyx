@@ -320,7 +320,7 @@ if(LYX_NLS)
 	endif()
 	find_package(LyXGettext REQUIRED)
 	include_directories(${TOP_SRC_DIR}/po)
-	add_subdirectory(${LYX_CMAKE_DIR}/po "${TOP_BINARY_DIR}/po")
+	add_subdirectory(po "${TOP_BINARY_DIR}/po")
 endif()
 
 if(LYX_EXTERNAL_LIBINTL)
@@ -328,7 +328,7 @@ if(LYX_EXTERNAL_LIBINTL)
 	add_definitions(-DHAVE_GETTEXT) #TODO move to config.h
 else()
 	if(LYX_NLS)
-		add_subdirectory(${LYX_CMAKE_DIR}/intl "${TOP_BINARY_DIR}/intl")
+		add_subdirectory(intl "${TOP_BINARY_DIR}/intl")
 	else()
 		# do not compile if nls disabled
 	endif()
@@ -352,7 +352,7 @@ else()
 	endif()
 	add_definitions(-DBOOST_USER_CONFIG="<config.h>")
 	include_directories(${TOP_SRC_DIR}/boost)
-	add_subdirectory(${LYX_CMAKE_DIR}/boost "${TOP_BINARY_DIR}/boost")
+	add_subdirectory(boost "${TOP_BINARY_DIR}/boost")
 endif()
 
 
@@ -499,9 +499,9 @@ endif()
 configure_file(${LYX_CMAKE_DIR}/config.h.cmake ${TOP_BINARY_DIR}/config.h)
 
 
-add_subdirectory(${LYX_CMAKE_DIR}/src "${TOP_BINARY_DIR}/src")
-add_subdirectory(${LYX_CMAKE_DIR}/lyx2lyx "${TOP_BINARY_DIR}/lyx2lyx")
-add_subdirectory(${LYX_CMAKE_DIR}/scripts "${TOP_BINARY_DIR}/scripts")
+add_subdirectory(src "${TOP_BINARY_DIR}/src")
+add_subdirectory(lib/lyx2lyx "${TOP_BINARY_DIR}/lyx2lyx")
+add_subdirectory(lib/scripts "${TOP_BINARY_DIR}/scripts")
 
 
 if(LYX_INSTALL)
