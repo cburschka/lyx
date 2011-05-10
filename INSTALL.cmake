@@ -132,17 +132,17 @@ Build options
 
     Options could be passed by the -D prefix when running cmake.
     Available options will be listed on each cmake run.
-    Here the options with their default value:
+    -Dhelp=1 lists all available options:
     
     # Available on all systems/compilers
     -- LYX_CPACK                = OFF    : Use the CPack management (Implies LYX_INSTALL option)
     -- LYX_INSTALL              = OFF    : Build install projects/rules (implies a bunch of other options)
-    -- LYX_NLS                  = OFF    : Use nls
+    -- LYX_NLS                  = ON     : Use nls
     -- LYX_ASPELL               = OFF    : Require aspell
     -- LYX_ENCHANT              = OFF    : Require Enchant
     -- LYX_HUNSPELL             = OFF    : Require Hunspell
     -- LYX_DEVEL_VERSION        = OFF    : Build developer version
-    -- LYX_RELEASE              = ON     : Build release version, build debug when disabled
+    -- LYX_RELEASE              = OFF    : Build release version, build debug when disabled
     -- LYX_PACKAGE_SUFFIX       = ON     : Use version suffix for packaging
     -- LYX_PCH                  = OFF    : Use precompiled headers
     -- LYX_MERGE_FILES          = OFF    : Merge source files into one compilation unit

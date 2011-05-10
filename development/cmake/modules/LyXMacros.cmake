@@ -261,7 +261,7 @@ endmacro()
 
 macro(LYX_OPTION_LIST_ALL)
 	foreach(_option ${LYX_OPTIONS})
-		if(${_option}_show_message)
+		if(${_option}_show_message OR ${ARGV0} STREQUAL "help")
 			string(SUBSTRING "${_option}                            " 0 25 _var)
 			if(${_option})
 				set(_isset ON)

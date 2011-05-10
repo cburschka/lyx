@@ -7,7 +7,6 @@
 cmake_minimum_required(VERSION 2.6.4)
 
 set(LYX_PROJECT lyx)
-project(${LYX_PROJECT})
 
 set(LYX_CMAKE_DIR "development/cmake")
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/${LYX_CMAKE_DIR}/modules")
@@ -17,13 +16,13 @@ get_filename_component(TOP_SRC_DIR ${lyx_dir_readme} PATH)
 
 set(CMAKE_PROJECT_NAME ${LYX_PROJECT})
 
+message(STATUS)
 if (${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR}) 
 	message(STATUS "Building in-source")
 	set(TOP_BINARY_DIR "${CMAKE_BINARY_DIR}/build")
 else()
 	message(STATUS "Building out-of-source")
 	set(TOP_BINARY_DIR "${CMAKE_BINARY_DIR}")
-	#cmake_policy(SET CMP0013 OLD)
 endif()
 
 
@@ -82,7 +81,21 @@ LYX_OPTION(WALL                  "Enable all warnings" OFF MSVC)
 LYX_OPTION(CONFIGURE_CHECKS      "Also run configure checks for MSVC" OFF MSVC)
 LYX_OPTION(DEPENDENCIES_DOWNLOAD "Download dependencies for MSVC 10" OFF MSVC)
 
+
+if(help OR HELP)
+	message(STATUS)
+	message(STATUS "Available options: (dis/enable with -D=0/1)")
+	message(STATUS)
+	LYX_OPTION_LIST_ALL(help)	
+	message(STATUS)
+else()
+
+# 'project' triggers the searching for a compiler
+project(${LYX_PROJECT})
+
+
 # Check option dependencies
+
 if(LYX_CPACK)
 	set(LYX_INSTALL ON)
 endif()
@@ -151,7 +164,7 @@ set(VERSION_INFO "CMake Build")
 
 # Try to get some informations from configure.ac
 
-include(LyXPaths)    #called here to define the needed TOP_SRC_DIR-variable
+include(LyXPaths)
 file(STRINGS "${TOP_SRC_DIR}/configure.ac" _config_lines)
 
 if(WIN32)
@@ -518,7 +531,7 @@ endif()
 message(STATUS)
 message(STATUS "Build options, switch LYX_* variables by -DLYX_*=1 or 0:")
 message(STATUS)
-LYX_OPTION_LIST_ALL()
+LYX_OPTION_LIST_ALL(used)
 
 
 set(CPACK_PACKAGE_VERSION_MAJOR "${LYX_MAJOR_VERSION}")
@@ -604,4 +617,5 @@ endif()
 #
 message(STATUS)
 
+endif() #help
 
