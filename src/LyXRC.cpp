@@ -3332,7 +3332,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_PATH_PREFIX:
 		str = _("Specify those directories which should be "
-			 "prepended to the PATH environment variable. "
+			 "prepended to the PATH environment variable.\n"
 			 "Use the OS native format.");
 		break;
 
@@ -3491,7 +3491,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_TEXINPUTS_PREFIX:
 		str = _("Specify those directories which should be "
-			 "prepended to the TEXINPUTS environment variable. "
+			 "prepended to the TEXINPUTS environment variable.\n"
 			 "A '.' represents the current document directory. "
 			 "Use the OS native format.");
 		break;
