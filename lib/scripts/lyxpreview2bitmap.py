@@ -167,6 +167,27 @@ def color_pdf(latex_file, bg_color, fg_color):
     return success
 
 
+def fix_latex_file(latex_file):
+    documentclass_re = re.compile("(\\\\documentclass\[)(1[012]pt)(.)(.+)")
+
+    tmp = mkstemp()
+
+    changed = 0
+    for line in open(latex_file, 'r').readlines():
+        match = documentclass_re.match(line)
+        if match == None:
+            tmp.write(line)
+            continue
+
+        changed = 1
+        tmp.write("%s%s%s\n" % (match.group(1), match.group(3), match.group(4)))
+
+    if changed:
+        copyfileobj(tmp, open(latex_file,"wb"), 1)
+
+    return
+
+
 def convert_to_ppm_format(pngtopnm, basename):
     png_file_re = re.compile("\.png$")
 
@@ -287,6 +308,9 @@ def main(argv):
         latex = argv[6]
     else:
         latex = find_exe_or_terminate(["latex", "pplatex", "platex", "latex2e"], path)
+
+    # Omit font size specification in latex file.
+    fix_latex_file(latex_file)
 
     # This can go once dvipng becomes widespread.
     dvipng = find_exe(["dvipng"], path)
