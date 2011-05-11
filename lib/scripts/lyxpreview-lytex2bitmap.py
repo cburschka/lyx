@@ -149,7 +149,7 @@ def color_pdf(latex_file, bg_color, fg_color):
 
 
 def fix_latex_file(latex_file):
-    documentclass_re = re.compile("(\\\\documentclass\[)(1[12]pt,)(.+)")
+    documentclass_re = re.compile("(\\\\documentclass\[)(1[012]pt)(.)(.+)")
 
     tmp = mkstemp()
 
@@ -161,7 +161,7 @@ def fix_latex_file(latex_file):
             continue
 
         changed = 1
-        tmp.write("%s%s\n" % (match.group(1), match.group(3)))
+        tmp.write("%s%s%s\n" % (match.group(1), match.group(3), match.group(4)))
 
     if changed:
         copyfileobj(tmp, open(latex_file,"wb"), 1)
