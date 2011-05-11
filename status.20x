@@ -66,6 +66,9 @@ What's new
 
 - Fixed XHTML output for tables that use multirow.
 
+- Fixed export to plaintext of, as well as searching within,
+  a document containing aligned and other multi-cell environments
+  (bug ##7549).
 
 * USER INTERFACE
 

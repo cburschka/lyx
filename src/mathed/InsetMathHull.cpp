@@ -1897,7 +1897,8 @@ int InsetMathHull::plaintext(odocstream & os, OutputParams const &) const
 		if (type_ == hullRegexp)
 			write(wi);
 		else
-			wi << cell(0);
+			for (idx_type i = 0; i < nargs(); ++i)
+				wi << (i == 0 ? "" : "\t") << cell(i);
 		docstring const str = oss.str();
 		os << str;
 		return str.size();
