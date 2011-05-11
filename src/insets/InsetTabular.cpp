@@ -2867,7 +2867,7 @@ docstring Tabular::xhtmlRow(XHTMLStream & xs, row_type row,
 
 	xs << html::StartTag("tr");
 	for (col_type c = 0; c < ncols(); ++c) {
-		if (isPartOfMultiColumn(row, c))
+		if (isPartOfMultiColumn(row, c) || isPartOfMultiRow(row, c))
 			continue;
 
 		stringstream attr;
@@ -2899,6 +2899,8 @@ docstring Tabular::xhtmlRow(XHTMLStream & xs, row_type row,
 
 		if (isMultiColumn(cell))
 			attr << " colspan='" << columnSpan(cell) << "'";
+		else if (isMultiRow(cell))
+			attr << " rowspan='" << rowSpan(cell) << "'";
 
 		xs << html::StartTag(celltag, attr.str()) << html::CR();
 		ret += cellInset(cell)->xhtml(xs, runparams);

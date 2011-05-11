@@ -64,14 +64,19 @@ What's new
 
 - Macros that use other macros now output properly to XHTML (bug #7532).
 
+- Fixed XHTML output for tables that use multirow.
+
 
 * USER INTERFACE
+
+- Fix crash relating to outliner and mouse movement.
+
+- Fix crash when putting multirow tables into notes---or any other inset
+  that appears in the outliner (bug #7547).
 
 - Advanced F&R would previously ask to open a master document under some
   circumstances, or do strange things with \selectlanguage(bug #6560). This
   has been mostly fixed. Please see the bug report for remaining issues.
-
-- Fix crash relating to outliner and mouse movement.
 
 - Show the correct label after adding a line to an AMS Multline formula (bug
   #7511).
