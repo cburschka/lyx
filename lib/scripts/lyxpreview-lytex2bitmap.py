@@ -148,6 +148,27 @@ def color_pdf(latex_file, bg_color, fg_color):
     return success
 
 
+def fix_latex_file(latex_file):
+    documentclass_re = re.compile("(\\\\documentclass\[)(1[12]pt,)(.+)")
+
+    tmp = mkstemp()
+
+    changed = 0
+    for line in open(latex_file, 'r').readlines():
+        match = documentclass_re.match(line)
+        if match == None:
+            tmp.write(line)
+            continue
+
+        changed = 1
+        tmp.write("%s%s\n" % (match.group(1), match.group(3)))
+
+    if changed:
+        copyfileobj(tmp, open(latex_file,"wb"), 1)
+
+    return
+
+
 def convert_to_ppm_format(pngtopnm, basename):
     png_file_re = re.compile("\.png$")
 
@@ -190,6 +211,9 @@ def main(argv):
         latex = find_exe_or_terminate(["latex", "pplatex", "platex", "latex2e"], path)
 
     lilypond_book = find_exe_or_terminate(["lilypond-book"], path)
+
+    # Omit font size specification in latex file.
+    fix_latex_file(latex_file)
 
     # Make a copy of the latex file
     lytex_file = latex_file_re.sub(".lytex", latex_file)
