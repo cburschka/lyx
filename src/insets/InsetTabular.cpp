@@ -3177,7 +3177,7 @@ void Tabular::plaintext(odocstream & os,
 		if (!onlydata && plaintextTopHLine(os, r, clen))
 			os << docstring(depth * 2, ' ');
 		for (col_type c = 0; c < ncols(); ++c) {
-			if (isPartOfMultiColumn(r, c))
+			if (isPartOfMultiColumn(r, c) || isPartOfMultiRow(r,c))
 				continue;
 			if (onlydata && c > 0)
 				// we don't use operator<< for single UCS4 character.
