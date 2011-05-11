@@ -1896,9 +1896,13 @@ int InsetMathHull::plaintext(odocstream & os, OutputParams const &) const
 		// Fix Bug #6139
 		if (type_ == hullRegexp)
 			write(wi);
-		else
-			for (idx_type i = 0; i < nargs(); ++i)
-				wi << (i == 0 ? "" : "\t") << cell(i);
+		else {
+			for (row_type r = 0; r < nrows(); ++r) {
+				for (col_type c = 0; c < ncols(); ++c)
+					wi << (c == 0 ? "" : "\t") << cell(index(r, c));
+				wi << "\n";
+			}
+		}
 		docstring const str = oss.str();
 		os << str;
 		return str.size();
