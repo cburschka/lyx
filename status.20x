@@ -52,6 +52,10 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fixed crash when outputing the unitone command to XHTML.
+
+- Improved XHTML output of various fractions.
+
 - Fix output of decimally aligned columns in unviewed (on screen) tables.
 
 - Avoid LaTeX errors if font changing commands are used in the wrong mode
