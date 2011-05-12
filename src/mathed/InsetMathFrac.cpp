@@ -22,6 +22,7 @@
 #include "MetricsInfo.h"
 #include "TextPainter.h"
 
+#include "support/lassert.h"
 #include "frontends/Painter.h"
 
 using namespace std;
@@ -366,23 +367,32 @@ bool InsetMathFrac::extraBraces() const
 }
 
 
-// FIXME This will crash on unitone and is wrong in other cases.
 void InsetMathFrac::maple(MapleStream & os) const
 {
+	if (nargs() != 2) {
+		// Someone who knows about maple should fix this.
+		LASSERT(false, return);
+	}
 	os << '(' << cell(0) << ")/(" << cell(1) << ')';
 }
 
 
-// FIXME This will crash on unitone and is wrong in other cases.
 void InsetMathFrac::mathematica(MathematicaStream & os) const
 {
+	if (nargs() != 2) {
+		// Someone who knows about mathematica should fix this.
+		LASSERT(false, return);
+	}
 	os << '(' << cell(0) << ")/(" << cell(1) << ')';
 }
 
 
-// FIXME This will crash on unitone and is wrong in other cases.
 void InsetMathFrac::octave(OctaveStream & os) const
 {
+	if (nargs() != 2) {
+		// Someone who knows about octave should fix this.
+		LASSERT(false, return);
+	}
 	os << '(' << cell(0) << ")/(" << cell(1) << ')';
 }
 

@@ -28,6 +28,8 @@ What's new
   except on Windows, where 30 minutes are allowed. This is because the Windows
   installer may trigger MiKTeX updates that suffer from network latencies.
 
+- Improved XHTML output of various fractions.
+
 
 * USER INTERFACE
 
@@ -52,9 +54,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fixed crash when outputing the unitone command to XHTML.
-
-- Improved XHTML output of various fractions.
+- Fixed crash when outputing the unitone command to XHTML or when using
+  such commands with mathematica, octave, or maple.
 
 - Fix output of decimally aligned columns in unviewed (on screen) tables.
 
@@ -73,6 +74,7 @@ What's new
 - Fixed export to plaintext of, as well as searching within,
   a document containing aligned and other multi-cell environments
   (bug ##7549).
+
 
 * USER INTERFACE
 
