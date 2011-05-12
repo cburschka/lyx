@@ -19,6 +19,10 @@
 #ifndef _LIBINTL_H
 #define _LIBINTL_H	1
 
+#cmakedefine01 HAVE_POSIX_PRINTF
+#cmakedefine01 HAVE_ASPRINTF
+#cmakedefine01 HAVE_WPRINTF
+
 #include <locale.h>
 
 /* The LC_MESSAGES locale category is the category used by the functions
@@ -50,6 +54,11 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+
+/* Version number: (major<<16) + (minor<<8) + subminor */
+#define LIBINTL_VERSION 0x001000
+extern int libintl_version;
 
 
 /* We redirect the functions to those prefixed with "libintl_".  This is
@@ -217,6 +226,8 @@ extern char *dcngettext (const char *__domainname,
 #endif
 
 
+#ifndef IN_LIBGLOCALE
+
 /* Set the current default message catalog to DOMAINNAME.
    If DOMAINNAME is null, return the current default.
    If DOMAINNAME is "", reset to the default of "messages".  */
@@ -271,6 +282,8 @@ extern char *bind_textdomain_codeset (const char *__domainname,
        _INTL_ASM (libintl_bind_textdomain_codeset);
 #endif
 
+#endif /* IN_LIBGLOCALE */
+
 
 /* Support for format strings with positions in *printf(), following the
    POSIX/XSI specification.
@@ -300,6 +313,12 @@ extern int fprintf (FILE *, const char *, ...);
 extern int vfprintf (FILE *, const char *, va_list);
 
 #undef printf
+#if defined __NetBSD__ || defined __CYGWIN__ || defined __MINGW32__
+/* Don't break __attribute__((format(printf,M,N))).
+   This redefinition is only possible because the libc in NetBSD, Cygwin,
+   mingw does not have a function __printf__.  */
+# define libintl_printf __printf__
+#endif
 #define printf libintl_printf
 extern int printf (const char *, ...);
 #undef vprintf
