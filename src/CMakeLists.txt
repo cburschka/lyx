@@ -127,17 +127,11 @@ target_link_libraries(${_lyx}
 	frontend_qt4
 	graphics
 	support
+	${LIBINTL_LIBRARIES}
 	${ICONV_LIBRARY}
 	${QT_QTMAIN_LIBRARY}
 	${vld_dll})
 
-if(NOT LYX_EXTERNAL_LIBINTL OR WIN32)
-  # TODO remove, use LIBINTL_LIBRARIES
-  target_link_libraries(${_lyx} intl)
-  add_dependencies(${_lyx} intl_target)
-else()
-	target_link_libraries(${_lyx} ${LIBINTL_LIBRARIES})
-endif()
 
 if(HUNSPELL_FOUND)
 	target_link_libraries(${_lyx} ${HUNSPELL_LIBRARY})
