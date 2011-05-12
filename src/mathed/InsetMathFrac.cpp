@@ -366,18 +366,21 @@ bool InsetMathFrac::extraBraces() const
 }
 
 
+// FIXME This will crash on unitone and is wrong in other cases.
 void InsetMathFrac::maple(MapleStream & os) const
 {
 	os << '(' << cell(0) << ")/(" << cell(1) << ')';
 }
 
 
+// FIXME This will crash on unitone and is wrong in other cases.
 void InsetMathFrac::mathematica(MathematicaStream & os) const
 {
 	os << '(' << cell(0) << ")/(" << cell(1) << ')';
 }
 
 
+// FIXME This will crash on unitone and is wrong in other cases.
 void InsetMathFrac::octave(OctaveStream & os) const
 {
 	os << '(' << cell(0) << ")/(" << cell(1) << ')';
@@ -386,19 +389,107 @@ void InsetMathFrac::octave(OctaveStream & os) const
 
 void InsetMathFrac::mathmlize(MathStream & os) const
 {
-	os << MTag("mfrac")
-	   << MTag("mrow") << cell(0) << ETag("mrow")
-		 << MTag("mrow") << cell(1) << ETag("mrow")
-		 << ETag("mfrac");
+	switch (kind_) {
+	case ATOP:
+		os << MTag("mfrac", "linethickeness='0'")
+		   << MTag("mrow") << cell(0) << ETag("mrow")
+			 << MTag("mrow") << cell(1) << ETag("mrow")
+			 << ETag("mfrac");
+		break;
+
+	// we do not presently distinguish these
+	case OVER:
+	case FRAC:
+	case DFRAC:
+	case TFRAC:
+	case CFRAC:
+	case CFRACLEFT:
+	case CFRACRIGHT:
+		os << MTag("mfrac")
+		   << MTag("mrow") << cell(0) << ETag("mrow")
+			 << MTag("mrow") << cell(1) << ETag("mrow")
+			 << ETag("mfrac");
+		break;
+
+	case NICEFRAC:
+		os << MTag("mfrac", "bevelled='true'")
+		   << MTag("mrow") << cell(0) << ETag("mrow")
+			 << MTag("mrow") << cell(1) << ETag("mrow")
+			 << ETag("mfrac");
+		break;
+
+	case UNITFRAC:
+		if (nargs() == 3)
+			os << cell(2);
+		os << MTag("mfrac", "bevelled='true'")
+		   << MTag("mrow") << cell(0) << ETag("mrow")
+			 << MTag("mrow") << cell(1) << ETag("mrow")
+			 << ETag("mfrac");
+		break;
+
+	case UNIT:
+		// FIXME This is not right, because we still output mi, etc,
+		// when we output the cell. So we need to prevent that somehow.
+		if (nargs() == 2)
+			os << cell(0) 
+			   << MTag("mstyle mathvariant='normal'") 
+			   << cell(1) 
+			   << ETag("mstyle");
+		else
+			os << MTag("mstyle mathvariant='normal'") 
+			   << cell(0)
+			   << ETag("mstyle");
+	}
 }
 
 
 void InsetMathFrac::htmlize(HtmlStream & os) const
 {
-	os << MTag("span", "class='frac'")
-		 << MTag("span", "class='numer'") << cell(0) << ETag("span")
-		 << MTag("span", "class='denom'") << cell(1) << ETag("span")
-		 << ETag("span");
+	switch (kind_) {
+	case ATOP:
+		os << MTag("span", "class='frac'")
+			 << MTag("span", "class='numer'") << cell(0) << ETag("span")
+			 << MTag("span", "class='numer'") << cell(1) << ETag("span")
+			 << ETag("span");
+		break;
+
+	// we do not presently distinguish these
+	case OVER:
+	case FRAC:
+	case DFRAC:
+	case TFRAC:
+	case CFRAC:
+	case CFRACLEFT:
+	case CFRACRIGHT:
+		os << MTag("span", "class='frac'")
+			 << MTag("span", "class='numer'") << cell(0) << ETag("span")
+			 << MTag("span", "class='denom'") << cell(1) << ETag("span")
+			 << ETag("span");
+		break;
+
+	case NICEFRAC:
+		os << cell(0) << '/' << cell(1);
+		break;
+
+	case UNITFRAC:
+		if (nargs() == 3)
+			os << cell(2) << ' ';
+		os << cell(0) << '/' << cell(1);
+		break;
+
+	case UNIT:
+		// FIXME This is not right, because we still output i, etc,
+		// when we output the cell. So we need to prevent that somehow.
+		if (nargs() == 2)
+			os << cell(0) 
+			   << MTag("span") 
+			   << cell(1) 
+			   << ETag("span");
+		else
+			os << MTag("span") 
+			   << cell(0)
+			   << ETag("span");
+	}
 }
 
 
