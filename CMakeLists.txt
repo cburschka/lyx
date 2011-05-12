@@ -338,7 +338,6 @@ endif()
 
 if(LYX_EXTERNAL_LIBINTL)
 	find_package(Libintl REQUIRED)
-	add_definitions(-DHAVE_GETTEXT) #TODO move to config.h
 else()
 	if(LYX_NLS)
 		add_subdirectory(intl "${TOP_BINARY_DIR}/intl")
