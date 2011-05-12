@@ -42,10 +42,6 @@ if(APPLE)
 	target_link_libraries(${_lyxclient} "-framework Carbon")
 endif()
 
-if(NOT LYX_EXTERNAL_LIBINTL OR WIN32)
-  target_link_libraries(${_lyxclient} intl)
-  add_dependencies(${_lyxclient} intl_target)
-endif()
 
 install(TARGETS ${_lyxclient} DESTINATION bin)
 
