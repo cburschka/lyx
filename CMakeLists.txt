@@ -306,7 +306,6 @@ endif()
 
 
 find_package(Qt4 REQUIRED)
-find_package(ICONV REQUIRED)
 find_package(ZLIB REQUIRED)
 
 include_directories(${TOP_BINARY_DIR} ${TOP_SRC_DIR}/src)
@@ -340,6 +339,8 @@ if(LYX_EXTERNAL_LIBINTL)
 	find_package(Libintl REQUIRED)
 	# find getext when configuring
 	list(APPEND CMAKE_REQUIRED_LIBRARIES ${LIBINTL_LIBRARIES})
+	# on mac use iconv also form ports
+	get_filename_component(ICONV_RELATIVE_TO_LIBINTL ${LIBINTL_LIBRARIES} PATH)
 else()
 	if(LYX_NLS)
 		add_subdirectory(intl "${TOP_BINARY_DIR}/intl")
@@ -347,6 +348,8 @@ else()
 		# do not compile if nls disabled
 	endif()
 endif()
+
+find_package(ICONV REQUIRED)
 
 if(LYX_EXTERNAL_BOOST)
 	message(STATUS "Searching for boost")
