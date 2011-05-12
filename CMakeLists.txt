@@ -340,7 +340,9 @@ if(LYX_EXTERNAL_LIBINTL)
 	# find getext when configuring
 	list(APPEND CMAKE_REQUIRED_LIBRARIES ${LIBINTL_LIBRARIES})
 	# on mac use iconv also form ports
-	get_filename_component(ICONV_RELATIVE_TO_LIBINTL ${LIBINTL_LIBRARIES} PATH)
+	if(DEFINED LIBINTL_LIBRARIES)
+		get_filename_component(ICONV_RELATIVE_TO_LIBINTL ${LIBINTL_LIBRARIES} PATH)
+	endif()
 else()
 	if(LYX_NLS)
 		add_subdirectory(intl "${TOP_BINARY_DIR}/intl")
