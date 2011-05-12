@@ -44,15 +44,17 @@ lyx_add_msvc_pch(support)
 
 lyx_automoc(${support_sources})
 
-include_directories(${TOP_SRC_DIR}/src/support
+include_directories(
+	${TOP_SRC_DIR}/src/support
 	${TOP_BINARY_DIR}/src/support
 	${TOP_SRC_DIR}/src/support/mythes
 	${QT_INCLUDES}
 	${ICONV_INCLUDE_DIR}
-	${ZLIB_INCLUDE_DIR})
+	${ZLIB_INCLUDE_DIR}
+	${LIBINTL_INCLUDE_DIR})
 
 
-if(NOT LYX_MERGE_FILES)
+if(NOT LYX_MERGE_FILES  OR APPLE)
 	set(support_sources ${support_sources} ${support_mythes_sources} ${support_linkback_sources})
 	set(support_headers ${support_headers} ${support_mythes_headers} ${support_linkback_headers})
 	add_library(support ${library_type} ${support_sources} ${support_headers} ${dont_merge})

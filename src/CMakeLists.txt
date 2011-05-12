@@ -76,6 +76,11 @@ if (LYX_DEVEL_VERSION)
 	add_definitions(-DDEVEL_VERSION)
 endif()
 
+if(APPLE)
+	list(APPEND dont_merge ${TOP_SRC_DIR}/src/TexRow.cpp)
+endif()
+
+
 if (LYX_MERGE_FILES)
 	if(dont_merge)
 		list(REMOVE_ITEM lyx_sources ${dont_merge})
@@ -127,8 +132,11 @@ target_link_libraries(${_lyx}
 	${vld_dll})
 
 if(NOT LYX_EXTERNAL_LIBINTL OR WIN32)
+  # TODO remove, use LIBINTL_LIBRARIES
   target_link_libraries(${_lyx} intl)
   add_dependencies(${_lyx} intl_target)
+else()
+	target_link_libraries(${_lyx} ${LIBINTL_LIBRARIES})
 endif()
 
 if(HUNSPELL_FOUND)

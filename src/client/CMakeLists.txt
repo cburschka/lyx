@@ -17,7 +17,8 @@ list(REMOVE_ITEM _lyxclient_sources "${TOP_SRC_DIR}/src/client/lyxclient.cpp")
 include_directories(BEFORE 
 	"${TOP_SRC_DIR}/src/client" 
 	"${TOP_SRC_DIR}/boost" 
-	${ZLIB_INCLUDE_DIR})
+	${ZLIB_INCLUDE_DIR}
+	${LIBINTL_INCLUDE_DIR})
 
 if(LYX_MERGE_FILES)
 	set(_lyxclient_sources ${_lyxclient_sources} ${TOP_SRC_DIR}/src/TexRow.cpp)
@@ -31,8 +32,7 @@ target_link_libraries(${_lyxclient}
 	${LIBINTL_LIBRARIES}
 	${ICONV_LIBRARY}
 	${QT_QTCORE_LIBRARY}
-	${QT_QTGUI_LIBRARY}
-	)
+	${QT_QTGUI_LIBRARY})
 
 if(ASPELL_FOUND)
 	target_link_libraries(${_lyxclient} ${ASPELL_LIBRARY})

@@ -338,6 +338,8 @@ endif()
 
 if(LYX_EXTERNAL_LIBINTL)
 	find_package(Libintl REQUIRED)
+	# find getext when configuring
+	list(APPEND CMAKE_REQUIRED_LIBRARIES ${LIBINTL_LIBRARIES})
 else()
 	if(LYX_NLS)
 		add_subdirectory(intl "${TOP_BINARY_DIR}/intl")
