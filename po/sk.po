@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-05-10 17:11+0200\n"
-"PO-Revision-Date: 2011-05-11 10:27+0200\n"
+"POT-Creation-Date: 2011-05-12 15:31+0200\n"
+"PO-Revision-Date: 2011-05-12 16:01+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -179,7 +179,7 @@ msgstr "Prid&ať"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/buffer_funcs.cpp:110 src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1476
+#: src/frontends/qt4/GuiApplication.cpp:1459
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "Zrušiť"
@@ -3715,8 +3715,7 @@ msgid ""
 "A '.' represents the current document directory. Use the OS native format."
 msgstr ""
 "Určite adresári, ktoré by mali byť pridané do premennej TEXINPUTS pred "
-"ostatnými "
-"adresármi.\n"
+"ostatnými adresármi.\n"
 "'.' reprezentuje aktuálny adresár dokumentu. Použite formát vhodný pre daný "
 "operačný systém."
 
@@ -7453,7 +7452,7 @@ msgstr "Autor:"
 
 #: lib/layouts/egs.layout:315
 msgid "Affil"
-msgstr "Affil"
+msgstr "Pričlenenie"
 
 #: lib/layouts/egs.layout:350
 msgid "Journal:"
@@ -7461,11 +7460,11 @@ msgstr "Denník:"
 
 #: lib/layouts/egs.layout:359
 msgid "msnumber"
-msgstr "msnumber"
+msgstr "číslo-manuskriptu"
 
 #: lib/layouts/egs.layout:373
 msgid "MS_number:"
-msgstr "Číslo manuskriptu:"
+msgstr "Číslo_Manuskriptu:"
 
 #: lib/layouts/egs.layout:383
 msgid "FirstAuthor"
@@ -18953,7 +18952,7 @@ msgstr "Schéma "
 msgid " not known"
 msgstr " neznámy"
 
-#: src/Text3.cpp:1753 src/frontends/qt4/GuiApplication.cpp:1384
+#: src/Text3.cpp:1753 src/frontends/qt4/GuiApplication.cpp:1367
 msgid "Missing argument"
 msgstr "Chýba parameter"
 
@@ -19533,19 +19532,19 @@ msgstr "Príkaz bez spracovávania"
 msgid "Command disabled"
 msgstr "Príkaz blokovaný"
 
-#: src/frontends/qt4/GuiApplication.cpp:1217
+#: src/frontends/qt4/GuiApplication.cpp:1200
 msgid "Running configure..."
 msgstr "Spúšťam konfigurovanie..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1228
+#: src/frontends/qt4/GuiApplication.cpp:1211
 msgid "Reloading configuration..."
 msgstr "Nové načítanie konfigurácie..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1234
+#: src/frontends/qt4/GuiApplication.cpp:1217
 msgid "System reconfiguration failed"
 msgstr "Rekonfigurácia systému zlyhala"
 
-#: src/frontends/qt4/GuiApplication.cpp:1235
+#: src/frontends/qt4/GuiApplication.cpp:1218
 msgid ""
 "The system reconfiguration has failed.\n"
 "Default textclass is used but LyX may not be able to work properly.\n"
@@ -19556,11 +19555,11 @@ msgstr ""
 "pracovať správne.\n"
 "Keď nutné, skúste prosím ešte raz rekonfigurovať."
 
-#: src/frontends/qt4/GuiApplication.cpp:1240
+#: src/frontends/qt4/GuiApplication.cpp:1223
 msgid "System reconfigured"
 msgstr "Systém je prekonfigurovaný"
 
-#: src/frontends/qt4/GuiApplication.cpp:1241
+#: src/frontends/qt4/GuiApplication.cpp:1224
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -19570,44 +19569,44 @@ msgstr ""
 "Musíte reštartovať LyX, keď chcete použiť akúkoľvek z\n"
 "aktualizovaných nastavení tried dokumentov."
 
-#: src/frontends/qt4/GuiApplication.cpp:1314
+#: src/frontends/qt4/GuiApplication.cpp:1297
 msgid "Exiting."
 msgstr "Končím."
 
-#: src/frontends/qt4/GuiApplication.cpp:1396
+#: src/frontends/qt4/GuiApplication.cpp:1379
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Otváram súbor s pomocníkom %1$s..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1415
+#: src/frontends/qt4/GuiApplication.cpp:1398
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntax: set-color <lyx_name> <x11_name>"
 
-#: src/frontends/qt4/GuiApplication.cpp:1431
+#: src/frontends/qt4/GuiApplication.cpp:1414
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Nepodarilo sa nastaviť farbu \"%1$s\" - alebo nie je definovaná alebo sa "
 "nedá predefinovať"
 
-#: src/frontends/qt4/GuiApplication.cpp:1611
+#: src/frontends/qt4/GuiApplication.cpp:1594
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Štandardy dokumentu uložené v %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:1615
+#: src/frontends/qt4/GuiApplication.cpp:1598
 msgid "Unable to save document defaults"
 msgstr "Nedajú sa uložiť štandardné definície dokumentu."
 
-#: src/frontends/qt4/GuiApplication.cpp:1752
+#: src/frontends/qt4/GuiApplication.cpp:1735
 msgid "Unknown function."
 msgstr "Neznáma funkcia."
 
-#: src/frontends/qt4/GuiApplication.cpp:2181
+#: src/frontends/qt4/GuiApplication.cpp:2164
 msgid "The current document was closed."
 msgstr "Aktuálny dokument sa zavrel"
 
-#: src/frontends/qt4/GuiApplication.cpp:2191
+#: src/frontends/qt4/GuiApplication.cpp:2174
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -19619,12 +19618,12 @@ msgstr ""
 "\n"
 "Výnimka: "
 
-#: src/frontends/qt4/GuiApplication.cpp:2195
-#: src/frontends/qt4/GuiApplication.cpp:2201
+#: src/frontends/qt4/GuiApplication.cpp:2178
+#: src/frontends/qt4/GuiApplication.cpp:2184
 msgid "Software exception Detected"
 msgstr "Detekovaná softvérová výnimka"
 
-#: src/frontends/qt4/GuiApplication.cpp:2199
+#: src/frontends/qt4/GuiApplication.cpp:2182
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -19632,12 +19631,12 @@ msgstr ""
 "LyX zachytil záhadnú výnimku a teraz sa pokúsi uložiť všetky neuložené "
 "dokumenty a skončiť."
 
-#: src/frontends/qt4/GuiApplication.cpp:2464
-#: src/frontends/qt4/GuiApplication.cpp:2476
+#: src/frontends/qt4/GuiApplication.cpp:2447
+#: src/frontends/qt4/GuiApplication.cpp:2459
 msgid "Could not find UI definition file"
 msgstr "Nemôžem nájsť súbor definíc pre UI"
 
-#: src/frontends/qt4/GuiApplication.cpp:2465
+#: src/frontends/qt4/GuiApplication.cpp:2448
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -19648,11 +19647,11 @@ msgstr ""
 "%1$s.\n"
 "Skontrolujte prosím vašu inštaláciu."
 
-#: src/frontends/qt4/GuiApplication.cpp:2471
+#: src/frontends/qt4/GuiApplication.cpp:2454
 msgid "Could not find default UI file"
 msgstr "Nemôžem nájsť predvolený UI-súbor"
 
-#: src/frontends/qt4/GuiApplication.cpp:2472
+#: src/frontends/qt4/GuiApplication.cpp:2455
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -19660,7 +19659,7 @@ msgstr ""
 "LyX nenašiel predvolený UI súbor!\n"
 "Skontrolujte prosím vašu inštaláciu."
 
-#: src/frontends/qt4/GuiApplication.cpp:2477
+#: src/frontends/qt4/GuiApplication.cpp:2460
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -23213,7 +23212,7 @@ msgstr "Chránená horizontálna medzera (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Neznámy typ obsahu"
 
-#: src/insets/InsetTabular.cpp:4707
+#: src/insets/InsetTabular.cpp:4709
 msgid "Selection size should match clipboard content."
 msgstr "Veľkosť výberu by mala zodpovedať obsahu klipsovej dosky."
 
