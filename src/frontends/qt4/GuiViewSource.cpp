@@ -17,8 +17,9 @@
 #include "LaTeXHighlighter.h"
 #include "qt_helpers.h"
 
-#include "BufferView.h"
 #include "Buffer.h"
+#include "BufferParams.h"
+#include "BufferView.h"
 #include "Cursor.h"
 #include "Format.h"
 #include "Paragraph.h"
@@ -183,7 +184,7 @@ void ViewSourceWidget::updateDefaultFormat()
 	outputFormatCO->addItem(qt_("Default"),
 				QVariant(QString("default")));
 	typedef vector<Format const *> Formats;
-	Formats formats = bv_->buffer().exportableFormats(true);
+	Formats formats = bv_->buffer().params().exportableFormats(true);
 	Formats::const_iterator cit = formats.begin();
 	Formats::const_iterator end = formats.end();
 	for (; cit != end; ++cit)

@@ -263,7 +263,7 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType)
 	}
 	label += ref;
 	
-	if (!buffer().isLatex() && !getParam("name").empty()) {
+	if (!buffer().params().isLatex() && !getParam("name").empty()) {
 		label += "||";
 		label += getParam("name");
 	}

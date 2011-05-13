@@ -600,7 +600,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		tmp->markDepClean(masterBuffer->temppath());
 
 		// Don't assume the child's format is latex
-		string const inc_format = tmp->bufferFormat();
+		string const inc_format = tmp->params().bufferFormat();
 		FileName const tmpwritefile(changeExtension(writefile.absFileName(),
 			formats.extension(inc_format)));
 
