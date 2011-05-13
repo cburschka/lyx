@@ -42,6 +42,9 @@ What's new
 
 - Updated French, German, Japanese, and Portuguese User Interface Localization.
 
+- Now it is not necessary to restart LyX after changing the default document
+  directory and/or the PATH prefix in the preferences for them to take effect.
+
 
 * DOCUMENTATION AND LOCALIZATION
 
@@ -79,6 +82,9 @@ What's new
 - Fixed export to plaintext of, as well as searching within,
   a document containing aligned and other multi-cell environments
   (bug ##7549).
+
+- On Windows, allow to automatically switch TeX engines without the need
+  of manually saving the preferences after reconfiguring (bug 7557).
 
 
 * USER INTERFACE

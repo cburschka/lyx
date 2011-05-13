@@ -1612,8 +1612,9 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 	case RC_TEX_EXPECTS_WINDOWS_PATHS:
-		if (ignore_system_lyxrc ||
-		    windows_style_tex_paths != system_lyxrc.windows_style_tex_paths) {
+		// Don't write this setting to the preferences file,
+		// but allow temporary changes (bug 7557).
+		if (ignore_system_lyxrc) {
 			os << "\\tex_expects_windows_paths "
 			   << convert<string>(windows_style_tex_paths) << '\n';
 		}
@@ -2900,6 +2901,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	// if we forget an element.
 	LyXRC::LyXRCTags tag = LyXRC::RC_LAST;
 	switch (tag) {
+	case LyXRC::RC_LAST:
 	case LyXRC::RC_ACCEPT_COMPOUND:
 	case LyXRC::RC_ALT_LANG:
 	case LyXRC::RC_PLAINTEXT_LINELEN:
@@ -2953,9 +2955,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_GROUP_LAYOUTS:
 	case LyXRC::RC_HUNSPELLDIR_PATH:
 	case LyXRC::RC_ICON_SET:
-		if (lyxrc_orig.icon_set != lyxrc_new.icon_set) {
-			lyxrc.icon_set = lyxrc_new.icon_set;
-		}
 	case LyXRC::RC_INDEX_ALTERNATIVES:
 	case LyXRC::RC_INDEX_COMMAND:
 	case LyXRC::RC_JBIBTEX_COMMAND:
@@ -2984,7 +2983,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_PARAGRAPH_MARKERS:
 	case LyXRC::RC_PATH_PREFIX:
 		if (lyxrc_orig.path_prefix != lyxrc_new.path_prefix) {
-			prependEnvPath("PATH", lyxrc.path_prefix);
+			prependEnvPath("PATH", lyxrc_new.path_prefix);
 		}
 	case LyXRC::RC_PREVIEW:
 	case LyXRC::RC_PREVIEW_HASHED_LABELS:
@@ -3036,9 +3035,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 			os::windows_style_tex_paths(lyxrc_new.windows_style_tex_paths);
 		}
 	case LyXRC::RC_TEXINPUTS_PREFIX:
-		if (lyxrc_orig.texinputs_prefix != lyxrc_new.texinputs_prefix) {
-			lyxrc.texinputs_prefix = lyxrc_new.texinputs_prefix;
-		}
 	case LyXRC::RC_THESAURUSDIRPATH:
 	case LyXRC::RC_UIFILE:
 	case LyXRC::RC_USER_EMAIL:
@@ -3066,7 +3062,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_DEFAULT_DECIMAL_POINT:
 	case LyXRC::RC_SCROLL_WHEEL_ZOOM:
 	case LyXRC::RC_CURSOR_WIDTH:
-	case LyXRC::RC_LAST:
 		break;
 	}
 }
