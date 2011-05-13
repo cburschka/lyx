@@ -1612,8 +1612,9 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 	case RC_TEX_EXPECTS_WINDOWS_PATHS:
-		if (ignore_system_lyxrc ||
-		    windows_style_tex_paths != system_lyxrc.windows_style_tex_paths) {
+		// Don't write this setting to the preferences file,
+		// but allow temporary changes (bug 7557).
+		if (ignore_system_lyxrc) {
 			os << "\\tex_expects_windows_paths "
 			   << convert<string>(windows_style_tex_paths) << '\n';
 		}
