@@ -2953,9 +2953,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_GROUP_LAYOUTS:
 	case LyXRC::RC_HUNSPELLDIR_PATH:
 	case LyXRC::RC_ICON_SET:
-		if (lyxrc_orig.icon_set != lyxrc_new.icon_set) {
-			lyxrc.icon_set = lyxrc_new.icon_set;
-		}
 	case LyXRC::RC_INDEX_ALTERNATIVES:
 	case LyXRC::RC_INDEX_COMMAND:
 	case LyXRC::RC_JBIBTEX_COMMAND:
@@ -3036,9 +3033,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 			os::windows_style_tex_paths(lyxrc_new.windows_style_tex_paths);
 		}
 	case LyXRC::RC_TEXINPUTS_PREFIX:
-		if (lyxrc_orig.texinputs_prefix != lyxrc_new.texinputs_prefix) {
-			lyxrc.texinputs_prefix = lyxrc_new.texinputs_prefix;
-		}
 	case LyXRC::RC_THESAURUSDIRPATH:
 	case LyXRC::RC_UIFILE:
 	case LyXRC::RC_USER_EMAIL:
