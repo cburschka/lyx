@@ -2141,29 +2141,26 @@ void GuiDocument::updateDefaultFormat()
 	if (!bufferview())
 		return;
 	// make a copy in order to consider unapplied changes
-	Buffer * tmpbuf = buffer().clone();
-	tmpbuf->params().useNonTeXFonts =
-		fontModule->osFontsCB->isChecked();
+	BufferParams tmp = buffer().params();
+	tmp.useNonTeXFonts = fontModule->osFontsCB->isChecked();
 	int idx = latexModule->classCO->currentIndex();
 	if (idx >= 0) {
 		string const classname = classes_model_.getIDString(idx);
-		tmpbuf->params().setBaseClass(classname);
-		tmpbuf->params().makeDocumentClass();
+		tmp.setBaseClass(classname);
+		tmp.makeDocumentClass();
 	}
 	outputModule->defaultFormatCO->blockSignals(true);
 	outputModule->defaultFormatCO->clear();
 	outputModule->defaultFormatCO->addItem(qt_("Default"),
 				QVariant(QString("default")));
 	typedef vector<Format const *> Formats;
-	Formats formats = tmpbuf->params().exportableFormats(true);
+	Formats formats = tmp.exportableFormats(true);
 	Formats::const_iterator cit = formats.begin();
 	Formats::const_iterator end = formats.end();
 	for (; cit != end; ++cit)
 		outputModule->defaultFormatCO->addItem(qt_((*cit)->prettyname()),
 				QVariant(toqstr((*cit)->name())));
 	outputModule->defaultFormatCO->blockSignals(false);
-	// delete the copy
-	delete tmpbuf;
 }
 
 
