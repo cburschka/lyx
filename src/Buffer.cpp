@@ -2028,7 +2028,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 
 		// Execute the command in the background
 		Systemcall call;
-		call.startscript(Systemcall::DontWait, command);
+		call.startscript(Systemcall::DontWait, command, filePath());
 		break;
 	}
 
@@ -2206,7 +2206,8 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 				command2 += quoteName(psname);
 				// First run dvips.
 				// If successful, then spool command
-				res = one.startscript(Systemcall::Wait, command);
+				res = one.startscript(Systemcall::Wait, command,
+						      filePath());
 
 				if (res == 0) {
 					// If there's no GUI, we have to wait on this command. Otherwise,
@@ -2214,7 +2215,8 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 					// file, before it can be printed!!
 					Systemcall::Starttype stype = use_gui ?
 						Systemcall::DontWait : Systemcall::Wait;
-					res = one.startscript(stype, command2);
+					res = one.startscript(stype, command2,
+							      filePath());
 				}
 			} else {
 				// case 2: print directly to a printer
@@ -2223,7 +2225,8 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 				// as above....
 				Systemcall::Starttype stype = use_gui ?
 					Systemcall::DontWait : Systemcall::Wait;
-				res = one.startscript(stype, command + quoteName(dviname));
+				res = one.startscript(stype, command +
+						quoteName(dviname), filePath());
 			}
 
 		} else {
@@ -2246,7 +2249,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 			// as above....
 			Systemcall::Starttype stype = use_gui ?
 				Systemcall::DontWait : Systemcall::Wait;
-			res = one.startscript(stype, command);
+			res = one.startscript(stype, command, filePath());
 		}
 
 		if (res == 0) 
