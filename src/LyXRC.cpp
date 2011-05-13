@@ -3060,7 +3060,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 			package().document_dir() = FileName(lyxrc.document_path);
 	}
 	if (lyxrc_orig.path_prefix != lyxrc_new.path_prefix) {
-		prependEnvPath("PATH", lyxrc.path_prefix);
+		prependEnvPath("PATH", lyxrc_new.path_prefix);
 	}
 	if (lyxrc_orig.windows_style_tex_paths != lyxrc_new.windows_style_tex_paths) {
 		os::windows_style_tex_paths(lyxrc_new.windows_style_tex_paths);
