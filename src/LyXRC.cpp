@@ -2900,6 +2900,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	// if we forget an element.
 	LyXRC::LyXRCTags tag = LyXRC::RC_LAST;
 	switch (tag) {
+	case LyXRC::RC_LAST:
 	case LyXRC::RC_ACCEPT_COMPOUND:
 	case LyXRC::RC_ALT_LANG:
 	case LyXRC::RC_PLAINTEXT_LINELEN:
@@ -2939,6 +2940,11 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN:
 	case LyXRC::RC_DISPLAY_GRAPHICS:
 	case LyXRC::RC_DOCUMENTPATH:
+		if (lyxrc_orig.document_path != lyxrc_new.document_path) {
+			FileName path(lyxrc_new.document_path);
+			if (path.exists() && path.isDirectory())
+				package().document_dir() = FileName(lyxrc.document_path);
+		}
 	case LyXRC::RC_EDITOR_ALTERNATIVES:
 	case LyXRC::RC_ESC_CHARS:
 	case LyXRC::RC_EXAMPLEPATH:
@@ -2975,6 +2981,9 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_NUMLASTFILES:
 	case LyXRC::RC_PARAGRAPH_MARKERS:
 	case LyXRC::RC_PATH_PREFIX:
+		if (lyxrc_orig.path_prefix != lyxrc_new.path_prefix) {
+			prependEnvPath("PATH", lyxrc_new.path_prefix);
+		}
 	case LyXRC::RC_PREVIEW:
 	case LyXRC::RC_PREVIEW_HASHED_LABELS:
 	case LyXRC::RC_PREVIEW_SCALE_FACTOR:
@@ -3021,6 +3030,9 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_TEMPLATEPATH:
 	case LyXRC::RC_TEX_ALLOWS_SPACES:
 	case LyXRC::RC_TEX_EXPECTS_WINDOWS_PATHS:
+		if (lyxrc_orig.windows_style_tex_paths != lyxrc_new.windows_style_tex_paths) {
+			os::windows_style_tex_paths(lyxrc_new.windows_style_tex_paths);
+		}
 	case LyXRC::RC_TEXINPUTS_PREFIX:
 	case LyXRC::RC_THESAURUSDIRPATH:
 	case LyXRC::RC_UIFILE:
@@ -3049,21 +3061,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_DEFAULT_DECIMAL_POINT:
 	case LyXRC::RC_SCROLL_WHEEL_ZOOM:
 	case LyXRC::RC_CURSOR_WIDTH:
-	case LyXRC::RC_LAST:
 		break;
-	}
-
-	// Do what is needed (if any) for changes to actually take effect.
-	if (lyxrc_orig.document_path != lyxrc_new.document_path) {
-		FileName path(lyxrc_new.document_path);
-		if (path.exists() && path.isDirectory())
-			package().document_dir() = FileName(lyxrc.document_path);
-	}
-	if (lyxrc_orig.path_prefix != lyxrc_new.path_prefix) {
-		prependEnvPath("PATH", lyxrc_new.path_prefix);
-	}
-	if (lyxrc_orig.windows_style_tex_paths != lyxrc_new.windows_style_tex_paths) {
-		os::windows_style_tex_paths(lyxrc_new.windows_style_tex_paths);
 	}
 }
 
