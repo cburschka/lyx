@@ -409,13 +409,6 @@ public:
 	/// Set buffer read-only flag
 	void setReadonly(bool flag = true);
 
-	/// returns \c true if the buffer contains a LaTeX document
-	bool isLatex() const;
-	/// returns \c true if the buffer contains a DocBook document
-	bool isDocBook() const;
-	/// returns \c true if the buffer contains a Wed document
-	bool isLiterate() const;
-
 	/** Validate a buffer for LaTeX.
 	    This validates the buffer, and returns a struct for use by
 	    #makeLaTeX# and others. Its main use is to figure out what
@@ -602,14 +595,6 @@ public:
 
 	
 
-	/// return the format of the buffer on a string
-	std::string bufferFormat() const;
-	/// return the default output format of the current backend
-	std::string getDefaultOutputFormat() const;
-	/// return the output flavor of \p format or the default
-	OutputParams::FLAVOR getOutputFlavor(
-		  std::string const format = std::string()) const;
-
 	///
 	bool doExport(std::string const & format, bool put_in_tempdir,
 		bool includeall, std::string & result_file) const;
@@ -618,12 +603,6 @@ public:
 		      bool includeall = false) const;
 	///
 	bool preview(std::string const & format, bool includeall = false) const;
-	///
-	bool isExportable(std::string const & format) const;
-	///
-	std::vector<Format const *> exportableFormats(bool only_viewable) const;
-	///
-	bool isExportableFormat(std::string const & format) const;
 	/// mark the buffer as busy exporting something, or not
 	void setExportStatus(bool e) const;
 	///
@@ -669,12 +648,6 @@ public:
 private:
 	/// Change name of buffer. Updates "read-only" flag.
 	void setFileName(support::FileName const & fname);
-	///
-	std::vector<std::string> backends() const;
-	/// A cache for the default flavors
-	typedef std::map<std::string, OutputParams::FLAVOR> DefaultFlavorCache;
-	///
-	mutable DefaultFlavorCache default_flavors_;
 	///
 	void getLanguages(std::set<Language const *> &) const;
 	/// Checks whether any of the referenced bibfiles have changed since the

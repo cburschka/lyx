@@ -991,7 +991,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 	LYXERR(Debug::FIND, "  with cur.lastpost=" << cur.lastpos() << ", cur.lastrow="
 		<< cur.lastrow() << ", cur.lastcol=" << cur.lastcol());
 	Buffer const & buf = *cur.buffer();
-	LASSERT(buf.isLatex(), /* */);
+	LASSERT(buf.params().isLatex(), /* */);
 
 	TexRow texrow;
 	odocstringstream ods;

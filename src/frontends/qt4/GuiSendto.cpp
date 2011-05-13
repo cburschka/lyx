@@ -15,6 +15,7 @@
 #include "qt_helpers.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "Format.h"
 #include "FuncRequest.h"
 
@@ -67,7 +68,7 @@ void GuiSendTo::changed_adaptor()
 
 void GuiSendTo::updateContents()
 {
-	all_formats_ = buffer().exportableFormats(false);
+	all_formats_ = buffer().params().exportableFormats(false);
 
 	// Save the current selection if any
 	Format const * current_format = 0;

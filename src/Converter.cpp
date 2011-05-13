@@ -338,7 +338,7 @@ bool Converters::convert(Buffer const * buffer,
 	runparams.flavor = getFlavor(edgepath);
 
 	if (buffer) {
-		runparams.use_japanese = buffer->bufferFormat() == "platex";
+		runparams.use_japanese = buffer->params().bufferFormat() == "platex";
 		runparams.use_indices = buffer->params().use_indices;
 		runparams.bibtex_command = (buffer->params().bibtex_command == "default") ?
 			string() : buffer->params().bibtex_command;

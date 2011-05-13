@@ -2155,7 +2155,7 @@ void GuiDocument::updateDefaultFormat()
 	outputModule->defaultFormatCO->addItem(qt_("Default"),
 				QVariant(QString("default")));
 	typedef vector<Format const *> Formats;
-	Formats formats = tmpbuf->exportableFormats(true);
+	Formats formats = tmpbuf->params().exportableFormats(true);
 	Formats::const_iterator cit = formats.begin();
 	Formats::const_iterator end = formats.end();
 	for (; cit != end; ++cit)

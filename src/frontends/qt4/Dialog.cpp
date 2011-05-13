@@ -16,6 +16,7 @@
 #include "qt_helpers.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "BufferView.h"
 #include "Cursor.h"
 #include "FuncRequest.h"
@@ -99,9 +100,9 @@ QString Dialog::bufferFilePath() const
 
 KernelDocType Dialog::docType() const
 {
-	if (buffer().isLatex())
+	if (buffer().params().isLatex())
 		return LATEX;
-	if (buffer().isLiterate())
+	if (buffer().params().isLiterate())
 		return LITERATE;
 
 	return DOCBOOK;

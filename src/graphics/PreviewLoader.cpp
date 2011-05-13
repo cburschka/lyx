@@ -388,7 +388,7 @@ namespace graphics {
 PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
 	: parent_(p), buffer_(b)
 {
-	if (b.bufferFormat() == "lilypond-book")
+	if (b.params().bufferFormat() == "lilypond-book")
 		pconverter_ = setConverter("lyxpreview-lytex");
 	else if (b.params().encoding().package() == Encoding::japanese)
 		pconverter_ = setConverter("lyxpreview-platex");

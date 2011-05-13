@@ -16,7 +16,9 @@
 #define BUFFERPARAMS_H
 
 #include "Citation.h"
+#include "Format.h"
 #include "LayoutModuleList.h"
+#include "OutputParams.h"
 #include "paper.h"
 
 #include "insets/InsetQuotes.h"
@@ -24,6 +26,7 @@
 #include "support/copied_ptr.h"
 
 #include <map>
+#include <vector>
 
 namespace lyx {
 
@@ -152,6 +155,29 @@ public:
 	void clearLayoutModules() { layout_modules_.clear(); }
 	/// Clear the removed module list
 	void clearRemovedModules() { removed_modules_.clear(); }
+
+	/// returns \c true if the buffer contains a LaTeX document
+	bool isLatex() const;
+	/// returns \c true if the buffer contains a DocBook document
+	bool isDocBook() const;
+	/// returns \c true if the buffer contains a Wed document
+	bool isLiterate() const;
+
+	/// return the format of the buffer on a string
+	std::string bufferFormat() const;
+	/// return the default output format of the current backend
+	std::string getDefaultOutputFormat() const;
+	/// return the output flavor of \p format or the default
+	OutputParams::FLAVOR getOutputFlavor(
+		  std::string const format = std::string()) const;
+	///
+	bool isExportable(std::string const & format) const;
+	///
+	std::vector<Format const *> exportableFormats(bool only_viewable) const;
+	///
+	bool isExportableFormat(std::string const & format) const;
+	///
+	std::vector<std::string> backends() const;
 
 	/// List of included children (for includeonly)
 	std::list<std::string> const & getIncludedChildren() const 
@@ -437,6 +463,10 @@ private:
 	void readRemovedModules(Lexer &);
 	///
 	void readIncludeonly(Lexer &);
+	/// A cache for the default flavors
+	typedef std::map<std::string, OutputParams::FLAVOR> DefaultFlavorCache;
+	///
+	mutable DefaultFlavorCache default_flavors_;
 	/// for use with natbib
 	CiteEngine cite_engine_;
 	///
