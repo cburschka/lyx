@@ -54,7 +54,7 @@ include_directories(
 	${LIBINTL_INCLUDE_DIR})
 
 
-if(NOT LYX_MERGE_FILES  OR APPLE)
+if(NOT LYX_MERGE_FILES)
 	set(support_sources ${support_sources} ${support_mythes_sources} ${support_linkback_sources})
 	set(support_headers ${support_headers} ${support_mythes_headers} ${support_linkback_headers})
 	add_library(support ${library_type} ${support_sources} ${support_headers} ${dont_merge})
