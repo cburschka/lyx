@@ -43,6 +43,7 @@
 #define HAVE__PCLOSE 1
 #define HAVE_GETPID 1
 #define HAVE__GETPID 1
+#define HAVE_GETTEXT 1 /* TODO this is set manually */
 #define HAVE_MKDIR 1
 #define HAVE__MKDIR 1
 /* #undef HAVE_SETENV 1 */
