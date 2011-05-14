@@ -7,8 +7,8 @@
 project(intl) 
 
 # libgnuintl.h.in => libintl.h
-configure_file("${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/intl/libgnuintl.h.cmake" ${CMAKE_CURRENT_BINARY_DIR}/libgnuintl.h)
-configure_file("${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/intl/libgnuintl.h.cmake" ${CMAKE_CURRENT_BINARY_DIR}/libintl.h)
+configure_file("${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/intl/libgnuintl.h.cmake" ${CMAKE_BINARY_DIR}/intl/libgnuintl.h)
+configure_file("${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/intl/libgnuintl.h.cmake" ${CMAKE_BINARY_DIR}/intl/libintl.h)
 
 
 add_definitions(
@@ -50,8 +50,16 @@ if(ICONV_FOUND)
 endif()
 
 add_library(intl STATIC ${intl_sources} ${intl_headers})
-set(LIBINTL_LIBRARIES intl CACHE STRING "libintl library" FORCE)
 
+get_target_property(libintl_location intl LOCATION)
+set(LIBINTL_LIBRARIES ${libintl_location} CACHE STRING "libintl library" FORCE)
+
+find_path(LIBINTL_INCLUDE_DIR intl/libintl.h
+	PATHS ${CMAKE_BINARY_DIR} NO_DEFAULT_PATH)
+	
+find_file(LIBINTL_HEADER intl/libintl.h
+	PATHS ${CMAKE_BINARY_DIR} NO_DEFAULT_PATH)
+		
 if(ICONV_FOUND)
 	target_link_libraries(intl ${ICONV_LIBRARY})
 endif()

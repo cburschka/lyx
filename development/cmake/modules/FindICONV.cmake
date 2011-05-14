@@ -32,9 +32,12 @@ if (ICONV_INCLUDE_DIR)
   set(ICONV_FIND_QUIETLY TRUE)
 endif()
 
-find_path(ICONV_INCLUDE_DIR iconv.h
+find_path(ICONV_INCLUDE_DIR iconv.h PATHS
  /usr/include
  /usr/local/include)
+ 	
+find_file(ICONV_HEADER iconv.h
+	PATHS ${ICONV_INCLUDE_DIR} NO_DEFAULT_PATH)
 
 set(POTENTIAL_ICONV_LIBS iconv libiconv libiconv2)
 

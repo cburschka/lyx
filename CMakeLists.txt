@@ -51,7 +51,7 @@ LYX_OPTION_INIT()
 # Options for all compilers/systems
 LYX_OPTION(CPACK            "Use the CPack management (Implies LYX_INSTALL option)" OFF ALL)
 LYX_OPTION(INSTALL          "Build install projects/rules (implies a bunch of other options)" OFF ALL)
-LYX_OPTION(NLS              "Use nls" ON ALL)
+LYX_OPTION(NLS              "Enable Native Language Support (NLS)" ON ALL)
 LYX_OPTION(ASPELL           "Require aspell" OFF ALL)
 LYX_OPTION(ENCHANT          "Require Enchant" OFF ALL)
 LYX_OPTION(HUNSPELL         "Require Hunspell" OFF ALL)
@@ -306,7 +306,7 @@ endif()
 
 
 find_package(Qt4 REQUIRED)
-find_package(ZLIB REQUIRED)
+
 
 include_directories(${TOP_BINARY_DIR} ${TOP_SRC_DIR}/src)
   
@@ -335,23 +335,22 @@ if(LYX_NLS)
 	add_subdirectory(po "${TOP_BINARY_DIR}/po")
 endif()
 
-if(LYX_EXTERNAL_LIBINTL)
-	find_package(Libintl REQUIRED)	
-	if(DEFINED LIBINTL_LIBRARIES)
-		# find getext when configuring
-		list(APPEND CMAKE_REQUIRED_LIBRARIES ${LIBINTL_LIBRARIES})	
-		# on mac use iconv also form ports
-		get_filename_component(ICONV_RELATIVE_TO_LIBINTL ${LIBINTL_LIBRARIES} PATH)
-	endif()
-else()
-	if(LYX_NLS)
-		add_subdirectory(intl "${TOP_BINARY_DIR}/intl")
+if(LYX_NLS)
+	if(LYX_EXTERNAL_LIBINTL)
+		find_package(Libintl REQUIRED)	
+		if(DEFINED LIBINTL_LIBRARIES)
+			# find getext when configuring
+			list(APPEND CMAKE_REQUIRED_LIBRARIES ${LIBINTL_LIBRARIES})	
+			# on mac use iconv also form ports
+			get_filename_component(ICONV_RELATIVE_TO_LIBINTL ${LIBINTL_LIBRARIES} PATH)
+		endif()
 	else()
-		# do not compile if nls disabled
+		add_subdirectory(intl "${TOP_BINARY_DIR}/intl")
 	endif()
 endif()
 
 find_package(ICONV REQUIRED)
+find_package(ZLIB REQUIRED)
 
 if(LYX_EXTERNAL_BOOST)
 	message(STATUS "Searching for boost")
@@ -539,6 +538,22 @@ message(STATUS "Build options, switch LYX_* variables by -DLYX_*=1 or 0:")
 message(STATUS)
 LYX_OPTION_LIST_ALL(used)
 
+
+if(LYX_NLS)
+	message(STATUS)
+	message(STATUS "Building Native Language Support (LYX_NLS is set), used libraries:")
+	message(STATUS)
+	message(STATUS "  * intl")
+	message(STATUS "     - header : ${LIBINTL_HEADER}")
+	message(STATUS "     - library: ${LIBINTL_LIBRARIES}")
+	message(STATUS "  * iconv")
+	message(STATUS "     - header : ${ICONV_HEADER}")
+	message(STATUS "     - library: ${ICONV_LIBRARY}")
+	message(STATUS "  * zlib")
+	message(STATUS "     - header : ${ZLIB_HEADER}")
+	message(STATUS "     - library: ${ZLIB_LIBRARY}")
+	message(STATUS)
+endif()
 
 set(CPACK_PACKAGE_VERSION_MAJOR "${LYX_MAJOR_VERSION}")
 set(CPACK_PACKAGE_VERSION_MINOR "${LYX_MINOR_VERSION}")

@@ -9,12 +9,21 @@ if (ZLIB_INCLUDE_DIR)
   set(ZLIB_FIND_QUIETLY TRUE)
 endif()
 
-find_path(ZLIB_INCLUDE_DIR zlib.h
+find_path(ZLIB_INCLUDE_DIR zlib.h PATHS
  /usr/include
  /usr/local/include
  "${GNUWIN32_DIR}"/include)
 
+find_file(ZLIB_HEADER iconv.h
+	PATHS ${ZLIB_INCLUDE_DIR} NO_DEFAULT_PATH)
+	
 set(POTENTIAL_Z_LIBS z zlib zdll)
+
+find_library(ZLIB_LIBRARY NAMES ${POTENTIAL_Z_LIBS}
+	PATHS
+	${ICONV_RELATIVE_TO_LIBINTL}
+	NO_DEFAULT_PATH)
+	
 
 find_library(ZLIB_LIBRARY NAMES ${POTENTIAL_Z_LIBS}
 	PATHS 
