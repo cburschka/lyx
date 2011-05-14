@@ -7,8 +7,8 @@
 project(intl) 
 
 # libgnuintl.h.in => libintl.h
-configure_file("${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/intl/libgnuintl.h.cmake" ${CMAKE_BINARY_DIR}/intl/libgnuintl.h)
-configure_file("${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/intl/libgnuintl.h.cmake" ${CMAKE_BINARY_DIR}/intl/libintl.h)
+configure_file("${TOP_SRC_DIR}/intl/libgnuintl.h.cmake" ${CMAKE_BINARY_DIR}/intl/libgnuintl.h)
+configure_file("${TOP_SRC_DIR}/intl/libgnuintl.h.cmake" ${CMAKE_BINARY_DIR}/intl/libintl.h)
 
 
 add_definitions(
