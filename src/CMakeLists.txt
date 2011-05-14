@@ -76,10 +76,6 @@ if (LYX_DEVEL_VERSION)
 	add_definitions(-DDEVEL_VERSION)
 endif()
 
-if(APPLE)
-	list(APPEND dont_merge ${TOP_SRC_DIR}/src/TexRow.cpp)
-endif()
-
 
 if (LYX_MERGE_FILES)
 	if(dont_merge)

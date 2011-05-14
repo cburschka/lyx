@@ -14,7 +14,7 @@ find_path(ZLIB_INCLUDE_DIR zlib.h PATHS
  /usr/local/include
  "${GNUWIN32_DIR}"/include)
 
-find_file(ZLIB_HEADER iconv.h
+find_file(ZLIB_HEADER zlib.h
 	PATHS ${ZLIB_INCLUDE_DIR} NO_DEFAULT_PATH)
 	
 set(POTENTIAL_Z_LIBS z zlib zdll)
