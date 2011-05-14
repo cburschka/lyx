@@ -290,8 +290,7 @@ int LyX::exec(int & argc, char * argv[])
 {
 	// Minimal setting of locale before parsing command line
 	try {
-		init_package(os::utf8_argv(0), string(), string(),
-			top_build_dir_is_one_level_up);
+		init_package(os::utf8_argv(0), string(), string());
 		// we do not get to this point when init_package throws an exception
 		locale_init();
 	} catch (ExceptionMessage const & message) {
@@ -303,9 +302,7 @@ int LyX::exec(int & argc, char * argv[])
 	easyParse(argc, argv);
 
 	try {
-		init_package(os::utf8_argv(0),
-			cl_system_support, cl_user_support,
-			top_build_dir_is_one_level_up);
+		init_package(os::utf8_argv(0), cl_system_support, cl_user_support);
 	} catch (ExceptionMessage const & message) {
 		if (message.type_ == ErrorException) {
 			Alert::error(message.title_, message.details_);

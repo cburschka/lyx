@@ -54,13 +54,11 @@ bool initialised_ = false;
 
 void init_package(string const & command_line_arg0,
 		  string const & command_line_system_support_dir,
-		  string const & command_line_user_support_dir,
-		  exe_build_dir_to_top_build_dir top_build_dir_location)
+		  string const & command_line_user_support_dir)
 {
 	package_ = Package(command_line_arg0,
 			   command_line_system_support_dir,
-			   command_line_user_support_dir,
-			   top_build_dir_location);
+			   command_line_user_support_dir);
 	initialised_ = true;
 }
 
@@ -76,9 +74,10 @@ namespace {
 
 FileName const abs_path_from_binary_name(string const & exe);
 
-void buildDirs(FileName const & abs_binary,
-	exe_build_dir_to_top_build_dir top_build_dir_location,
-	FileName &, FileName &);
+
+bool inBuildDir(FileName const & abs_binary, FileName &, FileName &);
+
+FileName findLyxBinaryDir(FileName const & abs_binary);
 
 FileName const get_document_dir(FileName const & home_dir);
 
@@ -101,8 +100,7 @@ string const fix_dir_name(string const & name);
 
 Package::Package(string const & command_line_arg0,
 		 string const & command_line_system_support_dir,
-		 string const & command_line_user_support_dir,
-		 exe_build_dir_to_top_build_dir top_build_dir_location)
+		 string const & command_line_user_support_dir)
 	: explicit_user_support_dir_(false)
 {
 	// Specification of temp_dir_ may be reset by LyXRC,
@@ -119,31 +117,16 @@ Package::Package(string const & command_line_arg0,
 	lyx_dir_ = FileName(lyx_dir_.realPath());
 
 	// Is LyX being run in-place from the build tree?
-	buildDirs(abs_binary, top_build_dir_location,
-		build_support_dir_, system_support_dir_);
+	bool in_build_dir = inBuildDir(abs_binary, build_support_dir_, system_support_dir_);
 
-	if (build_support_dir_.empty())
+	if (!in_build_dir) {
 		system_support_dir_ =
 			get_system_support_dir(abs_binary,
 					       command_line_system_support_dir);
+    }
 
-	// The LyX executable is one level above binary_dir_ if we are running
-	// tex2lyx in place. Otherwise it is in binary_dir_.
-	string abs_lyx_dir;
-	if (build_support_dir_.empty() ||
-	    top_build_dir_location == top_build_dir_is_one_level_up)
-		abs_lyx_dir = binary_dir_.absFileName();
-	else {
-		FileName fn(addPath(binary_dir_.absFileName(), "../"));
-		abs_lyx_dir = fn.realPath();
-	}
-	// The LyX executable may have a package suffix if we are not running
-	// in place.
-	if (build_support_dir_.empty())
-		lyx_binary_ = FileName(addName(abs_lyx_dir,
-		                               "lyx" + string(PROGRAM_SUFFIX)));
-	else
-		lyx_binary_ = FileName(addName(abs_lyx_dir, "lyx"));
+	// Find the LyX executable
+	lyx_binary_ = findLyxBinaryDir(abs_binary);
 
 	locale_dir_ = get_locale_dir(system_support_dir_);
 
@@ -264,24 +247,27 @@ string const fix_dir_name(string const & name)
 }
 
 
-FileName buildSupportDir(string const & binary_dir,
-		      exe_build_dir_to_top_build_dir top_build_dir_location)
+
+bool isBuildDir(FileName const & abs_binary, string const & dir_location,
+	FileName & build_support_dir)
 {
-	string indirection;
-	switch (top_build_dir_location) {
-	case top_build_dir_is_one_level_up:
-		indirection = "../lib";
-		break;
-	case top_build_dir_is_two_levels_up:
-		indirection = "../../lib";
-		break;
-	}
-	return FileName(addPath(binary_dir, indirection));
+    string search_dir = onlyPath(abs_binary.absFileName()) + dir_location;
+
+    // Makefile by automake
+    build_support_dir = FileName(addPath(search_dir, "lib"));
+    if (!fileSearch(build_support_dir.absFileName(), "Makefile").empty()) {
+        return true;
+    }
+    //  cmake file, no Makefile in lib
+    FileName build_boost_dir = FileName(addPath(search_dir, "boost"));
+    if (!fileSearch(build_boost_dir.absFileName(), "cmake_install.cmake").empty()) {
+        return true;
+    }
+
+    return false;
 }
 
-
-void buildDirs(FileName const & abs_binary,
-  exe_build_dir_to_top_build_dir top_build_dir_location,
+bool inBuildDir(FileName const & abs_binary,
 	FileName & build_support_dir, FileName & system_support_dir)
 {
 	string const check_text = "Checking whether LyX is run in place...";
@@ -294,19 +280,19 @@ void buildDirs(FileName const & abs_binary,
 
 	// Note that the name of the lyx binary may be a symbolic link.
 	// If that is the case, then we follow the links too.
-	FileName binary = abs_binary;
+    FileName binary = abs_binary;
 	while (true) {
 		// Try and find "lyxrc.defaults".
-		string binary_dir = onlyPath(binary.absFileName());
-		build_support_dir = buildSupportDir(binary_dir, top_build_dir_location);
-		if (!fileSearch(build_support_dir.absFileName(), "Makefile").empty()) {
+		if( isBuildDir(binary, "../", build_support_dir) ||
+            isBuildDir(binary, "../../", build_support_dir))
+        {
 			// Try and find "chkconfig.ltx".
 			system_support_dir =
 				FileName(addPath(Package::top_srcdir().absFileName(), "lib"));
 
 			if (!fileSearch(system_support_dir.absFileName(), "chkconfig.ltx").empty()) {
 				LYXERR(Debug::INIT, check_text << " yes");
-				return;
+				return true;
 			}
 		}
 
@@ -327,6 +313,52 @@ void buildDirs(FileName const & abs_binary,
 	LYXERR(Debug::INIT, check_text << " no");
 	system_support_dir = FileName();
 	build_support_dir = FileName();
+
+    return false;
+}
+
+
+bool doesFileExist(FileName & result, string const & search_dir, string const & name)
+{
+    result = fileSearch(search_dir, name);
+    if (!result.empty()) {
+        return true;
+    }
+    return false;
+}
+
+
+bool lyxBinaryPath(FileName & lyx_binary, string const & search_dir, string const & ext)
+{
+    lyx_binary = FileName();
+    if(false) {   
+    } else if (doesFileExist(lyx_binary, search_dir, "lyx" + ext)) {
+    } else if (doesFileExist(lyx_binary, search_dir, "LyX" + ext)) {
+    } else if (doesFileExist(lyx_binary, search_dir, "lyx" + string(PROGRAM_SUFFIX) + ext)) {
+    } else if (doesFileExist(lyx_binary, search_dir, "LyX" + string(PROGRAM_SUFFIX) + ext)){
+    }
+    return !lyx_binary.empty() ? true : false;
+}
+
+
+FileName findLyxBinaryDir(FileName const & abs_binary)
+{
+    string ext;
+    if (!abs_binary.extension().empty()) {
+        ext = "." + abs_binary.extension();
+    }
+    
+    string binary_dir = onlyPath(abs_binary.absFileName());
+      
+    FileName lyx_binary;
+    if (lyxBinaryPath(lyx_binary, binary_dir, ext))
+        return lyx_binary;
+
+    string search_dir = onlyPath(FileName(addPath(binary_dir, "/../")).absFileName());
+    if (lyxBinaryPath(lyx_binary, search_dir, ext))
+        return lyx_binary;
+    
+    return FileName();
 }
 
 

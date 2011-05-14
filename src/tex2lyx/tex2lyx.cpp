@@ -773,8 +773,7 @@ int main(int argc, char * argv[])
 
 	try {
 		init_package(internal_path(os::utf8_argv(0)),
-			     cl_system_support, cl_user_support,
-			     top_build_dir_is_two_levels_up);
+			     cl_system_support, cl_user_support);
 	} catch (ExceptionMessage const & message) {
 		cerr << to_utf8(message.title_) << ":\n"
 		     << to_utf8(message.details_) << endl;
