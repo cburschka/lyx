@@ -59,4 +59,5 @@ Style Proof
       \providecommand{\proofname}{Proof}
     \fi
   EndPreamble
+# No LangPreamble or BabelPreamble, since babel knows \proofname already.
 End
