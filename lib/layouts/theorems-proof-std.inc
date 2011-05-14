@@ -16,12 +16,8 @@ Style Proof
 }{%
 			\endtrivlist\@endpefalse
 }
+		\providecommand{\proofname}{Proof}
 		\fi
 	EndPreamble
-	LangPreamble
-		\providecommand{\proofname}{_(Proof)}
-	EndLangPreamble
-	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\proofname}{_(Proof)}}
-	EndBabelPreamble
+# No LangPreamble or BabelPreamble, since babel knows \proofname already.
 End
