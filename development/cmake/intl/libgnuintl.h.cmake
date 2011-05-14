@@ -19,9 +19,7 @@
 #ifndef _LIBINTL_H
 #define _LIBINTL_H	1
 
-#cmakedefine01 HAVE_POSIX_PRINTF
-#cmakedefine01 HAVE_ASPRINTF
-#cmakedefine01 HAVE_WPRINTF
+#include "config.h"
 
 #include <locale.h>
 
