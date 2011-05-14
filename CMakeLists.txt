@@ -336,11 +336,11 @@ if(LYX_NLS)
 endif()
 
 if(LYX_EXTERNAL_LIBINTL)
-	find_package(Libintl REQUIRED)
-	# find getext when configuring
-	list(APPEND CMAKE_REQUIRED_LIBRARIES ${LIBINTL_LIBRARIES})
-	# on mac use iconv also form ports
+	find_package(Libintl REQUIRED)	
 	if(DEFINED LIBINTL_LIBRARIES)
+		# find getext when configuring
+		list(APPEND CMAKE_REQUIRED_LIBRARIES ${LIBINTL_LIBRARIES})	
+		# on mac use iconv also form ports
 		get_filename_component(ICONV_RELATIVE_TO_LIBINTL ${LIBINTL_LIBRARIES} PATH)
 	endif()
 else()
