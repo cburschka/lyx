@@ -77,7 +77,7 @@ FileName const abs_path_from_binary_name(string const & exe);
 
 bool inBuildDir(FileName const & abs_binary, FileName &, FileName &);
 
-FileName findLyxBinaryDir(FileName const & abs_binary);
+FileName findLyxBinary(FileName const & abs_binary);
 
 FileName const get_document_dir(FileName const & home_dir);
 
@@ -126,7 +126,7 @@ Package::Package(string const & command_line_arg0,
     }
 
 	// Find the LyX executable
-	lyx_binary_ = findLyxBinaryDir(abs_binary);
+	lyx_binary_ = findLyxBinary(abs_binary);
 
 	locale_dir_ = get_locale_dir(system_support_dir_);
 
@@ -341,7 +341,7 @@ bool lyxBinaryPath(FileName & lyx_binary, string const & search_dir, string cons
 }
 
 
-FileName findLyxBinaryDir(FileName const & abs_binary)
+FileName findLyxBinary(FileName const & abs_binary)
 {
     string ext;
     if (!abs_binary.extension().empty()) {
