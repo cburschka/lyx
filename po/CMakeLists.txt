@@ -139,6 +139,7 @@ foreach(_pofile ${LYX_BASE_PO_FILES})
   list(APPEND LYX_PO_FILES ${CMAKE_CURRENT_BINARY_DIR}/${_pofile})
 endforeach(_pofile)
 
+set(LYX_UPDATED_PO_FILES)
 foreach(_pofile ${LYX_BASE_PO_FILES})
   add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}.copied
@@ -154,9 +155,8 @@ if(LYX_CPACK OR LYX_INSTALL)
 endif()
 GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot ${_addALLOption} ${LYX_PO_FILES})
 
+# Create a new target to remerge po files
 # ALL omitted here, to prevent from automatic creation
-ADD_CUSTOM_TARGET(update_po_files DEPENDS ${LYX_UPDATED_PO_FILES})
-add_dependencies(update_po_files translations)
-
-# ADD_POFILES("lyx")
+ADD_CUSTOM_TARGET(update-po DEPENDS ${LYX_UPDATED_PO_FILES})
+add_dependencies(update-po translations)
 
