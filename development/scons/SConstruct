@@ -189,7 +189,7 @@ opts.AddVariables(
     # replace the default name and location of the windows installer
     ('win_installer', 'name or full path to the windows installer', None),
     # the deps package used to create minimal installer (qt and other libraries)
-    ('deps_dir', 'path to the development depedency packages with zlib, iconv, zlib and qt libraries', None),
+    ('deps_dir', 'path to the development depedency packages with zlib, iconv and qt libraries', None),
     # whether or not build bundle installer
     BoolVariable('bundle', 'Whether or not build bundle installer', False),
     # the bundle directory, containing bundled applications
@@ -586,10 +586,10 @@ else:
     print 'pkg-config >= 0.1.50 is not found'
     env['HAS_PKG_CONFIG'] = False
 
-# zlib? This is required.
+# zlib? zdll is required for MSVC 2005 and 2008, for 2010 only zlib is required
 if (not use_vc and not conf.CheckLibWithHeader('z', 'zlib.h', 'C')) \
-    or (use_vc and not conf.CheckLibWithHeader('zdll', 'zlib.h', 'C')):
-    print 'Did not find zdll.lib or zlib.h, exiting!'
+    or (use_vc and not conf.CheckLibWithHeader('zlib', 'zlib.h', 'C')):
+    print 'Did not find zlib.lib or zlib.h, exiting!'
     print 'Please check config.log for more information.'
     Exit(1)
 if conf.CheckLib('iconv'):
@@ -1231,7 +1231,7 @@ if platform_name in ['win32', 'cygwin']:
     # the final link step needs stdc++ to succeed under mingw
     # FIXME: shouldn't g++ automatically link to stdc++?
     if use_vc:
-        system_libs += ['ole32', 'shlwapi', 'psapi', 'shell32', 'advapi32', 'zdll']
+        system_libs += ['ole32', 'shlwapi', 'psapi', 'shell32', 'advapi32']
     else:
         system_libs += ['shlwapi', 'psapi', 'stdc++', 'z']
 elif platform_name == 'cygwin' and env['X11']:
