@@ -43,6 +43,7 @@ Cleanup
   * Shouldn't we use lower case names everywhere (when possible)?
     Then the cmake files doesn't look that antiquated. And seeing an uppercase variable means
     that this variable wasn't introduced by lyx and is a cmake default name.
+  * port 'development/cmake/doc/ReplaceValues.pl' to python
 
 
 
