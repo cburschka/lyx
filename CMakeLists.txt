@@ -6,6 +6,7 @@
 
 cmake_minimum_required(VERSION 2.6.4)
 
+
 set(LYX_PROJECT lyx)
 
 set(LYX_CMAKE_DIR "development/cmake")
@@ -36,6 +37,10 @@ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 # Supress regeneration
 set(CMAKE_SUPPRESS_REGENERATION FALSE)
 
+if(NOT help AND NOT HELP)
+	# 'project' triggers the searching for a compiler
+	project(${LYX_PROJECT})
+endif()
 
 include(LyXMacros)
 
@@ -84,8 +89,8 @@ LYX_OPTION(CONFIGURE_CHECKS      "Also run configure checks for MSVC" OFF MSVC)
 LYX_OPTION(DEPENDENCIES_DOWNLOAD "Download dependencies for MSVC 10" OFF MSVC)
 
 # APPLE specific
-LYX_OPTION(DMG                   "Build as Mac bundle, needed for .dmg  (experimental) " OFF GCC)
-LYX_OPTION(COCOA                 "Use Cocoa on Mac" OFF GCC)
+LYX_OPTION(DMG                   "Build as Mac bundle, needed for .dmg  (experimental) " OFF MAC)
+LYX_OPTION(COCOA                 "Use Cocoa on Mac" OFF MAC)
 
 if(help OR HELP)
 	message(STATUS)
@@ -94,9 +99,6 @@ if(help OR HELP)
 	LYX_OPTION_LIST_ALL(help)	
 	message(STATUS)
 else()
-
-# 'project' triggers the searching for a compiler
-project(${LYX_PROJECT})
 
 
 # Check option dependencies
