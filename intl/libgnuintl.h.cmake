@@ -19,7 +19,13 @@
 #ifndef _LIBINTL_H
 #define _LIBINTL_H	1
 
-#include "config.h"
+// already defined in config.h but not with 0/1 values
+#undef HAVE_POSIX_PRINTF
+#undef HAVE_ASPRINTF
+#undef HAVE_WPRINTF
+#cmakedefine01 HAVE_POSIX_PRINTF
+#cmakedefine01 HAVE_ASPRINTF
+#cmakedefine01 HAVE_WPRINTF
 
 #include <locale.h>
 
