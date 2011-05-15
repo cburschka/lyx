@@ -189,7 +189,7 @@ opts.AddVariables(
     # replace the default name and location of the windows installer
     ('win_installer', 'name or full path to the windows installer', None),
     # the deps package used to create minimal installer (qt and other libraries)
-    ('deps_dir', 'path to the development depedency packages with zlib, iconv, zlib and qt libraries', None),
+    ('deps_dir', 'path to the development depedency packages with zlib, iconv and qt libraries', None),
     # whether or not build bundle installer
     BoolVariable('bundle', 'Whether or not build bundle installer', False),
     # the bundle directory, containing bundled applications
@@ -586,10 +586,10 @@ else:
     print 'pkg-config >= 0.1.50 is not found'
     env['HAS_PKG_CONFIG'] = False
 
-# zlib? This is required.
+# zlib? zdll is required for MSVC 2005 and 2008, for 2010 only zlib is required
 if (not use_vc and not conf.CheckLibWithHeader('z', 'zlib.h', 'C')) \
-    or (use_vc and not conf.CheckLibWithHeader('zdll', 'zlib.h', 'C')):
-    print 'Did not find zdll.lib or zlib.h, exiting!'
+    or (use_vc and not conf.CheckLibWithHeader('zlib', 'zlib.h', 'C')):
+    print 'Did not find zlib.lib or zlib.h, exiting!'
     print 'Please check config.log for more information.'
     Exit(1)
 if conf.CheckLib('iconv'):
@@ -1055,6 +1055,8 @@ result = utils.createConfigFile(conf,
             'Top source directory'),
         ('#define BOOST_ALL_NO_LIB 1',
             'disable automatic linking of boost libraries.'),
+        ('#define LYX_USE_TR1 1',
+            'use TR1'),    
         ('#define USE_%s_PACKAGING 1' % packaging_method.upper(),
             'Packaging method'),
         ('#define AIKSAURUS_H_LOCATION ' + aik_location,
@@ -1229,7 +1231,7 @@ if platform_name in ['win32', 'cygwin']:
     # the final link step needs stdc++ to succeed under mingw
     # FIXME: shouldn't g++ automatically link to stdc++?
     if use_vc:
-        system_libs += ['ole32', 'shlwapi', 'psapi', 'shell32', 'advapi32', 'zdll']
+        system_libs += ['ole32', 'shlwapi', 'psapi', 'shell32', 'advapi32']
     else:
         system_libs += ['shlwapi', 'psapi', 'stdc++', 'z']
 elif platform_name == 'cygwin' and env['X11']:
@@ -1396,13 +1398,12 @@ if frontend == 'qt4':
         print 'uic or moc command is not found for frontend', frontend
         Exit(1)
     
-    # now, if msvc2005 is used, we will need to embed lyx.exe.manifest to lyx.exe
-    # NOTE: previously, lyx.exe had to be linked to some qt manifest to work.
-    # For some unknown changes in msvc or qt, this is no longer needed.
-    if use_vc:
-        env['LINKCOM'] = [env['LINKCOM'], \
-            'mt.exe /MANIFEST %s /outputresource:$TARGET;1' % \
-            env.File('$BUILDDIR/lyx.exe.manifest').path]
+    # if MSVC 2005 and 2008 is used, we will need to embed lyx.exe.manifest to lyx.exe
+    # for MSVC 2010 this is not necessary
+    #if use_vc:
+    #    env['LINKCOM'] = [env['LINKCOM'], \
+    #        'mt.exe /MANIFEST %s /outputresource:$TARGET;1' % \
+    #        env.File('$BUILDDIR/lyx.exe.manifest').path]
 
     env = conf.Finish()
 
