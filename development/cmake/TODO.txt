@@ -1,0 +1,51 @@
+
+
+Defaults:
+  * NLS disabled by default.
+  * Eventually, cmake without option should generate a makefile that has reasonable defaults for everything
+    (nls, spellcheck, build type, ...), at least when released.
+
+
+Help:
+  * I do not know how to have a list of variables from the command line
+    (before I actually run it). cmake --help is not useful.
+  * how can I see what the command line was. With autoconf I'd just
+    do "make V=1", what shall I do with cmake?
+
+
+Bug fixing
+  * Run in place, without using LYX_DIR_20x
+     copy the resources (bind/ ui/ layouts/ dicts/ thes/ ...) to the build stage (?)
+     This is what I do: copy them from an autotools install into the cmake project.
+        Package.cpp and config.h.cmake has to be fixed.
+  * check that .tar.gz and .xz are identical to those from autotools
+  * Fix libintl, LYX_EXTERNAL_LIBINTL=OFF triggers compilation in intl even when LYX_NLS is OFF
+
+
+Documentation
+  * Better documentation, variable naming, more automake-like
+  * what does LYX_DEVEL_VERSION do?
+  * What is the difference with LYX_RELEASE=OFF?
+  * how do I specify whether I want debug informations (-g flag) for unix?
+
+
+Features
+  * I would like to see a BUILD_TYPE flag like in autotools, with automatic selection from lyx version
+  * Disbale merging selectively
+  * Make .dmg
+  * Bundles for Mac OSX
+    with support for universal binaries (don't know if it currently is a problem to build them)
+
+
+Cleanup
+  * stdlib-debug mode should be merged with windows debug mode, since it is the same basically
+  * I do not like the weird paths where built files go. I really cannot find my way there
+  * Shouldn't we use lower case names everywhere (when possible)?
+    Then the cmake files doesn't look that antiquated. And seeing an uppercase variable means
+    that this variable wasn't introduced by lyx and is a cmake default name.
+
+
+
+
+
+
