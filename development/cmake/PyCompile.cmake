@@ -36,8 +36,8 @@ foreach(_orig_py ${_py_files})
     COMMAND ${py_compile} ${_copied_py}
     DEPENDS ${_copied_py}
     )
-  SET_SOURCE_FILES_PROPERTIES(${_copied_py} GENERATED)
-  install(PROGRAMS ${_compiled_py_} ${_copied_py} DESTINATION ${_project})
+  SET_SOURCE_FILES_PROPERTIES(${_copied_py} ${_created_py_} GENERATED)
+  install(FILES ${_compiled_py_} DESTINATION ${_project})
   LIST(APPEND _generated ${_compiled_py_})
 endforeach(_orig_py)
 
