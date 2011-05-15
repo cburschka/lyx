@@ -67,7 +67,7 @@ cd "%LYX_BUILD%"
 
 
 REM Delete all files indirectory
-::del /s/q *
+del /s/q *
 del CMakeCache.txt
 
 if [%2]==[] (
