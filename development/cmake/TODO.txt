@@ -35,6 +35,12 @@ Features
   * Make .dmg
   * Bundles for Mac OSX
     with support for universal binaries (don't know if it currently is a problem to build them)
+  * from the maintainer point of view these task are needed:
+      - .po remerge of strings in po/ (ie make update-po)
+      - tarball creation (most notably i dont see any list of files which should go into tarball, we dont want everything to go there)
+    these are nice to have and present in autotools, though not critical
+      - target for regenaration of lfuns manual would be nice
+      - target for doxygen generation
 
 
 Cleanup
