@@ -57,6 +57,8 @@ LYX_OPTION(ENCHANT          "Require Enchant" OFF ALL)
 LYX_OPTION(HUNSPELL         "Require Hunspell" OFF ALL)
 LYX_OPTION(DEVEL_VERSION    "Build developer version" OFF ALL) 
 LYX_OPTION(RELEASE          "Build release version, build debug when disabled" OFF ALL)
+LYX_OPTION(DEBUG            "Enforce debug build"  OFF ALL)
+LYX_OPTION(NO_OPTIMIZE      "Don't use any optimization/debug flags"  OFF ALL)
 LYX_OPTION(PACKAGE_SUFFIX   "Use version suffix for packaging" ON ALL)
 LYX_OPTION(PCH              "Use precompiled headers" OFF ALL)
 LYX_OPTION(MERGE_FILES      "Merge source files into one compilation unit" OFF ALL)
@@ -81,6 +83,9 @@ LYX_OPTION(WALL                  "Enable all warnings" OFF MSVC)
 LYX_OPTION(CONFIGURE_CHECKS      "Also run configure checks for MSVC" OFF MSVC)
 LYX_OPTION(DEPENDENCIES_DOWNLOAD "Download dependencies for MSVC 10" OFF MSVC)
 
+# APPLE specific
+LYX_OPTION(DMG                   "Build as Mac bundle, needed for .dmg  (experimental) " OFF GCC)
+LYX_OPTION(COCOA                 "Use Cocoa on Mac" OFF GCC)
 
 if(help OR HELP)
 	message(STATUS)
@@ -111,6 +116,7 @@ if(LYX_INSTALL)
 	set(LYX_PROFILE OFF)
 endif()
 
+
 if(LYX_MERGE_FILES)
 	set(LYX_PCH OFF)
 else()
@@ -134,6 +140,7 @@ if(LYX_DEPENDENCIES_DOWNLOAD)
 	endforeach()
 	set(GNUWIN32_DIR ${LYX_DEPENDENCIES_DIR}/deps20)
 endif()
+
 
 
 message(STATUS)
@@ -203,7 +210,22 @@ foreach(_c_l ${_config_lines} )
 endforeach(_c_l)
 
 
-if (LYX_INSTALL_PREFIX)
+if(LYX_DMG)
+    set(bundle_dir ${TOP_BINARY_DIR}/bin)
+	set(LYX_CPACK 1)
+	set(LYX_BUNDLE MACOSX_BUNDLE)
+	set(LYX_INSTALL_PREFIX LyX2.1 CACHE STRING "LyX bundle install prefix" FORCE)
+	set(LYX_DATA_SUBDIR LyX.app/Contents/Resources/ CACHE STRING "Bundle Contents dir" FORCE)
+	message(STATUS)
+	message(STATUS "Bundle creation is enabled.")
+	message(STATUS "It is experimental, to increase turn around speed use:")
+	message(STATUS "    cmake -DLYX_MERGE_FILES=1 -DLYX_NO_OPTIMIZE=1 -DLYX_INSTALL=1 -DLYX_DMG=1 ../trunk")
+	message(STATUS "or use the shell script 'developent/cmake/dmg'")
+	message(STATUS)
+endif()
+
+
+if(LYX_INSTALL_PREFIX)
 	set(CMAKE_INSTALL_PREFIX ${LYX_INSTALL_PREFIX} CACHE PATH "LyX user's choice install prefix" FORCE)
 	set(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 endif()
@@ -238,16 +260,19 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 	endif()
 endif()
 
-if (WIN32)
-	set(LYX_DATA_SUBDIR "Resources/" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
-else()
-	set(LYX_DATA_SUBDIR "" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
+if(NOT LYX_DATA_SUBDIR)
+	if (WIN32)
+		set(LYX_DATA_SUBDIR "Resources/" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
+	else()
+		set(LYX_DATA_SUBDIR "" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
+	endif()
 endif()
 
 set(LYX_ABS_INSTALLED_DATADIR "${CMAKE_INSTALL_PREFIX}")
 set(LYX_LOCALEDIR "locale")
 set(LYX_ABS_INSTALLED_LOCALEDIR "${LYX_ABS_INSTALLED_DATADIR}/${LYX_DATA_SUBDIR}${LYX_LOCALEDIR}")
 set(LYX_ABS_TOP_SRCDIR "${TOP_SRC_DIR}")
+
 
 
 if(NOT GROUP_CODE)
@@ -260,7 +285,6 @@ set(LYX_CPP_FILES *.cpp)
 set(LYX_HPP_FILES *.h)
 set(LYX_MOC_FILES moc_*.cpp)
 
-
 include(ProjectSourceGroup)
 
 
@@ -269,11 +293,18 @@ if(LYX_PROFILE)
 	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg" CACHE TYPE STRING FORCE)
 endif()
 
-if(LYX_RELEASE)
-	set(CMAKE_BUILD_TYPE Release CACHE STRING "Build release version" FORCE)
+
+if(LYX_NO_OPTIMIZE)
+	set(CMAKE_BUILD_TYPE None)
+	set(LYX_DEBUG OFF)
+	set(LYX_RELEASE OFF)
+elseif(LYX_RELEASE)
+	set(CMAKE_BUILD_TYPE Release)
+	set(LYX_DEBUG OFF)
 else()
-	set(CMAKE_BUILD_TYPE Debug CACHE STRING "Build debug version" FORCE)
+	set(CMAKE_BUILD_TYPE Debug)
 endif()
+
 
 # When shared libs are supported enable this option
 #LYX_OPTION(SHARED_LIBRARIES "Build shared libraries" OFF ALL)
@@ -555,6 +586,11 @@ if(LYX_NLS)
 	message(STATUS)
 endif()
 
+
+# CPack packaging
+#
+# http://cmake.org/cmake/help/cmake-2-8-docs.html#module:CPack
+
 set(CPACK_PACKAGE_VERSION_MAJOR "${LYX_MAJOR_VERSION}")
 set(CPACK_PACKAGE_VERSION_MINOR "${LYX_MINOR_VERSION}")
 FILE(STRINGS "${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/LyX_summary.txt" CPACK_PACKAGE_DESCRIPTION_SUMMARY)
@@ -611,6 +647,47 @@ endif()
 # we do not have a readme or welcome data,
 # so we do not provide infofiles for
 # CPACK_RESOURCE_FILE_README and CPACK_RESOURCE_FILE_WELCOME
+
+if(WIN32)
+	set(CPACK_GENERATOR NSIS ZIP)
+	set(CPACK_BINARY_ZIP 1)
+endif()
+
+
+set(CPACK_STRIP_FILES 1)
+
+# sources
+set(CPACK_SOURCE_INSTALLED_DIRECTORIES "${TOP_SRC_DIR};/") # http://www.mail-archive.com/cmake@cmake.org/msg33720.html
+set(CPACK_SOURCE_GENERATOR TGZ ZIP TBZ2)
+
+
+if(LYX_DMG)
+	set(CPACK_PACKAGE_NAME LyX)
+	set(CPACK_GENERATOR DragNDrop)
+	
+	# We start from bin/lyx.app, all is build into the final bundle folder
+	# On Mac the paths to required shared libraries are hardcoded in the
+	# binary/library. This is fixed by the macro 'fixup_bundle' 
+	# Hardcoded pathes to libraries are resolved automatically
+
+	
+	set(app          ${bundle_dir}/LyX.app)
+	set(contents_dir LyX.app/Contents/)
+	install(DIRECTORY "${QT_PLUGINS_DIR}/imageformats" DESTINATION ${bundle_dir}/${contents_dir}/plugins COMPONENT Runtime)
+	
+	message(STATUS "Qt Plugins: ${QT_PLUGINS_DIR}/imageformats DESTINATION ${bundle_dir}/${contents_dir}/plugins")
+	
+	install(CODE 
+		"file(GLOB qt_plugins \"${bundle_dir}/${contents_dir}/plugins/imageformats/*${CMAKE_SHARED_LIBRARY_SUFFIX}\")
+		include(BundleUtilities)
+		fixup_bundle(\"${app}\" \"\${qt_plugins}\" \"${dir}\") "
+		COMPONENT RUNTIME)
+	
+	file(WRITE ${CMAKE_BINARY_DIR}/qt.conf "")
+	install(FILES ${CMAKE_BINARY_DIR}/qt.conf DESTINATION ${contents_dir}/Resources COMPONENT Runtime)
+	
+endif()
+
 
 if(LYX_CPACK)
 	include(CPack)

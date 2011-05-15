@@ -106,6 +106,7 @@ lyx_find_info_files(LyXUiFiles ${TOP_SRC_DIR}/lib/ui/*)
 
 add_executable(${_lyx}
 	${WIN32_CONSOLE}
+	${LYX_BUNDLE}
 	${lyx_sources}
 	${lyx_headers}
 	${vld_files}
@@ -113,6 +114,10 @@ add_executable(${_lyx}
 	${lyx_info_files}
 	${lyx_cmake_files}
 )
+
+if(LYX_BUNDLE)
+	set(MACOSX_BUNDLE_STRATUP_COMMAND ${_lyx})
+endif()
 
 lyx_add_gcc_pch(${_lyx})
 
@@ -141,7 +146,11 @@ endif()
 
 if(APPLE)
 	target_link_libraries(${_lyx} "-bind_at_load")
-	target_link_libraries(${_lyx} "-framework Carbon")
+	if(LYX_COCOA)
+		target_link_libraries(${_lyx} "-framework Cocoa")
+	else()
+		target_link_libraries(${_lyx} "-framework Carbon")
+	endif()
 endif()
 
 if(MINGW)
@@ -150,5 +159,10 @@ endif()
 
 project_source_group("${GROUP_CODE}" lyx_sources lyx_headers)
 
-install(TARGETS ${_lyx} DESTINATION bin)
-
+if(LYX_BUNDLE)
+	install(TARGETS ${_lyx}
+		RUNTIME DESTINATION bin
+		BUNDLE DESTINATION .)
+else()
+	install(TARGETS ${_lyx} DESTINATION bin)
+endif()

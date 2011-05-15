@@ -1,0 +1,32 @@
+#!/bin/bash
+
+if [ -z $1 ]
+then
+	echo "Pass the path to the lyx sources, e.g. dmg ../lyx-devel"
+	exit 1
+fi
+
+
+cmake -DLYX_MERGE_FILES=1 -DLYX_COCOA=1 -DLYX_NO_OPTIMIZE=1 -DLYX_INSTALL=1 -DLYX_DMG=1 $1
+
+if [ "$?" -nq "0" ]
+then
+	exit 1
+fi
+
+make -j4
+
+if [ "$?" -nq "0" ]
+then
+	exit 2
+fi	
+
+make install/strip
+
+if [ "$?" -nq "0" ]
+then
+	exit 2
+fi
+
+
+make package
