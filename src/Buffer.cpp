@@ -873,7 +873,12 @@ Buffer::ReadStatus Buffer::readFile(FileName const & fn)
 {
 	FileName fname(fn);
 	Lexer lex;
-	lex.setFile(fname);
+	if (!lex.setFile(fname)) {
+		Alert::error(_("File Not Found"),
+			bformat(_("Unable to open file `%1$s'."), 
+			        from_utf8(fn.absFileName())));
+		return ReadFileNotFound;
+	}
 
 	int file_format;
 	ReadStatus const ret_plf = parseLyXFormat(lex, fn, file_format);
