@@ -565,6 +565,7 @@ if(LYX_INSTALL)
 	include(../Install)
 endif()
 
+add_subdirectory(sourcedoc "${TOP_BINARY_DIR}/sourcedoc")
 
 message(STATUS)
 message(STATUS "Build options, switch LYX_* variables by -DLYX_*=1 or 0:")
