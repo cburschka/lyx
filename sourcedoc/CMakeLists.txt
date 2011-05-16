@@ -11,11 +11,14 @@ find_program(DOXYGEN_EXECUTABLE doxygen)
 if(DOXYGEN_EXECUTABLE MATCHES "-NOTFOUND")
   message(STATUS "doxygen not found, ==> no doxygen creation")
 else()
+  set(VERSION ${PACKAGE_VERSION} CACHE TYPE STRING FORCE)
+  set(top_srcdir "${TOP_SRC_DIR}" CACHE TYPE STRING FORCE)
+  configure_file("${TOP_SRC_DIR}/sourcedoc/Doxyfile.in" Doxyfile @ONLY)
   add_custom_command(
     OUTPUT doxy_created
-    COMMAND ${DOXYGEN_EXECUTABLE} ${TOP_SRC_DIR}/sourcedoc/Doxyfile
+    COMMAND ${DOXYGEN_EXECUTABLE} Doxyfile
     COMMAND ${CMAKE_COMMAND} -E touch doxy_created
-    DEPENDS ${TOP_SRC_DIR}/sourcedoc/Doxyfile
+    DEPENDS Doxyfile
   )
   add_custom_target(doxydoc DEPENDS doxy_created)
 endif()
