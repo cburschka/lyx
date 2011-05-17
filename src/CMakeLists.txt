@@ -116,7 +116,7 @@ add_executable(${_lyx}
 )
 
 if(LYX_BUNDLE)
-	set(MACOSX_BUNDLE_STRATUP_COMMAND ${_lyx})
+	set(MACOSX_BUNDLE_STARTUP_COMMAND ${_lyx})
 endif()
 
 lyx_add_gcc_pch(${_lyx})
