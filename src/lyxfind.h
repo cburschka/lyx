@@ -48,7 +48,8 @@ docstring const replace2string(docstring const & replace,
 				 bool casesensitive,
 				 bool matchword,
 				 bool all,
-				 bool forward);
+				 bool forward,
+				 bool findnext = true);
 
 /** Parse the string encoding of the find request that is found in
  *  \c ev.argument and act on it.
