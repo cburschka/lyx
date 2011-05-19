@@ -863,7 +863,7 @@ void LyXAction::init()
  * \li Params: <DATA>: data is of the form
                        "<replace> \n
                         <search> \n
-                        <casesensitive> <matchword> <all> <forward>"
+                        <casesensitive> <matchword> <all> <forward> <findnext>"
  * \li Origin: Andre, Jan 7 2004
  * \endvar
  */

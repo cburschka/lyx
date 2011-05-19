@@ -229,7 +229,7 @@ int replaceAll(BufferView * bv,
 // whether anything at all was done.
 pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 	    docstring const & replacestr, bool case_sens, 
-			bool whole, bool forward)
+			bool whole, bool forward, bool findnext)
 {
 	Cursor & cur = bv->cursor();
 	if (!cur.selection()) {
@@ -278,7 +278,8 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 		cur.pos() -= replacestr.length();
 		LASSERT(cur.pos() >= 0, /* */);
 	}
-	findOne(bv, searchstr, case_sens, whole, forward, false);
+	if (findnext)
+		findOne(bv, searchstr, case_sens, whole, forward, false);
 
 	return pair<bool, int>(true, 1);
 }
@@ -300,7 +301,7 @@ docstring const find2string(docstring const & search,
 
 docstring const replace2string(docstring const & replace,
 	docstring const & search, bool casesensitive, bool matchword,
-	bool all, bool forward)
+	bool all, bool forward, bool findnext)
 {
 	odocstringstream ss;
 	ss << replace << '\n'
@@ -308,7 +309,8 @@ docstring const replace2string(docstring const & replace,
 	   << int(casesensitive) << ' '
 	   << int(matchword) << ' '
 	   << int(all) << ' '
-	   << int(forward);
+	   << int(forward) << ' '
+	   << int(findnext);
 	return ss.str();
 }
 
@@ -343,7 +345,7 @@ bool lyxreplace(BufferView * bv,
 	// data is of the form
 	// "<search>
 	//  <replace>
-	//  <casesensitive> <matchword> <all> <forward>"
+	//  <casesensitive> <matchword> <all> <forward> <findnext>"
 	docstring search;
 	docstring rplc;
 	docstring howto = split(ev.argument(), rplc, '\n');
@@ -353,6 +355,7 @@ bool lyxreplace(BufferView * bv,
 	bool matchword     = parse_bool(howto);
 	bool all           = parse_bool(howto);
 	bool forward       = parse_bool(howto);
+	bool findnext      = howto.empty() ? true : parse_bool(howto);
 
 	int replace_count = 0;
 	bool update = false;
@@ -363,7 +366,7 @@ bool lyxreplace(BufferView * bv,
 			update = replace_count > 0;
 		} else {
 			pair<bool, int> rv = 
-				replaceOne(bv, search, rplc, casesensitive, matchword, forward);
+				replaceOne(bv, search, rplc, casesensitive, matchword, forward, findnext);
 			update = rv.first;
 			replace_count = rv.second;
 		}
@@ -383,7 +386,7 @@ bool lyxreplace(BufferView * bv,
 				buf.message(str);
 			}
 		}
-	} else {
+	} else if (findnext) {
 		// if we have deleted characters, we do not replace at all, but
 		// rather search for the next occurence
 		if (findOne(bv, search, casesensitive, matchword, forward))

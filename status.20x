@@ -112,6 +112,8 @@ What's new
 - Make size of characters in instant preview snippets independent of the
   LaTeX font size (bug 2200).
 
+- Fix On-the-fly spellchecker jumps to next pattern match when replacing a
+  misspelled word with a suggested one from context menu (#7564).
 
 * DOCUMENTATION AND LOCALIZATION
 
