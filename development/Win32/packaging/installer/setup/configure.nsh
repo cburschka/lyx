@@ -28,7 +28,7 @@ Section -FileAssociations
   !define REG_FILEEXT 'WriteRegStr SHELL_CONTEXT "Software\Classes\${APP_EXT}"'
   
   ${REG_FILEEXT} "" "${APP_REGNAME_DOC}"
-  ${REG_FILEEXT} "Content Type" "${APP_MIME_TYPE}"  
+  ${REG_FILEEXT} "Content Type" "${APP_MIME_TYPE}"
   
   # Refresh shell
   ${RefreshShellIcons}
