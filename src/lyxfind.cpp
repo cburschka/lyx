@@ -355,7 +355,7 @@ bool lyxreplace(BufferView * bv,
 	bool matchword     = parse_bool(howto);
 	bool all           = parse_bool(howto);
 	bool forward       = parse_bool(howto);
-	bool findnext      = parse_bool(howto);
+	bool findnext      = howto.empty() ? true : parse_bool(howto);
 
 	int replace_count = 0;
 	bool update = false;
