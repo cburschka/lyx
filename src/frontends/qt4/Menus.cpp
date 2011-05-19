@@ -788,8 +788,8 @@ void MenuDefinition::expandSpellingSuggestions(BufferView const * bv)
 					LYXERR(Debug::GUI, suggestion);
 					MenuItem w(MenuItem::Command, toqstr(suggestion),
 						FuncRequest(LFUN_WORD_REPLACE, 
-							replace2string(suggestion,selection,
-								true, true, false, false, false)));
+							replace2string(suggestion, selection,
+								true, true, false, true, false)));
 					if (i < m)
 						add(w);
 					else
