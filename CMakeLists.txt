@@ -71,6 +71,7 @@ LYX_OPTION(MERGE_REBUILD    "Rebuild generated files from merged files build" OF
 LYX_OPTION(QUIET            "Don't generate verbose makefiles" OFF ALL)
 LYX_OPTION(INSTALL_PREFIX   "Install path for LyX" OFF ALL)
 LYX_OPTION(EXTERNAL_LIBINTL "Use external libintl" ON ALL)
+LYX_OPTION(BUNDLE           "Build bundle  (experimental) " OFF ALL)
 
 # GCC specific
 LYX_OPTION(PROFILE              "Build profile version" OFF GCC)
@@ -92,6 +93,7 @@ LYX_OPTION(DEPENDENCIES_DOWNLOAD "Download dependencies for MSVC 10" OFF MSVC)
 LYX_OPTION(DMG                   "Build as Mac bundle, needed for .dmg  (experimental) " OFF MAC)
 LYX_OPTION(COCOA                 "Use Cocoa on Mac" OFF MAC)
 
+
 if(help OR HELP)
 	message(STATUS)
 	message(STATUS "Available options: (dis/enable with -D=0/1)")
@@ -105,6 +107,11 @@ else()
 
 if(LYX_CPACK)
 	set(LYX_INSTALL ON)
+endif()
+
+if(LYX_DMG)
+	set(LYX_BUNDLE 1)
+	set(LYX_CPACK 1)
 endif()
 
 if(LYX_INSTALL)
@@ -212,14 +219,24 @@ foreach(_c_l ${_config_lines} )
 endforeach(_c_l)
 
 
-if(LYX_DMG)
-    set(bundle_dir ${TOP_BINARY_DIR}/bin)
-	set(LYX_CPACK 1)
-	set(LYX_BUNDLE MACOSX_BUNDLE)
-	set(LYX_INSTALL_PREFIX LyX${LYX_INSTALL_SUFFIX} CACHE STRING "LyX bundle install prefix" FORCE)
-	set(LYX_DATA_SUBDIR LyX.app/Contents/Resources/ CACHE STRING "Bundle Contents dir" FORCE)
-	set(LYX_PROGRAM_SUFFIX "" CACHE STRING "disable suffix for dmg test" FORCE)  #TODO remove
-	set(LYX_INSTALL_SUFFIX "" CACHE STRING "disable suffix for dmg test" FORCE)  #TODO remove
+if(LYX_PROGRAM_SUFFIX)
+	set(PROGRAM_SUFFIX "${LYX_INSTALL_SUFFIX}")
+else()
+	set(PROGRAM_SUFFIX "")
+endif()
+
+
+if(LYX_BUNDLE)
+	if(APPLE)
+		set(LYX_BUILD_BUNDLE MACOSX_BUNDLE)
+		set(LYX_DATA_SUBDIR ${PACKAGE_BASE}${PROGRAM_SUFFIX}.app/Contents/Resources/ CACHE STRING "Bundle Contents dir" FORCE)
+		set(MACOSX_BUNDLE_STARTUP_COMMAND ${PACKAGE_BASE}${PROGRAM_SUFFIX}.app)
+		if(NOT LYX_INSTALL_PREFIX)
+			set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/LyX CACHE PATH "Mac bundle dir" FORCE)
+			set(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+		endif()
+	endif()
+
 	message(STATUS)
 	message(STATUS "Bundle creation is enabled (experimental):")
 	message(STATUS "    make")
@@ -244,11 +261,6 @@ else()
 	set(PACKAGE ${PACKAGE_BASE})
 endif()
 
-if(LYX_PROGRAM_SUFFIX)
-	set(PROGRAM_SUFFIX "${LYX_INSTALL_SUFFIX}")
-else()
-	set(PROGRAM_SUFFIX "")
-endif()
 
 
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
@@ -670,37 +682,20 @@ set(CPACK_SOURCE_INSTALLED_DIRECTORIES "${TOP_SRC_DIR};/") # http://www.mail-arc
 set(CPACK_SOURCE_GENERATOR TGZ ZIP TBZ2)
 
 
-if(LYX_DMG)
-	set(CPACK_PACKAGE_NAME LyX)
-	set(CPACK_GENERATOR DragNDrop)
-	
-	# We start from bin/lyx.app, all is build into the final bundle folder
-	# On Mac the paths to required shared libraries are hardcoded in the
-	# binary/library. This is fixed by the macro 'fixup_bundle' 
-	# Hardcoded pathes to libraries are resolved automatically
-
-	
-	set(app          ${bundle_dir}/LyX.app)
-	set(contents_dir LyX.app/Contents/)
-	install(DIRECTORY "${QT_PLUGINS_DIR}/imageformats" DESTINATION ${bundle_dir}/${contents_dir}/plugins COMPONENT Runtime)
-	
-	message(STATUS "Qt Plugins: ${QT_PLUGINS_DIR}/imageformats DESTINATION ${bundle_dir}/${contents_dir}/plugins")
-	
-	install(CODE 
-		"file(GLOB qt_plugins \"${bundle_dir}/${contents_dir}/plugins/imageformats/*${CMAKE_SHARED_LIBRARY_SUFFIX}\")
-		include(BundleUtilities)
-		fixup_bundle(\"${app}\" \"\${qt_plugins}\" \"${dir}\") "
-		COMPONENT RUNTIME)
-	
-	file(WRITE ${CMAKE_BINARY_DIR}/qt.conf "")
-	install(FILES ${CMAKE_BINARY_DIR}/qt.conf DESTINATION ${contents_dir}/Resources COMPONENT Runtime)
-	
+set(CPACK_PACKAGE_NAME LyX)
+if(APPLE)
+	set(CPACK_GENERATOR DragNDrop)	
+elseif(WIN32)
+	set(CPACK_GENERATOR ZIP)
+	#TODO set(CPACK_GENERATOR ZIP NSIS)
+elseif()
+	# .sh on linux?
 endif()
-
 
 if(LYX_CPACK)
 	include(CPack)
 endif()
+
 
 #Now it is possible to create some packages
 # cd <BuildDir>

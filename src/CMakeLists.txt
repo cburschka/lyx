@@ -106,7 +106,7 @@ lyx_find_info_files(LyXUiFiles ${TOP_SRC_DIR}/lib/ui/*)
 
 add_executable(${_lyx}
 	${WIN32_CONSOLE}
-	${LYX_BUNDLE}
+	${LYX_BUILD_BUNDLE}
 	${lyx_sources}
 	${lyx_headers}
 	${vld_files}
@@ -115,9 +115,6 @@ add_executable(${_lyx}
 	${lyx_cmake_files}
 )
 
-if(LYX_BUNDLE)
-	set(MACOSX_BUNDLE_STARTUP_COMMAND ${_lyx})
-endif()
 
 lyx_add_gcc_pch(${_lyx})
 
@@ -159,10 +156,18 @@ endif()
 
 project_source_group("${GROUP_CODE}" lyx_sources lyx_headers)
 
+
+install(TARGETS ${_lyx}
+	RUNTIME DESTINATION bin
+	BUNDLE DESTINATION .)
+
 if(LYX_BUNDLE)
-	install(TARGETS ${_lyx}
-		RUNTIME DESTINATION bin
-		BUNDLE DESTINATION .)
-else()
-	install(TARGETS ${_lyx} DESTINATION bin)
+	if(NOT APPLE)
+		set(installed_lyx ${CMAKE_INSTALL_PREFIX}/bin/${_lyx}${CMAKE_EXECUTABLE_SUFFIX})
+	else()
+		set(installed_lyx ${CMAKE_INSTALL_PREFIX}/${_lyx}.app)
+	endif()
+	install(CODE "include(BundleUtilities)
+			fixup_bundle(\"${installed_lyx}\" \"\" \"\") " COMPONENT RUNTIME)
 endif()
+
