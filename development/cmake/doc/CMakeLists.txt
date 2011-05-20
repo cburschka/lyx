@@ -29,8 +29,8 @@ foreach(_rel_doc ${_rel_lyx_docs})
   SET_SOURCE_FILES_PROPERTIES(${_created_doc} GENERATED)
   add_custom_command(
     OUTPUT "${_created_doc}"
-    COMMAND perl "${TOP_SRC_DIR}/development/cmake/doc/ReplaceValues.pl" "LYX_USERDIR_VER=${LYX_USERDIR_VER}" "LYX_DIR_VER=${LYX_DIR_VER}" "${TOP_SRC_DIR}/lib/doc/${_rel_doc}" > "${_created_doc}"
-    DEPENDS "${TOP_SRC_DIR}/lib/doc/${_rel_doc}"
+    COMMAND ${LYX_PYTHON_EXECUTABLE} "${TOP_SRC_DIR}/development/cmake/doc/ReplaceValues.py" "LYX_USERDIR_VER=${LYX_USERDIR_VER}" "LYX_DIR_VER=${LYX_DIR_VER}" "${TOP_SRC_DIR}/lib/doc/${_rel_doc}" > "${_created_doc}"
+    DEPENDS "${TOP_SRC_DIR}/lib/doc/${_rel_doc}" "${TOP_SRC_DIR}/development/cmake/doc/ReplaceValues.py"
     )
   install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${_rel_doc}" DESTINATION "${LYX_DATA_SUBDIR}doc/${_rel_dir_part}")
   LIST(APPEND _docs "${_created_doc}")

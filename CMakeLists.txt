@@ -561,9 +561,9 @@ add_subdirectory(lib/scripts "${TOP_BINARY_DIR}/scripts")
 
 
 if(LYX_INSTALL)
-	FIND_PROGRAM(LYX_PERL_EXECUTABLE perl)
-	if(${LYX_PERL_EXECUTABLE} MATCHES "-NOTFOUND")
-		message(STATUS "Perl required to create doc!")
+	#FIND_PROGRAM(LYX_PERL_EXECUTABLE perl)
+	if(${LYX_PYTHON_EXECUTABLE} MATCHES "-NOTFOUND")
+		message(STATUS "Python required to create doc!")
 	else()
 		add_subdirectory(${LYX_CMAKE_DIR}/man "${TOP_BINARY_DIR}/man")
 		add_subdirectory(${LYX_CMAKE_DIR}/doc "${TOP_BINARY_DIR}/doc")
