@@ -6,9 +6,11 @@ Compatible with NSIS 2.46
 
 */
 
-!include settings.nsh
+!addincludedir @CMAKE_SOURCE_DIR@/development/Win32/packaging/installer
 
-!include include\declarations.nsh
+!include settings-cmake.nsh
+!include declarations-cmake.nsh
+
 !include include\variables.nsh
 !include include\nsis.nsh
 !include include\filelist.nsh

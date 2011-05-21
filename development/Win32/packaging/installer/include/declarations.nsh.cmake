@@ -11,8 +11,8 @@ SetCompressor /SOLID lzma
 #--------------------------------
 # File locations
 
-!define FILES_LICENSE "license.rtf"
-!define FILES_ICONS "..\icons"
+!define FILES_LICENSE "${FILES_INSTALLER}\license.rtf"
+!define FILES_ICONS "${FILES_INSTALLER}\..\icons"
 !define FILES_PDFVIEW "${FILES_DEPS}\bin"
 !define FILES_MSVC "${FILES_DEPS}\bin"
 !define FILES_PYTHON "${FILES_DEPS}\python"
@@ -41,7 +41,7 @@ SetCompressor /SOLID lzma
 # Names and version
 
 !define APP_NAME "LyX"
-!define APP_VERSION_NUMBER "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_VERSION_REVISION}.${APP_VERSION_BUILD}"
+!define APP_VERSION_NUMBER "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_VERSION_PATCH}.${APP_VERSION_REVISION}"
 !define APP_SERIES_NAME "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}"
 !define APP_SERIES_KEY "${APP_VERSION_MAJOR}${APP_VERSION_MINOR}"
 !define APP_DIR "${APP_NAME}${APP_SERIES_KEY}"
@@ -82,8 +82,8 @@ SetCompressor /SOLID lzma
 !endif
 
 !define SETUP_ICON "${FILES_ICONS}\lyx.ico"
-!define SETUP_HEADERIMAGE "graphics\header.bmp"
-!define SETUP_WIZARDIMAGE "graphics\wizard.bmp"
+!define SETUP_HEADERIMAGE "${FILES_INSTALLER}\graphics\header.bmp"
+!define SETUP_WIZARDIMAGE "${FILES_INSTALLER}\graphics\wizard.bmp"
 !define SETUP_UNINSTALLER "Uninstall-${APP_NAME}.exe"
 !define SETUP_UNINSTALLER_KEY "${APP_NAME}${APP_SERIES_KEY}"
 

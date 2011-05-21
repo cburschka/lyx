@@ -118,6 +118,7 @@ if(LYX_INSTALL)
 	set(LYX_NLS ON)
 	if (WIN32)
 		set(LYX_HUNSPELL ON)
+		set(LYX_BUNDLE ON)
 	endif()
 	set(LYX_CONSOLE OFF)
 	set(LYX_PACKAGE_SUFFIX ON)
@@ -208,6 +209,7 @@ foreach(_c_l ${_config_lines} )
 		if(PACKAGE_VERSION MATCHES "^\([0-9]+\)\\.\([0-9]+\).*$")
 			set(LYX_MAJOR_VERSION ${CMAKE_MATCH_1})
 			set(LYX_MINOR_VERSION ${CMAKE_MATCH_2})
+			set(LYX_PATCH_VERSION 0) # TODO 2.1.0svn, LYX_PATCH_VERSION == 0
 			set(LYX_DIR_VER "LYX_DIR_${CMAKE_MATCH_1}${CMAKE_MATCH_2}x")
 			set(LYX_USERDIR_VER "LYX_USERDIR_${CMAKE_MATCH_1}${CMAKE_MATCH_2}x")
 			set(LYX_INSTALL_SUFFIX "${CMAKE_MATCH_1}.${CMAKE_MATCH_2}")
@@ -278,6 +280,13 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 		set(CMAKE_INSTALL_PREFIX LYX_INSTALLED CACHE PATH "LyX default install prefix" FORCE)
 	endif()
 endif()
+if(IS_ABSOLUTE)
+	set(CMAKE_INSTALL_PREFIX_ABSOLUTE ${CMAKE_INSTALL_PREFIX})
+else()
+	set(CMAKE_INSTALL_PREFIX_ABSOLUTE ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_PREFIX})
+endif()
+
+
 
 if(NOT LYX_DATA_SUBDIR)
 	if (WIN32)
@@ -657,13 +666,17 @@ set(CPACK_RESOURCE_FILE_LICENSE "${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/LyX_license.txt
 # installing from that rpm package.
 FIND_PROGRAM(LYX_SVNVERSION svnversion)
 #message(STATUS "svnversion = ${LYX_SVNVERSION}")
-if(NOT ${LYX_SVNVERSION} MATCHES "-NOTFOUND")
+if(LYX_SVNVERSION)
 	EXECUTE_PROCESS(COMMAND ${LYX_SVNVERSION} WORKING_DIRECTORY "${TOP_SRC_DIR}" OUTPUT_VARIABLE CPACK_RPM_PACKAGE_RELEASE OUTPUT_STRIP_TRAILING_WHITESPACE)
 	# We use this value also to set the package-patch-value
 	if(CPACK_RPM_PACKAGE_RELEASE MATCHES "^\([0-9]+\)")
-		set(CPACK_PACKAGE_VERSION_PATCH ${CMAKE_MATCH_1})
+		set(CPACK_PACKAGE_VERSION_PATCH ${CMAKE_MATCH_1}) # TODO this is not the patch level
+		set(LYX_REVISION_VERSION ${CMAKE_MATCH_1})
 	endif()
+else()
+	set(LYX_REVISION_VERSION svn) #TODO use date
 endif()
+
 
 # we do not have a readme or welcome data,
 # so we do not provide infofiles for
@@ -682,17 +695,24 @@ set(CPACK_SOURCE_INSTALLED_DIRECTORIES "${TOP_SRC_DIR};/") # http://www.mail-arc
 set(CPACK_SOURCE_GENERATOR TGZ ZIP TBZ2)
 
 
-set(CPACK_PACKAGE_NAME LyX)
-if(APPLE)
-	set(CPACK_GENERATOR DragNDrop)	
-elseif(WIN32)
-	set(CPACK_GENERATOR ZIP)
-	#TODO set(CPACK_GENERATOR ZIP NSIS)
-elseif()
-	# .sh on linux?
-endif()
-
 if(LYX_CPACK)
+
+	set(CPACK_PACKAGE_NAME LyX)
+	if(APPLE)
+		set(CPACK_GENERATOR DragNDrop)	
+	elseif(WIN32)
+		message(STATUS "Configuring NSIS files")
+		configure_file(development/Win32/packaging/installer/lyx.nsi.cmake ${CMAKE_BINARY_DIR}/installer/lyx.nsi @ONLY)
+		configure_file(development/Win32/packaging/installer/settings.nsh.cmake ${CMAKE_BINARY_DIR}/installer/settings-cmake.nsh @ONLY)
+		configure_file(development/Win32/packaging/installer/include/declarations.nsh.cmake ${CMAKE_BINARY_DIR}/installer/declarations-cmake.nsh @ONLY)
+		set(CPACK_GENERATOR ZIP)
+		message(STATUS "NSIS files are created in ${CMAKE_BINARY_DIR}/installer")
+		message(STATUS "A zipped only release could be created by building the 'PACKAGE' project")
+	elseif()
+		# .sh on linux?
+	endif()
+
+
 	include(CPack)
 endif()
 
