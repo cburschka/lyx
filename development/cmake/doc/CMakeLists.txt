@@ -7,9 +7,6 @@
 
 project(doc)
 
-#TODO: replace perl script with python, see scons:
-# http://www.lyx.org/trac/browser/lyx-devel/trunk/development/scons/scons_utils.py
-
 SET(_docs)
 file(GLOB_RECURSE _rel_lyx_docs RELATIVE "${TOP_SRC_DIR}/lib/doc" "${TOP_SRC_DIR}/lib/doc/*.lyx" "${TOP_SRC_DIR}/lib/doc/*.txt")
 

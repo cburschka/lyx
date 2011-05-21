@@ -1,4 +1,14 @@
 #! /usr/bin/env python
+
+# file ReplaceValues.py
+#
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+#
+# author: Kornel Benko, kornel@lyx.org
+#
+# Syntax: ReplaceValues.py [<var1>=<Subst1> [<var2>=<Subst> ...]] <Inputfile> [<Inputfile> ...]
+
 import sys
 import re
 
