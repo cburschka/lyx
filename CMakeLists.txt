@@ -682,9 +682,13 @@ endif()
 # so we do not provide infofiles for
 # CPACK_RESOURCE_FILE_README and CPACK_RESOURCE_FILE_WELCOME
 
-if(WIN32)
+if(UNIX)
+	set(CPACK_GENERATOR STGZ)
+	set(CPACK_SOURCE_GENERATOR TGZ TBZ2)
+elseif(WIN32)
 	set(CPACK_GENERATOR NSIS ZIP)
 	set(CPACK_BINARY_ZIP 1)
+	set(CPACK_SOURCE_GENERATOR ZIP)
 endif()
 
 
@@ -692,11 +696,10 @@ set(CPACK_STRIP_FILES 1)
 
 # sources
 set(CPACK_SOURCE_INSTALLED_DIRECTORIES "${TOP_SRC_DIR};/") # http://www.mail-archive.com/cmake@cmake.org/msg33720.html
-set(CPACK_SOURCE_GENERATOR TGZ ZIP TBZ2)
+
 
 
 if(LYX_CPACK)
-
 	set(CPACK_PACKAGE_NAME LyX)
 	if(APPLE)
 		set(CPACK_GENERATOR DragNDrop)	
@@ -708,10 +711,12 @@ if(LYX_CPACK)
 		set(CPACK_GENERATOR ZIP)
 		message(STATUS "NSIS files are created in ${CMAKE_BINARY_DIR}/installer")
 		message(STATUS "A zipped only release could be created by building the 'PACKAGE' project")
-	elseif()
-		# .sh on linux?
+	else()
+		message(STATUS "Building self extracting binary bundle.")
+		message(STATUS "To embed Qt in this bundle don't build with your system Qt:")
+		message(STATUS "  - fix PATH so a other qmake is found by cmake")
+		message(STATUS "  - fix LD_LIBRARY_PATH so lyx doesn't use system's Qt")
 	endif()
-
 
 	include(CPack)
 endif()
