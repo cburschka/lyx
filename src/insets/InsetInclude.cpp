@@ -806,7 +806,7 @@ support::FileNameList const &
 		tmp->setParent(&buffer);
 		return cache;
 	}
-	static support::FileNameList const empty;
+	static support::FileNameList const empty = support::FileNameList();
 	return empty;
 }
 
