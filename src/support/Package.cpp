@@ -573,19 +573,6 @@ get_system_support_dir(FileName const & abs_binary,
 	if (!fileSearch(path.absFileName(), chkconfig_ltx).empty())
 		return path;
 
-#if defined(LYX_ABS_TOP_SRCDIR)
-	{
-		string const dir = fix_dir_name(LYX_ABS_TOP_SRCDIR);
-		path = makeAbsPath(dir);
-		FileName path2(addPath(path.absFileName(), "lib"));
-		searched_dirs.push_back(path2);
-		FileName const abs_path = fileSearch(path2.absFileName(), chkconfig_ltx);
-		if (! abs_path.empty()) {
-			return path2;
-		}
-	}
-
-#endif
 	// Everything has failed :-(
 	// So inform the user and exit.
 	string searched_dirs_str;
