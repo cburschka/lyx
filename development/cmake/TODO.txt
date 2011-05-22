@@ -41,8 +41,8 @@ Features
       - tarball creation, most notably i dont see any list of files which should go into tarball, we dont want everything to go there
         (ie "make distcheck" to check tree is prepared for release, "make dist" for actual release)
     these are nice to have and present in autotools, though not critical
-      - target for regenaration of lfuns manual would be nice (ie make lfundoc)
-      - target for doxygen generation (ie make doxydoc)
+      - DONE: target for regenaration of lfuns manual would be nice (ie make lfundoc)
+      - DONE: target for doxygen generation (ie make doxydoc)
   * DONE: get patch version from configure.ac (regex)
 
 

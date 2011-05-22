@@ -9,6 +9,7 @@ project(doc)
 
 SET(_docs)
 file(GLOB_RECURSE _rel_lyx_docs RELATIVE "${TOP_SRC_DIR}/lib/doc" "${TOP_SRC_DIR}/lib/doc/*.lyx" "${TOP_SRC_DIR}/lib/doc/*.txt")
+list(REMOVE_ITEM _rel_lyx_docs LFUNs.lyx)
 
 foreach(_rel_doc ${_rel_lyx_docs})
   if ("${_rel_doc}" MATCHES "/" )
@@ -33,5 +34,14 @@ foreach(_rel_doc ${_rel_lyx_docs})
   LIST(APPEND _docs "${_created_doc}")
 endforeach(_rel_doc)
 
+# Special commands to create and install LFUNs.lyx
+add_custom_command(
+  OUTPUT LFUNs.lyx
+  COMMAND ${LYX_PYTHON_EXECUTABLE} "${TOP_SRC_DIR}/development/tools/gen_lfuns.py" "${TOP_SRC_DIR}/src/LyXAction.cpp" > LFUNs.lyx
+  DEPENDS "${TOP_SRC_DIR}/development/tools/gen_lfuns.py" "${TOP_SRC_DIR}/src/LyXAction.cpp")
+LIST(APPEND _docs "${CMAKE_CURRENT_BINARY_DIR}/LFUNs.lyx")
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/LFUNs.lyx" DESTINATION "${LYX_DATA_SUBDIR}doc/LFUNs.lyx")
+
 ADD_CUSTOM_TARGET(doc ALL DEPENDS ${_docs})
 
+ADD_CUSTOM_TARGET(lfundoc DEPENDS LFUNs.lyx)
