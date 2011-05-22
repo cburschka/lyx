@@ -98,7 +98,7 @@ if(help OR HELP)
 	message(STATUS)
 	message(STATUS "Available options: (dis/enable with -D=0/1)")
 	message(STATUS)
-	LYX_OPTION_LIST_ALL(help)	
+	LYX_OPTION_LIST_ALL(help)
 	message(STATUS)
 else()
 
@@ -110,8 +110,8 @@ if(LYX_CPACK)
 endif()
 
 if(LYX_DMG)
-	set(LYX_BUNDLE 1)
-	set(LYX_CPACK 1)
+	set(LYX_BUNDLE ON)
+	set(LYX_CPACK ON)
 endif()
 
 if(LYX_INSTALL)
@@ -241,14 +241,13 @@ endif()
 
 
 if(LYX_BUNDLE)
-	set(LYX_CPACK 1)
+	set(LYX_CPACK ON)
 	message(STATUS)
 	message(STATUS "Bundle creation is enabled (experimental):")
 	message(STATUS "    make")
 	message(STATUS "    make install/strip")
 	message(STATUS "    make package")
 	if(APPLE)
-		set(CPACK_GENERATOR DragNDrop)
 		set(LYX_BUILD_BUNDLE MACOSX_BUNDLE)
 		set(LYX_DATA_SUBDIR ${PACKAGE_BASE}${PROGRAM_SUFFIX}.app/Contents/Resources/ CACHE STRING "Bundle Contents dir" FORCE)
 		set(MACOSX_BUNDLE_STARTUP_COMMAND ${PACKAGE_BASE}${PROGRAM_SUFFIX}.app)
@@ -257,16 +256,13 @@ if(LYX_BUNDLE)
 			set(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 		endif()
 	elseif(UNIX)
-		set(CPACK_GENERATOR STGZ)
 		message(STATUS "To embed Qt in this bundle don't build with your system Qt:")
 		message(STATUS "  - fix PATH so a other qmake is found by cmake")
 		message(STATUS "  - fix LD_LIBRARY_PATH so lyx doesn't use system's Qt")
 	elseif(WIN32)
-		set(CPACK_GENERATOR ZIP)
 		message(STATUS "A zipped-only release could be created by building the 'PACKAGE' project")
 	endif()
 endif()
-
 
 if(LYX_INSTALL_PREFIX)
 	set(CMAKE_INSTALL_PREFIX ${LYX_INSTALL_PREFIX} CACHE PATH "LyX user's choice install prefix" FORCE)
@@ -276,10 +272,9 @@ set(LYX_INSTALL_PREFIX ${LYX_INSTALL_PREFIX} CACHE PATH "LyX user's choice insta
 
 if(LYX_PACKAGE_SUFFIX)
 	set(PACKAGE ${PACKAGE_BASE}${LYX_INSTALL_SUFFIX})
-else()  
+else()
 	set(PACKAGE ${PACKAGE_BASE})
 endif()
-
 
 
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
@@ -392,7 +387,7 @@ find_package(Qt4 REQUIRED)
 
 
 include_directories(${TOP_BINARY_DIR} ${TOP_SRC_DIR}/src)
-  
+
 if(LYX_ASPELL)
 	find_package(ASPELL)
 	include_directories(${ASPELL_INCLUDE_DIR})
@@ -420,10 +415,10 @@ endif()
 
 if(LYX_NLS)
 	if(LYX_EXTERNAL_LIBINTL)
-		find_package(Libintl REQUIRED)	
+		find_package(Libintl REQUIRED)
 		if(DEFINED LIBINTL_LIBRARIES)
 			# find getext when configuring
-			list(APPEND CMAKE_REQUIRED_LIBRARIES ${LIBINTL_LIBRARIES})	
+			list(APPEND CMAKE_REQUIRED_LIBRARIES ${LIBINTL_LIBRARIES})
 			# on mac use iconv also form ports
 			get_filename_component(ICONV_RELATIVE_TO_LIBINTL ${LIBINTL_LIBRARIES} PATH)
 		endif()
@@ -505,7 +500,7 @@ if(LYX_PCH)
 				${TOP_BINARY_DIR}/pcheaders.h)
 			set(CMAKE_CXX_FLAGS_DEBUG	"${CMAKE_CXX_FLAGS_DEBUG} /DLYX_PCH_STL /DLYX_PCH_BOOST /DLYX_PCH_QT4")
 			set(CMAKE_CXX_FLAGS_RELEASE	"${CMAKE_CXX_FLAGS_RELEASE} /DLYX_PCH_STL /DLYX_PCH_BOOST /DLYX_PCH_QT4")
-			set(CMAKE_CXX_FLAGS_MINSIZEREL	"${CMAKE_CXX_FLAGS_MINSIZEREL} /DLYX_PCH_STL /DLYX_PCH_BOOST")			
+			set(CMAKE_CXX_FLAGS_MINSIZEREL	"${CMAKE_CXX_FLAGS_MINSIZEREL} /DLYX_PCH_STL /DLYX_PCH_BOOST")
 		endmacro(lyx_add_msvc_pch)
 		macro(lyx_add_gcc_pch name_)
 		endmacro()
@@ -640,92 +635,8 @@ if(LYX_NLS)
 	message(STATUS)
 endif()
 
+include("${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/LyxPackaging.cmake")
 
-# CPack packaging
-#
-# http://cmake.org/cmake/help/cmake-2-8-docs.html#module:CPack
-
-set(CPACK_PACKAGE_VERSION_MAJOR "${LYX_MAJOR_VERSION}")
-set(CPACK_PACKAGE_VERSION_MINOR "${LYX_MINOR_VERSION}")
-FILE(STRINGS "${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/LyX_summary.txt" CPACK_PACKAGE_DESCRIPTION_SUMMARY)
-
-
-set(CPACK_PACKAGE_INSTALL_DIRECTORY "CMake ${LYX_INSTALL_SUFFIX}")
-
-#
-# needed by rpm
-set(CPACK_SET_DESTDIR "ON")
-FILE(READ "${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/LyX_license.txt" CPACK_RPM_PACKAGE_LICENSE)
-set(CPACK_RPM_PACKAGE_GROUP "Applications/Publishing")
-set(CPACK_RPM_PACKAGE_VENDOR "The LyX team")
-#
-# the next ones are needed by deb
-set(CPACK_PACKAGE_CONTACT "${PACKAGE_BUGREPORT}")
-set(CPACK_SOURCE_PACKAGE_FILE_NAME "${LYX_PROJECT}-${LYX_INSTALL_SUFFIX}")
-
-# This is experimental, valid on _my_ system (Kornel)
-set(CPACK_DEBIAN_PACKAGE_DEPENDS "libqtgui4 (>= 4.4.3-0)")
-if(ASPELL_FOUND)
-	set(CPACK_DEBIAN_PACKAGE_DEPENDS "libaspell15 (>= 0.60.6-1),${CPACK_DEBIAN_PACKAGE_DEPENDS}")
-endif()
-if(ENCHANT_FOUND)
-	set(CPACK_DEBIAN_PACKAGE_DEPENDS "libenchant1c2a (>= 1.6.0-0),${CPACK_DEBIAN_PACKAGE_DEPENDS}")
-endif()
-if(LYX_EXTERNAL_BOOST)
-	if(Boost_FOUND)
-		set(CPACK_DEBIAN_PACKAGE_DEPENDS "libboost-regex1.40.0 (>= 1.40.0-4),libboost-signals1.40.0 (>= 1.40.0-4),${CPACK_DEBIAN_PACKAGE_DEPENDS}")
-	endif()
-endif()
-#
-# for the next ones, cpack insists on data with values in some file
-set(CPACK_PACKAGE_DESCRIPTION_FILE "${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/LyX_description.txt")
-set(CPACK_RESOURCE_FILE_LICENSE "${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/LyX_license.txt")
-
-# Use the revision number saved in ${LYX_PACKAGE_RELEASE}
-# as the release in rpm-package-build.
-# This way we maycan omit the otherwise needed "--force" parameter when
-# installing from that rpm package.
-set(CPACK_RPM_PACKAGE_RELEASE ${LYX_PACKAGE_RELEASE})
-set(CPACK_PACKAGE_VERSION_PATCH ${LYX_REVISION_VERSION})
-
-# we do not have a readme or welcome data,
-# so we do not provide infofiles for
-# CPACK_RESOURCE_FILE_README and CPACK_RESOURCE_FILE_WELCOME
-
-# sources
-set(CPACK_SOURCE_INSTALLED_DIRECTORIES "${TOP_SRC_DIR};/") # http://www.mail-archive.com/cmake@cmake.org/msg33720.html
-
-
-set(CPACK_STRIP_FILES 1)
-
-
-
-if(LYX_CPACK)
-	include(CPack)
-endif()
-
-
-#Now it is possible to create some packages
-# cd <BuildDir>
-# make package
-#############################################################################################
-# So, e.g. for variables
-#    CMAKE_PROJECT_NAME                     : lyx
-#    CPACK_PACKAGE_VERSION_MAJOR            : 2
-#    CPACK_PACKAGE_VERSION_MINOR            : 0
-#    CPACK_PACKAGE_VERSION_PATCH            : 1
-#    CMAKE_SYSTEM_NAME                      : Linux
-#    CPACK_BINARY_DEB:BOOL                  : ON
-#
-# the package name builds as "lyx-2.0.1-Linux.deb"
-#
-############################## rpm ################################### deb ##################
-# create    # cpack -G RPM --config CPackConfig.cmake   # cpack -G DEB --config CPackConfig.cmake
-# creates =># lyx-2.0.1-Linux.rpm                       # lyx-2.0.1-Linux.deb
-# list      # rpm -qlp lyx-2.0.1-Linux.rpm              # dpkg-deb -c lyx-2.0.1-Linux.deb
-# install   # rpm -U lyx-2.0.1-Linux.rpm                # dpkg -i lyx-2.0.1-Linux.deb
-#
 message(STATUS)
 
-endif() #help
-
+endif() # help
