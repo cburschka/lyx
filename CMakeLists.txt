@@ -118,11 +118,6 @@ if(LYX_INSTALL)
 	set(LYX_NLS ON)
 	if (WIN32)
 		set(LYX_HUNSPELL ON)
-		message(STATUS "Configuring NSIS files")
-		configure_file(development/Win32/packaging/installer/lyx.nsi.cmake ${CMAKE_BINARY_DIR}/installer/lyx.nsi @ONLY)
-		configure_file(development/Win32/packaging/installer/settings.nsh.cmake ${CMAKE_BINARY_DIR}/installer/settings-cmake.nsh @ONLY)
-		configure_file(development/Win32/packaging/installer/include/declarations.nsh.cmake ${CMAKE_BINARY_DIR}/installer/declarations-cmake.nsh @ONLY)
-		message(STATUS "NSIS files are created in ${CMAKE_BINARY_DIR}/installer")
 	endif()
 	set(LYX_CONSOLE OFF)
 	set(LYX_PACKAGE_SUFFIX ON)
@@ -224,6 +219,24 @@ foreach(_c_l ${_config_lines} )
 	endif()
 endforeach(_c_l)
 
+# Find the revision number and use it as the release in rpm-package-build.
+# This way we may omit the otherwise needed "--force" parameter when
+# installing from that rpm package.
+FIND_PROGRAM(LYX_SVNVERSION svnversion)
+#message(STATUS "svnversion = ${LYX_SVNVERSION}")
+if(LYX_SVNVERSION)
+	# TODO revision number has nothing to do with cpack vars: split out
+	EXECUTE_PROCESS(COMMAND ${LYX_SVNVERSION} WORKING_DIRECTORY "${TOP_SRC_DIR}" OUTPUT_VARIABLE CPACK_RPM_PACKAGE_RELEASE OUTPUT_STRIP_TRAILING_WHITESPACE)
+	# We use this value also to set the package-patch-value
+	if(CPACK_RPM_PACKAGE_RELEASE MATCHES "^\([0-9]+\)")
+		set(CPACK_PACKAGE_VERSION_PATCH ${CMAKE_MATCH_1}) # TODO this is not the patch level
+		set(LYX_REVISION_VERSION ${CMAKE_MATCH_1})
+	endif()
+else()
+	set(LYX_REVISION_VERSION svn) #TODO use date
+endif()
+
+
 
 if(LYX_PROGRAM_SUFFIX)
 	set(PROGRAM_SUFFIX "${LYX_INSTALL_SUFFIX}")
@@ -311,6 +324,13 @@ set(LYX_ABS_INSTALLED_LOCALEDIR "${LYX_ABS_INSTALLED_DATADIR}/${LYX_DATA_SUBDIR}
 set(LYX_ABS_TOP_SRCDIR "${TOP_SRC_DIR}")
 
 
+if(LYX_INSTALL AND WIN32)
+	message(STATUS "Configuring NSIS files")
+	configure_file(development/Win32/packaging/installer/lyx.nsi.cmake ${CMAKE_BINARY_DIR}/installer/lyx.nsi @ONLY)
+	configure_file(development/Win32/packaging/installer/settings.nsh.cmake ${CMAKE_BINARY_DIR}/installer/settings-cmake.nsh @ONLY)
+	configure_file(development/Win32/packaging/installer/include/declarations.nsh.cmake ${CMAKE_BINARY_DIR}/installer/declarations-cmake.nsh @ONLY)
+	message(STATUS "NSIS files are created in ${CMAKE_BINARY_DIR}/installer")
+endif()
 
 if(NOT GROUP_CODE)
 	#set(GROUP_CODE "The Golden Code")
@@ -634,13 +654,9 @@ set(CPACK_PACKAGE_VERSION_MAJOR "${LYX_MAJOR_VERSION}")
 set(CPACK_PACKAGE_VERSION_MINOR "${LYX_MINOR_VERSION}")
 FILE(STRINGS "${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/LyX_summary.txt" CPACK_PACKAGE_DESCRIPTION_SUMMARY)
 
-set(CPACK_SOURCE_GENERATOR TGZ ZIP TBZ2)
-set(CPACK_SOURCE_INSTALLED_DIRECTORIES "${TOP_SRC_DIR};/") # http://www.mail-archive.com/cmake@cmake.org/msg33720.html
 
 set(CPACK_PACKAGE_INSTALL_DIRECTORY "CMake ${LYX_INSTALL_SUFFIX}")
 
-set(CPACK_SOURCE_GENERATOR TGZ ZIP TBZ2)
-set(CPACK_SOURCE_INSTALLED_DIRECTORIES "${TOP_SRC_DIR};/") # http://www.mail-archive.com/cmake@cmake.org/msg33720.html
 #
 # needed by rpm
 set(CPACK_SET_DESTDIR "ON")
@@ -670,38 +686,17 @@ endif()
 set(CPACK_PACKAGE_DESCRIPTION_FILE "${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/LyX_description.txt")
 set(CPACK_RESOURCE_FILE_LICENSE "${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/LyX_license.txt")
 
-# Find the revision number and use it as the release in rpm-package-build.
-# This way we may omit the otherwise needed "--force" parameter when
-# installing from that rpm package.
-FIND_PROGRAM(LYX_SVNVERSION svnversion)
-#message(STATUS "svnversion = ${LYX_SVNVERSION}")
-if(LYX_SVNVERSION)
-	EXECUTE_PROCESS(COMMAND ${LYX_SVNVERSION} WORKING_DIRECTORY "${TOP_SRC_DIR}" OUTPUT_VARIABLE CPACK_RPM_PACKAGE_RELEASE OUTPUT_STRIP_TRAILING_WHITESPACE)
-	# We use this value also to set the package-patch-value
-	if(CPACK_RPM_PACKAGE_RELEASE MATCHES "^\([0-9]+\)")
-		set(CPACK_PACKAGE_VERSION_PATCH ${CMAKE_MATCH_1}) # TODO this is not the patch level
-		set(LYX_REVISION_VERSION ${CMAKE_MATCH_1})
-	endif()
-else()
-	set(LYX_REVISION_VERSION svn) #TODO use date
-endif()
 
 
 # we do not have a readme or welcome data,
 # so we do not provide infofiles for
 # CPACK_RESOURCE_FILE_README and CPACK_RESOURCE_FILE_WELCOME
 
-if(UNIX)
-	set(CPACK_SOURCE_GENERATOR TGZ TBZ2)
-elseif(WIN32)
-	set(CPACK_SOURCE_GENERATOR ZIP)
-endif()
+# sources
+set(CPACK_SOURCE_INSTALLED_DIRECTORIES "${TOP_SRC_DIR};/") # http://www.mail-archive.com/cmake@cmake.org/msg33720.html
 
 
 set(CPACK_STRIP_FILES 1)
-
-# sources
-set(CPACK_SOURCE_INSTALLED_DIRECTORIES "${TOP_SRC_DIR};/") # http://www.mail-archive.com/cmake@cmake.org/msg33720.html
 
 
 
