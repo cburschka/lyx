@@ -155,8 +155,11 @@ endif()
 message(STATUS)
 
 set(EXECUTABLE_OUTPUT_PATH  ${TOP_BINARY_DIR}/bin)
-set(LIBRARY_OUTPUT_PATH  ${TOP_BINARY_DIR}/lib)
-
+if(WIN32)
+	set(LIBRARY_OUTPUT_PATH  ${EXECUTABLE_OUTPUT_PATH})
+else()
+	set(LIBRARY_OUTPUT_PATH  ${TOP_BINARY_DIR}/lib)
+endif()
 
 
 if(UNIX OR MINGW)
@@ -519,12 +522,14 @@ else()
 	endmacro()
 endif()
 
+
 if(MSVC)
+
 	if(LYX_VLD)
-		set(LYX_LEAK_DETECTION 1 CACHE TYPE STRING FORCE)
-		set(LIBRARY_OUTPUT_PATH  ${EXECUTABLE_OUTPUT_PATH})
-		set(LYX_VLD_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../Win32/vld)
-		include(${LYX_VLD_PATH}/tools/cmake/vld.cmake)
+		set(vld_path ${CMAKE_CURRENT_SOURCE_DIR}/development/Win32/vld)
+		add_subdirectory(${vld_path}/cmake)
+		include(${vld_path}/cmake/vld.cmake) # forced include
+		set(vld_dll vld)
 	endif()
 
 	if(LYX_WALL)
