@@ -22,6 +22,8 @@
 #//
 #////////////////////////////////////////////////////////////////////////////////
 
+cmake_minimum_required(VERSION 2.6.4)
+
 project(vld)
 
 include(CheckCXXSourceCompiles)
@@ -44,10 +46,14 @@ if (NOT HAVE_DEBUGGING_TOOLS_FOR_WINDOWS)
 	message(FATAL_ERROR "")
 endif (NOT HAVE_DEBUGGING_TOOLS_FOR_WINDOWS)
 
+set(vld_path ${CMAKE_CURRENT_SOURCE_DIR}/../..)
+
 file(GLOB vld_sources ${vld_path}/src/*.cpp)
 file(GLOB vld_headers ${vld_path}/src/*.h)
 
 add_definitions(-DVLD_BUILD -DUNICODE -D_UNICODE)
 
-add_library(vld SHARED ${vld_sources} ${vld_headers} ${vld_path}/include/vld.h)
+
+add_library(vld SHARED ${vld_sources} ${vld_headers})
+
   

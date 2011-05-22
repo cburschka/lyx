@@ -1,8 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
-//  $Id: ntapi.h,v 1.8 2006/11/18 03:12:35 dmouldin Exp $
 //
 //  Visual Leak Detector - NT API Definitions
-//  Copyright (c) 2006 Dan Moulding
+//  Copyright (c) 2006-2009 Dan Moulding
 //
 //  This library is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU Lesser General Public
@@ -33,7 +32,7 @@ Applications should never include this header."
 #include <windows.h>
 
 // Return code type used by LdrLoadDll.
-typedef ULONG NTSTATUS;
+typedef LONG NTSTATUS;
 #define   STATUS_SUCCESS 0
 
 // Unicode string structure used by NT APIs.

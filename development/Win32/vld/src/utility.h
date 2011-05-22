@@ -1,5 +1,4 @@
 ////////////////////////////////////////////////////////////////////////////////
-//  $Id: utility.h,v 1.19 2006/11/18 03:12:35 dmouldin Exp $
 //
 //  Visual Leak Detector - Various Utility Definitions
 //  Copyright (c) 2005-2006 Dan Moulding
@@ -59,7 +58,7 @@ Applications should never include this header."
 #endif // _M_IX86
 
 #if defined(_M_IX86) || defined (_M_X64)
-#define FRAMEPOINTER(fp) __asm mov fp, BPREG // Copies the current frame pointer to the supplied variable.
+#define FRAMEPOINTER(fp) __asm {mov fp, BPREG} // Copies the current frame pointer to the supplied variable.
 #else
 // If you want to retarget Visual Leak Detector to another processor
 // architecture then you'll need to provide an architecture-specific macro to
@@ -107,3 +106,7 @@ VOID setreportencoding (encoding_e encoding);
 VOID setreportfile (FILE *file, BOOL copydebugger);
 VOID strapp (LPWSTR *dest, LPCWSTR source);
 BOOL strtobool (LPCWSTR s);
+#if _WIN32_WINNT < 0x0600 // Windows XP or earlier, no GetProcessIdOfThread()
+DWORD _GetProcessIdOfThread (HANDLE thread);
+#define GetProcessIdOfThread _GetProcessIdOfThread
+#endif

@@ -23,9 +23,5 @@
 #////////////////////////////////////////////////////////////////////////////////
 
 # This triggers the useage of vld in all other projects
-include_directories(${vld_path}/include)
-set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}   /FIvld.h")
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /FIvld.h")
-set(vld_dll vld)
-
-add_subdirectory(${vld_path}/tools/cmake ${CMAKE_BINARY_DIR}/vld)
+set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}   /FI${vld_path}/src/vld.h")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /FI${vld_path}/src/vld.h")

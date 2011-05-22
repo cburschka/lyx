@@ -1,8 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
-//  $Id: utility.cpp,v 1.24 2006/11/18 03:12:35 dmouldin Exp $
 //
 //  Visual Leak Detector - Various Utility Functions
-//  Copyright (c) 2005-2006 Dan Moulding
+//  Copyright (c) 2005-2009 Dan Moulding
 //
 //  This library is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU Lesser General Public
@@ -25,7 +24,12 @@
 #include <cassert>
 #include <cstdio>
 #include <windows.h>
+#if _WIN32_WINNT > 0x0600 // Windows XP or earlier, no GetProcessIdOfThread()
+#include <winternl.h>
+#endif
+#ifndef __out_xcount
 #define __out_xcount(x) // Workaround for the specstrings.h bug in the Platform SDK.
+#endif
 #define DBGHELP_TRANSLATE_TCHAR
 #include <dbghelp.h>    // Provides portable executable (PE) image access functions.
 #define VLDBUILD        // Declares that we are building Visual Leak Detector.
@@ -778,4 +782,59 @@ BOOL strtobool (LPCWSTR s) {
     else {
         return FALSE;
     }
+}
+
+// _GetProcessIdOfThread - Returns the ID of the process owns the thread.
+//
+//  - thread (IN): The handle to the thread.
+//
+//  Return Value:
+//
+//    Returns the ID of the process that owns the thread. Otherwise returns 0.
+//
+DWORD _GetProcessIdOfThread (HANDLE thread)
+{
+    typedef struct _CLIENT_ID {
+        HANDLE UniqueProcess;
+        HANDLE UniqueThread;
+    } CLIENT_ID, *PCLIENT_ID;
+
+    typedef LONG NTSTATUS;
+    typedef LONG KPRIORITY;
+
+    typedef struct _THREAD_BASIC_INFORMATION {
+        NTSTATUS  ExitStatus;
+        PVOID     TebBaseAddress;
+        CLIENT_ID ClientId;
+        KAFFINITY AffinityMask;
+        KPRIORITY Priority;
+        KPRIORITY BasePriority;
+    } THREAD_BASIC_INFORMATION, *PTHREAD_BASIC_INFORMATION;
+
+    const static THREADINFOCLASS ThreadBasicInformation = (THREADINFOCLASS)0;
+
+    typedef NTSTATUS (WINAPI *PNtQueryInformationThread) (HANDLE thread,
+                THREADINFOCLASS infoclass, PVOID buffer, ULONG buffersize,
+                PULONG used);
+
+    static PNtQueryInformationThread NtQueryInformationThread = NULL;
+
+    THREAD_BASIC_INFORMATION tbi;
+    NTSTATUS status;
+    HMODULE  ntdll;
+    if (NtQueryInformationThread == NULL) {
+        ntdll = GetModuleHandle(L"ntdll.dll");
+        NtQueryInformationThread = (PNtQueryInformationThread)GetProcAddress(ntdll, "NtQueryInformationThread");
+        if (NtQueryInformationThread == NULL) {
+            return 0;
+        }
+    }
+
+    status = NtQueryInformationThread(thread, ThreadBasicInformation, &tbi, sizeof(tbi), NULL);
+    if(status < 0) {
+        // Shall we go through all the trouble of setting last error?
+        return 0;
+    }
+
+    return (DWORD)tbi.ClientId.UniqueProcess;
 }

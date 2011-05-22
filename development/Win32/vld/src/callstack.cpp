@@ -1,8 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
-//  $Id: callstack.cpp,v 1.20 2006/11/18 03:12:34 dmouldin Exp $
 //
 //  Visual Leak Detector - CallStack Class Implementations
-//  Copyright (c) 2005-2006 Dan Moulding
+//  Copyright (c) 2005-2009 Dan Moulding
 //
 //  This library is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU Lesser General Public
@@ -24,7 +23,9 @@
 
 #include <cassert>
 #include <windows.h>
+#ifndef __out_xcount
 #define __out_xcount(x) // Workaround for the specstrings.h bug in the Platform SDK.
+#endif
 #define DBGHELP_TRANSLATE_TCHAR
 #include <dbghelp.h>    // Provides symbol handling services.
 #define VLDBUILD
