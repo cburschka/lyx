@@ -208,7 +208,7 @@ foreach(_c_l ${_config_lines} )
 		if(PACKAGE_VERSION MATCHES "^\([0-9]+\)\\.\([0-9]+\)\(\\.\([0-9]+\)\)?.*$")
 			set(LYX_MAJOR_VERSION ${CMAKE_MATCH_1})
 			set(LYX_MINOR_VERSION ${CMAKE_MATCH_2})
-			set(LYX_PATCH_VERSION ${CMAKE_MATCH_4}) # TODO 2.1.0svn, LYX_PATCH_VERSION == 0
+			set(LYX_PATCH_VERSION ${CMAKE_MATCH_4})
 			set(LYX_DIR_VER "LYX_DIR_${CMAKE_MATCH_1}${CMAKE_MATCH_2}x")
 			set(LYX_USERDIR_VER "LYX_USERDIR_${CMAKE_MATCH_1}${CMAKE_MATCH_2}x")
 			set(LYX_INSTALL_SUFFIX "${CMAKE_MATCH_1}.${CMAKE_MATCH_2}")
@@ -219,23 +219,18 @@ foreach(_c_l ${_config_lines} )
 	endif()
 endforeach(_c_l)
 
-# Find the revision number and use it as the release in rpm-package-build.
-# This way we may omit the otherwise needed "--force" parameter when
-# installing from that rpm package.
+# Find the revision number and for later use
 FIND_PROGRAM(LYX_SVNVERSION svnversion)
 #message(STATUS "svnversion = ${LYX_SVNVERSION}")
 if(LYX_SVNVERSION)
-	# TODO revision number has nothing to do with cpack vars: split out
-	EXECUTE_PROCESS(COMMAND ${LYX_SVNVERSION} WORKING_DIRECTORY "${TOP_SRC_DIR}" OUTPUT_VARIABLE CPACK_RPM_PACKAGE_RELEASE OUTPUT_STRIP_TRAILING_WHITESPACE)
+	EXECUTE_PROCESS(COMMAND ${LYX_SVNVERSION} WORKING_DIRECTORY "${TOP_SRC_DIR}" OUTPUT_VARIABLE LYX_PACKAGE_RELEASE OUTPUT_STRIP_TRAILING_WHITESPACE)
 	# We use this value also to set the package-patch-value
-	if(CPACK_RPM_PACKAGE_RELEASE MATCHES "^\([0-9]+\)")
-		set(CPACK_PACKAGE_VERSION_PATCH ${CMAKE_MATCH_1}) # TODO this is not the patch level
+	if(LYX_PACKAGE_RELEASE MATCHES "^\([0-9]+\)")
 		set(LYX_REVISION_VERSION ${CMAKE_MATCH_1})
 	endif()
 else()
 	set(LYX_REVISION_VERSION svn) #TODO use date
 endif()
-
 
 
 if(LYX_PROGRAM_SUFFIX)
@@ -686,7 +681,12 @@ endif()
 set(CPACK_PACKAGE_DESCRIPTION_FILE "${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/LyX_description.txt")
 set(CPACK_RESOURCE_FILE_LICENSE "${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/LyX_license.txt")
 
-
+# Use the revision number saved in ${LYX_PACKAGE_RELEASE}
+# as the release in rpm-package-build.
+# This way we maycan omit the otherwise needed "--force" parameter when
+# installing from that rpm package.
+set(CPACK_RPM_PACKAGE_RELEASE ${LYX_PACKAGE_RELEASE})
+set(CPACK_PACKAGE_VERSION_PATCH ${LYX_REVISION_VERSION})
 
 # we do not have a readme or welcome data,
 # so we do not provide infofiles for
