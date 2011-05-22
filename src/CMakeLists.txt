@@ -87,8 +87,9 @@ endif()
 
 if (LYX_VLD)
 	configure_file(${vld_path}/vld.ini ${CMAKE_CURRENT_BINARY_DIR}/vld.ini COPYONLY)
-	configure_file(${vld_path}/vld.ini ${CMAKE_CURRENT_BINARY_DIR}/memory_leak_report.txt COPYONLY)
+	set_source_files_properties(${CMAKE_CURRENT_BINARY_DIR}/memory_leak_report.txt PROPERTIES GENERATED TRUE)
 	set(vld_files ${CMAKE_CURRENT_BINARY_DIR}/vld.ini ${CMAKE_CURRENT_BINARY_DIR}/memory_leak_report.txt)
+	lyx_add_info_files(VLD ${vld_files})
 endif()
 
 if(WIN32)
@@ -103,6 +104,7 @@ lyx_find_info_files(LyXCMakeFiles ${TOP_SRC_DIR}/development/cmake/*.h)
 lyx_find_info_files(LyXCMakeFiles ${TOP_SRC_DIR}/development/cmake/*.msvc)
 lyx_find_info_files(LyXCMakeFiles ${TOP_SRC_DIR}/development/cmake/modules/*)
 lyx_find_info_files(LyXUiFiles ${TOP_SRC_DIR}/lib/ui/*)
+
 
 add_executable(${_lyx}
 	${WIN32_CONSOLE}
