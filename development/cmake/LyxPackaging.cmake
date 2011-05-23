@@ -67,7 +67,7 @@ set(CPACK_SOURCE_INSTALLED_DIRECTORIES "${TOP_SRC_DIR};/") # http://www.mail-arc
 
 set(CPACK_STRIP_FILES 1)
 
-# Finaly give some hints about files not to be included in souse package
+# Finaly give some hints about files not to be included in source package
 SET(CPACK_SOURCE_IGNORE_FILES
 "/CVS/"
 "/\\\\.svn/"

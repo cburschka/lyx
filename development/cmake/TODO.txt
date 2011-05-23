@@ -55,8 +55,9 @@ Cleanup
     Then the cmake files doesn't look that antiquated. And seeing an uppercase variable means
     that this variable wasn't introduced by lyx and is a cmake default name.
   * DONE: port 'development/cmake/doc/ReplaceValues.pl' to python
-  * split master CMakeLists somehow: cpack, pcs, warnings, dependencies, defaults, install, options, ...
+  * STARTED: split master CMakeLists somehow: cpack, pcs, warnings, dependencies, defaults, install, options, ...
                                      remove dependencies between these modules
+	DONE for cpack
 
 
 
