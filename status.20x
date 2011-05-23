@@ -38,8 +38,6 @@ What's new
 
 * USER INTERFACE
 
-- Equation numbering in child documents now works properly (bug 7531).
-
 - Updated French, German, Japanese, Italian, Portuguese, Serbian (Latin)
   and Spanish User Interface Localization.
 
@@ -52,8 +50,6 @@ What's new
 
 
 * BUILD/INSTALLATION
-
-- Re-add some lost translations from layout files.
 
 
 
@@ -101,6 +97,8 @@ What's new
 
 - Show the correct label after adding a line to an AMS Multline formula (bug
   #7511).
+  
+- Equation numbering in child documents now works properly (bug 7531).
 
 - Display \utilde and \undertilde in formulas correctly (part of bug #6622).
 
@@ -115,8 +113,10 @@ What's new
 - Fix On-the-fly spellchecker jumps to next pattern match when replacing a
   misspelled word with a suggested one from context menu (#7564).
 
+
 * DOCUMENTATION AND LOCALIZATION
 
+- Re-add some lost translations from layout files.
 
 
 * BUILD/INSTALLATION
