@@ -2,7 +2,7 @@
 
 LyX Installer Language File
 Language: English
-Author: Joost Verburg
+Author: Joost Verburg, Uwe Stöhr
 
 */
 
@@ -12,7 +12,7 @@ ${LangFileString} TEXT_NO_PRIVILEDGES "You don't have Administrator or Power Use
 
 ${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
 
-${LangFileString} TEXT_WELCOME "This wizard will guide you through the installation of $(^NameDA), the document processor that encourages an approach to writing based on the structure of your documents, not their appearance.$\r$\n$\r$\n$(^ClickNext)"
+${LangFileString} TEXT_WELCOME "This wizard will guide you through the installation of $(^NameDA), $\r$\n$\r$\n$_CLICK"
 
 ${LangFileString} TEXT_REINSTALL_TITLE "Reinstall"
 ${LangFileString} TEXT_REINSTALL_SUBTITLE "Choose whether you want to reinstall the $(^NameDA) program files."
@@ -88,3 +88,99 @@ ${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
 ${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
+
+${LangFileString} FileTypeTitle "LyX-Document"
+
+${LangFileString} SecInstGSviewTitle "GSview"
+${LangFileString} SecInstJabRefTitle "JabRef"
+${LangFileString} SecAllUsersTitle "Install for all users?"
+${LangFileString} SecFileAssocTitle "File associations"
+${LangFileString} SecDesktopTitle "Desktop icon"
+
+${LangFileString} SecCoreDescription "The LyX files."
+${LangFileString} SecInstGSviewDescription "Program to view Postscript- and PDF-documents."
+${LangFileString} SecInstJabRefDescription "Bibliography reference manager and editor for BibTeX files."
+${LangFileString} SecAllUsersDescription "Install LyX for all users or just the current user."
+${LangFileString} SecFileAssocDescription "Files with a .lyx extension will automatically open in LyX."
+${LangFileString} SecDesktopDescription "A LyX icon on the desktop."
+
+${LangFileString} LangSelectHeader "Selection of LyX's menu language"
+${LangFileString} AvailableLang " Available Languages "
+
+${LangFileString} EnterLaTeXHeader1 'LaTeX-distribution'
+${LangFileString} EnterLaTeXHeader2 'Set the LaTeX-distribution that LyX should use.'
+${LangFileString} EnterLaTeXFolder 'You can optionally set here the path to the file $\"latex.exe$\" and therewith set the \
+					   LaTeX-distribution that should be used by LyX.$\r$\n\
+					   If you don$\'t use LaTeX, LyX cannot output documents!$\r$\n\
+					   $\r$\n\
+					   The installer has detected the LaTeX-distribution \
+					   $\"$LaTeXName$\" on your system. Displayed below is its path.'
+${LangFileString} EnterLaTeXFolderNone 'Set below the path to the file $\"latex.exe$\". Therewith you set which \
+					       LaTeX-distribution should be used by LyX.$\r$\n\
+					       If you don$\'t use LaTeX, LyX cannot output documents!$\r$\n\
+					       $\r$\n\
+					       The installer couldn$\'t find a LaTeX-distribution on your system.'
+${LangFileString} PathName 'Path to the file $\"latex.exe$\"'
+${LangFileString} DontUseLaTeX "Don$\'t use LaTeX"
+${LangFileString} InvalidLaTeXFolder 'The file $\"latex.exe$\" is not in the specified path.'
+
+${LangFileString} LatexInfo 'Now the installer of the LaTeX-distribution $\"MiKTeX$\" will be launched.$\r$\n\
+			            To install the program press the $\"Next$\"-button in the installer windows until the installation begins.$\r$\n\
+				    $\r$\n\
+				    !!! Please use all default options of the MiKTeX-installer !!!'
+${LangFileString} LatexError1 'No LaTeX-distribution could be found!$\r$\n\
+                      		      LyX cannot be used without a LaTeX-distribution like $\"MiKTeX$\"!$\r$\n\
+				      The installation will therefore be aborted.'
+			    
+${LangFileString} GSviewInfo 'Now the installer of the program $\"GSview$\" will be launched.$\r$\n\
+			             To install the program press the $\"Setup$\"-button in the first installer window,$\r$\n\
+				     choose a language and then press the $\"Next$\"-button in the following installer windows.$\r$\n\
+				     You can use all default options of the GSview-installer.'
+${LangFileString} GSviewError 'The program $\"GSview$\" could not successfully be installed!$\r$\n\
+		                      The installer will continue anyway.$\r$\n\
+				      Try to install GSview again later.'
+				      
+${LangFileString} JabRefInfo 'Now the installer of the program $\"JabRef$\" will be launched.$\r$\n\
+				     You can use all default options of the JabRef-installer.'
+${LangFileString} JabRefError 'The program $\"JabRef$\" could not successfully be installed!$\r$\n\
+		                      The installer will continue anyway.$\r$\n\
+				      Try to install JabRef again later.'
+				      
+${LangFileString} LatexConfigInfo "The following configuration of LyX will take a while."
+
+${LangFileString} MiKTeXPathInfo "In order that every user is later able to customize MiKTeX for his needs$\r$\n\
+					 it is necessary to set write permissions for all users to MiKTeX$\'s installation folder$\r$\n\
+					 $MiKTeXPath $\r$\n\
+					 and its subfolders."
+${LangFileString} MiKTeXInfo 'The LaTeX-distribution $\"MiKTeX$\" will be used together with LyX.$\r$\n\
+				     It is recommended to install available MiKTeX-updates using the program $\"MiKTeX Update Wizard$\"$\r$\n\
+				     before you use LyX for the first time.$\r$\n\
+				     Would you now check for MiKTeX updates?'
+
+${LangFileString} ModifyingConfigureFailed "Could not set 'path_prefix' in the configure script"
+${LangFileString} CreateCmdFilesFailed "Could not create lyx.bat"
+${LangFileString} RunConfigureFailed "Could not execute the configure script"
+${LangFileString} InstallRunning "The installer is already running!"
+${LangFileString} StillInstalled "LyX is already installed! Deinstall LyX first."
+
+${LangFileString} FinishPageMessage "Congratulations! LyX has been installed successfully.$\r$\n\
+					    $\r$\n\
+					    (The first start of LyX might take some seconds.)"
+${LangFileString} FinishPageRun "Launch LyX"
+
+${LangFileString} UnNotInRegistryLabel "Unable to find LyX in the registry.$\r$\n\
+					       Shortcuts on the desktop and in the Start Menu will not be removed."
+${LangFileString} UnInstallRunning "You must close LyX at first!"
+${LangFileString} UnNotAdminLabel "You must have administrator privileges to uninstall LyX!"
+${LangFileString} UnReallyRemoveLabel "Are you sure you want to completely remove LyX and all of its components?"
+${LangFileString} UnLyXPreferencesTitle 'LyX$\'s user preferences'
+${LangFileString} UnGSview 'Please press the $\"Uninstall$\" button in the next window to uninstall$\r$\n\
+				   the Postscript and PDF-viewer $\"GSview$\".'
+${LangFileString} UnRemoveSuccessLabel "LyX was successfully removed from your computer."
+
+${LangFileString} SecUnMiKTeXDescription "Uninstalls the LaTeX-distribution MiKTeX."
+${LangFileString} SecUnJabRefDescription "Uninstalls the bibliography manager JabRef."
+${LangFileString} SecUnPreferencesDescription 'Deletes LyX$\'s configuration folder$\r$\n\
+					   "$AppPre\username\$AppSuff\${APP_DIR_USERDATA}"$\r$\n\
+					   for all users.'
+${LangFileString} SecUnProgramFilesDescription "Uninstall LyX and all of its components."

@@ -1,0 +1,108 @@
+!insertmacro LANGFILE_EXT "Czech"
+
+${LangFileString} WelcomePageText "Tento pomocník vás provede instalací LyXu.$\r$\n\
+					  $\r$\n\
+					  K instalaci LyXu budete potøebovat administrátorská práva.$\r$\n\
+					  $\r$\n\
+					  Je doporuèeno zavøít všechny ostatní aplikace pøed spuštìním instalace. Umožníte tím aktualizovat patøièné systémové soubory bez nutnosti restartovat poèítaè.$\r$\n\
+					  $\r$\n\
+					  $_CLICK"
+
+${LangFileString} FileTypeTitle "LyX-dokumentù"
+
+${LangFileString} SecInstGSviewTitle "GSview"
+${LangFileString} SecInstJabRefTitle "JabRef"
+${LangFileString} SecAllUsersTitle "Instalovat pro všechny uživatele?"
+${LangFileString} SecFileAssocTitle "Asociovat soubory"
+${LangFileString} SecDesktopTitle "Ikonu na plochu"
+
+${LangFileString} SecCoreDescription "Soubory LyXu."
+${LangFileString} SecInstGSviewDescription "Prohlížeè Postscriptu and PDF-dokumentù."
+${LangFileString} SecInstJabRefDescription "Správce pro bibliografii a editor souborù BibTeXu."
+${LangFileString} SecAllUsersDescription "Instalovat LyX pro všechny uživatele nebo pouze pro souèasného uživatele."
+${LangFileString} SecFileAssocDescription "Soubory s pøíponou .lyx se automaticky otevøou v LyXu."
+${LangFileString} SecDesktopDescription "Ikonu LyXu na plochu."
+
+${LangFileString} LangSelectHeader "Výbìr jazyka prostøedí LyXu"
+${LangFileString} AvailableLang " Dostupné jazyky "
+
+${LangFileString} EnterLaTeXHeader1 'Distribuce LaTeXu'
+${LangFileString} EnterLaTeXHeader2 'Nastavte distribuci LaTeXu, kterou má LyX používat.'
+${LangFileString} EnterLaTeXFolder 'Mùžete zde volitelnì nastavit cestu k souboru $\"latex.exe$\" a tím urèit \
+					   distribuci LaTeXu, kterou bude používat Lyx.$\r$\n\
+					   Pokud nepoužijete LaTeX, LyX nemùže vysázet výsledné dokumenty!$\r$\n\
+					   $\r$\n\
+					   Instalátor nalezl na vašem poèítaèi LaTeXovou distribuci \
+					   $\"$LaTeXName$\". Níže je uvedena její cesta.'
+${LangFileString} EnterLaTeXFolderNone 'Níže nastavte cestu k souboru $\"latex.exe$\". Urèíte tím, která \
+					       distribuce LaTeXu bude používána LyXem.$\r$\n\
+					       Pokud nepoužijete LaTeX, LyX nemùže vysázet výsledné dokumenty!$\r$\n\
+					       $\r$\n\
+					       Instalátor nemohl nalézt distribuci LaTeXu na vašem poèítaèi.'
+${LangFileString} PathName 'Cesta k souboru $\"latex.exe$\"'
+${LangFileString} DontUseLaTeX "Nepoužívat LaTeX"
+${LangFileString} InvalidLaTeXFolder 'Soubor $\"latex.exe$\" není v zadané cestì.'
+
+${LangFileString} LatexInfo 'Nyní bude spuštìn instalátor LaTeXové-distribuce $\"MiKTeX$\".$\r$\n\
+			            V instalátoru pokraèujte tlaèítkem $\"Next$\" dokud instalace nezaène.$\r$\n\
+				    $\r$\n\
+				    !!! Užijte všechny pøedvolby instalátoru MiKTeX !!!'
+${LangFileString} LatexError1 'Žádná LaTeXová-distribuce nebyla nalezena!$\r$\n\
+                      		      Nemùžete používat LyX bez distribuce LaTeXu jako je napø. $\"MiKTeX$\"!$\r$\n\
+				      Instalace bude proto pøerušena.'
+			    
+${LangFileString} GSviewInfo 'Nyní bude spuštìn instalátor programu $\"GSview$\".$\r$\n\
+			             K jeho instalaci zmáèknìte nejprve tlaèítko $\"Setup$\" v prvním oknì,$\r$\n\
+				     vyberte jazyk a stisknìtì tlaèítko $\"Next$\" v následujícím oknì.$\r$\n\
+				     Mùžete použít všechny pøedvolby tohoto instalátoru.'
+${LangFileString} GSviewError 'Program $\"GSview$\" nebyl úspìšnì nainstalován!$\r$\n\
+		                      Instalátor bude navzdory tomu pokraèovat.$\r$\n\
+				      Pokuste se nainstalovat GSview pozdìji.'
+				      
+${LangFileString} JabRefInfo 'Nyní bude spuštìn instalátor programu $\"JabRef$\".$\r$\n\
+				     Mùžete použít všechny pøedvolby instalátoru JabRef.'
+${LangFileString} JabRefError 'Program $\"JabRef$\" nebyl úspìšnì nainstalován.$\r$\n\
+		                      Instalátor bude navzdory tomu pokraèovat.$\r$\n\
+				      Pokuste se nainstalovat JabRef pozdìji.'
+				      
+${LangFileString} LatexConfigInfo "Následující konfigurování LyXu chvíli potrvá."
+
+${LangFileString} MiKTeXPathInfo "Aby každý uživatel mohl pozdìji pøizpùsobit MiKTeX pro své potøeby$\r$\n\
+					 je tøeba nastavit práva zápisu pro všechny uživatele do adresáøe MiKTeXu$\r$\n\
+					 $MiKTeXPath $\r$\n\
+					 a všech jeho podadresáøù."
+${LangFileString} MiKTeXInfo 'LaTeXová distribuce $\"MiKTeX$\" bude použita dohromady s LyXem.$\r$\n\
+				     Je doporuèeno nainstalovat dostupné aktualizace MiKTeXu pomocí programu $\"MiKTeX Update Wizard$\"$\r$\n\
+				     pøedtím než poprvé spustíte LyX.$\r$\n\
+				     Chcete zkontrolovat dostupné aktualizace MiKTeXu nyní?'
+				     
+${LangFileString} UpdateNotAllowed "Tento aktualizaèní balíèek mùže být použít jen na ${PRODUCT_VERSION_OLD}!"
+${LangFileString} ModifyingConfigureFailed "Nelze nastavit 'path_prefix' v konfiguraèním skriptu"
+${LangFileString} CreateCmdFilesFailed "Nelze vytvoøit lyx.bat"
+${LangFileString} RunConfigureFailed "Nelze spustit konfiguraèní skript"
+${LangFileString} NotAdmin "Potøebujete administrátorská práva pro nainstalování LyXu!"
+${LangFileString} InstallRunning "Instalátor je již spuštìn!"
+${LangFileString} StillInstalled "LyX je již nainstalován! Nejprve LyX odinstalujte."
+
+${LangFileString} FinishPageMessage "Blahopøejeme! LyX byl úspìšnì nainstalován.$\r$\n\
+					    $\r$\n\
+					    (První spuštìní LyXu mùže trvat delší dobu.)"
+${LangFileString} FinishPageRun "Spustit LyX"
+
+${LangFileString} UnNotInRegistryLabel "Nelze nalézt LyX v registrech.$\r$\n\
+					       Zástupce na ploše a ve Start menu nebude smazán."
+${LangFileString} UnInstallRunning "Nejprve musíte zavøít LyX!"
+${LangFileString} UnNotAdminLabel "Musíte mít administrátorská práva pro odinstalování LyXu!"
+${LangFileString} UnReallyRemoveLabel "Chcete opravdu smazat LyX a všechny jeho komponenty?"
+${LangFileString} UnLyXPreferencesTitle 'Uživatelská nastavení LyXu'
+${LangFileString} UnGSview 'Zvolte tlaèítko $\"Uninstall$\" v dalším oknì pro odinstalování$\r$\n\
+				   prohlížeèe $\"GSview$\".'
+${LangFileString} UnRemoveSuccessLabel "LyX byl úspìšnì odstranìn z vašeho poèítaèe."
+
+${LangFileString} SecUnMiKTeXDescription "Odinstalovat LaTeXovou-distribuci MiKTeX."
+${LangFileString} SecUnJabRefDescription "Odinstalovat manažer bibliografie JabRef."
+${LangFileString} SecUnPreferencesDescription 'Smazat konfiguraèní adresáø LyXu$\r$\n\
+					   $\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
+					   pro všechny uživatele.'
+${LangFileString} SecUnProgramFilesDescription "Odinstalovat LyX a všechny jeho komponenty."
+

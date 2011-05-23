@@ -1,0 +1,108 @@
+!insertmacro LANGFILE_EXT "Turkish"
+
+${LangFileString} WelcomePageText "Bu sihirbaz size LyX programýný kuracak.$\r$\n\
+					  $\r$\n\
+					  LyX kurabilmek için yönetici yetkilerine ihtiyacýnýz var.$\r$\n\
+					  $\r$\n\
+					  Kuruluma baþlamadan önce diðer programlarý kapatmanýz tavsiye edilir. Böylece bilgisayarýnýzý yeniden baþlatmanýza gerek kalmadan ilgili sistem dosyalarý güncellenebilir.$\r$\n\
+					  $\r$\n\
+					  $_CLICK"
+
+${LangFileString} FileTypeTitle "LyX-Document"
+
+${LangFileString} SecInstGSviewTitle "GSview"
+${LangFileString} SecInstJabRefTitle "JabRef"
+${LangFileString} SecAllUsersTitle "Tüm kullanýcýlar için kur?"
+${LangFileString} SecFileAssocTitle "Dosya eþleþmeleri"
+${LangFileString} SecDesktopTitle "Masaüstü ikonu"
+
+${LangFileString} SecCoreDescription "LyX dosyalarý."
+${LangFileString} SecInstGSviewDescription "Postscript ve PDF gösterici program."
+${LangFileString} SecInstJabRefDescription "Bibliography reference manager and editor for BibTeX files."
+${LangFileString} SecAllUsersDescription "LyX tüm kullanýcýlar için mi yoksa yalnýzca bu kullanýcýya mý kurulacak."
+${LangFileString} SecFileAssocDescription "Uzantýsý .lyx olan dosyalar otomatik olarak LyX ile açýlsýn."
+${LangFileString} SecDesktopDescription "Masaüstüne bir LyX ikonu koy."
+
+${LangFileString} LangSelectHeader "LyX arabirim dili seçimi"
+${LangFileString} AvailableLang " Mevcut Diller "
+
+${LangFileString} EnterLaTeXHeader1 'LaTeX-daðýtýmý'
+${LangFileString} EnterLaTeXHeader2 'LyX in kullanacaðý LaTeX daðýtýmýný seçin.'
+${LangFileString} EnterLaTeXFolder 'You can optionally set here the path to the file $\"latex.exe$\" and therewith set the \
+					   LaTeX-distribution that should be used by LyX.$\r$\n\
+					   If you don$\'t use LaTeX, LyX cannot output documents!$\r$\n\
+					   $\r$\n\
+					   The installer has detected the LaTeX-distribution \
+					   $\"$LaTeXName$\" on your system. Displayed below is its path.'
+${LangFileString} EnterLaTeXFolderNone 'Set below the path to the file $\"latex.exe$\". Therewith you set which \
+					       LaTeX-distribution should be used by LyX.$\r$\n\
+					       If you don$\'t use LaTeX, LyX cannot output documents!$\r$\n\
+					       $\r$\n\
+					       The installer couldn$\'t find a LaTeX-distribution on your system.'
+${LangFileString} PathName 'Path to the file $\"latex.exe$\"'
+${LangFileString} DontUseLaTeX "LaTeX kullanma"
+${LangFileString} InvalidLaTeXFolder '$\"latex.exe$\" dosyasý belirttiðiniz dizinde bulunamadý.'
+
+${LangFileString} LatexInfo 'Þimdi LaTeX daðýtýmý $\"MiKTeX$\" kurulumu baþlatýlacak.$\r$\n\
+			            Programý kurmak için kurulum baþlayana kadar $\"Devam$\" tuþuyla ilerleyin.$\r$\n\
+				    $\r$\n\
+				    !!! Lütfen MiKTeX kurucusunun öntanýmlý ayarlarýný deðiþtirmeyin !!!'
+${LangFileString} LatexError1 'Hiç bir LaTeX daðýtýmý bulunamadý!$\r$\n\
+                      		      LyX $\"MiKTeX$\" gibi bir LaTeX daðýtýmý olmadan kullanýlamaz!$\r$\n\
+				      Bu nedenle kurulum iptal edilecek.'
+			
+${LangFileString} GSviewInfo 'Þimdi $\"GSview$\" kurulum programý baþlatýlacak.$\r$\n\
+			             Programý kurmak için ile kurulum penceresinde $\"Setup$\" tuþuna basýp$\r$\n\
+				     bir dil seçin, ve sonraki pencerelerde $\"Devam$\" tuþuyla ilerleyin.$\r$\n\
+				     GSview kurulumunun tüm öntanýmlý seçeneklerini kullanabilirsiniz.'
+${LangFileString} GSviewError '$\"GSview$\" kurulumu baþarýsýz oldu!$\r$\n\
+		                      Kurulum gene de devam edecek.$\r$\n\
+				      Daha sonra GSview kurmayý tekrar deneyin.'
+
+${LangFileString} JabRefInfo 'Now the installer of the program $\"JabRef$\" will be launched.$\r$\n\
+				     You can use all default options of the JabRef-installer.'
+${LangFileString} JabRefError 'The program $\"JabRef$\" could not successfully be installed!$\r$\n\
+		                      The installer will continue anyway.$\r$\n\
+				      Try to install JabRef again later.'
+
+${LangFileString} LatexConfigInfo "Sýradaki LyX yapýlandýrmasý biraz zaman alacak."
+
+${LangFileString} MiKTeXPathInfo "In order that every user is later able to customize MiKTeX for his needs$\r$\n\
+					 it is necessary to set write permissions for all users to MiKTeX's installation folder$\r$\n\
+					 $MiKTeXPath $\r$\n\
+					 and its subfolders."
+${LangFileString} MiKTeXInfo 'The LaTeX-distribution $\"MiKTeX$\" will be used together with LyX.$\r$\n\
+				     It is recommended to install available MiKTeX-updates using the program $\"MiKTeX Update Wizard$\"$\r$\n\
+				     before you use LyX for the first time.$\r$\n\
+				     Would you now check for MiKTeX updates?'
+
+${LangFileString} UpdateNotAllowed "This update package can only update ${PRODUCT_VERSION_OLD}!"
+${LangFileString} ModifyingConfigureFailed "Yapýlandýrma programýnda 'path_prefix' ayarlanamadý"
+${LangFileString} CreateCmdFilesFailed "lyx.bat oluþturulamadý"
+${LangFileString} RunConfigureFailed "Yapýlandýrma programý çalýþtýrýlamadý"
+${LangFileString} NotAdmin "LyX kurabilmek için yönetici yetkileri gerekiyor!"
+${LangFileString} InstallRunning "Kurulum programý zaten çalýþýyor!"
+${LangFileString} StillInstalled "LyX kurulu zaten! Önce onu kaldýrýn."
+
+${LangFileString} FinishPageMessage "Tebrikler! LyX baþarýyla kuruldu.$\r$\n\
+					    $\r$\n\
+					    (LyX in ilk açýlýþý birkaç saniye alabilir.)"
+${LangFileString} FinishPageRun "LyX Baþlat"
+
+${LangFileString} UnNotInRegistryLabel "Sistem kütüðünde LyX bulunamadý.$\r$\n\
+					       Baþlat menüsü ve masaüstünüzdeki kýsayollar silinemeyecek."
+${LangFileString} UnInstallRunning "Önce LyX i kapatmalýsýnýz!"
+${LangFileString} UnNotAdminLabel "LyX kaldýrabilmek için yönetici yetkileri gerekiyor!"
+${LangFileString} UnReallyRemoveLabel "LyX ve tüm bileþenlerini kaldýrmak istediðinize emin misiniz?"
+${LangFileString} UnLyXPreferencesTitle 'LyX$\'s user preferences'
+${LangFileString} UnGSview 'Lütfen bir sonraki pencerede $\"Kaldýr$\" düðmesine basarak$\r$\n\
+				   $\"GSview$\" postscript ve pdf göstericisini kaldýrýn.'
+${LangFileString} UnRemoveSuccessLabel "LyX bilgisayarýnýzdan baþarýyla kaldýrýldý."
+
+${LangFileString} SecUnMiKTeXDescription "Uninstalls the LaTeX-distribution MiKTeX."
+${LangFileString} SecUnJabRefDescription "Uninstalls the bibliography manager JabRef."
+${LangFileString} SecUnPreferencesDescription 'Deletes LyX$\'s configuration folder$\r$\n\
+					   $\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
+					   for all users.'
+${LangFileString} SecUnProgramFilesDescription "Uninstall LyX and all of its components."
+

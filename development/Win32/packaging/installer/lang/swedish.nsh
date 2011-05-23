@@ -1,0 +1,108 @@
+!insertmacro LANGFILE_EXT "Swedish"
+
+${LangFileString} WelcomePageText "Denna guide tar dig igenom installationen av LyX.$\r$\n\
+					  $\r$\n\
+					  Du behöver administratörsrättigheter för att installera LyX.$\r$\n\
+					  $\r$\n\
+					  Det rekommenderas att du avslutar alla andra program innan du fortsätter installationen. Detta tillåter att installationen uppdaterar nödvändiga systemfiler utan att behöva starta om din dator.$\r$\n\
+					  $\r$\n\
+					  $_CLICK"
+
+${LangFileString} FileTypeTitle "LyX-dokument"
+
+${LangFileString} SecInstGSviewTitle "GSview"
+${LangFileString} SecInstJabRefTitle "JabRef"
+${LangFileString} SecAllUsersTitle "Installera för alla användare?"
+${LangFileString} SecFileAssocTitle "Filassociationer"
+${LangFileString} SecDesktopTitle "Skrivbordsikon"
+
+${LangFileString} SecCoreDescription "LyX-filer."
+${LangFileString} SecInstGSviewDescription "Program för att visa Postscript- och PDF-dokument."
+${LangFileString} SecInstJabRefDescription "Program för att hantera bibliografiska referenser och redigera BibTeX-filer."
+${LangFileString} SecAllUsersDescription "Installera LyX för alla användare, eller enbart för den aktuella användare."
+${LangFileString} SecFileAssocDescription "Skapa en association mellan programmet och filtilläget .lyx."
+${LangFileString} SecDesktopDescription "En LyXikon på skrivbordet."
+
+${LangFileString} LangSelectHeader "Val av språk i LyXs menyer"
+${LangFileString} AvailableLang " Tillgängliga språk "
+
+${LangFileString} EnterLaTeXHeader1 'LaTeX-distribution'
+${LangFileString} EnterLaTeXHeader2 'Ställ in LaTeX-distributionen som LyX skall använda.'
+${LangFileString} EnterLaTeXFolder 'Alternativt kan du här ställa in sökvägen till filen $\"latex.exe$\" och därmed manuellt bestämma vilken \
+					   LaTeX-distribution som skall användas av LyX.$\r$\n\
+					   Utan LaTeX kan LyX bara redigera LyX-filer, inte producera t.ex. PDF-dokument!$\r$\n\
+					   $\r$\n\
+					   Installationsprogrammet har upptäckt LaTeX-distributionen \
+					   $\"$LaTeXName$\" i ditt system. Nedan visas dess sökväg.'
+${LangFileString} EnterLaTeXFolderNone 'Sätt nedan sökvägen till filen $\"latex.exe$\". Därmed väljer du vilken \
+					       LaTeX-distribution som skall användas av LyX.$\r$\n\
+					       Utan LaTeX kan LyX bara redigera LyX-filer, inte producera t.ex. PDF-dokument!$\r$\n\
+					       $\r$\n\
+					       Installationsprogrammetn kunde inte hitta LaTeX-distributionen i ditt system.'
+${LangFileString} PathName 'Sökväg till filen $\"latex.exe$\"'
+${LangFileString} DontUseLaTeX "Använd inte LaTeX"
+${LangFileString} InvalidLaTeXFolder 'Kan inte hitta $\"latex.exe$\"'
+
+${LangFileString} LatexInfo 'Nu kommer installationsprogrammet för LaTeX-distribution $\"MiKTeX$\" att köras.$\r$\n\
+			            För att installera programmet, klicka på knappen $\"Next$\" i installationsfönstret tills installation börjar.$\r$\n\
+				    $\r$\n\
+				    !!! Var snäll och använd standardinställningarna i installationsprogrammet för MiKTeX !!!'
+${LangFileString} LatexError1 'Kan inte hitta någon LaTeX-distribution!$\r$\n\
+                      		      LyX kan inte användas utan en LaTeX-distribution som tex $\"MiKTeX$\"!$\r$\n\
+				      Installation avbryts därför nu.'
+				    
+${LangFileString} GSviewInfo 'Nu kommer installationsprogrammet för $\"GSview$\" att köras.$\r$\n\
+			             För att installera programmet, klicka på knappen $\"Setup$\" i den första dialogrutan i installationsprogrammet\r$\n\
+				     välj ett språk och klicka sedan på knappen $\"Next$\" i det nästkommande installationsfönstret.$\r$\n\
+				     Du kan använda alla standardalternativ i installationsprogrammet för GSview.'
+${LangFileString} GSviewError 'Programmet $\"GSview$\" kunde inte installeras ordentligt!$\r$\n\
+		                      Installationen av LyX kommer att fortsätta ändå.$\r$\n\
+				      Försök installera GSview igen senare.'
+
+${LangFileString} JabRefInfo 'Nu kommer installationsprogrammet för $\"JabRef$\" att köras.$\r$\n\
+				     Du kan använda alla standardalternativ i installationsprogrammet för JabRef.'
+${LangFileString} JabRefError 'Programmet $\"JabRef$\" kunde inte installeras ordentligt!$\r$\n\
+		                      Installationen av LyX kommer att fortsätta ändå.$\r$\n\
+				      Försök installera GSview igen senare.'
+				      
+${LangFileString} LatexConfigInfo "Följande konfigurering av LyX kommer att ta ett tag."
+
+${LangFileString} MiKTeXPathInfo "För att varje användare senare skall kunna anpassa MiKTeX för sina behov$\r$\n\
+					 är det nödvändigt att ge skrivrättigheter till alla användare för MiKTeX's installationskatalog$\r$\n\
+					 $MiKTeXPath $\r$\n\
+					 och dess underkataloger."
+${LangFileString} MiKTeXInfo 'LaTeX-distributionen $\"MiKTeX$\" kommer att användas tillsammans med LyX.$\r$\n\
+				     Det rekommenderas att installera tillgängliga uppdateringar av MiKTeX med hjälp av programmet $\"MiKTeX Update Wizard$\".$\r$\n\
+				     innan du använder LyX för första gången.$\r$\n\
+				     Vill du kontrollera om det finns uppdateringar tillgängliga för MiKTeX nu?'
+
+${LangFileString} UpdateNotAllowed "This update package can only update ${PRODUCT_VERSION_OLD}!"
+${LangFileString} ModifyingConfigureFailed "Misslyckades med att sätta  'path_prefix' i konfigurationsskriptet"
+${LangFileString} CreateCmdFilesFailed "Kunde inte skapa filen (kommandoskriptet) lyx.bat"
+${LangFileString} RunConfigureFailed "Misslyckades med att köra konfigurationsskriptet"
+${LangFileString} NotAdmin "Du måste ha administratörsrättigheter för att installera LyX!"
+${LangFileString} InstallRunning "Installationsprogrammet körs readan!"
+${LangFileString} StillInstalled "LyX är redan installerat! Avinstallera LyX först."
+
+${LangFileString} FinishPageMessage "Gratulerar! LyX har installerats framgångsrikt.$\r$\n\
+					    $\r$\n\
+					    (Första gången LyX startas tar det litet längre tid då programmet konfigurerar sig själv automatiskt.)"
+${LangFileString} FinishPageRun "Kör LyX"
+
+${LangFileString} UnNotInRegistryLabel "Kan inte hitta LyX i registret\r$\n\
+					       Genvägar på skrivbordet och i startmeny kommer inte att tas bort."
+${LangFileString} UnInstallRunning "Du måste stänga LyX först!"
+${LangFileString} UnNotAdminLabel "Du måste ha administratörsrättigheter för att avinstallera LyX!"
+${LangFileString} UnReallyRemoveLabel "Är du säker på att du verkligen vill fullständigt avinstallera LyX och alla dess komponenter?"
+${LangFileString} UnLyXPreferencesTitle 'LyX$\'s användarinställningar'
+${LangFileString} UnGSview 'Var god tryck på knappen $\"Avinstallera$\" i följande fönster för att avinstallera$\r$\n\
+				    $\"GSview$\" som visar Postscript och PDF.'
+${LangFileString} UnRemoveSuccessLabel "LyX har framgångsrikt avinstallerats från din dator."
+
+${LangFileString} SecUnMiKTeXDescription "Avinstallerar LaTeX-distributionen MiKTeX."
+${LangFileString} SecUnJabRefDescription "Avinstallerar programmet JabRef som används för att hantera bibliografiska referenser."
+${LangFileString} SecUnPreferencesDescription 'Raderar LyX$\'s konfigurationskatalog$\r$\n\
+					   $\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
+					   för alla användare.'
+${LangFileString} SecUnProgramFilesDescription "Avinstallera LyX och alla dess komponenter."
+

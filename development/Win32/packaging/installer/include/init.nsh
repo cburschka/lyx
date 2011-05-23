@@ -26,9 +26,34 @@ Function .onInit
     MessageBox MB_OK|MB_ICONSTOP "${APP_NAME} ${APP_VERSION} requires Windows XP or later."
     Quit
   ${EndIf}
+  
+  # check that the installer is not currently running
+  System::Call 'kernel32::CreateMutexA(i 0, i 0, t "${BundleExeFile}.Instance") i .r1 ?e'
+  Pop $R0
+  ${if} $R0 != "0"
+   MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)"
+   Abort
+  ${endif}
+  System::Call 'kernel32::CreateMutexA(i 0, i 0, t "${ExeFile}.Instance") i .r1 ?e'
+  Pop $R0
+  ${if} $R0 != "0"
+   MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)"
+   Abort
+  ${endif}
+
+  # check if LyX is already installed
+  ReadRegStr $0 HKLM "${APP_UNINST_KEY}" "Publisher"
+  ${if} $0 != ""
+   MessageBox MB_OK|MB_ICONSTOP "$(StillInstalled)"
+   Abort
+  ${endif}
 
   !insertmacro PRINTER_INIT
   !insertmacro MULTIUSER_INIT
+  
+  # this can be reset to "true" in section SecDesktop
+  StrCpy $CreateDesktopIcon "false"
+  StrCpy $CreateFileAssociations "false"
  
   ${IfNot} ${Silent}
   
@@ -46,7 +71,15 @@ Function .onInit
   ${EndIf}
  
   Call SearchExternal
-  Call InitExternal
+  #Call InitExternal
+  
+  # don't let the installer sections appear when the programs are already installed
+  ${if} $PSVPath != ""
+   SectionSetText 3 "" # hides the corresponding uninstaller section, ${SecInstGSview}
+  ${endif}
+  ${if} $PathBibTeXEditor != ""
+   SectionSetText 4 "" # hides the corresponding uninstaller section, ${SecInstJabRef}
+  ${endif}
 
   ${IfNot} ${Silent}
     Banner::destroy
@@ -54,10 +87,70 @@ Function .onInit
 
 FunctionEnd
 
+# this function is called at first after starting the uninstaller
 Function un.onInit
 
   !insertmacro PRINTER_INIT
   !insertmacro MULTIUSER_UNINIT
+
+  # Check that LyX is not currently running
+  FindProcDLL::FindProc "lyx.exe"
+  ${if} $R0 == "1"
+   MessageBox MB_OK|MB_ICONSTOP "$(UnInstallRunning)"
+   Abort
+  ${endif}
+
+  # set registry root key
+  ${if} $MultiUser.Privileges == "Admin"
+  ${orif} $MultiUser.Privileges == "Power"
+    SetShellVarContext all
+  ${else}
+   SetShellVarContext current
+  ${endif}
+
+  # Ascertain whether the user has sufficient privileges to uninstall.
+  # abort when LyX was installed with admin permissions but the user doesn't have administrator privileges
+  ReadRegStr $0 HKLM "${APP_UNINST_KEY}" "DisplayVersion"
+  ${if} $0 != ""
+  ${andif} $MultiUser.Privileges != "Admin"
+  ${andif} $MultiUser.Privileges != "Power"
+   MessageBox MB_OK|MB_ICONSTOP "$(UnNotAdminLabel)"
+   Abort
+  ${endif}
+  # abort when LyX couldn't be found in the registry
+  ${if} $0 == "" # check in HKCU
+   ReadRegStr $0 HKCU "${APP_UNINST_KEY}" "DisplayVersion"
+   ${if} $0 == ""
+     MessageBox MB_OK|MB_ICONEXCLAMATION "$(UnNotInRegistryLabel)"
+   ${endif}
+  ${endif}
+  
+  # Macro to investigate name of LyX's preferences folders to be able remove them
+  !insertmacro UnAppPreSuff $AppPre $AppSuff # macro from LyXUtils.nsh
+
+  # test if MiKTeX was installed together with LyX
+  ReadRegStr $0 HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
+  ${if} $0 == "Yes${APP_SERIES_KEY}"
+   SectionSetText 2 "MiKTeX" # names the corersponding uninstaller section
+   StrCpy $LaTeXInstalled "MiKTeX"
+   DeleteRegValue HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
+  ${else}
+   SectionSetText 2 "" # hides the corresponding uninstaller section
+  ${endif}
+
+  # test if JabRef was installed together with LyX
+  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX"
+  ${if} $0 == "Yes${APP_SERIES_KEY}"
+   SectionSetText 3 "JabRef" # names the corersponding uninstaller section
+   StrCpy $JabRefInstalled "Yes"
+   DeleteRegValue HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX"
+  ${else}
+   SectionSetText 3 "" # hides the corresponding uninstaller section
+  ${endif}
+
+  # question message if the user really wants to uninstall LyX
+  MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2 "$(UnReallyRemoveLabel)" IDYES +2 # continue if yes
+  Abort
 
 FunctionEnd
 
@@ -67,7 +160,7 @@ FunctionEnd
 Var ComponentPath
 Var LyXLangName
 
-# COMPONENT can be LaTeX ImageMagick and Ghostscript
+# COMPONENT can be LaTeX, ImageMagick and Ghostscript
 !macro EXTERNAL_INIT COMPONENT
 
   # APP_REGKEY_SETUP = "Software\${APP_NAME}${APP_SERIES_KEY}\Setup"
@@ -97,3 +190,37 @@ Function InitUser
   ${EndIf}
   
 FunctionEnd
+
+#--------------------------------
+# visible installer sections
+
+Section "!${APP_NAME}" SecCore
+  SectionIn RO
+SectionEnd
+Section "$(SecFileAssocTitle)" SecFileAssoc
+  StrCpy $CreateFileAssociations "true"
+SectionEnd
+Section /o "$(SecDesktopTitle)" SecDesktop
+  StrCpy $CreateDesktopIcon "true"
+SectionEnd
+
+!if ${SETUPTYPE} == BUNDLE
+ Section /o "$(SecInstGSviewTitle)" SecInstGSview
+  AddSize 4000
+  StrCpy $InstallGSview "true"
+ SectionEnd
+ Section /o "$(SecInstJabRefTitle)" SecInstJabRef
+  AddSize 5000
+  StrCpy $InstallJabRef "true"
+ SectionEnd
+!endif
+
+# Section descriptions
+!insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
+!insertmacro MUI_DESCRIPTION_TEXT ${SecCore} "$(SecCoreDescription)"
+!insertmacro MUI_DESCRIPTION_TEXT ${SecFileAssoc} "$(SecFileAssocDescription)"
+!insertmacro MUI_DESCRIPTION_TEXT ${SecDesktop} "$(SecDesktopDescription)"
+!insertmacro MUI_DESCRIPTION_TEXT ${SecInstGSview} "$(SecInstGSviewDescription)"
+!insertmacro MUI_DESCRIPTION_TEXT ${SecInstJabRef} "$(SecInstJabRefDescription)"
+!insertmacro MUI_FUNCTION_DESCRIPTION_END
+

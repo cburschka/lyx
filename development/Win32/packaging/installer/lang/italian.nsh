@@ -10,7 +10,7 @@ Author: Enrico Forestieri
 
 ${LangFileString} TEXT_NO_PRIVILEDGES "Non si hanno privilegi da amministratore o utente avanzato.$\r$\nLe utilità per la conversione delle immagini non possono essere installate senza tali privilegi."
 
-${LangFileString} TEXT_WELCOME "Verrete guidati nell'installazione di $(^NameDA), il compilatore di documenti che incoraggia un approccio alla scrittura basato sulla struttura dei vostri testi, non sulla loro apparenza.$\r$\n$\r$\n(^ClickNext)"
+${LangFileString} TEXT_WELCOME "Verrete guidati nell'installazione di $(^NameDA)$\r$\n$\r$\n$_CLICK"
 
 ${LangFileString} TEXT_REINSTALL_TITLE "Reinstallazione"
 ${LangFileString} TEXT_REINSTALL_SUBTITLE "Scegliete se volete reinstallare i file di $(^NameDA)."
@@ -82,3 +82,110 @@ ${LangFileString} TEXT_NOTINSTALLED_DICT "L'installazione del dizionario ortogra
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Crea icona sul desktop"
 ${LangFileString} TEXT_FINISH_WEBSITE "Visitate lyx.org per ultime novità, aiuto e suggerimenti"
+
+${LangFileString} WelcomePageText "Questo programma installerà LyX nel vostro computer.$\r$\n\
+                      $\r$\n\
+                      Per installare LyX sono necessari i privilegi di amministratore.$\r$\n\
+                      $\r$\n\
+                      Si raccomanda di chiudere tutte le altre applicazioni prima di iniziare l'installazione. Questo permetterà al programma di installazione di aggiornare i file di sistema senza dover riavviare il computer.$\r$\n\
+                      $\r$\n\
+                      $_CLICK"
+
+${LangFileString} FileTypeTitle "Documento di LyX"
+
+${LangFileString} SecInstGSviewTitle "GSview"
+${LangFileString} SecInstJabRefTitle "JabRef"
+${LangFileString} SecAllUsersTitle "Installare per tutti gli utenti?"
+${LangFileString} SecFileAssocTitle "Associazioni dei file"
+${LangFileString} SecDesktopTitle "Icona sul Desktop"
+
+${LangFileString} SecCoreDescription "I file di LyX."
+${LangFileString} SecInstGSviewDescription "Programma per visualizzare documenti in formato Postscript e PDF."
+${LangFileString} SecInstJabRefDescription "Gestore dei riferimenti bibliografici ed editor per i files di BibTeX."
+${LangFileString} SecAllUsersDescription "Installazione LyX per tutti gli utenti o solo per l'utente attuale."
+${LangFileString} SecFileAssocDescription "Associa i files con estensione .lyx al programma LyX."
+${LangFileString} SecDesktopDescription "Icona LyX sul desktop."
+
+${LangFileString} LangSelectHeader "Scelta della lingua del menu di LyX"
+${LangFileString} AvailableLang " Lingue disponibili "
+
+${LangFileString} EnterLaTeXHeader1 'Distribuzione di LaTeX'
+${LangFileString} EnterLaTeXHeader2 'Scegliere la distribuzione di LaTeX che LyX dovrà usare.'
+${LangFileString} EnterLaTeXFolder 'Puoi impostare qui il percorso del file $\"latex.exe$\" e impostare di conseguenza \
+			                   la distribuzione di LaTeX che LyX dovrà usare.$\r$\n\
+					   Senza LaTeX, LyX non può generare documenti!$\r$\n\
+					   $\r$\n\
+					   Il programma di installazione ha rilevato la distribuzione di LaTeX \
+					   $\"$LaTeXName$\" sul tuo sistema. Il suo percorso è riportato sotto.'
+${LangFileString} EnterLaTeXFolderNone 'Imposta qui sotto il percorso del file $\"latex.exe$\". Con questo imposti quale \
+					       distribuzione di LaTeX dovrà essere usata da LyX.$\r$\n\
+					       Senza LaTeX, LyX non può generare documenti!$\r$\n\
+					       $\r$\n\
+					       Il programma di installazione non ha trovato una distribuzione di LaTeX sul tuo sistema.'
+${LangFileString} PathName 'Percorso del file $\"latex.exe$\"'
+${LangFileString} DontUseLaTeX "Non usare LaTeX"
+${LangFileString} InvalidLaTeXFolder 'Il file $\"latex.exe$\" non è nel percorso indicato.'
+
+${LangFileString} LatexInfo 'Verrà adesso lanciato il programma di installazione della distribuzione di LateX $\"MiKTeX$\".$\r$\n\
+                        	    Per installare il programma premere $\"Next$\" nelle finestre di installazione fino all$\'avvio dell$\'installazione.$\r$\n\
+				    $\r$\n\
+				    !!! Lasciare le impostazioni di default suggerite dal programma di installazione di $\"MiKTeX$\" !!!'
+${LangFileString} LatexError1 'Il programma non ha rilevato la presenza di alcuna distribuzione valida di LaTeX!$\r$\n\
+                                      LyX non può funzionare senza una distribuzione LaTeX (ad es. $\"MiKTeX$\")!$\r$\n\
+				      Il processo di installazione verrà quindi terminato.'
+                
+${LangFileString} GSviewInfo 'Verrà adesso lanciato il programma di installazione di $\"GSview$\".$\r$\n\
+                     		     Per proseguire premere il pulsante $\"Setup$\" che appare nella prima finestra di installazione,$\r$\n\
+				     scegliere la lingua e premere il pulsante $\"Next$\" nella finestra di installazione successiva.$\r$\n\
+				     Per comodità si consiglia di accettare le impostazioni di default suggerite dal programma di installazione di GSview.'
+${LangFileString} GSviewError 'Il programma $\"GSview$\" non è stato installato correttamente!$\r$\n\
+                      		      L$\'installazione può comunque proseguire.$\r$\n\
+				      Si consiglia di tentare nuovamente l$\'installazione di GSView al termine.'
+
+${LangFileString} JabRefInfo 'Verrà adesso lanciato il programma di installazione di $\"JabRef$\".$\r$\n\
+                     		     Puoi usare tutte le opzioni predefinite per il programma di installazione di JabRef.'
+${LangFileString} JabRefError 'Il programma $\"JabRef$\" non è stato installato correttamente!$\r$\n\
+     		               	      L$\'installazione può comunque proseguire.$\r$\n\
+				      Si consiglia di tentare nuovamente l$\'installazione di JabRef al termine.'
+
+${LangFileString} LatexConfigInfo "La seguente configurazione di LyX richiederà un po' di tempo."
+
+${LangFileString} MiKTeXPathInfo "Per permettere a tutti gli utenti di personalizzare successivamente MiKTeX in base alle loro esigenze$\r$\n\
+                     			 è necessario impostare i permessi di scrittura per tutti gli utenti alla cartella di installazione di MiKTeX$\r$\n\
+					 $MiKTeXPath $\r$\n\
+					 e alle sue sottocartelle."
+${LangFileString} MiKTeXInfo 'La distribuzione di LaTeX $\"MiKTeX$\" verrà usata insieme a LyX.$\r$\n\
+                     		     Si raccomanda di installare gli aggiornamenti disponibili per MiKTeX utilizzando il programma $\"MiKTeX Update Wizard$\"$\r$\n\
+				     prima di usare LyX per la prima volta.$\r$\n\
+				     Vuoi controllare ora la presenza di aggiornamenti per MiKTeX?'
+
+${LangFileString} UpdateNotAllowed "This update package can only update ${PRODUCT_VERSION_OLD}!"
+${LangFileString} ModifyingConfigureFailed "Fallito tentativo di aggiornare 'path_prefix' nello script di configurazione"
+${LangFileString} CreateCmdFilesFailed "Non è possibile creare lyx.bat"
+${LangFileString} RunConfigureFailed "Fallito tentativo di eseguire lo script di configurazione"
+${LangFileString} NotAdmin "Occorrono i privilegi da amministratore per installare LyX!"
+${LangFileString} InstallRunning "Il programma di installazione è già in esecuzione!"
+${LangFileString} StillInstalled "LyX è già installato! Occorre rimuoverlo per poter procedere."
+
+${LangFileString} FinishPageMessage "Congratulazioni! LyX è stato installato con successo.$\r$\n\
+                        		    $\r$\n\
+					    (Il primo avvio di LyX potrebbe richiedere qualche secondo in più.)"
+${LangFileString} FinishPageRun "Lancia LyX"
+
+${LangFileString} UnNotInRegistryLabel "Non riesco a trovare LyX nel registro.$\r$\n\
+                           		       I collegamenti sul desktop e nel menu Start non saranno rimossi."
+${LangFileString} UnInstallRunning "È necessario chiudere LyX!"
+${LangFileString} UnNotAdminLabel "Occorrono i privilegi da amministratore per rimuovere LyX!"
+${LangFileString} UnReallyRemoveLabel "Siete sicuri di voler rimuovere completamente LyX e tutti i suoi componenti?"
+${LangFileString} UnLyXPreferencesTitle 'Impostazioni personali di LyX'
+${LangFileString} UnGSview 'Per rimuovere $\"GSview$\" (un visualizzatore di file Postscript e PDF) è$\r$\n\ 
+                                   necessario premere il pulsante $\"Uninstall$\" che apparirà nella finestra successiva.'
+${LangFileString} UnRemoveSuccessLabel "LyX è stato rimosso dal sistema con successo."
+
+${LangFileString} SecUnMiKTeXDescription 'Rimuove la distribuzione di LaTeX $\"MiKTeX$\".'
+${LangFileString} SecUnJabRefDescription "Rimuove il gestore della bibliografia JabRef."
+${LangFileString} SecUnPreferencesDescription 'Elimina la cartella con la configurazione di LyX$\r$\n\
+                      				      $\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
+						      per tutti gli utenti.'
+${LangFileString} SecUnProgramFilesDescription "Rimuove LyX e tutti i suoi componenti."
+

@@ -8,22 +8,27 @@ Uninstall
 
 Var FileAssociation
 
-Section "un.Program Files" un.SecProgramFiles
+# ----------------------------------
 
+Section "un.LyX" un.SecUnProgramFiles
+
+  # LaTeX class files that were installed together with LyX
+  # will not be uninstalled because other LyX versions will
+  # need them and these few files don't harm to stay in LaTeX 
+    
   # Binaries
-  !insertmacro FileListLyXBin Delete "$INSTDIR\bin\"
-  !insertmacro FileListQtBin Delete "$INSTDIR\bin\"
-  !insertmacro FileListDll Delete "$INSTDIR\bin\"
-  !insertmacro FileListMSVC Delete "$INSTDIR\bin\"
-  !insertmacro FileListNetpbmBin Delete "$INSTDIR\bin\"
-  !insertmacro FileListDTLBin Delete "$INSTDIR\bin\"
-  !insertmacro FileListDvipostBin Delete "$INSTDIR\bin\"
-  !insertmacro FileListPDFToolsBin Delete "$INSTDIR\bin\"
-  !insertmacro FileListPDFViewBin Delete "$INSTDIR\bin\"
-  !insertmacro FileListMetaFile2EPS Delete "$INSTDIR\bin\"
-  RMDir "$INSTDIR\bin"
+  #!insertmacro FileListLyXBin Delete "$INSTDIR\bin\"
+  #!insertmacro FileListQtBin Delete "$INSTDIR\bin\"
+  #!insertmacro FileListDll Delete "$INSTDIR\bin\"
+  #!insertmacro FileListMSVC Delete "$INSTDIR\bin\"
+  #!insertmacro FileListNetpbmBin Delete "$INSTDIR\bin\"
+  #!insertmacro FileListDTLBin Delete "$INSTDIR\bin\"
+  #!insertmacro FileListDvipostBin Delete "$INSTDIR\bin\"
+  #!insertmacro FileListPDFToolsBin Delete "$INSTDIR\bin\"
+  #!insertmacro FileListPDFViewBin Delete "$INSTDIR\bin\"
+  #!insertmacro FileListMetaFile2EPS Delete "$INSTDIR\bin\"
+  RMDir /r "$INSTDIR\bin"
 
-  
   # Resources
   RMDir /r "$INSTDIR\Resources"
   
@@ -31,18 +36,35 @@ Section "un.Program Files" un.SecProgramFiles
   RMDir /r "$INSTDIR\python"
   
   # Components of ImageMagick
-  !insertmacro FileListImageMagick Delete "$INSTDIR\imagemagick\"
-  !insertmacro FileListMSVC Delete "$INSTDIR\imagemagick\"
-  RMDir "$INSTDIR\imagemagick"
+  #!insertmacro FileListImageMagick Delete "$INSTDIR\imagemagick\"
+  #!insertmacro FileListMSVC Delete "$INSTDIR\imagemagick\"
+  RMDir /r "$INSTDIR\imagemagick"
   
   # Components of Ghostscript
-  !insertmacro FileListGhostscript Delete "$INSTDIR\ghostscript\"
-  !insertmacro FileListMSVC Delete "$INSTDIR\ghostscript\"
-  RMDir "$INSTDIR\ghostscript"
+  #!insertmacro FileListGhostscript Delete "$INSTDIR\ghostscript\"
+  #!insertmacro FileListMSVC Delete "$INSTDIR\ghostscript\"
+  RMDir /r "$INSTDIR\ghostscript"
   
-  # Shortcuts
-  Delete "$SMPROGRAMS\${APP_NAME} ${APP_SERIES_NAME}.lnk"
+  # delete start menu folder
+  ReadRegStr $0 SHCTX "${APP_UNINST_KEY}" "StartMenu"
+  RMDir /r "$0"
+  #Delete "$SMPROGRAMS\${APP_NAME} ${APP_SERIES_NAME}.lnk"
+  # delete desktop icon
   Delete "$DESKTOP\${APP_NAME} ${APP_SERIES_NAME}.lnk"
+  
+  # remove file extension .lyx
+  ReadRegStr $0 SHCTX "${APP_DIR_REGKEY}" "OnlyWithLyX" # special entry to test if they were registered by this LyX version
+  ${if} $0 == "Yes${APP_SERIES_KEY}"
+   ReadRegStr $R0 SHCTX "Software\Classes\${APP_EXT}" ""
+   ${if} $R0 == "${APP_REGNAME_DOC}"
+    DeleteRegKey SHCTX "Software\Classes\${APP_EXT}13"
+    DeleteRegKey SHCTX "Software\Classes\${APP_EXT}14"
+    DeleteRegKey SHCTX "Software\Classes\${APP_EXT}15"
+    DeleteRegKey SHCTX "Software\Classes\${APP_EXT}16"
+    DeleteRegKey SHCTX "Software\Classes\${APP_EXT}"
+    DeleteRegKey SHCTX "Software\Classes\${APP_REGNAME_DOC}"
+   ${endif}
+  ${endif}
 
   # Uninstaller itself
   Delete "$INSTDIR\${SETUP_UNINSTALLER}"
@@ -52,10 +74,10 @@ Section "un.Program Files" un.SecProgramFiles
   RMDir "$INSTDIR"
   
   # Registry keys
-  DeleteRegKey SHELL_CONTEXT "${APP_REGKEY_SETUP}"
-  DeleteRegKey SHELL_CONTEXT "${APP_REGKEY}"
-  DeleteRegKey SHELL_CONTEXT "Software\Classes\${APP_REGNAME_DOC}"
-  DeleteRegKey SHELL_CONTEXT "Software\Microsoft\Windows\CurrentVersion\Uninstall\${SETUP_UNINSTALLER_KEY}"
+  DeleteRegKey SHCTX "${APP_REGKEY_SETUP}"
+  DeleteRegKey SHCTX "${APP_REGKEY}"
+  DeleteRegKey SHCTX "${APP_UNINST_KEY}"
+  DeleteRegKey HKCR "Applications\lyx.exe"
   
   # File associations
   
@@ -75,9 +97,50 @@ Section "un.Program Files" un.SecProgramFiles
 
 SectionEnd
 
-Section "un.User Preferences and Custom Files" un.SecUserFiles
+#---------------------------------
+# user preferences
+Section "un.$(UnLyXPreferencesTitle)" un.SecUnPreferences
 
-  SetShellVarContext current
-  RMDir /r "$APPDATA\${APP_DIR_USERDATA}"
+ # remove LyX's config files
+ StrCpy $AppSubfolder ${APP_DIR_USERDATA}
+ Call un.DelAppPathSub # function from LyXUtils.nsh
   
 SectionEnd
+
+#---------------------------------
+# MiKTeX
+Section "un.MiKTeX" un.SecUnMiKTeX
+
+ ${if} $LaTeXInstalled == "MiKTeX" # only uninstall MiKTeX when it was installed together with LyX 
+  ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\MiKTeX ${MiKTeXDeliveredVersion}" "UninstallString"
+  ExecWait $1 # run MiKTeX's uninstaller
+ ${endif}
+
+SectionEnd
+
+#---------------------------------
+# JabRef
+Section "un.JabRef" un.SecUnJabRef
+
+ ${if} $JabRefInstalled == "Yes" # only uninstall JabRef when it was installed together with LyX 
+  ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "UninstallString"
+  ExecWait "$1" # run JabRef's uninstaller
+ ${endif}
+
+SectionEnd
+
+#---------------------------------
+# Section descriptions
+!insertmacro MUI_UNFUNCTION_DESCRIPTION_BEGIN
+!insertmacro MUI_DESCRIPTION_TEXT ${un.SecUnMiKTeX} "$(SecUnMiKTeXDescription)"
+!insertmacro MUI_DESCRIPTION_TEXT ${un.SecUnJabRef} "$(SecUnJabRefDescription)"
+!insertmacro MUI_DESCRIPTION_TEXT ${un.SecUnPreferences} "$(SecUnPreferencesDescription)"
+!insertmacro MUI_DESCRIPTION_TEXT ${un.SecUnProgramFiles} "$(SecUnProgramFilesDescription)"
+!insertmacro MUI_UNFUNCTION_DESCRIPTION_END
+
+#Section "un.User Preferences and Custom Files" un.SecUserFiles
+#
+#  SetShellVarContext current
+#  RMDir /r "$APPDATA\${APP_DIR_USERDATA}"
+#  
+#SectionEnd

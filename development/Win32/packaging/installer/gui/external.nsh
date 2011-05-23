@@ -203,10 +203,10 @@ FunctionEnd
 
 # Page functions
 
-Function PageExternalLaTeX
-  !insertmacro EXTERNAL_SHOWDIALOG LaTeX
-FunctionEnd
+#Function PageExternalLaTeX
+#  !insertmacro EXTERNAL_SHOWDIALOG LaTeX
+#FunctionEnd
 
-Function PageExternalLaTeXValidate
-  !insertmacro EXTERNAL_VALIDATEDIALOG LaTeX
-FunctionEnd
+#Function PageExternalLaTeXValidate
+#  !insertmacro EXTERNAL_VALIDATEDIALOG LaTeX
+#FunctionEnd

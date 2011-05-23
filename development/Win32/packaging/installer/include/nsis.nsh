@@ -34,6 +34,16 @@ Configuration of standard NSIS header files
 !include LangFile.nsh
 !include MultiUser.nsh
 !include nsDialogs.nsh
+!include InstallOptions.nsh
+
+# Set of various macros and functions
+!include include\LyXUtils.nsh
+
+# Functions to check and configure the LaTeX-system
+!include include\LaTeX.nsh
+
+# Function for page to manually select LaTeX's installation folder
+!include gui\LaTeXFolder.nsh
 
 #--------------------------------
 # Include standard functions

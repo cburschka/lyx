@@ -30,30 +30,48 @@ BrandingText " "
 
 # Installer
 
+# Welcome page
 !define MUI_WELCOMEPAGE_TEXT $(TEXT_WELCOME)
 !insertmacro MUI_PAGE_WELCOME
+# Show the license.
 !insertmacro MUI_PAGE_LICENSE "${FILES_LICENSE}"
+
 !insertmacro MULTIUSER_PAGE_INSTALLMODE
 
 Page custom PageReinstall PageReinstallValidate
-Page custom PageExternalLaTeX PageExternalLaTeXValidate
+#Page custom PageExternalLaTeX PageExternalLaTeXValidate
 
+# Specify the installation directory.
 !insertmacro MUI_PAGE_DIRECTORY
+
+# Define which components to install.
+!insertmacro MUI_PAGE_COMPONENTS
+
+# Specify where to install program shortcuts.
+!define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
+!define MUI_STARTMENUPAGE_DEFAULTFOLDER "LyX ${APP_SERIES_NAME}"
+!insertmacro MUI_PAGE_STARTMENU ${APP_NAME} $StartmenuFolder
+
+# Select latex.exe manually
+Page custom LatexFolder LatexFolder_LeaveFunction
+
+# Watch the components being installed.
 !insertmacro MUI_PAGE_INSTFILES
 
 # The option to run LyX from the finish page is currently disabled because
 # it may run with Administrator priviledges, therefore causing a different
 # user directory to be used. This could be fixed by creating a separate
 # process without UAC elevation.
+# !define MUI_FINISHPAGE_RUN_TEXT "$(FinishPageRun)"
 # !define MUI_FINISHPAGE_RUN "$INSTDIR\${APP_RUN}"
 
 !define MUI_FINISHPAGE_SHOWREADME
 !define MUI_FINISHPAGE_SHOWREADME_NOTCHECKED
-!define MUI_FINISHPAGE_SHOWREADME_FUNCTION CreateDesktopShortcut
-!define MUI_FINISHPAGE_SHOWREADME_TEXT $(TEXT_FINISH_DESKTOP)
+!define MUI_FINISHPAGE_SHOWREADME_FUNCTION StartLyX
+!define MUI_FINISHPAGE_SHOWREADME_TEXT $(FinishPageRun)
 !define MUI_FINISHPAGE_LINK $(TEXT_FINISH_WEBSITE)
 !define MUI_FINISHPAGE_LINK_LOCATION "http://www.lyx.org/"
-!define MUI_PAGE_CUSTOMFUNCTION_SHOW CheckDesktopShortcut
+#!define MUI_PAGE_CUSTOMFUNCTION_SHOW CheckDesktopShortcut
 !insertmacro MUI_PAGE_FINISH
 
 # Uninstaller
@@ -68,17 +86,7 @@ Page custom PageExternalLaTeX PageExternalLaTeXValidate
 #--------------------------------
 # Installer Languages
 
-!macro LANG LANG_NAME
-  # NSIS language file
-  !insertmacro MUI_LANGUAGE "${LANG_NAME}"
-  # LyX language file
-  !insertmacro LANGFILE_INCLUDE_WITHDEFAULT "lang\${LANG_NAME}.nsh" "lang\English.nsh"
-!macroend
-
-!insertmacro LANG "english"
-!insertmacro LANG "french"
-!insertmacro LANG "german"
-!insertmacro LANG "italian"
+!include lang\TranslatedLanguages.nsh
 
 #--------------------------------
 # Version information
@@ -88,3 +96,4 @@ VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "${APP_NAME}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "${APP_INFO}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "${APP_VERSION}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "${APP_COPYRIGHT}"
+

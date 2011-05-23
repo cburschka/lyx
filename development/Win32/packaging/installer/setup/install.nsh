@@ -27,6 +27,7 @@ Section -ProgramFiles SecProgramFiles
   # Binaries
   SetOutPath "$INSTDIR\bin"
   !insertmacro FileListLyXBin File "${FILES_LYX}\bin\"
+  !insertmacro FileListLyXLauncher File "${FILES_LYX}\bin\"
   !insertmacro FileListQtBin File "${FILES_QT}\bin\"
   !insertmacro FileListDll File "${FILES_DEPS}\bin\"
   !insertmacro FileListMSVC File "${FILES_MSVC}\"
@@ -47,8 +48,8 @@ Section -ProgramFiles SecProgramFiles
   # recursively copy all files under Python
   File /r "${FILES_PYTHON}"
   # add MSVC runtimes
-  SetOutPath "$INSTDIR\python"
-  !insertmacro FileListMSVC File "${FILES_MSVC}\"
+  #SetOutPath "$INSTDIR\python"
+  #!insertmacro FileListMSVC File "${FILES_MSVC}\"
   
   
   # Compile all Pyton files to byte-code
@@ -65,13 +66,49 @@ Section -ProgramFiles SecProgramFiles
   
   # Components of ImageMagick
   SetOutPath "$INSTDIR\imagemagick"
-  !insertmacro FileListImageMagick File "${FILES_IMAGEMAGICK}\"
+  File /r "${FILES_IMAGEMAGICK}\"
   !insertmacro FileListMSVC File "${FILES_MSVC}\"
   
   # Components of Ghostscript
   SetOutPath "$INSTDIR\ghostscript"
-  !insertmacro FileListGhostscript File "${FILES_GHOSTSCRIPT}\"
+  File /r "${FILES_GHOSTSCRIPT}\"
   !insertmacro FileListMSVC File "${FILES_MSVC}\"
+  
+  !if ${SETUPTYPE} == BUNDLE
+   
+   # extract the GSview, Jabref and MiKTeX installer
+   File /r "${FILES_LYX}\external"
+
+   # install MiKTeX if not already installed
+   Call InstallMiKTeX # function from LaTeX.nsh
+   
+   # install JabRef if not already installed and the user selected it
+   # if no BibTeX editor is installed
+   ${if} $PathBibTeXEditor == ""
+    ${if} $InstallJabRef == "true"
+     # launch installer
+     MessageBox MB_OK|MB_ICONINFORMATION "$(JabRefInfo)"
+     ExecWait "$INSTDIR\${JabRefInstall}"
+     # test if JabRef is now installed
+     StrCpy $PathBibTeXEditor ""
+     ReadRegStr $PathBibTeXEditor HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "UninstallString"    
+     ${if} $PathBibTeXEditor == ""
+      MessageBox MB_OK|MB_ICONEXCLAMATION "$(JabRefError)"
+     ${else}
+      WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX" "Yes${APP_SERIES_KEY}" # special entry to tell the uninstaller that it was installed with LyX
+     ${endif}
+    ${endif}
+   ${endif}
+  !endif
+  
+   # install eLyXer as Python module
+   ExecWait '"$INSTDIR\python\python.exe" "$INSTDIR\python\setup.py" install'
+
+  # install the LaTeX class files that are delivered with LyX
+  # and enable MiKTeX's automatic package installation
+  ${if} $LaTeXInstalled == "MiKTeX"
+   Call ConfigureMiKTeX # Function from LaTeX.nsh
+  ${endif}
   
   # Create uninstaller
   WriteUninstaller "$INSTDIR\${SETUP_UNINSTALLER}"
@@ -179,15 +216,15 @@ Var PathCurrentUser
 
 # Sections for external components
 
-Section -LaTeX ExternalLaTeX
-  !insertmacro EXTERNAL LaTeX
-SectionEnd
+#Section -LaTeX ExternalLaTeX
+#  !insertmacro EXTERNAL LaTeX
+#SectionEnd
 
-Function InitExternal
+/*Function InitExternal
 
   # Get sizes of external component installers
   
-  SectionGetSize ${ExternalLaTeX} $SizeLaTeX
+  #SectionGetSize ${ExternalLaTeX} $SizeLaTeX
   
   # Add download size
   
@@ -195,4 +232,4 @@ Function InitExternal
     IntOp $SizeLaTeX $SizeLaTeX + ${SIZE_DOWNLOAD_LATEX}
   !endif
 
-FunctionEnd
+FunctionEnd*/

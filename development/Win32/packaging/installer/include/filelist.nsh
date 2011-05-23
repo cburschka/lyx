@@ -81,14 +81,17 @@ Lists of files to include in the installer
 !macroend
 
 !macro FileListFonts COMMAND DIRECTORY
+# FIXME: simply copy the whole directory!
 
   ${FILE}cmex10.ttf"
   ${FILE}cmmi10.ttf"
   ${FILE}cmr10.ttf"
   ${FILE}cmsy10.ttf"
+  ${FILE}esint10.ttf"
   ${FILE}eufm10.ttf"
   ${FILE}msam10.ttf"
   ${FILE}msbm10.ttf"
+  ${FILE}rsfs10.ttf"
   ${FILE}wasy10.ttf"
   
 !macroend
@@ -101,6 +104,8 @@ Lists of files to include in the installer
 !macroend
 
 !macro FileListImageMagick COMMAND DIRECTORY
+
+# FIXME: simply copy the whole directory!
 
   ${FILE}coder.xml"
   ${FILE}colors.xml"
@@ -123,6 +128,8 @@ Lists of files to include in the installer
 !macroend
 
 !macro FileListGhostscript COMMAND DIRECTORY
+
+# FIXME: simply copy the whole directory!
 
   ${FILE}gswin32.exe"
   ${FILE}gswin32c.exe"

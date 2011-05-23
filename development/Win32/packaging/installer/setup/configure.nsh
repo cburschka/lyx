@@ -6,34 +6,10 @@ Write registry information and configure LyX
 
 */
 
-Var DistFile
+#Var DistFile
 Var PathPrefix
 
-!define SHORTCUT '${APP_NAME} ${APP_SERIES_NAME}.lnk" "$INSTDIR\${APP_RUN}" "" "$INSTDIR\${APP_RUN}" "" "" "" "${APP_INFO}"'
-
-#--------------------------------
-# File associations
-
-Section -FileAssociations
-
-  # Associate .lyx files with LyX for current user of all users
-
-  # Write information about file type
-  !define REG_FILETYPE 'WriteRegStr SHELL_CONTEXT "Software\Classes\${APP_REGNAME_DOC}'
-  
-  ${REG_FILETYPE}" "" "${APP_NAME} Document"
-  ${REG_FILETYPE}\DefaultIcon" "" "$INSTDIR\${APP_RUN},0"
-  ${REG_FILETYPE}\Shell\open\command" "" '"$INSTDIR\${APP_RUN}" "%1"'
-  
-  !define REG_FILEEXT 'WriteRegStr SHELL_CONTEXT "Software\Classes\${APP_EXT}"'
-  
-  ${REG_FILEEXT} "" "${APP_REGNAME_DOC}"
-  ${REG_FILEEXT} "Content Type" "${APP_MIME_TYPE}"
-  
-  # Refresh shell
-  ${RefreshShellIcons}
-
-SectionEnd
+#!define SHORTCUT '${APP_NAME} ${APP_SERIES_NAME}.lnk" "$INSTDIR\${APP_RUN}" "" "$INSTDIR\${APP_RUN}" "" "" "" "${APP_INFO}"'
 
 #--------------------------------
 # Registry information
@@ -41,32 +17,37 @@ SectionEnd
 Section -InstallData
 
   # Registry information
-  WriteRegStr SHELL_CONTEXT ${APP_REGKEY} "" $INSTDIR
-  WriteRegStr SHELL_CONTEXT ${APP_REGKEY} "Version" "${APP_VERSION_NUMBER}"
-
-  WriteRegStr SHELL_CONTEXT ${APP_REGKEY_SETUP} "LaTeX Path" $PathLaTeX
-
+  WriteRegStr SHCTX ${APP_REGKEY} "" $INSTDIR
+  WriteRegStr SHCTX ${APP_REGKEY} "Version" "${APP_VERSION_NUMBER}"
+  WriteRegStr SHCTX ${APP_REGKEY_SETUP} "LaTeX Path" $PathLaTeX
+  
   # Start Menu shortcut
   # There is only one shortcut to the application, so it should be in the main group
-  SetOutPath "$INSTDIR\bin"
-  CreateShortCut "$SMPROGRAMS\${SHORTCUT}
-    
-  # Uninstaller information
-  !define REG_UNINSTALL 'WriteRegStr SHELL_CONTEXT "Software\Microsoft\Windows\CurrentVersion\Uninstall\${SETUP_UNINSTALLER_KEY}"'
+  CreateDirectory "$SMPROGRAMS\$StartmenuFolder"
+  CreateShortCut "$SMPROGRAMS\$StartmenuFolder\${APP_NAME}.lnk" "$INSTDIR\${APP_RUN}" "" "$INSTDIR\${APP_RUN}" "" "" "" "${APP_INFO}"
+  # create desktop icon
+  ${if} $CreateDesktopIcon == "true"
+   SetOutPath "$INSTDIR\bin"
+   CreateShortCut "$DESKTOP\${APP_NAME} ${APP_SERIES_NAME}.lnk" "$INSTDIR\${APP_RUN}" "" "$INSTDIR\${APP_RUN}" "" "" "" "${APP_INFO}"
+  ${endif}
   
+  # Uninstaller information
   ${If} $MultiUser.InstallMode == "CurrentUser"
-    ${REG_UNINSTALL} "DisplayName" "${APP_NAME} ${APP_VERSION} $(TEXT_INSTALL_CURRENTUSER)"
+    WriteRegStr SHCTX ${APP_UNINST_KEY} "DisplayName" "${APP_NAME} ${APP_VERSION} $(TEXT_INSTALL_CURRENTUSER)"
   ${Else}
-    ${REG_UNINSTALL} "DisplayName" "${APP_NAME} ${APP_VERSION}"
+    WriteRegStr SHCTX ${APP_UNINST_KEY} "DisplayName" "${APP_NAME} ${APP_VERSION}"
   ${EndIf}
   
-  ${REG_UNINSTALL} "UninstallString" '"$INSTDIR\${SETUP_UNINSTALLER}"'
-  ${REG_UNINSTALL} "DisplayVersion" "${APP_VERSION}"
-  ${REG_UNINSTALL} "DisplayIcon" "$INSTDIR\bin\LyXLauncher,0"
-  ${REG_UNINSTALL} "URLUpdateInfo" "http://www.lyx.org/"
-  ${REG_UNINSTALL} "URLInfoAbout" "http://www.lyx.org/about/"
-  ${REG_UNINSTALL} "Publisher" "LyX Team"
-  ${REG_UNINSTALL} "HelpLink" "http://www.lyx.org/internet/mailing.php"  
+  WriteRegStr SHCTX ${APP_UNINST_KEY} "UninstallString" '"$INSTDIR\${SETUP_UNINSTALLER}"'
+  WriteRegStr SHCTX ${APP_UNINST_KEY} "DisplayVersion" "${APP_VERSION}"
+  WriteRegStr SHCTX ${APP_UNINST_KEY} "DisplayIcon" "$INSTDIR\bin\LyXLauncher,0"
+  WriteRegStr SHCTX ${APP_UNINST_KEY} "URLUpdateInfo" "http://www.lyx.org/"
+  WriteRegStr SHCTX ${APP_UNINST_KEY} "URLInfoAbout" "http://www.lyx.org/about/"
+  WriteRegStr SHCTX ${APP_UNINST_KEY} "Publisher" "LyX Team"
+  WriteRegStr SHCTX ${APP_UNINST_KEY} "HelpLink" "http://www.lyx.org/internet/mailing.php"
+  WriteRegDWORD SHCTX ${APP_UNINST_KEY} "NoModify" 0x00000001
+  WriteRegDWORD SHCTX ${APP_UNINST_KEY} "NoRepair" 0x00000001
+  WriteRegStr SHCTX ${APP_UNINST_KEY} "StartMenu" "$SMPROGRAMS\$StartmenuFolder"
   
 SectionEnd
 
@@ -75,36 +56,105 @@ SectionEnd
 
 Section -Configure
 
+  # Associate .lyx files with LyX for current user of all users
+
+  ${if} $CreateFileAssociations == "true"
+   WriteRegStr HKLM "${APP_DIR_REGKEY}" "" "$INSTDIR\${APP_RUN}"
+  ${endif}
+
+  # Write information about file type
+  #!define REG_FILETYPE 'WriteRegStr SHCTX "Software\Classes\${APP_REGNAME_DOC}"'
+  
+  ${if} $CreateFileAssociations == "true"
+   WriteRegStr SHCTX "${APP_DIR_REGKEY}" "OnlyWithLyX" "Yes${APP_SERIES_KEY}" # special entry to test if they were registered by this LyX version
+   WriteRegStr SHCTX "Software\Classes\${APP_REGNAME_DOC}" "" "${APP_NAME} Document"
+   WriteRegStr SHCTX "Software\Classes\${APP_REGNAME_DOC}\DefaultIcon" "" "$INSTDIR\${APP_RUN},0"
+   WriteRegStr SHCTX "Software\Classes\${APP_REGNAME_DOC}\Shell\open\command" "" '"$INSTDIR\${APP_RUN}" "%1"'
+   WriteRegStr SHCTX "Software\Classes\${APP_EXT}" "" "${APP_REGNAME_DOC}"
+   WriteRegStr SHCTX "Software\Classes\${APP_EXT}" "Content Type" "${APP_MIME_TYPE}"
+   # .lyx13
+   WriteRegStr SHCTX "Software\Classes\${APP_EXT}13" "" "${APP_REGNAME_DOC}"
+   WriteRegStr SHCTX "Software\Classes\${APP_EXT}13" "Content Type" "${APP_MIME_TYPE}"
+   # .lyx14
+   WriteRegStr SHCTX "Software\Classes\${APP_EXT}14" "" "${APP_REGNAME_DOC}"
+   WriteRegStr SHCTX "Software\Classes\${APP_EXT}14" "Content Type" "${APP_MIME_TYPE}"
+   # .lyx15 don't set this, because this is designed to be opened with LyX 1.5.x
+   #WriteRegStr SHCTX "Software\Classes\${APP_EXT}15" "" "${PRODUCT_REGNAME}"
+   #WriteRegStr SHCTX "Software\Classes\${APP_EXT}15" "Content Type" "${PRODUCT_MIME_TYPE}"
+   # .lyx16 don't set this, because this is designed to be opened with LyX 1.6.x
+   #WriteRegStr SHCTX "Software\Classes\${APP_EXT}16" "" "${PRODUCT_REGNAME}"
+   #WriteRegStr SHCTX "Software\Classes\${APP_EXT}16" "Content Type" "${PRODUCT_MIME_TYPE}"
+  
+   # Refresh shell
+   ${RefreshShellIcons}
+  ${endif}
+  
   # Set path prefix in lyxrc.dist
 
   # Install standard lyxrc.dist file
-  SetOutPath "$INSTDIR\Resources"
-  File "${FILES_DEPS}\Resources\lyxrc.dist"
+  #SetOutPath "$INSTDIR\Resources"
+  #File "${FILES_DEPS}\Resources\lyxrc.dist"
 
-  # Append path prefix
-  FileOpen $DistFile "$INSTDIR\Resources\lyxrc.dist" a
-  FileSeek $DistFile 0 END
-
+  # create the path prefix
   # $$ represents a literal $ in an NSIS string
   StrCpy $PathPrefix "$$LyXDir\bin;$$LyXDir\python;$$LyXDir\imagemagick;$$LyXDir\ghostscript"
   
   ${If} $PathLaTeX != ""
     StrCpy $PathPrefix "$PathPrefix;$PathLaTeX"
   ${EndIf}
+  ${if} $PSVPath != ""
+    StrCpy $PathPrefix "$PathPrefix;$PSVPath"
+  ${endif}
+  ${if} $EditorPath != ""
+    StrCpy $PathPrefix "$PathPrefix;$EditorPath"
+  ${endif}
+  ${if} $ImageEditorPath != ""
+    StrCpy $PathPrefix "$PathPrefix;$ImageEditorPath"
+  ${endif}
+  ${if} $SVGPath != ""
+   StrCpy $PathPrefix "$PathPrefix;$SVGPath"
+  ${endif}
+  ${if} $WMFPath != ""
+   StrCpy $PathPrefix "$PathPrefix;$WMFPath"
+  ${endif}
   ${If} $PathBibTeXEditor != ""
     StrCpy $PathPrefix "$PathPrefix;$PathBibTeXEditor"
   ${EndIf}  
 
-  FileWrite $DistFile '\path_prefix "$PathPrefix"$\r$\n'
-
-  FileClose $DistFile
+  # Set the path prefix in lyxrc.dist
+  ClearErrors
+  Delete "$INSTDIR\Resources\lyxrc.dist"
+  FileOpen $R1 "$INSTDIR\Resources\lyxrc.dist" w
+  # set some general things
+  FileWrite $R1 '\screen_zoom "120"$\r$\n\
+                 \accept_compound true$\r$\n\
+  ${if} "$PathPrefix" != ""
+   FileWrite $R1 '\path_prefix "$PathPrefix"$\r$\n'
+  ${endif}
+  # if Acrobat or Adobe Reader is used
+  ${if} $Acrobat == "Yes" # used for Acrobat / Adobe Reader
+   FileWrite $R1 '\format "pdf3" "pdf" "PDF (dvipdfm)" "m" "pdfview" "" "document,vector"$\r$\n\
+   		  \format "pdf2" "pdf" "PDF (pdflatex)" "F" "pdfview" "" "document,vector"$\r$\n\
+		  \format "pdf" "pdf" "PDF (ps2pdf)" "P" "pdfview" "" "document,vector"$\r$\n'
+  ${endif}
+  # if a SVG to PDF converter ws found (e.g. Inkscape)
+  ${if} $SVGPath != ""
+   FileWrite $R1 '\format "svg" "svg" "SVG" "" "inkscape --file=$$$$i" "inkscape --file=$$$$i" "vector"$\r$\n\
+   		  \converter "svg" "png" "inkscape --without-gui --file=$$$$i --export-png=$$$$o" ""$\r$\n\
+		  \converter "svg" "pdf" "inkscape --file=$$$$p/$$$$i --export-area-drawing --without-gui --export-pdf=$$$$p/$$$$o" ""$\r$\n\
+		  \converter "svg" "eps" "inkscape --file=$$$$p/$$$$i --export-area-drawing --without-gui --export-eps=$$$$p/$$$$o" ""'
+  ${endif}
+  FileClose $R1
+  IfErrors 0 +2
+   MessageBox MB_OK|MB_ICONEXCLAMATION "$(ModifyingConfigureFailed)"
+  ClearErrors
 
 SectionEnd
 
 #--------------------------------
 # LaTeX files
 
-Var UpdateFNDBReturn
+/*Var UpdateFNDBReturn
 
 Section -LaTeXFiles
 
@@ -126,8 +176,8 @@ Section -LaTeXFiles
     nsExec::ExecToLog '"$PathLaTeX\initexmf.exe" --update-fndb'
     Pop $UpdateFNDBReturn # Return value
   ${EndIf}
-
-SectionEnd
+  
+SectionEnd*/
 
 #--------------------------------
 # Postscript printer for metafile to EPS converter
@@ -160,12 +210,26 @@ Section -ConfigureScript
   nsExec::ExecToLog '"$INSTDIR\python\python.exe" "$INSTDIR\Resources\configure.py"'
   Pop $ConfigureReturn # Return value
 
+  # ask to update MiKTeX
+  ${if} $LaTeXInstalled == "MiKTeX"
+   Call UpdateMiKTeX # function from latex.nsh
+  ${endif}
+
 SectionEnd
 
 #--------------------------------
 # Desktop shortcut
 
-Function CheckDesktopShortcut
+Function StartLyX
+
+  # Enable desktop icon creation when there is an icon already
+  # Old shortcuts need to be updated
+  
+  Exec "$INSTDIR\${APP_RUN}"
+
+FunctionEnd
+
+/*Function CheckDesktopShortcut
 
   # Enable desktop icon creation when there is an icon already
   # Old shortcuts need to be updated
@@ -180,6 +244,7 @@ Function CreateDesktopShortcut
 
   # Desktop icon creation is an option on the finish page
   SetOutPath "$INSTDIR\bin"
-  CreateShortCut "$DESKTOP\${SHORTCUT}
+  CreateShortCut "$DESKTOP\${APP_NAME} ${APP_SERIES_NAME}.lnk" "$INSTDIR\${APP_RUN}" "" "$INSTDIR\${APP_RUN}" "" "" "" "${APP_INFO}"
 
-FunctionEnd
+FunctionEnd*/
+

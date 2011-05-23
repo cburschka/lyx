@@ -6,13 +6,11 @@ Configuration of LyX installer
 
 */
 
-SetCompressor /SOLID lzma
-
 #--------------------------------
 # File locations
 
 !define FILES_LICENSE "license.rtf"
-!define FILES_ICONS "..\icons"
+!define FILES_ICONS "icons"
 !define FILES_PDFVIEW "${FILES_DEPS}\bin"
 !define FILES_MSVC "${FILES_DEPS}\bin"
 !define FILES_PYTHON "${FILES_DEPS}\python"
@@ -42,23 +40,26 @@ SetCompressor /SOLID lzma
 
 !define APP_NAME "LyX"
 !define APP_VERSION_NUMBER "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_VERSION_REVISION}.${APP_VERSION_BUILD}"
-!define APP_SERIES_NAME "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}"
-!define APP_SERIES_KEY "${APP_VERSION_MAJOR}${APP_VERSION_MINOR}"
+!define APP_SERIES_NAME "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_VERSION_REVISION}"
+!define APP_SERIES_KEY "${APP_VERSION_MAJOR}${APP_VERSION_MINOR}${APP_VERSION_REVISION}"
+!define APP_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\${APP_NAME}.exe"
 !define APP_DIR "${APP_NAME}${APP_SERIES_KEY}"
 !define APP_DIR_USERDATA "${APP_NAME}${APP_SERIES_KEY}"
 !define APP_INFO "${APP_NAME} - The Document Processor"
-!define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-2011 LyX Team"
+!define APP_COPYRIGHT "LyX is Copyright Â© 1995 by Matthias Ettrich, 1995-2011 by the LyX Team"
 
-!define APP_RUN "bin\LyX.exe"
+!define APP_RUN "bin\LyXLauncher.exe"
 
-!define APP_REGKEY "Software\${APP_NAME}${APP_SERIES_KEY}"
-!define APP_REGKEY_SETUP "Software\${APP_NAME}${APP_SERIES_KEY}\Setup"
-!define APP_REGKEY_SETTINGS "Software\${APP_NAME}${APP_SERIES_KEY}\Settings"
+!define APP_REGKEY "Software\${APP_NAME}${APP_SERIES_KEY}" # like "LyX200"
+!define APP_REGKEY_SETUP "Software\${APP_REGKEY}\Setup"
+!define APP_REGKEY_SETTINGS "Software\${APP_REGKEY}\Settings"
 
-!define APP_REGNAME_DOC "LyX.Document"
+!define APP_REGNAME_DOC "${APP_NAME}.Document"
 
 !define APP_EXT ".lyx"
 !define APP_MIME_TYPE "application/lyx"
+
+!define APP_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${SETUP_UNINSTALLER_KEY}"
 
 #--------------------------------
 # Setup settings
@@ -66,10 +67,6 @@ SetCompressor /SOLID lzma
 # Output file name can be configured using command line paramaters like
 # /DExeFile=/path/to/installer
 
-!ifndef SETUPTYPE
-  !define SETUPTYPE STANDARD
-!endif
- 
 !if ${SETUPTYPE} == STANDARD
 
   !define SETUP_EXE ${ExeFile}
@@ -90,7 +87,7 @@ SetCompressor /SOLID lzma
 #--------------------------------
 # Names of binaries to identify compontents
 
-!define BIN_LATEX "tex.exe"
+!define BIN_LATEX "latex.exe"
 !define BIN_BIBTEXEDITOR "JabRef.exe"
 
 #--------------------------------
