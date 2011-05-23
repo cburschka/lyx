@@ -67,7 +67,36 @@ set(CPACK_SOURCE_INSTALLED_DIRECTORIES "${TOP_SRC_DIR};/") # http://www.mail-arc
 
 set(CPACK_STRIP_FILES 1)
 
-
+# Finaly give some hints about files not to be included in souse package
+SET(CPACK_SOURCE_IGNORE_FILES
+"/CVS/"
+"/\\\\.svn/"
+"/\\\\.bzr/"
+"/\\\\.hg/"
+"/\\\\.git/"
+"\\\\.swp$"
+"~$"
+"\\\\.history$"
+"\\\\.#"
+"/#"
+"/_CPack_Packages/"
+"/CMakeCache.txt$"
+"CPackSourceConfig\\\\.cmake"
+"\\\\.tar\\\\.gz$"
+"\\\\.tar\\\\.bz2$"
+"\\\\.tar\\\\.Z$"
+"\\\\.deb$"
+"\\\\.rpm$"
+"\\\\.rej$"
+"\\\\.orig$"
+"/CMakeFiles/"
+"Makefile\\\\.in"
+"/Makefile$"
+"/autom4te\\\\.cache/"
+"/\\\\.deps/"
+"/build/"
+"/lyx-2\\\\."
+)
 
 if(LYX_CPACK)
 	include(CPack)

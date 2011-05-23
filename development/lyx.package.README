@@ -1,8 +1,8 @@
 Here is what to do to make binary packages using CMake.
 
-The string "_SRC_DIR_" represents the cmake-lyx-build-directory, e.g. /usr/src/lyx/lyx-devel/development/cmake.
+The string "_SRC_DIR_" represents the cmake-lyx-build-directory, e.g. /usr/src/lyx/lyx-devel.
 The string "_BUILD_DIR_" represents the cmake-lyx-build-directory, e.g. /usr/BUILD/BuildLyx.
-The string "_PKG_NAME_" represents the name of the package, like "lyx-2.0.1-Linux" on my Linux-system
+The string "_PKG_NAME_" represents the name of the package, like "lyx-2.1.38687-Linux" on my Linux-system
 
 Using cmake-gui:
     cd _BUILD_DIR_; cmake-gui _SRC_DIR_
@@ -30,7 +30,7 @@ Some installation proceedings:
     STGZ:	sudo _PKG_NAME_.sh --exclude-subdir
     TGZ:	sudo tar -zxv --strip-components 1 --directory / -f _PKG_NAME_.tar.gz
     DEB:	sudo dpkg -i _PKG_NAME_.deb
-    RPM:	sudo rpm -U _PKG_NAME_.rpm
+    RPM:	sudo rpm -U --force _PKG_NAME_.rpm
 
 See also:
 http://www.cmake.org/Wiki/CMake:CPackPackageGenerators

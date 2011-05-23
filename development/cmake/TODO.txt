@@ -11,6 +11,7 @@ Help:
     (before I actually run it). cmake --help is not useful.
   * how can I see what the command line was. With autoconf I'd just
     do "make V=1", what shall I do with cmake?
+    ANSWER: "make VERBOSE=1"
 
 
 Bug fixing
@@ -38,8 +39,9 @@ Features
     with support for universal binaries (don't know if it currently is a problem to build them)
   * from the maintainer point of view these task are needed:
       - DONE: *.po remerge of strings in po/ (ie "make update-po")
-      - tarball creation, most notably i dont see any list of files which should go into tarball, we dont want everything to go there
-        (ie "make distcheck" to check tree is prepared for release, "make dist" for actual release)
+      - DONE: tarball creation, most notably i dont see any list of files which should go into tarball, we dont want everything to go there
+	      (ie "make distcheck" to check tree is prepared for release, "make dist" for actual release)
+	  ANSWER: "make package_source"
     these are nice to have and present in autotools, though not critical
       - DONE: target for regenaration of lfuns manual would be nice (ie make lfundoc)
       - DONE: target for doxygen generation (ie make doxydoc)
