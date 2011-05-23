@@ -35,7 +35,7 @@ These typically need to be modified for each LyX release
 # File locations
 
 !define FILES_LYX "D:\LyXPackage2.0\LyX"
-!define FILES_DEPS "D:\LyXSVN\LyX2.0.x\lyx-windows-deps-msvc2008"
+!define FILES_DEPS "D:\LyXSVN\LyX2.0.x\lyx-windows-deps-msvc2010"
 !define FILES_BUNDLE "D:\LyX\depsbundle"
 !define FILES_QT "D:\Qt"
 !define ClassFileDir "${FILES_LYX}\Resources\tex"
