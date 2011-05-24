@@ -54,8 +54,7 @@ FIND_PATH(ASPELL_INCLUDE_DIR aspell.h
 
 FIND_LIBRARY(ASPELL_LIBRARY_RELEASE NAMES aspell aspell-15 libaspell libaspell-15
 	PATHS
-	/usr/lib
-	/usr/local/lib
+	${SYSTEM_LIB_DIRS}
 )
 
 # msvc makes a difference between debug and release

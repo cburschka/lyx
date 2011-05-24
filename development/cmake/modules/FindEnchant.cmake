@@ -4,8 +4,7 @@ if(WIN32)
 else()
   find_library(ENCHANT_LIBRARY "enchant"  
 	"/usr/local/lib" 
-	"/usr/lib" 
-	"/usr/local/lib" 
+	${SYSTEM_LIB_DIRS}
 	"/opt/local/lib")
   find_path(ENCHANT_INCLUDE_DIR "enchant++.h" PATHS 
 		/usr/local/include

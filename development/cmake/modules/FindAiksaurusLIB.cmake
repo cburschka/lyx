@@ -24,7 +24,7 @@ set(POTENTIAL_AIKSAURUS_LIBS Aiksaurus)
 
 find_library(AIKSAURUSLIB_LIBRARY NAMES ${POTENTIAL_AIKSAURUS_LIBS}
 	PATHS
-	/usr/lib /usr/local/lib)
+	${SYSTEM_LIB_DIRS})
 
 # handle the QUIETLY and REQUIRED arguments and set AIKSAURUSLIB_FOUND to TRUE if
 # all listed variables are TRUE

@@ -28,7 +28,7 @@ find_library(ZLIB_LIBRARY NAMES ${POTENTIAL_Z_LIBS}
 find_library(ZLIB_LIBRARY NAMES ${POTENTIAL_Z_LIBS}
 	PATHS 
 	"C:\\Programme\\Microsoft Visual Studio 8\\VC\\lib"
-	/usr/lib /usr/lib/x86_64-linux-gnu /usr/local/lib
+	${SYSTEM_LIB_DIRS}
 	"${GNUWIN32_DIR}"/lib)
 
 if(ZLIB_INCLUDE_DIR AND ZLIB_LIBRARY)

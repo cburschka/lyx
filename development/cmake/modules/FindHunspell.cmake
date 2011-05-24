@@ -2,8 +2,7 @@
 if(WIN32)
   find_library(HUNSPELL_LIBRARY "libhunspell")
 else()
-  #find_library(HUNSPELL_LIBRARY NAME "hunspell" PATH "/usr/local/lib" "/usr/lib" NO_DEFAULT_PATH)
-  find_library(HUNSPELL_LIBRARY NAMES "hunspell" "hunspell-1.2" PATHS "/usr/local/lib" "/usr/lib" "/usr/lib64")
+  find_library(HUNSPELL_LIBRARY NAMES "hunspell" "hunspell-1.2" PATHS "/usr/local/lib" ${SYSTEM_LIB_DIRS} "/usr/lib64")
 endif()
 
 FIND_PATH(HUNSPELL_INCLUDE_DIR "hunspell/hunspell.hxx")

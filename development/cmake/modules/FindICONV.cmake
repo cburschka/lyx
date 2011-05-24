@@ -48,9 +48,7 @@ find_library(ICONV_LIBRARY NAMES ${POTENTIAL_ICONV_LIBS}
 	NO_DEFAULT_PATH)
 	
 find_library(ICONV_LIBRARY NAMES ${POTENTIAL_ICONV_LIBS}
-	PATHS
-	/usr/lib 
-	/usr/local/lib)
+	PATHS ${SYSTEM_LIB_DIRS} )
 
 if(WIN32)
 	set(ICONV_DLL_NAMES iconv.dll  libiconv.dll libiconv2.dll)

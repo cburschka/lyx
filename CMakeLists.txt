@@ -42,6 +42,18 @@ if(NOT help AND NOT HELP)
 	project(${LYX_PROJECT})
 endif()
 
+if(UNIX)
+	FIND_PROGRAM(DPKG_ARCHITECTURE_EXECUTABLE dpkg-architecture)
+	if(DPKG_ARCHITECTURE_EXECUTABLE)
+		EXECUTE_PROCESS(COMMAND dpkg-architecture -qDEB_HOST_MULTIARCH OUTPUT_VARIABLE ARCH_TRIPLET OUTPUT_STRIP_TRAILING_WHITESPACE)
+	endif()
+endif()
+if(ARCH_TRIPLET)
+	set(SYSTEM_LIB_DIRS /usr/lib /usr/lib/${ARCH_TRIPLET} /usr/local/lib)
+else()
+	set(SYSTEM_LIB_DIRS /usr/lib /usr/local/lib)
+endif()
+
 include(LyXMacros)
 
 # Usage LYX_OPTION
@@ -101,7 +113,6 @@ if(help OR HELP)
 	LYX_OPTION_LIST_ALL(help)
 	message(STATUS)
 else()
-
 
 # Check option dependencies
 
