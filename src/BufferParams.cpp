@@ -1373,7 +1373,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 			  fonts_sans_scale, fonts_typewriter_scale,
 			  useNonTeXFonts, features);
 	if (!fonts.empty())
-		os << from_ascii(fonts);
+		os << from_utf8(fonts);
 
 	if (fonts_default_family != "default")
 		os << "\\renewcommand{\\familydefault}{\\"
