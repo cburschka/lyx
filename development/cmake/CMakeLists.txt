@@ -25,6 +25,19 @@ set(CMAKE_SUPPRESS_REGENERATION FALSE)
 # where to look first for cmake modules,
 # before ${CMAKE_ROOT}/Modules is checked
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/modules")
+
+if(UNIX)
+	FIND_PROGRAM(DPKG_ARCHITECTURE_EXECUTABLE dpkg-architecture)
+	if(DPKG_ARCHITECTURE_EXECUTABLE)
+		EXECUTE_PROCESS(COMMAND dpkg-architecture -qDEB_HOST_MULTIARCH OUTPUT_VARIABLE ARCH_TRIPLET OUTPUT_STRIP_TRAILING_WHITESPACE)
+	endif()
+endif()
+if(ARCH_TRIPLET)
+	set(SYSTEM_LIB_DIRS /usr/lib /usr/lib/${ARCH_TRIPLET} /usr/local/lib)
+else()
+	set(SYSTEM_LIB_DIRS /usr/lib /usr/local/lib)
+endif()
+
 include(LyXMacros)
 
 

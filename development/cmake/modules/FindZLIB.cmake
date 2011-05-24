@@ -17,9 +17,9 @@ find_path(ZLIB_INCLUDE_DIR zlib.h
 set(POTENTIAL_Z_LIBS z zlib zdll)
 
 find_library(ZLIB_LIBRARY NAMES ${POTENTIAL_Z_LIBS}
-	PATHS 
+	PATHS
 	"C:\\Programme\\Microsoft Visual Studio 8\\VC\\lib"
-	/usr/lib /usr/local/lib
+	${SYSTEM_LIB_DIRS}
 	"${GNUWIN32_DIR}"/lib)
 
 if(ZLIB_INCLUDE_DIR AND ZLIB_LIBRARY)

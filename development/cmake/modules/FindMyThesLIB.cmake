@@ -18,8 +18,7 @@ find_path(MYTHESLIB_INCLUDE_DIR ${MYTHES_H}
 set(POTENTIAL_MYTHES_LIBS mythes)
 
 find_library(MYTHESLIB_LIBRARY NAMES ${POTENTIAL_MYTHES_LIBS}
-	PATHS
-	/usr/lib /usr/local/lib)
+	PATHS ${SYSTEM_LIB_DIRS} )
 
 # handle the QUIETLY and REQUIRED arguments and set MYTHESLIB_FOUND to TRUE if
 # all listed variables are TRUE

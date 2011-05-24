@@ -1,5 +1,5 @@
 #
-#  Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
+#  Copyright (c) 2006, Peter Kï¿½mmel, <syntheticpp@gmx.net>
 #
 #  Redistribution and use in source and binary forms, with or without
 #  modification, are permitted provided that the following conditions
@@ -54,8 +54,7 @@ FIND_PATH(ASPELL_INCLUDE_DIR aspell.h
 
 FIND_LIBRARY(ASPELL_LIBRARY_RELEASE NAMES aspell aspell-15 libaspell libaspell-15
 	PATHS
-	/usr/lib
-	/usr/local/lib
+	${SYSTEM_LIB_DIRS}
 )
 
 # msvc makes a difference between debug and release
