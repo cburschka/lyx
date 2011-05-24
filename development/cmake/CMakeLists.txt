@@ -13,7 +13,8 @@ if(COMMAND cmake_policy)
 	cmake_policy(SET CMP0005 OLD)
 endif()
 
-set(LYX_PROJECT lyx)
+#needed to distinguish fron trunk, so we can install both simultaneously
+set(LYX_PROJECT lyx20)
 project(${LYX_PROJECT})
 
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
@@ -488,9 +489,8 @@ add_subdirectory(scripts)
 
 
 if(LYX_INSTALL)
-	FIND_PROGRAM(LYX_PERL_EXECUTABLE perl)
-	if(${LYX_PERL_EXECUTABLE} MATCHES "-NOTFOUND")
-		message(STATUS "Perl required to create doc!")
+	if(${LYX_PYTHON_EXECUTABLE} MATCHES "-NOTFOUND")
+		message(STATUS "Python required to create doc!")
 	else()
 		add_subdirectory(man)
 		add_subdirectory(doc)
