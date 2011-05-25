@@ -8,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-05-19 15:02+0200\n"
-"PO-Revision-Date: 2011-05-22 15:41+0200\n"
+"POT-Creation-Date: 2011-05-24 08:31+0200\n"
+"PO-Revision-Date: 2011-05-25 12:11+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.1\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
@@ -412,7 +412,7 @@ msgstr "Vnútorný rámok -- potrebný pre pevnú šírku a lom riadkov"
 #: src/frontends/qt4/ui/TabularUi.ui:1104 src/frontends/qt4/GuiBox.cpp:193
 #: src/frontends/qt4/GuiBox.cpp:311 src/frontends/qt4/GuiBox.cpp:388
 #: src/frontends/qt4/GuiDocument.cpp:113 src/frontends/qt4/GuiGraphics.cpp:579
-#: src/frontends/qt4/GuiPrefs.cpp:2073 src/frontends/qt4/GuiPrefs.cpp:2096
+#: src/frontends/qt4/GuiPrefs.cpp:2075 src/frontends/qt4/GuiPrefs.cpp:2098
 msgid "None"
 msgstr "Žiadne"
 
@@ -579,7 +579,7 @@ msgstr "&Veľkosť:"
 #: src/frontends/qt4/GuiDocument.cpp:3224 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:70 src/frontends/qt4/GuiIndices.cpp:57
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
-#: src/frontends/qt4/GuiPrefs.cpp:2217 src/frontends/qt4/GuiPrefs.cpp:2451
+#: src/frontends/qt4/GuiPrefs.cpp:2219 src/frontends/qt4/GuiPrefs.cpp:2453
 #: src/frontends/qt4/GuiPrintNomencl.cpp:47
 #: src/frontends/qt4/GuiViewSource.cpp:184
 msgid "Default"
@@ -707,7 +707,7 @@ msgstr "Hrúbka kresby písma"
 #: src/frontends/qt4/ui/CharacterUi.ui:145
 #: src/frontends/qt4/ui/ListingsUi.ui:339 lib/layouts/europecv.layout:119
 #: lib/layouts/moderncv.layout:116 src/frontends/qt4/GuiDocument.cpp:1318
-#: src/frontends/qt4/GuiPrefs.cpp:2176 src/frontends/qt4/Menus.cpp:852
+#: src/frontends/qt4/GuiPrefs.cpp:2178 src/frontends/qt4/Menus.cpp:852
 msgid "Language"
 msgstr "Jazyk"
 
@@ -2341,7 +2341,7 @@ msgstr "&Hľadaj!"
 
 #: src/frontends/qt4/ui/LogUi.ui:137
 msgid "Jump to the next warning message."
-msgstr "Choď k ďalšej varovnej správe."
+msgstr "Choď na ďalšie varovné hlásenie."
 
 #: src/frontends/qt4/ui/LogUi.ui:140
 msgid "Next &Warning"
@@ -2349,7 +2349,7 @@ msgstr "Ďalšie Varovanie"
 
 #: src/frontends/qt4/ui/LogUi.ui:147
 msgid "Jump to the next error message."
-msgstr "Choď k ďalšej chybnej správe."
+msgstr "Choď na ďalšie chybné hlásenie."
 
 #: src/frontends/qt4/ui/LogUi.ui:150
 msgid "Next &Error"
@@ -2921,8 +2921,8 @@ msgstr "Dvojitý"
 #: src/frontends/qt4/GuiDocument.cpp:830 src/frontends/qt4/GuiDocument.cpp:882
 #: src/frontends/qt4/GuiDocument.cpp:1045 src/frontends/qt4/GuiHSpace.cpp:54
 #: src/frontends/qt4/GuiHSpace.cpp:63 src/frontends/qt4/GuiPrefs.cpp:810
-#: src/frontends/qt4/GuiPrefs.cpp:837 src/frontends/qt4/GuiPrefs.cpp:2075
-#: src/frontends/qt4/GuiPrefs.cpp:2098
+#: src/frontends/qt4/GuiPrefs.cpp:837 src/frontends/qt4/GuiPrefs.cpp:2077
+#: src/frontends/qt4/GuiPrefs.cpp:2100
 #: src/frontends/qt4/GuiPrintNomencl.cpp:51
 msgid "Custom"
 msgstr "Vlastné"
@@ -3120,7 +3120,7 @@ msgstr "&Modifikovať"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2849 src/frontends/qt4/GuiPrefs.cpp:2913
+#: src/frontends/qt4/GuiPrefs.cpp:2851 src/frontends/qt4/GuiPrefs.cpp:2915
 msgid "Remo&ve"
 msgstr "&Odstrániť"
 
@@ -4270,7 +4270,7 @@ msgstr "Nastavenia"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:145
 msgid "Select the debug messages that should be displayed"
-msgstr "Vyberte ladiace správy ktoré majú byť zobrazené"
+msgstr "Vyberte ladiace hlásenia ktoré majú byť zobrazené"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:173
 msgid "Automatic cleanup of the window before LaTeX compilation proceeds"
@@ -4282,11 +4282,11 @@ msgstr "Vyčistiť automaticky"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:191
 msgid "Debug messages"
-msgstr "Ladiace správy"
+msgstr "Ladiace hlásenia"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:203
 msgid "Display no debug messages"
-msgstr "Neukazuj žiadne ladiace správy"
+msgstr "Neukazuj žiadne ladiace hlásenia"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:206
 msgid "&None"
@@ -4294,7 +4294,7 @@ msgstr "Žiadne"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:213
 msgid "Display the debug messages selected to the right"
-msgstr "Ukazuj vpravo označené ladiace správy"
+msgstr "Ukazuj vpravo označené ladiace hlásenia"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:216
 msgid "S&elected"
@@ -4302,7 +4302,7 @@ msgstr "Vybrané"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:223
 msgid "Display all debug messages"
-msgstr "Ukazuj všetky ladiace správy"
+msgstr "Ukazuj všetky ladiace hlásenia"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:236
 msgid "Display statusbar messages?"
@@ -12665,7 +12665,7 @@ msgstr "Zobraziť zdrojový text (LaTeX)"
 
 #: lib/ui/stdmenus.inc:320
 msgid "View Messages|g"
-msgstr "Zobraz Správy"
+msgstr "Zobraz Hlásenia"
 
 #: lib/ui/stdmenus.inc:323
 msgid "View Master Document|M"
@@ -18788,11 +18788,11 @@ msgstr "(bez počiatočného popisu)"
 
 #: src/LyXVC.cpp:165
 msgid "(no log message)"
-msgstr "(bez logovacej správy)"
+msgstr "(bez protokolového hlásenia)"
 
 #: src/LyXVC.cpp:170 src/frontends/qt4/GuiView.cpp:2786
 msgid "LyX VC: Log Message"
-msgstr "LyX VC: Protokolová správa"
+msgstr "LyX VC: Protokolové hlásenie"
 
 #: src/LyXVC.cpp:218
 #, c-format
@@ -19235,12 +19235,12 @@ msgstr ""
 "Pokračovať?"
 
 #: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
-#: src/frontends/qt4/FindAndReplace.cpp:337
+#: src/frontends/qt4/FindAndReplace.cpp:338
 msgid "&Yes"
 msgstr "áno"
 
 #: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
-#: src/frontends/qt4/FindAndReplace.cpp:337
+#: src/frontends/qt4/FindAndReplace.cpp:338
 msgid "&No"
 msgstr "nie"
 
@@ -19376,23 +19376,23 @@ msgstr "Dings 4"
 msgid "Directories"
 msgstr "Adresári"
 
-#: src/frontends/qt4/FindAndReplace.cpp:258
+#: src/frontends/qt4/FindAndReplace.cpp:259
 msgid "File"
 msgstr "Súbor"
 
-#: src/frontends/qt4/FindAndReplace.cpp:261
+#: src/frontends/qt4/FindAndReplace.cpp:262
 msgid "Master document"
 msgstr "Hlavný dokument"
 
-#: src/frontends/qt4/FindAndReplace.cpp:264
+#: src/frontends/qt4/FindAndReplace.cpp:265
 msgid "Open files"
 msgstr "Otvorené súbory"
 
-#: src/frontends/qt4/FindAndReplace.cpp:267
+#: src/frontends/qt4/FindAndReplace.cpp:268
 msgid "Manuals"
 msgstr "Manuály"
 
-#: src/frontends/qt4/FindAndReplace.cpp:271
+#: src/frontends/qt4/FindAndReplace.cpp:272
 #, c-format
 msgid ""
 "%1$s: the end was reached while searching forward.\n"
@@ -19401,7 +19401,7 @@ msgstr ""
 "%1$s: dosiahol som koniec hľadajúc dopredu.\n"
 "Pokračovať hľadaním od začiatku?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:274
+#: src/frontends/qt4/FindAndReplace.cpp:275
 #, c-format
 msgid ""
 "%1$s: the beginning was reached while searching backward.\n"
@@ -19410,19 +19410,19 @@ msgstr ""
 "%1$s: Dosiahol som začiatok hľadajúc spätne.\n"
 "Pokračovať hľadaním od konca?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:336
+#: src/frontends/qt4/FindAndReplace.cpp:337
 msgid "Wrap search?"
 msgstr "Od začiatku hľadať?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:381
+#: src/frontends/qt4/FindAndReplace.cpp:382
 msgid "Nothing to search"
 msgstr "Nie je čo hľadať"
 
-#: src/frontends/qt4/FindAndReplace.cpp:421
+#: src/frontends/qt4/FindAndReplace.cpp:422
 msgid "No open document(s) in which to search"
 msgstr "Nemám otvorené dokumenty v ktorých by som mohol hľadať"
 
-#: src/frontends/qt4/FindAndReplace.cpp:517
+#: src/frontends/qt4/FindAndReplace.cpp:522
 msgid "Advanced Find and Replace"
 msgstr "Pokročilé Hľadať a Nahradiť"
 
@@ -19515,7 +19515,7 @@ msgid "About %1"
 msgstr "O %1"
 
 #: src/frontends/qt4/GuiApplication.cpp:489
-#: src/frontends/qt4/GuiPrefs.cpp:3115
+#: src/frontends/qt4/GuiPrefs.cpp:3117
 msgid "Preferences"
 msgstr "Preferencie"
 
@@ -21089,11 +21089,11 @@ msgstr "Konvertory"
 msgid "File Formats"
 msgstr "Formáty Súborov"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2003 src/frontends/qt4/GuiPrefs.cpp:2155
+#: src/frontends/qt4/GuiPrefs.cpp:2005 src/frontends/qt4/GuiPrefs.cpp:2157
 msgid "Format in use"
 msgstr "Formát v použití"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2004
+#: src/frontends/qt4/GuiPrefs.cpp:2006
 msgid ""
 "You cannot change a format's short name if the format is used by a "
 "converter. Please remove the converter first."
@@ -21101,92 +21101,92 @@ msgstr ""
 "Nemôžte zmeniť krátke meno formátu používané konvertorom. Odstráňte najprv "
 "konvertor."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2156
+#: src/frontends/qt4/GuiPrefs.cpp:2158
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "Nemôžem odstrániť Formát používaný Konvertorom. Odstráňte najprv konvertor."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2238
+#: src/frontends/qt4/GuiPrefs.cpp:2240
 msgid "LyX needs to be restarted!"
 msgstr "Treba reštartovať LyX!"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2239
+#: src/frontends/qt4/GuiPrefs.cpp:2241
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
 msgstr ""
 "Zmena užívateľského rozhrania bude naplno aktívna len po reštartu LyXu."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2310
+#: src/frontends/qt4/GuiPrefs.cpp:2312
 msgid "Printer"
 msgstr "Tlačiareň"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2408 src/frontends/qt4/GuiPrefs.cpp:3158
+#: src/frontends/qt4/GuiPrefs.cpp:2410 src/frontends/qt4/GuiPrefs.cpp:3160
 msgid "User Interface"
 msgstr "Užívateľské Rozhranie"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2452
+#: src/frontends/qt4/GuiPrefs.cpp:2454
 msgid "Classic"
 msgstr "Klasické"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2453
+#: src/frontends/qt4/GuiPrefs.cpp:2455
 msgid "Oxygen"
 msgstr "Oxygen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2531
+#: src/frontends/qt4/GuiPrefs.cpp:2533
 msgid "Control"
 msgstr "Ctrl"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2619
+#: src/frontends/qt4/GuiPrefs.cpp:2621
 msgid "Shortcuts"
 msgstr "Skratky"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2624
+#: src/frontends/qt4/GuiPrefs.cpp:2626
 msgid "Function"
 msgstr "Funkcia"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2625
+#: src/frontends/qt4/GuiPrefs.cpp:2627
 msgid "Shortcut"
 msgstr "Skratka"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2704
+#: src/frontends/qt4/GuiPrefs.cpp:2706
 msgid "Cursor, Mouse and Editing Functions"
 msgstr "Kurzor, Myš, a Editačné Funkcie"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2708
+#: src/frontends/qt4/GuiPrefs.cpp:2710
 msgid "Mathematical Symbols"
 msgstr "Matematické symboly"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2712
+#: src/frontends/qt4/GuiPrefs.cpp:2714
 msgid "Document and Window"
 msgstr "Dokument a Okno"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2716
+#: src/frontends/qt4/GuiPrefs.cpp:2718
 msgid "Font, Layouts and Textclasses"
 msgstr "Font, Schémy a textové Triedy"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2720
+#: src/frontends/qt4/GuiPrefs.cpp:2722
 msgid "System and Miscellaneous"
 msgstr "Systém a Rôzne"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2847 src/frontends/qt4/GuiPrefs.cpp:2893
+#: src/frontends/qt4/GuiPrefs.cpp:2849 src/frontends/qt4/GuiPrefs.cpp:2895
 msgid "Res&tore"
 msgstr "Reštaurovať"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3004 src/frontends/qt4/GuiPrefs.cpp:3011
-#: src/frontends/qt4/GuiPrefs.cpp:3031 src/frontends/qt4/GuiPrefs.cpp:3050
+#: src/frontends/qt4/GuiPrefs.cpp:3006 src/frontends/qt4/GuiPrefs.cpp:3013
+#: src/frontends/qt4/GuiPrefs.cpp:3033 src/frontends/qt4/GuiPrefs.cpp:3052
 msgid "Failed to create shortcut"
 msgstr "Nepodarilo sa vytvoriť skratku"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3005
+#: src/frontends/qt4/GuiPrefs.cpp:3007
 msgid "Unknown or invalid LyX function"
 msgstr "Neznáma alebo neplatná LyX funkcia"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3012
+#: src/frontends/qt4/GuiPrefs.cpp:3014
 msgid "Invalid or empty key sequence"
 msgstr "Chybná alebo prázdna sekvencia kláves"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3032
+#: src/frontends/qt4/GuiPrefs.cpp:3034
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
@@ -21197,35 +21197,35 @@ msgstr ""
 "%2$s\n"
 "Pred vytvorením novej musíte túto väzbu zmazať."
 
-#: src/frontends/qt4/GuiPrefs.cpp:3051
+#: src/frontends/qt4/GuiPrefs.cpp:3053
 msgid "Can not insert shortcut to the list"
 msgstr "Nemôžem pridať skratku do listiny"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3082
+#: src/frontends/qt4/GuiPrefs.cpp:3084
 msgid "Identity"
 msgstr "Totožnosť"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3288
+#: src/frontends/qt4/GuiPrefs.cpp:3290
 msgid "Choose bind file"
 msgstr "Zvoľte súbor väzbových skratiek"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3289
+#: src/frontends/qt4/GuiPrefs.cpp:3291
 msgid "LyX bind files (*.bind)"
 msgstr "Väzbové skratky LyX-u (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3295
+#: src/frontends/qt4/GuiPrefs.cpp:3297
 msgid "Choose UI file"
 msgstr "Zvoľte súbor užívateľského rozhrania"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3296
+#: src/frontends/qt4/GuiPrefs.cpp:3298
 msgid "LyX UI files (*.ui)"
 msgstr "LyX UI súbory (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3302
+#: src/frontends/qt4/GuiPrefs.cpp:3304
 msgid "Choose keyboard map"
 msgstr "Zvoľte mapu kláves"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3303
+#: src/frontends/qt4/GuiPrefs.cpp:3305
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "LyX klávesové mapy (*.kmap)"
 
@@ -23529,7 +23529,7 @@ msgstr "Referencie: "
 
 #: src/support/debug.cpp:41
 msgid "No debugging messages"
-msgstr "Žiadne správy pre ladenie"
+msgstr "Bez ladiaceho hlásenia"
 
 #: src/support/debug.cpp:42
 msgid "General information"
@@ -23613,7 +23613,7 @@ msgstr "Udalosti pracovnej oblasti"
 
 #: src/support/debug.cpp:62
 msgid "Insettext/tabular messages"
-msgstr "Správy z tabuliek/vložiek textu"
+msgstr "Hlásenia z tabuliek/vložiek textu"
 
 #: src/support/debug.cpp:63
 msgid "Graphics conversion and loading"
@@ -23625,7 +23625,7 @@ msgstr "Zmeniť sledovanie"
 
 #: src/support/debug.cpp:65
 msgid "External template/inset messages"
-msgstr "Správy externej šablóny/vložky"
+msgstr "Hlásenia externej šablóny/vložky"
 
 #: src/support/debug.cpp:66
 msgid "RowPainter profiling"
@@ -23657,11 +23657,11 @@ msgstr "Mechanizmus hľadať a nahradiť"
 
 #: src/support/debug.cpp:73
 msgid "Developers' general debug messages"
-msgstr "Všeobecné ladiace správy pre vývojárov"
+msgstr "Všeobecné ladiace hlásenia pre vývojárov"
 
 #: src/support/debug.cpp:74
 msgid "All debugging messages"
-msgstr "Všetky ladiace správy"
+msgstr "Všetky ladiace hlásenia"
 
 #: src/support/debug.cpp:153
 #, c-format
