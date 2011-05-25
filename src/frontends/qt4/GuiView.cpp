@@ -3522,14 +3522,16 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 					addExtension(mastername, "dvi")));
 			FileName const pdfname(addName(path.absFileName(),
 					addExtension(mastername, "pdf")));
-			if (!dviname.exists() && !pdfname.exists()) {
+			bool const have_dvi = dviname.exists();
+			bool const have_pdf = pdfname.exists();
+			if (!have_dvi && !have_pdf) {
 				dr.setMessage(_("Please, preview the document first."));
 				break;
 			}
 			string outname = dviname.onlyFileName();
 			string command = lyxrc.forward_search_dvi;
-			if (!dviname.exists() ||
-			    pdfname.lastModified() > dviname.lastModified()) {
+			if (!have_dvi || (have_pdf &&
+			    pdfname.lastModified() > dviname.lastModified())) {
 				outname = pdfname.onlyFileName();
 				command = lyxrc.forward_search_pdf;
 			}
