@@ -791,8 +791,6 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 		// Remove trailing closure of math, macros and environments, so to catch parts of them.
 		do {
 			LYXERR(Debug::FIND, "par_as_string now is '" << par_as_string << "'");
-			if (regex_replace(par_as_string, par_as_string, "(.*)[[:blank:]]\\'", "$1"))
-					continue;
 			if (regex_replace(par_as_string, par_as_string, "(.*[^\\\\]) ?\\$\\'", "$1"))
 					continue;
 			// @todo need to account for open square braces as well ?
