@@ -86,6 +86,8 @@ What's new
 - On Windows, allow to automatically switch TeX engines without the need
   of manually saving the preferences after reconfiguring (bug 7557).
 
+- Fix dvi forward search on Windows when compiling with MSVC.
+
 
 * USER INTERFACE
 
