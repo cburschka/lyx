@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-29 00:54+0200\n"
+"POT-Creation-Date: 2011-05-09 02:41+0200\n"
 "PO-Revision-Date: 2011-04-15 11:10+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-doc@lists.lyx.org>\n"
@@ -494,8 +494,8 @@ msgid "Remove the selected branch"
 msgstr "選択した派生枝を削除"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3803
-#: src/Buffer.cpp:3816
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3804
+#: src/Buffer.cpp:3817
 msgid "&Remove"
 msgstr "削除(&R)"
 
@@ -529,7 +529,7 @@ msgstr "すべて追加(&L)"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
-#: src/Buffer.cpp:2272 src/Buffer.cpp:3778 src/Buffer.cpp:3841
+#: src/Buffer.cpp:2272 src/Buffer.cpp:3779 src/Buffer.cpp:3842
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1799
@@ -11735,18 +11735,18 @@ msgid "Justified Line Break|J"
 msgstr "両端揃え改行(J)|J"
 
 #: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:102 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:595
+#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:596
 msgid "Cut"
 msgstr "切り取り"
 
 #: lib/ui/stdcontext.inc:295 lib/ui/stdmenus.inc:103 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:604
+#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:605
 msgid "Copy"
 msgstr "コピー"
 
 #: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:82
 #: src/Text3.cpp:1175 src/mathed/InsetMathGrid.cpp:1327
-#: src/mathed/InsetMathNest.cpp:574
+#: src/mathed/InsetMathNest.cpp:575
 msgid "Paste"
 msgstr "貼り付け"
 
@@ -16465,7 +16465,7 @@ msgid ""
 msgstr ""
 "%1$s は新版のLyXファイルなので，スクリプトlyx2lyxが変換に失敗しました。"
 
-#: src/Buffer.cpp:1025 src/Buffer.cpp:3788 src/Buffer.cpp:3850
+#: src/Buffer.cpp:1025 src/Buffer.cpp:3789 src/Buffer.cpp:3851
 msgid "File is read-only"
 msgstr "ファイルが読込専用です"
 
@@ -16705,29 +16705,29 @@ msgstr "ファイルを書き出すことができませんでした"
 msgid "No information for exporting the format %1$s."
 msgstr "%1$sというフォーマットを書き出すのに必要な情報がありません"
 
-#: src/Buffer.cpp:3570
+#: src/Buffer.cpp:3571
 msgid "File name error"
 msgstr "ファイル名エラー"
 
-#: src/Buffer.cpp:3571
+#: src/Buffer.cpp:3572
 msgid "The directory path to the document cannot contain spaces."
 msgstr "文書のパスには空白が含まれていてはなりません。"
 
-#: src/Buffer.cpp:3656
+#: src/Buffer.cpp:3657
 msgid "Document export cancelled."
 msgstr "文書の書き出しは取り消されました。"
 
-#: src/Buffer.cpp:3666
+#: src/Buffer.cpp:3667
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "文書は%1$sとしてファイル「%2$s」に書き出されました。"
 
-#: src/Buffer.cpp:3672
+#: src/Buffer.cpp:3673
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "文書は%1$sとして書き出されました。"
 
-#: src/Buffer.cpp:3774
+#: src/Buffer.cpp:3775
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -16738,19 +16738,19 @@ msgstr ""
 "\n"
 "緊急保存ファイルから復旧しますか？"
 
-#: src/Buffer.cpp:3777
+#: src/Buffer.cpp:3778
 msgid "Load emergency save?"
 msgstr "緊急保存ファイルを読みこみますか？"
 
-#: src/Buffer.cpp:3778
+#: src/Buffer.cpp:3779
 msgid "&Recover"
 msgstr "復旧(&R)"
 
-#: src/Buffer.cpp:3778
+#: src/Buffer.cpp:3779
 msgid "&Load Original"
 msgstr "オリジナルを読み込む(&L):"
 
-#: src/Buffer.cpp:3789
+#: src/Buffer.cpp:3790
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -16760,15 +16760,15 @@ msgstr ""
 "込み専用に設定されています。この文書を別のファイルにかならず保存してくださ"
 "い。"
 
-#: src/Buffer.cpp:3795
+#: src/Buffer.cpp:3796
 msgid "Document was successfully recovered."
 msgstr "文書を無事に復旧しました。"
 
-#: src/Buffer.cpp:3797
+#: src/Buffer.cpp:3798
 msgid "Document was NOT successfully recovered."
 msgstr "文書を無事に復旧することができませんでした。"
 
-#: src/Buffer.cpp:3798
+#: src/Buffer.cpp:3799
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -16777,27 +16777,27 @@ msgstr ""
 "緊急保存ファイルを直ちに削除しますか？\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3802 src/Buffer.cpp:3814
+#: src/Buffer.cpp:3803 src/Buffer.cpp:3815
 msgid "Delete emergency file?"
 msgstr "緊急保存ファイルを削除しますか？"
 
-#: src/Buffer.cpp:3803 src/Buffer.cpp:3816
+#: src/Buffer.cpp:3804 src/Buffer.cpp:3817
 msgid "&Keep"
 msgstr "保持(&K)"
 
-#: src/Buffer.cpp:3807
+#: src/Buffer.cpp:3808
 msgid "Emergency file deleted"
 msgstr "緊急保存ファイルを削除しました"
 
-#: src/Buffer.cpp:3808
+#: src/Buffer.cpp:3809
 msgid "Do not forget to save your file now!"
 msgstr "すぐにファイルを保存するようにしてください！"
 
-#: src/Buffer.cpp:3815
+#: src/Buffer.cpp:3816
 msgid "Remove emergency file now?"
 msgstr "緊急保存ファイルを読みこみますか？"
 
-#: src/Buffer.cpp:3838
+#: src/Buffer.cpp:3839
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -16808,19 +16808,19 @@ msgstr ""
 "\n"
 "代わりにバックアップファイルを読み込みますか？"
 
-#: src/Buffer.cpp:3840
+#: src/Buffer.cpp:3841
 msgid "Load backup?"
 msgstr "バックアップを読み込みますか？"
 
-#: src/Buffer.cpp:3841
+#: src/Buffer.cpp:3842
 msgid "&Load backup"
 msgstr "バックアップを読み込む(&L)"
 
-#: src/Buffer.cpp:3841
+#: src/Buffer.cpp:3842
 msgid "Load &original"
 msgstr "オリジナルを読み込む(&O)"
 
-#: src/Buffer.cpp:3851
+#: src/Buffer.cpp:3852
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -16830,25 +16830,25 @@ msgstr ""
 "読み込み専用に設定されています。文書を別のファイルにかならず保存してくださ"
 "い。"
 
-#: src/Buffer.cpp:4188 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4189 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "意味を成しません!!! "
 
-#: src/Buffer.cpp:4309
+#: src/Buffer.cpp:4310
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "文書%1$sを再読み込みしました。"
 
-#: src/Buffer.cpp:4312
+#: src/Buffer.cpp:4313
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "文書%1$sの再読み込みができません"
 
-#: src/Buffer.cpp:4378
+#: src/Buffer.cpp:4379
 msgid "Included File Invalid"
 msgstr "取り込まれたファイルが無効です"
 
-#: src/Buffer.cpp:4379
+#: src/Buffer.cpp:4380
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -18857,7 +18857,7 @@ msgstr "数式編集モード"
 msgid "No valid math formula"
 msgstr "有効な数式ではありません"
 
-#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1028
+#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1029
 msgid "Already in regular expression mode"
 msgstr "既に正規表現モードです"
 
@@ -19147,12 +19147,12 @@ msgstr ""
 "続けますか？"
 
 #: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
-#: src/frontends/qt4/FindAndReplace.cpp:351
+#: src/frontends/qt4/FindAndReplace.cpp:337
 msgid "&Yes"
 msgstr "はい(&Y)"
 
 #: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
-#: src/frontends/qt4/FindAndReplace.cpp:351
+#: src/frontends/qt4/FindAndReplace.cpp:337
 msgid "&No"
 msgstr "いいえ(&N)"
 
@@ -19287,23 +19287,23 @@ msgstr "絵文字４"
 msgid "Directories"
 msgstr "ディレクトリ"
 
-#: src/frontends/qt4/FindAndReplace.cpp:272
+#: src/frontends/qt4/FindAndReplace.cpp:258
 msgid "File"
 msgstr "ファイル"
 
-#: src/frontends/qt4/FindAndReplace.cpp:275
+#: src/frontends/qt4/FindAndReplace.cpp:261
 msgid "Master document"
 msgstr "親文書"
 
-#: src/frontends/qt4/FindAndReplace.cpp:278
+#: src/frontends/qt4/FindAndReplace.cpp:264
 msgid "Open files"
 msgstr "ファイルを開く"
 
-#: src/frontends/qt4/FindAndReplace.cpp:281
+#: src/frontends/qt4/FindAndReplace.cpp:267
 msgid "Manuals"
 msgstr "取扱説明書"
 
-#: src/frontends/qt4/FindAndReplace.cpp:285
+#: src/frontends/qt4/FindAndReplace.cpp:271
 #, c-format
 msgid ""
 "%1$s: the end was reached while searching forward.\n"
@@ -19312,7 +19312,7 @@ msgstr ""
 "%1$s: 前方検索を行っていて文末に到達しました。\n"
 "文頭から検索を続けますか？"
 
-#: src/frontends/qt4/FindAndReplace.cpp:288
+#: src/frontends/qt4/FindAndReplace.cpp:274
 #, c-format
 msgid ""
 "%1$s: the beginning was reached while searching backward.\n"
@@ -19321,19 +19321,19 @@ msgstr ""
 "%1$s: 後方検索を行っていて文頭に到達しました。\n"
 "文末から検索を続けますか？"
 
-#: src/frontends/qt4/FindAndReplace.cpp:350
+#: src/frontends/qt4/FindAndReplace.cpp:336
 msgid "Wrap search?"
 msgstr "文頭に戻って検索を続けますか？"
 
-#: src/frontends/qt4/FindAndReplace.cpp:395
+#: src/frontends/qt4/FindAndReplace.cpp:381
 msgid "Nothing to search"
 msgstr "検索対象がありません"
 
-#: src/frontends/qt4/FindAndReplace.cpp:435
+#: src/frontends/qt4/FindAndReplace.cpp:421
 msgid "No open document(s) in which to search"
 msgstr "検索を行う文書が開かれていません"
 
-#: src/frontends/qt4/FindAndReplace.cpp:532
+#: src/frontends/qt4/FindAndReplace.cpp:517
 msgid "Advanced Find and Replace"
 msgstr "詳細な検索及び置換"
 
@@ -23290,7 +23290,7 @@ msgstr "一致箇所が見つかりました！"
 msgid " Macro: %1$s: "
 msgstr " マクロ: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1679
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1680
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -23331,11 +23331,11 @@ msgstr "削除する vline はありません"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "「%1$s」は未知の表の特性です"
 
-#: src/mathed/InsetMathHull.cpp:1271
+#: src/mathed/InsetMathHull.cpp:1272
 msgid "Bad math environment"
 msgstr "不良な数式環境です"
 
-#: src/mathed/InsetMathHull.cpp:1272
+#: src/mathed/InsetMathHull.cpp:1273
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
@@ -23343,46 +23343,46 @@ msgstr ""
 "AMS数式環境では、計算を行うことができません。\n"
 "数式型を変更して再度試みてください。"
 
-#: src/mathed/InsetMathHull.cpp:1378 src/mathed/InsetMathHull.cpp:1387
+#: src/mathed/InsetMathHull.cpp:1379 src/mathed/InsetMathHull.cpp:1388
 msgid "No number"
 msgstr "番号なし"
 
-#: src/mathed/InsetMathHull.cpp:1378 src/mathed/InsetMathHull.cpp:1387
+#: src/mathed/InsetMathHull.cpp:1379 src/mathed/InsetMathHull.cpp:1388
 msgid "Number"
 msgstr "番号あり"
 
-#: src/mathed/InsetMathHull.cpp:1652
+#: src/mathed/InsetMathHull.cpp:1653
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "「%1$s」の行数を変えることができません。"
 
-#: src/mathed/InsetMathHull.cpp:1662
+#: src/mathed/InsetMathHull.cpp:1663
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "「%1$s」の列数を変えることができません。"
 
-#: src/mathed/InsetMathHull.cpp:1672
+#: src/mathed/InsetMathHull.cpp:1673
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "「%1$s」に水平境界線を加えることができません。"
 
-#: src/mathed/InsetMathNest.cpp:1014
+#: src/mathed/InsetMathNest.cpp:1015
 msgid "create new math text environment ($...$)"
 msgstr "新しい数式テキスト環境を作成する($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1017
+#: src/mathed/InsetMathNest.cpp:1018
 msgid "entered math text mode (textrm)"
 msgstr "挿入された数式テキストモード(textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1039
+#: src/mathed/InsetMathNest.cpp:1040
 msgid "Regular expression editor mode"
 msgstr "正規表現エディタモード"
 
-#: src/mathed/InsetMathNest.cpp:1650 src/mathed/InsetMathNest.cpp:1770
+#: src/mathed/InsetMathNest.cpp:1651 src/mathed/InsetMathNest.cpp:1771
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "自動修正切（入にするには「!」）"
 
-#: src/mathed/InsetMathNest.cpp:1655 src/mathed/InsetMathNest.cpp:1772
+#: src/mathed/InsetMathNest.cpp:1656 src/mathed/InsetMathNest.cpp:1773
 msgid "Autocorrect On (<space> to exit)"
 msgstr "自動修正入（切にするには<スペース>）"
 
@@ -23577,11 +23577,11 @@ msgstr "`%1$s' (%2$s)をデバッグしています"
 msgid "[[Replace with the code of your language]]"
 msgstr "ja"
 
-#: src/support/os_win32.cpp:444
+#: src/support/os_win32.cpp:450
 msgid "System file not found"
 msgstr "システムファイルが見つかりません"
 
-#: src/support/os_win32.cpp:445
+#: src/support/os_win32.cpp:451
 msgid ""
 "Unable to load shfolder.dll\n"
 "Please install."
@@ -23589,11 +23589,11 @@ msgstr ""
 "shfolder.dllを読み込むことができません\n"
 "インストールしてください。"
 
-#: src/support/os_win32.cpp:450
+#: src/support/os_win32.cpp:456
 msgid "System function not found"
 msgstr "システム関数が見つかりません"
 
-#: src/support/os_win32.cpp:451
+#: src/support/os_win32.cpp:457
 msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."

@@ -69,7 +69,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-04-29 00:54+0200\n"
+"POT-Creation-Date: 2011-05-09 02:41+0200\n"
 "PO-Revision-Date: 2010-11-18 05:54+0100\n"
 "Last-Translator: Martin Vermeer <martin.vermeer@tkk.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -556,8 +556,8 @@ msgid "Remove the selected branch"
 msgstr "Poista valittu haara"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3803
-#: src/Buffer.cpp:3816
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3804
+#: src/Buffer.cpp:3817
 msgid "&Remove"
 msgstr "&Poista"
 
@@ -596,7 +596,7 @@ msgstr ""
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
-#: src/Buffer.cpp:2272 src/Buffer.cpp:3778 src/Buffer.cpp:3841
+#: src/Buffer.cpp:2272 src/Buffer.cpp:3779 src/Buffer.cpp:3842
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1799
@@ -12422,18 +12422,18 @@ msgid "Justified Line Break|J"
 msgstr "Rivinvaihto|R"
 
 #: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:102 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:595
+#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:596
 msgid "Cut"
 msgstr "Leikkaa"
 
 #: lib/ui/stdcontext.inc:295 lib/ui/stdmenus.inc:103 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:604
+#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:605
 msgid "Copy"
 msgstr "Kopioi"
 
 #: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:82
 #: src/Text3.cpp:1175 src/mathed/InsetMathGrid.cpp:1327
-#: src/mathed/InsetMathNest.cpp:574
+#: src/mathed/InsetMathNest.cpp:575
 msgid "Paste"
 msgstr "Liitä"
 
@@ -17326,7 +17326,7 @@ msgstr ""
 "Tiedosto %1$s on tehty aiemmalla LyXin versiolla, mutta lyx2lyx-"
 "skriptiepäonnistui muuntamaan sitä."
 
-#: src/Buffer.cpp:1025 src/Buffer.cpp:3788 src/Buffer.cpp:3850
+#: src/Buffer.cpp:1025 src/Buffer.cpp:3789 src/Buffer.cpp:3851
 #, fuzzy
 msgid "File is read-only"
 msgstr "Asiakirja on kirjoitussuojattu"
@@ -17563,29 +17563,29 @@ msgstr "Ei voitu viedä tiedostoa"
 msgid "No information for exporting the format %1$s."
 msgstr "Ei tietoa, miten tuoda formaattia %1$s"
 
-#: src/Buffer.cpp:3570
+#: src/Buffer.cpp:3571
 msgid "File name error"
 msgstr "Tiedostonimessä virhe"
 
-#: src/Buffer.cpp:3571
+#: src/Buffer.cpp:3572
 msgid "The directory path to the document cannot contain spaces."
 msgstr "LyX-tiedoston polussa ei voi olla välilyöntejä."
 
-#: src/Buffer.cpp:3656
+#: src/Buffer.cpp:3657
 msgid "Document export cancelled."
 msgstr "Asiakirja vienti peruutettu."
 
-#: src/Buffer.cpp:3666
+#: src/Buffer.cpp:3667
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Asiakirja viety nimellä %1$s tiedostoon `%2$s'"
 
-#: src/Buffer.cpp:3672
+#: src/Buffer.cpp:3673
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Asiakirja viety nimellä %1$s"
 
-#: src/Buffer.cpp:3774
+#: src/Buffer.cpp:3775
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17595,65 +17595,65 @@ msgstr ""
 "Asiakirjasta %1$s on olemassa hätätallennusversio.\n"
 "Ladataanko hätätallennus?"
 
-#: src/Buffer.cpp:3777
+#: src/Buffer.cpp:3778
 msgid "Load emergency save?"
 msgstr "Ladataanko hätätallennus?"
 
-#: src/Buffer.cpp:3778
+#: src/Buffer.cpp:3779
 msgid "&Recover"
 msgstr "Pelasta"
 
-#: src/Buffer.cpp:3778
+#: src/Buffer.cpp:3779
 #, fuzzy
 msgid "&Load Original"
 msgstr "Lataa alkuperäinen"
 
-#: src/Buffer.cpp:3789
+#: src/Buffer.cpp:3790
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:3795
+#: src/Buffer.cpp:3796
 msgid "Document was successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:3797
+#: src/Buffer.cpp:3798
 msgid "Document was NOT successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:3798
+#: src/Buffer.cpp:3799
 #, fuzzy, c-format
 msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
 msgstr "Ladataanko hätätallennus?"
 
-#: src/Buffer.cpp:3802 src/Buffer.cpp:3814
+#: src/Buffer.cpp:3803 src/Buffer.cpp:3815
 #, fuzzy
 msgid "Delete emergency file?"
 msgstr "Valitse ulkoinen tiedosto"
 
-#: src/Buffer.cpp:3803 src/Buffer.cpp:3816
+#: src/Buffer.cpp:3804 src/Buffer.cpp:3817
 #, fuzzy
 msgid "&Keep"
 msgstr "&Säilytä vastaavat"
 
-#: src/Buffer.cpp:3807
+#: src/Buffer.cpp:3808
 msgid "Emergency file deleted"
 msgstr ""
 
-#: src/Buffer.cpp:3808
+#: src/Buffer.cpp:3809
 msgid "Do not forget to save your file now!"
 msgstr ""
 
-#: src/Buffer.cpp:3815
+#: src/Buffer.cpp:3816
 #, fuzzy
 msgid "Remove emergency file now?"
 msgstr "Ladataanko hätätallennus?"
 
-#: src/Buffer.cpp:3838
+#: src/Buffer.cpp:3839
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17664,45 +17664,45 @@ msgstr ""
 "\n"
 "Ladataanko mieluummin varmuuskopio?"
 
-#: src/Buffer.cpp:3840
+#: src/Buffer.cpp:3841
 msgid "Load backup?"
 msgstr "Ladataanko varmuuskopio?"
 
-#: src/Buffer.cpp:3841
+#: src/Buffer.cpp:3842
 msgid "&Load backup"
 msgstr "Lataa varmuuskopio"
 
-#: src/Buffer.cpp:3841
+#: src/Buffer.cpp:3842
 msgid "Load &original"
 msgstr "Lataa alkuperäinen"
 
-#: src/Buffer.cpp:3851
+#: src/Buffer.cpp:3852
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:4188 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4189 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Järjetöntä!!! "
 
-#: src/Buffer.cpp:4309
+#: src/Buffer.cpp:4310
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "Asiakirja %1$s avautui."
 
-#: src/Buffer.cpp:4312
+#: src/Buffer.cpp:4313
 #, fuzzy, c-format
 msgid "Could not reload document %1$s."
 msgstr "Asiakirjan lukeminen epäonnistui"
 
-#: src/Buffer.cpp:4378
+#: src/Buffer.cpp:4379
 #, fuzzy
 msgid "Included File Invalid"
 msgstr "Sisällytä tiedosto...|y"
 
-#: src/Buffer.cpp:4379
+#: src/Buffer.cpp:4380
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -19691,7 +19691,7 @@ msgstr "Matematiikkaeditoritila"
 msgid "No valid math formula"
 msgstr ""
 
-#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1028
+#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1029
 #, fuzzy
 msgid "Already in regular expression mode"
 msgstr "Jokerikortti-ilmaisu"
@@ -19941,13 +19941,13 @@ msgid ""
 msgstr ""
 
 #: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
-#: src/frontends/qt4/FindAndReplace.cpp:351
+#: src/frontends/qt4/FindAndReplace.cpp:337
 #, fuzzy
 msgid "&Yes"
 msgstr "&Kyllä"
 
 #: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
-#: src/frontends/qt4/FindAndReplace.cpp:351
+#: src/frontends/qt4/FindAndReplace.cpp:337
 #, fuzzy
 msgid "&No"
 msgstr "&Ei"
@@ -20089,55 +20089,55 @@ msgstr "Dings 4"
 msgid "Directories"
 msgstr "Hakemistot"
 
-#: src/frontends/qt4/FindAndReplace.cpp:272
+#: src/frontends/qt4/FindAndReplace.cpp:258
 #, fuzzy
 msgid "File"
 msgstr "Tiedosto"
 
-#: src/frontends/qt4/FindAndReplace.cpp:275
+#: src/frontends/qt4/FindAndReplace.cpp:261
 #, fuzzy
 msgid "Master document"
 msgstr "Pääasiakirja"
 
-#: src/frontends/qt4/FindAndReplace.cpp:278
+#: src/frontends/qt4/FindAndReplace.cpp:264
 #, fuzzy
 msgid "Open files"
 msgstr "Esimerkki #:"
 
-#: src/frontends/qt4/FindAndReplace.cpp:281
+#: src/frontends/qt4/FindAndReplace.cpp:267
 #, fuzzy
 msgid "Manuals"
 msgstr "reunahuomautus"
 
-#: src/frontends/qt4/FindAndReplace.cpp:285
+#: src/frontends/qt4/FindAndReplace.cpp:271
 #, c-format
 msgid ""
 "%1$s: the end was reached while searching forward.\n"
 "Continue searching from the beginning?"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:288
+#: src/frontends/qt4/FindAndReplace.cpp:274
 #, c-format
 msgid ""
 "%1$s: the beginning was reached while searching backward.\n"
 "Continue searching from the end?"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:350
+#: src/frontends/qt4/FindAndReplace.cpp:336
 msgid "Wrap search?"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:395
+#: src/frontends/qt4/FindAndReplace.cpp:381
 #, fuzzy
 msgid "Nothing to search"
 msgstr "Ei mitään tehtävää"
 
-#: src/frontends/qt4/FindAndReplace.cpp:435
+#: src/frontends/qt4/FindAndReplace.cpp:421
 #, fuzzy
 msgid "No open document(s) in which to search"
 msgstr "Asiakirja avautuu"
 
-#: src/frontends/qt4/FindAndReplace.cpp:532
+#: src/frontends/qt4/FindAndReplace.cpp:517
 #, fuzzy
 msgid "Advanced Find and Replace"
 msgstr "Etsi ja korvaa"
@@ -24306,7 +24306,7 @@ msgstr "Tiedostoa ei löydy"
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1679
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1680
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -24348,58 +24348,58 @@ msgstr "Ei ole vline poistettavana"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Tuntematon taulukon ominaisuus '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1271
+#: src/mathed/InsetMathHull.cpp:1272
 #, fuzzy
 msgid "Bad math environment"
 msgstr "Koontiympäristö"
 
-#: src/mathed/InsetMathHull.cpp:1272
+#: src/mathed/InsetMathHull.cpp:1273
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1378 src/mathed/InsetMathHull.cpp:1387
+#: src/mathed/InsetMathHull.cpp:1379 src/mathed/InsetMathHull.cpp:1388
 msgid "No number"
 msgstr "Ei numeroa"
 
-#: src/mathed/InsetMathHull.cpp:1378 src/mathed/InsetMathHull.cpp:1387
+#: src/mathed/InsetMathHull.cpp:1379 src/mathed/InsetMathHull.cpp:1388
 msgid "Number"
 msgstr "Numero"
 
-#: src/mathed/InsetMathHull.cpp:1652
+#: src/mathed/InsetMathHull.cpp:1653
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "En voi muuttaa rivien määrä kohteessa '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1662
+#: src/mathed/InsetMathHull.cpp:1663
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "En voi muuttaa sarakkeiden määrä kohteessa '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1672
+#: src/mathed/InsetMathHull.cpp:1673
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "En voi lisätä vaakaviivat kohteeseen '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:1014
+#: src/mathed/InsetMathNest.cpp:1015
 msgid "create new math text environment ($...$)"
 msgstr "luo uusi matematiikkatekstiympäristö ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1017
+#: src/mathed/InsetMathNest.cpp:1018
 msgid "entered math text mode (textrm)"
 msgstr "siirryttiin matikkamoodiin (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1039
+#: src/mathed/InsetMathNest.cpp:1040
 #, fuzzy
 msgid "Regular expression editor mode"
 msgstr "Jokerikortti-ilmaisu"
 
-#: src/mathed/InsetMathNest.cpp:1650 src/mathed/InsetMathNest.cpp:1770
+#: src/mathed/InsetMathNest.cpp:1651 src/mathed/InsetMathNest.cpp:1771
 msgid "Autocorrect Off ('!' to enter)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:1655 src/mathed/InsetMathNest.cpp:1772
+#: src/mathed/InsetMathNest.cpp:1656 src/mathed/InsetMathNest.cpp:1773
 msgid "Autocorrect On (<space> to exit)"
 msgstr ""
 
@@ -24603,11 +24603,11 @@ msgstr "Virheiden seuranta: \"%1$s\" (%2$s)"
 msgid "[[Replace with the code of your language]]"
 msgstr "fi"
 
-#: src/support/os_win32.cpp:444
+#: src/support/os_win32.cpp:450
 msgid "System file not found"
 msgstr "Kokoonpanotiedostoa ei löydy"
 
-#: src/support/os_win32.cpp:445
+#: src/support/os_win32.cpp:451
 msgid ""
 "Unable to load shfolder.dll\n"
 "Please install."
@@ -24615,11 +24615,11 @@ msgstr ""
 "En voi ladata shfolder.dll\n"
 "Ole hyvä ja installoi."
 
-#: src/support/os_win32.cpp:450
+#: src/support/os_win32.cpp:456
 msgid "System function not found"
 msgstr "Kokoonpanofunktio ei löydy"
 
-#: src/support/os_win32.cpp:451
+#: src/support/os_win32.cpp:457
 msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."
