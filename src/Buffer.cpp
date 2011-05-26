@@ -457,9 +457,9 @@ void Buffer::clone(BufferMap & bufmap) const
 		Buffer * child = const_cast<Buffer *>(it->first);
 
 		child->clone(bufmap);
-		BufferMap::iterator it = bufmap.find(child);
-		LASSERT(it != bufmap.end(), continue);
-		Buffer * child_clone = it->second;
+		BufferMap::iterator const bit = bufmap.find(child);
+		LASSERT(bit != bufmap.end(), continue);
+		Buffer * child_clone = bit->second;
 
 		Inset * inset = dit.nextInset();
 		LASSERT(inset && inset->lyxCode() == INCLUDE_CODE, continue);
