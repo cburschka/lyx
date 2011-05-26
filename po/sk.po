@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-05-09 02:41+0200\n"
+"POT-Creation-Date: 2011-04-29 00:54+0200\n"
 "PO-Revision-Date: 2011-04-15 07:55+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -491,8 +491,8 @@ msgid "Remove the selected branch"
 msgstr "Zmazať vybranú vetvu"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3804
-#: src/Buffer.cpp:3817
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3803
+#: src/Buffer.cpp:3816
 msgid "&Remove"
 msgstr "&Odstrániť"
 
@@ -526,7 +526,7 @@ msgstr "Pridaj Všetko"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
-#: src/Buffer.cpp:2272 src/Buffer.cpp:3779 src/Buffer.cpp:3842
+#: src/Buffer.cpp:2272 src/Buffer.cpp:3778 src/Buffer.cpp:3841
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1799
@@ -11754,18 +11754,18 @@ msgid "Justified Line Break|J"
 msgstr "Zarovnanie konca riadkov"
 
 #: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:102 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:596
+#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:595
 msgid "Cut"
 msgstr "Vystrihnúť"
 
 #: lib/ui/stdcontext.inc:295 lib/ui/stdmenus.inc:103 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:605
+#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:604
 msgid "Copy"
 msgstr "Kopírovať"
 
 #: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:82
 #: src/Text3.cpp:1175 src/mathed/InsetMathGrid.cpp:1327
-#: src/mathed/InsetMathNest.cpp:575
+#: src/mathed/InsetMathNest.cpp:574
 msgid "Paste"
 msgstr "Vlepiť"
 
@@ -16482,7 +16482,7 @@ msgid ""
 "it."
 msgstr "%1$s je z novšej verzie LyX-u, a skript lyx2lyx zlyhal pri konverzii."
 
-#: src/Buffer.cpp:1025 src/Buffer.cpp:3789 src/Buffer.cpp:3851
+#: src/Buffer.cpp:1025 src/Buffer.cpp:3788 src/Buffer.cpp:3850
 msgid "File is read-only"
 msgstr "Dokument je iba na čítanie"
 
@@ -16718,29 +16718,29 @@ msgstr "Nemôžem exportovať súbor"
 msgid "No information for exporting the format %1$s."
 msgstr "Žiadne informácie pre export formátu %1$s"
 
-#: src/Buffer.cpp:3571
+#: src/Buffer.cpp:3570
 msgid "File name error"
 msgstr "Chyba v názve súboru"
 
-#: src/Buffer.cpp:3572
+#: src/Buffer.cpp:3571
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Cesta k dokumentu nesmie obsahovať medzery."
 
-#: src/Buffer.cpp:3657
+#: src/Buffer.cpp:3656
 msgid "Document export cancelled."
 msgstr "Exportovanie dokumentu bolo zrušené."
 
-#: src/Buffer.cpp:3667
+#: src/Buffer.cpp:3666
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument exportovaný ako %1$s do súboru `%2$s'"
 
-#: src/Buffer.cpp:3673
+#: src/Buffer.cpp:3672
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument exportovaný ako %1$s"
 
-#: src/Buffer.cpp:3775
+#: src/Buffer.cpp:3774
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -16751,19 +16751,19 @@ msgstr ""
 "\n"
 "Získať núdzovú kópiu späť?"
 
-#: src/Buffer.cpp:3778
+#: src/Buffer.cpp:3777
 msgid "Load emergency save?"
 msgstr "Nahrať núdzovú kópiu ?"
 
-#: src/Buffer.cpp:3779
+#: src/Buffer.cpp:3778
 msgid "&Recover"
 msgstr "Získať späť"
 
-#: src/Buffer.cpp:3779
+#: src/Buffer.cpp:3778
 msgid "&Load Original"
 msgstr "Nahrať Originál"
 
-#: src/Buffer.cpp:3790
+#: src/Buffer.cpp:3789
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -16772,15 +16772,15 @@ msgstr ""
 "Bezpečnostný súbor úspešne načítaný, ale originálny súbor %1$s je označený "
 "len na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
 
-#: src/Buffer.cpp:3796
+#: src/Buffer.cpp:3795
 msgid "Document was successfully recovered."
 msgstr "Dokument bol úspešne obnovený."
 
-#: src/Buffer.cpp:3798
+#: src/Buffer.cpp:3797
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument nebol úspešne obnovený."
 
-#: src/Buffer.cpp:3799
+#: src/Buffer.cpp:3798
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -16789,27 +16789,27 @@ msgstr ""
 "Zmazať núdzovú kópiu teraz?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3803 src/Buffer.cpp:3815
+#: src/Buffer.cpp:3802 src/Buffer.cpp:3814
 msgid "Delete emergency file?"
 msgstr "Zmazať núdzový súbor?"
 
-#: src/Buffer.cpp:3804 src/Buffer.cpp:3817
+#: src/Buffer.cpp:3803 src/Buffer.cpp:3816
 msgid "&Keep"
 msgstr "Držať"
 
-#: src/Buffer.cpp:3808
+#: src/Buffer.cpp:3807
 msgid "Emergency file deleted"
 msgstr "Núdzový súbor vymazaný"
 
-#: src/Buffer.cpp:3809
+#: src/Buffer.cpp:3808
 msgid "Do not forget to save your file now!"
 msgstr "Teraz nezabudnite uložiť váš súbor!"
 
-#: src/Buffer.cpp:3816
+#: src/Buffer.cpp:3815
 msgid "Remove emergency file now?"
 msgstr "Zmazať núdzovú kópiu teraz?"
 
-#: src/Buffer.cpp:3839
+#: src/Buffer.cpp:3838
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -16820,19 +16820,19 @@ msgstr ""
 "\n"
 "Nahrať radšej zálohu ?"
 
-#: src/Buffer.cpp:3841
+#: src/Buffer.cpp:3840
 msgid "Load backup?"
 msgstr "Nahrať zálohu?"
 
-#: src/Buffer.cpp:3842
+#: src/Buffer.cpp:3841
 msgid "&Load backup"
 msgstr "Nahrať zálohu"
 
-#: src/Buffer.cpp:3842
+#: src/Buffer.cpp:3841
 msgid "Load &original"
 msgstr "Nahrať Originál"
 
-#: src/Buffer.cpp:3852
+#: src/Buffer.cpp:3851
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -16841,25 +16841,25 @@ msgstr ""
 "Zálohový súbor úspešne načítaný, ale originálny súbor %1$s je označený len "
 "na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
 
-#: src/Buffer.cpp:4189 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4188 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Nezmyselné!!! "
 
-#: src/Buffer.cpp:4310
+#: src/Buffer.cpp:4309
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s znovu nahraný."
 
-#: src/Buffer.cpp:4313
+#: src/Buffer.cpp:4312
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Nedá sa znova nahrať dokument %1$s."
 
-#: src/Buffer.cpp:4379
+#: src/Buffer.cpp:4378
 msgid "Included File Invalid"
 msgstr "Zahrnutý Súbor je Neplatný"
 
-#: src/Buffer.cpp:4380
+#: src/Buffer.cpp:4379
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -18857,7 +18857,7 @@ msgstr "Režim matematického editoru"
 msgid "No valid math formula"
 msgstr "Neplatný matematický vzorec"
 
-#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1029
+#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1028
 msgid "Already in regular expression mode"
 msgstr "Už v postupe pre regulárny výraz"
 
@@ -19145,12 +19145,12 @@ msgstr ""
 "Pokračovať?"
 
 #: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
-#: src/frontends/qt4/FindAndReplace.cpp:337
+#: src/frontends/qt4/FindAndReplace.cpp:351
 msgid "&Yes"
 msgstr "áno"
 
 #: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
-#: src/frontends/qt4/FindAndReplace.cpp:337
+#: src/frontends/qt4/FindAndReplace.cpp:351
 msgid "&No"
 msgstr "nie"
 
@@ -19286,23 +19286,23 @@ msgstr "Dings 4"
 msgid "Directories"
 msgstr "Adresári"
 
-#: src/frontends/qt4/FindAndReplace.cpp:258
+#: src/frontends/qt4/FindAndReplace.cpp:272
 msgid "File"
 msgstr "Súbor"
 
-#: src/frontends/qt4/FindAndReplace.cpp:261
+#: src/frontends/qt4/FindAndReplace.cpp:275
 msgid "Master document"
 msgstr "Hlavný dokument"
 
-#: src/frontends/qt4/FindAndReplace.cpp:264
+#: src/frontends/qt4/FindAndReplace.cpp:278
 msgid "Open files"
 msgstr "Otvorené súbory"
 
-#: src/frontends/qt4/FindAndReplace.cpp:267
+#: src/frontends/qt4/FindAndReplace.cpp:281
 msgid "Manuals"
 msgstr "Manuály"
 
-#: src/frontends/qt4/FindAndReplace.cpp:271
+#: src/frontends/qt4/FindAndReplace.cpp:285
 #, c-format
 msgid ""
 "%1$s: the end was reached while searching forward.\n"
@@ -19311,7 +19311,7 @@ msgstr ""
 "%1$s: dosiahol som koniec hľadajúc dopredu.\n"
 "Pokračovať hľadaním od začiatku?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:274
+#: src/frontends/qt4/FindAndReplace.cpp:288
 #, c-format
 msgid ""
 "%1$s: the beginning was reached while searching backward.\n"
@@ -19320,19 +19320,19 @@ msgstr ""
 "%1$s: Dosiahol som začiatok hľadajúc spätne.\n"
 "Pokračovať hľadaním od konca?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:336
+#: src/frontends/qt4/FindAndReplace.cpp:350
 msgid "Wrap search?"
 msgstr "Od začiatku hľadať?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:381
+#: src/frontends/qt4/FindAndReplace.cpp:395
 msgid "Nothing to search"
 msgstr "Nie je čo hľadať"
 
-#: src/frontends/qt4/FindAndReplace.cpp:421
+#: src/frontends/qt4/FindAndReplace.cpp:435
 msgid "No open document(s) in which to search"
 msgstr "Nemám otvorené dokumenty v ktorých by som mohol hľadať"
 
-#: src/frontends/qt4/FindAndReplace.cpp:517
+#: src/frontends/qt4/FindAndReplace.cpp:532
 msgid "Advanced Find and Replace"
 msgstr "Pokročilé Hľadať a Nahradiť"
 
@@ -23279,7 +23279,7 @@ msgstr "Vhodný výraz nájdený!"
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1680
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1679
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -23320,11 +23320,11 @@ msgstr "Žiadna vertikálna linka (vline) na zmazanie"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Neznáme vlastnosti tabuľky '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1272
+#: src/mathed/InsetMathHull.cpp:1271
 msgid "Bad math environment"
 msgstr "Zlé mat. prostredie"
 
-#: src/mathed/InsetMathHull.cpp:1273
+#: src/mathed/InsetMathHull.cpp:1272
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
@@ -23332,46 +23332,46 @@ msgstr ""
 "Výpočet sa pre mat. prostredie AMS nedá previezť.\n"
 "Zmeňte typ mat. formuly a skúste to ešte raz."
 
-#: src/mathed/InsetMathHull.cpp:1379 src/mathed/InsetMathHull.cpp:1388
+#: src/mathed/InsetMathHull.cpp:1378 src/mathed/InsetMathHull.cpp:1387
 msgid "No number"
 msgstr "Bez čísla"
 
-#: src/mathed/InsetMathHull.cpp:1379 src/mathed/InsetMathHull.cpp:1388
+#: src/mathed/InsetMathHull.cpp:1378 src/mathed/InsetMathHull.cpp:1387
 msgid "Number"
 msgstr "Číslo"
 
-#: src/mathed/InsetMathHull.cpp:1653
+#: src/mathed/InsetMathHull.cpp:1652
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Nedá sa zmeniť počet riadkov v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1663
+#: src/mathed/InsetMathHull.cpp:1662
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Počet stĺpcov sa nedá zmeniť v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1673
+#: src/mathed/InsetMathHull.cpp:1672
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Nedajú sa pridať horizontálne linky mriežky '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:1015
+#: src/mathed/InsetMathNest.cpp:1014
 msgid "create new math text environment ($...$)"
 msgstr "vytvoriť nové matematické textové prostredie ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1018
+#: src/mathed/InsetMathNest.cpp:1017
 msgid "entered math text mode (textrm)"
 msgstr "vstup do text. prostredia vnútri matem. (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1040
+#: src/mathed/InsetMathNest.cpp:1039
 msgid "Regular expression editor mode"
 msgstr "Modus  pre editáciu regulárnych výrazov"
 
-#: src/mathed/InsetMathNest.cpp:1651 src/mathed/InsetMathNest.cpp:1771
+#: src/mathed/InsetMathNest.cpp:1650 src/mathed/InsetMathNest.cpp:1770
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Automatická korektúra vypnutá ('!' na zapnutie)"
 
-#: src/mathed/InsetMathNest.cpp:1656 src/mathed/InsetMathNest.cpp:1773
+#: src/mathed/InsetMathNest.cpp:1655 src/mathed/InsetMathNest.cpp:1772
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Automatická korektúra zapnutá (<medzerník> na vypnutie)"
 
@@ -23566,11 +23566,11 @@ msgstr "Ladenie `%1$s' (%2$s)"
 msgid "[[Replace with the code of your language]]"
 msgstr "sk"
 
-#: src/support/os_win32.cpp:450
+#: src/support/os_win32.cpp:444
 msgid "System file not found"
 msgstr "Systémový súbor nenájdený"
 
-#: src/support/os_win32.cpp:451
+#: src/support/os_win32.cpp:445
 msgid ""
 "Unable to load shfolder.dll\n"
 "Please install."
@@ -23578,11 +23578,11 @@ msgstr ""
 "Nedá sa nahrať shfolder.dll\n"
 "Prosím inštalujte."
 
-#: src/support/os_win32.cpp:456
+#: src/support/os_win32.cpp:450
 msgid "System function not found"
 msgstr "Systémová funkcia nenájdená"
 
-#: src/support/os_win32.cpp:457
+#: src/support/os_win32.cpp:451
 msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."

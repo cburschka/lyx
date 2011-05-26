@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-05-09 02:41+0200\n"
+"POT-Creation-Date: 2011-04-29 00:54+0200\n"
 "PO-Revision-Date: 2011-04-26 10:58-0400\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -491,8 +491,8 @@ msgid "Remove the selected branch"
 msgstr "Șterge versiunea de document selectată"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3804
-#: src/Buffer.cpp:3817
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3803
+#: src/Buffer.cpp:3816
 msgid "&Remove"
 msgstr "&Elimină"
 
@@ -529,7 +529,7 @@ msgstr "Adaugă &toate"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
-#: src/Buffer.cpp:2272 src/Buffer.cpp:3779 src/Buffer.cpp:3842
+#: src/Buffer.cpp:2272 src/Buffer.cpp:3778 src/Buffer.cpp:3841
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1799
@@ -12172,18 +12172,18 @@ msgid "Justified Line Break|J"
 msgstr "Rupere de linie|R"
 
 #: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:102 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:596
+#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:595
 msgid "Cut"
 msgstr "Taie"
 
 #: lib/ui/stdcontext.inc:295 lib/ui/stdmenus.inc:103 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:605
+#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:604
 msgid "Copy"
 msgstr "Copiază"
 
 #: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:82
 #: src/Text3.cpp:1175 src/mathed/InsetMathGrid.cpp:1327
-#: src/mathed/InsetMathNest.cpp:575
+#: src/mathed/InsetMathNest.cpp:574
 msgid "Paste"
 msgstr "Lipește"
 
@@ -17039,7 +17039,7 @@ msgid ""
 "it."
 msgstr ""
 
-#: src/Buffer.cpp:1025 src/Buffer.cpp:3789 src/Buffer.cpp:3851
+#: src/Buffer.cpp:1025 src/Buffer.cpp:3788 src/Buffer.cpp:3850
 #, fuzzy
 msgid "File is read-only"
 msgstr "Documente"
@@ -17277,31 +17277,31 @@ msgstr "Înlocuiește"
 msgid "No information for exporting the format %1$s."
 msgstr "Nu decomprimă imaginea înainte de exportare în LaTeX"
 
-#: src/Buffer.cpp:3571
+#: src/Buffer.cpp:3570
 #, fuzzy
 msgid "File name error"
 msgstr "Nume de fișier"
 
-#: src/Buffer.cpp:3572
+#: src/Buffer.cpp:3571
 msgid "The directory path to the document cannot contain spaces."
 msgstr ""
 
-#: src/Buffer.cpp:3657
+#: src/Buffer.cpp:3656
 #, fuzzy
 msgid "Document export cancelled."
 msgstr "&Modele de documente:"
 
-#: src/Buffer.cpp:3667
+#: src/Buffer.cpp:3666
 #, fuzzy, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "&Modele de documente:"
 
-#: src/Buffer.cpp:3673
+#: src/Buffer.cpp:3672
 #, fuzzy, c-format
 msgid "Document exported as %1$s"
 msgstr "&Modele de documente:"
 
-#: src/Buffer.cpp:3775
+#: src/Buffer.cpp:3774
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17309,65 +17309,65 @@ msgid ""
 "Recover emergency save?"
 msgstr ""
 
-#: src/Buffer.cpp:3778
+#: src/Buffer.cpp:3777
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/Buffer.cpp:3779
+#: src/Buffer.cpp:3778
 #, fuzzy
 msgid "&Recover"
 msgstr "&Elimină"
 
-#: src/Buffer.cpp:3779
+#: src/Buffer.cpp:3778
 #, fuzzy
 msgid "&Load Original"
 msgstr "&Origine:"
 
-#: src/Buffer.cpp:3790
+#: src/Buffer.cpp:3789
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:3796
+#: src/Buffer.cpp:3795
 msgid "Document was successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:3798
+#: src/Buffer.cpp:3797
 msgid "Document was NOT successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:3799
+#: src/Buffer.cpp:3798
 #, fuzzy, c-format
 msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
 msgstr "Selectați fișierul de ieșire"
 
-#: src/Buffer.cpp:3803 src/Buffer.cpp:3815
+#: src/Buffer.cpp:3802 src/Buffer.cpp:3814
 #, fuzzy
 msgid "Delete emergency file?"
 msgstr "Selectați fișierul de ieșire"
 
-#: src/Buffer.cpp:3804 src/Buffer.cpp:3817
+#: src/Buffer.cpp:3803 src/Buffer.cpp:3816
 #, fuzzy
 msgid "&Keep"
 msgstr "Menține"
 
-#: src/Buffer.cpp:3808
+#: src/Buffer.cpp:3807
 msgid "Emergency file deleted"
 msgstr ""
 
-#: src/Buffer.cpp:3809
+#: src/Buffer.cpp:3808
 msgid "Do not forget to save your file now!"
 msgstr ""
 
-#: src/Buffer.cpp:3816
+#: src/Buffer.cpp:3815
 msgid "Remove emergency file now?"
 msgstr ""
 
-#: src/Buffer.cpp:3839
+#: src/Buffer.cpp:3838
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17375,48 +17375,48 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/Buffer.cpp:3841
+#: src/Buffer.cpp:3840
 #, fuzzy
 msgid "Load backup?"
 msgstr "&Global"
 
-#: src/Buffer.cpp:3842
+#: src/Buffer.cpp:3841
 #, fuzzy
 msgid "&Load backup"
 msgstr "&Global"
 
-#: src/Buffer.cpp:3842
+#: src/Buffer.cpp:3841
 msgid "Load &original"
 msgstr ""
 
-#: src/Buffer.cpp:3852
+#: src/Buffer.cpp:3851
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:4189 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4188 src/insets/InsetCaption.cpp:326
 #, fuzzy
 msgid "Senseless!!! "
 msgstr "Fără sens: "
 
-#: src/Buffer.cpp:4310
+#: src/Buffer.cpp:4309
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "Documente"
 
-#: src/Buffer.cpp:4313
+#: src/Buffer.cpp:4312
 #, fuzzy, c-format
 msgid "Could not reload document %1$s."
 msgstr "Nu pot insera documentul"
 
-#: src/Buffer.cpp:4379
+#: src/Buffer.cpp:4378
 #, fuzzy
 msgid "Included File Invalid"
 msgstr "Include fișier...|d"
 
-#: src/Buffer.cpp:4380
+#: src/Buffer.cpp:4379
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -19339,7 +19339,7 @@ msgstr "MathLetters"
 msgid "No valid math formula"
 msgstr ""
 
-#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1029
+#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1028
 #, fuzzy
 msgid "Already in regular expression mode"
 msgstr "Expresie regulară"
@@ -19592,13 +19592,13 @@ msgid ""
 msgstr ""
 
 #: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
-#: src/frontends/qt4/FindAndReplace.cpp:337
+#: src/frontends/qt4/FindAndReplace.cpp:351
 #, fuzzy
 msgid "&Yes"
 msgstr "L&inii"
 
 #: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
-#: src/frontends/qt4/FindAndReplace.cpp:337
+#: src/frontends/qt4/FindAndReplace.cpp:351
 #, fuzzy
 msgid "&No"
 msgstr "Notă"
@@ -19742,55 +19742,55 @@ msgstr "Dings 4"
 msgid "Directories"
 msgstr "Director:|#D"
 
-#: src/frontends/qt4/FindAndReplace.cpp:258
+#: src/frontends/qt4/FindAndReplace.cpp:272
 #, fuzzy
 msgid "File"
 msgstr "Fișier"
 
-#: src/frontends/qt4/FindAndReplace.cpp:261
+#: src/frontends/qt4/FindAndReplace.cpp:275
 #, fuzzy
 msgid "Master document"
 msgstr "Salvare &documente"
 
-#: src/frontends/qt4/FindAndReplace.cpp:264
+#: src/frontends/qt4/FindAndReplace.cpp:278
 #, fuzzy
 msgid "Open files"
 msgstr "Exemple fișiere:"
 
-#: src/frontends/qt4/FindAndReplace.cpp:267
+#: src/frontends/qt4/FindAndReplace.cpp:281
 #, fuzzy
 msgid "Manuals"
 msgstr "Lateral"
 
-#: src/frontends/qt4/FindAndReplace.cpp:271
+#: src/frontends/qt4/FindAndReplace.cpp:285
 #, c-format
 msgid ""
 "%1$s: the end was reached while searching forward.\n"
 "Continue searching from the beginning?"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:274
+#: src/frontends/qt4/FindAndReplace.cpp:288
 #, c-format
 msgid ""
 "%1$s: the beginning was reached while searching backward.\n"
 "Continue searching from the end?"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:336
+#: src/frontends/qt4/FindAndReplace.cpp:350
 msgid "Wrap search?"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:381
+#: src/frontends/qt4/FindAndReplace.cpp:395
 #, fuzzy
 msgid "Nothing to search"
 msgstr "Nimic de indexat"
 
-#: src/frontends/qt4/FindAndReplace.cpp:421
+#: src/frontends/qt4/FindAndReplace.cpp:435
 #, fuzzy
 msgid "No open document(s) in which to search"
 msgstr "Deschide documente în tab-uri"
 
-#: src/frontends/qt4/FindAndReplace.cpp:517
+#: src/frontends/qt4/FindAndReplace.cpp:532
 #, fuzzy
 msgid "Advanced Find and Replace"
 msgstr "Înlocuiește...|n"
@@ -24055,7 +24055,7 @@ msgstr "Reconfigurează|R"
 msgid " Macro: %1$s: "
 msgstr " Macro: %s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1680
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1679
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -24101,60 +24101,60 @@ msgstr "Nimic de indexat"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Caracteristici tabular"
 
-#: src/mathed/InsetMathHull.cpp:1272
+#: src/mathed/InsetMathHull.cpp:1271
 #, fuzzy
 msgid "Bad math environment"
 msgstr "Mediu \"Gather\""
 
-#: src/mathed/InsetMathHull.cpp:1273
+#: src/mathed/InsetMathHull.cpp:1272
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1379 src/mathed/InsetMathHull.cpp:1388
+#: src/mathed/InsetMathHull.cpp:1378 src/mathed/InsetMathHull.cpp:1387
 #, fuzzy
 msgid "No number"
 msgstr "msnumber"
 
-#: src/mathed/InsetMathHull.cpp:1379 src/mathed/InsetMathHull.cpp:1388
+#: src/mathed/InsetMathHull.cpp:1378 src/mathed/InsetMathHull.cpp:1387
 #, fuzzy
 msgid "Number"
 msgstr "&Numerotare"
 
-#: src/mathed/InsetMathHull.cpp:1653
+#: src/mathed/InsetMathHull.cpp:1652
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1663
+#: src/mathed/InsetMathHull.cpp:1662
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1673
+#: src/mathed/InsetMathHull.cpp:1672
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:1015
+#: src/mathed/InsetMathNest.cpp:1014
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:1018
+#: src/mathed/InsetMathNest.cpp:1017
 msgid "entered math text mode (textrm)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:1040
+#: src/mathed/InsetMathNest.cpp:1039
 #, fuzzy
 msgid "Regular expression editor mode"
 msgstr "Expresie regulară"
 
-#: src/mathed/InsetMathNest.cpp:1651 src/mathed/InsetMathNest.cpp:1771
+#: src/mathed/InsetMathNest.cpp:1650 src/mathed/InsetMathNest.cpp:1770
 msgid "Autocorrect Off ('!' to enter)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:1656 src/mathed/InsetMathNest.cpp:1773
+#: src/mathed/InsetMathNest.cpp:1655 src/mathed/InsetMathNest.cpp:1772
 msgid "Autocorrect On (<space> to exit)"
 msgstr ""
 
@@ -24371,23 +24371,23 @@ msgstr ""
 msgid "[[Replace with the code of your language]]"
 msgstr "ro"
 
-#: src/support/os_win32.cpp:450
+#: src/support/os_win32.cpp:444
 #, fuzzy
 msgid "System file not found"
 msgstr "Reconfigurează|R"
 
-#: src/support/os_win32.cpp:451
+#: src/support/os_win32.cpp:445
 msgid ""
 "Unable to load shfolder.dll\n"
 "Please install."
 msgstr ""
 
-#: src/support/os_win32.cpp:456
+#: src/support/os_win32.cpp:450
 #, fuzzy
 msgid "System function not found"
 msgstr "Reconfigurează|R"
 
-#: src/support/os_win32.cpp:457
+#: src/support/os_win32.cpp:451
 msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."

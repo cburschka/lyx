@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-05-09 02:41+0200\n"
+"POT-Creation-Date: 2011-04-29 00:54+0200\n"
 "PO-Revision-Date: 2011-04-26 21:20+0100\n"
 "Last-Translator: Szőke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -487,8 +487,8 @@ msgid "Remove the selected branch"
 msgstr "Kiválasztott változat eltávolítása"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3804
-#: src/Buffer.cpp:3817
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3803
+#: src/Buffer.cpp:3816
 msgid "&Remove"
 msgstr "E&ltávolít"
 
@@ -522,7 +522,7 @@ msgstr ""
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
-#: src/Buffer.cpp:2272 src/Buffer.cpp:3779 src/Buffer.cpp:3842
+#: src/Buffer.cpp:2272 src/Buffer.cpp:3778 src/Buffer.cpp:3841
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1799
@@ -11843,18 +11843,18 @@ msgid "Justified Line Break|J"
 msgstr "Kiigazított sortörés|z"
 
 #: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:102 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:596
+#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:595
 msgid "Cut"
 msgstr "Kivágás"
 
 #: lib/ui/stdcontext.inc:295 lib/ui/stdmenus.inc:103 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:605
+#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:604
 msgid "Copy"
 msgstr "Másolás"
 
 #: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:82
 #: src/Text3.cpp:1175 src/mathed/InsetMathGrid.cpp:1327
-#: src/mathed/InsetMathNest.cpp:575
+#: src/mathed/InsetMathNest.cpp:574
 msgid "Paste"
 msgstr "Beillesztés"
 
@@ -16631,7 +16631,7 @@ msgstr ""
 "A %1$s fájl egy újabb LyX verzióval készült, sajnos a lyx2lyx program nem "
 "tudja átalakítani."
 
-#: src/Buffer.cpp:1025 src/Buffer.cpp:3789 src/Buffer.cpp:3851
+#: src/Buffer.cpp:1025 src/Buffer.cpp:3788 src/Buffer.cpp:3850
 msgid "File is read-only"
 msgstr "Csak olvasható fájl"
 
@@ -16869,29 +16869,29 @@ msgstr "A fájl nem exportálható"
 msgid "No information for exporting the format %1$s."
 msgstr "Nincs információ az %1$s-ba exportáláshoz."
 
-#: src/Buffer.cpp:3571
+#: src/Buffer.cpp:3570
 msgid "File name error"
 msgstr "Fájlnév hiba"
 
-#: src/Buffer.cpp:3572
+#: src/Buffer.cpp:3571
 msgid "The directory path to the document cannot contain spaces."
 msgstr "A lyx fájl elérési útja nem tartalmazhat szóközöket."
 
-#: src/Buffer.cpp:3657
+#: src/Buffer.cpp:3656
 msgid "Document export cancelled."
 msgstr "A dokumentumot exportálás megszakítva."
 
-#: src/Buffer.cpp:3667
+#: src/Buffer.cpp:3666
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "A %1$s dokumentumot exportáltam, mint `%2$s'"
 
-#: src/Buffer.cpp:3673
+#: src/Buffer.cpp:3672
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "A dokumentumot exportáltam, mint %1$s"
 
-#: src/Buffer.cpp:3775
+#: src/Buffer.cpp:3774
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -16902,34 +16902,34 @@ msgstr ""
 "\n"
 "Helyreállítsam a mentett változatot?"
 
-#: src/Buffer.cpp:3778
+#: src/Buffer.cpp:3777
 msgid "Load emergency save?"
 msgstr "Biztonsági másolat betöltése?"
 
-#: src/Buffer.cpp:3779
+#: src/Buffer.cpp:3778
 msgid "&Recover"
 msgstr "&Helyreállítás"
 
-#: src/Buffer.cpp:3779
+#: src/Buffer.cpp:3778
 msgid "&Load Original"
 msgstr "&Eredeti betöltése"
 
-#: src/Buffer.cpp:3790
+#: src/Buffer.cpp:3789
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:3796
+#: src/Buffer.cpp:3795
 msgid "Document was successfully recovered."
 msgstr "A dokumentumot sikeresen helyreállítottam."
 
-#: src/Buffer.cpp:3798
+#: src/Buffer.cpp:3797
 msgid "Document was NOT successfully recovered."
 msgstr "A dokumentum helyreállíása SIKERTELEN."
 
-#: src/Buffer.cpp:3799
+#: src/Buffer.cpp:3798
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -16938,28 +16938,28 @@ msgstr ""
 "Töröljem most a biztonsági másolat fájlt?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3803 src/Buffer.cpp:3815
+#: src/Buffer.cpp:3802 src/Buffer.cpp:3814
 msgid "Delete emergency file?"
 msgstr "Töröljem a biztonsági másolat fájlt?"
 
-#: src/Buffer.cpp:3804 src/Buffer.cpp:3817
+#: src/Buffer.cpp:3803 src/Buffer.cpp:3816
 #, fuzzy
 msgid "&Keep"
 msgstr "Megtart"
 
-#: src/Buffer.cpp:3808
+#: src/Buffer.cpp:3807
 msgid "Emergency file deleted"
 msgstr "Biztonságimentés-fájl törölve"
 
-#: src/Buffer.cpp:3809
+#: src/Buffer.cpp:3808
 msgid "Do not forget to save your file now!"
 msgstr "Ne felejtse el menteni most a fájlt!"
 
-#: src/Buffer.cpp:3816
+#: src/Buffer.cpp:3815
 msgid "Remove emergency file now?"
 msgstr "Töröljem most a biztonsági másolat fájlt?"
 
-#: src/Buffer.cpp:3839
+#: src/Buffer.cpp:3838
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -16970,45 +16970,45 @@ msgstr ""
 "\n"
 "Inkább azt töltsem be?"
 
-#: src/Buffer.cpp:3841
+#: src/Buffer.cpp:3840
 msgid "Load backup?"
 msgstr "Biztonsági mentés betöltése?"
 
-#: src/Buffer.cpp:3842
+#: src/Buffer.cpp:3841
 msgid "&Load backup"
 msgstr "&Biztonsági mentés betöltése"
 
-#: src/Buffer.cpp:3842
+#: src/Buffer.cpp:3841
 msgid "Load &original"
 msgstr "&Eredeti betöltése"
 
-#: src/Buffer.cpp:3852
+#: src/Buffer.cpp:3851
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:4189 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4188 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Értelmetlen!"
 
-#: src/Buffer.cpp:4310
+#: src/Buffer.cpp:4309
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "%1$s dokumentum újratöltve."
 
-#: src/Buffer.cpp:4313
+#: src/Buffer.cpp:4312
 #, fuzzy, c-format
 msgid "Could not reload document %1$s."
 msgstr "A(z) %1$s dokumentum nem olvasható"
 
-#: src/Buffer.cpp:4379
+#: src/Buffer.cpp:4378
 #, fuzzy
 msgid "Included File Invalid"
 msgstr "Fájl csatolása...|c"
 
-#: src/Buffer.cpp:4380
+#: src/Buffer.cpp:4379
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -19006,7 +19006,7 @@ msgstr "Képletszerkesztő mód"
 msgid "No valid math formula"
 msgstr "Nincs érvényes képlet formula"
 
-#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1029
+#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1028
 #, fuzzy
 msgid "Already in regular expression mode"
 msgstr "Reguláris kifejez&és"
@@ -19295,12 +19295,12 @@ msgstr ""
 "Folytassam?"
 
 #: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
-#: src/frontends/qt4/FindAndReplace.cpp:337
+#: src/frontends/qt4/FindAndReplace.cpp:351
 msgid "&Yes"
 msgstr "&Igen"
 
 #: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
-#: src/frontends/qt4/FindAndReplace.cpp:337
+#: src/frontends/qt4/FindAndReplace.cpp:351
 msgid "&No"
 msgstr "&Nem"
 
@@ -19437,53 +19437,53 @@ msgstr "4. csoport"
 msgid "Directories"
 msgstr "Könyvtárak"
 
-#: src/frontends/qt4/FindAndReplace.cpp:258
+#: src/frontends/qt4/FindAndReplace.cpp:272
 msgid "File"
 msgstr "Fájl"
 
-#: src/frontends/qt4/FindAndReplace.cpp:261
+#: src/frontends/qt4/FindAndReplace.cpp:275
 #, fuzzy
 msgid "Master document"
 msgstr "Fődokumentum"
 
-#: src/frontends/qt4/FindAndReplace.cpp:264
+#: src/frontends/qt4/FindAndReplace.cpp:278
 #, fuzzy
 msgid "Open files"
 msgstr "Példa &fájlok:"
 
-#: src/frontends/qt4/FindAndReplace.cpp:267
+#: src/frontends/qt4/FindAndReplace.cpp:281
 msgid "Manuals"
 msgstr "Kézikönyvek"
 
-#: src/frontends/qt4/FindAndReplace.cpp:271
+#: src/frontends/qt4/FindAndReplace.cpp:285
 #, c-format
 msgid ""
 "%1$s: the end was reached while searching forward.\n"
 "Continue searching from the beginning?"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:274
+#: src/frontends/qt4/FindAndReplace.cpp:288
 #, c-format
 msgid ""
 "%1$s: the beginning was reached while searching backward.\n"
 "Continue searching from the end?"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:336
+#: src/frontends/qt4/FindAndReplace.cpp:350
 msgid "Wrap search?"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:381
+#: src/frontends/qt4/FindAndReplace.cpp:395
 #, fuzzy
 msgid "Nothing to search"
 msgstr "Nincs mit tenni"
 
-#: src/frontends/qt4/FindAndReplace.cpp:421
+#: src/frontends/qt4/FindAndReplace.cpp:435
 #, fuzzy
 msgid "No open document(s) in which to search"
 msgstr "&Dokumentumok megnyitása, füleken"
 
-#: src/frontends/qt4/FindAndReplace.cpp:517
+#: src/frontends/qt4/FindAndReplace.cpp:532
 #, fuzzy
 msgid "Advanced Find and Replace"
 msgstr "Keres és cserél"
@@ -23522,7 +23522,7 @@ msgstr "Nincs meg a modul!"
 msgid " Macro: %1$s: "
 msgstr " Makró: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1680
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1679
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -23564,58 +23564,58 @@ msgstr "Nincs törlendő függőleges vonal"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Ismeretlen táblázat jellemző '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1272
+#: src/mathed/InsetMathHull.cpp:1271
 #, fuzzy
 msgid "Bad math environment"
 msgstr "Gather környezet"
 
-#: src/mathed/InsetMathHull.cpp:1273
+#: src/mathed/InsetMathHull.cpp:1272
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1379 src/mathed/InsetMathHull.cpp:1388
+#: src/mathed/InsetMathHull.cpp:1378 src/mathed/InsetMathHull.cpp:1387
 msgid "No number"
 msgstr "Nem szám"
 
-#: src/mathed/InsetMathHull.cpp:1379 src/mathed/InsetMathHull.cpp:1388
+#: src/mathed/InsetMathHull.cpp:1378 src/mathed/InsetMathHull.cpp:1387
 msgid "Number"
 msgstr "Szám"
 
-#: src/mathed/InsetMathHull.cpp:1653
+#: src/mathed/InsetMathHull.cpp:1652
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "A sorok száma itt: '%1$s' nem változtatható"
 
-#: src/mathed/InsetMathHull.cpp:1663
+#: src/mathed/InsetMathHull.cpp:1662
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Az oszlopok száma itt: '%1$s' nem változtatható"
 
-#: src/mathed/InsetMathHull.cpp:1673
+#: src/mathed/InsetMathHull.cpp:1672
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Nem tudok vízszintes rácsvonalat adni '%1$s'-hoz"
 
-#: src/mathed/InsetMathNest.cpp:1015
+#: src/mathed/InsetMathNest.cpp:1014
 msgid "create new math text environment ($...$)"
 msgstr "Új képlet környezet létrehozása ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1018
+#: src/mathed/InsetMathNest.cpp:1017
 msgid "entered math text mode (textrm)"
 msgstr "képlet módba lépés (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1040
+#: src/mathed/InsetMathNest.cpp:1039
 #, fuzzy
 msgid "Regular expression editor mode"
 msgstr "Reguláris kifejez&és"
 
-#: src/mathed/InsetMathNest.cpp:1651 src/mathed/InsetMathNest.cpp:1771
+#: src/mathed/InsetMathNest.cpp:1650 src/mathed/InsetMathNest.cpp:1770
 msgid "Autocorrect Off ('!' to enter)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:1656 src/mathed/InsetMathNest.cpp:1773
+#: src/mathed/InsetMathNest.cpp:1655 src/mathed/InsetMathNest.cpp:1772
 msgid "Autocorrect On (<space> to exit)"
 msgstr ""
 
@@ -23814,11 +23814,11 @@ msgstr "Nyomkövetés `%1$s' (%2$s)"
 msgid "[[Replace with the code of your language]]"
 msgstr "hu"
 
-#: src/support/os_win32.cpp:450
+#: src/support/os_win32.cpp:444
 msgid "System file not found"
 msgstr "Nincs meg a rendszerfájl"
 
-#: src/support/os_win32.cpp:451
+#: src/support/os_win32.cpp:445
 msgid ""
 "Unable to load shfolder.dll\n"
 "Please install."
@@ -23826,11 +23826,11 @@ msgstr ""
 "Az shfolder.dll nem tölthető be\n"
 "Kérem telepítse."
 
-#: src/support/os_win32.cpp:456
+#: src/support/os_win32.cpp:450
 msgid "System function not found"
 msgstr "Nincs meg a rendszer funkció"
 
-#: src/support/os_win32.cpp:457
+#: src/support/os_win32.cpp:451
 msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."

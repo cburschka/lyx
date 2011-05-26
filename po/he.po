@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-05-09 02:41+0200\n"
+"POT-Creation-Date: 2011-04-29 00:54+0200\n"
 "PO-Revision-Date: 2011-04-26 06:17+0300\n"
 "Last-Translator: Richman Reuven <richman.reuven@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
@@ -495,8 +495,8 @@ msgid "Remove the selected branch"
 msgstr "הסר את הענף המסומן"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3804
-#: src/Buffer.cpp:3817
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3803
+#: src/Buffer.cpp:3816
 msgid "&Remove"
 msgstr "הסר"
 
@@ -530,7 +530,7 @@ msgstr "הוסף הכל"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
-#: src/Buffer.cpp:2272 src/Buffer.cpp:3779 src/Buffer.cpp:3842
+#: src/Buffer.cpp:2272 src/Buffer.cpp:3778 src/Buffer.cpp:3841
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1799
@@ -12075,18 +12075,18 @@ msgid "Justified Line Break|J"
 msgstr "שורה חדשה"
 
 #: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:102 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:596
+#: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:595
 msgid "Cut"
 msgstr "גזור"
 
 #: lib/ui/stdcontext.inc:295 lib/ui/stdmenus.inc:103 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:605
+#: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:604
 msgid "Copy"
 msgstr "העתק"
 
 #: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:82
 #: src/Text3.cpp:1175 src/mathed/InsetMathGrid.cpp:1327
-#: src/mathed/InsetMathNest.cpp:575
+#: src/mathed/InsetMathNest.cpp:574
 msgid "Paste"
 msgstr "הדבק"
 
@@ -16899,7 +16899,7 @@ msgid ""
 "it."
 msgstr "%1$s הוא מגרסה חדשה יותר של LyX והתסריט lyx2lyx כשל בהמרתו."
 
-#: src/Buffer.cpp:1025 src/Buffer.cpp:3789 src/Buffer.cpp:3851
+#: src/Buffer.cpp:1025 src/Buffer.cpp:3788 src/Buffer.cpp:3850
 msgid "File is read-only"
 msgstr "המסמך הוא לקריאה בלבד"
 
@@ -17132,29 +17132,29 @@ msgstr "לא יכול לייצא קובץ"
 msgid "No information for exporting the format %1$s."
 msgstr "אין מידע לייצוא לפורמט %1$s."
 
-#: src/Buffer.cpp:3571
+#: src/Buffer.cpp:3570
 msgid "File name error"
 msgstr "שגיאה בשם הקובץ"
 
-#: src/Buffer.cpp:3572
+#: src/Buffer.cpp:3571
 msgid "The directory path to the document cannot contain spaces."
 msgstr "כתובת התיקייה של המסמך לא יכולה להכיל רווחים."
 
-#: src/Buffer.cpp:3657
+#: src/Buffer.cpp:3656
 msgid "Document export cancelled."
 msgstr "ייצוא מסמך בוטל."
 
-#: src/Buffer.cpp:3667
+#: src/Buffer.cpp:3666
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "המסמך יוצא כ- %1$s לקובץ `%2$s'"
 
-#: src/Buffer.cpp:3673
+#: src/Buffer.cpp:3672
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "המסמך יוצא כ- %1$s"
 
-#: src/Buffer.cpp:3775
+#: src/Buffer.cpp:3774
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17165,19 +17165,19 @@ msgstr ""
 "\n"
 "האם לשחזר את שמירת החירום?"
 
-#: src/Buffer.cpp:3778
+#: src/Buffer.cpp:3777
 msgid "Load emergency save?"
 msgstr "האם לטעון את שמירת החירום?"
 
-#: src/Buffer.cpp:3779
+#: src/Buffer.cpp:3778
 msgid "&Recover"
 msgstr "&שחזר"
 
-#: src/Buffer.cpp:3779
+#: src/Buffer.cpp:3778
 msgid "&Load Original"
 msgstr "טען &מקור"
 
-#: src/Buffer.cpp:3790
+#: src/Buffer.cpp:3789
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -17186,15 +17186,15 @@ msgstr ""
 "נטען עותק חירום של הקובץ %1$s היות והמקורי הוא לקריאה-בלבד, אנא וודא כי הנך "
 "שומר אותו כקובץ אחר."
 
-#: src/Buffer.cpp:3796
+#: src/Buffer.cpp:3795
 msgid "Document was successfully recovered."
 msgstr "הקובץ שוחזר בהצלחה."
 
-#: src/Buffer.cpp:3798
+#: src/Buffer.cpp:3797
 msgid "Document was NOT successfully recovered."
 msgstr "שחזור הקובץ כשל."
 
-#: src/Buffer.cpp:3799
+#: src/Buffer.cpp:3798
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17203,27 +17203,27 @@ msgstr ""
 "למחוק את קובץ החירום כעת?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3803 src/Buffer.cpp:3815
+#: src/Buffer.cpp:3802 src/Buffer.cpp:3814
 msgid "Delete emergency file?"
 msgstr "למחוק את קובץ החירום?"
 
-#: src/Buffer.cpp:3804 src/Buffer.cpp:3817
+#: src/Buffer.cpp:3803 src/Buffer.cpp:3816
 msgid "&Keep"
 msgstr "השאר"
 
-#: src/Buffer.cpp:3808
+#: src/Buffer.cpp:3807
 msgid "Emergency file deleted"
 msgstr "קובץ החירום נמחק"
 
-#: src/Buffer.cpp:3809
+#: src/Buffer.cpp:3808
 msgid "Do not forget to save your file now!"
 msgstr "כעת, אל תשכח לשמור את הקובץ שלך!"
 
-#: src/Buffer.cpp:3816
+#: src/Buffer.cpp:3815
 msgid "Remove emergency file now?"
 msgstr "להסיר את קובץ החירום כעת?"
 
-#: src/Buffer.cpp:3839
+#: src/Buffer.cpp:3838
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17234,19 +17234,19 @@ msgstr ""
 "\n"
 "לטעון את הגיבוי במקום?"
 
-#: src/Buffer.cpp:3841
+#: src/Buffer.cpp:3840
 msgid "Load backup?"
 msgstr "לטעון גיבוי?"
 
-#: src/Buffer.cpp:3842
+#: src/Buffer.cpp:3841
 msgid "&Load backup"
 msgstr "טען &גיבוי"
 
-#: src/Buffer.cpp:3842
+#: src/Buffer.cpp:3841
 msgid "Load &original"
 msgstr "טען &מקור"
 
-#: src/Buffer.cpp:3852
+#: src/Buffer.cpp:3851
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17255,25 +17255,25 @@ msgstr ""
 "נטען עותק הגיבוי של הקובץ %1$s היות והמקורי הוא לקריאה-בלבד, אנא וודא כי הנך "
 "שומר אותו כקובץ אחר."
 
-#: src/Buffer.cpp:4189 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4188 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "חסר משמעות!!! "
 
-#: src/Buffer.cpp:4310
+#: src/Buffer.cpp:4309
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "המסמך %1$s נטען מחדש."
 
-#: src/Buffer.cpp:4313
+#: src/Buffer.cpp:4312
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "טעינת המסמך %1$s מחדש כשלה."
 
-#: src/Buffer.cpp:4379
+#: src/Buffer.cpp:4378
 msgid "Included File Invalid"
 msgstr "קובץ כלול אינו תקין"
 
-#: src/Buffer.cpp:4380
+#: src/Buffer.cpp:4379
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -19177,7 +19177,7 @@ msgstr "מצב עורך מתמטיקה"
 msgid "No valid math formula"
 msgstr "אין נוסחה מתמטית קבילה"
 
-#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1029
+#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1028
 msgid "Already in regular expression mode"
 msgstr "כבר במצב של ביטויים רגולריים"
 
@@ -19417,12 +19417,12 @@ msgid ""
 msgstr ""
 
 #: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
-#: src/frontends/qt4/FindAndReplace.cpp:337
+#: src/frontends/qt4/FindAndReplace.cpp:351
 msgid "&Yes"
 msgstr "&כן"
 
 #: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
-#: src/frontends/qt4/FindAndReplace.cpp:337
+#: src/frontends/qt4/FindAndReplace.cpp:351
 msgid "&No"
 msgstr "&לא"
 
@@ -19563,49 +19563,49 @@ msgstr "Dings 4"
 msgid "Directories"
 msgstr "תיקיות"
 
-#: src/frontends/qt4/FindAndReplace.cpp:258
+#: src/frontends/qt4/FindAndReplace.cpp:272
 msgid "File"
 msgstr "קובץ"
 
-#: src/frontends/qt4/FindAndReplace.cpp:261
+#: src/frontends/qt4/FindAndReplace.cpp:275
 msgid "Master document"
 msgstr "מסמך ראשי"
 
-#: src/frontends/qt4/FindAndReplace.cpp:264
+#: src/frontends/qt4/FindAndReplace.cpp:278
 msgid "Open files"
 msgstr "קבצים פתוחים"
 
-#: src/frontends/qt4/FindAndReplace.cpp:267
+#: src/frontends/qt4/FindAndReplace.cpp:281
 msgid "Manuals"
 msgstr "מדריכים"
 
-#: src/frontends/qt4/FindAndReplace.cpp:271
+#: src/frontends/qt4/FindAndReplace.cpp:285
 #, c-format
 msgid ""
 "%1$s: the end was reached while searching forward.\n"
 "Continue searching from the beginning?"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:274
+#: src/frontends/qt4/FindAndReplace.cpp:288
 #, c-format
 msgid ""
 "%1$s: the beginning was reached while searching backward.\n"
 "Continue searching from the end?"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:336
+#: src/frontends/qt4/FindAndReplace.cpp:350
 msgid "Wrap search?"
 msgstr "קפוץ מהסוף להתחלה בחיפוש?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:381
+#: src/frontends/qt4/FindAndReplace.cpp:395
 msgid "Nothing to search"
 msgstr "אין מה לחפש"
 
-#: src/frontends/qt4/FindAndReplace.cpp:421
+#: src/frontends/qt4/FindAndReplace.cpp:435
 msgid "No open document(s) in which to search"
 msgstr "אין מסמכים פתוחים לחפש בהם"
 
-#: src/frontends/qt4/FindAndReplace.cpp:517
+#: src/frontends/qt4/FindAndReplace.cpp:532
 msgid "Advanced Find and Replace"
 msgstr "חיפוש והחלפה מתקדמים"
 
@@ -23725,7 +23725,7 @@ msgstr "נמצאה התאמה!"
 msgid " Macro: %1$s: "
 msgstr "מאקרו: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1680
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1679
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -23767,11 +23767,11 @@ msgstr "אין קו אנכי למחיקה"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "תכונת טבלה לא ידועה '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1272
+#: src/mathed/InsetMathHull.cpp:1271
 msgid "Bad math environment"
 msgstr "סביבה מתמטית פסולה"
 
-#: src/mathed/InsetMathHull.cpp:1273
+#: src/mathed/InsetMathHull.cpp:1272
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
@@ -23779,46 +23779,46 @@ msgstr ""
 "לא ניתן לבצע חישובים עבור סביבות מתמטיות של AMS.\n"
 "החלף את סוג הנוסחה המתמטית ונסה שנית."
 
-#: src/mathed/InsetMathHull.cpp:1379 src/mathed/InsetMathHull.cpp:1388
+#: src/mathed/InsetMathHull.cpp:1378 src/mathed/InsetMathHull.cpp:1387
 msgid "No number"
 msgstr "אין מספר"
 
-#: src/mathed/InsetMathHull.cpp:1379 src/mathed/InsetMathHull.cpp:1388
+#: src/mathed/InsetMathHull.cpp:1378 src/mathed/InsetMathHull.cpp:1387
 msgid "Number"
 msgstr "מספר"
 
-#: src/mathed/InsetMathHull.cpp:1653
+#: src/mathed/InsetMathHull.cpp:1652
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "לא יכול לשנות את מספר השורות ב- '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1663
+#: src/mathed/InsetMathHull.cpp:1662
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "לא יכול לשנות את מספר העמודות ב- '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1673
+#: src/mathed/InsetMathHull.cpp:1672
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "לא יכול להוסיף קווי רשת אופקיים בתוך '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:1015
+#: src/mathed/InsetMathNest.cpp:1014
 msgid "create new math text environment ($...$)"
 msgstr "צור סביבת טקסט מתמטי חדשה ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1018
+#: src/mathed/InsetMathNest.cpp:1017
 msgid "entered math text mode (textrm)"
 msgstr "נכנס למצב טקסט מתמטי (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1040
+#: src/mathed/InsetMathNest.cpp:1039
 msgid "Regular expression editor mode"
 msgstr "מצב עורך ביטויים רגולריים"
 
-#: src/mathed/InsetMathNest.cpp:1651 src/mathed/InsetMathNest.cpp:1771
+#: src/mathed/InsetMathNest.cpp:1650 src/mathed/InsetMathNest.cpp:1770
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "תיקון שגיאות אוטומטי כבוי ('!' להפעלה)"
 
-#: src/mathed/InsetMathNest.cpp:1656 src/mathed/InsetMathNest.cpp:1773
+#: src/mathed/InsetMathNest.cpp:1655 src/mathed/InsetMathNest.cpp:1772
 msgid "Autocorrect On (<space> to exit)"
 msgstr "תיקון שגיאות אוטומטי פעיל ('!' לכיבוי)"
 
@@ -24014,11 +24014,11 @@ msgstr "דיבאגינג ל'%1$s' (%2$s)"
 msgid "[[Replace with the code of your language]]"
 msgstr "he"
 
-#: src/support/os_win32.cpp:450
+#: src/support/os_win32.cpp:444
 msgid "System file not found"
 msgstr "קובץ מערכת לא נמצא"
 
-#: src/support/os_win32.cpp:451
+#: src/support/os_win32.cpp:445
 msgid ""
 "Unable to load shfolder.dll\n"
 "Please install."
@@ -24026,11 +24026,11 @@ msgstr ""
 "לא מצליח לטעון את shfolder.dll \n"
 "אנא התקן קובץ זה."
 
-#: src/support/os_win32.cpp:456
+#: src/support/os_win32.cpp:450
 msgid "System function not found"
 msgstr "פונקציית מערכת לא נמצאה"
 
-#: src/support/os_win32.cpp:457
+#: src/support/os_win32.cpp:451
 msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."
