@@ -20,6 +20,7 @@
 #include "qt_helpers.h"
 
 #include "Buffer.h"
+#include "BufferView.h"
 #include "BiblioInfo.h"
 #include "BufferParams.h"
 #include "FuncRequest.h"
@@ -625,7 +626,7 @@ void GuiCitation::setCitedKeys()
 bool GuiCitation::initialiseParams(string const & data)
 {
 	InsetCommand::string2params(data, params_);
-	CiteEngine const engine = buffer().params().citeEngine();
+	CiteEngine const engine = citeEngine();
 	citeStyles_ = citeStyles(engine);
 	init();
 	return true;
@@ -760,6 +761,15 @@ BiblioInfo const & GuiCitation::bibInfo() const
 	Buffer const & buf = buffer();
 	buf.reloadBibInfoCache();
 	return buf.masterBibInfo();
+}
+
+
+Buffer const & GuiCitation::buffer() const
+{
+	if (lyxview().documentBufferView())
+		return lyxview().documentBufferView()->buffer();
+	else
+		return lyxview().currentBufferView()->buffer();
 }
 
 
