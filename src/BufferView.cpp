@@ -2188,16 +2188,40 @@ int BufferView::scrollUp(int offset)
 
 void BufferView::setCursorFromRow(int row)
 {
-	int tmpid = -1;
-	int tmppos = -1;
+	int tmpid;
+	int tmppos;
+	pit_type newpit = 0;
+	pos_type newpos = 0;
 
 	buffer_.texrow().getIdFromRow(row, tmpid, tmppos);
 
+	bool posvalid = (tmpid != -1);
+	if (posvalid) {
+		// we need to make sure that the row and position
+		// we got back are valid, because the buffer may well
+		// have changed since we last generated the LaTeX.
+		DocIterator const dit = buffer_.getParFromID(tmpid);
+		if (dit == doc_iterator_end(&buffer_))
+			posvalid = false;
+		else {
+			newpit = dit.pit();
+			// now have to check pos.
+			newpos = tmppos;
+			Paragraph const & par = buffer_.text().getPar(newpit);
+			if (newpos > par.size()) {
+				LYXERR0("Requested position no longer valid.");
+				newpos = par.size() - 1;
+			}
+		}
+	}
+	if (!posvalid) {
+		frontend::Alert::error(_("Inverse Search Failed"),
+			_("Invalid position requested by inverse search.\n"
+		    "You need to update the viewed document."));
+		return;
+	}
 	d->cursor_.reset();
-	if (tmpid == -1)
-		buffer_.text().setCursor(d->cursor_, 0, 0);
-	else
-		buffer_.text().setCursor(d->cursor_, buffer_.getParFromID(tmpid).pit(), tmppos);
+	buffer_.text().setCursor(d->cursor_, newpit, newpos);
 	d->cursor_.setSelection(false);
 	d->cursor_.resetAnchor();
 	recenter();
