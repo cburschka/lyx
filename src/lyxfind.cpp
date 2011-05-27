@@ -766,11 +766,12 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 static size_t identifyLeading(string const & s)  {
 	string t = s;
 	// @TODO Support \item[text]
-	while (regex_replace(t, t, "\\\\(emph|textbf|subsubsection|subsection|section|subparagraph|paragraph|part)\\{", "")
+	while (regex_replace(t, t, "\\\\(emph|textbf|subsubsection|subsection|section|subparagraph|paragraph|part)\\*?\\{", "")
 	       || regex_replace(t, t, "^\\$", "")
 	       || regex_replace(t, t, "^\\\\\\[ ", "")
-	       || regex_replace(t, t, "^\\\\item ", ""))
-		LYXERR(Debug::FIND, "  after removing leading $, \\[ , \\emph{, \\textbf{, etc.: " << t);
+	       || regex_replace(t, t, "^\\\\item ", "")
+	       || regex_replace(t, t, "^\\\\begin\\{[a-zA-Z_]*\\*?\\} ", ""))
+		LYXERR(Debug::FIND, "  after removing leading $, \\[ , \\emph{, \\textbf{, etc.: '" << t << "'");
 	return s.find(t);
 }
 
@@ -789,14 +790,14 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 		// Remove trailing closure of math, macros and environments, so to catch parts of them.
 		do {
 			LYXERR(Debug::FIND, "par_as_string now is '" << par_as_string << "'");
-			if (regex_replace(par_as_string, par_as_string, "(.*[^\\\\]) ?\\$\\'", "$1"))
+			if (regex_replace(par_as_string, par_as_string, "(.*[^\\\\])\\$\\'", "$1"))
 					continue;
 			// @todo need to account for open square braces as well ?
-			if (regex_replace(par_as_string, par_as_string, "(.*[^\\\\]) ?\\\\\\]\\'", "$1"))
+			if (regex_replace(par_as_string, par_as_string, "(.*[^\\\\]) \\\\\\]\\'", "$1"))
 					continue;
-			if (regex_replace(par_as_string, par_as_string, "(.*[^\\\\]) ?\\\\end\\{[a-zA-Z_]*\\}\\'", "$1"))
+			if (regex_replace(par_as_string, par_as_string, "(.*[^\\\\]) \\\\end\\{[a-zA-Z_]*\\*?\\}\\'", "$1"))
 					continue;
-			if (regex_replace(par_as_string, par_as_string, "(.*[^\\\\]) ?\\}\\'", "$1")) {
+			if (regex_replace(par_as_string, par_as_string, "(.*[^\\\\])\\}\\'", "$1")) {
 				++open_braces;
 				continue;
 			}
@@ -820,10 +821,10 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 			// Insert .* before trailing '\$' ('$' has been escaped by escape_for_regex)
 			regex_replace(par_as_string, par_as_string, "(.*[^\\\\])(\\\\\\$)\\'", "$1(.*?)$2")
 				// Insert .* before trailing '\\\]' ('\]' has been escaped by escape_for_regex)
-				|| regex_replace(par_as_string, par_as_string, "(.*[^\\\\])(\\\\\\\\\\\\\\])\\'", "$1(.*?)$2")
+				|| regex_replace(par_as_string, par_as_string, "(.*[^\\\\])( \\\\\\\\\\\\\\])\\'", "$1(.*?)$2")
 				// Insert .* before trailing '\\end\{...}' ('\end{...}' has been escaped by escape_for_regex)
 				|| regex_replace(par_as_string, par_as_string, 
-					"(.*[^\\\\])(\\\\\\\\end\\\\\\{[a-zA-Z_]*\\\\\\})\\'", "$1(.*?)$2")
+					"(.*[^\\\\])( \\\\\\\\end\\\\\\{[a-zA-Z_]*)(\\\\\\*)?(\\\\\\})\\'", "$1(.*?)$2$3$4")
 				// Insert .* before trailing '\}' ('}' has been escaped by escape_for_regex)
 				|| regex_replace(par_as_string, par_as_string, "(.*[^\\\\])(\\\\\\})\\'", "$1(.*?)$2")
 		) {
@@ -1096,10 +1097,14 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 		return 0;
 	while (cur) {
 		LYXERR(Debug::FIND, "findForwardAdv() cur: " << cur);
-		if (match(cur, -1, false)) {
+		int match_len = match(cur, -1, false);
+		LYXERR(Debug::FIND, "match_len: " << match_len);
+		if (match_len) {
 			for (; cur; cur.forwardPos()) {
 				LYXERR(Debug::FIND, "Advancing cur: " << cur);
-				if (match(cur)) {
+				int match_len = match(cur);
+				LYXERR(Debug::FIND, "match_len: " << match_len);
+				if (match_len) {
 					// Sometimes in finalize we understand it wasn't a match
 					// and we need to continue the outest loop
 					int len = findAdvFinalize(cur, match);
