@@ -367,7 +367,7 @@ void GuiCitation::updateInfo(BiblioInfo const & bi, QModelIndex const & idx)
 	}
 
 	QString const keytxt = toqstr(
-		bi.getInfo(qstring_to_ucs4(idx.data().toString()), buffer(), true));
+		bi.getInfo(qstring_to_ucs4(idx.data().toString()), documentBuffer(), true));
 	infoML->document()->setHtml(keytxt);
 }
 
@@ -613,7 +613,7 @@ void GuiCitation::findKey(BiblioInfo const & bi,
 QStringList GuiCitation::citationStyles(BiblioInfo const & bi, int sel)
 {
 	docstring const key = qstring_to_ucs4(cited_keys_[sel]);
-	return to_qstring_list(bi.getCiteStrings(key, buffer()));
+	return to_qstring_list(bi.getCiteStrings(key, documentBuffer()));
 }
 
 
@@ -663,7 +663,7 @@ void GuiCitation::filterByEntryType(BiblioInfo const & bi,
 
 CiteEngine GuiCitation::citeEngine() const
 {
-	return buffer().params().citeEngine();
+	return documentBuffer().params().citeEngine();
 }
 
 
@@ -758,18 +758,9 @@ void GuiCitation::dispatchParams()
 
 BiblioInfo const & GuiCitation::bibInfo() const
 {
-	Buffer const & buf = buffer();
+	Buffer const & buf = documentBuffer();
 	buf.reloadBibInfoCache();
 	return buf.masterBibInfo();
-}
-
-
-Buffer const & GuiCitation::buffer() const
-{
-	if (lyxview().documentBufferView())
-		return lyxview().documentBufferView()->buffer();
-	else
-		return lyxview().currentBufferView()->buffer();
 }
 
 

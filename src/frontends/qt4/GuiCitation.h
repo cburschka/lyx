@@ -42,9 +42,6 @@ public:
 	GuiCitation(GuiView & lv);
 	///
 	~GuiCitation();
-	/// We use the main document's buffer() so to catch the citations
-	/// defined there, also while using the dialog from the Adv F&R.
-	Buffer const & buffer() const;
 
 private Q_SLOTS:
 	void on_okPB_clicked();
