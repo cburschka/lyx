@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-05-27 09:39+0200\n"
-"PO-Revision-Date: 2011-05-27 09:40+0200\n"
+"POT-Creation-Date: 2011-05-27 23:50+0200\n"
+"PO-Revision-Date: 2011-05-27 23:55+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -535,7 +535,7 @@ msgstr "Pridaj Všetko"
 #: src/frontends/qt4/GuiView.cpp:2303 src/frontends/qt4/GuiView.cpp:2348
 #: src/frontends/qt4/GuiView.cpp:2563 src/frontends/qt4/GuiView.cpp:2570
 #: src/frontends/qt4/GuiView.cpp:2669 src/frontends/qt4/GuiView.cpp:2697
-#: src/frontends/qt4/GuiView.cpp:3281 src/insets/InsetBibtex.cpp:148
+#: src/frontends/qt4/GuiView.cpp:3288 src/insets/InsetBibtex.cpp:148
 msgid "&Cancel"
 msgstr "Z&rušiť"
 
@@ -3614,14 +3614,15 @@ msgstr "Začiatočné voľby a indikátory pre CheckTeX"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:326
 msgid ""
-"Select whether LyX should output Windows or Cygwin style\n"
-"paths to LaTeX files. Don't change the default unless the\n"
-"TeX engine was not correctly detected at configure time.\n"
+"Select whether LyX should output Windows or Cygwin style paths to LaTeX "
+"files.\n"
+"Change the default only if the TeX engine was not correctly detected at "
+"configure time and you know what you are doing.\n"
 "Warning: Your changes here will not be saved."
 msgstr ""
 "Vyberte, či by LyX mal písať cesty do LaTeX-súborov v štýle Windows alebo "
 "Cygwin.\n"
-"Nemeňte štandardné nastavenie keď sa už našiel správny TeX počas "
+"Meňte štandardné nastavenie len keď sa už nenašiel správny TeX počas "
 "konfigurácie.\n"
 "Varovanie: Tieto vaše zmeny nebudú uložené."
 
@@ -16735,7 +16736,7 @@ msgstr "Nemôžem spustiť chktex úspešne."
 msgid "Don't know how to export to format: %1$s"
 msgstr "Žiadne informácie pre export formátu: %1$s"
 
-#: src/Buffer.cpp:2031 src/frontends/qt4/GuiView.cpp:3136
+#: src/Buffer.cpp:2031 src/frontends/qt4/GuiView.cpp:3143
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Chyba pri exporte na formát: %1$s."
@@ -17155,22 +17156,34 @@ msgstr "Meno vetvy"
 msgid "Branch already exists"
 msgstr "Vetva už existuje"
 
-#: src/BufferView.cpp:2569
+#: src/BufferView.cpp:2218
+msgid "Inverse Search Failed"
+msgstr "Spiatočné Hľadanie Zlyhalo"
+
+#: src/BufferView.cpp:2219
+msgid ""
+"Invalid position requested by inverse search.\n"
+"You need to update the viewed document."
+msgstr ""
+"Neplatná pozícia žiadaná spiatočným hľadaním.\n"
+"Treba aktualizovať prehliadaný dokument."
+
+#: src/BufferView.cpp:2593
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Vkladám dokument %1$s..."
 
-#: src/BufferView.cpp:2580
+#: src/BufferView.cpp:2604
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s bol vložený."
 
-#: src/BufferView.cpp:2582
+#: src/BufferView.cpp:2606
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nie je možné vložiť dokument %1$s"
 
-#: src/BufferView.cpp:2847
+#: src/BufferView.cpp:2871
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17181,11 +17194,11 @@ msgstr ""
 "%1$s\n"
 "sa kvôli chybe: %2$s nedá čítať"
 
-#: src/BufferView.cpp:2849
+#: src/BufferView.cpp:2873
 msgid "Could not read file"
 msgstr "Nemôžem čítať súbor"
 
-#: src/BufferView.cpp:2856
+#: src/BufferView.cpp:2880
 #, c-format
 msgid ""
 "%1$s\n"
@@ -17194,15 +17207,15 @@ msgstr ""
 "%1$s\n"
 "je nečitateľné."
 
-#: src/BufferView.cpp:2857 src/output.cpp:39
+#: src/BufferView.cpp:2881 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Nemôžem otvoriť súbor"
 
-#: src/BufferView.cpp:2864
+#: src/BufferView.cpp:2888
 msgid "Reading not UTF-8 encoded file"
 msgstr "Čítaný súbor nie je kódovaný v UTF-8"
 
-#: src/BufferView.cpp:2865
+#: src/BufferView.cpp:2889
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -18814,7 +18827,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Vrátiť sa k uloženej verzii dokumentu?"
 
-#: src/LyXVC.cpp:224 src/frontends/qt4/GuiView.cpp:3281
+#: src/LyXVC.cpp:224 src/frontends/qt4/GuiView.cpp:3288
 msgid "&Revert"
 msgstr "Vrátiť"
 
@@ -21879,7 +21892,7 @@ msgstr "novýsúbor"
 msgid "Select LyX document to insert"
 msgstr "Vyberte LyX dokument na vloženie"
 
-#: src/frontends/qt4/GuiView.cpp:2221 src/frontends/qt4/GuiView.cpp:3192
+#: src/frontends/qt4/GuiView.cpp:2221 src/frontends/qt4/GuiView.cpp:3199
 msgid "Absolute filename expected."
 msgstr "Očakáva sa absolútna cesta súboru."
 
@@ -21998,39 +22011,44 @@ msgstr "Adresár je neprístupný."
 msgid "Opening child document %1$s..."
 msgstr "Otváram dokument potomku %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:2955
+#: src/frontends/qt4/GuiView.cpp:2935
+#, c-format
+msgid "No buffer for file `%1$s'."
+msgstr "Žiadny zásobník pre súbor `%1$s'."
+
+#: src/frontends/qt4/GuiView.cpp:2962
 #, c-format
 msgid "Successful preview of format: %1$s"
 msgstr "Úspešné prehliadnutie formátu: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2956
+#: src/frontends/qt4/GuiView.cpp:2963
 #, c-format
 msgid "Error while previewing format: %1$s"
 msgstr "Chyba pri prehliadaní formátu: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2959
+#: src/frontends/qt4/GuiView.cpp:2966
 #, c-format
 msgid "Successful export to format: %1$s"
 msgstr "Úspešný export do formátu: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2960
+#: src/frontends/qt4/GuiView.cpp:2967
 #, c-format
 msgid "Error while exporting format: %1$s"
 msgstr "Chyba pri exporte na formát: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:3144 src/frontends/qt4/GuiView.cpp:3156
+#: src/frontends/qt4/GuiView.cpp:3151 src/frontends/qt4/GuiView.cpp:3163
 msgid "Exporting ..."
 msgstr "Exportujem ..."
 
-#: src/frontends/qt4/GuiView.cpp:3165
+#: src/frontends/qt4/GuiView.cpp:3172
 msgid "Previewing ..."
 msgstr "Predbežný náhľad ..."
 
-#: src/frontends/qt4/GuiView.cpp:3199
+#: src/frontends/qt4/GuiView.cpp:3206
 msgid "Document not loaded"
 msgstr "Dokument nie je nahraný"
 
-#: src/frontends/qt4/GuiView.cpp:3277
+#: src/frontends/qt4/GuiView.cpp:3284
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -22039,28 +22057,28 @@ msgstr ""
 "Všetky zmeny sa stratia. Naozaj sa chcete vrátiť k pôvodnej verzii dokumentu "
 "%1$s ?"
 
-#: src/frontends/qt4/GuiView.cpp:3280
+#: src/frontends/qt4/GuiView.cpp:3287
 msgid "Revert to saved document?"
 msgstr "Vrátiť sa k uloženej verzii?"
 
-#: src/frontends/qt4/GuiView.cpp:3306
+#: src/frontends/qt4/GuiView.cpp:3313
 msgid "Saving all documents..."
 msgstr "Ukladám všetky dokumenty..."
 
-#: src/frontends/qt4/GuiView.cpp:3316
+#: src/frontends/qt4/GuiView.cpp:3323
 msgid "All documents saved."
 msgstr "Všetky dokumenty uložené."
 
-#: src/frontends/qt4/GuiView.cpp:3416
+#: src/frontends/qt4/GuiView.cpp:3423
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s neznámy príkaz!"
 
-#: src/frontends/qt4/GuiView.cpp:3532
+#: src/frontends/qt4/GuiView.cpp:3539
 msgid "Please, preview the document first."
 msgstr "Prehliadnite najprv dokument  prosím."
 
-#: src/frontends/qt4/GuiView.cpp:3547
+#: src/frontends/qt4/GuiView.cpp:3554
 msgid "Couldn't proceed."
 msgstr "Nemôžem postupovať."
 
@@ -23371,15 +23389,15 @@ msgstr "Reťazec bol nahradený."
 msgid "%1$d strings have been replaced."
 msgstr "%1$d reťazcov bolo nahradených."
 
-#: src/lyxfind.cpp:1366
+#: src/lyxfind.cpp:1371
 msgid "Invalid regular expression!"
 msgstr "Neplatný regulárny výraz!"
 
-#: src/lyxfind.cpp:1371
+#: src/lyxfind.cpp:1376
 msgid "Match not found!"
 msgstr "Vhodný výraz nebol nájdený!"
 
-#: src/lyxfind.cpp:1375
+#: src/lyxfind.cpp:1380
 msgid "Match found!"
 msgstr "Vhodný výraz nájdený!"
 
