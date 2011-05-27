@@ -2930,6 +2930,13 @@ bool GuiView::goToFileRow(string const & argument)
 			return false;
 		}
 	}
+	if (!buf) {
+		message(bformat(
+			_("No buffer for file `%1$s'."),
+			makeDisplayPath(file_name))
+		);
+		return false;
+	}
 	setBuffer(buf);
 	documentBufferView()->setCursorFromRow(row);
 	return true;

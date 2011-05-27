@@ -2188,8 +2188,8 @@ int BufferView::scrollUp(int offset)
 
 void BufferView::setCursorFromRow(int row)
 {
-	int tmpid = -1;
-	int tmppos = -1;
+	int tmpid;
+	int tmppos;
 
 	buffer_.texrow().getIdFromRow(row, tmpid, tmppos);
 
