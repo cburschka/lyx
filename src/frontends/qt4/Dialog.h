@@ -252,7 +252,11 @@ public:
 	 */
 	//@{
 	GuiView const & lyxview() const { return *lyxview_; }
+	/// Current buffer
 	Buffer const & buffer() const;
+	/// Main document buffer
+	Buffer const & documentBuffer() const;
+	/// Current BufferView
 	BufferView const * bufferview() const;
 	//@}
 

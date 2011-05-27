@@ -122,6 +122,13 @@ Buffer const & Dialog::buffer() const
 }
 
 
+Buffer const & Dialog::documentBuffer() const
+{
+	LASSERT(lyxview_->documentBufferView(), /**/);
+	return lyxview_->documentBufferView()->buffer();
+}
+
+
 void Dialog::showData(string const & data)
 {
 	if (isBufferDependent() && !isBufferAvailable())
