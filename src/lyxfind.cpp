@@ -766,11 +766,11 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 static size_t identifyLeading(string const & s)  {
 	string t = s;
 	// @TODO Support \item[text]
-	while (regex_replace(t, t, "\\\\(emph|textbf|subsubsection|subsection|section|subparagraph|paragraph|part)\\{", "")
+	while (regex_replace(t, t, "\\\\(emph|textbf|subsubsection|subsection|section|subparagraph|paragraph|part)\\*?\\{", "")
 	       || regex_replace(t, t, "^\\$", "")
 	       || regex_replace(t, t, "^\\\\\\[ ", "")
 	       || regex_replace(t, t, "^\\\\item ", "")
-	       || regex_replace(t, t, "^\\\\begin\\{[a-zA-Z_]*\\} ", ""))
+	       || regex_replace(t, t, "^\\\\begin\\{[a-zA-Z_]*\\*?\\} ", ""))
 		LYXERR(Debug::FIND, "  after removing leading $, \\[ , \\emph{, \\textbf{, etc.: '" << t << "'");
 	return s.find(t);
 }
@@ -795,7 +795,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 			// @todo need to account for open square braces as well ?
 			if (regex_replace(par_as_string, par_as_string, "(.*[^\\\\]) \\\\\\]\\'", "$1"))
 					continue;
-			if (regex_replace(par_as_string, par_as_string, "(.*[^\\\\]) \\\\end\\{[a-zA-Z_]*\\}\\'", "$1"))
+			if (regex_replace(par_as_string, par_as_string, "(.*[^\\\\]) \\\\end\\{[a-zA-Z_]*\\*?\\}\\'", "$1"))
 					continue;
 			if (regex_replace(par_as_string, par_as_string, "(.*[^\\\\])\\}\\'", "$1")) {
 				++open_braces;
@@ -824,7 +824,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 				|| regex_replace(par_as_string, par_as_string, "(.*[^\\\\])( \\\\\\\\\\\\\\])\\'", "$1(.*?)$2")
 				// Insert .* before trailing '\\end\{...}' ('\end{...}' has been escaped by escape_for_regex)
 				|| regex_replace(par_as_string, par_as_string, 
-					"(.*[^\\\\])( \\\\\\\\end\\\\\\{[a-zA-Z_]*\\\\\\})\\'", "$1(.*?)$2")
+					"(.*[^\\\\])( \\\\\\\\end\\\\\\{[a-zA-Z_]*)(\\\\\\*)?(\\\\\\})\\'", "$1(.*?)$2$3$4")
 				// Insert .* before trailing '\}' ('}' has been escaped by escape_for_regex)
 				|| regex_replace(par_as_string, par_as_string, "(.*[^\\\\])(\\\\\\})\\'", "$1(.*?)$2")
 		) {
