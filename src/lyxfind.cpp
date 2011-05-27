@@ -743,21 +743,19 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 	if (!opt.ignoreformat) {
 		str = buffer_to_latex(buffer);
 	} else {
-		ParIterator it = buffer.par_iterator_begin();
-		ParIterator end = buffer.par_iterator_end();
 		OutputParams runparams(&buffer.params().encoding());
-		odocstringstream os;
 		runparams.nice = true;
 		runparams.flavor = OutputParams::LATEX;
 		runparams.linelen = 100000; //lyxrc.plaintext_linelen;
 		runparams.dryrun = true;
-		for (; it != end; ++it) {
+		for (pos_type pit = pos_type(0); pit < (pos_type)buffer.paragraphs().size(); ++pit) {
+			Paragraph const & par = buffer.paragraphs().at(pit);
 			LYXERR(Debug::FIND, "Adding to search string: '"
-				<< it->asString(false)
+				<< par.stringify(pos_type(0), par.size(),
+						 AS_STR_INSETS, runparams)
 				<< "'");
-			str +=
-				it->stringify(pos_type(0), it->size(),
-					      AS_STR_INSETS, runparams);
+			str += par.stringify(pos_type(0), par.size(),
+					     AS_STR_INSETS, runparams);
 		}
 	}
 	return str;
