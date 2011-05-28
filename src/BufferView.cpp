@@ -669,7 +669,10 @@ void BufferView::setCursorFromScrollbar()
 	// FIXME: Care about the d->cursor_ flags to redraw if needed
 	Cursor old = d->cursor_;
 	mouseSetCursor(cur);
-	bool badcursor = notifyCursorLeavesOrEnters(old, d->cursor_);
+	// the DEPM call in mouseSetCursor() might have destroyed the
+	// paragraph the cursor is in.
+	bool badcursor = old.fixIfBroken();
+	badcursor |= notifyCursorLeavesOrEnters(old, d->cursor_);
 	if (badcursor)
 		d->cursor_.fixIfBroken();
 }
