@@ -43,9 +43,13 @@ if(NOT help AND NOT HELP)
 endif()
 
 if(UNIX)
+	set(ARCH_TRIPLET )
 	FIND_PROGRAM(DPKG_ARCHITECTURE_EXECUTABLE dpkg-architecture)
 	if(DPKG_ARCHITECTURE_EXECUTABLE)
-		EXECUTE_PROCESS(COMMAND dpkg-architecture -qDEB_HOST_MULTIARCH OUTPUT_VARIABLE ARCH_TRIPLET OUTPUT_STRIP_TRAILING_WHITESPACE)
+		EXECUTE_PROCESS(COMMAND ${DPKG_ARCHITECTURE_EXECUTABLE} -qDEB_HOST_MULTIARCH
+				OUTPUT_VARIABLE ARCH_TRIPLET
+				ERROR_VARIABLE ERROR_ARCH_TRIPLET
+				OUTPUT_STRIP_TRAILING_WHITESPACE)
 	endif()
 endif()
 if(ARCH_TRIPLET)
@@ -108,11 +112,12 @@ LYX_OPTION(COCOA                 "Use Cocoa on Mac" OFF MAC)
 
 if(help OR HELP)
 	message(STATUS)
-	message(STATUS "Available options: (dis/enable with -D=0/1)")
+	message(STATUS "Available options: (dis/enable with -DLYX_*=OFF/ON)")
 	message(STATUS)
 	LYX_OPTION_LIST_ALL(help)
 	message(STATUS)
-else()
+	RETURN()
+endif()
 
 # Check option dependencies
 
@@ -198,11 +203,11 @@ include(LyXPaths)
 file(STRINGS "${TOP_SRC_DIR}/configure.ac" _config_lines)
 
 if(WIN32)
-	set(USE_WINDOWS_PACKAGING 1)
+	set(USE_WINDOWS_PACKAGING ON)
 elseif(APPLE)
-	set(USE_MACOSX_PACKAGING 1)
+	set(USE_MACOSX_PACKAGING ON)
 else()
-	set(USE_POSIX_PACKAGING 1)
+	set(USE_POSIX_PACKAGING ON)
 endif()
 
 macro(setstripped _varname _value)
@@ -593,11 +598,11 @@ endif()
 
 
 if(LYX_DEBUG_GLIBC)
-	set(_GLIBCXX_DEBUG 1)
+	set(_GLIBCXX_DEBUG ON)
 endif()
 
 if(LYX_DEBUG_GLIBC_PEDANTIC)
-	set(_GLIBCXX_DEBUG_PEDANTIC 1)
+	set(_GLIBCXX_DEBUG_PEDANTIC ON)
 endif()
 
 # compiler tests, config.h generation
@@ -617,7 +622,6 @@ add_subdirectory(lib/scripts "${TOP_BINARY_DIR}/scripts")
 
 
 if(LYX_INSTALL)
-	#FIND_PROGRAM(LYX_PERL_EXECUTABLE perl)
 	if(${LYX_PYTHON_EXECUTABLE} MATCHES "-NOTFOUND")
 		message(STATUS "Python required to create doc!")
 	else()
@@ -630,7 +634,7 @@ endif()
 add_subdirectory(sourcedoc "${TOP_BINARY_DIR}/sourcedoc")
 
 message(STATUS)
-message(STATUS "Build options, switch LYX_* variables by -DLYX_*=1 or 0:")
+message(STATUS "Build options, switch LYX_* variables by -DLYX_*=ON or OFF:")
 message(STATUS)
 LYX_OPTION_LIST_ALL(used)
 
@@ -654,5 +658,3 @@ endif()
 include("${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/LyxPackaging.cmake")
 
 message(STATUS)
-
-endif() # help
