@@ -91,10 +91,12 @@ What's new
 
 * USER INTERFACE
 
-- Fix crash relating to outliner and mouse movement.
+- Fixed crash relating to outliner and mouse movement.
 
-- Fix crash when putting multirow tables into notes---or any other inset
+- Fixed crash when putting multirow tables into notes---or any other inset
   that appears in the outliner (bug 7547).
+
+- Fixed crash with inverse search when document has changed (bug 7572).
 
 - Show the correct label after adding a line to an AMS Multline formula (bug
   7511).
