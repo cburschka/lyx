@@ -7,10 +7,10 @@
 # latest changes by Stephan Witt
 # Last modified: January 2011
 
-CARBON=-carbon
+MAC_API=-cocoa
 Qt4Version="4.6.3"
 Qt4SourceVersion="qt-everywhere-opensource-src-${Qt4Version}"
-Qt4BuildSubDir="qt-${Qt4Version}-build${CARBON}"
+Qt4BuildSubDir="qt-${Qt4Version}-build${MAC_API}"
 
 # Prerequisite:
 # * a decent checkout of LyX sources (probably you have it already)
@@ -31,7 +31,7 @@ HunspellConfigureOptions="--with-warnings --disable-nls --with-included-gettext 
 Qt4ConfigureOptions="-opensource -silent -shared -release -fast -no-exceptions"
 Qt4ConfigureOptions="${Qt4ConfigureOptions} -no-webkit -no-qt3support -no-javascript-jit -no-dbus"
 Qt4ConfigureOptions="${Qt4ConfigureOptions} -nomake examples -nomake demos -nomake docs -nomake tools"
-#Qt4ConfigureOptions="${Qt4ConfigureOptions} ${CARBON}"
+Qt4ConfigureOptions="${Qt4ConfigureOptions} ${MAC_API}"
 
 aspell_dictionaries="no"
 hunspell_dictionaries="no"
@@ -144,6 +144,10 @@ while [ $# -gt 0 ]; do
 		hunspell_deployment="no"
 		shift
 		;;
+	--only-package=*)
+		LyxOnlyPackage=`echo ${1}|cut -d= -f2`
+		shift
+		;;
 	--*)
 		LyXConfigureOptions="${LyXConfigureOptions} ${1}"
 		shift
@@ -197,6 +201,8 @@ HunSpellInstallDir=${HunSpellInstallDir:-"${LyxBuildDir}"/SpellChecker.lib}
 Qt4SourceDir=${QT4SOURCEDIR:-`dirname "${LyxSourceDir}"`/${Qt4SourceVersion}}
 Qt4BuildDir=${Qt4BuildDir:-"${LyxBuildDir}"/${Qt4BuildSubDir:-"qt4-build"}}
 DictionarySourceDir=${DICTIONARYDIR:-`dirname "${LyxSourceDir}"`/dictionaries}
+DocumentationDir=`dirname "${LyxSourceDir}"`/Documents
+DmgBackground="${LyxSourceDir}"/development/MacOSX/dmg-background.png
 
 ASpellInstallHdr="${ASpellInstallDir}/include/aspell.h"
 HunSpellInstallHdr="${HunSpellInstallDir}/include/hunspell/hunspell.h"
@@ -226,7 +232,6 @@ QtLibraries="QtSvg QtXml QtGui QtNetwork QtCore"
 
 DMGNAME="${LyxBase}"
 DMGSIZE="550m"
-BACKGROUND="${LyxAppDir}.app/Contents/Resources/images/banner.png"
 
 # Check for existing SDKs
 SDKs=`echo /Developer/SDKs/MacOSX10*sdk`
@@ -480,7 +485,7 @@ build_lyx() {
 			CPPFLAGS="${CPPFLAGS} -I${SDKROOT}/Library/Frameworks/QtCore.framework/Headers"
 			CPPFLAGS="${CPPFLAGS} -I${SDKROOT}/Library/Frameworks/QtGui.framework/Headers"
 		fi
-		LDFLAGS="${LDFLAGS}"${CARBON:+" -framework Carbon"}
+		LDFLAGS="${LDFLAGS}"${MAC_API:+" -framework Carbon"}
 		LDFLAGS="${LDFLAGS} -framework AppKit"
 
 		echo LDFLAGS="${LDFLAGS}"
@@ -646,8 +651,16 @@ copy_dictionaries() {
 }
 
 set_bundle_display_options() {
+	X_BOUNDS=$2
+	Y_BOUNDS=$3
+	Y_POSITION=$((Y_BOUNDS - 65))
+	Y_BOUNDS=$((Y_BOUNDS + 20))
+	LYX_X_POSITION=$((X_BOUNDS / 4))
+	LYX_Y_POSITION=$Y_POSITION
+	APP_X_POSITION=$((3 * X_BOUNDS / 4))
+	APP_Y_POSITION=$Y_POSITION
 	osascript <<-EOF
-    tell application "Finder"
+	tell application "Finder"
         set f to POSIX file ("${1}" as string) as alias
         tell folder f
             open
@@ -656,16 +669,17 @@ set_bundle_display_options() {
                 set statusbar visible to false
                 set current view to icon view
                 delay 1 -- sync
-                set the bounds to {20, 50, $2, $3}
+                set the bounds to {20, 50, $X_BOUNDS, $Y_BOUNDS}
             end tell
             delay 1 -- sync
             set icon size of the icon view options of container window to 64
             set arrangement of the icon view options of container window to not arranged
-            set position of item "${LyxName}.app" to {100,$4}
-            set position of item "Applications" to {280,$4}
+            set position of item "Documents" to {$LYX_X_POSITION,0}
+            set position of item "${LyxName}.app" to {$LYX_X_POSITION,$LYX_Y_POSITION}
+            set position of item "Applications" to {$APP_X_POSITION,$APP_Y_POSITION}
             set background picture of the icon view options\
 					of container window to file "background.png" of folder "Pictures"
-            set the bounds of the container window to {0, 0, $2, $3}
+            set the bounds of the container window to {0, 0, $X_BOUNDS, $Y_BOUNDS}
             update without registering applications
             delay 5 -- sync
             close
@@ -678,10 +692,9 @@ EOF
 make_dmg() {
 	cd "${1}"
 
-	BGSIZE=`file "$BACKGROUND" | awk -F , '/PNG/{print $2 }' | tr x ' '`
+	BGSIZE=`file "$DmgBackground" | awk -F , '/PNG/{print $2 }' | tr x ' '`
 	BG_W=`echo ${BGSIZE} | awk '{print $1 }'`
-	BG_H=`echo ${BGSIZE} | awk '{h = $2 + 20 ;print h }'`
-	BG_Y=`echo ${BGSIZE} | awk '{y = $2 - 60 ;print y }'`
+	BG_H=`echo ${BGSIZE} | awk '{print $2 }'`
 
 	rm -f "${DMGNAME}.sparseimage" "${DMGNAME}.dmg"
 
@@ -702,10 +715,12 @@ make_dmg() {
 
 	# copy in background image
 	mkdir -p "${VOLUME}/Pictures"
-	cp "${BACKGROUND}" "${VOLUME}/Pictures/background.png"
+	cp "${DmgBackground}" "${VOLUME}/Pictures/background.png"
 	# symlink applications
 	ln -s /Applications/ "${VOLUME}"/Applications
-	set_bundle_display_options "${VOLUME}" ${BG_W} ${BG_H} ${BG_Y}
+	test -d "${DocumentationDir}" && cp -r "${DocumentationDir}" "${VOLUME}"
+	set_bundle_display_options "${VOLUME}" ${BG_W} ${BG_H}
+	/Developer/Tools/SetFile -a C "${VOLUME}"
 	mv "${VOLUME}/Pictures" "${VOLUME}/.Pictures"
 
 	# Unmount the disk image
@@ -720,7 +735,7 @@ make_dmg() {
 # Building distribution packages
 # ------------------------------
 
-build_distribution() {
+build_package() {
 	test -n "${LyxAppZip}" && (
 		cd "${LyxAppPrefix}" && zip -r "${LyxAppZip}" .
 	)
@@ -730,7 +745,7 @@ build_distribution() {
 		if [ -d "${QtInstallDir}/lib/QtCore.framework/Versions/${QtFrameworkVersion}" -a "yes" = "${qt4_deployment}" ]; then
 			rm -f "${DMGLocation}/${DMGNAME}+qt4.dmg"
 			echo move to "${DMGLocation}/${DMGNAME}+qt4.dmg"
-			mv "${DMGLocation}/${DMGNAME}.dmg" "${DMGLocation}/${DMGNAME}+qt4.dmg"
+			mv "${DMGLocation}/${DMGNAME}.dmg" "${DMGLocation}/${DMGNAME}+qt4${MAC_API}.dmg"
 		fi
 	)
 }
@@ -739,7 +754,9 @@ build_distribution() {
 # main block
 # ------------------------------
 
-build_lyx
-convert_universal
-copy_dictionaries
-build_distribution
+if [ ${LyxOnlyPackage:-"no"} = "no" ]; then
+	build_lyx
+	convert_universal
+	copy_dictionaries
+fi
+build_package
