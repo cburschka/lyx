@@ -32,19 +32,9 @@ set(CPACK_RPM_PACKAGE_VENDOR "The LyX team")
 set(CPACK_PACKAGE_CONTACT "${PACKAGE_BUGREPORT}")
 set(CPACK_SOURCE_PACKAGE_FILE_NAME "${LYX_PROJECT}-${LYX_INSTALL_SUFFIX}")
 
-# This is experimental, valid on _my_ system (Kornel)
-set(CPACK_DEBIAN_PACKAGE_DEPENDS "libqtgui4 (>= 4.4.3-0)")
-if(ASPELL_FOUND)
-	set(CPACK_DEBIAN_PACKAGE_DEPENDS "libaspell15 (>= 0.60.6-1),${CPACK_DEBIAN_PACKAGE_DEPENDS}")
-endif()
-if(ENCHANT_FOUND)
-	set(CPACK_DEBIAN_PACKAGE_DEPENDS "libenchant1c2a (>= 1.6.0-0),${CPACK_DEBIAN_PACKAGE_DEPENDS}")
-endif()
-if(LYX_EXTERNAL_BOOST)
-	if(Boost_FOUND)
-		set(CPACK_DEBIAN_PACKAGE_DEPENDS "libboost-regex1.40.0 (>= 1.40.0-4),libboost-signals1.40.0 (>= 1.40.0-4),${CPACK_DEBIAN_PACKAGE_DEPENDS}")
-	endif()
-endif()
+# use dpkg-shlibdeps to generate package dependency list.
+set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
+
 #
 # for the next ones, cpack insists on data with values in some file
 set(CPACK_PACKAGE_DESCRIPTION_FILE "${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/LyX_description.txt")
