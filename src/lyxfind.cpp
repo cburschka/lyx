@@ -40,6 +40,7 @@
 #include "mathed/InsetMathGrid.h"
 #include "mathed/InsetMathHull.h"
 #include "mathed/MathStream.h"
+#include "mathed/MathSupport.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -966,15 +967,16 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 				<< cur << ", from pos: " << cur.pos() << ", end: " << end);
 			return par.stringify(cur.pos(), end, AS_STR_INSETS, runparams);
 	} else if (cur.inMathed()) {
-			odocstringstream os;
+			docstring s;
 			CursorSlice cs = cur.top();
 			MathData md = cs.cell();
 			MathData::const_iterator it_end = 
 				( ( len == -1 || cs.pos() + len > int(md.size()) )
 					? md.end() : md.begin() + cs.pos() + len );
 			for (MathData::const_iterator it = md.begin() + cs.pos(); it != it_end; ++it)
-					os << *it;
-			return os.str();
+				s = s + asString(*it);
+			LYXERR(Debug::FIND, "Stringified math: '" << s << "'");
+			return s;
 	}
 	LYXERR(Debug::FIND, "Don't know how to stringify from here: " << cur);
 	return docstring();
