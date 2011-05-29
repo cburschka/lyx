@@ -2932,7 +2932,7 @@ bool GuiView::goToFileRow(string const & argument)
 	}
 	if (!buf) {
 		message(bformat(
-			_("No buffer for file `%1$s'."),
+			_("No buffer for file: %1$s."),
 			makeDisplayPath(file_name))
 		);
 		return false;
