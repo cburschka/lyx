@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-05-29 13:15+0200\n"
-"PO-Revision-Date: 2011-05-29 13:16+0200\n"
+"POT-Creation-Date: 2011-05-29 17:45+0200\n"
+"PO-Revision-Date: 2011-05-29 18:22+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -17078,7 +17078,7 @@ msgstr "Ďalej sa nedá zrušovať"
 msgid "No further redo information"
 msgstr "Ďalej sa nedá opakovať"
 
-#: src/BufferView.cpp:1517 src/lyxfind.cpp:377 src/lyxfind.cpp:395
+#: src/BufferView.cpp:1517 src/lyxfind.cpp:378 src/lyxfind.cpp:396
 msgid "String not found!"
 msgstr "Reťazec nebol nájdený!"
 
@@ -22013,8 +22013,8 @@ msgstr "Otváram dokument potomku %1$s..."
 
 #: src/frontends/qt4/GuiView.cpp:2935
 #, c-format
-msgid "No buffer for file `%1$s'."
-msgstr "Žiadny zásobník pre súbor `%1$s'."
+msgid "No buffer for file: %1$s."
+msgstr "Žiadny zásobník pre súbor %1$s."
 
 #: src/frontends/qt4/GuiView.cpp:2962
 #, c-format
@@ -22095,31 +22095,31 @@ msgstr "DocBook Zdroj"
 msgid "Literate Source"
 msgstr "Literate Zdroj"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1321
+#: src/frontends/qt4/GuiWorkArea.cpp:1325
 msgid " (version control, locking)"
 msgstr " (kontrola verzií, blokovanie)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1323
+#: src/frontends/qt4/GuiWorkArea.cpp:1327
 msgid " (version control)"
 msgstr " (kontrola verzií)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1326
+#: src/frontends/qt4/GuiWorkArea.cpp:1330
 msgid " (changed)"
 msgstr " (zmenený)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1330
+#: src/frontends/qt4/GuiWorkArea.cpp:1334
 msgid " (read only)"
 msgstr " (iba pre čítanie)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1483
+#: src/frontends/qt4/GuiWorkArea.cpp:1487
 msgid "Close File"
 msgstr "Zavrieť Súbor"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1925
+#: src/frontends/qt4/GuiWorkArea.cpp:1929
 msgid "Hide tab"
 msgstr "Podokno schovať"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1927
+#: src/frontends/qt4/GuiWorkArea.cpp:1931
 msgid "Close tab"
 msgstr "Podokno zavrieť"
 
@@ -23368,36 +23368,36 @@ msgstr "Výška textu %"
 msgid "Page Height %"
 msgstr "Výška Stránky %"
 
-#: src/lyxfind.cpp:143
+#: src/lyxfind.cpp:144
 msgid "Search error"
 msgstr "Chyba pri hľadaní"
 
-#: src/lyxfind.cpp:143
+#: src/lyxfind.cpp:144
 msgid "Search string is empty"
 msgstr "Reťazec na hľadanie je prázdny"
 
-#: src/lyxfind.cpp:380
+#: src/lyxfind.cpp:381
 msgid "String found."
 msgstr "Reťazec nájdený."
 
-#: src/lyxfind.cpp:382
+#: src/lyxfind.cpp:383
 msgid "String has been replaced."
 msgstr "Reťazec bol nahradený."
 
-#: src/lyxfind.cpp:385
+#: src/lyxfind.cpp:386
 #, c-format
 msgid "%1$d strings have been replaced."
 msgstr "%1$d reťazcov bolo nahradených."
 
-#: src/lyxfind.cpp:1371
+#: src/lyxfind.cpp:1373
 msgid "Invalid regular expression!"
 msgstr "Neplatný regulárny výraz!"
 
-#: src/lyxfind.cpp:1376
+#: src/lyxfind.cpp:1378
 msgid "Match not found!"
 msgstr "Vhodný výraz nebol nájdený!"
 
-#: src/lyxfind.cpp:1380
+#: src/lyxfind.cpp:1382
 msgid "Match found!"
 msgstr "Vhodný výraz nájdený!"
 
