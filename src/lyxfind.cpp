@@ -1029,7 +1029,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 		MathData::const_iterator it_end = ( ( len == -1 || cs.pos() + len > int(md.size()) )
 			? md.end() : md.begin() + cs.pos() + len );
 		for (MathData::const_iterator it = md.begin() + cs.pos(); it != it_end; ++it)
-				ods << *it;
+			ods << asString(*it);
 
 		// Retrieve the math environment type, and add '$' or '$]'
 		// or others (\end{equation}) accordingly
