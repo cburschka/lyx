@@ -32,7 +32,10 @@ set(CPACK_RPM_PACKAGE_VENDOR "The LyX team")
 set(CPACK_PACKAGE_CONTACT "${PACKAGE_BUGREPORT}")
 set(CPACK_SOURCE_PACKAGE_FILE_NAME "${LYX_PROJECT}-${LYX_INSTALL_SUFFIX}")
 
-# use dpkg-shlibdeps to generate package dependency list.
+# We depend on python scripting
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "python (>= 2.6)")
+
+# use dpkg-shlibdeps to generate additional info for package dependency list.
 set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
 
 #
