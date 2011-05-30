@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-05-28 09:17+0200\n"
-"PO-Revision-Date: 2011-05-28 09:24+0200\n"
+"POT-Creation-Date: 2011-05-30 09:13+0200\n"
+"PO-Revision-Date: 2011-05-30 09:14+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -13308,11 +13308,11 @@ msgstr "Dokument drucken"
 msgid "Check spelling"
 msgstr "Rechtschreibung prüfen"
 
-#: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1312
+#: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1315
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1322
+#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1325
 msgid "Redo"
 msgstr "Wiederholen"
 
@@ -16660,12 +16660,12 @@ msgstr "\\begin_header fehlt"
 msgid "\\begin_document is missing"
 msgstr "\\begin_document fehlt"
 
-#: src/Buffer.cpp:773 src/Buffer.cpp:779 src/BufferView.cpp:1417
-#: src/BufferView.cpp:1423
+#: src/Buffer.cpp:773 src/Buffer.cpp:779 src/BufferView.cpp:1420
+#: src/BufferView.cpp:1426
 msgid "Changes not shown in LaTeX output"
 msgstr "Änderungen nicht in der LaTeX-Ausgabe angezeigt"
 
-#: src/Buffer.cpp:774 src/BufferView.cpp:1418
+#: src/Buffer.cpp:774 src/BufferView.cpp:1421
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -16677,7 +16677,7 @@ msgstr ""
 "Bitte installieren Sie diese Pakete oder definieren Sie \\lyxadded und "
 "\\lyxdeleted im LaTeX-Vorspann neu."
 
-#: src/Buffer.cpp:780 src/BufferView.cpp:1424
+#: src/Buffer.cpp:780 src/BufferView.cpp:1427
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -17215,7 +17215,7 @@ msgstr ""
 "korrekte\n"
 "Ausgabe erzeugen können."
 
-#: src/BufferParams.cpp:1997 src/BufferView.cpp:1262 src/BufferView.cpp:1294
+#: src/BufferParams.cpp:1997 src/BufferView.cpp:1265 src/BufferView.cpp:1297
 msgid "Could not load class"
 msgstr "Konnte Klasse nicht laden"
 
@@ -17231,119 +17231,119 @@ msgstr "Lesefehler"
 msgid "No more insets"
 msgstr "Keine weiteren Einfügungen"
 
-#: src/BufferView.cpp:728
+#: src/BufferView.cpp:731
 msgid "Save bookmark"
 msgstr "Lesezeichen speichern"
 
-#: src/BufferView.cpp:937
+#: src/BufferView.cpp:940
 msgid "Converting document to new document class..."
 msgstr "Das Dokument wird an die neue Dokumentklasse angepasst..."
 
-#: src/BufferView.cpp:980
+#: src/BufferView.cpp:983
 msgid "Document is read-only"
 msgstr "Dokument ist schreibgeschützt"
 
-#: src/BufferView.cpp:989
+#: src/BufferView.cpp:992
 msgid "This portion of the document is deleted."
 msgstr "Dieser Teil des Dokuments wird gelöscht."
 
-#: src/BufferView.cpp:1260 src/BufferView.cpp:1292
+#: src/BufferView.cpp:1263 src/BufferView.cpp:1295
 #, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "Die Dokumentklasse %1$s konnte nicht geladen werden."
 
-#: src/BufferView.cpp:1315
+#: src/BufferView.cpp:1318
 msgid "No further undo information"
 msgstr "Nichts mehr rückgängig zu machen"
 
-#: src/BufferView.cpp:1325
+#: src/BufferView.cpp:1328
 msgid "No further redo information"
 msgstr "Nichts mehr zu wiederholen"
 
-#: src/BufferView.cpp:1514 src/lyxfind.cpp:377 src/lyxfind.cpp:395
+#: src/BufferView.cpp:1517 src/lyxfind.cpp:377 src/lyxfind.cpp:395
 msgid "String not found!"
 msgstr "Die Zeichenkette wurde nicht gefunden!"
 
-#: src/BufferView.cpp:1557
+#: src/BufferView.cpp:1560
 msgid "Mark off"
 msgstr "Marke aus"
 
-#: src/BufferView.cpp:1563
+#: src/BufferView.cpp:1566
 msgid "Mark on"
 msgstr "Marke ein"
 
-#: src/BufferView.cpp:1570
+#: src/BufferView.cpp:1573
 msgid "Mark removed"
 msgstr "Marke entfernt"
 
-#: src/BufferView.cpp:1573
+#: src/BufferView.cpp:1576
 msgid "Mark set"
 msgstr "Marke gesetzt"
 
-#: src/BufferView.cpp:1628
+#: src/BufferView.cpp:1631
 msgid "Statistics for the selection:"
 msgstr "Statistik für die Auswahl:"
 
-#: src/BufferView.cpp:1630
+#: src/BufferView.cpp:1633
 msgid "Statistics for the document:"
 msgstr "Statistik für das Dokument:"
 
-#: src/BufferView.cpp:1633
+#: src/BufferView.cpp:1636
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d Wörter"
 
-#: src/BufferView.cpp:1635
+#: src/BufferView.cpp:1638
 msgid "One word"
 msgstr "Ein Wort"
 
-#: src/BufferView.cpp:1638
+#: src/BufferView.cpp:1641
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d Zeichen (inklusive Leerzeichen)"
 
-#: src/BufferView.cpp:1641
+#: src/BufferView.cpp:1644
 msgid "One character (including blanks)"
 msgstr "Ein Zeichen (inklusive Leerzeichen)"
 
-#: src/BufferView.cpp:1644
+#: src/BufferView.cpp:1647
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d Zeichen (ohne Leerzeichen)"
 
-#: src/BufferView.cpp:1647
+#: src/BufferView.cpp:1650
 msgid "One character (excluding blanks)"
 msgstr "Ein Zeichen (ohne Leerzeichen)"
 
-#: src/BufferView.cpp:1649
+#: src/BufferView.cpp:1652
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/BufferView.cpp:1780
+#: src/BufferView.cpp:1783
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
 "'inset-forall' wurde abgebrochen, da die Zahl der Aktionen %1$d übersteigt"
 
-#: src/BufferView.cpp:1782
+#: src/BufferView.cpp:1785
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "Der Befehl \"%1$s\" wurde auf %2$d Einfügungen angewandt"
 
-#: src/BufferView.cpp:1790
+#: src/BufferView.cpp:1793
 msgid "Branch name"
 msgstr "Name des Zweigs"
 
-#: src/BufferView.cpp:1797 src/frontends/qt4/GuiBranches.cpp:176
+#: src/BufferView.cpp:1800 src/frontends/qt4/GuiBranches.cpp:176
 msgid "Branch already exists"
 msgstr "Zweig existiert bereits."
 
-#: src/BufferView.cpp:2218
+#: src/BufferView.cpp:2221
 msgid "Inverse Search Failed"
 msgstr "Rückwärtssuche gescheitert"
 
-#: src/BufferView.cpp:2219
+#: src/BufferView.cpp:2222
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
@@ -17351,22 +17351,22 @@ msgstr ""
 "Die Rückwärtssuche wollte eine ungültige Position anspringen.\n"
 "Bitte aktualisieren Sie das ausgegebene Dokument."
 
-#: src/BufferView.cpp:2593
+#: src/BufferView.cpp:2596
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Füge Dokument %1$s ein..."
 
-#: src/BufferView.cpp:2604
+#: src/BufferView.cpp:2607
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s ist eingefügt."
 
-#: src/BufferView.cpp:2606
+#: src/BufferView.cpp:2609
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
 
-#: src/BufferView.cpp:2871
+#: src/BufferView.cpp:2874
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17377,11 +17377,11 @@ msgstr ""
 "konnte aufgrund des folgenden Fehlers\n"
 "nicht gelesen werden: %2$s"
 
-#: src/BufferView.cpp:2873
+#: src/BufferView.cpp:2876
 msgid "Could not read file"
 msgstr "Die Datei konnte nicht gelesen werden"
 
-#: src/BufferView.cpp:2880
+#: src/BufferView.cpp:2883
 #, c-format
 msgid ""
 "%1$s\n"
@@ -17390,15 +17390,15 @@ msgstr ""
 "%1$s\n"
 "ist nicht lesbar."
 
-#: src/BufferView.cpp:2881 src/output.cpp:39
+#: src/BufferView.cpp:2884 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Die Datei konnte nicht geöffnet werden"
 
-#: src/BufferView.cpp:2888
+#: src/BufferView.cpp:2891
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lese nicht-UTF-8-kodierte Datei"
 
-#: src/BufferView.cpp:2889
+#: src/BufferView.cpp:2892
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -22291,8 +22291,8 @@ msgstr "Öffne Unterdokument %1$s..."
 
 #: src/frontends/qt4/GuiView.cpp:2935
 #, c-format
-msgid "No buffer for file `%1$s'."
-msgstr "Kein Pufferspeicher für Datei '%1$s'."
+msgid "No buffer for file: %1$s."
+msgstr "Kein Pufferspeicher für Datei: %1$s."
 
 #: src/frontends/qt4/GuiView.cpp:2958
 #, c-format
