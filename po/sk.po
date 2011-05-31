@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-05-29 18:23+0200\n"
-"PO-Revision-Date: 2011-05-29 18:25+0200\n"
+"POT-Creation-Date: 2011-05-31 20:04+0200\n"
+"PO-Revision-Date: 2011-05-31 20:05+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -4124,11 +4124,11 @@ msgstr "Jednoduchá inštancia"
 
 #: src/frontends/qt4/ui/PrefUi.ui:272
 msgid "Whether to place close button on each tab or only one in the top left."
-msgstr "Dať tlačidlo \"Zavrieť\" na každé podokno, alebo len jedno vľavo hore."
+msgstr "Dať tlačidlo \"Zavrieť\" na každú kartu, alebo len jedno vľavo hore."
 
 #: src/frontends/qt4/ui/PrefUi.ui:275
 msgid "&Single close-tab button"
-msgstr "Jedno tlačidlo na zavretie podokien"
+msgstr "Jediné tlačidlo na zavretie kariet"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:73 src/frontends/qt4/GuiView.cpp:2563
 #: src/frontends/qt4/GuiView.cpp:2570 src/frontends/qt4/GuiView.cpp:2669
@@ -5670,7 +5670,7 @@ msgstr "Štandard"
 #: lib/layouts/powerdot.layout:41 lib/layouts/revtex.layout:94
 #: lib/layouts/revtex4.layout:125 lib/layouts/scrlettr.layout:188
 #: lib/layouts/scrlttr2.layout:271 lib/layouts/siamltex.layout:187
-#: lib/layouts/sigplanconf.layout:104 lib/layouts/simplecv.layout:121
+#: lib/layouts/sigplanconf.layout:104 lib/layouts/simplecv.layout:122
 #: lib/layouts/svprobth.layout:42 lib/layouts/tufte-book.layout:34
 #: lib/layouts/agu_stdtitle.inc:246 lib/layouts/amsdefs.inc:24
 #: lib/layouts/db_stdtitle.inc:13 lib/layouts/scrclass.inc:161
@@ -5794,7 +5794,7 @@ msgstr "Príloha"
 #: lib/layouts/report.layout:12 lib/layouts/report.layout:14
 #: lib/layouts/scrbook.layout:22 lib/layouts/scrbook.layout:24
 #: lib/layouts/scrreprt.layout:11 lib/layouts/scrreprt.layout:13
-#: lib/layouts/siamltex.layout:317 lib/layouts/simplecv.layout:142
+#: lib/layouts/siamltex.layout:317 lib/layouts/simplecv.layout:143
 #: lib/layouts/tufte-book.layout:242 lib/layouts/tufte-book.layout:244
 #: lib/layouts/aguplus.inc:172 lib/layouts/aguplus.inc:174
 #: lib/layouts/amsdefs.inc:196 lib/layouts/scrclass.inc:245
@@ -5876,7 +5876,7 @@ msgstr "Sekcia"
 #: lib/layouts/memoir.layout:76 lib/layouts/moderncv.layout:53
 #: lib/layouts/paper.layout:67 lib/layouts/revtex.layout:50
 #: lib/layouts/revtex4.layout:71 lib/layouts/siamltex.layout:368
-#: lib/layouts/simplecv.layout:49 lib/layouts/tufte-book.layout:110
+#: lib/layouts/simplecv.layout:50 lib/layouts/tufte-book.layout:110
 #: lib/layouts/agu_stdsections.inc:43 lib/layouts/aguplus.inc:44
 #: lib/layouts/db_stdsections.inc:39 lib/layouts/numrevtex.inc:15
 #: lib/layouts/scrclass.inc:76 lib/layouts/stdsections.inc:89
@@ -5904,7 +5904,7 @@ msgstr "Podpodsekcia"
 #: lib/layouts/aa.layout:54 lib/layouts/aapaper.layout:48
 #: lib/layouts/aastex.layout:83 lib/layouts/apa.layout:362
 #: lib/layouts/beamer.layout:46 lib/layouts/egs.layout:168
-#: lib/layouts/powerdot.layout:244 lib/layouts/simplecv.layout:79
+#: lib/layouts/powerdot.layout:244 lib/layouts/simplecv.layout:80
 #: lib/layouts/agu_stdlists.inc:13 lib/layouts/db_stdlists.inc:12
 #: lib/layouts/stdlists.inc:13
 msgid "Itemize"
@@ -6472,7 +6472,7 @@ msgstr "Pododstavec"
 
 #: lib/layouts/apa.layout:376 lib/layouts/beamer.layout:61
 #: lib/layouts/egs.layout:182 lib/layouts/powerdot.layout:258
-#: lib/layouts/simplecv.layout:93 lib/layouts/stdlists.inc:28
+#: lib/layouts/simplecv.layout:94 lib/layouts/stdlists.inc:28
 msgid "*"
 msgstr "*"
 
@@ -7772,7 +7772,7 @@ msgstr "Obmedzenie"
 msgid "Restriction:"
 msgstr "Obmedzenie:"
 
-#: lib/layouts/foils.layout:185 lib/layouts/simplecv.layout:97
+#: lib/layouts/foils.layout:185 lib/layouts/simplecv.layout:98
 #: lib/layouts/aguplus.inc:80 lib/layouts/customHeadersFooters.module:10
 msgid "Left Header"
 msgstr "Ľavá Hlavička"
@@ -7782,7 +7782,7 @@ msgstr "Ľavá Hlavička"
 msgid "Left Header:"
 msgstr "Ľavá Hlavička:"
 
-#: lib/layouts/foils.layout:193 lib/layouts/simplecv.layout:114
+#: lib/layouts/foils.layout:193 lib/layouts/simplecv.layout:115
 #: lib/layouts/aguplus.inc:103 lib/layouts/customHeadersFooters.module:36
 msgid "Right Header"
 msgstr "Pravá Hlavička"
@@ -9080,11 +9080,11 @@ msgstr "Pojmy"
 msgid "Terms:"
 msgstr "Pojmy:"
 
-#: lib/layouts/simplecv.layout:57
+#: lib/layouts/simplecv.layout:58
 msgid "Topic"
 msgstr "Námet"
 
-#: lib/layouts/simplecv.layout:71
+#: lib/layouts/simplecv.layout:72
 msgid "MMMMM"
 msgstr "MMMMM"
 
@@ -22088,11 +22088,11 @@ msgstr "Zavrieť Súbor"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1925
 msgid "Hide tab"
-msgstr "Podokno schovať"
+msgstr "Kartu schovať"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1927
 msgid "Close tab"
-msgstr "Podokno zavrieť"
+msgstr "Kartu zavrieť"
 
 #: src/frontends/qt4/GuiWrap.cpp:32
 msgid "Wrap Float Settings"
