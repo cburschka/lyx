@@ -1018,6 +1018,10 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 		switch (ev->key()) {
 		case Qt::Key_PageDown:
 		case Qt::Key_PageUp:
+		case Qt::Key_Left:
+		case Qt::Key_Right:
+		case Qt::Key_Up:
+		case Qt::Key_Down:
 			LYXERR(Debug::KEY, "system is busy: scroll key event ignored");
 			ev->ignore();
 			return;
