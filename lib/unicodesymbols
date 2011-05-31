@@ -17,6 +17,7 @@
 # You can use development/tools/unicodesymbols.py to add stubs for more
 # symbols.
 # Do only add commands that give correct output, no hacks that look "similar".
+# TODO: fix "missing Qt keysequences (MacSpecialKey)" hacks (search for "Qt::")
 # Commands that modify other parts of the text should not be added either.
 
 # syntax:
@@ -31,21 +32,21 @@
 # - force     Always output replacement command
 # - mathalpha This character is considered as a math variable in mathmode
 
-0x00a0 "~"                        "" "" # NO-BREAK SPACE
+0x00a0 "~"                        "" "" "~" "" # NO-BREAK SPACE
 0x00a1 "\\textexclamdown"         "" "" # INVERTED EXCLAMATION MARK
-0x00a2 "\\textcent"               "textcomp" "" # CENT SIGN
-0x00a3 "\\pounds"                 "" "" # £ POUND SIGN
+0x00a2 "\\textcent"               "textcomp" "" "\\mathcent" "txfonts" # CENT SIGN
+0x00a3 "\\pounds"                 "" "" "\\pounds" "" # £ POUND SIGN
 0x00a4 "\\textcurrency"           "textcomp" "" # CURRENCY SYMBOL
-0x00a5 "\\textyen"                "textcomp" "" # YEN SIGN
+0x00a5 "\\textyen"                "textcomp" "" "\\yen" "amssymb" # YEN SIGN
 0x00a6 "\\textbrokenbar"          "textcomp" "" # BROKEN BAR
 0x00a7 "\\textsection"            "textcomp" "" # SECTION SIGN
 0x00a8 "\\textasciidieresis"      "textcomp" "" # DIAERESIS
 0x00a9 "\\textcopyright"          "textcomp" "" # COPYRIGHT SIGN
 0x00aa "\\textordfeminine"        "textcomp" "" # FEMININE ORDINAL INDICATOR
 0x00ab "\\guillemotleft"          "" "" # LEFT-POINTING DOUBLE ANGLE QUOTATION MARK
-0x00ac "\\textlnot"               "textcomp" "force" # ¬ NOT SIGN
+0x00ac "\\textlnot"               "textcomp" "force" "\\neg" "" # ¬ NOT SIGN
 0x00ad "\\-"                      "" "" # SOFT HYPHEN
-0x00ae "\\textregistered"         "textcomp" "force" # REGISTERED SIGN # the force flag is only needed due to a bug in teTeX 3 / TeXLive 2005
+0x00ae "\\textregistered"         "textcomp" "force" "\\circledR" "amssymb" # REGISTERED SIGN # the force flag is only needed due to a bug in teTeX 3 / TeXLive 2005
 0x00af "\\textasciimacron"        "textcomp" "" # MACRON
 0x00b0 "\\textdegree"             "textcomp" "force" # DEGREE SIGN # the force flag is only needed due to a bug in teTeX 3 / TeXLive 2005
 0x00b1 "\\textpm"                 "textcomp" "force" "\pm" # ± PLUS-MINUS SIGN
@@ -111,7 +112,7 @@
 0x00ed "\\'{\\i}"                 "" "mathalpha" "\\acute{\\imath}" # LATIN SMALL LETTER I WITH ACUTE
 0x00ee "\\^{\\i}"                 "" "mathalpha" "\\hat{\\imath}" # LATIN SMALL LETTER I WITH CIRCUMFLEX
 0x00ef "\\\"{\\i}"                "" "mathalpha" "\\ddot{\\imath}" # LATIN SMALL LETTER I WITH DIAERESIS
-0x00f0 "\\dh"                     "" "" # LATIN SMALL LETTER ETH
+0x00f0 "\\dh"                     "" "" "\\eth" "amssymb" # LATIN SMALL LETTER ETH
 0x00f1 "\\~{n}"                   "" "mathalpha" "\\tilde{n}" # LATIN SMALL LETTER N WITH TILDE
 0x00f2 "\\`{o}"                   "" "mathalpha" "\\grave{o}" # LATIN SMALL LETTER O WITH GRAVE
 0x00f3 "\\'{o}"                   "" "mathalpha" "\\acute{o}" # LATIN SMALL LETTER O WITH ACUTE
@@ -740,28 +741,28 @@
 0x0390 "\\textgreek{\\char242}"    "textgreek" "" # GREEK SMALL LETTER IOTA WITH DIALYTIKA AND TONOS
 0x0391 "\\textgreek{A}"           "textgreek" "" # GREEK CAPITAL LETTER ALPHA
 0x0392 "\\textgreek{B}"           "textgreek" "" # GREEK CAPITAL LETTER BETA
-0x0393 "\\textgreek{G}"           "textgreek" "" # GREEK CAPITAL LETTER GAMMA
-0x0394 "\\textgreek{D}"           "textgreek" "" # GREEK CAPITAL LETTER DELTA
+0x0393 "\\textgreek{G}"           "textgreek" "" "\\Gamma" "" # GREEK CAPITAL LETTER GAMMA
+0x0394 "\\textgreek{D}"           "textgreek" "" "\\Delta" "" # GREEK CAPITAL LETTER DELTA
 0x0395 "\\textgreek{E}"           "textgreek" "" # GREEK CAPITAL LETTER EPSILON
 0x0396 "\\textgreek{Z}"           "textgreek" "" # GREEK CAPITAL LETTER ZETA
 0x0397 "\\textgreek{H}"           "textgreek" "" # GREEK CAPITAL LETTER ETA
-0x0398 "\\textgreek{J}"           "textgreek" "" # GREEK CAPITAL LETTER THETA
+0x0398 "\\textgreek{J}"           "textgreek" "" "\\Theta" "" # GREEK CAPITAL LETTER THETA
 0x0399 "\\textgreek{I}"           "textgreek" "" # GREEK CAPITAL LETTER IOTA
 0x039a "\\textgreek{K}"           "textgreek" "" # GREEK CAPITAL LETTER KAPPA
-0x039b "\\textgreek{L}"           "textgreek" "" # GREEK CAPITAL LETTER LAMDA
+0x039b "\\textgreek{L}"           "textgreek" "" "\\Lambda" "" # GREEK CAPITAL LETTER LAMDA
 0x039c "\\textgreek{M}"           "textgreek" "" # GREEK CAPITAL LETTER MU
 0x039d "\\textgreek{N}"           "textgreek" "" # GREEK CAPITAL LETTER NU
-0x039e "\\textgreek{X}"           "textgreek" "" # GREEK CAPITAL LETTER XI
+0x039e "\\textgreek{X}"           "textgreek" "" "\\Xi" "" # GREEK CAPITAL LETTER XI
 0x039f "\\textgreek{O}"           "textgreek" "" # GREEK CAPITAL LETTER OMICRON
-0x03a0 "\\textgreek{P}"           "textgreek" "" # GREEK CAPITAL LETTER PI
+0x03a0 "\\textgreek{P}"           "textgreek" "" "\\Pi" "" # GREEK CAPITAL LETTER PI
 0x03a1 "\\textgreek{R}"           "textgreek" "" # GREEK CAPITAL LETTER RHO
-0x03a3 "\\textgreek{S}"           "textgreek" "" # GREEK CAPITAL LETTER SIGMA
+0x03a3 "\\textgreek{S}"           "textgreek" "" "\\Sigma" "" # GREEK CAPITAL LETTER SIGMA
 0x03a4 "\\textgreek{T}"           "textgreek" "" # GREEK CAPITAL LETTER TAU
-0x03a5 "\\textgreek{U}"           "textgreek" "" # GREEK CAPITAL LETTER UPSILON
-0x03a6 "\\textgreek{F}"           "textgreek" "" # GREEK CAPITAL LETTER PHI
+0x03a5 "\\textgreek{U}"           "textgreek" "" "\\Upsilon" "" # GREEK CAPITAL LETTER UPSILON
+0x03a6 "\\textgreek{F}"           "textgreek" "" "\\Phi" "" # GREEK CAPITAL LETTER PHI
 0x03a7 "\\textgreek{Q}"           "textgreek" "" # GREEK CAPITAL LETTER CHI
-0x03a8 "\\textgreek{Y}"           "textgreek" "" # GREEK CAPITAL LETTER PSI
-0x03a9 "\\textgreek{W}"           "textgreek" "" # GREEK CAPITAL LETTER OMEGA
+0x03a8 "\\textgreek{Y}"           "textgreek" "" "\\Psi" "" # GREEK CAPITAL LETTER PSI
+0x03a9 "\\textgreek{W}"           "textgreek" "" "\\Omega" "" # GREEK CAPITAL LETTER OMEGA
 0x03aa "\\textgreek{\"I}"   	  "textgreek" "" # GREEK CAPITAL LETTER IOTA WITH DIALYTIKA
 0x03ab "\\textgreek{\"U}"   	  "textgreek" "" # GREEK CAPITAL LETTER UPSILON WITH DIALYTIKA
 0x03ac "\\textgreek{\\char136}"   "textgreek" "" # GREEK SMALL LETTER ALPHA WITH TONOS
@@ -769,31 +770,31 @@
 0x03ae "\\textgreek{\\char160}"   "textgreek" "" # GREEK SMALL LETTER ETA WITH TONOS
 0x03af "\\textgreek{\\char208}"   "textgreek" "" # GREEK SMALL LETTER IOTA WITH TONOS
 0x03b0 "\\textgreek{\\char246}"   "textgreek" "" # GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND TONOS
-0x03b1 "\\textgreek{a}"           "textgreek" "" # GREEK SMALL LETTER ALPHA
-0x03b2 "\\textgreek{b}"           "textgreek" "" # GREEK SMALL LETTER BETA
-0x03b3 "\\textgreek{g}"           "textgreek" "" # GREEK SMALL LETTER GAMMA
-0x03b4 "\\textgreek{d}"           "textgreek" "" # GREEK SMALL LETTER DELTA
-0x03b5 "\\textgreek{e}"           "textgreek" "" # GREEK SMALL LETTER EPSILON
-0x03b6 "\\textgreek{z}"           "textgreek" "" # GREEK SMALL LETTER ZETA
-0x03b7 "\\textgreek{h}"           "textgreek" "" # GREEK SMALL LETTER ETA
-0x03b8 "\\textgreek{j}"           "textgreek" "" # GREEK SMALL LETTER THETA
-0x03b9 "\\textgreek{i}"           "textgreek" "" # GREEK SMALL LETTER IOTA
-0x03ba "\\textgreek{k}"           "textgreek" "" # GREEK SMALL LETTER KAPPA
-0x03bb "\\textgreek{l}"           "textgreek" "" # GREEK SMALL LETTER LAMDA
-0x03bc "\\textgreek{m}"           "textgreek" "" # GREEK SMALL LETTER MU
-0x03bd "\\textgreek{n}"           "textgreek" "" # GREEK SMALL LETTER NU
-0x03be "\\textgreek{x}"           "textgreek" "" # GREEK SMALL LETTER XI
+0x03b1 "\\textgreek{a}"           "textgreek" "mathalpha" "\\alpha" "" # GREEK SMALL LETTER ALPHA
+0x03b2 "\\textgreek{b}"           "textgreek" "mathalpha" "\\beta" "" # GREEK SMALL LETTER BETA
+0x03b3 "\\textgreek{g}"           "textgreek" "mathalpha" "\\gamma" "" # GREEK SMALL LETTER GAMMA
+0x03b4 "\\textgreek{d}"           "textgreek" "mathalpha" "\\delta" "" # GREEK SMALL LETTER DELTA
+0x03b5 "\\textgreek{e}"           "textgreek" "mathalpha" "\\varepsilon" "" # GREEK SMALL LETTER EPSILON
+0x03b6 "\\textgreek{z}"           "textgreek" "mathalpha" "\\zeta" "" # GREEK SMALL LETTER ZETA
+0x03b7 "\\textgreek{h}"           "textgreek" "mathalpha" "\\eta" "" # GREEK SMALL LETTER ETA
+0x03b8 "\\textgreek{j}"           "textgreek" "mathalpha" "\\theta" "" # GREEK SMALL LETTER THETA
+0x03b9 "\\textgreek{i}"           "textgreek" "mathalpha" "\\iota" "" # GREEK SMALL LETTER IOTA
+0x03ba "\\textgreek{k}"           "textgreek" "mathalpha" "\\kappa" "" # GREEK SMALL LETTER KAPPA
+0x03bb "\\textgreek{l}"           "textgreek" "mathalpha" "\\lambda" "" # GREEK SMALL LETTER LAMDA
+0x03bc "\\textgreek{m}"           "textgreek" "mathalpha" "\\mu" "" # GREEK SMALL LETTER MU
+0x03bd "\\textgreek{n}"           "textgreek" "mathalpha" "\\nu" "" # GREEK SMALL LETTER NU
+0x03be "\\textgreek{x}"           "textgreek" "mathalpha" "\\xi" "" # GREEK SMALL LETTER XI
 0x03bf "\\textgreek{o}"           "textgreek" "" # GREEK SMALL LETTER OMICRON
-0x03c0 "\\textgreek{p}"           "textgreek" "" # GREEK SMALL LETTER PI
-0x03c1 "\\textgreek{r}"           "textgreek" "" # GREEK SMALL LETTER RHO
-0x03c2 "\\textgreek{c}"           "textgreek" "force" # GREEK SMALL LETTER FINAL SIGMA
-0x03c3 "\\textgreek{sv}"          "textgreek" "force" # GREEK SMALL LETTER SIGMA
-0x03c4 "\\textgreek{t}"           "textgreek" "" # GREEK SMALL LETTER TAU
-0x03c5 "\\textgreek{u}"           "textgreek" "" # GREEK SMALL LETTER UPSILON
-0x03c6 "\\textgreek{f}"           "textgreek" "" # GREEK SMALL LETTER PHI
-0x03c7 "\\textgreek{q}"           "textgreek" "" # GREEK SMALL LETTER CHI
-0x03c8 "\\textgreek{y}"           "textgreek" "" # GREEK SMALL LETTER PSI
-0x03c9 "\\textgreek{w}"           "textgreek" "" # GREEK SMALL LETTER OMEGA
+0x03c0 "\\textgreek{p}"           "textgreek" "mathalpha" "\\pi" "" # GREEK SMALL LETTER PI
+0x03c1 "\\textgreek{r}"           "textgreek" "mathalpha" "\\rho" "" # GREEK SMALL LETTER RHO
+0x03c2 "\\textgreek{c}"           "textgreek" "force,mathalpha" "\\varsigma" "" # GREEK SMALL LETTER FINAL SIGMA
+0x03c3 "\\textgreek{sv}"          "textgreek" "force,mathalpha" "\\sigma" "" # GREEK SMALL LETTER SIGMA
+0x03c4 "\\textgreek{t}"           "textgreek" "mathalpha" "\\tau" "" # GREEK SMALL LETTER TAU
+0x03c5 "\\textgreek{u}"           "textgreek" "mathalpha" "\\upsilon" "" # GREEK SMALL LETTER UPSILON
+0x03c6 "\\textgreek{f}"           "textgreek" "mathalpha" "\\varphi" "" # GREEK SMALL LETTER PHI
+0x03c7 "\\textgreek{q}"           "textgreek" "mathalpha" "\\chi" "" # GREEK SMALL LETTER CHI
+0x03c8 "\\textgreek{y}"           "textgreek" "mathalpha" "\\psi" "" # GREEK SMALL LETTER PSI
+0x03c9 "\\textgreek{w}"           "textgreek" "mathalpha" "\\omega" "" # GREEK SMALL LETTER OMEGA
 0x03ca "\\textgreek{\"i}"   	  "textgreek" "" # GREEK SMALL LETTER IOTA WITH DIALYTIKA
 0x03cb "\\textgreek{\"u}"   	  "textgreek" "" # GREEK SMALL LETTER UPSILON WITH DIALYTIKA
 0x03cc "\\textgreek{\\char236}"   "textgreek" "" # GREEK SMALL LETTER OMICRON WITH TONOS
@@ -803,10 +804,11 @@
 0x03d9 "\\textgreek{\\char19}"     "textgreek" "" # GREEK SMALL LETTER ARCHAIC KOPPA
 0x03db "\\textgreek{\\char6}"      "textgreek" "" # GREEK SMALL LETTER STIGMA
 0x03dc "\\textgreek{\\char195}"    "textgreek" "" # GREEK LETTER DIGAMMA
-0x03dd "\\textgreek{\\char147}"    "textgreek" "" # GREEK SMALL LETTER DIGAMMA
+0x03dd "\\textgreek{\\char147}"   "textgreek" "" "\\digamma" "amssymb" # GREEK SMALL LETTER DIGAMMA
 0x03df "\\textgreek{\\char18}"     "textgreek" "" # GREEK SMALL LETTER KOPPA
 0x03e0 "\\textgreek{\\char23}"     "textgreek" "" # GREEK LETTER SAMPI
 0x03e1 "\\textgreek{\\char27}"     "textgreek" "" # GREEK SMALL LETTER SAMPI
+0x03f6 ""                         "" "" "\\backepsilon" "amssymb" # ϶ GREEK REVERSED LUNATE EPSILON SYMBOL
 #
 # Cyrillic
 #
@@ -1533,7 +1535,7 @@
 0x2014 "\\textemdash"             "" "" # EM DASH
 # use the following macro for the character HORIZONTAL BAR
 0x2015 "\\LyXbar" "\\newcommand*\\LyXbar{\\rule[0.585ex]{1.2em}{0.25pt}}" ""
-0x2016 "\\textbardbl"             "textcomp" "" # DOUBLE VERTICAL LINE
+0x2016 "\\textbardbl"             "textcomp" "" "\\|" "" # DOUBLE VERTICAL LINE
 #0x2017 ""                         "" "" # DOUBLE LOW LINE
 0x2018 "\\textquoteleft"          "" "" # LEFT SINGLE QUOTATION MARK
 0x2019 "\\textquoteright"         "" "" # RIGHT SINGLE QUOTATION MARK
@@ -1543,20 +1545,20 @@
 0x201d "\\textquotedblright"      "" "" # RIGHT DOUBLE QUOTATION MARK
 0x201e "\\quotedblbase"           "" "" # DOUBLE LOW-9 QUOTATION MARK
 #0x201f ""                         "" "" # DOUBLE LOW-REVERSED-9 QUOTATION MARK
-0x2020 "\\dag"                    "" "" # DAGGER
-0x2021 "\\ddag"                   "" "" # DOUBLE DAGGER
+0x2020 "\\dag"                    "" "" "\\dagger" "" # DAGGER
+0x2021 "\\ddag"                   "" "" "\\ddagger" "" # DOUBLE DAGGER
 0x2022 "\\textbullet"             "textcomp" "" # BULLET
 0x2023 "\\textifsymbol[ifgeo]{116}" "ifsym" "" # TRIANGULAR BULLET # ≈ 0x25b8
 0x2024 "."                        "" "" # ONE DOT LEADER # ≈ FULL STOP
 0x2025 ".\\,."                    "" "" # TWO DOT LEADER
-0x2026 "\\ldots"                  "" "" # HORIZONTAL ELLIPSIS
+0x2026 "\\ldots"                  "" "" "\\ldots" "" # HORIZONTAL ELLIPSIS
 #0x2027 ""                         "" "" # HYPHENATION POINT
 0x2030 "\\textperthousand"        "textcomp" "" # PER MILLE SIGN
 0x2031 "\\textpertenthousand"     "textcomp" "" # PER TEN THOUSAND SIGN
-0x2032 "\\textasciiacute"         "textcomp" "" # PRIME
+0x2032 "\\textasciiacute"         "textcomp" "" "\\prime" "" # PRIME
 0x2033 "\\textacutedbl"           "textcomp" "" # DOUBLE PRIME
 #0x2034 ""                         "" "" # TRIPLE PRIME
-0x2035 "\\textasciigrave"         "textcomp" "" # REVERSED PRIME
+0x2035 "\\textasciigrave"         "textcomp" "" "\\backprime" "amssymb" # REVERSED PRIME
 0x2036 "\\textgravedbl"           "textcomp" "" # REVERSED DOUBLE PRIME
 #0x2037 ""                         "" "" # REVERSED TRIPLE PRIME
 0x2038 "\\^{}"                    "" "" # CARET
@@ -1653,9 +1655,7 @@
 0x2115 ""                         "" "" "\\mathbb{N}" "amssymb" # DOUBLE-STUCK CAPITAL N
 0x2116 "\\textnumero"             "textcomp" "" # NUMERO SIGN
 0x2117 "\\textcircledP"           "textcomp" "" # SOUND RECORDING COYRIGHT
-# Weierstrass elliptic function, actually this has the form of a 
-# lowercase calligraphic p, despite its name  (Maybe use Zapf chancery?)
-#0x2118 ""                         "" "" "\\mathscr{P}" "mathrsfs" # SCRIPT CAPITAL P
+0x2118 ""                         "" "" "\\wp" "amssymb" # ℘ Weierstrass elliptic function, misnamed SCRIPT CAPITAL P
 0x2119 ""                         "" "" "\\mathbb{P}" "amssymb" # DOUBLE-STUCK CAPITAL P
 0x211a ""                         "" "" "\\mathbb{Q}" "amssymb" # DOUBLE-STUCK CAPITAL Q
 0x211b ""                         "" "" "\\mathscr{R}" "mathrsfs" # SCRIPT CAPITAL R
@@ -1667,7 +1667,7 @@
 0x2122 "\\texttrademark"          "textcomp" "" # TRADE MARK SIGN
 0x2124 ""                         "" "" "\\mathbb{Z}" "amssymb" # DOUBLE-STUCK CAPITAL Z
 0x2126 "\\textohm"                "textcomp" "" # OHM SIGN
-0x2127 "\\textmho"                "textcomp" "" # INVERTED OHM SIGN
+0x2127 "\\textmho"                "textcomp" "" "\\mho" "amssymb" # INVERTED OHM SIGN
 0x2128 ""                         "" "" "\\mathfrak{Z}" "amssymb" # BLACK-LETTER CAPITAL Z
 0x212a "K"                        "" "" # KELVIN SIGN
 0x212b "\\AA"                     "" "" # ANGSTROM SIGN
@@ -1687,9 +1687,7 @@
 0x2138 ""                         "" "" "\\daleth" "amssymb" # DALET SYMBOL
 #0x2139 ""                         "" "" # INFORMATION SOURCE
 #0x213b ""                         "" "" # FACSIMILE SIGN
-# use the following macro for the character AKTIESELSKAB
-0x214d "\\LyXaktieselskap"
-"\\newcommand*\\LyXaktieselskap{\\mbox{\\raisebox{.8ex}{\footnotesize A}\\kern-.18em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{\footnotesize S}}}" ""
+0x214d "\\LyXaktieselskap" "\\newcommand*\\LyXaktieselskap{\\mbox{\\raisebox{.8ex}{\footnotesize A}\\kern-.18em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{\footnotesize S}}}" "" # ⅍ AKTIESELSKAB
 #
 # number forms
 #
@@ -1760,19 +1758,25 @@
 0x2193 "\\textdownarrow"          "textcomp" "" "\\downarrow" # DOWNWARDS ARROW
 0x2194 ""                         "" "" "\\leftrightarrow" # LEFT RIGHT ARROW
 0x2195 ""                         "" "" "\\updownarrow" # UP DOWN ARROW
+0x2196 "Home"                     "" "" "\\nwarrow" "amssymb" # Qt::Key_Home, NORTH WEST ARROW
+0x2198 "End"                      "" "" "\\searrow" "" # Qt::Key_End, SOUTH EAST ARROW
 0x21a8 "{\\ascii\\ETB}"           "ascii" "" # UP DOWN ARROW WITH BASE
-0x21b5 "{\\Pisymbol{psy}{191}}"   "pifont" "" # RETURN KEY
+0x21b5 "{\\Pisymbol{psy}{191}}"   "pifont" "" # DOWNWARDS ARROW WITH CORNER LEFTWARDS, Return key
+0x21de "Option-Up Arrow"          "" "" "" # Qt::Key_PageUp, UPWARDS ARROW WITH DOUBLE STROKE = page up
+0x21df "Option-Down Arrow"        "" "" "" # Qt::Key_PageDown, DOWNWARDS ARROW WITH DOUBLE STROKE = page down
+0x21e4 "Shift-Tab"                "" "" "" # Qt::Key_Backtab, LEFTWARDS ARROW TO BAR = leftward tab
+0x21e5 "Tab"                      "" "" "" # Qt::Key_Tab, RIGHTWARDS ARROW TO BAR = rightward tab
+0x21ea "Caps Lock"                "" "" "" # Qt::Key_CapsLock, UPWARDS WHITE ARROW FROM BAR = caps lock
 #
-# math symbols
+# mathematical operators
 #
-# besides textcomp only those used in Windows standard fonts
 0x2202 ""                         "" "" "\\partial" # PARTIAL DIFFERENTIAL
 0x2206 ""                         "" "" "\\Delta" # INCREMENT
 0x220f ""                         "" "" "\\prod" # N-ARY PRODUCT
 0x2211 ""                         "" "" "\\sum" # N-ARY SUMMATION
-0x2212 "\\textminus"              "textcomp" "" # MINUS SIGN
+0x2212 "\\textminus"              "textcomp" "" "-" "" # MINUS SIGN
 0x2215 ""                         "" "" "\\slash" # DIVISION SLASH
-0x2217 "\\textasteriskcentered"   "textcomp" "" # ASTERISK OPERATOR
+0x2217 "\\textasteriskcentered"   "textcomp" "" "\\ast" "" # ASTERISK OPERATOR
 0x2219 ""                         "" "" "\\centerdot" "amssymb" # BULLET OPERATOR
 0x221a "\\textsurd"               "textcomp" "" # SQUARE ROOT
 0x221d ""                         "" "" "\\propto" # PROPORTIONAL TO
@@ -1799,6 +1803,7 @@
 0x2261 ""                         "" "" "\\equiv" # IDENTICAL TO
 0x2264 ""                         "" "" "\\le" # LESS-THAN OR EQUAL TO
 0x2265 ""                         "" "" "\\ge" # GREATER-THAN OR EQUAL TO
+0x22f1 ""                         "" "" "\\ddots" "" # ⋱ DOWN RIGHT DIAGONAL ELLIPSIS
 #
 # miscellaneous technical
 #
@@ -1807,19 +1812,10 @@
 0x231a "\\Clocklogo"              "marvosym" "" # WATCH
 #0x2320 ""                         "" "" # TOP HALF INTEGRAL
 #0x2321 ""                         "" "" # BOTTOM HALF INTEGRAL
+0x2326 "Delete"                   "" "" "" # Qt::Key_Delete, ERASE TO THE RIGHT = delete to the right key
 0x2328 "\\Keyboard"               "marvosym" "" # KEYBOARD
-# missing Qt keysequences (MacSpecialKey)
-0x238b "Escape"            "" "" "" # Qt::Key_Escape
-0x21e5 "Tab"               "" "" "" # Qt::Key_Tab
-0x21e4 "Shift-Tab"         "" "" "" # Qt::Key_Backtab
-0x232b "Backspace"         "" "" "" # Qt::Key_Backspace
-0x2326 "Delete"            "" "" "" # Qt::Key_Delete
-0x2196 "Home"              "" "" "" # Qt::Key_Home
-0x2198 "End"               "" "" "" # Qt::Key_End
-0x21de "Option-Up Arrow"   "" "" "" # Qt::Key_PageUp
-0x21df "Option-Down Arrow" "" "" "" # Qt::Key_PageDown
-0x21ea "Caps Lock"         "" "" "" # Qt::Key_CapsLock
-
+0x232b "Backspace"                "" "" "" # Qt::Key_Backspace, ERASE TO THE LEFT = delete to the left key
+0x238b "Escape"                   "" "" "" # Qt::Key_Escape, BROKEN CIRCLE WITH NORTHWEST ARROW = escape
 #
 # control pictures
 #
@@ -1888,25 +1884,25 @@
 0x25ab "\\textifsymbol[ifgeo]{64}" "ifsym" "" # WHITE SMALL SQUARE
 0x25ac "{\\ascii\\SYN}"           "ascii" "" # BLACK RECTANGLE
 0x25b2 "\\textifsymbol[ifgeo]{97}" "ifsym" "" # BLACK UP-POINTING TRIANGLE
-0x25b3 "\\textifsymbol[ifgeo]{49}" "ifsym" "" # WHITE UP-POINTING TRIANGLE
+0x25b3 "\\textifsymbol[ifgeo]{49}" "ifsym" "" "\\bigtriangleup" "" # WHITE UP-POINTING TRIANGLE
 0x25b4 "\\textifsymbol[ifgeo]{113}" "ifsym" "" # BLACK UP-POINTING SMALL TRIANGLE
 0x25b5 "\\textifsymbol[ifgeo]{65}" "ifsym" "" # WHITE UP-POINTING SMALL TRIANGLE
-0x25b6 "\\textifsymbol[ifgeo]{100}" "ifsym" "" # BLACK RIGHT-POINTING TRIANGLE
-0x25b7 "\\textifsymbol[ifgeo]{52}" "ifsym" "" # WHITE RIGHT-POINTING TRIANGLE
+0x25b6 "\\textifsymbol[ifgeo]{100}" "ifsym" "" "\\RHD" "wasysym" # BLACK RIGHT-POINTING TRIANGLE
+0x25b7 "\\textifsymbol[ifgeo]{52}" "ifsym" "" "\\rhd" "amssymb" # WHITE RIGHT-POINTING TRIANGLE
 0x25b8 "\\textifsymbol[ifgeo]{116}" "ifsym" "" # BLACK RIGHT-POINTING SMALL TRIANGLE
 0x25b9 "\\textifsymbol[ifgeo]{68}" "ifsym" "" # WHITE RIGHT-POINTING SMALL TRIANGLE
 0x25ba "\\RIGHTarrow"             "wasysym" "" # BLACK RIGHT-POINTING POINTER
 0x25bc "\\textifsymbol[ifgeo]{99}" "ifsym" "" # BLACK DOWN-POINTING TRIANGLE
-0x25bd "\\textifsymbol[ifgeo]{51}" "ifsym" "" # WHITE DOWN-POINTING TRIANGLE
+0x25bd "\\textifsymbol[ifgeo]{51}" "ifsym" "" "\\bigtriangledown" "" # WHITE DOWN-POINTING TRIANGLE
 0x25be "\\textifsymbol[ifgeo]{115}" "ifsym" "" # BLACK DOWN-POINTING SMALL TRIANGLE
 0x25bf "\\textifsymbol[ifgeo]{67}" "ifsym" "" # WHITE DOWN-POINTING SMALL TRIANGLE
-0x25c0 "\\textifsymbol[ifgeo]{98}" "ifsym" "" # BLACK LEFT-POINTING TRIANGLE
-0x25c1 "\\textifsymbol[ifgeo]{50}" "ifsym" "" # WHITE LEFT-POINTING TRIANGLE
+0x25c0 "\\textifsymbol[ifgeo]{98}" "ifsym" "" "\\LHD" "wasysym" # BLACK LEFT-POINTING TRIANGLE
+0x25c1 "\\textifsymbol[ifgeo]{50}" "ifsym" "" "\\lhd" "amssymb" # WHITE LEFT-POINTING TRIANGLE
 0x25c2 "\\textifsymbol[ifgeo]{114}" "ifsym" "" # BLACK LEFT-POINTING SMALL TRIANGLE
 0x25c3 "\\textifsymbol[ifgeo]{66}" "ifsym" "" # WHITE LEFT-POINTING SMALL TRIANGLE
 0x25c4 "\\LEFTarrow"              "wasysym" "" # BLACK LEFT-POINTING POINTER
-0x25c6 "\\textifsymbol[ifgeo]{102}" "ifsym" "" # BLACK DIAMOND
-0x25c7 "\\textifsymbol[ifgeo]{54}" "ifsym" "" # WHITE DIAMOND
+0x25c6 "\\textifsymbol[ifgeo]{102}" "ifsym" "" "\\Diamondblack" "txfonts" # BLACK DIAMOND
+0x25c7 "\\textifsymbol[ifgeo]{54}" "ifsym" "" "\\Diamond" "amssymb" # WHITE DIAMOND
 0x25ca ""                         "" "" "\\lozenge" "amssymb" # LOZENGE
 0x25cb "\\Circle"                 "wasysym" "" "\\Circle" "wasysym" # CIRCLE
 0x25cf "\\CIRCLE"                 "wasysym" "" "\\CIRCLE" "wasysym" # BLACK CIRCLE
@@ -1918,12 +1914,12 @@
 0x25d9 "{\\ascii\\LF}"            "ascii" "" # INVERSE WHITE CIRCLE
 0x25e6 "\\textopenbullet"         "textcomp" "" # WHITE BULLET
 0x25ef "\\textbigcircle"          "textcomp" "" # LARGE CIRCLE
-0x25fb "\\textifsymbol[ifgeo]{48}" "ifsym" "" # WHITE MEDIUM SQUARE
-0x25fc "\\textifsymbol[ifgeo]{96}" "ifsym" "" # BLACK MEDIUM SQUARE
+0x25fb "\\textifsymbol[ifgeo]{48}" "ifsym" "" "\\square" "amssymb" # WHITE MEDIUM SQUARE
+0x25fc "\\textifsymbol[ifgeo]{96}" "ifsym" "" "\\blacksquare" "amssymb" # BLACK MEDIUM SQUARE
 #
 # miscellaneous symbols
 #
-0x2605 "\\FiveStar"               "bbding" "" # BLACK STAR
+0x2605 "\\FiveStar"               "bbding" "" "\\bigstar" "amssymb" # BLACK STAR
 0x2606 "\\FiveStarOpen"           "bbding" "" # WHITE STAR
 0x260e "\\Telefon"                "marvosym" "" # BLACK TELEPHON
 0x2610 "\\Square"                 "wasysym" "" "\\Square" "wasysym" # BALLOT BOX
@@ -1995,7 +1991,7 @@
 0x2710 "\\PencilRightUp"          "bbding" "" # UPPER RIGHT PENCIL
 0x2711 "\\NibRight"               "bbding" "" # WHITE NIB
 0x2712 "\\NibSolidRight"          "bbding" "" # BLACK NIB
-0x2713 "\\Checkmark"              "bbding" "" # CHECK MARK
+0x2713 "\\Checkmark"              "bbding" "" "\\checkmark" "amssymb" # CHECK MARK
 0x2714 "\\CheckmarkBold"          "bbding" "" # HEAVY CHECK MARK
 0x2715 "\\XSolid"                 "bbding" "" # MULTIPLICATION X
 0x2716 "\\XSolidBold"             "bbding" "" # HEAVY MULTIPLICATION X
@@ -2007,7 +2003,7 @@
 0x271d "\\Cross"                  "bbding" "" # LATIN CROSS
 0x271e "\\CrossOpenShadow"        "bbding" "" # SHADOWED WHITE LATIN CROSS
 0x271f "\\CrossOutline"           "bbding" "" # OUTLINED LATIN CROSS
-0x2720 "\\CrossMaltese"           "bbding" "" # MALTESE CROSS
+0x2720 "\\CrossMaltese"           "bbding" "" "\\maltese" "amssymb" # MALTESE CROSS
 0x2721 "\\DavidStar"              "bbding" "" # STAR OF DAVID
 0x2722 "\\FourAsterisk"           "bbding" "" # too lazy to add the follwing unicode names
 0x2723 "\\JackStar"               "bbding" "" # 
@@ -2084,8 +2080,8 @@
 #
 # miscellaneous mathematical symbols-A
 #
-0x27e8 "\\textlangle"             "textcomp" "" # MATHEMATICAL LEFT ANGLE BRACKET
-0x27e9 "\\textrangle"             "textcomp" "" # MATHEMATICAL RIGHT ANGLE BRACKET
+0x27e8 "\\textlangle"             "textcomp" "" "\\langle" "" # MATHEMATICAL LEFT ANGLE BRACKET
+0x27e9 "\\textrangle"             "textcomp" "" "\\rangle" "" # MATHEMATICAL RIGHT ANGLE BRACKET
 #
 # supplemental mathematical operators
 #
@@ -2108,4 +2104,383 @@
 0xfb02 "fl"                       "" "force" # LATIN SMALL LIGATURE FL
 0xfb03 "ffi"                      "" "force" # LATIN SMALL LIGATURE FFI
 0xfb04 "ffl"                      "" "force" # LATIN SMALL LIGATURE FFL
-
+#
+# mathematical alphanumeric symbols
+#
+0x1d400 ""                         "" "" "\\mathbf{A}" "" # 𝐀 MATHEMATICAL BOLD CAPITAL A
+0x1d401 ""                         "" "" "\\mathbf{B}" "" # 𝐁 MATHEMATICAL BOLD CAPITAL B
+0x1d402 ""                         "" "" "\\mathbf{C}" "" # 𝐂 MATHEMATICAL BOLD CAPITAL C
+0x1d403 ""                         "" "" "\\mathbf{D}" "" # 𝐃 MATHEMATICAL BOLD CAPITAL D
+0x1d404 ""                         "" "" "\\mathbf{E}" "" # 𝐄 MATHEMATICAL BOLD CAPITAL E
+0x1d405 ""                         "" "" "\\mathbf{F}" "" # 𝐅 MATHEMATICAL BOLD CAPITAL F
+0x1d406 ""                         "" "" "\\mathbf{G}" "" # 𝐆 MATHEMATICAL BOLD CAPITAL G
+0x1d407 ""                         "" "" "\\mathbf{H}" "" # 𝐇 MATHEMATICAL BOLD CAPITAL H
+0x1d408 ""                         "" "" "\\mathbf{I}" "" # 𝐈 MATHEMATICAL BOLD CAPITAL I
+0x1d409 ""                         "" "" "\\mathbf{J}" "" # 𝐉 MATHEMATICAL BOLD CAPITAL J
+0x1d40a ""                         "" "" "\\mathbf{K}" "" # 𝐊 MATHEMATICAL BOLD CAPITAL K
+0x1d40b ""                         "" "" "\\mathbf{L}" "" # 𝐋 MATHEMATICAL BOLD CAPITAL L
+0x1d40c ""                         "" "" "\\mathbf{M}" "" # 𝐌 MATHEMATICAL BOLD CAPITAL M
+0x1d40d ""                         "" "" "\\mathbf{N}" "" # 𝐍 MATHEMATICAL BOLD CAPITAL N
+0x1d40e ""                         "" "" "\\mathbf{O}" "" # 𝐎 MATHEMATICAL BOLD CAPITAL O
+0x1d40f ""                         "" "" "\\mathbf{P}" "" # 𝐏 MATHEMATICAL BOLD CAPITAL P
+0x1d410 ""                         "" "" "\\mathbf{Q}" "" # 𝐐 MATHEMATICAL BOLD CAPITAL Q
+0x1d411 ""                         "" "" "\\mathbf{R}" "" # 𝐑 MATHEMATICAL BOLD CAPITAL R
+0x1d412 ""                         "" "" "\\mathbf{S}" "" # 𝐒 MATHEMATICAL BOLD CAPITAL S
+0x1d413 ""                         "" "" "\\mathbf{T}" "" # 𝐓 MATHEMATICAL BOLD CAPITAL T
+0x1d414 ""                         "" "" "\\mathbf{U}" "" # 𝐔 MATHEMATICAL BOLD CAPITAL U
+0x1d415 ""                         "" "" "\\mathbf{V}" "" # 𝐕 MATHEMATICAL BOLD CAPITAL V
+0x1d416 ""                         "" "" "\\mathbf{W}" "" # 𝐖 MATHEMATICAL BOLD CAPITAL W
+0x1d417 ""                         "" "" "\\mathbf{X}" "" # 𝐗 MATHEMATICAL BOLD CAPITAL X
+0x1d418 ""                         "" "" "\\mathbf{Y}" "" # 𝐘 MATHEMATICAL BOLD CAPITAL Y
+0x1d419 ""                         "" "" "\\mathbf{Z}" "" # 𝐙 MATHEMATICAL BOLD CAPITAL Z
+0x1d41a ""                         "" "" "\\mathbf{a}" "" # 𝐚 MATHEMATICAL BOLD SMALL A
+0x1d41b ""                         "" "" "\\mathbf{b}" "" # 𝐛 MATHEMATICAL BOLD SMALL B
+0x1d41c ""                         "" "" "\\mathbf{c}" "" # 𝐜 MATHEMATICAL BOLD SMALL C
+0x1d41d ""                         "" "" "\\mathbf{d}" "" # 𝐝 MATHEMATICAL BOLD SMALL D
+0x1d41e ""                         "" "" "\\mathbf{e}" "" # 𝐞 MATHEMATICAL BOLD SMALL E
+0x1d41f ""                         "" "" "\\mathbf{f}" "" # 𝐟 MATHEMATICAL BOLD SMALL F
+0x1d420 ""                         "" "" "\\mathbf{g}" "" # 𝐠 MATHEMATICAL BOLD SMALL G
+0x1d421 ""                         "" "" "\\mathbf{h}" "" # 𝐡 MATHEMATICAL BOLD SMALL H
+0x1d422 ""                         "" "" "\\mathbf{i}" "" # 𝐢 MATHEMATICAL BOLD SMALL I
+0x1d423 ""                         "" "" "\\mathbf{j}" "" # 𝐣 MATHEMATICAL BOLD SMALL J
+0x1d424 ""                         "" "" "\\mathbf{k}" "" # 𝐤 MATHEMATICAL BOLD SMALL K
+0x1d425 ""                         "" "" "\\mathbf{l}" "" # 𝐥 MATHEMATICAL BOLD SMALL L
+0x1d426 ""                         "" "" "\\mathbf{m}" "" # 𝐦 MATHEMATICAL BOLD SMALL M
+0x1d427 ""                         "" "" "\\mathbf{n}" "" # 𝐧 MATHEMATICAL BOLD SMALL N
+0x1d428 ""                         "" "" "\\mathbf{o}" "" # 𝐨 MATHEMATICAL BOLD SMALL O
+0x1d429 ""                         "" "" "\\mathbf{p}" "" # 𝐩 MATHEMATICAL BOLD SMALL P
+0x1d42a ""                         "" "" "\\mathbf{q}" "" # 𝐪 MATHEMATICAL BOLD SMALL Q
+0x1d42b ""                         "" "" "\\mathbf{r}" "" # 𝐫 MATHEMATICAL BOLD SMALL R
+0x1d42c ""                         "" "" "\\mathbf{s}" "" # 𝐬 MATHEMATICAL BOLD SMALL S
+0x1d42d ""                         "" "" "\\mathbf{t}" "" # 𝐭 MATHEMATICAL BOLD SMALL T
+0x1d42e ""                         "" "" "\\mathbf{u}" "" # 𝐮 MATHEMATICAL BOLD SMALL U
+0x1d42f ""                         "" "" "\\mathbf{v}" "" # 𝐯 MATHEMATICAL BOLD SMALL V
+0x1d430 ""                         "" "" "\\mathbf{w}" "" # 𝐰 MATHEMATICAL BOLD SMALL W
+0x1d431 ""                         "" "" "\\mathbf{x}" "" # 𝐱 MATHEMATICAL BOLD SMALL X
+0x1d432 ""                         "" "" "\\mathbf{y}" "" # 𝐲 MATHEMATICAL BOLD SMALL Y
+0x1d433 ""                         "" "" "\\mathbf{z}" "" # 𝐳 MATHEMATICAL BOLD SMALL Z
+0x1d434 ""                         "" "" "A" "" # 𝐴 MATHEMATICAL ITALIC CAPITAL A
+0x1d435 ""                         "" "" "B" "" # 𝐵 MATHEMATICAL ITALIC CAPITAL B
+0x1d436 ""                         "" "" "C" "" # 𝐶 MATHEMATICAL ITALIC CAPITAL C
+0x1d437 ""                         "" "" "D" "" # 𝐷 MATHEMATICAL ITALIC CAPITAL D
+0x1d438 ""                         "" "" "E" "" # 𝐸 MATHEMATICAL ITALIC CAPITAL E
+0x1d439 ""                         "" "" "F" "" # 𝐹 MATHEMATICAL ITALIC CAPITAL F
+0x1d43a ""                         "" "" "G" "" # 𝐺 MATHEMATICAL ITALIC CAPITAL G
+0x1d43b ""                         "" "" "H" "" # 𝐻 MATHEMATICAL ITALIC CAPITAL H
+0x1d43c ""                         "" "" "I" "" # 𝐼 MATHEMATICAL ITALIC CAPITAL I
+0x1d43d ""                         "" "" "J" "" # 𝐽 MATHEMATICAL ITALIC CAPITAL J
+0x1d43e ""                         "" "" "K" "" # 𝐾 MATHEMATICAL ITALIC CAPITAL K
+0x1d43f ""                         "" "" "L" "" # 𝐿 MATHEMATICAL ITALIC CAPITAL L
+0x1d440 ""                         "" "" "M" "" # 𝑀 MATHEMATICAL ITALIC CAPITAL M
+0x1d441 ""                         "" "" "N" "" # 𝑁 MATHEMATICAL ITALIC CAPITAL N
+0x1d442 ""                         "" "" "O" "" # 𝑂 MATHEMATICAL ITALIC CAPITAL O
+0x1d443 ""                         "" "" "P" "" # 𝑃 MATHEMATICAL ITALIC CAPITAL P
+0x1d444 ""                         "" "" "Q" "" # 𝑄 MATHEMATICAL ITALIC CAPITAL Q
+0x1d445 ""                         "" "" "R" "" # 𝑅 MATHEMATICAL ITALIC CAPITAL R
+0x1d446 ""                         "" "" "S" "" # 𝑆 MATHEMATICAL ITALIC CAPITAL S
+0x1d447 ""                         "" "" "T" "" # 𝑇 MATHEMATICAL ITALIC CAPITAL T
+0x1d448 ""                         "" "" "U" "" # 𝑈 MATHEMATICAL ITALIC CAPITAL U
+0x1d449 ""                         "" "" "V" "" # 𝑉 MATHEMATICAL ITALIC CAPITAL V
+0x1d44a ""                         "" "" "W" "" # 𝑊 MATHEMATICAL ITALIC CAPITAL W
+0x1d44b ""                         "" "" "X" "" # 𝑋 MATHEMATICAL ITALIC CAPITAL X
+0x1d44c ""                         "" "" "Y" "" # 𝑌 MATHEMATICAL ITALIC CAPITAL Y
+0x1d44d ""                         "" "" "Z" "" # 𝑍 MATHEMATICAL ITALIC CAPITAL Z
+0x1d44e ""                         "" "" "a" "" # 𝑎 MATHEMATICAL ITALIC SMALL A
+0x1d44f ""                         "" "" "b" "" # 𝑏 MATHEMATICAL ITALIC SMALL B
+0x1d450 ""                         "" "" "c" "" # 𝑐 MATHEMATICAL ITALIC SMALL C
+0x1d451 ""                         "" "" "d" "" # 𝑑 MATHEMATICAL ITALIC SMALL D
+0x1d452 ""                         "" "" "e" "" # 𝑒 MATHEMATICAL ITALIC SMALL E
+0x1d453 ""                         "" "" "f" "" # 𝑓 MATHEMATICAL ITALIC SMALL F
+0x1d454 ""                         "" "" "g" "" # 𝑔 MATHEMATICAL ITALIC SMALL G
+0x1d456 ""                         "" "" "i" "" # 𝑖 MATHEMATICAL ITALIC SMALL I
+0x1d457 ""                         "" "" "j" "" # 𝑗 MATHEMATICAL ITALIC SMALL J
+0x1d458 ""                         "" "" "k" "" # 𝑘 MATHEMATICAL ITALIC SMALL K
+0x1d459 ""                         "" "" "l" "" # 𝑙 MATHEMATICAL ITALIC SMALL L
+0x1d45a ""                         "" "" "m" "" # 𝑚 MATHEMATICAL ITALIC SMALL M
+0x1d45b ""                         "" "" "n" "" # 𝑛 MATHEMATICAL ITALIC SMALL N
+0x1d45c ""                         "" "" "o" "" # 𝑜 MATHEMATICAL ITALIC SMALL O
+0x1d45d ""                         "" "" "p" "" # 𝑝 MATHEMATICAL ITALIC SMALL P
+0x1d45e ""                         "" "" "q" "" # 𝑞 MATHEMATICAL ITALIC SMALL Q
+0x1d45f ""                         "" "" "r" "" # 𝑟 MATHEMATICAL ITALIC SMALL R
+0x1d460 ""                         "" "" "s" "" # 𝑠 MATHEMATICAL ITALIC SMALL S
+0x1d461 ""                         "" "" "t" "" # 𝑡 MATHEMATICAL ITALIC SMALL T
+0x1d462 ""                         "" "" "u" "" # 𝑢 MATHEMATICAL ITALIC SMALL U
+0x1d463 ""                         "" "" "v" "" # 𝑣 MATHEMATICAL ITALIC SMALL V
+0x1d464 ""                         "" "" "w" "" # 𝑤 MATHEMATICAL ITALIC SMALL W
+0x1d465 ""                         "" "" "x" "" # 𝑥 MATHEMATICAL ITALIC SMALL X
+0x1d466 ""                         "" "" "y" "" # 𝑦 MATHEMATICAL ITALIC SMALL Y
+0x1d467 ""                         "" "" "z" "" # 𝑧 MATHEMATICAL ITALIC SMALL Z
+0x1d49c ""                         "" "" "\\mathcal{A}" "" # 𝒜 MATHEMATICAL SCRIPT CAPITAL A
+0x1d49e ""                         "" "" "\\mathcal{C}" "" # 𝒞 MATHEMATICAL SCRIPT CAPITAL C
+0x1d49f ""                         "" "" "\\mathcal{D}" "" # 𝒟 MATHEMATICAL SCRIPT CAPITAL D
+0x1d4a2 ""                         "" "" "\\mathcal{G}" "" # 𝒢 MATHEMATICAL SCRIPT CAPITAL G
+0x1d4a5 ""                         "" "" "\\mathcal{J}" "" # 𝒥 MATHEMATICAL SCRIPT CAPITAL J
+0x1d4a6 ""                         "" "" "\\mathcal{K}" "" # 𝒦 MATHEMATICAL SCRIPT CAPITAL K
+0x1d4a9 ""                         "" "" "\\mathcal{N}" "" # 𝒩 MATHEMATICAL SCRIPT CAPITAL N
+0x1d4aa ""                         "" "" "\\mathcal{O}" "" # 𝒪 MATHEMATICAL SCRIPT CAPITAL O
+0x1d4ab ""                         "" "" "\\mathcal{P}" "" # 𝒫 MATHEMATICAL SCRIPT CAPITAL P
+0x1d4ac ""                         "" "" "\\mathcal{Q}" "" # 𝒬 MATHEMATICAL SCRIPT CAPITAL Q
+0x1d4ae ""                         "" "" "\\mathcal{S}" "" # 𝒮 MATHEMATICAL SCRIPT CAPITAL S
+0x1d4af ""                         "" "" "\\mathcal{T}" "" # 𝒯 MATHEMATICAL SCRIPT CAPITAL T
+0x1d4b0 ""                         "" "" "\\mathcal{U}" "" # 𝒰 MATHEMATICAL SCRIPT CAPITAL U
+0x1d4b1 ""                         "" "" "\\mathcal{V}" "" # 𝒱 MATHEMATICAL SCRIPT CAPITAL V
+0x1d4b2 ""                         "" "" "\\mathcal{W}" "" # 𝒲 MATHEMATICAL SCRIPT CAPITAL W
+0x1d4b3 ""                         "" "" "\\mathcal{X}" "" # 𝒳 MATHEMATICAL SCRIPT CAPITAL X
+0x1d4b4 ""                         "" "" "\\mathcal{Y}" "" # 𝒴 MATHEMATICAL SCRIPT CAPITAL Y
+0x1d4b5 ""                         "" "" "\\mathcal{Z}" "" # 𝒵 MATHEMATICAL SCRIPT CAPITAL Z
+0x1d504 ""                         "" "" "\\mathfrak{A}" "amssymb" # 𝔄 MATHEMATICAL FRAKTUR CAPITAL A
+0x1d505 ""                         "" "" "\\mathfrak{B}" "amssymb" # 𝔅 MATHEMATICAL FRAKTUR CAPITAL B
+0x1d507 ""                         "" "" "\\mathfrak{D}" "amssymb" # 𝔇 MATHEMATICAL FRAKTUR CAPITAL D
+0x1d508 ""                         "" "" "\\mathfrak{E}" "amssymb" # 𝔈 MATHEMATICAL FRAKTUR CAPITAL E
+0x1d509 ""                         "" "" "\\mathfrak{F}" "amssymb" # 𝔉 MATHEMATICAL FRAKTUR CAPITAL F
+0x1d50a ""                         "" "" "\\mathfrak{G}" "amssymb" # 𝔊 MATHEMATICAL FRAKTUR CAPITAL G
+0x1d50d ""                         "" "" "\\mathfrak{J}" "amssymb" # 𝔍 MATHEMATICAL FRAKTUR CAPITAL J
+0x1d50e ""                         "" "" "\\mathfrak{K}" "amssymb" # 𝔎 MATHEMATICAL FRAKTUR CAPITAL K
+0x1d50f ""                         "" "" "\\mathfrak{L}" "amssymb" # 𝔏 MATHEMATICAL FRAKTUR CAPITAL L
+0x1d510 ""                         "" "" "\\mathfrak{M}" "amssymb" # 𝔐 MATHEMATICAL FRAKTUR CAPITAL M
+0x1d511 ""                         "" "" "\\mathfrak{N}" "amssymb" # 𝔑 MATHEMATICAL FRAKTUR CAPITAL N
+0x1d512 ""                         "" "" "\\mathfrak{O}" "amssymb" # 𝔒 MATHEMATICAL FRAKTUR CAPITAL O
+0x1d513 ""                         "" "" "\\mathfrak{P}" "amssymb" # 𝔓 MATHEMATICAL FRAKTUR CAPITAL P
+0x1d514 ""                         "" "" "\\mathfrak{Q}" "amssymb" # 𝔔 MATHEMATICAL FRAKTUR CAPITAL Q
+0x1d516 ""                         "" "" "\\mathfrak{S}" "amssymb" # 𝔖 MATHEMATICAL FRAKTUR CAPITAL S
+0x1d517 ""                         "" "" "\\mathfrak{T}" "amssymb" # 𝔗 MATHEMATICAL FRAKTUR CAPITAL T
+0x1d518 ""                         "" "" "\\mathfrak{U}" "amssymb" # 𝔘 MATHEMATICAL FRAKTUR CAPITAL U
+0x1d519 ""                         "" "" "\\mathfrak{V}" "amssymb" # 𝔙 MATHEMATICAL FRAKTUR CAPITAL V
+0x1d51a ""                         "" "" "\\mathfrak{W}" "amssymb" # 𝔚 MATHEMATICAL FRAKTUR CAPITAL W
+0x1d51b ""                         "" "" "\\mathfrak{X}" "amssymb" # 𝔛 MATHEMATICAL FRAKTUR CAPITAL X
+0x1d51c ""                         "" "" "\\mathfrak{Y}" "amssymb" # 𝔜 MATHEMATICAL FRAKTUR CAPITAL Y
+0x1d51e ""                         "" "" "\\mathfrak{a}" "amssymb" # 𝔞 MATHEMATICAL FRAKTUR SMALL A
+0x1d51f ""                         "" "" "\\mathfrak{b}" "amssymb" # 𝔟 MATHEMATICAL FRAKTUR SMALL B
+0x1d520 ""                         "" "" "\\mathfrak{c}" "amssymb" # 𝔠 MATHEMATICAL FRAKTUR SMALL C
+0x1d521 ""                         "" "" "\\mathfrak{d}" "amssymb" # 𝔡 MATHEMATICAL FRAKTUR SMALL D
+0x1d522 ""                         "" "" "\\mathfrak{e}" "amssymb" # 𝔢 MATHEMATICAL FRAKTUR SMALL E
+0x1d523 ""                         "" "" "\\mathfrak{f}" "amssymb" # 𝔣 MATHEMATICAL FRAKTUR SMALL F
+0x1d524 ""                         "" "" "\\mathfrak{g}" "amssymb" # 𝔤 MATHEMATICAL FRAKTUR SMALL G
+0x1d525 ""                         "" "" "\\mathfrak{h}" "amssymb" # 𝔥 MATHEMATICAL FRAKTUR SMALL H
+0x1d526 ""                         "" "" "\\mathfrak{i}" "amssymb" # 𝔦 MATHEMATICAL FRAKTUR SMALL I
+0x1d527 ""                         "" "" "\\mathfrak{j}" "amssymb" # 𝔧 MATHEMATICAL FRAKTUR SMALL J
+0x1d528 ""                         "" "" "\\mathfrak{k}" "amssymb" # 𝔨 MATHEMATICAL FRAKTUR SMALL K
+0x1d529 ""                         "" "" "\\mathfrak{l}" "amssymb" # 𝔩 MATHEMATICAL FRAKTUR SMALL L
+0x1d52a ""                         "" "" "\\mathfrak{m}" "amssymb" # 𝔪 MATHEMATICAL FRAKTUR SMALL M
+0x1d52b ""                         "" "" "\\mathfrak{n}" "amssymb" # 𝔫 MATHEMATICAL FRAKTUR SMALL N
+0x1d52c ""                         "" "" "\\mathfrak{o}" "amssymb" # 𝔬 MATHEMATICAL FRAKTUR SMALL O
+0x1d52d ""                         "" "" "\\mathfrak{p}" "amssymb" # 𝔭 MATHEMATICAL FRAKTUR SMALL P
+0x1d52e ""                         "" "" "\\mathfrak{q}" "amssymb" # 𝔮 MATHEMATICAL FRAKTUR SMALL Q
+0x1d52f ""                         "" "" "\\mathfrak{r}" "amssymb" # 𝔯 MATHEMATICAL FRAKTUR SMALL R
+0x1d530 ""                         "" "" "\\mathfrak{s}" "amssymb" # 𝔰 MATHEMATICAL FRAKTUR SMALL S
+0x1d531 ""                         "" "" "\\mathfrak{t}" "amssymb" # 𝔱 MATHEMATICAL FRAKTUR SMALL T
+0x1d532 ""                         "" "" "\\mathfrak{u}" "amssymb" # 𝔲 MATHEMATICAL FRAKTUR SMALL U
+0x1d533 ""                         "" "" "\\mathfrak{v}" "amssymb" # 𝔳 MATHEMATICAL FRAKTUR SMALL V
+0x1d534 ""                         "" "" "\\mathfrak{w}" "amssymb" # 𝔴 MATHEMATICAL FRAKTUR SMALL W
+0x1d535 ""                         "" "" "\\mathfrak{x}" "amssymb" # 𝔵 MATHEMATICAL FRAKTUR SMALL X
+0x1d536 ""                         "" "" "\\mathfrak{y}" "amssymb" # 𝔶 MATHEMATICAL FRAKTUR SMALL Y
+0x1d537 ""                         "" "" "\\mathfrak{z}" "amssymb" # 𝔷 MATHEMATICAL FRAKTUR SMALL Z
+0x1d538 ""                         "" "" "\\mathbb{A}" "amssymb" # 𝔸 MATHEMATICAL DOUBLE-STRUCK CAPITAL A
+0x1d539 ""                         "" "" "\\mathbb{B}" "amssymb" # 𝔹 MATHEMATICAL DOUBLE-STRUCK CAPITAL B
+0x1d53b ""                         "" "" "\\mathbb{D}" "amssymb" # 𝔻 MATHEMATICAL DOUBLE-STRUCK CAPITAL D
+0x1d53c ""                         "" "" "\\mathbb{E}" "amssymb" # 𝔼 MATHEMATICAL DOUBLE-STRUCK CAPITAL E
+0x1d53d ""                         "" "" "\\mathbb{F}" "amssymb" # 𝔽 MATHEMATICAL DOUBLE-STRUCK CAPITAL F
+0x1d53e ""                         "" "" "\\mathbb{G}" "amssymb" # 𝔾 MATHEMATICAL DOUBLE-STRUCK CAPITAL G
+0x1d540 ""                         "" "" "\\mathbb{I}" "amssymb" # 𝕀 MATHEMATICAL DOUBLE-STRUCK CAPITAL I
+0x1d541 ""                         "" "" "\\mathbb{J}" "amssymb" # 𝕁 MATHEMATICAL DOUBLE-STRUCK CAPITAL J
+0x1d542 ""                         "" "" "\\mathbb{K}" "amssymb" # 𝕂 MATHEMATICAL DOUBLE-STRUCK CAPITAL K
+0x1d543 ""                         "" "" "\\mathbb{L}" "amssymb" # 𝕃 MATHEMATICAL DOUBLE-STRUCK CAPITAL L
+0x1d544 ""                         "" "" "\\mathbb{M}" "amssymb" # 𝕄 MATHEMATICAL DOUBLE-STRUCK CAPITAL M
+0x1d546 ""                         "" "" "\\mathbb{O}" "amssymb" # 𝕆 MATHEMATICAL DOUBLE-STRUCK CAPITAL O
+0x1d54a ""                         "" "" "\\mathbb{S}" "amssymb" # 𝕊 MATHEMATICAL DOUBLE-STRUCK CAPITAL S
+0x1d54b ""                         "" "" "\\mathbb{T}" "amssymb" # 𝕋 MATHEMATICAL DOUBLE-STRUCK CAPITAL T
+0x1d54c ""                         "" "" "\\mathbb{U}" "amssymb" # 𝕌 MATHEMATICAL DOUBLE-STRUCK CAPITAL U
+0x1d54d ""                         "" "" "\\mathbb{V}" "amssymb" # 𝕍 MATHEMATICAL DOUBLE-STRUCK CAPITAL V
+0x1d54e ""                         "" "" "\\mathbb{W}" "amssymb" # 𝕎 MATHEMATICAL DOUBLE-STRUCK CAPITAL W
+0x1d54f ""                         "" "" "\\mathbb{X}" "amssymb" # 𝕏 MATHEMATICAL DOUBLE-STRUCK CAPITAL X
+0x1d550 ""                         "" "" "\\mathbb{Y}" "amssymb" # 𝕐 MATHEMATICAL DOUBLE-STRUCK CAPITAL Y
+0x1d55c ""                         "" "" "\\Bbbk" "amssymb" # 𝕜 MATHEMATICAL DOUBLE-STRUCK SMALL K
+0x1d5a0 ""                         "" "" "\\mathsf{A}" "" # 𝖠 MATHEMATICAL SANS-SERIF CAPITAL A
+0x1d5a1 ""                         "" "" "\\mathsf{B}" "" # 𝖡 MATHEMATICAL SANS-SERIF CAPITAL B
+0x1d5a2 ""                         "" "" "\\mathsf{C}" "" # 𝖢 MATHEMATICAL SANS-SERIF CAPITAL C
+0x1d5a3 ""                         "" "" "\\mathsf{D}" "" # 𝖣 MATHEMATICAL SANS-SERIF CAPITAL D
+0x1d5a4 ""                         "" "" "\\mathsf{E}" "" # 𝖤 MATHEMATICAL SANS-SERIF CAPITAL E
+0x1d5a5 ""                         "" "" "\\mathsf{F}" "" # 𝖥 MATHEMATICAL SANS-SERIF CAPITAL F
+0x1d5a6 ""                         "" "" "\\mathsf{G}" "" # 𝖦 MATHEMATICAL SANS-SERIF CAPITAL G
+0x1d5a7 ""                         "" "" "\\mathsf{H}" "" # 𝖧 MATHEMATICAL SANS-SERIF CAPITAL H
+0x1d5a8 ""                         "" "" "\\mathsf{I}" "" # 𝖨 MATHEMATICAL SANS-SERIF CAPITAL I
+0x1d5a9 ""                         "" "" "\\mathsf{J}" "" # 𝖩 MATHEMATICAL SANS-SERIF CAPITAL J
+0x1d5aa ""                         "" "" "\\mathsf{K}" "" # 𝖪 MATHEMATICAL SANS-SERIF CAPITAL K
+0x1d5ab ""                         "" "" "\\mathsf{L}" "" # 𝖫 MATHEMATICAL SANS-SERIF CAPITAL L
+0x1d5ac ""                         "" "" "\\mathsf{M}" "" # 𝖬 MATHEMATICAL SANS-SERIF CAPITAL M
+0x1d5ad ""                         "" "" "\\mathsf{N}" "" # 𝖭 MATHEMATICAL SANS-SERIF CAPITAL N
+0x1d5ae ""                         "" "" "\\mathsf{O}" "" # 𝖮 MATHEMATICAL SANS-SERIF CAPITAL O
+0x1d5af ""                         "" "" "\\mathsf{P}" "" # 𝖯 MATHEMATICAL SANS-SERIF CAPITAL P
+0x1d5b0 ""                         "" "" "\\mathsf{Q}" "" # 𝖰 MATHEMATICAL SANS-SERIF CAPITAL Q
+0x1d5b1 ""                         "" "" "\\mathsf{R}" "" # 𝖱 MATHEMATICAL SANS-SERIF CAPITAL R
+0x1d5b2 ""                         "" "" "\\mathsf{S}" "" # 𝖲 MATHEMATICAL SANS-SERIF CAPITAL S
+0x1d5b3 ""                         "" "" "\\mathsf{T}" "" # 𝖳 MATHEMATICAL SANS-SERIF CAPITAL T
+0x1d5b4 ""                         "" "" "\\mathsf{U}" "" # 𝖴 MATHEMATICAL SANS-SERIF CAPITAL U
+0x1d5b5 ""                         "" "" "\\mathsf{V}" "" # 𝖵 MATHEMATICAL SANS-SERIF CAPITAL V
+0x1d5b6 ""                         "" "" "\\mathsf{W}" "" # 𝖶 MATHEMATICAL SANS-SERIF CAPITAL W
+0x1d5b7 ""                         "" "" "\\mathsf{X}" "" # 𝖷 MATHEMATICAL SANS-SERIF CAPITAL X
+0x1d5b8 ""                         "" "" "\\mathsf{Y}" "" # 𝖸 MATHEMATICAL SANS-SERIF CAPITAL Y
+0x1d5b9 ""                         "" "" "\\mathsf{Z}" "" # 𝖹 MATHEMATICAL SANS-SERIF CAPITAL Z
+0x1d5ba ""                         "" "" "\\mathsf{a}" "" # 𝖺 MATHEMATICAL SANS-SERIF SMALL A
+0x1d5bb ""                         "" "" "\\mathsf{b}" "" # 𝖻 MATHEMATICAL SANS-SERIF SMALL B
+0x1d5bc ""                         "" "" "\\mathsf{c}" "" # 𝖼 MATHEMATICAL SANS-SERIF SMALL C
+0x1d5bd ""                         "" "" "\\mathsf{d}" "" # 𝖽 MATHEMATICAL SANS-SERIF SMALL D
+0x1d5be ""                         "" "" "\\mathsf{e}" "" # 𝖾 MATHEMATICAL SANS-SERIF SMALL E
+0x1d5bf ""                         "" "" "\\mathsf{f}" "" # 𝖿 MATHEMATICAL SANS-SERIF SMALL F
+0x1d5c0 ""                         "" "" "\\mathsf{g}" "" # 𝗀 MATHEMATICAL SANS-SERIF SMALL G
+0x1d5c1 ""                         "" "" "\\mathsf{h}" "" # 𝗁 MATHEMATICAL SANS-SERIF SMALL H
+0x1d5c2 ""                         "" "" "\\mathsf{i}" "" # 𝗂 MATHEMATICAL SANS-SERIF SMALL I
+0x1d5c3 ""                         "" "" "\\mathsf{j}" "" # 𝗃 MATHEMATICAL SANS-SERIF SMALL J
+0x1d5c4 ""                         "" "" "\\mathsf{k}" "" # 𝗄 MATHEMATICAL SANS-SERIF SMALL K
+0x1d5c5 ""                         "" "" "\\mathsf{l}" "" # 𝗅 MATHEMATICAL SANS-SERIF SMALL L
+0x1d5c6 ""                         "" "" "\\mathsf{m}" "" # 𝗆 MATHEMATICAL SANS-SERIF SMALL M
+0x1d5c7 ""                         "" "" "\\mathsf{n}" "" # 𝗇 MATHEMATICAL SANS-SERIF SMALL N
+0x1d5c8 ""                         "" "" "\\mathsf{o}" "" # 𝗈 MATHEMATICAL SANS-SERIF SMALL O
+0x1d5c9 ""                         "" "" "\\mathsf{p}" "" # 𝗉 MATHEMATICAL SANS-SERIF SMALL P
+0x1d5ca ""                         "" "" "\\mathsf{q}" "" # 𝗊 MATHEMATICAL SANS-SERIF SMALL Q
+0x1d5cb ""                         "" "" "\\mathsf{r}" "" # 𝗋 MATHEMATICAL SANS-SERIF SMALL R
+0x1d5cc ""                         "" "" "\\mathsf{s}" "" # 𝗌 MATHEMATICAL SANS-SERIF SMALL S
+0x1d5cd ""                         "" "" "\\mathsf{t}" "" # 𝗍 MATHEMATICAL SANS-SERIF SMALL T
+0x1d5ce ""                         "" "" "\\mathsf{u}" "" # 𝗎 MATHEMATICAL SANS-SERIF SMALL U
+0x1d5cf ""                         "" "" "\\mathsf{v}" "" # 𝗏 MATHEMATICAL SANS-SERIF SMALL V
+0x1d5d0 ""                         "" "" "\\mathsf{w}" "" # 𝗐 MATHEMATICAL SANS-SERIF SMALL W
+0x1d5d1 ""                         "" "" "\\mathsf{x}" "" # 𝗑 MATHEMATICAL SANS-SERIF SMALL X
+0x1d5d2 ""                         "" "" "\\mathsf{y}" "" # 𝗒 MATHEMATICAL SANS-SERIF SMALL Y
+0x1d5d3 ""                         "" "" "\\mathsf{z}" "" # 𝗓 MATHEMATICAL SANS-SERIF SMALL Z
+0x1d670 ""                         "" "" "\\mathtt{A}" "" # 𝙰 MATHEMATICAL MONOSPACE CAPITAL A
+0x1d671 ""                         "" "" "\\mathtt{B}" "" # 𝙱 MATHEMATICAL MONOSPACE CAPITAL B
+0x1d672 ""                         "" "" "\\mathtt{C}" "" # 𝙲 MATHEMATICAL MONOSPACE CAPITAL C
+0x1d673 ""                         "" "" "\\mathtt{D}" "" # 𝙳 MATHEMATICAL MONOSPACE CAPITAL D
+0x1d674 ""                         "" "" "\\mathtt{E}" "" # 𝙴 MATHEMATICAL MONOSPACE CAPITAL E
+0x1d675 ""                         "" "" "\\mathtt{F}" "" # 𝙵 MATHEMATICAL MONOSPACE CAPITAL F
+0x1d676 ""                         "" "" "\\mathtt{G}" "" # 𝙶 MATHEMATICAL MONOSPACE CAPITAL G
+0x1d677 ""                         "" "" "\\mathtt{H}" "" # 𝙷 MATHEMATICAL MONOSPACE CAPITAL H
+0x1d678 ""                         "" "" "\\mathtt{I}" "" # 𝙸 MATHEMATICAL MONOSPACE CAPITAL I
+0x1d679 ""                         "" "" "\\mathtt{J}" "" # 𝙹 MATHEMATICAL MONOSPACE CAPITAL J
+0x1d67a ""                         "" "" "\\mathtt{K}" "" # 𝙺 MATHEMATICAL MONOSPACE CAPITAL K
+0x1d67b ""                         "" "" "\\mathtt{L}" "" # 𝙻 MATHEMATICAL MONOSPACE CAPITAL L
+0x1d67c ""                         "" "" "\\mathtt{M}" "" # 𝙼 MATHEMATICAL MONOSPACE CAPITAL M
+0x1d67d ""                         "" "" "\\mathtt{N}" "" # 𝙽 MATHEMATICAL MONOSPACE CAPITAL N
+0x1d67e ""                         "" "" "\\mathtt{O}" "" # 𝙾 MATHEMATICAL MONOSPACE CAPITAL O
+0x1d67f ""                         "" "" "\\mathtt{P}" "" # 𝙿 MATHEMATICAL MONOSPACE CAPITAL P
+0x1d680 ""                         "" "" "\\mathtt{Q}" "" # 𝚀 MATHEMATICAL MONOSPACE CAPITAL Q
+0x1d681 ""                         "" "" "\\mathtt{R}" "" # 𝚁 MATHEMATICAL MONOSPACE CAPITAL R
+0x1d682 ""                         "" "" "\\mathtt{S}" "" # 𝚂 MATHEMATICAL MONOSPACE CAPITAL S
+0x1d683 ""                         "" "" "\\mathtt{T}" "" # 𝚃 MATHEMATICAL MONOSPACE CAPITAL T
+0x1d684 ""                         "" "" "\\mathtt{U}" "" # 𝚄 MATHEMATICAL MONOSPACE CAPITAL U
+0x1d685 ""                         "" "" "\\mathtt{V}" "" # 𝚅 MATHEMATICAL MONOSPACE CAPITAL V
+0x1d686 ""                         "" "" "\\mathtt{W}" "" # 𝚆 MATHEMATICAL MONOSPACE CAPITAL W
+0x1d687 ""                         "" "" "\\mathtt{X}" "" # 𝚇 MATHEMATICAL MONOSPACE CAPITAL X
+0x1d688 ""                         "" "" "\\mathtt{Y}" "" # 𝚈 MATHEMATICAL MONOSPACE CAPITAL Y
+0x1d689 ""                         "" "" "\\mathtt{Z}" "" # 𝚉 MATHEMATICAL MONOSPACE CAPITAL Z
+0x1d68a ""                         "" "" "\\mathtt{a}" "" # 𝚊 MATHEMATICAL MONOSPACE SMALL A
+0x1d68b ""                         "" "" "\\mathtt{b}" "" # 𝚋 MATHEMATICAL MONOSPACE SMALL B
+0x1d68c ""                         "" "" "\\mathtt{c}" "" # 𝚌 MATHEMATICAL MONOSPACE SMALL C
+0x1d68d ""                         "" "" "\\mathtt{d}" "" # 𝚍 MATHEMATICAL MONOSPACE SMALL D
+0x1d68e ""                         "" "" "\\mathtt{e}" "" # 𝚎 MATHEMATICAL MONOSPACE SMALL E
+0x1d68f ""                         "" "" "\\mathtt{f}" "" # 𝚏 MATHEMATICAL MONOSPACE SMALL F
+0x1d690 ""                         "" "" "\\mathtt{g}" "" # 𝚐 MATHEMATICAL MONOSPACE SMALL G
+0x1d691 ""                         "" "" "\\mathtt{h}" "" # 𝚑 MATHEMATICAL MONOSPACE SMALL H
+0x1d692 ""                         "" "" "\\mathtt{i}" "" # 𝚒 MATHEMATICAL MONOSPACE SMALL I
+0x1d693 ""                         "" "" "\\mathtt{j}" "" # 𝚓 MATHEMATICAL MONOSPACE SMALL J
+0x1d694 ""                         "" "" "\\mathtt{k}" "" # 𝚔 MATHEMATICAL MONOSPACE SMALL K
+0x1d695 ""                         "" "" "\\mathtt{l}" "" # 𝚕 MATHEMATICAL MONOSPACE SMALL L
+0x1d696 ""                         "" "" "\\mathtt{m}" "" # 𝚖 MATHEMATICAL MONOSPACE SMALL M
+0x1d697 ""                         "" "" "\\mathtt{n}" "" # 𝚗 MATHEMATICAL MONOSPACE SMALL N
+0x1d698 ""                         "" "" "\\mathtt{o}" "" # 𝚘 MATHEMATICAL MONOSPACE SMALL O
+0x1d699 ""                         "" "" "\\mathtt{p}" "" # 𝚙 MATHEMATICAL MONOSPACE SMALL P
+0x1d69a ""                         "" "" "\\mathtt{q}" "" # 𝚚 MATHEMATICAL MONOSPACE SMALL Q
+0x1d69b ""                         "" "" "\\mathtt{r}" "" # 𝚛 MATHEMATICAL MONOSPACE SMALL R
+0x1d69c ""                         "" "" "\\mathtt{s}" "" # 𝚜 MATHEMATICAL MONOSPACE SMALL S
+0x1d69d ""                         "" "" "\\mathtt{t}" "" # 𝚝 MATHEMATICAL MONOSPACE SMALL T
+0x1d69e ""                         "" "" "\\mathtt{u}" "" # 𝚞 MATHEMATICAL MONOSPACE SMALL U
+0x1d69f ""                         "" "" "\\mathtt{v}" "" # 𝚟 MATHEMATICAL MONOSPACE SMALL V
+0x1d6a0 ""                         "" "" "\\mathtt{w}" "" # 𝚠 MATHEMATICAL MONOSPACE SMALL W
+0x1d6a1 ""                         "" "" "\\mathtt{x}" "" # 𝚡 MATHEMATICAL MONOSPACE SMALL X
+0x1d6a2 ""                         "" "" "\\mathtt{y}" "" # 𝚢 MATHEMATICAL MONOSPACE SMALL Y
+0x1d6a3 ""                         "" "" "\\mathtt{z}" "" # 𝚣 MATHEMATICAL MONOSPACE SMALL Z
+0x1d6a4 ""                         "" "" "\\imath" "" # 𝚤 MATHEMATICAL ITALIC SMALL DOTLESS I
+0x1d6a5 ""                         "" "" "\\jmath" "" # 𝚥 MATHEMATICAL ITALIC SMALL DOTLESS J
+0x1d6aa ""                         "" "" "\\mathbf{\\Gamma}" "" # 𝚪 MATHEMATICAL BOLD CAPITAL GAMMA
+0x1d6ab ""                         "" "" "\\mathbf{\\Delta}" "" # 𝚫 MATHEMATICAL BOLD CAPITAL DELTA
+0x1d6af ""                         "" "" "\\mathbf{\\Theta}" "" # 𝚯 MATHEMATICAL BOLD CAPITAL THETA
+0x1d6b2 ""                         "" "" "\\mathbf{\\Lambda}" "" # 𝚲 MATHEMATICAL BOLD CAPITAL LAMDA
+0x1d6b5 ""                         "" "" "\\mathbf{\\Xi}" "" # 𝚵 MATHEMATICAL BOLD CAPITAL XI
+0x1d6b7 ""                         "" "" "\\mathbf{\\Pi}" "" # 𝚷 MATHEMATICAL BOLD CAPITAL PI
+0x1d6ba ""                         "" "" "\\mathbf{\\Sigma}" "" # 𝚺 MATHEMATICAL BOLD CAPITAL SIGMA
+0x1d6bc ""                         "" "" "\\mathbf{\\Upsilon}" "" # 𝚼 MATHEMATICAL BOLD CAPITAL UPSILON
+0x1d6bd ""                         "" "" "\\mathbf{\\Phi}" "" # 𝚽 MATHEMATICAL BOLD CAPITAL PHI
+0x1d6bf ""                         "" "" "\\mathbf{\\Psi}" "" # 𝚿 MATHEMATICAL BOLD CAPITAL PSI
+0x1d6c0 ""                         "" "" "\\mathbf{\\Omega}" "" # 𝛀 MATHEMATICAL BOLD CAPITAL OMEGA
+0x1d6e4 ""                         "" "" "\\mathit{\\Gamma}" "" # 𝛤 MATHEMATICAL ITALIC CAPITAL GAMMA
+0x1d6e5 ""                         "" "" "\\mathit{\\Delta}" "" # 𝛥 MATHEMATICAL ITALIC CAPITAL DELTA
+0x1d6e9 ""                         "" "" "\\mathit{\\Theta}" "" # 𝛩 MATHEMATICAL ITALIC CAPITAL THETA
+0x1d6ec ""                         "" "" "\\mathit{\\Lambda}" "" # 𝛬 MATHEMATICAL ITALIC CAPITAL LAMDA
+0x1d6ef ""                         "" "" "\\mathit{\\Xi}" "" # 𝛯 MATHEMATICAL ITALIC CAPITAL XI
+0x1d6f1 ""                         "" "" "\\mathit{\\Pi}" "" # 𝛱 MATHEMATICAL ITALIC CAPITAL PI
+0x1d6f4 ""                         "" "" "\\mathit{\\Sigma}" "" # 𝛴 MATHEMATICAL ITALIC CAPITAL SIGMA
+0x1d6f6 ""                         "" "" "\\mathit{\\Upsilon}" "" # 𝛶 MATHEMATICAL ITALIC CAPITAL UPSILON
+0x1d6f7 ""                         "" "" "\\mathit{\\Phi}" "" # 𝛷 MATHEMATICAL ITALIC CAPITAL PHI
+0x1d6f9 ""                         "" "" "\\mathit{\\Psi}" "" # 𝛹 MATHEMATICAL ITALIC CAPITAL PSI
+0x1d6fa ""                         "" "" "\\mathit{\\Omega}" "" # 𝛺 MATHEMATICAL ITALIC CAPITAL OMEGA
+0x1d6fc ""                         "" "" "\\alpha" "" # 𝛼 MATHEMATICAL ITALIC SMALL ALPHA
+0x1d6fd ""                         "" "" "\\beta" "" # 𝛽 MATHEMATICAL ITALIC SMALL BETA
+0x1d6fe ""                         "" "" "\\gamma" "" # 𝛾 MATHEMATICAL ITALIC SMALL GAMMA
+0x1d6ff ""                         "" "" "\\delta" "" # 𝛿 MATHEMATICAL ITALIC SMALL DELTA
+0x1d700 ""                         "" "" "\\varepsilon" "" # 𝜀 MATHEMATICAL ITALIC SMALL EPSILON
+0x1d701 ""                         "" "" "\\zeta" "" # 𝜁 MATHEMATICAL ITALIC SMALL ZETA
+0x1d702 ""                         "" "" "\\eta" "" # 𝜂 MATHEMATICAL ITALIC SMALL ETA
+0x1d703 ""                         "" "" "\\theta" "" # 𝜃 MATHEMATICAL ITALIC SMALL THETA
+0x1d704 ""                         "" "" "\\iota" "" # 𝜄 MATHEMATICAL ITALIC SMALL IOTA
+0x1d705 ""                         "" "" "\\kappa" "" # 𝜅 MATHEMATICAL ITALIC SMALL KAPPA
+0x1d706 ""                         "" "" "\\lambda" "" # 𝜆 MATHEMATICAL ITALIC SMALL LAMDA
+0x1d707 ""                         "" "" "\\mu" "" # 𝜇 MATHEMATICAL ITALIC SMALL MU
+0x1d708 ""                         "" "" "\\nu" "" # 𝜈 MATHEMATICAL ITALIC SMALL NU
+0x1d709 ""                         "" "" "\\xi" "" # 𝜉 MATHEMATICAL ITALIC SMALL XI
+0x1d70b ""                         "" "" "\\pi" "" # 𝜋 MATHEMATICAL ITALIC SMALL PI
+0x1d70c ""                         "" "" "\\rho" "" # 𝜌 MATHEMATICAL ITALIC SMALL RHO
+0x1d70d ""                         "" "" "\\varsigma" "" # 𝜍 MATHEMATICAL ITALIC SMALL FINAL SIGMA
+0x1d70e ""                         "" "" "\\sigma" "" # 𝜎 MATHEMATICAL ITALIC SMALL SIGMA
+0x1d70f ""                         "" "" "\\tau" "" # 𝜏 MATHEMATICAL ITALIC SMALL TAU
+0x1d710 ""                         "" "" "\\upsilon" "" # 𝜐 MATHEMATICAL ITALIC SMALL UPSILON
+0x1d711 ""                         "" "" "\\varphi" "" # 𝜑 MATHEMATICAL ITALIC SMALL PHI
+0x1d712 ""                         "" "" "\\chi" "" # 𝜒 MATHEMATICAL ITALIC SMALL CHI
+0x1d713 ""                         "" "" "\\psi" "" # 𝜓 MATHEMATICAL ITALIC SMALL PSI
+0x1d714 ""                         "" "" "\\omega" "" # 𝜔 MATHEMATICAL ITALIC SMALL OMEGA
+0x1d715 ""                         "" "" "\\partial" "" # 𝜕 MATHEMATICAL ITALIC PARTIAL DIFFERENTIAL
+0x1d716 ""                         "" "" "\\epsilon" "" # 𝜖 MATHEMATICAL ITALIC EPSILON SYMBOL
+0x1d717 ""                         "" "" "\\vartheta" "" # 𝜗 MATHEMATICAL ITALIC THETA SYMBOL
+0x1d718 ""                         "" "" "\\varkappa" "amssymb" # 𝜘 MATHEMATICAL ITALIC KAPPA SYMBOL
+0x1d719 ""                         "" "" "\\phi" "" # 𝜙 MATHEMATICAL ITALIC PHI SYMBOL
+0x1d71a ""                         "" "" "\\varrho" "" # 𝜚 MATHEMATICAL ITALIC RHO SYMBOL
+0x1d71b ""                         "" "" "\\varpi" "" # 𝜛 MATHEMATICAL ITALIC PI SYMBOL
+0x1d7ce ""                         "" "" "\\mathbf{0}" "" # 𝟎 MATHEMATICAL BOLD DIGIT ZERO
+0x1d7cf ""                         "" "" "\\mathbf{1}" "" # 𝟏 MATHEMATICAL BOLD DIGIT ONE
+0x1d7d0 ""                         "" "" "\\mathbf{2}" "" # 𝟐 MATHEMATICAL BOLD DIGIT TWO
+0x1d7d1 ""                         "" "" "\\mathbf{3}" "" # 𝟑 MATHEMATICAL BOLD DIGIT THREE
+0x1d7d2 ""                         "" "" "\\mathbf{4}" "" # 𝟒 MATHEMATICAL BOLD DIGIT FOUR
+0x1d7d3 ""                         "" "" "\\mathbf{5}" "" # 𝟓 MATHEMATICAL BOLD DIGIT FIVE
+0x1d7d4 ""                         "" "" "\\mathbf{6}" "" # 𝟔 MATHEMATICAL BOLD DIGIT SIX
+0x1d7d5 ""                         "" "" "\\mathbf{7}" "" # 𝟕 MATHEMATICAL BOLD DIGIT SEVEN
+0x1d7d6 ""                         "" "" "\\mathbf{8}" "" # 𝟖 MATHEMATICAL BOLD DIGIT EIGHT
+0x1d7d7 ""                         "" "" "\\mathbf{9}" "" # 𝟗 MATHEMATICAL BOLD DIGIT NINE
+0x1d7e2 ""                         "" "" "\\mathsf{0}" "" # 𝟢 MATHEMATICAL SANS-SERIF DIGIT ZERO
+0x1d7e3 ""                         "" "" "\\mathsf{1}" "" # 𝟣 MATHEMATICAL SANS-SERIF DIGIT ONE
+0x1d7e4 ""                         "" "" "\\mathsf{2}" "" # 𝟤 MATHEMATICAL SANS-SERIF DIGIT TWO
+0x1d7e5 ""                         "" "" "\\mathsf{3}" "" # 𝟥 MATHEMATICAL SANS-SERIF DIGIT THREE
+0x1d7e6 ""                         "" "" "\\mathsf{4}" "" # 𝟦 MATHEMATICAL SANS-SERIF DIGIT FOUR
+0x1d7e7 ""                         "" "" "\\mathsf{5}" "" # 𝟧 MATHEMATICAL SANS-SERIF DIGIT FIVE
+0x1d7e8 ""                         "" "" "\\mathsf{6}" "" # 𝟨 MATHEMATICAL SANS-SERIF DIGIT SIX
+0x1d7e9 ""                         "" "" "\\mathsf{7}" "" # 𝟩 MATHEMATICAL SANS-SERIF DIGIT SEVEN
+0x1d7ea ""                         "" "" "\\mathsf{8}" "" # 𝟪 MATHEMATICAL SANS-SERIF DIGIT EIGHT
+0x1d7eb ""                         "" "" "\\mathsf{9}" "" # 𝟫 MATHEMATICAL SANS-SERIF DIGIT NINE
+0x1d7f6 ""                         "" "" "\\mathtt{0}" "" # 𝟶 MATHEMATICAL MONOSPACE DIGIT ZERO
+0x1d7f7 ""                         "" "" "\\mathtt{1}" "" # 𝟷 MATHEMATICAL MONOSPACE DIGIT ONE
+0x1d7f8 ""                         "" "" "\\mathtt{2}" "" # 𝟸 MATHEMATICAL MONOSPACE DIGIT TWO
+0x1d7f9 ""                         "" "" "\\mathtt{3}" "" # 𝟹 MATHEMATICAL MONOSPACE DIGIT THREE
+0x1d7fa ""                         "" "" "\\mathtt{4}" "" # 𝟺 MATHEMATICAL MONOSPACE DIGIT FOUR
+0x1d7fb ""                         "" "" "\\mathtt{5}" "" # 𝟻 MATHEMATICAL MONOSPACE DIGIT FIVE
+0x1d7fc ""                         "" "" "\\mathtt{6}" "" # 𝟼 MATHEMATICAL MONOSPACE DIGIT SIX
+0x1d7fd ""                         "" "" "\\mathtt{7}" "" # 𝟽 MATHEMATICAL MONOSPACE DIGIT SEVEN
+0x1d7fe ""                         "" "" "\\mathtt{8}" "" # 𝟾 MATHEMATICAL MONOSPACE DIGIT EIGHT
+0x1d7ff ""                         "" "" "\\mathtt{9}" "" # 𝟿 MATHEMATICAL MONOSPACE DIGIT NINE
