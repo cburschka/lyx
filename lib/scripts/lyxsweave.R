@@ -30,7 +30,7 @@ options(encoding=ls.args[3])
 setwd(ls.args[4])
 
 # this is passed as a prefix.string to tell where temporary files should go
-ls.pr <- sub("\\.tex$", "", ls.args[2])
+ls.pr <- gsub('\\.([^/]*)$', '-\\1', sub("\\.tex$", "", ls.args[2]))
 
 # Replace the default pdf device by the null device (tip from Yihui Xie)
 # See: http://yihui.name/en/2010/12/a-special-graphics-device-in-r-the-null-device/ 
