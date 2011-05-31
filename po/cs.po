@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-05-28 23:23+0200\n"
+"POT-Creation-Date: 2011-05-31 22:09+0200\n"
 "PO-Revision-Date: 2011-04-12 05:50+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -3619,7 +3619,12 @@ msgid ""
 "paths to LaTeX files. Don't change the default unless the\n"
 "TeX engine was not correctly detected at configure time.\n"
 "Warning: Your changes here will not be saved."
-msgstr "Zvolte, zda-li má LyX na výstupu pou¾ívat styl Windows/Cygwin pro cesty k LaTeX-ovým souborùm.\nZmìòte standardní nastavení pouze v pøípadì, ¾e TeX nebyl koretknì detekován pøi konfiguraci.\nPozor: va¹e zmìny nebudou ulo¾eny."
+msgstr ""
+"Zvolte, zda-li má LyX na výstupu pou¾ívat styl Windows/Cygwin pro cesty k "
+"LaTeX-ovým souborùm.\n"
+"Zmìòte standardní nastavení pouze v pøípadì, ¾e TeX nebyl koretknì detekován "
+"pøi konfiguraci.\n"
+"Pozor: va¹e zmìny nebudou ulo¾eny."
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:332
 msgid "&Use Windows-style paths in LaTeX files"
@@ -3699,7 +3704,8 @@ msgid ""
 "Use the OS native format."
 msgstr ""
 "Urèete adresáøe, které by mìly být pøidány do promìnné prostøedí PATH pøed "
-"ostatní adresáøe.\nPou¾ijte formát vlastní danému operaènímu systému."
+"ostatní adresáøe.\n"
+"Pou¾ijte formát vlastní danému operaènímu systému."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:58
 msgid "TEX&INPUTS prefix:"
@@ -3712,7 +3718,9 @@ msgid ""
 "A '.' represents the current document directory. Use the OS native format."
 msgstr ""
 "Urèete adresáøe, které by mìly být pøidány do promìnné prostøedí PATH pøed "
-"ostatní adresáøe.\n'.' reprezentuje aktuální adresáø. Pou¾ijte formát vlastní danému operaènímu systému."
+"ostatní adresáøe.\n"
+"'.' reprezentuje aktuální adresáø. Pou¾ijte formát vlastní danému operaènímu "
+"systému."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:75
 #: src/frontends/qt4/ui/PrefPathsUi.ui:98
@@ -5663,7 +5671,7 @@ msgstr "Standardní"
 #: lib/layouts/powerdot.layout:41 lib/layouts/revtex.layout:94
 #: lib/layouts/revtex4.layout:125 lib/layouts/scrlettr.layout:188
 #: lib/layouts/scrlttr2.layout:271 lib/layouts/siamltex.layout:187
-#: lib/layouts/sigplanconf.layout:104 lib/layouts/simplecv.layout:121
+#: lib/layouts/sigplanconf.layout:104 lib/layouts/simplecv.layout:122
 #: lib/layouts/svprobth.layout:42 lib/layouts/tufte-book.layout:34
 #: lib/layouts/agu_stdtitle.inc:246 lib/layouts/amsdefs.inc:24
 #: lib/layouts/db_stdtitle.inc:13 lib/layouts/scrclass.inc:161
@@ -5787,7 +5795,7 @@ msgstr "Pøíloha"
 #: lib/layouts/report.layout:12 lib/layouts/report.layout:14
 #: lib/layouts/scrbook.layout:22 lib/layouts/scrbook.layout:24
 #: lib/layouts/scrreprt.layout:11 lib/layouts/scrreprt.layout:13
-#: lib/layouts/siamltex.layout:317 lib/layouts/simplecv.layout:142
+#: lib/layouts/siamltex.layout:317 lib/layouts/simplecv.layout:143
 #: lib/layouts/tufte-book.layout:242 lib/layouts/tufte-book.layout:244
 #: lib/layouts/aguplus.inc:172 lib/layouts/aguplus.inc:174
 #: lib/layouts/amsdefs.inc:196 lib/layouts/scrclass.inc:245
@@ -5869,7 +5877,7 @@ msgstr "Sekce"
 #: lib/layouts/memoir.layout:76 lib/layouts/moderncv.layout:53
 #: lib/layouts/paper.layout:67 lib/layouts/revtex.layout:50
 #: lib/layouts/revtex4.layout:71 lib/layouts/siamltex.layout:368
-#: lib/layouts/simplecv.layout:49 lib/layouts/tufte-book.layout:110
+#: lib/layouts/simplecv.layout:50 lib/layouts/tufte-book.layout:110
 #: lib/layouts/agu_stdsections.inc:43 lib/layouts/aguplus.inc:44
 #: lib/layouts/db_stdsections.inc:39 lib/layouts/numrevtex.inc:15
 #: lib/layouts/scrclass.inc:76 lib/layouts/stdsections.inc:89
@@ -5897,7 +5905,7 @@ msgstr "Podpodsekce"
 #: lib/layouts/aa.layout:54 lib/layouts/aapaper.layout:48
 #: lib/layouts/aastex.layout:83 lib/layouts/apa.layout:362
 #: lib/layouts/beamer.layout:46 lib/layouts/egs.layout:168
-#: lib/layouts/powerdot.layout:244 lib/layouts/simplecv.layout:79
+#: lib/layouts/powerdot.layout:244 lib/layouts/simplecv.layout:80
 #: lib/layouts/agu_stdlists.inc:13 lib/layouts/db_stdlists.inc:12
 #: lib/layouts/stdlists.inc:13
 msgid "Itemize"
@@ -6465,7 +6473,7 @@ msgstr "Pododstavec"
 
 #: lib/layouts/apa.layout:376 lib/layouts/beamer.layout:61
 #: lib/layouts/egs.layout:182 lib/layouts/powerdot.layout:258
-#: lib/layouts/simplecv.layout:93 lib/layouts/stdlists.inc:28
+#: lib/layouts/simplecv.layout:94 lib/layouts/stdlists.inc:28
 msgid "*"
 msgstr "*"
 
@@ -7765,7 +7773,7 @@ msgstr "Restriction"
 msgid "Restriction:"
 msgstr "Restriction:"
 
-#: lib/layouts/foils.layout:185 lib/layouts/simplecv.layout:97
+#: lib/layouts/foils.layout:185 lib/layouts/simplecv.layout:98
 #: lib/layouts/aguplus.inc:80 lib/layouts/customHeadersFooters.module:10
 msgid "Left Header"
 msgstr "Levá hlavièka"
@@ -7775,7 +7783,7 @@ msgstr "Levá hlavièka"
 msgid "Left Header:"
 msgstr "Levá hlavièka:"
 
-#: lib/layouts/foils.layout:193 lib/layouts/simplecv.layout:114
+#: lib/layouts/foils.layout:193 lib/layouts/simplecv.layout:115
 #: lib/layouts/aguplus.inc:103 lib/layouts/customHeadersFooters.module:36
 msgid "Right Header"
 msgstr "Pravá hlavièka"
@@ -9073,11 +9081,11 @@ msgstr "Terms"
 msgid "Terms:"
 msgstr "Terms:"
 
-#: lib/layouts/simplecv.layout:57
+#: lib/layouts/simplecv.layout:58
 msgid "Topic"
 msgstr "Topic"
 
-#: lib/layouts/simplecv.layout:71
+#: lib/layouts/simplecv.layout:72
 msgid "MMMMM"
 msgstr "MMMMM"
 
@@ -17145,7 +17153,9 @@ msgstr "Chyba pøi zpìtném hledání"
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
-msgstr "Zpìtné hledání vy¾ádalo nekorektní pozici.\nMusíte aktualizovat prohlí¾ený dokument."
+msgstr ""
+"Zpìtné hledání vy¾ádalo nekorektní pozici.\n"
+"Musíte aktualizovat prohlí¾ený dokument."
 
 #: src/BufferView.cpp:2596
 #, c-format
@@ -21903,7 +21913,7 @@ msgstr "&Opakovat"
 
 #: src/frontends/qt4/GuiView.cpp:2454
 msgid "Close document"
-msgstr "Nový dokument"
+msgstr "Zavøít dokument"
 
 #: src/frontends/qt4/GuiView.cpp:2455
 msgid "Document could not be closed because it is being processed by LyX."
@@ -21985,7 +21995,7 @@ msgstr "Otvírání dokumentu potomka %1$s..."
 
 #: src/frontends/qt4/GuiView.cpp:2935
 #, c-format
-msgid "No buffer for file `%1$s'."
+msgid "No buffer for file: %1$s."
 msgstr "®ádný dokument pro soubor: %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:2958
@@ -22001,7 +22011,7 @@ msgstr "Chyba pøi prohlí¾ení formátu: %1$s"
 #: src/frontends/qt4/GuiView.cpp:2962
 #, c-format
 msgid "Successful export to format: %1$s"
-msgstr "Úspì¹ný export do formátu: %1$s."
+msgstr "Úspì¹ný export do formátu: %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:2963
 #, c-format
@@ -22067,31 +22077,31 @@ msgstr "Zdrojový soubor DocBook-u"
 msgid "Literate Source"
 msgstr "Zdrojový kód dokumentovaného programování"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1321
+#: src/frontends/qt4/GuiWorkArea.cpp:1325
 msgid " (version control, locking)"
 msgstr " (správa verzí, zamykání)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1323
+#: src/frontends/qt4/GuiWorkArea.cpp:1327
 msgid " (version control)"
 msgstr " (správa verzí)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1326
+#: src/frontends/qt4/GuiWorkArea.cpp:1330
 msgid " (changed)"
 msgstr " (zmìnìno)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1330
+#: src/frontends/qt4/GuiWorkArea.cpp:1334
 msgid " (read only)"
 msgstr " (jen ke ètení)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1483
+#: src/frontends/qt4/GuiWorkArea.cpp:1487
 msgid "Close File"
 msgstr "Zavøít soubor"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1925
+#: src/frontends/qt4/GuiWorkArea.cpp:1929
 msgid "Hide tab"
 msgstr "Skrýt panel"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1927
+#: src/frontends/qt4/GuiWorkArea.cpp:1931
 msgid "Close tab"
 msgstr "Zavøít panel"
 
