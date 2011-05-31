@@ -102,7 +102,14 @@ def checkTeXPaths():
         from tempfile import mkstemp
         fd, tmpfname = mkstemp(suffix='.ltx')
         if os.name == 'nt':
-            inpname = tmpfname.replace('\\', '/')
+            from ctypes import windll, create_unicode_buffer
+            GetShortPathName = windll.kernel32.GetShortPathNameW
+            longname = unicode(tmpfname)
+            shortname = create_unicode_buffer(len(longname)+1)
+            if GetShortPathName(longname, shortname, len(longname)+1):
+                inpname = shortname.value.replace('\\', '/')
+            else:
+                inpname = tmpfname.replace('\\', '/')
         else:
             inpname = cmdOutput('cygpath -m ' + tmpfname)
         logname = os.path.basename(inpname.replace('.ltx', '.log'))
