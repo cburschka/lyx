@@ -53,6 +53,10 @@ if ! cd $FARM; then
   exit 1;
 fi
 
+# Are we under svn or git?
+GIT="";
+if [ -d .git/ ]; then GIT="TRUE"; fi
+
 echo
 echo Updating the www-user tree...
 svn up
@@ -61,6 +65,11 @@ echo Copying $I18NFILE...;
 cp $LYXROOT/po/$I18NFILE .;
 
 echo Committing...;
-svn commit -m "* $I18NFILE: update stats" $I18NFILE;
+if [ -z "$GIT" ]; then
+  svn commit -m "* $I18NFILE: update stats" $I18NFILE;
+else
+  git commit -m "* $I18NFILE: update stats" $I18NFILE;
+  git svn dcommit;
+fi
 
 echo DONE!
