@@ -95,7 +95,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-05-30 09:13+0200\n"
+"POT-Creation-Date: 2011-06-01 09:00-0400\n"
 "PO-Revision-Date: 2011-05-30 09:14+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
@@ -5835,7 +5835,7 @@ msgstr "Standard"
 #: lib/layouts/powerdot.layout:41 lib/layouts/revtex.layout:94
 #: lib/layouts/revtex4.layout:125 lib/layouts/scrlettr.layout:188
 #: lib/layouts/scrlttr2.layout:271 lib/layouts/siamltex.layout:187
-#: lib/layouts/sigplanconf.layout:104 lib/layouts/simplecv.layout:121
+#: lib/layouts/sigplanconf.layout:104 lib/layouts/simplecv.layout:122
 #: lib/layouts/svprobth.layout:42 lib/layouts/tufte-book.layout:34
 #: lib/layouts/agu_stdtitle.inc:246 lib/layouts/amsdefs.inc:24
 #: lib/layouts/db_stdtitle.inc:13 lib/layouts/scrclass.inc:161
@@ -5959,7 +5959,7 @@ msgstr "Anhang"
 #: lib/layouts/report.layout:12 lib/layouts/report.layout:14
 #: lib/layouts/scrbook.layout:22 lib/layouts/scrbook.layout:24
 #: lib/layouts/scrreprt.layout:11 lib/layouts/scrreprt.layout:13
-#: lib/layouts/siamltex.layout:317 lib/layouts/simplecv.layout:142
+#: lib/layouts/siamltex.layout:317 lib/layouts/simplecv.layout:143
 #: lib/layouts/tufte-book.layout:242 lib/layouts/tufte-book.layout:244
 #: lib/layouts/aguplus.inc:172 lib/layouts/aguplus.inc:174
 #: lib/layouts/amsdefs.inc:196 lib/layouts/scrclass.inc:245
@@ -6041,7 +6041,7 @@ msgstr "Abschnitt"
 #: lib/layouts/memoir.layout:76 lib/layouts/moderncv.layout:53
 #: lib/layouts/paper.layout:67 lib/layouts/revtex.layout:50
 #: lib/layouts/revtex4.layout:71 lib/layouts/siamltex.layout:368
-#: lib/layouts/simplecv.layout:49 lib/layouts/tufte-book.layout:110
+#: lib/layouts/simplecv.layout:50 lib/layouts/tufte-book.layout:110
 #: lib/layouts/agu_stdsections.inc:43 lib/layouts/aguplus.inc:44
 #: lib/layouts/db_stdsections.inc:39 lib/layouts/numrevtex.inc:15
 #: lib/layouts/scrclass.inc:76 lib/layouts/stdsections.inc:89
@@ -6069,7 +6069,7 @@ msgstr "Unterunterabschn."
 #: lib/layouts/aa.layout:54 lib/layouts/aapaper.layout:48
 #: lib/layouts/aastex.layout:83 lib/layouts/apa.layout:362
 #: lib/layouts/beamer.layout:46 lib/layouts/egs.layout:168
-#: lib/layouts/powerdot.layout:244 lib/layouts/simplecv.layout:79
+#: lib/layouts/powerdot.layout:244 lib/layouts/simplecv.layout:80
 #: lib/layouts/agu_stdlists.inc:13 lib/layouts/db_stdlists.inc:12
 #: lib/layouts/stdlists.inc:13
 msgid "Itemize"
@@ -6637,7 +6637,7 @@ msgstr "Unterparagraph"
 
 #: lib/layouts/apa.layout:376 lib/layouts/beamer.layout:61
 #: lib/layouts/egs.layout:182 lib/layouts/powerdot.layout:258
-#: lib/layouts/simplecv.layout:93 lib/layouts/stdlists.inc:28
+#: lib/layouts/simplecv.layout:94 lib/layouts/stdlists.inc:28
 msgid "*"
 msgstr "*"
 
@@ -7937,7 +7937,7 @@ msgstr "Einschränkung"
 msgid "Restriction:"
 msgstr "Einschränkung:"
 
-#: lib/layouts/foils.layout:185 lib/layouts/simplecv.layout:97
+#: lib/layouts/foils.layout:185 lib/layouts/simplecv.layout:98
 #: lib/layouts/aguplus.inc:80 lib/layouts/customHeadersFooters.module:10
 msgid "Left Header"
 msgstr "Kopfzeile links"
@@ -7947,7 +7947,7 @@ msgstr "Kopfzeile links"
 msgid "Left Header:"
 msgstr "Kopfzeile links:"
 
-#: lib/layouts/foils.layout:193 lib/layouts/simplecv.layout:114
+#: lib/layouts/foils.layout:193 lib/layouts/simplecv.layout:115
 #: lib/layouts/aguplus.inc:103 lib/layouts/customHeadersFooters.module:36
 msgid "Right Header"
 msgstr "Kopfzeile rechts"
@@ -9245,11 +9245,11 @@ msgstr "Begriffe"
 msgid "Terms:"
 msgstr "Begriffe:"
 
-#: lib/layouts/simplecv.layout:57
+#: lib/layouts/simplecv.layout:58
 msgid "Topic"
 msgstr "Thema"
 
-#: lib/layouts/simplecv.layout:71
+#: lib/layouts/simplecv.layout:72
 msgid "MMMMM"
 msgstr "MMMMM"
 
@@ -22373,31 +22373,31 @@ msgstr "DocBook-Quelle"
 msgid "Literate Source"
 msgstr "Literarische Quelle"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1321
+#: src/frontends/qt4/GuiWorkArea.cpp:1325
 msgid " (version control, locking)"
 msgstr " (Versionskontrolle, sperren)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1323
+#: src/frontends/qt4/GuiWorkArea.cpp:1327
 msgid " (version control)"
 msgstr " (Versionskontrolle)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1326
+#: src/frontends/qt4/GuiWorkArea.cpp:1330
 msgid " (changed)"
 msgstr " (geändert)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1330
+#: src/frontends/qt4/GuiWorkArea.cpp:1334
 msgid " (read only)"
 msgstr " (schreibgeschützt)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1483
+#: src/frontends/qt4/GuiWorkArea.cpp:1487
 msgid "Close File"
 msgstr "Datei schließen"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1925
+#: src/frontends/qt4/GuiWorkArea.cpp:1929
 msgid "Hide tab"
 msgstr "Unterfenster verstecken"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1927
+#: src/frontends/qt4/GuiWorkArea.cpp:1931
 msgid "Close tab"
 msgstr "Unterfenster schließen"
 
