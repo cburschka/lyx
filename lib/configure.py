@@ -105,8 +105,9 @@ def checkTeXPaths():
             from ctypes import windll, create_unicode_buffer
             GetShortPathName = windll.kernel32.GetShortPathNameW
             longname = unicode(tmpfname)
-            shortname = create_unicode_buffer(len(longname)+1)
-            if GetShortPathName(longname, shortname, len(longname)+1):
+            shortlen = GetShortPathName(longname, 0, 0)
+            shortname = create_unicode_buffer(shortlen)
+            if GetShortPathName(longname, shortname, shortlen):
                 inpname = shortname.value.replace('\\', '/')
             else:
                 inpname = tmpfname.replace('\\', '/')
