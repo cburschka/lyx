@@ -793,7 +793,7 @@ QString GuiGraphics::browse(QString const & in_name) const
 	if (!clip.isDirectory())
 		clipdir = addName(package().system_support().absFileName(), "clipart");
 
-	return browseRelFile(in_name, bufferFilePath(),
+	return browseRelToParent(in_name, bufferFilePath(),
 		title, fileFilters(QString()), false, 
 		qt_("Clipart|#C#c"), toqstr(clipdir),
 		qt_("Documents|#o#O"), toqstr(lyxrc.document_path));

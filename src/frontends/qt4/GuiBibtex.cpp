@@ -435,7 +435,7 @@ QString GuiBibtex::browseBib(QString const & in_name) const
 	QString const label1 = qt_("Documents|#o#O");
 	QString const dir1 = toqstr(lyxrc.document_path);
 	QStringList const filter(qt_("BibTeX Databases (*.bib)"));
-	return browseRelFile(in_name, bufferFilePath(),
+	return browseRelToParent(in_name, bufferFilePath(),
 		qt_("Select a BibTeX database to add"), filter, false, label1, dir1);
 }
 
@@ -445,7 +445,7 @@ QString GuiBibtex::browseBst(QString const & in_name) const
 	QString const label1 = qt_("Documents|#o#O");
 	QString const dir1 = toqstr(lyxrc.document_path);
 	QStringList const filter(qt_("BibTeX Styles (*.bst)"));
-	return browseRelFile(in_name, bufferFilePath(),
+	return browseRelToParent(in_name, bufferFilePath(),
 		qt_("Select a BibTeX style"), filter, false, label1, dir1);
 }
 

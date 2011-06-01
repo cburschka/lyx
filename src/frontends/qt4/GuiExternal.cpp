@@ -639,7 +639,7 @@ QString GuiExternal::browse(QString const & input,
 	QString const label1 = qt_("Documents|#o#O");
 	QString const dir1 = toqstr(lyxrc.document_path);
 
-	return browseRelFile(input, bufpath, title, filter, false, label1, dir1);
+	return browseRelToParent(input, bufpath, title, filter, false, label1, dir1);
 }
 
 

@@ -90,7 +90,7 @@ namespace frontend {
 /** Launch a file dialog and return the chosen file.
 	filename: a suggested filename.
 	title: the title of the dialog.
-	pattern: *.ps etc.
+	filters: *.ps etc.
 	dir1 = (name, dir), dir2 = (name, dir): extra buttons on the dialog.
 */
 QString browseFile(QString const & filename,
@@ -194,21 +194,43 @@ QString browseDir(QString const & pathname,
 } // namespace frontend
 
 
-QString browseRelFile(QString const & filename, QString const & refpath,
+QString browseRelToParent(QString const & filename, QString const & relpath,
 	QString const & title, QStringList const & filters, bool save,
 	QString const & label1, QString const & dir1,
 	QString const & label2, QString const & dir2)
 {
-	QString const fname = makeAbsPath(filename, refpath);
-
+	QString const fname = makeAbsPath(filename, relpath);
 
 	QString const outname =
 		frontend::browseFile(fname, title, filters, save, label1, dir1, label2, dir2);
 
 	QString const reloutname =
-		toqstr(makeRelPath(qstring_to_ucs4(outname), qstring_to_ucs4(refpath)));
+		toqstr(makeRelPath(qstring_to_ucs4(outname), qstring_to_ucs4(relpath)));
 
 	if (reloutname.startsWith("../"))
+		return outname;
+	else
+		return reloutname;
+}
+
+
+QString browseRelToSub(QString const & filename, QString const & relpath,
+	QString const & title, QStringList const & filters, bool save,
+	QString const & label1, QString const & dir1,
+	QString const & label2, QString const & dir2)
+{
+	QString const fname = makeAbsPath(filename, relpath);
+
+	QString const outname =
+		frontend::browseFile(fname, title, filters, save, label1, dir1, label2, dir2);
+
+	QString const reloutname =
+		toqstr(makeRelPath(qstring_to_ucs4(outname), qstring_to_ucs4(relpath)));
+
+	QString testname = reloutname;
+	testname.remove(QRegExp("^(\\.\\./)+"));
+	
+	if (testname.contains("/"))
 		return outname;
 	else
 		return reloutname;
