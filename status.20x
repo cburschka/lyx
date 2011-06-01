@@ -91,6 +91,9 @@ What's new
 - Calculate relative pathnames to master documents when master is in a
   directory above the child (bug #7540).
 
+- On Windows, improve detection of the TeX engine when the file system does
+  not support short names and the temp directory contains spaces.
+
 
 * USER INTERFACE
 

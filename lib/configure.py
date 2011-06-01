@@ -102,7 +102,15 @@ def checkTeXPaths():
         from tempfile import mkstemp
         fd, tmpfname = mkstemp(suffix='.ltx')
         if os.name == 'nt':
-            inpname = tmpfname.replace('\\', '/')
+            from ctypes import windll, create_unicode_buffer
+            GetShortPathName = windll.kernel32.GetShortPathNameW
+            longname = unicode(tmpfname)
+            shortlen = GetShortPathName(longname, 0, 0)
+            shortname = create_unicode_buffer(shortlen)
+            if GetShortPathName(longname, shortname, shortlen):
+                inpname = shortname.value.replace('\\', '/')
+            else:
+                inpname = tmpfname.replace('\\', '/')
         else:
             inpname = cmdOutput('cygpath -m ' + tmpfname)
         logname = os.path.basename(inpname.replace('.ltx', '.log'))
@@ -110,6 +118,8 @@ def checkTeXPaths():
         os.write(fd, r'\relax')
         os.close(fd)
         latex_out = cmdOutput(r'latex "\nonstopmode\input{%s}"' % inpname)
+        if 'Error' in latex_out:
+            latex_out = cmdOutput(r'latex "\nonstopmode\input{\"%s\"}"' % inpname)
         if 'Error' in latex_out:
             logger.warning("configure: TeX engine needs posix-style paths in latex files")
             windows_style_tex_paths = 'false'
@@ -1293,7 +1303,7 @@ def checkTeXAllowSpaces():
         msg = "Checking whether TeX allows spaces in file names... "
         writeToFile('a b.tex', r'\message{working^^J}' )
         if LATEX != '':
-            if os.name == 'nt':
+            if os.name == 'nt' or sys.platform == 'cygwin':
                 latex_out = cmdOutput(LATEX + r""" "\nonstopmode\input{\"a b\"}" """)
             else:
                 latex_out = cmdOutput(LATEX + r""" '\nonstopmode\input{"a b"}' """)
