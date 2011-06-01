@@ -118,6 +118,8 @@ def checkTeXPaths():
         os.close(fd)
         latex_out = cmdOutput(r'latex "\nonstopmode\input{%s}"' % inpname)
         if 'Error' in latex_out:
+            latex_out = cmdOutput(r'latex "\nonstopmode\input{\"%s\"}"' % inpname)
+        if 'Error' in latex_out:
             logger.warning("configure: TeX engine needs posix-style paths in latex files")
             windows_style_tex_paths = 'false'
         else:
@@ -1300,8 +1302,10 @@ def checkTeXAllowSpaces():
         msg = "Checking whether TeX allows spaces in file names... "
         writeToFile('a b.tex', r'\message{working^^J}' )
         if LATEX != '':
-            if os.name == 'nt':
+            if os.name == 'nt' or sys.platform == 'cygwin':
                 latex_out = cmdOutput(LATEX + r""" "\nonstopmode\input{\"a b\"}" """)
+                if not 'working' in latex_out:
+                    latex_out = cmdOutput(LATEX + r' "\nonstopmode\input{a b}"')
             else:
                 latex_out = cmdOutput(LATEX + r""" '\nonstopmode\input{"a b"}' """)
         else:
