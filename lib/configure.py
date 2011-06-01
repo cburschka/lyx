@@ -1305,8 +1305,6 @@ def checkTeXAllowSpaces():
         if LATEX != '':
             if os.name == 'nt' or sys.platform == 'cygwin':
                 latex_out = cmdOutput(LATEX + r""" "\nonstopmode\input{\"a b\"}" """)
-                if not 'working' in latex_out:
-                    latex_out = cmdOutput(LATEX + r' "\nonstopmode\input{a b}"')
             else:
                 latex_out = cmdOutput(LATEX + r""" '\nonstopmode\input{"a b"}' """)
         else:
