@@ -88,6 +88,9 @@ What's new
 
 - Fix dvi forward search on Windows when compiling with MSVC.
 
+- Calculate relative pathnames to master documents when master is in a
+  directory above the child (bug #7540).
+
 
 * USER INTERFACE
 
@@ -145,6 +148,8 @@ What's new
 * DOCUMENTATION AND LOCALIZATION
 
 - Re-add some lost translations from layout files.
+
+- Many translations updated from 2.0.0.
 
 
 * BUILD/INSTALLATION
