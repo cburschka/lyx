@@ -158,11 +158,11 @@ QString GuiCompare::browse(QString const & in_name) const
 	QString filename;
 	if (lyxview().documentBufferView()) {
 		QString path = bufferFilePath();
-		filename = browseRelFile(in_name, path, title, filters, false, 
+		filename = browseRelToParent(in_name, path, title, filters, false,
 			qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 	} else {
 		QString path = toqstr(lyxrc.document_path);
-		QString rel_filename = browseRelFile(in_name, path, title, filters, false, 
+		QString rel_filename = browseRelToParent(in_name, path, title, filters, false,
 			qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 		filename = makeAbsPath(rel_filename, path);
 	}

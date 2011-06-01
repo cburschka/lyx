@@ -84,7 +84,7 @@ void GuiPrint::change_adaptor()
 void GuiPrint::browseClicked()
 {
 	QString file =
-		browseRelFile(QString(), bufferFilePath(), qt_("Print to file"),
+		browseRelToParent(QString(), bufferFilePath(), qt_("Print to file"),
 			     QStringList(qt_("PostScript files (*.ps)")), true);
 	if (!file.isEmpty()) {
 		fileED->setText(file);

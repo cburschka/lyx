@@ -84,14 +84,29 @@ support::FileName libFileSearch(QString const & dir, QString const & name,
 support::FileName imageLibFileSearch(QString & dir, QString const & name,
 				     QString const & ext = QString());
 
-/** Wrapper around browseFile which tries to provide a filename
-	relative to relpath.  If the relative path is of the form "foo.txt"
-	or "bar/foo.txt", then it is returned as relative. OTOH, if it is
-	of the form "../baz/foo.txt", an absolute path is returned. This is
-	intended to be useful for insets which encapsulate files/
+/** Wrappers around browseFile which try to provide a filename
+	relative to relpath.
+
+\param title: title for dialog
+	
+\param filters: *.ps, etc
+
+\param save: whether to save dialog info (current path, etc) for next use.
+
+The \param labelN and \param dirN arguments provide for extra buttons 
+in the dialog (e.g., "Templates" and a path to that directory).
+
+The difference between the functions concerns when we think we have a 
+relative path. 
+
+In \c browseRelToParent, we return a relative path only if it IS NOT of 
+	the form "../../foo.txt".
+
+In \c browseRelToSub, we return a relative path only if it IS of the
+ form "../../foo.txt".
 */
-QString browseRelFile(QString const & filename,
-	QString const & refpath,
+QString browseRelToParent(QString const & filename,
+	QString const & relpath,
 	QString const & title,
 	QStringList const & filters,
 	bool save = false,
@@ -100,6 +115,15 @@ QString browseRelFile(QString const & filename,
 	QString const & label2 = QString(),
 	QString const & dir2 = QString());
 
+QString browseRelToSub(QString const & filename,
+	QString const & relpath,
+	QString const & title,
+	QStringList const & filters,
+	bool save = false,
+	QString const & label1 = QString(),
+	QString const & dir1 = QString(),
+	QString const & label2 = QString(),
+	QString const & dir2 = QString());
 
 /** Build filelists of all availabe bst/cls/sty-files. Done through
 *  kpsewhich and an external script, saved in *Files.lst.

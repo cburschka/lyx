@@ -1781,7 +1781,7 @@ void GuiDocument::browseLayout()
 	QString const label1 = qt_("Layouts|#o#O");
 	QString const dir1 = toqstr(lyxrc.document_path);
 	QStringList const filter(qt_("LyX Layout (*.layout)"));
-	QString file = browseRelFile(QString(), bufferFilePath(),
+	QString file = browseRelToParent(QString(), bufferFilePath(),
 		qt_("Local layout file"), filter, false,
 		label1, dir1);
 
@@ -1837,7 +1837,7 @@ void GuiDocument::browseMaster()
 	QString const old = latexModule->childDocLE->text();
 	QString const docpath = toqstr(support::onlyPath(buffer().absFileName()));
 	QStringList const filter(qt_("LyX Files (*.lyx)"));
-	QString file = browseRelFile(old, docpath, title, filter, false,
+	QString file = browseRelToSub(old, docpath, title, filter, false,
 		qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 
 	if (!file.isEmpty())
