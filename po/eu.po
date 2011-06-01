@@ -1,4 +1,4 @@
-# translation of lyx_2.0.0_eu.po to Basque
+# translation of lyx_2.0.1_eu.po to Basque
 # Basque translation of LyX
 # Copyright (C) 2008 LyX Developers
 #
@@ -7,10 +7,10 @@
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: lyx_2.0.0_eu\n"
+"Project-Id-Version: lyx_2.0.1_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-05-27 08:19-0400\n"
-"PO-Revision-Date: 2011-04-28 15:14+0200\n"
+"PO-Revision-Date: 2011-05-31 19:16+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "Language: eu\n"
@@ -114,10 +114,8 @@ msgid "S&ectioned bibliography"
 msgstr "Bibliografia &zatitua"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:120
-msgid ""
-"Here you can define an alternative program to or specific options of BibTeX."
-msgstr ""
-"Hemen bestelako programa bat edo BibTeX-en aukera zehatzak defini ditzakezu."
+msgid "Here you can define an alternative program to or specific options of BibTeX."
+msgstr "Hemen bestelako programa bat edo BibTeX-en aukera zehatzak defini ditzakezu."
 
 #: src/frontends/qt4/ui/BiblioUi.ui:123
 #: src/frontends/qt4/ui/PrefLatexUi.ui:127
@@ -142,10 +140,8 @@ msgid "&Options:"
 msgstr "&Aukerak:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:178
-msgid ""
-"Define options such as --min-crossrefs (see the documentation of BibTeX)"
-msgstr ""
-"Definitu aukerak --min-crossrefs bezalakoak (ikus BibTeX-en dokumentazioa)"
+msgid "Define options such as --min-crossrefs (see the documentation of BibTeX)"
+msgstr "Definitu aukerak --min-crossrefs bezalakoak (ikus BibTeX-en dokumentazioa)"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:21
 msgid "LyX: Add BibTeX Database"
@@ -809,8 +805,7 @@ msgstr "&Hautatutako aipamenak:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:72
 msgid "Click or press Enter to add the selected citation to the list"
-msgstr ""
-"Egin klik edo sakatu Sartu tekla hautatutako aipamenak zerrendari gehitzeko."
+msgstr "Egin klik edo sakatu Sartu tekla hautatutako aipamenak zerrendari gehitzeko."
 
 #: src/frontends/qt4/ui/CitationUi.ui:92
 msgid "Click or press Delete to delete the selected citation from the list"
@@ -896,8 +891,7 @@ msgid "Searc&h:"
 msgstr "&Bilatu:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:376
-msgid ""
-"Enter the text to search for and press Enter or click the button to search"
+msgid "Enter the text to search for and press Enter or click the button to search"
 msgstr ""
 "Sartu testua bilaketa egiteko eta sakatu Sartu tekla edo egin klik 'Bilatu' "
 "botoian."
@@ -1566,13 +1560,11 @@ msgstr "&CJK:"
 
 #: src/frontends/qt4/ui/FontUi.ui:203
 msgid "Input the font to be used for Chinese, Japanese or Korean (CJK) script"
-msgstr ""
-"Sartu letra-tipoa Txinera, Japoniera edo Koreera (CJK) script-ean erabiltzeko"
+msgstr "Sartu letra-tipoa Txinera, Japoniera edo Koreera (CJK) script-ean erabiltzeko"
 
 #: src/frontends/qt4/ui/FontUi.ui:210
 msgid "Use a real small caps shape, if the font provides one"
-msgstr ""
-"Erabili maiuskula txikien benetako forma bat, letra-tipoak eskaintzen badu."
+msgstr "Erabili maiuskula txikien benetako forma bat, letra-tipoak eskaintzen badu."
 
 #: src/frontends/qt4/ui/FontUi.ui:213
 msgid "Use true S&mall Caps"
@@ -1600,8 +1592,7 @@ msgstr "Irteeraren tamaina"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:141
 msgid "Sets height of graphic. Leave unchecked to set automatically."
-msgstr ""
-"Grafikoaren altuera ezartzen du. Utzi aktibatu gabe automatikoki ezartzeko."
+msgstr "Grafikoaren altuera ezartzen du. Utzi aktibatu gabe automatikoki ezartzeko."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:144
 msgid "Set &height:"
@@ -1613,8 +1604,7 @@ msgstr "&Grafikoaren eskala (%):"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:161
 msgid "Sets width of graphic. Leave unchecked to set automatically."
-msgstr ""
-"Grafikoaren zabalera ezartzen du. Utzi aktibatu gabe automatikoki ezartzeko."
+msgstr "Grafikoaren zabalera ezartzen du. Utzi aktibatu gabe automatikoki ezartzeko."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:164
 msgid "Set &width:"
@@ -1622,8 +1612,7 @@ msgstr "Ezarri &zabalera:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:174
 msgid "Scale image to maximum size not exceeding width and height"
-msgstr ""
-"Eskalatu irudia gehienezko tamainara (zabalera eta altuera gainditu gabe)"
+msgstr "Eskalatu irudia gehienezko tamainara (zabalera eta altuera gainditu gabe)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:187
 msgid "Rotate Graphics"
@@ -1924,8 +1913,7 @@ msgid "Select the index this entry should be listed in."
 msgstr "Hautatu sarrera hau zerrendatuta egon beharko lukeen indizea."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:190
-msgid ""
-"Here you can define an alternative index processor and specify its options."
+msgid "Here you can define an alternative index processor and specify its options."
 msgstr ""
 "Hemen indizearentzako bestelako prozesadore bat defini dezakezu, eta "
 "dagokion aukerak zehaztu."
@@ -1949,10 +1937,8 @@ msgid "&Use multiple indexes"
 msgstr "&Erabili indize anitzak"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
-msgid ""
-"Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
-msgstr ""
-"Sartu indizearen izena (adib. \"Izenen indizea\") eta sakatu \"Gehitu\""
+msgid "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
+msgstr "Sartu indizearen izena (adib. \"Izenen indizea\") eta sakatu \"Gehitu\""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:210
 msgid "Add a new index to the list"
@@ -2028,8 +2014,7 @@ msgstr "Dokumentu-&klasea"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:44
 msgid "Click to select a local document class definition file"
-msgstr ""
-"Egin klik lokaleko dokumentu-klasearen definizioaren fitxategi bat hautatzeko"
+msgstr "Egin klik lokaleko dokumentu-klasearen definizioaren fitxategi bat hautatzeko"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:47
 msgid "&Local Layout..."
@@ -2762,8 +2747,7 @@ msgid "&General"
 msgstr "&Orokorra"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:99
-msgid ""
-"If not stated explicitly, fill title and author from appropriate environments"
+msgid "If not stated explicitly, fill title and author from appropriate environments"
 msgstr "Ez bada zehazten, bete titulua eta egilea ingurune egokitik"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:102
@@ -3243,8 +3227,7 @@ msgstr "Editatu lerroko Matematikako makroak izena egoera-barran"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:109
 msgid "Edit Math Macros with a parameter list (like in LyX < 1.6)"
-msgstr ""
-"Editatu Matematikako makroak parametroen zerrendarekin (LyX < 1.6 bezala)"
+msgstr "Editatu Matematikako makroak parametroen zerrendarekin (LyX < 1.6 bezala)"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:130
 msgid "Skip trailing non-word characters"
@@ -3513,8 +3496,7 @@ msgid "Right-to-left language support"
 msgstr "'Eskuin->ezker' hizkuntzen euskarria"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:215 src/LyXRC.cpp:3419
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Hautatu eskuinetik-ezkerrerako hizkuntzen (adib. arabiera, hebreera) "
 "euskarria gaitzeko."
@@ -3536,10 +3518,8 @@ msgid "&Visual"
 msgstr "&Bisuala"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:24
-msgid ""
-"Enable if a specific font encoding (such as T1) should be used (via fontenc)"
-msgstr ""
-"Gaitu letra-kodeketa zehatz bat (T1 adib.) erabili behar bada (fontenc bidez)"
+msgid "Enable if a specific font encoding (such as T1) should be used (via fontenc)"
+msgstr "Gaitu letra-kodeketa zehatz bat (T1 adib.) erabili behar bada (fontenc bidez)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:27
 msgid "Use LaTe&X font encoding:"
@@ -3590,8 +3570,7 @@ msgstr "&DVI ikustailearen paper-tamainaren aukerak:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:105
 msgid "Optional paper size flag (-paper) for some DVI viewers"
-msgstr ""
-"DVI ikustaile batzuen paper-tamaina ezartzeko hautazko bandera (-paper)"
+msgstr "DVI ikustaile batzuen paper-tamaina ezartzeko hautazko bandera (-paper)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:162
 msgid "BibTeX command and options"
@@ -3646,6 +3625,10 @@ msgid ""
 "TeX engine was not correctly detected at configure time.\n"
 "Warning: Your changes here will not be saved."
 msgstr ""
+"Hautatu LyX-ek Windows edo Cygwin estiloko bide-izenak\n"
+"kanporatu behar dituen LaTeX fitxategientzako. Ez aldatu\n"
+"lehenetsia TeX motorra ez bada ongi antzeman konfiguratzean.\n"
+"Abisua: hemen egiten dituzun aldaketak ez dira gordeko."
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:332
 msgid "&Use Windows-style paths in LaTeX files"
@@ -3699,8 +3682,7 @@ msgstr "Fitxategi denak"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:129
 msgid "What to do when existing files are going to be overwritten on export."
-msgstr ""
-"Zer egin existitzen diren fitxategiak gainidatziko direnean esportatzean."
+msgstr "Zer egin existitzen diren fitxategiak gainidatziko direnean esportatzean."
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:151
 msgid "Forward search"
@@ -3719,7 +3701,6 @@ msgid "&PATH prefix:"
 msgstr "&Bide-izenak:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:51 src/LyXRC.cpp:3329
-#, fuzzy
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable.\n"
@@ -3730,19 +3711,17 @@ msgstr ""
 "duen formatua."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:58
-#, fuzzy
 msgid "TEX&INPUTS prefix:"
-msgstr "&Bide-izenak:"
+msgstr "TEX&INPUTS-en aurrizkia:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:68 src/LyXRC.cpp:3488
-#, fuzzy
 msgid ""
 "Specify those directories which should be prepended to the TEXINPUTS "
 "environment variable.\n"
 "A '.' represents the current document directory. Use the OS native format."
 msgstr ""
 "Zehaztu itzazu zein direktorio aurretik gehitutako egon behar duten "
-"inguruneko PATH aldagaian. Erabili jatorrizko Sist. Eragileak erabiltzen "
+"inguruneko TEXINPUTS aldagaian. Erabili jatorrizko Sist. Eragileak erabiltzen "
 "duen formatua."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:75
@@ -3810,8 +3789,7 @@ msgstr "Inprimatu &fitxategira:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:98
 msgid "Option used to print to non-default printer."
-msgstr ""
-"Lehenetsia ez den inprimagailu batean inprimatzeko erabiliko den aukera."
+msgstr "Lehenetsia ez den inprimagailu batean inprimatzeko erabiliko den aukera."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:101
 msgid "Set &printer:"
@@ -3829,8 +3807,7 @@ msgstr "Ilararen &inprimagailua:"
 msgid ""
 "Setting causes printer command to print to file and then use this actually "
 "to print."
-msgstr ""
-"Fitxategian inprimatu erazten du ezarpenak, gero inprimatzean erabiltzeko."
+msgstr "Fitxategian inprimatu erazten du ezarpenak, gero inprimatzean erabiltzeko."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:136
 msgid "Spool co&mmand:"
@@ -3898,8 +3875,7 @@ msgstr "Au&kera gehigarriak:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:298
 msgid "Customizes output to a given printer. Expert option."
-msgstr ""
-"Pertsonalizatu irteera zehaztutako inprimagailura. Adituentzako aukera."
+msgstr "Pertsonalizatu irteera zehaztutako inprimagailura. Adituentzako aukera."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:301
 msgid ""
@@ -4156,8 +4132,7 @@ msgstr "Instantzia &bakuna"
 
 #: src/frontends/qt4/ui/PrefUi.ui:272
 msgid "Whether to place close button on each tab or only one in the top left."
-msgstr ""
-"Ixteko botoia fitxa bakoitzean kokatu edo soilik goi ezkerrean adierazten du."
+msgstr "Ixteko botoia fitxa bakoitzean kokatu edo soilik goi ezkerrean adierazten du."
 
 #: src/frontends/qt4/ui/PrefUi.ui:275
 msgid "&Single close-tab button"
@@ -4292,8 +4267,7 @@ msgstr "Indize &erabilgarriak:"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:89
 msgid "Select the index that shall be printed at this place of the document."
-msgstr ""
-"Hautatu indizea (dokumentuaren kokaleku honetan inprimatuko litzatekeena)."
+msgstr "Hautatu indizea (dokumentuaren kokaleku honetan inprimatuko litzatekeena)."
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
 #: src/frontends/qt4/GuiDocument.cpp:1293 src/frontends/qt4/GuiPrefs.cpp:230
@@ -4447,8 +4421,7 @@ msgstr "&Hitz osoak soilik"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:42
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr ""
-"Prozesatu bihurtutako fitxategia komando honekin ($$FName= fitxategi-izena)"
+msgstr "Prozesatu bihurtutako fitxategia komando honekin ($$FName= fitxategi-izena)"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:101
 msgid "&Export formats:"
@@ -4505,8 +4478,7 @@ msgid "Spell Checker"
 msgstr "Zuzentzaile ortografikoa"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:43
-msgid ""
-"The checked language. Switching this alters the language of the checked word."
+msgid "The checked language. Switching this alters the language of the checked word."
 msgstr ""
 "Zuzenketako hizkuntza. Hau aldatzean zuzendutako hitzaren hizkuntza aldatzen "
 "da."
@@ -4620,8 +4592,7 @@ msgstr "Lerrokatze &bertikala:"
 msgid ""
 "Specifies the vertical alignment of this cell in relation to the baseline of "
 "the row."
-msgstr ""
-"Gelaxka honen lerrokadura bertikala zehazten du (oinarrizko lerroarekiko)."
+msgstr "Gelaxka honen lerrokadura bertikala zehazten du (oinarrizko lerroarekiko)."
 
 #: src/frontends/qt4/ui/TabularUi.ui:228
 msgid "Merge cells of different columns"
@@ -4793,8 +4764,7 @@ msgstr "Goiburua:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1202
 msgid "Repeat this row as header on every (except the first) page"
-msgstr ""
-"Errepikatu errenkada goiburu gisa orrialde bakoitzean (aurrenekoa ezik)"
+msgstr "Errepikatu errenkada goiburu gisa orrialde bakoitzean (aurrenekoa ezik)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1205
 #: src/frontends/qt4/ui/TabularUi.ui:1242
@@ -4839,8 +4809,7 @@ msgstr "Orri-oina:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1280
 msgid "Repeat this row as footer on every (except the last) page"
-msgstr ""
-"Errepikatu errenkada orri-oin gisa orrialde guztietan (azkenengoa ezik)"
+msgstr "Errepikatu errenkada orri-oin gisa orrialde guztietan (azkenengoa ezik)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1304
 msgid "Last footer:"
@@ -4895,8 +4864,7 @@ msgid "Rebuild the file lists"
 msgstr "Eraiki berriz fitxategi-zerrenda"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:104
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Erakutsi markatutako fitxategiaren edukia. Fitxategia bide-izenarekin "
 "erakusten bada soilik."
@@ -7734,49 +7702,40 @@ msgid "Mother Tongue:"
 msgstr "Ama-hizkuntza:"
 
 #: lib/layouts/europecv.layout:112
-#, fuzzy
 msgid "LangHeader"
-msgstr "Goiburua"
+msgstr "HizkGoiburua"
 
 #: lib/layouts/europecv.layout:116
-#, fuzzy
 msgid "Language Header:"
-msgstr "Ezker-goiburua:"
+msgstr "Hizkuntzaren goiburua:"
 
 #: lib/layouts/europecv.layout:122 lib/layouts/moderncv.layout:119
-#, fuzzy
 msgid "Language:"
-msgstr "&Hizkuntza:"
+msgstr "Hizkuntza:"
 
 #: lib/layouts/europecv.layout:125
-#, fuzzy
 msgid "LastLanguage"
-msgstr "Hizkuntza"
+msgstr "AzkenHizkuntza"
 
 #: lib/layouts/europecv.layout:128
-#, fuzzy
 msgid "Last Language:"
-msgstr "&Hizkuntza:"
+msgstr "Azken hizkuntza:"
 
 #: lib/layouts/europecv.layout:131
-#, fuzzy
 msgid "LangFooter"
-msgstr "Orri-oina:"
+msgstr "HizkOrri-oina"
 
 #: lib/layouts/europecv.layout:135
-#, fuzzy
 msgid "Language Footer:"
-msgstr "Ezkerreko orri-oina:"
+msgstr "Hizkuntzaren orri-oina:"
 
 #: lib/layouts/europecv.layout:138
-#, fuzzy
 msgid "End"
-msgstr "Eta"
+msgstr "Amaiera"
 
 #: lib/layouts/europecv.layout:148
-#, fuzzy
 msgid "End of CV"
-msgstr "CVaren hasiera"
+msgstr "CVaren amaiera"
 
 #: lib/layouts/foils.layout:42
 msgid "Foilhead"
@@ -8793,34 +8752,28 @@ msgid "Space:"
 msgstr "Tartea:"
 
 #: lib/layouts/moderncv.layout:122
-#, fuzzy
 msgid "Computer"
-msgstr "Iturburu osoa"
+msgstr "Ordenagailua"
 
 #: lib/layouts/moderncv.layout:125
-#, fuzzy
 msgid "Computer:"
-msgstr "Kan&poan:"
+msgstr "Ordenagailua:"
 
 #: lib/layouts/moderncv.layout:128
-#, fuzzy
 msgid "EmptySection"
-msgstr "Atala"
+msgstr "AtalaHutsik"
 
 #: lib/layouts/moderncv.layout:137
-#, fuzzy
 msgid "Empty Section"
-msgstr "Atala"
+msgstr "Atala hutsik"
 
 #: lib/layouts/moderncv.layout:144
-#, fuzzy
 msgid "CloseSection"
-msgstr "hautapena"
+msgstr "ItxiAtala"
 
 #: lib/layouts/moderncv.layout:147
-#, fuzzy
 msgid "Close Section"
-msgstr "hautapena"
+msgstr "Itxi atala"
 
 #: lib/layouts/paper.layout:147
 msgid "SubTitle"
@@ -16497,8 +16450,7 @@ msgstr "Diskoaren errorea: "
 
 #: src/Buffer.cpp:319
 #, c-format
-msgid ""
-"LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
+msgid "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr ""
 "LyX-ek ezin izan du %1$s aldi baterako direktorioa sortu (agian diskoa "
 "beteta dago?)"
@@ -16650,8 +16602,7 @@ msgstr "Fitxategia irakurtzeko soilik da"
 #: src/Buffer.cpp:1026
 #, c-format
 msgid "The file %1$s cannot be written because it is marked as read-only."
-msgstr ""
-"%1$s fitxategia ezin da idatzi irakurtzeko soilik bezala markatuta baitago."
+msgstr "%1$s fitxategia ezin da idatzi irakurtzeko soilik bezala markatuta baitago."
 
 #: src/Buffer.cpp:1035
 #, c-format
@@ -17200,8 +17151,7 @@ msgstr "Estatistikak"
 
 #: src/BufferView.cpp:1780
 #, c-format
-msgid ""
-"`inset-forall' interrupted because number of actions is larger than %1$d"
+msgid "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr "'inset-forall' etenda ekintza kopurua %1$d baino handiagoa delako"
 
 #: src/BufferView.cpp:1782
@@ -18272,13 +18222,11 @@ msgstr "'--execute' aukeraren ondoren komandoa falta da"
 
 #: src/LyX.cpp:1135
 msgid "Missing file type [eg latex, ps...] after --export switch"
-msgstr ""
-"'--export' aukeraren ondoren fitxategi mota falta da (adib. latex, ps...)"
+msgstr "'--export' aukeraren ondoren fitxategi mota falta da (adib. latex, ps...)"
 
 #: src/LyX.cpp:1148
 msgid "Missing file type [eg latex, ps...] after --import switch"
-msgstr ""
-"'--import' aukeraren ondoren fitxategi mota falta da (adib. latex, ps...)"
+msgstr "'--import' aukeraren ondoren fitxategi mota falta da (adib. latex, ps...)"
 
 #: src/LyX.cpp:1153
 msgid "Missing filename for --import"
@@ -18317,8 +18265,7 @@ msgstr ""
 "balioetara aldatzerik nahi ez baduzu."
 
 #: src/LyXRC.cpp:3097
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Automatikoki gordetzeko bitartea (segundotan). 0 ipiniz gero ez da "
 "automatikoki gordeko."
@@ -18341,8 +18288,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3112
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
-msgstr ""
-"Definitu bibtex programaren aukerak PLaTeX-entzako (Japonieraren LaTeX-a)."
+msgstr "Definitu bibtex programaren aukerak PLaTeX-entzako (Japonieraren LaTeX-a)."
 
 #: src/LyXRC.cpp:3116
 msgid ""
@@ -18384,8 +18330,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3146
 msgid "Make Apple key act as Meta and Control key as Ctrl."
-msgstr ""
-"Egin Apple tekla Meta gisa funtzionatzea (eta Control berriz Ktrl gisa)."
+msgstr "Egin Apple tekla Meta gisa funtzionatzea (eta Control berriz Ktrl gisa)."
 
 #: src/LyXRC.cpp:3150
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
@@ -18512,14 +18457,11 @@ msgstr ""
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
-msgstr ""
-"Hautatu hizkuntza aldatzeko komandoa dokumentuaren hasieran beharrezkoa bada."
+msgstr "Hautatu hizkuntza aldatzeko komandoa dokumentuaren hasieran beharrezkoa bada."
 
 #: src/LyXRC.cpp:3235
-msgid ""
-"Select if a language switching command is needed at the end of the document."
-msgstr ""
-"Hautatu hizkuntza aldatzeko komandoa dokumentuaren amaieran beharrezkoa bada."
+msgid "Select if a language switching command is needed at the end of the document."
+msgstr "Hautatu hizkuntza aldatzeko komandoa dokumentuaren amaieran beharrezkoa bada."
 
 #: src/LyXRC.cpp:3239
 msgid ""
@@ -18600,8 +18542,7 @@ msgid "Select to display the completion popup in text mode."
 msgstr "Hautatu osaketako laster-menua testu moduan bistaratzeko."
 
 #: src/LyXRC.cpp:3296
-msgid ""
-"Show the completion popup without delay after non-unique completion attempt."
+msgid "Show the completion popup without delay after non-unique completion attempt."
 msgstr ""
 "Erakutsi osaketako laster-menua atzerapenik gabe, osaketa bakarra ez den "
 "saioaren ostean."
@@ -18643,13 +18584,11 @@ msgstr ""
 
 #: src/LyXRC.cpp:3335
 msgid "Shows a typeset preview of things such as math"
-msgstr ""
-"Gauzen konposaketaren aurrebista erakusten du, matematikarena bezalakoa."
+msgstr "Gauzen konposaketaren aurrebista erakusten du, matematikarena bezalakoa."
 
 #: src/LyXRC.cpp:3339
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
-msgstr ""
-"Aurrebistako ekuazioek \"(#)\" motako etiketak dituzte, zenbakien ordez."
+msgstr "Aurrebistako ekuazioek \"(#)\" motako etiketak dituzte, zenbakien ordez."
 
 #: src/LyXRC.cpp:3343
 msgid "Scale the preview size to suit."
@@ -18685,8 +18624,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3367
 msgid "Extension of printer program output file. Usually \".ps\"."
-msgstr ""
-"Inprimatze-programak sortutako fitxategiaren luzapena, normalean \".ps\"."
+msgstr "Inprimatze-programak sortutako fitxategiaren luzapena, normalean \".ps\"."
 
 #: src/LyXRC.cpp:3371
 msgid "The option to print out in landscape."
@@ -18749,12 +18687,10 @@ msgstr "Hautatu helburuko inprimagailu-izena, inprimatze-programari pasatzeko."
 
 #: src/LyXRC.cpp:3415
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
-msgstr ""
-"Inprimatzeko zure programarik gustukoena, adibidez, \"dvips\", \"dvilj4\"."
+msgstr "Inprimatzeko zure programarik gustukoena, adibidez, \"dvips\", \"dvilj4\"."
 
 #: src/LyXRC.cpp:3423
-msgid ""
-"Select to have visual bidi cursor movement, unselect for logical movement."
+msgid "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 "Hautatu kurtsore bidirekzionalaren mugimendu bisuala edukitzeko. Desautatu "
 "mugimendu logikoa edukitzeko."
@@ -18852,8 +18788,7 @@ msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr "Gaitu argibideen itxura automatikoa laneko arean."
 
 #: src/LyXRC.cpp:3513
-msgid ""
-"Enable the pixmap cache that might improve performance on Mac and Windows."
+msgid "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 "Gaitu pixmap-aren cachea MacOS eta Windows sistemetan errendimendua "
 "hobetzeko."
@@ -18967,8 +18902,7 @@ msgstr "Token ezezaguna"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr ""
-"Paragrafo baten hasieran ezin duzu zuriune bat sartu. Irakurri Tutoretza."
+msgstr "Paragrafo baten hasieran ezin duzu zuriune bat sartu. Irakurri Tutoretza."
 
 #: src/Text.cpp:947
 msgid "You cannot type two spaces this way. Please read the Tutorial."
@@ -19417,8 +19351,7 @@ msgstr "&Mantendu aldaketak"
 #: src/buffer_funcs.cpp:86
 #, c-format
 msgid "The file %1$s exists but is not readable by the current user."
-msgstr ""
-"%1$s existitzen da, baina ez da irakurgarria uneko erabiltzailearentzako."
+msgstr "%1$s existitzen da, baina ez da irakurgarria uneko erabiltzailearentzako."
 
 #: src/buffer_funcs.cpp:89
 msgid "File not readable!"
@@ -19546,8 +19479,7 @@ msgstr "Mesedez, ongi instalatu \n"
 
 #: src/frontends/qt4/GuiAbout.cpp:53
 msgid "amount of work other people have done for the LyX project."
-msgstr ""
-"beste pertsona batzuek LyX proiektuan eginiko lan ikaragarria eskertzeko."
+msgstr "beste pertsona batzuek LyX proiektuan eginiko lan ikaragarria eskertzeko."
 
 #: src/frontends/qt4/GuiAbout.cpp:84
 #, c-format
@@ -20068,8 +20000,7 @@ msgstr "Gainidatzi kanpoko fitxategia?"
 #: src/frontends/qt4/GuiClipboard.cpp:241
 #, c-format
 msgid "File %1$s already exists, do you want to overwrite it?"
-msgstr ""
-"%1$s fitxategia badago lehendik ere. Nahi duzu fitxategi hori gainidaztea?"
+msgstr "%1$s fitxategia badago lehendik ere. Nahi duzu fitxategi hori gainidaztea?"
 
 #: src/frontends/qt4/GuiCommandBuffer.cpp:98
 msgid "List of previous commands"
@@ -20466,8 +20397,7 @@ msgstr "Erabilkaitza: %1$s"
 #: src/frontends/qt4/GuiDocument.cpp:1270
 #: src/frontends/qt4/GuiDocument.cpp:1371
 msgid "Input listings parameters below. Enter ? for a list of parameters."
-msgstr ""
-"Sarrerako zerrenden parametroak azpian. Sartu ? parametroen zerrendarentzako."
+msgstr "Sarrerako zerrenden parametroak azpian. Sartu ? parametroen zerrendarentzako."
 
 #: src/frontends/qt4/GuiDocument.cpp:1274
 #: src/frontends/qt4/GuiDocument.cpp:1295
@@ -20914,10 +20844,8 @@ msgstr ""
 #: src/frontends/qt4/GuiInclude.cpp:120 src/frontends/qt4/GuiInclude.cpp:182
 #: src/frontends/qt4/GuiListings.cpp:239 src/frontends/qt4/GuiListings.cpp:375
 #: src/frontends/qt4/GuiListings.cpp:450
-msgid ""
-"Input listing parameters on the right. Enter ? for a list of parameters."
-msgstr ""
-"Sartu zerrendaren parametroak eskuinean. Sartu ? parametroak zerrendatzeko."
+msgid "Input listing parameters on the right. Enter ? for a list of parameters."
+msgstr "Sartu zerrendaren parametroak eskuinean. Sartu ? parametroak zerrendatzeko."
 
 #: src/frontends/qt4/GuiInclude.cpp:315
 msgid "Select document to include"
@@ -23058,8 +22986,7 @@ msgid "Should be composed of one or more of %1$s."
 msgstr "%1$s bat edo gehiagorekin osatuta egon beharko luke."
 
 #: src/insets/InsetListingsParams.cpp:283
-msgid ""
-"Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
+msgid "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr "Erabili \\footnotesize, \\small, \\itshape, \\ttfamily edo antzeko bat"
 
 #: src/insets/InsetListingsParams.cpp:285
@@ -23806,11 +23733,3 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Erabiltzaile ezezaguna"
 
-#~ msgid ""
-#~ "Select if LyX should output Windows-style paths rather than Posix-style "
-#~ "paths to LaTeX files. Useful if you're using the native Windows MikTeX "
-#~ "rather than the Cygwin teTeX."
-#~ msgstr ""
-#~ "Hautatu LyX-ek Windows estiloko bide-izenak idatzi behar dituen zehazteko "
-#~ "(Posix estiloko bide-izenen ordez). Erabilgarria Windows-eko jatorrizkoa "
-#~ "den MikTeX erabiltzean, Cygwin-eko teTeX erabili ordez.."
