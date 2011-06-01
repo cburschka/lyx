@@ -689,6 +689,14 @@ contributers = [
                  "3 August 2007",
                  u"Improvements to mouse wheel scrolling; many bug reports"),
 
+     contributer(u"Max Funk",
+                 "maxkhfunk () gmx ! net",
+                 "GPL",
+                 "GPL",
+                 "m=130659936521230",
+                 "28 May 2011",
+                 u"Bug fixes"),
+
      contributer(u"Edscott Wilson Garcia",
                  "edscott () xfce ! org",
                  "GPL",
