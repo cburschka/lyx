@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-02 00:31+0200\n"
-"PO-Revision-Date: 2011-06-02 00:35+0100\n"
+"POT-Creation-Date: 2011-06-02 19:21+0200\n"
+"PO-Revision-Date: 2011-06-02 19:24+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "X-Generator: KBabel 1.10.2\n"
 "X-Poedit-Basepath: C:/cygwin/usr/local/src/lyx/lyx-devel\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -2190,7 +2190,6 @@ msgid "&Other:"
 msgstr "Altr&o:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:125
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:39
 msgid "Language pac&kage:"
 msgstr "&Pacchetto linguistico:"
 
@@ -3510,6 +3509,10 @@ msgstr "Li&ngua interfaccia utente:"
 msgid "Select the language of the user interface (menus, dialogs, etc.)"
 msgstr "Seleziona la lingua dell'interfaccia utente (menu, dialoghi, ecc.)"
 
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:39
+msgid "Language &package:"
+msgstr "&Pacchetto linguistico:"
+
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:55
 #: src/frontends/qt4/GuiDocument.cpp:1041
 msgid "Automatic"
@@ -3542,7 +3545,7 @@ msgid "The LaTeX command that ends a switch to a foreign language"
 msgstr "È il comando LaTeX che termina il cambiamento locale della lingua"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:134
-msgid "Default Decimal &Point:"
+msgid "Default Decimal &Separator:"
 msgstr "Separatore &decimale predefinito:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:160
@@ -3595,7 +3598,7 @@ msgstr ""
 "da destra a sinistra (cioè: Ebreo, Arabo)."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:218
-msgid "Enable RTL su&pport"
+msgid "Enable &RTL support"
 msgstr "Abilita supp&orto RTL"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:233
@@ -24738,6 +24741,9 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Utente sconosciuto"
 
+#~ msgid "Default Decimal &Point:"
+#~ msgstr "Separatore &decimale predefinito:"
+
 #~ msgid ""
 #~ "Select if LyX should output Windows-style paths rather than Posix-style "
 #~ "paths to LaTeX files. Useful if you're using the native Windows MikTeX "
@@ -25195,15 +25201,15 @@ msgstr "Utente sconosciuto"
 #~ msgstr "Nota"
 
 #~ msgid ""
-#~ "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%\"{%"
-#~ "journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]][[{%"
-#~ "institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, %"
-#~ "pages%]]}."
+#~ "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%"
+#~ "\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]]"
+#~ "[[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages"
+#~ "%[[, %pages%]]}."
 #~ msgstr ""
-#~ "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%\"{%"
-#~ "journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]][[{%"
-#~ "institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, %"
-#~ "pages%]]}."
+#~ "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%"
+#~ "\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]]"
+#~ "[[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages"
+#~ "%[[, %pages%]]}."
 
 #~ msgid "Use the XeTeX processing engine"
 #~ msgstr "Usa XeTeX per la compilazione"
