@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-06-01 09:00-0400\n"
-"PO-Revision-Date: 2011-04-19 19:00+0300\n"
+"PO-Revision-Date: 2011-06-01 19:23+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
@@ -3651,6 +3651,11 @@ msgid ""
 "TeX engine was not correctly detected at configure time.\n"
 "Warning: Your changes here will not be saved."
 msgstr ""
+"Виберіть режим визначення шляхів до файлів LaTeX для LyX:\n"
+"Windows чи Cygwin. Не змінюєте типового режиму, якщо\n"
+"рушієві TeX вдалося правильно визначити шляхи під час\n"
+"налаштування. Попередження: внесені вами тут зміни\n"
+"не буде збережено."
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:332
 msgid "&Use Windows-style paths in LaTeX files"
@@ -3723,29 +3728,27 @@ msgid "&PATH prefix:"
 msgstr "Пре&фікс PATH:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:51 src/LyXRC.cpp:3329
-#, fuzzy
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable.\n"
 "Use the OS native format."
 msgstr ""
-"Ці теки будуть використані до обробки змінної середовища PATH. Вказуйте їх в "
-"тому вигляді, як прийнято в вашій операційній системі."
+"Ці теки буде додано до змінної середовища PATH.\n"
+"Вказуйте їх в тому форматі, який використано у вашій операційній системі."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:58
-#, fuzzy
 msgid "TEX&INPUTS prefix:"
-msgstr "Пре&фікс PATH:"
+msgstr "Префі&кс TEXINPUTS:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:68 src/LyXRC.cpp:3488
-#, fuzzy
 msgid ""
 "Specify those directories which should be prepended to the TEXINPUTS "
 "environment variable.\n"
 "A '.' represents the current document directory. Use the OS native format."
 msgstr ""
-"Ці теки будуть використані до обробки змінної середовища PATH. Вказуйте їх в "
-"тому вигляді, як прийнято в вашій операційній системі."
+"Ці теки буде додано до змінної середовища TEXINPUTS.\n"
+"«.» відповідає поточному каталогу документа. Вказуйте їх в тому форматі, який "
+"використано у вашій операційній системі."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:75
 #: src/frontends/qt4/ui/PrefPathsUi.ui:98
@@ -7738,49 +7741,40 @@ msgid "Mother Tongue:"
 msgstr "Рідна мова:"
 
 #: lib/layouts/europecv.layout:112
-#, fuzzy
 msgid "LangHeader"
-msgstr "Заголовок"
+msgstr "ШапкаМови"
 
 #: lib/layouts/europecv.layout:116
-#, fuzzy
 msgid "Language Header:"
-msgstr "Ліва шапка:"
+msgstr "Шапка мови:"
 
 #: lib/layouts/europecv.layout:122 lib/layouts/moderncv.layout:119
-#, fuzzy
 msgid "Language:"
-msgstr "&Мова:"
+msgstr "Мова:"
 
 #: lib/layouts/europecv.layout:125
-#, fuzzy
 msgid "LastLanguage"
-msgstr "Мова"
+msgstr "ОстМова"
 
 #: lib/layouts/europecv.layout:128
-#, fuzzy
 msgid "Last Language:"
-msgstr "&Мова:"
+msgstr "Остання мова:"
 
 #: lib/layouts/europecv.layout:131
-#, fuzzy
 msgid "LangFooter"
-msgstr "Підвал:"
+msgstr "ПідвалМови"
 
 #: lib/layouts/europecv.layout:135
-#, fuzzy
 msgid "Language Footer:"
-msgstr "Підвал ліворуч:"
+msgstr "Підвал мови:"
 
 #: lib/layouts/europecv.layout:138
-#, fuzzy
 msgid "End"
-msgstr "Та"
+msgstr "Кінець"
 
 #: lib/layouts/europecv.layout:148
-#, fuzzy
 msgid "End of CV"
-msgstr "Початок резюме"
+msgstr "Кінець резюме"
 
 #: lib/layouts/foils.layout:42
 msgid "Foilhead"
@@ -8797,34 +8791,28 @@ msgid "Space:"
 msgstr "Проміжок:"
 
 #: lib/layouts/moderncv.layout:122
-#, fuzzy
 msgid "Computer"
-msgstr "Повне джерело"
+msgstr "Комп'ютер"
 
 #: lib/layouts/moderncv.layout:125
-#, fuzzy
 msgid "Computer:"
-msgstr "&Ззовні:"
+msgstr "Комп'ютер:"
 
 #: lib/layouts/moderncv.layout:128
-#, fuzzy
 msgid "EmptySection"
-msgstr "Розділ"
+msgstr "ПорожнійРозділ"
 
 #: lib/layouts/moderncv.layout:137
-#, fuzzy
 msgid "Empty Section"
-msgstr "Розділ"
+msgstr "Порожній розділ"
 
 #: lib/layouts/moderncv.layout:144
-#, fuzzy
 msgid "CloseSection"
-msgstr "вибране"
+msgstr "ЗавершальнийРозділ"
 
 #: lib/layouts/moderncv.layout:147
-#, fuzzy
 msgid "Close Section"
-msgstr "вибране"
+msgstr "Завершальний розділ"
 
 #: lib/layouts/paper.layout:147
 msgid "SubTitle"
@@ -17228,13 +17216,15 @@ msgstr "Гілка вже існує"
 
 #: src/BufferView.cpp:2221
 msgid "Inverse Search Failed"
-msgstr ""
+msgstr "Не вдалося виконати зворотний пошук"
 
 #: src/BufferView.cpp:2222
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
 msgstr ""
+"Під час зворотного пошуку було вказано помилкову позицію.\n"
+"Вам слід оновити дані для перегляду документа."
 
 #: src/BufferView.cpp:2596
 #, c-format
@@ -22103,9 +22093,9 @@ msgid "Opening child document %1$s..."
 msgstr "Відкриття дочірнього документа %1$s…"
 
 #: src/frontends/qt4/GuiView.cpp:2935
-#, fuzzy, c-format
+#, c-format
 msgid "No buffer for file: %1$s."
-msgstr "Немає інформації для перегляду %1$s"
+msgstr "Немає буфера для файла %1$s."
 
 #: src/frontends/qt4/GuiView.cpp:2958
 #, c-format
