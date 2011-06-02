@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-10-22 11:29+0200\n"
-"PO-Revision-Date: 2011-06-01 16:00+0100\n"
+"PO-Revision-Date: 2011-06-01 22:51+0100\n"
 "Last-Translator: Zoran T. Filipović <zoran.filipovic@yahoo.com>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -1563,7 +1563,7 @@ msgstr "&Ime"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:36
 msgid "Listing Parameters"
-msgstr ""
+msgstr "Spisak Parametara"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:66
 #: src/frontends/qt4/ui/ListingsUi.ui:507
@@ -2442,11 +2442,11 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:121
 msgid "&From format:"
-msgstr ""
+msgstr "&Iz formata:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:153
 msgid "&To format:"
-msgstr ""
+msgstr "&U format:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:194
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:54
@@ -2458,7 +2458,7 @@ msgstr ""
 #: src/frontends/qt4/GuiPrefs.cpp:2413
 #: src/frontends/qt4/GuiPrefs.cpp:2477
 msgid "Remo&ve"
-msgstr ""
+msgstr "Pome&ri"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:239
 msgid "Converter Defi&nitions"
@@ -3311,7 +3311,7 @@ msgstr "Štampaj sve stranice"
 
 #: src/frontends/qt4/ui/PrintUi.ui:91
 msgid "Fro&m"
-msgstr ""
+msgstr "I&z"
 
 #: src/frontends/qt4/ui/PrintUi.ui:104
 msgid "&All"
@@ -3475,7 +3475,7 @@ msgstr "Uređivanje prečice"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:77
 msgid "Enter LyX function or command sequence"
-msgstr ""
+msgstr "Unesite funkciju Lyx-a ili komandnu sekvencu "
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:87
 msgid "Remove last key from the shortcut sequence"
@@ -3483,7 +3483,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:90
 msgid "&Delete Key"
-msgstr ""
+msgstr "&Taster za brisanje"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:97
 msgid "Clear current shortcut"
@@ -3500,7 +3500,7 @@ msgstr "&Prečica:"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:117
 msgid "&Function:"
-msgstr ""
+msgstr "&Funkcija:"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:130
 msgid "Type shortcut after clicking on this field. You can reset the content with the 'Clear' button"
@@ -3572,7 +3572,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:50
 msgid "Column Width"
-msgstr ""
+msgstr "Širina Kolone"
 
 #: src/frontends/qt4/ui/TabularUi.ui:68
 msgid "Fixed width of the column"
@@ -3588,7 +3588,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:123
 msgid "&Horizontal alignment:"
-msgstr ""
+msgstr "&Horizontalno poravnavanje:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:133
 msgid "Horizontal alignment in column"
@@ -3622,7 +3622,7 @@ msgstr "Objedinjavanje ćelija"
 
 #: src/frontends/qt4/ui/TabularUi.ui:202
 msgid "&Multicolumn"
-msgstr ""
+msgstr "&Višekolumno"
 
 #: src/frontends/qt4/ui/TabularUi.ui:209
 msgid "LaTe&X argument:"
@@ -3634,11 +3634,11 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:227
 msgid "&Borders"
-msgstr ""
+msgstr "&Granice"
 
 #: src/frontends/qt4/ui/TabularUi.ui:247
 msgid "All Borders"
-msgstr ""
+msgstr "Sve Granice"
 
 #: src/frontends/qt4/ui/TabularUi.ui:259
 msgid "Set all borders of the current (selected) cell(s)"
@@ -3694,7 +3694,7 @@ msgstr "Iz&među redova:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:997
 msgid "&Longtable"
-msgstr ""
+msgstr "&Duga tabela"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1025
 msgid "Set a page break on the current row"
@@ -3718,7 +3718,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:1064
 msgid "Border below"
-msgstr ""
+msgstr "Donja granica"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1071
 msgid "Contents"
@@ -4470,7 +4470,7 @@ msgstr "Biografija"
 
 #: lib/layouts/IEEEtran.layout:210
 msgid "BiographyNoPhoto"
-msgstr ""
+msgstr "BiografijaBezSlika"
 
 #: lib/layouts/IEEEtran.layout:217
 #: lib/layouts/beamer.layout:1051
@@ -4761,7 +4761,7 @@ msgstr "Adresa"
 #: lib/layouts/aapaper.layout:88
 #: lib/layouts/aapaper.inc:63
 msgid "Offprint"
-msgstr ""
+msgstr "Neštampaj"
 
 #: lib/layouts/aa.layout:79
 #: lib/layouts/aa.layout:175
@@ -4974,7 +4974,7 @@ msgstr ""
 #: lib/layouts/aastex.layout:143
 #: lib/layouts/aastex.layout:615
 msgid "Facility"
-msgstr ""
+msgstr "Fakultet"
 
 #: lib/layouts/aastex.layout:146
 #: lib/layouts/aastex.layout:641
@@ -5842,7 +5842,7 @@ msgstr ""
 #: lib/layouts/beamer.layout:1139
 #: lib/layouts/powerdot.layout:211
 msgid "Note:"
-msgstr ""
+msgstr "Zabeleška:"
 
 #: lib/layouts/beamer.layout:1155
 msgid "CharStyle:Alert"
@@ -6153,13 +6153,13 @@ msgstr ""
 #: lib/layouts/lettre.layout:59
 #: lib/layouts/lettre.layout:448
 msgid "YourRef"
-msgstr ""
+msgstr "VašaRef"
 
 #: lib/layouts/dinbrief.layout:96
 #: lib/layouts/scrlettr.layout:205
 #: lib/layouts/scrlttr2.layout:289
 msgid "Your ref.:"
-msgstr ""
+msgstr "Vaša ref.:"
 
 #: lib/layouts/dinbrief.layout:100
 #: lib/layouts/g-brief-en.layout:96
@@ -6167,13 +6167,13 @@ msgstr ""
 #: lib/layouts/lettre.layout:61
 #: lib/layouts/lettre.layout:464
 msgid "MyRef"
-msgstr ""
+msgstr "MojaRef"
 
 #: lib/layouts/dinbrief.layout:102
 #: lib/layouts/scrlettr.layout:226
 #: lib/layouts/scrlttr2.layout:313
 msgid "Our ref.:"
-msgstr ""
+msgstr "Naša ref.:"
 
 #: lib/layouts/dinbrief.layout:106
 msgid "Writer"
@@ -6503,7 +6503,7 @@ msgstr ""
 
 #: lib/layouts/dinbrief.layout:359
 msgid "ps"
-msgstr ""
+msgstr "ps"
 
 #: lib/layouts/dinbrief.layout:364
 #: lib/layouts/g-brief-en.layout:214
@@ -6783,7 +6783,7 @@ msgstr "DOKAZ."
 #: lib/layouts/theorems-chap-bytype.module:78
 #: lib/layouts/theorems-sec-bytype.module:70
 msgid "Lemma"
-msgstr ""
+msgstr "Lemma"
 
 #: lib/layouts/elsart.layout:315
 msgid "Lemma \\arabic{theorem}"
@@ -6975,19 +6975,19 @@ msgstr "Naziv fusnote:"
 
 #: lib/layouts/elsarticle.layout:135
 msgid "Authormark"
-msgstr ""
+msgstr "OznakaAutora"
 
 #: lib/layouts/elsarticle.layout:139
 msgid "Author mark"
-msgstr ""
+msgstr "Oznaka Autora"
 
 #: lib/layouts/elsarticle.layout:157
 msgid "Author footnote"
-msgstr ""
+msgstr "Autorova fusnota"
 
 #: lib/layouts/elsarticle.layout:160
 msgid "Author footnote:"
-msgstr ""
+msgstr "Autorova fusnota:"
 
 #: lib/layouts/elsarticle.layout:164
 msgid "CorAuthormark"
@@ -7310,14 +7310,14 @@ msgstr "Povratna adresa:"
 #: lib/layouts/g-brief2.layout:748
 #: lib/layouts/lettre.layout:470
 msgid "MyRef:"
-msgstr ""
+msgstr "MojaRef:"
 
 #: lib/layouts/g-brief-de.layout:106
 #: lib/layouts/g-brief-en.layout:106
 #: lib/layouts/g-brief2.layout:769
 #: lib/layouts/lettre.layout:454
 msgid "YourRef:"
-msgstr ""
+msgstr "VašaRef:"
 
 #: lib/layouts/g-brief-de.layout:113
 #: lib/layouts/g-brief-en.layout:113
@@ -8578,11 +8578,11 @@ msgstr ""
 
 #: lib/layouts/seminar.layout:70
 msgid "ListOfSlides"
-msgstr ""
+msgstr "SpisakSlajdova"
 
 #: lib/layouts/seminar.layout:78
 msgid "[List Of Slides]"
-msgstr ""
+msgstr "[Spisak Slajdova]"
 
 #: lib/layouts/seminar.layout:81
 msgid "SlideContents"
@@ -9030,7 +9030,7 @@ msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:19
 msgid "-- Header --"
-msgstr ""
+msgstr "-- Zaglavlje --"
 
 #: lib/layouts/agu_stdtitle.inc:31
 msgid "Special-section"
@@ -9930,11 +9930,11 @@ msgstr "Brajeva azbuka_mirror_off"
 
 #: lib/layouts/braille.module:163
 msgid "Braillebox"
-msgstr ""
+msgstr "Brailleboks"
 
 #: lib/layouts/braille.module:167
 msgid "Braille box"
-msgstr ""
+msgstr "Braille boks"
 
 #: lib/layouts/endnotes.module:2
 msgid "Endnote"
@@ -10047,7 +10047,7 @@ msgstr ""
 
 #: lib/layouts/linguistics.module:134
 msgid "concept"
-msgstr ""
+msgstr "koncept"
 
 #: lib/layouts/linguistics.module:146
 msgid "CharStyle:Meaning"
@@ -11446,7 +11446,7 @@ msgstr ""
 #: lib/ui/classic.ui:246
 #: lib/ui/stdmenus.inc:386
 msgid "Ligature Break|k"
-msgstr ""
+msgstr "Rastavi Ligatutu|u"
 
 #: lib/ui/classic.ui:247
 msgid "Protected Space|r"
@@ -12284,7 +12284,7 @@ msgstr ""
 
 #: lib/ui/stdcontext.inc:252
 msgid "Listing|L"
-msgstr ""
+msgstr "Izlistaj|I"
 
 #: lib/ui/stdcontext.inc:256
 msgid "Edit Included File...|E"
@@ -16424,11 +16424,11 @@ msgstr "Automatsko čuvanje %1$s"
 
 #: src/Buffer.cpp:2470
 msgid "Autosave failed!"
-msgstr ""
+msgstr "Automatsko čuvanje je propalo!"
 
 #: src/Buffer.cpp:2528
 msgid "Autosaving current document..."
-msgstr ""
+msgstr "Automatski čuvam tekući dokument..."
 
 #: src/Buffer.cpp:2571
 msgid "Couldn't export file"
@@ -16441,7 +16441,7 @@ msgstr ""
 
 #: src/Buffer.cpp:2609
 msgid "File name error"
-msgstr ""
+msgstr "Greška u imenu dokumenta"
 
 #: src/Buffer.cpp:2610
 msgid "The directory path to the document cannot contain spaces."
@@ -18228,7 +18228,7 @@ msgstr ""
 
 #: src/LyXVC.cpp:100
 msgid "Document not saved"
-msgstr ""
+msgstr "Dokument nije sačuvan"
 
 #: src/LyXVC.cpp:101
 msgid "You must save the document before it can be registered."
@@ -18407,12 +18407,12 @@ msgstr ""
 
 #: src/Text3.cpp:1182
 msgid " not known"
-msgstr ""
+msgstr "nepoznato"
 
 #: src/Text3.cpp:1746
 #: src/Text3.cpp:1758
 msgid "Character set"
-msgstr ""
+msgstr "Set karaktera"
 
 #: src/Text3.cpp:1906
 #: src/Text3.cpp:1917
@@ -18464,7 +18464,7 @@ msgstr ""
 #: src/VCBackend.cpp:716
 #: src/VCBackend.cpp:772
 msgid "Error: Could not generate logfile."
-msgstr ""
+msgstr "Greška: Nemogu da generišem log dokument."
 
 #: src/VCBackend.cpp:596
 msgid ""
@@ -18982,7 +18982,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiCharacter.cpp:89
 msgid "No color"
-msgstr ""
+msgstr "Bez boje "
 
 #: src/frontends/qt4/GuiCharacter.cpp:90
 msgid "Black"
@@ -19034,12 +19034,12 @@ msgstr "PDF"
 
 #: src/frontends/qt4/GuiClipboard.cpp:147
 msgid "pasted"
-msgstr ""
+msgstr "nalepljeno"
 
 #: src/frontends/qt4/GuiClipboard.cpp:156
 #, c-format
 msgid "%1$s Files"
-msgstr ""
+msgstr "%1$s Dokument "
 
 #: src/frontends/qt4/GuiClipboard.cpp:166
 msgid "Choose a filename to save the pasted graphic as"
@@ -19053,7 +19053,7 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:1721
 #: src/frontends/qt4/GuiView.cpp:1764
 msgid "Canceled."
-msgstr ""
+msgstr "Otkaži."
 
 #: src/frontends/qt4/GuiClipboard.cpp:206
 msgid "Overwrite external file?"
@@ -19066,7 +19066,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiCommandBuffer.cpp:98
 msgid "List of previous commands"
-msgstr ""
+msgstr "Spisak prethodnih komandi"
 
 #: src/frontends/qt4/GuiCommandBuffer.cpp:101
 msgid "Next command"
@@ -19472,7 +19472,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:2332
 msgid "Not Found"
-msgstr ""
+msgstr "Nije Nađeno"
 
 #: src/frontends/qt4/GuiDocument.cpp:2386
 msgid "Assigned master does not include this file"
@@ -20214,31 +20214,31 @@ msgstr "Arapsko"
 
 #: src/frontends/qt4/GuiSymbols.cpp:66
 msgid "Devanagari"
-msgstr ""
+msgstr "Devanagari"
 
 #: src/frontends/qt4/GuiSymbols.cpp:67
 msgid "Bengali"
-msgstr ""
+msgstr "Bengali"
 
 #: src/frontends/qt4/GuiSymbols.cpp:68
 msgid "Gurmukhi"
-msgstr ""
+msgstr "Gurmukhi"
 
 #: src/frontends/qt4/GuiSymbols.cpp:69
 msgid "Gujarati"
-msgstr ""
+msgstr "Gujarati"
 
 #: src/frontends/qt4/GuiSymbols.cpp:70
 msgid "Oriya"
-msgstr ""
+msgstr "Orija"
 
 #: src/frontends/qt4/GuiSymbols.cpp:71
 msgid "Tamil"
-msgstr ""
+msgstr "Tamilski"
 
 #: src/frontends/qt4/GuiSymbols.cpp:72
 msgid "Telugu"
-msgstr ""
+msgstr "Telugu"
 
 #: src/frontends/qt4/GuiSymbols.cpp:73
 msgid "Kannada"
@@ -20250,7 +20250,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:76
 msgid "Lao"
-msgstr ""
+msgstr "Lao"
 
 #: src/frontends/qt4/GuiSymbols.cpp:77
 msgid "Tibetan"
@@ -20350,15 +20350,15 @@ msgstr "CJK simboli i znakovi interpunkcije"
 
 #: src/frontends/qt4/GuiSymbols.cpp:102
 msgid "Hiragana"
-msgstr ""
+msgstr "Hiragana"
 
 #: src/frontends/qt4/GuiSymbols.cpp:103
 msgid "Katakana"
-msgstr ""
+msgstr "Katakana"
 
 #: src/frontends/qt4/GuiSymbols.cpp:104
 msgid "Bopomofo"
-msgstr ""
+msgstr "Bopomofo"
 
 #: src/frontends/qt4/GuiSymbols.cpp:105
 msgid "Hangul Compatibility Jamo"
@@ -20366,7 +20366,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:106
 msgid "Kanbun"
-msgstr ""
+msgstr "Kanbun"
 
 #: src/frontends/qt4/GuiSymbols.cpp:107
 msgid "Enclosed CJK Letters and Months"
@@ -20454,7 +20454,7 @@ msgstr "Antički grčki brojevi"
 
 #: src/frontends/qt4/GuiSymbols.cpp:128
 msgid "Old Italic"
-msgstr ""
+msgstr "Staro Italijanski"
 
 #: src/frontends/qt4/GuiSymbols.cpp:129
 msgid "Gothic"
@@ -20462,7 +20462,7 @@ msgstr "Gotski"
 
 #: src/frontends/qt4/GuiSymbols.cpp:130
 msgid "Ugaritic"
-msgstr ""
+msgstr "Ugaritik"
 
 #: src/frontends/qt4/GuiSymbols.cpp:131
 msgid "Old Persian"
@@ -20470,15 +20470,15 @@ msgstr "Staro Persijski"
 
 #: src/frontends/qt4/GuiSymbols.cpp:132
 msgid "Deseret"
-msgstr ""
+msgstr "Deseret"
 
 #: src/frontends/qt4/GuiSymbols.cpp:133
 msgid "Shavian"
-msgstr ""
+msgstr "Shavijan"
 
 #: src/frontends/qt4/GuiSymbols.cpp:134
 msgid "Osmanya"
-msgstr ""
+msgstr "Osmanja"
 
 #: src/frontends/qt4/GuiSymbols.cpp:135
 msgid "Cypriot Syllabary"
@@ -20689,7 +20689,7 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:1486
 #, c-format
 msgid "Document %1$s opened."
-msgstr ""
+msgstr "Dokument %1$s je otvoren."
 
 #: src/frontends/qt4/GuiView.cpp:1489
 msgid "Version control detected."
@@ -20698,7 +20698,7 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:1491
 #, c-format
 msgid "Could not open document %1$s"
-msgstr ""
+msgstr "Nemogu da otvorim dokument %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:1520
 msgid "Couldn't import file"
@@ -20892,7 +20892,7 @@ msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:991
 msgid "Other Lists"
-msgstr ""
+msgstr "Ostali Spiskovi"
 
 #: src/frontends/qt4/Menus.cpp:1000
 msgid "No Table of contents"
@@ -21638,7 +21638,7 @@ msgstr ""
 
 #: src/insets/InsetSpace.cpp:73
 msgid "Interword Space"
-msgstr ""
+msgstr "Razma između reči"
 
 #: src/insets/InsetSpace.cpp:76
 msgid "Protected Space"
