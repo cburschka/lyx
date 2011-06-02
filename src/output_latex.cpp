@@ -109,19 +109,18 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 		? (use_prev_env_language ? prev_env_language_
 					 : priorpit->getParLanguage(bparams))
 		: doc_language;
-	string par_lang = data.par_language->babel();
-	string prev_par_lang = prev_par_language->babel();
-	string doc_lang = doc_language->babel();
-	string lang_begin_command = lyxrc.language_command_begin;
-	string lang_end_command = lyxrc.language_command_end;
 
-	if (runparams.use_polyglossia) {
-		par_lang = getPolyglossiaEnvName(data.par_language);
-		prev_par_lang = getPolyglossiaEnvName(prev_par_language);
-		doc_lang = getPolyglossiaEnvName(doc_language);
-		lang_begin_command = "\\begin{$$lang}";
-		lang_end_command = "\\end{$$lang}";
-	}
+	bool const use_pg = runparams.use_polyglossia;
+	string const par_lang = use_pg ?
+		getPolyglossiaEnvName(data.par_language) : data.par_language->babel();
+	string const prev_par_lang = use_pg ?
+		getPolyglossiaEnvName(prev_par_language) : prev_par_language->babel();
+	string const doc_lang = use_pg ?
+		getPolyglossiaEnvName(doc_language) : doc_language->babel();
+	string const lang_begin_command = use_pg ?
+		"\\begin{$$lang}" : lyxrc.language_command_begin;
+	string const lang_end_command = use_pg ?
+		"\\end{$$lang}" : lyxrc.language_command_end;
 
 	if (par_lang != prev_par_lang) {
 		if (!lang_end_command.empty() &&
@@ -271,7 +270,7 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 		// Or     par->params().leftIndent() != current_left_indent)
 
 		if (par->layout().isParagraph()) {
-			// FIXME (Lgb): How to handle this? 
+			// FIXME (Lgb): How to handle this?
 			//&& !suffixIs(os, "\n\n")
 
 			// (ARRae) There should be at least one '\n' already but we need there to
@@ -508,21 +507,21 @@ void TeXOnePar(Buffer const & buf,
 					 : priorpar->getParLanguage(bparams))
 		: outer_language;
 
-	string par_lang = par_language->babel();
-	string prev_lang = prev_language->babel();
-	string doc_lang = doc_language->babel();
-	string outer_lang = outer_language->babel();
-	string lang_begin_command = lyxrc.language_command_begin;
-	string lang_end_command = lyxrc.language_command_end;
 
-	if (runparams.use_polyglossia) {
-		par_lang = getPolyglossiaEnvName(par_language);
-		prev_lang = getPolyglossiaEnvName(prev_language);
-		doc_lang = getPolyglossiaEnvName(doc_language);
-		outer_lang = getPolyglossiaEnvName(outer_language);
-		lang_begin_command = "\\begin{$$lang}";
-		lang_end_command = "\\end{$$lang}";
-	}
+	bool const use_pg = runparams.use_polyglossia;
+	string const par_lang = use_pg ?
+		getPolyglossiaEnvName(par_language): par_language->babel();
+	string const prev_lang = use_pg ?
+		getPolyglossiaEnvName(prev_language) : prev_language->babel();
+	string const doc_lang = use_pg ?
+		getPolyglossiaEnvName(doc_language) : doc_language->babel();
+	string const outer_lang = use_pg ?
+		getPolyglossiaEnvName(outer_language) : outer_language->babel();
+	string const lang_begin_command = use_pg ?
+		"\\begin{$$lang}" : lyxrc.language_command_begin;
+	string const lang_end_command = use_pg ?
+		"\\end{$$lang}" : lyxrc.language_command_end;
+
 	if (par_lang != prev_lang
 		// check if we already put language command in TeXEnvironment()
 		&& !(style.isEnvironment()
@@ -784,8 +783,8 @@ void TeXOnePar(Buffer const & buf,
 					(runparams.isLastPar && runparams.master_language)
 						? runparams.master_language
 						: outer_language;
-				string const current_lang = runparams.use_polyglossia ?
-					getPolyglossiaEnvName(current_language)
+				string const current_lang = runparams.use_polyglossia
+					? getPolyglossiaEnvName(current_language)
 					: current_language->babel();
 				if (!current_lang.empty()) {
 					os << from_ascii(subst(
@@ -917,8 +916,8 @@ void latexParagraphs(Buffer const & buf,
 	}
 	// if "auto begin" is switched off, explicitly switch the
 	// language on at start
-	string const mainlang = runparams.use_polyglossia ?
-		getPolyglossiaEnvName(bparams.language)
+	string const mainlang = runparams.use_polyglossia
+		? getPolyglossiaEnvName(bparams.language)
 		: bparams.language->babel();
 	string const lang_begin_command = runparams.use_polyglossia ?
 		"\\begin{$$lang}" : lyxrc.language_command_begin;
