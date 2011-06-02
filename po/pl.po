@@ -9,10 +9,10 @@
 # Michał Fita <michal.fita@gmail.com>, 2008-2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 2.0.0\n"
+"Project-Id-Version: LyX 2.0.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-06-01 09:00-0400\n"
-"PO-Revision-Date: 2011-04-18 23:24+0200\n"
+"PO-Revision-Date: 2011-06-01 21:05+0200\n"
 "Last-Translator: Michał Fita <michal.fita@gmail.com>\n"
 "Language-Team: No team\n"
 "Language: pl\n"
@@ -648,7 +648,7 @@ msgstr "Gigantyczny"
 # Żeby nie było, bo słownikach tego nie ma...
 #: src/frontends/qt4/ui/BulletsUi.ui:144
 msgid "&Custom Bullet:"
-msgstr "&Zdefiniowany ozdobnik:"
+msgstr "Wł&asny ozdobnik:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:174
 #: src/frontends/qt4/ui/PDFSupportUi.ui:329
@@ -1995,21 +1995,19 @@ msgstr "Nazwa informacji:"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:16
 msgid "Inset Parameter Configuration"
-msgstr "Konfiguracja parametrów wstawkih"
+msgstr "Konfiguracja parametrów wstawki"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:46
 msgid "Update dialog when moving context"
-msgstr ""
+msgstr "Aktualizacja danych w tym oknie po zmianie kontekstu"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:49
-#, fuzzy
 msgid "S&ynchronize Dialog"
-msgstr "S&ynchronizuj z wyjściem"
+msgstr "S&ynchronizuj okienko"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:56
-#, fuzzy
 msgid "Apply settings immediately"
-msgstr "Zastosuj zm&iany natychmiast"
+msgstr "Zastosuj zmiany natychmiast"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:62
 #: src/frontends/qt4/ui/ParagraphUi.ui:44
@@ -2018,12 +2016,11 @@ msgstr "Natych&miastowe zastosowanie"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:79
 msgid "Restore initial values in dialog"
-msgstr ""
+msgstr "Przywacanie wartości początkowych w oknie"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:92
-#, fuzzy
 msgid "Push new inset into the document"
-msgstr "Nazwa etykiety jaka pojawi się w dokumencie"
+msgstr "Dodaje nową wstawkę do dokumentu"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:95
 msgid "New Inset"
@@ -3485,7 +3482,7 @@ msgstr "Polecenie LaTeX kończące zmianę na język obcy."
 # punkt czy inaczej? może separator?
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:134
 msgid "Default Decimal &Point:"
-msgstr "Domyślny &punkt dziesiętny:"
+msgstr "Domyślny se&parator dziesiętny:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:160
 msgid ""
@@ -3964,7 +3961,7 @@ msgstr "&Powiększenie %:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:206
 msgid "Font Sizes"
-msgstr "Wielkość czcionki"
+msgstr "Rozmiar czcionki"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:245
 msgid "&Large:"
@@ -4106,7 +4103,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefUi.ui:96
 msgid "&Enable tool tips in main work area"
-msgstr "&Włącz balonikit podpowiedzi w głównym obszarze roboczym"
+msgstr "&Włącz baloniki podpowiedzi w głównym obszarze roboczym"
 
 #: src/frontends/qt4/ui/PrefUi.ui:106
 msgid "Session"
@@ -4456,9 +4453,8 @@ msgid "Textual reference"
 msgstr "wszystkie odnośniki"
 
 #: src/frontends/qt4/ui/SearchUi.ui:101
-#, fuzzy
 msgid "Case &sensitive[[search]]"
-msgstr "&Wielkość liter"
+msgstr "Uwzględniaj &wielkość liter"
 
 #: src/frontends/qt4/ui/SearchUi.ui:108
 msgid "Match w&hole words only"
@@ -4619,14 +4615,12 @@ msgid "Justified"
 msgstr "Wyrównane"
 
 #: src/frontends/qt4/ui/TabularUi.ui:84 src/frontends/qt4/GuiTabular.cpp:790
-#, fuzzy
 msgid "At Decimal Separator"
-msgstr "Separacja"
+msgstr "Na separatorze dziesiętnym"
 
 #: src/frontends/qt4/ui/TabularUi.ui:110
-#, fuzzy
 msgid "&Decimal separator:"
-msgstr "znak specjalny"
+msgstr "Separator &dziesiętny:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:168
 msgid "Fixed width of the column"
@@ -4703,7 +4697,7 @@ msgstr "Ustawienia całej tabeli"
 #: src/frontends/qt4/ui/TabularUi.ui:338
 #, fuzzy
 msgid "Table w&idth:"
-msgstr "przypis"
+msgstr "Szerokość tabel&i:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:354
 msgid "Verti&cal alignment:"
@@ -9531,24 +9525,20 @@ msgid "Citation-number"
 msgstr "Cytowanie-numer"
 
 #: lib/layouts/agu_stdclass.inc:146 lib/layouts/agu_stdclass.inc:148
-#, fuzzy
 msgid "Volume"
-msgstr "Kolumny"
+msgstr "Wolumen"
 
 #: lib/layouts/agu_stdclass.inc:157 lib/layouts/agu_stdclass.inc:159
-#, fuzzy
 msgid "Day"
-msgstr "Wyświetl"
+msgstr "Dzień"
 
 #: lib/layouts/agu_stdclass.inc:168 lib/layouts/agu_stdclass.inc:170
-#, fuzzy
 msgid "Month"
-msgstr "Matematyka"
+msgstr "Miesiąc"
 
 #: lib/layouts/agu_stdclass.inc:179 lib/layouts/agu_stdclass.inc:181
-#, fuzzy
 msgid "Year"
-msgstr "&Wyczyść"
+msgstr "Rok"
 
 #: lib/layouts/agu_stdclass.inc:190 lib/layouts/agu_stdclass.inc:192
 #, fuzzy
@@ -9792,19 +9782,16 @@ msgid "Orgname"
 msgstr "Nazwisko"
 
 #: lib/layouts/agu_stdtitle.inc:448 lib/layouts/agu_stdtitle.inc:450
-#, fuzzy
 msgid "City"
-msgstr "infty"
+msgstr "Miasto"
 
 #: lib/layouts/agu_stdtitle.inc:470 lib/layouts/agu_stdtitle.inc:472
-#, fuzzy
 msgid "Postcode"
-msgstr "Zamówienie pocztowe"
+msgstr "Kod pocztowy"
 
 #: lib/layouts/agu_stdtitle.inc:481 lib/layouts/agu_stdtitle.inc:483
-#, fuzzy
 msgid "Country"
-msgstr "Wpis"
+msgstr "Kraj"
 
 #: lib/layouts/aguplus.inc:71 lib/layouts/db_stdstarsections.inc:72
 #: lib/layouts/stdstarsections.inc:67
@@ -10155,9 +10142,8 @@ msgid "ERT"
 msgstr "ERT"
 
 #: lib/layouts/stdinsets.inc:168 src/frontends/qt4/GuiDocument.cpp:1290
-#, fuzzy
 msgid "Listings"
-msgstr "Lista"
+msgstr "Listingi"
 
 #: lib/layouts/stdinsets.inc:201
 #, fuzzy
@@ -11137,7 +11123,7 @@ msgstr "Ignoruj"
 
 #: lib/languages:79
 msgid "Afrikaans"
-msgstr "Afrykaans"
+msgstr "Afrykanerski"
 
 #: lib/languages:86
 msgid "Albanian"
@@ -11865,49 +11851,43 @@ msgstr "Idź do etykiety|L"
 #: lib/ui/stdcontext.inc:163 lib/ui/stdmenus.inc:462
 #, fuzzy
 msgid "Frameless|l"
-msgstr "Bezramki"
+msgstr "Bezramkowe|b"
 
 #: lib/ui/stdcontext.inc:164 lib/ui/stdmenus.inc:463
-#, fuzzy
 msgid "Simple Frame|F"
-msgstr "ramka wstawki"
+msgstr "Prosta ramka|P"
 
 #: lib/ui/stdcontext.inc:165
 msgid "Simple Frame, Page Breaks|P"
-msgstr ""
+msgstr "Prosta ramka, podział stron|r"
 
 #: lib/ui/stdcontext.inc:166 lib/ui/stdmenus.inc:464
-#, fuzzy
 msgid "Oval, Thin|a"
-msgstr "Owalne pudełko, cienkie"
+msgstr "Owalne, cienkie|a"
 
 #: lib/ui/stdcontext.inc:167 lib/ui/stdmenus.inc:465
-#, fuzzy
 msgid "Oval, Thick|v"
-msgstr "Owalne pudełko, grube"
+msgstr "Owalne, grube|w"
 
 #: lib/ui/stdcontext.inc:168 lib/ui/stdmenus.inc:466
 msgid "Drop Shadow|w"
-msgstr ""
+msgstr "Rzuca cień|c"
 
 #: lib/ui/stdcontext.inc:169 lib/ui/stdmenus.inc:467
-#, fuzzy
 msgid "Shaded Background|B"
-msgstr "Pudełko z cieniowanym tłem"
+msgstr "Cieniowane tło|t"
 
 #: lib/ui/stdcontext.inc:170 lib/ui/stdmenus.inc:468
-#, fuzzy
 msgid "Double Frame|u"
-msgstr "Podwójna czysta strona|D"
+msgstr "Podwójna ramka|d"
 
 #: lib/ui/stdcontext.inc:178 lib/ui/stdmenus.inc:472
 msgid "LyX Note|N"
 msgstr "LyX Notka|N"
 
 #: lib/ui/stdcontext.inc:179
-#, fuzzy
 msgid "Comment|m"
-msgstr "Komentarz|K"
+msgstr "Komentarz|m"
 
 #: lib/ui/stdcontext.inc:180 lib/ui/stdmenus.inc:474
 msgid "Greyed Out|G"
@@ -12080,14 +12060,12 @@ msgid "Listing|L"
 msgstr "Listing|L"
 
 #: lib/ui/stdcontext.inc:267 lib/ui/stdcontext.inc:522
-#, fuzzy
 msgid "Edit Included File...|E"
-msgstr "Dołącz plik...|D"
+msgstr "Edycja dołączonego pliku...|E"
 
 #: lib/ui/stdcontext.inc:274 lib/ui/stdmenus.inc:406
-#, fuzzy
 msgid "New Page|N"
-msgstr "Nowy|N"
+msgstr "Nowa strona|N"
 
 #: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:407
 msgid "Page Break|a"
@@ -12102,14 +12080,13 @@ msgid "Clear Double Page|D"
 msgstr "Podwójna czysta strona|D"
 
 #: lib/ui/stdcontext.inc:284 lib/ui/stdmenus.inc:403
-#, fuzzy
 msgid "Ragged Line Break|R"
-msgstr "Złamanie wiersza|Z"
+msgstr "Wyszczerbiony podział wiersza|r"
 
 #: lib/ui/stdcontext.inc:285 lib/ui/stdmenus.inc:404
 #, fuzzy
 msgid "Justified Line Break|J"
-msgstr "Złamanie wiersza|Z"
+msgstr "Wyrównane złamanie wiersza|z"
 
 #: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:102 lib/ui/stdtoolbars.inc:80
 #: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:596
@@ -12137,7 +12114,7 @@ msgstr "Skocz do zapisanej zakładki|B"
 
 #: lib/ui/stdcontext.inc:300 lib/ui/stdmenus.inc:528
 msgid "Forward search|F"
-msgstr ""
+msgstr "Szukaj w przód|S"
 
 #: lib/ui/stdcontext.inc:302 lib/ui/stdmenus.inc:113
 msgid "Move Paragraph Up|o"
@@ -12525,9 +12502,8 @@ msgid "Close|C"
 msgstr "Zamknij|m"
 
 #: lib/ui/stdmenus.inc:51
-#, fuzzy
 msgid "Close All"
-msgstr "Zamknij plik"
+msgstr "Zamknij wszystko"
 
 #: lib/ui/stdmenus.inc:52
 msgid "Save|S"
@@ -12637,14 +12613,12 @@ msgid "Select All"
 msgstr "Wybierz wszystko"
 
 #: lib/ui/stdmenus.inc:110
-#, fuzzy
 msgid "Find & Replace (Quick)...|F"
-msgstr "Znajdź i zastąp|Z"
+msgstr "Znajdź i zastąp (Szybkie)|Z"
 
 #: lib/ui/stdmenus.inc:111
-#, fuzzy
 msgid "Find & Replace (Advanced)..."
-msgstr "Znajdź i zastąp|Z"
+msgstr "Znajdź i zastąp (Zaawansowane)"
 
 #: lib/ui/stdmenus.inc:121
 msgid "Table|T"
@@ -12667,9 +12641,8 @@ msgid "Decrease List Depth|D"
 msgstr "Zmniejsz głębokość środowiska|m"
 
 #: lib/ui/stdmenus.inc:132
-#, fuzzy
 msgid "Dissolve Inset"
-msgstr "Rozwiąż wstawkę|l"
+msgstr "Rozwiąż wstawkę"
 
 #: lib/ui/stdmenus.inc:133
 msgid "TeX Code Settings...|C"
@@ -13150,13 +13123,12 @@ msgid "Single Quote|S"
 msgstr "Pojedynczy cudzysłów|P"
 
 #: lib/ui/stdmenus.inc:383
-#, fuzzy
 msgid "Protected Hyphen|y"
-msgstr "Twarda spacja|T"
+msgstr "Chroniony myślnik|y"
 
 #: lib/ui/stdmenus.inc:384
 msgid "Breakable Slash|a"
-msgstr ""
+msgstr "Podzielny ukośnik|e"
 
 #: lib/ui/stdmenus.inc:385
 msgid "Menu Separator|M"
@@ -13180,7 +13152,7 @@ msgstr "Twarda spacja|P"
 
 #: lib/ui/stdmenus.inc:396
 msgid "Horizontal Space...|o"
-msgstr "Odstęp pionowy...|o"
+msgstr "Odstęp poziomy...|o"
 
 #: lib/ui/stdmenus.inc:397
 msgid "Horizontal Line...|L"
@@ -13191,9 +13163,8 @@ msgid "Vertical Space...|V"
 msgstr "Odstęp pionowy...|V"
 
 #: lib/ui/stdmenus.inc:399
-#, fuzzy
 msgid "Phantom|m"
-msgstr "Esperanto"
+msgstr "Fantom|m"
 
 #: lib/ui/stdmenus.inc:401
 msgid "Hyphenation Point|H"
@@ -13369,9 +13340,8 @@ msgid "Thesaurus...|T"
 msgstr "Słownik synonimów...|S"
 
 #: lib/ui/stdmenus.inc:552
-#, fuzzy
 msgid "Statistics...|a"
-msgstr "Statystyka"
+msgstr "Statystyki...|a"
 
 #: lib/ui/stdmenus.inc:553
 msgid "Check TeX|h"
@@ -13430,7 +13400,6 @@ msgid "LaTeX Configuration|L"
 msgstr "Konfiguracja LaTeX-a|L"
 
 #: lib/ui/stdmenus.inc:578
-#, fuzzy
 msgid "Specific Manuals|p"
 msgstr "Specyficzne podręczniki|p"
 
@@ -13439,28 +13408,24 @@ msgid "About LyX|X"
 msgstr "O LyX-ie|X"
 
 #: lib/ui/stdmenus.inc:584
-#, fuzzy
 msgid "Linguistics Manual|L"
-msgstr "Lista"
+msgstr "Podręcznik lingwistyki|L"
 
 #: lib/ui/stdmenus.inc:585
-#, fuzzy
 msgid "Braille Manual|B"
-msgstr "Zewnętrze (domyślna)"
+msgstr "Podręcznik Braille'a|B"
 
 #: lib/ui/stdmenus.inc:586
-#, fuzzy
 msgid "XY-pic Manual|X"
-msgstr "Adres specjalny"
+msgstr "Podręcznik XY-pic|X"
 
 #: lib/ui/stdmenus.inc:587
-#, fuzzy
 msgid "Multicolumn Manual|M"
-msgstr "Wielokolumnowa|W"
+msgstr "Podręcznik Wielokolumnowości|W"
 
 #: lib/ui/stdmenus.inc:588
 msgid "Feynman-diagram Manual|F"
-msgstr ""
+msgstr "Podręcznik diagramów Feynman'a|F"
 
 #: lib/ui/stdtoolbars.inc:71
 msgid "New document"
@@ -13543,41 +13508,33 @@ msgid "View/Update"
 msgstr "Podgląd/Aktualzacje"
 
 #: lib/ui/stdtoolbars.inc:101
-#, fuzzy
 msgid "View"
-msgstr "Pod&gląd"
+msgstr "Podgląd"
 
 #: lib/ui/stdtoolbars.inc:102
 msgid "Update"
-msgstr "Aktualizuj"
+msgstr "Aktualizacja"
 
 #: lib/ui/stdtoolbars.inc:103
-#, fuzzy
 msgid "View master document"
-msgstr "Główny dokument"
+msgstr "Podgląd głównego dokumentu"
 
 #: lib/ui/stdtoolbars.inc:104
-#, fuzzy
-msgid "Update master document"
-msgstr "Główny dokument"
+msgstr "Aktualizacja głównego dokumentu"
 
 #: lib/ui/stdtoolbars.inc:105
-#, fuzzy
 msgid "Enable Forward/Reverse Search"
-msgstr "Szukanie w przód"
+msgstr "Włącza przeszukiwanie w przód i w tył"
 
 #: lib/ui/stdtoolbars.inc:107
-#, fuzzy
 msgid "View other formats"
-msgstr "Formaty plików"
+msgstr "Podgląd w innym formacie"
 
-#: lib/ui/stdtoolbars.inc:108
-#, fuzzy
+#: lib/ui/stdtoolbars.inc:108h
 msgid "Update other formats"
-msgstr "Format daty"
+msgstr "Aktualizacja w innym formacie"
 
 #: lib/ui/stdtoolbars.inc:111
-#, fuzzy
 msgid "Extra"
 msgstr "Inne"
 
@@ -13642,9 +13599,8 @@ msgid "Insert box"
 msgstr "Wstaw pudełko"
 
 #: lib/ui/stdtoolbars.inc:132
-#, fuzzy
 msgid "Insert hyperlink"
-msgstr "Wstaw hyperlink"
+msgstr "Wstaw hiperodnośnik"
 
 #: lib/ui/stdtoolbars.inc:133
 msgid "Insert TeX code"
@@ -16922,14 +16878,13 @@ msgstr ""
 "próbie konwersji."
 
 #: src/Buffer.cpp:1025 src/Buffer.cpp:3642 src/Buffer.cpp:3704
-#, fuzzy
 msgid "File is read-only"
-msgstr "Dokument tylko do odczytu"
+msgstr "Plik tylko do odczytu"
 
 #: src/Buffer.cpp:1026
 #, c-format
 msgid "The file %1$s cannot be written because it is marked as read-only."
-msgstr ""
+msgstr "Plik %1$s nie może być zapisany, ponieważ jest oznacozny jako tylko do odczytu."
 
 #: src/Buffer.cpp:1035
 #, c-format
@@ -20213,7 +20168,7 @@ msgstr "Bez zmian"
 
 #: src/frontends/qt4/GuiCharacter.cpp:46
 msgid "Small Caps"
-msgstr "Kapitalik"
+msgstr "Kapitaliki"
 
 #: src/frontends/qt4/GuiCharacter.cpp:47 src/frontends/qt4/GuiCharacter.cpp:68
 #: src/frontends/qt4/GuiCharacter.cpp:83
@@ -22075,15 +22030,15 @@ msgstr "nieznana wersja"
 
 #: src/frontends/qt4/GuiView.cpp:268
 msgid "Small-sized icons"
-msgstr "Ikony małego rozmiaru"
+msgstr "Małe ikony"
 
 #: src/frontends/qt4/GuiView.cpp:275
 msgid "Normal-sized icons"
-msgstr "Ikony normalnego rozmiaru"
+msgstr "Nomalne ikony"
 
 #: src/frontends/qt4/GuiView.cpp:282
 msgid "Big-sized icons"
-msgstr "Ikony dużego rozmiaru"
+msgstr "Duże ikony"
 
 #: src/frontends/qt4/GuiView.cpp:823
 msgid "Exit LyX"
