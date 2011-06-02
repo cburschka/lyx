@@ -66,7 +66,7 @@ string const getPolyglossiaEnvName(Language const * lang)
 }
 
 
-struct TeXEnvironementData
+struct TeXEnvironmentData
 {
 	bool cjk_nested;
 	Layout const * style;
@@ -76,13 +76,13 @@ struct TeXEnvironementData
 };
 
 
-static TeXEnvironementData prepareEnvironement(Buffer const & buf,
+static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 					Text const & text,
 					ParagraphList::const_iterator pit,
 					otexstream & os,
 					OutputParams const & runparams)
 {
-	TeXEnvironementData data;
+	TeXEnvironmentData data;
 
 	BufferParams const & bparams = buf.params();
 
@@ -194,8 +194,8 @@ static TeXEnvironementData prepareEnvironement(Buffer const & buf,
 }
 
 
-static void finishEnvironement(otexstream & os, OutputParams const & runparams,
-			       TeXEnvironementData const & data)
+static void finishEnvironment(otexstream & os, OutputParams const & runparams,
+			       TeXEnvironmentData const & data)
 {
 	if (open_encoding_ == CJK && data.cjk_nested) {
 		// We need to close the encoding even if it does not change
@@ -300,11 +300,11 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 		}
 
 		// This is a new environment.
-		TeXEnvironementData const data =
-			prepareEnvironement(buf, text, par, os, runparams);
+		TeXEnvironmentData const data =
+			prepareEnvironment(buf, text, par, os, runparams);
 		// Recursive call to TeXEnvironment!
 		TeXEnvironment(buf, text, runparams, pit, os);
-		finishEnvironement(os, runparams, data);
+		finishEnvironment(os, runparams, data);
 	}
 
 	if (pit != runparams.par_end)
@@ -997,11 +997,11 @@ void latexParagraphs(Buffer const & buf,
 			continue;
 		}
 		
-		TeXEnvironementData const data =
-			prepareEnvironement(buf, text, par, os, runparams);
+		TeXEnvironmentData const data =
+			prepareEnvironment(buf, text, par, os, runparams);
 		// pit can be changed in TeXEnvironment.
 		TeXEnvironment(buf, text, runparams, pit, os);
-		finishEnvironement(os, runparams, data);
+		finishEnvironment(os, runparams, data);
 	}
 
 	if (pit == runparams.par_end) {
