@@ -82,7 +82,8 @@ format_relation = [("0_06",    [200], minor_versions("0.6" , 4)),
                    ("1_5", range(246,277), minor_versions("1.5" , 7)),
                    ("1_6", range(277,346), minor_versions("1.6" , 10)),
                    ("2_0", range(347,414), minor_versions("2.0", 0)),
-                   ("2_1",     [], minor_versions("2.1", 0))]
+                   ("2_1",     [], minor_versions("2.1", 0))
+                  ]
 
 ####################################################################
 # This is useful just for development versions                     #
@@ -125,7 +126,11 @@ def format_info():
 
 def get_end_format():
     " Returns the more recent file format available."
-    return format_relation[-1][1][-1]
+    # this check will fail only when we have a new version
+    # and there is no format change yet.
+    if format_relation[-1][1]:
+      return format_relation[-1][1][-1]
+    return format_relation[-2][1][-1]
 
 
 def get_backend(textclass):
