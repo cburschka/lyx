@@ -1,10 +1,11 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0.1svn created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass agu-dtd
 \use_default_options false
 \language english
+\language_package default
 \inputencoding auto
 \font_roman default
 \font_sans default
@@ -22,6 +23,8 @@
 \use_geometry false
 \use_amsmath 0
 \use_esint 0
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -35,8 +38,9 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author 1 "" 
+\author 2 "" 
+\use_refstyle 0
 \end_header
 
 \begin_body
@@ -46,7 +50,7 @@
 \end_layout
 
 \begin_layout AGU-journal
-\begin_inset Flex Element:ISSN
+\begin_inset Flex ISSN
 status collapsed
 
 \begin_layout Plain Layout
@@ -56,7 +60,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex Element:CODEN
+\begin_inset Flex CODEN
 status collapsed
 
 \begin_layout Plain Layout
@@ -69,7 +73,7 @@ GGGGFR
 \end_layout
 
 \begin_layout Special-section
-\begin_inset Flex Element:SS-Code
+\begin_inset Flex SS-Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -79,7 +83,7 @@ INPUT1
 \end_inset
 
 
-\begin_inset Flex Element:SS-Title
+\begin_inset Flex SS-Title
 status collapsed
 
 \begin_layout Plain Layout
@@ -92,7 +96,7 @@ Special section for data
 \end_layout
 
 \begin_layout AGU-volume
-\begin_inset Flex Element:Volume
+\begin_inset Flex Volume
 status collapsed
 
 \begin_layout Plain Layout
@@ -102,7 +106,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex Element:Year
+\begin_inset Flex Year
 status collapsed
 
 \begin_layout Plain Layout
@@ -115,7 +119,7 @@ status collapsed
 \end_layout
 
 \begin_layout AGU-issue
-\begin_inset Flex Element:Issue-number
+\begin_inset Flex Issue-number
 status collapsed
 
 \begin_layout Plain Layout
@@ -125,7 +129,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex Element:Issue-day
+\begin_inset Flex Issue-day
 status collapsed
 
 \begin_layout Plain Layout
@@ -135,7 +139,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex Element:Issue-months
+\begin_inset Flex Issue-months
 status collapsed
 
 \begin_layout Plain Layout
@@ -148,7 +152,7 @@ Sep-Oct
 \end_layout
 
 \begin_layout Received
-\begin_inset Flex Element:Day
+\begin_inset Flex Day
 status collapsed
 
 \begin_layout Plain Layout
@@ -158,7 +162,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex Element:Month
+\begin_inset Flex Month
 status collapsed
 
 \begin_layout Plain Layout
@@ -168,7 +172,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex Element:Year
+\begin_inset Flex Year
 status collapsed
 
 \begin_layout Plain Layout
@@ -181,7 +185,7 @@ status collapsed
 \end_layout
 
 \begin_layout Revised
-\begin_inset Flex Element:Day
+\begin_inset Flex Day
 status collapsed
 
 \begin_layout Plain Layout
@@ -191,7 +195,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex Element:Month
+\begin_inset Flex Month
 status collapsed
 
 \begin_layout Plain Layout
@@ -201,7 +205,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex Element:Year
+\begin_inset Flex Year
 status collapsed
 
 \begin_layout Plain Layout
@@ -214,7 +218,7 @@ status collapsed
 \end_layout
 
 \begin_layout Accepted
-\begin_inset Flex Element:Day
+\begin_inset Flex Day
 status collapsed
 
 \begin_layout Plain Layout
@@ -224,7 +228,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex Element:Month
+\begin_inset Flex Month
 status collapsed
 
 \begin_layout Plain Layout
@@ -234,7 +238,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex Element:Year
+\begin_inset Flex Year
 status collapsed
 
 \begin_layout Plain Layout
@@ -271,7 +275,7 @@ status collapsed
 \end_layout
 
 \begin_layout Copyright
-\begin_inset Flex Element:CCC-Code
+\begin_inset Flex CCC-Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -281,7 +285,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex Element:Year
+\begin_inset Flex Year
 status collapsed
 
 \begin_layout Plain Layout
@@ -306,7 +310,7 @@ Vermeer at al.: AGU journal sample file
 \end_layout
 
 \begin_layout Index-term
-\begin_inset Flex Element:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -316,7 +320,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex Element:Dscr
+\begin_inset Flex Dscr
 status collapsed
 
 \begin_layout Plain Layout
@@ -329,7 +333,7 @@ Geodesy: crustal motion
 \end_layout
 
 \begin_layout Index-term
-\begin_inset Flex Element:Code
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -339,7 +343,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex Element:Dscr
+\begin_inset Flex Dscr
 status collapsed
 
 \begin_layout Plain Layout
@@ -352,7 +356,7 @@ status collapsed
 \end_layout
 
 \begin_layout Keywords
-\begin_inset Flex Element:Keyword
+\begin_inset Flex Keyword
 status collapsed
 
 \begin_layout Plain Layout
@@ -362,7 +366,7 @@ Crust
 \end_inset
 
 
-\begin_inset Flex Element:Keyword
+\begin_inset Flex Keyword
 status collapsed
 
 \begin_layout Plain Layout
@@ -403,7 +407,7 @@ another note, no link
 \end_layout
 
 \begin_layout Affiliation
-\begin_inset Flex Element:Orgdiv
+\begin_inset Flex Orgdiv
 status collapsed
 
 \begin_layout Plain Layout
@@ -414,7 +418,7 @@ Dept.
 \end_inset
 
 
-\begin_inset Flex Element:Orgname
+\begin_inset Flex Orgname
 status collapsed
 
 \begin_layout Plain Layout
@@ -432,7 +436,7 @@ Title of the article
 \end_layout
 
 \begin_layout Citation
-\begin_inset Flex Element:Abbrev
+\begin_inset Flex Abbrev
 status collapsed
 
 \begin_layout Plain Layout
@@ -444,7 +448,7 @@ J.
 \end_inset
 
 
-\begin_inset Flex Element:Volume
+\begin_inset Flex Volume
 status collapsed
 
 \begin_layout Plain Layout
@@ -454,7 +458,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex Element:Issue-number
+\begin_inset Flex Issue-number
 status collapsed
 
 \begin_layout Plain Layout
@@ -464,7 +468,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex Element:Citation-number
+\begin_inset Flex Citation-number
 status collapsed
 
 \begin_layout Plain Layout
@@ -478,7 +482,7 @@ status collapsed
 
 \begin_layout Date
 \noindent
-\begin_inset Flex Element:Day
+\begin_inset Flex Day
 status collapsed
 
 \begin_layout Plain Layout
@@ -488,7 +492,7 @@ status collapsed
 \end_inset
 
  
-\begin_inset Flex Element:Month
+\begin_inset Flex Month
 status collapsed
 
 \begin_layout Plain Layout
@@ -498,7 +502,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex Element:Year
+\begin_inset Flex Year
 status collapsed
 
 \begin_layout Plain Layout
@@ -512,7 +516,7 @@ status collapsed
 
 \begin_layout Author
 \noindent
-\begin_inset Flex Element:Firstname
+\begin_inset Flex Firstname
 status collapsed
 
 \begin_layout Plain Layout
@@ -522,7 +526,7 @@ Joe
 \end_inset
 
 
-\begin_inset Flex Element:Surname
+\begin_inset Flex Surname
 status collapsed
 
 \begin_layout Plain Layout

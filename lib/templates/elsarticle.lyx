@@ -1,5 +1,5 @@
-#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0.1svn created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass elsarticle
@@ -12,6 +12,7 @@
 theorems-std
 \end_modules
 \language english
+\language_package default
 \inputencoding auto
 \font_roman default
 \font_sans default
@@ -21,7 +22,6 @@ theorems-std
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \paperfontsize default
 \spacing single
@@ -30,6 +30,8 @@ theorems-std
 \use_geometry false
 \use_amsmath 0
 \use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine natbib_authoryear
 \use_bibtopic false
 \paperorientation portrait
@@ -43,8 +45,9 @@ theorems-std
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\author 1 "" 
+\author 2 "" 
+\use_refstyle 0
 \end_header
 
 \begin_body
@@ -111,7 +114,7 @@ tnoteref
 
 \begin_layout Title footnote
 This document is a collaborative effort.
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -136,7 +139,7 @@ The short title is the label you refer to in the title.
 \begin_layout Title footnote
 The second title footnote which is a longer longer than the first one and
  with an intention to fill in up more than one line while formatting.
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -280,7 +283,7 @@ cor2
 \end_inset
 
 
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -332,7 +335,7 @@ fn2
 \end_inset
 
 
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -366,7 +369,7 @@ fnref
 
 \begin_layout Email
 http://www.elsevier.com
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -398,7 +401,7 @@ url
 
 \begin_layout Author footnote
 This is the specimen author footnote.
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -412,7 +415,7 @@ fn1
 
 \begin_layout Author footnote
 Another author footnote, but a little more longer.
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -426,7 +429,7 @@ fn2
 
 \begin_layout Corresponding author
 Corresponding author
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -440,7 +443,7 @@ cor1
 
 \begin_layout Corresponding author
 Principal corresponding author
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -455,7 +458,7 @@ cor2
 \begin_layout Address
 River Valley Technologies, SJP Building, Cotton Hills, Trivandrum, Kerala,
  India 695014
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -479,7 +482,7 @@ The short title is the label you refer to in the authors.
 
 \begin_layout Address
 River Valley Technologies, 9, Browns Court, Kennford, Exeter, United Kingdom
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -523,7 +526,7 @@ Bazargan
 
 \begin_layout Email
 http://www.elsevier.com
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
