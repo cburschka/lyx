@@ -178,6 +178,7 @@ void BulletsModule::on_bulletsizeCO_activated(int size)
 {
 	// -1 apparently means default...
 	bullets_[levelLW->currentRow()].setSize(size - 1);
+	changed();
 }
 
 
