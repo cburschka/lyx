@@ -136,18 +136,18 @@ End
 \begin_layout Title
 Personnaliser LyX : fonctions pour l'utilisateur avancé
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Informations de révision :
 \end_layout
 
 \begin_layout Plain Layout
-Traduction : Mise à jour OK, Date: 06/07/2003
+Traduction : Mise à jour OK pour la publication 2.0.0, Date: 03/04/2011
 \end_layout
 
 \begin_layout Plain Layout
-Original : Révision: 1.48, Date: 17/03/2003
+Original : Révision: 37808, Date: 28/02/2011
 \end_layout
 
 \end_inset
@@ -18074,8 +18074,7 @@ stdciteformats.inc
 \end_layout
 
 \begin_layout Section
-
-\lang english
+Directives pour l'exportation XHTML
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Tags-for-XHTML"
@@ -18083,8 +18082,6 @@ name "sec:Tags-for-XHTML"
 \end_inset
 
 
-\lang french
-Directives pour l'exportation XHTML
 \end_layout
 
 \begin_layout Standard
@@ -20253,6 +20250,7 @@ getSizeCSS()
 status collapsed
 
 \begin_layout Plain Layout
+
 src/FontInfo.cpp
 \end_layout
 
