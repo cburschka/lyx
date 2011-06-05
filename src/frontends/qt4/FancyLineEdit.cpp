@@ -26,6 +26,8 @@
 #include <QtGui/QStyle>
 #include <QtGui/QPaintEvent>
 
+#if QT_VERSION >= 0x040600
+
 enum { margin = 6 };
 
 #define ICONBUTTON_HEIGHT 18
@@ -301,5 +303,7 @@ void IconButton::animateShow(bool visible)
 }
 
 }
+
+#endif // QT_VERSION >= 0x040600
 
 #include "moc_FancyLineEdit.cpp"

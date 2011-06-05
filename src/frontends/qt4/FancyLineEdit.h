@@ -62,6 +62,13 @@ class FancyLineEdit : public QLineEdit
 public:
     enum Side {Left = 0, Right = 1};
 
+Q_SIGNALS:
+    void buttonClicked(Side side);
+    void leftButtonClicked();
+    void rightButtonClicked();
+
+#if QT_VERSION >= 0x040600
+public:
     explicit FancyLineEdit(QWidget *parent = 0);
     ~FancyLineEdit();
 
@@ -85,11 +92,6 @@ public:
     void setAutoHideButton(Side side, bool h);
     bool hasAutoHideButton(Side side) const;
 
-Q_SIGNALS:
-	void buttonClicked(Side side);
-    void leftButtonClicked();
-    void rightButtonClicked();
-
 private Q_SLOTS:
     void checkButtons(const QString &);
     void iconClicked();
@@ -103,6 +105,12 @@ private:
 
     FancyLineEditPrivate *m_d;
     QString m_oldText;
+#else
+public:
+	explicit FancyLineEdit(QWidget *parent = 0) 
+		: QLineEdit(parent) 
+	{}
+#endif // QT_VERSION >= 0x040600*/
 };
 
 }

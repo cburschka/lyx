@@ -75,10 +75,12 @@ PanelStack::PanelStack(QWidget * parent)
 	search_->setPlaceholderText(qt_("Search"));
 #endif
 
+#if QT_VERSION >= 0x040600
 	search_->setButtonPixmap(FancyLineEdit::Right, getPixmap("images/", "editclear", "png"));
 	search_->setButtonVisible(FancyLineEdit::Right, true);
 	search_->setButtonToolTip(FancyLineEdit::Right, qt_("Clear text"));
 	search_->setAutoHideButton(FancyLineEdit::Right, true);
+#endif
 	connect(search_, SIGNAL(rightButtonClicked()), this, SLOT(resetSearch()));
 	connect(search_, SIGNAL(textEdited(QString)), this, SLOT(filterChanged(QString)));
 
