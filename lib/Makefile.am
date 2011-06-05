@@ -371,6 +371,7 @@ dist_images_DATA = \
 	images/dialog-toggle_findreplaceadv.png \
 	images/dialog-toggle_toc.png \
 	images/down.png \
+	images/editclear.png \
 	images/ert-insert.png \
 	images/file-open.png \
 	images/float-insert_figure.png \

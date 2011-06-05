@@ -13,12 +13,19 @@
 #ifndef PANELSTACK_H
 #define PANELSTACK_H
 
-#include <QWidget>
-#include <QHash>
+#include "FancyLineEdit.h"
 
+#include <QHash>
+#include <QWidget>
+
+class QAbstractButton;
+class QHideEvent;
+class QLineEdit;
+class QPushButton;
+class QStackedWidget;
+class QTimer;
 class QTreeWidget;
 class QTreeWidgetItem;
-class QStackedWidget;
 
 namespace lyx {
 namespace frontend {
@@ -46,10 +53,20 @@ public:
 	QSize sizeHint() const;
 
 public Q_SLOTS:
+	/// the option filter changed
+	void filterChanged(QString const & search);
+	/// perform the search
+	void search();
+	/// reset the search box
+	void resetSearch();
 	/// set current panel from an item
 	void switchPanel(QTreeWidgetItem * it, QTreeWidgetItem * previous = 0);
 	/// click on the tree
 	void itemSelected(QTreeWidgetItem *, int);
+
+protected:
+	/// widget hidden
+	void hideEvent(QHideEvent * event);
 
 private:
 	///
@@ -61,11 +78,18 @@ private:
 
 	WidgetMap widget_map_;
 
+	/// contains the search box
+	FancyLineEdit * search_;
+
 	/// contains the items
 	QTreeWidget * list_;
 
 	/// contains the panes
 	QStackedWidget * stack_;
+
+	// timer to delay the search between options
+	QTimer * delay_search_;
+
 };
 
 } // namespace frontend
