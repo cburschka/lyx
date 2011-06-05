@@ -369,6 +369,7 @@ elseif(LYX_RELEASE)
 	set(LYX_DEBUG OFF)
 else()
 	set(CMAKE_BUILD_TYPE Debug)
+	set(LYX_DEBUG ON)
 endif()
 
 
