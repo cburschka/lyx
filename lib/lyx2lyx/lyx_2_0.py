@@ -45,17 +45,6 @@ def remove_option(lines, m, option):
     return True
 
 
-# DO NOT USE THIS ROUTINE ANY MORE. Better yet, replace the uses that
-# have been made of it with uses of put_cmd_in_ert.
-def old_put_cmd_in_ert(string):
-    for rep in unicode_reps:
-        string = string.replace(rep[1], rep[0].replace('\\\\', '\\'))
-    string = string.replace('\\', "\\backslash\n")
-    string = "\\begin_inset ERT\nstatus collapsed\n\\begin_layout Plain Layout\n" \
-      + string + "\n\\end_layout\n\\end_inset"
-    return string
-
-
 ###############################################################################
 ###
 ### Conversion and reversion routines
