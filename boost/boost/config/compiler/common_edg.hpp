@@ -62,9 +62,12 @@
 #if (__EDG_VERSION__ < 310)
 #  define BOOST_NO_EXTERN_TEMPLATE
 #endif
-#if (__EDG_VERSION__ <= 310) || !defined(BOOST_STRICT_CONFIG)
+#if (__EDG_VERSION__ <= 310)
 // No support for initializer lists
 #  define BOOST_NO_INITIALIZER_LISTS
+#endif
+#if (__EDG_VERSION__ < 400)
+#  define BOOST_NO_VARIADIC_MACROS
 #endif
 
 #define BOOST_NO_AUTO_DECLARATIONS
@@ -94,6 +97,3 @@
 // However, some libraries have insufficient "long long" support
 // #define BOOST_HAS_LONG_LONG
 #endif
-
-
-

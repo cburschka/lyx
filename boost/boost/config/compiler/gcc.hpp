@@ -43,6 +43,8 @@
 #   define BOOST_FUNCTION_SCOPE_USING_DECLARATION_BREAKS_ADL
 #   define BOOST_NO_IS_ABSTRACT
 #   define BOOST_NO_EXTERN_TEMPLATE
+// Variadic macros do not exist for gcc versions before 3.0
+#   define BOOST_NO_VARIADIC_MACROS
 #elif __GNUC__ == 3
 #  if defined (__PATHSCALE__)
 #     define BOOST_NO_TWO_PHASE_NAME_LOOKUP
@@ -113,7 +115,7 @@
 // Dynamic shared object (DSO) and dynamic-link library (DLL) support
 //
 #if __GNUC__ >= 4
-#  if defined(_WIN32) || defined(__WIN32__) || defined(WIN32)
+#  if (defined(_WIN32) || defined(__WIN32__) || defined(WIN32)) && !defined(__CYGWIN__)
      // All Win32 development environments, including 64-bit Windows and MinGW, define 
      // _WIN32 or one of its variant spellings. Note that Cygwin is a POSIX environment,
      // so does not define _WIN32 or its variants.
@@ -146,8 +148,6 @@
 
 // C++0x features not implemented in any GCC version
 //
-#define BOOST_NO_CONSTEXPR
-#define BOOST_NO_NULLPTR
 #define BOOST_NO_TEMPLATE_ALIASES
 
 // C++0x features in 4.3.n and later
@@ -209,6 +209,13 @@
 #  define BOOST_NO_UNICODE_LITERALS
 #endif
 
+// C++0x features in 4.5.n and later
+//
+#if __GNUC__ < 4 || (__GNUC__ == 4 && __GNUC_MINOR__ < 6) || !defined(__GXX_EXPERIMENTAL_CXX0X__)
+#define BOOST_NO_CONSTEXPR
+#define BOOST_NO_NULLPTR
+#endif
+
 // ConceptGCC compiler:
 //   http://www.generic-programming.org/software/ConceptGCC/
 #ifdef __GXX_CONCEPTS__
@@ -229,8 +236,8 @@
 #  error "Compiler not configured - please reconfigure"
 #endif
 //
-// last known and checked version is 4.4 (Pre-release):
-#if (__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ > 4))
+// last known and checked version is 4.6 (Pre-release):
+#if (__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ > 6))
 #  if defined(BOOST_ASSERT_CONFIG)
 #     error "Unknown compiler version - please run the configure tests and report the results"
 #  else

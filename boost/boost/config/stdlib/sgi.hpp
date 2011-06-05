@@ -40,6 +40,17 @@
 #  define BOOST_NO_STRINGSTREAM
 #endif
 
+// Apple doesn't seem to reliably defined a *unix* macro
+#if !defined(CYGWIN) && (  defined(__unix__)  \
+                        || defined(__unix)    \
+                        || defined(unix)      \
+                        || defined(__APPLE__) \
+                        || defined(__APPLE)   \
+                        || defined(APPLE))
+#  include <unistd.h>
+#endif
+
+
 //
 // Assume no std::locale without own iostreams (this may be an
 // incorrect assumption in some cases):
@@ -130,6 +141,7 @@
 #  define BOOST_NO_STD_UNORDERED        // deprecated; see following
 #  define BOOST_NO_0X_HDR_UNORDERED_MAP
 #  define BOOST_NO_0X_HDR_UNORDERED_SET
+#  define BOOST_NO_NUMERIC_LIMITS_LOWEST
 
 #define BOOST_STDLIB "SGI standard library"
 

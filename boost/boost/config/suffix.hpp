@@ -25,6 +25,14 @@
 #ifndef BOOST_CONFIG_SUFFIX_HPP
 #define BOOST_CONFIG_SUFFIX_HPP
 
+#if defined(__GNUC__) && (__GNUC__ >= 4)
+//
+// Some GCC-4.x versions issue warnings even when __extension__ is used,
+// so use this as a workaround:
+//
+#pragma GCC system_header
+#endif
+
 //
 // ensure that visibility macros are always defined, thus symplifying use
 //
@@ -341,6 +349,13 @@
 #define BOOST_HAS_RVALUE_REFS
 #endif
 
+//
+// Set BOOST_HAS_VARIADIC_TMPL when BOOST_NO_VARIADIC_TEMPLATES is not defined
+//
+#if !defined(BOOST_NO_VARIADIC_TEMPLATES) && !defined(BOOST_HAS_VARIADIC_TMPL)
+#define BOOST_HAS_VARIADIC_TMPL
+#endif
+
 //  BOOST_HAS_ABI_HEADERS
 //  This macro gets set if we have headers that fix the ABI,
 //  and prevent ODR violations when linking to external libraries:
@@ -585,7 +600,7 @@ namespace boost{
 // the global definition into std namespace:
 #ifdef BOOST_NO_STD_TYPEINFO
 #include <typeinfo>
-namespace std{ using ::typeinfo; }
+namespace std{ using ::type_info; }
 #endif
 
 // ---------------------------------------------------------------------------//
@@ -635,5 +650,19 @@ namespace std{ using ::typeinfo; }
 #  ifndef BOOST_GPU_ENABLED
 #  define BOOST_GPU_ENABLED 
 #  endif
+
+//
+// constexpr workarounds
+// 
+#if defined(BOOST_NO_CONSTEXPR)
+#define BOOST_CONSTEXPR
+#define BOOST_CONSTEXPR_OR_CONST const
+#else
+#define BOOST_CONSTEXPR constexpr
+#define BOOST_CONSTEXPR_OR_CONST constexpr
+#endif
+
+#define BOOST_STATIC_CONSTEXPR  static BOOST_CONSTEXPR_OR_CONST
+
 #endif
 

@@ -44,6 +44,9 @@
 #endif
 #endif
 
+#ifdef BOOST_INTEL
+#pragma warning(disable:383)
+#endif
 
 namespace boost{
 
@@ -220,20 +223,4 @@ int WINAPI DllEntryPoint(HINSTANCE , unsigned long , void*)
    return 1;
 }
 #endif
-
-#if defined(__IBMCPP__) && defined(BOOST_REGEX_DYN_LINK)
-//
-// Is this correct - linker complains without it ?
-//
-int main()
-{ 
-   return 0; 
-}
-
-#endif
-
-
-
-
-
 

@@ -218,9 +218,9 @@ namespace boost{
     {
 #if !defined(BOOST_NO_CWCTYPE)
       if (sizeof(char_type) == 1)
-        return std::isspace(c) != 0;
+        return std::isspace(static_cast<int>(c)) != 0;
       else
-        return std::iswspace(c) != 0;
+        return std::iswspace(static_cast<std::wint_t>(c)) != 0;
 #else
       return static_cast< unsigned >(c) <= 255 && std::isspace(c) != 0;
 #endif
@@ -230,9 +230,9 @@ namespace boost{
     {
 #if !defined(BOOST_NO_CWCTYPE)
       if (sizeof(char_type) == 1)
-        return std::ispunct(c) != 0;
+        return std::ispunct(static_cast<int>(c)) != 0;
       else
-        return std::iswpunct(c) != 0;
+        return std::iswpunct(static_cast<std::wint_t>(c)) != 0;
 #else
       return static_cast< unsigned >(c) <= 255 && std::ispunct(c) != 0;
 #endif
@@ -418,7 +418,7 @@ namespace boost{
   class char_separator
   {
     typedef tokenizer_detail::traits_extension<Tr> Traits;
-    typedef std::basic_string<Char,Traits> string_type;
+    typedef std::basic_string<Char,Tr> string_type;
   public:
     explicit 
     char_separator(const Char* dropped_delims,
@@ -561,7 +561,7 @@ namespace boost{
   private:
 
     typedef tokenizer_detail::traits_extension<Tr> Traits;
-    typedef std::basic_string<Char,Traits> string_type;
+    typedef std::basic_string<Char,Tr> string_type;
     string_type returnable_;
     string_type nonreturnable_;
     bool return_delims_;
