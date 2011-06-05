@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-03 12:30+0200\n"
-"PO-Revision-Date: 2011-06-05 15:30+0200\n"
+"POT-Creation-Date: 2011-06-05 20:44+0200\n"
+"PO-Revision-Date: 2011-06-05 20:46+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -22271,6 +22271,14 @@ msgstr "Žiadna citácia nablízku!"
 #: src/frontends/qt4/Menus.cpp:2093
 msgid "No Action Defined!"
 msgstr "Žiadna akcia nebola definovaná!"
+
+#: src/frontends/qt4/PanelStack.cpp:75
+msgid "Search"
+msgstr "Hľadať"
+
+#: src/frontends/qt4/PanelStack.cpp:80
+msgid "Clear text"
+msgstr "Stránku vyprázdniť"
 
 #: src/frontends/qt4/Toolbars.cpp:217
 #, c-format
