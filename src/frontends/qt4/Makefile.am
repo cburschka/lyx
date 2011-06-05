@@ -58,6 +58,7 @@ SOURCEFILES = \
 	ColorCache.cpp \
 	CustomizedWidgets.cpp \
 	EmptyTable.cpp \
+	FancyLineEdit.cpp \
 	FileDialog.cpp \
 	FindAndReplace.cpp \
 	FloatPlacement.cpp \
@@ -173,6 +174,7 @@ MOCHEADER = \
 	BulletsModule.h \
 	CustomizedWidgets.h \
 	EmptyTable.h \
+	FancyLineEdit.h \
 	FindAndReplace.h \
 	FloatPlacement.h \
 	GuiAbout.h \
