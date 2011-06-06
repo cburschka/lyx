@@ -11,11 +11,7 @@
 
 // Code taken from the Qt Creator project and customized a little
 
-#include <config.h>
-
 #include "FancyLineEdit.h"
-
-#if QT_VERSION >= 0x040600
 
 #include <QtCore/QEvent>
 #include <QtCore/QDebug>
@@ -29,6 +25,8 @@
 #include <QtGui/QPainter>
 #include <QtGui/QStyle>
 #include <QtGui/QPaintEvent>
+
+#if QT_VERSION >= 0x040600
 
 enum { margin = 6 };
 

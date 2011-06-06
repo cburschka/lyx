@@ -22,7 +22,6 @@ namespace frontend {
 
 class FancyLineEditPrivate;
 
-#if QT_VERSION >= 0x040600
 class IconButton: public QAbstractButton
 {
 	Q_OBJECT
@@ -45,7 +44,7 @@ private:
     bool m_autoHide;
     QPixmap m_pixmap;
 };
-#endif
+
 
 /* A line edit with an embedded pixmap on one side that is connected to
  * a menu. Additionally, it can display a grayed hintText (like "Type Here to")
