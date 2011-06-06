@@ -712,6 +712,7 @@ src_frontends_qt4_header_files = Split('''
     DialogView.h
     DockView.h
     EmptyTable.h
+    FancyLineEdit.h
     FileDialog.h
     FindAndReplace.h
     FloatPlacement.h
@@ -816,8 +817,9 @@ src_frontends_qt4_files = Split('''
     ColorCache.cpp
     CustomizedWidgets.cpp
     EmptyTable.cpp
-    FindAndReplace.cpp
+    FancyLineEdit.cpp
     FileDialog.cpp
+    FindAndReplace.cpp
     FloatPlacement.cpp
     GuiAbout.cpp
     GuiAlert.cpp
@@ -1501,6 +1503,7 @@ lib_images_files = Split('''
     dialog-toggle_findreplaceadv.png
     dialog-toggle_toc.png
     down.png
+    editclear.png
     ert-insert.png
     file-open.png
     float-insert_figure.png
