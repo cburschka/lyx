@@ -360,8 +360,8 @@ Language french
 	LangCode         fr_FR
 	PostBabelPreamble
 	\addto\extrasfrench{%
-	   \providecommand{\og}{\leavevmode\flqq~}
-	   \providecommand{\fg}{\ifdim\lastskip>\z@\unskip\fi~\frqq}
+	   \providecommand{\og}{\leavevmode\flqq~}%
+	   \providecommand{\fg}{\ifdim\lastskip>\z@\unskip\fi~\frqq}%
 	}
 	EndPostBabelPreamble
 End
