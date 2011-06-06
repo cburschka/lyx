@@ -1,5 +1,5 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.1.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \use_default_options false
@@ -14,6 +14,7 @@
 \def\newblock{\hskip .11em plus .33em minus .07em}
 \end_preamble
 \language english
+\language_package default
 \inputencoding auto
 \font_roman default
 \font_sans default
@@ -31,6 +32,8 @@
 \use_geometry true
 \use_amsmath 0
 \use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -44,8 +47,9 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author 1 "" 
+\author 2 "" 
+\use_refstyle 0
 \end_header
 
 \begin_body
@@ -78,7 +82,7 @@ Math Options
 
 \begin_layout Title
 Your Title
-\begin_inset OptArg
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout

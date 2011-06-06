@@ -1,5 +1,5 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.1.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass aastex
@@ -10,6 +10,7 @@
 \end_preamble
 \use_default_options false
 \language english
+\language_package default
 \inputencoding default
 \font_roman default
 \font_sans default
@@ -27,6 +28,8 @@
 \use_geometry false
 \use_amsmath 0
 \use_esint 0
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine natbib_authoryear
 \use_bibtopic false
 \paperorientation portrait
@@ -40,8 +43,9 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author 1 "" 
+\author 2 "" 
+\use_refstyle 0
 \end_header
 
 \begin_body

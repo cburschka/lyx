@@ -1,5 +1,5 @@
-#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.1.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass beamer
@@ -12,6 +12,7 @@
 \end_preamble
 \use_default_options false
 \language english
+\language_package default
 \inputencoding auto
 \font_roman times
 \font_sans default
@@ -21,7 +22,6 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \paperfontsize default
 \spacing single
@@ -30,6 +30,8 @@
 \use_geometry false
 \use_amsmath 2
 \use_esint 0
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -43,8 +45,9 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\author 1 "" 
+\author 2 "" 
+\use_refstyle 0
 \end_header
 
 \begin_body
@@ -104,7 +107,7 @@ In principle, this file can be redistributed and/or modified under the terms
 
 \begin_layout Title
 Title As It Is In the Proceedings
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -202,7 +205,7 @@ InstituteMark
 \end_inset
 
 
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -306,7 +309,7 @@ Keep it simple, no one is interested in your street address.
 \end_inset
 
 
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -346,7 +349,7 @@ Not really informative to the audience, more for people (including yourself)
 \end_inset
 
 
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -592,7 +595,7 @@ Motivation
 
 \begin_layout Subsection
 The Basic Problem That We Studied
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
