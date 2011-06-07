@@ -77,12 +77,24 @@ def latex_flavor(line):
 	return (True, 
 		"\\converter \"%s\" \"%s\" \"%s\" \"latex=%s\"" % (conv, fmat, args, flavor))
 
+emre = re.compile(r'^\\[Ff]ormat\s+(.*)\s+"(document[^"]*?)"')
+def export_menu(line):
+	if not line.lower().startswith("\\format"):
+		return no_match
+	m = emre.match(line)
+	if not m:
+		return no_match
+	fmat = m.group(1)
+	opts = m.group(2)
+	return (True,
+		"\\Format %s \"%s,menu=export\"" % (fmat, opts))
 
 ########################
 
 
 conversions = [
 	[ # this will be a long list of conversions for format 0
+		export_menu,
 		latex_flavor,
 		remove_obsolete,
 		language_use_babel,
