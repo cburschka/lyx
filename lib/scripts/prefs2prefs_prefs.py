@@ -71,10 +71,18 @@ def latex_flavor(line):
 	conv = m.group(1)
 	fmat = m.group(2)
 	args = m.group(3)
-	flavor = "pdflatex"	
-	if conv in ("platex", "xetex", "luatex"):
+	conv2fl = {
+		   "luatex":   "lualatex",
+		   "pplatex":  "latex",
+		   "xetex":    "xelatex",
+		  }
+	if conv in conv2fl.keys():
+		flavor = conv2fl[conv]
+	else:
 		flavor = conv
-	return (True, 
+	if flavor == "latex":
+		return no_match
+	return (True,
 		"\\converter \"%s\" \"%s\" \"%s\" \"latex=%s\"" % (conv, fmat, args, flavor))
 
 emre = re.compile(r'^\\[Ff]ormat\s+(.*)\s+"(document[^"]*?)"')
