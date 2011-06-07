@@ -127,7 +127,7 @@ Section -Configure
   FileOpen $R1 "$INSTDIR\Resources\lyxrc.dist" w
   # set some general things
   FileWrite $R1 '\screen_zoom "120"$\r$\n\
-                 \accept_compound true$\r$\n\'
+                 \accept_compound true$\r$\n'
   ${if} "$PathPrefix" != ""
    FileWrite $R1 '\path_prefix "$PathPrefix"$\r$\n'
   ${endif}
