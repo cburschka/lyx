@@ -835,12 +835,12 @@ def checkConverterEntries():
     checkProg('a Dia -> EPS converter', ['dia -e $$o -t eps $$i'],
         rc_entry = [ r'\converter dia        eps        "%%"	""'])
     #
-    checkProg('a SVG -> PDF converter', ['rsvg-convert -f pdf -o $$o $$i', 'inkscape --file=$$p/$$i --export-area-drawing --without-gui --export-pdf=$$p/$$o'],
+    checkProg('a SVG -> PDF converter', ['rsvg-convert -f pdf -o $$o $$i', 'inkscape --file=$$i --export-area-drawing --without-gui --export-pdf=$$o'],
         rc_entry = [ r'\converter svg        pdf        "%%"	""'])
     #
-    checkProg('a SVG -> EPS converter', ['rsvg-convert -f ps -o $$o $$i', 'inkscape --file=$$p/$$i --export-area-drawing --without-gui --export-eps=$$p/$$o'],
+    checkProg('a SVG -> EPS converter', ['rsvg-convert -f ps -o $$o $$i', 'inkscape --file=$$i --export-area-drawing --without-gui --export-eps=$$o'],
         rc_entry = [ r'\converter svg        eps        "%%"	""'])
-    # the PNG export via Inkscape must not have the full path ($$p) for the file
+    #
     checkProg('a SVG -> PNG converter', ['rsvg-convert -f png -o $$o $$i', 'inkscape --without-gui --file=$$i --export-png=$$o'],
         rc_entry = [ r'\converter svg        png        "%%"	""'])
     
