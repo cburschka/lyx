@@ -627,7 +627,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 					"was not exported correctly.\nWarning: "
 					"LaTeX export is probably incomplete."),
 					included_file.displayName());
-			ErrorList & el = tmp->errorList("Export");
+			ErrorList const & el = tmp->errorList("Export");
 			if (!el.empty())
 				msg = bformat(from_ascii("%1$s\n\n%2$s\n\n%3$s"),
 						msg, el.begin()->error,
