@@ -333,7 +333,7 @@ public:
 	void expandLastfiles();
 	void expandDocuments();
 	void expandBookmarks();
-	void expandFormats(MenuItem::Kind kind, Buffer const * buf);
+	void expandFormats(MenuItem::Kind const kind, Buffer const * buf);
 	void expandFloatListInsert(Buffer const * buf);
 	void expandFloatInsert(Buffer const * buf);
 	void expandFlexInsert(Buffer const * buf, InsetLayout::InsetLyXType type);
@@ -992,14 +992,14 @@ void MenuDefinition::expandBookmarks()
 }
 
 
-void MenuDefinition::expandFormats(MenuItem::Kind kind, Buffer const * buf)
+void MenuDefinition::expandFormats(MenuItem::Kind const kind, Buffer const * buf)
 {
 	if (!buf && kind != MenuItem::ImportFormats)
 		return;
 
 	typedef vector<Format const *> Formats;
 	Formats formats;
-	FuncCode action;
+	FuncCode action = LFUN_NOACTION;
 
 	switch (kind) {
 	case MenuItem::ImportFormats:
@@ -1014,10 +1014,15 @@ void MenuDefinition::expandFormats(MenuItem::Kind kind, Buffer const * buf)
 		formats = buf->params().exportableFormats(true);
 		action = LFUN_BUFFER_UPDATE;
 		break;
-	default:
+	case MenuItem::ExportFormats:
 		formats = buf->params().exportableFormats(false);
 		action = LFUN_BUFFER_EXPORT;
+		break;
+	default:
+		LASSERT(false, /* */);
+		return;
 	}
+	
 	sort(formats.begin(), formats.end(), &compareFormat);
 
 	bool const view_update = (kind == MenuItem::ViewFormats
@@ -1025,8 +1030,8 @@ void MenuDefinition::expandFormats(MenuItem::Kind kind, Buffer const * buf)
 
 	QString smenue;
 	if (view_update)
-		smenue = (kind == MenuItem::ViewFormats ?
-			qt_("View (Other Formats)|F")
+		smenue = (kind == MenuItem::ViewFormats
+			? qt_("View (Other Formats)|F")
 			: qt_("Update (Other Formats)|p"));
 	MenuItem item(MenuItem::Submenu, smenue);
 	item.setSubmenu(MenuDefinition(smenue));
@@ -1038,59 +1043,55 @@ void MenuDefinition::expandFormats(MenuItem::Kind kind, Buffer const * buf)
 			continue;
 
 		docstring lab = from_utf8((*fit)->prettyname());
-		docstring scut = from_utf8((*fit)->shortcut());
+		docstring const scut = from_utf8((*fit)->shortcut());
 		docstring const tmplab = lab;
  
 		if (!scut.empty())
 			lab += char_type('|') + scut;
-		docstring lab_i18n = translateIfPossible(lab);
+		docstring const lab_i18n = translateIfPossible(lab);
+		docstring const shortcut = split(lab_i18n, lab, '|');
+
 		bool const untranslated = (lab == lab_i18n);
-		QString const shortcut = toqstr(split(lab_i18n, lab, '|'));
-		QString label = toqstr(lab);
-		if (untranslated)
-			// this might happen if the shortcut
-			// has been redefined
-			label = toqstr(translateIfPossible(tmplab));
+		docstring label = untranslated ? translateIfPossible(tmplab) : lab;
 
 		switch (kind) {
 		case MenuItem::ImportFormats:
-			label += "...";
+			label += from_ascii("...");
 			break;
 		case MenuItem::ViewFormats:
 		case MenuItem::UpdateFormats:
 			if ((*fit)->name() == buf->params().getDefaultOutputFormat()) {
-				docstring lbl = (kind == MenuItem::ViewFormats ?
-					bformat(_("View [%1$s]|V"), qstring_to_ucs4(label))
-					: bformat(_("Update [%1$s]|U"), qstring_to_ucs4(label)));
-				MenuItem w(MenuItem::Command, toqstr(lbl),
-					   FuncRequest(action));
-				add(w);
+				docstring lbl = (kind == MenuItem::ViewFormats
+					? bformat(_("View [%1$s]|V"), label)
+					: bformat(_("Update [%1$s]|U"), label));
+				add(MenuItem(MenuItem::Command, toqstr(lbl), FuncRequest(action)));
 				continue;
 			}
+		// fall through
 		case MenuItem::ExportFormats:
 			if (!(*fit)->inExportMenu())
 				continue;
 			break;
 		default:
-			LASSERT(false, /**/);
-			break;
+			LASSERT(false, /* */);
+			continue;
 		}
-		if (!shortcut.isEmpty())
+		if (!shortcut.empty())
 			label += '|' + shortcut;
 
 		if (view_update) {
 			if (buf)
-				item.submenu().addWithStatusCheck(MenuItem(MenuItem::Command, label,
-					FuncRequest(action, (*fit)->name())));
+				item.submenu().addWithStatusCheck(MenuItem(MenuItem::Command, 
+					toqstr(label), FuncRequest(action, (*fit)->name())));
 			else
-				item.submenu().add(MenuItem(MenuItem::Command, label,
+				item.submenu().add(MenuItem(MenuItem::Command, toqstr(label),
 					FuncRequest(action, (*fit)->name())));
 		} else {
 			if (buf)
-				addWithStatusCheck(MenuItem(MenuItem::Command, label,
+				addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
 					FuncRequest(action, (*fit)->name())));
 			else
-				add(MenuItem(MenuItem::Command, label,
+				add(MenuItem(MenuItem::Command, toqstr(label),
 					FuncRequest(action, (*fit)->name())));
 		}
 	}
