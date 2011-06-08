@@ -1895,8 +1895,8 @@ Buffer * GuiView::loadDocument(FileName const & filename, bool tolastfiles)
 		return 0;
 	}
 
-	newBuffer->errors("Parse");
 	setBuffer(newBuffer);
+	newBuffer->errors("Parse");
 
 	if (tolastfiles)
 		theSession().lastFiles().add(filename);
