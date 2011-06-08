@@ -16,9 +16,12 @@ ui_%.h: ui/%.ui
 
 MOCEDFILES = $(MOCHEADER:%.h=moc_%.cpp)
 
+QT_VERSION = $(shell IFS=.; set -- `echo $(QT4_VERSION)`; \
+	     echo 0x0`echo "obase=16; $$1*65536+$$2*256+$$3" | bc`)
+
 # The moc_%.cpp pattern must match the filter in ../../../po/Rules-lyx
 moc_%.cpp: %.h
-	$(AM_V_GEN)$(MOC4) -o $@ $<
+	$(AM_V_GEN)$(MOC4) -DQT_VERSION=$(QT_VERSION) -o $@ $<
 
 Resources.qrc: Makefile
 	$(AM_V_GEN)echo "<!DOCTYPE RCC><RCC version='1.0'><qresource>" > $@ ; \
