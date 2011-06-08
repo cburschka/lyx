@@ -647,13 +647,25 @@ void switchBetweenClasses(DocumentClass const * const oldone,
 	DocumentClass const & newtc = *newone;
 
 	// layouts
+	ParIterator it = par_iterator_begin(in);
 	ParIterator end = par_iterator_end(in);
-	for (ParIterator it = par_iterator_begin(in); it != end; ++it) {
+	// for remembering which layouts we've had to add
+	set<docstring> newlayouts;
+	for (; it != end; ++it) {
 		docstring const name = it->layout().name();
 
 		// the pasted text will keep their own layout name. If this layout does
 		// not exist in the new document, it will behave like a standard layout.
-		newtc.addLayoutIfNeeded(name);
+		bool const added_one = newtc.addLayoutIfNeeded(name);
+		if (added_one)
+			newlayouts.insert(name);
+
+		if (added_one || newlayouts.find(name) != newlayouts.end()) {
+			// Warn the user.
+			docstring const s = bformat(_("Layout `%1$s' was not found."), name);
+			errorlist.push_back(
+				ErrorItem(_("Layout Not Found"), s, it->id(), 0, it->size()));
+		}
 
 		if (in.usePlainLayout())
 			it->setLayout(newtc.plainLayout());
