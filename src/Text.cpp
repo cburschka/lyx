@@ -356,7 +356,6 @@ void Text::readParToken(Paragraph & par, Lexer & lex,
 		// of this document. For example, when you apply class article to a beamer document,
 		// all unknown layouts such as frame will be added to document class article so that
 		// these layouts can keep their original names.
-		tclass.addLayoutIfNeeded(layoutname);
 		bool const added_one = tclass.addLayoutIfNeeded(layoutname);
 		if (added_one) {
 			// Warn the user.
