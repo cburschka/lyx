@@ -76,7 +76,7 @@ Section -ProgramFiles SecProgramFiles
   
   !if ${SETUPTYPE} == BUNDLE
    
-   # extract the GSview, Jabref and MiKTeX installer
+   # extract the Jabref and MiKTeX installer
    File /r "${FILES_LYX}\external"
 
    # install MiKTeX if not already installed

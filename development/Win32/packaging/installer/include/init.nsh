@@ -73,14 +73,13 @@ Function .onInit
   Call SearchExternal
   #Call InitExternal
   
-  # don't let the installer sections appear when the programs are already installed
-  ${if} $PSVPath != ""
-   SectionSetText 3 "" # hides the corresponding uninstaller section, ${SecInstGSview}
-  ${endif}
-  ${if} $PathBibTeXEditor != ""
-   SectionSetText 4 "" # hides the corresponding uninstaller section, ${SecInstJabRef}
-  ${endif}
-
+  !if ${SETUPTYPE} == BUNDLE
+   # don't let the installer sections appear when the programs are already installed
+   ${if} $PathBibTeXEditor != ""
+    SectionSetText 3 "" # hides the corresponding uninstaller section, ${SecInstJabRef}
+   ${endif}
+  !endif
+  
   ${IfNot} ${Silent}
     Banner::destroy
   ${EndIf}
@@ -137,7 +136,7 @@ Function un.onInit
   ${else}
    SectionSetText 2 "" # hides the corresponding uninstaller section
   ${endif}
-
+  
   # test if JabRef was installed together with LyX
   ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX"
   ${if} $0 == "Yes${APP_SERIES_KEY}"
@@ -205,10 +204,6 @@ Section /o "$(SecDesktopTitle)" SecDesktop
 SectionEnd
 
 !if ${SETUPTYPE} == BUNDLE
- Section /o "$(SecInstGSviewTitle)" SecInstGSview
-  AddSize 4000
-  StrCpy $InstallGSview "true"
- SectionEnd
  Section /o "$(SecInstJabRefTitle)" SecInstJabRef
   AddSize 5000
   StrCpy $InstallJabRef "true"
@@ -220,7 +215,8 @@ SectionEnd
 !insertmacro MUI_DESCRIPTION_TEXT ${SecCore} "$(SecCoreDescription)"
 !insertmacro MUI_DESCRIPTION_TEXT ${SecFileAssoc} "$(SecFileAssocDescription)"
 !insertmacro MUI_DESCRIPTION_TEXT ${SecDesktop} "$(SecDesktopDescription)"
-!insertmacro MUI_DESCRIPTION_TEXT ${SecInstGSview} "$(SecInstGSviewDescription)"
-!insertmacro MUI_DESCRIPTION_TEXT ${SecInstJabRef} "$(SecInstJabRefDescription)"
+!if ${SETUPTYPE} == BUNDLE
+ !insertmacro MUI_DESCRIPTION_TEXT ${SecInstJabRef} "$(SecInstJabRefDescription)"
+!endif
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 

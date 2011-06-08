@@ -35,7 +35,7 @@ These typically need to be modified for each LyX release
 # File locations
 
 !define FILES_LYX "D:\LyXPackage2.0\LyX"
-!define FILES_DEPS "D:\LyXSVN\LyX2.0.x\lyx-windows-deps-msvc2010"
+!define FILES_DEPS "D:\LyXSVN\LyX2.0.x\lyx-windows-deps-msvc2008"
 !define FILES_BUNDLE "D:\LyX\depsbundle"
 !define FILES_QT "D:\Qt"
 !define ClassFileDir "${FILES_LYX}\Resources\tex"
@@ -49,7 +49,6 @@ These typically need to be modified for each LyX release
 
 # definitions for the Complete installer
 !if ${SETUPTYPE} == BUNDLE
- !define GSviewInstall "external\gsv49w32.exe"
  !define JabRefInstall "external\JabRef-2.6-setup.exe"
  !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.4106.exe"
  !define JabRefVersion "2.6"

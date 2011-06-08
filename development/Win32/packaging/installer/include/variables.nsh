@@ -13,7 +13,6 @@ Var PathBibTeXEditor
 Var SetupLaTeX
 Var SizeLaTeX
 
-Var Acrobat
 Var APPDATemp
 Var AppPre
 var AppSubfolder
@@ -24,7 +23,6 @@ Var DelPythonFiles
 Var EditorPath
 Var GhostscriptPath
 Var ImageEditorPath
-Var InstallGSview
 Var InstallJabRef
 Var JabRefInstalled
 Var LaTeXName

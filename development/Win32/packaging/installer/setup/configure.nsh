@@ -78,12 +78,10 @@ Section -Configure
    # .lyx14
    WriteRegStr SHCTX "Software\Classes\${APP_EXT}14" "" "${APP_REGNAME_DOC}"
    WriteRegStr SHCTX "Software\Classes\${APP_EXT}14" "Content Type" "${APP_MIME_TYPE}"
-   # .lyx15 don't set this, because this is designed to be opened with LyX 1.5.x
-   #WriteRegStr SHCTX "Software\Classes\${APP_EXT}15" "" "${PRODUCT_REGNAME}"
-   #WriteRegStr SHCTX "Software\Classes\${APP_EXT}15" "Content Type" "${PRODUCT_MIME_TYPE}"
+   # .lyx15
+   WriteRegStr SHCTX "Software\Classes\${APP_EXT}15" "" "${APP_REGNAME_DOC}"
+   WriteRegStr SHCTX "Software\Classes\${APP_EXT}15" "Content Type" "${APP_MIME_TYPE}"
    # .lyx16 don't set this, because this is designed to be opened with LyX 1.6.x
-   #WriteRegStr SHCTX "Software\Classes\${APP_EXT}16" "" "${PRODUCT_REGNAME}"
-   #WriteRegStr SHCTX "Software\Classes\${APP_EXT}16" "Content Type" "${PRODUCT_MIME_TYPE}"
   
    # Refresh shell
    ${RefreshShellIcons}
@@ -130,12 +128,6 @@ Section -Configure
                  \accept_compound true$\r$\n'
   ${if} "$PathPrefix" != ""
    FileWrite $R1 '\path_prefix "$PathPrefix"$\r$\n'
-  ${endif}
-  # if Acrobat or Adobe Reader is used
-  ${if} $Acrobat == "Yes" # used for Acrobat / Adobe Reader
-   FileWrite $R1 '\format "pdf3" "pdf" "PDF (dvipdfm)" "m" "pdfview" "" "document,vector"$\r$\n\
-   		  \format "pdf2" "pdf" "PDF (pdflatex)" "F" "pdfview" "" "document,vector"$\r$\n\
-		  \format "pdf" "pdf" "PDF (ps2pdf)" "P" "pdfview" "" "document,vector"$\r$\n'
   ${endif}
   # if a SVG to PDF converter ws found (e.g. Inkscape)
   ${if} $SVGPath != ""

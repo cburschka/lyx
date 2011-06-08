@@ -98,14 +98,6 @@ Function MissingPrograms
    StrCpy $DelPythonFiles "True"
   ${endif}
 
-  # test if Acrobat or Adobe Reader is used as PDF-viewer
-  ReadRegStr $String HKCR ".pdf" ""
-  ${if} $String != "AcroExch.Document" # this name is only used by Acrobat and Adobe Reader
-   StrCpy $Acrobat "None"
-  ${else}
-   StrCpy $Acrobat "Yes"
-  ${endif}
-
   # test if a PostScript-viewer is installed, only check for GSview32
   StrCpy $PSVPath ""
   ReadRegStr $PSVPath HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\gsview32.exe" "Path"
