@@ -108,7 +108,7 @@ macro(LYX_AUTOMOC)
 					#set(_moc ${_abs_PATH}/${_current_MOC})
 					add_custom_command(OUTPUT ${_moc}
 							  COMMAND ${QT_MOC_EXECUTABLE}
-							  ARGS ${_def} ${_moc_INCS} ${_header} -o ${_moc}
+							  ARGS "-DQT_VERSION=${QT4_VERSION}" ${_def} ${_moc_INCS} ${_header} -o ${_moc}
 							  MAIN_DEPENDENCY ${_header})
 					macro_add_file_dependencies(${_abs_FILE} ${_moc})
 					SET_SOURCE_FILES_PROPERTIES(${_moc} GENERATED)

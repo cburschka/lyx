@@ -616,6 +616,11 @@ endif()
 
 configure_file(${LYX_CMAKE_DIR}/config.h.cmake ${TOP_BINARY_DIR}/config.h)
 
+# Compute qt4-version from ${QTVERSION}
+if(QTVERSION MATCHES "^([0-9]+)\\.([0-9]+)\\.([0-9]+).*")
+	MATH(EXPR QT4_VERSIONNUM "${CMAKE_MATCH_1}*10000+${CMAKE_MATCH_2}*100+${CMAKE_MATCH_3}")
+	set(QT4_VERSION "0x${QT4_VERSIONNUM}")
+endif()
 
 add_subdirectory(src "${TOP_BINARY_DIR}/src")
 add_subdirectory(lib/lyx2lyx "${TOP_BINARY_DIR}/lyx2lyx")
