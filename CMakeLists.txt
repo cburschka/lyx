@@ -618,8 +618,7 @@ configure_file(${LYX_CMAKE_DIR}/config.h.cmake ${TOP_BINARY_DIR}/config.h)
 
 # Compute qt4-version from ${QTVERSION}
 if(QTVERSION MATCHES "^([0-9]+)\\.([0-9]+)\\.([0-9]+).*")
-	MATH(EXPR QT4_VERSIONNUM "${CMAKE_MATCH_1}*10000+${CMAKE_MATCH_2}*100+${CMAKE_MATCH_3}")
-	set(QT4_VERSION "0x${QT4_VERSIONNUM}")
+	MATH(EXPR QT4_VERSION "(${CMAKE_MATCH_1}<<16)|(${CMAKE_MATCH_2}<<8)|${CMAKE_MATCH_3}")
 endif()
 
 add_subdirectory(src "${TOP_BINARY_DIR}/src")
