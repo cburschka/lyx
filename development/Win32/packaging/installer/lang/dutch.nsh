@@ -10,14 +10,12 @@ ${LangFileString} WelcomePageText "Dit installatie programma zal LyX op uw syste
 
 ${LangFileString} FileTypeTitle "LyX-Document"
 
-${LangFileString} SecInstGSviewTitle "GSview"
 ${LangFileString} SecInstJabRefTitle "JabRef"
 ${LangFileString} SecAllUsersTitle "Installeer voor alle gebruikers?"
 ${LangFileString} SecFileAssocTitle "Bestand associaties"
 ${LangFileString} SecDesktopTitle "Bureaublad pictogram"
 
 ${LangFileString} SecCoreDescription "De LyX bestanden."
-${LangFileString} SecInstGSviewDescription "Programma dat gebruikt wordt om Postscript en PDF documenten te lezen."
 ${LangFileString} SecInstJabRefDescription "Bibliography reference manager and editor for BibTeX files."
 ${LangFileString} SecAllUsersDescription "Installeer LyX voor alle gebruikers of uitsluitend de huidige gebruiker?"
 ${LangFileString} SecFileAssocDescription "Associeer het LyX programma met de .lyx extensie."
@@ -50,14 +48,6 @@ ${LangFileString} LatexInfo 'Het installatieprogramma van $\"MiKTeX$\" word gest
 ${LangFileString} LatexError1 'Er is geen LaTeX software gevonden!$\r$\n\
                       		      LyX kan niet worden gebruikt zonder LaTeX software zoals $\"MiKTeX$\"!$\r$\n\
 				      De installatie wordt daarom afgebroken.'
-		    
-${LangFileString} GSviewInfo 'Het installatieprogramma van $\"GSview$\" wordt gestart.$\r$\n\
-			             Klik op de $\"Setup$\"-knop in het eerste venster van het installatie programma om de software te installeren$\r$\n\
-				     kies een taal, en klik daarna op de $\"Next$\"-knop in de volgende vensters van het installatie programma.$\r$\n\
-				     U kunt alle standaard opties van het GSview installatie programma gebruiken.'
-${LangFileString} GSviewError 'Het programma $\"GSview$\" kon niet worden geinstalleerd!$\r$\n\
-		                      De installatie van LyX gaat echter door.$\r$\n\
-				      Probeer GSview later te installeren.'
 
 ${LangFileString} JabRefInfo 'Het installatie programma van $\"JabRef$\" wordt nu gestart.$\r$\n\
 				     U kunt de standaard opties gebruiken.'
@@ -95,9 +85,6 @@ ${LangFileString} UnInstallRunning "U moet LyX eerst afsluiten!"
 ${LangFileString} UnNotAdminLabel "U heeft systeem-beheerrechten nodig om LyX te verwijderen!"
 ${LangFileString} UnReallyRemoveLabel "Weet u zeker dat u LyX en alle componenten volledig wil verwijderen van deze computer?"
 ${LangFileString} UnLyXPreferencesTitle 'LyX$\'s user preferences'
-${LangFileString} UnGSview 'Klik op de $\"Uninstall$\" knop in het volgende venster om het$\r$\n\
-				   Postscript en PDF leesprogramma $\"GSview$\" te verwijderen.'
-${LangFileString} UnRemoveSuccessLabel "LyX was successvol verwijderd van uw computer."
 
 ${LangFileString} SecUnMiKTeXDescription "Verwijder de LaTeX software MiKTeX."
 ${LangFileString} SecUnJabRefDescription "Verwijder de bibliografie manager JabRef."

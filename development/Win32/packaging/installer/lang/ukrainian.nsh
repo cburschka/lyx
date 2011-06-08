@@ -10,14 +10,12 @@ ${LangFileString} WelcomePageText "За допомогою цього майстра ви зможете встанов
 
 ${LangFileString} FileTypeTitle "Документ LyX"
 
-${LangFileString} SecInstGSviewTitle "GSview"
 ${LangFileString} SecInstJabRefTitle "JabRef"
 ${LangFileString} SecAllUsersTitle "Встановити для всіх користувачів?"
 ${LangFileString} SecFileAssocTitle "Прив’язка файлів"
 ${LangFileString} SecDesktopTitle "Піктограма стільниці"
 
 ${LangFileString} SecCoreDescription "Файли LyX."
-${LangFileString} SecInstGSviewDescription "Програма для перегляду документів у форматах Postscript і PDF."
 ${LangFileString} SecInstJabRefDescription "Засіб для роботи з бібліографічними посиланнями і редактор файлів BibTeX."
 ${LangFileString} SecAllUsersDescription "Визначає, чи слід встановити LyX для всіх користувачів, чи лише для поточного користувача."
 ${LangFileString} SecFileAssocDescription "Файли з суфіксом .lyx автоматично відкриватимуться за допомогою LyX."
@@ -50,14 +48,6 @@ ${LangFileString} LatexInfo 'Тепер буде запущено засіб встановлення дистрибутива
 ${LangFileString} LatexError1 'Дистрибутивів LaTeX не виявлено!$\r$\n\
                       		      Ви не зможете користуватися LyX без дистрибутива LaTeX на зразок $\"MiKTeX$\"!$\r$\n\
 				      З цієї причини встановлення буде припинено.'
-			    
-${LangFileString} GSviewInfo 'Тепер буде запущено засіб для встановлення програми $\"GSview$\".$\r$\n\
-			             Щоб встановити програму, натисніть кнопку $\"Setup$\" у першому вікні засобу для встановлення,$\r$\n\
-				     виберіть мову, а потім натискайте кнопку $\"Next$\" у всіх наступних вікнах засобу для встановлення.$\r$\n\
-				     Ви можете використовувати типові параметри засобу для встановлення GSview.'
-${LangFileString} GSviewError 'Не вдалося встановити програму $\"GSview$\"!$\r$\n\
-		                      Процес встановлення LyX буде продовжено.$\r$\n\
-				      Спробуйте встановити GSview пізніше самостійно.'
 				      
 ${LangFileString} JabRefInfo 'Тепер буде запущено засіб для встановлення програми $\"JabRef$\".$\r$\n\
 				     У засобі для встановлення ви можете не змінювати типових параметрів JabRef.'
@@ -95,9 +85,6 @@ ${LangFileString} UnInstallRunning "Спочатку слід завершити роботу програми LyX!
 ${LangFileString} UnNotAdminLabel "Для вилучення LyX вам слід мати привілеї адміністратора!"
 ${LangFileString} UnReallyRemoveLabel "Ви справді бажаєте повністю вилучити LyX і всі його компоненти?"
 ${LangFileString} UnLyXPreferencesTitle 'Параметри LyX, встановлені користувачем'
-${LangFileString} UnGSview 'Будь ласка, натисніть кнопку $\"Uninstall$\" у наступному вікні, щоб вилучити$\r$\n\
-				   переглядач Postscript і PDF $\"GSview$\".'
-${LangFileString} UnRemoveSuccessLabel "LyX було успішно вилучено з вашого комп’ютера."
 
 ${LangFileString} SecUnMiKTeXDescription "Вилучає дистрибутив LaTeX - MiKTeX."
 ${LangFileString} SecUnJabRefDescription "Вилучає засіб для роботи з бібліографічними даними JabRef."

@@ -10,14 +10,12 @@ ${LangFileString} WelcomePageText "Acest asistent vã va ghida în procesul de ins
 
 ${LangFileString} FileTypeTitle "Document LyX"
 
-${LangFileString} SecInstGSviewTitle "GSview"
 ${LangFileString} SecInstJabRefTitle "JabRef"
 ${LangFileString} SecAllUsersTitle "Doriþi sã instalaþi pentru toþi utilizatorii?"
 ${LangFileString} SecFileAssocTitle "Asocierea fiºierelor"
 ${LangFileString} SecDesktopTitle "Iconiþã pe desktop"
 
 ${LangFileString} SecCoreDescription "Fiºierele LyX."
-${LangFileString} SecInstGSviewDescription "Program  de vizualizat documente tip Postscript ºi PDF."
 ${LangFileString} SecInstJabRefDescription "Gestionarul de Bibliografie ºi editorul de fiºiere tip BibTeX."
 ${LangFileString} SecAllUsersDescription "Instaleazã LyX pentru toþi utilizatorii sau doar pentru utilizatorul curent."
 ${LangFileString} SecFileAssocDescription "Fiºierele cu extensia .lyx vor fi deschise automat cu LyX."
@@ -49,14 +47,6 @@ ${LangFileString} LatexInfo 'Programul de instalare al distribuþiei LaTeX  $\"Mi
 ${LangFileString} LatexError1 'Nu am detectat nici o distribuþia LaTeX instalatã pe calculatorul dumneavoastrã!$\r$\n\
                                      LyX nu poate fi folosit fãrã o distribuþia LaTeX ca  $\"MiKTeX$\"!$\r$\n\
                                      Instalarea va fi abandonatã.'
-
-${LangFileString} GSviewInfo 'Acum va fi lansat programul de instalare al aplicaþiei $\"GSview$\".$\r$\n\
-                                    Pentru instalare apãsaþi butonul $\"Setup$\" în fereastra prgramului de instalare,$\r$\n\
-                                    alegeþi un limbaj ºi apãsaþi butonul $\"Next$\" în urmatoarea fereastrã$\r$\n\
-                                    Este indicat sã folosiþi setãrile implicite ale programului de instalat GSview.'
-${LangFileString} GSviewError 'Programul $\"GSview$\" nu a putut fi instalat!$\r$\n\
-                                     Programul de instalare LyX va continua totuºi.$\r$\n\
-                                     Încercaþi sã instalaþi GSview mai tîrziu.'
 
 ${LangFileString} JabRefInfo 'Acum va fi lansat programul de instalare al aplicaþiei $\"JabRef$\".$\r$\n\
                                      Este indicat sã folosiþi setãrile implicite ale programului de instalat  JabRef.'
@@ -94,9 +84,6 @@ ${LangFileString} UnInstallRunning "Trebuie sã inchideþi LyX prima oarã!"
 ${LangFileString} UnNotAdminLabel "Trebuie sã aveþi drepturi de administrator pentru dezinstalarea programului LyX!"
 ${LangFileString} UnReallyRemoveLabel "Sunteþi sigur cã doriþi sã dezinstalaþi programul LyX ºi toate componentele lui?"
 ${LangFileString} UnLyXPreferencesTitle 'Preferinþele utilizatorului pentru LyX'
-${LangFileString} UnGSview 'Apãsaþi butonul $\"Uninstall$\" în urmatoarea fereastrã pentru a dezinstala  $\r$\n\
-                                  vizualizatorul de documente tip Postscript ºi PDF  $\"GSview$\".'
-${LangFileString} UnRemoveSuccessLabel "LyX a fost dezinstalat cu succes de pe calculatorul dumneavoastrã."
 
 ${LangFileString} SecUnMiKTeXDescription 'Dezinstaleazã Distribuþia LaTeX $\"MiKTeX$\".'
 ${LangFileString} SecUnJabRefDescription "Dezinstaleazã gestionarul de bibliografie JabRef."

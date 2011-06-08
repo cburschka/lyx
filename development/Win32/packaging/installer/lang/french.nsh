@@ -99,14 +99,12 @@ ${LangFileString} WelcomePageText "Cet assistant vous guidera durant l'installat
 
 ${LangFileString} FileTypeTitle "Document LyX"
 
-${LangFileString} SecInstGSviewTitle "GSview"
 ${LangFileString} SecInstJabRefTitle "JabRef"
 ${LangFileString} SecAllUsersTitle "Installer pour tous les utilisateurs ?"
 ${LangFileString} SecFileAssocTitle "Associations de fichiers"
 ${LangFileString} SecDesktopTitle "Icône du bureau"
 
 ${LangFileString} SecCoreDescription "Les fichiers LyX"
-${LangFileString} SecInstGSviewDescription "Application permettant d'afficher les documents PostScript - et PDF."
 ${LangFileString} SecInstJabRefDescription "Gestionnaire de références bibliographiques et éditeur de ficjiers BibTeX."
 ${LangFileString} SecAllUsersDescription "Installer LyX pour tous les utilisateurs, ou seulement pour l'utilisateur courant ?."
 ${LangFileString} SecFileAssocDescription "Les fichiers de suffixe .lyx seront automatiquement ouverts dans LyX."
@@ -140,14 +138,6 @@ ${LangFileString} LatexError1 'Distribution LaTeX introuvable !$\r$\n\
                       		      LyX ne peut être utilisé sans distribution LaTeX, comme par exemple $\"MiKTeX$\" !$\r$\n\
 				      L$\'installation de LyX va donc être abandonnée.'
 			    
-${LangFileString} GSviewInfo 'Lancement de l$\'installation de l$\'application $\"GSview$\".$\r$\n\
-			             Pour installer l$\'application, appuyer sur le bouton $\"Setup$\" de la première fenêtre d$\'installation$\r$\n\
-				     choisir une langue, puis appuyer sur le bouton $\"Next$\" de la fenêtre d$\'installation suivante.$\r$\n\
-				     Vous pouvez utiliser les options implicites du programme d$\'installation GSview.'
-${LangFileString} GSviewError 'L$\'application $\"GSview$\" n$\'a pas pu être installée correctement !$\r$\n\
-		                      L$\'installation de LyX va continuer.$\r$\n\
-				      Essayer d$\'installer GSview de nouveau plus tard.'
-
 ${LangFileString} JabRefInfo 'Lancement de l$\'installation de l$\'application $\"JabRef$\".$\r$\n\
 				     Vous pouvez utiliser les options implicites du programme d$\'installation JabRef.'
 ${LangFileString} JabRefError 'L$\'application $\"JabRef$\" n$\'a pas pu être installée correctement !$\r$\n\
@@ -184,9 +174,6 @@ ${LangFileString} UnInstallRunning "Vous devez fermer LyX d'abord !"
 ${LangFileString} UnNotAdminLabel "Vous devez avoir les droits d'administration pour désinstaller LyX !"
 ${LangFileString} UnReallyRemoveLabel "Êtes vous sûr(e) de vouloir supprimer complètement LyX et tous ses composants ?"
 ${LangFileString} UnLyXPreferencesTitle 'Préférences utilisateurs de LyX'
-${LangFileString} UnGSview 'Merci d$\'appuyer sur le bouton $\"Désinstaller$\" de la prochaine fenêtre pour désinstaller.$\r$\n\
-				   l$\'afficheur Postscript/PDF $\"GSview$\".'
-${LangFileString} UnRemoveSuccessLabel "LyX supprimé de votre ordinateur avec succès."
 
 ${LangFileString} SecUnMiKTeXDescription "Désinstalle la distribution LaTeX MiKTeX."
 ${LangFileString} SecUnJabRefDescription "Uninstalls the bibliography manager JabRef."

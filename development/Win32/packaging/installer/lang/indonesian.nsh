@@ -10,14 +10,12 @@ ${LangFileString} WelcomePageText "Program ini akan memandu anda dalam melakukan
 
 ${LangFileString} FileTypeTitle "Dokumen-LyX"
 
-${LangFileString} SecInstGSviewTitle "GSview"
 ${LangFileString} SecInstJabRefTitle "JabRef"
 ${LangFileString} SecAllUsersTitle "Instal untuk semua pengguna?"
 ${LangFileString} SecFileAssocTitle "Berkas yang terkait"
 ${LangFileString} SecDesktopTitle "Ikon Desktop"
 
 ${LangFileString} SecCoreDescription "Berkas-berkas LyX."
-${LangFileString} SecInstGSviewDescription "Program untuk melihat dokumen Postscript dan PDF."
 ${LangFileString} SecInstJabRefDescription "Program manajemen acuan bibliografi dan penyunting berkas BibTeX."
 ${LangFileString} SecAllUsersDescription "Instal LyX untuk semua pengguna atau hanya untuk pengguna ini saja."
 ${LangFileString} SecFileAssocDescription "Berkas dengan ekstensi .lyx akan otomatis dibuka menggunakan LyX."
@@ -51,14 +49,6 @@ ${LangFileString} LatexError1 'Distribusi LaTeX tidak ditemukan!$\r$\n\
                       		      LyX tidak bisa digunakan tanpa menggunakan salah satu distribusi LaTeX seperti $\"MiKTeX$\"!$\r$\n\
 				      Oleh karena itu proses instalasi dibatalkan.'
 			    
-${LangFileString} GSviewInfo 'Sekarang instalasi program $\"GSview$\" akan dijalankan.$\r$\n\
-			             Untuk memulainya tekanlah tombol $\"Mulai$\" pada jendela instalasi yang pertama,$\r$\n\
-				     pilihlah bahasa yang anda inginkan kemudian tekan tombol $\"Lanjut$\" pada jendela berikutnya.$\r$\n\
-				     Anda boleh memilih semua pilihan default yang ada di program instalasi GSview.'
-${LangFileString} GSviewError 'Program $\"GSview$\" tidak berhasil diinstal secara keseluruhan!$\r$\n\
-		                      Namun proses instalasi dapat diteruskan.$\r$\n\
-				      Anda dapat mengulangi instalasi GSview nanti.'
-				      
 ${LangFileString} JabRefInfo 'Sekarang instalasi program $\"JabRef$\" akan dijalankan.$\r$\n\
 				     Anda boleh memilih semua pilihan default yang ada di program instalasi JabRef.'
 ${LangFileString} JabRefError 'Program $\"JabRef$\" tidak berhasil diinstal secara keseluruhan!$\r$\n\
@@ -95,9 +85,6 @@ ${LangFileString} UnInstallRunning "Anda harus menutup LyX terlebih dahulu!"
 ${LangFileString} UnNotAdminLabel "Anda harus berlaku dan mempunyai hak sebagai administrator untuk menghapus LyX!"
 ${LangFileString} UnReallyRemoveLabel "Apakah anda yakin akan menghapus LyX secara menyeluruh termasuk semua komponen yang ada?"
 ${LangFileString} UnLyXPreferencesTitle 'Preferensi pengguna LyX'
-${LangFileString} UnGSview 'Silahkan tekan tombol $\"Hapus$\" pada jendela berikutnya untuk memulai penghapusan$\r$\n\
-				   Postscript dan  penampil PDF $\"GSview$\".'
-${LangFileString} UnRemoveSuccessLabel "LyX telah dihapus dengan sukses dari komputer anda."
 
 ${LangFileString} SecUnMiKTeXDescription "Penghapusan distribusi LaTeX MiKTeX."
 ${LangFileString} SecUnJabRefDescription "Penghapusan program manajemen bibliografi JabRef."

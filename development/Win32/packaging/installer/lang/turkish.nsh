@@ -10,14 +10,12 @@ ${LangFileString} WelcomePageText "Bu sihirbaz size LyX programýný kuracak.$\r$\
 
 ${LangFileString} FileTypeTitle "LyX-Document"
 
-${LangFileString} SecInstGSviewTitle "GSview"
 ${LangFileString} SecInstJabRefTitle "JabRef"
 ${LangFileString} SecAllUsersTitle "Tüm kullanýcýlar için kur?"
 ${LangFileString} SecFileAssocTitle "Dosya eþleþmeleri"
 ${LangFileString} SecDesktopTitle "Masaüstü ikonu"
 
 ${LangFileString} SecCoreDescription "LyX dosyalarý."
-${LangFileString} SecInstGSviewDescription "Postscript ve PDF gösterici program."
 ${LangFileString} SecInstJabRefDescription "Bibliography reference manager and editor for BibTeX files."
 ${LangFileString} SecAllUsersDescription "LyX tüm kullanýcýlar için mi yoksa yalnýzca bu kullanýcýya mý kurulacak."
 ${LangFileString} SecFileAssocDescription "Uzantýsý .lyx olan dosyalar otomatik olarak LyX ile açýlsýn."
@@ -50,14 +48,6 @@ ${LangFileString} LatexInfo 'Þimdi LaTeX daðýtýmý $\"MiKTeX$\" kurulumu baþlatýl
 ${LangFileString} LatexError1 'Hiç bir LaTeX daðýtýmý bulunamadý!$\r$\n\
                       		      LyX $\"MiKTeX$\" gibi bir LaTeX daðýtýmý olmadan kullanýlamaz!$\r$\n\
 				      Bu nedenle kurulum iptal edilecek.'
-			
-${LangFileString} GSviewInfo 'Þimdi $\"GSview$\" kurulum programý baþlatýlacak.$\r$\n\
-			             Programý kurmak için ile kurulum penceresinde $\"Setup$\" tuþuna basýp$\r$\n\
-				     bir dil seçin, ve sonraki pencerelerde $\"Devam$\" tuþuyla ilerleyin.$\r$\n\
-				     GSview kurulumunun tüm öntanýmlý seçeneklerini kullanabilirsiniz.'
-${LangFileString} GSviewError '$\"GSview$\" kurulumu baþarýsýz oldu!$\r$\n\
-		                      Kurulum gene de devam edecek.$\r$\n\
-				      Daha sonra GSview kurmayý tekrar deneyin.'
 
 ${LangFileString} JabRefInfo 'Now the installer of the program $\"JabRef$\" will be launched.$\r$\n\
 				     You can use all default options of the JabRef-installer.'
@@ -95,9 +85,6 @@ ${LangFileString} UnInstallRunning "Önce LyX i kapatmalýsýnýz!"
 ${LangFileString} UnNotAdminLabel "LyX kaldýrabilmek için yönetici yetkileri gerekiyor!"
 ${LangFileString} UnReallyRemoveLabel "LyX ve tüm bileþenlerini kaldýrmak istediðinize emin misiniz?"
 ${LangFileString} UnLyXPreferencesTitle 'LyX$\'s user preferences'
-${LangFileString} UnGSview 'Lütfen bir sonraki pencerede $\"Kaldýr$\" düðmesine basarak$\r$\n\
-				   $\"GSview$\" postscript ve pdf göstericisini kaldýrýn.'
-${LangFileString} UnRemoveSuccessLabel "LyX bilgisayarýnýzdan baþarýyla kaldýrýldý."
 
 ${LangFileString} SecUnMiKTeXDescription "Uninstalls the LaTeX-distribution MiKTeX."
 ${LangFileString} SecUnJabRefDescription "Uninstalls the bibliography manager JabRef."

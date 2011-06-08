@@ -10,14 +10,12 @@ ${LangFileString} WelcomePageText "Tento sprievodca Vám pomáha inštalova LyX.$\
 
 ${LangFileString} FileTypeTitle "LyX dokument"
 
-${LangFileString} SecInstGSviewTitle "GSview"
 ${LangFileString} SecInstJabRefTitle "JabRef"
 ${LangFileString} SecAllUsersTitle "Inštalova pre všetkıch uívate¾ov?"
 ${LangFileString} SecFileAssocTitle "Usporiadanie data"
 ${LangFileString} SecDesktopTitle "Symbol desktopu"
 
 ${LangFileString} SecCoreDescription "Program LyX."
-${LangFileString} SecInstGSviewDescription "Program na pozeranie dokumentov Postscript a PDF."
 ${LangFileString} SecInstJabRefDescription "Manager pre bibliografickı odkaz a editor pre BibTeX files."
 ${LangFileString} SecAllUsersDescription "Inštalova LyX pre všetkıch uívatelov alebo len pre terajší uívate¾."
 ${LangFileString} SecFileAssocDescription "Data s lyx rozšírením sa automaticky otvárajú v LyX."
@@ -51,14 +49,6 @@ ${LangFileString} LatexInfo 'Teraz môete štartova LaTeX distribúciu $\"MiKTeX$
 ${LangFileString} LatexError1 'LaTeX distribúcia sa nemohla nájst!$\r$\n\
                       		      LyX sa nemôe uíva bez LaTeX distribúcie ako $\"MiKTeX$\"!$\r$\n\
 				      Preto sa inštalácia zastavila.'
-			
-${LangFileString} GSviewInfo 'Teraz štartuje inštalatér programu $\"GSview$\" .$\r$\n\
-			             Na inštaláciu programu tlaète gombík $\"Setup$\" v prvom inštalaènom okne$\r$\n\
-				     Vyberajte jazyk a tlaète gombík $\"Next$\" v nasledujúcich inštalaènıch oknách.$\r$\n\
-				     Môete uívat všetkı obsiahnuté nastavenia inštalatéra GSview.'
-${LangFileString} GSviewError 'Program $\"GSview$\" sa nemohol inštalova úspešne!$\r$\n\
-		                      Predsa inštalácia pokraèuje.$\r$\n\
-				      Skúste inštalova GSview ešte raz neskôr.'
 
 ${LangFileString} JabRefInfo 'Teraz sa štartuje inštalatér programu $\"JabRef$\".$\r$\n\
 				     Môzete všetkı obsiahnuté nastavenia inštalatéra JabRef.'
@@ -96,9 +86,6 @@ ${LangFileString} UnInstallRunning "Najprv zavrí LyX!"
 ${LangFileString} UnNotAdminLabel "Pre odinštaláciu LyX potrebujete administrátorské práva!"
 ${LangFileString} UnReallyRemoveLabel "Ste si istı, e chcete kompletne odinštalova LyX a všetkı jeho suèiastky?"
 ${LangFileString} UnLyXPreferencesTitle 'LyX prednosti uívae¾a'
-${LangFileString} UnGSview 'Prosím tlaète gombík $\"Uninstall$\" v nasledujúcom okne aby Ste inštalovali $\r$\n\
-				   Postscript a PDF-viewer $\"GSview$\".'
-${LangFileString} UnRemoveSuccessLabel "LyX je úspešne odstránenı od Vášho poèitaèa."
 
 ${LangFileString} SecUnMiKTeXDescription "Odinštaluje LaTeX distribúciu MiKTeX."
 ${LangFileString} SecUnJabRefDescription "Odinštaluje bibliografickı manager JabRef."

@@ -91,14 +91,12 @@ ${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, suppor
 
 ${LangFileString} FileTypeTitle "LyX-Document"
 
-${LangFileString} SecInstGSviewTitle "GSview"
 ${LangFileString} SecInstJabRefTitle "JabRef"
 ${LangFileString} SecAllUsersTitle "Install for all users?"
 ${LangFileString} SecFileAssocTitle "File associations"
 ${LangFileString} SecDesktopTitle "Desktop icon"
 
 ${LangFileString} SecCoreDescription "The LyX files."
-${LangFileString} SecInstGSviewDescription "Program to view Postscript- and PDF-documents."
 ${LangFileString} SecInstJabRefDescription "Bibliography reference manager and editor for BibTeX files."
 ${LangFileString} SecAllUsersDescription "Install LyX for all users or just the current user."
 ${LangFileString} SecFileAssocDescription "Files with a .lyx extension will automatically open in LyX."
@@ -132,14 +130,6 @@ ${LangFileString} LatexError1 'No LaTeX-distribution could be found!$\r$\n\
                       		      LyX cannot be used without a LaTeX-distribution like $\"MiKTeX$\"!$\r$\n\
 				      The installation will therefore be aborted.'
 			    
-${LangFileString} GSviewInfo 'Now the installer of the program $\"GSview$\" will be launched.$\r$\n\
-			             To install the program press the $\"Setup$\"-button in the first installer window,$\r$\n\
-				     choose a language and then press the $\"Next$\"-button in the following installer windows.$\r$\n\
-				     You can use all default options of the GSview-installer.'
-${LangFileString} GSviewError 'The program $\"GSview$\" could not successfully be installed!$\r$\n\
-		                      The installer will continue anyway.$\r$\n\
-				      Try to install GSview again later.'
-				      
 ${LangFileString} JabRefInfo 'Now the installer of the program $\"JabRef$\" will be launched.$\r$\n\
 				     You can use all default options of the JabRef-installer.'
 ${LangFileString} JabRefError 'The program $\"JabRef$\" could not successfully be installed!$\r$\n\
@@ -174,9 +164,6 @@ ${LangFileString} UnInstallRunning "You must close LyX at first!"
 ${LangFileString} UnNotAdminLabel "You must have administrator privileges to uninstall LyX!"
 ${LangFileString} UnReallyRemoveLabel "Are you sure you want to completely remove LyX and all of its components?"
 ${LangFileString} UnLyXPreferencesTitle 'LyX$\'s user preferences'
-${LangFileString} UnGSview 'Please press the $\"Uninstall$\" button in the next window to uninstall$\r$\n\
-				   the Postscript and PDF-viewer $\"GSview$\".'
-${LangFileString} UnRemoveSuccessLabel "LyX was successfully removed from your computer."
 
 ${LangFileString} SecUnMiKTeXDescription "Uninstalls the LaTeX-distribution MiKTeX."
 ${LangFileString} SecUnJabRefDescription "Uninstalls the bibliography manager JabRef."

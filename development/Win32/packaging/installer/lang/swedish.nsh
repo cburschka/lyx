@@ -10,14 +10,12 @@ ${LangFileString} WelcomePageText "Denna guide tar dig igenom installationen av 
 
 ${LangFileString} FileTypeTitle "LyX-dokument"
 
-${LangFileString} SecInstGSviewTitle "GSview"
 ${LangFileString} SecInstJabRefTitle "JabRef"
 ${LangFileString} SecAllUsersTitle "Installera för alla användare?"
 ${LangFileString} SecFileAssocTitle "Filassociationer"
 ${LangFileString} SecDesktopTitle "Skrivbordsikon"
 
 ${LangFileString} SecCoreDescription "LyX-filer."
-${LangFileString} SecInstGSviewDescription "Program för att visa Postscript- och PDF-dokument."
 ${LangFileString} SecInstJabRefDescription "Program för att hantera bibliografiska referenser och redigera BibTeX-filer."
 ${LangFileString} SecAllUsersDescription "Installera LyX för alla användare, eller enbart för den aktuella användare."
 ${LangFileString} SecFileAssocDescription "Skapa en association mellan programmet och filtilläget .lyx."
@@ -51,14 +49,6 @@ ${LangFileString} LatexError1 'Kan inte hitta någon LaTeX-distribution!$\r$\n\
                       		      LyX kan inte användas utan en LaTeX-distribution som tex $\"MiKTeX$\"!$\r$\n\
 				      Installation avbryts därför nu.'
 				    
-${LangFileString} GSviewInfo 'Nu kommer installationsprogrammet för $\"GSview$\" att köras.$\r$\n\
-			             För att installera programmet, klicka på knappen $\"Setup$\" i den första dialogrutan i installationsprogrammet\r$\n\
-				     välj ett språk och klicka sedan på knappen $\"Next$\" i det nästkommande installationsfönstret.$\r$\n\
-				     Du kan använda alla standardalternativ i installationsprogrammet för GSview.'
-${LangFileString} GSviewError 'Programmet $\"GSview$\" kunde inte installeras ordentligt!$\r$\n\
-		                      Installationen av LyX kommer att fortsätta ändå.$\r$\n\
-				      Försök installera GSview igen senare.'
-
 ${LangFileString} JabRefInfo 'Nu kommer installationsprogrammet för $\"JabRef$\" att köras.$\r$\n\
 				     Du kan använda alla standardalternativ i installationsprogrammet för JabRef.'
 ${LangFileString} JabRefError 'Programmet $\"JabRef$\" kunde inte installeras ordentligt!$\r$\n\
@@ -95,9 +85,6 @@ ${LangFileString} UnInstallRunning "Du måste stänga LyX först!"
 ${LangFileString} UnNotAdminLabel "Du måste ha administratörsrättigheter för att avinstallera LyX!"
 ${LangFileString} UnReallyRemoveLabel "Är du säker på att du verkligen vill fullständigt avinstallera LyX och alla dess komponenter?"
 ${LangFileString} UnLyXPreferencesTitle 'LyX$\'s användarinställningar'
-${LangFileString} UnGSview 'Var god tryck på knappen $\"Avinstallera$\" i följande fönster för att avinstallera$\r$\n\
-				    $\"GSview$\" som visar Postscript och PDF.'
-${LangFileString} UnRemoveSuccessLabel "LyX har framgångsrikt avinstallerats från din dator."
 
 ${LangFileString} SecUnMiKTeXDescription "Avinstallerar LaTeX-distributionen MiKTeX."
 ${LangFileString} SecUnJabRefDescription "Avinstallerar programmet JabRef som används för att hantera bibliografiska referenser."

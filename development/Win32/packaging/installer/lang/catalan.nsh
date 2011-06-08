@@ -10,14 +10,12 @@ ${LangFileString} WelcomePageText "Aquest assistent us guiarà en la instal·lació
 
 ${LangFileString} FileTypeTitle "Document LyX"
 
-${LangFileString} SecInstGSviewTitle "GSview"
 ${LangFileString} SecInstJabRefTitle "JabRef"
 ${LangFileString} SecAllUsersTitle "Voleu instal·lar-ho per a tots els usuaris?"
 ${LangFileString} SecFileAssocTitle "Associació de fitxers"
 ${LangFileString} SecDesktopTitle "Icona a l'escriptori"
 
 ${LangFileString} SecCoreDescription "Els fitxers del LyX."
-${LangFileString} SecInstGSviewDescription "Programa per visualitzar documents en format Postscript i PDF."
 ${LangFileString} SecInstJabRefDescription "Gestor i editor de referències bibliogràfiques per a fitxers BibTeX."
 ${LangFileString} SecAllUsersDescription "Instal·la el LyX per a tots els usuaris o només per a l'usuari actual."
 ${LangFileString} SecFileAssocDescription "Els fitxers amb extensió .lyx s'obriran automàticament amb el LyX."
@@ -50,14 +48,6 @@ ${LangFileString} LatexInfo 'Ara s$\'executarà l$\'instal·lador de la distribuci
 ${LangFileString} LatexError1 'No s$\'ha trobat cap distribució LaTeX!$\r$\n\
                       		      No podeu usar el LyX sense cap distribució LaTeX, com ara $\"MiKTeX$\"!$\r$\n\
 				      Es cancel·larà la instal·lació.'
-			    
-${LangFileString} GSviewInfo 'Ara s$\'executarà l$\'instal·lador del programa $\"GSview$\".$\r$\n\
-			             Per instal·lar el programa pitgeu el botó $\"Setup$\" a la primera finestra de l$\'instal·lador,$\r$\n\
-				     seleccioneu la llengua i pitgeu el botó $\"Següent$\" a la finstres següent de l$\'instal·lador.$\r$\n\
-				     Podeu usar totes les opcions predeterminades de l$\'instal·lador del GSview.'
-${LangFileString} GSviewError 'El programa $\"GSview$\" no s$\'ha instal·lat correctament!$\r$\n\
-		                      L$\'instal·lador continuarà igualment.$\r$\n\
-				      Intenteu instal·lar el GSview altre cop més tard.'
 				      
 ${LangFileString} JabRefInfo 'Ara s$\'executarà l$\'instal·lador del programa $\"JabRef$\".$\r$\n\
 				     Podeu usar totes les opcions predeterminades de l$\'instal·lador del JabRef.'
@@ -95,9 +85,6 @@ ${LangFileString} UnInstallRunning "Primer heu de tancar el LyX!"
 ${LangFileString} UnNotAdminLabel "Necessiteu drets d'administrador per desinstal·lar el LyX!"
 ${LangFileString} UnReallyRemoveLabel "Esteu segur de voler suprimir completament el LyX i tots els seus components?"
 ${LangFileString} UnLyXPreferencesTitle 'Preferències d$\'usuari del LyX'
-${LangFileString} UnGSview 'Pitgeu el botó $\"Uninstall$\" a la finestra següent per desinstal·lar\r$\n\
-				   el visor de fitxers Postscript i PDF $\"GSview$\".'
-${LangFileString} UnRemoveSuccessLabel "El LyX s'ha desinstal·lat correctament de l'ordinador."
 
 ${LangFileString} SecUnMiKTeXDescription "Desintal·la la distribució de LaTeX MiKTeX."
 ${LangFileString} SecUnJabRefDescription "Desinstal·la el gestor de bibliografia JabRef."

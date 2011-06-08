@@ -10,14 +10,12 @@ ${LangFileString} WelcomePageText "ÓÊגטÏד ÇהÈÑזÇוÌ ÎהÇה ÙוהךÉ ÊÑדךÈ ÈÑזÇוÌ הךד È
 
 ${LangFileString} FileTypeTitle "וÓÊזÏ-הךד"
 
-${LangFileString} SecInstGSviewTitle "GSview"
 ${LangFileString} SecInstJabRefTitle "JabRef"
 ${LangFileString} SecAllUsersTitle "ÊÑדךÈ הדה ÇהוÓÊÎÏוךז¿"
 ${LangFileString} SecFileAssocTitle "והבÇÊ וÑÊÈ×É"
 ${LangFileString} SecDesktopTitle "ÑוÒ Ó×Í ÇהודÊÈ"
 
 ${LangFileString} SecCoreDescription "והבÇÊ הךד."
-${LangFileString} SecInstGSviewDescription "ÈÑזÇוÌ הÙÑÖ ÈטÓÊדÑÈÊ טוÓÊזÏÇÊ PDF."
 ${LangFileString} SecInstJabRefDescription "וÏךÑ טÍÑÑ ÇהÈהטÚÑÇבךÇ ÇהÎÇÕÉ ÈוהבÇÊ BibTeX."
 ${LangFileString} SecAllUsersDescription "ÊÑדךÈ ÈÑזÇוÌ הךד הדה ÇהוÓÊÎÏוךז Ãו ההוÓÊÎÏו ÇהÍÇהך בג×."
 ${LangFileString} SecFileAssocDescription "ÇהוהבÇÊ ÐÇÊ ÇהÇוÊÏÇÏ .lyx ÓךÊו בÊÍחÇ ÊהגÇÆךÇכ ÈÈÑזÇוÌ הךד."
@@ -50,14 +48,6 @@ ${LangFileString} LatexInfo 'ÓךÊו ÇהÈÏÁ ÈÊÑדךÈ ÊטÒךÙÉ-הÊךד ÈÈÑזÇוÌ $\"MiKTeX$\".
 ${LangFileString} LatexError1 'הו ךÊו ÇהÙËטÑ Ùהי ÊטÒךÙÉ-הÊךד!$\r$\n\
                       		      הÇ ךודז ÇÓÊÎÏÇו הךד ÈÏטז ÊטÒךÙÉ הÊךד וËה MiKTeX!$\r$\n\
 				      ÓךÊו ÇÌחÇÖ ÇהÊÑדךÈ.'
-			    
-${LangFileString} GSviewInfo 'הו ךÊו ÊÑדךÈ ÈÑזÇוÌ GSview.$\r$\n\
-			             הÊÑדךÈ ÇהÈÑזÇוÌ ÇזגÑ Ùהי ÒÑ ÊÑדךÈ בך ÇהזÇבÐÉ ÇהÇטהי ÇËזÇÁ ÙוהךÉ ÇהÊÑדךÈ,$\r$\n\
-				     ÇÎÊÑ ÇההÚÉ Ëו ÇזגÑ ÇהÊÇהך בך ÇהזÇבÐÉ ÇהÊÇהךÉ.$\r$\n\
-				     ÊÓÊ×ךÙ ÇÎÊךÇÑ דה ÇהÎךÇÑÇÊ ÇËזÇÁ ÊÑדךÈ ÈÑזÇוÌ GSview.'
-${LangFileString} GSviewError 'הו ךזÌÍ ÊÑדךÈ ÈÑזÇוÌ GSview!$\r$\n\
-		                    ÓÊÓÊוÑ ÙוהךÉ ÇהÊÑדךÈ.$\r$\n\
-				      ÍÇטה ÊÑדךÈ ÈÑזÇוÌ GSview הÇÍגÇכ.'
 				      
 ${LangFileString} JabRefInfo 'ÓךÊו ÇהÂז ÊÑדךÈ ÈÑזÇוÌ JabRef.$\r$\n\
 				     ÊÓÊ×ךÙ ÇÎÊךÇÑ דה ÇהÎךÇÑÇÊ ÇËזÇÁ ÊÑדךÈ ÈÑזÇוÌ JabRef.'
@@ -95,9 +85,6 @@ ${LangFileString} UnInstallRunning "ךÌÈ ÇÚהÇג הךד ÇטהÇכ!"
 ${LangFileString} UnNotAdminLabel "ךÌÈ Ãז Êוהד ÕהÇÍךÇÊ ÇהוÏךÑ ההÈÏÁ ÈÙוהךÉ ÇהÍÐב!"
 ${LangFileString} UnReallyRemoveLabel "חה ÊÑÚÈ ÈÍÐב ÈÑזÇוÌ הךד ÈÇהדÇוה וÙ דה ÇהדוÈטזזÊ ÇהÎÇÕ Èח¿"
 ${LangFileString} UnLyXPreferencesTitle 'LyX$\'s ÊבÖךהÇÊ ÇהוÓÊÎÏו'
-${LangFileString} UnGSview 'בÖהÇכ ÇזגÑ Ùהי ÒÑ ÇהÇÒהÉ ההÈÏÁ ÈÙוהךÉ ÇÒÇהÉ הךד$\r$\n\
-				   ÈÑזÇוÌ GSview ÇהÎÇÕ ÈÙÑÖ ÇהÈטÓÊדÑÈÊ טוÓÊזÏÇÊ PDF.'
-${LangFileString} UnRemoveSuccessLabel "Êו ÍÐב ÈÑזÇוÌ הךד ÈזÌÇÍ."
 
 ${LangFileString} SecUnMiKTeXDescription "Êו ÇÒÇהÉ ÊטÒÙ- הÊךד MiKTeX."
 ${LangFileString} SecUnJabRefDescription "Êו ÇÒÇהÉ וÏךÑ ÇהÈÇÈהטÚÑÇבךÇ JabRef."

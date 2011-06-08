@@ -10,14 +10,12 @@ ${LangFileString} WelcomePageText "このウィザードが、あなたがLyXをインストールす
 
 ${LangFileString} FileTypeTitle "LyX文書"
 
-${LangFileString} SecInstGSviewTitle "GSview"
 ${LangFileString} SecInstJabRefTitle "JabRef"
 ${LangFileString} SecAllUsersTitle "すべてのユーザー用にインストールしますか？"
 ${LangFileString} SecFileAssocTitle "ファイル関連付け"
 ${LangFileString} SecDesktopTitle "デスクトップ・アイコン"
 
 ${LangFileString} SecCoreDescription "LyXのファイル。"
-${LangFileString} SecInstGSviewDescription "ポストスクリプトおよびPDF文書を閲覧するためのプログラム。"
 ${LangFileString} SecInstJabRefDescription "参考文献管理およびBibTeXファイルエディタ。"
 ${LangFileString} SecAllUsersDescription "LyXをすべてのユーザー用に装備するか、現在のユーザー向けだけに装備するか。"
 ${LangFileString} SecFileAssocDescription "拡張子が.lyxのファイルは自動的にLyXで開かれる。"
@@ -50,14 +48,6 @@ ${LangFileString} LatexInfo 'これからLaTeXディストリビューション$\"MiKTeX$\"のイ
 ${LangFileString} LatexError1 'LaTeXディストリビューションを発見することができませんでした！$\r$\n\
                       		      LyXは、$\"MiKTeX$\"のようなLaTeXディストリビューションなしでは使うことができません！$\r$\n\
                       		      したがってインストールは中止します。'
-			    
-${LangFileString} GSviewInfo 'これからプログラム$\"GSview$\"のインストーラーを起動します。$\r$\n\
-			             プログラムをインストールするには、インストーラーの最初のウィンドウで｢Setup｣ボタンを押し、$\r$\n\
-			             言語を選択して、インストーラーの次のウィンドウで「Next」ボタンを押してください。$\r$\n\
-				     GSviewインストーラーのデフォルトのオプションをすべて受け入れてかまいません。'
-${LangFileString} GSviewError 'プログラム$\"GSview$\"は正しくインストールされませんでした！$\r$\n\
-		                      インストーラーは、とりあえずこのままインストールを続けます。$\r$\n\
-		                      後でGSviewのインストールを再度試みてください。'
 				      
 ${LangFileString} JabRefInfo 'これからプログラム$\"JabRef$\"のインストーラーを起動します。$\r$\n\
 				     JabRefインストーラーのデフォルトのオプションをすべて受け入れてかまいません。'
@@ -94,9 +84,6 @@ ${LangFileString} UnInstallRunning "まずLyXを閉じてください！"
 ${LangFileString} UnNotAdminLabel "LyXをアンインストールするには、管理者権限を持っていなくてはなりません！"
 ${LangFileString} UnReallyRemoveLabel "本当に、LyXとすべての附属コンポーネントを削除してしまう積もりですか？"
 ${LangFileString} UnLyXPreferencesTitle 'LyXのユーザー設定'
-${LangFileString} UnGSview 'Postscript・PDFビューア$\"GSview$\"を脱装するには、$\r$\n\
-				   次のウィンドウで$\"Uninstall$\"ボタンを押してください。'
-${LangFileString} UnRemoveSuccessLabel "LyXはお使いのコンピューターから取り除かれました。"
 
 ${LangFileString} SecUnMiKTeXDescription "LaTeXディストリビューションMiKTeXを脱装します。"
 ${LangFileString} SecUnJabRefDescription "文献マネージャーJabRefを脱装します。"

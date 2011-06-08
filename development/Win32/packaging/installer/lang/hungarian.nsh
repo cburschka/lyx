@@ -10,14 +10,12 @@ ${LangFileString} WelcomePageText "A varázsló segítségével tudja telepíteni a Ly
 
 ${LangFileString} FileTypeTitle "LyX-dokumentum"
 
-${LangFileString} SecInstGSviewTitle "GSview"
 ${LangFileString} SecInstJabRefTitle "JabRef"
 ${LangFileString} SecAllUsersTitle "Telepítés minden felhasználónak"
 ${LangFileString} SecFileAssocTitle "Fájltársítások"
 ${LangFileString} SecDesktopTitle "Parancsikon asztalra"
 
 ${LangFileString} SecCoreDescription "A LyX futtatásához szükséges fájlok."
-${LangFileString} SecInstGSviewDescription "Alkalmazás Postscript- és PDF-fájlok megjelenítéséhez."
 ${LangFileString} SecInstJabRefDescription "Irodalomjegyzék-hivatkozás szerkesztõ és kezelõ BibTeX fájlokhoz."
 ${LangFileString} SecAllUsersDescription "Minden felhasználónak telepítsem vagy csak az aktuálisnak?"
 ${LangFileString} SecFileAssocDescription "A .lyx kiterjesztéssel rendelkezõ fájlok megnyitása automatikusan a LyX-el történjen."
@@ -50,14 +48,6 @@ ${LangFileString} LatexInfo 'A $\"MiKteX$\" LaTeX-disztribúció telepítõjének ind
 ${LangFileString} LatexError1 'Nem találtam LaTeX-disztribúciót!$\r$\n\
                       		      A LyX nem használható egy LaTeX-disztibúció nélkül,(mint például a $\"MiKTeX$\")!$\r$\n\
 				      Ezért a telepítés nem folytatható!'
-
-${LangFileString} GSviewInfo 'A $\"GSview$\" program telepítõjének indítása következik.$\r$\n\
-			             A program telepítéséhez, nyomja meg a $\"Telepít$\"-gombot a telepítõ elsõ ablakában,$\r$\n\
-				     azután válasszon nyelvet, majd nyomja meg a $\"Következõ$\"-gombot a következõ telepítõ ablakokban.$\r$\n\
-				     Használhatja a program által javasolt beállításokat.'
-${LangFileString} GSviewError 'A $\"GSview$\" programot nem sikerült telepíteni!$\r$\n\
-		                      Azonban a telepítés tovább fog folytatódni.$\r$\n\
-				      Késõbb próbálja meg újra a GSview telepítését.'
 
 ${LangFileString} JabRefInfo 'A $\"JabRef$\" telepítõjének elindítása következik.$\r$\n\
 				     Használhatja az alapértelmezett opciókat.'
@@ -95,9 +85,6 @@ ${LangFileString} UnInstallRunning "Elõször be kell zárnia a LyX-et!"
 ${LangFileString} UnNotAdminLabel "A LyX eltávolításhoz rendszergazdai jogokkal kell rendelkeznie!"
 ${LangFileString} UnReallyRemoveLabel "Biztosan abban, hogy el akarja távolítani a LyX-t, minden tartozékával együtt?"
 ${LangFileString} UnLyXPreferencesTitle 'LyX felhasználói beállítások'
-${LangFileString} UnGSview 'Kérem nyomja meg az $\"Eltávolítás$\" gombot, a PostScript és a\r$\n\
-				   PDF megjelenítõ $\"GSview$\" eltávolításához a következõ ablakban.'
-${LangFileString} UnRemoveSuccessLabel "LyX eltávolítása a számítógépérõl zökkenõmentesen befejezõdött."
 
 ${LangFileString} SecUnMiKTeXDescription "MikTeX LaTeX-disztibúció eltávolítása."
 ${LangFileString} SecUnJabRefDescription "JabRef irodalomjegyzék kezelõ eltávolítása."
