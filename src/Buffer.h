@@ -562,7 +562,8 @@ public:
 	/// errors (like parsing or LateX compilation). This method is const
 	/// because modifying the returned ErrorList does not touch the document
 	/// contents.
-	ErrorList & errorList(std::string const & type) const;
+	ErrorList & errorList(std::string const & type);
+	ErrorList const & errorList(std::string const & type) const;
 
 	/// The Toc backend.
 	/// This is useful only for screen visualisation of the Buffer. This

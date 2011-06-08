@@ -1451,13 +1451,13 @@ void GuiView::errors(string const & error_type, bool from_master)
 #if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
 	// We are called with from_master == false by default, so we
 	// have to figure out whether that is the case or not.
-	ErrorList & el = bv->buffer().errorList(error_type);
+	ErrorList & el = const_cast<ErrorList &>(bv->buffer().errorList(error_type));
 	if (el.empty()) {
 	    el = bv->buffer().masterBuffer()->errorList(error_type);
 	    from_master = true;
 	}
 #else
-	ErrorList & el = from_master ?
+	ErrorList const & el = from_master ?
 		bv->buffer().masterBuffer()->errorList(error_type) :
 		bv->buffer().errorList(error_type);
 #endif
