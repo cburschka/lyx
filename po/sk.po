@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-08 11:39+0200\n"
-"PO-Revision-Date: 2011-06-08 15:23+0200\n"
+"POT-Creation-Date: 2011-06-11 17:23+0200\n"
+"PO-Revision-Date: 2011-06-11 17:26+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -2895,7 +2895,7 @@ msgstr "Naj&dlhšia značka"
 msgid "Line &spacing"
 msgstr "Rozstup riadkov"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1819
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1818
 #: src/frontends/qt4/GuiDocument.cpp:728
 msgid "Single"
 msgstr "Jednoduchý"
@@ -2904,7 +2904,7 @@ msgstr "Jednoduchý"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1825
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1824
 #: src/frontends/qt4/GuiDocument.cpp:732
 msgid "Double"
 msgstr "Dvojitý"
@@ -13893,20 +13893,20 @@ msgid "Nice fraction (3/4)\t\\nicefrac"
 msgstr "Jemný zlomok\t\\nicefrac"
 
 #: lib/ui/stdtoolbars.inc:356
-msgid "Unit (km)\t\\unit"
-msgstr "Jednotka (km)\t\\unit"
+msgid "Unit (km)\t\\unitone"
+msgstr "Jednotka (km)\t\\unitone"
 
 #: lib/ui/stdtoolbars.inc:357
-msgid "Unit (864 m)\t\\unit"
-msgstr "Jednotka (864 m)\t\\unit"
+msgid "Unit (864 m)\t\\unittwo"
+msgstr "Jednotka (864 m)\t\\unittwo"
 
 #: lib/ui/stdtoolbars.inc:358
 msgid "Unit fraction (km/h)\t\\unitfrac"
 msgstr "Jednotka zlomok (km/h)\t\\unitfrac"
 
 #: lib/ui/stdtoolbars.inc:359
-msgid "Unit fraction (20 km/h)\t\\unitfrac"
-msgstr "Jednotka zlomok (20 km/h)\t\\unitfrac"
+msgid "Unit fraction (20 km/h)\t\\unitfracthree"
+msgstr "Jednotka zlomok (20 km/h)\t\\unitfracthree"
 
 #: lib/ui/stdtoolbars.inc:360
 msgid "Text fraction\t\\tfrac"
@@ -13921,12 +13921,12 @@ msgid "Continued fraction\t\\cfrac"
 msgstr "Jemný zlomok\t\\cfrac"
 
 #: lib/ui/stdtoolbars.inc:363
-msgid "Continued fraction (left)\t\\cfrac"
-msgstr "Jemný zlomok (vľavo)\t\\cfrac"
+msgid "Continued fraction (left)\t\\cfracleft"
+msgstr "Jemný zlomok (vľavo)\t\\cfracleft"
 
 #: lib/ui/stdtoolbars.inc:364
-msgid "Continued fraction (right)\t\\cfrac"
-msgstr "Jemný zlomok (vpravo)\t\\cfrac"
+msgid "Continued fraction (right)\t\\cfracright"
+msgstr "Jemný zlomok (vpravo)\t\\cfracright"
 
 #: lib/ui/stdtoolbars.inc:365
 msgid "Binomial\t\\binom"
@@ -16469,7 +16469,7 @@ msgstr "Neznáma trieda dokumentu"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "Použitá štandardná trieda dokumentu, lebo trieda %1$s je neznáma."
 
-#: src/Buffer.cpp:753 src/Text.cpp:484
+#: src/Buffer.cpp:753 src/Text.cpp:483
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Neznámy token: %1$s %2$s\n"
@@ -17704,12 +17704,12 @@ msgstr "Neznáma vetva"
 msgid "&Don't Add"
 msgstr "Nepridať"
 
-#: src/CutAndPaste.cpp:665 src/Text.cpp:363
+#: src/CutAndPaste.cpp:665 src/Text.cpp:362
 #, c-format
 msgid "Layout `%1$s' was not found."
 msgstr "Lokálne schéma `%1$s' sa nenašlo."
 
-#: src/CutAndPaste.cpp:667 src/Text.cpp:365
+#: src/CutAndPaste.cpp:667 src/Text.cpp:364
 msgid "Layout Not Found"
 msgstr "Lokálne Schéma Nenájdené"
 
@@ -18867,24 +18867,24 @@ msgstr "Problém s pamäťou"
 msgid "Paragraph not properly initialized"
 msgstr "Odstavec nesprávne inicializovaný"
 
-#: src/Text.cpp:390
+#: src/Text.cpp:389
 msgid "Unknown Inset"
 msgstr "Neznáma vložka"
 
-#: src/Text.cpp:471
+#: src/Text.cpp:470
 msgid "Change tracking error"
 msgstr "Chyba pri zmene sledovania"
 
-#: src/Text.cpp:472
+#: src/Text.cpp:471
 #, c-format
 msgid "Unknown author index for change: %1$d\n"
 msgstr "Neznámy index autora pre zmenu: %1$d\n"
 
-#: src/Text.cpp:483
+#: src/Text.cpp:482
 msgid "Unknown token"
 msgstr "Neznámy token"
 
-#: src/Text.cpp:946
+#: src/Text.cpp:945
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -18892,66 +18892,66 @@ msgstr ""
 "Nemôžte vložiť medzeru na začiatok odstavca. Prečítajte si prosím Príručku"
 "(tutorial)."
 
-#: src/Text.cpp:954
+#: src/Text.cpp:953
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Nemôžte takýmto spôsobom vložiť dve medzery. Prečítajte si, prosím, Príručku."
 
-#: src/Text.cpp:1785
+#: src/Text.cpp:1784
 msgid "[Change Tracking] "
 msgstr "[Zmeniť Sledovanie] "
 
-#: src/Text.cpp:1791
+#: src/Text.cpp:1790
 msgid "Change: "
 msgstr "Zmena: "
 
-#: src/Text.cpp:1795
+#: src/Text.cpp:1794
 msgid " at "
 msgstr " na "
 
-#: src/Text.cpp:1805
+#: src/Text.cpp:1804
 #, c-format
 msgid "Font: %1$s"
 msgstr "Písmo: %1$s"
 
-#: src/Text.cpp:1810
+#: src/Text.cpp:1809
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Hĺbka: %1$d"
 
-#: src/Text.cpp:1816
+#: src/Text.cpp:1815
 msgid ", Spacing: "
 msgstr ", Rozstup: "
 
-#: src/Text.cpp:1822 src/frontends/qt4/GuiDocument.cpp:730
+#: src/Text.cpp:1821 src/frontends/qt4/GuiDocument.cpp:730
 msgid "OneHalf"
 msgstr "Polovičný"
 
-#: src/Text.cpp:1828
+#: src/Text.cpp:1827
 msgid "Other ("
 msgstr "Iné ("
 
-#: src/Text.cpp:1837
+#: src/Text.cpp:1836
 msgid ", Inset: "
 msgstr ", Vložka: "
 
-#: src/Text.cpp:1838
+#: src/Text.cpp:1837
 msgid ", Paragraph: "
 msgstr ", Odstavec: "
 
-#: src/Text.cpp:1839
+#: src/Text.cpp:1838
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1840
+#: src/Text.cpp:1839
 msgid ", Position: "
 msgstr ", Pozícia: "
 
-#: src/Text.cpp:1846
+#: src/Text.cpp:1845
 msgid ", Char: 0x"
 msgstr ", Znak: 0x"
 
-#: src/Text.cpp:1848
+#: src/Text.cpp:1847
 msgid ", Boundary: "
 msgstr ", Okraj: "
 
