@@ -89,6 +89,8 @@ What's new
   a document containing aligned and other multi-cell environments
   (bug 7549).
 
+- Fixed the call to the svg converter on Windows (bug 7608).
+
 - On Windows, allow to automatically switch TeX engines without the need
   of manually saving the preferences after reconfiguring (bug 7557).
 
@@ -114,8 +116,6 @@ What's new
 
 - Fixed problem with display of Buffer load errors (bug 7622).
 
-- Fixed the call to the svg converter on Windows (bug 7608).
-
 - Show the correct label after adding a line to an AMS Multline formula (bug
   7511).
   
@@ -133,6 +133,8 @@ What's new
 
 - Fix On-the-fly spellchecker jumps to next pattern match when replacing a
   misspelled word with a suggested one from context menu (bug 7564).
+
+- Keep customized file formats in the export menu by default (bug 7609).
 
 - Add XeTeX/LuaTeX and derived formats to the Default Output list
   in the preferences dialog (bug 7543).

@@ -25,6 +25,8 @@ this menu got too large. If the flag "menu=export" is not explicitly set,
 the formats are not included in the menu. This means that you might need
 to click "Show in export menu" in Preferences > File Formats for your
 customized file formats if you want them to appear in the menu.
+Customized formats imported from a previous configuration are handled
+by the prefs2prefs script, and should appear in the menu as before.
 Note, though, that you still can export to any possible format via
 File > Export > More Formats and Options ...
 
