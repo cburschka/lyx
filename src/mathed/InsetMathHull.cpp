@@ -439,6 +439,8 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.wid += 30 + l;
 	}
 
+	if (type_ == hullRegexp)
+		dim.wid += 2;
 	// make it at least as high as the current font
 	int asc = 0;
 	int des = 0;
