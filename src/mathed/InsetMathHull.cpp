@@ -742,7 +742,7 @@ void InsetMathHull::validate(LaTeXFeatures & features) const
 			features.addPreambleSnippet(
 				string("\\newcommand{\\regexp}[1]{\\fcolorbox{")
 				+ frcol + string("}{")
-				+ bgcol + string("}{\\texttt{#1}}}"));
+				+ bgcol + string("}{\\ensuremath{\\mathtt{#1}}}}"));
 		}
 	
 		// Validation is necessary only if not using AMS math.
