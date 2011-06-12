@@ -373,8 +373,7 @@ public:
 	/// a plain inset layout for use as a default
 	static InsetLayout const & plainInsetLayout() { return plain_insetlayout_; }
 	/// add a new layout \c name if it does not exist in layoutlist_
-	/// \return whether we had to add one.
-	bool addLayoutIfNeeded(docstring const & name) const;
+	void addLayoutIfNeeded(docstring const & name) const;
 
 	///////////////////////////////////////////////////////////////////
 	// accessors

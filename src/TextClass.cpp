@@ -1199,13 +1199,10 @@ bool TextClass::load(string const & path) const
 }
 
 
-bool DocumentClass::addLayoutIfNeeded(docstring const & n) const
+void DocumentClass::addLayoutIfNeeded(docstring const & n) const
 {
-	if (hasLayout(n))
-		return false;
-
-	layoutlist_.push_back(createBasicLayout(n, true));
-	return true;
+	if (!hasLayout(n))
+		layoutlist_.push_back(createBasicLayout(n, true));
 }
 
 
