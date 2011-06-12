@@ -3154,18 +3154,7 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 }
 
 
-ErrorList const & Buffer::errorList(string const & type) const
-{
-	static const ErrorList emptyErrorList;
-	map<string, ErrorList>::iterator it = d->errorLists.find(type);
-	if (it == d->errorLists.end())
-		return emptyErrorList;
-
-	return it->second;
-}
-
-
-ErrorList & Buffer::errorList(string const & type)
+ErrorList & Buffer::errorList(string const & type) const
 {
 	return d->errorLists[type];
 }
