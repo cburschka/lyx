@@ -5,6 +5,6 @@ TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
 KK: a b c\C\[Home]
 KK: \Cs
 KK: \CF
-KK: \Axregexp-mode\[Return]\\\\s\[Return]
+KK: \Axregexp-mode\[Return]\\s\[Return]
 TestEnd
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 1\n with len: 1' lyx-log.txt

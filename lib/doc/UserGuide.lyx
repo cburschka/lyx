@@ -1,4 +1,4 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 413
 \begin_document
 \begin_header
@@ -30250,11 +30250,7 @@ Finally, references to (sub)expressions in regexp may be used as usual,
 \begin_inset Formula $\backslash2$
 \end_inset
 
-, etc., where a 
-\begin_inset Formula $\backslash$
-\end_inset
-
- symbol is entered in regexp mode by pressing twice the backslash key.
+, etc..
  For example, try searching for the regexp 
 \begin_inset Formula $([a-z]+)[[:blank:]]\backslash1$
 \end_inset
