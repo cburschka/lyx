@@ -518,6 +518,7 @@ Escapes const & get_lyx_unescapes() {
 		escape_map.push_back(pair<string, string>("{[}", "["));
 		escape_map.push_back(pair<string, string>("\\$", "$"));
 		escape_map.push_back(pair<string, string>("\\backslash{}", "\\"));
+		escape_map.push_back(pair<string, string>("\\backslash ", "\\"));
 		escape_map.push_back(pair<string, string>("\\backslash", "\\"));
 		escape_map.push_back(pair<string, string>("\\sim ", "~"));
 		escape_map.push_back(pair<string, string>("\\^", "^"));
@@ -567,7 +568,8 @@ size_t find_matching_brace(string const & s, size_t pos)
 	return s.size();
 }
 
-/// Within \regexp{} apply get_regex_escapes(), while outside apply get_lyx_unescapes().
+/// Within \regexp{} apply get_lyx_unescapes() only (i.e., preserve regexp semantics of the string),
+/// while outside apply get_lyx_unescapes()+get_regexp_escapes().
 string escape_for_regex(string s)
 {
 	size_t pos = 0;
@@ -577,9 +579,9 @@ string escape_for_regex(string s)
 			new_pos = s.size();
 		LYXERR(Debug::FIND, "new_pos: " << new_pos);
 		string t = apply_escapes(s.substr(pos, new_pos - pos), get_lyx_unescapes());
-		LYXERR(Debug::FIND, "t      : " << t);
+		LYXERR(Debug::FIND, "t [lyx]: " << t);
 		t = apply_escapes(t, get_regexp_escapes());
-		LYXERR(Debug::FIND, "t      : " << t);
+		LYXERR(Debug::FIND, "t [rxp]: " << t);
 		s.replace(pos, new_pos - pos, t);
 		new_pos = pos + t.size();
 		LYXERR(Debug::FIND, "Regexp after escaping: " << s);
