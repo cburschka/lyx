@@ -1668,7 +1668,10 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 		bool reduced = cap::reduceSelectionToOneCell(cur);
 		if (reduced || !cur.selection()) {
 			docstring const safe = cap::grabAndEraseSelection(cur);
-			cur.insert(MathAtom(new InsetMathUnknown(from_ascii("\\"), safe, false)));
+			if (!cur.inRegexped())
+				cur.insert(MathAtom(new InsetMathUnknown(from_ascii("\\"), safe, false)));
+			else
+				cur.niceInsert(createInsetMath("backslash", buf));
 		}
 		return true;
 	}
