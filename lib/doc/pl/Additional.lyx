@@ -1,26 +1,33 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
-\use_default_options false
 \textclass book
 \begin_preamble
 \usepackage{multicol}
 \newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
-\usepackage{floatflt}
-%\usepackage[colorlinks=true,linkcolor=black]{hyperref}
 \end_preamble
+\use_default_options false
+\maintain_unincluded_children false
 \language polish
-\inputencoding latin2
+\language_package default
+\inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -28,21 +35,31 @@
 \use_geometry false
 \use_amsmath 0
 \use_esint 0
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Indeks
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 2
 \tocdepth 2
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language german
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -2667,6 +2684,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "1.5in"
 special "none"
 height "1pt"
@@ -2690,6 +2708,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "1.5in"
 special "none"
 height "1pt"
@@ -2731,6 +2750,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "1.5in"
 special "none"
 height "1pt"
@@ -2755,6 +2775,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
+use_makebox 0
 width "1.5in"
 special "none"
 height "1pt"
@@ -2815,12 +2836,6 @@ Ten rysunek jest oblany tekstem, a to jest śliczny podpis
 Często zadawanym pytaniem jest pytanie o możliwość ,,oblewania'' rysunków
  tekstem w ten sposób, że rysunek zajmuje część kolumny a reszta jest wypełniona
  tekstem.
- Jeśli masz zainstalowany pakiet LaTeX-a 
-\family typewriter
-floatflt
-\family default
- (jest często włączany do dystrybucji lub dostępny w archiwach CTAN), to
- możesz to zrobić.
 \end_layout
 
 \begin_layout Standard
@@ -2984,7 +2999,7 @@ Tutaj znajduje się standardowa tabela:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <row>
@@ -3080,7 +3095,7 @@ Zwróć uwagę, że poziome kreski wystają troszkę z obu strona poza tekst.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt" special="@{} l">
 <column alignment="left" valignment="top" width="0pt" special="l @{}">
 <row>
@@ -3217,7 +3232,7 @@ pi}$~} l
 .
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt" special="@{~$\sqrt{\pi}$~}l">
 <row>
@@ -3318,7 +3333,7 @@ Proponujemy wyrównanie kolumny według cyfr znaczących.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt" special="@{} l">
@@ -3739,7 +3754,7 @@ W zakładce wyświetlona jest tabela znaków wyliczenia.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -10837,7 +10852,7 @@ zawsze
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMM
 
 \family sans
@@ -10848,7 +10863,7 @@ empty
  Nie jest dodawany numer ani inne nagłówki i stopki,
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMM
 
 \family sans
@@ -10860,7 +10875,7 @@ plain
  bez innych nagłówków i stopek (innych niż przypisy).
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMM
 
 \series bold
@@ -10871,7 +10886,7 @@ foilheadings
  To jest styl domyślny.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMM
 
 \series bold
@@ -10909,7 +10924,7 @@ Styl Dokumentu
 :
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMx
 
 \series bold
@@ -10920,7 +10935,7 @@ Styl Dokumentu
  To ustawienie ułatwia pracę z tym medium,
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMx
 
 \series bold
@@ -10930,7 +10945,7 @@ headrule
  strony tytułowej,
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMx
 
 \series bold
@@ -10940,7 +10955,7 @@ footrule
  tytułowej,
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMx
 
 \series bold
@@ -10967,7 +10982,7 @@ TeX-owi aby użył jako sterownika programu dvips do obrotu tych stron, które
  ustawiono jako poziome,
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMx
 
 \series bold
@@ -10987,7 +11002,7 @@ Rotatefoilhead
  (nie przejmuj się jest to opisane w następnej sekcji),
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMx
 
 \series bold
@@ -10996,7 +11011,7 @@ leqno
  Numeracja równań po lewej stronie równania,
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMx
 
 \series bold
@@ -11791,7 +11806,7 @@ foilheadskip}{-0.5in}
 Odstępy wokół wstawek mogą być ustawiane przez zmianę następujących długości:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -11802,7 +11817,7 @@ abovefloatskip
  odstęp pomiędzy tekstem a górą wstawki,
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -11813,7 +11828,7 @@ abovecaptionskip
  odstęp pomiędzy wstawką a podpisem,
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -11824,7 +11839,7 @@ belowcaptionskip
  odstęp pomiędzy podpisem a dalszym tekstem,
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -11848,7 +11863,7 @@ Jest jeszcze kilka długości związanymi ze strona tytułowa, które mogą być
  użyteczne jeśli masz długie tytuły lub kilku autorów:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -11863,7 +11878,7 @@ Title
 ,
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -11882,7 +11897,7 @@ Author
 ,
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -11897,7 +11912,7 @@ Author
 ,
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -11916,7 +11931,7 @@ Date
 ,
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -12009,7 +12024,7 @@ LogoOn
 Pozostałe polecenia sterujące:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMM
 
 \family typewriter
@@ -12020,7 +12035,7 @@ rightfooter{}
  prawa stopka, domyślnie zawiera numer strony
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMM
 
 \family typewriter
@@ -12031,7 +12046,7 @@ rightheader{}
  prawy nagłówek
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMM
 
 \family typewriter
@@ -14039,7 +14054,7 @@ faxhost.mydomain
 '' i podałeś te wartości w oknie faksowania:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -14052,7 +14067,7 @@ no:
  +39-2-444666
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -14065,7 +14080,7 @@ Name:
  Someone
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -14074,7 +14089,7 @@ Enterprise:
  Startrek
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -17544,7 +17559,7 @@ a):
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -17711,7 +17726,7 @@ ie:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">

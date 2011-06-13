@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass book
@@ -20,13 +20,14 @@
 \use_default_options true
 \maintain_unincluded_children false
 \language chinese-simplified
+\language_package default
 \inputencoding UTF8
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -83,6 +84,7 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -2055,8 +2057,10 @@ Math 将其永久调出。
 \begin_layout Standard
 觉得麻烦的话也可以直接用键盘输入括号，不过这样输入的括号和常规文本一样都是固定大小的。如果括号中有大个的分式或矩阵的话，公式就会很难看，看了下边的公式你就明白了
 。
-\begin_inset Formula \[
-(\frac{\frac{1}{2}}{\frac{2}{\frac{1}{3}}+\sqrt{2}})=\left(\frac{\frac{1}{2}}{\frac{2}{\frac{1}{3}}+\sqrt{2}}\right)\]
+\begin_inset Formula 
+\[
+(\frac{\frac{1}{2}}{\frac{2}{\frac{1}{3}}+\sqrt{2}})=\left(\frac{\frac{1}{2}}{\frac{2}{\frac{1}{3}}+\sqrt{2}}\right)
+\]
 
 \end_inset
 
@@ -2353,12 +2357,14 @@ Environment。
 \end_inset
 
 ：
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 f(x)=\left\{ \begin{array}{cc}
 \log_{8}x & x>0\\
 0 & x=0\\
 \sum_{i=1}^{5}\alpha_{i}+\sqrt{-\frac{1}{x}} & x<0
-\end{array}\right.\]
+\end{array}\right.
+\]
 
 \end_inset
 
