@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
-\use_default_options false
 \textclass scrartcl
 \begin_preamble
 \usepackage{ifpdf}
@@ -43,17 +42,27 @@
   \let\theequation\org@theeq}
 \end_preamble
 \options fleqn
+\use_default_options false
+\maintain_unincluded_children false
 \language spanish
+\language_package default
 \inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize 12
 \spacing single
 \use_hyperref false
@@ -61,9 +70,18 @@
 \use_geometry false
 \use_amsmath 2
 \use_esint 0
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Índice
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 4
 \tocdepth 3
 \paragraph_separation skip
@@ -74,8 +92,9 @@
 \paperpagestyle empty
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -86,14 +105,18 @@ Este documento muestra el uso de dos categorías diferentes de ecuaciones.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-A=B\label{eq:B}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+A=B\label{eq:B}
+\end{equation}
 
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
-A=C\label{eq:C}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+A=C\label{eq:C}
+\end{equation}
 
 \end_inset
 
@@ -111,14 +134,18 @@ setrom
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
-A=D\label{eq:D}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+A=D\label{eq:D}
+\end{equation}
 
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
-A=E\label{eq:E}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+A=E\label{eq:E}
+\end{equation}
 
 \end_inset
 
@@ -136,14 +163,18 @@ setarab
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
-A=F\label{eq:F}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+A=F\label{eq:F}
+\end{equation}
 
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
-A=G\label{eq:G}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+A=G\label{eq:G}
+\end{equation}
 
 \end_inset
 
@@ -161,14 +192,18 @@ setrom
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
-A=H\label{eq:H}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+A=H\label{eq:H}
+\end{equation}
 
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
-A=I\label{eq:I}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+A=I\label{eq:I}
+\end{equation}
 
 \end_inset
 
@@ -236,8 +271,15 @@ reference "eq:I"
 \end_layout
 
 \begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
 
-\lyxline
+\end_inset
+
 
 \begin_inset VSpace medskip
 \end_inset
