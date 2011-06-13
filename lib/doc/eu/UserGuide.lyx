@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass scrbook
@@ -58,13 +58,14 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language basque
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -130,6 +131,7 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -20010,8 +20012,10 @@ Adierazpen motako formulak berriz testutik kanpo agertzen dira, beraien
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-A=B\]
+\begin_inset Formula 
+\[
+A=B
+\]
 
 \end_inset
 
@@ -20237,12 +20241,14 @@ Formula bateko zati batzuk beteta utz ditzakezu (besteak hutsik), matrize
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left(\begin{array}{ccc}
 \lambda_{1}\\
  & \ddots\\
  &  & \lambda_{n}
-\end{array}\right).\]
+\end{array}\right).
+\]
 
 \end_inset
 
@@ -20474,11 +20480,13 @@ Gora
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left[\frac{1}{\left(\begin{array}{cc}
 2 & 3\\
 4 & 5
-\end{array}\right)}\right]\]
+\end{array}\right)}\right]
+\]
 
 \end_inset
 
@@ -20606,8 +20614,10 @@ mugak" ikurraren gainean eta azpian kokatzen ditu adierazpeneko formuletan,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-\sum_{n=0}^{\infty}\frac{1}{n!}=e\]
+\begin_inset Formula 
+\[
+\sum_{n=0}^{\infty}\frac{1}{n!}=e
+\]
 
 \end_inset
 
@@ -20681,8 +20691,10 @@ Matematika ! Mugatzaileak
 \end_inset
 
 
-\begin_inset Formula \[
-\lim_{x\rightarrow\infty}f(x),\]
+\begin_inset Formula 
+\[
+\lim_{x\rightarrow\infty}f(x),
+\]
 
 \end_inset
 
@@ -21544,11 +21556,13 @@ LyX-ek hainbat kortxete (edo parentesi) mota desberdin eskaintzen dizkizu.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left[\begin{array}{cc}
 1 & 2\\
 3 & 4
-\end{array}\right]\]
+\end{array}\right]
+\]
 
 \end_inset
 
@@ -21560,8 +21574,10 @@ eta parentesien diseinuak errazago ikusteko:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}\]
+\begin_inset Formula 
+\[
+\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}
+\]
 
 \end_inset
 
@@ -21661,12 +21677,14 @@ matrizearen
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left(\begin{array}{ccc}
 1 & 2 & 3\\
 4 & 5 & 6\\
 7 & 8 & 9
-\end{array}\right)\]
+\end{array}\right)
+\]
 
 \end_inset
 
@@ -21746,12 +21764,14 @@ lcr
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \begin{array}{lcr}
 zutabe & zutabe\, hau & zutabe\, hau\, eskuinera\\
 hau & erdian\, lerrokatuta & lerrokatu\\
 ezkerrean\, lerrokatua\, da & dago & da
-\end{array}\]
+\end{array}
+\]
 
 \end_inset
 
@@ -21808,12 +21828,14 @@ cases
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 f(x)=\begin{cases}
 -1 & x<0\\
 0 & x=0\\
 1 & x>0
-\end{cases}\]
+\end{cases}
+\]
 
 \end_inset
 
@@ -21855,7 +21877,8 @@ Ktrl+Sartu
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 a^{2} & = & (b^{2}+c^{2})(b^{2}-c^{2})\nonumber \\
 a & = & \sqrt{b^{4}-c^{4}}\label{eku:errokarratua}
 \end{eqnarray}
@@ -21879,8 +21902,10 @@ Ktrl+Tabuladorea
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
-\frac{A}{B} & \frac{A}{B} & \frac{A}{B}\end{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{A}{B} & \frac{A}{B} & \frac{A}{B}
+\end{eqnarray*}
 
 \end_inset
 
@@ -22005,8 +22030,10 @@ n da, puntu batekin bereiztuz:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-1+1=2.\end{equation}
+\begin_inset Formula 
+\begin{equation}
+1+1=2.
+\end{equation}
 
 \end_inset
 
@@ -22057,7 +22084,8 @@ Alt+M Maius+N
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 1 & = & 3-2\\
 2 & = & 4-2\nonumber \\
 4 & \leq & 7
@@ -22138,7 +22166,8 @@ eku:tanhBer
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \tanh(x) & = & \frac{\sinh(x)}{\cosh(x)}\nonumber \\
  & = & \frac{\mathrm{e}^{2x}-1}{\mathrm{e}^{2x}+1}\label{eku:tanhBer}
 \end{eqnarray}
@@ -22625,8 +22654,10 @@ N
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-f(x)=\sqrt{x}\:;\: x\in\mathbb{N}\]
+\begin_inset Formula 
+\[
+f(x)=\sqrt{x}\:;\: x\in\mathbb{N}
+\]
 
 \end_inset
 
@@ -22753,11 +22784,13 @@ Alt+C zuriunea
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 f(x)=\begin{array}{cc}
 x & \textrm{horrela badiot}\\
 -x & \textrm{bestela}
-\end{array}\]
+\end{array}
+\]
 
 \end_inset
 
@@ -26584,8 +26617,10 @@ galdera
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-x^{2}-2x-2\Rightarrow\galdera{x_{1}}\erantzuna{x_{2}}=1\galdera{+\sqrt{3}}\erantzuna{-\sqrt{3}}.\]
+\begin_inset Formula 
+\[
+x^{2}-2x-2\Rightarrow\galdera{x_{1}}\erantzuna{x_{2}}=1\galdera{+\sqrt{3}}\erantzuna{-\sqrt{3}}.
+\]
 
 \end_inset
 

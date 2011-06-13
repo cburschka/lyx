@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass scrbook
@@ -45,13 +45,14 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language slovak
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -107,6 +108,7 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -17138,12 +17140,14 @@ Akúkoľvek matematickú štruktúru môžete nachať vyplnenú len čiastočne,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left(\begin{array}{ccc}
 \lambda_{1}\\
  & \ddots\\
  &  & \lambda_{n}
-\end{array}\right)\]
+\end{array}\right)
+\]
 
 \end_inset
 
@@ -17300,11 +17304,13 @@ Zlomok
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left[\frac{1}{\left(\begin{array}{cc}
 2 & 3\\
 4 & 5
-\end{array}\right)}\right]\]
+\end{array}\right)}\right]
+\]
 
 \end_inset
 
@@ -17334,8 +17340,10 @@ Znamienka sumy
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-\sum_{n=1}^{\infty}\frac{x^{n}}{n}=\ln\left(\frac{1}{1-x}\right)\]
+\begin_inset Formula 
+\[
+\sum_{n=1}^{\infty}\frac{x^{n}}{n}=\ln\left(\frac{1}{1-x}\right)
+\]
 
 \end_inset
 
@@ -17352,8 +17360,10 @@ Avšak integrál vždy hranice zobrazí na strane (nie nad znaminkom a pod ním)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-\int_{-\infty}^{\infty}\frac{dx}{1+x^{2}}=\pi\]
+\begin_inset Formula 
+\[
+\int_{-\infty}^{\infty}\frac{dx}{1+x^{2}}=\pi
+\]
 
 \end_inset
 
@@ -17374,8 +17384,10 @@ A-m l
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-\lim_{x\rightarrow\infty}f(x)\]
+\begin_inset Formula 
+\[
+\lim_{x\rightarrow\infty}f(x)
+\]
 
 \end_inset
 
@@ -17483,8 +17495,10 @@ Oddeľovač
  Kliknutím na ďalšie tlačítko (keď ste v čistom texte) vytvoríte novú oblasť
  na zadanie matematického výrazu.
  Ta je vytvorená na novom riadku a vycentrovaná:
-\begin_inset Formula \[
-1+2=3\]
+\begin_inset Formula 
+\[
+1+2=3
+\]
 
 \end_inset
 
@@ -17705,8 +17719,10 @@ cos
 \end_inset
 
 , inak to bude takéto:
-\begin_inset Formula \[
-\lim_{x\rightarrow0}f(x)=L\]
+\begin_inset Formula 
+\[
+\lim_{x\rightarrow0}f(x)=L
+\]
 
 \end_inset
 
@@ -18196,23 +18212,29 @@ reference "sec: mat-panel"
 ).
  Napríklad týmto spôsobom urobíte zátvorky okolo štandard\SpecialChar \-
 nej matice:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left(\begin{array}{cc}
 1 & 2\\
 3 & 4
-\end{array}\right)\]
+\end{array}\right)
+\]
 
 \end_inset
 
 A lepšie zviditeľníte úrovne zátvoriek v takomto hnusobstve:
-\begin_inset Formula \[
-\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}\]
+\begin_inset Formula 
+\[
+\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}
+\]
 
 \end_inset
 
 alebo:
-\begin_inset Formula \[
-f\left(g\left(h\left(k\left(l\left(x\right)\right)\right)\right)\right)\]
+\begin_inset Formula 
+\[
+f\left(g\left(h\left(k\left(l\left(x\right)\right)\right)\right)\right)
+\]
 
 \end_inset
 
@@ -18270,12 +18292,14 @@ Matica
  na paneli matematických nástrojov, ktoré vám zobrazí okno kde si zadáte
  počet riadkov a stĺpcov matice.
  Tu je príklad:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left(\begin{array}{ccc}
 1 & 2 & 3\\
 4 & 5 & 6\\
 7 & 8 & 9
-\end{array}\right)\]
+\end{array}\right)
+\]
 
 \end_inset
 
@@ -18326,12 +18350,14 @@ e.
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \begin{array}{lcr}
 stlpec & stlpec & tento\\
 zarovnany & je & je\, zarovnany\\
 nalavo & vycentrovany & doprava
-\end{array}\]
+\end{array}
+\]
 
 \end_inset
 
@@ -18372,11 +18398,13 @@ cases
 \emph toggle
 robí).
  Tu je príklad:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 f(x)=\left\{ \begin{array}{cl}
 \frac{1}{q}, & \mathrm{ak}\, x=\frac{p}{q}\\
 0, & \mathrm{ak}\, x\,\mathrm{je}\,\mathrm{iracionalne}
-\end{array}\right.\]
+\end{array}\right.
+\]
 
 \end_inset
 
@@ -18414,7 +18442,8 @@ C-Enter
  Každý riadok je potom rozdelený na tri oblasti, v ktorých sa môžete pohybovať
  myšou, šípkami, alebo tabulátorom.
  Tu je príklad:
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 3 & = & 1+2\\
 4+5 & = & 9
 \end{eqnarray*}
@@ -18469,14 +18498,18 @@ name "sec: mat-label"
 
 Číslovanie rovníc je v LyXe veľmi jednoduché.
  Všetko, čo musíte urobiť, ak chcete zmeniť rovnicu ako napríklad:
-\begin_inset Formula \[
-1+2=3\]
+\begin_inset Formula 
+\[
+1+2=3
+\]
 
 \end_inset
 
 na číslovanú rovnicu:
-\begin_inset Formula \begin{equation}
-1+2=3\label{mathed:prva_rovnica}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+1+2=3\label{mathed:prva_rovnica}
+\end{equation}
 
 \end_inset
 
@@ -18524,8 +18557,10 @@ math-number-toggle
 .
  Kurzor musí byť umiestnený v rovnici.
  Príklad:
-\begin_inset Formula \begin{equation}
-1+1=2\end{equation}
+\begin_inset Formula 
+\begin{equation}
+1+1=2
+\end{equation}
 
 \end_inset
 
@@ -18601,7 +18636,8 @@ používať medzery, pretože vám to môže spôsobiť problémy.
 
 ).
  Toto návestie si môžete zmeniť, aby ste sa mohli na daný riadok odkazovať.
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 1 & = & 4-3\label{mathed:druha_rovnica}\\
 2 & = & 7-5\\
 1 & = & e^{2\pi i}\\
