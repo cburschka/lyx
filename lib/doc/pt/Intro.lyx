@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
@@ -39,13 +39,14 @@ L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
 \use_default_options false
 \maintain_unincluded_children false
 \language brazilian
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -100,6 +101,7 @@ L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -326,7 +328,7 @@ online
  Você ocasionalmente notará palavras em fontes diferentes:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMM
 
 \emph on
@@ -348,7 +350,7 @@ N.T.: Esse estilo é usado também para indicar palavras em inglês utilizadas
 
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMM
 
 \family typewriter
@@ -362,7 +364,7 @@ Fixa
  LyX;
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMM
 
 \family sans
@@ -375,7 +377,7 @@ Serifa
  é usado para menus, botões, janelas suspensas e para nomes de teclas;
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMM
 
 \noun on
