@@ -1098,8 +1098,8 @@ def checkLatexConfig(check_config, bool_docbook):
         return None
     # the following will generate textclass.lst.tmp, and packages.lst.tmp
     logger.info(msg + '\tauto')
-    removeFiles(['wrap_chkconfig.ltx', 'chkconfig.vars', \
-        'chkconfig.classes', 'chklayouts.tex'])
+    removeFiles(['chkconfig.classes', 'chkconfig.vars', 'chklayouts.tex',
+        'wrap_chkconfig.ltx'])
     rmcopy = False
     if not os.path.isfile( 'chkconfig.ltx' ):
         shutil.copyfile( os.path.join(srcdir, 'chkconfig.ltx'), 'chkconfig.ltx' )
@@ -1321,10 +1321,9 @@ def checkTeXAllowSpaces():
 def removeTempFiles():
     # Final clean-up
     if not lyx_keep_temps:
-        removeFiles(['chkconfig.vars', \
-            'wrap_chkconfig.ltx', 'wrap_chkconfig.log', \
+        removeFiles(['chkconfig.vars', 'chklatex.ltx', 'chklatex.log',
             'chklayouts.tex', 'chkmodules.tex', 'missfont.log',
-            'chklatex.ltx', 'chklatex.log'])
+            'wrap_chkconfig.ltx', 'wrap_chkconfig.log'])
 
 
 if __name__ == '__main__':
