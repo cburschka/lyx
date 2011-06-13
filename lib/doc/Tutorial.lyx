@@ -53,6 +53,7 @@ logicalmkup
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -102,6 +103,7 @@ logicalmkup
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -4129,12 +4131,14 @@ Environment
 \end_inset
 
  
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 f(x)=\left\{ \begin{array}{cc}
 \log_{8}x & x>0\\
 0 & x=0\\
 \sum_{i=1}^{5}\alpha_{i}+\sqrt{-\frac{1}{x}} & x<0
-\end{array}\right.\]
+\end{array}\right.
+\]
 
 \end_inset
 

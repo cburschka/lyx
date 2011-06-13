@@ -1,5 +1,5 @@
-#LyX 2.0.0beta4 created this file. For more info see http://www.lyx.org/
-\lyxformat 412
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass scrbook
@@ -129,6 +129,7 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -11042,8 +11043,7 @@ amsart – Das AMS-Standardformat für Artikel.
 
  nummeriert.
  Dabei steht die erste Zahl für den Abschnitt, die zweite zählt alle Aussagen
- (Theoreme, Korollare, Sätze, Definitionen usw.) in diesem Abschnitt
- durch.
+ (Theoreme, Korollare, Sätze, Definitionen usw.) in diesem Abschnitt durch.
  Außerdem stehen eine ganze Reihe von nichtnummerierten Umgebungen zur Verfügung
 , die auch gelegentlich benötigt werden.
  Diese sind durch einen Stern am Ende des Namens gekennzeichnet.

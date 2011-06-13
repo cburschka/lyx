@@ -18,8 +18,10 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
+\output_sync 0
 \bibtex_command default
 \index_command default
 \paperfontsize default
@@ -36,6 +38,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
 \index Index
 \shortcut idx
 \color #008000
@@ -55,8 +58,8 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict true
-\use_refstyle 0
 \end_header
 
 \begin_body
