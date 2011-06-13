@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass book
@@ -38,13 +38,14 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language slovene
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -99,6 +100,7 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -1043,27 +1045,27 @@ e posebnih glav strani, prilagoditev bibliografij, spremembo mesta in videza
 Tule je povzetek:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 TeX: Stavni jezik z možnostjo makroukazov.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 LaTeX: Paket makroukazov, temelječ na TeXu.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 razredi: Opisi zvrsti spisa z uporabo LaTeXa.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 slogi: Nekako spremenijo privzeto vedenje LaTeXa.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 LyX: Vizualni urejevalnik besedil vrste WYSIWYM, ki za tiskanje uporablja
  LaTeX v vsej njegovi slavi.
@@ -5381,12 +5383,14 @@ Vaja
 \series default
 : Z uporabo različnih orodij, ki ste jih spoznali v tem razdelku, bi morali
  znati postaviti enačbo, kot je: 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 f(x)=\left\{ \begin{array}{cc}
 \log_{8}x & x>0\\
 0 & x=0\\
 \sum_{i=1}^{5}\alpha_{i}+\sqrt{-\frac{1}{x}} & x<0
-\end{array}\right.\]
+\end{array}\right.
+\]
 
 \end_inset
 
@@ -5413,8 +5417,10 @@ dvi
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-x=y+y+y+y+y\]
+\begin_inset Formula 
+\[
+x=y+y+y+y+y
+\]
 
 \end_inset
 
@@ -5422,8 +5428,10 @@ x=y+y+y+y+y\]
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-=5y\]
+\begin_inset Formula 
+\[
+=5y
+\]
 
 \end_inset
 
@@ -5439,7 +5447,8 @@ To sploh ni videti dobro! Če napišete dve ali več enačb zapored, so videti
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 x & = & y+y+y+y+y\\
  & = & 5y
 \end{eqnarray*}
@@ -5478,7 +5487,8 @@ Tab
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 x & = & a+b+c+d\\
  &  & +e+f+g
 \end{eqnarray*}
@@ -5531,7 +5541,8 @@ C-Tab
 \end_inset
 
  v
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 E & = & mc^{2}\\
  & = & mc\times c
 \end{eqnarray*}

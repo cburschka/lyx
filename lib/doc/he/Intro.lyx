@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass book
@@ -21,13 +21,14 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language hebrew
+\language_package default
 \inputencoding cp1255
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -68,6 +69,7 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -1108,7 +1110,7 @@ LaTeX
 הנה סיכום הדברים:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Note Note
 status collapsed
@@ -1130,7 +1132,7 @@ TeX
  שפת דפוס עם יכולות מאקרו.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Note Note
 status collapsed
@@ -1152,7 +1154,7 @@ TeX
 .
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 מחלקה תיאור של סוג מסמך חדש תוך שימוש ב- 
 \lang english
@@ -1161,7 +1163,7 @@ LaTeX
 .
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 סגנון שינוי ההתנהגות הרגילה של 
 \lang english
@@ -1170,7 +1172,7 @@ LaTeX
  בדרך כלשהי.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Note Note
 status collapsed

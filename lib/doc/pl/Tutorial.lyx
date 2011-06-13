@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass book
@@ -39,13 +39,14 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language polish
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -100,6 +101,7 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -1050,29 +1052,29 @@ już istniejących.
 Oto podsumowanie:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 TeX: Język składu drukarskiego używający makr.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 LaTeX: Pakiet makr TeX-a\SpecialChar \@.
 
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 klasa: Opis typu dokumentu w LaTeX-u\SpecialChar \@.
 
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 styl: Modyfikuje sposób działania LaTeX-a.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 LyX: Graficzny WYSIWYM procesor tekstu używający LaTeX-a do drukowania.
 \end_layout
@@ -4803,12 +4805,14 @@ example_raw.lyx
 \series default
 : Posługując się różnymi narzędziami poznanymi w tym podrozdziale, powinieneś
  umieć złożyć następujące równanie: 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 f(x)=\left\{ \begin{array}{cc}
 \log_{8}x & x>0\\
 0 & x=0\\
 \sum_{i=1}^{5}\alpha_{i}+\sqrt{-\frac{1}{x}} & x<0
-\end{array}\right.\]
+\end{array}\right.
+\]
 
 \end_inset
 
@@ -4831,8 +4835,10 @@ name "sec:multiline"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-x=y+y+y+y+y\]
+\begin_inset Formula 
+\[
+x=y+y+y+y+y
+\]
 
 \end_inset
 
@@ -4840,8 +4846,10 @@ x=y+y+y+y+y\]
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-=5y\]
+\begin_inset Formula 
+\[
+=5y
+\]
 
 \end_inset
 
@@ -4857,7 +4865,8 @@ Wynik wygląda źle ! Jeżeli pisze się dwa lub więcej równań jedno za drugi
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 x & = & y+y+y+y+y\\
  & = & 5y
 \end{eqnarray*}
@@ -4893,7 +4902,8 @@ Tab
  pustych punktów wstawiania.
  Może być to użyteczne, jak w poprzednim przykładzie, albo w przypadku podziału
  na mniejsze bardzo długich równań, jak np.: 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 x & = & a+b+c+d\\
  &  & +e+f+g
 \end{eqnarray*}
@@ -4946,7 +4956,8 @@ C-Return
 \end_inset
 
  na
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 E & = & mc^{2}\\
  & = & mc\times c
 \end{eqnarray*}

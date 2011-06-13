@@ -1,27 +1,29 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass book
-\begin_preamble
-\usepackage{multicol}
-\IfFileExists{isolatin.def}
-{\usepackage[isolatin]{inputenc}}
-{\usepackage[latin1]{inputenc}}
-\end_preamble
 \use_default_options false
+\maintain_unincluded_children false
 \language italian
+\language_package default
 \inputencoding default
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -29,21 +31,31 @@
 \use_geometry false
 \use_amsmath 0
 \use_esint 0
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Indice
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -222,7 +234,7 @@ Questi files vengono generati quando configurate LyX.
  sovrascritti in qualsiasi momento.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -252,7 +264,7 @@ references
 .
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -279,7 +291,7 @@ TeX
 Configuration.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -293,7 +305,7 @@ layout/
  , insieme alla classe di documento LateX associata e relativa descrizione.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -339,7 +351,7 @@ foo
 Directories 
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -359,7 +371,7 @@ $LANG_xxx.bind
  , questo sarà usato per primo.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -371,7 +383,7 @@ clipart/
  
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -405,7 +417,7 @@ reference "chap:i18n"
  per i dettagli.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -419,7 +431,7 @@ Example
  per raggiungerlo.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -434,7 +446,7 @@ Document
  e nella schermata che viene mostrata all'avvio di LyX.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -455,7 +467,7 @@ reference "sec:keymap"
  per i dettagli.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -475,7 +487,7 @@ reference "chap:textclass"
 
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -505,7 +517,7 @@ Nota dell'autore: se questo file è incorporato in un altro dei documenti
 ].
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -525,7 +537,7 @@ reference "sec:templates"
 .
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -534,7 +546,7 @@ tex/
  contiene alcuni files .cls distribuiti con LyX.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -570,7 +582,7 @@ Questi files sono usati internamente da LyX e generalmente non avete bisogno
  di modificarli a meno che non siate sviluppatori.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -592,7 +604,7 @@ e
 dits.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -604,7 +616,7 @@ chkconfig.ltx
  Non va lanciato direttamente.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -620,7 +632,7 @@ configure
 Altri files che necessitano di una riga o due di spiegazioni...
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -629,7 +641,7 @@ encodings
  ???
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -663,7 +675,7 @@ aterial
  per ulteriori informazioni.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -2178,7 +2190,7 @@ ripulire
  se non vi piacciono.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -2197,7 +2209,7 @@ groff/troff/nroff
  
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -2493,7 +2505,7 @@ Di seguito è presentata una lista (parziale) delle funzioni e dei colori
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -4643,7 +4655,7 @@ kcomb
  qui di seguito descritte.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -4710,7 +4722,7 @@ kmap
 kmap & /
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -4799,7 +4811,7 @@ Il seguente esempio specifica che il carattere ' dovrà essere un accento
 kmod ' acute aeiouAEIOU
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 ksmod Specifica un'eccezione al carattere accentato
 \end_layout
@@ -4901,7 +4913,7 @@ kxmod acute i "
 i}"
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans

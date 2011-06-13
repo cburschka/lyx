@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
@@ -39,13 +39,14 @@ L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
 \use_default_options false
 \maintain_unincluded_children false
 \language magyar
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -107,6 +108,7 @@ L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -851,27 +853,27 @@ tatásához, stb.
 Íme egy összefoglaló:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 TeX: írásszedő nyelv, makrózási képességekkel
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 LaTeX: TeX-re épülő makrócsomag
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 osztályok: dokumentum típusok leírása, LaTeX felhasználásával
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 stílusok: a LaTeX viselkedésmódjának megváltoztatása valamilyen módon
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 LyX: vizuális WYSIWYM szövegszerkesztő, ami a LaTeX-et használja, a professzioná
 lis végeredményhez.
