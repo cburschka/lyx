@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass book
@@ -31,13 +31,14 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language hebrew
+\language_package default
 \inputencoding cp1255
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -78,6 +79,7 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -5603,12 +5605,14 @@ h
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 f(x)=\left\{ \begin{array}{cc}
 \log_{8}x & x>0\\
 0 & x=0\\
 \sum_{i=1}^{5}\alpha_{i}+\sqrt{-\frac{1}{x}} & x<0
-\end{array}\right.\]
+\end{array}\right.
+\]
 
 \end_inset
 
@@ -5632,14 +5636,18 @@ dvi
 \lang hebrew
  שנוצר.
  את צריכה כאן שתי נוסחאות ממורכזות נפרדות
-\begin_inset Formula \[
-x=y+y+y+y+y\]
+\begin_inset Formula 
+\[
+x=y+y+y+y+y
+\]
 
 \end_inset
 
 
-\begin_inset Formula \[
-=5y\]
+\begin_inset Formula 
+\[
+=5y
+\]
 
 \end_inset
 
@@ -5650,7 +5658,8 @@ x=y+y+y+y+y\]
 זה לא נראה משהו בכלל! שתי נוסחאות אחת אחרי השניה נראות הרבה יותר טוב אם
  סימני השווה שלהן אחד מעל השני, במיוחד אם לנוסחא השניה אין צד שמאל.
  ליקס מאפשרת לך לכתוב נוסחאות של כמה שורות ונותנת שליטה מסוימת ביישור שלהן.
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 x & = & y+y+y+y+y\\
  & = & 5y
 \end{eqnarray*}
@@ -5761,7 +5770,8 @@ LaTeX
 \end_inset
 
  
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 x & = & a+b+c+d\\
  &  & +e+f+g
 \end{eqnarray*}
@@ -5820,7 +5830,8 @@ C-Tab
 \end_inset
 
  ל-
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 E & = & mc^{2}\\
  & = & mc\times c
 \end{eqnarray*}

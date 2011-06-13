@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 404
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
@@ -39,13 +39,14 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language galician
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -104,6 +105,7 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -822,29 +824,29 @@ estilo
 Eis un resumo:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 TeX: Linguaxe tipográfica na que se poden utilizar macros.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 LaTeX: Pacote de macros construído sobre o TeX\SpecialChar \@.
 
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 clase: Descrición dun tipo de documento, usando LaTeX\SpecialChar \@.
 
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 estilo: Modifica nalgun xeito o comportamento predefinido do LaTeX.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 LyX: Procesador de texto WYSIWYM, que emprega o LaTeX, en toda a sua gloria,
  para imprimir.
