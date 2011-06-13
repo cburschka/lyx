@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 410
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -157,6 +157,7 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language ngerman
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
@@ -190,7 +191,7 @@
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize a4paper
 \use_geometry false
 \use_amsmath 2
@@ -222,6 +223,7 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -2046,7 +2048,8 @@ cfrac
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{align*}
+\begin_inset Formula 
+\begin{align*}
 \textrm{mit \textbf{\textbackslash frac} erstellt} &  & \textrm{mit \textbf{\textbackslash cfrac} erstellt}\\
 \frac{A}{B+\frac{C+\frac{E}{F}}{D}} &  & \cfrac{A}{B+\cfrac{C+\cfrac{E}{F}}{D}}
 \end{align*}
@@ -2236,7 +2239,8 @@ cfrac
 frac
 \series default
  zu kombinieren:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \cfrac{A}{B+\cfrac{C+\frac{E}{F}}{D}}
 \]
 
@@ -5024,7 +5028,8 @@ hdotsfor[2]{4}
 dots
 \series default
  zu erhalten:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left(\begin{array}{cccc}
 A & B & C & D\\
 \hdotsfor[2]{4}\\
@@ -7212,7 +7217,8 @@ leer
 )
 \series default
  ergibt
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \ln(\frac{A}{C})
 \]
 
@@ -7266,7 +7272,8 @@ leer
 right)
 \series default
  ergibt
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \ln\left(\frac{A}{C}\right)
 \]
 
@@ -7387,7 +7394,8 @@ right}
 :
 \series bold
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left.\frac{A}{B}\right\} 
 \]
 
@@ -7444,7 +7452,8 @@ middle
 
 B.
  für physikalische Vektoren von Nutzen ist:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left\langle \phi\:\middle|\: J=\frac{3}{2}\,,\, M_{J}\right\rangle 
 \]
 
@@ -7855,7 +7864,8 @@ reference "sec:Mehrzeilige-Formeln"
 \end_inset
 
  beschriebenen mehrzeiligen Formeln verwenden:
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 A & = & \underbrace{gggg+bbqq}_{r}+\: dddd\\
  &  & \hphantom{gggg+\:}\underbrace{\hphantom{bbqq+dddd}}_{s}
 \end{eqnarray*}
@@ -7991,7 +8001,8 @@ jot}{-6pt}
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
  &  & \hphantom{gggg+\:}\overbrace{\hphantom{bbqq+dddd}}^{s}\\
 A & = & \underbrace{gggg+bbqq}_{r}+\: dddd
 \end{eqnarray*}
@@ -10535,7 +10546,8 @@ leer
 n
 \series default
  :
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \sideset{}{'}\sum_{k=1}^{n}
 \]
 
@@ -10588,7 +10600,8 @@ leer
 a
 \series default
  ergibt:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \overset{a}{\maltese}
 \]
 
@@ -11048,7 +11061,8 @@ widehat
 \series default
  werden aber im Ausdruck nur mit einer Länge von etwa drei Zeichen gesetzt,
  was folgendes Beispiel verdeutlicht:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \widetilde{A+B=C-D}
 \]
 
@@ -11119,7 +11133,8 @@ A=B
 ***
 \series default
  ergibt:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \underset{***}{A=B}
 \]
 
@@ -13117,7 +13132,8 @@ fboxsep 3mm
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \boxed{A+B=C}
 \]
 
@@ -13963,7 +13979,8 @@ Ein Beispiel:
 \begin_layout Standard
 
 \color red
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \int A=B\label{eq:rot}
 \end{equation}
 
@@ -13972,7 +13989,8 @@ Ein Beispiel:
 
 \color green
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \textcolor{red}{\int A=B}\label{eq:rotgruen}
 \end{equation}
 
@@ -14087,7 +14105,8 @@ fboxsep 1mm
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \fcolorbox{cyan}{magenta}{A=B}
 \]
 
@@ -14290,7 +14309,8 @@ darkgreen
 yellow
 \series default
  gewählt wurde:
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \colorbox{dunkelgruen}{\color{yellow}\boxed{\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}}}
 \end{equation}
 
@@ -14728,7 +14748,8 @@ fboxrule}{
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}
 \end{equation}
 
@@ -14967,7 +14988,8 @@ kommentiert
 \end_inset
 
  wurde:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 5x-7b=3b\textrm{Dies ist eine Beschreibung. Sie ist nicht von der Formel getrennt ...}
 \]
 
@@ -16200,14 +16222,16 @@ L
 
 \begin_layout Standard
 Die normalen Grenzen sehen so aus:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \sum_{x=0}^{\infty}\frac{1}{x^{2}}
 \]
 
 \end_inset
 
 So sieht die Formel aus, wenn man die Grenzen neben das Summenzeichen setzt:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \sum\nolimits _{x=0}^{\infty}\frac{1}{x^{2}}
 \]
 
@@ -16237,7 +16261,8 @@ ointop
 Anzeige
 \series default
  gesetzt und damit unter die Integrale geschrieben:
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \iiint\limits _{V}X\,\mathrm{d}V=U\label{eq:VolInt}
 \end{equation}
 
@@ -16293,7 +16318,8 @@ substack
 
 B.
  diesen Ausdruck 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \sum_{\begin{subarray}{c}
 0<k<1000\\
 \\
@@ -16560,7 +16586,8 @@ leer
 \begin_layout Standard
 ein, um die untere Grenze zu erstellen.
  Der Summand befindet sich nun direkt hinter dem Summenzeichen:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \sum_{\mathclap{\substack{0<k<1000\\
 \\
 k\,\in\,\mathbb{N}
@@ -17826,7 +17853,8 @@ reference "sub:Sonstige-Symbole"
 \end_inset
 
  besteht:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \Raute_{n=1}^{\infty}
 \]
 
@@ -17937,7 +17965,8 @@ mathop
 
 B.
  nutzen, um eine Grenze für mehrere Operatoren zu verwenden:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \mathop{\sum\negmedspace\sum}_{i,j=1}^{N}
 \]
 
@@ -18685,7 +18714,8 @@ mathnormal
 
 \begin_layout Standard
 Die Stilbefehle wirken auch auf Buchstaben in mathematischen Konstruktionen:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \mathfrak{A=\frac{b}{C}}
 \]
 
@@ -18776,7 +18806,8 @@ mathbf
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \mathbf{\int_{n}^{2}f(\theta)=\Gamma}\qquad\textrm{Formel mit \textbackslash mathbf}
 \]
 
@@ -18793,7 +18824,8 @@ Um die Formel korrekt darzustellen, verwendet man den Befehl
 boldsymbol
 \series default
 :
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \boldsymbol{\int_{n}^{2}f(\theta)=\Gamma\qquad\textrm{Formel mit \textbackslash boldsymbol}}
 \]
 
@@ -18855,7 +18887,8 @@ boldmath
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \int_{n}^{2}f(\theta)=\Gamma\qquad\textrm{Formel in boldmath-Umgebung}
 \]
 
@@ -18899,7 +18932,8 @@ Textstil
 \family default
  Dialog.
  Hier ist eine Formel in Magenta:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 {\color{magenta}\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}}
 \]
 
@@ -18964,7 +18998,8 @@ textcolor{dunkelgruen}{
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \int A\,\mathrm{d}x=\frac{{\color{red}\sqrt[5]{B}}}{\ln\left(\frac{1}{3}\right)}
 \]
 
@@ -19361,14 +19396,16 @@ huge
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 A=\frac{B}{c}\cdot\maltese
 \]
 
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \maltese A\textrm{\Large\maltese\textit{A}}\textrm{\tiny\maltese\textit{A}}
 \]
 
@@ -25938,7 +25975,8 @@ x=B
 
 \begin_layout Standard
 In einer abgesetzten Formel steht der Grenzwert wie gewohnt darunter:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \lim_{x\to A}x=B
 \]
 
@@ -25968,7 +26006,8 @@ Eine Besonderheit stellt die Modulo-Funktion dar, denn es gibt sie in vier
 
 \begin_layout Standard
 Die Varianten in einer abgesetzten Formel:
-\begin_inset Formula \begin{align*}
+\begin_inset Formula 
+\begin{align*}
 \underline{\textrm{Befehl}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Ergebnis}}\\
 \mathrm{a\backslash mod\textrm{\leer}b} &  & a\mod b\\
 \mathrm{a\backslash pmod\textrm{\leer}b} &  & a\pmod b\\
@@ -28176,7 +28215,8 @@ Formel ! mehrzeilige ! Zeilenabstand
 
 \begin_layout Standard
 Bei mehrzeiligen Formeln fehlt manchmal etwas Platz zwischen den Zeilen:
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 B^{2}(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2})+4x_{0}^{2}x^{2}+4x_{0}xD & = & \textrm{-}4x^{2}B^{2}+4x_{0}xB^{2}\\
 4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right) & = & 0
 \end{eqnarray*}
@@ -28389,7 +28429,8 @@ jot}{3mm+3pt}
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 B^{2}(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2})+4x_{0}^{2}x^{2}+4x_{0}xD & = & \textrm{-}4x^{2}B^{2}+4x_{0}xB^{2}\\
 4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right) & = & 0
 \end{eqnarray*}
@@ -28550,7 +28591,8 @@ arraycolsep}{1cm}
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 A & = & B\\
 C & \ne & A
 \end{eqnarray*}
@@ -28577,7 +28619,8 @@ arraycolsep}{5pt}
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 A & = & B\\
 C & \ne & A
 \end{eqnarray*}
@@ -28608,7 +28651,8 @@ Lange Formeln kann man wie folgt setzen:
 \begin_layout Itemize
 Ist eine Seite der Gleichung deutlich kürzer als die Zeilenbreite, wählt
  man man diese als linke Seite und schreibt die rechte über zwei Zeilen:
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 H & = & W_{SB}+W_{mv}+W_{D}-\frac{\hbar^{2}}{2m_{0}}\Delta-\frac{\hbar^{2}}{2m_{1}}\Delta_{1}-\frac{\hbar^{2}}{2m_{2}}\Delta_{2}-\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{1}|}\nonumber \\
  &  & -\hspace{3pt}\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{2}|}+\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{R}_{1}-\mathbf{R}_{2}|}\label{eq:kurzlang}
 \end{eqnarray}
@@ -28689,7 +28733,8 @@ lefteqn
 .
  Dieser wird in die erste Spalte der ersten Zeile eingegeben und bewirkt,
  dass alle weiteren Eingaben die folgenden Spalten überschreiben:
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \lefteqn{4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right)+D^{2}}\nonumber \\
  &  & -\hspace{3pt}B^{2}-2B\sqrt{r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}+r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}\nonumber \\
  &  & =B^{2}+2\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)+\frac{\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)^{2}}{B^{2}}\label{eq:lefteqn}
@@ -28814,7 +28859,8 @@ Klammern ! mehrzeilige
 
 \begin_layout Standard
 Bei Klammern, die über mehrere Zeilen gehen, tritt folgendes Problem auf:
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 A & = & \sin(x)\left[\prod_{R=1}^{\infty}\frac{1}{R}+\cdots\right.\\
  &  & \left.\cdots+B-D\right]
 \end{eqnarray*}
@@ -28987,7 +29033,8 @@ vphantom
 
 \begin_layout Standard
 Das Ergebnis sieht so aus:
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 A & = & \sin(x)\left[\prod_{R=1}^{\infty}\frac{1}{R}+\cdots\right.\\
  &  & \left.\vphantom{\prod_{R=1}^{\infty}}\cdots+B-D\right]
 \end{eqnarray*}
@@ -29101,7 +29148,8 @@ bung
 \begin_layout Standard
 Ein Beispiel für zwei nebeneinander stehende Formeln, die mit einer vierspaltige
 n align-Umgebung erzeugt wurden:
-\begin_inset Formula \begin{align*}
+\begin_inset Formula 
+\begin{align*}
 A & =\sin(B) & C & =D\\
 C & \ne A & B & \ne D
 \end{align*}
@@ -29202,7 +29250,8 @@ Das vorige Beispiel in der alignat-Umgebung, bei dem zu Beginn der zweiten
 \end_inset
 
 cm Leerraum eingefügt wurde:
-\begin_inset Formula \begin{alignat*}{2}
+\begin_inset Formula 
+\begin{alignat*}{2}
 A & =\sin(B) & \hspace{1cm}C & =D\\
 C & \ne A & B & \ne D
 \end{alignat*}
@@ -29239,7 +29288,8 @@ Formel ! mehrzeilige ! flalign-Umgebung
 Bei dieser Umgebung werden die ersten beiden Spalten immer so weit links
  und die letzten beiden Spalten so weit rechts wie möglich gesetzt.
  Dazu ein Beispiel:
-\begin_inset Formula \begin{flalign*}
+\begin_inset Formula 
+\begin{flalign*}
 A & =1 & B & =2 & C & =3\\
 X & =\textrm{-}1 & Y & =\textrm{-}2 & Z & =4
 \end{flalign*}
@@ -29265,7 +29315,8 @@ reference "eq:VolInt"
 \end_inset
 
 :
-\begin_inset Formula \begin{flalign}
+\begin_inset Formula 
+\begin{flalign}
 \hspace{30pt}\iiint\limits _{V}X\,\mathrm{d}V & =U & {}
 \end{flalign}
 
@@ -29310,7 +29361,8 @@ Hat man diese Umgebung erzeugt, erscheinen drei blaue Kästchen.
  ausgerichtet.
  Der Inhalt des mittleren Kästchens erscheint zentriert und etwas kleiner,
  da dieses Kästchen nur für Relationzeichen gedacht ist.
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \frac{ABC}{D} & \frac{ABC}{D} & \frac{ABC}{D}\\
 AB & AB & AB\\
 A & = & A
@@ -29338,7 +29390,8 @@ Formel ! mehrzeilige ! Gather-Umgebung
 \begin_layout Standard
 Diese Umgebung besteht nur aus einer Spalte, deren Inhalt zentriert ist.
  Jede Zeile kann nummeriert werden.
-\begin_inset Formula \begin{gather}
+\begin_inset Formula 
+\begin{gather}
 A=1\\
 X=\textrm{-}1
 \end{gather}
@@ -29382,7 +29435,8 @@ reference "eq:lefteqn"
 \end_inset
 
  in der multline-Umgebung:
-\begin_inset Formula \begin{multline}
+\begin_inset Formula 
+\begin{multline}
 4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right)+D^{2}\\
 -B^{2}-2B\sqrt{r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}+r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}\\
 =B^{2}+2\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)+\frac{\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)^{2}}{B^{2}}
@@ -29533,7 +29587,8 @@ multlinegap}{2cm}
 \end_inset
 
 
-\begin_inset Formula \begin{multline}
+\begin_inset Formula 
+\begin{multline}
 4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right)+D^{2}\\
 \shoveleft{-B^{2}-2B\sqrt{r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}+r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}\\
 =B^{2}+2\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)+\frac{\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)^{2}}{B^{2}}
@@ -29623,7 +29678,8 @@ n Formel\SpecialChar \-
 umgebungen.
  Man kann jedoch zusätzlich weitere Formelteile daneben setzen.
  Dazu ein Beispiel:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left.\begin{aligned}\Delta x\Delta p & \ge\frac{\hbar}{2}\\
 \Delta E\Delta t & \ge\frac{\hbar}{2}
 \end{aligned}
@@ -29675,7 +29731,8 @@ reference "eq:kurzlang"
 \end_inset
 
  in der aligned-Umgebung:
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \begin{aligned}H=\; & W_{SB}+W_{mv}+W_{D}-\frac{\hbar^{2}}{2m_{0}}\Delta-\frac{\hbar^{2}}{2m_{1}}\Delta_{1}-\frac{\hbar^{2}}{2m_{2}}\Delta_{2}-\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{1}|}\\
  & -\hspace{3pt}\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{2}|}+\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{R}_{1}-\mathbf{R}_{2}|}
 \end{aligned}
@@ -29843,7 +29900,8 @@ intertext
  muss dabei zu Beginn einer Zeile stehen und erscheint in der Ausgabe über
  dieser Zeile.
  Ein Beispiel bei dem der Text zu Beginn der zweiten Zeile eingegeben wurde:
-\begin_inset Formula \begin{align}
+\begin_inset Formula 
+\begin{align}
 I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
 \intertext{\text{Integrand ist symmetrisch zu \ensuremath{\phi=\pi}, daher}} & =2a\sqrt{2}\int_{0}^{\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi
 \end{align}
@@ -30191,7 +30249,8 @@ end{subequations}
 
 \begin_layout Standard
 Dazu ein Beispiel:
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 A=C-B\label{eq:a}
 \end{equation}
 
@@ -30228,14 +30287,16 @@ begin{subequations}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 B=C-A\label{eq:b}
 \end{equation}
 
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 C=A+B\label{eq:c}
 \end{equation}
 
@@ -30449,7 +30510,8 @@ begin{subequations}
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 A & = & (B-Z)^{2}=(B-Z)(B-Z)\label{eq:d}\\
  & = & B^{2}-ZB-BZ+Z^{²}\nonumber \\
  & = & B^{2}-2BZ+Z^{2}\label{eq:f}
@@ -30574,7 +30636,8 @@ tag
 \end_inset
 
 :
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 A+B=C\tag{etwas}\label{eq:tag}
 \end{equation}
 
@@ -30631,7 +30694,8 @@ leer
 etwas
 \series default
  ein, verhindert der Stern die Klammern um den Ausdruck:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 A+B=C\tag*{etwas}
 \]
 
@@ -31049,7 +31113,8 @@ numberwithin{equation}{section}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 A+B=C
 \end{equation}
 
@@ -31469,7 +31534,8 @@ roman{equation}}
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 A=\textrm{römisch}
 \end{equation}
 
@@ -31493,7 +31559,8 @@ Roman{equation}}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 B=\textrm{Römisch}\label{eq:Roem}
 \end{equation}
 
@@ -31517,7 +31584,8 @@ alph{equation}}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 C=\textrm{lateinisch}
 \end{equation}
 
@@ -31541,7 +31609,8 @@ Alph{equation}}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 D=\textrm{Lateinisch}\label{eq:Lat}
 \end{equation}
 
@@ -31597,7 +31666,8 @@ arabic{equation}}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 E=\textrm{arabisch}
 \end{equation}
 
@@ -31685,7 +31755,8 @@ Das
 
 .
  Die Reaktionsgleichung dazu lautet:
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:chemische-Reaktion}
 \end{equation}
 
@@ -32486,7 +32557,8 @@ reference "eq:TEOS-Reaktion-2"
 
  sind ein Beispiel für eine mehrstufige chemische Reaktion, bei der jede
  Gleichung eine eigene Nummer hat.
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \ce{TEOS + 4O} & \ce{->} & \ce{Si(OH)4 + 4C2H4O}\label{eq:TEOS-Reaktion-1}\\
 \ce{Si(OH)4} & \ce{->} & \ce{SiO2 + 2H2O}\label{eq:TEOS-Reaktion-2}
 \end{eqnarray}
@@ -32579,7 +32651,8 @@ Diagramme ! amscd
 \begin_layout Standard
 Diagramme dieses Typs stellen Beziehungen mittels horizontaler und vertikaler
  Linien oder Pfeilen dar:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \begin{CD}A@>>>B@>>>C\\
 @AAA@.@VVV\\
 F@<<<E@<<<D
@@ -32722,7 +32795,8 @@ Als Beispiel ein Diagramm mit allen möglichen Beziehungen:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \begin{CD}A@>j>>B@>>k>C@=F\\
 @AmAA@.@VV{V}V@|\\
 D@<<j<E@>k>>F@=C
@@ -33647,14 +33721,16 @@ B.
  häufiger mit quadratischen Gleichungen zu tun, tritt immer derselbe Lösungstyp
  auf.
  Die allgemeine Form einer quadratischen Gleichung ist
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 0=\lambda^{2}+p\lambda+q
 \]
 
 \end_inset
 
 Die allgemeine Form der Lösung lautet
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \lambda_{1,2}=-\frac{p}{2}\pm\sqrt{\frac{p²}{4}-q}
 \]
 
@@ -34001,7 +34077,8 @@ Hier ist unser Makro-Beispiel mit den Argumenten
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \qG x{\ln(x)}B
 \]
 
@@ -35113,7 +35190,8 @@ Braket
 \series default
  stellt sicher, dass alle senkrechten Striche in der Größe der umgebenden
  Klammern gesetzt werden:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \Braket{\phi|J=\frac{3}{2}\,,\, M_{J}}
 \]
 
@@ -35495,7 +35573,8 @@ genfrac{}{}{#1}{}{#2}{#3}}
 
 \begin_layout Standard
 Dazu ein Test:
-\begin_inset Formula \begin{align*}
+\begin_inset Formula 
+\begin{align*}
 \text{Befehl} &  & \mathrm{\backslash fracS[1mm]\backslash\{A\to\backslash\{B} &  & \mathrm{\backslash fracS[5mm]\backslash\{A\to\backslash\{B}\\
 \text{Ergebnis} &  & \fracS[1mm]{A}{B} &  & \fracS[5mm]{A}{B}
 \end{align*}
@@ -35809,7 +35888,8 @@ cancelto
 \series default
  eignet sich besonders, wenn man das Kürzen innerhalb einer Formel darstellen
  will:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \frac{\left(x_{0}+bB\right)^{2}}{\left(1+b^{2}\right)^{\cancelto{2}{3}}}=\frac{x_{0}^{2}+B^{2}-r_{g}^{2}}{\cancel{1+b^{2}}}
 \]
 
@@ -36317,7 +36397,8 @@ end{multicols}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 S(t)=S_{0}(t)\int_{-\infty}^{\infty}P(\phi,t)\mathrm{e}^{\mathrm{i}\phi}\,\mathrm{d}\phi
 \end{equation}
 
@@ -36547,7 +36628,8 @@ reference "eq:innerhalb"
 
  besteht aus fünf Spalten, wobei in den ersten beiden die Gleichung, in
  der dritten die Matrix und in der letzten die leere TeX-Klammer steht.
-\begin_inset Formula \begin{flalign}
+\begin_inset Formula 
+\begin{flalign}
 \hspace{30pt}F_{A} & =\rho·V·g & \footnotesize\begin{array}{ll}
 \rho & \textrm{Dichte}\\
 V & \textrm{Volumen}\\
@@ -36707,7 +36789,8 @@ uptau
 
 \begin_layout Standard
 Damit kann man Elementarteilchenreaktionen erstellen:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \uppi^{+}\to\upmu^{+}+\upnu_{\upmu}
 \]
 
