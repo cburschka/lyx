@@ -183,7 +183,7 @@
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize a4paper
 \use_geometry false
 \use_amsmath 2
@@ -212,7 +212,7 @@
 \bullet 1 0 6 -1
 \bullet 2 2 35 -1
 \bullet 3 2 7 -1
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
@@ -34371,7 +34371,7 @@ Macro
 
 
 \begin_inset Graphics
-	filename /usr/local/share/lyx-2.0.0rc3/doc/clipart/macrobox.png
+	filename ../clipart/macrobox.png
 
 \end_inset
 
@@ -34512,7 +34512,7 @@ qG
 
 
 \begin_inset Graphics
-	filename /usr/local/share/lyx-2.0.0rc3/doc/clipart/macrouse.png
+	filename ../clipart/macrouse.png
 
 \end_inset
 
@@ -34664,7 +34664,7 @@ Cuando el cursor está en un recuadro de definición de macro, verás en LyX
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename /usr/local/share/lyx-2.0.0rc3/doc/clipart/MacroToolbar.png
+	filename ../clipart/MacroToolbar.png
 
 \end_inset
 

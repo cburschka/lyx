@@ -161,6 +161,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -182,7 +183,7 @@
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize a4paper
 \use_geometry false
 \use_amsmath 2
@@ -214,6 +215,7 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
@@ -2071,7 +2073,8 @@ cfrac
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{align*}
+\begin_inset Formula 
+\begin{align*}
 \textrm{created with \textbf{\textbackslash frac}} &  & \textrm{created with \textbf{\textbackslash cfrac}}\\
 \frac{A}{B+\frac{C+\frac{E}{F}}{D}} &  & \cfrac{A}{B+\cfrac{C+\cfrac{E}{F}}{D}}
 \end{align*}
@@ -2259,7 +2262,8 @@ cfrac
 frac
 \series default
 :
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \cfrac{A}{B+\cfrac{C+\frac{E}{F}}{D}}
 \]
 
@@ -5033,7 +5037,8 @@ hdotsfor[2]{4}
 dots
 \series default
 :
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left(\begin{array}{cccc}
 A & B & C & D\\
 \hdotsfor[2]{4}\\
@@ -7214,7 +7219,8 @@ spce
 )
 \series default
  creates
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \ln(\frac{A}{C})
 \]
 
@@ -7268,7 +7274,8 @@ spce
 right)
 \series default
  creates
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \ln\left(\frac{A}{C}\right)
 \]
 
@@ -7379,7 +7386,8 @@ right}
  creates:
 \series bold
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left.\frac{A}{B}\right\} 
 \]
 
@@ -7437,7 +7445,8 @@ g.
 \end_inset
 
 needed for physical vectors:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left\langle \phi\:\middle|\: J=\frac{3}{2}\,,\, M_{J}\right\rangle 
 \]
 
@@ -7849,7 +7858,8 @@ reference "sec:Multiline-Formulas"
 \end_inset
 
 , must be used:
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 A & = & \underbrace{gggg+bbqq}_{r}+\: dddd\\
  &  & \hphantom{gggg+\:}\underbrace{\hphantom{bbqq+dddd}}_{s}
 \end{eqnarray*}
@@ -7985,7 +7995,8 @@ jot}{-6pt}
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
  &  & \hphantom{gggg+\:}\overbrace{\hphantom{bbqq+dddd}}^{s}\\
 A & = & \underbrace{gggg+bbqq}_{r}+\: dddd
 \end{eqnarray*}
@@ -10555,7 +10566,8 @@ spce
 n
 \series default
  produces:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \sideset{}{'}\sum_{k=1}^{n}
 \]
 
@@ -10608,7 +10620,8 @@ spce
 a
 \series default
  produces:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \overset{a}{\maltese}
 \]
 
@@ -11063,7 +11076,8 @@ widehat
 \series default
  will only be set in the output with a length of three characters, as shown
  in the following example:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \widetilde{A+B=C-D}
 \]
 
@@ -11135,7 +11149,8 @@ A=B
 ***
 \series default
  creates:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \underset{***}{A=B}
 \]
 
@@ -13169,7 +13184,8 @@ fboxsep 3mm
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \boxed{A+B=C}
 \]
 
@@ -14027,7 +14043,8 @@ An example:
 \begin_layout Standard
 
 \color red
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \int A=B\label{eq:red}
 \end{equation}
 
@@ -14036,7 +14053,8 @@ An example:
 
 \color green
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \textcolor{red}{\int A=B}\label{eq:redgreen}
 \end{equation}
 
@@ -14150,7 +14168,8 @@ fboxsep 1mm
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \fcolorbox{cyan}{magenta}{A=B}
 \]
 
@@ -14334,7 +14353,8 @@ darkgreen
 yellow
 \series default
 :
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \colorbox{darkgreen}{\color{yellow}\boxed{\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}}}
 \end{equation}
 
@@ -14757,7 +14777,8 @@ fboxrule}{
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}
 \end{equation}
 
@@ -14994,7 +15015,8 @@ commented
 \end_inset
 
  using the mathematical textmode:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 5x-7b=3b\textrm{This is a description. It is not separated from the formula ...}
 \]
 
@@ -16226,7 +16248,8 @@ arg   "math-limits"
 
 \begin_layout Standard
 The default limits type is this:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \sum_{x=0}^{\infty}\frac{1}{x^{2}}
 \]
 
@@ -16239,7 +16262,8 @@ Inline
 \family default
 \series default
 :
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \sum\nolimits _{x=0}^{\infty}\frac{1}{x^{2}}
 \]
 
@@ -16268,7 +16292,8 @@ ointop
 Display
 \series default
  and so set below the integrals:
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \iiint\limits _{V}X\,\mathrm{d}V=U\label{eq:VolInt}
 \end{equation}
 
@@ -16319,7 +16344,8 @@ substack
 
  are used.
  To create for example this expression 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \sum_{\begin{subarray}{c}
 0<k<1000\\
 \\
@@ -16596,7 +16622,8 @@ spce
 \begin_layout Standard
 to create the lower limit.
  The summand is now directly behind the summation operator:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \sum_{\mathclap{\substack{0<k<1000\\
 \\
 k\,\in\,\mathbb{N}
@@ -17854,7 +17881,8 @@ reference "sub:Miscellaneous-Symbols"
 \end_inset
 
 :
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \Lozenge_{n=1}^{\infty}
 \]
 
@@ -17970,7 +17998,8 @@ be used to use one limit for several operators:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \mathop{\sum\negmedspace\sum}_{i,j=1}^{N}
 \]
 
@@ -18752,7 +18781,8 @@ mathnormal
 
 \begin_layout Standard
 The style commands work also for letters in mathematical constructs:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \mathfrak{A=\frac{b}{C}}
 \]
 
@@ -18843,7 +18873,8 @@ mathbf
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \mathbf{\int_{n}^{2}f(\theta)=\Gamma}\qquad\textrm{equation with \textbackslash mathbf}
 \]
 
@@ -18860,7 +18891,8 @@ To display the formula correctly, the command
 boldsymbol
 \series default
  is used:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \boldsymbol{\int_{n}^{2}f(\theta)=\Gamma\qquad\textrm{equation with \textbackslash boldsymbol}}
 \]
 
@@ -18922,7 +18954,8 @@ boldmath
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \int_{n}^{2}f(\theta)=\Gamma\qquad\textrm{equation in a boldmath environment}
 \]
 
@@ -18966,7 +18999,8 @@ Text Style
 \family default
  dialog.
  Here is a formula in magenta:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 {\color{magenta}\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}}
 \]
 
@@ -19031,7 +19065,8 @@ textcolor{darkgreen}{
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \int A\,\mathrm{d}x=\frac{{\color{red}\sqrt[5]{B}}}{\ln\left(\frac{1}{3}\right)}
 \]
 
@@ -19421,14 +19456,16 @@ huge
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 A=\frac{B}{c}\cdot\maltese
 \]
 
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \maltese A\textrm{\Large\maltese\textit{A}}\textrm{\tiny\maltese\textit{A}}
 \]
 
@@ -25942,7 +25979,8 @@ x=B
 
 \begin_layout Standard
 In a displayed formula the limit is set below the formula, as usual:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \lim_{x\to A}x=B
 \]
 
@@ -25971,7 +26009,8 @@ The modulo-function is special, because it exists in four variants.
 
 \begin_layout Standard
 The variants in a displayed formula:
-\begin_inset Formula \begin{align*}
+\begin_inset Formula 
+\begin{align*}
 \underline{\textrm{Command}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Result}}\\
 \mathrm{a\backslash mod\textrm{\spce}b} &  & a\mod b\\
 \mathrm{a\backslash pmod\textrm{\spce}b} &  & a\pmod b\\
@@ -28174,7 +28213,8 @@ Formula ! multiline ! Line separation
 
 \begin_layout Standard
 There is sometimes not enough space in multiline formulas between the lines:
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 B^{2}(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2})+4x_{0}^{2}x^{2}+4x_{0}xD & = & \textrm{-}4x^{2}B^{2}+4x_{0}xB^{2}\\
 4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right) & = & 0
 \end{eqnarray*}
@@ -28381,7 +28421,8 @@ jot}{3mm+3pt}
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 B^{2}(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2})+4x_{0}^{2}x^{2}+4x_{0}xD & = & \textrm{-}4x^{2}B^{2}+4x_{0}xB^{2}\\
 4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right) & = & 0
 \end{eqnarray*}
@@ -28539,7 +28580,8 @@ arraycolsep}{1cm}
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 A & = & B\\
 C & \ne & A
 \end{eqnarray*}
@@ -28566,7 +28608,8 @@ arraycolsep}{5pt}
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 A & = & B\\
 C & \ne & A
 \end{eqnarray*}
@@ -28598,7 +28641,8 @@ Long formulas can be typeset using these methods:
 When one side of the equation is much shorther than the line width, this
  one is chosen for the left side and the right side is typeset over two
  lines:
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 H & = & W_{SB}+W_{mv}+W_{D}-\frac{\hbar^{2}}{2m_{0}}\Delta-\frac{\hbar^{2}}{2m_{1}}\Delta_{1}-\frac{\hbar^{2}}{2m_{2}}\Delta_{2}-\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{1}|}\nonumber \\
  &  & -\hspace{3pt}\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{2}|}+\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{R}_{1}-\mathbf{R}_{2}|}\label{eq:shortlong}
 \end{eqnarray}
@@ -28679,7 +28723,8 @@ lefteqn
  is used.
  It is inserted to the first column of the first line and effects that all
  further insertions overwrite the following columns:
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \lefteqn{4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right)+D^{2}}\nonumber \\
  &  & -\hspace{3pt}B^{2}-2B\sqrt{r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}+r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}\nonumber \\
  &  & =B^{2}+2\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)+\frac{\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)^{2}}{B^{2}}\label{eq:lefteqn}
@@ -28813,7 +28858,8 @@ Brackets ! for multiline expressions
 
 \begin_layout Standard
 For brackets spanning multiple lines the following problem occurs:
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 A & = & \sin(x)\left[\prod_{R=1}^{\infty}\frac{1}{R}+\cdots\right.\\
  &  & \left.\cdots+B-D\right]
 \end{eqnarray*}
@@ -28987,7 +29033,8 @@ vphantom
 
 \begin_layout Standard
 The result is this:
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 A & = & \sin(x)\left[\prod_{R=1}^{\infty}\frac{1}{R}+\cdots\right.\\
  &  & \left.\vphantom{\prod_{R=1}^{\infty}}\cdots+B-D\right]
 \end{eqnarray*}
@@ -29091,7 +29138,8 @@ AMS align Environment
 \begin_layout Standard
 An example for two formulas set side by side, that are created with a four
  column align environment:
-\begin_inset Formula \begin{align*}
+\begin_inset Formula 
+\begin{align*}
 A & =\sin(B) & C & =D\\
 C & \ne A & B & \ne D
 \end{align*}
@@ -29191,7 +29239,8 @@ The above example in the alignat environment where 1
 \end_inset
 
 cm space was inserted at the beginning of the second formula:
-\begin_inset Formula \begin{alignat*}{2}
+\begin_inset Formula 
+\begin{alignat*}{2}
 A & =\sin(B) & \hspace{1cm}C & =D\\
 C & \ne A & B & \ne D
 \end{alignat*}
@@ -29228,7 +29277,8 @@ Formula ! multiline ! flalign environment
 In this environment the first two columns are always set as much as possible
  to the left and the last two ones to the right.
  An example:
-\begin_inset Formula \begin{flalign*}
+\begin_inset Formula 
+\begin{flalign*}
 A & =1 & B & =2 & C & =3\\
 X & =\textrm{-}1 & Y & =\textrm{-}2 & Z & =4
 \end{flalign*}
@@ -29254,7 +29304,8 @@ reference "eq:VolInt"
 \end_inset
 
 :
-\begin_inset Formula \begin{flalign}
+\begin_inset Formula 
+\begin{flalign}
 \hspace{30pt}\iiint\limits _{V}X\,\mathrm{d}V & =U & {}
 \end{flalign}
 
@@ -29299,7 +29350,8 @@ When this environment has been created, three blue boxes appear.
  one left aligned.
  The content of the middle box appears centered and a bit smaller, because
  it is designed to insert there only relation characters.
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \frac{ABC}{D} & \frac{ABC}{D} & \frac{ABC}{D}\\
 AB & AB & AB\\
 A & = & A
@@ -29327,7 +29379,8 @@ Formula ! multiline ! gather environment
 \begin_layout Standard
 This environment consists of only one centered column.
  Every line can be numbered.
-\begin_inset Formula \begin{gather}
+\begin_inset Formula 
+\begin{gather}
 A=1\\
 X=\textrm{-}1
 \end{gather}
@@ -29372,7 +29425,8 @@ reference "eq:lefteqn"
 \end_inset
 
  in the multline environment:
-\begin_inset Formula \begin{multline}
+\begin_inset Formula 
+\begin{multline}
 4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right)+D^{2}\\
 -B^{2}-2B\sqrt{r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}+r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}\\
 =B^{2}+2\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)+\frac{\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)^{2}}{B^{2}}
@@ -29521,7 +29575,8 @@ multlinegap}{2cm}
 \end_inset
 
 
-\begin_inset Formula \begin{multline}
+\begin_inset Formula 
+\begin{multline}
 4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right)+D^{2}\\
 \shoveleft{-B^{2}-2B\sqrt{r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}+r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}\\
 =B^{2}+2\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)+\frac{\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)^{2}}{B^{2}}
@@ -29606,7 +29661,8 @@ The first three have the same properties as the corresponding multiline
  formula environments, but it is possible to set further formula parts beside
  them.
  An example:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \left.\begin{aligned}\Delta x\Delta p & \ge\frac{\hbar}{2}\\
 \Delta E\Delta t & \ge\frac{\hbar}{2}
 \end{aligned}
@@ -29657,7 +29713,8 @@ reference "eq:shortlong"
 \end_inset
 
  in the aligned environment:
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \begin{aligned}H=\; & W_{SB}+W_{mv}+W_{D}-\frac{\hbar^{2}}{2m_{0}}\Delta-\frac{\hbar^{2}}{2m_{1}}\Delta_{1}-\frac{\hbar^{2}}{2m_{2}}\Delta_{2}-\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{1}|}\\
  & -\hspace{3pt}\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{2}|}+\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{R}_{1}-\mathbf{R}_{2}|}
 \end{aligned}
@@ -29822,7 +29879,8 @@ intertext
  must hereby be at the beginning of a line and appears in the output above
  this line.
  An example where the text was inserted at the beginning of the second line:
-\begin_inset Formula \begin{align}
+\begin_inset Formula 
+\begin{align}
 I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
 \intertext{\text{integrand is symmetric to \ensuremath{\phi=\pi}, therefore}} & =2a\sqrt{2}\int_{0}^{\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi
 \end{align}
@@ -30184,7 +30242,8 @@ end{subequations}
 
 \begin_layout Standard
 An example:
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 A=C-B\label{eq:a}
 \end{equation}
 
@@ -30221,14 +30280,16 @@ begin{subequations}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 B=C-A\label{eq:b}
 \end{equation}
 
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 C=A+B\label{eq:c}
 \end{equation}
 
@@ -30445,7 +30506,8 @@ begin{subequations}
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 A & = & (B-Z)^{2}=(B-Z)(B-Z)\label{eq:d}\\
  & = & B^{2}-ZB-BZ+Z^{2}\nonumber \\
  & = & B^{2}-2BZ+Z^{2}\label{eq:f}
@@ -30563,7 +30625,8 @@ tag
 \end_inset
 
  is used:
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 A+B=C\tag{something}\label{eq:tag}
 \end{equation}
 
@@ -30612,7 +30675,8 @@ spce
 something
 \series default
  is inserted instead, the star prevents the parentheses around the expression:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 A+B=C\tag*{something}
 \]
 
@@ -30996,7 +31060,8 @@ numberwithin{equation}{section}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 A+B=C
 \end{equation}
 
@@ -31409,7 +31474,8 @@ roman{equation}}
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 A=\textrm{small roman}
 \end{equation}
 
@@ -31433,7 +31499,8 @@ Roman{equation}}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 B=\textrm{big Roman}\label{eq:Rom}
 \end{equation}
 
@@ -31457,7 +31524,8 @@ alph{equation}}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 C=\textrm{small Latin}
 \end{equation}
 
@@ -31481,7 +31549,8 @@ Alph{equation}}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 D=\textrm{big Latin}\label{eq:Lat}
 \end{equation}
 
@@ -31536,7 +31605,8 @@ arabic{equation}}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 E=\textrm{Arabic}
 \end{equation}
 
@@ -31631,7 +31701,8 @@ The
 
 .
  The chemical equation for this is:
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:chem-reaction}
 \end{equation}
 
@@ -32409,7 +32480,8 @@ reference "eq:TEOS-reaction-2"
 
  are an example of a multi-stage chemical reaction where every equation
  has its own number.
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \ce{TEOS + 4O} & \ce{->} & \ce{Si(OH)4 + 4C2H4O}\label{eq:TEOS-reaction-1}\\
 \ce{Si(OH)4} & \ce{->} & \ce{SiO2 + 2H2O}\label{eq:TEOS-reaction-2}
 \end{eqnarray}
@@ -32509,7 +32581,8 @@ Diagrams ! amscd
 \begin_layout Standard
 Diagrams of this type visualize relations by vertical and horizontal lines
  or arrows:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \begin{CD}A@>>>B@>>>C\\
 @AAA@.@VVV\\
 F@<<<E@<<<D
@@ -32622,7 +32695,8 @@ As example a diagram with all possible relations:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \begin{CD}A@>j>>B@>>k>C@=F\\
 @AmAA@.@VV{V}V@|\\
 D@<<j<E@>k>>F@=C
@@ -33540,14 +33614,16 @@ User-defined commands are especially convenient for complex expressions.
  When you are for example dealing in a document with quadratic equations,
  the same solution type occurs several times.
  The general form of a quadratic equation is
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 0=\lambda^{2}+p\lambda+q
 \]
 
 \end_inset
 
 The general form of the solution is
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \lambda_{1,2}=-\frac{p}{2}\pm\sqrt{\frac{p²}{4}-q}
 \]
 
@@ -33878,7 +33954,8 @@ Here is our macro example with the arguments
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \qG x{\ln(x)}B
 \]
 
@@ -35050,7 +35127,8 @@ The command
 Braket
 \series default
  assures that all vertical bars are set in the size of the surrounding brackets:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \Braket{\phi|J=\frac{3}{2}\,,\, M_{J}}
 \]
 
@@ -35431,7 +35509,8 @@ genfrac{}{}{#1}{}{#2}{#3}}
 
 \begin_layout Standard
 A test:
-\begin_inset Formula \begin{align*}
+\begin_inset Formula 
+\begin{align*}
 \text{Command} &  & \mathrm{\backslash fracS[1mm]\backslash\{A\to\backslash\{B} &  & \mathrm{\backslash fracS[5mm]\backslash\{A\to\backslash\{B}\\
 \text{Result} &  & \fracS[1mm]{A}{B} &  & \fracS[5mm]{A}{B}
 \end{align*}
@@ -35740,7 +35819,8 @@ A=B
 cancelto
 \series default
  is especially suitable to visualize the reduction of fractions within formulas:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \frac{\left(x_{0}+bB\right)^{2}}{\left(1+b^{2}\right)^{\cancelto{2}{3}}}=\frac{x_{0}^{2}+B^{2}-r_{g}^{2}}{\cancel{1+b^{2}}}
 \]
 
@@ -36260,7 +36340,8 @@ end{multicols}
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 S(t)=S_{0}(t)\int_{-\infty}^{\infty}P(\phi,t)\mathrm{e}^{\mathrm{i}\phi}\,\mathrm{d}\phi
 \end{equation}
 
@@ -36495,7 +36576,8 @@ reference "eq:within"
 
  consists of five columns whereas in the first two columns contain the equation,
  the third the matrix and the last one an empty TeX-brace.
-\begin_inset Formula \begin{flalign}
+\begin_inset Formula 
+\begin{flalign}
 \hspace{30pt}F_{A} & =\rho·V·g & \footnotesize\begin{array}{ll}
 \rho & \textrm{density}\\
 V & \textrm{volume}\\
@@ -36649,7 +36731,8 @@ uptau
 
 \begin_layout Standard
 With these commands reactions of elementary particles can be typeset:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \uppi^{+}\to\upmu^{+}+\upnu_{\upmu}
 \]
 
