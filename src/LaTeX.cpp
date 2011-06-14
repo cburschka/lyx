@@ -93,8 +93,8 @@ bool operator!=(AuxInfo const & a, AuxInfo const & o)
  */
 
 LaTeX::LaTeX(string const & latex, OutputParams const & rp,
-	     FileName const & f, string const & p)
-	: cmd(latex), file(f), path(p), runparams(rp)
+	     FileName const & f)
+	: cmd(latex), file(f), runparams(rp)
 {
 	num_errors = 0;
 	if (prefixIs(cmd, "pdf")) { // Do we use pdflatex ?
@@ -421,7 +421,7 @@ int LaTeX::startscript()
 		     + quoteName(onlyFileName(file.toFilesystemEncoding()))
 		     + " > " + os::nulldev();
 	Systemcall one;
-	return one.startscript(Systemcall::Wait, tmp, path);
+	return one.startscript(Systemcall::Wait, tmp);
 }
 
 
@@ -448,7 +448,7 @@ bool LaTeX::runMakeIndex(string const & f, OutputParams const & runparams,
 	tmp += quoteName(f);
 	tmp += params;
 	Systemcall one;
-	one.startscript(Systemcall::Wait, tmp, path);
+	one.startscript(Systemcall::Wait, tmp);
 	return true;
 }
 
@@ -464,7 +464,7 @@ bool LaTeX::runMakeIndexNomencl(FileName const & file,
 	tmp += " -o "
 		+ onlyFileName(changeExtension(file.toFilesystemEncoding(), nls));
 	Systemcall one;
-	one.startscript(Systemcall::Wait, tmp, path);
+	one.startscript(Systemcall::Wait, tmp);
 	return true;
 }
 
@@ -604,7 +604,7 @@ bool LaTeX::runBibTeX(vector<AuxInfo> const & bibtex_info,
 		tmp += quoteName(onlyFileName(removeExtension(
 				it->aux_file.absFileName())));
 		Systemcall one;
-		one.startscript(Systemcall::Wait, tmp, path);
+		one.startscript(Systemcall::Wait, tmp);
 	}
 	// Return whether bibtex was run
 	return result;

@@ -174,7 +174,6 @@ public:
 		RC_TEMPLATEPATH,
 		RC_TEX_ALLOWS_SPACES,
 		RC_TEX_EXPECTS_WINDOWS_PATHS,
-		RC_TEXINPUTS_PREFIX,
 		RC_THESAURUSDIRPATH,
 		RC_UIFILE,
 		RC_USELASTFILEPOS,
@@ -470,11 +469,6 @@ public:
 	 *  The string is input, stored and output in native format.
 	 */
 	std::string path_prefix;
-	/** Prepend paths to the TEXINPUTS environment variable.
-	 *  The string is input, stored and output in native format.
-	 *  A '.' here stands for the current document directory.
-	 */
-	std::string texinputs_prefix;
 	/// Use the cache for file converters?
 	bool use_converter_cache;
 	/// The maximum age of cache files in seconds

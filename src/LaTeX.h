@@ -151,8 +151,7 @@ public:
 	   path = name of the files original path.
 	*/
 	LaTeX(std::string const & cmd, OutputParams const &,
-	      support::FileName const & file,
-	      std::string const & path = empty_string());
+	      support::FileName const & file);
 
 	/// runs LaTeX several times
 	int run(TeXErrors &);
@@ -210,9 +209,6 @@ private:
 
 	///
 	support::FileName file;
-
-	///
-	std::string path;
 
 	/// used by scanLogFile
 	int num_errors;

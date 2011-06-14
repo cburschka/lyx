@@ -577,42 +577,6 @@ string const replaceEnvironmentPath(string const & path)
 }
 
 
-// Replace current directory in all elements of a path list with a given path.
-string const replaceCurdirPath(string const & path, string const & pathlist)
-{
-	string const oldpathlist = replaceEnvironmentPath(pathlist);
-	char const sep = os::path_separator();
-	string newpathlist;
-
-	for (size_t i = 0, k = 0; i != string::npos; k = i) {
-		i = oldpathlist.find(sep, i);
-		string p = oldpathlist.substr(k, i - k);
-		if (FileName::isAbsolute(p)) {
-			newpathlist += p;
-		} else if (i > k) {
-			size_t offset = 0;
-			if (p == ".") {
-				offset = 1;
-			} else if (prefixIs(p, "./")) {
-				offset = 2;
-				while (p[offset] == '/')
-					++offset;
-			}
-			newpathlist += addPath(path, p.substr(offset));
-			if (suffixIs(p, "//"))
-				newpathlist += '/';
-		}
-		if (i != string::npos) {
-			newpathlist += sep;
-			// Stop here if the last element is empty 
-			if (++i == oldpathlist.length())
-				break;
-		}
-	}
-	return newpathlist;
-}
-
-
 // Make relative path out of two absolute paths
 docstring const makeRelPath(docstring const & abspath, docstring const & basepath)
 // Makes relative path out of absolute path. If it is deeper than basepath,

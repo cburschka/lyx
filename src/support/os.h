@@ -104,12 +104,6 @@ std::string internal_path_list(std::string const & p);
  */
 std::string latex_path(std::string const & p);
 
-/**
- * Converts a platform style path list into a form suitable for the TeX engine.
- * \p p is encoded in utf8.
- */
-std::string latex_path_list(std::string const & p);
-
 /// Checks if the format string is suitable on the OS
 bool is_valid_strftime(std::string const & p);
 
@@ -118,15 +112,10 @@ bool is_valid_strftime(std::string const & p);
  */
 char const * popen_read_mode();
 
-enum path_type {
-	PLATFORM,
-	TEXENGINE
-};
-
-/** The character used to separate paths for platform environment variables
- *  (such as PATH) or for the TeX engine.
+/** The character used to separate paths returned by the
+ *  PATH environment variable.
  */
-char path_separator(path_type type = PLATFORM);
+char path_separator();
 
 /** If @c use_windows_paths is true, LyX will output Windows-style paths to
  *  latex files rather than posix ones. Obviously, this option is used only
@@ -144,15 +133,14 @@ enum auto_open_mode {
  *  \param mode can be opened in VIEW or EDIT mode
  *  \returns whether or not the format can be opened according to \p mode
  */
-bool canAutoOpenFile(std::string const & ext, auto_open_mode const mode);
+bool canAutoOpenFile(std::string const & ext, auto_open_mode const mode = VIEW);
 
 /** View or edit a file with the default viewer or editor.
  *  \param filename file to open (encoded in utf8)
  *  \param mode open in VIEW or EDIT mode
  *  \returns whether or not the file is viewed (or edited) successfully.
  */
-bool autoOpenFile(std::string const & filename, auto_open_mode const mode,
-		  std::string const & path = empty_string());
+bool autoOpenFile(std::string const & filename, auto_open_mode const mode = VIEW);
 
 /** Resolves a path such that it does not contain '.', '..', or symbolic links.
   * \p path and the return value are encoded in utf8.

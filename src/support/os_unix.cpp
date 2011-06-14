@@ -12,13 +12,9 @@
 
 #include <config.h>
 
-#include "LyXRC.h"
-
 #include "support/os.h"
 #include "support/docstring.h"
-#include "support/environment.h"
 #include "support/FileName.h"
-#include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lassert.h"
 
@@ -180,12 +176,6 @@ string latex_path(string const & p)
 }
 
 
-string latex_path_list(string const & p)
-{
-	return p;
-}
-
-
 bool is_valid_strftime(string const & p)
 {
 	string::size_type pos = p.find_first_of('%');
@@ -228,7 +218,7 @@ int timeout_min()
 }
 
 
-char path_separator(path_type)
+char path_separator()
 {
 	return ':';
 }
@@ -268,8 +258,7 @@ bool canAutoOpenFile(string const & ext, auto_open_mode const mode)
 }
 
 
-bool autoOpenFile(string const & filename, auto_open_mode const mode,
-		  string const & path)
+bool autoOpenFile(string const & filename, auto_open_mode const mode)
 {
 #ifdef __APPLE__
 // Reference: http://developer.apple.com/documentation/Carbon/Reference/LaunchServicesReference/
@@ -290,13 +279,6 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode,
 	if (status == kLSApplicationNotFoundErr)
 		return false;
 
-	string const texinputs = os::latex_path_list(
-			replaceCurdirPath(path, lyxrc.texinputs_prefix));
-	string const oldval = getEnv("TEXINPUTS");
-	string const newval = ".:" + texinputs + ":" + oldval;
-	if (!path.empty() && !lyxrc.texinputs_prefix.empty())
-		setEnv("TEXINPUTS", newval);
-
 	LSLaunchFSRefSpec inLaunchSpec;
 	inLaunchSpec.appRef = &outAppRef;
 	inLaunchSpec.numDocs = 1;
@@ -306,15 +288,11 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode,
 	inLaunchSpec.asyncRefCon = NULL;
 	status = LSOpenFromRefSpec(&inLaunchSpec, NULL);
 
-	if (!path.empty() && !lyxrc.texinputs_prefix.empty())
-		setEnv("TEXINPUTS", oldval);
-
 	return status != kLSApplicationNotFoundErr;
 #else
 	// silence compiler warnings
 	(void)filename;
 	(void)mode;
-	(void)path;
 
 	// currently, no default viewer is tried for non-windows system
 	// support for KDE/Gnome/Macintosh may be added later

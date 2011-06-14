@@ -285,7 +285,7 @@ bool Formats::view(Buffer const & buffer, FileName const & filename,
 	}
 	// viewer is 'auto'
 	if (format->viewer() == "auto") {
-		if (os::autoOpenFile(filename.absFileName(), os::VIEW, buffer.filePath()))
+		if (os::autoOpenFile(filename.absFileName(), os::VIEW))
 			return true;
 		else {
 			Alert::error(_("Cannot view file"),
@@ -320,7 +320,7 @@ bool Formats::view(Buffer const & buffer, FileName const & filename,
 	buffer.message(_("Executing command: ") + from_utf8(command));
 
 	Systemcall one;
-	one.startscript(Systemcall::DontWait, command, buffer.filePath());
+	one.startscript(Systemcall::DontWait, command);
 
 	// we can't report any sort of error, since we aren't waiting
 	return true;
@@ -364,7 +364,7 @@ bool Formats::edit(Buffer const & buffer, FileName const & filename,
 
 	// editor is 'auto'
 	if (format->editor() == "auto") {
-		if (os::autoOpenFile(filename.absFileName(), os::EDIT, buffer.filePath()))
+		if (os::autoOpenFile(filename.absFileName(), os::EDIT))
 			return true;
 		else {
 			Alert::error(_("Cannot edit file"),
@@ -387,7 +387,7 @@ bool Formats::edit(Buffer const & buffer, FileName const & filename,
 	buffer.message(_("Executing command: ") + from_utf8(command));
 
 	Systemcall one;
-	one.startscript(Systemcall::DontWait, command, buffer.filePath());
+	one.startscript(Systemcall::DontWait, command);
 
 	// we can't report any sort of error, since we aren't waiting
 	return true;

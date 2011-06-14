@@ -40,13 +40,10 @@ public:
 
 	/** Start child process.
 	 *  The string "what" contains a commandline with arguments separated
-	 *  by spaces. The string "path" contains the path to be prepended to
-	 *  the TEXINPUTS environment variable. Unset "process_events" in
-	 *  case UI should be blocked while processing the external command.
+	 *  by spaces. Unset "process_events" in case UI should be blocked while
+	 *  processing the external command.
 	 */
-	int startscript(Starttype how, std::string const & what,
-			std::string const & path = empty_string(),
-			bool process_events = false);
+	int startscript(Starttype how, std::string const & what, bool process_events = false);
 };
 
 } // namespace support

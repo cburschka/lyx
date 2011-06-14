@@ -247,12 +247,6 @@ std::string const onlyFileName(std::string const & fname);
 */
 std::string const replaceEnvironmentPath(std::string const & path);
 
-/** Replace all references to a current directory (a lonely '.' or
-    the prefix "./") in \c pathlist with \c path. Also prefixes
-    all non-absolute paths with \c path.
-*/
-std::string const replaceCurdirPath(std::string const & path, std::string const & pathlist);
-
 /** Set \c link to the path \c file points to as a symbolic link.
     \return true if successful.
  */
