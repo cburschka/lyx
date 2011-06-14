@@ -1,5 +1,5 @@
-#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
@@ -7,18 +7,26 @@
 \begin_modules
 enumitem
 \end_modules
+\maintain_unincluded_children false
 \language british
+\language_package default
 \inputencoding auto
+\fontencoding global
 \font_roman lmodern
 \font_sans lmss
 \font_typewriter lmtt
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -35,21 +43,31 @@ enumitem
 \use_geometry false
 \use_amsmath 1
 \use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -76,14 +94,21 @@ Lists with optional arguments
 
 \begin_layout Standard
 Itemize, Enumeration, and Description lists may have an optional arguments.
- If the optional argument contains special characters (e.g.
- the backslash), put it in an 
+ If the optional argument contains special characters (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+the backslash), put it in a 
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-ERT box
+TeX code box
 \end_layout
 
 \end_inset
@@ -92,7 +117,7 @@ ERT box
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -143,7 +168,7 @@ Spanish layout
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -178,7 +203,7 @@ Enumeration starting at a given value:
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -201,7 +226,7 @@ Description with emphasized (instead of bold) label and  left margin 1.5
 
 \begin_layout Description
 Strahlungsmodulation:
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -350,7 +375,7 @@ lorem ipsum
 
 \begin_layout Itemize
 A bullet list 
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -377,7 +402,7 @@ lorem ipsum
 
 \begin_layout Itemize
 A bullet list 
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -483,7 +508,7 @@ It also takes an optional argument:
 \begin_layout Labeling
 \labelwidthstring withNN
 nice description 
-\begin_inset OptArg
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout

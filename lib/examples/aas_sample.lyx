@@ -1,5 +1,5 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass aastex
@@ -11,17 +11,26 @@
 \shortauthors{Collapsed Cores in Globular Clusters}
 \end_preamble
 \use_default_options false
+\maintain_unincluded_children false
 \language english
+\language_package default
 \inputencoding default
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -29,21 +38,31 @@
 \use_geometry false
 \use_amsmath 0
 \use_esint 0
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -458,8 +477,10 @@ A tree-level amplitude in
 \end_inset
 
  collisions can be expressed in terms of fermion strings of the form 
-\begin_inset Formula \begin{equation}
-\bar{v}(p_{2},\sigma_{2})P_{-\tau}\hat{a}_{1}\hat{a}_{2}\cdots\hat{a}_{n}u(p_{1},\sigma_{1}),\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\bar{v}(p_{2},\sigma_{2})P_{-\tau}\hat{a}_{1}\hat{a}_{2}\cdots\hat{a}_{n}u(p_{1},\sigma_{1}),
+\end{equation}
 
 \end_inset
 
@@ -519,29 +540,39 @@ In the chiral representation the
 \end_inset
 
  and the unit matrix 1 as 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \gamma^{\mu} & = & \left(\begin{array}{cc}
 0 & \sigma_{+}^{\mu}\\
-\sigma_{-}^{\mu} & 0\end{array}\right),\gamma^{5}=\left(\begin{array}{cc}
+\sigma_{-}^{\mu} & 0
+\end{array}\right),\gamma^{5}=\left(\begin{array}{cc}
 -1 & 0\\
-0 & 1\end{array}\right),\\
-\sigma_{\pm}^{\mu} & = & ({\textbf{1}},\pm\sigma),\end{eqnarray*}
+0 & 1
+\end{array}\right),\\
+\sigma_{\pm}^{\mu} & = & ({\textbf{1}},\pm\sigma),
+\end{eqnarray*}
 
 \end_inset
 
  giving 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \hat{a}=\left(\begin{array}{cc}
 0 & (\hat{a})_{+}\\
-(\hat{a})_{-} & 0\end{array}\right),(\hat{a})_{\pm}=a_{\mu}\sigma_{\pm}^{\mu},\end{equation}
+(\hat{a})_{-} & 0
+\end{array}\right),(\hat{a})_{\pm}=a_{\mu}\sigma_{\pm}^{\mu},
+\end{equation}
 
 \end_inset
 
  The spinors are expressed in terms of two-component Weyl spinors as 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 u=\left(\begin{array}{c}
 (u)_{-}\\
-(u)_{+}\end{array}\right),v={\textbf{(}}\vdag_{+}{\textbf{,}}\vdag_{-}{\textbf{)}}.\end{equation}
+(u)_{+}
+\end{array}\right),v={\textbf{(}}\vdag_{+}{\textbf{,}}\vdag_{-}{\textbf{)}}.
+\end{equation}
 
 \end_inset
 
@@ -561,9 +592,11 @@ The Weyl spinors are given in terms of helicity eigenstates
 \end_layout
 
 \begin_layout MathLetters
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 u(p,\lambda)_{\pm} & = & (E\pm\lambda|{\textbf{p}}|)^{1/2}\chi_{\lambda}(p),\\
-v(p,\lambda)_{\pm} & = & \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi_{-\lambda}(p)\end{eqnarray}
+v(p,\lambda)_{\pm} & = & \pm\lambda(E\mp\lambda|{\textbf{p}}|)^{1/2}\chi_{-\lambda}(p)
+\end{eqnarray}
 
 \end_inset
 
@@ -577,36 +610,46 @@ Floating material and so forth
 \begin_layout Standard
 Consider a task that computes profile parameters for a modified Lorentzian
  of the form 
-\begin_inset Formula \begin{equation}
-I=\frac{1}{1+d_{1}^{P(1+d_{2})}}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+I=\frac{1}{1+d_{1}^{P(1+d_{2})}}
+\end{equation}
 
 \end_inset
 
  where 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 d_{1}=\sqrt{\left(\begin{array}{c}
 \frac{x_{1}}{R_{maj}}\end{array}\right)^{2}+\left(\begin{array}{c}
-\frac{y_{1}}{R_{min}}\end{array}\right)^{2}}\]
+\frac{y_{1}}{R_{min}}\end{array}\right)^{2}}
+\]
 
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 d_{2}=\sqrt{\left(\begin{array}{c}
 \frac{x_{1}}{PR_{maj}}\end{array}\right)^{2}+\left(\begin{array}{c}
-\case{y_{1}}{PR_{min}}\end{array}\right)^{2}}\]
+\case{y_{1}}{PR_{min}}\end{array}\right)^{2}}
+\]
 
 \end_inset
 
 
-\begin_inset Formula \[
-x_{1}=(x-x_{0})\cos\Theta+(y-y_{0})\sin\Theta\]
+\begin_inset Formula 
+\[
+x_{1}=(x-x_{0})\cos\Theta+(y-y_{0})\sin\Theta
+\]
 
 \end_inset
 
 
-\begin_inset Formula \[
-y_{1}=-(x-x_{0})\sin\Theta+(y-y_{0})\cos\Theta\]
+\begin_inset Formula 
+\[
+y_{1}=-(x-x_{0})\sin\Theta+(y-y_{0})\cos\Theta
+\]
 
 \end_inset
 
@@ -740,8 +783,10 @@ Appendicial material
 \begin_layout Standard
 Consider once again a task that computes profile parameters for a modified
  Lorentzian of the form 
-\begin_inset Formula \begin{equation}
-I=\frac{1}{1+d_{1}^{P(1+d_{2})}}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+I=\frac{1}{1+d_{1}^{P(1+d_{2})}}
+\end{equation}
 
 \end_inset
 
@@ -749,25 +794,31 @@ I=\frac{1}{1+d_{1}^{P(1+d_{2})}}\end{equation}
 \end_layout
 
 \begin_layout MathLetters
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 d_{1}=\frac{3}{4}\sqrt{\left(\begin{array}{c}
 \frac{x_{1}}{R_{maj}}\end{array}\right)^{2}+\left(\begin{array}{c}
-\frac{y_{1}}{R_{min}}\end{array}\right)^{2}}\]
+\frac{y_{1}}{R_{min}}\end{array}\right)^{2}}
+\]
 
 \end_inset
 
 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 d_{2}=\case{3}{4}\sqrt{\left(\begin{array}{c}
 \frac{x_{1}}{PR_{maj}}\end{array}\right)^{2}+\left(\begin{array}{c}
-\case{y_{1}}{PR_{min}}\end{array}\right)^{2}}\end{equation}
+\case{y_{1}}{PR_{min}}\end{array}\right)^{2}}
+\end{equation}
 
 \end_inset
 
 
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 x_{1} & = & (x-x_{0})\cos\Theta+(y-y_{0})\sin\Theta\\
-y_{1} & = & -(x-x_{0})\sin\Theta+(y-y_{0})\cos\Theta\end{eqnarray}
+y_{1} & = & -(x-x_{0})\sin\Theta+(y-y_{0})\cos\Theta
+\end{eqnarray}
 
 \end_inset
 
@@ -777,8 +828,10 @@ y_{1} & = & -(x-x_{0})\sin\Theta+(y-y_{0})\cos\Theta\end{eqnarray}
 \begin_layout Standard
 For completeness, here is one last equation.
  
-\begin_inset Formula \begin{equation}
-e=mc^{2}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+e=mc^{2}
+\end{equation}
 
 \end_inset
 
@@ -786,6 +839,7 @@ e=mc^{2}\end{equation}
 \end_layout
 
 \begin_layout References
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "Auri\\`ere(1982)"
@@ -811,6 +865,7 @@ aap
 \end_layout
 
 \begin_layout References
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "Canizares et al.(1978)"
@@ -840,6 +895,7 @@ apj
 \end_layout
 
 \begin_layout References
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "Djorgovski and King(1984)"
@@ -866,6 +922,7 @@ apjl
 \end_layout
 
 \begin_layout References
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "Hagiwara and Zeppenfeld(1986)"
@@ -878,6 +935,7 @@ Hagiwara, K., and Zeppenfeld, D.
 \end_layout
 
 \begin_layout References
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "Harris and van den Bergh(1984)"
@@ -904,6 +962,7 @@ aj
 \end_layout
 
 \begin_layout References
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "H\\`enon(1961)"
@@ -916,6 +975,7 @@ Hénon, M.
 \end_layout
 
 \begin_layout References
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "King(1966)"
@@ -942,6 +1002,7 @@ aj
 \end_layout
 
 \begin_layout References
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "King(1975)"
@@ -956,6 +1017,7 @@ King, I.
 \end_layout
 
 \begin_layout References
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "King et al.(1968)"
@@ -984,6 +1046,7 @@ aj
 \end_layout
 
 \begin_layout References
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "Kron et al.(1984)"
@@ -1012,6 +1075,7 @@ pasp
 \end_layout
 
 \begin_layout References
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "Lynden-Bell and Wood(1968)"
@@ -1037,6 +1101,7 @@ mnras
 \end_layout
 
 \begin_layout References
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "Newell and O'Neil(1978)"
@@ -1064,6 +1129,7 @@ apjs
 \end_layout
 
 \begin_layout References
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "Ortolani et al.(1985)"
@@ -1089,6 +1155,7 @@ aj
 \end_layout
 
 \begin_layout References
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "Peterson(1976)"
@@ -1115,6 +1182,7 @@ aj
 \end_layout
 
 \begin_layout References
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "Spitzer(1985)"
@@ -1212,7 +1280,7 @@ name "tbl-2"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="13">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
