@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 382
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -29,13 +29,14 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language english
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman ae
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -43,6 +44,7 @@
 
 \graphics default
 \default_output_format default
+\output_sync 0
 \bibtex_command default
 \index_command default
 \paperfontsize 12
@@ -67,11 +69,13 @@
 \use_amsmath 1
 \use_esint 0
 \use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
 \index Index
 \shortcut idx
 \color #008000
@@ -87,6 +91,7 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict true
 \end_header
 
@@ -868,7 +873,6 @@ ar[r] & Z }
  &  Y \ar[r]  &  Z 
 }
 
-
 \end_inset
 
 
@@ -1032,7 +1036,6 @@ ar[r]^g & Z }
  &  X \times_{Z} Y \ar[d]^{q} \ar[r]_{p}  &  X \ar[d]_{f}\\
  &  Y \ar[r]^{g}  &  Z 
 }
-
 
 \end_inset
 
@@ -1242,7 +1245,6 @@ Source code in LyX
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar[r]  &  \ }
 
-
 \end_inset
 
 
@@ -1270,7 +1272,6 @@ ar
 
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@{-->}[r]  &  \ }
-
 
 \end_inset
 
@@ -1300,7 +1301,6 @@ ar@{-->}
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@{..>}[r]  &  \ }
 
-
 \end_inset
 
 
@@ -1328,7 +1328,6 @@ ar@{..>}
 
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@{~>}[r]  &  \ }
-
 
 \end_inset
 
@@ -1358,7 +1357,6 @@ ar@{~>}
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@{->>}[r]  &  \ }
 
-
 \end_inset
 
 
@@ -1386,7 +1384,6 @@ ar@{->>}
 
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@{-->>}[r]  &  \ }
-
 
 \end_inset
 
@@ -1416,7 +1413,6 @@ ar@{-->>}
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@{>->>}[r]  &  \ }
 
-
 \end_inset
 
 
@@ -1444,7 +1440,6 @@ ar@{>->>}
 
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@{_{(}->}[r]  &  \ }
-
 
 \end_inset
 
@@ -1474,7 +1469,6 @@ ar@{_(->}
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@{^{(}->}[r]  &  \ }
 
-
 \end_inset
 
 
@@ -1502,7 +1496,6 @@ ar@{^(->}
 
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@{|-|}[r]  &  \ }
-
 
 \end_inset
 
@@ -1577,7 +1570,6 @@ Source code for LyX
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@2[r]  &  \ }
 
-
 \end_inset
 
 
@@ -1605,7 +1597,6 @@ ar@2
 
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@3[r]  &  \ }
-
 
 \end_inset
 
@@ -1635,7 +1626,6 @@ ar@3
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@_{->}[r]  &  \ }
 
-
 \end_inset
 
 
@@ -1663,7 +1653,6 @@ ar@_{->}
 
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@^{->}[r]  &  \ }
-
 
 \end_inset
 
@@ -1693,7 +1682,6 @@ ar@^{->}
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@^{>>->>}[r]  &  \ }
 
-
 \end_inset
 
 
@@ -1722,7 +1710,6 @@ ar@^{>>->>}
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@{^{<}-_{>}}[r]  &  \ }
 
-
 \end_inset
 
 
@@ -1750,7 +1737,6 @@ ar@{^<-_>}
 
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@2{--}[r]  &  \ }
-
 
 \end_inset
 
@@ -1840,7 +1826,8 @@ This defines a new arrow tip, referred to as
 ar@{-|>}[r]
 \family default
  and which displays correctly in LyX as:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \xymatrix{A\ar@{-|>}[r] & \ \ B}
 \]
 
@@ -1901,7 +1888,8 @@ produces
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \xymatrix{\circ\ar@<1ex>[r] & \circ\ar@<1ex>[l]}
 \]
  
@@ -2026,7 +2014,8 @@ ar@/_{.5pc}/[l]}
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \xymatrix{A\ar@/{}_{.5pc}/[r] & B\ar@/{}_{.5pc}/[l]}
 \]
 
@@ -2099,7 +2088,8 @@ in
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \xymatrix{A\ar@(dr,dl)[r]\ar@(dr,dl)[rr] & B\ar@(d,r)[dl] & C\\
 E\ar@(ul,ur)
 }
@@ -2214,7 +2204,8 @@ $
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \xymatrix{\txt{start}\ar[r] & *++[o][F]{1}\ar[r] & *++[o][F=]{2}\ar@(ur,dr)\ar@(ur,ul)[l]}
 \]
 
@@ -2345,7 +2336,8 @@ The dimension of the rectangle is given as a dotted pair
 .
  These are followed by the framing commands, to produce figures such as
  the following: 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \xymatrix{A & B\ar@(d,r)[dl]\sp(0.2)\phi\sp(0.7)\psi\save"1,1"."2,1"*+[F=]\frm{}\restore\,\\
 C & \save"1,1"."1,2"*++[F]\frm{}\restore
 }
@@ -3042,7 +3034,8 @@ xyC{.5pc}
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \xyC{.5pc}\xyC{9pc}\xymatrix{A\ar[r]\ar[d] & B\\
 C\ar@{}[ur]|{\text{{horizontal stretch}}}
 }
@@ -3186,7 +3179,8 @@ phi_{4}}.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \xyC{4pc}\xymatrix{\bullet\ar[dr]\sp(0.3)\varphi & \circ\ar@{}[d]|\vdots\ar@(r,r)[d]\sp(0.2){\phi_{1}}\sp(0.4){\phi_{2}}\sb(0.6){\phi_{3}}\sp(0.8){\phi_{4}}\\
 \circ\ar[ur]\sb(0.3)\phi & \bullet
 }
