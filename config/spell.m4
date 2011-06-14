@@ -51,11 +51,7 @@ AC_DEFUN([CHECK_WITH_HUNSPELL],
 	test "$with_hunspell" = "no" && lyx_use_hunspell=false
 
 	if $lyx_use_hunspell ; then
-	  AC_CHECK_HEADERS(hunspell/hunspell.hxx,
-		[AC_SEARCH_LIBS(Hunspell_spell,
-		     [hunspell hunspell-1.2],, [lyx_use_hunspell=false])],
-		[lyx_use_hunspell=false])
-	fi
+	PKG_CHECK_MODULES([HUNSPELL], [hunspell], [], [lyx_use_hunspell=false])
 	AC_MSG_CHECKING([whether to use hunspell])
 	if $lyx_use_hunspell ; then
 		AC_MSG_RESULT(yes)
@@ -64,7 +60,8 @@ AC_DEFUN([CHECK_WITH_HUNSPELL],
 	else
 		AC_MSG_RESULT(no)
 	fi
-	])
+    fi
+    ])
 
 
 ### Check if we want spell libraries, prefer new aspell or hunspell
