@@ -1,5 +1,5 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
@@ -7,18 +7,26 @@
 \usepackage{multicol}
 \end_preamble
 \use_default_options false
+\maintain_unincluded_children false
 \language ngerman
+\language_package default
 \inputencoding latin1
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -26,9 +34,18 @@
 \use_geometry false
 \use_amsmath 0
 \use_esint 0
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
 \leftmargin 2cm
 \topmargin 1cm
 \rightmargin 2cm
@@ -36,15 +53,16 @@
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language german
 \papercolumns 1
 \papersides 1
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -143,7 +161,7 @@ Wenn Sie Text in zwei Spalten setzen wollen, müssen Sie den LaTeX-Modus
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
@@ -167,7 +185,7 @@ begin{multicols}{2}
  einfügen und am Ende den Befehl 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
@@ -294,7 +312,7 @@ Dasselbe Schema gilt, wenn Sie mehr als zwei Spalten haben wollen, Sie geben
  einfach die Anzahl der gewünschten Spalten in der zweiten Klammer an: 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
@@ -686,7 +704,7 @@ Weil wegen des Abstandes auf der Seite jetzt weniger als 5 cm übrig sind,
  den zwei Spalten eingefügt: 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
@@ -967,7 +985,7 @@ multicols
  
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
@@ -1208,7 +1226,7 @@ begin{multicols}
  
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
@@ -1347,7 +1365,7 @@ setlength
  er für den Rest des Dokumentes erhalten: 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
@@ -1409,7 +1427,7 @@ multicols
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
@@ -1498,7 +1516,7 @@ Bemerkung: Der geänderte Wert muß auch in diesem Fall hinterher wieder zurück
 etzt werden, sonst bleibt er für den Rest des Dokumentes erhalten: 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
@@ -1561,7 +1579,7 @@ columnseprule
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
@@ -1648,7 +1666,7 @@ end{multicols}
 Wie immer setzen wir auch hier den Wert wieder zurück: 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
