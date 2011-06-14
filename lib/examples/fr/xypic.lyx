@@ -1,5 +1,5 @@
-#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -27,18 +27,26 @@
 \end_preamble
 \options BCOR7.5mm
 \use_default_options false
+\maintain_unincluded_children false
 \language french
+\language_package default
 \inputencoding auto
+\fontencoding global
 \font_roman lmodern
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -60,21 +68,31 @@
 \use_geometry false
 \use_amsmath 2
 \use_esint 0
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language french
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -669,10 +687,12 @@ xymatrix{
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \xymatrix{U\ar@/_{1pc}/[ddr]_{\psi}\ar@/{}^{1pc}/[drr]^{\varphi}\ar@{.>}[dr]|-{(x,y)}\\
  & X\times_{Z}Y\ar[d]^{q}\ar[r]_{p} & X\ar[d]_{f}\\
- & Y\ar[r]^{g} & Z}
+ & Y\ar[r]^{g} & Z
+}
 \]
 
 \end_inset
@@ -883,10 +903,12 @@ ar[r] & Z }
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \xymatrix{U\ar[ddr]\ar[drr]\ar[dr]\\
  & X\times_{Z}Y\ar[d]\ar[r] & X\ar[d]\\
- & Y\ar[r] & Z}
+ & Y\ar[r] & Z
+}
 \]
 
 \end_inset
@@ -1040,10 +1062,12 @@ ar[r]^g & Z }
 \end_layout
 
 \begin_layout LyX-Code
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \xymatrix{U\ar[ddr]_{\psi}\ar[drr]^{\varphi}\ar[dr]|-{(x,y)}\\
  & X\times_{Z}Y\ar[d]^{q}\ar[r]_{p} & X\ar[d]_{f}\\
- & Y\ar[r]^{g} & Z}
+ & Y\ar[r]^{g} & Z
+}
 \]
 
 \end_inset
@@ -1223,7 +1247,7 @@ ar@{^(->}[r].
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features islongtable="true">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -1253,7 +1277,6 @@ Code source LyX
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar[r]  &  \ }
 
-
 \end_inset
 
 
@@ -1281,7 +1304,6 @@ ar
 
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@{-->}[r]  &  \ }
-
 
 \end_inset
 
@@ -1311,7 +1333,6 @@ ar@{-->}
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@{..>}[r]  &  \ }
 
-
 \end_inset
 
 
@@ -1339,7 +1360,6 @@ ar@{..>}
 
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@{~>}[r]  &  \ }
-
 
 \end_inset
 
@@ -1369,7 +1389,6 @@ ar@{~>}
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@{->>}[r]  &  \ }
 
-
 \end_inset
 
 
@@ -1397,7 +1416,6 @@ ar@{->>}
 
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@{-->>}[r]  &  \ }
-
 
 \end_inset
 
@@ -1427,7 +1445,6 @@ ar@{-->>}
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@{>->>}[r]  &  \ }
 
-
 \end_inset
 
 
@@ -1455,7 +1472,6 @@ ar@{>->>}
 
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@{_{(}->}[r]  &  \ }
-
 
 \end_inset
 
@@ -1485,7 +1501,6 @@ ar@{_(->}
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@{^{(}->}[r]  &  \ }
 
-
 \end_inset
 
 
@@ -1513,7 +1528,6 @@ ar@{^(->}
 
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@{|-|}[r]  &  \ }
-
 
 \end_inset
 
@@ -1579,7 +1593,7 @@ _, ou bien un chapeau
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features islongtable="true">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -1609,7 +1623,6 @@ Source code for LyX
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@2[r]  &  \ }
 
-
 \end_inset
 
 
@@ -1637,7 +1650,6 @@ ar@2
 
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@3[r]  &  \ }
-
 
 \end_inset
 
@@ -1667,7 +1679,6 @@ ar@3
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@_{->}[r]  &  \ }
 
-
 \end_inset
 
 
@@ -1695,7 +1706,6 @@ ar@_{->}
 
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@^{->}[r]  &  \ }
-
 
 \end_inset
 
@@ -1725,7 +1735,6 @@ ar@^{->}
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@^{>>->>}[r]  &  \ }
 
-
 \end_inset
 
 
@@ -1754,7 +1763,6 @@ ar@^{>>->>}
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@{^{<}-_{>}}[r]  &  \ }
 
-
 \end_inset
 
 
@@ -1782,7 +1790,6 @@ ar@{^<-_>}
 
 \begin_layout Plain Layout
 \begin_inset Formula \xymatrix{\ \ar@2{--}[r]  &  \ }
-
 
 \end_inset
 
@@ -1872,7 +1879,8 @@ Ceci définit un nouveau dard, référencé par
 ar@{-|>}[r]
 \family default
 , et qui s'affiche correctement dans LyX comme:
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \xymatrix{A\ar@{-|>}[r] & \ \ B}
 \]
 
@@ -1932,7 +1940,8 @@ produit
 \end_inset
 
 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \xymatrix{\circ\ar@<1ex>[r] & \circ\ar@<1ex>[l]}
 \]
  
@@ -2074,7 +2083,8 @@ ar@/_{.5pc}/[l]}
 \begin_layout Standard
 
 \family typewriter
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \xymatrix{A\ar@/_{.5pc}/[r] & B\ar@/_{.5pc}/[l]}
 \]
 
@@ -2173,9 +2183,11 @@ ar@(d,r)[dl]  &C
             E 
 \backslash
 ar@(ul,ur)}
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \xymatrix{A\ar@(dr,dl)[r]\ar@(dr,dl)[rr] & B\ar@(d,r)[dl] & C\\
-E\ar@(ul,ur)}
+E\ar@(ul,ur)
+}
 \]
 
 \end_inset
@@ -2261,7 +2273,8 @@ $
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \xymatrix{\txt{start}\ar[r] & *++[o][F]{1}\ar[r] & *++[o][F=]{2}\ar@(ur,dr)\ar@(ur,ul)[l]}
 \]
 
@@ -2397,9 +2410,11 @@ restore
 .
  Celles-ci sont suivies des commandes d'encadrement, pour produire par exemple
  la figure suivante: 
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \xymatrix{A & B\ar@(d,r)[dl]\sp(0.2)\phi\sp(0.7)\psi\save"1,1"."2,1"*+[F=]\frm{}\restore\,\\
-C & \save"1,1"."1,2"*++[F]\frm{}\restore}
+C & \save"1,1"."1,2"*++[F]\frm{}\restore
+}
 \]
 
 \end_inset
@@ -3120,9 +3135,11 @@ xyC{.5pc}
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \xyR{.5pc}\xyC{9pc}\xymatrix{A\ar[r]\ar[d] & B\\
-C\ar@{}[ur]|{\text{{étirement\,\ horizontal}}}}
+C\ar@{}[ur]|{\text{{étirement\,\ horizontal}}}
+}
 \]
 
 \end_inset
@@ -3273,9 +3290,11 @@ phi_{4}}.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 \xyC{4pc}\xymatrix{\bullet\ar[dr]\sp(0.3)\varphi & \circ\ar@{}[d]|\vdots\ar@(r,r)[d]\sp(0.2){\phi_{1}}\sp(0.4){\phi_{2}}\sb(0.6){\phi_{3}}\sp(0.8){\phi_{4}}\\
-\circ\ar[ur]\sb(0.3)\phi & \bullet}
+\circ\ar[ur]\sb(0.3)\phi & \bullet
+}
 \]
 
 \end_inset
@@ -3531,6 +3550,7 @@ key "Ouvaton"
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Références
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "1"
@@ -3572,6 +3592,7 @@ xypic
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Références
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "2"
@@ -3594,6 +3615,7 @@ http://www.tug.org/tex-archive/help/Catalogue/entries/preview-latex.html
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Références
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "3"
@@ -3616,6 +3638,7 @@ http://www.tug.org/tex-archive/help/Catalogue/entries/xypic.html
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Références
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "4"
@@ -3638,6 +3661,7 @@ http://www.gnu.org/software/auctex/
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Références
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "5"
@@ -3685,6 +3709,7 @@ http://www.dpmms.cam.ac.uk/~al366/xytutorial.html
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Références
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "6"

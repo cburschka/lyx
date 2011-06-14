@@ -1,20 +1,29 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
+\use_default_options false
+\maintain_unincluded_children false
 \language catalan
+\language_package default
 \inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \float_placement H
 \paperfontsize default
 \spacing single
@@ -23,9 +32,18 @@
 \use_geometry true
 \use_amsmath 1
 \use_esint 0
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Índex
+\shortcut idx
+\color #008000
+\end_index
 \leftmargin 3cm
 \topmargin 2cm
 \rightmargin 3cm
@@ -33,15 +51,16 @@
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -69,7 +88,7 @@ m
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="1">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
@@ -164,8 +183,10 @@ es convertirà en:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\frac{abc}{xyz}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\frac{abc}{xyz}
+\end{equation}
 
 \end_inset
 
@@ -229,7 +250,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="10">
-<features>
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -548,7 +569,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="8">
-<features>
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -1688,7 +1709,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="8">
-<features>
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -2649,7 +2670,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="10">
-<features>
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -3706,7 +3727,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="6">
-<features>
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -4517,7 +4538,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="10">
-<features>
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -5451,7 +5472,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="10">
-<features>
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -5870,7 +5891,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="8">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -6305,7 +6326,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="8">
-<features>
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -6840,7 +6861,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -7191,7 +7212,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="10">
-<features>
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -7363,7 +7384,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="8">
-<features>
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -7508,7 +7529,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="6">
-<features>
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -8389,7 +8410,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="6">
-<features>
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -8584,7 +8605,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="22" columns="6">
-<features>
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -10319,7 +10340,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="6">
-<features>
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -11669,7 +11690,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="6">
-<features>
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -12319,7 +12340,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="6">
-<features>
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">

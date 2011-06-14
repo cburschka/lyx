@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 401
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass scrbook
@@ -10,13 +10,14 @@
 \use_default_options true
 \maintain_unincluded_children false
 \language english
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman lmodern
 \font_sans lmss
 \font_typewriter lmtt
 \font_default_family default
-\use_xetex false
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
@@ -54,6 +55,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
 \index Index
 \shortcut idx
 \color #008000
@@ -69,6 +71,7 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
 \end_header
 
