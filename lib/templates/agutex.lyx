@@ -1,4 +1,4 @@
-#LyX 2.0.1svn created this file. For more info see http://www.lyx.org/
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
 \lyxformat 413
 \begin_document
 \begin_header
@@ -44,7 +44,7 @@ theorems-std
 \end_modules
 \maintain_unincluded_children false
 \language english
-\language_package default
+\language_package none
 \inputencoding auto
 \fontencoding global
 \font_roman default
@@ -56,6 +56,7 @@ theorems-std
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -75,6 +76,7 @@ theorems-std
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
 \index Index
 \shortcut idx
 \color #008000
@@ -90,8 +92,8 @@ theorems-std
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
-\use_refstyle 0
 \end_header
 
 \begin_body
@@ -101,42 +103,60 @@ theorems-std
 status open
 
 \begin_layout Plain Layout
+This is a template LyX file for articles to be submitted to Journals of
+ the American Geophysical Union (AGU).
+ How to install the AGUTeX LaTeX class to your LaTeX system is explained
+ in 
+\begin_inset Flex URL
+status open
 
-\series bold
-IMPORTANT Note
-\series default
-: To be able to compile AguTeX articles you have to turn off LyX's support
- for the LaTeX-package 
-\emph on
-babel
-\emph default
-: Go to the menu 
-\family sans
-Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-Language
-\begin_inset space ~
-\end_inset
+\begin_layout Plain Layout
 
-Settings
-\family default
- and turn off the option 
-\begin_inset Quotes eld
-\end_inset
+http://wiki.lyx.org/Examples/AGUTeX
+\end_layout
 
-
-\emph on
-Use babel
-\emph default
-
-\begin_inset Quotes erd
 \end_inset
 
 .
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
 \begin_layout Plain Layout
-For all other document classes it is highly recommended to use babel!
+
+\series bold
+Note
+\series default
+: To be able to compile AguTeX articles, assure that in the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Language
+\family default
+ the option 
+\family sans
+Language package
+\family default
+ is set to 
+\family sans
+None
+\family default
+.
+\end_layout
+
+\begin_layout Plain Layout
+(For all other documents it is highly recommended to use 
+\family sans
+Default
+\family default
+!)
 \end_layout
 
 \end_inset
@@ -150,10 +170,10 @@ status open
 
 \begin_layout Plain Layout
 The Journal is specified as document class option in the document settings!
- For the available document class options have a look at the elsarticle
- documentation: 
+ For the available document class options have a look at the agutex documentatio
+n: 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -342,7 +362,8 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 A & = & \prod_{i=1}^{\infty}B\nonumber \\
  & = & C
 \end{eqnarray}
