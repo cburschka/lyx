@@ -37,3 +37,12 @@ ls.pr <- paste(dirname(ls.args[2]), tmpout, sep="/")
 
 # finally run sweave
 Sweave(file=ls.args[1], output=ls.args[2], syntax="SweaveSyntaxNoweb", stylepath=ls.sp, prefix.string=ls.pr)
+
+# remove absolute path from \includegraphics
+ls.doc = readLines(ls.args[2])
+ls.cmd = paste('\\includegraphics{', dirname(ls.args[2]), "/", sep = "")
+ls.idx = grep(ls.cmd, ls.doc, fixed = TRUE)
+if (length(ls.idx)) {
+   ls.doc[ls.idx] = sub(ls.cmd, "\\includegraphics{", ls.doc[ls.idx], fixed = TRUE)
+   writeLines(ls.doc, ls.args[2])
+}
