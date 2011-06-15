@@ -1,4 +1,4 @@
-#LyX 2.1.0svn created this file. For more info see http://www.lyx.org/
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
 \lyxformat 413
 \begin_document
 \begin_header
@@ -40,21 +40,30 @@
 \end_preamble
 \options envcountsame,envcountchap
 \use_default_options false
+\maintain_unincluded_children false
 \language english
 \language_package default
 \inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
 \spacing single
 \use_hyperref false
+\papersize default
 \use_geometry false
 \use_amsmath 0
 \use_esint 0
@@ -62,23 +71,57 @@
 \use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author 1 "" 
-\author 2 "" 
-\use_refstyle 0
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
+
+\begin_layout Author
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This is a template LyX file for books and monographs to be published by
+ the Springer publishing group.
+ How to install the svmono LaTeX class to your LaTeX system is explained
+ in 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/Examples/Springer
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Author
 Author(s)
@@ -420,8 +463,10 @@ Your text goes here.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\vec{a}\times\vec{b}=\vec{c}\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\vec{a}\times\vec{b}=\vec{c}
+\end{equation}
 
 \end_inset
 
@@ -570,7 +615,7 @@ For LaTeX tables use
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -852,9 +897,15 @@ Problem Heading
 status open
 
 \begin_layout Plain Layout
+You can include other LyX files as chapters.
+ Example:
+\begin_inset CommandInset include
+LatexCommand include
+filename "chapter"
 
-\backslash
-include{chapter}
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -867,9 +918,12 @@ include{chapter}
 status open
 
 \begin_layout Plain Layout
-
-\backslash
-appendix
+If you have an appendix, use the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Start Appendix Here
+\family default
+ when the cursor is at this position.
 \end_layout
 
 \end_inset
@@ -882,9 +936,15 @@ appendix
 status open
 
 \begin_layout Plain Layout
+You can include another LyX file as appendix.
+ Example:
+\begin_inset CommandInset include
+LatexCommand include
+filename "appendix"
 
-\backslash
-include{appendix}
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1109,6 +1169,7 @@ Bibliography
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "monograph"
@@ -1130,6 +1191,7 @@ Monographs
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "contribution"
@@ -1153,6 +1215,7 @@ Contributed Works
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "journal"
@@ -1174,6 +1237,7 @@ Journal
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "thesis"
