@@ -30,12 +30,10 @@ options(encoding=ls.args[3])
 setwd(ls.args[4])
 
 # this is passed as a prefix.string to tell where temporary files should go
-ls.pr <- sub("\\.tex$", "", ls.args[2])
-
-# Replace the default pdf device by the null device (tip from Yihui Xie)
-# See: http://yihui.name/en/2010/12/a-special-graphics-device-in-r-the-null-device/ 
-.Call("R_GD_nullDevice", PACKAGE = "grDevices")
-
+# the output file without extension and without '.'
+tmpout <- gsub(".", "-", sub("\\.tex$", "", basename(ls.args[2])), fixed = TRUE)
+# replace 
+ls.pr <- paste(dirname(ls.args[2]), tmpout, sep="/")
 
 # finally run sweave
 Sweave(file=ls.args[1], output=ls.args[2], syntax="SweaveSyntaxNoweb", stylepath=ls.sp, prefix.string=ls.pr)
