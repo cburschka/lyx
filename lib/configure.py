@@ -260,39 +260,22 @@ def checkProgAlternatives(description, progs, rc_entry = [], alt_rc_entry = [], 
     return ['', not_found]
 
 
-def addViewerAlternatives(rcs):
+def addAlternatives(rcs, alt_type):
     r = re.compile(r'\\Format (\S+).*$')
     m = None
     alt = ''
+    alt_token = '\\%s_alternatives ' % alt_type
     for idxx in range(len(rcs)):
         if len(rcs) == 1:
             m = r.match(rcs[0])
             if m:
-                alt = r'\viewer_alternatives ' + m.group(1) + " %%"
+                alt = alt_token + m.group(1) + " %%"
         elif len(rcs) > 1:
             m = r.match(rcs[idxx])
             if m:
                 if idxx > 0:
                     alt += '\n'
-                alt += r'\viewer_alternatives ' + m.group(1) + " %%"
-    return alt
-
-
-def addEditorAlternatives(rcs):
-    r = re.compile(r'\\Format (\S+).*$')
-    m = None
-    alt = ''
-    for idxx in range(len(rcs)):
-        if len(rcs) == 1:
-            m = r.match(rcs[0])
-            if m:
-                alt = r'\editor_alternatives ' + m.group(1) + " %%"
-        elif len(rcs) > 1:
-            m = r.match(rcs[idxx])
-            if m:
-                if idxx > 0:
-                    alt += '\n'
-                alt += r'\editor_alternatives ' + m.group(1) + " %%"
+                alt += alt_token + m.group(1) + " %%"
     return alt
 
 
@@ -305,11 +288,11 @@ def checkViewer(description, progs, rc_entry = [], path = []):
     for idx in range(len(progs)):
         if len(rc_entry) == 1:
             rcs = rc_entry[0].split('\n')
-            alt = addViewerAlternatives(rcs)
+            alt = addAlternatives(rcs, 'viewer')
             alt_rc_entry.insert(0, alt)
         elif len(rc_entry) > 1:
             rcs = rc_entry[idx].split('\n')
-            alt = addViewerAlternatives(rcs)
+            alt = addAlternatives(rcs, 'viewer')
             alt_rc_entry.insert(idx, alt)
     return checkProgAlternatives(description, progs, rc_entry, alt_rc_entry, path, not_found = 'auto')
 
@@ -323,11 +306,11 @@ def checkEditor(description, progs, rc_entry = [], path = []):
     for idx in range(len(progs)):
         if len(rc_entry) == 1:
             rcs = rc_entry[0].split('\n')
-            alt = addEditorAlternatives(rcs)
+            alt = addAlternatives(rcs, 'editor')
             alt_rc_entry.insert(0, alt)
         elif len(rc_entry) > 1:
             rcs = rc_entry[idx].split('\n')
-            alt = addEditorAlternatives(rcs)
+            alt = addAlternatives(rcs, 'editor')
             alt_rc_entry.insert(idx, alt)
     return checkProgAlternatives(description, progs, rc_entry, alt_rc_entry, path, not_found = 'auto')
 
@@ -341,11 +324,11 @@ def checkViewerNoRC(description, progs, rc_entry = [], path = []):
     for idx in range(len(progs)):
         if len(rc_entry) == 1:
             rcs = rc_entry[0].split('\n')
-            alt = addViewerAlternatives(rcs)
+            alt = addAlternatives(rcs, 'viewer')
             alt_rc_entry.insert(0, alt)
         elif len(rc_entry) > 1:
             rcs = rc_entry[idx].split('\n')
-            alt = addViewerAlternatives(rcs)
+            alt = addAlternatives(rcs, 'viewer')
             alt_rc_entry.insert(idx, alt)
     rc_entry = []
     return checkProgAlternatives(description, progs, rc_entry, alt_rc_entry, path, not_found = 'auto')
@@ -360,11 +343,11 @@ def checkEditorNoRC(description, progs, rc_entry = [], path = []):
     for idx in range(len(progs)):
         if len(rc_entry) == 1:
             rcs = rc_entry[0].split('\n')
-            alt = addEditorAlternatives(rcs)
+            alt = addAlternatives(rcs, 'editor')
             alt_rc_entry.insert(0, alt)
         elif len(rc_entry) > 1:
             rcs = rc_entry[idx].split('\n')
-            alt = addEditorAlternatives(rcs)
+            alt = addAlternatives(rcs, 'editor')
             alt_rc_entry.insert(idx, alt)
     rc_entry = []
     return checkProgAlternatives(description, progs, rc_entry, alt_rc_entry, path, not_found = 'auto')
