@@ -1544,11 +1544,9 @@ dist_templates_DATA = \
 	templates/JSS-article.lyx \
 	templates/kluwer.lyx \
 	templates/koma-letter2.lyx \
-	templates/latex8.lyx \
 	templates/letter.lyx \
 	templates/lettre.lyx \
 	templates/README.new_templates \
-	templates/revtex.lyx \
 	templates/revtex4.lyx \
 	templates/slides.lyx \
 	templates/svjour3.lyx \
