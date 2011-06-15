@@ -30,8 +30,10 @@ options(encoding=ls.args[3])
 setwd(ls.args[4])
 
 # this is passed as a prefix.string to tell where temporary files should go
-ls.pr <- gsub('\\.([^/]*)$', '-\\1', sub("\\.tex$", "", ls.args[2]))
-
+# the output file without extension and without '.'
+tmpout <- gsub(".", "-", sub("\\.tex$", "", basename(ls.args[2])), fixed = TRUE)
+# replace 
+ls.pr <- paste(dirname(ls.args[2]), tmpout, sep="/")
 
 # finally run sweave
 Sweave(file=ls.args[1], output=ls.args[2], syntax="SweaveSyntaxNoweb", stylepath=ls.sp, prefix.string=ls.pr)
