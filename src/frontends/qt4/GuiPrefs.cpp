@@ -1334,6 +1334,9 @@ PrefPaths::PrefPaths(GuiPreferences * form)
 
 	connect(pathPrefixED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
+
+	connect(texinputsPrefixED, SIGNAL(textChanged(QString)),
+		this, SIGNAL(changed()));
 }
 
 
@@ -1347,6 +1350,7 @@ void PrefPaths::apply(LyXRC & rc) const
 	rc.thesaurusdir_path = internal_path(fromqstr(thesaurusDirED->text()));
 	rc.hunspelldir_path = internal_path(fromqstr(hunspellDirED->text()));
 	rc.path_prefix = internal_path_list(fromqstr(pathPrefixED->text()));
+	rc.texinputs_prefix = internal_path_list(fromqstr(texinputsPrefixED->text()));
 	// FIXME: should be a checkbox only
 	rc.lyxpipes = internal_path(fromqstr(lyxserverDirED->text()));
 }
@@ -1362,6 +1366,7 @@ void PrefPaths::update(LyXRC const & rc)
 	thesaurusDirED->setText(toqstr(external_path(rc.thesaurusdir_path)));
 	hunspellDirED->setText(toqstr(external_path(rc.hunspelldir_path)));
 	pathPrefixED->setText(toqstr(external_path_list(rc.path_prefix)));
+	texinputsPrefixED->setText(toqstr(external_path_list(rc.texinputs_prefix)));
 	// FIXME: should be a checkbox only
 	lyxserverDirED->setText(toqstr(external_path(rc.lyxpipes)));
 }

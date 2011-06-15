@@ -14,6 +14,8 @@
 #include <config.h>
 
 #include "support/debug.h"
+#include "support/environment.h"
+#include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/qstring_helpers.h"
 #include "support/Systemcall.h"
@@ -21,6 +23,7 @@
 #include "support/os.h"
 #include "support/ProgressInterface.h"
 
+#include "LyXRC.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -96,9 +99,26 @@ ProgressInterface* ProgressInterface::instance()
 // Reuse of instance
 #ifndef USE_QPROCESS
 int Systemcall::startscript(Starttype how, string const & what,
-							bool /*process_events*/)
+			    std::string const & path, bool /*process_events*/)
 {
-	string command = what;
+	string command;
+	string const texinputs = os::latex_path_list(
+			replaceCurdirPath(path, lyxrc.texinputs_prefix));
+	string const sep = string(1, os::path_separator(os::TEXENGINE));
+	string const env = getEnv("TEXINPUTS");
+
+	switch (os::shell()) {
+	case os::UNIX:
+		command = path.empty() || lyxrc.texinputs_prefix.empty() ? what
+			: "env TEXINPUTS='." + sep + texinputs
+					     + sep + env + "' " + what;
+		break;
+	case os::CMD_EXE:
+		command = path.empty() || lyxrc.texinputs_prefix.empty() ? what
+			: "set TEXINPUTS=." + sep + texinputs
+					    + sep + env + " & " + what;
+		break;
+	}
 
 	if (how == DontWait) {
 		switch (os::shell()) {
@@ -204,7 +224,8 @@ string const parsecmd(string const & inputcmd, string & outfile)
 
 
 
-int Systemcall::startscript(Starttype how, string const & what, bool process_events)
+int Systemcall::startscript(Starttype how, string const & what,
+			    string const & path, bool process_events)
 {
 	string outfile;
 	QString cmd = toqstr(parsecmd(what, outfile));
@@ -212,7 +233,7 @@ int Systemcall::startscript(Starttype how, string const & what, bool process_eve
 	SystemcallPrivate d(outfile);
 
 
-	d.startProcess(cmd);
+	d.startProcess(cmd, path);
 	if (!d.waitWhile(SystemcallPrivate::Starting, process_events, -1)) {
 		LYXERR0("Systemcall: '" << cmd << "' did not start!");
 		LYXERR0("error " << d.errorMessage());
@@ -247,6 +268,7 @@ SystemcallPrivate::SystemcallPrivate(const std::string& of) :
                                 out_index_(0),
                                 err_index_(0),
                                 out_file_(of), 
+                                texinputs_(getEnv("TEXINPUTS")),
                                 process_events_(false)
 {
 	if (!out_file_.empty()) {
@@ -264,10 +286,21 @@ SystemcallPrivate::SystemcallPrivate(const std::string& of) :
 
 
 
-void SystemcallPrivate::startProcess(const QString& cmd)
+void SystemcallPrivate::startProcess(QString const & cmd, string const & path)
 {
 	cmd_ = cmd;
 	if (process_) {
+		if (!path.empty() && !lyxrc.texinputs_prefix.empty()) {
+			string const texinputs = os::latex_path_list(
+				replaceCurdirPath(path, lyxrc.texinputs_prefix));
+			string const sep = string(1,
+					os::path_separator(os::TEXENGINE));
+			string const prefix = "." + sep + texinputs + sep;
+			if (prefixIs(texinputs_, prefix))
+				texinputs_.clear();
+			else
+				setEnv("TEXINPUTS", prefix + texinputs_);
+		}
 		state = SystemcallPrivate::Starting;
 		process_->start(cmd_);
 	}
@@ -326,6 +359,9 @@ bool SystemcallPrivate::waitWhile(State waitwhile, bool process_events, int time
 
 SystemcallPrivate::~SystemcallPrivate()
 {
+	if (!texinputs_.empty())
+		setEnv("TEXINPUTS", texinputs_);
+
 	if (out_index_) {
 		out_data_[out_index_] = '\0';
 		out_index_ = 0;
