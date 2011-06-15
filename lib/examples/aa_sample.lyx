@@ -1,5 +1,5 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass aa
@@ -9,17 +9,26 @@
 \end_preamble
 \options traditabstract
 \use_default_options false
+\maintain_unincluded_children false
 \language english
+\language_package default
 \inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -27,24 +36,61 @@
 \use_geometry false
 \use_amsmath 0
 \use_esint 0
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 2
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This is an example LyX file for articles to be submitted to the Journal
+ of Astronomy & Astrophysicssing (A&A).
+ How to install the A&A LaTeX class to your LaTeX system is explained in
+ 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/Layouts/Astronomy-Astrophysics
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Standard
 \begin_inset Note Note
@@ -391,6 +437,12 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:FigGam"
+
+\end_inset
+
 Adiabatic exponent 
 \begin_inset Formula $\Gamma_{1}$
 \end_inset
@@ -418,16 +470,6 @@ Adiabatic exponent
 
 
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "FigGam"
 
 \end_inset
 
@@ -502,14 +544,16 @@ key "baker"
 
 \begin_layout Standard
 \align left
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 M_{r} &  & \textrm{mass internal to the radius }r\\
 m &  & \textrm{mass of the zone}\\
 r_{0} &  & \textrm{unperturbed zone radius}\\
 \rho_{0} &  & \textrm{unperturbed density in the zone}\\
 T_{0} &  & \textrm{unperturbed temperature in the zone}\\
 L_{r0} &  & \textrm{unperturbed luminosity}\\
-E_{\textrm{th}} &  & \textrm{thermal energy of the zone}\end{eqnarray*}
+E_{\textrm{th}} &  & \textrm{thermal energy of the zone}
+\end{eqnarray*}
 
 \end_inset
 
@@ -529,13 +573,15 @@ local cooling time
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "FigGam"
+reference "fig:FigGam"
 
 \end_inset
 
 ) 
-\begin_inset Formula \begin{equation}
-\tau_{\mathrm{co}}=\frac{E_{\mathrm{th}}}{L_{r0}}\,,\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\tau_{\mathrm{co}}=\frac{E_{\mathrm{th}}}{L_{r0}}\,,
+\end{equation}
 
 \end_inset
 
@@ -544,8 +590,10 @@ reference "FigGam"
 local free-fall time
 \emph default
 
-\begin_inset Formula \begin{equation}
-\tau_{\mathrm{ff}}=\sqrt{\frac{3\pi}{32G}\frac{4\pi r_{0}^{3}}{3M_{\mathrm{r}}}}\,,\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\tau_{\mathrm{ff}}=\sqrt{\frac{3\pi}{32G}\frac{4\pi r_{0}^{3}}{3M_{\mathrm{r}}}}\,,
+\end{equation}
 
 \end_inset
 
@@ -558,9 +606,11 @@ local free-fall time
 \end_inset
 
  have the following form: 
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \sigma_{0} & = & \frac{\pi}{\sqrt{8}}\frac{1}{\tau_{\mathrm{ff}}}\\
-K & = & \frac{\sqrt{32}}{\pi}\frac{1}{\delta}\frac{\tau_{\mathrm{ff}}}{\tau_{\mathrm{co}}}\,;\end{eqnarray}
+K & = & \frac{\sqrt{32}}{\pi}\frac{1}{\delta}\frac{\tau_{\mathrm{ff}}}{\tau_{\mathrm{co}}}\,;
+\end{eqnarray}
 
 \end_inset
 
@@ -569,10 +619,13 @@ K & = & \frac{\sqrt{32}}{\pi}\frac{1}{\delta}\frac{\tau_{\mathrm{ff}}}{\tau_{\ma
 \end_inset
 
  has been used and 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \begin{array}{l}
 \delta=-\left(\frac{\partial\ln\rho}{\partial\ln T}\right)_{P}\\
-e=mc^{2}\end{array}\end{equation}
+e=mc^{2}
+\end{array}
+\end{equation}
 
 \end_inset
 
@@ -606,14 +659,18 @@ e=mc^{2}\end{array}\end{equation}
  is proportional to the ratio of the free-fall time and the cooling time.
  Substituting into Baker's criteria, using thermodynamic identities and
  definitions of thermodynamic quantities, 
-\begin_inset Formula \[
-\Gamma_{1}=\left(\frac{\partial\ln P}{\partial\ln\rho}\right)_{S}\,,\;\chi_{\rho}^{}=\left(\frac{\partial\ln P}{\partial\ln\rho}\right)_{T}\,,\;\kappa_{P}^{}=\left(\frac{\partial\ln\kappa}{\partial\ln P}\right)_{T}\]
+\begin_inset Formula 
+\[
+\Gamma_{1}=\left(\frac{\partial\ln P}{\partial\ln\rho}\right)_{S}\,,\;\chi_{\rho}^{}=\left(\frac{\partial\ln P}{\partial\ln\rho}\right)_{T}\,,\;\kappa_{P}^{}=\left(\frac{\partial\ln\kappa}{\partial\ln P}\right)_{T}
+\]
 
 \end_inset
 
 
-\begin_inset Formula \[
-\nabla_{\mathrm{ad}}=\left(\frac{\partial\ln T}{\partial\ln P}\right)_{S}\,,\;\chi_{T}^{}=\left(\frac{\partial\ln P}{\partial\ln T}\right)_{\rho}\,,\;\kappa_{T}^{}=\left(\frac{\partial\ln\kappa}{\partial\ln T}\right)_{T}\]
+\begin_inset Formula 
+\[
+\nabla_{\mathrm{ad}}=\left(\frac{\partial\ln T}{\partial\ln P}\right)_{S}\,,\;\chi_{T}^{}=\left(\frac{\partial\ln P}{\partial\ln T}\right)_{\rho}\,,\;\kappa_{T}^{}=\left(\frac{\partial\ln\kappa}{\partial\ln T}\right)_{T}
+\]
 
 \end_inset
 
@@ -622,10 +679,12 @@ e=mc^{2}\end{array}\end{equation}
 stability
 \emph default
  given below: 
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \frac{\pi^{2}}{8}\frac{1}{\tau_{\mathrm{ff}}^{2}}(3\Gamma_{1}-4) & > & 0\label{ZSDynSta}\\
 \frac{\pi^{2}}{\tau_{\mathrm{co}}\tau_{\mathrm{ff}}^{2}}\Gamma_{1}\nabla_{\mathrm{ad}}\left[\frac{1-3/4\chi_{\rho}^{}}{\chi_{T}^{}}(\kappa_{T}^{}-4)+\kappa_{P}^{}+1\right] & > & 0\label{ZSSecSta}\\
-\frac{\pi^{2}}{4}\frac{3}{\tau_{\mathrm{co}}\tau_{\mathrm{ff}}^{2}}\Gamma_{1}^{2}\,\nabla_{\mathrm{ad}}\left[4\nabla_{\mathrm{ad}}-(\nabla_{\mathrm{ad}}\kappa_{T}^{}+\kappa_{P}^{})-\frac{4}{3\Gamma_{1}}\right] & > & 0\label{ZSVibSta}\end{eqnarray}
+\frac{\pi^{2}}{4}\frac{3}{\tau_{\mathrm{co}}\tau_{\mathrm{ff}}^{2}}\Gamma_{1}^{2}\,\nabla_{\mathrm{ad}}\left[4\nabla_{\mathrm{ad}}-(\nabla_{\mathrm{ad}}\kappa_{T}^{}+\kappa_{P}^{})-\frac{4}{3\Gamma_{1}}\right] & > & 0\label{ZSVibSta}
+\end{eqnarray}
 
 \end_inset
 
@@ -712,7 +771,7 @@ the thermodynamics and opacities (see Table
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "KapSou"
+reference "tab:KapSou"
 
 \end_inset
 
@@ -737,7 +796,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "KapSou"
+name "tab:KapSou"
 
 \end_inset
 
@@ -750,9 +809,10 @@ Opacity sources
 \end_layout
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <row>
@@ -909,29 +969,37 @@ reference "ZSDynSta"
 \end_inset
 
  and it reduces to the criterion for dynamical stability 
-\begin_inset Formula \begin{equation}
-\Gamma_{1}>\frac{4}{3}\,\cdot\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\Gamma_{1}>\frac{4}{3}\,\cdot
+\end{equation}
 
 \end_inset
 
  Stability of the thermodynamical equilibrium demands 
-\begin_inset Formula \begin{equation}
-\chi_{\rho}^{}>0,\;\; c_{v}>0\,,\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\chi_{\rho}^{}>0,\;\; c_{v}>0\,,
+\end{equation}
 
 \end_inset
 
  and 
-\begin_inset Formula \begin{equation}
-\chi_{T}^{}>0\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\chi_{T}^{}>0
+\end{equation}
 
 \end_inset
 
  holds for a wide range of physical situations.
  With 
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \Gamma_{3}-1=\frac{P}{\rho T}\frac{\chi_{T}^{}}{c_{v}} & > & 0\\
 \Gamma_{1}=\chi_{\rho}^{}+\chi_{T}^{}(\Gamma_{3}-1) & > & 0\\
-\nabla_{\mathrm{ad}}=\frac{\Gamma_{3}-1}{\Gamma_{1}} & > & 0\end{eqnarray}
+\nabla_{\mathrm{ad}}=\frac{\Gamma_{3}-1}{\Gamma_{1}} & > & 0
+\end{eqnarray}
 
 \end_inset
 
@@ -959,10 +1027,12 @@ reference "ZSVibSta"
 stability
 \emph default
 , respectively: 
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 3\Gamma_{1}-4=:S_{\mathrm{dyn}}> & 0\label{DynSta}\\
 \frac{1-3/4\chi_{\rho}^{}}{\chi_{T}^{}}(\kappa_{T}^{}-4)+\kappa_{P}^{}+1=:S_{\mathrm{sec}}> & 0\label{SecSta}\\
-4\nabla_{\mathrm{ad}}-(\nabla_{\mathrm{ad}}\kappa_{T}^{}+\kappa_{P}^{})-\frac{4}{3\Gamma_{1}}=:S_{\mathrm{vib}}> & 0\,.\label{VibSta}\end{eqnarray}
+4\nabla_{\mathrm{ad}}-(\nabla_{\mathrm{ad}}\kappa_{T}^{}+\kappa_{P}^{})-\frac{4}{3\Gamma_{1}}=:S_{\mathrm{vib}}> & 0\,.\label{VibSta}
+\end{eqnarray}
 
 \end_inset
 
@@ -1008,7 +1078,7 @@ e relations
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "FigVibStab"
+reference "fig:VibStabEquation"
 
 \end_inset
 
@@ -1034,6 +1104,12 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:VibStabEquation"
+
+\end_inset
+
 Vibrational stability equation of state 
 \begin_inset Formula $S_{\mathrm{vib}}(\lg e,\lg\rho)$
 \end_inset
@@ -1045,16 +1121,6 @@ Vibrational stability equation of state
 
  means vibrational stability 
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "FigVibStab"
 
 \end_inset
 
@@ -1145,6 +1211,7 @@ aa.bst
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "1966"
@@ -1166,6 +1233,7 @@ R.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "1988"
@@ -1178,6 +1246,7 @@ key "balluch"
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "1980"
@@ -1192,6 +1261,7 @@ key "cox"
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "1969"
@@ -1206,6 +1276,7 @@ key "cox69"
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "1980"
@@ -1220,6 +1291,7 @@ key "mizuno"
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "1987"
@@ -1233,6 +1305,7 @@ key "tscharnuter"
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "1992"
@@ -1251,6 +1324,7 @@ key "terlevich"
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "1980a"
@@ -1264,6 +1338,7 @@ key "yorke80a"
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "1997"

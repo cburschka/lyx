@@ -1,20 +1,29 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
-\use_default_options false
 \textclass literate-article
+\use_default_options false
+\maintain_unincluded_children false
 \language english
+\language_package default
 \inputencoding default
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -22,20 +31,31 @@
 \use_geometry false
 \use_amsmath 0
 \use_esint 0
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -145,129 +165,129 @@ Algorithm
 
 \begin_layout Scrap
 <<Function bodies>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 int
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 main (int argc, char **argv)
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   if (argc == 2) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     switch (argv[1][0]) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     case 'n':
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       <<Scan input for noweb error messages>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       break;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     case 'x':
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       <<Scan input for xlc error messages>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       break;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     case 'a':
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       <<AIX system using both noweb and xlc>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       break;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     case 's':
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     case 'b':
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       <<Solaris and Linux systems using both noweb and gcc>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       break;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     case 'g':
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     default:
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       <<Scan input for gcc error messages>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       break;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   } else {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     <<Scan input for gcc error messages>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
 \begin_layout Scrap
 <<Function prototypes>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 int main (int argc, char **argv);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -284,9 +304,9 @@ We resort to some global variables to allow access from several different
 
 \begin_layout Scrap
 <<Global variables>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 char    buffer[200][200];
 \begin_inset Newline newline
 \end_inset
@@ -336,35 +356,35 @@ This function has been slightly changed from EW's original to make scanning
 
 \begin_layout Scrap
 <<Function bodies>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 void
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 output_error (int buf_size, int error_line, char *tool)
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   int     i;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
  
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   fprintf(stdout, "! Build Error: ==> %s ==>
 \backslash
 n", tool);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   fprintf(stdout, " ...
 \backslash
 n
@@ -372,51 +392,51 @@ n
 nl.%d ...
 \backslash
 n", error_line);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
  
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   for (i=0; i<buf_size; i++)
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     if (strlen(buffer[i]) != 0)
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       fprintf(stdout, "%s", buffer[i]);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
  
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   fprintf(stdout, "
 \backslash
 n");
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
 \begin_layout Scrap
 <<Function prototypes>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 void output_error (int buf_size, int error_line, char *tool);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -435,37 +455,37 @@ Both noweave and notangle routines, always output one single line for each
 
 \begin_layout Scrap
 <<Scan input for noweb error messages>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   last_buf_line = 0;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   while (fgets(buffer[0], 200, stdin)) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     if (noweb_try(0))
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       output_error(1, err_line, "noweb");
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -479,82 +499,86 @@ The examination itself is very inefficient.
 \end_layout
 
 \begin_layout Scrap
+
+\end_layout
+
+\begin_layout Scrap
 <<Global variables>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 char *noweb_msgs[] = {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   "couldn't open file",
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   "couldn't open temporary file",
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   "error writing temporary file",
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   "ill-formed option",
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   "unknown option",
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   "Bad format sequence",
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   "Can't open output file",
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   "Can't open temporary file",
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   "Capacity exceeded:",
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   "Ignoring unknown option -",
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   "This can't happen:",
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   "non-numeric line number in"
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 };
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 char *noweb_msgs_mimic_gcc[] = {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   ": unescaped << in documentation chunk"
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 };
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -573,6 +597,10 @@ A noweb error message can be any string that contains a matching pair of
 \end_inset
 
 > >, or any of the above strings
+\end_layout
+
+\begin_layout Scrap
+
 \end_layout
 
 \begin_layout Scrap
@@ -729,13 +757,13 @@ noweb_try (int buf_line)
 
 \begin_layout Scrap
 <<Function prototypes>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 int noweb_try (int buf_line);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -747,37 +775,37 @@ The xlc compiler always outputs one single line for each error found, thus
 
 \begin_layout Scrap
 <<Scan input for xlc error messages>>= 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   last_buf_line = 0;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   while (fgets(buffer[last_buf_line], 200, stdin)) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     if (xlc_try(0))
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       output_error(1, err_line, "xlc");
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -797,84 +825,92 @@ line
 \end_layout
 
 \begin_layout Scrap
+
+\end_layout
+
+\begin_layout Scrap
+
+\end_layout
+
+\begin_layout Scrap
 <<Function bodies>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 int 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 xlc_try (int buf_line)
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   char    *s, *t;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
  
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   t = buffer[buf_line];
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   s = t+1;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   while (*s != '"' && *s != ' ' && *s != '
 \backslash
 0')
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     s++;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   if (*t != '"' || *s != '"' || strncmp(s+1, ", line ", 7) != 0)
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     return 0;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   s += 8;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   err_line = atoi(s);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   return 1;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
 \begin_layout Scrap
 <<Function prototypes>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 int xlc_try (int buf_line);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -916,144 +952,144 @@ Every gcc error message contains a string with no space followed by a
 
 \begin_layout Scrap
 <<Scan input for gcc error messages>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   char    *s, *t;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
  
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   last_buf_line = 0;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   while (fgets(buffer[last_buf_line], 200, stdin)) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     /****** Skip lines until I find an error */
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     s = (char *)strpbrk(buffer[last_buf_line], " :");
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     if (s == NULL || *s == ' ')
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       continue; /* No gcc error found here */
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     do {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       <<gcc error message criteria is to find a "...:999:" or a "...: ">>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       /****** OK It is an error message, get line number */
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       err_line = atoi(s+1);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       if (last_err_line == 0 || last_err_line == err_line) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
         last_err_line = err_line;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
         continue; /* It's either a header or a continuation, don't output
  yet */
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       /****** Completed the scan of one error message, output it to LyX
  */
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       discharge_buffer(1);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       break;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     } while (fgets(buffer[last_buf_line], 200, stdin));
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   /****** EOF completes the scan of whatever was being scanned */
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   discharge_buffer(0);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
 \begin_layout Scrap
 <<gcc error message criteria is to find a "...:999:" or a "...: ">>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 /****** Search first ":" in the error number */
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 s = (char *)strpbrk(buffer[last_buf_line], " :");
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 last_buf_line++;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 if (s == NULL || *s == ' ') 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   <<No gcc error found here, but it might terminate the scanning of a previous
  one>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 /****** Search second ":" in the error number */
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 t = (char *)strpbrk(s+1, " :");
 \begin_inset Newline newline
 \end_inset
@@ -1084,31 +1120,39 @@ if (t != s+1+strspn(s+1, "0123456789"))
 \end_layout
 
 \begin_layout Scrap
+
+\end_layout
+
+\begin_layout Scrap
+
+\end_layout
+
+\begin_layout Scrap
 <<No gcc error found here, but it might terminate the scanning of a previous
  one>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   err_line = 0;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   discharge_buffer(1);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   continue;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -1129,98 +1173,106 @@ last line
 \end_layout
 
 \begin_layout Scrap
+
+\end_layout
+
+\begin_layout Scrap
+
+\end_layout
+
+\begin_layout Scrap
 <<Function bodies>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 void
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 discharge_buffer (int save_last)
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
  if (last_err_line != 0) { 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
    clean_gcc_messages();
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
    if (save_last != 0) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       output_error(last_buf_line-1, last_err_line, "gcc");
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       strcpy (buffer[0], buffer[last_buf_line-1]);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       last_err_line = err_line;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       last_buf_line = 1;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     } else { 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       ++last_buf_line;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       clean_gcc_messages();
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       output_error(last_buf_line-1, last_err_line, "gcc");
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       last_err_line = 0;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       last_buf_line = 0;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
 \begin_layout Scrap
 <<Function prototypes>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 void discharge_buffer (int save_last);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -1251,117 +1303,117 @@ More could be done.
 
 \begin_layout Scrap
 <<Function bodies>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 void
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 clean_gcc_messages ()
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   int index;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   char search [30]; 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   char *tail, *head; 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   int search_len = sprintf(search, ".nw:%d:", last_err_line);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   for (index = 0; index < last_buf_line-1; index++) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     tail = (char *)strstr (buffer[index], search);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     if ( tail == NULL) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
        tail = (char *) strstr (buffer[index], ".nw:");
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
        if (tail) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
           tail += 4;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
        }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     } else {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
        tail += search_len;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     if (tail != NULL) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
        head = buffer[index];
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
        while (*(head++) = *(tail++));
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
 \begin_layout Scrap
 <<Function prototypes>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 void clean_gcc_messages ();
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -1373,13 +1425,13 @@ To combine the scan of noweb error messages and xlc error messages is very
 
 \begin_layout Scrap
 <<AIX system using both noweb and xlc>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   last_buf_line = 0;
 \begin_inset Newline newline
 \end_inset
@@ -1425,127 +1477,127 @@ To combine the scan of noweb error messages and gcc error messages is simple
 
 \begin_layout Scrap
 <<Solaris and Linux systems using both noweb and gcc>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   char    *s, *t;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
  
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   last_buf_line = 0;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   while (fgets(buffer[last_buf_line], 200, stdin)) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     /****** Skip lines until I find an error */
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     if (last_buf_line == 0 && noweb_try(0)) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       output_error(1, err_line, "noweb");
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       continue;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     s = (char *)strpbrk(buffer[last_buf_line], " :");
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     if (s == NULL || *s == ' ')
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       continue; /* No gcc error found here */
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     do {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       <<gcc error message criteria is to find a "...:999:" or a "...: ">>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       /****** OK It is an error, get line number */
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       err_line = atoi(s+1);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       if (last_err_line == 0 || last_err_line == err_line) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
         last_err_line = err_line;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
         continue; /* It's either a header or a continuation, don't output
  yet */
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       /****** Completed the scan of one error message, output it to LyX
  */
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       discharge_buffer(1);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
       break;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     } while (fgets(buffer[last_buf_line], 200, stdin));
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   /****** EOF completes the scan of whatever was being scanned */
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   discharge_buffer(0);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -1555,33 +1607,33 @@ Wrapping the code into a file
 
 \begin_layout Scrap
 <<listerrors.c>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 #include <stdio.h>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 #include <strings.h>       
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
  
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 <<Global variables>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 <<Function prototypes>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 <<Function bodies>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -1616,25 +1668,25 @@ listerrors.c
 
 \begin_layout Scrap
 <<build-script>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 #!/bin/sh
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 if [ -z "$NOWEB_SOURCE" ]; then NOWEB_SOURCE=Literate.nw; fi
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 notangle -L -Rlisterrors.c ${NOWEB_SOURCE} > listerrors.c
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 gcc -g -o listerrors listerrors.c
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 

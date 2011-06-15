@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
-\use_default_options false
 \textclass literate-article
 \begin_preamble
 %
@@ -14,17 +13,27 @@
 \def\nwendcode{\endtrivlist \endgroup}
 \let\nwdocspar=\smallbreak
 \end_preamble
+\use_default_options false
+\maintain_unincluded_children false
 \language english
+\language_package default
 \inputencoding default
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -32,20 +41,31 @@
 \use_geometry false
 \use_amsmath 0
 \use_esint 0
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -121,79 +141,79 @@ noweb
 
 \begin_layout Scrap
 <<noweb2lyx.in>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 #!@PERL@
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 # 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 # Copyright (C) 1999 Kayvan A.
  Sylvan <kayvan@sylvan.com>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 # You are free to use and modify this code under the terms of
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 # the GNU General Public Licence version 2 or later.
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 #
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 # Written with assistance from:
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 #   Edmar Wienskoski Jr.
  <edmar-w-jr@technologist.com>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 #   Amir Karger <karger@post.harvard.edu>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 #
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 # $Id: noweb2lyx.lyx,v 1.5 2005/07/18 09:42:27 jamatos Exp $
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 #
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 # NOTE: This file was automatically generated from noweb2lyx.lyx using noweb.
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 #
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 <<Setup variables from user supplied args>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 <<Subroutines>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 <<Convert noweb to LyX>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -212,9 +232,13 @@ noweb
 
 \begin_layout LyX-Code
 @ Here is some documentation.
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
+
+\end_layout
+
+\begin_layout Scrap
 We can do arbitrary LaTeX code here.
 \begin_inset Newline newline
 \end_inset
@@ -458,49 +482,49 @@ With all that preamble out of the way, we now have the basic high-level
 
 \begin_layout Scrap
 <<Convert noweb to LyX>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 if (!$post_only) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   <<Transform noweb for reLyX>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 if ((!$pre_only) && (!$post_only)) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   <<Run reLyX on intermediate file>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 if (!$pre_only) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   <<Fix up LyX file>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 <<Clean up>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -516,22 +540,26 @@ In this section, we present the code that performs the task of creating
 \end_layout
 
 \begin_layout Scrap
+
+\end_layout
+
+\begin_layout Scrap
 <<Transform noweb for reLyX>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 <<Setup INPUT and OUTPUT>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 inputline: while(<INPUT>)
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   if (/^
 \backslash
 s*
@@ -543,23 +571,23 @@ s*
 >
 \backslash
 >=/) { # Beginning of a noweb scrap
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     <<Read in and output the noweb code chunk>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   } elsif (/^@
 \backslash
 s+(.*)/) { # Beginning of a documentation chunk
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     print OUTPUT $1; # We do not need the ``@'' part
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   } elsif (/
 \backslash
 [
@@ -569,33 +597,33 @@ s+(.*)/) { # Beginning of a documentation chunk
 ]
 \backslash
 ]/) { # noweb quoted code
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     <<Perform special input quoting of [[var]]>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   } else {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     print OUTPUT; # Just let the line pass through
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 <<Close INPUT and OUTPUT>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -607,9 +635,9 @@ In the code above, we do some pre-processing of the noweb ``[[...]]'' construct.
 
 \begin_layout Scrap
 <<Perform special input quoting of [[var]]>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 s/
 \backslash
 [
@@ -667,21 +695,21 @@ noweb
 
 \begin_layout Scrap
 <<Read in and output the noweb code chunk>>= 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 <<Save the beginning of the scrap to savedScrap>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 <<Concatenate the rest of the scrap>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 <<print out the scrap in a reLyXskip block>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -764,33 +792,33 @@ to read and write files.
 
 \begin_layout Scrap
 <<Setup INPUT and OUTPUT>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 if ($pre_only) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   &setup_files($input_file, $output_file);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 } else {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   $relyx_file = "temp$$";
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   &setup_files($input_file, $relyx_file);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -829,33 +857,33 @@ status collapsed
 
 \begin_layout Scrap
 <<Subroutines>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 sub setup_files {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   my($in, $out) = @_;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   open(INPUT, "<$in") || die "Cannot read $in: $!
 \backslash
 n";
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   open(OUTPUT, ">$out") || die "Cannot write $out: $!
 \backslash
 n";
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @ %def setup_files   
 \end_layout
 
@@ -874,17 +902,17 @@ After we see the beginning of the scrap, we need to read in and save the
 
 \begin_layout Scrap
 <<Save the beginning of the scrap to savedScrap>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 $savedScrap = $_;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 $endLine = "";
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -954,9 +982,9 @@ The final piece of the first pass of the conversion is done by this code.
 
 \begin_layout Scrap
 <<print out the scrap in a reLyXskip block>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 print OUTPUT "
 \backslash
 
@@ -964,13 +992,13 @@ print OUTPUT "
 begin{reLyXskip}
 \backslash
 n";
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 print OUTPUT $savedScrap;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 print OUTPUT "
 \backslash
 
@@ -980,13 +1008,13 @@ end{reLyXskip}
 n
 \backslash
 n";
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 print OUTPUT "$endLine";
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -1057,17 +1085,17 @@ files.
 
 \begin_layout Scrap
 <<Close INPUT and OUTPUT>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 close(INPUT);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 close(OUTPUT);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -1122,17 +1150,17 @@ In order to run reLyX, we need to know the article class of the input document
 
 \begin_layout Scrap
 <<Run reLyX on intermediate file>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 <<Parse for document class>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 <<Run reLyX with document class>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -1229,55 +1257,55 @@ noweb2lyx
 
 \begin_layout Scrap
 <<Parse for document class>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 open(INPUT, "<$relyx_file") ||
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   die "Cannot read $relyx_file: $!
 \backslash
 n";
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 $class = "article"; # default if none found
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 parse: while(<INPUT>) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   if (/
 \backslash
 
 \backslash
 docu[m]entclass{(.*)}/) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     $class = $1;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     last parse;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 close(INPUT);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -1338,41 +1366,41 @@ We need to perform some post-processing of what reLyX produces in order
 
 \begin_layout Scrap
 <<Fix up LyX file>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 <<Setup INPUT and OUTPUT for the final output>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 line: while(<INPUT>)
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   <<Fix code chunks in latex layout>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   <<Fix [[var]] noweb construct>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   print OUTPUT; # default
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 } 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 <<Close INPUT and OUTPUT>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -1514,29 +1542,29 @@ is taken care of by this code:
 
 \begin_layout Scrap
 <<Setup INPUT and OUTPUT for the final output>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 if ($post_only) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   &setup_files("$input_file", "$output_file");
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 } else {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   &setup_files("$relyx_file.lyx", "$output_file");
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -1551,53 +1579,53 @@ Now, as we outlined before, the final step is transforming the code-chunks
 
 \begin_layout Scrap
 <<Fix code chunks in latex layout>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 if (/
 \backslash
 
 \backslash
 latex latex/) { # Beginning of some latex code
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   if (($line = <INPUT>) =~ /^
 \backslash
 s*<</) { # code scrap
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     <<Transform this chunk into layout scrap>>
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   } else {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     # print the 
 \backslash
 latex latex line + next line
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
     print OUTPUT "$_$line";
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   next line;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -1608,9 +1636,13 @@ When we are sure that we are in a code chunk, we must read in the rest of
 
 \begin_layout Scrap
 <<Transform this chunk into layout scrap>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
+
+\end_layout
+
+\begin_layout Scrap
 $savedScrap = "
 \backslash
 
@@ -1659,43 +1691,43 @@ Okay, now we just need to eat the rest of the latex layout.
 
 \begin_layout Scrap
 <<Slurp up to the end of the latex layout>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 slurp: while (<INPUT>) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   last slurp if /
 \backslash
 
 \backslash
 latex /;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   next slurp if /
 \backslash
 
 \backslash
 newline/;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   next slurp if /^
 \backslash
 s*$/;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   warn "confused by line: $_";
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -1734,9 +1766,9 @@ noweb
 
 \begin_layout Scrap
 <<Fix [[var]] noweb construct>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 if (/
 \backslash
 [
@@ -1746,9 +1778,9 @@ if (/
 ]
 \backslash
 ]/) { # special code for [[var]]
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   s/
 \backslash
 [
@@ -1772,21 +1804,21 @@ n
 latex default
 \backslash
 n/g;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   print OUTPUT;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   next line;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -1800,13 +1832,13 @@ The cleanup code is very simple:
 
 \begin_layout Scrap
 <<Clean up>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 system("rm -f $relyx_file*") unless ($post_only || $pre_only);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 
@@ -1826,74 +1858,73 @@ noweb2lyx
 
 \begin_layout Scrap
 <<Setup variables from user supplied args>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 &usage() if ($#ARGV < 1); # zero or one argument 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 if ($ARGV[0] eq "-pre") {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   &usage unless ($#ARGV == 2);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   $input_file = $ARGV[1]; $output_file = $ARGV[2]; $pre_only = 1;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 } elsif ($ARGV[0] eq "-post") {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   &usage unless ($#ARGV == 2);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   $input_file = $ARGV[1]; $output_file = $ARGV[2]; $post_only = 1;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 } else {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   &usage unless ($#ARGV == 1);
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   $input_file = $ARGV[0]; $output_file = $ARGV[1];
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   $pre_only = 0; $post_only = 0;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @ %def input_file output_file pre_only post_only
 \end_layout
 
 \begin_layout Scrap
 <<Subroutines>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 sub usage() {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
   print "Usage: noweb2lyx [-pre | -post] input-file output-file
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
+\begin_layout Scrap
 \begin_inset Newline newline
 \end_inset
 
@@ -1957,25 +1988,25 @@ notangle -Rbuild-script $1 | sh
 
 \begin_layout Scrap
 <<build-script>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 PREFIX=/usr
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 notangle -Rnoweb2lyx.in noweb2lyx.nw > noweb2lyx.in
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 sed -e "s=@PERL@=$PREFIX/bin/perl=" noweb2lyx.in > noweb2lyx
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 chmod +x noweb2lyx
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Scrap
 @
 \end_layout
 

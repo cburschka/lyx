@@ -1,8 +1,7 @@
-#LyX 2.1.0svn created this file. For more info see http://www.lyx.org/
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
 \lyxformat 413
 \begin_document
 \begin_header
-\use_default_options false
 \textclass jss
 \begin_preamble
 %the following commands are used only for articles and codesnippets
@@ -77,18 +76,27 @@
 %% need no \usepackage{Sweave.sty}
 \end_preamble
 \options article
+\use_default_options false
+\maintain_unincluded_children false
 \language english
 \language_package default
 \inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -100,20 +108,27 @@
 \use_mathdots 1
 \cite_engine natbib_authoryear
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author 1 "" 
-\author 2 "" 
-\use_refstyle 0
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -123,13 +138,28 @@
 status open
 
 \begin_layout Plain Layout
-This is a template LyX file for an article written using the Journal of
- Statistical Software (JSS) LaTeX style file, which can be downloaded from
- http://www.jstatsoft.org/downloads/JSSstyle.zip.
- These files have to be installed before this template can be used.
- Consult chapter 5.1 in the LyX Customization manual.
- See also the documentation included with the JSS LaTeX style file.
+This is a template LyX file for articles to be submitted to the Journal
+ of Statistical Software (JSS).
+ How to install the JSS LaTeX class to your LaTeX system is explained in
+ 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/Layouts/JSS
 \end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
 
 \begin_layout Plain Layout
 Note that title, author, address, abstract, keywords etc for this article
