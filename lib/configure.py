@@ -263,30 +263,34 @@ def checkProgAlternatives(description, progs, rc_entry = [], alt_rc_entry = [], 
 def addAlternatives(rcs, alt_type):
     '''
         Returns a \\prog_alternatives string to be used as an alternative
-        rc entry.
+        rc entry.  alt_type can be a string or a list of strings.
     '''
     r = re.compile(r'\\Format (\S+).*$')
     m = None
     alt = ''
-    alt_token = '\\%s_alternatives ' % alt_type
+    alt_token = '\\%s_alternatives '
+    if isinstance(alt_type, str):
+        alt_tokens = [alt_token % alt_type]
+    else:
+        alt_tokens = map(lambda s: alt_token % s, alt_type)
     for idxx in range(len(rcs)):
         if len(rcs) == 1:
             m = r.match(rcs[0])
             if m:
-                alt = alt_token + m.group(1) + " %%"
+                alt = '\n'.join([s + m.group(1) + " %%" for s in alt_tokens])
         elif len(rcs) > 1:
             m = r.match(rcs[idxx])
             if m:
                 if idxx > 0:
                     alt += '\n'
-                alt += alt_token + m.group(1) + " %%"
+                alt += '\n'.join([s + m.group(1) + " %%" for s in alt_tokens])
     return alt
 
 
 def listAlternatives(progs, alt_type, rc_entry = []):
     '''
         Returns a list of \\prog_alternatives strings to be used as alternative
-        rc entries.
+        rc entries.  alt_type can be a string or a list of strings.
     '''
     if len(rc_entry) > 1 and len(rc_entry) != len(progs) + 1:
         logger.error("rc entry should have one item or item for each prog and not_found.")
