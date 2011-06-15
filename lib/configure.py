@@ -336,8 +336,8 @@ def checkEditorNoRC(description, progs, rc_entry = [], path = []):
 
 def checkViewerEditor(description, progs, rc_entry = [], path = []):
     ''' The same as checkProgAlternatives, but for viewers and editors '''
-    checkEditorNoRC(description, progs, rc_entry, path)
-    return checkViewer(description, progs, rc_entry, path)
+    alt_rc_entry = listAlternatives(progs, ['editor', 'viewer'], rc_entry)
+    return checkProgAlternatives(description, progs, rc_entry, alt_rc_entry, path, not_found = 'auto')
 
 
 def checkDTLtools():
