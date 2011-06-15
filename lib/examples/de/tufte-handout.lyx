@@ -1,21 +1,29 @@
-#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass tufte-handout
 \use_default_options false
+\maintain_unincluded_children false
 \language ngerman
+\language_package default
 \inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans helvet
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -23,24 +31,58 @@
 \use_geometry true
 \use_amsmath 1
 \use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 2
 \tocdepth 2
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language german
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung
+\series default
+: Um dieses Dokument als PDF zu betrachten, muss das LaTeX-paket 
+\family sans
+fpl
+\family default
+ in ihrem LaTeX-Sytem installiert sein.
+ Wenn Sie MiKTeX benutzen, werden Sie automatisch danach gefragt dieses
+ Paket zu installieren, wenn sie das Dokument als PDF ansehen.
+ Wenn Sie TeXLive benutzen,verwenden Sie TeXLives Paket-Manager.
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Standard
 \begin_inset Note Note
@@ -515,6 +557,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100line%"
 special "none"
 height "1in"
@@ -592,6 +635,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100line%"
 special "none"
 height "1in"
@@ -655,6 +699,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100line%"
 special "none"
 height "1in"
@@ -740,7 +785,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features booktabs="true">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row>

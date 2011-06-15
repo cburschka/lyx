@@ -1,21 +1,29 @@
-#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass tufte-book
 \use_default_options true
+\maintain_unincluded_children false
 \language english
+\language_package default
 \inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
 \spacing single
 \use_hyperref true
@@ -32,24 +40,58 @@
 \use_geometry true
 \use_amsmath 1
 \use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 2
 \tocdepth 2
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note
+\series default
+: To be able to view your file as PDF you must have the LaTeX-package 
+\family sans
+fpl
+\family default
+ installed to your LaTeX system.
+ If you are using MiKTeX, you will automatically be asked to install this
+ package when previewing your file, if you are using TeXLive, use TeXLive's
+ package manager.
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Title
 Tufte Examples
@@ -291,6 +333,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100col%"
 special "none"
 height "1in"
@@ -348,6 +391,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100col%"
 special "none"
 height "1in"
@@ -442,6 +486,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100line%"
 special "none"
 height "1in"
@@ -796,6 +841,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100col%"
 special "none"
 height "1in"
@@ -848,6 +894,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100col%"
 special "none"
 height "1in"
@@ -958,8 +1005,10 @@ The text refers to these cylinders as "disks".
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-V=hA\]
+\begin_inset Formula 
+\[
+V=hA
+\]
 
 \end_inset
 
@@ -991,8 +1040,10 @@ where
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-A=\pi f^{2}(x)\]
+\begin_inset Formula 
+\[
+A=\pi f^{2}(x)
+\]
 
 \end_inset
 
@@ -1005,9 +1056,11 @@ In our specific case,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 A & = & \pi\left(\sqrt{x}\right)^{2}\\
- & = & \pi x\end{eqnarray*}
+ & = & \pi x
+\end{eqnarray*}
 
 \end_inset
 
@@ -1019,8 +1072,10 @@ To calculate the volume of one disk, we have
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-V=\pi x\, dx\]
+\begin_inset Formula 
+\[
+V=\pi x\, dx
+\]
 
 \end_inset
 
@@ -1033,8 +1088,10 @@ or, in the general case
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \[
-V=\pi f^{2}(x)\, dx\]
+\begin_inset Formula 
+\[
+V=\pi f^{2}(x)\, dx
+\]
 
 \end_inset
 
@@ -1054,8 +1111,10 @@ To find the volume of the figure between points
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\int_{a}^{b}\,\pi f^{2}(x)\, dx\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\int_{a}^{b}\,\pi f^{2}(x)\, dx
+\end{equation}
 
 \end_inset
 
@@ -1072,11 +1131,13 @@ In the specific example, over the interval
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \int_{0}^{4}\,\pi x\, dx & = & \pi\int_{0}^{4}\, x\, dx\\
  & = & \pi\left.\left(\frac{x^{2}}{2}\right)\right|_{0}^{4}\\
  & = & \pi\left(\frac{4^{2}}{2}-0\right)\\
- & = & 8\pi\end{eqnarray*}
+ & = & 8\pi
+\end{eqnarray*}
 
 \end_inset
 
@@ -1144,6 +1205,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100col%"
 special "none"
 height "1in"
@@ -1187,10 +1249,12 @@ The functions
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 A_{washer} & = & A_{cup}-A_{drill}\\
  & = & \pi f^{2}(x)-\pi g^{2}(x)\\
- & = & \pi\left(f^{2}(x)-g^{2}(x)\right)\end{eqnarray*}
+ & = & \pi\left(f^{2}(x)-g^{2}(x)\right)
+\end{eqnarray*}
 
 \end_inset
 
@@ -1202,9 +1266,11 @@ The volume of each washer would be
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 V_{washer} & = & A_{washer}\, dx\\
- & = & \pi\left(f^{2}(x)-g^{2}(x)\right)\, dx\end{eqnarray*}
+ & = & \pi\left(f^{2}(x)-g^{2}(x)\right)\, dx
+\end{eqnarray*}
 
 \end_inset
 
@@ -1225,8 +1291,10 @@ Then, by summing the volumes of all the washers between points
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{equation}
-\int_{a}^{b}\,\pi\left(f^{2}(x)-g^{2}(x)\right)\, dx\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\int_{a}^{b}\,\pi\left(f^{2}(x)-g^{2}(x)\right)\, dx
+\end{equation}
 
 \end_inset
 
@@ -1247,6 +1315,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
+use_makebox 0
 width "100col%"
 special "none"
 height "1in"
@@ -1277,13 +1346,15 @@ The cup with a quadratic hole drilled down its length
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \int_{0}^{4}\,\pi\left(\left(\sqrt{x}\right)^{2}-\left(\frac{x^{2}}{16}\right)\right)\, dx & = & \pi\int_{0}^{4}\,\left(x-\frac{x^{4}}{256}\right)\, dx\\
  & = & \pi\left(\int_{0}^{4}\, x\, dx-\int_{0}^{4}\,\frac{x^{4}}{256}\, dx\right)\\
  & = & \pi\left(\left.\left(\frac{x^{2}}{2}\right)\right|_{0}^{4}-\left.\left(\frac{x^{5}}{1280}\right)\right|_{0}^{4}\right)\\
  & = & \pi\left(\left(\frac{4^{2}}{2}-0\right)-\left(\frac{4^{5}}{1280}-0\right)\right)\\
  & = & \pi\left(8-0.8\right)\\
- & = & 7.2\pi\end{eqnarray*}
+ & = & 7.2\pi
+\end{eqnarray*}
 
 \end_inset
 
