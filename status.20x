@@ -25,8 +25,9 @@ What's new
 * DOCUMENT INPUT/OUTPUT
 
 - Allow for a maximum of 3 minutes for the completion of a spawned command
-  except on Windows, where 30 minutes are allowed. This is because the Windows
-  installer may trigger MiKTeX updates that suffer from network latencies.
+  except on Windows, where 30 minutes are allowed. This is because the
+  Windows installer may trigger MiKTeX updates that suffer from network
+  latencies.
 
 - Improved XHTML output of various fractions.
 
@@ -35,7 +36,8 @@ What's new
   dot '.' or by the prefix "./". Also, any non-absolute path will be
   prepended with the LyX document directory.
 
-- Updated templates to current LyX format, so no conversion will be needed.
+- Updated templates to current LyX format, so no conversion will be
+  needed.
 
 
 * USER INTERFACE
@@ -44,13 +46,17 @@ What's new
   Serbian (Latin), Spanish, Swedish and Ukrainian User Interface
   Localization.
 
-- Now it is not necessary to restart LyX after changing the default document
-  directory and/or the PATH prefix in the preferences for them to take effect.
+- Now it is not necessary to restart LyX after changing the default
+  document directory and/or the PATH prefix in the preferences for them
+  to take effect.
 
 
 * DOCUMENTATION AND LOCALIZATION
 
 - Updated French documentation files.
+
+- updated template file for the latest version of the ACM siggraph
+  LaTeX-package.
 
 
 * BUILD/INSTALLATION
@@ -116,8 +122,8 @@ What's new
 
 - Fixed problem with display of Buffer load errors (bug 7622).
 
-- Show the correct label after adding a line to an AMS Multline formula (bug
-  7511).
+- Show the correct label after adding a line to an AMS Multline formula
+ (bug 7511).
   
 - Equation numbering in child documents now works properly (bug 7531).
 
@@ -126,7 +132,8 @@ What's new
 - Restore the functionality of the TeX Information dialog on Cygwin if a
   native Windows TeX engine is used.
 
-- Correct erroneous report of duplicate labels when dissolving insets (bug 7319).
+- Correct erroneous report of duplicate labels when dissolving insets
+  (bug 7319).
 
 - Make size of characters in instant preview snippets independent of the
   LaTeX font size (bug 2200).
@@ -153,13 +160,14 @@ What's new
   circumstances, or do strange things with \selectlanguage(bug 6560). This
   has been mostly fixed. Please see the bug report for remaining issues.
 
-- Fixed bug in matching at borders within *-environments with ignore-format off.
-  (related to bug 7596)
+- Fixed bug in matching at borders within *-environments with ignore-format
+  off. (related to bug 7596)
 
 - Bugfix in how the search buffer was exported for the Advanced Find & Replace.
   For example, before this footnotes were not correctly found.
 
-- Now advanced find and replace doesn't ignore white spaces while matching with ignore format.
+- Now advanced find and replace doesn't ignore white spaces while matching
+  with ignore format.
 
 
 * DOCUMENTATION AND LOCALIZATION
