@@ -261,6 +261,10 @@ def checkProgAlternatives(description, progs, rc_entry = [], alt_rc_entry = [], 
 
 
 def addAlternatives(rcs, alt_type):
+    '''
+        Returns a \\prog_alternatives string to be used as an alternative
+        rc entry.
+    '''
     r = re.compile(r'\\Format (\S+).*$')
     m = None
     alt = ''
@@ -279,8 +283,11 @@ def addAlternatives(rcs, alt_type):
     return alt
 
 
-def checkViewer(description, progs, rc_entry = [], path = []):
-    ''' The same as checkProgAlternatives, but for viewers '''
+def listAlternatives(progs, alt_type, rc_entry = []):
+    '''
+        Returns a list of \\prog_alternatives strings to be used as alternative
+        rc entries.
+    '''
     if len(rc_entry) > 1 and len(rc_entry) != len(progs) + 1:
         logger.error("rc entry should have one item or item for each prog and not_found.")
         sys.exit(2)
@@ -288,67 +295,37 @@ def checkViewer(description, progs, rc_entry = [], path = []):
     for idx in range(len(progs)):
         if len(rc_entry) == 1:
             rcs = rc_entry[0].split('\n')
-            alt = addAlternatives(rcs, 'viewer')
+            alt = addAlternatives(rcs, alt_type)
             alt_rc_entry.insert(0, alt)
         elif len(rc_entry) > 1:
             rcs = rc_entry[idx].split('\n')
-            alt = addAlternatives(rcs, 'viewer')
+            alt = addAlternatives(rcs, alt_type)
             alt_rc_entry.insert(idx, alt)
+    return alt_rc_entry
+
+
+def checkViewer(description, progs, rc_entry = [], path = []):
+    ''' The same as checkProgAlternatives, but for viewers '''
+    alt_rc_entry = listAlternatives(progs, 'viewer', rc_entry)
     return checkProgAlternatives(description, progs, rc_entry, alt_rc_entry, path, not_found = 'auto')
 
 
 def checkEditor(description, progs, rc_entry = [], path = []):
     ''' The same as checkProgAlternatives, but for editors '''
-    if len(rc_entry) > 1 and len(rc_entry) != len(progs) + 1:
-        logger.error("rc entry should have one item or item for each prog and not_found.")
-        sys.exit(2)
-    alt_rc_entry = []
-    for idx in range(len(progs)):
-        if len(rc_entry) == 1:
-            rcs = rc_entry[0].split('\n')
-            alt = addAlternatives(rcs, 'editor')
-            alt_rc_entry.insert(0, alt)
-        elif len(rc_entry) > 1:
-            rcs = rc_entry[idx].split('\n')
-            alt = addAlternatives(rcs, 'editor')
-            alt_rc_entry.insert(idx, alt)
+    alt_rc_entry = listAlternatives(progs, 'editor', rc_entry)
     return checkProgAlternatives(description, progs, rc_entry, alt_rc_entry, path, not_found = 'auto')
 
 
 def checkViewerNoRC(description, progs, rc_entry = [], path = []):
     ''' The same as checkViewer, but do not add rc entry '''
-    if len(rc_entry) > 1 and len(rc_entry) != len(progs) + 1:
-        logger.error("rc entry should have one item or item for each prog and not_found.")
-        sys.exit(2)
-    alt_rc_entry = []
-    for idx in range(len(progs)):
-        if len(rc_entry) == 1:
-            rcs = rc_entry[0].split('\n')
-            alt = addAlternatives(rcs, 'viewer')
-            alt_rc_entry.insert(0, alt)
-        elif len(rc_entry) > 1:
-            rcs = rc_entry[idx].split('\n')
-            alt = addAlternatives(rcs, 'viewer')
-            alt_rc_entry.insert(idx, alt)
+    alt_rc_entry = listAlternatives(progs, 'viewer', rc_entry)
     rc_entry = []
     return checkProgAlternatives(description, progs, rc_entry, alt_rc_entry, path, not_found = 'auto')
 
 
 def checkEditorNoRC(description, progs, rc_entry = [], path = []):
     ''' The same as checkViewer, but do not add rc entry '''
-    if len(rc_entry) > 1 and len(rc_entry) != len(progs) + 1:
-        logger.error("rc entry should have one item or item for each prog and not_found.")
-        sys.exit(2)
-    alt_rc_entry = []
-    for idx in range(len(progs)):
-        if len(rc_entry) == 1:
-            rcs = rc_entry[0].split('\n')
-            alt = addAlternatives(rcs, 'editor')
-            alt_rc_entry.insert(0, alt)
-        elif len(rc_entry) > 1:
-            rcs = rc_entry[idx].split('\n')
-            alt = addAlternatives(rcs, 'editor')
-            alt_rc_entry.insert(idx, alt)
+    alt_rc_entry = listAlternatives(progs, 'editor', rc_entry)
     rc_entry = []
     return checkProgAlternatives(description, progs, rc_entry, alt_rc_entry, path, not_found = 'auto')
 
