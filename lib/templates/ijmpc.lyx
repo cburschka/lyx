@@ -1,22 +1,30 @@
-#LyX 2.1.0svn created this file. For more info see http://www.lyx.org/
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
 \lyxformat 413
 \begin_document
 \begin_header
-\use_default_options false
 \textclass ijmpc
+\use_default_options false
+\maintain_unincluded_children false
 \language english
-\language_package default
+\language_package none
 \inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
-\float_placement htbp
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement tbph
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -28,32 +36,51 @@
 \use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author 1 "" 
-\use_refstyle 0
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This is a template LyX file for articles to be submitted to the International
+ Journal of Modern Physics section C (IJMPC).
+ How to install the IJMPC LaTeX class to your LaTeX system is explained
+ in 
+\begin_inset Flex URL
+status open
 
 \begin_layout Plain Layout
 
+http://wiki.lyx.org/Examples/IJMP
+\end_layout
 
-\backslash
-markboth{<Authors' Names>} {<Paper's short title>}
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -62,14 +89,65 @@ markboth{<Authors' Names>} {<Paper's short title>}
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note
+\series default
+: To be able to compile ijmpc articles, assure that in the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Language
+\family default
+ the option 
+\family sans
+Language package
+\family default
+ is set to 
+\family sans
+None
+\family default
+.
+\end_layout
+
+\begin_layout Plain Layout
+(For all other documents it is highly recommended to use 
+\family sans
+Default
+\family default
+!)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout MarkBoth
+Authors' Names
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
+}{
+\end_layout
 
-\backslash
-catchline{}{}{}{}{}
+\end_inset
+
+Paper's Title
+\end_layout
+
+\begin_layout Catchline
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+a command only for the typesetter, keep it empty!
 \end_layout
 
 \end_inset
@@ -78,18 +156,28 @@ catchline{}{}{}{}{}
 \end_layout
 
 \begin_layout Title
-<TITLE OF THE ARTICLE>
-\end_layout
-
-\begin_layout Author
-<FIRST-1>.
- <MIDDLE-1>.
- <SURNAME-1>
+TITLE OF THE ARTICLE
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-<Permanent or present address for the first author (optional).>
+For the title, try not to use more than 3 lines.
+ Typeset the title uppercase.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+FIRST AUTHOR
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Typeset names uppercase.
+ Use the footnote to indicate the present or permanent address of the author.
 \end_layout
 
 \end_inset
@@ -107,17 +195,26 @@ status collapsed
 \end_inset
 
 e-mail-1
-\end_layout
-
-\begin_layout Author
-<FIRST-2>.
- <MIDDLE-2>.
- <SURNAME-2>
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-<Permanent or present address for the second author (optional).>
+State completely without abbreviations, the affiliation and mailing address,
+ including country.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+SECOND AUTHOR
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Permanent or present address for the second author (optional).
 \end_layout
 
 \end_inset
@@ -137,15 +234,47 @@ status collapsed
 e-mail-2
 \end_layout
 
-\begin_layout Abstract
-<This is the Abstract of the paper (note that there is no label).
- It must be up to 200 words long; references or displayed equations are
- not allowed in the Abstract.>
+\begin_layout History
+\begin_inset Flex Received
+status open
+
+\begin_layout Plain Layout
+Day Month Year
 \end_layout
 
-\begin_layout Keywords
-<keyword-1; keyword-2; ...
- (up to five keywords, separated by semicolons).>
+\end_inset
+
+
+\begin_inset Flex Revised
+status open
+
+\begin_layout Plain Layout
+Day Month Year
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+The abstract should summarize the context, content and conclusions of the
+ paper in less than 200 words.
+ It should not contain any references or displayed equations.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Keywords
+status open
+
+\begin_layout Plain Layout
+Four or five keywords; separated by semicolon
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Classification Codes
@@ -153,125 +282,309 @@ e-mail-2
 \end_layout
 
 \begin_layout Section
-Introduction
+The Main Text
 \end_layout
 
 \begin_layout Standard
-<Intro text.>
+Contributions to the 
+\emph on
+International Journal of Modern Physics C
+\emph default
+ are to be in English.
+ Authors are encouraged to have their contribution checked for grammar.
+ American spelling should be used.
+ Abbreviations are allowed but should be spelt out in full when first used.
+ Integers ten and below are to be spelt out.
+ Italicize foreign language phrases (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+Latin, French).
 \end_layout
 
 \begin_layout Section
-The theory
+Major Headings
 \end_layout
 
 \begin_layout Standard
-<A standard section.
- Several 
+Major headings should be typeset with the first letter of important words
+ capitalized.
+\end_layout
+
+\begin_layout Subsection
+Sub-headings
+\end_layout
+
+\begin_layout Standard
+Sub-headings should be typeset capitalized the first letter of the first
+ word only.
+\end_layout
+
+\begin_layout Subsubsection
+Sub-subheadings
+\end_layout
+
+\begin_layout Standard
+Capitalize the first letter of the first word only.
+\end_layout
+
+\begin_layout Subsection
+
+\backslash
+Lists of items
+\end_layout
+
+\begin_layout Standard
+Lists may be laid out with each item marked by a dot:
+\end_layout
+
+\begin_layout ItemList
+item one
+\end_layout
+
+\begin_layout ItemList
+item two
+\end_layout
+
+\begin_layout Standard
+Items may also be numbered in lowercase roman numerals:
+\end_layout
+
+\begin_layout RomanList
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+(ii)
+\end_layout
+
+\end_inset
+
+item one
+\end_layout
+
+\begin_layout RomanList
+item two
+\end_layout
+
+\begin_deeper
+\begin_layout RomanList
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+(b)
+\end_layout
+
+\end_inset
+
+lists within lists can be numbered with lowercase roman letters
+\end_layout
+
+\begin_layout RomanList
+second item
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Equations
+\end_layout
+
+\begin_layout Standard
+Displayed equations should be numbered consecutively in the whole paper,
+ with the number set flush right and enclosed in parentheses 
+\backslash
+begin{equation}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mu(n,t)=\frac{\sum_{i=1}^{\infty}1(d_{i}<t,N(d_{i})=n)}{\int_{\sigma=0}^{t}1(N(\sigma)=n)d\sigma}\label{eq:diseqn}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Equations should be referred to in abbreviated form, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Quotes eld
 \end_inset
 
-special
-\begin_inset Quotes erd
+Eq.
+\begin_inset space ~
 \end_inset
 
- environments are available.
- LyX uses the appropriate text style for each special environment, and numbers
- them as necessary.>
-\end_layout
 
-\begin_layout Definition
-<A definition.>
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:diseqn"
 
-\begin_layout Example
-<An example.>
-\end_layout
+\end_inset
 
-\begin_layout Remark
-<A remark.>
-\end_layout
+'' or ``(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:diseqn"
 
-\begin_layout Notation
-<A notation.>
+\end_inset
+
+)''.
+ In multiple-line equations, the number should be given on the last line.
+ Punctuation marks are used at the end of equations as if they appeared
+ directly in the text.
 \end_layout
 
 \begin_layout Theorem
-<Theorem text.>
-\end_layout
-
-\begin_layout Proof
-<Proof text.
- Note that proofs should end with a box.
- LyX adds this box automatically.>
-\end_layout
-
-\begin_layout Corollary
-<Corollary text.>
+A theorem
 \end_layout
 
 \begin_layout Lemma
-<Lemma text.>
+A lemma
 \end_layout
 
-\begin_layout Proposition
-<Proposition text.>
-\end_layout
-
-\begin_layout Prop
-<A prop.>
-\end_layout
-
-\begin_layout Question
-<A question.>
-\end_layout
-
-\begin_layout Claim
-<A claim.>
-\end_layout
-
-\begin_layout Conjecture
-<A conjecture.>
+\begin_layout Proof
+A proof
 \end_layout
 
 \begin_layout Section
-The numerical method
+Illustrations and Photographs
 \end_layout
 
 \begin_layout Standard
-<A useful environment for describing algorithms is 
+Figures are to be inserted in the text nearest their first reference.
+ If the author requires the publisher to reduce the figures, ensure that
+ the figures (including letterings and numbers) are large enough to be clearly
+ seen after reduction.
+ If photographs are to be used, only black and white ones are acceptable.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ph
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+remove the 
 \begin_inset Quotes eld
 \end_inset
 
-Step
+%
 \begin_inset Quotes erd
 \end_inset
 
-, e.g.:>
+ and replace the image name:
 \end_layout
 
-\begin_layout Step
-<Short description of step 1.>
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+centerline{
+\backslash
+psfig{file=image.png,width=4.7cm}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace 8pt*
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:A-schematic-illustration"
+
+\end_inset
+
+A schematic illustration of dissociative recombination.
+ The direct mechanism, 4m
+\begin_inset Formula $_{\pi}^{2}$
+\end_inset
+
+ is initiated when the molecular ion S
+\begin_inset Formula $_{{\rm L}}$
+\end_inset
+
+ captures an electron with kinetic energy.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-<Description of step 1.>
-\end_layout
+The caption must be placed below the figure (see Fig.
+\begin_inset space ~
+\end_inset
 
-\begin_layout Step
-<Short description of step 2.>
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:A-schematic-illustration"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
-<Description of step 2.>
+Previously published material must be accompanied by written permission
+ from the author and publisher.
 \end_layout
 
 \begin_layout Section
-Results and discussion
+References
 \end_layout
 
 \begin_layout Standard
-<Another standard section.
- A citation reference is included.
+A citation reference is included.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-1"
@@ -289,7 +602,15 @@ key "key-1,key-2"
 \family typewriter
 refcite
 \family default
- command into an ERT box, e.g., 
+ command, e.
+\begin_inset space ~
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -298,14 +619,11 @@ see Ref.
 \end_inset
 
 
-\begin_inset ERT
+\begin_inset Flex Refcite
 status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-refcite{key-1}
+key-1
 \end_layout
 
 \end_inset
@@ -314,27 +632,16 @@ refcite{key-1}
 \begin_inset Quotes erd
 \end_inset
 
-.>
+.
 \end_layout
 
-\begin_layout Subsection
-A subsection
+\begin_layout Section
+Tables
 \end_layout
 
 \begin_layout Standard
-<Subsection text.
- Here, a table is included (see Table
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cap:fuf"
-
-\end_inset
-
-).>
+Tables should be inserted in the text as close to the point of reference
+ as possible.
 \end_layout
 
 \begin_layout Standard
@@ -344,25 +651,11 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
+\begin_inset Flex TableCaption
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-tbl{
-\end_layout
-
-\end_inset
-
 An example table.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -379,12 +672,9 @@ status collapsed
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -511,7 +801,7 @@ Column C
 
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:fuf"
+name "tab:fuf"
 
 \end_inset
 
@@ -534,12 +824,47 @@ status collapsed
 
 \end_layout
 
-\begin_layout Subsubsection
-A subsubsection
+\begin_layout Standard
+If tables need to extend over to a second page, the continuation of the
+ table should be preceded by a caption, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Table 2
+\emph default
+ Continued
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Footnotes
 \end_layout
 
 \begin_layout Standard
-<Subsubsection text.>
+Some text.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+A footnote
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section*
@@ -547,46 +872,19 @@ Acknowledgments
 \end_layout
 
 \begin_layout Standard
-<Acknowledgments text.
- Note that this is only a starred section; there is no 
-\begin_inset Quotes eld
-\end_inset
-
-acknowledgments
-\begin_inset Quotes erd
-\end_inset
-
- environment.>
-\end_layout
-
-\begin_layout Appendices Section
-
+This section should come before the References.
+ Dedications and funding information may also be included here.
 \end_layout
 
 \begin_layout Appendix
+\start_of_appendix
 An Appendix section
 \end_layout
 
 \begin_layout Standard
-<Appendices should be preceeded by an empty 
-\begin_inset Quotes eld
-\end_inset
-
-Appendices
-\begin_inset Quotes erd
-\end_inset
-
- section, as in this template.
- The 
-\begin_inset Quotes eld
-\end_inset
-
-Appendices Section
-\begin_inset Quotes erd
-\end_inset
-
- just marks the beginning of appendices.
- Note that appendices should be placed 
+Appendices should be used only when absolutely necessary.
+ They should come before the References.Note that appendices should be placed
+ 
 \emph on
 after
 \emph default
@@ -594,7 +892,7 @@ after
 \shape italic
 before
 \shape default
- the References.>
+ the References.
 \end_layout
 
 \begin_layout Appendix
@@ -607,6 +905,7 @@ Another Appendix section
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "key-1"
@@ -631,6 +930,7 @@ Volume
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring References
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "key-2"
