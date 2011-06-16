@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-06-16 10:55-0400\n"
-"PO-Revision-Date: 2011-06-01 19:23+0300\n"
+"PO-Revision-Date: 2011-06-16 19:55+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "Language: uk\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.2\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
@@ -8412,14 +8412,12 @@ msgstr "Сцена"
 #: lib/layouts/ijmpc.layout:68 lib/layouts/ijmpc.layout:72
 #: lib/layouts/ijmpc.layout:80 lib/layouts/ijmpd.layout:73
 #: lib/layouts/ijmpd.layout:77 lib/layouts/ijmpd.layout:85
-#, fuzzy
 msgid "Catchline"
-msgstr "математичний рядок"
+msgstr "Слоган"
 
 #: lib/layouts/ijmpc.layout:140 lib/layouts/ijmpd.layout:130
-#, fuzzy
 msgid "History"
-msgstr "Історія версій"
+msgstr "Журнал"
 
 #: lib/layouts/ijmpc.layout:171 lib/layouts/ijmpc.layout:175
 #: lib/layouts/ijmpd.layout:161 lib/layouts/ijmpd.layout:165
@@ -8437,28 +8435,24 @@ msgid "TableCaption"
 msgstr "Назва_таблиці"
 
 #: lib/layouts/ijmpc.layout:229 lib/layouts/ijmpd.layout:232
-#, fuzzy
 msgid "Table caption"
 msgstr "Назва таблиці"
 
 #: lib/layouts/ijmpc.layout:242 lib/layouts/ijmpd.layout:245
 msgid "Refcite"
-msgstr ""
+msgstr "ЦитованеПосилання"
 
 #: lib/layouts/ijmpc.layout:246 lib/layouts/ijmpd.layout:249
-#, fuzzy
 msgid "Cite reference"
-msgstr "всі цитовані посилання"
+msgstr "Цитоване посилання"
 
 #: lib/layouts/ijmpc.layout:259 lib/layouts/ijmpd.layout:262
-#, fuzzy
 msgid "ItemList"
-msgstr "Перелік"
+msgstr "СписокЗПозначками"
 
 #: lib/layouts/ijmpc.layout:280 lib/layouts/ijmpd.layout:283
-#, fuzzy
 msgid "RomanList"
-msgstr "Прямий"
+msgstr "СписокЗРимськимиЦифрами"
 
 #: lib/layouts/ijmpc.layout:317 lib/layouts/ijmpd.layout:342
 #: lib/layouts/theorems-ams-bytype.inc:68 lib/layouts/theorems-ams.inc:42
@@ -8518,9 +8512,8 @@ msgid "Appendix \\Alph{appendix}."
 msgstr "Додаток \\Alph{chapter}"
 
 #: lib/layouts/ijmpd.layout:178 lib/layouts/ijmpd.layout:182
-#, fuzzy
 msgid "Comby"
-msgstr "Комбінація-клавіш"
+msgstr "Комбінація"
 
 #: lib/layouts/iopart.layout:77
 msgid "Review"
@@ -14021,23 +14014,20 @@ msgid "Nice fraction (3/4)\t\\nicefrac"
 msgstr "Красивий дріб (3/4)\t\\nicefrac"
 
 #: lib/ui/stdtoolbars.inc:356
-#, fuzzy
 msgid "Unit (km)\t\\unitone"
-msgstr "Одиниця (км)\t\\unit"
+msgstr "Одиниця (км)\t\\unitone"
 
 #: lib/ui/stdtoolbars.inc:357
-#, fuzzy
 msgid "Unit (864 m)\t\\unittwo"
-msgstr "Одиниця (864 м)\t\\unit"
+msgstr "Одиниця (864 м)\t\\unittwo"
 
 #: lib/ui/stdtoolbars.inc:358
 msgid "Unit fraction (km/h)\t\\unitfrac"
 msgstr "Дробова одиниця (км/г)\t\\unitfrac"
 
 #: lib/ui/stdtoolbars.inc:359
-#, fuzzy
 msgid "Unit fraction (20 km/h)\t\\unitfracthree"
-msgstr "Дробова одиниця (20 км/г)\t\\unitfrac"
+msgstr "Дробова одиниця (20 км/г)\t\\unitfracthree"
 
 #: lib/ui/stdtoolbars.inc:360
 msgid "Text fraction\t\\tfrac"
@@ -14052,14 +14042,12 @@ msgid "Continued fraction\t\\cfrac"
 msgstr "Неперервний дріб\t\\cfrac"
 
 #: lib/ui/stdtoolbars.inc:363
-#, fuzzy
 msgid "Continued fraction (left)\t\\cfracleft"
-msgstr "Неперервний дріб (лівий)\t\\cfrac"
+msgstr "Неперервний дріб (лівий)\t\\cfracleft"
 
 #: lib/ui/stdtoolbars.inc:364
-#, fuzzy
 msgid "Continued fraction (right)\t\\cfracright"
-msgstr "Неперервний дріб (правий)\t\\cfrac"
+msgstr "Неперервний дріб (правий)\t\\cfracright"
 
 #: lib/ui/stdtoolbars.inc:365
 msgid "Binomial\t\\binom"
@@ -17840,14 +17828,13 @@ msgid "&Don't Add"
 msgstr "Н&е додавати"
 
 #: src/CutAndPaste.cpp:665 src/Text.cpp:363
-#, fuzzy, c-format
+#, c-format
 msgid "Layout `%1$s' was not found."
-msgstr "Клас документів не знайдено"
+msgstr "Компонування «%1$s» не виявлено."
 
 #: src/CutAndPaste.cpp:667 src/Text.cpp:365
-#, fuzzy
 msgid "Layout Not Found"
-msgstr "Не знайдено"
+msgstr "Компонування не виявлено"
 
 #: src/CutAndPaste.cpp:695
 #, c-format
