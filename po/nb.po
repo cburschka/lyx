@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.6.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-16 10:22-0400\n"
+"POT-Creation-Date: 2011-06-16 10:55-0400\n"
 "PO-Revision-Date: 2009-08-19 17:52+0100\n"
 "Last-Translator: Helge Hafting <helge.hafting@aitel.hist.no>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -5837,6 +5837,11 @@ msgstr "Tittel"
 msgid "IEEE membership"
 msgstr ""
 
+#: lib/layouts/IEEEtran.layout:103
+#, fuzzy
+msgid "Lowercase"
+msgstr "Små bokstaver|å"
+
 #: lib/layouts/IEEEtran.layout:107
 #, fuzzy
 msgid "lowercase"
@@ -5902,9 +5907,9 @@ msgstr "Sammendrag---"
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
 #: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:262
 #: lib/layouts/siamltex.layout:303 lib/layouts/sigplanconf.layout:146
-#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:66
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:161
-#: lib/layouts/svjour.inc:228
+#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:63
+#: lib/layouts/svglobal3.layout:66 lib/layouts/agu_stdtitle.inc:120
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svjour.inc:228
 msgid "Keywords"
 msgstr "Nøkkelord"
 
@@ -6434,6 +6439,10 @@ msgstr "note"
 #: lib/layouts/achemso.layout:219
 msgid "bibnote"
 msgstr ""
+
+#: lib/layouts/achemso.layout:261
+msgid "Chemistry"
+msgstr "Kjemi"
 
 #: lib/layouts/achemso.layout:264
 msgid "chemistry"
@@ -8713,7 +8722,7 @@ msgid "Rapid"
 msgstr ""
 
 #: lib/layouts/iopart.layout:218 lib/layouts/revtex4.layout:251
-#: lib/layouts/svglobal3.layout:73
+#: lib/layouts/svglobal3.layout:70 lib/layouts/svglobal3.layout:73
 msgid "PACS"
 msgstr "PACS"
 
@@ -9450,7 +9459,7 @@ msgstr "SAMMENDRAG"
 msgid "ACKNOWLEDGMENTS"
 msgstr "TAKK TIL"
 
-#: lib/layouts/svglobal3.layout:80
+#: lib/layouts/svglobal3.layout:77 lib/layouts/svglobal3.layout:80
 msgid "Subclass"
 msgstr ""
 
@@ -9565,6 +9574,11 @@ msgstr "note"
 msgid "sidenote"
 msgstr "note"
 
+#: lib/layouts/tufte-book.layout:143
+#, fuzzy
+msgid "Marginnote"
+msgstr "Margnote|a"
+
 #: lib/layouts/tufte-book.layout:147
 #, fuzzy
 msgid "marginnote"
@@ -9578,9 +9592,19 @@ msgstr ""
 msgid "new thought"
 msgstr ""
 
+#: lib/layouts/tufte-book.layout:170
+#, fuzzy
+msgid "AllCaps"
+msgstr "Kapitéler"
+
 #: lib/layouts/tufte-book.layout:173
 #, fuzzy
 msgid "allcaps"
+msgstr "Kapitéler"
+
+#: lib/layouts/tufte-book.layout:183
+#, fuzzy
+msgid "SmallCaps"
 msgstr "Kapitéler"
 
 #: lib/layouts/tufte-book.layout:186
@@ -24664,9 +24688,6 @@ msgstr "Ukjent bruker"
 #~ msgid "graph"
 #~ msgstr "Biografi"
 
-#~ msgid "Chemistry"
-#~ msgstr "Kjemi"
-
 #, fuzzy
 #~ msgid "Flex:Alert"
 #~ msgstr "Vert"
@@ -24682,22 +24703,6 @@ msgstr "Ukjent bruker"
 #, fuzzy
 #~ msgid "Flex:PresentationMode"
 #~ msgstr "Orientering"
-
-#, fuzzy
-#~ msgid "Lowercase"
-#~ msgstr "Små bokstaver|å"
-
-#, fuzzy
-#~ msgid "Marginnote"
-#~ msgstr "Margnote|a"
-
-#, fuzzy
-#~ msgid "AllCaps"
-#~ msgstr "Kapitéler"
-
-#, fuzzy
-#~ msgid "SmallCaps"
-#~ msgstr "Kapitéler"
 
 #, fuzzy
 #~ msgid "Flex:Firstname"

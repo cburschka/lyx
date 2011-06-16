@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-16 10:22-0400\n"
+"POT-Creation-Date: 2011-06-16 10:55-0400\n"
 "PO-Revision-Date: 2011-06-07 23:18+0100\n"
 "Last-Translator: Zoran T. Filipović <zoran.filipovic@yahoo.com>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -5803,6 +5803,11 @@ msgstr "Naslov"
 msgid "IEEE membership"
 msgstr ""
 
+#: lib/layouts/IEEEtran.layout:103
+#, fuzzy
+msgid "Lowercase"
+msgstr "Mala slova|M"
+
 #: lib/layouts/IEEEtran.layout:107
 #, fuzzy
 msgid "lowercase"
@@ -5868,9 +5873,9 @@ msgstr "Sažetak---"
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
 #: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:262
 #: lib/layouts/siamltex.layout:303 lib/layouts/sigplanconf.layout:146
-#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:66
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:161
-#: lib/layouts/svjour.inc:228
+#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:63
+#: lib/layouts/svglobal3.layout:66 lib/layouts/agu_stdtitle.inc:120
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svjour.inc:228
 msgid "Keywords"
 msgstr "Ključne reči"
 
@@ -6389,6 +6394,10 @@ msgstr ""
 #: lib/layouts/achemso.layout:219
 msgid "bibnote"
 msgstr ""
+
+#: lib/layouts/achemso.layout:261
+msgid "Chemistry"
+msgstr "Hemija"
 
 #: lib/layouts/achemso.layout:264
 msgid "chemistry"
@@ -8605,7 +8614,7 @@ msgid "Rapid"
 msgstr "Brzo"
 
 #: lib/layouts/iopart.layout:218 lib/layouts/revtex4.layout:251
-#: lib/layouts/svglobal3.layout:73
+#: lib/layouts/svglobal3.layout:70 lib/layouts/svglobal3.layout:73
 msgid "PACS"
 msgstr "PACS"
 
@@ -9306,7 +9315,7 @@ msgstr "SAŽETAK"
 msgid "ACKNOWLEDGMENTS"
 msgstr "ZAHVALNOST"
 
-#: lib/layouts/svglobal3.layout:80
+#: lib/layouts/svglobal3.layout:77 lib/layouts/svglobal3.layout:80
 msgid "Subclass"
 msgstr ""
 
@@ -9406,6 +9415,10 @@ msgstr ""
 msgid "sidenote"
 msgstr ""
 
+#: lib/layouts/tufte-book.layout:143
+msgid "Marginnote"
+msgstr "Beleška na margini"
+
 #: lib/layouts/tufte-book.layout:147
 msgid "marginnote"
 msgstr "beleška na margini"
@@ -9418,9 +9431,19 @@ msgstr ""
 msgid "new thought"
 msgstr ""
 
+#: lib/layouts/tufte-book.layout:170
+#, fuzzy
+msgid "AllCaps"
+msgstr "Small Caps"
+
 #: lib/layouts/tufte-book.layout:173
 msgid "allcaps"
 msgstr ""
+
+#: lib/layouts/tufte-book.layout:183
+#, fuzzy
+msgid "SmallCaps"
+msgstr "Small Caps"
 
 #: lib/layouts/tufte-book.layout:186
 msgid "smallcaps"
@@ -23642,9 +23665,6 @@ msgstr "Nepoznati korisnik"
 #~ msgid "graph"
 #~ msgstr "grafikon"
 
-#~ msgid "Chemistry"
-#~ msgstr "Hemija"
-
 #~ msgid "Block ( ERT[{title}] body ):"
 #~ msgstr "Blok ( ERT[{title}] body ):"
 
@@ -23671,9 +23691,6 @@ msgstr "Nepoznati korisnik"
 
 #~ msgid "--- Appendices ---"
 #~ msgstr "--- Prilozi ---"
-
-#~ msgid "Marginnote"
-#~ msgstr "Beleška na margini"
 
 #~ msgid "Element:Firstname"
 #~ msgstr "Element: Ime"

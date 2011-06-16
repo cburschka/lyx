@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-16 10:22-0400\n"
+"POT-Creation-Date: 2011-06-16 10:55-0400\n"
 "PO-Revision-Date: 2011-04-09 15:24+0200\n"
 "Last-Translator: Ingar Pareliussen <ingar.pareliussen@_dmmh_no>\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
@@ -5669,6 +5669,10 @@ msgstr "Tittel"
 msgid "IEEE membership"
 msgstr "IEEE-medlemskap"
 
+#: lib/layouts/IEEEtran.layout:103
+msgid "Lowercase"
+msgstr "Litenskrift"
+
 #: lib/layouts/IEEEtran.layout:107
 msgid "lowercase"
 msgstr "litenskrift"
@@ -5730,9 +5734,9 @@ msgstr "Samandrag---"
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
 #: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:262
 #: lib/layouts/siamltex.layout:303 lib/layouts/sigplanconf.layout:146
-#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:66
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:161
-#: lib/layouts/svjour.inc:228
+#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:63
+#: lib/layouts/svglobal3.layout:66 lib/layouts/agu_stdtitle.inc:120
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svjour.inc:228
 msgid "Keywords"
 msgstr "Stikkord"
 
@@ -6248,6 +6252,10 @@ msgstr "Bibnotis"
 #: lib/layouts/achemso.layout:219
 msgid "bibnote"
 msgstr "bibnotis"
+
+#: lib/layouts/achemso.layout:261
+msgid "Chemistry"
+msgstr "Kjemi"
 
 #: lib/layouts/achemso.layout:264
 msgid "chemistry"
@@ -8471,7 +8479,7 @@ msgid "Rapid"
 msgstr "Rapid"
 
 #: lib/layouts/iopart.layout:218 lib/layouts/revtex4.layout:251
-#: lib/layouts/svglobal3.layout:73
+#: lib/layouts/svglobal3.layout:70 lib/layouts/svglobal3.layout:73
 msgid "PACS"
 msgstr "PACS"
 
@@ -9178,7 +9186,7 @@ msgstr "SAMANDRAG"
 msgid "ACKNOWLEDGMENTS"
 msgstr "TAKK"
 
-#: lib/layouts/svglobal3.layout:80
+#: lib/layouts/svglobal3.layout:77 lib/layouts/svglobal3.layout:80
 msgid "Subclass"
 msgstr "Underbolk"
 
@@ -9278,6 +9286,10 @@ msgstr "Ved sidan av notis"
 msgid "sidenote"
 msgstr "vednotis"
 
+#: lib/layouts/tufte-book.layout:143
+msgid "Marginnote"
+msgstr "Margnotis"
+
 #: lib/layouts/tufte-book.layout:147
 msgid "marginnote"
 msgstr "margnotis"
@@ -9290,9 +9302,17 @@ msgstr "NyTanke"
 msgid "new thought"
 msgstr "ny tanke"
 
+#: lib/layouts/tufte-book.layout:170
+msgid "AllCaps"
+msgstr "StoreBokstavar"
+
 #: lib/layouts/tufte-book.layout:173
 msgid "allcaps"
 msgstr "storebokstavar"
+
+#: lib/layouts/tufte-book.layout:183
+msgid "SmallCaps"
+msgstr "Små bokstavar"
 
 #: lib/layouts/tufte-book.layout:186
 msgid "smallcaps"
@@ -24221,9 +24241,6 @@ msgstr "ukjend brukar"
 #~ msgid "graph"
 #~ msgstr "grafar"
 
-#~ msgid "Chemistry"
-#~ msgstr "Kjemi"
-
 #~ msgid "Flex:Alert"
 #~ msgstr "Fleks:Åtvaring"
 
@@ -24235,18 +24252,6 @@ msgstr "ukjend brukar"
 
 #~ msgid "Flex:PresentationMode"
 #~ msgstr "Fleks:Presentasjonsmodus"
-
-#~ msgid "Lowercase"
-#~ msgstr "Litenskrift"
-
-#~ msgid "Marginnote"
-#~ msgstr "Margnotis"
-
-#~ msgid "AllCaps"
-#~ msgstr "StoreBokstavar"
-
-#~ msgid "SmallCaps"
-#~ msgstr "Små bokstavar"
 
 #~ msgid "Flex:Firstname"
 #~ msgstr "Fleks:Fornamn"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-16 10:22-0400\n"
+"POT-Creation-Date: 2011-06-16 10:55-0400\n"
 "PO-Revision-Date: 2011-06-05 09:24+0100\n"
 "Last-Translator: Ignacio García <ignacio.gmorales@gmail.com>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -5742,6 +5742,10 @@ msgstr "Título"
 msgid "IEEE membership"
 msgstr "Afiliado IEEE"
 
+#: lib/layouts/IEEEtran.layout:103
+msgid "Lowercase"
+msgstr "Minúsculas"
+
 #: lib/layouts/IEEEtran.layout:107
 msgid "lowercase"
 msgstr "minúsculas"
@@ -5803,9 +5807,9 @@ msgstr "Resumen---"
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
 #: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:262
 #: lib/layouts/siamltex.layout:303 lib/layouts/sigplanconf.layout:146
-#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:66
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:161
-#: lib/layouts/svjour.inc:228
+#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:63
+#: lib/layouts/svglobal3.layout:66 lib/layouts/agu_stdtitle.inc:120
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svjour.inc:228
 msgid "Keywords"
 msgstr "Palabras clave"
 
@@ -6321,6 +6325,10 @@ msgstr "Nota bibliográfica"
 #: lib/layouts/achemso.layout:219
 msgid "bibnote"
 msgstr "nota bibliográfica"
+
+#: lib/layouts/achemso.layout:261
+msgid "Chemistry"
+msgstr "Química"
 
 #: lib/layouts/achemso.layout:264
 msgid "chemistry"
@@ -8535,7 +8543,7 @@ msgid "Rapid"
 msgstr "Rápido"
 
 #: lib/layouts/iopart.layout:218 lib/layouts/revtex4.layout:251
-#: lib/layouts/svglobal3.layout:73
+#: lib/layouts/svglobal3.layout:70 lib/layouts/svglobal3.layout:73
 msgid "PACS"
 msgstr "PACS"
 
@@ -9236,7 +9244,7 @@ msgstr "RESUMEN"
 msgid "ACKNOWLEDGMENTS"
 msgstr "AGRADECIMIENTOS"
 
-#: lib/layouts/svglobal3.layout:80
+#: lib/layouts/svglobal3.layout:77 lib/layouts/svglobal3.layout:80
 msgid "Subclass"
 msgstr "Subclase"
 
@@ -9336,6 +9344,10 @@ msgstr "Nota al margen"
 msgid "sidenote"
 msgstr "nota al margen"
 
+#: lib/layouts/tufte-book.layout:143
+msgid "Marginnote"
+msgstr "Nota marginal"
+
 #: lib/layouts/tufte-book.layout:147
 msgid "marginnote"
 msgstr "nota marginal"
@@ -9348,9 +9360,17 @@ msgstr "Idea Nueva"
 msgid "new thought"
 msgstr "idea nueva"
 
+#: lib/layouts/tufte-book.layout:170
+msgid "AllCaps"
+msgstr "M a y ú s c u l a s"
+
 #: lib/layouts/tufte-book.layout:173
 msgid "allcaps"
 msgstr "mayúsculas"
+
+#: lib/layouts/tufte-book.layout:183
+msgid "SmallCaps"
+msgstr "V e r s a l i t a s"
 
 #: lib/layouts/tufte-book.layout:186
 msgid "smallcaps"
@@ -24403,9 +24423,6 @@ msgstr "Usuario desconocido"
 #~ msgid "graph"
 #~ msgstr "gráfico"
 
-#~ msgid "Chemistry"
-#~ msgstr "Química"
-
 #~ msgid "Flex:Alert"
 #~ msgstr "Flex:Alerta"
 
@@ -24417,18 +24434,6 @@ msgstr "Usuario desconocido"
 
 #~ msgid "Flex:PresentationMode"
 #~ msgstr "Flex:ModoPresentación"
-
-#~ msgid "Lowercase"
-#~ msgstr "Minúsculas"
-
-#~ msgid "Marginnote"
-#~ msgstr "Nota marginal"
-
-#~ msgid "AllCaps"
-#~ msgstr "M a y ú s c u l a s"
-
-#~ msgid "SmallCaps"
-#~ msgstr "V e r s a l i t a s"
 
 #~ msgid "Flex:Firstname"
 #~ msgstr "Flex:Nombre"

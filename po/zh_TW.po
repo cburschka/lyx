@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-16 10:22-0400\n"
+"POT-Creation-Date: 2011-06-16 10:55-0400\n"
 "PO-Revision-Date: 2007-06-26 17:10+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -5960,6 +5960,11 @@ msgstr "標題"
 msgid "IEEE membership"
 msgstr ""
 
+#: lib/layouts/IEEEtran.layout:103
+#, fuzzy
+msgid "Lowercase"
+msgstr "小寫|L"
+
 #: lib/layouts/IEEEtran.layout:107
 #, fuzzy
 msgid "lowercase"
@@ -6025,9 +6030,9 @@ msgstr "摘要---"
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
 #: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:262
 #: lib/layouts/siamltex.layout:303 lib/layouts/sigplanconf.layout:146
-#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:66
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:161
-#: lib/layouts/svjour.inc:228
+#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:63
+#: lib/layouts/svglobal3.layout:66 lib/layouts/agu_stdtitle.inc:120
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svjour.inc:228
 msgid "Keywords"
 msgstr "關鍵字"
 
@@ -6565,6 +6570,11 @@ msgstr "註記"
 #, fuzzy
 msgid "bibnote"
 msgstr "註記"
+
+#: lib/layouts/achemso.layout:261
+#, fuzzy
+msgid "Chemistry"
+msgstr "infty"
 
 #: lib/layouts/achemso.layout:264
 msgid "chemistry"
@@ -8857,7 +8867,7 @@ msgid "Rapid"
 msgstr "Rapid"
 
 #: lib/layouts/iopart.layout:218 lib/layouts/revtex4.layout:251
-#: lib/layouts/svglobal3.layout:73
+#: lib/layouts/svglobal3.layout:70 lib/layouts/svglobal3.layout:73
 msgid "PACS"
 msgstr "PACS"
 
@@ -9596,7 +9606,7 @@ msgstr "摘要"
 msgid "ACKNOWLEDGMENTS"
 msgstr "致謝"
 
-#: lib/layouts/svglobal3.layout:80
+#: lib/layouts/svglobal3.layout:77 lib/layouts/svglobal3.layout:80
 #, fuzzy
 msgid "Subclass"
 msgstr "主旨類別"
@@ -9713,6 +9723,11 @@ msgstr "註記"
 msgid "sidenote"
 msgstr "註記"
 
+#: lib/layouts/tufte-book.layout:143
+#, fuzzy
+msgid "Marginnote"
+msgstr "邊界註記|M"
+
 #: lib/layouts/tufte-book.layout:147
 #, fuzzy
 msgid "marginnote"
@@ -9726,10 +9741,20 @@ msgstr ""
 msgid "new thought"
 msgstr ""
 
+#: lib/layouts/tufte-book.layout:170
+#, fuzzy
+msgid "AllCaps"
+msgstr "大寫小字"
+
 #: lib/layouts/tufte-book.layout:173
 #, fuzzy
 msgid "allcaps"
 msgstr "小字"
+
+#: lib/layouts/tufte-book.layout:183
+#, fuzzy
+msgid "SmallCaps"
+msgstr "大寫小字"
 
 #: lib/layouts/tufte-book.layout:186
 #, fuzzy
@@ -25201,10 +25226,6 @@ msgstr "不明的使用者"
 #~ msgstr "Epigraph"
 
 #, fuzzy
-#~ msgid "Chemistry"
-#~ msgstr "infty"
-
-#, fuzzy
 #~ msgid "Flex:Alert"
 #~ msgstr "變異區塊"
 
@@ -25219,22 +25240,6 @@ msgstr "不明的使用者"
 #, fuzzy
 #~ msgid "Flex:PresentationMode"
 #~ msgstr "方向"
-
-#, fuzzy
-#~ msgid "Lowercase"
-#~ msgstr "小寫|L"
-
-#, fuzzy
-#~ msgid "Marginnote"
-#~ msgstr "邊界註記|M"
-
-#, fuzzy
-#~ msgid "AllCaps"
-#~ msgstr "大寫小字"
-
-#, fuzzy
-#~ msgid "SmallCaps"
-#~ msgstr "大寫小字"
 
 #, fuzzy
 #~ msgid "Flex:Firstname"

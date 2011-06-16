@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-16 10:22-0400\n"
+"POT-Creation-Date: 2011-06-16 10:55-0400\n"
 "PO-Revision-Date: 2011-04-19 07:27+0730\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Indonesian <was.uthm@gmail.com>\n"
@@ -5701,6 +5701,11 @@ msgstr "Judul"
 msgid "IEEE membership"
 msgstr "Keanggotaan IEEE"
 
+#: lib/layouts/IEEEtran.layout:103
+#, fuzzy
+msgid "Lowercase"
+msgstr "Hurufkecil semua|l"
+
 #: lib/layouts/IEEEtran.layout:107
 msgid "lowercase"
 msgstr "Hurufkecil"
@@ -5762,9 +5767,9 @@ msgstr "Abstrak---"
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
 #: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:262
 #: lib/layouts/siamltex.layout:303 lib/layouts/sigplanconf.layout:146
-#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:66
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:161
-#: lib/layouts/svjour.inc:228
+#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:63
+#: lib/layouts/svglobal3.layout:66 lib/layouts/agu_stdtitle.inc:120
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svjour.inc:228
 msgid "Keywords"
 msgstr "Kata kunci"
 
@@ -6280,6 +6285,10 @@ msgstr "Bibnote"
 #: lib/layouts/achemso.layout:219
 msgid "bibnote"
 msgstr "bibnote"
+
+#: lib/layouts/achemso.layout:261
+msgid "Chemistry"
+msgstr "Kimia"
 
 #: lib/layouts/achemso.layout:264
 msgid "chemistry"
@@ -8495,7 +8504,7 @@ msgid "Rapid"
 msgstr "Cepat"
 
 #: lib/layouts/iopart.layout:218 lib/layouts/revtex4.layout:251
-#: lib/layouts/svglobal3.layout:73
+#: lib/layouts/svglobal3.layout:70 lib/layouts/svglobal3.layout:73
 msgid "PACS"
 msgstr "PACS"
 
@@ -9196,7 +9205,7 @@ msgstr "ABSTRAK"
 msgid "ACKNOWLEDGMENTS"
 msgstr "UCAPAN TERIMA KASIH"
 
-#: lib/layouts/svglobal3.layout:80
+#: lib/layouts/svglobal3.layout:77 lib/layouts/svglobal3.layout:80
 msgid "Subclass"
 msgstr "Subclass"
 
@@ -9296,6 +9305,10 @@ msgstr "Nota samping"
 msgid "sidenote"
 msgstr "Nota samping"
 
+#: lib/layouts/tufte-book.layout:143
+msgid "Marginnote"
+msgstr "Nota tepi"
+
 #: lib/layouts/tufte-book.layout:147
 msgid "marginnote"
 msgstr "Nota tepi"
@@ -9308,9 +9321,17 @@ msgstr "PemikiranBaru"
 msgid "new thought"
 msgstr "PemikiranBaru"
 
+#: lib/layouts/tufte-book.layout:170
+msgid "AllCaps"
+msgstr "SemuaHurufBesar"
+
 #: lib/layouts/tufte-book.layout:173
 msgid "allcaps"
 msgstr "SemuaHurufBesar"
+
+#: lib/layouts/tufte-book.layout:183
+msgid "SmallCaps"
+msgstr "HurufBesarKecil"
 
 #: lib/layouts/tufte-book.layout:186
 msgid "smallcaps"
@@ -24321,9 +24342,6 @@ msgstr "Pemakai tidak dikenal"
 #~ msgid "graph"
 #~ msgstr "grafik"
 
-#~ msgid "Chemistry"
-#~ msgstr "Kimia"
-
 #, fuzzy
 #~ msgid "Flex:Alert"
 #~ msgstr "Perhatian"
@@ -24339,19 +24357,6 @@ msgstr "Pemakai tidak dikenal"
 #, fuzzy
 #~ msgid "Flex:PresentationMode"
 #~ msgstr "Custom:PresentationMode"
-
-#, fuzzy
-#~ msgid "Lowercase"
-#~ msgstr "Hurufkecil semua|l"
-
-#~ msgid "Marginnote"
-#~ msgstr "Nota tepi"
-
-#~ msgid "AllCaps"
-#~ msgstr "SemuaHurufBesar"
-
-#~ msgid "SmallCaps"
-#~ msgstr "HurufBesarKecil"
 
 #, fuzzy
 #~ msgid "Flex:Firstname"

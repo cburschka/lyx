@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-16 10:22-0400\n"
+"POT-Creation-Date: 2011-06-16 10:55-0400\n"
 "PO-Revision-Date: 2011-04-26 21:20+0100\n"
 "Last-Translator: Szőke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -5756,6 +5756,11 @@ msgstr "Cím"
 msgid "IEEE membership"
 msgstr ""
 
+#: lib/layouts/IEEEtran.layout:103
+#, fuzzy
+msgid "Lowercase"
+msgstr "Kisbetű|K"
+
 #: lib/layouts/IEEEtran.layout:107
 msgid "lowercase"
 msgstr "kisbetű"
@@ -5820,9 +5825,9 @@ msgstr "Kivonat---"
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
 #: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:262
 #: lib/layouts/siamltex.layout:303 lib/layouts/sigplanconf.layout:146
-#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:66
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:161
-#: lib/layouts/svjour.inc:228
+#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:63
+#: lib/layouts/svglobal3.layout:66 lib/layouts/agu_stdtitle.inc:120
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svjour.inc:228
 msgid "Keywords"
 msgstr "Kulcsszavak"
 
@@ -6341,6 +6346,10 @@ msgstr "Bibmegjegyzés"
 #: lib/layouts/achemso.layout:219
 msgid "bibnote"
 msgstr "bibmegjegyzés"
+
+#: lib/layouts/achemso.layout:261
+msgid "Chemistry"
+msgstr "Kémia"
 
 #: lib/layouts/achemso.layout:264
 msgid "chemistry"
@@ -8561,7 +8570,7 @@ msgid "Rapid"
 msgstr "Rapid"
 
 #: lib/layouts/iopart.layout:218 lib/layouts/revtex4.layout:251
-#: lib/layouts/svglobal3.layout:73
+#: lib/layouts/svglobal3.layout:70 lib/layouts/svglobal3.layout:73
 msgid "PACS"
 msgstr "PACS"
 
@@ -9262,7 +9271,7 @@ msgstr "KIVONAT"
 msgid "ACKNOWLEDGMENTS"
 msgstr "KÖSZÖNETNYILVÁNÍTÁSOK"
 
-#: lib/layouts/svglobal3.layout:80
+#: lib/layouts/svglobal3.layout:77 lib/layouts/svglobal3.layout:80
 msgid "Subclass"
 msgstr "Alosztály"
 
@@ -9362,6 +9371,10 @@ msgstr "Oldaljegyzet"
 msgid "sidenote"
 msgstr "oldaljegyzet"
 
+#: lib/layouts/tufte-book.layout:143
+msgid "Marginnote"
+msgstr "Széljegyzet"
+
 #: lib/layouts/tufte-book.layout:147
 msgid "marginnote"
 msgstr "széljegyzet"
@@ -9374,9 +9387,17 @@ msgstr "ÚjGondolat"
 msgid "new thought"
 msgstr "új gondolat"
 
+#: lib/layouts/tufte-book.layout:170
+msgid "AllCaps"
+msgstr "Nagybetűs"
+
 #: lib/layouts/tufte-book.layout:173
 msgid "allcaps"
 msgstr "nagybetűs"
+
+#: lib/layouts/tufte-book.layout:183
+msgid "SmallCaps"
+msgstr "KisKapitális"
 
 #: lib/layouts/tufte-book.layout:186
 msgid "smallcaps"
@@ -24508,9 +24529,6 @@ msgstr "Ismeretlen felhasználó"
 #~ msgid "graph"
 #~ msgstr "kép"
 
-#~ msgid "Chemistry"
-#~ msgstr "Kémia"
-
 #, fuzzy
 #~ msgid "Flex:Alert"
 #~ msgstr "Figyelem"
@@ -24526,19 +24544,6 @@ msgstr "Ismeretlen felhasználó"
 #, fuzzy
 #~ msgid "Flex:PresentationMode"
 #~ msgstr "Saját:PrezentációMód"
-
-#, fuzzy
-#~ msgid "Lowercase"
-#~ msgstr "Kisbetű|K"
-
-#~ msgid "Marginnote"
-#~ msgstr "Széljegyzet"
-
-#~ msgid "AllCaps"
-#~ msgstr "Nagybetűs"
-
-#~ msgid "SmallCaps"
-#~ msgstr "KisKapitális"
 
 #, fuzzy
 #~ msgid "Flex:Firstname"

@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-16 10:22-0400\n"
+"POT-Creation-Date: 2011-06-16 10:55-0400\n"
 "PO-Revision-Date: 2008-07-28 17:53+0100\n"
 "Last-Translator: joan <joan@montane.cat>\n"
 "Language-Team: Catalan\n"
@@ -5950,6 +5950,11 @@ msgstr "Títol"
 msgid "IEEE membership"
 msgstr ""
 
+#: lib/layouts/IEEEtran.layout:103
+#, fuzzy
+msgid "Lowercase"
+msgstr "overset"
+
 #: lib/layouts/IEEEtran.layout:107
 #, fuzzy
 msgid "lowercase"
@@ -6015,9 +6020,9 @@ msgstr "Resum---"
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
 #: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:262
 #: lib/layouts/siamltex.layout:303 lib/layouts/sigplanconf.layout:146
-#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:66
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:161
-#: lib/layouts/svjour.inc:228
+#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:63
+#: lib/layouts/svglobal3.layout:66 lib/layouts/agu_stdtitle.inc:120
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svjour.inc:228
 msgid "Keywords"
 msgstr "Paraules clau"
 
@@ -6557,6 +6562,11 @@ msgstr "nota"
 #, fuzzy
 msgid "bibnote"
 msgstr "nota"
+
+#: lib/layouts/achemso.layout:261
+#, fuzzy
+msgid "Chemistry"
+msgstr "infty"
 
 #: lib/layouts/achemso.layout:264
 msgid "chemistry"
@@ -8862,7 +8872,7 @@ msgid "Rapid"
 msgstr "varpi"
 
 #: lib/layouts/iopart.layout:218 lib/layouts/revtex4.layout:251
-#: lib/layouts/svglobal3.layout:73
+#: lib/layouts/svglobal3.layout:70 lib/layouts/svglobal3.layout:73
 msgid "PACS"
 msgstr ""
 
@@ -9605,7 +9615,7 @@ msgstr "RESUM"
 msgid "ACKNOWLEDGMENTS"
 msgstr "AGRAÏMENTS"
 
-#: lib/layouts/svglobal3.layout:80
+#: lib/layouts/svglobal3.layout:77 lib/layouts/svglobal3.layout:80
 msgid "Subclass"
 msgstr ""
 
@@ -9720,6 +9730,11 @@ msgstr "nota"
 msgid "sidenote"
 msgstr "nota"
 
+#: lib/layouts/tufte-book.layout:143
+#, fuzzy
+msgid "Marginnote"
+msgstr "Nota al marge|M"
+
 #: lib/layouts/tufte-book.layout:147
 #, fuzzy
 msgid "marginnote"
@@ -9733,9 +9748,19 @@ msgstr ""
 msgid "new thought"
 msgstr ""
 
+#: lib/layouts/tufte-book.layout:170
+#, fuzzy
+msgid "AllCaps"
+msgstr "Majúscules petites"
+
 #: lib/layouts/tufte-book.layout:173
 #, fuzzy
 msgid "allcaps"
+msgstr "Majúscules petites"
+
+#: lib/layouts/tufte-book.layout:183
+#, fuzzy
+msgid "SmallCaps"
 msgstr "Majúscules petites"
 
 #: lib/layouts/tufte-book.layout:186
@@ -24986,10 +25011,6 @@ msgstr "Usuari desconegut"
 #~ msgstr "Epígraf"
 
 #, fuzzy
-#~ msgid "Chemistry"
-#~ msgstr "infty"
-
-#, fuzzy
 #~ msgid "Flex:Alert"
 #~ msgstr "Alerta"
 
@@ -25004,22 +25025,6 @@ msgstr "Usuari desconegut"
 #, fuzzy
 #~ msgid "Flex:PresentationMode"
 #~ msgstr "Presentació"
-
-#, fuzzy
-#~ msgid "Lowercase"
-#~ msgstr "overset"
-
-#, fuzzy
-#~ msgid "Marginnote"
-#~ msgstr "Nota al marge|M"
-
-#, fuzzy
-#~ msgid "AllCaps"
-#~ msgstr "Majúscules petites"
-
-#, fuzzy
-#~ msgid "SmallCaps"
-#~ msgstr "Majúscules petites"
 
 #, fuzzy
 #~ msgid "Flex:Firstname"

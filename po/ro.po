@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-16 10:22-0400\n"
+"POT-Creation-Date: 2011-06-16 10:55-0400\n"
 "PO-Revision-Date: 2011-04-26 10:58-0400\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -5899,6 +5899,11 @@ msgstr "Titlu"
 msgid "IEEE membership"
 msgstr ""
 
+#: lib/layouts/IEEEtran.layout:103
+#, fuzzy
+msgid "Lowercase"
+msgstr "Minuscule|s"
+
 #: lib/layouts/IEEEtran.layout:107
 #, fuzzy
 msgid "lowercase"
@@ -5964,9 +5969,9 @@ msgstr "Abstract---"
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
 #: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:262
 #: lib/layouts/siamltex.layout:303 lib/layouts/sigplanconf.layout:146
-#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:66
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:161
-#: lib/layouts/svjour.inc:228
+#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:63
+#: lib/layouts/svglobal3.layout:66 lib/layouts/agu_stdtitle.inc:120
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svjour.inc:228
 msgid "Keywords"
 msgstr "Cuvinte cheie"
 
@@ -6486,6 +6491,10 @@ msgstr "Notăbibliografică"
 #: lib/layouts/achemso.layout:219
 msgid "bibnote"
 msgstr "notăbibliografică"
+
+#: lib/layouts/achemso.layout:261
+msgid "Chemistry"
+msgstr "Chimie"
 
 #: lib/layouts/achemso.layout:264
 msgid "chemistry"
@@ -8750,7 +8759,7 @@ msgid "Rapid"
 msgstr "Rapid"
 
 #: lib/layouts/iopart.layout:218 lib/layouts/revtex4.layout:251
-#: lib/layouts/svglobal3.layout:73
+#: lib/layouts/svglobal3.layout:70 lib/layouts/svglobal3.layout:73
 msgid "PACS"
 msgstr "PACS"
 
@@ -9469,7 +9478,7 @@ msgstr "ABSTRACT"
 msgid "ACKNOWLEDGMENTS"
 msgstr "ACKNOWLEDGMENTS"
 
-#: lib/layouts/svglobal3.layout:80
+#: lib/layouts/svglobal3.layout:77 lib/layouts/svglobal3.layout:80
 #, fuzzy
 msgid "Subclass"
 msgstr "Clasificare în funcțtie de topică"
@@ -9588,6 +9597,11 @@ msgstr "Notăbibliografică"
 msgid "sidenote"
 msgstr "Notăbibliografică"
 
+#: lib/layouts/tufte-book.layout:143
+#, fuzzy
+msgid "Marginnote"
+msgstr "Notă marginală|m"
+
 #: lib/layouts/tufte-book.layout:147
 #, fuzzy
 msgid "marginnote"
@@ -9601,9 +9615,19 @@ msgstr ""
 msgid "new thought"
 msgstr ""
 
+#: lib/layouts/tufte-book.layout:170
+#, fuzzy
+msgid "AllCaps"
+msgstr "Smallest"
+
 #: lib/layouts/tufte-book.layout:173
 #, fuzzy
 msgid "allcaps"
+msgstr "Smallest"
+
+#: lib/layouts/tufte-book.layout:183
+#, fuzzy
+msgid "SmallCaps"
 msgstr "Smallest"
 
 #: lib/layouts/tufte-book.layout:186
@@ -25030,9 +25054,6 @@ msgstr "Cuvînt necunoscut:"
 #~ msgid "graph"
 #~ msgstr "grafic"
 
-#~ msgid "Chemistry"
-#~ msgstr "Chimie"
-
 #, fuzzy
 #~ msgid "Flex:Alert"
 #~ msgstr "Alertă"
@@ -25048,22 +25069,6 @@ msgstr "Cuvînt necunoscut:"
 #, fuzzy
 #~ msgid "Flex:PresentationMode"
 #~ msgstr "Personalizat:ModPrezentare"
-
-#, fuzzy
-#~ msgid "Lowercase"
-#~ msgstr "Minuscule|s"
-
-#, fuzzy
-#~ msgid "Marginnote"
-#~ msgstr "Notă marginală|m"
-
-#, fuzzy
-#~ msgid "AllCaps"
-#~ msgstr "Smallest"
-
-#, fuzzy
-#~ msgid "SmallCaps"
-#~ msgstr "Smallest"
 
 #, fuzzy
 #~ msgid "Flex:Firstname"

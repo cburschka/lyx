@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-16 10:22-0400\n"
+"POT-Creation-Date: 2011-06-16 10:55-0400\n"
 "PO-Revision-Date: 2011-06-01 21:05+0200\n"
 "Last-Translator: Michał Fita <michal.fita@gmail.com>\n"
 "Language-Team: No team\n"
@@ -5765,6 +5765,10 @@ msgstr "Tytuł"
 msgid "IEEE membership"
 msgstr "członkowstwo w IEEE"
 
+#: lib/layouts/IEEEtran.layout:103
+msgid "Lowercase"
+msgstr "Małe litery"
+
 #: lib/layouts/IEEEtran.layout:107
 msgid "lowercase"
 msgstr "małe litery"
@@ -5828,9 +5832,9 @@ msgstr "Streszczenie---"
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
 #: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:262
 #: lib/layouts/siamltex.layout:303 lib/layouts/sigplanconf.layout:146
-#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:66
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:161
-#: lib/layouts/svjour.inc:228
+#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:63
+#: lib/layouts/svglobal3.layout:66 lib/layouts/agu_stdtitle.inc:120
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svjour.inc:228
 msgid "Keywords"
 msgstr "Słowa kluczowe"
 
@@ -6351,6 +6355,10 @@ msgstr "Bibnotka"
 #, fuzzy
 msgid "bibnote"
 msgstr "bibnotka"
+
+#: lib/layouts/achemso.layout:261
+msgid "Chemistry"
+msgstr "Chemia"
 
 #: lib/layouts/achemso.layout:264
 msgid "chemistry"
@@ -8639,7 +8647,7 @@ msgid "Rapid"
 msgstr ""
 
 #: lib/layouts/iopart.layout:218 lib/layouts/revtex4.layout:251
-#: lib/layouts/svglobal3.layout:73
+#: lib/layouts/svglobal3.layout:70 lib/layouts/svglobal3.layout:73
 msgid "PACS"
 msgstr "PACS"
 
@@ -9383,7 +9391,7 @@ msgstr "STRESZCZENIE"
 msgid "ACKNOWLEDGMENTS"
 msgstr "PODZIĘKOWANIA"
 
-#: lib/layouts/svglobal3.layout:80
+#: lib/layouts/svglobal3.layout:77 lib/layouts/svglobal3.layout:80
 #, fuzzy
 msgid "Subclass"
 msgstr "KlasaTematyczna"
@@ -9500,6 +9508,11 @@ msgstr "notka"
 msgid "sidenote"
 msgstr "notka"
 
+#: lib/layouts/tufte-book.layout:143
+#, fuzzy
+msgid "Marginnote"
+msgstr "Notka na marginesie|a"
+
 #: lib/layouts/tufte-book.layout:147
 #, fuzzy
 msgid "marginnote"
@@ -9513,10 +9526,20 @@ msgstr ""
 msgid "new thought"
 msgstr ""
 
+#: lib/layouts/tufte-book.layout:170
+#, fuzzy
+msgid "AllCaps"
+msgstr "Kapitalik"
+
 #: lib/layouts/tufte-book.layout:173
 #, fuzzy
 msgid "allcaps"
 msgstr "Kapitaliki"
+
+#: lib/layouts/tufte-book.layout:183
+#, fuzzy
+msgid "SmallCaps"
+msgstr "Kapitalik"
 
 #: lib/layouts/tufte-book.layout:186
 #, fuzzy
@@ -24218,9 +24241,6 @@ msgstr "Nieznany użytkownik"
 #~ msgid "&Vertical space"
 #~ msgstr "Odstęp pio&nowy"
 
-#~ msgid "Lowercase"
-#~ msgstr "Małe litery"
-
 #~ msgid "Publisher ID"
 #~ msgstr "ID Wydawcy"
 
@@ -24239,9 +24259,6 @@ msgstr "Nieznany użytkownik"
 #~ msgid "graph"
 #~ msgstr "graf"
 
-#~ msgid "Chemistry"
-#~ msgstr "Chemia"
-
 #~ msgid "Block ( ERT[{title}] body ):"
 #~ msgstr "Blok ( ERT[{title}] ciało ):"
 
@@ -24259,18 +24276,6 @@ msgstr "Nieznany użytkownik"
 
 #~ msgid "Affilation:"
 #~ msgstr "Afiliacja:"
-
-#, fuzzy
-#~ msgid "Marginnote"
-#~ msgstr "Notka na marginesie|a"
-
-#, fuzzy
-#~ msgid "AllCaps"
-#~ msgstr "Kapitalik"
-
-#, fuzzy
-#~ msgid "SmallCaps"
-#~ msgstr "Kapitalik"
 
 #, fuzzy
 #~ msgid "Element:Firstname"

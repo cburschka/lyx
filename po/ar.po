@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-16 10:22-0400\n"
+"POT-Creation-Date: 2011-06-16 10:55-0400\n"
 "PO-Revision-Date: 2010-03-21 22:45+0200\n"
 "Last-Translator: Mohamed Magdy <theblackdragon_100@hotmail.com>\n"
 "Language-Team: LyX team <theblackdragon_100@hotmail.com>\n"
@@ -5825,6 +5825,11 @@ msgstr "العنوان"
 msgid "IEEE membership"
 msgstr ""
 
+#: lib/layouts/IEEEtran.layout:103
+#, fuzzy
+msgid "Lowercase"
+msgstr "حروف صغيرة"
+
 #: lib/layouts/IEEEtran.layout:107
 #, fuzzy
 msgid "lowercase"
@@ -5890,9 +5895,9 @@ msgstr "خلاصة---"
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
 #: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:262
 #: lib/layouts/siamltex.layout:303 lib/layouts/sigplanconf.layout:146
-#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:66
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:161
-#: lib/layouts/svjour.inc:228
+#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:63
+#: lib/layouts/svglobal3.layout:66 lib/layouts/agu_stdtitle.inc:120
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svjour.inc:228
 msgid "Keywords"
 msgstr "كلمات مفتاحية"
 
@@ -6418,6 +6423,10 @@ msgstr "مدونة"
 #, fuzzy
 msgid "bibnote"
 msgstr "مدونة"
+
+#: lib/layouts/achemso.layout:261
+msgid "Chemistry"
+msgstr "كيمياء"
 
 #: lib/layouts/achemso.layout:264
 msgid "chemistry"
@@ -8674,7 +8683,7 @@ msgid "Rapid"
 msgstr "سريع"
 
 #: lib/layouts/iopart.layout:218 lib/layouts/revtex4.layout:251
-#: lib/layouts/svglobal3.layout:73
+#: lib/layouts/svglobal3.layout:70 lib/layouts/svglobal3.layout:73
 msgid "PACS"
 msgstr ""
 
@@ -9399,7 +9408,7 @@ msgstr "خلاصة"
 msgid "ACKNOWLEDGMENTS"
 msgstr ""
 
-#: lib/layouts/svglobal3.layout:80
+#: lib/layouts/svglobal3.layout:77 lib/layouts/svglobal3.layout:80
 msgid "Subclass"
 msgstr "قسم فرعي"
 
@@ -9500,6 +9509,10 @@ msgstr "ملحوظة جانبية"
 msgid "sidenote"
 msgstr "ملحوظة جانبية"
 
+#: lib/layouts/tufte-book.layout:143
+msgid "Marginnote"
+msgstr "ملحوظة هامشية"
+
 #: lib/layouts/tufte-book.layout:147
 msgid "marginnote"
 msgstr "ملحوظة هامشية"
@@ -9512,10 +9525,20 @@ msgstr "فكرة جديدة"
 msgid "new thought"
 msgstr "فكرة جديدة"
 
+#: lib/layouts/tufte-book.layout:170
+#, fuzzy
+msgid "AllCaps"
+msgstr "Cap"
+
 #: lib/layouts/tufte-book.layout:173
 #, fuzzy
 msgid "allcaps"
 msgstr "cap "
+
+#: lib/layouts/tufte-book.layout:183
+#, fuzzy
+msgid "SmallCaps"
+msgstr "صغير"
 
 #: lib/layouts/tufte-book.layout:186
 #, fuzzy
@@ -24382,9 +24405,6 @@ msgstr "مستخدم مجهول"
 #~ msgid "graph"
 #~ msgstr "رسم بياني"
 
-#~ msgid "Chemistry"
-#~ msgstr "كيمياء"
-
 #, fuzzy
 #~ msgid "Flex:Alert"
 #~ msgstr "تحذير"
@@ -24400,21 +24420,6 @@ msgstr "مستخدم مجهول"
 #, fuzzy
 #~ msgid "Flex:PresentationMode"
 #~ msgstr "عرض تقديمي"
-
-#, fuzzy
-#~ msgid "Lowercase"
-#~ msgstr "حروف صغيرة"
-
-#~ msgid "Marginnote"
-#~ msgstr "ملحوظة هامشية"
-
-#, fuzzy
-#~ msgid "AllCaps"
-#~ msgstr "Cap"
-
-#, fuzzy
-#~ msgid "SmallCaps"
-#~ msgstr "صغير"
 
 #, fuzzy
 #~ msgid "Flex:Firstname"

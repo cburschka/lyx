@@ -215,7 +215,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-16 10:22-0400\n"
+"POT-Creation-Date: 2011-06-16 10:55-0400\n"
 "PO-Revision-Date: 2011-06-09 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
@@ -5913,6 +5913,10 @@ msgstr "Titel"
 msgid "IEEE membership"
 msgstr "IEEE-medlemskap"
 
+#: lib/layouts/IEEEtran.layout:103
+msgid "Lowercase"
+msgstr "Gemener"
+
 #: lib/layouts/IEEEtran.layout:107
 msgid "lowercase"
 msgstr "gemener"
@@ -5974,9 +5978,9 @@ msgstr "Sammandrag---"
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
 #: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:262
 #: lib/layouts/siamltex.layout:303 lib/layouts/sigplanconf.layout:146
-#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:66
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:161
-#: lib/layouts/svjour.inc:228
+#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:63
+#: lib/layouts/svglobal3.layout:66 lib/layouts/agu_stdtitle.inc:120
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svjour.inc:228
 msgid "Keywords"
 msgstr "Nyckelord"
 
@@ -6492,6 +6496,10 @@ msgstr "Bibnot"
 #: lib/layouts/achemso.layout:219
 msgid "bibnote"
 msgstr "bibnot"
+
+#: lib/layouts/achemso.layout:261
+msgid "Chemistry"
+msgstr "Kemi"
 
 #: lib/layouts/achemso.layout:264
 msgid "chemistry"
@@ -8708,7 +8716,7 @@ msgid "Rapid"
 msgstr "Rapid"
 
 #: lib/layouts/iopart.layout:218 lib/layouts/revtex4.layout:251
-#: lib/layouts/svglobal3.layout:73
+#: lib/layouts/svglobal3.layout:70 lib/layouts/svglobal3.layout:73
 msgid "PACS"
 msgstr "PACS"
 
@@ -9409,7 +9417,7 @@ msgstr "SAMMANDRAG"
 msgid "ACKNOWLEDGMENTS"
 msgstr "TACKSÄGELSER"
 
-#: lib/layouts/svglobal3.layout:80
+#: lib/layouts/svglobal3.layout:77 lib/layouts/svglobal3.layout:80
 msgid "Subclass"
 msgstr "Underklass"
 
@@ -9509,6 +9517,10 @@ msgstr "Sidnot"
 msgid "sidenote"
 msgstr "sidnot"
 
+#: lib/layouts/tufte-book.layout:143
+msgid "Marginnote"
+msgstr "Marginalnot"
+
 #: lib/layouts/tufte-book.layout:147
 msgid "marginnote"
 msgstr "marginalnot"
@@ -9521,9 +9533,18 @@ msgstr "NyTanke"
 msgid "new thought"
 msgstr "ny tanke"
 
+#: lib/layouts/tufte-book.layout:170
+#, fuzzy
+msgid "AllCaps"
+msgstr "Kapitäler"
+
 #: lib/layouts/tufte-book.layout:173
 msgid "allcaps"
 msgstr "versaler"
+
+#: lib/layouts/tufte-book.layout:183
+msgid "SmallCaps"
+msgstr "Kapitäler"
 
 #: lib/layouts/tufte-book.layout:186
 msgid "smallcaps"
@@ -24428,20 +24449,8 @@ msgstr "Okänd användare"
 #~ msgid "graph"
 #~ msgstr "graf"
 
-#~ msgid "Chemistry"
-#~ msgstr "Kemi"
-
 #~ msgid "Flex:ArticleMode"
 #~ msgstr "Flex:ArtikelLäge"
-
-#~ msgid "Lowercase"
-#~ msgstr "Gemener"
-
-#~ msgid "Marginnote"
-#~ msgstr "Marginalnot"
-
-#~ msgid "SmallCaps"
-#~ msgstr "Kapitäler"
 
 #~ msgid "Flex:Firstname"
 #~ msgstr "Flex:Förnamn"

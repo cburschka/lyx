@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-16 10:22-0400\n"
+"POT-Creation-Date: 2011-06-16 10:55-0400\n"
 "PO-Revision-Date: 2011-06-01 19:23+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -5746,6 +5746,10 @@ msgstr "Заголовок"
 msgid "IEEE membership"
 msgstr "Членство у IEEE"
 
+#: lib/layouts/IEEEtran.layout:103
+msgid "Lowercase"
+msgstr "Нижній регістр"
+
 #: lib/layouts/IEEEtran.layout:107
 msgid "lowercase"
 msgstr "нижній регістр"
@@ -5807,9 +5811,9 @@ msgstr "Анотація---"
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
 #: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:262
 #: lib/layouts/siamltex.layout:303 lib/layouts/sigplanconf.layout:146
-#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:66
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:161
-#: lib/layouts/svjour.inc:228
+#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:63
+#: lib/layouts/svglobal3.layout:66 lib/layouts/agu_stdtitle.inc:120
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svjour.inc:228
 msgid "Keywords"
 msgstr "Ключові слова"
 
@@ -6325,6 +6329,10 @@ msgstr "Бібліографічна примітка"
 #: lib/layouts/achemso.layout:219
 msgid "bibnote"
 msgstr "бібліографічна примітка"
+
+#: lib/layouts/achemso.layout:261
+msgid "Chemistry"
+msgstr "Хімія"
 
 #: lib/layouts/achemso.layout:264
 msgid "chemistry"
@@ -8539,7 +8547,7 @@ msgid "Rapid"
 msgstr "Миттєве"
 
 #: lib/layouts/iopart.layout:218 lib/layouts/revtex4.layout:251
-#: lib/layouts/svglobal3.layout:73
+#: lib/layouts/svglobal3.layout:70 lib/layouts/svglobal3.layout:73
 msgid "PACS"
 msgstr "PACS"
 
@@ -9240,7 +9248,7 @@ msgstr "АНОТАЦІЯ"
 msgid "ACKNOWLEDGMENTS"
 msgstr "ПОДЯКИ"
 
-#: lib/layouts/svglobal3.layout:80
+#: lib/layouts/svglobal3.layout:77 lib/layouts/svglobal3.layout:80
 msgid "Subclass"
 msgstr "Підклас"
 
@@ -9340,6 +9348,10 @@ msgstr "Бічна примітка"
 msgid "sidenote"
 msgstr "бічна примітка"
 
+#: lib/layouts/tufte-book.layout:143
+msgid "Marginnote"
+msgstr "Примітка на полях"
+
 #: lib/layouts/tufte-book.layout:147
 msgid "marginnote"
 msgstr "примітка на полях"
@@ -9352,9 +9364,17 @@ msgstr "Нова думка"
 msgid "new thought"
 msgstr "нова думка"
 
+#: lib/layouts/tufte-book.layout:170
+msgid "AllCaps"
+msgstr "Всі капітеллю"
+
 #: lib/layouts/tufte-book.layout:173
 msgid "allcaps"
 msgstr "всі капітеллю"
+
+#: lib/layouts/tufte-book.layout:183
+msgid "SmallCaps"
+msgstr "Мала капітель"
 
 #: lib/layouts/tufte-book.layout:186
 msgid "smallcaps"
@@ -24385,9 +24405,6 @@ msgstr "Невідомий користувач"
 #~ msgid "graph"
 #~ msgstr "графіка"
 
-#~ msgid "Chemistry"
-#~ msgstr "Хімія"
-
 #~ msgid "Flex:Alert"
 #~ msgstr "Flex:Попередження"
 
@@ -24399,18 +24416,6 @@ msgstr "Невідомий користувач"
 
 #~ msgid "Flex:PresentationMode"
 #~ msgstr "Flex:РежимПрезентації"
-
-#~ msgid "Lowercase"
-#~ msgstr "Нижній регістр"
-
-#~ msgid "Marginnote"
-#~ msgstr "Примітка на полях"
-
-#~ msgid "AllCaps"
-#~ msgstr "Всі капітеллю"
-
-#~ msgid "SmallCaps"
-#~ msgstr "Мала капітель"
 
 #~ msgid "Flex:Firstname"
 #~ msgstr "Flex:Ім'я"

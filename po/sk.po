@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-16 10:22-0400\n"
+"POT-Creation-Date: 2011-06-16 10:55-0400\n"
 "PO-Revision-Date: 2011-06-11 20:09+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -5694,6 +5694,10 @@ msgstr "Titul"
 msgid "IEEE membership"
 msgstr "IEEE členstvo"
 
+#: lib/layouts/IEEEtran.layout:103
+msgid "Lowercase"
+msgstr "Malé písmená"
+
 #: lib/layouts/IEEEtran.layout:107
 msgid "lowercase"
 msgstr "malé písmená"
@@ -5755,9 +5759,9 @@ msgstr "Súhrn---"
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
 #: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:262
 #: lib/layouts/siamltex.layout:303 lib/layouts/sigplanconf.layout:146
-#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:66
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:161
-#: lib/layouts/svjour.inc:228
+#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:63
+#: lib/layouts/svglobal3.layout:66 lib/layouts/agu_stdtitle.inc:120
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svjour.inc:228
 msgid "Keywords"
 msgstr "Heslá"
 
@@ -6273,6 +6277,10 @@ msgstr "BibPoznámka"
 #: lib/layouts/achemso.layout:219
 msgid "bibnote"
 msgstr "bibpoznámka"
+
+#: lib/layouts/achemso.layout:261
+msgid "Chemistry"
+msgstr "Chemistry"
 
 #: lib/layouts/achemso.layout:264
 msgid "chemistry"
@@ -8487,7 +8495,7 @@ msgid "Rapid"
 msgstr "Rapid"
 
 #: lib/layouts/iopart.layout:218 lib/layouts/revtex4.layout:251
-#: lib/layouts/svglobal3.layout:73
+#: lib/layouts/svglobal3.layout:70 lib/layouts/svglobal3.layout:73
 msgid "PACS"
 msgstr "PACS"
 
@@ -9188,7 +9196,7 @@ msgstr "SÚHRN"
 msgid "ACKNOWLEDGMENTS"
 msgstr "POĎAKOVANIA"
 
-#: lib/layouts/svglobal3.layout:80
+#: lib/layouts/svglobal3.layout:77 lib/layouts/svglobal3.layout:80
 msgid "Subclass"
 msgstr "Podtrieda"
 
@@ -9288,6 +9296,10 @@ msgstr "Poznámka na okraji (číslovaná)"
 msgid "sidenote"
 msgstr "poznámka na okraji (číslovaná)"
 
+#: lib/layouts/tufte-book.layout:143
+msgid "Marginnote"
+msgstr "Poznámka na okraji (neočíslovaná)"
+
 #: lib/layouts/tufte-book.layout:147
 msgid "marginnote"
 msgstr "poznámka na okraji (neočíslovaná)"
@@ -9300,9 +9312,17 @@ msgstr "Nová Úvaha"
 msgid "new thought"
 msgstr "nová úvaha"
 
+#: lib/layouts/tufte-book.layout:170
+msgid "AllCaps"
+msgstr "Verzálky"
+
 #: lib/layouts/tufte-book.layout:173
 msgid "allcaps"
 msgstr "versálky"
+
+#: lib/layouts/tufte-book.layout:183
+msgid "SmallCaps"
+msgstr "Malé kapitálky"
 
 #: lib/layouts/tufte-book.layout:186
 msgid "smallcaps"
@@ -24280,9 +24300,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "graph"
 #~ msgstr "grafika"
 
-#~ msgid "Chemistry"
-#~ msgstr "Chemistry"
-
 #~ msgid "Flex:Alert"
 #~ msgstr "Flex:Výstrah"
 
@@ -24294,18 +24311,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Flex:PresentationMode"
 #~ msgstr "Flex:PrezentačnýMód"
-
-#~ msgid "Lowercase"
-#~ msgstr "Malé písmená"
-
-#~ msgid "Marginnote"
-#~ msgstr "Poznámka na okraji (neočíslovaná)"
-
-#~ msgid "AllCaps"
-#~ msgstr "Verzálky"
-
-#~ msgid "SmallCaps"
-#~ msgstr "Malé kapitálky"
 
 #~ msgid "Flex:Firstname"
 #~ msgstr "Flex:Krstné_meno"

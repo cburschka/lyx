@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-16 10:22-0400\n"
+"POT-Creation-Date: 2011-06-16 10:55-0400\n"
 "PO-Revision-Date: 2011-04-15 11:10+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-doc@lists.lyx.org>\n"
@@ -5683,6 +5683,10 @@ msgstr "タイトル"
 msgid "IEEE membership"
 msgstr "IEEEメンバーシップ"
 
+#: lib/layouts/IEEEtran.layout:103
+msgid "Lowercase"
+msgstr "小文字"
+
 #: lib/layouts/IEEEtran.layout:107
 msgid "lowercase"
 msgstr "小文字"
@@ -5744,9 +5748,9 @@ msgstr "概要---"
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
 #: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:262
 #: lib/layouts/siamltex.layout:303 lib/layouts/sigplanconf.layout:146
-#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:66
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:161
-#: lib/layouts/svjour.inc:228
+#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:63
+#: lib/layouts/svglobal3.layout:66 lib/layouts/agu_stdtitle.inc:120
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svjour.inc:228
 msgid "Keywords"
 msgstr "キーワード"
 
@@ -6262,6 +6266,10 @@ msgstr "文献注釈"
 #: lib/layouts/achemso.layout:219
 msgid "bibnote"
 msgstr "文献注釈"
+
+#: lib/layouts/achemso.layout:261
+msgid "Chemistry"
+msgstr "化学"
 
 #: lib/layouts/achemso.layout:264
 msgid "chemistry"
@@ -8480,7 +8488,7 @@ msgid "Rapid"
 msgstr "Rapid"
 
 #: lib/layouts/iopart.layout:218 lib/layouts/revtex4.layout:251
-#: lib/layouts/svglobal3.layout:73
+#: lib/layouts/svglobal3.layout:70 lib/layouts/svglobal3.layout:73
 msgid "PACS"
 msgstr "PACS"
 
@@ -9181,7 +9189,7 @@ msgstr "要約"
 msgid "ACKNOWLEDGMENTS"
 msgstr "謝辞"
 
-#: lib/layouts/svglobal3.layout:80
+#: lib/layouts/svglobal3.layout:77 lib/layouts/svglobal3.layout:80
 msgid "Subclass"
 msgstr "サブクラス"
 
@@ -9281,6 +9289,10 @@ msgstr "側注"
 msgid "sidenote"
 msgstr "sidenote"
 
+#: lib/layouts/tufte-book.layout:143
+msgid "Marginnote"
+msgstr "傍注"
+
 #: lib/layouts/tufte-book.layout:147
 msgid "marginnote"
 msgstr "marginnote"
@@ -9293,9 +9305,17 @@ msgstr "NewThought様式"
 msgid "new thought"
 msgstr "new thought"
 
+#: lib/layouts/tufte-book.layout:170
+msgid "AllCaps"
+msgstr "オールキャップ体"
+
 #: lib/layouts/tufte-book.layout:173
 msgid "allcaps"
 msgstr "allcaps"
+
+#: lib/layouts/tufte-book.layout:183
+msgid "SmallCaps"
+msgstr "スモールキャップ体"
 
 #: lib/layouts/tufte-book.layout:186
 msgid "smallcaps"
@@ -23996,9 +24016,6 @@ msgstr "未知の"
 #~ msgid "graph"
 #~ msgstr "グラフ"
 
-#~ msgid "Chemistry"
-#~ msgstr "化学"
-
 #~ msgid "Block ( ERT[{title}] body ):"
 #~ msgstr "ブロック( ERT[{タイトル}] 本文 ):"
 
@@ -24022,15 +24039,6 @@ msgstr "未知の"
 
 #~ msgid "Affilation:"
 #~ msgstr "所属:"
-
-#~ msgid "Marginnote"
-#~ msgstr "傍注"
-
-#~ msgid "AllCaps"
-#~ msgstr "オールキャップ体"
-
-#~ msgid "SmallCaps"
-#~ msgstr "スモールキャップ体"
 
 #~ msgid "Element:Firstname"
 #~ msgstr "要素:名"
@@ -24803,9 +24811,6 @@ msgstr "未知の"
 
 #~ msgid "Value of the line height."
 #~ msgstr "行高の値"
-
-#~ msgid "Lowercase"
-#~ msgstr "小文字"
 
 #~ msgid "Argument"
 #~ msgstr "引数"

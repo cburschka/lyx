@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-16 10:22-0400\n"
+"POT-Creation-Date: 2011-06-16 10:55-0400\n"
 "PO-Revision-Date: 2010-04-21 02:16+0300\n"
 "Last-Translator: Sergey Tereschenko <serg.partizan@gmail.com>\n"
 "Language-Team: Russian <kruvalig@gmail.com>\n"
@@ -5915,6 +5915,11 @@ msgstr "Заглавие"
 msgid "IEEE membership"
 msgstr ""
 
+#: lib/layouts/IEEEtran.layout:103
+#, fuzzy
+msgid "Lowercase"
+msgstr "строчные|с"
+
 #: lib/layouts/IEEEtran.layout:107
 #, fuzzy
 msgid "lowercase"
@@ -5980,9 +5985,9 @@ msgstr "Аннотация---"
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
 #: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:262
 #: lib/layouts/siamltex.layout:303 lib/layouts/sigplanconf.layout:146
-#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:66
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:161
-#: lib/layouts/svjour.inc:228
+#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:63
+#: lib/layouts/svglobal3.layout:66 lib/layouts/agu_stdtitle.inc:120
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svjour.inc:228
 msgid "Keywords"
 msgstr "Ключевые слова"
 
@@ -6513,6 +6518,10 @@ msgstr "Bibnote"
 #: lib/layouts/achemso.layout:219
 msgid "bibnote"
 msgstr "bibnote"
+
+#: lib/layouts/achemso.layout:261
+msgid "Chemistry"
+msgstr "Химия"
 
 #: lib/layouts/achemso.layout:264
 msgid "chemistry"
@@ -8917,7 +8926,7 @@ msgid "Rapid"
 msgstr "Быстро"
 
 #: lib/layouts/iopart.layout:218 lib/layouts/revtex4.layout:251
-#: lib/layouts/svglobal3.layout:73
+#: lib/layouts/svglobal3.layout:70 lib/layouts/svglobal3.layout:73
 msgid "PACS"
 msgstr "PACS"
 
@@ -9689,7 +9698,7 @@ msgstr "АННОТАЦИЯ"
 msgid "ACKNOWLEDGMENTS"
 msgstr "БЛАГОДАРНОСТИ"
 
-#: lib/layouts/svglobal3.layout:80
+#: lib/layouts/svglobal3.layout:77 lib/layouts/svglobal3.layout:80
 #, fuzzy
 msgid "Subclass"
 msgstr "Subjectclass"
@@ -9808,6 +9817,11 @@ msgstr "Заметка на полях"
 msgid "sidenote"
 msgstr "заметка на полях"
 
+#: lib/layouts/tufte-book.layout:143
+#, fuzzy
+msgid "Marginnote"
+msgstr "Примечание на полях|я"
+
 #: lib/layouts/tufte-book.layout:147
 #, fuzzy
 msgid "marginnote"
@@ -9821,10 +9835,20 @@ msgstr ""
 msgid "new thought"
 msgstr ""
 
+#: lib/layouts/tufte-book.layout:170
+#, fuzzy
+msgid "AllCaps"
+msgstr "Капитель"
+
 #: lib/layouts/tufte-book.layout:173
 #, fuzzy
 msgid "allcaps"
 msgstr "Прописной"
+
+#: lib/layouts/tufte-book.layout:183
+#, fuzzy
+msgid "SmallCaps"
+msgstr "Капитель"
 
 #: lib/layouts/tufte-book.layout:186
 #, fuzzy
@@ -25189,9 +25213,6 @@ msgstr "Неизвестный пользователь"
 #~ msgid "graph"
 #~ msgstr "график"
 
-#~ msgid "Chemistry"
-#~ msgstr "Химия"
-
 #, fuzzy
 #~ msgid "Flex:Alert"
 #~ msgstr "Оба края"
@@ -25207,22 +25228,6 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Flex:PresentationMode"
 #~ msgstr "&Ориентация:"
-
-#, fuzzy
-#~ msgid "Lowercase"
-#~ msgstr "строчные|с"
-
-#, fuzzy
-#~ msgid "Marginnote"
-#~ msgstr "Примечание на полях|я"
-
-#, fuzzy
-#~ msgid "AllCaps"
-#~ msgstr "Капитель"
-
-#, fuzzy
-#~ msgid "SmallCaps"
-#~ msgstr "Капитель"
 
 #, fuzzy
 #~ msgid "Flex:Firstname"
