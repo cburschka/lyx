@@ -15,6 +15,7 @@
 #
 # Adapted to svjour/jog (new 1999 Springer LaTeX2e classes) by
 # MV in 2000.
+# Revised by Marcus Kriele in April 2011 
 #
 # General textclass parameters
 # (jog) ?
@@ -22,18 +23,130 @@
 # see www.springer.de/author/tex/help-journals.html for class files
 
 
-Format 35
-Input svjour.inc
+Format 34
+Input svcommon.inc
 
+NoStyle Front_Matter
+NoStyle Main_Matter
+NoStyle Back_Matter
 NoStyle Part
+NoStyle PartBacktext
 NoCounter part
 NoStyle Part*
 NoStyle Chapter
+NoStyle ChapAuthor
+NoStyle ChapSubtitle
+NoStyle ChapMotto
 NoCounter chapter
 NoStyle Chapter*
+NoStyle Paragraph
+NoStyle Paragraph*
+NoStyle Run-in_headings
+NoStyle Sub-run-in_headings
+
+
+NoStyle Extrachap
+NoStyle extrachap
+NoStyle Preface
+NoStyle Foreword
+NoStyle Dedication
+NoStyle Svgraybox
+NoStyle Petit
+NoStyle	Prob
+NoStyle Sol
+NoStyle Abstract*
+NoStyle TOC_Title
+NoStyle TOC_Author
+NoStyle Acknowledgements
+
+
+
+NoStyle Dedication
+NoStyle Keywords
+
 
 ClassOptions
 	Other         jog
+End
+
+
+
+Style Headnote
+	Margin                Static
+	LatexType             Command
+	InTitle               1
+	LatexName             headnote
+	NextNoIndent          1
+	LeftMargin            "HeadNote (optional):xxx"
+	LabelSep              xxx
+	ParSkip               0.4
+	TopSep                1.3
+	BottomSep             0.7
+	ParSep                0.7
+	Align                 Left
+	LabelType             Static
+	LabelString           "Headnote (optional):"
+	LabelFont
+	  Series              Bold
+	  Shape               Italic
+	  Color               Red
+	EndFont
+End
+
+
+InsetLayout Flex:thanks
+	Decoration	Classic
+	LabelString	"thanks"
+	LatexType	Command
+	Latexname	thanks
+	LyxType		custom
+	Font
+	  Size		Small
+	  Color		Green
+	EndFont
+End
+
+InsetLayout Flex:Inst
+	CopyStyle	Flex:thanks
+	ContentAsLabel	1
+	LabelString	"Institute #"
+	LatexName	inst
+End
+
+
+InsetLayout Flex:Keywords
+	CopyStyle		Flex:Email
+	LatexName		keywords
+	LabelString		"Keywords"
+	LabelFont
+	  Color			green
+	  Size			Small
+	EndFont
+End
+
+
+
+Style Dedication
+	CopyStyle		Headnote
+	LatexName		dedication
+	LeftMargin		Dedication:xxx
+	LabelString		"Dedication:"
+End
+
+
+Style Mail
+	CopyStyle             Headnote
+	LatexName             mail
+	LeftMargin            "Corr Author:xx."
+	LabelString           "Corr Author:"
+End
+
+
+Style Offprints
+	CopyStyle             Headnote
+	LatexName             offprints
+	LeftMargin            "Offprints:xx."
+	LabelString           "Offprints:"
 End
 
 

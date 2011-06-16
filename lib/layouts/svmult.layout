@@ -1,67 +1,32 @@
 #% Do not delete the line below; configure depends on this
-#	\DeclareLaTeXClass[svmult,footmisc.sty,natbib.sty]{book (Springer svmult)}
-# Author: Koji Yokota <yokota@res.otaru-uc.ac.jp>
+#	\DeclareLaTeXClass[svmult,natbib.sty]{book (Springer svmult)}
+#  Author: Koji Yokota <yokota@res.otaru-uc.ac.jp>
+#          adapted: Marcus Kriele <mkriele@mac.com> (April 2011)
 #
+#  Supports: SVMULT DOCUMENT CLASS -- version 5.4 (25-Jun-07)
 #  Class and style files and templates are found at:
-#       ftp://ftp.springer.de/pub/tex/latex/svmultgl/
+#       http://www.springer.com/authors
 #
+Format 34
 
-Format 35
-Input svjour.inc
+
+Input svcommon.inc
 
 ClassOptions
 	FontSize	 10
 End
 
 NoStyle Acknowledgements
-NoStyle Date
-NoStyle Dedication
-NoStyle Headnote
-NoStyle Mail
-NoStyle Offprints
+#NoStyle Acknowledgement
 
 Counter svmultlsti
 	LabelString	"Contributor \Roman{svmultlsti}:"
 End
 
 # Additional headings
-Style Title*
-	CopyStyle	Title
-	LatexName	title*
-	HTMLTitle             true
-End
-
-Style TOC_Title
-	CopyStyle	Running_LaTeX_Title
-	LatexName	toctitle
-	LeftMargin	"TOC title:xxx"
-	LabelString	"TOC title:"
-End
-
-Style TOC_Author
-	CopyStyle	Running_LaTeX_Title
-	LatexName	tocauthor
-	LeftMargin	"TOC Author:xxx"
-	LabelString	"TOC Author:"
-End
-
-Style Institute
-	LatexType	Command
-	InTitle		1
-	LatexName	institute
-	Margin		Static
-	LeftMargin	"Institute and e-mail:xxx"
-	LabelSep	xxx
-	LabelType	Static
-	LabelString	"Institute and e-mail: "
-	LabelFont
-	  Shape		Italic
-	EndFont
-	Requires	url
-End
 
 Style MiniTOC
-	CopyStyle	Running_LaTeX_Title
+	CopyStyle	Running_Title
 	LatexType	Command
 	LatexName	svmulttoc
 	LeftMargin	"TOC depth (provide a number):xxx"
@@ -71,68 +36,65 @@ Style MiniTOC
 	EndPreamble
 End
 
-Style List_of_Abbreviations_&_Symbols
+
+Style Title*
+	CopyStyle	Title
+	LatexName	title*
+	LabelString	"Title*: "
+	LabelSep		"xxx"
+	LabelType	Static
+	Margin		First_Dynamic
+	HTMLTitle             true
+	LabelFont
+	Color	Blue
+	EndFont
+End
+
+
+Style Title
+      TopSep		2
+      	LabelString           "Chapter \thechapter"
+	LabelType             Counter
+	LabelCounter          chapter
+      TocLevel	1
+      InTitle 0
+End
+
+
+Style Contributors
+      CopyStyle		Foreword
+      LabelString	"List of Contributors"
+      LatexName		contributors
+End
+
+Style List_of_Abbreviations_&_Symbols_[Deprecated]
 	InTitle		1
 	CopyStyle	Description
 	LatexName	abbrsymblist
 End
 
-# Additional paragraphs
-Style Petit
-	CopyStyle	Standard
-	Category	MainText
-	LatexType	Environment
-	LatexName	petit
-	LeftMargin	MMM
-	RightMargin	MMM
+Style List_of_Abbreviations_&_Symbols
+	InTitle		1
+	CopyStyle	Description
+	LatexName	abbrsymblist
+	ObsoletedBy	 List_of_Abbreviations_&_Symbols_[Deprecated]
+End
+
+Style Author
 	Font
-	  Size		Small
+	  Series	Bold
+	  Family	Sans
+	  Size          Normal
+	  Shape		Up
 	EndFont
 End
 
-# Additional math environments
-Style Case
-	CopyStyle	Claim
-	LatexName	case
-	LabelString	"Case #."
+
+Counter  svmultlsti
+	LabelString	         "Contributor \Roman{svmultlsti}"
+	Within			 chapter
 End
 
-Style Proof(QED)
-	CopyStyle	Proof
-	LatexName	svmultproof
-	EndLabelType	Box
-	Preamble
-	  \newenvironment{svmultproof}{\begin{proof}}{\qed\end{proof}}
-	EndPreamble
-End
-
-Style Proof(smartQED)
-	CopyStyle	Proof
-	LatexName	svmultproof2
-	EndLabelType	Filled_Box
-	Preamble
-	  \newenvironment{svmultproof2}{\begin{proof}}{\smartqed\qed\end{proof}}
-	EndPreamble
-End
-
-# Styles for editors
-Style Preface
-	CopyStyle	Title
-	Category	"For editors"
-	LatexName	svmultpreface
-	KeepEmpty	1
-	OptionalArgs	1
-	InTitle		0
-	Margin		First_Dynamic
-	LabelType	Static
-	LabelString	"Preface:"
-	LabelSep	xxx
-	Align		Left
-	Preamble
-	  \newcommand{\svmultpreface}[1]{\ifthenelse{\equal{#1}{}}{\preface}{\preface[#1]}}
-	EndPreamble
-	Requires	ifthen
-End
 
 Style List_of_Contributors
 	Category	"For editors"
@@ -157,82 +119,108 @@ Style List_of_Contributors
 	Align		Block
 	AlignPossible	Block, Left
 	Preamble
+	  \newcounter{svmultlsti}%
 	  \newenvironment{svmultlstcnt}{%
-	    \let\svmultitem\item%
+	    \setcounter{svmultlsti}{0}\let\svmultitem\item%
 	    \renewcommand{\item}{%
 	      \ifthenelse{\value{svmultlsti} = 0}{}{\and}%
 	      \stepcounter{svmultlsti}}%
-	    \newcounter{svmultlsti}\begin{thecontriblist}}{%
-	  \end{thecontriblist}\let\item\svmultitem}
+	    \setcounter{svmultlsti}{0}\begin{thecontriblist}}{%
+	  \end{thecontriblist}\let\item\svmultitem%
+	  \setcounter{svmultlsti}{0}}
 	EndPreamble
 	Requires	ifthen
 End
 
-Style Front_Matter
-	Category	"For editors"
-	LatexType	command
-	LatexName	frontmatter
-	KeepEmpty	1
-	OptionalArgs	0
-	Margin		First_Dynamic
-	NextNoIndent	1
-	ParSkip		0
-	TopSep		2.5
-	BottomSep	0.5
-	ParSep		0
-	Align		Center
-	LabelType	Static
-	LabelBottomSep	0
-	LeftMargin	M
-	LabelString	"--- Front Matter ---"
-	Font
-	  Family	Sans
-	  Series	Bold
-	  Size		Largest
-	  Color		Blue
-	EndFont
+Style Problem
+      ObsoletedBy	Problem_(theorem-like)
 End
 
-Style Main_Matter
-	CopyStyle	Front_Matter
-	Category	"For editors"
-	LatexName	mainmatter
-	LabelString	"--- Main Matter ---"
+Style Solution
+      ObsoletedBy	Solution_(theorem-like)
 End
 
-Style Back_Matter
-	CopyStyle	Front_Matter
-	Category	"For editors"
-	LatexName	backmatter
-	LabelString	"--- Back Matter ---"
-End
-
-Style Part
-	Category	"For editors"
-End
-
-Style Part*
-	Category	"For editors"
-End
-
-Style Chapter
-	Category	"For editors"
-  Align   Left
-End
-
-Style Chapter*
-	Category	"For editors"
-  Align   Left
-End
-
-InsetLayout "Flex:Inst"
+InsetLayout Flex:Inst
 	Decoration	Classic
-	LabelString	"Institute #"
+	LabelString	"Institute # [deprecated]"
 	LatexType	Command
 	LatexName	inst
 	LyxType		custom
 	Font
 	  Size		Small
-	  Color		Green
+	  Color		Red
 	EndFont
 End
+
+InsetLayout		Flex:at_Address
+       CopyStyle        Flex:and
+       LatexName	at
+       LabelString	"at address"
+End
+
+
+Style Part
+      Category		"For editors"
+End
+
+Style PartBacktext
+      Category		"For editors"
+End
+
+Style Chapter
+      Category		"For editors"
+End
+
+Style ChapAuthor
+      Category		"For editors"
+End
+
+Style ChapSubtitle
+      Category		"For editors"
+End
+
+Style extrachap
+      Category		"For editors"
+End
+
+Style Extrachap
+      Category		"For editors"
+End
+
+Style Dedication
+      Category		"For editors"
+End
+
+Style Foreword
+      Category		"For editors"
+End
+
+Style Preface
+      Category		"For editors"
+End
+
+Style Acknowledgement
+      Category		"For editors"
+End
+
+Style Contributors
+      Category		"For editors"
+End
+
+Style Motto
+      CopyStyle		ChapMotto
+      Category		"FrontMatter"
+End
+
+NoStyle ChapMotto
+
+Style Abstract
+      Category		"FrontMatter"
+End
+Style Abstract*
+      Category		"FrontMatter"
+End
+Style Keywords
+      Category		"FrontMatter"
+End
+
