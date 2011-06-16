@@ -83,6 +83,8 @@ What's new
 
 - Fix output of decimally aligned columns in unviewed (on screen) tables.
 
+- Inform user of unknown layouts caused by class change (bug 7571).
+
 - Avoid LaTeX errors if font changing commands are used in the wrong mode
   by assuring to switch to the right mode on export.
 

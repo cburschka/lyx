@@ -357,6 +357,14 @@ void Text::readParToken(Paragraph & par, Lexer & lex,
 		// all unknown layouts such as frame will be added to document class article so that
 		// these layouts can keep their original names.
 		tclass.addLayoutIfNeeded(layoutname);
+		bool const added_one = tclass.addLayoutIfNeeded(layoutname);
+		if (added_one) {
+			// Warn the user.
+			docstring const s = bformat(_("Layout `%1$s' was not found."), layoutname);
+			errorList.push_back(
+				ErrorItem(_("Layout Not Found"), s, par.id(), 0, par.size()));
+		}
+
 		par.setLayout(bp.documentClass()[layoutname]);
 
 		// Test whether the layout is obsolete.
