@@ -38,7 +38,7 @@ Preamble
 EndPreamble
 
 
-InsetLayout "Flex:Email"
+InsetLayout Flex:Email
 	LyxType			custom
 	LatexType		command
 	LatexName		email
@@ -60,22 +60,22 @@ InsetLayout "Flex:Email"
 End
 
 
-InsetLayout Keywords
-	CopyStyle		"Flex:Email"
+InsetLayout Flex:Keywords
+	CopyStyle		Flex:Email
 	LatexName		keywords
 	LabelString		"Keywords"
 End
 
 
-InsetLayout PACS
-	CopyStyle		"Flex:Email"
+InsetLayout Flex:PACS
+	CopyStyle		Flex:Email
 	LatexName		PACS
 	LabelString		"PACS"
 End
 
 
-InsetLayout Subclass
-	CopyStyle		"Flex:Email"
+InsetLayout Flex:Subclass
+	CopyStyle		Flex:Email
 	LatexName		subclass
 	LabelString		"Subclass"
 End
