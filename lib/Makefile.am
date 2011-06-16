@@ -1447,10 +1447,10 @@ dist_layouts_DATA =\
 	layouts/stdstarsections.inc \
 	layouts/stdstruct.inc \
 	layouts/stdtitle.inc \
+	layouts/svcommon.inc \
 	layouts/svglobal.layout \
 	layouts/svglobal3.layout \
 	layouts/svjog.layout \
-	layouts/svjour.inc \
 	layouts/svmono.layout \
 	layouts/svmult.layout \
 	layouts/svprobth.layout \

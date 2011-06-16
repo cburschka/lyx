@@ -2930,7 +2930,7 @@ lib_layouts_inc_files = Split('''
     stdstarsections.inc
     stdstruct.inc
     stdtitle.inc
-    svjour.inc
+    svcommon.inc
     theorems.inc
     theorems-ams.inc
     theorems-ams-bytype.inc
