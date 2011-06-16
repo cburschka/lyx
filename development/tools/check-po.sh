@@ -4,7 +4,14 @@
 # The script expects an environment variable FARM that 
 # will provide it with the location of the LyX www tree.
 
-DEBUG="echo";
+DEBUG="";
+
+while getopts ":dh" options $ARGS; do
+  case $options in
+    d)  DEBUG="echo";;
+    h)  echo "check-po.sh [-d]"; echo "You must also point the FARM variable to LyX's www tree."; exit 0;;
+  esac
+done
 
 if [ -z "$FARM" ]; then
   echo "You must set the FARM variable to run this script, e.g.:";
@@ -38,11 +45,11 @@ fi
 VCS="";
 if svn log >/dev/null 2>&1; then
   VCS="svn";
-else if git diff >/dev/null 2>&1; then
+elif git diff >/dev/null 2>&1; then
   VCS="git";
 fi
 
-if [ -n "$VCS" ]; then 
+if [ -z "$VCS" ]; then 
   echo "Unable to determine version control system!";
   exit 1;
 fi
@@ -59,6 +66,7 @@ make update-po >/dev/null 2>&1;
 echo
 
 echo Running make i18n.inc...
+rm -f i18n.inc;
 make i18n.inc  >/dev/null 2>&1;
 if [ -n "$TRUNK" ]; then
   mv i18n.inc i18n_trunk.inc
@@ -67,13 +75,13 @@ else
   I18NFILE=i18n.inc;
 fi
 
-if diff -w -q $I18NFILE $FARM/$I18NFILE >/dev/null; then
+if diff -w -q $I18NFILE $FARM/$I18NFILE >/dev/null 2>&1; then
   # No differences found
   echo No string differences found.
   if [ "$VCS" = "svn" ]; then
-    svn revert *.po  >/dev/null 2>&1;
+    svn revert *.po;
   else
-    git co *.po >/dev/null 2>&1;
+    git co *.po;
   fi
   exit 0;
 fi
@@ -82,25 +90,31 @@ fi
 if [ "$VCS" = "svn" ]; then
   $DEBUG svn ci *.po;
 else
+  NOTSAFE="";
+  if git status | grep -Pq 'Your branch is (?:ahead|behind)'; then
+    NOTSAFE="TRUE";
+  fi
   $DEBUG git commit *.po -m "Remerge strings.";
-  $DEBUG git svn dcommit;
+  if [ -n "$NOTSAFE" ]; then
+    echo "You will need to push changes to po files manually."
+  else
+    git svn dcommit;
+  fi
 fi
-
-exit 1;
 
 if ! cd $FARM; then
   echo "Unable to cd to $FARM!";
   exit 1;
 fi
-
 echo
 echo Updating the www-user tree...
-svn up
+# note that we're assuming this one is svn.
+svn up;
 
-echo Copying $I18NFILE...;
-cp $LYXROOT/po/$I18NFILE .;
+echo Moving $I18NFILE...;
+mv $LYXROOT/po/$I18NFILE .;
 
 echo Committing...;
-svn commit -m "* $I18NFILE: update stats" $I18NFILE;
+$DEBUG svn commit -m "* $I18NFILE: update stats" $I18NFILE;
 
 echo DONE!
