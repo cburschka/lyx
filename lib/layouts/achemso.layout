@@ -212,7 +212,7 @@ Style Abstract
 End
 
 
-InsetLayout "Flex:Bibnote"
+InsetLayout Flex:Bibnote
 	LyxType			custom
 	LatexType		command
 	LatexName		bibnote
@@ -258,8 +258,8 @@ Style Bibliography
 End
 
 
-InsetLayout Chemistry
-	CopyStyle		"Flex:Bibnote"
+InsetLayout Flex:Chemistry
+	CopyStyle		Flex:Bibnote
 	LatexName		ce
 	LabelString		"chemistry"
 	Preamble

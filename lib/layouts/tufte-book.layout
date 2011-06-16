@@ -121,7 +121,7 @@ Style Subsection
 	EndFont
 End
 
-InsetLayout "Flex:Sidenote"
+InsetLayout Flex:Sidenote
 	LyxType		custom
 	LatexType	command
 	LatexName	sidenote
@@ -140,8 +140,8 @@ InsetLayout "Flex:Sidenote"
 	EndFont
 End
 
-InsetLayout Marginnote
-	CopyStyle	"Flex:Sidenote"
+InsetLayout Flex:Marginnote
+	CopyStyle	Flex:Sidenote
 	LatexName	marginnote
 	Decoration	classic
 	LabelString	"marginnote"
@@ -153,7 +153,7 @@ InsetLayout Marginnote
 	MultiPar	true
 End
 
-InsetLayout "Flex:NewThought"
+InsetLayout Flex:NewThought
 	LyXType		charstyle
 	LatexType	Command
 	LatexName	newthought
@@ -167,8 +167,8 @@ InsetLayout "Flex:NewThought"
 	EndFont
 End
 
-InsetLayout AllCaps
-	CopyStyle	"Flex:NewThought"
+InsetLayout Flex:AllCaps
+	CopyStyle	Flex:NewThought
 	LatexName	allcaps
 	LabelString	"allcaps"
 	Font
@@ -180,8 +180,8 @@ InsetLayout AllCaps
 	EndFont
 End
 
-InsetLayout SmallCaps
-	CopyStyle	"Flex:NewThought"
+InsetLayout Flex:SmallCaps
+	CopyStyle	Flex:NewThought
 	LatexName	smallcaps
 	LabelString	"smallcaps"
 	LabelFont
