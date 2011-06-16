@@ -83,19 +83,18 @@ if [ "$VCS" = "svn" ]; then
   $DEBUG svn ci *.po;
 else
   $DEBUG git commit *.po -m "Remerge strings.";
-  $DEBUG git svn dcommit;
+  # I think probably we shouldn't try to push/commit to remote.
+  echo "You will need to commit changes to po files manually."
 fi
-
-exit 1;
 
 if ! cd $FARM; then
   echo "Unable to cd to $FARM!";
   exit 1;
 fi
-
 echo
 echo Updating the www-user tree...
-svn up
+# note that we're assuming this one is svn.
+svn up >/dev/null 2>&1;
 
 echo Copying $I18NFILE...;
 cp $LYXROOT/po/$I18NFILE .;
