@@ -4,8 +4,9 @@ SUBDIRS = doc lyx2lyx
 
 CHMOD = chmod
 
-dist_pkgdata_DATA = CREDITS chkconfig.ltx external_templates encodings \
-	layouttranslations languages symbols syntax.default unicodesymbols
+dist_pkgdata_DATA = CREDITS autocorrect chkconfig.ltx external_templates \
+	encodings layouttranslations languages symbols syntax.default \
+	unicodesymbols
 
 # Note that we "chmod 755" manually this file in install-data-hook.
 dist_pkgdata_PYTHON = configure.py 
