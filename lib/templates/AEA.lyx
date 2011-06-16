@@ -1,4 +1,4 @@
-#LyX 2.1.0svn created this file. For more info see http://www.lyx.org/
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
 \lyxformat 413
 \begin_document
 \begin_header
@@ -22,6 +22,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -41,6 +42,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\use_refstyle 0
 \index Index
 \shortcut idx
 \color #008000
@@ -56,11 +58,38 @@
 \tracking_changes false
 \output_changes false
 \html_math_output 0
+\html_css_as_file 0
 \html_be_strict false
-\use_refstyle 0
 \end_header
 
 \begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This is a template LyX file for articles to be submitted to Journals of
+ the American Economic Association (AEA).
+ How to install the AEA LaTeX class to your LaTeX system is explained in
+ 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/Examples/AEA
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Title
 Title
@@ -198,18 +227,7 @@ usepackage{mathtime}
 \family sans
 Document\SpecialChar \menuseparator
 Settings\SpecialChar \menuseparator
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX Preamble
+LaTeX Preamble
 \family default
  with appropriate options to suit your system.
 \end_layout
@@ -238,30 +256,8 @@ Fonts
 \family sans
 Tools\SpecialChar \menuseparator
 Preferences\SpecialChar \menuseparator
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX\SpecialChar \menuseparator
-T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX Encoding
+LaTeX\SpecialChar \menuseparator
+TeX Encoding
 \family default
  to 
 \begin_inset Quotes eld
@@ -360,6 +356,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 Figure here.
 \end_layout
 
@@ -387,6 +384,7 @@ Caption for table above.
 \end_layout
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
@@ -493,7 +491,7 @@ Row 2
 \end_layout
 
 \begin_layout Standard
-References here (manual or bibTeX).
+References here (manual or BibTeX).
 \end_layout
 
 \begin_layout Section
