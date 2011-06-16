@@ -65,14 +65,20 @@ echo Remerging...
 make update-po >/dev/null 2>&1;
 echo
 
-echo Running make i18n.inc...
-rm -f i18n.inc;
-make i18n.inc  >/dev/null 2>&1;
 if [ -n "$TRUNK" ]; then
-  mv i18n.inc i18n_trunk.inc
   I18NFILE=i18n_trunk.inc;
 else
   I18NFILE=i18n.inc;
+fi
+
+# make sure things are clean
+rm -f i18n.inc;
+svn revert $FARM/$I18NFILE;
+
+echo Running make i18n.inc...
+make i18n.inc  >/dev/null 2>&1;
+if [ -n "$TRUNK" ]; then
+  mv i18n.inc i18n_trunk.inc
 fi
 
 if diff -w -q $I18NFILE $FARM/$I18NFILE >/dev/null 2>&1; then
