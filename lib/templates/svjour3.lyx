@@ -3,6 +3,11 @@
 \begin_document
 \begin_header
 \textclass svglobal3
+\begin_preamble
+\RequirePackage{fix-cm}
+
+\smartqed  % flush right qed marks, e.g. at end of proof
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language english
@@ -87,6 +92,55 @@ http://wiki.lyx.org/Examples/Springer
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+possible document class options are:
+\end_layout
+
+\begin_layout Plain Layout
+- 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+smallextended
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ -> gives the second posible format
+\end_layout
+
+\begin_layout Plain Layout
+- 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+twocolumn
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ -> the two column formatting
+\end_layout
+
+\begin_layout Plain Layout
+- if no option is given you get the standard/default format
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Title
 Insert your title here
 \begin_inset Foot
@@ -111,6 +165,20 @@ Do you have a subtitle?
 If so, write it here
 \end_layout
 
+\begin_layout Running Title
+Short form of title
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Author
 First Author
 \begin_inset ERT
@@ -126,6 +194,20 @@ and
 \end_inset
 
 Second Author
+\end_layout
+
+\begin_layout Running Author
+Short form of author list
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Institute
@@ -357,6 +439,40 @@ name "sec:Introduction"
 \begin_layout Standard
 Your text comes here.
  Separate text sections with
+\end_layout
+
+\begin_layout Theorem
+a theorem
+\end_layout
+
+\begin_layout Problem
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Problem title
+\end_layout
+
+\end_inset
+
+ The problem
+\end_layout
+
+\begin_layout Solution
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Solution title
+\end_layout
+
+\end_inset
+
+ The solution
+\end_layout
+
+\begin_layout Problem (theorem-like)
+
 \end_layout
 
 \begin_layout Section

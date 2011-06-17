@@ -20,35 +20,34 @@
 
 
 Format 35
-Columns                 2
-Sides                   1
-PageStyle               Plain
+PageStyle		Plain
 
 
 Style Standard
-	Margin                Static
-	LatexType             Paragraph
-	LatexName             dummy
-	ParIndent             MM
-	ParSkip               0.4
-	Align                 Block
-	AlignPossible         Block, Left, Right, Center
-	LabelType             No_Label
+	Margin		Static
+	LatexType	Paragraph
+	LatexName	dummy
+	ParIndent	MM
+	ParSkip		0.4
+	Align		Block
+	AlignPossible	Block, Left, Right, Center
+	LabelType	No_Label
 End
 
-
+Input stdcounters.inc
+Input stdfloats.inc
+Input stdlists.inc
 Input stdinsets.inc
 Input stdsections.inc
 Input stdstarsections.inc
 Input stdlayouts.inc
-Input stdlists.inc
-Input stdfloats.inc
-Input stdcounters.inc
 Input stdtitle.inc
-
-
-
 Input numreport.inc
+
+ProvidesModule theorems-std
+Input theorems-without-preamble.inc
+NoStyle Fact
+NoStyle Prop
 
 
 NoStyle Subparagraph
@@ -107,8 +106,6 @@ Style Back_Matter
 	LabelString	"--- Back Matter ---"
 End
 
-
-
 Style Part
       Margin			Static
       Align			Right
@@ -147,7 +144,6 @@ Style PartBacktext
 	EndPreamble
 	HTMLTag               h1
 End
-
 
 Style Chapter
 	Align			Left
@@ -231,17 +227,14 @@ Style Paragraph
 	TocLevel 4
 End
 
-
 Style Part*
       Margin			Static
       Align			Right
 End
 
-
 Style Chapter*
 	Align			Left
 End
-
 
 Style Section*
 	Font
@@ -250,7 +243,6 @@ Style Section*
 	  Size                	large
 	EndFont
 End
-
 
 Style Subsection*
 	Font
@@ -303,7 +295,6 @@ Style Sub-run-in_headings
 	LatexName		subruninhead
 End
 
-
 Style Extrachap
 	CopyStyle	      Chapter*
 	LatexName             Extrachap
@@ -314,7 +305,6 @@ Style extrachap
 	LatexName             extrachap
 End
 
-
 Style Title
 	Align			Left
 	AlignPossible		Block, Center, Left, Right, Center
@@ -323,7 +313,6 @@ Style Title
 	  Series		Bold
 	EndFont
 End
-
 
 Style Subtitle
 	CopyStyle		Title
@@ -336,7 +325,6 @@ Style Subtitle
 	EndFont
 End
 
-
 Style Author
 	NextNoIndent		1
 	Align			Left
@@ -345,7 +333,6 @@ Style Author
 	  Shape			Italic
 	EndFont
 End
-
 
 Style Institute
 	Category	FrontMatter
@@ -377,11 +364,11 @@ Style TOC_Title
 	Align		Left
 	LatexType	Command
 	LatexName	toctitle
-	LeftMargin	"TOC title:xxx"
+	LeftMargin	xxx
 	TopSep		0.4
-	BottomSep		0.4
+	BottomSep	0.4
 	LabelType	Static
-	LabelSep	xxx
+	LabelSep	x
 	LabelString	"TOC Title:"
 	LabelFont
 	  Family	Typewriter
@@ -392,14 +379,13 @@ End
 Style TOC_Author
 	CopyStyle	TOC_Title
 	LatexName	tocauthor
-	LeftMargin	"TOC Author:xxx"
 	LabelString	"TOC Author:"
 End
 
 Style Running_Title
       	CopyStyle	TOC_Title
 	LatexName	titlerunning
-	LeftMargin	"Running Title:xxx"
+	InTitle		1
 	LabelString	"Running Title:"
 End
 
@@ -410,7 +396,6 @@ End
 Style Running_Author
 	CopyStyle	Running_Title
 	LatexName	authorrunning
-	LeftMargin	"Running Author:xxx"
 	LabelString	"Running Author:"
 End
 Style Author_Running
@@ -418,37 +403,37 @@ Style Author_Running
 End
 
 Style Abstract
-	Margin                First_Dynamic
-	LatexType             Command
-	LatexName             abstract
-	LabelType             Static
-	LabelString           "Abstract."
+	Category	FrontMatter
+	Margin		First_Dynamic
+	LatexType	Environment
+	LatexName	abstract
+	LabelType	Static
+	LabelString	"Abstract."
 	LabelFont
-	  Series              Bold
+	  Series	Bold
 	EndFont
-	NextNoIndent          0
-	ParIndent             MM
-	LabelSep              xx
-	ItemSep               0
-	TopSep                0.7
-	BottomSep             0.7
-	ParSep                0
-	Align                 Block
-	AlignPossible         Block, Left
+	NextNoIndent	0
+	ParIndent	MM
+	LabelSep	xx
+	ItemSep		0
+	TopSep		0.7
+	BottomSep	0.7
+	ParSep		0
+	Align		Block
+	AlignPossible	Block, Left
 End
 
 Style Abstract*
-      CopyStyle			Abstract
-	LatexName             abstract*
-	LabelString           "Abstract* (not printed)."
+      CopyStyle		Abstract
+	LatexName	abstract*
+	LabelString	"Abstract* (not printed)."
       	LabelFont
-	  Color              Blue
+	  Color		Blue
 	EndFont
 	TextFont	
           Color		Blue
 	  EndFont
 End
-
 
 Style Keywords
 	Margin                First_Dynamic
@@ -469,8 +454,6 @@ Style Keywords
 	  Series              Bold
 	EndFont
 End
-
-
 
 Style Dedication
 	Category		FrontMatter
@@ -549,6 +532,7 @@ End
 
 
 Style Acknowledgement
+	Category              BackMatter
 	Margin                First_Dynamic
 	LatexType             Environment
 	LatexName             acknowledgement
@@ -636,96 +620,10 @@ Style Svgraybox
 	EndFont
 End
 
-Style Case
-	LatexType             	Environment
-	Margin			First_Dynamic
-	LatexName	      	case
-	LabelString	      	"Case #."
-	Category              	MainText
-	NextNoIndent          	1
-	ParIndent             	MM
-	LabelSep             	xx
-	ItemSep               	0
-	TopSep                	0.5
-	BottomSep             	0.5
-	ParSep                	0
-	Align                 	Block
-	AlignPossible         	Block, Left
-	LabelType             	Static
-	LabelFont
-	  Shape			Italic
-	EndFont
-	RefPrefix		cas
-End
-
-
-Style Claim
-	CopyStyle		Case
-	LabelString           	"Claim."
-	LatexName             	claim
-End
-
-
-Style Conjecture
-	CopyStyle             Claim
-	LatexName             conjecture
-	LabelString           "Conjecture #."
-	RefPrefix     	      con
-End
-
-
-Style Corollary
-	CopyStyle             Claim
-	LatexName             corollary
-	LabelString           "Corollary #."
-	Font
-	  Shape               Italic
-	EndFont
-	LabelFont
-	  Shape               Up
-	  Series              Bold
-	EndFont
-End
-
-
-Style Definition
-	CopyStyle             Claim
-	LatexName             definition
-	LabelString           "Definition #."
-	LabelFont
-	  Shape               Up
-	  Series              Bold
-	EndFont
-	RefPrefix	      def
-End
-
-
-Style Example
-	CopyStyle             Claim
-	LatexName             example
-	LabelString           "Example #."
-	RefPrefix	      exa
-End
-
-Style Lemma
-	CopyStyle             Corollary
-	LatexName             lemma
-	LabelString           "Lemma #."
-End
-
-
-Style Note
-	CopyStyle             Claim
-	LatexName             note
-	LabelString           "Note #."
-	RefPrefix	      note
-End
-
-
 Style Proof
 	CopyStyle             Claim
 	LatexName             proof
-	LabelString           "Proof."
+	LabelString           "Proof"
 End
 
 Style Proof(QED)
@@ -747,103 +645,9 @@ Style Proof(smartQED)
 End
 
 
-Style Property
-	CopyStyle             Claim
-	LatexName             property
-	LabelString           "Property #."
-End
-
-
-Style Proposition
-	CopyStyle             Corollary
-	LatexName             proposition
-	LabelString           "Proposition #."
-End
-
-
-Style Question
-	CopyStyle             Claim
-	LatexName             question
-	LabelString           "Question #."
-	RefPrefix	      que
-End
-
-
-Style Remark
-	CopyStyle             Claim
-	LatexName             remark
-	LabelString           "Remark #."
-	RefPrefix	      rem
-End
-
-
-Style Theorem
-	CopyStyle             Corollary
-	LatexName             theorem
-	LabelString           "Theorem #."
-End
-
-
-Style Exercise
-      CopyStyle             	Definition
-	Category		Exercise
-      LatexName			exercise	
-	LabelString           	"Exercise #."
-      RefPrefix			exerc
-End
-
-Style Prob
-	CopyStyle		Claim
-	Category		Exercise
-	LatexName		prob
-	LabelString           	"#"
-	LabelFont
-	  Series		Bold
-	  Shape			Up
-	EndFont
-	RefPrefix		prob
-End
-
-
-#  Current implementation of the Style Preface for backwards compatibility
-#  In future versions the directive "Reqyired Args 1" should be uncommented 
-#  so that a required argument is used rather than ERT.
-Style Sol
-	CopyStyle		Prob
-	LatexName		sol
-	LabelString           	"#={label}"
-#	RequiredArgs	1
-      	NextNoIndent 0
-	RefPrefix		sol
-End
-
-Style Problem_(theorem-like)
-	CopyStyle	Claim
-	LabelFont
-	  Series		Bold
-	  Shape			Up
-	EndFont
-	Category		Exercise
-	LatexName	problem
-	LabelString	"Problem #."
-	RefPrefix	prob
-End
-
-Style Solution_(theorem-like)
-	CopyStyle	Problem_(theorem-like)
-	LatexName	solution
-	LabelString	"Solution #."
-	RefPrefix	sol
-	OptionalArgs	1
-End
-
-
 Style Description
 	OptionalArgs	1
 End
-
-
-
 
 
 InsetLayout Flex:Email
@@ -869,7 +673,7 @@ InsetLayout Flex:Email
 End
 
 
-InsetLayout		Flex:and
+InsetLayout	Flex:and
        ContentAsLabel	1
        CustomPars	0
        Decoration	Classic
@@ -880,7 +684,7 @@ InsetLayout		Flex:and
        KeepEmpty	1
 End
 
-# InsetLayout		Flex:and
+# InsetLayout	Flex:and
 #        CopyStyle	Flex:Email
 #        LatexName	and
 #        LabelString	"and"
@@ -888,9 +692,3 @@ End
 #        EndFont
 #        KeepEmpty	1
 # End
-
-
-
-
-Input theorems-refprefix.inc
-

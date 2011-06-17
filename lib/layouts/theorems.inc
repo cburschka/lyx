@@ -10,13 +10,13 @@
 # - Lemma
 # - Proposition
 # - Conjecture
+# - Fact
 # - Definition
 # - Example
 # - Problem
 # - Exercise
 # - Remark
 # - Claim
-# - Proof
 # - Case (regular only -- defined as an enumeration)
 
 Format 35

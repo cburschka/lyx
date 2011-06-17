@@ -2942,6 +2942,7 @@ lib_layouts_inc_files = Split('''
     theorems-refprefix.inc
     theorems-starred.inc
     theorems-starred-equivalents.inc
+    theorems-without-preamble.inc
 ''')
 
 

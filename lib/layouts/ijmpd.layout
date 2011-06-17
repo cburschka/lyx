@@ -44,6 +44,17 @@ Input stdlayouts.inc
 Input lyxmacros.inc
 
 ProvidesModule theorems-std
+Input theorems-without-preamble.inc
+NoStyle Fact
+NoStyle Note
+NoStyle Problem
+NoStyle Solution
+NoStyle Prob
+NoStyle Exercise
+NoStyle Example
+NoStyle Definition
+NoStyle Case
+NoStyle Property
 
 NoStyle Chapter
 NoCounter chapter
@@ -304,48 +315,6 @@ Style RomanList
   RefPrefix	enu
 End
 
-Counter remark
-  Within	section
-End
-Style Remark
-  LatexName	remark
-  Category	Theorem
-  LabelCounter	remark
-  LabelString	"Remark \theremark."
-  LatexType	Environment
-  Margin	First_Dynamic
-  TopSep	0.6
-  BottomSep	0.6
-  Align		Block
-  LabelType	Counter
-  LabelSep	M
-  NextNoIndent	1
-  LabelFont
-   Series	Bold
-  EndFont
-End
-
-Counter theorem
-  Within	section
-End
-Style Theorem
-  LatexType	Environment
-  LatexName	theorem
-  Category	Theorem
-  Margin	First_Dynamic
-  TopSep	0.6
-  BottomSep	0.6
-  Align		Block
-  NextNoIndent	1
-  LabelType	Counter
-  LabelCounter	theorem
-  LabelString	"Theorem \thetheorem."
-  LabelSep	M
-  LabelFont
-   Series	Bold
-  EndFont
-End
-
 Style Proof
   LatexType	Environment
   LatexName	proof
@@ -366,67 +335,85 @@ Style Proof
   EndLabelType	Box
 End
 
+Counter theorem
+  Within	section
+End
+Style Theorem
+  OptionalArgs	0
+  LabelString	"Theorem \thetheorem."
+  Font
+   Shape	Up
+  EndFont
+  LabelFont
+   Series	Bold
+  EndFont
+End
+
+Counter remark
+  Within	section
+End
+Style Remark
+  LabelString	"Remark \theremark."
+  LabelFont
+   Series	Bold
+   Shape	Up
+  EndFont
+End
+
 Counter corollary
+  Within	section
 End
 Style Corollary
-  CopyStyle	Theorem
-  LatexName	corollary
-  LabelCounter	corollary
   LabelString	"Corollary \thecorollary."
 End
 
 Counter lemma
+  Within	section
 End
 Style Lemma
-  CopyStyle	Theorem
-  LatexName	lemma
-  LabelCounter	lemma
   LabelString	"Lemma \thelemma."
 End
 
 Counter proposition
+  Within	section
 End
 Style Proposition
-  CopyStyle	Theorem
-  LatexName	proposition
-  LabelCounter	proposition
   LabelString	"Proposition \theproposition."
 End
 
-Counter prop
-End
-Style Prop
-  CopyStyle	Theorem
-  LatexName	prop
-  LabelCounter	prop
-  LabelString	"Prop \theprop."
-End
-
 Counter question
+  Within	section
 End
 Style Question
-  CopyStyle	Theorem
-  LatexName	question
-  LabelCounter	question
   LabelString	"Question \thequestion."
+  LabelFont
+   Shape	Up
+  EndFont
 End
 
 Counter claim
+  Within	section
 End
 Style Claim
-  CopyStyle	Theorem
-  LatexName	claim
   LabelCounter	claim
   LabelString	"Claim \theclaim."
+  LabelFont
+   Shape	Up
+  EndFont
 End
 
 Counter conjecture
+  Within	section
 End
 Style Conjecture
-  CopyStyle	Theorem
-  LatexName	conjecture
-  LabelCounter	conjecture
   LabelString	"Conjecture \theconjecture."
+  LabelFont
+   Shape	Up
+  EndFont
+End
+
+Counter prop
+  Within	section
 End
 
 Counter appendix
