@@ -1282,6 +1282,7 @@ po_extra_files = Split('''
 
 
 lib_files = Split('''
+    autocorrect
     chkconfig.ltx
     configure.py
     CREDITS
