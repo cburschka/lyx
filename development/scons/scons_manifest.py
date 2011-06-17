@@ -1376,11 +1376,9 @@ lib_templates_files = Split('''
     JSS-article.lyx
     kluwer.lyx
     koma-letter2.lyx
-    latex8.lyx
     letter.lyx
     lettre.lyx
     README.new_templates
-    revtex.lyx
     revtex4.lyx
     slides.lyx
     svjour3.lyx
