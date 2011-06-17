@@ -3,6 +3,11 @@
 \begin_document
 \begin_header
 \textclass svglobal3
+\begin_preamble
+\RequirePackage{fix-cm}
+
+\smartqed  % flush right qed marks, e.g. at end of proof
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language english
@@ -80,6 +85,55 @@ http://wiki.lyx.org/Examples/Springer
 \end_inset
 
 .
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+possible document class options are:
+\end_layout
+
+\begin_layout Plain Layout
+- 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+smallextended
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ -> gives the second posible format
+\end_layout
+
+\begin_layout Plain Layout
+- 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+twocolumn
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ -> the two column formatting
+\end_layout
+
+\begin_layout Plain Layout
+- if no option is given you get the standard/default format
 \end_layout
 
 \end_inset
