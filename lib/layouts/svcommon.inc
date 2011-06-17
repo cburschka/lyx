@@ -515,13 +515,12 @@ Style Preface
 	KeepEmpty	1
 	OptionalArgs	0
 	InTitle		0
-	Margin		Static
-	LeftMargin	"PPrreeffaaccee:xxx"
-	TopSep                4
-	BottomSep             0.8
+	Margin		First_Dynamic
+	TopSep		4
+	BottomSep	0.8
 	LabelType	Static
 	LabelString	"Preface:"
-	LabelSep	xxx
+	LabelSep	xx
 	Align		Left
 	Preamble
 	  \newcommand{\svmultpreface}[1]{\ifthenelse{\equal{#1}{}}{\preface}{\preface[#1]}}
