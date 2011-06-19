@@ -1,0 +1,15 @@
+# Finding footnotes
+#
+Lang it_IT.utf8
+TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
+KK: \Axfootnote-insert\[Return]
+# Work around a little UI bug/non-determinism in cursor position after LFUN
+KK: \C\[Home]\[Right]
+KK: foo\C\[Home]
+KK: \CF
+KK: \Axfootnote-insert\[Return]
+# Work around a little UI bug/non-determinism in cursor position after LFUN
+KK: \C\[Home]\[Right]
+KK: foo\[Return]
+TestEnd
+Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n with len: 1' lyx-log.txt

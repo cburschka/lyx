@@ -184,6 +184,17 @@ What's new
 - Now advanced find and replace doesn't ignore white spaces while matching
   with ignore format.
 
+- Now the cursor is visible while at the rightmost part of a regexp inset.
+
+- Now a regexp inset with a \backslash or braces is previewed correctly.
+
+- Disabled possibility to type macros in regexp-mode.
+
+- Now backslash-prefixed regexps like "\s", "\d", etc., are all understood by Advanced F&R.
+
+- Now Adv. F&R correctly interprets escape sequences within regexp insets, e.g., \\ or \(,
+  for finding characters with a special meaning in regular expression context (\^()[]).
+
 
 * DOCUMENTATION AND LOCALIZATION
 

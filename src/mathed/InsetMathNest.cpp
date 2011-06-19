@@ -1668,7 +1668,10 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 		bool reduced = cap::reduceSelectionToOneCell(cur);
 		if (reduced || !cur.selection()) {
 			docstring const safe = cap::grabAndEraseSelection(cur);
-			cur.insert(MathAtom(new InsetMathUnknown(from_ascii("\\"), safe, false)));
+			if (!cur.inRegexped())
+				cur.insert(MathAtom(new InsetMathUnknown(from_ascii("\\"), safe, false)));
+			else
+				cur.niceInsert(createInsetMath("backslash", buf));
 		}
 		return true;
 	}
@@ -1721,7 +1724,29 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 	}
 
 	// These should be treated differently when not in text mode:
-	if (currentMode() != InsetMath::TEXT_MODE) {
+	if (cur.inRegexped()) {
+		switch (c) {
+		case '\\':
+			cur.niceInsert(createInsetMath("backslash", buf));
+			break;
+		case '^':
+			cur.niceInsert(createInsetMath("mathcircumflex", buf));
+			break;
+		case '{':
+		case '}':
+		case '#':
+		case '%':
+		case '_':
+			cur.niceInsert(createInsetMath(docstring(1, c), buf));
+			break;
+		case '~':
+			cur.niceInsert(createInsetMath("sim", buf));
+			break;
+		default:
+			cur.insert(c);
+		}
+		return true;
+	} else if (currentMode() != InsetMath::TEXT_MODE) {
 		if (c == '_') {
 			script(cur, false, save_selection);
 			return true;

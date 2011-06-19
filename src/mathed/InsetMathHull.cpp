@@ -439,6 +439,8 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.wid += 30 + l;
 	}
 
+	if (type_ == hullRegexp)
+		dim.wid += 2;
 	// make it at least as high as the current font
 	int asc = 0;
 	int des = 0;
@@ -740,7 +742,7 @@ void InsetMathHull::validate(LaTeXFeatures & features) const
 			features.addPreambleSnippet(
 				string("\\newcommand{\\regexp}[1]{\\fcolorbox{")
 				+ frcol + string("}{")
-				+ bgcol + string("}{\\texttt{#1}}}"));
+				+ bgcol + string("}{\\ensuremath{\\mathtt{#1}}}}"));
 		}
 	
 		// Validation is necessary only if not using AMS math.
