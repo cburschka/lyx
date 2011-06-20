@@ -83,7 +83,9 @@ What's new
 
 - Fix output of decimally aligned columns in unviewed (on screen) tables.
 
-- Fix problem with indentation of bibliography items.
+- Fix problem with indentation of bibliography items. Note that older files
+  may still exhibit this problem, since the label string "References" (or a
+  translation of it) may have been written to the file.
 
 - Inform user of unknown layouts caused by class change (bug 7571).
 
