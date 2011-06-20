@@ -11,7 +11,7 @@
 #   - We provide natbib-internal according to LyX bug #5182.
 #   - The command \lovname is missing from the class file.
 
-Format 27
+Format 35
 
 Input stdclass.inc
 Input numrevtex.inc
@@ -256,18 +256,19 @@ End
 Float
 	Extension             lov
 	GuiName               Video
+	IsPredefined          true
 	ListCommand           listofvideos
 	ListName              "List of Videos"
-	NeedsFloatPkg         false
 	NumberWithin          none
 	Placement             tbp
 	Style                 plain
 	Type                  video
+	UsesFloatPkg          false
 End
 
 
-InsetLayout Float_Link
-	CopyStyle             URL
+InsetLayout Flex:Float_Link
+	CopyStyle             Flex:URL
 	LabelString           "Float Link"
 	LatexName             setfloatlink
 	LatexType             command
@@ -275,7 +276,7 @@ InsetLayout Float_Link
 End
 
 
-InsetLayout Lowercase
+InsetLayout Flex:Lowercase
 	Decoration            conglomerate
 	LabelString           Lowercase
 	LatexName             lowercase
@@ -288,7 +289,7 @@ InsetLayout Lowercase
 End
 
 
-InsetLayout Surname
+InsetLayout Flex:Surname
 	Decoration            conglomerate
 	LabelString           Surname
 	LatexName             surname
