@@ -218,9 +218,12 @@ void GuiTabular::checkEnabled()
 	bool const is_tabular_star = !tabularWidthED->text().isEmpty();
 	rotateTabularCB->setDisabled(is_tabular_star);
 
-	vAlignCO->setEnabled(!multirowCB->isChecked()
+	bool const enable_valign =
+		!multirowCB->isChecked()
 		&& !widgetsToLength(columnWidthED, columnWidthUnitLC).empty()
-		&& specialAlignmentED->text().isEmpty());
+		&& specialAlignmentED->text().isEmpty();
+	vAlignCO->setEnabled(enable_valign);
+	vAlignLA->setEnabled(enable_valign);
 
 	topspaceED->setEnabled(topspaceCO->currentIndex() == 2);
 	topspaceED->setEnabled(topspaceCO->currentIndex() == 2);
@@ -287,8 +290,10 @@ void GuiTabular::checkEnabled()
 
 	multicolumnCB->setEnabled(funcEnabled(Tabular::MULTICOLUMN));
 	multirowCB->setEnabled(funcEnabled(Tabular::MULTIROW));
-	multirowOffsetED->setEnabled(multirowCB->isChecked());
-	multirowOffsetUnitLC->setEnabled(multirowCB->isChecked());
+	bool const enable_mr = multirowCB->isChecked();
+	multirowOffsetLA->setEnabled(enable_mr);
+	multirowOffsetED->setEnabled(enable_mr);
+	multirowOffsetUnitLC->setEnabled(enable_mr);
 
 	changed();
 }
