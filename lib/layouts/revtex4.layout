@@ -67,12 +67,6 @@ Style Section
 	Font
 	  Shape               Smallcaps
 	EndFont
-	TocLevel              1
-End
-
-
-Style Subsection
-	TocLevel              2
 End
 
 
@@ -81,18 +75,14 @@ Style Subsubsection
 	  Series              Medium
 	  Shape               Italic
 	EndFont
-	TocLevel              3
 End
 
 
 Style Paragraph
-	TopSep                0.7
-	ParSep                0.4
 	Font
 	  Series              Medium
 	  Shape               Italic
 	EndFont
-	TocLevel              4
 End
 
 # then define the unumbered sections, based on the numbered ones.
