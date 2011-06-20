@@ -7,9 +7,11 @@
 # it with the location of the LyX www tree.
 
 DEBUG="";
+COMMIT="";
 
-while getopts ":dh" options $ARGS; do
+while getopts ":cdh" options $ARGS; do
   case $options in
+    c)  COMMIT="TRUE";;
     d)  DEBUG="echo";;
     h)  echo "check-po.sh [-d]"; 
         echo "You must also point the FARM variable to LyX's www tree."; 
@@ -32,9 +34,12 @@ if [ ! -f "$FARM/i18n.php" ]; then
 fi
 
 # Get us to the root of the tree we are in.
-MYDIR=${0%check-po.sh};
+MYDIR=${0%update-po.sh};
 if [ -n "$MYDIR" ]; then
-  cd $MYDIR;
+  if ! cd $MYDIR; then
+    echo "Couldn't cd to $MYDIR!";
+    exit 1;
+  fi
 fi
 cd ../../;
 LYXROOT=$(pwd);
@@ -98,6 +103,18 @@ if diff -w -q $I18NFILE $FARM/$I18NFILE >/dev/null 2>&1; then
 fi
 
 # So there are differences.
+
+if [ -z "$COMMIT" ]; then
+  echo "Differences found!";
+  diff -w $I18NFILE $FARM/$I18NFILE | less;
+  if [ "$VCS" = "svn" ]; then
+    svn revert *.po;
+  else
+    git checkout *.po;
+  fi
+  exit 0;
+fi
+
 if [ "$VCS" = "svn" ]; then
   $DEBUG svn ci *.po;
 else
