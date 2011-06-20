@@ -116,6 +116,10 @@ What's new
 
 - Fixed the latex flag set by the prefs2prefs script (bug 7610).
 
+- Fix LaTeX error with Sweave module when the file name contains a
+  dot (bug 7551).
+
+- Fix error with Sweave module when using some R features (bug 7552).
 
 * USER INTERFACE
 
