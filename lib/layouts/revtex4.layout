@@ -148,13 +148,26 @@ Style Affiliation
 End
 
 
-Style AltAffiliation
+Style Affiliation_(alternate)
 	CopyStyle             Affiliation
 	PassThru              1
 	ParbreakIsNewline     1
 	LatexName             altaffiliation
 	OptionalArgs          1
-	LabelString           "AltAffiliation"
+	LabelString           "Affiliation (alternate):"
+End
+
+
+Style Affiliation_(none)
+	CopyStyle             Affiliation
+	KeepEmpty             1
+	LabelString           "No affiliation"
+	LatexName             noaffiliation%
+End
+
+
+Style AltAffiliation
+	ObsoletedBy           Affiliation_(alternate)
 End
 
 
@@ -164,6 +177,13 @@ Style Address
 	CopyStyle             Affiliation
 	LatexName             address
 	LabelString           "Address:"
+End
+
+
+Style Collaboration
+	CopyStyle             Affiliation
+	LatexName             collaboration
+	LabelString           "Collaboration:"
 End
 
 
