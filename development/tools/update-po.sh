@@ -7,9 +7,11 @@
 # it with the location of the LyX www tree.
 
 DEBUG="";
+COMMIT="";
 
-while getopts ":dh" options $ARGS; do
+while getopts ":cdh" options $ARGS; do
   case $options in
+    c)  COMMIT="TRUE";;
     d)  DEBUG="echo";;
     h)  echo "check-po.sh [-d]"; 
         echo "You must also point the FARM variable to LyX's www tree."; 
@@ -32,9 +34,12 @@ if [ ! -f "$FARM/i18n.php" ]; then
 fi
 
 # Get us to the root of the tree we are in.
-MYDIR=${0%check-po.sh};
+MYDIR=${0%update-po.sh};
 if [ -n "$MYDIR" ]; then
-  cd $MYDIR;
+  if ! cd $MYDIR; then
+    echo "Couldn't cd to $MYDIR!";
+    exit 1;
+  fi
 fi
 cd ../../;
 LYXROOT=$(pwd);
@@ -51,6 +56,15 @@ if svn log >/dev/null 2>&1; then
   VCS="svn";
 elif git diff >/dev/null 2>&1; then
   VCS="git";
+  # We need to make sure that we have a tree without any unpushed 
+  # commits. Otherwise git svn dcommit would commit more than we
+  # want.
+  if git status | grep -Pq 'Your branch is (?:ahead|behind)'; then
+    echo "Your git tree is not clean. Please correct the situation and re-run.";
+    echo;
+    git status;
+    exit 10;
+  fi
 fi
 
 if [ -z "$VCS" ]; then 
@@ -98,20 +112,23 @@ if diff -w -q $I18NFILE $FARM/$I18NFILE >/dev/null 2>&1; then
 fi
 
 # So there are differences.
+
+if [ -z "$COMMIT" ]; then
+  echo "Differences found!";
+  diff -w $I18NFILE $FARM/$I18NFILE | less;
+  if [ "$VCS" = "svn" ]; then
+    svn revert *.po;
+  else
+    git checkout *.po;
+  fi
+  exit 0;
+fi
+
 if [ "$VCS" = "svn" ]; then
   $DEBUG svn ci *.po;
 else
-  # We need to make sure that we have a tree without any unpushed 
-  # commits. Otherwise git svn dcommit would commit more than we
-  # want.
-  NOTSAFE="";
-  if git status | grep -Pq 'Your branch is (?:ahead|behind)'; then
-    NOTSAFE="TRUE";
-  fi
   $DEBUG git commit *.po -m "Remerge strings.";
-  if [ -z "$NOTSAFE" ]; then
-    $DEBUG git svn dcommit;
-  fi
+  $DEBUG git svn dcommit;
 fi
 
 echo
