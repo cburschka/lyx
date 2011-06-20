@@ -8,14 +8,15 @@
 #          Marc Mengel (RevTeX)
 #          Amir Karger (LyX v11.34 style modifications)
 #          Amir Karger (RevTeX 4 beta) 9/1999, 7/2000
-
+# Heavily modifed and enhanced by serveral developers.
 
 Format 35
-Columns                 1
-Sides                   1
-PageStyle               Headers
-Provides natbib-internal	1
-Provides url		1
+
+Columns                   1
+Sides                     1
+PageStyle                 Headers
+Provides natbib-internal  1
+Provides url              1
 
 # Default textclass options. The user may need to modify this.
 ClassOptions
@@ -33,7 +34,7 @@ Preamble
 	 \definecolor{CYAN}{cmyk}{1,0,0,0}
 	 \definecolor{MAGENTA}{cmyk}{0,1,0,0}
 	 \definecolor{YELLOW}{cmyk}{0,0,1,0}
-	 }
+	}
 EndPreamble
 
 
@@ -64,7 +65,7 @@ Style Section
 	  Shape               Smallcaps
 	  Size                Large
 	EndFont
-	TocLevel 1
+	TocLevel              1
 End
 
 
@@ -73,7 +74,7 @@ Style Subsection
 	  Series              Bold
 	  Size                Normal
 	EndFont
-	TocLevel 2
+	TocLevel              2
 End
 
 
@@ -82,7 +83,7 @@ Style Subsubsection
 	  Shape               Italic
 	  Size                Normal
 	EndFont
-	TocLevel 3
+	TocLevel              3
 End
 
 
@@ -93,7 +94,7 @@ Style Paragraph
 	  Shape               Italic
 	  Size                Normal
 	EndFont
-	TocLevel 4
+	TocLevel              4
 End
 
 # then define the unumbered sections, based on the numbered ones.
@@ -154,8 +155,6 @@ Style Affiliation
 	InTitle               1
 	LatexName             affiliation
 	ParSkip               0.4
-#  BottomSep            1.5
-#  ParSep               1.5
 	Align                 Center
 	AlignPossible         Block, Left, Right, Center
 	LabelType             Static
