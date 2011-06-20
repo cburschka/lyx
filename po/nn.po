@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-16 10:55-0400\n"
+"POT-Creation-Date: 2011-06-20 10:39-0400\n"
 "PO-Revision-Date: 2011-04-09 15:24+0200\n"
 "Last-Translator: Ingar Pareliussen <ingar.pareliussen@_dmmh_no>\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
@@ -50,7 +50,7 @@ msgstr "Opphavsrett"
 #: src/frontends/qt4/ui/ShowFileUi.ui:55 src/frontends/qt4/ui/SymbolsUi.ui:66
 #: src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:138 src/frontends/qt4/ui/WrapUi.ui:173
-#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/ui_RefUi.h:294
+#: src/frontends/qt4/GuiParagraph.cpp:161
 msgid "&Close"
 msgstr "&Lat att"
 
@@ -63,7 +63,7 @@ msgid "The label as it appears in the document"
 msgstr "Etiketten slik den er i dokumentet"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:36
-#: src/frontends/qt4/ui/RefUi.ui:332 src/frontends/qt4/ui_RefUi.h:324
+#: src/frontends/qt4/ui/RefUi.ui:332
 msgid "&Label:"
 msgstr "&Etikett:"
 
@@ -126,18 +126,16 @@ msgstr "Litteraturliste generator"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:139
-#: src/frontends/qt4/ui_IndicesUi.h:193
 msgid "&Processor:"
 msgstr "&handsamar:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
-#: src/frontends/qt4/ui_IndicesUi.h:195
 msgid "Select a processor"
 msgstr "Vel ein litteraturhandsamer."
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:755
-#: src/frontends/qt4/GuiPrefs.cpp:850 src/frontends/qt4/ui_IndicesUi.h:197
+#: src/frontends/qt4/GuiPrefs.cpp:850
 msgid "&Options:"
 msgstr "&Val:"
 
@@ -174,7 +172,7 @@ msgstr "Vel BibTeX database"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:110
 #: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:350 src/frontends/qt4/ui_IndicesUi.h:212
+#: src/CutAndPaste.cpp:350
 msgid "&Add"
 msgstr "&Legg til"
 
@@ -246,7 +244,7 @@ msgstr "Legg &til innhaldslista"
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
-#: src/frontends/qt4/ui/WrapUi.ui:150 src/frontends/qt4/ui_RefUi.h:292
+#: src/frontends/qt4/ui/WrapUi.ui:150
 msgid "&OK"
 msgstr "&OK"
 
@@ -442,7 +440,6 @@ msgid "Select your branch"
 msgstr "Vel greina di"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25 src/frontends/qt4/ui/IndicesUi.ui:114
-#: src/frontends/qt4/ui_IndicesUi.h:205
 msgid "&New:"
 msgstr "&Ny:"
 
@@ -485,7 +482,7 @@ msgid "Define or change background color"
 msgstr "Definere eller endre fargen på bakgrunnen"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:123
-#: src/frontends/qt4/ui/IndicesUi.ui:185 src/frontends/qt4/ui_IndicesUi.h:227
+#: src/frontends/qt4/ui/IndicesUi.ui:185
 msgid "Alter Co&lor..."
 msgstr "En&dra farge..."
 
@@ -495,7 +492,7 @@ msgstr "Fjern den valde greina"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
 #: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3663
-#: src/Buffer.cpp:3676 src/frontends/qt4/ui_IndicesUi.h:219
+#: src/Buffer.cpp:3676
 msgid "&Remove"
 msgstr "&Fjern"
 
@@ -782,7 +779,7 @@ msgstr "Bruk endr&ingane med det same"
 #: src/frontends/qt4/ui/RefUi.ui:124 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:1875
-#: src/frontends/qt4/GuiDocument.cpp:3131 src/frontends/qt4/ui_RefUi.h:293
+#: src/frontends/qt4/GuiDocument.cpp:3131
 msgid "&Apply"
 msgstr "&Bruk"
 
@@ -1788,7 +1785,6 @@ msgstr "Namn for URL-en"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:42
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:251
-#: src/frontends/qt4/ui_RefUi.h:309
 msgid "&Name:"
 msgstr "&Namn:"
 
@@ -1902,7 +1898,6 @@ msgid "&Edit"
 msgstr "&Endre"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59 src/frontends/qt4/ui/IndicesUi.ui:143
-#: src/frontends/qt4/ui_IndicesUi.h:213
 msgid "A&vailable Indexes:"
 msgstr "T&ilgjengelege indeksar:"
 
@@ -1910,60 +1905,58 @@ msgstr "T&ilgjengelege indeksar:"
 msgid "Select the index this entry should be listed in."
 msgstr "Vel indeksen som setelen skal brukast i."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:190
+#: src/frontends/qt4/ui/IndicesUi.ui:19
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr "Her kan du definere andre indeksmotorar og val for den."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:202
-#: src/frontends/qt4/ui_IndicesUi.h:192
 msgid "Index generation"
 msgstr "Indeksmotor"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:199
+#: src/frontends/qt4/ui/IndicesUi.ui:64
 msgid "Define program options of the selected processor."
 msgstr "Val for indeksmotoren."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:202
+#: src/frontends/qt4/ui/IndicesUi.ui:89
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr "Vel dersom du treng fleire indeksar (f.eks. Indeks over namn)"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:204
+#: src/frontends/qt4/ui/IndicesUi.ui:92
 msgid "&Use multiple indexes"
 msgstr "Br&uk fleire indeksar"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
+#: src/frontends/qt4/ui/IndicesUi.ui:124
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
 "Skriv inn namna på dei ønskja indeksane (f.eks Index over namn) og trykk "
 "\"Legg til\""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:210
+#: src/frontends/qt4/ui/IndicesUi.ui:131
 msgid "Add a new index to the list"
 msgstr "Legg til ei ny indeks til lista"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149
-#: src/frontends/qt4/ui/RefUi.ui:349 src/frontends/qt4/ui_IndicesUi.h:215
-#: src/frontends/qt4/ui_RefUi.h:326
+#: src/frontends/qt4/ui/RefUi.ui:349
 msgid "1"
 msgstr "1"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:217
+#: src/frontends/qt4/ui/IndicesUi.ui:162
 msgid "Remove the selected index"
 msgstr "Fjern den valde indeksen"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:221
+#: src/frontends/qt4/ui/IndicesUi.ui:172
 msgid "Rename the selected index"
 msgstr "Endra namnet på den valde indeksen"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:223
+#: src/frontends/qt4/ui/IndicesUi.ui:175
 msgid "R&ename..."
 msgstr "End&ra namn..."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:225
+#: src/frontends/qt4/ui/IndicesUi.ui:182
 msgid "Define or change button color"
 msgstr "Definere eller endre fargen på knappar"
 
@@ -2330,7 +2323,7 @@ msgid "Update the display"
 msgstr "Gir deg oppdateringar"
 
 #: src/frontends/qt4/ui/LogUi.ui:77 src/frontends/qt4/ui/RefUi.ui:88
-#: src/frontends/qt4/ui/ViewSourceUi.ui:74 src/frontends/qt4/ui_RefUi.h:291
+#: src/frontends/qt4/ui/ViewSourceUi.ui:74
 msgid "&Update"
 msgstr "&Oppdater"
 
@@ -2837,7 +2830,7 @@ msgstr "Papirformat"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:19
-#: src/frontends/qt4/ui/RefUi.ui:271 src/frontends/qt4/ui_RefUi.h:310
+#: src/frontends/qt4/ui/RefUi.ui:271
 msgid "&Format:"
 msgstr "&Format:"
 
@@ -4294,27 +4287,27 @@ msgstr "Vis statusfelt meldingar?"
 msgid "&Statusbar messages"
 msgstr "&Statusfelt meldingar"
 
-#: src/frontends/qt4/ui/RefUi.ui:36 src/frontends/qt4/ui_RefUi.h:279
+#: src/frontends/qt4/ui/RefUi.ui:36
 msgid "Fil&ter:"
 msgstr "Fil&ter:"
 
-#: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:281
+#: src/frontends/qt4/ui/RefUi.ui:49
 msgid "Enter string to filter the label list"
 msgstr "Skriv inn streng for filtrere etikettlista"
 
-#: src/frontends/qt4/ui/RefUi.ui:59 src/frontends/qt4/ui_RefUi.h:285
+#: src/frontends/qt4/ui/RefUi.ui:59
 msgid "Filter case-sensitively"
 msgstr "Skil mellom små og store bokstavar"
 
-#: src/frontends/qt4/ui/RefUi.ui:62 src/frontends/qt4/ui_RefUi.h:287
+#: src/frontends/qt4/ui/RefUi.ui:62
 msgid "Case-sensiti&ve"
 msgstr "Skil mellom små og store boksta&var"
 
-#: src/frontends/qt4/ui/RefUi.ui:85 src/frontends/qt4/ui_RefUi.h:289
+#: src/frontends/qt4/ui/RefUi.ui:85
 msgid "Update the label list"
 msgstr "Oppdater referanselista"
 
-#: src/frontends/qt4/ui/RefUi.ui:165 src/frontends/qt4/ui_RefUi.h:296
+#: src/frontends/qt4/ui/RefUi.ui:165
 msgid ""
 "Sort labels in alphabetical order (case-insensitively unless the Case-"
 "sensitive option is checked)"
@@ -4322,66 +4315,65 @@ msgstr ""
 "Sorter etikettane i alfabetiskorden (uansett om det er små eller store "
 "bokstavar så lenge ikkje du har vald å skilje mellom store og små bokstaver)"
 
-#: src/frontends/qt4/ui/RefUi.ui:168 src/frontends/qt4/ui_RefUi.h:298
+#: src/frontends/qt4/ui/RefUi.ui:168
 msgid "&Sort"
 msgstr "&Sorter"
 
-#: src/frontends/qt4/ui/RefUi.ui:178 src/frontends/qt4/ui_RefUi.h:300
+#: src/frontends/qt4/ui/RefUi.ui:178
 msgid "Sort labels case-sensitively in alphabetical order"
 msgstr ""
 "Sorter etikettane i alfabetiskordning, men store og små bokstavar kvar for "
 "seg"
 
-#: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/ui_RefUi.h:302
+#: src/frontends/qt4/ui/RefUi.ui:181
 msgid "Cas&e-sensitive"
 msgstr "&Skil mellom små og store bokstavar"
 
-#: src/frontends/qt4/ui/RefUi.ui:188 src/frontends/qt4/ui_RefUi.h:304
+#: src/frontends/qt4/ui/RefUi.ui:188
 msgid "Group labels by prefix (e.g. \"sec:\")"
 msgstr "Grupper etikettane etter prefiks: (f.eks. \"bolk:\")"
 
-#: src/frontends/qt4/ui/RefUi.ui:191 src/frontends/qt4/ui_RefUi.h:306
+#: src/frontends/qt4/ui/RefUi.ui:191
 msgid "Grou&p"
 msgstr "Gru&pper"
 
 #: src/frontends/qt4/ui/RefUi.ui:219 src/frontends/qt4/GuiRef.cpp:314
-#: src/frontends/qt4/ui_RefUi.h:307
 msgid "&Go to Label"
 msgstr "&Gå til etikett"
 
-#: src/frontends/qt4/ui/RefUi.ui:228 src/frontends/qt4/ui_RefUi.h:308
+#: src/frontends/qt4/ui/RefUi.ui:228
 msgid "La&bels in:"
 msgstr "E&tikettar i:"
 
-#: src/frontends/qt4/ui/RefUi.ui:290 src/frontends/qt4/ui_RefUi.h:322
+#: src/frontends/qt4/ui/RefUi.ui:290
 msgid "Cross-reference as it appears in output"
 msgstr "Kryssreferansen slik den blir i dokumentet"
 
-#: src/frontends/qt4/ui/RefUi.ui:294 src/frontends/qt4/ui_RefUi.h:313
+#: src/frontends/qt4/ui/RefUi.ui:294
 msgid "<reference>"
 msgstr "<referanse>"
 
-#: src/frontends/qt4/ui/RefUi.ui:299 src/frontends/qt4/ui_RefUi.h:314
+#: src/frontends/qt4/ui/RefUi.ui:299
 msgid "(<reference>)"
 msgstr "(<referanse>)"
 
-#: src/frontends/qt4/ui/RefUi.ui:304 src/frontends/qt4/ui_RefUi.h:315
+#: src/frontends/qt4/ui/RefUi.ui:304
 msgid "<page>"
 msgstr "<side>"
 
-#: src/frontends/qt4/ui/RefUi.ui:309 src/frontends/qt4/ui_RefUi.h:316
+#: src/frontends/qt4/ui/RefUi.ui:309
 msgid "on page <page>"
 msgstr "på side <side>"
 
-#: src/frontends/qt4/ui/RefUi.ui:314 src/frontends/qt4/ui_RefUi.h:317
+#: src/frontends/qt4/ui/RefUi.ui:314
 msgid "<reference> on page <page>"
 msgstr "<referanse> på side <side>"
 
-#: src/frontends/qt4/ui/RefUi.ui:319 src/frontends/qt4/ui_RefUi.h:318
+#: src/frontends/qt4/ui/RefUi.ui:319
 msgid "Formatted reference"
 msgstr "Formatert referanse"
 
-#: src/frontends/qt4/ui/RefUi.ui:324 src/frontends/qt4/ui_RefUi.h:319
+#: src/frontends/qt4/ui/RefUi.ui:324
 msgid "Textual reference"
 msgstr "Tekstuell referanse"
 
@@ -17121,7 +17113,7 @@ msgstr "Ikkje meir \"Angre\" informasjon"
 msgid "No further redo information"
 msgstr "Ikkje meir \"Gjer om\" informasjon"
 
-#: src/BufferView.cpp:1517 src/lyxfind.cpp:377 src/lyxfind.cpp:395
+#: src/BufferView.cpp:1517 src/lyxfind.cpp:378 src/lyxfind.cpp:396
 msgid "String not found!"
 msgstr "Kan ikkje finne teksten."
 
@@ -23380,36 +23372,36 @@ msgstr "Teksthøgd %"
 msgid "Page Height %"
 msgstr "Sidehøgd %"
 
-#: src/lyxfind.cpp:143
+#: src/lyxfind.cpp:144
 msgid "Search error"
 msgstr "Søk feil"
 
-#: src/lyxfind.cpp:143
+#: src/lyxfind.cpp:144
 msgid "Search string is empty"
 msgstr "Søkje strengen er tom"
 
-#: src/lyxfind.cpp:380
+#: src/lyxfind.cpp:381
 msgid "String found."
 msgstr "Kan ikkje finne teksten."
 
-#: src/lyxfind.cpp:382
+#: src/lyxfind.cpp:383
 msgid "String has been replaced."
 msgstr "Teksten er bytta ut."
 
-#: src/lyxfind.cpp:385
+#: src/lyxfind.cpp:386
 #, c-format
 msgid "%1$d strings have been replaced."
 msgstr "%1$d tekstar har blitt bytta ut."
 
-#: src/lyxfind.cpp:1371
+#: src/lyxfind.cpp:1410
 msgid "Invalid regular expression!"
 msgstr "Det regulære uttrykket er ikkje gyldig!"
 
-#: src/lyxfind.cpp:1376
+#: src/lyxfind.cpp:1415
 msgid "Match not found!"
 msgstr "Kan ikkje finne treff!"
 
-#: src/lyxfind.cpp:1380
+#: src/lyxfind.cpp:1419
 msgid "Match found!"
 msgstr "Fann treff!"
 
@@ -23418,7 +23410,7 @@ msgstr "Fann treff!"
 msgid " Macro: %1$s: "
 msgstr "Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1681
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1683
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -23461,11 +23453,11 @@ msgstr "Har inga loddrettlinje å slette"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Ukjent tabellval '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1273
+#: src/mathed/InsetMathHull.cpp:1275
 msgid "Bad math environment"
 msgstr "Feil med mattemiljøet"
 
-#: src/mathed/InsetMathHull.cpp:1274
+#: src/mathed/InsetMathHull.cpp:1276
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
@@ -23473,25 +23465,25 @@ msgstr ""
 "Utrekning kan ikkje bli gjort i AMS-mattemiljø.\n"
 "Endre matte-formulartype og prøv igjen."
 
-#: src/mathed/InsetMathHull.cpp:1380 src/mathed/InsetMathHull.cpp:1389
+#: src/mathed/InsetMathHull.cpp:1382 src/mathed/InsetMathHull.cpp:1391
 msgid "No number"
 msgstr "Ingen nummer"
 
-#: src/mathed/InsetMathHull.cpp:1380 src/mathed/InsetMathHull.cpp:1389
+#: src/mathed/InsetMathHull.cpp:1382 src/mathed/InsetMathHull.cpp:1391
 msgid "Number"
 msgstr "Nummer"
 
-#: src/mathed/InsetMathHull.cpp:1654
+#: src/mathed/InsetMathHull.cpp:1656
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Kan ikkje endre talet på radar i '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1664
+#: src/mathed/InsetMathHull.cpp:1666
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Kan ikkje endre talet på kolonner i '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1674
+#: src/mathed/InsetMathHull.cpp:1676
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Kan ikkje leggje til fleire vassrette linjer i rutenettet '%1$s'"
@@ -23508,11 +23500,11 @@ msgstr "Nyttar mattemiljø (textrm)"
 msgid "Regular expression editor mode"
 msgstr "Bruk regulære uttrykk"
 
-#: src/mathed/InsetMathNest.cpp:1651 src/mathed/InsetMathNest.cpp:1771
+#: src/mathed/InsetMathNest.cpp:1651 src/mathed/InsetMathNest.cpp:1796
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Autokorreksjon av ('!' for å bruke)"
 
-#: src/mathed/InsetMathNest.cpp:1656 src/mathed/InsetMathNest.cpp:1773
+#: src/mathed/InsetMathNest.cpp:1656 src/mathed/InsetMathNest.cpp:1798
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Autokorreksjon på (<mellomrom> for å gå ut)"
 

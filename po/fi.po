@@ -69,7 +69,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-16 10:55-0400\n"
+"POT-Creation-Date: 2011-06-20 10:39-0400\n"
 "PO-Revision-Date: 2010-11-18 05:54+0100\n"
 "Last-Translator: Martin Vermeer <martin.vermeer@tkk.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -106,7 +106,7 @@ msgstr "Copyright"
 #: src/frontends/qt4/ui/ShowFileUi.ui:55 src/frontends/qt4/ui/SymbolsUi.ui:66
 #: src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:138 src/frontends/qt4/ui/WrapUi.ui:173
-#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/ui_RefUi.h:294
+#: src/frontends/qt4/GuiParagraph.cpp:161
 msgid "&Close"
 msgstr "&Sulje"
 
@@ -119,7 +119,7 @@ msgid "The label as it appears in the document"
 msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:36
-#: src/frontends/qt4/ui/RefUi.ui:332 src/frontends/qt4/ui_RefUi.h:324
+#: src/frontends/qt4/ui/RefUi.ui:332
 msgid "&Label:"
 msgstr "&Nimike:"
 
@@ -183,20 +183,18 @@ msgstr "Viitteiden otsikko"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:139
-#: src/frontends/qt4/ui_IndicesUi.h:193
 #, fuzzy
 msgid "&Processor:"
 msgstr "Suojaa:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
-#: src/frontends/qt4/ui_IndicesUi.h:195
 #, fuzzy
 msgid "Select a processor"
 msgstr "Valitse tiedosto"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:755
-#: src/frontends/qt4/GuiPrefs.cpp:850 src/frontends/qt4/ui_IndicesUi.h:197
+#: src/frontends/qt4/GuiPrefs.cpp:850
 msgid "&Options:"
 msgstr "&Valinnat:"
 
@@ -233,7 +231,7 @@ msgstr "Käytettävä BiBTeX-tietokanta"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:110
 #: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:350 src/frontends/qt4/ui_IndicesUi.h:212
+#: src/CutAndPaste.cpp:350
 msgid "&Add"
 msgstr "&Lisää"
 
@@ -305,7 +303,7 @@ msgstr "Lisää &lähdeluettelo sisällysluetteloon"
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
-#: src/frontends/qt4/ui/WrapUi.ui:150 src/frontends/qt4/ui_RefUi.h:292
+#: src/frontends/qt4/ui/WrapUi.ui:150
 msgid "&OK"
 msgstr "&OK"
 
@@ -505,7 +503,6 @@ msgid "Select your branch"
 msgstr "Valitse haarasi"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25 src/frontends/qt4/ui/IndicesUi.ui:114
-#: src/frontends/qt4/ui_IndicesUi.h:205
 msgid "&New:"
 msgstr "Uu&si:"
 
@@ -550,7 +547,7 @@ msgid "Define or change background color"
 msgstr "Aseta tai muuta taustaväri"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:123
-#: src/frontends/qt4/ui/IndicesUi.ui:185 src/frontends/qt4/ui_IndicesUi.h:227
+#: src/frontends/qt4/ui/IndicesUi.ui:185
 msgid "Alter Co&lor..."
 msgstr "&Muuta väri..."
 
@@ -560,7 +557,7 @@ msgstr "Poista valittu haara"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
 #: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3663
-#: src/Buffer.cpp:3676 src/frontends/qt4/ui_IndicesUi.h:219
+#: src/Buffer.cpp:3676
 msgid "&Remove"
 msgstr "&Poista"
 
@@ -856,7 +853,7 @@ msgstr "Ota muutos käyttöön heti"
 #: src/frontends/qt4/ui/RefUi.ui:124 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:1875
-#: src/frontends/qt4/GuiDocument.cpp:3131 src/frontends/qt4/ui_RefUi.h:293
+#: src/frontends/qt4/GuiDocument.cpp:3131
 msgid "&Apply"
 msgstr "&Toteuta"
 
@@ -1906,7 +1903,6 @@ msgstr "URL:ään liittyvä nimi"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:42
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:251
-#: src/frontends/qt4/ui_RefUi.h:309
 msgid "&Name:"
 msgstr "&Nimi:"
 
@@ -2025,7 +2021,6 @@ msgid "&Edit"
 msgstr "&Muokkaa"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59 src/frontends/qt4/ui/IndicesUi.ui:143
-#: src/frontends/qt4/ui_IndicesUi.h:213
 #, fuzzy
 msgid "A&vailable Indexes:"
 msgstr "Olemassa olevat haarat:"
@@ -2034,64 +2029,62 @@ msgstr "Olemassa olevat haarat:"
 msgid "Select the index this entry should be listed in."
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:190
+#: src/frontends/qt4/ui/IndicesUi.ui:19
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr ""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:202
-#: src/frontends/qt4/ui_IndicesUi.h:192
 #, fuzzy
 msgid "Index generation"
 msgstr "Sise&nnys"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:199
+#: src/frontends/qt4/ui/IndicesUi.ui:64
 msgid "Define program options of the selected processor."
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:202
+#: src/frontends/qt4/ui/IndicesUi.ui:89
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:204
+#: src/frontends/qt4/ui/IndicesUi.ui:92
 #, fuzzy
 msgid "&Use multiple indexes"
 msgstr "Kaikki viivat pois"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
+#: src/frontends/qt4/ui/IndicesUi.ui:124
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:210
+#: src/frontends/qt4/ui/IndicesUi.ui:131
 #, fuzzy
 msgid "Add a new index to the list"
 msgstr "Lisää uusi haara listaan"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149
-#: src/frontends/qt4/ui/RefUi.ui:349 src/frontends/qt4/ui_IndicesUi.h:215
-#: src/frontends/qt4/ui_RefUi.h:326
+#: src/frontends/qt4/ui/RefUi.ui:349
 msgid "1"
 msgstr "1"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:217
+#: src/frontends/qt4/ui/IndicesUi.ui:162
 #, fuzzy
 msgid "Remove the selected index"
 msgstr "Poista valittu tietokanta"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:221
+#: src/frontends/qt4/ui/IndicesUi.ui:172
 #, fuzzy
 msgid "Rename the selected index"
 msgstr "Poista valittu tietokanta"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:223
+#: src/frontends/qt4/ui/IndicesUi.ui:175
 #, fuzzy
 msgid "R&ename..."
 msgstr "Muuta nimeä"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:225
+#: src/frontends/qt4/ui/IndicesUi.ui:182
 #, fuzzy
 msgid "Define or change button color"
 msgstr "Aseta tai muuta taustaväri"
@@ -2490,7 +2483,7 @@ msgid "Update the display"
 msgstr "Päivitä näyttö"
 
 #: src/frontends/qt4/ui/LogUi.ui:77 src/frontends/qt4/ui/RefUi.ui:88
-#: src/frontends/qt4/ui/ViewSourceUi.ui:74 src/frontends/qt4/ui_RefUi.h:291
+#: src/frontends/qt4/ui/ViewSourceUi.ui:74
 msgid "&Update"
 msgstr "Päi&vitä"
 
@@ -3031,7 +3024,7 @@ msgstr "Päiväysmuoto"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:19
-#: src/frontends/qt4/ui/RefUi.ui:271 src/frontends/qt4/ui_RefUi.h:310
+#: src/frontends/qt4/ui/RefUi.ui:271
 msgid "&Format:"
 msgstr "&Muoto:"
 
@@ -4589,97 +4582,96 @@ msgstr ""
 msgid "&Statusbar messages"
 msgstr "Teksti- tai taulukko-upotteen viestit"
 
-#: src/frontends/qt4/ui/RefUi.ui:36 src/frontends/qt4/ui_RefUi.h:279
+#: src/frontends/qt4/ui/RefUi.ui:36
 #, fuzzy
 msgid "Fil&ter:"
 msgstr "Tie&dosto:"
 
-#: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:281
+#: src/frontends/qt4/ui/RefUi.ui:49
 msgid "Enter string to filter the label list"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:59 src/frontends/qt4/ui_RefUi.h:285
+#: src/frontends/qt4/ui/RefUi.ui:59
 #, fuzzy
 msgid "Filter case-sensitively"
 msgstr "Sa&ma kirjainkoko"
 
-#: src/frontends/qt4/ui/RefUi.ui:62 src/frontends/qt4/ui_RefUi.h:287
+#: src/frontends/qt4/ui/RefUi.ui:62
 #, fuzzy
 msgid "Case-sensiti&ve"
 msgstr "Sa&ma kirjainkoko"
 
-#: src/frontends/qt4/ui/RefUi.ui:85 src/frontends/qt4/ui_RefUi.h:289
+#: src/frontends/qt4/ui/RefUi.ui:85
 msgid "Update the label list"
 msgstr "Päivitä nimikeluettelo"
 
-#: src/frontends/qt4/ui/RefUi.ui:165 src/frontends/qt4/ui_RefUi.h:296
+#: src/frontends/qt4/ui/RefUi.ui:165
 msgid ""
 "Sort labels in alphabetical order (case-insensitively unless the Case-"
 "sensitive option is checked)"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:168 src/frontends/qt4/ui_RefUi.h:298
+#: src/frontends/qt4/ui/RefUi.ui:168
 msgid "&Sort"
 msgstr "Järjestä"
 
-#: src/frontends/qt4/ui/RefUi.ui:178 src/frontends/qt4/ui_RefUi.h:300
+#: src/frontends/qt4/ui/RefUi.ui:178
 #, fuzzy
 msgid "Sort labels case-sensitively in alphabetical order"
 msgstr "Järjestä nimikkeet aakkosjärjestykseen"
 
-#: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/ui_RefUi.h:302
+#: src/frontends/qt4/ui/RefUi.ui:181
 #, fuzzy
 msgid "Cas&e-sensitive"
 msgstr "Sa&ma kirjainkoko"
 
-#: src/frontends/qt4/ui/RefUi.ui:188 src/frontends/qt4/ui_RefUi.h:304
+#: src/frontends/qt4/ui/RefUi.ui:188
 msgid "Group labels by prefix (e.g. \"sec:\")"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:191 src/frontends/qt4/ui_RefUi.h:306
+#: src/frontends/qt4/ui/RefUi.ui:191
 #, fuzzy
 msgid "Grou&p"
 msgstr "&Nimi:"
 
 #: src/frontends/qt4/ui/RefUi.ui:219 src/frontends/qt4/GuiRef.cpp:314
-#: src/frontends/qt4/ui_RefUi.h:307
 msgid "&Go to Label"
 msgstr "Siirry nimikkeeseen"
 
-#: src/frontends/qt4/ui/RefUi.ui:228 src/frontends/qt4/ui_RefUi.h:308
+#: src/frontends/qt4/ui/RefUi.ui:228
 #, fuzzy
 msgid "La&bels in:"
 msgstr "Otsikoitu kappale:"
 
-#: src/frontends/qt4/ui/RefUi.ui:290 src/frontends/qt4/ui_RefUi.h:322
+#: src/frontends/qt4/ui/RefUi.ui:290
 msgid "Cross-reference as it appears in output"
 msgstr "Viite sellaisena kuin se on tulosteessa"
 
-#: src/frontends/qt4/ui/RefUi.ui:294 src/frontends/qt4/ui_RefUi.h:313
+#: src/frontends/qt4/ui/RefUi.ui:294
 msgid "<reference>"
 msgstr "<viite>"
 
-#: src/frontends/qt4/ui/RefUi.ui:299 src/frontends/qt4/ui_RefUi.h:314
+#: src/frontends/qt4/ui/RefUi.ui:299
 msgid "(<reference>)"
 msgstr "(<viite>)"
 
-#: src/frontends/qt4/ui/RefUi.ui:304 src/frontends/qt4/ui_RefUi.h:315
+#: src/frontends/qt4/ui/RefUi.ui:304
 msgid "<page>"
 msgstr "<sivu>"
 
-#: src/frontends/qt4/ui/RefUi.ui:309 src/frontends/qt4/ui_RefUi.h:316
+#: src/frontends/qt4/ui/RefUi.ui:309
 msgid "on page <page>"
 msgstr "sivulla <sivu>"
 
-#: src/frontends/qt4/ui/RefUi.ui:314 src/frontends/qt4/ui_RefUi.h:317
+#: src/frontends/qt4/ui/RefUi.ui:314
 msgid "<reference> on page <page>"
 msgstr "<viite> sivulla <sivu>"
 
-#: src/frontends/qt4/ui/RefUi.ui:319 src/frontends/qt4/ui_RefUi.h:318
+#: src/frontends/qt4/ui/RefUi.ui:319
 msgid "Formatted reference"
 msgstr "Muotoiltu viittaus"
 
-#: src/frontends/qt4/ui/RefUi.ui:324 src/frontends/qt4/ui_RefUi.h:319
+#: src/frontends/qt4/ui/RefUi.ui:324
 #, fuzzy
 msgid "Textual reference"
 msgstr "Kaikki viitteet"
@@ -17974,7 +17966,7 @@ msgstr "Ei enää muuta kumottavaa"
 msgid "No further redo information"
 msgstr "Ei muuta uudelleen tehtävää"
 
-#: src/BufferView.cpp:1517 src/lyxfind.cpp:377 src/lyxfind.cpp:395
+#: src/BufferView.cpp:1517 src/lyxfind.cpp:378 src/lyxfind.cpp:396
 msgid "String not found!"
 msgstr "Merkkijonoa ei löydy!"
 
@@ -24451,39 +24443,39 @@ msgstr "Tekstin korkeus %"
 msgid "Page Height %"
 msgstr "Sivukorkeus %"
 
-#: src/lyxfind.cpp:143
+#: src/lyxfind.cpp:144
 msgid "Search error"
 msgstr "Etsintävirhe"
 
-#: src/lyxfind.cpp:143
+#: src/lyxfind.cpp:144
 msgid "Search string is empty"
 msgstr "Etsimismerkkijono on tyhjä"
 
-#: src/lyxfind.cpp:380
+#: src/lyxfind.cpp:381
 #, fuzzy
 msgid "String found."
 msgstr "Merkkijonoa ei löydy!"
 
-#: src/lyxfind.cpp:382
+#: src/lyxfind.cpp:383
 msgid "String has been replaced."
 msgstr "Merkkijono korvattu."
 
-#: src/lyxfind.cpp:385
+#: src/lyxfind.cpp:386
 #, fuzzy, c-format
 msgid "%1$d strings have been replaced."
 msgstr " merkkijonoa korvattu."
 
-#: src/lyxfind.cpp:1371
+#: src/lyxfind.cpp:1410
 #, fuzzy
 msgid "Invalid regular expression!"
 msgstr "Epäkelpo LaTeX-tyyppinen pituusilmaisu."
 
-#: src/lyxfind.cpp:1376
+#: src/lyxfind.cpp:1415
 #, fuzzy
 msgid "Match not found!"
 msgstr "Merkkijonoa ei löydy!"
 
-#: src/lyxfind.cpp:1380
+#: src/lyxfind.cpp:1419
 #, fuzzy
 msgid "Match found!"
 msgstr "Tiedostoa ei löydy"
@@ -24493,7 +24485,7 @@ msgstr "Tiedostoa ei löydy"
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1681
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1683
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -24535,36 +24527,36 @@ msgstr "Ei ole vline poistettavana"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Tuntematon taulukon ominaisuus '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1273
+#: src/mathed/InsetMathHull.cpp:1275
 #, fuzzy
 msgid "Bad math environment"
 msgstr "Koontiympäristö"
 
-#: src/mathed/InsetMathHull.cpp:1274
+#: src/mathed/InsetMathHull.cpp:1276
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1380 src/mathed/InsetMathHull.cpp:1389
+#: src/mathed/InsetMathHull.cpp:1382 src/mathed/InsetMathHull.cpp:1391
 msgid "No number"
 msgstr "Ei numeroa"
 
-#: src/mathed/InsetMathHull.cpp:1380 src/mathed/InsetMathHull.cpp:1389
+#: src/mathed/InsetMathHull.cpp:1382 src/mathed/InsetMathHull.cpp:1391
 msgid "Number"
 msgstr "Numero"
 
-#: src/mathed/InsetMathHull.cpp:1654
+#: src/mathed/InsetMathHull.cpp:1656
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "En voi muuttaa rivien määrä kohteessa '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1664
+#: src/mathed/InsetMathHull.cpp:1666
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "En voi muuttaa sarakkeiden määrä kohteessa '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1674
+#: src/mathed/InsetMathHull.cpp:1676
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "En voi lisätä vaakaviivat kohteeseen '%1$s'"
@@ -24582,11 +24574,11 @@ msgstr "siirryttiin matikkamoodiin (textrm)"
 msgid "Regular expression editor mode"
 msgstr "Jokerikortti-ilmaisu"
 
-#: src/mathed/InsetMathNest.cpp:1651 src/mathed/InsetMathNest.cpp:1771
+#: src/mathed/InsetMathNest.cpp:1651 src/mathed/InsetMathNest.cpp:1796
 msgid "Autocorrect Off ('!' to enter)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:1656 src/mathed/InsetMathNest.cpp:1773
+#: src/mathed/InsetMathNest.cpp:1656 src/mathed/InsetMathNest.cpp:1798
 msgid "Autocorrect On (<space> to exit)"
 msgstr ""
 

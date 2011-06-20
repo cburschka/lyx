@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-16 10:55-0400\n"
+"POT-Creation-Date: 2011-06-20 10:39-0400\n"
 "PO-Revision-Date: 2011-04-26 06:17+0300\n"
 "Last-Translator: Richman Reuven <richman.reuven@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
@@ -53,7 +53,7 @@ msgstr "זכויות יוצרים"
 #: src/frontends/qt4/ui/ShowFileUi.ui:55 src/frontends/qt4/ui/SymbolsUi.ui:66
 #: src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:138 src/frontends/qt4/ui/WrapUi.ui:173
-#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/ui_RefUi.h:294
+#: src/frontends/qt4/GuiParagraph.cpp:161
 msgid "&Close"
 msgstr "&סגור"
 
@@ -66,7 +66,7 @@ msgid "The label as it appears in the document"
 msgstr "התווית כמו שהיא מופיעה במסמך"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:36
-#: src/frontends/qt4/ui/RefUi.ui:332 src/frontends/qt4/ui_RefUi.h:324
+#: src/frontends/qt4/ui/RefUi.ui:332
 msgid "&Label:"
 msgstr "תווית:"
 
@@ -130,18 +130,16 @@ msgstr "יצירת ביבליוגרפיה"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:139
-#: src/frontends/qt4/ui_IndicesUi.h:193
 msgid "&Processor:"
 msgstr "מעבד"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
-#: src/frontends/qt4/ui_IndicesUi.h:195
 msgid "Select a processor"
 msgstr "בחר מעבד"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:755
-#: src/frontends/qt4/GuiPrefs.cpp:850 src/frontends/qt4/ui_IndicesUi.h:197
+#: src/frontends/qt4/GuiPrefs.cpp:850
 msgid "&Options:"
 msgstr "&אפשרויות:"
 
@@ -178,7 +176,7 @@ msgstr "הכנס את השם של מסד נתוני BibTeX"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:110
 #: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:350 src/frontends/qt4/ui_IndicesUi.h:212
+#: src/CutAndPaste.cpp:350
 msgid "&Add"
 msgstr "הוסף"
 
@@ -250,7 +248,7 @@ msgstr "הוסף את הביבליוגרפיה לתוכן העניינים"
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
-#: src/frontends/qt4/ui/WrapUi.ui:150 src/frontends/qt4/ui_RefUi.h:292
+#: src/frontends/qt4/ui/WrapUi.ui:150
 msgid "&OK"
 msgstr "אישור"
 
@@ -446,7 +444,6 @@ msgid "Select your branch"
 msgstr "בחר את הענף שלך"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25 src/frontends/qt4/ui/IndicesUi.ui:114
-#: src/frontends/qt4/ui_IndicesUi.h:205
 msgid "&New:"
 msgstr "&חדש:"
 
@@ -489,7 +486,7 @@ msgid "Define or change background color"
 msgstr "הגדר או שנה את צבע הרקע"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:123
-#: src/frontends/qt4/ui/IndicesUi.ui:185 src/frontends/qt4/ui_IndicesUi.h:227
+#: src/frontends/qt4/ui/IndicesUi.ui:185
 msgid "Alter Co&lor..."
 msgstr "שנה צבע..."
 
@@ -499,7 +496,7 @@ msgstr "הסר את הענף המסומן"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
 #: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3663
-#: src/Buffer.cpp:3676 src/frontends/qt4/ui_IndicesUi.h:219
+#: src/Buffer.cpp:3676
 msgid "&Remove"
 msgstr "הסר"
 
@@ -786,7 +783,7 @@ msgstr "החל שינויים לאלתר"
 #: src/frontends/qt4/ui/RefUi.ui:124 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:1875
-#: src/frontends/qt4/GuiDocument.cpp:3131 src/frontends/qt4/ui_RefUi.h:293
+#: src/frontends/qt4/GuiDocument.cpp:3131
 msgid "&Apply"
 msgstr "החל"
 
@@ -1778,7 +1775,6 @@ msgstr "שם המשוייך ל- URL"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:42
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:251
-#: src/frontends/qt4/ui_RefUi.h:309
 msgid "&Name:"
 msgstr "שם:"
 
@@ -1892,7 +1888,6 @@ msgid "&Edit"
 msgstr "&עריכה"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59 src/frontends/qt4/ui/IndicesUi.ui:143
-#: src/frontends/qt4/ui_IndicesUi.h:213
 msgid "A&vailable Indexes:"
 msgstr "מפתחות פנויים:"
 
@@ -1900,58 +1895,56 @@ msgstr "מפתחות פנויים:"
 msgid "Select the index this entry should be listed in."
 msgstr "בחר במפתח אליו רשומה זו צריכה להשתייך."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:190
+#: src/frontends/qt4/ui/IndicesUi.ui:19
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr "כאן ניתן להגדיר מעבד מפתחות שונה ולקבוע את האפשרויות שלו."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:202
-#: src/frontends/qt4/ui_IndicesUi.h:192
 msgid "Index generation"
 msgstr "יצירת מפתח"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:199
+#: src/frontends/qt4/ui/IndicesUi.ui:64
 msgid "Define program options of the selected processor."
 msgstr "קביעת אפשרויות התוכנה של המעבד הנבחר."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:202
+#: src/frontends/qt4/ui/IndicesUi.ui:89
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr "סמן במידה והנך זקוק למספר מפתחות (לדוגמה מפתח שמות)"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:204
+#: src/frontends/qt4/ui/IndicesUi.ui:92
 msgid "&Use multiple indexes"
 msgstr "השתמש במספר מפתחות"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
+#: src/frontends/qt4/ui/IndicesUi.ui:124
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr "הקלד את שם המפתח הרצוי (לדוגמה \"מפתח שמות\") והקלק על \"הוספה\""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:210
+#: src/frontends/qt4/ui/IndicesUi.ui:131
 msgid "Add a new index to the list"
 msgstr "הוסף מפתח חדש לרשימה"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149
-#: src/frontends/qt4/ui/RefUi.ui:349 src/frontends/qt4/ui_IndicesUi.h:215
-#: src/frontends/qt4/ui_RefUi.h:326
+#: src/frontends/qt4/ui/RefUi.ui:349
 msgid "1"
 msgstr "1"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:217
+#: src/frontends/qt4/ui/IndicesUi.ui:162
 msgid "Remove the selected index"
 msgstr "הסר את המפתח המסומן"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:221
+#: src/frontends/qt4/ui/IndicesUi.ui:172
 msgid "Rename the selected index"
 msgstr "שנה את שם המפתח המסומן"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:223
+#: src/frontends/qt4/ui/IndicesUi.ui:175
 msgid "R&ename..."
 msgstr "שנה שם"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:225
+#: src/frontends/qt4/ui/IndicesUi.ui:182
 msgid "Define or change button color"
 msgstr "הגדר או שנה את צבע הכפתורים"
 
@@ -2322,7 +2315,7 @@ msgid "Update the display"
 msgstr "עדכן את התצוגה"
 
 #: src/frontends/qt4/ui/LogUi.ui:77 src/frontends/qt4/ui/RefUi.ui:88
-#: src/frontends/qt4/ui/ViewSourceUi.ui:74 src/frontends/qt4/ui_RefUi.h:291
+#: src/frontends/qt4/ui/ViewSourceUi.ui:74
 msgid "&Update"
 msgstr "עדכן"
 
@@ -2834,7 +2827,7 @@ msgstr "סוג הנייר:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:19
-#: src/frontends/qt4/ui/RefUi.ui:271 src/frontends/qt4/ui_RefUi.h:310
+#: src/frontends/qt4/ui/RefUi.ui:271
 msgid "&Format:"
 msgstr "פורמט:"
 
@@ -4333,96 +4326,95 @@ msgstr ""
 msgid "&Statusbar messages"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:36 src/frontends/qt4/ui_RefUi.h:279
+#: src/frontends/qt4/ui/RefUi.ui:36
 #, fuzzy
 msgid "Fil&ter:"
 msgstr "קובץ:"
 
-#: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:281
+#: src/frontends/qt4/ui/RefUi.ui:49
 msgid "Enter string to filter the label list"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:59 src/frontends/qt4/ui_RefUi.h:285
+#: src/frontends/qt4/ui/RefUi.ui:59
 #, fuzzy
 msgid "Filter case-sensitively"
 msgstr "הבדל בין אותיות גדולות לקטנות"
 
-#: src/frontends/qt4/ui/RefUi.ui:62 src/frontends/qt4/ui_RefUi.h:287
+#: src/frontends/qt4/ui/RefUi.ui:62
 #, fuzzy
 msgid "Case-sensiti&ve"
 msgstr "הבדל בין אותיות גדולות לקטנות"
 
-#: src/frontends/qt4/ui/RefUi.ui:85 src/frontends/qt4/ui_RefUi.h:289
+#: src/frontends/qt4/ui/RefUi.ui:85
 msgid "Update the label list"
 msgstr "עדכן את רשימת ההפניות"
 
-#: src/frontends/qt4/ui/RefUi.ui:165 src/frontends/qt4/ui_RefUi.h:296
+#: src/frontends/qt4/ui/RefUi.ui:165
 msgid ""
 "Sort labels in alphabetical order (case-insensitively unless the Case-"
 "sensitive option is checked)"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:168 src/frontends/qt4/ui_RefUi.h:298
+#: src/frontends/qt4/ui/RefUi.ui:168
 msgid "&Sort"
 msgstr "מיין תוויות לפי סדר הא\"ב"
 
-#: src/frontends/qt4/ui/RefUi.ui:178 src/frontends/qt4/ui_RefUi.h:300
+#: src/frontends/qt4/ui/RefUi.ui:178
 #, fuzzy
 msgid "Sort labels case-sensitively in alphabetical order"
 msgstr "סדר תוויות בסדר אלפאביתי"
 
-#: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/ui_RefUi.h:302
+#: src/frontends/qt4/ui/RefUi.ui:181
 #, fuzzy
 msgid "Cas&e-sensitive"
 msgstr "הבדל בין אותיות גדולות לקטנות"
 
-#: src/frontends/qt4/ui/RefUi.ui:188 src/frontends/qt4/ui_RefUi.h:304
+#: src/frontends/qt4/ui/RefUi.ui:188
 msgid "Group labels by prefix (e.g. \"sec:\")"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:191 src/frontends/qt4/ui_RefUi.h:306
+#: src/frontends/qt4/ui/RefUi.ui:191
 #, fuzzy
 msgid "Grou&p"
 msgstr "שם:"
 
 #: src/frontends/qt4/ui/RefUi.ui:219 src/frontends/qt4/GuiRef.cpp:314
-#: src/frontends/qt4/ui_RefUi.h:307
 msgid "&Go to Label"
 msgstr "לך לתווית"
 
-#: src/frontends/qt4/ui/RefUi.ui:228 src/frontends/qt4/ui_RefUi.h:308
+#: src/frontends/qt4/ui/RefUi.ui:228
 msgid "La&bels in:"
 msgstr "הפניות בקובץ:"
 
-#: src/frontends/qt4/ui/RefUi.ui:290 src/frontends/qt4/ui_RefUi.h:322
+#: src/frontends/qt4/ui/RefUi.ui:290
 msgid "Cross-reference as it appears in output"
 msgstr "הפנה כפי שזה מופיע בפלט"
 
-#: src/frontends/qt4/ui/RefUi.ui:294 src/frontends/qt4/ui_RefUi.h:313
+#: src/frontends/qt4/ui/RefUi.ui:294
 msgid "<reference>"
 msgstr "<הפניה>"
 
-#: src/frontends/qt4/ui/RefUi.ui:299 src/frontends/qt4/ui_RefUi.h:314
+#: src/frontends/qt4/ui/RefUi.ui:299
 msgid "(<reference>)"
 msgstr "(<הפניה>)"
 
-#: src/frontends/qt4/ui/RefUi.ui:304 src/frontends/qt4/ui_RefUi.h:315
+#: src/frontends/qt4/ui/RefUi.ui:304
 msgid "<page>"
 msgstr "<עמוד>"
 
-#: src/frontends/qt4/ui/RefUi.ui:309 src/frontends/qt4/ui_RefUi.h:316
+#: src/frontends/qt4/ui/RefUi.ui:309
 msgid "on page <page>"
 msgstr "בעמוד <עמוד>"
 
-#: src/frontends/qt4/ui/RefUi.ui:314 src/frontends/qt4/ui_RefUi.h:317
+#: src/frontends/qt4/ui/RefUi.ui:314
 msgid "<reference> on page <page>"
 msgstr "<הפניה> בעמוד <עמוד>"
 
-#: src/frontends/qt4/ui/RefUi.ui:319 src/frontends/qt4/ui_RefUi.h:318
+#: src/frontends/qt4/ui/RefUi.ui:319
 msgid "Formatted reference"
 msgstr "הפניה מעוצבת"
 
-#: src/frontends/qt4/ui/RefUi.ui:324 src/frontends/qt4/ui_RefUi.h:319
+#: src/frontends/qt4/ui/RefUi.ui:324
 #, fuzzy
 msgid "Textual reference"
 msgstr "כל ההפניות"
@@ -17554,7 +17546,7 @@ msgstr "אין מידע עבור פעולת \"בטל\" נוספת"
 msgid "No further redo information"
 msgstr "אין מידע עבור פעולת \"בצע שוב\" נוספת"
 
-#: src/BufferView.cpp:1517 src/lyxfind.cpp:377 src/lyxfind.cpp:395
+#: src/BufferView.cpp:1517 src/lyxfind.cpp:378 src/lyxfind.cpp:396
 msgid "String not found!"
 msgstr "מחרוזת לא נמצאה!"
 
@@ -23877,36 +23869,36 @@ msgstr "גובה טקסט %"
 msgid "Page Height %"
 msgstr "גובה עמוד %"
 
-#: src/lyxfind.cpp:143
+#: src/lyxfind.cpp:144
 msgid "Search error"
 msgstr "שגיאת חיפוש"
 
-#: src/lyxfind.cpp:143
+#: src/lyxfind.cpp:144
 msgid "Search string is empty"
 msgstr "מחרוזת חיפוש ריקה"
 
-#: src/lyxfind.cpp:380
+#: src/lyxfind.cpp:381
 msgid "String found."
 msgstr "נמצאה המחרוזת."
 
-#: src/lyxfind.cpp:382
+#: src/lyxfind.cpp:383
 msgid "String has been replaced."
 msgstr "המחרוזת הוחלפה."
 
-#: src/lyxfind.cpp:385
+#: src/lyxfind.cpp:386
 #, c-format
 msgid "%1$d strings have been replaced."
 msgstr "%1$d מחרוזות הוחלפו."
 
-#: src/lyxfind.cpp:1371
+#: src/lyxfind.cpp:1410
 msgid "Invalid regular expression!"
 msgstr "ביטוי רגולרי פסול!"
 
-#: src/lyxfind.cpp:1376
+#: src/lyxfind.cpp:1415
 msgid "Match not found!"
 msgstr "לא נמצאה התאמה!"
 
-#: src/lyxfind.cpp:1380
+#: src/lyxfind.cpp:1419
 msgid "Match found!"
 msgstr "נמצאה התאמה!"
 
@@ -23915,7 +23907,7 @@ msgstr "נמצאה התאמה!"
 msgid " Macro: %1$s: "
 msgstr "מאקרו: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1681
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1683
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -23957,11 +23949,11 @@ msgstr "אין קו אנכי למחיקה"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "תכונת טבלה לא ידועה '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1273
+#: src/mathed/InsetMathHull.cpp:1275
 msgid "Bad math environment"
 msgstr "סביבה מתמטית פסולה"
 
-#: src/mathed/InsetMathHull.cpp:1274
+#: src/mathed/InsetMathHull.cpp:1276
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
@@ -23969,25 +23961,25 @@ msgstr ""
 "לא ניתן לבצע חישובים עבור סביבות מתמטיות של AMS.\n"
 "החלף את סוג הנוסחה המתמטית ונסה שנית."
 
-#: src/mathed/InsetMathHull.cpp:1380 src/mathed/InsetMathHull.cpp:1389
+#: src/mathed/InsetMathHull.cpp:1382 src/mathed/InsetMathHull.cpp:1391
 msgid "No number"
 msgstr "אין מספר"
 
-#: src/mathed/InsetMathHull.cpp:1380 src/mathed/InsetMathHull.cpp:1389
+#: src/mathed/InsetMathHull.cpp:1382 src/mathed/InsetMathHull.cpp:1391
 msgid "Number"
 msgstr "מספר"
 
-#: src/mathed/InsetMathHull.cpp:1654
+#: src/mathed/InsetMathHull.cpp:1656
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "לא יכול לשנות את מספר השורות ב- '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1664
+#: src/mathed/InsetMathHull.cpp:1666
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "לא יכול לשנות את מספר העמודות ב- '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1674
+#: src/mathed/InsetMathHull.cpp:1676
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "לא יכול להוסיף קווי רשת אופקיים בתוך '%1$s'"
@@ -24004,11 +23996,11 @@ msgstr "נכנס למצב טקסט מתמטי (textrm)"
 msgid "Regular expression editor mode"
 msgstr "מצב עורך ביטויים רגולריים"
 
-#: src/mathed/InsetMathNest.cpp:1651 src/mathed/InsetMathNest.cpp:1771
+#: src/mathed/InsetMathNest.cpp:1651 src/mathed/InsetMathNest.cpp:1796
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "תיקון שגיאות אוטומטי כבוי ('!' להפעלה)"
 
-#: src/mathed/InsetMathNest.cpp:1656 src/mathed/InsetMathNest.cpp:1773
+#: src/mathed/InsetMathNest.cpp:1656 src/mathed/InsetMathNest.cpp:1798
 msgid "Autocorrect On (<space> to exit)"
 msgstr "תיקון שגיאות אוטומטי פעיל ('!' לכיבוי)"
 

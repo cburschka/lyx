@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-16 20:19+0200\n"
+"POT-Creation-Date: 2011-06-20 10:39-0400\n"
 "PO-Revision-Date: 2011-06-18 11:55+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -17126,7 +17126,7 @@ msgstr "Ďalej sa nedá zrušovať"
 msgid "No further redo information"
 msgstr "Ďalej sa nedá opakovať"
 
-#: src/BufferView.cpp:1517 src/lyxfind.cpp:377 src/lyxfind.cpp:395
+#: src/BufferView.cpp:1517 src/lyxfind.cpp:378 src/lyxfind.cpp:396
 msgid "String not found!"
 msgstr "Reťazec nebol nájdený!"
 
@@ -23409,36 +23409,36 @@ msgstr "Výška textu %"
 msgid "Page Height %"
 msgstr "Výška Stránky %"
 
-#: src/lyxfind.cpp:143
+#: src/lyxfind.cpp:144
 msgid "Search error"
 msgstr "Chyba pri hľadaní"
 
-#: src/lyxfind.cpp:143
+#: src/lyxfind.cpp:144
 msgid "Search string is empty"
 msgstr "Reťazec na hľadanie je prázdny"
 
-#: src/lyxfind.cpp:380
+#: src/lyxfind.cpp:381
 msgid "String found."
 msgstr "Reťazec nájdený."
 
-#: src/lyxfind.cpp:382
+#: src/lyxfind.cpp:383
 msgid "String has been replaced."
 msgstr "Reťazec bol nahradený."
 
-#: src/lyxfind.cpp:385
+#: src/lyxfind.cpp:386
 #, c-format
 msgid "%1$d strings have been replaced."
 msgstr "%1$d reťazcov bolo nahradených."
 
-#: src/lyxfind.cpp:1371
+#: src/lyxfind.cpp:1410
 msgid "Invalid regular expression!"
 msgstr "Neplatný regulárny výraz!"
 
-#: src/lyxfind.cpp:1376
+#: src/lyxfind.cpp:1415
 msgid "Match not found!"
 msgstr "Vhodný výraz nebol nájdený!"
 
-#: src/lyxfind.cpp:1380
+#: src/lyxfind.cpp:1419
 msgid "Match found!"
 msgstr "Vhodný výraz nájdený!"
 
@@ -23447,7 +23447,7 @@ msgstr "Vhodný výraz nájdený!"
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1681
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1683
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -23488,11 +23488,11 @@ msgstr "Žiadna vertikálna linka (vline) na zmazanie"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Neznáme vlastnosti tabuľky '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1273
+#: src/mathed/InsetMathHull.cpp:1275
 msgid "Bad math environment"
 msgstr "Zlé mat. prostredie"
 
-#: src/mathed/InsetMathHull.cpp:1274
+#: src/mathed/InsetMathHull.cpp:1276
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
@@ -23500,25 +23500,25 @@ msgstr ""
 "Výpočet sa pre mat. prostredie AMS nedá previezť.\n"
 "Zmeňte typ mat. formuly a skúste to ešte raz."
 
-#: src/mathed/InsetMathHull.cpp:1380 src/mathed/InsetMathHull.cpp:1389
+#: src/mathed/InsetMathHull.cpp:1382 src/mathed/InsetMathHull.cpp:1391
 msgid "No number"
 msgstr "Bez čísla"
 
-#: src/mathed/InsetMathHull.cpp:1380 src/mathed/InsetMathHull.cpp:1389
+#: src/mathed/InsetMathHull.cpp:1382 src/mathed/InsetMathHull.cpp:1391
 msgid "Number"
 msgstr "Číslo"
 
-#: src/mathed/InsetMathHull.cpp:1654
+#: src/mathed/InsetMathHull.cpp:1656
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Nedá sa zmeniť počet riadkov v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1664
+#: src/mathed/InsetMathHull.cpp:1666
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Počet stĺpcov sa nedá zmeniť v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1674
+#: src/mathed/InsetMathHull.cpp:1676
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Nedajú sa pridať horizontálne linky mriežky '%1$s'"
@@ -23535,11 +23535,11 @@ msgstr "vstup do text. prostredia vnútri matem. (textrm)"
 msgid "Regular expression editor mode"
 msgstr "Modus  pre editáciu regulárnych výrazov"
 
-#: src/mathed/InsetMathNest.cpp:1651 src/mathed/InsetMathNest.cpp:1771
+#: src/mathed/InsetMathNest.cpp:1651 src/mathed/InsetMathNest.cpp:1796
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Automatická korektúra vypnutá ('!' na zapnutie)"
 
-#: src/mathed/InsetMathNest.cpp:1656 src/mathed/InsetMathNest.cpp:1773
+#: src/mathed/InsetMathNest.cpp:1656 src/mathed/InsetMathNest.cpp:1798
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Automatická korektúra zapnutá (<medzerník> na vypnutie)"
 
