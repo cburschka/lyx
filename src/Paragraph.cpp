@@ -2734,7 +2734,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 
 	Layout const & style = *d->layout_;
 
-	xs.startParagraph();
+	xs.startParagraph(allowEmpty());
 
 	if (!runparams.for_toc && runparams.html_make_pars) {
 		// generate a magic label for this paragraph

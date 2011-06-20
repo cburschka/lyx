@@ -101,6 +101,8 @@ What's new
 
 - Fixed XHTML output for tables that use multirow.
 
+- Fix problem with XHTML output of blank paragraph (bug 7634).
+
 - Fixed export to plaintext of, as well as searching within,
   a document containing aligned and other multi-cell environments
   (bug 7549).
