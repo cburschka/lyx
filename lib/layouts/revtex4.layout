@@ -8,14 +8,18 @@
 #          Marc Mengel (RevTeX)
 #          Amir Karger (LyX v11.34 style modifications)
 #          Amir Karger (RevTeX 4 beta) 9/1999, 7/2000
-
+# Heavily modifed and enhanced by serveral developers.
 
 Format 35
-Columns                 1
-Sides                   1
-PageStyle               Headers
-Provides natbib-internal	1
-Provides url		1
+
+Columns                   1
+Sides                     1
+PageStyle                 Headers
+Provides natbib-internal  1
+Provides url              1
+
+SecNumDepth               4
+TocDepth                  3
 
 # Default textclass options. The user may need to modify this.
 ClassOptions
@@ -33,11 +37,12 @@ Preamble
 	 \definecolor{CYAN}{cmyk}{1,0,0,0}
 	 \definecolor{MAGENTA}{cmyk}{0,1,0,0}
 	 \definecolor{YELLOW}{cmyk}{0,0,1,0}
-	 }
+	}
 EndPreamble
 
 
 Style Standard
+	Category              MainText
 	Margin                Static
 	LatexType             Paragraph
 	LatexName             dummy
@@ -60,11 +65,8 @@ Style Section
 	Align                 Center
 	AlignPossible         Block, Center, Left
 	Font
-	  Series              Medium
 	  Shape               Smallcaps
-	  Size                Large
 	EndFont
-	TocLevel 1
 End
 
 
@@ -79,21 +81,17 @@ End
 
 Style Subsubsection
 	Font
+	  Series              Medium
 	  Shape               Italic
-	  Size                Normal
 	EndFont
-	TocLevel 3
 End
 
 
 Style Paragraph
-	TopSep                0.7
-	ParSep                0.4
 	Font
+	  Series              Medium
 	  Shape               Italic
-	  Size                Normal
 	EndFont
-	TocLevel 4
 End
 
 # then define the unumbered sections, based on the numbered ones.
@@ -111,6 +109,7 @@ Input stdstruct.inc
 
 
 Style Preprint
+	Category              FrontMatter
 	Margin                Right_Address_Box
 	LatexType             Command
 	InTitle               1
@@ -143,19 +142,17 @@ Style Date
 	LabelString           "Date:"
 	LabelFont
 	  Shape               Italic
-	  Size                Large
 	EndFont
 End
 
 
 Style Affiliation
+	Category              FrontMatter
 	Margin                Dynamic
 	LatexType             Command
 	InTitle               1
 	LatexName             affiliation
 	ParSkip               0.4
-#  BottomSep            1.5
-#  ParSep               1.5
 	Align                 Center
 	AlignPossible         Block, Left, Right, Center
 	LabelType             Static
@@ -224,31 +221,30 @@ Style Abstract
 	InTitle               1
 	ItemSep               0.2
 	ParSep                0.3
-	LabelFont
-	  Size                Large
-	EndFont
 End
 
 
 Style Acknowledgments
+	Category              BackMatter
 	LatexType             Environment
 	LatexName             acknowledgments
 	ParIndent             MM
 	ParSkip               0.4
+	TopSep                0.7
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             Centered_Top_Environment
 	LabelString           "acknowledgments"
 	LabelBottomSep        0.5
 	LabelFont
-	  Series              Medium
-	  Shape               Smallcaps
+	  Series              Bold
 	  Size                Large
 	EndFont
 End
 
 
 Style PACS
+	Category              FrontMatter
 	Margin                Dynamic
 	LatexType             Command
 	InTitle               1

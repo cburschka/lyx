@@ -24,7 +24,6 @@ Style Part
 	Margin		Dynamic
 	LabelType	No_Label
 	TocLevel	0
-	LabelCounter	part
 	LatexType	Command
 	LatexName	part
 	NeedProtect	1
@@ -36,6 +35,7 @@ Style Part
 	ParSep		0.8
 	Align		Center
 	Alignpossible	Center
+	OptionalArgs	1
 	Font
 	  Series	Bold
 	  Size		Huge
