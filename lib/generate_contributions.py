@@ -1761,6 +1761,14 @@ contributers = [
                  "1 January 2009",
                  u"question layout environment"),
 
+     contributer(u"Yihui Xie",
+                 "xie () yihui ! name",
+                 "GPL",
+                 "GPL Statement",
+                 "m=130523685427995",
+                 "3 June 2011",
+                 u"Bugfixing, Chinese translation, Sweave support"),
+
      contributer(u"Huang Ying",
                  "huangy () sh ! necas ! nec ! com ! cn",
                  "GPL",
