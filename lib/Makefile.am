@@ -1417,6 +1417,7 @@ dist_layouts_DATA =\
 	layouts/report.layout \
 	layouts/revtex.layout \
 	layouts/revtex4.layout \
+	layouts/revtex4-1.layout \
 	layouts/scrartcl.layout \
 	layouts/scrarticle-beamer.layout \
 	layouts/scrbook.layout \
@@ -1550,6 +1551,7 @@ dist_templates_DATA = \
 	templates/lettre.lyx \
 	templates/README.new_templates \
 	templates/revtex4.lyx \
+	templates/revtex4-1.lyx \
 	templates/slides.lyx \
 	templates/svjour3.lyx \
 	templates/svmono_book.lyx \

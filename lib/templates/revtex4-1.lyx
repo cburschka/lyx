@@ -1,0 +1,376 @@
+#LyX 1.6.8svn created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass revtex4-1
+\options aps,manuscript,preprintnumbers
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine natbib_numerical
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Preprint
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Use the Preprint layout to place your local institutional report number
+ in the upper righthand corner of the title page in preprint mode.
+ Multiple Preprint layouts are allowed.
+ Use the preprintnumbers class option under Documents \SpecialChar \menuseparator
+ Settings to override
+ journal defaults to display numbers if necessary...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Preprint
+Draft #1
+\end_layout
+
+\begin_layout Title
+Title of paper
+\end_layout
+
+\begin_layout Author
+Author
+\end_layout
+
+\begin_layout Author Email
+\begin_inset OptArg
+status open
+
+\begin_layout Plain Layout
+To whom correspondence should be addressed: 
+\end_layout
+
+\end_inset
+
+a@osu.edu
+\end_layout
+
+\begin_layout Author URL
+\begin_inset OptArg
+status open
+
+\begin_layout Plain Layout
+Explanatory text: 
+\end_layout
+
+\end_inset
+
+http://www.osu.edu/~a
+\end_layout
+
+\begin_layout Thanks
+Many thanks to everyone involved.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Email, URL, Thanks, AltAffiliation, etc., all apply to the current author.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Affiliation
+Open Source University
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The Affiliation layout applies to all authors since the last Affiliation
+ layout.
+ The Affiliation layout should follow the other information.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Collaboration
+The LyX Team
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Collaboration name, if desired (requires use of superscriptaddress option
+ in Documents \SpecialChar \menuseparator
+ Settings).
+ No affiliation is required.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+Insert abstract here.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Inclusion of itemized lists
+\end_layout
+
+\begin_layout Itemize
+is now supported.
+\end_layout
+
+\end_deeper
+\begin_layout PACS
+Insert suggested PACS numbers here.
+\end_layout
+
+\begin_layout Keywords
+Insert suggested keywords here --- APS authors don't need to do this.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Body of paper goes here.
+ Use proper sectioning commands.
+\end_layout
+
+\begin_layout Plain Layout
+References should be done using the usual mechanisms for citation, references,
+ and labels.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Section-I"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Subsection
+\end_layout
+
+\begin_layout Subsubsection
+Subsubsection
+\end_layout
+
+\begin_layout Standard
+First paragraph.
+\end_layout
+
+\begin_layout Standard
+If in two-column mode, the Wide Text layout will change to single-column
+ format so that long equations can be displayed.
+ Use only when necessary.
+\end_layout
+
+\begin_layout Wide Text
+\begin_inset Formula \[
+abc+def+ghij+klmn+opq+rst+uvw+xyz\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Figures should be put into the text as floats.
+ There is no need to do explicit centering.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Turn Page
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Surround figures with the Turn Page layout for landscape.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tables should appear as floats within the text.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Ruled Table
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The Ruled Table layout adds doubled rules to table and sets a reasonable
+ default table settings.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Turn Page
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Surround tables with the Turn Page layout for landscape.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Turn Page
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Use LyX's span column option to get a full-width table or figure in two-column.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\start_of_appendix
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following sections are appendices.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Acknowledgments
+Put your acknowledgments here.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Create the reference section using BibTeX, preferably.
+ The reference list will follow the journal specifications if you leave
+ the 
+\begin_inset Quotes eld
+\end_inset
+
+style
+\begin_inset Quotes erd
+\end_inset
+
+ empty---or you can use any of the APS or AIP provided styles.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "your-bib-file"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
