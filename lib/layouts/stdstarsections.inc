@@ -17,6 +17,7 @@ Style Part*
 	LatexName             part*
 	LabelType             No_Label
 	LabelCounter	      ""
+	OptionalArgs          0
 End
 
 
