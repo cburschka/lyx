@@ -18,6 +18,9 @@ PageStyle                 Headers
 Provides natbib-internal  1
 Provides url              1
 
+SecNumDepth               4
+TocDepth                  3
+
 # Default textclass options. The user may need to modify this.
 ClassOptions
 	Other                 "aps,manuscript"
@@ -62,27 +65,21 @@ Style Section
 	Align                 Center
 	AlignPossible         Block, Center, Left
 	Font
-	  Series              Medium
 	  Shape               Smallcaps
-	  Size                Large
 	EndFont
 	TocLevel              1
 End
 
 
 Style Subsection
-	Font
-	  Series              Bold
-	  Size                Normal
-	EndFont
 	TocLevel              2
 End
 
 
 Style Subsubsection
 	Font
+	  Series              Medium
 	  Shape               Italic
-	  Size                Normal
 	EndFont
 	TocLevel              3
 End
@@ -92,8 +89,8 @@ Style Paragraph
 	TopSep                0.7
 	ParSep                0.4
 	Font
+	  Series              Medium
 	  Shape               Italic
-	  Size                Normal
 	EndFont
 	TocLevel              4
 End
@@ -133,20 +130,11 @@ Style Title
 End
 
 
-Style Author
-	Font
-	  Size                Large
-	  Shape               Smallcaps
-	EndFont
-End
-
-
 Style Date
 	LabelType             Static
 	LabelString           "Date:"
 	LabelFont
 	  Shape               Italic
-	  Size                Large
 	EndFont
 End
 
@@ -226,9 +214,6 @@ Style Abstract
 	InTitle               1
 	ItemSep               0.2
 	ParSep                0.3
-	LabelFont
-	  Size                Large
-	EndFont
 End
 
 
@@ -238,14 +223,14 @@ Style Acknowledgments
 	LatexName             acknowledgments
 	ParIndent             MM
 	ParSkip               0.4
+	TopSep                0.7
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             Centered_Top_Environment
-	LabelString           "acknowledgments"
+	LabelString           "Acknowledgments"
 	LabelBottomSep        0.5
 	LabelFont
-	  Series              Medium
-	  Shape               Smallcaps
+	  Series              Bold
 	  Size                Large
 	EndFont
 End
