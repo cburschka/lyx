@@ -11,77 +11,77 @@
 
 Format 35
 Style Part*
-	CopyStyle             Part
-	Category              Unnumbered
-	Margin                Static
-	LatexName             part*
-	LabelType             No_Label
-	LabelCounter	      ""
-	OptionalArgs          0
+	CopyStyle	Part
+	Category	Unnumbered
+	Margin		Static
+	LatexName	part*
+	LabelType	No_Label
+	LabelCounter	""
+	OptionalArgs	0
 End
 
 
 Style Chapter*
-	CopyStyle             Chapter
-	Category              Unnumbered
-	Margin                Static
-	LatexName             chapter*
-	LabelType             No_Label
-	LabelCounter	      ""
-	OptionalArgs          0
+	CopyStyle	Chapter
+	Category	Unnumbered
+	Margin		Static
+	LatexName	chapter*
+	LabelType	No_Label
+	LabelCounter	""
+	OptionalArgs	0
 End
 
 
 Style Section*
-	CopyStyle             Section
-	Category              Unnumbered
-	Margin                Static
-	LatexName             section*
-	LabelType             No_Label
-	LabelCounter	      ""
-	OptionalArgs          0
+	CopyStyle	Section
+	Category	Unnumbered
+	Margin		Static
+	LatexName	section*
+	LabelType	No_Label
+	LabelCounter	""
+	OptionalArgs	0
 End
 
 
 Style Subsection*
-	CopyStyle             Subsection
-	Category              Unnumbered
-	Margin                Static
-	LatexName             subsection*
-	LabelType             No_Label
-	LabelCounter	      ""
-	OptionalArgs          0
+	CopyStyle	Subsection
+	Category	Unnumbered
+	Margin	Static
+	LatexName	subsection*
+	LabelType	No_Label
+	LabelCounter	""
+	OptionalArgs	0
 End
 
 
 Style Subsubsection*
-	CopyStyle             Subsubsection
-	Category              Unnumbered
-	Margin                Static
-	LatexName             subsubsection*
-	LabelType             No_Label
-	LabelCounter	      ""
-	OptionalArgs          0
+	CopyStyle	Subsubsection
+	Category	Unnumbered
+	Margin		Static
+	LatexName	subsubsection*
+	LabelType	No_Label
+	LabelCounter	""
+	OptionalArgs	0
 End
 
 
 Style Paragraph*
-	CopyStyle             Paragraph
-	Category              Unnumbered
-	Margin                Static
-	LatexName             paragraph*
-	LabelType             No_Label
-	LabelCounter	      ""
-	OptionalArgs          0
+	CopyStyle	Paragraph
+	Category	Unnumbered
+	Margin		Static
+	LatexName	paragraph*
+	LabelType	No_Label
+	LabelCounter	""
+	OptionalArgs	0
 End
 
 
 Style Subparagraph*
-	CopyStyle             Subparagraph
-	Category              Unnumbered
-	Margin                Static
-	LatexName             subparagraph*
-	LabelType             No_Label
-	LabelCounter	      ""
-	OptionalArgs          0
+	CopyStyle	Subparagraph
+	Category	Unnumbered
+	Margin		Static
+	LatexName	subparagraph*
+	LabelType	No_Label
+	LabelCounter	""
+	OptionalArgs	0
 End
