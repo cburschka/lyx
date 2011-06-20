@@ -227,7 +227,7 @@ bool XHTMLStream::closeFontTags()
 			return true;
 		curtag = tag_stack_.back();
 	}
-
+	
 	if (curtag.tag_ == parsep_tag)
 		return true;
 
@@ -246,9 +246,11 @@ bool XHTMLStream::closeFontTags()
 }
 
 
-void XHTMLStream::startParagraph()
+void XHTMLStream::startParagraph(bool keep_empty)
 {
 	pending_tags_.push_back(html::StartTag(parsep_tag));
+	if (keep_empty)
+		clearTagDeque();
 }
 
 

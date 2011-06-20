@@ -103,7 +103,7 @@ public:
 	bool closeFontTags();
 	/// call at start of paragraph. sets a mark so we know what tags
 	/// to close at the end. 
-	void startParagraph();
+	void startParagraph(bool keep_empty);
 	/// call at end of paragraph to clear that mark. note that this
 	/// will also close any tags still open. 
 	void endParagraph();
