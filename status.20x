@@ -121,6 +121,12 @@ What's new
 
 - Fix error with Sweave module when using some R features (bug 7552).
 
+- Fix LaTeX error with Sweave module when the temporary directory name
+  containsa space (bug 7545).
+
+- Fix LaTeX error with Sweave module when the directory where R has
+  been installed contains a space.
+
 * USER INTERFACE
 
 - Fixed crash relating to outliner and mouse movement.
@@ -176,7 +182,7 @@ What's new
 * ADVANCED FIND AND REPLACE
 
 - Advanced F&R would previously ask to open a master document under some
-  circumstances, or do strange things with \selectlanguage(bug 6560). This
+  circumstances, or do strange things with \selectlanguage (bug 6560). This
   has been mostly fixed. Please see the bug report for remaining issues.
 
 - Fixed bug in matching at borders within *-environments with ignore-format
