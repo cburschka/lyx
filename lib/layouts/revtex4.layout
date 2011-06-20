@@ -39,6 +39,7 @@ EndPreamble
 
 
 Style Standard
+	Category              MainText
 	Margin                Static
 	LatexType             Paragraph
 	LatexName             dummy
@@ -112,6 +113,7 @@ Input stdstruct.inc
 
 
 Style Preprint
+	Category              FrontMatter
 	Margin                Right_Address_Box
 	LatexType             Command
 	InTitle               1
@@ -150,6 +152,7 @@ End
 
 
 Style Affiliation
+	Category              FrontMatter
 	Margin                Dynamic
 	LatexType             Command
 	InTitle               1
@@ -230,6 +233,7 @@ End
 
 
 Style Acknowledgments
+	Category              BackMatter
 	LatexType             Environment
 	LatexName             acknowledgments
 	ParIndent             MM
@@ -248,6 +252,7 @@ End
 
 
 Style PACS
+	Category              FrontMatter
 	Margin                Dynamic
 	LatexType             Command
 	InTitle               1
