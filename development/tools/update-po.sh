@@ -56,6 +56,15 @@ if svn log >/dev/null 2>&1; then
   VCS="svn";
 elif git diff >/dev/null 2>&1; then
   VCS="git";
+  # We need to make sure that we have a tree without any unpushed 
+  # commits. Otherwise git svn dcommit would commit more than we
+  # want.
+  if git status | grep -Pq 'Your branch is (?:ahead|behind)'; then
+    echo "Your git tree is not clean. Please correct the situation and re-run.";
+    echo;
+    git status;
+    exit 10;
+  fi
 fi
 
 if [ -z "$VCS" ]; then 
@@ -118,17 +127,8 @@ fi
 if [ "$VCS" = "svn" ]; then
   $DEBUG svn ci *.po;
 else
-  # We need to make sure that we have a tree without any unpushed 
-  # commits. Otherwise git svn dcommit would commit more than we
-  # want.
-  NOTSAFE="";
-  if git status | grep -Pq 'Your branch is (?:ahead|behind)'; then
-    NOTSAFE="TRUE";
-  fi
   $DEBUG git commit *.po -m "Remerge strings.";
-  if [ -z "$NOTSAFE" ]; then
-    $DEBUG git svn dcommit;
-  fi
+  $DEBUG git svn dcommit;
 fi
 
 echo
