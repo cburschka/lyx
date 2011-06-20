@@ -1767,7 +1767,7 @@ contributers = [
                  "GPL Statement",
                  "m=130523685427995",
                  "3 June 2011",
-                 u"Bugfixing, Chinese translation"),
+                 u"Bugfixing, Chinese translation, Sweave support"),
 
      contributer(u"Huang Ying",
                  "huangy () sh ! necas ! nec ! com ! cn",
