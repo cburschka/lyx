@@ -3966,10 +3966,12 @@ void Buffer::Impl::setLabel(ParIterator & it, UpdateType utype) const
 	// Compute the item depth of the paragraph
 	par.itemdepth = getItemDepth(it);
 
-	if (layout.margintype == MARGIN_MANUAL
-	    || layout.latextype == LATEX_BIB_ENVIRONMENT) {
+	if (layout.margintype == MARGIN_MANUAL) {
 		if (par.params().labelWidthString().empty())
 			par.params().labelWidthString(par.expandLabel(layout, bp));
+	} else if (layout.latextype == LATEX_BIB_ENVIRONMENT) {
+		// we do not need to do anything here, since the empty case is
+		// handled during export.
 	} else {
 		par.params().labelWidthString(docstring());
 	}

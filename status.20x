@@ -83,6 +83,8 @@ What's new
 
 - Fix output of decimally aligned columns in unviewed (on screen) tables.
 
+- Fix problem with indentation of bibliography items.
+
 - Inform user of unknown layouts caused by class change (bug 7571).
 
 - Avoid LaTeX errors if font changing commands are used in the wrong mode
@@ -109,7 +111,7 @@ What's new
 - Fix dvi forward search on Windows when compiling with MSVC.
 
 - Calculate relative pathnames to master documents when master is in a
-  directory above the child (bug #7540).
+  directory above the child (bug 7540).
 
 - On Windows, improve detection of the TeX engine when the file system does
   not support short names and the temp directory contains spaces.
