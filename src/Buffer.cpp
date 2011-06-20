@@ -1609,8 +1609,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 
 
 void Buffer::makeLyXHTMLFile(FileName const & fname,
-			      OutputParams const & runparams,
-			      bool const body_only) const
+			      OutputParams const & runparams) const
 {
 	LYXERR(Debug::LATEX, "makeLyXHTMLFile...");
 
@@ -1623,7 +1622,7 @@ void Buffer::makeLyXHTMLFile(FileName const & fname,
 	updateBuffer(UpdateMaster, OutputUpdate);
 	updateMacroInstances(OutputUpdate);
 
-	writeLyXHTMLSource(ofs, runparams, body_only);
+	writeLyXHTMLSource(ofs, runparams);
 
 	ofs.close();
 	if (ofs.fail())

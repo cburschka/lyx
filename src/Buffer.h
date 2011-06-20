@@ -313,8 +313,7 @@ public:
 			     bool only_body = false) const;
 	///
 	void makeLyXHTMLFile(support::FileName const & filename,
-			     OutputParams const & runparams_in,
-			     bool only_body = false) const;
+			     OutputParams const & runparams_in) const;
 	///
 	void writeLyXHTMLSource(odocstream & os,
 			     OutputParams const & runparams_in,
