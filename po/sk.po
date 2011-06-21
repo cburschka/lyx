@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-18 11:59+0200\n"
-"PO-Revision-Date: 2011-06-19 13:00+0200\n"
+"POT-Creation-Date: 2011-06-21 11:23+0200\n"
+"PO-Revision-Date: 2011-06-21 12:52+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -308,21 +308,21 @@ msgstr "Horizontálne zarovnanie obsahu vnútri rámku"
 #: src/frontends/qt4/ui/BoxUi.ui:63 src/frontends/qt4/ui/ListingsUi.ui:103
 #: src/frontends/qt4/ui/TabularUi.ui:69 src/frontends/qt4/ui/TabularUi.ui:1387
 #: src/frontends/qt4/ui/WrapUi.ui:209 src/frontends/qt4/GuiParagraph.cpp:109
-#: src/frontends/qt4/GuiTabular.cpp:784
+#: src/frontends/qt4/GuiTabular.cpp:789
 msgid "Left"
 msgstr "Vľavo"
 
 #: src/frontends/qt4/ui/BoxUi.ui:68 src/frontends/qt4/ui/TabularUi.ui:74
 #: src/frontends/qt4/ui/TabularUi.ui:1394 src/frontends/qt4/GuiExternal.cpp:77
 #: src/frontends/qt4/GuiGraphics.cpp:72 src/frontends/qt4/GuiParagraph.cpp:111
-#: src/frontends/qt4/GuiTabular.cpp:785
+#: src/frontends/qt4/GuiTabular.cpp:790
 msgid "Center"
 msgstr "Na stred"
 
 #: src/frontends/qt4/ui/BoxUi.ui:73 src/frontends/qt4/ui/ListingsUi.ui:108
 #: src/frontends/qt4/ui/TabularUi.ui:79 src/frontends/qt4/ui/TabularUi.ui:1404
 #: src/frontends/qt4/ui/WrapUi.ui:214 src/frontends/qt4/GuiParagraph.cpp:110
-#: src/frontends/qt4/GuiTabular.cpp:786
+#: src/frontends/qt4/GuiTabular.cpp:791
 msgid "Right"
 msgstr "Vpravo"
 
@@ -491,8 +491,8 @@ msgid "Remove the selected branch"
 msgstr "Zmazať vybranú vetvu"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3696
-#: src/Buffer.cpp:3709
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3695
+#: src/Buffer.cpp:3708
 msgid "&Remove"
 msgstr "&Odstrániť"
 
@@ -526,7 +526,7 @@ msgstr "Pridaj Všetko"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1069
-#: src/Buffer.cpp:2290 src/Buffer.cpp:3671 src/Buffer.cpp:3734
+#: src/Buffer.cpp:2289 src/Buffer.cpp:3670 src/Buffer.cpp:3733
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1835
@@ -4563,11 +4563,11 @@ msgid "Horizontal alignment in column"
 msgstr "Horizontálne zarovnanie v stĺpcoch"
 
 #: src/frontends/qt4/ui/TabularUi.ui:64 src/frontends/qt4/GuiParagraph.cpp:108
-#: src/frontends/qt4/GuiTabular.cpp:788
+#: src/frontends/qt4/GuiTabular.cpp:793
 msgid "Justified"
 msgstr "Do bloku"
 
-#: src/frontends/qt4/ui/TabularUi.ui:84 src/frontends/qt4/GuiTabular.cpp:790
+#: src/frontends/qt4/ui/TabularUi.ui:84 src/frontends/qt4/GuiTabular.cpp:795
 msgid "At Decimal Separator"
 msgstr "Na Decimálnom Separátore"
 
@@ -5166,7 +5166,10 @@ msgstr "ShortTitle"
 #: lib/layouts/ijmpd.layout:210 lib/layouts/ijmpd.layout:222
 #: lib/layouts/iopart.layout:60 lib/layouts/iopart.layout:130
 #: lib/layouts/iopart.layout:149 lib/layouts/iopart.layout:174
-#: lib/layouts/iopart.layout:203 lib/layouts/siamltex.layout:279
+#: lib/layouts/iopart.layout:203 lib/layouts/revtex4-1.layout:79
+#: lib/layouts/revtex4-1.layout:164 lib/layouts/revtex4-1.layout:183
+#: lib/layouts/revtex4.layout:103 lib/layouts/revtex4.layout:133
+#: lib/layouts/revtex4.layout:250 lib/layouts/siamltex.layout:279
 #: lib/layouts/siamltex.layout:299 lib/layouts/sigplanconf.layout:71
 #: lib/layouts/sigplanconf.layout:124 lib/layouts/sigplanconf.layout:157
 #: lib/layouts/svmult.layout:212 lib/layouts/svmult.layout:218
@@ -5179,7 +5182,7 @@ msgstr "ShortTitle"
 #: lib/layouts/stdtitle.inc:81 lib/layouts/stdtitle.inc:100
 #: lib/layouts/svcommon.inc:338 lib/layouts/svcommon.inc:362
 #: lib/layouts/svcommon.inc:406 lib/layouts/svcommon.inc:459
-#: lib/layouts/customHeadersFooters.module:11
+#: lib/layouts/svcommon.inc:480 lib/layouts/customHeadersFooters.module:11
 msgid "FrontMatter"
 msgstr "FrontMatter"
 
@@ -5234,16 +5237,16 @@ msgstr "Publikačný Výdaj:"
 #: lib/layouts/latex8.layout:107 lib/layouts/llncs.layout:242
 #: lib/layouts/ltugboat.layout:171 lib/layouts/ltugboat.layout:185
 #: lib/layouts/paper.layout:130 lib/layouts/revtex.layout:139
-#: lib/layouts/revtex4.layout:223 lib/layouts/siamltex.layout:251
-#: lib/layouts/sigplanconf.layout:153 lib/layouts/sigplanconf.layout:169
-#: lib/layouts/spie.layout:75 lib/layouts/svglobal.layout:149
-#: lib/layouts/svjog.layout:153 lib/layouts/svmult.layout:217
-#: lib/layouts/svprobth.layout:183 lib/layouts/tufte-handout.layout:45
-#: lib/layouts/tufte-handout.layout:60 lib/layouts/agu_stdtitle.inc:193
-#: lib/layouts/amsdefs.inc:91 lib/layouts/db_stdstruct.inc:11
-#: lib/layouts/scrclass.inc:238 lib/layouts/stdstruct.inc:12
-#: lib/layouts/stdstruct.inc:27 lib/layouts/svcommon.inc:405
-#: src/output_plaintext.cpp:138
+#: lib/layouts/revtex4-1.layout:73 lib/layouts/revtex4.layout:223
+#: lib/layouts/siamltex.layout:251 lib/layouts/sigplanconf.layout:153
+#: lib/layouts/sigplanconf.layout:169 lib/layouts/spie.layout:75
+#: lib/layouts/svglobal.layout:149 lib/layouts/svjog.layout:153
+#: lib/layouts/svmult.layout:217 lib/layouts/svprobth.layout:183
+#: lib/layouts/tufte-handout.layout:45 lib/layouts/tufte-handout.layout:60
+#: lib/layouts/agu_stdtitle.inc:193 lib/layouts/amsdefs.inc:91
+#: lib/layouts/db_stdstruct.inc:11 lib/layouts/scrclass.inc:238
+#: lib/layouts/stdstruct.inc:12 lib/layouts/stdstruct.inc:27
+#: lib/layouts/svcommon.inc:405 src/output_plaintext.cpp:138
 msgid "Abstract"
 msgstr "Súhrn"
 
@@ -5251,7 +5254,7 @@ msgstr "Súhrn"
 #: lib/layouts/aa.layout:205 lib/layouts/aapaper.layout:103
 #: lib/layouts/egs.layout:532 lib/layouts/elsart.layout:424
 #: lib/layouts/svmult.layout:202 lib/layouts/aapaper.inc:80
-#: lib/layouts/svcommon.inc:533
+#: lib/layouts/svcommon.inc:518
 #: lib/layouts/theorems-ams-extended-bytype.module:304
 #: lib/layouts/theorems-ams-extended-bytype.module:313
 #: lib/layouts/theorems-ams-extended-bytype.module:316
@@ -5552,7 +5555,7 @@ msgstr "Notácia"
 
 #: lib/layouts/AEA.layout:217 lib/layouts/elsart.layout:378
 #: lib/layouts/llncs.layout:369 lib/layouts/svglobal3.layout:90
-#: lib/layouts/svmono.layout:37 lib/layouts/svmult.layout:135
+#: lib/layouts/svmono.layout:38 lib/layouts/svmult.layout:135
 #: lib/layouts/theorems-ams-bytype.inc:225
 #: lib/layouts/theorems-ams-bytype.inc:235
 #: lib/layouts/theorems-ams-bytype.inc:238 lib/layouts/theorems-ams.inc:197
@@ -5616,7 +5619,7 @@ msgid "Remark \\theremark."
 msgstr "Pripomienka \\theremark."
 
 #: lib/layouts/AEA.layout:240 lib/layouts/llncs.layout:410
-#: lib/layouts/svglobal3.layout:94 lib/layouts/svmono.layout:41
+#: lib/layouts/svglobal3.layout:94 lib/layouts/svmono.layout:42
 #: lib/layouts/svmult.layout:139 lib/layouts/theorems-without-preamble.inc:241
 #: lib/layouts/theorems-without-preamble.inc:248
 #: lib/layouts/theorems-without-preamble.inc:251
@@ -5650,11 +5653,12 @@ msgstr "Popisok"
 #: lib/layouts/beamer.layout:908 lib/layouts/beamer.layout:927
 #: lib/layouts/beamer.layout:946 lib/layouts/beamer.layout:1066
 #: lib/layouts/beamer.layout:1090 lib/layouts/beamer.layout:1128
-#: lib/layouts/siamltex.layout:36 lib/layouts/tufte-book.layout:196
-#: lib/layouts/lyxmacros.inc:13 lib/layouts/stdclass.inc:29
-#: lib/layouts/stdlayouts.inc:13 lib/layouts/stdlayouts.inc:34
-#: lib/layouts/stdlayouts.inc:55 lib/layouts/stdlayouts.inc:75
-#: lib/layouts/svcommon.inc:594 lib/layouts/svcommon.inc:605
+#: lib/layouts/revtex4.layout:45 lib/layouts/siamltex.layout:36
+#: lib/layouts/tufte-book.layout:196 lib/layouts/lyxmacros.inc:13
+#: lib/layouts/stdclass.inc:29 lib/layouts/stdlayouts.inc:13
+#: lib/layouts/stdlayouts.inc:34 lib/layouts/stdlayouts.inc:55
+#: lib/layouts/stdlayouts.inc:75 lib/layouts/svcommon.inc:580
+#: lib/layouts/svcommon.inc:591
 msgid "MainText"
 msgstr "Hlavný text"
 
@@ -5667,7 +5671,7 @@ msgstr "Popisok: "
 #: lib/layouts/foils.layout:278 lib/layouts/heb-article.layout:95
 #: lib/layouts/ijmpc.layout:315 lib/layouts/ijmpd.layout:318
 #: lib/layouts/llncs.layout:376 lib/layouts/siamltex.layout:154
-#: lib/layouts/svcommon.inc:622 lib/layouts/svcommon.inc:625
+#: lib/layouts/svcommon.inc:608 lib/layouts/svcommon.inc:611
 #: lib/layouts/theorems-order.inc:76 lib/layouts/theorems-proof-std.inc:6
 #: lib/layouts/theorems-proof.inc:13 lib/layouts/theorems-bytype.module:46
 msgid "Proof"
@@ -5690,7 +5694,7 @@ msgstr "Dôkaz"
 #: lib/layouts/ltugboat.layout:30 lib/layouts/memoir.layout:31
 #: lib/layouts/moderncv.layout:19 lib/layouts/paper.layout:13
 #: lib/layouts/powerdot.layout:109 lib/layouts/revtex.layout:22
-#: lib/layouts/revtex4.layout:40 lib/layouts/scrlettr.layout:7
+#: lib/layouts/revtex4.layout:44 lib/layouts/scrlettr.layout:7
 #: lib/layouts/scrlttr2.layout:10 lib/layouts/siamltex.layout:35
 #: lib/layouts/sigplanconf.layout:37 lib/layouts/simplecv.layout:16
 #: lib/layouts/slides.layout:60 lib/layouts/tufte-book.layout:19
@@ -5718,14 +5722,15 @@ msgstr "Štandard"
 #: lib/layouts/latex8.layout:38 lib/layouts/llncs.layout:106
 #: lib/layouts/ltugboat.layout:136 lib/layouts/paper.layout:110
 #: lib/layouts/powerdot.layout:41 lib/layouts/revtex.layout:94
-#: lib/layouts/revtex4.layout:125 lib/layouts/scrlettr.layout:188
-#: lib/layouts/scrlttr2.layout:271 lib/layouts/siamltex.layout:187
-#: lib/layouts/sigplanconf.layout:104 lib/layouts/simplecv.layout:122
-#: lib/layouts/svmult.layout:54 lib/layouts/svprobth.layout:79
-#: lib/layouts/tufte-book.layout:34 lib/layouts/agu_stdtitle.inc:246
-#: lib/layouts/amsdefs.inc:24 lib/layouts/db_stdtitle.inc:13
-#: lib/layouts/scrclass.inc:161 lib/layouts/stdtitle.inc:57
-#: lib/layouts/svcommon.inc:58 lib/layouts/svcommon.inc:308
+#: lib/layouts/revtex4-1.layout:202 lib/layouts/revtex4.layout:115
+#: lib/layouts/scrlettr.layout:188 lib/layouts/scrlttr2.layout:271
+#: lib/layouts/siamltex.layout:187 lib/layouts/sigplanconf.layout:104
+#: lib/layouts/simplecv.layout:122 lib/layouts/svmult.layout:54
+#: lib/layouts/svprobth.layout:79 lib/layouts/tufte-book.layout:34
+#: lib/layouts/agu_stdtitle.inc:246 lib/layouts/amsdefs.inc:24
+#: lib/layouts/db_stdtitle.inc:13 lib/layouts/scrclass.inc:161
+#: lib/layouts/stdtitle.inc:57 lib/layouts/svcommon.inc:58
+#: lib/layouts/svcommon.inc:308
 msgid "Title"
 msgstr "Titul"
 
@@ -5733,7 +5738,8 @@ msgstr "Titul"
 msgid "IEEE membership"
 msgstr "IEEE členstvo"
 
-#: lib/layouts/IEEEtran.layout:103
+#: lib/layouts/IEEEtran.layout:103 lib/layouts/revtex4-1.layout:279
+#: lib/layouts/revtex4-1.layout:281
 msgid "Lowercase"
 msgstr "Malé písmená"
 
@@ -5756,13 +5762,12 @@ msgstr "malé písmená"
 #: lib/layouts/isprs.layout:76 lib/layouts/kluwer.layout:165
 #: lib/layouts/llncs.layout:180 lib/layouts/ltugboat.layout:155
 #: lib/layouts/paper.layout:120 lib/layouts/powerdot.layout:65
-#: lib/layouts/revtex.layout:102 lib/layouts/revtex4.layout:133
-#: lib/layouts/siamltex.layout:209 lib/layouts/sigplanconf.layout:120
-#: lib/layouts/svmult.layout:83 lib/layouts/svprobth.layout:96
-#: lib/layouts/tufte-book.layout:38 lib/layouts/agu_stdtitle.inc:167
-#: lib/layouts/amsdefs.inc:47 lib/layouts/db_stdtitle.inc:21
-#: lib/layouts/scrclass.inc:177 lib/layouts/stdtitle.inc:78
-#: lib/layouts/svcommon.inc:328
+#: lib/layouts/revtex.layout:102 lib/layouts/siamltex.layout:209
+#: lib/layouts/sigplanconf.layout:120 lib/layouts/svmult.layout:83
+#: lib/layouts/svprobth.layout:96 lib/layouts/tufte-book.layout:38
+#: lib/layouts/agu_stdtitle.inc:167 lib/layouts/amsdefs.inc:47
+#: lib/layouts/db_stdtitle.inc:21 lib/layouts/scrclass.inc:177
+#: lib/layouts/stdtitle.inc:78 lib/layouts/svcommon.inc:328
 msgid "Author"
 msgstr "Autor"
 
@@ -5797,15 +5802,16 @@ msgstr "Súhrn---"
 #: lib/layouts/ijmpc.layout:212 lib/layouts/ijmpc.layout:216
 #: lib/layouts/ijmpd.layout:219 lib/layouts/iopart.layout:199
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
-#: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:262
-#: lib/layouts/siamltex.layout:303 lib/layouts/sigplanconf.layout:146
-#: lib/layouts/spie.layout:41 lib/layouts/svglobal.layout:113
-#: lib/layouts/svglobal.layout:116 lib/layouts/svglobal3.layout:56
-#: lib/layouts/svglobal3.layout:59 lib/layouts/svjog.layout:117
-#: lib/layouts/svjog.layout:120 lib/layouts/svmult.layout:223
-#: lib/layouts/svprobth.layout:147 lib/layouts/svprobth.layout:150
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:161
-#: lib/layouts/svcommon.inc:438 lib/layouts/svcommon.inc:452
+#: lib/layouts/paper.layout:172 lib/layouts/revtex4-1.layout:163
+#: lib/layouts/revtex4.layout:261 lib/layouts/siamltex.layout:303
+#: lib/layouts/sigplanconf.layout:146 lib/layouts/spie.layout:41
+#: lib/layouts/svglobal.layout:113 lib/layouts/svglobal.layout:116
+#: lib/layouts/svglobal3.layout:56 lib/layouts/svglobal3.layout:59
+#: lib/layouts/svjog.layout:117 lib/layouts/svjog.layout:120
+#: lib/layouts/svmult.layout:223 lib/layouts/svprobth.layout:147
+#: lib/layouts/svprobth.layout:150 lib/layouts/agu_stdtitle.inc:120
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svcommon.inc:438
+#: lib/layouts/svcommon.inc:452
 msgid "Keywords"
 msgstr "Heslá"
 
@@ -5827,9 +5833,10 @@ msgstr "Prílohy"
 #: lib/layouts/ijmpc.layout:435 lib/layouts/ijmpd.layout:424
 #: lib/layouts/ijmpd.layout:448 lib/layouts/iopart.layout:243
 #: lib/layouts/iopart.layout:265 lib/layouts/iopart.layout:288
+#: lib/layouts/revtex4-1.layout:215 lib/layouts/revtex4.layout:231
 #: lib/layouts/siamltex.layout:318 lib/layouts/sigplanconf.layout:184
-#: lib/layouts/stdstruct.inc:57 lib/layouts/svcommon.inc:534
-#: lib/layouts/svcommon.inc:568
+#: lib/layouts/stdstruct.inc:57 lib/layouts/svcommon.inc:519
+#: lib/layouts/svcommon.inc:553
 msgid "BackMatter"
 msgstr "BackMatter"
 
@@ -5862,7 +5869,7 @@ msgstr "Príloha"
 #: lib/layouts/tufte-book.layout:242 lib/layouts/tufte-book.layout:244
 #: lib/layouts/aguplus.inc:172 lib/layouts/aguplus.inc:174
 #: lib/layouts/amsdefs.inc:196 lib/layouts/scrclass.inc:245
-#: lib/layouts/stdstruct.inc:53 lib/layouts/svcommon.inc:564
+#: lib/layouts/stdstruct.inc:53 lib/layouts/svcommon.inc:549
 #: src/frontends/qt4/GuiDocument.cpp:1321
 msgid "Bibliography"
 msgstr "Bibliografia"
@@ -5877,7 +5884,7 @@ msgstr "Bibliografia"
 #: lib/layouts/kluwer.layout:342 lib/layouts/kluwer.layout:354
 #: lib/layouts/llncs.layout:277 lib/layouts/moderncv.layout:164
 #: lib/layouts/siamltex.layout:332 lib/layouts/amsdefs.inc:210
-#: lib/layouts/stdstruct.inc:68 lib/layouts/svcommon.inc:579
+#: lib/layouts/stdstruct.inc:68 lib/layouts/svcommon.inc:564
 #: src/output_plaintext.cpp:150
 msgid "References"
 msgstr "Referencie"
@@ -5913,19 +5920,19 @@ msgstr "Dôkaz."
 #: lib/layouts/memoir.layout:70 lib/layouts/memoir.layout:134
 #: lib/layouts/moderncv.layout:33 lib/layouts/paper.layout:58
 #: lib/layouts/powerdot.layout:226 lib/layouts/revtex.layout:38
-#: lib/layouts/revtex4.layout:59 lib/layouts/siamltex.layout:357
-#: lib/layouts/simplecv.layout:28 lib/layouts/spie.layout:20
-#: lib/layouts/svmono.layout:23 lib/layouts/svmono.layout:31
-#: lib/layouts/tufte-book.layout:65 lib/layouts/tufte-book.layout:86
-#: lib/layouts/tufte-book.layout:87 lib/layouts/tufte-handout.layout:23
-#: lib/layouts/agu_stdsections.inc:32 lib/layouts/aguplus.inc:29
-#: lib/layouts/db_stdsections.inc:30 lib/layouts/numrevtex.inc:6
-#: lib/layouts/scrclass.inc:68 lib/layouts/stdsections.inc:13
-#: lib/layouts/stdsections.inc:40 lib/layouts/stdsections.inc:64
-#: lib/layouts/stdsections.inc:65 lib/layouts/svcommon.inc:118
-#: lib/layouts/svcommon.inc:155 lib/layouts/svcommon.inc:168
-#: lib/layouts/svcommon.inc:180 lib/layouts/svcommon.inc:192
-#: src/frontends/qt4/GuiDocument.cpp:170
+#: lib/layouts/revtex4-1.layout:45 lib/layouts/revtex4.layout:64
+#: lib/layouts/siamltex.layout:357 lib/layouts/simplecv.layout:28
+#: lib/layouts/spie.layout:20 lib/layouts/svmono.layout:23
+#: lib/layouts/svmono.layout:32 lib/layouts/tufte-book.layout:65
+#: lib/layouts/tufte-book.layout:86 lib/layouts/tufte-book.layout:87
+#: lib/layouts/tufte-handout.layout:23 lib/layouts/agu_stdsections.inc:32
+#: lib/layouts/aguplus.inc:29 lib/layouts/db_stdsections.inc:30
+#: lib/layouts/numrevtex.inc:6 lib/layouts/scrclass.inc:68
+#: lib/layouts/stdsections.inc:13 lib/layouts/stdsections.inc:41
+#: lib/layouts/stdsections.inc:65 lib/layouts/stdsections.inc:66
+#: lib/layouts/svcommon.inc:118 lib/layouts/svcommon.inc:155
+#: lib/layouts/svcommon.inc:168 lib/layouts/svcommon.inc:180
+#: lib/layouts/svcommon.inc:192 src/frontends/qt4/GuiDocument.cpp:170
 msgid "Section"
 msgstr "Sekcia"
 
@@ -5939,12 +5946,11 @@ msgstr "Sekcia"
 #: lib/layouts/llncs.layout:55 lib/layouts/ltugboat.layout:65
 #: lib/layouts/memoir.layout:76 lib/layouts/moderncv.layout:53
 #: lib/layouts/paper.layout:67 lib/layouts/revtex.layout:50
-#: lib/layouts/revtex4.layout:71 lib/layouts/siamltex.layout:368
-#: lib/layouts/simplecv.layout:50 lib/layouts/tufte-book.layout:110
-#: lib/layouts/agu_stdsections.inc:43 lib/layouts/aguplus.inc:44
-#: lib/layouts/db_stdsections.inc:39 lib/layouts/numrevtex.inc:15
-#: lib/layouts/scrclass.inc:76 lib/layouts/stdsections.inc:89
-#: lib/layouts/svcommon.inc:201
+#: lib/layouts/siamltex.layout:368 lib/layouts/simplecv.layout:50
+#: lib/layouts/tufte-book.layout:110 lib/layouts/agu_stdsections.inc:43
+#: lib/layouts/aguplus.inc:44 lib/layouts/db_stdsections.inc:39
+#: lib/layouts/numrevtex.inc:15 lib/layouts/scrclass.inc:76
+#: lib/layouts/stdsections.inc:90 lib/layouts/svcommon.inc:201
 msgid "Subsection"
 msgstr "Podsekcia"
 
@@ -5956,11 +5962,11 @@ msgstr "Podsekcia"
 #: lib/layouts/kluwer.layout:79 lib/layouts/llncs.layout:64
 #: lib/layouts/ltugboat.layout:85 lib/layouts/memoir.layout:82
 #: lib/layouts/paper.layout:76 lib/layouts/recipebook.layout:97
-#: lib/layouts/revtex.layout:59 lib/layouts/revtex4.layout:80
-#: lib/layouts/siamltex.layout:377 lib/layouts/agu_stdsections.inc:54
-#: lib/layouts/db_stdsections.inc:48 lib/layouts/numrevtex.inc:24
-#: lib/layouts/scrclass.inc:84 lib/layouts/stdsections.inc:105
-#: lib/layouts/svcommon.inc:210
+#: lib/layouts/revtex.layout:59 lib/layouts/revtex4-1.layout:53
+#: lib/layouts/revtex4.layout:73 lib/layouts/siamltex.layout:377
+#: lib/layouts/agu_stdsections.inc:54 lib/layouts/db_stdsections.inc:48
+#: lib/layouts/numrevtex.inc:24 lib/layouts/scrclass.inc:84
+#: lib/layouts/stdsections.inc:106 lib/layouts/svcommon.inc:210
 msgid "Subsubsection"
 msgstr "Podpodsekcia"
 
@@ -5987,8 +5993,8 @@ msgstr "Výpočet"
 #: lib/layouts/paper.layout:101 lib/layouts/scrlettr.layout:17
 #: lib/layouts/scrlttr2.layout:21 lib/layouts/agu_stdlists.inc:29
 #: lib/layouts/db_stdlists.inc:26 lib/layouts/scrclass.inc:36
-#: lib/layouts/stdlists.inc:58 lib/layouts/svcommon.inc:586
-#: lib/layouts/svcommon.inc:647 lib/ui/stdtoolbars.inc:116
+#: lib/layouts/stdlists.inc:58 lib/layouts/svcommon.inc:571
+#: lib/ui/stdtoolbars.inc:116
 msgid "Description"
 msgstr "Popis"
 
@@ -6021,10 +6027,11 @@ msgstr "Podtitul"
 #: lib/layouts/g-brief.layout:180 lib/layouts/g-brief2.layout:715
 #: lib/layouts/ijmpc.layout:136 lib/layouts/iopart.layout:145
 #: lib/layouts/isprs.layout:111 lib/layouts/kluwer.layout:182
-#: lib/layouts/revtex.layout:120 lib/layouts/revtex4.layout:183
-#: lib/layouts/scrlettr.layout:139 lib/layouts/scrlttr2.layout:47
-#: lib/layouts/siamltex.layout:278 lib/layouts/aapaper.inc:29
-#: lib/layouts/amsdefs.inc:118 lib/layouts/lyxmacros.inc:44
+#: lib/layouts/revtex.layout:120 lib/layouts/revtex4-1.layout:116
+#: lib/layouts/revtex4.layout:176 lib/layouts/scrlettr.layout:139
+#: lib/layouts/scrlttr2.layout:47 lib/layouts/siamltex.layout:278
+#: lib/layouts/aapaper.inc:29 lib/layouts/amsdefs.inc:118
+#: lib/layouts/lyxmacros.inc:44
 msgid "Address"
 msgstr "Adresa"
 
@@ -6048,14 +6055,14 @@ msgstr "Mail"
 #: lib/layouts/g-brief2.layout:800 lib/layouts/kluwer.layout:149
 #: lib/layouts/lettre.layout:51 lib/layouts/lettre.layout:213
 #: lib/layouts/powerdot.layout:87 lib/layouts/revtex.layout:110
-#: lib/layouts/revtex4.layout:141 lib/layouts/scrlettr.layout:160
-#: lib/layouts/scrlttr2.layout:239 lib/layouts/siamltex.layout:228
-#: lib/layouts/tufte-book.layout:42 lib/layouts/agu_stdtitle.inc:238
-#: lib/layouts/amsdefs.inc:67 lib/layouts/db_stdtitle.inc:35
-#: lib/layouts/scrclass.inc:184 lib/layouts/stdtitle.inc:97
-#: lib/layouts/svcommon.inc:354 lib/ui/stdmenus.inc:373
-#: lib/external_templates:340 lib/external_templates:341
-#: lib/external_templates:345
+#: lib/layouts/revtex4-1.layout:154 lib/layouts/revtex4.layout:123
+#: lib/layouts/scrlettr.layout:160 lib/layouts/scrlttr2.layout:239
+#: lib/layouts/siamltex.layout:228 lib/layouts/tufte-book.layout:42
+#: lib/layouts/agu_stdtitle.inc:238 lib/layouts/amsdefs.inc:67
+#: lib/layouts/db_stdtitle.inc:35 lib/layouts/scrclass.inc:184
+#: lib/layouts/stdtitle.inc:97 lib/layouts/svcommon.inc:354
+#: lib/ui/stdmenus.inc:373 lib/external_templates:340
+#: lib/external_templates:341 lib/external_templates:345
 msgid "Date"
 msgstr "Dátum"
 
@@ -6068,7 +6075,7 @@ msgid "Correspondence to:"
 msgstr "Korešpodencia na:"
 
 #: lib/layouts/aa.layout:217 lib/layouts/egs.layout:521
-#: lib/layouts/svcommon.inc:548
+#: lib/layouts/svcommon.inc:533
 msgid "Acknowledgements."
 msgstr "Poďakovania."
 
@@ -6102,7 +6109,7 @@ msgstr "E-mail"
 #: lib/layouts/lettre.layout:398 lib/layouts/llncs.layout:234
 #: lib/layouts/aapaper.inc:46 lib/layouts/amsdefs.inc:145
 #: lib/layouts/db_stdcharstyles.inc:71 lib/layouts/db_stdcharstyles.inc:73
-#: lib/layouts/svcommon.inc:652 lib/layouts/svcommon.inc:657
+#: lib/layouts/svcommon.inc:632 lib/layouts/svcommon.inc:637
 msgid "Email"
 msgstr "Email"
 
@@ -6120,18 +6127,19 @@ msgstr "Tezaurus"
 #: lib/layouts/egs.layout:71 lib/layouts/kluwer.layout:89
 #: lib/layouts/llncs.layout:73 lib/layouts/ltugboat.layout:105
 #: lib/layouts/memoir.layout:88 lib/layouts/paper.layout:85
-#: lib/layouts/revtex.layout:68 lib/layouts/revtex4.layout:89
-#: lib/layouts/agu_stdsections.inc:65 lib/layouts/aguplus.inc:59
-#: lib/layouts/db_stdsections.inc:57 lib/layouts/numrevtex.inc:33
-#: lib/layouts/scrclass.inc:92 lib/layouts/stdsections.inc:120
-#: lib/layouts/svcommon.inc:219
+#: lib/layouts/revtex.layout:68 lib/layouts/revtex4-1.layout:60
+#: lib/layouts/revtex4.layout:81 lib/layouts/agu_stdsections.inc:65
+#: lib/layouts/aguplus.inc:59 lib/layouts/db_stdsections.inc:57
+#: lib/layouts/numrevtex.inc:33 lib/layouts/scrclass.inc:92
+#: lib/layouts/stdsections.inc:121 lib/layouts/svcommon.inc:219
 msgid "Paragraph"
 msgstr "Odstavec"
 
 #: lib/layouts/aastex.layout:101 lib/layouts/aastex.layout:272
 #: lib/layouts/achemso.layout:94 lib/layouts/apa.layout:150
-#: lib/layouts/latex8.layout:88 lib/layouts/revtex4.layout:151
-#: lib/layouts/agu_stdtitle.inc:128 lib/layouts/aguplus.inc:65
+#: lib/layouts/latex8.layout:88 lib/layouts/revtex4-1.layout:78
+#: lib/layouts/revtex4.layout:132 lib/layouts/agu_stdtitle.inc:128
+#: lib/layouts/aguplus.inc:65
 msgid "Affiliation"
 msgstr "Pričlenenie"
 
@@ -6143,7 +6151,7 @@ msgstr "A"
 #: lib/layouts/apa.layout:222 lib/layouts/egs.layout:507
 #: lib/layouts/elsart.layout:430 lib/layouts/isprs.layout:208
 #: lib/layouts/kluwer.layout:301 lib/layouts/kluwer.layout:312
-#: lib/layouts/aapaper.inc:91 lib/layouts/svcommon.inc:559
+#: lib/layouts/aapaper.inc:91 lib/layouts/svcommon.inc:544
 msgid "Acknowledgements"
 msgstr "Poďakovania"
 
@@ -6207,8 +6215,8 @@ msgstr "Subject headings:"
 msgid "[Acknowledgements]"
 msgstr "[Poďakovania]"
 
-#: lib/layouts/aastex.layout:404 lib/layouts/svcommon.inc:675
-#: lib/layouts/svcommon.inc:681 src/frontends/qt4/GuiDocument.cpp:1970
+#: lib/layouts/aastex.layout:404 lib/layouts/svcommon.inc:654
+#: lib/layouts/svcommon.inc:660 src/frontends/qt4/GuiDocument.cpp:1970
 #: src/frontends/qt4/GuiDocument.cpp:1982
 #: src/frontends/qt4/GuiDocument.cpp:2074
 #: src/frontends/qt4/GuiDocument.cpp:2093
@@ -6361,7 +6369,8 @@ msgstr "Computing Review Categories"
 #: lib/layouts/acmsiggraph.layout:152 lib/layouts/acmsiggraph.layout:159
 #: lib/layouts/agutex.layout:177 lib/layouts/apa.layout:243
 #: lib/layouts/iopart.layout:239 lib/layouts/iopart.layout:253
-#: lib/layouts/revtex4.layout:233 lib/layouts/sigplanconf.layout:181
+#: lib/layouts/revtex4-1.layout:213 lib/layouts/revtex4.layout:230
+#: lib/layouts/revtex4.layout:240 lib/layouts/sigplanconf.layout:181
 #: lib/layouts/sigplanconf.layout:188 lib/layouts/spie.layout:90
 msgid "Acknowledgments"
 msgstr "Poďakovania"
@@ -6398,7 +6407,7 @@ msgstr "Poďakovania."
 #: lib/layouts/beamer.layout:176 lib/layouts/egs.layout:581
 #: lib/layouts/isprs.layout:179 lib/layouts/spie.layout:31
 #: lib/layouts/aguplus.inc:37 lib/layouts/db_stdstarsections.inc:36
-#: lib/layouts/stdstarsections.inc:34 lib/layouts/svcommon.inc:239
+#: lib/layouts/stdstarsections.inc:35 lib/layouts/svcommon.inc:239
 msgid "Section*"
 msgstr "Sekcia*"
 
@@ -6412,25 +6421,24 @@ msgstr "ŠpeciálnaSekcia*"
 
 #: lib/layouts/amsart.layout:95 lib/layouts/beamer.layout:178
 #: lib/layouts/beamer.layout:222 lib/layouts/memoir.layout:153
-#: lib/layouts/stdstarsections.inc:15 lib/layouts/stdstarsections.inc:25
-#: lib/layouts/stdstarsections.inc:36 lib/layouts/stdstarsections.inc:47
-#: lib/layouts/stdstarsections.inc:58 lib/layouts/stdstarsections.inc:69
-#: lib/layouts/stdstarsections.inc:80 lib/layouts/svcommon.inc:274
-#: lib/layouts/svcommon.inc:480
+#: lib/layouts/stdstarsections.inc:15 lib/layouts/stdstarsections.inc:26
+#: lib/layouts/stdstarsections.inc:37 lib/layouts/stdstarsections.inc:48
+#: lib/layouts/stdstarsections.inc:59 lib/layouts/stdstarsections.inc:70
+#: lib/layouts/stdstarsections.inc:81 lib/layouts/svcommon.inc:274
 msgid "Unnumbered"
 msgstr "Neočíslované"
 
 #: lib/layouts/amsart.layout:116 lib/layouts/amsbook.layout:92
 #: lib/layouts/beamer.layout:220 lib/layouts/egs.layout:601
 #: lib/layouts/isprs.layout:190 lib/layouts/aguplus.inc:52
-#: lib/layouts/db_stdstarsections.inc:48 lib/layouts/stdstarsections.inc:45
+#: lib/layouts/db_stdstarsections.inc:48 lib/layouts/stdstarsections.inc:46
 #: lib/layouts/svcommon.inc:247
 msgid "Subsection*"
 msgstr "Podsekcia*"
 
 #: lib/layouts/amsart.layout:137 lib/layouts/amsbook.layout:100
 #: lib/layouts/isprs.layout:199 lib/layouts/db_stdstarsections.inc:60
-#: lib/layouts/stdstarsections.inc:56 lib/layouts/svcommon.inc:255
+#: lib/layouts/stdstarsections.inc:57 lib/layouts/svcommon.inc:255
 msgid "Subsubsection*"
 msgstr "Podpodsekcia*"
 
@@ -6467,13 +6475,14 @@ msgid "FourAuthors"
 msgstr "ŠtyriaAutori"
 
 #: lib/layouts/apa.layout:162 lib/layouts/egs.layout:328
-#: lib/layouts/revtex4.layout:163 lib/layouts/agu_stdtitle.inc:131
+#: lib/layouts/revtex4-1.layout:89 lib/layouts/revtex4.layout:143
+#: lib/layouts/agu_stdtitle.inc:131
 msgid "Affiliation:"
 msgstr "Pričlenenie:"
 
 #: lib/layouts/apa.layout:171
 msgid "TwoAffiliations"
-msgstr "DvePričlenenia"
+msgstr "DvaPričlenenia"
 
 #: lib/layouts/apa.layout:178
 msgid "ThreeAffiliations"
@@ -6539,7 +6548,7 @@ msgstr "FitBitmap"
 #: lib/layouts/kluwer.layout:99 lib/layouts/llncs.layout:83
 #: lib/layouts/memoir.layout:94 lib/layouts/paper.layout:94
 #: lib/layouts/agu_stdsections.inc:76 lib/layouts/db_stdsections.inc:66
-#: lib/layouts/scrclass.inc:100 lib/layouts/stdsections.inc:130
+#: lib/layouts/scrclass.inc:100 lib/layouts/stdsections.inc:131
 msgid "Subparagraph"
 msgstr "Pododstavec"
 
@@ -7100,9 +7109,9 @@ msgstr "Adresa prijímateľa"
 #: lib/layouts/dinbrief.layout:49 lib/layouts/ectaart.layout:66
 #: lib/layouts/elsart.layout:139 lib/layouts/g-brief.layout:185
 #: lib/layouts/g-brief2.layout:726 lib/layouts/revtex.layout:132
-#: lib/layouts/revtex4.layout:186 lib/layouts/scrlettr.layout:142
-#: lib/layouts/scrlttr2.layout:62 lib/layouts/siamltex.layout:290
-#: lib/layouts/amsdefs.inc:130
+#: lib/layouts/revtex4-1.layout:119 lib/layouts/revtex4.layout:179
+#: lib/layouts/scrlettr.layout:142 lib/layouts/scrlttr2.layout:62
+#: lib/layouts/siamltex.layout:290 lib/layouts/amsdefs.inc:130
 msgid "Address:"
 msgstr "Adresa:"
 
@@ -7226,9 +7235,10 @@ msgstr "Umiestnenie:"
 
 #: lib/layouts/dinbrief.layout:154 lib/layouts/g-brief.layout:192
 #: lib/layouts/g-brief2.layout:810 lib/layouts/lettre.layout:226
-#: lib/layouts/revtex.layout:112 lib/layouts/revtex4.layout:143
-#: lib/layouts/scrlettr.layout:163 lib/layouts/scrlttr2.layout:243
-#: lib/layouts/siamltex.layout:240 lib/layouts/amsdefs.inc:80
+#: lib/layouts/revtex.layout:112 lib/layouts/revtex4-1.layout:156
+#: lib/layouts/revtex4.layout:125 lib/layouts/scrlettr.layout:163
+#: lib/layouts/scrlttr2.layout:243 lib/layouts/siamltex.layout:240
+#: lib/layouts/amsdefs.inc:80
 msgid "Date:"
 msgstr "Dátum:"
 
@@ -7470,8 +7480,9 @@ msgstr "Heslo"
 #: lib/layouts/ectaart.layout:120 lib/layouts/elsarticle.layout:264
 #: lib/layouts/ijmpd.layout:223 lib/layouts/iopart.layout:210
 #: lib/layouts/kluwer.layout:289 lib/layouts/paper.layout:175
-#: lib/layouts/revtex4.layout:267 lib/layouts/sigplanconf.layout:149
-#: lib/layouts/spie.layout:48 lib/layouts/agu_stdtitle.inc:123
+#: lib/layouts/revtex4-1.layout:171 lib/layouts/revtex4.layout:266
+#: lib/layouts/sigplanconf.layout:149 lib/layouts/spie.layout:48
+#: lib/layouts/agu_stdtitle.inc:123
 msgid "Keywords:"
 msgstr "Heslá:"
 
@@ -7519,7 +7530,8 @@ msgstr "Krstné Meno"
 msgid "Name (Surname)"
 msgstr "Meno (Priezvisko)"
 
-#: lib/layouts/ectaart.layout:194 lib/layouts/agu_stdclass.inc:63
+#: lib/layouts/ectaart.layout:194 lib/layouts/revtex4-1.layout:292
+#: lib/layouts/revtex4-1.layout:294 lib/layouts/agu_stdclass.inc:63
 #: lib/layouts/agu_stdclass.inc:65 lib/layouts/db_stdcharstyles.inc:46
 #: lib/layouts/db_stdcharstyles.inc:48 lib/layouts/db_stdtitle.inc:98
 msgid "Surname"
@@ -7603,7 +7615,8 @@ msgstr "reprint_reqs_to:"
 msgid "Author Address"
 msgstr "Adresa Autora"
 
-#: lib/layouts/elsart.layout:147 lib/layouts/revtex4.layout:197
+#: lib/layouts/elsart.layout:147 lib/layouts/revtex4-1.layout:123
+#: lib/layouts/revtex4.layout:197
 msgid "Author Email"
 msgstr "Email Autora"
 
@@ -7612,17 +7625,18 @@ msgstr "Email Autora"
 msgid "Email:"
 msgstr "Email:"
 
-#: lib/layouts/elsart.layout:168 lib/layouts/revtex4.layout:213
+#: lib/layouts/elsart.layout:168 lib/layouts/revtex4-1.layout:138
+#: lib/layouts/revtex4.layout:213
 msgid "Author URL"
 msgstr "URL Autora"
 
-#: lib/layouts/elsart.layout:179 lib/layouts/revtex4.layout:219
-#: lib/layouts/amsdefs.inc:157
+#: lib/layouts/elsart.layout:179 lib/layouts/revtex4-1.layout:141
+#: lib/layouts/revtex4.layout:219 lib/layouts/amsdefs.inc:157
 msgid "URL:"
 msgstr "URL:"
 
-#: lib/layouts/elsart.layout:191 lib/layouts/revtex4.layout:190
-#: lib/layouts/amsdefs.inc:168
+#: lib/layouts/elsart.layout:191 lib/layouts/revtex4-1.layout:195
+#: lib/layouts/revtex4.layout:190 lib/layouts/amsdefs.inc:168
 msgid "Thanks"
 msgstr "Vďaka"
 
@@ -8542,8 +8556,9 @@ msgstr "Predbežné"
 msgid "Rapid"
 msgstr "Rapid"
 
-#: lib/layouts/iopart.layout:218 lib/layouts/revtex4.layout:251
-#: lib/layouts/svglobal3.layout:66 lib/layouts/svglobal3.layout:69
+#: lib/layouts/iopart.layout:218 lib/layouts/revtex4-1.layout:175
+#: lib/layouts/revtex4.layout:249 lib/layouts/svglobal3.layout:66
+#: lib/layouts/svglobal3.layout:69
 msgid "PACS"
 msgstr "PACS"
 
@@ -8696,7 +8711,7 @@ msgstr "P.S.:"
 #: lib/layouts/recipebook.layout:41 lib/layouts/scrbook.layout:16
 #: lib/layouts/svmult.layout:170 lib/layouts/tufte-book.layout:63
 #: lib/layouts/agu_stdsections.inc:22 lib/layouts/db_stdsections.inc:21
-#: lib/layouts/scrclass.inc:59 lib/layouts/stdsections.inc:38
+#: lib/layouts/scrclass.inc:59 lib/layouts/stdsections.inc:39
 #: lib/layouts/svcommon.inc:148
 msgid "Chapter"
 msgstr "Kapitola"
@@ -8782,7 +8797,7 @@ msgid "Solution #."
 msgstr "Riešenie #."
 
 #: lib/layouts/memoir.layout:65 lib/layouts/db_stdstarsections.inc:24
-#: lib/layouts/stdstarsections.inc:23 lib/layouts/svcommon.inc:235
+#: lib/layouts/stdstarsections.inc:24 lib/layouts/svcommon.inc:235
 msgid "Chapter*"
 msgstr "Kapitola*"
 
@@ -8939,27 +8954,85 @@ msgstr "Prísady"
 msgid "Ingredients:"
 msgstr "Prísady:"
 
-#: lib/layouts/revtex4.layout:113
-msgid "Preprint"
-msgstr "Predtlač"
+#: lib/layouts/revtex4-1.layout:97 lib/layouts/revtex4.layout:151
+msgid "Affiliation (alternate)"
+msgstr "Pričlenenie(alternatívne)"
 
-#: lib/layouts/revtex4.layout:171 lib/layouts/revtex4.layout:177
-msgid "AltAffiliation"
-msgstr "DruhéPričlenenie"
+#: lib/layouts/revtex4-1.layout:100 lib/layouts/revtex4.layout:157
+msgid "Affiliation (alternate):"
+msgstr "Pričlenenie(alternatívne):"
 
-#: lib/layouts/revtex4.layout:193 lib/layouts/amsdefs.inc:171
-msgid "Thanks:"
-msgstr "Vďaka:"
+#: lib/layouts/revtex4-1.layout:106 lib/layouts/revtex4.layout:161
+msgid "Affiliation (none)"
+msgstr "Pričlenenie(žiadne)"
 
-#: lib/layouts/revtex4.layout:203
+#: lib/layouts/revtex4-1.layout:109 lib/layouts/revtex4.layout:164
+msgid "No affiliation"
+msgstr "Bez príslušenstva"
+
+#: lib/layouts/revtex4-1.layout:126 lib/layouts/revtex4.layout:203
 msgid "Electronic Address:"
 msgstr "Elektronická adresa:"
 
-#: lib/layouts/revtex4.layout:241
+#: lib/layouts/revtex4-1.layout:147 lib/layouts/revtex4.layout:183
+msgid "Collaboration"
+msgstr "Spolupráca"
+
+#: lib/layouts/revtex4-1.layout:150 lib/layouts/revtex4.layout:186
+msgid "Collaboration:"
+msgstr "Spolupráca:"
+
+#: lib/layouts/revtex4-1.layout:178
+msgid "PACS numbers:"
+msgstr "PACS-čísla:"
+
+#: lib/layouts/revtex4-1.layout:182 lib/layouts/revtex4.layout:102
+msgid "Preprint"
+msgstr "Predtlač"
+
+#: lib/layouts/revtex4-1.layout:198 lib/layouts/revtex4.layout:193
+#: lib/layouts/amsdefs.inc:171
+msgid "Thanks:"
+msgstr "Vďaka:"
+
+#: lib/layouts/revtex4-1.layout:219
 msgid "acknowledgments"
 msgstr "poďakovania"
 
-#: lib/layouts/revtex4.layout:258
+#: lib/layouts/revtex4-1.layout:232
+msgid "Ruled Table"
+msgstr "Pevná Tabuľka"
+
+#: lib/layouts/revtex4-1.layout:234 lib/layouts/revtex4-1.layout:242
+#: lib/layouts/revtex4-1.layout:250 src/frontends/qt4/GuiSymbols.cpp:123
+msgid "Specials"
+msgstr "Špeciálne"
+
+#: lib/layouts/revtex4-1.layout:240
+msgid "Turn Page"
+msgstr "Obrátiť Stránku"
+
+#: lib/layouts/revtex4-1.layout:248
+msgid "Wide Text"
+msgstr "Široký Text"
+
+#: lib/layouts/revtex4-1.layout:258
+msgid "Video"
+msgstr "Video"
+
+#: lib/layouts/revtex4-1.layout:261
+msgid "List of Videos"
+msgstr "Zoznam Videí"
+
+#: lib/layouts/revtex4-1.layout:270 lib/layouts/revtex4-1.layout:272
+msgid "Float Link"
+msgstr "Plávajúci odkaz"
+
+#: lib/layouts/revtex4.layout:169
+msgid "AltAffiliation"
+msgstr "DruhéPričlenenie"
+
+#: lib/layouts/revtex4.layout:257
 msgid "PACS number:"
 msgstr "PACS-číslo:"
 
@@ -9308,12 +9381,12 @@ msgstr "CRSC"
 msgid "CR Subject Classification"
 msgstr "CR Podmet Klasifikácia"
 
-#: lib/layouts/svglobal3.layout:84 lib/layouts/svmono.layout:45
+#: lib/layouts/svglobal3.layout:84 lib/layouts/svmono.layout:46
 #: lib/layouts/svmult.layout:155
 msgid "at Address"
 msgstr "na Adrese"
 
-#: lib/layouts/svglobal3.layout:87 lib/layouts/svmono.layout:48
+#: lib/layouts/svglobal3.layout:87 lib/layouts/svmono.layout:49
 #: lib/layouts/svmult.layout:158
 msgid "at address"
 msgstr "na adrese"
@@ -9322,15 +9395,15 @@ msgstr "na adrese"
 msgid "Running Chapter"
 msgstr "Priebežná Kapitola"
 
-#: lib/layouts/svmono.layout:26
+#: lib/layouts/svmono.layout:27
 msgid "Running Chapter:"
 msgstr "Priebežná Kapitola:"
 
-#: lib/layouts/svmono.layout:29
+#: lib/layouts/svmono.layout:30
 msgid "Running Section"
 msgstr "Priebežná Sekcia"
 
-#: lib/layouts/svmono.layout:34
+#: lib/layouts/svmono.layout:35
 msgid "Running Section:"
 msgstr "Priebežná Sekcia:"
 
@@ -9354,7 +9427,7 @@ msgstr "Titul*"
 msgid "Title*: "
 msgstr "Titul*: "
 
-#: lib/layouts/svmult.layout:56 lib/layouts/stdsections.inc:41
+#: lib/layouts/svmult.layout:56 lib/layouts/stdsections.inc:42
 msgid "Chapter \\thechapter"
 msgstr "Kapitola \\thechapter"
 
@@ -9384,7 +9457,7 @@ msgstr "Prispievateľ \\Roman{svmultlsti}"
 #: lib/layouts/svmult.layout:183 lib/layouts/svmult.layout:187
 #: lib/layouts/svmult.layout:191 lib/layouts/svmult.layout:195
 #: lib/layouts/svmult.layout:199 lib/layouts/svmult.layout:203
-#: lib/layouts/svmult.layout:207 lib/layouts/svcommon.inc:513
+#: lib/layouts/svmult.layout:207
 msgid "For editors"
 msgstr "Pre vydavateľov"
 
@@ -9417,7 +9490,8 @@ msgstr "Extrakap"
 msgid "Foreword"
 msgstr "Predhovor"
 
-#: lib/layouts/svmult.layout:198 lib/layouts/svcommon.inc:511
+#: lib/layouts/svmult.layout:198 lib/layouts/svcommon.inc:502
+#: lib/layouts/svcommon.inc:513
 msgid "Preface"
 msgstr "Predslov"
 
@@ -9776,7 +9850,7 @@ msgid "Country"
 msgstr "Krajina"
 
 #: lib/layouts/aguplus.inc:71 lib/layouts/db_stdstarsections.inc:72
-#: lib/layouts/stdstarsections.inc:67 lib/layouts/svcommon.inc:263
+#: lib/layouts/stdstarsections.inc:68 lib/layouts/svcommon.inc:263
 msgid "Paragraph*"
 msgstr "Odstavec*"
 
@@ -9888,7 +9962,7 @@ msgstr "MenuChoice"
 msgid "SGML"
 msgstr "SGML"
 
-#: lib/layouts/db_stdstarsections.inc:84 lib/layouts/stdstarsections.inc:78
+#: lib/layouts/db_stdstarsections.inc:84 lib/layouts/stdstarsections.inc:79
 msgid "Subparagraph*"
 msgstr "Pododstavec*"
 
@@ -10128,7 +10202,7 @@ msgstr "-- Oddeliť Prostredie --"
 msgid "Part \\thepart"
 msgstr "Časť \\thepart"
 
-#: lib/layouts/stdsections.inc:42
+#: lib/layouts/stdsections.inc:43
 msgid "Appendix \\thechapter"
 msgstr "Príloha \\thechapter"
 
@@ -10188,23 +10262,23 @@ msgstr "Priebežný Autor"
 msgid "Abstract* (not printed)."
 msgstr "Súhrn* (nebude tlačený)."
 
-#: lib/layouts/svcommon.inc:522
-msgid "Preface:"
-msgstr "Predslov:"
+#: lib/layouts/svcommon.inc:504
+msgid "For Authors"
+msgstr "Pre Autorov"
 
-#: lib/layouts/svcommon.inc:592
+#: lib/layouts/svcommon.inc:578
 msgid "Petit"
 msgstr "Petit"
 
-#: lib/layouts/svcommon.inc:604
+#: lib/layouts/svcommon.inc:590
 msgid "Svgraybox"
 msgstr "Svgraybox"
 
-#: lib/layouts/svcommon.inc:628
+#: lib/layouts/svcommon.inc:614
 msgid "Proof(QED)"
 msgstr "Dôkaz(QED)"
 
-#: lib/layouts/svcommon.inc:637
+#: lib/layouts/svcommon.inc:623
 msgid "Proof(smartQED)"
 msgstr "Dôkaz(smartQED)"
 
@@ -16919,7 +16993,7 @@ msgid ""
 "it."
 msgstr "%1$s je z novšej verzie LyX-u, a skript lyx2lyx zlyhal pri konverzii."
 
-#: src/Buffer.cpp:1056 src/Buffer.cpp:3681 src/Buffer.cpp:3743
+#: src/Buffer.cpp:1056 src/Buffer.cpp:3680 src/Buffer.cpp:3742
 msgid "File is read-only"
 msgstr "Dokument je iba na čítanie"
 
@@ -16939,7 +17013,7 @@ msgstr "Dokument %1$s bol externe modifikovaný. Naozaj ho chcete prepísať?"
 msgid "Overwrite modified file?"
 msgstr "Prepísať modifikovaný súbor?"
 
-#: src/Buffer.cpp:1069 src/Buffer.cpp:2290 src/Exporter.cpp:50
+#: src/Buffer.cpp:1069 src/Buffer.cpp:2289 src/Exporter.cpp:50
 #: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2114
 #: src/frontends/qt4/GuiView.cpp:2303
 msgid "&Overwrite"
@@ -17054,53 +17128,53 @@ msgstr ""
 "Vyberte vhodné kódovanie dokumentu (napr. utf8)\n"
 "alebo zmeňte meno cesty."
 
-#: src/Buffer.cpp:1692
+#: src/Buffer.cpp:1691
 msgid "Running chktex..."
 msgstr "Spúšťam chktex..."
 
-#: src/Buffer.cpp:1706
+#: src/Buffer.cpp:1705
 msgid "chktex failure"
 msgstr "chktex zlyhal"
 
-#: src/Buffer.cpp:1707
+#: src/Buffer.cpp:1706
 msgid "Could not run chktex successfully."
 msgstr "Nemôžem spustiť chktex úspešne."
 
-#: src/Buffer.cpp:1959
+#: src/Buffer.cpp:1958
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Žiadne informácie pre export formátu: %1$s"
 
-#: src/Buffer.cpp:2031
+#: src/Buffer.cpp:2030
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Chyba pri exporte na formát: %1$s."
 
-#: src/Buffer.cpp:2114
+#: src/Buffer.cpp:2113
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "Vetva \"%1$s\" už existuje."
 
-#: src/Buffer.cpp:2144
+#: src/Buffer.cpp:2143
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "Vetva \"%1$s\" neexistuje."
 
-#: src/Buffer.cpp:2204
+#: src/Buffer.cpp:2203
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Nemôžem analyzovať  \"%1$s\""
 
-#: src/Buffer.cpp:2211
+#: src/Buffer.cpp:2210
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Neznámy cieľ \"%1$s\""
 
-#: src/Buffer.cpp:2221
+#: src/Buffer.cpp:2220
 msgid "Error exporting to DVI."
 msgstr "Chyba pri exporte na DVI"
 
-#: src/Buffer.cpp:2286 src/Exporter.cpp:45
+#: src/Buffer.cpp:2285 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -17111,73 +17185,73 @@ msgstr ""
 "\n"
 "Chcete tento súbor prepísať?"
 
-#: src/Buffer.cpp:2289 src/Exporter.cpp:48
+#: src/Buffer.cpp:2288 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Prepísať súbor?"
 
-#: src/Buffer.cpp:2306
+#: src/Buffer.cpp:2305
 msgid "Error running external commands."
 msgstr "Chyba pri spúšťaní externých príkazov."
 
-#: src/Buffer.cpp:3111
+#: src/Buffer.cpp:3110
 msgid "Preview source code"
 msgstr "Náhľad na zdrojový text"
 
-#: src/Buffer.cpp:3129
+#: src/Buffer.cpp:3128
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Náhľad na zdrojový text odstavca %1$d"
 
-#: src/Buffer.cpp:3133
+#: src/Buffer.cpp:3132
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Náhľad zdrojového kódu pre odstavce %1$s - %2$s"
 
-#: src/Buffer.cpp:3241
+#: src/Buffer.cpp:3240
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatické ukladanie %1$s"
 
-#: src/Buffer.cpp:3295
+#: src/Buffer.cpp:3294
 msgid "Autosave failed!"
 msgstr "Automatické ukladanie sa nepodarilo!"
 
-#: src/Buffer.cpp:3356
+#: src/Buffer.cpp:3355
 msgid "Autosaving current document..."
 msgstr "Automatické ukladanie súčasného dokumentu..."
 
-#: src/Buffer.cpp:3446
+#: src/Buffer.cpp:3445
 msgid "Couldn't export file"
 msgstr "Nemôžem exportovať súbor"
 
-#: src/Buffer.cpp:3447
+#: src/Buffer.cpp:3446
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Žiadne informácie pre export formátu %1$s"
 
-#: src/Buffer.cpp:3512
+#: src/Buffer.cpp:3511
 msgid "File name error"
 msgstr "Chyba v názve súboru"
 
-#: src/Buffer.cpp:3513
+#: src/Buffer.cpp:3512
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Cesta k dokumentu nesmie obsahovať medzery."
 
-#: src/Buffer.cpp:3598
+#: src/Buffer.cpp:3597
 msgid "Document export cancelled."
 msgstr "Exportovanie dokumentu bolo zrušené."
 
-#: src/Buffer.cpp:3608
+#: src/Buffer.cpp:3607
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument exportovaný ako %1$s do súboru `%2$s'"
 
-#: src/Buffer.cpp:3614
+#: src/Buffer.cpp:3613
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument exportovaný ako %1$s"
 
-#: src/Buffer.cpp:3667
+#: src/Buffer.cpp:3666
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17188,19 +17262,19 @@ msgstr ""
 "\n"
 "Získať núdzovú kópiu späť?"
 
-#: src/Buffer.cpp:3670
+#: src/Buffer.cpp:3669
 msgid "Load emergency save?"
 msgstr "Nahrať núdzovú kópiu ?"
 
-#: src/Buffer.cpp:3671
+#: src/Buffer.cpp:3670
 msgid "&Recover"
 msgstr "Získať späť"
 
-#: src/Buffer.cpp:3671
+#: src/Buffer.cpp:3670
 msgid "&Load Original"
 msgstr "Nahrať Originál"
 
-#: src/Buffer.cpp:3682
+#: src/Buffer.cpp:3681
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -17209,15 +17283,15 @@ msgstr ""
 "Bezpečnostný súbor úspešne načítaný, ale originálny súbor %1$s je označený "
 "len na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
 
-#: src/Buffer.cpp:3688
+#: src/Buffer.cpp:3687
 msgid "Document was successfully recovered."
 msgstr "Dokument bol úspešne obnovený."
 
-#: src/Buffer.cpp:3690
+#: src/Buffer.cpp:3689
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument nebol úspešne obnovený."
 
-#: src/Buffer.cpp:3691
+#: src/Buffer.cpp:3690
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17226,27 +17300,27 @@ msgstr ""
 "Zmazať núdzovú kópiu teraz?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3695 src/Buffer.cpp:3707
+#: src/Buffer.cpp:3694 src/Buffer.cpp:3706
 msgid "Delete emergency file?"
 msgstr "Zmazať núdzový súbor?"
 
-#: src/Buffer.cpp:3696 src/Buffer.cpp:3709
+#: src/Buffer.cpp:3695 src/Buffer.cpp:3708
 msgid "&Keep"
 msgstr "Držať"
 
-#: src/Buffer.cpp:3700
+#: src/Buffer.cpp:3699
 msgid "Emergency file deleted"
 msgstr "Núdzový súbor vymazaný"
 
-#: src/Buffer.cpp:3701
+#: src/Buffer.cpp:3700
 msgid "Do not forget to save your file now!"
 msgstr "Teraz nezabudnite uložiť váš súbor!"
 
-#: src/Buffer.cpp:3708
+#: src/Buffer.cpp:3707
 msgid "Remove emergency file now?"
 msgstr "Zmazať núdzovú kópiu teraz?"
 
-#: src/Buffer.cpp:3731
+#: src/Buffer.cpp:3730
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17257,19 +17331,19 @@ msgstr ""
 "\n"
 "Nahrať radšej zálohu ?"
 
-#: src/Buffer.cpp:3733
+#: src/Buffer.cpp:3732
 msgid "Load backup?"
 msgstr "Nahrať zálohu?"
 
-#: src/Buffer.cpp:3734
+#: src/Buffer.cpp:3733
 msgid "&Load backup"
 msgstr "Nahrať zálohu"
 
-#: src/Buffer.cpp:3734
+#: src/Buffer.cpp:3733
 msgid "Load &original"
 msgstr "Nahrať Originál"
 
-#: src/Buffer.cpp:3744
+#: src/Buffer.cpp:3743
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17278,25 +17352,25 @@ msgstr ""
 "Zálohový súbor úspešne načítaný, ale originálny súbor %1$s je označený len "
 "na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
 
-#: src/Buffer.cpp:4082 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4083 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Nezmyselné!!! "
 
-#: src/Buffer.cpp:4203
+#: src/Buffer.cpp:4204
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s znovu nahraný."
 
-#: src/Buffer.cpp:4206
+#: src/Buffer.cpp:4207
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Nedá sa znova nahrať dokument %1$s."
 
-#: src/Buffer.cpp:4272
+#: src/Buffer.cpp:4273
 msgid "Included File Invalid"
 msgstr "Zahrnutý Súbor je Neplatný"
 
-#: src/Buffer.cpp:4273
+#: src/Buffer.cpp:4274
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -21923,10 +21997,6 @@ msgstr "Arabská Prezentácia formy-B"
 msgid "Halfwidth and Fullwidth Forms"
 msgstr "Pološiroké a Plnoširoké formy"
 
-#: src/frontends/qt4/GuiSymbols.cpp:123
-msgid "Specials"
-msgstr "Špeciálne"
-
 #: src/frontends/qt4/GuiSymbols.cpp:124
 msgid "Linear B Syllabary"
 msgstr "Linear B slabičná abeceda"
@@ -23746,15 +23816,15 @@ msgstr "Reťazec bol nahradený."
 msgid "%1$d strings have been replaced."
 msgstr "%1$d reťazcov bolo nahradených."
 
-#: src/lyxfind.cpp:1375
+#: src/lyxfind.cpp:1410
 msgid "Invalid regular expression!"
 msgstr "Neplatný regulárny výraz!"
 
-#: src/lyxfind.cpp:1380
+#: src/lyxfind.cpp:1415
 msgid "Match not found!"
 msgstr "Vhodný výraz nebol nájdený!"
 
-#: src/lyxfind.cpp:1384
+#: src/lyxfind.cpp:1419
 msgid "Match found!"
 msgstr "Vhodný výraz nájdený!"
 
@@ -23851,11 +23921,11 @@ msgstr "vstup do text. prostredia vnútri matem. (textrm)"
 msgid "Regular expression editor mode"
 msgstr "Modus  pre editáciu regulárnych výrazov"
 
-#: src/mathed/InsetMathNest.cpp:1651 src/mathed/InsetMathNest.cpp:1774
+#: src/mathed/InsetMathNest.cpp:1651 src/mathed/InsetMathNest.cpp:1796
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Automatická korektúra vypnutá ('!' na zapnutie)"
 
-#: src/mathed/InsetMathNest.cpp:1656 src/mathed/InsetMathNest.cpp:1776
+#: src/mathed/InsetMathNest.cpp:1656 src/mathed/InsetMathNest.cpp:1798
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Automatická korektúra zapnutá (<medzerník> na vypnutie)"
 
@@ -24077,6 +24147,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Preface:"
+#~ msgstr "Predslov:"
 
 #~ msgid "Institute and e-mail: "
 #~ msgstr "Inštitút a e-mail: "
@@ -25140,9 +25213,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Options"
 #~ msgstr "Možnosti"
 
-#~ msgid "Find LyX Text"
-#~ msgstr "Nájsť LyX Text"
-
 #~ msgid "Enter the text to replace in this full-featured LyX editing area"
 #~ msgstr "Vlož sem ten náhradný text"
 
@@ -25403,9 +25473,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "TeX Code Settings"
 #~ msgstr "TeX Kód nastavenia"
-
-#~ msgid "Float Settings"
-#~ msgstr "Nastavenia plávajúceho objektu"
 
 #~ msgid "Horizontal Space Settings"
 #~ msgstr "Nastavenia vertikálnej medzery"
