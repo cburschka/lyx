@@ -1554,11 +1554,25 @@ dist_templates_DATA = \
 	templates/revtex4-1.lyx \
 	templates/slides.lyx \
 	templates/svjour3.lyx \
-	templates/svmono_book.lyx \
 	templates/svmult_appendix.lyx \
 	templates/svmult_author.lyx \
 	templates/svmult_editor.lyx
 
+springertemplatesdir = $(pkgdatadir)/templates/springer
+dist_springertemplates_DATA = \
+	templates/springer/acknow.lyx \
+	templates/springer/acronym.lyx \
+	templates/springer/appendix.lyx \
+	templates/springer/chapter.lyx \
+	templates/springer/dedication.lyx \
+	templates/springer/foreword.lyx \
+	templates/springer/glossary.lyx \
+	templates/springer/part.lyx \
+	templates/springer/preface.lyx
+	templates/springer/referenc.lyx \
+	templates/springer/solutions.lyx \
+	templates/springer/svmono_book.lyx
+	
 thesistemplatesdir = $(pkgdatadir)/templates/thesis
 dist_thesistemplates_DATA = \
 	templates/thesis/Acknowledgments.lyx \
