@@ -816,8 +816,8 @@ src_frontends_qt4_files = Split('''
     ColorCache.cpp
     CustomizedWidgets.cpp
     EmptyTable.cpp
-    FindAndReplace.cpp
     FileDialog.cpp
+    FindAndReplace.cpp
     FloatPlacement.cpp
     GuiAbout.cpp
     GuiAlert.cpp
