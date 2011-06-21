@@ -1553,7 +1553,6 @@ dist_templates_DATA = \
 	templates/revtex4.lyx \
 	templates/revtex4-1.lyx \
 	templates/slides.lyx \
-	templates/svjour3.lyx \
 	templates/svmult_appendix.lyx \
 	templates/svmult_author.lyx \
 	templates/svmult_editor.lyx
@@ -1571,6 +1570,7 @@ dist_springertemplates_DATA = \
 	templates/springer/preface.lyx
 	templates/springer/referenc.lyx \
 	templates/springer/solutions.lyx \
+	templates/springer/svjour3.lyx \
 	templates/springer/svmono_book.lyx
 	
 thesistemplatesdir = $(pkgdatadir)/templates/thesis

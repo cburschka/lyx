@@ -1384,7 +1384,6 @@ lib_templates_files = Split('''
     revtex4.lyx
     revtex4-1.lyx
     slides.lyx
-    svjour3.lyx
     svmult_appendix.lyx
     svmult_author.lyx
     svmult_editor.lyx
@@ -1403,6 +1402,7 @@ lib_templates_springer_files = Split('''
     preface.lyx
     referenc.lyx
     solutions.lyx
+    svjour3.lyx
     svmono_book.lyx
 ''')
 
