@@ -56,11 +56,11 @@ NoStyle Subparagraph*
 
 
 Style Title
-	Align			Left
-	AlignPossible		Block, Center, Left, Right, Center
+	Align		Left
+	AlignPossible	Block, Center, Left, Right, Center
 	Font
-	  Family		Sans
-	  Series		Bold
+	  Family	Sans
+	  Series	Bold
 	EndFont
 End
 
@@ -107,30 +107,30 @@ Style Back_Matter
 End
 
 Style Part
-      Margin			Static
-      Align			Right
+      Margin		Static
+      Align		Right
 End
 
 ## The following is a variant of style Part.  It allows to place some
 ## text on the following page which would otherwise be blank.  
 
 Style PartBacktext
-	Category              Section
-	Margin                First_Dynamic
-	LabelString           "Part \thepart"
-	LabelType             Counter
-	TocLevel              0
-	LabelCounter          part
-	Labelsep	      xx
-	NeedProtect           1
-	ParIndent             MM
-	TopSep                4
-	BottomSep             4
+	Category	Section
+	Margin		First_Dynamic
+	LabelString	"Part \thepart"
+	LabelType	Counter
+	TocLevel	0
+	LabelCounter	part
+	Labelsep	xx
+	NeedProtect	1
+	ParIndent	MM
+	TopSep		4
+	BottomSep	4
 	LaTexType	Environment
 	LatexName	svmultpartbacktext
 	LabelFont
-	  Series              Bold
-	  Size                Huge
+	  Series	Bold
+	  Size		Huge
 	EndLabelFont
 	TextFont
 	  Series	Medium
@@ -142,195 +142,195 @@ Style PartBacktext
 	  \newenvironment{svmultpartbacktext}[1]{\begin{partbacktext}
 	  \part{#1}}{\end{partbacktext}}
 	EndPreamble
-	HTMLTag               h1
+	HTMLTag		h1
 End
 
 Style Chapter
-	Align			Left
+	Align		Left
 End
 
 Style ChapSubtitle
-      LatexName			chapsubtitle
-      LatexType			Command
-      Category              	Section
-	TopSep                	0.7
+      LatexName		chapsubtitle
+      LatexType		Command
+      Category		Section
+	TopSep		0.7
 	Font
-	  Series		Bold
-	  Shape               	Up
-	  Size                	large
+	  Series	Bold
+	  Shape		Up
+	  Size		large
 	EndFont
 
 End
 
 Style ChapAuthor
-      LatexName			chapauthor
-      LatexType			Command
-      Category              	Section
-      TopSep                	0.7
+      LatexName		chapauthor
+      LatexType		Command
+      Category		Section
+      TopSep		0.7
       Font
-	  Series		Bold
-	  Shape               	Up
-	  Size                	normal
+	  Series	Bold
+	  Shape		Up
+	  Size		normal
       EndFont
 End
 
 Style ChapMotto
-      LatexName			motto
-      LatexType			Command
-      Category              	Section
-      TopSep                	0.7
-      BottomSep                	0.7
-      Align			Left
-      LeftMargin		MMMMMMMMMMMM
+      LatexName		motto
+      LatexType		Command
+      Category		Section
+      TopSep		0.7
+      BottomSep		0.7
+      Align		Left
+      LeftMargin	MMMMMMMMMMMM
       Font
-	  Series		Medium
-	  Shape               	Italic
-	  Size                	normal
+	  Series	Medium
+	  Shape		Italic
+	  Size		normal
       EndFont
 End
 
 Style Section
 	Font
-	  Series		Bold
-	  Shape              	Up
-	  Size                	large
+	  Series	Bold
+	  Shape		Up
+	  Size		large
 	EndFont
-	TocLevel 1
+	TocLevel	1
 End
 
 Style Subsection
 	Font
-	  Series		Bold
-	  Shape               	Italic
-	  Size                	large
+	  Series	Bold
+	  Shape		Italic
+	  Size		large
 	EndFont
-	TocLevel 2
+	TocLevel	2
 End
 
 Style Subsubsection
 	Font
-	  Series		Bold
-	  Shape               	Up
-	  Size                	Normal
+	  Series	Bold
+	  Shape		Up
+	  Size		Normal
 	EndFont
-	TocLevel 3
+	TocLevel	3
 End
 
 Style Paragraph
 	Font
-	  Series		Medium
-	  Shape               	Up
-	  Size                	Normal
+	  Series	Medium
+	  Shape		Up
+	  Size		Normal
 	EndFont
-	TopSep			0.7
-	BottomSep      		0.4
-	TocLevel 4
+	TopSep		0.7
+	BottomSep	0.4
+	TocLevel	4
 End
 
 Style Part*
-      Margin			Static
-      Align			Right
+      Margin		Static
+      Align		Right
 End
 
 Style Chapter*
-	Align			Left
+	Align		Left
 End
 
 Style Section*
 	Font
-	  Series		Bold
-	  Shape               	Up
-	  Size                	large
+	  Series	Bold
+	  Shape		Up
+	  Size		large
 	EndFont
 End
 
 Style Subsection*
 	Font
-	  Series		Bold
-	  Shape			Italic
-	  Size	                large
+	  Series	Bold
+	  Shape		Italic
+	  Size		large
 	EndFont
 End
 
 Style Subsubsection*
 	Font
-	  Series		Bold
-	  Shape               	Up
-	  Size                	Normal
+	  Series	Bold
+	  Shape		Up
+	  Size		Normal
 	EndFont
 End
 
 Style Paragraph*
 	Font
-	  Series              Medium
-	  Shape               Up
-	  Size                Normal
+	  Series	Medium
+	  Shape		Up
+	  Size		Normal
 	EndFont
-	TopSep                0.7
-	BottomSep             0.4
+	TopSep		0.7
+	BottomSep	0.4
 End
 
 Style Run-in_headings
-	Category		Unnumbered
-	LabelType		No_Label
-	LabelSep		xx
-	TopSep                0.7
+	Category	Unnumbered
+	LabelType	No_Label
+	LabelSep	xx
+	TopSep		0.7
      	Font
-	  Series		Bold
-	  Shape               	Up
-	  Size                	Normal
+	  Series	Bold
+	  Shape		Up
+	  Size		Normal
 	EndFont
-	Margin                Static
-	LatexType		Command
-	LatexName		runinhead
+	Margin		Static
+	LatexType	Command
+	LatexName	runinhead
 End
 
 Style Sub-run-in_headings
-	CopyStyle		Run-in_headings
+	CopyStyle	Run-in_headings
 	Font 
-	  Series		Medium
-	  Shape			Italic
-	  Size			Normal
+	  Series	Medium
+	  Shape		Italic
+	  Size		Normal
 	EndFont
-	LatexName		subruninhead
+	LatexName	subruninhead
 End
 
 Style Extrachap
-	CopyStyle	      Chapter*
-	LatexName             Extrachap
+	CopyStyle	Chapter*
+	LatexName	Extrachap
 End
 
 Style extrachap
-	CopyStyle	      Chapter*
-	LatexName             extrachap
+	CopyStyle	Chapter*
+	LatexName	extrachap
 End
 
 Style Title
-	Align			Left
-	AlignPossible		Block, Center, Left, Right, Center
+	Align		Left
+	AlignPossible	Block, Center, Left, Right, Center
 	Font
-	  Family		Sans
-	  Series		Bold
+	  Family	Sans
+	  Series	Bold
 	EndFont
 End
 
 Style Subtitle
-	CopyStyle		Title
-	LatexName		subtitle
-	NextNoIndent		1
-	BottomSep		0
-	ParSep			0
+	CopyStyle	Title
+	LatexName	subtitle
+	NextNoIndent	1
+	BottomSep	0
+	ParSep		0
 	Font
-	  Size			Large
+	  Size		Large
 	EndFont
 End
 
 Style Author
-	NextNoIndent		1
-	Align			Left
+	NextNoIndent	1
+	Align		Left
 	Font
-	  Series		Bold
-	  Shape			Italic
+	  Series	Bold
+	  Shape		Italic
 	EndFont
 End
 
@@ -352,9 +352,9 @@ Style Institute
 End
 
 Style Date
-	Align			Left
+	Align		Left
 	Font
-	  Size			Small
+	  Size		Small
 	EndFont
 End
 
@@ -436,82 +436,73 @@ Style Abstract*
 End
 
 Style Keywords
-	Margin                First_Dynamic
-	LatexType             Command
-	LatexName             keywords
-	NextNoIndent          0
-	ParIndent             MM
-	LabelSep              xx
-	ItemSep               0
-	TopSep                0.7
-	BottomSep             0.7
-	ParSep                0
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
-	LabelString           "Keywords"
+	Margin		First_Dynamic
+	LatexType	Command
+	LatexName	keywords
+	NextNoIndent	0
+	ParIndent	MM
+	LabelSep	xx
+	ItemSep		0
+	TopSep		0.7
+	BottomSep	0.7
+	ParSep		0
+	Align		Block
+	AlignPossible	Block, Left
+	LabelType	Static
+	LabelString	"Keywords"
 	LabelFont
-	  Series              Bold
+	  Series	Bold
 	EndFont
 End
 
 Style Dedication
-	Category		FrontMatter
-	Margin                	Static
-	LatexType             	Environment
-	LatexName     	        dedication
-	LeftMargin             	MMMMMMMMMMMM
-	TopSep 			2
-	ParIndent		MM
-	Parsep			0
-	BottomSep 		2
-	Align			Left
-	LabelType		Static
-	LabelString		""
-	LabelIndent		""
+	Category	FrontMatter
+	Margin		Static
+	LatexType	Environment
+	LatexName	dedication
+	LeftMargin	MMMMMMMMMMMM
+	TopSep		2
+	ParIndent	MM
+	Parsep		0
+	BottomSep	2
+	Align		Left
+	LabelType	Static
+	LabelString	""
+	LabelIndent	""
 	Font
-	  Shape			Italic
-	  Size			large
+	  Shape		Italic
+	  Size		large
 	EndFont
 End
 
 Style Foreword
-	Margin                First_Dynamic
-	Category              Unnumbered
-      	LabelType		Static
-      	LabelString		"Foreword"
-	KeepEmpty		1
-      	LatexName	      foreword
-	TocLevel              0
-	LatexType             Command
-	NeedProtect           1
-	NextNoIndent          1
-	ParSkip               0.4
-	TopSep                4
-	BottomSep             0.8
-	ParSep                0.8
-	Align                 Block
-	OptionalArgs          1
+	Margin		First_Dynamic
+	Category	FrontMatter
+      	LabelType	Static
+      	LabelString	"Foreword"
+	KeepEmpty	1
+      	LatexName	foreword
+	TocLevel	0
+	LatexType	Command
+	NeedProtect	1
+	NextNoIndent	1
+	ParSkip		0.4
+	TopSep		4
+	BottomSep	0.8
+	ParSep		0.8
+	Align		Block
+	OptionalArgs	1
 	Font
-	  Series              Bold
-	  Size                Huge
+	  Series	Bold
+	  Size		Huge
 	EndFont
-	HTMLTag               h1
+	HTMLTag		h1
 End
 
-#  Future implementation of the Style "Preface" (not fully backward compatible)
-#
-#  Style Preface
-# 	CopyStyle		Foreword
-#       	LabelString		"Preface"
-#       	LatexName	      preface
-# End
-
-#  Current implementation of the Style Preface for backwards compatibility
 Style Preface
-	CopyStyle	Title
-	Category	"For editors"
-	LatexName	svmultpreface
+	CopyStyle	Foreword
+	Category	"For Authors"
+	LatexName	preface
 	KeepEmpty	1
 	OptionalArgs	0
 	InTitle		0
@@ -519,73 +510,68 @@ Style Preface
 	TopSep		4
 	BottomSep	0.8
 	LabelType	Static
-	LabelString	"Preface:"
+	LabelString	"Preface"
 	LabelSep	xx
 	Align		Left
-	Preamble
-	  \newcommand{\svmultpreface}[1]{\ifthenelse{\equal{#1}{}}{\preface}{\preface[#1]}}
-	EndPreamble
-	Requires	ifthen
 End
 
-
-
 Style Acknowledgement
-	Category              BackMatter
-	Margin                First_Dynamic
-	LatexType             Environment
-	LatexName             acknowledgement
-	NextNoIndent          0
-	ParIndent             MM
-	LabelSep              xx
-	ItemSep               0
-	TopSep                0.7
-	BottomSep             0.7
-	ParSep                0
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
-	LabelString           "Acknowledgements."
+	Category	BackMatter
+	Margin		First_Dynamic
+	LatexType	Environment
+	LatexName	acknowledgement
+	NextNoIndent	0
+	ParIndent	MM
+	LabelSep	xx
+	ItemSep		0
+	TopSep		0.7
+	BottomSep	0.7
+	ParSep		0
+	Align		Block
+	AlignPossible	Block, Left
+	LabelType	Static
+	LabelString	"Acknowledgements."
 	Font
-	  Size                Small
+	  Size		Small
 	EndFont
 	LabelFont
-	  Series	      Bold
-	  Shape               Up
-	  Size                Small
+	  Series	Bold
+	  Shape		Up
+	  Size		Small
 	EndFont
 End
 
 Style Acknowledgements
-      CopyStyle			Acknowledgement
-      LatexName         	acknowledgements
+      CopyStyle		Acknowledgement
+      LatexName		acknowledgements
 End
 
 Style Bibliography
-	Margin                First_Dynamic
-	LatexType             Bib_Environment
-	LatexName             thebibliography
-	Category              BackMatter
-	NextNoIndent          1
-	LeftMargin            MM
-	ParSkip               0.4
-	ItemSep               0
-	TopSep                0.7
-	BottomSep             0.7
-	ParSep                0.5
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Bibliography
-	LabelString           "References"
-	LabelBottomSep        0.7
+	Margin		First_Dynamic
+	LatexType	Bib_Environment
+	LatexName	thebibliography
+	Category	BackMatter
+	NextNoIndent	1
+	LeftMargin	MM
+	ParSkip		0.4
+	ItemSep		0
+	TopSep		0.7
+	BottomSep	0.7
+	ParSep		0.5
+	Align		Block
+	AlignPossible	Block, Left
+	LabelType	Bibliography
+	LabelString	"References"
+	LabelBottomSep	0.7
 	LabelFont
-	  Series              Bold
+	  Series	Bold
 	EndFont
 End
 
 Style Description
+	OptionalArgs	1
 	LabelFont
-	  Series              Medium
+	  Series	Medium
 	EndFont
 End
 
@@ -594,35 +580,35 @@ Style Petit
 	Category	MainText
 	LatexType	Environment
 	LatexName	petit
-	TopSep                0.7
-	BottomSep             0.7
+	TopSep		0.7
+	BottomSep	0.7
 	Font
 	  Size		Small
 	EndFont
 End
 
 Style Svgraybox
-	Category		MainText
-	Margin                	Static
-	LatexType             	Environment
-	LatexName             	svgraybox
-	RightMargin           	MMM
-	TopSep                	0.5
-	ParIndent             	MM
-	Parsep			0
-	BottomSep             	0.5
-	Align                 	Block
-	AlignPossible         	Block, Left, Right, Center
-	LabelType             	No_Label
+	Category	MainText
+	Margin		Static
+	LatexType	Environment
+	LatexName	svgraybox
+	RightMargin	MMM
+	TopSep		0.5
+	ParIndent	MM
+	Parsep		0
+	BottomSep	0.5
+	Align		Block
+	AlignPossible	Block, Left, Right, Center
+	LabelType	No_Label
 	Font
-	  Family		Sans
+	  Family	Sans
 	EndFont
 End
 
 Style Proof
-	CopyStyle             Claim
-	LatexName             proof
-	LabelString           "Proof"
+	CopyStyle	Claim
+	LatexName	proof
+	LabelString	"Proof"
 End
 
 Style Proof(QED)
@@ -643,34 +629,27 @@ Style Proof(smartQED)
 	EndPreamble
 End
 
-
-Style Description
-	OptionalArgs	1
-End
-
-
 InsetLayout Flex:Email
 	    Decoration	Conglomerate
-	LyxType			custom
-	LatexType		command
-	LatexName		email
-	LabelString		"Email"
+	LyxType		custom
+	LatexType	command
+	LatexName	email
+	LabelString	"Email"
 	Font
-	  Color			foreground
-	  Size			Small
-	  Family		Roman
-	  Shape			Up
-	  Series		Medium
-	  Misc			No_Emph
-	  Misc			No_Noun
-	  Misc			No_Bar
+	  Color		foreground
+	  Size		Small
+	  Family	Roman
+	  Shape		Up
+	  Series	Medium
+	  Misc		No_Emph
+	  Misc		No_Noun
+	  Misc		No_Bar
 	EndFont
 	LabelFont
-	  Color			urltext
-	  Size			Small
+	  Color		urltext
+	  Size		Small
 	EndFont
 End
-
 
 InsetLayout	Flex:and
        ContentAsLabel	1

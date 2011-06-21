@@ -1,11 +1,11 @@
 #% Do not delete the line below; configure depends on this
-#	\DeclareLaTeXClass[svmono,natbib.sty]{book (Springer svmono)}
+#	\DeclareLaTeXClass[svmono,footmisc.sty,multicol.sty,natbib.sty,type1cm.sty]{book (Springer svmono)}
 #  Author: Koji Yokota <yokota@res.otaru-uc.ac.jp>
 #          adapted: Marcus Kriele <mkriele@mac.com> (April 2011)
 #
 #  Supports: SVMONO DOCUMENT CLASS -- version 5.5 (17-Dec-09)
 #  Class and style files and templates are found at:
-#       http://www.springer.com/authors
+#       http://wiki.lyx.org/Examples/Springer
 #
 Format 35
 Input svcommon.inc
@@ -21,6 +21,7 @@ NoStyle Institute
 Style Running_Chapter
       CopyStyle		Running_Title
       Category		Section
+      InTitle		0
       LatexName		chaptermark
       LeftMargin	"Running Chapter:xxx"
       LabelString	"Running Chapter:"
