@@ -57,7 +57,7 @@ NoStyle Subparagraph*
 
 Style Title
 	Align		Left
-	AlignPossible	Block, Center, Left, Right, Center
+	AlignPossible	Block, Center, Left, Right
 	Font
 	  Family	Sans
 	  Series	Bold
