@@ -2360,7 +2360,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				handle_ert(os, t.asInput() + "{" + color + "}", context);
 		}
 
-		else if (t.cs() == "underbar") {
+		else if (t.cs() == "underbar" || t.cs() == "uline") {
 			// Do NOT handle \underline.
 			// \underbar cuts through y, g, q, p etc.,
 			// \underline does not.
