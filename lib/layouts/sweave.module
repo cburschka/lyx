@@ -1,15 +1,10 @@
-#\DeclareLyXModule[sweave->latex]{Sweave}
+#\DeclareLyXModule[sweave->latex,fancyvrb.sty]{Sweave}
 #DescriptionBegin
 #Allows to use the statistical language S/R as a literate programming tool via Sweave package.
 #See sweave.lyx in examples.
 #DescriptionEnd
 #Category: literate
 #Excludes: lilypond
-
-
-# To add :
-# - \setkeys{Gin}{width=0.8\textwidth} How to add such a "beast"? This is used to define
-#   the size of produced plots.
 
 Format 35
 OutputType             literate
