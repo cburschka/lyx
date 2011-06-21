@@ -1380,7 +1380,6 @@ lib_templates_files = Split('''
     lettre.lyx
     README.new_templates
     revtex4.lyx
-    revtex4-1.lyx
     slides.lyx
     svjour3.lyx
     svmono_book.lyx
@@ -2859,7 +2858,6 @@ lib_layouts_files = Split('''
     report.layout
     revtex.layout
     revtex4.layout
-    revtex4-1.layout
     scrartcl.layout
     scrarticle-beamer.layout
     scrbook.layout
