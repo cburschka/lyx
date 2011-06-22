@@ -82,18 +82,7 @@ status collapsed
 
 
 \backslash
-biblstarthook
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
+biblstarthook{
 \end_layout
 
 \end_inset
@@ -327,81 +316,26 @@ status collapsed
 \end_inset
 
 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+end of biblstarthook
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
+\begin_inset Note Note
+status open
 
 \begin_layout Plain Layout
-
-% and use 
-\backslash
-bibitem to create references.
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% Use the following syntax and markup for your references if 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% the subject of your book is from the field 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% "Mathematics, Physics, Statistics, Computer Science"
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% Contribution 
-\end_layout
-
-\begin_layout Plain Layout
-
+Use the following syntax and markup for your references if the subject of
+ your book is from the field "Mathematics, Physics, Statistics, Computer
+ Science":
 \end_layout
 
 \end_inset
@@ -421,22 +355,7 @@ key "science-contrib"
  In: Broy, M., Dener, E.
  (eds.) Software Pioneers, pp.
  10-13.
- Springer, Heidelberg (2002) 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% Online Document
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
+ Springer, Heidelberg (2002)
 \end_layout
 
 \begin_layout Bibliography
@@ -467,16 +386,6 @@ http://www.rsc.org/dose/title of subordinate document.
 \end_inset
 
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Monograph:
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Bibliography
@@ -488,17 +397,7 @@ key "science-mono"
 \end_inset
 
  Geddes, K.O., Czapor, S.R., Labahn, G.: Algorithms for Computer Algebra.
- Kluwer, Boston (1992) 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Journal article:
-\end_layout
-
-\end_inset
-
-
+ Kluwer, Boston (1992)
 \end_layout
 
 \begin_layout Bibliography
@@ -519,17 +418,7 @@ key "science-journal"
 \series bold
 169
 \series default
-, 321--354 (1995) 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Journal article by DOI:
-\end_layout
-
-\end_inset
-
-
+, 321--354 (1995)
 \end_layout
 
 \begin_layout Bibliography
@@ -554,61 +443,13 @@ key "science-DOI"
 
 \begin_deeper
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
+\begin_inset Note Note
+status open
 
 \begin_layout Plain Layout
-
-% Use the following (APS) syntax and markup for your references if 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% the subject of your book is from the field 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% "Mathematics, Physics, Statistics, Computer Science"
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% Online Document
-\end_layout
-
-\begin_layout Plain Layout
-
+Use the following (APS) syntax and markup for your references if the subject
+ of your book is from the field "Mathematics, Physics, Statistics, Computer
+ Science":
 \end_layout
 
 \end_inset
@@ -643,21 +484,6 @@ http://www.rsc.org/dose/title of subordinate document.
 
 \end_inset
 
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% Monograph
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -677,17 +503,7 @@ Solid-State Physics
 \shape default
 , 2nd edn.
  (Springer, New York, 1996), pp.
- 45-56 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Journal article:
-\end_layout
-
-\end_inset
-
-
+ 45-56
 \end_layout
 
 \begin_layout Bibliography
@@ -706,18 +522,6 @@ key "phys-journal"
  A 
 \series bold
 61
-\series default
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Journal article by DOI:
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Bibliography
@@ -732,22 +536,7 @@ key "phys-DOI"
  Slifka, J.L.
  Whitton, J.
  Mol.
- Med., doi: 10.1007/s001090000086 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% Contribution 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
+ Med., doi: 10.1007/s001090000086
 \end_layout
 
 \begin_layout Bibliography
@@ -799,22 +588,6 @@ APA guide to preparing manuscripts for journal publication.
 
 \shape default
  Washington, DC: American Psychological Association.
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% Online Document
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Bibliography
@@ -847,17 +620,6 @@ http://www.rsc.org/dose/Effective substances.
 \end_inset
 
  Cited 15 Jan 1999.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Journal article:
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Bibliography
@@ -876,22 +638,6 @@ key "psysoc-journal"
 J Film
 \shape default
  Writing, 44(3), 213--245.
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% Contribution 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Bibliography
@@ -922,17 +668,6 @@ Gender issues across the life cycle
  (pp.
  107--123).
  New York: Springer.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Journal article by DOI:
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Bibliography
@@ -952,46 +687,12 @@ American Journal of Community Psychology
 \shape default
 , doi: 10.1007/s10464-007-9108-14.
  
-\begin_inset ERT
-status collapsed
+\begin_inset Note Note
+status open
 
 \begin_layout Plain Layout
-
-% Use the following syntax and markup for your references if 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% the subject of your book is from the field 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% "Humanities, Linguistics, Philosophy"
-\end_layout
-
-\begin_layout Plain Layout
-
+Use the following syntax and markup for your references if the subject of
+ your book is from the field "Humanities, Linguistics, Philosophy":
 \end_layout
 
 \end_inset
@@ -1019,22 +720,7 @@ key "humlinphil-journal"
 \shape italic
 Pragmatics
 \shape default
- 12:257--271 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% Contribution 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
+ 12:257--271
 \end_layout
 
 \begin_layout Bibliography
@@ -1055,17 +741,6 @@ Gender and discourse
 , ed.
  Ruth Wodak, 99--119.
  London: Sage Publications.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Monograph:
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Bibliography
@@ -1085,22 +760,6 @@ Feminism and linguistic theory.
 \shape default
  New York: St.
  Martin's Press.
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% Online Document
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Bibliography
@@ -1122,17 +781,7 @@ key "humlinphil-online"
 \end_inset
 
  http://www.rsc.org/dose/title of subordinate document.
- Cited 15 Jan 1999 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Journal article by DOI:
-\end_layout
-
-\end_inset
-
-
+ Cited 15 Jan 1999
 \end_layout
 
 \begin_layout Bibliography
@@ -1171,22 +820,7 @@ key "basic-contrib"
 
  Brown B, Aaron M (2001) The politics of nature.
  In: Smith J (ed) The rise of modern genomics, 3rd edn.
- Wiley, New York 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% Online Document
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
+ Wiley, New York
 \end_layout
 
 \begin_layout Bibliography
@@ -1217,16 +851,6 @@ http://www.rsc.org/dose/title of subordinate document.
 
 \end_inset
 
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Journal article by DOI:
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -1240,17 +864,7 @@ key "basic-DOI"
 
  Slifka MK, Whitton JL (2000) Clinical implications of dysregulated cytokine
  production.
- J Mol Med, doi: 10.1007/s001090000086 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Journal article:
-\end_layout
-
-\end_inset
-
-
+ J Mol Med, doi: 10.1007/s001090000086
 \end_layout
 
 \begin_layout Bibliography
@@ -1262,17 +876,7 @@ key "basic-journal"
 \end_inset
 
  Smith J, Jones M Jr, Houghton L et al (1999) Future of health insurance.
- N Engl J Med 965:325--329 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Monograph:
-\end_layout
-
-\end_inset
-
-
+ N Engl J Med 965:325--329
 \end_layout
 
 \begin_layout Bibliography

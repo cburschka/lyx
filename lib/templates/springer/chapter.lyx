@@ -113,8 +113,19 @@ www.SpringerLink.com
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
 \backslash
-indent Please use the 'starred' version of the 
+indent
+\end_layout
+
+\end_inset
+
+ Please use the 'starred' version of the 
 \family typewriter
 abstract
 \family default
@@ -154,8 +165,19 @@ www.SpringerLink.com
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
 \backslash
-indent Please use the 'starred' version of the 
+indent
+\end_layout
+
+\end_inset
+
+ Please use the 'starred' version of the 
 \family typewriter
 abstract
 \family default
@@ -363,7 +385,7 @@ reference "sub:Subsection-Heading"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:1"
+reference "fig:If-the-width"
 
 \end_inset
 
@@ -404,21 +426,6 @@ Please note that the first line of text that follows a heading is not indented,
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% For figures use
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \begin_inset Float figure
 placement b
 wide false
@@ -438,88 +445,28 @@ sidecaption
 
 \end_inset
 
- 
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-% Use the relevant command for your figure-insertion program
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% to insert the figure file.
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% For example, with the option graphics use
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
+\begin_inset Graphics
+	filename ../../examples/CV-image.png
+	scale 65
 
 \end_inset
 
  
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% If not, use
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%
-\backslash
-picplace{5cm}{2cm} % Give the correct figure height and width in cm
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \begin_inset Caption
 
 \begin_layout Plain Layout
-If the width of the figure is less than 7.8 cm use the 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:If-the-width"
+
+\end_inset
+
+If the width of the figure is less than 7.8
+\begin_inset space \thinspace{}
+\end_inset
+
+cm use the 
 \family typewriter
 sidecapion
 \family default
@@ -535,31 +482,6 @@ sidecapion
 sidecaption
 \family default
  command
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:1"
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% Give a unique label
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -612,109 +534,25 @@ enumerate
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomi
 c development.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomi
 c development.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomi
 c development.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomi
 c development.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \begin_layout Subparagraph
@@ -768,16 +606,6 @@ itemize
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomi
 c development, cf.
 \begin_inset space ~
@@ -795,97 +623,23 @@ reference "tab:1"
 \end_inset
 
 .
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomi
 c development.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomi
 c development.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomi
 c development.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \begin_layout Standard
@@ -896,7 +650,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
- 
 \begin_inset ERT
 status collapsed
 
@@ -904,12 +657,18 @@ status collapsed
 
 
 \backslash
-sidecaption
+sidecaption[t]
 \end_layout
 
 \end_inset
 
-[t] 
+
+\begin_inset Graphics
+	filename ../../examples/CV-image.png
+
+\end_inset
+
+ 
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -1029,45 +788,7 @@ Please write your table caption here
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-noalign
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- Classes 
+Classes 
 \end_layout
 
 \end_inset
@@ -1112,85 +833,7 @@ status collapsed
 
 
 \backslash
-noalign
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
 svhline
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-noalign
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -1351,84 +994,7 @@ Histone and DNA Modification
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-
-\backslash
-noalign
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-noalign
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \end_inset
@@ -1518,38 +1084,37 @@ Please note that the first line of text that follows a heading is not indented,
 \begin_layout Standard
 If you want to list definitions or the like we recommend to use the Springer-enh
 anced 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-verb|description|
-\end_layout
-
-\end_inset
-
+\family sans
+description
+\family default
  environment -- it will automatically render Springer's preferred layout.
 \end_layout
 
-\begin_layout Standard
-[Type 1] 
-\end_layout
-
 \begin_layout Description
-Type 1 
-\begin_inset ERT
-status collapsed
+\begin_inset Note Note
+status open
 
 \begin_layout Plain Layout
-
-{
+optional argument for the description:
 \end_layout
 
 \end_inset
 
-That addresses central themes pertainng to migration, health, and disease.
+
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Type 1
+\end_layout
+
+\end_inset
+
+Type
+\begin_inset space ~
+\end_inset
+
+1 That addresses central themes pertainng to migration, health, and disease.
  In Sect.
 \begin_inset space ~
 \end_inset
@@ -1563,32 +1128,14 @@ reference "sec:Section-Heading"
 
 , Wilson discusses the role of human migration in infectious disease distributio
 ns and patterns.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \begin_layout Description
-Type 2 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
+Type
+\begin_inset space ~
 \end_inset
 
-That addresses central themes pertainng to migration, health, and disease.
+2 That addresses central themes pertainng to migration, health, and disease.
  In Sect.
 \begin_inset space ~
 \end_inset
@@ -1602,17 +1149,6 @@ reference "sec:Section-Heading-3"
 
 , Wilson discusses the role of human migration in infectious disease distributio
 ns and patterns.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \begin_layout Subsection
@@ -1771,170 +1307,27 @@ reference "sec:Section-Heading-2"
 \begin_layout Standard
 Note that the first line of text that follows a heading is not indented,
  whereas the first lines of all subsequent paragraphs are.
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% For built-in environments use
 \end_layout
 
-\begin_layout Plain Layout
-
+\begin_layout Theorem
+Theorem text goes here.
 \end_layout
 
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{theorem}
+\begin_layout Definition
+Definition text goes here.
 \end_layout
 
-\end_inset
-
- Theorem text goes here.
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{theorem}
+\begin_layout Proof(smartQED)
+Proof text goes here.
 \end_layout
 
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{definition}
-\end_layout
-
-\end_inset
-
- Definition text goes here.
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{definition}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{proof}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-smartqed
-\end_layout
-
-\end_inset
-
- Proof text goes here.
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-qed
-\end_layout
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{proof}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{acknowledgement}
-\end_layout
-
-\end_inset
-
- If you want to include acknowledgments of assistance and the like at the
+\begin_layout Acknowledgement
+If you want to include acknowledgments of assistance and the like at the
  end of an individual chapter please use the 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-verb|acknowledgement|
-\end_layout
-
-\end_inset
-
+\family sans
+acknowledgement
+\family default
  environment -- it will automatically render Springer's preferred layout.
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{acknowledgement}
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \begin_layout Section*
@@ -2014,16 +1407,11 @@ a\times b=c
 \end_inset
 
  
-\begin_inset ERT
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-
-% Problems or Exercises should be sorted chapterwise
-\end_layout
-
-\begin_layout Plain Layout
-
+Problems or Exercises should be sorted chapterwise
 \end_layout
 
 \end_inset
@@ -2059,111 +1447,47 @@ status collapsed
 
 \end_inset
 
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% Use the following environment.
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% Don't forget to label each problem;
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% the label is needed for the solutions' environment
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{prob}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "prob1"
-
-\end_inset
-
- A given problem or Excercise is described here.
- The problem is described here.
- The problem is described here.
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{prob}
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
+\begin_inset Note Note
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-begin{prob}
+Don't forget to label each problem; the label is needed for the solutions'
+ environment
 \end_layout
 
 \end_inset
 
- 
+
+\end_layout
+
+\begin_layout Prob
 \begin_inset CommandInset label
 LatexCommand label
-name "prob2"
+name "prob:prob1"
 
 \end_inset
 
- 
+A given problem or Excercise is described here.
+ The problem is described here.
+ The problem is described here.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Prob
+\begin_inset CommandInset label
+LatexCommand label
+name "prob:prob2"
+
+\end_inset
+
+
 \series bold
 Problem Heading
 \series default
@@ -2176,20 +1500,6 @@ Problem Heading
 \end_inset
 
  (b) The second part of the problem is described here.
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{prob}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
