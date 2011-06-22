@@ -14,6 +14,7 @@
 # - Definition
 # - Example
 # - Problem
+# - Prob
 # - Solution
 # - Exercise
 # - Remark
@@ -22,7 +23,6 @@
 # - Property
 # - Question
 # - Note
-# - Prob
 
 
 Format 35
@@ -236,6 +236,17 @@ Style Problem
 End
 
 
+Counter		prob
+  Within	chapter
+End
+Style Prob
+	CopyStyle	Problem
+	LabelCounter	prob
+	LatexName	prob
+	LabelString	"\theprob"
+End
+
+
 Counter		solution
 End
 Style Solution
@@ -287,10 +298,10 @@ Style Remark
 End
 
 
-Style Claim
-	CopyStyle             Remark
-	LatexName             claim
-	LabelString           "Claim "
+Style		Claim
+	CopyStyle	Remark
+	LatexName	claim
+	LabelString	"Claim"
 	LangPreamble
 		\providecommand{\claimname}{_(Claim)}
 	EndLangPreamble
@@ -367,12 +378,3 @@ Style Note
 	EndBabelPreamble
 End
 
-
-Counter		prob
-End
-Style Prob
-	CopyStyle	Claim
-	LabelCounter	prob
-	LatexName	prob
-	LabelString	"\theprob"
-End
