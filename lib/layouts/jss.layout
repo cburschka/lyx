@@ -9,3 +9,10 @@ Format 35
 
 # Read the definitions from article.layout
 Input article.layout
+
+# The commented macro below is enough to prevent Sweave from loading
+# Sweave.sty. This is needed because jss.cls already provides
+# this package's functionality (see bug 7555).
+AddToPreamble
+    %\usepackage{Sweave}
+EndPreamble
