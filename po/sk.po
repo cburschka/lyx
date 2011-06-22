@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-21 11:23+0200\n"
-"PO-Revision-Date: 2011-06-21 12:52+0200\n"
+"POT-Creation-Date: 2011-06-22 12:14+0200\n"
+"PO-Revision-Date: 2011-06-22 12:15+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -5181,8 +5181,8 @@ msgstr "ShortTitle"
 #: lib/layouts/stdstruct.inc:16 lib/layouts/stdtitle.inc:60
 #: lib/layouts/stdtitle.inc:81 lib/layouts/stdtitle.inc:100
 #: lib/layouts/svcommon.inc:338 lib/layouts/svcommon.inc:362
-#: lib/layouts/svcommon.inc:406 lib/layouts/svcommon.inc:459
-#: lib/layouts/svcommon.inc:480 lib/layouts/customHeadersFooters.module:11
+#: lib/layouts/svcommon.inc:406 lib/layouts/svcommon.inc:460
+#: lib/layouts/svcommon.inc:481 lib/layouts/customHeadersFooters.module:11
 msgid "FrontMatter"
 msgstr "FrontMatter"
 
@@ -5241,12 +5241,13 @@ msgstr "Publikačný Výdaj:"
 #: lib/layouts/siamltex.layout:251 lib/layouts/sigplanconf.layout:153
 #: lib/layouts/sigplanconf.layout:169 lib/layouts/spie.layout:75
 #: lib/layouts/svglobal.layout:149 lib/layouts/svjog.layout:153
-#: lib/layouts/svmult.layout:217 lib/layouts/svprobth.layout:183
-#: lib/layouts/tufte-handout.layout:45 lib/layouts/tufte-handout.layout:60
-#: lib/layouts/agu_stdtitle.inc:193 lib/layouts/amsdefs.inc:91
-#: lib/layouts/db_stdstruct.inc:11 lib/layouts/scrclass.inc:238
-#: lib/layouts/stdstruct.inc:12 lib/layouts/stdstruct.inc:27
-#: lib/layouts/svcommon.inc:405 src/output_plaintext.cpp:138
+#: lib/layouts/svmono.layout:21 lib/layouts/svmult.layout:217
+#: lib/layouts/svprobth.layout:183 lib/layouts/tufte-handout.layout:45
+#: lib/layouts/tufte-handout.layout:60 lib/layouts/agu_stdtitle.inc:193
+#: lib/layouts/amsdefs.inc:91 lib/layouts/db_stdstruct.inc:11
+#: lib/layouts/scrclass.inc:238 lib/layouts/stdstruct.inc:12
+#: lib/layouts/stdstruct.inc:27 lib/layouts/svcommon.inc:405
+#: lib/layouts/svcommon.inc:411 src/output_plaintext.cpp:138
 msgid "Abstract"
 msgstr "Súhrn"
 
@@ -5254,7 +5255,7 @@ msgstr "Súhrn"
 #: lib/layouts/aa.layout:205 lib/layouts/aapaper.layout:103
 #: lib/layouts/egs.layout:532 lib/layouts/elsart.layout:424
 #: lib/layouts/svmult.layout:202 lib/layouts/aapaper.inc:80
-#: lib/layouts/svcommon.inc:518
+#: lib/layouts/svcommon.inc:519
 #: lib/layouts/theorems-ams-extended-bytype.module:304
 #: lib/layouts/theorems-ams-extended-bytype.module:313
 #: lib/layouts/theorems-ams-extended-bytype.module:316
@@ -5344,9 +5345,9 @@ msgstr "Axióma"
 #: lib/layouts/theorems-ams.inc:310 lib/layouts/theorems-ams.inc:313
 #: lib/layouts/theorems-bytype.inc:285 lib/layouts/theorems-bytype.inc:310
 #: lib/layouts/theorems-bytype.inc:313 lib/layouts/theorems-order.inc:73
-#: lib/layouts/theorems-without-preamble.inc:305
-#: lib/layouts/theorems-without-preamble.inc:312
-#: lib/layouts/theorems-without-preamble.inc:315 lib/layouts/theorems.inc:275
+#: lib/layouts/theorems-without-preamble.inc:316
+#: lib/layouts/theorems-without-preamble.inc:323
+#: lib/layouts/theorems-without-preamble.inc:326 lib/layouts/theorems.inc:275
 #: lib/layouts/theorems.inc:300 lib/layouts/theorems.inc:303
 msgid "Case"
 msgstr "Prípad"
@@ -5358,7 +5359,7 @@ msgstr "Prípad \\thecase."
 #: lib/layouts/AEA.layout:136 lib/layouts/elsart.layout:399
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:377
 #: lib/layouts/ijmpd.layout:397 lib/layouts/llncs.layout:307
-#: lib/layouts/theorems-ams-bytype.inc:289
+#: lib/layouts/svmono.layout:112 lib/layouts/theorems-ams-bytype.inc:289
 #: lib/layouts/theorems-ams-bytype.inc:299
 #: lib/layouts/theorems-ams-bytype.inc:302 lib/layouts/theorems-ams.inc:257
 #: lib/layouts/theorems-ams.inc:266 lib/layouts/theorems-ams.inc:269
@@ -5366,9 +5367,10 @@ msgstr "Prípad \\thecase."
 #: lib/layouts/theorems-bytype.inc:278 lib/layouts/theorems-order.inc:67
 #: lib/layouts/theorems-starred-equivalents.inc:76
 #: lib/layouts/theorems-starred.inc:258 lib/layouts/theorems-starred.inc:261
-#: lib/layouts/theorems-without-preamble.inc:290
-#: lib/layouts/theorems-without-preamble.inc:295
-#: lib/layouts/theorems-without-preamble.inc:298 lib/layouts/theorems.inc:257
+#: lib/layouts/theorems-without-preamble.inc:301
+#: lib/layouts/theorems-without-preamble.inc:304
+#: lib/layouts/theorems-without-preamble.inc:306
+#: lib/layouts/theorems-without-preamble.inc:309 lib/layouts/theorems.inc:257
 #: lib/layouts/theorems.inc:266 lib/layouts/theorems.inc:269
 #: lib/layouts/theorems-chap-bytype.module:186
 #: lib/layouts/theorems-sec-bytype.module:142
@@ -5508,9 +5510,9 @@ msgstr "Príklad"
 #: lib/layouts/theorems-starred-equivalents.inc:62
 #: lib/layouts/theorems-starred.inc:216 lib/layouts/theorems-starred.inc:219
 #: lib/layouts/theorems-without-preamble.inc:223
-#: lib/layouts/theorems-without-preamble.inc:258
-#: lib/layouts/theorems-without-preamble.inc:265
-#: lib/layouts/theorems-without-preamble.inc:268 lib/layouts/theorems.inc:214
+#: lib/layouts/theorems-without-preamble.inc:269
+#: lib/layouts/theorems-without-preamble.inc:276
+#: lib/layouts/theorems-without-preamble.inc:279 lib/layouts/theorems.inc:214
 #: lib/layouts/theorems.inc:223 lib/layouts/theorems.inc:226
 #: lib/layouts/theorems-chap-bytype.module:162
 #: lib/layouts/theorems-sec-bytype.module:126
@@ -5555,7 +5557,7 @@ msgstr "Notácia"
 
 #: lib/layouts/AEA.layout:217 lib/layouts/elsart.layout:378
 #: lib/layouts/llncs.layout:369 lib/layouts/svglobal3.layout:90
-#: lib/layouts/svmono.layout:38 lib/layouts/svmult.layout:135
+#: lib/layouts/svmono.layout:42 lib/layouts/svmult.layout:135
 #: lib/layouts/theorems-ams-bytype.inc:225
 #: lib/layouts/theorems-ams-bytype.inc:235
 #: lib/layouts/theorems-ams-bytype.inc:238 lib/layouts/theorems-ams.inc:197
@@ -5603,9 +5605,9 @@ msgstr "Tvrdenie"
 #: lib/layouts/theorems-bytype.inc:259 lib/layouts/theorems-order.inc:61
 #: lib/layouts/theorems-starred-equivalents.inc:69
 #: lib/layouts/theorems-starred.inc:241 lib/layouts/theorems-starred.inc:244
-#: lib/layouts/theorems-without-preamble.inc:275
-#: lib/layouts/theorems-without-preamble.inc:282
-#: lib/layouts/theorems-without-preamble.inc:285 lib/layouts/theorems.inc:231
+#: lib/layouts/theorems-without-preamble.inc:286
+#: lib/layouts/theorems-without-preamble.inc:293
+#: lib/layouts/theorems-without-preamble.inc:296 lib/layouts/theorems.inc:231
 #: lib/layouts/theorems.inc:249 lib/layouts/theorems.inc:252
 #: lib/layouts/theorems-chap-bytype.module:174
 #: lib/layouts/theorems-sec-bytype.module:134
@@ -5619,10 +5621,10 @@ msgid "Remark \\theremark."
 msgstr "Pripomienka \\theremark."
 
 #: lib/layouts/AEA.layout:240 lib/layouts/llncs.layout:410
-#: lib/layouts/svglobal3.layout:94 lib/layouts/svmono.layout:42
-#: lib/layouts/svmult.layout:139 lib/layouts/theorems-without-preamble.inc:241
-#: lib/layouts/theorems-without-preamble.inc:248
-#: lib/layouts/theorems-without-preamble.inc:251
+#: lib/layouts/svglobal3.layout:94 lib/layouts/svmono.layout:46
+#: lib/layouts/svmult.layout:139 lib/layouts/theorems-without-preamble.inc:252
+#: lib/layouts/theorems-without-preamble.inc:259
+#: lib/layouts/theorems-without-preamble.inc:262
 msgid "Solution"
 msgstr "Riešenie"
 
@@ -5657,8 +5659,8 @@ msgstr "Popisok"
 #: lib/layouts/tufte-book.layout:196 lib/layouts/lyxmacros.inc:13
 #: lib/layouts/stdclass.inc:29 lib/layouts/stdlayouts.inc:13
 #: lib/layouts/stdlayouts.inc:34 lib/layouts/stdlayouts.inc:55
-#: lib/layouts/stdlayouts.inc:75 lib/layouts/svcommon.inc:580
-#: lib/layouts/svcommon.inc:591
+#: lib/layouts/stdlayouts.inc:75 lib/layouts/svcommon.inc:581
+#: lib/layouts/svcommon.inc:592
 msgid "MainText"
 msgstr "Hlavný text"
 
@@ -5671,9 +5673,11 @@ msgstr "Popisok: "
 #: lib/layouts/foils.layout:278 lib/layouts/heb-article.layout:95
 #: lib/layouts/ijmpc.layout:315 lib/layouts/ijmpd.layout:318
 #: lib/layouts/llncs.layout:376 lib/layouts/siamltex.layout:154
-#: lib/layouts/svcommon.inc:608 lib/layouts/svcommon.inc:611
-#: lib/layouts/theorems-order.inc:76 lib/layouts/theorems-proof-std.inc:6
-#: lib/layouts/theorems-proof.inc:13 lib/layouts/theorems-bytype.module:46
+#: lib/layouts/svmono.layout:116 lib/layouts/svcommon.inc:609
+#: lib/layouts/svcommon.inc:611 lib/layouts/svcommon.inc:613
+#: lib/layouts/svcommon.inc:616 lib/layouts/theorems-order.inc:76
+#: lib/layouts/theorems-proof-std.inc:6 lib/layouts/theorems-proof.inc:13
+#: lib/layouts/theorems-bytype.module:46
 msgid "Proof"
 msgstr "Dôkaz"
 
@@ -5810,8 +5814,8 @@ msgstr "Súhrn---"
 #: lib/layouts/svjog.layout:117 lib/layouts/svjog.layout:120
 #: lib/layouts/svmult.layout:223 lib/layouts/svprobth.layout:147
 #: lib/layouts/svprobth.layout:150 lib/layouts/agu_stdtitle.inc:120
-#: lib/layouts/amsdefs.inc:161 lib/layouts/svcommon.inc:438
-#: lib/layouts/svcommon.inc:452
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svcommon.inc:439
+#: lib/layouts/svcommon.inc:453
 msgid "Keywords"
 msgstr "Heslá"
 
@@ -5835,8 +5839,8 @@ msgstr "Prílohy"
 #: lib/layouts/iopart.layout:265 lib/layouts/iopart.layout:288
 #: lib/layouts/revtex4-1.layout:215 lib/layouts/revtex4.layout:231
 #: lib/layouts/siamltex.layout:318 lib/layouts/sigplanconf.layout:184
-#: lib/layouts/stdstruct.inc:57 lib/layouts/svcommon.inc:519
-#: lib/layouts/svcommon.inc:553
+#: lib/layouts/stdstruct.inc:57 lib/layouts/svcommon.inc:520
+#: lib/layouts/svcommon.inc:554
 msgid "BackMatter"
 msgstr "BackMatter"
 
@@ -5869,7 +5873,7 @@ msgstr "Príloha"
 #: lib/layouts/tufte-book.layout:242 lib/layouts/tufte-book.layout:244
 #: lib/layouts/aguplus.inc:172 lib/layouts/aguplus.inc:174
 #: lib/layouts/amsdefs.inc:196 lib/layouts/scrclass.inc:245
-#: lib/layouts/stdstruct.inc:53 lib/layouts/svcommon.inc:549
+#: lib/layouts/stdstruct.inc:53 lib/layouts/svcommon.inc:550
 #: src/frontends/qt4/GuiDocument.cpp:1321
 msgid "Bibliography"
 msgstr "Bibliografia"
@@ -5884,7 +5888,7 @@ msgstr "Bibliografia"
 #: lib/layouts/kluwer.layout:342 lib/layouts/kluwer.layout:354
 #: lib/layouts/llncs.layout:277 lib/layouts/moderncv.layout:164
 #: lib/layouts/siamltex.layout:332 lib/layouts/amsdefs.inc:210
-#: lib/layouts/stdstruct.inc:68 lib/layouts/svcommon.inc:564
+#: lib/layouts/stdstruct.inc:68 lib/layouts/svcommon.inc:565
 #: src/output_plaintext.cpp:150
 msgid "References"
 msgstr "Referencie"
@@ -5903,7 +5907,9 @@ msgstr "ŽivotopisBezFotky"
 
 #: lib/layouts/IEEEtran.layout:306 lib/layouts/beamer.layout:1054
 #: lib/layouts/foils.layout:281 lib/layouts/llncs.layout:379
-#: lib/layouts/siamltex.layout:170 lib/layouts/theorems-proof.inc:30
+#: lib/layouts/siamltex.layout:170 lib/layouts/svmono.layout:117
+#: lib/layouts/svmono.layout:121 lib/layouts/svmono.layout:125
+#: lib/layouts/theorems-proof.inc:30
 msgid "Proof."
 msgstr "Dôkaz."
 
@@ -5922,8 +5928,8 @@ msgstr "Dôkaz."
 #: lib/layouts/powerdot.layout:226 lib/layouts/revtex.layout:38
 #: lib/layouts/revtex4-1.layout:45 lib/layouts/revtex4.layout:64
 #: lib/layouts/siamltex.layout:357 lib/layouts/simplecv.layout:28
-#: lib/layouts/spie.layout:20 lib/layouts/svmono.layout:23
-#: lib/layouts/svmono.layout:32 lib/layouts/tufte-book.layout:65
+#: lib/layouts/spie.layout:20 lib/layouts/svmono.layout:27
+#: lib/layouts/svmono.layout:36 lib/layouts/tufte-book.layout:65
 #: lib/layouts/tufte-book.layout:86 lib/layouts/tufte-book.layout:87
 #: lib/layouts/tufte-handout.layout:23 lib/layouts/agu_stdsections.inc:32
 #: lib/layouts/aguplus.inc:29 lib/layouts/db_stdsections.inc:30
@@ -5993,7 +5999,7 @@ msgstr "Výpočet"
 #: lib/layouts/paper.layout:101 lib/layouts/scrlettr.layout:17
 #: lib/layouts/scrlttr2.layout:21 lib/layouts/agu_stdlists.inc:29
 #: lib/layouts/db_stdlists.inc:26 lib/layouts/scrclass.inc:36
-#: lib/layouts/stdlists.inc:58 lib/layouts/svcommon.inc:571
+#: lib/layouts/stdlists.inc:58 lib/layouts/svcommon.inc:572
 #: lib/ui/stdtoolbars.inc:116
 msgid "Description"
 msgstr "Popis"
@@ -6075,7 +6081,6 @@ msgid "Correspondence to:"
 msgstr "Korešpodencia na:"
 
 #: lib/layouts/aa.layout:217 lib/layouts/egs.layout:521
-#: lib/layouts/svcommon.inc:533
 msgid "Acknowledgements."
 msgstr "Poďakovania."
 
@@ -6109,7 +6114,7 @@ msgstr "E-mail"
 #: lib/layouts/lettre.layout:398 lib/layouts/llncs.layout:234
 #: lib/layouts/aapaper.inc:46 lib/layouts/amsdefs.inc:145
 #: lib/layouts/db_stdcharstyles.inc:71 lib/layouts/db_stdcharstyles.inc:73
-#: lib/layouts/svcommon.inc:632 lib/layouts/svcommon.inc:637
+#: lib/layouts/svcommon.inc:638 lib/layouts/svcommon.inc:643
 msgid "Email"
 msgstr "Email"
 
@@ -6151,7 +6156,8 @@ msgstr "A"
 #: lib/layouts/apa.layout:222 lib/layouts/egs.layout:507
 #: lib/layouts/elsart.layout:430 lib/layouts/isprs.layout:208
 #: lib/layouts/kluwer.layout:301 lib/layouts/kluwer.layout:312
-#: lib/layouts/aapaper.inc:91 lib/layouts/svcommon.inc:544
+#: lib/layouts/aapaper.inc:91 lib/layouts/svcommon.inc:534
+#: lib/layouts/svcommon.inc:545
 msgid "Acknowledgements"
 msgstr "Poďakovania"
 
@@ -6215,8 +6221,8 @@ msgstr "Subject headings:"
 msgid "[Acknowledgements]"
 msgstr "[Poďakovania]"
 
-#: lib/layouts/aastex.layout:404 lib/layouts/svcommon.inc:654
-#: lib/layouts/svcommon.inc:660 src/frontends/qt4/GuiDocument.cpp:1970
+#: lib/layouts/aastex.layout:404 lib/layouts/svcommon.inc:660
+#: lib/layouts/svcommon.inc:666 src/frontends/qt4/GuiDocument.cpp:1970
 #: src/frontends/qt4/GuiDocument.cpp:1982
 #: src/frontends/qt4/GuiDocument.cpp:2074
 #: src/frontends/qt4/GuiDocument.cpp:2093
@@ -6395,7 +6401,7 @@ msgstr "Príslušenstvo autora:"
 #: lib/layouts/kluwer.layout:271 lib/layouts/llncs.layout:256
 #: lib/layouts/siamltex.layout:264 lib/layouts/svglobal.layout:164
 #: lib/layouts/svjog.layout:168 lib/layouts/svprobth.layout:198
-#: lib/layouts/amsdefs.inc:105 lib/layouts/svcommon.inc:411
+#: lib/layouts/amsdefs.inc:105
 msgid "Abstract."
 msgstr "Súhrn."
 
@@ -6503,9 +6509,9 @@ msgstr "CopNum"
 #: lib/layouts/apa.layout:213 lib/layouts/elsart.layout:392
 #: lib/layouts/iopart.layout:95 lib/layouts/llncs.layout:362
 #: lib/layouts/powerdot.layout:200 lib/layouts/slides.layout:167
-#: lib/layouts/stdinsets.inc:96 lib/layouts/theorems-without-preamble.inc:356
-#: lib/layouts/theorems-without-preamble.inc:363
-#: lib/layouts/theorems-without-preamble.inc:366
+#: lib/layouts/stdinsets.inc:96 lib/layouts/theorems-without-preamble.inc:367
+#: lib/layouts/theorems-without-preamble.inc:374
+#: lib/layouts/theorems-without-preamble.inc:377
 #: lib/layouts/theorems-ams-extended-bytype.module:199
 #: lib/layouts/theorems-ams-extended-bytype.module:208
 #: lib/layouts/theorems-ams-extended-bytype.module:211
@@ -8493,9 +8499,9 @@ msgid "Proposition \\theproposition."
 msgstr "Tvrdenie \\theproposition."
 
 #: lib/layouts/ijmpc.layout:366 lib/layouts/ijmpd.layout:387
-#: lib/layouts/llncs.layout:396 lib/layouts/theorems-without-preamble.inc:339
-#: lib/layouts/theorems-without-preamble.inc:346
-#: lib/layouts/theorems-without-preamble.inc:349
+#: lib/layouts/llncs.layout:396 lib/layouts/theorems-without-preamble.inc:350
+#: lib/layouts/theorems-without-preamble.inc:357
+#: lib/layouts/theorems-without-preamble.inc:360
 #: lib/layouts/theorems-ams-extended.module:378
 #: lib/layouts/theorems-ams-extended.module:388
 #: lib/layouts/theorems-ams-extended.module:391
@@ -8750,7 +8756,8 @@ msgstr "Obsah Autor:"
 msgid "Case #."
 msgstr "Prípad #."
 
-#: lib/layouts/llncs.layout:310 lib/layouts/theorems-starred.inc:252
+#: lib/layouts/llncs.layout:310 lib/layouts/svmono.layout:113
+#: lib/layouts/theorems-starred.inc:252
 msgid "Claim."
 msgstr "Nárok."
 
@@ -8774,9 +8781,9 @@ msgstr "Poznámka #."
 msgid "Problem #."
 msgstr "Problém #."
 
-#: lib/layouts/llncs.layout:383 lib/layouts/theorems-without-preamble.inc:322
-#: lib/layouts/theorems-without-preamble.inc:329
-#: lib/layouts/theorems-without-preamble.inc:332
+#: lib/layouts/llncs.layout:383 lib/layouts/theorems-without-preamble.inc:333
+#: lib/layouts/theorems-without-preamble.inc:340
+#: lib/layouts/theorems-without-preamble.inc:343
 msgid "Property"
 msgstr "Vlastníctvo"
 
@@ -9341,7 +9348,7 @@ msgstr "Inštitút #"
 
 #: lib/layouts/svglobal.layout:125 lib/layouts/svjog.layout:129
 #: lib/layouts/svmult.layout:190 lib/layouts/svprobth.layout:159
-#: lib/layouts/scrclass.inc:203 lib/layouts/svcommon.inc:458
+#: lib/layouts/scrclass.inc:203 lib/layouts/svcommon.inc:459
 msgid "Dedication"
 msgstr "Venovanie"
 
@@ -9381,31 +9388,39 @@ msgstr "CRSC"
 msgid "CR Subject Classification"
 msgstr "CR Podmet Klasifikácia"
 
-#: lib/layouts/svglobal3.layout:84 lib/layouts/svmono.layout:46
+#: lib/layouts/svglobal3.layout:84 lib/layouts/svmono.layout:50
 #: lib/layouts/svmult.layout:155
 msgid "at Address"
 msgstr "na Adrese"
 
-#: lib/layouts/svglobal3.layout:87 lib/layouts/svmono.layout:49
+#: lib/layouts/svglobal3.layout:87 lib/layouts/svmono.layout:53
 #: lib/layouts/svmult.layout:158
 msgid "at address"
 msgstr "na adrese"
 
-#: lib/layouts/svmono.layout:21
+#: lib/layouts/svmono.layout:25
 msgid "Running Chapter"
 msgstr "Priebežná Kapitola"
 
-#: lib/layouts/svmono.layout:27
+#: lib/layouts/svmono.layout:31
 msgid "Running Chapter:"
 msgstr "Priebežná Kapitola:"
 
-#: lib/layouts/svmono.layout:30
+#: lib/layouts/svmono.layout:34
 msgid "Running Section"
 msgstr "Priebežná Sekcia"
 
-#: lib/layouts/svmono.layout:35
+#: lib/layouts/svmono.layout:39
 msgid "Running Section:"
 msgstr "Priebežná Sekcia:"
+
+#: lib/layouts/svmono.layout:120 lib/layouts/svcommon.inc:620
+msgid "Proof(QED)"
+msgstr "Dôkaz(QED)"
+
+#: lib/layouts/svmono.layout:124 lib/layouts/svcommon.inc:629
+msgid "Proof(smartQED)"
+msgstr "Dôkaz(smartQED)"
 
 #: lib/layouts/svmult.layout:23
 msgid "Contributor \\Roman{svmultlsti}:"
@@ -9485,13 +9500,13 @@ msgstr "extrakap"
 msgid "Extrachap"
 msgstr "Extrakap"
 
-#: lib/layouts/svmult.layout:194 lib/layouts/svcommon.inc:478
-#: lib/layouts/svcommon.inc:482
+#: lib/layouts/svmult.layout:194 lib/layouts/svcommon.inc:479
+#: lib/layouts/svcommon.inc:483
 msgid "Foreword"
 msgstr "Predhovor"
 
-#: lib/layouts/svmult.layout:198 lib/layouts/svcommon.inc:502
-#: lib/layouts/svcommon.inc:513
+#: lib/layouts/svmult.layout:198 lib/layouts/svcommon.inc:503
+#: lib/layouts/svcommon.inc:514
 msgid "Preface"
 msgstr "Predslov"
 
@@ -9991,7 +10006,7 @@ msgid "FirstName"
 msgstr "Krstné_meno"
 
 #: lib/layouts/literate-scrap.inc:12 lib/layouts/noweb.module:11
-#: lib/layouts/sweave.module:48
+#: lib/layouts/sweave.module:43
 msgid "Scrap"
 msgstr "Scrap"
 
@@ -10258,29 +10273,21 @@ msgstr "Priebežný Titul"
 msgid "Running Author"
 msgstr "Priebežný Autor"
 
-#: lib/layouts/svcommon.inc:429
-msgid "Abstract* (not printed)."
-msgstr "Súhrn* (nebude tlačený)."
+#: lib/layouts/svcommon.inc:430
+msgid "Abstract* (not printed)"
+msgstr "Súhrn* (nebude tlačený)"
 
-#: lib/layouts/svcommon.inc:504
+#: lib/layouts/svcommon.inc:505
 msgid "For Authors"
 msgstr "Pre Autorov"
 
-#: lib/layouts/svcommon.inc:578
+#: lib/layouts/svcommon.inc:579
 msgid "Petit"
 msgstr "Petit"
 
-#: lib/layouts/svcommon.inc:590
+#: lib/layouts/svcommon.inc:591
 msgid "Svgraybox"
 msgstr "Svgraybox"
-
-#: lib/layouts/svcommon.inc:614
-msgid "Proof(QED)"
-msgstr "Dôkaz(QED)"
-
-#: lib/layouts/svcommon.inc:623
-msgid "Proof(smartQED)"
-msgstr "Dôkaz(smartQED)"
 
 #: lib/layouts/theorems-ams-bytype.inc:166 lib/layouts/theorems-bytype.inc:142
 #: lib/layouts/theorems-without-preamble.inc:168
@@ -10423,45 +10430,41 @@ msgstr "Príklad \\theexample"
 msgid "Problem \\theproblem"
 msgstr "Problém \\theproblem"
 
-#: lib/layouts/theorems-without-preamble.inc:245
-msgid "Solution \\thesolution"
-msgstr "Riešenie \\thesolution"
-
-#: lib/layouts/theorems-without-preamble.inc:262
-msgid "Exercise \\theexercise"
-msgstr "Úloha \\theexercise"
-
-#: lib/layouts/theorems-without-preamble.inc:279
-msgid "Remark \\theremark"
-msgstr "Pripomienka \\theremark"
-
-#: lib/layouts/theorems-without-preamble.inc:293
-msgid "Claim "
-msgstr "Nárok "
-
-#: lib/layouts/theorems-without-preamble.inc:309
-msgid "Case \\thecase"
-msgstr "Prípad \\thecase"
-
-#: lib/layouts/theorems-without-preamble.inc:326
-msgid "Property \\theproperty"
-msgstr "Vlastnosť \\theproperty"
-
-#: lib/layouts/theorems-without-preamble.inc:343
-msgid "Question \\thequestion"
-msgstr "Otázka \\thequestion"
-
-#: lib/layouts/theorems-without-preamble.inc:360
-msgid "Note \\thenote"
-msgstr "Poznámka \\thenote"
-
-#: lib/layouts/theorems-without-preamble.inc:373
+#: lib/layouts/theorems-without-preamble.inc:242
 msgid "Prob"
 msgstr "Problém"
 
-#: lib/layouts/theorems-without-preamble.inc:377
+#: lib/layouts/theorems-without-preamble.inc:246
 msgid "\\theprob"
 msgstr "problém \\theprop"
+
+#: lib/layouts/theorems-without-preamble.inc:256
+msgid "Solution \\thesolution"
+msgstr "Riešenie \\thesolution"
+
+#: lib/layouts/theorems-without-preamble.inc:273
+msgid "Exercise \\theexercise"
+msgstr "Úloha \\theexercise"
+
+#: lib/layouts/theorems-without-preamble.inc:290
+msgid "Remark \\theremark"
+msgstr "Pripomienka \\theremark"
+
+#: lib/layouts/theorems-without-preamble.inc:320
+msgid "Case \\thecase"
+msgstr "Prípad \\thecase"
+
+#: lib/layouts/theorems-without-preamble.inc:337
+msgid "Property \\theproperty"
+msgstr "Vlastnosť \\theproperty"
+
+#: lib/layouts/theorems-without-preamble.inc:354
+msgid "Question \\thequestion"
+msgstr "Otázka \\thequestion"
+
+#: lib/layouts/theorems-without-preamble.inc:371
+msgid "Note \\thenote"
+msgstr "Poznámka \\thenote"
 
 #: lib/layouts/braille.module:2
 msgid "Braille"
@@ -10858,7 +10861,7 @@ msgstr "Dovoľuje použiť Noweb ako nástroj pre \"literate programming\""
 msgid "literate"
 msgstr "literárne"
 
-#: lib/layouts/sweave.module:2 lib/layouts/sweave.module:29
+#: lib/layouts/sweave.module:2 lib/layouts/sweave.module:24
 #: lib/configure.py:515
 msgid "Sweave"
 msgstr "Sweave"
@@ -10871,27 +10874,27 @@ msgstr ""
 "Umožní použiť štatistický jazyk S/R ako nástroj pre \"literate programming\" "
 "cez balík Sweave. Pozri sweave.lyx v príkladoch."
 
-#: lib/layouts/sweave.module:28
+#: lib/layouts/sweave.module:23
 msgid "Chunk"
 msgstr "Kus"
 
-#: lib/layouts/sweave.module:52
+#: lib/layouts/sweave.module:47
 msgid "Sweave Options"
 msgstr "Sweave Voľby"
 
-#: lib/layouts/sweave.module:53
+#: lib/layouts/sweave.module:48
 msgid "Sweave opts"
 msgstr "Sweave voľby"
 
-#: lib/layouts/sweave.module:74
+#: lib/layouts/sweave.module:69
 msgid "S/R expression"
 msgstr "S/R výraz"
 
-#: lib/layouts/sweave.module:75
+#: lib/layouts/sweave.module:70
 msgid "S/R expr"
 msgstr "S/R výraz"
 
-#: lib/layouts/sweave.module:96 lib/layouts/sweave.module:97
+#: lib/layouts/sweave.module:91 lib/layouts/sweave.module:92
 msgid "Sweave Input File"
 msgstr "Sweave Vstupný Súbor"
 
@@ -11594,23 +11597,23 @@ msgstr "Thajsky"
 msgid "Turkish"
 msgstr "Turecky"
 
-#: lib/languages:793
+#: lib/languages:796
 msgid "Turkmen"
 msgstr "Turkménsky"
 
-#: lib/languages:802
+#: lib/languages:805
 msgid "Ukrainian"
 msgstr "Ukrajinsky"
 
-#: lib/languages:810
+#: lib/languages:813
 msgid "Upper Sorbian"
 msgstr "Srbsky (Hornolužicky)"
 
-#: lib/languages:828
+#: lib/languages:831
 msgid "Vietnamese"
 msgstr "Vietnamsky"
 
-#: lib/languages:837
+#: lib/languages:840
 msgid "Welsh"
 msgstr "Walesky"
 
@@ -24147,6 +24150,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Claim "
+#~ msgstr "Nárok "
 
 #~ msgid "Preface:"
 #~ msgstr "Predslov:"
