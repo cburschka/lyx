@@ -136,6 +136,8 @@ What's new
 
 - Fix incompatibility between jss.layout and Sweave (see bug 7555).
 
+- Fix LaTeX export when the file encoding changes after a float (bug 7645).
+
 * USER INTERFACE
 
 - Fixed crash relating to outliner and mouse movement.

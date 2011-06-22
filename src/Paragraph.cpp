@@ -312,8 +312,8 @@ public:
 			      OutputParams const &) const;
 
 	/// This could go to ParagraphParameters if we want to.
-	int endTeXParParams(BufferParams const &, otexstream &,
-			    OutputParams const &) const;
+	bool endTeXParParams(BufferParams const &, otexstream &,
+			     OutputParams const &) const;
 
 	///
 	void latexInset(BufferParams const &,
@@ -2213,15 +2213,13 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 }
 
 
-int Paragraph::Private::endTeXParParams(BufferParams const & bparams,
+bool Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 			otexstream & os, OutputParams const & runparams) const
 {
-	int column = 0;
-
 	LyXAlignment const curAlign = params_.align();
 
 	if (curAlign == layout_->align)
-		return column;
+		return false;
 
 	switch (curAlign) {
 	case LYX_ALIGN_NONE:
@@ -2233,13 +2231,12 @@ int Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 	case LYX_ALIGN_LEFT:
 	case LYX_ALIGN_RIGHT:
 	case LYX_ALIGN_CENTER:
-		if (runparams.moving_arg) {
+		if (runparams.moving_arg)
 			os << "\\protect";
-			column = 8;
-		}
 		break;
 	}
 
+	string output;
 	string const end_tag = "\n\\par\\end";
 	InsetCode code = ownerCode();
 	bool const lastpar = runparams.isLastPar;
@@ -2252,33 +2249,27 @@ int Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 	case LYX_ALIGN_DECIMAL:
 		break;
 	case LYX_ALIGN_LEFT: {
-		string output;
 		if (owner_->getParLanguage(bparams)->babel() != "hebrew")
 			output = corrected_env(end_tag, "flushleft", code, lastpar);
 		else
 			output = corrected_env(end_tag, "flushright", code, lastpar);
 		os << from_ascii(output);
-		adjust_column(output, column);
 		break;
 	} case LYX_ALIGN_RIGHT: {
-		string output;
 		if (owner_->getParLanguage(bparams)->babel() != "hebrew")
 			output = corrected_env(end_tag, "flushright", code, lastpar);
 		else
 			output = corrected_env(end_tag, "flushleft", code, lastpar);
 		os << from_ascii(output);
-		adjust_column(output, column);
 		break;
 	} case LYX_ALIGN_CENTER: {
-		string output;
 		output = corrected_env(end_tag, "center", code, lastpar);
 		os << from_ascii(output);
-		adjust_column(output, column);
 		break;
 	}
 	}
 
-	return column;
+	return !output.empty() || lastpar;
 }
 
 
