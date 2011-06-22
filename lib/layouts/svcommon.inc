@@ -408,7 +408,7 @@ Style Abstract
 	LatexType	Environment
 	LatexName	abstract
 	LabelType	Static
-	LabelString	"Abstract."
+	LabelString	"Abstract"
 	LabelFont
 	  Series	Bold
 	EndFont
@@ -424,15 +424,16 @@ Style Abstract
 End
 
 Style Abstract*
-      CopyStyle		Abstract
+	CopyStyle	Abstract
+	LatexType	Command
 	LatexName	abstract*
-	LabelString	"Abstract* (not printed)."
-      	LabelFont
+	LabelString	"Abstract* (not printed)"
+	LabelFont
 	  Color		Blue
 	EndFont
 	TextFont	
-          Color		Blue
-	  EndFont
+	  Color		Blue
+	EndFont
 End
 
 Style Keywords
@@ -530,7 +531,7 @@ Style Acknowledgement
 	Align		Block
 	AlignPossible	Block, Left
 	LabelType	Static
-	LabelString	"Acknowledgements."
+	LabelString	"Acknowledgements"
 	Font
 	  Size		Small
 	EndFont
@@ -542,8 +543,8 @@ Style Acknowledgement
 End
 
 Style Acknowledgements
-      CopyStyle		Acknowledgement
-      LatexName		acknowledgements
+	CopyStyle	Acknowledgement
+	LatexName	acknowledgements
 End
 
 Style Bibliography
@@ -606,9 +607,14 @@ Style Svgraybox
 End
 
 Style Proof
-	CopyStyle	Claim
 	LatexName	proof
 	LabelString	"Proof"
+	LangPreamble
+		\providecommand{\proofname}{_(Proof)}
+	EndLangPreamble
+	BabelPreamble
+		\addto\captions$$lang{\renewcommand{\proofname}{_(Proof)}}
+	EndBabelPreamble
 End
 
 Style Proof(QED)

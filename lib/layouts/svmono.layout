@@ -11,20 +11,24 @@ Format 35
 Input svcommon.inc
 
 ClassOptions
-	FontSize	 10
+	FontSize	10
 End
 
 NoStyle Acknowledgements
 #NoStyle Acknowledgement
 NoStyle Institute
 
+Style Abstract
+	LatexType	Command
+End
+
 Style Running_Chapter
-      CopyStyle		Running_Title
-      Category		Section
-      InTitle		0
-      LatexName		chaptermark
-      LeftMargin	"Running Chapter:xxx"
-      LabelString	"Running Chapter:"
+	CopyStyle	Running_Title
+	Category	Section
+	InTitle		0
+	LatexName	chaptermark
+	LeftMargin	"Running Chapter:xxx"
+	LabelString	"Running Chapter:"
 End
 
 Style Running_Section
@@ -36,19 +40,90 @@ Style Running_Section
 End
 
 Style Problem
-      ObsoletedBy	Prob
+	ObsoletedBy	Prob
 End
 
 Style Solution
-      ObsoletedBy	Sol
+	ObsoletedBy	Sol
 End
 
-InsetLayout		Flex:at_Address
-       CopyStyle        Flex:and
-       LatexName	at
-       LabelString	"at address"
+InsetLayout	Flex:at_Address
+	CopyStyle	Flex:and
+	LatexName	at
+	LabelString	"at address"
 End
 
+Counter theorem
+  Within	chapter
+End
+
+Counter definition
+  Within	chapter
+End
+
+Counter remark
+  Within	chapter
+End
+
+Counter corollary
+  Within	chapter
+End
+
+Counter lemma
+  Within	chapter
+End
+
+Counter proposition
+  Within	chapter
+End
+
+Counter claim
+  Within	chapter
+End
+
+Counter conjecture
+  Within	chapter
+End
+
+Counter question
+  Within	chapter
+End
+
+Counter example
+  Within	chapter
+End
+
+Counter exercise
+  Within	chapter
+End
+
+Counter case
+  Within	chapter
+End
+
+Counter property
+  Within	chapter
+End
+
+Counter note
+  Within	chapter
+End
+
+Style Claim
+	LabelString	"Claim."
+End
+
+Style Proof
+	LabelString	"Proof."
+End
+
+Style Proof(QED)
+	LabelString	"Proof."
+End
+
+Style Proof(smartQED)
+	LabelString	"Proof."
+End
 
 NoStyle TOC_Title
 NoStyle TOC_Author
