@@ -134,6 +134,8 @@ What's new
 - Fix LaTeX error with Sweave module when the directory where R has
   been installed contains a space.
 
+- Fix incompatibility between jss.layout and Sweave (see bug 7555).
+
 * USER INTERFACE
 
 - Fixed crash relating to outliner and mouse movement.
