@@ -260,14 +260,12 @@
 #               Manuel Fonctionnalites supplementaires:
 #               titre modifie en 'Options avancees'
 # ------------------------------------------------------------------
-# 22 juin 2011 derniere revue avant 2.0.1
-# ------------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-20 10:39-0400\n"
-"PO-Revision-Date: 2011-06-22 09:12+0200\n"
+"POT-Creation-Date: 2011-06-16 10:55-0400\n"
+"PO-Revision-Date: 2011-06-24 09:01+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -312,6 +310,7 @@ msgstr "Copyright"
 #: src/frontends/qt4/ui/ThesaurusUi.ui:138
 #: src/frontends/qt4/ui/WrapUi.ui:173
 #: src/frontends/qt4/GuiParagraph.cpp:161
+#: src/frontends/qt4/ui_RefUi.h:294
 msgid "&Close"
 msgstr "&Fermer"
 
@@ -328,6 +327,7 @@ msgstr "Le nom de l'étiquette tel qu'elle apparaîtra dans le document"
 #: src/frontends/qt4/ui/BibitemUi.ui:54
 #: src/frontends/qt4/ui/LabelUi.ui:36
 #: src/frontends/qt4/ui/RefUi.ui:332
+#: src/frontends/qt4/ui_RefUi.h:324
 msgid "&Label:"
 msgstr "É&tiquette :"
 
@@ -387,11 +387,13 @@ msgstr "Construction de la bibliographie"
 #: src/frontends/qt4/ui/BiblioUi.ui:134
 #: src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:139
+#: src/frontends/qt4/ui_IndicesUi.h:193
 msgid "&Processor:"
 msgstr "&Processeur :"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144
 #: src/frontends/qt4/ui/IndicesUi.ui:43
+#: src/frontends/qt4/ui_IndicesUi.h:195
 msgid "Select a processor"
 msgstr "Choisir un processeur"
 
@@ -400,6 +402,7 @@ msgstr "Choisir un processeur"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152
 #: src/frontends/qt4/GuiPrefs.cpp:755
 #: src/frontends/qt4/GuiPrefs.cpp:850
+#: src/frontends/qt4/ui_IndicesUi.h:197
 msgid "&Options:"
 msgstr "O&ptions :"
 
@@ -443,6 +446,7 @@ msgstr "Saisir le nom de la base de données BibTeX"
 #: src/frontends/qt4/ui/CitationUi.ui:75
 #: src/frontends/qt4/ui/IndicesUi.ui:134
 #: src/CutAndPaste.cpp:350
+#: src/frontends/qt4/ui_IndicesUi.h:212
 msgid "&Add"
 msgstr "A&jouter"
 
@@ -528,6 +532,7 @@ msgstr "Ajouter la bibliographie à la &TdM"
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
 #: src/frontends/qt4/ui/WrapUi.ui:150
+#: src/frontends/qt4/ui_RefUi.h:292
 msgid "&OK"
 msgstr "&OK"
 
@@ -760,6 +765,7 @@ msgstr "Sélectionner la branche"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25
 #: src/frontends/qt4/ui/IndicesUi.ui:114
+#: src/frontends/qt4/ui_IndicesUi.h:205
 msgid "&New:"
 msgstr "&Nouvelle :"
 
@@ -801,6 +807,7 @@ msgstr "Définir ou changer la couleur de fond"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:123
 #: src/frontends/qt4/ui/IndicesUi.ui:185
+#: src/frontends/qt4/ui_IndicesUi.h:227
 msgid "Alter Co&lor..."
 msgstr "Changer la &couleur..."
 
@@ -812,6 +819,7 @@ msgstr "Enlever la branche sélectionnée"
 #: src/frontends/qt4/ui/IndicesUi.ui:165
 #: src/Buffer.cpp:3663
 #: src/Buffer.cpp:3676
+#: src/frontends/qt4/ui_IndicesUi.h:219
 msgid "&Remove"
 msgstr "&Enlever"
 
@@ -1144,6 +1152,7 @@ msgstr "Appliquer les changements &immédiatement"
 #: src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:1875
 #: src/frontends/qt4/GuiDocument.cpp:3131
+#: src/frontends/qt4/ui_RefUi.h:293
 msgid "&Apply"
 msgstr "&Appliquer"
 
@@ -2147,6 +2156,7 @@ msgstr "Nom associé à l'URL"
 #: src/frontends/qt4/ui/HyperlinkUi.ui:42
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50
 #: src/frontends/qt4/ui/RefUi.ui:251
+#: src/frontends/qt4/ui_RefUi.h:309
 msgid "&Name:"
 msgstr "&Nom :"
 
@@ -2265,6 +2275,7 @@ msgstr "Mo&difier"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59
 #: src/frontends/qt4/ui/IndicesUi.ui:143
+#: src/frontends/qt4/ui_IndicesUi.h:213
 msgid "A&vailable Indexes:"
 msgstr "Index &disponibles :"
 
@@ -2273,53 +2284,66 @@ msgid "Select the index this entry should be listed in."
 msgstr "Sélectionner l'index dans lequel cette entrée doit apparaître."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:19
+#: src/frontends/qt4/ui_IndicesUi.h:190
 msgid "Here you can define an alternative index processor and specify its options."
 msgstr "Vous pouvez définir ici un autre processeur pour l'indexation et spécifier ses options."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:202
+#: src/frontends/qt4/ui_IndicesUi.h:192
 msgid "Index generation"
 msgstr "Construction de l'index"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:64
+#: src/frontends/qt4/ui_IndicesUi.h:199
 msgid "Define program options of the selected processor."
 msgstr "Définir les options du processeur sélectionné ."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:89
+#: src/frontends/qt4/ui_IndicesUi.h:202
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr "Cocher si vous avez besoin de plusieurs index (e.g., un Index de noms)"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:92
+#: src/frontends/qt4/ui_IndicesUi.h:204
 msgid "&Use multiple indexes"
 msgstr "&Utiliser plusieurs index"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:124
+#: src/frontends/qt4/ui_IndicesUi.h:207
 msgid "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr "Saisir le nom de l'index désiré (e. g. « Index des noms ») et appuyez sur « Add »"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:131
+#: src/frontends/qt4/ui_IndicesUi.h:210
 msgid "Add a new index to the list"
 msgstr "Ajoute un nouvel index à la liste"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149
 #: src/frontends/qt4/ui/RefUi.ui:349
+#: src/frontends/qt4/ui_IndicesUi.h:215
+#: src/frontends/qt4/ui_RefUi.h:326
 msgid "1"
 msgstr "1"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:162
+#: src/frontends/qt4/ui_IndicesUi.h:217
 msgid "Remove the selected index"
 msgstr "Enlever l'index sélectionné"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:172
+#: src/frontends/qt4/ui_IndicesUi.h:221
 msgid "Rename the selected index"
 msgstr "Renommer l'index sélectionné"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:175
+#: src/frontends/qt4/ui_IndicesUi.h:223
 msgid "R&ename..."
 msgstr "&Renommer..."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:182
+#: src/frontends/qt4/ui_IndicesUi.h:225
 msgid "Define or change button color"
 msgstr "Définir ou changer la couleur du bouton"
 
@@ -2690,6 +2714,7 @@ msgstr "Mettre à jour l'affichage"
 #: src/frontends/qt4/ui/LogUi.ui:77
 #: src/frontends/qt4/ui/RefUi.ui:88
 #: src/frontends/qt4/ui/ViewSourceUi.ui:74
+#: src/frontends/qt4/ui_RefUi.h:291
 msgid "&Update"
 msgstr "Mettre à &jour"
 
@@ -3186,6 +3211,7 @@ msgstr "Format papier"
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:19
 #: src/frontends/qt4/ui/RefUi.ui:271
+#: src/frontends/qt4/ui_RefUi.h:310
 msgid "&Format:"
 msgstr "&Format :"
 
@@ -4608,87 +4634,108 @@ msgid "&Statusbar messages"
 msgstr "Messages de la barre d'éta&t"
 
 #: src/frontends/qt4/ui/RefUi.ui:36
+#: src/frontends/qt4/ui_RefUi.h:279
 msgid "Fil&ter:"
 msgstr "Fil&tre :"
 
 #: src/frontends/qt4/ui/RefUi.ui:49
+#: src/frontends/qt4/ui_RefUi.h:281
 msgid "Enter string to filter the label list"
 msgstr "Saisir une chaîne de caractères pour filtrer la liste des étiquettes."
 
 #: src/frontends/qt4/ui/RefUi.ui:59
+#: src/frontends/qt4/ui_RefUi.h:285
 msgid "Filter case-sensitively"
 msgstr "Filtrer selon la casse"
 
 #: src/frontends/qt4/ui/RefUi.ui:62
+#: src/frontends/qt4/ui_RefUi.h:287
 msgid "Case-sensiti&ve"
 msgstr "Selon la &casse"
 
 #: src/frontends/qt4/ui/RefUi.ui:85
+#: src/frontends/qt4/ui_RefUi.h:289
 msgid "Update the label list"
 msgstr "Mettre à jour la liste des étiquettes"
 
 #: src/frontends/qt4/ui/RefUi.ui:165
+#: src/frontends/qt4/ui_RefUi.h:296
 msgid "Sort labels in alphabetical order (case-insensitively unless the Case-sensitive option is checked)"
 msgstr "Trier le étiquettes par ordre alphabétique (quelle que soit la casse sauf si l'option « Selon la casse » est cochée)"
 
 #: src/frontends/qt4/ui/RefUi.ui:168
+#: src/frontends/qt4/ui_RefUi.h:298
 msgid "&Sort"
 msgstr "&Trier"
 
 #: src/frontends/qt4/ui/RefUi.ui:178
+#: src/frontends/qt4/ui_RefUi.h:300
 msgid "Sort labels case-sensitively in alphabetical order"
 msgstr "Trier les étiquettes par ordre alphabétique selon la casse"
 
 #: src/frontends/qt4/ui/RefUi.ui:181
+#: src/frontends/qt4/ui_RefUi.h:302
 msgid "Cas&e-sensitive"
 msgstr "Selon la &casse"
 
 #: src/frontends/qt4/ui/RefUi.ui:188
+#: src/frontends/qt4/ui_RefUi.h:304
 msgid "Group labels by prefix (e.g. \"sec:\")"
 msgstr "Classer les étiquettes par préfixe (e.g. « sec: »)"
 
 #: src/frontends/qt4/ui/RefUi.ui:191
+#: src/frontends/qt4/ui_RefUi.h:306
 msgid "Grou&p"
 msgstr "Grou&pe"
 
 #: src/frontends/qt4/ui/RefUi.ui:219
 #: src/frontends/qt4/GuiRef.cpp:314
+#: src/frontends/qt4/ui_RefUi.h:307
 msgid "&Go to Label"
 msgstr "A&ller à l'étiquette"
 
 #: src/frontends/qt4/ui/RefUi.ui:228
+#: src/frontends/qt4/ui_RefUi.h:308
 msgid "La&bels in:"
 msgstr "Éti&quettes dans :"
 
 #: src/frontends/qt4/ui/RefUi.ui:290
+#: src/frontends/qt4/ui_RefUi.h:322
 msgid "Cross-reference as it appears in output"
 msgstr "Aspect de la référence croisée dans la sortie"
 
 #: src/frontends/qt4/ui/RefUi.ui:294
+#: src/frontends/qt4/ui_RefUi.h:313
 msgid "<reference>"
 msgstr "<référence>"
 
 #: src/frontends/qt4/ui/RefUi.ui:299
+#: src/frontends/qt4/ui_RefUi.h:314
 msgid "(<reference>)"
 msgstr "(<référence>)"
 
 #: src/frontends/qt4/ui/RefUi.ui:304
+#: src/frontends/qt4/ui_RefUi.h:315
 msgid "<page>"
 msgstr "<page>"
 
 #: src/frontends/qt4/ui/RefUi.ui:309
+#: src/frontends/qt4/ui_RefUi.h:316
 msgid "on page <page>"
 msgstr "sur la page <page>"
 
 #: src/frontends/qt4/ui/RefUi.ui:314
+#: src/frontends/qt4/ui_RefUi.h:317
 msgid "<reference> on page <page>"
 msgstr "<référence> page <page>"
 
 #: src/frontends/qt4/ui/RefUi.ui:319
+#: src/frontends/qt4/ui_RefUi.h:318
 msgid "Formatted reference"
 msgstr "référence mise en forme"
 
 #: src/frontends/qt4/ui/RefUi.ui:324
+#: src/frontends/qt4/ui_RefUi.h:319
 msgid "Textual reference"
 msgstr "Référence textuelle"
 
@@ -12798,7 +12845,7 @@ msgstr "(<Référence>)|e"
 
 #: lib/ui/stdcontext.inc:92
 msgid "<Page>|P"
-msgstr "<Page>|p"
+msgstr "<Page>|P"
 
 #: lib/ui/stdcontext.inc:93
 msgid "On Page <Page>|O"
@@ -12949,12 +12996,12 @@ msgstr "Fantôme|F"
 #: lib/ui/stdcontext.inc:192
 #: lib/ui/stdmenus.inc:485
 msgid "Horizontal Phantom|H"
-msgstr "Fantôme horizontal|h"
+msgstr "Fantôme horizontal|z"
 
 #: lib/ui/stdcontext.inc:193
 #: lib/ui/stdmenus.inc:486
 msgid "Vertical Phantom|V"
-msgstr "Fantôme vertical|v"
+msgstr "Fantôme vertical|c"
 
 #: lib/ui/stdcontext.inc:202
 #: lib/ui/stdmenus.inc:394
@@ -18463,8 +18510,8 @@ msgid "No further redo information"
 msgstr "Pas d'information pour Refaire"
 
 #: src/BufferView.cpp:1517
-#: src/lyxfind.cpp:378
-#: src/lyxfind.cpp:396
+#: src/lyxfind.cpp:377
+#: src/lyxfind.cpp:395
 msgid "String not found!"
 msgstr "Chaîne de caractères introuvable !"
 
@@ -21153,7 +21200,7 @@ msgstr "Vaguement souligné"
 
 #: src/frontends/qt4/GuiCharacter.cpp:81
 msgid "Strikeout"
-msgstr "Barré"
+msgstr "Rayé"
 
 #: src/frontends/qt4/GuiCharacter.cpp:92
 msgid "No color"
@@ -24663,36 +24710,36 @@ msgstr "Hauteur texte %"
 msgid "Page Height %"
 msgstr "Hauteur page %"
 
-#: src/lyxfind.cpp:144
+#: src/lyxfind.cpp:143
 msgid "Search error"
 msgstr "Erreur de recherche"
 
-#: src/lyxfind.cpp:144
+#: src/lyxfind.cpp:143
 msgid "Search string is empty"
 msgstr "La chaîne de caractères à chercher est vide"
 
-#: src/lyxfind.cpp:381
+#: src/lyxfind.cpp:380
 msgid "String found."
 msgstr "Chaîne de caractères trouvée."
 
-#: src/lyxfind.cpp:383
+#: src/lyxfind.cpp:382
 msgid "String has been replaced."
 msgstr "Chaîne remplacée."
 
-#: src/lyxfind.cpp:386
+#: src/lyxfind.cpp:385
 #, c-format
 msgid "%1$d strings have been replaced."
 msgstr "%1$d chaînes remplacées."
 
-#: src/lyxfind.cpp:1410
+#: src/lyxfind.cpp:1371
 msgid "Invalid regular expression!"
 msgstr "Expression régulière invalide !"
 
-#: src/lyxfind.cpp:1415
+#: src/lyxfind.cpp:1376
 msgid "Match not found!"
 msgstr "Chaîne de caractères introuvable !"
 
-#: src/lyxfind.cpp:1419
+#: src/lyxfind.cpp:1380
 msgid "Match found!"
 msgstr "Chaîne de caractères reconnue !"
 
@@ -24702,7 +24749,7 @@ msgid " Macro: %1$s: "
 msgstr "Macro  %1$s : "
 
 #: src/mathed/InsetMathAMSArray.cpp:119
-#: src/mathed/InsetMathHull.cpp:1683
+#: src/mathed/InsetMathHull.cpp:1681
 #: src/mathed/InsetMathSplit.cpp:82
 #: src/mathed/InsetMathSubstack.cpp:76
 #, c-format
@@ -24745,11 +24792,11 @@ msgstr "Pas de ligne verticale à supprimer"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Option de tableau inconnue '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1275
+#: src/mathed/InsetMathHull.cpp:1273
 msgid "Bad math environment"
 msgstr "Environnement mathématique incorrect"
 
-#: src/mathed/InsetMathHull.cpp:1276
+#: src/mathed/InsetMathHull.cpp:1274
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
@@ -24757,27 +24804,27 @@ msgstr ""
 "Le calcul ne peut pas être effectué pour l'environnement mathématique AMS.\n"
 "Modifier le type de formule mathématique et réessayer."
 
-#: src/mathed/InsetMathHull.cpp:1382
-#: src/mathed/InsetMathHull.cpp:1391
+#: src/mathed/InsetMathHull.cpp:1380
+#: src/mathed/InsetMathHull.cpp:1389
 msgid "No number"
 msgstr "Pas de numéro"
 
-#: src/mathed/InsetMathHull.cpp:1382
-#: src/mathed/InsetMathHull.cpp:1391
+#: src/mathed/InsetMathHull.cpp:1380
+#: src/mathed/InsetMathHull.cpp:1389
 msgid "Number"
 msgstr "Numéro"
 
-#: src/mathed/InsetMathHull.cpp:1656
+#: src/mathed/InsetMathHull.cpp:1654
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Impossible de changer le nombre de lignes dans '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1666
+#: src/mathed/InsetMathHull.cpp:1664
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Impossible de changer le nombre de colonnes dans '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1676
+#: src/mathed/InsetMathHull.cpp:1674
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Impossible d'ajouter les lignes de grille horizontales dans '%1$s'"
@@ -24795,12 +24842,12 @@ msgid "Regular expression editor mode"
 msgstr "Mode d'édition « expression régulière »"
 
 #: src/mathed/InsetMathNest.cpp:1651
-#: src/mathed/InsetMathNest.cpp:1796
+#: src/mathed/InsetMathNest.cpp:1771
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Autocorrection inhibée ('!' pour commencer)"
 
 #: src/mathed/InsetMathNest.cpp:1656
-#: src/mathed/InsetMathNest.cpp:1798
+#: src/mathed/InsetMathNest.cpp:1773
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Autocorrection active (<espace> pour quitter)"
 
