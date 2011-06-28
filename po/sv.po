@@ -4,7 +4,7 @@
 # Joacim Persson <sp2joap@ida.his.se> 1997, 1998.
 # Jim Rotmalm <jim.rotmalm@gmail.com>, 2010, 2011.
 #
-# Information 2011-06-06:
+# Information 2011-06-26:
 #    Bad Qt shortcuts: 122
 #    Inconsistent translations: 6
 #    Bad menu shortcuts: 136
@@ -215,14 +215,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-20 10:39-0400\n"
-"PO-Revision-Date: 2011-06-09 21:12+0100\n"
+"POT-Creation-Date: 2011-06-26 12:21+0200\n"
+"PO-Revision-Date: 2011-06-26 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
-"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: sv\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
@@ -5378,16 +5378,18 @@ msgstr "KortTitel"
 #: lib/layouts/ijmpd.layout:199 lib/layouts/ijmpd.layout:211
 #: lib/layouts/iopart.layout:60 lib/layouts/iopart.layout:130
 #: lib/layouts/iopart.layout:149 lib/layouts/iopart.layout:174
-#: lib/layouts/iopart.layout:203 lib/layouts/siamltex.layout:279
-#: lib/layouts/siamltex.layout:299 lib/layouts/sigplanconf.layout:71
-#: lib/layouts/sigplanconf.layout:124 lib/layouts/sigplanconf.layout:157
-#: lib/layouts/svglobal3.layout:85 lib/layouts/tufte-handout.layout:49
-#: lib/layouts/amsdefs.inc:25 lib/layouts/amsdefs.inc:48
-#: lib/layouts/amsdefs.inc:68 lib/layouts/amsdefs.inc:92
-#: lib/layouts/amsdefs.inc:119 lib/layouts/lyxmacros.inc:45
-#: lib/layouts/lyxmacros.inc:66 lib/layouts/stdstruct.inc:16
-#: lib/layouts/stdtitle.inc:60 lib/layouts/stdtitle.inc:81
-#: lib/layouts/stdtitle.inc:100 lib/layouts/customHeadersFooters.module:11
+#: lib/layouts/iopart.layout:203 lib/layouts/revtex4.layout:112
+#: lib/layouts/revtex4.layout:150 lib/layouts/revtex4.layout:247
+#: lib/layouts/siamltex.layout:279 lib/layouts/siamltex.layout:299
+#: lib/layouts/sigplanconf.layout:71 lib/layouts/sigplanconf.layout:124
+#: lib/layouts/sigplanconf.layout:157 lib/layouts/svglobal3.layout:85
+#: lib/layouts/tufte-handout.layout:49 lib/layouts/amsdefs.inc:25
+#: lib/layouts/amsdefs.inc:48 lib/layouts/amsdefs.inc:68
+#: lib/layouts/amsdefs.inc:92 lib/layouts/amsdefs.inc:119
+#: lib/layouts/lyxmacros.inc:45 lib/layouts/lyxmacros.inc:66
+#: lib/layouts/stdstruct.inc:16 lib/layouts/stdtitle.inc:60
+#: lib/layouts/stdtitle.inc:81 lib/layouts/stdtitle.inc:100
+#: lib/layouts/customHeadersFooters.module:11
 msgid "FrontMatter"
 msgstr "InnanText"
 
@@ -5442,7 +5444,7 @@ msgstr "Publikationsupplaga:"
 #: lib/layouts/latex8.layout:107 lib/layouts/llncs.layout:242
 #: lib/layouts/ltugboat.layout:171 lib/layouts/ltugboat.layout:185
 #: lib/layouts/paper.layout:130 lib/layouts/revtex.layout:139
-#: lib/layouts/revtex4.layout:223 lib/layouts/siamltex.layout:251
+#: lib/layouts/revtex4.layout:220 lib/layouts/siamltex.layout:251
 #: lib/layouts/sigplanconf.layout:153 lib/layouts/sigplanconf.layout:169
 #: lib/layouts/spie.layout:75 lib/layouts/svglobal.layout:37
 #: lib/layouts/svglobal3.layout:84 lib/layouts/svglobal3.layout:88
@@ -5822,12 +5824,12 @@ msgstr "Bildtext"
 #: lib/layouts/beamer.layout:908 lib/layouts/beamer.layout:927
 #: lib/layouts/beamer.layout:946 lib/layouts/beamer.layout:1066
 #: lib/layouts/beamer.layout:1090 lib/layouts/beamer.layout:1128
-#: lib/layouts/siamltex.layout:36 lib/layouts/svmono.layout:18
-#: lib/layouts/svmult.layout:83 lib/layouts/tufte-book.layout:196
-#: lib/layouts/lyxmacros.inc:13 lib/layouts/stdclass.inc:29
-#: lib/layouts/stdlayouts.inc:13 lib/layouts/stdlayouts.inc:34
-#: lib/layouts/stdlayouts.inc:55 lib/layouts/stdlayouts.inc:75
-#: lib/layouts/svjour.inc:308
+#: lib/layouts/revtex4.layout:45 lib/layouts/siamltex.layout:36
+#: lib/layouts/svmono.layout:18 lib/layouts/svmult.layout:83
+#: lib/layouts/tufte-book.layout:196 lib/layouts/lyxmacros.inc:13
+#: lib/layouts/stdclass.inc:29 lib/layouts/stdlayouts.inc:13
+#: lib/layouts/stdlayouts.inc:34 lib/layouts/stdlayouts.inc:55
+#: lib/layouts/stdlayouts.inc:75 lib/layouts/svjour.inc:308
 msgid "MainText"
 msgstr "Brödtext"
 
@@ -5863,7 +5865,7 @@ msgstr "Bevis"
 #: lib/layouts/ltugboat.layout:30 lib/layouts/memoir.layout:31
 #: lib/layouts/moderncv.layout:19 lib/layouts/paper.layout:13
 #: lib/layouts/powerdot.layout:109 lib/layouts/revtex.layout:22
-#: lib/layouts/revtex4.layout:40 lib/layouts/scrlettr.layout:7
+#: lib/layouts/revtex4.layout:44 lib/layouts/scrlettr.layout:7
 #: lib/layouts/scrlttr2.layout:10 lib/layouts/siamltex.layout:35
 #: lib/layouts/sigplanconf.layout:37 lib/layouts/simplecv.layout:16
 #: lib/layouts/slides.layout:60 lib/layouts/tufte-book.layout:19
@@ -5891,7 +5893,7 @@ msgstr "Standard"
 #: lib/layouts/latex8.layout:38 lib/layouts/llncs.layout:106
 #: lib/layouts/ltugboat.layout:136 lib/layouts/paper.layout:110
 #: lib/layouts/powerdot.layout:41 lib/layouts/revtex.layout:94
-#: lib/layouts/revtex4.layout:125 lib/layouts/scrlettr.layout:188
+#: lib/layouts/revtex4.layout:124 lib/layouts/scrlettr.layout:188
 #: lib/layouts/scrlttr2.layout:271 lib/layouts/siamltex.layout:187
 #: lib/layouts/sigplanconf.layout:104 lib/layouts/simplecv.layout:122
 #: lib/layouts/svprobth.layout:42 lib/layouts/tufte-book.layout:34
@@ -5928,7 +5930,7 @@ msgstr "gemener"
 #: lib/layouts/isprs.layout:76 lib/layouts/kluwer.layout:165
 #: lib/layouts/llncs.layout:180 lib/layouts/ltugboat.layout:155
 #: lib/layouts/paper.layout:120 lib/layouts/powerdot.layout:65
-#: lib/layouts/revtex.layout:102 lib/layouts/revtex4.layout:133
+#: lib/layouts/revtex.layout:102 lib/layouts/revtex4.layout:132
 #: lib/layouts/siamltex.layout:209 lib/layouts/sigplanconf.layout:120
 #: lib/layouts/svprobth.layout:59 lib/layouts/tufte-book.layout:38
 #: lib/layouts/agu_stdtitle.inc:167 lib/layouts/amsdefs.inc:47
@@ -5968,7 +5970,7 @@ msgstr "Sammandrag---"
 #: lib/layouts/ijmpc.layout:201 lib/layouts/ijmpc.layout:205
 #: lib/layouts/ijmpd.layout:208 lib/layouts/iopart.layout:199
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
-#: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:262
+#: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:258
 #: lib/layouts/siamltex.layout:303 lib/layouts/sigplanconf.layout:146
 #: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:63
 #: lib/layouts/svglobal3.layout:66 lib/layouts/agu_stdtitle.inc:120
@@ -5994,9 +5996,9 @@ msgstr "Bilagor"
 #: lib/layouts/ijmpc.layout:437 lib/layouts/ijmpd.layout:437
 #: lib/layouts/ijmpd.layout:461 lib/layouts/iopart.layout:243
 #: lib/layouts/iopart.layout:265 lib/layouts/iopart.layout:288
-#: lib/layouts/siamltex.layout:318 lib/layouts/sigplanconf.layout:184
-#: lib/layouts/svglobal3.layout:94 lib/layouts/stdstruct.inc:57
-#: lib/layouts/svjour.inc:285
+#: lib/layouts/revtex4.layout:228 lib/layouts/siamltex.layout:318
+#: lib/layouts/sigplanconf.layout:184 lib/layouts/svglobal3.layout:94
+#: lib/layouts/stdstruct.inc:57 lib/layouts/svjour.inc:285
 msgid "BackMatter"
 msgstr "EfterText"
 
@@ -6081,15 +6083,15 @@ msgstr "Bevis."
 #: lib/layouts/memoir.layout:70 lib/layouts/memoir.layout:134
 #: lib/layouts/moderncv.layout:33 lib/layouts/paper.layout:58
 #: lib/layouts/powerdot.layout:226 lib/layouts/revtex.layout:38
-#: lib/layouts/revtex4.layout:59 lib/layouts/siamltex.layout:357
+#: lib/layouts/revtex4.layout:64 lib/layouts/siamltex.layout:357
 #: lib/layouts/simplecv.layout:28 lib/layouts/spie.layout:20
 #: lib/layouts/tufte-book.layout:65 lib/layouts/tufte-book.layout:86
 #: lib/layouts/tufte-book.layout:87 lib/layouts/tufte-handout.layout:23
 #: lib/layouts/agu_stdsections.inc:32 lib/layouts/aguplus.inc:29
 #: lib/layouts/db_stdsections.inc:30 lib/layouts/numrevtex.inc:6
 #: lib/layouts/scrclass.inc:68 lib/layouts/stdsections.inc:13
-#: lib/layouts/stdsections.inc:40 lib/layouts/stdsections.inc:64
-#: lib/layouts/stdsections.inc:65 lib/layouts/svjour.inc:53
+#: lib/layouts/stdsections.inc:41 lib/layouts/stdsections.inc:65
+#: lib/layouts/stdsections.inc:66 lib/layouts/svjour.inc:53
 #: src/frontends/qt4/GuiDocument.cpp:170
 msgid "Section"
 msgstr "Avsnitt"
@@ -6104,11 +6106,11 @@ msgstr "Avsnitt"
 #: lib/layouts/llncs.layout:55 lib/layouts/ltugboat.layout:65
 #: lib/layouts/memoir.layout:76 lib/layouts/moderncv.layout:53
 #: lib/layouts/paper.layout:67 lib/layouts/revtex.layout:50
-#: lib/layouts/revtex4.layout:71 lib/layouts/siamltex.layout:368
+#: lib/layouts/revtex4.layout:73 lib/layouts/siamltex.layout:368
 #: lib/layouts/simplecv.layout:50 lib/layouts/tufte-book.layout:110
 #: lib/layouts/agu_stdsections.inc:43 lib/layouts/aguplus.inc:44
 #: lib/layouts/db_stdsections.inc:39 lib/layouts/numrevtex.inc:15
-#: lib/layouts/scrclass.inc:76 lib/layouts/stdsections.inc:89
+#: lib/layouts/scrclass.inc:76 lib/layouts/stdsections.inc:90
 #: lib/layouts/svjour.inc:63
 msgid "Subsection"
 msgstr "Underavsnitt"
@@ -6121,10 +6123,10 @@ msgstr "Underavsnitt"
 #: lib/layouts/kluwer.layout:79 lib/layouts/llncs.layout:64
 #: lib/layouts/ltugboat.layout:85 lib/layouts/memoir.layout:82
 #: lib/layouts/paper.layout:76 lib/layouts/recipebook.layout:97
-#: lib/layouts/revtex.layout:59 lib/layouts/revtex4.layout:80
+#: lib/layouts/revtex.layout:59 lib/layouts/revtex4.layout:82
 #: lib/layouts/siamltex.layout:377 lib/layouts/agu_stdsections.inc:54
 #: lib/layouts/db_stdsections.inc:48 lib/layouts/numrevtex.inc:24
-#: lib/layouts/scrclass.inc:84 lib/layouts/stdsections.inc:105
+#: lib/layouts/scrclass.inc:84 lib/layouts/stdsections.inc:106
 #: lib/layouts/svjour.inc:73
 msgid "Subsubsection"
 msgstr "Underunderavsnitt"
@@ -6185,7 +6187,7 @@ msgstr "Undertitel"
 #: lib/layouts/g-brief.layout:180 lib/layouts/g-brief2.layout:715
 #: lib/layouts/ijmpc.layout:125 lib/layouts/iopart.layout:145
 #: lib/layouts/isprs.layout:111 lib/layouts/kluwer.layout:182
-#: lib/layouts/revtex.layout:120 lib/layouts/revtex4.layout:183
+#: lib/layouts/revtex.layout:120 lib/layouts/revtex4.layout:180
 #: lib/layouts/scrlettr.layout:139 lib/layouts/scrlttr2.layout:47
 #: lib/layouts/siamltex.layout:278 lib/layouts/aapaper.inc:29
 #: lib/layouts/amsdefs.inc:118 lib/layouts/lyxmacros.inc:44
@@ -6211,7 +6213,7 @@ msgstr "Post"
 #: lib/layouts/g-brief2.layout:800 lib/layouts/kluwer.layout:149
 #: lib/layouts/lettre.layout:51 lib/layouts/lettre.layout:213
 #: lib/layouts/powerdot.layout:87 lib/layouts/revtex.layout:110
-#: lib/layouts/revtex4.layout:141 lib/layouts/scrlettr.layout:160
+#: lib/layouts/revtex4.layout:140 lib/layouts/scrlettr.layout:160
 #: lib/layouts/scrlttr2.layout:239 lib/layouts/siamltex.layout:228
 #: lib/layouts/tufte-book.layout:42 lib/layouts/agu_stdtitle.inc:238
 #: lib/layouts/amsdefs.inc:67 lib/layouts/db_stdtitle.inc:35
@@ -6283,17 +6285,17 @@ msgstr "Synonymordbok"
 #: lib/layouts/egs.layout:71 lib/layouts/kluwer.layout:89
 #: lib/layouts/llncs.layout:73 lib/layouts/ltugboat.layout:105
 #: lib/layouts/memoir.layout:88 lib/layouts/paper.layout:85
-#: lib/layouts/revtex.layout:68 lib/layouts/revtex4.layout:89
+#: lib/layouts/revtex.layout:68 lib/layouts/revtex4.layout:90
 #: lib/layouts/agu_stdsections.inc:65 lib/layouts/aguplus.inc:59
 #: lib/layouts/db_stdsections.inc:57 lib/layouts/numrevtex.inc:33
-#: lib/layouts/scrclass.inc:92 lib/layouts/stdsections.inc:120
+#: lib/layouts/scrclass.inc:92 lib/layouts/stdsections.inc:121
 #: lib/layouts/svjour.inc:83
 msgid "Paragraph"
 msgstr "Stycke"
 
 #: lib/layouts/aastex.layout:101 lib/layouts/aastex.layout:272
 #: lib/layouts/achemso.layout:94 lib/layouts/apa.layout:150
-#: lib/layouts/latex8.layout:88 lib/layouts/revtex4.layout:151
+#: lib/layouts/latex8.layout:88 lib/layouts/revtex4.layout:149
 #: lib/layouts/agu_stdtitle.inc:128 lib/layouts/aguplus.inc:65
 msgid "Affiliation"
 msgstr "Tillhörighet"
@@ -6524,7 +6526,7 @@ msgstr "Computing Review-kategorier"
 #: lib/layouts/acmsiggraph.layout:152 lib/layouts/acmsiggraph.layout:159
 #: lib/layouts/agutex.layout:177 lib/layouts/apa.layout:243
 #: lib/layouts/iopart.layout:239 lib/layouts/iopart.layout:253
-#: lib/layouts/revtex4.layout:233 lib/layouts/sigplanconf.layout:181
+#: lib/layouts/revtex4.layout:227 lib/layouts/sigplanconf.layout:181
 #: lib/layouts/sigplanconf.layout:188 lib/layouts/spie.layout:90
 msgid "Acknowledgments"
 msgstr "Tacksägelser"
@@ -6561,7 +6563,7 @@ msgstr "Tacksägelser."
 #: lib/layouts/beamer.layout:176 lib/layouts/egs.layout:581
 #: lib/layouts/isprs.layout:179 lib/layouts/spie.layout:31
 #: lib/layouts/aguplus.inc:37 lib/layouts/db_stdstarsections.inc:36
-#: lib/layouts/stdstarsections.inc:34
+#: lib/layouts/stdstarsections.inc:35
 msgid "Section*"
 msgstr "Avsnitt*"
 
@@ -6576,22 +6578,22 @@ msgstr "Specialavsnitt*"
 #: lib/layouts/amsart.layout:95 lib/layouts/beamer.layout:178
 #: lib/layouts/beamer.layout:222 lib/layouts/memoir.layout:153
 #: lib/layouts/svmono.layout:78 lib/layouts/stdstarsections.inc:15
-#: lib/layouts/stdstarsections.inc:25 lib/layouts/stdstarsections.inc:36
-#: lib/layouts/stdstarsections.inc:47 lib/layouts/stdstarsections.inc:58
-#: lib/layouts/stdstarsections.inc:69 lib/layouts/stdstarsections.inc:80
+#: lib/layouts/stdstarsections.inc:26 lib/layouts/stdstarsections.inc:37
+#: lib/layouts/stdstarsections.inc:48 lib/layouts/stdstarsections.inc:59
+#: lib/layouts/stdstarsections.inc:70 lib/layouts/stdstarsections.inc:81
 msgid "Unnumbered"
 msgstr "Onumrerat"
 
 #: lib/layouts/amsart.layout:116 lib/layouts/amsbook.layout:92
 #: lib/layouts/beamer.layout:220 lib/layouts/egs.layout:601
 #: lib/layouts/isprs.layout:190 lib/layouts/aguplus.inc:52
-#: lib/layouts/db_stdstarsections.inc:48 lib/layouts/stdstarsections.inc:45
+#: lib/layouts/db_stdstarsections.inc:48 lib/layouts/stdstarsections.inc:46
 msgid "Subsection*"
 msgstr "Underavsnitt*"
 
 #: lib/layouts/amsart.layout:137 lib/layouts/amsbook.layout:100
 #: lib/layouts/isprs.layout:199 lib/layouts/db_stdstarsections.inc:60
-#: lib/layouts/stdstarsections.inc:56
+#: lib/layouts/stdstarsections.inc:57
 msgid "Subsubsection*"
 msgstr "Underunderavsnitt*"
 
@@ -6628,7 +6630,7 @@ msgid "FourAuthors"
 msgstr "FyraFörfattare"
 
 #: lib/layouts/apa.layout:162 lib/layouts/egs.layout:328
-#: lib/layouts/revtex4.layout:163 lib/layouts/agu_stdtitle.inc:131
+#: lib/layouts/revtex4.layout:160 lib/layouts/agu_stdtitle.inc:131
 msgid "Affiliation:"
 msgstr "Tillhörighet:"
 
@@ -6698,7 +6700,7 @@ msgstr "PassaBitmap"
 #: lib/layouts/kluwer.layout:99 lib/layouts/llncs.layout:83
 #: lib/layouts/memoir.layout:94 lib/layouts/paper.layout:94
 #: lib/layouts/agu_stdsections.inc:76 lib/layouts/db_stdsections.inc:66
-#: lib/layouts/scrclass.inc:100 lib/layouts/stdsections.inc:130
+#: lib/layouts/scrclass.inc:100 lib/layouts/stdsections.inc:131
 msgid "Subparagraph"
 msgstr "Understycke"
 
@@ -7255,7 +7257,7 @@ msgstr "Sänd till adress"
 #: lib/layouts/dinbrief.layout:49 lib/layouts/ectaart.layout:66
 #: lib/layouts/elsart.layout:139 lib/layouts/g-brief.layout:185
 #: lib/layouts/g-brief2.layout:726 lib/layouts/revtex.layout:132
-#: lib/layouts/revtex4.layout:186 lib/layouts/scrlettr.layout:142
+#: lib/layouts/revtex4.layout:183 lib/layouts/scrlettr.layout:142
 #: lib/layouts/scrlttr2.layout:62 lib/layouts/siamltex.layout:290
 #: lib/layouts/amsdefs.inc:130
 msgid "Address:"
@@ -7381,7 +7383,7 @@ msgstr "Lokalisering:"
 
 #: lib/layouts/dinbrief.layout:154 lib/layouts/g-brief.layout:192
 #: lib/layouts/g-brief2.layout:810 lib/layouts/lettre.layout:226
-#: lib/layouts/revtex.layout:112 lib/layouts/revtex4.layout:143
+#: lib/layouts/revtex.layout:112 lib/layouts/revtex4.layout:142
 #: lib/layouts/scrlettr.layout:163 lib/layouts/scrlttr2.layout:243
 #: lib/layouts/siamltex.layout:240 lib/layouts/amsdefs.inc:80
 msgid "Date:"
@@ -7625,7 +7627,7 @@ msgstr "Nyckelord"
 #: lib/layouts/ectaart.layout:120 lib/layouts/elsarticle.layout:264
 #: lib/layouts/ijmpd.layout:212 lib/layouts/iopart.layout:210
 #: lib/layouts/kluwer.layout:289 lib/layouts/paper.layout:175
-#: lib/layouts/revtex4.layout:267 lib/layouts/sigplanconf.layout:149
+#: lib/layouts/revtex4.layout:263 lib/layouts/sigplanconf.layout:149
 #: lib/layouts/spie.layout:48 lib/layouts/agu_stdtitle.inc:123
 msgid "Keywords:"
 msgstr "Nyckelord:"
@@ -7651,9 +7653,8 @@ msgid "Thanks Ref"
 msgstr "Tackref"
 
 #: lib/layouts/ectaart.layout:164
-#, fuzzy
 msgid "Internet Address Reference"
-msgstr "Internetadressref"
+msgstr "Internetadressreferens"
 
 #: lib/layouts/ectaart.layout:167
 msgid "Internet Addess Ref"
@@ -7672,9 +7673,8 @@ msgid "First Name"
 msgstr "Förnamn"
 
 #: lib/layouts/ectaart.layout:191
-#, fuzzy
 msgid "Name (Surname)"
-msgstr "Namn (förnamn)"
+msgstr "Namn (efternamn)"
 
 #: lib/layouts/ectaart.layout:194 lib/layouts/agu_stdclass.inc:63
 #: lib/layouts/agu_stdclass.inc:65 lib/layouts/db_stdcharstyles.inc:46
@@ -7684,7 +7684,7 @@ msgstr "Efternamn"
 
 #: lib/layouts/ectaart.layout:204
 msgid "By Same Author (bib)"
-msgstr ""
+msgstr "Av samma författare (bib)"
 
 #: lib/layouts/ectaart.layout:207
 msgid "bysame"
@@ -7760,7 +7760,7 @@ msgstr "begäran_om_omtryck_till:"
 msgid "Author Address"
 msgstr "Författare adress"
 
-#: lib/layouts/elsart.layout:147 lib/layouts/revtex4.layout:197
+#: lib/layouts/elsart.layout:147 lib/layouts/revtex4.layout:194
 msgid "Author Email"
 msgstr "Författare epost"
 
@@ -7769,16 +7769,16 @@ msgstr "Författare epost"
 msgid "Email:"
 msgstr "Epost:"
 
-#: lib/layouts/elsart.layout:168 lib/layouts/revtex4.layout:213
+#: lib/layouts/elsart.layout:168 lib/layouts/revtex4.layout:210
 msgid "Author URL"
 msgstr "Författare URL"
 
-#: lib/layouts/elsart.layout:179 lib/layouts/revtex4.layout:219
+#: lib/layouts/elsart.layout:179 lib/layouts/revtex4.layout:216
 #: lib/layouts/amsdefs.inc:157
 msgid "URL:"
 msgstr "URL:"
 
-#: lib/layouts/elsart.layout:191 lib/layouts/revtex4.layout:190
+#: lib/layouts/elsart.layout:191 lib/layouts/revtex4.layout:187
 #: lib/layouts/amsdefs.inc:168
 msgid "Thanks"
 msgstr "Tack"
@@ -8573,14 +8573,12 @@ msgstr "Scen"
 #: lib/layouts/ijmpc.layout:68 lib/layouts/ijmpc.layout:72
 #: lib/layouts/ijmpc.layout:80 lib/layouts/ijmpd.layout:73
 #: lib/layouts/ijmpd.layout:77 lib/layouts/ijmpd.layout:85
-#, fuzzy
 msgid "Catchline"
-msgstr "matematikrad"
+msgstr "Slagord"
 
 #: lib/layouts/ijmpc.layout:140 lib/layouts/ijmpd.layout:130
-#, fuzzy
 msgid "History"
-msgstr "Revideringshistoria"
+msgstr "Historia"
 
 #: lib/layouts/ijmpc.layout:171 lib/layouts/ijmpc.layout:175
 #: lib/layouts/ijmpd.layout:161 lib/layouts/ijmpd.layout:165
@@ -8598,28 +8596,24 @@ msgid "TableCaption"
 msgstr "Tabellbildtext"
 
 #: lib/layouts/ijmpc.layout:229 lib/layouts/ijmpd.layout:232
-#, fuzzy
 msgid "Table caption"
 msgstr "Tabellbildtext"
 
 #: lib/layouts/ijmpc.layout:242 lib/layouts/ijmpd.layout:245
 msgid "Refcite"
-msgstr ""
+msgstr "Citatref"
 
 #: lib/layouts/ijmpc.layout:246 lib/layouts/ijmpd.layout:249
-#, fuzzy
 msgid "Cite reference"
-msgstr "alla citerade referenser"
+msgstr "Citatreferens"
 
 #: lib/layouts/ijmpc.layout:259 lib/layouts/ijmpd.layout:262
-#, fuzzy
 msgid "ItemList"
-msgstr "Uppställning"
+msgstr "Uppställd lista"
 
 #: lib/layouts/ijmpc.layout:280 lib/layouts/ijmpd.layout:283
-#, fuzzy
 msgid "RomanList"
-msgstr "Antikva"
+msgstr "Romersk lista"
 
 #: lib/layouts/ijmpc.layout:317 lib/layouts/ijmpd.layout:342
 #: lib/layouts/theorems-ams-bytype.inc:68 lib/layouts/theorems-ams.inc:42
@@ -8679,9 +8673,8 @@ msgid "Appendix \\Alph{appendix}."
 msgstr "Bilaga \\Alph{appendix}."
 
 #: lib/layouts/ijmpd.layout:178 lib/layouts/ijmpd.layout:182
-#, fuzzy
 msgid "Comby"
-msgstr "Tangentkombination"
+msgstr "Meddelas av"
 
 #: lib/layouts/iopart.layout:77
 msgid "Review"
@@ -8707,7 +8700,7 @@ msgstr "Prelim"
 msgid "Rapid"
 msgstr "Rapid"
 
-#: lib/layouts/iopart.layout:218 lib/layouts/revtex4.layout:251
+#: lib/layouts/iopart.layout:218 lib/layouts/revtex4.layout:246
 #: lib/layouts/svglobal3.layout:70 lib/layouts/svglobal3.layout:73
 msgid "PACS"
 msgstr "PACS"
@@ -8863,7 +8856,7 @@ msgstr "P.S.:"
 #: lib/layouts/svmono.layout:68 lib/layouts/svmult.layout:218
 #: lib/layouts/tufte-book.layout:63 lib/layouts/agu_stdsections.inc:22
 #: lib/layouts/db_stdsections.inc:21 lib/layouts/scrclass.inc:59
-#: lib/layouts/stdsections.inc:38
+#: lib/layouts/stdsections.inc:39
 msgid "Chapter"
 msgstr "Kapitel"
 
@@ -8951,7 +8944,7 @@ msgstr "Lösning #."
 
 #: lib/layouts/memoir.layout:65 lib/layouts/svmono.layout:72
 #: lib/layouts/svmult.layout:223 lib/layouts/db_stdstarsections.inc:24
-#: lib/layouts/stdstarsections.inc:23
+#: lib/layouts/stdstarsections.inc:24
 msgid "Chapter*"
 msgstr "Kapitel*"
 
@@ -9108,27 +9101,27 @@ msgstr "Ingredienser"
 msgid "Ingredients:"
 msgstr "Ingredienser:"
 
-#: lib/layouts/revtex4.layout:113
+#: lib/layouts/revtex4.layout:111
 msgid "Preprint"
 msgstr "Preprint"
 
-#: lib/layouts/revtex4.layout:171 lib/layouts/revtex4.layout:177
+#: lib/layouts/revtex4.layout:168 lib/layouts/revtex4.layout:174
 msgid "AltAffiliation"
 msgstr "AltTillhörighet"
 
-#: lib/layouts/revtex4.layout:193 lib/layouts/amsdefs.inc:171
+#: lib/layouts/revtex4.layout:190 lib/layouts/amsdefs.inc:171
 msgid "Thanks:"
 msgstr "Tack:"
 
-#: lib/layouts/revtex4.layout:203
+#: lib/layouts/revtex4.layout:200
 msgid "Electronic Address:"
 msgstr "Elektronisk adress:"
 
-#: lib/layouts/revtex4.layout:241
+#: lib/layouts/revtex4.layout:237
 msgid "acknowledgments"
 msgstr "tacksägelser"
 
-#: lib/layouts/revtex4.layout:258
+#: lib/layouts/revtex4.layout:254
 msgid "PACS number:"
 msgstr "PACS-nummer:"
 
@@ -9526,9 +9519,8 @@ msgid "new thought"
 msgstr "ny tanke"
 
 #: lib/layouts/tufte-book.layout:170
-#, fuzzy
 msgid "AllCaps"
-msgstr "Kapitäler"
+msgstr "Versaler"
 
 #: lib/layouts/tufte-book.layout:173
 msgid "allcaps"
@@ -9849,7 +9841,7 @@ msgid "Country"
 msgstr "Land"
 
 #: lib/layouts/aguplus.inc:71 lib/layouts/db_stdstarsections.inc:72
-#: lib/layouts/stdstarsections.inc:67
+#: lib/layouts/stdstarsections.inc:68
 msgid "Paragraph*"
 msgstr "Stycke*"
 
@@ -9965,7 +9957,7 @@ msgstr "MenyVal"
 msgid "SGML"
 msgstr "SGML"
 
-#: lib/layouts/db_stdstarsections.inc:84 lib/layouts/stdstarsections.inc:78
+#: lib/layouts/db_stdstarsections.inc:84 lib/layouts/stdstarsections.inc:79
 msgid "Subparagraph*"
 msgstr "Understycke*"
 
@@ -9994,7 +9986,7 @@ msgid "FirstName"
 msgstr "Förnamn"
 
 #: lib/layouts/literate-scrap.inc:12 lib/layouts/noweb.module:11
-#: lib/layouts/sweave.module:48
+#: lib/layouts/sweave.module:43
 msgid "Scrap"
 msgstr "Urklipp"
 
@@ -10208,11 +10200,11 @@ msgstr "--- Avskild miljö ---"
 msgid "Part \\thepart"
 msgstr "Del \\thepart"
 
-#: lib/layouts/stdsections.inc:41
+#: lib/layouts/stdsections.inc:42
 msgid "Chapter \\thechapter"
 msgstr "Kapitel \\thechapter"
 
-#: lib/layouts/stdsections.inc:42
+#: lib/layouts/stdsections.inc:43
 msgid "Appendix \\thechapter"
 msgstr "Bilaga \\thechapter"
 
@@ -10733,7 +10725,7 @@ msgstr "Tillåter bruk av Noweb som ett litterat programmeringsverktyg."
 msgid "literate"
 msgstr "litterat"
 
-#: lib/layouts/sweave.module:2 lib/layouts/sweave.module:29
+#: lib/layouts/sweave.module:2 lib/layouts/sweave.module:24
 #: lib/configure.py:551
 msgid "Sweave"
 msgstr "Sweave"
@@ -10746,27 +10738,27 @@ msgstr ""
 "Gör det möjligt att använda det statistiska språket S/R som ett litterat "
 "programmeringsverktyg via Sweave-paketet. Se sweave.lyx i exempel."
 
-#: lib/layouts/sweave.module:28
+#: lib/layouts/sweave.module:23
 msgid "Chunk"
 msgstr "Bit"
 
-#: lib/layouts/sweave.module:52
+#: lib/layouts/sweave.module:47
 msgid "Sweave Options"
 msgstr "Sweave-alternativ"
 
-#: lib/layouts/sweave.module:53
+#: lib/layouts/sweave.module:48
 msgid "Sweave opts"
 msgstr "Sweave alt"
 
-#: lib/layouts/sweave.module:74
+#: lib/layouts/sweave.module:69
 msgid "S/R expression"
 msgstr "S/R uttryck"
 
-#: lib/layouts/sweave.module:75
+#: lib/layouts/sweave.module:70
 msgid "S/R expr"
 msgstr "S/R uttr"
 
-#: lib/layouts/sweave.module:96 lib/layouts/sweave.module:97
+#: lib/layouts/sweave.module:91 lib/layouts/sweave.module:92
 msgid "Sweave Input File"
 msgstr "Sweave-inmatningsfil"
 
@@ -14174,23 +14166,20 @@ msgid "Nice fraction (3/4)\t\\nicefrac"
 msgstr "Fint bråk (3/4)\t\\nicefrac"
 
 #: lib/ui/stdtoolbars.inc:356
-#, fuzzy
 msgid "Unit (km)\t\\unitone"
-msgstr "Enhet (km)\t\\unit"
+msgstr "Enhet (km)\t\\unitone"
 
 #: lib/ui/stdtoolbars.inc:357
-#, fuzzy
 msgid "Unit (864 m)\t\\unittwo"
-msgstr "Enhet (864 m)\t\\unit"
+msgstr "Enhet (864 m)\t\\unittwo"
 
 #: lib/ui/stdtoolbars.inc:358
 msgid "Unit fraction (km/h)\t\\unitfrac"
 msgstr "Enhetsbråk (km/h)\t\\unitfrac"
 
 #: lib/ui/stdtoolbars.inc:359
-#, fuzzy
 msgid "Unit fraction (20 km/h)\t\\unitfracthree"
-msgstr "Enhetsbråk (20 km/h)\t\\unitfrac"
+msgstr "Enhetsbråk (20 km/h)\t\\unitfracthree"
 
 #: lib/ui/stdtoolbars.inc:360
 msgid "Text fraction\t\\tfrac"
@@ -14205,14 +14194,12 @@ msgid "Continued fraction\t\\cfrac"
 msgstr "Fortsatt bråk\t\\cfrac"
 
 #: lib/ui/stdtoolbars.inc:363
-#, fuzzy
 msgid "Continued fraction (left)\t\\cfracleft"
-msgstr "Fortsatt bråk (vänster)\t\\cfrac"
+msgstr "Fortsatt bråk (vänster)\t\\cfracleft"
 
 #: lib/ui/stdtoolbars.inc:364
-#, fuzzy
 msgid "Continued fraction (right)\t\\cfracright"
-msgstr "Fortsatt bråk (höger)\t\\cfrac"
+msgstr "Fortsatt bråk (höger)\t\\cfracright"
 
 #: lib/ui/stdtoolbars.inc:365
 msgid "Binomial\t\\binom"
@@ -17230,25 +17217,25 @@ msgstr ""
 "En säkerhetskopierad fil laddades framgångsrikt, men originalfilen %1$s är "
 "märkt skrivskyddad. Vänligen se till att spara dokumentet som en annan fil."
 
-#: src/Buffer.cpp:4048 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4050 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Meningslöst!!! "
 
-#: src/Buffer.cpp:4169
+#: src/Buffer.cpp:4171
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s laddades om."
 
-#: src/Buffer.cpp:4172
+#: src/Buffer.cpp:4174
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Kunde inte ladda om dokument %1$s."
 
-#: src/Buffer.cpp:4238
+#: src/Buffer.cpp:4240
 msgid "Included File Invalid"
 msgstr "Inkluderad fil ogiltig"
 
-#: src/Buffer.cpp:4239
+#: src/Buffer.cpp:4241
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17516,7 +17503,7 @@ msgstr ""
 "ändra filens kodning till UTF-8 med ett\n"
 "annat program än LyX.\n"
 
-#: src/Changes.cpp:363 src/Paragraph.cpp:2516
+#: src/Changes.cpp:363 src/Paragraph.cpp:2507
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:300
 #: src/insets/InsetCommandParams.cpp:390 src/insets/InsetListings.cpp:183
 #: src/insets/InsetListings.cpp:191 src/insets/InsetListings.cpp:213
@@ -17524,7 +17511,7 @@ msgstr ""
 msgid "LyX Warning: "
 msgstr "LyX-varning: "
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2517 src/insets/InsetBibitem.cpp:301
+#: src/Changes.cpp:364 src/Paragraph.cpp:2508 src/insets/InsetBibitem.cpp:301
 #: src/insets/InsetCommandParams.cpp:391 src/insets/InsetListings.cpp:184
 #: src/insets/InsetListings.cpp:192 src/insets/InsetNomencl.cpp:286
 #: src/mathed/InsetMathString.cpp:162
@@ -17956,8 +17943,8 @@ msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
 "log %1$s."
 msgstr ""
-"LaTeX kördes inte framgångsrikt. Dessutom kunde LyX inte hitta LaTeX-loggen "
-"%1$s."
+"LaTeX kördes inte framgångsrikt. Dessutom kunde LyX inte hitta LaTeX-loggen %"
+"1$s."
 
 #: src/Converter.cpp:636
 msgid "LaTeX failed"
@@ -18006,11 +17993,11 @@ msgstr ""
 #: src/CutAndPaste.cpp:698
 #, c-format
 msgid ""
-"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
-"%3$s'."
+"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `%3"
+"$s'."
 msgstr ""
-"Flex-insättning %1$s är odefinierad på grund av omvandling från utformning `"
-"%2$s' till `%3$s'."
+"Flex-insättning %1$s är odefinierad på grund av omvandling från utformning `%"
+"2$s' till `%3$s'."
 
 #: src/CutAndPaste.cpp:703
 msgid "Undefined flex inset"
@@ -19166,11 +19153,11 @@ msgstr ""
 "Den nya utformningen tillåter inte justeringen som senast användes.\n"
 "Sätter till standard."
 
-#: src/Paragraph.cpp:3102
+#: src/Paragraph.cpp:3093
 msgid "Memory problem"
 msgstr "Minnesproblem"
 
-#: src/Paragraph.cpp:3102
+#: src/Paragraph.cpp:3093
 msgid "Paragraph not properly initialized"
 msgstr "Stycket är inte rätt initierad"
 
