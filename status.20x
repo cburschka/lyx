@@ -51,6 +51,10 @@ What's new
   document directory and/or the PATH prefix in the preferences for them
   to take effect.
 
+- View>Source for documents with XHTML default output format now displays
+  only the current paragraph, except when complete source is requested
+  (bug 7463).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
@@ -188,6 +192,8 @@ What's new
   the document settings (bug 7630).
 
 - Enable the autocorrection option for math.
+
+- Don't assert when accepting/rejecting non-existent changes (bug 7654).
 
 
 * ADVANCED FIND AND REPLACE
