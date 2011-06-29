@@ -24337,7 +24337,37 @@ key "latexcompanion,latexguide,latexbook"
 
 \end_inset
 
-に載っています。
+に載っています。 
+\lang english
+If you are using a
+\lang japanese
+ 
+\series bold
+KOMA-Script
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXぱっけーじ@LaTeXパッケージ ! KOMA-Script
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+document class, you can adjust all footnote settings using class-specific
+ commands, see
+\lang japanese
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KOMA-Script"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
