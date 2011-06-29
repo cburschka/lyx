@@ -26456,6 +26456,29 @@ key "latexcompanion,latexguide,latexbook"
 \end_inset
 
 .
+ If you are using a 
+\series bold
+KOMA-Script
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! KOMA-Script
+\end_layout
+
+\end_inset
+
+ document class, you can adjust all footnote settings using class-specific
+ commands, see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KOMA-Script"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section

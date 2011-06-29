@@ -26559,6 +26559,29 @@ key "latexcompanion,latexguide,lamport,latex-praxisbuch"
 \end_inset
 
 , finden Sie weiteres zu Fußnoten.
+ Wenn Sie eine 
+\series bold
+KOMA-Script
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pakete ! KOMA-Script
+\end_layout
+
+\end_inset
+
+ Dokumentklasse verwenden, können Sie alle Fußnoteneinstellungen über klassenspe
+zifische Befehle anpassen, siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KOMA-Script"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
