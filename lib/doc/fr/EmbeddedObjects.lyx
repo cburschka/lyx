@@ -21183,7 +21183,19 @@ Paquetages LaTeX ! refstyle
 \begin_inset Newline newline
 \end_inset
 
-Le format est précisé en ajoutant la commande 
+Vous pouvez choisir le paquetage LaTeX qui doit être utilisé pour cette
+ fonction en utilisant l'option 
+\family sans
+Utiliser refstyle (à la place de prettyref) pour les références croisées
+\family default
+ dans le menu 
+\family sans
+Document\SpecialChar \menuseparator
+Paramètres\SpecialChar \menuseparator
+Classe de document
+\family default
+.
+ Le format est précisé en ajoutant la commande 
 \series bold
 
 \backslash
@@ -21340,7 +21352,7 @@ fig:
 \begin_inset Quotes erd
 \end_inset
 
- est par exempel le raccourci LyX pour les étiquettes dans les légendes
+ est par exemple le raccourci LyX pour les étiquettes dans les légendes
  de figures,.
 \end_layout
 
@@ -27003,11 +27015,7 @@ key "latexcompanion,latexguide,latexbook"
 \end_inset
 
 .
- 
-\lang english
-If you are using a
-\lang french
- 
+ Si vous utilisez une classe de document  
 \series bold
 KOMA-Script
 \series default
@@ -27021,12 +27029,8 @@ Paquetages LaTeX ! KOMA-Script
 
 \end_inset
 
- 
-\lang english
-document class, you can adjust all footnote settings using class-specific
- commands, see
-\lang french
- 
+, vous pouvez modifier tous les paramètres des notes de bas de page en utilisant
+ des commandes spécifiques à la classe de document utilisée, voyez 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "KOMA-Script"
@@ -28011,17 +28015,7 @@ Intérieure
 \family default
  
 \family sans
-Parbox
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-En attendant un traduction plus correcte NdT
-\end_layout
-
-\end_inset
-
-
+Makebox, Parbox
 \family default
  et 
 \family sans
@@ -29154,8 +29148,8 @@ cadre rectangulaire simple
  sans boîte intérieure, vous pouvez autoriser les sauts de page à l'intérieur
  de la boîte.
  Notez que dans ce cas, contrairement aux autres boîtes avec cadre, le cadre
- predra toute la largeur de la colonne, la boîte sera considérée comme son
- propre paragraphe et 
+ prendra toute la largeur de la colonne, la boîte sera considérée comme
+ son propre paragraphe et 
 \series bold
 
 \backslash
@@ -30373,11 +30367,19 @@ motTrèsTrèsLong
 \begin_inset Quotes erd
 \end_inset
 
- soit coupé, mettez le mot dans une boîte, mettez Boîte
+ soit coupé, mettez le mot dans une boîte, mettez 
+\family sans
+Boîte
 \begin_inset space ~
 \end_inset
 
-intérieure à Makebox et sa largeur à 1
+intérieure
+\family default
+ à 
+\family sans
+Makebox
+\family default
+ et sa largeur à 1
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -30460,7 +30462,11 @@ Bien sûr, maintenant le mot dépasse dans la marge latérale.
  Pour éviter cela, ajoutez un saut de ligne avant le mot avec le menu 
 \family sans
 Insérer\SpecialChar \menuseparator
-Formats\SpecialChar \menuseparator
+Typographie
+\begin_inset space ~
+\end_inset
+
+spéciale\SpecialChar \menuseparator
 Passage
 \begin_inset space ~
 \end_inset
@@ -33305,6 +33311,20 @@ Les sous-documents sont utilisés quand on a un document très long qui peut
 \end_layout
 
 \begin_layout Standard
+Pour pouvoir travailler sur un sous-document sans avoir à ouvrir le document
+ maître, précisez dans le sous-document le document maître dans le menu
+ 
+\family sans
+Document\SpecialChar \menuseparator
+Paramètres\SpecialChar \menuseparator
+Classe de document
+\family default
+.
+ Ce document maître sera par la suite utilisé de façon cachée par LyX à
+ chaque fois que vous modifierez le sous-document.
+\end_layout
+
+\begin_layout Standard
 Les documents inclus sont visualisés dans LyX sous la forme d'une boîte
  comme celle-ci : 
 \begin_inset Graphics
@@ -33388,7 +33408,7 @@ reference "sub:Sous-section-externe-1"
 Le préambule du sous-document est tout simplement ignoré, seul le préambule
  du document maître est utilisé.
  Les branches présentes dans le sous-document seront ignorées par le document
- maître tant que le document maître possède une branche avec le même nom.
+ maître si celui-ci ne possède pas une branche avec le même nom.
  Les documents inclus sont insérés en commençant une nouvelle page et sont
  suivis par un saut de page.
 \end_layout
@@ -33455,13 +33475,11 @@ Graphique
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-You cannot exclude Input files via the menu 
+Vous ne pouvez pas exclure des fichiers incorporés via le menu 
 \family sans
 Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Child Documents
+Paramètres\SpecialChar \menuseparator
+Sous-documents
 \family default
 .
 \end_layout
@@ -33634,65 +33652,66 @@ Note:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you want to view/export only selected children of your master document,
- either because you want to save compiling time or because you want to distribut
-e single chapters of the book you are just writing, you can exclude children
- from the output.
- This is done via the menu 
+Si vous ne voulez visualiser ou exporter que certains des sous-documents
+ de votre document maître, que ce soit pour diminuer les temps de compilation
+ ou parceque vous voulez distribuer des chapitres isolés d'un livre que
+ vous êtes en train d'écrire, vous pouvez exclure des sous-documents de
+ la sortie en utilisant le menu 
 \family sans
 Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Child Documents
+Paramètres\SpecialChar \menuseparator
+Sous-documents
 \family default
 .
- You can exclude\SpecialChar \slash{}
-include children by double-clicking on the 
+ Vous pouvez exclure ou inclure un sous-document donné en double-cliquant
+ sur la ligne correspondant dans la colonne 
 \family sans
-include to output
+Inclus dans le résultat
 \family default
- column of the respective child document in the list (note that this only
- works for documents embedded via 
-\begin_inset Quotes eld
-\end_inset
-
-Include
-\begin_inset Quotes erd
-\end_inset
-
-, not with 
-\begin_inset Quotes eld
-\end_inset
-
-Input
-\begin_inset Quotes erd
-\end_inset
-
-).
- If the option 
-\family sans
-Maintain counters and references
-\family default
- is enabled, LyX will assure that all page numbers, references etc.
+ de la liste (
 \begin_inset space ~
 \end_inset
 
-are correct as if the whole document was processed.
- This is useful if you want the selected sub-documents to look exactly as
- in the context of the whole document.
- However, LyX needs to process the whole document in the background for
- this feature.
- So if you want to save compile time and if counters and references do not
- need to be correct, disable this checkbox.
+notez que cela ne fonctionne que pour les documents inclus avec la méthode
+ 
+\begin_inset Quotes fld
+\end_inset
+
+inclus
+\begin_inset Quotes frd
+\end_inset
+
+ et pas la méthode 
+\begin_inset Quotes fld
+\end_inset
+
+incorporé
+\begin_inset Quotes frd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+).
+ Si on active l'option 
+\family sans
+Assurer la cohérence des compteurs et des références
+\family default
+, LyX va s'assurer que tous les numéros de pages, références etc...
+ sont corrects comme si tous le document avait été traité.
+ C'est utile si vous voulez que les sous-documents choisis aient exactement
+ le même aspect que s'il étaient dans le document complet.
+ Pour réaliser cette condition, il faut que LyX traite de façon silencieuse
+ la totalité du document.
+ Ce qui fait que si vous voulez diminuer les temps de compilation, et que
+ les compteurs et autres références n'ont pas à être à tout prix valides,
+ vous devez impérativement désactiver cette option.
+ 
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Alternatively
-\lang french
-, vous pouvez inclure chaque fichier dans une branche
+Une autre solution consiste à inclure chaque fichier dans une branche
 \begin_inset Foot
 status collapsed
 
@@ -33713,10 +33732,18 @@ Guide de l'utilisateur
 .
  En activant ou désactivant une branche, vous pouvez décider les fichiers
  inclus qui doivent apparaître dans la sortie imprimée.
+ Cette méthode à l'avantage qu'elle peut aussi s'apliquer aux sous documents
  
-\lang english
-This has the advantage that it also works with Input'ed sub-documents.
- However, counters and references will not be maintained with this approach.
+\begin_inset Quotes fld
+\end_inset
+
+incorporés
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Le défaut est que les compteurs et autres références ne sont pas conservés
+ avec cette approche.
 \end_layout
 
 \begin_layout Chapter
@@ -34225,6 +34252,16 @@ pass
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Si vous avez des tabulations dans votre listing, vous pouvez préciser le
+ nombre de caractères que doit représenter une tabulation dans le champ
+ 
+\family sans
+Taille du tabulateur
+\family default
+.
 \end_layout
 
 \begin_layout Standard
