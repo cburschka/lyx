@@ -74,9 +74,12 @@ void InsetLabel::updateCommand(docstring const & new_label, bool updaterefs)
 		frontend::Alert::warning(_("Label names must be unique!"),
 			bformat(_("The label %1$s already exists,\n"
 			"it will be changed to %2$s."), new_label, label));
-	}
+	} else if (label == old_label)
+		// Label was not changed.
+		return;
 
 	buffer().undo().beginUndoGroup();
+	buffer().markDirty();
 	setParam("name", label);
 
 	if (updaterefs) {
