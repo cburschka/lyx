@@ -3140,7 +3140,9 @@ spce
 
 \end_inset
 
-Ctrl-Enter
+
+\family sans
+Ctrl-Entrée
 \end_layout
 
 \end_inset
@@ -15707,9 +15709,9 @@ Alt+C
 \begin_inset space ~
 \end_inset
 
-
-\family default
 R
+\family default
+
 \begin_inset Foot
 status collapsed
 
@@ -28343,6 +28345,101 @@ end{eqnarray*}
 \end_layout
 
 \begin_layout Standard
+Pour modifier l'interligne pour toutes les lignes d'une formule, on doit
+ changer la valeur de la longueur 
+\series bold
+
+\backslash
+jot
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Commandes ! J ! 
+\backslash
+jot
+\end_layout
+
+\end_inset
+
+.
+ La définition est : 
+\begin_inset Formula $\mathrm{interligne}=6\,\mathrm{pt}+\backslash\mathrm{jot}$
+\end_inset
+
+.
+ La valeur prédéfinie de 
+\series bold
+
+\backslash
+jot 
+\series default
+est de 3
+\begin_inset space \thinspace{}
+\end_inset
+
+pt.
+ Pour créer un interligne supplémentaire de 3
+\begin_inset space \thinspace{}
+\end_inset
+
+mm, comme dans l'exemple précédent, on insère la commande 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+setlength{
+\backslash
+jot}{3mm+3pt}
+\end_layout
+
+\begin_layout Standard
+en Code TeX avant la formule.
+ Cela exige que le paquetage LaTeX 
+\series bold
+calc
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+calc 
+\series default
+fait partie de toutes les distributions standard de LaTeX.
+\end_layout
+
+\end_inset
+
+
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages ! calc
+\end_layout
+
+\end_inset
+
+ ait été chargé dans le préambule LaTeX avec la ligne
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+usepackage{calc}
+\end_layout
+
+\begin_layout Standard
 On obtient alors: 
 \begin_inset ERT
 status collapsed
@@ -31719,7 +31816,7 @@ reference "sub:Styles-de-polices"
 \end_layout
 
 \begin_layout Standard
-Une méthode plus paratique pour mettre en forme des formules chimiques est
+Une méthode plus pratique pour mettre en forme des formules chimiques est
  d'utiliser la commande 
 \series bold
 
@@ -31738,7 +31835,7 @@ ce
 
 \end_inset
 
- qui est disponibles si le paquetage LaTeX 
+ qui est disponible si le paquetage LaTeX 
 \series bold
 mhchem
 \series default
@@ -34706,11 +34803,10 @@ Système de calcul formel
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-LyX offers the exchange between mathematical expressions written in LyX's
- math editor and external applications or user defined scripts.
- Currently supported applications are 
+LyX permet l'échange d'expressions mathématiques écrites avec l'éditeur
+ mathématique de LyX et des applications externes ou des programmes écrits
+ par l'utilisateur.
+ Actuellement les applications qui sont gérées sont 
 \family sans
 Maple
 \family default
@@ -34722,51 +34818,49 @@ Mathematica
 \family sans
 Maxima
 \family default
- and 
+ et 
 \family sans
 Octave
 \family default
 .
- Note that the set of supported mathematical constructs is limited only
- to very simple cases.
+ Notez que les constructions mathematiques qui sont acceptées sont limitées
+ à des cas très simples.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Usage
+Utilisation
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Write some expression in a formula, go to the 
+Écrivez une expression dans une formule puis allez dans 
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
-Use Computer Algebra System
+Éditer\SpecialChar \menuseparator
+Maths
 \family default
- menu and choose the application you have installed on the computer.
- After that the result of computation should show on the right side of the
- expression together with the 
-\begin_inset Quotes eld
+\SpecialChar \menuseparator
+
+\family sans
+Appel à un logiciel de calcul formel
+\family default
+, choisissez une des applications que vous avez installé sur votre ordinateur.
+ Après cela, le résultat du calcul devrait apparaître sur le côté droit
+ de l'expression avec l'opérateur 
+\begin_inset Quotes fld
 \end_inset
 
 =
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- operator.
+.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here are few simple examples (with results from 
-\family typewriter
+Voici quelques exemples très simples ( avec les résultats de 
+\family sans
 Maxima
 \family default
-) to show what kind of computations can be performed:
+ ) pour montrer quel genre de calculs on peut effectuer :
 \end_layout
 
 \begin_layout Itemize
@@ -34809,44 +34903,33 @@ Maxima
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Keyboard shortcut
+Raccourci clavier
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Currently there is no keyboard shortcut for calling the algebra applications.
- One can easily bind a shortcut to the 
-\family sans
-math-extern
-\family default
- LyX function (see the 
+Actuellement, il n'y a pas de raccourci clavier pour appeler les applications
+ algébriques.
+ On peut facilement attacher un raccourci à la fonction math-extern de LyX
+ ( voir le manuel 
 \family sans
 \emph on
-LyX Functions
+Fonctions LyX
 \family default
 \emph default
- manual).
- One could e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+ ).
+ On peut par exemple attacher la touche 
+\family sans
+Entrée
+\family default
+ à l'intérieur de l'éditeur mathématique à 
+\family sans
+Maxima
+\family default
+, ce qui donnera la commande de définition suivante pour le raccourci
 \begin_inset space ~
 \end_inset
 
-bind the 
-\family sans
-Return
-\family default
- key inside the math editor.
- To bind it to 
-\family typewriter
-Maxima
-\family default
- one would use this shortcut definition command:
+:
 \end_layout
 
 \begin_layout Standard
@@ -37380,7 +37463,7 @@ i
 \end_layout
 
 \begin_layout Itemize
-Le caractère qui représente une transmormation de Fourier peut être obtenu
+Le caractère qui représente une transformation de Fourier peut être obtenu
  soit avec la commande 
 \series bold
 
