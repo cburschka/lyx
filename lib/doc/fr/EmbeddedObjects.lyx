@@ -26967,8 +26967,9 @@ reference "sec:Notes-bas-de-page"
 \begin_inset VSpace bigskip
 \end_inset
 
-Les notes de bas de page peuvent être mise dans la marge de la page et l'alignem
-ent du texte des notes peut être modifié, voyez le paquetage LaTeX 
+ Les notes de bas de page peuvent être mise dans la marge de la page et
+ l'alignement du texte des notes peut être modifié, voyez le paquetage LaTeX
+ 
 \series bold
 footmisc
 \series default
@@ -26998,6 +26999,37 @@ Pour plein d'autres problèmes de mises en formes des notes de bas de page,
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latexcompanion,latexguide,latexbook"
+
+\end_inset
+
+.
+ 
+\lang english
+If you are using a
+\lang french
+ 
+\series bold
+KOMA-Script
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages LaTeX ! KOMA-Script
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+document class, you can adjust all footnote settings using class-specific
+ commands, see
+\lang french
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KOMA-Script"
 
 \end_inset
 
