@@ -5,7 +5,7 @@ Format 35
 #This is just a hacked version of the AMS proof environment
 Style Proof
 	Preamble
-		\ifx\proof\undefined\
+		\ifx\proof\undefined
 		\newenvironment{proof}[1][\protect\proofname]{\par
 			\normalfont\topsep6\p@\@plus6\p@\relax
 			\trivlist
