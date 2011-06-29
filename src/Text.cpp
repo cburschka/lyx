@@ -1249,7 +1249,11 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 
 		pos_type left  = (pit == begPit ? begPos : 0);
 		pos_type right = (pit == endPit ? endPos : parSize);
-
+		
+		if (left == right)
+			// there is no change here
+			continue;
+		
 		if (op == ACCEPT) {
 			pars_[pit].acceptChanges(left, right);
 		} else {
