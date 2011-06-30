@@ -54,6 +54,9 @@ void InsetMathBox::normalize(NormalStream & os) const
 
 void InsetMathBox::mathmlize(MathStream & ms) const
 {
+	// FIXME Need to do something special for tags here.
+	// Probably will have to involve deferring them, which
+	// means returning something from this routine.
 	SetMode textmode(ms, true);
 	ms << MTag("mstyle", "class='mathbox'")
 	   << cell(0)
