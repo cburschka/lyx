@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-22 12:14+0200\n"
-"PO-Revision-Date: 2011-06-22 12:15+0200\n"
+"POT-Creation-Date: 2011-07-01 13:19+0200\n"
+"PO-Revision-Date: 2011-07-01 22:34+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -2895,7 +2895,7 @@ msgstr "Naj&dlhšia značka"
 msgid "Line &spacing"
 msgstr "Rozstup riadkov"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1818
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1822
 #: src/frontends/qt4/GuiDocument.cpp:728
 msgid "Single"
 msgstr "Jednoduchý"
@@ -2904,7 +2904,7 @@ msgstr "Jednoduchý"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1824
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1828
 #: src/frontends/qt4/GuiDocument.cpp:732
 msgid "Double"
 msgstr "Dvojitý"
@@ -10072,7 +10072,7 @@ msgstr "Addsec*"
 
 #: lib/layouts/scrclass.inc:143
 msgid "Minisec"
-msgstr "Minisek"
+msgstr "Minisekcia"
 
 #: lib/layouts/scrclass.inc:197
 msgid "Publishers"
@@ -10080,7 +10080,7 @@ msgstr "Vydavatelia"
 
 #: lib/layouts/scrclass.inc:209
 msgid "Titlehead"
-msgstr "Titlehead"
+msgstr "Hlavička titulku"
 
 #: lib/layouts/scrclass.inc:219
 msgid "Uppertitleback"
@@ -10092,7 +10092,7 @@ msgstr "Lowertitleback"
 
 #: lib/layouts/scrclass.inc:231
 msgid "Extratitle"
-msgstr "Extra_nadpis"
+msgstr "Extra_titulok"
 
 #: lib/layouts/scrclass.inc:253
 msgid "Captionabove"
@@ -12026,7 +12026,7 @@ msgid "Close Inset|C"
 msgstr "Zavrieť vložku"
 
 #: lib/ui/stdcontext.inc:147 lib/ui/stdcontext.inc:153
-#: lib/ui/stdcontext.inc:195 lib/ui/stdcontext.inc:567
+#: lib/ui/stdcontext.inc:567
 msgid "Dissolve Inset|D"
 msgstr "Rozpustiť vložku do textu"
 
@@ -17641,7 +17641,7 @@ msgstr ""
 "zmeňte prosím kódovanie súboru na\n"
 "UTF-8 iným programom.\n"
 
-#: src/Changes.cpp:363 src/Paragraph.cpp:2516
+#: src/Changes.cpp:363 src/Paragraph.cpp:2507
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:300
 #: src/insets/InsetCommandParams.cpp:390 src/insets/InsetListings.cpp:183
 #: src/insets/InsetListings.cpp:191 src/insets/InsetListings.cpp:213
@@ -17649,7 +17649,7 @@ msgstr ""
 msgid "LyX Warning: "
 msgstr "LyX varovanie: "
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2517 src/insets/InsetBibitem.cpp:301
+#: src/Changes.cpp:364 src/Paragraph.cpp:2508 src/insets/InsetBibitem.cpp:301
 #: src/insets/InsetCommandParams.cpp:391 src/insets/InsetListings.cpp:184
 #: src/insets/InsetListings.cpp:192 src/insets/InsetNomencl.cpp:286
 #: src/mathed/InsetMathString.cpp:162
@@ -19268,11 +19268,11 @@ msgstr ""
 "Nové schéma nepovoľuje používané zarovnanie.\n"
 "Prepnuté na štandardné."
 
-#: src/Paragraph.cpp:3102
+#: src/Paragraph.cpp:3093
 msgid "Memory problem"
 msgstr "Problém s pamäťou"
 
-#: src/Paragraph.cpp:3102
+#: src/Paragraph.cpp:3093
 msgid "Paragraph not properly initialized"
 msgstr "Odstavec nesprávne inicializovaný"
 
@@ -19306,61 +19306,61 @@ msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Nemôžte takýmto spôsobom vložiť dve medzery. Prečítajte si, prosím, Príručku."
 
-#: src/Text.cpp:1784
+#: src/Text.cpp:1788
 msgid "[Change Tracking] "
 msgstr "[Zmeniť Sledovanie] "
 
-#: src/Text.cpp:1790
+#: src/Text.cpp:1794
 msgid "Change: "
 msgstr "Zmena: "
 
-#: src/Text.cpp:1794
+#: src/Text.cpp:1798
 msgid " at "
 msgstr " na "
 
-#: src/Text.cpp:1804
+#: src/Text.cpp:1808
 #, c-format
 msgid "Font: %1$s"
 msgstr "Písmo: %1$s"
 
-#: src/Text.cpp:1809
+#: src/Text.cpp:1813
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Hĺbka: %1$d"
 
-#: src/Text.cpp:1815
+#: src/Text.cpp:1819
 msgid ", Spacing: "
 msgstr ", Rozstup: "
 
-#: src/Text.cpp:1821 src/frontends/qt4/GuiDocument.cpp:730
+#: src/Text.cpp:1825 src/frontends/qt4/GuiDocument.cpp:730
 msgid "OneHalf"
 msgstr "Polovičný"
 
-#: src/Text.cpp:1827
+#: src/Text.cpp:1831
 msgid "Other ("
 msgstr "Iné ("
 
-#: src/Text.cpp:1836
+#: src/Text.cpp:1840
 msgid ", Inset: "
 msgstr ", Vložka: "
 
-#: src/Text.cpp:1837
+#: src/Text.cpp:1841
 msgid ", Paragraph: "
 msgstr ", Odstavec: "
 
-#: src/Text.cpp:1838
+#: src/Text.cpp:1842
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1839
+#: src/Text.cpp:1843
 msgid ", Position: "
 msgstr ", Pozícia: "
 
-#: src/Text.cpp:1845
+#: src/Text.cpp:1849
 msgid ", Char: 0x"
 msgstr ", Znak: 0x"
 
-#: src/Text.cpp:1847
+#: src/Text.cpp:1851
 msgid ", Boundary: "
 msgstr ", Okraj: "
 
@@ -23293,7 +23293,7 @@ msgstr ""
 "Značka %1$s už existuje,\n"
 "bude premenované na %2$s."
 
-#: src/insets/InsetLabel.cpp:122
+#: src/insets/InsetLabel.cpp:125
 msgid "DUPLICATE: "
 msgstr "DUPLIKÁT: "
 
