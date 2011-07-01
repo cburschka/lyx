@@ -51,7 +51,7 @@ def find_end_of_inset(lines, i):
 # DO NOT do this:
 #   document.body[i] = wrap_insert_ert(...)
 # wrap_into_ert may returns a multiline string, which should NOT appear
-# in document.body. Insetad, do something like this:
+# in document.body. Instead, do something like this:
 #   subst = wrap_inset_ert(...)
 #   subst = subst.split('\n')
 #   document.body[i:i+1] = subst
