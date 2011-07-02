@@ -8,6 +8,7 @@
 # svn diff -r38367 --diff-cmd ./diff_po.pl cs.po
 # git difftool --extcmd=./diff_po.pl sk.po
 # ./diff_po.pl -r HEAD~100 cs.po	#fetch git revision and compare
+# ./diff_po.pl -r39229 cs.po		#fetch svn revision and compare
 #
 # This file is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public
@@ -23,10 +24,12 @@
 # License along with this software; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# author: Kornel Benko, kornel@lyx.org
+# Copyright (c) 1010-2011 Kornel Benko, kornel@lyx.org
 #
-# TODO: Search for good correlations of deleted and inserted string
-# using Text::Levenshtein or Algorithm::Diff
+# TODO:
+# 1.) Check for ".git" or ".svn" to decide about revisioning
+# 2.) Search for good correlations of deleted <==> inserted string
+#     using Text::Levenshtein or Algorithm::Diff
 
 use strict;
 use Term::ANSIColor qw(:constants);
@@ -51,19 +54,36 @@ if ($ARGV[0] =~ /^-r(.*)/) {
   }
   for my $argf (@ARGV) {
     my $baseargf;
-    ($baseargf = $argf) =~ s/^.*\///;
-    my @args = ();
-    push(@args, "-L", $argf . "    (" . $rev . ")");
-    push(@args, "-L", $argf . "    (local copy)");
-    open(FI, "git show $rev:po/$baseargf|");
-    open(FO, '>', $tmpfile);
-    while(my $l = <FI>) {
-      print FO $l;
+    my $filedir;
+    if ($argf =~ /^(.*)\/([^\/]+)$/) {
+      $baseargf = $2;
+      $filedir = $1;
     }
-    close(FI);
-    close(FO);
-    push(@args, $tmpfile, $argf);
-    &diff_po(@args);
+    else {
+      $baseargf = $argf;
+      $filedir = ".";
+    }
+    if (-d "$filedir/../.git") {
+      my @args = ();
+      push(@args, "-L", $argf . "    (" . $rev . ")");
+      push(@args, "-L", $argf . "    (local copy)");
+      open(FI, "git show $rev:po/$baseargf|");
+      open(FO, '>', $tmpfile);
+      while(my $l = <FI>) {
+	print FO $l;
+      }
+      close(FI);
+      close(FO);
+      push(@args, $tmpfile, $argf);
+      print "===================================================================\n";
+      &diff_po(@args);
+    }
+    elsif (-d "$filedir/.svn") {
+      # call it again indirectly
+      my @cmd = ("svn", "diff", "-r$rev", "--diff-cmd", $0, $argf);
+      print "cmd = " . join(' ', @cmd) . "\n";
+      system(@cmd);
+    }
   }
 }
 else {
@@ -81,7 +101,6 @@ sub diff_po($$)
   %Untranslated = ();
   %Fuzzy = ();
   @names = ();
-  print "========================================================\n";
   while(defined($args[0])) {
     last if ($args[0] !~ /^\-/);
     my $param = shift(@args);
