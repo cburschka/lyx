@@ -3,6 +3,12 @@
 # file diff_po.pl
 # script to compare changes between translation files before merging them
 #
+# Examples of usage:
+# ./diff_po.pl cs.po.old cs.po
+# svn diff -r38367 --diff-cmd ./diff_po.pl cs.po
+# git difftool --extcmd=./diff_po.pl sk.po
+# ./diff_po.pl -r HEAD~100 cs.po	#fetch git revision and compare
+#
 # This file is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public
 # License as published by the Free Software Foundation; either
