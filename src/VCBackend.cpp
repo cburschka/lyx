@@ -369,7 +369,7 @@ bool RCS::prepareFileRevision(string const &revis, string & f)
 	FileName tmpf = FileName::tempName("lyxvcrev_" + rev + "_");
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
-		return N_("Error: Could not generate logfile.");
+		return false;
 	}
 
 	doVCCommand("co -p" + rev + " "
@@ -1024,7 +1024,7 @@ bool SVN::checkLockMode()
 	FileName tmpf = FileName::tempName("lyxvcout");
 	if (tmpf.empty()){
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
-		return N_("Error: Could not generate logfile.");
+		return false;
 	}
 
 	LYXERR(Debug::LYXVC, "Detecting locking mode...");
@@ -1402,7 +1402,7 @@ bool SVN::getFileRevisionInfo()
 	FileName tmpf = FileName::tempName("lyxvcout");
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
-		return N_("Error: Could not generate logfile.");
+		return false;
 	}
 
 	doVCCommand("svn info --xml " + quoteName(onlyFileName(owner_->absFileName()))
@@ -1455,7 +1455,7 @@ bool SVN::getTreeRevisionInfo()
 	FileName tmpf = FileName::tempName("lyxvcout");
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
-		return N_("Error: Could not generate logfile.");
+		return false;
 	}
 
 	doVCCommand("svnversion -n . > " + quoteName(tmpf.toFilesystemEncoding()),
