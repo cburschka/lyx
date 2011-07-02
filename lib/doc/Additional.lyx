@@ -1,4 +1,4 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 413
 \begin_document
 \begin_header
@@ -19434,7 +19434,13 @@ Revision info
 \end_layout
 
 \begin_layout Standard
-LyX supports RCS version number information (only), see 
+LyX supports RCS version number, author name, date and time of last commit.
+ All those are extracted from 
+\family typewriter
+rlog -r <file-name>
+\family default
+.
+ For other details see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:VCS-Revision-Information"
