@@ -23,6 +23,7 @@
 # using Text::Levenshtein or Algorithm::Diff
 
 use strict;
+use Term::ANSIColor;
 
 my ($status, $foundline, $msgid, $msgstr, $fuzzy);
 
@@ -31,19 +32,38 @@ my %newMessages = ();           # new po-file
 my %Untranslated = ();          # inside new po-file
 my %Fuzzy = ();                 # inside new po-file
 my $result = 0;                 # exit value
+my @names = ();
 
-if (@ARGV != 2) {
-  die("Expected exactly 2 parameters");
+# 
+while(defined($ARGV[0])) {
+  last if ($ARGV[0] !~ /^\-/);
+  my $param = shift(@ARGV);
+  if ($param eq "-L") {
+    my $name = shift(@ARGV);
+    push(@names, $name);
+  }
+}
+if (! defined($names[0])) {
+  push(@names, "original");
+}
+if (! defined($names[1])) {
+  push(@names, "new");
 }
 
-&check("original", $ARGV[0]);
-&check("new", $ARGV[1]);
+if (@ARGV != 2) {
+  die('"', join('" "', @names, @ARGV) . "\" Expected exactly 2 parameters");
+}
+
+&check($names[0], $ARGV[0]);
+&check($names[1], $ARGV[1]);
 
 &parse_po_file($ARGV[0], \%Messages);
 &parse_po_file($ARGV[1], \%newMessages);
 
 my @MsgKeys = &getLineSortedKeys(\%newMessages);
 
+print "<<< \"$names[0]\"\n";
+print ">>> \"$names[1]\"\n";
 for my $k (@MsgKeys) {
   if ($newMessages{$k}->{msgstr} eq "") {
     # this is still untranslated string
@@ -65,9 +85,11 @@ for my $k (@MsgKeys) {
   $result |= 8;
   print "deleted message\n";
   print "< line = " . $Messages{$k}->{line} . "\n";
+  print color 'red';
   print "< fuzzy = " . $Messages{$k}->{fuzzy} . "\n";
   print "< msgid = \"$k\"\n";
   print "< msgstr = \"" . $Messages{$k}->{msgstr} . "\"\n";
+  print color 'reset';
 }
 
 @MsgKeys = &getLineSortedKeys(\%newMessages);
@@ -75,9 +97,11 @@ for my $k (@MsgKeys) {
   $result |= 16;
   print "new message\n";
   print "> line = " . $newMessages{$k}->{line} . "\n";
+  print color 'green';
   print "> fuzzy = " . $newMessages{$k}->{fuzzy} . "\n";
   print "> msgid = \"$k\"\n";
   print "> msgstr = \"" . $newMessages{$k}->{msgstr} . "\"\n";
+  print color 'reset';
 }
 
 &printExtraMessages("fuzzy", \%Fuzzy);
@@ -109,9 +133,13 @@ sub printDiff($$$$)
     print " fuzzy = " . $rM->{fuzzy} . "\n";
   }
   else {
+    print color 'red';
     print "< fuzzy = " . $rM->{fuzzy} . "\n";
+    print color 'reset';
   }
+  print color 'red';
   print "< msgstr = " . $rM->{msgstr} . "\n";
+  print color 'green';
   if ($k ne $nk) {
     print "> msgid = \"$nk\"\n";
   }
@@ -120,6 +148,7 @@ sub printDiff($$$$)
   }
   print "> msgstr = " . $rnM->{msgstr} . "\n";
   print "\n";
+  print color 'reset';
 }
 
 sub printIfDiff($$$)
