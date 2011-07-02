@@ -23,7 +23,7 @@
 # using Text::Levenshtein or Algorithm::Diff
 
 use strict;
-use Term::ANSIColor;
+use Term::ANSIColor qw(:constants);
 
 my ($status, $foundline, $msgid, $msgstr, $fuzzy);
 
@@ -32,6 +32,7 @@ my %newMessages = ();           # new po-file
 my %Untranslated = ();          # inside new po-file
 my %Fuzzy = ();                 # inside new po-file
 my $result = 0;                 # exit value
+my $printlines = 0;
 my @names = ();
 
 # 
@@ -62,8 +63,8 @@ if (@ARGV != 2) {
 
 my @MsgKeys = &getLineSortedKeys(\%newMessages);
 
-print "<<< \"$names[0]\"\n";
-print ">>> \"$names[1]\"\n";
+print RED "<<< \"$names[0]\"\n", RESET;
+print GREEN ">>> \"$names[1]\"\n", RESET;
 for my $k (@MsgKeys) {
   if ($newMessages{$k}->{msgstr} eq "") {
     # this is still untranslated string
@@ -84,24 +85,20 @@ for my $k (@MsgKeys) {
 for my $k (@MsgKeys) {
   $result |= 8;
   print "deleted message\n";
-  print "< line = " . $Messages{$k}->{line} . "\n";
-  print color 'red';
-  print "< fuzzy = " . $Messages{$k}->{fuzzy} . "\n";
-  print "< msgid = \"$k\"\n";
-  print "< msgstr = \"" . $Messages{$k}->{msgstr} . "\"\n";
-  print color 'reset';
+  print "< line = " . $Messages{$k}->{line} . "\n" if ($printlines);
+  print RED "< fuzzy = " . $Messages{$k}->{fuzzy} . "\n", RESET;
+  print RED "< msgid = \"$k\"\n", RESET;
+  print RED "< msgstr = \"" . $Messages{$k}->{msgstr} . "\"\n", RESET;
 }
 
 @MsgKeys = &getLineSortedKeys(\%newMessages);
 for my $k (@MsgKeys) {
   $result |= 16;
   print "new message\n";
-  print "> line = " . $newMessages{$k}->{line} . "\n";
-  print color 'green';
-  print "> fuzzy = " . $newMessages{$k}->{fuzzy} . "\n";
-  print "> msgid = \"$k\"\n";
-  print "> msgstr = \"" . $newMessages{$k}->{msgstr} . "\"\n";
-  print color 'reset';
+  print "> line = " . $newMessages{$k}->{line} . "\n" if ($printlines);
+  print GREEN "> fuzzy = " . $newMessages{$k}->{fuzzy} . "\n", RESET;
+  print GREEN "> msgid = \"$k\"\n", RESET;
+  print GREEN "> msgstr = \"" . $newMessages{$k}->{msgstr} . "\"\n", RESET;
 }
 
 &printExtraMessages("fuzzy", \%Fuzzy);
@@ -127,28 +124,23 @@ sub check($$)
 sub printDiff($$$$)
 {
   my ($k, $nk, $rM, $rnM) = @_;
-  print "diffline = " . $rM->{line} . "," . $rnM->{line} . "\n";
-  print " msgid = \"$k\"\n";
+  print "diffline = " . $rM->{line} . "," . $rnM->{line} . "\n" if ($printlines);
+  print "  msgid = \"$k\"\n";
   if ($rM->{fuzzy} eq $rnM->{fuzzy}) {
-    print " fuzzy = " . $rM->{fuzzy} . "\n";
+    print "  fuzzy = " . $rM->{fuzzy} . "\n" if ($printlines);
   }
   else {
-    print color 'red';
-    print "< fuzzy = " . $rM->{fuzzy} . "\n";
-    print color 'reset';
+    print RED "< fuzzy = " . $rM->{fuzzy} . "\n", RESET;
   }
-  print color 'red';
-  print "< msgstr = " . $rM->{msgstr} . "\n";
-  print color 'green';
+  print RED "< msgstr = " . $rM->{msgstr} . "\n", RESET;
   if ($k ne $nk) {
-    print "> msgid = \"$nk\"\n";
+    print GREEN "> msgid = \"$nk\"\n", RESET;
   }
   if ($rM->{fuzzy} ne $rnM->{fuzzy}) {
-    print "> fuzzy = " . $rnM->{fuzzy} . "\n";
+    print GREEN "> fuzzy = " . $rnM->{fuzzy} . "\n", RESET;
   }
-  print "> msgstr = " . $rnM->{msgstr} . "\n";
+  print GREEN "> msgstr = " . $rnM->{msgstr} . "\n", RESET;
   print "\n";
-  print color 'reset';
 }
 
 sub printIfDiff($$$)
