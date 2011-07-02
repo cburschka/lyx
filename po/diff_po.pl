@@ -33,6 +33,7 @@
 
 use strict;
 use Term::ANSIColor qw(:constants);
+use File::Temp;
 
 my ($status, $foundline, $msgid, $msgstr, $fuzzy);
 
@@ -43,7 +44,6 @@ my %Fuzzy = ();                 # inside new po-file
 my $result = 0;                 # exit value
 my $printlines = 0;
 my @names = ();
-my $tmpfile = "/tmp/blax";
 
 # Check first, if called as standalone program for git
 if ($ARGV[0] =~ /^-r(.*)/) {
@@ -65,16 +65,16 @@ if ($ARGV[0] =~ /^-r(.*)/) {
     }
     if (-d "$filedir/../.git") {
       my @args = ();
+      my $tmpfile = File::Temp->new();
       push(@args, "-L", $argf . "    (" . $rev . ")");
       push(@args, "-L", $argf . "    (local copy)");
       open(FI, "git show $rev:po/$baseargf|");
-      open(FO, '>', $tmpfile);
+      $tmpfile->unlink_on_destroy( 1 );
       while(my $l = <FI>) {
-	print FO $l;
+	print $tmpfile $l;
       }
       close(FI);
-      close(FO);
-      push(@args, $tmpfile, $argf);
+      push(@args, $tmpfile->filename, $argf);
       print "===================================================================\n";
       &diff_po(@args);
     }
