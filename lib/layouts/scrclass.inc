@@ -141,7 +141,6 @@ End
 
 
 Style Minisec
-	Category              Section
 	LatexType             Command
 	LatexName             minisec
 	NeedProtect           1
@@ -252,7 +251,6 @@ End
 Input stdlayouts.inc
 
 Style Captionabove
-	Category              Captions
 	Margin                First_Dynamic
 	LatexType             Command
 	LatexName             caption
@@ -272,7 +270,6 @@ End
 
 
 Style Captionbelow
-	Category              Captions
 	Margin                First_Dynamic
 	LatexType             Command
 	LatexName             caption
@@ -292,7 +289,6 @@ End
 
 
 Style Dictum
-	Category             MainText
 	Margin               Right_Address_Box
 	LatexType            Command
 	LatexName            dictum
