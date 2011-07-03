@@ -734,7 +734,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 }
 
 
-docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const &rp) const
+docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 {
 	if (rp.inComment)
 		 return docstring();
@@ -778,7 +778,23 @@ docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const &rp) const
 	Buffer const * const ibuf = loadIfNeeded();
 	if (!ibuf)
 		return docstring();
-	ibuf->writeLyXHTMLSource(xs.os(), rp, true);
+
+	// are we generating only some paragraphs, or all of them?
+	bool const all_pars = !rp.dryrun || 
+			(rp.par_begin == 0 && 
+			 rp.par_end == (int)buffer().text().paragraphs().size());
+	
+	OutputParams op = rp;
+	if (all_pars) {
+		op.par_begin = 0;
+		op.par_end = 0;
+		ibuf->writeLyXHTMLSource(xs.os(), op, true);
+	} else
+		xs << XHTMLStream::ESCAPE_NONE 
+		   << "<!-- Included file: " 
+		   << from_utf8(included_file.absFileName()) 
+		   << XHTMLStream::ESCAPE_NONE 
+			 << " -->";
 	return docstring();
 }
 
