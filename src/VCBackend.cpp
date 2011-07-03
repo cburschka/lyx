@@ -352,13 +352,72 @@ bool RCS::toggleReadOnlyEnabled()
 	return false;
 }
 
+
 string RCS::revisionInfo(LyXVC::RevisionInfo const info)
 {
 	if (info == LyXVC::File)
 		return version_;
+	// fill the rest of the attributes for a single file
+	if (rev_date_cache_.empty())
+		if (!getRevisionInfo())
+			return string();
+
+	switch (info) {
+		case LyXVC::Author:
+			return rev_author_cache_;
+		case LyXVC::Date:
+			return rev_date_cache_;
+		case LyXVC::Time:
+			return rev_time_cache_;
+		default: ;
+	}
+
 	return string();
 }
 
+
+bool RCS::getRevisionInfo()
+{
+	FileName tmpf = FileName::tempName("lyxvcout");
+	if (tmpf.empty()) {
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return false;
+	}
+	doVCCommand("rlog -r " + quoteName(onlyFileName(owner_->absFileName()))
+		+ " > " + quoteName(tmpf.toFilesystemEncoding()),
+		FileName(owner_->filePath()));
+
+	if (tmpf.empty())
+		return false;
+
+	ifstream ifs(tmpf.toFilesystemEncoding().c_str());
+	string line;
+
+	// we reached to the entry, i.e. after initial log message
+	bool entry=false;
+	// line with critical info, e.g:
+	//"date: 2011/07/02 11:02:54;  author: sanda;  state: Exp;  lines: +17 -2"
+	string result;
+
+	while (ifs) {
+		getline(ifs, line);
+		LYXERR(Debug::LYXVC, line);
+		if (entry && prefixIs(line, "date:")) {
+			result = line;
+			break;
+		}
+		if (prefixIs(line, "revision"))
+			entry = true;
+	}
+	if (result.empty())
+		return false;
+
+	rev_date_cache_ = token(result, ' ', 1);
+	rev_time_cache_ = rtrim(token(result, ' ', 2), ";");
+	rev_author_cache_ = trim(token(token(result, ';', 1), ':', 1));
+
+	return !rev_author_cache_.empty();
+}
 
 bool RCS::prepareFileRevision(string const &revis, string & f)
 {

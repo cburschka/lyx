@@ -19434,7 +19434,13 @@ Revision info
 \end_layout
 
 \begin_layout Standard
-LyX supports RCS version number information (only), see 
+LyX supports RCS version number, author name, date and time of last commit.
+ All those are extracted from 
+\family typewriter
+rlog -r <file-name>
+\family default
+.
+ For other details see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:VCS-Revision-Information"

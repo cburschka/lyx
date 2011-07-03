@@ -176,6 +176,7 @@ public:
 protected:
 	virtual void scanMaster();
 private:
+	bool getRevisionInfo();
 	/**
 	 * The version of the VC file. I am not sure if this can be a
 	 * string or if it must be a float/int.
@@ -183,6 +184,12 @@ private:
 	std::string version_;
 	/// The user currently keeping the lock on the VC file (or "Unlocked").
 	std::string locker_;
+	/// Cache for revision info.
+	std::string rev_date_cache_;
+	///
+	std::string rev_time_cache_;
+	///
+	std::string rev_author_cache_;
 };
 
 
