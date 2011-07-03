@@ -6,10 +6,10 @@
 # Kornel Benko <kornel@lyx.org>, 2009, 2010, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX-1.6\n"
+"Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-07-01 13:19+0200\n"
-"PO-Revision-Date: 2011-07-02 09:28+0200\n"
+"POT-Creation-Date: 2011-07-03 08:23+0200\n"
+"PO-Revision-Date: 2011-07-03 08:25+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -3395,7 +3395,7 @@ msgstr "Alt"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:19
 msgid "User &interface language:"
-msgstr "Jazyk pre užívateľské rozhranie:"
+msgstr "Jazyk užívateľského rozhrania:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:29
 msgid "Select the language of the user interface (menus, dialogs, etc.)"
@@ -4469,7 +4469,7 @@ msgstr ""
 "tlačidla 'Zmazať'"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:19
-#: src/frontends/qt4/GuiSpellchecker.cpp:190
+#: src/frontends/qt4/GuiSpellchecker.cpp:192
 msgid "Spell Checker"
 msgstr "Kontrola Pravopisu"
 
@@ -5245,7 +5245,7 @@ msgstr "Publikačný Výdaj:"
 #: lib/layouts/svprobth.layout:183 lib/layouts/tufte-handout.layout:45
 #: lib/layouts/tufte-handout.layout:60 lib/layouts/agu_stdtitle.inc:193
 #: lib/layouts/amsdefs.inc:91 lib/layouts/db_stdstruct.inc:11
-#: lib/layouts/scrclass.inc:238 lib/layouts/stdstruct.inc:12
+#: lib/layouts/scrclass.inc:239 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svcommon.inc:405
 #: lib/layouts/svcommon.inc:411 src/output_plaintext.cpp:138
 msgid "Abstract"
@@ -5657,10 +5657,10 @@ msgstr "Popisok"
 #: lib/layouts/beamer.layout:1090 lib/layouts/beamer.layout:1128
 #: lib/layouts/revtex4.layout:45 lib/layouts/siamltex.layout:36
 #: lib/layouts/tufte-book.layout:196 lib/layouts/lyxmacros.inc:13
-#: lib/layouts/stdclass.inc:29 lib/layouts/stdlayouts.inc:13
-#: lib/layouts/stdlayouts.inc:34 lib/layouts/stdlayouts.inc:55
-#: lib/layouts/stdlayouts.inc:75 lib/layouts/svcommon.inc:581
-#: lib/layouts/svcommon.inc:592
+#: lib/layouts/scrclass.inc:295 lib/layouts/stdclass.inc:29
+#: lib/layouts/stdlayouts.inc:13 lib/layouts/stdlayouts.inc:34
+#: lib/layouts/stdlayouts.inc:55 lib/layouts/stdlayouts.inc:75
+#: lib/layouts/svcommon.inc:581 lib/layouts/svcommon.inc:592
 msgid "MainText"
 msgstr "Hlavný text"
 
@@ -5732,7 +5732,7 @@ msgstr "Štandard"
 #: lib/layouts/simplecv.layout:122 lib/layouts/svmult.layout:54
 #: lib/layouts/svprobth.layout:79 lib/layouts/tufte-book.layout:34
 #: lib/layouts/agu_stdtitle.inc:246 lib/layouts/amsdefs.inc:24
-#: lib/layouts/db_stdtitle.inc:13 lib/layouts/scrclass.inc:161
+#: lib/layouts/db_stdtitle.inc:13 lib/layouts/scrclass.inc:162
 #: lib/layouts/stdtitle.inc:57 lib/layouts/svcommon.inc:58
 #: lib/layouts/svcommon.inc:308
 msgid "Title"
@@ -5770,7 +5770,7 @@ msgstr "malé písmená"
 #: lib/layouts/sigplanconf.layout:120 lib/layouts/svmult.layout:83
 #: lib/layouts/svprobth.layout:96 lib/layouts/tufte-book.layout:38
 #: lib/layouts/agu_stdtitle.inc:167 lib/layouts/amsdefs.inc:47
-#: lib/layouts/db_stdtitle.inc:21 lib/layouts/scrclass.inc:177
+#: lib/layouts/db_stdtitle.inc:21 lib/layouts/scrclass.inc:178
 #: lib/layouts/stdtitle.inc:78 lib/layouts/svcommon.inc:328
 msgid "Author"
 msgstr "Autor"
@@ -5872,7 +5872,7 @@ msgstr "Príloha"
 #: lib/layouts/siamltex.layout:317 lib/layouts/simplecv.layout:143
 #: lib/layouts/tufte-book.layout:242 lib/layouts/tufte-book.layout:244
 #: lib/layouts/aguplus.inc:172 lib/layouts/aguplus.inc:174
-#: lib/layouts/amsdefs.inc:196 lib/layouts/scrclass.inc:245
+#: lib/layouts/amsdefs.inc:196 lib/layouts/scrclass.inc:246
 #: lib/layouts/stdstruct.inc:53 lib/layouts/svcommon.inc:550
 #: src/frontends/qt4/GuiDocument.cpp:1321
 msgid "Bibliography"
@@ -5934,11 +5934,12 @@ msgstr "Dôkaz."
 #: lib/layouts/tufte-handout.layout:23 lib/layouts/agu_stdsections.inc:32
 #: lib/layouts/aguplus.inc:29 lib/layouts/db_stdsections.inc:30
 #: lib/layouts/numrevtex.inc:6 lib/layouts/scrclass.inc:68
-#: lib/layouts/stdsections.inc:13 lib/layouts/stdsections.inc:41
-#: lib/layouts/stdsections.inc:65 lib/layouts/stdsections.inc:66
-#: lib/layouts/svcommon.inc:118 lib/layouts/svcommon.inc:155
-#: lib/layouts/svcommon.inc:168 lib/layouts/svcommon.inc:180
-#: lib/layouts/svcommon.inc:192 src/frontends/qt4/GuiDocument.cpp:170
+#: lib/layouts/scrclass.inc:144 lib/layouts/stdsections.inc:13
+#: lib/layouts/stdsections.inc:41 lib/layouts/stdsections.inc:65
+#: lib/layouts/stdsections.inc:66 lib/layouts/svcommon.inc:118
+#: lib/layouts/svcommon.inc:155 lib/layouts/svcommon.inc:168
+#: lib/layouts/svcommon.inc:180 lib/layouts/svcommon.inc:192
+#: src/frontends/qt4/GuiDocument.cpp:170
 msgid "Section"
 msgstr "Sekcia"
 
@@ -6021,7 +6022,7 @@ msgstr "Listina"
 #: lib/layouts/aapaper.layout:79 lib/layouts/beamer.layout:770
 #: lib/layouts/kluwer.layout:129 lib/layouts/llncs.layout:128
 #: lib/layouts/sigplanconf.layout:110 lib/layouts/svprobth.layout:88
-#: lib/layouts/aapaper.inc:9 lib/layouts/scrclass.inc:168
+#: lib/layouts/aapaper.inc:9 lib/layouts/scrclass.inc:169
 #: lib/layouts/svcommon.inc:317
 msgid "Subtitle"
 msgstr "Podtitul"
@@ -6065,7 +6066,7 @@ msgstr "Mail"
 #: lib/layouts/scrlettr.layout:160 lib/layouts/scrlttr2.layout:239
 #: lib/layouts/siamltex.layout:228 lib/layouts/tufte-book.layout:42
 #: lib/layouts/agu_stdtitle.inc:238 lib/layouts/amsdefs.inc:67
-#: lib/layouts/db_stdtitle.inc:35 lib/layouts/scrclass.inc:184
+#: lib/layouts/db_stdtitle.inc:35 lib/layouts/scrclass.inc:185
 #: lib/layouts/stdtitle.inc:97 lib/layouts/svcommon.inc:354
 #: lib/ui/stdmenus.inc:373 lib/external_templates:340
 #: lib/external_templates:341 lib/external_templates:345
@@ -6537,8 +6538,8 @@ msgstr "Tučná čiara"
 msgid "CenteredCaption"
 msgstr "Centrovaný titulok"
 
-#: lib/layouts/apa.layout:268 lib/layouts/scrclass.inc:263
-#: lib/layouts/scrclass.inc:282
+#: lib/layouts/apa.layout:268 lib/layouts/scrclass.inc:265
+#: lib/layouts/scrclass.inc:285
 msgid "Senseless!"
 msgstr "Nezmyselné!"
 
@@ -7250,7 +7251,7 @@ msgstr "Dátum:"
 
 #: lib/layouts/dinbrief.layout:159 lib/layouts/lettre.layout:57
 #: lib/layouts/lettre.layout:428 lib/layouts/scrlettr.layout:196
-#: lib/layouts/scrlttr2.layout:280 lib/layouts/scrclass.inc:191
+#: lib/layouts/scrlttr2.layout:280 lib/layouts/scrclass.inc:192
 msgid "Subject"
 msgstr "Predmet"
 
@@ -8418,11 +8419,11 @@ msgstr "TITUL NAD:"
 
 #: lib/layouts/hollywood.layout:249
 msgid "INTERCUT"
-msgstr "INTERCUT"
+msgstr "PREPÍNANIE"
 
 #: lib/layouts/hollywood.layout:260
 msgid "INTERCUT WITH:"
-msgstr "INTERCUT WITH:"
+msgstr "PREPÍNANIE MEDZI:"
 
 #: lib/layouts/hollywood.layout:264 lib/layouts/hollywood.layout:275
 msgid "FADE OUT"
@@ -9348,7 +9349,7 @@ msgstr "Inštitút #"
 
 #: lib/layouts/svglobal.layout:125 lib/layouts/svjog.layout:129
 #: lib/layouts/svmult.layout:190 lib/layouts/svprobth.layout:159
-#: lib/layouts/scrclass.inc:203 lib/layouts/svcommon.inc:459
+#: lib/layouts/scrclass.inc:204 lib/layouts/svcommon.inc:459
 msgid "Dedication"
 msgstr "Venovanie"
 
@@ -10074,35 +10075,39 @@ msgstr "Addsec*"
 msgid "Minisec"
 msgstr "Minisekcia"
 
-#: lib/layouts/scrclass.inc:197
+#: lib/layouts/scrclass.inc:198
 msgid "Publishers"
 msgstr "Vydavatelia"
 
-#: lib/layouts/scrclass.inc:209
+#: lib/layouts/scrclass.inc:210
 msgid "Titlehead"
 msgstr "Hlavička titulku"
 
-#: lib/layouts/scrclass.inc:219
+#: lib/layouts/scrclass.inc:220
 msgid "Uppertitleback"
 msgstr "Zadný titul hore"
 
-#: lib/layouts/scrclass.inc:225
+#: lib/layouts/scrclass.inc:226
 msgid "Lowertitleback"
 msgstr "Zadný titul dole"
 
-#: lib/layouts/scrclass.inc:231
+#: lib/layouts/scrclass.inc:232
 msgid "Extratitle"
 msgstr "Extra titulok"
 
-#: lib/layouts/scrclass.inc:253
+#: lib/layouts/scrclass.inc:254
 msgid "Captionabove"
 msgstr "Popisok hore"
 
-#: lib/layouts/scrclass.inc:272
+#: lib/layouts/scrclass.inc:255 lib/layouts/scrclass.inc:275
+msgid "Captions"
+msgstr "Popisky"
+
+#: lib/layouts/scrclass.inc:274
 msgid "Captionbelow"
 msgstr "Popisok dole"
 
-#: lib/layouts/scrclass.inc:291
+#: lib/layouts/scrclass.inc:294
 msgid "Dictum"
 msgstr "Výrok"
 
@@ -18432,7 +18437,7 @@ msgstr "Rekonfigurácia"
 msgid "&Without LaTeX"
 msgstr "Bez použitia LaTeX-a"
 
-#: src/LyX.cpp:556 src/VCBackend.cpp:786 src/VCBackend.cpp:790
+#: src/LyX.cpp:556 src/VCBackend.cpp:845 src/VCBackend.cpp:849
 msgid "&Continue"
 msgstr "Pokračovať"
 
@@ -19475,10 +19480,10 @@ msgstr "Balík nie je dostupný"
 msgid "Error reading module %1$s\n"
 msgstr "Chyba pri čítaní modulu %1$s\n"
 
-#: src/VCBackend.cpp:60 src/VCBackend.cpp:693 src/VCBackend.cpp:698
-#: src/VCBackend.cpp:746 src/VCBackend.cpp:807 src/VCBackend.cpp:868
-#: src/VCBackend.cpp:876 src/VCBackend.cpp:1084 src/VCBackend.cpp:1177
-#: src/VCBackend.cpp:1183 src/VCBackend.cpp:1204
+#: src/VCBackend.cpp:60 src/VCBackend.cpp:752 src/VCBackend.cpp:757
+#: src/VCBackend.cpp:805 src/VCBackend.cpp:866 src/VCBackend.cpp:927
+#: src/VCBackend.cpp:935 src/VCBackend.cpp:1143 src/VCBackend.cpp:1236
+#: src/VCBackend.cpp:1242 src/VCBackend.cpp:1263
 #: src/frontends/qt4/GuiView.cpp:2748
 msgid "Revision control error."
 msgstr "Chyba kontroly správy verzií."
@@ -19492,41 +19497,35 @@ msgstr ""
 "Problém pri prevádzke príkazu:\n"
 "'%1$s'."
 
-#: src/VCBackend.cpp:372 src/VCBackend.cpp:1027 src/VCBackend.cpp:1073
-#: src/VCBackend.cpp:1194 src/VCBackend.cpp:1231 src/VCBackend.cpp:1287
-#: src/VCBackend.cpp:1405 src/VCBackend.cpp:1458
-msgid "Error: Could not generate logfile."
-msgstr "Chyba: Nemôžem generovať protokolový súbor."
-
-#: src/VCBackend.cpp:498
+#: src/VCBackend.cpp:557
 msgid "Up-to-date"
 msgstr "Aktuálne"
 
-#: src/VCBackend.cpp:500
+#: src/VCBackend.cpp:559
 msgid "Locally Modified"
 msgstr "Lokálne Modifikované"
 
-#: src/VCBackend.cpp:502
+#: src/VCBackend.cpp:561
 msgid "Locally Added"
 msgstr "Lokálne Pridané"
 
-#: src/VCBackend.cpp:504
+#: src/VCBackend.cpp:563
 msgid "Needs Merge"
 msgstr "Potrebuje Zlúčenie"
 
-#: src/VCBackend.cpp:506
+#: src/VCBackend.cpp:565
 msgid "Needs Checkout"
 msgstr "Potrebuje Prevziať na Úpravu"
 
-#: src/VCBackend.cpp:508
+#: src/VCBackend.cpp:567
 msgid "No CVS file"
 msgstr "Bez CVS-súboru"
 
-#: src/VCBackend.cpp:510
+#: src/VCBackend.cpp:569
 msgid "Cannot retrieve CVS status"
 msgstr "Nemôžem obnoviť stav CVS"
 
-#: src/VCBackend.cpp:694
+#: src/VCBackend.cpp:753
 msgid ""
 "The repository version is newer then the current check out.\n"
 "You have to update from repository first or revert your changes."
@@ -19534,7 +19533,7 @@ msgstr ""
 "Verzia v repozitáre je novšia ako súčasne stiahnutá.\n"
 "Musíte najprv obnoviť z repozitáru alebo odhodiť vaše zmeny."
 
-#: src/VCBackend.cpp:699
+#: src/VCBackend.cpp:758
 #, c-format
 msgid ""
 "Bad status when checking in changes.\n"
@@ -19547,7 +19546,7 @@ msgstr ""
 "'%1$s'\n"
 "\n"
 
-#: src/VCBackend.cpp:747 src/VCBackend.cpp:1205
+#: src/VCBackend.cpp:806 src/VCBackend.cpp:1264
 #, c-format
 msgid ""
 "Error when updating from repository.\n"
@@ -19562,7 +19561,7 @@ msgstr ""
 "\n"
 "Po stisnutí tlačidla OK sa LyX pokúsi opravený dokument znovu otvoriť."
 
-#: src/VCBackend.cpp:781
+#: src/VCBackend.cpp:840
 #, c-format
 msgid ""
 "There were detected changes in the working directory:\n"
@@ -19577,20 +19576,20 @@ msgstr ""
 "Konflikty treba riešiť alebo manuálne, alebo pozdejšie vrátiť na repozitárnu "
 "verziu."
 
-#: src/VCBackend.cpp:785 src/VCBackend.cpp:789 src/VCBackend.cpp:1246
-#: src/VCBackend.cpp:1250
+#: src/VCBackend.cpp:844 src/VCBackend.cpp:848 src/VCBackend.cpp:1305
+#: src/VCBackend.cpp:1309
 msgid "Changes detected"
 msgstr "Našli sa zmeny"
 
-#: src/VCBackend.cpp:786 src/VCBackend.cpp:790
+#: src/VCBackend.cpp:845 src/VCBackend.cpp:849
 msgid "&Abort"
 msgstr "Zrušiť"
 
-#: src/VCBackend.cpp:786 src/VCBackend.cpp:1247
+#: src/VCBackend.cpp:845 src/VCBackend.cpp:1306
 msgid "View &Log ..."
 msgstr "Prehliadnuť zápisný súbor..."
 
-#: src/VCBackend.cpp:808
+#: src/VCBackend.cpp:867
 #, c-format
 msgid ""
 "Error when updating document %1$s from repository.\n"
@@ -19605,7 +19604,7 @@ msgstr ""
 "\n"
 "Po stisnutí tlačidla OK sa LyX pokúsi opravený dokument znovu otvoriť."
 
-#: src/VCBackend.cpp:869
+#: src/VCBackend.cpp:928
 #, c-format
 msgid ""
 "The document %1$s is not in repository.\n"
@@ -19614,7 +19613,7 @@ msgstr ""
 "Dokument %1$s nie je v repozitáre.\n"
 "Musíte prvú verziu najprv odoslať keď chcete niečo vrátiť."
 
-#: src/VCBackend.cpp:877
+#: src/VCBackend.cpp:936
 #, c-format
 msgid ""
 "Cannot revert document %1$s to repository version.\n"
@@ -19623,7 +19622,12 @@ msgstr ""
 "Nemôžem vrátiť dokument %1$s na repozitárnu verziu.\n"
 "Neočakávaný stav '%2$s'."
 
-#: src/VCBackend.cpp:1085
+#: src/VCBackend.cpp:1132 src/VCBackend.cpp:1253 src/VCBackend.cpp:1290
+#: src/VCBackend.cpp:1346
+msgid "Error: Could not generate logfile."
+msgstr "Chyba: Nemôžem generovať protokolový súbor."
+
+#: src/VCBackend.cpp:1144
 msgid ""
 "Error when committing to repository.\n"
 "You have to manually resolve the problem.\n"
@@ -19633,7 +19637,7 @@ msgstr ""
 "Treba vyriešiť problém manuálne.\n"
 "Po stisnutí tlačidla OK sa LyX pokúsi dokument znovu otvoriť."
 
-#: src/VCBackend.cpp:1178
+#: src/VCBackend.cpp:1237
 msgid ""
 "Error while acquiring write lock.\n"
 "Another user is most probably editing\n"
@@ -19645,7 +19649,7 @@ msgstr ""
 "edituje súčasný dokument!\n"
 "Skontrolujte aj prístup do repozitára."
 
-#: src/VCBackend.cpp:1184
+#: src/VCBackend.cpp:1243
 msgid ""
 "Error while releasing write lock.\n"
 "Check the access to the repository."
@@ -19653,7 +19657,7 @@ msgstr ""
 "Chyba pri pokuse uvoľniť blokovanie na písanie.\n"
 "Skontrolujte prístup do repozitára."
 
-#: src/VCBackend.cpp:1241
+#: src/VCBackend.cpp:1300
 #, c-format
 msgid ""
 "There were detected changes in the working directory:\n"
@@ -19671,29 +19675,29 @@ msgstr ""
 "\n"
 "Pokračovať?"
 
-#: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
+#: src/VCBackend.cpp:1306 src/VCBackend.cpp:1310
 #: src/frontends/qt4/FindAndReplace.cpp:338
 msgid "&Yes"
 msgstr "áno"
 
-#: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
+#: src/VCBackend.cpp:1306 src/VCBackend.cpp:1310
 #: src/frontends/qt4/FindAndReplace.cpp:338
 msgid "&No"
 msgstr "nie"
 
-#: src/VCBackend.cpp:1313
+#: src/VCBackend.cpp:1372
 msgid "VCN File Locking"
 msgstr "Blokovanie Súborov zo Správy Verzií"
 
-#: src/VCBackend.cpp:1314
+#: src/VCBackend.cpp:1373
 msgid "Locking property unset."
 msgstr "Blokovanie súborov neaktívne."
 
-#: src/VCBackend.cpp:1314 src/VCBackend.cpp:1318
+#: src/VCBackend.cpp:1373 src/VCBackend.cpp:1377
 msgid "Locking property set."
 msgstr "Blokovanie súborov aktívne."
 
-#: src/VCBackend.cpp:1315
+#: src/VCBackend.cpp:1374
 msgid "Do not forget to commit the locking property into the repository."
 msgstr "Nezabudnite odoslať blokovaciu vlastnosť do repozitára."
 
@@ -21498,7 +21502,7 @@ msgid "Give a filename for the LyX server pipe"
 msgstr "Zadajte meno pre dátovod LyX serveru"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1454
-#: src/frontends/qt4/GuiSpellchecker.cpp:422
+#: src/frontends/qt4/GuiSpellchecker.cpp:429
 msgid "Spellchecker"
 msgstr "Kontrola pravopisu"
 
@@ -21738,7 +21742,7 @@ msgstr "Zobraziť súbor"
 msgid "Error -> Cannot load file!"
 msgstr "Chyba -> Nemôžem nahrať súbor!"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:191
+#: src/frontends/qt4/GuiSpellchecker.cpp:193
 msgid ""
 "We reached the end of the document, would you like to continue from the "
 "beginning?"
