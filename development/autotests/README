@@ -58,6 +58,19 @@ Each test-case script should be named as xxx-in.txt. The syntax of the
 script is described in detail in the sample test-case script
 hello-world-in.txt.
 
+Alternatively, a test-case can be an arbitrary executable script with
+name ending in "-in.sh", that is launched inside a dedicated folder,
+and to which the variables LYX_ROOT and LYX_EXE are exported, so that
+you can easily reference the root LyX sources folder and the program
+executable. The test script needs to complete with a no-error return
+value (zero), otherwise a failure is reported (see export-in.sh for
+an example).
+
+Whenever LyX is launched, in both cases, the LYX_USERDIR variable is
+set to autotests/out-home, in order to rely on clean preferences
+settings (use make clean or make without arguments in order to let
+that folder be created again).
+
 
 TODO
 ----------------------------------------------------------------------

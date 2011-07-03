@@ -4,7 +4,8 @@
 # Tests are identified as having a file name of *-in.txt
 # For failed tests, the collected output is kept in the corresponding folder
 
-export LYX_EXE=../../../src/lyx
+export LYX_ROOT=../../..
+export LYX_EXE=$LYX_ROOT/src/lyx
 
 if [ "$XVKBD_HACKED" != "" ]; then
     export XVKBD_EXE=${XVKBD:-./xvkbd/xvkbd};
@@ -38,7 +39,7 @@ if [ ! -d ../../locale ]; then
 fi
 
 if [ "$#" -eq 0 ]; then
-    TESTS=$(ls *-in.txt | sed -e 's/hello-world-in.txt\|first-time-in.txt//')
+    TESTS=$(ls *-in.txt *-in.sh | sed -e 's/hello-world-in.txt\|first-time-in.txt//')
     rm -rf out-*;
 else
     TESTS=$*
@@ -52,7 +53,7 @@ if [ ! -d $LYX_HOME ]; then
 #    cp preferences $LYX_USERDIR
     cd $LYX_HOME
     echo "Initializing testing environment . . ."
-    if ! ../single-test.sh "../first-time-in.txt" > keytest-log.txt 2>&1; then
+    if ! ../single-test.sh "../first-time-in.txt" > test-log.txt 2>&1; then
 	echo "Some error occurred: check $(pwd)"
 	exit -1;
     fi
@@ -63,18 +64,34 @@ fi
 ./stop_autotests.tcl &
 pid=$!
 
+function stop_button() {
+    kill $pid
+    wait $pid > /dev/null 2>&1
+}
+
 echo "Running test cases . . ."
 failed=0
-for t in $(echo "$TESTS" | sed -e 's/-in.txt//g'); do
-    printf "%40s: " $t
-    if [ ! -f "$t-in.txt" ]; then
-	echo "ERROR: File not found: $t-in.txt"
+for tf in $(echo "$TESTS"); do
+    t=$(echo $tf | sed -e 's/-in.txt//g' | sed -e 's/-in.sh//g')
+    printf "%40s: " $tf
+    if [ -f "$t-in.txt" ]; then
+	cmd="../single-test.sh ../$t-in.txt";
+    elif [ -f "$t-in.sh" ]; then
+	if [ ! -x "$t-in.sh" ]; then
+	    echo "ERROR: $t-in.sh is not executable"
+	    stop_button
+	    exit -1;
+	fi
+	cmd="../$tf";
+    else
+	echo "ERROR: File not found: $t-in.txt or $t-in.sh"
+	stop_button
 	exit -1;
     fi
     rm -rf "out-$t"
     mkdir "out-$t"
     cd "out-$t"
-    if ../single-test.sh "../$t-in.txt" > keytest-log.txt 2>&1; then
+    if "$cmd" > test-log.txt 2>&1; then
 	echo Ok
 	cd ..
 	rm -rf "out-$t";
@@ -85,8 +102,7 @@ for t in $(echo "$TESTS" | sed -e 's/-in.txt//g'); do
     fi;
 done
 
-kill $pid
-wait $pid > /dev/null 2>&1
+stop_button
 
 echo
 if [ $failed -eq 0 ]; then
