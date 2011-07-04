@@ -79,6 +79,8 @@ struct SpellcheckerWidget::Private
 		return false;
 	}
 	void canCheck() { incheck_ = false; }
+	/// check for wrap around of current position
+	bool isWrapAround(DocIterator cursor) const;
 	///
 	Ui::SpellcheckerUi ui;
 	///
@@ -200,6 +202,11 @@ bool SpellcheckerWidget::Private::continueFromBeginning()
 	return true;
 }
 
+bool SpellcheckerWidget::Private::isWrapAround(DocIterator cursor) const
+{
+	return wrap_around_ && start_.buffer() == cursor.buffer() && start_ < cursor;
+}
+
 
 void SpellcheckerWidget::Private::forward()
 {
@@ -216,7 +223,7 @@ void SpellcheckerWidget::Private::forward()
 		//FIXME we must be at the end of a cell
 		dispatch(FuncRequest(LFUN_CHAR_FORWARD));
  	}
-	if (wrap_around_ && start_ < bv->cursor()) {
+	if (isWrapAround(bv->cursor())) {
 		dv_->hide();
 	}
 }
@@ -397,7 +404,7 @@ void SpellcheckerWidget::Private::check()
 		return;
 	}
 
-	if (wrap_around_ && start_ < from) {
+	if (isWrapAround(from)) {
 		dv_->hide();
 		return;
 	}

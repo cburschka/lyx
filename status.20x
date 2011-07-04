@@ -198,6 +198,9 @@ What's new
 
 - Don't assert when accepting/rejecting non-existent changes (bug 7654).
 
+- Fix assertion when using "Ignore All" in spell checker dialog
+  after changing buffer view (bug 7661).
+
 
 * ADVANCED FIND AND REPLACE
 
