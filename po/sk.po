@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-07-03 08:23+0200\n"
-"PO-Revision-Date: 2011-07-03 08:25+0200\n"
+"POT-Creation-Date: 2011-07-04 08:58+0200\n"
+"PO-Revision-Date: 2011-07-05 20:17+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -1884,8 +1884,8 @@ msgstr "Vstup"
 msgid "Verbatim"
 msgstr "Doslovne (Verbatim)"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1117
-#: src/insets/InsetInclude.cpp:1123
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1133
+#: src/insets/InsetInclude.cpp:1139
 msgid "Program Listing"
 msgstr "Výpis zdrojového kódu"
 
@@ -6147,7 +6147,7 @@ msgstr "Odstavec"
 #: lib/layouts/revtex4.layout:132 lib/layouts/agu_stdtitle.inc:128
 #: lib/layouts/aguplus.inc:65
 msgid "Affiliation"
-msgstr "Pričlenenie"
+msgstr "Príslušenstvo"
 
 #: lib/layouts/aastex.layout:107 lib/layouts/aastex.layout:393
 msgid "And"
@@ -6200,19 +6200,19 @@ msgstr "Dataset"
 
 #: lib/layouts/aastex.layout:289
 msgid "Altaffilation"
-msgstr "Alt. pričlenenie"
+msgstr "Alt. príslušenstvo"
 
 #: lib/layouts/aastex.layout:298
 msgid "Alternative affiliation:"
-msgstr "Alternatívne pričlenenie:"
+msgstr "Alternatívne príslušenstvo:"
 
 #: lib/layouts/aastex.layout:305
 msgid "altaffilmark"
-msgstr "alt.pričlenenie(záznam pod čiarou)"
+msgstr "alt. príslušenstvo(záznam pod čiarou)"
 
 #: lib/layouts/aastex.layout:309
 msgid "altaffiliation mark"
-msgstr "Alt. pričlenenie(záznam pod čiarou)"
+msgstr "Alt. príslušenstvo(záznam pod čiarou)"
 
 #: lib/layouts/aastex.layout:340
 msgid "Subject headings:"
@@ -6292,11 +6292,11 @@ msgstr "Dataset:"
 
 #: lib/layouts/achemso.layout:100
 msgid "Alt Affiliation"
-msgstr "Alternatívne Pričlenenie"
+msgstr "Alternatívne Príslušenstvo"
 
 #: lib/layouts/achemso.layout:105
 msgid "Also Affiliation"
-msgstr "Prídavné Pričlenenie"
+msgstr "Prídavné Príslušenstvo"
 
 #: lib/layouts/achemso.layout:110 lib/layouts/lettre.layout:41
 #: lib/layouts/lettre.layout:342 lib/layouts/scrlttr2.layout:191
@@ -6388,7 +6388,7 @@ msgstr "Autori"
 
 #: lib/layouts/agutex.layout:90 lib/layouts/agutex.layout:94
 msgid "Affiliation Mark"
-msgstr "Príslušná Značka"
+msgstr "Značka Príslušenstva"
 
 #: lib/layouts/agutex.layout:112
 msgid "Author affiliation"
@@ -6485,19 +6485,19 @@ msgstr "ŠtyriaAutori"
 #: lib/layouts/revtex4-1.layout:89 lib/layouts/revtex4.layout:143
 #: lib/layouts/agu_stdtitle.inc:131
 msgid "Affiliation:"
-msgstr "Pričlenenie:"
+msgstr "Príslušenstvo:"
 
 #: lib/layouts/apa.layout:171
 msgid "TwoAffiliations"
-msgstr "DvaPričlenenia"
+msgstr "Dve Príslušenstva"
 
 #: lib/layouts/apa.layout:178
 msgid "ThreeAffiliations"
-msgstr "TriPričlenenia"
+msgstr "Tri Príslušenstva"
 
 #: lib/layouts/apa.layout:185
 msgid "FourAffiliations"
-msgstr "ŠtyriPričlenenia"
+msgstr "Štyri Príslušenstva"
 
 #: lib/layouts/apa.layout:192 lib/layouts/egs.layout:337
 msgid "Journal"
@@ -7523,7 +7523,7 @@ msgstr "Referencia na Internetovú Adresu"
 
 #: lib/layouts/ectaart.layout:170 lib/layouts/ectaart.layout:173
 msgid "Corresponding Author"
-msgstr "Príslušný Autor"
+msgstr "Korešpondujúci Autor"
 
 #: lib/layouts/ectaart.layout:184
 msgid "Name (First Name)"
@@ -7566,7 +7566,7 @@ msgstr "Autor:"
 
 #: lib/layouts/egs.layout:315
 msgid "Affil"
-msgstr "Pričlenenie"
+msgstr "Príslušenstvo"
 
 #: lib/layouts/egs.layout:350
 msgid "Journal:"
@@ -7729,11 +7729,11 @@ msgstr "Titul poznámka pod čiarou:"
 
 #: lib/layouts/elsarticle.layout:137
 msgid "Authormark"
-msgstr "Autor (poznámková značka)"
+msgstr "Autorská značka"
 
 #: lib/layouts/elsarticle.layout:141
 msgid "Author mark"
-msgstr "Autor (značka)"
+msgstr "Autorská značka"
 
 #: lib/layouts/elsarticle.layout:159
 msgid "Author footnote"
@@ -7745,19 +7745,19 @@ msgstr "Autor poznámka pod čiarou:"
 
 #: lib/layouts/elsarticle.layout:166
 msgid "CorAuthormark"
-msgstr "Prísl. Autor (poznámková značka)"
+msgstr "Korešpondujúci Autor (poznámková značka)"
 
 #: lib/layouts/elsarticle.layout:170
 msgid "CorAuthor mark"
-msgstr "Prísl. poznámka autora"
+msgstr "Korešpondujúci Autor (poznámková značka)"
 
 #: lib/layouts/elsarticle.layout:188
 msgid "Corresponding author"
-msgstr "Príslušný autor"
+msgstr "Korešpondujúci autor"
 
 #: lib/layouts/elsarticle.layout:191
 msgid "Corresponding author text:"
-msgstr "Príslušný autor text:"
+msgstr "Korešpondujúci autor text:"
 
 #: lib/layouts/entcs.layout:110 lib/layouts/siamltex.layout:306
 msgid "Key words:"
@@ -8964,15 +8964,15 @@ msgstr "Prísady:"
 
 #: lib/layouts/revtex4-1.layout:97 lib/layouts/revtex4.layout:151
 msgid "Affiliation (alternate)"
-msgstr "Pričlenenie(alternatívne)"
+msgstr "Príslušenstvo(alternatívne)"
 
 #: lib/layouts/revtex4-1.layout:100 lib/layouts/revtex4.layout:157
 msgid "Affiliation (alternate):"
-msgstr "Pričlenenie(alternatívne):"
+msgstr "Príslušenstvo(alternatívne):"
 
 #: lib/layouts/revtex4-1.layout:106 lib/layouts/revtex4.layout:161
 msgid "Affiliation (none)"
-msgstr "Pričlenenie(žiadne)"
+msgstr "Príslušenstvo(žiadne)"
 
 #: lib/layouts/revtex4-1.layout:109 lib/layouts/revtex4.layout:164
 msgid "No affiliation"
@@ -9038,7 +9038,7 @@ msgstr "Plávajúci odkaz"
 
 #: lib/layouts/revtex4.layout:169
 msgid "AltAffiliation"
-msgstr "DruhéPričlenenie"
+msgstr "Druhé príslušenstvo"
 
 #: lib/layouts/revtex4.layout:257
 msgid "PACS number:"
@@ -18008,7 +18008,7 @@ msgstr "pozadie tlačidla pod fókusom"
 
 #: src/Color.cpp:284
 msgid "paragraph marker"
-msgstr "Znak konca odstavca"
+msgstr "Znak odstavca"
 
 #: src/Color.cpp:285
 msgid "preview frame"
@@ -22612,7 +22612,7 @@ msgstr "<Niet Otvorených Dokumentov>"
 
 #: src/frontends/qt4/Menus.cpp:991
 msgid "<No Bookmarks Saved Yet>"
-msgstr "<Zatiaľ Nie Uložených Záložiek>"
+msgstr "<Ešte nie sú uložené záložky>"
 
 #: src/frontends/qt4/Menus.cpp:1034
 msgid "View (Other Formats)|F"
@@ -23138,12 +23138,12 @@ msgid "Include (excluded)"
 msgstr "Zahrnúť (vylúčené)"
 
 #: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:772
-#: src/insets/InsetInclude.cpp:817
+#: src/insets/InsetInclude.cpp:833
 msgid "Recursive input"
 msgstr "Rekurzívny vstup"
 
 #: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:773
-#: src/insets/InsetInclude.cpp:818
+#: src/insets/InsetInclude.cpp:834
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "Došlo k pokusu vložiť súbor %1$s do seba! Vklad ignorujem."
