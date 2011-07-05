@@ -146,26 +146,48 @@ sub diff_po($$)
     }
   }
 
-  @MsgKeys = &getLineSortedKeys(\%Messages);
-  for my $k (@MsgKeys) {
-    $result |= 8;
-    print "deleted message\n";
-    print "< line = " . $Messages{$k}->{line} . "\n" if ($printlines);
-    print RED "< fuzzy = " . $Messages{$k}->{fuzzy} . "\n", RESET;
-    print RED "< msgid = \"$k\"\n", RESET;
-    print RED "< msgstr = \"" . $Messages{$k}->{msgstr} . "\"\n", RESET;
+  if (1) {
+    @MsgKeys = sort keys %Messages, keys %newMessages;
+    for my $k (@MsgKeys) {
+      if (defined($Messages{$k})) {
+	$result |= 8;
+	print "deleted message\n";
+	print "< line = " . $Messages{$k}->{line} . "\n" if ($printlines);
+	print RED "< fuzzy = " . $Messages{$k}->{fuzzy} . "\n", RESET;
+	print RED "< msgid = \"$k\"\n", RESET;
+	print RED "< msgstr = \"" . $Messages{$k}->{msgstr} . "\"\n", RESET;
+      }
+      if (defined($newMessages{$k})) {
+	$result |= 16;
+	print "new message\n";
+	print "> line = " . $newMessages{$k}->{line} . "\n" if ($printlines);
+	print GREEN "> fuzzy = " . $newMessages{$k}->{fuzzy} . "\n", RESET;
+	print GREEN "> msgid = \"$k\"\n", RESET;
+	print GREEN "> msgstr = \"" . $newMessages{$k}->{msgstr} . "\"\n", RESET;
+      }
+    }
   }
+  else {
+    @MsgKeys = &getLineSortedKeys(\%Messages);
+    for my $k (@MsgKeys) {
+      $result |= 8;
+      print "deleted message\n";
+      print "< line = " . $Messages{$k}->{line} . "\n" if ($printlines);
+      print RED "< fuzzy = " . $Messages{$k}->{fuzzy} . "\n", RESET;
+      print RED "< msgid = \"$k\"\n", RESET;
+      print RED "< msgstr = \"" . $Messages{$k}->{msgstr} . "\"\n", RESET;
+    }
 
-  @MsgKeys = &getLineSortedKeys(\%newMessages);
-  for my $k (@MsgKeys) {
-    $result |= 16;
-    print "new message\n";
-    print "> line = " . $newMessages{$k}->{line} . "\n" if ($printlines);
-    print GREEN "> fuzzy = " . $newMessages{$k}->{fuzzy} . "\n", RESET;
-    print GREEN "> msgid = \"$k\"\n", RESET;
-    print GREEN "> msgstr = \"" . $newMessages{$k}->{msgstr} . "\"\n", RESET;
+    @MsgKeys = &getLineSortedKeys(\%newMessages);
+    for my $k (@MsgKeys) {
+      $result |= 16;
+      print "new message\n";
+      print "> line = " . $newMessages{$k}->{line} . "\n" if ($printlines);
+      print GREEN "> fuzzy = " . $newMessages{$k}->{fuzzy} . "\n", RESET;
+      print GREEN "> msgid = \"$k\"\n", RESET;
+      print GREEN "> msgstr = \"" . $newMessages{$k}->{msgstr} . "\"\n", RESET;
+    }
   }
-
   &printExtraMessages("fuzzy", \%Fuzzy);
   &printExtraMessages("untranslated", \%Untranslated);
 }
