@@ -227,7 +227,7 @@ pasteSelectionHelper(Cursor const & cur, ParagraphList const & parlist,
 	InsetIterator const i_end = inset_iterator_end(in);
 	for (InsetIterator it = inset_iterator_begin(in); it != i_end; ++it) {
 		// Even though this will also be done later, it has to be done here 
-		// since, e.g., InsetLabel::updateCommand() is going to try to access
+		// since some inset might going to try to access
 		// the buffer() member.
 		it->setBuffer(const_cast<Buffer &>(buffer));
 		switch (it->lyxCode()) {
@@ -241,7 +241,7 @@ pasteSelectionHelper(Cursor const & cur, ParagraphList const & parlist,
 					continue;
 				InsetLabel * lab = labels[i];
 				docstring const oldname = lab->getParam("name");
-				lab->updateCommand(oldname, false);
+				lab->updateLabel(oldname);
 				// We need to update the buffer reference cache.
 				cur.forceBufferUpdate();
 				docstring const newname = lab->getParam("name");
@@ -272,7 +272,7 @@ pasteSelectionHelper(Cursor const & cur, ParagraphList const & parlist,
 			// check for duplicates
 			InsetLabel & lab = static_cast<InsetLabel &>(*it);
 			docstring const oldname = lab.getParam("name");
-			lab.updateCommand(oldname, false);
+			lab.updateLabel(oldname);
 			// We need to update the buffer reference cache.
 			cur.forceBufferUpdate();
 			docstring const newname = lab.getParam("name");

@@ -271,7 +271,7 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 					}					
 
 					if (new_label != old_label) {
-						label_->updateCommand(new_label);
+						label_->updateLabelAndRefs(new_label, &cur);
 						// the label might have been adapted (duplicate)
 						if (new_label != label_->getParam("name")) {
 							new_params.addParam("label", "{" + 
@@ -1100,7 +1100,7 @@ void InsetInclude::updateCommand()
 		return;
 
 	docstring old_label = label_->getParam("name");
-	label_->updateCommand(old_label, false);
+	label_->updateLabel(old_label);
 	// the label might have been adapted (duplicate)
 	docstring new_label = label_->getParam("name");
 	if (old_label == new_label)
@@ -1114,6 +1114,7 @@ void InsetInclude::updateCommand()
 	p["lstparams"] = from_utf8(par.params());
 	setParams(p);	
 }
+
 
 void InsetInclude::updateBuffer(ParIterator const & it, UpdateType utype)
 {
