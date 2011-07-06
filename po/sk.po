@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-07-04 08:58+0200\n"
-"PO-Revision-Date: 2011-07-05 20:17+0200\n"
+"PO-Revision-Date: 2011-07-06 15:16+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -355,7 +355,7 @@ msgstr "Dole"
 
 #: src/frontends/qt4/ui/BoxUi.ui:119 src/frontends/qt4/ui/BoxUi.ui:141
 msgid "Vertical alignment of the box (with regard to baseline)"
-msgstr "Vertikálne zarovnanie obsahu v rámku (vzťahujúce sa na základnú čiaru)"
+msgstr "Vertikálne zarovnanie obsahu v rámku (vzťahujúce sa na základnú linku)"
 
 #: src/frontends/qt4/ui/BoxUi.ui:144
 msgid "&Box:"
@@ -1838,7 +1838,7 @@ msgstr "&Preskočiť overenia platnosti"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:86
 msgid "C&aption:"
-msgstr "Po&pisok:"
+msgstr "Po&pis:"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:99
 msgid "La&bel:"
@@ -4821,7 +4821,7 @@ msgstr "Negeneruj poslednú pätu"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1345
 msgid "Caption:"
-msgstr "Popisok:"
+msgstr "Popis:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1362
 msgid "Set a page break on the current row"
@@ -5648,7 +5648,7 @@ msgstr "Súhrn"
 
 #: lib/layouts/AEA.layout:258 lib/ui/stdmenus.inc:360
 msgid "Caption"
-msgstr "Popisok"
+msgstr "Popis"
 
 #: lib/layouts/AEA.layout:260 lib/layouts/amsart.layout:31
 #: lib/layouts/amsbook.layout:32 lib/layouts/beamer.layout:33
@@ -5666,7 +5666,7 @@ msgstr "Hlavný text"
 
 #: lib/layouts/AEA.layout:264
 msgid "Caption: "
-msgstr "Popisok: "
+msgstr "Popis: "
 
 #: lib/layouts/AEA.layout:269 lib/layouts/IEEEtran.layout:289
 #: lib/layouts/beamer.layout:1051 lib/layouts/elsart.layout:288
@@ -6272,7 +6272,7 @@ msgstr "tablenote mark"
 
 #: lib/layouts/aastex.layout:610
 msgid "FigCaption"
-msgstr "Popis_obrázka"
+msgstr "Popis obrázka"
 
 #: lib/layouts/aastex.layout:620
 msgid "Fig. ---"
@@ -6532,11 +6532,11 @@ msgstr "Poďakovania:"
 
 #: lib/layouts/apa.layout:248
 msgid "ThickLine"
-msgstr "Tučná čiara"
+msgstr "Hrubá línia"
 
 #: lib/layouts/apa.layout:258
 msgid "CenteredCaption"
-msgstr "Centrovaný titulok"
+msgstr "Centrovaný popis"
 
 #: lib/layouts/apa.layout:268 lib/layouts/scrclass.inc:265
 #: lib/layouts/scrclass.inc:285
@@ -7001,11 +7001,11 @@ msgstr "Adresa vpravo"
 
 #: lib/layouts/chess.layout:35
 msgid "Mainline"
-msgstr "Mainline"
+msgstr "Hlavný variant"
 
 #: lib/layouts/chess.layout:42
 msgid "Mainline:"
-msgstr "Mainline:"
+msgstr "Hlavný variant:"
 
 #: lib/layouts/chess.layout:61
 msgid "Variation"
@@ -7721,11 +7721,11 @@ msgstr "Titul značka poznámky"
 
 #: lib/layouts/elsarticle.layout:97
 msgid "Title footnote"
-msgstr "Titul poznámka pod čiarou"
+msgstr "Titul poznámky pod čiarou"
 
 #: lib/layouts/elsarticle.layout:109
 msgid "Title footnote:"
-msgstr "Titul poznámka pod čiarou:"
+msgstr "Titul poznámky pod čiarou:"
 
 #: lib/layouts/elsarticle.layout:137
 msgid "Authormark"
@@ -7737,11 +7737,11 @@ msgstr "Autorská značka"
 
 #: lib/layouts/elsarticle.layout:159
 msgid "Author footnote"
-msgstr "Autor poznámka pod čiarou"
+msgstr "Autor poznámky pod čiarou"
 
 #: lib/layouts/elsarticle.layout:162
 msgid "Author footnote:"
-msgstr "Autor poznámka pod čiarou:"
+msgstr "Autor poznámky pod čiarou:"
 
 #: lib/layouts/elsarticle.layout:166
 msgid "CorAuthormark"
@@ -8456,11 +8456,11 @@ msgstr "Classification Codes"
 #: lib/layouts/ijmpc.layout:236 lib/layouts/ijmpd.layout:239
 #: lib/layouts/aguplus.inc:217
 msgid "TableCaption"
-msgstr "Popis_tabuľky"
+msgstr "Popis tabuľky"
 
 #: lib/layouts/ijmpc.layout:240 lib/layouts/ijmpd.layout:243
 msgid "Table caption"
-msgstr "Popis_tabuľky"
+msgstr "Popis tabuľky"
 
 #: lib/layouts/ijmpc.layout:253 lib/layouts/ijmpd.layout:256
 msgid "Refcite"
@@ -9912,7 +9912,7 @@ msgstr "Planotable"
 
 #: lib/layouts/aguplus.inc:207
 msgid "Table Caption"
-msgstr "Popis_tabuľky"
+msgstr "Popis tabuľky"
 
 #: lib/layouts/amsdefs.inc:138
 msgid "Current Address"
@@ -10097,15 +10097,15 @@ msgstr "Extra titulok"
 
 #: lib/layouts/scrclass.inc:254
 msgid "Captionabove"
-msgstr "Popisok hore"
+msgstr "Popis hore"
 
 #: lib/layouts/scrclass.inc:255 lib/layouts/scrclass.inc:275
 msgid "Captions"
-msgstr "Popisky"
+msgstr "Popisy"
 
 #: lib/layouts/scrclass.inc:274
 msgid "Captionbelow"
-msgstr "Popisok dole"
+msgstr "Popis dole"
 
 #: lib/layouts/scrclass.inc:294
 msgid "Dictum"
@@ -11920,19 +11920,19 @@ msgstr "Pridať riadok popod"
 
 #: lib/ui/stdcontext.inc:67
 msgid "Delete Line Above|v"
-msgstr "Zmazať Riadok Ponad"
+msgstr "Zmazať Riadok Nad"
 
 #: lib/ui/stdcontext.inc:68
 msgid "Delete Line Below|w"
-msgstr "Zmazať Riadok Popod"
+msgstr "Zmazať Riadok Pod"
 
 #: lib/ui/stdcontext.inc:70 lib/ui/stdmenus.inc:234
 msgid "Add Line to Left"
-msgstr "Pridať čiaru vľavo"
+msgstr "Pridať líniu vľavo"
 
 #: lib/ui/stdcontext.inc:71 lib/ui/stdmenus.inc:235
 msgid "Add Line to Right"
-msgstr "Pridať čiaru vpravo"
+msgstr "Pridať líniu vpravo"
 
 #: lib/ui/stdcontext.inc:72 lib/ui/stdmenus.inc:236
 msgid "Delete Line to Left"
@@ -12149,7 +12149,7 @@ msgstr "Horizontálne zarovnanie (Bodky)"
 
 #: lib/ui/stdcontext.inc:213
 msgid "Horizontal Fill (Rule)|R"
-msgstr "Horizontálne zarovnanie (čiara)"
+msgstr "Horizontálne zarovnanie (línia)"
 
 #: lib/ui/stdcontext.inc:214
 msgid "Horizontal Fill (Left Arrow)|L"
@@ -12942,11 +12942,11 @@ msgstr "Pridať riadok ponad"
 
 #: lib/ui/stdmenus.inc:231
 msgid "Delete Line Above|D"
-msgstr "Zmazať riadok ponad"
+msgstr "Zmazať riadok nad"
 
 #: lib/ui/stdmenus.inc:232
 msgid "Delete Line Below|e"
-msgstr "Zmazať riadok popod"
+msgstr "Zmazať riadok pod"
 
 #: lib/ui/stdmenus.inc:244
 msgid "Make First Non-Optional into Optional Argument"
@@ -13266,7 +13266,7 @@ msgstr "Horizontálna medzera..."
 
 #: lib/ui/stdmenus.inc:397
 msgid "Horizontal Line...|L"
-msgstr "Horizontálna Čiara..."
+msgstr "Horizontálna Línia..."
 
 #: lib/ui/stdmenus.inc:398
 msgid "Vertical Space...|V"
@@ -13354,7 +13354,7 @@ msgstr "LaTeX Protokol|L"
 
 #: lib/ui/stdmenus.inc:501
 msgid "Outline|O"
-msgstr "Členenie|e"
+msgstr "Prehľad|e"
 
 #: lib/ui/stdmenus.inc:502
 msgid "Start Appendix Here|A"
@@ -13602,7 +13602,7 @@ msgstr "Vložiť tabuľku"
 
 #: lib/ui/stdtoolbars.inc:95
 msgid "Toggle outline"
-msgstr "Prepnúť členenie"
+msgstr "Prepnúť prehľad"
 
 #: lib/ui/stdtoolbars.inc:96
 msgid "Toggle math toolbar"
@@ -13750,31 +13750,31 @@ msgstr "Zmazať stĺpec"
 
 #: lib/ui/stdtoolbars.inc:148
 msgid "Set top line"
-msgstr "Zvoliť hornú čiaru"
+msgstr "Nastaviť hornú líniu"
 
 #: lib/ui/stdtoolbars.inc:149
 msgid "Set bottom line"
-msgstr "Zvoliť spodnú čiaru"
+msgstr "Nastaviť spodnú líniu"
 
 #: lib/ui/stdtoolbars.inc:150
 msgid "Set left line"
-msgstr "Zvoliť ľavú čiaru"
+msgstr "Nastaviť ľavú líniu"
 
 #: lib/ui/stdtoolbars.inc:151
 msgid "Set right line"
-msgstr "Zvoliť pravú čiaru"
+msgstr "Nastaviť pravú líniu"
 
 #: lib/ui/stdtoolbars.inc:152
 msgid "Set border lines"
-msgstr "Zvoliť medzné čiary"
+msgstr "Nastaviť okrajové línie"
 
 #: lib/ui/stdtoolbars.inc:153
 msgid "Set all lines"
-msgstr "Zvoliť všetky čiary"
+msgstr "Nastaviť všetky línie"
 
 #: lib/ui/stdtoolbars.inc:154
 msgid "Unset all lines"
-msgstr "Zrušiť všetky čiary"
+msgstr "Zmazať všetky línie"
 
 #: lib/ui/stdtoolbars.inc:156
 msgid "Align left"
@@ -17976,7 +17976,7 @@ msgstr "vložené znaky medzier"
 
 #: src/Color.cpp:275
 msgid "table line"
-msgstr "čiara tabuľky"
+msgstr "línia tabuľky"
 
 #: src/Color.cpp:276
 msgid "table on/off line"
@@ -22126,7 +22126,7 @@ msgstr "Nedostupný tezaurus pre tento jazyk!"
 
 #: src/frontends/qt4/GuiToc.cpp:36
 msgid "Outline"
-msgstr "Členenie"
+msgstr "Prehľad"
 
 #: src/frontends/qt4/GuiToolbar.cpp:353 src/frontends/qt4/Toolbars.cpp:376
 msgid "auto"
@@ -23303,7 +23303,7 @@ msgstr "DUPLIKÁT: "
 
 #: src/insets/InsetLine.cpp:64
 msgid "Horizontal line"
-msgstr "Horizontálna čiara"
+msgstr "Horizontálna línia"
 
 #: src/insets/InsetListings.cpp:214
 msgid "no more lstline delimiters available"
@@ -23447,7 +23447,7 @@ msgid ""
 msgstr ""
 "Tento parameter by tu nemal byť zadaný. Použite prosím políčko popisku (v "
 "dialógu pre dokument potomka) alebo cez menu Vložiť->Popisok (pri definícii "
-"výpisu zdrojového kódu)"
+"výpisu programu)"
 
 #: src/insets/InsetListingsParams.cpp:418
 msgid ""
@@ -23646,7 +23646,7 @@ msgstr "Horizontálne zarovnanie (Bodky)"
 
 #: src/insets/InsetSpace.cpp:113
 msgid "Horizontal Fill (Rule)"
-msgstr "Horizontálne zarovnanie (čiara)"
+msgstr "Horizontálne zarovnanie (línia)"
 
 #: src/insets/InsetSpace.cpp:116
 msgid "Horizontal Fill (Left Arrow)"
@@ -23870,7 +23870,7 @@ msgstr "Len jeden stĺpec"
 
 #: src/mathed/InsetMathGrid.cpp:1462
 msgid "No hline to delete"
-msgstr "žiadna horizontálna čiara na zmazanie"
+msgstr "žiadna horizontálna línia na zmazanie"
 
 #: src/mathed/InsetMathGrid.cpp:1471
 msgid "No vline to delete"
