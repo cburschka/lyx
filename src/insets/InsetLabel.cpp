@@ -95,12 +95,9 @@ void InsetLabel::updateLabelAndRefs(docstring const & new_label,
 	if (label == old_label)
 		return;
 
-	if (!cursor)
-		return;
-
-	cursor->recordUndo();
 	buffer().undo().beginUndoGroup();
-	buffer().markDirty();
+	if (cursor)
+		cursor->recordUndo();
 	setParam("name", label);
 	updateReferences(old_label, label);
 	buffer().undo().endUndoGroup();
