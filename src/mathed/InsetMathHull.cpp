@@ -1395,7 +1395,6 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_LABEL_INSERT: {
-		cur.recordUndoInset();
 		row_type r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
 		docstring old_label = label(r);
 		docstring const default_label = from_ascii("eq:");

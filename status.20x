@@ -201,6 +201,9 @@ What's new
 - Fix assertion when using "Ignore All" in spell checker dialog
   after changing buffer view (bug 7661).
 
+- Don't mark buffer changed simply because you open the label dialog
+  (bug 7655).
+
 
 * ADVANCED FIND AND REPLACE
 
