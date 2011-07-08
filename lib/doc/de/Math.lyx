@@ -5805,6 +5805,45 @@ Man beachte, dass verzierte Matrizen die vertikale Ausrichtung ignorieren.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ LaTeX limitiert die Anzahl der Matrizenspalten auf 10.
+ Wenn man mehr als 10
+\begin_inset space \thinspace{}
+\end_inset
+
+Spalten benötigt, muss folgende Zeile in die Dokument-Präambel eingefügt
+ werden:
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+
+\backslash
+setcounter{MaxMatrixCols}{Anzahl}
+\end_layout
+
+\begin_layout Plain Layout
+wobei 
+\emph on
+Anzahl
+\emph default
+ die Anzahl der Spalten zwischen 11 und 99 ist.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -5963,13 +6002,6 @@ C & D
 \end_inset
 
  in einer Textzeile.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -8100,6 +8132,13 @@ reference "sub:Zeilenabstand"
  erklärt.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Pfeile
 \begin_inset Index idx
@@ -9095,6 +9134,13 @@ F(a)
 </row>
 </lyxtabular>
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -14410,6 +14456,13 @@ Zeichen}
  verwendet.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Absatzboxen
 \begin_inset CommandInset label
@@ -14993,6 +15046,13 @@ kommentiert
 5x-7b=3b\textrm{Dies ist eine Beschreibung. Sie ist nicht von der Formel getrennt ...}
 \]
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -19189,13 +19249,6 @@ normalsize
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Innerhalb einer Formel kann die Größe mit den folgenden Größenbefehlen geändert
  werden:
 \end_layout
@@ -19576,13 +19629,6 @@ A
 \begin_layout Standard
 Kann ein Symbol nicht in verschiedenen Größen dargestellt werden, wird es
  immer in der Standardgröße dargestellt.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -21121,6 +21167,13 @@ theta
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Symbole
 \begin_inset ERT
@@ -22070,13 +22123,6 @@ bot
 
 
 \begin_inset space \hfill{}
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 
@@ -23266,13 +23312,6 @@ status collapsed
 fi 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 
@@ -25985,6 +26024,13 @@ In einer abgesetzten Formel steht der Grenzwert wie gewohnt darunter:
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Modulo-Funktionen
 \begin_inset Index idx
@@ -26023,13 +26069,6 @@ Die Varianten in einer abgesetzten Formel:
 \begin_layout Standard
 In einer eingebetteten Formel wird bei allen Varianten vor den Funktionsnamen
  weniger Leerraum gesetzt.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section

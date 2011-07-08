@@ -5740,6 +5740,48 @@ Notez que les matrices décorées ignorent l'alignement vertical.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ LaTeX limits the number of matrix columns with decorations to 10.
+ If you need more than 10
+\begin_inset space \thinspace{}
+\end_inset
+
+columns, you have to add this line to the document preamble:
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+
+\backslash
+setcounter{MaxMatrixCols}{number}
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+where 
+\emph on
+number
+\emph default
+ is the number of columns between 11 and 99.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -7999,6 +8041,13 @@ reference "sub:Séparation-des-lignes"
 .
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Flèches
 \begin_inset Index idx
@@ -9364,13 +9413,6 @@ reference "sub:Taille-parenthèses-automatique"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -12504,6 +12546,13 @@ mathsurround
 pt.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Boîtes et cadres
 \begin_inset Index idx
@@ -12761,6 +12810,13 @@ framebox
 fbox
 \series default
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -18024,13 +18080,6 @@ spce
 _i,j=1
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Polices de caractères
 \begin_inset Index idx
@@ -19638,7 +19687,13 @@ On peut insérer toutes les lettres grecques avec le bouton
  grecques en mathématique doivent être écrites en italique.
  Dans certaines langues comme le russe et le français, elles sont parfois
  quand même en lettres droites.
- 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -25975,13 +26030,6 @@ Dans une formule hors ligne la valeur de la limite est placée comme d'habitude,
 \lim_{x\to A}x=B
 \]
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 
@@ -32997,6 +33045,13 @@ Manuels
 spécifiques
 \family default
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

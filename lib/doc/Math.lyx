@@ -5828,6 +5828,44 @@ Note that decorated matrices ignore the vertical alignment.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ LaTeX limits the number of matrix columns with decorations to 10.
+ If you need more than 10
+\begin_inset space \thinspace{}
+\end_inset
+
+columns, you have to add this line to the document preamble:
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+
+\backslash
+setcounter{MaxMatrixCols}{number}
+\end_layout
+
+\begin_layout Plain Layout
+where 
+\emph on
+number
+\emph default
+ is the number of columns between 11 and 99.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -8118,13 +8156,6 @@ Arrows can be inserted via the math toolbar button
  or the commands listed in the following subsections.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Horizontal Arrows
 \begin_inset Index idx
@@ -9471,13 +9502,6 @@ reference "sub:Automatic-Bracket-Size"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -16650,6 +16674,13 @@ reference "sub:Self-defined-Operators"
 .
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Binary Operators
 \begin_inset CommandInset label
@@ -19250,13 +19281,6 @@ normalsize
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Within a formula the size can be changed using the following size commands:
 \end_layout
 
@@ -19636,13 +19660,6 @@ A
 \begin_layout Standard
 If a symbol cannot be displayed in different sizes, it will always be displayed
  in the default size.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -21168,6 +21185,13 @@ theta
 </row>
 </lyxtabular>
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -27923,6 +27947,13 @@ textdegree
 fi}
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Formula Styles
 \begin_inset CommandInset label
@@ -29885,6 +29916,13 @@ I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
 \intertext{\text{integrand is symmetric to \ensuremath{\phi=\pi}, therefore}} & =2a\sqrt{2}\int_{0}^{\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi
 \end{align}
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -32539,13 +32577,6 @@ key "mhchem"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
