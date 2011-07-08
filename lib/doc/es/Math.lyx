@@ -5803,6 +5803,52 @@ vmatrix
 
 Hay que tener en cuenta que las matrices decoradas ignoran el alineamiento
  vertical.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Nota:
+\series default
+ 
+\lang english
+LaTeX limits the number of matrix columns with decorations to 10.
+ If you need more than 10
+\begin_inset space \thinspace{}
+\end_inset
+
+columns, you have to add this line to the document preamble:
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+
+\backslash
+setcounter{MaxMatrixCols}{number}
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+where 
+\emph on
+number
+\emph default
+ is the number of columns between 11 and 99.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -9492,6 +9538,15 @@ reference "sub:Tamaño-automático-de"
 .
 \end_layout
 
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Acentos
 \begin_inset CommandInset label
@@ -12698,7 +12753,7 @@ name "sub:Marcos-con-bordes"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Marcos ! con bordes
@@ -12886,6 +12941,15 @@ framebox
 fbox
 \series default
 .
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -14488,7 +14552,7 @@ name "sub:Marcos-de-párrafo"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Marcos ! para párrafos
@@ -18122,7 +18186,7 @@ _i,j=1
 \begin_layout Section
 Tipografías
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tipografías
@@ -18143,7 +18207,7 @@ name "sub:Estilos-de-tipografías"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tipografías ! estilos de
@@ -19083,13 +19147,6 @@ textcolor
 
 \backslash
 textcolor{color}{caracteres o ecuación}
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -21217,6 +21274,15 @@ theta
 </row>
 </lyxtabular>
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -26427,13 +26493,6 @@ En una ecuación en línea se pone menos espacio delante del nombre de la
  función para todas las variantes.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Caracteres especiales
 \begin_inset Index idx
@@ -28338,13 +28397,6 @@ textdegree
 fi}
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Estilos de ecuación
 \begin_inset CommandInset label
@@ -30051,7 +30103,7 @@ name "sub:Partes-multilínea"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Ecuación ! multilínea ! solo parte
@@ -30310,13 +30362,6 @@ I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
 \intertext{\text{el integrando es simétrico para \ensuremath{\phi=\pi}, por tanto}} & =2a\sqrt{2}\int_{0}^{\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi
 \end{align}
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 
@@ -35213,7 +35258,7 @@ command-alternatives break-paragraph;math-extern maxima
 \begin_layout Section
 Consejos prácticos
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Consejos prácticos
