@@ -37,7 +37,7 @@
 \index_command default
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
 \pdf_bookmarks true
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
@@ -80,8 +80,64 @@
 
 \begin_body
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This is a template LyX file for books and journals to be published by the
+ Springer publishing group.
+ This template is for authors, the template for editors has the filename
+ 
+\family sans
+svmult_editor.lyx
+\family default
+.
+ How to install the svmult LaTeX class to your LaTeX system is explained
+ in 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/Examples/Springer
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Title*
 Contribution Title
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note
+\series default
+: If this file is used as a subdocument of svmult_editor.lyx then you must
+ use the 
+\family sans
+Title
+\family default
+ layout instead of 
+\family sans
+Title*
+\family default
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Running Title

@@ -2,7 +2,7 @@
 \lyxformat 413
 \begin_document
 \begin_header
-\textclass svmono
+\textclass svmult
 \use_default_options false
 \maintain_unincluded_children false
 \language english
@@ -60,24 +60,48 @@
 
 \begin_body
 
-\begin_layout Foreword
+\begin_layout Preface
 
 \end_layout
 
 \begin_layout Standard
-The foreword covers introductory remarks preceding the text of a book that
- are written by a 
+A preface
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+preface
+\end_layout
+
+\end_inset
+
+ is a book's preliminary statement, usually written by the 
 \shape italic
-person other than the author or editor
+author or editor
 \shape default
- of the book.
- If applicable, the foreword precedes the preface which is written by the
- author or editor of the book.
+ of a work, which states its origin, scope, purpose, plan, and intended
+ audience, and which sometimes includes afterthoughts and acknowledgments
+ of assistance.
+ 
+\end_layout
+
+\begin_layout Standard
+When written by a person other than the author, it is called a foreword.
+ The preface or foreword is distinct from the introduction, which deals
+ with the subject of the work.
+\end_layout
+
+\begin_layout Standard
+Customarily 
+\shape italic
+acknowledgments
+\shape default
+ are included as last part of the preface.
 \end_layout
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -96,7 +120,7 @@ baselineskip}
 \begin_layout Standard
 \noindent
 \align right
-Place, month year
+Place(s),
 \begin_inset space \hfill{}
 \end_inset
 
@@ -108,7 +132,13 @@ Firstname Surname
 \begin_inset Newline newline
 \end_inset
 
+month year
+\begin_inset space \hfill{}
+\end_inset
 
+
+\shape italic
+Firstname Surname
 \end_layout
 
 \end_body

@@ -5,10 +5,9 @@
 #
 #  Supports: SVMULT DOCUMENT CLASS -- version 5.4 (25-Jun-07)
 #  Class and style files and templates are found at:
-#       http://www.springer.com/authors
+#       http://wiki.lyx.org/Examples/Springer
 #
 Format 35
-
 
 Input svcommon.inc
 
@@ -17,11 +16,6 @@ ClassOptions
 End
 
 NoStyle Acknowledgements
-NoCounter chapter
-
-#Counter svmultlsti
-#	LabelString	"Contributor \Roman{svmultlsti}:"
-#End
 
 # Additional headings
 
@@ -36,7 +30,6 @@ NoCounter chapter
 #	EndPreamble
 #End
 
-
 Style Title*
 	CopyStyle	Title
 	LatexName	title*
@@ -46,39 +39,40 @@ Style Title*
 	Margin		First_Dynamic
 	HTMLTitle	true
 	LabelFont
-	Color	Blue
+	  Color		Blue
 	EndFont
 End
 
+Style Title
+	CopyStyle	Chapter
+	LatexName	title
+	TopSep		1
+	TocLevel	1
+	InTitle		0
+	Align		Left
+	AlignPossible	Block, Center, Left, Right
+	LabelFont
+	  Size		Largest
+	  Family	Sans
+	EndFont
+	TextFont
+	  Family	Sans
+	  Series	Bold
+	EndFont
+End
 
-#Style Title
-#	TopSep		2
-#	LabelString	"Chapter \thechapter"
-#	LabelType	Counter
-#	LabelCounter	chapter
-#	TocLevel	1
-#	InTitle		0
-#End
+Style Contributors
+	CopyStyle	Foreword
+	LabelString	"List of Contributors"
+	LatexName	contributors
+End
 
-
-#Style Contributors
-#	CopyStyle	Foreword
-#	LabelString	"List of Contributors"
-#	LatexName	contributors
-#End
-
-#Style List_of_Abbreviations_&_Symbols_[Deprecated]
-#	InTitle		1
-#	CopyStyle	Description
-#	LatexName	abbrsymblist
-#End
-
-#Style List_of_Abbreviations_&_Symbols
-#	InTitle		1
-#	CopyStyle	Description
-#	LatexName	abbrsymblist
-#	ObsoletedBy	List_of_Abbreviations_&_Symbols_[Deprecated]
-#End
+Style Contributor_List
+	LatexType	Environment
+	LatexName	thecontriblist
+	TopSep		0.7
+	BottomSep	0.4
+End
 
 Style Author
 	Font
@@ -96,59 +90,6 @@ Style Abstract
 	LabelString	"Abstract"
 End
 
-#Counter  svmultlsti
-#	LabelString	"Contributor \Roman{svmultlsti}"
-#	Within		chapter
-#End
-
-Style List_of_Contributors
-	Category	"For editors"
-	Margin		First_Dynamic
-	LatexType	Item_Environment
-	LatexName	svmultlstcnt
-	NextNoIndent	1
-	InTitle		0
-	LabelType	Counter
-	LabelCounter	svmultlsti
-	LabelSep	xxx
-	LabelFont
-	  Series	Bold
-	  Shape		Italic
-	  Color		Blue
-	EndFont
-	ParSkip		0.0
-	ItemSep		0.2
-	TopSep		0.7
-	BottomSep	0.7
-	ParSep		0.3
-	Align		Block
-	AlignPossible	Block, Left
-	Preamble
-	  \newcounter{svmultlsti}%
-	  \newenvironment{svmultlstcnt}{%
-	    \setcounter{svmultlsti}{0}\let\svmultitem\item%
-	    \renewcommand{\item}{%
-	      \ifthenelse{\value{svmultlsti} = 0}{}{\and}%
-	      \stepcounter{svmultlsti}}%
-	    \setcounter{svmultlsti}{0}\begin{thecontriblist}}{%
-	  \end{thecontriblist}\let\item\svmultitem%
-	  \setcounter{svmultlsti}{0}}
-	EndPreamble
-	Requires	ifthen
-End
-
-#InsetLayout Flex:Inst
-#	Decoration	Classic
-#	LabelString	"Institute # [deprecated]"
-#	LatexType	Command
-#	LatexName	inst
-#	LyxType		custom
-#	Font
-#	  Size		Small
-#	  Color		Red
-#	EndFont
-#End
-
 Style Part
 	Category	"For editors"
 End
@@ -158,6 +99,10 @@ Style PartBacktext
 End
 
 Style Chapter
+	Category	"For editors"
+End
+
+Style Running_Chapter
 	Category	"For editors"
 End
 
@@ -198,6 +143,6 @@ Style Contributors
 End
 
 Style ChapMotto
-	Category	FrontMatter
+	Category	"For editors"
 End
 

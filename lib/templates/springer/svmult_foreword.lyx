@@ -2,7 +2,7 @@
 \lyxformat 413
 \begin_document
 \begin_header
-\textclass svmono
+\textclass svmult
 \use_default_options false
 \maintain_unincluded_children false
 \language english
@@ -60,27 +60,52 @@
 
 \begin_body
 
-\begin_layout PartBacktext
-\noindent
-\begin_inset Argument
-status open
+\begin_layout Foreword
+
+\end_layout
+
+\begin_layout Standard
+The foreword covers introductory remarks preceding the text of a book that
+ are written by a 
+\shape italic
+person other than the author or editor
+\shape default
+ of the book.
+ If applicable, the foreword precedes the preface which is written by the
+ author or editor of the book.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
-Part Title
+
+
+\backslash
+vspace{
+\backslash
+baselineskip}
 \end_layout
 
 \end_inset
 
- Part title page and, if desired, a short introductory text (maximum one
- page) on its verso page
-\begin_inset Note Note
-status open
 
-\begin_layout Plain Layout
-the optional argument is mandatory and contains the part title; the further
- text for the backpart is optional
 \end_layout
 
+\begin_layout Standard
+\noindent
+\align right
+Place, month year
+\begin_inset space \hfill{}
+\end_inset
+
+
+\shape italic
+Firstname Surname
+\shape default
+
+\begin_inset Newline newline
 \end_inset
 
 

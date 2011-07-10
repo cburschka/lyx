@@ -1552,27 +1552,35 @@ dist_templates_DATA = \
 	templates/README.new_templates \
 	templates/revtex4.lyx \
 	templates/revtex4-1.lyx \
-	templates/slides.lyx \
-	templates/svmult_appendix.lyx \
-	templates/svmult_editor.lyx
+	templates/slides.lyx
 
 springertemplatesdir = $(pkgdatadir)/templates/springer
 dist_springertemplates_DATA = \
-	templates/springer/acknow.lyx \
-	templates/springer/acronym.lyx \
-	templates/springer/appendix.lyx \
-	templates/springer/chapter.lyx \
-	templates/springer/dedication.lyx \
-	templates/springer/foreword.lyx \
-	templates/springer/glossary.lyx \
-	templates/springer/part.lyx \
-	templates/springer/preface.lyx
-	templates/springer/svmono_referenc.lyx \
-	templates/springer/svmult_referenc.lyx \
-	templates/springer/solutions.lyx \
 	templates/springer/svjour3.lyx \
-	templates/springer/svmono_book.lyx \
-	templates/springer/svmult_author.lyx
+	templates/springer/svmono_acknow.lyx \
+	templates/springer/svmono_acronym.lyx \
+	templates/springer/svmono_appendix.lyx \
+	templates/springer/svmono_book-master.lyx \
+	templates/springer/svmono_chapter.lyx \
+	templates/springer/svmono_dedication.lyx \
+	templates/springer/svmono_foreword.lyx \
+	templates/springer/svmono_glossary.lyx \
+	templates/springer/svmono_part.lyx \
+	templates/springer/svmono_preface.lyx
+	templates/springer/svmono_referenc.lyx \
+	templates/springer/svmono_solutions.lyx \
+	templates/springer/svmult_acknow.lyx \
+	templates/springer/svmult_acronym.lyx \
+	templates/springer/svmult_appendix.lyx \
+	templates/springer/svmult_author.lyx \
+	templates/springer/svmult_cblist.lyx \
+	templates/springer/svmult_dedication.lyx \
+	templates/springer/svmult_editor-master.lyx \
+	templates/springer/svmult_foreword.lyx \
+	templates/springer/svmult_glossary.lyx \
+	templates/springer/svmult_part.lyx \
+	templates/springer/svmult_preface.lyx \
+	templates/springer/svmult_referenc.lyx
 	
 thesistemplatesdir = $(pkgdatadir)/templates/thesis
 dist_thesistemplates_DATA = \

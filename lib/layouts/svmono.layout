@@ -15,20 +15,10 @@ ClassOptions
 End
 
 NoStyle Acknowledgements
-#NoStyle Acknowledgement
 NoStyle Institute
 
 Style Abstract
 	LatexType	Command
-End
-
-Style Running_Chapter
-	CopyStyle	Running_Title
-	Category	Section
-	InTitle		0
-	LatexName	chaptermark
-	LeftMargin	"Running Chapter:xxx"
-	LabelString	"Running Chapter:"
 End
 
 Counter theorem

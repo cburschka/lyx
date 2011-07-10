@@ -1384,27 +1384,35 @@ lib_templates_files = Split('''
     revtex4.lyx
     revtex4-1.lyx
     slides.lyx
-    svmult_appendix.lyx
-    svmult_editor.lyx
 ''')
 
 
 lib_templates_springer_files = Split('''
-    acknow.lyx
-    acronym.lyx
-    appendix.lyx
-    chapter.lyx
-    dedication.lyx
-    foreword.lyx
-    glossary.lyx
-    part.lyx
-    preface.lyx
-    svmono_referenc.lyx
-    svmult_referenc.lyx
-    solutions.lyx
     svjour3.lyx
-    svmono_book.lyx
+    svmono_acknow.lyx
+    svmono_acronym.lyx
+    svmono_appendix.lyx
+    svmono_book-master.lyx
+    svmono_chapter.lyx
+    svmono_dedication.lyx
+    svmono_foreword.lyx
+    svmono_glossary.lyx
+    svmono_part.lyx
+    svmono_preface.lyx
+    svmono_referenc.lyx
+    svmono_solutions.lyx
+    svmult_acknow.lyx
+    svmult_acronym.lyx
+    svmult_appendix.lyx
     svmult_author.lyx
+    svmult_cblist.lyx
+    svmult_dedication.lyx
+    svmult_editor-master.lyx
+    svmult_foreword.lyx
+    svmult_glossary.lyx
+    svmult_part.lyx
+    svmult_preface.lyx
+    svmult_referenc.lyx
 ''')
 
 

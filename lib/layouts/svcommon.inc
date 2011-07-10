@@ -399,23 +399,23 @@ Style Running_Title
 	LabelString	"Running Title:"
 End
 
-Style Running_LaTeX_Title
-      ObsoletedBy	Running_Title
-End
-
 Style Running_Author
 	CopyStyle	Running_Title
 	LatexName	authorrunning
 	LabelString	"Running Author:"
 End
 
-Style Author_Running
-      ObsoletedBy	Running_Author
+Style Running_Chapter
+	CopyStyle	Running_Title
+	Category	Section
+	InTitle		0
+	LatexName	chaptermark
+	LeftMargin	"Running Chapter:xxx"
+	LabelString	"Running Chapter:"
 End
 
 Style Running_Section
-      CopyStyle		Running_Title
-      Category		Section
+      CopyStyle		Running_Chapter
       LatexName		sectionmark
       LeftMargin	"Running Section:xxx"
       LabelString	"Running Section:"
@@ -641,7 +641,7 @@ Style Proof
 	  Shape		Italic
 	EndFont
 	LangPreamble
-	  \providecommand{\proofname}{_(Proof)}
+		\providecommand{\proofname}{_(Proof)}
 	EndLangPreamble
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\proofname}{_(Proof)}}
@@ -653,7 +653,7 @@ Style Proof(QED)
 	LatexName	svmultproof
 	EndLabelType	Box
 	Preamble
-	  \newenvironment{svmultproof}{\begin{proof}}{\qed\end{proof}}
+		\newenvironment{svmultproof}{\begin{proof}}{\qed\end{proof}}
 	EndPreamble
 End
 
@@ -662,7 +662,7 @@ Style Proof(smartQED)
 	LatexName	svmultproof2
 	EndLabelType	Box
 	Preamble
-	  \newenvironment{svmultproof2}{\begin{proof}}{\smartqed\qed\end{proof}}
+		\newenvironment{svmultproof2}{\begin{proof}}{\smartqed\qed\end{proof}}
 	EndPreamble
 End
 

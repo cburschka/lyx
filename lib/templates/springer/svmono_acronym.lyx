@@ -60,18 +60,62 @@
 
 \begin_body
 
-\begin_layout Dedication
-A quotation or a dedication
+\begin_layout extrachap
+Acronyms
+\end_layout
+
+\begin_layout Standard
+List(s) of abbreviations or symbols
+\end_layout
+
+\begin_layout Standard
+Lists of abbreviations
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
-dedication
+acronyms, list of
 \end_layout
 
 \end_inset
 
- at the very beginning of your book
+, symbols
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+symbols, list of
+\end_layout
+
+\end_inset
+
+ and the like are easily formatted with the help of the Springer-enhanced
+ 
+\family sans
+description
+\family default
+ environment.
+\end_layout
+
+\begin_layout Description
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+CABR
+\end_layout
+
+\end_inset
+
+ABC Spelled-out abbreviation and definition
+\end_layout
+
+\begin_layout Description
+BABI Spelled-out abbreviation and definition
+\end_layout
+
+\begin_layout Description
+CABR Spelled-out abbreviation and definition
 \end_layout
 
 \end_body
