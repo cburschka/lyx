@@ -82,13 +82,7 @@ InsetLayout Flex:CRSC
 	LabelString		"CR Subject Classification"
 End
 
-Style Problem
-	RequiredArgs	0
-End
-
+# this label has no dot at the end
 Style Solution
-	RequiredArgs	0
+	LabelString	"Solution \thesolution"
 End
-
-
-

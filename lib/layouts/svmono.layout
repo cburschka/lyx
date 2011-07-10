@@ -31,14 +31,6 @@ Style Running_Chapter
 	LabelString	"Running Chapter:"
 End
 
-Style Problem
-	ObsoletedBy	Prob
-End
-
-Style Solution
-	ObsoletedBy	Sol
-End
-
 Counter theorem
   Within	chapter
 End

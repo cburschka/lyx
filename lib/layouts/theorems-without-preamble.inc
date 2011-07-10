@@ -16,6 +16,7 @@
 # - Problem
 # - Prob
 # - Solution
+# - Sol
 # - Exercise
 # - Remark
 # - Claim
@@ -225,8 +226,6 @@ Style Problem
 	LatexName	problem
 	LabelString	"Problem \theproblem"
 	RefPrefix	prob
-	OptionalArgs	1
-	RequiredArgs	1
 	LangPreamble
 		\providecommand{\problemname}{_(Problem)}
 	EndLangPreamble
@@ -243,7 +242,8 @@ Style Prob
 	CopyStyle	Problem
 	LabelCounter	prob
 	LatexName	prob
-	LabelString	"\theprob"
+	LabelString	"\theprob."
+	OptionalArgs	0
 End
 
 
@@ -253,7 +253,7 @@ Style Solution
 	CopyStyle	Problem
 	LabelCounter	solution
 	LatexName	solution
-	LabelString	"Solution \thesolution"
+	LabelString	"Solution \thesolution."
 	RefPrefix	sol
 	LangPreamble
 		\providecommand{\solutionname}{_(Solution)}
@@ -261,6 +261,18 @@ Style Solution
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\solutionname}{_(Solution)}}
 	EndBabelPreamble
+End
+
+
+Counter		sol
+  Within	chapter
+End
+Style Sol
+	CopyStyle	Problem
+	LabelCounter	sol
+	LatexName	sol
+	LabelString	"\thesol"
+	RequiredArgs	1
 End
 
 
