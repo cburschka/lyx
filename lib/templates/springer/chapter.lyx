@@ -275,8 +275,8 @@ boldface-italic
  
 \begin_inset Formula 
 \begin{eqnarray}
-a\times b=c\nonumber \\
-\vec{a}\cdot\vec{b}=\vec{c}\label{eq:01}
+a\times b & = & c\nonumber \\
+\vec{a}\cdot\vec{b} & = & c\label{eq:01}
 \end{eqnarray}
 
 \end_inset
@@ -1188,6 +1188,15 @@ Please note that the first line of text that follows a heading is not indented,
 \end_layout
 
 \begin_layout Theorem
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Name/Title (optional)
+\end_layout
+
+\end_inset
+
 Theorem text goes here.
 \end_layout
 

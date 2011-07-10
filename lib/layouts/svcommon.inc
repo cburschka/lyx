@@ -688,13 +688,3 @@ InsetLayout Flex:Email
 	EndFont
 End
 
-InsetLayout Flex:and
-	ContentAsLabel	1
-	CustomPars	0
-	LatexName	and
-	LatexType	Command
-	LabelString	"and"
-	LyxType		Custom
-	KeepEmpty	1
-End
-

@@ -82,18 +82,12 @@ InsetLayout Flex:CRSC
 	LabelString		"CR Subject Classification"
 End
 
-InsetLayout		Flex:at_Address
-       CopyStyle        Flex:and
-       LatexName	at
-       LabelString	"at address"
-End
-
 Style Problem
-      ObsoletedBy	Problem_(theorem-like)
+	RequiredArgs	0
 End
 
 Style Solution
-      ObsoletedBy	Solution_(theorem-like)
+	RequiredArgs	0
 End
 
 
