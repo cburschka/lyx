@@ -91,7 +91,7 @@ for tf in $(echo "$TESTS"); do
     rm -rf "out-$t"
     mkdir "out-$t"
     cd "out-$t"
-    if "$cmd" > test-log.txt 2>&1; then
+    if $cmd > test-log.txt 2>&1; then
 	echo Ok
 	cd ..
 	rm -rf "out-$t";
