@@ -4,30 +4,14 @@
 \begin_header
 \textclass svmono
 \begin_preamble
-%%%%%%%%%%%%%%%%%%%% book.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% sample root file for the chapters of your "monograph"
-%
-% Use this file as a template for your own input.
-%
-%%%%%%%%%%%%%%%% Springer-Verlag %%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-% RECOMMENDED %%%
-
 \usepackage{type1cm}
 
-\usepackage{multicol}        % used for the two-column index
-\usepackage[bottom]{footmisc}% places footnotes at page bottom
+\usepackage{multicol} % used for the two-column index
+\usepackage[bottom]{footmisc} % places footnotes at page bottom
 
-% see the list of further useful packages
-% in the Reference Guide
-
-%\makeindex             % used for the subject index
+%\makeindex % used for the subject index
                        % please use the style svind.ist with
                        % your makeindex program
-
-%%%
 \end_preamble
 \options graybox,envcountchap,sectrefs
 \use_default_options false

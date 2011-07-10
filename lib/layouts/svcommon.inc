@@ -14,8 +14,8 @@
 #     Adapted for new svjour LaTeX2e classes published by Springer in 1999;
 #     work done by MV in 2000.
 #
-# Adapted for svmono, svmult,     2009/2007
-# by Marcus Kriele (mkriele@mac.com)
+# Adapted for svmono, svmult, and svjour3 2011
+# by Marcus Kriele (mkriele@mac.com) and Uwe Stöhr
 # see http://www.springer.com/authors for class files and further instructions
 
 
@@ -49,8 +49,6 @@ Input theorems-without-preamble.inc
 NoStyle Fact
 NoStyle Prop
 
-
-NoStyle Subparagraph
 NoCounter subparagraph
 NoStyle Subparagraph*
 
@@ -220,6 +218,18 @@ Style Paragraph
 	Font
 	  Series	Medium
 	  Shape		Up
+	  Size		Normal
+	EndFont
+	TopSep		0.7
+	BottomSep	0.4
+	TocLevel	4
+End
+
+Style Subparagraph
+	LeftMargin	""
+	Font
+	  Series	Medium
+	  Shape		Italic
 	  Size		Normal
 	EndFont
 	TopSep		0.7
@@ -398,8 +408,17 @@ Style Running_Author
 	LatexName	authorrunning
 	LabelString	"Running Author:"
 End
+
 Style Author_Running
       ObsoletedBy	Running_Author
+End
+
+Style Running_Section
+      CopyStyle		Running_Title
+      Category		Section
+      LatexName		sectionmark
+      LeftMargin	"Running Section:xxx"
+      LabelString	"Running Section:"
 End
 
 Style Abstract
@@ -440,6 +459,7 @@ Style Keywords
 	Margin		First_Dynamic
 	LatexType	Command
 	LatexName	keywords
+	Category	FrontMatter
 	NextNoIndent	0
 	ParIndent	MM
 	LabelSep	xx
@@ -607,13 +627,24 @@ Style Svgraybox
 End
 
 Style Proof
+	Category	Theorem
+	LatexType	Environment
 	LatexName	proof
-	LabelString	"Proof"
+	Margin		First_Dynamic
+	LeftMargin	xxx
+	TopSep		0.4
+	BottomSep	0.4
+	LabelType	Static
+	LabelSep	xx
+	LabelString	"Proof."
+	LabelFont
+	  Shape		Italic
+	EndFont
 	LangPreamble
-		\providecommand{\proofname}{_(Proof)}
+	  \providecommand{\proofname}{_(Proof)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\proofname}{_(Proof)}}
+	  \addto\captions$$lang{\renewcommand{\proofname}{_(Proof)}}
 	EndBabelPreamble
 End
 
@@ -622,21 +653,21 @@ Style Proof(QED)
 	LatexName	svmultproof
 	EndLabelType	Box
 	Preamble
-		\newenvironment{svmultproof}{\begin{proof}}{\qed\end{proof}}
+	  \newenvironment{svmultproof}{\begin{proof}}{\qed\end{proof}}
 	EndPreamble
 End
 
 Style Proof(smartQED)
 	CopyStyle	Proof
 	LatexName	svmultproof2
-	EndLabelType	Filled_Box
+	EndLabelType	Box
 	Preamble
 	  \newenvironment{svmultproof2}{\begin{proof}}{\smartqed\qed\end{proof}}
 	EndPreamble
 End
 
 InsetLayout Flex:Email
-	    Decoration	Conglomerate
+	Decoration	Conglomerate
 	LyxType		custom
 	LatexType	command
 	LatexName	email
@@ -657,22 +688,13 @@ InsetLayout Flex:Email
 	EndFont
 End
 
-InsetLayout	Flex:and
-       ContentAsLabel	1
-       CustomPars	0
-       Decoration	Classic
-       LatexName	and
-       LatexType	Command
-       LabelString	"and"
-       LyxType		Custom
-       KeepEmpty	1
+InsetLayout Flex:and
+	ContentAsLabel	1
+	CustomPars	0
+	LatexName	and
+	LatexType	Command
+	LabelString	"and"
+	LyxType		Custom
+	KeepEmpty	1
 End
 
-# InsetLayout	Flex:and
-#        CopyStyle	Flex:Email
-#        LatexName	and
-#        LabelString	"and"
-#        Font	
-#        EndFont
-#        KeepEmpty	1
-# End

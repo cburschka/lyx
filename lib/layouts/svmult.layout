@@ -1,7 +1,7 @@
 #% Do not delete the line below; configure depends on this
 #	\DeclareLaTeXClass[svmult,natbib.sty]{book (Springer svmult)}
 #  Author: Koji Yokota <yokota@res.otaru-uc.ac.jp>
-#          adapted: Marcus Kriele <mkriele@mac.com> (April 2011)
+#          adapted: Marcus Kriele <mkriele@mac.com> and Uwe Stöhr (April 2011)
 #
 #  Supports: SVMULT DOCUMENT CLASS -- version 5.4 (25-Jun-07)
 #  Class and style files and templates are found at:
@@ -13,88 +13,93 @@ Format 35
 Input svcommon.inc
 
 ClassOptions
-	FontSize	 10
+	FontSize	 ""
 End
 
 NoStyle Acknowledgements
-#NoStyle Acknowledgement
+NoCounter chapter
 
-Counter svmultlsti
-	LabelString	"Contributor \Roman{svmultlsti}:"
-End
+#Counter svmultlsti
+#	LabelString	"Contributor \Roman{svmultlsti}:"
+#End
 
 # Additional headings
 
-Style MiniTOC
-	CopyStyle	Running_Title
-	LatexType	Command
-	LatexName	svmulttoc
-	LeftMargin	"TOC depth (provide a number):xxx"
-	LabelString	"TOC depth (provide a number):"
-	Preamble
-	    \newcommand{\svmulttoc}[1]{\setcounter{minitocdepth}{#1}\dominitoc}
-	EndPreamble
-End
+#Style MiniTOC
+#	CopyStyle	Running_Title
+#	LatexType	Command
+#	LatexName	svmulttoc
+#	LeftMargin	"TOC depth (provide a number):xxx"
+#	LabelString	"TOC depth (provide a number):"
+#	Preamble
+#	    \newcommand{\svmulttoc}[1]{\setcounter{minitocdepth}{#1}\dominitoc}
+#	EndPreamble
+#End
 
 
 Style Title*
 	CopyStyle	Title
 	LatexName	title*
 	LabelString	"Title*: "
-	LabelSep		"xxx"
+	LabelSep	"xxx"
 	LabelType	Static
 	Margin		First_Dynamic
-	HTMLTitle             true
+	HTMLTitle	true
 	LabelFont
 	Color	Blue
 	EndFont
 End
 
 
-Style Title
-      TopSep		2
-      	LabelString           "Chapter \thechapter"
-	LabelType             Counter
-	LabelCounter          chapter
-      TocLevel	1
-      InTitle 0
-End
+#Style Title
+#	TopSep		2
+#	LabelString	"Chapter \thechapter"
+#	LabelType	Counter
+#	LabelCounter	chapter
+#	TocLevel	1
+#	InTitle		0
+#End
 
 
-Style Contributors
-      CopyStyle		Foreword
-      LabelString	"List of Contributors"
-      LatexName		contributors
-End
+#Style Contributors
+#	CopyStyle	Foreword
+#	LabelString	"List of Contributors"
+#	LatexName	contributors
+#End
 
-Style List_of_Abbreviations_&_Symbols_[Deprecated]
-	InTitle		1
-	CopyStyle	Description
-	LatexName	abbrsymblist
-End
+#Style List_of_Abbreviations_&_Symbols_[Deprecated]
+#	InTitle		1
+#	CopyStyle	Description
+#	LatexName	abbrsymblist
+#End
 
-Style List_of_Abbreviations_&_Symbols
-	InTitle		1
-	CopyStyle	Description
-	LatexName	abbrsymblist
-	ObsoletedBy	 List_of_Abbreviations_&_Symbols_[Deprecated]
-End
+#Style List_of_Abbreviations_&_Symbols
+#	InTitle		1
+#	CopyStyle	Description
+#	LatexName	abbrsymblist
+#	ObsoletedBy	List_of_Abbreviations_&_Symbols_[Deprecated]
+#End
 
 Style Author
 	Font
-	  Series	Bold
-	  Family	Sans
-	  Size          Normal
+	  Series	Medium
+	  Family	Roman
+	  Size		Normal
 	  Shape		Up
 	EndFont
 End
 
-
-Counter  svmultlsti
-	LabelString	         "Contributor \Roman{svmultlsti}"
-	Within			 chapter
+Style Abstract
+	LatexType	Command
+	LatexName	abstract
+	Category	FrontMatter
+	LabelString	"Abstract"
 End
 
+#Counter  svmultlsti
+#	LabelString	"Contributor \Roman{svmultlsti}"
+#	Within		chapter
+#End
 
 Style List_of_Contributors
 	Category	"For editors"
@@ -132,95 +137,81 @@ Style List_of_Contributors
 	Requires	ifthen
 End
 
-Style Problem
-      ObsoletedBy	Problem_(theorem-like)
-End
+#Style Problem
+#	ObsoletedBy	Problem_(theorem-like)
+#End
 
-Style Solution
-      ObsoletedBy	Solution_(theorem-like)
-End
+#Style Solution
+#	ObsoletedBy	Solution_(theorem-like)
+#End
 
-InsetLayout Flex:Inst
-	Decoration	Classic
-	LabelString	"Institute # [deprecated]"
-	LatexType	Command
-	LatexName	inst
-	LyxType		custom
-	Font
-	  Size		Small
-	  Color		Red
-	EndFont
-End
+#InsetLayout Flex:Inst
+#	Decoration	Classic
+#	LabelString	"Institute # [deprecated]"
+#	LatexType	Command
+#	LatexName	inst
+#	LyxType		custom
+#	Font
+#	  Size		Small
+#	  Color		Red
+#	EndFont
+#End
 
-InsetLayout		Flex:at_Address
-       CopyStyle        Flex:and
+InsetLayout Flex:at_Address
+       CopyStyle	Flex:and
        LatexName	at
        LabelString	"at address"
 End
 
-
 Style Part
-      Category		"For editors"
+	Category	"For editors"
 End
 
 Style PartBacktext
-      Category		"For editors"
+	Category	"For editors"
 End
 
 Style Chapter
-      Category		"For editors"
+	Category	"For editors"
 End
 
 Style ChapAuthor
-      Category		"For editors"
+	Category	"For editors"
 End
 
 Style ChapSubtitle
-      Category		"For editors"
+	Category	"For editors"
 End
 
 Style extrachap
-      Category		"For editors"
+	Category	"For editors"
 End
 
 Style Extrachap
-      Category		"For editors"
+	Category	"For editors"
 End
 
 Style Dedication
-      Category		"For editors"
+	Category	"For editors"
 End
 
 Style Foreword
-      Category		"For editors"
+	Category	"For editors"
 End
 
 Style Preface
-      Category		"For editors"
+	Category	"For editors"
 End
 
 Style Acknowledgement
-      Category		"For editors"
+	Category	"For editors"
 End
 
 Style Contributors
-      Category		"For editors"
+	Category	"For editors"
 End
 
-Style Motto
-      CopyStyle		ChapMotto
-      Category		"FrontMatter"
-End
-
-NoStyle ChapMotto
-
-Style Abstract
-      Category		"FrontMatter"
-End
-Style Abstract*
-      Category		"FrontMatter"
-End
-Style Keywords
-      Category		"FrontMatter"
+Style ChapMotto
+	Category	FrontMatter
 End
 

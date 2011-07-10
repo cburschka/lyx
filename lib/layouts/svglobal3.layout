@@ -10,7 +10,7 @@
 # Transposed by Pascal André <andre@via.ecp.fr>
 # Heavily modified and enhanced by serveral developers.
 # Revision svjour version 3.2 by Uwe Stöhr in September 2009
-# Revised by Marcus Kriele in April 2011 
+# Revised by Marcus Kriele and Uwe Stöhr in April 2011 
 #
 # see ftp://ftp.springer.de/pub/tex/latex/svjour3/ for class files
 
@@ -31,6 +31,7 @@ NoStyle ChapSubtitle
 NoStyle ChapMotto
 NoCounter chapter
 NoStyle Chapter*
+NoStyle Subparagraph
 NoStyle Run-in_headings
 NoStyle Sub-run-in_headings
 NoStyle Extrachap

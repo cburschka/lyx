@@ -2,16 +2,27 @@
 \lyxformat 413
 \begin_document
 \begin_header
-\textclass svmono
+\textclass svmult
+\begin_preamble
+\usepackage{type1cm}
+
+\usepackage{multicol} % used for the two-column index
+\usepackage[bottom]{footmisc} % places footnotes at page bottom
+
+%\makeindex % used for the subject index
+                       % please use the style svind.ist with
+                       % your makeindex program
+\end_preamble
+\options graybox
 \use_default_options false
 \maintain_unincluded_children false
 \language english
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
+\font_roman times
+\font_sans helvet
+\font_typewriter courier
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
@@ -27,6 +38,15 @@
 \paperfontsize default
 \spacing single
 \use_hyperref false
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -60,24 +80,89 @@
 
 \begin_body
 
-\begin_layout Chapter
-Chapter Heading
-\begin_inset CommandInset label
-LatexCommand label
-name "chap:intro"
+\begin_layout Title*
+Contribution Title
+\end_layout
+
+\begin_layout Running Title
+Short form of title
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional
+\end_layout
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Running Chapter
-chapter heading in the running head
+\begin_layout Author
+Name of First Author and Name of Second Author
+\end_layout
+
+\begin_layout Running Author
+Short form of author list
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 optional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Institute
+Name of First Author 
+\begin_inset Flex at Address
+status open
+
+\begin_layout Plain Layout
+N
+\end_layout
+
+\end_inset
+
+ame, Address of Institute, 
+\begin_inset Flex Email
+status collapsed
+
+\begin_layout Plain Layout
+name@email.address
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex and
+status open
+
+\begin_layout Plain Layout
+N
+\end_layout
+
+\end_inset
+
+ame of Second Author 
+\begin_inset Flex at Address
+status open
+
+\begin_layout Plain Layout
+N
+\end_layout
+
+\end_inset
+
+ame, Address of Institute 
+\begin_inset Flex Email
+status collapsed
+
+\begin_layout Plain Layout
+name@email.address
 \end_layout
 
 \end_inset
@@ -193,7 +278,23 @@ abstract
 Section Heading
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Section-Heading"
+name "sec:1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Instead of simply listing headings of different levels we recommend to let
+ every heading be followed by at least a short passage of text.
+\end_layout
+
+\begin_layout Section
+Section Heading
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Section-Heading2"
 
 \end_inset
 
@@ -201,7 +302,7 @@ name "sec:Section-Heading"
 \end_layout
 
 \begin_layout Running Section
-section heading in the running head
+Short form of section title
 \begin_inset Note Note
 status open
 
@@ -215,31 +316,15 @@ optional
 \end_layout
 
 \begin_layout Standard
-bla
-\end_layout
-
-\begin_layout Section
-Section Heading 2
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Section-Heading-2"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Instead of simply listing headings of different levels we recommend to let
- every heading be followed by at least a short passage of text.
-\end_layout
-
-\begin_layout Standard
 Use the standard 
 \family sans
 equation
 \family default
- environment to typeset your equations, e.g.
+ environment to typeset your equations, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  
 \begin_inset Formula 
 \begin{equation}
@@ -254,7 +339,7 @@ eqnarray
 \family default
  environment
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 In physics texts please activate the class option 
@@ -266,7 +351,7 @@ vecphys
 \shape italic
 boldface-italic
 \series default
- type - as is customary for a wide range of physical subjects.
+ type - as is customary for a wide range of physical subjects
 \end_layout
 
 \end_inset
@@ -298,7 +383,7 @@ name "sub:Subsection-Heading"
 \begin_layout Standard
 Instead of simply listing headings of different levels we recommend to let
  every heading be followed by at least a short passage of text.
- Furtheron please use the LaTeX
+ Further on please use the LaTeX
 \begin_inset space \space{}
 \end_inset
 
@@ -329,7 +414,7 @@ citations
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Section-Heading-2"
+reference "sec:Section-Heading2"
 
 \end_inset
 
@@ -352,7 +437,7 @@ Subsubsection Heading
 \begin_layout Standard
 Instead of simply listing headings of different levels we recommend to let
  every heading be followed by at least a short passage of text.
- Furtheron please use the LaTeX
+ Further on please use the LaTeX
 \begin_inset space \space{}
 \end_inset
 
@@ -390,7 +475,7 @@ If you copy text passages, figures, or tables from other works, you must
 permission
 \shape default
  from the copyright holder (usually the original publisher).
- Please enclose the signed permission with the manucript.
+ Please enclose the signed permission with the manuscript.
  The sources
 \begin_inset Index idx
 status collapsed
@@ -542,7 +627,7 @@ automatism for all your cross-references and citations as has already been
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Section-Heading-2"
+reference "sec:2"
 
 \end_inset
 
@@ -561,11 +646,6 @@ reference "fig:2"
 \end_layout
 
 \begin_layout Standard
-Please note that the first line of text that follows a heading is not indented,
- whereas the first lines of all subsequent paragraphs are.
-\end_layout
-
-\begin_layout Standard
 For unnumbered list we recommend to use the 
 \family sans
 itemize
@@ -576,10 +656,7 @@ itemize
 \begin_layout Itemize
 Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomi
 c development, cf.
-\begin_inset space ~
-\end_inset
-
-Table
+ Table
 \begin_inset space ~
 \end_inset
 
@@ -676,7 +753,7 @@ automatism for all your cross-references and citations as has already been
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Section-Heading-2"
+reference "sec:Section-Heading2"
 
 \end_inset
 
@@ -701,7 +778,7 @@ ences and citations as has already been
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Section-Heading-2"
+reference "sec:Section-Heading2"
 
 \end_inset
 
@@ -717,9 +794,6 @@ paragraph
 
 .
  
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float table
 wide false
 sideways false
@@ -1015,7 +1089,7 @@ Histone and DNA Modification
 Section Heading
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Section-Heading-3"
+name "sec:3"
 
 \end_inset
 
@@ -1073,7 +1147,7 @@ Type
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Section-Heading"
+reference "sec:1"
 
 \end_inset
 
@@ -1094,7 +1168,7 @@ Type
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Section-Heading-3"
+reference "sub:Subsection-Heading"
 
 \end_inset
 
@@ -1109,23 +1183,6 @@ Subsection Heading
 \begin_layout Standard
 In order to avoid simply listing headings of different levels we recommend
  to let every heading be followed by at least a short passage of text.
- Use the LaTeX
-\begin_inset space \space{}
-\end_inset
-
-automatism for all your cross-references and citations citations as has
- already been described in Sect.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Section-Heading-2"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
@@ -1328,106 +1385,13 @@ a\times b=c
 
 \end_inset
 
- 
-\begin_inset Note Note
-status open
 
-\begin_layout Plain Layout
-Problems or Exercises should be sorted chapterwise
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section*
-Problems
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-addcontentsline{toc}{section}{
-\end_layout
-
-\end_inset
-
-Problems
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Don't forget to label each problem; the label is needed for the solutions'
- environment
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Prob
-\begin_inset CommandInset label
-LatexCommand label
-name "prob:prob1"
-
-\end_inset
-
-A given problem or Excercise is described here.
- The problem is described here.
- The problem is described here.
-\end_layout
-
-\begin_layout --Separator--
-
-\end_layout
-
-\begin_layout Prob
-\begin_inset CommandInset label
-LatexCommand label
-name "prob:prob2"
-
-\end_inset
-
-
-\series bold
-Problem Heading
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
- (a) The first part of the problem is described here.
-\begin_inset Newline newline
-\end_inset
-
- (b) The second part of the problem is described here.
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "svmono_referenc.lyx"
+filename "svmult_referenc.lyx"
 
 \end_inset
 

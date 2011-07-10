@@ -1554,7 +1554,6 @@ dist_templates_DATA = \
 	templates/revtex4-1.lyx \
 	templates/slides.lyx \
 	templates/svmult_appendix.lyx \
-	templates/svmult_author.lyx \
 	templates/svmult_editor.lyx
 
 springertemplatesdir = $(pkgdatadir)/templates/springer
@@ -1568,10 +1567,12 @@ dist_springertemplates_DATA = \
 	templates/springer/glossary.lyx \
 	templates/springer/part.lyx \
 	templates/springer/preface.lyx
-	templates/springer/referenc.lyx \
+	templates/springer/svmono_referenc.lyx \
+	templates/springer/svmult_referenc.lyx \
 	templates/springer/solutions.lyx \
 	templates/springer/svjour3.lyx \
-	templates/springer/svmono_book.lyx
+	templates/springer/svmono_book.lyx \
+	templates/springer/svmult_author.lyx
 	
 thesistemplatesdir = $(pkgdatadir)/templates/thesis
 dist_thesistemplates_DATA = \
