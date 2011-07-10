@@ -191,8 +191,8 @@ Menuset
 		Item "Phantom|P" "inset-modify phantom Phantom Phantom"
 		Item "Horizontal Phantom|H" "inset-modify phantom Phantom HPhantom"
 		Item "Vertical Phantom|V" "inset-modify phantom Phantom VPhantom"
-		Separator
-		Item "Dissolve Inset|D" "inset-dissolve"
+#		Separator
+#		Item "Dissolve Inset|D" "inset-dissolve"
 	End
 
 #
