@@ -1377,14 +1377,18 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 		regex_replace(to_utf8(repl_latex), s, "\\$(.*)\\$", "$1");
 		regex_replace(s, s, "\\\\\\[(.*)\\\\\\]", "$1");
 		repl_latex = from_utf8(s);
-		LYXERR(Debug::FIND, "Replacing by niceInsert()ing latex: '" << repl_latex << "'");
-		sel_len = cur.niceInsert(repl_latex);
+		LYXERR(Debug::FIND, "Replacing by insert()ing latex: '" << repl_latex << "' cur=" << cur << " with depth=" << cur.depth());
+		MathData ar(cur.buffer());
+		asArray(repl_latex, ar, Parse::NORMAL);
+		cur.insert(ar);
+		sel_len = ar.size();
+		LYXERR(Debug::FIND, "After insert() cur=" << cur << " with depth: " << cur.depth() << " and len: " << sel_len);
 	}
 	if (cur.pos() >= sel_len)
 		cur.pos() -= sel_len;
 	else
 		cur.pos() = 0;
-	LYXERR(Debug::FIND, "Putting selection at cur=" << cur << " with len: " << sel_len);
+	LYXERR(Debug::FIND, "After pos adj cur=" << cur << " with depth: " << cur.depth() << " and len: " << sel_len);
 	bv->putSelectionAt(DocIterator(cur), sel_len, !opt.forward);
 	bv->processUpdateFlags(Update::Force);
 	bv->buffer().updatePreviews();

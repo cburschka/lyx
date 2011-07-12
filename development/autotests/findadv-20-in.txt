@@ -1,0 +1,26 @@
+# Avoiding recursive replacements when replaced text matches search pattern
+# Addresses #7675.
+#
+Lang it_IT.utf8
+
+TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
+KK: a a a\C\[Home]
+KK: \CF
+KK: a\[Tab]
+KK: \Cm\\frac 1\[Down]a\[Return]\[Return]\[Return]
+KK: \Cs
+KK: \Ax
+KK: buffer-export latex\[Return]
+TestEnd
+Assert pcregrep -M '^\$\\frac\{1\}\{a\}\$ \$\\frac\{1\}\{a\}\$ a' test.tex
+
+TestBegin test2.lyx -dbg find > lyx-log.txt 2>&1
+KK: \Cma  \Cma  \Cma \C\[Home]
+KK: \CF
+KK: a\[Tab]
+KK: \Cm\\frac 1\[Down]a\[Return]\[Return]\[Return]
+KK: \Cs
+KK: \Ax
+KK: buffer-export latex\[Return]
+TestEnd
+Assert pcregrep -M '^\$\\frac\{1\}\{a\}\$ \$\\frac\{1\}\{a\}\$ \$a\$' test2.tex
