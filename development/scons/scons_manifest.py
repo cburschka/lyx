@@ -416,7 +416,6 @@ src_graphics_header_files = Split('''
     GraphicsTypes.h
     PreviewImage.h
     PreviewLoader.h
-    Previews.h
 ''')
 
 
@@ -428,7 +427,6 @@ src_graphics_files = Split('''
     GraphicsParams.cpp
     PreviewImage.cpp
     PreviewLoader.cpp
-    Previews.cpp
 ''')
 
 
