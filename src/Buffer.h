@@ -516,7 +516,7 @@ public:
 	void setFullyLoaded(bool);
 
 	/// FIXME: Needed by RenderPreview.
-	graphics::PreviewLoader * Buffer::loader() const;
+	graphics::PreviewLoader * loader() const;
 	/// Update the LaTeX preview snippets associated with this buffer
 	void updatePreviews() const;
 	/// Remove any previewed LaTeX snippets associated with this buffer
