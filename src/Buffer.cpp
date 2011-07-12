@@ -337,9 +337,9 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	: owner_(owner), lyx_clean(true), bak_clean(true), unnamed(false),
 	  read_only(readonly_), filename(file), file_fully_loaded(false),
 	  toc_backend(owner), macro_lock(false), timestamp_(0), checksum_(0),
-	  wa_(0), gui_(0), undo_(*owner), preview_loader_(0),
-	  bibinfo_cache_valid_(false), bibfile_cache_valid_(false),
-	  cite_labels_valid_(false), cloned_buffer_(cloned_buffer),
+	  wa_(0), gui_(0), undo_(*owner), bibinfo_cache_valid_(false), 
+	  bibfile_cache_valid_(false), cite_labels_valid_(false), 
+	  preview_loader_(0), cloned_buffer_(cloned_buffer),
 	  doing_export(false), parent_buffer(0)
 {
 	if (!cloned_buffer_) {
