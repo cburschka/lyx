@@ -72,6 +72,10 @@ class FileName;
 class FileNameList;
 }
 
+namespace graphics {
+class PreviewLoader;
+}
+
 
 class Buffer;
 typedef std::list<Buffer *> ListOfBuffers;
@@ -511,6 +515,8 @@ public:
 	/// Set by buffer_funcs' newFile.
 	void setFullyLoaded(bool);
 
+	/// FIXME: Needed by RenderPreview.
+	graphics::PreviewLoader * Buffer::loader() const;
 	/// Update the LaTeX preview snippets associated with this buffer
 	void updatePreviews() const;
 	/// Remove any previewed LaTeX snippets associated with this buffer

@@ -348,9 +348,7 @@ liblyxgraphics_a_SOURCES = \
 	graphics/PreviewImage.h \
 	graphics/PreviewImage.cpp \
 	graphics/PreviewLoader.h \
-	graphics/PreviewLoader.cpp \
-	graphics/Previews.h \
-	graphics/Previews.cpp
+	graphics/PreviewLoader.cpp
 
 
 ############################### Mathed  ##############################

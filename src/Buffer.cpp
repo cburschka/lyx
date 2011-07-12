@@ -77,11 +77,11 @@
 #include "mathed/MathMacroTemplate.h"
 #include "mathed/MathSupport.h"
 
+#include "graphics/PreviewLoader.h"
+
 #include "frontends/alert.h"
 #include "frontends/Delegates.h"
 #include "frontends/WorkAreaManager.h"
-
-#include "graphics/Previews.h"
 
 #include "support/lassert.h"
 #include "support/convert.h"
@@ -117,6 +117,7 @@
 
 using namespace std;
 using namespace lyx::support;
+using namespace lyx::graphics;
 
 namespace lyx {
 
@@ -150,6 +151,7 @@ public:
 
 	~Impl()
 	{
+		delete preview_loader_;
 		if (wa_) {
 			wa_->closeAll();
 			delete wa_;
@@ -267,6 +269,9 @@ public:
 	/// our Text that should be wrapped in an InsetText
 	InsetText * inset;
 
+	///
+	PreviewLoader * preview_loader_;
+
 	/// This is here to force the test to be done whenever parent_buffer
 	/// is accessed.
 	Buffer const * parent() const { 
@@ -331,10 +336,11 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	Buffer const * cloned_buffer)
 	: owner_(owner), lyx_clean(true), bak_clean(true), unnamed(false),
 	  read_only(readonly_), filename(file), file_fully_loaded(false),
-	  toc_backend(owner), macro_lock(false), timestamp_(0),
-	  checksum_(0), wa_(0), gui_(0), undo_(*owner), bibinfo_cache_valid_(false),
-	  bibfile_cache_valid_(false), cite_labels_valid_(false),
-	  cloned_buffer_(cloned_buffer), doing_export(false), parent_buffer(0)
+	  toc_backend(owner), macro_lock(false), timestamp_(0), checksum_(0),
+	  wa_(0), gui_(0), undo_(*owner), preview_loader_(0),
+	  bibinfo_cache_valid_(false), bibfile_cache_valid_(false),
+	  cite_labels_valid_(false), cloned_buffer_(cloned_buffer),
+	  doing_export(false), parent_buffer(0)
 {
 	if (!cloned_buffer_) {
 		temppath = createBufferTmpDir();
@@ -946,16 +952,35 @@ void Buffer::setFullyLoaded(bool value)
 }
 
 
-void Buffer::updatePreviews() const
+PreviewLoader * Buffer::loader() const
 {
-	if (graphics::Previews::status() != LyXRC::PREVIEW_OFF)
-		thePreviews().generateBufferPreviews(*this);
+	if (lyxrc.preview == LyXRC::PREVIEW_OFF)
+		return 0;
+	if (!d->preview_loader_)
+		d->preview_loader_ = new PreviewLoader(*this);
+	return d->preview_loader_;
 }
 
 
 void Buffer::removePreviews() const
 {
-	thePreviews().removeLoader(*this);
+	delete d->preview_loader_;
+	d->preview_loader_ = 0;
+}
+
+
+void Buffer::updatePreviews() const
+{
+	PreviewLoader * ploader = loader();
+	if (!ploader)
+		return;
+
+	InsetIterator it = inset_iterator_begin(*d->inset);
+	InsetIterator const end = inset_iterator_end(*d->inset);
+	for (; it != end; ++it)
+		it->addPreview(it, *ploader);
+
+	ploader->startLoading();
 }
 
 

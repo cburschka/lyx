@@ -44,7 +44,7 @@ class PreviewLoader;
 
 class RenderPreview : public RenderBase, public boost::signals::trackable {
 public:
-	/// a wrapper for Previews::status()
+	/// a wrapper for lyxrc.preview
 	static LyXRC_PreviewStatus status();
 
 	RenderPreview(Inset const *);

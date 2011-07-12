@@ -13,6 +13,7 @@
 #include "insets/RenderPreview.h"
 #include "insets/Inset.h"
 
+#include "Buffer.h"
 #include "BufferView.h"
 #include "Dimension.h"
 #include "LyX.h"
@@ -24,7 +25,6 @@
 
 #include "graphics/PreviewImage.h"
 #include "graphics/PreviewLoader.h"
-#include "graphics/Previews.h"
 
 #include "support/FileName.h"
 #include "support/gettext.h"
@@ -41,7 +41,7 @@ namespace lyx {
 
 LyXRC_PreviewStatus RenderPreview::status()
 {
-	return graphics::Previews::status();
+	return lyxrc.preview;
 }
 
 
@@ -74,19 +74,13 @@ RenderBase * RenderPreview::clone(Inset const * inset) const
 
 namespace {
 
-graphics::PreviewLoader & getPreviewLoader(Buffer const & buffer)
-{
-	return thePreviews().loader(buffer);
-}
-
-
 docstring const statusMessage(BufferView const * bv, string const & snippet)
 {
 	LASSERT(bv, /**/);
 
 	Buffer const & buffer = bv->buffer();
-	graphics::PreviewLoader const & loader = getPreviewLoader(buffer);
-	graphics::PreviewLoader::Status const status = loader.status(snippet);
+	graphics::PreviewLoader const * loader = buffer.loader();
+	graphics::PreviewLoader::Status const status = loader->status(snippet);
 
 	docstring message;
 	switch (status) {
@@ -111,8 +105,9 @@ docstring const statusMessage(BufferView const * bv, string const & snippet)
 graphics::PreviewImage const *
 RenderPreview::getPreviewImage(Buffer const & buffer) const
 {
-	graphics::PreviewLoader const & loader = getPreviewLoader(buffer);
-	return loader.preview(snippet_);
+	graphics::PreviewLoader const * loader = buffer.loader();
+	LASSERT(loader, return 0);
+	return loader->preview(snippet_);
 }
 
 
@@ -180,8 +175,9 @@ void RenderPreview::startLoading(Buffer const & buffer, bool forexport) const
 	if (!forexport && (status() == LyXRC::PREVIEW_OFF || snippet_.empty()))
 		return;
 
-	graphics::PreviewLoader const & loader = getPreviewLoader(buffer);
-	loader.startLoading(forexport);
+	graphics::PreviewLoader * loader = buffer.loader();
+	LASSERT(loader, return);
+	loader->startLoading(forexport);
 }
 
 
@@ -192,8 +188,9 @@ void RenderPreview::addPreview(docstring const & latex_snippet,
 	if (status() == LyXRC::PREVIEW_OFF && !ignore_lyxrc)
 		return;
 
-	graphics::PreviewLoader & loader = getPreviewLoader(buffer);
-	addPreview(latex_snippet, loader, ignore_lyxrc);
+	graphics::PreviewLoader * loader = buffer.loader();
+	LASSERT(loader, return);
+	addPreview(latex_snippet, *loader, ignore_lyxrc);
 }
 
 
@@ -230,8 +227,9 @@ void RenderPreview::removePreview(Buffer const & buffer)
 	if (snippet_.empty())
 		return;
 
-	graphics::PreviewLoader & loader = getPreviewLoader(buffer);
-	loader.remove(snippet_);
+	graphics::PreviewLoader * loader = buffer.loader();
+	LASSERT(loader, return);
+	loader->remove(snippet_);
 	snippet_.erase();
 }
 

@@ -69,8 +69,6 @@
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"
 
-#include "graphics/Previews.h"
-
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"

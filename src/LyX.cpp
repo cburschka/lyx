@@ -48,8 +48,6 @@
 #include "frontends/alert.h"
 #include "frontends/Application.h"
 
-#include "graphics/Previews.h"
-
 #include "support/lassert.h"
 #include "support/debug.h"
 #include "support/environment.h"
@@ -193,8 +191,6 @@ struct LyX::Impl
 	/// the parsed command line batch command if any
 	vector<string> batch_commands;
 
-	///
-	graphics::Previews preview_;
 	///
 	SpellChecker * spell_checker_;
 	///
@@ -1377,13 +1373,6 @@ Messages const & getGuiMessages()
 {
 	LASSERT(singleton_, /**/);
 	return singleton_->pimpl_->messages_["GUI"];
-}
-
-
-graphics::Previews & thePreviews()
-{
-	LASSERT(singleton_, /**/);
-	return singleton_->pimpl_->preview_;
 }
 
 

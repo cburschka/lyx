@@ -57,10 +57,6 @@ namespace frontend {
 class Application;
 }
 
-namespace graphics {
-class Previews;
-}
-
 /// initial startup
 class LyX {
 public:
@@ -151,7 +147,6 @@ private:
 	friend void setMover(std::string const & fmt, std::string const & command);
 	friend Movers & theSystemMovers();
 	friend frontend::Application * theApp();
-	friend graphics::Previews & thePreviews();
 	friend Session & theSession();
 	friend CmdDef & theTopLevelCmdDef();
 	friend SpellChecker * theSpellChecker();
