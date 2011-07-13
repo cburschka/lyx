@@ -237,6 +237,9 @@ What's new
 - Now Adv. F&R correctly interprets escape sequences within regexp insets, e.g., \\ or \(,
   for finding characters with a special meaning in regular expression context (\^()[]).
 
+- After replacing with multi-cell contents inside maths, now advanced find and replace
+  leaves the cursor after the inserted material (fixing #7675).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
