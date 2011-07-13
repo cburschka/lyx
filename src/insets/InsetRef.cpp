@@ -302,13 +302,13 @@ void InsetRef::validate(LaTeXFeatures & features) const
 	string const cmd = getCmdName();
 	if (cmd == "vref" || cmd == "vpageref")
 		features.require("varioref");
-	else if (getCmdName() == "formatted") {
+	else if (cmd == "formatted") {
 		docstring const data = getEscapedLabel(features.runparams());
 		docstring label;
 		docstring prefix;
+		string const fcmd = to_utf8(getFormattedCmd(data, label, prefix));
 		if (buffer().params().use_refstyle) {
 			features.require("refstyle");
-			string const fcmd = to_utf8(getFormattedCmd(data, label, prefix));
 			if (!prefix.empty()) {
 				string lcmd = "\\AtBeginDocument{\\providecommand" + 
 						fcmd + "[1]{\\ref{" + to_utf8(prefix) + ":#1}}}";
@@ -322,7 +322,7 @@ void InsetRef::validate(LaTeXFeatures & features) const
 			if (prefix == "chap")
 				features.addPreambleSnippet("\\let\\pr@chap=\\pr@cha");
 		}
-	} else if (getCmdName() == "eqref" && !buffer().params().use_refstyle)
+	} else if (cmd == "eqref" && !buffer().params().use_refstyle)
 		// refstyle defines its own version
 		features.require("amsmath");
 	else if (cmd == "nameref")
