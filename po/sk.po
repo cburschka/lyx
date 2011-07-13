@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-07-10 22:00+0200\n"
-"PO-Revision-Date: 2011-07-10 22:04+0200\n"
+"POT-Creation-Date: 2011-07-12 15:27+0200\n"
+"PO-Revision-Date: 2011-07-13 08:25+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -491,8 +491,8 @@ msgid "Remove the selected branch"
 msgstr "Zmazať vybranú vetvu"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3695
-#: src/Buffer.cpp:3708
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3720
+#: src/Buffer.cpp:3733
 msgid "&Remove"
 msgstr "&Odstrániť"
 
@@ -525,8 +525,8 @@ msgstr "Pridaj Všetko"
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:205
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
-#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1069
-#: src/Buffer.cpp:2289 src/Buffer.cpp:3670 src/Buffer.cpp:3733
+#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1094
+#: src/Buffer.cpp:2314 src/Buffer.cpp:3695 src/Buffer.cpp:3758
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1835
@@ -8525,7 +8525,7 @@ msgstr "Hypotéza \\theconjecture."
 #: lib/layouts/theorems-without-preamble.inc:132
 #: lib/layouts/theorems-without-preamble.inc:135
 msgid "Prop"
-msgstr "Vlastnosť"
+msgstr "Téza(prop)"
 
 #: lib/layouts/ijmpc.layout:420 lib/layouts/ijmpd.layout:433
 msgid "Appendix \\Alph{appendix}."
@@ -8782,7 +8782,7 @@ msgstr "Problém #."
 #: lib/layouts/theorems-without-preamble.inc:352
 #: lib/layouts/theorems-without-preamble.inc:355
 msgid "Property"
-msgstr "Vlastníctvo"
+msgstr "Vlastnosť"
 
 #: lib/layouts/llncs.layout:386
 msgid "Property #."
@@ -10379,7 +10379,7 @@ msgstr "Tvrdenie \\theproposition"
 
 #: lib/layouts/theorems-without-preamble.inc:124
 msgid "Prop \\theprop."
-msgstr "Prop \\theprop."
+msgstr "Téza \\theprop."
 
 #: lib/layouts/theorems-without-preamble.inc:146
 msgid "Conjecture \\theconjecture"
@@ -11963,16 +11963,16 @@ msgstr "Textová Referencia"
 #: lib/ui/stdcontext.inc:98 lib/ui/stdcontext.inc:110
 #: lib/ui/stdcontext.inc:120 lib/ui/stdcontext.inc:128
 #: lib/ui/stdcontext.inc:137 lib/ui/stdcontext.inc:148
-#: lib/ui/stdcontext.inc:155 lib/ui/stdcontext.inc:220
-#: lib/ui/stdcontext.inc:238 lib/ui/stdcontext.inc:265
-#: lib/ui/stdcontext.inc:359 lib/ui/stdcontext.inc:372
-#: lib/ui/stdcontext.inc:434 lib/ui/stdcontext.inc:454
-#: lib/ui/stdcontext.inc:465 lib/ui/stdcontext.inc:473
-#: lib/ui/stdcontext.inc:483 lib/ui/stdcontext.inc:491
-#: lib/ui/stdcontext.inc:499 lib/ui/stdcontext.inc:507
-#: lib/ui/stdcontext.inc:520 lib/ui/stdcontext.inc:530
-#: lib/ui/stdcontext.inc:551 lib/ui/stdcontext.inc:559
-#: lib/ui/stdcontext.inc:605 lib/ui/stdmenus.inc:506
+#: lib/ui/stdcontext.inc:155 lib/ui/stdcontext.inc:218
+#: lib/ui/stdcontext.inc:236 lib/ui/stdcontext.inc:263
+#: lib/ui/stdcontext.inc:357 lib/ui/stdcontext.inc:370
+#: lib/ui/stdcontext.inc:432 lib/ui/stdcontext.inc:452
+#: lib/ui/stdcontext.inc:463 lib/ui/stdcontext.inc:471
+#: lib/ui/stdcontext.inc:481 lib/ui/stdcontext.inc:489
+#: lib/ui/stdcontext.inc:497 lib/ui/stdcontext.inc:505
+#: lib/ui/stdcontext.inc:518 lib/ui/stdcontext.inc:528
+#: lib/ui/stdcontext.inc:549 lib/ui/stdcontext.inc:557
+#: lib/ui/stdcontext.inc:603 lib/ui/stdmenus.inc:506
 msgid "Settings...|S"
 msgstr "Nastavenia...|a"
 
@@ -11980,7 +11980,7 @@ msgstr "Nastavenia...|a"
 msgid "Go Back|G"
 msgstr "Choď späť"
 
-#: lib/ui/stdcontext.inc:108 lib/ui/stdcontext.inc:451
+#: lib/ui/stdcontext.inc:108 lib/ui/stdcontext.inc:449
 msgid "Copy as Reference|C"
 msgstr "Kopíruj ako referenciu"
 
@@ -11997,7 +11997,7 @@ msgid "Close Inset|C"
 msgstr "Zavrieť vložku"
 
 #: lib/ui/stdcontext.inc:147 lib/ui/stdcontext.inc:153
-#: lib/ui/stdcontext.inc:567
+#: lib/ui/stdcontext.inc:565
 msgid "Dissolve Inset|D"
 msgstr "Rozpustiť vložku do textu"
 
@@ -12069,480 +12069,480 @@ msgstr "Horizontálny Phantom"
 msgid "Vertical Phantom|V"
 msgstr "Vertikálny Phantom"
 
-#: lib/ui/stdcontext.inc:202 lib/ui/stdmenus.inc:394
+#: lib/ui/stdcontext.inc:200 lib/ui/stdmenus.inc:394
 msgid "Interword Space|w"
 msgstr "Medzislovná medzera"
 
-#: lib/ui/stdcontext.inc:203
+#: lib/ui/stdcontext.inc:201
 msgid "Protected Space|o"
 msgstr "Chránená medzera"
 
-#: lib/ui/stdcontext.inc:204 lib/ui/stdcontext.inc:227 lib/ui/stdmenus.inc:395
+#: lib/ui/stdcontext.inc:202 lib/ui/stdcontext.inc:225 lib/ui/stdmenus.inc:395
 msgid "Thin Space|T"
 msgstr "Úzka medzera"
 
-#: lib/ui/stdcontext.inc:205 lib/ui/stdcontext.inc:230
+#: lib/ui/stdcontext.inc:203 lib/ui/stdcontext.inc:228
 msgid "Negative Thin Space|N"
 msgstr "Záporná úzka medzera"
 
-#: lib/ui/stdcontext.inc:206 lib/ui/stdcontext.inc:233
+#: lib/ui/stdcontext.inc:204 lib/ui/stdcontext.inc:231
 msgid "Half Quad Space (Enskip)|k"
 msgstr "Polovička Quad medzery (Enskip)"
 
-#: lib/ui/stdcontext.inc:207
+#: lib/ui/stdcontext.inc:205
 msgid "Protected Half Quad Space (Enspace)|E"
 msgstr "Chránená polovička Quad medzery (Enspace)"
 
-#: lib/ui/stdcontext.inc:208 lib/ui/stdcontext.inc:234
+#: lib/ui/stdcontext.inc:206 lib/ui/stdcontext.inc:232
 msgid "Quad Space|Q"
 msgstr "Quad medzera"
 
-#: lib/ui/stdcontext.inc:209 lib/ui/stdcontext.inc:235
+#: lib/ui/stdcontext.inc:207 lib/ui/stdcontext.inc:233
 msgid "Double Quad Space|u"
 msgstr "dvojnásobná Quad medzera"
 
-#: lib/ui/stdcontext.inc:210
+#: lib/ui/stdcontext.inc:208
 msgid "Horizontal Fill|F"
 msgstr "Horizontálne zarovnanie"
 
-#: lib/ui/stdcontext.inc:211
+#: lib/ui/stdcontext.inc:209
 msgid "Protected Horizontal Fill|i"
 msgstr "Chránené horizontálne zarovnanie"
 
-#: lib/ui/stdcontext.inc:212
+#: lib/ui/stdcontext.inc:210
 msgid "Horizontal Fill (Dots)|D"
 msgstr "Horizontálne zarovnanie (Bodky)"
 
-#: lib/ui/stdcontext.inc:213
+#: lib/ui/stdcontext.inc:211
 msgid "Horizontal Fill (Rule)|R"
 msgstr "Horizontálne zarovnanie (línia)"
 
-#: lib/ui/stdcontext.inc:214
+#: lib/ui/stdcontext.inc:212
 msgid "Horizontal Fill (Left Arrow)|L"
 msgstr "Horizontálne zarovnanie (šípka doľava)"
 
-#: lib/ui/stdcontext.inc:215
+#: lib/ui/stdcontext.inc:213
 msgid "Horizontal Fill (Right Arrow)|g"
 msgstr "Horizontálne zarovnanie (šípka doprava)"
 
-#: lib/ui/stdcontext.inc:216
+#: lib/ui/stdcontext.inc:214
 msgid "Horizontal Fill (Up Brace)|p"
 msgstr "Horizontálne zarovnanie(svorka nahor)"
 
-#: lib/ui/stdcontext.inc:217
+#: lib/ui/stdcontext.inc:215
 msgid "Horizontal Fill (Down Brace)|B"
 msgstr "Horizontálne zarovnanie(svorka nadol)"
 
-#: lib/ui/stdcontext.inc:218 lib/ui/stdcontext.inc:236
+#: lib/ui/stdcontext.inc:216 lib/ui/stdcontext.inc:234
 msgid "Custom Length|C"
 msgstr "Vlastná dĺžka"
 
-#: lib/ui/stdcontext.inc:228
+#: lib/ui/stdcontext.inc:226
 msgid "Medium Space|M"
 msgstr "Stredná Medzera"
 
-#: lib/ui/stdcontext.inc:229
+#: lib/ui/stdcontext.inc:227
 msgid "Thick Space|h"
 msgstr "Tučná medzera"
 
-#: lib/ui/stdcontext.inc:231
+#: lib/ui/stdcontext.inc:229
 msgid "Negative Medium Space|u"
 msgstr "Záporná Stredná Medzera"
 
-#: lib/ui/stdcontext.inc:232
+#: lib/ui/stdcontext.inc:230
 msgid "Negative Thick Space|i"
 msgstr "Záporná tučná medzera"
 
-#: lib/ui/stdcontext.inc:245
+#: lib/ui/stdcontext.inc:243
 msgid "DefSkip|D"
 msgstr "Štandardná medzera(DefSkip)"
 
-#: lib/ui/stdcontext.inc:246
+#: lib/ui/stdcontext.inc:244
 msgid "SmallSkip|S"
 msgstr "Malá medzera(SmallSkip)"
 
-#: lib/ui/stdcontext.inc:247
+#: lib/ui/stdcontext.inc:245
 msgid "MedSkip|M"
 msgstr "Stredná medzera(MedSkip)"
 
-#: lib/ui/stdcontext.inc:248
+#: lib/ui/stdcontext.inc:246
 msgid "BigSkip|B"
 msgstr "Veľká medzera(BigSkip)"
 
-#: lib/ui/stdcontext.inc:249
+#: lib/ui/stdcontext.inc:247
 msgid "VFill|F"
 msgstr "Výplň (VFill)"
 
-#: lib/ui/stdcontext.inc:250
+#: lib/ui/stdcontext.inc:248
 msgid "Custom|C"
 msgstr "Vlastné"
 
-#: lib/ui/stdcontext.inc:252
+#: lib/ui/stdcontext.inc:250
 msgid "Settings...|e"
 msgstr "Nastavenia...|a"
 
-#: lib/ui/stdcontext.inc:259 lib/ui/stdcontext.inc:514
+#: lib/ui/stdcontext.inc:257 lib/ui/stdcontext.inc:512
 msgid "Include|c"
 msgstr "Zahrnúť"
 
-#: lib/ui/stdcontext.inc:260 lib/ui/stdcontext.inc:515
+#: lib/ui/stdcontext.inc:258 lib/ui/stdcontext.inc:513
 msgid "Input|p"
 msgstr "Vstup"
 
-#: lib/ui/stdcontext.inc:261 lib/ui/stdcontext.inc:516
+#: lib/ui/stdcontext.inc:259 lib/ui/stdcontext.inc:514
 msgid "Verbatim|V"
 msgstr "Doslovne (Verbatim)"
 
-#: lib/ui/stdcontext.inc:262 lib/ui/stdcontext.inc:517
+#: lib/ui/stdcontext.inc:260 lib/ui/stdcontext.inc:515
 msgid "Verbatim (marked blanks)|b"
 msgstr "Doslovne (vyznačené medzery)"
 
-#: lib/ui/stdcontext.inc:263 lib/ui/stdcontext.inc:518
+#: lib/ui/stdcontext.inc:261 lib/ui/stdcontext.inc:516
 msgid "Listing|L"
 msgstr "Výpis"
 
-#: lib/ui/stdcontext.inc:267 lib/ui/stdcontext.inc:522
+#: lib/ui/stdcontext.inc:265 lib/ui/stdcontext.inc:520
 msgid "Edit Included File...|E"
 msgstr "Edituj zahrnutý súbor...|E"
 
-#: lib/ui/stdcontext.inc:274 lib/ui/stdmenus.inc:406
+#: lib/ui/stdcontext.inc:272 lib/ui/stdmenus.inc:406
 msgid "New Page|N"
 msgstr "Nová stránka"
 
-#: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:407
+#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:407
 msgid "Page Break|a"
 msgstr "Zalomenie strany"
 
-#: lib/ui/stdcontext.inc:276 lib/ui/stdmenus.inc:408
+#: lib/ui/stdcontext.inc:274 lib/ui/stdmenus.inc:408
 msgid "Clear Page|C"
 msgstr "Stránku vyprázdniť"
 
-#: lib/ui/stdcontext.inc:277 lib/ui/stdmenus.inc:409
+#: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:409
 msgid "Clear Double Page|D"
 msgstr "Vyprázdniť Dvojitú Stránku"
 
-#: lib/ui/stdcontext.inc:284 lib/ui/stdmenus.inc:403
+#: lib/ui/stdcontext.inc:282 lib/ui/stdmenus.inc:403
 msgid "Ragged Line Break|R"
 msgstr "Normálne zalomenie riadkov"
 
-#: lib/ui/stdcontext.inc:285 lib/ui/stdmenus.inc:404
+#: lib/ui/stdcontext.inc:283 lib/ui/stdmenus.inc:404
 msgid "Justified Line Break|J"
 msgstr "Zarovnanie konca riadkov"
 
-#: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:102 lib/ui/stdtoolbars.inc:80
+#: lib/ui/stdcontext.inc:292 lib/ui/stdmenus.inc:102 lib/ui/stdtoolbars.inc:80
 #: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:596
 msgid "Cut"
 msgstr "Vystrihnúť"
 
-#: lib/ui/stdcontext.inc:295 lib/ui/stdmenus.inc:103 lib/ui/stdtoolbars.inc:81
+#: lib/ui/stdcontext.inc:293 lib/ui/stdmenus.inc:103 lib/ui/stdtoolbars.inc:81
 #: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:605
 msgid "Copy"
 msgstr "Kopírovať"
 
-#: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:82
+#: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:82
 #: src/Text3.cpp:1175 src/mathed/InsetMathGrid.cpp:1316
 #: src/mathed/InsetMathNest.cpp:575
 msgid "Paste"
 msgstr "Vlepiť"
 
-#: lib/ui/stdcontext.inc:297 lib/ui/stdmenus.inc:105
+#: lib/ui/stdcontext.inc:295 lib/ui/stdmenus.inc:105
 msgid "Paste Recent|e"
 msgstr "Vlepiť nedávne|l"
 
-#: lib/ui/stdcontext.inc:299
+#: lib/ui/stdcontext.inc:297
 msgid "Jump Back to Saved Bookmark|B"
 msgstr "Skoč späť na uloženú záložku"
 
-#: lib/ui/stdcontext.inc:300 lib/ui/stdmenus.inc:528
+#: lib/ui/stdcontext.inc:298 lib/ui/stdmenus.inc:528
 msgid "Forward search|F"
 msgstr "Dopredu hľadať"
 
-#: lib/ui/stdcontext.inc:302 lib/ui/stdmenus.inc:113
+#: lib/ui/stdcontext.inc:300 lib/ui/stdmenus.inc:113
 msgid "Move Paragraph Up|o"
 msgstr "Presunúť odstavec nahor|h"
 
-#: lib/ui/stdcontext.inc:303 lib/ui/stdmenus.inc:114
+#: lib/ui/stdcontext.inc:301 lib/ui/stdmenus.inc:114
 msgid "Move Paragraph Down|v"
 msgstr "Presunúť odstavec nadol|d"
 
-#: lib/ui/stdcontext.inc:305
+#: lib/ui/stdcontext.inc:303
 msgid "Promote Section|r"
 msgstr "Zvýšiť úroveň Sekcie"
 
-#: lib/ui/stdcontext.inc:306
+#: lib/ui/stdcontext.inc:304
 msgid "Demote Section|m"
 msgstr "Znížiť úroveň sekcie"
 
-#: lib/ui/stdcontext.inc:307
+#: lib/ui/stdcontext.inc:305
 msgid "Move Section Down|D"
 msgstr "Presunúť sekciu nadol|D"
 
-#: lib/ui/stdcontext.inc:308 lib/ui/stdcontext.inc:587
+#: lib/ui/stdcontext.inc:306 lib/ui/stdcontext.inc:585
 msgid "Move Section Up|U"
 msgstr "Presunúť sekciu nahor|N"
 
-#: lib/ui/stdcontext.inc:309
+#: lib/ui/stdcontext.inc:307
 msgid "Insert Short Title|T"
 msgstr "Vložiť Krátky Titul"
 
-#: lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:355
+#: lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:355
 msgid "Insert Regular Expression"
 msgstr "Vlož Regulárny Výraz"
 
-#: lib/ui/stdcontext.inc:312 lib/ui/stdcontext.inc:576
+#: lib/ui/stdcontext.inc:310 lib/ui/stdcontext.inc:574
 msgid "Accept Change|c"
 msgstr "Akceptovať Zmenu"
 
-#: lib/ui/stdcontext.inc:313
+#: lib/ui/stdcontext.inc:311
 msgid "Reject Change|j"
 msgstr "Odmietnuť Zmenu"
 
-#: lib/ui/stdcontext.inc:315
+#: lib/ui/stdcontext.inc:313
 msgid "Apply Last Text Style|A"
 msgstr "Použiť posledný štýl textu"
 
-#: lib/ui/stdcontext.inc:316 lib/ui/stdmenus.inc:116
+#: lib/ui/stdcontext.inc:314 lib/ui/stdmenus.inc:116
 msgid "Text Style|S"
 msgstr "Štýl textu"
 
-#: lib/ui/stdcontext.inc:317 lib/ui/stdmenus.inc:118
+#: lib/ui/stdcontext.inc:315 lib/ui/stdmenus.inc:118
 msgid "Paragraph Settings...|P"
 msgstr "Nastavenia odstavca...|a"
 
-#: lib/ui/stdcontext.inc:320
+#: lib/ui/stdcontext.inc:318
 msgid "Fullscreen Mode"
 msgstr "Celoobrazovkový mód"
 
-#: lib/ui/stdcontext.inc:328
+#: lib/ui/stdcontext.inc:326
 msgid "Anything|A"
 msgstr "Hocičo"
 
-#: lib/ui/stdcontext.inc:329
+#: lib/ui/stdcontext.inc:327
 msgid "Anything Non-Empty|o"
 msgstr "Hocijaký Neprázdny"
 
-#: lib/ui/stdcontext.inc:330
+#: lib/ui/stdcontext.inc:328
 msgid "Any Word|W"
 msgstr "Hocijaké Slovo"
 
-#: lib/ui/stdcontext.inc:331
+#: lib/ui/stdcontext.inc:329
 msgid "Any Number|N"
 msgstr "Hocijaké Číslo"
 
-#: lib/ui/stdcontext.inc:332
+#: lib/ui/stdcontext.inc:330
 msgid "User Defined|U"
 msgstr "Užívateľom Definované"
 
-#: lib/ui/stdcontext.inc:341 lib/ui/stdmenus.inc:241
+#: lib/ui/stdcontext.inc:339 lib/ui/stdmenus.inc:241
 msgid "Append Argument"
 msgstr "Pridaj Argument"
 
-#: lib/ui/stdcontext.inc:342 lib/ui/stdmenus.inc:242
+#: lib/ui/stdcontext.inc:340 lib/ui/stdmenus.inc:242
 msgid "Remove Last Argument"
 msgstr "Zmaž Posledný Argument"
 
-#: lib/ui/stdcontext.inc:344
+#: lib/ui/stdcontext.inc:342
 msgid "Make First Non-Optional Into Optional Argument"
 msgstr "Zmeň prvý povinný argument na nepovinný"
 
-#: lib/ui/stdcontext.inc:345
+#: lib/ui/stdcontext.inc:343
 msgid "Make Last Optional Into Non-Optional Argument"
 msgstr "Zmeň posledný nepovinný argument na povinný"
 
-#: lib/ui/stdcontext.inc:346 lib/ui/stdmenus.inc:246
+#: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:246
 msgid "Insert Optional Argument"
 msgstr "Vlož nepovinný argument"
 
-#: lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:247
+#: lib/ui/stdcontext.inc:345 lib/ui/stdmenus.inc:247
 msgid "Remove Optional Argument"
 msgstr "Zmaž nepovinný argument"
 
-#: lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:249
+#: lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:249
 msgid "Append Argument Eating From the Right"
 msgstr "Pridaj Argument Sprava"
 
-#: lib/ui/stdcontext.inc:350 lib/ui/stdmenus.inc:250
+#: lib/ui/stdcontext.inc:348 lib/ui/stdmenus.inc:250
 msgid "Append Optional Argument Eating From the Right"
 msgstr "Pridaj Nepovinný Argument Sprava"
 
-#: lib/ui/stdcontext.inc:351 lib/ui/stdmenus.inc:251
+#: lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:251
 msgid "Remove Last Argument Spitting Out to the Right"
 msgstr "Odstráň Posledný Argument Sprava"
 
-#: lib/ui/stdcontext.inc:360
+#: lib/ui/stdcontext.inc:358
 msgid "Reload|R"
 msgstr "Opäť načítať"
 
-#: lib/ui/stdcontext.inc:362 lib/ui/stdcontext.inc:374
-#: lib/ui/stdcontext.inc:475
+#: lib/ui/stdcontext.inc:360 lib/ui/stdcontext.inc:372
+#: lib/ui/stdcontext.inc:473
 msgid "Edit Externally...|x"
 msgstr "Externe upraviť...|x"
 
-#: lib/ui/stdcontext.inc:382
+#: lib/ui/stdcontext.inc:380
 msgid "Multicolumn|u"
 msgstr "Viacstĺpcové"
 
-#: lib/ui/stdcontext.inc:383
+#: lib/ui/stdcontext.inc:381
 msgid "Multirow|w"
 msgstr "Viacriadkové"
 
-#: lib/ui/stdcontext.inc:385
+#: lib/ui/stdcontext.inc:383
 msgid "Top Line|n"
 msgstr "Vrchný riadok"
 
-#: lib/ui/stdcontext.inc:386
+#: lib/ui/stdcontext.inc:384
 msgid "Bottom Line|i"
 msgstr "Spodný riadok"
 
-#: lib/ui/stdcontext.inc:387 lib/ui/stdmenus.inc:187
+#: lib/ui/stdcontext.inc:385 lib/ui/stdmenus.inc:187
 msgid "Left Line|L"
 msgstr "Ľavý riadok"
 
-#: lib/ui/stdcontext.inc:388 lib/ui/stdmenus.inc:188
+#: lib/ui/stdcontext.inc:386 lib/ui/stdmenus.inc:188
 msgid "Right Line|R"
 msgstr "Pravý riadok"
 
-#: lib/ui/stdcontext.inc:390
+#: lib/ui/stdcontext.inc:388
 msgid "Left|f"
 msgstr "Vľavo"
 
-#: lib/ui/stdcontext.inc:391 lib/ui/stdmenus.inc:197
+#: lib/ui/stdcontext.inc:389 lib/ui/stdmenus.inc:197
 msgid "Center|C"
 msgstr "Na stred"
 
-#: lib/ui/stdcontext.inc:392
+#: lib/ui/stdcontext.inc:390
 msgid "Right|h"
 msgstr "Vpravo"
 
-#: lib/ui/stdcontext.inc:393
+#: lib/ui/stdcontext.inc:391
 msgid "Decimal"
 msgstr "Desatinná"
 
-#: lib/ui/stdcontext.inc:395 lib/ui/stdmenus.inc:200
+#: lib/ui/stdcontext.inc:393 lib/ui/stdmenus.inc:200
 msgid "Top|T"
 msgstr "Hore"
 
-#: lib/ui/stdcontext.inc:396 lib/ui/stdmenus.inc:201
+#: lib/ui/stdcontext.inc:394 lib/ui/stdmenus.inc:201
 msgid "Middle|M"
 msgstr "Na stred"
 
-#: lib/ui/stdcontext.inc:397 lib/ui/stdmenus.inc:202
+#: lib/ui/stdcontext.inc:395 lib/ui/stdmenus.inc:202
 msgid "Bottom|B"
 msgstr "Dole"
 
-#: lib/ui/stdcontext.inc:399
+#: lib/ui/stdcontext.inc:397
 msgid "Append Row|A"
 msgstr "Pridať Riadok"
 
-#: lib/ui/stdcontext.inc:400 lib/ui/stdmenus.inc:205
+#: lib/ui/stdcontext.inc:398 lib/ui/stdmenus.inc:205
 msgid "Delete Row|D"
 msgstr "Zmazať riadok"
 
-#: lib/ui/stdcontext.inc:401 lib/ui/stdmenus.inc:206
+#: lib/ui/stdcontext.inc:399 lib/ui/stdmenus.inc:206
 msgid "Copy Row|o"
 msgstr "Kopíruj riadok"
 
-#: lib/ui/stdcontext.inc:404
+#: lib/ui/stdcontext.inc:402
 msgid "Append Column|p"
 msgstr "Pridať Stĺpec"
 
-#: lib/ui/stdcontext.inc:405 lib/ui/stdmenus.inc:210
+#: lib/ui/stdcontext.inc:403 lib/ui/stdmenus.inc:210
 msgid "Delete Column|e"
 msgstr "Zmazať stĺpec"
 
-#: lib/ui/stdcontext.inc:406
+#: lib/ui/stdcontext.inc:404
 msgid "Copy Column|y"
 msgstr "Kopíruj Stĺpec"
 
-#: lib/ui/stdcontext.inc:409
+#: lib/ui/stdcontext.inc:407
 msgid "Settings...|g"
 msgstr "Nastavenia...|a"
 
-#: lib/ui/stdcontext.inc:417 lib/ui/stdmenus.inc:30
+#: lib/ui/stdcontext.inc:415 lib/ui/stdmenus.inc:30
 msgid "File|F"
 msgstr "Súbor|S"
 
-#: lib/ui/stdcontext.inc:418
+#: lib/ui/stdcontext.inc:416
 msgid "Path|P"
 msgstr "Cesty"
 
-#: lib/ui/stdcontext.inc:419
+#: lib/ui/stdcontext.inc:417
 msgid "Class|C"
 msgstr "Trieda"
 
-#: lib/ui/stdcontext.inc:421
+#: lib/ui/stdcontext.inc:419
 msgid "File Revision|R"
 msgstr "Revízia Súboru"
 
-#: lib/ui/stdcontext.inc:422
+#: lib/ui/stdcontext.inc:420
 msgid "Tree Revision|T"
 msgstr "Revízia Stromu"
 
-#: lib/ui/stdcontext.inc:423
+#: lib/ui/stdcontext.inc:421
 msgid "Revision Author|A"
 msgstr "Autor Revízie"
 
-#: lib/ui/stdcontext.inc:424
+#: lib/ui/stdcontext.inc:422
 msgid "Revision Date|D"
 msgstr "Dátum Revízie"
 
-#: lib/ui/stdcontext.inc:425
+#: lib/ui/stdcontext.inc:423
 msgid "Revision Time|i"
 msgstr "Čas Revízie"
 
-#: lib/ui/stdcontext.inc:427
+#: lib/ui/stdcontext.inc:425
 msgid "LyX Version|X"
 msgstr "Verzia LyXu"
 
-#: lib/ui/stdcontext.inc:431
+#: lib/ui/stdcontext.inc:429
 msgid "Document Info|D"
 msgstr "Info Dokumentu"
 
-#: lib/ui/stdcontext.inc:433
+#: lib/ui/stdcontext.inc:431
 msgid "Copy Text|o"
 msgstr "Kopíruj Text"
 
-#: lib/ui/stdcontext.inc:442 lib/ui/stdcontext.inc:462
+#: lib/ui/stdcontext.inc:440 lib/ui/stdcontext.inc:460
 msgid "Activate Branch|A"
 msgstr "Aktivuj Vetvu|A"
 
-#: lib/ui/stdcontext.inc:443 lib/ui/stdcontext.inc:463
+#: lib/ui/stdcontext.inc:441 lib/ui/stdcontext.inc:461
 msgid "Deactivate Branch|e"
 msgstr "Dezaktivuj Vetvu|e"
 
-#: lib/ui/stdcontext.inc:452
+#: lib/ui/stdcontext.inc:450
 msgid "Insert Reference at Cursor Position|I"
 msgstr "Vlož Referenciu na Pozícii Kurzoru"
 
-#: lib/ui/stdcontext.inc:546
+#: lib/ui/stdcontext.inc:544
 msgid "All Indexes|A"
 msgstr "Všetky Indexy"
 
-#: lib/ui/stdcontext.inc:549
+#: lib/ui/stdcontext.inc:547
 msgid "Subindex|b"
 msgstr "Podindex"
 
-#: lib/ui/stdcontext.inc:577 lib/ui/stdmenus.inc:513
+#: lib/ui/stdcontext.inc:575 lib/ui/stdmenus.inc:513
 msgid "Reject Change|R"
 msgstr "Odmietnuť zmenu"
 
-#: lib/ui/stdcontext.inc:585
+#: lib/ui/stdcontext.inc:583
 msgid "Promote Section|P"
 msgstr "Zvýšiť úroveň Sekcie"
 
-#: lib/ui/stdcontext.inc:586
+#: lib/ui/stdcontext.inc:584
 msgid "Demote Section|D"
 msgstr "Znížiť úroveň Sekcie"
 
-#: lib/ui/stdcontext.inc:588
+#: lib/ui/stdcontext.inc:586
 msgid "Move Section Down|w"
 msgstr "Presunúť Sekciu Nadol"
 
-#: lib/ui/stdcontext.inc:590
+#: lib/ui/stdcontext.inc:588
 msgid "Select Section|S"
 msgstr "Vyber Sekciu"
 
-#: lib/ui/stdcontext.inc:598
+#: lib/ui/stdcontext.inc:596
 msgid "Wrap by Preview|P"
 msgstr "Obtekať pri náhľade"
 
@@ -13522,11 +13522,11 @@ msgstr "Tlač dokument"
 msgid "Check spelling"
 msgstr "Kontrola pravopisu"
 
-#: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1315
+#: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1313
 msgid "Undo"
 msgstr "Späť"
 
-#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1325
+#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1323
 msgid "Redo"
 msgstr "Opäť"
 
@@ -16800,7 +16800,7 @@ msgstr "Pridať len do bibliografie."
 msgid "before"
 msgstr "pred"
 
-#: src/Buffer.cpp:137
+#: src/Buffer.cpp:138
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -16809,69 +16809,69 @@ msgstr ""
 "Nedal sa vytlačiť dokument %1$s.\n"
 "Skontrolujte nastavenie vašej tlačiarne."
 
-#: src/Buffer.cpp:140
+#: src/Buffer.cpp:141
 msgid "Print document failed"
 msgstr "Tlač dokumentu zlyhala"
 
-#: src/Buffer.cpp:322
+#: src/Buffer.cpp:327
 msgid "Disk Error: "
 msgstr "Chyba Disku: "
 
-#: src/Buffer.cpp:323
+#: src/Buffer.cpp:328
 #, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr "LyX nemohol vytvoriť pomocný adresár '%1$s' (možné že je plný disk?)"
 
-#: src/Buffer.cpp:406
+#: src/Buffer.cpp:412
 msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr "LyX sa pokúsil zavrieť document s neuloženými zmenami!\n"
 
-#: src/Buffer.cpp:408
+#: src/Buffer.cpp:414
 msgid "Attempting to close changed document!"
 msgstr "Pokúšam sa zavrieť zmenený dokument!"
 
-#: src/Buffer.cpp:416
+#: src/Buffer.cpp:422
 msgid "Could not remove temporary directory"
 msgstr "Pomocný adresár sa nedal zmazať"
 
-#: src/Buffer.cpp:417
+#: src/Buffer.cpp:423
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Pomocný adresár %1$s sa nedal zmazať"
 
-#: src/Buffer.cpp:748
+#: src/Buffer.cpp:754
 msgid "Unknown document class"
 msgstr "Neznáma trieda dokumentu"
 
-#: src/Buffer.cpp:749
+#: src/Buffer.cpp:755
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "Použitá štandardná trieda dokumentu, lebo trieda %1$s je neznáma."
 
-#: src/Buffer.cpp:753 src/Text.cpp:483
+#: src/Buffer.cpp:759 src/Text.cpp:483
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Neznámy token: %1$s %2$s\n"
 
-#: src/Buffer.cpp:757 src/Buffer.cpp:764 src/Buffer.cpp:787
+#: src/Buffer.cpp:763 src/Buffer.cpp:770 src/Buffer.cpp:793
 msgid "Document header error"
 msgstr "Chyba v hlavičke dokumentu"
 
-#: src/Buffer.cpp:763
+#: src/Buffer.cpp:769
 msgid "\\begin_header is missing"
 msgstr "chýba \\begin_header"
 
-#: src/Buffer.cpp:786
+#: src/Buffer.cpp:792
 msgid "\\begin_document is missing"
 msgstr "chýba \\begin_document"
 
-#: src/Buffer.cpp:799 src/Buffer.cpp:805 src/BufferView.cpp:1420
-#: src/BufferView.cpp:1426
+#: src/Buffer.cpp:805 src/Buffer.cpp:811 src/BufferView.cpp:1418
+#: src/BufferView.cpp:1424
 msgid "Changes not shown in LaTeX output"
 msgstr "Zmeny nezobrazené v LaTeX-ovom výstupu"
 
-#: src/Buffer.cpp:800 src/BufferView.cpp:1421
+#: src/Buffer.cpp:806 src/BufferView.cpp:1419
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -16883,7 +16883,7 @@ msgstr ""
 "Prosím nainštalujte tieto balíky alebo predefinujte \\lyxadded a "
 "\\lyxdeleted v LaTeX-ovej preambuly."
 
-#: src/Buffer.cpp:806 src/BufferView.cpp:1427
+#: src/Buffer.cpp:812 src/BufferView.cpp:1425
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -16895,40 +16895,40 @@ msgstr ""
 "Prosím nainštalujte oba balíky alebo predefinujte \\lyxadded a \\lyxdeleted "
 "v LaTeX-ovej preambuly."
 
-#: src/Buffer.cpp:844 src/BufferParams.cpp:414
+#: src/Buffer.cpp:850 src/BufferParams.cpp:414
 #: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:447
 #: src/insets/InsetIndex.cpp:711
 msgid "Index"
 msgstr "Index"
 
-#: src/Buffer.cpp:898
+#: src/Buffer.cpp:904
 msgid "File Not Found"
 msgstr "Súbor Nenájdený"
 
-#: src/Buffer.cpp:899
+#: src/Buffer.cpp:905
 #, c-format
 msgid "Unable to open file `%1$s'."
 msgstr "Nemôžem otvoriť súbor `%1$s'."
 
-#: src/Buffer.cpp:922 src/Buffer.cpp:966
+#: src/Buffer.cpp:928 src/Buffer.cpp:991
 msgid "Document format failure"
 msgstr "Chybný formát dokumentu"
 
-#: src/Buffer.cpp:923
+#: src/Buffer.cpp:929
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s skončil neočakávane, čo znamená, že je pravdepodobne poškodený."
 
-#: src/Buffer.cpp:967
+#: src/Buffer.cpp:992
 #, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "%1$s nie je čitateľný dokument LyXu."
 
-#: src/Buffer.cpp:992
+#: src/Buffer.cpp:1017
 msgid "Conversion failed"
 msgstr "Konverzia zlyhala"
 
-#: src/Buffer.cpp:993
+#: src/Buffer.cpp:1018
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -16937,22 +16937,22 @@ msgstr ""
 "%1$s je z inej verzie LyX-u, ale pomocný súbor pre jeho konverziu sa nedal "
 "vytvoriť."
 
-#: src/Buffer.cpp:1003
+#: src/Buffer.cpp:1028
 msgid "Conversion script not found"
 msgstr "Skript na konverziu nenájdený"
 
-#: src/Buffer.cpp:1004
+#: src/Buffer.cpp:1029
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr "%1$s je z inej verzie LyX-u, ale konverzný skript lyx2lyx nenájdený."
 
-#: src/Buffer.cpp:1027 src/Buffer.cpp:1034
+#: src/Buffer.cpp:1052 src/Buffer.cpp:1059
 msgid "Conversion script failed"
 msgstr "Konverzný skript zlyhal"
 
-#: src/Buffer.cpp:1028
+#: src/Buffer.cpp:1053
 #, c-format
 msgid ""
 "%1$s is from an older version of LyX and the lyx2lyx script failed to "
@@ -16960,44 +16960,44 @@ msgid ""
 msgstr ""
 "%1$s je zo staršej verzie LyX-u, a skript lyx2lyx zlyhal pri konverzii."
 
-#: src/Buffer.cpp:1035
+#: src/Buffer.cpp:1060
 #, c-format
 msgid ""
 "%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
 "it."
 msgstr "%1$s je z novšej verzie LyX-u, a skript lyx2lyx zlyhal pri konverzii."
 
-#: src/Buffer.cpp:1056 src/Buffer.cpp:3680 src/Buffer.cpp:3742
+#: src/Buffer.cpp:1081 src/Buffer.cpp:3705 src/Buffer.cpp:3767
 msgid "File is read-only"
 msgstr "Dokument je iba na čítanie"
 
-#: src/Buffer.cpp:1057
+#: src/Buffer.cpp:1082
 #, c-format
 msgid "The file %1$s cannot be written because it is marked as read-only."
 msgstr "Súbor %1$s je neuložiteĺný lebo je označený ako len na čítanie."
 
-#: src/Buffer.cpp:1066
+#: src/Buffer.cpp:1091
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
 "overwrite this file?"
 msgstr "Dokument %1$s bol externe modifikovaný. Naozaj ho chcete prepísať?"
 
-#: src/Buffer.cpp:1068
+#: src/Buffer.cpp:1093
 msgid "Overwrite modified file?"
 msgstr "Prepísať modifikovaný súbor?"
 
-#: src/Buffer.cpp:1069 src/Buffer.cpp:2289 src/Exporter.cpp:50
+#: src/Buffer.cpp:1094 src/Buffer.cpp:2314 src/Exporter.cpp:50
 #: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2114
 #: src/frontends/qt4/GuiView.cpp:2303
 msgid "&Overwrite"
 msgstr "Prepísať"
 
-#: src/Buffer.cpp:1098
+#: src/Buffer.cpp:1123
 msgid "Backup failure"
 msgstr "Založenie zlyhalo"
 
-#: src/Buffer.cpp:1099
+#: src/Buffer.cpp:1124
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -17006,46 +17006,46 @@ msgstr ""
 "LyX nemohol vytvoriť záložnú kópiu v %1$s.\n"
 "Skontrolujte, či daný adresár existuje a je možné do neho zapisovať."
 
-#: src/Buffer.cpp:1130
+#: src/Buffer.cpp:1155
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Ukladám dokument %1$s..."
 
-#: src/Buffer.cpp:1145
+#: src/Buffer.cpp:1170
 msgid " could not write file!"
 msgstr "Nemôžem písať do súbora!"
 
-#: src/Buffer.cpp:1153
+#: src/Buffer.cpp:1178
 msgid " done."
 msgstr " hotové."
 
-#: src/Buffer.cpp:1168
+#: src/Buffer.cpp:1193
 #, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Pokúšam sa uložiť dokument %1$s\n"
 
-#: src/Buffer.cpp:1178 src/Buffer.cpp:1191 src/Buffer.cpp:1205
+#: src/Buffer.cpp:1203 src/Buffer.cpp:1216 src/Buffer.cpp:1230
 #, c-format
 msgid "Saved to %1$s. Phew.\n"
 msgstr "Úspešne uložené do súboru %1$s. Uf.\n"
 
-#: src/Buffer.cpp:1181
+#: src/Buffer.cpp:1206
 msgid "Save failed! Trying again...\n"
 msgstr "Uloženie zlyhalo! Skúšam ešte raz...\n"
 
-#: src/Buffer.cpp:1195
+#: src/Buffer.cpp:1220
 msgid "Save failed! Trying yet again...\n"
 msgstr "Uloženie zlyhalo! Skúšam zatiaľ ešte raz...\n"
 
-#: src/Buffer.cpp:1209
+#: src/Buffer.cpp:1234
 msgid "Save failed! Bummer. Document is lost."
 msgstr "Uloženie zlyhalo! Och. Dokument je stratený."
 
-#: src/Buffer.cpp:1296
+#: src/Buffer.cpp:1321
 msgid "Iconv software exception Detected"
 msgstr "Iconv detekoval softvérovú výnimku"
 
-#: src/Buffer.cpp:1296
+#: src/Buffer.cpp:1321
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
@@ -17054,12 +17054,12 @@ msgstr ""
 "Skontrolujte prosím či softvér pre podporu vášho kódovania (%1$s) je správne "
 "inštalovaná."
 
-#: src/Buffer.cpp:1327
+#: src/Buffer.cpp:1352
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr "Nedá sa nájsť LaTeXov príkaz pre znak '%1$s' (hodnota %2$s)"
 
-#: src/Buffer.cpp:1330
+#: src/Buffer.cpp:1355
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -17069,19 +17069,19 @@ msgstr ""
 "zvolenom kódovaní.\n"
 "Pomôcť by mohla zmena kódovania dokumentu na utf8."
 
-#: src/Buffer.cpp:1337
+#: src/Buffer.cpp:1362
 msgid "iconv conversion failed"
 msgstr "iconv konverzia zlyhala"
 
-#: src/Buffer.cpp:1342
+#: src/Buffer.cpp:1367
 msgid "conversion failed"
 msgstr "Konverzia zlyhala"
 
-#: src/Buffer.cpp:1426
+#: src/Buffer.cpp:1451
 msgid "Uncodable character in file path"
 msgstr "Nekódovateľný znak v ceste"
 
-#: src/Buffer.cpp:1427
+#: src/Buffer.cpp:1452
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -17102,53 +17102,53 @@ msgstr ""
 "Vyberte vhodné kódovanie dokumentu (napr. utf8)\n"
 "alebo zmeňte meno cesty."
 
-#: src/Buffer.cpp:1691
+#: src/Buffer.cpp:1716
 msgid "Running chktex..."
 msgstr "Spúšťam chktex..."
 
-#: src/Buffer.cpp:1705
+#: src/Buffer.cpp:1730
 msgid "chktex failure"
 msgstr "chktex zlyhal"
 
-#: src/Buffer.cpp:1706
+#: src/Buffer.cpp:1731
 msgid "Could not run chktex successfully."
 msgstr "Nemôžem spustiť chktex úspešne."
 
-#: src/Buffer.cpp:1958
+#: src/Buffer.cpp:1983
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Žiadne informácie pre export formátu: %1$s"
 
-#: src/Buffer.cpp:2030
+#: src/Buffer.cpp:2055
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Chyba pri exporte na formát: %1$s."
 
-#: src/Buffer.cpp:2113
+#: src/Buffer.cpp:2138
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "Vetva \"%1$s\" už existuje."
 
-#: src/Buffer.cpp:2143
+#: src/Buffer.cpp:2168
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "Vetva \"%1$s\" neexistuje."
 
-#: src/Buffer.cpp:2203
+#: src/Buffer.cpp:2228
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Nemôžem analyzovať  \"%1$s\""
 
-#: src/Buffer.cpp:2210
+#: src/Buffer.cpp:2235
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Neznámy cieľ \"%1$s\""
 
-#: src/Buffer.cpp:2220
+#: src/Buffer.cpp:2245
 msgid "Error exporting to DVI."
 msgstr "Chyba pri exporte na DVI"
 
-#: src/Buffer.cpp:2285 src/Exporter.cpp:45
+#: src/Buffer.cpp:2310 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -17159,73 +17159,73 @@ msgstr ""
 "\n"
 "Chcete tento súbor prepísať?"
 
-#: src/Buffer.cpp:2288 src/Exporter.cpp:48
+#: src/Buffer.cpp:2313 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Prepísať súbor?"
 
-#: src/Buffer.cpp:2305
+#: src/Buffer.cpp:2330
 msgid "Error running external commands."
 msgstr "Chyba pri spúšťaní externých príkazov."
 
-#: src/Buffer.cpp:3110
+#: src/Buffer.cpp:3135
 msgid "Preview source code"
 msgstr "Náhľad na zdrojový text"
 
-#: src/Buffer.cpp:3128
+#: src/Buffer.cpp:3153
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Náhľad na zdrojový text odstavca %1$d"
 
-#: src/Buffer.cpp:3132
+#: src/Buffer.cpp:3157
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Náhľad zdrojového kódu pre odstavce %1$s - %2$s"
 
-#: src/Buffer.cpp:3240
+#: src/Buffer.cpp:3265
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatické ukladanie %1$s"
 
-#: src/Buffer.cpp:3294
+#: src/Buffer.cpp:3319
 msgid "Autosave failed!"
 msgstr "Automatické ukladanie sa nepodarilo!"
 
-#: src/Buffer.cpp:3355
+#: src/Buffer.cpp:3380
 msgid "Autosaving current document..."
 msgstr "Automatické ukladanie súčasného dokumentu..."
 
-#: src/Buffer.cpp:3445
+#: src/Buffer.cpp:3470
 msgid "Couldn't export file"
 msgstr "Nemôžem exportovať súbor"
 
-#: src/Buffer.cpp:3446
+#: src/Buffer.cpp:3471
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Žiadne informácie pre export formátu %1$s"
 
-#: src/Buffer.cpp:3511
+#: src/Buffer.cpp:3536
 msgid "File name error"
 msgstr "Chyba v názve súboru"
 
-#: src/Buffer.cpp:3512
+#: src/Buffer.cpp:3537
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Cesta k dokumentu nesmie obsahovať medzery."
 
-#: src/Buffer.cpp:3597
+#: src/Buffer.cpp:3622
 msgid "Document export cancelled."
 msgstr "Exportovanie dokumentu bolo zrušené."
 
-#: src/Buffer.cpp:3607
+#: src/Buffer.cpp:3632
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument exportovaný ako %1$s do súboru `%2$s'"
 
-#: src/Buffer.cpp:3613
+#: src/Buffer.cpp:3638
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument exportovaný ako %1$s"
 
-#: src/Buffer.cpp:3666
+#: src/Buffer.cpp:3691
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17236,19 +17236,19 @@ msgstr ""
 "\n"
 "Získať núdzovú kópiu späť?"
 
-#: src/Buffer.cpp:3669
+#: src/Buffer.cpp:3694
 msgid "Load emergency save?"
 msgstr "Nahrať núdzovú kópiu ?"
 
-#: src/Buffer.cpp:3670
+#: src/Buffer.cpp:3695
 msgid "&Recover"
 msgstr "Získať späť"
 
-#: src/Buffer.cpp:3670
+#: src/Buffer.cpp:3695
 msgid "&Load Original"
 msgstr "Nahrať Originál"
 
-#: src/Buffer.cpp:3681
+#: src/Buffer.cpp:3706
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -17257,15 +17257,15 @@ msgstr ""
 "Bezpečnostný súbor úspešne načítaný, ale originálny súbor %1$s je označený "
 "len na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
 
-#: src/Buffer.cpp:3687
+#: src/Buffer.cpp:3712
 msgid "Document was successfully recovered."
 msgstr "Dokument bol úspešne obnovený."
 
-#: src/Buffer.cpp:3689
+#: src/Buffer.cpp:3714
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument nebol úspešne obnovený."
 
-#: src/Buffer.cpp:3690
+#: src/Buffer.cpp:3715
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17274,27 +17274,27 @@ msgstr ""
 "Zmazať núdzovú kópiu teraz?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3694 src/Buffer.cpp:3706
+#: src/Buffer.cpp:3719 src/Buffer.cpp:3731
 msgid "Delete emergency file?"
 msgstr "Zmazať núdzový súbor?"
 
-#: src/Buffer.cpp:3695 src/Buffer.cpp:3708
+#: src/Buffer.cpp:3720 src/Buffer.cpp:3733
 msgid "&Keep"
 msgstr "Držať"
 
-#: src/Buffer.cpp:3699
+#: src/Buffer.cpp:3724
 msgid "Emergency file deleted"
 msgstr "Núdzový súbor vymazaný"
 
-#: src/Buffer.cpp:3700
+#: src/Buffer.cpp:3725
 msgid "Do not forget to save your file now!"
 msgstr "Teraz nezabudnite uložiť váš súbor!"
 
-#: src/Buffer.cpp:3707
+#: src/Buffer.cpp:3732
 msgid "Remove emergency file now?"
 msgstr "Zmazať núdzovú kópiu teraz?"
 
-#: src/Buffer.cpp:3730
+#: src/Buffer.cpp:3755
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17305,19 +17305,19 @@ msgstr ""
 "\n"
 "Nahrať radšej zálohu ?"
 
-#: src/Buffer.cpp:3732
+#: src/Buffer.cpp:3757
 msgid "Load backup?"
 msgstr "Nahrať zálohu?"
 
-#: src/Buffer.cpp:3733
+#: src/Buffer.cpp:3758
 msgid "&Load backup"
 msgstr "Nahrať zálohu"
 
-#: src/Buffer.cpp:3733
+#: src/Buffer.cpp:3758
 msgid "Load &original"
 msgstr "Nahrať Originál"
 
-#: src/Buffer.cpp:3743
+#: src/Buffer.cpp:3768
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17326,25 +17326,25 @@ msgstr ""
 "Zálohový súbor úspešne načítaný, ale originálny súbor %1$s je označený len "
 "na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
 
-#: src/Buffer.cpp:4083 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4108 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Nezmyselné!!! "
 
-#: src/Buffer.cpp:4204
+#: src/Buffer.cpp:4229
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s znovu nahraný."
 
-#: src/Buffer.cpp:4207
+#: src/Buffer.cpp:4232
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Nedá sa znova nahrať dokument %1$s."
 
-#: src/Buffer.cpp:4273
+#: src/Buffer.cpp:4298
 msgid "Included File Invalid"
 msgstr "Zahrnutý Súbor je Neplatný"
 
-#: src/Buffer.cpp:4274
+#: src/Buffer.cpp:4299
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17416,7 +17416,7 @@ msgstr ""
 "trieda a schéma. LyX nebude schopný zrobiť\n"
 "správny výstup."
 
-#: src/BufferParams.cpp:1997 src/BufferView.cpp:1265 src/BufferView.cpp:1297
+#: src/BufferParams.cpp:1997 src/BufferView.cpp:1263 src/BufferView.cpp:1295
 msgid "Could not load class"
 msgstr "Nepodarilo sa nahrať triedu"
 
@@ -17428,122 +17428,122 @@ msgstr "Chyba pri čítaní vnútorných schéma-informácií"
 msgid "Read Error"
 msgstr "Chyba pri čítaní"
 
-#: src/BufferView.cpp:188
+#: src/BufferView.cpp:186
 msgid "No more insets"
 msgstr "Už nie je viac vložiek"
 
-#: src/BufferView.cpp:731
+#: src/BufferView.cpp:729
 msgid "Save bookmark"
 msgstr "Uložiť záložku"
 
-#: src/BufferView.cpp:940
+#: src/BufferView.cpp:938
 msgid "Converting document to new document class..."
 msgstr "Prevádzam dokument do novej triedy dokumentov..."
 
-#: src/BufferView.cpp:983
+#: src/BufferView.cpp:981
 msgid "Document is read-only"
 msgstr "Dokument je iba na čítanie"
 
-#: src/BufferView.cpp:992
+#: src/BufferView.cpp:990
 msgid "This portion of the document is deleted."
 msgstr "Táto časť dokumentu je vymazaná."
 
-#: src/BufferView.cpp:1263 src/BufferView.cpp:1295
+#: src/BufferView.cpp:1261 src/BufferView.cpp:1293
 #, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "Nepodarilo sa nahrať triedu dokumentu `%1$s'."
 
-#: src/BufferView.cpp:1318
+#: src/BufferView.cpp:1316
 msgid "No further undo information"
 msgstr "Ďalej sa nedá zrušovať"
 
-#: src/BufferView.cpp:1328
+#: src/BufferView.cpp:1326
 msgid "No further redo information"
 msgstr "Ďalej sa nedá opakovať"
 
-#: src/BufferView.cpp:1517 src/lyxfind.cpp:378 src/lyxfind.cpp:396
+#: src/BufferView.cpp:1515 src/lyxfind.cpp:378 src/lyxfind.cpp:396
 msgid "String not found!"
 msgstr "Reťazec nebol nájdený!"
 
-#: src/BufferView.cpp:1560
+#: src/BufferView.cpp:1558
 msgid "Mark off"
 msgstr "Značka vypnutá"
 
-#: src/BufferView.cpp:1566
+#: src/BufferView.cpp:1564
 msgid "Mark on"
 msgstr "Značka zapnutá"
 
-#: src/BufferView.cpp:1573
+#: src/BufferView.cpp:1571
 msgid "Mark removed"
 msgstr "Značka odstránená"
 
-#: src/BufferView.cpp:1576
+#: src/BufferView.cpp:1574
 msgid "Mark set"
 msgstr "Značka nastavená"
 
-#: src/BufferView.cpp:1631
+#: src/BufferView.cpp:1629
 msgid "Statistics for the selection:"
 msgstr "Štatistika pre výber:"
 
-#: src/BufferView.cpp:1633
+#: src/BufferView.cpp:1631
 msgid "Statistics for the document:"
 msgstr "Štatistika pre dokument:"
 
-#: src/BufferView.cpp:1636
+#: src/BufferView.cpp:1634
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d slov"
 
-#: src/BufferView.cpp:1638
+#: src/BufferView.cpp:1636
 msgid "One word"
 msgstr "Jedno slovo"
 
-#: src/BufferView.cpp:1641
+#: src/BufferView.cpp:1639
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d znakov (spolu s medzerami)"
 
-#: src/BufferView.cpp:1644
+#: src/BufferView.cpp:1642
 msgid "One character (including blanks)"
 msgstr "Jeden znak (aj medzere)"
 
-#: src/BufferView.cpp:1647
+#: src/BufferView.cpp:1645
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d znakov (bez medzier)"
 
-#: src/BufferView.cpp:1650
+#: src/BufferView.cpp:1648
 msgid "One character (excluding blanks)"
 msgstr "Jeden znak (bez medzier)"
 
-#: src/BufferView.cpp:1652
+#: src/BufferView.cpp:1650
 msgid "Statistics"
 msgstr "Štatistika"
 
-#: src/BufferView.cpp:1783
+#: src/BufferView.cpp:1781
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr "`inset-forall' prerušené lebo počet akcií je väčší ako %1$d"
 
-#: src/BufferView.cpp:1785
+#: src/BufferView.cpp:1783
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "Použité \"%1$s\" pri %2$d vložkách"
 
-#: src/BufferView.cpp:1793
+#: src/BufferView.cpp:1791
 msgid "Branch name"
 msgstr "Meno vetvy"
 
-#: src/BufferView.cpp:1800 src/frontends/qt4/GuiBranches.cpp:176
+#: src/BufferView.cpp:1798 src/frontends/qt4/GuiBranches.cpp:176
 msgid "Branch already exists"
 msgstr "Vetva už existuje"
 
-#: src/BufferView.cpp:2221
+#: src/BufferView.cpp:2219
 msgid "Inverse Search Failed"
 msgstr "Spiatočné Hľadanie Zlyhalo"
 
-#: src/BufferView.cpp:2222
+#: src/BufferView.cpp:2220
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
@@ -17551,22 +17551,22 @@ msgstr ""
 "Neplatná pozícia žiadaná spiatočným hľadaním.\n"
 "Treba aktualizovať prehliadaný dokument."
 
-#: src/BufferView.cpp:2596
+#: src/BufferView.cpp:2594
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Vkladám dokument %1$s..."
 
-#: src/BufferView.cpp:2607
+#: src/BufferView.cpp:2605
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s bol vložený."
 
-#: src/BufferView.cpp:2609
+#: src/BufferView.cpp:2607
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nie je možné vložiť dokument %1$s"
 
-#: src/BufferView.cpp:2874
+#: src/BufferView.cpp:2872
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17577,11 +17577,11 @@ msgstr ""
 "%1$s\n"
 "sa kvôli chybe: %2$s nedá čítať"
 
-#: src/BufferView.cpp:2876
+#: src/BufferView.cpp:2874
 msgid "Could not read file"
 msgstr "Nemôžem čítať súbor"
 
-#: src/BufferView.cpp:2883
+#: src/BufferView.cpp:2881
 #, c-format
 msgid ""
 "%1$s\n"
@@ -17590,15 +17590,15 @@ msgstr ""
 "%1$s\n"
 "je nečitateľné."
 
-#: src/BufferView.cpp:2884 src/output.cpp:39
+#: src/BufferView.cpp:2882 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Nemôžem otvoriť súbor"
 
-#: src/BufferView.cpp:2891
+#: src/BufferView.cpp:2889
 msgid "Reading not UTF-8 encoded file"
 msgstr "Čítaný súbor nie je kódovaný v UTF-8"
 
-#: src/BufferView.cpp:2892
+#: src/BufferView.cpp:2890
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -18331,11 +18331,11 @@ msgstr "Spúšťam BibTeX."
 msgid "Running MakeIndex for nomencl."
 msgstr "Spúšťam MakeIndex pre nomencl."
 
-#: src/LyX.cpp:121
+#: src/LyX.cpp:119
 msgid "Could not read configuration file"
 msgstr "Nemôžem čítať konfiguračný súbor"
 
-#: src/LyX.cpp:122
+#: src/LyX.cpp:120
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -18346,46 +18346,46 @@ msgstr ""
 "%1$s.\n"
 "Skontrolujte prosím vašu inštaláciu."
 
-#: src/LyX.cpp:131
+#: src/LyX.cpp:129
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: rekonfigurujem užívateľský adresár"
 
-#: src/LyX.cpp:135
+#: src/LyX.cpp:133
 msgid "Done!"
 msgstr "Hotovo!"
 
-#: src/LyX.cpp:399
+#: src/LyX.cpp:395
 msgid "The following files could not be loaded:"
 msgstr "Nasledovné súbory sa nedali nahrať:"
 
-#: src/LyX.cpp:436
+#: src/LyX.cpp:432
 #, c-format
 msgid "%1$s does not appear like a LyX created temporary directory."
 msgstr "%1$s nevyzerá ako pomocný adresár vytvorený LyXom."
 
-#: src/LyX.cpp:438
+#: src/LyX.cpp:434
 msgid "Cannot remove temporary directory"
 msgstr "Nedá sa zmazať pomocný adresár"
 
-#: src/LyX.cpp:444
+#: src/LyX.cpp:440
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Nedá sa zmazať pomocný adresár %1$s"
 
-#: src/LyX.cpp:446
+#: src/LyX.cpp:442
 msgid "Unable to remove temporary directory"
 msgstr "Nedá sa zmazať pomocný adresár"
 
-#: src/LyX.cpp:475
+#: src/LyX.cpp:471
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Zlá voľba v príkazovom riadku `%1$s'. Končím."
 
-#: src/LyX.cpp:549
+#: src/LyX.cpp:545
 msgid "No textclass is found"
 msgstr "Nenašiel sa žiadny súbor tried (textclass)"
 
-#: src/LyX.cpp:550
+#: src/LyX.cpp:546
 msgid ""
 "LyX will only have minimal functionality because no textclasses have been "
 "found. You can either try to reconfigure LyX normally, try to reconfigure "
@@ -18395,19 +18395,19 @@ msgstr ""
 "Môžte skúsiť normálnu rekonfiguráciu, alebo rekonfigurovať bez kontrolovania "
 "vašej LaTeX-inštalácie, alebo pokračovať."
 
-#: src/LyX.cpp:554
+#: src/LyX.cpp:550
 msgid "&Reconfigure"
 msgstr "Rekonfigurácia"
 
-#: src/LyX.cpp:555
+#: src/LyX.cpp:551
 msgid "&Without LaTeX"
 msgstr "Bez použitia LaTeX-a"
 
-#: src/LyX.cpp:556 src/VCBackend.cpp:845 src/VCBackend.cpp:849
+#: src/LyX.cpp:552 src/VCBackend.cpp:845 src/VCBackend.cpp:849
 msgid "&Continue"
 msgstr "Pokračovať"
 
-#: src/LyX.cpp:659
+#: src/LyX.cpp:655
 msgid ""
 "SIGHUP signal caught!\n"
 "Bye."
@@ -18415,7 +18415,7 @@ msgstr ""
 "Zachytený signál SIGHUP!\n"
 "Ahoj."
 
-#: src/LyX.cpp:663
+#: src/LyX.cpp:659
 msgid ""
 "SIGFPE signal caught!\n"
 "Bye."
@@ -18423,7 +18423,7 @@ msgstr ""
 "Zachytený signál SIGFPE!\n"
 "Ahoj."
 
-#: src/LyX.cpp:666
+#: src/LyX.cpp:662
 msgid ""
 "SIGSEGV signal caught!\n"
 "Sorry, you have found a bug in LyX, hope you have not lost any data.\n"
@@ -18437,19 +18437,19 @@ msgstr ""
 "treba, pošlite nám to oznámenie. Ďakujem!\n"
 "Ahoj."
 
-#: src/LyX.cpp:682
+#: src/LyX.cpp:678
 msgid "LyX crashed!"
 msgstr "LyX havaroval!"
 
-#: src/LyX.cpp:716 src/frontends/qt4/GuiView.cpp:989
+#: src/LyX.cpp:712 src/frontends/qt4/GuiView.cpp:989
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:856
+#: src/LyX.cpp:852
 msgid "Could not create temporary directory"
 msgstr "Nedá sa vytvoriť pomocný adresár"
 
-#: src/LyX.cpp:857
+#: src/LyX.cpp:853
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -18460,11 +18460,11 @@ msgstr ""
 "\"%1$s\"\n"
 "Zaistite, že táto cesta existuje a má práva na zápis. Potom to skúste znovu."
 
-#: src/LyX.cpp:940
+#: src/LyX.cpp:936
 msgid "Missing user LyX directory"
 msgstr "Chýba užívateľský adresár LyX-u"
 
-#: src/LyX.cpp:941
+#: src/LyX.cpp:937
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -18473,37 +18473,37 @@ msgstr ""
 "Uviedli ste neexistujúci užívateľský adresár LyX-u, %1$s.\n"
 "Je potrebný k zachovaniu vašej konfigurácii."
 
-#: src/LyX.cpp:946
+#: src/LyX.cpp:942
 msgid "&Create directory"
 msgstr "Vytvoriť adresár"
 
-#: src/LyX.cpp:947
+#: src/LyX.cpp:943
 msgid "&Exit LyX"
 msgstr "Skončiť LyX"
 
-#: src/LyX.cpp:948
+#: src/LyX.cpp:944
 msgid "No user LyX directory. Exiting."
 msgstr "Žiadny užívateľský adresár LyX-u. Koniec."
 
-#: src/LyX.cpp:952
+#: src/LyX.cpp:948
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Vytváram adresár %1$s"
 
-#: src/LyX.cpp:957
+#: src/LyX.cpp:953
 msgid "Failed to create directory. Exiting."
 msgstr "Nepodarilo sa vytvoriť adresár. Končím."
 
-#: src/LyX.cpp:1030
+#: src/LyX.cpp:1026
 msgid "List of supported debug flags:"
 msgstr "Zoznam podporovaných ladiacich indikátorov:"
 
-#: src/LyX.cpp:1034
+#: src/LyX.cpp:1030
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Nastavenie úrovne ladenia na %1$s"
 
-#: src/LyX.cpp:1045
+#: src/LyX.cpp:1041
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -18576,39 +18576,39 @@ msgstr ""
 "\t-version  zhrnúť  verziu a prekladnú informáciu.\n"
 "Viac informácií nájdete v manuálovej stránke LyXu."
 
-#: src/LyX.cpp:1097
+#: src/LyX.cpp:1093
 msgid "No system directory"
 msgstr "Nemám systémový adresár"
 
-#: src/LyX.cpp:1098
+#: src/LyX.cpp:1094
 msgid "Missing directory for -sysdir switch"
 msgstr "Chýba adresár pre prepínač -sysdir"
 
-#: src/LyX.cpp:1109
+#: src/LyX.cpp:1105
 msgid "No user directory"
 msgstr "Nemám užívateľský adresár"
 
-#: src/LyX.cpp:1110
+#: src/LyX.cpp:1106
 msgid "Missing directory for -userdir switch"
 msgstr "Chýba adresár pre prepínač -userdir"
 
-#: src/LyX.cpp:1121
+#: src/LyX.cpp:1117
 msgid "Incomplete command"
 msgstr "Neúplný príkaz"
 
-#: src/LyX.cpp:1122
+#: src/LyX.cpp:1118
 msgid "Missing command string after --execute switch"
 msgstr "Chýba príkazový reťazec po prepínači --execute!"
 
-#: src/LyX.cpp:1133
+#: src/LyX.cpp:1129
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Chýba typ súboru [napr. latex, ps...] po prepínači --export"
 
-#: src/LyX.cpp:1146
+#: src/LyX.cpp:1142
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Chýba typ súboru [napr. latex, ps...] po prepínači --import"
 
-#: src/LyX.cpp:1151
+#: src/LyX.cpp:1147
 msgid "Missing filename for --import"
 msgstr "Chýba názov súboru pre --import"
 
@@ -23701,15 +23701,15 @@ msgstr "Chyba pri generovaní pixmapy"
 msgid "No image"
 msgstr "Bez obrázku"
 
-#: src/insets/RenderPreview.cpp:95
+#: src/insets/RenderPreview.cpp:89
 msgid "Preview loading"
 msgstr "Nahranie náhľadu"
 
-#: src/insets/RenderPreview.cpp:98
+#: src/insets/RenderPreview.cpp:92
 msgid "Preview ready"
 msgstr "Náhľad prichystaný"
 
-#: src/insets/RenderPreview.cpp:101
+#: src/insets/RenderPreview.cpp:95
 msgid "Preview failed"
 msgstr "Náhľad zlyhal"
 
