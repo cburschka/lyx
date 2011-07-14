@@ -1631,6 +1631,17 @@ void Menu::updateView()
 }
 
 
+void Menu::clear()
+{
+	QList<QAction *> items = actions();
+	for (int i = 0; i != items.size(); ++i) {
+		// QAction::menu() returns 0 if there's no submenu.
+		delete items.at(i)->menu();
+	}
+	QMenu::clear();
+}
+
+
 /////////////////////////////////////////////////////////////////////
 // Menus::Impl definition and implementation
 /////////////////////////////////////////////////////////////////////

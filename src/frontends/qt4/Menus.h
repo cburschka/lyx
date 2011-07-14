@@ -40,6 +40,9 @@ public:
 
 	///
 	~Menu();
+
+	/// QMenu::clear() reimplementation to handle the deletion of submenus.
+	void clear();
 	
 private Q_SLOTS:
 	///
