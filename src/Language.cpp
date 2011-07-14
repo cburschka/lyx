@@ -325,20 +325,20 @@ void Languages::readLayoutTranslations(support::FileName const & filename)
 		if (!lex.next(true))
 			break;
 		string const code = lex.getString();
-		bool readit = false;
+		bool found = false;
 		for (LanguageList::iterator lit = lbeg; lit != lend; ++lit) {
 			if (match(code, lit->second) != NoMatch) {
-				if (readTranslations(lex, trans[code]))
-					readit = true;
-				else
-					lex.printError("Could not read layout "
-					               "translations for language "
-					               "`" + code + "'");
+				found = true;
 				break;
 			}
 		}
-		if (!readit) {
+		if (!found) {
 			lex.printError("Unknown language `" + code + "'");
+			break;
+		}
+		if (!readTranslations(lex, trans[code])) {
+			lex.printError("Could not read layout translations for language `"
+				+ code + "'");
 			break;
 		}
 	}
@@ -349,7 +349,7 @@ void Languages::readLayoutTranslations(support::FileName const & filename)
 	TransMap::const_iterator const tend = trans.end();
 	for (TransMap::const_iterator tit = tbeg; tit != tend; ++tit) {
 		for (LanguageList::iterator lit = lbeg; lit != lend; ++lit) {
-			Match m = match(tit->first, lit->second);
+			Match const m = match(tit->first, lit->second);
 			if (m == NoMatch)
 				continue;
 			lit->second.readLayoutTranslations(tit->second,
