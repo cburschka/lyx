@@ -28,7 +28,6 @@
 using namespace std;
 using namespace lyx::support;
 
-
 namespace lyx {
 
 Languages languages;
@@ -194,57 +193,14 @@ bool Language::read(Lexer & lex)
 }
 
 
-namespace {
-
-bool readTranslations(Lexer & lex, Language::TranslationMap & trans)
-{
-	while (lex.isOK()) {
-		if (lex.checkFor("End"))
-			break;
-		if (!lex.next(true))
-			return false;
-		string const key = lex.getString();
-		if (!lex.next(true))
-			return false;
-		docstring const val = lex.getDocString();
-		trans[key] = val;
-	}
-	return true;
-}
-
-enum Match{NoMatch, ApproximateMatch, ExactMatch};
-
-Match match(string const & code, Language const & lang)
-{
-	// we need to mimic gettext: code can be a two-letter code, which
-	// should match all variants, e.g. "de" should match "de_DE",
-	// "de_AT" etc.
-	// special case for chinese:
-	// simplified  => code == "zh_CN", langcode == "zh_CN"
-	// traditional => code == "zh_TW", langcode == "zh_CN"
-	string const variety = lang.variety();
-	string const langcode = variety.empty() ?
-	                        lang.code() : lang.code() + '_' + variety;
-	string const name = lang.lang();
-	if ((code == langcode && name != "chinese-traditional") ||
-	    (code == "zh_TW"  && name == "chinese-traditional"))
-		return ExactMatch;
-	if ((code.size() == 2 && langcode.size() > 2 &&
-	     code + '_' == langcode.substr(0, 3)))
-		return ApproximateMatch;
-	return NoMatch;
-}
-
-}
-
-
 void Language::readLayoutTranslations(Language::TranslationMap const & trans, bool replace)
 {
 	TranslationMap::const_iterator const end = trans.end();
-	for (TranslationMap::const_iterator it = trans.begin(); it != end; ++it)
-		if (replace ||
-		    layoutTranslations_.find(it->first) == layoutTranslations_.end())
+	for (TranslationMap::const_iterator it = trans.begin(); it != end; ++it) {
+		if (replace
+			|| layoutTranslations_.find(it->first) == layoutTranslations_.end())
 			layoutTranslations_[it->first] = it->second;
+	}
 }
 
 
@@ -291,6 +247,56 @@ void Languages::read(FileName const & filename)
 	// Read layout translations
 	FileName const path = libFileSearch(string(), "layouttranslations");
 	readLayoutTranslations(path);
+}
+
+
+namespace {
+
+bool readTranslations(Lexer & lex, Language::TranslationMap & trans)
+{
+	while (lex.isOK()) {
+		if (lex.checkFor("End"))
+			break;
+		if (!lex.next(true))
+			return false;
+		string const key = lex.getString();
+		if (!lex.next(true))
+			return false;
+		docstring const val = lex.getDocString();
+		trans[key] = val;
+	}
+	return true;
+}
+
+
+enum Match {
+	NoMatch,
+	ApproximateMatch,
+	ExactMatch
+};
+
+
+Match match(string const & code, Language const & lang)
+{
+	// we need to mimic gettext: code can be a two-letter code, which
+	// should match all variants, e.g. "de" should match "de_DE",
+	// "de_AT" etc.
+	// special case for chinese:
+	// simplified  => code == "zh_CN", langcode == "zh_CN"
+	// traditional => code == "zh_TW", langcode == "zh_CN"
+	string const variety = lang.variety();
+	string const langcode = variety.empty() ?
+	                        lang.code() : lang.code() + '_' + variety;
+	string const name = lang.lang();
+	if ((code == langcode && name != "chinese-traditional")
+		|| (code == "zh_TW"  && name == "chinese-traditional"))
+		return ExactMatch;
+	if ((code.size() == 2) && (langcode.size() > 2)
+		&& (code + '_' == langcode.substr(0, 3)))
+		return ApproximateMatch;
+	return NoMatch;
+}
+
 }
 
 
