@@ -25,6 +25,7 @@
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/FileMonitor.h"
+#include "support/lassert.h"
 
 #include "support/bind.h"
 

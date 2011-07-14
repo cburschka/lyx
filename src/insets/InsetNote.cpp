@@ -50,7 +50,6 @@ namespace lyx {
 namespace {
 
 typedef Translator<string, InsetNoteParams::Type> NoteTranslator;
-typedef Translator<docstring, InsetNoteParams::Type> NoteTranslatorLoc;
 
 NoteTranslator const init_notetranslator()
 {

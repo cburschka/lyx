@@ -15,7 +15,6 @@
 #ifndef GRAPHICSTYPES_H
 #define GRAPHICSTYPES_H
 
-#include "support/Translator.h"
 #include "support/strfwd.h"
 
 

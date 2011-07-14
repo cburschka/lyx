@@ -17,6 +17,8 @@
 
 #include <boost/noncopyable.hpp>
 
+#include <vector>
+
 namespace lyx {
 
 namespace support { class FileName; }

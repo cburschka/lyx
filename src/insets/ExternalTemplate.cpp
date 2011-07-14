@@ -20,6 +20,7 @@
 #include "support/lstrings.h"
 #include "support/Package.h"
 #include "support/Path.h"
+#include "support/Translator.h"
 
 #include <ostream>
 

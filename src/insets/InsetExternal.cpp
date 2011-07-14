@@ -36,18 +36,18 @@
 
 #include "graphics/PreviewLoader.h"
 
+#include "support/bind.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
-#include "support/Translator.h"
-
-#include "support/bind.h"
 
 #include <sstream>
+#include <vector>
 
 using namespace std;
 using namespace lyx::support;

@@ -47,6 +47,7 @@
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/FileName.h"
+#include "support/lassert.h"
 
 #include "frontends/Application.h"
 #include "frontends/FontMetrics.h"

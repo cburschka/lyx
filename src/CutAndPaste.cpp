@@ -56,6 +56,7 @@
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
 #include "support/limited_stack.h"
 #include "support/lstrings.h"
 
