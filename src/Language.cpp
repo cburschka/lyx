@@ -22,6 +22,7 @@
 #include "support/debug.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/Messages.h"
 
@@ -31,11 +32,9 @@ using namespace lyx::support;
 namespace lyx {
 
 Languages languages;
-Language ignore_lang;
-Language latex_lang;
-Language const * default_language;
-Language const * ignore_language = &ignore_lang;
-Language const * latex_language = &latex_lang;
+Language const * ignore_language = 0;
+Language const * default_language = 0;
+Language const * latex_language = 0;
 Language const * reset_language = 0;
 
 
@@ -226,11 +225,17 @@ void Languages::read(FileName const & filename)
 		l.read(lex);
 		if (!lex)
 			break;
-		if (l.lang() == "latex")
-			latex_lang = l;
-		else if (l.lang() == "ignore")
-			ignore_lang = l;
-		else
+		if (l.lang() == "latex") {
+			// Check if latex language was not already defined.
+			LASSERT(latex_language == 0, continue);
+			static const Language latex_lang = l;
+			latex_language = &latex_lang;
+		} else if (l.lang() == "ignore") {
+			// Check if ignore language was not already defined.
+			LASSERT(ignore_language == 0, continue);
+			static const Language ignore_lang = l;
+			ignore_language = &ignore_lang;
+		} else
 			languagelist[l.lang()] = l;
 	}
 
