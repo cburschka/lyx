@@ -128,12 +128,6 @@ Style Prop
 	LabelFont
 	  Series	Medium
 	EndFont
-	LangPreamble
-		\providecommand{\propname}{_(Prop)}
-	EndLangPreamble
-	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\propname}{_(Prop)}}
-	EndBabelPreamble
 End
 
 
