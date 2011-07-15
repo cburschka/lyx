@@ -133,6 +133,22 @@ Title
 Title*
 \family default
 .
+\begin_inset Newline newline
+\end_inset
+
+Also note that if 
+\family sans
+Title*
+\family default
+ is used, you must not use 
+\family sans
+hyperref support
+\family default
+ in the document settings under 
+\family sans
+PDF properties
+\family default
+.
 \end_layout
 
 \end_inset
