@@ -497,10 +497,10 @@ End
 Style Foreword
 	Margin		First_Dynamic
 	Category	FrontMatter
-      	LabelType	Static
-      	LabelString	"Foreword"
+	LabelType	Static
+	LabelString	"Foreword"
 	KeepEmpty	1
-      	LatexName	foreword
+	LatexName	foreword
 	TocLevel	0
 	LatexType	Command
 	NeedProtect	1
@@ -520,10 +520,8 @@ End
 
 Style Preface
 	CopyStyle	Foreword
-	Category	"For Authors"
+	Category	FrontMatter
 	LatexName	preface
-	KeepEmpty	1
-	OptionalArgs	0
 	InTitle		0
 	Margin		First_Dynamic
 	TopSep		4
