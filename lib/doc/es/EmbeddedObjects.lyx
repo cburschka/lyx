@@ -24617,68 +24617,15 @@ Supr
 \begin_inset VSpace bigskip
 \end_inset
 
-Se puede cambiar el color del 
+
+\lang english
+You can change the text color of the greyed out notes in the menu 
 \family sans
-Resaltado en gris
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Colors
 \family default
- poniendo en el preámbulo el comando:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-renewenvironment{lyxgreyedout}
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Phantom HPhantom
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-{
-\backslash
-textcolor{color}
-\backslash
-bgroup}{
-\backslash
-egroup}
-\end_layout
-
-\begin_layout Standard
-Los colores disponibles y el método para definir nuestros propios colores
- se explica en la sección
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Cuadros-Coloreados"
-
-\end_inset
-
 .
-\end_layout
-
-\begin_layout Standard
-Las notas en azul en este documento se han hecho con notas del tipo 
-\family sans
-Resaltado en gris
-\family default
- pero definiendo el color del texto en azul.
 \end_layout
 
 \begin_layout Section

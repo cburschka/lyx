@@ -23021,55 +23021,15 @@ LyX注釈
 \begin_inset VSpace bigskip
 \end_inset
 
-淡色注釈の文字色は、プリアンブルに以下のコマンドを置くことで変更することができます。
-\end_layout
 
-\begin_layout Standard
-
-\series bold
-
-\backslash
-renewenvironment{lyxgreyedout}
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Phantom HPhantom
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-{
-\backslash
-textcolor{色彩名}
-\backslash
-bgroup}{
-\backslash
-egroup}
-\end_layout
-
-\begin_layout Standard
-使用できる色彩名と、自製色の定義の仕方は、第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:色付きの表"
-
-\end_inset
-
-節で説明されています。
-\end_layout
-
-\begin_layout Standard
-本文書で青で表示されている注釈は、青文字に設定した淡色表示注釈を使用しています。
+\lang english
+You can change the text color of the greyed out notes in the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Colors
+\family default
+.
 \end_layout
 
 \begin_layout Section

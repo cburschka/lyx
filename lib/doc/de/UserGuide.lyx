@@ -34067,44 +34067,36 @@ Kopf/Fußzeile
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To define custom page header and footer line for your Dokument, you need
- to set the headings style to 
+Um eigene Kopf- und Fußzeilen für ein Dokument zu definieren, muss man den
+ Stil 
 \family sans
-Fancy
+ausgefallen
 \family default
- in the 
+ im 
 \family sans
 Dokument\SpecialChar \menuseparator
 Einstellungen
 \family default
  Dialog unter 
 \family sans
-Page
-\begin_inset space ~
-\end_inset
-
-Layout
+Seitenlayout
 \family default
-.
- Als zweiten Schritt add in the menu 
+ einstellen.
+ Als zweiten Schritt fügt man im Menü 
 \family sans
 Dokument\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
 Module
 \family default
  das Modul 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
-Custom Header/Footerlines
-\begin_inset Quotes erd
+Benutzerdefinierte Kopf/Fußzeilen
+\begin_inset Quotes grd
 \end_inset
 
-
-\lang ngerman
-.
+ hinzu.
  Dieses Modul bietet die 6
 \begin_inset space ~
 \end_inset
@@ -34174,15 +34166,11 @@ Normalerweise werden Kopf/Fußzeilen am Anfang eines Dokuments definiert,
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Page-layout"
+reference "fig:Seitenlayout-mit-benutzer"
 
 \end_inset
 
- zeigt 
-\lang english
-the page layout
-\lang ngerman
- und wo die Kopf/Fußzeilen Stile erscheinen.
+ zeigt das Seitenlayout und wo die Kopf/Fußzeilen Stile erscheinen.
 \end_layout
 
 \begin_layout Standard
@@ -34363,11 +34351,11 @@ Fußzeile rechts
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Page-layout"
+name "fig:Seitenlayout-mit-benutzer"
 
 \end_inset
 
-Page layout with custom header and footer line.
+Seitenlayout mit benutzerdefinierter Kopf/Fußzeile.
 \end_layout
 
 \end_inset
@@ -34412,7 +34400,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\family sans
 {}
 \end_layout
 
@@ -34647,7 +34634,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\family sans
 {}
 \end_layout
 
