@@ -238,12 +238,30 @@ End
 Counter		prob
   Within	chapter
 End
+# Prob does not copy a style to avoid preamble code
 Style Prob
-	CopyStyle	Problem
-	LabelCounter	prob
+	Category	Exercise
+	LatexType	Environment
 	LatexName	prob
+	Margin		First_Dynamic
+	LabelType	Counter
+	LabelCounter	prob
 	LabelString	"\theprob."
+	RefPrefix	pro
+	NextNoIndent	1
 	OptionalArgs	0
+	LabelSep	xx
+	ParIndent	MMM
+	ParSkip		0.4
+	ItemSep		0.2
+	TopSep		0.7
+	BottomSep	0.7
+	ParSep		0.3
+	Align		Block
+	AlignPossible	Left
+	LabelFont
+	  Series	Bold
+	EndFont
 End
 
 
@@ -254,7 +272,7 @@ Style Solution
 	LabelCounter	solution
 	LatexName	solution
 	LabelString	"Solution \thesolution."
-	RefPrefix	sol
+	RefPrefix	solu
 	LangPreamble
 		\providecommand{\solutionname}{_(Solution)}
 	EndLangPreamble
@@ -264,14 +282,11 @@ Style Solution
 End
 
 
-Counter		sol
-  Within	chapter
-End
 Style Sol
-	CopyStyle	Problem
-	LabelCounter	sol
+	CopyStyle	Prob
 	LatexName	sol
-	LabelString	"\thesol"
+	LabelType	Static
+	LabelString	"# [number of Prob]"
 	RequiredArgs	1
 End
 

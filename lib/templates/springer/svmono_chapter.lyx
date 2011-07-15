@@ -1387,7 +1387,11 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
-Don't forget to label each problem; the label is needed for the solutions'
+
+\series bold
+Note:
+\series default
+ Don't forget to label each problem; the label is needed for the solutions'
  environment
 \end_layout
 
@@ -1396,16 +1400,45 @@ Don't forget to label each problem; the label is needed for the solutions'
 
 \end_layout
 
+\begin_layout Standard
+There are two styles for problems: 
+\family sans
+Prob
+\family default
+ and 
+\family sans
+Problem
+\family default
+.
+ The 
+\family sans
+Prob
+\family default
+ style is the preferred because it can be referenced in the solution section.
+\end_layout
+
+\begin_layout Standard
+Two
+\begin_inset space ~
+\end_inset
+
+examples of 
+\family sans
+Prob
+\family default
+:
+\end_layout
+
 \begin_layout Prob
 \begin_inset CommandInset label
 LatexCommand label
-name "prob:prob1"
+name "prob:given-problem"
 
 \end_inset
 
-A given problem or Excercise is described here.
+A given problem or excercise is described here.
  The problem is described here.
- The problem is described here.
+ Its label will be referenced in its solution.
 \end_layout
 
 \begin_layout --Separator--
@@ -1432,6 +1465,37 @@ Problem Heading
 \end_inset
 
  (b) The second part of the problem is described here.
+\end_layout
+
+\begin_layout Standard
+This is the 
+\family sans
+Problem
+\family default
+ style:
+\end_layout
+
+\begin_layout Problem
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Title/Name (optional)
+\end_layout
+
+\end_inset
+
+The problem
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+problems
+\end_layout
+
+\end_inset
+
+ is revealed here.
 \end_layout
 
 \begin_layout Standard
