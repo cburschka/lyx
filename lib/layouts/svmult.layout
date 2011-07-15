@@ -45,6 +45,7 @@ End
 
 Style Title
 	CopyStyle	Chapter
+	Category	FrontMatter
 	LatexName	title
 	TopSep		1
 	TocLevel	1
@@ -75,11 +76,19 @@ Style Contributor_List
 End
 
 Style Author
+	Margin		First_Dynamic
+	LabelType	Static
+	LabelSep	x
+	LabelString	"Author:"
 	Font
 	  Series	Medium
 	  Family	Roman
 	  Size		Normal
 	  Shape		Up
+	EndFont
+	LabelFont
+	  Family	Typewriter
+	  Color		Blue
 	EndFont
 End
 

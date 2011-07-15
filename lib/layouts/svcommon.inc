@@ -349,13 +349,13 @@ Style Institute
 	LatexType	Command
 	InTitle		1
 	LatexName	institute
-	Margin		Static
-	LeftMargin	"Author data:xxx"
-	LabelSep	xxx
+	Margin		First_Dynamic
+	LabelSep	x
 	LabelType	Static
-	LabelString	"Author data: "
+	LabelString	"Author data:"
 	LabelFont
-	  Shape		Italic
+	  Family	Typewriter
+	  Color		Blue
 	EndFont
 	Requires	url
 	Align 		Left
@@ -374,12 +374,12 @@ Style TOC_Title
 	Align		Left
 	LatexType	Command
 	LatexName	toctitle
-	LeftMargin	xxx
+	LeftMargin	xx
 	TopSep		0.4
 	BottomSep	0.4
 	LabelType	Static
 	LabelSep	x
-	LabelString	"TOC Title:"
+	LabelString	"TOC title:"
 	LabelFont
 	  Family	Typewriter
 	  Color		Blue
@@ -389,20 +389,20 @@ End
 Style TOC_Author
 	CopyStyle	TOC_Title
 	LatexName	tocauthor
-	LabelString	"TOC Author:"
+	LabelString	"TOC author:"
 End
 
 Style Running_Title
-      	CopyStyle	TOC_Title
+	CopyStyle	TOC_Title
 	LatexName	titlerunning
 	InTitle		1
-	LabelString	"Running Title:"
+	LabelString	"Running title:"
 End
 
 Style Running_Author
 	CopyStyle	Running_Title
 	LatexName	authorrunning
-	LabelString	"Running Author:"
+	LabelString	"Running author:"
 End
 
 Style Running_Chapter
@@ -410,15 +410,13 @@ Style Running_Chapter
 	Category	Section
 	InTitle		0
 	LatexName	chaptermark
-	LeftMargin	"Running Chapter:xxx"
-	LabelString	"Running Chapter:"
+	LabelString	"Running chapter:"
 End
 
 Style Running_Section
-      CopyStyle		Running_Chapter
-      LatexName		sectionmark
-      LeftMargin	"Running Section:xxx"
-      LabelString	"Running Section:"
+	CopyStyle		Running_Chapter
+	LatexName		sectionmark
+	LabelString	"Running section:"
 End
 
 Style Abstract
