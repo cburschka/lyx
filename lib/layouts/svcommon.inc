@@ -105,8 +105,8 @@ Style Back_Matter
 End
 
 Style Part
-      Margin		Static
-      Align		Right
+	Margin		Static
+	Align		Right
 End
 
 ## The following is a variant of style Part.  It allows to place some
@@ -148,9 +148,9 @@ Style Chapter
 End
 
 Style ChapSubtitle
-      LatexName		chapsubtitle
-      LatexType		Command
-      Category		Section
+	LatexName	chapsubtitle
+	LatexType	Command
+	Category	Section
 	TopSep		0.7
 	Font
 	  Series	Bold
@@ -161,30 +161,30 @@ Style ChapSubtitle
 End
 
 Style ChapAuthor
-      LatexName		chapauthor
-      LatexType		Command
-      Category		Section
-      TopSep		0.7
-      Font
+	LatexName	chapauthor
+	LatexType	Command
+	Category	Section
+	TopSep		0.7
+	Font
 	  Series	Bold
 	  Shape		Up
 	  Size		normal
-      EndFont
+	EndFont
 End
 
 Style ChapMotto
-      LatexName		motto
-      LatexType		Command
-      Category		Section
-      TopSep		0.7
-      BottomSep		0.7
-      Align		Left
-      LeftMargin	MMMMMMMMMMMM
-      Font
+	LatexName	motto
+	LatexType	Command
+	Category	Section
+	TopSep		0.7
+	BottomSep	0.7
+	Align		Left
+	LeftMargin	MMMMMMMMMMMM
+	Font
 	  Series	Medium
 	  Shape		Italic
 	  Size		normal
-      EndFont
+	EndFont
 End
 
 Style Section
@@ -414,8 +414,8 @@ Style Running_Chapter
 End
 
 Style Running_Section
-	CopyStyle		Running_Chapter
-	LatexName		sectionmark
+	CopyStyle	Running_Chapter
+	LatexName	sectionmark
 	LabelString	"Running section:"
 End
 
