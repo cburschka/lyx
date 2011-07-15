@@ -5239,25 +5239,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-さい。余白の寸法は、ダイアログの中で設定できますが、行頭下げの大きさを変えるには、プリアンブルで
-\end_layout
-
-\begin_layout Quote
-
-\series bold
-
-\backslash
-setlength{
-\backslash
-parindent}{長さ}
-\end_layout
-
-\begin_layout Standard
-と設定しなくてはなりません。ここで「長さ」は、付録で挙げられている単位のいずれかです。既定値は30
-\begin_inset space \thinspace{}
-\end_inset
-
-ptです。
+さい。
 \end_layout
 
 \begin_layout Subsection
@@ -37337,7 +37319,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\family sans
 {}
 \end_layout
 
@@ -37576,7 +37557,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\family sans
 {}
 \end_layout
 
