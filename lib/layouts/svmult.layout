@@ -12,7 +12,7 @@ Format 35
 Input svcommon.inc
 
 ClassOptions
-	FontSize	 ""
+	FontSize	""
 End
 
 NoStyle Acknowledgements
@@ -26,7 +26,7 @@ NoStyle Acknowledgements
 #	LeftMargin	"TOC depth (provide a number):xxx"
 #	LabelString	"TOC depth (provide a number):"
 #	Preamble
-#	    \newcommand{\svmulttoc}[1]{\setcounter{minitocdepth}{#1}\dominitoc}
+#	  \newcommand{\svmulttoc}[1]{\setcounter{minitocdepth}{#1}\dominitoc}
 #	EndPreamble
 #End
 
