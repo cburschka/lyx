@@ -49,7 +49,7 @@
 
 \usepackage{t1enc}
 \end_preamble
-\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
 \begin_modules
 logicalmkup
@@ -107,10 +107,10 @@ End
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "unicode=false,linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true,  pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
-\use_amsmath 0
+\use_amsmath 1
 \use_esint 0
 \use_mhchem 1
 \use_mathdots 1
@@ -136,13 +136,23 @@ End
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
-\html_be_strict false
+\html_be_strict true
 \end_header
 
 \begin_body
 
 \begin_layout Title
 LyXの高度な機能
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\size large
+Version 2.0.x
 \end_layout
 
 \begin_layout Author
@@ -8387,22 +8397,6 @@ aasguide.tex
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 これらは期待通りに動作するので、ここでは列挙するだけにして、コマンドの説明されている節を挙げておきます。
 \family typewriter
 
@@ -8603,22 +8597,6 @@ status collapsed
 任意設定
 \family default
 ボックスに入力してください。
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -8823,22 +8801,6 @@ figcaption
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 
 \family typewriter
 
@@ -8960,22 +8922,6 @@ onecolumn
 twocolumn
 \family default
 （3.2）
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -10193,57 +10139,13 @@ Elsevier各誌
 
 \begin_layout Standard
 
-\noun on
-Rod Pinna
-\noun default
-文
-\end_layout
-
-\begin_layout Standard
-Elsevier Science Publishers B.V.は、同社出版の様々な学術誌に論文を投稿するための、標準的LaTeX文書クラス（
+\lang english
+See the LyX template file 
 \family typewriter
-elsart.cls
+elsarticle.lyx
 \family default
-）を提供しています。スタイルファイルは、直接同社のウェブサイト
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://authors.elsevier.com/
-\end_layout
-
-\end_inset
-
-からダウンロードすることができます。使用法の解説は、クラスファイルとともに提供されており、出版社の要求事項が詳細に述べられています。LyXには、この文書クラスを
-使うための、レイアウトとひな型ファイルのパッケージが同梱されています。このクラスファイルの導入法は、他のLaTeXパッケージと同様であり、Elsevierの説明
-書に解説があります。
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-elsart.cls
-\family default
-を使用するために、レイアウトファイル
-\family typewriter
-elsart.layout
-\family default
-が提供されています。Elsevierのクラスファイルは、基本的に標準
-\family typewriter
-article
-\family default
-クラスに基づいているため、通常の機能はほとんど使用することができます。また、Elsevierクラスには、AMS環境に類似の数式環境がたくさん定義されています。こ
-れらのコマンドは、すべてElsevierの説明書に解説されており、LyX上で使用可能になっています。
-\end_layout
-
-\begin_layout Standard
-Elsevierスタイルを使う上で最も易しい方法は、同梱されているひな型ファイルを使用して文書を作成することです。装飾的（fancy）ヘディングやgeometr
-yパッケージのようなオプションは、Elsevierが自身で提供するスタイルファイル内で定義されているため、使用しないのが最上です。理想的には、Elsevierの
-説明書で言及されているもの以外のパッケージは、使用しない方が良いでしょう。Elsevierは、提出されたファイルをそのまま使いながら、クラスファイルを、論文を投
-稿した特定の学術誌用のクラスファイルに置き換えることを意図しているため、基本的にできるだけ「クリーンな」LaTeXファイルを要求しています。これは同時に、文書の
-整形に時間をかけすぎるべきではない、ということを意味しています。論文が出版される時には、書式はいずれにしても変わってしまうからです。このレイアウトのその他の使用
-法は、基本的に標準articleクラスと同様です。Elsevierが何を許容し、何を許容しないかに関する詳細は、Elsevierの説明書をご参照ください。
+.
+ It contains all infos you need.
 \end_layout
 
 \begin_layout Section
@@ -13159,22 +13061,6 @@ letter (koma-script)
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \noindent
 文書クラス
 \emph on
@@ -13221,22 +13107,6 @@ LaTeX
 詩句
 \family default
 が収録されています。さらに、新しいletter固有環境がたくさん追加されています。
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -13917,109 +13787,6 @@ letter
 垂直スペース
 \family default
 は、隙間を空けるために、文書にLaTeXコマンドをつねに追加するようになっていますが、この文書クラスの場合には、そのような挙動が望まれないためです。
-\end_layout
-
-\begin_layout Section
-Latex8（IEEE学会論文）
-\end_layout
-
-\begin_layout Standard
-
-\noun on
-Allan Rae
-\noun default
-文
-\end_layout
-
-\begin_layout Subsection
-はじめに
-\end_layout
-
-\begin_layout Standard
-このクラスは、IEEE提供の学会へ投稿する原稿を執筆する特定の目的のためのものですので、IEEEのAuthors Kitを入手されることを強くお薦めします。この
-キットには、
-\family sans
-latex.sty
-\family default
-パッケージと付属の書誌情報スタイルファイルが含まれています。Authors Kitは、通常、初回投稿が受理されたときに、電子メールで送付されてきます。Autho
-rs Kitには、組版上の制約をはじめ、たくさんの役立つ情報が含まれていますので、以下では、あなたがこれを読まれたものと仮定して、同一の内容は省略するものとしま
-す。
-\end_layout
-
-\begin_layout Subsection
-はじめに
-\end_layout
-
-\begin_layout Standard
-[A.R\SpecialChar \@.
- 未完成]
-\end_layout
-
-\begin_layout Subsection
-サポートされている環境
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-標準
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-タイトル
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-著者
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-電子メール
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-所属
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-概要
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-節
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-小節
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-キャプション
-\end_layout
-
-\begin_layout Subsection
-画面と印字の違い
-\end_layout
-
-\begin_layout Standard
-おもに節番号の表示に関して、表示の仕方に小さな違いがあります。画面では、節番号の後のピリオドが表示されませんが、出力には表示されますので、心配する必要はありませ
-ん。
 \end_layout
 
 \begin_layout Section
@@ -16631,12 +16398,7 @@ ChkTeX
 \family sans
 ChkTeX
 \family default
-を調整することができます。どうしようもない場合には、
-\family sans
-表示\SpecialChar \menuseparator
-すべてのエラーボックスを削除
-\family default
-を選択して、すべての警告を即取り除いてしまうこともできます。
+を調整することができます。
 \end_layout
 
 \begin_layout Standard
@@ -20576,19 +20338,6 @@ LyXは強力な道具ですが、TeX/LaTeXでできることをすべてサポ�
 多段組み
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-Lars Gullik Bjønnes
-\end_layout
-
-\end_inset
-
-文
-\end_layout
-
 \begin_layout Subsection
 目的
 \end_layout
@@ -20950,23 +20699,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-John Weiss
-\end_layout
-
-\end_inset
-
-文
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 既定での
 \begin_inset Flex MenuItem
 status collapsed
@@ -21240,23 +20972,6 @@ Dropped Capitals
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-Mike Ressler
-\end_layout
-
-\end_inset
-
-文
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \noindent
 \begin_inset ERT
 status collapsed
@@ -21383,23 +21098,6 @@ dropping
 
 \begin_layout Section
 標準的でない形の段落
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-Mike Ressler
-\end_layout
-
-\end_inset
-
-文
-\begin_inset VSpace bigskip
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -21679,16 +21377,6 @@ end{sloppypar}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-まとめ
-\end_layout
-
-\begin_layout Standard
-見てきたように、この節には有用な例も馬鹿げた例も入っています。たとえば、最後の節のように段落の形を変えることが必要な人がそれほどいるとは思えませんが、重要な点は
-、TeXやLaTeXでどのようにすればいいかを理解する気があれば、ほとんどすべてをLyXの中でできるということです。TeXは、すばらしく強力な組版システムであり
-、LyXはそれをバックエンドとして使用しているので、そのすべての力があなたの前に利用可能なのです。Happy LyXing!
 \end_layout
 
 \end_body

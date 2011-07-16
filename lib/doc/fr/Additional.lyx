@@ -45,7 +45,7 @@
 % extra space for tables
 \newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
 \end_preamble
-\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
 \begin_modules
 logicalmkup
@@ -103,10 +103,10 @@ End
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true,  pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
-\use_amsmath 0
+\use_amsmath 1
 \use_esint 0
 \use_mhchem 1
 \use_mathdots 1
@@ -133,13 +133,17 @@ End
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
-\html_be_strict false
+\html_be_strict true
 \end_header
 
 \begin_body
 
 \begin_layout Title
 Options avancées de LyX
+\end_layout
+
+\begin_layout Subtitle
+Version 2.0.x
 \begin_inset Note Note
 status open
 
@@ -7306,22 +7310,6 @@ Les choses qui marchent comme prévu
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Puisqu'elles marchent comme prévu, j'en fais simplement la liste avec la
  section dans laquelle elles se trouvent : 
 \family typewriter
@@ -7516,22 +7504,6 @@ de
 document.
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsubsection
 Les choses qui marchent, mais qui nécessitent un commentaire
 \end_layout
@@ -7707,22 +7679,6 @@ Les choses qui ne sont pas implémentées, utilisez du code TeX
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 
 \family typewriter
 
@@ -7856,22 +7812,6 @@ onecolumn
 twocolumn
 \family default
  (3.2)
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -9897,98 +9837,14 @@ Elsevier Journals
 \end_layout
 
 \begin_layout Standard
-par 
-\noun on
-Rod Pinna
-\end_layout
 
-\begin_layout Standard
-Elsevier Science Publishers B.V.
- met une classe de document LaTeX standard (
+\lang english
+See the LyX template file 
 \family typewriter
-elsart.cls
-\family default
-) à disposition de ceux qui veulent soumettre des articles à leurs différentes
- publications.
- Vous pouvez directement télécharger le fichier de style sur leur page web
- : 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://authors.elsevier.com/
-\end_layout
-
-\end_inset
-
-.
- Des instructions sont fournies avec le fichier de classe, qui précisent
- les desiderata de l'éditeur.
- LyX peut fonctionner avec cette classe, grâce à un fichier de format et
- un modèle de document.
- L'installation de la classe est identique à n'importe quel autre paquetage
- LaTeX, tout ceci est expliqué dans la documentation d'Elsevier.
-\end_layout
-
-\begin_layout Standard
-Pour utiliser 
-\family typewriter
-elsart.cls
-\family default
-, vous disposez d'un fichier 
-\family typewriter
-elsart.layout
+elsarticle.lyx
 \family default
 .
- Comme la classe Elsevier est construite à partir de la classe standard
- 
-\family sans
-article
-\family default
-, la plupart des fonctions de base sont les mêmes.
- La classe Elsevier définit un certain nombre d'environnements mathématiques,
- semblables à ceux de l'AMS.
- Ces commandes sont toutes décrites dans la documentation d'Elsevier, et
- disponibles depuis LyX.
-\end_layout
-
-\begin_layout Standard
-La façon la plus simple d'utiliser la classe Elsevier est de construire
- vos documents à partir du modèle fourni.
- Il est préférable de ne pas utiliser les options d'en-têtes 
-\begin_inset Quotes fld
-\end_inset
-
-fancy
-\begin_inset Quotes frd
-\end_inset
-
- ou le paquetage geometry, car Elsevier définit des fonctions similaires
- dans le fichier de style.
- Idéalement, vous ne devriez pas utiliser d'autre paquetage que ceux mentionnés
- dans la documentation d'Elsevier.
- Basiquement, Elsevier souhaite recevoir un fichier LaTeX le plus 
-\begin_inset Quotes fld
-\end_inset
-
-propre
-\begin_inset Quotes frd
-\end_inset
-
- possible, car ils vont prendre le fichier que vous aurez soumis et remplacer
- le fichier de classe par celui du journal auquel vous soumettez votre article.
- Cela signifie aussi qu'il ne faut pas que vous passiez trop de temps à
- mettre en forme votre document : de toute manière, il aura changé à la
- publication.
- Pour tout le reste, vous utilisez ce format de la même façon que la classe
- 
-\family sans
-article
-\family default
-.
- Pour plus de détails sur ce qu'Elsevier accepte et n'accepte pas, reportez-vous
- à leur documentation.
+ It contains all infos you need.
 \end_layout
 
 \begin_layout Section
@@ -16318,22 +16174,6 @@ letter (koma-script)
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 La classe de document 
 \emph on
 letter (koma-script)
@@ -16379,22 +16219,6 @@ Vers
 \family default
 .
  En outre, il y a un certain nombre de nouveaux types spécifiques aux lettres.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -17292,130 +17116,6 @@ Interligne
  insère toujours des commandes LaTeX supplémentaires dans le document pour
  causer cet espacement, ce qui ne serait pas le comportement désiré dans
  ce cas.
-\end_layout
-
-\begin_layout Section
-Latex8 (papiers des conférences de l'IEEE)
-\end_layout
-
-\begin_layout Standard
-par 
-\noun on
-Allan Rae
-\end_layout
-
-\begin_layout Subsection
-Introduction
-\end_layout
-
-\begin_layout Standard
-Comme cette classe est spécifiquement destinée à écrire des soumissions
- à des conférences sous l'égide de l'IEEE, je vous recommande vivement de
- vous procurer une copie de leur 
-\begin_inset Quotes fld
-\end_inset
-
-Kit de l'Auteur
-\begin_inset Quotes frd
-\end_inset
-
-.
- Le paquetage 
-\family sans
-latex.sty
-\family default
- et le fichier de style de bibliographie associé sont inclus dans ce kit.
- Le 
-\begin_inset Quotes fld
-\end_inset
-
-Kit de l'Auteur
-\begin_inset Quotes frd
-\end_inset
-
- est en général envoyé par e-mail une fois que votre soumission initiale
- a été acceptée.
- Il y a dedans beaucoup d'informations utiles, qui expliquent les restrictions
- de mise en page et ainsi de suite, et je vais supposer que vous l'avez
- lu pour ne pas avoir à tout répéter ici.
-\end_layout
-
-\begin_layout Subsection
-Pour commencer
-\end_layout
-
-\begin_layout Standard
-(AR.
- plus à l'avenir)
-\end_layout
-
-\begin_layout Subsection
-Environnements supportés
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Standard
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Titre
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Auteur
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-E-mail
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Affiliation
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Abstract
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Section
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-SousSection
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Légende
-\end_layout
-
-\begin_layout Subsection
-Différences entre écran et impression
-\end_layout
-
-\begin_layout Standard
-Il y a quelques légères différences d'apparence principalement pour la présentat
-ion des compteurs de section.
- À l'écran le point final du compteur de section est absent mais il apparaîtra
- à l'impression : ne vous affolez donc pas.
 \end_layout
 
 \begin_layout Section
@@ -20716,10 +20416,8 @@ Un de mes amis voulut essayer LyX pour un projet de groupe, mais lorsqu'il
 \end_layout
 
 \begin_layout Standard
-Avant de vous lancer dans l'utilisation du contrôle de version sous LyX,
- vous devrez connaître l'utilisation de RCS/CVS/SVN.
- Notez également que le support de CVS n'est pas aussi bon que celui de
- Subversion, que nous vous conseillons donc.
+Notez également que le support de CVS n'est pas aussi bon que celui de Subversio
+n, que nous vous conseillons donc.
  Un bon document de départ pour Subversion est le Manuel SVN
 \begin_inset Foot
 status open
@@ -24858,12 +24556,6 @@ La plupart des idées présentées dans cette section requièrent des fichiers
 MultiColonnes
 \end_layout
 
-\begin_layout Standard
-par 
-\noun on
-Lars Gullik Bjønnes
-\end_layout
-
 \begin_layout Subsection
 But
 \end_layout
@@ -25257,19 +24949,6 @@ Numérotation dans les
 \end_layout
 
 \begin_layout Standard
-par 
-\noun on
-John Weiss
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 La numérotation par défaut dans l'environnement de paragraphe 
 \family sans
 Énumération
@@ -25558,19 +25237,6 @@ Lettrines
 \end_layout
 
 \begin_layout Standard
-by 
-\noun on
-Mike Ressler
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -25739,19 +25405,6 @@ dropping
 
 \begin_layout Section
 Paragraphes de forme inhabituelle
-\end_layout
-
-\begin_layout Standard
-par 
-\noun on
-Mike Ressler
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -26052,21 +25705,6 @@ end{sloppypar}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Résumé
-\end_layout
-
-\begin_layout Standard
-Comme vous voyez, les exemples dans cette section vont de l'utile au futile.
- Je ne m'attends pas à ce que qui que ce soit ait un jour besoin des formes
- de paragraphe présentées dans la dernière section, mais le point essentiel
- est que vous pouvez presque tout faire avec LyX : il vous suffit de trouver
- comment procéder en TeX et LaTeX.
- TeX est un système de typographie incroyablement puissant et toute cette
- puissance vous est acquise puisque LyX s'en sert en arrière-plan.
- LyXez en paix !
 \end_layout
 
 \end_body
