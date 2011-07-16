@@ -21426,30 +21426,7 @@ Latexぱっけーじ@LaTeXパッケージ ! babel
 
 \end_inset
 
-が、文書言語のルールに基づいて行います
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-ドイツ語を使用する読者へ：この違いが、
-\family sans
-文書\SpecialChar \menuseparator
-設定
-\family default
-ダイアログの
-\family sans
-ドイツ語
-\family default
-言語と
-\family sans
-ドイツ語（旧綴方）
-\family default
-言語との大きな違いの一つになっています。
-\end_layout
-
-\end_inset
-
-。
+が、文書言語のルールに基づいて行います。
 \end_layout
 
 \begin_layout Standard
@@ -37297,12 +37274,11 @@ To define your header line, add all 3
 \end_inset
 
 header styles.
- The things you add to the styles will appear on uneven pages, the things
- in the optional arguments on even pages.
- For single-sided documents, the optional argument will not be used and
+ The things you add to the styles appear on uneven pages, the things in
+ the optional arguments on even pages.
+ For single-sided documents, the optional arguments will not be used and
  can be omitted.
- If you leave a style or its argument empty, nothing will appear in the
- output.
+ If you leave a style or its argument empty, nothing appears in the output.
  Defining the footer line works similar.
 \end_layout
 
@@ -37363,8 +37339,8 @@ roman{page} prints the current page number with small roman numerals
 
 \backslash
 leftmark prints the current section number and title.
- In case of a book, it prints the current chapter title instead, but this
- document is an article.
+ If the document has chapters, it prints the current chapter number and
+ title instead.
  It is called 
 \begin_inset Quotes eld
 \end_inset
@@ -37381,29 +37357,35 @@ leftmark
 \lang english
 
 \backslash
-rightmark prints the name and number of the current subsection number and
- title.
- If it is a book it prints the current section title.
+rightmark prints the current subsection number and title.
+ If the document has chapters, it prints the current section number and
+ title instead.
  It is normally used in the right header.
 \end_layout
 
 \begin_layout Subsection
 
 \lang english
-Default headers/footers
+Default header/footer
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-Custom headers and footers are not empty by default.
+Custom header/footer is not empty by default.
  The default header contains the chapter and section title and the center
  footer has the page number.
- In order to remove unwanted headers/footers, include the relevant header/footer
- style in your document, but leave it blank.
- So, if you don't want a page number in the footer, perhaps because you
- put it int he header instead, include a blank center footer to get rid
- of the default.
+ In order to remove unwanted entries from the header/footer, include the
+ relevant header/footer style in your document, but leave it blank.
+ So, if you do not want a page number in the footer, include a blank 
+\family sans
+Center
+\begin_inset space ~
+\end_inset
+
+Footer
+\family default
+ style.
 \end_layout
 
 \begin_layout Subsection
@@ -37415,7 +37397,7 @@ Appearance
 \begin_layout Standard
 
 \lang english
-The custom headers and footers will appear on normal pages.
+The header and footer will appear on normal pages.
  Some pages are different.
  The title page has a style of its own, and so has any page that starts
  a new part or chapter in your book.
@@ -37551,7 +37533,7 @@ Where height is a size in standard units.
  Then open the LaTeX logfile via the menu 
 \family sans
 Document\SpecialChar \menuseparator
-LaT
+La
 \begin_inset ERT
 status collapsed
 
@@ -37562,7 +37544,7 @@ status collapsed
 
 \end_inset
 
-eX Log
+TeX Log
 \family default
  and look via the button 
 \family sans
@@ -38362,59 +38344,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-LyX自身は、組込のスペルチェッカーを持っていません。その代わりに、
-\family typewriter
-aspell
-\family default
-・
-\family typewriter
-ispell
-\family default
-・
-\family typewriter
-hspell
-\family default
-・
-\family typewriter
-pspell
-\family default
-などの外部プログラムをバックエンドとして用います。この節では、これらのプログラムのうちのひとつが、すでに導入されて設定済みであることを想定します。
-\family typewriter
-aspell
-\family default
-は、
-\family typewriter
-ispell
-\family default
-の後継とみなされており、
-\family typewriter
-ispell
-\family default
-と違って同時に複数の言語をサポートしているので、
-\family typewriter
-aspell
-\family default
-をお使いになることをお勧めします。
-\family typewriter
-hspell
-\family default
-はヘブライ語用スペルチェッカーです。使用するスペルチェッカーとその設定は、LyX設定メニューの
-\family sans
-言語設定
-\family default
-のところで設定することができます。
-\end_layout
-
-\begin_layout Standard
-Windows版LyXでは、
-\family typewriter
-aspell
-\family default
-のみが使用可能であるため、スペルチェックプログラムの選択ボックスは変更できないようになっています。
-\end_layout
-
-\begin_layout Standard
-
+LyX自身は、組込のスペルチェッカーを持っていません。
 \family sans
 ツール
 \family default
@@ -38423,22 +38353,32 @@ aspell
 \family sans
 スペルチェック
 \family default
-メニューかツールバーボタン
+\lang english
+, the key 
+\family sans
+F7
+\family default
+\lang japanese
+ メニューかツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "dialog-show spellchecker"
 \end_inset
 
-を使用すると、現在のカーソル位置からスペルチェックが始まります。正しくない（あるいは未知の）単語が見つかると、ダイアログが開いてそれを表示するので、2行めでそれ
-を編集したり別の単語に置き換えたりすることができます。未知の単語が見つかると、その単語が強調表示され、その単語が見えるように本文がスクロールします。
+を使用すると、現在のカーソル位置からスペルチェックが始まります。
+\lang english
+A sidebar will appear showing any incorrect (or unknown) word found, allowing
+ you to edit and replace it in a second line.
+ Whenever an unknown word is found, the word is highlighted and the text
+ scrolled so that it is visible.
+ In the spellchecker sidebar, there is a box showing suggestions for a correctio
+n, if any could be found.
+ Clicking on one of the corrections will copy to the 
 \family sans
-スペルチェッカー
+Replacement
 \family default
-ダイアログには、修正候補があるときにはそれを表示するボックスもあります。候補のひとつをクリックすると、候補が
-\family sans
-置換
-\family default
-フィールドにコピーされ、ダブルクリックすると、ただちに単語が置換されます。未知ではあるけれども正しい綴りの単語は、個人用辞書に追加することもできます。
+ field, double-click invokes directly the replacement.
+ Unknown but correctly typed words can be added to the personal dictionary.
 \end_layout
 
 \begin_layout Standard
@@ -38447,12 +38387,17 @@ arg   "dialog-show spellchecker"
 文書\SpecialChar \menuseparator
 設定
 \family default
-ダイアログで設定される文書言語によって決定されます。文書言語用の辞書を持っていない場合には、スペルチェックを実行しようとするとエラーメッセージが表示されます。こ
-の場合には、設定ダイアログで
-\family sans
-代替言語
-\family default
-に別の言語を指定することで、別の辞書ファイルを指定するといいでしょう
+ダイアログで設定される文書言語によって決定されます。文書言語用の辞書を持っていない場合には、スペルチェックを実行しようとするとエラーメッセージが表示されます。
+\lang english
+You can specify the language of a word in the spellchecker dialog by choosing
+ a different one at the top of the dialog.
+ LyX can correctly spell check documents containing multiple languages.
+ This work if you have marked the different languages appropriately and
+ have the spell checker dictionaries installed.
+ LyX automatically switches to the appropriate dictionary file.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Foot
 status open
 
@@ -38487,52 +38432,96 @@ aspell (library)
 
 \end_inset
 
-。
+
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Further Settings
 \end_layout
 
 \begin_layout Standard
-スペルチェック終了時には、検査された単語数が表示されます。
-\end_layout
 
-\begin_layout Subsubsection*
-制限事項
-\end_layout
-
-\begin_layout Standard
-特定の単語の綴りを文書全体で変更したい場合には、その単語が現れるごとに綴りを変更する以外にはないのですが、その目的のためには、
+\lang english
+In LyX's preferences dialog under 
 \family sans
-検索／置換
-\family default
-ダイアログを使うことができます。
-\end_layout
+Language
+\begin_inset space ~
+\end_inset
 
-\begin_layout Standard
-LyXは、複数の言語を含む文書の綴りを正しく検査することができません。もし各部分の言語を正しく設定していれば、
-\family sans
-pspell
+Setting\SpecialChar \menuseparator
+Spellchecker
 \family default
-は正しく動作します。
-\end_layout
-
-\begin_layout Subsubsection*
-追加的な設定
-\end_layout
-
-\begin_layout Standard
-設定ダイアログの
-\family sans
-スペルチェッカー
-\family default
-部には、いくつか設定を追加することができます。
+ you can set the following things:
 \end_layout
 
 \begin_layout Description
-エスケープ文字 例えば英語文書の綴りを検査するときにドイツ語のウムラウトを考慮したい場合など、スペルチェッカーが考慮するべき非標準の文字を追加することができます
-。
+
+\lang english
+Spellchecker
+\begin_inset space ~
+\end_inset
+
+engine Select the library LyX should use for spell checking.
+ Depending on your platform, 
+\family typewriter
+aspell
+\family default
+, 
+\family typewriter
+hunspell
+\family default
+ or 
+\family typewriter
+enchant
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Enchant itself is a wrapper library having different configurable back-ends.
+ Please consult the documentation or man-page of it to learn more.
+\end_layout
+
+\end_inset
+
+
+\family default
+ are available.
+ On Windows only 
+\family typewriter
+hunspell
+\family default
+ is available.
 \end_layout
 
 \begin_layout Description
-個人用辞書 ここでは、個人用辞書としてスペルチェッカーの既定値ではないファイルを指定することができます。
+
+\lang english
+Alternative
+\begin_inset space ~
+\end_inset
+
+language If this field is not empty, LyX will always use the given language
+ for the spell checking, no matter what the document language is.
+\end_layout
+
+\begin_layout Description
+エスケープ文字 
+\lang english
+Allows you to add non-standard characters that the spell checker should
+ escape, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+German umlauts.
+ This should normally not be needed.
 \end_layout
 
 \begin_layout Description
@@ -38540,38 +38529,37 @@ pspell
 \end_layout
 
 \begin_layout Description
-入力文字コードを使う 
-\family sans
-文書\SpecialChar \menuseparator
-設定
-\family default
-ダイアログの
-\family sans
-言語
-\family default
-部で設定した文書文字コードをスペルチェッカーでも使用する
-\begin_inset Foot
-status collapsed
 
-\begin_layout Plain Layout
-文字コードは第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cha:文書設定"
-
+\lang english
+Spellcheck
+\begin_inset space ~
 \end_inset
 
-節に説明があります。
+continously Check the spelling of your document as you type it.
+ Misspelled words gets underlined with a dotted red line.
+ By right-clicking on an underlined word, the suggestions by the spell appear
+ in the context menu.
+ Choosing one of them will replace the misspelled word with the suggested
+ word.
 \end_layout
 
+\begin_layout Description
+
+\lang english
+Spellcheck
+\begin_inset space ~
 \end_inset
 
-。
-\family sans
-ispell
-\family default
-を使用していて、外国文字を含む単語のスペルチェックができないときにのみ、有効にしてください。この機能が働かない辞書があるという報告があるため、この機能は既定では
-無効にしてあります。
+notes
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+comments If enabled, the spelling of non-printed document contents is checked
+ as well.
 \end_layout
 
 \begin_layout Section
@@ -38809,36 +38797,6 @@ report
 \emph default
 )、ダイアログの検索文字列を調整することなしに提案を得ることができ、おそらく置換も正しく動作するでしょう(選択部分のみが置換されるので残りの部分は元のままです)
 。
-\end_layout
-
-\begin_layout Subsection
-類語辞典ライブラリのライセンス
-\end_layout
-
-\begin_layout Standard
-LyXの類語辞典機能で使用される
-\emph on
-MyThes
-\emph default
-ライブラリは、
-\noun on
-Kevin B.
- Hendricks
-\noun default
-によって、スタンドアローンのプログラムとして創られました。このライブラリの第1.1版がLyXにインクルードされています。このライブラリは、
-\emph on
-Berkeley Database License
-\emph default
-の下でリリースされており、これはLyXのライセンス形態であるGPLと互換性があります。Berkeley Database Licenseの要件を満たすため、My
-ThesライセンスファイルがLyXソースの
-\family sans
-~src/support/mythes/license.readme
-\family default
-フォルダにインクルードされています。LyXのWindows版では、lyx.exeファイルと同じフォルダにある
-\family sans
-MyThes-License.txt
-\family default
-ファイルでも見ることができます。
 \end_layout
 
 \begin_layout Section

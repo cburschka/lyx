@@ -14733,39 +14733,7 @@ LaTeX-packages ! babel
 
 \end_inset
 
- following the rules of the document language
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-For German readers: That's one of the main differences between the languages
- 
-\family sans
-German
-\family default
- and 
-\family sans
-German
-\begin_inset space ~
-\end_inset
-
-(new
-\begin_inset space ~
-\end_inset
-
-spelling)
-\family default
- in the 
-\family sans
-Document\SpecialChar \menuseparator
-Settings
-\family default
- dialog.
-\end_layout
-
-\end_inset
-
-.
+ following the rules of the document language.
 \end_layout
 
 \begin_layout Standard
@@ -30043,12 +30011,11 @@ To define your header line, add all 3
 \end_inset
 
 header styles.
- The things you add to the styles will appear on uneven pages, the things
- in the optional arguments on even pages.
- For single-sided documents, the optional argument will not be used and
+ The things you add to the styles appear on uneven pages, the things in
+ the optional arguments on even pages.
+ For single-sided documents, the optional arguments will not be used and
  can be omitted.
- If you leave a style or its argument empty, nothing will appear in the
- output.
+ If you leave a style or its argument empty, nothing appears in the output.
  Defining the footer line works similar.
 \end_layout
 
@@ -30099,8 +30066,8 @@ roman{page} prints the current page number with small roman numerals
 
 \backslash
 leftmark prints the current section number and title.
- In case of a book, it prints the current chapter title instead, but this
- document is an article.
+ If the document has chapters, it prints the current chapter number and
+ title instead.
  It is called 
 \begin_inset Quotes eld
 \end_inset
@@ -30115,25 +30082,31 @@ leftmark
 \begin_layout Description
 
 \backslash
-rightmark prints the name and number of the current subsection number and
- title.
- If it is a book it prints the current section title.
+rightmark prints the current subsection number and title.
+ If the document has chapters, it prints the current section number and
+ title instead.
  It is normally used in the right header.
 \end_layout
 
 \begin_layout Subsection
-Default headers/footers
+Default header/footer
 \end_layout
 
 \begin_layout Standard
-Custom headers and footers are not empty by default.
+The custom header/footer is not empty by default.
  The default header contains the chapter and section title and the center
  footer has the page number.
- In order to remove unwanted headers/footers, include the relevant header/footer
- style in your document, but leave it blank.
- So, if you don't want a page number in the footer, perhaps because you
- put it int he header instead, include a blank center footer to get rid
- of the default.
+ In order to remove unwanted entries from the header/footer, include the
+ relevant header/footer style in your document, but leave it blank.
+ So, if you do not want a page number in the footer, include a blank 
+\family sans
+Center
+\begin_inset space ~
+\end_inset
+
+Footer
+\family default
+ style.
 \end_layout
 
 \begin_layout Subsection
@@ -30141,7 +30114,7 @@ Appearance
 \end_layout
 
 \begin_layout Standard
-The custom headers and footers will appear on normal pages.
+The header and footer will appear on normal pages.
  Some pages are different.
  The title page has a style of its own, and so has any page that starts
  a new part or chapter in your book.
@@ -30259,7 +30232,7 @@ Where height is a size in standard units.
  Then open the LaTeX logfile via the menu 
 \family sans
 Document\SpecialChar \menuseparator
-LaT
+La
 \begin_inset ERT
 status collapsed
 
@@ -30270,7 +30243,7 @@ status collapsed
 
 \end_inset
 
-eX Log
+TeX Log
 \family default
  and look via the button 
 \family sans
@@ -31236,63 +31209,14 @@ Spell checking
 
 \begin_layout Standard
 LyX has a built-in spell checker.
- It uses one of the libraries 
-\family typewriter
-aspell
-\family default
-, 
-\family typewriter
-hunspell
-\family default
-, or 
-\family typewriter
-enchant
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Enchant itself is a wrapper library having different configurable back-ends.
- Please consult the documentation or man-page of it to learn more.
-\end_layout
-
-\end_inset
-
-
-\family default
- as back-end.
- Which back-ends are available depends on the platform and the build-time
- configuration of the LyX program.
- E.
- g., on a Mac the operating system provides a spell checking service; there
- it is available as an additional back-end to choose from.
- The used spell checker and its settings are specified in LyX's preferences
- under 
-\family sans
-Language Settings
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-LyX can correctly spell check documents containing multiple languages.
- This does work with all back-ends, assuming you have marked the different
- languages appropriately and the dictionaries installed.
-\end_layout
-
-\begin_layout Standard
-For LyX on Windows, the selection box for the spell checking program is
- greyed out in the preferences dialog because only 
-\family typewriter
-hunspell
-\family default
- can be used.
-\end_layout
-
-\begin_layout Standard
-The menu
+ The menu
 \family sans
  Tools\SpecialChar \menuseparator
 Spellchecker
+\family default
+, the key 
+\family sans
+F7
 \family default
  or the toolbar button 
 \begin_inset Info
@@ -31301,19 +31225,15 @@ arg   "dialog-show spellchecker"
 \end_inset
 
  starts the spell checking beginning from the current cursor position.
- A dialog window will appear showing any incorrect (or unknown) word found,
- allowing you to edit and replace it in a second line.
+ A sidebar will appear showing any incorrect (or unknown) word found, allowing
+ you to edit and replace it in a second line.
  Whenever an unknown word is found, the word is highlighted and the text
  scrolled so that it is visible.
- In the 
-\family sans
-spell checker
-\family default
- dialog, there is also a box showing suggestions for a correction, if any
- could be found.
+ In the spellchecker sidebar, there is a box showing suggestions for a correctio
+n, if any could be found.
  Clicking on one of the corrections will copy to the 
 \family sans
-Replace
+Replacement
 \family default
  field, double-click invokes directly the replacement.
  Unknown but correctly typed words can be added to the personal dictionary.
@@ -31327,49 +31247,75 @@ Document\SpecialChar \menuseparator
 Settings
 \family default
  dialog.
- If you
-\change_deleted 5863208 1304031984
- 
-\change_unchanged
- have marked the different languages in your document, spell checking will
- automatically switch to the appropriate dictionaries.
  You can specify the language of a word in the spellchecker dialog by choosing
  a different one at the top of the dialog.
+ LyX can correctly spell check documents containing multiple languages.
+ This work if you have marked the different languages appropriately and
+ have the spell checker dictionaries installed.
+ LyX automatically switches to the appropriate dictionary file.
 \end_layout
 
-\begin_layout Subsubsection*
-Limitations
-\end_layout
-
-\begin_layout Standard
-It is not possible to change the spelling of a particular word globally,
- rather than having to change the spelling separately for each occurrence
- of the word.
- But you can use the 
-\family sans
-Find
-\begin_inset space ~
-\end_inset
-
-&
-\begin_inset space ~
-\end_inset
-
-Replace
-\family default
- dialog for that.
-\end_layout
-
-\begin_layout Subsubsection*
+\begin_layout Subsection
 Further Settings
 \end_layout
 
 \begin_layout Standard
-The 
+In LyX's preferences dialog under 
 \family sans
+Language
+\begin_inset space ~
+\end_inset
+
+Setting\SpecialChar \menuseparator
 Spellchecker
 \family default
- section in the preferences dialog has some additional options:
+ you can set the following things:
+\end_layout
+
+\begin_layout Description
+Spellchecker
+\begin_inset space ~
+\end_inset
+
+engine Select the library LyX should use for spell checking.
+ Depending on your platform, 
+\family typewriter
+aspell
+\family default
+, 
+\family typewriter
+hunspell
+\family default
+ or 
+\family typewriter
+enchant
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Enchant itself is a wrapper library having different configurable back-ends.
+ Please consult the documentation or man-page of it to learn more.
+\end_layout
+
+\end_inset
+
+
+\family default
+ are available.
+ On Windows only 
+\family typewriter
+hunspell
+\family default
+ is available.
+\end_layout
+
+\begin_layout Description
+Alternative
+\begin_inset space ~
+\end_inset
+
+language If this field is not empty, LyX will always use the given language
+ for the spell checking, no matter what the document language is.
 \end_layout
 
 \begin_layout Description
@@ -31378,7 +31324,7 @@ Escape
 \end_inset
 
 characters Allows you to add non-standard characters that the spell checker
- should consider, e.
+ should escape, e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -31386,17 +31332,8 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-German umlauts although you are spell checking an English document.
- This should not normally be needed.
-\end_layout
-
-\begin_layout Description
-Personal
-\begin_inset space ~
-\end_inset
-
-dictionary to use a different file as your personal dictionary instead of
- the spell checker's default choice 
+German umlauts.
+ This should normally not be needed.
 \end_layout
 
 \begin_layout Description
@@ -31427,8 +31364,8 @@ Spellcheck
 
 continously Check the spelling of your document as you type it.
  Misspelled words gets underlined with a dotted red line.
- The suggestions by the spell checker will be added to the context menu
- of a misspelled word if there were some found.
+ By right-clicking on an underlined word, the suggestions by the spell appear
+ in the context menu.
  Choosing one of them will replace the misspelled word with the suggested
  word.
 \end_layout
@@ -31446,8 +31383,8 @@ and
 \begin_inset space ~
 \end_inset
 
-comments The spelling of non-printed document contents is checked as well.
- You may disable this by deactivating this option.
+comments If enabled, the spelling of non-printed document contents is checked
+ as well.
 \end_layout
 
 \begin_layout Section
@@ -31706,40 +31643,6 @@ report
 s), then you get proposals without adjusting the query in the dialog, and
  also the replacement will probably be correct (as only the highlighted
  part will be replaced, thus the ending remains).
-\end_layout
-
-\begin_layout Subsection
-License of the Thesaurus library
-\end_layout
-
-\begin_layout Standard
-The 
-\emph on
-MyThes
-\emph default
- library, which is used by LyX for the thesaurus, was created by 
-\noun on
-Kevin B.
- Hendricks
-\noun default
- as a standalone program.
- Version 1.1 of the library is included in LyX.
- The library was released under the 
-\emph on
-Berkeley Database License
-\emph default
-, which is compatible with LyX's license, the GPL.
- In order to meet the requirements of the Berkeley Database License, the
- MyThes license file is included in the LyX sources in the folder 
-\family sans
-~src/support/mythes/license.readme
-\family default
-.
- In LyX Windows installations it is additionally available in the file 
-\family sans
-MyThes-License.txt
-\family default
- that is in the same folder as the file lyx.exe.
 \end_layout
 
 \begin_layout Section
