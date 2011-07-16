@@ -1,4 +1,4 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
 \lyxformat 413
 \begin_document
 \begin_header
@@ -43,8 +43,19 @@
 
 % extra space for tables
 \newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+
+% test for installed LaTeX packages
+\usepackage{ifthen}
+
+% for wrapped figures/tables
+% test for picinpar
+\newboolean{picinpar}
+\IfFileExists{picinpar.sty}
+ {\usepackage{picinpar}
+  \setboolean{picinpar}{true}}
+ {\setboolean{picinpar}{false}}
 \end_preamble
-\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
 \begin_modules
 logicalmkup
@@ -69,7 +80,7 @@ End
 \end_local_layout
 \language english
 \language_package default
-\inputencoding latin1
+\inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
@@ -102,10 +113,10 @@ End
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true,  pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
-\use_amsmath 0
+\use_amsmath 1
 \use_esint 0
 \use_mhchem 1
 \use_mathdots 1
@@ -140,6 +151,10 @@ End
 Additional LyX Features
 \end_layout
 
+\begin_layout Subtitle
+Version 2.0.x
+\end_layout
+
 \begin_layout Author
 by the LyX Team
 \begin_inset Foot
@@ -169,7 +184,7 @@ status collapsed
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Standard
@@ -5689,13 +5704,14 @@ lyxclient
 \end_layout
 
 \begin_layout Subsection
+Automatic setup
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:rev-search"
 
 \end_inset
 
-Automatic setup
+
 \end_layout
 
 \begin_layout Standard
@@ -5735,6 +5751,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
 Output\SpecialChar \menuseparator
 Synchronize with Output
 \end_layout
@@ -7118,7 +7135,6 @@ Forward search works both with DVI and PDF output.
 
 e., which format is already there in the temporary directory) and chooses
  the appropriate configuration for the respective format.
- 
 \end_layout
 
 \begin_layout Chapter
@@ -8031,22 +8047,6 @@ Things that work as expected
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Because they work as you might expect, I simply list them and the section
  they are found in: 
 \family typewriter
@@ -8240,22 +8240,6 @@ Layout\SpecialChar \menuseparator
 Document
 \family default
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -8489,22 +8473,6 @@ Things not implemented, use TeX code
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 
 \family typewriter
 
@@ -8628,22 +8596,6 @@ onecolumn
 twocolumn
 \family default
  (3.2)
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -8904,7 +8856,11 @@ AMS LaTeX
 \begin_layout Standard
 by 
 \noun on
-David Johnson; updated by Richard Heck
+David Johnson
+\noun default
+; updated by 
+\noun on
+Richard Heck
 \end_layout
 
 \begin_layout Standard
@@ -9980,80 +9936,12 @@ Elsevier Journals
 \end_layout
 
 \begin_layout Standard
-By 
-\noun on
-Rod Pinna
-\end_layout
-
-\begin_layout Standard
-Elsevier Science Publishers B.V.
- provides a standard LaTeX document class (
+See the LyX template file 
 \family typewriter
-elsart.cls
+elsarticle.lyx
 \family default
-) for submitting articles to their various journals.
- The style file can be downloaded directly from their web site: 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.elsevier.com/wps/find/authorsview.authors/latex
-\end_layout
-
-\end_inset
-
 .
- Instructions are supplied along with the class file, which details the
- requirements of the publishers.
- LyX includes a package that allows for the use of this class, by a layout
- and a template file.
- Installation of the class file is the same as for any other LaTeX package;
- instructions are provided in the Elsevier documentation.
-\end_layout
-
-\begin_layout Standard
-To make use of 
-\family typewriter
-elsart.cls
-\family default
-, a file 
-\family typewriter
-elsart.layout
-\family default
- is supplied.
- As the Elsevier class file is based mainly on the standard article class,
- most of the normal functionality is provided.
- The Elsevier class defines a number of mathematical environments, which
- are similar to the AMS environments.
- These commands are all described in the Elsevier documentation, and are
- available in LyX.
-\end_layout
-
-\begin_layout Standard
-The easiest way to use the Elsevier style is to base documents on the included
- template file.
- It is best not to use options such as fancy headings or the geometry package,
- as elements such as these are defined by Elsevier in their style file.
- Ideally, no extra packages except those mentioned in the Elsevier documentation
- should be used.
- Essentially, Elsevier require as 
-\begin_inset Quotes eld
-\end_inset
-
-clean
-\begin_inset Quotes erd
-\end_inset
-
- a LaTeX file as possible, as their intention is to take the supplied file
- and replace the class file with one for the particular journal to which
- the paper has been submitted.
- This also means that not too much time should be spent on the formating
- of the document.
- When it comes to be published, this will change anyway.
- The rest of the usage for this layout is substantially the same as for
- the normal article class.
- For details of what Elsevier do and don't allow, refer to their documentation.
+ It contains all infos you need.
 \end_layout
 
 \begin_layout Section
@@ -13760,22 +13648,6 @@ letter (koma-script)
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \noindent
 The document class 
 \emph on
@@ -13827,22 +13699,6 @@ Verse
 \family default
 .
  Furthermore, there are a number of new letter specific types.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -14708,113 +14564,6 @@ Skip
 \family default
  value always has the effect that extra LaTeX commands are inserted in the
  document to produce the gap, which is not what is wanted in this case.
-\end_layout
-
-\begin_layout Section
-Latex8 (IEEE Conference Papers)
-\end_layout
-
-\begin_layout Standard
-by 
-\noun on
-Allan Rae
-\end_layout
-
-\begin_layout Subsection
-Introduction
-\end_layout
-
-\begin_layout Standard
-Since this class is specifically for writing submissions to IEEE sponsored
- conferences I strongly recommend that you get a copy of their Authors Kit.
- The 
-\family sans
-latex.sty
-\family default
- package and associated bibliography style file is included in the kit.
- The Authors Kit is usually sent out by email once your initial submission
- has been accepted.
- There is a lot of useful information in the Authors Kit explaining formatting
- restrictions and so on and I will assume you have read this since that
- means I don't have to repeat it all here.
-\end_layout
-
-\begin_layout Subsection
-Getting Started
-\end_layout
-
-\begin_layout Standard
-[AR\SpecialChar \@.
- more to come]
-\end_layout
-
-\begin_layout Subsection
-Supported Environments
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Standard
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Title
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Author
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-E-mail
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Affiliation
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Abstract
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Section
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-SubSection
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Caption
-\end_layout
-
-\begin_layout Subsection
-Differences Between Screen and Paper
-\end_layout
-
-\begin_layout Standard
-There are slight differences in appearance mainly with the presentation
- of section counters.
- On screen the trailing period of the section counter is missing but it
- will appear in the output so don't let this worry you.
 \end_layout
 
 \begin_layout Section
@@ -18383,24 +18132,6 @@ ChkTeX
 ChkTeX
 \family default
  to get better along with you.
- Another choice in the most desperate situations is to use 
-\family sans
-View\SpecialChar \menuseparator
-Remove
-\begin_inset space ~
-\end_inset
-
-All
-\begin_inset space ~
-\end_inset
-
-Error
-\begin_inset space ~
-\end_inset
-
-Boxes
-\family default
-, which will get rid of all warnings instantly.
 \end_layout
 
 \begin_layout Standard
@@ -19191,9 +18922,7 @@ A friend of mine wanted to try LyX for a group project.
 \end_layout
 
 \begin_layout Standard
-Before you begin to use the version control features in LyX, you should
- be familiar with RCS/CVS/SVN usage before start using it under LyX.
- Also note that CVS support is not as good as subversion support so we advice
+Also note that CVS support is not as good as subversion support so we advice
  using SVN instead.
  Good place to start with Subversion is SVN Book
 \begin_inset Foot
@@ -22755,58 +22484,25 @@ The next thing is the visible presence of the newline character in the screen.
 \end_layout
 
 \begin_layout Chapter
-Secrets of the LaTeX Masters
-\begin_inset CommandInset label
-LatexCommand label
-name "cha:secrets"
-
-\end_inset
-
-
+Special features
 \end_layout
 
 \begin_layout Standard
-Though LyX is a powerful tool, it cannot hope to support everything that
- can be done with pure TeX/LaTeX.
- However, many familiar dirty TeX and LaTeX tricks can be done within LyX,
- as long as you are not afraid to use that 
-\begin_inset Quotes eld
-\end_inset
-
-TeX
-\begin_inset Quotes erd
-\end_inset
-
- button on the toolbar or add things to the LaTeX preamble.
- This section lists some tips, tricks, and otherwise cool ideas to give
- your document that extra little flair.
- 
+You can do everything with LyX that you can do with LaTeX.
+ However, LyX cannot support every LaTeX feature directly.
+ But you can always use TeX Code.
+ This chapter shows you some more special things that are possible with
+ LyX that you might want to use.
+ For spcial things you can do with the features that are directly supported
+ by LyX, have a look at the 
 \emph on
-Do try this at home
+EmbeddedObjects
 \emph default
-, just start with something a little smaller and less important than your
- dissertation!
-\end_layout
-
-\begin_layout Standard
-Most ideas in this section require less common files in your LaTeX installation.
- If you have a system like TeXLive, most will already be available.
- A few, however, will need to be downloaded from one of the CTAN archives.
- Often, there are several ways to do something, or several LaTeX style files
- which do the same thing.
- We do not endorse one choice over another, we simply claim that we have
- done a particular task with a particular file.
- Put on your wizard hat, keep an eye out for dragons, and let us begin.
+ manual.
 \end_layout
 
 \begin_layout Section
 Multiple Columns
-\end_layout
-
-\begin_layout Standard
-by 
-\noun on
-Lars Gullik Bjønnes
 \end_layout
 
 \begin_layout Subsection
@@ -23191,12 +22887,6 @@ Numbering in Enumerate
 \end_layout
 
 \begin_layout Standard
-by 
-\noun on
-John Weiss
-\end_layout
-
-\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -23495,12 +23185,6 @@ Dropped Capitals
 \end_layout
 
 \begin_layout Standard
-by 
-\noun on
-Mike Ressler
-\end_layout
-
-\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -23674,13 +23358,909 @@ dropping
 \end_layout
 
 \begin_layout Section
-Non-standard Paragraph Shapes
+
+\lang ngerman
+Textumflossene Bilder und Tabellen
 \end_layout
 
 \begin_layout Standard
-by 
-\noun on
-Mike Ressler
+
+\lang ngerman
+Im 
+\emph on
+Eingebettete Objekte
+\emph default
+ Handbuch werden Umflossene Gleitobjekte beschrieben.
+ Sie liefern Folgendes:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ or 
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang ngerman
+Wenn Sie aber text richtig um Bilder oder Tabellen fließen lassen wollen,
+ also auch so etwas:
+\lang english
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang ngerman
+sollten Sie das LaTeX-Paket 
+\family sans
+picinpar
+\family default
+ benutzen.
+ Hier ist ein Beispiel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ifpicinpar
+\end_layout
+
+\end_inset
+
+
+\lang ngerman
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang ngerman
+Das folgende Beispiel wird nur gedruckt, wenn das LaTeX-Paket 
+\family typewriter
+picinpar
+\family default
+ installiert ist.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{window}[2,c,{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename clipart/mobius.eps
+	width 40col%
+	scaleBeforeRotation
+	rotateOrigin center
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+},{}]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{-1em}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1em}
+\end_layout
+
+\end_inset
+
+
+\lang ngerman
+Textumflossene Bilder oder Tabellen sind keine Gleitobjekte, weil sie dort
+ gedruckt werden, wo sie definiert wurden.
+ Dieser Typ wird benutzt, um text um eine Abbildung herum 
+\emph on
+fließen
+\emph default
+ zu lassen, wobei der text nur den Teil der Zeile benutzt, den die Abbildung
+ übrig lässt.
+ Er wird so eingefügt, wie Sie hier sehen, wenn das La\SpecialChar \-
+TeX-Paket 
+\family typewriter
+picinpar
+\family default
+ installiert ist.
+ Der erste Parameter in der eckigen
+\begin_inset Newline linebreak
+\end_inset
+
+Klammer, hier 2, definiert die Anzahl der Zeilen über dem Bild, der zweite,
+ hier c, die Position des Bildes.
+ Die Abbildung nimmt 40
+\begin_inset space \thinspace{}
+\end_inset
+
+% der Spaltenbreite ein.
+ Weitere Einzelheiten finden Sie in der Dokumentation von 
+\family typewriter
+picinpar
+\family default
+.
+ Die Bildparameter können Sie mit einem Klick auf das Bild wie gewohnt ändern.
+\lang english
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{window}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\lang ngerman
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang ngerman
+Der folgende Teil wird gedruckt, wenn das LaTeX-Paket 
+\family typewriter
+picinpar
+\family default
+ nicht installiert ist:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang ngerman
+Sie müssen das LaTeX-Paket 
+\family typewriter
+picinpar
+\family default
+ installiert haben, um das Beispiel in der Ausgabe zu sehen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Non-standard Paragraph Shapes
 \end_layout
 
 \begin_layout Standard
@@ -23984,22 +24564,6 @@ end{sloppypar}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Summary
-\end_layout
-
-\begin_layout Standard
-As you can see, the examples in this section range from the useful to the
- whimsical.
- While I don't expect that anyone will ever need the paragraph shape demonstrate
-d in the last section, the important point is that you can do almost anything
- you want in LyX if you are willing to figure out how to do it in TeX and
- LaTeX.
- TeX is a fantastically powerful typesetting system and all that power is
- available to you since LyX uses it as its backend.
- Happy LyXing!
 \end_layout
 
 \end_body
