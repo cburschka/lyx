@@ -533,32 +533,35 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, docstring & rem,
 }
 
 
-void Encodings::initUnicodeMath(Buffer const & buffer, bool clear_sets)
+void Encodings::initUnicodeMath(Buffer const & buffer, bool for_master)
 {
 #ifdef TEX2LYX
 	// The code below is not needed in tex2lyx and requires additional stuff
 	(void)buffer;
-	(void)clear_sets;
+	(void)for_master;
 #else
-	if (clear_sets) {
+	if (for_master) {
 		mathcmd.clear();
 		textcmd.clear();
 		mathsym.clear();
 	}
 
-	// Check master
+	// Check this buffer
 	Inset & inset = buffer.inset();
 	InsetIterator it = inset_iterator_begin(inset);
 	InsetIterator const end = inset_iterator_end(inset);
 	for (; it != end; ++it)
 		it->initUnicodeMath();
 
+	if (!for_master)
+		return;
+
 	// Check children
-	BufferList::iterator bit = theBufferList().begin();
-	BufferList::iterator const bend = theBufferList().end();
+	ListOfBuffers blist = buffer.getDescendents();
+	ListOfBuffers::const_iterator bit = blist.begin();
+	ListOfBuffers::const_iterator const bend = blist.end();
 	for (; bit != bend; ++bit)
-		if (buffer.isChild(*bit))
-			initUnicodeMath(**bit, false);
+		initUnicodeMath(**bit, false);
 #endif
 }
 
