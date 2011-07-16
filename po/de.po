@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-07-15 19:33+0200\n"
-"PO-Revision-Date: 2011-07-15 19:42+0100\n"
+"POT-Creation-Date: 2011-07-15 20:16+0200\n"
+"PO-Revision-Date: 2011-07-16 05:29+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -3995,7 +3995,7 @@ msgstr "Prüfe &Notizen und Kommentare"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:51
 msgid "&Spellchecker engine:"
-msgstr "&Programm für die Rechtschreibprüfung:"
+msgstr "&Programm:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:64
 msgid "Accept words such as \"diskdrive\""
@@ -4317,9 +4317,8 @@ msgid "La&bels in:"
 msgstr "Ma&rken in:"
 
 #: src/frontends/qt4/ui/RefUi.ui:49
-#, fuzzy
 msgid "&References"
-msgstr "Literaturverzeichnis"
+msgstr "&Literaturverzeichnis"
 
 #: src/frontends/qt4/ui/RefUi.ui:76
 msgid "Fil&ter:"
@@ -5380,12 +5379,12 @@ msgstr "Datum"
 #: lib/layouts/sigplanconf.layout:169
 #: lib/layouts/svglobal.layout:149
 #: lib/layouts/svmono.layout:20
-#: lib/layouts/svmult.layout:90
+#: lib/layouts/svmult.layout:99
 #: lib/layouts/tufte-handout.layout:45
 #: lib/layouts/agu_stdtitle.inc:193
 #: lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/stdstruct.inc:12
-#: lib/layouts/svcommon.inc:424
+#: lib/layouts/svcommon.inc:422
 #: src/output_plaintext.cpp:138
 msgid "Abstract"
 msgstr "Abstract"
@@ -5393,8 +5392,8 @@ msgstr "Abstract"
 #: lib/layouts/aa.layout:91
 #: lib/layouts/aapaper.layout:103
 #: lib/layouts/egs.layout:532
-#: lib/layouts/svmult.layout:137
-#: lib/layouts/svcommon.inc:539
+#: lib/layouts/svmult.layout:146
+#: lib/layouts/svcommon.inc:537
 #: lib/layouts/theorems-ams-extended.module:285
 #: lib/layouts/theorems-ams-extended.module:288
 #: lib/layouts/theorems-ams-extended.module:302
@@ -5465,16 +5464,16 @@ msgstr "Literaturverzeichnis"
 #: lib/layouts/revtex4-1.layout:183
 #: lib/layouts/siamltex.layout:299
 #: lib/layouts/sigplanconf.layout:124
-#: lib/layouts/svmult.layout:89
-#: lib/layouts/amsdefs.inc:25
-#: lib/layouts/amsdefs.inc:68
-#: lib/layouts/amsdefs.inc:119
-#: lib/layouts/lyxmacros.inc:66
-#: lib/layouts/stdtitle.inc:60
-#: lib/layouts/stdtitle.inc:100
-#: lib/layouts/svcommon.inc:372
-#: lib/layouts/svcommon.inc:462
-#: lib/layouts/svcommon.inc:501
+#: lib/layouts/svmult.layout:48
+#: lib/layouts/tufte-handout.layout:49
+#: lib/layouts/amsdefs.inc:48
+#: lib/layouts/amsdefs.inc:92
+#: lib/layouts/lyxmacros.inc:45
+#: lib/layouts/stdstruct.inc:16
+#: lib/layouts/stdtitle.inc:81
+#: lib/layouts/svcommon.inc:348
+#: lib/layouts/svcommon.inc:423
+#: lib/layouts/svcommon.inc:478
 msgid "FrontMatter"
 msgstr "Vorspann"
 
@@ -5499,7 +5498,7 @@ msgstr "Schriftverkehr an:"
 #: lib/layouts/revtex4.layout:231
 #: lib/layouts/siamltex.layout:318
 #: lib/layouts/stdstruct.inc:57
-#: lib/layouts/svcommon.inc:574
+#: lib/layouts/svcommon.inc:572
 msgid "BackMatter"
 msgstr "Nachspann"
 
@@ -5529,7 +5528,7 @@ msgstr "Institutsfußnotenmarke"
 #: lib/layouts/svjog.layout:117
 #: lib/layouts/svprobth.layout:147
 #: lib/layouts/agu_stdtitle.inc:120
-#: lib/layouts/svcommon.inc:458
+#: lib/layouts/svcommon.inc:456
 msgid "Keywords"
 msgstr "Schlagwörter"
 
@@ -5555,7 +5554,7 @@ msgstr "E-Mail"
 #: lib/layouts/lettre.layout:398
 #: lib/layouts/aapaper.inc:46
 #: lib/layouts/db_stdcharstyles.inc:71
-#: lib/layouts/svcommon.inc:669
+#: lib/layouts/svcommon.inc:667
 msgid "Email"
 msgstr "E-Mail"
 
@@ -5598,7 +5597,7 @@ msgstr "Und"
 #: lib/layouts/elsart.layout:430
 #: lib/layouts/kluwer.layout:301
 #: lib/layouts/aapaper.inc:91
-#: lib/layouts/svcommon.inc:565
+#: lib/layouts/svcommon.inc:563
 msgid "Acknowledgements"
 msgstr "Danksagungen"
 
@@ -6278,7 +6277,7 @@ msgstr "Legende"
 #: lib/layouts/scrclass.inc:295
 #: lib/layouts/stdlayouts.inc:13
 #: lib/layouts/stdlayouts.inc:55
-#: lib/layouts/svcommon.inc:601
+#: lib/layouts/svcommon.inc:599
 msgid "MainText"
 msgstr "Haupttext"
 
@@ -6292,7 +6291,7 @@ msgstr "Legende: "
 #: lib/layouts/ijmpc.layout:316
 #: lib/layouts/llncs.layout:376
 #: lib/layouts/svmono.layout:84
-#: lib/layouts/svcommon.inc:644
+#: lib/layouts/svcommon.inc:642
 #: lib/layouts/theorems-order.inc:76
 #: lib/layouts/theorems-proof-std.inc:6
 #: lib/layouts/theorems-bytype.module:46
@@ -6790,7 +6789,7 @@ msgstr "Fakt."
 #: lib/layouts/IEEEtran.layout:306
 #: lib/layouts/siamltex.layout:170
 #: lib/layouts/svmono.layout:89
-#: lib/layouts/svcommon.inc:639
+#: lib/layouts/svcommon.inc:637
 msgid "Proof."
 msgstr "Beweis."
 
@@ -8478,9 +8477,8 @@ msgstr "Biographie ohne Foto"
 #: lib/layouts/ijmpc.layout:80
 #: lib/layouts/ijmpc.layout:92
 #: lib/layouts/ijmpd.layout:89
-#, fuzzy
 msgid "Catchline"
-msgstr "Mathe (Linie)"
+msgstr "Catchline"
 
 #: lib/layouts/ijmpc.layout:152
 msgid "History"
@@ -8676,6 +8674,7 @@ msgid "RunningTitle"
 msgstr "Kolumnentitel"
 
 #: lib/layouts/kluwer.layout:224
+#: lib/layouts/svcommon.inc:399
 msgid "Running title:"
 msgstr "Kolumnentitel:"
 
@@ -8766,7 +8765,7 @@ msgstr "P.S.:"
 
 #: lib/layouts/llncs.layout:39
 #: lib/layouts/recipebook.layout:41
-#: lib/layouts/svmult.layout:101
+#: lib/layouts/svmult.layout:110
 #: lib/layouts/agu_stdsections.inc:22
 #: lib/layouts/scrclass.inc:59
 #: lib/layouts/svcommon.inc:146
@@ -9398,7 +9397,7 @@ msgid "Institute #"
 msgstr "Institut #"
 
 #: lib/layouts/svglobal.layout:125
-#: lib/layouts/svmult.layout:125
+#: lib/layouts/svmult.layout:134
 #: lib/layouts/scrclass.inc:204
 msgid "Dedication"
 msgstr "Widmung"
@@ -9433,7 +9432,7 @@ msgstr "Mathematik-Sachgebiets-Klassifikation"
 
 #: lib/layouts/svglobal3.layout:80
 msgid "CRSC"
-msgstr ""
+msgstr "CRSC"
 
 #: lib/layouts/svglobal3.layout:83
 msgid "CR Subject Classification"
@@ -9459,63 +9458,63 @@ msgstr "Titel*"
 msgid "Title*: "
 msgstr "Titel*:"
 
-#: lib/layouts/svmult.layout:64
+#: lib/layouts/svmult.layout:65
 msgid "Contributors"
 msgstr "Mitwirkende"
 
-#: lib/layouts/svmult.layout:66
+#: lib/layouts/svmult.layout:67
 msgid "List of Contributors"
 msgstr "Liste der Mitwirkenden"
 
-#: lib/layouts/svmult.layout:70
+#: lib/layouts/svmult.layout:71
 msgid "Contributor List"
 msgstr "Liste der Mitwirkenden"
 
-#: lib/layouts/svmult.layout:94
-#: lib/layouts/svmult.layout:102
-#: lib/layouts/svmult.layout:110
-#: lib/layouts/svmult.layout:118
-#: lib/layouts/svmult.layout:126
-#: lib/layouts/svmult.layout:134
-#: lib/layouts/svmult.layout:142
+#: lib/layouts/svmult.layout:103
+#: lib/layouts/svmult.layout:111
+#: lib/layouts/svmult.layout:119
+#: lib/layouts/svmult.layout:127
+#: lib/layouts/svmult.layout:135
+#: lib/layouts/svmult.layout:143
+#: lib/layouts/svmult.layout:151
 msgid "For editors"
 msgstr "Für Herausgeber"
 
-#: lib/layouts/svmult.layout:97
+#: lib/layouts/svmult.layout:106
 msgid "PartBacktext"
 msgstr "Teil-Rückseitentext"
 
-#: lib/layouts/svmult.layout:105
+#: lib/layouts/svmult.layout:114
 msgid "Running Chapter"
 msgstr "Kapitel in Kopfzeile"
 
-#: lib/layouts/svmult.layout:109
+#: lib/layouts/svmult.layout:118
 msgid "ChapAuthor"
 msgstr "KapAutor"
 
-#: lib/layouts/svmult.layout:113
+#: lib/layouts/svmult.layout:122
 msgid "ChapSubtitle"
 msgstr "KapUntertitel"
 
-#: lib/layouts/svmult.layout:117
+#: lib/layouts/svmult.layout:126
 msgid "extrachap"
 msgstr "extra-Kapitel"
 
-#: lib/layouts/svmult.layout:121
+#: lib/layouts/svmult.layout:130
 msgid "Extrachap"
 msgstr "Extra-Kapitel"
 
-#: lib/layouts/svmult.layout:129
-#: lib/layouts/svcommon.inc:503
+#: lib/layouts/svmult.layout:138
+#: lib/layouts/svcommon.inc:501
 msgid "Foreword"
 msgstr "Vorwort"
 
-#: lib/layouts/svmult.layout:133
-#: lib/layouts/svcommon.inc:534
+#: lib/layouts/svmult.layout:142
+#: lib/layouts/svcommon.inc:532
 msgid "Preface"
 msgstr "Vorwort"
 
-#: lib/layouts/svmult.layout:145
+#: lib/layouts/svmult.layout:154
 msgid "ChapMotto"
 msgstr "KapMotto"
 
@@ -10263,13 +10262,13 @@ msgstr "mit Überschriften"
 msgid "Sub-run-in headings"
 msgstr "Schlagwörter:"
 
-#: lib/layouts/svcommon.inc:356
-msgid "Author data: "
+#: lib/layouts/svcommon.inc:355
+msgid "Author data:"
 msgstr "Autordaten:"
 
-#: lib/layouts/svcommon.inc:382
-msgid "TOC Title:"
-msgstr "Inhaltsverz. Titel:"
+#: lib/layouts/svcommon.inc:392
+msgid "TOC author:"
+msgstr "Inhaltsverz. Autor:"
 
 #: lib/layouts/svcommon.inc:395
 msgid "Running Title"
@@ -10279,35 +10278,35 @@ msgstr "Titel in Kopfzeile"
 msgid "Running Author"
 msgstr "Autor in Kopfzeile"
 
-#: lib/layouts/svcommon.inc:414
-msgid "Running Chapter:"
+#: lib/layouts/svcommon.inc:413
+msgid "Running chapter:"
 msgstr "Kapitel in Kopfzeile:"
 
-#: lib/layouts/svcommon.inc:417
+#: lib/layouts/svcommon.inc:416
 msgid "Running Section"
 msgstr "Abschnitt in Kopfzeile"
 
-#: lib/layouts/svcommon.inc:421
-msgid "Running Section:"
+#: lib/layouts/svcommon.inc:419
+msgid "Running section:"
 msgstr "Abschnitt in Kopfzeile:"
 
-#: lib/layouts/svcommon.inc:445
+#: lib/layouts/svcommon.inc:443
 msgid "Abstract*"
 msgstr "Abstract*"
 
-#: lib/layouts/svcommon.inc:449
+#: lib/layouts/svcommon.inc:447
 msgid "Abstract* (not printed)"
 msgstr "Abstract* (nicht gedruckt)"
 
-#: lib/layouts/svcommon.inc:525
+#: lib/layouts/svcommon.inc:523
 msgid "For Authors"
 msgstr "Für Autoren"
 
-#: lib/layouts/svcommon.inc:599
+#: lib/layouts/svcommon.inc:597
 msgid "Petit"
 msgstr "Petit"
 
-#: lib/layouts/svcommon.inc:611
+#: lib/layouts/svcommon.inc:609
 msgid "Svgraybox"
 msgstr "Svgraybox"
 
@@ -23959,6 +23958,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "TOC Title:"
+#~ msgstr "Inhaltsverz. Titel:"
 
 #~ msgid "\\thesol"
 #~ msgstr "\\thesol"
