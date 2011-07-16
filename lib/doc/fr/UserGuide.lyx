@@ -15325,30 +15325,6 @@ Paquetages LaTeX ! babel
 \end_inset
 
  de LaTeX, en suivant les règles spécifiques à la langue du document.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Pour les lecteurs utilisant l'allemand : C'est une des différences entre
- les langages 
-\family sans
-Allemand
-\family default
- et 
-\family sans
-Allemand (nouvelle orthographe)
-\family default
- dans le menu 
-\family sans
-Document\SpecialChar \menuseparator
-Paramètres
-\family default
-.
-\end_layout
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
@@ -31060,12 +31036,11 @@ To define your header line, add all 3
 \end_inset
 
 header styles.
- The things you add to the styles will appear on uneven pages, the things
- in the optional arguments on even pages.
- For single-sided documents, the optional argument will not be used and
+ The things you add to the styles appear on uneven pages, the things in
+ the optional arguments on even pages.
+ For single-sided documents, the optional arguments will not be used and
  can be omitted.
- If you leave a style or its argument empty, nothing will appear in the
- output.
+ If you leave a style or its argument empty, nothing appears in the output.
  Defining the footer line works similar.
 \end_layout
 
@@ -31126,8 +31101,8 @@ roman{page} prints the current page number with small roman numerals
 
 \backslash
 leftmark prints the current section number and title.
- In case of a book, it prints the current chapter title instead, but this
- document is an article.
+ If the document has chapters, it prints the current chapter number and
+ title instead.
  It is called 
 \begin_inset Quotes fld
 \end_inset
@@ -31144,29 +31119,35 @@ leftmark
 \lang english
 
 \backslash
-rightmark prints the name and number of the current subsection number and
- title.
- If it is a book it prints the current section title.
+rightmark prints the current subsection number and title.
+ If the document has chapters, it prints the current section number and
+ title instead.
  It is normally used in the right header.
 \end_layout
 
 \begin_layout Subsection
 
 \lang english
-Default headers/footers
+Default header/footer
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-Custom headers and footers are not empty by default.
+The custom header/footer is not empty by default.
  The default header contains the chapter and section title and the center
  footer has the page number.
- In order to remove unwanted headers/footers, include the relevant header/footer
- style in your document, but leave it blank.
- So, if you don't want a page number in the footer, perhaps because you
- put it int he header instead, include a blank center footer to get rid
- of the default.
+ In order to remove unwanted entries from the header/footer, include the
+ relevant header/footer style in your document, but leave it blank.
+ So, if you do not want a page number in the footer, include a blank 
+\family sans
+Center
+\begin_inset space ~
+\end_inset
+
+Footer
+\family default
+ style.
 \end_layout
 
 \begin_layout Subsection
@@ -31178,7 +31159,7 @@ Appearance
 \begin_layout Standard
 
 \lang english
-The custom headers and footers will appear on normal pages.
+The header and footer will appear on normal pages.
  Some pages are different.
  The title page has a style of its own, and so has any page that starts
  a new part or chapter in your book.
@@ -31314,7 +31295,7 @@ Where height is a size in standard units.
  Then open the LaTeX logfile via the menu 
 \family sans
 Document\SpecialChar \menuseparator
-LaT
+La
 \begin_inset ERT
 status collapsed
 
@@ -31325,7 +31306,7 @@ status collapsed
 
 \end_inset
 
-eX Log
+TeX Log
 \family default
  and look via the button 
 \family sans
@@ -32362,77 +32343,8 @@ name "sec:Correcteur-Orthographique"
 
 \begin_layout Standard
 LyX n'a pas lui-même de correcteur orthographique incorporé.
- Il utilise plutôt un programme extérieur comme 
-\family typewriter
-aspell
-\family default
-, 
-\family typewriter
-ispell
-\family default
-, 
-\family typewriter
-hspell
-\family default
-, ou encore 
-\family typewriter
-pspell
-\family default
-.
- Cette section suppose que vous avez déjà installé et configuré un de ces
- programmes.
- 
-\family typewriter
-aspell
-\family default
- peut être considéré comme le successeur de
-\family typewriter
- ispell
-\family default
-, il est donc préférable d'utiliser 
-\family typewriter
-aspell
-\family default
-.
- 
-\family typewriter
-hspell
-\family default
- est un correcteur orthographique en Hébreu.
- Le correcteur orthographique utilisé et ses paramètres sont modifiés dans
- le menu 
-\family sans
-Outils\SpecialChar \menuseparator
-Préférences
-\family default
- dans la rubrique 
-\family sans
-Paramètres
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-langue
-\family default
-.
- 
-\end_layout
-
-\begin_layout Standard
-Avec LyX pour Windows, la case de sélection pour le programme de correction
- orthographique est désactivée puisque seul 
-\family typewriter
-aspell
-\family default
- peut être utilisé.
-\end_layout
-
-\begin_layout Standard
-On lance le correcteur orthographique à partir de la position courante du
- curseur, soit en activant le menu
+ On lance le correcteur orthographique à partir de la position courante
+ du curseur, soit en activant le menu
 \family sans
  Outils\SpecialChar \menuseparator
 Correcteur
@@ -32441,7 +32353,13 @@ Correcteur
 
 Orthographique
 \family default
-, soit en cliquant sur le bouton
+\lang english
+, the key 
+\family sans
+F7
+\family default
+\lang french
+, ou soit en cliquant sur le bouton
 \begin_inset Graphics
 	filename ../../images/dialog-show_spellchecker.png
 	scale 85
@@ -32463,8 +32381,10 @@ F7
  En cliquant sur une de ces suggestions elle est recopiée dans le champ
  
 \family sans
-Remplace
+\lang english
+Replacement
 \family default
+\lang french
 , en double-cliquant on effectue directement le remplacement.
  Un mot inconnu du correcteur, mais qui serait correctement écrit, peut
  être ajouté à votre dictionnaire personnel.
@@ -32478,89 +32398,87 @@ Document\SpecialChar \menuseparator
 Paramètres
 \family default
 .
- Si vous n'avez pas de dictionnaire adapté à la langue du document, la correctio
-n orthographique va afficher un message d'erreur.
- Dans ce cas, vous pouvez utiliser un autre dictionnaire en donnant le nom
- d'une autre langue dans la case 
-\family sans
-Utiliser
-\begin_inset space ~
-\end_inset
+ 
+\lang english
+You can specify the language of a word in the spellchecker dialog by choosing
+ a different one at the top of the dialog.
+ LyX can correctly spell check documents containing multiple languages.
+ This work if you have marked the different languages appropriately and
+ have the spell checker dictionaries installed.
+ LyX automatically switches to the appropriate dictionary file.
+\end_layout
 
-une
-\begin_inset space ~
-\end_inset
+\begin_layout Subsection
 
-autre
-\begin_inset space ~
-\end_inset
-
-langue
-\family default
- de la fenêtre de dialogue 
-\family sans
-Document\SpecialChar \menuseparator
-Paramètres
-\family default
-.
+\lang english
+Further Settings
 \end_layout
 
 \begin_layout Standard
-Quand la vérification orthographique est terminée, vous êtes informés du
- nombre de mots qui ont été vérifiés.
-\end_layout
 
-\begin_layout Subsubsection*
-Limitations
-\end_layout
-
-\begin_layout Standard
-Il n'est pas possible de changer en une seule opération l'orthographe d'un
- mot dans tout le document, il faut soit le faire pour chaque occurrence
- du mot séparément, soit utiliser 
+\lang english
+In LyX's preferences dialog under 
 \family sans
-Rechercher
+Language
 \begin_inset space ~
 \end_inset
 
-et
-\begin_inset space ~
-\end_inset
-
-Remplacer
+Setting\SpecialChar \menuseparator
+Spellchecker
 \family default
- pour le faire.
+ you can set the following things:
 \end_layout
 
-\begin_layout Standard
-LyX ne peut pas faire une vérification d'orthographe correcte sur un document
- contenant plusieurs langues.
- En principe cela marche avec 
+\begin_layout Description
+
+\lang english
+Spellchecker
+\begin_inset space ~
+\end_inset
+
+engine Select the library LyX should use for spell checking.
+ Depending on your platform, 
 \family typewriter
-pspell
+aspell
 \family default
-, à condition de bien avoir marqué les différents langages.
+, 
+\family typewriter
+hunspell
+\family default
+ or 
+\family typewriter
+enchant
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Enchant itself is a wrapper library having different configurable back-ends.
+ Please consult the documentation or man-page of it to learn more.
 \end_layout
 
-\begin_layout Subsubsection*
-Autres Paramètres
+\end_inset
+
+
+\family default
+ are available.
+ On Windows only 
+\family typewriter
+hunspell
+\family default
+ is available.
 \end_layout
 
-\begin_layout Standard
-La rubrique 
-\family sans
-Correcteur
+\begin_layout Description
+
+\lang english
+Alternative
 \begin_inset space ~
 \end_inset
 
-orthographique
-\family default
- de la fenêtre de dialogue 
-\family sans
-Document\SpecialChar \menuseparator
-Paramètres
-\family default
- possède quelques options supplémentaires:
+language If this field is not empty, LyX will always use the given language
+ for the spell checking, no matter what the document language is.
 \end_layout
 
 \begin_layout Description
@@ -32577,18 +32495,12 @@ caractères
 \end_inset
 
 protégés Vous permet de déclarer des caractères non standard que le correcteur
- doit néanmoins traiter, comme par exemple des umlaut allemands alors que
- vous traitez un document en Français.
+ 
+\lang english
+should escape
+\lang french
+, comme par exemple des umlaut allemands.
  En principe cette option ne devrait pas être nécessaire.
-\end_layout
-
-\begin_layout Description
-Dictionnaire
-\begin_inset space ~
-\end_inset
-
-Personnel Vous permet d'utiliser un autre nom de fichier pour votre dictionnaire
- personnel que celui utilisé implicitement par le correcteur orthographique.
 \end_layout
 
 \begin_layout Description
@@ -32616,49 +32528,37 @@ nonlinéaire
 \end_layout
 
 \begin_layout Description
-Utiliser
+
+\lang english
+Spellcheck
 \begin_inset space ~
 \end_inset
 
-l'encodage
-\begin_inset space ~
-\end_inset
-
-d'entrée  Utilise pour le correcteur orthographique l'encodage défini pour
- le document dans la fenêtre de dialogue 
-\family sans
-Document\SpecialChar \menuseparator
-Paramètres,
-\family default
- rubrique 
-\family sans
-Langue
-\family default
-.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-L'encodage est expliqué dans la section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Paramètres"
-
-\end_inset
-
-.
+continously Check the spelling of your document as you type it.
+ Misspelled words gets underlined with a dotted red line.
+ By right-clicking on an underlined word, the suggestions by the spell appear
+ in the context menu.
+ Choosing one of them will replace the misspelled word with the suggested
+ word.
 \end_layout
 
+\begin_layout Description
+
+\lang english
+Spellcheck
+\begin_inset space ~
 \end_inset
 
- Activez cette option dans le cas où vous n'arrivez pas à vérifier l'orthographe
- de mots contenant des caractères internationaux.
- Certains retours d'expérience indiquent que cela ne marche pas avec tous
- les dictionnaires, ce qui explique que l'option soit désactivée implicitement.
+notes
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+comments If enabled, the spelling of non-printed document contents is checked
+ as well.
 \end_layout
 
 \begin_layout Section

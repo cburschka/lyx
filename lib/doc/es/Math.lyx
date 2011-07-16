@@ -5818,7 +5818,7 @@ Nota:
 \lang english
 LaTeX limits the number of matrix columns with decorations to 10.
  If you need more than 10
-\begin_inset space \thinspace{}
+\begin_inset space ~
 \end_inset
 
 columns, you have to add this line to the document preamble:
