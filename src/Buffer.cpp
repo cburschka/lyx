@@ -2568,6 +2568,10 @@ void Buffer::collectChildren(ListOfBuffers & clist, bool grand_children) const
 			// there might be grandchildren
 			child->collectChildren(clist, true);
 	}
+	// Make sure we have not included ourselves.
+	ListOfBuffers::iterator bit = find(clist.begin(), clist.end(), this);
+	if (bit != clist.end())
+		clist.erase(bit);
 }
 
 
