@@ -49,6 +49,7 @@
 #include <utility>
 #include <fstream>
 #include <sstream>
+#include <vector>
 
 #if defined (_WIN32)
 #include <io.h>
@@ -795,13 +796,31 @@ docstring const makeDisplayPath(string const & path, unsigned int threshold)
 #ifdef HAVE_READLINK
 bool readLink(FileName const & file, FileName & link)
 {
-	char linkbuffer[PATH_MAX + 1];
 	string const encoded = file.toFilesystemEncoding();
+#ifdef HAVE_DEF_PATH_MAX
+	char linkbuffer[PATH_MAX + 1];
 	int const nRead = ::readlink(encoded.c_str(),
 				     linkbuffer, sizeof(linkbuffer) - 1);
 	if (nRead <= 0)
 		return false;
 	linkbuffer[nRead] = '\0'; // terminator
+#else
+	vector<char> buf(1024);
+	int nRead = -1;
+
+	while (true) {
+		nRead = ::readlink(encoded.c_str(), &buf[0], buf.size() - 1);
+		if (nRead < 0) {
+			return false;
+		}
+		if (nRead < buf.size() - 1) {
+			break;
+		}
+		buf.resize(buf.size() * 2);
+	}
+	buf[nRead] = '\0'; // terminator
+	const char * linkbuffer = &buf[0];
+#endif
 	link = makeAbsPath(linkbuffer, onlyPath(file.absFileName()));
 	return true;
 }
