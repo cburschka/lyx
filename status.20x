@@ -158,10 +158,6 @@ What's new
 
 - Fix output of unicode math from within child documents (bug 7682).
 
-- Added a check for recursive includes that should prevent some of the
-  crashes we see in such cases.
-
-
 * USER INTERFACE
 
 - Fixed crash relating to outliner and mouse movement.
