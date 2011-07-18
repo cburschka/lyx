@@ -5678,16 +5678,6 @@ Zitat!(kurz)
 \end_inset
 
  – LaTeX-Bezeichnung: Quote
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Quote
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -5706,16 +5696,6 @@ Zitat!(lang)
 \end_inset
 
  – LaTeX-Bezeichnung: Quotation
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Quotation
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -5734,16 +5714,6 @@ Gedicht
 
 \family default
  – LaTeX-Bezeichnung: Verse
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Verse
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -5767,19 +5737,7 @@ listung
 
 
 \family default
- – LaTeX-Bezeichnung: Itemize 
-\family sans
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Itemize
-\end_layout
-
-\end_inset
-
-
+ – LaTeX-Bezeichnung: Itemize
 \end_layout
 
 \begin_layout Itemize
@@ -5798,16 +5756,6 @@ Aufzahlung@Aufzählung
 
 \family default
  – LaTeX-Bezeichnung: Enumerate
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Enumerate
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -5826,16 +5774,6 @@ Beschreibung
 
 \family default
  – LaTeX-Bezeichnung: Description
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Description
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -5854,16 +5792,6 @@ Liste
 
 \family default
  – LaTeX-Bezeichnung: List
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-List
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -11504,6 +11432,393 @@ Auflistung
  Sie haben jede Menge Möglichkeiten zur Auswahl.
 \end_layout
 
+\begin_layout Subsection
+Benutzerdefinierte Nummerierung von Nummerierten Listen
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Liste ! Aufzahlung@Aufzählung ! Benutzerdefiniert
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Die voreingestellte Nummerierung von nummerierten Listen kann geändert werden,
+ indem man diesen Befehl als TeX-Code (Tastenkürzel 
+\family sans
+Strg+L
+\family default
+)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Für mehr über TeX-Code, siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:TeX-Code"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ in in die Dokumentpräambel oder den Text einfügt:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+labelenumi}{
+\backslash
+roman{enumi}}
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+enumi
+\emph default
+ ist hierbei der Zähler der Nummerierung der ersten Stufe.
+ Der Befehl 
+\series bold
+
+\backslash
+roman
+\series default
+ gibt den Zähler als kleine römische Zahl.
+ Für große römische Zahlen ersetzen Sie in obigem Befehl 
+\series bold
+
+\backslash
+roman
+\series default
+ durch 
+\series bold
+
+\backslash
+Roman
+\series default
+.
+ Für arabische Zahlen verwenden Sie 
+\series bold
+
+\backslash
+arabic
+\series default
+.
+ Um Punkte mit großen oder kleinen Buchstaben zu 
+\begin_inset Quotes gld
+\end_inset
+
+nummerieren
+\begin_inset Quotes grd
+\end_inset
+
+, verwenden Sie die Befehle 
+\series bold
+
+\backslash
+Alph
+\series default
+ oder 
+\series bold
+
+\backslash
+alph
+\series default
+.
+ Für die 
+\begin_inset Quotes gld
+\end_inset
+
+Nummerierung
+\begin_inset Quotes grd
+\end_inset
+
+ mit Symbolen steht der Befehl 
+\series bold
+
+\backslash
+fnsymbol
+\series default
+ zur Verfügung.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Bemerkung 1:
+\series default
+ Mit Buchstaben können höchstens 26
+\begin_inset space ~
+\end_inset
+
+Punkte nummeriert werden, weil nur 
+\emph on
+ein
+\emph default
+ Buchstabe verwendet wird.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Bemerkung 2:
+\series default
+ Mit Symbolen können höchstens 9
+\begin_inset space ~
+\end_inset
+
+Punkte nummeriert werden.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Um die Nummerierung für die anderen Stufen der Liste zu ändern, ersetzen
+ Sie im Befehl die 'i' jeweils durch die kleine römische Zahl der Stufe
+ (enumi, enumii, enumiii, enumiv).
+\end_layout
+
+\begin_layout Standard
+Als Beispiel eine Liste mit benutzerdefinierter Nummerierung:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+labelenumi}{
+\backslash
+#
+\backslash
+Alph{enumi}
+\backslash
+#}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+labelenumii}{
+\backslash
+Alph{enumi}.
+\backslash
+arabic{enumii}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+labelenumiii}{
+\backslash
+fnsymbol{enumiii}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+labelenumiv}{(
+\backslash
+roman{enumiv})}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Stufe 1
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Stufe 2
+\end_layout
+
+\begin_layout Enumerate
+Stufe 2
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Stufe 3
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Stufe 4
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+Für diese Liste wurden diese Befehle verwendet:
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+labelenumi}{
+\backslash
+#
+\backslash
+Alph{enumi}
+\backslash
+#}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+renewcommand{
+\backslash
+labelenumii}{
+\backslash
+Alph{enumi}.
+\backslash
+arabic{enumii}}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+renewcommand{
+\backslash
+labelenumiii}{
+\backslash
+fnsymbol{enumiii}}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+renewcommand{
+\backslash
+labelenumiv}{(
+\backslash
+roman{enumiv})}
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+labelenumi}{
+\backslash
+arabic{enumi}.}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+labelenumii}{
+\backslash
+alph{enumi})}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+labelenumiii}{
+\backslash
+roman{enumiii}.}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+labelenumiv}{
+\backslash
+Alph{enumiv}.}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+setzt die Nummerierung zurück auf die Voreinstellung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Abstände, Seiten- und Zeilenumbrüche
 \end_layout
@@ -13536,12 +13851,10 @@ Hervorhebungsstil
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-LaTeX font support
+LaTeX Schriftunterstützung
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:LaTeX-font-support"
+name "sub:LaTeX-Schriftunterstützung"
 
 \end_inset
 
@@ -13605,7 +13918,7 @@ status open
 
 \series bold
 \lang english
-Note:
+Achtung:
 \series default
  In practice, some fonts might fail due to bad metrics and other font deficienci
 es; so you might have to experiment.
@@ -13626,7 +13939,7 @@ status open
 
 \series bold
 \lang english
-Note:
+Achtung:
 \series default
  XeTeX and especially LuaTeX, are still rather new and thus not as mature
  as traditional LaTeX or PDFLaTeX.
@@ -13820,7 +14133,7 @@ you will have to have either XeTeX or LuaTeX installed (see section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:LaTeX-font-support"
+reference "sub:LaTeX-Schriftunterstützung"
 
 \end_inset
 
@@ -16180,7 +16493,7 @@ LuaTeX
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:LaTeX-font-support"
+reference "sub:LaTeX-Schriftunterstützung"
 
 \end_inset
 
@@ -16243,8 +16556,9 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-When you are interested to learn more about this, have a look at the LaTeX-packa
-ge 
+When you are interested to learn more about this, have a look at the 
+\lang ngerman
+LaTeX-Paket 
 \series bold
 pstricks
 \series default
@@ -16253,9 +16567,7 @@ pstricks
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-LaTeX-packages ! pstricks
+LaTeX-Paket ! pstricks
 \end_layout
 
 \end_inset
@@ -16540,7 +16852,7 @@ XeTeX
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:LaTeX-font-support"
+reference "sub:LaTeX-Schriftunterstützung"
 
 \end_inset
 
@@ -16587,7 +16899,7 @@ pdflatex
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:LaTeX-font-support"
+reference "sub:LaTeX-Schriftunterstützung"
 
 \end_inset
 
@@ -33311,7 +33623,14 @@ key "hyperref"
 \end_layout
 
 \begin_layout Section
-TeX-Code und LaTeX-Syntax 
+TeX-Code und LaTeX-Syntax
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:TeX-Code"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 

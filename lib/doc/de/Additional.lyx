@@ -22564,16 +22564,97 @@ wie
 \end_layout
 
 \begin_layout Section
-Nummerierung in der 
+Mehrere Spalten
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The aim for this section is to show how the LaTeX package 
+\series bold
+multicol
+\series default
+ can be used in a LyX document.
+ LyX does not support the 
+\series bold
+multicol
+\series default
+ package natively yet, so you have to use some TeX code.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The 
+\series bold
+multicol
+\series default
+ package allows switching between one and multicolumn format on the same
+ page.
+ Footnotes are handled correctly, but will be placed at the bottom of the
+ page and not under each column.
+ Within the different columns you can use everyting, with the limitation
+ that for floats you need to use the option 
 \family sans
-Aufzählung
+Span colums
 \family default
--Absatzumgebung
-\begin_inset Index idx
-status collapsed
+ for each column.
+\end_layout
+
+\begin_layout Subsection
+Beispiele
+\end_layout
+
+\begin_layout Subsubsection
+Zwei Spalten
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you want to have two columns in your text, insert the comand
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+begin{multicols}{2}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+at the point where you want the two column layout to start, and then
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+end{multicols}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+where you want it to end.
+ Like this
+\lang ngerman
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
-Aufzahlung@Aufzählung!Nummerierung
+
+
+\backslash
+begin{multicols}{2}
 \end_layout
 
 \end_inset
@@ -22582,252 +22663,277 @@ Aufzahlung@Aufzählung!Nummerierung
 \end_layout
 
 \begin_layout Standard
-Die Nummerierung in der 
-\family sans
-Aufzählung
-\family default
--Absatzumgebung beginnt normalerweise mit arabischen Zahlen und endet in
- der tiefsten Aufzählungsebene mit Großbuchstaben.
- Falls Sie eine andere Art der Aufteilung wünschen, hier ist ein Beispiel:
-\end_layout
+\noindent
 
-\begin_layout LyX-Code
+\series bold
+\size small
+\lang english
+The Adventure of the Empty House
+\series default
 
-\backslash
-renewcommand{
-\backslash
-labelenumi}{
-\backslash
-Roman{enumi}.}
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout LyX-Code
-
-\backslash
-renewcommand{
-\backslash
-labelenumii}{
-\backslash
-Alph{enumii}.}
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-renewcommand{
-\backslash
-labelenumiii}{
-\backslash
-arabic{enumiii}.}
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-renewcommand{
-\backslash
-labelenumiv}{
-\backslash
-alph{enumiv}.)}
+by 
+\noun on
+Sir Arthur Conan Doyle
 \end_layout
 
 \begin_layout Standard
-Damit wird das Schema auf große römische Zahlen, Großbuchstaben, arabische
- Zahlen und als letztes Kleinbuchstaben umgestellt.
+
+\size small
+\lang english
+It was in the spring of the year 1894 that all London was interested, and
+ the fashionable world dismayed, by the murder of the Honourable Ronald
+ Adair under most unusual and inexplicable circumstances.
+ The public has already learned those particulars of the crime which came
+ out in the police investigation, but a good deal was suppressed upon that
+ occasion, since the case for the prosecution was so overwhelmingly strong
+ that it was not necessary to bring forward all the facts.
+ Only now, at the end of nearly ten years, am I allowed to supply those
+ missing links which make up the whole of that remarkable chain.
+ The crime was of interest in itself, but that interest was as nothing to
+ me compared to the inconceivable sequel, which afforded me the greatest
+ shock and surprise of any event in my adventurous life.
+ Even now, after this long interval, I find myself thrilling as I think
+ of it, and feeling once more that sudden flood of joy, amazement, and increduli
+ty which utterly submerged my mind.
+ Let me say to that public, which has shown some interest in those glimpses
+ which I have occasionally given them of the thoughts and actions of a very
+ remarkable man, that they are not to blame me if I have not shared my knowledge
+ with them, for I should have considered it my first duty to do so, had
+ I not been barred by a positive prohibition from his own lips, which was
+ only withdrawn upon the third of last month.
 \end_layout
 
 \begin_layout Standard
-Darüberhinaus wird die Nummerierung noch ein wenig verändert, es wird zusätzlich
- ein Punkt eingefügt und in Ebene 4 eine Klammer.
- Das so erzeugte Nummerierungsschema für die verschiedenen Aufzählungsebenen
- ist damit also folgendes: 
-\begin_inset Quotes gld
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{multicols}
+\end_layout
+
 \end_inset
 
-I.
-\begin_inset Quotes grd
-\end_inset
 
-, 
-\begin_inset Quotes gld
-\end_inset
+\end_layout
 
-A.
-\begin_inset Quotes grd
-\end_inset
-
-, 
-\begin_inset Quotes gld
-\end_inset
-
-1.
-\begin_inset Quotes grd
-\end_inset
-
-, 
-\begin_inset Quotes gld
-\end_inset
-
-a.)
-\begin_inset Quotes grd
-\end_inset
-
-.
- 
+\begin_layout Subsubsection
+Mehrere Spalten
 \end_layout
 
 \begin_layout Standard
-Wie Sie am Beispiel sehen, gibt es für jede Ebene eigene Markierungsbefehle,
- 
-\family typewriter
 
-\backslash
-label\SpecialChar \-
-enumi
-\family default
- \SpecialChar \ldots{}
- 
-\family typewriter
-
-\backslash
-labelenumiv
-\family default
-, und ebenso einen eigenen Zähler, 
-\family typewriter
-enumi
-\family default
- \SpecialChar \ldots{}
- 
-\family typewriter
-enumiv
-\family default
-.
- Außerdem gibt es fünf Befehle, um 
-\emph on
-Zahlen
-\emph default
- auszugeben, nämlich 
-\family typewriter
-
-\backslash
-arabic{}
-\family default
-,
-\family typewriter
- 
-\backslash
-ro\SpecialChar \-
-man{}
-\family default
-, 
-\family typewriter
-
-\backslash
-Roman{}
-\family default
-, 
-\family typewriter
-
-\backslash
-alph{}
-\family default
- und 
-\family typewriter
-
-\backslash
-Alph{}
-\family default
-.
- Jedem von ihnen muss als Argument einer der Zähler übergeben werden.
- Sie können vor oder nach den Befehlen auch noch weitere Zeichen eingeben,
- Leerzeichen sind jedoch nicht notwendig.
+\lang english
+The same pattern is used when you want more than two columns:
 \end_layout
 
 \begin_layout Standard
-Damit ist dann wirklich fast jedes denkbare Schema machbar, hier ein Beispiel:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{multicols}{3}
 \end_layout
 
-\begin_layout LyX-Code
+\end_inset
 
-\backslash
-renewcommand{
-\backslash
-labelenumi}{
-\backslash
-#
-\backslash
-Alph{enumi}
-\backslash
-#}
-\end_layout
 
-\begin_layout LyX-Code
-
-\backslash
-renewcommand{
-\backslash
-labelenumii}{
-\backslash
-Alph{enumi}.
-\backslash
-arabic{enumii}}
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-renewcommand{
-\backslash
-labelenumiii}{
-\backslash
-alph{enumiii}+}
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-renewcommand{
-\backslash
-labelenumiv}{(
-\backslash
-roman{enumiv})}
 \end_layout
 
 \begin_layout Standard
-Damit erhält man folgendes Nummerierungsschema: 
-\begin_inset Quotes gld
+
+\size footnotesize
+\lang english
+It can be imagined that my close intimacy with Sherlock Holmes had interested
+ me deeply in crime, and that after his disappearance I never failed to
+ read with care the various problems which came before the public.
+ And I even attempted, more than once, for my own private satisfaction,
+ to employ his methods in their solution, though with indifferent success.
+ There was none, however, which appealed to me like this tragedy of Ronald
+ Adair.
+ As I read the evidence at the inquest, which led up to a verdict of willful
+ murder against some person or persons unknown, I realized more clearly
+ than I had ever done the loss which the community had sustained by the
+ death of Sherlock Holmes.
+ There were points about this strange business which would, I was sure,
+ have specially appealed to him, and the efforts of the police would have
+ been supplemented, or more probably anticipated, by the trained observation
+ and the alert mind of the first criminal agent in Europe.
+ All day, as I drove upon my round, I turned over the case in my mind and
+ found no explanation which appeared to me to be adequate.
+ At the risk of telling a twice-told tale, I will recapitulate the facts
+ as they were known to the public at the conclusion of the inquest.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{multicols}
+\end_layout
+
 \end_inset
 
-#A#
-\begin_inset Quotes grd
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You can have more than 3 columns if you want to, but that might not be very
+ pleasant for the eye.
+\end_layout
+
+\begin_layout Subsubsection
+Spalten innnerhalb von Spalten
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You can even have columns inside columns:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{multicols}{2}
+\end_layout
+
 \end_inset
 
-, 
-\begin_inset Quotes gld
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\lang english
+The Honourable Ronald Adair was the second son of the Earl of Maynooth,
+ at that time governor of one of the Australian colonies.
+ Adair's mother had returned from Australia to undergo the operation for
+ cataract, and she, her son Ronald, and her daughter Hilda were living together
+ at 427 Park Lane.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{multicols}{2}
+\end_layout
+
 \end_inset
 
-A.1
-\begin_inset Quotes grd
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\lang english
+The youth moved in the best society–had, so far as was known, no enemies
+ and no particular vices.
+ He had been engaged to Miss Edith Woodley, of Carstairs, but the engagement
+ had been broken off by mutual consent some months before, and there was
+ no sign that it had left any very profound feeling behind it.
+ For the rest {sic} the man's life moved in a narrow and conventional circle,
+ for his habits were quiet and his nature unemotional.
+ Yet it was upon this easy-going young aristocrat that death came, in most
+ strange and unexpected form, between the hours of ten and eleven-twenty
+ on the night of March 30, 1894.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{multicols}
+\end_layout
+
 \end_inset
 
-, 
-\begin_inset Quotes gld
-\end_inset
 
-a+
-\begin_inset Quotes grd
-\end_inset
+\end_layout
 
-, 
-\begin_inset Quotes gld
-\end_inset
+\begin_layout Standard
 
-(i)
-\begin_inset Quotes grd
-\end_inset
+\size footnotesize
+\lang english
+Ronald Adair was fond of cards–playing continually, but never for such stakes
+ as would hurt him.
+ He was a member of the Baldwin, the Cavendish, and the Bagatelle card clubs.
+ It was shown that, after dinner on the day of his death, he had played
+ a rubber of whist at the latter club.
+ He had also played there in the afternoon.
 
-.
+\size default
  
+\size footnotesize
+The evidence of those who had played with him– Mr.
+ Murray, Sir John Hardy, and Colonel Moran–showed that the game was whist,
+ and that there was a fairly equal fall of the cards.
+ Adair might have lost five pounds, but not more.
+ His fortune was a considerable one, and such a loss could not in any way
+ affect him.
+ He had played nearly every day at one club or other, but he was a cautious
+ player, and usually rose a winner.
+ It came out in evidence that, in partnership with Colonel Moran, he had
+ actually won as much as four hundred and twenty pounds in a sitting, some
+ weeks before, from Godfrey Milner and Lord Balmoral.
+ So much for his recent history as it came out at the inquest.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{multicols}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Please read the example file 
+\family typewriter
+multicol.lyx
+\family default
+ for more advanced examples including column and header spacing, vertical
+ separator lines, and more.
 \end_layout
 
 \begin_layout Section
@@ -23148,879 +23254,8 @@ hangafter=-3
  vertikalen Abstand einfügen.
 \end_layout
 
-\begin_layout Section
-Textumflossene Bilder und Tabellen
-\end_layout
-
 \begin_layout Standard
-Im 
-\emph on
-Eingebettete Objekte
-\emph default
- Handbuch werden Umflossene Gleitobjekte beschrieben.
- Sie liefern Folgendes:
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
- oder 
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Wenn Sie aber Text richtig um Bilder oder Tabellen fließen lassen wollen,
- also auch so etwas:
-\begin_inset VSpace defskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
- 
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
- 
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
- 
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
- 
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
- 
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-sollten Sie das LaTeX-Paket 
-\family sans
-picinpar
-\family default
- benutzen.
- Hier ist ein Beispiel:
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ifpicinpar
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Das folgende Beispiel wird nur gedruckt, wenn das LaTeX-Paket 
-\family typewriter
-picinpar
-\family default
- installiert ist.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{window}[2,c,{
-\end_layout
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../clipart/mobius.eps
-	width 40col%
-	scaleBeforeRotation
-	rotateOrigin center
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-},{}]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace{-1em}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1em}
-\end_layout
-
-\end_inset
-
-Textumflossene Bilder oder Tabellen sind keine Gleitobjekte, weil sie dort
- gedruckt werden, wo sie definiert wurden.
- Dieser Typ wird benutzt, um Text um eine Abbildung herum 
-\emph on
-fließen
-\emph default
- zu lassen, wobei der Text nur den Teil der Zeile benutzt, den die Abbildung
- übrig lässt.
- Er wird so eingefügt, wie Sie hier sehen, wenn das La\SpecialChar \-
-TeX-Paket 
-\family typewriter
-picinpar
-\family default
- installiert ist.
- Der erste Parameter in der eckigen
-\begin_inset Newline linebreak
-\end_inset
-
-Klammer, hier 2, definiert die Anzahl der Zeilen über dem Bild, der zweite,
- hier c, die Position des Bildes.
- Die Abbildung nimmt 40
-\begin_inset space \thinspace{}
-\end_inset
-
-% der Spaltenbreite ein.
- Weitere Einzelheiten finden Sie in der Dokumentation von 
-\family typewriter
-picinpar
-\family default
-.
- Die Bildparameter können Sie mit einem Klick auf das Bild wie gewohnt ändern.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{window}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-else
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Der folgende Teil wird gedruckt, wenn das LaTeX-Paket 
-\family typewriter
-picinpar
-\family default
- nicht installiert ist:
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Sie müssen das LaTeX-Paket 
-\family typewriter
-picinpar
-\family default
- installiert haben, um das Beispiel in der Ausgabe zu sehen.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-fi
-\end_layout
-
+\begin_inset Newpage newpage
 \end_inset
 
 
