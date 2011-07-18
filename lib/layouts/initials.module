@@ -4,6 +4,7 @@
 #Hint: try to use math and its artistic font styles like Fractur or the Calligraphic one.
 #DescriptionEnd
 #Category: charstyles
+# Author: Pavel Sanda and Uwe Stöhr
 
 Format 35
 
@@ -18,6 +19,31 @@ InsetLayout Flex:Initial
 	Requires		lettrine
 	Preamble
 		\usepackage{lettrine}
+	EndPreamble
+End
+
+Style Initial
+	Category		MainText
+	LatexType		command
+	LatexName		lettrine
+	Margin			First_Dynamic
+	LabelType		static
+	LabelString		Initial
+	OptionalArgs		1
+	RequiredArgs		1
+	LabelSep		x
+	ParIndent		MMM
+	ParSkip			0.4
+	TopSep			0.7
+	BottomSep		0.7
+	ParSep			0.3
+	Align			Left
+	AlignPossible		Left
+	LabelFont
+	  Series		Bold
+	EndFont
+	Preamble
+	  \usepackage{lettrine}
 	EndPreamble
 End
 
