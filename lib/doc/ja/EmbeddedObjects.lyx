@@ -151,6 +151,14 @@
   \setboolean{sidecap}{true}}
  {\setboolean{sidecap}{false}}
 
+% check for picinpar
+% used for surrounded fixed objects
+\newboolean{picinpar}
+\IfFileExists{picinpar.sty}
+ {\usepackage{picinpar}
+  \setboolean{picinpar}{true}}
+ {\setboolean{picinpar}{false}}
+
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
@@ -165,6 +173,9 @@
 \end_preamble
 \options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
+\begin_modules
+initials
+\end_modules
 \maintain_unincluded_children false
 \language japanese
 \language_package default
@@ -18459,6 +18470,13 @@ fi
 
 \begin_layout Chapter
 フロート
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:フロート"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -18576,14 +18594,29 @@ reference "sec:表フロート"
 \end_inset
 
 節で各々説明されている図フロートと表フロート以外に、
-\series bold
+\family sans
 アルゴリズム型
-\series default
-と
 \series bold
-折返し型
+と
 \series default
-のフロート型があります。
+折返し型
+\family default
+のフロート型があります。 
+\lang english
+The latter are explained in sec.
+\lang japanese
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:折返しフロート"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -18770,186 +18803,6 @@ numberwithin
 AMS mathパッケージを使用する
 \family default
 オプションを有効にしてください。
-\end_layout
-
-\begin_layout Subsection
-折返しフロート
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-ふろーと@フロート ! おりかえしふろーと@折返しフロート
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Wrap figure
-lines 0
-placement l
-overhang 1cm
-width "40col%"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../clipart/mobius.eps
-	width 40col%
-	scaleBeforeRotation
-	rotateOrigin center
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:折返し図フロート"
-
-\end_inset
-
-これは折返し図フロートです。
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-このフロート型は、本文が図の周りに折返して入ることによって、図が段幅の一部しか占拠しないようにしたいときに用います。折返しフロートは、LaTeXパッケージの
-\series bold
-wrapfig
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeXぱっけーじ@LaTeXパッケージ ! wrapfig
-\end_layout
-
-\end_inset
-
-を導入済みであれば、
-\family sans
-挿入\SpecialChar \menuseparator
-フロート\SpecialChar \menuseparator
-折返し図フロート
-\family default
-・
-\family sans
-折返し表フロート
-\family default
-メニューで挿入することができます
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-LaTeXパッケージの導入方法は、取扱説明書の『LaTeXの設定』に説明されています。
-\end_layout
-
-\end_inset
-
-。フロートの設定は、フロートボックスを右クリックすることで変更することができます。必須の設定項目は、フロートの
-\family sans
-配置
-\family default
-と
-\family sans
-幅
-\family default
-です。非必須項目として、
-\family sans
-ぶら下げ
-\family default
-と
-\family sans
-行幅
-\family default
-があります。前者は、フロートがどれくらい段落ないしページ余白に入り込むかを指定するものであり、後者は、フロートが必要とするおおよその本文行数を指定するものです。
-行幅は、推測するのが難しいことがよくあるので、フロートの配置に問題が生じたときのみ使用するようにした方が良いでしょう。さらに、フロートを段落内でフロートするよう
-にするか、周囲の段落までフロートすることをLaTeXに許可するかを指定することができます。第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:折返し図フロート"
-
-\end_inset
-
-図は、40
-\begin_inset space \thinspace{}
-\end_inset
-
-列幅％の幅と1
-\begin_inset space \thinspace{}
-\end_inset
-
-cmのぶら下げを持ち、左揃えの折返しフロートを例示してあります
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-使うことのできる単位は付録
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cha:LyXで使用できる単位"
-
-\end_inset
-
-に収録してあります。
-\end_layout
-
-\end_inset
-
-。
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-【註】
-\series default
-折返しフロートは壊れやすいことがあります！例えば、図をページの下すぎる位置に置いてしまうと、ごちゃごちゃになって、フロートが出力に現れなかったり、他の本文の上に
-上書きされて出力されたりします。
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-原則として、
-\end_layout
-
-\begin_layout Itemize
-折返しフロートは、改頁に掛かってしまう段落に置くべきではありません。つまり、折返しフロートは、文書がほぼ完成する段階になって、どこに改頁が現れるかを予測できるよ
-うになってから、正確な位置に挿入しなくてはなりません。
-\end_layout
-
-\begin_layout Itemize
-折返しフロートは、入れ込む段落の前に単独の段落を設けて挿入するか、その段落自体の中に挿入しなくてはなりません。
-\end_layout
-
-\begin_layout Itemize
-折返しフロートを二つの段落に連続して入れると問題を引き起こす可能性があるので、二つの折返しフロートのあいだには本文のみの段落が入るのようにしてください。
-\end_layout
-
-\begin_layout Itemize
-折返しフロートは、節見出しや表中に入れることは認められていません。
 \end_layout
 
 \begin_layout Section
@@ -23092,7 +22945,7 @@ status collapsed
 \begin_layout Standard
 これが脚注の例です
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -29617,6 +29470,1889 @@ status collapsed
 \end_layout
 
 \begin_layout Chapter
+
+\lang english
+Objects Surrounded by Text
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Surrounded by text
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+折返しフロート
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:折返しフロート"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ふろーと@フロート ! おりかえしふろーと@折返しフロート
+\end_layout
+
+\end_inset
+
+
+\lang english
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Surrounded by text ! Wrap Floats
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Wrap figure
+lines 0
+placement l
+overhang 1cm
+width "40col%"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../clipart/mobius.eps
+	width 40col%
+	scaleBeforeRotation
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:折返し図フロート"
+
+\end_inset
+
+これは折返し図フロートです。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+このフロート型は、本文が図の周りに折返して入ることによって、図が段幅の一部しか占拠しないようにしたいときに用います。折返しフロートは、LaTeXパッケージの
+\series bold
+wrapfig
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXぱっけーじ@LaTeXパッケージ ! wrapfig
+\end_layout
+
+\end_inset
+
+を導入済みであれば、
+\family sans
+挿入\SpecialChar \menuseparator
+フロート\SpecialChar \menuseparator
+折返し図フロート
+\family default
+・
+\family sans
+折返し表フロート
+\family default
+メニューで挿入することができます
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXパッケージの導入方法は、取扱説明書の『LaTeXの設定』に説明されています。
+\end_layout
+
+\end_inset
+
+。フロートの設定は、フロートボックスを右クリックすることで変更することができます。必須の設定項目は、フロートの
+\family sans
+配置
+\family default
+と
+\family sans
+幅
+\family default
+です。非必須項目として、
+\family sans
+ぶら下げ
+\family default
+と
+\family sans
+行幅
+\family default
+があります。前者は、フロートがどれくらい段落ないしページ余白に入り込むかを指定するものであり、後者は、フロートが必要とするおおよその本文行数を指定するものです。
+行幅は、推測するのが難しいことがよくあるので、フロートの配置に問題が生じたときのみ使用するようにした方が良いでしょう。さらに、フロートを段落内でフロートするよう
+にするか、周囲の段落までフロートすることをLaTeXに許可するかを指定することができます。第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:折返し図フロート"
+
+\end_inset
+
+図は、40
+\begin_inset space \thinspace{}
+\end_inset
+
+列幅％の幅と1
+\begin_inset space \thinspace{}
+\end_inset
+
+cmのぶら下げを持ち、左揃えの折返しフロートを例示してあります
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+使うことのできる単位は付録
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:LyXで使用できる単位"
+
+\end_inset
+
+に収録してあります。
+\end_layout
+
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+【註】
+\series default
+折返しフロートは壊れやすいことがあります！例えば、図をページの下すぎる位置に置いてしまうと、ごちゃごちゃになって、フロートが出力に現れなかったり、他の本文の上に
+上書きされて出力されたりします。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+原則として、
+\end_layout
+
+\begin_layout Itemize
+折返しフロートは、改頁に掛かってしまう段落に置くべきではありません。つまり、折返しフロートは、文書がほぼ完成する段階になって、どこに改頁が現れるかを予測できるよ
+うになってから、正確な位置に挿入しなくてはなりません。
+\end_layout
+
+\begin_layout Itemize
+折返しフロートは、入れ込む段落の前に単独の段落を設けて挿入するか、その段落自体の中に挿入しなくてはなりません。
+\end_layout
+
+\begin_layout Itemize
+折返しフロートを二つの段落に連続して入れると問題を引き起こす可能性があるので、二つの折返しフロートのあいだには本文のみの段落が入るのようにしてください。
+\end_layout
+
+\begin_layout Itemize
+折返しフロートは、節見出しや表中に入れることは認められていません。
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Their numbering and referencing works as described in chap.
+\lang japanese
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:フロート"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+
+\lang english
+Surrounded Fixed Objects
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Surrounded by text ! Fixed objects
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The wrap floats described in sec.
+\lang japanese
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:折返しフロート"
+
+\end_inset
+
+ 
+\lang english
+have these positions in the paragraph:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+
+\lang english
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ or 
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To get an object exactly at the position where it is inserted, for example
+ to get one of these positions:
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+
+\lang english
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+
+\lang english
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang english
+you can use the LaTeX-package
+\lang japanese
+ 
+\series bold
+picinpar
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXぱっけーじ@LaTeXパッケージ ! picinpar
+\end_layout
+
+\end_inset
+
+.
+ 
+\lang english
+Here is an example
+\lang japanese
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ifpicinpar
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+以下の部分は、LaTeXパッケージ
+\series bold
+picinpar
+\series default
+が導入されているときのみ表示されます。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{window}[2,c,{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../clipart/mobius.eps
+	lyxscale 60
+	width 40col%
+	scaleBeforeRotation
+	rotateOrigin center
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+},]
+\end_layout
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\size small
+\lang english
+It was in the spring of the year 1894 that all London was interested, and
+ the fashionable world dismayed, by the murder of the Honourable Ronald
+ Adair under most unusual and inexplicable circumstances.
+ The public has already learned those particulars of the crime which
+\size default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark{}
+\end_layout
+
+\end_inset
+
+
+\size small
+ came out in the police investigation, but a good deal was suppressed upon
+ that occasion, since the case for the prosecution was so overwhelmingly
+ strong that it was not necessary to bring forward all the facts.
+ Only now, at the end of nearly ten years, am I allowed to supply those
+ missing links which make up the whole of that remarkable chain
+\lang japanese
+.
+\size default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{window}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotetext{
+\end_layout
+
+\end_inset
+
+Footnote of the paragraph with the fixed object.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Surrounded fixed objects are used to let text float around them, at which
+ the object's position in the paragraph can be determined by the number
+ of lines above it.
+ In contrary to floats is it not possible to have a numbered caption.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+A fixed object is inserted by adding the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+begin{window}[2,c,{
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+as TeX Code at the beginning of the paragraph.
+ The first parameter in the bracket, here '2', defines the number of lines
+ above the object, the second, here 'c', the position of the object.
+ The positions 'l', 'c' and 'r' (for left, center, right) are possible.
+ Behind the command you insert the object.
+ In this example an image with a width of 40
+\begin_inset space \thinspace{}
+\end_inset
+
+% of the text column width was inserted.
+ The object can also be a table, a box or an equation.
+ Behind the object the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+},description text]
+\begin_inset Newline newline
+\end_inset
+
+{}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+is inserted.
+ Note that the 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+{}
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+ is in the second line.
+ The description text is optional.
+ The text surrounding the object must be in the same paragraph as the object,
+ so it must begin directly after the 
+\series bold
+{}
+\series default
+.
+ At the end of the paragraph insert the command:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+end{window}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Within a paragraph with a fixed object, you cannot insert footnotes in the
+ normal way.
+ You have to use instead the command 
+\series bold
+
+\backslash
+footnotemark
+\series default
+ inside the paragraph and outside the command 
+\series bold
+
+\backslash
+footnotetext
+\series default
+ as described in sec.
+\lang japanese
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:脚注"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+以下の部分は、LaTeXパッケージ
+\series bold
+picinpar
+\series default
+が導入されていないときのみ表示されます。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+本節の以下の部分を出力に表示するには、LaTeXパッケージ
+\series bold
+picinpar
+\series default
+を導入する必要があります。
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\lang english
+Initials
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Initials
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Surrounded by text ! Initials
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To use initials, you must have the LaTeX package
+\lang japanese
+ 
+\series bold
+lettrine
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXぱっけーじ@LaTeXパッケージ ! lettrine
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+installed and use the module 
+\family sans
+Initials
+\family default
+ in your document (menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Modules
+\family default
+).
+ To insert an initial, use the style 
+\family sans
+Initial
+\family default
+.
+ This style has a mandatory and an optional argument.
+ The mandatory argument is inserted via the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Short
+\begin_inset space ~
+\end_inset
+
+Title
+\family default
+ and contains the letter that is the initial.
+ To use the also the optional argument, insert another argument in front
+ of the mandatory argument.
+ This one contains parameters to modify the initial.
+ For more information about the possible parameters see the documentation
+ of
+\lang japanese
+ 
+\series bold
+lettrine
+\series default
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lettrine"
+
+\end_inset
+
+.
+ 
+\lang english
+The style itself contains the text that is surrounding the initial.
+ The usual style is hereby that the word whose first letter is the initial,
+ is printed with 
+\shape smallcaps
+small caps
+\shape default
+.
+ To tell LaTeX where this word is finished, add a closing brace '
+\series bold
+}
+\series default
+' as TeX Code behind it.
+ At the end of the style there must be an opening brace '
+\series bold
+{
+\series default
+' as TeX Code.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Here are some examples:
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+No optional argument, the initial is the letter 'I' in the math font 
+\begin_inset Formula $\mathfrak{Fraktur}$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Initial
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathfrak{I}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+t
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+was in the spring of the year 1894 that all London was interested, and the
+ fashionable world dismayed, by the murder of the Honourable Ronald Adair
+ under most unusual and inexplicable circumstances.
+ The public has already learned those particulars of the crime which came
+ out in the police investigation, but a good deal was suppressed upon that
+ occasion, since the case for the prosecution was so overwhelmingly strong
+ that it was not necessary to bring forward all the facts.
+\lang japanese
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\lang english
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Only one line is surrounding the initial, which is formed by two letters
+ in standard font and no text is printed in small caps:
+\end_layout
+
+\begin_deeper
+\begin_layout Initial
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+lines=1
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+It
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+was in the spring of the year 1894 that all London was interested, and the
+ fashionable world dismayed, by the murder of the Honourable Ronald Adair
+ under most unusual and inexplicable circumstances.
+ The public has already learned those particulars of the crime which came
+ out in the police investigation, but a good deal was suppressed upon that
+ occasion, since the case for the prosecution was so overwhelmingly strong
+ that it was not necessary to bring forward all the facts.
+\lang japanese
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Magenta, hanging initial over 3
+\begin_inset space ~
+\end_inset
+
+lines in the math font 
+\begin_inset Formula $\mathcal{CALLIGRAPHIC}$
+\end_inset
+
+, the text 
+\begin_inset Quotes eld
+\end_inset
+
+t was in the spring
+\begin_inset Quotes erd
+\end_inset
+
+ is in 
+\shape smallcaps
+small caps
+\shape default
+; to color the initial, you must insert this command before the initial:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+LettrineFontHook}{
+\backslash
+color{color}}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+where the second 
+\emph on
+color
+\emph default
+ can be 
+\begin_inset Quotes eld
+\end_inset
+
+red
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+blue
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+green
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+yellow
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+cyan
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+magenta
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+black
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+white
+\begin_inset Quotes erd
+\end_inset
+
+, and add this command to the document preamble
+\lang japanese
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+@ifundefined{textcolor}
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+{
+\backslash
+usepackage{color}}{}
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+LettrineFontHook}{
+\backslash
+color{magenta}}
+\end_layout
+
+\end_inset
+
+
+\lang english
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+makes the initial magenta
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Initial
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+lines=3, lhang=0.33, loversize=0.25
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\lang english
+t was in the spring
+\lang japanese
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+of the year 1894 that all London was interested, and the fashionable world
+ dismayed, by the murder of the Honourable Ronald Adair under most unusual
+ and inexplicable circumstances.
+ The public has already learned those particulars of the crime which came
+ out in the police investigation, but a good deal was suppressed upon that
+ occasion, since the case for the prosecution was so overwhelmingly strong
+ that it was not necessary to bring forward all the facts.
+\lang japanese
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Chapter
 外部文書構成要素
 \begin_inset Index idx
 status collapsed
@@ -31835,7 +33571,7 @@ Adobe
 社によってプリンタ言語として開発されました。したがって、このファイルにはプリンタがファイルを印字するコマンドが書かれています。PostScripは、計算を行った
 り図表や画像を描いたりすることもできるので、「プログラミング言語」と見なすことができます
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 これについてもう少し学ぶ気があれば、LaTeXパッケージ
@@ -32562,6 +34298,51 @@ LaTeXぱっけーじ@LaTeXパッケージ ! marginnote
 \end_inset
 
 の取扱説明書
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring 参考文献
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "lettrine"
+
+\end_inset
+
+LaTeXパッケージ 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "lettrine"
+target "http://mirrors.ctan.org/macros/latex/contrib/lettrine/doc/lettrine.pdf"
+
+\end_inset
+
+
+\series default
+ 
+\lang english
+and an
+\lang japanese
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "example"
+target "http://mirrors.ctan.org/macros/latex/contrib/lettrine/doc/demo.pdf"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXぱっけーじ@LaTeXパッケージ ! lettrine
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography

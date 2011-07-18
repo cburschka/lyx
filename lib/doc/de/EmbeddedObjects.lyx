@@ -150,7 +150,6 @@
   \setboolean{picinpar}{true}}
  {\setboolean{picinpar}{false}}
 
-
 % Umdefinieren des Makros \LyX für PDF-Lesezeichen
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
@@ -161,6 +160,9 @@
 \end_preamble
 \options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
+\begin_modules
+initials
+\end_modules
 \maintain_unincluded_children false
 \language ngerman
 \language_package default
@@ -19831,6 +19833,13 @@ fi
 
 \begin_layout Chapter
 Gleitobjekte
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Gleitobjekte"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -20009,7 +20018,7 @@ Gleitobjekte ! Typen
 \end_layout
 
 \begin_layout Standard
-Neben Gleitobjekt-Abbildungen und -Tabellen, die bereits in Abschnitt
+Neben Gleitobjekt-Abbildungen und -Tabellen, die in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -20027,11 +20036,23 @@ reference "abs:Gleitende-Tabellen"
 
 \end_inset
 
- beschrieben wurden, gibt es Gleitobjekt-Algorithmen und umflossene Gleitobjekte.
+ beschrieben sind, gibt es Gleitobjekt-Algorithmen und umflossene Gleitobjekte.
+ Letztere sind in Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Umflossene-Gleitobjekte"
+
+\end_inset
+
+ beschrieben.
 \end_layout
 
 \begin_layout Subsection
-Gleitobjekt-Algorithmen
+Algorithmen-Gleitobjekt
 \begin_inset Index idx
 status collapsed
 
@@ -20264,242 +20285,6 @@ Paket
 verwenden
 \family default
  angekreuzt sein.
-\end_layout
-
-\begin_layout Subsection
-Umflossene Gleitobjekte
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Gleitobjekte ! umflossene
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Umflossene Gleitobjekte werden benutzt, um Text um eine Abbildung oder Tabelle
- herum fließen zu lassen, wobei der Text nur den Teil der Zeile benutzt,
- den die Abbildung bzw.
-\begin_inset space ~
-\end_inset
-
-Tabelle übrig lässt.
- Sie werden über das Menü
-\family sans
- Einfügen\SpecialChar \menuseparator
-Gleitobjekt\SpecialChar \menuseparator
-Umflossenes Bild-Gleitobjekt oder Umflossenes Tabellen-Gleit
-objekt
-\family default
- eingefügt, wenn das LaTeX-Paket 
-\series bold
-wrapfig
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-Pakete ! wrapfig
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{4mm}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- installiert ist.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Wie man ein LaTeX-Paket installiert, wird im Handbuch 
-\emph on
-LaTeX-Konfiguration
-\emph default
- beschrieben.
-\end_layout
-
-\end_inset
-
- Die Einstellungen des Gleitobjekts können mit einem Rechtsklick auf die
- Box des Gleitobjekts geändert werden.
- 
-\begin_inset Wrap figure
-lines 0
-placement l
-overhang 1cm
-width "40col%"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../clipart/mobius.eps
-	width 40col%
-	scaleBeforeRotation
-	rotateOrigin center
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "abb:Dies-ist-eine"
-
-\end_inset
-
-Dies ist eine umflossene Gleitobjekt-Abbildung
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- Obligatorische Einstellungen sind die 
-\family sans
-Breite
-\family default
- und 
-\family sans
-Platzierung
-\family default
- des Gleitobjekts.
- Optional sind der 
-\family sans
-Überhang 
-\family default
-der festlegt, wie weit das Gleitobjekt in den Rand des Absatzes
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
-der Seite ragt und die 
-\family sans
-benötigten Zeilen
-\family default
-, die festlegen wie viele Textzeilen das Gleitobjekt in etwa benötigt.
- Die benötigten Zeilen sind oft schwer abzuschätzen, daher sollte man sie
- nur nutzen, wenn Probleme mit der Platzierung des Gleitobjekts auftreten.
- Des weiteren können Sie entscheiden, ob es LaTeX erlaubt sein soll, das
- Gleitobjekt innerhalb des Absatzes oder zu umgebenden Absätzen gleiten
- zu lassen.
- Abbildung
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "abb:Dies-ist-eine"
-
-\end_inset
-
- ist zum Beispiel ein umflossenes Bild, das 40
-\begin_inset space \thinspace{}
-\end_inset
-
-% der Spaltenbreite einnimmt, 1
-\begin_inset space \thinspace{}
-\end_inset
-
-cm in den Rand ragt und links gesetzt wurde.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Die benutzbaren Einheiten werden in Anhang
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "kap:In-LyX-verfügbare"
-
-\end_inset
-
- beschrieben.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Bemerkung:
-\series default
- Umflossene Objekte sind fragil! Wenn die Abbildung z.
-\begin_inset space \thinspace{}
-\end_inset
-
-B.
- zu nahe am unteren Seitenrand ist, kann es passieren, dass sie gar nicht
- oder über anderen Text gedruckt wird.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Allgemein gilt:
-\end_layout
-
-\begin_layout Itemize
-Umflossene Gleitobjekte sollten nicht in Absätze gepackt werden, die auf
- der nächsten Seite fortgesetzt werden.
- Das bedeutet, dass man sie erst dann einfügen sollte, wenn das Dokument
- fast fertig ist und man sehen kann, wo ein Seitenumbruch erfolgen wird.
-\end_layout
-
-\begin_layout Itemize
-Umflossene Gleitobjekte sollten entweder vor dem Absatz, dessen Text um
- sie fließen soll, eingefügt werden oder darin.
-\end_layout
-
-\begin_layout Itemize
-Umflossene Gleitobjekte in aufeinander folgenden Absätzen können Probleme
- bereiten, also achten Sie darauf, dass mindestens ein Textabsatz zwischen
- ihnen ist.
-\end_layout
-
-\begin_layout Itemize
-Umflossene Gleitobjekte sind weder in Abschnitts-Überschriften noch in Tabellen
- erlaubt.
 \end_layout
 
 \begin_layout Section
@@ -32047,19 +31832,279 @@ Umflossene Objekte
 
 \end_layout
 
+\begin_layout Section
+Umflossene Gleitobjekte
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Umflossene-Gleitobjekte"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Gleitobjekte ! umflossene
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Umflossene Objekte ! Gleitobjekte
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-Die in Kapitel
+Umflossene Gleitobjekte werden benutzt, um Text um eine Abbildung oder Tabelle
+ herum fließen zu lassen, wobei der Text nur den Teil der Zeile benutzt,
+ den die Abbildung bzw.
+\begin_inset space ~
+\end_inset
+
+Tabelle übrig lässt.
+ Die Gleitobjekte können hierbei nur innerhalb des Absatzes gleiten.
+ Sie werden über das Menü
+\family sans
+ Einfügen\SpecialChar \menuseparator
+Gleitobjekt\SpecialChar \menuseparator
+Umflossenes Bild-Gleitobjekt oder Umflossenes Tabellen-Gleit
+objekt
+\family default
+ eingefügt, wenn das LaTeX-Paket 
+\series bold
+wrapfig
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pakete ! wrapfig
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{4mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ installiert ist.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Wie man ein LaTeX-Paket installiert, wird im Handbuch 
+\emph on
+LaTeX-Konfiguration
+\emph default
+ beschrieben.
+\end_layout
+
+\end_inset
+
+ Die Einstellungen des Gleitobjekts können mit einem Rechtsklick auf die
+ Box des Gleitobjekts geändert werden.
+ 
+\begin_inset Wrap figure
+lines 0
+placement l
+overhang 1cm
+width "40col%"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../clipart/mobius.eps
+	width 40col%
+	scaleBeforeRotation
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "abb:Dies-ist-eine"
+
+\end_inset
+
+Dies ist eine umflossene Gleitobjekt-Abbildung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Obligatorische Einstellungen sind die 
+\family sans
+Breite
+\family default
+ und 
+\family sans
+Platzierung
+\family default
+ des Gleitobjekts.
+ Optional sind der 
+\family sans
+Überhang 
+\family default
+der festlegt, wie weit das Gleitobjekt in den Rand des Absatzes
+\begin_inset space \thinspace{}
+\end_inset
+
+/
+\begin_inset space \thinspace{}
+\end_inset
+
+der Seite ragt und die 
+\family sans
+benötigten Zeilen
+\family default
+, die festlegen wie viele Textzeilen das Gleitobjekt in etwa benötigt.
+ Die benötigten Zeilen sind oft schwer abzuschätzen, daher sollte man sie
+ nur nutzen, wenn Probleme mit der Platzierung des Gleitobjekts auftreten.
+ Des weiteren können Sie entscheiden, ob es LaTeX erlaubt sein soll, das
+ Gleitobjekt innerhalb des Absatzes oder zu umgebenden Absätzen gleiten
+ zu lassen.
+ Abbildung
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "abs:Gleitende-Abbildungen"
+reference "abb:Dies-ist-eine"
 
 \end_inset
 
- beschriebenen Gleitobjekte liefern Folgendes:
+ ist zum Beispiel ein umflossenes Bild, das 40
+\begin_inset space \thinspace{}
+\end_inset
+
+% der Spaltenbreite einnimmt, 1
+\begin_inset space \thinspace{}
+\end_inset
+
+cm in den Rand ragt und links gesetzt wurde.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Bemerkung:
+\series default
+ Umflossene Objekte sind fragil! Wenn die Abbildung z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ zu nahe am unteren Seitenrand ist, kann es passieren, dass sie gar nicht
+ oder über anderen Text gedruckt wird.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Allgemein gilt für umflossene Gleitobjekte:
+\end_layout
+
+\begin_layout Itemize
+Sie sollten nicht in Absätze gepackt werden, die auf der nächsten Seite
+ fortgesetzt werden.
+ Das bedeutet, dass man sie erst dann einfügen sollte, wenn das Dokument
+ fast fertig ist und man sehen kann, wo ein Seitenumbruch erfolgen wird.
+\end_layout
+
+\begin_layout Itemize
+Sie sollten entweder vor dem Absatz, dessen Text um sie fließen soll, eingefügt
+ werden oder darin.
+\end_layout
+
+\begin_layout Itemize
+Sie in aufeinander folgenden Absätzen können Probleme bereiten, also achten
+ Sie darauf, dass mindestens ein Textabsatz zwischen ihnen ist.
+\end_layout
+
+\begin_layout Itemize
+Sie sind weder in Abschnitts-Überschriften noch in Tabellen erlaubt.
+\end_layout
+
+\begin_layout Itemize
+Ihre Nummerierung und Referenzierung erfolgt wie in Kap.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Gleitobjekte"
+
+\end_inset
+
+ beschrieben.
+\end_layout
+
+\begin_layout Section
+Umflossene Fixe Objekte
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Umflossene Objekte ! Fixe Objekte
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die in Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Umflossene-Gleitobjekte"
+
+\end_inset
+
+ beschriebenen umflossenen Gleitobjekte haben folgende Positionen im Absatz:
 \end_layout
 
 \begin_layout Standard
@@ -32184,8 +32229,13 @@ Text
 \end_layout
 
 \begin_layout Standard
-Wenn man aber Text richtig um Objekte fließen lassen will, also auch so
- etwas:
+Will man ein Objekt exakt an der Stelle im Absatz haben, wo es eingefügt
+ wurde, um z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ solche Positionen zu erhalten:
 \begin_inset VSpace defskip
 \end_inset
 
@@ -32786,7 +32836,7 @@ picinpar
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -32800,6 +32850,7 @@ begin{window}[2,c,{
 
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
+	lyxscale 60
 	width 40col%
 	scaleBeforeRotation
 	rotateOrigin center
@@ -32808,7 +32859,7 @@ begin{window}[2,c,{
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -32854,7 +32905,7 @@ footnotemark{}
 \lang ngerman
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -32881,7 +32932,7 @@ footnotetext{
 
 \end_inset
 
-Fußnote des Absatzes mit umflossenem Objekt.
+Fußnote des Absatzes mit fixem Objekt.
 \begin_inset ERT
 status collapsed
 
@@ -32896,19 +32947,16 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Umflossene Objekte sind keine Gleitobjekte, weil sie dort gedruckt werden,
- wo sie eingefügt werden.
- Dieser Typ wird benutzt, um Text um ein Objekt herum 
-\emph on
-fließen
-\emph default
- zu lassen, wobei der Text nur den Teil der Zeile benutzt, den das Objekt
- übrig lässt.
+Umflossene fixe Objekte werden benutzt, um Text um ein Objekt herum fließen
+ zu lassen, wobei man durch die Anzahl der Zeilen über dem Objekt dessen
+ vertikale Position im Text bestimmen kann.
+ Im Gegensatz zu umflossenen Gleitobjekten können sie aber nicht nummeriert
+ beschriftet werden.
 \end_layout
 
 \begin_layout Standard
-Ein Umflossenes Objekt wird eingefügt, indem man zu Beginn eines Absatzes
- den Befehl
+Ein fixes Objekt wird eingefügt, indem man zu Beginn eines Absatzes den
+ Befehl
 \end_layout
 
 \begin_layout Standard
@@ -32923,14 +32971,14 @@ begin{window}[2,c,{
 als TeX-Code einfügt.
  Der erste Parameter in der eckigen Klammer, hier '2', definiert die Anzahl
  der Zeilen über dem Objekt, der zweite, hier 'c', die Position des Objekts.
- Es sind die Positionen 'l', 'c' und 'r' (für links, mitte, rechts) möglich.
+ Es sind die Positionen 'l', 'c' und 'r' (für links, Mitte, rechts) möglich.
  Danach fügt man das Objekt ein.
- Dies kann auch eine Tabelle, eine Box oder eine Formel sein.
- In diesem Beispiel wurde ein Bild mit 40
+ In diesem Beispiel wurde ein Bild der Breite von 40
 \begin_inset space \thinspace{}
 \end_inset
 
-% der Spaltenbreite eingefügt.
+% der Textspaltenbreite eingefügt.
+ Das Objekt kann auch eine Tabelle, eine Box oder eine Formel sein.
  Nach dem Objekt fügt man den Befehl
 \end_layout
 
@@ -32950,7 +32998,11 @@ ein.
 \begin_inset Quotes gld
 \end_inset
 
+
+\series bold
 {}
+\series default
+
 \begin_inset Quotes grd
 \end_inset
 
@@ -32974,8 +33026,8 @@ end{window}
 \end_layout
 
 \begin_layout Standard
-Innerhalb eines Absatzes mit umflossenenm Object kann man keine Fußnoten
- einfügen, man muss stattdessen den Befehl 
+Innerhalb eines Absatzes mit fixem Objekt kann man keine Fußnoten einfügen,
+ man muss stattdessen den Befehl 
 \series bold
 
 \backslash
@@ -33033,11 +33085,11 @@ picinpar
 \end_layout
 
 \begin_layout Standard
-Sie müssen das LaTeX-Paket 
+Das LaTeX-Paket 
 \series bold
 picinpar
 \series default
- installiert haben, um das Beispiel in der Ausgabe zu sehen.
+ muss installiert sein, um den folgenden Abschnitt in der Ausgabe zu sehen.
 \end_layout
 
 \begin_layout Standard
@@ -33056,6 +33108,104 @@ fi
 
 \end_layout
 
+\begin_layout Section
+Initiale
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Initiale
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Umflossene Objekte ! Initiale
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Für Initialen muss das LaTeX-Paket 
+\series bold
+lettrine
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pakete ! lettrine
+\end_layout
+
+\end_inset
+
+ installiert sein und das Modul 
+\family sans
+Initialen
+\family default
+ im Dokument verwendet werden (Menü 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Module
+\family default
+).
+ Um eine Initiale einzufügen, verwendet man den Stil 
+\family sans
+Initiale
+\family default
+.
+ Dieser Stil hat ein obligatorisches und ein optionales Argument.
+ Das obligatorische Argument wird über das Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Kurztitel
+\family default
+ eingefügt und enthält den Buchstaben, der die Initiale bildet.
+ Um auch das optionales Argument zu verwenden, fügt man ein weiteres Argument
+ vor dem obligatorischen ein.
+ Dieses enthält Parameter um die Initiale zu modifizieren.
+ Für mehr Informationen über die möglichen Parameter siehe die Dokumentation
+ von 
+\series bold
+lettrine
+\series default
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lettrine"
+
+\end_inset
+
+.
+ Der Stil selbst enthält den Text, der die Initiale umgibt.
+ Der übliche Stil ist dabei, dass das Wort, dessen erster Buchstabe die
+ Initiale ist, in 
+\shape smallcaps
+Kapitälchen
+\shape default
+ gedruckt wird.
+ Um LaTeX zu sagen, wo dieses Wort endet, fügt man an dieser Stelle eine
+ schließende geschweifte Klammer '
+\series bold
+}
+\series default
+' als TeX-Code ein.
+ Am Ende des Stils muss eine öffnende geschweifte Klammer '
+\series bold
+{
+\series default
+' als TeX-Code stehen.
+\end_layout
+
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -33063,6 +33213,366 @@ fi
 
 \end_layout
 
+\begin_layout Standard
+Hier sind einige Beispiele:
+\end_layout
+
+\begin_layout Enumerate
+Kein optionales Argument, die Initiale ist der Buchstabe 'I' in der Mathe-Schrif
+t 
+\begin_inset Formula $\mathfrak{Fraktur}$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Initial
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathfrak{I}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+t
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+was in the spring of the year 1894 that all London was interested, and the
+ fashionable world dismayed, by the murder of the Honourable Ronald Adair
+ under most unusual and inexplicable circumstances.
+ The public has already learned those particulars of the crime which came
+ out in the police investigation, but a good deal was suppressed upon that
+ occasion, since the case for the prosecution was so overwhelmingly strong
+ that it was not necessary to bring forward all the facts.
+\lang ngerman
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Nur eine Zeile umgibt die Initiale, die aus zwei Zeichen in der Standard-Schrift
+ besteht und kein Text ist in 
+\shape smallcaps
+Kapitälchen
+\shape default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Initial
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+lines=1
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+It
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+was in the spring of the year 1894 that all London was interested, and the
+ fashionable world dismayed, by the murder of the Honourable Ronald Adair
+ under most unusual and inexplicable circumstances.
+ The public has already learned those particulars of the crime which came
+ out in the police investigation, but a good deal was suppressed upon that
+ occasion, since the case for the prosecution was so overwhelmingly strong
+ that it was not necessary to bring forward all the facts.
+\lang ngerman
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Magenta, hängende Initiale über 3
+\begin_inset space ~
+\end_inset
+
+Zeilen in der Mathe-Schrift
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Formula $\mathcal{KALLIGRAFISCH}$
+\end_inset
+
+, der Text 
+\begin_inset Quotes gld
+\end_inset
+
+t 
+\lang english
+was in the spring
+\lang ngerman
+
+\begin_inset Quotes erd
+\end_inset
+
+ ist in 
+\shape smallcaps
+Kapitälchen
+\shape default
+; um die Initiale zu färben, muss man diesen Befehl vor der Initiale einfügen:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+LettrineFontHook}{
+\backslash
+color{Farbe}}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+wobei 
+\emph on
+Farbe
+\emph default
+ 
+\begin_inset Quotes gld
+\end_inset
+
+red
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+blue
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+green
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+yellow
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+cyan
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+magenta
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+black
+\begin_inset Quotes erd
+\end_inset
+
+ oder 
+\begin_inset Quotes gld
+\end_inset
+
+white
+\begin_inset Quotes erd
+\end_inset
+
+ sein kann, und diesen Befehl zur Dokument Präambel hinzufügen:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+@ifundefined{textcolor}
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+{
+\backslash
+usepackage{color}}{}
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+LettrineFontHook}{
+\backslash
+color{magenta}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+macht die Initiale magenta
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Initial
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+lines=3, lhang=0.33, loversize=0.25
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\lang english
+t was in the spring
+\lang ngerman
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+of the year 1894 that all London was interested, and the fashionable world
+ dismayed, by the murder of the Honourable Ronald Adair under most unusual
+ and inexplicable circumstances.
+ The public has already learned those particulars of the crime which came
+ out in the police investigation, but a good deal was suppressed upon that
+ occasion, since the case for the prosecution was so overwhelmingly strong
+ that it was not necessary to bring forward all the facts.
+\family sans
+\lang ngerman
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Chapter
 Externe Dateien
 \begin_inset Index idx
@@ -36519,6 +37029,47 @@ status collapsed
 
 \begin_layout Plain Layout
 LaTeX-Pakete ! marginnote
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "lettrine"
+
+\end_inset
+
+Dokumentation des LaTeX-Pakets 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "lettrine"
+target "http://mirrors.ctan.org/macros/latex/contrib/lettrine/doc/lettrine.pdf"
+
+\end_inset
+
+
+\series default
+ und ein 
+\begin_inset CommandInset href
+LatexCommand href
+name "Beispiel"
+target "http://mirrors.ctan.org/macros/latex/contrib/lettrine/doc/demo-de.pdf"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pakete ! lettrine
 \end_layout
 
 \end_inset
