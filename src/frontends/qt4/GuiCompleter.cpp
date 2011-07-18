@@ -311,7 +311,7 @@ void GuiCompleter::updateVisibility(Cursor & cur, bool start, bool keep, bool cu
 	if (!inlineVisible() && possibleInlineState && start
 		&& cur.inset().automaticInlineCompletion())
 		inline_timer_.start(int(lyxrc.completion_inline_delay * 1000));
-	else {
+	else if (cur.inMathed() && !lyxrc.completion_inline_math) {
 		// no inline completion, hence a metrics update is needed
 		if (!(cur.result().screenUpdate() & Update::Force))
 			cur.screenUpdateFlags(cur.result().screenUpdate() | Update::SinglePar);
