@@ -121,8 +121,8 @@ End
 \end_index
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation skip
-\defskip medskip
+\paragraph_separation indent
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 2
@@ -22524,10 +22524,6 @@ Span colums
 \end_layout
 
 \begin_layout Subsection
-Examples
-\end_layout
-
-\begin_layout Subsubsection
 Two columns
 \end_layout
 
@@ -22634,7 +22630,7 @@ end{multicols}
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Multiple columns
 \end_layout
 
@@ -22703,7 +22699,7 @@ You can have more than 3 columns if you want to, but that might not be very
  pleasant for the eye.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Columns inside columns
 \end_layout
 

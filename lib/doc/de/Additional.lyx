@@ -2027,7 +2027,7 @@ X-Vorspann
  Außerdem gibt es in diesem Handbuch in Kapitel 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Geheimnisse-der-LaTeX-Meister"
+reference "chap:Spezielle-Features"
 
 \end_inset
 
@@ -22469,10 +22469,10 @@ ben
 \end_layout
 
 \begin_layout Chapter
-Geheimnisse der LaTeX-Meister
+Spezielle Features
 \begin_inset CommandInset label
 LatexCommand label
-name "Geheimnisse-der-LaTeX-Meister"
+name "chap:Spezielle-Features"
 
 \end_inset
 
@@ -22492,7 +22492,7 @@ status collapsed
 
 \end_inset
 
-X!-Geheimnisse
+X ! Spezielle Features
 \end_layout
 
 \end_inset
@@ -22501,66 +22501,19 @@ X!-Geheimnisse
 \end_layout
 
 \begin_layout Standard
-Obwohl LyX ein sehr leistungsfähiges Programm ist, ist es unmöglich, all
- die Dinge, die mit reinem TeX/LaTeX möglich sind, zu unterstützen.
- Dennoch sind viele in TeX und LaTeX übliche und verbreitete Tricks auch
- in LyX möglich, zumindest, wenn es Ihnen nichts ausmacht, den 
-\family sans
-TeX
-\family default
--Schalter in der Werkzeugleiste zu verwenden oder (via 
-\family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
-LaTe
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Vorspann
-\family default
-) LaTeX-Befehle selber in den LaTeX-Vorspann einzutragen.
-\end_layout
-
-\begin_layout Standard
-In diesem Kapitel werden einige Tipps, Tricks und sonstige gute Ideen aufgezeigt
-, um Ihren Dokumenten einen besonderen Anstrich zu geben.
- 
+\lang english
+You can do everything with LyX that you can do with LaTeX.
+ However, LyX cannot support every LaTeX feature directly.
+ But you can always use TeX Code.
+ This chapter shows you some more special things you might want to use.
+ For other special things you can do with figures, tables, floats, boxes
+ and notes, have a look at the 
 \emph on
-Machen Sie das aber zu Hause!
+\lang ngerman
+EingebetteteObjekte
 \emph default
- Fangen Sie erstmal mit einem kleineren Text an, nicht gleich mit etwas
- so wichtigem wie Ihrer Dissertation.
-\end_layout
-
-\begin_layout Standard
-Die meisten hier vorgestellten Ideen setzen Pakete voraus, die nicht in
- allen LaTeX-Distributio\SpecialChar \-
-nen zum Standard gehören.
- Bei einem kompletten System wie teTeX oder texlive werden zwar die meisten
- dieser Pakete eingeschlossen sein, ein paar werden Sie sich aber trotzdem
- von einem CTAN-Archiv besorgen müssen.
- 
-\end_layout
-
-\begin_layout Standard
-Oft gibt es in LaTeX mehrere Wege, etwas Bestimmtes zu erreichen, und oft
- gibt es mehrere Stildateien, die demselben Zweck dienen.
- Hier soll nicht ein Paket oder Weg einem anderen vorgezogen werden, es
- soll einfach nur gezeigt werden, 
-\emph on
-wie
-\emph default
- eine bestimmte Aufgabe mit dem benutzten Paket gelöst werden kann.
- Also: setzen Sie Ihren Zauberhut auf, passen Sie auf Drachen auf und lassen
- Sie uns anfangen.
+ Handbuch.
 \end_layout
 
 \begin_layout Section
@@ -22602,10 +22555,6 @@ Span colums
 \end_layout
 
 \begin_layout Subsection
-Beispiele
-\end_layout
-
-\begin_layout Subsubsection
 Zwei Spalten
 \end_layout
 
@@ -22722,8 +22671,8 @@ end{multicols}
 
 \end_layout
 
-\begin_layout Subsubsection
-Mehrere Spalten
+\begin_layout Subsection
+Drei Spalten
 \end_layout
 
 \begin_layout Standard
@@ -22796,7 +22745,7 @@ You can have more than 3 columns if you want to, but that might not be very
  pleasant for the eye.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Spalten innnerhalb von Spalten
 \end_layout
 

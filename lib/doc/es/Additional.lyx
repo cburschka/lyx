@@ -1082,7 +1082,7 @@ target "http://www.ctan.org/"
  para detalles, y consulta el capítulo 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:secretos"
+reference "chap:Special-features"
 
 \end_inset
 
@@ -1842,7 +1842,7 @@ trucos sucios
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:secretos"
+reference "chap:Special-features"
 
 \end_inset
 
@@ -24067,10 +24067,14 @@ El siguiente asunto es la presencia visible del carácter salto de línea
 \end_layout
 
 \begin_layout Chapter
-Secretos de maestros en LaTeX
+
+\lang english
+Special features
+\lang spanish
+
 \begin_inset CommandInset label
 LatexCommand label
-name "cha:secretos"
+name "chap:Special-features"
 
 \end_inset
 
@@ -24078,129 +24082,88 @@ name "cha:secretos"
 \end_layout
 
 \begin_layout Standard
-Aunque LyX es una poderosa herramienta, no es capaz de soportar todo lo
- que se puede hacer con TeX/LaTeX puro.
- No obstante, en LyX es posible hacer muchos trucos habituales de TeX y
- LaTeX, siempre que no temas usar el botón 
-\begin_inset Quotes fld
-\end_inset
 
-TeX
-\begin_inset Quotes frd
-\end_inset
-
- de la barra de herramientas o escribir en el preámbulo LaTeX.
- En esta sección se describen algunos consejos, trucos y, en definitiva,
- ideas frescas para dar a tu documento un poco más de empaque.
- ¡
+\lang english
+You can do everything with LyX that you can do with LaTeX.
+ However, LyX cannot support every LaTeX feature directly.
+ But you can always use TeX Code.
+ This chapter shows you some more special things you might want to use.
+ For other special things you can do with figures, tables, floats, boxes
+ and notes, have a look at the 
 \emph on
-Atrévete a probar
+EmbeddedObjects
 \emph default
-, pero con algo más pequeño y menos importante que tu tesina!
-\end_layout
-
-\begin_layout Standard
-La mayor parte de las ideas sugeridas aquí requieren archivos menos comunes
- en las distribuciones de LaTeX.
- Si tienes un sistema como teTeX, casi todos estarán disponibles.
- Sin embargo, tendrás que descargar algunos de los repositorios CTAN.
- Normalmente hay varias formas de hacer una cosa, o varios archivos de estilo
- de LaTeX que hacen lo mismo.
- No te vamos a imponer una opción sobre otra, pretendemos simplemente indicar
- cómo hemos hecho una determinada tarea con un determinado archivo.
- Ponte el disfraz de brujo, no pierdas de vista los dragones, y comencemos.
+ manual.
 \end_layout
 
 \begin_layout Section
 Columnas múltiples
 \end_layout
 
-\begin_layout Subsection
-Objetivo
+\begin_layout Standard
+
+\lang english
+The aim for this section is to show how the LaTeX package 
+\series bold
+multicol
+\series default
+ can be used in a LyX document.
+ LyX does not support the 
+\series bold
+multicol
+\series default
+ package natively yet, so you have to use some TeX code.
 \end_layout
 
 \begin_layout Standard
-La intención de este capítulo
-\begin_inset Foot
-status collapsed
 
-\begin_layout Plain Layout
-
-\emph on
-N.
- del e.
-\emph default
-: El capítulo original de Lars era una sesuda descripción de 
-\family typewriter
+\lang english
+The 
+\series bold
 multicol
+\series default
+ package allows switching between one and multicolumn format on the same
+ page.
+ Footnotes are handled correctly, but will be placed at the bottom of the
+ page and not under each column.
+ Within the different columns you can use everyting, with the limitation
+ that for floats you need to use the option 
+\family sans
+Span colums
 \family default
-.
- Pero demasiado largo para este manual.
- Por eso he resumido las secciones más relevantes (disculpa, Lars); puedes
- leer el original (¡y más!) en el ejemplo 
-\family typewriter
-examples/multicol.lyx
-\family default
-.
- —mer
-\end_layout
-
-\end_inset
-
- es enseñar el empleo del paquete LaTeX 
-\family typewriter
-multicol
-\family default
- en un documento LyX.
- Como LyX no soporta todavía 
-\family typewriter
-multicol
-\family default
-, hemos de usar algunos trucos.
- Leyendo esta sección debería resultar sencillo hacerlo.
+ for each column.
 \end_layout
 
 \begin_layout Subsection
-Limitaciones 
-\end_layout
-
-\begin_layout Standard
-El paquete 
-\family typewriter
-multicol
-\family default
- permite alternar entre formatos de una o varias columnas en la misma página.
- Las notas al pie se manejan correctamente (en su mayor parte), pero serán
- colocadas al final de la página y no bajo cada columna.
- Sin embargo, el mecanismo de flotación de LaTeX está deshabilitado parcialmente
- en la versión actual.
- Por el momento, solo pueden ponerse flotantes del ancho de la página en
- el ámbito de este entorno.
- 
-\end_layout
-
-\begin_layout Subsection
-Ejemplos
-\end_layout
-
-\begin_layout Subsubsection
 Dos columnas
 \end_layout
 
 \begin_layout Standard
 Para poner texto en dos columnas, inserta donde quieras ponerlas el comando
- en modo LaTeX 
-\family typewriter
+ en modo LaTeX
+\end_layout
+
+\begin_layout Standard
+
+\series bold
 
 \backslash
 begin{multicols}{2}
-\family default
-, y luego 
-\family typewriter
+\end_layout
+
+\begin_layout Standard
+y luego
+\end_layout
+
+\begin_layout Standard
+
+\series bold
 
 \backslash
-end{multicols} 
-\family default
+end{multicols}
+\end_layout
+
+\begin_layout Standard
 para finalizar.
  Como esto:
 \end_layout
@@ -24279,7 +24242,7 @@ end{multicols}
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Columnas múltiples
 \end_layout
 
@@ -24348,7 +24311,7 @@ Si quieres, puedes poner más de tres columnas, pero podría no ser muy cómodo
  de leer.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Columnas dentro de columnas
 \end_layout
 
@@ -24473,9 +24436,12 @@ end{multicols}
 \end_layout
 
 \begin_layout Standard
-Lee por favor el archivo 
+Lee por favor el 
+\lang english
+example file
 \family typewriter
-examples/multicol.lyx
+\lang spanish
+ multicol.lyx
 \family default
  para ejemplos más sofisticados, incluyendo espacios, encabezados, líneas
  de separación, y más.
