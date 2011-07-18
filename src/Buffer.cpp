@@ -2640,12 +2640,6 @@ void Buffer::collectChildren(ListOfBuffers & clist, bool grand_children) const
 			// there might be grandchildren
 			child->collectChildren(clist, true);
 	}
-	// Make sure we have not included ourselves.
-	ListOfBuffers::iterator bit = find(clist.begin(), clist.end(), this);
-	if (bit != clist.end()) {
-		LYXERR0("Recursive include detected in `" << fileName() << "'.");
-		clist.erase(bit);
-	}
 }
 
 
@@ -2653,6 +2647,12 @@ ListOfBuffers Buffer::getChildren() const
 {
 	ListOfBuffers v;
 	collectChildren(v, false);
+	// Make sure we have not included ourselves.
+	ListOfBuffers::iterator bit = find(v.begin(), v.end(), this);
+	if (bit != v.end()) {
+		LYXERR0("Recursive include detected in `" << fileName() << "'.");
+		v.erase(bit);
+	}
 	return v;
 }
 
@@ -2661,6 +2661,12 @@ ListOfBuffers Buffer::getDescendents() const
 {
 	ListOfBuffers v;
 	collectChildren(v, true);
+	// Make sure we have not included ourselves.
+	ListOfBuffers::iterator bit = find(v.begin(), v.end(), this);
+	if (bit != v.end()) {
+		LYXERR0("Recursive include detected in `" << fileName() << "'.");
+		v.erase(bit);
+	}
 	return v;
 }
 
