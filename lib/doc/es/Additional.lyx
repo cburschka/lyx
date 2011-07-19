@@ -34,11 +34,6 @@
  \cleardoublepage
  \pagenumbering{arabic}}
 
-% redefine the \LyX macro for PDF bookmarks
-\def\LyX{\texorpdfstring{%
-  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX}}
-
 % used for multi-column text
 \usepackage{multicol}
 

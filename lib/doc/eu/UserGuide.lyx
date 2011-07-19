@@ -33,11 +33,6 @@
   \myTOC
   \mainmatter }
 
-% redefine the \LyX macro for PDF bookmarks
-\def\LyX{\texorpdfstring{%
-  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX}}
-
 % define a short command for \textvisiblespace
 \newcommand{\spce}{\textvisiblespace}
 

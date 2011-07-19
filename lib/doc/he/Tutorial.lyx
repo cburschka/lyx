@@ -13,12 +13,28 @@
 % the documentation team
 % email: lyx-docs@lists.lyx.org
 
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
 %disable hyphenation (breaking words at end of line)
 \usepackage[none]{hyphenat}
+
 %disable double space after end-of-sentence period
 \frenchspacing
-%Allow larger space between words in a line
-%\sloppy
 
 % These are fancyhdr commands that makes the heading "fancy"
 % behave like "heading", only without the Hebrew bugs.
@@ -29,10 +45,13 @@
 \fancyfoot[C]{}
 \end_preamble
 \use_default_options false
+\begin_modules
+logicalmkup
+\end_modules
 \maintain_unincluded_children false
 \language hebrew
 \language_package default
-\inputencoding cp1255
+\inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
@@ -51,7 +70,21 @@
 \index_command default
 \paperfontsize 12
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_title "The LyX Tutorial"
+\pdf_author "LyX Team"
+\pdf_subject "LyX-documentation Tutorial"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
 \use_amsmath 0

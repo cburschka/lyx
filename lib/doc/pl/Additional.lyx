@@ -2,13 +2,66 @@
 \lyxformat 413
 \begin_document
 \begin_header
-\textclass book
+\textclass scrbook
 \begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the manual prints
+% out as advertised. If you mess with this preamble,
+% parts of the manual may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% if pdflatex is used
+\usepackage{ifpdf}
+\ifpdf
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}
+  {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+ \cleardoublepage
+ \pagenumbering{arabic}}
+
+% used for multi-column text
 \usepackage{multicol}
+
+% extra space for tables
 \newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
 \end_preamble
+\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+\end_modules
 \maintain_unincluded_children false
+\begin_local_layout
+Format 7
+InsetLayout CharStyle:MenuItem
+LyxType               charstyle
+LabelString           menu
+LatexType             command
+LatexName             menuitem
+Font
+Family              Sans
+EndFont
+Preamble
+\newcommand*{\menuitem}[1]{{\sffamily #1}}
+EndPreamble
+End
+\end_local_layout
 \language polish
 \language_package default
 \inputencoding auto
@@ -28,12 +81,26 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize default
+\paperfontsize 12
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_title "LyX's Additional Features manual"
+\pdf_author "LyX Team"
+\pdf_subject "LyX's additional features documentation"
+\pdf_keywords "LyX, Documentation, Additional"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
-\use_amsmath 0
+\use_amsmath 1
 \use_esint 0
 \use_mhchem 1
 \use_mathdots 1
@@ -54,12 +121,12 @@
 \quotes_language german
 \papercolumns 1
 \papersides 2
-\paperpagestyle default
+\paperpagestyle headings
 \tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
-\html_be_strict false
+\html_be_strict true
 \end_header
 
 \begin_body
@@ -17293,207 +17360,7 @@ examples/multicol.lyx
 \end_layout
 
 \begin_layout Section
-Numeracja w środowisku wyliczenia akapitów
-\end_layout
-
-\begin_layout Standard
-by John
-\noun on
- Weiss
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Domyślna numeracja akapitów w środowisku wyliczenia zaczyna się od cyfr
- arabskich, a kończy się na dużych literach alfabetu.
- Prawdopodobnie jednak będziesz chciał inaczej numerować akapity.
- Oto przykład jak zmienić schemat numeracji:
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-renewcommand{
-\backslash
-labelenumi}{
-\backslash
-Roman{enumi}.}
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-renewcommand{
-\backslash
-labelenumii}{
-\backslash
-Alph{enumii}.}
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-renewcommand{
-\backslash
-labelenumiii}{
-\backslash
-arabic{enumiii}.}
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-renewcommand{
-\backslash
-labelenumiv}{
-\backslash
-alph{enumiv}.)}
-\end_layout
-
-\begin_layout Standard
-\SpecialChar \ldots{}
- który zmienia schemat na następujący: cyfry rzymskie, duże litery, cyfry
- arabskie i małe litery.
- Ponadto poprzedni przykład także dodaje kropkę do numeracji.
- Na przykład pierwszy akapit pierwszego poziomu będzie oznaczony ,,I.''.
- Dla lepszej orientacji opiszemy jak wygląda numeracja z użyciem naszego
- schematu: <,,I.'', ,,A.'', ,,1.'', ,,a.)''>.
-\end_layout
-
-\begin_layout Standard
-Można zobaczyć w przykładzie, gdzie są polecenia dla każdego zagnieżdżonego
- poziomu, 
-\family typewriter
-
-\backslash
-labelenumi
-\family default
- \SpecialChar \ldots{}
- 
-\family typewriter
-
-\backslash
-labelenumiv
-\family default
-, podobnie jak liczniki, 
-\family typewriter
-enumi
-\family default
- \SpecialChar \ldots{}
- 
-\family typewriter
-enumiv
-\family default
-.
- Znajduje się także pięć poleceń ,,drukowania numeru'', 
-\family typewriter
-
-\backslash
-arabic{}
-\family default
-, 
-\family typewriter
-
-\backslash
-roman{}
-\family default
-, 
-\family typewriter
-
-\backslash
-Roman{}
-\family default
-, 
-\family typewriter
-
-\backslash
-alph{}
-\family default
- i 
-\family typewriter
-
-\backslash
-Alph{}
-\family default
-, każdy z nich pobiera jeden licznik jako argument.
- Można dodać znaki przed lub po, ale nie ma potrzeby dodawania spacji.
-\end_layout
-
-\begin_layout Standard
-Możesz rzeczywiście otrzymać ozdobny schemat numeracji, na przykład:
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-renewcommand{
-\backslash
-labelenumi}{
-\backslash
-#
-\backslash
-Alph{enumi}
-\backslash
-#}
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-renewcommand{
-\backslash
-labelenumii}{
-\backslash
-Alph{enumi}.
-\backslash
-arabic{enumii}}
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-renewcommand{
-\backslash
-labelenumiii}{
-\backslash
-alph{enumiii}+}
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-renewcommand{
-\backslash
-labelenumiv}{(
-\backslash
-roman{enumiv})}
-\end_layout
-
-\begin_layout Standard
-Otrzymujemy wówczas następującą numerację: <,,#A#'', ,,A.1'', ,,a+'', ,,(i)''>.
-\end_layout
-
-\begin_layout Section
 Przestrzeń pomiędzy wierszami tabel
-\end_layout
-
-\begin_layout Standard
-by Mike
-\noun on
- Ressler
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -17879,210 +17746,12 @@ To pozwala szybko wykonać pracę, ale zdarza się, że brzydko wygląda.
 \end_layout
 
 \begin_layout Section
-Inicjały
-\end_layout
-
-\begin_layout Standard
-by Mike
-\noun on
- Ressler
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-newfont{
-\backslash
-tmpfont}{cmr17 scaled 2500}{
-\backslash
-tmpfont C}
-\backslash
-vspace*{-8.4ex}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hangindent=3.3em
-\backslash
-hangafter=-3
-\end_layout
-
-\end_inset
-
- i którzy lubią styl starych książek prawdopodobnie także lubią ,,inicjały''
- --- tę wielką literę rozpoczynającą każdy nowy rozdział czy sekcję.
- Implementacja tego jest prosta (zakładając, że znasz trochę plain TeX-a!)
- ale nie wymaga wiele pracy i powtórzeń, co mogłeś zobaczyć na początku
- akapitu w brzydkim trybie TeX-a.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-verb+
-\backslash
-bigdrop{-1em}{3}{ptmri}{I}+
-\end_layout
-
-\end_inset
-
-stnieje oczywiście o wiele łatwiejsza droga.
- Pakiet 
-\family typewriter
-dropcaps
-\family default
- (lub nowszy 
-\family typewriter
-dropping
-\family default
-)  z archiwum CTAN pozwala na prostszą metodę uzyskania inicjałów w dokumencie.
- Od jakiegoś czasu pakiet ten nie jest standardową częścią teTeX-a.
- Nie mogę go zademonstrować w tym dokumencie ale jeśli skopiujesz ten akapit
- do nowego dokumentu, usuniesz ,,
-\family typewriter
-
-\backslash
-verb
-\family default
-'' oraz znaki plus z kodu TeX-a na początku akapitu i dodasz do preambuły
- polecenie 
-\family typewriter
-
-\backslash
-usepackage{dropcaps}
-\family default
- to otrzymasz literę I zapisaną czcionką Times Roman Italic o wysokości
- trzech wierszy tekstu przesuniętą o 1 em za margines.
- Pierwszym argumentem jest wielkość wcięcia, ujemna wartość powoduje przesunięci
-e inicjału za margines.
- Drugi argument zawiera wysokość inicjału, podaje się ją w wierszach.
- Trzeci argument jest nazwą czcionki, czcionki wirtualne posiadające pliki
- tfm powinny działać (przebrnij przez katalog 
-\family typewriter
-.../texmf/fonts/tfm
-\family default
- aby sprawdzić możliwości).
- Moim osobistym faworytem jest 
-\family sans
-yinit
-\family default
-, ozdobna czcionka niemiecka specjalnie zaprojektowana do inicjałów.
- Czwartym argumentem jest litera lub litery, które mają być inicjałem.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-verb+
-\backslash
-dropping{2}{P}+
-\end_layout
-
-\end_inset
-
- pakiet
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Przyp.
- tłum.
- Aby zobaczyć wynik pracy pakietu 
-\family typewriter
-dropping
-\family default
- to należy wykonać czynności podobne jak poprzednio, jedynie w preambule
- należy wpisać
-\family typewriter
-
-\backslash
-usepackage{dropping}
-\end_layout
-
-\end_inset
-
- 
-\family typewriter
-dropping
-\family default
- także oferuje polecenie 
-\family typewriter
-
-\backslash
-bigdrop
-\family default
- o identycznej składni jak w pakiecie 
-\family typewriter
-dropcaps
-\family default
-, a także trochę uproszczone polecenie 
-\family typewriter
-
-\backslash
-dropping o
-\family default
- trzech argumentach.
- Pierwszy -- opcjonalny -- określa odległość od lewego marginesu -- domyślnie
- 0pt.
- Drugi zawiera wysokość inicjału podawaną w wierszach.
- Trzecim argumentem jest litera lub litery, które mają być inicjałem.
-\end_layout
-
-\begin_layout Section
 Niestandardowe kształty akapitów
 \end_layout
 
 \begin_layout Standard
-by Mike
-\noun on
- Ressler
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -18121,7 +17790,7 @@ varunit}{4.5in}
 \begin_layout Standard
 \noindent
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -18416,7 +18085,7 @@ numlines
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -18428,28 +18097,6 @@ end{sloppypar}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Podsumowanie
-\end_layout
-
-\begin_layout Standard
-Jak można zobaczyć, przykłady w tym rozdziale zaczynają się od użytecznych
- aż do wymyślnych.
- Nie spodziewam się aby ktoś potrzebował kształtu akapitu jak ostatnim rozdziale
-, ale ważne jest to że możesz zrobić prawie wszystko co chcesz w LyX-ie
- jeśli będziesz miał ochotę wyobrazić sobie jak to zrobić w TeX-u i LaTeX-u.
-\end_layout
-
-\begin_layout Standard
-TeX jest fantastycznym systemem składu i jego możliwości są dostępne dla
- Ciebie przez LyX-a wykorzystującego go w tle.
- 
-\end_layout
-
-\begin_layout Standard
-Miłego LyX-owania!
 \end_layout
 
 \end_body

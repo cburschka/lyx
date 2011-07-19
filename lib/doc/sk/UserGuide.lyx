@@ -33,11 +33,6 @@
   \myTOC
   \mainmatter }
 
-% redefine the \LyX macro for PDF bookmarks
-\def\LyX{\texorpdfstring{%
-  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX}}
-
 %remove this line when bug 5291 is fixed
 \@ifundefined{textcolor}{\usepackage{color}}{}
 \end_preamble

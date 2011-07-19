@@ -3,12 +3,6 @@
 \begin_document
 \begin_header
 \textclass article
-\begin_preamble
-% redefine the \LyX macro for PDF bookmarks
-\def\LyX{\texorpdfstring{%
-  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX}}
-\end_preamble
 \options cjk
 \use_default_options true
 \maintain_unincluded_children false
