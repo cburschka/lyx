@@ -2,27 +2,46 @@
 \lyxformat 413
 \begin_document
 \begin_header
-\textclass book
+\textclass article
 \begin_preamble
-% These are fancyhdr commands that makes the heading "fancy"
-% behave like "heading", only without the Hebrew bugs.
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
 
-\fancyhf{}
-\renewcommand{\headrulewidth}{0pt}
-\fancyhead[RO]{\rightmark \thepage { } | { }}
-\fancyhead[LE]{\thepage { } | { }\leftmark}
-\fancyfoot[C]{}
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
 
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
 
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \cleardoublepage
+  \pagenumbering{arabic} }
+
+%disable hyphenation (breaking words at end of line)
 \usepackage[none]{hyphenat}
 
+%disable double space after end-of-sentence period
 \frenchspacing
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
 \language hebrew
 \language_package default
-\inputencoding cp1255
+\inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
@@ -39,13 +58,27 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize default
+\paperfontsize 12
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_title "Introduction to LyX"
+\pdf_author "LyX Team"
+\pdf_subject "LyX-documentation Intro"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
 \use_amsmath 1
-\use_esint 1
+\use_esint 0
 \use_mhchem 1
 \use_mathdots 1
 \cite_engine basic
@@ -59,13 +92,13 @@
 \color #008000
 \end_index
 \secnumdepth 3
-\tocdepth 3
+\tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 1
-\paperpagestyle fancy
+\paperpagestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -171,7 +204,7 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 הפילוסופיה של 
 \lang english
 LyX
@@ -226,7 +259,7 @@ http://wiki.lyx.org/LyX/HebrewOnLinux
 .
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 מה זה 
 \lang english
 LyX
@@ -635,7 +668,7 @@ LyX
  בא עם אחריות לכל החיים(.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 ההבדלים בין 
 \lang english
 LyX
@@ -808,7 +841,7 @@ LaTeX
 .
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 מה זה לעזאזל 
 \lang english
 LaTeX
@@ -1246,7 +1279,7 @@ LyX
  מבוטא כ"ליקס" )למ"ד בחיריק, קו"ף בשווא(.
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 השימוש בתיעוד
 \end_layout
 
@@ -1315,7 +1348,7 @@ lyx-users@lists.lyx.org
  .
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 מבנה המדריכים
 \end_layout
 
@@ -1886,7 +1919,7 @@ emacs
  הקיצור.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 יחידות מדידה המופיעות במדריכים
 \end_layout
 
@@ -2609,7 +2642,7 @@ em)
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 המדריכים
 \end_layout
 
@@ -2969,7 +3002,7 @@ LyX
  עושה כל מה שאתה צריך שמעבד תמלילים יעשה, אבל משתמש לשם כך בגישה שונה.
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 \begin_inset CommandInset label
 LatexCommand label
 name "פרק:תרומה"
@@ -2981,7 +3014,7 @@ name "פרק:תרומה"
 LyX
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 תרומה ל- 
 \lang english
 LyX
@@ -3010,7 +3043,7 @@ C++
  המקור.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 דיווח על תקלה
 \end_layout
 
@@ -3216,7 +3249,7 @@ backtrace
  הוא חיוני, מפני שזה כל מה שיש בידינו.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 תרומת תיקונים ותכונות חדשות
 \end_layout
 
@@ -3245,7 +3278,7 @@ patch
 ( שלך עושה.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 תרומה לתיעוד
 \end_layout
 
@@ -3264,7 +3297,7 @@ LyX
  לשיפור התיעוד.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 דיווח על טעויות במדריכים
 \end_layout
 
@@ -3284,7 +3317,7 @@ lyx-docs@lists.lyx.org
  צוות התיעוד יבצע את השינויים הדרושים.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 הצטרפות לצוות התיעוד
 \end_layout
 

@@ -30,11 +30,6 @@
 \myTOC
 \cleardoublepage
 \pagenumbering{arabic} }
-
-% redefine the \LyX macro for PDF bookmarks
-\def\LyX{\texorpdfstring{%
-L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-{LyX}}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -90,13 +85,6 @@ L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
 \shortcut idx
 \color #008000
 \end_index
-\leftmargin 2.5cm
-\topmargin 2.5cm
-\rightmargin 2.5cm
-\bottommargin 2.5cm
-\headheight 2cm
-\headsep 1cm
-\footskip 2cm
 \secnumdepth 3
 \tocdepth 2
 \paragraph_separation indent
@@ -160,11 +148,11 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 A LyX filozófiája
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Mi a LyX?
 \end_layout
 
@@ -544,7 +532,7 @@ pontosan
  – ugye nem a csavarhúzóját használja egy szeg falba veréséhez.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Eltérések a LyX és a többi szövegszerkesztő között
 \begin_inset Argument
 status collapsed
@@ -696,7 +684,7 @@ működik
 .
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Mi a LaTeX?
 \end_layout
 
@@ -894,7 +882,7 @@ Csakúgy, mint a LaTeX a LyX is az írás tartalmára koncentrál — arra amit
  A számítógép fog gondoskodni arról, hogyan nézzen ki.
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 A dokumentumok közötti eligazodás
 \end_layout
 
@@ -995,7 +983,7 @@ A levelezőlista nyelve angol.
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 A kézikönyvek formátuma
 \end_layout
 
@@ -1530,7 +1518,7 @@ CUA
  az önre vonatkozó billentyűzet-kombinációt.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Kézikönyvekben használt mértékegységek 
 \end_layout
 
@@ -2064,7 +2052,7 @@ em)
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 A kézikönyvek
 \end_layout
 
@@ -2266,7 +2254,7 @@ Különben felesleges csalódást okozhat önmagának.
  meg a dolgokat, mint ahogy azokat megszokhatta.
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 Közreműködés a dokumentációs projekthez
 \end_layout
 
@@ -2280,7 +2268,7 @@ name "rész:Közreműködés"
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Közreműködés a LyX-hez
 \end_layout
 
@@ -2291,7 +2279,7 @@ A LyX többnyire C++-ban készült.
  
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Hiba jelentése
 \end_layout
 
@@ -2365,7 +2353,7 @@ config.log
 -ot, valamint adja meg milyen fordítót használt.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Javítások és új funkciók közreadása
 \end_layout
 
@@ -2377,7 +2365,7 @@ Ha megváltoztatta a LyX forráskódját, és úgy gondolja mindenképpen érdem
  mire vonatkozik.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Közreműködés a dokumentációhoz
 \end_layout
 
@@ -2390,7 +2378,7 @@ A LyX dokumentációja elég átfogó, habár folyamatos fejlesztés alatt van
  javításához, kiegészítéséhez van javaslata.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 A kézikönyvekben talált hibák jelentése
 \end_layout
 
@@ -2421,7 +2409,7 @@ Mielőtt ide írna jelezze a hibát nekünk a fordítóknak is, mert lehet hogy
  A dokumentációs csapat el fogja végezni a szükséges javításokat.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Csatlakozás a dokumentációs csapathoz
 \end_layout
 
@@ -2520,7 +2508,7 @@ nkbe.
  
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Csatlakozás a dokumentációk fordításához, honosításához
 \end_layout
 

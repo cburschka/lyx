@@ -4,11 +4,11 @@
 \begin_header
 \textclass article
 \begin_preamble
-% DO NOT ALTER THIS PREAMBLE!!! 
+% DO NOT ALTER THIS PREAMBLE!!!
 %
 %This preamble is designed to ensure that the document prints
 % out as advertised. If you mess with this preamble,
-% parts of the document may not print out as expected. If you
+% parts of the document may not print out as expected.  If you
 % have problems LaTeXing this file, please contact 
 % the documentation team
 % email: lyx-docs@lists.lyx.org
@@ -16,8 +16,8 @@
 \usepackage{ifpdf} % part of the hyperref bundle
 \ifpdf % if pdflatex is used
 
-% set fonts for nicer pdf view
-\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
 
 \fi % end if pdflatex is used
 
@@ -26,21 +26,16 @@
 \pagenumbering{roman}
 \let\myTOC\tableofcontents
 \renewcommand\tableofcontents{%
-\pdfbookmark[1]{\contentsname}{}
-\myTOC
-\cleardoublepage
-\pagenumbering{arabic} }
-
-% redefine the \LyX macro for PDF bookmarks
-\def\LyX{\texorpdfstring{%
-L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-{LyX}}
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \cleardoublepage
+  \pagenumbering{arabic} }
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
 \language danish
 \language_package default
-\inputencoding default
+\inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
@@ -112,7 +107,7 @@ Introduktion til LyX
 \end_layout
 
 \begin_layout Author
-af John Weiss og LyX-holdet
+af LyX-holdet
 \end_layout
 
 \begin_layout Standard
@@ -124,11 +119,11 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 LyX-filosofien
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Hvad er LyX?
 \end_layout
 
@@ -414,7 +409,7 @@ gerne
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Forskelle mellem LyX og anden tekst\SpecialChar \-
 behandling
 \end_layout
@@ -574,7 +569,7 @@ Okay, vi ved godt at intet er helt perfekt, men LaTeX er så tæt på at være
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Hvad 
 \emph on
 er
@@ -792,7 +787,7 @@ hvordan
  det skal se ud.
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 Dokumentationen
 \end_layout
 
@@ -869,7 +864,7 @@ type "mailto:"
 .
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Formatet
 \end_layout
 
@@ -1429,7 +1424,7 @@ voksede op
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Manualerne
 \end_layout
 
@@ -1658,7 +1653,7 @@ Ellers vil du frustrere dig selv unødigt\SpecialChar \@.
 
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 \begin_inset CommandInset label
 LatexCommand label
 name "kap:Bidrag"
@@ -1668,7 +1663,7 @@ name "kap:Bidrag"
 Bidrag til LyX-projektet
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 At bidrage til LyX
 \end_layout
 
@@ -1678,7 +1673,7 @@ LyX er hovedsageligt skrevet i C++ (LaTeX-indlæseren er skrevet i Perl).
 r i kildeteksten.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Rapportér fejl
 \end_layout
 
@@ -1874,7 +1869,7 @@ backtrace
 -filen essentiel, da den i så tilfælde er alt hvad vi har at gå ud fra.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Bidrag med fejlrettelser og nye funktioner
 \end_layout
 
@@ -1885,7 +1880,7 @@ Hvis du har lavet ændringer i LyX's kildetekst, som du synes bør indføres
  af ændringen og hvad den gør.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Bidrag til dokumentationen
 \end_layout
 
@@ -1900,7 +1895,7 @@ LyX's dokumentation er omfattende\SpecialChar \@.
 nen.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Rapportér fejl i manualerne
 \end_layout
 
@@ -1919,7 +1914,7 @@ type "mailto:"
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Deltag i dokumentationsholdet.
 \end_layout
 

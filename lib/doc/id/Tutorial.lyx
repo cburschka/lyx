@@ -30,11 +30,6 @@
   \myTOC
   \mainmatter }
 
-% redefine the \LyX macro for PDF bookmarks
-\def\LyX{\texorpdfstring{%
-  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX}}
-
 % The following preamble is added in Indonesian Version of the Tutorial
 % It writes the  month and the year when it is prepared.
 % It creates a blank transitional page, but counted.

@@ -30,11 +30,6 @@
 \myTOC
 \cleardoublepage
 \pagenumbering{arabic} }
-
-% redefine the \LyX macro for PDF bookmarks
-\def\LyX{\texorpdfstring{%
-L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-{LyX}}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -112,7 +107,7 @@ L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
 \end_layout
 
 \begin_layout Author
-автор: John Weiss и команда разработки LyX
+автор: команда разработки LyX
 \begin_inset Newline newline
 \end_inset
 
@@ -133,7 +128,7 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 Философия LyX
 \end_layout
 
@@ -190,7 +185,7 @@ Shoe
  
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Что такое LyX?
 \end_layout
 
@@ -550,7 +545,7 @@ WYSIWYM
  ваша отвёртка не с пожизненной гарантией).
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Различия между LyX и другими текстовыми процессорами
 \end_layout
 
@@ -701,7 +696,7 @@ status collapsed
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Что же такое LaTeX? (И почему я должен быть осторожен?)
 \end_layout
 
@@ -1133,7 +1128,7 @@ word
 :-)
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 Обзор документации
 \end_layout
 
@@ -1202,7 +1197,7 @@ type "mailto:"
 .
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Формат руководств
 \end_layout
 
@@ -1757,7 +1752,7 @@ emacs
  прочесть документацию и найти ваши комбинации клавиш.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Руководства
 \end_layout
 
@@ -1999,7 +1994,7 @@ LaTeX
  подход.
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 Содействие проекту LyX
 \begin_inset CommandInset label
 LatexCommand label
@@ -2010,7 +2005,7 @@ name "sec:Contrib"
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Содействие LyX
 \end_layout
 
@@ -2021,7 +2016,7 @@ LyX по большей части написан на C++ (фильтр имп�
  и необходимости совершенствования исходного кода.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Извещение об ошибках
 \end_layout
 
@@ -2204,7 +2199,7 @@ up
  это всё, что мы можем знать об ошибке.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Содействие в исправлении и добавлении новых возможностей
 \end_layout
 
@@ -2216,7 +2211,7 @@ up
  ваша заплатка.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Содействие в документировании
 \end_layout
 
@@ -2228,7 +2223,7 @@ up
  есть предложения по усовершенствованию документации.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Извещение об ошибках в документации
 \end_layout
 
@@ -2242,7 +2237,7 @@ lyx-docs@lists.lyx.org
  Команда документирования внесёт необходимые изменения.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Присоединение к команде документирования
 \end_layout
 
