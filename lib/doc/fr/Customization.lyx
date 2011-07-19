@@ -29,9 +29,6 @@
   \pdfbookmark[1]{\contentsname}{}
   \myTOC
   \mainmatter }
-
-% used for multi-column text
-\usepackage{multicol}
 \end_preamble
 \options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
 \use_default_options false
@@ -3160,7 +3157,7 @@ Si vous avez trouvé une erreur dans le document original, corrigez-la et
 
 \begin_layout Standard
 \begin_inset Branch Obsolete
-status open
+status collapsed
 
 \begin_layout Section
 Support de Clavier International
