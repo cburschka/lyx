@@ -8622,24 +8622,12 @@ Achtung:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In some cases you might want to resume the list with a different number
- than the next one.
- Or you want to start a new 
-\lang ngerman
-Aufzählung
-\lang english
-, but with a different 
-\lang ngerman
-Nummer
-\lang english
-.
- This is also possible by adding an optional argument to the first list
- item.
- There insert the 
-\lang ngerman
-Befehl
+Vielleicht wollen Sie die Liste mit einer anderen Nummer als die eigentlich
+ folgende fortsetzen.
+ Oder Sie wollen eine neue Aufzählung starten, die mit einer bestimmten
+ Nummer beginnen soll.
+ Dies ist möglich, indem Sie in einer neuen, normalen Liste ein optionales
+ Argument im ersten Listeneintrag einfügen und darin den Befehl
 \end_layout
 
 \begin_layout Standard
@@ -8649,11 +8637,12 @@ start=Nummer
 \end_layout
 
 \begin_layout Standard
-wobei 
+verwenden.
+ Dabei ist 
 \emph on
 Nummer
 \emph default
- die Nummer ist, mit der Sie die Liste fortsetzen wollen.
+ die Nummer, mit der Sie die Liste fortsetzen wollen.
  Ein Beispiel:
 \end_layout
 
@@ -8707,43 +8696,36 @@ Liste ! Abstände
 \end_layout
 
 \begin_layout Standard
+In manchen Fällen wollen Sie vielleicht weniger vertikalen Abstand zwischen
+ den Listeneinträgen haben.
+ Z.
+\begin_inset space \thinspace{}
+\end_inset
 
-\lang english
-In some cases you might want less or more vertical space between the items
- of a list.
- For example the default space is too much in your opinion:
+B.
+\begin_inset space ~
+\end_inset
+
+ ist ihrer Meinung nach zu viel Abstand in dieser Liste:
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-A bullet list
+Eine Auf\SpecialChar \textcompwordmark{}
+listung
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-with standard spacing 
+mit Standard-Abstand
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can decrease the space by adding an optional argument to the first item
- of the list.
- There add the
-\lang ngerman
- Befehl 
+Der Abstand kann verkleinert werden, indem man ein optionales Argument im
+ ersten Listeneintrag verwendet.
+ Darin fügt man den Befehl 
 \series bold
 nolistsep
 \series default
- 
-\lang english
-to get no space like in this
-\lang ngerman
- Beispiel
-\lang english
-:
+ ein, der den zusätzlichen Listenabstand entfernt, wie in diesem Beispiel:
 \end_layout
 
 \begin_layout Itemize
@@ -8766,25 +8748,20 @@ nolistsep
 
 \end_inset
 
-
-\lang english
-A bullet list
+Eine Auf\SpecialChar \textcompwordmark{}
+listung
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-with no additional
+ohne zusätzlichen
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-vertical space
+vertikalen Abstand
 \end_layout
 
 \begin_layout Standard
-Im Abstand hinzuzufügen können Sie verschiedene andere Befehle des LaTeX-Pakets
+Um Abstand hinzuzufügen, können Sie verschiedene andere Befehle des LaTeX-Pakets
  
 \series bold
 enumitem
@@ -8811,25 +8788,14 @@ key "enumitem"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There are also many 
-\lang ngerman
-Befehle
-\lang english
- available to change the horizontal spacing and indentation.
- Here is an 
-\lang ngerman
-Beispiel
-\lang english
- where the indentation was changed to the negative one of the paragraphs
- in the document and the label separation was set to
-\lang ngerman
- 2
+Es gibt zudem viele Befehle mit denen horizontale Abstände und der Einzug
+ eingestellt werden kann.
+ Hier ist ein Beispiel bei dem der Einzug auf den Einzug der Absätze des
+ Dokuments gesetzt wurde und der Abstand zwischen Nummer und Text auf 2
 \begin_inset space \thinspace{}
 \end_inset
 
-cm.
+cm, so dass sich die Nummer im Seitenrand befindet:
 \end_layout
 
 \begin_layout Enumerate
@@ -8858,9 +8824,7 @@ Eine Aufzählung
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-with negative indentation
+mit negativem Einzug
 \end_layout
 
 \begin_layout Subsubsection
@@ -46041,6 +46005,7 @@ LaTeX-Paket ! enumitem
 status collapsed
 
 \begin_layout Plain Layout
+
 http://mirrors.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf
 \end_layout
 
