@@ -309,78 +309,7 @@ LatexCommand tableofcontents
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Si votre distribution LaTeX est un peu ancienne (TeXLive 2007 par exemple),
- 
-\begin_inset Quotes fld
-\end_inset
-
-Visionner
-\begin_inset Quotes frd
-\end_inset
-
- ou 
-\begin_inset Quotes fld
-\end_inset
-
-Exporter
-\begin_inset Quotes frd
-\end_inset
-
- en PDF ne fonctionnera pas du fait d'un conflit entre 
-\family typewriter
-varioref/hyperref
-\family default
- et le caractère 
-\begin_inset Quotes fld
-\end_inset
-
-:
-\begin_inset Quotes frd
-\end_inset
-
- apparaissant dans certaines étiquettes.
- Pour résoudre ce problème, vous pouvez:
-\end_layout
-
-\begin_layout Itemize
-soit désactiver 
-\family typewriter
-hyperref
-\family default
- dans le menu 
-\family sans
-Document\SpecialChar \menuseparator
-Paramètres\SpecialChar \menuseparator
-Propriété PDF
-\family default
-;
-\end_layout
-
-\begin_layout Itemize
-Vous pouvez trouver la dernière version au format PDF de ce manuel ici :
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-http://wiki.lyx.org/LyX/DocumentationDevelopment#UserGuide
-\series default
-;
-\end_layout
-
-\begin_layout Itemize
-soit mettre à jour votre distribution (en installant par exemple au moins
- TeXLive 2008)
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Pour pouvoir exporter ce document en PDF, PS ou DVI, les paquetages LaTeX
@@ -394,7 +323,7 @@ colortbl
 \series default
 , 
 \series bold
-marginnote
+lettrine, marginnote, picinpar
 \series default
 , et 
 \series bold

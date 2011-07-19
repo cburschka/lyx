@@ -6888,11 +6888,11 @@ Note:
 \begin_layout Standard
 
 \lang english
-In some cases you might want to resume the list with a different number
- than the next one.
- Or you want to start a new enumeration, but with a different number.
+Perhaps you might want to resume the list with a different number than the
+ next one.
+ Or you want to start a new enumeration with a defined number.
  This is also possible by adding an optional argument to the first list
- item.
+ item of a normal new enumeration.
  There insert the command
 \end_layout
 
@@ -6979,7 +6979,7 @@ Lists ! Spacing
 \lang english
 In some cases you might want less or more vertical space between the items
  of a list.
- For example the default space is too much in your opinion:
+ For example the default space is too much in your opinion in this case:
 \end_layout
 
 \begin_layout Itemize
@@ -7003,7 +7003,7 @@ You can decrease the space by adding an optional argument to the first item
 \series bold
 nolistsep
 \series default
- to get no space like in this example:
+ to get no additional list space like in this example:
 \end_layout
 
 \begin_layout Itemize
@@ -7082,12 +7082,12 @@ key "enumitem"
 \lang english
 There are also many commands available to change the horizontal spacing
  and indentation.
- Here is an example where the indentation was changed to the negative one
- of the paragraphs in the document and the label separation was set to 2
+ Here is an example where the indentation was changed to the one of the
+ paragraphs in the document and the label separation was set to 2
 \begin_inset space \thinspace{}
 \end_inset
 
-cm.
+cm so that the number is in the page margin:
 \end_layout
 
 \begin_layout Enumerate
@@ -47460,6 +47460,7 @@ Paquetages LaTeX ! enumitem
 status collapsed
 
 \begin_layout Plain Layout
+
 http://mirrors.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf
 \end_layout
 
