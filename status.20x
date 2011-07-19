@@ -273,3 +273,5 @@ What's new
 
 - Using pkgconfig to configure hunspell (hunspell 1.3 was not correctly
   recognized).
+
+- Fixed build failure on GNU/Hurd, which doesn't define PATH_MAX (bug #7467).
