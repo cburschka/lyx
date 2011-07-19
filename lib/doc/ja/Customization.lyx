@@ -31,9 +31,6 @@
   \myTOC
   \mainmatter }
 
-% used for multi-column text
-\usepackage{multicol}
-
 % Added only for Japanese translation
 % This is needed to use \textquotedbl (this doesn't exist in OT1 encoding)
 \usepackage[T1]{fontenc}
