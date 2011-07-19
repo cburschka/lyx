@@ -249,7 +249,7 @@ What's new
   for finding characters with a special meaning in regular expression context (\^()[]).
 
 - After replacing with multi-cell contents inside maths, now advanced find and replace
-  leaves the cursor after the inserted material (fixing #7675).
+  leaves the cursor after the inserted material (fixing 7675).
 
 
 * DOCUMENTATION AND LOCALIZATION
@@ -274,4 +274,5 @@ What's new
 - Using pkgconfig to configure hunspell (hunspell 1.3 was not correctly
   recognized).
 
-- Fixed build failure on GNU/Hurd, which doesn't define PATH_MAX (bug #7467).
+- Fixed build failure on GNU/Hurd, which doesn't define PATH_MAX
+  (bug 7467).
