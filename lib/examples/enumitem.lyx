@@ -2,13 +2,13 @@
 \lyxformat 413
 \begin_document
 \begin_header
-\textclass article
+\textclass scrartcl
 \use_default_options false
 \begin_modules
 enumitem
 \end_modules
 \maintain_unincluded_children false
-\language british
+\language english
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -29,17 +29,17 @@ enumitem
 \index_command default
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
 \pdf_bookmarks true
-\pdf_bookmarksnumbered false
-\pdf_bookmarksopen false
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
 \pdf_pdfborder true
-\pdf_colorlinks true
+\pdf_colorlinks false
 \pdf_backref section
 \pdf_pdfusetitle true
-\papersize a4paper
+\papersize default
 \use_geometry false
 \use_amsmath 1
 \use_esint 1
@@ -57,8 +57,8 @@ enumitem
 \end_index
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation indent
-\paragraph_indentation default
+\paragraph_separation skip
+\defskip medskip
 \quotes_language english
 \papercolumns 1
 \papersides 1
@@ -72,12 +72,32 @@ enumitem
 
 \begin_body
 
-\begin_layout Section*
+\begin_layout Title
 The enumitem Module
 \end_layout
 
 \begin_layout Standard
-The enumitem Module provides customisable list Styles using the 
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\family sans
+enumitem
+\family default
+ module provides customisable list styles using the 
 \begin_inset CommandInset href
 LatexCommand href
 name "enumitem LaTeX package"
@@ -88,7 +108,7 @@ target "http://dante.ctan.org/CTAN/help/Catalogue/entries/enumitem.html"
 .
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Section
 Lists with optional arguments
 \end_layout
 
@@ -102,18 +122,7 @@ g.
 \begin_inset space ~
 \end_inset
 
-the backslash), put it in a 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-TeX code box
-\end_layout
-
-\end_inset
-
-.
+the backslash), put it in a TeX Code box.
 \end_layout
 
 \begin_layout Enumerate
@@ -281,7 +290,7 @@ target "http://dante.ctan.org/CTAN/macros/latex/contrib/enumitem/enumitem.pdf"
 .
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Section
 Resume enumeration
 \end_layout
 
@@ -289,9 +298,12 @@ Resume enumeration
 \begin_inset Note Note
 status open
 
-\begin_layout Enumerate-Resume
-Attention, if there is no previous enumeration to resume, a latex error
- is thrown!
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ If there is no previous enumeration to resume, a latex error is thrown!
 \end_layout
 
 \end_inset
@@ -362,7 +374,7 @@ resumed at depth 2
 regular text outside the list
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Section
 Compact Lists
 \end_layout
 
@@ -446,7 +458,7 @@ target "http://dante.ctan.org/CTAN/macros/latex/contrib/enumitem/enumitem.pdf"
 .
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Section
 Customisable LyX-List/Labeling
 \end_layout
 
