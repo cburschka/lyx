@@ -60,6 +60,7 @@
 \use_default_options false
 \begin_modules
 customHeadersFooters
+enumitem
 \end_modules
 \maintain_unincluded_children false
 \language ngerman
@@ -8139,6 +8140,861 @@ ff wegen Schachtelungen lesen sollten?
 \end_layout
 
 \begin_layout Subsection
+Benutzerdefinierte Listen
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Liste ! Benutzerdefiniert
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Um die Features nutzen zu können, die in diesem Abschnitt vorgestellt werden,
+ müssen Sie das Modul 
+\family sans
+Flexible Listen (enumitem)
+\family default
+ in den Dokumenteinstellungen laden.
+ Dies lädt die Features des LaTeX-Pakets 
+\series bold
+enumitem
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! enumitem
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Benutzerdefinierte Aufzählungen
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Liste ! Aufzahlung@Aufzählung ! Benutzerdefiniert
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Die voreingestellte Nummerierung von Aufzählungen kann geändert werden,
+ indem man ein optionales Argument (Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Kurztitel
+\family default
+) zum ersten Eintrag jeder Stufe der Liste hinzufügt.
+ Darin fügt man den Befehl
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+label=
+\backslash
+roman{enumi}
+\end_layout
+
+\begin_layout Standard
+als TeX-Code (Tastenkürzel 
+\family sans
+Strg+L
+\family default
+) ein.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Für mehr über TeX-Code, siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:TeX-Code"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\emph on
+ enumi
+\emph default
+ ist hierbei der Zähler der Nummerierung der ersten Stufe.
+ Der Befehl 
+\series bold
+
+\backslash
+roman
+\series default
+ gibt den Zähler als kleine römische Zahl aus.
+ Für große römische Zahlen ersetzen Sie in obigem Befehl 
+\series bold
+
+\backslash
+roman
+\series default
+ durch 
+\series bold
+
+\backslash
+Roman
+\series default
+.
+ Für arabische Zahlen verwenden Sie 
+\series bold
+
+\backslash
+arabic
+\series default
+.
+ Um Punkte mit großen oder kleinen Buchstaben zu 
+\begin_inset Quotes gld
+\end_inset
+
+nummerieren
+\begin_inset Quotes grd
+\end_inset
+
+, verwenden Sie die Befehle 
+\series bold
+
+\backslash
+Alph
+\series default
+ oder 
+\series bold
+
+\backslash
+alph
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ Mit Buchstaben können höchstens 26
+\begin_inset space ~
+\end_inset
+
+Punkte nummeriert werden, weil nur 
+\emph on
+ein
+\emph default
+ Buchstabe verwendet wird.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Um die Nummerierung für die anderen Stufen der Liste zu ändern, ersetzen
+ Sie im Befehl das 'i' jeweils durch die kleine römische Zahl der Stufe
+ (enumi, enumii, enumiii, enumiv).
+\end_layout
+
+\begin_layout Standard
+Als Beispiel eine Liste mit benutzerdefinierter Nummerierung:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+#
+\backslash
+Alph{enumi}
+\backslash
+#
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Stufe 1
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+Alph{enumi}.
+\backslash
+arabic{enumii}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Stufe 2
+\end_layout
+
+\begin_layout Enumerate
+Level 2
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+bf{
+\backslash
+arabic{enumiii}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Stufe 3
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+emph{
+\backslash
+roman{enumiv})}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Stufe 4
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+Für diese Liste wurden diese Befehle verwendet:
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\series bold
+label=
+\backslash
+#
+\backslash
+Alph{enumi}
+\backslash
+#
+\begin_inset Newline newline
+\end_inset
+
+label=
+\backslash
+Alph{enumi}.
+\backslash
+arabic{enumii}
+\begin_inset Newline newline
+\end_inset
+
+label=
+\backslash
+bf{
+\backslash
+arabic{enumiii}}
+\begin_inset Newline newline
+\end_inset
+
+label=
+\backslash
+emph{
+\backslash
+roman{enumiv})}
+\end_layout
+
+\begin_layout Standard
+wobei der Befehl 
+\series bold
+
+\backslash
+emph{}
+\series default
+ die Nummerierung hervorhebt und 
+\series bold
+
+\backslash
+bf{}
+\series default
+ sie fett druckt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ Wenn Sie die Nummerierung einer Listenstufe geändert haben, wird sie von
+ allen weiteren Listen verwendet, bis Sie die Definition wieder ändern.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Unterbrochene Aufzählungen
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Liste ! Aufzahlung@Aufzählung ! Unterbrochen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Aufzählungen können nach Unterbrechungen fortgesetzt werden:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+arabic{enumi}.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Erstens
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+geht zurück auf Standard-Nummerierung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Zweitens
+\end_layout
+
+\begin_layout Standard
+Normaler Text
+\end_layout
+
+\begin_layout Enumerate-Resume
+Fortgesetzt
+\end_layout
+
+\begin_layout Standard
+Um eine Aufzählung fortzusetzen, verwendet man den Stil 
+\family sans
+Aufzählung
+\begin_inset space ~
+\end_inset
+
+fortführen
+\family default
+.
+ Dessen Nummerierung erscheint in blau in LyX um zu zeigen, das es eine
+ fortgesetzte Liste ist und die Nummerierung in LyX nicht korrekt ist, aber
+ in der Ausgabe.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ Falls es keine vorhergehende Liste gibt, die fortgesetzt werden kann, bekommt
+ man einen LaTeX-Fehler.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In some cases you might want to resume the list with a different number
+ than the next one.
+ Or you want to start a new 
+\lang ngerman
+Aufzählung
+\lang english
+, but with a different 
+\lang ngerman
+Nummer
+\lang english
+.
+ This is also possible by adding an optional argument to the first list
+ item.
+ There insert the 
+\lang ngerman
+Befehl
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+start=Nummer
+\end_layout
+
+\begin_layout Standard
+wobei 
+\emph on
+Nummer
+\emph default
+ die Nummer ist, mit der Sie die Liste fortsetzen wollen.
+ Ein Beispiel:
+\end_layout
+
+\begin_layout Enumerate
+Erstens
+\end_layout
+
+\begin_layout Enumerate
+Zweitens
+\end_layout
+
+\begin_layout Standard
+Aufzählung startet bei gegebenem Wert:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+start=4
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Diese Aufzählung startet bei 4
+\end_layout
+
+\begin_layout Subsubsection
+Abstände in Listen
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Liste ! Abstände
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In some cases you might want less or more vertical space between the items
+ of a list.
+ For example the default space is too much in your opinion:
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+A bullet list
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+with standard spacing 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You can decrease the space by adding an optional argument to the first item
+ of the list.
+ There add the
+\lang ngerman
+ Befehl 
+\series bold
+nolistsep
+\series default
+ 
+\lang english
+to get no space like in this
+\lang ngerman
+ Beispiel
+\lang english
+:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+nolistsep
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\lang english
+A bullet list
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+with no additional
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+vertical space
+\end_layout
+
+\begin_layout Standard
+Im Abstand hinzuzufügen können Sie verschiedene andere Befehle des LaTeX-Pakets
+ 
+\series bold
+enumitem
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! enumitem
+\end_layout
+
+\end_inset
+
+ verwenden.
+ Für mehr Informationen siehe dessen Dokumentation, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "enumitem"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+There are also many 
+\lang ngerman
+Befehle
+\lang english
+ available to change the horizontal spacing and indentation.
+ Here is an 
+\lang ngerman
+Beispiel
+\lang english
+ where the indentation was changed to the negative one of the paragraphs
+ in the document and the label separation was set to
+\lang ngerman
+ 2
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+labelindent=
+\backslash
+parindent, labelsep=2cm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Eine Aufzählung
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+with negative indentation
+\end_layout
+
+\begin_layout Subsubsection
+Weitere Anpassungen
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Liste ! Beschreibung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sie können auch den Stil von Beschreibungen ändern.
+ Der Befehl
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+font=Definition
+\end_layout
+
+\begin_layout Standard
+ändert den Beschreibungstitel, der Befehl
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+style=Definition
+\end_layout
+
+\begin_layout Standard
+legt den Listenstil fest.
+\end_layout
+
+\begin_layout Standard
+Ein Beispiel bei dem der Befehl
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+font=
+\backslash
+itshape, style=nextline
+\end_layout
+
+\begin_layout Standard
+verwendet wird:
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Ionizing
+\begin_inset space ~
+\end_inset
+
+radiation:
+\lang ngerman
+ 
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+labelindent=0pt, labelsep=1cm, font=
+\backslash
+itshape, style=nextline
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\lang english
+Ionizing radiation consists of particles or electromagnetic waves that are
+ energetic enough to detach electrons from atoms or molecules, therefore
+ ionizing them.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Reference
+\begin_inset space ~
+\end_inset
+
+counting: In computer science, reference counting is a technique of storing
+ the number of references, pointers, or handles to a resource such as an
+ object, block of memory, disk space or other resource.
+\end_layout
+
+\begin_layout Standard
+Es gibt viele weitere Befehle und Features des LaTeX-Pakets 
+\series bold
+enumitem
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! enumitem
+\end_layout
+
+\end_inset
+
+.
+ Für mehr Informationen siehe dessen Dokumentation, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "enumitem"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 Briefe
 \begin_inset Index idx
 status collapsed
@@ -11430,393 +12286,6 @@ Auflistung
 \family default
 .
  Sie haben jede Menge Möglichkeiten zur Auswahl.
-\end_layout
-
-\begin_layout Subsection
-Benutzerdefinierte Nummerierung von Nummerierten Listen
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Liste ! Aufzahlung@Aufzählung ! Benutzerdefiniert
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Die voreingestellte Nummerierung von nummerierten Listen kann geändert werden,
- indem man diesen Befehl als TeX-Code (Tastenkürzel 
-\family sans
-Strg+L
-\family default
-)
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Für mehr über TeX-Code, siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:TeX-Code"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- in in die Dokumentpräambel oder den Text einfügt:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-renewcommand{
-\backslash
-labelenumi}{
-\backslash
-roman{enumi}}
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-enumi
-\emph default
- ist hierbei der Zähler der Nummerierung der ersten Stufe.
- Der Befehl 
-\series bold
-
-\backslash
-roman
-\series default
- gibt den Zähler als kleine römische Zahl.
- Für große römische Zahlen ersetzen Sie in obigem Befehl 
-\series bold
-
-\backslash
-roman
-\series default
- durch 
-\series bold
-
-\backslash
-Roman
-\series default
-.
- Für arabische Zahlen verwenden Sie 
-\series bold
-
-\backslash
-arabic
-\series default
-.
- Um Punkte mit großen oder kleinen Buchstaben zu 
-\begin_inset Quotes gld
-\end_inset
-
-nummerieren
-\begin_inset Quotes grd
-\end_inset
-
-, verwenden Sie die Befehle 
-\series bold
-
-\backslash
-Alph
-\series default
- oder 
-\series bold
-
-\backslash
-alph
-\series default
-.
- Für die 
-\begin_inset Quotes gld
-\end_inset
-
-Nummerierung
-\begin_inset Quotes grd
-\end_inset
-
- mit Symbolen steht der Befehl 
-\series bold
-
-\backslash
-fnsymbol
-\series default
- zur Verfügung.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Bemerkung 1:
-\series default
- Mit Buchstaben können höchstens 26
-\begin_inset space ~
-\end_inset
-
-Punkte nummeriert werden, weil nur 
-\emph on
-ein
-\emph default
- Buchstabe verwendet wird.
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Bemerkung 2:
-\series default
- Mit Symbolen können höchstens 9
-\begin_inset space ~
-\end_inset
-
-Punkte nummeriert werden.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Um die Nummerierung für die anderen Stufen der Liste zu ändern, ersetzen
- Sie im Befehl die 'i' jeweils durch die kleine römische Zahl der Stufe
- (enumi, enumii, enumiii, enumiv).
-\end_layout
-
-\begin_layout Standard
-Als Beispiel eine Liste mit benutzerdefinierter Nummerierung:
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-labelenumi}{
-\backslash
-#
-\backslash
-Alph{enumi}
-\backslash
-#}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-labelenumii}{
-\backslash
-Alph{enumi}.
-\backslash
-arabic{enumii}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-labelenumiii}{
-\backslash
-fnsymbol{enumiii}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-labelenumiv}{(
-\backslash
-roman{enumiv})}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Stufe 1
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Stufe 2
-\end_layout
-
-\begin_layout Enumerate
-Stufe 2
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Stufe 3
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Stufe 4
-\end_layout
-
-\end_deeper
-\end_deeper
-\end_deeper
-\begin_layout Standard
-Für diese Liste wurden diese Befehle verwendet:
-\end_layout
-
-\begin_layout Standard
-\noindent
-
-\series bold
-
-\backslash
-renewcommand{
-\backslash
-labelenumi}{
-\backslash
-#
-\backslash
-Alph{enumi}
-\backslash
-#}
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-renewcommand{
-\backslash
-labelenumii}{
-\backslash
-Alph{enumi}.
-\backslash
-arabic{enumii}}
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-renewcommand{
-\backslash
-labelenumiii}{
-\backslash
-fnsymbol{enumiii}}
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-renewcommand{
-\backslash
-labelenumiv}{(
-\backslash
-roman{enumiv})}
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-labelenumi}{
-\backslash
-arabic{enumi}.}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-labelenumii}{
-\backslash
-alph{enumi})}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-labelenumiii}{
-\backslash
-roman{enumiii}.}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-labelenumiv}{
-\backslash
-Alph{enumiv}.}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-setzt die Nummerierung zurück auf die Voreinstellung
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -45526,6 +45995,53 @@ status collapsed
 \begin_layout Plain Layout
 
 ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "enumitem"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Dokumentation"
+target "http://mirrors.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf"
+
+\end_inset
+
+ des LaTeX-Pakets 
+\series bold
+enumitem
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! enumitem
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+http://mirrors.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf
 \end_layout
 
 \end_inset

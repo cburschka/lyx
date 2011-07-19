@@ -2549,7 +2549,6 @@ lib_examples_files = Split('''
     CV-image.eps
     CV-image.png
     docbook_article.lyx
-    enumitem.lyx
     europeCV.lyx
     example_lyxified.lyx
     example_raw.lyx
