@@ -1,0 +1,42 @@
+#\DeclareLyXModule[multicol.sty]{Multiple Columns}
+#DescriptionBegin
+#Adds 2 styles to begin and end text in multiple columns.
+#The begin style contains the number of columns, the end style must be kept empty.
+#See the Additional manual for a detailed description of multiple columns.
+#DescriptionEnd
+#Author: Uwe Stöhr
+
+Format 35
+
+Style "Begin Multiple Columns"
+  Category		MainText
+  Margin		First_Dynamic
+  LatexType		command
+  LabelType		Static
+  LabelSep		xx
+  LatexName	        begin{multicols}
+  LabelString		"---Begin Multiple Columns---"
+  #OptionalArgs		2
+  #RequiredArgs		1
+  KeepEmpty		1
+  ParSkip		0
+  TopSep		0
+  BottomSep		0
+  ParSep		0
+  Font
+    Color		Blue
+  EndFont
+  LabelFont
+    Color		Green
+  EndFont
+  Preamble
+    \usepackage{multicol}
+  EndPreamble
+End
+
+Style "End Multiple Columns"
+  CopyStyle		"Begin Multiple Columns"
+  LatexName	        end{multicols}
+  LabelString		"---End Multiple Columns---"
+End
+

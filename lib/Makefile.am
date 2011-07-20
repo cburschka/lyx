@@ -83,7 +83,6 @@ dist_deexamples_DATA = \
 	examples/de/ItemizeBullets.lyx \
 	examples/de/Lebenslauf.lyx \
 	examples/de/linguistics.lyx \
-	examples/de/multicol.lyx \
 	examples/de/serienbrief1.lyx \
 	examples/de/serienbrief2.lyx \
 	examples/de/serienbrief3.lyx \
@@ -101,7 +100,6 @@ dist_esexamples_DATA = \
 	examples/es/ejemplo_sin_lyx.lyx \
 	examples/es/ItemizeBullets.lyx \
 	examples/es/linguistics.lyx \
-	examples/es/multicol.lyx \
 	examples/es/splash.lyx \
 	examples/es/tufte-book.lyx \
 	examples/es/tufte-handout.lyx
@@ -127,7 +125,6 @@ dist_frexamples_DATA = \
 	examples/fr/Foils.lyx \
 	examples/fr/linguistics.lyx \
 	examples/fr/ListesPuces.lyx \
-	examples/fr/multicol.lyx \
 	examples/fr/seminar.lyx \
 	examples/fr/simplecv.lyx \
 	examples/fr/splash.lyx \
@@ -166,14 +163,12 @@ dist_jaexamples_DATA = \
 	examples/ja/Braille.lyx \
 	examples/ja/FeynmanDiagrams.lyx \
 	examples/ja/linguistics.lyx \
-	examples/ja/multicol.lyx \
 	examples/ja/splash.lyx \
 	examples/ja/xyfigure.png \
 	examples/ja/xypic.lyx
 
 nlexamplesdir = $(pkgdatadir)/examples/nl
 dist_nlexamples_DATA = \
-	examples/nl/multicol.lyx \
 	examples/nl/opsommingstekens.lyx \
 	examples/nl/splash.lyx \
 	examples/nl/voorbeeld_ruw.lyx \
@@ -263,7 +258,6 @@ dist_examples_DATA = \
 	examples/listerrors.lyx \
 	examples/localization_test.lyx \
 	examples/modernCV.lyx \
-	examples/multicol.lyx \
 	examples/noweb2lyx.lyx \
 	examples/powerdot-example.lyx \
 	examples/recipebook.lyx \
@@ -1403,6 +1397,7 @@ dist_layouts_DATA =\
 	layouts/memoir.layout \
 	layouts/minimalistic.module \
 	layouts/moderncv.layout \
+	layouts/multicol.module \
 	layouts/mwart.layout \
 	layouts/mwbk.layout \
 	layouts/mwrep.layout \

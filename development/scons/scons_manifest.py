@@ -2565,7 +2565,6 @@ lib_examples_files = Split('''
     Literate.lyx
     localization_test.lyx
     modernCV.lyx
-    multicol.lyx
     noweb2lyx.lyx
     powerdot-example.lyx
     recipebook.lyx
@@ -2611,7 +2610,6 @@ lib_examples_de_files = Split('''
     ItemizeBullets.lyx
     Lebenslauf.lyx
     linguistics.lyx
-    multicol.lyx
     serienbrief1.lyx
     serienbrief2.lyx
     serienbrief3.lyx
@@ -2631,7 +2629,6 @@ lib_examples_es_files = Split('''
     ejemplo_sin_lyx.lyx
     ItemizeBullets.lyx
     linguistics.lyx
-    multicol.lyx
     splash.lyx
     tufte-book.lyx
     tufte-handout.lyx
@@ -2653,7 +2650,6 @@ lib_examples_fr_files = Split('''
     Foils.lyx
     linguistics.lyx
     ListesPuces.lyx
-    multicol.lyx
     seminar.lyx
     simplecv.lyx
     splash.lyx
@@ -2705,7 +2701,6 @@ lib_examples_ja_files = Split('''
     Braille.lyx
     FeynmanDiagrams.lyx
     linguistics.lyx
-    multicol.lyx
     splash.lyx
     xyfigure.png
     xypic.lyx
@@ -2713,7 +2708,6 @@ lib_examples_ja_files = Split('''
 
 
 lib_examples_nl_files = Split('''
-    multicol.lyx
     opsommingstekens.lyx
     splash.lyx
     voorbeeld_ruw.lyx
@@ -2983,6 +2977,7 @@ lib_layouts_module_files = Split('''
     linguistics.module
     logicalmkup.module
     minimalistic.module
+    multicol.module
     noweb.module
     sweave.module
     tabs-within-sections.module
