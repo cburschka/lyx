@@ -1,10 +1,9 @@
 #\DeclareLyXModule{Initials}
 #DescriptionBegin
-#Define character style for initials.
-#Hint: try to use math and its artistic font styles like Fractur or the Calligraphic one.
+#Define a style for paragraphs with an initial.
+#See the EmbeddedObjects manual for a detailed description.
 #DescriptionEnd
-#Category: charstyles
-# Author: Pavel Sanda and Uwe Stöhr
+#Authors: Pavel Sanda and Uwe Stöhr
 
 Format 35
 
@@ -18,7 +17,7 @@ InsetLayout Flex:Initial
 	EndFont
 	Requires		lettrine
 	Preamble
-		\usepackage{lettrine}
+	  \usepackage{lettrine}
 	EndPreamble
 End
 
