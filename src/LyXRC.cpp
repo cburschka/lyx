@@ -26,6 +26,7 @@
 #include "LyX.h"
 #include "Mover.h"
 #include "Session.h"
+#include "SpellChecker.h"
 #include "version.h"
 
 #include "graphics/GraphicsTypes.h"
@@ -2903,6 +2904,8 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	switch (tag) {
 	case LyXRC::RC_LAST:
 	case LyXRC::RC_ACCEPT_COMPOUND:
+		if (lyxrc_orig.spellchecker_accept_compound != lyxrc_new.spellchecker_accept_compound)
+			if (theSpellChecker()) theSpellChecker()->advanceChangeNumber();
 	case LyXRC::RC_ALT_LANG:
 	case LyXRC::RC_PLAINTEXT_LINELEN:
 	case LyXRC::RC_AUTOCORRECTION_MATH:
@@ -3024,6 +3027,8 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_SHOW_BANNER:
 	case LyXRC::RC_OPEN_BUFFERS_IN_TABS:
 	case LyXRC::RC_SPELLCHECKER:
+		if (lyxrc_orig.spellchecker != lyxrc_new.spellchecker)
+			setSpellChecker();
 	case LyXRC::RC_SPELLCHECK_CONTINUOUSLY:
 	case LyXRC::RC_SPELLCHECK_NOTES:
 	case LyXRC::RC_SPLITINDEX_COMMAND:

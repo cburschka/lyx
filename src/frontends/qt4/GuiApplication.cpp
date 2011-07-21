@@ -1439,7 +1439,6 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 
 		actOnUpdatedPrefs(lyxrc_orig, lyxrc);
-		setSpellChecker();
 		resetGui();
 
 		break;
