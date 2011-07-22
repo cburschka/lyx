@@ -41,6 +41,7 @@ namespace {
 struct Speller {
 	AspellConfig * config;
 	AspellCanHaveError * e_speller;
+	bool accept_compound;
 	docstring_list ignored_words_;
 };
 
@@ -264,6 +265,7 @@ AspellSpeller * AspellChecker::Private::addSpeller(Language const * lang)
 		// Report run-together words as errors
 		aspell_config_replace(m.config, "run-together", "false");
 
+	m.accept_compound = lyxrc.spellchecker_accept_compound;
 	m.e_speller = new_aspell_speller(m.config);
 	if (aspell_error_number(m.e_speller) != 0) {
 		// FIXME: We should indicate somehow that this language is not supported.
@@ -287,9 +289,25 @@ AspellSpeller * AspellChecker::Private::addSpeller(Language const * lang)
 AspellSpeller * AspellChecker::Private::speller(Language const * lang)
 {
 	Spellers::iterator it = spellers_.find(lang->lang());
-	if (it != spellers_.end())
-		return to_aspell_speller(it->second.e_speller);
-	
+	if (it != spellers_.end()) {
+		Speller aspell = it->second;
+		if (lyxrc.spellchecker_accept_compound != aspell.accept_compound) {
+			// spell checker setting changed... adjust run-together
+			aspell.accept_compound = lyxrc.spellchecker_accept_compound;
+			if (aspell.accept_compound)
+				// Consider run-together words as legal compounds
+				aspell_config_replace(aspell.config, "run-together", "true");
+			else
+				// Report run-together words as errors
+				aspell_config_replace(aspell.config, "run-together", "false");
+			AspellCanHaveError * e_speller = aspell.e_speller;
+			aspell.e_speller = new_aspell_speller(aspell.config);
+			delete_aspell_speller(to_aspell_speller(e_speller));
+			spellers_[lang->lang()] = aspell;
+		}
+		return to_aspell_speller(aspell.e_speller);
+	}
+
 	return addSpeller(lang);
 }
 
