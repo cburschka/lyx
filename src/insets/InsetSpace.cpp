@@ -70,6 +70,9 @@ docstring InsetSpace::toolTip(BufferView const &, int, int) const
 	case InsetSpaceParams::PROTECTED:
 		message = _("Protected Space");
 		break;
+	case InsetSpaceParams::VISIBLE:
+		message = _("Visible Space");
+		break;
 	case InsetSpaceParams::THIN:
 		message = _("Thin Space");
 		break;
@@ -215,6 +218,7 @@ void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.wid = fm.width(char_type('M')) / 2;
 			break;
 		case InsetSpaceParams::PROTECTED:
+		case InsetSpaceParams::VISIBLE:
 		case InsetSpaceParams::NORMAL:
 			dim.wid = fm.width(char_type(' '));
 			break;
@@ -349,7 +353,8 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 	xp[0] = x;
 	yp[0] = y - max(h / 4, 1);
 	if (params_.kind == InsetSpaceParams::NORMAL ||
-	    params_.kind == InsetSpaceParams::PROTECTED) {
+	    params_.kind == InsetSpaceParams::PROTECTED ||
+	    params_.kind == InsetSpaceParams::VISIBLE) {
 		xp[1] = x;     yp[1] = y;
 		xp[2] = x + w; yp[2] = y;
 	} else {
@@ -359,15 +364,18 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 	xp[3] = x + w;
 	yp[3] = y - max(h / 4, 1);
 
+	Color col = Color_special;
 	if (params_.kind == InsetSpaceParams::PROTECTED ||
 	    params_.kind == InsetSpaceParams::ENSPACE ||
 	    params_.kind == InsetSpaceParams::NEGTHIN ||
 	    params_.kind == InsetSpaceParams::NEGMEDIUM ||
 	    params_.kind == InsetSpaceParams::NEGTHICK ||
 	    params_.kind == InsetSpaceParams::CUSTOM_PROTECTED)
-		pi.pain.lines(xp, yp, 4, Color_latex);
-	else
-		pi.pain.lines(xp, yp, 4, Color_special);
+		col = Color_latex;
+	else if (params_.kind == InsetSpaceParams::VISIBLE)
+		col =  Color_foreground;
+
+	pi.pain.lines(xp, yp, 4, col);
 }
 
 
@@ -380,6 +388,9 @@ void InsetSpaceParams::write(ostream & os) const
 		break;
 	case InsetSpaceParams::PROTECTED:
 		os <<  "~";
+		break;
+	case InsetSpaceParams::VISIBLE:
+		os <<  "\\textvisiblespace{}";
 		break;
 	case InsetSpaceParams::THIN:
 		os <<  "\\thinspace{}";
@@ -459,6 +470,8 @@ void InsetSpaceParams::read(Lexer & lex)
 		kind = InsetSpaceParams::NORMAL;
 	else if (command == "~")
 		kind = InsetSpaceParams::PROTECTED;
+	else if (command == "\\textvisiblespace{}")
+		kind = InsetSpaceParams::VISIBLE;
 	else if (command == "\\thinspace{}")
 		kind = InsetSpaceParams::THIN;
 	else if (math && command == "\\medspace{}")
@@ -534,6 +547,9 @@ void InsetSpace::latex(otexstream & os, OutputParams const & runparams) const
 			os << (runparams.free_spacing ? " " : "\\nobreakspace{}");
 		else
 			os << (runparams.free_spacing ? ' ' : '~');
+		break;
+	case InsetSpaceParams::VISIBLE:
+		os << (runparams.free_spacing ? " " : "\\textvisiblespace{}");
 		break;
 	case InsetSpaceParams::THIN:
 		os << (runparams.free_spacing ? " " : "\\,");
@@ -646,8 +662,13 @@ int InsetSpace::docbook(odocstream & os, OutputParams const &) const
 	case InsetSpaceParams::ENSKIP:
 		os << " ";
 		break;
+	// FIXME For spaces and dashes look here:
+	// http://oreilly.com/catalog/docbook/book2/iso-pub.html
 	case InsetSpaceParams::PROTECTED:
+	// FIXME &blank; ?
+	case InsetSpaceParams::VISIBLE:
 	case InsetSpaceParams::ENSPACE:
+	// FIXME &thinsp; ?
 	case InsetSpaceParams::THIN:
 	case InsetSpaceParams::MEDIUM:
 	case InsetSpaceParams::THICK:
@@ -704,6 +725,10 @@ docstring InsetSpace::xhtml(XHTMLStream & xs, OutputParams const &) const
 	case InsetSpaceParams::NEGMEDIUM:
 	case InsetSpaceParams::NEGTHICK:
 		output ="&nbsp;";
+		break;
+	// no XHTML entity, only unicode code for space character exists
+	case InsetSpaceParams::VISIBLE:
+		output ="&#x2423;";
 		break;
 	case InsetSpaceParams::HFILL:
 	case InsetSpaceParams::HFILL_PROTECTED:

@@ -392,6 +392,7 @@ Menuset
 		Separator
 		Item "Protected Space|P" "space-insert protected"
 		Item "Interword Space|w" "space-insert normal"
+		Item "Visible Space|i" "space-insert visible"
 		Item "Thin Space|T" "space-insert thin"
 		Item "Horizontal Space...|o" "dialog-show-new-inset space"
 		Item "Horizontal Line...|L" "dialog-show-new-inset line"

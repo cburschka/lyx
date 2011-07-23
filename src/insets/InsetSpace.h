@@ -30,6 +30,8 @@ struct InsetSpaceParams {
 		NORMAL,
 		/// Protected (no break) space ('~')
 		PROTECTED,
+		/// Visible ("open box") space ('\textvisiblespace')
+		VISIBLE,
 		/// Thin space ('\,')
 		THIN,
 		/// Medium space ('\:')

@@ -25,11 +25,15 @@ import sys, os
 
 # Uncomment only what you need to import, please.
 
+from parser_tools import find_token, find_end_of_inset
+
 #from parser_tools import find_token, find_end_of, find_tokens, \
   #find_token_exact, find_end_of_inset, find_end_of_layout, \
   #find_token_backwards, is_in_inset, get_value, get_quoted_value, \
   #del_token, check_token, get_option_value
-  
+
+from lyx2lyx_tools import put_cmd_in_ert
+
 #from lyx2lyx_tools import add_to_preamble, insert_to_preamble, \
 #  put_cmd_in_ert, lyx2latex, latex_length, revert_flex_inset, \
 #  revert_font_attrs, hex2ratio, str2bool
@@ -53,6 +57,16 @@ import sys, os
 ###
 ###############################################################################
 
+def revert_visible_space(document):
+    "Revert InsetSpace visible into its ERT counterpart"
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset space \\textvisiblespace{}", i)
+        if i == -1:
+            return
+        end = find_end_of_inset(document.body, i)
+        subst = put_cmd_in_ert("\\textvisiblespace{}")
+        document.body[i:end + 1] = subst
 
 
 ##
@@ -60,10 +74,10 @@ import sys, os
 #
 
 supported_versions = ["2.1.0","2.1"]
-convert = [#[414, []]
+convert = [[414, []]
           ]
 
-revert =  [#[413, []]
+revert =  [[413, [revert_visible_space]]
           ]
 
 

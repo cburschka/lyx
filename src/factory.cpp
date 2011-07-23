@@ -382,6 +382,8 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 				isp.kind = InsetSpaceParams::NORMAL;
 			else if (name == "protected")
 				isp.kind = InsetSpaceParams::PROTECTED;
+			else if (name == "visible")
+				isp.kind = InsetSpaceParams::VISIBLE;
 			else if (name == "thin")
 				isp.kind = InsetSpaceParams::THIN;
 			else if (isp.math && name == "med")

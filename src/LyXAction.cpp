@@ -475,8 +475,8 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_SPACE_INSERT
  * \li Action: Inserts one of horizontal space insets.
  * \li Syntax: space-insert <NAME> [<LEN>]
- * \li Params: <NAME>: normal, protected, thin, quad, qquad, enspace, enskip,
-                       negthinspace, hfill, hfill*, dotfill, hrulefill, hspace,
+ * \li Params: <NAME>: normal, protected, visible, thin, quad, qquad, enspace,
+                       enskip, negthinspace, hfill, hfill*, dotfill, hrulefill, hspace,
                        hspace* \n
                <LEN>: length for custom spaces (hspace, hspace* for protected)
  * \li Origin: JSpitzm, 20 May 2003, Mar 17 2008

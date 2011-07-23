@@ -61,6 +61,7 @@ GuiHSpace::GuiHSpace(bool math_mode, QWidget * parent)
 		spacingCO->addItem(qt_("Double Quad (2 em)"));
 		spacingCO->addItem(qt_("Horizontal Fill"));
 		spacingCO->addItem(qt_("Custom"));
+		spacingCO->addItem(qt_("Visible Space"));
 	}
 
 	connect(spacingCO, SIGNAL(highlighted(QString)),
@@ -96,7 +97,8 @@ void GuiHSpace::changedSlot()
 void GuiHSpace::enableWidgets()
 {
 	int const selection = spacingCO->currentIndex();
-	bool const custom = (selection == spacingCO->count() - 1);
+	bool const custom = (math_mode_ && selection == 9) ||
+		(!math_mode_ && selection == 7);
 	valueLE->setEnabled(custom);
 	unitCO->setEnabled(custom);
 	if (math_mode_) {
@@ -129,6 +131,10 @@ void GuiHSpace::paramsToDialog(Inset const * inset)
 		case InsetSpaceParams::PROTECTED:
 			item = 0;
 			protect = !params.math;
+			break;
+		case InsetSpaceParams::VISIBLE:
+			item = 8;
+			protect = true;
 			break;
 		case InsetSpaceParams::THIN:
 			item = params.math ? 0 : 1;
@@ -311,6 +317,9 @@ docstring GuiHSpace::dialogToParams() const
 			else
 				params.kind = InsetSpaceParams::CUSTOM;
 			params.length = GlueLength(widgetsToLength(valueLE, unitCO));
+			break;
+		case 8:
+			params.kind = InsetSpaceParams::VISIBLE;
 			break;
 	}
 	return from_ascii(InsetSpace::params2string(params));
