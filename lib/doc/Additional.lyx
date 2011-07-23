@@ -18948,7 +18948,9 @@ man rcsintro
 \end_layout
 
 \begin_layout Standard
-The implementation in LyX assumes a recent version of the GNU RCS or CVS/SVN
+Before you begin to use the version control features in LyX, you should
+ be familiar with RCS/CVS/SVN usage.
+ The implementation in LyX assumes a recent version of the GNU RCS or CVS/SVN
  package—no guarantees are made for older versions.
  Most of the log messages are not currently displayed after operations —
  you can check them in Messages pane if unsure.
