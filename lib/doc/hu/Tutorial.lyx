@@ -275,24 +275,7 @@ Ez a tankönyv példákból és feladatokból áll.
  Be kell gépelnie az összes apró idétlen dolgot, amit mi itt leírtunk és
  ki kell próbálnia az összes példát ahhoz, hogy lássa működnek.
  Ahhoz, hogy mindez kényelmesebb legyen ki is nyomtathatja a dokumentum
- PostScript
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-textregistered
-\end_layout
-
-\end_inset
-
- 
-\begin_inset space ~
-\end_inset
-
-változatát.
+ PostScript változatát.
 \end_layout
 
 \begin_layout Standard
@@ -505,20 +488,7 @@ dvips
 \family typewriter
 dvi
 \family default
--ből PostScript
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-textregistered
-\end_layout
-
-\end_inset
-
--et készít, valamint egy működő nyomtató.
+-ből PostScript-et készít, valamint egy működő nyomtató.
  Ez elég sok feltételezés, de ha önnek ezek közül valamelyik is hiányzik
  vagy nem működik, akkor önnek (vagy egy barátságos rendszergazdának) be
  kell a felsoroltakat állítania.

@@ -229,7 +229,7 @@ Trarre il massimo dal Tutorial
 \begin_layout Standard
 Se desiderate ottenere il massimo profitto dalla lettura di questo documento
  (del quale, per comodità, si potrebbe effettuare una stampa in formato
- PostScript®), vi consigliamo di applicare ciascuno degli esempi o esercizi
+ PostScript), vi consigliamo di applicare ciascuno degli esempi o esercizi
  di cui si compone il tutorial, anche i più semplici o all'apparenza più
  stupidi o noiosi, verificandone la correttezza.
 \end_layout
@@ -402,17 +402,13 @@ Tutorial
  stiamo assumendo che abbiate una versione completamente funzionante di
  LyX, LaTeX, 
 \family typewriter
-xdvi
+uno
 \family default
- o altro visore di file dvi, 
+ visore di file 
 \family typewriter
-dvips
+pdf
 \family default
- o altro programma di conversione di documenti 
-\family typewriter
-dvi
-\family default
- in PostScript®, nonché una stampante anch'essa funzionante.
+ nonché una stampante anch'essa funzionante.
  Se una qualunque delle richieste non fosse verificata, voi (o l'amministratore
  di sistema) dovrete provvedere a configurare il vostro sistema.
  Troverete le informazioni di configurazione in altri manuali.
@@ -4658,7 +4654,7 @@ tabella
 
 \begin_layout Itemize
 Possibilità di inserimento di figure secondo molteplici formati (compreso
- il formato JPEG e altri formati bitmap, PostScript® e LaTeX grezzo) all'interno
+ il formato JPEG e altri formati bitmap, PostScript e LaTeX grezzo) all'interno
  di un documento.
  (Invocate 
 \family sans
