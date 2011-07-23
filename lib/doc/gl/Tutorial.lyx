@@ -342,11 +342,7 @@ Dado que ha moita información que non vamos fornecer neste documento, o
  primeiro que ten que facer é procurar os restantes documentos de axuda.
  Isto é bastante sinxelo; inicie o LyX e vaia ao menu 
 \family sans
-A
-\bar under
-x
-\bar default
-uda,
+Axuda,
 \family default
  onde pode escoller os distintos manuais, abra o 
 \emph on
@@ -371,10 +367,7 @@ Poden servir tamén como bons exemplos de como usar as moitas características
 .
  Para pasar dun documento a outro ten que ir ao menu 
 \family sans
-\bar under
-V
-\bar default
-er
+Ver
 \family default
 , e seleccionar o ficheiro que queira mostrar na xanela.
  O 
@@ -399,22 +392,13 @@ Tutorial
  imos asumir que no seu computador ten instalada unha versión do LyX totalmente
  funcional, unha outra versión do LaTeX, o 
 \family typewriter
-xdvi
+un
 \family default
- ou outro visualizador de 
+ visualizador de 
 \family typewriter
-dvi
+pdf
 \family default
-, o 
-\family typewriter
-dvips
-\family default
- ou outro conversor de 
-\family typewriter
-dvi
-\family default
- a PostScript®, e tamén seria bon se tiver unha impresora conectada e que
- funcione.
+, e tamén seria bon se tiver unha impresora conectada e que funcione.
  Isto é moito asumir.
  Se algo disto lle falta, vai ter que reconfigurar o seu sistema (ou pedir-llo
  ao administrador do sistemas).
@@ -483,15 +467,8 @@ examples/
 \family default
 , á cal pode aceder desde LyX seleccionando 
 \family sans
-\bar under
-F
-\bar default
-icheiro\SpecialChar \menuseparator
-
-\bar under
-A
-\bar default
-brir
+Ficheiro\SpecialChar \menuseparator
+Abrir
 \family default
  e clicando no botón 
 \family sans
@@ -500,18 +477,12 @@ Exemplos
 .
  Abra o documento en bruto, e use 
 \family sans
-\bar under
-F
-\bar default
-icheiro\SpecialChar \menuseparator
+Ficheiro\SpecialChar \menuseparator
 Gravar
 \family default
  
 \family sans
-\bar under
-c
-\bar default
-omo
+como
 \family default
  para gravar unha cópia na sua directória e poder asi traballar nel.
  Ao mellorar algunha parte do documento, verifique como afectan as mudanzas
@@ -542,15 +513,8 @@ Escreber, visualizar e imprimir
 \begin_layout Itemize
 Abra un novo ficheiro con 
 \family sans
-\bar under
-F
-\bar default
-icheiro\SpecialChar \menuseparator
-
-\bar under
-N
-\bar default
-ovo
+Ficheiro\SpecialChar \menuseparator
+Novo
 \end_layout
 
 \begin_layout Itemize
@@ -562,19 +526,12 @@ Este é o meu primeiro documento en LyX!
 \begin_layout Itemize
 Grave o seu documento con 
 \family sans
-\bar under
-F
-\bar default
-icheiro\SpecialChar \menuseparator
+Ficheiro\SpecialChar \menuseparator
 Gravar
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-c
-\bar default
-omo\SpecialChar \@.
+como\SpecialChar \@.
 
 \end_layout
 
@@ -593,41 +550,19 @@ pdf
 \family default
 ), con 
 \family sans
-\bar under
-\noun on
-V
-\bar default
-\noun default
-er\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI,
+Ver\SpecialChar \menuseparator
+DVI,
 \family default
  
 \family sans
-\bar under
-\noun on
-V
-\bar default
-\noun default
-er\SpecialChar \menuseparator
+Ver\SpecialChar \menuseparator
 Postcript
 \family default
  ou 
 \family sans
-\bar under
-\noun on
-V
-\bar default
-\noun default
-er\SpecialChar \menuseparator
-PD
-\bar under
-F
+Ver\SpecialChar \menuseparator
+PDF
 \family default
-\bar default
 \SpecialChar \@.
  Se lanzou o LyX desde un terminal poderá ver como nel van aparecendo unha
  série de mensaxes, escritos polo LaTeX, e que polo momento pode ignorar.
@@ -653,38 +588,20 @@ Pode aforrar algo de tempo, maior canto maior sexa o documento, se tras
  a primeira vez que execute algun dos visores o deixa sen fechar, e após
  facer calquer mudanza no documento usa 
 \family sans
-\bar under
-V
-\bar default
-er\SpecialChar \menuseparator
-
-\bar under
-A
-\bar default
-ctualizar\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI
+Ver\SpecialChar \menuseparator
+Actualizar\SpecialChar \menuseparator
+DVI
 \family default
  (ou 
 \family sans
 \SpecialChar \menuseparator
-Pos
-\bar under
-t
-\bar default
-scritp
+Postscritp
 \family default
  ou 
 \family sans
 \SpecialChar \menuseparator
-PD
-\bar under
-F
+PDF
 \family default
-\bar default
 ) para ver o novo aspeito do documento.
 \end_layout
 
@@ -696,15 +613,8 @@ F
 \begin_layout Itemize
 Imprima usando 
 \family sans
-\bar under
-F
-\bar default
-icheiro\SpecialChar \menuseparator
-im
-\bar under
-p
-\bar default
-rimir\SpecialChar \@.
+Ficheiro\SpecialChar \menuseparator
+imprimir\SpecialChar \@.
 
 \end_layout
 
@@ -742,29 +652,15 @@ te.
 Desfacer O LyX ten múltiplos níveis de desfacer, o que significa que poderia
  desfacer todo o que fixo desde o início da sesión seleccionando 
 \family sans
-\bar under
-E
-\bar default
-ditar\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-esfacer
+Editar\SpecialChar \menuseparator
+Desfacer
 \family default
  unha e outra vez.
  Caso se pasar desfacendo, pode refacer as accións desfeitas seleccionando
  
 \family sans
-\bar under
-E
-\bar default
-ditar\SpecialChar \menuseparator
-
-\bar under
-R
-\bar default
-efacer.
+Editar\SpecialChar \menuseparator
+Refacer.
 \end_layout
 
 \begin_deeper
@@ -785,26 +681,17 @@ todo
 \begin_layout Description
 Cortar/Colar/Copiar Use 
 \family sans
-\bar under
-E
-\bar default
-ditar\SpecialChar \menuseparator
+Editar\SpecialChar \menuseparator
 Cortar
 \family default
  (ou Crtl+X), 
 \family sans
-\bar under
-E
-\bar default
-ditar\SpecialChar \menuseparator
+Editar\SpecialChar \menuseparator
 Colar
 \family default
  (ou Crtl+V), e 
 \family sans
-\bar under
-E
-\bar default
-ditar\SpecialChar \menuseparator
+Editar\SpecialChar \menuseparator
 Copiar (ou Crtl+C)
 \family default
  para cortar, colar e copiar.
@@ -819,15 +706,8 @@ botón central
 \begin_layout Description
 Procurar/Substituir Utilice 
 \family sans
-\bar under
-E
-\bar default
-ditar\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-rocurar
+Editar\SpecialChar \menuseparator
+Procurar
 \begin_inset space ~
 \end_inset
 
@@ -851,10 +731,7 @@ Cando rematar pode fechar a xanela, ou deixa-la aberta, segundo lle resulte
  A maioria das caixas de diálogo no LyX — incluindo as correspondentes a
  
 \family sans
-\bar under
-P
-\bar default
-rocurar
+Procurar
 \begin_inset space ~
 \end_inset
 
@@ -866,10 +743,7 @@ substituir
 \family default
 , 
 \family sans
-\bar under
-T
-\bar default
-áboa
+Táboa
 \begin_inset space ~
 \end_inset
 
@@ -881,24 +755,14 @@ contidos
 \family default
 , e 
 \family sans
-\bar under
-C
-\bar default
-onfiguración
+Configuración
 \family default
  (do documento), asi como os vários diálogos matemáticos — son xanelas que
  poden deixar-se abertas, ou minimizadas, en vez de fechadas.
  Uns poucos diálogos, como o 
 \family sans
-\bar under
-F
-\bar default
-icheiro\SpecialChar \menuseparator
-
-\bar under
-A
-\bar default
-brir
+Ficheiro\SpecialChar \menuseparator
+Abrir
 \family default
 , non lle permiten porén escreber nada na xanela principal do LyX, até os
  fechar.
@@ -944,15 +808,8 @@ Versalete
  (normalmente pequenas maiúsculas, usado para nomes de persoas) no diálogo
  
 \family sans
-\bar under
-E
-\bar default
-ditar\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-stilo
+Editar\SpecialChar \menuseparator
+Estilo
 \begin_inset space ~
 \end_inset
 
@@ -1184,10 +1041,7 @@ Ambientes
 \family default
  fica na esquerda da barra de ferramentas (xusto por baixo do menu 
 \family sans
-\bar under
-F
-\bar default
-icheiro
+Ficheiro
 \family default
 ).
  Nesta caixa ha un menu despregueábel que permite escoller o ambiente, indicando
@@ -1786,41 +1640,19 @@ p
 Ten xa unha fermosa lista pontuada, e pode visualizar cal será o seu aspeito
  no documento impreso indo a 
 \family sans
-\bar under
-\noun on
-V
-\bar default
-\noun default
-er\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI
+Ver\SpecialChar \menuseparator
+DVI
 \family default
  (ou 
 \family sans
-\bar under
-\noun on
-V
-\bar default
-\noun default
-er\SpecialChar \menuseparator
+Ver\SpecialChar \menuseparator
 PostScript
 \family default
  ou 
 \family sans
-\bar under
-\noun on
-V
-\bar default
-\noun default
-er\SpecialChar \menuseparator
-PD
-\bar under
-F
+Ver\SpecialChar \menuseparator
+PDF
 \family default
-\bar default
 )\SpecialChar \@.
  Mais se cadra muda de idea e quer que a lista sexa numerada, non ten mais
  que seleccionar toda a lista
@@ -2010,12 +1842,8 @@ Return
 Ctrl-Return
 \family default
  para separar liñas nunha estrofe.
- No 
-\emph on
-Guia do Usuário
-\emph default
- incluen-se as descricións completas de todos os ambientes disponíbeis no
- LyX.
+ No Guia do Usuário incluen-se as descricións completas de todos os ambientes
+ disponíbeis no LyX.
 \end_layout
 
 \begin_layout Standard
@@ -2151,15 +1979,8 @@ Esta é usualmente a clase predefinida
 \family default
  experimente a trocar de clase (na caixa de diálogo 
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar \menuseparator
-
-\bar under
-C
-\bar default
-onfiguración
+Documento\SpecialChar \menuseparator
+Configuración
 \family default
 ) para ver como varia a tipografia.
  Unha das cousas que muda ao trocar de clase de documento é o conxunto de
@@ -2426,15 +2247,8 @@ Modelos: escrebendo unha carta
 Todos os dias escreben-se inumeras cartas no mundo.
  En LyX pode-se escreber unha carta criando un ficheiro novo, 
 \family sans
-\bar under
-F
-\bar default
-icheiro\SpecialChar \menuseparator
-
-\bar under
-N
-\bar default
-ovo,
+Ficheiro\SpecialChar \menuseparator
+Novo,
 \family default
  e escollendo 
 \family sans
@@ -2442,41 +2256,25 @@ Letter
 \family default
  no menu 
 \family sans
-\bar under
-C
-\bar default
-lase do documento
+Clase do documento
 \family default
  da caixa de diálogo 
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar \menuseparator
-
-\bar under
-C
-\bar default
-onfiguración
+Documento\SpecialChar \menuseparator
+Configuración
 \family default
 .
  Mais esta non é a opción mais cómoda.
  Calquer carta comercial debe incluir o enderezo do remitente e o do recipendári
 o, a sinatura, etc.
- O LyX facilita a escritura das cartas fornecendo ao usuário con un 
-\emph on
-modelo
-\emph default
+ O LyX facilita a escritura das cartas fornecendo ao usuário con un modelo
  para cartas, do cal partir para escreber unha.
 \end_layout
 
 \begin_layout Standard
 Abra un novo ficheiro con 
 \family sans
-\bar under
-F
-\bar default
-icheiro\SpecialChar \menuseparator
+Ficheiro\SpecialChar \menuseparator
 Novo
 \begin_inset space ~
 \end_inset
@@ -2485,11 +2283,7 @@ desde
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-m
-\bar default
-odelo,
+modelo,
 \family default
  seleccione 
 \family typewriter
@@ -2563,10 +2357,7 @@ Opening
 \begin_layout Standard
 Como vimos anteriormente ao seleccionar o menu 
 \family sans
-\bar under
-F
-\bar default
-icheiro\SpecialChar \menuseparator
+Ficheiro\SpecialChar \menuseparator
 Novo
 \begin_inset space ~
 \end_inset
@@ -2575,11 +2366,7 @@ desde
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-m
-\bar default
-odelo
+modelo
 \family default
  aparece un diálogo onde se poden escoller unha série de modelos fornecidos
  polo LyX.
@@ -2600,10 +2387,7 @@ miña_carta.lyx
 , e na sua directória.
  Este ficheiro servira-lle como modelo sempre que o abra indo ao menu 
 \family sans
-\bar under
-F
-\bar default
-icheiro\SpecialChar \menuseparator
+Ficheiro\SpecialChar \menuseparator
 Novo
 \begin_inset space ~
 \end_inset
@@ -2612,11 +2396,7 @@ desde
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-m
-\bar default
-odelo,
+modelo,
 \family default
  e navegando até a sua directória.
  No novo ficheiro aberto, sen nome ainda, xa aparecerán escritos de princípio
@@ -2793,15 +2573,8 @@ Acerca deste documento
 .
  Clique no fin da liña do título da sección e seleccione 
 \family sans
-\bar under
-I
-\bar default
-nserir\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-tiqueta
+Inserir\SpecialChar \menuseparator
+Etiqueta
 \family default
 , abrirá-se entón unha caixa de diálogo con unha suxestión para o nome da
  etiqueta, suxestión que loxicamente pode aceitar ou ignorar.
@@ -2857,15 +2630,8 @@ sección
 
 , escolla 
 \family sans
-\bar under
-I
-\bar default
-nserir\SpecialChar \menuseparator
-
-\bar under
-R
-\bar default
-eferéncia
+Inserir\SpecialChar \menuseparator
+Referéncia
 \begin_inset space ~
 \end_inset
 
@@ -2884,10 +2650,7 @@ cruzada,
  Na verdade neste momento debe haber só unha, a sua primeira etiqueta.
  Seleccione-a (se non está xa pré-seleccionada) e clique en 
 \family sans
-\bar under
-A
-\bar default
-plicar
+Aplicar
 \family default
 .
  Posicione agora o cursor xusto despois da palabra 
@@ -2925,60 +2688,22 @@ cruzada
 ).
  Obteña unha pré-impresión (
 \family sans
-\bar under
-\noun on
-V
-\bar default
-\noun default
-er\SpecialChar \menuseparator
-
-\bar under
-A
-\bar default
-ctualizar\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI
+Ver\SpecialChar \menuseparator
+Actualizar\SpecialChar \menuseparator
+DVI
 \family default
  ou 
 \family sans
-\bar under
-\noun on
-V
-\bar default
-\noun default
-er\SpecialChar \menuseparator
-
-\bar under
-A
-\bar default
-ctualizar\SpecialChar \menuseparator
-Pos
-\bar under
-t
-\bar default
-scritp
+Ver\SpecialChar \menuseparator
+Actualizar\SpecialChar \menuseparator
+Postscritp
 \family default
  ou 
 \family sans
-\bar under
-\noun on
-V
-\bar default
-\noun default
-er\SpecialChar \menuseparator
-
-\bar under
-A
-\bar default
-ctualizar\SpecialChar \menuseparator
-PD
-\bar under
-F
+Ver\SpecialChar \menuseparator
+Actualizar\SpecialChar \menuseparator
+PDF
 \family default
-\bar default
 ) para ver como son substituídas as referéncias.
 \end_layout
 
@@ -2994,10 +2719,7 @@ cruzada
 \family default
 , onde se pode seleccionar o botón 
 \family sans
-\bar under
-I
-\bar default
-r á etiqueta
+Ir á etiqueta
 \family default
 , que leva o cursor á etiqueta referida.
  O atallo 
@@ -3137,15 +2859,8 @@ O botón mostra unha páxina con unha nota de rodapé.
 
  ou através do menu 
 \family sans
-\bar under
-I
-\bar default
-nserir\SpecialChar \menuseparator
-Nota de roda
-\bar under
-p
-\bar default
-é
+Inserir\SpecialChar \menuseparator
+Nota de rodapé
 \family default
 \SpecialChar \@.
  Situe o cursor no fin da palabra 
@@ -3227,15 +2942,8 @@ Colar
  o texto e facer o mesmo que para inserir unha nota de rodapé valeira, ben
  ir ao menu 
 \family sans
-\bar under
-I
-\bar default
-nserir\SpecialChar \menuseparator
-Nota de roda
-\bar under
-p
-\bar default
-é
+Inserir\SpecialChar \menuseparator
+Nota de rodapé
 \family default
 , ben clicar no botón 
 \begin_inset Graphics
@@ -3269,18 +2977,12 @@ As notas á marxe poden inserir-se ben desde o botón
 
  da barra de tarefas ou através do menu 
 \family sans
-\bar under
-I
-\bar default
-nserir\SpecialChar \menuseparator
+Inserir\SpecialChar \menuseparator
 Nota á
 \family default
  
 \family sans
-\bar under
-m
-\bar default
-arxe
+marxe
 \family default
 \SpecialChar \@.
  Esta notas son semellantes ás anteriores agás no seguinte:
@@ -3311,10 +3013,7 @@ No seu documento de proba troque unha nota de rodapé para texto normal,
  a seguir seleccione ese texto e converta-o en nota á marxe.
  Por último vaia ao menu 
 \family sans
-\bar under
-V
-\bar default
-er
+Ver
 \family default
  para averiguar como son impresas as notas á marxe.
 \end_layout
@@ -3403,15 +3102,8 @@ tutorial-lyx
 É hora de inserir unha cita bibliográfica no seu documento; coloque o cursor
  onde lle pareza oportuno, e vaia ao menu 
 \family sans
-\bar under
-I
-\bar default
-nserir\SpecialChar \menuseparator
-
-\bar under
-C
-\bar default
-itación,
+Inserir\SpecialChar \menuseparator
+Citación,
 \family default
  que fai xurdir un par de caixas de diálogo superpostas.
  En primeiro plano aparece o diálogo 
@@ -3422,10 +3114,7 @@ Engadir cita
  unha para citar neste ponto, para o cal cumpre seleccioná-la e premer no
  botón 
 \family sans
-\bar under
-E
-\bar default
-ngadir
+Engadir
 \family default
 .
  Premido o botón fica só o diálogo 
@@ -3497,10 +3186,7 @@ Texto
 \family default
  
 \family sans
-\bar under
-d
-\bar default
-espois
+despois
 \family default
  do diálogo 
 \family sans
@@ -3533,15 +3219,8 @@ Return
 \family default
  entre o título e a primeira sección do seu documento e escolla 
 \family sans
-\bar under
-I
-\bar default
-nserir\SpecialChar \menuseparator
-L
-\bar under
-i
-\bar default
-sta
+Inserir\SpecialChar \menuseparator
+Lista
 \begin_inset space ~
 \end_inset
 
@@ -3550,11 +3229,7 @@ sta
 \end_inset
 
 Indices\SpecialChar \menuseparator
-
-\bar under
-I
-\bar default
-ndice
+Indice
 \begin_inset space ~
 \end_inset
 
@@ -3808,24 +3483,15 @@ Pode cortar ou copiar parte dunha fórmula e colá-la dentro da mesma fórmula,
 
 , e lembre que en caso de erro sempre pode 
 \family sans
-\bar under
-D
-\bar default
-esfacer
+Desfacer
 \family default
  ou 
 \family sans
-\bar under
-R
-\bar default
-efacer
+Refacer
 \family default
  no menu 
 \family sans
-\bar under
-E
-\bar default
-ditar
+Editar
 \family default
 .
  Adverténcia: se o cursor estiver xunto a unha fórmula, mais fora dela,
@@ -3840,15 +3506,8 @@ Backspace
 ) elimina-a toda ela.
  Nese caso pode empregar 
 \family sans
-\bar under
-E
-\bar default
-ditar\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-esfacer
+Editar\SpecialChar \menuseparator
+Desfacer
 \family default
  para a recuperar.
 \end_layout
@@ -4046,20 +3705,9 @@ matemático
  Posteriormente poderá ver noutros manuais os atallos de teclado correspondentes.
  Abra entón o painel desde o menu con 
 \family sans
-\bar under
-I
-\bar default
-nserir\SpecialChar \menuseparator
-
-\bar under
-F
-\bar default
-ormula\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-ainel
+Inserir\SpecialChar \menuseparator
+Formula\SpecialChar \menuseparator
+Painel
 \begin_inset space ~
 \end_inset
 
@@ -4083,17 +3731,11 @@ Na parte direita do painel ha un recadro con un conxunto de símbolos.
  no seu texto, ou nas suas fórmulas.
  Na parte inferior do recadro, por riba do botón de 
 \family sans
-\bar under
-F
-\bar default
-echar
+Fechar
 \family default
 , ha outro botón , 
 \family sans
-\bar under
-S
-\bar default
-eparar painel
+Separar painel
 \family default
 , que loxicamente permite ter paineis independentes para os distintos conxuntos
  de símbolos.
@@ -4505,17 +4147,11 @@ Tab
 \begin_layout Standard
 Ao colocar o cursor nunha matriz matemática, no menu principal 
 \family sans
-\bar under
-E
-\bar default
-ditar
+Editar
 \family default
  aparecen un par de novos epígrafes, un dos cais, 
 \family sans
-\bar under
-F
-\bar default
-ilas e colunas,
+Filas e colunas,
 \family default
  permite engadir ou eliminar filas e colunas, e modificar os seus aliñamentos
  horizontal e vertical.
@@ -4670,23 +4306,13 @@ status collapsed
 \begin_layout Plain Layout
 Despois de facé-lo desde zero probe con 
 \family sans
-\bar under
-I
-\bar default
-nserir\SpecialChar \menuseparator
-
-\bar under
-F
-\bar default
-ormula\SpecialChar \menuseparator
+Inserir\SpecialChar \menuseparator
+Formula\SpecialChar \menuseparator
 Entorno
 \family default
  
 \family sans
-\bar under
-c
-\bar default
-asos
+casos
 \end_layout
 
 \end_inset
@@ -4781,15 +4407,8 @@ Funcións avanzadas
 tratamento WYSIWYM de táboas.
  As táboas poden inserir-se ben desde o menu principal, 
 \family sans
-\bar under
-I
-\bar default
-nserir\SpecialChar \menuseparator
-
-\bar under
-T
-\bar default
-áboa,
+Inserir\SpecialChar \menuseparator
+Táboa,
 \family default
  ben clicando no botón 
 \begin_inset Graphics
@@ -4822,19 +4441,12 @@ táboa
 \begin_layout Itemize
 inclusión, e manexo, de imaxe nos documentos, (con 
 \family sans
-\bar under
-I
-\bar default
-nserir\SpecialChar \menuseparator
+Inserir\SpecialChar \menuseparator
 
 \family default
  
 \family sans
-Ima
-\bar under
-x
-\bar default
-e
+Imaxe
 \family default
  ou clicando no botón 
 \begin_inset Graphics
@@ -4852,7 +4464,7 @@ De fabrica
 \begin_inset Quotes erd
 \end_inset
 
- o LyX entende vários formatos vectoriais: PostScript®, PostScript Encapsulado
+ o LyX entende vários formatos vectoriais: PostScript, PostScript Encapsulado
  (EPS), Scalable Vector Graphics (SVG) e LaTeX puro, e os formatos bitmap
  mais usuais (png, jpeg, tif, bmp, \SpecialChar \ldots{}
 ), mais é posíbel configurá-lo para utilizar
@@ -4880,11 +4492,7 @@ Ferramentas
  
 \family sans
 \SpecialChar \menuseparator
-Pre
-\bar under
-f
-\bar default
-éncias,
+Preféncias,
 \family default
  outras son menos acesíbeis e para as facer cumpre ler o manual de 
 \emph on
@@ -4910,15 +4518,8 @@ poliglota.
 corrección ortográfica disponíbel en ducias de línguas.
  
 \family sans
-\bar under
-F
-\bar default
-erramentas\SpecialChar \menuseparator
-
-\bar under
-C
-\bar default
-orrector ortográfico
+Ferramentas\SpecialChar \menuseparator
+Corrector ortográfico
 \begin_inset Foot
 status collapsed
 
@@ -5027,11 +4628,7 @@ Modo TeX
 O LyX implementa moitos comandos do LaTeX, mais non todos.
  No seu defeito oferece o modo TeX, que permite utilizar calquer comando
  de LaTeX, sempre que o usuário o coñeza.
- Para entrar neste modo pode-se ben clicar no botón
-\color none
- 
-\color red
-
+ Para entrar neste modo pode-se ben clicar no botón 
 \begin_inset Graphics
 	filename ../../images/ert-insert.png
 	scale 85
@@ -5039,19 +4636,10 @@ O LyX implementa moitos comandos do LaTeX, mais non todos.
 
 \end_inset
 
-
-\color none
  na barra de ferramentas, ou seleccionar no menu 
 \family sans
-\bar under
-I
-\bar default
-nserir\SpecialChar \menuseparator
-Códi
-\bar under
-g
-\bar default
-o
+Inserir\SpecialChar \menuseparator
+Código
 \begin_inset space ~
 \end_inset
 
@@ -5106,7 +4694,7 @@ gamma, ao premer a barra espazadora o LyX trocará o texto
 gamma
 \family default
 \shape default
-\color none
+\color inherit
  en vermello por un 
 \color blue
 
@@ -5114,7 +4702,7 @@ gamma
 \end_inset
 
 
-\color none
+\color inherit
  en azul.
  Este método funciona con case todos os macros matemáticos non complicados,
  sendo mais rápido que utilizar o 
@@ -5166,15 +4754,8 @@ name "sec:tex2lyx"
 
 Para importar un documento LaTeX seleccione 
 \family sans
-\bar under
-F
-\bar default
-icheiro\SpecialChar \menuseparator
-
-\bar under
-I
-\bar default
-mportar\SpecialChar \menuseparator
+Ficheiro\SpecialChar \menuseparator
+Importar\SpecialChar \menuseparator
 LaTeX (plain)
 \family default
  no menu principal.
@@ -5233,15 +4814,8 @@ Exportando a LaTeX
 \begin_layout Standard
 O LyX permite exportar directamente a LaTeX, escollendo 
 \family sans
-\bar under
-F
-\bar default
-icheiro\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xportar\SpecialChar \menuseparator
+Ficheiro\SpecialChar \menuseparator
+Exportar\SpecialChar \menuseparator
 LaTeX (plain)
 \family default
  no menu xerará-se un ficheiro LaTeX co nome igual ao documento lyx, mais
@@ -5253,15 +4827,8 @@ LaTeX (plain)
  É tamén posíbel tamén xerar un ficheiro LaTeX especialmente deseñado para
  compilar con pdflatex, en vez de con latex, escollendo 
 \family sans
-\bar under
-F
-\bar default
-icheiro\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xportar\SpecialChar \menuseparator
+Ficheiro\SpecialChar \menuseparator
+Exportar\SpecialChar \menuseparator
 LaTeX (pdflatex)
 \family default
  no menu.
@@ -5285,15 +4852,8 @@ Clase
 \begin_layout Standard
 Indo a 
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar \menuseparator
-
-\bar under
-C
-\bar default
-onfiguración
+Documento\SpecialChar \menuseparator
+Configuración
 \family default
  abre-se unha caixa de diálogo que serve loxicamente para configurar o documento
 , permitindo especificar moitas das opcións que se poden incluir no comando
@@ -5364,10 +4924,7 @@ O LyX permite utilizar o BibTeX, un pacote para construir bases de dados
  con referéncias bibliográficas, que poden ser usadas en diferentes documentos.
  Seleccione 
 \family sans
-\bar under
-I
-\bar default
-nserir\SpecialChar \menuseparator
+Inserir\SpecialChar \menuseparator
 Lista
 \begin_inset space ~
 \end_inset
@@ -5377,11 +4934,7 @@ Lista
 \end_inset
 
 Indice\SpecialChar \menuseparator
-
-\bar under
-B
-\bar default
-ibliografia BibTeX
+Bibliografia BibTeX
 \family default
  para incluir un ficheiro 
 \family typewriter
@@ -5448,15 +5001,8 @@ bibliographystyle{}
 Após disto pode citar de calquer das bibliografias incluídas mediante o
  comando 
 \family sans
-\bar under
-I
-\bar default
-nserir\SpecialChar \menuseparator
-C
-\bar under
-i
-\bar default
-tación
+Inserir\SpecialChar \menuseparator
+Citación
 \family default
  (vexa a sección
 \begin_inset space ~

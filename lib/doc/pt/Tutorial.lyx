@@ -253,7 +253,7 @@ Tutorial
  Para tirar o maior proveito possível deste documento, deve ir lendo o documento
 , escrevendo todas as pequenas coisas que lhe dizemos para escrever e tentar
  fazer todos os exercícios para ver se os consegue fazer correctamente.
- Por conveniência, poderá imprimir a versão PostScript® deste documento.
+ Por conveniência, poderá imprimir a versão PostScript deste documento.
 \end_layout
 
 \begin_layout Standard
@@ -1078,7 +1078,7 @@ dvi
 \family typewriter
 dvi
 \family default
- para outro formato como o PostScript®.
+ para outro formato como o PostScript.
  
 \end_layout
 
@@ -1396,23 +1396,11 @@ Neste
 Tutorial
 \emph default
 , iremos assumir que possui uma versão do LyX totalmente funcional, assim
- como o LaTeX, 
+ como o LaTeX, um visualizador de 
 \family typewriter
-xdvi
+pdf
 \family default
- ou outro visualizador de 
-\family typewriter
-dvi
-\family default
-, 
-\family typewriter
-dvips
-\family default
- ou outra forma de converter documentos 
-\family typewriter
-dvi
-\family default
- para documentos PostScript®, e uma impressora a funcionar.
+ e uma impressora a funcionar.
  Isto é assumir muito.
  Se alguma destas coisas não for verdadeira, você (ou um administrador de
  sistemas amigo) irá necessitar de configurar o seu sistema.
@@ -6522,7 +6510,7 @@ botão direito
 \end_layout
 
 \begin_layout Itemize
-É também possível incluir nos seus documentos imagens em PostScript® (ou
+É também possível incluir nos seus documentos imagens em PostScript (ou
  LaTeX puro).
  Para isso, selecione 
 \family sans
