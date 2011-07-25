@@ -124,10 +124,16 @@ Section -Configure
   Delete "$INSTDIR\Resources\lyxrc.dist"
   FileOpen $R1 "$INSTDIR\Resources\lyxrc.dist" w
   # set some general things
-  FileWrite $R1 '\screen_zoom "120"$\r$\n\
-                 \accept_compound true$\r$\n'
+  FileWrite $R1 '\screen_zoom "120$\r$\n"'
   ${if} "$PathPrefix" != ""
    FileWrite $R1 '\path_prefix "$PathPrefix"$\r$\n'
+  ${endif}
+  ${if} $Acrobat == "Yes" # use pdfview for Acrobat / Adobe Reader
+   FileWrite $R1 '\format "pdf5" "pdf" "PDF (LuaTeX)" "u" "pdfview" "" "document,vector,menu=export"$\r$\n\
+   		  \format "pdf4" "pdf" "PDF (XeTeX)" "X" "pdfview" "" "document,vector,menu=export"$\r$\n\
+   		  \format "pdf3" "pdf" "PDF (dvipdfm)" "m" "pdfview" "" "document,vector,menu=export"$\r$\n\
+   		  \format "pdf2" "pdf" "PDF (pdflatex)" "F" "pdfview" "" "document,vector,menu=export"$\r$\n\
+		  \format "pdf" "pdf" "PDF (ps2pdf)" "P" "pdfview" "" "document,vector,menu=export"$\r$\n'
   ${endif}
   # if a SVG to PDF converter ws found (e.g. Inkscape)
   ${if} $SVGPath != ""

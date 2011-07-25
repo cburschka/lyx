@@ -68,6 +68,20 @@ Section -ProgramFiles SecProgramFiles
   SetOutPath "$INSTDIR\imagemagick"
   File /r "${FILES_IMAGEMAGICK}\"
   !insertmacro FileListMSVC File "${FILES_MSVC}\"
+  # register ImageMagick
+  WriteRegStr SHCTX "SOFTWARE\Classes\Applications" "AutoRun" "$INSTDIR\imagemagick\convert.exe $$"
+  WriteRegStr SHCTX "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "BinPath" "$INSTDIR\imagemagick"
+  WriteRegStr SHCTX "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "CoderModulesPath" "$INSTDIR\imagemagick\modules\coders"
+  WriteRegStr SHCTX "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "ConfigurePath" "$INSTDIR\imagemagick\config"
+  WriteRegStr SHCTX "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "FilterModulesPath" "$INSTDIR\imagemagick\modules\filters"
+  WriteRegStr SHCTX "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "LibPath" "$INSTDIR\imagemagick"
+  WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "BinPath" "$INSTDIR\imagemagick"
+  WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "CoderModulesPath" "$INSTDIR\imagemagick\modules\coders"
+  WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "ConfigurePath" "$INSTDIR\imagemagick\config"
+  WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "FilterModulesPath" "$INSTDIR\imagemagick\modules\filters"
+  WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "LibPath" "$INSTDIR\imagemagick"
+  WriteRegDWORD SHCTX "SOFTWARE\ImageMagick\Current" "QuantumDepth" 0x00000010   
+  WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "Version" "${ImageMagickVersion}"
   
   # Components of Ghostscript
   SetOutPath "$INSTDIR\ghostscript"
