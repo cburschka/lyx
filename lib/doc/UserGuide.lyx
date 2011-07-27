@@ -1755,6 +1755,7 @@ Shift-Tab
 \end_layout
 
 \begin_layout Section
+Input / Word Completion
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Input-Completion"
@@ -1803,7 +1804,7 @@ status collapsed
 
 \end_inset
 
-Input / Word Completion
+
 \end_layout
 
 \begin_layout Standard
@@ -1843,12 +1844,24 @@ Input Completion
 \family default
  by deselecting the option 
 \family sans
-Cursor indicator
+Cursor
+\begin_inset space ~
+\end_inset
+
+indicator
 \family default
 .
  With the option 
 \family sans
-Automatic inline completion
+Automatic
+\begin_inset space ~
+\end_inset
+
+inline
+\begin_inset space ~
+\end_inset
+
+completion
 \family default
  the proposed completion is shown directly behind the cursor position.
  To accept this proposal, use the 
@@ -41387,9 +41400,9 @@ arg   "font-emph"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Emphasize text, function of the Edit
+Emphasize text, function of the 
 \family sans
-\SpecialChar \menuseparator
+Edit\SpecialChar \menuseparator
 Text
 \begin_inset space ~
 \end_inset
@@ -41423,9 +41436,9 @@ arg   "font-noun"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Set text to noun style, function of the Edit
+Set text to noun style, function of the 
 \family sans
-\SpecialChar \menuseparator
+Edit\SpecialChar \menuseparator
 Text
 \begin_inset space ~
 \end_inset
@@ -42337,6 +42350,10 @@ status collapsed
 
 \family sans
 eX
+\begin_inset space ~
+\end_inset
+
+Code
 \end_layout
 
 \end_inset
@@ -42675,7 +42692,11 @@ arg   "master-buffer-update"
 
 \family sans
 View\SpecialChar \menuseparator
-UpdateMaster
+Update
+\begin_inset space ~
+\end_inset
+
+Master
 \end_layout
 
 \end_inset
@@ -45494,6 +45515,45 @@ status collapsed
 
 XServer-Pipe Here you can enter the name of a Unix-pipe.
  This pipe is used to send data from external programs to LyX.
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Example
+\series default
+: You add a BibTeX-database test.bib to your document.
+ You can edit this file with the program 
+\family typewriter
+JabRef
+\family default
+ bearbeiten.
+ In 
+\family typewriter
+JabRef
+\family default
+ you have to use the same Unix-Pipe for LyX in its preferences under 
+\family sans
+External
+\begin_inset space ~
+\end_inset
+
+programs
+\family default
+.
+ If you want to get one entry of the database as citation, select it in
+ 
+\family typewriter
+JabRef
+\family default
+ and click on the LyX-symbol.
+ The entry will now be inserted as citation at the current cursor position
+ in your LyX file.
+ 
+\family typewriter
+JabRef
+\family default
+ and LyX need of course to be run the same time.
 \begin_inset Newline newline
 \end_inset
 

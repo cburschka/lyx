@@ -28,7 +28,7 @@
 \spacing single
 \use_hyperref false
 \papersize default
-\use_geometry true
+\use_geometry false
 \use_amsmath 1
 \use_esint 0
 \use_mhchem 1
@@ -43,10 +43,6 @@
 \shortcut idx
 \color #008000
 \end_index
-\leftmargin 1in
-\topmargin 1in
-\rightmargin 1in
-\bottommargin 1in
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -85,22 +81,28 @@ arg   "bind_file"
 
 \family default
 .
- Puedes cambiar los atajos seleccionando otro archivo bind en el panel correspon
-diente, que está disponible bajo 
+ 
+\lang english
+You can change the shortcuts in the menu 
 \family sans
-Edición
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+Editing\SpecialChar \menuseparator
+Shortcuts
 \family default
- en el diálogo de preferencias 
-\family sans
-(
-\begin_inset Info
-type  "menu"
-arg   "dialog-show prefs"
+ as described in section 
+\begin_inset Quotes eld
 \end_inset
 
+Shortcuts
+\begin_inset Quotes erd
+\end_inset
 
-\family default
-).
+ of the LyX 
+\emph on
+User's Guide
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -616,7 +618,7 @@ Editar
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="10" columns="4">
+<lyxtabular version="3" rows="15" columns="4">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -627,7 +629,7 @@ Editar
 \begin_inset Text
 
 \begin_layout Plain Layout
- Acción 
+Acción
 \end_layout
 
 \end_inset
@@ -665,7 +667,7 @@ Atajo
 \begin_inset Text
 
 \begin_layout Plain Layout
- Copiar
+Copiar
 \end_layout
 
 \end_inset
@@ -880,7 +882,7 @@ arg   "redo"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ninguno
+Versalitas
 \end_layout
 
 \end_inset
@@ -1012,7 +1014,7 @@ Añadir columna
 \begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
-arg   "tabular-feature append-column"
+arg   "inset-modify tabular append-column"
 \end_inset
 
 
@@ -1035,7 +1037,7 @@ Añadir fila
 \begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
-arg   "tabular-feature append-row"
+arg   "inset-modify tabular append-row"
 \end_inset
 
 
@@ -1060,7 +1062,7 @@ Eliminar columna
 \begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
-arg   "tabular-feature delete-column"
+arg   "inset-modify tabular delete-column"
 \end_inset
 
 
@@ -1083,7 +1085,7 @@ Eliminar fila
 \begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
-arg   "tabular-feature delete-row"
+arg   "inset-modify tabular delete-row"
 \end_inset
 
 
@@ -1092,51 +1094,49 @@ arg   "tabular-feature delete-row"
 \end_inset
 </cell>
 </row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\begin_inset VSpace defskip
-\end_inset
-
-
-\begin_inset Tabular
-<lyxtabular version="3" rows="10" columns="2">
-<features booktabs="true" tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
 <row>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Acción
+Copiar columna
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Atajo
+\begin_inset Info
+type  "shortcut"
+arg   "inset-modify tabular copy-column"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Copiar fila
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "inset-modify tabular copy-row"
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1166,8 +1166,6 @@ arg   "word-find"
 
 \end_inset
 </cell>
-</row>
-<row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -1216,6 +1214,29 @@ arg   "bookmark-save 1"
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Aumentar profundidad
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" usebox="none">
@@ -1234,6 +1255,29 @@ Ir a marcador 1
 \begin_inset Info
 type  "shortcut"
 arg   "bookmark-goto 1"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Disminuir profundidad
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "depth-decrement"
 \end_inset
 
 
@@ -1266,13 +1310,11 @@ arg   "bookmark-goto 0"
 
 \end_inset
 </cell>
-</row>
-<row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Aumentar profundidad
+
 \end_layout
 
 \end_inset
@@ -1281,86 +1323,6 @@ Aumentar profundidad
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Info
-type  "shortcut"
-arg   "depth-increment"
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Disminuir profundidad
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Info
-type  "shortcut"
-arg   "depth-decrement"
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Copiar columna
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Info
-type  "shortcut"
-arg   "tabular-feature copy-column"
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Copiar fila
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Info
-type  "shortcut"
-arg   "tabular-feature copy-row"
-\end_inset
-
 
 \end_layout
 
@@ -3692,7 +3654,7 @@ Delimitadores
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="6">
+<lyxtabular version="3" rows="3" columns="6">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -3909,98 +3871,6 @@ arg   "math-delim langle rangle"
 \begin_inset Info
 type  "shortcut"
 arg   "math-delim | |"
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\left(\,\right.$
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Info
-type  "shortcut"
-arg   "math-delim ( ."
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\left[\,\right.$
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Info
-type  "shortcut"
-arg   "math-delim [ ."
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\left\{ \,\right.$
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Info
-type  "shortcut"
-arg   "math-delim { ."
 \end_inset
 
 

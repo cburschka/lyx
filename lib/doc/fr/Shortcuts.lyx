@@ -5,7 +5,7 @@
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
-\language english
+\language french
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -28,7 +28,7 @@
 \spacing single
 \use_hyperref false
 \papersize default
-\use_geometry true
+\use_geometry false
 \use_amsmath 1
 \use_esint 0
 \use_mhchem 1
@@ -43,10 +43,6 @@
 \shortcut idx
 \color #008000
 \end_index
-\leftmargin 1in
-\topmargin 1in
-\rightmargin 1in
-\bottommargin 1in
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -85,23 +81,28 @@ arg   "bind_file"
 
 \family default
 .
- Vous pouvez modifier les raccourcis en choisissant un autre fichier d'interface
- utilisateur dans le panneau 
+ Vous pouvez modifier les raccourcis 
+\lang english
+in the menu 
 \family sans
-Interface utilisateur
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+Editing\SpecialChar \menuseparator
+Shortcuts
 \family default
- de la fenêtre de dialogue (
-\family sans
-
-\begin_inset Info
-type  "menu"
-arg   "dialog-show prefs"
+ as described in section 
+\begin_inset Quotes eld
 \end_inset
 
+Shortcuts
+\begin_inset Quotes erd
+\end_inset
 
-\family default
-).
- 
+ of the LyX 
+\emph on
+User's Guide
+\emph default
+.
 \end_layout
 
 \begin_layout Subsection*
@@ -471,7 +472,7 @@ arg   "buffer-previous"
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="10" columns="4">
+<lyxtabular version="3" rows="15" columns="4">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -520,7 +521,7 @@ Shortcut
 \begin_inset Text
 
 \begin_layout Plain Layout
- Copier
+Copier
 \end_layout
 
 \end_inset
@@ -616,7 +617,7 @@ arg   "font-emph"
 \begin_inset Text
 
 \begin_layout Plain Layout
- Couper
+Couper
 \end_layout
 
 \end_inset
@@ -867,7 +868,7 @@ Ajouter une colonne
 \begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
-arg   "tabular-feature append-column"
+arg   "inset-modify tabular append-column"
 \end_inset
 
 
@@ -890,7 +891,7 @@ Ajouter ligne
 \begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
-arg   "tabular-feature append-row"
+arg   "inset-modify tabular append-row"
 \end_inset
 
 
@@ -915,7 +916,7 @@ Supprimer une colonne
 \begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
-arg   "tabular-feature delete-column"
+arg   "inset-modify tabular delete-column"
 \end_inset
 
 
@@ -938,7 +939,7 @@ Supprimer ligne
 \begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
-arg   "tabular-feature delete-row"
+arg   "inset-modify tabular delete-row"
 \end_inset
 
 
@@ -947,44 +948,49 @@ arg   "tabular-feature delete-row"
 \end_inset
 </cell>
 </row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\begin_inset Tabular
-<lyxtabular version="3" rows="10" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
 <row>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Action
+Copier colonne
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Shortcut
+\begin_inset Info
+type  "shortcut"
+arg   "inset-modify tabular copy-column"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Copier ligne
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "inset-modify tabular copy-row"
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1014,8 +1020,6 @@ arg   "word-find"
 
 \end_inset
 </cell>
-</row>
-<row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -1064,6 +1068,29 @@ arg   "bookmark-save 1"
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Augmenter profondeur
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" usebox="none">
@@ -1082,6 +1109,29 @@ Aller à l'étiquette 1
 \begin_inset Info
 type  "shortcut"
 arg   "bookmark-goto 1"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Diminuer profondeur
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "depth-decrement"
 \end_inset
 
 
@@ -1114,13 +1164,11 @@ arg   "bookmark-goto 0"
 
 \end_inset
 </cell>
-</row>
-<row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Augmenter profondeur
+
 \end_layout
 
 \end_inset
@@ -1129,86 +1177,6 @@ Augmenter profondeur
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Info
-type  "shortcut"
-arg   "depth-increment"
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Diminuer profondeur
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Info
-type  "shortcut"
-arg   "depth-decrement"
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Copier colonne
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Info
-type  "shortcut"
-arg   "tabular-feature copy-column"
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Copier ligne
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Info
-type  "shortcut"
-arg   "tabular-feature copy-row"
-\end_inset
-
 
 \end_layout
 
@@ -3689,7 +3657,6 @@ arg   "math-delim rangle langle"
 \begin_inset Text
 
 \begin_layout Plain Layout
- 
 \begin_inset Formula $\left[\,\right]$
 \end_inset
 
