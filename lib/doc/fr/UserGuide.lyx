@@ -45195,6 +45195,50 @@ serveur
 LyX Ici, vous pouvez entrer le nom d'un tube Unix.
  Ce tube est utilisé pour transférer des informations à partir de programmes
  externes vers LyX.
+\lang ngerman
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+\lang english
+Example
+\series default
+: You add a BibTeX-database test.bib to your document.
+ You can edit this file with the program 
+\family typewriter
+JabRef
+\family default
+ bearbeiten.
+ In 
+\family typewriter
+JabRef
+\family default
+ you have to use the same Unix-Pipe for LyX in its preferences under 
+\family sans
+External
+\begin_inset space ~
+\end_inset
+
+programs
+\family default
+.
+ If you want to get one entry of the database as citation, select it in
+ 
+\family typewriter
+JabRef
+\family default
+ and click on the LyX-symbol.
+ The entry will now be inserted as citation at the current cursor position
+ in your LyX file.
+ 
+\family typewriter
+JabRef
+\family default
+ and LyX need of course to be run the same time.
+\lang french
+
 \begin_inset Newline newline
 \end_inset
 
