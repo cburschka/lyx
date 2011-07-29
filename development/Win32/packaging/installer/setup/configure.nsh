@@ -123,8 +123,10 @@ Section -Configure
   ClearErrors
   Delete "$INSTDIR\Resources\lyxrc.dist"
   FileOpen $R1 "$INSTDIR\Resources\lyxrc.dist" w
+  # set the format
+  FileWrite $R1 'Format 1$\r$\n'
   # set some general things
-  FileWrite $R1 '\screen_zoom "120$\r$\n"'
+  FileWrite $R1 '\screen_zoom 120$\r$\n'
   ${if} "$PathPrefix" != ""
    FileWrite $R1 '\path_prefix "$PathPrefix"$\r$\n'
   ${endif}
