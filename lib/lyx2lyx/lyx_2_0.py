@@ -2520,7 +2520,7 @@ convert = [[346, []],
            [410, []],
            [411, [convert_langpack]],
            [412, []],
-           [413, []],
+           [413, []]
 ]
 
 revert =  [[412, [revert_html_css_as_file]],
