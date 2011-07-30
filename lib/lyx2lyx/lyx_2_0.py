@@ -1828,7 +1828,7 @@ def revert_mathdots(document):
 
     mathdots = find_token(document.header, "\\use_mathdots" , 0)
     if mathdots == -1:
-      document.warning("No \\usemathdots line. Assuming auto.")
+      document.warning("No \\use_mathdots line. Assuming auto.")
     else:
       val = get_value(document.header, "\\use_mathdots", mathdots)
       del document.header[mathdots]
@@ -1844,7 +1844,7 @@ def revert_mathdots(document):
         return
       if usedots == 2:
         # force load case
-        add_to_preamble(["\\usepackage{mathdots}"])
+        add_to_preamble(document, ["\\usepackage{mathdots}"])
         return
     
     # so we are in the auto case. we want to load mathdots if \iddots is used.
