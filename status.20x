@@ -161,6 +161,10 @@ What's new
 
 - Fix output of unicode math from within child documents (bug 7682).
 
+- Fix bug when exporting documents containing the command/character
+  "\iddots" in math to LyX 1.6.x.
+
+
 * USER INTERFACE
 
 - Fixed crash relating to outliner and mouse movement.
