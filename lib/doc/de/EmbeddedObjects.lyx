@@ -30,22 +30,20 @@
 % Formatierung von Legenden
 \usepackage[labelfont={bf,sf}]{caption}[2004/07/16]
 
-% Befehle, um Legenden neben Tabellen und Abbildungen zu setzen
-\usepackage{sidecap}
-
-\newcommand{\TabBesBeg}{%
+% Definitionen um Legenden neben Tabellen und Abbildungen zu setzen
+\newcommand{\TabBesBeg}[1][1.0]{%
  \let\MyTable\table
  \let\MyEndtable\endtable
- \renewenvironment{table}{\begin{SCtable}}{\end{SCtable}}}
+ \renewenvironment{table}[1]{\begin{SCtable}[#1]##1}{\end{SCtable}}}
 
 \newcommand{\TabBesEnd}{%
  \let\table\MyTable
  \let\endtable\MyEndtable}
 
-\newcommand{\FigBesBeg}{%
+\newcommand{\FigBesBeg}[1][1.0]{%
  \let\MyFigure\figure
  \let\MyEndfigure\endfigure
- \renewenvironment{figure}{\begin{SCfigure}}{\end{SCfigure}}}
+ \renewenvironment{figure}[1]{\begin{SCfigure}[#1]##1}{\end{SCfigure}}}
 
 \newcommand{\FigBesEnd}{%
  \let\figure\MyFigure
@@ -23702,7 +23700,7 @@ height "1pt"
 \backslash
 newcommand{
 \backslash
-TabBesBeg}{%
+TabBesBeg}[1][1.0]{%
 \begin_inset Newline newline
 \end_inset
 
@@ -23711,8 +23709,6 @@ TabBesBeg}{%
 status open
 
 \begin_layout Plain Layout
-
-\series bold
 \begin_inset space ~
 \end_inset
 
@@ -23737,7 +23733,7 @@ status open
 
 \begin_layout Plain Layout
 
-\series bold
+\series medium
 \begin_inset space ~
 \end_inset
 
@@ -23762,7 +23758,7 @@ status open
 
 \begin_layout Plain Layout
 
-\series bold
+\series medium
 \begin_inset space ~
 \end_inset
 
@@ -23773,9 +23769,9 @@ status open
 
 
 \backslash
-renewenvironment{table}{
+renewenvironment{table}[1]{
 \backslash
-begin{SCtable}}{
+begin{SCtable}[#1]##1}{
 \backslash
 end{SCtable}}}
 \end_layout
@@ -23796,8 +23792,6 @@ TabBesEnd}{%
 status open
 
 \begin_layout Plain Layout
-
-\series bold
 \begin_inset space ~
 \end_inset
 
@@ -23821,8 +23815,6 @@ MyTable
 status open
 
 \begin_layout Plain Layout
-
-\series bold
 \begin_inset space ~
 \end_inset
 
@@ -23847,7 +23839,7 @@ MyEndtable
 \backslash
 newcommand{
 \backslash
-FigBesBeg}{%
+FigBesBeg}[1][1.0]{%
 \begin_inset Newline newline
 \end_inset
 
@@ -23856,8 +23848,6 @@ FigBesBeg}{%
 status open
 
 \begin_layout Plain Layout
-
-\series bold
 \begin_inset space ~
 \end_inset
 
@@ -23881,8 +23871,6 @@ figure
 status open
 
 \begin_layout Plain Layout
-
-\series bold
 \begin_inset space ~
 \end_inset
 
@@ -23906,8 +23894,6 @@ endfigure
 status open
 
 \begin_layout Plain Layout
-
-\series bold
 \begin_inset space ~
 \end_inset
 
@@ -23918,9 +23904,9 @@ status open
 
 
 \backslash
-renewenvironment{figure}{
+renewenvironment{figure}[1]{
 \backslash
-begin{SCfigure}}{
+begin{SCfigure}[#1]##1}{
 \backslash
 end{SCfigure}}}
 \end_layout
@@ -23941,8 +23927,6 @@ FigBesEnd}{%
 status open
 
 \begin_layout Plain Layout
-
-\series bold
 \begin_inset space ~
 \end_inset
 
@@ -23966,8 +23950,6 @@ MyFigure
 status open
 
 \begin_layout Plain Layout
-
-\series bold
 \begin_inset space ~
 \end_inset
 
@@ -24001,7 +23983,7 @@ height "1pt"
 \begin_layout Standard
 Mit den Befehlen können Sie die Gleitobjekte so umdefinieren, dass die Beschrift
 ungen seitlich gedruckt werden.
- Für Gleitobjekt-Abbildungen schreiben Sie dann die Befehle
+ Für Gleitobjekt-Abbildungen schreiben Sie den Befehl
 \end_layout
 
 \begin_layout Standard
@@ -24013,7 +23995,7 @@ FigBesBeg
 \end_layout
 
 \begin_layout Standard
-als TeX-Code vor und
+als TeX-Code vor das Gleitobjekt und fügen Sie den Befehl
 \end_layout
 
 \begin_layout Standard
@@ -24025,8 +24007,12 @@ FigBesEnd
 \end_layout
 
 \begin_layout Standard
-hinter das Gleitobjekt.
- Bei Gleitobjekt-Tabellen heißen die Befehle
+als TeX-Code an der Stelle ein, wo Sie zur ursprünglichen Gleitobjekt-Definition
+ zurückkehren wollen.
+\end_layout
+
+\begin_layout Standard
+Bei Gleitobjekt-Tabellen heißen die Befehle
 \end_layout
 
 \begin_layout Standard
@@ -24064,7 +24050,7 @@ reference "abb:Beschriftung-neben"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:cap-beside-tab"
+reference "tab:Beschriftung-neben"
 
 \end_inset
 
@@ -24138,6 +24124,135 @@ reference "abb:cap-beside-fig-2"
 \end_inset
 
  benutzt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Standard Beschriftungsbreite ist die Breite des Bildes/der Tabelle.
+ Für schmale Bilder/Tabellen, wie in Tabelle
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Beschriftung-neben"
+
+\end_inset
+
+, führt dies zu zu schmalen Beschriftungen.
+ Die breite kann erhöht werden, indem man einen Faktor angibt mit dem die
+ Breite des Bildes/der Tabelle multipliziert wird.
+ Das Ergebnis ist die Beschriftungsbreite.
+ Die Breite der Beschriftung wird automatisch neu berechnet, falls sie aufgrund
+ der angegebenen Breite in den Seiten- oder Spaltenrand ragen würde.
+ Der 
+\emph on
+Faktor
+\emph default
+ kann entweder als optionales Argument für 
+\series bold
+
+\backslash
+FigBesBeg
+\series default
+ angegeben werden:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+FigBesBeg[Faktor]
+\end_layout
+
+\begin_layout Standard
+oder indem man in der Definition von 
+\series bold
+
+\backslash
+FigBesBeg
+\series default
+ die 
+\series bold
+1.0
+\series default
+ mit einem anderen Wert ersetzt.
+ Bei letzterem ist der angegebene Faktor der Standard wenn 
+\series bold
+
+\backslash
+FigBesBeg
+\series default
+ ohne Argument verwendet wird.
+ Für Tabelle
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Beschriftung-neben-breiter"
+
+\end_inset
+
+ und Abbildung
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "abb:cap-beside-fig-2"
+
+\end_inset
+
+ wurde der Faktor 5 verwendet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ Für Gleitobjekten mit Beschriftung neben dem Objekt kann die Gleitobjekt-Platzi
+erungsoption 
+\family sans
+Hier,
+\begin_inset space ~
+\end_inset
+
+auf
+\begin_inset space ~
+\end_inset
+
+jeden
+\begin_inset space ~
+\end_inset
+
+Fall
+\family default
+ nicht verwendet werden werden, da diese von 
+\series bold
+sidecap
+\series default
+ nicht unterstützt wird.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -24285,7 +24400,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:cap-beside-tab"
+name "tab:Beschriftung-neben"
 
 \end_inset
 
@@ -24514,7 +24629,7 @@ status collapsed
 
 
 \backslash
-TabBesEnd
+FigBesBeg[5] 
 \end_layout
 
 \end_inset
@@ -24584,6 +24699,282 @@ status collapsed
 
 \backslash
 FigBesEnd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+TabBesBeg[5]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Beschriftung-neben-breiter"
+
+\end_inset
+
+Diese Beschriftung ist breiter als die in Tabelle
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Beschriftung-neben"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+c
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+d
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+f
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+g
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+h
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+i
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+j
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+TabBesEnd
 \end_layout
 
 \end_inset
