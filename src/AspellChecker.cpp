@@ -19,6 +19,7 @@
 
 #include "support/lassert.h"
 #include "support/debug.h"
+#include "support/lstrings.h"
 #include "support/docstring_list.h"
 
 #include "support/filetools.h"
@@ -311,17 +312,36 @@ AspellSpeller * AspellChecker::Private::speller(Language const * lang)
 	return addSpeller(lang);
 }
 
- 
+
 string AspellChecker::Private::toAspellWord(docstring const & word) const
 {
-	return to_utf8(word);
+	size_t mpos;
+	string word_str = to_utf8(word);
+	while ((mpos = word_str.find('-')) != word_str.npos) {
+		word_str.erase(mpos, 1);
+	}
+	return word_str;
 }
 
- 
+
 SpellChecker::Result AspellChecker::Private::check(
 	AspellSpeller * m, WordLangTuple const & word) 
 	const
 {
+	SpellChecker::Result result = WORD_OK;
+	docstring w1;
+	docstring rest = split(word.word(), w1, '-');
+	for (; result == WORD_OK;) {
+		string const word_str = toAspellWord(w1);
+		int const word_ok = aspell_speller_check(m, word_str.c_str(), -1);
+		LASSERT(word_ok != -1, /**/);
+		result = (word_ok) ? WORD_OK : UNKNOWN_WORD;
+		if (rest.empty())
+			break;
+		rest = split(rest,w1,'-');
+	}
+	if (result == WORD_OK)
+		return result;
 	string const word_str = toAspellWord(word.word());
 	int const word_ok = aspell_speller_check(m, word_str.c_str(), -1);
 	LASSERT(word_ok != -1, /**/);
