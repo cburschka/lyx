@@ -33,21 +33,19 @@
 
 % provides commands to set caption
 % beside tables/images
-\usepackage{sidecap}
-
-\newcommand{\TabBesBeg}{%
+\newcommand{\TabBesBeg}[1][1.0]{%
  \let\MyTable\table
  \let\MyEndtable\endtable
- \renewenvironment{table}{\begin{SCtable}}{\end{SCtable}}}
+ \renewenvironment{table}[1]{\begin{SCtable}[#1]##1}{\end{SCtable}}}
 
 \newcommand{\TabBesEnd}{%
  \let\table\MyTable
  \let\endtable\MyEndtable}
 
-\newcommand{\FigBesBeg}{%
+\newcommand{\FigBesBeg}[1][1.0]{%
  \let\MyFigure\figure
  \let\MyEndfigure\endfigure
- \renewenvironment{figure}{\begin{SCfigure}}{\end{SCfigure}}}
+ \renewenvironment{figure}[1]{\begin{SCfigure}[#1]##1}{\end{SCfigure}}}
 
 \newcommand{\FigBesEnd}{%
  \let\figure\MyFigure
@@ -23970,7 +23968,7 @@ height "1pt"
 \backslash
 newcommand{
 \backslash
-TabBesBeg}{%
+TabBesBeg}[1][1.0]{%
 \begin_inset Newline newline
 \end_inset
 
@@ -23979,8 +23977,6 @@ TabBesBeg}{%
 status open
 
 \begin_layout Plain Layout
-
-\series bold
 \begin_inset space ~
 \end_inset
 
@@ -24005,7 +24001,7 @@ status open
 
 \begin_layout Plain Layout
 
-\series bold
+\series medium
 \begin_inset space ~
 \end_inset
 
@@ -24030,7 +24026,7 @@ status open
 
 \begin_layout Plain Layout
 
-\series bold
+\series medium
 \begin_inset space ~
 \end_inset
 
@@ -24041,9 +24037,9 @@ status open
 
 
 \backslash
-renewenvironment{table}{
+renewenvironment{table}[1]{
 \backslash
-begin{SCtable}}{
+begin{SCtable}[#1]##1}{
 \backslash
 end{SCtable}}}
 \end_layout
@@ -24064,8 +24060,6 @@ TabBesEnd}{%
 status open
 
 \begin_layout Plain Layout
-
-\series bold
 \begin_inset space ~
 \end_inset
 
@@ -24089,8 +24083,6 @@ MyTable
 status open
 
 \begin_layout Plain Layout
-
-\series bold
 \begin_inset space ~
 \end_inset
 
@@ -24115,7 +24107,7 @@ MyEndtable
 \backslash
 newcommand{
 \backslash
-FigBesBeg}{%
+FigBesBeg}[1][1.0]{%
 \begin_inset Newline newline
 \end_inset
 
@@ -24124,8 +24116,6 @@ FigBesBeg}{%
 status open
 
 \begin_layout Plain Layout
-
-\series bold
 \begin_inset space ~
 \end_inset
 
@@ -24149,8 +24139,6 @@ figure
 status open
 
 \begin_layout Plain Layout
-
-\series bold
 \begin_inset space ~
 \end_inset
 
@@ -24174,8 +24162,6 @@ endfigure
 status open
 
 \begin_layout Plain Layout
-
-\series bold
 \begin_inset space ~
 \end_inset
 
@@ -24186,9 +24172,9 @@ status open
 
 
 \backslash
-renewenvironment{figure}{
+renewenvironment{figure}[1]{
 \backslash
-begin{SCfigure}}{
+begin{SCfigure}[#1]##1}{
 \backslash
 end{SCfigure}}}
 \end_layout
@@ -24209,8 +24195,6 @@ FigBesEnd}{%
 status open
 
 \begin_layout Plain Layout
-
-\series bold
 \begin_inset space ~
 \end_inset
 
@@ -24234,8 +24218,6 @@ MyFigure
 status open
 
 \begin_layout Plain Layout
-
-\series bold
 \begin_inset space ~
 \end_inset
 
@@ -24282,7 +24264,7 @@ FigBesBeg
 
 \begin_layout Standard
 en code TeX avant le flottant.
- Après le flottant, insérez la commande
+ Et insérez la commande
 \end_layout
 
 \begin_layout Standard
@@ -24294,7 +24276,11 @@ FigBesEnd
 \end_layout
 
 \begin_layout Standard
-en code TeX pour revenir à la définition originale du flottant.
+en code TeX 
+\lang english
+at the point where you want to
+\lang french
+ revenir à la définition originale du flottant.
 \end_layout
 
 \begin_layout Standard
@@ -24427,6 +24413,131 @@ reference "fig:legende-à-coté-fig-2"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The default caption width is the width of the image/table.
+ For thin image/tables, like in
+\lang french
+ tableau
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:legende-à-coté-tableau"
+
+\end_inset
+
+, 
+\lang english
+this leads to captions that are too thin.
+ You can increase the width by specifying a factor that will be multiplied
+ with the image/table width to get the caption width.
+ The caption width will automatically be recalculated in case it would protrude
+ over the page or column margin due to the specified width.
+ The 
+\emph on
+factor
+\emph default
+ can either be given as optional argument for 
+\series bold
+
+\backslash
+FigBesBeg
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+FigBesBeg[factor]
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+or in the definition of 
+\series bold
+
+\backslash
+FigBesBeg
+\series default
+ by replacing the 
+\series bold
+1.0
+\series default
+ with another value.
+ If you do the latter, your factor will be the default if 
+\series bold
+
+\backslash
+FigBesBeg
+\series default
+ is used without an argument.
+ For
+\lang french
+ tableau
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:cap-beside-tab-wider"
+
+\end_inset
+
+ 
+\lang english
+the factor 5 was used.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ For floats with captions set beside, you cannot use the float placement
+ option 
+\family sans
+Here
+\begin_inset space ~
+\end_inset
+
+definitely
+\family default
+ because it is not supported by 
+\series bold
+sidecap
+\series default
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -24802,22 +24913,6 @@ status collapsed
 
 
 \backslash
-TabBesEnd
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
 sidecaptionvpos{figure}{c}
 \end_layout
 
@@ -24872,6 +24967,286 @@ status collapsed
 
 \backslash
 FigBesEnd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+TabBesBeg[5]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:cap-beside-tab-wider"
+
+\end_inset
+
+This is a caption is wider than the one in
+\lang french
+ tableau
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:legende-à-coté-tableau"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+c
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+d
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+f
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+g
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+h
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+i
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+j
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+TabBesEnd
 \end_layout
 
 \end_inset
