@@ -265,7 +265,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-06-16 10:55-0400\n"
-"PO-Revision-Date: 2011-06-24 09:01+0100\n"
+"PO-Revision-Date: 2011-07-31 02:24+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -4014,7 +4014,7 @@ msgstr "Quoi faire quand les fichiers existants sont susceptibles d'être écras
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:151
 msgid "Forward search"
-msgstr "Recherche vers le bas"
+msgstr "Recherche directe"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:171
 msgid "DV&I command:"
@@ -13220,7 +13220,7 @@ msgstr "Revenir au signet enregistré|v"
 #: lib/ui/stdcontext.inc:300
 #: lib/ui/stdmenus.inc:528
 msgid "Forward search|F"
-msgstr "Recherche vers le bas|b"
+msgstr "Recherche directe|d"
 
 #: lib/ui/stdcontext.inc:302
 #: lib/ui/stdmenus.inc:113
@@ -25072,12 +25072,16 @@ msgstr "Utilisateur inconnu"
 
 #~ msgid "Step"
 #~ msgstr "Étape"
+
 #~ msgid "Step \\thestep."
 #~ msgstr "Étape \\thestep."
+
 #~ msgid "Appendices Section"
 #~ msgstr "Section d'appendices"
+
 #~ msgid "--- Appendices ---"
 #~ msgstr "--- Appendices ---"
+
 #~ msgid ""
 #~ "Select if LyX should output Windows-style paths rather than Posix-style "
 #~ "paths to LaTeX files. Useful if you're using the native Windows MikTeX "
@@ -25086,224 +25090,334 @@ msgstr "Utilisateur inconnu"
 #~ "Sélectionner pour que LyX utilise des chemins du type Windows et non du "
 #~ "type Posix pour les fichiers LaTeX. Utile si vous utilisez le MikTeX "
 #~ "spécifique à Windows au lieu du teTeX de Cygwin."
+
 #~ msgid "List of %1$s"
 #~ msgstr "Liste des %1$s"
+
 #~ msgid "Liber"
 #~ msgstr "Liber"
+
 #~ msgid "%1$s unknown"
 #~ msgstr "%1$s inconnu"
+
 #~ msgid "Layout|L"
 #~ msgstr "Format|t"
+
 #~ msgid "Documents|D"
 #~ msgstr "Documents|D"
+
 #~ msgid "New from Template...|T"
 #~ msgstr "Nouveau avec modèle...|m"
+
 #~ msgid "Revert|R"
 #~ msgstr "Revenir à la sauvegarde|R"
+
 #~ msgid "Custom...|C"
 #~ msgstr "Personnaliser...|e"
+
 #~ msgid "Redo|d"
 #~ msgstr "Refaire|R"
+
 #~ msgid "Cut|C"
 #~ msgstr "Couper|o"
+
 #~ msgid "Copy|o"
 #~ msgstr "Copier|C"
+
 #~ msgid "Paste|a"
 #~ msgstr "Coller|l"
+
 #~ msgid "Paste External Selection|x"
 #~ msgstr "Copier une sélection extérieure|s"
+
 #~ msgid "Find & Replace...|F"
 #~ msgstr "Rechercher et remplacer...|e"
+
 #~ msgid "Tabular|T"
 #~ msgstr "Tableau|T"
+
 #~ msgid "Thesaurus..."
 #~ msgstr "Dictionnaire de Synonymes..."
+
 #~ msgid "Statistics...|i"
 #~ msgstr "Statistiques...|i"
+
 #~ msgid "Change Tracking|g"
 #~ msgstr "Suivi des modifications|S"
+
 #~ msgid "Selection as Lines|L"
 #~ msgstr "Sélection par lignes|l"
+
 #~ msgid "Selection as Paragraphs|P"
 #~ msgstr "Sélection par paragraphes|p"
+
 #~ msgid "Line Top|T"
 #~ msgstr "Bord haut|h"
+
 #~ msgid "Line Bottom|B"
 #~ msgstr "Bord bas|b"
+
 #~ msgid "Line Left|L"
 #~ msgstr "Bord gauche|g"
+
 #~ msgid "Line Right|R"
 #~ msgstr "Bord droit|d"
+
 #~ msgid "Alignment|i"
 #~ msgstr "Alignement|i"
+
 #~ msgid "Delete Row|w"
 #~ msgstr "Supprimer la ligne|u"
+
 #~ msgid "Copy Row"
 #~ msgstr "Copier la ligne"
+
 #~ msgid "Swap Rows"
 #~ msgstr "Échanger les lignes"
+
 #~ msgid "Delete Column|D"
 #~ msgstr "Supprimer la colonne|p"
+
 #~ msgid "Copy Column"
 #~ msgstr "Copier la colonne"
+
 #~ msgid "Swap Columns"
 #~ msgstr "Échanger les colonnes"
+
 #~ msgid "Toggle Numbering|N"
 #~ msgstr "(Dés)Activer numérotation|N"
+
 #~ msgid "Toggle Numbering of Line|u"
 #~ msgstr "(Dés)Activer numérotation de cette ligne|m"
+
 #~ msgid "Alignment|A"
 #~ msgstr "Alignement|A"
+
 #~ msgid "Add Row|R"
 #~ msgstr "Ajouter une ligne|j"
+
 #~ msgid "Add Column|C"
 #~ msgstr "Ajouter une colonne|o"
+
 #~ msgid "Octave"
 #~ msgstr "Octave"
+
 #~ msgid "Maxima"
 #~ msgstr "Maxima"
+
 #~ msgid "Mathematica"
 #~ msgstr "Mathematica"
+
 #~ msgid "Maple, simplify"
 #~ msgstr "Maple, simplify"
+
 #~ msgid "Maple, factor"
 #~ msgstr "Maple, factor"
+
 #~ msgid "Maple, evalm"
 #~ msgstr "Maple, evalm"
+
 #~ msgid "Maple, evalf"
 #~ msgstr "Maple, evalf"
+
 #~ msgid "Eqnarray Environment|q"
 #~ msgstr "Environnement tableau d'équations|q"
+
 #~ msgid "Align Environment|A"
 #~ msgstr "Environnement align|a"
+
 #~ msgid "AlignAt Environment"
 #~ msgstr "Environnement alignat"
+
 #~ msgid "Flalign Environment|F"
 #~ msgstr "Environnement flalign|f"
+
 #~ msgid "Gather Environment"
 #~ msgstr "Environnement gather"
+
 #~ msgid "Multline Environment"
 #~ msgstr "Environnement multline"
+
 #~ msgid "Special Character|S"
 #~ msgstr "Caractère spécial|s"
+
 #~ msgid "Cross-reference...|r"
 #~ msgstr "Référence croisée...|R"
+
 #~ msgid "Short Title"
 #~ msgstr "Titre court"
+
 #~ msgid "Index Entry|I"
 #~ msgstr "Entrée d'index|i"
+
 #~ msgid "Nomenclature Entry"
 #~ msgstr "Entrée de glossaire"
+
 #~ msgid "URL...|U"
 #~ msgstr "URL...|U"
+
 #~ msgid "Lists & TOC|O"
 #~ msgstr "Listes & TdM|L"
+
 #~ msgid "TeX Code|T"
 #~ msgstr "Code TeX|T"
+
 #~ msgid "Minipage|p"
 #~ msgstr "Minipage|p"
+
 #~ msgid "Tabular Material...|b"
 #~ msgstr "Tableau...|b"
+
 #~ msgid "Floats|a"
 #~ msgstr "Flottants|o"
+
 #~ msgid "Include File...|d"
 #~ msgstr "Fichier Sous-document...|S"
+
 #~ msgid "Insert File|e"
 #~ msgstr "Insérer fichier|I"
+
 #~ msgid "External Material...|x"
 #~ msgstr "Objet externe...|e"
+
 #~ msgid "Hyphenation Point|P"
 #~ msgstr "Point de césure|c"
+
 #~ msgid "Protected Space|r"
 #~ msgstr "Espace insécable|E"
+
 #~ msgid "Vertical Space..."
 #~ msgstr "Espacement vertical..."
+
 #~ msgid "Line Break|L"
 #~ msgstr "Passage à la ligne|l"
+
 #~ msgid "Protected Dash|D"
 #~ msgstr "Tiret protégé|E"
+
 #~ msgid "Single Quote|Q"
 #~ msgstr "Guillemet simple|u"
+
 #~ msgid "Ordinary Quote|O"
 #~ msgstr "Guillemet droit|G"
+
 #~ msgid "Horizontal Line"
 #~ msgstr "Ligne horizontale"
+
 #~ msgid "Font Change|o"
 #~ msgstr "Changement de police|o"
+
 #~ msgid "Math Normal Font"
 #~ msgstr "Math police normale"
+
 #~ msgid "Math Calligraphic Family"
 #~ msgstr "Math famille calligraphique"
+
 #~ msgid "Math Fraktur Family"
 #~ msgstr "Math famille Fraktur"
+
 #~ msgid "Math Roman Family"
 #~ msgstr "Math famille romaine"
+
 #~ msgid "Math Sans Serif Family"
 #~ msgstr "Math famille sans empattement"
+
 #~ msgid "Math Bold Series"
 #~ msgstr "Math série grasse"
+
 #~ msgid "Text Normal Font"
 #~ msgstr "Texte police normale"
+
 #~ msgid "Floatflt Figure"
 #~ msgstr "Figure floatflt"
+
 #~ msgid "Accept All Changes|A"
 #~ msgstr "Accepter toutes les modifications|A"
+
 #~ msgid "Reject All Changes|R"
 #~ msgstr "Rejeter toutes les modifications|R"
+
 #~ msgid "Character...|C"
 #~ msgstr "Caractère...|C"
+
 #~ msgid "Paragraph...|P"
 #~ msgstr "Paragraphe...|P"
+
 #~ msgid "Document...|D"
 #~ msgstr "Document...|D"
+
 #~ msgid "Tabular...|T"
 #~ msgstr "Tableau...|T"
+
 #~ msgid "Emphasize Style|E"
 #~ msgstr "En évidence|E"
+
 #~ msgid "Noun Style|N"
 #~ msgstr "Nom propre|N"
+
 #~ msgid "Bold Style|B"
 #~ msgstr "Gras|G"
+
 #~ msgid "Decrease Environment Depth|v"
 #~ msgstr "Réduire la profondeur d'environnement|f"
+
 #~ msgid "Increase Environment Depth|i"
 #~ msgstr "Augmenter la profondeur d'environnement|g"
+
 #~ msgid "Start Appendix Here|S"
 #~ msgstr "Début appendice ici|a"
+
 #~ msgid "Update|U"
 #~ msgstr "Mettre à jour|j"
+
 #~ msgid "TeX Information|X"
 #~ msgstr "Informations TeX|X"
+
 #~ msgid "Go to Bookmark 1|1"
 #~ msgstr "Aller au signet 1|1"
+
 #~ msgid "Go to Bookmark 2|2"
 #~ msgstr "Aller au signet 2|2"
+
 #~ msgid "Go to Bookmark 3|3"
 #~ msgstr "Aller au signet 3|3"
+
 #~ msgid "Go to Bookmark 4|4"
 #~ msgstr "Aller au signet 4|4"
+
 #~ msgid "Go to Bookmark 5|5"
 #~ msgstr "Aller au signet 5|5"
+
 #~ msgid "Extended Features|E"
 #~ msgstr "Options avancées|O"
+
 #~ msgid "Embedded Objects|m"
 #~ msgstr "Objets insérés|b"
+
 #~ msgid "Preferences..."
 #~ msgstr "Préférences..."
+
 #~ msgid "Quit LyX"
 #~ msgstr "Quitter LyX"
+
 #~ msgid "%1$d words checked."
 #~ msgstr "%1$d mots vérifiés."
+
 #~ msgid "One word checked."
 #~ msgstr "Un mot vérifié."
+
 #~ msgid "Spelling check completed"
 #~ msgstr "Correction orthographique terminée"
+
 #~ msgid "Basi&c"
 #~ msgstr "&Basique"
+
 #~ msgid "&Command:"
 #~ msgstr "&Commande :"
+
 #~ msgid "Search text is empty!"
 #~ msgstr "La chaîne de caractères à rechercher est vide !"
+
 #~ msgid ""
 #~ "Use to define an external program to render tables in plain text output. "
 #~ "E.g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If "
@@ -25312,13 +25426,16 @@ msgstr "Utilisateur inconnu"
 #~ "Désigner un programme externe pour sortir les tableaux au format texte "
 #~ "brut. Par ex. « groff -t -Tlatin1 $$FName » où $$FName est le fichier "
 #~ "d'entrée. Si vous ne mettez rien, LyX utilise une fonction interne."
+
 #~ msgid "LyX binary not found"
 #~ msgstr "Binaire de LyX introuvable"
+
 #~ msgid ""
 #~ "Unable to determine the path to the LyX binary from the command line %1$s"
 #~ msgstr ""
 #~ "N'a pas pu déterminer le chemin vers l'exécutable LyX dans la ligne de "
 #~ "commande %1$s"
+
 #~ msgid ""
 #~ "Unable to determine the system directory having searched\n"
 #~ "\t%1$s\n"
@@ -25331,72 +25448,100 @@ msgstr "Utilisateur inconnu"
 #~ "variable d'environnement\n"
 #~ " %2$s sur le répertoire système LyX qui contient le fichier 'chkconfig."
 #~ "ltx'."
+
 #~ msgid "File not found"
 #~ msgstr "Fichier introuvable"
+
 #~ msgid ""
 #~ "Invalid %1$s switch.\n"
 #~ "Directory %2$s does not contain %3$s."
 #~ msgstr ""
 #~ "Option %1$s non valable.\n"
 #~ "Le répertoire %2$s ne contient pas %3$s."
+
 #~ msgid ""
 #~ "Invalid %1$s environment variable.\n"
 #~ "Directory %2$s does not contain %3$s."
 #~ msgstr ""
 #~ "Variable d'environnement %1$s non valable.\n"
 #~ "Le répertoire %2$s ne contient pas %3$s."
+
 #~ msgid ""
 #~ "Invalid %1$s environment variable.\n"
 #~ "%2$s is not a directory."
 #~ msgstr ""
 #~ "Variable d'environnement %1$s non valable.\n"
 #~ "%2$s n'est pas un répertoire."
+
 #~ msgid "Directory not found"
 #~ msgstr "Répertoire introuvable"
+
 #~ msgid "Custom value. Needs spacing type &quot;Custom&quot;."
 #~ msgstr "Valeur réglable. Nécessite un espacement de type « réglable »."
+
 #~ msgid "Affilation:"
 #~ msgstr "Affiliation :"
+
 #~ msgid "varGamma"
 #~ msgstr "varGamma"
+
 #~ msgid "varDelta"
 #~ msgstr "varDelta"
+
 #~ msgid "varTheta"
 #~ msgstr "varTheta"
+
 #~ msgid "varLambda"
 #~ msgstr "varLambda"
+
 #~ msgid "varXi"
 #~ msgstr "varXi"
+
 #~ msgid "varPi"
 #~ msgstr "varPi"
+
 #~ msgid "varSigma"
 #~ msgstr "varSigma"
+
 #~ msgid "varUpsilon"
 #~ msgstr "varUpsilon"
+
 #~ msgid "varPhi"
 #~ msgstr "varPhi"
+
 #~ msgid "varPsi"
 #~ msgstr "varPsi"
+
 #~ msgid "varOmega"
 #~ msgstr "varOmega"
+
 #~ msgid "Group labels by prefix (e.g. &quot;sec:&quot;)"
 #~ msgstr "Classer les étiquettes par préfixe (e.g. « sec: »)"
+
 #~ msgid "DockWidget"
 #~ msgstr "DockWidget"
+
 #~ msgid "X; "
 #~ msgstr "X; "
+
 #~ msgid "value of the optional vertical offset"
 #~ msgstr "valeur du décalage vertical optionnel"
+
 #~ msgid "comment"
 #~ msgstr "commentaire"
+
 #~ msgid "greyedout"
 #~ msgstr "grisé"
+
 #~ msgid "Open Target...|O"
 #~ msgstr "Ouvrir la cible...|O"
+
 #~ msgid "&Use Defaults"
 #~ msgstr "&Utiliser les réglages implicites"
+
 #~ msgid "Note[[InsetNote]]"
 #~ msgstr "Note"
+
 #~ msgid ""
 #~ "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%"
 #~ "\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]]"
@@ -25407,186 +25552,275 @@ msgstr "Utilisateur inconnu"
 #~ "\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]]"
 #~ "[[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages"
 #~ "%[[, %pages%]]}."
+
 #~ msgid "Use the XeTeX processing engine"
 #~ msgstr "Utiliser le moteur de traitement XeTeX"
+
 #~ msgid "Use &XeTeX"
 #~ msgstr "Utiliser &XeTeX"
+
 #~ msgid "Use the babel package for multilingual support"
 #~ msgstr "Utiliser la paquetage babel pour le support multilingue"
+
 #~ msgid "&Use babel"
 #~ msgstr "Utiliser &babel"
+
 #~ msgid "&Global"
 #~ msgstr "&Global"
+
 #~ msgid "Flex:Institute"
 #~ msgstr "Flex : institution"
+
 #~ msgid "Flex:E-Mail"
 #~ msgstr "Fles : e-mail"
+
 #~ msgid "scheme"
 #~ msgstr "schéma"
+
 #~ msgid "chart"
 #~ msgstr "diagramme"
+
 #~ msgid "graph"
 #~ msgstr "graphique"
+
 #~ msgid "Flex:Alert"
 #~ msgstr "Flex : alerte"
+
 #~ msgid "Flex:Structure"
 #~ msgstr "Flex : structure"
+
 #~ msgid "Flex:ArticleMode"
 #~ msgstr "Flex : modeArticle"
+
 #~ msgid "Flex:PresentationMode"
 #~ msgstr "Flex : modePrésentation"
+
 #~ msgid "Flex:Firstname"
 #~ msgstr "Flex : prénom"
+
 #~ msgid "Flex:Fname"
 #~ msgstr "Flex : prénom"
+
 #~ msgid "Flex:Surname"
 #~ msgstr "Flex : nom"
+
 #~ msgid "Flex:Filename"
 #~ msgstr "Flex : nom de fichier"
+
 #~ msgid "Flex:Literal"
 #~ msgstr "Flex : Littéral"
+
 #~ msgid "Flex:Emph"
 #~ msgstr "Flex : en évidence"
+
 #~ msgid "Flex:Abbrev"
 #~ msgstr "Flex : abrévié"
+
 #~ msgid "Flex:Citation-number"
 #~ msgstr "Flex : numéro de citation"
+
 #~ msgid "Flex:Volume"
 #~ msgstr "Flex : volume"
+
 #~ msgid "Flex:Day"
 #~ msgstr "Flex : jour"
+
 #~ msgid "Flex:Month"
 #~ msgstr "Flex : mois"
+
 #~ msgid "Flex:Year"
 #~ msgstr "Flex : année"
+
 #~ msgid "Flex:Issue-number"
 #~ msgstr "Flex : numéro d'émission"
+
 #~ msgid "Flex:Issue-day"
 #~ msgstr "Flex : date de publication"
+
 #~ msgid "Flex:Issue-months"
 #~ msgstr "Flex : mois de publication"
+
 #~ msgid "Flex:ISSN"
 #~ msgstr "Flex : ISSN"
+
 #~ msgid "Flex:CODEN"
 #~ msgstr "Flex : CODEN"
+
 #~ msgid "Flex:SS-Code"
 #~ msgstr "Flex : code SS"
+
 #~ msgid "Flex:SS-Title"
 #~ msgstr "Flex : titre SS"
+
 #~ msgid "Flex:CCC-Code"
 #~ msgstr "Flex : code CCC"
+
 #~ msgid "Flex:Code"
 #~ msgstr "Flex : code"
+
 #~ msgid "Flex:Dscr"
 #~ msgstr "Flex : Dscr"
+
 #~ msgid "Flex:Keyword"
 #~ msgstr "Flex : mot-clé"
+
 #~ msgid "Flex:Orgdiv"
 #~ msgstr "Flex : division organisation"
+
 #~ msgid "Flex:Orgname"
 #~ msgstr "Flex : nom organisation"
+
 #~ msgid "Flex:Street"
 #~ msgstr "Flex : rue"
+
 #~ msgid "Flex:City"
 #~ msgstr "Flex : ville"
+
 #~ msgid "Flex:State"
 #~ msgstr "Flex : état"
+
 #~ msgid "Flex:Postcode"
 #~ msgstr "Flex : code postal"
+
 #~ msgid "Flex:Country"
 #~ msgstr "Flex : pays"
+
 #~ msgid "Flex:Directory"
 #~ msgstr "Flex : répertoire"
+
 #~ msgid "Flex:Email"
 #~ msgstr "Flex : e-mail"
+
 #~ msgid "Flex:KeyCombo"
 #~ msgstr "Flex : combinaison de touches"
+
 #~ msgid "Flex:KeyCap"
 #~ msgstr "Flex : touche majuscules"
+
 #~ msgid "Flex:GuiMenu"
 #~ msgstr "Flex : menu d'interface"
+
 #~ msgid "Flex:GuiMenuItem"
 #~ msgstr "Flex : élément du menu d'interface"
+
 #~ msgid "Flex:GuiButton"
 #~ msgstr "Flex : bouton d'interface"
+
 #~ msgid "Flex:MenuChoice"
 #~ msgstr "Flex : choix de menu"
+
 #~ msgid "Flex"
 #~ msgstr "Flex"
+
 #~ msgid "Foot"
 #~ msgstr "NoteDeBasDePage"
+
 #~ msgid "Note:Comment"
 #~ msgstr "Note : commentaire"
+
 #~ msgid "Note:Note"
 #~ msgstr "Note : note"
+
 #~ msgid "Note:Greyedout"
 #~ msgstr "Note : grisée"
+
 #~ msgid "Box:Shaded"
 #~ msgstr "Boîte : ombrée"
+
 #~ msgid "Wrap"
 #~ msgstr "Enrober"
+
 #~ msgid "Argument"
 #~ msgstr "Argument"
+
 #~ msgid "Info:menu"
 #~ msgstr "Info : menu"
+
 #~ msgid "Info:shortcut"
 #~ msgstr "Info : raccourci"
+
 #~ msgid "Info:shortcuts"
 #~ msgstr "Info : raccourcis"
+
 #~ msgid "Flex:Endnote"
 #~ msgstr "Flex : notes en fin de document"
+
 #~ msgid "Flex:Initial"
 #~ msgstr "Flex : initial"
+
 #~ msgid "Flex:Glosse"
 #~ msgstr "Flex : glose"
+
 #~ msgid "Flex:Tri-Glosse"
 #~ msgstr "Flex : tri-glose"
+
 #~ msgid "Flex:Expression"
 #~ msgstr "Flex : expression"
+
 #~ msgid "Flex:Concepts"
 #~ msgstr "Flex : concepts"
+
 #~ msgid "Flex:Meaning"
 #~ msgstr "Flex : signification"
+
 #~ msgid "Flex:Noun"
 #~ msgstr "Flex : nom propre"
+
 #~ msgid "Flex:Strong"
 #~ msgstr "Flex : gras"
+
 #~ msgid "Noweb literate programming"
 #~ msgstr "Programmation littéraire noweb"
+
 #~ msgid "Norsk"
 #~ msgstr "Norvégien"
+
 #~ msgid "Nynorsk"
 #~ msgstr "Nynorsk"
+
 #~ msgid "file[[scope]]"
 #~ msgstr "fichier[[portée]]"
+
 #~ msgid "master document[[scope]]"
 #~ msgstr "document maître[[portée]]"
+
 #~ msgid "open files[[scope]]"
 #~ msgstr "fichiers ouverts[[portée]]"
+
 #~ msgid "manuals[[scope]]"
 #~ msgstr "manuels[[portée]]"
 
 #, fuzzy
 #~ msgid "Keywordsr"
 #~ msgstr "Mots-clés"
+
 #~ msgid "Current paragraph"
 #~ msgstr "Paragraphe courant"
+
 #~ msgid "Current &paragraph"
 #~ msgstr "&Paragraphe courant"
+
 #~ msgid "A&vailable indices:"
 #~ msgstr "Indices &disponibles :"
+
 #~ msgid "Width:"
 #~ msgstr "Largeur :"
+
 #~ msgid "&Horiz. Phantom"
 #~ msgstr "Fantôme &horiz."
+
 #~ msgid "&Vert. Phantom"
 #~ msgstr "Fantôme &vert."
+
 #~ msgid "Horiz. Phantom"
 #~ msgstr "Fantôme horiz."
+
 #~ msgid "Vert. Phantom"
 #~ msgstr "Fantôme vert."
+
 #~ msgid "Placeholder\t\\phantom"
 #~ msgstr "Marque emplacement\\t\\\\phantom"
+
 #~ msgid "Successful "
 #~ msgstr "Avec succès "
 
@@ -25630,82 +25864,119 @@ msgstr "Utilisateur inconnu"
 #, fuzzy
 #~ msgid "Height:"
 #~ msgstr "&Hauteur :"
+
 #~ msgid "CharStyle:Institute"
 #~ msgstr "Style de caractères : institution"
+
 #~ msgid "CharStyle:E-Mail"
 #~ msgstr "Style de caractères : e-mail"
+
 #~ msgid "CharStyle:Alert"
 #~ msgstr "Style de caractères : alerte"
+
 #~ msgid "CharStyle:Structure"
 #~ msgstr "Style de caractères : structure"
+
 #~ msgid "Element:Firstname"
 #~ msgstr "Élément : prénom"
+
 #~ msgid "Element:Fname"
 #~ msgstr "Élément : prénom"
+
 #~ msgid "Element:Filename"
 #~ msgstr "Élément : nom de fichier"
+
 #~ msgid "Element:Citation-number"
 #~ msgstr "Élément : numéro de citation"
+
 #~ msgid "Element:Issue-number"
 #~ msgstr "Élément : numéro d'émission"
+
 #~ msgid "Element:Issue-day"
 #~ msgstr "Élément : date de publication"
+
 #~ msgid "Element:Issue-months"
 #~ msgstr "Élément : mois de publication"
+
 #~ msgid "Element:SS-Title"
 #~ msgstr "Élément : titre SS"
+
 #~ msgid "Element:CCC-Code"
 #~ msgstr "Élément : code CCC"
+
 #~ msgid "Element:Postcode"
 #~ msgstr "Élément : code postal"
+
 #~ msgid "Element:Directory"
 #~ msgstr "Élément : répertoire"
+
 #~ msgid "Element:KeyCombo"
 #~ msgstr "Élément : combinaison de touches"
+
 #~ msgid "Element:GuiMenuItem"
 #~ msgstr "Élément : élément du menu d'interface"
+
 #~ msgid "Element:GuiButton"
 #~ msgstr "Élément : bouton d'interface"
+
 #~ msgid "Element:MenuChoice"
 #~ msgstr "Élément : choix de menu"
+
 #~ msgid "CharStyle"
 #~ msgstr "Style de caractères"
+
 #~ msgid "Custom:Endnote"
 #~ msgstr "Personnalisé : notes en fin de document"
+
 #~ msgid "CharStyle:Initial"
 #~ msgstr "Style de caractères : initial"
+
 #~ msgid "Custom:Glosse"
 #~ msgstr "Personnalisé : glose"
+
 #~ msgid "Custom:Tri-Glosse"
 #~ msgstr "Personnalisé : tri-glose"
+
 #~ msgid "CharStyle:Noun"
 #~ msgstr "Style de caractères : nom"
+
 #~ msgid "CharStyle:Emph"
 #~ msgstr "Style de caractères : en évidence"
+
 #~ msgid "CharStyle:Code"
 #~ msgstr "Style de caractères : code"
+
 #~ msgid "FrmtRef: "
 #~ msgstr "FrmtRef: "
 
 #, fuzzy
 #~ msgid "Glossary term"
 #~ msgstr "Glose"
+
 #~ msgid "Middle|d"
 #~ msgstr "Au milieu|l"
+
 #~ msgid "caption frame"
 #~ msgstr "cadre de légende"
+
 #~ msgid "top/bottom line"
 #~ msgstr "ligne haut/bas"
+
 #~ msgid "Decimal point:"
 #~ msgstr "Caractère décimal :"
+
 #~ msgid "SyncTeX  for PDF, srcltx for DVI"
 #~ msgstr "SyncTeX  pour le  PDF, srcltx pour le DVI"
+
 #~ msgid "Output Sync (Resources for Forward/Backward Search)"
 #~ msgstr "Synchro avec la sortie (ressources pour la recherche avant/arrière)"
+
 #~ msgid "Screen &DPI:"
 #~ msgstr "Résolution &DPI :"
+
 #~ msgid "Textual reference plus <page>"
 #~ msgstr "Référence textuelle plus <page>"
+
 #~ msgid "ColorUi"
 #~ msgstr "CouleursInterface"
 
@@ -25771,70 +26042,99 @@ msgstr "Utilisateur inconnu"
 #, fuzzy
 #~ msgid "Continue &asking"
 #~ msgstr "Suite"
+
 #~ msgid "Some layouts may not be available."
 #~ msgstr "Certains environnements peuvent ne pas être disponibles."
+
 #~ msgid "Thin space"
 #~ msgstr "Espace fine"
+
 #~ msgid "Medium space"
 #~ msgstr "Espace moyenne"
+
 #~ msgid "Thick space"
 #~ msgstr "Espace large"
+
 #~ msgid "Negative thin space"
 #~ msgstr "Espace fine négative"
+
 #~ msgid "Negative medium space"
 #~ msgstr "Espace moyenne négative"
+
 #~ msgid "Negative thick space"
 #~ msgstr "Espace large négative"
+
 #~ msgid "Inter-word space"
 #~ msgstr "Espace entre mots"
+
 #~ msgid "Date format"
 #~ msgstr "Format de la date"
+
 #~ msgid "Unknown buffer info"
 #~ msgstr "Information sur le tampon inconnue"
+
 #~ msgid "QQuad Space"
 #~ msgstr "Espace double cadratin"
 
 #, fuzzy
 #~ msgid "Preview\t"
 #~ msgstr "Aperçu"
+
 #~ msgid "Revert to Repository Version|R"
 #~ msgstr "Revenir à la version du dépôt|R"
+
 #~ msgid "Options"
 #~ msgstr "Options"
+
 #~ msgid "Find LyX Text"
 #~ msgstr "Rechercher le texte LyX"
+
 #~ msgid "Enter the text to replace in this full-featured LyX editing area"
 #~ msgstr ""
 #~ "Saisir le texte à substituer dans cette zone d'édition LyX pleinement "
 #~ "fonctionnelle"
+
 #~ msgid "&Replace with..."
 #~ msgstr "Remplacer &par..."
+
 #~ msgid "Ne&xt"
 #~ msgstr "Occ. &suivante"
+
 #~ msgid "Replace and find previous occurrence [Shift+Enter]"
 #~ msgstr "Remplacer et rechercher l'occurrence précédente [Maj+Entrée]"
+
 #~ msgid "Pre&vious"
 #~ msgstr "Occ. &précédente"
+
 #~ msgid "&Keep case"
 #~ msgstr "&Conserver la casse"
+
 #~ msgid "Enter the text to search for in this full-featured LyX editing area"
 #~ msgstr ""
 #~ "Saisir le texte à rechercher dans cette zone d'édition LyX pleinement "
 #~ "fonctionnelle"
+
 #~ msgid "&Find..."
 #~ msgstr "Rec&hercher..."
+
 #~ msgid "Choose one of the pre-arranged regular expressions."
 #~ msgstr "Choisir une des expressions régulières proposées"
+
 #~ msgid "&Next"
 #~ msgstr "Occ. &suivante"
+
 #~ msgid "Find previous occurrence [Shift+Enter]"
 #~ msgstr "Rechercher l'occurrence précédente [Maj+Entrée]"
+
 #~ msgid "&Previous"
 #~ msgstr "Occ. &précédente"
+
 #~ msgid "&Advanced"
 #~ msgstr "&Avancé"
+
 #~ msgid "Ch. "
 #~ msgstr "Ch. "
+
 #~ msgid ""
 #~ "The layout file requested by this document,\n"
 #~ "%1$s.layout,\n"
@@ -25849,13 +26149,17 @@ msgstr "Utilisateur inconnu"
 #~ "classe ou d'un style LaTeX qui n'est pas disponible.\n"
 #~ "Voyez le manuel Personnalisation pour\n"
 #~ "plus d'information.\n"
+
 #~ msgid "LyX will not be able to produce output."
 #~ msgstr "LyX ne sera pas à même de produire correctement une sortie."
+
 #~ msgid "Maximum number of words in the initialization string for a new label"
 #~ msgstr ""
 #~ "Nombre maximum de mots dans l'initialisation d'une nouvelle étiquette"
+
 #~ msgid "Any &word"
 #~ msgstr "Un &mot quelconque"
+
 #~ msgid ""
 #~ "Shortcut `%1$s' is already bound to:\n"
 #~ "%2$s"
@@ -25866,24 +26170,32 @@ msgstr "Utilisateur inconnu"
 #, fuzzy
 #~ msgid "TextLabel"
 #~ msgstr "Étiquette"
+
 #~ msgid "Merge cells"
 #~ msgstr "Fusionner les cases"
+
 #~ msgid "Bibliography Entry Settings"
 #~ msgstr "Paramètres d'entrée de bibliographie"
+
 #~ msgid "Branch Settings"
 #~ msgstr "Paramètres de branche"
+
 #~ msgid "Horizontal Space Settings"
 #~ msgstr "Paramètres d'espacement horizontal"
+
 #~ msgid "Table Settings"
 #~ msgstr "Paramètres du tableau"
+
 #~ msgid "Vertical Space Settings"
 #~ msgstr "Paramètres d'espacement vertical"
 
 #, fuzzy
 #~ msgid "Language ...|L"
 #~ msgstr "Langue"
+
 #~ msgid "Find next occurrence and replace it [Enter]"
 #~ msgstr "Rechercher l'occurrence suivante et la remplacer [Entrée]"
+
 #~ msgid "Find previous occurrence and replace it [Shift+Enter]"
 #~ msgstr "Rechercher l'occurrence précédente et la remplacer [Entrée]"
 
@@ -25971,76 +26283,112 @@ msgstr "Utilisateur inconnu"
 #, fuzzy
 #~ msgid "(cancelling)"
 #~ msgstr "Handling"
+
 #~ msgid "Anschrift:"
 #~ msgstr "Adresse :"
+
 #~ msgid "Briefkopf:"
 #~ msgstr "En-tête :"
+
 #~ msgid "Absender:"
 #~ msgstr "Expéditeur :"
+
 #~ msgid "Zusatz:"
 #~ msgstr "Post scriptum :"
+
 #~ msgid "Ihre Zeichen:"
 #~ msgstr "Vos références :"
+
 #~ msgid "Unsere Zeichen:"
 #~ msgstr "Nos références :"
+
 #~ msgid "Sachbearbeiter:"
 #~ msgstr "Sachbearbeiter:"
+
 #~ msgid "Unterschrift:"
 #~ msgstr "Signature :"
+
 #~ msgid "Fusszeile(n):"
 #~ msgstr "Fusszeile(n):"
+
 #~ msgid "Vorwahl:"
 #~ msgstr "Présélection :"
+
 #~ msgid "Telefon:"
 #~ msgstr "Telefon:"
+
 #~ msgid "Ort:"
 #~ msgstr "Lieu :"
+
 #~ msgid "Datum:"
 #~ msgstr "Date :"
+
 #~ msgid "Betreff:"
 #~ msgstr "Objet :"
+
 #~ msgid "Anrede:"
 #~ msgstr "Ouverture :"
+
 #~ msgid "Gruss:"
 #~ msgstr "Salutation :"
+
 #~ msgid "Anlage(n):"
 #~ msgstr "Pièces jointes (n) :"
+
 #~ msgid "Verteiler:"
 #~ msgstr "Expéditeur :"
+
 #~ msgid "Text:"
 #~ msgstr "Text:"
+
 #~ msgid "Strasse"
 #~ msgstr "Rue"
+
 #~ msgid "Strasse:"
 #~ msgstr "Rue :"
+
 #~ msgid "Land"
 #~ msgstr "Pays"
+
 #~ msgid "Land:"
 #~ msgstr "Pays :"
+
 #~ msgid "RetourAdresse:"
 #~ msgstr "RetourAdresse :"
+
 #~ msgid "MeinZeichen:"
 #~ msgstr "RetourAdresse:"
+
 #~ msgid "IhrZeichen:"
 #~ msgstr "IhrZeichen:"
+
 #~ msgid "IhrSchreiben:"
 #~ msgstr "IhrSchreiben:"
+
 #~ msgid "BLZ"
 #~ msgstr "BLZ"
+
 #~ msgid "BLZ:"
 #~ msgstr "BLZ:"
+
 #~ msgid "Konto"
 #~ msgstr "Konto"
+
 #~ msgid "Konto:"
 #~ msgstr "Konto:"
+
 #~ msgid "Adresse:"
 #~ msgstr "Adresse :"
+
 #~ msgid "Anlagen:"
 #~ msgstr "Anlagen:"
+
 #~ msgid "No LaTeX log file found."
 #~ msgstr "Fichier journal LaTeX introuvable."
+
 #~ msgid "Numbers theorems and the like by section."
 #~ msgstr "Numéroter les théorèmes et similaires par section."
+
 #~ msgid "Latex"
 #~ msgstr "Latex"
 
@@ -26083,16 +26431,20 @@ msgstr "Utilisateur inconnu"
 #, fuzzy
 #~ msgid "CharStyle:DropCapital"
 #~ msgstr "Style de caractères : e-mail"
+
 #~ msgid "Close Tab Group|G"
 #~ msgstr "Fermer le groupe de tabulation|g"
 
 #, fuzzy
 #~ msgid "Regexp"
 #~ msgstr "exp"
+
 #~ msgid "No file open!"
 #~ msgstr "Aucun fichier ouvert !"
+
 #~ msgid "Jump to the label"
 #~ msgstr "Sauter à l'étiquette"
+
 #~ msgid "Unknown author index for deletion: %1$d\n"
 #~ msgstr "Index d'auteur inconnu pour la suppression : %1$d\n"
 
@@ -26103,33 +26455,44 @@ msgstr "Utilisateur inconnu"
 #, fuzzy
 #~ msgid "Master Settings"
 #~ msgstr "Paramètres de note"
+
 #~ msgid "Column Width"
 #~ msgstr "Largeur de colonne"
+
 #~ msgid "Listing settings"
 #~ msgstr "Paramètres de listing"
 
 #, fuzzy
 #~ msgid "\\alph{enumii}."
 #~ msgstr "(\\alph{enumii})"
+
 #~ msgid "Insert|n"
 #~ msgstr "Insérer|I"
+
 #~ msgid "Unknown spacing argument: "
 #~ msgstr "Paramètre d'espacement inconnu : "
+
 #~ msgid ""
 #~ "Input listings parameters on the right. Enter ? for a list of parameters."
 #~ msgstr ""
 #~ "Mettre les paramètres du listing à droite. Taper ? pour une liste des "
 #~ "paramètres disponibles."
+
 #~ msgid "Length"
 #~ msgstr "Valeur"
+
 #~ msgid "Opened inset"
 #~ msgstr "Insert ouvert"
+
 #~ msgid "Opened Box Inset"
 #~ msgstr "Insert de boîte ouvert"
+
 #~ msgid "Opened Branch Inset"
 #~ msgstr "Insert de branche ouvert"
+
 #~ msgid "Opened Caption Inset"
 #~ msgstr "Insert de légende ouvert"
+
 #~ msgid "Opened ERT Inset"
 #~ msgstr "Insert TeX ouvert"
 
@@ -26154,6 +26517,7 @@ msgstr "Utilisateur inconnu"
 #, fuzzy
 #~ msgid "Opened Phantom Inset"
 #~ msgstr "Insert de légende ouvert"
+
 #~ msgid "Opened table"
 #~ msgstr "Tableau ouvert"
 
@@ -26178,12 +26542,15 @@ msgstr "Utilisateur inconnu"
 #, fuzzy
 #~ msgid "SVN: Locking property set."
 #~ msgstr "Propriété de verrouillage positionnée."
+
 #~ msgid "Personal &dictionary:"
 #~ msgstr "&Dictionnaire personnel :"
+
 #~ msgid "Specify a personal dictionary file other than the default"
 #~ msgstr ""
 #~ "Spécifier un fichier de dictionnaire personnel, autre que le dictionnaire "
 #~ "implicite"
+
 #~ msgid "Use input encod&ing"
 #~ msgstr "Utiliser l'&encodage d'entrée"
 
@@ -26208,6 +26575,7 @@ msgstr "Utilisateur inconnu"
 #~ "d'entrée. Cochez si vous n'arrivez pas à vérifier l'orthographe des mots "
 #~ "contenant des caractères accentués. Ne marche pas forcément avec tous les "
 #~ "dictionnaires."
+
 #~ msgid "*.pws"
 #~ msgstr "*.pws"
 
@@ -26218,12 +26586,16 @@ msgstr "Utilisateur inconnu"
 #, fuzzy
 #~ msgid "C&ommand:"
 #~ msgstr "&Commande :"
+
 #~ msgid "&BibTeX command:"
 #~ msgstr "Commande &BibTeX :"
+
 #~ msgid "BibTeX command (&Japanese):"
 #~ msgstr "Commande BibTeX (&japonais) :"
+
 #~ msgid "Index command (Ja&panese):"
 #~ msgstr "Commande d'&indexation (ja&ponais) :"
+
 #~ msgid "Toggle Labeling/Numbering|T"
 #~ msgstr "(Dés)Activer étiquetage/numérotation|n"
 
@@ -26234,20 +26606,28 @@ msgstr "Utilisateur inconnu"
 #, fuzzy
 #~ msgid "View|V[[show]]"
 #~ msgstr "Visualiser|V"
+
 #~ msgid "View DVI"
 #~ msgstr "Visionner DVI"
+
 #~ msgid "View PDF (pdflatex)"
 #~ msgstr "Visionner PDF (pdflatex)"
+
 #~ msgid "View PostScript"
 #~ msgstr "Visionner PostScript"
+
 #~ msgid "Update DVI"
 #~ msgstr "Mettre à jour DVI"
+
 #~ msgid "Update PDF (pdflatex)"
 #~ msgstr "Mettre à jour PDF (pdflatex)"
+
 #~ msgid "Update PostScript"
 #~ msgstr "Mettre à jour PostScript"
+
 #~ msgid "Thesaurus failure"
 #~ msgstr "Échec du dictionnaire de synonymes"
+
 #~ msgid ""
 #~ "Aiksaurus returned the following error:\n"
 #~ "\n"
@@ -26260,40 +26640,52 @@ msgstr "Utilisateur inconnu"
 #, fuzzy
 #~ msgid "Indices"
 #~ msgstr "Facture"
+
 #~ msgid "You cannot paste into a multicell selection."
 #~ msgstr "Vous ne pouvez pas copier dans une sélection multi-cellules."
+
 #~ msgid "B&rowse..."
 #~ msgstr "P&arcourir..."
+
 #~ msgid "Number of Co&pies:"
 #~ msgstr "Nombre d'exempl&aires :"
+
 #~ msgid "Sa&ns Serif:"
 #~ msgstr "&Sans empattement :"
+
 #~ msgid "Ne&w"
 #~ msgstr "No&uvelle"
+
 #~ msgid "Go back to Reference|G"
 #~ msgstr "Retourner à la référence|u"
 
 #, fuzzy
 #~ msgid "Phantom Text"
 #~ msgstr "Texte brut|T"
+
 #~ msgid "No horizontal line\t\\atop"
 #~ msgstr "Sans barre horizontale\t\\atop"
+
 #~ msgid "Native OS API not yet supported."
 #~ msgstr "API native du système d'exploitation pas encore supportée."
+
 #~ msgid "Spellchecker error"
 #~ msgstr "Erreur du correcteur orthographique"
+
 #~ msgid ""
 #~ "The spellchecker has died for some reason.\n"
 #~ "Maybe it has been killed."
 #~ msgstr ""
 #~ "Le processus de correction orthographique a été interrompu.\n"
 #~ "Il a peut-être été tué."
+
 #~ msgid "The spellchecker has failed"
 #~ msgstr "Le correcteur orthographique a échoué"
 
 #, fuzzy
 #~ msgid "RegExp"
 #~ msgstr "exp"
+
 #~ msgid "&Initialize Group Name:"
 #~ msgstr "&Initialiser le nom du groupe :"
 
@@ -26302,72 +26694,95 @@ msgstr "Utilisateur inconnu"
 #~ msgstr ""
 #~ "Nom de groupe à construire d'après les paramètres courants. Utiliser le "
 #~ "menu contextuel pour allouer le nom existant."
+
 #~ msgid "&Postscript driver:"
 #~ msgstr "&Pilote PostScript :"
+
 #~ msgid "No Table of contents"
 #~ msgstr "Pas de table des matières"
+
 #~ msgid "Append Parameter"
 #~ msgstr "Ajouter un paramètre"
+
 #~ msgid "Remove Last Parameter"
 #~ msgstr "Supprimer le dernier paramètre"
+
 #~ msgid "Make First Non-Optional into Optional Parameter"
 #~ msgstr "Rendre optionnel le premier paramètre non optionnel"
+
 #~ msgid "Make Last Optional into Non-Optional Parameter"
 #~ msgstr "Rendre non optionnel le dernier paramètre optionnel"
+
 #~ msgid "Insert Optional Parameter"
 #~ msgstr "Insérer un paramètre optionnel"
+
 #~ msgid "&Default language:"
 #~ msgstr "&Langue implicite :"
+
 #~ msgid "External app for formating tables in plain text output"
 #~ msgstr "Programme externe pour mettre en forme les tableaux en texte brut"
+
 #~ msgid "Spellchec&ker executable:"
 #~ msgstr "Correcteur &orthographique :"
+
 #~ msgid "Can't create pipe for spellchecker."
 #~ msgstr "Impossible de créer un tube pour le correcteur orthographique."
+
 #~ msgid "Can't open pipe for spellchecker."
 #~ msgstr "Impossible d'ouvrir un tube pour le correcteur orthographique."
+
 #~ msgid ""
 #~ "Could not create an ispell process.\n"
 #~ "You may not have the right languages installed."
 #~ msgstr ""
 #~ "Impossible de créer un processus ispell.\n"
 #~ "Vous n'avez peut-être pas les langues nécessaires installées."
+
 #~ msgid ""
 #~ "The ispell process returned an error.\n"
 #~ "Perhaps it has been configured wrongly ?"
 #~ msgstr ""
 #~ "Le processus ispell a renvoyé une erreur.\n"
 #~ "Peut-être a-t-il mal été configuré ?"
+
 #~ msgid ""
 #~ "Could not check word `%1$s' because it could not be converted to encoding "
 #~ "`%2$s'."
 #~ msgstr ""
 #~ "Vérification du mot '%1$s'  impossible parce qu'il ne peut être converti "
 #~ "dans l'encodage '%2$s'."
+
 #~ msgid "Could not communicate with the ispell spellchecker process."
 #~ msgstr ""
 #~ "Échec de la communication avec le processus de correction orthographique "
 #~ "ispell."
+
 #~ msgid ""
 #~ "Could not insert word `%1$s' because it could not be converted to "
 #~ "encoding `%2$s'."
 #~ msgstr ""
 #~ "Insertion du mot '%1$s'  impossible parce qu'il ne peut être converti "
 #~ "dans l'encodage '%2$s'."
+
 #~ msgid ""
 #~ "Could not accept word `%1$s' because it could not be converted to "
 #~ "encoding `%2$s'."
 #~ msgstr ""
 #~ "Le mot '%1$s' ne peut être accepté parce qu'il ne peut être converti dans "
 #~ "l'encodage '%2$s'."
+
 #~ msgid "What command runs the spellchecker?"
 #~ msgstr "Commande activant le correcteur orthographique."
+
 #~ msgid "ispell"
 #~ msgstr "ispell"
+
 #~ msgid "pspell (library)"
 #~ msgstr "pspell (librairie)"
+
 #~ msgid "aspell (library)"
 #~ msgstr "aspell (librairie)"
+
 #~ msgid "*.ispell"
 #~ msgstr "*.ispell"
 
@@ -26438,10 +26853,11 @@ msgstr "Utilisateur inconnu"
 #, fuzzy
 #~ msgid "Check out for Edit|O"
 #~ msgstr "Nouvelle version éditable|N"
+
 #~ msgid "Graphics having the same group name will share the same parameters"
 #~ msgstr ""
 #~ "Les graphiques portant le même nom de groupe partageront les mêmes "
 #~ "paramètres"
+
 #~ msgid "Grou&p Name:"
 #~ msgstr "&Nom de groupe :"
-
