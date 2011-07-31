@@ -744,7 +744,7 @@ build_package() {
 		make_dmg "${DMGLocation}"
 		if [ -d "${QtInstallDir}/lib/QtCore.framework/Versions/${QtFrameworkVersion}" -a "yes" = "${qt4_deployment}" ]; then
 			rm -f "${DMGLocation}/${DMGNAME}+qt4.dmg"
-			echo move to "${DMGLocation}/${DMGNAME}+qt4.dmg"
+			echo move to "${DMGLocation}/${DMGNAME}+qt4${MAC_API}.dmg"
 			mv "${DMGLocation}/${DMGNAME}.dmg" "${DMGLocation}/${DMGNAME}+qt4${MAC_API}.dmg"
 		fi
 	)
