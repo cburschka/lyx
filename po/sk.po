@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-07-26 14:56+0200\n"
-"PO-Revision-Date: 2011-07-26 16:06+0200\n"
+"POT-Creation-Date: 2011-08-01 11:18+0200\n"
+"PO-Revision-Date: 2011-08-01 16:54+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -10833,10 +10833,8 @@ msgid ""
 "Additional manual for a detailed description of multiple columns."
 msgstr ""
 "Pridáva 2 štýly pre začiatok a koniec viac-stĺpcového prostredia. Začiatočný "
-"štýl obsahuje "
-"počet stĺpcov, konečný štýl musí byť prázdny. Pozri špecifické manuály pre "
-"detailný popis "
-"viac-stĺpcového prostredia."
+"štýl obsahuje počet stĺpcov, konečný štýl musí byť prázdny. Pozri špecifické "
+"manuály pre detailný popis viac-stĺpcového prostredia."
 
 #: lib/layouts/multicol.module:11
 msgid "Begin Multiple Columns"
@@ -13198,7 +13196,7 @@ msgstr "Poznámku pod čiarou"
 
 #: lib/ui/stdmenus.inc:369
 msgid "Marginal Note|M"
-msgstr "Poznámku na okraji"
+msgstr "Okrajová Poznámka"
 
 #: lib/ui/stdmenus.inc:370
 msgid "Short Title|S"
@@ -14312,7 +14310,7 @@ msgstr "Štandard\t\\frac"
 
 #: lib/ui/stdtoolbars.inc:355
 msgid "Nice fraction (3/4)\t\\nicefrac"
-msgstr "Jemný zlomok\t\\nicefrac"
+msgstr "Jemný zlomok(3/4)\t\\nicefrac"
 
 #: lib/ui/stdtoolbars.inc:356
 msgid "Unit (km)\t\\unitone"
@@ -16756,62 +16754,66 @@ msgid "LyX 1.6.x"
 msgstr "LyX 1.6.x"
 
 #: lib/configure.py:589
+msgid "LyX 2.0.x"
+msgstr "LyX 2.0.x"
+
+#: lib/configure.py:590
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK LyX 1.4.x (big5)"
 
-#: lib/configure.py:590
+#: lib/configure.py:591
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr "CJK LyX 1.4.x (euc-jp)"
 
-#: lib/configure.py:591
+#: lib/configure.py:592
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr "CJK LyX 1.4.x (euc-kr)"
 
-#: lib/configure.py:592
+#: lib/configure.py:593
 msgid "LyX Preview"
 msgstr "Náhľad LyX"
 
-#: lib/configure.py:593
+#: lib/configure.py:594
 msgid "LyX Preview (LilyPond book)"
 msgstr "Náhľad LyX (LilyPond book)"
 
-#: lib/configure.py:594
+#: lib/configure.py:595
 msgid "LyX Preview (pLaTeX)"
 msgstr "Náhľad LyX (pLaTeX)"
 
-#: lib/configure.py:595
+#: lib/configure.py:596
 msgid "PDFTEX"
 msgstr "PDFTEX"
 
-#: lib/configure.py:596
+#: lib/configure.py:597
 msgid "Program"
 msgstr "Program"
 
-#: lib/configure.py:597
+#: lib/configure.py:598
 msgid "PSTEX"
 msgstr "PSTEX"
 
-#: lib/configure.py:598 src/frontends/qt4/GuiClipboard.cpp:168
+#: lib/configure.py:599 src/frontends/qt4/GuiClipboard.cpp:168
 msgid "Windows Metafile"
 msgstr "Windows Metafile"
 
-#: lib/configure.py:599 src/frontends/qt4/GuiClipboard.cpp:167
+#: lib/configure.py:600 src/frontends/qt4/GuiClipboard.cpp:167
 msgid "Enhanced Metafile"
 msgstr "Rozšírený WMF"
 
-#: lib/configure.py:600
+#: lib/configure.py:601
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
-#: lib/configure.py:682
+#: lib/configure.py:683
 msgid "LyXBlogger"
 msgstr "LyXBlogger"
 
-#: lib/configure.py:885
+#: lib/configure.py:886
 msgid "LyX Archive (zip)"
 msgstr "LyX Archív (zip)"
 
-#: lib/configure.py:888
+#: lib/configure.py:889
 msgid "LyX Archive (tar.gz)"
 msgstr "LyX Archív (tar.gz)"
 
@@ -20142,7 +20144,7 @@ msgstr "BibTeX bibliografia"
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
 #: src/frontends/qt4/GuiDocument.cpp:1877
-#: src/frontends/qt4/GuiExternal.cpp:639 src/frontends/qt4/GuiGraphics.cpp:799
+#: src/frontends/qt4/GuiExternal.cpp:637 src/frontends/qt4/GuiGraphics.cpp:799
 #: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1866
 #: src/frontends/qt4/GuiView.cpp:1923 src/frontends/qt4/GuiView.cpp:2064
 #: src/frontends/qt4/GuiView.cpp:2186 src/frontends/qt4/GuiView.cpp:2272
@@ -21111,7 +21113,7 @@ msgstr "Externý materiál"
 msgid "Scale%"
 msgstr "Mierka%"
 
-#: src/frontends/qt4/GuiExternal.cpp:635
+#: src/frontends/qt4/GuiExternal.cpp:633
 msgid "Select external file"
 msgstr "Vyberte externý súbor"
 
