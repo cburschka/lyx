@@ -20964,8 +20964,8 @@ End-of-Line Conversions
 \end_layout
 
 \begin_layout Standard
-When the collsraborators are mixing Linux and Windows environments, LyX
- will use different line endings inside the .lyx files.
+When the collaborators are mixing Linux and Windows environments, LyX will
+ use different line endings inside the .lyx files.
  This is not a problem as far as LyX functionality is concerned, but the
  commit diffs will be huge and merge-conflicts prone.
  Fortunately SVN itself knows
