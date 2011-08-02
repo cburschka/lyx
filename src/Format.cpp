@@ -23,6 +23,7 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/os.h"
+#include "support/Path.h"
 #include "support/Systemcall.h"
 #include "support/textutils.h"
 #include "support/Translator.h"
@@ -312,13 +313,14 @@ bool Formats::view(Buffer const & buffer, FileName const & filename,
 	if (!contains(command, token_from_format))
 		command += ' ' + token_from_format;
 
-	command = subst(command, token_from_format, quoteName(filename.toFilesystemEncoding()));
+	command = subst(command, token_from_format, quoteName(onlyFileName(filename.toFilesystemEncoding())));
 	command = subst(command, token_path_format, quoteName(onlyPath(filename.toFilesystemEncoding())));
 	command = subst(command, token_socket_format, quoteName(theServerSocket().address()));
 	LYXERR(Debug::FILES, "Executing command: " << command);
 	// FIXME UNICODE utf8 can be wrong for files
 	buffer.message(_("Executing command: ") + from_utf8(command));
 
+	PathChanger p(filename.onlyPath());
 	Systemcall one;
 	one.startscript(Systemcall::DontWait, command, buffer.filePath());
 
