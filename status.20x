@@ -166,6 +166,9 @@ What's new
 - Fix bug when exporting documents containing the command/character
   "\iddots" in math to LyX 1.6.x.
 
+- Fix forward-search on Windows with SumatraPDF and, as a by-product,
+  allow using SumatraPDF on Cygwin without the need for a wrapper script.
+
 
 * USER INTERFACE
 
