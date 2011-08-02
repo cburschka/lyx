@@ -6863,7 +6863,7 @@ In order to use SumatraPDF for inverse search, enter
 status collapsed
 
 \begin_layout Plain Layout
-SumatraPDF.sh
+SumatraPDF -inverse-search "lyxeditor -g %f %l"
 \end_layout
 
 \end_inset
@@ -6881,46 +6881,8 @@ PDF (pdflatex)
 
 \end_inset
 
-, where 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-SumatraPDF.sh
-\end_layout
-
-\end_inset
-
- is the following script (to be placed in your command PATH, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-/usr/local/bin
-\end_layout
-
-\end_inset
-
- being the best choice):
-\end_layout
-
-\begin_layout LyX-Code
-#!/bin/bash
-\begin_inset Newline newline
-\end_inset
-
-cd $(dirname $1)
-\begin_inset Newline newline
-\end_inset
-
-SumatraPDF -inverse-search "lyxeditor -g %f %l" $(basename $1)
-\end_layout
-
-\begin_layout Standard
-This wrapper script is needed because SumatraPDF is a native Windows application
- and does not understand the posix paths used by the Cygwin version of LyX.
- If SumatraPDF.exe is not in your command PATH, use its full posix path in
- the script above.
+.
+ If SumatraPDF.exe is not in your command PATH, use its full posix path.
  The 
 \begin_inset Flex Code
 status collapsed
