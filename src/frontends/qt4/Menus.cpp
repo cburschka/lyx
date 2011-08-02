@@ -1746,9 +1746,10 @@ void Menus::Impl::macxMenuBarInit(GuiView * view, QMenuBar * qmb)
 		{LFUN_LYX_QUIT, "", "Quit LyX", QAction::QuitRole}
 	};
 	const size_t num_entries = sizeof(entries) / sizeof(entries[0]);
+	const bool first_call = mac_special_menu_.size() == 0;
 
 	// the special menu for Menus. Fill it up only once.
-	if (mac_special_menu_.size() == 0) {
+	if (first_call) {
 		for (size_t i = 0 ; i < num_entries ; ++i) {
 			FuncRequest const func(entries[i].action,
 				from_utf8(entries[i].arg));
@@ -1756,17 +1757,26 @@ void Menus::Impl::macxMenuBarInit(GuiView * view, QMenuBar * qmb)
 				entries[i].label, func));
 		}
 	}
-	
+
 	// add the entries to a QMenu that will eventually be empty
 	// and therefore invisible.
 	QMenu * qMenu = qmb->addMenu("special");
 	MenuDefinition::const_iterator cit = mac_special_menu_.begin();
 	MenuDefinition::const_iterator end = mac_special_menu_.end();
 	for (size_t i = 0 ; cit != end ; ++cit, ++i) {
+#if defined(QT_MAC_USE_COCOA) && (QT_MAC_USE_COCOA > 0)
+		if (first_call || entries[i].role != QAction::ApplicationSpecificRole) {
+			Action * action = new Action(view, QIcon(), cit->label(),
+				 cit->func(), QString(), qMenu);
+			action->setMenuRole(entries[i].role);
+			qMenu->addAction(action);
+		}
+#else
 		Action * action = new Action(view, QIcon(), cit->label(),
 			cit->func(), QString(), qMenu);
 		action->setMenuRole(entries[i].role);
 		qMenu->addAction(action);
+#endif
 	}
 }
 
