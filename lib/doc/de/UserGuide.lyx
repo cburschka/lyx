@@ -39699,6 +39699,7 @@ key "tipa"
 status open
 
 \begin_layout Plain Layout
+
 http://wiki.lyx.org/LyX/LinguistLyX
 \end_layout
 
@@ -48210,7 +48211,7 @@ key "BibTeX"
 \begin_inset CommandInset href
 LatexCommand href
 name "Dokumentation"
-target "http://www.ctan.org/get/biblio/bibtex/contrib/doc/btxdoc.pdf"
+target "http://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxdoc.pdf"
 
 \end_inset
 
@@ -48228,7 +48229,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.ctan.org/get/biblio/bibtex/contrib/doc/btxdoc.pdf
+http://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxdoc.pdf
 \end_layout
 
 \end_inset
@@ -48286,7 +48287,7 @@ key "makeindex"
 \begin_inset CommandInset href
 LatexCommand href
 name "Dokumentation"
-target "http://tug.ctan.org/indexing/makeindex/doc/manpages.dvi"
+target "http://mirrors.ctan.org/indexing/makeindex/doc/makeindex.pdf"
 
 \end_inset
 
@@ -48304,7 +48305,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://tug.ctan.org/indexing/makeindex/doc/manpages.dvi
+http://mirrors.ctan.org/indexing/makeindex/doc/makeindex.pdf
 \end_layout
 
 \end_inset
@@ -48635,54 +48636,6 @@ status collapsed
 \begin_layout Plain Layout
 
 http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\labelwidthstring Literaturverzeichnis
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "wrapfig"
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "Documentation"
-target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/wrapfig/wrapfig.sty"
-
-\end_inset
-
- des LaTeX-Pakets 
-\series bold
-wrapfig
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-Paket ! wrapfig
-\end_layout
-
-\end_inset
-
-:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/wrapfig/wrapfig.sty
 \end_layout
 
 \end_inset
