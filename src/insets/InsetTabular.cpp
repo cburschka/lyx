@@ -1339,7 +1339,13 @@ int Tabular::textVOffset(idx_type cell) const
 Tabular::idx_type Tabular::getFirstCellInRow(row_type row) const
 {
 	col_type c = 0;
-	while (cell_info[row][c].multirow == CELL_PART_OF_MULTIROW)
+	idx_type const numcells = numberOfCellsInRow(row);
+	// we check against numcells to make sure we do not crash if all the
+	// cells are multirow (bug #7535), but in that case our return value
+	// is really invalid, i.e., it is NOT the first cell in the row. but
+	// i do not know what to do here. (rgh)
+	while (c < numcells - 1
+	       && cell_info[row][c].multirow == CELL_PART_OF_MULTIROW)
 		++c;
 	return cell_info[row][c].cellno;
 }
@@ -1348,6 +1354,9 @@ Tabular::idx_type Tabular::getFirstCellInRow(row_type row) const
 Tabular::idx_type Tabular::getLastCellInRow(row_type row) const
 {
 	col_type c = ncols() - 1;
+	// of course we check against 0 so we don't crash. but we have the same
+	// problem as in the previous routine: if all the cells are part of a
+	// multirow or part of a multi column, then our return value is invalid.
 	while (c > 0
 	       && (cell_info[row][c].multirow == CELL_PART_OF_MULTIROW
 		   || cell_info[row][c].multicolumn == CELL_PART_OF_MULTICOLUMN))
