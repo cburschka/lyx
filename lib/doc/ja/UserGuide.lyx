@@ -17812,7 +17812,9 @@ height "1pt"
 整形\SpecialChar \menuseparator
 水平線
 \family default
-のダイアログで水平線を挿入することができます。オフセットは、線と現在の本文行あるいは段落のベースラインとの間の垂直距離です。
+のダイアログで水平線を挿入することができます。オフセットは、線と現在の本文行あるいは段落のベースラインとの間の垂直距離です。 
+\lang english
+The line settings can be changed by left-clicking on the line.
 \end_layout
 
 \begin_layout Standard
@@ -44710,7 +44712,14 @@ http://wiki.lyx.org/LyX/LinguistLyX
 
 \begin_layout Description
 上付き文字 上付き文字を挿入します。（例）テスト
-\begin_inset Formula $^{\text{a,b}}$
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+
+\lang english
+a, b
+\end_layout
+
 \end_inset
 
 
@@ -44718,7 +44727,14 @@ http://wiki.lyx.org/LyX/LinguistLyX
 
 \begin_layout Description
 下付き文字 下付き文字を挿入します。（例）テスト
-\begin_inset Formula $_{\text{3x}}$
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\lang english
+3x
+\end_layout
+
 \end_inset
 
 
@@ -44799,6 +44815,25 @@ reference "sub:ハイフネーション"
 \end_inset
 
 節に述べられているハイフネーション位置を挿入します。
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Phantom Inserts Phantom space, see section
+\begin_inset space ~
+\end_inset
+
+
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:埋め草"
+
+\end_inset
+
+。
 \end_layout
 
 \begin_layout Description

@@ -1306,7 +1306,7 @@ Delete
 \begin_layout Section
 Batalkan dan Kembalikan
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Kembalikan
@@ -1316,7 +1316,7 @@ Kembalikan
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Batalkan
@@ -1415,7 +1415,7 @@ Kembalikan
 \begin_layout Section
 Penggunaan Tetikus
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Penggunaan Tetikus
@@ -1518,7 +1518,7 @@ name "sec:Navigating"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Navigasi
@@ -1742,7 +1742,7 @@ name "sec:Input-Completion"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Masukan kata
@@ -1752,7 +1752,7 @@ Masukan kata
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Melengkapi kata|see
@@ -1867,7 +1867,7 @@ reference "sub:Input-Completion-Appendix"
 \begin_layout Section
 Gabungan tombol ketik
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Gabungan tombol ketik
@@ -1877,7 +1877,7 @@ Gabungan tombol ketik
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Gabungan tombol|see
@@ -1909,7 +1909,7 @@ status collapsed
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Pintasan|see
@@ -2383,7 +2383,7 @@ reference "sub:Editing-Shortcuts"
 \begin_layout Chapter
 LyX Dasar
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 LyX ! Dasar
@@ -2397,7 +2397,7 @@ LyX ! Dasar
 \begin_layout Section
 Tipe Dokumen
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dokumen ! Tipe
@@ -9987,6 +9987,13 @@ Protect
 
 \begin_layout Subsubsection
 Phantom Space
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Phantom-Space"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -10034,7 +10041,7 @@ Edge would have been jumps the gun.
 
 
 \begin_inset Phantom HPhantom
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Mr.
@@ -10049,7 +10056,7 @@ has to be jumped
 
 
 \begin_inset Phantom HPhantom
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Mr.
@@ -10737,6 +10744,7 @@ Line
  you can insert horizontal lines.
  The line offset is the vertical distance between the line and the baseline
  of the current text line or the paragraph.
+ The line settings can be changed by left-clicking on the line.
 \end_layout
 
 \begin_layout Standard
@@ -35992,11 +36000,8 @@ Ordinary
 \begin_inset space ~
 \end_inset
 
-Quote Inserts this quote: 
-\begin_inset Quotes erd
-\end_inset
-
-, no matter what quote type you selected in the 
+Quote Inserts this quote: ", no matter what quote type you selected in the
+ 
 \family sans
 Document\SpecialChar \menuseparator
 Settings
@@ -36014,7 +36019,7 @@ Single
 \end_inset
 
 Quote Inserts this quote: 
-\begin_inset Quotes els
+\begin_inset Quotes ers
 \end_inset
 
 
@@ -36132,7 +36137,12 @@ Here you can insert the following format constructs:
 
 \begin_layout Description
 Superscript Inserts a superscript: test
-\begin_inset Formula $^{\text{a,b}}$
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+a, b
+\end_layout
+
 \end_inset
 
 
@@ -36140,7 +36150,12 @@ Superscript Inserts a superscript: test
 
 \begin_layout Description
 Subscript Inserts a subscript: test
-\begin_inset Formula $_{\text{3x}}$
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+3x
+\end_layout
+
 \end_inset
 
 
@@ -36258,6 +36273,21 @@ reference "sub:Vertical-Space"
 \end_inset
 
  for a description.
+\end_layout
+
+\begin_layout Description
+Phantom Inserts Phantom space, see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Phantom-Space"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
