@@ -287,8 +287,11 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 	}
 
 	// Always guard against unfortunate ligatures (!` ?`)
-	if (prefixIs(qstr, "`"))
-		qstr.insert(0, "{}");
+	if (prefixIs(qstr, "`")) {
+		char_type const lastchar = os.lastChar();
+		if (lastchar == '!' || lastchar == '?')
+			qstr.insert(0, "{}");
+	}
 
 	os << from_ascii(qstr);
 }
