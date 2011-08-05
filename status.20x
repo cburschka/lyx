@@ -169,6 +169,9 @@ What's new
 - Fix forward-search on Windows with SumatraPDF and, as a by-product,
   allow using SumatraPDF on Cygwin without the need for a wrapper script.
 
+- Avoid kerning problems by protecting back quotation marks obtained through
+  the quotes inset only when a TeX ligature would be triggered (bug 253).
+
 
 * USER INTERFACE
 

@@ -93,6 +93,7 @@ typedef odocstream & (*odocstream_manip)(odocstream &);
     they were iomanip's to ensure that the next output will start at the
     beginning of a line. Using "breakln", a '\n' char will be output if needed,
     while using "safebreakln", "%\n" will be output if needed.
+    The class also records the last output character.
   */
 
 class otexstream {
@@ -100,7 +101,7 @@ public:
 	///
 	otexstream(odocstream & os, TexRow & texrow)
 		: os_(os), texrow_(texrow),
-		  canbreakline_(false), protectspace_(false) {}
+		  canbreakline_(false), protectspace_(false), lastchar_(0) {}
 	///
 	odocstream & os() { return os_; }
 	///
@@ -115,6 +116,10 @@ public:
 	void protectSpace(bool protectspace) { protectspace_ = protectspace; }
 	///
 	bool protectSpace() const { return protectspace_; }
+	///
+	void lastChar(char_type const & c) { lastchar_ = c; }
+	///
+	char_type lastChar() const { return lastchar_; }
 private:
 	///
 	odocstream & os_;
@@ -124,6 +129,8 @@ private:
 	bool canbreakline_;
 	///
 	bool protectspace_;
+	///
+	char_type lastchar_;
 };
 
 /// Helper structs for breaking a line
