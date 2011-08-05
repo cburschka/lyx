@@ -3671,7 +3671,7 @@ name "sub:Paper-Size,-Orientation,"
 \end_layout
 
 \begin_layout Standard
-You'll find the following options in the menu 
+You find the following options in the menu 
 \family sans
 Page
 \begin_inset space ~
@@ -10792,6 +10792,13 @@ Protect
 
 \begin_layout Subsubsection
 Phantom Space
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Phantom-Space"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -11542,6 +11549,7 @@ Line
  you can insert horizontal lines.
  The line offset is the vertical distance between the line and the baseline
  of the current text line or the paragraph.
+ The line settings can be changed by left-clicking on the line.
 \end_layout
 
 \begin_layout Standard
@@ -16607,7 +16615,7 @@ arg   "space-insert thin"
 \end_layout
 
 \begin_layout Standard
-Here's an example to show the differences:
+Here is an example to show the differences:
 \end_layout
 
 \begin_layout Standard
@@ -39397,11 +39405,8 @@ Ordinary
 \begin_inset space ~
 \end_inset
 
-Quote Inserts this quote: 
-\begin_inset Quotes erd
-\end_inset
-
-, no matter what quote type you selected in the 
+Quote Inserts this quote: ", no matter what quote type you selected in the
+ 
 \family sans
 Document\SpecialChar \menuseparator
 Settings
@@ -39419,7 +39424,7 @@ Single
 \end_inset
 
 Quote Inserts this quote: 
-\begin_inset Quotes els
+\begin_inset Quotes ers
 \end_inset
 
 
@@ -39537,7 +39542,12 @@ Here you can insert the following format constructs:
 
 \begin_layout Description
 Superscript Inserts a superscript: test
-\begin_inset Formula $^{\text{a,b}}$
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+a, b
+\end_layout
+
 \end_inset
 
 
@@ -39545,7 +39555,12 @@ Superscript Inserts a superscript: test
 
 \begin_layout Description
 Subscript Inserts a subscript: test
-\begin_inset Formula $_{\text{3x}}$
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+3x
+\end_layout
+
 \end_inset
 
 
@@ -39678,6 +39693,21 @@ Point Inserts a hyphenation point, see section
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Hyphenation"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Phantom Inserts Phantom space, see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Phantom-Space"
 
 \end_inset
 
@@ -39833,7 +39863,7 @@ List / TOC
 
 \begin_layout Standard
 Various lists can be inserted with this menu entry.
- The table of contents, the algorithm, figures, and tables list are described
+ The table of contents, the algorithm, figures and tables list are described
  in section
 \begin_inset space ~
 \end_inset
@@ -39868,7 +39898,7 @@ reference "sec:Nomenclature"
 
 \end_inset
 
-, and the BibTeX bibliography in section
+ and the BibTeX bibliography in section
 \begin_inset space ~
 \end_inset
 
@@ -40797,7 +40827,7 @@ Preferences
 
 \begin_layout Standard
 The preferences dialog is described in detail in appendix
-\begin_inset space \thinspace{}
+\begin_inset space ~
 \end_inset
 
 

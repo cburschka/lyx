@@ -11084,6 +11084,13 @@ Proteger
 
 \begin_layout Subsubsection
 Espacio fantasma
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Espacio-fantasma"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -40120,7 +40127,7 @@ Comillas
 \end_inset
 
 simples Inserta esta comilla: 
-\begin_inset Quotes els
+\begin_inset Quotes frs
 \end_inset
 
 
@@ -40250,7 +40257,12 @@ Aquí puedes introducir las siguientes estructuras o formatos:
 
 \begin_layout Description
 Superíndice Inserta un superíndice o exponente: test
-\begin_inset Formula $^{\text{a,b}}$
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+a, b
+\end_layout
+
 \end_inset
 
 
@@ -40258,7 +40270,12 @@ Superíndice Inserta un superíndice o exponente: test
 
 \begin_layout Description
 Subíndice Inserta un subíndice: test
-\begin_inset Formula $_{\text{3x}}$
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+3x
+\end_layout
+
 \end_inset
 
 
@@ -40372,6 +40389,25 @@ vertical Inserta un espacio, véase la sección
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Espacio-vertical"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Phantom Inserts Phantom space
+\lang spanish
+, véase la sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Espacio-fantasma"
 
 \end_inset
 
@@ -40735,7 +40771,7 @@ Objetos insertados
 \begin_layout Subsection
 Marco
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Marcos
