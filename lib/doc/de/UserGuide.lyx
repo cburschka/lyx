@@ -1046,6 +1046,13 @@ Anpassung
 
 \begin_layout Section
 LaTeX-Einstellung
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:LaTeX-Einstellung"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -5580,7 +5587,7 @@ key "latex-einführung"
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Zeilenumbruch-manuell"
+reference "sub:Manueller-Zeilenumbruch"
 
 \end_inset
 
@@ -5919,7 +5926,7 @@ und
  Schachtelungstiefe zurückgesetzt (mehr über Schachtelung in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Umgebungen-schachteln"
+reference "sec:Umgebungen-schachteln"
 
 \end_inset
 
@@ -6061,17 +6068,7 @@ Titel!Umgebung@-Umgebung
 
 \end_inset
 
- (LaTeX-Bezeichnung: Title
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Title
-\end_layout
-
-\end_inset
-
-).
+.
 \end_layout
 
 \begin_layout Itemize
@@ -6089,17 +6086,7 @@ Autor!-Umgebung
 
 \end_inset
 
- (LaTeX-Bezeichnung: Author
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Author
-\end_layout
-
-\end_inset
-
-).
+.
 \end_layout
 
 \begin_layout Itemize
@@ -6119,17 +6106,7 @@ Datum-Umgebung
 
 \end_inset
 
- (LaTeX-Bezeichnung: Date
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Date
-\end_layout
-
-\end_inset
-
-).
+.
  Der Gebrauch dieser Umgebung ist optional.
  Wenn Sie sie nicht benutzen, wird LaTeX automatisch das Druckdatum einfügen.
 \end_layout
@@ -6192,18 +6169,6 @@ Kapitel
 \end_inset
 
 
-\family default
- – LaTeX-Bezeichnung: Chapter
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Chapter
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
@@ -6215,18 +6180,6 @@ status collapsed
 
 \begin_layout Plain Layout
 Abschnitt
-\end_layout
-
-\end_inset
-
-
-\family default
- – LaTeX-Bezeichnung: Section
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Section
 \end_layout
 
 \end_inset
@@ -6248,18 +6201,6 @@ Unterabschnitt
 \end_inset
 
 
-\family default
- – LaTeX-Bezeichnung: Subsection
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Subsection
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
@@ -6271,18 +6212,6 @@ status collapsed
 
 \begin_layout Plain Layout
 Unterunterabschn.
-\end_layout
-
-\end_inset
-
-
-\family default
- – LaTeX-Bezeichnung: Subsubsection
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Subsubsection
 \end_layout
 
 \end_inset
@@ -6304,8 +6233,6 @@ Paragraph
 \end_inset
 
 
-\family default
- – LaTeX-Bezeichnung: Paragraph
 \end_layout
 
 \begin_layout Enumerate
@@ -6317,18 +6244,6 @@ status collapsed
 
 \begin_layout Plain Layout
 Unterparagraph
-\end_layout
-
-\end_inset
-
-
-\family default
- – LaTeX-Bezeichnung: Subparagraph
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Subparagraph
 \end_layout
 
 \end_inset
@@ -6486,16 +6401,6 @@ Abschnitt*
 
 \end_inset
 
-– LaTeX-Bezeichnung: Section*
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Section*
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -6513,18 +6418,6 @@ Unterabschnitt*
 \end_inset
 
 
-\family default
- – LaTeX-Bezeichnung: Subsection*
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Subsection*
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
@@ -6536,18 +6429,6 @@ status collapsed
 
 \begin_layout Plain Layout
 Unterunterabschn.*
-\end_layout
-
-\end_inset
-
-
-\family default
- – LaTeX-Bezeichnung: Subsubsection*
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Subsubsection*
 \end_layout
 
 \end_inset
@@ -6575,7 +6456,7 @@ en Überschrift fortgesetzt.
 Ändern der Nummerierung
 \begin_inset CommandInset label
 LatexCommand label
-name "Nummerierung-aendern"
+name "sub:Nummerierung-aendern"
 
 \end_inset
 
@@ -6644,12 +6525,12 @@ Inhaltsverzeichnis
 \end_layout
 
 \begin_layout Subsubsection
-Kurze Titel
+Kurztitel
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Titel!kurze
+Titel ! Kurztitel
 \end_layout
 
 \end_inset
@@ -6667,7 +6548,7 @@ Kurztitel
 
 \begin_inset CommandInset label
 LatexCommand label
-name "Kurze-Titel"
+name "sec:Kurztitel"
 
 \end_inset
 
@@ -6874,7 +6755,7 @@ Zitat!(lang)
 
 \begin_inset CommandInset label
 LatexCommand label
-name "Zitate"
+name "sub:Zitate"
 
 \end_inset
 
@@ -7075,7 +6956,7 @@ Lyrik
 
 \begin_inset CommandInset label
 LatexCommand label
-name "Gedicht"
+name "sub:Gedicht"
 
 \end_inset
 
@@ -7238,7 +7119,7 @@ unbedingt
  den gesamten Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Umgebungen-schachteln"
+reference "sec:Umgebungen-schachteln"
 
 \end_inset
 
@@ -7269,7 +7150,7 @@ listung
 
 \begin_inset CommandInset label
 LatexCommand label
-name "Auflistung"
+name "sub:Auflistung"
 
 \end_inset
 
@@ -7326,7 +7207,7 @@ Es gibt vier verschiedene Symbole, um maximal vierfach schachteln zu können.
 Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Umgebungen-schachteln"
+reference "sec:Umgebungen-schachteln"
 
 \end_inset
 
@@ -7467,7 +7348,7 @@ ng abnimmt.
  
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Umgebungen-schachteln"
+reference "sec:Umgebungen-schachteln"
 
 \end_inset
 
@@ -7680,7 +7561,7 @@ wirklich
  Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Umgebungen-schachteln"
+reference "sec:Umgebungen-schachteln"
 
 \end_inset
 
@@ -7832,7 +7713,7 @@ Beschreibung
  Lesen Sie Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Umgebungen-schachteln"
+reference "sec:Umgebungen-schachteln"
 
 \end_inset
 
@@ -7898,7 +7779,7 @@ Liste
  Wenn Sie direkt hierher gelangt sind, ohne die Abschnitte 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Auflistung"
+reference "sub:Auflistung"
 
 \end_inset
 
@@ -8149,7 +8030,7 @@ Liste
  In Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Umgebungen-schachteln"
+reference "sec:Umgebungen-schachteln"
 
 \end_inset
 
@@ -8238,7 +8119,7 @@ Das ist alles über die vier Absatzumgebungen zum Erstellen von Listen.
  Augenblick – haben wir erwähnt, dass Sie Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Umgebungen-schachteln"
+reference "sec:Umgebungen-schachteln"
 
 \end_inset
 
@@ -9240,7 +9121,7 @@ rechts
 Gebrauch
 \begin_inset CommandInset label
 LatexCommand label
-name "Adresse-verwenden"
+name "sub:Adresse-verwenden"
 
 \end_inset
 
@@ -10048,7 +9929,7 @@ Umgebungen schachteln
 
 \begin_inset CommandInset label
 LatexCommand label
-name "Umgebungen-schachteln"
+name "sec:Umgebungen-schachteln"
 
 \end_inset
 
@@ -10064,7 +9945,7 @@ Während der vorangegangenen Abschnitte haben wir Ihnen empfohlen, Abschnitt
  
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Umgebungen-schachteln"
+reference "sec:Umgebungen-schachteln"
 
 \end_inset
 
@@ -12362,13 +12243,123 @@ Auflistung
 Abstände, Seiten- und Zeilenumbrüche
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+What is a space? While you might be used to pressing the space key anytime
+ you want to separate two words in ordinary word processors, LyX offers
+ you more spaces: Spaces of different width and spaces which can or cannot
+ be broken at the end of a line.
+ The following Abschnitts will show you some examples where those spaces
+ are useful.
+\end_layout
+
+\begin_layout Subsection
+Geschützter Leerraum
+\lang english
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Protected-Space"
+
+\end_inset
+
+
+\lang ngerman
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Leerraum ! geschützt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The protected space: It is used to tell LyX (and LaTeX) not to break the
+ line at that point.
+ This may be necessary to avoid unlucky line breaks, like in: 
+\end_layout
+
+\begin_layout Quote
+Weitere Informationen finden Sie in Abschnitt
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Literaturverzeichnis"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Obviously, it would be a good thing to put a protected space between
+\lang ngerman
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Abschnitt
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Literaturverzeichnis"
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\lang english
+A protected space is set with
+\lang ngerman
+ 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Formatierung\SpecialChar \menuseparator
+Geschütztes
+\begin_inset space ~
+\end_inset
+
+Leerzeichen
+\family default
+ (Tastenkürzel 
+\family sans
+Strg+Leertaste
+\family default
+).
+\end_layout
+
 \begin_layout Subsection
 Waagerechter Leerraum
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Leerraum!waagerechter
+Leerraum ! waagerechter
 \end_layout
 
 \end_inset
@@ -12398,7 +12389,7 @@ Einige Sprachen fügen nach einem Punkt einen etwas größeren Abstand ein,
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Abkürzungen-und-Satzenden"
+reference "sub:Abkürzungen-und-Satzendepunkt"
 
 \end_inset
 
@@ -12554,7 +12545,7 @@ E
 \noun on
 Knuth
 \noun default
- hat unser geliebtes Drucksetzprogramm entwickelt, d.
+ hat unser geliebtes Schriftsatzprogramm entwickelt, d.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -12592,67 +12583,417 @@ Strg+Umschalt+Leertaste
 \end_layout
 
 \begin_layout Subsubsection
-Weitere Zwischenräume
+Weitere Leerräume
 \end_layout
 
 \begin_layout Standard
-Diesen können Sie über 
-\family sans
-Einfügen
-\family default
-\SpecialChar \menuseparator
 
-\family sans
-Formatierung
-\family default
-\SpecialChar \menuseparator
+\lang english
+You can furthermore insert the following space types:
+\end_layout
 
-\family sans
-Horizontaler
-\family default
+\begin_layout Description
+Negatives
+\begin_inset space ~
+\end_inset
 
-\begin_inset space \space{}
+Halbes
+\begin_inset space ~
+\end_inset
+
+Leerzeichen Eine Zeile mit einem 
+\begin_inset Formula $\to$
 \end_inset
 
 
-\family sans
-Abstand
-\family default
- auswählen.
- Im Dialogfenster bekommen Sie unter 
-\family sans
-Abstand
-\family default
- eine Auswahl von Abständen.
- Nur bei 
-\family sans
-Benutzerdefiniert
-\family default
- können Sie einen 
-\family sans
-Wert
-\family default
- angeben, und nur bei 
-\family sans
-Variabler
-\begin_inset space \space{}
+\begin_inset space \negthinspace{}
 \end_inset
 
-horiz.
-\begin_inset space \space{}
+
+\begin_inset Formula $\gets$
 \end_inset
 
-Abstand
-\family default
- ein 
-\family sans
-Füllmuster
-\family default
- wählen und 
-\family sans
-Schützen
-\family default
- ankreuzen.
+ Negatives, halbes Leerzeichen zwischen den Pfeilen.
+\end_layout
+
+\begin_layout Description
+Halbgeviert
+\begin_inset space ~
+\end_inset
+
+(0.5
+\begin_inset space \thinspace{}
+\end_inset
+
+em) Eine Zeile mit einem 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset space \enskip{}
+\end_inset
+
+
+\begin_inset Formula $\gets$
+\end_inset
+
+ Halbgeviert
+\begin_inset space ~
+\end_inset
+
+(0.5
+\begin_inset space \thinspace{}
+\end_inset
+
+em) zwischen den Pfeilen.
+\end_layout
+
+\begin_layout Description
+Geviert
+\begin_inset space ~
+\end_inset
+
+(1
+\begin_inset space \thinspace{}
+\end_inset
+
+em) Eine Zeile mit einem 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset space \quad{}
+\end_inset
+
+
+\begin_inset Formula $\gets$
+\end_inset
+
+ Geviert
+\begin_inset space ~
+\end_inset
+
+(1
+\begin_inset space \thinspace{}
+\end_inset
+
+em) zwischen den Pfeilen.
+\end_layout
+
+\begin_layout Description
+Doppelgeviert
+\begin_inset space ~
+\end_inset
+
+(2
+\begin_inset space \thinspace{}
+\end_inset
+
+em) Eine Zeile mit einem 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset Formula $\gets$
+\end_inset
+
+ Doppelgeviert
+\begin_inset space ~
+\end_inset
+
+(2
+\begin_inset space \thinspace{}
+\end_inset
+
+em) zwischen den Pfeilen.
+\end_layout
+
+\begin_layout Description
+Benutzerdefiniert Eine Zeile mit
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 2cm
+\end_inset
+
+
+\begin_inset Formula $\gets$
+\end_inset
+
+ 2
+\begin_inset space \thinspace{}
+\end_inset
+
+cm Leerraum zwischen den Pfeilen.
+\end_layout
+
+\begin_layout Standard
+Tabelle
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Breite-der-verschiedenen"
+
+\end_inset
+
+ listet die verschiedenen Breiten der Lerräume auf.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Breite-der-verschiedenen"
+
+\end_inset
+
+Breite der verschiedenen horizontalen Lerräume.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Leerraum
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Breite
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1/3
+\begin_inset space \thinspace{}
+\end_inset
+
+em
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Geschützt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1/3
+\begin_inset space \thinspace{}
+\end_inset
+
+em
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Halb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1/6
+\begin_inset space \thinspace{}
+\end_inset
+
+em
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Negativ Halb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-1/6
+\begin_inset space \thinspace{}
+\end_inset
+
+em
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Halbgeviert (0.5
+\begin_inset space \thinspace{}
+\end_inset
+
+em)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.5
+\begin_inset space \thinspace{}
+\end_inset
+
+em
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Geviert (1
+\begin_inset space \thinspace{}
+\end_inset
+
+em)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\begin_inset space \thinspace{}
+\end_inset
+
+em
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Doppelgeviert (2
+\begin_inset space \thinspace{}
+\end_inset
+
+em)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\begin_inset space \thinspace{}
+\end_inset
+
+em
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -12667,7 +13008,7 @@ name "Variabler-horiz-Abstand"
 \end_layout
 
 \begin_layout Standard
-Ein variabler horizontaler Abstand (LaTeX 
+Ein variabler horizontaler Abstand (
 \family sans
 HFill
 \family default
@@ -12835,6 +13176,10 @@ Klammer unten:
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
 
 \series bold
 Bemerkung:
@@ -12851,46 +13196,59 @@ Schützen
  in den Abstand Einstellungen.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
-Mathematische Zwischenräume
+Phantom-Leerraum
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Leerraum ! Phantom
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Über 
-\family sans
-Ansicht\SpecialChar \menuseparator
-Werkzeugleisten\SpecialChar \menuseparator
-Andere
+
+\lang english
+Sometimes you want to insert space with exactly the length of a phrase.
+ E.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
-Werkzeugleisten\SpecialChar \menuseparator
-Abstände
-\family default
- finden Sie weitere neun Abstände, aus denen Sie auswählen können.
+you want to create the following multiple choice question
+\lang ngerman
+:
 \end_layout
 
 \begin_layout Standard
-Interessant ist der 
-\family sans
-\series bold
-Phantom-Abstand
-\family default
-\series default
-: Manchmal benötigen Sie einen Abstand, der genauso lang ist wie ein Begriff.
- Hier ist ein Beispiel einer Mehrfach-Auswahl:
 \begin_inset VSpace medskip
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Was ist richtiges Deutsch?
+Was ist korrektes Englisch?:
 \begin_inset Newline newline
 \end_inset
 
-Herr Meier würde springt
+
+\begin_inset Newline newline
+\end_inset
+
+Mr.
+\begin_inset space ~
+\end_inset
+
+Edge would have been jumps the gun.
 \begin_inset Newline newline
 \end_inset
 
@@ -12899,12 +13257,13 @@ Herr Meier würde springt
 status open
 
 \begin_layout Plain Layout
-Herr Meier 
+Mr.
+ Edge 
 \end_layout
 
 \end_inset
 
-hat gespringt
+has to be jumped
 \begin_inset Newline newline
 \end_inset
 
@@ -12913,12 +13272,13 @@ hat gespringt
 status open
 
 \begin_layout Plain Layout
-Herr Meier 
+Mr.
+ Edge 
 \end_layout
 
 \end_inset
 
-springt
+jumps
 \begin_inset VSpace medskip
 \end_inset
 
@@ -12926,26 +13286,26 @@ springt
 \end_layout
 
 \begin_layout Standard
-Die Auswahlmöglichkeiten sind also rechts vom Begriff 
-\begin_inset Quotes gld
-\end_inset
 
-Herr
-\begin_inset space ~
-\end_inset
-
-Meier
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Quotes grd
-\end_inset
-
- ausgerichtet.
- 
 \lang english
-To get this, you can use the phantom insets available via the menu 
+So that the choices appear exactly after the phrase 
+\begin_inset Quotes eld
+\end_inset
+
+Mr.
+\begin_inset space ~
+\end_inset
+
+Edge
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ To get this, you can use the phantom insets available via the menu 
 \family sans
 Insert\SpecialChar \menuseparator
 Formatting\SpecialChar \menuseparator
@@ -12954,39 +13314,31 @@ Phantom
 .
  In our case insert a horizontal phantom at the beginning of the last two
  lines and insert 
-\lang ngerman
-
-\begin_inset Quotes gld
+\begin_inset Quotes eld
 \end_inset
 
-Herr
+Mr.
 \begin_inset space ~
 \end_inset
 
-Meier
+Edge
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset Quotes grd
+\begin_inset Quotes erd
 \end_inset
 
-
-\lang english
- into the phantom inset (note the space after
-\lang ngerman
- 
-\begin_inset Quotes gld
+ into the phantom inset (note the space after 
+\begin_inset Quotes eld
 \end_inset
 
-Meier
-\begin_inset Quotes grd
+Edge
+\begin_inset Quotes erd
 \end_inset
 
 ).
- 
-\lang english
-A phantom insets prints only the space of its content (like a placeholder).
+ A phantom insets prints only the space of its content (like a placeholder).
  That is why it is named 
 \begin_inset Quotes eld
 \end_inset
@@ -12996,7 +13348,7 @@ phantom
 \end_inset
 
 .
- The normal phantom ouputs the width and heigth of the content as space,
+ The normal phantom outputs the width and height of the content as space,
  while the horizontal and vertical variant only outputs the corresponding
  dimension.
 \end_layout
@@ -13007,7 +13359,7 @@ Senkrechter Leerraum
 status collapsed
 
 \begin_layout Plain Layout
-Leerraum!senkrechter
+Leerraum ! senkrechter
 \end_layout
 
 \end_inset
@@ -13084,6 +13436,34 @@ s kann man deshalb benutzen, wenn man Text auf einer Seite zentrieren will
 \end_inset
 
 nach unten platzieren will.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Bemerkung
+\lang english
+:
+\series default
+ 
+\series medium
+If the extra vertical space would be in the output at the top/bottom of
+ a page, the space is only added if you have also checked the option 
+\family sans
+Protect
+\family default
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -13510,19 +13890,19 @@ leeren
 
 \begin_layout Subsection
 Manueller Zeilenumbruch
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Zeilenumbruch!manueller
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Manueller-Zeilenumbruch"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "Zeilenumbruch-manuell"
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Zeilenumbruch ! manuell
+\end_layout
 
 \end_inset
 
@@ -13530,566 +13910,106 @@ name "Zeilenumbruch-manuell"
 \end_layout
 
 \begin_layout Standard
-Diesen erhält man mit 
-\family sans
-Strg+Eingabe
-\family default
- oder 
-\family sans
-Einfügen
-\family default
-\SpecialChar \menuseparator
 
+\lang english
+Similar to page breaks there are two types of line breaks: One that simply
+ breaks the line.
+ You can force this line break within a paragraph by selecting 
 \family sans
+\lang ngerman
+Einfügen\SpecialChar \menuseparator
 Formatierung
-\family default
+\lang english
 \SpecialChar \menuseparator
-
-\family sans
-Zeilen\SpecialChar \-
-umbruch.
-
-\family default
- Sie sollten ihn aber nicht benutzen, um den Zeilenumbruch von LaTeX zu
- korrigieren, weil LaTeX Zeilenumbrüche 
-\emph on
-sehr
-\emph default
- gut gestaltet (siehe Abschnitt 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Manueller-Seitenumbruch"
-
+Ragged
+\begin_inset space ~
 \end_inset
 
-).
- Es gibt aber einige Situationen, in denen man manuell umbrechen muss, zum
- Beispiel bei Gedichten und Adressen (siehe Abschnitte 
+Line
+\begin_inset space ~
+\end_inset
+
+Break
+\family default
+ or with 
+\family sans
+\lang ngerman
+Strg+Enter
+\family default
+\lang english
+.
+ Another type that is inserted via the menu 
+\family sans
+\lang ngerman
+Einfügen\SpecialChar \menuseparator
+Formatierung
+\lang english
+\SpecialChar \menuseparator
+Justified
+\begin_inset space ~
+\end_inset
+
+Line
+\begin_inset space ~
+\end_inset
+
+Break
+\family default
+ breaks the line and stretches it so that it fills out the whole space between
+ the page margins.
+ This is necessary to avoid 
+\begin_inset Quotes eld
+\end_inset
+
+fringes
+\begin_inset Quotes erd
+\end_inset
+
+ in justified paragraphs due to whitespace introduced by line breaks.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You shouldn't use forced line breaks to correct LaTeX's line breaking, as
+ LaTeX is very good at line breaking.
+ There are, however, a number of situations where it is necessary to actively
+ set a line break, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+in a poem or for an address
+\lang ngerman
+ (siehe die Abschnitte
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
-LatexCommand vref
-reference "Zitate"
+LatexCommand ref
+reference "sub:Zitate"
 
 \end_inset
 
 , 
 \begin_inset CommandInset ref
-LatexCommand vref
-reference "Gedicht"
+LatexCommand ref
+reference "sub:Gedicht"
 
 \end_inset
 
  und 
 \begin_inset CommandInset ref
-LatexCommand vref
-reference "Adresse-verwenden"
+LatexCommand ref
+reference "sub:Adresse-verwenden"
 
 \end_inset
 
 ).
-\end_layout
-
-\begin_layout Standard
-Es gibt auch den rechtsbündigen Zeilenumbruch
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Zeilenumbruch ! rechtsbündig
-\end_layout
-
-\end_inset
-
- (
-\family sans
-Strg+Umschalt+Eingabe
-\family default
- oder
-\family sans
- Einfügen
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Formatierung
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Rechtsbündiger
-\begin_inset space \space{}
-\end_inset
-
-Zeilen\SpecialChar \-
-umbruch
-\family default
-), der die umgebrochene Zeile wie beim Blocksatz setzt.
-\end_layout
-
-\begin_layout Standard
-Bei langen Internetadressen wie ftp://dante.ctan.org/tex-archive/help/Catalogue/en
-tries/esint.html kann es vorkommen, dass sie über dem rechten Rand hinausragen.
- Das kann man verhindern, indem man einen Schrägstrich
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Schrägstrich ! umbruchfähig
-\end_layout
-
-\end_inset
-
- durch einen umbruchfähigen ersetzt (
-\family sans
-Einfügen
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Sonderzeichen
-\family default
- \SpecialChar \menuseparator
-
-\family sans
-Umbruchfähiger
-\family default
-
-\begin_inset space \space{}
-\end_inset
-
-
-\family sans
-Schrägstrich
-\family default
-): ftp://dante.ctan.org/tex-archive\SpecialChar \slash{}
-help\SpecialChar \slash{}
-Catalogue/entries/esint.html.
-\end_layout
-
-\begin_layout Standard
-Hier ist noch einmal das Beispiel aus Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Absatzumgebungen"
-
-\end_inset
-
-, bei dem über den rechten Rand gedruckt wird:
-\end_layout
-
-\begin_layout Standard
-Die Absatzumgebungen entsprechen in einer normalen LaTeX-Datei 
-\family typewriter
-
-\backslash
-begin{
-\family default
-\emph on
-environment
-\family typewriter
-\emph default
-} ...
-
-\family default
- 
-\family typewriter
-
-\backslash
-end{
-\family default
-\emph on
-environment
-\family typewriter
-\emph default
-}
-\family default
-.
- Alles zwischen den beiden Befehlen ist ein Absatz.
-\end_layout
-
-\begin_layout Standard
-Es gibt jetzt verschiedene Möglichkeiten, dies zu korrigieren:
-\end_layout
-
-\begin_layout Standard
-\noindent
-1.
- Sie können in der Nähe des Zeilenendes ein Leerzeichen einfügen:
-\end_layout
-
-\begin_layout Standard
-Die Absatzumgebungen entsprechen in einer normalen LaTeX-Datei 
-\family typewriter
-
-\backslash
-begin{
-\family default
-\emph on
-environ ment
-\family typewriter
-\emph default
-} ...
-
-\family default
- 
-\family typewriter
-
-\backslash
-end{
-\family default
-\emph on
-environment
-\family typewriter
-\emph default
-}
-\family default
-.
- Alles zwischen den beiden Befehlen ist ein Absatz.
-\end_layout
-
-\begin_layout Standard
-\noindent
-2.
- Sie können das mit der Trennhilfe 
-\begin_inset Quotes gld
-\end_inset
-
--
-\begin_inset Quotes grd
-\end_inset
-
- korrigieren, die über das Menü 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Besondere
-\begin_inset space \space{}
-\end_inset
-
-Formatierung
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Trennmöglichkeit
-\family default
- oder 
-\family sans
-Strg+
-\begin_inset space \thinspace{}
-\end_inset
-
--
-\family default
- verfügbar ist:
-\end_layout
-
-\begin_layout Standard
-Die Absatzumgebungen entsprechen in einer normalen LaTeX-Datei 
-\family typewriter
-
-\backslash
-begin{
-\family default
-\emph on
-en\SpecialChar \-
-vi\SpecialChar \-
-ron\SpecialChar \-
-ment
-\family typewriter
-\emph default
-} ...
-
-\family default
- 
-\family typewriter
-
-\backslash
-end{
-\family default
-\emph on
-environment
-\family typewriter
-\emph default
-}
-\family default
-.
- Alles zwischen den beiden Befehlen ist ein Absatz.
-\end_layout
-
-\begin_layout Standard
-\noindent
-3.
- Sie können einfach mit 
-\family sans
-Strg+Eingabe
-\family default
- einen manuellen Zeilenumbruch einfügen, was aber nicht immer gut aussieht:
-\end_layout
-
-\begin_layout Standard
-Die Absatzumgebungen entsprechen in einer normalen LaTeX-Datei 
-\family typewriter
-
-\backslash
-begin{
-\family default
-\emph on
-envi
-\begin_inset Newline newline
-\end_inset
-
-ronment
-\family typewriter
-\emph default
-} ...
-
-\family default
- 
-\family typewriter
-
-\backslash
-end{
-\family default
-\emph on
-environment
-\family typewriter
-\emph default
-}
-\family default
-.
- Alles zwischen den beiden Befehlen ist ein Absatz.
-\end_layout
-
-\begin_layout Standard
-\noindent
-4.
- Etwas besser ist es, den rechtsbündigen Zeilenumbruch (
-\family sans
-Strg+ Umschalt+ Return
-\family default
-) zu benutzen:
-\end_layout
-
-\begin_layout Standard
-Die Absatzumgebungen entsprechen in einer normalen LaTeX-Datei 
-\family typewriter
-
-\backslash
-begin
-\begin_inset Newline linebreak
-\end_inset
-
-{
-\family default
-\emph on
-environment
-\family typewriter
-\emph default
-} ...
-
-\family default
- 
-\family typewriter
-
-\backslash
-end{
-\family default
-\emph on
-environment
-\family typewriter
-\emph default
-}
-\family default
-.
- Alles zwischen den beiden Befehlen ist ein Absatz.
-\end_layout
-
-\begin_layout Standard
-\noindent
-5.
- Manchmal hilft es auch, solche Textteile als URL zu definieren (siehe Abschnitt
- 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sub:URLs"
-
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Standard
-All diese Maßnahmen sind nur lokal, weil sie sich nur auf die Zeile auswirken,
- in der das Problem auftrat.
- Wenn Sie den Text des Absatzes ändern, kann es sein, dass Sie wieder korrigiere
-n müssen.
-\end_layout
-
-\begin_layout Standard
-Meistens hilft 
-\family typewriter
-sloppypar
-\family default
- weiter (siehe 
-\emph on
-Handbuchergänzungen
-\emph default
- oder 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "latex-einführung"
-
-\end_inset
-
-), bei dem Sie den Absatz oder mehrere mit den TeX-Code-Befehlen 
-\family typewriter
-
-\backslash
-begin{sloppypar}
-\family default
- und 
-\family typewriter
-
-\backslash
-end{sloppypar}
-\family default
- umgeben:
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-Die Absatzumgebungen entsprechen in einer normalen LaTeX-Datei 
-\family typewriter
-
-\backslash
-begin{
-\family default
-\emph on
-environment
-\family typewriter
-\emph default
-} ...
-
-\family default
- 
-\family typewriter
-
-\backslash
-end{
-\family default
-\emph on
-environment
-\family typewriter
-\emph default
-}
-\family default
-.
- Alles zwischen den beiden Befehlen ist ein Absatz.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Sloppy heißt salopp, schlampig.
- LaTeX hält sich bei der obigen Anweisung nicht strikt an die Regeln für
- das Absatz-Layout, sondern fügt mehr Leerraum in die Zeilen ein, wenn nicht
- sauber umgebrochen werden kann.
- Wenn Sie jetzt den Text des Absatzes ändern, müssen Sie sich nicht um die
- Auswirkungen kümmern:
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-Die Absatzumgebungen entsprechen meistens einer normalen LaTeX-Datei 
-\family typewriter
-
-\backslash
-begin{
-\family default
-\emph on
-environment
-\family typewriter
-\emph default
-} ...
-
-\family default
- 
-\family typewriter
-
-\backslash
-end{
-\family default
-\emph on
-environment
-\family typewriter
-\emph default
-}
-\family default
-.
- Alles zwischen den beiden Befehlen ist ein Absatz.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Wenn Sie LaTeX nicht kennen oder das Konzept der Absatzumgebung völlig fremd
- für Sie ist, sollten Sie unbedingt das 
-\emph on
-Tutorium
-\emph default
- lesen.
- Das 
-\emph on
-Tutorium
-\emph default
- enthält auch viel mehr Beispiele als dieser Abschnitt.
 \end_layout
 
 \begin_layout Subsection
@@ -14418,7 +14338,7 @@ Traditionally, LaTeX uses its own fonts.
  lot meanwhile so that you can find packages for many free and commercial
  fonts.
  In LyX, only a subset of these are directly selectable via the user interface
- (see section
+ (see Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -14444,7 +14364,7 @@ Furthermore, recent developments brought some new LaTeX engines that are
  Both engines are now supported by LyX.
  By using them, you can use theoretically any OpenType or TrueType font
  that is installed on your system.
- The next section describes how to use these OS fonts.
+ The next Abschnitt describes how to use these OS fonts.
 \end_layout
 
 \begin_layout Standard
@@ -14534,8 +14454,8 @@ In the
 \family sans
 Fonts
 \family default
- section of the dialog, you can specify which font should be used for the
- three different font shapes
+ Abschnitt of the dialog, you can specify which font should be used for
+ the three different font shapes
 \lang ngerman
  — Serifenschrift, 
 \family sans
@@ -14665,7 +14585,7 @@ e.
 \begin_inset space ~
 \end_inset
 
-you will have to have either XeTeX or LuaTeX installed (see section
+you will have to have either XeTeX or LuaTeX installed (see Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -17007,7 +16927,7 @@ LuaTeX
 LuaTeX
 \family default
  is an engine that provides direct Unicode support and support for direct
- font access (see section
+ font access (see Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -17279,7 +17199,7 @@ Portable Network Graphics
 ).
  You can although use any other image format, because LyX converts them
  in the background to one of these formats.
- But as described in the section about PostScript, the image conversion
+ But as described in the Abschnitt about PostScript, the image conversion
  will slow down your workflow.
  So we recommend to use images in one of the three mentioned formats.
 \end_layout
@@ -17366,7 +17286,7 @@ XeTeX
 XeTeX
 \family default
  is a new engine that provides direct Unicode support and support for direct
- font access (see section
+ font access (see Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -17413,7 +17333,7 @@ LuaTeX
 pdflatex
 \family default
 , that also provides direct Unicode support and support for direct font
- access (see section
+ access (see Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -17775,7 +17695,7 @@ dvips
 dvips
 \family default
  has to be configured for this printer name.
- The default printer can be set in LyX's preferences dialog, see section
+ The default printer can be set in LyX's preferences dialog, see Abschnitt
 \lang ngerman
 
 \begin_inset space ~
@@ -18544,12 +18464,12 @@ Abkurzungen@Abkürzungen
 
 \end_inset
 
- und Satzenden
+ und Satzendepunkt
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Satzenden
+Satzendepunkt
 \end_layout
 
 \end_inset
@@ -18557,7 +18477,7 @@ Satzenden
 
 \begin_inset CommandInset label
 LatexCommand label
-name "Abkürzungen-und-Satzenden"
+name "sub:Abkürzungen-und-Satzendepunkt"
 
 \end_inset
 
@@ -18594,8 +18514,8 @@ richtigen
 \end_layout
 
 \begin_layout Itemize
-M.
- Butterfly
+B.
+ Traven
 \end_layout
 
 \begin_layout Itemize
@@ -18708,15 +18628,6 @@ B.
 \begin_layout Itemize
 Dies bin ICH\SpecialChar \@.
  Hier ist zu wenig.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Anmerkung
-\series default
-: Da diese Effekte im Deutschen NICHT zu sehen sind, habe ich die Beispiele
- als Englisch markiert.
 \end_layout
 
 \begin_layout Subsubsection
@@ -30984,7 +30895,7 @@ Kurztitel
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Kurze-Titel"
+reference "sec:Kurztitel"
 
 \end_inset
 
@@ -30999,7 +30910,7 @@ In Abschnitt
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Nummerierung-aendern"
+reference "sub:Nummerierung-aendern"
 
 \end_inset
 
@@ -32390,7 +32301,7 @@ Liste
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Auflistung"
+reference "sub:Auflistung"
 
 \end_inset
 
@@ -34239,9 +34150,9 @@ PDF-Eigenschaften
 \family default
  spezielle Optionen für die PDF-Ausgabe eines Dokuments setzen.
  Alle Optionen stammen vom LaTeX-Paket 
-\family typewriter
+\series bold
 hyperref
-\family default
+\series default
 
 \begin_inset Index idx
 status collapsed
@@ -34252,25 +34163,14 @@ LaTeX-Paket ! hyperref
 
 \end_inset
 
-, siehe auch Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "PDF-Eigenschaften-B"
-
-\end_inset
-
 .
 \end_layout
 
 \begin_layout Standard
 
-\family typewriter
+\series bold
 hyperref
-\family default
+\series default
  wird in der DVI- oder PDF-Ausgabe alle Querverweise verlinken, so dass
  ein Leser, der die DVI- oder PDF-Ausgabe auf seinem PC liest, einen Querverweis
  anklicken kann und so zur entsprechenden Stelle gelangt, wie es auch im
@@ -34361,9 +34261,9 @@ Optionen
 \family default
  benutzt werden.
  Genaueres dazu finden Sie im 
-\family typewriter
+\series bold
 hyperref
-\family default
+\series default
 -Handbuch 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -36923,7 +36823,7 @@ target "http://lingucomponent.openoffice.org/thesaurus.html"
 \begin_layout Standard
 
 \lang english
-This section describes how new dictionaries are installed and set up for
+This Abschnitt describes how new dictionaries are installed and set up for
  the use with LyX.
 \end_layout
 
@@ -38125,7 +38025,7 @@ Versionskontrolle
 
 \lang english
 This is used when more people are working on the same document.
- It is described in the section 
+ It is described in the Abschnitt 
 \emph on
 Version Control in LyX
 \emph default
@@ -38201,14 +38101,16 @@ You can export your document to various file formats.
 
 \lang english
 Here is a list of all available entries; some of them are explained in detail
- in section
+ in Abschnitt
+\lang ngerman
+
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Output-file-formats"
+reference "sub:Ausgabe-Dateiformate"
 
 \end_inset
 
@@ -38216,15 +38118,12 @@ reference "sub:Output-file-formats"
 \end_layout
 
 \begin_layout Description
-
-\family sans
-\lang english
 CJK
 \begin_inset space ~
 \end_inset
 
 LyX 
-\family default
+\lang english
 format of the special LyX 1.4.x versions for Chinese, Japanese, and Korean
  (CJK)
 \begin_inset Newline newline
@@ -38234,12 +38133,7 @@ format of the special LyX 1.4.x versions for Chinese, Japanese, and Korean
 \end_layout
 
 \begin_layout Description
-
-\family sans
-\lang english
-DVI
-\family default
- DVI-format
+DVI DVI-Format
 \end_layout
 
 \begin_layout Description
@@ -38338,7 +38232,15 @@ LyX
 \begin_inset space ~
 \end_inset
 
-1.y.x LyX-document in a format readable by the LyX versions 1.y.x (
+z.y.x LyX-document in a format readable by the LyX versions z.y.x (
+\begin_inset Quotes gld
+\end_inset
+
+z
+\begin_inset Quotes grd
+\end_inset
+
+ and 
 \begin_inset Quotes eld
 \end_inset
 
@@ -38346,7 +38248,7 @@ y
 \begin_inset Quotes erd
 \end_inset
 
- is replaced by the version number)
+ represent the version number)
 \end_layout
 
 \begin_layout Description
@@ -38510,17 +38412,21 @@ PDF
 Postscript
 \family default
  is missing, you need to update your LaTeX installation.
- After updating you have to reconfigure LyX, see section
+ After updating you have to reconfigure LyX, see Abschnitt
 \begin_inset space ~
 \end_inset
 
 
+\lang ngerman
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Basic-LyX-Setup"
+reference "LyX-Grundeinstellungen"
 
 \end_inset
 
+
+\lang english
 .
 \begin_inset Index idx
 status collapsed
@@ -38563,7 +38469,9 @@ With this menu entry you can print your document to a file in PostScript
 dvips
 \family default
 .
- For more information have a look at section
+ For more information have a look at Abschnitt
+\lang ngerman
+
 \begin_inset space ~
 \end_inset
 
@@ -38586,17 +38494,21 @@ Fax
 \lang english
 This menu entry will only appear when you have a fax program installed (on
  Windows you additionally need to register its program path to LyX's PATH
- prefix, see section
+ prefix, see Abschnitt
 \begin_inset space ~
 \end_inset
 
 
+\lang ngerman
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Paths"
+reference "sec:Pfade"
 
 \end_inset
 
+
+\lang english
 ).
  With this menu entry you can send your document to a fax program like 
 \family typewriter
@@ -38608,14 +38520,16 @@ kdeprintfax
 \family default
 .
  The default format of the sent file is PostScript.
- The format can be changed in LyX's preferences as described in section
+ The format can be changed in LyX's preferences as described in Abschnitt
+\lang ngerman
+
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Converters"
+reference "sub:Konverter"
 
 \end_inset
 
@@ -38661,14 +38575,10 @@ Rückgängig und Wiederholen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Described in section
+Beschrieben in Abschnitt
 \begin_inset space ~
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -38676,8 +38586,6 @@ reference "sec:Rückgängig-Wiederholen"
 
 \end_inset
 
-
-\lang english
 .
 \end_layout
 
@@ -38687,14 +38595,10 @@ Ausschneiden, Kopieren, Einfügen, Einfügen (vorherige Auswahl), Einfügen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Described in section
+Beschrieben in Abschnitt
 \begin_inset space ~
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -38702,8 +38606,6 @@ reference "sec:Einfache-Bearbeitungsfunktionen"
 
 \end_inset
 
-
-\lang english
 .
 \end_layout
 
@@ -38712,9 +38614,7 @@ Alles auswählen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Selects the whole document.
+Wählt das komplette Dokument aus.
 \end_layout
 
 \begin_layout Subsection
@@ -38722,14 +38622,10 @@ Suchen & Ersetzen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Described in section
+Beschrieben in Abschnitt
 \begin_inset space ~
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -38737,15 +38633,11 @@ reference "sec:Einfache-Bearbeitungsfunktionen"
 
 \end_inset
 
-
-\lang english
 .
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Move Paragraph Up/Down
+Absatz nach oben/unten verschieben
 \end_layout
 
 \begin_layout Standard
@@ -38760,16 +38652,14 @@ Textstil
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Described in section
+Beschrieben in Abschnitt
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Fine-Tuning-with-the"
+reference "sub:Textstil-Dialog"
 
 \end_inset
 
@@ -38801,12 +38691,14 @@ Enables you to set the paragraph alignment, line spacing and label width.
 
 \lang english
 You can also prevent the first line of the paragraph being indented if you
- have chosen to separate paragraphs with indents in the 
+ have chosen to separate paragraphs with indents
+\lang ngerman
+ im Dialog 
 \family sans
-Document\SpecialChar \menuseparator
-Settings
+Dokument\SpecialChar \menuseparator
+Einstellungen
 \family default
- dialog under 
+ unter 
 \family sans
 Text
 \begin_inset space ~
@@ -38818,9 +38710,7 @@ Layout
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Table Settings and Math
+Tabellen-Einstellungen und Mathe
 \end_layout
 
 \begin_layout Standard
@@ -38829,7 +38719,7 @@ Table Settings and Math
 These two menus are only fully active when the cursor is inside a table
  or a formula.
  Here you can change the properties of tables and formulas.
- The properties of tables are described in section
+ The properties of tables are described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -38855,9 +38745,7 @@ reference "chap:Mathematische-Formeln"
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Increase / Decrease List Depth
+Listentiefe erhöhen / verringern
 \end_layout
 
 \begin_layout Standard
@@ -38865,21 +38753,23 @@ Increase / Decrease List Depth
 \lang english
 These menu entries are only active when the cursor is in an environment
  that can be nested.
- They increase/decrease the environment nesting level as explained in section
+ They increase/decrease the environment nesting level as explained in Abschnitt
+\lang ngerman
+
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Nesting"
+reference "sec:Umgebungen-schachteln"
 
 \end_inset
 
- and 
+ und 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Numbering-depth"
+reference "sub:Nummerierung-aendern"
 
 \end_inset
 
@@ -38911,7 +38801,7 @@ View
  document with an external program.
  The menu entries for the viewing formats are not the same on all installations
  — it depends on the LaTeX programs that are found while LyX was configured.
- All possible formats are formats listed in section
+ All possible formats are formats listed in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -38937,17 +38827,21 @@ PDF
 \family default
 .
  If one of the two is missing, you need to update your LaTeX installation.
- After updating you have to reconfigure LyX, see section
+ After updating you have to reconfigure LyX, see Abschnitt
 \begin_inset space ~
 \end_inset
 
 
+\lang ngerman
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Basic-LyX-Setup"
+reference "LyX-Grundeinstellungen"
 
 \end_inset
 
+
+\lang english
 .
 \begin_inset Index idx
 status collapsed
@@ -38967,17 +38861,21 @@ Reconfiguration of LyX
 
 \lang english
 Invoking a menu will start a viewer program.
- The viewer can be set or changed in the preferences, see section
+ The viewer can be set or changed in the preferences, see Abschnitt
 \begin_inset space ~
 \end_inset
 
 
+\lang ngerman
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:File-Formats"
+reference "sec:Dateiformate"
 
 \end_inset
 
+
+\lang english
 .
  The default viewers are set by LyX when it is first configured.
 \end_layout
@@ -39000,9 +38898,7 @@ Alle Einfügungen öffnen/schließen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Opens/closes all insets in your document.
+Schließt/öffnet alle Einfügungen des Dokuments.
 \end_layout
 
 \begin_layout Subsection
@@ -39010,19 +38906,15 @@ Mathe-Makro auf/zuklappen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Unfolds/folds the current math macro.
+Klappt Mathe-Makros auf/zu.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Math macros are described in the 
+Mathe-Makros sind im 
 \emph on
-Math
+Mathe
 \emph default
- Handbuch.
+ Handbuch beschrieben.
 \end_layout
 
 \begin_layout Subsection
@@ -39033,7 +38925,7 @@ Quelle ansehen
 
 \lang english
 Opens a window showing the source code of the actual document, as described
- in section
+ in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -39080,23 +38972,31 @@ This menu entry generates the output you have specified as default output
 \end_inset
 
 
+\lang ngerman
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:File-Formats"
+reference "sec:Dateiformate"
 
 \end_inset
 
+
+\lang english
 ) or in the document settings (see sec.
 \begin_inset space ~
 \end_inset
 
 
+\lang ngerman
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Doc-Output"
+reference "sec:Dokument-Ausgabe"
 
 \end_inset
 
+
+\lang english
 ), for instance PDF, and opens it in an appropriate viewer.
 \end_layout
 
@@ -39118,7 +39018,7 @@ Aktualisieren
 
 \lang english
 This menu entry allows you to update the view with your latest changes (in
- the default output format as described in the previous section) without
+ the default output format as described in the previous Abschnitt) without
  opening a new viewer window.
 \end_layout
 
@@ -39134,9 +39034,7 @@ With this submenu, you can update the view of alternative output formats
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-View Master Document
+Hauptdokument ansehen
 \end_layout
 
 \begin_layout Standard
@@ -39151,7 +39049,7 @@ master
 \begin_inset Quotes erd
 \end_inset
 
- (see section 
+ (see Abschnitt 
 \emph on
 Child Documents
 \emph default
@@ -39182,30 +39080,36 @@ The format used by this function is the default output format as specified
 \end_inset
 
 
+\lang ngerman
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:File-Formats"
+reference "sec:Dateiformate"
 
 \end_inset
 
+
+\lang english
 ) or in the document settings (see sec.
 \begin_inset space ~
 \end_inset
 
 
+\lang ngerman
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Doc-Output"
+reference "sec:Dokument-Ausgabe"
 
 \end_inset
 
+
+\lang english
 ).
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Update Master Document
+Hauptdokument aktualisieren
 \end_layout
 
 \begin_layout Standard
@@ -39220,7 +39124,7 @@ master
 \begin_inset Quotes erd
 \end_inset
 
- (see section 
+ (see Abschnitt 
 \emph on
 Child Documents
 \emph default
@@ -39242,23 +39146,31 @@ The format used by this function is the default output format as specified
 \end_inset
 
 
+\lang ngerman
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:File-Formats"
+reference "sec:Dateiformate"
 
 \end_inset
 
+
+\lang english
 ) or in the document settings (see sec.
 \begin_inset space ~
 \end_inset
 
 
+\lang ngerman
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Doc-Output"
+reference "sec:Dokument-Ausgabe"
 
 \end_inset
 
+
+\lang english
 ).
 \end_layout
 
@@ -39288,9 +39200,7 @@ Aktuelle Ansicht schließen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Closes a split view.
+Beendet eine geteilte Ansicht.
 \end_layout
 
 \begin_layout Subsection
@@ -39398,7 +39308,7 @@ automatic
 \begin_layout Standard
 
 \lang english
-LyX's toolbars and their buttons are explained in section
+LyX's toolbars and their buttons are explained in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -39467,15 +39377,13 @@ name "sub:Sonderzeichen"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here you can insert the following characters:
+Hier können die folgenden Zeichen eingefügt werden:
 \end_layout
 
 \begin_layout Description
-
+Symbole 
 \lang english
-Symbols Inserts any character that can be output by your LaTeX system.
+Inserts any character that can be output by your LaTeX system.
  Therefore the number of character categories in this dialog and the available
  characters depend on the LaTeX-packages you have installed.
 \begin_inset Newline newline
@@ -39488,10 +39396,11 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+Bemerkung:
 \series default
- Not all characters will be visible in the 
+ 
+\lang english
+Not all characters will be visible in the 
 \family sans
 Symbols
 \family default
@@ -39520,34 +39429,28 @@ reference "sub:Bildschirmschriften"
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Ellipsis Inserts an ellipsis: \SpecialChar \ldots{}
+Fortsetzungspunkte Fügt Fortsetzungspunkte ein: \SpecialChar \ldots{}
 
 \end_layout
 
 \begin_layout Description
-
+Satzendepunkt 
 \lang english
-End
+Inserts an end of sentence dot as described in Abschnitt
 \begin_inset space ~
 \end_inset
 
-of
-\begin_inset space ~
-\end_inset
 
-Sentence Inserts an end of sentence dot as described in section
-\begin_inset space ~
-\end_inset
-
+\lang ngerman
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Abbreviations"
+reference "sub:Abkürzungen-und-Satzendepunkt"
 
 \end_inset
 
+
+\lang english
 .
 \end_layout
 
@@ -39611,31 +39514,27 @@ Slash Inserts a slash where also a line break can occur: \SpecialChar \slash{}
 \end_layout
 
 \begin_layout Description
-
+Menütrenner 
 \lang english
-Menu
-\begin_inset space ~
-\end_inset
-
-Separator Inserts the menu separator sign: \SpecialChar \menuseparator
+Inserts the menu separator sign: \SpecialChar \menuseparator
 
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Phonetic
+Phonetische
 \begin_inset space ~
 \end_inset
 
-Symbols 
+Symbole 
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
+Phonetische
+\begin_inset space ~
+\end_inset
 
-\lang english
-Phonetic symbols
+Symbole
 \end_layout
 
 \end_inset
@@ -39645,18 +39544,22 @@ Phonetic symbols
 status collapsed
 
 \begin_layout Plain Layout
+Sprache ! Phonetische
+\begin_inset space ~
+\end_inset
 
-\lang english
-Language ! Phonetic symbols
+Symbole
 \end_layout
 
 \end_inset
 
+
+\lang english
 Creates a formula with a so called tipa inset.
- Here you can insert commands to create IPA phonetic symbols.
- For this feature you must have the LaTeX-package
+ Here you can insert commands to create IPA phonetic symbols
 \lang ngerman
- 
+.
+ Für dieses Feature muss das LaTeX-Paket 
 \series bold
 tipa
 \series default
@@ -39670,13 +39573,11 @@ LaTeX-Pakete ! tipa
 
 \end_inset
 
- 
-\lang english
-installed.
+ installiert sein.
 \begin_inset Newline newline
 \end_inset
 
-For more information about this feature we refer to the documentation of
+Für weitere Informationen über dieses Feature siehe die Dokumentation von
  
 \series bold
 tipa, 
@@ -39688,9 +39589,7 @@ key "tipa"
 
 
 \series default
- and this Wiki-page
-\lang ngerman
-:
+ und diese Wiki-Seite:
 \begin_inset Newline newline
 \end_inset
 
@@ -39699,7 +39598,6 @@ key "tipa"
 status open
 
 \begin_layout Plain Layout
-
 http://wiki.lyx.org/LyX/LinguistLyX
 \end_layout
 
@@ -39713,15 +39611,13 @@ Formatierung
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here you can insert the following format constructs:
+Hier können die folgenden Konstrukte eingefügt werden:
 \end_layout
 
 \begin_layout Description
-
+Hochgestellt 
 \lang english
-Superscript Inserts a superscript: test
+Inserts a superscript: test
 \begin_inset Formula $^{\text{a,b}}$
 \end_inset
 
@@ -39729,9 +39625,9 @@ Superscript Inserts a superscript: test
 \end_layout
 
 \begin_layout Description
-
+Tiefgestellt 
 \lang english
-Subscript Inserts a subscript: test
+Inserts a subscript: test
 \begin_inset Formula $_{\text{3x}}$
 \end_inset
 
@@ -39745,7 +39641,7 @@ Protected
 \begin_inset space ~
 \end_inset
 
-Space Inserts a protected space that is described in section
+Space Inserts a protected space that is described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -39766,7 +39662,7 @@ Inter-word
 \begin_inset space ~
 \end_inset
 
-Space Inserts an inter-word space that is described in section
+Space Inserts an inter-word space that is described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -39787,7 +39683,7 @@ Thin
 \begin_inset space ~
 \end_inset
 
-Space Inserts a thin space that is described in section
+Space Inserts a thin space that is described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -39808,7 +39704,7 @@ Horizontal
 \begin_inset space ~
 \end_inset
 
-Space Inserts horizontal space, see section
+Space Inserts horizontal space, see Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -39829,7 +39725,7 @@ Horizontal
 \begin_inset space ~
 \end_inset
 
-Line Inserts a horizontal line, see section
+Line Inserts a horizontal line, see Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -39850,7 +39746,7 @@ Vertical
 \begin_inset space ~
 \end_inset
 
-Space Inserts vertical space, see section
+Space Inserts vertical space, see Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -39871,7 +39767,7 @@ Hyphenation
 \begin_inset space ~
 \end_inset
 
-Point Inserts a hyphenation point, see section
+Point Inserts a hyphenation point, see Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -39892,7 +39788,7 @@ Ligature
 \begin_inset space ~
 \end_inset
 
-Break Inserts a ligature break, see section
+Break Inserts a ligature break, see Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -39917,7 +39813,7 @@ Line
 \begin_inset space ~
 \end_inset
 
-Break Inserts a forced line break, see section
+Break Inserts a forced line break, see Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -39939,7 +39835,7 @@ Justified
 \end_inset
 
 Break Inserts a forced line break that furthermore stretches the broken
- text line to the page border, see section
+ text line to the page border, see Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -39960,7 +39856,7 @@ New
 \begin_inset space ~
 \end_inset
 
-Page Inserts a forced page break, described in section
+Page Inserts a forced page break, described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -39982,7 +39878,7 @@ Page
 \end_inset
 
 Break Inserts a forced page break that furthermore stretches the broken
- text page to the page border, described in section
+ text page to the page border, described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40003,7 +39899,7 @@ Clear
 \begin_inset space ~
 \end_inset
 
-Page Inserts a clear page break, described in section
+Page Inserts a clear page break, described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40028,7 +39924,7 @@ Double
 \begin_inset space ~
 \end_inset
 
-Page Inserts a clear doublepage break, described in section
+Page Inserts a clear doublepage break, described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40051,7 +39947,7 @@ Liste / Inhaltsverzeichnis
 \lang english
 Various lists can be inserted with this menu entry.
  The table of contents, the algorithm, figures, and tables list are described
- in section
+ in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40067,7 +39963,7 @@ reference "sec:Inhaltsverzeichnis"
 
 \lang english
 .
- The index list is described in section
+ The index list is described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40078,7 +39974,7 @@ reference "sec:Stichwortverzeichnisse"
 
 \end_inset
 
-, the nomenclature in section
+, the nomenclature in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40093,7 +39989,7 @@ reference "sec:Nomenklatur/Glossar"
 
 
 \lang english
-, and the BibTeX bibliography in section
+, and the BibTeX bibliography in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40118,7 +40014,7 @@ Gleitobjekt
 \begin_layout Standard
 
 \lang english
-To insert floats, described in section
+To insert floats, described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40143,7 +40039,7 @@ Notiz
 \begin_layout Standard
 
 \lang english
-To insert notes, described in section
+To insert notes, described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40170,7 +40066,7 @@ Branch
 \begin_layout Standard
 
 \lang english
-Inserts branch insets as described in section
+Inserts branch insets as described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40209,7 +40105,7 @@ article (Elsevier)
 \end_inset
 
  with three custom insets.
- The section 
+ The Abschnitt 
 \emph on
 Flex insets and InsetLayout
 \emph default
@@ -40267,7 +40163,7 @@ Boxen
 \begin_layout Standard
 
 \lang english
-Inserts a minipage box that is described section
+Inserts a minipage box that is described Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40301,17 +40197,21 @@ Literaturverweis
 \begin_layout Standard
 
 \lang english
-Inserts a citation as described in section
+Inserts a citation as described in Abschnitt
 \begin_inset space ~
 \end_inset
 
 
+\lang ngerman
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Bibliography"
+reference "sec:Literaturverzeichnis"
 
 \end_inset
 
+
+\lang english
 .
 \end_layout
 
@@ -40322,7 +40222,7 @@ Querverweis
 \begin_layout Standard
 
 \lang english
-Inserts a cross-reference as described in section
+Inserts a cross-reference as described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40347,17 +40247,21 @@ Marke
 \begin_layout Standard
 
 \lang english
-Inserts a label as described in section
+Inserts a label as described in Abschnitt
 \begin_inset space ~
 \end_inset
 
 
+\lang ngerman
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Cross-References"
+reference "sec:Querverweise"
 
 \end_inset
 
+
+\lang english
 .
 \end_layout
 
@@ -40389,7 +40293,7 @@ Lange Tabellen ! Legende
 
 \lang english
 Inserts a caption in a float or longtable.
- Floats are described in section
+ Floats are described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40404,7 +40308,7 @@ reference "sec:Gleitobjekte"
 
 
 \lang english
-, captions in longtables are described in the section 
+, captions in longtables are described in the Abschnitt 
 \emph on
 Longtable Captions
 \emph default
@@ -40422,7 +40326,7 @@ Stichwort
 \begin_layout Standard
 
 \lang english
-Inserts an index entry as described in section
+Inserts an index entry as described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40443,7 +40347,7 @@ Nomenklatureintrag
 \begin_layout Standard
 
 \lang english
-Inserts a nomenclature entry as described in section
+Inserts a nomenclature entry as described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40465,7 +40369,7 @@ Tabelle
 
 \lang english
 Inserts a table.
- Tables are described in section
+ Tables are described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40487,7 +40391,7 @@ Grafik
 
 \lang english
 Inserts a graphic.
- Graphics are described in section
+ Graphics are described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40512,7 +40416,7 @@ URL
 \begin_layout Standard
 
 \lang english
-Inserts an URL as described in section
+Inserts an URL as described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40533,7 +40437,7 @@ Hyperlink
 \begin_layout Standard
 
 \lang english
-Inserts a hyperlink as described in section
+Inserts a hyperlink as described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40558,7 +40462,7 @@ Fußnote
 \begin_layout Standard
 
 \lang english
-Inserts a footnote, see section
+Inserts a footnote, see Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40583,7 +40487,7 @@ Randnotiz
 \begin_layout Standard
 
 \lang english
-Inserts a marginal note, see section
+Inserts a marginal note, see Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40608,17 +40512,21 @@ Kurztitel
 \begin_layout Standard
 
 \lang english
-Inserts a short title, see section
+Inserts a short title, see Abschnitt
 \begin_inset space ~
 \end_inset
 
 
+\lang ngerman
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Short-Titles"
+reference "sec:Kurztitel"
 
 \end_inset
 
+
+\lang english
 .
 \end_layout
 
@@ -40629,7 +40537,7 @@ TeX-Code
 \begin_layout Standard
 
 \lang english
-Inserts a TeX-Code Box, see section
+Inserts a TeX-Code Box, see Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40687,7 +40595,7 @@ Inserts the actual date.
  The format depends on the date format of the language that is used for
  LyX's menus.
  LyX offers various ways to insert a date which are explained and also compared
- in the section 
+ in the Abschnitt 
 \emph on
 External Material
 \emph default
@@ -40715,7 +40623,7 @@ Menü ! Navigieren
 \begin_layout Standard
 
 \lang english
-This menu lists the existing chapters, sections, figures, tables, etc.
+This menu lists the existing chapters, Abschnitts, figures, tables, etc.
 \begin_inset space ~
 \end_inset
 
@@ -40740,12 +40648,12 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-between section
+between Abschnitt
 \begin_inset space ~
 \end_inset
 
 2.5 and 6.3.
- To create bookmarks for this example, go to section
+ To create bookmarks for this example, go to Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40762,7 +40670,7 @@ Bookmark
 1
 \family default
 .
- Then go to section
+ Then go to Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40779,7 +40687,7 @@ Bookmark
 
 \family default
 2.
- Now you can jump easily between these sections by using the menu or by
+ Now you can jump easily between these Abschnitts by using the menu or by
  the key bindings 
 \begin_inset Info
 type  "shortcut"
@@ -40846,7 +40754,7 @@ Menü ! Dokument
 \begin_layout Standard
 
 \lang english
-Change Tracking is described in section
+Change Tracking is described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40901,7 +40809,7 @@ Gliederung
 \begin_layout Standard
 
 \lang english
-Opens the TOC/Outline window as described in section
+Opens the TOC/Outline window as described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40938,7 +40846,7 @@ Anhang hier beginnen
 
 \lang english
 This menu will start the appendix of the document at the current cursor
- position as described in section
+ position as described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -41140,14 +41048,16 @@ Neukonfiguration von LyX
 
 \lang english
 This menu entry reconfigures LyX; that is, LyX looks for LaTeX-packages
- and needed programs it needs; see also section
+ and needed programs it needs; see also Abschnitt
+\lang ngerman
+
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Basic-LyX-Setup"
+reference "LyX-Grundeinstellungen"
 
 \end_inset
 
@@ -41208,14 +41118,16 @@ LaTeX
 Configuration
 \family default
  shows a LyX-document with information about the LaTeX-packages and classes
- found by LyX (see also section
+ found by LyX (see also Abschnitt
+\lang ngerman
+
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:LaTeX-Setup"
+reference "sec:LaTeX-Einstellung"
 
 \end_inset
 
@@ -41236,7 +41148,7 @@ name "sec:Werkzeugleisten"
 \begin_layout Standard
 
 \lang english
-How to show or hide toolbars is explained in section
+How to show or hide toolbars is explained in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -44319,7 +44231,7 @@ Siehe Abschnitt
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Nummerierung-aendern"
+reference "sub:Nummerierung-aendern"
 
 \end_inset
 
@@ -44392,199 +44304,49 @@ reference "sec:Literaturverzeichnis-Datenbanken"
 \end_layout
 
 \begin_layout Section
-PDF-Eigenschaften
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-PDF!-Eigenschaften
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "PDF-Eigenschaften-B"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-Hyperref-Unterstützung
-\begin_inset space ~
-\end_inset
-
-benutzen kreuzen Sie an, wenn Sie das wollen.
- Sie können dann auf den drei Karteikarten weitere Parameter festlegen.
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Allgemein
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Dokument-Informationen
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Titel,
-\begin_inset space ~
-\end_inset
-
-Autor,
-\begin_inset space ~
-\end_inset
-
-Betreff,
-\begin_inset space ~
-\end_inset
-
-Schlagwörter sind selbsterklärend.
-\end_layout
-
-\begin_layout Description
-Informationen
-\begin_inset space ~
-\end_inset
-
-automatisch
-\begin_inset space ~
-\end_inset
-
-eintragen ist selbsterklärend.
-\end_layout
-
-\begin_layout Description
-Im
-\begin_inset space ~
-\end_inset
-
-Vollbildmodus
-\begin_inset space ~
-\end_inset
-
-öffnen ist selbsterklärend.
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Description
-Hyperlinks
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Links
-\begin_inset space ~
-\end_inset
-
-am
-\begin_inset space ~
-\end_inset
-
-Zeilenende
-\begin_inset space ~
-\end_inset
-
-umbrechen ist selbsterklärend.
-\end_layout
-
-\begin_layout Description
-Kein
-\begin_inset space ~
-\end_inset
-
-Rahmen
-\begin_inset space ~
-\end_inset
-
-um
-\begin_inset space ~
-\end_inset
-
-Links ist selbsterklärend.
-\end_layout
-
-\begin_layout Description
-Links
-\begin_inset space ~
-\end_inset
-
-einfärben ist selbsterklärend.
-\end_layout
-
-\begin_layout Description
-Rückverweise zeigt im Literaturverzeichnis hinter dem jeweiligen Eintrag
- das Kapitel, die Folie, oder die Seite an, wo auf ihn verwiesen wurde.
-\end_layout
-
-\end_deeper
-\begin_layout Description
-Lesezeichen
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Lesezeichen
-\begin_inset space ~
-\end_inset
-
-erzeugen
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Nummerierte
-\begin_inset space ~
-\end_inset
-
-Lesezeichen ist selbsterklärend.
-\end_layout
-
-\begin_layout Description
-Lesezeichen
-\begin_inset space ~
-\end_inset
-
-öffnen öffnet die Lesezeichen in der DVI-Ausgabe automatisch.
-\end_layout
-
-\begin_layout Description
-Ebene legt fest, bis zu welcher Ebene (Kapitel, Abschnitt\SpecialChar \ldots{}
-) Lesezeichen angezeigt
- werden sollen.
-\end_layout
-
-\end_deeper
-\end_deeper
-\end_deeper
-\begin_layout Description
-Zusätzliche
-\begin_inset space ~
-\end_inset
-
-Optionen ist etwas für LaTeX-Spezialisten.
+Stichwortverzeichnis
 \end_layout
 
 \begin_layout Standard
-Siehe auch Abschnitt
+
+\lang english
+Here, you can customize how the index of your document is being generated
+ and you can define additional indexes.
+ Please refer to
+\lang ngerman
+ Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Stichwortverzeichnisse"
+
+\end_inset
+
+ 
+\lang english
+for details.
+\end_layout
+
+\begin_layout Section
+PDF-Eigenschaften
+\end_layout
+
+\begin_layout Standard
+Die PDF-Eigenschaften sind in Abschnitt
 \begin_inset space \space{}
 \end_inset
 
 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "PDF-Eigenschaften"
 
 \end_inset
 
-.
+ erklärt.
 \end_layout
 
 \begin_layout Section
@@ -44644,7 +44406,7 @@ Siehe auch Abschnitt
 
 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "Weitere-Symbole"
 
 \end_inset
@@ -44663,7 +44425,7 @@ Siehe Abschnitt
 
 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sub:Platzierung-von-Gleitobjekt-Umgebungen"
 
 \end_inset
@@ -44676,14 +44438,19 @@ Auflistungszeichen
 \end_layout
 
 \begin_layout Standard
-Siehe Abschnitt
-\begin_inset space \space{}
+
+\lang english
+Here you can adjust the characters for the itemize levels.
+ The itemize environment is described in
+\lang ngerman
+ Abschnitt
+\begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
-LatexCommand vref
-reference "Zurück-zu-Stufe-1"
+LatexCommand ref
+reference "sub:Auflistung"
 
 \end_inset
 
@@ -44695,70 +44462,18 @@ Zweige
 \end_layout
 
 \begin_layout Standard
-Ist für verschiedene Versionen desselben Dokuments gedacht
-\end_layout
-
-\begin_layout Description
-Neu wenn hier ein Name eingetragen wird, kann er mit 
-\family sans
-Hinzufügen
-\family default
- in die Liste der 
-\family sans
-Verfügbare
-\family default
-n
-\begin_inset space ~
-\end_inset
-
-
-\family sans
-Zweige
-\family default
- eingetragen werden.
-\end_layout
-
-\begin_layout Description
-Verfügbare
-\begin_inset space ~
-\end_inset
-
-Zweige listet alle verfügbaren Zweige auf und zeigt an, welcher aktiviert
- ist und mit welcher Farbe er markiert wird.
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Entfernen,
-\begin_inset space ~
-\end_inset
-
-Farbe
-\begin_inset space ~
-\end_inset
-
-ändern\SpecialChar \ldots{}
-,
-\begin_inset space ~
-\end_inset
-
-(De)aktivieren ist selbsterklärend.
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-Siehe auch Abschnitt
+Zweige sind in Abschnitt
 \begin_inset space \space{}
 \end_inset
 
 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sec:Zweige"
 
 \end_inset
 
-.
+ beschrieben.
 \end_layout
 
 \begin_layout Section
@@ -45328,7 +45043,7 @@ Achtung
 \lang english
 :
 \series default
- This section only deals with the fonts 
+ This Abschnitt only deals with the fonts 
 \emph on
 inside
 \emph default
@@ -45435,7 +45150,7 @@ Font Sizes
 \end_inset
 
 pt would be used.
- The sizes are explained in detail in section
+ The sizes are explained in detail in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -45534,7 +45249,7 @@ Here you can specify if graphics inside LyX are displayed.
 Instant Preview
 \family default
  enables previewing snippets of your document.
- This feature is described in section
+ This feature is described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -45642,7 +45357,7 @@ Group environments by their category
 \begin_layout Standard
 
 \lang english
-The math macro editing option determines the editing style, see the section
+The math macro editing option determines the editing style, see the Abschnitt
  
 \emph on
 Math Macros
@@ -46117,7 +45832,7 @@ Sicherung ! Verzeichnis
  In diesem Verzeichnis werden Sicherungen gespeichert.
  
 \lang english
-When no directory is given but backups are enabled as described in section
+When no directory is given but backups are enabled as described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -46257,7 +45972,7 @@ Identität
 \lang english
 Here you can insert your name and email address.
  The identity will be used when you have enabled change tracking as described
- in section
+ in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -47005,7 +46720,7 @@ X-Befehl
 \family sans
 CheckTeX
 \family default
- that is described in the section 
+ that is described in the Abschnitt 
 \emph on
 Checking TeX
 \emph default
@@ -47034,7 +46749,7 @@ X-Befehl
 \family sans
 BibTeX
 \family default
- that generates the bibliography, see section
+ that generates the bibliography, see Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -47067,7 +46782,7 @@ das
 
 Stichwortverzeichnis
 \lang english
- Command for the program that generates the index, see section
+ Command for the program that generates the index, see Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -47088,7 +46803,7 @@ reference "sub:Stichwort-Programm"
 \begin_layout Description
 Nomenklarturbefehl
 \lang english
- Command for the program that generates the nomenclature, see section
+ Command for the program that generates the nomenclature, see Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -47327,7 +47042,7 @@ Maximum Age (in days
 
 \lang english
 More about converters, like the variables and flags that can be used in
- the converter definition, is described in the section 
+ the converter definition, is described in the Abschnitt 
 \emph on
 Converters
 \emph default
@@ -47417,7 +47132,7 @@ Update Master Document
 
 \lang english
 More about formats, like the options that can be used in the format definition,
- is described in the section 
+ is described in the Abschnitt 
 \emph on
 Formats
 \emph default
@@ -47439,7 +47154,7 @@ Since all conversions from one format to another take place in LyX's temporary
 Copier
 \family default
 .
- More about this is described in the section 
+ More about this is described in the Abschnitt 
 \emph on
 Copiers
 \emph default

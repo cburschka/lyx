@@ -10219,7 +10219,11 @@ em) A line with a
 \begin_inset Formula $\gets$
 \end_inset
 
- Enspace (0.5
+ Enspace
+\begin_inset space ~
+\end_inset
+
+(0.5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -11108,7 +11112,7 @@ Note:
 \series default
  
 \series medium
-When the extra vertical space would be in the output at the top/bottom of
+If the extra vertical space would be in the output at the top/bottom of
  a page, the space is only added if you have also checked the option 
 \family sans
 Protect
