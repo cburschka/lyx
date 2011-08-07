@@ -8731,15 +8731,6 @@ status collapsed
 \end_inset
 
 
-\family default
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:箇条書き（記述）"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -9114,15 +9105,6 @@ status collapsed
 \begin_layout Plain Layout
 かじょうがき@箇条書き!LyXりすと@------（LyXリスト）
 \end_layout
-
-\end_inset
-
-
-\family default
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:LyXリスト"
 
 \end_inset
 
@@ -13634,13 +13616,6 @@ LyXはこれら3つのオブジェクトを、単語または段落として扱�
 
 \begin_layout Subsection
 使い方と一般的な性質
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:入れ子−使い方"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -16239,13 +16214,6 @@ arg   "space-insert thin"
 
 \begin_layout Subsubsection
 その他の空白
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:その他の空白"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -16630,13 +16598,6 @@ em
 
 \begin_layout Subsubsection
 水平フィル
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:水平フィル"
-
-\end_inset
-
-
 \begin_inset Index idx
 status collapsed
 
@@ -27827,6 +27788,12 @@ name "sec:フロート"
 
 \end_layout
 
+\begin_layout Subsection
+
+\lang english
+Introduction
+\end_layout
+
 \begin_layout Standard
 フロート
 \begin_inset Foot
@@ -27897,7 +27864,9 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-フロート型
+
+\lang english
+Examples
 \end_layout
 
 \begin_layout Subsubsection
@@ -27923,56 +27892,75 @@ name "sub:図フロート"
 
 \begin_layout Standard
 
-\family sans
-挿入\SpecialChar \menuseparator
-フロート\SpecialChar \menuseparator
-図
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-メニューは、
-\family default
-\series bold
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-「図
+\lang english
+Figure
 \begin_inset space ~
 \end_inset
 
-#:」
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-というラベルの付いたフロートを挿入します。カーソルをこのラベルの上において（あるいはラベルの前において改行を押す）上述したように画像を挿入すれば、キャプションが
-下にある画像が得られます。このようにして得られたのが図
+
+\lang japanese
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cap:カモノハシ"
 
 \end_inset
 
-です。キャプションを図の上に欲しいときには、カーソルをキャプションの終わりに合わせて、改行を押し、画像を挿入してください。このようにして得られたのが図
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cap:エッシャー"
 
+\lang english
+ was created using the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Float\SpecialChar \menuseparator
+Figure
+\family default
+ or the toolbar button
+\lang japanese
+ 
+\begin_inset Info
+type  "icon"
+arg   "float-insert figure"
 \end_inset
 
-です。
+.
+ 
+\lang english
+The image was inserted by setting the cursor above the caption label and
+ using the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Graphics
+\family default
+ or the toolbar button
+\lang japanese
+ 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
+\end_inset
+
+.
+ 
+\lang english
+The image in the float was horizontally centered by putting the cursor in
+ front of or behind the image and using the menu 
+\family sans
+Edit\SpecialChar \menuseparator
+Paragraph
+\begin_inset space ~
+\end_inset
+
+Settings
+\family default
+ or the toolbar button
+\lang japanese
+ 
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -27986,6 +27974,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename ../clipart/platypus.eps
+	lyxscale 50
 	width 50col%
 	rotateOrigin center
 
@@ -28015,48 +28004,6 @@ name "cap:カモノハシ"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement htbp
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "cap:エッシャー"
-
-\end_inset
-
-行ってしまったM.C.エッシャー
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ../clipart/escher-lsd.eps
-	scale 80
-	rotateOrigin center
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \begin_layout Standard
@@ -28115,7 +28062,37 @@ reference "sec:相互参照"
 \bar no
 \noun off
 \color none
-メニューを使ってラベルを挿入し、
+メニュー
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+ or the toolbar button
+\lang japanese
+ 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
+\end_inset
+
+ 
+\lang english
+and refer to it using the menu
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang japanese
+ を使ってラベルを挿入し、
 \family sans
 \series default
 \shape default
@@ -28134,8 +28111,35 @@ reference "sec:相互参照"
 \bar no
 \noun off
 \color none
-を使って参照します。図フロートを参照する場合には、「上図」のようにあいまいな参照をするのではなく、相互参照を使用することが重要です。LaTeXは、文書の最終版で
-フロートの再配置を行うため、図が「上」に来るかどうかはまったくもって定かではないからです。
+を使って参照します
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+ or the toolbar button
+\lang japanese
+ 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+。図フロートを参照する場合には、「上図」のようにあいまいな参照をするのではなく、相互参照を使用することが重要です。LaTeXは、文書の最終版でフロートの再配置を
+行うため、図が「上」に来るかどうかはまったくもって定かではないからです。
 \end_layout
 
 \begin_layout Standard
@@ -28178,7 +28182,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -28218,7 +28222,7 @@ name "fig:何かわからない"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -28281,46 +28285,6 @@ name "cap:歪められた二つの像"
 
 \end_layout
 
-\begin_layout Standard
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-また、第
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:図・表・アルゴリズム一覧"
-
-\end_inset
-
-節の説明のとおり、
-\family sans
-図一覧
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-に加えられます。
-\end_layout
-
 \begin_layout Subsubsection
 表フロート
 \begin_inset Index idx
@@ -28345,7 +28309,17 @@ status collapsed
 表
 \family default
 \shape default
-メニューを使うと挿入することができます。表フロートは、ラベルが異なることを除けば、図フロートと同じです。表
+メニューを使
+\lang english
+ or the toolbar botton
+\lang japanese
+ 
+\begin_inset Info
+type  "icon"
+arg   "float-insert table"
+\end_inset
+
+ うと挿入することができます。表フロートは、ラベルが異なることを除けば、図フロートと同じです。表
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cap:表フロート"
@@ -28562,298 +28536,17 @@ c & d
 
 \end_layout
 
-\begin_layout Subsubsection
-アルゴリズムフロート
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-ふろーと@フロート!あるごりずむ@アルゴリズム------
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-このフロート型は、
-\family sans
-挿入
-\shape up
-\SpecialChar \menuseparator
-フロート\SpecialChar \menuseparator
-アルゴリズム
-\family default
-\shape default
-メニューを使うと挿入することができます。これは、プログラムコードやアルゴリズムの記述に用いられます。アルゴリズム向けの環境としては、第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:LyXコード"
-
-\end_inset
-
-節に述べられているように、
-\family sans
-LyXコード
-\family default
-があります。
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-【註】
-\series default
-このフロートラベルは自動的に文書言語に翻訳されるわけではないことに留意してください。
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-その翻訳を行うためには、文書のプリアンブル（
-\family sans
-文書\SpecialChar \menuseparator
-設定
-\family default
-メニュー）に
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-floatname{algorithm}{現地語名}
-\end_layout
-
-\begin_layout Standard
-と書き加えなくてはなりません。現地語名のところには、「
-\emph on
-algorithm
-\emph default
-」という英単語のお使いの言語での訳語を入れてください。
-\end_layout
-
-\begin_layout Subsubsection
-折返しフロート
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-ふろーと@フロート!ほんぶんおりかえし@本文折返し------
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Wrap figure
-lines 0
-placement l
-overhang 0in
-width "40col%"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../clipart/mobius.eps
-	width 40col%
-	rotateOrigin center
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "cap:折返し図"
-
-\end_inset
-
-これは折返しの図です。
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-このフロート型は、本文が図の周りに「折返して」入ることによって、図が段幅の一部しか占拠しないようにしたいときに用います。折返しフロートは、LaTeXパッケージの
-\series bold
-wrapfig
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ!wrapfig
-\end_layout
-
-\end_inset
-
-がすでに装備されていれば、
-\family sans
-挿入\SpecialChar \menuseparator
-フロート\SpecialChar \menuseparator
-折返しフロート
-\family default
-メニューで挿入することができます
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-LaTeXパッケージの導入方法は、取扱説明書の『LaTeXの設定』に説明されています。
-\end_layout
-
-\end_inset
-
-。フロートの幅と配置位置は、フロートボックスを右クリックすれば調整することができます。第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cap:折返し図"
-
-\end_inset
-
-図は、40列幅％の幅を持つ折返し図フロートとして例示してあります
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-使うことのできる単位は付録
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cha:LyXで使用できる単位"
-
-\end_inset
-
-に収録してあります。
-\end_layout
-
-\end_inset
-
-。取り巻く本文から適切に距離をおくためにキャプションの下に空白を入れてあります。
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-【註】
-\series default
-折返しフロートは壊れやすいことがあります！例えば、図をページの下すぎる位置に置いてしまうと、ごちゃごちゃになって、フロートが出力に現れなかったり、他の本文の上に
-上書きされて出力されたりします。
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-原則として、
-\end_layout
-
-\begin_layout Itemize
-折返しフロートは、改頁に掛かってしまう段落に置くべきではありません。つまり、折返しフロートは、文書がほぼ完成する段階になって、どこに改頁が現れるかを予測できるよ
-うになってから、正確な位置に挿入しなくてはなりません。
-\end_layout
-
-\begin_layout Itemize
-折返しフロートは、入れ込む段落の前に単独の段落を設けて挿入するか、その段落自体の中に挿入しなくてはなりません。
-\end_layout
-
-\begin_layout Itemize
-折返しフロートを二つの段落に連続して入れると問題を引き起こす可能性があるので、二つの折返しフロートのあいだには本文のみの段落が入るのようにしてください。
-\end_layout
-
-\begin_layout Itemize
-折返しフロートは、節見出しや表中に入れることは認められていません。
-\end_layout
-
 \begin_layout Subsection
-回転フロート
+
+\lang english
+More Information
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-ふろーと@フロート!かいてん@回転------
-\end_layout
 
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:回転フロート"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-特に横長の表などの場合、フロートを回転させたいことがあります。キャプションを含むフロート全体を回転させたいときは、フロートボックスを右クリックして、
-\family sans
-横倒しに回転
-\family default
-オプションを有効にします。
-\end_layout
-
-\begin_layout Standard
-回転フロートは、つねに独立したページ（二段組文書のときは独立した段）に配置されます。フロート設定の
-\family sans
-段をまたぐ
-\family default
-オプションを有効にすれば、複数の段にまたがるようにすることができます。また、回転フロートは、外側余白方向から読むことができるような形に回転されます。回転方向を他
-の方向に強制する方法は、取扱説明書『埋込みオブジェクト篇』に説明されています。
-\end_layout
-
-\begin_layout Standard
-回転フロートへの相互参照は、通常のフロートの場合と同じです。キャプションの形式も同じです。表
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cap:回転した表"
-
-\end_inset
-
-が回転表フロートの例です。
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-【註】
-\series default
-すべてのDVIビューアが回転フロートを表示できるわけではありません。
+\lang english
+Floats ! Details
 \end_layout
 
 \end_inset
@@ -28862,437 +28555,26 @@ status open
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float table
-wide false
-sideways true
-status open
 
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "cap:回転した表"
-
-\end_inset
-
-回転した表
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="1" columns="5">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-試験
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-甲
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-乙
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-丙
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-丁
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-フロートの配置
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-ふろーと@フロート!のはいち@------の配置
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:フロートの配置"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-フロートボックスを右クリックすると、ダイアログが開いて、ここでLaTeXがフロートを配置するのに使う配置オプションを変更できるようになります。
-\begin_inset Newline newline
-\end_inset
-
-
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-段をまたぐ
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-オプションは、二段組文書でのみ有効です。これを選択すると、フロートは段の中のみに収められないで、ページの両段にまたがって広がります。
-\begin_inset Newline newline
-\end_inset
-
-
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-横倒しに回転
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-オプションは、フロートを回転するのに用います。第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:回転フロート"
-
-\end_inset
-
-節をご参照ください。
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-フロートダイアログでは、
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-既定の配置を使う
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-オプションを無効にしたときには、特定のフロートの配置を設定するのに以下のオプションの一つ以上を設定することができます。
-\end_layout
-
-\begin_layout Description
-可能ならば現在位置に： 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-フロートを挿入位置に配置することを試みます
-\end_layout
-
-\begin_layout Description
-ページ上部： 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-フロートを現在ページの上部に配置することを試みます
-\end_layout
-
-\begin_layout Description
-ページ下部： 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-フロートを現在ページの下部に配置することを試みます
-\end_layout
-
-\begin_layout Description
-フロートを独立したページに： 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-フロートを独立したページに配置することを試みます
-\end_layout
-
-\begin_layout Standard
-LaTeXは、
+\lang english
+LyX offers you further float types as well as rotated floats.
+ It also allows you to change the float numbering scheme, to control the
+ float placement and to change the formatting and placement of the float
+ caption.
+ All these features are explained in detail with many examples in chapter
+ 
 \emph on
-つねに
+Floats
 \emph default
-上記のオプション順を用います。すなわち、既定の配置を使用すると、LaTeXはまず
-\family sans
-可能ならば現在位置に
-\family default
-を試み、次に
-\family sans
-ページの上部
-\family default
-、その後他のオプションを試みます。既定値を使わないときには、LaTeXは有効化されたオプションのみを使用しますが、やはり同じ順序でこれらを試みます。これら四つの
-配置がいずれも無理な場合は、フロートを内部的に次のページにおいてみて同様の手続きがうまくいくかどうかを試みます。
-\end_layout
-
-\begin_layout Standard
-既定では、各オプションはそれぞれ以下の規則を持っています。
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-\lang english
-Top
+ of the the 
+\emph on
+Embedded
 \begin_inset space ~
 \end_inset
 
-of
-\begin_inset space ~
-\end_inset
-
-page
-\family default
- only floats occupying less than 70
-\begin_inset space \thinspace{}
-\end_inset
-
-% of the page can be placed at the top of a page (
-\series bold
-
-\backslash
-topfraction
-\series default
-)
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-\lang english
-Bottom
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-page
-\family default
-: only floats occupying less than 30
-\begin_inset space \thinspace{}
-\end_inset
-
-% of the page can be placed at the bottom of a page.
- (
-\series bold
-
-\backslash
-bottomfraction
-\series default
-)
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-\lang english
-Page
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-floats
-\family default
-: only if more than 50
-\begin_inset space \thinspace{}
-\end_inset
-
-% of the page are occupied by floats, several floats can be set together
- on a page.
- (
-\series bold
-
-\backslash
-floatpagefraction
-\series default
-)
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-If you don't like these rules, you can ignore them by using the additional
- option 
-\family sans
-Ignore
-\begin_inset space ~
-\end_inset
-
-LaTeX
-\begin_inset space ~
-\end_inset
-
-rules
-\family default
-.
-\begin_inset Newline newline
-\end_inset
-
-You can also redefine the rules with LaTeX-commands that are given in parenthese
-s after the rules description above.
- To increase for example the often too small default of the bottom-rule
- to 50
-\begin_inset space \thinspace{}
-\end_inset
-
-% of the page, add this line to your document preamble:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-renewcommand{
-\backslash
-bottomfraction}{0.5}
-\end_layout
-
-\begin_layout Standard
-ときにはフロートを、挿入位置に正確に、しかもかならず配置させたい場合があるかもしれません。このような場合には、
-\family sans
-何としても現在位置に置く
-\family default
-オプションを使用します。このオプションはできる限り使わないようにし、使う場合でも印刷する直前にまで文書が仕上がってから、使用するようにしてください。なぜならば、
-このオプションを使うことによって、フロートはもはや「漂う」ことができなくなりますから、文書に変更を加えてしまうと、ページのレイアウトが往々にして破壊されてしまう
-からです。
-\end_layout
-
-\begin_layout Standard
-折返しフロートは、つねにどれかの段落の本文で囲まれますので、配置オプションはありません。
-\end_layout
-
-\begin_layout Standard
-フロートの配置についての詳細は、
-\begin_inset CommandInset citation
-LatexCommand cite
-key "latexcompanion,latexguide,latexbook"
-
-\end_inset
-
-などのLaTeX関係書をご参照ください。
+Objects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Section
@@ -35145,7 +34427,7 @@ name "sub:文献データベース"
 \end_layout
 
 \begin_layout Standard
-ひとつの参考文献をいろいろな文書で使用する場合には、文献データベースを使うのが便利です
+ひとつの参考文献をいろいろな文書で使用する場合には、文献データベースを使うのが便利です。
 \begin_inset Foot
 status collapsed
 
@@ -35156,9 +34438,9 @@ status collapsed
 
 \end_inset
 
-。また、これを使うと、文献項目をすべて同じレイアウトに維持することがたいへん簡単にできるようになります。仕事の関連領域のすべての関係書と論文をひとつのデータベー
-スに収集しておくことも一案でしょう。このデータベースは、いろいろな文書から利用することができて、特定の文書の参考文献一覧には、この文書で引用された項目のみが表示
-されます。これによって、あなたは、どの論文・書籍を引用したかを記録しつづける労苦から解放されるのです。
+また、これを使うと、文献項目をすべて同じレイアウトに維持することがたいへん簡単にできるようになります。仕事の関連領域のすべての関係書と論文をひとつのデータベース
+に収集しておくことも一案でしょう。このデータベースは、いろいろな文書から利用することができて、特定の文書の参考文献一覧には、この文書で引用された項目のみが表示さ
+れます。これによって、あなたは、どの論文・書籍を引用したかを記録しつづける労苦から解放されるのです。
 \end_layout
 
 \begin_layout Standard
@@ -35230,7 +34512,7 @@ eX参考文献
 .bst
 \family default
 」のテキストファイルです。お使いのLaTeX頒布版には複数のスタイルファイルが収められており、出版社の多くが特定のスタイルファイルを提供しているので、それを利用
-すれば、レイアウトの心配をする必要はありません。もちろん、自作のスタイルファイルを作成することもできますが、それは熟練者向けの仕事です
+すれば、レイアウトの心配をする必要はありません。もちろん、自作のスタイルファイルを作成することもできますが、それは熟練者向けの仕事です。
 \begin_inset Foot
 status collapsed
 
@@ -35242,7 +34524,7 @@ status collapsed
 
 \begin_inset CommandInset href
 LatexCommand href
-target "http://www.ctan.org/get/biblio/bibtex/contrib/doc/btxhak.pdf"
+target "http://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxhak.pdf"
 
 \end_inset
 
@@ -35255,7 +34537,7 @@ target "http://www.ctan.org/get/biblio/bibtex/contrib/doc/btxhak.pdf"
 
 \end_inset
 
-。
+
 \end_layout
 
 \begin_layout Standard
@@ -37302,14 +36584,14 @@ x^{2}-2x-2\Rightarrow\question{x_{1}}\answer{x_{2}}=1\question{+\sqrt{3}}\answer
 \end_layout
 
 \begin_layout Standard
-数式内部で数式マクロを使うことによっても同様の効果を得ることができます。第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:数式マクロ"
 
-\end_inset
-
-節を参照してください。
+\lang english
+Inside math, the same effect can be achieved using math macros, see the
+ 
+\emph on
+Math
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Section
@@ -40491,13 +39773,6 @@ reference "sub:特殊文字"
 
 \begin_layout Subsection
 キーボード配置表の設定
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:キーボード配置表の設定"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -47799,14 +47074,42 @@ reference "sec:文書クラス"
 status collapsed
 
 \begin_layout Plain Layout
-dvi2ps・dvialw・dvilaser・dvitops・psprint・pubps・ln
+
+\family sans
+dvi2ps
+\family default
+・
+\family sans
+dvialw
+\family default
+・
+\family sans
+dvilaser
+\family default
+・
+\family sans
+dvitops
+\family default
+・
+\family sans
+psprint
+\family default
+・
+\family sans
+pubps
+\family default
+・
+\family sans
+ln
+\family default
+
 \begin_inset Newline newline
 \end_inset
 
 のいずれかのドライバを使用したい場合には、まずお使いのLaTeX頒布版でこれらを有効にしなくてはなりません。
 \begin_inset CommandInset href
 LatexCommand href
-target "http://tug.ctan.org/get/macros/latex/required/graphics/grfguide.pdf"
+target "http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf"
 
 \end_inset
 
@@ -47829,6 +47132,35 @@ target "http://tug.ctan.org/get/macros/latex/required/graphics/grfguide.pdf"
 子文書
 \emph default
 』の節に説明されています。
+\end_layout
+
+\begin_layout Section
+
+\lang english
+Child Documents
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This submenu is only visible when your document includes child documents.
+ Please refer to the section 
+\emph on
+Child
+\begin_inset space ~
+\end_inset
+
+Documents
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual for details.
 \end_layout
 
 \begin_layout Section
@@ -48606,14 +47938,25 @@ esint
 \end_layout
 
 \begin_layout Standard
-フロートの配置オプションに関しては、第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:フロートの配置"
 
+\lang english
+The float placement options are described in section 
+\emph on
+Float
+\begin_inset space ~
 \end_inset
 
-節に説明があります。
+Placement
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Section
@@ -48621,14 +47964,25 @@ reference "sub:フロートの配置"
 \end_layout
 
 \begin_layout Standard
-ここでは、記号付き箇条書きの各階層の記号を調整できます。箇条書き（記号）環境に関しては、第
+
+\lang english
+Here you can adjust the characters for the itemize levels.
+ The itemize environment is described in section
+\begin_inset space ~
+\end_inset
+
+
+\lang japanese
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:箇条書き（記号）"
 
 \end_inset
 
-節に説明があります。
+
+\lang english
+.
 \end_layout
 
 \begin_layout Section

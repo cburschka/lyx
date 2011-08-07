@@ -333,8 +333,8 @@ Note that there is no horizontal scrollbar.
 \begin_layout Standard
 
 \lang english
-For a brief description of all LyX menus and toolbar buttons, have a look
- at Anhang
+For a brief description of all LyX menus and Werkzeugleistenknopfs, have
+ a look at Anhang
 \begin_inset space ~
 \end_inset
 
@@ -1869,7 +1869,7 @@ Return
 \lang english
 In the preferences dialog, which is opened mit the Menü 
 \family sans
-Tools\SpecialChar \menuseparator
+Werkzeuge\SpecialChar \menuseparator
 Preferences
 \family default
 , the cursor completion indicator can be turned off in the section 
@@ -2384,7 +2384,7 @@ A
 \lang english
 You can list or change the key bindings in the menu 
 \family sans
-Tools\SpecialChar \menuseparator
+Werkzeuge\SpecialChar \menuseparator
 Preferences
 \family default
  unter 
@@ -15279,8 +15279,8 @@ DVI
 \family default
  oder 
 \family sans
-File\SpecialChar \menuseparator
-Export\SpecialChar \menuseparator
+Datei\SpecialChar \menuseparator
+Exportieren\SpecialChar \menuseparator
 DVI
 \begin_inset space ~
 \end_inset
@@ -15434,7 +15434,7 @@ Encapsulated PostScript
 \end_inset
 
 images in your document, LyX has to do 50
-\begin_inset space \thinspace{}
+\begin_inset space ~
 \end_inset
 
 conversions whenever you view oder export your document.
@@ -15907,7 +15907,7 @@ View
 Ansicht\SpecialChar \menuseparator
 DVI
 \family default
- you can use the toolbar button 
+ you can use the Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/buffer-view_dvi.png
 
@@ -15928,7 +15928,7 @@ PDF
 
 (pdflatex)
 \family default
- the toolbar button 
+ the Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/buffer-view_pdf2.png
 
@@ -15939,7 +15939,7 @@ PDF
 Ansicht\SpecialChar \menuseparator
 Postscript
 \family default
- the toolbar button 
+ the Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/buffer-view_ps.png
 
@@ -15999,7 +15999,7 @@ Drucken
 \family default
  oder 
 \lang english
-click on the toolbar button 
+click on the Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/dialog-show_print.png
 
@@ -17814,7 +17814,7 @@ As you can see in the example, the first line of greyed out notes is a bit
 \begin_layout Standard
 
 \lang english
-Notes are inserted with the toolbar button 
+Notes are inserted with the Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
 arg   "note-insert"
@@ -18084,7 +18084,7 @@ arg   "dialog-show-new-inset graphics"
 
  or select 
 \family sans
-Insert\SpecialChar \menuseparator
+Einfügen\SpecialChar \menuseparator
 Graphics
 \family default
  from the menu.
@@ -18248,7 +18248,7 @@ If you need image captions and want to reference images, you have to put
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Figure-Floats"
+reference "sub:Abbildungs-Gleitobjekte"
 
 \end_inset
 
@@ -18770,7 +18770,7 @@ name "sec:Tabellen"
 \begin_layout Standard
 
 \lang english
-You can insert a table using either the toolbar button 
+You can insert a table using either the Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
 arg   "tabular-insert"
@@ -18778,8 +18778,8 @@ arg   "tabular-insert"
 
  or the menu 
 \family sans
-Insert\SpecialChar \menuseparator
-Table
+Einfügen\SpecialChar \menuseparator
+Tabelle
 \family default
 .
  A dialog will appear, asking you for the number of rows and columns.
@@ -19337,7 +19337,7 @@ footer
 Caption: The first row is reset as a single column.
  You can now insert there the table caption via the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Einfügen\SpecialChar \menuseparator
 Caption
 \family default
 .
@@ -21775,6 +21775,10 @@ Gleitobjekte
 
 \end_layout
 
+\begin_layout Subsection
+Einführung
+\end_layout
+
 \begin_layout Standard
 
 \lang english
@@ -21814,7 +21818,7 @@ Floats make it possible to get a high quality layout.
  As the floating often destroys the context between the text and the image/table
 , every float can be referenced in the text.
  Floats are therefore numbered.
- Referencing is described in section
+ Referencing is described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -21833,7 +21837,7 @@ reference "sec:Querverweise"
 \lang english
 To insert a float, use the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Einfügen\SpecialChar \menuseparator
 Floats
 \family default
 .
@@ -21894,30 +21898,34 @@ It is recommended to insert floats as a separate paragraph to avoid possible
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Float Types
+Beispiele
 \end_layout
 
 \begin_layout Subsubsection
+Abbildungs-Gleitobjekte
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Abbildungs-Gleitobjekte"
 
-\lang english
-Figure Floats
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Floats ! Figure floats
+Gleitobjekte
 \end_layout
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Figure-Floats"
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Gleitobjekte ! Abbildung
+\end_layout
 
 \end_inset
 
@@ -21927,54 +21935,57 @@ name "sec:Figure-Floats"
 \begin_layout Standard
 
 \lang english
-The menu 
+Abbildung
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ein-verzerrtes-Schnabeltier"
+
+\end_inset
+
+ was created using the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Einfügen\SpecialChar \menuseparator
 Float\SpecialChar \menuseparator
 Figure
 \family default
- inserts a float with the label 
-\begin_inset Quotes eld
-\end_inset
-
-
-\series bold
-Figure
-\begin_inset space ~
-\end_inset
-
-#:
-\series default
-
-\begin_inset Quotes erd
+ or the Werkzeugleistenknopf 
+\begin_inset Info
+type  "icon"
+arg   "float-insert figure"
 \end_inset
 
 .
- Set the cursor above this label (or before it and press enter) and insert
- the image as described above to get the caption printed below the image.
- This is what we did for Figure
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:A-severely-distorted"
-
+ The image was inserted by setting the cursor above the caption label and
+ using the menu 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Graphics
+\family default
+ or the Werkzeugleistenknopf 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
 \end_inset
 
 .
- If you want the caption to be above the image, set the cursor at the end
- of the caption, press enter and insert the image.
- This was done in Figure
+ The image in the float was horizontally centered by putting the cursor
+ in front of or behind the image and using the menu 
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Paragraph
 \begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Escher"
-
+Settings
+\family default
+ oder dem Werkzeugleistenknopf 
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
 \end_inset
 
 .
@@ -21990,6 +22001,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename ../clipart/platypus.eps
+	lyxscale 50
 	width 50col%
 
 \end_inset
@@ -22001,59 +22013,14 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:A-severely-distorted"
+name "fig:Ein-verzerrtes-Schnabeltier"
 
 \end_inset
 
-A severely distorted platypus in a float.
+Ein verzerrtes Schnabeltier in einem Gleitobjekt.
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-
-\lang english
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Escher"
-
-\end_inset
-
-M.C.
- Escher on acid.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ../clipart/escher-lsd.eps
-	scale 80
 
 \end_inset
 
@@ -22070,7 +22037,7 @@ M.C.
 \lang english
 This figure float also shows how to set a label and create a cross-reference
  to it.
- As described in section
+ As described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -22083,14 +22050,26 @@ reference "sec:Querverweise"
 
 , you can simply insert a label in the caption using the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Einfügen\SpecialChar \menuseparator
 Label
 \family default
+ or the Werkzeugleistenknopf 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
+\end_inset
+
  and refer to it using the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Einfügen\SpecialChar \menuseparator
 Cross-Reference
 \family default
+ or the Werkzeugleistenknopf 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
+\end_inset
+
 .
  It is important to use references to figure floats, rather than using vague
  references like 
@@ -22119,35 +22098,47 @@ above
 Normally only one image is inserted in a figure float, but sometimes you
  might want to use two images with separate subcaptions.
  This can be done by inserting image floats into existing image floats.
- Note that only the main caption of the float is added to the List of Figures.
- Figure
+ Note that only the main caption of the float is added to the List of Figures
+ as described in Abschnitt
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Two-distorted-images"
+reference "sec:Verzeichnisse"
+
+\end_inset
+
+.
+ Abbildung
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Zwei-verzerrte-Bilder"
 
 \end_inset
 
  is an example of a figure float with two images set side by side.
  You can also set the images one below the other.
- Figure
+ Abbildung
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Undefinable"
+reference "fig:Undefinierbar"
 
 \end_inset
 
- and 
+ und 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Platypus"
+reference "fig:Schnabeltier"
 
 \end_inset
 
@@ -22168,21 +22159,19 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Undefinable"
+name "fig:Undefinierbar"
 
 \end_inset
 
-Undefinable
+Undefinierbar
 \end_layout
 
 \end_inset
@@ -22210,21 +22199,19 @@ Undefinable
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Platypus"
+name "fig:Schnabeltier"
 
 \end_inset
 
-Platypus
+Schnabeltier
 \end_layout
 
 \end_inset
@@ -22256,15 +22243,13 @@ Platypus
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Two-distorted-images"
+name "fig:Zwei-verzerrte-Bilder"
 
 \end_inset
 
-Two distorted images.
+Zwei verzerrte Bilder.
 \end_layout
 
 \end_inset
@@ -22275,48 +22260,15 @@ Two distorted images.
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Note that the caption is added to the 
-\family sans
-List
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-Figures
-\family default
- as described in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Verzeichnisse"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Table Floats
+Tabellen-Gleitobjekt
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Floats ! Table floats
+Gleitobjekte ! Tabelle
 \end_layout
 
 \end_inset
@@ -22325,29 +22277,37 @@ Floats ! Table floats
 \end_layout
 
 \begin_layout Standard
-
+Tabellen-Gleitobjekt
 \lang english
-Table floats can be inserted using the menu 
+e
+\lang ngerman
+ können über das Menü 
 \family sans
-Insert\SpecialChar \menuseparator
+Einfügen\SpecialChar \menuseparator
 Float\SpecialChar \menuseparator
 Table
 \family default
-.
- They have the same properties as figure floats except for the different
- label.
- Table
+ oder dem Werkzeugleistenknopf 
+\begin_inset Info
+type  "icon"
+arg   "float-insert table"
+\end_inset
+
+ eingefügt werden.
+ Sie haben dieselben Eigenschaften wie Abbildungs-Gleitobjekte mit Ausnahme
+ der anderen Bezeichnung.
+ Tabelle
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-float"
+reference "tab:Ein-Tabellen-Gleitobjekt"
 
 \end_inset
 
- is an example of a table float.
+ ist ein Tabellen-Gleitobjekt.
 \end_layout
 
 \begin_layout Standard
@@ -22360,15 +22320,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Table-float"
+name "tab:Ein-Tabellen-Gleitobjekt"
 
 \end_inset
 
-A table float.
+Ein Tabellen-Gleitobjekt.
 \end_layout
 
 \end_inset
@@ -22495,364 +22453,13 @@ c & d
 
 \end_layout
 
-\begin_layout Subsubsection
-
-\lang english
-Algorithm Floats
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Floats ! Algorithm floats
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-This float type is inserted with the menu 
-\family sans
-Insert\SpecialChar \menuseparator
-Float\SpecialChar \menuseparator
-Algorithm
-\family default
-.
- It is used for program codes and descriptions of algorithms.
- A possible environment for algorithms is the 
-\family sans
-LyX-Code
-\family default
-, described in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:LyX-Code"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\lang english
-Note:
-\series default
- that the float label is not automatically translated into the document
- language.
-\end_layout
-
-\end_inset
-
- You have to do this manually by adding the following line
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\lang english
-
-\backslash
-floatname{algorithm}{your
-\begin_inset space ~
-\end_inset
-
-name}
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-to the document preamble (menu 
-\family sans
-Document\SpecialChar \menuseparator
-Settings
-\family default
-).
- 
-\series bold
-your
-\begin_inset space ~
-\end_inset
-
-name
-\series default
- is the word 
-\begin_inset Quotes eld
-\end_inset
-
-
-\emph on
-algorithm
-\emph default
-
-\begin_inset Quotes erd
-\end_inset
-
- in your language.
-\end_layout
-
-\begin_layout Subsubsection
-
-\lang english
-Wrap Floats
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Floats ! Text Wrap Floats
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Wrap figure
-lines 0
-placement l
-overhang 0in
-width "40col%"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../clipart/mobius.eps
-	width 40col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\lang english
-\begin_inset Caption
-
-\begin_layout Plain Layout
-
-\lang english
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Wrapped-figure"
-
-\end_inset
-
-This is a wrapped figure
-\lang ngerman
-.
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\lang english
-This float type is used if you want to 
-\begin_inset Quotes eld
-\end_inset
-
-wrap
-\begin_inset Quotes erd
-\end_inset
-
- text around a figure so that it only occupies some fraction of the column
- width.
- It can be inserted using the menu 
-\family sans
-Insert\SpecialChar \menuseparator
-Float\SpecialChar \menuseparator
-Wrap
-\begin_inset space ~
-\end_inset
-
-Float
-\family default
- if the LaTeX-package 
-\series bold
-wrapfig
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-LaTeX-packages ! wrapfig
-\end_layout
-
-\end_inset
-
- is installed.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Installing a LaTeX-package is explained it in the 
-\emph on
-LaTeX
-\begin_inset space ~
-\end_inset
-
-Configuration
-\emph default
- manual.
-\end_layout
-
-\end_inset
-
- The width and placement of the float is adjusted by right-clicking on the
- float box.
- Figure
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Wrapped-figure"
-
-\end_inset
-
- is for example a figure wrap float with a width of 40
-\begin_inset space \thinspace{}
-\end_inset
-
-col%.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Available units are explained in Appendix
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:In-LyX-verfügbare"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- Some space was added under the caption to separate it better from the surroundi
-ng text.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\lang english
-Note:
-\series default
- Wrap floats might be fragile! E.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-having a figure too close to the bottom of the page can mess things up so
- that the float doesn't appear in the output or that it is placed over some
- other text.
-\end_layout
-
-\end_inset
-
- In general:
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-Wrap floats should not be placed in paragraphs that run over a page break.
- That means that wrap floats should preferably be inserted in the exact
- place when the document is nearly ready and you are able to estimate where
- page breaks will appear.
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-Wrap floats should either be placed in their own paragraph before the paragraph
- where they should wrap into, or within a paragraph.
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-Wrap floats in consecutive paragraphs may cause trouble, so make sure that
- there is a text paragraph between them as separator.
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-Wrap floats are not allowed in section headings or tables.
-\end_layout
-
 \begin_layout Subsection
-
-\lang english
-Rotated Floats
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Rotated-Floats"
-
-\end_inset
-
-
+Weitere Informationen
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Floats ! Rotating
+Gleitobjekte ! Details
 \end_layout
 
 \end_inset
@@ -22861,535 +22468,27 @@ Floats ! Rotating
 \end_layout
 
 \begin_layout Standard
-
+LyX 
 \lang english
-Especially for wide tables you might have floats rotated.
- To rotate a whole float including the caption, right-click on the float-box
- and use the option 
-\family sans
-Rotate
-\begin_inset space ~
-\end_inset
+offers you further float types as well as rotated floats.
+ It also allows you to change the float numbering scheme, to control the
+ float placement and to change the formatting and placement of the float
+ caption.
 
-sideways
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Rotated floats are always placed on their own pages (or columns, when you
- have a multicolumn document).
- You can let them span several columns using the float settings option 
-\family sans
-Span
-\begin_inset space ~
-\end_inset
-
-columns
-\family default
-.
- Floats are rotated so that you can read them from the outside margin.
- Forcing the rotation direction is explained in the 
+\lang ngerman
+ All diese Features sind im Detail in Kapitel 
 \emph on
-Embedded Objects
+Gleitobjekte
 \emph default
- manual.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Referencing rotated floats is the same like for normal floats; the caption
- format is also the same: Table
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Rotated-table"
-
-\end_inset
-
- is an example of a rotated table float.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\lang english
-Note:
-\series default
- Not all DVI-viewers are able to display rotated floats.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways true
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-
-\lang english
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:Rotated-table"
-
-\end_inset
-
- Rotated table
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="1" columns="5">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-test
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-b
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-c
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-d
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-e
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Gleitobjekt-Platzierung
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Gleitobjekt-Platzierung"
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Gleitobjekte ! Platzierung
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Right-clicking on a float-box opens a dialog where you can alter the placement
- options that LaTeX uses for positioning the float.
-\begin_inset Newline newline
-\end_inset
-
-The option 
-\family sans
-Span
-\begin_inset space ~
-\end_inset
-
-columns
-\family default
- is only useful for two-column documents: If you select it, the float will
- span both columns on the page instead of being confined to just one.
-\begin_inset Newline newline
-\end_inset
-
-The option 
-\family sans
-Rotate
-\begin_inset space ~
-\end_inset
-
-sideways
-\family default
- is used to rotate floats, see section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Rotated-Floats"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-You can use one ore more of the following options in the float dialog to
- set the placement for a particular float when you uncheck the option 
-\family sans
-Use
-\begin_inset space ~
-\end_inset
-
-default
-\begin_inset space ~
-\end_inset
-
-placement
-\family default
-:
-\end_layout
-
-\begin_layout Description
-
-\lang english
-Here
-\begin_inset space ~
-\end_inset
-
-if
-\begin_inset space ~
-\end_inset
-
-possible: try to place the float at the position where it is inserted
-\end_layout
-
-\begin_layout Description
-
-\lang english
-Top
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-page: try to place the float at the top of the current page
-\end_layout
-
-\begin_layout Description
-
-\lang english
-Bottom
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-page: try to place the float at the bottom of the current page
-\end_layout
-
-\begin_layout Description
-
-\lang english
-Page
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-floats: try to place the float at an own page 
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-The order of the above option is 
+ des 
 \emph on
-always
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
 \emph default
- used by LaTeX.
- That means, if you use the default placement, LaTeX will first try out
- 
-\family sans
-Here
-\begin_inset space ~
-\end_inset
-
-if
-\begin_inset space ~
-\end_inset
-
-possible
-\family default
-, then 
-\family sans
-Top
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-page
-\family default
-, and then the others.
- If you don't use the default, LaTeX will try only the checked options but
- in the same order.
- If none of the 4 placements are possible the procedure is internally repeated
- but it is tried to put the float on the following page.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-By default, each option has its own rules:
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-\lang english
-Top
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-page
-\family default
- only floats occupying less than 70
-\begin_inset space \thinspace{}
-\end_inset
-
-% of the page can be placed at the top of a page (
-\series bold
-
-\backslash
-topfraction
-\series default
-)
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-\lang english
-Bottom
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-page
-\family default
-: only floats occupying less than 30
-\begin_inset space \thinspace{}
-\end_inset
-
-% of the page can be placed at the bottom of a page.
- (
-\series bold
-
-\backslash
-bottomfraction
-\series default
-)
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-\lang english
-Page
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-floats
-\family default
-: only if more than 50
-\begin_inset space \thinspace{}
-\end_inset
-
-% of the page are occupied by floats, several floats can be set together
- on a page.
- (
-\series bold
-
-\backslash
-floatpagefraction
-\series default
-)
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-If you don't like these rules, you can ignore them by using the additional
- option 
-\family sans
-Ignore
-\begin_inset space ~
-\end_inset
-
-LaTeX
-\begin_inset space ~
-\end_inset
-
-rules
-\family default
-.
-\begin_inset Newline newline
-\end_inset
-
-You can also redefine the rules with LaTeX-commands that are given in parenthese
-s after the rules description above.
- To increase for example the often too small default of the bottom-rule
- to 50
-\begin_inset space \thinspace{}
-\end_inset
-
-% of the page, add this line to your document preamble:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\lang english
-
-\backslash
-renewcommand{
-\backslash
-bottomfraction}{0.5}
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Sometimes you might need, under all circumstances, a float to be placed
- exactly at the position where it is inserted.
- For this case you can use the option 
-\family sans
-Here
-\begin_inset space ~
-\end_inset
-
-definitely
-\family default
-.
- Use this option very rarely and only if the document is nearly ready to
- be printed.
- Because the float is then no longer able to 
-\begin_inset Quotes eld
-\end_inset
-
-float
-\begin_inset Quotes erd
-\end_inset
-
- when you change your document, this will often destroy the page layout.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-There are no placement options for text wrap floats, because they are always
- surrounded by the text of a certain paragraph.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-For more details about float placements, have a look at LaTeX books like
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "latexcompanion,latexguide,latexbook"
-
-\end_inset
-
-.
+ Handbuchs mit vielen Beispielen beschrieben.
 \end_layout
 
 \begin_layout Section
@@ -23431,7 +22530,7 @@ apply.
 \lang english
 Minipages in LyX have their own collapsible box inserted via the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Einfügen\SpecialChar \menuseparator
 Box
 \family default
 .
@@ -23487,7 +22586,7 @@ If you place two minipages side-by-side, you can use
 \family sans
 Horizontal Fills
 \family default
- as described in section
+ as described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -28081,7 +27180,7 @@ Es gibt folgende Querverweisstile:
 <Querverweis>: druckt die Nummer, dies ist die Voreinstellung: 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Rotated-table"
+reference "tab:Ein-Tabellen-Gleitobjekt"
 
 \end_inset
 
@@ -28102,7 +27201,7 @@ Gleichung
  weggelassen wird: 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "tab:Rotated-table"
+reference "tab:Ein-Tabellen-Gleitobjekt"
 
 \end_inset
 
@@ -28117,7 +27216,7 @@ reference "tab:Rotated-table"
 
 \begin_inset CommandInset ref
 LatexCommand pageref
-reference "tab:Rotated-table"
+reference "tab:Ein-Tabellen-Gleitobjekt"
 
 \end_inset
 
@@ -28144,7 +27243,7 @@ auf Seite
  und die Seitennummer: 
 \begin_inset CommandInset ref
 LatexCommand vpageref
-reference "tab:Rotated-table"
+reference "tab:Ein-Tabellen-Gleitobjekt"
 
 \end_inset
 
@@ -28175,7 +27274,7 @@ auf Seite
 , und die Seitennummer: 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "tab:Rotated-table"
+reference "tab:Ein-Tabellen-Gleitobjekt"
 
 \end_inset
 
@@ -28240,7 +27339,7 @@ LaTeX-Paket ! refstyle
 Textverweis: druckt die Beschriftung oder den Namen der Referenz: 
 \begin_inset CommandInset ref
 LatexCommand nameref
-reference "tab:Rotated-table"
+reference "tab:Ein-Tabellen-Gleitobjekt"
 
 \end_inset
 
@@ -28748,9 +27847,9 @@ Für die beiden anderen Klassen von Gleitobjekten gilt sinngemäß dasselbe.
  Die gleitenden Algorithmen werden in 
 \emph on
 Eingebettete
-\emph default
- 
-\emph on
+\begin_inset space ~
+\end_inset
+
 Objekte
 \emph default
  näher beschrieben.
@@ -29350,6 +28449,18 @@ name "sec:Literaturverzeichnis-Datenbanken"
 \begin_layout Standard
 Literaturverzeichnis-Datenbanken sind nützlich, wenn Sie dasselbe Literaturverze
 ichnis in mehreren Dokumenten benutzen wollen.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Sie sind auch nützlich um eine Datenbank von Artikeln mit Notizen dazu zu
+ haben.
+ Die meisten der Literaturverzeichnis-Datenbankprogramme erlauben es, Anmerkunge
+n und Rezensionen zusammen mit Literaturquellen zu speichern.
+\end_layout
+
+\end_inset
+
  Außerdem sehen sie dann auch gleich aus.
  Sie können alle Literaturangaben Ihres Arbeitsgebiets in einer Datenbank
  sammeln.
@@ -29477,19 +28588,29 @@ Die Stildatei ist eine Textdatei mit der Endung
 , die das Aussehen der Literatureinträge definiert.
  Ihre LaTeX-Distribution sollte mehrere anbieten, und viele Verleger liefern
  eigene Stildateien, so dass Sie sich um das Aussehen nicht kümmern müssen.
- Sie können aber auch eine eigene Stildatei verwenden.
- Auf 
-\begin_inset Flex URL
+ Sie können aber auch eine eigene Stildatei erstellen, aber das ist etwas
+ für Experten.
+\begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
+Für Informationen, wie dies gemacht wird, siehe
+\begin_inset Newline newline
+\end_inset
 
-http://www.ctan.org/get/biblio/bibtex/contrib/doc/btxhak.pdf
+
+\begin_inset CommandInset href
+LatexCommand href
+target "http://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxhak.pdf"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
 
- können Sie nachlesen, wie man sie erstellt.
+
 \end_layout
 
 \begin_layout Standard
@@ -29704,14 +28825,14 @@ Stichwort!verzeichnis@-verzeichnis
 \lang english
 An index entry is created if you use the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Einfügen\SpecialChar \menuseparator
 Index
 \begin_inset space ~
 \end_inset
 
 Entry
 \family default
- or the toolbar button 
+ or the Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
 arg   "index-insert"
@@ -29755,7 +28876,7 @@ key "latexcompanion,latexguide,latexbook"
 \lang english
 The index list is inserted in the document with the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Einfügen\SpecialChar \menuseparator
 List
 \begin_inset space ~
 \end_inset
@@ -30793,7 +29914,7 @@ key "TeXCatalogue"
 \lang english
 To set up LyX for the use of multiple indexes, go to 
 \family sans
-Document\SpecialChar \menuseparator
+Dokument\SpecialChar \menuseparator
 Settings\SpecialChar \menuseparator
 Indexes
 \family default
@@ -30855,7 +29976,7 @@ Alter Color\SpecialChar \ldots{}
 Once the document changes have been applied, you can find the new index
  list in 
 \family sans
-Insert\SpecialChar \menuseparator
+Einfügen\SpecialChar \menuseparator
 List
 \begin_inset space ~
 \end_inset
@@ -32458,7 +31579,7 @@ LaTeX-Paket ! caption
 is what you need.
  To use a package, you have to load it in the document preamble (menu 
 \family sans
-Document\SpecialChar \menuseparator
+Dokument\SpecialChar \menuseparator
 Settings
 \family default
 ) with the command
@@ -33824,7 +32945,7 @@ Benutzung
 The advanced find und replace Feature of LyX is activated through the Menü
  
 \family sans
-Edit\SpecialChar \menuseparator
+Bearbeiten\SpecialChar \menuseparator
 Find & Replace
 \noun on
  (
@@ -33840,7 +32961,7 @@ type  "shortcut"
 arg   "dialog-show findreplaceadv"
 \end_inset
 
-) oder the toolbar button 
+) oder the Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/dialog-toggle_findreplaceadv.png
 	scale 85
@@ -34166,7 +33287,7 @@ A good explanation of regular expressions is given in this Wikipedia entry:
  
 \begin_inset CommandInset href
 LatexCommand href
-target "http://en.wikipedia.org/wiki/Regular_expression"
+target "http://de.wikipedia.org/wiki/Regulärer_Ausdruck"
 
 \end_inset
 
@@ -34732,7 +33853,7 @@ http://extensions.services.openoffice.org
  files of all languages you want to use into one directory (do not use subfolder
 s), und specify the path to this directory in 
 \family sans
-Tools\SpecialChar \menuseparator
+Werkzeuge\SpecialChar \menuseparator
 Preferences\SpecialChar \menuseparator
 Paths
 \family default
@@ -34751,10 +33872,10 @@ Using the thesaurus
 \lang english
 To start the thesaurus, use the Menü 
 \family sans
-Tools\SpecialChar \menuseparator
+Werkzeuge\SpecialChar \menuseparator
 Thesaurus
 \family default
- oder the toolbar button 
+ oder the Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
 arg   "thesaurus-entry"
@@ -40643,10 +39764,14 @@ name "chap:Dokument-Einstellungen"
 \begin_layout Standard
 
 \lang english
-The document settings dialog contains submenus to set properties for the
- whole document and is called with the menu
+Der 
+\lang ngerman
+Dokument-Einstellungen
+\lang english
+ Dialog contains submenus to set properties for the whole document and is
+ called with the menu
 \family sans
- Document\SpecialChar \menuseparator
+ Dokument\SpecialChar \menuseparator
 Settings
 \family default
 .
@@ -40678,12 +39803,12 @@ Dokumentklasse
 \lang english
 Here you set the document class, class options, a graphics driver, and a
  master document.
- Document classes are described in section
+ Document classes are described in 
+\lang ngerman
+Abschnitt
 \begin_inset space ~
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -40691,10 +39816,10 @@ reference "sub:Dokumentklassen"
 
 \end_inset
 
-
-\lang english
 .
- Some classes use some class options by default.
+ 
+\lang english
+Some classes use some class options by default.
  If this is the case, they are listed in the field 
 \family sans
 Predefined
@@ -40710,14 +39835,17 @@ Default
 \family default
 , the default driver for the LaTeX-packages is used.
  It is recommended that you use the default unless you know what you are
- doing.
+ doing
+\family sans
+\lang ngerman
+.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
-When you want one of the following drivers
+\family sans
+Wenn Sie einen der folgenden Treiber verwenden wollen:
 \begin_inset Newline newline
 \end_inset
 
@@ -40725,14 +39853,14 @@ dvi2ps, dvialw, dvilaser, dvitops, psprint, pubps, ln
 \begin_inset Newline newline
 \end_inset
 
-you first have to activate them in your LaTeX distribution, see sec.
-\begin_inset space \thinspace{}
+müssen Sie ihn zuerst in Ihrem LaTeX-System aktivieren, siehe Abschnitt
+\begin_inset space ~
 \end_inset
 
 2 in 
 \begin_inset CommandInset href
 LatexCommand href
-target "http://tug.ctan.org/get/macros/latex/required/graphics/grfguide.pdf"
+target "http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf"
 
 \end_inset
 
@@ -40752,15 +39880,21 @@ Specifying a master document is necessary when the current document is a
  This master document will be used by LyX when the child document is opened
  without its master.
  This way child documents are always compilable.
- More about master and child documents is explained in the section 
+ More about master and child documents is explained in 
+\lang ngerman
+Abschnitt 
 \emph on
-Child Documents
+Unterdokumente
 \emph default
- of the 
+ des 
 \emph on
-Embedded Objects
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
 \emph default
- manual.
+ Handbuchs.
 \end_layout
 
 \begin_layout Section
@@ -40775,7 +39909,11 @@ Unterdokumente
 \emph default
  des 
 \emph on
-Eingebettete Objekte
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
 \emph default
  Handbuchs für mehr Informationen.
 \end_layout
@@ -41817,13 +40955,10 @@ Stichwortverzeichnis
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here, you can customize how the index of your Dokument is being generated
- und you can define additional indexes.
- Please refer to
-\lang ngerman
- Abschnitt
+Hier kann eingestellt werden, wie das Stichwortverzeichnis des Dokuments
+ erzeugt wird und es können zusätzliche Stichwortverzeichnisse definiert
+ werden.
+ Siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -41834,9 +40969,7 @@ reference "sec:Stichwortverzeichnisse"
 
 \end_inset
 
- für 
-\lang english
-Details.
+ für Details.
 \end_layout
 
 \begin_layout Section
@@ -41928,18 +41061,19 @@ Gleitobjekt-Platzierung
 \end_layout
 
 \begin_layout Standard
-Siehe Abschnitt
-\begin_inset space \space{}
+Die Gleitobjekt-Platzierungsoptionen sind in Abschnitt 
+\emph on
+Beschriftungs-Platzierung
+\emph default
+ des 
+\emph on
+Eingebettete
+\begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Gleitobjekt-Platzierung"
-
-\end_inset
-
-.
+Objekte
+\emph default
+ Handbuchs beschrieben.
 \end_layout
 
 \begin_layout Section
@@ -41947,12 +41081,8 @@ Auflistungszeichen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here you can adjust the characters für the itemize levels.
- The itemize environment is described in
-\lang ngerman
- Abschnitt
+Hier können Sie die Zeichen für die verschiedenen Auflistungsebenen einstellen.
+ Die Auflistung-Umgebung ist in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -41963,7 +41093,7 @@ reference "sub:Auflistung"
 
 \end_inset
 
-.
+ beschrieben.
 \end_layout
 
 \begin_layout Section
@@ -42210,7 +41340,7 @@ Achtung
 The appearance of the Menüs und toolbars can be changed by choosing a user
  interface (ui) file.
  An ui-file is a text file where the toolbars und Menüs are listed.
- The toolbar buttons und Menü entries are specified in the files 
+ The Werkzeugleistenknopfs und Menü entries are specified in the files 
 \shape italic
 stdtoolbars.inc
 \shape default
@@ -42491,7 +41621,7 @@ Maximum last files
  is the number of last opened files that LyX should display in the Menü
  
 \family sans
-File\SpecialChar \menuseparator
+Datei\SpecialChar \menuseparator
 Open
 \begin_inset space ~
 \end_inset
