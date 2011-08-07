@@ -39,6 +39,12 @@
 % macro for italic page numbers in the index
 \newcommand{\IndexDef}[1]{\textit{#1}}
 
+% for customized page headers/footers
+% only needed because they are only used in one section of the document
+\usepackage{fancyhdr}
+% change header rule width
+\renewcommand{\headrulewidth}{2pt}
+
 % workaround for a makeindex bug,
 % see sec. "Index Entry Order"
 % only uncomment this when you are using makindex
@@ -50,8 +56,12 @@
 \addtokomafont{chapterentry}{\centering}
 \addtokomafont{chapter}{\centering}
 \end_preamble
-\options intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading,chapterprefix,numbers=noenddot
+\options intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
 \use_default_options false
+\begin_modules
+customHeadersFooters
+enumitem
+\end_modules
 \maintain_unincluded_children false
 \language bahasa
 \language_package default
@@ -1494,20 +1504,6 @@ Klik-kanan
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
-Tabel
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-
-\emph on
-Klik-kanan
-\emph default
- pada sel tabel akan membuka dialog pengaturan lanjut pada tabel.
-\end_layout
-
-\end_deeper
 \begin_layout Section
 Navigasi
 \begin_inset CommandInset label
@@ -1530,206 +1526,326 @@ Navigasi
 \end_layout
 
 \begin_layout Standard
-LyX menyediakan dua cara navigasi dalam dokumen:
+
+\lang english
+LyX offers you several ways to navigate in documents:
 \end_layout
 
 \begin_layout Itemize
-Menu 
+
+\lang english
+The 
 \family sans
-Navigasi
+Navigate
 \family default
- memaparkan semua bagian yang ada dalam dokumen yang bisa anda klik untuk
- melihat bagian dokumen tersebut.
+ menu lists all sections of the document as submenu entries that you can
+ click to jump to the corresponding document part.
 \end_layout
 
 \begin_layout Itemize
-Menu 
+
+\lang english
+The `Outline', which is accessed either by the menu 
 \family sans
-Dokumen\SpecialChar \menuseparator
-Paparan
+Document\SpecialChar \menuseparator
+Outline
+\family default
+ or by the toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "dialog-toggle toc"
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+You can set bookmarks in your document under 
+\family sans
+Navigate\SpecialChar \menuseparator
+Bookmarks
+\family default
+ and use the same menu to return to them.
+ Note that bookmarks are saved between sessions.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "bookmark-goto 0"
+\end_inset
+
+ (also 
+\family sans
+Navigate\SpecialChar \menuseparator
+Bookmarks\SpecialChar \menuseparator
+NavigateBack
+\family default
+) jumps to the position in the document where you recently changed something.
+ This is useful when you have a large document and have navigated or scrolled
+ to another document part to look for something, and want to go back to
+ your last editing position.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+The Outliner
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The Outline was known in earlier versions of LyX as the 
+\begin_inset Quotes eld
+\end_inset
+
+TOC
+\begin_inset Quotes erd
+\end_inset
+
+, since its original purpose was to display the document's table of contents.
+ The Outline has become much more powerful now, however.
+ In the pull-down box at the top of the outline window, you can choose between
+ several different lists, including other TOC-like objects, such as lists
+ of tables and figures, but also lists of footnotes, or labels and cross-referen
+ces (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Cross-References"
+
+\end_inset
+
+), or notes, or citations (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Bibliography"
+
+\end_inset
+
+).
+ Clicking on any of these will take you to the corresponding object in your
+ document.
+ The Outline has become much more powerful now, however.
+ In the pull-down box at the top of the outline window, you can choose between
+ several different lists, including other TOC-like objects, such as lists
+ of tables and figures, but also lists of footnotes, or labels and cross-referen
+ces (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Cross-References"
+
+\end_inset
+
+), or notes, or of citations (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Bibliography"
+
+\end_inset
+
+).
+ Clicking on any of these will take you to the corresponding object in your
+ document.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Right-clicking on elements in the Outline will in many cases open a context
+ menu that will allow for direct modification of those elements.
+ For example, with citations, the context menu allows you to open the citation
+ dialog and to modify the citation.
+ Right-clicking a change will allow you to accept or reject it.
+ And so on.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The `Filter' field at the top allows you to restrict which entries appear
+ in the Outline.
+ For example, if you are displaying the list of Labels and References and
+ wish to see only references to subsections, you can enter the text 
+\begin_inset Quotes eld
+\end_inset
+
+sub:
+\begin_inset Quotes erd
+\end_inset
+
+ in the filter, and only entries containing that text will be displayed.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+At the bottom of the outline are several buttons and the like that allow
+ you further to control the display.
+ The 
+\family sans
+Sort
+\family default
+ option sorts the current list alphabetically.
+ Otherwise, the elements appear in the order in which they occur in the
+ document.The 
+\family sans
+Keep
+\family default
+ option keeps it in the current view state.
+ Keeping means that when you have e.
 \begin_inset space \thinspace{}
 \end_inset
 
-Isi
-\family default
- atau dari tombol bantuan 
-\begin_inset Graphics
-	filename ../../images/dialog-toggle_toc.png
-	scale 55
-
+g.
+\begin_inset space \space{}
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Standard
-Jendela paparan menampilkan kandungan dokumen berupa daftar isi (TOC) seperti
- yang dikemukakan pada subbab
+the subsections of section
 \begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Table-of-Contents"
-
-\end_inset
-
-.
- Anda dapat memilih dan jika anda klik, anda akan dibawa ke bagian dokumen
- yang anda klik tadi.
- Pada bagian atas jendela paparan, ada kotak pilihan tarik yang berisi pilihan
- berbagai daftar obyek, seperti Daftar Catatan Kaki.
- Beberapa daftar lainnya, misalnya Daftar Tabel, Daftar Gambar, Daftar Algoritma
- bisa juga ditambahkan dalam dokumen, lihat di subbab
+2 and 4 shown and click on section
 \begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:List-of-Figures"
-
+3, the subsections of section
+\begin_inset space ~
 \end_inset
 
-.
- Pilihan 
+2 and 4 will still be shown.
+ Without the 
 \family sans
-Urutkan
+Keep
 \family default
- akan mengurutkan semua yang ada dalam jendela paparan, sedangkan pilihan
- Tetap akan mempertahankan tampilan paparan.
-\end_layout
+ option they will be hidden to highlight the clicked section
+\begin_inset space ~
+\end_inset
 
-\begin_layout Standard
-Pilihan 
-\family sans
-Urutkan
-\family default
- seperti namanya, akan mengurutkan yang ada di jendela paparan.
- Sedangkan pilihan 
-\family sans
-Tetap
-\family default
- akan mempertahankan tampilan seperti kondisi terakhir.
+3.
+ Finally, the slider at the left can be used to open the Outline to a given
  
-\family sans
-Tetap
-\family default
- disini berarti anda mempertahankan yang sudah dibuka.
- Misalnya anda sudah membuka di aras sub-subbab, misalnya di sub-subbab
-\begin_inset space ~
+\begin_inset Quotes eld
 \end_inset
 
-2 juga 4, kemudian anda berpindah ke subbab
-\begin_inset space ~
+depth
+\begin_inset Quotes erd
 \end_inset
 
-3, maka sub-subbab yang sudah dibuka tidak akan ditutup.
- Tanpa pilihan Tetap, ketika anda berpindah dari sub-subbab ke subbab, maka
- sub-subbab akan ditutup dan kembali ke aras subbab.
+.
+ It is best just to experiment with it to see how it works.
 \end_layout
 
 \begin_layout Standard
-Dengan menggunakan tombol 
-\begin_inset space \space{}
-\end_inset
 
-
-\begin_inset Graphics
-	filename ../../images/down.png
-
-\end_inset
-
- dan 
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../../images/up.png
-
-\end_inset
-
- yang berada di bagian bawah jendela paparan, anda dapat merubah posisi
- bagian dokumen keatas atau kebawah.
- Misalnya, dengan menggunakan tombol 
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../../images/up.png
-
-\end_inset
-
- anda dapat merubah subbab
+\lang english
+The 
 \begin_inset space ~
 \end_inset
 
-2.5 menjadi subbab
+
+\begin_inset Graphics
+	filename D:/LyXSVN/LyX2.0.x/lib/images/reload.png
+
+\end_inset
+
+
 \begin_inset space ~
 \end_inset
 
-2.4.
- LyX secara otomatis akan merubah nomor sesuai dengan posisi yang baru.
-\end_layout
+button refreshes the TOC (though this should not usually be necessary).
+ Next to it are buttons that allow you to change the position of sections
+ in your document.
+ The 
+\begin_inset space \space{}
+\end_inset
 
-\begin_layout Standard
-Dengan menggunakan Tombol 
+
 \begin_inset Graphics
-	filename ../../images/promote.png
-	scale 55
+	filename D:/LyXSVN/LyX2.0.x/lib/images/down.png
+	scale 85
+	groupId toolbarbuttons
 
 \end_inset
 
- (tombol
+
+\begin_inset space ~
+\end_inset
+
+ and 
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename D:/LyXSVN/LyX2.0.x/lib/images/up.png
+	scale 85
+	groupId toolbarbuttons
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+ buttons move sections up and down in the document.
+ So, for example, you can move section
+\begin_inset space ~
+\end_inset
+
+2.5 before section
+\begin_inset space ~
+\end_inset
+
+2.4 or after section
+\begin_inset space ~
+\end_inset
+
+2.6.
+ LyX will then automatically renumber the sections to the new order.
+ With the buttons 
+\begin_inset Graphics
+	filename D:/LyXSVN/LyX2.0.x/lib/images/promote.png
+	scale 85
+	groupId toolbarbuttons
+
+\end_inset
+
+ and 
+\begin_inset Graphics
+	filename D:/LyXSVN/LyX2.0.x/lib/images/demote.png
+	scale 85
+	groupId toolbarbuttons
+
+\end_inset
+
+ (or the corresponding key bindings 
 \family sans
- Tab)
+Tab
 \family default
- dan 
-\begin_inset Graphics
-	filename ../../images/demote.png
-	scale 55
-
-\end_inset
-
- (tombol 
+ and 
 \family sans
 Shift-Tab
 \family default
-), anda dapat merubah posisi bagian dokumen pada aras kedalamannya, misalnya
- dari sub-subbab menjadi subbab atau sebaliknya dari subbab menjadi subsubbab.
- Dengan mengunakan fitur ini, anda dapat merubah dari subbab
+) you can change the level of sections.
+ So you can for example make section
 \begin_inset space ~
 \end_inset
 
-2.5 menjadi bab
+2.5 chapter
 \begin_inset space ~
 \end_inset
 
-3 atau sub-subbab
+3 or to subsection
 \begin_inset space ~
 \end_inset
 
 2.4.1.
-\end_layout
-
-\begin_layout Standard
-Kotak bantuan 
-\begin_inset Graphics
-	filename ../../images/bookmark-goto_0.png
-	scale 55
-	rotateOrigin center
-
-\end_inset
-
- membantu anda untuk melompat ke posisi dokumen yang terakhir anda ubah.
- Ini sangat bermanfaat jika anda bekerja dalam dokumen yang panjang; misalnya
- anda merubah teks kemudian melihat ke bagian lain dan ingin kembali ke
- tempat semula saat anda melakukan perubahan.
- Dengan sekali tekan tombol bantuan ini, anda akan kembali ke posisi semula.
- 
 \end_layout
 
 \begin_layout Section
@@ -2868,7 +2984,7 @@ Customization
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2882,6 +2998,52 @@ Note:
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection
+Local Layout
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Document ! Local Layout
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Modules are to LyX much as packages are to LaTeX: They are intended to be
+ used in a variety of different documents, and if you often find yourself
+ needing the same sort of thing in different documents, you should consider
+ writing a module for this purpose.
+ Sometimes, however, a particular document has very special needs, and you
+ find yourself wanting a specific inset or character style, but only that
+ one time.
+ You want something that is like a document's own LaTeX preamble.
+ What you want is LyX's 
+\begin_inset Quotes eld
+\end_inset
+
+Local Layout
+\begin_inset Quotes erd
+\end_inset
+
+.
+ See 
+\lang english
+section 
+\emph on
+Local Layout
+\emph default
+\lang bahasa
+ of the 
+\emph on
+Customization
+\emph default
+ manual for information on how to use it.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3555,7 +3717,7 @@ Headings
 Fancy
 \family default
  This allows you to create fully customizable headers and footers if you
- have the 
+ have the LaTeX-package 
 \series bold
 fancyhdr
 \series default
@@ -3569,18 +3731,15 @@ LaTeX-packages ! fancyhdr
 
 \end_inset
 
- package installed.
- At the moment, support in LyX is limited to this setting.
- To use the full power of this package, you have to add code to your document
- preamble.
- Check the documentation for the 
-\series bold
-fancyhdr
-\series default
- package for more details, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "fancyhdr"
+ installed.
+ How they are defined is explained in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Customized-Page-Headers"
 
 \end_inset
 
@@ -3588,18 +3747,14 @@ key "fancyhdr"
 \end_layout
 
 \begin_layout Standard
-The 
-\family sans
-Separation
-\family default
- of paragraphs is described in section
+The separation of paragraphs is described in section
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Par-indent-intro"
+reference "sub:Paragraph-Separation"
 
 \end_inset
 
@@ -3636,14 +3791,14 @@ Page
 
 Layout
 \family default
- of the dialog of the 
+ of the 
 \family sans
 Document\SpecialChar \menuseparator
 Settings
 \family default
- menu:
+ dialog
 \family sans
-
+:
 \begin_inset Index idx
 status collapsed
 
@@ -3722,7 +3877,7 @@ Custom
 \family sans
 Orientation
 \family default
- Two toggle buttons choose whether to print the output as 
+ To choose whether to output as 
 \family sans
 Landscape
 \family default
@@ -3914,6 +4069,13 @@ all
 
 \begin_layout Subsection
 Paragraph Separation
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Paragraph-Separation"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -4661,7 +4823,7 @@ s
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -4720,42 +4882,7 @@ Section headings ! Unnumbered
 \end_layout
 
 \begin_layout Standard
-There are 5 types of unnumbered section headings.
- They are:
-\end_layout
-
-\begin_layout Enumerate
-
-\family sans
-Part*
-\end_layout
-
-\begin_layout Enumerate
-
-\family sans
-Chapter*
-\end_layout
-
-\begin_layout Enumerate
-
-\family sans
-Section*
-\end_layout
-
-\begin_layout Enumerate
-
-\family sans
-Subsection*
-\end_layout
-
-\begin_layout Enumerate
-
-\family sans
-Subsubsection*
-\end_layout
-
-\begin_layout Standard
-The 
+The unnumbered section headings have a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4763,9 +4890,9 @@ The
 \begin_inset Quotes erd
 \end_inset
 
- after each name means that these headings are not numbered.
- They work the same as their numbered counterparts but won't appear in the
- table of contents, see section
+ at the end of their name.
+ They work the same as their numbered counterparts but will not appear in
+ the table of contents, see section
 \begin_inset space ~
 \end_inset
 
@@ -6230,6 +6357,804 @@ HFill
 \end_layout
 
 \begin_layout Subsection
+Customized Lists
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Lists ! Customized
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To use the features described in this section, you must load the module
+ 
+\family sans
+Customisable Lists (enumitem)
+\family default
+ in the document settings.
+ This loads the features of the LaTeX-package 
+\series bold
+enumitem
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! enumitem
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Custom Enumerate Lists
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Lists ! Enumerate ! Custom
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+The default numbering of numbered lists can be changed by adding an optional
+ argument (menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Short Title
+\family default
+) to the first item of each level in the list.
+ There you add the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+label=
+\backslash
+roman{enumi}
+\end_layout
+
+\begin_layout Standard
+in TeX Code (shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "ert-insert"
+\end_inset
+
+).
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+For more about TeX Code, look at section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:TeX-Code"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\emph on
+ enumi
+\emph default
+ is hereby the counter of the enumeration in the first level.
+ The command 
+\series bold
+
+\backslash
+roman
+\series default
+ outputs the counter as small Roman numeral.
+ For capital Roman numerals replace in the command above 
+\series bold
+
+\backslash
+roman
+\series default
+ by 
+\series bold
+
+\backslash
+Roman
+\series default
+.
+ For Arabic numerals use 
+\series bold
+
+\backslash
+arabic
+\series default
+.
+ To 
+\begin_inset Quotes eld
+\end_inset
+
+number
+\begin_inset Quotes erd
+\end_inset
+
+ items with capital or small Latin letters use 
+\series bold
+
+\backslash
+Alph
+\series default
+ or 
+\series bold
+
+\backslash
+alph
+\series default
+, respectively.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ You can only number 26
+\begin_inset space ~
+\end_inset
+
+items with Latin letters, because this numbering is limited to single letters.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To change the numbering for the list sublevels, replace the 'i' in the command
+ by the small Roman numeral of the level (enumi, enumii, enumiii, enumiv).
+\end_layout
+
+\begin_layout Standard
+As example a list with custom numbering:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+#
+\backslash
+Alph{enumi}
+\backslash
+#
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Level 1
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+Alph{enumi}.
+\backslash
+arabic{enumii}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Level 2
+\end_layout
+
+\begin_layout Enumerate
+Level 2
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+bf{
+\backslash
+arabic{enumiii}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Level 3
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+emph{
+\backslash
+roman{enumiv})}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Level 4
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+For this list these commands were used:
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\series bold
+label=
+\backslash
+#
+\backslash
+Alph{enumi}
+\backslash
+#
+\begin_inset Newline newline
+\end_inset
+
+label=
+\backslash
+Alph{enumi}.
+\backslash
+arabic{enumii}
+\begin_inset Newline newline
+\end_inset
+
+label=
+\backslash
+bf{
+\backslash
+arabic{enumiii}}
+\begin_inset Newline newline
+\end_inset
+
+label=
+\backslash
+emph{
+\backslash
+roman{enumiv})}
+\end_layout
+
+\begin_layout Standard
+where the command 
+\series bold
+
+\backslash
+emph{}
+\series default
+ makes the label emphasized and 
+\series bold
+
+\backslash
+bf{}
+\series default
+ makes it bold.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ When you changed the label of a list level, it will be used for all following
+ lists until you change the definition.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Resumed Enumeration
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Lists ! Enumerate ! Resumed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Enumerations can be resumed after intermediate paragraphs:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+arabic{enumi}.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+first
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+goes back to default numbering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+second
+\end_layout
+
+\begin_layout Standard
+regular text
+\end_layout
+
+\begin_layout Enumerate-Resume
+resumed
+\end_layout
+
+\begin_layout Standard
+To resume an enumeration, use the style 
+\family sans
+Enumerate-Resume
+\family default
+.
+ Its numbering appears in blue within LyX to indicate that it is a resumed
+ list and that the numbering will not be correct in LyX, but in the output.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ If there is no previous enumeration to resume, you will get a LaTeX error.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Perhaps you might want to resume the list with a different number than the
+ next one.
+ Or you want to start a new enumeration with a defined number.
+ This is possible by adding an optional argument to the first list item
+ of a normal new enumeration.
+ There insert the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+start=number
+\end_layout
+
+\begin_layout Standard
+where 
+\emph on
+number
+\emph default
+ is the number with which you want to resume the list.
+ An example:
+\end_layout
+
+\begin_layout Enumerate
+first item
+\end_layout
+
+\begin_layout Enumerate
+second item
+\end_layout
+
+\begin_layout Standard
+Enumeration starting at a given value:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+start=4
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+This enumeration starts at 4
+\end_layout
+
+\begin_layout Subsubsection
+List Spacing
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Lists ! Spacing
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In some cases you might want less or more vertical space between the items
+ of a list.
+ For example the default space is too much in your opinion in this case:
+\end_layout
+
+\begin_layout Itemize
+A bullet list
+\end_layout
+
+\begin_layout Itemize
+with standard spacing 
+\end_layout
+
+\begin_layout Standard
+You can decrease the space by adding an optional argument to the first item
+ of the list.
+ There add the command 
+\series bold
+nolistsep
+\series default
+ to get no additional list space like in this example:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+nolistsep
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+A bullet list
+\end_layout
+
+\begin_layout Itemize
+without additional
+\end_layout
+
+\begin_layout Itemize
+vertical space
+\end_layout
+
+\begin_layout Standard
+To add space you can use several other commands provided by the LaTeX-package
+ 
+\series bold
+enumitem
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! enumitem
+\end_layout
+
+\end_inset
+
+.
+ For more info see its documentation, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "enumitem"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+There are also many commands available to change the horizontal spacing
+ and indentation.
+ Here is an example where the indentation was changed to the one of the
+ paragraphs in the document and the label separation was set to 2
+\begin_inset space \thinspace{}
+\end_inset
+
+cm so that the number is in the page margin:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+labelindent=
+\backslash
+parindent, labelsep=2cm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+An enumeration
+\end_layout
+
+\begin_layout Enumerate
+with negative indentation
+\end_layout
+
+\begin_layout Subsubsection
+Further Customization
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Lists ! Description
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You can also change the style of description lists.
+ The command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+font=definition
+\end_layout
+
+\begin_layout Standard
+changes the description label font, the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+style=definition
+\end_layout
+
+\begin_layout Standard
+sets the list style.
+\end_layout
+
+\begin_layout Standard
+An example where the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+font=
+\backslash
+itshape, style=nextline
+\end_layout
+
+\begin_layout Standard
+is used:
+\end_layout
+
+\begin_layout Description
+Ionizing
+\begin_inset space ~
+\end_inset
+
+radiation: 
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+labelindent=0pt, labelsep=1cm, font=
+\backslash
+itshape, style=nextline
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Ionizing radiation consists of particles or electromagnetic waves that are
+ energetic enough to detach electrons from atoms or molecules, therefore
+ ionizing them.
+\end_layout
+
+\begin_layout Description
+Reference
+\begin_inset space ~
+\end_inset
+
+counting: In computer science, reference counting is a technique of storing
+ the number of references, pointers, or handles to a resource such as an
+ object, block of memory, disk space or other resource.
+\end_layout
+
+\begin_layout Standard
+There are many more commands and features provided by the LaTeX-package
+ 
+\series bold
+enumitem
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LaTeX-packages ! enumitem
+\end_layout
+
+\end_inset
+
+.
+ For more info see its documentation, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "enumitem"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 Letters
 \begin_inset Index idx
 status collapsed
@@ -7003,7 +7928,16 @@ Paragraph environments|)
 
 \end_inset
 
-
+ For longer parts of programming code, use the listings inset that is described
+ in the chapter 
+\emph on
+Program Code Listings
+\emph default
+ of the 
+\emph on
+Embedded Objects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Section
@@ -10988,6 +11922,96 @@ emphasized style
 \end_layout
 
 \begin_layout Subsection
+LaTeX font support
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:LaTeX-font-support"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Traditionally, LaTeX uses its own fonts.
+ That is to say, you cannot directly access the fonts installed on your
+ operating system, but you have to use specific fonts provided by your LaTeX
+ distribution.
+ The reason is that LaTeX needs some extra information about the fonts,
+ which have to be provided by additional files and packages.
+ The downside of this is that your font choice is somewhat limited, compared
+ to usual word processors.
+ On the other hand this comes with the advantage that the provided fonts
+ are generally of very good quality, and that LaTeX files are very portable
+ across different machines.
+ Also, the range of fonts supported by traditional LaTeX was increased a
+ lot meanwhile so that you can find packages for many free and commercial
+ fonts.
+ In LyX, only a subset of these are directly selectable via the user interface
+ (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Document-Font"
+
+\end_inset
+
+ for details).
+ However, all others are available if you enter the respective LaTeX code
+ in the document preamble (please refer to the documentation of your desired
+ font).
+\end_layout
+
+\begin_layout Standard
+Furthermore, recent developments brought some new LaTeX engines that are
+ also able to directly access fonts that are installed for your operating
+ system (OS), namely XeTeX and LuaTeX.
+ Both engines are now supported by LyX.
+ By using them, you can use theoretically any OpenType or TrueType font
+ that is installed on your system.
+ The next section describes how to use these OS fonts.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ In practice, some fonts might fail due to bad metrics and other font deficienci
+es; so you might have to experiment.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ XeTeX and especially LuaTeX, are still rather new and thus not as mature
+ as traditional LaTeX or PDFTeX.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 Document Font and Font size
 \begin_inset CommandInset label
 LatexCommand label
@@ -11067,7 +12091,11 @@ default
 
 
 \family typewriter
-Computer Modern
+Computer
+\begin_inset space ~
+\end_inset
+
+Modern
 \family default
 
 \begin_inset Quotes erd
@@ -11130,11 +12158,94 @@ Reader
 \end_layout
 
 \begin_layout Itemize
-One way is to use the 
-\family typewriter
-AE
+select the 
+\family sans
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
 \family default
- fonts.
+ fonts, which is the recommended choice if you want to keep the look of
+ 
+\family typewriter
+cm
+\family default
+/
+\family typewriter
+ec
+\family default
+.
+ 
+\family sans
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
+\family default
+ was developed for the LaTeX community in order to replace 
+\family typewriter
+cm
+\family default
+ as the default font.
+ It covers a huge range of glyphs and several font shapes.
+ Except for some details, where the appearance was improved, 
+\family sans
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
+\family default
+ looks identical to 
+\family typewriter
+cm
+\family default
+.;
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+One difference is improved kerning.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+or select the 
+\family sans
+AE
+\begin_inset space ~
+\end_inset
+
+(Almost
+\begin_inset space ~
+\end_inset
+
+European)
+\family default
+ fonts in (the rare) case that 
+\family sans
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
+\family default
+ is not available to you or does not work, and you still want to emulate
+ the look of 
+\family typewriter
+cm
+\family default
+/
+\family typewriter
+ec
+\family default
+.
  
 \family typewriter
 AE
@@ -11184,6 +12295,8 @@ aeguill
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang english
 LaTeX-packages ! aeguill
 \end_layout
 
@@ -11212,16 +12325,17 @@ will fix the guillemet problem.
 \emph on
 one
 \emph default
- glyph, they are build of 
+ glyph, but build of 
 \emph on
 two
 \emph default
  characters, the accent and the letter.
- Therefore you can't search in documents using the 
+ Therefore you cannot search for words with accented characters in documents
+ using the 
 \family typewriter
 AE
 \family default
- fonts for words with accented characters.
+ fonts.
  If you search for example for the French word 
 \begin_inset Quotes eld
 \end_inset
@@ -11255,63 +12369,104 @@ rève
 \end_layout
 
 \begin_layout Itemize
-Another possibility is to use three different outline fonts
+If you do not like the look of 
+\family typewriter
+cm
+\family default
+/
+\family typewriter
+ec
+\family default
+, you can of course select one of the other provided vector fonts, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+
+\family sans
+Times
+\begin_inset space ~
+\end_inset
+
+Roman
+\family default
+ or
+\family typewriter
+ 
+\family sans
+Palatino
+\family default
+.
+ Most roman vector fonts will automatically select matching sans
+\begin_inset space ~
+\end_inset
+
+serif and typewriter fonts
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Other fonts, like 
-\family typewriter
-Latin Modern
-\family default
- or 
-\family typewriter
-Computer Modern
-\family default
-, consist of these three main font types 
+These are sometimes just matching other fonts (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., 
 \family sans
-sans
+Times
 \begin_inset space ~
 \end_inset
 
-serif
+Roman
 \family default
-, 
+ selects 
 \family sans
-typewriter
+Helvetica
 \family default
-, and 
+ for sans serif text), or different shapes of the same font, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space \space{}
+\end_inset
+
+a real font 
+\emph on
+family
+\emph default
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+in case of 
 \family sans
-serif
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
 \family default
-.
+ oder 
+\family sans
+Computer
+\begin_inset space ~
+\end_inset
+
+Modern
+\family default
+).
 \end_layout
 
 \end_inset
 
-: 
-\family typewriter
-Times Roman
-\family default
- as roman font,
-\family sans
- 
-\family typewriter
-Helvetica
-\family default
- scaled to 92 or 95
-\begin_inset space \thinspace{}
-\end_inset
-
-% as sans
-\begin_inset space ~
-\end_inset
-
-serif font, and 
-\family typewriter
-courier
-\family default
- as typewriter font.
+, but you can also select your own.
 \begin_inset Newline newline
 \end_inset
 
@@ -11343,71 +12498,28 @@ reference "sub:Fine-Tuning-with-the"
 \end_inset
 
 The font 
-\family typewriter
-Times Roman
+\family sans
+Times
+\begin_inset space ~
+\end_inset
+
+Roman
 \family default
  was originally designed for newspapers.
  That means its glyphs are smaller than the ones from other fonts to fit
  into the small newspaper columns.
  Therefore 
-\family typewriter
-Times Roman
+\family sans
+Times
+\begin_inset space ~
+\end_inset
+
+Roman
 \family default
  is not the optimal choice for larger documents like books.
 \end_layout
 
-\begin_layout Itemize
-The best solution is to use the 
-\family typewriter
-Latin Modern
-\family default
- (
-\family typewriter
-lm
-\family default
-) fonts.
- These fonts were developed for the LaTeX community to replace 
-\family typewriter
-cm
-\family default
- as the default font.
- In most cases they look the same as 
-\family typewriter
-cm
-\family default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-One difference is improved kerning for the 
-\family typewriter
-lm
-\family default
- fonts.
-\end_layout
-
-\end_inset
-
-, but 
-\family typewriter
-lm
-\family default
- covers a vast number of characters over the other two families 
-\family typewriter
-cm
-\family default
- and 
-\family typewriter
-ec
-\family default
-.
-\end_layout
-
 \begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
 For the font size there are four possible values: 
 \family sans
 default, 10
@@ -13235,11 +14347,75 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(pdflatex) This uses the program 
-\family typewriter
-pdftex
-\family default
- that converts your file directly to PDF.
+(pdflatex) This uses the program pdftex that converts your file directly
+ to PDF.
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(XeTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X) This uses the program XeTeX that converts your file directly to PDF.
+ XeTeX is a new engine that provides direct Unicode support and support
+ for direct font access (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeX-font-support"
+
+\end_inset
+
+).
+ It is particularly good at typesetting different scripts.
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(LuaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X) This uses the program LuaTeX that converts your file directly to PDF.
+ LuaTeX is an even newer engine, derived from pdflatex, that also provides
+ direct Unicode support and support for direct font access (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeX-font-support"
+
+\end_inset
+
+).
+ LuaTeX is still work in progress, but it might develop into the next standard
+ TeX processor.
 \end_layout
 
 \begin_layout Standard
@@ -20833,7 +22009,8 @@ page
 By default, each option has its own rules:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family sans
 Top
@@ -20850,10 +22027,17 @@ page
 \begin_inset space \thinspace{}
 \end_inset
 
-% of the page can be placed at the top of a page
+% of the page can be placed at the top of a page (
+\series bold
+
+\backslash
+topfraction
+\series default
+)
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family sans
 Bottom
@@ -20871,9 +22055,17 @@ page
 \end_inset
 
 % of the page can be placed at the bottom of a page.
+ (
+\series bold
+
+\backslash
+bottomfraction
+\series default
+)
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family sans
 Page
@@ -20892,6 +22084,13 @@ floats
 
 % of the page are occupied by floats, several floats can be set together
  on a page.
+ (
+\series bold
+
+\backslash
+floatpagefraction
+\series default
+)
 \end_layout
 
 \begin_layout Standard
@@ -20909,6 +22108,27 @@ LaTeX
 rules
 \family default
 .
+\begin_inset Newline newline
+\end_inset
+
+You can also redefine the rules with LaTeX-commands that are given in parenthese
+s after the rules description above.
+ To increase for example the often too small default of the bottom-rule
+ to 50
+\begin_inset space \thinspace{}
+\end_inset
+
+% of the page, add this line to your document preamble:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+bottomfraction}{0.5}
 \end_layout
 
 \begin_layout Standard
@@ -26132,7 +27352,15 @@ Index ! Page ranges
 Normally an index entry will appear with the page number of the indexed
  section.
  But sometimes you want to index more pages under the same entry.
- E.g if we want to index the paragraph environments, we create an index entry
+ E.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+if we want to index the paragraph environments, we create an index entry
  in section
 \begin_inset space ~
 \end_inset
@@ -26803,8 +28031,7 @@ If you need specific options or an alternative index program only for a
 or the options in 
 \family sans
 Document\SpecialChar \menuseparator
-Settings\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
 Indexes
 \family default
 .
@@ -26862,8 +28089,7 @@ key "TeXCatalogue"
 To set up LyX for the use of multiple indexes, go to 
 \family sans
 Document\SpecialChar \menuseparator
-Settings\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
 Indexes
 \family default
  and select 
@@ -27856,7 +29082,13 @@ Sometimes it is useful to hide some document parts in the output.
 \begin_layout Standard
 For these cases LyX allows you to put text into branches.
  The text will then only appear in the output when its branch is activated.
- To create a branch, go in the 
+ To create a branch, either select the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Branch\SpecialChar \menuseparator
+Insert New Branch
+\family default
+ (if you just want to specify a new branch) or go in the 
 \family sans
 Document\SpecialChar \menuseparator
 Settings
@@ -27865,9 +29097,30 @@ Settings
 \family sans
 Branches
 \family default
-.
- The name of the branch, its activation state and the background color of
- the branches inside LyX can be specified in this dialog.
+, where you can specify and change the name of the branch, its activation
+ state (whether the content of the branch is shown in the output or not),
+ its background color inside LyX and whether the name of the branch should
+ be appended to the document file name on export if the branch is active
+ (see below for an example).
+ Furthermore, the dialog lets you merge two branches (just rename one branch
+ to the name of the other) and to add 
+\begin_inset Quotes eld
+\end_inset
+
+unknown branches
+\begin_inset Quotes erd
+\end_inset
+
+ (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+branches that were added to the document via copy and paste from other documents
+, without having being defined) to the document's branch list.
 \end_layout
 
 \begin_layout Standard
@@ -27878,7 +29131,8 @@ Insert\SpecialChar \menuseparator
 Branch
 \family default
  where you can choose a branch.
- You can later change the branch of the boxes by right-clicking on them.
+ You can later change the activation state of the branch by right-clicking
+ on them.
 \end_layout
 
 \begin_layout Standard
@@ -27910,6 +29164,104 @@ Answer: Wilhelm Conrad Röntgen
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+If you activate 
+\family sans
+Filename Suffix
+\family default
+ in 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Branches
+\family default
+, the name of the active branches will be appended to the file name at export.
+ Consider for example a file 
+\begin_inset Quotes eld
+\end_inset
+
+Exam.lyx
+\begin_inset Quotes erd
+\end_inset
+
+ which has the above branches.
+ If 
+\begin_inset Quotes eld
+\end_inset
+
+Filename Suffix
+\begin_inset Quotes erd
+\end_inset
+
+ is active, the PDF export file would be called 
+\begin_inset Quotes eld
+\end_inset
+
+Exam.pdf
+\begin_inset Quotes erd
+\end_inset
+
+ if both the 
+\begin_inset Quotes eld
+\end_inset
+
+Question
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+Answer
+\begin_inset Quotes erd
+\end_inset
+
+ branch were inactive, 
+\begin_inset Quotes eld
+\end_inset
+
+Exam-Question.pdf
+\begin_inset Quotes erd
+\end_inset
+
+ if only the 
+\begin_inset Quotes eld
+\end_inset
+
+Question
+\begin_inset Quotes erd
+\end_inset
+
+ branch was active, likewise 
+\begin_inset Quotes eld
+\end_inset
+
+Exam-Answer.pdf
+\begin_inset Quotes erd
+\end_inset
+
+ if only the 
+\begin_inset Quotes eld
+\end_inset
+
+Answer
+\begin_inset Quotes erd
+\end_inset
+
+ branch was active, and 
+\begin_inset Quotes eld
+\end_inset
+
+Exam-Question-Answer.pdf
+\begin_inset Quotes erd
+\end_inset
+
+ if both branches were active.
+ This helps you to easily export different versions of your document without
+ much hassle.
 \end_layout
 
 \begin_layout Standard
@@ -27997,7 +29349,7 @@ status open
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -28614,7 +29966,979 @@ key "latexcompanion,latexguide"
 \end_inset
 
 .
- 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{fancy}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+switches temporarily to a page style with custom header and footer line
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Left Header
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+rightmark
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+defines the header line as described below
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Center Header
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Right Header
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+leftmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Left Footer
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Center Footer
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+\series bold
+\color red
+LyX's user guide
+\end_layout
+
+\end_inset
+
+Magic code:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Upsilon=\frac{\sqrt[3]{\aleph}}{\spadesuit}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Right Footer
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Roman{page}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Customized Page Headers and Footers
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Customized-Page-Headers"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Document ! Header/Footer line
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Header/Footer line
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To define custom page header and footer line for your document, you need
+ to set the headings style to 
+\family sans
+Fancy
+\family default
+ in the 
+\family sans
+Document\SpecialChar \menuseparator
+Settings
+\family default
+ dialog under 
+\family sans
+Page
+\begin_inset space ~
+\end_inset
+
+Layout
+\family default
+.
+ As second step add in the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Modules
+\family default
+ the module 
+\begin_inset Quotes eld
+\end_inset
+
+Custom Header/Footerlines
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This module offers the 6
+\begin_inset space ~
+\end_inset
+
+styles
+\end_layout
+
+\begin_layout Description
+Left
+\begin_inset space ~
+\end_inset
+
+Header,
+\begin_inset space ~
+\end_inset
+
+Center
+\begin_inset space ~
+\end_inset
+
+Header,
+\begin_inset space ~
+\end_inset
+
+Right
+\begin_inset space ~
+\end_inset
+
+Header
+\end_layout
+
+\begin_layout Description
+Left
+\begin_inset space ~
+\end_inset
+
+Footer,
+\begin_inset space ~
+\end_inset
+
+Center
+\begin_inset space ~
+\end_inset
+
+Footer,
+\begin_inset space ~
+\end_inset
+
+Right
+\begin_inset space ~
+\end_inset
+
+Footer
+\end_layout
+
+\begin_layout Standard
+for the different positions in the header/footer.
+\end_layout
+
+\begin_layout Standard
+Normally, headers and footers are set up in the beginning of the document.
+ but you can change them anywhere you want to.
+ Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Page-layout"
+
+\end_inset
+
+ shows the page layout and where the header/footer styles will appear.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="30line%">
+<column alignment="center" valignment="top" width="30line%">
+<column alignment="right" valignment="top" width="30line%">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Left Header
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Center Header
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Right Header
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="left" valignment="top" leftline="true" rightline="true" usebox="none" width="90line%">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The normal text on the page goes here.
+ The running header is above thel text, and the footer is below (including
+ footnotes).
+ Headers/footers typically contain things like the page number, title of
+ the chapter, company logo but your can use almost anything, except of floats.
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Left Footer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Center Footer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Right Footer
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Page-layout"
+
+\end_inset
+
+Page layout with custom header and footer line.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Definition
+\end_layout
+
+\begin_layout Standard
+To define your header line, add all 3
+\begin_inset space ~
+\end_inset
+
+header styles.
+ The things you add to the styles appear on uneven pages, the things in
+ the optional arguments on even pages.
+ For single-sided documents, the optional arguments will not be used and
+ can be omitted.
+ If you leave a style or its argument empty, nothing appears in the output.
+ Defining the footer line works similar.
+\end_layout
+
+\begin_layout Standard
+For the definition, you will need some LaTeX-commands that are inserted
+ as TeX-code (menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Te
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
+\begin_inset space ~
+\end_inset
+
+Code
+\family default
+):
+\end_layout
+
+\begin_layout Description
+
+\backslash
+thepage prints the current page number
+\end_layout
+
+\begin_layout Description
+
+\backslash
+Roman{page} prints the current page number with capital roman numerals
+\end_layout
+
+\begin_layout Description
+
+\backslash
+roman{page} prints the current page number with small roman numerals
+\end_layout
+
+\begin_layout Description
+
+\backslash
+leftmark prints the current section number and title.
+ If the document has chapters, it prints the current chapter number and
+ title instead.
+ It is called 
+\begin_inset Quotes eld
+\end_inset
+
+leftmark
+\begin_inset Quotes prd
+\end_inset
+
+ because it usually goes in a left header.
+\end_layout
+
+\begin_layout Description
+
+\backslash
+rightmark prints the current subsection number and title.
+ If the document has chapters, it prints the current section number and
+ title instead.
+ It is normally used in the right header.
+\end_layout
+
+\begin_layout Subsection
+Default header/footer
+\end_layout
+
+\begin_layout Standard
+The custom header/footer is not empty by default.
+ The default header contains the chapter and section title and the center
+ footer has the page number.
+ In order to remove unwanted entries from the header/footer, include the
+ relevant header/footer style in your document, but leave it blank.
+ So, if you do not want a page number in the footer, include a blank 
+\family sans
+Center
+\begin_inset space ~
+\end_inset
+
+Footer
+\family default
+ style.
+\end_layout
+
+\begin_layout Subsection
+Appearance
+\end_layout
+
+\begin_layout Standard
+The header and footer will appear on normal pages.
+ Some pages are different.
+ The title page has a style of its own, and so has any page that starts
+ a new part or chapter in your book.
+ Such pages will not have the custom headers/footers, but that is normal.
+ There is for example no need to print a header with the chapter name on
+ the chapter page where the chapter heading is in big bold letters anyway.
+\end_layout
+
+\begin_layout Subsubsection
+Header and footer decoration line
+\end_layout
+
+\begin_layout Standard
+By default, you get a 0.4
+\begin_inset space \thinspace{}
+\end_inset
+
+pt thick line below the header and no footer line.
+ This can be changed in the document preamble with the commands 
+\series bold
+
+\backslash
+headrulewidth
+\series default
+ and 
+\series bold
+
+\backslash
+footrulewidth
+\series default
+ in the following scheme:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+headrulewidth}{thickness}
+\end_layout
+
+\begin_layout Standard
+Where thickness is a size in standard units like 
+\family sans
+pt
+\family default
+ or 
+\family sans
+mm
+\family default
+.
+ If you don't want a line, set the thickness to 0
+\begin_inset space \thinspace{}
+\end_inset
+
+pt.
+\end_layout
+
+\begin_layout Standard
+The lines can also be colored, but this requires more knowledge of LaTeX.
+ If you really need this, have a look in the Internet or in sec.
+\begin_inset space ~
+\end_inset
+
+4.4 of the book 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Mittelbach"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Several header/footer lines
+\end_layout
+
+\begin_layout Standard
+In case that you need more than one text line as a header/footer, you can
+ do this by adding a normal line break in the style definition.
+ However, the default height of the header/footer is only the one of one
+ text line.
+ To expand the height, redefine the LaTeX length 
+\series bold
+
+\backslash
+headheight
+\series default
+ or 
+\series bold
+
+\backslash
+footheight
+\series default
+ in this scheme in your document preamble:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+setlength{
+\backslash
+headheight}{height}
+\end_layout
+
+\begin_layout Standard
+Where height is a size in standard units.
+ If you don't know which amount of space is needed for the height, define
+ your header/footer and preview your document as PDF.
+ Then open the LaTeX logfile via the menu 
+\family sans
+Document\SpecialChar \menuseparator
+La
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+TeX Log
+\family default
+ and look via the button 
+\family sans
+Next
+\begin_inset space ~
+\end_inset
+
+Warning
+\family default
+ if you find a warning of the package 
+\series bold
+fancyhdr
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LaTeX-packages ! fancyhdr
+\end_layout
+
+\end_inset
+
+.
+ If there is such a warning, it contains the space that you need at least
+ for your header/footer.
+\end_layout
+
+\begin_layout Subsection
+This example
+\end_layout
+
+\begin_layout Standard
+This example demonstrates what can be done with custom header/footers.
+ Don't use it for yor document as it is just an example.
+ This example consists of the following definition:
+\end_layout
+
+\begin_layout Description
+Left
+\begin_inset space ~
+\end_inset
+
+Header 
+\series bold
+
+\backslash
+rightmark
+\series default
+, empty optional argument
+\end_layout
+
+\begin_layout Description
+Center
+\begin_inset space ~
+\end_inset
+
+Header empty, empty optional argument
+\end_layout
+
+\begin_layout Description
+Right
+\begin_inset space ~
+\end_inset
+
+Header empty, 
+\series bold
+
+\backslash
+leftmark
+\series default
+ in the optional argument
+\end_layout
+
+\begin_layout Description
+Left
+\begin_inset space ~
+\end_inset
+
+Footer empty, 
+\series bold
+
+\backslash
+thepage
+\series default
+ in the optional argument
+\end_layout
+
+\begin_layout Description
+Center
+\begin_inset space ~
+\end_inset
+
+Footer 
+\family sans
+\series bold
+\color red
+LyX's user guide
+\family default
+\series default
+\color inherit
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Magic code:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Upsilon=\frac{\sqrt[3]{\aleph}}{\spadesuit}$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the optional argument
+\end_layout
+
+\begin_layout Description
+Right
+\begin_inset space ~
+\end_inset
+
+Footer 
+\series bold
+
+\backslash
+Roman{page}
+\series default
+, empty optional argument
+\end_layout
+
+\begin_layout Description
+
+\backslash
+headrulewidth set to 2
+\begin_inset space \thinspace{}
+\end_inset
+
+pt
+\end_layout
+
+\begin_layout Standard
+In principle you can use almost everything in headers/footers, except of
+ floats.
+ For more special things like e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+thumb-indexes, see the manual of the 
+\series bold
+fancyhdr
+\series default
+ package, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "fancyhdr"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{headings}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+switches back to page style with the default headings
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -28802,6 +31126,562 @@ Source
 \end_layout
 
 \begin_layout Section
+Advanced Find and Replace
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Advanced-Find-and"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Replace
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Find
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Introduction
+\end_layout
+
+\begin_layout Standard
+The advanced find and replace feature of LyX allows for searching of complex,
+ format-sensitive text segments and mathematics contents within LyX documents.
+ It is an enhancement of the standard (quick) find and replace feature.
+ The key-features are:
+\end_layout
+
+\begin_layout Itemize
+Both searching of text and of mathematical formulas is allowed, where the
+ latter is done by entering mathematics in the usual way; not only entire
+ mathematical formulas are found, but also parts occurring within more complex
+ formulas
+\end_layout
+
+\begin_layout Itemize
+Search may be format-insensitive, so that the searched text is found in
+ any context/style (standard text, section headings, notes, and even mathematics
+), or it may be format-sensitive, so that, for example, a word entered with
+ a section heading will only be found within section headings
+\end_layout
+
+\begin_layout Itemize
+Search may be widened to a specific 
+\emph on
+scope
+\emph default
+, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+a set of files which may be all the children of the document being edited,
+ all the open files, or all the manuals available from the 
+\family sans
+Help
+\family default
+ menu
+\end_layout
+
+\begin_layout Itemize
+Replace may optionally preserve capitalization, so that the replaced text
+ capitalization is adapted to the matching text (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+all lowercase, all uppercase, first uppercase followed by lowercase)
+\end_layout
+
+\begin_layout Subsection
+Basic usage
+\end_layout
+
+\begin_layout Standard
+The advanced find and replace feature of LyX is activated through the menu
+ 
+\family sans
+Edit\SpecialChar \menuseparator
+Find & Replace
+\noun on
+ (
+\noun default
+Advanced
+\noun on
+)
+\family default
+\noun default
+ (shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "dialog-show findreplaceadv"
+\end_inset
+
+) or the toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "dialog-toggle findreplaceadv"
+\end_inset
+
+.
+ This opens the 
+\family sans
+Advanced Find and Replace
+\family default
+ dialog.
+\end_layout
+
+\begin_layout Subsubsection
+Searching for text
+\end_layout
+
+\begin_layout Standard
+Enter into the 
+\family sans
+Find
+\family default
+ LyX mini-editor a simple word, and search for occurrences of it by clicking
+ on the 
+\family sans
+Find Next
+\family default
+ button at the bottom of the dialog (or just press the 
+\family sans
+Return
+\family default
+ key).
+ The entered word is found both in text mode and in math mode, and in emphasized
+, bold or normal face, and in both in section titles and in standard text.
+ Pressing repeatedly 
+\family sans
+Enter
+\family default
+ keeps searching forward.
+ Similarly, pressing 
+\family sans
+Shift+Enter
+\family default
+ searches for the entered text backwards.
+\end_layout
+
+\begin_layout Standard
+While searching, the 
+\family sans
+Case sensitive
+\family default
+ option allows matches to occur only with the same case as entered in the
+ 
+\family sans
+Find
+\family default
+ editor.
+ The 
+\family sans
+Whole words
+\family default
+ option allows matches to occur only at word boundaries.
+\end_layout
+
+\begin_layout Subsubsection
+Searching for mathematics
+\end_layout
+
+\begin_layout Standard
+Mathematical formulas may be searched for by typing in the 
+\family sans
+Find
+\family default
+ editor a mathematical formula, such as 
+\begin_inset Formula $x^{2}$
+\end_inset
+
+ or also something more complex like 
+\begin_inset Formula $\frac{x^{2}}{1+x^{2}}$
+\end_inset
+
+.
+ When searching for a formula, it is found both when it is alone and when
+ it occurs in sub-formulas and nested parts of sub-formulas, for example
+ the mentioned segments would be found in something like 
+\begin_inset Formula $\frac{x^{2}}{\sqrt{\frac{x^{2}}{1+x^{2}}}}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Style-aware search
+\end_layout
+
+\begin_layout Standard
+It is also possible to search for text with specific styles.
+ This is done by switching to the 
+\family sans
+Settings
+\family default
+ tab of the dialog and unchecking the 
+\family sans
+Ignore format
+\family default
+ option.
+ This way, entering in the 
+\family sans
+Find
+\family default
+ editor
+\end_layout
+
+\begin_layout Itemize
+a plain word and searching for it would not find instances of the word occurring
+ in emphasized or boldface.
+\end_layout
+
+\begin_layout Itemize
+an emphasized or boldface word and searching for it would find the respective
+ instances with same face only, and within the same text style only.
+ Note that, for example, an emphasized text is found not only when occurring
+ alone, but also when it is contained in a longer emphasized sentence.
+\end_layout
+
+\begin_layout Itemize
+a plain word in a section heading, and searching for it, finds occurrences
+ of if only within section headings.
+ Also, if the text to search is given an emphasized or bold face, in addition
+ to a section style, then it is found only when occurring with the same
+ style.
+\end_layout
+
+\begin_layout Itemize
+some mathematics in a displayed formula will only find instances of this
+ formula that are also displayed formulas (and not inline formulas).
+\end_layout
+
+\begin_layout Subsubsection
+Replace
+\end_layout
+
+\begin_layout Standard
+The text segments matching the text entered in the 
+\family sans
+Find
+\family default
+ editor may be replaced with the text segments entered in the 
+\family sans
+Replace
+\family default
+\noun on
+ 
+\noun default
+editor.
+ In order to find the next occurrence and replace it, click on the 
+\family sans
+Replace
+\family default
+ button or alternatively
+\noun on
+ 
+\noun default
+press 
+\family sans
+Enter
+\family default
+ or 
+\family sans
+Shift+Enter
+\family default
+ while being in the 
+\family sans
+Replace
+\family default
+\noun on
+ 
+\noun default
+editor.
+\end_layout
+
+\begin_layout Standard
+You can replace full-featured formatted LyX segments in place of the matching
+ text segments in your document.
+ Typical scenarios in which to use this capability may be (just to mention
+ a few):
+\end_layout
+
+\begin_layout Itemize
+replacing occurrences of a word with a customized formatted version of the
+ same word, for example replacing occurrences of a name like 
+\begin_inset Quotes eld
+\end_inset
+
+func()
+\begin_inset Quotes erd
+\end_inset
+
+ with its typewriter version 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+func()
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+performing a notation rework of mathematical symbols, for example replacing
+ occurrences of 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $R$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ (you may want to enable the 
+\family sans
+Whole words
+\family default
+ and 
+\family sans
+Case sensitive
+\family default
+ options and disable the 
+\family sans
+Ignore format
+\family default
+ option in the 
+\family sans
+Settings
+\family default
+ tab, in order to avoid replacing all 
+\begin_inset Quotes eld
+\end_inset
+
+R
+\begin_inset Quotes erd
+\end_inset
+
+ letters occurring in normal text), or occurrences of 
+\begin_inset Formula $x_{j}^{i}$
+\end_inset
+
+ with 
+\begin_inset Formula $x_{i,\, j}$
+\end_inset
+
+, or occurrences of 
+\begin_inset Formula $x[k]$
+\end_inset
+
+ with 
+\begin_inset Formula $x_{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Advanced usage
+\end_layout
+
+\begin_layout Standard
+There is a regular expression (regexp) based searching facility.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+A good explanation of regular expressions is given in this Wikipedia entry:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://en.wikipedia.org/wiki/Regular_expression"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ You can search for regular expression by inserting a regexp inset into
+ the 
+\family sans
+Find
+\family default
+ editor.
+ This is done via the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Insert Regular Expression
+\family default
+ while the cursor is in the 
+\family sans
+Find
+\family default
+ editor.
+ Characters entered within regexp insets are matched according to the regular
+ expression matching rules
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Under the constraint that any (sub)expression must match a well-formed LyX
+ text segment, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+when matching LaTeX code, no segments with unbalanced {} braces are allowed
+ to match expressions.
+\end_layout
+
+\end_inset
+
+, while text entered outside regexp insets is matched exactly against the
+ same text in the document.
+ Note that it is allowed to cut and paste regexp-mode insets as usual.
+ Examples of using such a feature may be:
+\end_layout
+
+\begin_layout Enumerate
+Searching for all fractions with a given denominator: for example, entering
+ in the 
+\family sans
+Find
+\family default
+ editor the fraction 
+\begin_inset Formula $\frac{.*}{1+x^{2}}$
+\end_inset
+
+ (where the 
+\begin_inset Formula $.*$
+\end_inset
+
+ on the numerator is the match-everything regular expression) finds all
+ fractions with the given denominator.
+\end_layout
+
+\begin_layout Enumerate
+Searching for all text with a given style: for example, after unchecking
+ the 
+\family sans
+Ignore format
+\family default
+ option from the 
+\family sans
+Settings
+\family default
+ tab, entering a 
+\series bold
+
+\begin_inset Formula $.*$
+\end_inset
+
+
+\series default
+ regular expression and adding for it an emphasized or bold face, finds
+ all emphasized and bold face text, respectively.
+ Also, inserting a 
+\begin_inset Formula $.*$
+\end_inset
+
+ regular expression in a bullet or enumerated list or a section heading,
+ you can find all bullet or enumerated lists or section headings.
+\end_layout
+
+\begin_layout Standard
+Finally, references to (sub)expressions in regexp may be used as usual,
+ enclosing parts of the expression within round braces 
+\begin_inset Formula $()$
+\end_inset
+
+, and referring back to them through 
+\begin_inset Formula $\backslash1$
+\end_inset
+
+, 
+\begin_inset Formula $\backslash2$
+\end_inset
+
+, etc..
+ For example, try searching for the regexp 
+\begin_inset Formula $([a-z]+)[[:blank:]]\backslash1$
+\end_inset
+
+ in order to find word repetitions, if there are any.
+\end_layout
+
+\begin_layout Standard
+Note that back references work both when occurring within the same regexp,
+ and when occurring in multiple different regexps, where the numbering of
+ back-referenced sub-expressions is absolute, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+ 
+\begin_inset Formula $\backslash1$
+\end_inset
+
+ always refers to the first occurrence of 
+\begin_inset Formula $()$
+\end_inset
+
+ in all entered regexps.
+\end_layout
+
+\begin_layout Standard
+Note also that the use of back references in the replaced text is not (yet)
+ implemented.
+\end_layout
+
+\begin_layout Section
 Spell Checking
 \begin_inset CommandInset label
 LatexCommand label
@@ -28823,88 +31703,32 @@ Spell checking
 \end_layout
 
 \begin_layout Standard
-LyX itself has no built-in spell checker.
- Rather it uses one of the external programs 
-\family typewriter
-aspell
-\family default
-, 
-\family typewriter
-ispell
-\family default
-, 
-\family typewriter
-hspell
-\family default
-, or 
-\family typewriter
-pspell
-\family default
- as backend.
- This section assumes you have already installed and set up one of these
- programs.
- 
-\family typewriter
-aspell
-\family default
- can be seen as the successor to 
-\family typewriter
-ispell
-\family default
-, and contrary to 
-\family typewriter
-ispell
-\family default
-, it supports multiple languages in parallel, so it is recommended to use
- aspell.
- 
-\family typewriter
-hspell
-\family default
- is a Hebrew spell-checker.
- The used spell checker and its settings are specified in LyX's preferences
- under 
-\family sans
-Language Settings
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-For LyX on Windows, the selection box for the spell checking program is
- greyed out in the preferences dialog because only 
-\family typewriter
-aspell
-\family default
- can be used.
-\end_layout
-
-\begin_layout Standard
-The menu
+LyX has a built-in spell checker.
+ The menu
 \family sans
  Tools\SpecialChar \menuseparator
 Spellchecker
 \family default
+, the key 
+\family sans
+F7
+\family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../../images/dialog-show_spellchecker.png
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show spellchecker"
 \end_inset
 
  starts the spell checking beginning from the current cursor position.
- A dialog window will appear showing any incorrect (or unknown) word found,
- allowing you to edit and replace it in a second line.
+ A sidebar will appear showing any incorrect (or unknown) word found, allowing
+ you to edit and replace it in a second line.
  Whenever an unknown word is found, the word is highlighted and the text
  scrolled so that it is visible.
- In the 
-\family sans
-spell checker
-\family default
- dialog, there is also a box showing suggestions for a correction, if any
- could be found.
+ In the spellchecker sidebar, there is a box showing suggestions for a correctio
+n, if any could be found.
  Clicking on one of the corrections will copy to the 
 \family sans
-Replace
+Replacement
 \family default
  field, double-click invokes directly the replacement.
  Unknown but correctly typed words can be added to the personal dictionary.
@@ -28918,62 +31742,75 @@ Document\SpecialChar \menuseparator
 Settings
 \family default
  dialog.
- If you do not have a dictionary for the document language, spell checking
- will bring an error message.
- In this case, you can specify another dictionary file in the dialog by
- specifying a different 
-\family sans
-Alternative language
-\family default
- in preferences dialog.
+ You can specify the language of a word in the spellchecker dialog by choosing
+ a different one at the top of the dialog.
+ LyX can correctly spell check documents containing multiple languages.
+ This work if you have marked the different languages appropriately and
+ have the spell checker dictionaries installed.
+ LyX automatically switches to the appropriate dictionary file.
 \end_layout
 
-\begin_layout Standard
-After a spell check you will be informed about the number of checked words.
-\end_layout
-
-\begin_layout Subsubsection*
-Limitations
-\end_layout
-
-\begin_layout Standard
-It is not possible to change the spelling of a particular word globally,
- rather than having to change the spelling separately for each occurrence
- of the word.
- But you can use the 
-\family sans
-Find
-\begin_inset space ~
-\end_inset
-
-&
-\begin_inset space ~
-\end_inset
-
-Replace
-\family default
- dialog for that.
-\end_layout
-
-\begin_layout Standard
-LyX cannot correctly spell check documents containing multiple languages.
- This does work with 
-\family typewriter
-pspell
-\family default
-, assuming you have marked the different languages appropriately.
-\end_layout
-
-\begin_layout Subsubsection*
+\begin_layout Subsection
 Further Settings
 \end_layout
 
 \begin_layout Standard
-The 
+In LyX's preferences dialog under 
 \family sans
+Language
+\begin_inset space ~
+\end_inset
+
+Setting\SpecialChar \menuseparator
 Spellchecker
 \family default
- section in the preferences dialog has some additional options:
+ you can set the following things:
+\end_layout
+
+\begin_layout Description
+Spellchecker
+\begin_inset space ~
+\end_inset
+
+engine Select the library LyX should use for spell checking.
+ Depending on your platform, 
+\family typewriter
+aspell
+\family default
+, 
+\family typewriter
+hunspell
+\family default
+ or 
+\family typewriter
+enchant
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Enchant itself is a wrapper library having different configurable back-ends.
+ Please consult the documentation or man-page of it to learn more.
+\end_layout
+
+\end_inset
+
+
+\family default
+ are available.
+ On Windows only 
+\family typewriter
+hunspell
+\family default
+ is available.
+\end_layout
+
+\begin_layout Description
+Alternative
+\begin_inset space ~
+\end_inset
+
+language If this field is not empty, LyX will always use the given language
+ for the spell checking, no matter what the document language is.
 \end_layout
 
 \begin_layout Description
@@ -28982,7 +31819,7 @@ Escape
 \end_inset
 
 characters Allows you to add non-standard characters that the spell checker
- should consider, e.
+ should escape, e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -28990,17 +31827,8 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-German umlauts although you are spell checking an English document.
- This should not normally be needed.
-\end_layout
-
-\begin_layout Description
-Personal
-\begin_inset space ~
-\end_inset
-
-dictionary to use a different file as your personal dictionary instead of
- the spell checker's default choice 
+German umlauts.
+ This should normally not be needed.
 \end_layout
 
 \begin_layout Description
@@ -29025,51 +31853,33 @@ passthrough
 \end_layout
 
 \begin_layout Description
-Use
+Spellcheck
 \begin_inset space ~
 \end_inset
 
-input
-\begin_inset space ~
-\end_inset
-
-encoding Uses the document encoding that is set in the 
-\family sans
-Document\SpecialChar \menuseparator
-Settings
-\family default
- dialog under 
-\family sans
-Language
-\family default
- also for the spellchecker.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-The encodings are explained in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cha:The-Document-Settings"
-
-\end_inset
-
-.
+continously Check the spelling of your document as you type it.
+ Misspelled words gets underlined with a dotted red line.
+ By right-clicking on an underlined word, the suggestions by the spell appear
+ in the context menu.
+ Choosing one of them will replace the misspelled word with the suggested
+ word.
 \end_layout
 
+\begin_layout Description
+Spellcheck
+\begin_inset space ~
 \end_inset
 
- Only enable this if you use 
-\family typewriter
-ispell
-\family default
- and can't spell check words with international letters in them.
- There have been reports that this does not work with all dictionaries,
- so this is disabled by default.
+notes
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+comments If enabled, the spelling of non-printed document contents is checked
+ as well.
 \end_layout
 
 \begin_layout Section
@@ -29929,6 +32739,96 @@ key "TeXCatalogue"
 \end_inset
 
  or in the package manager of your LaTeX-system.
+\end_layout
+
+\begin_layout Section
+Comparison of Documents
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Comparison of documents
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You can compare two different LyX files via the menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Compare
+\family default
+.
+ The comparison result is a LyX file with change tracking enabled showing
+ the differences.
+ In the comparison dialog you can select with the option 
+\family sans
+Copy
+\begin_inset space ~
+\end_inset
+
+Document
+\begin_inset space ~
+\end_inset
+
+Settings
+\begin_inset space ~
+\end_inset
+
+from
+\family default
+ from which document LyX should take the document settings for the the resulting
+ difference file.
+ The option 
+\family sans
+Enable
+\begin_inset space ~
+\end_inset
+
+change
+\begin_inset space ~
+\end_inset
+
+tracking
+\begin_inset space ~
+\end_inset
+
+features
+\begin_inset space ~
+\end_inset
+
+in
+\begin_inset space ~
+\end_inset
+
+the
+\begin_inset space ~
+\end_inset
+
+output
+\family default
+ enables the change tracking option 
+\family sans
+Show
+\begin_inset space ~
+\end_inset
+
+Changes
+\begin_inset space ~
+\end_inset
+
+in
+\begin_inset space ~
+\end_inset
+
+Output
+\family default
+ to visualize the differences also in the PDF output of the difference file.
 \end_layout
 
 \begin_layout Section
@@ -34816,7 +37716,6 @@ Under the
 File
 \family default
  menu are the basic operations in addition to some more advanced operations.
- At the end of the menu the four last opened documents are listed.
 \end_layout
 
 \begin_layout Subsection
@@ -35090,12 +37989,9 @@ eX
 (plain)
 \family default
  text file with the LaTeX source code, additionally all images used in the
- document will be converted to the EPS-format, only this format is readable
- by the 
-\family typewriter
-latex
-\family default
- program
+ document will be converted to 
+\family sans
+the EPS-format, only this format is readable by the latex program
 \end_layout
 
 \begin_layout Description
@@ -35103,7 +37999,17 @@ LyX
 \begin_inset space ~
 \end_inset
 
-1.y.x LyX-document in a format readable by the LyX versions 1.y.x (
+z.y.x 
+\family sans
+LyX-Dokument in a format readable by the LyX versions z.y.x (
+\begin_inset Quotes eld
+\end_inset
+
+z
+\begin_inset Quotes grd
+\end_inset
+
+ and 
 \begin_inset Quotes eld
 \end_inset
 
@@ -35111,15 +38017,17 @@ y
 \begin_inset Quotes erd
 \end_inset
 
- is replaced by the version number)
+ represent the version number)
 \end_layout
 
 \begin_layout Description
-LyXHTML HTML-format, using LyX's internal XHTML engine
+LyXHTML 
+\family sans
+HTML-format, using LyX's internal XHTML engine
 \end_layout
 
 \begin_layout Description
-OpenDocument OpenDocument-formatted text file, to be opened with 
+OpenDocument OpenDocument-formatted file, to be opened with 
 \family sans
 OpenOffice
 \family default
@@ -35217,14 +38125,6 @@ Postscript
  PostScript format using the program 
 \family typewriter
 dvips
-\end_layout
-
-\begin_layout Description
-
-\family sans
-Custom
-\family default
- custom format
 \end_layout
 
 \begin_layout Standard
@@ -37332,8 +40232,8 @@ Character count
 \end_layout
 
 \begin_layout Standard
-Counts the number of words and characters in the actual document or the
- highlighted document part.
+Counts the words and characters in the actual document or the highlighted
+ document part.
 \end_layout
 
 \begin_layout Subsection
@@ -39499,6 +42399,23 @@ Embedded Objects
 \end_layout
 
 \begin_layout Section
+Child Documents
+\end_layout
+
+\begin_layout Standard
+This submenu is only visible when your document includes child documents.
+ Please refer to the section 
+\emph on
+Child Documents
+\emph default
+ of the 
+\emph on
+Embedded Objects
+\emph default
+ manual for details.
+\end_layout
+
+\begin_layout Section
 Modules
 \end_layout
 
@@ -41074,7 +43991,11 @@ Zoom
 \family default
  setting.
  You can also change the font zoom outside the preferences dialog for the
- current LyX session by pressing Ctrl and scrolling the mouse wheel.
+ current LyX session by pressing 
+\family sans
+Ctrl
+\family default
+ and scrolling the mouse wheel.
 \end_layout
 
 \begin_layout Standard
@@ -41840,8 +44761,47 @@ XServer-Pipe Here you can enter the name of a Unix-pipe.
 \end_inset
 
 
+\series bold
+Example
+\series default
+: You add a BibTeX-database test.bib to your document.
+ You can edit this file with the program 
+\family typewriter
+JabRef
+\family default
+ bearbeiten.
+ In 
+\family typewriter
+JabRef
+\family default
+ you have to use the same Unix-Pipe for LyX in its preferences under 
+\family sans
+External
+\begin_inset space ~
+\end_inset
+
+programs
+\family default
+.
+ If you want to get one entry of the database as citation, select it in
+ 
+\family typewriter
+JabRef
+\family default
+ and click on the LyX-symbol.
+ The entry will now be inserted as citation at the current cursor position
+ in your LyX file.
+ 
+\family typewriter
+JabRef
+\family default
+ and LyX need of course to be run the same time.
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -42260,7 +45220,7 @@ Printer command
 
 
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -42273,40 +45233,6 @@ Note:
 \end_inset
 
 
-\end_layout
-
-\begin_layout Description
-Adapt
-\begin_inset space ~
-\end_inset
-
-output
-\begin_inset space ~
-\end_inset
-
-to
-\begin_inset space ~
-\end_inset
-
-printer This option works only for the 
-\family sans
-Printer command
-\family default
- 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family sans
-dvips
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
- It activates a configuration file for dvips.
- This is an option only for dvips experts.
 \end_layout
 
 \begin_layout Description
@@ -42346,6 +45272,40 @@ Options Here you can specify printer options.
 Printer command
 \family default
  you are using.
+\end_layout
+
+\begin_layout Description
+Adapt
+\begin_inset space ~
+\end_inset
+
+output
+\begin_inset space ~
+\end_inset
+
+to
+\begin_inset space ~
+\end_inset
+
+printer This option works only for the 
+\family sans
+Printer command
+\family default
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+dvips
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ It activates a configuration file for dvips.
+ This is an option only for dvips experts.
 \end_layout
 
 \begin_layout Subsection

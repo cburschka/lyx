@@ -1680,52 +1680,6 @@ LyXは前のマウスの位置と新しいマウスの位置の間の文字を�
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-表
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-右マウスボタン
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-を
-\family default
-\series default
-\shape default
-\size default
-\emph on
-\bar default
-\noun default
-\color inherit
-シングルクリック
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-するとダイアログが開き、表を操作できます。
-\end_layout
-
-\end_deeper
 \begin_layout Section
 移動
 \begin_inset CommandInset label
@@ -3696,6 +3650,55 @@ status open
 \end_layout
 
 \begin_layout Subsubsection
+
+\lang english
+Local Layout
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Document ! Local Layout
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Modules are to LyX much as packages are to LaTeX: They are intended to be
+ used in a variety of different documents, and if you often find yourself
+ needing the same sort of thing in different documents, you should consider
+ writing a module for this purpose.
+ Sometimes, however, a particular document has very special needs, and you
+ find yourself wanting a specific inset or character style, but only that
+ one time.
+ You want something that is like a document's own LaTeX preamble.
+ What you want is LyX's 
+\begin_inset Quotes eld
+\end_inset
+
+Local Layout
+\begin_inset Quotes erd
+\end_inset
+
+.
+ See section 
+\emph on
+Local Layout
+\emph default
+ of the 
+\emph on
+Customization
+\emph default
+ manual for information on how to use it.
+\end_layout
+
+\begin_layout Subsubsection
 特性
 \end_layout
 
@@ -4569,26 +4572,7 @@ Latexぱっけーじ@LaTeXパッケージ ! fancyhdr
 \bar no
 \noun off
 \color none
-パッケージが装備されていれば、完全にカスタマイズできるヘッダとフッタを生成することができます。現在のところ、LyXでのサポートは十分でなく、このパッケージの十分
-な力を引き出すには、プリアンブルに自分でコードを書く必要があります。詳しくは
-\family default
-\series bold
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-fancyhdr
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-パッケージの文書
+パッケージが装備されていれば、完全にカスタマイズできるヘッダとフッタを生成することができます。
 \family default
 \series default
 \shape default
@@ -4597,30 +4581,28 @@ fancyhdr
 \bar default
 \noun default
 \color inherit
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "fancyhdr"
-
+\lang english
+How they are defined is explained in section
+\begin_inset space ~
 \end_inset
 
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-を見て下さい。
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Customized-Page-Headers"
+
+\end_inset
+
+。
 \end_layout
 
 \begin_layout Standard
 段落の分け方については、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:段落の字下げと分け方"
+reference "sub:段落の分け方"
 
 \end_inset
 
@@ -4756,42 +4738,16 @@ JIS B0 - JIS B6
 用紙方向
 \family default
  
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-出力を
+\lang english
+To choose whether to output as 
 \family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-横向き
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-に印刷するか、
+Landscape
+\family default
+ or as 
 \family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-縦向き
+Portrait
+\family default
+.
 \family roman
 \series medium
 \shape up
@@ -4800,7 +4756,8 @@ JIS B0 - JIS B6
 \bar no
 \noun off
 \color none
-に印刷するかを選ぶ2つの切替ボタンです。
+\lang japanese
+。
 \end_layout
 
 \begin_layout Labeling
@@ -5117,6 +5074,13 @@ LaTeXが行います。
 
 \begin_layout Subsection
 段落の分け方
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:段落の分け方"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -6655,6 +6619,16 @@ status collapsed
 
 \begin_layout Standard
 
+\lang english
+The unnumbered section headings have a 
+\begin_inset Quotes eld
+\end_inset
+
+*
+\begin_inset Quotes erd
+\end_inset
+
+ at the end of their name
 \family roman
 \series medium
 \shape up
@@ -6663,50 +6637,8 @@ status collapsed
 \bar no
 \noun off
 \color none
-次の5つは番号を付けない見出しを作る環境です。
-\end_layout
-
-\begin_layout Enumerate
-
-\family sans
-部*
-\end_layout
-
-\begin_layout Enumerate
-
-\family sans
-章*
-\end_layout
-
-\begin_layout Enumerate
-
-\family sans
-節*
-\end_layout
-
-\begin_layout Enumerate
-
-\family sans
-小節*
-\end_layout
-
-\begin_layout Enumerate
-
-\family sans
-小々節*
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-各名称の後の「*」は、これらの見出しには番号がつかないことを表しています。これらは、目次に載らないこと以外は、番号付きの見出しと同じように働きます（第
+\lang japanese
+。これらは、目次に載らないこと以外は、番号付きの見出しと同じように働きます（第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:目次と一覧"
@@ -12451,7 +12383,26 @@ status collapsed
 
 \end_inset
 
-
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+For longer parts of programming code, use the listings inset that is described
+ in the chapter 
+\emph on
+Program Code Listings
+\emph default
+ of the 
+\emph on
+Embedded Objects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Section
@@ -18267,7 +18218,11 @@ reference "sub:LaTeXフォントサポート"
 \color inherit
 「
 \family typewriter
-computer modern
+Computer
+\begin_inset space ~
+\end_inset
+
+Modern
 \family roman
 \series medium
 \shape up
@@ -18303,7 +18258,7 @@ cm
 \bar default
 \noun default
 \color inherit
-European modern
+European Computer Modern
 \family default
 」（
 \family typewriter
@@ -18367,8 +18322,12 @@ Reader
 
 \begin_layout Itemize
 
-\family typewriter
-Latin Modern (lm)
+\family sans
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
 \family default
 フォントを使用する方法。これは、
 \family typewriter
@@ -18379,50 +18338,66 @@ cm
 ec
 \family default
 の外見を維持したい場合に推奨される方法です。
-\family typewriter
-Latin Modern
+\family sans
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
 \family default
 フォントは、LaTeXコミュニティにおいて、
 \family typewriter
 cm
 \family default
 に代わる既定フォントとするべく開発されたものです。これは、非常に広い範囲のグリフと複数のフォント形を含んでおり、外観の改善された若干の細部を除き、
-\family typewriter
-lm
+\family sans
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
 \family default
 は、ほとんどの場合
 \family typewriter
 cm
 \family default
-と同一の外観を持ちます
+と同一の外観を持ちます。
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-ひとつの違いは、
-\family typewriter
-lm
-\family default
-フォントでは合字が改善されていることです。
+
+\lang english
+One difference is improved kerning
+\lang japanese
+。
 \end_layout
 
 \end_inset
 
-。
+
 \end_layout
 
 \begin_layout Itemize
 
-\family typewriter
+\family sans
 AE
+\begin_inset space ~
+\end_inset
+
+(Almost
+\begin_inset space ~
+\end_inset
+
+European)
 \family default
- (
-\family typewriter
-Almost European
-\family default
-)を使用する方法。これは、
-\family typewriter
-Latin Modern
+を使用する方法。これは、
+\family sans
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
 \family default
 フォントが使用できないか、うまく動作しない（稀な）ケースにおいて、
 \family typewriter
@@ -18505,7 +18480,11 @@ ec
 \family default
 の外見を好まない場合には、
 \family sans
-Times Roman
+Times
+\begin_inset space ~
+\end_inset
+
+Roman
 \family default
 や
 \family sans
@@ -18519,19 +18498,31 @@ status collapsed
 \begin_layout Plain Layout
 これは、ときに単に他のフォントを対応させることもあれば（
 \family sans
-Times Roman
+Times
+\begin_inset space ~
+\end_inset
+
+Roman
 \family default
 は、
 \family sans
 Helvetica
 \family default
 をサンセリフ体の文章に使用します）、
-\family typewriter
-Latin Modern
+\family sans
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
 \family default
 や
-\family typewriter
-Computer Modern
+\family sans
+Computer
+\begin_inset space ~
+\end_inset
+
+Modern
 \family default
 のように、同じフォントの他の形、すなわち真のフォント
 \emph on
@@ -18562,7 +18553,7 @@ reference "sub:文字微調整"
 \end_inset
 
 
-\family typewriter
+\family sans
 Times
 \begin_inset space ~
 \end_inset
@@ -18570,7 +18561,7 @@ Times
 Roman
 \family default
 フォントは、元々新聞用にデザインされたものです。したがって、狭い新聞の列幅に納まるように、そのグリフは他のフォントのグリフよりも小さくなっています。そのため、
-\family typewriter
+\family sans
 Times
 \begin_inset space ~
 \end_inset
@@ -18581,11 +18572,6 @@ Roman
 \end_layout
 
 \begin_layout Standard
-
-\family sans
-\begin_inset VSpace bigskip
-\end_inset
-
 
 \family roman
 \series medium
@@ -18831,7 +18817,7 @@ CJK
 \bar no
 \noun off
 \color none
-フィールドでは、日中韓言語ユーザーが文字を表示するのに使用するフォントを指定することができます
+フィールドでは、日中韓言語ユーザーが文字を表示するのに使用するフォントを指定することができます。
 \begin_inset Foot
 status collapsed
 
@@ -18904,7 +18890,7 @@ CJK
 
 \end_inset
 
-。
+
 \end_layout
 
 \begin_layout Standard
@@ -29157,36 +29143,131 @@ LaTeXは、
 既定では、各オプションはそれぞれ以下の規則を持っています。
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family sans
-ページ上部
+\lang english
+Top
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
+page
 \family default
-は、フロートのページに占める割合が7割以下の場合のみ、ページ上部に配置します。
+ only floats occupying less than 70
+\begin_inset space \thinspace{}
+\end_inset
+
+% of the page can be placed at the top of a page (
+\series bold
+
+\backslash
+topfraction
+\series default
+)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+\lang english
+Bottom
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
+page
+\family default
+: only floats occupying less than 30
+\begin_inset space \thinspace{}
+\end_inset
+
+% of the page can be placed at the bottom of a page.
+ (
+\series bold
+
+\backslash
+bottomfraction
+\series default
+)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+\lang english
+Page
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
+floats
+\family default
+: only if more than 50
+\begin_inset space \thinspace{}
+\end_inset
+
+% of the page are occupied by floats, several floats can be set together
+ on a page.
+ (
+\series bold
+
+\backslash
+floatpagefraction
+\series default
+)
 \end_layout
 
 \begin_layout Standard
 
+\lang english
+If you don't like these rules, you can ignore them by using the additional
+ option 
 \family sans
-ページ下部
+Ignore
+\begin_inset space ~
+\end_inset
+
+LaTeX
+\begin_inset space ~
+\end_inset
+
+rules
 \family default
-は、フロートのページに占める割合が3割以下の場合のみ、ページ下部に配置します。
+.
+\begin_inset Newline newline
+\end_inset
+
+You can also redefine the rules with LaTeX-commands that are given in parenthese
+s after the rules description above.
+ To increase for example the often too small default of the bottom-rule
+ to 50
+\begin_inset space \thinspace{}
+\end_inset
+
+% of the page, add this line to your document preamble:
 \end_layout
 
 \begin_layout Standard
 
-\family sans
-フロートを独立したページに
-\family default
-は、フロートのページに占める割合が5割以下の場合のみ、複数のフロートを同一ページに配置します。
-\end_layout
+\series bold
 
-\begin_layout Standard
-これらの規則に従いたくないときは、
-\family sans
-LaTeXの規則を無視する
-\family default
-オプションを追加することによって、これらを無視することができます。
+\backslash
+renewcommand{
+\backslash
+bottomfraction}{0.5}
 \end_layout
 
 \begin_layout Standard
@@ -37845,6 +37926,13 @@ Roman{page}
 
 \lang english
 Customized Page Headers and Footers
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Customized-Page-Headers"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -43542,7 +43630,7 @@ status collapsed
 \family sans
 ファイル
 \family default
-メニューの下には、基本操作といくつかの応用操作が含まれています。メニューの最後には、最後に開いた4つの文書が列挙されます。
+メニューの下には、基本操作といくつかの応用操作が含まれています。
 \end_layout
 
 \begin_layout Subsection
@@ -43776,7 +43864,11 @@ LyX
 \begin_inset space ~
 \end_inset
 
-1.y.x LyX 1.y.x版（「y」はバージョン番号に変換して表示されます）が読み込み可能なLyX文書形式
+z.y.x LyX z.y.x版（「z」
+\lang english
+ and 
+\lang japanese
+「y」はバージョン番号に変換して表示されます）が読み込み可能なLyX文書形式
 \end_layout
 
 \begin_layout Description
@@ -43853,10 +43945,6 @@ Postscript
 dvips
 \family default
 プログラムを使用して変換するPostScript形式
-\end_layout
-
-\begin_layout Description
-任意設定 任意に設定した形式
 \end_layout
 
 \begin_layout Standard
@@ -50019,18 +50107,6 @@ Windowsシステムでは効力がないのでこのフィールドは空でか�
 \end_layout
 
 \begin_layout Description
-出力をプリンタに合わせる このオプションは、
-\family sans
-印刷コマンド
-\family default
-が「
-\family sans
-dvips
-\family default
-」のときのみ機能します。これはdvips用の設定ファイルを有効化します。これはdvips熟練者専用のオプションです。
-\end_layout
-
-\begin_layout Description
 印刷コマンド これはLyXすなわちLaTeXが印刷に使用するコマンドです。既定値は、ほとんどのシステムで
 \family sans
 dvips
@@ -50041,6 +50117,18 @@ dvips
 \begin_layout Description
 印刷コマンドオプション ここでは印刷コマンド用オプションを指定できます。お使いの印刷コマンドを提供するプログラムの取扱説明書に、印刷オプションの全覧と説明があり
 ます。
+\end_layout
+
+\begin_layout Description
+出力をプリンタに合わせる このオプションは、
+\family sans
+印刷コマンド
+\family default
+が「
+\family sans
+dvips
+\family default
+」のときのみ機能します。これはdvips用の設定ファイルを有効化します。これはdvips熟練者専用のオプションです。
 \end_layout
 
 \begin_layout Subsection

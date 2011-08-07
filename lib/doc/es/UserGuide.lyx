@@ -1345,20 +1345,6 @@ clic con el botón izquierdo del ratón sobre su recuadro abre o cierra cualquie
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
-Cuadros
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Un clic derecho
-\emph on
- 
-\emph default
-con el ratón abre una ventana de diálogo que permite manipular el cuadro.
-\end_layout
-
-\end_deeper
 \begin_layout Section
 Navegación
 \begin_inset CommandInset label
@@ -2713,7 +2699,7 @@ bles.
 \begin_layout Subsubsection
 Formato local
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Documentos ! Formato local
@@ -2742,7 +2728,13 @@ Formato local
 \begin_inset Quotes frd
 \end_inset
 
- de LyX, cuyo uso se describe en el capítulo 5 del manual 
+ de LyX, cuyo uso se describe en el sección 
+\emph on
+\lang english
+Local Layout
+\emph default
+\lang spanish
+ del manual 
 \emph on
 Personalización
 \emph default
@@ -3266,7 +3258,11 @@ Sección,
 Subsección, Subsubsección
 \family default
  y otros.
- Los describiremos detalladamente en la sección 
+ Los describiremos detalladamente en la sección
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Encabezados"
@@ -3445,17 +3441,18 @@ LaTeX, paquetes ! fancyhdr
 \end_inset
 
 .
- De momento, el soporte en LyX es limitado.
- Para disponer de todo el poderío de este paquete, tienes que recurrir a
- código en el preámbulo del documento.
- Mira la documentación del paquete 
-\series bold
-fancyhdr
-\series default
- para más detalles, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "fancyhdr"
+ 
+\lang english
+How they are defined is explained in
+\lang spanish
+ sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Customized-Page-Headers"
 
 \end_inset
 
@@ -3463,18 +3460,14 @@ key "fancyhdr"
 \end_layout
 
 \begin_layout Standard
-La 
-\family sans
-Separación
-\family default
- de párrafos se describe en la sección
+La separación de párrafos se describe en la sección
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Intro-Sangrado-de-párrafos"
+reference "sub:Separación-de-párrafos"
 
 \end_inset
 
@@ -3610,7 +3603,11 @@ Personalizado
 \family sans
 Orientación
 \family default
- Dos botones excluyentes para imprimir la salida como 
+ 
+\lang english
+To choose whether to output
+\lang spanish
+ como 
 \family sans
 Retrato
 \family default
@@ -3818,6 +3815,13 @@ todos
 
 \begin_layout Subsection
 Separación de párrafos
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Separación-de-párrafos"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -4584,41 +4588,9 @@ Encabezados de sección ! No numerados
 \end_layout
 
 \begin_layout Standard
-Hay 5 tipos de encabezados no numerados, que son:
-\end_layout
 
-\begin_layout Enumerate
-
-\family sans
-Parte* 
-\end_layout
-
-\begin_layout Enumerate
-
-\family sans
-Capítulo*
-\end_layout
-
-\begin_layout Enumerate
-
-\family sans
-Sección*
-\end_layout
-
-\begin_layout Enumerate
-
-\family sans
-Subsección*
-\end_layout
-
-\begin_layout Enumerate
-
-\family sans
-Subsubsección*
-\end_layout
-
-\begin_layout Standard
-El 
+\lang english
+The unnumbered section headings have a 
 \begin_inset Quotes fld
 \end_inset
 
@@ -4626,8 +4598,10 @@ El
 \begin_inset Quotes frd
 \end_inset
 
- significa que estos encabezados no se numeran.
- Trabajan como sus homólogos numerados pero no aparecen en el índice general,
+ at the end of their name.
+ 
+\lang spanish
+Trabajan como sus homólogos numerados pero no aparecen en el índice general,
  véase la sección
 \begin_inset space ~
 \end_inset
@@ -8127,7 +8101,18 @@ Entornos de párrafo|)
 
 \end_inset
 
-
+ 
+\lang english
+For longer parts of programming code, use the listings inset that is described
+ in the chapter 
+\emph on
+Program Code Listings
+\emph default
+ of the 
+\emph on
+Embedded Objects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout LyX-Code
@@ -11999,7 +11984,7 @@ name "sec:Estilo-de-letra"
 \begin_layout Subsection
 Clasestipográficas
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tipografías ! Clases
@@ -12021,7 +12006,7 @@ Tipografías
 
 vectoriales
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tipografías ! Vectoriales
@@ -12089,7 +12074,7 @@ de
 
 bits
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tipografías ! Mapa de bits
@@ -12260,7 +12245,7 @@ name "sub:Tipografía-del-documento"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tipografías ! Tamaño
@@ -12270,7 +12255,7 @@ Tipografías ! Tamaño
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Documentos ! Tipografías
@@ -12289,7 +12274,7 @@ Configuración
 \family default
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Documentos ! Configuración
@@ -12423,7 +12408,11 @@ Predeterminado
 
 
 \family typewriter
-Computer Modern
+Computer
+\begin_inset space ~
+\end_inset
+
+Modern
 \family default
 
 \begin_inset Quotes frd
@@ -12488,20 +12477,37 @@ Reader
 
 \begin_layout Itemize
 Utilizar la tipografía 
-\family typewriter
-Latin Modern
+\family sans
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
 \family default
- (
-\family typewriter
-lm
-\family default
-).
+.
  Esta tipografía ha sido desarrollada por la comunidad LaTeX para reemplazar
  a 
 \family typewriter
 cm
 \family default
  como tipografías predeterminadas.
+ 
+\family sans
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
+\family default
+ 
+\lang english
+was developed for the LaTeX community in order to replace 
+\family typewriter
+cm
+\family default
+ as the default font.
+
+\lang spanish
  En la mayoría de los casos tienen un aspecto semejante a 
 \family typewriter
 cm
@@ -12511,18 +12517,18 @@ cm
 status collapsed
 
 \begin_layout Plain Layout
-Una diferencia es un interletraje mejorado en las tipografías 
-\family typewriter
-lm
-\family default
-.
+Una diferencia es un interletraje mejorado.
 \end_layout
 
 \end_inset
 
 , pero 
-\family typewriter
-lm
+\family sans
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
 \family default
  cubre un enorme número de caracteres en comparación con las familias 
 \family typewriter
@@ -12537,16 +12543,24 @@ ec
 
 \begin_layout Itemize
 Elegir la tipografía 
-\family typewriter
+\family sans
 AE
+\begin_inset space ~
+\end_inset
+
+(Almost
+\begin_inset space ~
+\end_inset
+
+European)
 \family default
- (
-\family typewriter
-Almost European
-\family default
-) en el caso (raro) de que 
-\family typewriter
-Latin Modern
+ en el caso (raro) de que 
+\family sans
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
 \family default
  no esté disponible o no funcione, y se desee emular el aspecto de 
 \family typewriter
@@ -12689,7 +12703,11 @@ ec
 , podemos seleccionar una de las otras tipografías vectoriales suministradas,
  por ejemplo, 
 \family sans
-Times Roman
+Times
+\begin_inset space ~
+\end_inset
+
+Roman
 \family default
  o
 \family typewriter
@@ -12710,31 +12728,45 @@ A veces corresponden otras tipografías, (p.
 
 ej., 
 \family sans
-Times Roman
+Times
+\begin_inset space ~
+\end_inset
+
+Roman
 \family default
  selecciona 
 \family sans
-Helvetiva
+Helvetica
 \family default
- para sans serif), y a veces, p.
+ para sans serif), o diferentes formas de la misma letra, o sea, una 
+\emph on
+familia
+\emph default
+ real de letras (p.
 \begin_inset space ~
 \end_inset
 
 ej.
- con 
-\family typewriter
-Latin Modern
+\begin_inset space \space{}
+\end_inset
+
+con 
+\family sans
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
 \family default
  o 
-\family typewriter
-Computer Modern
+\family sans
+Computer
+\begin_inset space ~
+\end_inset
+
+Modern
 \family default
-, diferentes formas de la misma letra, o sea, una 
-\emph on
-familia
-\emph default
- real de letras.
- 
+)
 \end_layout
 
 \end_inset
@@ -12777,23 +12809,24 @@ reference "sub:Ajuste-fino-con"
 
 La tipografía 
 \family sans
-Times Roman
+Times
+\begin_inset space ~
+\end_inset
+
+Roman
 \family default
  se diseñó originalmente para periódicos.
  Esto significa que sus formas son más pequeñas que las de otras tipografías
  para encajar en las pequeñas columnas de un periódico.
  Así pues, 
 \family sans
-Times Roman
-\family default
- no es la elección óptima para documentos extensos como los libros.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
+Times
+\begin_inset space ~
 \end_inset
 
-
+Roman
+\family default
+ no es la elección óptima para documentos extensos como los libros.
 \end_layout
 
 \begin_layout Standard
@@ -14897,7 +14930,7 @@ lenguaje de programación
 
 ; con él puedes calcular y dibujar imágenes y diagramas.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Si estás interesado en este tema acude al paquete LaTeX 
@@ -15296,7 +15329,7 @@ pdflatex
 \begin_layout Subsubsection
 XHTML
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Formatos de archivo ! XHTML
@@ -15306,7 +15339,7 @@ Formatos de archivo ! XHTML
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 XHTML
@@ -21950,7 +21983,7 @@ reference "sub:Índices-de"
 \begin_layout Subsubsection
 Cuadros flotantes
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Flotantes ! Cuadros y Tablas
@@ -22871,7 +22904,8 @@ página
 De forma predeterminada cada una de las opciones tiene sus propias reglas:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family sans
 Principio
@@ -22889,9 +22923,17 @@ página:
 \end_inset
 
 % de la página puede ubicarse al principio de página.
+ (
+\series bold
+
+\backslash
+topfraction
+\series default
+)
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family sans
 Fin
@@ -22909,9 +22951,17 @@ página:
 \end_inset
 
 % de la página puede ubicarse al fin de página.
+ (
+\series bold
+
+\backslash
+bottomfraction
+\series default
+)
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family sans
 Página
@@ -22930,6 +22980,13 @@ flotantes:
 
 % de la página se ocupa por flotantes puede haber varios juntos en la misma
  página.
+ (
+\series bold
+
+\backslash
+floatpagefraction
+\series default
+)
 \end_layout
 
 \begin_layout Standard
@@ -22951,6 +23008,29 @@ de
 LaTeX
 \family default
 .
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+You can also redefine the rules with LaTeX-commands that are given in parenthese
+s after the rules description above.
+ To increase for example the often too small default of the bottom-rule
+ to 50
+\begin_inset space \thinspace{}
+\end_inset
+
+% of the page, add this line to your document preamble:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+bottomfraction}{0.5}
 \end_layout
 
 \begin_layout Standard
@@ -31104,6 +31184,13 @@ Roman{page}
 
 \lang english
 Customized Page Headers and Footers
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Customized-Page-Headers"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -39029,8 +39116,8 @@ LyX
 \begin_inset space ~
 \end_inset
 
-1.y.x documento LyX en formato legible para las versiones correspondientes
- de LyX («y.x» es el número de versión)
+z.y.x documento LyX en formato legible para las versiones correspondientes
+ de LyX («z.y.x» es el número de versión)
 \end_layout
 
 \begin_layout Description
@@ -39136,14 +39223,6 @@ Postscript
  formato PostScript usando el programa 
 \family typewriter
 dvips
-\end_layout
-
-\begin_layout Description
-
-\family sans
-Personalizado
-\family default
- formato personalizado
 \end_layout
 
 \begin_layout Standard
@@ -40877,7 +40956,7 @@ Leyenda
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Cuadros ! Largos ! leyenda en
@@ -46889,7 +46968,7 @@ Comando de Impresión
 
 
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -46902,40 +46981,6 @@ Nota:
 \end_inset
 
 
-\end_layout
-
-\begin_layout Description
-Adaptar
-\begin_inset space ~
-\end_inset
-
-la
-\begin_inset space ~
-\end_inset
-
-salida
-\begin_inset space ~
-\end_inset
-
-a
-\begin_inset space ~
-\end_inset
-
-la
-\begin_inset space ~
-\end_inset
-
-impresora Esta opción sólo funciona si el 
-\family sans
-Comando de Impresión
-\family default
- es «
-\family sans
-dvips
-\family default
-».
- Activa un archivo de configuración para dvips.
- Esta opción es para expertos en dvips.
 \end_layout
 
 \begin_layout Description
@@ -46994,9 +47039,40 @@ Comando de impresión
 \family default
 puedes encontrar la explicación de las opciones que pueden configurarse
  en estos campos.
+\end_layout
 
+\begin_layout Description
+Adaptar
+\begin_inset space ~
+\end_inset
+
+la
+\begin_inset space ~
+\end_inset
+
+salida
+\begin_inset space ~
+\end_inset
+
+a
+\begin_inset space ~
+\end_inset
+
+la
+\begin_inset space ~
+\end_inset
+
+impresora Esta opción sólo funciona si el 
 \family sans
- 
+Comando de Impresión
+\family default
+ es «
+\family sans
+dvips
+\family default
+».
+ Activa un archivo de configuración para dvips.
+ Esta opción es para expertos en dvips.
 \end_layout
 
 \begin_layout Subsection

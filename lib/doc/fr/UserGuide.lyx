@@ -1566,21 +1566,6 @@ Cliquez avec le bouton droit pour modifier ses propriétés.
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
-Tableaux
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-
-\emph on
-Cliquez une fois
-\emph default
- sur le bouton droit pour ouvrir une fenêtre qui vous permettra de manipuler
- le tableau.
-\end_layout
-
-\end_deeper
 \begin_layout Section
 Naviguer
 \begin_inset CommandInset label
@@ -2939,6 +2924,51 @@ Notez : Certains modules ont besoin d'autres modules et que certaines paires
 \end_layout
 
 \begin_layout Subsubsection
+Format local
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Document ! Format local
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Modules are to LyX much as packages are to LaTeX: They are intended to be
+ used in a variety of different documents, and if you often find yourself
+ needing the same sort of thing in different documents, you should consider
+ writing a module for this purpose.
+ Sometimes, however, a particular document has very special needs, and you
+ find yourself wanting a specific inset or character style, but only that
+ one time.
+ You want something that is like a document's own LaTeX preamble.
+ What you want is LyX's 
+\begin_inset Quotes eld
+\end_inset
+
+Local Layout
+\begin_inset Quotes erd
+\end_inset
+
+.
+ See section 
+\emph on
+Local Layout
+\emph default
+ of the 
+\emph on
+Customization
+\emph default
+ manual for information on how to use it.
+\end_layout
+
+\begin_layout Subsubsection
 Propriétés
 \end_layout
 
@@ -3474,29 +3504,33 @@ Paquetages LaTeX ! fancyhdr
 \end_inset
 
 .
- Pour le moment, son support dans LyX est limité à ce réglage.
- Pour utiliser toute la puissance de ce paquetage, vous devez insérer les
- formules magiques correspondantes dans le préambule.
- Voyez la documentation du paquetage 
-\series bold
-fancyhdr
-\series default
- pour plus de détails.
-\end_layout
-
-\begin_layout Standard
-La 
-\family sans
-Séparation
-\family default
- des paragraphes est décrite dans la section
+ 
+\lang english
+How they are defined is explained in
+\lang french
+ section
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Intro-indent-par"
+reference "sec:Customized-Page-Headers"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+La séparation des paragraphes est décrite dans la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Séparation-des-paragraphes"
 
 \end_inset
 
@@ -3621,8 +3655,11 @@ Réglable
 \family sans
 Orientation
 \family default
- Deux boutons à bascule déterminent si vous voulez imprimer la sortie dans
- le format 
+ 
+\lang english
+To choose whether to output
+\lang french
+ dans le format 
 \family sans
 Portrait
 \family default
@@ -3872,6 +3909,13 @@ tous
 
 \begin_layout Subsection
 Séparation des paragraphes
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Séparation-des-paragraphes"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -4680,43 +4724,20 @@ En-têtes ! Non numérotés
 \end_layout
 
 \begin_layout Standard
-Il y a 5 types d'en-têtes de section non numérotés.
- Ce sont :
-\end_layout
 
-\begin_layout Enumerate
+\lang english
+The unnumbered section headings have a 
+\begin_inset Quotes fld
+\end_inset
 
-\family sans
-Partie*
-\end_layout
+*
+\begin_inset Quotes frd
+\end_inset
 
-\begin_layout Enumerate
-
-\family sans
-Chapitre*
-\end_layout
-
-\begin_layout Enumerate
-
-\family sans
-Section*
-\end_layout
-
-\begin_layout Enumerate
-
-\family sans
-SousSection*
-\end_layout
-
-\begin_layout Enumerate
-
-\family sans
-SousSousSection*
-\end_layout
-
-\begin_layout Standard
-L'étoile après chaque nom signifie que ces en-têtes ne sont pas numérotés.
- Autrement ils fonctionnent de la même façon que leurs homologues numérotés,
+ at the end of their name.
+ 
+\lang french
+Autrement ils fonctionnent de la même façon que leurs homologues numérotés,
  mais ils n'apparaissent pas dans la table des matières, voir la section
 \begin_inset space ~
 \end_inset
@@ -8161,7 +8182,18 @@ Environnements de Paragraphe |)
 
 \end_inset
 
-
+ 
+\lang english
+For longer parts of programming code, use the listings inset that is described
+ in the chapter 
+\emph on
+Program Code Listings
+\emph default
+ of the 
+\emph on
+Embedded Objects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Section
@@ -12812,7 +12844,11 @@ implicite
 
 
 \family typewriter
-Computer Modern
+Computer
+\begin_inset space ~
+\end_inset
+
+Modern
 \family default
 
 \begin_inset Quotes erd
@@ -12885,20 +12921,37 @@ Reader
 
 \begin_layout Itemize
 Utiliser les polices 
-\family typewriter
-Latin Modern
+\family sans
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
 \family default
- (
-\family typewriter
-lm
-\family default
-).
+.
  Ces polices ont été développées à la demande de la communauté LaTeX pour
  remplacer les polices 
 \family typewriter
 cm
 \family default
  comme polices implicites.
+ 
+\family sans
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
+\family default
+ 
+\lang english
+was developed for the LaTeX community in order to replace 
+\family typewriter
+cm
+\family default
+ as the default font.
+
+\lang french
  Dans la plupart des cas elles ressemblent aux polices 
 \family typewriter
 cm
@@ -12908,18 +12961,18 @@ cm
 status collapsed
 
 \begin_layout Plain Layout
-Une différence est un crénage amélioré avec les polices 
-\family typewriter
-lm
-\family default
-.
+Une différence est un crénage amélioré.
 \end_layout
 
 \end_inset
 
 , mais 
-\family typewriter
-lm
+\family sans
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
 \family default
  couvre un grand nombre de caractères issus des deux familles 
 \family typewriter
@@ -12934,16 +12987,24 @@ ec
 
 \begin_layout Itemize
 Utiliser des polices 
-\family typewriter
-AE 
+\family sans
+AE
+\begin_inset space ~
+\end_inset
+
+(Almost
+\begin_inset space ~
+\end_inset
+
+European)
 \family default
-(
-\family typewriter
-Almost European
-\family default
-) dans les (rares) cas où 
-\family typewriter
-Latin Modern
+ dans les (rares) cas où 
+\family sans
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
 \family default
  ne vous est pas accessible ou ne fonctionne pas et que vous voulez quand
  même imiter l'aspect des policesi 
@@ -13088,7 +13149,11 @@ ec
 , vous pouvez, bien sûr, chosir une autre police parmis les polices vectorielles
  proposées, comme par exemple 
 \family sans
-Times Roman
+Times
+\begin_inset space ~
+\end_inset
+
+Roman
 \family default
  ou
 \family typewriter
@@ -13106,26 +13171,38 @@ status collapsed
 Ces dernières sont parfois seulement d'autres polices qui sont compatibles
  (par exemple 
 \family sans
-Times Roman
+Times
+\begin_inset space ~
+\end_inset
+
+Roman
 \family default
  sélectionne 
 \family sans
-Helvetiva
+Helvetica
 \family default
- comme police sans empattement), mais parfois, comme par exemple avec 
-\family typewriter
-Latin Modern
-\family default
- ou 
-\family typewriter
-Computer Modern
-\family default
-, on a les différentes formes d'une même police, c'est-à-dire une véritable
- 
+ comme police sans empattement), ou on a les différentes formes d'une même
+ police, c'est-à-dire une véritable 
 \emph on
 famille
 \emph default
- de polices.
+ de polices (comme par exemple avec 
+\family sans
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
+\family default
+ ou 
+\family sans
+Computer
+\begin_inset space ~
+\end_inset
+
+Modern
+\family default
+).
 \end_layout
 
 \end_inset
@@ -13166,24 +13243,29 @@ reference "sub:Réglage-fin-avec"
 \end_inset
 
 La police 
-\family typewriter
-Times Roman
+\family sans
+Times
+\begin_inset space ~
+\end_inset
+
+Roman
 \family default
  a été crée à l'origine pour être utilisée pour les journaux.
  ce qui signifie que ses glyphes sont plus petits que ceux des autres polices
  pour pouvoir tenir plus facilement dans les petites colonnes des journaux.
  La police 
-\family typewriter
-Times Roman
+\family sans
+Times
+\begin_inset space ~
+\end_inset
+
+Roman
 \family default
  n'est donc pas le choix optimal pour les document importants comme les
  livres.
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
 Pour les tailles de police, il y a quatre possibilités: 
 \family sans
 défaut, 10
@@ -23221,7 +23303,8 @@ page
 Implicitement, chaque option a ses propres règles d'application:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family sans
 Haut
@@ -23240,9 +23323,17 @@ page
 \family default
  : seuls les flottants occupant moins de 70% de la page peuvent être placés
  en haut de page.
+ (
+\series bold
+
+\backslash
+topfraction
+\series default
+)
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family sans
 Bas
@@ -23261,9 +23352,17 @@ page
 \family default
  : seuls les flottants occupant moins de 30% de la page peuvent être placés
  en bas de page.
+ (
+\series bold
+
+\backslash
+bottomfraction
+\series default
+)
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family sans
 Page
@@ -23278,6 +23377,13 @@ flottants
 \family default
  : plusieurs flottants peuvent être placés ensembles sur une page seulement
  si ils occupent plus de 50% de celle-ci.
+ (
+\series bold
+
+\backslash
+floatpagefraction
+\series default
+)
 \end_layout
 
 \begin_layout Standard
@@ -23299,6 +23405,29 @@ règles
 LaTeX
 \family default
 .
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+You can also redefine the rules with LaTeX-commands that are given in parenthese
+s after the rules description above.
+ To increase for example the often too small default of the bottom-rule
+ to 50
+\begin_inset space \thinspace{}
+\end_inset
+
+% of the page, add this line to your document preamble:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+bottomfraction}{0.5}
 \end_layout
 
 \begin_layout Standard
@@ -31620,6 +31749,13 @@ Roman{page}
 
 \lang english
 Customized Page Headers and Footers
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Customized-Page-Headers"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -38063,15 +38199,23 @@ LyX
 \begin_inset space ~
 \end_inset
 
-1.y.x fichier LyX dans un format lisible par la version 1.y.x (
-\begin_inset Quotes eld
+z.y.x fichier LyX dans un format lisible par la version z.y.x (
+\begin_inset Quotes fld
+\end_inset
+
+z
+\begin_inset Quotes frd
+\end_inset
+
+ et 
+\begin_inset Quotes fld
 \end_inset
 
 y
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- est remplacé par un numéro de version)
+ sont remplacés par un numéro de version)
 \end_layout
 
 \begin_layout Description
@@ -38153,10 +38297,6 @@ ps2ascii
 Postscript format PostScript en utilisant le programme 
 \family typewriter
 dvips
-\end_layout
-
-\begin_layout Description
-Personnalisé format personnalisé
 \end_layout
 
 \begin_layout Standard
@@ -45788,47 +45928,6 @@ Vous pouvez laisser ce champ vide sous Windows puisqu'il n'a aucun effet
 \end_layout
 
 \begin_layout Description
-Adapter
-\begin_inset space ~
-\end_inset
-
-la
-\begin_inset space ~
-\end_inset
-
-sortie
-\begin_inset space ~
-\end_inset
-
-à
-\begin_inset space ~
-\end_inset
-
-l'imprimante Cette option n'est active qu'avec la 
-\family sans
-Commande d'impression
-\family default
-\series bold
- 
-\series default
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\family sans
-dvips
-\begin_inset Quotes erd
-\end_inset
-
-
-\family default
-.
- Elle active un fichier de configuration pour dvips.
- C'est une option à réserver aux experts de dvips.
-\end_layout
-
-\begin_layout Description
 Commande
 \begin_inset space ~
 \end_inset
@@ -45873,6 +45972,47 @@ l'imprimante C'est ici que vous pouvez préciser des options pour l'imprimante.
 Commande d'impression
 \family default
  que vous utilisez.
+\end_layout
+
+\begin_layout Description
+Adapter
+\begin_inset space ~
+\end_inset
+
+la
+\begin_inset space ~
+\end_inset
+
+sortie
+\begin_inset space ~
+\end_inset
+
+à
+\begin_inset space ~
+\end_inset
+
+l'imprimante Cette option n'est active qu'avec la 
+\family sans
+Commande d'impression
+\family default
+\series bold
+ 
+\series default
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+dvips
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+.
+ Elle active un fichier de configuration pour dvips.
+ C'est une option à réserver aux experts de dvips.
 \end_layout
 
 \begin_layout Subsection
