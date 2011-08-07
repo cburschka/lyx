@@ -5152,11 +5152,7 @@ reference "sec:Anidación"
 \end_layout
 
 \begin_layout Subsubsection
-Enumeración
-\family sans
-*
-\family default
-
+Enumeración*
 \begin_inset Index idx
 status collapsed
 
@@ -5475,12 +5471,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\begin_inset CommandInset label
-LatexCommand label
-name "np:N.del-t.:-item-1"
-
-\end_inset
-
 N.
 \begin_inset space \thinspace{}
 \end_inset
@@ -18239,12 +18229,12 @@ del diálogo de gráficos.
 \begin_layout Section
 Cuadros y tablas
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tablas|see 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -18255,7 +18245,7 @@ status open
 
 Cuadros
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -18271,7 +18261,7 @@ status open
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Cuadros
@@ -21163,7 +21153,7 @@ Fin
 \begin_layout Subsection
 Celdas de cuadros
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Cuadros ! Celdas
@@ -21447,7 +21437,7 @@ Cortar y pegar entre cuadros y celdas de cuadros funciona razonablemente
  bien.
  Puedes cortar y pegar más de una fila.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 No se puede pegar en una selección multicelda porque no estaría claro cómo
@@ -21488,6 +21478,10 @@ name "sec:Flotantes"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Introducción
 \end_layout
 
 \begin_layout Standard
@@ -21550,16 +21544,7 @@ Insertar\SpecialChar \menuseparator
 Flotante
 \family default
 .
- En el documento aparece un cuadro con una etiqueta, p.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
- «Figura
-\begin_inset space ~
-\end_inset
-
-#» (# es el número de orden).
+ En el documento aparece un cuadro con una etiqueta.
  La etiqueta será traducida automáticamente al idioma del documento.
  A continuación de la etiqueta se puede escribir el texto de la leyenda.
 \begin_inset Index idx
@@ -21593,7 +21578,7 @@ Se recomienda insertar flotantes como párrafos separados para evitar posibles
 \end_layout
 
 \begin_layout Subsection
-Tipos de flotantes
+Ejemplos
 \end_layout
 
 \begin_layout Subsubsection
@@ -21618,39 +21603,7 @@ name "sec:Figuras-flotantes"
 \end_layout
 
 \begin_layout Standard
-El menú 
-\family sans
-Insertar\SpecialChar \menuseparator
-Flotante\SpecialChar \menuseparator
 Figura
-\family default
- inserta un flotante con la etiqueta «
-\series bold
-Figura
-\begin_inset space ~
-\end_inset
-
-#:
-\series default
-».
- Para imprimir la leyenda bajo la imagen, pon el cursor delante de esa etiqueta,
- pulsa 
-\family sans
-Entrar
-\family default
- e inserta la imagen como se describió antes (sección
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Gráficos"
-
-\end_inset
-
-).
- Así se ha hecho en la Figura
 \begin_inset space ~
 \end_inset
 
@@ -21661,22 +21614,69 @@ reference "cap:Ornitorrinco"
 
 \end_inset
 
-.
- Si quieres la leyenda sobre la imagen, pon el cursor detrás de la etiqueta,
- pulsa 
+ 
+\lang english
+was created
+\lang spanish
+ using el menú 
 \family sans
-Entrar
+Insertar\SpecialChar \menuseparator
+Flotante\SpecialChar \menuseparator
+Figura 
 \family default
- e inserta la imagen.
- Así se ha hecho en la Figura
+\lang english
+or the toolbar button
+\lang spanish
+ 
+\begin_inset Info
+type  "icon"
+arg   "float-insert figure"
+\end_inset
+
+.
+ 
+\lang english
+The image was inserted by setting the cursor above the caption label and
+ using the
+\lang spanish
+ menú 
+\family sans
+Insertar\SpecialChar \menuseparator
+
+\lang english
+Graphics
+\family default
+ or the toolbar button
+\lang spanish
+ 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
+\end_inset
+
+.
+ 
+\lang english
+The image in the float was horizontally centered by putting the cursor in
+ front of or behind the image and using the 
+\lang spanish
+menú
+\lang english
+ 
+\family sans
+Edit\SpecialChar \menuseparator
+Paragraph
 \begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cap:Escher"
-
+Settings
+\family default
+ or the toolbar button
+\lang spanish
+ 
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
 \end_inset
 
 .
@@ -21686,12 +21686,13 @@ reference "cap:Escher"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename ../clipart/platypus.eps
+	lyxscale 50
 	width 50col%
 	rotateOrigin center
 
@@ -21724,48 +21725,6 @@ Un ornitorrinco muy distorsionado en un flotante.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "cap:Escher"
-
-\end_inset
-
-M.C.
- Escher sobre ácido.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ../clipart/escher-lsd.eps
-	scale 80
-	rotateOrigin center
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Estas figuras flotantes también muestran cómo poner una etiqueta y crear
  una referencia a ella.
  Como se describe en la sección
@@ -21784,7 +21743,21 @@ reference "sec:Referencias-cruzadas"
 Insertar\SpecialChar \menuseparator
 Etiqueta
 \family default
- y luego poner una referencia a ella con 
+ 
+\lang english
+o the toolbar button
+\lang spanish
+ 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
+\end_inset
+
+ 
+\lang english
+and refer to it using the 
+\lang spanish
+menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Referencia
@@ -21793,6 +21766,15 @@ Referencia
 
 cruzada
 \family default
+\lang english
+ o the toolbar button
+\lang spanish
+ 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
+\end_inset
+
 .
  Es importante usar referencias a figuras flotantes, mejor que hacer vagas
  alusiones como «la figura de arriba», debido a que LaTeX recolocará los
@@ -21890,7 +21872,7 @@ Estructura indefinible
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -21953,33 +21935,6 @@ Dos imágenes distorsionadas.
 
 \end_layout
 
-\begin_layout Standard
-Observa que las leyendas se añaden al 
-\family sans
-Índice
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-figuras,
-\family default
- como se explica en la sección
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Índices-de"
-
-\end_inset
-
-.
-\end_layout
-
 \begin_layout Subsubsection
 Cuadros flotantes
 \begin_inset Index idx
@@ -22001,6 +21956,16 @@ Insertar\SpecialChar \menuseparator
 Flotante\SpecialChar \menuseparator
 Cuadro
 \family default
+ 
+\lang english
+o the toolbar botton
+\lang spanish
+ 
+\begin_inset Info
+type  "icon"
+arg   "float-insert table"
+\end_inset
+
 .
  Tienen las mismas propiedades que las figuras flotantes, excepto la etiqueta
  diferente.
@@ -22011,11 +21976,11 @@ Cuadro
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Un cuadro flotante"
+reference "tab:Un cuadro flotante"
 
 \end_inset
 
- es un ejemplo de cuadro flotante.
+ es un cuadro flotante.
 \end_layout
 
 \begin_layout Standard
@@ -22030,7 +21995,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:Un cuadro flotante"
+name "tab:Un cuadro flotante"
 
 \end_inset
 
@@ -22246,824 +22211,49 @@ c & d
 
 \end_layout
 
-\begin_layout Subsubsection
-Algoritmos flotantes
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Flotantes ! Algoritmos
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Este tipo de flotante se inserta con el menú 
-\family sans
-Insertar\SpecialChar \menuseparator
-Flotante\SpecialChar \menuseparator
-Algoritmo
-\family default
-.
- Se usa para códigos y descripciones de algoritmos.
- Un posible entorno para algoritmos es 
-\family sans
-Código-LyX
-\family default
-, descrito en sección
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Código-LyX"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-Nota: 
-\series default
-La etiqueta no se traduce automáticamente al idioma del documento.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
-Para traducir la etiqueta de un algoritmo flotante hay que añadir la siguiente
- línea
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-floatname{algorithm}{nombre}
-\end_layout
-
-\begin_layout Standard
-al preámbulo del documento (menú 
-\family sans
-Documento\SpecialChar \menuseparator
-Configuración
-\family default
-).
- 
-\series bold
-nombre
-\series default
- es la palabra «
-\emph on
-algoritmo
-\emph default
-» en el idioma deseado.
-\end_layout
-
-\begin_layout Subsubsection
-Flotantes envueltos
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Flotantes ! Envueltos
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Wrap figure
-lines 0
-placement l
-overhang 0col%
-width "40col%"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../clipart/mobius.eps
-	width 40col%
-	rotateOrigin center
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Figura-envuelta"
-
-\end_inset
-
-Una figura envuelta en el texto.
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-Este tipo de flotante sirve para «envolver» una figura o un cuadro con texto
- de modo que ambos ocupen sólo una parte del ancho de columna.
- Puede insertarse con el menú 
-\family sans
-Insertar\SpecialChar \menuseparator
-Flotante\SpecialChar \menuseparator
-Figura
-\family default
- o 
-\family sans
-Cuadro
-\family default
- si está instalado el paquete LaTeX 
-\series bold
-wrapfig
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX, paquetes ! wrapfig
-\end_layout
-
-\end_inset
-
-.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-La instalación de paquetes LaTeX se explica en el manual 
-\emph on
-Configuración de LaTeX
-\emph default
-.
-\end_layout
-
-\end_inset
-
- La anchura y la posición del flotante se ajustan en el diálogo de configuración
- al que se accede haciendo clic derecho sobre el cuadro del flotante.
- La figura
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Figura-envuelta"
-
-\end_inset
-
- es un ejemplo de figura flotante adosada al texto con una anchura del 40
-\begin_inset space \thinspace{}
-\end_inset
-
-% de la columna.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Véanse las unidades disponibles en el apéndice
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cap:Unidades-disponibles"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- Se ha añadido un espacio bajo el título para separarlo mejor del texto
- circundante.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-Nota:
-\series default
- ¡Los envoltorios flotantes son frágiles! P.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
- si una figura está muy cerca de la parte inferior de la página puede haber
- errores en la salida, como que no aparezca el flotante o se coloque junto
- a un texto distinto.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-En general:
-\end_layout
-
-\begin_layout Itemize
-Los flotantes envueltos no deberían situarse en párrafos que van sobre un
- salto de página.
- Esto implica que lo mejor es insertarlos en el sitio exacto cuando el documento
- esté casi listo y puedas prever los saltos de página.
-\end_layout
-
-\begin_layout Itemize
-Los flotantes envueltos deberían situarse, bien en un párrafo propio antes
- del párrafo al que deben adosarse, o bien dentro de un párrafo.
-\end_layout
-
-\begin_layout Itemize
-Los flotantes envueltos en párrafos consecutivos pueden dar problemas, así
- que procura que haya un párrafo de texto entre ellos.
-\end_layout
-
-\begin_layout Itemize
-Los flotantes envueltos no están permitidos en encabezados de sección o
- cuadros.
-\end_layout
-
 \begin_layout Subsection
-Rotación de flotantes
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Rotación-de-flotantes"
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Flotantes ! Rotación
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Podrías necesitar girar flotantes, especialmente con cuadros grandes.
- Para girar todo el flotante con su leyenda, haz clic derecho en el cuadro
- y marca la opción 
-\family sans
-Girar
-\begin_inset space ~
-\end_inset
-
-hacia
-\begin_inset space ~
-\end_inset
-
-un
-\begin_inset space ~
-\end_inset
-
-lado
-\family default
- en el diálogo de configuración.
-\end_layout
-
-\begin_layout Standard
-Los flotantes girados son puestos siempre en su propia página (o columna
- si el documento es de dos columnas).
- Puedes permitir que se extiendan a varias columnas con la opción 
-\family sans
-Extender columnas
-\family default
- de la configuración de flotantes.
- Normalmente se rotan de forma que puedes leerlos desde el margen externo.
- En el manual 
-\emph on
-Objetos insertados
-\emph default
- se explica cómo forzar el sentido de rotación.
-\end_layout
-
-\begin_layout Standard
-Las referencias a flotantes girados se hacen como los flotantes normales,
- el formato de la leyenda también es igual.
- El cuadro
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cap:Cuadro-girado"
-
-\end_inset
-
- es un ejemplo de cuadro flotante girado.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-Nota:
-\series default
- No todos los visores DVI son capaces de mostrar las rotaciones.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways true
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "cap:Cuadro-girado"
-
-\end_inset
-
-Cuadro girado.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\begin_inset Tabular
-<lyxtabular version="3" rows="1" columns="5">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-test
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-b
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-c
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-d
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-e
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Colocación de flotantes
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Colocación-de-flotantes"
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Flotantes ! Colocación
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Un clic derecho sobre un recuadro de flotante permite abrir un diálogo en
- el que pueden cambiarse las opciones LaTeX para situar los flotantes.
-\begin_inset Newline newline
-\end_inset
-
-La opción 
-\family sans
-Extender
-\begin_inset space ~
-\end_inset
-
-columnas
-\family default
- sólo es aplicable a documentos de dos columnas: Si lo seleccionas, el flotante
- abarcará ambas columnas en lugar de una sola.
-\begin_inset Newline newline
-\end_inset
-
-La opción 
-\family sans
-Girar
-\begin_inset space ~
-\end_inset
-
-hacia
-\begin_inset space ~
-\end_inset
-
-un
-\begin_inset space ~
-\end_inset
-
-lado
-\family default
- sirve para girar flotantes, véase la sección
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Rotación-de-flotantes"
-
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-Puedes usar una o más de las siguientes opciones en el diálogo para establecer
- la posición de un flotante si desmarcas la opción 
-\family sans
-Usar
-\begin_inset space ~
-\end_inset
-
-ubicación
-\begin_inset space ~
-\end_inset
-
-predeterminada
-\family default
-:
-\end_layout
-
-\begin_layout Description
-Aquí
-\begin_inset space ~
-\end_inset
-
-si
-\begin_inset space ~
-\end_inset
-
-es
-\begin_inset space ~
-\end_inset
-
-posible: intenta situar el flotante en la posición en la que se inserta
-\end_layout
-
-\begin_layout Description
-Principio
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-página: intenta situar el flotante al principio de la página actual
-\end_layout
-
-\begin_layout Description
-Fin
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-página: intenta situar el flotante al final de la página actual
-\end_layout
-
-\begin_layout Description
-Página
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-flotantes: intenta situar el flotante en una página propia 
-\end_layout
-
-\begin_layout Standard
-LaTeX usa 
-\emph on
-siempre
-\emph default
- ese orden de opciones.
- Significa que si usas la colocación predeterminada, LaTeX probará en primer
- lugar 
-\family sans
-Aquí
-\begin_inset space ~
-\end_inset
-
-si
-\begin_inset space ~
-\end_inset
-
-es
-\begin_inset space ~
-\end_inset
-
-posible
-\family default
-, luego 
-\family sans
-Principio
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-página
-\family default
-, y después las otras.
- Si no usas la predeterminada, LaTeX sólo probará las opciones marcadas
- pero en dicho orden.
- Si no es posible ninguna de las 4 ubicaciones el proceso se repite internamente
- pero intenta poner el flotante en la página siguiente.
-\end_layout
-
-\begin_layout Standard
-De forma predeterminada cada una de las opciones tiene sus propias reglas:
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-Principio
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-página:
-\family default
- sólo si el flotante ocupa menos del 70
-\begin_inset space \thinspace{}
-\end_inset
-
-% de la página puede ubicarse al principio de página.
- (
-\series bold
-
-\backslash
-topfraction
-\series default
-)
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-Fin
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-página:
-\family default
- sólo si el flotante ocupa menos del 30
-\begin_inset space \thinspace{}
-\end_inset
-
-% de la página puede ubicarse al fin de página.
- (
-\series bold
-
-\backslash
-bottomfraction
-\series default
-)
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-Página
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-flotantes:
-\family default
- sólo si más del 50
-\begin_inset space \thinspace{}
-\end_inset
-
-% de la página se ocupa por flotantes puede haber varios juntos en la misma
- página.
- (
-\series bold
-
-\backslash
-floatpagefraction
-\series default
-)
-\end_layout
-
-\begin_layout Standard
-Si no te agradan estas reglas puedes ignorarlas marcando la opción adicional
- 
-\family sans
-Ignorar
-\begin_inset space ~
-\end_inset
-
-reglas
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-LaTeX
-\family default
-.
-\begin_inset Newline newline
-\end_inset
-
 
 \lang english
-You can also redefine the rules with LaTeX-commands that are given in parenthese
-s after the rules description above.
- To increase for example the often too small default of the bottom-rule
- to 50
-\begin_inset space \thinspace{}
+More Information
+\lang spanish
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Flotantes ! 
+\lang english
+More Information
+\end_layout
+
 \end_inset
 
-% of the page, add this line to your document preamble:
+
 \end_layout
 
 \begin_layout Standard
 
-\series bold
-
-\backslash
-renewcommand{
-\backslash
-bottomfraction}{0.5}
-\end_layout
-
-\begin_layout Standard
-En determinados casos podrías necesitar ubicar un flotante exactamente en
- la posición en la que se inserta.
- Para esto puedes usar la opción 
-\family sans
-Aquí
+\lang english
+LyX offers you further float types as well as rotated floats.
+ It also allows you to change the float numbering scheme, to control the
+ float placement and to change the formatting and placement of the float
+ caption.
+ All these features are explained in detail with many examples in chapter
+ 
+\emph on
+\lang spanish
+Flotantes
+\emph default
+\lang english
+ of the the 
+\emph on
+Embedded
 \begin_inset space ~
 \end_inset
 
-definitivamente
-\family default
-.
- Usa esta opción esporádicamente y sólo cuando el documento esté casi listo,
- porque el flotante ya no podrá «flotar» y si haces cambios al documento
- se podría estropear el diseño de la página.
-\end_layout
-
-\begin_layout Standard
-No hay opciones de ubicación para flotantes envueltos en texto porque siempre
- están rodeados por texto de un párrafo determinado.
-\end_layout
-
-\begin_layout Standard
-Más detalles sobre colocación de flotantes en libros sobre LaTeX, como 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "latexcompanion,latexguide,latexbook"
-
-\end_inset
-
-.
+Objects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Section
@@ -27414,13 +26604,6 @@ reference "sub:Profundidad-de-numeración"
 
 \begin_layout Subsection
 Índices de figuras, cuadros y algoritmos
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Índices-de"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -28063,7 +27246,7 @@ Hay información sobre el modo de hacerlo en
 
 \begin_inset CommandInset href
 LatexCommand href
-target "http://www.ctan.org/get/biblio/bibtex/contrib/doc/btxhak.pdf"
+target "http://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxhak.pdf"
 
 \end_inset
 
@@ -43886,7 +43069,11 @@ Si quieres usar uno de los siguientes controladores
 \begin_inset Newline newline
 \end_inset
 
+
+\family sans
 dvi2ps, dvialw, dvilaser, dvitops, psprint, pubps, ln
+\family default
+
 \begin_inset Newline newline
 \end_inset
 
@@ -43897,7 +43084,7 @@ primero tienes que activarlos en tu distribución LaTeX, véase sec.
 2 en 
 \begin_inset CommandInset href
 LatexCommand href
-target "http://tug.ctan.org/get/macros/latex/required/graphics/grfguide.pdf"
+target "http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf"
 
 \end_inset
 
@@ -45070,18 +44257,25 @@ Posición de flotantes
 \end_layout
 
 \begin_layout Standard
-La ubicación de los flotantes se explica en la sección
+
+\lang english
+The float placement options are described in section 
+\emph on
+Float
 \begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Colocación-de-flotantes"
-
+Placement
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
 \end_inset
 
-.
+Objects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Section

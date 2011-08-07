@@ -2355,7 +2355,7 @@ Preferences
 \family default
  under 
 \family sans
-Editing\SpecialChar \menuseparator
+Edit\SpecialChar \menuseparator
 Shortcuts
 \family default
  as explained in sec.
@@ -7767,7 +7767,11 @@ Program Code Listings
 \emph default
  of the 
 \emph on
-Embedded Objects
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
 \emph default
  manual.
 \end_layout
@@ -14508,7 +14512,7 @@ Encapsulated PostScript
 \end_inset
 
 images in your document, LyX has to do 50
-\begin_inset space \thinspace{}
+\begin_inset space ~
 \end_inset
 
 conversions whenever you view or export your document.
@@ -15622,7 +15626,11 @@ Prevent Hyphenation
 
  of the 
 \emph on
-EmbeddedObjects
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
 \emph default
  manual.
 \end_layout
@@ -16782,7 +16790,11 @@ name "cha:Floats-and-Notes"
 \begin_layout Standard
 The issues of this chapter are described in detail in the 
 \emph on
-Embedded Objects
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
 \emph default
  manual.
  There you'll also find tips and tricks for special cases.
@@ -16887,7 +16899,11 @@ This is an example footnote within a greyed out note.
  In this document the greyed out note color is redefined to blue.
  How this can be done is explained in the 
 \emph on
-Embedded Objects
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
 \emph default
  manual.
 \end_layout
@@ -17075,7 +17091,11 @@ h
 \family default
 ey are described in the 
 \emph on
-Embedded Objects
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
 \emph default
  manual.
 \end_layout
@@ -17326,7 +17346,11 @@ export
 \family default
  is explained in the 
 \emph on
-Embedded Objects
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
 \emph default
  manual in section 
 \emph on
@@ -17363,7 +17387,7 @@ If you need image captions and want to reference images, you have to put
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Figure-Floats"
+reference "sub:Figure-Floats"
 
 \end_inset
 
@@ -17855,7 +17879,7 @@ Table
  This separation appears due to a double line: The cells of the first row
  have a line below them and the cells of the second row have a line above
  them.
- Here's an example table:
+ Here is an example table:
 \end_layout
 
 \begin_layout Standard
@@ -20977,6 +21001,10 @@ name "sec:Floats"
 
 \end_layout
 
+\begin_layout Subsection
+Introduction
+\end_layout
+
 \begin_layout Standard
 A float is a block of text associated with some sort of label, which doesn't
  have a fixed location.
@@ -21033,27 +21061,7 @@ Insert\SpecialChar \menuseparator
 Floats
 \family default
 .
- A box with a caption that has e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-the label 
-\begin_inset Quotes eld
-\end_inset
-
-Figure
-\begin_inset space ~
-\end_inset
-
-#:
-\begin_inset Quotes erd
-\end_inset
-
- (# is the actual number) will be inserted into your document.
+ A box with a caption will be inserted into your document.
  The label will automatically be translated to the document language in
  the output.
  After the label you can insert the caption text.
@@ -21086,11 +21094,18 @@ It is recommended to insert floats as a separate paragraph to avoid possible
 \end_layout
 
 \begin_layout Subsection
-Float Types
+Examples
 \end_layout
 
 \begin_layout Subsubsection
 Figure Floats
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Figure-Floats"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -21101,42 +21116,10 @@ Floats ! Figure floats
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Figure-Floats"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-The menu 
-\family sans
-Insert\SpecialChar \menuseparator
-Float\SpecialChar \menuseparator
 Figure
-\family default
- inserts a float with the label 
-\begin_inset Quotes eld
-\end_inset
-
-
-\series bold
-Figure
-\begin_inset space ~
-\end_inset
-
-#:
-\series default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
- Set the cursor above this label (or before it and press enter) and insert
- the image as described above to get the caption printed below the image.
- This is what we did for Figure
 \begin_inset space ~
 \end_inset
 
@@ -21147,18 +21130,46 @@ reference "cap:Platypus"
 
 \end_inset
 
+ was created using the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Float\SpecialChar \menuseparator
+Figure
+\family default
+ or the toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "float-insert figure"
+\end_inset
+
 .
- If you want the caption to be above the image, set the cursor at the end
- of the caption, press enter and insert the image.
- This was done in Figure
+ The image was inserted by setting the cursor above the caption label and
+ using the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Graphics
+\family default
+ or the toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
+\end_inset
+
+.
+ The image in the float was horizontally centered by putting the cursor
+ in front of or behind the image and using the menu 
+\family sans
+Edit\SpecialChar \menuseparator
+Paragraph
 \begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cap:Escher"
-
+Settings
+\family default
+ or the toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
 \end_inset
 
 .
@@ -21174,6 +21185,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename clipart/platypus.eps
+	lyxscale 50
 	width 50col%
 
 \end_inset
@@ -21205,47 +21217,6 @@ A severely distorted platypus in a float.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "cap:Escher"
-
-\end_inset
-
-M.C.
- Escher on acid.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename clipart/escher-lsd.eps
-	scale 80
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 This figure float also shows how to set a label and create a cross-reference
  to it.
  As described in section
@@ -21264,11 +21235,23 @@ reference "sec:Cross-References"
 Insert\SpecialChar \menuseparator
 Label
 \family default
+ or the toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
+\end_inset
+
  and refer to it using the menu 
 \family sans
 Insert\SpecialChar \menuseparator
 Cross-Reference
 \family default
+ or the toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
+\end_inset
+
 .
  It is important to use references to figure floats, rather than using vague
  references like 
@@ -21295,7 +21278,19 @@ above
 Normally only one image is inserted in a figure float, but sometimes you
  might want to use two images with separate subcaptions.
  This can be done by inserting image floats into existing image floats.
- Note that only the main caption of the float is added to the List of Figures.
+ Note that only the main caption of the float is added to the List of Figures
+ as described in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:List-of-Figures"
+
+\end_inset
+
+.
  Figure
 \begin_inset space ~
 \end_inset
@@ -21344,7 +21339,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -21384,7 +21379,7 @@ Undefinable
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -21447,33 +21442,6 @@ Two distorted images.
 
 \end_layout
 
-\begin_layout Standard
-Note that the caption is added to the 
-\family sans
-List
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-Figures
-\family default
- as described in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:List-of-Figures"
-
-\end_inset
-
-.
-\end_layout
-
 \begin_layout Subsubsection
 Table Floats
 \begin_inset Index idx
@@ -21495,6 +21463,12 @@ Insert\SpecialChar \menuseparator
 Float\SpecialChar \menuseparator
 Table
 \family default
+ or the toolbar botton 
+\begin_inset Info
+type  "icon"
+arg   "float-insert table"
+\end_inset
+
 .
  They have the same properties as figure floats except for the different
  label.
@@ -21509,7 +21483,7 @@ reference "cap:Table-float"
 
 \end_inset
 
- is an example of a table float.
+ is a table float.
 \end_layout
 
 \begin_layout Standard
@@ -21736,13 +21710,13 @@ c & d
 
 \end_layout
 
-\begin_layout Subsubsection
-Algorithm Floats
+\begin_layout Subsection
+More Information
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Floats ! Algorithm floats
+Floats ! Details
 \end_layout
 
 \end_inset
@@ -21751,803 +21725,24 @@ Floats ! Algorithm floats
 \end_layout
 
 \begin_layout Standard
-This float type is inserted with the menu 
-\family sans
-Insert\SpecialChar \menuseparator
-Float\SpecialChar \menuseparator
-Algorithm
-\family default
-.
- It is used for program codes and descriptions of algorithms.
- A possible environment for algorithms is the 
-\family sans
-LyX-Code
-\family default
-, described in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:LyX-Code"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- that the float label is not automatically translated into the document
- language.
-\end_layout
-
-\end_inset
-
- You have to do this manually by adding the following line
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-floatname{algorithm}{your
-\begin_inset space ~
-\end_inset
-
-name}
-\end_layout
-
-\begin_layout Standard
-to the document preamble (menu 
-\family sans
-Document\SpecialChar \menuseparator
-Settings
-\family default
-).
+LyX offers you further float types as well as rotated floats.
+ It also allows you to change the float numbering scheme, to control the
+ float placement and to change the formatting and placement of the float
+ caption.
+ All these features are explained in detail with many examples in chapter
  
-\series bold
-your
-\begin_inset space ~
-\end_inset
-
-name
-\series default
- is the word 
-\begin_inset Quotes eld
-\end_inset
-
-
 \emph on
-algorithm
+Floats
 \emph default
-
-\begin_inset Quotes erd
-\end_inset
-
- in your language.
-\end_layout
-
-\begin_layout Subsubsection
-Wrap Floats
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Floats ! Text Wrap Floats
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Wrap figure
-lines 0
-placement l
-overhang 0in
-width "40col%"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename clipart/mobius.eps
-	width 40col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Wrapped-figure"
-
-\end_inset
-
-This is a wrapped figure.
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-This float type is used if you want to 
-\begin_inset Quotes eld
-\end_inset
-
-wrap
-\begin_inset Quotes erd
-\end_inset
-
- text around a figure so that it only occupies some fraction of the column
- width.
- It can be inserted using the menu 
-\family sans
-Insert\SpecialChar \menuseparator
-Float\SpecialChar \menuseparator
-Wrap
-\begin_inset space ~
-\end_inset
-
-Float
-\family default
- if the LaTeX-package 
-\series bold
-wrapfig
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-packages ! wrapfig
-\end_layout
-
-\end_inset
-
- is installed.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Installing a LaTeX-package is explained it in the 
+ of the the 
 \emph on
-LaTeX
+Embedded
 \begin_inset space ~
 \end_inset
 
-Configuration
+Objects
 \emph default
  manual.
-\end_layout
-
-\end_inset
-
- The width and placement of the float is adjusted by right-clicking on the
- float box.
- Figure
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Wrapped-figure"
-
-\end_inset
-
- is for example a figure wrap float with a width of 40
-\begin_inset space \thinspace{}
-\end_inset
-
-col%.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Available units are explained in Appendix
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cha:Units-available-in"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- Some space was added under the caption to separate it better from the surroundi
-ng text.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- Wrap floats might be fragile! E.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-having a figure too close to the bottom of the page can mess things up so
- that the float doesn't appear in the output or that it is placed over some
- other text.
-\end_layout
-
-\end_inset
-
- In general:
-\end_layout
-
-\begin_layout Itemize
-Wrap floats should not be placed in paragraphs that run over a page break.
- That means that wrap floats should preferably be inserted in the exact
- place when the document is nearly ready and you are able to estimate where
- page breaks will appear.
-\end_layout
-
-\begin_layout Itemize
-Wrap floats should either be placed in their own paragraph before the paragraph
- where they should wrap into, or within a paragraph.
-\end_layout
-
-\begin_layout Itemize
-Wrap floats in consecutive paragraphs may cause trouble, so make sure that
- there is a text paragraph between them as separator.
-\end_layout
-
-\begin_layout Itemize
-Wrap floats are not allowed in section headings or tables.
-\end_layout
-
-\begin_layout Subsection
-Rotated Floats
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Rotated-Floats"
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Floats ! Rotating
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Especially for wide tables you might have floats rotated.
- To rotate a whole float including the caption, right-click on the float-box
- and use the option 
-\family sans
-Rotate
-\begin_inset space ~
-\end_inset
-
-sideways
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-Rotated floats are always placed on their own pages (or columns, when you
- have a multicolumn document).
- You can let them span several columns using the float settings option 
-\family sans
-Span
-\begin_inset space ~
-\end_inset
-
-columns
-\family default
-.
- Floats are rotated so that you can read them from the outside margin.
- Forcing the rotation direction is explained in the 
-\emph on
-Embedded Objects
-\emph default
- manual.
-\end_layout
-
-\begin_layout Standard
-Referencing rotated floats is the same like for normal floats; the caption
- format is also the same: Table
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Rotated-table"
-
-\end_inset
-
- is an example of a rotated table float.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- Not all DVI-viewers are able to display rotated floats.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways true
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:Rotated-table"
-
-\end_inset
-
- Rotated table
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="1" columns="5">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-test
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-b
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-c
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-d
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-e
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Float Placement
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Float-Placement"
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Floats ! Placement
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Right-clicking on a float-box opens a dialog where you can alter the placement
- options that LaTeX uses for positioning the float.
-\begin_inset Newline newline
-\end_inset
-
-The option 
-\family sans
-Span
-\begin_inset space ~
-\end_inset
-
-columns
-\family default
- is only useful for two-column documents: If you select it, the float will
- span both columns on the page instead of being confined to just one.
-\begin_inset Newline newline
-\end_inset
-
-The option 
-\family sans
-Rotate
-\begin_inset space ~
-\end_inset
-
-sideways
-\family default
- is used to rotate floats, see section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Rotated-Floats"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-You can use one ore more of the following options in the float dialog to
- set the placement for a particular float when you uncheck the option 
-\family sans
-Use
-\begin_inset space ~
-\end_inset
-
-default
-\begin_inset space ~
-\end_inset
-
-placement
-\family default
-:
-\end_layout
-
-\begin_layout Description
-Here
-\begin_inset space ~
-\end_inset
-
-if
-\begin_inset space ~
-\end_inset
-
-possible: try to place the float at the position where it is inserted
-\end_layout
-
-\begin_layout Description
-Top
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-page: try to place the float at the top of the current page
-\end_layout
-
-\begin_layout Description
-Bottom
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-page: try to place the float at the bottom of the current page
-\end_layout
-
-\begin_layout Description
-Page
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-floats: try to place the float at an own page 
-\end_layout
-
-\begin_layout Standard
-The order of the above option is 
-\emph on
-always
-\emph default
- used by LaTeX.
- That means, if you use the default placement, LaTeX will first try out
- 
-\family sans
-Here
-\begin_inset space ~
-\end_inset
-
-if
-\begin_inset space ~
-\end_inset
-
-possible
-\family default
-, then 
-\family sans
-Top
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-page
-\family default
-, and then the others.
- If you don't use the default, LaTeX will try only the checked options but
- in the same order.
- If none of the 4 placements are possible the procedure is internally repeated
- but it is tried to put the float on the following page.
-\end_layout
-
-\begin_layout Standard
-By default, each option has its own rules:
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-Top
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-page
-\family default
- only floats occupying less than 70
-\begin_inset space \thinspace{}
-\end_inset
-
-% of the page can be placed at the top of a page.
- (
-\series bold
-
-\backslash
-topfraction
-\series default
-)
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-Bottom
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-page
-\family default
-: only floats occupying less than 30
-\begin_inset space \thinspace{}
-\end_inset
-
-% of the page can be placed at the bottom of a page.
- (
-\series bold
-
-\backslash
-bottomfraction
-\series default
-)
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-Page
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-floats
-\family default
-: only if more than 50
-\begin_inset space \thinspace{}
-\end_inset
-
-% of the page are occupied by floats, several floats can be set together
- on a page.
- (
-\series bold
-
-\backslash
-floatpagefraction
-\series default
-)
-\end_layout
-
-\begin_layout Standard
-If you don't like these rules, you can ignore them by using the additional
- option 
-\family sans
-Ignore
-\begin_inset space ~
-\end_inset
-
-LaTeX
-\begin_inset space ~
-\end_inset
-
-rules
-\family default
-.
-\begin_inset Newline newline
-\end_inset
-
-You can also redefine the rules with LaTeX-commands that are given in parenthese
-s after the rules description above.
- To increase for example the often too small default of the bottom-rule
- to 50
-\begin_inset space \thinspace{}
-\end_inset
-
-% of the page, add this line to your document preamble:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-renewcommand{
-\backslash
-bottomfraction}{0.5}
-\end_layout
-
-\begin_layout Standard
-Sometimes you might need, under all circumstances, a float to be placed
- exactly at the position where it is inserted.
- For this case you can use the option 
-\family sans
-Here
-\begin_inset space ~
-\end_inset
-
-definitely
-\family default
-.
- Use this option very rarely and only if the document is nearly ready to
- be printed.
- Because the float is then no longer able to 
-\begin_inset Quotes eld
-\end_inset
-
-float
-\begin_inset Quotes erd
-\end_inset
-
- when you change your document, this will often destroy the page layout.
-\end_layout
-
-\begin_layout Standard
-There are no placement options for text wrap floats, because they are always
- surrounded by the text of a certain paragraph.
-\end_layout
-
-\begin_layout Standard
-For more details about float placements, have a look at LaTeX books like
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "latexcompanion,latexguide,latexbook"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Section
@@ -22718,7 +21913,11 @@ Boxes
 \emph default
  of the 
 \emph on
-Embedded Objects
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
 \emph default
  manual.
 \end_layout
@@ -26547,7 +25746,11 @@ Referencing Floats
 
  of the 
 \emph on
-Embedded Objects
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
 \emph default
  manual.
 \end_layout
@@ -27186,8 +26389,8 @@ Bibliography databases are useful if you use the same bibliography in different
 status collapsed
 
 \begin_layout Plain Layout
-They are also useful simply for keeping a database of articles and notes
- concerning them.
+They are also useful for keeping a database of articles and notes concerning
+ them.
  Most of the database programs mentioned below allow you to store annotations
  and reviews along with bibliographical information.
 \end_layout
@@ -27322,7 +26525,7 @@ For information how this is done, have a look at
 
 \begin_inset CommandInset href
 LatexCommand href
-target "http://www.ctan.org/get/biblio/bibtex/contrib/doc/btxhak.pdf"
+target "http://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxhak.pdf"
 
 \end_inset
 
@@ -39110,7 +38313,11 @@ Child Documents
 \emph default
  in the 
 \emph on
-Embedded Objects
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
 \emph default
  manual for more information on this topic).
  This item allows you to view the master document from within its child.
@@ -39173,7 +38380,11 @@ Child Documents
 \emph default
  in the 
 \emph on
-Embedded Objects
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
 \emph default
  manual for more information on this topic).
  This item allows you to update the view of a master document from within
@@ -40083,7 +39294,11 @@ External Stuff
 \emph default
  of the 
 \emph on
-Embedded Objects
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
 \emph default
  manual.
 \end_layout
@@ -40121,7 +39336,11 @@ Boxes
 \emph default
  of the 
 \emph on
-Embedded Objects
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
 \emph default
  manual.
 \end_layout
@@ -40226,7 +39445,11 @@ Longtable Captions
 \emph default
  of the 
 \emph on
-Embedded Objects
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
 \emph default
  manual.
 \end_layout
@@ -40445,7 +39668,11 @@ Program Code Listings
 \emph default
  of the 
 \emph on
-Embedded Objects
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
 \emph default
  manual.
 \end_layout
@@ -40465,7 +39692,11 @@ External Material
 \emph default
  of the 
 \emph on
-Embedded Objects
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
 \emph default
  manual.
 \end_layout
@@ -42934,7 +42165,11 @@ Toolbar ! Table
 
  in the 
 \emph on
-Embedded Objects
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
 \emph default
  manual, the math macro toolbar
 \begin_inset Index idx
@@ -43039,11 +42274,15 @@ Default
 status collapsed
 
 \begin_layout Plain Layout
-When you want one of the following drivers
+When you want to use one of the following drivers
 \begin_inset Newline newline
 \end_inset
 
+
+\family sans
 dvi2ps, dvialw, dvilaser, dvitops, psprint, pubps, ln
+\family default
+
 \begin_inset Newline newline
 \end_inset
 
@@ -43054,7 +42293,7 @@ you first have to activate them in your LaTeX distribution, see sec.
 2 in 
 \begin_inset CommandInset href
 LatexCommand href
-target "http://tug.ctan.org/get/macros/latex/required/graphics/grfguide.pdf"
+target "http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf"
 
 \end_inset
 
@@ -43078,7 +42317,11 @@ Child Documents
 \emph default
  of the 
 \emph on
-Embedded Objects
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
 \emph default
  manual.
 \end_layout
@@ -43091,11 +42334,19 @@ Child Documents
 This submenu is only visible when your document includes child documents.
  Please refer to the section 
 \emph on
-Child Documents
+Child
+\begin_inset space ~
+\end_inset
+
+Documents
 \emph default
  of the 
 \emph on
-Embedded Objects
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
 \emph default
  manual for details.
 \end_layout
@@ -43159,7 +42410,11 @@ Note that LyX won't show two columns or the set up line spacing on screen.
 The listings settings are explained in the corresponding section in the
  
 \emph on
-Embedded Objects
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
 \emph default
  manual.
 \end_layout
@@ -44172,18 +43427,23 @@ Float Placement
 \end_layout
 
 \begin_layout Standard
-The float placement options are described in section
+The float placement options are described in section 
+\emph on
+Float
 \begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Float-Placement"
-
+Placement
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
 \end_inset
 
-.
+Objects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Section
