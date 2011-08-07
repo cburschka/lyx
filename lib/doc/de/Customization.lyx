@@ -4883,6 +4883,118 @@ Bevor
  zu halten, können Syntaxfehler und andere merkwürdige Ergebnisse hervorrufen.
 \end_layout
 
+\begin_layout Subsubsection
+Lokales Layout
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Modules are to LyX as packages are to LaTeX.
+ Sometimes, however, you find yourself wanting a specific inset or character
+ style just for one document and writing a module that will also be available
+ to other documents makes little sense.
+ What you need is LyX's 
+\begin_inset Quotes eld
+\end_inset
+
+Local Layout
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You will find it
+\lang ngerman
+ unter 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Lokales
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+.
+ 
+\lang english
+The large text box allows you to enter anything that you might enter in
+ a layout file or module.
+ You can think of a document's local layout, in fact, as a module that belongs
+ just to it.
+ So, in particular, you must enter a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Format
+\end_layout
+
+\end_inset
+
+ tag.
+ Any format is acceptable, but one would normally use the format current
+ at the time.
+ (In LyX 2.0, the current layout format is 35.) You should be aware that local
+ layout is not supported by versions of LyX prior to 1.6, so you should not
+ use it if you want to be able to export your document to LyX 1.5 or earlier
+ (without, that is, losing the local layout information).
+ If you wish to be able to export to 1.6---local layout is supported in 1.6,
+ though there is no UI for it---then you should use format 11 and, of course,
+ use only layout constructs that were available in LyX 1.6.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+When you have entered something in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Local Layout
+\end_layout
+
+\end_inset
+
+ pane, LyX will enable the 
+\begin_inset Quotes eld
+\end_inset
+
+Validate
+\begin_inset Quotes erd
+\end_inset
+
+ button at the bottom.
+ Clicking this button will cause LyX to determine whether what you have
+ entered is valid layout information for the chosen format.
+ LyX will report the result but, unfortunately, will not tell you what errors
+ there might have been.
+ These will be written to the terminal, however, if LyX is started from
+ a terminal.
+ You will not be permitted to save your local layout until you have entered
+ something valid.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The warnings at the end of the previous section apply here, too.
+ Do not play with local layout while you are actually working, especially
+ if you have not saved your document.
+ That said, using local layout with a test document can be a very convenient
+ way to try out layout ideas, or even to start developing a module.
+\end_layout
+
 \begin_layout Subsection
 Unterstützung neuer Dokumentenklassen
 \end_layout
