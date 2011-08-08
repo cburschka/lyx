@@ -37552,13 +37552,27 @@ reference "sub:Output-file-formats"
 
 \family sans
 CJK
+\family default
+
 \begin_inset space ~
 \end_inset
 
-LyX 
-\family default
-format of the special LyX 1.4.x versions for Chinese, Japanese, and Korean
- (CJK)
+L
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+yX format of the special LyX
+\begin_inset space ~
+\end_inset
+
+1.4.x versions for Chinese, Japanese and Korean (CJK)
 \begin_inset Newline newline
 \end_inset
 
@@ -37566,11 +37580,42 @@ format of the special LyX 1.4.x versions for Chinese, Japanese, and Korean
 \end_layout
 
 \begin_layout Description
-
+DraftDVI LaTeX's native DVI-format.
+ This format is not suitable if you have special characters or spaces in
+ files paths or file names in your document.
+ LyX use this format internally as a pre-stage to export to 
 \family sans
 DVI
 \family default
- DVI-format
+.
+\end_layout
+
+\begin_layout Description
+DVI DVI-format that also allows to use special characters or spaces in files
+ paths or file names
+\end_layout
+
+\begin_layout Description
+DVI
+\begin_inset space ~
+\end_inset
+
+(LuaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX) DVI-format using the program 
+\family typewriter
+LuaTeX
+\family default
+; supports Unicode and the usage of non-TeX fonts
 \end_layout
 
 \begin_layout Description
@@ -37597,6 +37642,50 @@ MS Word
 MathML
 \family default
 .
+\end_layout
+
+\begin_layout Description
+
+\family sans
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX
+\begin_inset space ~
+\end_inset
+
+(
+\family default
+LuaT
+\family sans
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family default
+eX
+\family sans
+) 
+\family default
+text file with the LaTeX source that it is compilable with the program 
+\family typewriter
+LuaTeX
 \end_layout
 
 \begin_layout Description
@@ -37657,7 +37746,66 @@ latex
 \end_layout
 
 \begin_layout Description
-LyX
+
+\family sans
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX
+\begin_inset space ~
+\end_inset
+
+(
+\family default
+XeT
+\family sans
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family default
+eX
+\family sans
+) 
+\family default
+text file with the LaTeX source that it is compilable with the program 
+\family typewriter
+XeTeX
+\end_layout
+
+\begin_layout Description
+L
+\family sans
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family default
+yX
 \begin_inset space ~
 \end_inset
 
@@ -37671,7 +37819,22 @@ Archive
 \end_layout
 
 \begin_layout Description
-LyX
+L
+\family sans
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family default
+yX
 \begin_inset space ~
 \end_inset
 
@@ -37695,7 +37858,22 @@ y
 \end_layout
 
 \begin_layout Description
-LyXHTML HTML-format, using LyX's internal XHTML engine
+L
+\family sans
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family default
+yXHTML HTML-format using LyX's internal XHTML engine
 \end_layout
 
 \begin_layout Description
@@ -37739,7 +37917,18 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(LuaTeX)
+(LuaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX)
 \family default
  PDF-format using the program 
 \family typewriter
@@ -37787,7 +37976,18 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(XeTeX)
+(XeT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX)
 \family default
  PDF-format using the program 
 \family typewriter
@@ -39946,16 +40146,24 @@ Forward Search
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
+This feature allows you to directly jump to the corresponding text part
+ in the output, see section 
+\emph on
+Forward
+\begin_inset space ~
 \end_inset
 
+search
+\emph default
+ in the 
+\emph on
+Additional
+\begin_inset space ~
+\end_inset
 
+Features
+\emph default
+ manual for a detailed description.
 \end_layout
 
 \begin_layout Section

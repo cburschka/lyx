@@ -35046,21 +35046,16 @@ name "sub: Exportieren"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can export your Dokument to various file formats.
- The resulting files are placed in the directory of your LyX-file.
- The Menü entries are not the same on all installations.
- They depend on the Programms found by LyX while its configuration.
+Sie können Ihr Dokument in verschiedene Formate exportieren.
+ Die neuen Dateien werden im selben Ordner wie die LyX-Datei erstellt.
+ Die Menüeinträge sind nicht bei allen Installationen dieselben.
+ Sie hängen von den Programmen ab, die von LyX während der Konfiguration
+ gefunden wurden.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is a list of all available entries; some of them are explained in Detail
+Hier ist eine Liste aller verfügbaren Einträge; einige davon sind im Detail
  in Abschnitt
-\lang ngerman
-
 \begin_inset space ~
 \end_inset
 
@@ -35071,7 +35066,7 @@ reference "sub:Ausgabe-Dateiformate"
 
 \end_inset
 
-:
+ erläutert:
 \end_layout
 
 \begin_layout Description
@@ -35079,18 +35074,64 @@ CJK
 \begin_inset space ~
 \end_inset
 
-LyX 
-\lang english
-Format of the special LyX 1.4.x versions für Chinese, Japanese, und Korean
- (CJK)
+L
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+yX Format der speziellen LyX
+\begin_inset space ~
+\end_inset
+
+1.4.x Versionen für Chinesisch, Japanisch und Koreanisch (CJK)
 \begin_inset Newline newline
 \end_inset
 
- Since LyX 1.5.0 CJK support is fully integrated to LyX.
+ Seit LyX 1.5.0 ist die Unterstützung für CJK in LyX voll integriert.
+\end_layout
+
+\begin_layout Description
+DraftDVI LaTeXs natives DVI-Format.
+ Dieses Format ist nicht geeignet, wenn Sie Sonder- oder Leerzeichen für
+ Dateinamen oder -pfade im Dokument verwenden.
+ LyX verwendet dieses Format intern als Vorstufe beim Export nach 
+\family sans
+DVI
+\family default
+.
 \end_layout
 
 \begin_layout Description
 DVI DVI-Format
+\end_layout
+
+\begin_layout Description
+DVI
+\begin_inset space ~
+\end_inset
+
+(LuaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX) DVI-Format unter Verwendung des Programms 
+\family typewriter
+LuaTeX
+\family default
+; unterstützt Unicode und die Verwendung von nicht-TeX Schriften
 \end_layout
 
 \begin_layout Description
@@ -35099,8 +35140,6 @@ rt eventuell nicht in allen Fällen.)
 \end_layout
 
 \begin_layout Description
-
-\lang english
 HTML
 \begin_inset space ~
 \end_inset
@@ -35109,18 +35148,50 @@ HTML
 \begin_inset space ~
 \end_inset
 
-Word) HTML-Format specialized so that the result can be imported to 
+Word) spezielles HTML-Format so dass der Ergebnis nach 
 \family sans
 MS Word
 \family default
-; as a consequence of this formulas will be embedded as bitmap fonts und
- not in the
-\lang ngerman
- Format 
+ importiert werden kann; als Konsequenz davon werden Formeln als Bitmap-Schrift
+ eingebettet und nicht im Format 
 \family sans
 MathML
 \family default
 .
+\end_layout
+
+\begin_layout Description
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX
+\begin_inset space ~
+\end_inset
+
+(LuaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX) Textdatei mit dem LaTeX-Quellcode, der mit dem Programm 
+\family typewriter
+LuaTeX
+\family default
+ kompilierbar ist
 \end_layout
 
 \begin_layout Description
@@ -35174,23 +35245,73 @@ latex
 \end_layout
 
 \begin_layout Description
+LaT
+\begin_inset ERT
+status collapsed
 
-\lang english
-LyX
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX
 \begin_inset space ~
 \end_inset
 
-Archive
-\begin_inset space ~
+(XeT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
 \end_inset
 
-(zip) creates a zip-archive file that contains your document and all files
- that are necessary to compile it (images, child documents, BibTeX files,
- etc.)
+eX) Textdatei mit dem LaTeX-Quellcode, der mit dem Programm 
+\family typewriter
+XeTeX
+\family default
+ kompilierbar ist
 \end_layout
 
 \begin_layout Description
-LyX
+L
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+yX-Archiv
+\begin_inset space ~
+\end_inset
+
+(zip) erstellt eine zip-Archiv-Datei die Ihr Dokument und alle Dateien,
+ die notwendig sind, um es zu kompilieren, enthält (Bilder, Unterdokumente,
+ BibTeX-Dateien, usw.)
+\end_layout
+
+\begin_layout Description
+L
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+yX
 \begin_inset space ~
 \end_inset
 
@@ -35215,7 +35336,18 @@ y
 \end_layout
 
 \begin_layout Description
-LyXHTML HTML-Format, unter Verwendung von LyXs internem XHTML-Konverter
+L
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+yXHTML HTML-Format, unter Verwendung von LyXs internem XHTML-Konverter
 \end_layout
 
 \begin_layout Description
@@ -35257,7 +35389,18 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(LuaTeX) PDF-Format unter Verwendung des Programms 
+(LuaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX) PDF-Format unter Verwendung des Programms 
 \family typewriter
 LuaTeX
 \family default
@@ -35294,7 +35437,18 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(XeTeX) PDF-Format unter Verwendung des Programms 
+(XeT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX) PDF-Format unter Verwendung des Programms 
 \family typewriter
 XeTeX
 \family default
@@ -37499,6 +37653,23 @@ Gehe zur Marke
 Only active when the cursor is in front of a cross-reference.
  Sets the cursor before the referenced label, the same as if you right-click
  on a cross-reference box.
+\end_layout
+
+\begin_layout Subsection
+Vorwärtssuche
+\end_layout
+
+\begin_layout Standard
+Dieses Feature erlaubt es, direkt an die entsprechende Stelle in der Ausgabe
+ zu springen, siehe Abschnitt 
+\emph on
+Vorwärtssuche
+\emph default
+ in den 
+\emph on
+Handbuchergänzungen
+\emph default
+ für eine detaillierte Beschreibung.
 \end_layout
 
 \begin_layout Section
