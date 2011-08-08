@@ -43126,11 +43126,64 @@ CJK
 \begin_inset space ~
 \end_inset
 
-LyX 日中韓（CJK）版LyX 1.4.xの形式
+L
+\family sans
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family default
+yX 日中韓（CJK）版LyX 1.4.xの形式
+\end_layout
+
+\begin_layout Description
+DraftDVI 
+\lang english
+LaTeX's native DVI-format.
+ This format is not suitable if you have special characters or spaces in
+ files paths or file names in your document.
+ LyX use this format internally as a pre-stage to export to 
+\family sans
+DVI
+\family default
+.
 \end_layout
 
 \begin_layout Description
 DVI DVI形式
+\end_layout
+
+\begin_layout Description
+DVI
+\begin_inset space ~
+\end_inset
+
+(LuaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX) 
+\lang english
+DVI-format using the program 
+\family typewriter
+LuaTeX
+\family default
+; supports Unicode and the usage of non-TeX fonts
 \end_layout
 
 \begin_layout Description
@@ -43155,6 +43208,51 @@ MS Word
 MathML
 \family default
 形式にはなりません。
+\end_layout
+
+\begin_layout Description
+
+\family sans
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX
+\begin_inset space ~
+\end_inset
+
+(
+\family default
+LuaT
+\family sans
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family default
+eX
+\family sans
+) 
+\family default
+\lang english
+text file with the LaTeX source that it is compilable with the program 
+\family typewriter
+LuaTeX
 \end_layout
 
 \begin_layout Description
@@ -43205,8 +43303,70 @@ latex
 
 \begin_layout Description
 
+\family sans
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX
+\begin_inset space ~
+\end_inset
+
+(
+\family default
+XeT
+\family sans
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family default
+eX
+\family sans
+) 
+\family default
 \lang english
-LyX
+text file with the LaTeX source that it is compilable with the program 
+\family typewriter
+XeTeX
+\end_layout
+
+\begin_layout Description
+
+\lang english
+L
+\family sans
+\lang japanese
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family default
+\lang english
+yX
 \begin_inset space ~
 \end_inset
 
@@ -43220,7 +43380,22 @@ Archive
 \end_layout
 
 \begin_layout Description
-LyX
+L
+\family sans
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family default
+yX
 \begin_inset space ~
 \end_inset
 
@@ -43229,6 +43404,27 @@ z.y.x LyX z.y.x版（「z」
  and 
 \lang japanese
 「y」はバージョン番号に変換して表示されます）が読み込み可能なLyX文書形式
+\end_layout
+
+\begin_layout Description
+L
+\family sans
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family default
+yXHTML 
+\lang english
+HTML-format using LyX's internal XHTML engine
 \end_layout
 
 \begin_layout Description
@@ -43264,14 +43460,26 @@ dvipdfm
 \begin_layout Description
 
 \family sans
-\lang english
 PDF
 \begin_inset space ~
 \end_inset
 
-(LuaTeX)
+(LuaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX)
 \family default
- PDF-format using the program 
+ 
+\lang english
+PDF-format using the program 
 \family typewriter
 LuaTeX
 \family default
@@ -43309,14 +43517,26 @@ produces internally a PostScript-file which is then converted to a PDF-file
 \begin_layout Description
 
 \family sans
-\lang english
 PDF
 \begin_inset space ~
 \end_inset
 
-(XeTeX)
+(XeT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX)
 \family default
- PDF-format using the program 
+ 
+\lang english
+PDF-format using the program 
 \family typewriter
 XeTeX
 \family default
@@ -44919,10 +45139,6 @@ arg   "bookmark-goto 2"
 
 \begin_layout Standard
 これは、カーソルが相互参照の前にあるときのみ有効です。相互参照枠を右クリックしたときと同様に、カーソルを相互参照ラベルの前に移動します。
-\end_layout
-
-\begin_layout Standard
-
 \family roman
 \series medium
 \shape up
@@ -44931,6 +45147,7 @@ arg   "bookmark-goto 2"
 \bar no
 \noun off
 \color none
+
 \begin_inset Note Note
 status open
 
@@ -44950,6 +45167,35 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Forward Search
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This feature allows you to directly jump to the corresponding text part
+ in the output, see section 
+\emph on
+Forward
+\begin_inset space ~
+\end_inset
+
+search
+\emph default
+ in the 
+\emph on
+Additional
+\begin_inset space ~
+\end_inset
+
+Features
+\emph default
+ manual for a detailed description.
 \end_layout
 
 \begin_layout Section

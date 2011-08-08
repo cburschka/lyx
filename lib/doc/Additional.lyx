@@ -5699,14 +5699,24 @@ name "sub:rev-search"
 \end_layout
 
 \begin_layout Standard
-In most cases LyX will do the work for you by enabling 
+In most cases LyX will do the work for you by enabling the option 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Synchronize with Output
+\end_layout
+
+\end_inset
+
+ in the menu 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
 Document\SpecialChar \menuseparator
-Output\SpecialChar \menuseparator
-Synchronize with Output
+Settings\SpecialChar \menuseparator
+Output
 \end_layout
 
 \end_inset
@@ -6992,7 +7002,7 @@ General
  can select from the drop down list.
  If none of these configurations suits you, you have to find out and enter
  a suitable configuration yourself.
- The definition syntax uses the following placeholders: 
+ The definition syntax uses the following placeholders:
 \end_layout
 
 \begin_layout Itemize
@@ -7040,18 +7050,23 @@ $$o
 
 \begin_layout Standard
 Note that only some of the viewers provide full forward search functionality,
- among them yap, xdvi, okular and Sumatra PDF
+ among them yap, xdvi, okular and Sumatra PDF.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-For Sumatra CMCDDE is needed --- downloadable from http://www.istri.fr/zip/CMCDDE.z
-ip
+For Sumatra CMCDDE is needed --- downloadable from 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.istri.fr/zip/CMCDDE.zip"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
-.
  While many of the widespread PDF viewers (most notably Adobe Reader) do
  not support forward search at all, some other viewers -- e.
 \begin_inset space \thinspace{}
