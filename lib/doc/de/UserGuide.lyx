@@ -27333,6 +27333,75 @@ LaTeX-Paket ! refstyle
 \end_inset
 
 
+\lang english
+
+\begin_inset Newline newline
+\end_inset
+
+You can select which LaTeX-package should be used for this feature by setting
+ the option 
+\family sans
+Use refstyle (not prettyref) for cross-references
+\family default
+ in the menu 
+\family sans
+Dokument\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document Class
+\family default
+.
+ The format is specified by adding the command 
+\series bold
+
+\backslash
+newrefformat
+\series default
+ (prettyref) or 
+\series bold
+
+\backslash
+newref
+\series default
+ (refstyle) to the preamble of the document.
+ For example redefining all references to figures (which have the label
+ shortcut 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+fig
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+) can be done with this command
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+newref{fig}{refcmd={Image on page 
+\backslash
+pageref{#1}}}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+For more information about the format, have a look at the package documentations
+\lang ngerman
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "prettyref,refstyle"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -35045,7 +35114,9 @@ Word) HTML-Format specialized so that the result can be imported to
 MS Word
 \family default
 ; as a consequence of this formulas will be embedded as bitmap fonts und
- not in the format 
+ not in the
+\lang ngerman
+ Format 
 \family sans
 MathML
 \family default
@@ -35100,6 +35171,22 @@ eX
 latex
 \family default
  lesbar
+\end_layout
+
+\begin_layout Description
+
+\lang english
+LyX
+\begin_inset space ~
+\end_inset
+
+Archive
+\begin_inset space ~
+\end_inset
+
+(zip) creates a zip-archive file that contains your document and all files
+ that are necessary to compile it (images, child documents, BibTeX files,
+ etc.)
 \end_layout
 
 \begin_layout Description
@@ -35161,6 +35248,20 @@ PDF
 (dvipdfm) PDF-Format unter Verwendung des Programms 
 \family typewriter
 dvipdfm
+\family default
+, erzeugt intern eine DVI-Datei, die in eine PDF-Datei konvertiert wird
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(LuaTeX) PDF-Format unter Verwendung des Programms 
+\family typewriter
+LuaTeX
+\family default
+, erzeugt PDF-Dateien direkt
 \end_layout
 
 \begin_layout Description
@@ -35171,6 +35272,8 @@ PDF
 (pdflatex) PDF-Format unter Verwendung des Programms 
 \family typewriter
 pdflatex
+\family default
+, erzeugt PDF-Dateien direkt
 \end_layout
 
 \begin_layout Description
@@ -35181,6 +35284,21 @@ PDF
 (ps2pdf) PDF-Format unter Verwendung des Programms 
 \family typewriter
 ps2pdf
+\family default
+, erzeugt intern eine PostScript-Datei, die in eine PDF-Datei konvertiert
+ wird
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(XeTeX) PDF-Format unter Verwendung des Programms 
+\family typewriter
+XeTeX
+\family default
+, erzeugt PDF-Dateien direkt
 \end_layout
 
 \begin_layout Description
@@ -35213,26 +35331,7 @@ dvips
 \end_layout
 
 \begin_layout Standard
-Das Programm 
-\family typewriter
-dvipdfm
-\family default
- erzeugt intern eine DVI-Datei, die in eine PDF-Datei konvertiert wird.
- 
-\lang english
-It is a bit out of date und therefore the output could look different from
- what you want.
- 
-\family typewriter
-pdflatex
-\family default
- produces PDF-files directly und supports the latest PDF-file formats.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-If one of the Menü entries 
+Falls einer der Menüeinträge 
 \family sans
 DVI
 \family default
@@ -35248,10 +35347,8 @@ PDF
 \family sans
 Postscript
 \family default
- is missing, you need to update your LaTeX installation.
- After updating you have to reconfigure LyX
-\lang ngerman
-, siehe Abschnitt
+ fehlt, müssen Sie ihre LaTeX-Installation aktualisieren.
+ Anschließend müssen Sie LyX neu konfigurieren, siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -35273,17 +35370,6 @@ Neukonfiguration von LyX
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-The Menü 
-\family sans
-Custom
-\family default
- allows you to export your file by using special Befehl line Optionen für
- the export Programm.
 \end_layout
 
 \begin_layout Subsection
@@ -35449,7 +35535,7 @@ Wählt das komplette Dokument aus.
 \end_layout
 
 \begin_layout Subsection
-Suchen & Ersetzen
+Suchen & Ersetzen (einfach)
 \end_layout
 
 \begin_layout Standard
@@ -35461,6 +35547,25 @@ Beschrieben in Abschnitt
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Einfache-Bearbeitungsfunktionen"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Suchen & Ersetzen (erweitert)
+\end_layout
+
+\begin_layout Standard
+Beschrieben in Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Fortgeschrittenes-Suchen"
 
 \end_inset
 
@@ -35816,7 +35921,18 @@ reference "sec:Dokument-Ausgabe"
 
 
 \lang english
-), for instance PDF, und opens it in an appropriate viewer.
+) und opens it in an appropriate viewer
+\lang ngerman
+.
+ Das Standard-Ausgabeformat ist 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -35994,9 +36110,7 @@ reference "sec:Dokument-Ausgabe"
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Split View
+Ansicht teilen
 \end_layout
 
 \begin_layout Standard
@@ -39897,6 +40011,53 @@ Objekte
  Handbuchs.
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+There is also an option to suppress the date and one to use the LaTeX-package
+ 
+\series bold
+refstyle
+\series default
+ instead of 
+\series bold
+prettyref
+\series default
+\lang ngerman
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! prettyref
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! refstyle
+\end_layout
+
+\end_inset
+
+
+\lang english
+ for cross-references
+\lang ngerman
+, siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Querverweise"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Section
 Unterdokumente
 \end_layout
@@ -41178,7 +41339,7 @@ Werkzeuge\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
 Dateiformate
 \family default
- festgelegt; siehe 
+ festgelegt, siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Dateiformate"
@@ -44859,7 +45020,7 @@ nomencl
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-Paket! nomencl
+LaTeX-Paket ! nomencl
 \end_layout
 
 \end_inset
@@ -44873,8 +45034,101 @@ LaTeX-Paket! nomencl
 status collapsed
 
 \begin_layout Plain Layout
-
 ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "prettyref"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Dokumentation"
+target "http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf"
+
+\end_inset
+
+ des LaTeX-Pakets 
+\series bold
+prettyref
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! prettyref
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "refstyle"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Dokumentation"
+target "http://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf"
+
+\end_inset
+
+ des LaTeX-Pakets 
+\series bold
+refstyle
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! refstyle
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+http://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf
 \end_layout
 
 \end_inset

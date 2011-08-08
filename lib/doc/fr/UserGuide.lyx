@@ -26653,7 +26653,7 @@ prettyref
 \series bold
 refstyle
 \series default
-
+.
 \begin_inset Index idx
 status collapsed
 
@@ -26673,12 +26673,81 @@ Paquetages LaTeX ! refstyle
 
 \end_inset
 
-.
+
 \end_layout
 
 \end_inset
 
 
+\lang english
+
+\begin_inset Newline newline
+\end_inset
+
+You can select which LaTeX-package should be used for this feature by setting
+ the option 
+\family sans
+Use refstyle (not prettyref) for cross-references
+\family default
+ in the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document Class
+\family default
+.
+ The format is specified by adding the command 
+\series bold
+
+\backslash
+newrefformat
+\series default
+ (prettyref) or 
+\series bold
+
+\backslash
+newref
+\series default
+ (refstyle) to the preamble of the document.
+ For example redefining all references to figures (which have the label
+ shortcut 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+fig
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+) can be done with this command
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+newref{fig}{refcmd={Image on page 
+\backslash
+pageref{#1}}}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+For more information about the format, have a look at the package documentations
+\lang french
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "prettyref,refstyle"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -37350,6 +37419,22 @@ latex
 \end_layout
 
 \begin_layout Description
+
+\lang english
+LyX
+\begin_inset space ~
+\end_inset
+
+Archive
+\begin_inset space ~
+\end_inset
+
+(zip) creates a zip-archive file that contains your document and all files
+ that are necessary to compile it (images, child documents, BibTeX files,
+ etc.)
+\end_layout
+
+\begin_layout Description
 LyX
 \begin_inset space ~
 \end_inset
@@ -37400,6 +37485,20 @@ PDF
 (dvipdfm) format PDF en utilisant le programme 
 \family typewriter
 dvipdfm
+\family default
+, produit en interne un fichier DVI qui est ensuite converti au format PDF
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(LuaTeX) format PDF en utilisant le programme 
+\family typewriter
+LuaTeX
+\family default
+, produit directement le fichier PDF
 \end_layout
 
 \begin_layout Description
@@ -37410,6 +37509,8 @@ PDF
 (pdflatex) format PDF en utilisant le programme 
 \family typewriter
 pdflatex
+\family default
+, produit directement le fichier PDF
 \end_layout
 
 \begin_layout Description
@@ -37420,6 +37521,21 @@ PDF
 (ps2pdf) format PDF en utilisant le programme 
 \family typewriter
 ps2pdf
+\family default
+, produit en interne un fichier PostScript qui est ensuite converti au format
+ PDF
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(XeTeX) format PDF en utilisant le programme 
+\family typewriter
+XeTeX
+\family default
+, produit directement le fichier PDF
 \end_layout
 
 \begin_layout Description
@@ -37452,22 +37568,6 @@ ps2ascii
 Postscript format PostScript en utilisant le programme 
 \family typewriter
 dvips
-\end_layout
-
-\begin_layout Standard
-Le programme 
-\family typewriter
-dvipdfm
-\family default
- produit en interne un fichier DVI qui est ensuite converti au format PDF.
- Le programme est un peu dépassé et le résultat pourrait être différent
- de ce que vous attendez.
-
-\family typewriter
- pdflatex
-\family default
- produit directement le fichier PDF et est compatible avec les formats PDF
- les plus récents.
 \end_layout
 
 \begin_layout Standard
@@ -37510,15 +37610,6 @@ Reconfiguration de LyX
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Le menu 
-\family sans
-Personnalisé
-\family default
- vous permet d'exporter votre document en utilisant des options de ligne
- de commande spéciales lors de l'appel du programme d'exportation.
 \end_layout
 
 \begin_layout Subsection
@@ -37704,7 +37795,7 @@ Sélectionne la totalité du document.
 \end_layout
 
 \begin_layout Subsection
-Rechercher et remplacer
+Rechercher et remplacer (simple)
 \end_layout
 
 \begin_layout Standard
@@ -37716,6 +37807,25 @@ Détaillé dans la section
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Base-d'edition"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Rechercher et remplacer (avancé)
+\end_layout
+
+\begin_layout Standard
+Détaillé dans la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Advanced-Rechercher"
 
 \end_inset
 
@@ -38034,12 +38144,253 @@ reference "sec:Aperçu-de-morceaux"
 \end_layout
 
 \begin_layout Subsection
-Mettre à jour
+
+\lang english
+View Messages
 \end_layout
 
 \begin_layout Standard
-Ce menu vous permet d'actualiser le visionnement pour tenir compte de vos
- dernières modifications, sans ouvrir une nouvelle fenêtre.
+
+\lang english
+Opens a window showing console messages.
+ This is useful for debugging LyX (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., hunt for errors in the program) or to see what is going on in the background
+ while LaTeX is processing the document,
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+View
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This menu entry generates the output you have specified as default output
+ format either in the preferences (see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\lang french
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formats-de-Fichiers"
+
+\end_inset
+
+
+\lang english
+) or in the document settings (see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Doc-Output"
+
+\end_inset
+
+) and opens it in an appropriate viewer.
+ The default output format is 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+View (Other Formats)
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+With this submenu, you can view your document in alternative output formats.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Update
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This menu entry allows you to update the view with your latest changes (in
+ the default output format as described in the previous section) without
+ opening a new viewer window.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Update (Other Formats)
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+With this submenu, you can update the view of alternative output formats
+ of your document without opening a new viewer window.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+View Master Document
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This menu item is only visible if your document is included to another document,
+ which is then its 
+\begin_inset Quotes eld
+\end_inset
+
+master
+\begin_inset Quotes erd
+\end_inset
+
+ (see section 
+\emph on
+Child Documents
+\emph default
+ in the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual for more information on this topic).
+ This item allows you to view the master document from within its child.
+ That is, if you are working on a child document which is a chapter of a
+ book, 
+\family sans
+View Master
+\family default
+ generates the output of the whole book, while 
+\family sans
+View
+\family default
+ will just output the chapter alone.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The format used by this function is the default output format as specified
+ in the preferences (see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\lang french
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formats-de-Fichiers"
+
+\end_inset
+
+
+\lang english
+) or in the document settings (see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Doc-Output"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Update Master Document
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This menu item is only visible if your document is included to another document,
+ which is then its 
+\begin_inset Quotes eld
+\end_inset
+
+master
+\begin_inset Quotes erd
+\end_inset
+
+ (see section 
+\emph on
+Child Documents
+\emph default
+ in the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual for more information on this topic).
+ This item allows you to update the view of a master document from within
+ its child without the need to switch to the master document itself.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The format used by this function is the default output format as specified
+ in the preferences (see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\lang french
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formats-de-Fichiers"
+
+\end_inset
+
+
+\lang english
+) or in the document settings (see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Doc-Output"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Subsection
@@ -41698,8 +42049,10 @@ La barre d'outils Visionner/Mettre à jour contient de gauche à droite les
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
+<lyxtabular version="3" rows="7" columns="2">
 <features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -41708,11 +42061,11 @@ La barre d'outils Visionner/Mettre à jour contient de gauche à droite les
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/buffer-view_dvi.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
 \end_inset
 
 
@@ -41726,8 +42079,143 @@ La barre d'outils Visionner/Mettre à jour contient de gauche à droite les
 \begin_layout Plain Layout
 
 \family sans
-Visionner\SpecialChar \menuseparator
-DVI
+Visionner
+\lang english
+\SpecialChar \menuseparator
+View
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "buffer-update"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Visionner
+\lang english
+\SpecialChar \menuseparator
+Update
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "master-buffer-view"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Visionner
+\lang english
+\SpecialChar \menuseparator
+Master
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "master-buffer-update"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Visionner
+\lang english
+\SpecialChar \menuseparator
+Update
+\begin_inset space ~
+\end_inset
+
+Master
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "buffer-toggle-output-sync"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\lang english
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Output\SpecialChar \menuseparator
+Synchronize with Output
 \end_layout
 
 \end_inset
@@ -41739,13 +42227,15 @@ DVI
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/buffer-update_dvi.png
+	filename ../../images/view-others.png
 	scale 85
-	groupId toolbarbouton
+	groupId toolbarbuttons
 
 \end_inset
 
 
+\family sans
+*
 \end_layout
 
 \end_inset
@@ -41756,16 +42246,10 @@ DVI
 \begin_layout Plain Layout
 
 \family sans
-Mettre
-\begin_inset space ~
-\end_inset
-
-à
-\begin_inset space ~
-\end_inset
-
-Jour\SpecialChar \menuseparator
-DVI
+Visionner
+\lang english
+\SpecialChar \menuseparator
+View (Other Formats)
 \end_layout
 
 \end_inset
@@ -41777,13 +42261,13 @@ DVI
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/buffer-view_pdf2.png
+	filename ../../images/update-others.png
 	scale 85
-	groupId toolbarbouton
+	groupId toolbarbuttons
 
 \end_inset
 
-
+*
 \end_layout
 
 \end_inset
@@ -41794,114 +42278,10 @@ DVI
 \begin_layout Plain Layout
 
 \family sans
-Visionner\SpecialChar \menuseparator
-PDF
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row interlinespace="2.5mm">
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/buffer-update_pdf2.png
-	scale 85
-	groupId toolbarbouton
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-Mettre
-\begin_inset space ~
-\end_inset
-
-à
-\begin_inset space ~
-\end_inset
-
-Jour\SpecialChar \menuseparator
-PDF
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row interlinespace="2.5mm">
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/buffer-view_ps.png
-	scale 85
-	groupId toolbarbouton
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-Visionner\SpecialChar \menuseparator
-PostScript
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row interlinespace="2.5mm">
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/buffer-update_ps.png
-	scale 85
-	groupId toolbarbouton
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-Mettre
-\begin_inset space ~
-\end_inset
-
-à
-\begin_inset space ~
-\end_inset
-
-Jour\SpecialChar \menuseparator
-Postscript
+Visionner
+\lang english
+\SpecialChar \menuseparator
+Update (Other Formats)
 \end_layout
 
 \end_inset
@@ -41912,6 +42292,13 @@ Postscript
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+* These icons might look different for you if you do not use the default
+ icon set.
 \end_layout
 
 \begin_layout Subsection
@@ -42098,6 +42485,53 @@ sous-documents
 \emph on
 Objets insérés
 \emph default
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+There is also an option to suppress the date and one to use the LaTeX-package
+ 
+\series bold
+refstyle
+\series default
+ instead of 
+\series bold
+prettyref
+\series default
+\lang french
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages LaTeX ! prettyref
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages LaTeX ! refstyle
+\end_layout
+
+\end_inset
+
+
+\lang english
+ for cross-references, see
+\lang french
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Références-croisées"
+
+\end_inset
+
 .
 \end_layout
 
@@ -43270,6 +43704,142 @@ reference "sec:Branches"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Section
+
+\lang english
+Output
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Doc-Output"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Here you can define some output specifics for the current document:
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Default
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Format: The format that is used when you hit 
+\begin_inset Quotes eld
+\end_inset
+
+View
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Update
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+View Master Document
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+Update Master Document
+\begin_inset Quotes erd
+\end_inset
+
+ in the 
+\family sans
+View
+\family default
+ menu or the toolbar.
+ The default is set in 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File Formats
+\family default
+\lang french
+, see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formats-de-Fichiers"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Synchronize
+\begin_inset space ~
+\end_inset
+
+with
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+TODO!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\lang english
+XHTML
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Options
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+TODO!
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -45845,7 +46415,7 @@ Personnalisation
 .
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Formats de Fichiers
 \begin_inset CommandInset label
 LatexCommand label
@@ -47166,8 +47736,101 @@ Paquetages LaTeX ! nomencl
 status collapsed
 
 \begin_layout Plain Layout
-
 ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Bibliographie
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "prettyref"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf"
+
+\end_inset
+
+ du paquetage LaTeX 
+\series bold
+prettyref
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages LaTeX ! prettyref
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Bibliographie
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "refstyle"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "http://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf"
+
+\end_inset
+
+ du paquetage LaTeX 
+\series bold
+refstyle
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages LaTeX ! refstyle
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+http://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf
 \end_layout
 
 \end_inset
