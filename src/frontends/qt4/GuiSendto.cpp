@@ -52,7 +52,7 @@ GuiSendTo::GuiSendTo(GuiView & lv)
 		this, SLOT(changed_adaptor()));
 	connect(formatLW, SIGNAL(itemSelectionChanged()),
 		this, SLOT(changed_adaptor()));
-	connect(commandCO, SIGNAL(textChanged(QString)),
+	connect(commandCO, SIGNAL(editTextChanged(QString)),
 		this, SLOT(changed_adaptor()));
 
 	bc().setPolicy(ButtonPolicy::OkApplyCancelPolicy);
