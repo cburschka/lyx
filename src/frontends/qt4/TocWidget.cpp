@@ -245,7 +245,7 @@ void TocWidget::on_updateTB_clicked()
 	// The backend update can take some time so we disable
 	// the controls while waiting.
 	enableControls(false);
-	gui_view_.tocModels().updateBackend();
+	gui_view_.currentBufferView()->buffer().updateBuffer();
 }
 
 
