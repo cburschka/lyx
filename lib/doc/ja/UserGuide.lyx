@@ -21292,6 +21292,8 @@ reference "sub:LaTeXフォントサポート"
 \end_inset
 
 節参照）。様々なスクリプト体を組版するのに特に優れています。
+\lang english
+, for example vertically written Japanese.
 \end_layout
 
 \begin_layout Description
@@ -33720,6 +33722,73 @@ LaTeXぱっけーじ@LaTeXパッケージ ! refstyle
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+You can select which LaTeX-package should be used for this feature by setting
+ the option 
+\family sans
+Use refstyle (not prettyref) for cross-references
+\family default
+ in the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document Class
+\family default
+.
+ The format is specified by adding the command 
+\series bold
+
+\backslash
+newrefformat
+\series default
+ (prettyref) or 
+\series bold
+
+\backslash
+newref
+\series default
+ (refstyle) to the preamble of the document.
+ For example redefining all references to figures (which have the label
+ shortcut 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+fig
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+) can be done with this command
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+newref{fig}{refcmd={Image on page 
+\backslash
+pageref{#1}}}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+For more information about the format, have a look at the package documentations
+\lang japanese
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "prettyref,refstyle"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -43135,6 +43204,22 @@ latex
 \end_layout
 
 \begin_layout Description
+
+\lang english
+LyX
+\begin_inset space ~
+\end_inset
+
+Archive
+\begin_inset space ~
+\end_inset
+
+(zip) creates a zip-archive file that contains your document and all files
+ that are necessary to compile it (images, child documents, BibTeX files,
+ etc.)
+\end_layout
+
+\begin_layout Description
 LyX
 \begin_inset space ~
 \end_inset
@@ -43172,6 +43257,25 @@ PDF
 dvipdfm
 \family default
 プログラムを使用して変換するPDF形式
+\lang english
+, produces internally a DVI-file which is then converted to a PDF-file
+\end_layout
+
+\begin_layout Description
+
+\family sans
+\lang english
+PDF
+\begin_inset space ~
+\end_inset
+
+(LuaTeX)
+\family default
+ PDF-format using the program 
+\family typewriter
+LuaTeX
+\family default
+, produces PDF-files directly
 \end_layout
 
 \begin_layout Description
@@ -43184,6 +43288,8 @@ PDF
 pdflatex
 \family default
 プログラムを使用して変換するPDF形式
+\lang english
+, produces PDF-files directly
 \end_layout
 
 \begin_layout Description
@@ -43195,7 +43301,26 @@ PDF
 \family typewriter
 ps2pdf
 \family default
-プログラムを使用して変換するPDF形式
+プログラムを使用して変換するPDF形式, 
+\lang english
+produces internally a PostScript-file which is then converted to a PDF-file
+\end_layout
+
+\begin_layout Description
+
+\family sans
+\lang english
+PDF
+\begin_inset space ~
+\end_inset
+
+(XeTeX)
+\family default
+ PDF-format using the program 
+\family typewriter
+XeTeX
+\family default
+, produces PDF-files directly
 \end_layout
 
 \begin_layout Description
@@ -43223,19 +43348,6 @@ dvips
 \end_layout
 
 \begin_layout Standard
-
-\family typewriter
-dvipdfm
-\family default
-プログラムは、内部でDVIファイルを生成したのち、それをPDFファイルに変換します。このプログラムは若干古くなっているので、望むとおりの出力は得られないかもしれ
-ません。
-\family typewriter
-pdflatex
-\family default
-は直接PDFを生成し、最近のPDF形式をサポートしています。
-\end_layout
-
-\begin_layout Standard
 もしDVI・PDF
 \begin_inset space ~
 \end_inset
@@ -43259,14 +43371,6 @@ Lyxのさいせってい@LyXの再設定
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-任意設定
-\family default
-メニューでは、書き出し・プログラムに特別なコマンドラインオプションを加えてファイルを書き出すことができます。
 \end_layout
 
 \begin_layout Subsection
@@ -43394,6 +43498,8 @@ reference "sec:基本的な編集機能"
 
 \begin_layout Subsection
 検索／置換
+\lang english
+ (Quick)
 \end_layout
 
 \begin_layout Standard
@@ -43401,6 +43507,23 @@ reference "sec:基本的な編集機能"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:基本的な編集機能"
+
+\end_inset
+
+節に解説されています。
+\end_layout
+
+\begin_layout Subsection
+検索／置換
+\lang english
+ (Advanced)
+\end_layout
+
+\begin_layout Standard
+第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:詳細な検索と置換"
 
 \end_inset
 
@@ -43652,7 +43775,17 @@ reference "sub:出力ファイル形式"
 
 \end_inset
 
-節参照)で指定した既定出力形式(例えばPDF)で出力を生成し適切なビューアでそれを表示します。
+節参照)で指定した既定出力形式(例えばPDF)で出力を生成し適切なビューアでそれを表示します。 
+\lang english
+The default output format is 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -47132,6 +47265,57 @@ target "http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf"
 子文書
 \emph default
 』の節に説明されています。
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+There is also an option to suppress the date and one to use the LaTeX-package
+ 
+\series bold
+refstyle
+\series default
+ instead of 
+\series bold
+prettyref
+\series default
+\lang japanese
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXぱっけーじ@LaTeXパッケージ! prettyref
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXぱっけーじ@LaTeXパッケージ ! refstyle
+\end_layout
+
+\end_inset
+
+
+\lang english
+ for cross-references, see sec.
+\lang japanese
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:相互参照"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -51190,6 +51374,102 @@ status collapsed
 \begin_layout Plain Layout
 
 ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring 参考文献
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "prettyref"
+
+\end_inset
+
+LaTeXパッケージ
+\series bold
+prettyref
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Latexぱっけーじ@LaTeXパッケージ ! prettyref
+\end_layout
+
+\end_inset
+
+:の
+\begin_inset CommandInset href
+LatexCommand href
+name "取扱説明書"
+target "http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf"
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring 参考文献
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "refstyle"
+
+\end_inset
+
+LaTeXパッケージ
+\series bold
+refstyle
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Latexぱっけーじ@LaTeXパッケージ ! refstyle
+\end_layout
+
+\end_inset
+
+:の
+\begin_inset CommandInset href
+LatexCommand href
+name "取扱説明書"
+target "http://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf"
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf
 \end_layout
 
 \end_inset

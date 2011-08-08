@@ -14742,7 +14742,8 @@ reference "sub:LaTeX-font-support"
 \end_inset
 
 ).
- It is particularly good at typesetting different scripts.
+ It is particularly good at typesetting different scripts, for example verticall
+y written Japanese.
 \end_layout
 
 \begin_layout Description
@@ -25594,6 +25595,72 @@ LaTeX-packages ! refstyle
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+You can select which LaTeX-package should be used for this feature by setting
+ the option 
+\family sans
+Use refstyle (not prettyref) for cross-references
+\family default
+ in the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document Class
+\family default
+.
+ The format is specified by adding the command 
+\series bold
+
+\backslash
+newrefformat
+\series default
+ (prettyref) or 
+\series bold
+
+\backslash
+newref
+\series default
+ (refstyle) to the preamble of the document.
+ For example redefining all references to figures (which have the label
+ shortcut 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+fig
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+) can be done with this command
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+newref{fig}{refcmd={Image on page 
+\backslash
+pageref{#1}}}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+For more information about the format, have a look at the package documentations
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "prettyref,refstyle"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -32534,7 +32601,7 @@ Language Default
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:The-Document-Settings"
+reference "chap:The-Document-Settings"
 
 \end_inset
 
@@ -37594,7 +37661,21 @@ LyX
 \begin_inset space ~
 \end_inset
 
-z.y.x LyX-Dokument in a format readable by the LyX versions z.y.x (
+Archive
+\begin_inset space ~
+\end_inset
+
+(zip) creates a zip-archive file that contains your document and all files
+ that are necessary to compile it (images, child documents, BibTeX files,
+ etc.)
+\end_layout
+
+\begin_layout Description
+LyX
+\begin_inset space ~
+\end_inset
+
+z.y.x LyX-Document in a format readable by the LyX versions z.y.x (
 \begin_inset Quotes eld
 \end_inset
 
@@ -37647,6 +37728,24 @@ PDF
  PDF-format using the program 
 \family typewriter
 dvipdfm
+\family default
+, produces internally a DVI-file which is then converted to a PDF-file
+\end_layout
+
+\begin_layout Description
+
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(LuaTeX)
+\family default
+ PDF-format using the program 
+\family typewriter
+LuaTeX
+\family default
+, produces PDF-files directly
 \end_layout
 
 \begin_layout Description
@@ -37661,6 +37760,8 @@ PDF
  PDF-format using the program 
 \family typewriter
 pdflatex
+\family default
+, produces PDF-files directly
 \end_layout
 
 \begin_layout Description
@@ -37675,6 +37776,24 @@ PDF
  PDF-format using the program 
 \family typewriter
 ps2pdf
+\family default
+, produces internally a PostScript-file which is then converted to a PDF-file
+\end_layout
+
+\begin_layout Description
+
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(XeTeX)
+\family default
+ PDF-format using the program 
+\family typewriter
+XeTeX
+\family default
+, produces PDF-files directly
 \end_layout
 
 \begin_layout Description
@@ -37719,21 +37838,6 @@ dvips
 \end_layout
 
 \begin_layout Standard
-The program 
-\family typewriter
-dvipdfm
-\family default
- produces internally a DVI-file which is then converted to a PDF-file.
- It is a bit out of date and therefore the output could look different from
- what you want.
- 
-\family typewriter
-pdflatex
-\family default
- produces PDF-files directly and supports the latest PDF-file formats.
-\end_layout
-
-\begin_layout Standard
 If one of the menu entries 
 \family sans
 DVI
@@ -37773,15 +37877,6 @@ Reconfiguration of LyX
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-The menu 
-\family sans
-Custom
-\family default
- allows you to export your file by using special command line options for
- the export program.
 \end_layout
 
 \begin_layout Subsection
@@ -37932,7 +38027,7 @@ Selects the whole document.
 \end_layout
 
 \begin_layout Subsection
-Find & Replace
+Find & Replace (Quick)
 \end_layout
 
 \begin_layout Standard
@@ -37944,6 +38039,25 @@ Described in section
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Basic-Editing-Features"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Find & Replace (Advanced)
+\end_layout
+
+\begin_layout Standard
+Described in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Advanced-Find-and"
 
 \end_inset
 
@@ -38242,7 +38356,7 @@ View
 \begin_layout Standard
 This menu entry generates the output you have specified as default output
  format either in the preferences (see sec.
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -38253,7 +38367,7 @@ reference "sec:File-Formats"
 \end_inset
 
 ) or in the document settings (see sec.
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -38263,7 +38377,16 @@ reference "sec:Doc-Output"
 
 \end_inset
 
-), for instance PDF, and opens it in an appropriate viewer.
+) and opens it in an appropriate viewer.
+ The default output format is 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -38336,7 +38459,7 @@ View
 \begin_layout Standard
 The format used by this function is the default output format as specified
  in the preferences (see sec.
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -38347,7 +38470,7 @@ reference "sec:File-Formats"
 \end_inset
 
 ) or in the document settings (see sec.
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -38394,7 +38517,7 @@ Objects
 \begin_layout Standard
 The format used by this function is the default output format as specified
  in the preferences (see sec.
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -38405,7 +38528,7 @@ reference "sec:File-Formats"
 \end_inset
 
 ) or in the document settings (see sec.
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -38955,6 +39078,21 @@ reference "sub:Vertical-Space"
 \end_layout
 
 \begin_layout Description
+Phantom Inserts Phantom space, see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Phantom-Space"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
 Hyphenation
 \begin_inset space ~
 \end_inset
@@ -38967,21 +39105,6 @@ Point Inserts a hyphenation point, see section
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Hyphenation"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Description
-Phantom Inserts Phantom space, see section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Phantom-Space"
 
 \end_inset
 
@@ -39818,6 +39941,23 @@ Only active when the cursor is in front of a cross-reference.
  on a cross-reference box.
 \end_layout
 
+\begin_layout Subsection
+Forward Search
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 The Document Menu
 \begin_inset Index idx
@@ -39947,7 +40087,7 @@ The document settings are described in appendix
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:The-Document-Settings"
+reference "chap:The-Document-Settings"
 
 \end_inset
 
@@ -40127,7 +40267,7 @@ The preferences dialog is described in detail in appendix
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:The-Preferences-dialog"
+reference "chap:The-Preferences-dialog"
 
 \end_inset
 
@@ -42192,7 +42332,7 @@ Math
 The Document Settings
 \begin_inset CommandInset label
 LatexCommand label
-name "cha:The-Document-Settings"
+name "chap:The-Document-Settings"
 
 \end_inset
 
@@ -42261,8 +42401,11 @@ Predefined
  and you can decide to use them or not.
  If you don't exactly know what the default class options are for, it is
  recommended not to touch them.
- The graphics driver is used for LaTeX's graphics, color and page layout
- packages.
+ The 
+\family sans
+Graphics driver
+\family default
+ is used for LaTeX's graphics, color and page layout packages.
  When using 
 \family sans
 Default
@@ -42324,6 +42467,50 @@ Embedded
 Objects
 \emph default
  manual.
+\end_layout
+
+\begin_layout Standard
+There is also an option to suppress the date and one to use the LaTeX-package
+ 
+\series bold
+refstyle
+\series default
+ instead of 
+\series bold
+prettyref
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! prettyref
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! refstyle
+\end_layout
+
+\end_inset
+
+ for cross-references, see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Cross-References"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -43550,16 +43737,16 @@ View
 \family sans
 Tools\SpecialChar \menuseparator
 Preferences\SpecialChar \menuseparator
-File Formats; see 
+File Formats
 \family default
-
+, see 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "sec:File-Formats"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Description
@@ -43652,7 +43839,7 @@ Preferences
  Dialog
 \begin_inset CommandInset label
 LatexCommand label
-name "cha:The-Preferences-dialog"
+name "chap:The-Preferences-dialog"
 
 \end_inset
 
@@ -47390,6 +47577,102 @@ status collapsed
 \begin_layout Plain Layout
 
 ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "prettyref"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf"
+
+\end_inset
+
+ of the LaTeX-package 
+\series bold
+prettyref
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! prettyref
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "refstyle"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "http://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf"
+
+\end_inset
+
+ of the LaTeX-package 
+\series bold
+refstyle
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! refstyle
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf
 \end_layout
 
 \end_inset
