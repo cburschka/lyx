@@ -22,6 +22,8 @@
 #include "support/qstring_helpers.h"
 #include "support/filetools.h"
 
+#include <algorithm>
+
 #include <QLineEdit>
 #include <QListWidget>
 #include <QPushButton>
@@ -65,10 +67,17 @@ void GuiSendTo::changed_adaptor()
 	changed();
 }
 
+namespace {
+bool formatSorter(Format const * lhs, Format const * rhs) {
+	return lhs->prettyname() < rhs->prettyname();
+}
+} // end namespace
 
 void GuiSendTo::updateContents()
 {
 	all_formats_ = buffer().params().exportableFormats(false);
+	
+	sort(all_formats_.begin(), all_formats_.end(), formatSorter);
 
 	// Save the current selection if any
 	Format const * current_format = 0;
