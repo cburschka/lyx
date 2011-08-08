@@ -40048,7 +40048,11 @@ LaTeX-Paket ! refstyle
 \lang english
  for cross-references
 \lang ngerman
-, siehe 
+, siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Querverweise"
@@ -45034,6 +45038,7 @@ LaTeX-Paket ! nomencl
 status collapsed
 
 \begin_layout Plain Layout
+
 ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf
 \end_layout
 
@@ -45081,6 +45086,7 @@ LaTeX-Paket ! prettyref
 status collapsed
 
 \begin_layout Plain Layout
+
 http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf
 \end_layout
 
@@ -45128,6 +45134,7 @@ LaTeX-Paket ! refstyle
 status collapsed
 
 \begin_layout Plain Layout
+
 http://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf
 \end_layout
 

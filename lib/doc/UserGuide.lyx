@@ -42499,7 +42499,11 @@ LaTeX-packages ! refstyle
 
 \end_inset
 
- for cross-references, see 
+ for cross-references, see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Cross-References"
