@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>LanguageUi</class>
  <widget class="QWidget" name="LanguageUi">
@@ -139,7 +140,7 @@
      <item>
       <widget class="QLineEdit" name="languagePackageED">
        <property name="toolTip">
-        <string>Enter the command to load the language package (default: babel)</string>
+        <string>Enter the command to load the language package (default: \usepackage{babel})</string>
        </property>
       </widget>
      </item>
