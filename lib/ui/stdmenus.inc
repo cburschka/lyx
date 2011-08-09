@@ -581,11 +581,11 @@ Menuset
 	End
 
 	Menu "examples"
-		Item "Linguistics Manual|L" "help-open linguistics"
 		Item "Braille Manual|B" "help-open Braille"
-		Item "XY-pic Manual|X" "help-open xypic"
-		Item "Multicolumn Manual|M" "help-open multicol"
 		Item "Feynman-diagram Manual|F" "help-open FeynmanDiagrams"
+		Item "Linguistics Manual|L" "help-open linguistics"
+		Item "Multicolumn Manual|M" "help-open multicol"
+		Item "XY-pic Manual|X" "help-open xypic"
 	End
 
 
