@@ -508,7 +508,7 @@ def checkFormatEntries(dtl_tools):
 \Format asciixfig  asc    "Plain text (Xfig output)"   "" ""	"%%"	""
 \Format dateout    tmp    "date (output)"         "" ""	"%%"	""
 \Format docbook    sgml    DocBook                B  ""	"%%"	"document,menu=export"
-\Format docbook-xml xml   "Docbook (XML)"         "" ""	"%%"	"document,menu=export"
+\Format docbook-xml xml   "DocBook (XML)"         "" ""	"%%"	"document,menu=export"
 \Format dot        dot    "Graphviz Dot"          "" ""	"%%"	"vector"
 \Format platex     tex    "LaTeX (pLaTeX)"        "" "" "%%"    "document,menu=export"
 \Format literate   nw      NoWeb                  N  ""	"%%"	"document,menu=export"
