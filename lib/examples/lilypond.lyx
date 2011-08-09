@@ -82,6 +82,10 @@ lilypond
 LilyPond-book and LyX
 \end_layout
 
+\begin_layout Author
+Julien Rioux
+\end_layout
+
 \begin_layout Abstract
 This is an example file demonstrating the inclusion of musical snippets
  in a LyX document, using the LilyPond music notation and the LilyPond-book
@@ -95,9 +99,12 @@ Using LilyPond code within LyX
 \begin_layout Standard
 Support for LilyPond constructs (LilyPond code) within LyX is enabled by
  adding the LilyPond module to your document.
- This is done from the menu Document \SpecialChar \menuseparator
- Settings..., then selecting LilyPond
- in the list of modules.
+ This is done from the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings
+\family default
+, then selecting LilyPond in the list of modules.
  You can use any LaTeX-based LyX layout and use the regular preview and
  export mechanism; LyX will take care of processing the LaTeX code through
  LilyPond-book for you.
@@ -109,15 +116,12 @@ Support for LilyPond constructs (LilyPond code) within LyX is enabled by
 Requirements
 \end_layout
 
-\begin_layout Itemize
-LilyPond-book version 2.13
-\end_layout
-
-\begin_layout Paragraph
-Notes:
-\end_layout
-
 \begin_layout Standard
+LilyPond-book version 2.13 or newer
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
 LilyPond-book supports LaTeX output since version 2.1.
  However, some features used by LyX are available only in recent versions:
  PDFLaTeX support (version 2.9), the 
@@ -131,17 +135,29 @@ LilyPond-book supports LaTeX output since version 2.1.
  flag (version 2.13).
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Integration
 \end_layout
 
 \begin_layout Standard
-The module provides a LilyPond inset which you insert from the menu Insert
- \SpecialChar \menuseparator
- Custom Insets.
+The module provides a LilyPond inset which you insert from the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Custom
+\begin_inset space ~
+\end_inset
+
+Insets
+\family default
+.
  This inset is for typing the LilyPond code which will be typeset into your
  musical notes.
- First, let's try a simple scale:
+ First, let us try a simple scale:
 \end_layout
 
 \begin_layout Standard
@@ -214,9 +230,13 @@ includegraphics{\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Standard
-Thus, the conversion path is as follow: LyX\SpecialChar \menuseparator
+Thus, the conversion path is as follow: 
+\family sans
+LyX\SpecialChar \menuseparator
 LilyPond-book\SpecialChar \menuseparator
-LaTeX.
+LaTeX
+\family default
+.
  Every step of the tool chain obeys your spacing, so whether you put the
  musical extract in line, or in its own paragraph, centered, left-aligned,
  etc., what you see in the LyX window should be respected in the final format.
@@ -250,8 +270,12 @@ Previews
 It is possible to have a direct feedback of what the music notation looks
  like from within LyX.
  To do this, wrap a LilyPond inset inside a Preview inset, which you find
- from the menu Insert \SpecialChar \menuseparator
- Preview.
+ from the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Preview
+\family default
+.
  This only affects the display within LyX, not the output:
 \end_layout
 
@@ -260,7 +284,7 @@ It is possible to have a direct feedback of what the music notation looks
 
 \begin_layout Standard
 \begin_inset Flex LilyPond
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -330,9 +354,17 @@ Include Type
 \begin_inset Quotes erd
 \end_inset
 
- under Insert\SpecialChar \menuseparator
+ under 
+\family sans
+Insert\SpecialChar \menuseparator
 File\SpecialChar \menuseparator
-Child Document, you will get an error when producing output.
+Child
+\begin_inset space ~
+\end_inset
+
+Document
+\family default
+, you will get an error when producing output.
  This is due to the way LilyPond-book automatically processes these input
  files recursively.
  Since there is currently no command-line option to turn off this behavior
@@ -376,8 +408,12 @@ usepackage{graphicx}
 \end_layout
 
 \begin_layout Standard
-to your master document's preamble under Document\SpecialChar \menuseparator
-Settings.
+to your master document's preamble under 
+\family sans
+Document\SpecialChar \menuseparator
+Settings
+\family default
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -444,7 +480,7 @@ With surrounding braces, all is well:
 
 \begin_layout Standard
 \begin_inset Flex LilyPond
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
