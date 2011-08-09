@@ -2925,6 +2925,13 @@ Notez : Certains modules ont besoin d'autres modules et que certaines paires
 
 \begin_layout Subsubsection
 Format local
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Format-local"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -37345,7 +37352,33 @@ status collapsed
 \end_inset
 
 yX format de la version spéciale de LyX 1.4.x pour le chinois, le japonais
- et le coréen (CJK) ; depuis LyX 1.5.0 le support CJK est intégré à LyX.
+ et le coréen (CJK) 
+\begin_inset Newline newline
+\end_inset
+
+Depuis LyX 1.5.0 le support CJK est intégré à LyX.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+DocBook text file with code in the language SGML that is used for the markup
+ language 
+\family typewriter
+DocBook
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Docbook
+\begin_inset space ~
+\end_inset
+
+(XML) text file with code in the language XML that is used for the markup
+ language 
+\family typewriter
+DocBook
 \end_layout
 
 \begin_layout Description
@@ -37354,7 +37387,9 @@ DraftDVI
 LaTeX's native DVI-format.
  This format is not suitable if you have special characters or spaces in
  files paths or file names in your document.
- LyX use this format internally as a pre-stage to export to 
+ LyX use this format internally as a pre-stage to export to
+\lang french
+ 
 \family sans
 DVI
 \family default
@@ -37388,6 +37423,24 @@ DVI-format using the program
 LuaTeX
 \family default
 ; supports Unicode and the usage of non-TeX fonts
+\end_layout
+
+\begin_layout Description
+Graphviz
+\begin_inset space ~
+\end_inset
+
+Dot 
+\lang english
+text file with code in the programming language 
+\family typewriter
+Dot
+\family default
+ that is used to draw visualizations of graphs via the program
+\lang french
+ 
+\family typewriter
+Graphviz
 \end_layout
 
 \begin_layout Description
@@ -37446,7 +37499,9 @@ status collapsed
 
 eX) 
 \lang english
-text file with the LaTeX source that it is compilable with the program 
+text file with the LaTeX source that it is compilable with the program
+\lang french
+ 
 \family typewriter
 LuaTeX
 \end_layout
@@ -37530,9 +37585,44 @@ status collapsed
 
 eX) 
 \lang english
-text file with the LaTeX source that it is compilable with the program 
+text file with the LaTeX source that it is compilable with the program
+\lang french
+ 
 \family typewriter
 XeTeX
+\end_layout
+
+\begin_layout Description
+
+\lang english
+LilyPond
+\begin_inset space ~
+\end_inset
+
+book
+\begin_inset space ~
+\end_inset
+
+(La
+\family sans
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family default
+TeX) text file with the LaTeX source and also code in the syntax of the
+ music notation software
+\family typewriter
+\lang french
+ LilyPond
 \end_layout
 
 \begin_layout Description
@@ -37616,6 +37706,14 @@ status collapsed
 yXHTML 
 \lang english
 HTML-format using LyX's internal XHTML engine
+\end_layout
+
+\begin_layout Description
+
+\lang english
+NoWeb text file with code in the format of the literate programming language
+\family typewriter
+ NoWeb
 \end_layout
 
 \begin_layout Description
@@ -37750,6 +37848,30 @@ ps2ascii
 Postscript format PostScript en utilisant le programme 
 \family typewriter
 dvips
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Sweave text file with the LaTeX source and also code in the statistical
+ programming language 
+\family typewriter
+R
+\family default
+.
+ Using the 
+\family typewriter
+R
+\family default
+-function 
+\family typewriter
+Sweave
+\family default
+ it is possible to use 
+\family typewriter
+R
+\family default
+-commands in LaTeX
 \end_layout
 
 \begin_layout Standard
@@ -42787,6 +42909,31 @@ reference "sub:Modules"
 \end_layout
 
 \begin_layout Section
+Format local
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+See section
+\begin_inset space ~
+\end_inset
+
+
+\lang french
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Format-local"
+
+\end_inset
+
+
+\lang english
+ for a description.
+\end_layout
+
+\begin_layout Section
 Polices
 \end_layout
 
@@ -42822,16 +42969,6 @@ e à l'écran.
  Ces modifications d'affichages ne sont pas pratiques, sont souvent illisibles
  et sont en contradiction avec le concept WYSIWYM.
  Par contre tout sera comme vous l'avez voulu à l'impression.
-\end_layout
-
-\begin_layout Standard
-Les réglages de l'environnement Listing sont décrits dans la section corresponda
-nte du manuel 
-\emph on
-Objets insérés
-\emph default
-.
- 
 \end_layout
 
 \begin_layout Section
@@ -42881,6 +43018,13 @@ reference "sub:Marges"
 
 \begin_layout Section
 Langue
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Langue"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -42899,12 +43043,16 @@ La langue du document et le style des guillemet peuvent être définis ici.
  vers LaTeX (le fichier de LyX est toujours codé en utf8).
  Tous les caractères qui ne peuvent pas être encodés avec l'encodage spécifié
  seront exportés comme des commandes LaTeX (ce qui échoue si on ne connaît
- pas de commande LaTeX pour un caractère particulier)
+ pas de commande LaTeX pour un caractère particulier).
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Les commandes connues sont définies dans un fichier texte.
+Les commandes connues sont définies dans un fichier texte (
+\emph on
+unicodesymbols
+\emph default
+).
  Vous pouvez donc ajouter vous-même des commandes pour un caractère inconnu
  à ce fichier, voyez le manuel 
 \size normal
@@ -42917,7 +43065,7 @@ Personnalisation
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -43012,6 +43160,125 @@ reference "sec:Formats-des-fichiers-en-sortie"
 
 ), donc si les options décrites plus haut échouent, vous pouvez toujours
  essayer l'un de ces deux nouveux moteurs de rendu.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The 
+\family sans
+Language
+\begin_inset space ~
+\end_inset
+
+package
+\family default
+ determines the LaTeX-package that is used for hyphenation and the translation
+ of strings like 
+\begin_inset Quotes fld
+\end_inset
+
+Part
+\begin_inset Quotes frd
+\end_inset
+
+.
+ The possible settings are:
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Default is the package
+\lang french
+ 
+\series bold
+babel
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages LaTeX ! babel
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Automatic 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+TODO
+\end_layout
+
+\end_inset
+
+??
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Always
+\begin_inset space ~
+\end_inset
+
+Babel uses in every case 
+\series bold
+babel
+\series default
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Custom allows you to specify a language package command of your choice.
+ For example, if you want to use XeTeX and therefore want to the package
+ 
+\series bold
+polyglossia
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages LaTeX ! polyglossia
+\end_layout
+
+\end_inset
+
+ instead of 
+\series bold
+babel
+\series default
+, type in
+\series bold
+
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+usepackage{polyglossia}
+\end_layout
+
+\begin_layout Description
+
+\lang english
+None will not use a language package.
+ This necessary for some document classes for scientific articles.
 \end_layout
 
 \begin_layout Standard
@@ -43744,7 +44011,30 @@ Paquetages LaTeX ! jurabib
 \end_inset
 
 .
- Pour plus d'information voir la section
+ 
+\lang english
+You can enable subdivided bibliographies using the LaTeX package 
+\series bold
+bibtopic
+\series default
+\lang french
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages LaTeX ! bibtopic
+\end_layout
+
+\end_inset
+
+
+\lang english
+ and you can customize how the bibliography of the given document is being
+ generated.
+ 
+\lang french
+Pour plus d'information voir la section
 \begin_inset space ~
 \end_inset
 
@@ -43821,7 +44111,7 @@ Paquetages LaTeX ! amsmath
 
 \end_inset
 
- et 
+, 
 \series bold
 esint
 \series default
@@ -43835,25 +44125,87 @@ Paquetages LaTeX ! esint
 
 \end_inset
 
+, 
+\series bold
+mathdots
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages LaTeX ! mathdots
+\end_layout
+
+\end_inset
+
+ et 
+\series bold
+mhchem
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages LaTeX ! mhchem
+\end_layout
+
+\end_inset
+
  ou alors à ne les utiliser que si nécessaire.
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-amsmath
-\series default
- est nécessaire pour plusieurs constructions mathématiques, donc, si vous
- avez des erreurs LaTeX dans des formules, vérifiez que vous avez autorisé
- les paquetages AMS.
+\begin_layout Description
+amsmath est nécessaire pour plusieurs constructions mathématiques, donc,
+ si vous avez des erreurs LaTeX dans des formules, vérifiez que vous avez
+ autorisé les paquetages AMS.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+esint est utilisé pour des signes d'intégration spéciaux
+\lang english
+, see section 
+\emph on
+Big
+\begin_inset space ~
+\end_inset
 
-\series bold
-esint
-\series default
- est utilisé pour des signes d'intégration spéciaux.
+Operators
+\emph default
+ of the 
+\emph on
+Math
+\emph default
+ manual.
+\end_layout
+
+\begin_layout Description
+mathdots est utilisé pour
+\lang english
+ special ellipses, see section 
+\emph on
+Ellipses
+\emph default
+ of the 
+\emph on
+Math
+\emph default
+ manual.
+\end_layout
+
+\begin_layout Description
+mhchem est utilisé pour
+\lang english
+ chemical equations, see section 
+\emph on
+Chemical Symbols and Equations
+\emph default
+ of the 
+\emph on
+Math
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Section
@@ -43871,15 +44223,34 @@ Float
 
 Placement
 \emph default
- of the 
+ 
+\lang french
+du manuel 
 \emph on
-Embedded
-\begin_inset space ~
-\end_inset
-
-Objects
+Objets insérés
 \emph default
- manual.
+.
+\end_layout
+
+\begin_layout Section
+
+\lang english
+Listings
+\end_layout
+
+\begin_layout Standard
+Les réglages de l'environnement Listing sont décrits dans 
+\lang english
+chapter 
+\emph on
+Program Code Listings
+\emph default
+\lang french
+ du manuel 
+\emph on
+Objets insérés
+\emph default
+.
 \end_layout
 
 \begin_layout Section
@@ -43996,6 +44367,14 @@ File Formats
 \family default
 \lang french
 , see 
+\lang english
+sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\lang french
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Formats-de-Fichiers"
@@ -44016,19 +44395,29 @@ with
 \begin_inset space ~
 \end_inset
 
-Output
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-TODO!
-\end_layout
-
+Output settings for the menu 
+\family sans
+Navigate\SpecialChar \menuseparator
+Forward
+\begin_inset space ~
 \end_inset
 
+search
+\family default
+.
+ For a detailed description see section 
+\emph on
+Reverse DVI/PDF search
+\emph default
+ of the 
+\emph on
+Additional
+\begin_inset space ~
+\end_inset
 
+Features
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Description
@@ -44042,19 +44431,46 @@ Output
 \begin_inset space ~
 \end_inset
 
-Options
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-TODO!
-\end_layout
-
+Options settings for the export format 
+\family sans
+LyXHTML
+\family default
+.
+ 
+\family sans
+Strict XHTML
+\begin_inset space ~
 \end_inset
 
+1.1
+\family default
+ will assure that the output follows exactly version
+\begin_inset space ~
+\end_inset
 
+1.1 of the XHTML standard.
+ The different 
+\family sans
+Math
+\begin_inset space ~
+\end_inset
+
+output
+\family default
+ settings are described in detail in section 
+\emph on
+Math Output in XHTML
+\emph default
+ of the 
+\emph on
+Additional
+\begin_inset space ~
+\end_inset
+
+Features
+\emph default
+ manual.
+ The scaling is used for the size of equations in the output.
 \end_layout
 
 \begin_layout Section
@@ -45376,7 +45792,7 @@ Example
 \family typewriter
 JabRef
 \family default
- bearbeiten.
+.
  In 
 \family typewriter
 JabRef
@@ -45565,62 +45981,80 @@ Paquetage
 \begin_inset space ~
 \end_inset
 
-linguistique est la commande LaTeX qui parmet de charger le paquetage LaTeX
- qui gère les problèmes linguistiques.
- La valeur implicite est 
-\family sans
+linguistique 
+\lang english
+determines which LaTeX package should be loaded to handle language issues.
+ Language issues which are handled by this package include proper hyphenation
+ as well as localization of dates and text strings such as 
+\begin_inset Quotes eld
+\end_inset
 
-\backslash
-usepackage{babel}
-\family default
- qui charge le paquetage 
+Chapter
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+Table
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The most widespread language package is 
 \series bold
 babel
-\begin_inset Foot
+\series default
+\lang french
+
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Pour une introduction à la syntaxe LaTeX, voyez la section
-\begin_inset space ~
+Paquetages LaTeX ! babel
+\end_layout
+
+\end_inset
+
+
+\lang english
+, it is the default language package in classic LaTeX.
+ However, more recent typesetting engines such as XeTeX and LuaTeX come
+ with the alternative language package 
+\series bold
+polyglossia
+\series default
+\lang french
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages LaTeX ! polyglossia
+\end_layout
+
+\end_inset
+
+
+\lang english
+ that is more suited for the multi-script support of these engines.
+ Furthermore, there are also specific language packages for languages not
+ covered by babel.
+ The available selections are described in sec.
+\lang french
+
+\begin_inset space \thinspace{}
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Code-TeX"
-
-\end_inset
-
-
-\end_layout
+reference "sec:Langue"
 
 \end_inset
 
 .
-
-\series default
- 
-\series bold
-
-\begin_inset Newline newline
-\end_inset
-
-Babel
-\series default
- traduit automatiquement en interne certain mots dans la langue du document.
- Par exemple le mot 
-\begin_inset Quotes eld
-\end_inset
-
-Tableau
-\begin_inset Quotes erd
-\end_inset
-
- qui est mis au début de toutes les légendes de tableau provient de la traductio
-n de babel.
-
-\series bold
- 
 \end_layout
 
 \begin_layout Description
