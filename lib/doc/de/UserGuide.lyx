@@ -2971,6 +2971,13 @@ Achtung:
 
 \begin_layout Subsubsection
 Lokales Format
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Lokales-Format"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -35097,6 +35104,28 @@ yX Format der speziellen LyX
 \end_layout
 
 \begin_layout Description
+
+\lang english
+DocBook text file with code in the language SGML that is used for the markup
+ language 
+\family typewriter
+DocBook
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Docbook
+\begin_inset space ~
+\end_inset
+
+(XML) text file with code in the language XML that is used for the markup
+ language 
+\family typewriter
+DocBook
+\end_layout
+
+\begin_layout Description
 DraftDVI LaTeXs natives DVI-Format.
  Dieses Format ist nicht geeignet, wenn Sie Sonder- oder Leerzeichen für
  Dateinamen oder -pfade im Dokument verwenden.
@@ -35132,6 +35161,24 @@ eX) DVI-Format unter Verwendung des Programms
 LuaTeX
 \family default
 ; unterstützt Unicode und die Verwendung von nicht-TeX Schriften
+\end_layout
+
+\begin_layout Description
+Graphviz
+\begin_inset space ~
+\end_inset
+
+Dot 
+\lang english
+text file with code in the programming language 
+\family typewriter
+Dot
+\family default
+ that is used to draw visualizations of graphs via the program
+\lang ngerman
+ 
+\family typewriter
+Graphviz
 \end_layout
 
 \begin_layout Description
@@ -35279,6 +35326,39 @@ XeTeX
 \end_layout
 
 \begin_layout Description
+
+\lang english
+LilyPond
+\begin_inset space ~
+\end_inset
+
+book
+\begin_inset space ~
+\end_inset
+
+(La
+\family sans
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family default
+TeX) text file with the LaTeX source and also code in the syntax of the
+ music notation software
+\family typewriter
+\lang ngerman
+ LilyPond
+\end_layout
+
+\begin_layout Description
 L
 \begin_inset ERT
 status collapsed
@@ -35348,6 +35428,14 @@ status collapsed
 \end_inset
 
 yXHTML HTML-Format, unter Verwendung von LyXs internem XHTML-Konverter
+\end_layout
+
+\begin_layout Description
+
+\lang english
+NoWeb text file with code in the format of the literate programming language
+\family typewriter
+ NoWeb
 \end_layout
 
 \begin_layout Description
@@ -35482,6 +35570,30 @@ ps2ascii
 Postscript PostScript Format unter Verwendung des Programms 
 \family typewriter
 dvips
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Sweave text file with the LaTeX source and also code in the statistical
+ programming language 
+\family typewriter
+R
+\family default
+.
+ Using the 
+\family typewriter
+R
+\family default
+-function 
+\family typewriter
+Sweave
+\family default
+ it is possible to use 
+\family typewriter
+R
+\family default
+-commands in LaTeX
 \end_layout
 
 \begin_layout Standard
@@ -40274,6 +40386,25 @@ reference "sub:Module"
 \end_layout
 
 \begin_layout Section
+Lokales Format
+\end_layout
+
+\begin_layout Standard
+Siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Lokales-Format"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
 Schriften
 \end_layout
 
@@ -40311,17 +40442,6 @@ You can specify if paragraphs should be separated by indentations or vertical
 Note that LyX won't show two columns or the set up line spacing on screen.
  That's impractical, often unreadable, and not part of the WYSIWYM concept.
  However, it will be as you specified it in the output.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-The listings settings are explained in the corresponding section in the
- 
-\emph on
-Embedded Objects
-\emph default
- manual.
 \end_layout
 
 \begin_layout Section
@@ -40371,6 +40491,13 @@ reference "sub:Seitenränder"
 
 \begin_layout Section
 Sprache
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Sprache"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -40410,8 +40537,7 @@ Voreinstellung der Sprache
  verwendet, wählt LyX die Standard-Kodierung für die Grundsprache und auch
  für einzelne Textpassagen in anderen Sprachen.
  Wenn Ihr Dokument also mehrsprachig ist, werden in diesem Fall gegebenenfalls
- mehrere Kodierungen für das LaTeX-Dokument verwendet (LaTeX kann problemlos
- mit Mehrfachkodierungen umgehen).
+ mehrere Kodierungen für das LaTeX-Dokument verwendet.
  wenn Sie diese Option jedoch nicht wählen, wird die von Ihnen gewählte
  Kodierung für alle Sprachen im Dokument verwendet, was zu Problemen führen
  kann, wenn die gewählte Kodierung für eine der verwendeten Sprachen nicht
@@ -40443,8 +40569,7 @@ Voreinstellung der Sprache
  Mit neueren TeX-Alternativen wir XeTeX und LuaTeX gibt es diese Probleme
  in aller Regel nicht, denn sie wurden von Anfang an auf Unicode-Unterstützung
  angelegt.
- LyX unterstützt beide dieser TeX-Alternativen (über die Ausgabeformate
- 
+ LyX unterstützt beide dieser TeX-Alternativen über die Ausgabeformate 
 \family sans
 PDF
 \begin_inset space ~
@@ -40490,7 +40615,7 @@ DVI
 
 (LuaTeX)
 \family default
-; siehe Abschnitt
+, siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40501,12 +40626,119 @@ reference "sub:Ausgabe-Dateiformate"
 
 \end_inset
 
-), Sie können also auf diese zurückgreifen, wenn Sie mit vielen Sonderzeichen
- arbeiten und die oben beschriebenen Möglichkeiten scheitern.
+.
+ Sie können also auf diese zurückgreifen, wenn Sie mit vielen Sonderzeichen
+ oder Akzenten arbeiten und 
+\family sans
+Voreinstellung der Sprache
+\family default
+ nicht funktioniert.
 \end_layout
 
 \begin_layout Standard
-Im Folgenden werden die von LyX unterstützten Kodierungen kurz vorgestellt:
+Das 
+\family sans
+Sprachpaket
+\family default
+ legt das LaTeX-Paket fest, das für die Silbentrennung und Übersetzung von
+ Ausdrücken wie 
+\begin_inset Quotes gld
+\end_inset
+
+Teil
+\begin_inset Quotes grd
+\end_inset
+
+ verwendet wird.
+ Die möglichen Einstellungen sind:
+\end_layout
+
+\begin_layout Description
+Standard ist das Paket 
+\series bold
+babel
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! babel
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Automatisch 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+TODO
+\end_layout
+
+\end_inset
+
+??
+\end_layout
+
+\begin_layout Description
+Immer
+\begin_inset space ~
+\end_inset
+
+Babel verwendet 
+\series bold
+babel
+\series default
+ in jedem Fall.
+\end_layout
+
+\begin_layout Description
+Benutzerdefiniert erlaubt es einen Befehl für ein Sprachpaket ihrer Wahl
+ festzulegen.
+ Zum Beispiel, wenn Sie XeTeX verwenden wollen und daher das Sprachpaket
+ 
+\series bold
+polyglossia
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! polyglossia
+\end_layout
+
+\end_inset
+
+ statt 
+\series bold
+babel
+\series default
+ benutzen wollen, schreiben Sie
+\series bold
+
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+usepackage{polyglossia}
+\end_layout
+
+\begin_layout Description
+Keines verwendet kein Sprachpaket.
+ Dies ist für einige Dokumentklassen für wissenschaftliche Artikel notwendig.
+\end_layout
+
+\begin_layout Standard
+Hier ist eine Liste mit den wichtigen Kodierungen:
 \end_layout
 
 \begin_layout Description
@@ -41208,26 +41440,26 @@ Inhaltsverzeichnis
 
 \begin_layout Standard
 Siehe Abschnitt
-\begin_inset space \space{}
+\begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sub:Nummerierung-aendern"
 
 \end_inset
 
 , 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sec:Inhaltsverzeichnis"
 
 \end_inset
 
  und Punkt 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "Nummerierung"
 
 \end_inset
@@ -41239,47 +41471,64 @@ reference "Nummerierung"
 Literaturverzeichnis
 \end_layout
 
-\begin_layout Description
-Zitierstil Verwenden Sie 
-\family sans
-Standard (nummerisch)
-\family default
-, wenn Ihnen 
-\family sans
-Natbib
-\family default
- oder 
-\family sans
-Jurabib
-\family default
- nichts sagen.
- Mehr über Literaturverzeichnisse finden Sie in Abschnitt
-\begin_inset space \space{}
+\begin_layout Standard
+
+\lang english
+You can specify here a citation style using the LaTeX packages 
+\series bold
+natbib
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! natbib
+\end_layout
+
 \end_inset
 
+ or 
+\series bold
+jurabib
+\series default
 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Literaturverzeichnis"
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! jurabib
+\end_layout
 
 \end_inset
 
 .
+ You can enable subdivided bibliographies using the LaTeX package 
+\series bold
+bibtopic
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! bibtopic
 \end_layout
 
-\begin_layout Description
-Abschnittsspezifisches
+\end_inset
+
+ and you can customize how the bibliography of the given document is being
+ generated.
+ For a further description see section
 \begin_inset space ~
 \end_inset
 
-Literaturverzeichnis siehe Abschnitt
-\begin_inset space \space{}
-\end_inset
 
+\lang ngerman
 
 \begin_inset CommandInset ref
-LatexCommand vref
-reference "sec:Literaturverzeichnis-Datenbanken"
+LatexCommand ref
+reference "sec:Literaturverzeichnis"
 
 \end_inset
 
@@ -41346,7 +41595,7 @@ LaTeX-Paket ! amsmath
 
 \end_inset
 
- und 
+, 
 \series bold
 esint
 \series default
@@ -41360,7 +41609,35 @@ LaTeX-Paket ! esint
 
 \end_inset
 
- direkt zu benutzen oder automatisch, wenn sie benötigt werden.
+, 
+\series bold
+mathdots
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! mathdots
+\end_layout
+
+\end_inset
+
+ und 
+\series bold
+mhchem
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! mhchem
+\end_layout
+
+\end_inset
+
+, direkt zu benutzen oder automatisch, wenn sie benötigt werden.
 \end_layout
 
 \begin_layout Description
@@ -41368,28 +41645,52 @@ amsmath wird für viele Konstrukte benötigt.
  Wenn Sie viele LaTeX-Fehlermeldungen in Formeln bekommen, vergewissern
  Sie sich, dass Sie
 \family typewriter
- amsmath
+ 
+\family sans
+AMS-Mathe
 \family default
  aktiviert haben.
 \end_layout
 
 \begin_layout Description
-esint wird für spezielle Integralzeichen benötigt.
+esint wird für spezielle Integralzeichen benötigt, siehe Abschnitt 
+\emph on
+Große
+\begin_inset space ~
+\end_inset
+
+Operatoren
+\emph default
+ des 
+\emph on
+Mathe
+\emph default
+ Handbuchs.
 \end_layout
 
-\begin_layout Standard
-Siehe auch Abschnitt
-\begin_inset space \space{}
-\end_inset
+\begin_layout Description
+mathdots wird für spezielle Fortsetzungspunkte benötigt, siehe Abschnitt
+ 
+\emph on
+Fortsetzungspunkte
+\emph default
+ des 
+\emph on
+Mathe
+\emph default
+ Handbuchs.
+\end_layout
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Weitere-Symbole"
-
-\end_inset
-
-.
+\begin_layout Description
+mhchem wird für chemische Gleichungen benötigt, siehe Abschnitt 
+\emph on
+Chemische Symbole und Reaktionsgleichungen
+\emph default
+ des 
+\emph on
+Mathe
+\emph default
+ Handbuchs.
 \end_layout
 
 \begin_layout Section
@@ -41400,6 +41701,26 @@ Gleitobjekt-Platzierung
 Die Gleitobjekt-Platzierungsoptionen sind in Abschnitt 
 \emph on
 Beschriftungs-Platzierung
+\emph default
+ des 
+\emph on
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
+\emph default
+ Handbuchs beschrieben.
+\end_layout
+
+\begin_layout Section
+Listing
+\end_layout
+
+\begin_layout Standard
+Die Listing-Einstellungen sind in Kapitel 
+\emph on
+Programm-Code-Listen
 \emph default
  des 
 \emph on
@@ -41514,7 +41835,11 @@ Werkzeuge\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
 Dateiformate
 \family default
- festgelegt, siehe 
+ festgelegt, siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Dateiformate"
@@ -41537,31 +41862,64 @@ Ausgabe
 \begin_inset space ~
 \end_inset
 
-synchronisieren
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO!
-\end_layout
-
-\end_inset
-
-
+synchronisieren Einstellungen für das Menü 
+\family sans
+Navigieren\SpecialChar \menuseparator
+Vorwärtssuche
+\family default
+.
+ Siehe Abschnitt 
+\emph on
+\lang english
+Reverse DVI/PDF search
+\emph default
+\lang ngerman
+ der 
+\emph on
+Handbuchergänzungen
+\emph default
+ für eine detaillierte Beschreibung.
 \end_layout
 
 \begin_layout Description
-XHTML-Ausgabe-Optionen
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO!
-\end_layout
-
+XHTML-Ausgabe-Optionen Einstellungen für das Export-Format 
+\family sans
+LyXHTML
+\family default
+.
+ 
+\family sans
+Striktes XHTML
+\begin_inset space ~
 \end_inset
 
+1.1
+\family default
+ stellt sicher, das die Ausgabe exakt mit Version
+\begin_inset space ~
+\end_inset
 
+1.1 des XHTML-Standards übereinstimmt.
+ Die verschiedenen Einstellungen für die 
+\family sans
+Mathe
+\begin_inset space ~
+\end_inset
+
+Ausgabe
+\family default
+ sind im Detail in Abschnitt 
+\emph on
+\lang english
+Math Output in XHTML
+\emph default
+\lang ngerman
+ der 
+\emph on
+Handbuchergänzungen
+\emph default
+ beschrieben.
+ Die Skalierung wird für die Größe von Gleichungen in der Ausgabe verwendet.
 \end_layout
 
 \begin_layout Section
@@ -43037,74 +43395,50 @@ Kapitel
 \series bold
 babel
 \series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! babel
+\end_layout
+
+\end_inset
+
 , das Standard-Sprachpaket im klassischen LaTeX.
- Für moderne TeX-Alternativen wie XeTeX und LuaTeX gibt es allerdings ein
- alternatives Sprachpaket (
+ Für moderne TeX-Alternativen wie XeTeX und LuaTeX gibt es allerdings das
+ alternative Sprachpaket 
 \series bold
 polyglossia
 \series default
-), welches die umfassende Unterstützung dieser Programme für verschiedenartige
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! polyglossia
+\end_layout
+
+\end_inset
+
+, welches die umfassende Unterstützung dieser Programme für verschiedenartige
  Schriftsysteme voll ausnutzt.
  Außerdem gibt es auch noch spezifische Sprachpakete für Sprachen, die von
  babel (noch) nicht unterstützt werden.
-\begin_inset Newline newline
+ Die möglichen Einstellungen sind in Abschnitt
+\begin_inset space ~
 \end_inset
 
-Zur Auswahl steht:
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Sprache"
+
+\end_inset
+
+ beschrieben.
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-\noindent
-
-\series bold
-Automatisch
-\series default
-:
-\series bold
- 
-\series default
-Wählt für das verwendete TeX-Programm geeignetste Sprachpaket automatisch
- aus (Voreinstellung)
-\end_layout
-
-\begin_layout Itemize
-\noindent
-
-\series bold
-Immer Babel: 
-\series default
-Verwendet immer babel, auch wenn ein anderes Paket (bspw.
- polyglossia) von der automatischen Einstellung vorgezogen worden wäre;
- in erster Linie ermöglicht es diese Einstellung, XeTeX und LuaTeX mit babel
- zu verwenden.
-\end_layout
-
-\begin_layout Itemize
-\noindent
-
-\series bold
-Benutzerdefiniert: 
-\series default
-Hier können Sie ein beliebiges Sprachpaket (via 
-\series bold
-
-\backslash
-usepackage{Paketname}
-\series default
-) definieren.
-\end_layout
-
-\begin_layout Itemize
-\noindent
-
-\series bold
-Keines: 
-\series default
-Lädt überhaupt kein Sprachpaket
-\end_layout
-
-\end_deeper
 \begin_layout Description
 Standard-Dezimalzeichen Legen Sie hier den Standard-Dezimaltrenner fest,
  welcher für die Ausrichtung am Dezimalzeichen in Tabellen verwendet wird.

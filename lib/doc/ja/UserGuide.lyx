@@ -3653,6 +3653,13 @@ status open
 
 \lang english
 Local Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Local-Layout"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -43142,6 +43149,34 @@ status collapsed
 
 \family default
 yX 日中韓（CJK）版LyX 1.4.xの形式
+\lang english
+
+\begin_inset Newline newline
+\end_inset
+
+ Since LyX 1.5.0 CJK support is fully integrated to LyX.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+DocBook text file with code in the language SGML that is used for the markup
+ language 
+\family typewriter
+DocBook
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Docbook
+\begin_inset space ~
+\end_inset
+
+(XML) text file with code in the language XML that is used for the markup
+ language 
+\family typewriter
+DocBook
 \end_layout
 
 \begin_layout Description
@@ -43184,6 +43219,24 @@ DVI-format using the program
 LuaTeX
 \family default
 ; supports Unicode and the usage of non-TeX fonts
+\end_layout
+
+\begin_layout Description
+Graphviz
+\begin_inset space ~
+\end_inset
+
+Dot 
+\lang english
+text file with code in the programming language 
+\family typewriter
+Dot
+\family default
+ that is used to draw visualizations of graphs via the program
+\lang japanese
+ 
+\family typewriter
+Graphviz
 \end_layout
 
 \begin_layout Description
@@ -43250,7 +43303,9 @@ eX
 ) 
 \family default
 \lang english
-text file with the LaTeX source that it is compilable with the program 
+text file with the LaTeX source that it is compilable with the program
+\lang japanese
+ 
 \family typewriter
 LuaTeX
 \end_layout
@@ -43341,9 +43396,44 @@ eX
 ) 
 \family default
 \lang english
-text file with the LaTeX source that it is compilable with the program 
+text file with the LaTeX source that it is compilable with the program
+\lang japanese
+ 
 \family typewriter
 XeTeX
+\end_layout
+
+\begin_layout Description
+
+\lang english
+LilyPond
+\begin_inset space ~
+\end_inset
+
+book
+\begin_inset space ~
+\end_inset
+
+(La
+\family sans
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family default
+TeX) text file with the LaTeX source and also code in the syntax of the
+ music notation software
+\family typewriter
+\lang japanese
+ LilyPond
 \end_layout
 
 \begin_layout Description
@@ -43425,6 +43515,14 @@ status collapsed
 yXHTML 
 \lang english
 HTML-format using LyX's internal XHTML engine
+\end_layout
+
+\begin_layout Description
+
+\lang english
+NoWeb text file with code in the format of the literate programming language
+\family typewriter
+ NoWeb
 \end_layout
 
 \begin_layout Description
@@ -43565,6 +43663,30 @@ Postscript
 dvips
 \family default
 プログラムを使用して変換するPostScript形式
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Sweave text file with the LaTeX source and also code in the statistical
+ programming language 
+\family typewriter
+R
+\family default
+.
+ Using the 
+\family typewriter
+R
+\family default
+-function 
+\family typewriter
+Sweave
+\family default
+ it is possible to use 
+\family typewriter
+R
+\family default
+-commands in LaTeX
 \end_layout
 
 \begin_layout Standard
@@ -47609,6 +47731,29 @@ reference "sub:モジュール"
 \end_layout
 
 \begin_layout Section
+
+\lang english
+Local Layout
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+See section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Local-Layout"
+
+\end_inset
+
+ for a description.
+\end_layout
+
+\begin_layout Section
 フォント
 \end_layout
 
@@ -47634,14 +47779,6 @@ reference "sec:フォントと文字形式"
 \begin_layout Standard
 LyXは、二段組や行間を画面には反映しないことに注意してください。これは実用的ではなく、しばしば読み辛い上に、WYSIWYMの概念に反するのです。しかし、出力に
 おいては指定したとおりに反映されます。
-\end_layout
-
-\begin_layout Standard
-リスト設定に関しては、取扱説明書『
-\emph on
-埋込オブジェクト篇
-\emph default
-』の対応する節で説明されています。
 \end_layout
 
 \begin_layout Section
@@ -47683,6 +47820,13 @@ reference "sub:余白"
 
 \begin_layout Section
 言語
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:言語"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -47698,18 +47842,25 @@ status collapsed
 \begin_layout Standard
 文書言語と引用形式がここで設定できます。文字コードは、文書の内容がどのようにLaTeXに書き出されるかを指定します（LyXファイルはつねにUTF-8でコード化さ
 れています）。指定された文字コードにコード化できない文字は、すべてLaTeXコマンドとして書き出されます（LaTeXコマンドが対応していない文字がある場合には失
-敗します）
+敗します）。
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-既知のコマンドは、テキストファイルで定義されていますから、ユーザー自身でこのファイルに未知の記号用のコマンドを加えることができます。詳細は、取扱説明書カスタマイ
-ズ篇をご覧ください。
+既知のコマンドは、テキストファイルで定義されていますから、ユーザー自身でこのファイルに未知の記号用のコマンドを加えることができます
+\lang ngerman
+(
+\emph on
+unicodesymbols
+\emph default
+)
+\lang japanese
+。詳細は、取扱説明書カスタマイズ篇をご覧ください。
 \end_layout
 
 \end_inset
 
-。
+
 \end_layout
 
 \begin_layout Standard
@@ -47796,6 +47947,128 @@ reference "sub:出力ファイル形式"
 \end_inset
 
 節を参照してください。仮に上記のオプションがうまく動かない場合には、これらの新しいエンジンを試すと良いかもしれません。
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The 
+\family sans
+Language
+\begin_inset space ~
+\end_inset
+
+package
+\family default
+ determines the LaTeX-package that is used for hyphenation and the translation
+ of strings like 
+\begin_inset Quotes eld
+\end_inset
+
+Part
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The possible settings are:
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Default is the package
+\lang japanese
+ 
+\series bold
+babel
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Latexぱっけーじ@LaTeXパッケージ ! babel
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Automatic 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+TODO
+\end_layout
+
+\end_inset
+
+??
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Always
+\begin_inset space ~
+\end_inset
+
+Babel uses in every case 
+\series bold
+babel
+\series default
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Custom allows you to specify a language package command of your choice.
+ For example, if you want to use XeTeX and therefore want to the package
+ 
+\series bold
+polyglossia
+\series default
+\lang japanese
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Latexぱっけーじ@LaTeXパッケージ ! polyglossia
+\end_layout
+
+\end_inset
+
+
+\lang english
+ instead of 
+\series bold
+babel
+\series default
+, type in
+\series bold
+
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+usepackage{polyglossia}
+\end_layout
+
+\begin_layout Description
+
+\lang english
+None will not use a language package.
+ This necessary for some document classes for scientific articles.
 \end_layout
 
 \begin_layout Standard
@@ -48330,7 +48603,7 @@ Latexぱっけーじ@LaTeXパッケージ ! amsmath
 
 \end_inset
 
-および
+,
 \series bold
 esint
 \series default
@@ -48344,23 +48617,87 @@ Latexぱっけーじ@LaTeXパッケージ ! esint
 
 \end_inset
 
+,
+\series bold
+mathdots
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Latexぱっけーじ@LaTeXパッケージ ! mathdots
+\end_layout
+
+\end_inset
+
+および
+\series bold
+mhchem
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Latexぱっけーじ@LaTeXパッケージ ! mhchem
+\end_layout
+
+\end_inset
+
 を使用するようにするか、必要なときにこれらを自動的に使用するようにするかを、LyXに強制します。
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-amsmath
-\series default
-は、多くの数式要素に必要とされているので、数式中にLaTeXエラーがでるときには、AMSを有効にしていることを確認してください。
+\begin_layout Description
+amsmath は、多くの数式要素に必要とされているので、数式中にLaTeXエラーがでるときには、AMSを有効にしていることを確認してください。
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+esint は、特別な積分記号に使われます
+\lang english
+, see section 
+\emph on
+Big
+\begin_inset space ~
+\end_inset
 
-\series bold
-esint
-\series default
-は、特別な積分記号に使われます。
+Operators
+\emph default
+ of the 
+\emph on
+Math
+\emph default
+ manual
+\lang japanese
+。
+\end_layout
+
+\begin_layout Description
+mathdots 
+\lang english
+is used for special ellipses, see section 
+\emph on
+Ellipses
+\emph default
+ of the 
+\emph on
+Math
+\emph default
+ manual.
+\end_layout
+
+\begin_layout Description
+mhchem 
+\lang english
+is used for chemical equations, see section 
+\emph on
+Chemical Symbols and Equations
+\emph default
+ of the 
+\emph on
+Math
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Section
@@ -48390,6 +48727,30 @@ Objects
 \end_layout
 
 \begin_layout Section
+
+\lang english
+Listings
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The listings settings are explained in chapter 
+\emph on
+Program Code Listings
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual.
+\end_layout
+
+\begin_layout Section
 ブリット
 \end_layout
 
@@ -48398,11 +48759,11 @@ Objects
 \lang english
 Here you can adjust the characters for the itemize levels.
  The itemize environment is described in section
+\lang japanese
+
 \begin_inset space ~
 \end_inset
 
-
-\lang japanese
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -48410,8 +48771,6 @@ reference "sec:箇条書き（記号）"
 
 \end_inset
 
-
-\lang english
 .
 \end_layout
 
@@ -48463,31 +48822,76 @@ reference "sec:ファイル形式"
 \end_layout
 
 \begin_layout Description
-出力と同期
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO!
-\end_layout
-
+出力と同期 
+\lang english
+settings for the menu 
+\family sans
+Navigate\SpecialChar \menuseparator
+Forward
+\begin_inset space ~
 \end_inset
 
+search
+\family default
+.
+ For a detailed description see section 
+\emph on
+Reverse DVI/PDF search
+\emph default
+ of the 
+\emph on
+Additional
+\begin_inset space ~
+\end_inset
 
+Features
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Description
-XHTML出力オプション
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO!
-\end_layout
-
+XHTML出力オプション 
+\lang english
+settings for the export format 
+\family sans
+LyXHTML
+\family default
+.
+ 
+\family sans
+Strict XHTML
+\begin_inset space ~
 \end_inset
 
+1.1
+\family default
+ will assure that the output follows exactly version
+\begin_inset space ~
+\end_inset
 
+1.1 of the XHTML standard.
+ The different 
+\family sans
+Math
+\begin_inset space ~
+\end_inset
+
+output
+\family default
+ settings are described in detail in section 
+\emph on
+Math Output in XHTML
+\emph default
+ of the 
+\emph on
+Additional
+\begin_inset space ~
+\end_inset
+
+Features
+\emph default
+ manual.
+ The scaling is used for the size of equations in the output.
 \end_layout
 
 \begin_layout Section
@@ -49563,7 +49967,7 @@ Example
 \family typewriter
 JabRef
 \family default
- bearbeiten.
+.
  In 
 \family typewriter
 JabRef
@@ -49694,54 +50098,49 @@ target "http://www.lyx.org/l18n"
 \series bold
 babel
 \series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Latexぱっけーじ@LaTeXパッケージ ! babel
+\end_layout
+
+\end_inset
+
 であり、これは古くからLaTeXの標準言語パッケージとなっています。しかしながら、XeTeXやLuaTeXのような比較的新しい組版エンジンでは、これらのエンジン
-のマルチスクリプトサポートに適した別の言語パッケージ(
+のマルチスクリプトサポートに適した別の言語パッケージ
 \series bold
 polyglossia
 \series default
-)が使用されています。さらに、babelでカバーされていない言語向けの言語パッケージもあります。選択可能な項目は以下のとおりです。
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Latexぱっけーじ@LaTeXパッケージ ! polyglossia
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
+\end_inset
 
-\series bold
-自動
-\series default
-: 現在の組版エンジンにもっとも適した言語パッケージを選択します(既定値)。
+が使用されています。さらに、babelでカバーされていない言語向けの言語パッケージもあります。
+\lang english
+The available selections are described in sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:言語"
+
+\end_inset
+
+.
 \end_layout
 
-\begin_layout Itemize
-
-\series bold
-常にBabel
-\series default
-: 自動設定では他のパッケージ(polyglossiaなど)が好まれる場合でも、常にbabelを使用します。
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-任意設定
-\series default
-: 他の言語パッケージを選択できるようにします(
-\family typewriter
-
-\backslash
-usepackage{パッケージ名}
-\family default
-を使用)。
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-なし
-\series default
-: 言語パッケージは読み込みません。
-\end_layout
-
-\end_deeper
 \begin_layout Description
 既定小数点 表で使用する小数点を定義します(小数点揃え用)。
 \end_layout
