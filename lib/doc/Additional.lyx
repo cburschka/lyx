@@ -5756,7 +5756,36 @@ Synchronize with Output
 \end_layout
 
 \begin_layout Standard
-Please note that including the 
+Note that the method 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+synctex=1
+\end_layout
+
+\end_inset
+
+ enables gzip compression.
+ If your viewer does not support it, you should instead use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+synctex=-1
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Please aöso note that including the 
 \begin_inset Flex Code
 status collapsed
 
@@ -5799,6 +5828,7 @@ src-specials
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Standard
@@ -6155,7 +6185,7 @@ d for the use with SyncTeX.
 status collapsed
 
 \begin_layout Plain Layout
-The 
+Note that the option 
 \begin_inset Flex Code
 status collapsed
 

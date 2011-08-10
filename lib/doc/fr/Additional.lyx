@@ -5197,8 +5197,6 @@ lyxsocket
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 lyxclient
 \end_layout
 
@@ -5272,6 +5270,41 @@ Document\SpecialChar \menuseparator
 Paramètres\SpecialChar \menuseparator
 Sortie\SpecialChar \menuseparator
 Synchroniser avec la sortie imprimable
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Note that the method 
+\lang french
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+synctex=1
+\end_layout
+
+\end_inset
+
+
+\lang english
+ enables gzip compression.
+ If your viewer does not support it, you should instead use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+synctex=-1
 \end_layout
 
 \end_inset
@@ -5355,8 +5388,6 @@ LaTeX fournit plusieurs méthodes pour la recherche inversée.
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 latex/pdflatex
 \end_layout
 
@@ -5469,8 +5500,6 @@ Convertisseurs
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 latex -src-specials $$i
 \end_layout
 
@@ -5521,8 +5550,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
-
 \backslash
 usepackage{pdfsync}
 \end_layout
@@ -5537,8 +5564,6 @@ usepackage{pdfsync}
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 usepackage[active]{srcltx}
@@ -5642,8 +5667,6 @@ Les versions récentes de
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 (pdf)latex
 \end_layout
 
@@ -5785,7 +5808,7 @@ pdflatex -synctex=1 $$i
 
 .
  Vérifiez la documentation de votre visionneuse pour ce qui concerne la
- configuration pour SyncTeX
+ configuration pour SyncTeX.
 \begin_inset Foot
 status collapsed
 
@@ -5795,8 +5818,6 @@ L'option
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 -synctex=1
 \end_layout
 
@@ -5808,8 +5829,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 -synctex=-1
 \end_layout
 
@@ -5820,7 +5839,7 @@ status collapsed
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Subsection
@@ -5844,8 +5863,6 @@ Si vous utilisez
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 xdvi
 \end_layout
 
@@ -5858,8 +5875,6 @@ xdvi
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 lyxclient
 \end_layout
 
@@ -5917,8 +5932,6 @@ DISPLAY=:0.0 xdvi -editor 'lyxeditor.sh %f %l'
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 xdvi -editor 'lyxeditor.sh %f %l'
 \end_layout
 
@@ -5929,8 +5942,6 @@ xdvi -editor 'lyxeditor.sh %f %l'
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 lyxeditor.sh
 \end_layout
 
@@ -5975,7 +5986,7 @@ status collapsed
 
  est le chemin d'accès au tube Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -6106,8 +6117,6 @@ Saisir
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 open -a Skim.app $$i
 \end_layout
 

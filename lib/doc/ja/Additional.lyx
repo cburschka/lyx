@@ -6441,57 +6441,189 @@ name "sub:遡及検索"
 \end_layout
 
 \begin_layout Standard
-ほとんどの場合、
+
+\lang english
+In most cases LyX will do the work for you by enabling the option 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-文書\SpecialChar \menuseparator
-出力\SpecialChar \menuseparator
-出力と同期
+
+\lang english
+Synchronize with Output
 \end_layout
 
 \end_inset
 
-を有効にすれば、LyXがすべて自動的に処理を行ってくれます。その場合、LyXは自動的に、PDFの場合はSyncTeXマクロを、DVIの場合はsrcltxパッケー
-ジを挿入します。このオプションは、
+ in the menu 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Output
+\end_layout
+
+\end_inset
+
+.
+ In such a case LyX will automatically insert the necessary SyncTeX macro
+ (for PDF) or load the srcltx package (for DVI) respectively.
+ This option can be easily reached also on 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-表示/更新
+
+\lang english
+View/Update
 \end_layout
 
 \end_inset
 
-ツールバーでも簡単にアクセスすることができます。
+ Toolbar.
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+If you need a different setting, you can select or input a custom macro
+ from the drop down box just below 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Output\SpecialChar \menuseparator
+Synchronize with Output
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Note that the method 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang english
+
+\backslash
+synctex=1
+\end_layout
+
+\end_inset
+
+ enables gzip compression.
+ If your viewer does not support it, you should instead use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+
+\backslash
+synctex=-1
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Please aöso note that including the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 srcltx
 \end_layout
 
 \end_inset
 
-パッケージや
+ package or 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang english
 src-specials
 \end_layout
 
 \end_inset
 
-を読み込むと、時折、組版に影響を与えることがありますので、仕上がりの組版においてはこれらを無効にしてください。
+ sometimes has an undesired impact on the typesetting.
+ Thus, you should switch output synchronization off for the final typesetting
+ if you use the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+srcltx
+\end_layout
+
+\end_inset
+
+ package or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+src-specials
+\end_layout
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
-また、設定で自製マクロを指定することもできるので、何か特別な調整が必要な場合には、次節の手動有効化をお読みください。
+
+\lang english
+In case you need some more special settings that are not covered by the
+ automatic settings, read the next section about how to set up output synchroniz
+ation manually.
+ If the automatic setup suits your needs, you can readily jump to section
+\begin_inset space ~
+\end_inset
+
+
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:特定のビューアを設定して使うには"
+
+\end_inset
+
+
+\lang english
+, where the necessary configuration steps in your viewer -- needed both
+ with the automatic and the manual setup -- are described.
 \end_layout
 
 \begin_layout Subsection
@@ -6804,7 +6936,7 @@ pdflatex -synctex=1 $$i
 
 \end_inset
 
-に変更してください。また、ビューアをSyncTeXで使うのに設定を行う必要があるかどうか、お使いのビューアの取扱説明書をご確認ください
+に変更してください。また、ビューアをSyncTeXで使うのに設定を行う必要があるかどうか、お使いのビューアの取扱説明書をご確認ください。
 \begin_inset Foot
 status collapsed
 
@@ -6833,11 +6965,18 @@ status collapsed
 
 \end_inset
 
-。
+
 \end_layout
 
 \begin_layout Subsection
 特定のビューアを設定して使うには
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:特定のビューアを設定して使うには"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection*

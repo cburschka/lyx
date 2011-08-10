@@ -28739,18 +28739,39 @@ eX
 \end_layout
 
 \begin_layout Description
-biber bietet volle Unterstützung von Unicode; empfohlen für mehrsprachige
- Texte und für Dokumente deren Sprache keine lateinischen Buchstaben verwendet
+biber bietet volle Unterstützung von Unicode, unbergrenzter Speicher, funktionie
+rt nicht mit anderen Literaturpaketen (wie z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ 
+\series bold
+natbib
+\series default
+), nur mit dem Paket 
+\series bold
+biblatex
+\series default
+; empfohlen für mehrsprachige Texte und für Dokumente deren Sprache keine
+ lateinischen Buchstaben verwendet
 \end_layout
 
 \begin_layout Description
 bibtex der Standard; erlaubt keine Sonderzeichen, die nicht in einer 7-Bit
- Kodierung kodiert werden können
+ Kodierung kodiert werden können, bergrenzter Speicher, funktioniert mit
+ allen Literaturpaketen, mit Ausnahme von 
+\series bold
+biblatex
 \end_layout
 
 \begin_layout Description
 bibtex8 erlaubt alle Zeichen, die in einer 8-Bit Kodierung kodiert werden
- können
+ können, größerer Speicher als 
+\family sans
+bibtex
+\family default
+, funktioniert mit allen Literaturpaketen
 \end_layout
 
 \begin_layout Standard
@@ -40707,38 +40728,9 @@ LaTeX-Paket ! babel
 \end_layout
 
 \begin_layout Description
-Automatisch 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-TODO
-\end_layout
-
-\end_inset
-
-??
-\end_layout
-
-\begin_layout Description
-Immer
-\begin_inset space ~
-\end_inset
-
-Babel verwendet 
-\series bold
-babel
-\series default
- in jedem Fall.
-\end_layout
-
-\begin_layout Description
-Benutzerdefiniert erlaubt es einen Befehl für ein Sprachpaket ihrer Wahl
- festzulegen.
- Zum Beispiel, wenn Sie XeTeX verwenden wollen und daher das Sprachpaket
- 
+Automatisch wählt ein passendes Sprachpaket für das Ansichts-/Exportformat
+ an, das Sie verwenden.
+ Zum Beispiel wird für die XeTeX-Formate das Paket 
 \series bold
 polyglossia
 \series default
@@ -40756,7 +40748,29 @@ LaTeX-Paket ! polyglossia
 \series bold
 babel
 \series default
- benutzen wollen, schreiben Sie
+ verwendet.
+\end_layout
+
+\begin_layout Description
+Immer
+\begin_inset space ~
+\end_inset
+
+Babel verwendet 
+\series bold
+babel
+\series default
+ in jedem Fall.
+\end_layout
+
+\begin_layout Description
+Benutzerdefiniert erlaubt es, einen Befehl für ein Sprachpaket ihrer Wahl
+ festzulegen.
+ Zum Beispiel, wenn Sie ein Sprach-spezifisches Paket wie 
+\series bold
+ngerman
+\series default
+ (für deutsche Texte) verwenden wollen, schreiben Sie
 \series bold
 
 \begin_inset Newline newline
@@ -40764,7 +40778,7 @@ babel
 
 
 \backslash
-usepackage{polyglossia}
+usepackage{ngerman}
 \end_layout
 
 \begin_layout Description
