@@ -1925,6 +1925,7 @@ void PrefFileformats::updateView()
 		formatsCB->addItem(qt_(cit->prettyname()),
 				QVariant(form_->formats().getNumber(cit->name())));
 		if (form_->converters().isReachable("latex", cit->name())
+		    || form_->converters().isReachable("dviluatex", cit->name())
 		    || form_->converters().isReachable("pdflatex", cit->name())
 		    || form_->converters().isReachable("luatex", cit->name())
 		    || form_->converters().isReachable("xetex", cit->name()))

@@ -1119,6 +1119,7 @@ void BufferParams::validate(LaTeXFeatures & features) const
 
 		switch (features.runparams().flavor) {
 		case OutputParams::LATEX:
+		case OutputParams::DVILUATEX:
 			if (dvipost) {
 				features.require("ct-dvipost");
 				features.require("dvipost");
@@ -2122,9 +2123,12 @@ vector<string> BufferParams::backends() const
 	if (v.back() == "latex") {
 		v.push_back("pdflatex");
 		v.push_back("luatex");
+		v.push_back("dviluatex");
 		v.push_back("xetex");
-	} else if (v.back() == "xetex")
+	} else if (v.back() == "xetex") {
 		v.push_back("luatex");
+		v.push_back("dviluatex");
+	}
 	v.push_back("xhtml");
 	v.push_back("text");
 	v.push_back("lyx");
@@ -2622,7 +2626,8 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 		return;
 	// LuaTeX neither, but with tex fonts, we need to load
 	// the luainputenc package.
-	if (features.runparams().flavor == OutputParams::LUATEX) {
+	if (features.runparams().flavor == OutputParams::LUATEX
+		|| features.runparams().flavor == OutputParams::DVILUATEX) {
 		if (!useNonTeXFonts && inputenc != "default"
 		    && ((inputenc == "auto" && language->encoding()->package() == Encoding::inputenc)
 		        || (inputenc != "auto" && encoding().package() == Encoding::inputenc))) {

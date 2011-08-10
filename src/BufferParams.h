@@ -349,6 +349,8 @@ public:
 	Package use_mhchem;
 	/// Whether and how to load mathdots
 	Package use_mathdots;
+	/// Whether and how to load undertilde
+	Package use_undertilde;
 	/// Split bibliography?
 	bool use_bibtopic;
 	/// Split the index?

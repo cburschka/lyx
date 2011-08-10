@@ -430,7 +430,7 @@ def checkLuatex():
             logger.info(msg + ' yes')
             addToRC(r'\converter luatex      pdf5       "%s"	"latex=lualatex"' % LUATEX)
             if DVILUATEX != '':
-                addToRC(r'\converter luatex      dvi3        "%s"	"latex=lualatex"' % DVILUATEX)
+                addToRC(r'\converter luatex      dvi3        "%s"	"latex=dvilualatex"' % DVILUATEX)
         # remove temporary files
         removeFiles(['luatest.tex', 'luatest.log', 'luatest.aux', 'luatest.pdf'])
 

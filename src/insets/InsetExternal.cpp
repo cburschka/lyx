@@ -729,6 +729,7 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 	string format;
 	switch (features.runparams().flavor) {
 	case OutputParams::LATEX:
+	case OutputParams::DVILUATEX:
 		format = "LaTeX";
 		break;
 	case OutputParams::LUATEX:
