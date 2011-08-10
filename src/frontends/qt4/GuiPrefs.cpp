@@ -43,7 +43,6 @@
 #include "support/filetools.h"
 #include "support/foreach.h"
 #include "support/gettext.h"
-#include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Package.h"
@@ -1527,7 +1526,7 @@ void PrefSpellchecker::on_spellcheckerCB_currentIndexChanged(int index)
 {
 	QString spellchecker = spellcheckerCB->itemData(index).toString();
 	
-	compoundWordCB->setEnabled(spellchecker == QString("aspell"));
+	compoundWordCB->setEnabled(spellchecker != QString("native"));
 }
 	
 	
