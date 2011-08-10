@@ -15843,8 +15843,25 @@ This file type has the extension
  It does not itself contain images und the like but nur links them, und
  when LyX produces XHTML, it auch generates corresponding images in formats
  suitable für the purpose.
- Math is output as MathML, which renders nicely in browsers that support
- it, but not all do.
+ For the math output you can choose in the menu 
+\family sans
+Dokument\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Output
+\family default
+ between different formats
+\lang ngerman
+, die in Abschnitt 
+\emph on
+\lang english
+Math Output in XHTML
+\emph default
+\lang ngerman
+ der 
+\emph on
+Handbuchergänzungen
+\emph default
+ beschrieben sind.
 \end_layout
 
 \begin_layout Standard
@@ -15859,19 +15876,19 @@ under development
 \end_inset
 
 , und not all LyX Features are supported yet.
- Siehe the Kapitel 
-\begin_inset Quotes eld
-\end_inset
 
-LyX und the World Wide Web
-\begin_inset Quotes erd
-\end_inset
-
-, in the 
+\lang ngerman
+ Siehe das Kapitel 
 \emph on
-Additional Features
+\lang english
+LyX und the World Wide Web
 \emph default
- Handbuch, für more information.
+\lang ngerman
+ in den 
+\emph on
+Handbuchergänzungen
+\emph default
+ für weitere Informationen.
 \end_layout
 
 \begin_layout Standard
@@ -28696,14 +28713,15 @@ Ein Querverweis auf einen Datenbankeintrag erfolgt wie oben beschrieben.
 \begin_layout Standard
 LyX verwendet BibTeX, um ein Literaturverzeichnis aus einer Datenbank zu
  erstellen.
- In 
+ Sie können festlegen, welche seiner Varianten von LyX als Prozessor verwendet
+ wird; entweder in den Dokumenteinstellungen unter 
 \family sans
-Werkzeuge\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-Ausgaben\SpecialChar \menuseparator
-LaTe
+Literaturverzeichnis
 \family default
-
+ oder in LyXs Einstellungen unter 
+\family sans
+Ausgabe\SpecialChar \menuseparator
+LaT
 \begin_inset ERT
 status collapsed
 
@@ -28714,31 +28732,31 @@ status collapsed
 
 \end_inset
 
-
-\family sans
-X
+eX
 \family default
- können Sie im Feld 
-\family sans
-BibTe
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
+.
+ Die folgenden Varianten sind möglich:
 \end_layout
 
-\end_inset
+\begin_layout Description
+biber bietet volle Unterstützung von Unicode; empfohlen für mehrsprachige
+ Texte und für Dokumente deren Sprache keine lateinischen Buchstaben verwendet
+\end_layout
 
+\begin_layout Description
+bibtex der Standard; erlaubt keine Sonderzeichen, die nicht in einer 7-Bit
+ Kodierung kodiert werden können
+\end_layout
 
-\family sans
-X-Befehl
-\family default
- den Befehl samt Optionen angeben.
- Bevor Sie aber Optionen verwenden, lesen Sie das BibTeX-Handbuch 
+\begin_layout Description
+bibtex8 erlaubt alle Zeichen, die in einer 8-Bit Kodierung kodiert werden
+ können
+\end_layout
+
+\begin_layout Standard
+BibTeX kann durch Optionen gesteuert werden, die Sie unterhalb der Festlegung
+ der Variante eingeben können.
+ Bevor Sie Optionen verwenden, lesen Sie unbedingt das BibTeX-Handbuch 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "BibTeX"
@@ -35160,7 +35178,24 @@ eX) DVI-Format unter Verwendung des Programms
 \family typewriter
 LuaTeX
 \family default
-; unterstützt Unicode und die Verwendung von nicht-TeX Schriften
+; unterstützt Unicode und die Verwendung von nicht-TeX Schriften; 
+\series bold
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ nicht alle DVI-Betrachtungsprogramme sind in der Lage dieses Format korrekt
+ anzuzeigen.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description

@@ -15364,8 +15364,25 @@ Este tipo de archivo tiene la extensión
  Es un archivo apropiado para ver en navegadores web.
  En sí mismo no contiene imágenes y demás, solo enlaces a ellos, y al generar
  XHTML LyX también genera las imágenes correspondientes apropiadas.
- Las matemáticas se generan como MathML, que produce un aspecto agradable
- en los navegadores que lo soportan, que no son todos.
+ 
+\lang english
+For the math output you can choose in the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Output
+\family default
+ between different formats, that are described in section 
+\emph on
+Math Output in XHTML
+\lang spanish
+ 
+\emph default
+en el manual 
+\emph on
+Características adicionales
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -15379,13 +15396,9 @@ en desarrollo
 
  y aún no soporta todas las características de LyX.
  Véase el capítulo 
-\begin_inset Quotes fld
-\end_inset
-
+\emph on
 LyX e Internet
-\begin_inset Quotes frd
-\end_inset
-
+\emph default
  en el manual 
 \emph on
 Características adicionales
@@ -27346,17 +27359,16 @@ Para generar la bibliografía a partir de una base de datos, LyX utiliza
 BibTeX
 \family default
 .
- Este programa se controla con opciones que se pueden añadir en el diálogo
  
+\lang english
+You can choose which of its variants should be used by LyX as processor;
+ either in the document settings under 
 \family sans
-Preferencias
+Bibliography
 \family default
- de LyX, apartado 
+ or in LyX's preferences under 
 \family sans
-Salidas,
-\family default
- 
-\family sans
+Output\SpecialChar \menuseparator
 LaT
 \begin_inset ERT
 status collapsed
@@ -27368,28 +27380,39 @@ status collapsed
 
 \end_inset
 
-eX,
+eX
 \family default
- en el campo 
-\family sans
-Comando
-\begin_inset space ~
-\end_inset
-
-BibT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
+.
+ The following variants are possible:
 \end_layout
 
-\end_inset
+\begin_layout Description
 
-eX.
+\lang english
+biber provides full Unicode support; recommended for multilingual texts
+ and for languages that don't use Latin letters
+\end_layout
+
+\begin_layout Description
+
+\lang english
+bibtex the default; does not allow special characters in bibliography entries
+ that are not possible to encode in a 7-bit encoding
+\end_layout
+
+\begin_layout Description
+
+\lang english
+bibtex8 allows all characters that are possible to encode in a 8-bit encoding
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+BibTeX can be controlled with options that you can add below the specification
+ of the variants.
  
-\family default
+\lang spanish
 Antes de añadir ninguna opción, se recomienda encarecidamente leer el manual
  de 
 \family sans
@@ -38361,7 +38384,24 @@ DVI-format using the program
 \family typewriter
 LuaTeX
 \family default
-; supports Unicode and the usage of non-TeX fonts
+; supports Unicode and the usage of non-TeX fonts; 
+\series bold
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ not all DVI-viewers are currently able to display this output format properly.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description

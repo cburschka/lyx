@@ -21466,6 +21466,112 @@ X)
 を用いた方が良いかもしれません。
 \end_layout
 
+\begin_layout Subsubsection
+
+\lang english
+XHTML
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+FileFormats ! XHTML
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTML
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This file type has the extension 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+.xhtml
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ It is a file suitable for viewing in web browsers.
+ It does not itself contain images and the like but only links them, and
+ when LyX produces XHTML, it also generates corresponding images in formats
+ suitable for the purpose.
+ For the math output you can choose in the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Output
+\family default
+ between different formats, that are described in section 
+\emph on
+Math Output in XHTML
+\emph default
+ of the 
+\emph on
+Additional
+\begin_inset space ~
+\end_inset
+
+Features
+\emph default
+ manual.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+XHTML output remains 
+\begin_inset Quotes eld
+\end_inset
+
+under development
+\begin_inset Quotes erd
+\end_inset
+
+, and not all LyX features are supported yet.
+ See the chapter 
+\emph on
+LyX and the World Wide Web
+\emph default
+, in the 
+\emph on
+Additional Features
+\emph default
+ manual, for more information.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You can export your document as an XHTML file using the menu item 
+\family sans
+File\SpecialChar \menuseparator
+Export\SpecialChar \menuseparator
+LyXHTML
+\family default
+.
+\end_layout
+
 \begin_layout Subsection
 
 \family typewriter
@@ -34621,12 +34727,16 @@ target "http://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxhak.pdf"
 \end_layout
 
 \begin_layout Standard
-データベースから参考文献を生成するのに、LyXはBibTeXというプログラムを使用します。このプログラムは、LyX設定ダイアログ中、
+データベースから参考文献を生成するのに、LyXはBibTeXというプログラムを使用します。
+\lang english
+You can choose which of its variants should be used by LyX as processor;
+ either in the document settings under 
 \family sans
-出力
+Bibliography
 \family default
-→
+ or in LyX's preferences under 
 \family sans
+Output\SpecialChar \menuseparator
 LaT
 \begin_inset ERT
 status collapsed
@@ -34640,22 +34750,38 @@ status collapsed
 
 eX
 \family default
-の下にある
-\family sans
-BibT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
+.
+ The following variants are possible:
 \end_layout
 
-\end_inset
+\begin_layout Description
 
-eXコマンド
-\family default
-フィールドにオプションを付け加えることで制御することができます。オプションを書き加える前に、
+\lang english
+biber provides full Unicode support; recommended for multilingual texts
+ and for languages that don't use Latin letters
+\end_layout
+
+\begin_layout Description
+
+\lang english
+bibtex the default; does not allow special characters in bibliography entries
+ that are not possible to encode in a 7-bit encoding
+\end_layout
+
+\begin_layout Description
+
+\lang english
+bibtex8 allows all characters that are possible to encode in a 8-bit encoding
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+BibTeX can be controlled with options that you can add below the specification
+ of the variants.
+ 
+\lang japanese
+オプションを書き加える前に、
 \family sans
 BibTeX
 \family default
@@ -43218,7 +43344,24 @@ DVI-format using the program
 \family typewriter
 LuaTeX
 \family default
-; supports Unicode and the usage of non-TeX fonts
+; supports Unicode and the usage of non-TeX fonts; 
+\series bold
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ not all DVI-viewers are currently able to display this output format properly.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
