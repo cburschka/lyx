@@ -124,6 +124,7 @@ End
 \paperorientation portrait
 \suppress_date false
 \use_refstyle 0
+\notefontcolor #0000ff
 \index Stichwortverzeichnis
 \shortcut idx
 \color #008000
@@ -6042,6 +6043,41 @@ Synchronize with Output
 \begin_layout Standard
 
 \lang english
+Note that the method 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+
+\backslash
+synctex=1
+\end_layout
+
+\end_inset
+
+ enables gzip compression.
+ If your viewer does not support it, you should instead use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+
+\backslash
+synctex=-1
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
 Please note that including the 
 \begin_inset Flex Code
 status collapsed
@@ -6511,7 +6547,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-The 
+Not that the option 
 \begin_inset Flex Code
 status collapsed
 
@@ -6523,7 +6559,7 @@ status collapsed
 
 \end_inset
 
- option enables gzip compression.
+ enables gzip compression.
  If your viewer does not support it, you should instead use 
 \begin_inset Flex Code
 status collapsed

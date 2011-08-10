@@ -111,6 +111,7 @@ End
 \paperorientation portrait
 \suppress_date false
 \use_refstyle 0
+\notefontcolor #0000ff
 \index Index
 \shortcut idx
 \color #008000
@@ -5757,7 +5758,36 @@ Synchronize with Output
 \end_layout
 
 \begin_layout Standard
-Please note that including the 
+Note that the method 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+synctex=1
+\end_layout
+
+\end_inset
+
+ enables gzip compression.
+ If your viewer does not support it, you should instead use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+synctex=-1
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Please aöso note that including the 
 \begin_inset Flex Code
 status collapsed
 
@@ -5800,6 +5830,7 @@ src-specials
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Standard
@@ -6156,7 +6187,7 @@ d for the use with SyncTeX.
 status collapsed
 
 \begin_layout Plain Layout
-The 
+Note that the option 
 \begin_inset Flex Code
 status collapsed
 
@@ -7003,7 +7034,7 @@ General
  can select from the drop down list.
  If none of these configurations suits you, you have to find out and enter
  a suitable configuration yourself.
- The definition syntax uses the following placeholders: 
+ The definition syntax uses the following placeholders:
 \end_layout
 
 \begin_layout Itemize

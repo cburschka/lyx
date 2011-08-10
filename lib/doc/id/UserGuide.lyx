@@ -26142,10 +26142,16 @@ Inserting a citation reference works as described in the previous section.
 
 \begin_layout Standard
 To generate the bibliography from a database, LyX uses the program BibTeX.
- This program can be controlled with options that you can add in LyX's preferenc
-es dialog under 
+ 
+\lang english
+You can choose which of its variants should be used by LyX as processor;
+ either in the document settings under 
 \family sans
-Outputs\SpecialChar \menuseparator
+Bibliography
+\family default
+ or in LyX's preferences under 
+\family sans
+Output\SpecialChar \menuseparator
 LaT
 \begin_inset ERT
 status collapsed
@@ -26159,26 +26165,62 @@ status collapsed
 
 eX
 \family default
- in the 
-\family sans
-BibT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
+.
+ The following variants are possible:
 \end_layout
 
+\begin_layout Description
+
+\lang english
+biber provides full Unicode support, unlimited memory, does not work with
+ other bibliography packages (like e.
+\begin_inset space \thinspace{}
 \end_inset
 
-eX
+g.
 \begin_inset space ~
 \end_inset
 
-command
+
+\series bold
+natbib
+\series default
+), only with the package 
+\series bold
+biblatex
+\series default
+; recommended for multilingual texts and for languages that don't use Latin
+ letters
+\end_layout
+
+\begin_layout Description
+
+\lang english
+bibtex the standard; does not allow special characters in bibliography entries
+ that are not possible to encode in a 7-bit encoding, limited memory, works
+ with all bibliography packages, except of 
+\series bold
+biblatex
+\end_layout
+
+\begin_layout Description
+
+\lang english
+bibtex8 allows all characters that are possible to encode in a 8-bit encoding,
+ larger memory than 
+\family sans
+bibtex
 \family default
- field.
+, works with all.bibliography packages
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+BibTeX can be controlled with options that you can add below the specification
+ of the variants.
+
+\lang bahasa
  Before adding options, it is strongly recommended to read the manual of
  
 \family sans
@@ -46313,6 +46355,7 @@ LaTeX-packages ! nomencl
 status collapsed
 
 \begin_layout Plain Layout
+
 ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf
 \end_layout
 
@@ -46360,6 +46403,7 @@ LaTeX-packages ! prettyref
 status collapsed
 
 \begin_layout Plain Layout
+
 http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf
 \end_layout
 
@@ -46407,6 +46451,7 @@ LaTeX-packages ! refstyle
 status collapsed
 
 \begin_layout Plain Layout
+
 http://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf
 \end_layout
 

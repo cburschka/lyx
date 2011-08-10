@@ -26656,17 +26656,42 @@ eX
 \end_layout
 
 \begin_layout Description
-biber provides full Unicode support; recommended for multilingual texts
- and for languages that don't use Latin letters
+biber provides full Unicode support, unlimited memory, does not work with
+ other bibliography packages (like e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+
+\series bold
+natbib
+\series default
+), only with the package 
+\series bold
+biblatex
+\series default
+; recommended for multilingual texts and for languages that don't use Latin
+ letters
 \end_layout
 
 \begin_layout Description
 bibtex the standard; does not allow special characters in bibliography entries
- that are not possible to encode in a 7-bit encoding
+ that are not possible to encode in a 7-bit encoding, limited memory, works
+ with all bibliography packages, except of 
+\series bold
+biblatex
 \end_layout
 
 \begin_layout Description
-bibtex8 allows all characters that are possible to encode in a 8-bit encoding
+bibtex8 allows all characters that are possible to encode in a 8-bit encoding,
+ larger memory than 
+\family sans
+bibtex
+\family default
+, works with all.bibliography packages
 \end_layout
 
 \begin_layout Standard
@@ -43182,17 +43207,27 @@ LaTeX-packages ! babel
 \end_layout
 
 \begin_layout Description
-Automatic 
-\begin_inset Note Note
-status open
+Automatic selects the most suitable language package for the view/export
+ format you will use.
+ For example for the XeTeX formats the package 
+\series bold
+polyglossia
+\series default
+
+\begin_inset Index idx
+status collapsed
 
 \begin_layout Plain Layout
-TODO
+LaTeX-packages ! polyglossia
 \end_layout
 
 \end_inset
 
-??
+ will be used instead of 
+\series bold
+babel
+\series default
+.
 \end_layout
 
 \begin_layout Description
@@ -43209,26 +43244,11 @@ babel
 
 \begin_layout Description
 Custom allows you to specify a language package command of your choice.
- For example, if you want to use XeTeX and therefore want to the package
- 
+ For example if you want to use a language-specific package like 
 \series bold
-polyglossia
+ngerman
 \series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-packages ! polyglossia
-\end_layout
-
-\end_inset
-
- instead of 
-\series bold
-babel
-\series default
-, type in
+ (for German texts), type in
 \series bold
 
 \begin_inset Newline newline
@@ -43236,7 +43256,7 @@ babel
 
 
 \backslash
-usepackage{polyglossia}
+usepackage{ngerman}
 \end_layout
 
 \begin_layout Description

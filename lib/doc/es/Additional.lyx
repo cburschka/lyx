@@ -112,6 +112,7 @@ End
 \paperorientation portrait
 \suppress_date false
 \use_refstyle 0
+\notefontcolor #0000ff
 \index Índice
 \shortcut idx
 \color #008000
@@ -6305,7 +6306,7 @@ Búsqueda inversa DVI/PDF
 \begin_layout Standard
 Algunos visores DVI/PDF
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Okular en KDE/Linux, Skim en Mac OSX y SumatraPDF en Windows.
@@ -6425,6 +6426,41 @@ Documento\SpecialChar \menuseparator
 Configuración\SpecialChar \menuseparator
 Salidas\SpecialChar \menuseparator
 Sincronizar con salida
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Note that the method 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+
+\backslash
+synctex=1
+\end_layout
+
+\end_inset
+
+ enables gzip compression.
+ If your viewer does not support it, you should instead use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+
+\backslash
+synctex=-1
 \end_layout
 
 \end_inset
