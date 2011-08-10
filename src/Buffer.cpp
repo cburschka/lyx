@@ -3421,6 +3421,8 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 			runparams.flavor = OutputParams::PDFLATEX;
 		else if (backend_format == "luatex")
 			runparams.flavor = OutputParams::LUATEX;
+		else if (backend_format == "dviluatex")
+			runparams.flavor = OutputParams::DVILUATEX;
 		else if (backend_format == "xetex")
 			runparams.flavor = OutputParams::XETEX;
 	}

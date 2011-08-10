@@ -28,6 +28,7 @@ class Language;
 class OutputParams {
 public:
 	enum FLAVOR {
+		DVILUATEX,
 		LATEX,
 		LUATEX,
 		PDFLATEX,

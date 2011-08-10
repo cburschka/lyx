@@ -422,6 +422,7 @@ typedef Translator<OutputParams::FLAVOR, string> FlavorTranslator;
 FlavorTranslator initFlavorTranslator()
 {
 	FlavorTranslator f(OutputParams::LATEX, "latex");
+	f.addPair(OutputParams::DVILUATEX, "dviluatex");
 	f.addPair(OutputParams::LUATEX, "luatex");
 	f.addPair(OutputParams::PDFLATEX, "pdflatex");
 	f.addPair(OutputParams::XETEX, "xetex");

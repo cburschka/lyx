@@ -121,6 +121,8 @@ What's new
 - Improve import of LaTeX documents with non-ASCII contents before loading
   the inputenc package (bug 7509).
 
+- The export format DVI (LuaTeX) is now correctly created (bug7713).
+
 - Macros that use other macros now output properly to XHTML (bug 7532).
 
 - Fixed XHTML output for tables that use multirow.
@@ -136,7 +138,7 @@ What's new
 - On Windows, allow to automatically switch TeX engines without the need
   of manually saving the preferences after reconfiguring (bug 7557).
 
-- Fix dvi forward search on Windows when compiling with MSVC.
+- Fix DVI forward search on Windows when compiling with MSVC.
 
 - Calculate relative pathnames to master documents when master is in a
   directory above the child (bug 7540).

@@ -43,6 +43,7 @@
 #include "support/filetools.h"
 #include "support/foreach.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Package.h"
@@ -1526,7 +1527,7 @@ void PrefSpellchecker::on_spellcheckerCB_currentIndexChanged(int index)
 {
 	QString spellchecker = spellcheckerCB->itemData(index).toString();
 	
-	compoundWordCB->setEnabled(spellchecker != QString("native"));
+	compoundWordCB->setEnabled(spellchecker == QString("aspell"));
 }
 	
 	
@@ -1924,6 +1925,7 @@ void PrefFileformats::updateView()
 		formatsCB->addItem(qt_(cit->prettyname()),
 				QVariant(form_->formats().getNumber(cit->name())));
 		if (form_->converters().isReachable("latex", cit->name())
+		    || form_->converters().isReachable("dviluatex", cit->name())
 		    || form_->converters().isReachable("pdflatex", cit->name())
 		    || form_->converters().isReachable("luatex", cit->name())
 		    || form_->converters().isReachable("xetex", cit->name()))
