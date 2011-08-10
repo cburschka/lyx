@@ -398,8 +398,7 @@ ToolbarSet
 		Item "check" "math-insert \check"
 		Item "widehat" "math-insert \widehat"
 		Item "widetilde" "math-insert \widetilde"
-# enable this once the undertilde package is loaded automatically
-#		Item "utilde" "math-insert \utilde"
+		Item "utilde" "math-insert \utilde"
 		Item "vec" "math-insert \vec"
 		Item "acute" "math-insert \acute"
 		Item "ddot" "math-insert \ddot"

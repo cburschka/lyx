@@ -30,10 +30,7 @@ underrightarrow     decoration none       amsmath
 #have a possibility to turn automatic loading off like for ams
 #undertilde          decoration none       accents
 undertilde          decoration none
-#Do not load automatically, since it might conflict with user macros and we
-#don't have a possibility to turn automatic loading off like for ams
-#utilde              decoration none       undertilde
-utilde              decoration none
+utilde              decoration none       undertilde
 vec                 decoration none
 widehat             decoration none
 widetilde           decoration none

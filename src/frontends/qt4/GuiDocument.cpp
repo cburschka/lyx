@@ -1135,6 +1135,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		mathsModule->mhchemCB, SLOT(setDisabled(bool)));
 	connect(mathsModule->mathdotsautoCB, SIGNAL(toggled(bool)),
 		mathsModule->mathdotsCB, SLOT(setDisabled(bool)));
+	connect(mathsModule->undertildeautoCB, SIGNAL(toggled(bool)),
+		mathsModule->undertildeCB, SLOT(setDisabled(bool)));
 	
 	connect(mathsModule->amsCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
@@ -1151,6 +1153,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(mathsModule->mathdotsCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	connect(mathsModule->mathdotsautoCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(mathsModule->undertildeCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(mathsModule->undertildeautoCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	
 
@@ -2343,6 +2349,14 @@ void GuiDocument::applyView()
 		else
 			bp_.use_mathdots = BufferParams::package_off;
 	}
+	if (mathsModule->undertildeautoCB->isChecked())
+		bp_.use_undertilde = BufferParams::package_auto;
+	else {
+		if (mathsModule->undertildeCB->isChecked())
+			bp_.use_undertilde = BufferParams::package_on;
+		else
+			bp_.use_undertilde = BufferParams::package_off;
+	}
 	
 	// Page Layout
 	if (pageLayoutModule->pagestyleCO->currentIndex() == 0)
@@ -2755,6 +2769,11 @@ void GuiDocument::paramsToDialog()
 		bp_.use_mathdots == BufferParams::package_on);
 	mathsModule->mathdotsautoCB->setChecked(
 		bp_.use_mathdots == BufferParams::package_auto);
+
+	mathsModule->undertildeCB->setChecked(
+		bp_.use_undertilde == BufferParams::package_on);
+	mathsModule->undertildeautoCB->setChecked(
+		bp_.use_undertilde == BufferParams::package_auto);
 
 	switch (bp_.spacing().getSpace()) {
 		case Spacing::Other: nitem = 3; break;

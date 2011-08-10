@@ -25,14 +25,14 @@ import sys, os
 
 # Uncomment only what you need to import, please.
 
-from parser_tools import find_token, find_end_of_inset
+from parser_tools import find_token, find_end_of_inset, get_value
 
 #from parser_tools import find_token, find_end_of, find_tokens, \
   #find_token_exact, find_end_of_inset, find_end_of_layout, \
   #find_token_backwards, is_in_inset, get_value, get_quoted_value, \
   #del_token, check_token, get_option_value
 
-from lyx2lyx_tools import put_cmd_in_ert
+from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert
 
 #from lyx2lyx_tools import add_to_preamble, insert_to_preamble, \
 #  put_cmd_in_ert, lyx2latex, latex_length, revert_flex_inset, \
@@ -69,15 +69,66 @@ def revert_visible_space(document):
         document.body[i:end + 1] = subst
 
 
+def convert_undertilde(document):
+    " Load undertilde automatically "
+    i = find_token(document.header, "\\use_mathdots" , 0)
+    if i != -1:
+      document.header.insert(i + 1, "\\use_undertilde 1")
+
+
+def revert_undertilde(document):
+    " Load undertilde if used in the document "
+
+    undertilde = find_token(document.header, "\\use_undertilde" , 0)
+    if undertilde == -1:
+      document.warning("No \\use_undertilde line. Assuming auto.")
+    else:
+      val = get_value(document.header, "\\use_undertilde", undertilde)
+      del document.header[undertilde]
+      try:
+        usetilde = int(val)
+      except:
+        document.warning("Invalid \\use_undertilde value: " + val + ". Assuming auto.")
+        # probably usedots has not been changed, but be safe.
+        usetilde = 1
+
+      if usetilde == 0:
+        # do not load case
+        return
+      if usetilde == 2:
+        # force load case
+        add_to_preamble(document, ["\\usepackage{undertilde}"])
+        return
+    
+    # so we are in the auto case. we want to load undertilde if \utilde is used.
+    i = 0
+    while True:
+      i = find_token(document.body, '\\begin_inset Formula', i)
+      if i == -1:
+        return
+      j = find_end_of_inset(document.body, i)
+      if j == -1:
+        document.warning("Malformed LyX document: Can't find end of Formula inset at line " + str(i))
+        i += 1
+        continue
+      code = "\n".join(document.body[i:j])
+      if code.find("\\utilde") != -1:
+        add_to_preamble(document, ["\\@ifundefined{utilde}{\\usepackage{undertilde}}"])
+        return
+      i = j
+
+
 ##
 # Conversion hub
 #
 
 supported_versions = ["2.1.0","2.1"]
-convert = [[414, []]
+convert = [[414, []],
+           [415, [convert_undertilde]]
           ]
 
-revert =  [[413, [revert_visible_space]]
+revert =  [[414, [revert_undertilde]],
+           [413, [revert_visible_space]]
           ]
 
 

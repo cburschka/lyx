@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>MathsUi</class>
  <widget class="QWidget" name="MathsUi">
@@ -6,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>351</width>
-    <height>224</height>
+    <height>261</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -103,6 +104,29 @@
     </widget>
    </item>
    <item row="8" column="0">
+    <widget class="QCheckBox" name="undertildeautoCB">
+     <property name="toolTip">
+      <string>The LaTeX package undertilde is only used if you use the math frame decoration 'utilde'</string>
+     </property>
+     <property name="text">
+      <string>Use u&amp;ndertilde package automatically</string>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0">
+    <widget class="QCheckBox" name="undertildeCB">
+     <property name="toolTip">
+      <string>The LaTeX package undertilde is always used</string>
+     </property>
+     <property name="text">
+      <string>Use undertilde pac&amp;kage</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="0">
     <spacer>
      <property name="orientation">
       <enum>Qt::Vertical</enum>

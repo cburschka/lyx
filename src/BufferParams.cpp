@@ -365,6 +365,7 @@ BufferParams::BufferParams()
 	use_esint = package_auto;
 	use_mhchem = package_auto;
 	use_mathdots = package_auto;
+	use_undertilde = package_auto;
 	cite_engine_ = ENGINE_BASIC;
 	use_bibtopic = false;
 	use_indices = false;
@@ -686,6 +687,10 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		int usemathdots;
 		lex >> usemathdots;
 		use_mathdots = packagetranslator().find(usemathdots);
+	} else if (token == "\\use_undertilde") {
+		int useundertilde;
+		lex >> useundertilde;
+		use_undertilde = packagetranslator().find(useundertilde);
 	} else if (token == "\\cite_engine") {
 		string engine;
 		lex >> engine;
@@ -991,6 +996,7 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\use_esint " << use_esint
 	   << "\n\\use_mhchem " << use_mhchem
 	   << "\n\\use_mathdots " << use_mathdots
+	   << "\n\\use_undertilde " << use_undertilde
 	   << "\n\\cite_engine " << citeenginetranslator().find(cite_engine_)
 	   << "\n\\use_bibtopic " << convert<string>(use_bibtopic)
 	   << "\n\\use_indices " << convert<string>(use_indices)
@@ -1163,6 +1169,8 @@ void BufferParams::validate(LaTeXFeatures & features) const
 		features.require("mhchem");
 	if (use_mathdots == package_on)
 		features.require("mathdots");
+	if (use_undertilde == package_on)
+		features.require("undertilde");
 
 	// Document-level line spacing
 	if (spacing().getSpace() != Spacing::Single && !spacing().isDefault())

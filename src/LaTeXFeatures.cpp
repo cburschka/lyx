@@ -614,8 +614,7 @@ char const * simplefeatures[] = {
 	"amscd",
 	"slashed",
 	"multirow",
-	"tfrupee",
-	"undertilde",
+	"tfrupee"
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
@@ -744,6 +743,10 @@ string const LaTeXFeatures::getPackages() const
 	// yhmath must be loaded after amsmath
 	if (mustProvide("yhmath"))
 		packages << "\\usepackage{yhmath}\n";
+
+	if (mustProvide("undertilde") &&
+		params_.use_undertilde != BufferParams::package_off)
+		packages << "\\usepackage{undertilde}\n";
 
 	// [x]color and pdfcolmk are handled in getColorOptions() above
 	
