@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-07-15 20:16+0200\n"
-"PO-Revision-Date: 2011-07-16 05:29+0100\n"
+"PO-Revision-Date: 2011-07-31 02:23+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -3481,9 +3481,8 @@ msgid "The LaTeX command that ends a switch to a foreign language"
 msgstr "Der LaTeX-Befehl, um von einer fremden Sprache zurückzuschalten."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:134
-#, fuzzy
 msgid "Default Decimal &Separator:"
-msgstr "Am Dezimaltrenner"
+msgstr "Standard-Dezimal&trenner:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:160
 msgid "Check to pass the language globally (to the document class), not locally (to the language package)"
@@ -8505,12 +8504,11 @@ msgstr "Tabellenlegende"
 
 #: lib/layouts/ijmpc.layout:254
 msgid "Refcite"
-msgstr ""
+msgstr "Literaturzitat"
 
 #: lib/layouts/ijmpc.layout:258
-#, fuzzy
 msgid "Cite reference"
-msgstr "alle zitierten Literatureinträge"
+msgstr "Literaturzitat"
 
 #: lib/layouts/ijmpc.layout:271
 msgid "ItemList"
@@ -9076,9 +9074,8 @@ msgid "Specials"
 msgstr "Spezielles"
 
 #: lib/layouts/revtex4-1.layout:240
-#, fuzzy
 msgid "Turn Page"
-msgstr "Seite leeren"
+msgstr "Rückseite"
 
 #: lib/layouts/revtex4-1.layout:248
 #, fuzzy
@@ -9090,9 +9087,8 @@ msgid "Video"
 msgstr "Video"
 
 #: lib/layouts/revtex4-1.layout:261
-#, fuzzy
 msgid "List of Videos"
-msgstr "Abbildungsverzeichnis"
+msgstr "Videoverzeichnis"
 
 #: lib/layouts/revtex4-1.layout:270
 #, fuzzy
@@ -16758,9 +16754,9 @@ msgid "File Not Found"
 msgstr "Datei nicht gefunden"
 
 #: src/Buffer.cpp:905
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to open file `%1$s'."
-msgstr "Kann \"%1$s\" nicht parsen"
+msgstr "Kann Datei `%1$s' nicht öffnen."
 
 #: src/Buffer.cpp:928
 #: src/Buffer.cpp:991
@@ -17947,15 +17943,14 @@ msgstr "&Nicht hinzufügen"
 
 #: src/CutAndPaste.cpp:666
 #: src/Text.cpp:362
-#, fuzzy, c-format
+#, c-format
 msgid "Layout `%1$s' was not found."
-msgstr "Dokumentklasse nicht gefunden"
+msgstr "Layout `%1$s' wurde nicht gefunden."
 
 #: src/CutAndPaste.cpp:668
 #: src/Text.cpp:364
-#, fuzzy
 msgid "Layout Not Found"
-msgstr "nicht gefunden"
+msgstr "Layout nicht gefunden"
 
 #: src/CutAndPaste.cpp:696
 #, c-format
@@ -22199,9 +22194,9 @@ msgid "Error while exporting format: %1$s"
 msgstr "Fehler beim Export in das Formats %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:3143
-#, fuzzy, c-format
+#, c-format
 msgid "Error exporting to format: %1$s"
-msgstr "Keine Informationen vorhanden, um in das Format %1$s zu exportieren."
+msgstr "Fehler beim Exportieren in Format: %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:3151
 #: src/frontends/qt4/GuiView.cpp:3163
