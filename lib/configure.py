@@ -148,9 +148,9 @@ def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
             1. emtpy: no rc entry will be added
             2. one pattern: %% will be replaced by the first found program,
                 or '' if no program is found.
-            3. several patterns for each prog and not_found. This is used 
-                when different programs have different usages. If you do not 
-                want not_found entry to be added to the RC file, you can specify 
+            3. several patterns for each prog and not_found. This is used
+                when different programs have different usages. If you do not
+                want not_found entry to be added to the RC file, you can specify
                 an entry for each prog and use '' for the not_found entry.
 
         not_found: the value that should be used instead of '' if no program
@@ -191,7 +191,7 @@ def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
 
 
 def checkProgAlternatives(description, progs, rc_entry = [], alt_rc_entry = [], path = [], not_found = ''):
-    ''' 
+    '''
         The same as checkProg, but additionally, all found programs will be added
         as alt_rc_entries
     '''
@@ -408,7 +408,7 @@ def checkLatex(dtl_tools):
             PLATEX = ''
             removeFiles(['chklatex.ltx', 'chklatex.log'])
     #-----------------------------------------------------------------
-    # use LATEX to convert from latex to dvi if PPLATEX is not available    
+    # use LATEX to convert from latex to dvi if PPLATEX is not available
     if PPLATEX == '':
         PPLATEX = LATEX
     if dtl_tools:
@@ -483,7 +483,7 @@ def checkModule(module):
       return False
 
 
-def checkFormatEntries(dtl_tools):  
+def checkFormatEntries(dtl_tools):
     ''' Check all formats (\Format entries) '''
     checkViewerEditor('a Tgif viewer and editor', ['tgif'],
         rc_entry = [r'\Format tgif       obj     Tgif                   "" "%%"	"%%"	"vector"'])
@@ -561,10 +561,10 @@ def checkFormatEntries(dtl_tools):
 \Format text4      txt    "Plain text (catdvi)"   "" ""	"%%"	"document"
 \Format textparagraph txt "Plain Text, Join Lines" "" ""	"%%"	"document"''' ])
    #Spreadsheets using ssconvert from gnumeric
-    checkViewer('gnumeric spreadsheet software', ['gnumeric'], 
-      rc_entry = [r'''\Format gnumeric gnumeric "Gnumeric spreadsheet" "" ""    "%%"   "document" 
-\Format excel      xls    "Excel spreadsheet"      "" "" "%%"    "document" 
-\Format oocalc     ods    "OpenOffice spreadsheet" "" "" "%%"    "document"''']) 
+    checkViewer('gnumeric spreadsheet software', ['gnumeric'],
+      rc_entry = [r'''\Format gnumeric gnumeric "Gnumeric spreadsheet" "" ""    "%%"   "document"
+\Format excel      xls    "Excel spreadsheet"      "" "" "%%"    "document"
+\Format oocalc     ods    "OpenOffice spreadsheet" "" "" "%%"    "document"'''])
  #
     path, xhtmlview = checkViewer('an HTML previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
         rc_entry = [r'\Format xhtml      xhtml   "LyXHTML"              y "%%" ""    "document,menu=export"'])
@@ -608,7 +608,7 @@ def checkFormatEntries(dtl_tools):
     checkViewerEditor('an OpenDocument/OpenOffice viewer', ['swriter', 'oowriter', 'abiword'],
         rc_entry = [r'''\Format odt        odt     OpenDocument           "" "%%"	"%%"	"document,vector,menu=export"
 \Format sxw        sxw    "OpenOffice.Org (sxw)"  "" ""	""	"document,vector"'''])
-    # 
+    #
     checkViewerEditor('a Rich Text and Word viewer', ['swriter', 'oowriter', 'abiword'],
         rc_entry = [r'''\Format rtf        rtf    "Rich Text Format"      "" "%%"	"%%"	"document,vector,menu=export"
 \Format word       doc    "MS Word"               W  "%%"	"%%"	"document,vector,menu=export"'''])
@@ -780,7 +780,7 @@ def checkConverterEntries():
     else:
         # set empty converter to override the default imagemagick
         addToRC(r'\converter lyxpreview ppm        ""	""')
-    #  
+    #
     checkProg('a fax program', ['kdeprintfax $$i', 'ksendfax $$i', 'hylapex $$i'],
         rc_entry = [ r'\converter ps         fax        "%%"	""'])
     #
@@ -843,14 +843,14 @@ def checkConverterEntries():
     #
     checkProg('a SVG -> PNG converter', ['rsvg-convert -f png -o $$o $$i', 'inkscape --without-gui --file=$$i --export-png=$$o'],
         rc_entry = [ r'\converter svg        png        "%%"	""'])
-    
+
     #
     # gnumeric/xls/ods to tex
-    checkProg('a spreadsheet -> latex converter', ['ssconvert'], 
-       rc_entry = [ r'''\converter gnumeric latex "ssconvert --export-type=Gnumeric_html:latex $$i $$o" "" 
-\converter ods latex "ssconvert --export-type=Gnumeric_html:latex $$i $$o" "" 
-\converter xls latex "ssconvert --export-type=Gnumeric_html:latex $$i $$o" ""''', 
-'']) 
+    checkProg('a spreadsheet -> latex converter', ['ssconvert'],
+       rc_entry = [ r'''\converter gnumeric latex "ssconvert --export-type=Gnumeric_html:latex $$i $$o" ""
+\converter ods latex "ssconvert --export-type=Gnumeric_html:latex $$i $$o" ""
+\converter xls latex "ssconvert --export-type=Gnumeric_html:latex $$i $$o" ""''',
+''])
 
     path, lilypond = checkProg('a LilyPond -> EPS/PDF/PNG converter', ['lilypond'])
     if (lilypond != ''):
@@ -923,7 +923,7 @@ def checkConverterEntries():
     else:
         addToRC(r'\Format lyxgz      gz     "LyX Archive (tar.gz)"  "" "" ""  "document,menu=export"')
         addToRC(cmd % "lyxgz")
-        
+
     #
     # FIXME: no rc_entry? comment it out
     # checkProg('Image converter', ['convert $$i $$o'])
@@ -1008,15 +1008,15 @@ def checkOtherEntries():
 
 def processLayoutFile(file, bool_docbook):
     ''' process layout file and get a line of result
-        
+
         Declare lines look like this: (article.layout, scrbook.layout, svjog.layout)
-        
+
         \DeclareLaTeXClass{article}
         \DeclareLaTeXClass[scrbook]{book (koma-script)}
         \DeclareLaTeXClass[svjour,svjog.clo]{article (Springer - svjour/jog)}
 
         we expect output:
-        
+
         "article" "article" "article" "false" "article.cls"
         "scrbook" "scrbook" "book (koma-script)" "false" "scrbook.cls"
         "svjog" "svjour" "article (Springer - svjour/jog)" "false" "svjour.cls,svjog.clo"
@@ -1051,11 +1051,11 @@ def processLayoutFile(file, bool_docbook):
 
 
 def checkLatexConfig(check_config, bool_docbook):
-    ''' Explore the LaTeX configuration 
+    ''' Explore the LaTeX configuration
         Return None (will be passed to sys.exit()) for success.
     '''
     msg = 'checking LaTeX configuration... '
-    # if --without-latex-config is forced, or if there is no previous 
+    # if --without-latex-config is forced, or if there is no previous
     # version of textclass.lst, re-generate a default file.
     if not os.path.isfile('textclass.lst') or not check_config:
         # remove the files only if we want to regenerate
@@ -1079,7 +1079,7 @@ def checkLatexConfig(check_config, bool_docbook):
         for file in glob.glob( os.path.join('layouts', '*.layout') ) + \
             glob.glob( os.path.join(srcdir, 'layouts', '*.layout' ) ) :
             # valid file?
-            if not os.path.isfile(file): 
+            if not os.path.isfile(file):
                 continue
             # get stuff between /xxxx.layout .
             classname = file.split(os.sep)[-1].split('.')[0]
@@ -1098,8 +1098,8 @@ def checkLatexConfig(check_config, bool_docbook):
         return None
     # the following will generate textclass.lst.tmp, and packages.lst.tmp
     logger.info(msg + '\tauto')
-    removeFiles(['wrap_chkconfig.ltx', 'chkconfig.vars', \
-        'chkconfig.classes', 'chklayouts.tex'])
+    removeFiles(['chkconfig.classes', 'chkconfig.vars', 'chklayouts.tex',
+        'wrap_chkconfig.ltx'])
     rmcopy = False
     if not os.path.isfile( 'chkconfig.ltx' ):
         shutil.copyfile( os.path.join(srcdir, 'chkconfig.ltx'), 'chkconfig.ltx' )
@@ -1152,7 +1152,7 @@ def checkLatexConfig(check_config, bool_docbook):
         key, val = re.sub('-', '_', line).split('=')
         val = val.strip()
         values[key] = val.strip("'")
-    # chk_fontenc may not exist 
+    # chk_fontenc may not exist
     try:
         addToRC(r'\font_encoding "%s"' % values["chk_fontenc"])
     except:
@@ -1176,7 +1176,7 @@ def checkModulesConfig():
   tx.write('''## This file declares modules and their associated definition files.
 ## It has been automatically generated by configure
 ## Use "Options/Reconfigure" if you need to update it after a
-## configuration change. 
+## configuration change.
 ## "ModuleName" "filename" "Description" "Packages" "Requires" "Excludes" "Category"
 ''')
 
@@ -1188,7 +1188,7 @@ def checkModulesConfig():
       glob.glob( os.path.join(srcdir, 'layouts', '*.module' ) ) :
       # valid file?
       logger.info(file)
-      if not os.path.isfile(file): 
+      if not os.path.isfile(file):
           continue
 
       filename = file.split(os.sep)[-1]
@@ -1293,7 +1293,6 @@ def processModuleFile(file, filename, bool_docbook):
         cm.close()
 
     return '"%s" "%s" "%s" "%s" "%s" "%s" "%s"\n' % (modname, filename, desc, pkgs, req, excl, catgy)
-    
 
 
 def checkTeXAllowSpaces():
@@ -1322,10 +1321,9 @@ def checkTeXAllowSpaces():
 def removeTempFiles():
     # Final clean-up
     if not lyx_keep_temps:
-        removeFiles(['chkconfig.vars',  \
-            'wrap_chkconfig.ltx', 'wrap_chkconfig.log', \
-            'chklayouts.tex', 'chkmodules.tex', 'missfont.log', 
-            'chklatex.ltx', 'chklatex.log'])
+        removeFiles(['chkconfig.vars', 'chklatex.ltx', 'chklatex.log',
+            'chklayouts.tex', 'chkmodules.tex', 'missfont.log',
+            'wrap_chkconfig.ltx', 'wrap_chkconfig.log'])
 
 
 if __name__ == '__main__':
@@ -1370,7 +1368,7 @@ Options:
     writeToFile(outfile, '''# This file has been automatically generated by LyX' lib/configure.py
 # script. It contains default settings that have been determined by
 # examining your system. PLEASE DO NOT MODIFY ANYTHING HERE! If you
-# want to customize LyX, use LyX' Preferences dialog or modify directly 
+# want to customize LyX, use LyX' Preferences dialog or modify directly
 # the "preferences" file instead. Any setting in that file will
 # override the values given here.
 
