@@ -29806,8 +29806,8 @@ TdM\SpecialChar \menuseparator
 Glossaire
 \family default
 .
- Une boîte bleu clair marquée 
-\begin_inset Quotes eld
+ Une boîte marquée 
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -29815,11 +29815,44 @@ Glossaire
 Glossaire
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  est insérée pour montrer la place à laquelle le glossaire sera imprimé.
- Comme la boîte de l'index, la boîte du glossaire n'est pas cliquable.
+ 
+\lang english
+By right-clicking on it, the amount of space for symbols can be altered.
+ You can choose between these settings:
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Default a space of 1
+\begin_inset space \thinspace{}
+\end_inset
+
+cm is used
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Longest
+\begin_inset space ~
+\end_inset
+
+label
+\begin_inset space ~
+\end_inset
+
+width the width of the widest symbol of all nomenclature entries is used
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Custom custom space
 \end_layout
 
 \begin_layout Standard
@@ -29866,53 +29899,6 @@ Liste des Symboles
 renewcommand{
 \backslash
 nomname}{Liste des Symboles}
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Si la quantité d'espace autour du symbole ne vous convient pas, vous pouvez
- ajouter la ligne suivante à votre préambule:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-renewcommand{
-\backslash
-nomlabelwidth}{largeur}
-\end_layout
-
-\begin_layout Standard
-Où 
-\series bold
-largeur
-\series default
- est la largeur voulue en utilisant une des unités de longueur listées dans
- l'appendice
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cha:Unités-de-longueur"
-
-\end_inset
-
-.
- La valeur implicite est 1
-\begin_inset space \thinspace{}
-\end_inset
-
-cm.
 \end_layout
 
 \begin_layout Subsection
@@ -33021,47 +33007,21 @@ name "sec:Dictionnaire-de-synonymes"
 \end_layout
 
 \begin_layout Standard
-LyX gère deux systèmes de dictionnaires de synonymes:
-\end_layout
 
-\begin_layout Enumerate
-La bibliothèque 
-\emph on
-AikSaurus
-\emph default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset CommandInset href
-LatexCommand href
-target "http://aiksaurus.sourceforge.net"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-,
-\emph on
- 
-\emph default
-qui est aussi utilisée par Abiword, mais est seulement disponible en anglais.
-\end_layout
-
-\begin_layout Enumerate
-La bibliothèque 
-\emph on
+\lang english
+LyX provides a multilingual thesaurus.
+ It uses the same thesaurus framework as OpenOffice and Firefox (namely
+ the 
+\family typewriter
 MyThes
-\emph default
+\family default
 
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset CommandInset href
 LatexCommand href
 target "http://lingucomponent.openoffice.org/thesaurus.html"
@@ -33073,16 +33033,16 @@ target "http://lingucomponent.openoffice.org/thesaurus.html"
 
 \end_inset
 
- , qui est aussi utilisée par OpenOffice et qui accepte plusieurs langues.
+ thesaurus library, which is included in LyX).
+ Therefore, LyX can directly access OpenOffice thesaurus dictionaries, which
+ are available for many languages.
 \end_layout
 
 \begin_layout Standard
-Une de ces bibliothèques doit être installée pour que vous puissiez utiliser
- le dictionnaire de synonymes (si les deux sont présentes, 
-\emph on
-MyThes
-\emph default
- sera choisie automatiquement).
+
+\lang english
+This section describes how new dictionaries are installed and set up for
+ the use with LyX.
 \end_layout
 
 \begin_layout Subsection
@@ -33091,8 +33051,11 @@ Configurer le dictionnaire de synonymes
 
 \begin_layout Standard
 La bibliothèque 
+\family typewriter
+MyThes
+\family default
 \emph on
-MyThes 
+ 
 \emph default
 peut accéder directement au dictionnaire de synonymes de OpenOffice.
  Ce dernier consiste en deux fichiers par langue: un fichier se terminant
@@ -33105,17 +33068,8 @@ peut accéder directement au dictionnaire de synonymes de OpenOffice.
 .idx
 \emph default
 .
- Le nom du fichier contient le code de la langue concernée
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Il ne semble pas encore y avoir de dictionnaire français (NdT).
-\end_layout
-
-\end_inset
-
-, les fichier de l'anglais sont ainsi nommés :
+ Le nom du fichier contient le code de la langue concernée, les fichier
+ de l'anglais sont ainsi nommés :
 \end_layout
 
 \begin_layout Itemize
@@ -33130,37 +33084,37 @@ th_en_EN_v2.dat
 Si OpenOffice est déjà installé sur votre système, avec ses dictionnaires
  de synonymes, ces fichiers devraient déjà être présents.
  Si ce n'est pas le cas, vous pouvez récupérer les dictionnaires à partir
- du site
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-target "http://www.openthesaurus.org"
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
+ du site 
+\begin_inset Flex URL
+status collapsed
 
 \begin_layout Plain Layout
-Le lien est mort
+http://www.lyx.org/trac/browser/dictionaries/trunk/thes
 \end_layout
 
 \end_inset
 
  ou à partir de 
-\begin_inset CommandInset href
-LatexCommand href
-target "http://extensions.services.openoffice.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+http://extensions.services.openoffice.org/en/project/french-dictionary-modern
+\end_layout
 
 \end_inset
 
 .
- Notez que, à partir de la version OpenOffice 3.0, ces fichiers sont normalement
- rassemblés dans des achives d'extension (
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Notez que, à partir de la version OpenOffice
+\begin_inset space ~
+\end_inset
+
+3.0, ces fichiers sont normalement rassemblés dans des achives d'extension
+ (
 \emph on
 *.otx
 \emph default
@@ -33170,8 +33124,9 @@ target "http://extensions.services.openoffice.org"
  comme vous le feriez pour une archive ZIP.
 \end_layout
 
-\begin_layout Standard
-Mettez les fichiers 
+\end_inset
+
+ Mettez les fichiers 
 \emph on
 *.idx
 \emph default

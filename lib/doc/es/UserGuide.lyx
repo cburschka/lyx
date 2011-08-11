@@ -29253,13 +29253,45 @@ Insertar\SpecialChar \menuseparator
 Nomenclatura
 \family default
 .
- Se mostrará un cuadro azul claro etiquetado «
+ Se mostrará un cuadro etiquetado «
 \family sans
-Nomenclatur
+Nomenclatura
 \family default
-a» en el lugar en el que aparecerá en la salida.
- Igual que el cuadro del índice alfabético, el cuadro de nomenclatura tampoco
- es desplegable.
+» en el lugar en el que aparecerá en la salida.
+ 
+\lang english
+By right-clicking on it, the amount of space for symbols can be altered.
+ You can choose between these settings:
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Default a space of 1
+\begin_inset space \thinspace{}
+\end_inset
+
+cm is used
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Longest
+\begin_inset space ~
+\end_inset
+
+label
+\begin_inset space ~
+\end_inset
+
+width the width of the widest symbol of all nomenclature entries is used
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Custom custom space
 \end_layout
 
 \begin_layout Standard
@@ -29287,51 +29319,6 @@ nomname
 renewcommand{
 \backslash
 nomname}{Índice de símbolos}
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Si quieres cambiar el espacio para los símbolos, añade al preámbulo la siguiente
- línea:
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\series bold
-
-\backslash
-renewcommand{
-\backslash
-nomlabelwidth}{anchura}
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-La anchura es un valor expresado en una de las unidades listadas en el apéndice
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cap:Unidades-disponibles"
-
-\end_inset
-
-.
- El valor predeterminado es 1
-\begin_inset space \thinspace{}
-\end_inset
-
-cm.
 \end_layout
 
 \begin_layout Subsection
@@ -32304,9 +32291,9 @@ name "sec:Tesauro"
 LyX proporciona un diccionario de sinónimos multilingüe.
  Utiliza la misma estructura que OpenOffice y Firefox (o sea, la biblioteca
  de sinónimos 
-\emph on
+\family typewriter
 MyThes
-\emph default
+\family default
 
 \begin_inset Foot
 status collapsed
@@ -32339,9 +32326,9 @@ Configuración del tesauro
 
 \begin_layout Standard
 Los tesauros de 
-\emph on
+\family typewriter
 MyThes
-\emph default
+\family default
 /OpenOffice constan de dos archivos por idioma: un archivo con el sufijo
  
 \family typewriter
@@ -32374,7 +32361,7 @@ Si están instalados OpenOffice y su tesauro, estos archivos deberían estar
  ya en tu sistema.
  Si no, puedes obtener diccionarios en los sitios 
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -32385,22 +32372,24 @@ http://www.lyx.org/trac/browser/dictionaries/trunk/thes
 
  o 
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-http://extensions.services.openoffice.org
+http://extensions.services.openoffice.org/en/search/node/thesaurus
 \end_layout
 
 \end_inset
 
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-A tener en cuenta que, desde OpenOffice 3.0, estos archivos son empaquetados
- en archivos de extensión 
+A tener en cuenta que, desde OpenOffice
+\begin_inset space ~
+\end_inset
+
+3.0, estos archivos son empaquetados en archivos de extensión 
 \family typewriter
 *.oxt
 \family default
@@ -49600,7 +49589,7 @@ http://www.tex-tipografia.com/spanish.html
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 

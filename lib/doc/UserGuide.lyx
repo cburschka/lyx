@@ -27782,7 +27782,7 @@ LaTeX-packages ! splitidx
 
  package to generate multiple indexes.
  The package is included in all recent LaTeX distributions.
- If yours does not ship it, consult the TeX Catalogue, 
+ If yours does not ship it, consult the TeX-catalogue, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "TeXCatalogue"
@@ -27979,7 +27979,7 @@ LaTeX-packages ! nomencl
 \end_inset
 
  installed.
- You find it in the TeX Catalogue, 
+ You find it in the TeX-catalogue, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "TeXCatalogue"
@@ -28600,7 +28600,7 @@ TOC\SpecialChar \menuseparator
 Nomenclature
 \family default
 .
- A light blue box labeled 
+ A box labeled 
 \begin_inset Quotes eld
 \end_inset
 
@@ -28613,7 +28613,32 @@ Nomenclature
 \end_inset
 
  will show the place where the nomenclature is printed in the output.
- Like the index list box, the nomenclature list box is not clickable.
+ By right-clicking on it, the amount of space for symbols can be altered.
+ You can choose between these settings:
+\end_layout
+
+\begin_layout Description
+Default a space of 1
+\begin_inset space \thinspace{}
+\end_inset
+
+cm is used
+\end_layout
+
+\begin_layout Description
+Longest
+\begin_inset space ~
+\end_inset
+
+label
+\begin_inset space ~
+\end_inset
+
+width the width of the widest symbol of all nomenclature entries is used
+\end_layout
+
+\begin_layout Description
+Custom custom space
 \end_layout
 
 \begin_layout Standard
@@ -28650,51 +28675,6 @@ List of Symbols
 renewcommand{
 \backslash
 nomname}{List of Symbols}
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-If you are unhappy with the amount of space for symbols, you can alter it
- by adding the following line to the preamble:
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\series bold
-
-\backslash
-renewcommand{
-\backslash
-nomlabelwidth}{width}
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-where the width is a value with one of the units listed in Appendix
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cha:Units-available-in"
-
-\end_inset
-
-.
- The default value is 1
-\begin_inset space \thinspace{}
-\end_inset
-
-cm.
 \end_layout
 
 \begin_layout Subsection
@@ -30083,7 +30063,7 @@ Right Header
 
 \begin_layout Plain Layout
 The normal text on the page goes here.
- The running header is above thel text, and the footer is below (including
+ The running header is above the text, and the footer is below (including
  footnotes).
  Headers/footers typically contain things like the page number, title of
  the chapter, company logo but your can use almost anything, except of floats.
@@ -30475,7 +30455,7 @@ This example
 
 \begin_layout Standard
 This example demonstrates what can be done with custom header/footers.
- Don't use it for yor document as it is just an example.
+ Don't use it for your document as it is just an example.
  This example consists of the following definition:
 \end_layout
 
@@ -30778,7 +30758,7 @@ preview-latex
 preview
 \series default
 ) installed.
- If it is not already installed, you will find it in the TeX Catalogue,
+ If it is not already installed, you will find it in the TeX-catalogue,
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -31559,7 +31539,7 @@ Spellcheck
 \begin_inset space ~
 \end_inset
 
-continously Check the spelling of your document as you type it.
+continuously Check the spelling of your document as you type it.
  Misspelled words gets underlined with a dotted red line.
  By right-clicking on an underlined word, the suggestions by the spell appear
  in the context menu.
@@ -31609,9 +31589,9 @@ name "sec:Thesaurus"
 LyX provides a multilingual thesaurus.
  It uses the same thesaurus framework as OpenOffice and Firefox (namely
  the 
-\emph on
+\family typewriter
 MyThes
-\emph default
+\family default
 
 \begin_inset Foot
 status collapsed
@@ -31644,8 +31624,11 @@ Setting up the thesaurus
 
 \begin_layout Standard
 The 
+\family typewriter
+MyThes
+\family default
 \emph on
-MyThes/
+/
 \emph default
 OpenOffice thesauri consist of two files per language: A file with the suffix
  
@@ -31695,17 +31678,21 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://extensions.services.openoffice.org
+http://extensions.services.openoffice.org/en/search/node/thesaurus
 \end_layout
 
 \end_inset
 
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Note that, as of OpenOffice 3.0, the files on 
+Note that, as of OpenOffice
+\begin_inset space ~
+\end_inset
+
+3.0, the files on 
 \begin_inset Flex URL
 status collapsed
 
