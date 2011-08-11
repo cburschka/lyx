@@ -36387,8 +36387,57 @@ status collapsed
 一覧／目次\SpecialChar \menuseparator
 用語集
 \family default
-メニューを使用します。「用語集」とラベルのついた水色の枠が、出力において記号一覧ないし用語集が印字される位置を示します。索引一覧枠と同様、用語集枠もクリック可能
-ではありません。
+メニューを使用します。
+\lang english
+A box labeled 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Nomenclature
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ will show the place where the nomenclature is printed in the output.
+
+\lang japanese
+ 
+\lang english
+By right-clicking on it, the amount of space for symbols can be altered.
+ You can choose between these settings:
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Default a space of 1
+\begin_inset space \thinspace{}
+\end_inset
+
+cm is used
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Longest
+\begin_inset space ~
+\end_inset
+
+label
+\begin_inset space ~
+\end_inset
+
+width the width of the widest symbol of all nomenclature entries is used
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Custom custom space
 \end_layout
 
 \begin_layout Standard
@@ -36413,41 +36462,6 @@ nomname
 renewcommand{
 \backslash
 nomname}{記号一覧}
-\series default
-
-\begin_inset VSpace defskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-もし記号とのあいだの空白の大きさが満足でない場合には、以下の行をプリアンブルに加えることで変更ができます。
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-renewcommand{
-\backslash
-nomlabelwidth}{<長さ>}
-\end_layout
-
-\begin_layout Standard
-ここで<長さ>は、付録
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cha:LyXで使用できる単位"
-
-\end_inset
-
-に掲げてある単位のいずれかで表された数値です。既定値は1
-\begin_inset space \thinspace{}
-\end_inset
-
-cmです。
 \end_layout
 
 \begin_layout Subsection
@@ -39141,9 +39155,9 @@ name "sec:類語辞典"
 
 \begin_layout Standard
 LyXは、多国語の類語辞典を提供し、OpenOfficeやFirefoxと同じ類語辞典フレームワークを使用しています(つまり、
-\emph on
+\family typewriter
 MyThes
-\emph default
+\family default
 
 \begin_inset Foot
 status collapsed
@@ -39173,9 +39187,9 @@ target "http://lingucomponent.openoffice.org/thesaurus.html"
 
 \begin_layout Standard
 
-\emph on
+\family typewriter
 MyThes
-\emph default
+\family default
 /OpenOffice類語辞典は、1言語あたり2つのファイルから成り、1つはデータを含む拡張子
 \emph on
 *.dat
@@ -39213,17 +39227,21 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://extensions.services.openoffice.org
+http://extensions.services.openoffice.org/en/search/node/thesaurus
 \end_layout
 
 \end_inset
 
-から辞書を入手することができます
+から辞書を入手することができます。
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-OpenOffice 3.0現在では、
+OpenOffice
+\begin_inset space ~
+\end_inset
+
+3.0現在では、
 \begin_inset Flex URL
 status collapsed
 
@@ -39243,7 +39261,7 @@ http://extensions.services.openoffice.org
 
 \end_inset
 
-。使用したい全ての言語の*.idxファイルと*.datファイルを同一のディレクトリ(サブディレクトリは使用しないでください)に入れ、この辞書のパスを
+使用したい全ての言語の*.idxファイルと*.datファイルを同一のディレクトリ(サブディレクトリは使用しないでください)に入れ、この辞書のパスを
 \family sans
 ツール\SpecialChar \menuseparator
 設定\SpecialChar \menuseparator

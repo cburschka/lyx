@@ -51,7 +51,7 @@
 %\let\OrgIndex\index 
 %\renewcommand*{\index}[1]{\OrgIndex{#1}}
 \end_preamble
-\options bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
+\options intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
 \use_default_options false
 \begin_modules
 customHeadersFooters
@@ -29973,9 +29973,7 @@ eintragen.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Multiple Indexes
+Mehrere Stichwortverzeichnisse
 \end_layout
 
 \begin_layout Standard
@@ -30164,7 +30162,29 @@ Nomenklatur
 status collapsed
 
 \begin_layout Plain Layout
-Glossar
+Glossar|see
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Nomenklatur
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30174,23 +30194,42 @@ Glossar
 
 \begin_layout Standard
 Manchmal benötigen Sie vielleicht eine Liste von Symbolen oder Begriffen
- mit deren Bedeutung.
- Das LaTeX-Paket 
-\family typewriter
-nomencl
-\family default
- erzeugt solche Listen auf einfache Weise.
- 
-\family typewriter
-nomencl
-\family default
- ist in den meisten Linux-Distributionen enthalten.
- Wenn nicht, können Sie es von CTAN beziehen und installieren.
+ mit deren Bedeutung – eine sogenannte Nomenklatur bzw.
+\begin_inset space ~
+\end_inset
+
+ ein Glossar.
 \end_layout
 
 \begin_layout Standard
-Einen Glossar-Eintrag erstellen Sie, indem Sie den Cursor hinter ein Symbol
- oder einen Begriff stellen und 
+Um dies in LyX zu erstellen, muss das LaTeX-Paket 
+\series bold
+nomencl
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! nomencl
+\end_layout
+
+\end_inset
+
+ installiert sein.
+ Sie finden es im TeX-Katalog, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "TeXCatalogue"
+
+\end_inset
+
+ oder im Paketmanager Ihrer LaTeX-Distribution.
+\end_layout
+
+\begin_layout Standard
+Einen Nomenklatureintrag erstellen Sie, indem Sie den Cursor hinter ein
+ Symbol oder einen Begriff stellen und 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Nomenklatureintrag
@@ -30208,47 +30247,43 @@ Nomenklatureintrag
 \family sans
 Nom
 \family default
- wird eingefügt und das 
-\family sans
-Glossareintrag
-\family default
--Menüfenster geöffnet.
- Ein Glossar-Eintrag besteht aus drei Teilen: das 
+ wird eingefügt und ein Dialogfenster geöffnet.
+ Ein Glossar-Eintrag besteht aus zwei Hauptteilen: das 
 \family sans
 Symbol
 \family default
-, die 
+ und dessen 
 \family sans
 Beschreibung
 \family default
- und 
-\family sans
-Einsortieren
-\begin_inset space \space{}
-\end_inset
-
-als
-\family default
 .
- Wenn es sich bei 
-\family sans
-Symbol
-\family default
- zum Beispiel um etwas Mathematisches handelt wie 
-\begin_inset Formula $\sigma$
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ Sie müssen korrekten LaTeX-Code in allen Feldern des Nomenklatur-Dialogs
+ eingeben.
+\end_layout
+
 \end_inset
 
-, müssen Sie den entsprechenden LaTeX-Code eingeben, ist es ein normales
- Wort, wird es direkt übernommen.
+
 \end_layout
 
 \begin_layout Subsection
-Nomenklatur-Einträge sortieren
+Nomenklaturdefinition und Layout
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Glossar!sortieren
+Nomenklatur ! Layout
 \end_layout
 
 \end_inset
@@ -30257,70 +30292,265 @@ Glossar!sortieren
 \end_layout
 
 \begin_layout Standard
-Nehmen wir an, Sie hätten zwei Nomenklatureinträge für die Symbole 
-\begin_inset Formula $a$
+
+\lang english
+When you have symbols in formulas, you have to define them in the 
+\family sans
+Symbol
+\family default
+ field as LaTeX-formulas.
+ For example to get 
+\begin_inset Quotes eld
 \end_inset
 
+
+\begin_inset Formula $\sigma$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, insert this:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+\lang ngerman
+$
+\backslash
+sigma$
+\lang english
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+The 
+\begin_inset Quotes eld
+\end_inset
+
+$
+\begin_inset Quotes erd
+\end_inset
+
+ character starts/ends the formula.
+ The LaTeX-command for the Greek letter is the name of the letter beginning
+ with a backslash 
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ For capital Greek letters, start the command also with a capital letter,
+ like
+\lang ngerman
+ 
+\series bold
+
+\backslash
+Sigma
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+(A short introduction to the LaTeX-syntax is given in section
+\lang ngerman
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeX-Syntax"
+
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You cannot use the 
+\family sans
+Textstil
+\family default
+ Dialog to format the description text but have to use LaTeX-commands.
+ For example the description of the nomenclature entry for the 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\sigma$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in this document ist:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+\lang ngerman
+Sinnsloseintrag für das Zeichen 
+\backslash
+textsf{sigma}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+Der Befehl 
+\series bold
+
+\backslash
+textsf
+\series default
+ setzt die Schrit auf 
+\family sans
+serifenlos
+\family default
+.
+ Für 
+\series bold
+fett
+\series default
+ verwenden Sie den Befehl 
+\series bold
+
+\backslash
+textbf
+\series default
+, für 
+\family typewriter
+schreibmaschine
+\family default
+ 
+\series bold
+
+\backslash
+texttt
+\series default
+, für 
+\emph on
+hervorgehoben 
+\series bold
+\emph default
+
+\backslash
+emph
+\series default
+.
+\end_layout
+
+\begin_layout Subsection
+Nomenklatur-Einträge sortieren
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Nomenklatur ! sortieren
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nehmen wir an, Sie hätten zwei Nomenklatureinträge für die Symbole
+\emph on
+ a
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "a"
+description "Sinnsloseintrag für das Zeichen ,,a``"
+
+\end_inset
+
+
+\emph default
  und 
 \begin_inset Formula $\sigma$
 \end_inset
 
+
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+prefix "sigma"
+symbol "$\\sigma$"
+description "Sinnsloseintrag für das Zeichen \\textsf{sigma}"
+
+\end_inset
+
 .
- 
-\family typewriter
-nomencl
-\family default
- sortiert diese beim Drucken nach dem, was im Feld 
+ Diese werden alphabetisch nach dem sortiert, was im Feld 
 \family sans
 Symbol
 \family default
  steht.
- Haben Sie zum Beispiel 
-\begin_inset Formula $a$
+ Sie werden daher nach 
+\begin_inset Quotes gld
 \end_inset
 
- als 
-\family typewriter
-$a$
+
+\family sans
+a
 \family default
- eingegeben und 
-\begin_inset Formula $\sigma$
+
+\begin_inset Quotes grd
 \end_inset
 
- als 
+ und 
+\begin_inset Quotes gld
+\end_inset
+
+
 \family typewriter
 $
 \backslash
 sigma$
 \family default
-, erscheint 
+
+\begin_inset Quotes grd
+\end_inset
+
+ sortiert – das 
 \begin_inset Formula $\sigma$
 \end_inset
 
- vor 
-\begin_inset Formula $a$
-\end_inset
-
-, weil das Zeichen 
-\begin_inset Quotes gld
-\end_inset
-
-
-\backslash
-
-\begin_inset Quotes grd
-\end_inset
-
- vor 
-\begin_inset Quotes gld
-\end_inset
-
+ wird vor dem 
+\emph on
 a
+\emph default
+ erscheinen, denn das Befehlszeichen 
+\begin_inset Quotes gld
+\end_inset
+
+$
 \begin_inset Quotes grd
 \end_inset
 
- steht.
- Um das zu ändern, können Sie etwas ins Feld 
+ wird bei der Sortierung berücksichtigt.
+\end_layout
+
+\begin_layout Standard
+Um das zu ändern, können Sie etwas ins Feld 
 \family sans
 Einsortieren
 \begin_inset space \space{}
@@ -30330,23 +30560,29 @@ als
 \family default
  schreiben, zum Beispiel 
 \family typewriter
-a
-\family default
- und 
-\family typewriter
 sigma
 \family default
-.
+ bei 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ .
  Dann stimmt die Sortierreihenfolge wieder.
 \end_layout
 
 \begin_layout Standard
-Auf diese Weise können Sie die Sortierreihenfolge beliebig manipulieren.
- Um verschachtelte Glossare zu erstellen, lesen Sie bitte in der 
-\family typewriter
+Um verschachtelte Nomenklaturen zu erstellen, lesen Sie bitte in der 
+\series bold
 nomencl
-\family default
--Dokumentation nach.
+\series default
+-Dokumentation nach, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nomencl"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -30355,7 +30591,7 @@ Nomenklatur-Optionen
 status collapsed
 
 \begin_layout Plain Layout
-Glossar!Optionen@-Optionen
+Nomenklatur ! Optionen
 \end_layout
 
 \end_inset
@@ -30364,18 +30600,16 @@ Glossar!Optionen@-Optionen
 \end_layout
 
 \begin_layout Standard
-In den Nomenklatureinträgen können Sie auf Gleichungen und Seiten verweisen,
- indem Sie am Ende des 
-\family sans
-Beschreibung
-\family default
--Feldes eine der folgenden sechs Verweis-Optionen eingeben:
+Das Paket 
+\series bold
+nomencl
+\series default
+ bietet einige Optionen an um das Aussehen der Nomenklatur zu verändern.
+ Hier sind einige seiner Optionen, für weitere siehe seine Dokumentation:
 \end_layout
 
 \begin_layout Description
-
-\backslash
-refeq: Verweis mit dem Ausdruck 
+refeq Verweis mit dem Ausdruck 
 \begin_inset Quotes gld
 \end_inset
 
@@ -30387,9 +30621,7 @@ refeq: Verweis mit dem Ausdruck
 \end_layout
 
 \begin_layout Description
-
-\backslash
-refpage: Verweis mit dem Ausdruck 
+refpage Verweis mit dem Ausdruck 
 \begin_inset Quotes gld
 \end_inset
 
@@ -30398,45 +30630,6 @@ refpage: Verweis mit dem Ausdruck
 \end_inset
 
 
-\end_layout
-
-\begin_layout Description
-
-\backslash
-refeqpage: Ist die Kurzform von 
-\family sans
-\series bold
-
-\backslash
-refeq
-\backslash
-refpage
-\family default
-\series default
-.
-\end_layout
-
-\begin_layout Description
-
-\backslash
-norefeq,
-\begin_inset space ~
-\end_inset
-
-
-\backslash
-norefpag,
-\begin_inset space ~
-\end_inset
-
-
-\backslash
-norefeqpage: Schaltet die entsprechende Verweis-Option ab, wenn sie global
- gesetzt wurde (siehe die 
-\family typewriter
-nomencl
-\family default
--Dokumentation).
 \end_layout
 
 \begin_layout Description
@@ -30501,8 +30694,7 @@ Optionen
  von 
 \family sans
 Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
 Dokumentklasse
 \family default
  ein.
@@ -30520,7 +30712,7 @@ Beschreibung
 \begin_layout Description
 
 \backslash
-nomrefeq wie 
+nomrefeq wie die Option 
 \series bold
 refeq
 \end_layout
@@ -30528,7 +30720,7 @@ refeq
 \begin_layout Description
 
 \backslash
-nomrefpage wie 
+nomrefpage wie die Option 
 \series bold
 refpage
 \series default
@@ -30562,16 +30754,16 @@ nomnorefpage,
 
 
 \backslash
-nomnorefeqpage schaltet die entsprechende Option ab.
+nomnorefeqpage schaltet die entsprechende Option ab
 \end_layout
 
 \begin_layout Subsection
-Glossar drucken
+Nomenklatur drucken
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Glossar!drucken
+Nomenklatur ! drucken
 \end_layout
 
 \end_inset
@@ -30606,66 +30798,73 @@ status collapsed
 \end_inset
 
 Verzeichnis einfügen.
- An der Stelle erscheint ein hellblaues Kästchen mit der Aufschrift 
+ An der Stelle erscheint ein Kästchen mit der Aufschrift 
+\begin_inset Quotes gld
+\end_inset
+
+
 \family sans
-Glossar
+Nomenklatur
 \family default
+
+\begin_inset Quotes grd
+\end_inset
+
 , und dort wird das Verzeichnis auch gedruckt.
- Ebenso wie beim Stichwortverzeichnis passiert nichts, wenn Sie auf das
- Kästchen klicken.
- In der Druckausgabe erscheint Das Glossar als
-\series bold
- Nomenclature
-\series default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Dies wird für einige Sprachen automatisch übersetzt.
+ Mit einem Rechtsklick auf das Kästchen kann man die verfügbare Breite für
+ die Symbole einstellen.
+ Sie können dabei zwischen diesen Einstellungen wählen:
 \end_layout
 
+\begin_layout Description
+Standard Breite von 1
+\begin_inset space \thinspace{}
+\end_inset
+
+cm
+\end_layout
+
+\begin_layout Description
+Breite
+\begin_inset space ~
+\end_inset
+
+der
+\begin_inset space ~
+\end_inset
+
+längsten
+\begin_inset space ~
+\end_inset
+
+Marke die Breite des breitesten Symbols aller Nomenklatureinträge wird verwendet
+\end_layout
+
+\begin_layout Description
+Benutzerdefiniert benutzerdefinierte Breite
+\end_layout
+
+\begin_layout Standard
+In der Druckausgabe erscheint das Glossar als 
+\begin_inset Quotes gld
+\end_inset
+
+Nomenclature
+\begin_inset Quotes grd
 \end_inset
 
 .
  Wenn Ihnen der Titel nicht gefällt, können Sie ihn im LaTeX-Vorspann ändern:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 renewcommand{
 \backslash
 nomname}{Symbolliste}
-\end_layout
-
-\begin_layout Standard
-Wenn Sie mit dem Symbolabstand nicht zufrieden sind, können Sie ihn im LaTeX-Vor
-spann ebenfalls ändern:
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-renewcommand{
-\backslash
-nomlabelwidth}{3.0cm}
-\end_layout
-
-\begin_layout Standard
-Was Sie sonst noch machen müssen, um überhaupt ein Glossar zu bekommen,
- lesen Sie am besten in der 
-\family typewriter
-nomencl
-\family default
--Dokumentation nach, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "nomencl"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Subsection
@@ -30677,10 +30876,20 @@ name "sub:Nomenklatur-Programm"
 \end_inset
 
 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Nomenklatur ! Programm
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-LyX benutzt standardmäßig 
+LyX benutzt standardmäßig das Programm 
 \family typewriter
 makeindex
 \family default
@@ -33822,9 +34031,9 @@ Thesaurus
 LyX provides a multilingual thesaurus.
  It uses the same thesaurus framework as OpenOffice und Firefox (namely
  the 
-\emph on
+\family typewriter
 MyThes
-\emph default
+\family default
 
 \begin_inset Foot
 status collapsed
@@ -33865,8 +34074,11 @@ Setting up the thesaurus
 
 \lang english
 The 
+\family typewriter
+MyThes
+\family default
 \emph on
-MyThes/
+/
 \emph default
 OpenOffice thesauri consist of two files per language: A file mit the suffix
  
@@ -33905,36 +34117,46 @@ th_en_EN_v2.dat
 \lang english
 If you have OpenOffice und its thesaurus installed, these files should be
  already on your system.
- If not, you can get dictionaries entweder from 
+ If not, you can get dictionaries either from
+\lang ngerman
+ 
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
-
 http://www.lyx.org/trac/browser/dictionaries/trunk/thes
 \end_layout
 
 \end_inset
 
- oder from the site 
+ 
+\lang english
+or from the site
+\lang ngerman
+ 
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
-
-http://extensions.services.openoffice.org
+http://extensions.services.openoffice.org/en/project/dict-de_DE_frami
 \end_layout
 
 \end_inset
 
 .
+\lang english
+
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
 \lang english
-Note that, as of OpenOffice 3.0, the files on 
+Note that, as of OpenOffice
+\begin_inset space ~
+\end_inset
+
+3.0, the files on 
 \begin_inset Flex URL
 status collapsed
 
@@ -45161,7 +45383,7 @@ key "TeXCatalogue"
 
 \end_inset
 
-Der TeX Katalog:
+Der TeX-Katalog:
 \begin_inset Newline newline
 \end_inset
 
@@ -46159,6 +46381,51 @@ options "../biblio/alphadin"
 
 \begin_layout Standard
 Das obige Literaturverzeichnis stammt aus einer BibTeX-Datenbank.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+nomname}{Nomenklatur}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Der Befehl 
+\family typewriter
+
+\backslash
+nomname
+\family default
+ ist der Name der Nomenklatur in Englisch.
+ Es wird daher ein deutscher Name festgelegt.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset nomencl_print
+LatexCommand printnomenclature
+set_width "none"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
