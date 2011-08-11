@@ -54,7 +54,7 @@
 % use normal list environments also in French documents
 \frenchbsetup{StandardLayout}
 \end_preamble
-\options intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
+\options refpage,intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
 \use_default_options false
 \begin_modules
 customHeadersFooters
@@ -17802,7 +17802,11 @@ Commentaire Ce type de note n'apparaît pas non plus à l'impression, mais
 \family sans
 Fichier\SpecialChar \menuseparator
 Exporter\SpecialChar \menuseparator
-LaTeX (pdflatex) / (standard)
+LaTeX
+\begin_inset space ~
+\end_inset
+
+(xxx)
 \family default
 .
 \begin_inset Newline newline
@@ -17823,7 +17827,20 @@ Le texte de cette note n'apparaîtra que comme commentaire dans un fichier
 \end_layout
 
 \begin_layout Description
-Grisée Ce type de note apparaît à l'impression sous forme de texte grisé
+Grisée Ce type de note apparaît à l'impression sous forme de texte 
+\lang english
+in a color which you can set in the document settings under 
+\family sans
+Colors\SpecialChar \menuseparator
+Greyed-out
+\begin_inset space ~
+\end_inset
+
+notes
+\family default
+.
+\lang french
+
 \begin_inset Newline newline
 \end_inset
 
@@ -17838,20 +17855,14 @@ status open
 \begin_layout Plain Layout
 Le texte
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Ceci est un exemple de note de bas de page à l'intérieur d'une note en texte
  grisé.
- Dans ce document la couleur des notes grisées est redéfinie comme étant
- bleue.
- La démarche à suivre pour obtenir ce résultat est expliqué dans le manuel
- 
-\emph on
-Objets insérés
-\emph default
-.
- 
+ Dans ce document la couleur 
+\lang english
+of this note type is set to blue.
 \end_layout
 
 \end_inset
@@ -17912,18 +17923,11 @@ Notes en bas de page
 \end_layout
 
 \begin_layout Standard
-Contrairement aux autres programmes de typographie, LyX utilise des boîtes
- 
-\begin_inset Quotes fld
-\end_inset
-
-repliables
-\begin_inset Quotes frd
-\end_inset
-
-, au lieu d'afficher les notes en bas de page au bas de l'écran ou ailleurs
- dans le texte.
- Quand vous insérez une note en bas de page avec 
+LyX utilise des boîtes 
+\lang english
+to display footnotes
+\lang french
+: Quand vous insérez une note en bas de page avec 
 \family sans
 Insérer\SpecialChar \menuseparator
 Note
@@ -17945,15 +17949,13 @@ de
 Page
 \family default
  ou en utilisant le bouton 
-\begin_inset Graphics
-	filename ../../images/footnote-insert.png
-	scale 85
-	groupId toolbarbouton
-
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
 \end_inset
 
  de la palette, vous voyez d'abord apparaître dans votre texte une boîte
- grise avec une étiquette bleue 
+ avec la étiquette 
 \begin_inset Quotes fld
 \end_inset
 
@@ -17987,18 +17989,7 @@ ouvrira
 \begin_inset Quotes frd
 \end_inset
 
- la note en bas de page
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Dans LyX, pour fermer cette note en bas de page, cliquez sur la boîte contenant
- l'étiquette de la note.
-\end_layout
-
-\end_inset
-
-.
+ la note en bas de page.
  Si vous voulez transformer du texte déjà existant en note en bas de page,
  sélectionnez-le et cliquez sur le bouton 
 \family sans
@@ -18021,6 +18012,25 @@ de
 Page
 \family default
  de la barre d'outils.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Here is an example footnote:
+\lang french
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Dans LyX, pour fermer cette note en bas de page, cliquez sur la boîte contenant
+ l'étiquette de la note.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -18081,15 +18091,12 @@ en
 Marge
 \family default
  ou avec le bouton de la barre d'outils 
-\begin_inset Graphics
-	filename ../../images/marginalnote-insert.png
-	scale 85
-	groupId toolbarbouton
-
+\begin_inset Info
+type  "icon"
+arg   "marginalnote-insert"
 \end_inset
 
- , vous voyez apparaître dans votre texte une boîte grise avec une étiquette
- rouge 
+ , vous voyez apparaître dans votre texte une boîte avec la étiquette 
 \begin_inset Quotes fld
 \end_inset
 
@@ -18097,9 +18104,18 @@ marge
 \begin_inset Quotes frd
 \end_inset
 
+.
+ Cette boîte est la représentation de votre note dans LyX.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+At the side is an example marginal note.
+\lang french
 
 \begin_inset Marginal
-status collapsed
+status open
 
 \begin_layout Plain Layout
 C'est une note en marge.
@@ -18107,31 +18123,6 @@ C'est une note en marge.
 
 \end_inset
 
-.
- Cette boîte est la représentation de votre note dans LyX.
- Vous pouvez y entrer votre texte.
- Si vous cliquez sur l'étiquette 
-\begin_inset Quotes fld
-\end_inset
-
-marge
-\begin_inset Quotes frd
-\end_inset
-
-, la boîte va se refermer.
- Vous pourrez y accéder ultérieurement en cliquant à nouveau sur l'étiquette,
- 
-\begin_inset Quotes fld
-\end_inset
-
-ouvrant
-\begin_inset Quotes frd
-\end_inset
-
- ainsi la note en marge.
-\end_layout
-
-\begin_layout Standard
 
 \end_layout
 
@@ -18148,6 +18139,28 @@ extérieure
 \end_inset
 
  – la gauche sur les pages paires et la droite sur les pages impaires.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+For further information about marginal notes see section 
+\emph on
+Margin
+\begin_inset space ~
+\end_inset
+
+Notes
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Section
@@ -29413,7 +29426,7 @@ a
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "a"
-description "entrée bidon pour le symbole \"a\"\\nomnorefpage"
+description "entrée bidon pour le symbole \\og a \\fg{}"
 
 \end_inset
 
@@ -29617,55 +29630,6 @@ intoc Insère le glossaire dans la table de matières
 \end_layout
 
 \begin_layout Standard
-Il y a aussi les options 
-\series bold
-croatian
-\series default
-, 
-\series bold
-danish
-\series default
-, 
-\series bold
-english
-\series default
-, 
-\series bold
-french
-\series default
-, 
-\series bold
-german
-\series default
-, 
-\series bold
-italian
-\series default
-, 
-\series bold
-polish
-\series default
-, 
-\series bold
-portuguese
-\series default
-, 
-\series bold
-russian
-\series default
-, 
-\series bold
-spanish
-\series default
-, et 
-\series bold
-ukrainian
-\series default
- pour imprimer les textes précédents et le titre du glossaire dans la langue
- correspondante.
-\end_layout
-
-\begin_layout Standard
 Pour utiliser une ou plusieurs de ces options, ajoutez-les, séparés par
  des virgules, à la liste d'option de la classe de document de la fenêtre
  de dialogue 
@@ -29683,9 +29647,9 @@ Document ! Paramètres
 
 
 \family default
- Dans ce document, nous avons utilisé l'option 
+ Dans ce document, nous avons utilisé les options 
 \series bold
-intoc
+refpage, intoc
 \series default
 .
 \end_layout
@@ -29755,25 +29719,6 @@ nomnorefpage,
 
 \backslash
 nomnorefeqpage désactive les options correspondantes
-\end_layout
-
-\begin_layout Standard
-L'option 
-\series bold
-
-\backslash
-nomnorefpage
-\series default
- a été utilisé dans ce document pour l'entrée de glossaire pour la lettre
- 
-\begin_inset Quotes eld
-\end_inset
-
-a
-\begin_inset Quotes erd
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Subsection
@@ -33089,6 +33034,7 @@ Si OpenOffice est déjà installé sur votre système, avec ses dictionnaires
 status collapsed
 
 \begin_layout Plain Layout
+
 http://www.lyx.org/trac/browser/dictionaries/trunk/thes
 \end_layout
 
@@ -33099,6 +33045,7 @@ http://www.lyx.org/trac/browser/dictionaries/trunk/thes
 status collapsed
 
 \begin_layout Plain Layout
+
 http://extensions.services.openoffice.org/en/project/french-dictionary-modern
 \end_layout
 
@@ -49063,7 +49010,7 @@ La bibliographie ci-dessus a été créée à partir d'une base de données BibT
 \series bold
 \begin_inset CommandInset nomencl_print
 LatexCommand printnomenclature
-set_width "none"
+set_width "auto"
 
 \end_inset
 

@@ -64,7 +64,7 @@
 %\AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}}\fi
 %\AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}
 \end_preamble
-\options intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
+\options refpage,intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
 \use_default_options false
 \begin_modules
 customHeadersFooters
@@ -23981,7 +23981,11 @@ status open
 \family sans
 ファイル\SpecialChar \menuseparator
 書き出し\SpecialChar \menuseparator
-LaTeX (pdflatex) / (平文)
+LaTeX
+\begin_inset space ~
+\end_inset
+
+(xxx)
 \family default
  メニューを使って文書をLaTeXに書き出す際には、LaTeXコメントとして出力されます。
 \begin_inset Newline newline
@@ -24001,7 +24005,20 @@ status open
 \end_layout
 
 \begin_layout Description
-淡色表示 この注釈は、薄灰色の文章として出力に現れます。
+淡色表示 
+\lang english
+This note will appear in the output as text in a color which you can set
+ in the document settings under 
+\family sans
+Colors\SpecialChar \menuseparator
+Greyed-out
+\begin_inset space ~
+\end_inset
+
+notes
+\family default
+\lang japanese
+。
 \begin_inset Newline newline
 \end_inset
 
@@ -24016,11 +24033,14 @@ status open
 \begin_layout Plain Layout
 これは、出力に薄灰色の文章として現れるコメントに書かれた文章
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-これは、淡色表示注釈内に脚注を用いた例です。この文書では、淡色表示注釈の色は青色で出るよう再定義されています。これを実現するためにどうすればよいかは、取扱説明書
-『埋込オブジェクト篇』に説明があります。
+これは、淡色表示注釈内に脚注を用いた例です。
+\lang english
+In this document the color of this note type is set to blue
+\lang japanese
+。
 \end_layout
 
 \end_inset
@@ -24028,10 +24048,6 @@ status collapsed
 です。
 \end_layout
 
-\end_inset
-
-
-\begin_inset Newline newline
 \end_inset
 
 
@@ -24192,6 +24208,24 @@ arg   "footnote-insert"
 \noun off
 \color none
 右は脚注の例です
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+。
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
 \begin_inset Foot
 status open
 
@@ -24211,15 +24245,6 @@ status open
 \end_inset
 
 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-。
 \end_layout
 
 \begin_layout Standard
@@ -24310,11 +24335,41 @@ type  "icon"
 arg   "marginalnote-insert"
 \end_inset
 
-を使って傍注を挿入すると、「傍注」という紫のラベルがついた灰色のボックスが本文中に現れます。このボックスがLyXにおいて傍注を表すものなのです。
+を使って傍注を挿入すると
+\lang english
+, you will see 
+\family roman
+\series medium
+a
+\family default
+\series default
+ 
+\family roman
+\series medium
+box with the
+\family default
+\series default
+ 
+\family roman
+\series medium
+label 
+\begin_inset Quotes eld
+\end_inset
+
+margin
+\begin_inset Quotes erd
+\end_inset
+
+ appearing within your text.
+ 
+\family default
+\series default
+\lang japanese
+。このボックスがLyXにおいて傍注を表すものなのです。
 \end_layout
 
 \begin_layout Standard
-この脇に傍注の例があります
+この脇に傍注の例があります。
 \begin_inset Marginal
 status open
 
@@ -24324,11 +24379,33 @@ status open
 
 \end_inset
 
-。
+
 \end_layout
 
 \begin_layout Standard
 傍注は、片面文書では右側に印字されます。両面文書では、外側の余白、すなわち偶数ページでは左側、奇数ページでは右側に現れます。
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+For further information about marginal notes see section 
+\emph on
+Margin
+\begin_inset space ~
+\end_inset
+
+Notes
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Section
@@ -36241,54 +36318,6 @@ intoc 用語集を目次に加えます。
 \end_layout
 
 \begin_layout Standard
-他にも、
-\series bold
-croatian
-\series default
-・
-\series bold
-danish
-\series default
-・
-\series bold
-english
-\series default
-・
-\series bold
-french
-\series default
-・
-\series bold
-german
-\series default
-・
-\series bold
-italian
-\series default
-・
-\series bold
-polish
-\series default
-・
-\series bold
-portuguese
-\series default
-・
-\series bold
-russian
-\series default
-・
-\series bold
-spanish
-\series default
-・
-\series bold
-ukrainian
-\series default
-というオプションがあり、これらは参照文や用語集見出しを対応する言語に変更するものです。
-\end_layout
-
-\begin_layout Standard
 オプションをひとつないしそれ以上使用するには、
 \family sans
 文書\SpecialChar \menuseparator
@@ -36364,6 +36393,66 @@ nomnorefpage,
 
 \backslash
 nomnorefeqpage 対応するオプションを解除する
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To translate words like 
+\begin_inset Quotes eld
+\end_inset
+
+page
+\begin_inset Quotes erd
+\end_inset
+
+ to Japanese, add these lines to your LaTeX preamble:
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\series bold
+\lang english
+
+\backslash
+renewcommand{
+\backslash
+eqdeclaration}[1]{, see equation
+\backslash
+nobreakspace(#1)}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+renewcommand{
+\backslash
+pagedeclaration}[1]{, page
+\backslash
+nobreakspace{}#1}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+and replace 
+\begin_inset Quotes eld
+\end_inset
+
+see equation
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+page
+\begin_inset Quotes erd
+\end_inset
+
+ by their translation.
 \end_layout
 
 \begin_layout Subsection
@@ -52764,7 +52853,7 @@ options "../biblio/alphadin"
 
 \begin_inset CommandInset nomencl_print
 LatexCommand printnomenclature
-set_width "none"
+set_width "auto"
 
 \end_inset
 

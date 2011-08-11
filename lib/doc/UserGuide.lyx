@@ -51,7 +51,7 @@
 %\let\OrgIndex\index 
 %\renewcommand*{\index}[1]{\OrgIndex{#1}}
 \end_preamble
-\options intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
+\options refpage,intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
 \use_default_options false
 \begin_modules
 customHeadersFooters
@@ -2898,12 +2898,11 @@ Document ! Local Layout
 
 \begin_layout Standard
 Modules are to LyX much as packages are to LaTeX: They are intended to be
- used in a variety of different documents, and if you often find yourself
- needing the same sort of thing in different documents, you should consider
- writing a module for this purpose.
- Sometimes, however, a particular document has very special needs, and you
- find yourself wanting a specific inset or character style, but only that
- one time.
+ used in a variety of different documents.
+ If you often find yourself needing the same sort of thing in different
+ documents, you should consider writing a module for this purpose.
+ Sometimes, however, a particular document has very special needs, but you
+ need a specific inset or character style only that one time.
  You want something that is like a document's own LaTeX preamble.
  What you want is LyX's 
 \begin_inset Quotes eld
@@ -3511,7 +3510,11 @@ Settings
 .
  There in the 
 \family sans
-Options
+Class
+\begin_inset space ~
+\end_inset
+
+options
 \family default
  field under 
 \family sans
@@ -11426,7 +11429,7 @@ Break
 \family default
  breaks the line and stretches it so that it fills out the whole space between
  the page margins.
- This is necessary to avoid 
+ This is useful to avoid 
 \begin_inset Quotes eld
 \end_inset
 
@@ -11434,7 +11437,7 @@ fringes
 \begin_inset Quotes erd
 \end_inset
 
- in justified paragraphs due to whitespace introduced by line breaks.
+ in justified paragraphs due to possible whitespace introduced by line breaks.
 \end_layout
 
 \begin_layout Standard
@@ -16874,7 +16877,11 @@ ent, when you export the document to LaTeX via the menu
 \family sans
 File\SpecialChar \menuseparator
 Export\SpecialChar \menuseparator
-LaTeX (pdflatex) / (plain)
+LaTeX
+\begin_inset space ~
+\end_inset
+
+(xxx)
 \family default
 .
 \begin_inset Newline newline
@@ -16898,7 +16905,17 @@ Greyed
 \begin_inset space ~
 \end_inset
 
-Out This note will appear in the output as grey text.
+Out This note will appear in the output as text in a color which you can
+ set in the document settings under 
+\family sans
+Colors\SpecialChar \menuseparator
+Greyed-out
+\begin_inset space ~
+\end_inset
+
+notes
+\family default
+.
 \begin_inset Newline newline
 \end_inset
 
@@ -16913,25 +16930,16 @@ status open
 \begin_layout Plain Layout
 This is text
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 This is an example footnote within a greyed out note.
- In this document the greyed out note color is redefined to blue.
- How this can be done is explained in the 
-\emph on
-Embedded
-\begin_inset space ~
-\end_inset
-
-Objects
-\emph default
- manual.
+ In this document the color of this note type is set to blue.
 \end_layout
 
 \end_inset
 
- of a comment that appears in the output as grey text.
+ of a comment that appears in the output.
 \end_layout
 
 \end_inset
@@ -17002,7 +17010,7 @@ arg   "footnote-insert"
 \family roman
 \series medium
 \bar no
-you'll see
+you will see
 \family default
 \series default
 \bar default
@@ -17081,13 +17089,13 @@ button
 \end_layout
 
 \begin_layout Standard
-Here's an example footnote:
+Here is an example footnote:
 \family roman
 \series medium
 \bar no
 
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 To close a footnote, click on the footnote box label.
@@ -17102,10 +17110,11 @@ To close a footnote, click on the footnote box label.
 The footnote will appear in the output as a superscript number at the text
  position where the footnote box is placed.
  The footnote text is placed at the bottom of the current page.
- The footnote number is calculated by LyX, the numbers are consecutive,
- no matter in which chapter the footnote is in.
- LyX doesn't support other numbering schemes yet, but you can get another
- scheme using special LaTeX-commands.
+ The footnote number is calculated by LyX.
+ The numbers are consecutive, no matter in which chapter the footnote is
+ in.
+ LyX doesn't support other numbering schemes yet, but you can get other
+ schemes using special LaTeX-commands.
  T
 \family roman
 h
@@ -17159,19 +17168,19 @@ type  "icon"
 arg   "marginalnote-insert"
 \end_inset
 
-, you'll see 
+, you will see 
 \family roman
 \series medium
 a
 \family default
 \series default
- grey 
+ 
 \family roman
 \series medium
-box with a
+box with the
 \family default
 \series default
- red 
+ 
 \family roman
 \series medium
 label 
@@ -17213,6 +17222,26 @@ This is a marginal note.
 Marginal notes appear at the right side in single-sided documents.
  In double-sided documents they appear in the outer margin – left on even
  pages, right on odd pages.
+\end_layout
+
+\begin_layout Standard
+For further information about marginal notes see section 
+\emph on
+Margin
+\begin_inset space ~
+\end_inset
+
+Notes
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Section
@@ -28064,7 +28093,7 @@ Nomenclature ! Layout
 \end_layout
 
 \begin_layout Standard
-When you have symbols in formulas, you have to define them in the 
+If you have symbols in formulas, you have to define them in the 
 \family sans
 Symbol
 \family default
@@ -28440,55 +28469,6 @@ intoc Inserts the nomenclature in the Table of Contents
 \end_layout
 
 \begin_layout Standard
-There are furthermore the options 
-\series bold
-croatian
-\series default
-, 
-\series bold
-danish
-\series default
-, 
-\series bold
-english
-\series default
-, 
-\series bold
-french
-\series default
-, 
-\series bold
-german
-\series default
-, 
-\series bold
-italian
-\series default
-, 
-\series bold
-polish
-\series default
-, 
-\series bold
-portuguese
-\series default
-, 
-\series bold
-russian
-\series default
-, 
-\series bold
-spanish
-\series default
-, and 
-\series bold
-ukrainian
-\series default
- to print the reference texts and the nomenclature title in the corresponding
- language.
-\end_layout
-
-\begin_layout Standard
 To use one or more of the options, add them to the comma-separated document
  class options list in the 
 \family sans
@@ -28496,11 +28476,11 @@ Document\SpecialChar \menuseparator
 Settings
 \family default
  dialog.
- In this document the option 
+ In this document the options 
 \series bold
-intoc
+refpage, intoc
 \series default
- is used.
+ are used.
 \end_layout
 
 \begin_layout Standard
@@ -28568,6 +28548,64 @@ nomnorefpage,
 
 \backslash
 nomnorefeqpage Turns off the corresponding options
+\end_layout
+
+\begin_layout Standard
+Words like 
+\begin_inset Quotes eld
+\end_inset
+
+page
+\begin_inset Quotes erd
+\end_inset
+
+ are automatically translated for some document languages.
+ If not, add these lines to your LaTeX preamble:
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+eqdeclaration}[1]{, see equation
+\backslash
+nobreakspace(#1)}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+renewcommand{
+\backslash
+pagedeclaration}[1]{, page
+\backslash
+nobreakspace{}#1}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+and replace 
+\begin_inset Quotes eld
+\end_inset
+
+see equation
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+page
+\begin_inset Quotes erd
+\end_inset
+
+ by their translation.
 \end_layout
 
 \begin_layout Subsection
@@ -48715,7 +48753,7 @@ The above bibliography is created from a BibTeX-database.
 \begin_layout Standard
 \begin_inset CommandInset nomencl_print
 LatexCommand printnomenclature
-set_width "none"
+set_width "auto"
 
 \end_inset
 
