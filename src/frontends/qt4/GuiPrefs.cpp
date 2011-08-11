@@ -1526,7 +1526,7 @@ void PrefSpellchecker::on_spellcheckerCB_currentIndexChanged(int index)
 {
 	QString spellchecker = spellcheckerCB->itemData(index).toString();
 	
-	compoundWordCB->setEnabled(spellchecker != QString("native"));
+	compoundWordCB->setEnabled(spellchecker == QString("aspell"));
 }
 	
 	
