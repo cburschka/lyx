@@ -51,7 +51,7 @@
 %\let\OrgIndex\index 
 %\renewcommand*{\index}[1]{\OrgIndex{#1}}
 \end_preamble
-\options intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
+\options refpage,intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
 \use_default_options false
 \begin_modules
 customHeadersFooters
@@ -17271,15 +17271,11 @@ Comentario Esta nota tampoco aparece en la salida pero sí como comentario
 \family sans
 Archivo\SpecialChar \menuseparator
 Exportar\SpecialChar \menuseparator
-LaTeX (pdflatex)
-\begin_inset space \thinspace{}
+LaTeX
+\begin_inset space ~
 \end_inset
 
-/
-\begin_inset space \thinspace{}
-\end_inset
-
-(simple)
+(xxx)
 \family default
 .
  
@@ -17309,7 +17305,19 @@ en
 \begin_inset space ~
 \end_inset
 
-gris El texto de esta nota aparecerá en la salida en color gris.
+gris El texto de esta nota aparecerá en la salida 
+\lang english
+in a color which you can set in the document settings under 
+\family sans
+Colors\SpecialChar \menuseparator
+Greyed-out
+\begin_inset space ~
+\end_inset
+
+notes
+\family default
+\lang spanish
+.
 \begin_inset Newline newline
 \end_inset
 
@@ -17324,14 +17332,13 @@ status open
 \begin_layout Plain Layout
 Esto es el texto
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Esto es un ejemplo de nota al pie dentro de una nota resaltada en gris.
- En este documento, el color gris se ha redefinido a color azul.
- La forma de hacerlo se explica en el manual
-\emph on
- Objetos insertados.
+ En este documento, el color 
+\lang english
+of this note type is set to blue.
 \end_layout
 
 \end_inset
@@ -17339,10 +17346,6 @@ Esto es un ejemplo de nota al pie dentro de una nota resaltada en gris.
  de un comentario que se ve en la salida en color gris.
 \end_layout
 
-\end_inset
-
-
-\begin_inset Newline newline
 \end_inset
 
 
@@ -17460,7 +17463,7 @@ Ejemplo de nota al pie:
 \bar no
 
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Para ocultar en LyX el texto de la nota al pie, haz clic sobre el recuadro
@@ -17524,11 +17527,11 @@ margen
  o el botón 
 \begin_inset Info
 type  "icon"
-arg   "footnote-insert"
+arg   "marginalnote-insert"
 \end_inset
 
 .
- Aparece un cuadro gris con la etiqueta en rojo 
+ Aparece un cuadro con la etiqueta 
 \family roman
 \series medium
 
@@ -17548,7 +17551,7 @@ Al lado hay un ejemplo de nota al margen.
 \series medium
 
 \begin_inset Marginal
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Esto es una nota al margen.
@@ -17564,6 +17567,28 @@ Estas notas salen en el margen derecho en documentos a una cara.
  En documentos a doble cara se muestran en el margen externo —izquierdo
  en páginas pares, derecho en páginas impares—.
  
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+For further information about marginal notes see section 
+\emph on
+Margin
+\begin_inset space ~
+\end_inset
+
+Notes
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Section
@@ -28950,7 +28975,7 @@ a
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "a"
-description "entrada postiza para el carácter \"a\""
+description "entrada postiza para el carácter <<a>>"
 
 \end_inset
 
@@ -29101,55 +29126,6 @@ intoc Inserta la nomenclatura en el Índice general
 \end_layout
 
 \begin_layout Standard
-Además están las opciones 
-\series bold
-croatian
-\series default
-, 
-\series bold
-danish
-\series default
-, 
-\series bold
-english
-\series default
-, 
-\series bold
-french
-\series default
-, 
-\series bold
-german
-\series default
-, 
-\series bold
-italian
-\series default
-, 
-\series bold
-polish
-\series default
-, 
-\series bold
-portuguese
-\series default
-, 
-\series bold
-russian
-\series default
-, 
-\series bold
-spanish
-\series default
-, y 
-\series bold
-ukrainian
-\series default
- para imprimir el título y los textos de las referencias en el idioma correspond
-iente.
-\end_layout
-
-\begin_layout Standard
 Para emplear una o más de las opciones, añádelas separadas por comas en
  el campo de opciones de la clase de documento, en el diálogo 
 \family sans
@@ -29157,9 +29133,9 @@ Documento\SpecialChar \menuseparator
 Configuración
 \family default
 .
- En este documento se ha puesto la opción 
+ En este documento se ha puesto las opciónes 
 \series bold
-intoc
+refpage, intoc
 \series default
 .
 \end_layout
@@ -32375,6 +32351,7 @@ http://www.lyx.org/trac/browser/dictionaries/trunk/thes
 status collapsed
 
 \begin_layout Plain Layout
+
 http://extensions.services.openoffice.org/en/search/node/thesaurus
 \end_layout
 
@@ -49658,7 +49635,7 @@ Esta bibliografía se ha generado a partir de una base de datos BibTeX.
 \series bold
 \begin_inset CommandInset nomencl_print
 LatexCommand printnomenclature
-set_width "none"
+set_width "auto"
 
 \end_inset
 

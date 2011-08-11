@@ -56,7 +56,7 @@
 \addtokomafont{chapterentry}{\centering}
 \addtokomafont{chapter}{\centering}
 \end_preamble
-\options intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
+\options refpage,intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
 \use_default_options false
 \begin_modules
 customHeadersFooters
@@ -16467,7 +16467,7 @@ Note This note type is for internal notes that won't appear in the output.
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 This is text in a note box that doesn't appear in the output.
@@ -16484,7 +16484,11 @@ ent, when you export the document to LaTeX via the menu
 \family sans
 File\SpecialChar \menuseparator
 Export\SpecialChar \menuseparator
-LaTeX (pdflatex) / (plain)
+LaTeX
+\begin_inset space ~
+\end_inset
+
+(xxx)
 \family default
 .
 \begin_inset Newline newline
@@ -16492,7 +16496,7 @@ LaTeX (pdflatex) / (plain)
 
 
 \begin_inset Note Comment
-status collapsed
+status open
 
 \begin_layout Plain Layout
 This is text in a note box that only appears as comment in LaTeX-files.
@@ -16508,7 +16512,17 @@ Greyed
 \begin_inset space ~
 \end_inset
 
-Out This note will appear in the output as grey text.
+Out This note will appear in the output in a color which you can set in
+ the document settings under 
+\family sans
+Colors\SpecialChar \menuseparator
+Greyed-out
+\begin_inset space ~
+\end_inset
+
+notes
+\family default
+.
 \begin_inset Newline newline
 \end_inset
 
@@ -16518,7 +16532,7 @@ Out This note will appear in the output as grey text.
 
 
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 This is text
@@ -16527,12 +16541,7 @@ status collapsed
 
 \begin_layout Plain Layout
 This is an example footnote within a greyed out note.
- In this document the greyed out note color is redefined to blue.
- How this can be done is explained in the 
-\emph on
-Embedded Objects
-\emph default
- manual.
+ In this document the color of this note type is set to blue.
 \end_layout
 
 \end_inset
@@ -16601,9 +16610,9 @@ Insert\SpecialChar \menuseparator
 Footnote
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../../images/footnote-insert.png
-
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
 \end_inset
 
 , 
@@ -16689,13 +16698,13 @@ button
 \end_layout
 
 \begin_layout Standard
-Here's an example footnote:
+Here is an example footnote:
 \family roman
 \series medium
 \bar no
 
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 To close a footnote, click on the footnote box label.
@@ -16758,24 +16767,24 @@ Marginal
 Note
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../../images/marginalnote-insert.png
-
+\begin_inset Info
+type  "icon"
+arg   "marginalnote-insert"
 \end_inset
 
-, you'll see 
+, you will see 
 \family roman
 \series medium
 a
 \family default
 \series default
- grey 
+ 
 \family roman
 \series medium
-box with a
+box with the
 \family default
 \series default
- red 
+ 
 \family roman
 \series medium
 label 
@@ -16802,7 +16811,7 @@ At the side is an example marginal note.
 \series medium
 
 \begin_inset Marginal
-status collapsed
+status open
 
 \begin_layout Plain Layout
 This is a marginal note.
@@ -16817,6 +16826,26 @@ This is a marginal note.
 Marginal notes appear at the right side in single-sided documents.
  In double-sided documents they appear in the outer margin – left on even
  pages, right on odd pages.
+\end_layout
+
+\begin_layout Standard
+For further information about marginal notes see section 
+\emph on
+Margin
+\begin_inset space ~
+\end_inset
+
+Notes
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Section
@@ -27588,7 +27617,7 @@ Nomenclature ! Layout
 \end_layout
 
 \begin_layout Standard
-When you have symbols in formulas, you have to define them in the 
+If you have symbols in formulas, you have to define them in the 
 \family sans
 Symbol
 \family default
@@ -27964,55 +27993,6 @@ intoc Inserts the nomenclature in the Table of Contents
 \end_layout
 
 \begin_layout Standard
-There are furthermore the options 
-\series bold
-croatian
-\series default
-, 
-\series bold
-danish
-\series default
-, 
-\series bold
-english
-\series default
-, 
-\series bold
-french
-\series default
-, 
-\series bold
-german
-\series default
-, 
-\series bold
-italian
-\series default
-, 
-\series bold
-polish
-\series default
-, 
-\series bold
-portuguese
-\series default
-, 
-\series bold
-russian
-\series default
-, 
-\series bold
-spanish
-\series default
-, and 
-\series bold
-ukrainian
-\series default
- to print the reference texts and the nomenclature title in the corresponding
- language.
-\end_layout
-
-\begin_layout Standard
 To use one or more of the options, add them to the comma-separated document
  class options list in the 
 \family sans
@@ -28020,11 +28000,11 @@ Document\SpecialChar \menuseparator
 Settings
 \family default
  dialog.
- In this document the option 
+ In this document the options 
 \series bold
-intoc
+refpage, intoc
 \series default
- is used.
+ are used.
 \end_layout
 
 \begin_layout Standard
@@ -28092,6 +28072,64 @@ nomnorefpage,
 
 \backslash
 nomnorefeqpage Turns off the corresponding options
+\end_layout
+
+\begin_layout Standard
+Words like 
+\begin_inset Quotes eld
+\end_inset
+
+page
+\begin_inset Quotes erd
+\end_inset
+
+ are automatically translated for some document languages.
+ If not, add these lines to your LaTeX preamble:
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+eqdeclaration}[1]{, see equation
+\backslash
+nobreakspace(#1)}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+renewcommand{
+\backslash
+pagedeclaration}[1]{, page
+\backslash
+nobreakspace{}#1}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+and replace 
+\begin_inset Quotes eld
+\end_inset
+
+see equation
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+page
+\begin_inset Quotes erd
+\end_inset
+
+ by their translation.
 \end_layout
 
 \begin_layout Subsection
@@ -31206,6 +31244,7 @@ If you have OpenOffice and its thesaurus installed, these files should be
 status collapsed
 
 \begin_layout Plain Layout
+
 http://www.lyx.org/trac/browser/dictionaries/trunk/thes
 \end_layout
 
@@ -31216,6 +31255,7 @@ http://www.lyx.org/trac/browser/dictionaries/trunk/thes
 status collapsed
 
 \begin_layout Plain Layout
+
 http://extensions.services.openoffice.org/en/search/node/thesaurus
 \end_layout
 
@@ -31235,6 +31275,7 @@ Note that, as of OpenOffice
 status collapsed
 
 \begin_layout Plain Layout
+
 http://extensions.services.openoffice.org
 \end_layout
 
@@ -46977,7 +47018,7 @@ The above bibliography is created from a BibTeX-database.
 \begin_layout Standard
 \begin_inset CommandInset nomencl_print
 LatexCommand printnomenclature
-set_width "none"
+set_width "auto"
 
 \end_inset
 
