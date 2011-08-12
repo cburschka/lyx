@@ -247,6 +247,9 @@ What's new
 - Fixed crash involving tables that have rows whose cells are all multirow
   (bug 7535).
 
+- With aspell backend split words on hard hyphens to check parts separately
+  because hyphen is not allowed to be part of a word (bug 7660).
+
 
 * ADVANCED FIND AND REPLACE
 
