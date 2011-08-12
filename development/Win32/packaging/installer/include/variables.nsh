@@ -28,6 +28,7 @@ Var InstallJabRef
 Var JabRefInstalled
 Var LaTeXName
 Var LaTeXInstalled
+Var LilyPondPath
 Var MiKTeXUser
 Var MiKTeXVersion
 Var MissedProg

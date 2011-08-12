@@ -97,7 +97,7 @@ Section -Configure
   # $$ represents a literal $ in an NSIS string
   StrCpy $PathPrefix "$$LyXDir\bin;$$LyXDir\python;$$LyXDir\imagemagick;$$LyXDir\ghostscript"
   
-  ${If} $PathLaTeX != ""
+  ${if} $PathLaTeX != ""
     StrCpy $PathPrefix "$PathPrefix;$PathLaTeX"
   ${EndIf}
   ${if} $PSVPath != ""
@@ -115,9 +115,12 @@ Section -Configure
   ${if} $WMFPath != ""
    StrCpy $PathPrefix "$PathPrefix;$WMFPath"
   ${endif}
-  ${If} $PathBibTeXEditor != ""
+  ${if} $PathBibTeXEditor != ""
     StrCpy $PathPrefix "$PathPrefix;$PathBibTeXEditor"
-  ${EndIf}  
+  ${EndIf}
+  ${if} $LilyPondPath != ""
+   StrCpy $PathPrefix "$PathPrefix;$LilyPondPath"
+  ${endif}  
 
   # Set the path prefix in lyxrc.dist
   ClearErrors
@@ -137,12 +140,22 @@ Section -Configure
    		  \format "pdf2" "pdf" "PDF (pdflatex)" "F" "pdfview" "" "document,vector,menu=export"$\r$\n\
 		  \format "pdf" "pdf" "PDF (ps2pdf)" "P" "pdfview" "" "document,vector,menu=export"$\r$\n'
   ${endif}
-  # if a SVG to PDF converter ws found (e.g. Inkscape)
+  # if a SVG to PDF converter was found (e.g. Inkscape)
   ${if} $SVGPath != ""
    FileWrite $R1 '\format "svg" "svg" "SVG" "" "inkscape --file=$$$$i" "inkscape --file=$$$$i" "vector"$\r$\n\
    		  \converter "svg" "png" "inkscape --without-gui --file=$$$$i --export-png=$$$$o" ""$\r$\n\
 		  \converter "svg" "pdf" "inkscape --file=$$$$p/$$$$i --export-area-drawing --without-gui --export-pdf=$$$$p/$$$$o" ""$\r$\n\
-		  \converter "svg" "eps" "inkscape --file=$$$$p/$$$$i --export-area-drawing --without-gui --export-eps=$$$$p/$$$$o" ""'
+		  \converter "svg" "eps" "inkscape --file=$$$$p/$$$$i --export-area-drawing --without-gui --export-eps=$$$$p/$$$$o" ""$\r$\n'
+  ${endif}
+  # if LilyPondPath was found
+  # we need to add these entris because python scripts can only be executed
+  # if the full path to lilypond-book.py is given
+  ${if} $LilyPondPath != ""
+   FileWrite $R1 '\format "lilypond-book" "lytex" "LilyPond book (LaTeX)" "" "" "auto" "document,menu=export"$\r$\n\
+   		  \converter "lilypond-book" "pdflatex" "python \"C:\\Program Files (x86)\\LilyPond\\usr\\bin\\lilypond-book.py\" --safe --pdf --latex-program=pdflatex --lily-output-dir=ly-pdf $$$$i" ""$\r$\n\
+   		  \converter "lilypond-book" "xetex" "python \"C:\\Program Files (x86)\\LilyPond\\usr\\bin\\lilypond-book.py\" --safe --pdf --latex-program=xelatex --lily-output-dir=ly-pdf $$$$i" ""$\r$\n\
+   		  \converter "lilypond-book" "luatex" "python \"C:\\Program Files (x86)\\LilyPond\\usr\\bin\\lilypond-book.py\" --safe --pdf --latex-program=lualatex --lily-output-dir=ly-pdf $$$$i" ""$\r$\n\
+   		  \converter "lilypond-book" "latex" "python \"C:\\Program Files (x86)\\LilyPond\\usr\\bin\\lilypond-book.py\" --safe --lily-output-dir=ly-eps $$$$i" ""$\r$\n'
   ${endif}
   FileClose $R1
   IfErrors 0 +2

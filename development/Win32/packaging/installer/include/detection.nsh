@@ -113,7 +113,7 @@ Function MissingPrograms
   # test if an editor with syntax-highlighting for LaTeX-files is installed
   Call EditorCheck
 
-  # test if an image editor is installed (due to LyX's bug 2654 first check for GIMP)
+  # test if an image editor is installed
   StrCpy $ImageEditorPath ""
   ReadRegStr $ImageEditorPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\WinGimp-2.0_is1" "DisplayIcon"
   ${if} $ImageEditorPath != ""
@@ -141,6 +141,12 @@ Function MissingPrograms
     StrCpy $JabRefInstalled == "No"
   ${else}
    StrCpy $JabRefInstalled == "Yes"
+  ${endif}
+  
+  # test if and where the BibTeX-editor JabRef is installed
+  ReadRegStr $LilyPondPath HKLM "Software\LilyPond" "Install_Dir"
+  ${if} $LilyPondPath != ""
+   StrCpy $LilyPondPath "$LilyPondPath\usr\bin" # add "\usr\bin"
   ${endif}
   
   # test if Inkscape is installed
