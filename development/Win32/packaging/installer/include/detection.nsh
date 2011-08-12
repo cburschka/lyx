@@ -143,7 +143,7 @@ Function MissingPrograms
    StrCpy $JabRefInstalled == "Yes"
   ${endif}
   
-  # test if and where the BibTeX-editor JabRef is installed
+  # test if and where LilyPond is installed
   ReadRegStr $LilyPondPath HKLM "Software\LilyPond" "Install_Dir"
   ${if} $LilyPondPath != ""
    StrCpy $LilyPondPath "$LilyPondPath\usr\bin" # add "\usr\bin"

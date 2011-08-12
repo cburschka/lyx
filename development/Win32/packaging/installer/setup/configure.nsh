@@ -149,13 +149,13 @@ Section -Configure
   ${endif}
   # if LilyPondPath was found
   # we need to add these entris because python scripts can only be executed
-  # if the full path to lilypond-book.py is given
+  # if the full path is given
   ${if} $LilyPondPath != ""
    FileWrite $R1 '\format "lilypond-book" "lytex" "LilyPond book (LaTeX)" "" "" "auto" "document,menu=export"$\r$\n\
-   		  \converter "lilypond-book" "pdflatex" "python \"C:\\Program Files (x86)\\LilyPond\\usr\\bin\\lilypond-book.py\" --safe --pdf --latex-program=pdflatex --lily-output-dir=ly-pdf $$$$i" ""$\r$\n\
-   		  \converter "lilypond-book" "xetex" "python \"C:\\Program Files (x86)\\LilyPond\\usr\\bin\\lilypond-book.py\" --safe --pdf --latex-program=xelatex --lily-output-dir=ly-pdf $$$$i" ""$\r$\n\
-   		  \converter "lilypond-book" "luatex" "python \"C:\\Program Files (x86)\\LilyPond\\usr\\bin\\lilypond-book.py\" --safe --pdf --latex-program=lualatex --lily-output-dir=ly-pdf $$$$i" ""$\r$\n\
-   		  \converter "lilypond-book" "latex" "python \"C:\\Program Files (x86)\\LilyPond\\usr\\bin\\lilypond-book.py\" --safe --lily-output-dir=ly-eps $$$$i" ""$\r$\n'
+   		  \converter "lilypond-book" "pdflatex" "python \"$LilyPondPath\\lilypond-book.py\" --safe --pdf --latex-program=pdflatex --lily-output-dir=ly-pdf $$$$i" ""$\r$\n\
+   		  \converter "lilypond-book" "xetex" "python \"$LilyPondPath\\lilypond-book.py\" --safe --pdf --latex-program=xelatex --lily-output-dir=ly-pdf $$$$i" ""$\r$\n\
+   		  \converter "lilypond-book" "luatex" "python \"$LilyPondPath\\lilypond-book.py\" --safe --pdf --latex-program=lualatex --lily-output-dir=ly-pdf $$$$i" ""$\r$\n\
+   		  \converter "lilypond-book" "latex" "python \"$LilyPondPath\\lilypond-book.py\" --safe --lily-output-dir=ly-eps $$$$i" ""$\r$\n'
   ${endif}
   FileClose $R1
   IfErrors 0 +2
