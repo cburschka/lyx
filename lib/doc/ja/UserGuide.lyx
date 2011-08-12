@@ -1312,6 +1312,24 @@ Delete
 を押すことによって、実行できます。
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+The content of an inset is selected using the shortcut 
+\begin_inset Info
+type  "shortcuts"
+arg   "inset-select-all"
+\end_inset
+
+, the shortcut 
+\begin_inset Info
+type  "shortcuts"
+arg   "command-sequence buffer-begin ; buffer-end-select"
+\end_inset
+
+ selects the whole document.
+\end_layout
+
 \begin_layout Section
 元に戻すとやり直す
 \begin_inset Index idx
@@ -19555,8 +19573,34 @@ status collapsed
 \bar no
 \noun off
 \color none
-ダイアログを開いてください。このダイアログには、各フォント特性を選択できるようにいくつかのボックスがあります。これらの特性について選択肢を選ぶか、現在の特性を維
-持したい項目については
+ダイアログを開いてください
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+or press the toolbar button 
+\lang japanese
+
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+。このダイアログには、各フォント特性を選択できるようにいくつかのボックスがあります。これらの特性について選択肢を選ぶか、現在の特性を維持したい項目については
 \family sans
 \series default
 \shape default
@@ -20359,6 +20403,92 @@ arg   "font-underline"
 \labelwidthstring 00.00.0000
 
 \family sans
+\lang english
+Double
+\begin_inset space ~
+\end_inset
+
+underbar
+\family default
+ 
+\uuline on
+This is text with Double underbar on.
+
+\uuline default
+ (key binding 
+\begin_inset Info
+type  "shortcut"
+arg   "font-underunderline"
+\end_inset
+
+)
+\begin_inset Newline newline
+\end_inset
+
+As we just warned you against using underbar, you can imagine what we think
+ about double underbar.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+\lang english
+Wavy
+\begin_inset space ~
+\end_inset
+
+underbar
+\family default
+ 
+\uwave on
+This is text with Wavy underbar on.
+
+\uwave default
+ (key binding 
+\begin_inset Info
+type  "shortcut"
+arg   "font-underwave"
+\end_inset
+
+)
+\begin_inset Newline newline
+\end_inset
+
+Use this only if a journal absolutely insists on it.
+ Keep antinausea pills handy.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+\lang english
+Strikeout
+\family default
+ 
+\strikeout on
+This is text with Strikeout on.
+
+\strikeout default
+ (key binding 
+\begin_inset Info
+type  "shortcut"
+arg   "font-strikeout"
+\end_inset
+
+)
+\begin_inset Newline newline
+\end_inset
+
+This is frequently used to indicate an older version of text that has since
+ changed.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
 名詞体
 \family default
  
@@ -20508,6 +20638,29 @@ status collapsed
 \family default
  これは、選択範囲の文章が、文書の言語とは異なることを指定するのに使います。このようにして指定された部分には青い下線が（LyX上でのみ）引かれて、言語が変更され
 ていることを表示します。
+\lang english
+
+\begin_inset Newline newline
+\end_inset
+
+If you have for example a longer German Text in your document, LaTeX respects
+ the German hyphenation rules automatically.
+ When using the spell checking (see section
+\begin_inset space ~
+\end_inset
+
+
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:スペルチェック"
+
+\end_inset
+
+
+\lang english
+) the German-marked text will be checked according to the German dictionary
 \end_layout
 
 \begin_layout Standard
@@ -24048,6 +24201,10 @@ In this document the color of this note type is set to blue
 です。
 \end_layout
 
+\end_inset
+
+
+\begin_inset Newline newline
 \end_inset
 
 
@@ -48754,6 +48911,344 @@ reference "sub:言語設定"
 \end_inset
 
 をご覧ください。
+\end_layout
+
+\begin_layout Section
+
+\lang english
+Colors
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Color ! main text
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Color ! background
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Here you can alter the font color for the main text (default: black) and
+ for Greyed
+\begin_inset space ~
+\end_inset
+
+out notes (default: light grey).
+ The button 
+\family sans
+Reset
+\family default
+ sets the color back to the default.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You can also change the background color for the pages (default: white)
+ and for Shaded
+\begin_inset space ~
+\end_inset
+
+boxes (default: red).
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+The colors are not shown within LyX, only in the output.
+ (This Greyed
+\begin_inset space ~
+\end_inset
+
+out note appears blue in the output.)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Note, if you change the main text font color and use the option 
+\family sans
+Color
+\begin_inset space ~
+\end_inset
+
+links
+\family default
+ in the document settings under 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+properties
+\family default
+, you probably also need to change the link font color by using 
+\family sans
+Additional
+\begin_inset space ~
+\end_inset
+
+options
+\family default
+ in the 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+properties
+\family default
+.
+ For example the option
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+linkcolor=black
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+sets the link text color to black.
+ For more information, see the manual of the LaTeX-package
+\lang japanese
+ 
+\series bold
+hyperref
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Latexぱっけーじ@LaTeXパッケージ ! hyperref
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hyperref"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You can adapt the main text font color and the page background for every
+ page in your document if you use these commands as TeX
+\begin_inset space ~
+\end_inset
+
+Code behind a forced page break:
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+For the page color:
+\lang japanese
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+pagecolor{color name}
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+For the text color:
+\lang japanese
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+color{color name}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The color name can hereby be one of these:
+\lang japanese
+ 
+\series bold
+black
+\series default
+, 
+\series bold
+blue
+\series default
+, 
+\series bold
+cyan
+\series default
+, 
+\series bold
+green
+\series default
+, 
+\series bold
+magenta
+\series default
+, 
+\series bold
+red
+\series default
+, 
+\series bold
+white
+\series default
+, 
+\series bold
+yellow
+\series default
+\lang english
+
+\begin_inset Newline newline
+\end_inset
+
+If you have changed a text or background color, you can use them under the
+ following names:
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+For the page background color:
+\lang japanese
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+page_backgroundcolor
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+For the main text color:
+\lang japanese
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+document_fontcolor
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+For the Shaded
+\begin_inset space ~
+\end_inset
+
+box background color:
+\lang japanese
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+shadecolor
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+For the Greyed
+\begin_inset space ~
+\end_inset
+
+out note text color:
+\lang japanese
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+note_fontcolor
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+How to define and use custom colors, see section 
+\emph on
+Colored
+\begin_inset space ~
+\end_inset
+
+Cells
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Section

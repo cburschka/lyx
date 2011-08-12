@@ -1075,7 +1075,11 @@ Rückgängig
 \family sans
 Strg+Z
 \family default
-) zurückholen (siehe auch Abschnitt 
+) zurückholen (siehe auch Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "sec:Rückgängig-Wiederholen"
@@ -1275,7 +1279,7 @@ Dinge wie Notizen, Gleitobjekte, usw.
 \begin_inset space \space{}
 \end_inset
 
-können aufgelöst werden.
+(sogenannte Einfügungen) können aufgelöst werden.
  Das bedeutet, dass sie gelöscht werden, ihr Inhalt jedoch als normaler
  Text erhalten bleibt.
  Um etwas aufzulösen, setzt man den Cursor an den Anfang des Objekts und
@@ -1288,6 +1292,18 @@ Rücktaste
 Entfernen
 \family default
 -Taste der Tastatur.
+\end_layout
+
+\begin_layout Standard
+Der Inhalt von Einfügungen wird mit dem Tastenkürzel 
+\family sans
+Strg+Alt+A
+\family default
+ ausgewählt, das Tastenkürzel 
+\family sans
+Strg+A
+\family default
+ wählt das komplette Dokument aus.
 \end_layout
 
 \begin_layout Section
@@ -13857,10 +13873,9 @@ Bearbeiten\SpecialChar \menuseparator
 Textstil
 \family default
  oder klicken Sie auf 
-\begin_inset Graphics
-	filename ../../images/dialog-show_character.png
-	scale 70
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
 \end_inset
 
 , um das Dialogfenster 
@@ -14137,107 +14152,6 @@ Dies ist die Kapitälchenform
 \end_layout
 
 \end_deeper
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-Farbe
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Schriften ! Farbe
-\end_layout
-
-\end_inset
-
-
-\family default
- Hiermit können Sie eine Textfarbe auswählen.
- Sie können zwischen 
-\family sans
-Schwarz
-\family default
-, 
-\family sans
-\color black
-Weiß
-\family default
-\color inherit
-, 
-\family sans
-\color red
-Rot
-\family default
-\color inherit
-, 
-\family sans
-\color green
-Grün
-\family default
-\color inherit
-, 
-\family sans
-\color blue
-Blau
-\family default
-\color inherit
-, 
-\family sans
-\color cyan
-Türkis
-\family default
-\color inherit
-, 
-\family sans
-\color magenta
-Purpurrot
-\family default
-\color inherit
- und 
-\family sans
-\color yellow
-Gelb
-\family default
-\color inherit
- wählen.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-Sprache
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Sprache (ändern)
-\end_layout
-
-\end_inset
-
-
-\family default
- Hiermit können Sie einem markierten Textteil eine andere Sprache zuordnen.
- Wenn Sie zum Beispiel längeren englischen Text in Ihr Dokument einfügen
- wollen, berücksichtigt LaTeX für diesen Teil automatisch die englische
- Silbentrennung.
- Wenn Sie 
-\family typewriter
-aspell
-\family default
- für die Rechtschreibprüfung (Abschnitt 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sec:Rechtschreibprüfung"
-
-\end_inset
-
-) benutzen, werden dann auch die englisch markierten Wörter nach dem englischen
- Wörterbuch geprüft.
-\end_layout
-
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
@@ -14651,43 +14565,15 @@ Verkleinern
 \end_deeper
 \begin_layout Standard
 \noindent
-Wir wollen Sie 
+Wir warnen Sie 
 \emph on
 noch einmal
 \emph default
- warnen:
-\size large
-
-\begin_inset space \space{}
-\end_inset
-
-spielen
-\size default
- 
-\size larger
-Sie
-\size default
- 
-\size largest
-mit
-\size default
- 
-\size larger
-dieser
-\size default
- 
-\size large
-Funktion
-\size default
- nicht verrückt.
+: spielen Sie mit dieser Funktion nicht verrückt.
  Die Schriftgröße müssen Sie so gut wie nie ändern.
  LyX ändert die Schriftgröße für verschiedene Absatzumgebungen automatisch
  – das sollten Sie benutzen.
- Dies ist 
-\emph on
-nur
-\emph default
- für Feineinstellungen!
+ Dies ist nur für Feineinstellungen!
 \end_layout
 
 \begin_layout Labeling
@@ -14736,12 +14622,9 @@ Unterstrichen
  
 \bar under
 Dies ist unterstrichener Text.
+
 \bar default
-
-\begin_inset Newline newline
-\end_inset
-
-(Tastenkürzel = 
+ (Tastenkürzel 
 \family sans
 Alt+Z
 \begin_inset space ~
@@ -14754,6 +14637,105 @@ U
 Strg+U
 \family default
 )
+\begin_inset Newline newline
+\end_inset
+
+Vermeiden Sie unterstrichenen Text wo immer es geht! Dies ist ein Überbleibsel
+ aus der Zeit der Schreibmaschine als man Schriften nicht ändern konnte.
+ Man muss heutzutage Text nicht mehr durch Unterstreichung hervorheben.
+ Dies ist in LyX nur verfügbar, da einige Leute dies brauchen um Stilvorschrifte
+n von Journalen einzuhalten.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+Doppelt
+\begin_inset space ~
+\end_inset
+
+unterstrichen
+\family default
+ 
+\uuline on
+Dies ist doppelt unterstrichener Text.
+
+\uuline default
+ (Tastenkürzel 
+\family sans
+Alt+Z
+\begin_inset space ~
+\end_inset
+
+D
+\family default
+)
+\lang english
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang ngerman
+Da wir Sie eben vor unterstrichenem Text gewarnt haben, können Sie sich
+ sicher denken, was wir von doppelt unterstrichenem Text halten.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+Wellig
+\begin_inset space ~
+\end_inset
+
+unterstrichen
+\family default
+ 
+\uwave on
+Dies ist wellig unterstrichener Text.
+
+\uwave default
+ (Tastenkürzel 
+\family sans
+Alt+Z
+\begin_inset space ~
+\end_inset
+
+W
+\family default
+)
+\begin_inset Newline newline
+\end_inset
+
+Verwenden Sie dies nur wenn ein Journal unbedingt darauf besteht.
+ halten Sie Tabletten gegen Übelkeit parat.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+Durchgestrichen
+\family default
+\bar under
+ 
+\bar default
+\strikeout on
+Dies ist durchgestrichener Text.
+
+\strikeout default
+ (Tastenkürzel 
+\family sans
+Strg+Umschalt+O
+\family default
+)
+\begin_inset Newline newline
+\end_inset
+
+Dies wird oft verwendet um eine alte Version eines Textes zu kennzeichnen,
+ der inzwischen geändert wurde.
 \end_layout
 
 \begin_layout Labeling
@@ -14796,6 +14778,123 @@ möglicherweise
 \end_layout
 
 \end_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+Farbe 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Schriften ! Farbe
+\end_layout
+
+\end_inset
+
+
+\family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Farbe ! Text
+\end_layout
+
+\end_inset
+
+ Hiermit können Sie eine Textfarbe auswählen.
+ Neben 
+\family sans
+Keine
+\begin_inset space ~
+\end_inset
+
+Farbe
+\family default
+, die die voreingestellte 
+\begin_inset Quotes gld
+\end_inset
+
+Farbe
+\begin_inset Quotes grd
+\end_inset
+
+ ist und schwarz bedeutet, können Sie zwischen 
+\family sans
+Schwarz
+\family default
+, 
+\family sans
+Weiß
+\family default
+, 
+\family sans
+Rot
+\family default
+, 
+\family sans
+Grün
+\family default
+, 
+\family sans
+Blau
+\family default
+, 
+\family sans
+Cyan
+\family default
+, 
+\family sans
+Magenta
+\family default
+ und 
+\family sans
+Gelb
+\family default
+ wählen.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+Sprache
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Sprache (ändern)
+\end_layout
+
+\end_inset
+
+
+\family default
+ Hiermit können Sie einem markierten Textteil eine andere Sprache zuordnen.
+ Dieser Text wird (nur in LyX) blau unterstrichen, um die Sprachänderung
+ zu anzuzeigen.
+\begin_inset Newline newline
+\end_inset
+
+Wenn Sie zum Beispiel längeren englischen Text in Ihrem Dokument haben,
+ berücksichtigt LaTeX für diesen Teil automatisch die englische Silbentrennung.
+ Wenn Sie die Rechtschreibprüfung benutzen (siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Rechtschreibprüfung"
+
+\end_inset
+
+), werden dann englisch markierten Wörter nach dem englischen Wörterbuch
+ geprüft.
+\end_layout
+
 \begin_layout Standard
 \noindent
 Sie können aus einer großen Zahl von Kombinationsmöglichkeiten wählen.
@@ -14813,11 +14912,9 @@ können
 \shape default
 \emph default
  Sie ihn mit dem Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/textstyle-apply.png
-	scale 85
-	groupId Icon
-
+\begin_inset Info
+type  "icon"
+arg   "textstyle-apply"
 \end_inset
 
  aktivieren.
@@ -17759,6 +17856,10 @@ Dies ist eine Beispiel-Fußnote in einer Grauschrift-Notiz.
  eines Kommentars, der in der Ausgabe erscheint.
 \end_layout
 
+\end_inset
+
+
+\begin_inset Newline newline
 \end_inset
 
 
@@ -23096,7 +23197,7 @@ Text auswählen
 status collapsed
 
 \begin_layout Plain Layout
-Mathed!Text auswählen
+Mathe- ! Text auswählen
 \end_layout
 
 \end_inset
@@ -34332,6 +34433,15 @@ Handhabung\SpecialChar \menuseparator
 Farben
 \family default
  ändern.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Farbe ! Änderungsverfolgung
+\end_layout
+
+\end_inset
+
  Der Autor und das Datum der Änderung werden in LyXs Statusleiste angezeigt,
  wenn sich der Cursor in geändertem Text befindet.
  Die selbe Information erhalten Sie, wenn Sie den Werkzeugleistenknopf 
@@ -41641,6 +41751,265 @@ Sprachpaket
 \end_layout
 
 \begin_layout Section
+Farben
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Farbe ! Hintergrund
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Farbe ! Haupttext-
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hier können Sie die Schriftfarbe für den Haupttext (Voreinstellung: schwarz)
+ und für Grauschrift-Notizen (Voreinstellung: hellgrau) ändern.
+ Der Kopf 
+\family sans
+Zurücksetzen
+\family default
+ setzt die Farbe zurück auf die Voreinstellung.
+\end_layout
+
+\begin_layout Standard
+Sie können außerdem die Hintergrundfarbe für die Seiten (Voreinstellung:
+ weiß) und für Schattierte
+\begin_inset space ~
+\end_inset
+
+Boxen (Voreinstellung: rot) ändern.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+Die Farben werden in LyX nicht angezeigt, nur in der Ausgabe.
+ (Diese Grauschrift-Notiz erscheint in der Ausgabe blau.)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Beachten Sie, dass wenn Sie die Farbe ändern und die Option 
+\family sans
+Links
+\begin_inset space ~
+\end_inset
+
+einfärben
+\family default
+ in den Dokumenteinstellungen unter 
+\family sans
+PDF-Eigenschaften
+\family default
+ verwenden, müssen Sie wahrscheinlich auch die Schriftfarbe der Links ändern,
+ indem sie 
+\family sans
+Zusätzliche
+\begin_inset space ~
+\end_inset
+
+Optionen
+\family default
+ in den 
+\family sans
+PDF-Eigenschaften
+\family default
+ verwenden.
+ Zum Beispiel färbt die Option
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+linkcolor=black
+\end_layout
+
+\begin_layout Standard
+den Linktext schwarz.
+ Für weitere Informationen, siehe das Handbuch des LaTeX-Pakets 
+\series bold
+hyperref
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! hyperref
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hyperref"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sie können die Schriftfarbe des Haupttextes und die Seiten-Hintergrundfarbe
+ für jede Seite ihres Dokuments anpassen, indem Sie diese Befehle als TeX-Code
+ nach einem manuellen Seitenumbruch einfügen:
+\end_layout
+
+\begin_layout Itemize
+Für die Seitenfarbe:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+pagecolor{Farbname}
+\end_layout
+
+\begin_layout Itemize
+Für die Textfarbe:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+color{Farbname}
+\end_layout
+
+\begin_layout Standard
+Der Farbname kann einer dieser Namen sein: 
+\series bold
+black
+\series default
+, 
+\series bold
+blue
+\series default
+, 
+\series bold
+cyan
+\series default
+, 
+\series bold
+green
+\series default
+, 
+\series bold
+magenta
+\series default
+, 
+\series bold
+red
+\series default
+, 
+\series bold
+white
+\series default
+, 
+\series bold
+yellow
+\end_layout
+
+\begin_layout Standard
+Wenn Sie eine Text- oder Hintergrundfarbe geändert haben, können Sie diese
+ unter den folgenden Namen verwenden:
+\end_layout
+
+\begin_layout Itemize
+Für die Seiten-Hintergrundfarbe:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+page_backgroundcolor
+\end_layout
+
+\begin_layout Itemize
+Für die Schriftfarbe des Haupttextes:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+document_fontcolor
+\end_layout
+
+\begin_layout Itemize
+Für die Schattierte
+\begin_inset space ~
+\end_inset
+
+Box-Hintergrundfarbe:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+shadecolor
+\end_layout
+
+\begin_layout Itemize
+Für die Schriftfarbe der Grauschrift-Notizen:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+note_fontcolor
+\end_layout
+
+\begin_layout Standard
+Wie man eigene Farben definiert und verwendet ist in Abschnitt 
+\emph on
+Farbige
+\begin_inset space ~
+\end_inset
+
+Zellen
+\emph default
+ des 
+\emph on
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
+\emph default
+ Handbuchs erklärt.
+\end_layout
+
+\begin_layout Section
 Nummerierung
 \begin_inset space ~
 \end_inset
@@ -41686,9 +42055,7 @@ Literaturverzeichnis
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can specify here a citation style using the LaTeX packages 
+Hier können Sie einen Zitierstil unter Verwendung der LaTeX-Pakete 
 \series bold
 natbib
 \series default
@@ -41702,7 +42069,7 @@ LaTeX-Paket ! natbib
 
 \end_inset
 
- or 
+ oder 
 \series bold
 jurabib
 \series default
@@ -41716,8 +42083,9 @@ LaTeX-Paket ! jurabib
 
 \end_inset
 
-.
- You can enable subdivided bibliographies using the LaTeX package 
+ festlegen.
+ Sie können ein abschnittsspezifisches Literaturverzeichnis unter Verwendung
+ des LaTeX-Pakets 
 \series bold
 bibtopic
 \series default
@@ -41731,14 +42099,11 @@ LaTeX-Paket ! bibtopic
 
 \end_inset
 
- and you can customize how the bibliography of the given document is being
- generated.
- For a further description see section
+ aktivieren und festlegen wie das Literaturverzeichnis erzeugt wird.
+ Für eine detaillierte Beschreibung siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset CommandInset ref
 LatexCommand ref
