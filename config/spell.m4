@@ -51,7 +51,12 @@ AC_DEFUN([CHECK_WITH_HUNSPELL],
 	test "$with_hunspell" = "no" && lyx_use_hunspell=false
 
 	if $lyx_use_hunspell ; then
-	PKG_CHECK_MODULES([HUNSPELL], [hunspell], [], [lyx_use_hunspell=false])
+	PKG_CHECK_MODULES([HUNSPELL], [hunspell], [], [
+		  AC_CHECK_HEADERS(hunspell/hunspell.hxx,
+		    [lyx_use_hunspell=true; break;],
+			 [lyx_use_hunspell=false])
+			 AC_CHECK_LIB(hunspell, main, LIBS="-lhunspell $LIBS", lyx_use_hunspell=false)
+		])
 	AC_MSG_CHECKING([whether to use hunspell])
 	if $lyx_use_hunspell ; then
 		AC_MSG_RESULT(yes)
