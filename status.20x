@@ -310,5 +310,8 @@ What's new
 - Using pkgconfig to configure hunspell (hunspell 1.3 was not correctly
   recognized).
 
+- Using explicit header and library detection as fallback to configure
+  hunspell in case pkgconfig is missing in build environment.
+
 - Fixed build failure on GNU/Hurd, which doesn't define PATH_MAX
   (bug 7467).
