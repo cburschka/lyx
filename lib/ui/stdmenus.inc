@@ -105,6 +105,7 @@ Menuset
 		Submenu "Paste Recent|e" "edit_pasterecent"
 		Submenu "Paste Special" "edit_paste"
 		Separator
+		Item "Select Whole Inset" "inset-select-all"
 		Item "Select All" "command-sequence buffer-begin ; buffer-end-select"
 		Separator
 		Item "Find & Replace (Quick)...|F" "dialog-show findreplace"
@@ -392,7 +393,6 @@ Menuset
 		Separator
 		Item "Protected Space|P" "space-insert protected"
 		Item "Interword Space|w" "space-insert normal"
-		Item "Visible Space|i" "space-insert visible"
 		Item "Thin Space|T" "space-insert thin"
 		Item "Horizontal Space...|o" "dialog-show-new-inset space"
 		Item "Horizontal Line...|L" "dialog-show-new-inset line"
@@ -582,10 +582,10 @@ Menuset
 	End
 
 	Menu "examples"
-		Item "Feynman-diagram Manual|F" "help-open FeynmanDiagrams"
 		Item "Braille Manual|B" "help-open Braille"
-		Item "LilyPond Manual|M" "help-open lilypond"
+		Item "Feynman-diagram Manual|F" "help-open FeynmanDiagrams"
 		Item "Linguistics Manual|L" "help-open linguistics"
+		Item "Multicolumn Manual|M" "help-open multicol"
 		Item "XY-pic Manual|X" "help-open xypic"
 	End
 
