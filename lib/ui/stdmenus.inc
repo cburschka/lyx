@@ -393,6 +393,7 @@ Menuset
 		Separator
 		Item "Protected Space|P" "space-insert protected"
 		Item "Interword Space|w" "space-insert normal"
+		Item "Visible Space|i" "space-insert visible"
 		Item "Thin Space|T" "space-insert thin"
 		Item "Horizontal Space...|o" "dialog-show-new-inset space"
 		Item "Horizontal Line...|L" "dialog-show-new-inset line"
@@ -584,8 +585,8 @@ Menuset
 	Menu "examples"
 		Item "Braille Manual|B" "help-open Braille"
 		Item "Feynman-diagram Manual|F" "help-open FeynmanDiagrams"
+		Item "LilyPond Manual|M" "help-open lilypond"
 		Item "Linguistics Manual|L" "help-open linguistics"
-		Item "Multicolumn Manual|M" "help-open multicol"
 		Item "XY-pic Manual|X" "help-open xypic"
 	End
 
