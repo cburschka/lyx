@@ -10,8 +10,8 @@ Var PathLaTeX
 Var PathLaTeXLocal
 Var PathBibTeXEditor
 
-Var SetupLaTeX
-Var SizeLaTeX
+#Var SetupLaTeX
+#Var SizeLaTeX
 
 Var Acrobat
 Var APPDATemp

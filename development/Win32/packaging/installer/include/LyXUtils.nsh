@@ -134,63 +134,6 @@ FunctionEnd
 
 #--------------------------------
 
-Function GetParentA
- # deletes a subfolder of the APPDATA path for all users
- # used by the function "un.getUsers"
-
-  Exch $R0
-  Push $R1
-  Push $R2
-  Push $R3
-  StrCpy $R1 0
-  StrLen $R2 $R0
-  loop:
-   IntOp $R1 $R1 + 1
-   IntCmp $R1 $R2 get 0 get
-   StrCpy $R3 $R0 1 -$R1
-   StrCmp $R3 "\" get
-  Goto loop
-  get:
-   StrCpy $R0 $R0 -$R1
-   Pop $R3
-   Pop $R2
-   Pop $R1
-   Exch $R0
-   
-FunctionEnd
-
-#--------------------------------
-
-Function GetUsers
- # reads the subfolders of the "Documents and Settings" folder to get a list of the users
-
-  StrCpy $R3 ""
-  Push "$PROFILE"
-  Call GetParentA  
-  Pop $R2
-  StrCpy $R2 "$R2"
-  FindFirst $R0 $R1 "$R2\*"
-  StrCmp $R1 "" findend 0
-  findloop:
-   IfFileExists "$R2\$R1\*.*" 0 notDir
-   StrCmp $R1 "." notDir
-   StrCmp $R1 ".." notDir
-   StrCmp $R1 "All Users" notDir
-   StrCmp $R1 "Default User" notDir
-   StrCmp $R1 "All Users.WINNT" notDir
-   StrCmp $R1 "Default User.WINNT" notDir  
-  StrCpy $R3 "$R3|$R1"
-  notDir:
-   FindNext $R0 $R1
-   StrCmp $R1 "" findend 0
-  Goto findloop
-  findend:
-   FindClose $R0
-  
-FunctionEnd
-
-#--------------------------------
-
 Function un.GetParentA
  # deletes a subfolder of the APPDATA path for all users
  # used by the function "un.getUsers"

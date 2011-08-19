@@ -8,27 +8,27 @@ downloaded or installed (depending on the type of installer)
 
 */
 
-Var ExternalPage
-Var ExternalPage.Info
-Var ExternalPage.Setup
-Var ExternalPage.Existing
-Var ExternalPage.Folder
-Var ExternalPage.Folder.Text
-Var ExternalPage.Folder.Return
-Var ExternalPage.FolderBrowse
-Var ExternalPage.FolderInfo
-Var ExternalPage.NoInstall
+#Var ExternalPage
+#Var ExternalPage.Info
+#Var ExternalPage.Setup
+#Var ExternalPage.Existing
+#Var ExternalPage.Folder
+#Var ExternalPage.Folder.Text
+#Var ExternalPage.Folder.Return
+#Var ExternalPage.FolderBrowse
+#Var ExternalPage.FolderInfo
+#Var ExternalPage.NoInstall
 
-Var ExternalPage.RadioButton.Click
-Var ExternalPage.FolderBrowse.Click
+#Var ExternalPage.RadioButton.Click
+#Var ExternalPage.FolderBrowse.Click
 
-Var LaTeXState
-Var LaTeXSetup.State
-Var LaTeXExisting.State
-Var LaTeXNoInstall.State
+#Var LaTeXState
+#Var LaTeXSetup.State
+#Var LaTeXExisting.State
+#Var LaTeXNoInstall.State
 
-Var ControlState
-Var ComponentSize
+#Var ControlState
+#Var ComponentSize
 
 !macro EXTERNAL_SHOWDIALOG COMPONENT
 
@@ -36,8 +36,8 @@ Var ComponentSize
 
   !insertmacro MUI_HEADER_TEXT $(TEXT_EXTERNAL_${COMPONENT}_TITLE) $(TEXT_EXTERNAL_${COMPONENT}_SUBTITLE)
   
-  GetFunctionAddress $ExternalPage.RadioButton.Click ExternalRadioButtonClick
-  GetFunctionAddress $ExternalPage.FolderBrowse.Click ExternalFolderBrowseClick
+#  GetFunctionAddress $ExternalPage.RadioButton.Click ExternalRadioButtonClick
+#  GetFunctionAddress $ExternalPage.FolderBrowse.Click ExternalFolderBrowseClick
 
   nsDialogs::Create /NOUNLOAD 1018
   Pop $ExternalPage
@@ -104,7 +104,7 @@ Var ComponentSize
     ${NSD_SetState} $ExternalPage.NoInstall $${COMPONENT}NoInstall.State
   ${EndIf}
   
-  Call ExternalRadioButtonClick
+  #Call ExternalRadioButtonClick
   
   nsDialogs::Show
 
@@ -163,43 +163,43 @@ Var ComponentSize
   
 !macroend
 
-Function ExternalRadioButtonClick
+#Function ExternalRadioButtonClick
 
   # Enable the folder selection controls depending
   # if the option to use an existing installation is selected
 
-  ${NSD_GetState} $ExternalPage.Existing $ControlState
+#  ${NSD_GetState} $ExternalPage.Existing $ControlState
   
-  ${If} $ControlState = ${BST_CHECKED}
-    EnableWindow $ExternalPage.Folder 1
-    EnableWindow $ExternalPage.FolderBrowse 1
-    EnableWindow $ExternalPage.FolderInfo 1
-  ${Else}
-    EnableWindow $ExternalPage.Folder 0
-    EnableWindow $ExternalPage.FolderBrowse 0
-    EnableWindow $ExternalPage.FolderInfo 0
-  ${EndIf}
+#  ${If} $ControlState = ${BST_CHECKED}
+#    EnableWindow $ExternalPage.Folder 1
+#    EnableWindow $ExternalPage.FolderBrowse 1
+#    EnableWindow $ExternalPage.FolderInfo 1
+#  ${Else}
+#    EnableWindow $ExternalPage.Folder 0
+#    EnableWindow $ExternalPage.FolderBrowse 0
+#    EnableWindow $ExternalPage.FolderInfo 0
+#  ${EndIf}
 
-FunctionEnd
+#FunctionEnd
 
-Function ExternalFolderBrowseClick
+#Function ExternalFolderBrowseClick
 
   # Browse button clicked
   
   # Get current folder to set as default
-  ${NSD_GetText} $ExternalPage.Folder $ExternalPage.Folder.Text
+#  ${NSD_GetText} $ExternalPage.Folder $ExternalPage.Folder.Text
   
   # Browse for new folder
-  nsDialogs::SelectFolderDialog /NOUNLOAD "" $ExternalPage.Folder.Text
-  Pop $ExternalPage.Folder.Return
+#  nsDialogs::SelectFolderDialog /NOUNLOAD "" $ExternalPage.Folder.Text
+#  Pop $ExternalPage.Folder.Return
   
-  ${If} $ExternalPage.Folder.Return != error
-    StrCpy $ExternalPage.Folder.Text $ExternalPage.Folder.Return
-  ${EndIf}
+#  ${If} $ExternalPage.Folder.Return != error
+#    StrCpy $ExternalPage.Folder.Text $ExternalPage.Folder.Return
+#  ${EndIf}
   
-  ${NSD_SetText} $ExternalPage.Folder $ExternalPage.Folder.Text
+#  ${NSD_SetText} $ExternalPage.Folder $ExternalPage.Folder.Text
 
-FunctionEnd
+#FunctionEnd
 
 # Page functions
 
