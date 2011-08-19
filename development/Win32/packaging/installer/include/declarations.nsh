@@ -48,7 +48,7 @@ Configuration of LyX installer
 !define APP_INFO "${APP_NAME} - The Document Processor"
 !define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-2011 by the LyX Team"
 
-!define APP_RUN "bin\LyXLauncher.exe"
+!define APP_RUN "bin\lyx.exe"
 
 !define APP_REGKEY "Software\${APP_NAME}${APP_SERIES_KEY}" # like "LyX200"
 !define APP_REGKEY_SETUP "Software\${APP_REGKEY}\Setup"

@@ -15,12 +15,6 @@ Lists of files to include in the installer
 
 !macroend
 
-!macro FileListLyXLauncher COMMAND DIRECTORY
-
-  ${FILE}LyXLauncher.exe"
-
-!macroend
-
 !macro FileListQtBin COMMAND DIRECTORY
 
   ${FILE}QtCore4.dll"
