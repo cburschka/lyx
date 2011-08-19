@@ -24,7 +24,9 @@ Var DelPythonFiles
 Var EditorPath
 Var GhostscriptPath
 Var ImageEditorPath
-Var InstallJabRef
+!if ${SETUPTYPE} == BUNDLE
+ Var InstallJabRef
+!endif
 Var JabRefInstalled
 Var LaTeXName
 Var LaTeXInstalled

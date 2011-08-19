@@ -11,7 +11,7 @@ Installation of program files, dictionaries and external components
 
 Var PythonCompileFile
 Var PythonCompileReturn
-Var DownloadResult
+#Var DownloadResult
 
 Section -ProgramFiles SecProgramFiles
 
@@ -112,7 +112,7 @@ Section -ProgramFiles SecProgramFiles
      ${endif}
     ${endif}
    ${endif}
-  !endif
+  !endif # end if BUNDLE
   
    # install eLyXer as Python module
    ExecWait '"$INSTDIR\python\python.exe" "$INSTDIR\python\setup.py" install'
@@ -155,8 +155,8 @@ SectionEnd
 #--------------------------------
 # Extenral components
 
-Var PathAllUsers
-Var PathCurrentUser
+#Var PathAllUsers
+#Var PathCurrentUser
 
 !macro EXTERNAL COMPONENT
 
@@ -184,10 +184,10 @@ Var PathCurrentUser
       
     ExecWait '"$PLUGINSDIR\${COMPONENT}Setup.exe"'
     
-    # Updates the path environment variable of the instaler process to the latest system value
-    ReadRegStr $PathAllUsers HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" Path
-    ReadRegStr $PathCurrentUser HKCU "Environment" Path
-    System::Call 'kernel32::SetEnvironmentVariableA(t, t) i("Path", "$PathAllUsers;$PathCurrentUser").'
+    # Updates the path environment variable of the installer process to the latest system value
+#    ReadRegStr $PathAllUsers HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" Path
+#    ReadRegStr $PathCurrentUser HKCU "Environment" Path
+#    System::Call 'kernel32::SetEnvironmentVariableA(t, t) i("Path", "$PathAllUsers;$PathCurrentUser").'
 
     Call Search${COMPONENT}
     
