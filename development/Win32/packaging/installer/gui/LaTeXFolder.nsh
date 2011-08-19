@@ -1,6 +1,6 @@
 Function LatexFolder
 
-  !insertmacro INSTALLOPTIONS_EXTRACT "io_latex.ini"
+  !insertmacro INSTALLOPTIONS_EXTRACT "gui\io_latex.ini"
   # generate the installer page
   !insertmacro MUI_HEADER_TEXT "$(EnterLaTeXHeader1)" "$(EnterLaTeXHeader2)"
   ${if} $LatexName != ""
