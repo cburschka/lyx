@@ -97,6 +97,7 @@ LYX_OPTION(DEBUG_GLIBC          "Enable libstdc++ debug mode" OFF GCC)
 LYX_OPTION(DEBUG_GLIBC_PEDANTIC "Enable libstdc++pedantic debug mode" OFF GCC)
 LYX_OPTION(STDLIB_DEBUG         "Use debug stdlib" OFF GCC)
 LYX_OPTION(CONCEPT_CHECKS       "Enable concept-checks" OFF GCC)
+LYX_OPTION(PROFILE              "Build with options for gprof" OFF GCC)
 
 # MSVC specific
 LYX_OPTION(CONSOLE               "Show console on Windows" ON MSVC)
@@ -361,10 +362,10 @@ set(LYX_MOC_FILES moc_*.cpp)
 include(ProjectSourceGroup)
 
 
-if(NOT MSVC)
+if(LYX_PROFILE AND NOT MSVC)
 	set(CMAKE_BUILD_TYPE Profile CACHE TYPE STRING FORCE)
-	set(CMAKE_CXX_FLAGS_PROFILE "${CMAKE_CXX_FLAGS_RELEASE} -pg" CACHE TYPE STRING FORCE)
-	set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS}  -pg" CACHE TYPE STRING FORCE)
+	set(CMAKE_CXX_FLAGS_PROFILE "${CMAKE_CXX_FLAGS_RELEASE} -pg")
+	set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS}  -pg")
 else()
 	set(LYX_PROFILE OFF)
 endif()
