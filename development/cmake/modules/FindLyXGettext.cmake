@@ -12,11 +12,10 @@
 #    ALL option is used, the translations will also be created when
 #    building the default target.
 
-set(hints "HINTS ${GNUWIN32_DIR}/deps20/gettext-tools")
-FIND_PROGRAM(GETTEXT_MSGMERGE_EXECUTABLE msgmerge  ${hints})
-FIND_PROGRAM(GETTEXT_MSGFMT_EXECUTABLE   msgfmt    ${hints})
-FIND_PROGRAM(GETTEXT_XGETTEXT_EXECUTABLE xgettext  ${hints})
-FIND_PROGRAM(GETTEXT_MSGUNIQ_EXECUTABLE  msguniq   ${hints})
+FIND_PROGRAM(GETTEXT_MSGMERGE_EXECUTABLE msgmerge HINTS ${GNUWIN32_DIR}/gettext-tools)
+FIND_PROGRAM(GETTEXT_MSGFMT_EXECUTABLE   msgfmt   HINTS ${GNUWIN32_DIR}/gettext-tools)
+FIND_PROGRAM(GETTEXT_XGETTEXT_EXECUTABLE xgettext HINTS ${GNUWIN32_DIR}/gettext-tools)
+FIND_PROGRAM(GETTEXT_MSGUNIQ_EXECUTABLE  msguniq  HINTS ${GNUWIN32_DIR}/gettext-tools)
 
 MACRO(GETTEXT_CREATE_TRANSLATIONS _potFile _firstPoFile)
 
