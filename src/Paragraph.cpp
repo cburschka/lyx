@@ -400,7 +400,10 @@ public:
 	}
 
 	void requestSpellCheck(pos_type pos) {
-		speller_state_.needsRefresh(pos);
+		if (pos == -1)
+			speller_state_.needsCompleteRefresh(speller_state_.currentChangeNumber());
+		else
+			speller_state_.needsRefresh(pos);
 	}
 
 	void readySpellCheck() {
@@ -3606,7 +3609,7 @@ Language * Paragraph::Private::getSpellLanguage(pos_type const from) const
 
 void Paragraph::requestSpellCheck(pos_type pos)
 {
-	d->requestSpellCheck(pos == -1 ? size() : pos);
+	d->requestSpellCheck(pos);
 }
 
 
