@@ -2932,9 +2932,9 @@ void Paragraph::changeLanguage(BufferParams const & bparams,
 		if (font.language() == from) {
 			font.setLanguage(to);
 			setFont(i, font);
+			d->requestSpellCheck(i);
 		}
 	}
-	d->requestSpellCheck(size());
 }
 
 
