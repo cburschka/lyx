@@ -1638,6 +1638,7 @@ void Paragraph::appendChar(char_type c, Font const & font,
 	// when appending characters, no need to update tables
 	d->text_.push_back(c);
 	setFont(d->text_.size() - 1, font);
+	d->requestSpellCheck(d->text_.size() - 1);
 }
 
 
@@ -1658,6 +1659,7 @@ void Paragraph::appendString(docstring const & s, Font const & font,
 	for (size_t i = oldsize; i != newsize; ++i) {
 		// track change
 		d->changes_.insert(change, i);
+		d->requestSpellCheck(i);
 	}
 	d->fontlist_.set(oldsize, font);
 	d->fontlist_.set(newsize - 1, font);
