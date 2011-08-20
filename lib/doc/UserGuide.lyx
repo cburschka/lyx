@@ -1515,17 +1515,7 @@ The Outliner
 \end_layout
 
 \begin_layout Standard
-The Outline was known in earlier versions of LyX as the 
-\begin_inset Quotes eld
-\end_inset
-
-TOC
-\begin_inset Quotes erd
-\end_inset
-
-, since its original purpose was to display the document's table of contents.
- The Outline has become much more powerful now, however.
- In the pull-down box at the top of the outline window, you can choose between
+In the pull-down box at the top of the outline window, you can choose between
  several different lists, including other TOC-like objects, such as lists
  of tables and figures, but also lists of footnotes, or labels and cross-referen
 ces (see 
@@ -1536,27 +1526,6 @@ reference "sec:Cross-References"
 \end_inset
 
 ), or notes, or citations (see 
-\begin_inset CommandInset ref
-LatexCommand formatted
-reference "sec:Bibliography"
-
-\end_inset
-
-).
- Clicking on any of these will take you to the corresponding object in your
- document.
- The Outline has become much more powerful now, however.
- In the pull-down box at the top of the outline window, you can choose between
- several different lists, including other TOC-like objects, such as lists
- of tables and figures, but also lists of footnotes, or labels and cross-referen
-ces (see 
-\begin_inset CommandInset ref
-LatexCommand formatted
-reference "sec:Cross-References"
-
-\end_inset
-
-), or notes, or of citations (see 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "sec:Bibliography"
@@ -2830,7 +2799,7 @@ Document ! Settings
 
  dialog.
  Highlighting a module in the dialog will bring up a description of what
- it does.the module.
+ it does.
 \end_layout
 
 \begin_layout Standard
@@ -14278,7 +14247,7 @@ You can export your document to ASCII by the menu
 \family sans
 File\SpecialChar \menuseparator
 Export\SpecialChar \menuseparator
-Simple
+Plain
 \begin_inset space ~
 \end_inset
 
@@ -14288,7 +14257,7 @@ text
 \family sans
 File\SpecialChar \menuseparator
 Export\SpecialChar \menuseparator
-Simple
+Plain
 \begin_inset space ~
 \end_inset
 
@@ -16024,15 +15993,15 @@ open close
 \end_layout
 
 \begin_layout Standard
-You can change the behavior of the 
+You can specify what character the 
 \family sans
 "
 \family default
- key using the submenu 
+ key produces using the submenu 
 \family sans
 Language
 \family default
- of the dialog 
+ of the 
 \family sans
 Document\SpecialChar \menuseparator
 Settings
@@ -16047,15 +16016,11 @@ Document ! Settings
 
 \end_inset
 
- dialog.
-\end_layout
-
-\begin_layout Standard
-You can also select quotes for different languages in the box 
+ dialog in the box 
 \family sans
-Type
+Quote Style
 \family default
- option.
+.
  There are six choices:
 \end_layout
 
@@ -16080,14 +16045,6 @@ double
 \begin_inset Quotes erd
 \end_inset
 
- or 
-\begin_inset Quotes els
-\end_inset
-
-single
-\begin_inset Quotes ers
-\end_inset
-
 
 \end_layout
 
@@ -16110,10 +16067,6 @@ Text
 
 this
 \begin_inset Quotes srd
-\end_inset
-
- or 'this
-\begin_inset Quotes ers
 \end_inset
 
 
@@ -16140,14 +16093,6 @@ this
 \begin_inset Quotes grd
 \end_inset
 
- or 
-\begin_inset Quotes gls
-\end_inset
-
-this
-\begin_inset Quotes grs
-\end_inset
-
 
 \end_layout
 
@@ -16170,14 +16115,6 @@ Text
 
 this
 \begin_inset Quotes prd
-\end_inset
-
- or 
-\begin_inset Quotes pls
-\end_inset
-
-this
-\begin_inset Quotes prs
 \end_inset
 
 
@@ -16204,14 +16141,6 @@ this
 \begin_inset Quotes frd
 \end_inset
 
- or 
-\begin_inset Quotes fls
-\end_inset
-
-this
-\begin_inset Quotes frs
-\end_inset
-
 
 \end_layout
 
@@ -16236,23 +16165,7 @@ this
 \begin_inset Quotes ard
 \end_inset
 
- or 
-\begin_inset Quotes als
-\end_inset
 
-this
-\begin_inset Quotes ars
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-These settings affect what character the 
-\family sans
-"
-\family default
- key produces.
 \end_layout
 
 \begin_layout Subsection
@@ -26763,7 +26676,7 @@ bibtex8 allows all characters that are possible to encode in a 8-bit encoding,
 \family sans
 bibtex
 \family default
-, works with all.bibliography packages
+, works with all bibliography packages
 \end_layout
 
 \begin_layout Standard
@@ -30049,7 +29962,7 @@ for the different positions in the header/footer.
 
 \begin_layout Standard
 Normally, headers and footers are set up in the beginning of the document.
- but you can change them anywhere you want to.
+ But you can change them anywhere you want to.
  Figure
 \begin_inset space ~
 \end_inset
@@ -32551,7 +32464,7 @@ Settings
 
 from
 \family default
- from which document LyX should take the document settings for the the resulting
+ from which document LyX should take the document settings for the resulting
  difference file.
  The option 
 \family sans
@@ -43329,7 +43242,7 @@ usepackage{ngerman}
 
 \begin_layout Description
 None will not use a language package.
- This necessary for some document classes for scientific articles.
+ This is necessary for some document classes for scientific articles.
 \end_layout
 
 \begin_layout Standard
