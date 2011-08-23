@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-08-19 08:30+0200\n"
-"PO-Revision-Date: 2011-08-19 08:33+0200\n"
+"POT-Creation-Date: 2011-08-23 13:43+0200\n"
+"PO-Revision-Date: 2011-08-23 13:47+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -491,8 +491,8 @@ msgid "Remove the selected branch"
 msgstr "Zmazať vybranú vetvu"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3734
-#: src/Buffer.cpp:3747
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3722
+#: src/Buffer.cpp:3735
 msgid "&Remove"
 msgstr "&Odstrániť"
 
@@ -526,7 +526,7 @@ msgstr "Pridaj Všetko"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1094
-#: src/Buffer.cpp:2314 src/Buffer.cpp:3709 src/Buffer.cpp:3772
+#: src/Buffer.cpp:2314 src/Buffer.cpp:3697 src/Buffer.cpp:3760
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1841
@@ -2725,7 +2725,7 @@ msgstr "Formát na použite pre výstup matematiky."
 msgid "MathML"
 msgstr "MathML"
 
-#: src/frontends/qt4/ui/OutputUi.ui:162 lib/configure.py:567
+#: src/frontends/qt4/ui/OutputUi.ui:162 lib/configure.py:568
 msgid "HTML"
 msgstr "HTML"
 
@@ -6323,7 +6323,7 @@ msgstr "Prídavné Príslušenstvo"
 
 #: lib/layouts/achemso.layout:110 lib/layouts/lettre.layout:41
 #: lib/layouts/lettre.layout:342 lib/layouts/scrlttr2.layout:191
-#: lib/configure.py:583
+#: lib/configure.py:584
 msgid "Fax"
 msgstr "Fax"
 
@@ -9980,7 +9980,7 @@ msgid "FirstName"
 msgstr "Krstné_meno"
 
 #: lib/layouts/literate-scrap.inc:12 lib/layouts/noweb.module:11
-#: lib/layouts/sweave.module:43
+#: lib/layouts/sweave.module:45
 msgid "Scrap"
 msgstr "Scrap"
 
@@ -10897,32 +10897,32 @@ msgstr "Sweave"
 #: lib/layouts/sweave.module:6
 msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
-"via Sweave package. See sweave.lyx in examples."
+"via the Sweave() function. See sweave.lyx in examples."
 msgstr ""
 "Umožní použiť štatistický jazyk S/R ako nástroj pre \"literate programming\" "
-"cez balík Sweave. Pozri sweave.lyx v príkladoch."
+"cez funkciu z balíka Sweave(). Pozri sweave.lyx v príkladoch."
 
 #: lib/layouts/sweave.module:23
 msgid "Chunk"
 msgstr "Kus"
 
-#: lib/layouts/sweave.module:47
+#: lib/layouts/sweave.module:49
 msgid "Sweave Options"
 msgstr "Sweave Voľby"
 
-#: lib/layouts/sweave.module:48
+#: lib/layouts/sweave.module:50
 msgid "Sweave opts"
 msgstr "Sweave voľby"
 
-#: lib/layouts/sweave.module:69
+#: lib/layouts/sweave.module:71
 msgid "S/R expression"
 msgstr "S/R výraz"
 
-#: lib/layouts/sweave.module:70
+#: lib/layouts/sweave.module:72
 msgid "S/R expr"
 msgstr "S/R výraz"
 
-#: lib/layouts/sweave.module:91 lib/layouts/sweave.module:92
+#: lib/layouts/sweave.module:93 lib/layouts/sweave.module:94
 msgid "Sweave Input File"
 msgstr "Sweave Vstupný Súbor"
 
@@ -16582,271 +16582,275 @@ msgid "Sweave|S"
 msgstr "Sweave|S"
 
 #: lib/configure.py:516
+msgid "R/S code"
+msgstr "R/S kód"
+
+#: lib/configure.py:517
 msgid "LilyPond music"
 msgstr "LilyPond nóty"
 
-#: lib/configure.py:517
+#: lib/configure.py:518
 msgid "LilyPond book (LaTeX)"
 msgstr "LilyPond book (LaTeX)"
 
-#: lib/configure.py:518
+#: lib/configure.py:519
 msgid "LaTeX (plain)"
 msgstr "LaTeX (prostý)"
 
-#: lib/configure.py:518
+#: lib/configure.py:519
 msgid "LaTeX (plain)|L"
 msgstr "LaTeX (prostý)"
 
-#: lib/configure.py:519
+#: lib/configure.py:520
 msgid "LaTeX (LuaTeX)"
 msgstr "LaTeX (LuaTeX)"
 
-#: lib/configure.py:520
+#: lib/configure.py:521
 msgid "LaTeX (pdflatex)"
 msgstr "LaTeX (pdflatex)"
 
-#: lib/configure.py:521
+#: lib/configure.py:522
 msgid "LaTeX (XeTeX)"
 msgstr "LaTeX (XeTeX)"
 
-#: lib/configure.py:522
+#: lib/configure.py:523
 msgid "Plain text"
 msgstr "Prostý text"
 
-#: lib/configure.py:522
+#: lib/configure.py:523
 msgid "Plain text|a"
 msgstr "Prostý text"
 
-#: lib/configure.py:523
+#: lib/configure.py:524
 msgid "Plain text (pstotext)"
 msgstr "Prostý text (pstotext)"
 
-#: lib/configure.py:524
+#: lib/configure.py:525
 msgid "Plain text (ps2ascii)"
 msgstr "Prostý text (ps2ascii)"
 
-#: lib/configure.py:525
+#: lib/configure.py:526
 msgid "Plain text (catdvi)"
 msgstr "Prostý text (catdvi)"
 
-#: lib/configure.py:526
+#: lib/configure.py:527
 msgid "Plain Text, Join Lines"
 msgstr "Prostý text, riadky spojiť"
 
-#: lib/configure.py:529
+#: lib/configure.py:530
 msgid "Gnumeric spreadsheet"
 msgstr " Tabuľkový procesor Gnumeric"
 
-#: lib/configure.py:530
+#: lib/configure.py:531
 msgid "Excel spreadsheet"
 msgstr "Tabuľkový procesor Excel"
 
-#: lib/configure.py:531
+#: lib/configure.py:532
 msgid "OpenOffice spreadsheet"
 msgstr " Tabuľkový procesor OpenOffice"
 
-#: lib/configure.py:534 lib/configure.py:536
+#: lib/configure.py:535 lib/configure.py:537
 msgid "LyXHTML"
 msgstr "LyXHTML"
 
-#: lib/configure.py:534 lib/configure.py:536
+#: lib/configure.py:535 lib/configure.py:537
 msgid "LyXHTML|y"
 msgstr "LyXHTML"
 
-#: lib/configure.py:543 src/frontends/qt4/GuiLog.cpp:230
+#: lib/configure.py:544 src/frontends/qt4/GuiLog.cpp:230
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: lib/configure.py:548
+#: lib/configure.py:549
 msgid "EPS"
 msgstr "EPS"
 
-#: lib/configure.py:549
+#: lib/configure.py:550
 msgid "Postscript"
 msgstr "Postscript"
 
-#: lib/configure.py:549
+#: lib/configure.py:550
 msgid "Postscript|t"
 msgstr "Postscript"
 
-#: lib/configure.py:553
+#: lib/configure.py:554
 msgid "PDF (ps2pdf)"
 msgstr "PDF (ps2pdf)"
 
-#: lib/configure.py:553
+#: lib/configure.py:554
 msgid "PDF (ps2pdf)|P"
 msgstr "PDF (ps2pdf)"
 
-#: lib/configure.py:554
+#: lib/configure.py:555
 msgid "PDF (pdflatex)"
 msgstr "PDF (pdflatex)"
 
-#: lib/configure.py:554
+#: lib/configure.py:555
 msgid "PDF (pdflatex)|F"
 msgstr "PDF (pdflatex)"
 
-#: lib/configure.py:555
+#: lib/configure.py:556
 msgid "PDF (dvipdfm)"
 msgstr "PDF (dvipdfm)"
 
-#: lib/configure.py:555
+#: lib/configure.py:556
 msgid "PDF (dvipdfm)|m"
 msgstr "PDF (dvipdfm)"
 
-#: lib/configure.py:556
+#: lib/configure.py:557
 msgid "PDF (XeTeX)"
 msgstr "PDF (XeTeX)"
 
-#: lib/configure.py:556
+#: lib/configure.py:557
 msgid "PDF (XeTeX)|X"
 msgstr "PDF (XeTeX)|X"
 
-#: lib/configure.py:557
+#: lib/configure.py:558
 msgid "PDF (LuaTeX)"
 msgstr "PDF (LuaTeX)"
 
-#: lib/configure.py:557
+#: lib/configure.py:558
 msgid "PDF (LuaTeX)|u"
 msgstr "PDF (LuaTeX)|u"
 
-#: lib/configure.py:560
+#: lib/configure.py:561
 msgid "DVI"
 msgstr "DVI"
 
-#: lib/configure.py:560
+#: lib/configure.py:561
 msgid "DVI|D"
 msgstr "DVI"
 
-#: lib/configure.py:561
+#: lib/configure.py:562
 msgid "DVI (LuaTeX)"
 msgstr "DVI (LuaTeX)"
 
-#: lib/configure.py:561
+#: lib/configure.py:562
 msgid "DVI (LuaTeX)|V"
 msgstr "DVI (LuaTeX)|V"
 
-#: lib/configure.py:564
+#: lib/configure.py:565
 msgid "DraftDVI"
 msgstr "DraftDVI"
 
-#: lib/configure.py:567
+#: lib/configure.py:568
 msgid "HTML|H"
 msgstr "HTML"
 
-#: lib/configure.py:570
+#: lib/configure.py:571
 msgid "Noteedit"
 msgstr "Noteedit"
 
-#: lib/configure.py:573
+#: lib/configure.py:574
 msgid "OpenDocument"
 msgstr "OpenDocument"
 
-#: lib/configure.py:574
+#: lib/configure.py:575
 msgid "OpenOffice.Org (sxw)"
 msgstr "OpenOffice.Org (sxw)"
 
-#: lib/configure.py:577
+#: lib/configure.py:578
 msgid "Rich Text Format"
 msgstr "Rich Text Format"
 
-#: lib/configure.py:578
+#: lib/configure.py:579
 msgid "MS Word"
 msgstr "MS Word"
 
-#: lib/configure.py:578
+#: lib/configure.py:579
 msgid "MS Word|W"
 msgstr "MS Word"
 
-#: lib/configure.py:581
+#: lib/configure.py:582
 msgid "date command"
 msgstr "príkaz pre dátum"
 
-#: lib/configure.py:582
+#: lib/configure.py:583
 msgid "Table (CSV)"
 msgstr "Tabuľka (CSV)"
 
-#: lib/configure.py:584 src/frontends/qt4/GuiView.cpp:1150
+#: lib/configure.py:585 src/frontends/qt4/GuiView.cpp:1150
 #: src/frontends/qt4/GuiView.cpp:1151 src/mathed/MathMacroTemplate.cpp:543
 msgid "LyX"
 msgstr "LyX"
 
-#: lib/configure.py:585
+#: lib/configure.py:586
 msgid "LyX 1.3.x"
 msgstr "LyX 1.3.x"
 
-#: lib/configure.py:586
+#: lib/configure.py:587
 msgid "LyX 1.4.x"
 msgstr "LyX 1.4.x"
 
-#: lib/configure.py:587
+#: lib/configure.py:588
 msgid "LyX 1.5.x"
 msgstr "LyX 1.5.x"
 
-#: lib/configure.py:588
+#: lib/configure.py:589
 msgid "LyX 1.6.x"
 msgstr "LyX 1.6.x"
 
-#: lib/configure.py:589
+#: lib/configure.py:590
 msgid "LyX 2.0.x"
 msgstr "LyX 2.0.x"
 
-#: lib/configure.py:590
+#: lib/configure.py:591
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK LyX 1.4.x (big5)"
 
-#: lib/configure.py:591
+#: lib/configure.py:592
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr "CJK LyX 1.4.x (euc-jp)"
 
-#: lib/configure.py:592
+#: lib/configure.py:593
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr "CJK LyX 1.4.x (euc-kr)"
 
-#: lib/configure.py:593
+#: lib/configure.py:594
 msgid "LyX Preview"
 msgstr "Náhľad LyX"
 
-#: lib/configure.py:594
+#: lib/configure.py:595
 msgid "LyX Preview (LilyPond book)"
 msgstr "Náhľad LyX (LilyPond book)"
 
-#: lib/configure.py:595
+#: lib/configure.py:596
 msgid "LyX Preview (pLaTeX)"
 msgstr "Náhľad LyX (pLaTeX)"
 
-#: lib/configure.py:596
+#: lib/configure.py:597
 msgid "PDFTEX"
 msgstr "PDFTEX"
 
-#: lib/configure.py:597
+#: lib/configure.py:598
 msgid "Program"
 msgstr "Program"
 
-#: lib/configure.py:598
+#: lib/configure.py:599
 msgid "PSTEX"
 msgstr "PSTEX"
 
-#: lib/configure.py:599 src/frontends/qt4/GuiClipboard.cpp:168
+#: lib/configure.py:600 src/frontends/qt4/GuiClipboard.cpp:168
 msgid "Windows Metafile"
 msgstr "Windows Metafile"
 
-#: lib/configure.py:600 src/frontends/qt4/GuiClipboard.cpp:167
+#: lib/configure.py:601 src/frontends/qt4/GuiClipboard.cpp:167
 msgid "Enhanced Metafile"
 msgstr "Rozšírený WMF"
 
-#: lib/configure.py:601
+#: lib/configure.py:602
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
-#: lib/configure.py:683
+#: lib/configure.py:687
 msgid "LyXBlogger"
 msgstr "LyXBlogger"
 
-#: lib/configure.py:886
+#: lib/configure.py:890
 msgid "LyX Archive (zip)"
 msgstr "LyX Archív (zip)"
 
-#: lib/configure.py:889
+#: lib/configure.py:893
 msgid "LyX Archive (tar.gz)"
 msgstr "LyX Archív (tar.gz)"
 
@@ -17044,7 +17048,7 @@ msgid ""
 "it."
 msgstr "%1$s je z novšej verzie LyX-u, a skript lyx2lyx zlyhal pri konverzii."
 
-#: src/Buffer.cpp:1081 src/Buffer.cpp:3719 src/Buffer.cpp:3781
+#: src/Buffer.cpp:1081 src/Buffer.cpp:3707 src/Buffer.cpp:3769
 msgid "File is read-only"
 msgstr "Dokument je iba na čítanie"
 
@@ -17244,65 +17248,65 @@ msgstr "Prepísať súbor?"
 msgid "Error running external commands."
 msgstr "Chyba pri spúšťaní externých príkazov."
 
-#: src/Buffer.cpp:3147
+#: src/Buffer.cpp:3135
 msgid "Preview source code"
 msgstr "Náhľad na zdrojový text"
 
-#: src/Buffer.cpp:3165
+#: src/Buffer.cpp:3153
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Náhľad na zdrojový text odstavca %1$d"
 
-#: src/Buffer.cpp:3169
+#: src/Buffer.cpp:3157
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Náhľad zdrojového kódu pre odstavce %1$s - %2$s"
 
-#: src/Buffer.cpp:3277
+#: src/Buffer.cpp:3265
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatické ukladanie %1$s"
 
-#: src/Buffer.cpp:3331
+#: src/Buffer.cpp:3319
 msgid "Autosave failed!"
 msgstr "Automatické ukladanie sa nepodarilo!"
 
-#: src/Buffer.cpp:3392
+#: src/Buffer.cpp:3380
 msgid "Autosaving current document..."
 msgstr "Automatické ukladanie súčasného dokumentu..."
 
-#: src/Buffer.cpp:3482
+#: src/Buffer.cpp:3470
 msgid "Couldn't export file"
 msgstr "Nemôžem exportovať súbor"
 
-#: src/Buffer.cpp:3483
+#: src/Buffer.cpp:3471
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Žiadne informácie pre export formátu %1$s"
 
-#: src/Buffer.cpp:3550
+#: src/Buffer.cpp:3538
 msgid "File name error"
 msgstr "Chyba v názve súboru"
 
-#: src/Buffer.cpp:3551
+#: src/Buffer.cpp:3539
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Cesta k dokumentu nesmie obsahovať medzery."
 
-#: src/Buffer.cpp:3636
+#: src/Buffer.cpp:3624
 msgid "Document export cancelled."
 msgstr "Exportovanie dokumentu bolo zrušené."
 
-#: src/Buffer.cpp:3646
+#: src/Buffer.cpp:3634
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument exportovaný ako %1$s do súboru `%2$s'"
 
-#: src/Buffer.cpp:3652
+#: src/Buffer.cpp:3640
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument exportovaný ako %1$s"
 
-#: src/Buffer.cpp:3705
+#: src/Buffer.cpp:3693
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17313,19 +17317,19 @@ msgstr ""
 "\n"
 "Získať núdzovú kópiu späť?"
 
-#: src/Buffer.cpp:3708
+#: src/Buffer.cpp:3696
 msgid "Load emergency save?"
 msgstr "Nahrať núdzovú kópiu ?"
 
-#: src/Buffer.cpp:3709
+#: src/Buffer.cpp:3697
 msgid "&Recover"
 msgstr "Získať späť"
 
-#: src/Buffer.cpp:3709
+#: src/Buffer.cpp:3697
 msgid "&Load Original"
 msgstr "Nahrať Originál"
 
-#: src/Buffer.cpp:3720
+#: src/Buffer.cpp:3708
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -17334,15 +17338,15 @@ msgstr ""
 "Bezpečnostný súbor úspešne načítaný, ale originálny súbor %1$s je označený "
 "len na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
 
-#: src/Buffer.cpp:3726
+#: src/Buffer.cpp:3714
 msgid "Document was successfully recovered."
 msgstr "Dokument bol úspešne obnovený."
 
-#: src/Buffer.cpp:3728
+#: src/Buffer.cpp:3716
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument nebol úspešne obnovený."
 
-#: src/Buffer.cpp:3729
+#: src/Buffer.cpp:3717
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17351,27 +17355,27 @@ msgstr ""
 "Zmazať núdzovú kópiu teraz?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3733 src/Buffer.cpp:3745
+#: src/Buffer.cpp:3721 src/Buffer.cpp:3733
 msgid "Delete emergency file?"
 msgstr "Zmazať núdzový súbor?"
 
-#: src/Buffer.cpp:3734 src/Buffer.cpp:3747
+#: src/Buffer.cpp:3722 src/Buffer.cpp:3735
 msgid "&Keep"
 msgstr "Držať"
 
-#: src/Buffer.cpp:3738
+#: src/Buffer.cpp:3726
 msgid "Emergency file deleted"
 msgstr "Núdzový súbor vymazaný"
 
-#: src/Buffer.cpp:3739
+#: src/Buffer.cpp:3727
 msgid "Do not forget to save your file now!"
 msgstr "Teraz nezabudnite uložiť váš súbor!"
 
-#: src/Buffer.cpp:3746
+#: src/Buffer.cpp:3734
 msgid "Remove emergency file now?"
 msgstr "Zmazať núdzovú kópiu teraz?"
 
-#: src/Buffer.cpp:3769
+#: src/Buffer.cpp:3757
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17382,19 +17386,19 @@ msgstr ""
 "\n"
 "Nahrať radšej zálohu ?"
 
-#: src/Buffer.cpp:3771
+#: src/Buffer.cpp:3759
 msgid "Load backup?"
 msgstr "Nahrať zálohu?"
 
-#: src/Buffer.cpp:3772
+#: src/Buffer.cpp:3760
 msgid "&Load backup"
 msgstr "Nahrať zálohu"
 
-#: src/Buffer.cpp:3772
+#: src/Buffer.cpp:3760
 msgid "Load &original"
 msgstr "Nahrať Originál"
 
-#: src/Buffer.cpp:3782
+#: src/Buffer.cpp:3770
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17403,25 +17407,25 @@ msgstr ""
 "Zálohový súbor úspešne načítaný, ale originálny súbor %1$s je označený len "
 "na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
 
-#: src/Buffer.cpp:4122 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4110 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Nezmyselné!!! "
 
-#: src/Buffer.cpp:4243
+#: src/Buffer.cpp:4231
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s znovu nahraný."
 
-#: src/Buffer.cpp:4246
+#: src/Buffer.cpp:4234
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Nedá sa znova nahrať dokument %1$s."
 
-#: src/Buffer.cpp:4312
+#: src/Buffer.cpp:4300
 msgid "Included File Invalid"
 msgstr "Zahrnutý Súbor je Neplatný"
 
-#: src/Buffer.cpp:4313
+#: src/Buffer.cpp:4301
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17616,11 +17620,11 @@ msgstr "Meno vetvy"
 msgid "Branch already exists"
 msgstr "Vetva už existuje"
 
-#: src/BufferView.cpp:2229
+#: src/BufferView.cpp:2247
 msgid "Inverse Search Failed"
 msgstr "Spiatočné Hľadanie Zlyhalo"
 
-#: src/BufferView.cpp:2230
+#: src/BufferView.cpp:2248
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
@@ -17628,22 +17632,22 @@ msgstr ""
 "Neplatná pozícia žiadaná spiatočným hľadaním.\n"
 "Treba aktualizovať prehliadaný dokument."
 
-#: src/BufferView.cpp:2604
+#: src/BufferView.cpp:2622
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Vkladám dokument %1$s..."
 
-#: src/BufferView.cpp:2615
+#: src/BufferView.cpp:2633
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s bol vložený."
 
-#: src/BufferView.cpp:2617
+#: src/BufferView.cpp:2635
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nie je možné vložiť dokument %1$s"
 
-#: src/BufferView.cpp:2882
+#: src/BufferView.cpp:2900
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17654,11 +17658,11 @@ msgstr ""
 "%1$s\n"
 "sa kvôli chybe: %2$s nedá čítať"
 
-#: src/BufferView.cpp:2884
+#: src/BufferView.cpp:2902
 msgid "Could not read file"
 msgstr "Nemôžem čítať súbor"
 
-#: src/BufferView.cpp:2891
+#: src/BufferView.cpp:2909
 #, c-format
 msgid ""
 "%1$s\n"
@@ -17667,15 +17671,15 @@ msgstr ""
 "%1$s\n"
 "je nečitateľné."
 
-#: src/BufferView.cpp:2892 src/output.cpp:39
+#: src/BufferView.cpp:2910 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Nemôžem otvoriť súbor"
 
-#: src/BufferView.cpp:2899
+#: src/BufferView.cpp:2917
 msgid "Reading not UTF-8 encoded file"
 msgstr "Čítaný súbor nie je kódovaný v UTF-8"
 
-#: src/BufferView.cpp:2900
+#: src/BufferView.cpp:2918
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -17689,7 +17693,7 @@ msgstr ""
 "zmeňte prosím kódovanie súboru na\n"
 "UTF-8 iným programom.\n"
 
-#: src/Changes.cpp:363 src/Paragraph.cpp:2507
+#: src/Changes.cpp:363 src/Paragraph.cpp:2512
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:300
 #: src/insets/InsetCommandParams.cpp:390 src/insets/InsetListings.cpp:183
 #: src/insets/InsetListings.cpp:191 src/insets/InsetListings.cpp:213
@@ -17697,7 +17701,7 @@ msgstr ""
 msgid "LyX Warning: "
 msgstr "LyX varovanie: "
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2508 src/insets/InsetBibitem.cpp:301
+#: src/Changes.cpp:364 src/Paragraph.cpp:2513 src/insets/InsetBibitem.cpp:301
 #: src/insets/InsetCommandParams.cpp:391 src/insets/InsetListings.cpp:184
 #: src/insets/InsetListings.cpp:192 src/insets/InsetNomencl.cpp:286
 #: src/mathed/InsetMathString.cpp:162
@@ -19301,15 +19305,15 @@ msgstr "Vrátiť sa k uloženej verzii dokumentu?"
 msgid "&Revert"
 msgstr "Vrátiť"
 
-#: src/Paragraph.cpp:1955
+#: src/Paragraph.cpp:1960
 msgid "Senseless with this layout!"
 msgstr "S týmto schéma to nemá zmysel!"
 
-#: src/Paragraph.cpp:2017
+#: src/Paragraph.cpp:2022
 msgid "Alignment not permitted"
 msgstr "Zarovnanie nepovolené"
 
-#: src/Paragraph.cpp:2018
+#: src/Paragraph.cpp:2023
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -19317,11 +19321,11 @@ msgstr ""
 "Nové schéma nepovoľuje používané zarovnanie.\n"
 "Prepnuté na štandardné."
 
-#: src/Paragraph.cpp:3093
+#: src/Paragraph.cpp:3098
 msgid "Memory problem"
 msgstr "Problém s pamäťou"
 
-#: src/Paragraph.cpp:3093
+#: src/Paragraph.cpp:3098
 msgid "Paragraph not properly initialized"
 msgstr "Odstavec nesprávne inicializovaný"
 
