@@ -851,8 +851,14 @@ cmd_ret const runCommand(string const & cmd)
 	SECURITY_ATTRIBUTES security;
 	HANDLE in, out;
 	FILE * inf = 0;
+	bool err2out = false;
 	string command;
 	string const infile = trim(split(cmd, command, '<'), " \"");
+	command = rtrim(command);
+	if (suffixIs(command, "2>&1")) {
+		command = rtrim(command, "2>&1");
+		err2out = true;
+	}
 	string const cmdarg = "/c " + command;
 	string const comspec = getEnv("COMSPEC");
 
@@ -867,7 +873,7 @@ cmd_ret const runCommand(string const & cmd)
 		startup.cb = sizeof(STARTUPINFO);
 		startup.dwFlags = STARTF_USESTDHANDLES;
 
-		startup.hStdError = GetStdHandle(STD_ERROR_HANDLE);
+		startup.hStdError = err2out ? out : GetStdHandle(STD_ERROR_HANDLE);
 		startup.hStdInput = infile.empty()
 			? GetStdHandle(STD_INPUT_HANDLE)
 			: CreateFile(infile.c_str(), GENERIC_READ,
