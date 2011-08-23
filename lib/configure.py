@@ -513,6 +513,7 @@ def checkFormatEntries(dtl_tools):
 \Format platex     tex    "LaTeX (pLaTeX)"        "" "" "%%"    "document,menu=export"
 \Format literate   nw      NoWeb                  N  ""	"%%"	"document,menu=export"
 \Format sweave     Rnw    "Sweave"                S  "" "%%"    "document,menu=export"
+\Format r          R      "R/S code"              "" "" "%%"    "document,menu=export"
 \Format lilypond   ly     "LilyPond music"        "" ""	"%%"	"vector"
 \Format lilypond-book    lytex "LilyPond book (LaTeX)"   "" ""	"%%"	"document,menu=export"
 \Format latex      tex    "LaTeX (plain)"         L  ""	"%%"	"document,menu=export"
@@ -612,21 +613,13 @@ def checkConverterEntries():
 
     checkLuatex()
 
-    ''' If we're running LyX in-place then tex2lyx will be found in
-            ../src/tex2lyx. Add this directory to the PATH temporarily and
-            search for tex2lyx.
-            Use PATH to avoid any problems with paths-with-spaces.
-    '''
-    path_orig = os.environ["PATH"]
-    os.environ["PATH"] = os.path.join('..', 'src', 'tex2lyx') + \
-        os.pathsep + path_orig
-
-# First search for tex2lyx with version suffix (bug 6986)
+# First search for tex2lyx with version suffix (bug 6986). If nothing
+# has been found, use 'tex2lyx' which is present in the build tree
+# when running in place.
     checkProg('a LaTeX/Noweb -> LyX converter', ['tex2lyx' + version_suffix, 'tex2lyx'],
         rc_entry = [r'''\converter latex      lyx        "%% -f $$i $$o"	""
-\converter literate   lyx        "%% -n -f $$i $$o"	""'''])
-
-    os.environ["PATH"] = path_orig
+\converter literate   lyx        "%% -n -f $$i $$o"	""'''], 
+        not_found = 'tex2lyx')
 
     #
     checkProg('a Noweb -> LaTeX converter', ['noweave -delay -index $$i > $$o'],
@@ -638,6 +631,9 @@ def checkConverterEntries():
 \converter sweave   pdflatex   "%%"	""
 \converter sweave   xetex      "%%"	""
 \converter sweave   luatex     "%%"	""'''])
+    #
+    checkProg('a Sweave -> R/S code converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxstangle.R $$i $$e $$r'], 
+        rc_entry = [ r'\converter sweave      r      "%%"    ""' ])
     #
     checkProg('an HTML -> LaTeX converter', ['html2latex $$i', 'gnuhtml2latex $$i', \
         'htmltolatex -input $$i -output $$o', 'java -jar htmltolatex.jar -input $$i -output $$o'],
