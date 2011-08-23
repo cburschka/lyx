@@ -252,6 +252,8 @@ What's new
 - With aspell backend split words on hard hyphens to check parts separately
   because hyphen is not allowed to be part of a word (bug 7660).
 
+- On Windows, fix call to Computer Algebra System programs (bug 7715).
+
 
 * ADVANCED FIND AND REPLACE
 

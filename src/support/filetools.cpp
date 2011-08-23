@@ -851,6 +851,16 @@ cmd_ret const runCommand(string const & cmd)
 	SECURITY_ATTRIBUTES security;
 	HANDLE in, out;
 	FILE * inf = 0;
+	bool err2out = false;
+	string command;
+	string const infile = trim(split(cmd, command, '<'), " \"");
+	command = rtrim(command);
+	if (suffixIs(command, "2>&1")) {
+		command = rtrim(command, "2>&1");
+		err2out = true;
+	}
+	string const cmdarg = "/c " + command;
+	string const comspec = getEnv("COMSPEC");
 
 	security.nLength = sizeof(SECURITY_ATTRIBUTES);
 	security.bInheritHandle = TRUE;
@@ -863,12 +873,18 @@ cmd_ret const runCommand(string const & cmd)
 		startup.cb = sizeof(STARTUPINFO);
 		startup.dwFlags = STARTF_USESTDHANDLES;
 
-		startup.hStdError = GetStdHandle(STD_ERROR_HANDLE);
-		startup.hStdInput = GetStdHandle(STD_INPUT_HANDLE);
+		startup.hStdError = err2out ? out : GetStdHandle(STD_ERROR_HANDLE);
+		startup.hStdInput = infile.empty()
+			? GetStdHandle(STD_INPUT_HANDLE)
+			: CreateFile(infile.c_str(), GENERIC_READ,
+				FILE_SHARE_READ, &security, OPEN_EXISTING,
+				FILE_ATTRIBUTE_NORMAL, NULL);
 		startup.hStdOutput = out;
 
-		if (CreateProcess(0, (LPTSTR)cmd.c_str(), &security, &security,
-			TRUE, CREATE_NO_WINDOW, 0, 0, &startup, &process)) {
+		if (startup.hStdInput != INVALID_HANDLE_VALUE &&
+			CreateProcess(comspec.c_str(), (LPTSTR)cmdarg.c_str(),
+				&security, &security, TRUE, CREATE_NO_WINDOW,
+				0, 0, &startup, &process)) {
 
 			CloseHandle(process.hThread);
 			fno = _open_osfhandle((long)in, _O_RDONLY);
@@ -899,6 +915,8 @@ cmd_ret const runCommand(string const & cmd)
 
 #if defined (_WIN32)
 	WaitForSingleObject(process.hProcess, INFINITE);
+	if (!infile.empty())
+		CloseHandle(startup.hStdInput);
 	CloseHandle(process.hProcess);
 	int const pret = fclose(inf);
 #elif defined (HAVE_PCLOSE)
