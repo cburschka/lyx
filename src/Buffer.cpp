@@ -2333,18 +2333,6 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		break;
 	}
 
-	case LFUN_BUFFER_LANGUAGE: {
-		Language const * oldL = params().language;
-		Language const * newL = languages.getLanguage(argument);
-		if (!newL || oldL == newL)
-			break;
-		if (oldL->rightToLeft() == newL->rightToLeft() && !isMultiLingual()) {
-			changeLanguage(oldL, newL);
-			dr.forceBufferUpdate();
-		}
-		break;
-	}
-
 	default:
 		dispatched = false;
 		break;

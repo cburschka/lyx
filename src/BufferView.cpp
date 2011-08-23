@@ -1892,6 +1892,24 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 	}
 
+	// FIXME:
+	// The change of language of buffer belongs to the Buffer class.
+	// We have to do it here because we need a cursor for Undo.
+	// When Undo::recordUndoBufferParams() is implemented someday
+	// LFUN_BUFFER_LANGUAGE should be handled by the Buffer class.
+	case LFUN_BUFFER_LANGUAGE: {
+		Language const * oldL = buffer_.params().language;
+		Language const * newL = languages.getLanguage(argument);
+		if (!newL || oldL == newL)
+			break;
+		if (oldL->rightToLeft() == newL->rightToLeft() && !buffer_.isMultiLingual()) {
+			cur.recordUndoFullDocument();
+			buffer_.changeLanguage(oldL, newL);
+			dr.forceBufferUpdate();
+		}
+		break;
+	}
+
 	default:
 		// OK, so try the Buffer itself...
 		buffer_.dispatch(cmd, dr);
