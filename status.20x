@@ -152,13 +152,15 @@ What's new
 
 - Fixed the latex flag set by the prefs2prefs script (bug 7610).
 
+- Code cleanup of the Sweave support script (see bug 7555).
+
 - Fix LaTeX error with Sweave module when the file name contains a
   dot (bug 7551).
 
 - Fix error with Sweave module when using some R features (bug 7552).
 
 - Fix LaTeX error with Sweave module when the temporary directory name
-  containsa space (bug 7545).
+  contains a space (bug 7545).
 
 - Fix LaTeX error with Sweave module when the directory where R has
   been installed contains a space.

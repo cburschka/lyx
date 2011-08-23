@@ -1,6 +1,6 @@
 #\DeclareLyXModule[sweave->latex,fancyvrb.sty]{Sweave}
 #DescriptionBegin
-#Allows to use the statistical language S/R as a literate programming tool via Sweave package.
+#Allows to use the statistical language S/R as a literate programming tool via the Sweave() function.
 #See sweave.lyx in examples.
 #DescriptionEnd
 #Category: literate
@@ -16,7 +16,7 @@ End
 
 AddToPreamble
 	<<echo=F>>=
-	  if(exists("ls.enc")) options(encoding=ls.enc)
+	  if(exists(".orig.enc")) options(encoding = .orig.enc)
 	@
 EndPreamble
 
@@ -27,6 +27,8 @@ Style Chunk
 	Margin                static
 	Align                 Left
 	AlignPossible         Block, Left, Right, Center
+	TopSep                0.7
+	BottomSep             0.7
 	NewLine               0
 	FreeSpacing           1
 	PassThru              1
