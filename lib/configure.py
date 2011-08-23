@@ -613,13 +613,21 @@ def checkConverterEntries():
 
     checkLuatex()
 
-# First search for tex2lyx with version suffix (bug 6986). If nothing
-# has been found, use 'tex2lyx' which is present in the build tree
-# when running in place.
+    ''' If we're running LyX in-place then tex2lyx will be found in
+            ../src/tex2lyx. Add this directory to the PATH temporarily and
+            search for tex2lyx.
+            Use PATH to avoid any problems with paths-with-spaces.
+    '''
+    path_orig = os.environ["PATH"]
+    os.environ["PATH"] = os.path.join('..', 'src', 'tex2lyx') + \
+        os.pathsep + path_orig
+
+# First search for tex2lyx with version suffix (bug 6986)
     checkProg('a LaTeX/Noweb -> LyX converter', ['tex2lyx' + version_suffix, 'tex2lyx'],
         rc_entry = [r'''\converter latex      lyx        "%% -f $$i $$o"	""
-\converter literate   lyx        "%% -n -f $$i $$o"	""'''], 
-        not_found = 'tex2lyx')
+\converter literate   lyx        "%% -n -f $$i $$o"	""'''])
+
+    os.environ["PATH"] = path_orig
 
     #
     checkProg('a Noweb -> LaTeX converter', ['noweave -delay -index $$i > $$o'],
