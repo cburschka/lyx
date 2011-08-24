@@ -673,7 +673,10 @@ private:
 	///
 	void collectChildren(ListOfBuffers & children, bool grand_children) const;
 
-	
+	/// noncopyable
+	Buffer(Buffer const &);
+	void operator=(Buffer const &);
+
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;
 	/// The pointer never changes although *pimpl_'s contents may.
