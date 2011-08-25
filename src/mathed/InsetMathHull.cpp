@@ -743,6 +743,8 @@ void InsetMathHull::validate(LaTeXFeatures & features) const
 				string("\\newcommand{\\regexp}[1]{\\fcolorbox{")
 				+ frcol + string("}{")
 				+ bgcol + string("}{\\ensuremath{\\mathtt{#1}}}}"));
+			features.addPreambleSnippet(
+				string("\\newcommand{\\endregexp}{}"));
 		}
 	
 		// Validation is necessary only if not using AMS math.
@@ -807,7 +809,7 @@ void InsetMathHull::header_write(WriteStream & os) const
 		break;
 
 	case hullRegexp:
-		os << "\\regexp{{{";
+		os << "\\regexp{";
 		break;
 
 	default:
@@ -852,7 +854,8 @@ void InsetMathHull::footer_write(WriteStream & os) const
 		break;
 
 	case hullRegexp:
-		os << "}}}";
+		// Only used as a heuristic to find the regexp termination, when searching in ignore-format mode
+		os << "\\endregexp{}}";
 		break;
 
 	default:
