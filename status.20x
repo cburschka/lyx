@@ -284,6 +284,7 @@ What's new
 - After replacing with multi-cell contents inside maths, now advanced find and replace
   leaves the cursor after the inserted material (fixing 7675).
 
+- Fixed longstanding bug in Advanced Find&Replace, when dealing with documents containing braces.
 
 * DOCUMENTATION AND LOCALIZATION
 
