@@ -507,7 +507,7 @@ Escapes const & get_regexp_escapes()
 		escape_map.push_back(pair<string, string>(".", "\\."));
 		escape_map.push_back(pair<string, string>("\\", "(?:\\\\|\\\\backslash)"));
 		escape_map.push_back(pair<string, string>("~", "(?:\\\\textasciitilde|\\\\sim)"));
-		escape_map.push_back(pair<string, string>("^", "(?:\\^|\\\\textasciicircum\\{\\}|\\\\mathcircumflex"));
+		escape_map.push_back(pair<string, string>("^", "(?:\\^|\\\\textasciicircum\\{\\}|\\\\mathcircumflex)"));
 	}
 	return escape_map;
 }
@@ -517,12 +517,12 @@ Escapes const & get_lyx_unescapes() {
 	static Escapes escape_map;
 	if (escape_map.empty()) {
 		escape_map.push_back(pair<string, string>("\\%", "%"));
-		escape_map.push_back(pair<string, string>("\\{", "{"));
-		escape_map.push_back(pair<string, string>("\\}", "}"));
 		escape_map.push_back(pair<string, string>("\\mathcircumflex ", "^"));
 		escape_map.push_back(pair<string, string>("\\mathcircumflex", "^"));
 		escape_map.push_back(pair<string, string>("\\backslash ", "\\"));
 		escape_map.push_back(pair<string, string>("\\backslash", "\\"));
+		escape_map.push_back(pair<string, string>("\\\\{", "_x_<"));
+		escape_map.push_back(pair<string, string>("\\\\}", "_x_>"));
 		escape_map.push_back(pair<string, string>("\\sim ", "~"));
 		escape_map.push_back(pair<string, string>("\\sim", "~"));
 	}
@@ -593,7 +593,7 @@ string escape_for_regex(string s, bool match_latex)
 {
 	size_t pos = 0;
 	while (pos < s.size()) {
-		size_t new_pos = s.find("\\regexp{{{", pos);
+		size_t new_pos = s.find("\\regexp{", pos);
 		if (new_pos == string::npos)
 			new_pos = s.size();
 		LYXERR(Debug::FIND, "new_pos: " << new_pos);
@@ -607,20 +607,24 @@ string escape_for_regex(string s, bool match_latex)
 		LYXERR(Debug::FIND, "new_pos: " << new_pos);
 		if (new_pos == s.size())
 			break;
-		size_t end_pos = s.find("}}}", new_pos + 10); // find_matching_brace(s, new_pos + 7);
+		size_t end_pos = s.find("\\endregexp{}}", new_pos + 8); // find_matching_brace(s, new_pos + 7);
 		LYXERR(Debug::FIND, "end_pos: " << end_pos);
-		t = apply_escapes(s.substr(new_pos + 10, end_pos - (new_pos + 10)), get_lyx_unescapes());
-		if (match_latex)
+		t = s.substr(new_pos + 8, end_pos - (new_pos + 8));
+		LYXERR(Debug::FIND, "t in regexp      : " << t);
+		t = apply_escapes(t, get_lyx_unescapes());
+		LYXERR(Debug::FIND, "t in regexp [lyx]: " << t);
+		if (match_latex) {
 			t = apply_escapes(t, get_regexp_latex_escapes());
-		LYXERR(Debug::FIND, "t      : " << t);
+			LYXERR(Debug::FIND, "t in regexp [ltx]: " << t);
+		}
 		if (end_pos == s.size()) {
 			s.replace(new_pos, end_pos - new_pos, t);
 			pos = s.size();
 			LYXERR(Debug::FIND, "Regexp after \\regexp{} removal: " << s);
 			break;
 		}
-		s.replace(new_pos, end_pos + 3 - new_pos, t);
-		LYXERR(Debug::FIND, "Regexp after \\regexp{} removal: " << s);
+		s.replace(new_pos, end_pos + 13 - new_pos, t);
+		LYXERR(Debug::FIND, "Regexp after \\regexp{...\\endregexp{}} removal: " << s);
 		pos = new_pos + t.size();
 		LYXERR(Debug::FIND, "pos: " << pos);
 	}
@@ -725,7 +729,7 @@ private:
 	 ** @todo Normalization should also expand macros, if the corresponding
 	 ** search option was checked.
 	 **/
-	string normalize(docstring const & s) const;
+	string normalize(docstring const & s, bool hack_braces) const;
 	// normalized string to search
 	string par_as_string;
 	// regular expression to use for searching
@@ -829,11 +833,12 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 	: p_buf(&buf), p_first_buf(&buf), opt(opt)
 {
 	Buffer & find_buf = *theBufferList().getBuffer(FileName(to_utf8(opt.find_buf_name)), true);
-	par_as_string = normalize(stringifySearchBuffer(find_buf, opt));
+	docstring const & ds = stringifySearchBuffer(find_buf, opt);
+	use_regexp = lyx::to_utf8(ds).find("\\regexp{") != std::string::npos;
+	// When using regexp, braces are hacked already by escape_for_regex()
+	par_as_string = normalize(ds, !use_regexp);
 	open_braces = 0;
 	close_wildcards = 0;
-
-	use_regexp = par_as_string.find("\\regexp") != std::string::npos;
 
 	size_t lead_size = 0;
 	if (!opt.ignoreformat) {
@@ -893,7 +898,7 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 {
 	docstring docstr = stringifyFromForSearch(opt, cur, len);
 	LYXERR(Debug::FIND, "Matching against     '" << lyx::to_utf8(docstr) << "'");
-	string str = normalize(docstr);
+	string str = normalize(docstr, true);
 	LYXERR(Debug::FIND, "After normalization: '" << str << "'");
 	if (! use_regexp) {
 		LYXERR(Debug::FIND, "Searching in normal mode: par_as_string='" << par_as_string << "', str='" << str << "'");
@@ -959,7 +964,7 @@ int MatchStringAdv::operator()(DocIterator const & cur, int len, bool at_begin) 
 }
 
 
-string MatchStringAdv::normalize(docstring const & s) const
+string MatchStringAdv::normalize(docstring const & s, bool hack_braces) const
 {
 	string t;
 	if (! opt.casesensitive)
@@ -980,6 +985,19 @@ string MatchStringAdv::normalize(docstring const & s) const
 	LYXERR(Debug::FIND, "Removing stale empty \\emph{}, \\textbf{}, \\*section{} macros from: " << t);
 	while (regex_replace(t, t, "\\\\(emph|textbf|subsubsection|subsection|section|subparagraph|paragraph|part)(\\{\\})+", ""))
 		LYXERR(Debug::FIND, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
+
+	// FIXME - check what preceeds the brace
+	if (hack_braces) {
+		if (opt.ignoreformat)
+			while (regex_replace(t, t, "\\{", "_x_<")
+			       || regex_replace(t, t, "\\}", "_x_>"))
+				LYXERR(Debug::FIND, "After {} replacement: '" << t << "'");
+		else
+			while (regex_replace(t, t, "\\\\\\{", "_x_<")
+			       || regex_replace(t, t, "\\\\\\}", "_x_>"))
+				LYXERR(Debug::FIND, "After {} replacement: '" << t << "'");
+	}
+
 	return t;
 }
 
