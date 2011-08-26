@@ -31,16 +31,16 @@ lilypond
 \spacing single
 \use_hyperref true
 \pdf_title "LilyPond-book and LyX"
-\pdf_author "Julien Rioux"
+\pdf_author "Your Name"
 \pdf_bookmarks true
-\pdf_bookmarksnumbered false
-\pdf_bookmarksopen false
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
 \pdf_pdfborder false
-\pdf_colorlinks false
+\pdf_colorlinks true
 \pdf_backref false
-\pdf_pdfusetitle true
+\pdf_pdfusetitle false
 \papersize default
 \use_geometry true
 \use_amsmath 1
@@ -63,8 +63,8 @@ lilypond
 \bottommargin 2cm
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation skip
-\defskip smallskip
+\paragraph_separation indent
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 1
@@ -83,22 +83,87 @@ LilyPond-book and LyX
 \end_layout
 
 \begin_layout Author
-Julien Rioux
+Fake Author
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+author of this example file: Julien Rioux
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Abstract
-This is an example file demonstrating the inclusion of musical snippets
- in a LyX document, using the LilyPond music notation and the LilyPond-book
- utility for processing.
+This document explains and demonstrates the inclusion of musical snippets
+ in a LyX document, using the LilyPond syntax for music notation and the
+ LilyPond-book utility for processing.
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+LilyPond is an open-source project that renders possible the creation of
+ beautiful computer-generated musical scores.
+ The project consists of a text-based music notation language, and a program
+ to process this notation into musical scores.
+\end_layout
+
+\begin_layout Standard
+While LilyPond itself supports the display of title, author information,
+ footnotes, endnotes, etc., its primary focus is on music typesetting.
+ For text typesetting, other programs are generally better suited.
+ LilyPond-book is an utility provided by the LilyPond project that helps
+ incorporate musical scores using the LilyPond notation into LaTeX documents,
+ among other formats.
+\end_layout
+
+\begin_layout Standard
+This document describes the use of the Lilypond music notation within LyX
+ documents that use a LaTeX-based layout, thus combining the beauty and
+ quality of the typesetting achieved by both LaTeX and LilyPond.
+ While a basic understanding of the LilyPond syntax for music notation is
+ in order, knowledge of LaTeX is not necessary when using LyX.
+\end_layout
+
+\begin_layout Standard
+Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Using-LilyPond-code"
+
+\end_inset
+
+ explains the requirements, usage instructions, and shortcomings of LilyPond
+ music notation within LyX.
+ Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:LilyPond-examples"
+
+\end_inset
+
+ demonstrates the beauty and quality of the typesetting with a few examples.
 \end_layout
 
 \begin_layout Section
 Using LilyPond code within LyX
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Using-LilyPond-code"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Support for LilyPond constructs (LilyPond code) within LyX is enabled by
- adding the LilyPond module to your document.
+Support for LilyPond music notation (LilyPond code) within LyX is enabled
+ by adding the LilyPond module to your document.
  This is done from the menu 
 \family sans
 Document\SpecialChar \menuseparator
@@ -106,8 +171,8 @@ Settings
 \family default
 , then selecting LilyPond in the list of modules.
  You can use any LaTeX-based LyX layout and use the regular preview and
- export mechanism; LyX will take care of processing the LaTeX code through
- LilyPond-book for you.
+ export mechanism; LyX will take care of processing the mixed LaTeX/LilyPond
+ code through LilyPond-book for you.
  LilyPond-book can also handle DocBook documents but LilyPond-DocBook support
  in LyX is missing at the moment.
 \end_layout
@@ -117,7 +182,7 @@ Requirements
 \end_layout
 
 \begin_layout Standard
-LilyPond-book version 2.13 or newer
+LilyPond-book version 2.13 or newer.
 \begin_inset Foot
 status collapsed
 
@@ -187,6 +252,7 @@ relative c'' {
 \end_layout
 
 \begin_layout Standard
+\noindent
 The previous LyX inset produces the following LaTeX-lookalike code:
 \end_layout
 
@@ -218,15 +284,15 @@ end{lilypond}
 
 \begin_layout Standard
 This code is not, in fact, processed by LaTeX, but is preprocessed by LilyPond-b
-ook, which creates the graphics files and include them in the LaTeX document
- by replacing the above with 
+ook, which creates the graphics files and includes them in the LaTeX document
+ by replacing the above with a 
 \family typewriter
 
 \backslash
 includegraphics{\SpecialChar \ldots{}
 }
 \family default
-.
+ command.
 \end_layout
 
 \begin_layout Standard
@@ -317,10 +383,17 @@ relative c'' {
 Unfortunately, you might find that the preview isn't exactly instantaneous.
  You need to move the cursor out of the Preview inset to start compilation,
  and processing time can take a few seconds.
+ Nevertheless, the direct feedback is often worthwhile during editing, and
+ renders the navigation through the document much easier.
 \end_layout
 
 \begin_layout Subsection
 Gotchas
+\end_layout
+
+\begin_layout Standard
+A few gotchas that have been experienced with the integration of LilyPond-book
+ and LyX are reported here.
 \end_layout
 
 \begin_layout Subsubsection
@@ -564,6 +637,13 @@ For some reason LilyPond-book version 2.13 barks on this when run in safe
 
 \begin_layout Section
 LilyPond examples
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:LilyPond-examples"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1104,6 +1184,7 @@ staccato
 \end_layout
 
 \begin_layout Standard
+\noindent
 [from 
 \begin_inset Flex URL
 status collapsed
@@ -1282,6 +1363,7 @@ lower }
 \end_layout
 
 \begin_layout Standard
+\noindent
 [from 
 \begin_inset Flex URL
 status collapsed
