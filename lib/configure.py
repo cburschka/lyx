@@ -60,7 +60,9 @@ def cmdOutput(cmd):
     '''utility function: run a command and get its output as a string
         cmd: command to run
     '''
-    output = subprocess.check_output(cmd, shell=True)
+    fout = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).stdout
+    output = fout.read()
+    fout.close()
     return output.strip()
 
 
@@ -640,9 +642,14 @@ def checkConverterEntries():
     checkProg('a Sweave -> R/S code converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxstangle.R $$i $$e $$r'], 
         rc_entry = [ r'\converter sweave      r      "%%"    ""' ])
     #
-    checkProg('an HTML -> LaTeX converter', ['html2latex $$i', 'gnuhtml2latex $$i', \
-        'htmltolatex -input $$i -output $$o', 'java -jar htmltolatex.jar -input $$i -output $$o'],
-        rc_entry = [ r'\converter html       latex      "%%"	""' ])
+    path, htmltolatex = checkProg('an HTML -> LaTeX converter', ['html2latex $$i',
+        'gnuhtml2latex $$i', 'htmltolatex -input $$i -output $$o', 'htmltolatex.jar'],
+        rc_entry = [ r'\converter html       latex      "%%"	""',
+                     r'\converter html       latex      "%%"	""',
+                     r'\converter html       latex      "%%"	""', '', ''] )
+    if htmltolatex == 'htmltolatex.jar':
+        addToRC(r'\converter html       latex      "java -jar %s -input $$i -output $$o"	""'
+            % os.path.join(path, htmltolatex))
     #
     checkProg('an MS Word -> LaTeX converter', ['wvCleanLatex $$i $$o'],
         rc_entry = [ r'\converter word       latex      "%%"	""' ])
