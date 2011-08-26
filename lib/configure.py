@@ -117,9 +117,9 @@ def checkTeXPaths():
         inpname = inpname.replace('~', '\\string~')
         os.write(fd, r'\relax')
         os.close(fd)
-        latex_out = cmdOutput(r'latex "\nonstopmode\input{%s}"' % inpname)
+        latex_out = cmdOutput(r'latex "\nonstopmode\input{%s}\makeatletter\@@end"' % inpname)
         if 'Error' in latex_out:
-            latex_out = cmdOutput(r'latex "\nonstopmode\input{\"%s\"}"' % inpname)
+            latex_out = cmdOutput(r'latex "\nonstopmode\input{\"%s\"}\makeatletter\@@end"' % inpname)
         if 'Error' in latex_out:
             logger.warning("configure: TeX engine needs posix-style paths in latex files")
             windows_style_tex_paths = 'false'
@@ -360,10 +360,7 @@ def checkLatex(dtl_tools):
     path, PLATEX = checkProg('pLaTeX, the Japanese LaTeX', ['platex $$i'])
     if PLATEX != '':
         # check if PLATEX is pLaTeX2e
-        writeToFile('chklatex.ltx', '''
-\\nonstopmode
-\\@@end
-''')
+        writeToFile('chklatex.ltx', r'\nonstopmode\makeatletter\@@end')
         # run platex on chklatex.ltx and check result
         if cmdOutput(PLATEX + ' chklatex.ltx').find('pLaTeX2e') != -1:
             # We have the Japanese pLaTeX2e
@@ -384,12 +381,13 @@ def checkLatex(dtl_tools):
     # no latex
     if LATEX != '':
         # Check if latex is usable
-        writeToFile('chklatex.ltx', '''
-\\nonstopmode\\makeatletter
-\\ifx\\undefined\\documentclass\\else
-  \\message{ThisIsLaTeX2e}
-\\fi
-\\@@end
+        writeToFile('chklatex.ltx', r'''
+\nonstopmode
+\ifx\undefined\documentclass\else
+  \message{ThisIsLaTeX2e}
+\fi
+\makeatletter
+\@@end
 ''')
         # run latex on chklatex.ltx and check result
         if cmdOutput(LATEX + ' chklatex.ltx').find('ThisIsLaTeX2e') != -1:
@@ -410,12 +408,13 @@ def checkLuatex():
     # luatex binary is there
         msg = "checking if LuaTeX is usable ..."
         # Check if luatex is usable
-        writeToFile('luatest.tex', '''
-\\nonstopmode\\documentclass{minimal}
-\\usepackage{fontspec}
-\\begin{document}
+        writeToFile('luatest.tex', r'''
+\nonstopmode
+\documentclass{minimal}
+\usepackage{fontspec}
+\begin{document}
 .
-\\end{document}
+\end{document}
 ''')
         # run lualatex on luatest.tex and check result
         luatest = cmdOutput(LUATEX + ' luatest.tex')
@@ -1273,9 +1272,9 @@ def checkTeXAllowSpaces():
         writeToFile('a b.tex', r'\message{working^^J}' )
         if LATEX != '':
             if os.name == 'nt' or sys.platform == 'cygwin':
-                latex_out = cmdOutput(LATEX + r""" "\nonstopmode\input{\"a b\"}" """)
+                latex_out = cmdOutput(LATEX + r""" "\nonstopmode\input{\"a b\"}\makeatletter\@@end" """)
             else:
-                latex_out = cmdOutput(LATEX + r""" '\nonstopmode\input{"a b"}' """)
+                latex_out = cmdOutput(LATEX + r""" '\nonstopmode\input{"a b"}\makeatletter\@@end' """)
         else:
             latex_out = ''
         if 'working' in latex_out:
