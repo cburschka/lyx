@@ -438,6 +438,7 @@ def convert_ltcaption(document):
         j = find_end_of_inset(document.body, i + 1)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of tabular.")
+            i += 1
             continue
 
         nrows = int(document.body[i+1].split('"')[3])
@@ -529,6 +530,7 @@ def convert_tablines(document):
         j = find_end_of_inset(document.body, i + 1)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of tabular.")
+            i += 1
             continue
 
         m = i + 1
@@ -668,6 +670,7 @@ def fix_wrong_tables(document):
         j = find_end_of_inset(document.body, i + 1)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of tabular.")
+            i += 1
             continue
 
         m = i + 1
@@ -970,6 +973,8 @@ def remove_inzip_options(document):
         if j == -1:
             # should not happen
             document.warning("Malformed LyX document: Could not find end of graphics inset.")
+            i += 1
+            continue
         # If there's a inzip param, just remove that
         k = find_token(document.body, "\tinzipName", i + 1, j)
         if k != -1:
@@ -1258,6 +1263,8 @@ def revert_inset_info(document):
         if j == -1:
             # should not happen
             document.warning("Malformed LyX document: Could not find end of Info inset.")
+            i += 1
+            continue
         type = 'unknown'
         arg = ''
         for k in range(i, j+1):
@@ -1815,19 +1822,24 @@ def revert_framed_notes(document):
         if j == -1:
             # should not happen
             document.warning("Malformed LyX document: Could not find end of Box inset.")
+            i += 1
+            continue
         k = find_token(document.body, "status", i + 1, j)
         if k == -1:
             document.warning("Malformed LyX document: Missing `status' tag in Box inset.")
-            return
+            i = j
+            continue
         status = document.body[k]
         l = find_default_layout(document, i + 1, j)
         if l == -1:
             document.warning("Malformed LyX document: Missing `\\begin_layout' in Box inset.")
-            return
+            i = j
+            continue
         m = find_token(document.body, "\\end_layout", i + 1, j)
         if m == -1:
             document.warning("Malformed LyX document: Missing `\\end_layout' in Box inset.")
-            return
+            i = j
+            continue
         ibox = find_token(document.body, "has_inner_box 1", i + 1, k)
         pbox = find_token(document.body, "use_parbox 1", i + 1, k)
         if ibox == -1 and pbox == -1:
@@ -1890,7 +1902,8 @@ def revert_nobreakdash(document):
             j = find_token(document.header, "\\use_amsmath", 0)
             if j == -1:
                 document.warning("Malformed LyX document: Missing '\\use_amsmath'.")
-                return
+                i += 1
+                continue
             document.header[j] = "\\use_amsmath 2"
         else:
             i = i + 1
@@ -2064,7 +2077,8 @@ def revert_rotfloat(document):
         l = find_default_layout(document, i + 1, j)
         if l == -1:
             document.warning("Malformed LyX document: Missing `\\begin_layout' in Float inset.")
-            return
+            i = j
+            continue
         subst = ['\\begin_layout Standard',
                   '\\begin_inset ERT',
                   'status collapsed', '',
@@ -2126,7 +2140,8 @@ def revert_widesideways(document):
         l = find_default_layout(document, i + 1, j)
         if l == -1:
             document.warning("Malformed LyX document: Missing `\\begin_layout' in Float inset.")
-            return
+            i = j
+            continue
         subst = ['\\begin_layout Standard', '\\begin_inset ERT',
                   'status collapsed', '',
                   '\\begin_layout Standard', '', '', '\\backslash',
@@ -2285,7 +2300,7 @@ def revert_subfig(document):
                 if opt != -1:
                     optend = find_end_of_inset(document.body, opt)
                     if optend == -1:
-                        document.warning("Malformed lyx document: Missing '\\end_inset' (OptArg).")
+                        document.warning("Malformed LyX document: Missing '\\end_inset' (OptArg).")
                         return
                     optc = find_default_layout(document, opt, optend)
                     if optc == -1:
@@ -2395,6 +2410,7 @@ def revert_spaceinset(document):
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of space inset.")
+            i += 1
             continue
         document.body[i] = document.body[i].replace('\\begin_inset Space', '\\InsetSpace')
         del document.body[j]
@@ -2497,6 +2513,7 @@ def revert_protected_hfill(document):
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of space inset.")
+            i += 1
             continue
         del document.body[j]
         subst = document.body[i].replace('\\begin_inset Space \\hspace*{\\fill}', \
@@ -2518,6 +2535,7 @@ def revert_leftarrowfill(document):
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of space inset.")
+            i += 1
             continue
         del document.body[j]
         subst = document.body[i].replace('\\begin_inset Space \\leftarrowfill{}', \
@@ -2539,6 +2557,7 @@ def revert_rightarrowfill(document):
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of space inset.")
+            i += 1
             continue
         del document.body[j]
         subst = document.body[i].replace('\\begin_inset Space \\rightarrowfill{}', \
@@ -2560,6 +2579,7 @@ def revert_upbracefill(document):
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of space inset.")
+            i += 1
             continue
         del document.body[j]
         subst = document.body[i].replace('\\begin_inset Space \\upbracefill{}', \
@@ -2581,6 +2601,7 @@ def revert_downbracefill(document):
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of space inset.")
+            i += 1
             continue
         del document.body[j]
         subst = document.body[i].replace('\\begin_inset Space \\downbracefill{}', \
@@ -2648,6 +2669,7 @@ def revert_pagebreaks(document):
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of Newpage inset.")
+            i += 1
             continue
         del document.body[j]
         document.body[i] = document.body[i].replace('\\begin_inset Newpage newpage', '\\newpage')
@@ -2684,6 +2706,7 @@ def revert_linebreaks(document):
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of Newline inset.")
+            i += 1
             continue
         del document.body[j]
         document.body[i] = document.body[i].replace('\\begin_inset Newline newline', '\\newline')

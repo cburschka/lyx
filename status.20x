@@ -184,6 +184,8 @@ What's new
 - Avoid kerning problems by protecting back quotation marks obtained through
   the quotes inset only when a TeX ligature would be triggered (bug 253).
 
+- Fixed infinite loops in lyx2lyx when processing files with bad tabulars.
+
 
 * USER INTERFACE
 
