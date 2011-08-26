@@ -415,7 +415,14 @@ def checkLuatex():
 \end{document}
 ''')
         # run lualatex on luatest.tex and check result
-        luatest = cmdOutput(LUATEX + ' luatest.tex')
+        try:
+            luatest = cmdOutput(LUATEX + ' luatest.tex')
+        except:
+            # certainly not working
+            logger.info('LuaTeX call failed.')
+            # remove temporary files
+            removeFiles(['luatest.tex', 'luatest.log', 'luatest.aux', 'luatest.pdf'])
+            return
         if luatest.find('XeTeX is required to compile this document') != -1:
             # fontspec/luatex too old! We do not support this version.
             logger.info(msg + ' no (probably not recent enough)')
