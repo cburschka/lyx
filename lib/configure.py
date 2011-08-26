@@ -8,7 +8,7 @@
 # \author Bo Peng
 # Full author contact details are available in file CREDITS.
 
-import sys, os, re, shutil, glob, logging
+import glob, logging, os, re, shutil, subprocess, sys
 
 # set up logging
 logging.basicConfig(level = logging.DEBUG,
@@ -60,9 +60,7 @@ def cmdOutput(cmd):
     '''utility function: run a command and get its output as a string
         cmd: command to run
     '''
-    fout = os.popen(cmd)
-    output = fout.read()
-    fout.close()
+    output = subprocess.check_output(cmd, shell=True)
     return output.strip()
 
 
@@ -1104,7 +1102,7 @@ def checkLatexConfig(check_config, bool_docbook):
     cl.close()
     #
     # we have chklayouts.tex, then process it
-    fout = os.popen(LATEX + ' wrap_chkconfig.ltx')
+    fout = subprocess.Popen([LATEX, "wrap_chkconfig.ltx"], stdout=subprocess.PIPE).stdout
     while True:
         line = fout.readline()
         if not line:
