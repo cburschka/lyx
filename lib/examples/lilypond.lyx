@@ -31,15 +31,16 @@ lilypond
 \spacing single
 \use_hyperref true
 \pdf_title "LilyPond-book and LyX"
+\pdf_author "Your Name"
 \pdf_bookmarks true
-\pdf_bookmarksnumbered false
-\pdf_bookmarksopen false
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
-\pdf_pdfusetitle true
+\pdf_pdfusetitle false
 \papersize default
 \use_geometry true
 \use_amsmath 1
@@ -79,6 +80,20 @@ lilypond
 
 \begin_layout Title
 LilyPond-book and LyX
+\end_layout
+
+\begin_layout Author
+Fake Author
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+author of this example file: Julien Rioux
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Abstract
