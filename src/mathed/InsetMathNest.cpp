@@ -1390,6 +1390,14 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	}
 
+	case LFUN_DIALOG_SHOW_NEW_INSET: {
+		docstring const & name = cmd.argument();
+		if (name == "space")
+			flag.setEnabled(false);
+		break;
+	}
+
+
 	case LFUN_MATH_DELIM:
 	case LFUN_MATH_BIGDELIM:
 		// Don't do this with multi-cell selections

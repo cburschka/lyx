@@ -395,7 +395,7 @@ Menuset
 		Item "Interword Space|w" "space-insert normal"
 		Item "Visible Space|i" "space-insert visible"
 		Item "Thin Space|T" "space-insert thin"
-		Item "Horizontal Space...|o" "dialog-show-new-inset space"
+		Item "Horizontal Space...|o" "command-alternatives dialog-show-new-inset space;dialog-show-new-inset mathspace"
 		Item "Horizontal Line...|L" "dialog-show-new-inset line"
 		Item "Vertical Space...|V" "dialog-show-new-inset vspace"
 		Submenu "Phantom|m" "insert_phantom"

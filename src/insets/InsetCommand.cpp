@@ -332,6 +332,11 @@ bool decodeInsetParam(string const & name, string & data,
 		data = InsetGraphics::params2string(p, buffer);
 		break;
 	}
+	case MATH_SPACE_CODE: {
+	    InsetSpaceParams p(true);
+		data = InsetSpace::params2string(p);
+		break;
+	}
 	case NOTE_CODE: {
 		InsetNoteParams p;
 		data = InsetNote::params2string(p);
