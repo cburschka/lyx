@@ -22850,8 +22850,8 @@ Figura con leyenda muy larga
 
 \end_inset
 
-Este es un ejemplo de figura con una leyenda que es mayor de una línea para
- mostrar el formato diferente.
+Este es un ejemplo de figura con una leyenda con más de una línea para mostrar
+ el formato diferente.
  Aquí se usa una leyenda personalizada.
 \end_layout
 
@@ -22887,7 +22887,7 @@ on}
 placement !p
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -22901,7 +22901,7 @@ name "tab:Esto-es-un-cuadro"
 
 
 \begin_inset Argument
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Cuadro con leyenda muy larga
@@ -22909,7 +22909,7 @@ Cuadro con leyenda muy larga
 
 \end_inset
 
-Este es un ejemplo de leyenda de cuadro mayor que una línea para mostrar
+Este es un ejemplo de leyenda de cuadro con más de una línea para mostrar
  el formato diferente.
  Aquí se usa el formato de leyenda estándar para los cuadros.
 \end_layout
@@ -23686,7 +23686,7 @@ reference "tab:encab-al-lado"
  Puedes aumentar su anchura especificando un factor muliplicador de la anchura
  del cuadro/figura.
  La anchura de la leyenda se recalculará automáticamente en el caso de que
- sobrepasara los márgenes de la página o de la columna.
+ sobrepase los márgenes de la página o de la columna.
  El 
 \emph on
 factor
@@ -23727,7 +23727,7 @@ FigBesBeg
 FigBesBeg
 \series default
  se usa sin argumento.
- Para elcuadro
+ Para el cuadro
 \begin_inset space ~
 \end_inset
 
@@ -23738,7 +23738,7 @@ reference "tab:leyenda-más-ancha"
 
 \end_inset
 
-se ha usado el factor 5.
+ se ha usado el factor 5.
 \end_layout
 
 \begin_layout Standard
@@ -23752,7 +23752,7 @@ Nota:
 \series default
  Para flotantes con la leyenda adosada, no se puede usar la opción 
 \family sans
-Aquí 
+Aquí
 \begin_inset space ~
 \end_inset
 
@@ -23878,6 +23878,22 @@ Leyenda al lado de una figura.
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+FigBesEnd
 \end_layout
 
 \end_inset
@@ -24142,6 +24158,22 @@ status collapsed
 
 
 \backslash
+TabBesEnd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
 sidecaptionvpos{figure}{c}
 \end_layout
 
@@ -24188,7 +24220,7 @@ Leyenda centrada verticalmente junto a una figura.
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -24204,7 +24236,7 @@ FigBesEnd
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -24464,7 +24496,7 @@ j
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -31918,7 +31950,7 @@ Los flotantes envueltos no están permitidos en cabeceras de sección o cuadros.
 \end_layout
 
 \begin_layout Itemize
-Su numeración y refrencias funciona como se explica en el cap.
+Su numeración y referencias funciona como se explica en el cap.
 \begin_inset space \thinspace{}
 \end_inset
 
