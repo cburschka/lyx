@@ -48,6 +48,7 @@
 \paperorientation portrait
 \suppress_date false
 \use_refstyle 0
+\notefontcolor #0000ff
 \index Index
 \shortcut idx
 \color #008000
@@ -379,6 +380,13 @@ reference "fig:margin-figure"
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace 5theight%
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float marginfigure
 wide false
 sideways false
@@ -422,6 +430,32 @@ name "fig:margin-figure"
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ If you are using margin figures or tables you must use the default float
+ placement option in the document settings under 
+\family sans
+Float
+\begin_inset space ~
+\end_inset
+
+Placement
+\family default
+.
 \end_layout
 
 \end_inset

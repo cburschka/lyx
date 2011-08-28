@@ -48,6 +48,7 @@
 \paperorientation portrait
 \suppress_date false
 \use_refstyle 0
+\notefontcolor #0000ff
 \index Index
 \shortcut idx
 \color #008000
@@ -203,13 +204,6 @@ First part
 
 \begin_layout Section
 Page Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:page-layout"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -343,13 +337,6 @@ NewThought
 
 \begin_layout Subsection
 Sidenotes
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:sidenotes"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -480,13 +467,6 @@ nobibliography
 
 \begin_layout Section
 Figures and Tables
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:figures-and-tables"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -597,6 +577,32 @@ name "fig:marginfig"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ If you are using margin figures or tables you must use the default float
+ placement option in the document settings under 
+\family sans
+Float
+\begin_inset space ~
+\end_inset
+
+Placement
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Figure
 \begin_inset space ~
 \end_inset
@@ -678,6 +684,13 @@ name "fig:fullfig"
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 6theight%
 \end_inset
 
 
@@ -997,24 +1010,10 @@ Second part
 
 \begin_layout Section
 Typography
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:typography"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
 Typefaces
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:typefaces"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1036,13 +1035,6 @@ Computer Modern
 
 \begin_layout Subsection
 Letterspacing
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:letterspacing"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1138,24 +1130,10 @@ The Initial Letters Of The Words In This Sentence Are Capitalized.
 
 \begin_layout Section
 Customization
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:customization"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
 Document class options
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:options"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1380,24 +1358,10 @@ titlesec
 
 \begin_layout Section
 Support
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:support"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
 Package Dependencies
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:dependencies"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1471,13 +1435,6 @@ Tufte-LaTeX
 \end_inset
 
 Website
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:website"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
