@@ -261,6 +261,7 @@ dist_examples_DATA = \
 	examples/noweb2lyx.lyx \
 	examples/powerdot-example.lyx \
 	examples/recipebook.lyx \
+	examples/R-S-statements.lyx \
 	examples/script_form.lyx \
 	examples/seminar.lyx \
 	examples/serial_letter1.lyx \
@@ -1412,6 +1413,7 @@ dist_layouts_DATA =\
 	layouts/revtex.layout \
 	layouts/revtex4.layout \
 	layouts/revtex4-1.layout \
+	layouts/rsphrase.module \
 	layouts/scrartcl.layout \
 	layouts/scrarticle-beamer.layout \
 	layouts/scrbook.layout \

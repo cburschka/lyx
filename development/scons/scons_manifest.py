@@ -2568,6 +2568,7 @@ lib_examples_files = Split('''
     noweb2lyx.lyx
     powerdot-example.lyx
     recipebook.lyx
+    R-S-statements.lyx
     script_form.lyx
     seminar.lyx
     serial_letter1.lyx
@@ -2979,6 +2980,7 @@ lib_layouts_module_files = Split('''
     minimalistic.module
     multicol.module
     noweb.module
+    rsphrase.module
     sweave.module
     tabs-within-sections.module
     theorems-ams-bytype.module

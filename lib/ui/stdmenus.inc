@@ -587,6 +587,7 @@ Menuset
 		Item "Feynman-diagram Manual|F" "help-open FeynmanDiagrams"
 		Item "LilyPond Manual|M" "help-open lilypond"
 		Item "Linguistics Manual|L" "help-open linguistics"
+		Item "Risk and safety statements Manual|R" "help-open R-S-statements"
 		Item "XY-pic Manual|X" "help-open xypic"
 	End
 

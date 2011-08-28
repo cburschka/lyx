@@ -1,0 +1,535 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrartcl
+\begin_preamble
+% if pdflatex is used
+\usepackage{ifpdf}
+\ifpdf
+
+% set fonts for nicer pdf view
+\IfFileExists{lmodern.sty}
+ {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+\end_preamble
+\use_default_options true
+\begin_modules
+rsphrase
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_title "Chemical Risk and Safety statements in LyX"
+\pdf_author "Uwe Stöhr"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\use_refstyle 1
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Chemical Risk and Safety statements in LyX
+\end_layout
+
+\begin_layout Author
+Uwe Stöhr
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+To be able to insert Chemical Risk and Safety statements in LyX, you need
+ to load the module 
+\family sans
+Risk
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+Safety
+\begin_inset space ~
+\end_inset
+
+Statements
+\family default
+ in the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Modules
+\family default
+.
+ The module provides 2
+\begin_inset space ~
+\end_inset
+
+insets and 1
+\begin_inset space ~
+\end_inset
+
+environment.
+ The insets are accessible via the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Custom
+\begin_inset space ~
+\end_inset
+
+Insets
+\family default
+.
+\end_layout
+
+\begin_layout Section
+Risk statements
+\end_layout
+
+\begin_layout Standard
+The inset 
+\family sans
+R-S
+\begin_inset space ~
+\end_inset
+
+number
+\family default
+ is used to typeset the number, the inset 
+\family sans
+R-S
+\begin_inset space ~
+\end_inset
+
+phrase
+\family default
+ will output the corresponding phrase.
+\end_layout
+
+\begin_layout Standard
+The risk statement 
+\begin_inset Flex R-S number
+status open
+
+\begin_layout Plain Layout
+R55
+\end_layout
+
+\end_inset
+
+ has the phrase: 
+\begin_inset Flex R-S phrase
+status open
+
+\begin_layout Plain Layout
+R55
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is 
+\begin_inset Flex R-S number
+status collapsed
+
+\begin_layout Plain Layout
+R23
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Flex R-S phrase
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As you can see, the phrase inset can be left empty.
+ In this case the previously used number is also used for the phrase.
+\end_layout
+
+\begin_layout Standard
+It is of course also possible to use combined statements like this:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex R-S number
+status collapsed
+
+\begin_layout Plain Layout
+R36/38
+\end_layout
+
+\end_inset
+
+ states: 
+\begin_inset Flex R-S phrase
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Safety statements
+\end_layout
+
+\begin_layout Standard
+They are inserted the same way as risk statements:
+\end_layout
+
+\begin_layout Standard
+The risk statement 
+\begin_inset Flex R-S number
+status open
+
+\begin_layout Plain Layout
+S35
+\end_layout
+
+\end_inset
+
+ has the phrase: 
+\begin_inset Flex R-S phrase
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Some safety statements require some text.
+ For these statements, you need to use the phrase environments from LyX's
+ environment selection box instead of the inset.
+ The required text is specified as optional argument (inserted via the menu
+ 
+\family sans
+Insert\SpecialChar \menuseparator
+Short
+\begin_inset space ~
+\end_inset
+
+Title
+\family default
+):
+\end_layout
+
+\begin_layout Standard
+If something must not be heated above 138
+\begin_inset space \thinspace{}
+\end_inset
+
+°C use 
+\begin_inset Flex R-S number
+status open
+
+\begin_layout Plain Layout
+S47
+\end_layout
+
+\end_inset
+
+ with the optional argument 
+\begin_inset Quotes eld
+\end_inset
+
+138
+\begin_inset Quotes erd
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Safety phrase
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+138
+\end_layout
+
+\end_inset
+
+S47
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Special issues of a certain statements are fully supported.
+ For example for S
+\begin_inset space \thinspace{}
+\end_inset
+
+43 a further sentence must be added if water increases the risk.
+ Using the variant S
+\begin_inset space \thinspace{}
+\end_inset
+
+43.1 adds the sentence, S
+\begin_inset space \thinspace{}
+\end_inset
+
+43.0 disables the sentence.
+\end_layout
+
+\begin_layout Standard
+The statement 
+\begin_inset Flex R-S number
+status open
+
+\begin_layout Plain Layout
+S43
+\end_layout
+
+\end_inset
+
+ for water is:
+\end_layout
+
+\begin_layout Safety phrase
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+water
+\end_layout
+
+\end_inset
+
+S43.0
+\end_layout
+
+\begin_layout Standard
+The statement 
+\begin_inset Flex R-S number
+status open
+
+\begin_layout Plain Layout
+S43
+\end_layout
+
+\end_inset
+
+ for sand is:
+\end_layout
+
+\begin_layout Safety phrase
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+sand
+\end_layout
+
+\end_inset
+
+S43.1
+\end_layout
+
+\begin_layout Section
+Language issues
+\end_layout
+
+\begin_layout Standard
+The statements are output depending on the language.
+ Currently only the languages
+\begin_inset Newline newline
+\end_inset
+
+Danish, English, French, German, Italian and Spanish
+\begin_inset Newline newline
+\end_inset
+
+are supported.
+\end_layout
+
+\begin_layout Standard
+At 
+\begin_inset CommandInset href
+LatexCommand href
+name "this webpage"
+target "http://schoolscout24.de/cgi-bin/rsp/rspinput.cgi"
+
+\end_inset
+
+ you find the official statements for all 23 languages of the EU.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mixing languages is possible without problems:
+\end_layout
+
+\begin_layout Standard
+
+\lang ngerman
+Dies Sicherheitssatz 
+\begin_inset Flex R-S number
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang ngerman
+S15
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Flex R-S phrase
+status open
+
+\begin_layout Plain Layout
+
+\lang ngerman
+S15
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is safety statement 
+\begin_inset Flex R-S number
+status collapsed
+
+\begin_layout Plain Layout
+S15
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Flex R-S phrase
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+Note: If the phrase inset is not in the document language, it must not be
+ empty.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,64 @@
+#\DeclareLyXModule[rsphrase.sty]{Risk and Safety Statements}
+#DescriptionBegin
+#Provides two insets and one environment to typeset numbers and phrases of 
+#chemical risk and safety statements. For a description see the file 
+#R-S-statements.lyx in LyX's examples folder.
+#DescriptionEnd
+#Author: Uwe Stöhr <uwestoehr@web.de>
+
+Format 35
+
+AddToPreamble
+	\usepackage{rsphrase}	% load chemical risk and safety statements
+EndPreamble
+
+InsetLayout "Flex:R-S number"
+	LyxType			custom
+	LatexType		command
+	LatexName		rsnumber
+	LabelString		"R-S number"
+	Font
+	  Color			foreground
+	  Size			Small
+	  Family		Roman
+	  Shape			Up
+	  Series		Medium
+	  Misc			No_Emph
+	  Misc			No_Noun
+	  Misc			No_Bar
+	EndFont
+	LabelFont
+	  Color			green
+	  Size			Small
+	EndFont
+End
+
+InsetLayout "Flex:R-S phrase"
+	CopyStyle 		"Flex:R-S number"
+	LatexName		rsphrase
+	LabelString		"R-S phrase"
+End
+
+Style "Safety phrase"
+	LatexType		command
+	LatexName		rsphrase
+	Category		MainText
+	NextNoIndent		1
+	OptionalArgs		1
+	KeepEmpty		1
+	Margin			Dynamic
+	LabelSep		xx
+	ParSkip			0.0
+	ItemSep			0.2
+	TopSep			0.7
+	BottomSep		0.7
+	ParSep			0.3
+	Align			Block
+	AlignPossible		Block
+	LabelType		Static
+	LabelString		"S phrase:"
+	LabelFont
+		Color		Green
+	EndFont
+End
+
