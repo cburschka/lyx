@@ -7,6 +7,10 @@
 
 Format 35
 
+AddToPreamble
+	\@ifundefined{lettrine}{\usepackage{lettrine}}{}
+EndPreamble
+
 InsetLayout Flex:Initial
 	LyxType			charstyle
 	LabelString		"Initial"
@@ -16,9 +20,6 @@ InsetLayout Flex:Initial
 	  Size			Large
 	EndFont
 	Requires		lettrine
-	Preamble
-	  \usepackage{lettrine}
-	EndPreamble
 End
 
 Style Initial
@@ -41,8 +42,5 @@ Style Initial
 	LabelFont
 	  Series		Bold
 	EndFont
-	Preamble
-	  \usepackage{lettrine}
-	EndPreamble
 End
 
