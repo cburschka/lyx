@@ -60,9 +60,11 @@ def cmdOutput(cmd):
     '''utility function: run a command and get its output as a string
         cmd: command to run
     '''
-    fout = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).stdout
-    output = fout.read()
-    fout.close()
+    pipe = subprocess.Popen(cmd, shell=True, stdin=subprocess.PIPE, \
+                            stdout=subprocess.PIPE, universal_newlines=True)
+    pipe.stdin.close()
+    output = pipe.stdout.read()
+    pipe.stdout.close()
     return output.strip()
 
 
@@ -1104,15 +1106,18 @@ def checkLatexConfig(check_config, bool_docbook):
     cl.close()
     #
     # we have chklayouts.tex, then process it
-    fout = subprocess.Popen([LATEX, "wrap_chkconfig.ltx"], stdout=subprocess.PIPE).stdout
+    pipe = subprocess.Popen([LATEX, "wrap_chkconfig.ltx"], \
+                            stdin=subprocess.PIPE, stdout=subprocess.PIPE, \
+                            universal_newlines=True)
+    pipe.stdin.close()
     while True:
-        line = fout.readline()
+        line = pipe.stdout.readline()
         if not line:
             break;
         if re.match('^\+', line):
             logger.info(line.strip())
     # if the command succeeds, None will be returned
-    ret = fout.close()
+    ret = pipe.stdout.close()
     #
     # currently, values in chhkconfig are only used to set
     # \font_encoding
