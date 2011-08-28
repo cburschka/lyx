@@ -60,7 +60,12 @@ def cmdOutput(cmd):
     '''utility function: run a command and get its output as a string
         cmd: command to run
     '''
-    pipe = subprocess.Popen(cmd, shell=True, stdin=subprocess.PIPE, \
+    if os.name == 'nt':
+        b = False
+        cmd = 'cmd /d /c ' + cmd
+    else:
+        b = True
+    pipe = subprocess.Popen(cmd, shell=b, close_fds=b, stdin=subprocess.PIPE, \
                             stdout=subprocess.PIPE, universal_newlines=True)
     pipe.stdin.close()
     output = pipe.stdout.read()
@@ -1106,9 +1111,14 @@ def checkLatexConfig(check_config, bool_docbook):
     cl.close()
     #
     # we have chklayouts.tex, then process it
-    pipe = subprocess.Popen([LATEX, "wrap_chkconfig.ltx"], \
-                            stdin=subprocess.PIPE, stdout=subprocess.PIPE, \
-                            universal_newlines=True)
+    cmd = LATEX + ' wrap_chkconfig.ltx'
+    if os.name == 'nt':
+        b = False
+        cmd = 'cmd /d /c ' + cmd
+    else:
+        b = True
+    pipe = subprocess.Popen(cmd, shell=b, close_fds=b, stdin=subprocess.PIPE, \
+                            stdout=subprocess.PIPE, universal_newlines=True)
     pipe.stdin.close()
     while True:
         line = pipe.stdout.readline()
