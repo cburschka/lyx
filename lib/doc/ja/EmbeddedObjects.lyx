@@ -157,6 +157,13 @@
   \setboolean{picinpar}{true}}
  {\setboolean{picinpar}{false}}
 
+% check for lettrine
+\newboolean{lettrine}
+\IfFileExists{lettrine.sty}
+ {\usepackage{lettrine}
+  \setboolean{lettrine}{true}}
+ {\setboolean{lettrine}{false}}
+
 \usepackage{t1enc}
 \renewcommand{\seename}{→}
 
@@ -31493,6 +31500,36 @@ small caps
 Here are some examples:
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+iflettrine
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+以下の部分は、LaTeXパッケージ
+\series bold
+lettrine
+\series default
+が導入されているときのみ表示されます。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Enumerate
 
 \lang english
@@ -31853,6 +31890,60 @@ status collapsed
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+以下の部分は、LaTeXパッケージ
+\series bold
+lettrine
+\series default
+が導入されていないときのみ表示されます。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+本節の以下の部分を出力に表示するには、LaTeXパッケージ
+\series bold
+lettrine
+\series default
+を導入する必要があります。
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 外部文書構成要素
 \begin_inset Index idx

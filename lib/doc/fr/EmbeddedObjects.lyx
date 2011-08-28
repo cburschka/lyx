@@ -151,6 +151,13 @@
   \setboolean{picinpar}{true}}
  {\setboolean{picinpar}{false}}
 
+% check for lettrine
+\newboolean{lettrine}
+\IfFileExists{lettrine.sty}
+ {\usepackage{lettrine}
+  \setboolean{lettrine}{true}}
+ {\setboolean{lettrine}{false}}
+
 % use normal list environments also in French documents
 \frenchbsetup{StandardLayout}
 \end_preamble
@@ -34385,6 +34392,36 @@ small caps
 Here are some examples:
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+iflettrine
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+La section suivante ne sera affichée que si le paquetage LaTeX 
+\series bold
+lettrine
+\series default
+ a été installé.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Enumerate
 
 \lang english
@@ -34743,6 +34780,60 @@ status collapsed
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ce qui suit sera affiché si le paquetage LaTeX 
+\series bold
+lettrine
+\series default
+ n'est pas installé :
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vous devez installer le paquetage LaTeX 
+\series bold
+lettrine
+\series default
+ pour voir la suite de cette section dans la sortie imprimée.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 Trucs Externes
 \begin_inset Index idx

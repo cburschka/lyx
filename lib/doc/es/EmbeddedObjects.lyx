@@ -154,6 +154,13 @@
   \setboolean{picinpar}{true}}
  {\setboolean{picinpar}{false}}
 
+% check for lettrine
+\newboolean{lettrine}
+\IfFileExists{lettrine.sty}
+ {\usepackage{lettrine}
+  \setboolean{lettrine}{true}}
+ {\setboolean{lettrine}{false}}
+
 % to translate the listing label
 % para traducir la etiqueta listing
 \renewcommand{\lstlistingname}{Listado}
@@ -657,14 +664,14 @@ zgrep %%Bounding x.eps.gz > x.eps.bb
 \begin_inset Newline newline
 \end_inset
 
-El segundo comando crea un archivo de cuadro delimitador «x.eps.bb» que necesita
- LaTeX para gráficos comprimidos.
+El segundo comando crea un archivo de cuadro delimitador «x.eps.bb» que LaTeX
+ necesita para gráficos comprimidos.
 \begin_inset Newline newline
 \end_inset
 
 En la sección 
 \family sans
-Group
+Grupo
 \begin_inset space ~
 \end_inset
 
@@ -674,7 +681,7 @@ de
 
 gráficos
 \family default
- puede definir un conjunto de ajustes de imagen.
+ puedes definir un conjunto de ajustes de imagen.
 \begin_inset Index idx
 status collapsed
 
@@ -12612,23 +12619,17 @@ raggedright}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To start a new line in a multirow you can use a forced line break (shortcut
- 
-\begin_inset Info
-type  "shortcut"
-arg   "newline-insert newline"
-\end_inset
-
-) but this will not respect the cell lines as demonstrated in this table:
+Para iniciar una nueva línea en una multifila se puede usar un salto de
+ página forzado (
+\family sans
+Ctrl+Retorno
+\family default
+) pero esto no respetará la alineación de celda, como se ve en este cuadro:
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
 <features tabularvalignment="middle">
@@ -12639,8 +12640,6 @@ arg   "newline-insert newline"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 aaa
 \begin_inset Newline newline
 \end_inset
@@ -12649,7 +12648,7 @@ aaa
 \begin_inset Newline newline
 \end_inset
 
-wrong cell
+celda errónea
 \end_layout
 
 \end_inset
@@ -12658,8 +12657,6 @@ wrong cell
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ccc
 \end_layout
 
@@ -12680,8 +12677,6 @@ ccc
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ddd
 \end_layout
 
@@ -12693,8 +12688,6 @@ ddd
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 bbb
 \end_layout
 
@@ -12704,8 +12697,6 @@ bbb
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 eee
 \end_layout
 
@@ -12720,9 +12711,7 @@ eee
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Therefore be careful with forced line breaks.
+Por tanto, hay que usar con cuidado los saltos forzados.
 \end_layout
 
 \begin_layout Section
@@ -19674,11 +19663,7 @@ Algoritmo
 Envoltorio
 \family default
 .
- 
-\lang english
-The latter are explained in sec.
-\lang spanish
-
+ Lo último se explica en la sec.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -23043,7 +23028,7 @@ Figura: La leyenda al pie de la figura
 \end_layout
 
 \begin_layout Description
-cuadro: La leyenda sobre el cuadro
+Cuadro: La leyenda sobre el cuadro
 \end_layout
 
 \begin_layout Standard
@@ -23565,11 +23550,8 @@ FigBesEnd
 \end_layout
 
 \begin_layout Standard
-en código TeX 
-\lang english
-at the point where you want to
-\lang spanish
- volver a la definición original de flotantes.
+en código TeX en el punto en que quieras volver a la definición original
+ de flotantes.
 \end_layout
 
 \begin_layout Standard
@@ -23688,12 +23670,8 @@ reference "fig:encab-al-lado-de-fig"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The default caption width is the width of the image/table.
- For thin image/tables, like in 
-\lang spanish
-cuadro
+La anchura predeterminada de la leyenda es la del cuadro/figura.
+ Para cuadros o figuras estrechas, como en el  cuadro
 \begin_inset space ~
 \end_inset
 
@@ -23704,18 +23682,16 @@ reference "tab:encab-al-lado"
 
 \end_inset
 
-, 
-\lang english
-this leads to captions that are too thin.
- You can increase the width by specifying a factor that will be multiplied
- with the image/table width to get the caption width.
- The caption width will automatically be recalculated in case it would protrude
- over the page or column margin due to the specified width.
- The 
+, esto genera leyendas demasiado estrechas.
+ Puedes aumentar su anchura especificando un factor muliplicador de la anchura
+ del cuadro/figura.
+ La anchura de la leyenda se recalculará automáticamente en el caso de que
+ sobrepasara los márgenes de la página o de la columna.
+ El 
 \emph on
 factor
 \emph default
- can either be given as optional argument for 
+ puede darse como argumento opcional para 
 \series bold
 
 \backslash
@@ -23727,74 +23703,62 @@ FigBesBeg
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 FigBesBeg[factor]
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-or in the definition of 
+o en la definición de 
 \series bold
 
 \backslash
 FigBesBeg
 \series default
- by replacing the 
+ reemplazando 
 \series bold
 1.0
 \series default
- with another value.
- If you do the latter, your factor will be the default if 
+ con otro valor.
+ En este segundo caso, el factor será el predeterminado si 
 \series bold
 
 \backslash
 FigBesBeg
 \series default
- is used without an argument.
- For 
-\lang spanish
-cuadro
+ se usa sin argumento.
+ Para elcuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:cap-beside-tab-wider"
+reference "tab:leyenda-más-ancha"
 
 \end_inset
 
- 
-\lang english
-the factor 5 was used.
+se ha usado el factor 5.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-Nota
-\lang english
-:
+Nota:
 \series default
- For floats with captions set beside, you cannot use the float placement
- option 
+ Para flotantes con la leyenda adosada, no se puede usar la opción 
 \family sans
-Here
+Aquí 
 \begin_inset space ~
 \end_inset
 
-definitely
+definitivamente
 \family default
- because it is not supported by 
+ para la colocación porque no es soportado por 
 \series bold
 sidecap
 \series default
@@ -24224,7 +24188,7 @@ Leyenda centrada verticalmente junto a una figura.
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -24240,7 +24204,7 @@ FigBesEnd
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -24266,15 +24230,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:cap-beside-tab-wider"
+name "tab:leyenda-más-ancha"
 
 \end_inset
 
-
-\lang english
-This is a caption is wider than the one in 
-\lang spanish
-cuadro
+Una leyenda más ancha que la del cuadro
 \begin_inset space ~
 \end_inset
 
@@ -24504,7 +24464,7 @@ j
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -24533,7 +24493,7 @@ else
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Lo siguiente se mostrará en pantalla si no está instalado el paquete LaTeX
@@ -24887,13 +24847,11 @@ Supr
 \begin_inset VSpace bigskip
 \end_inset
 
-
-\lang english
-You can change the text color of the greyed out notes in the menu 
+El color de las notas resaltadas en gris puede cambiarse en el menú 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Colors
+Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Colores
 \family default
 .
 \end_layout
@@ -26322,11 +26280,7 @@ key "latexcompanion,latexguide,latexbook"
 \end_inset
 
 .
- 
-\lang english
-If you are using a
-\lang spanish
- 
+ Si estás usando una clase de documento 
 \series bold
 KOMA-Script
 \series default
@@ -26340,12 +26294,8 @@ LaTeX-paquetes ! KOMA-Script
 
 \end_inset
 
- 
-\lang english
-document class, you can adjust all footnote settings using class-specific
- commands, see
-\lang spanish
- 
+, puedes ajustar las características de las notas al pie mediante comandos
+ específicos de la clase, véase 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "KOMA-Script"
@@ -31709,16 +31659,12 @@ Si «fleqn» se añade a las opciones de clase del documento.
 \end_layout
 
 \begin_layout Chapter
-
-\lang english
-Objects Surrounded by Text
+Objetos envueltos en texto
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Surrounded by text
+Envueltos en texto
 \end_layout
 
 \end_inset
@@ -31739,21 +31685,17 @@ name "sec:Flotantes-envueltos"
 status collapsed
 
 \begin_layout Plain Layout
-Flotantes ! Envoltorio
+Flotantes ! Envueltos
 \end_layout
 
 \end_inset
 
 
-\lang english
-
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Surrounded by text ! Wrap Floats
+Envueltos en texto ! Flotantes
 \end_layout
 
 \end_inset
@@ -31976,11 +31918,7 @@ Los flotantes envueltos no están permitidos en cabeceras de sección o cuadros.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Their numbering and referencing works as described in chap.
-\lang spanish
-
+Su numeración y refrencias funciona como se explica en el cap.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -31995,16 +31933,12 @@ reference "chap:Flotantes"
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Surrounded Fixed Objects
+Objetos fijos envueltos
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Surrounded by text ! Fixed objects
+Envueltos en texto ! Objetos fijos
 \end_layout
 
 \end_inset
@@ -32013,11 +31947,7 @@ Surrounded by text ! Fixed objects
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The wrap floats described in sec.
-\lang spanish
-
+Los flotantes envueltos, descritos en la sec.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -32028,16 +31958,12 @@ reference "sec:Flotantes-envueltos"
 
 \end_inset
 
- 
-\lang english
-have these positions in the paragraph:
+ , tienen estas posiciones en el párrafo:
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features tabularvalignment="middle">
@@ -32048,8 +31974,6 @@ have these positions in the paragraph:
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
@@ -32067,9 +31991,7 @@ have these positions in the paragraph:
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32080,9 +32002,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32091,9 +32011,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32114,9 +32032,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32125,8 +32041,6 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
@@ -32146,9 +32060,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32157,9 +32069,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32173,10 +32083,8 @@ text
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To get an object exactly at the position where it is inserted, for example
- to get one of these positions:
+Para colocar un objeto exactamente en la posición en la que se inserta,
+ por ejemplo una de estas:
 \begin_inset VSpace defskip
 \end_inset
 
@@ -32186,8 +32094,6 @@ To get an object exactly at the position where it is inserted, for example
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features tabularvalignment="middle">
@@ -32198,9 +32104,7 @@ To get an object exactly at the position where it is inserted, for example
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32209,9 +32113,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32222,8 +32124,6 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
@@ -32241,9 +32141,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32264,9 +32162,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32275,9 +32171,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32288,9 +32182,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32299,8 +32191,6 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
@@ -32331,9 +32221,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32342,8 +32230,6 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
@@ -32361,9 +32247,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32374,9 +32258,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32385,9 +32267,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32396,9 +32276,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32420,9 +32298,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32431,9 +32307,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32442,9 +32316,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32455,9 +32327,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32466,8 +32336,6 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
@@ -32485,9 +32353,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32503,8 +32369,6 @@ text
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
 <features tabularvalignment="middle">
@@ -32515,9 +32379,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32526,9 +32388,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32539,8 +32399,6 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
@@ -32558,9 +32416,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32571,9 +32427,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32582,9 +32436,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32606,9 +32458,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32617,9 +32467,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32628,9 +32476,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32641,9 +32487,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32652,8 +32496,6 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
@@ -32671,9 +32513,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32684,9 +32524,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32695,9 +32533,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32706,9 +32542,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32729,9 +32563,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32740,9 +32572,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32753,9 +32583,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32764,8 +32592,6 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
@@ -32785,9 +32611,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32796,9 +32620,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texto
 \end_layout
 
 \end_inset
@@ -32813,11 +32635,7 @@ text
 
 \begin_layout Standard
 \noindent
-
-\lang english
-you can use the LaTeX-package
-\lang spanish
- 
+puedes usar el paquete LaTeX 
 \series bold
 picinpar
 \series default
@@ -32832,11 +32650,7 @@ LaTeX-paquetes ! picinpar
 \end_inset
 
 .
- 
-\lang english
-Here is an example
-\lang spanish
-:
+ Aquí hay un ejemplo:
 \end_layout
 
 \begin_layout Standard
@@ -32957,8 +32771,6 @@ end{window}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -32971,7 +32783,7 @@ footnotetext{
 
 \end_inset
 
-Footnote of the paragraph with the fixed object.
+Nota al pie del párrafo con el objeto fijo
 \begin_inset ERT
 status collapsed
 
@@ -32986,18 +32798,14 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Surrounded fixed objects are used to let text float around them, at which
- the object's position in the paragraph can be determined by the number
- of lines above it.
- In contrary to floats is it not possible to have a numbered caption.
+Los objetos fijos envueltos se usan para permitir texto flotante a su alrededor,
+ donde la posición del objeto en el párrafo se puede determinar por el número
+ de líneas sobre él.
+ A diferencia de los flotantes, no es posible tener leyendas numeradas.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-A fixed object is inserted by adding the command
+Un objeto fijo se inserta añadiendo el comando
 \end_layout
 
 \begin_layout Standard
@@ -33009,26 +32817,24 @@ begin{window}[2,c,{
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-as TeX Code at the beginning of the paragraph.
- The first parameter in the bracket, here '2', defines the number of lines
- above the object, the second, here 'c', the position of the object.
- The positions 'l', 'c' and 'r' (for left, center, right) are possible.
- Behind the command you insert the object.
- In this example an image with a width of 40
+en código TeX al principio del párrafo.
+ El primer parámetro en el corchete, aquí '2', define el número de líneas
+ sobre el objeto, el segundo, aquí 'c', la posición del objeto.
+ Las posiciones permitidas son 'l', 'c' y 'r' (izquierda, centro, derecha).
+ Tras el comando se inserta el objeto.
+ En este ejemplo se ha insertado una imagen con una anchura del 40
 \begin_inset space \thinspace{}
 \end_inset
 
-% of the text column width was inserted.
- The object can also be a table, a box or an equation.
- Behind the object the command
+% de la anchura de la columna de texto.
+ El objeto también puede ser un cuadro, un marco o una ecuación.
+ Detrás del objeto se inserta el comando
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-},description text]
+},texto de la descripción]
 \begin_inset Newline newline
 \end_inset
 
@@ -33036,10 +32842,7 @@ as TeX Code at the beginning of the paragraph.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-is inserted.
- Note that the 
+Ten en cuenta que 
 \begin_inset Quotes eld
 \end_inset
 
@@ -33051,15 +32854,15 @@ is inserted.
 \begin_inset Quotes erd
 \end_inset
 
- is in the second line.
- The description text is optional.
- The text surrounding the object must be in the same paragraph as the object,
- so it must begin directly after the 
+ está en la segunda línea.
+ El texto de la descripción es opcional.
+ El texto envolvente debe estar en el mismo párrafo que el objeto, por tanto
+ debe empezar inmediatamente después de 
 \series bold
 {}
 \series default
 .
- At the end of the paragraph insert the command:
+ Al final del párrafo inserta el comando:
 \end_layout
 
 \begin_layout Standard
@@ -33071,25 +32874,21 @@ end{window}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Within a paragraph with a fixed object, you cannot insert footnotes in the
- normal way.
- You have to use instead the command 
+Dentro de un párrafo con un objeto fijo no se pueden insertar notas al pie
+ de la manera habitual.
+ Hay que usar el comando 
 \series bold
 
 \backslash
 footnotemark
 \series default
- inside the paragraph and outside the command 
+ dentro del párrafo y fuera del comando 
 \series bold
 
 \backslash
 footnotetext
 \series default
- as described in sec.
-\lang spanish
-
+, como se describe en la sec.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -33159,16 +32958,12 @@ fi
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Initials
+Letras capitales
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Initials
+Letras capitales
 \end_layout
 
 \end_inset
@@ -33178,9 +32973,7 @@ Initials
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Surrounded by text ! Initials
+Envueltos en texto ! Letras capitales
 \end_layout
 
 \end_inset
@@ -33189,13 +32982,9 @@ Surrounded by text ! Initials
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To use initials, you must have the LaTeX package
-\lang spanish
- 
+Para usar letras capitales debe estar instalado el paquete LaTeX
 \series bold
-lettrine
+ lettrine
 \series default
 
 \begin_inset Index idx
@@ -33207,42 +32996,38 @@ LaTeX-paquetes ! lettrine
 
 \end_inset
 
- 
-\lang english
-installed and use the module 
+ y habilitar el uso del módulo 
 \family sans
-Initials
+Capitales
 \family default
- in your document (menu 
+ en el documento (menú 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Modules
+Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Módulos
 \family default
 ).
- To insert an initial, use the style 
+ Para insertar una letra capital, usa el estilo 
 \family sans
-Initial
+Capital
 \family default
 .
- This style has a mandatory and an optional argument.
- The mandatory argument is inserted via the menu 
+ Este estilo tiene un argumento obligatorio y uno opcional.
+ El obligatorio se inserta mediante el menú 
 \family sans
-Insert\SpecialChar \menuseparator
-Short
+Insertar\SpecialChar \menuseparator
+Título
 \begin_inset space ~
 \end_inset
 
-Title
+breve
 \family default
- and contains the letter that is the initial.
- To use the also the optional argument, insert another argument in front
- of the mandatory argument.
- This one contains parameters to modify the initial.
- For more information about the possible parameters see the documentation
- of 
+ y contiene la letra capital.
+ Para usar también el argumento opcional, inserta otro argumento delante
+ del obligatorio.
+ Este contiene parámetros para modificar la letra capital.
+ Véase la documentación de 
 \series bold
-\lang spanish
 lettrine
 \series default
 , 
@@ -33252,38 +33037,65 @@ key "lettrine"
 
 \end_inset
 
+, para más información sobre los parámetros disponibles.
+ El estilo contiene el texto que rodeará a la capital.
+ De esta forma, el estilo habitual es que la palabra cuya primera letra
+ es la capital se imprima en 
+\noun on
+versalitas
+\noun default
 .
- 
-\lang english
-The style itself contains the text that is surrounding the initial.
- The usual style is hereby that the word whose first letter is the initial,
- is printed with 
-\shape smallcaps
-small caps
-\shape default
-.
- To tell LaTeX where this word is finished, add a closing brace '
+ Para indicar a LaTeX donde finaliza esta primera palabra, añade una llave
+ de cierre '
 \series bold
 }
 \series default
-' as TeX Code behind it.
- At the end of the style there must be an opening brace '
+' en código TeX detrás de ella.
+ Al final del estilo debe haber una llave de apertura '
 \series bold
 {
 \series default
-' as TeX Code.
+' en código TeX.
 \end_layout
 
 \begin_layout Standard
+Aquí hay algumos ejemplos:
+\end_layout
 
-\lang english
-Here are some examples:
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+iflettrine
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+La siguiente sección sólo se mostrará en pantalla si está instalado el paquete
+ LaTeX 
+\series bold
+lettrine
+\series default
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-No optional argument, the initial is the letter 'I' in the math font 
+Sin argumento opcional, la capital es la letra 'I' en tipografía matemática
+ 
 \begin_inset Formula $\mathfrak{Fraktur}$
 \end_inset
 
@@ -33345,10 +33157,8 @@ status collapsed
 
 \end_deeper
 \begin_layout Enumerate
-
-\lang english
-Only one line is surrounding the initial, which is formed by two letters
- in standard font and no text is printed in small caps:
+Solo una línea rodea a la capital, constituida por dos letras en tipo normal
+ y no se imprime nada en versalitas:
 \end_layout
 
 \begin_deeper
@@ -33409,17 +33219,11 @@ status collapsed
 
 \end_deeper
 \begin_layout Enumerate
-
-\lang english
-Magenta, hanging initial over 3
-\begin_inset space ~
-\end_inset
-
-lines in the math font 
+Magenta, capital colgada sobre tres líneas en tipografía matemática 
 \begin_inset Formula $\mathcal{CALLIGRAPHIC}$
 \end_inset
 
-, the text 
+, el texto 
 \begin_inset Quotes eld
 \end_inset
 
@@ -33427,17 +33231,16 @@ t was in the spring
 \begin_inset Quotes erd
 \end_inset
 
- is in 
-\shape smallcaps
-small caps
-\shape default
-; to color the initial, you must insert this command before the initial:
+ en 
+\noun on
+versalitas
+\noun default
+; para colorear la capital, debes insertar este comando delante de ella:
 \begin_inset Newline newline
 \end_inset
 
 
 \series bold
-\lang spanish
 
 \backslash
 renewcommand{
@@ -33446,16 +33249,15 @@ LettrineFontHook}{
 \backslash
 color{color}}
 \series default
-\lang english
 
 \begin_inset Newline newline
 \end_inset
 
-where the second 
+donde el segundo 
 \emph on
 color
 \emph default
- can be 
+ puede ser 
 \begin_inset Quotes eld
 \end_inset
 
@@ -33511,7 +33313,7 @@ black
 \begin_inset Quotes erd
 \end_inset
 
- or 
+ o 
 \begin_inset Quotes eld
 \end_inset
 
@@ -33519,9 +33321,7 @@ white
 \begin_inset Quotes erd
 \end_inset
 
-, and add this command to the document preamble
-\lang spanish
-:
+, y añade este comando al preámbulo del documento:
 \begin_inset Newline newline
 \end_inset
 
@@ -33561,15 +33361,11 @@ color{magenta}}
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
-
-\lang english
-makes the initial magenta
+pone la capital en magenta
 \end_layout
 
 \end_inset
@@ -33640,6 +33436,61 @@ status collapsed
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Lo siguiente se mostrará en pantalla si no está instalado el paquete LaTeX
+ 
+\series bold
+lettrine
+\series default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Debes instalar el paquete LaTeX 
+\series bold
+lettrine
+\series default
+ para ver la parte siguiente en la salida.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 Archivos externos
 \begin_inset Index idx

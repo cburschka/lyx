@@ -45661,6 +45661,16 @@ El cursor sigue a la barra de desplazamiento
 \begin_layout Standard
 La opción 
 \family sans
+Anchura del cursor (pixels)
+\family default
+ permite ajustar el grosor del mismo.
+ Un valor cero establece para el grosor del cursor un valor relativo al
+ zoom establecido para la tipografía en pantalla.
+\end_layout
+
+\begin_layout Standard
+La opción 
+\family sans
 Ordenar entornos alfabéticamente
 \family default
  ordena los entornos de párrafo en el menú desplegable.
@@ -45675,7 +45685,7 @@ Agrupar entornos por categorías
 \end_layout
 
 \begin_layout Standard
-Las opciones deedición de macros de ecuación determina el estilo de edición,
+Las opciones de edición de macros de ecuación determina el estilo de edición,
  véase la sección 
 \emph on
 Macros de ecuaciones
