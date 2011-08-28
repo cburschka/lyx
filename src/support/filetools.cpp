@@ -859,7 +859,7 @@ cmd_ret const runCommand(string const & cmd)
 		command = rtrim(command, "2>&1");
 		err2out = true;
 	}
-	string const cmdarg = "/c " + command;
+	string const cmdarg = "/d /c " + command;
 	string const comspec = getEnv("COMSPEC");
 
 	security.nLength = sizeof(SECURITY_ATTRIBUTES);
