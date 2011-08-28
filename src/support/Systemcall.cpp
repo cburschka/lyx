@@ -302,7 +302,10 @@ void SystemcallPrivate::startProcess(QString const & cmd, string const & path)
 				setEnv("TEXINPUTS", prefix + texinputs_);
 		}
 		state = SystemcallPrivate::Starting;
-		process_->start(cmd_);
+		if (os::shell() == os::CMD_EXE)
+			process_->start(QLatin1String("cmd /d /c ") + cmd_);
+		else
+			process_->start(cmd_);
 	}
 }
 
