@@ -149,6 +149,13 @@
  {\usepackage{picinpar}
   \setboolean{picinpar}{true}}
  {\setboolean{picinpar}{false}}
+
+% check for lettrine
+\newboolean{lettrine}
+\IfFileExists{lettrine.sty}
+ {\usepackage{lettrine}
+  \setboolean{lettrine}{true}}
+ {\setboolean{lettrine}{false}}
 \end_preamble
 \options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
@@ -33550,8 +33557,8 @@ Short
 Title
 \family default
  and contains the letter that is the initial.
- To use the also the optional argument, insert another argument in front
- of the mandatory argument.
+ To use also the optional argument, insert another argument in front of
+ the mandatory argument.
  This one contains parameters to modify the initial.
  For more information about the possible parameters see the documentation
  of 
@@ -33587,6 +33594,36 @@ small caps
 
 \begin_layout Standard
 Here are some examples:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+iflettrine
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following section will only be displayed when the LaTeX-package 
+\series bold
+lettrine
+\series default
+ is installed.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -33919,6 +33956,60 @@ status collapsed
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following will be displayed when the LaTeX-package 
+\series bold
+lettrine
+\series default
+ is not installed:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You need to install the LaTeX-package 
+\series bold
+lettrine
+\series default
+ to see the following part of this section in the output.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 External Document Parts
 \begin_inset Index idx

@@ -148,10 +148,12 @@
   \setboolean{picinpar}{true}}
  {\setboolean{picinpar}{false}}
 
-% Umdefinieren des Makros \LyX für PDF-Lesezeichen
-\def\LyX{\texorpdfstring{%
-  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX}}
+% check for lettrine
+\newboolean{lettrine}
+\IfFileExists{lettrine.sty}
+ {\usepackage{lettrine}
+  \setboolean{lettrine}{true}}
+ {\setboolean{lettrine}{false}}
 
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
@@ -33701,6 +33703,36 @@ Kapitälchen
 Hier sind einige Beispiele:
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+iflettrine
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Der folgende Teil wird nur gedruckt, wenn das LaTeX-Paket 
+\series bold
+lettrine
+\series default
+ installiert ist.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Enumerate
 Kein optionales Argument, die Initiale ist der Buchstabe 'I' in der Mathe-Schrif
 t 
@@ -34057,6 +34089,60 @@ status collapsed
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Der folgende Teil wird gedruckt, wenn das LaTeX-Paket 
+\series bold
+lettrine
+\series default
+ nicht installiert ist:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das LaTeX-Paket 
+\series bold
+lettrine
+\series default
+ muss installiert sein, um den folgenden Abschnitt in der Ausgabe zu sehen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 Externe Dateien
 \begin_inset Index idx

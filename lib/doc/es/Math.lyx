@@ -5814,33 +5814,28 @@ status open
 \series bold
 Nota:
 \series default
- 
-\lang english
-LaTeX limits the number of matrix columns with decorations to 10.
- If you need more than 10
+ LaTeX limita el número de columnas de matrices con decoraciones a 10.
+ Si necesitas más de 10
 \begin_inset space ~
 \end_inset
 
-columns, you have to add this line to the document preamble:
+columnas, debes añadir la siguiente línea en el preámbulo del documento:
 \end_layout
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
-setcounter{MaxMatrixCols}{number}
+setcounter{MaxMatrixCols}{número}
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
-where 
+donde 
 \emph on
-number
+número
 \emph default
- is the number of columns between 11 and 99.
+ es el número de columnas entre 11 y 99.
 \end_layout
 
 \end_inset
