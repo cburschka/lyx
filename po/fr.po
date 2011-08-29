@@ -265,7 +265,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-06-16 10:55-0400\n"
-"PO-Revision-Date: 2011-07-31 02:24+0100\n"
+"PO-Revision-Date: 2011-08-29 18:08+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -3039,7 +3039,7 @@ msgstr "&Format implicite du résultat :"
 
 #: src/frontends/qt4/ui/OutputUi.ui:67
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
-msgstr "Activer la recherche avant/arrière entre l'éditeur et la sortie (e. g. SyncTeX)"
+msgstr "Activer la recherche directe/inversée entre l'éditeur et la sortie (e. g. SyncTeX)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:70
 msgid "S&ynchronize with Output"
@@ -14603,7 +14603,7 @@ msgstr "Mettre à jour le document maître"
 
 #: lib/ui/stdtoolbars.inc:105
 msgid "Enable Forward/Reverse Search"
-msgstr "Activer la recherche avant/arrière"
+msgstr "Activer la recherche directe/inversée"
 
 #: lib/ui/stdtoolbars.inc:107
 msgid "View other formats"
@@ -18304,7 +18304,7 @@ msgstr "Une sauvegarde d'urgence a été correctement chargée, mais le fichier 
 
 #: src/Buffer.cpp:3655
 msgid "Document was successfully recovered."
-msgstr "Le document n'a pas été récupéré correctement."
+msgstr "Le document a été récupéré correctement."
 
 #: src/Buffer.cpp:3657
 msgid "Document was NOT successfully recovered."
