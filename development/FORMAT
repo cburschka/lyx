@@ -11,10 +11,10 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
-2011-08-30 Uwe Stöhr <uwestoehr@web.de>
-	* Format incremented to 416 (r3xxxx)
+2011-08-29 Uwe Stöhr <uwestoehr@web.de>
+	* Format incremented to 416 (r39557)
 	  support for \negmedspace and \negthinspace outside of math
-	  support for \hfill, \enspace and \hspace* in math
+	  support for \hfill, \enspace, \hspace* and \hspace*{\fill} in math
 	  No new InsetSpace parameters
 
 2011-07-30 Uwe Stöhr <uwestoehr@web.de>
