@@ -276,7 +276,6 @@ public:
 
 	/// Just a wrapper for writeLaTeXSource, first creating the ofstream.
 	bool makeLaTeXFile(support::FileName const & filename,
-			   std::string const & original_path,
 			   OutputParams const &,
 			   bool output_preamble = true,
 			   bool output_body = true) const;
@@ -303,7 +302,6 @@ public:
 	    \endcode
 	 */
 	void writeLaTeXSource(otexstream & os,
-			   std::string const & original_path,
 			   OutputParams const &,
 			   bool output_preamble = true,
 			   bool output_body = true) const;

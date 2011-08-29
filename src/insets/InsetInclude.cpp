@@ -605,10 +605,6 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 			formats.extension(inc_format)));
 
 		// FIXME: handle non existing files
-		// FIXME: Second argument is irrelevant!
-		// since only_body is true, makeLaTeXFile will not look at second
-		// argument. Should we set it to string(), or should makeLaTeXFile
-		// make use of it somehow? (JMarc 20031002)
 		// The included file might be written in a different encoding
 		// and language.
 		Encoding const * const oldEnc = runparams.encoding;
@@ -621,8 +617,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		runparams.master_language = buffer().params().language;
 		runparams.par_begin = 0;
 		runparams.par_end = tmp->paragraphs().size();
-		if (!tmp->makeLaTeXFile(tmpwritefile, masterFileName(buffer()).
-				onlyPath().absFileName(), runparams, false)) {
+		if (!tmp->makeLaTeXFile(tmpwritefile, runparams, false)) {
 			docstring msg = bformat(_("Included file `%1$s' "
 					"was not exported correctly.\nWarning: "
 					"LaTeX export is probably incomplete."),
@@ -661,7 +656,8 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		// In this case, it's not a LyX file, so we copy the file
 		// to the temp dir, so that .aux files etc. are not created
 		// in the original dir. Files included by this file will be
-		// found via input@path, see ../Buffer.cpp.
+		// found via the environment variable TEXINPUTS, which may be
+		// set in preferences and by default includes the original dir.
 		unsigned long const checksum_in  = included_file.checksum();
 		unsigned long const checksum_out = writefile.checksum();
 
