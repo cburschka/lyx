@@ -1151,6 +1151,10 @@ def checkLatexConfig(check_config, bool_docbook):
             if line == "+Inspection done.":
                 ret = None
     #
+    # remove the copied file
+    if rmcopy:
+        removeFiles( [ 'chkconfig.ltx' ] )
+    #
     # currently, values in chhkconfig are only used to set
     # \font_encoding
     values = {}
@@ -1163,8 +1167,6 @@ def checkLatexConfig(check_config, bool_docbook):
         addToRC(r'\font_encoding "%s"' % values["chk_fontenc"])
     except:
         pass
-    if rmcopy:   # remove the copied file
-        removeFiles( [ 'chkconfig.ltx' ] )
     # if configure successed, move textclass.lst.tmp to textclass.lst
     # and packages.lst.tmp to packages.lst
     if os.path.isfile('textclass.lst.tmp') and len(open('textclass.lst.tmp').read()) > 0 \

@@ -263,6 +263,9 @@ What's new
 
 - On Windows, allow using again batch files as converters.
 
+- Fix configuration failure due to missed deletion of a temporary file
+  under certain circumstances (bug 7586).
+
 
 * ADVANCED FIND AND REPLACE
 
