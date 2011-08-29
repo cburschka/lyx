@@ -1111,23 +1111,14 @@ def checkLatexConfig(check_config, bool_docbook):
     cl.close()
     #
     # we have chklayouts.tex, then process it
-    cmd = LATEX + ' wrap_chkconfig.ltx'
-    if os.name == 'nt':
-        b = False
-        cmd = 'cmd /d /c ' + cmd
-    else:
-        b = True
-    pipe = subprocess.Popen(cmd, shell=b, close_fds=b, stdin=subprocess.PIPE, \
-                            stdout=subprocess.PIPE, universal_newlines=True)
-    pipe.stdin.close()
-    while True:
-        line = pipe.stdout.readline()
-        if not line:
-            break;
+    ret = 1
+    latex_out = cmdOutput(LATEX + ' wrap_chkconfig.ltx')
+    for line in latex_out.splitlines():
         if re.match('^\+', line):
             logger.info(line.strip())
-    # if the command succeeds, None will be returned
-    ret = pipe.stdout.close()
+            # return None if the command succeeds
+            if line == "+Inspection done.":
+                ret = None
     #
     # currently, values in chhkconfig are only used to set
     # \font_encoding
