@@ -1751,12 +1751,17 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, InsetMath::TEXT_MODE);
 		}
 
-		else if (t.cs() == "hspace" && nextToken().character() != '*') {
+		else if (t.cs() == "hspace") {
+			bool const prot =  nextToken().character() == '*';
+			if (prot)
+				getToken();
 			docstring const name = t.cs();
 			docstring const arg = parse_verbatim_item();
 			Length length;
-			if (isValidLength(to_utf8(arg), &length))
-				cell->push_back(MathAtom(new InsetMathSpace(length)));
+			if (prot && arg == "\\fill")
+				cell->push_back(MathAtom(new InsetMathSpace("hspace*{\\fill}", "")));
+			else if (isValidLength(to_utf8(arg), &length))
+				cell->push_back(MathAtom(new InsetMathSpace(length, prot)));
 			else {
 				// Since the Length class cannot use length variables
 				// we must not create an InsetMathSpace.

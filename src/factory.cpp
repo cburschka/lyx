@@ -400,9 +400,9 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 				isp.kind = InsetSpaceParams::ENSKIP;
 			else if (name == "negthinspace")
 				isp.kind = InsetSpaceParams::NEGTHIN;
-			else if (isp.math && name == "negmedspace")
+			else if (name == "negmedspace")
 				isp.kind = InsetSpaceParams::NEGMEDIUM;
-			else if (isp.math && name == "negthickspace")
+			else if (name == "negthickspace")
 				isp.kind = InsetSpaceParams::NEGTHICK;
 			else if (name == "hfill")
 				isp.kind = InsetSpaceParams::HFILL;

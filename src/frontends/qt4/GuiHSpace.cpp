@@ -42,26 +42,29 @@ GuiHSpace::GuiHSpace(bool math_mode, QWidget * parent)
 
 	spacingCO->clear();
 	if (math_mode_) {
-		spacingCO->addItem(qt_("Thin Space"));
-		spacingCO->addItem(qt_("Medium Space"));
-		spacingCO->addItem(qt_("Thick Space"));
-		spacingCO->addItem(qt_("Negative Thin Space"));
-		spacingCO->addItem(qt_("Negative Medium Space"));
-		spacingCO->addItem(qt_("Negative Thick Space"));
-		spacingCO->addItem(qt_("Half Quad (0.5 em)"));
-		spacingCO->addItem(qt_("Quad (1 em)"));
-		spacingCO->addItem(qt_("Double Quad (2 em)"));
-		spacingCO->addItem(qt_("Custom"));
+		spacingCO->addItem(qt_("Thin Space"), toqstr("thinspace"));
+		spacingCO->addItem(qt_("Medium Space"), toqstr("medspace"));
+		spacingCO->addItem(qt_("Thick Space"), toqstr("thickspace"));
+		spacingCO->addItem(qt_("Negative Thin Space"), toqstr("negthinspace"));
+		spacingCO->addItem(qt_("Negative Medium Space"), toqstr("negmedspace"));
+		spacingCO->addItem(qt_("Negative Thick Space"), toqstr("negthickspace"));
+		spacingCO->addItem(qt_("Half Quad (0.5 em)"), toqstr("halfquad"));
+		spacingCO->addItem(qt_("Quad (1 em)"), toqstr("quad"));
+		spacingCO->addItem(qt_("Double Quad (2 em)"), toqstr("qquad"));
+		spacingCO->addItem(qt_("Horizontal Fill"), toqstr("hfill"));
+		spacingCO->addItem(qt_("Custom"), toqstr("custom"));
 	} else {
-		spacingCO->addItem(qt_("Interword Space"));
-		spacingCO->addItem(qt_("Thin Space"));
-		spacingCO->addItem(qt_("Negative Thin Space"));
-		spacingCO->addItem(qt_("Half Quad (0.5 em)"));
-		spacingCO->addItem(qt_("Quad (1 em)"));
-		spacingCO->addItem(qt_("Double Quad (2 em)"));
-		spacingCO->addItem(qt_("Horizontal Fill"));
-		spacingCO->addItem(qt_("Custom"));
-		spacingCO->addItem(qt_("Visible Space"));
+		spacingCO->addItem(qt_("Interword Space"), toqstr("normal"));
+		spacingCO->addItem(qt_("Thin Space"), toqstr("thinspace"));
+		spacingCO->addItem(qt_("Negative Thin Space"), toqstr("negthinspace"));
+		spacingCO->addItem(qt_("Negative Medium Space"), toqstr("negmedspace"));
+		spacingCO->addItem(qt_("Negative Thick Space"), toqstr("negthickspace"));
+		spacingCO->addItem(qt_("Half Quad (0.5 em)"), toqstr("halfquad"));
+		spacingCO->addItem(qt_("Quad (1 em)"), toqstr("quad"));
+		spacingCO->addItem(qt_("Double Quad (2 em)"), toqstr("qquad"));
+		spacingCO->addItem(qt_("Horizontal Fill"), toqstr("hfill"));
+		spacingCO->addItem(qt_("Custom"), toqstr("custom"));
+		spacingCO->addItem(qt_("Visible Space"), toqstr("visible"));
 	}
 
 	connect(spacingCO, SIGNAL(highlighted(QString)),
@@ -96,21 +99,14 @@ void GuiHSpace::changedSlot()
 
 void GuiHSpace::enableWidgets()
 {
-	int const selection = spacingCO->currentIndex();
-	bool const custom = (math_mode_ && selection == 9) ||
-		(!math_mode_ && selection == 7);
+	QString const selection = spacingCO->itemData(spacingCO->currentIndex()).toString();
+	bool const custom = selection == "custom";
 	valueLE->setEnabled(custom);
 	unitCO->setEnabled(custom);
-	if (math_mode_) {
-		fillPatternCO->setEnabled(false);
-		keepCB->setEnabled(false);
-		return;
-	}
-	fillPatternCO->setEnabled(selection == 6);
-	bool const no_pattern = fillPatternCO->currentIndex() == 0;
+	fillPatternCO->setEnabled(!math_mode_ && selection == "hfill");
+	bool const no_pattern = fillPatternCO->currentIndex() == 0 || math_mode_;
 	bool const enable_keep =
-		selection == 0 || selection == 3  ||
-		(selection == 6 && no_pattern) || custom;
+		selection == "normal" || selection == "halfquad" || (selection == "hfill" && no_pattern) || custom;
 	keepCB->setEnabled(enable_keep);
 }
 
@@ -121,97 +117,95 @@ void GuiHSpace::paramsToDialog(Inset const * inset)
 		? static_cast<InsetMathSpace const *>(inset)->params()
 		: static_cast<InsetSpace const *>(inset)->params();
 
-	int item = 0;
+	QString item;
 	int pattern = 0;
 	bool protect = false;
 	switch (params.kind) {
 		case InsetSpaceParams::NORMAL:
-			item = 0;
+			item = "normal";
 			break;
 		case InsetSpaceParams::PROTECTED:
-			item = 0;
-			protect = !params.math;
+			item = "normal";
+			protect = true;
 			break;
 		case InsetSpaceParams::VISIBLE:
-			item = 8;
+			item = "visible";
 			protect = true;
 			break;
 		case InsetSpaceParams::THIN:
-			item = params.math ? 0 : 1;
+			item = "thinspace";
 			break;
 		case InsetSpaceParams::MEDIUM:
-			item = 1;
+			item = "medspace";
 			break;
 		case InsetSpaceParams::THICK:
-			item = params.math ? 2 : 1;
+			item = "thickspace";
 			break;
 		case InsetSpaceParams::NEGTHIN:
-			item = params.math ? 3 : 2;
+			item = "negthinspace";
 			break;
 		case InsetSpaceParams::NEGMEDIUM:
-			item = params.math ? 4 : 2;
+			item = "negmedspace";
 			break;
 		case InsetSpaceParams::NEGTHICK:
-			item = params.math ? 5 : 2;
+			item = "negthickspace";
 			break;
 		case InsetSpaceParams::ENSKIP:
-			item = params.math ? 6 : 3;
+			item = "halfquad";
 			break;
 		case InsetSpaceParams::ENSPACE:
-			item = params.math ? 6 : 3;
-			protect = !params.math;
+			item = "halfquad";
+			protect = true;
 			break;
 		case InsetSpaceParams::QUAD:
-			item = params.math ? 7 : 4;
+			item = "quad";
 			break;
 		case InsetSpaceParams::QQUAD:
-			item = params.math ? 8 : 5;
+			item = "qquad";
 			break;
 		case InsetSpaceParams::HFILL:
-			item = params.math ? 3 : 6;
+			item = "hfill";
 			break;
 		case InsetSpaceParams::HFILL_PROTECTED:
-			item = params.math ? 3 : 6;
-			protect = !params.math;
+			item = "hfill";
+			protect = true;
 			break;
 		case InsetSpaceParams::DOTFILL:
-			item = params.math ? 3 : 6;
+			item = "hfill";
 			pattern = 1;
 			break;
 		case InsetSpaceParams::HRULEFILL:
-			item = params.math ? 3 : 6;
+			item = "hfill";
 			pattern = 2;
 			break;
 		case InsetSpaceParams::LEFTARROWFILL:
-			item = params.math ? 3 : 6;
+			item = "hfill";
 			pattern = 3;
 			break;
 		case InsetSpaceParams::RIGHTARROWFILL:
-			item = params.math ? 3 : 6;
+			item = "hfill";
 			pattern = 4;
 			break;
 		case InsetSpaceParams::UPBRACEFILL:
-			item = params.math ? 3 : 6;
+			item = "hfill";
 			pattern = 5;
 			break;
 		case InsetSpaceParams::DOWNBRACEFILL:
-			item = params.math ? 3 : 6;
+			item = "hfill";
 			pattern = 6;
 			break;
 		case InsetSpaceParams::CUSTOM:
-			item = params.math ? 9 : 7;
+			item = "custom";
 			break;
 		case InsetSpaceParams::CUSTOM_PROTECTED:
-			item = params.math ? 9 : 7;
-			protect = !params.math;
+			item = "custom";
+			protect = true;
 			break;
 	}
-	spacingCO->setCurrentIndex(item);
+	spacingCO->setCurrentIndex(spacingCO->findData(item));
 	fillPatternCO->setCurrentIndex(pattern);
 	keepCB->setChecked(protect);
-	if (math_mode_) {
-		keepCB->setToolTip(qt_("Insert the spacing even after a line break"));
-	} else if (item == 3) {
+	if (item == "halfquad") {
 		keepCB->setToolTip(qt_("Insert the spacing even after a line break.\n"
 				       "Note that a protected Half Quad will be turned into\n"
 				       "a vertical space if used at the beginning of a paragraph!"));
@@ -219,7 +213,7 @@ void GuiHSpace::paramsToDialog(Inset const * inset)
 		keepCB->setToolTip(qt_("Insert the spacing even after a line break"));
 	}
 	Length::UNIT const default_unit = Length::defaultUnit();
-	if (item == (params.math ? 9 : 7)) {
+	if (item == "custom") {
 		string length = params.length.asString();
 		lengthToWidgets(valueLE, unitCO, length, default_unit);
 	} else
@@ -229,99 +223,70 @@ void GuiHSpace::paramsToDialog(Inset const * inset)
 }
 
 
-docstring GuiHSpace::dialogToMathParams() const
-{
-	InsetSpaceParams params(true);
-	switch (spacingCO->currentIndex()) {
-	case 0: params.kind = InsetSpaceParams::THIN;      break;
-	case 1: params.kind = InsetSpaceParams::MEDIUM;    break;
-	case 2: params.kind = InsetSpaceParams::THICK;     break;
-	case 3: params.kind = InsetSpaceParams::NEGTHIN;   break;
-	case 4: params.kind = InsetSpaceParams::NEGMEDIUM; break;
-	case 5: params.kind = InsetSpaceParams::NEGTHICK;  break;
-	case 6: params.kind = InsetSpaceParams::ENSKIP;    break;
-	case 7: params.kind = InsetSpaceParams::QUAD;      break;
-	case 8: params.kind = InsetSpaceParams::QQUAD;     break;
-	case 9:
-		params.kind = InsetSpaceParams::CUSTOM;
-		params.length = GlueLength(widgetsToLength(valueLE, unitCO));
-		break;
-	}
-	return from_ascii(InsetSpace::params2string(params));
-}
-
-
 docstring GuiHSpace::dialogToParams() const
 {
-	if (math_mode_)
-		return dialogToMathParams();
+	InsetSpaceParams params = math_mode_ ?
+		InsetSpaceParams(true) : InsetSpaceParams(false);
 
-	InsetSpaceParams params(false);
+	QString const item =
+		spacingCO->itemData(spacingCO->currentIndex()).toString();
 
-	switch (spacingCO->currentIndex()) {
-		case 0:
-			if (keepCB->isChecked())
-				params.kind = InsetSpaceParams::PROTECTED;
-			else
-				params.kind = InsetSpaceParams::NORMAL;
-			break;
+	if (item == "normal")
+		params.kind = keepCB->isChecked() ?
+			InsetSpaceParams::PROTECTED : InsetSpaceParams::NORMAL;
+	else if (item == "thinspace")
+		params.kind = InsetSpaceParams::THIN;
+	else if (item == "medspace")
+		params.kind = InsetSpaceParams::MEDIUM;
+	else if (item == "thickspace")
+		params.kind = InsetSpaceParams::THICK;
+	else if (item == "negthinspace")
+		params.kind = InsetSpaceParams::NEGTHIN;
+	else if (item == "negmedspace")
+		params.kind = InsetSpaceParams::NEGMEDIUM;
+	else if (item == "negthickspace")
+		params.kind = InsetSpaceParams::NEGTHICK;
+	else if (item == "halfquad")
+		params.kind = keepCB->isChecked() ?
+			InsetSpaceParams::ENSPACE : InsetSpaceParams::ENSKIP;
+	else if (item == "quad")
+			params.kind = InsetSpaceParams::QUAD;
+	else if (item == "qquad")
+			params.kind = InsetSpaceParams::QQUAD;
+	else if (item == "hfill") {
+		switch (fillPatternCO->currentIndex()) {
 		case 1:
-			params.kind = InsetSpaceParams::THIN;
+			params.kind = InsetSpaceParams::DOTFILL;
 			break;
 		case 2:
-			params.kind = InsetSpaceParams::NEGTHIN;
+			params.kind = InsetSpaceParams::HRULEFILL;
 			break;
 		case 3:
-			if (keepCB->isChecked())
-				params.kind = InsetSpaceParams::ENSPACE;
-			else
-				params.kind = InsetSpaceParams::ENSKIP;
+			params.kind = InsetSpaceParams::LEFTARROWFILL;
 			break;
 		case 4:
-			params.kind = InsetSpaceParams::QUAD;
+			params.kind = InsetSpaceParams::RIGHTARROWFILL;
 			break;
 		case 5:
-			params.kind = InsetSpaceParams::QQUAD;
+			params.kind = InsetSpaceParams::UPBRACEFILL;
 			break;
 		case 6:
-			switch (fillPatternCO->currentIndex()) {
-			case 1:
-				params.kind = InsetSpaceParams::DOTFILL;
-				break;
-			case 2:
-				params.kind = InsetSpaceParams::HRULEFILL;
-				break;
-			case 3:
-				params.kind = InsetSpaceParams::LEFTARROWFILL;
-				break;
-			case 4:
-				params.kind = InsetSpaceParams::RIGHTARROWFILL;
-				break;
-			case 5:
-				params.kind = InsetSpaceParams::UPBRACEFILL;
-				break;
-			case 6:
-				params.kind = InsetSpaceParams::DOWNBRACEFILL;
-				break;
-			default:
-				if (keepCB->isChecked())
-					params.kind = InsetSpaceParams::HFILL_PROTECTED;
-				else
-					params.kind = InsetSpaceParams::HFILL;
-				break;
-			}
+			params.kind = InsetSpaceParams::DOWNBRACEFILL;
 			break;
-		case 7:
+		default:
 			if (keepCB->isChecked())
-				params.kind = InsetSpaceParams::CUSTOM_PROTECTED;
+				params.kind = InsetSpaceParams::HFILL_PROTECTED;
 			else
-				params.kind = InsetSpaceParams::CUSTOM;
+				params.kind = InsetSpaceParams::HFILL;
+			break;
+		}
+	} else if (item == "custom") {
+			params.kind = keepCB->isChecked() ?
+				InsetSpaceParams::CUSTOM_PROTECTED : InsetSpaceParams::CUSTOM;
 			params.length = GlueLength(widgetsToLength(valueLE, unitCO));
-			break;
-		case 8:
-			params.kind = InsetSpaceParams::VISIBLE;
-			break;
-	}
+	} else if (item == "visible") 
+		params.kind = InsetSpaceParams::VISIBLE;
+
 	return from_ascii(InsetSpace::params2string(params));
 }
 
@@ -330,7 +295,7 @@ bool GuiHSpace::checkWidgets() const
 {
 	if (!InsetParamsWidget::checkWidgets())
 		return false;
-	return spacingCO->currentIndex() != (math_mode_ ? 9 : 7)
+	return spacingCO->itemData(spacingCO->currentIndex()).toString() != "custom"
 		|| !valueLE->text().isEmpty();
 }
 

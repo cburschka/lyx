@@ -128,7 +128,7 @@ namespace {
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-int const LYX_FORMAT = 415; //uwestoehr : support for package undertilde (bug 6622)
+int const LYX_FORMAT = 416; //uwestoehr : support for horizontal spaces (bug 7728)
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;

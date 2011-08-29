@@ -45,23 +45,27 @@ struct SpaceInfo {
 };
 
 SpaceInfo space_info[] = {
-	// name           width kind                         negative visible custom
-	{"!",              6,   InsetSpaceParams::NEGTHIN,   true,    true,   false},
-	{"negthinspace",   6,   InsetSpaceParams::NEGTHIN,   true,    true,   false},
-	{"negmedspace",    8,   InsetSpaceParams::NEGMEDIUM, true,    true,   false},
-	{"negthickspace", 10,   InsetSpaceParams::NEGTHICK,  true,    true,   false},
-	{",",              6,   InsetSpaceParams::THIN,      false,   true,   false},
-	{"thinspace",      6,   InsetSpaceParams::THIN,      false,   true,   false},
-	{":",              8,   InsetSpaceParams::MEDIUM,    false,   true,   false},
-	{"medspace",       8,   InsetSpaceParams::MEDIUM,    false,   true,   false},
-	{";",             10,   InsetSpaceParams::THICK,     false,   true,   false},
-	{"thickspace",    10,   InsetSpaceParams::THICK,     false,   true,   false},
-	{"enskip",        10,   InsetSpaceParams::ENSKIP,    false,   true,   false},
-	{"quad",          20,   InsetSpaceParams::QUAD,      false,   true,   false},
-	{"qquad",         40,   InsetSpaceParams::QQUAD,     false,   true,   false},
-	{"lyxnegspace",   -2,   InsetSpaceParams::NEGTHIN,   true,    false,  false},
-	{"lyxposspace",    2,   InsetSpaceParams::THIN,      false,   false,  false},
-	{"hspace",         0,   InsetSpaceParams::CUSTOM,    false,   true,   true},
+	// name             width kind                         negative visible custom
+	{"!",                6,   InsetSpaceParams::NEGTHIN,   true,    true,   false},
+	{"negthinspace",     6,   InsetSpaceParams::NEGTHIN,   true,    true,   false},
+	{"negmedspace",      8,   InsetSpaceParams::NEGMEDIUM, true,    true,   false},
+	{"negthickspace",   10,   InsetSpaceParams::NEGTHICK,  true,    true,   false},
+	{",",                6,   InsetSpaceParams::THIN,      false,   true,   false},
+	{"thinspace",        6,   InsetSpaceParams::THIN,      false,   true,   false},
+	{":",                8,   InsetSpaceParams::MEDIUM,    false,   true,   false},
+	{"medspace",         8,   InsetSpaceParams::MEDIUM,    false,   true,   false},
+	{";",               10,   InsetSpaceParams::THICK,     false,   true,   false},
+	{"thickspace",      10,   InsetSpaceParams::THICK,     false,   true,   false},
+	{"enskip",          10,   InsetSpaceParams::ENSKIP,    false,   true,   false},
+	{"enspace",         10,   InsetSpaceParams::ENSPACE,   false,   true,   false},
+	{"quad",            20,   InsetSpaceParams::QUAD,      false,   true,   false},
+	{"qquad",           40,   InsetSpaceParams::QQUAD,     false,   true,   false},
+	{"lyxnegspace",     -2,   InsetSpaceParams::NEGTHIN,   true,    false,  false},
+	{"lyxposspace",      2,   InsetSpaceParams::THIN,      false,   false,  false},
+	{"hfill",           80,   InsetSpaceParams::HFILL,     false,   true,  false},
+	{"hspace*{\\fill}", 80,   InsetSpaceParams::HFILL_PROTECTED,     false,   true,  false},
+	{"hspace*",          0,   InsetSpaceParams::CUSTOM_PROTECTED,    false,   true,   true},
+	{"hspace",           0,   InsetSpaceParams::CUSTOM,    false,   true,   true},
 };
 
 int const nSpace = sizeof(space_info)/sizeof(SpaceInfo);
@@ -93,11 +97,12 @@ InsetMathSpace::InsetMathSpace(string const & name, string const & length)
 }
 
 
-InsetMathSpace::InsetMathSpace(Length const & length)
+InsetMathSpace::InsetMathSpace(Length const & length, bool const prot)
 	: space_(defaultSpace), length_(length)
 {
 	for (int i = 0; i < nSpace; ++i)
-		if (space_info[i].name == "hspace") {
+		if ((prot && space_info[i].name == "hspace*")
+			|| (!prot && space_info[i].name == "hspace")) {
 			space_ = i;
 			break;
 		}
@@ -221,6 +226,7 @@ void InsetMathSpace::htmlize(HtmlStream & ms) const
 		ms << from_ascii("&emsp;");
 		break;
 	case InsetSpaceParams::ENSKIP:
+	case InsetSpaceParams::ENSPACE:
 		ms << from_ascii("&ensp;");
 		break;
 	case InsetSpaceParams::QUAD:
@@ -229,7 +235,12 @@ void InsetMathSpace::htmlize(HtmlStream & ms) const
 	case InsetSpaceParams::QQUAD:
 		ms << from_ascii("&emsp;&emsp;");
 		break;
-	case InsetSpaceParams::CUSTOM: {
+	case InsetSpaceParams::HFILL:
+	case InsetSpaceParams::HFILL_PROTECTED:
+		// FIXME: is there a useful HTML entity?
+		break;
+	case InsetSpaceParams::CUSTOM:
+	case InsetSpaceParams::CUSTOM_PROTECTED: {
 		string l = length_.asHTMLString();
 		ms << MTag("span", "width='" + l + "'") 
 		   << from_ascii("&nbsp;") << ETag("span");

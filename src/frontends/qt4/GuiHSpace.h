@@ -34,14 +34,12 @@ private Q_SLOTS:
 private:
 	/// \name InsetParamsWidget inherited methods
 	//@{
-	InsetCode insetCode() const { return SPACE_CODE; }
+	InsetCode insetCode() const { return math_mode_ ? MATH_SPACE_CODE : SPACE_CODE; }
 	FuncCode creationCode() const { return LFUN_INSET_INSERT; }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
 	bool checkWidgets() const;
 	//@}
-	///
-	docstring dialogToMathParams() const;
 	///
 	bool const math_mode_;
 };

@@ -61,12 +61,12 @@ def revert_visible_space(document):
     "Revert InsetSpace visible into its ERT counterpart"
     i = 0
     while True:
-        i = find_token(document.body, "\\begin_inset space \\textvisiblespace{}", i)
-        if i == -1:
-            return
-        end = find_end_of_inset(document.body, i)
-        subst = put_cmd_in_ert("\\textvisiblespace{}")
-        document.body[i:end + 1] = subst
+      i = find_token(document.body, "\\begin_inset space \\textvisiblespace{}", i)
+      if i == -1:
+        return
+      end = find_end_of_inset(document.body, i)
+      subst = put_cmd_in_ert("\\textvisiblespace{}")
+      document.body[i:end + 1] = subst
 
 
 def convert_undertilde(document):
@@ -78,7 +78,6 @@ def convert_undertilde(document):
 
 def revert_undertilde(document):
     " Load undertilde if used in the document "
-
     undertilde = find_token(document.header, "\\use_undertilde" , 0)
     if undertilde == -1:
       document.warning("No \\use_undertilde line. Assuming auto.")
@@ -118,16 +117,63 @@ def revert_undertilde(document):
       i = j
 
 
+def revert_negative_space(document):
+    "Revert InsetSpace negmedspace and negthickspace into its TeX-code counterpart"
+    i = 0
+    j = 0
+    reverted = False
+    while True:
+      i = find_token(document.body, "\\begin_inset space \\negmedspace{}", i)
+      if i == -1:
+        j = find_token(document.body, "\\begin_inset space \\negthickspace{}", j)
+        if j == -1:
+          # load amsmath in the preamble if not already loaded if we are at the end of checking
+          if reverted == True:
+            i = find_token(document.header, "\\use_amsmath 2", 0)
+            if i == -1:
+              add_to_preamble(document, ["\\@ifundefined{negthickspace}{\\usepackage{amsmath}}"])
+          return
+      if i == -1:
+        return
+      end = find_end_of_inset(document.body, i)
+      subst = put_cmd_in_ert("\\negmedspace{}")
+      document.body[i:end + 1] = subst
+      j = find_token(document.body, "\\begin_inset space \\negthickspace{}", j)
+      if j == -1:
+        return
+      end = find_end_of_inset(document.body, j)
+      subst = put_cmd_in_ert("\\negthickspace{}")
+      document.body[j:end + 1] = subst
+      reverted = True
+
+
+def revert_math_spaces(document):
+    "Revert formulas with protected custom space and protected hfills to TeX-code"
+    i = 0
+    while True:
+      i = find_token(document.body, "\\begin_inset Formula", i)
+      if i == -1:
+        return
+      j = document.body[i].find("\\hspace*")
+      if j != -1:
+        end = find_end_of_inset(document.body, i)
+        subst = put_cmd_in_ert(document.body[i][21:])
+        document.body[i:end + 1] = subst
+      i = i + 1
+
+
 ##
 # Conversion hub
 #
 
 supported_versions = ["2.1.0","2.1"]
 convert = [[414, []],
-           [415, [convert_undertilde]]
+           [415, [convert_undertilde]],
+           [416, []]
           ]
 
-revert =  [[414, [revert_undertilde]],
+revert =  [[415, [revert_negative_space,revert_math_spaces]],
+           [414, [revert_undertilde]],
            [413, [revert_visible_space]]
           ]
 

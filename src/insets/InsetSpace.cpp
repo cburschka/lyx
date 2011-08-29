@@ -488,9 +488,9 @@ void InsetSpaceParams::read(Lexer & lex)
 		kind = InsetSpaceParams::ENSKIP;
 	else if (command == "\\negthinspace{}")
 		kind = InsetSpaceParams::NEGTHIN;
-	else if (math && command == "\\negmedspace{}")
+	else if (command == "\\negmedspace{}")
 		kind = InsetSpaceParams::NEGMEDIUM;
-	else if (math && command == "\\negthickspace{}")
+	else if (command == "\\negthickspace{}")
 		kind = InsetSpaceParams::NEGTHICK;
 	else if (command == "\\hfill{}")
 		kind = InsetSpaceParams::HFILL;
