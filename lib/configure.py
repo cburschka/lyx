@@ -8,7 +8,7 @@
 # \author Bo Peng
 # Full author contact details are available in file CREDITS.
 
-import sys, os, re, shutil, glob, logging
+import sys, os, re, shutil, glob, logging, subprocess
 
 # set up logging
 logging.basicConfig(level = logging.DEBUG,
@@ -60,9 +60,16 @@ def cmdOutput(cmd):
     '''utility function: run a command and get its output as a string
         cmd: command to run
     '''
-    fout = os.popen(cmd)
-    output = fout.read()
-    fout.close()
+    if os.name == 'nt':
+        b = False
+        cmd = 'cmd /d /c ' + cmd
+    else:
+        b = True
+    pipe = subprocess.Popen(cmd, shell=b, close_fds=b, stdin=subprocess.PIPE, \
+                            stdout=subprocess.PIPE, universal_newlines=True)
+    pipe.stdin.close()
+    output = pipe.stdout.read()
+    pipe.stdout.close()
     return output.strip()
 
 
@@ -1135,15 +1142,14 @@ def checkLatexConfig(check_config, bool_docbook):
     cl.close()
     #
     # we have chklayouts.tex, then process it
-    fout = os.popen(LATEX + ' wrap_chkconfig.ltx')
-    while True:
-        line = fout.readline()
-        if not line:
-            break;
+    ret = 1
+    latex_out = cmdOutput(LATEX + ' wrap_chkconfig.ltx')
+    for line in latex_out.splitlines():
         if re.match('^\+', line):
             logger.info(line.strip())
-    # if the command succeeds, None will be returned
-    ret = fout.close()
+            # return None if the command succeeds
+            if line == "+Inspection done.":
+                ret = None
     #
     # currently, values in chhkconfig are only used to set
     # \font_encoding
