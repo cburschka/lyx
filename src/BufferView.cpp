@@ -1905,6 +1905,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		if (oldL->rightToLeft() == newL->rightToLeft() && !buffer_.isMultiLingual()) {
 			cur.recordUndoFullDocument();
 			buffer_.changeLanguage(oldL, newL);
+			cur.setCurrentFont();
 			dr.forceBufferUpdate();
 		}
 		break;
