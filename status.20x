@@ -41,6 +41,9 @@ What's new
 
 - Allow LaTeX import of \uline (bug 7640).
 
+- Fix compilation error occurring when a LyX document resides in a directory
+  whose name contains characters that are special to LaTeX (bug 6170).
+
 
 * USER INTERFACE
 
