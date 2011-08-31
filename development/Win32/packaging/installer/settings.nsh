@@ -38,7 +38,7 @@ These typically need to be modified for each LyX release
 !define FILES_LYX "C:\LyX\lyx-20-install"
 !define FILES_DEPS "C:\LyX\lyx-20-build\msvc2010-deps\deps20"
 !define FILES_BUNDLE "C:\LyX\depsbundle"
-!define FILES_QT "C:\Qt\qt-everywhere-opensource-src-4.7.1"
+!define FILES_QT "C:\Qt\qt-everywhere-opensource-src-4.7.3"
 !define ClassFileDir "${FILES_LYX}\Resources\tex"
 !define DVIPostFileDir "${FILES_DEPS}\tex"
 
@@ -50,12 +50,12 @@ These typically need to be modified for each LyX release
 
 !define JabRefVersion "2.7"
 !define MiKTeXDeliveredVersion "2.9"
-!define ImageMagickVersion "6.7.0"
+!define ImageMagickVersion "6.7.2"
  
 # definitions for the Complete installer
 !if ${SETUPTYPE} == BUNDLE
  !define JabRefInstall "external\JabRef-2.7-setup.exe"
- !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.4231.exe"
+ !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.4250.exe"
  !define SIZE_DOWNLOAD_LATEX 160106
  !define SIZE_LATEX 380000
 !endif
