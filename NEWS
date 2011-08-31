@@ -1,5 +1,17 @@
+What's new in version 2.0.1?
+----------------------------
+
+We have fixed an unusually large number of bugs for this release and made 
+a number of improvements. All of these are detailed in the ANNOUNCE file. 
+We would like to highlight the improved handling of external files referenced 
+from ERT. This may cause issues for those who made use of the undocumented 
+\input@path hack. See the ANNOUNCE file again for how to do things the new 
+way. New methods for calling external scripts should also solve several issues
+on Windows.
+
+
 What's new in version 2.0.0?
--------------------------------
+----------------------------
 
 The new features in LyX 2.0 are detailed in
 http://wiki.lyx.org/LyX/NewInLyX20

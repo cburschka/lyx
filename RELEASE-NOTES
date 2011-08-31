@@ -1,9 +1,8 @@
-This file lists interface changes that might affect users in 2.0.0, some 
-known problems in LyX 2.0.0 and some things you have to take into account
+This file lists interface changes that might affect users in 2.0.1, some 
+known problems in LyX 2.0.x and some things you have to take into account
 when upgrading from earlier versions to a version of the 2.0.x series.
-Note that fixes are available for some of these, but they have not yet
-been applied because of incomplete testing.
-
+Fixes may be available for some of these but not yet have been applied, due
+to incomplete testing.
 
 Interface changes
 -----------------
@@ -227,6 +226,25 @@ Known issues in version 2.0.0
 
 Caveats when upgrading from earlier versions to 2.0.x
 -------------------------------------------------------
+
+- The support for using external files in ERT has been improved by the
+  introduction of a prefix for the TEXINPUTS environment variable.
+  This prefix can be set in preferences and by default includes the
+  document directory (represented by a single '.'). The prefix can
+  be set to any list of paths separated by the default separator for
+  a given platform (':' on unix like systems and ';' on windows).
+  When a file should be included by LaTeX, the paths listed in TEXINPUTS
+  will be searched in turn for finding it. Note that any non-absolute
+  path listed in the TEXINPUTS prefix is considered to be relative to the
+  document directory, i.e., the directory where the LyX file lives.
+  Users are advised to always include '.' (the document dir) as one of
+  the path components, otherwise compilation may fail for some documents.
+  This is because the previous (undocumented) mechanism based on the use
+  of the \input@path macro has been dropped. The old mechanism did not
+  work in all cases and was kind of a hack. Old documents using that
+  undocumented hack for obtaining the path of the LyX file will have to
+  be revised. A clean way for obtaining the document path is using the
+  info inset through the "info-insert buffer path" LyX function.
 
 - The typeset of your documents with non-english language can slightly
   change in case of math environments and floats (this is usually the case
