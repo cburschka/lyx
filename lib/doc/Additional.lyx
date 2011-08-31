@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 416
 \begin_document
 \begin_header
 \textclass scrbook
@@ -105,6 +105,7 @@ End
 \use_esint 0
 \use_mhchem 1
 \use_mathdots 1
+\use_undertilde 1
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
@@ -364,7 +365,7 @@ status collapsed
 
 \begin_layout Plain Layout
 View\SpecialChar \menuseparator
-Format
+View
 \end_layout
 
 \end_inset
@@ -378,8 +379,7 @@ status collapsed
 
 \begin_layout Plain Layout
 View\SpecialChar \menuseparator
-Update\SpecialChar \menuseparator
-Format
+Update
 \end_layout
 
 \end_inset
@@ -488,7 +488,7 @@ If there are any errors, show the error log.
 \end_layout
 
 \begin_layout Standard
-If you've run LaTeX using 
+If you have run LaTeX using 
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -504,7 +504,7 @@ DVI
 \end_inset
 
 , LyX then runs a DVI viewer to display the DVI-file.
- If you've used 
+ If you have used 
 \begin_inset Flex MenuItem
 status collapsed
 

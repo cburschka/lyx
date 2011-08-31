@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 416
 \begin_document
 \begin_header
 \textclass scrbook
@@ -118,6 +118,7 @@ End
 \use_esint 0
 \use_mhchem 1
 \use_mathdots 1
+\use_undertilde 1
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
@@ -487,105 +488,42 @@ Es gibt mehrere Befehle, bei denen automatisch LaTeX gestartet wird:
 
 \family sans
 Ansicht\SpecialChar \menuseparator
-DVI (Strg+D
-\family default
- oder 
-\begin_inset Graphics
-	filename ../../images/buffer-view_dvi.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
+Ansehen
+\end_layout
 
+\begin_layout Itemize
+
+\family sans
+Ansicht\SpecialChar \menuseparator
+Aktualisieren
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Datei\SpecialChar \menuseparator
+Drucken (Strg+P
+\family typewriter
+ 
+\family default
+oder 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show print"
 \end_inset
 
 
 \family sans
-)
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Ansicht\SpecialChar \menuseparator
-HTML
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Ansicht\SpecialChar \menuseparator
-PDF (dvipdfm) / PDF
+ )
 \family default
  
-\family sans
-(pdflatex
-\family default
- oder 
-\begin_inset Graphics
-	filename ../../images/buffer-view_pdf2.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-
-\family sans
-) / PDF (ps2pdf)
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Ansicht\SpecialChar \menuseparator
-Postscript (Strg+T 
-\family default
-oder 
-\begin_inset Graphics
-	filename ../../images/buffer-view_ps.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-
-\family sans
-)
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Ansicht\SpecialChar \menuseparator
-Aktualisieren\SpecialChar \menuseparator
-
-\family default
-\SpecialChar \ldots{}
-
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
 Datei\SpecialChar \menuseparator
-Drucken\SpecialChar \ldots{}
- (Strg+P 
-\family default
-oder 
-\begin_inset Graphics
-	filename ../../images/dialog-show_print.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
- )
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Datei\SpecialChar \menuseparator
-Faxen\SpecialChar \ldots{}
-
+Faxen
 \end_layout
 
 \begin_layout Standard
@@ -634,11 +572,9 @@ Ansicht\SpecialChar \menuseparator
 DVI (Strg+D
 \family default
  oder 
-\begin_inset Graphics
-	filename ../../images/buffer-view_dvi.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
+\begin_inset Info
+type  "icon"
+arg   "buffer-view dvi"
 \end_inset
 
 
@@ -668,11 +604,9 @@ Ansicht\SpecialChar \menuseparator
 Postscript (Strg+T 
 \family default
 oder 
-\begin_inset Graphics
-	filename ../../images/buffer-view_ps.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
+\begin_inset Info
+type  "icon"
+arg   "buffer-view ps"
 \end_inset
 
 
@@ -683,29 +617,6 @@ oder
 \family sans
 Datei\SpecialChar \menuseparator
 Drucken
-\family default
-\SpecialChar \ldots{}
-
-\begin_inset space \space{}
-\end_inset
-
-
-\family sans
-(Strg+P
-\family typewriter
- 
-\family default
-oder 
-\begin_inset Graphics
-	filename ../../images/dialog-show_print.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-
-\family sans
- )
 \family default
  aufgerufen haben, werden noch zwei Schritte ausgeführt:
 \end_layout
@@ -719,83 +630,12 @@ dvips
 \family typewriter
 .dv
 \family default
-i-Datei nach PostScript zu konvertieren:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Für 
-\family sans
-Ansicht\SpecialChar \menuseparator
-Postscript (Strg+T 
-\family default
-oder 
-\begin_inset Graphics
-	filename ../../images/buffer-view_ps.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-
-\family sans
-)
-\family default
- hat die Ausgabedatei die Endung 
-\family typewriter
-.ps_
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-tmp
+i-Datei nach PostScript zu konvertieren
 \end_layout
 
 \begin_layout Itemize
-Für 
-\family sans
-Datei\SpecialChar \menuseparator
-Drucken\SpecialChar \ldots{}
-
-\family default
- 
-\family sans
-(Strg+P 
-\family default
-oder 
-\begin_inset Graphics
-	filename ../../images/dialog-show_print.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-
-\family sans
- )
-\family default
- hat die Ausgabedatei wie erwartet die Endung 
-\family typewriter
-.ps
-\family default
-.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\family typewriter
-gv
-\family default
- ausführen oder die PostScript-Datei an den Drucker schicken.
+Ein PostScript Anzeigeprogramm wird ausgeführt und die Datei angezeigt oder
+ die PostScript-Datei wird an den Drucker geschickt
 \end_layout
 
 \begin_layout Standard
@@ -1079,7 +919,7 @@ tex2lyx
  einsetzen wollen, lesen Sie Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "LaTeX-Code"
+reference "sec:LaTeX-Code"
 
 \end_inset
 
@@ -1130,17 +970,18 @@ X-Code
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "LaTeX-Code"
+name "sec:LaTeX-Code"
 
 \end_inset
 
- Dies ist ein ziemlich wichtiger Punkt: Sie können LaTeX-Code in jedes LyX-Dokum
-ent einsetzen.
+
+\end_layout
+
+\begin_layout Standard
+Dies ist ein ziemlich wichtiger Punkt: Sie können LaTeX-Code in jedes LyX-Dokume
+nt einsetzen.
  LyX kann einfach nicht jede mögliche LaTeX-Konstruktion darstellen und
  wird es wohl auch nie können.
  Wenn Sie jemals LaTeX-Befehle in Ihr LyX-Dokument einsetzen müssen, können
@@ -1165,11 +1006,9 @@ X-Code
 Strg+L
 \family default
  oder Klicken auf 
-\begin_inset Graphics
-	filename ../../images/ert-insert.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
+\begin_inset Info
+type  "icon"
+arg   "ert-insert"
 \end_inset
 
  erhalten.
@@ -2721,11 +2560,9 @@ Ansicht\SpecialChar \menuseparator
 DVI
 \family default
  oder 
-\begin_inset Graphics
-	filename ../../images/buffer-view_dvi.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
+\begin_inset Info
+type  "icon"
+arg   "buffer-view dvi"
 \end_inset
 
 ) zeigt, dass LyX automatisch die notwendigen Programme (BibTeX, LaTeX inklusive
@@ -2798,8 +2635,7 @@ Beide Pakete werden in LyX ähnlich benutzt.
  Unter 
 \family sans
 Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
 Literaturverzeichnis
 \family default
  wählen Sie zunächst den 
@@ -3127,7 +2963,7 @@ reference "Literaturverzeichnisse-abschnitssweise"
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "LaTeX-Code"
+reference "sec:LaTeX-Code"
 
 \end_inset
 
@@ -3203,11 +3039,9 @@ X-Code
 Strg+L
 \family default
  oder 
-\begin_inset Graphics
-	filename ../../images/ert-insert.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
+\begin_inset Info
+type  "icon"
+arg   "ert-insert"
 \end_inset
 
 ).
@@ -9029,11 +8863,9 @@ Benutzerhandbuch
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Absatz-Einstellungen (
-\begin_inset Graphics
-	filename ../../images/layout-paragraph.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
 \end_inset
 
 ).
@@ -13294,19 +13126,16 @@ letter
 Bearbeiten\SpecialChar \menuseparator
 Absatz-Einstellungen
 \family default
-\SpecialChar \ldots{}
+ (
+\family sans
 
-\begin_inset space \space{}
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
 \end_inset
 
-(
-\begin_inset Graphics
-	filename ../../images/layout-paragraph.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
 
-\end_inset
-
+\family default
 ) steht jedoch der entsprechende Schaltknopf für 
 \family sans
 Absatztrennung
@@ -18792,7 +18621,7 @@ section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "LaTeX-Code"
+reference "sec:LaTeX-Code"
 
 \end_inset
 
