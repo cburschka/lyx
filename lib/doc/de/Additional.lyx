@@ -484,106 +484,35 @@ Es gibt mehrere Befehle, bei denen automatisch LaTeX gestartet wird:
 \begin_layout Itemize
 
 \family sans
-Ansicht\SpecialChar \menuseparator
-DVI (Strg+D
-\family default
- oder 
-\begin_inset Graphics
-	filename ../../images/buffer-view_dvi.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
+Ansicht->Ansehen
+\end_layout
 
+\begin_layout Itemize
+
+\family sans
+Ansicht->Aktualisieren
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Datei->Drucken (Strg+P oder 
+\family default
+
+\begin_inset Info
+type  "icon"
+arg   "dialog-show print"
 \end_inset
 
 
 \family sans
-)
+) 
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Ansicht\SpecialChar \menuseparator
-HTML
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Ansicht\SpecialChar \menuseparator
-PDF (dvipdfm) / PDF
-\family default
- 
-\family sans
-(pdflatex
-\family default
- oder 
-\begin_inset Graphics
-	filename ../../images/buffer-view_pdf2.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-
-\family sans
-) / PDF (ps2pdf)
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Ansicht\SpecialChar \menuseparator
-Postscript (Strg+T 
-\family default
-oder 
-\begin_inset Graphics
-	filename ../../images/buffer-view_ps.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-
-\family sans
-)
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Ansicht\SpecialChar \menuseparator
-Aktualisieren\SpecialChar \menuseparator
-
-\family default
-\SpecialChar \ldots{}
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Datei\SpecialChar \menuseparator
-Drucken\SpecialChar \ldots{}
- (Strg+P 
-\family default
-oder 
-\begin_inset Graphics
-	filename ../../images/dialog-show_print.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
- )
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Datei\SpecialChar \menuseparator
-Faxen\SpecialChar \ldots{}
-
+Datei->Faxen
 \end_layout
 
 \begin_layout Standard
@@ -632,11 +561,9 @@ Ansicht\SpecialChar \menuseparator
 DVI (Strg+D
 \family default
  oder 
-\begin_inset Graphics
-	filename ../../images/buffer-view_dvi.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
+\begin_inset Info
+type  "icon"
+arg   "buffer-view dvi"
 \end_inset
 
 
@@ -666,11 +593,9 @@ Ansicht\SpecialChar \menuseparator
 Postscript (Strg+T 
 \family default
 oder 
-\begin_inset Graphics
-	filename ../../images/buffer-view_ps.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
+\begin_inset Info
+type  "icon"
+arg   "buffer-view ps"
 \end_inset
 
 
@@ -681,29 +606,6 @@ oder
 \family sans
 Datei\SpecialChar \menuseparator
 Drucken
-\family default
-\SpecialChar \ldots{}
-
-\begin_inset space \space{}
-\end_inset
-
-
-\family sans
-(Strg+P
-\family typewriter
- 
-\family default
-oder 
-\begin_inset Graphics
-	filename ../../images/dialog-show_print.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-
-\family sans
- )
 \family default
  aufgerufen haben, werden noch zwei Schritte ausgeführt:
 \end_layout
@@ -717,83 +619,12 @@ dvips
 \family typewriter
 .dv
 \family default
-i-Datei nach PostScript zu konvertieren:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Für 
-\family sans
-Ansicht\SpecialChar \menuseparator
-Postscript (Strg+T 
-\family default
-oder 
-\begin_inset Graphics
-	filename ../../images/buffer-view_ps.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-
-\family sans
-)
-\family default
- hat die Ausgabedatei die Endung 
-\family typewriter
-.ps_
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-tmp
+i-Datei nach PostScript zu konvertieren
 \end_layout
 
 \begin_layout Itemize
-Für 
-\family sans
-Datei\SpecialChar \menuseparator
-Drucken\SpecialChar \ldots{}
-
-\family default
- 
-\family sans
-(Strg+P 
-\family default
-oder 
-\begin_inset Graphics
-	filename ../../images/dialog-show_print.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-
-\family sans
- )
-\family default
- hat die Ausgabedatei wie erwartet die Endung 
-\family typewriter
-.ps
-\family default
-.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\family typewriter
-gv
-\family default
- ausführen oder die PostScript-Datei an den Drucker schicken.
+Ein PostScript Anzeigeprogramm wird ausgeführt und die Datei angezeigt oder
+ die PostScript-Datei wird an den Drucker geschickt
 \end_layout
 
 \begin_layout Standard
@@ -1077,7 +908,7 @@ tex2lyx
  einsetzen wollen, lesen Sie Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "LaTeX-Code"
+reference "sec:LaTeX-Code"
 
 \end_inset
 
@@ -1128,17 +959,18 @@ X-Code
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "LaTeX-Code"
+name "sec:LaTeX-Code"
 
 \end_inset
 
- Dies ist ein ziemlich wichtiger Punkt: Sie können LaTeX-Code in jedes LyX-Dokum
-ent einsetzen.
+
+\end_layout
+
+\begin_layout Standard
+Dies ist ein ziemlich wichtiger Punkt: Sie können LaTeX-Code in jedes LyX-Dokume
+nt einsetzen.
  LyX kann einfach nicht jede mögliche LaTeX-Konstruktion darstellen und
  wird es wohl auch nie können.
  Wenn Sie jemals LaTeX-Befehle in Ihr LyX-Dokument einsetzen müssen, können
@@ -1163,11 +995,9 @@ X-Code
 Strg+L
 \family default
  oder Klicken auf 
-\begin_inset Graphics
-	filename ../../images/ert-insert.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
+\begin_inset Info
+type  "icon"
+arg   "ert-insert"
 \end_inset
 
  erhalten.
@@ -2719,11 +2549,9 @@ Ansicht\SpecialChar \menuseparator
 DVI
 \family default
  oder 
-\begin_inset Graphics
-	filename ../../images/buffer-view_dvi.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
+\begin_inset Info
+type  "icon"
+arg   "buffer-view dvi"
 \end_inset
 
 ) zeigt, dass LyX automatisch die notwendigen Programme (BibTeX, LaTeX inklusive
@@ -2796,8 +2624,7 @@ Beide Pakete werden in LyX ähnlich benutzt.
  Unter 
 \family sans
 Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
 Literaturverzeichnis
 \family default
  wählen Sie zunächst den 
@@ -3125,7 +2952,7 @@ reference "Literaturverzeichnisse-abschnitssweise"
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "LaTeX-Code"
+reference "sec:LaTeX-Code"
 
 \end_inset
 
@@ -3201,11 +3028,9 @@ X-Code
 Strg+L
 \family default
  oder 
-\begin_inset Graphics
-	filename ../../images/ert-insert.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
+\begin_inset Info
+type  "icon"
+arg   "ert-insert"
 \end_inset
 
 ).
@@ -9027,13 +8852,15 @@ Benutzerhandbuch
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Absatz-Einstellungen (
-\begin_inset Graphics
-	filename ../../images/layout-paragraph.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
+\family default
 
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
 \end_inset
 
+
+\family sans
 ).
 \end_layout
 
@@ -13292,17 +13119,10 @@ letter
 Bearbeiten\SpecialChar \menuseparator
 Absatz-Einstellungen
 \family default
-\SpecialChar \ldots{}
-
-\begin_inset space \space{}
-\end_inset
-
-(
-\begin_inset Graphics
-	filename ../../images/layout-paragraph.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
+ (
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
 \end_inset
 
 ) steht jedoch der entsprechende Schaltknopf für 
@@ -18790,7 +18610,7 @@ section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "LaTeX-Code"
+reference "sec:LaTeX-Code"
 
 \end_inset
 
