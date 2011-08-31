@@ -648,7 +648,7 @@ kbd/
 
 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sec:Internationale-Tastaturtabellen"
 
 \end_inset
@@ -670,7 +670,7 @@ layouts/
 
 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "cha:Installieren-neuer-Textklassen"
 
 \end_inset
@@ -727,7 +727,18 @@ von
 
 Vorlage
 \family default
- präsentiert werden.
+ präsentiert werden, siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Creating-Templates"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Labeling
@@ -4629,76 +4640,74 @@ Layout
 \end_layout
 
 \begin_layout Section
-Layouts
+
+\lang english
+Types of layout files
 \end_layout
 
 \begin_layout Standard
-In diesem Abschnitt wird beschrieben, wie Sie eigene Layout-Dateien (auch
- Textklassen genannt) für LyX schreiben können; dafür wird die Klasse 
-\family typewriter
-article
-\family default
- als Beispiel genommen.
- Derartige 
-\family typewriter
-.layout
-\family default
--Dateien beschreiben, welche Arten von Absatzumgebungen in der jeweiligen
- Dokumentenklasse zur Verfügung stehen, und wie sie in LyX dargestellt werden.
- Diese Beschreibung ist zwar sehr tief gehend, kann aber dennoch nicht alle
- Eventualitäten und Probleme abdecken, auf die Sie beim Schreiben eigener
- Layout-Dateien stoßen können.
- Dies liegt einfach an der enormen Vielfalt der Textklassen von LaTeX.
+
+\lang english
+This section describes the various sorts of LyX files that contain layout
+ information.
+ These files describe various paragraph and character styles, determining
+ how LyX should display them and how they should be translated into LaTeX,
+ DocBook, XHTML, or whatever output format is being used.
+ 
 \end_layout
 
 \begin_layout Standard
-Wenn Sie vorhaben, eine neue Textklasse zu entwickeln, sollten Sie einen
- Blick in die Beispiel-Textklassen werfen, die im LyX-Paket enthalten sind.
- Wenn Sie eine LaTeX-Dokumentenklasse verwenden, die vermutlich auch von
- anderen Personen benutzt wird, und Sie eine passende LyX-Textklasse entwickelt
- haben, dann sollten Sie uns Ihr Werk ruhig zukommen lassen, damit wir es
- in die Distribution integrieren können.
+
+\lang english
+We shall try to provide a thorough description of the process of writing
+ layout files here.
+ However, there are so many different types of documents supported even
+ by just LaTeX that we can't hope to cover every different possibility or
+ problem you might encounter.
+ The LyX users' list is frequented by people with lots of experience with
+ layout design who are willing to share what they've learned, so please
+ feel free to ask questions there.
 \end_layout
 
 \begin_layout Standard
-Bei allen im folgenden angegebenen Optionen ist die Groß-/Kleinschreibung
- nicht relevant, das heißt Style, style und StYlE bezeichnen denselben Befehl.
- Die jeweils möglichen Werte sind in eckigen Klammern hinter dem Namen aufgeführ
-t.
- Die Voreinstellung einer Option, also der Wert, den die Option erhält,
- wenn sie 
-\emph on
-nicht
-\emph default
- spezifiziert wird, ist 
-\family typewriter
-\emph on
-hervorgehoben
-\family default
-\emph default
-.
- Wenn ein Argument einen Datentyp hat, wie 
-\emph on
-string
-\emph default
- oder 
-\emph on
-float
-\emph default
-, dann wird die Voreinstellung wie folgt dargestellt: 
-\family typewriter
-float=
-\emph on
-Voreinstellung
-\family default
-.
+
+\lang english
+As you prepare to write a new layout, it is extremely helpful to look at
+ the layouts distributed with LyX.
+ If you write a LyX layout for a LaTeX document class that might also be
+ used by others, or write a module that might be useful to others, then
+ you should consider posting your layout to the 
+\begin_inset CommandInset href
+LatexCommand href
+name "layout section on the LyX wiki"
+target "http://wiki.lyx.org/Layouts/Layouts"
+
+\end_inset
+
+ or even to the LyX developers' list, so that it might be included in LyX
+ itself.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Note that LyX is licensed under the General Public License, so any material
+ that is contributed to LyX must be similarly licensed.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
-Layout-Module
+
+\lang english
+Layout modules
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Layout-Module"
+name "sub:Layout-modules"
 
 \end_inset
 
@@ -4706,185 +4715,190 @@ name "sub:Layout-Module"
 \end_layout
 
 \begin_layout Standard
-Seit LyX 1.6 gibt es, ähnlich wie Layout-Dateien, Layout-Module.
- Module sind für LaTeX-Pakete, was Layouts für LaTeX-Klassen sind, und einige
- Module -- wie zum Beispiel das Endnoten-Modul -- unterstützen solch ein
- Paket.
- Man kann sagen, dass Layout-Module ähnlich sind wie eingefügte Dateien
- -- Dateien wie 
-\family typewriter
+
+\lang english
+We have spoken to this point about `layout files'.
+ But there are different sorts of files that contain layout information.
+ Layout files, strictly so called, have the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+.layout
+\end_layout
+
+\end_inset
+
+ extension and provide LyX with information about document classes.
+ As of LyX 1.6, however, layout information can also be contained in layout
+ 
+\emph on
+modules
+\emph default
+, which have the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+.module
+\end_layout
+
+\end_inset
+
+ extension.
+ Modules are to LaTeX packages much as layouts are to LaTeX classes, and
+ some modules—such as the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+endnotes
+\end_layout
+
+\end_inset
+
+ module—specifically provide support for one package.
+ In a sense, layout modules are similar to included
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+These can have any extension, but by convention have the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+.inc
+\end_layout
+
+\end_inset
+
+ extension.
+\end_layout
+
+\end_inset
+
+ files—files like 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 stdsections.inc
-\family default
-.
- Sie sind nicht speziell für ein Dokument-Layout, sondern können in verschiedene
-n Layouts benutzt werden.
- Der Unterschied ist, dass man keine Layout-Dateien ändern muss, wenn man
- Layout-Module benutzt.
- Stattdessen wählt man Module in 
-\family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-Module
-\family default
- aus.
+\end_layout
+
+\end_inset
+
+—in that modules are not specific to a given document class but may be used
+ with many different classes.
+ The difference is that using an included file with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+article.cls
+\end_layout
+
+\end_inset
+
+ requires editing that file.
+ Modules, by contrast, are selected in the 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Document\SpecialChar \menuseparator
+Settings
+\end_layout
+
+\end_inset
+
+ dialog.
 \end_layout
 
 \begin_layout Standard
-Module zu erstellen ist die einfachste Art, mit dem Editieren von Layouts
- zu beginnen, weil es so einfach sein kann wie das Hinzufügen eines neuen
- Absatzes oder einer flexiblen Einfügung.
- Aber Module können prinzipiell alles enthalten, was Layout-Dateien enthalten
- können.
+
+\lang english
+Building modules is the easiest way to get started with layout editing,
+ since it can be as simple as adding a single new paragraph style or flex
+ inset.
+ But modules may, in principle, contain anything a layout file can contain.
 \end_layout
 
 \begin_layout Standard
-Ein Modul muss mit einer Zeile wie der folgenden beginnen:
+
+\lang english
+After creating a new module and copying it to the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+layouts/
 \end_layout
 
-\begin_layout LyX-Code
-#
-\backslash
-DeclareLyXModule[endnotes.sty]{Endnotes}
+\end_inset
+
+ folder, you will need to reconfigure and then restart LyX for the module
+ to appear in the menu.
+ However, changes you make to the module will be seen immediately, if you
+ open 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Document\SpecialChar \menuseparator
+Settings
 \end_layout
 
-\begin_layout Standard
-Das Argument in eckigen Klammern ist optional: es nennt alle LaTeX-Pakete,
- von denen das Modul abhängt.
- Das notwendige Argument in geschweiften Klammern ist der Modulname, wie
- er in 
-\family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-Module
-\family default
- erscheint.
-\end_layout
+\end_inset
 
-\begin_layout Standard
-Nach der Moduldefinition sollten Zeilen wie die folgenden stehen:
-\end_layout
+, highlight something, and then hit 
+\begin_inset Quotes eld
+\end_inset
 
-\begin_layout LyX-Code
-#DescriptionBegin 
-\end_layout
-
-\begin_layout LyX-Code
-#Adds an endnote command, in addition to footnotes.
- 
-\end_layout
-
-\begin_layout LyX-Code
-#You will need to add  
-\backslash
-theendnotes in TeX code where you 
-\end_layout
-
-\begin_layout LyX-Code
-#want the endnotes to appear.
- 
-\end_layout
-
-\begin_layout LyX-Code
-#DescriptionEnd 
-\end_layout
-
-\begin_layout LyX-Code
-#Requires: somemodule | othermodule
-\end_layout
-
-\begin_layout LyX-Code
-#Excludes: badmodule
-\end_layout
-
-\begin_layout Standard
-Die Beschreibung wird in 
-\family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-Module
-\family default
- verwendet, um dem Benutzer Informationen über das Modul zu geben.
- Die Zeile 
-\family typewriter
-#Requires:\SpecialChar \ldots{}
-
-\family default
- nennt Module, die ebenfalls benötigt werden.
- Die Zeile 
-\family typewriter
-#Excludes:\SpecialChar \ldots{}
-
-\family default
- nennt Module, die nicht zusammen mit dem beschriebenen benutzt werden dürfen.
- Beide Zeilen sind optional, und Mehrfachnennungen werden durch | getrennt.
- Von den in der Zeile 
-\family typewriter
-#Requires:\SpecialChar \ldots{}
-
-\family default
- aufgeführten muss 
-\emph on
-mindestens
-\emph default
- 
-\emph on
-eins
-\emph default
- benutzt werden.
- Entsprechend darf von den in der Zeile 
-\family typewriter
-#Excludes:\SpecialChar \ldots{}
-
-\family default
- aufgeführten 
-\emph on
-keins
-\emph default
- benutzt werden.
- Die Module werden hier mit ihren 
-\emph on
-Dateinamen
-\emph default
- ohne die Erweiterung .module identifiziert, das heißt, 
-\family typewriter
-somemodule
-\family default
- bedeutet 
-\family typewriter
-somemodule.module
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-Nachdem Sie ein neues Modul erzeugt haben, müssen Sie LyX neu konfigurieren
- und neu starten, damit diese Modul in der Liste erscheint.
- Dagegen erscheinen Moduländerungen sofort wenn Sie 
-\family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-Module
-\family default
- öffnen, ein Modul auswählen und auf 
-\family sans
 OK
-\family default
- klicken.
-\end_layout
+\begin_inset Quotes erd
+\end_inset
 
-\begin_layout Description
-Anmerkung: 
+.
+ 
 \emph on
-Bevor
+It is strongly recommended that you save your work before doing this
 \emph default
- Sie das tun, sollten Sie Ihre Arbeit speichern.
- Außerdem sollten Sie Module nicht ändern, während Sie ein Dokument bearbeiten.
- Obwohl die Entwickler sich anstrengen, LyX in solchen Situationen stabil
- zu halten, können Syntaxfehler und andere merkwürdige Ergebnisse hervorrufen.
+.
+ In fact, 
+\emph on
+it is strongly recommended that you not attempt to edit modules while simultaneo
+usly working on actual documents
+\emph default
+.
+ Though of course the developers strive to keep LyX stable in such situations,
+ syntax errors and the like in your module file could cause strange behavior.
 \end_layout
 
 \begin_layout Subsubsection
-Lokales Layout
+
+\lang english
+Local Layout
 \end_layout
 
 \begin_layout Standard
@@ -4908,22 +4922,14 @@ Local Layout
 \begin_layout Standard
 
 \lang english
-You will find it
-\lang ngerman
- unter 
+You will find it under 
 \family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-Lokales
-\begin_inset space ~
-\end_inset
-
-Format
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Local Layout
 \family default
 .
- 
-\lang english
-The large text box allows you to enter anything that you might enter in
+ The large text box allows you to enter anything that you might enter in
  a layout file or module.
  You can think of a document's local layout, in fact, as a module that belongs
  just to it.
@@ -4996,121 +5002,186 @@ The warnings at the end of the previous section apply here, too.
 \end_layout
 
 \begin_layout Subsection
-Unterstützung neuer Dokumentenklassen
-\end_layout
 
-\begin_layout Standard
-Generell können drei Situationen auftreten, wenn Sie eine neue Dokumentenklasse
- unterstützen wollen.
- Bei den beiden einfacheren Fällen handelt es sich um LaTeX2e-Klassen- (
-\family typewriter
-.cls
-\family default
-) oder Stil- (
-\family typewriter
+\lang english
+Layout for 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 .sty
-\family default
-) Dateien.
- Wenn Sie Pech haben, liegt der dritte Fall vor, und bei der neuen Klasse
- handelt es sich um eine LaTeX 2.09 Stil-Datei.
- Das Vorgehen beim Anlegen einer neuen Layout-Datei für diese drei Fälle
- ist sehr ähnlich, lediglich im dritten Fall ist ein zusätzlicher Schritt
- notwendig, um LyX zu ermöglichen, auch mit LaTeX 2.09 zu arbeiten.
 \end_layout
 
-\begin_layout Subsection
-LaTeX2e 
-\family typewriter
-sty
-\family default
--Datei
+\end_inset
+
+ files
 \end_layout
 
 \begin_layout Standard
-Wenn es sich bei der neuen Dokumentenklasse um eine Stil-Datei handelt,
- die zusammen mit einer bereits existierenden und von LyX unterstützten
- Dokumentenklasse handelt, nehmen Sie am besten die Layout-Datei für diese
- Klasse als Ausgangspunkt und kopieren sie in Ihr lokales Verzeichnis.
- Der Einfachheit halber nehmen wir an, die neue Stil-Datei sei 
-\family typewriter
+
+\lang english
+There are two situations you are likely to encounter when wanting to support
+ a new LaTeX document class, involving style (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+.sty
+\end_layout
+
+\end_inset
+
+) files and LaTeX2e class (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+.cls
+\end_layout
+
+\end_inset
+
+) .
+ Supporting a style file is usually fairly easy.
+ Supporting a new class file is a bit harder.
+ We'll discuss the former in this section and the latter in the next.
+ Similar remarks apply, of course, if you want to support a new DocBook
+ DTD.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The easier case is the one in which your new document class is provided
+ as a style file that is to be used in conjunction with an already supported
+ document class.
+ For the sake of the example, we'll assume that the style file is called
+ 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 myclass.sty
-\family default
-, und sie ist dafür gedacht, mit der Standard-Dokumentenklasse 
-\family typewriter
+\end_layout
+
+\end_inset
+
+ and that it is meant to be used with 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 report.cls
-\family default
- verwendet zu werden.
+\end_layout
+
+\end_inset
+
+, which is a standard class.
  
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+Start by copying the existing class's layout file into your local directory:
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Of course, which directory is your local directory will vary by platform,
+ and LyX allows you to specify your local directory on startup, too, using
+ the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+-userdir
+\end_layout
+
+\end_inset
+
+ option.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout LyX-Code
+
+\lang english
 cp report.layout ~/.lyx/layouts/myclass.layout
 \end_layout
 
 \begin_layout Standard
-Editieren Sie nun 
-\family typewriter
+
+\lang english
+Then edit 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 myclass.layout
-\family default
-, und ändern Sie die Zeile
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-DeclareLaTe
-\family typewriter
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
 \end_layout
 
 \end_inset
 
-
-\family default
-XClass{report}
-\end_layout
-
-\begin_layout Standard
-um in
+ and change the line: 
 \end_layout
 
 \begin_layout LyX-Code
+
+\lang english
 
 \backslash
-DeclareLaTe
-\family typewriter
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family default
-XClass[report, myclass.sty]{report (myclass)}
+DeclareLaTeXClass{report}
 \end_layout
 
 \begin_layout Standard
-Fügen Sie nun irgendwo am Anfang der Datei folgende Zeilen ein:
+
+\lang english
+to read
 \end_layout
 
 \begin_layout LyX-Code
+
+\lang english
+
+\backslash
+DeclareLaTeXClass[report, myclass.sty]{report (myclass)}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Then add:
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
 Preamble 
 \begin_inset Newline newline
 \end_inset
 
-   
+    
 \backslash
 usepackage{myclass}
 \begin_inset Newline newline
@@ -5120,294 +5191,772 @@ EndPreamble
 \end_layout
 
 \begin_layout Standard
-Starten Sie jetzt LyX und konfigurieren Sie es neu (
-\family sans
-Werkzeuge\SpecialChar \menuseparator
-Neu
-\begin_inset space \space{}
+
+\lang english
+near the top of the file.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Start LyX and select 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Tools\SpecialChar \menuseparator
+Reconfigure
+\end_layout
+
 \end_inset
 
-konfigurieren
-\family default
-).
- Starten Sie LyX neu und legen Sie ein neues Dokument an.
- Sie sollten nun in 
-\family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen
-\family default
-\SpecialChar \ldots{}
- als mögliche Dokumentenklasse auch 
-\family sans
+.
+ Then restart LyX and try creating a new document.
+ You should see "
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+report (myclass)
+\end_layout
+
+\end_inset
+
+" as a document class option in the 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Document\SpecialChar \menuseparator
+Settings
+\end_layout
+
+\end_inset
+
+ dialog.
+ It is likely that some of the sectioning commands and such in your new
+ class will work differently from how they worked in the base class—
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 report
-\begin_inset space \space{}
+\end_layout
+
 \end_inset
 
-(myclass)
-\family default
- vorfinden.
- Höchstwahrscheinlich werden sich einige Befehle der neuen Klasse von denen
- der Basisklasse
+ in this example—so you can fiddle around with the settings for the different
+ sections if you wish.
+ The layout information for sections is contained in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+stdsections.inc
+\end_layout
+
+\end_inset
+
+, but you do not need to copy and change this file.
+ Instead, you can simply add your changes to your layout file, after the
+ line 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Input stdclass.inc
+\end_layout
+
+\end_inset
+
+, which itself includes 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+stdsections.inc
+\end_layout
+
+\end_inset
+
+.
+ For example, you might add these lines:
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+Style Chapter
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+    Font
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+        Family Sans
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+    EndFont
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+End
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+to change the font for chapter headings to sans-serif.
+ This will override (or, in this case, add to) the existing declaration
+ for the Chapter style.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Your new package may also provide commands or environments not present in
+ the base class.
+ In this case, you will want to add these to the layout file.
+ See 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:TextClass"
+
+\end_inset
+
+ for information on how to do so.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+myclass.sty
+\end_layout
+
+\end_inset
+
+ can be used with several different document classes, and even if it cannot,
+ you might find it easiest just to write a module that you can load with
+ the base class.
+ The simplest possible such module would be:
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+#
+\backslash
+DeclareLyXModule{My Package} 
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+#DescriptionBegin 
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+#Support for mypkg.sty.
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+#DescriptionEnd
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+Format 21
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+Preamble
+\begin_inset Newline newline
+\end_inset
+
+    
+\backslash
+usepackage{mypkg}
+\begin_inset Newline newline
+\end_inset
+
+EndPreamble
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+A more complex module might modify the behavior of some existing constructs
+ or define some new ones.
+ Again, see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:TextClass"
+
+\end_inset
+
+ for discussion.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Layout for 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+.cls
+\end_layout
+
+\end_inset
+
+ files
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+There are two possibilities here.
+ One is that the class file is itself based upon an existing document class.
+ For example, many thesis classes are based upon 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+book.cls
+\end_layout
+
+\end_inset
+
+.
+ To see whether yours is, look for a line like
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+
+\backslash
+LoadClass{book}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+in the file.
+ If so, then you may proceed largely as in the previous section, though
+ the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+DeclareLaTeXClass
+\end_layout
+
+\end_inset
+
+ line will be different.
+ If your new class is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+thesis
+\end_layout
+
+\end_inset
+
+ and it is based upon 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+book
+\end_layout
+
+\end_inset
+
+, then the line should read:
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 
-\family sans
-report
-\family default
- in diesem Beispiel
+\lang english
+And it will be easiest if you save the file to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+thesis.layout
 \end_layout
 
 \end_inset
 
- unterscheiden; Sie können dann mit den Einstellungen für die verschiedenen
- Umgebungstypen in der Layoutdatei herumexperimentieren.
- Dazu später mehr.
-\end_layout
-
-\begin_layout Subsection
-LaTeX2e 
-\family typewriter
-cls-
-\family default
-Datei
-\end_layout
-
-\begin_layout Standard
-In diesem Fall müssen Sie ziemlich sicher ein eigenes Layout von Grund auf
- neu erstellen.
- Dabei ist es angeraten, die Layout-Datei einer ähnlichen Dokumentenklasse
- als Basis zu verwenden und diese an den entsprechenden Stellen anzupassen.
- Zumindest sollten Sie eine existierende Layout-Datei betrachten um zu sehen,
- welche Dinge beachtet werden müssen.
+: LyX assumes that the document class has the same name as the layout file.
  
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+
+\backslash
+DeclareLaTeXClass[thesis,book]{thesis}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If, on the other hand, the new class is not based upon an existing class,
+ you will probably have to 
+\begin_inset Quotes eld
+\end_inset
+
+roll your own
+\begin_inset Quotes erd
+\end_inset
+
+ layout.
+ We strongly suggest copying an existing layout file which uses a similar
+ LaTeX class and then modifying it, if you can do so.
+ At least use an existing file as a starting point so you can find out what
+ items you need to worry about.
+ Again, the specifics are covered below.
+\end_layout
+
 \begin_layout Subsection
-LaTeX 2.09 
-\family sans
-sty
-\family default
--Datei
-\end_layout
 
-\begin_layout Standard
-Ob eine 
-\family typewriter
-.sty
-\family default
--Datei für das (jetzt obsolete) LaTeX 2.09 geschrieben wurde, können Sie
- an einem der beiden folgenden Dinge erkennen:
-\end_layout
-
-\begin_layout Enumerate
-Eine Beispieldatei, die diese Klasse verwendet, deklariert dies durch den
- Befehl 
-\family typewriter
-
-\backslash
-documentstyle{myclass}
-\family default
- (anstelle von 
-\family typewriter
-
-\backslash
-documentclass
-\family default
-)
-\end_layout
-
-\begin_layout Enumerate
-Der Aufruf von LaTeX mit einer Beispieldatei gibt eine Warnung aus, dass
- in den Kompatibilitätsmodus geschaltet wird.
-\end_layout
-
-\begin_layout Standard
-LyX unterstützt ausschließlich LaTeX2e-Dokumente.
- Aber das ist kein Grund zu verzweifeln, denn wo ein Wille ist, ist auch
- ein Weg (
-\begin_inset Quotes gld
-\end_inset
-
-Es war offensichtlich unmöglich; deshalb haben wir es trotzdem getan
-\begin_inset Quotes grd
-\end_inset
-
-).
- Die existierende Unterstützung für ReVTeX 3.1 ist ein Beispiel, bei dem
- der LaTeX 2.09 Code derart gekapselt wird, dass er in Dokumenten, die mit
- LaTeX2e formatiert wurden, verwendet werden kann.
- Sie können diese Kapselung auch für Ihr 
-\family typewriter
-myclass.sty
-\family default
- verwenden, sollte sich dieses als 2.09-Code herausstellen.
- Hier ein kurzes Rezept:
-\end_layout
-
-\begin_layout LyX-Code
-cp Ly
-\family typewriter
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
+\lang english
+Creating templates
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Creating-Templates"
 
 \end_inset
 
 
-\family default
-XDir/tex/revtex.cls ~/tex/myclass.cls
 \end_layout
 
 \begin_layout Standard
-(oder wo immer Sie Ihre lokalen TeX-Dateien speichern).
- Editieren Sie nun 
-\family typewriter
-my\SpecialChar \-
-class.cls
-\family default
- und ersetzen Sie jedes vorhandene 
+
+\lang english
+Once you have written a layout file for a new document class, you might
+ want to consider writing a 
 \emph on
-revtex
+template
 \emph default
- durch myclass.
- Wahrscheinlich sind einige der 
-\family typewriter
+ for it, too.
+ A template acts as a kind of tutorial for your layout, showing how it might
+ be used, though containing dummy content.
+ You can of course look at the various templates included with LyX for ideas.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Templates are created just like usual documents: using LyX.
+ The only difference is that usual documents contain all possible settings,
+ including the font scheme and the paper size.
+ Usually a user doesn't want a template to overwrite his preferred settings
+ for such parameters.
+ For that reason, the designer of a template should remove the corresponding
+ commands like 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 
 \backslash
-DeclareOption
-\family default
--Einträge für Ihre Stil-Datei nicht relevant, doch das soll Sie momentan
- nicht stören.
+font_roman
 \end_layout
 
-\begin_layout Standard
-Als nächstes erstellen Sie wie im vorigen Abschnitt beschrieben eine Datei
-\begin_inset Newline newline
 \end_inset
 
-
-\begin_inset Flex URL
+ or 
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-myclass.layout
-\end_layout
-
-\end_inset
-
-, verwenden aber diesmal den Eintrag
-\end_layout
-
-\begin_layout LyX-Code
+\lang english
 
 \backslash
-DeclareLaTe
-\family typewriter
+papersize
+\end_layout
 
-\begin_inset ERT
+\end_inset
+
+ from the template LyX file.
+ This can be done with any simple text-editor, for example 
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-{}
+\lang english
+vi
 \end_layout
 
 \end_inset
 
-
-\family default
-XClass{myclass}
-\end_layout
-
-\begin_layout Standard
-Eine 
-\family typewriter
-Preamble
-\family default
--Definition sollte nicht notwendig sein.
- Konfigurieren Sie LyX neu, und mit etwas Glück haben Sie ein funktionierendes
- System, das lediglich ein wenig Einstellungsarbeit bei der Darstellung
- benötigt.
- Das umfasst Veränderungen der Werte, die LyX für Abstände, Zeichensätze
- usw.
-\begin_inset space \space{}
-\end_inset
-
-verwendet; diese werden in der 
-\family typewriter
-.layout
-\family default
--Datei festgelegt.
-\end_layout
-
-\begin_layout Standard
-Weiterhin müssen Sie sicherstellen, dass alle Umgebungstypen, die in 
-\family typewriter
-myclass.
-\begin_inset Newline linebreak
-\end_inset
-
-cls
-\family default
- definiert werden, auch in 
-\begin_inset Flex URL
+ or 
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-myclass.layout
+\lang english
+notepad
 \end_layout
 
 \end_inset
 
- vorhanden sind.
- Falls einige davon fehlen, müssen Sie die entsprechenden Einträge hinzufügen.
- Kopieren Sie dazu einen ähnlich aussehenden Stil, und verändern Sie diesen
- nach Ihren Wünschen.
- Dies geschieht am einfachsten folgendermaßen:
-\end_layout
-
-\begin_layout LyX-Code
-Style FehlenderStyle
-\end_layout
-
-\begin_layout LyX-Code
-    CopyStyle ÄhnlicherStyle
-\end_layout
-
-\begin_layout LyX-Code
-    # hier die Unterschiede neu definieren
-\end_layout
-
-\begin_layout LyX-Code
-End
+.
+ 
 \end_layout
 
 \begin_layout Standard
-Im folgenden Abschnitt wird erläutert, was welches Element in einer 
-\family typewriter
-.layout
-\family default
--Datei macht.
+
+\lang english
+Put the edited template files you create in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+UserDir/templates/
+\end_layout
+
+\end_inset
+
+, copy the ones you use from the global template directory in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LyXDir/templates/
+\end_layout
+
+\end_inset
+
+ to the same place, and redefine the template path in the 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+Paths
+\end_layout
+
+\end_inset
+
+ dialog.
 \end_layout
 
 \begin_layout Standard
-Dies sollte ausreichend sein, um auf den richtigen Weg zu gelangen.
- Die folgenden Abschnitte enthalten Details zum tatsächlichen Inhalt der
- Layout-Dateien.
- Wenn es dennoch zu Problemen kommt, wenden Sie sich an die LyX-Mailing-Listen.
- Die Entwickler freuen sich immer über neue Dokumentenklassen!
+
+\lang english
+Note, by the way, that there is a template which has a particular meaning:
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+defaults.lyx
+\end_layout
+
+\end_inset
+
+.
+ This template is loaded every time you create a new document with 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+File\SpecialChar \menuseparator
+New
+\end_layout
+
+\end_inset
+
+ in order to provide useful defaults.
+ To create this template from inside LyX, all you have to do is to open
+ a document with the correct settings, and use the 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Save as Document Defaults
+\end_layout
+
+\end_inset
+
+ button.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Upgrading old layout files
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The format of layout files changes with each LyX release, so old layout
+ files need to be converted to the new format.
+ This process has been automated since LyX 1.4: If LyX reads a layout file
+ in an older format, it automatically calls the script 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+layout2layout.py
+\end_layout
+
+\end_inset
+
+ to convert it to a temporary file in current format.
+ The original file is left untouched.
+ If you use the layout file often, then, you may want to convert it permanently,
+ so that LyX does not have to do so itself every time.
+ To do this, you can call the converter manually:
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+mv myclass.layout myclass.old
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+python LyXDir/scripts/layout2layout.py myclass.old myclass.layout
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You need to replace 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LyXDir
+\end_layout
+
+\end_inset
+
+ with the name of your LyX system directory, of course.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Note that manual conversion does not affect included files, so these will
+ have to be converted separately.
 \end_layout
 
 \begin_layout Section
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:TextClass"
+
+\end_inset
+
+The layout file format
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+When it's finally time to get your hands dirty and create or edit your own
+ layout file, the following sections describe what you're up against.
+ Our advice is to go slowly, save and test often, listen to soothing music,
+ and enjoy one or two of your favorite adult beverages; more if you are
+ getting particularly stuck.
+ It's really not that hard, except that the multitude of options can become
+ overwhelming if you try to do too much in one sitting.
+ Go have another adult beverage, just for good measure.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Note that all the tags used in layout files are case-insensitive.
+ This means that 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Style
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+style
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+StYlE
+\end_layout
+
+\end_inset
+
+ are really the same tag.
+ The possible values are printed in brackets after the feature's name.
+ The default value if a feature isn't specified inside a text class-description
+ is typeset 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+emphasized
+\end_layout
+
+\end_inset
+
+.
+ If the argument has a data type like 
+\begin_inset Quotes eld
+\end_inset
+
+string
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+float
+\begin_inset Quotes erd
+\end_inset
+
+, the default is shown like this: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+float=
+\emph on
+default
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
 Deklaration einer neuen Textklasse
 \end_layout
 
@@ -5699,6 +6248,251 @@ Einstellungen
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
+The Module declaration
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+A module must begin with a line like the following:
+\end_layout
+
+\begin_layout LyX-Code
+#
+\backslash
+DeclareLyXModule[endnotes.sty]{Endnotes} 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The mandatory argument, in curly brackets, is the name of the module, as
+ it should appear in 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Modules
+\end_layout
+
+\end_inset
+
+.
+ The argument in square brackets is optional: It declares any LaTeX packages
+ on which the module depends.
+ Please note that only packages about which LyX knows should be listed in
+ the square brackets.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+The list of such packages is documented only in the source code.
+\end_layout
+
+\end_inset
+
+ LyX will not check for arbitrary packages.
+ It is also possible to use the form 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+from->to
+\end_layout
+
+\end_inset
+
+ as an optional argument, which declares that the module can only be used
+ when there exists a conversion chain between the formats `
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+from
+\end_layout
+
+\end_inset
+
+' and `
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+to
+\end_layout
+
+\end_inset
+
+'.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The module declaration should then be followed by lines like the following
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Preferably in English if the module should be published with LyX.
+ This description will appear in the list of messages to be translated and
+ will be thus translated with the next interface update.
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout LyX-Code
+#DescriptionBegin 
+\end_layout
+
+\begin_layout LyX-Code
+#Adds an endnote command, in addition to footnotes.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+#You will need to add  
+\backslash
+theendnotes in TeX code where you 
+\end_layout
+
+\begin_layout LyX-Code
+#want the endnotes to appear.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+#DescriptionEnd 
+\end_layout
+
+\begin_layout LyX-Code
+#Requires: somemodule | othermodule
+\end_layout
+
+\begin_layout LyX-Code
+#Excludes: badmodule
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The description is used in 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Modules
+\end_layout
+
+\end_inset
+
+ to provide the user with information about what the module does.
+ The 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Requires
+\end_layout
+
+\end_inset
+
+ line is used to identify other modules with which this one must be used;
+ the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Excludes
+\end_layout
+
+\end_inset
+
+ line is used to identify modules with which this one may not be used.
+ Both are optional, and, as shown, multiple modules should be separated
+ with the pipe symbol: |.
+ Note that the required modules are treated disjunctively: 
+\emph on
+at least one
+\emph default
+ of the required modules must be used.
+ Similarly, 
+\emph on
+no
+\emph default
+ excluded module may be used.
+ Note that modules are identified here by their 
+\emph on
+filenames
+\emph default
+ without the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+.module
+\end_layout
+
+\end_inset
+
+ extension.
+ So 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+somemodule
+\end_layout
+
+\end_inset
+
+ is really 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+somemodule.module
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
 Dateiformat
 \end_layout
 
@@ -5707,16 +6501,57 @@ Die erste Zeile, die kein Kommentar ist, muss die Dateiformatnummer enthalten:
 \end_layout
 
 \begin_layout Description
+
+\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Format
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-[int] Diese Marke wurde mit LyX 1.4.0 eingeführt.
- Das hier dokumentierte Dateiformat ist Format 8.
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+int
+\end_layout
+
+\end_inset
+
+] 
+\family default
+\lang english
+The format of the layout file.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This tag was introduced with LyX 1.4.0.
+ Layout files from LyX 1.3.x and earlier don't have an explicit file format
+ and are considered to be of format 1.
+ The format for the present version of LyX is format 21.
+ But each version of LyX is capable of reading earlier versions' layout
+ files, just as they are capable of reading files produced by earlier versions
+ of LyX.
+ There is, however, no provision for converting to earlier formats.
+ So LyX 1.6.x will not read layout files in format 21 but only files in format
+ 11 or earlier.
 \end_layout
 
 \begin_layout Subsection
 Allgemeine Parameter für Textklassen
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Allgemeine-Parameter-für"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5724,6 +6559,71 @@ Nachfolgend allgemeine Parameter, die die Form des gesamten Dokumentes be\Specia
 schrei\SpecialChar \-
 b
 en:
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+AddToHTMLPreamble
+\end_layout
+
+\end_inset
+
+ 
+\family default
+\lang english
+Adds information that will be output in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<head>
+\end_layout
+
+\end_inset
+
+ block when this document class is output to XHTML.
+ Typically, this would be used to output CSS style information, but it can
+ be used for anything that can appear in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<head>
+\end_layout
+
+\end_inset
+
+.
+ Must end with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+EndPreamble
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -5751,6 +6651,53 @@ EndPreamble
 \begin_layout Description
 
 \family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+CiteFormat
+\end_layout
+
+\end_inset
+
+ 
+\family default
+\lang english
+Defines formats for use in the display of bibliographic information.
+ See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Citation-format-description"
+
+\end_inset
+
+ for details.
+ Must end with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+End
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
 \series medium
 ClassOptions\SpecialChar \ldots{}
 End
@@ -5768,7 +6715,7 @@ Dieser Abschnitt beschreibt verschiedene globale Optionen, die von der Dokumente
 nklasse unterstützt werden.
  Eine detaillierte Beschreibung finden Sie in Abschnitt 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sub:Der-Abschnitt-ClassOptions"
 
 \end_inset
@@ -5834,7 +6781,13 @@ Einstellungen
 \end_layout
 
 \begin_layout Description
-Counter 
+
+\family typewriter
+\series medium
+Counter
+\family default
+\series default
+ 
 \begin_inset space ~
 \end_inset
 
@@ -5981,8 +6934,8 @@ nicht
  in einem Modul benutzt werden.
  Module haben einen anderen Weg, andere Module auszuschließen (siehe 
 \begin_inset CommandInset ref
-LatexCommand vref
-reference "sub:Layout-Module"
+LatexCommand ref
+reference "sub:Layout-modules"
 
 \end_inset
 
@@ -6007,7 +6960,7 @@ Float
 definiert ein neues Gleitobjekt (siehe 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Gleitobjekte"
+reference "sub:Gleitobjekte"
 
 \end_inset
 
@@ -6016,6 +6969,229 @@ reference "Gleitobjekte"
 End
 \family default
  beendet werden.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+HTMLPreamble
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+Sets the information that will be output in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<head>
+\end_layout
+
+\end_inset
+
+ block when this document class is output to XHTML.
+ Note that this will completely override any prior 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLPreamble
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+AddToHTMLPreamble
+\end_layout
+
+\end_inset
+
+ declarations.
+ (Use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+AddToHTMLPreamble
+\end_layout
+
+\end_inset
+
+ if you just want to add material to the preamble.) Must end with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+EndPreamble
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+HTMLTOCSection
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+The layout to use for the table of contents, bibliography, and so forth,
+ when the document is output to HTML.
+ For articles, this should normally be Section; for books, Chapter.
+ If it is not given, then LyX will attempt to figure out which layout to
+ use.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+IfCounter
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+Modifies the properties of the given counter.
+ If the counter does not exist, the section is ignored.
+ Must end with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+End
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+See Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Zähler"
+
+\end_inset
+
+ for details on counters.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+IfStyle
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+Modifies the properties of the given paragraph style.
+ If the style does not exist, the section is ignored.
+ Must end with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+End
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -6107,6 +7283,32 @@ MMMMM
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NoCounter
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+This command deletes an existing counter, usually one defined in an included
+ file.
 \end_layout
 
 \begin_layout Description
@@ -6917,6 +8119,62 @@ Liste
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+BabelPreamble
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+Note that this will completely override any prior 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+BabelPreamble
+\end_layout
+
+\end_inset
+
+ declaration for this style.
+ Must end with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+EndBabelPreamble
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ See section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:I18n"
+
+\end_inset
+
+ for details on its use.
+\end_layout
+
+\begin_layout Description
 
 \family typewriter
 \series medium
@@ -7159,88 +8417,6 @@ EndLabelType
 
 \family typewriter
 \series medium
-Fill_Bottom
-\family default
-\series default
- [
-\family typewriter
-\emph on
-0
-\emph default
-,1
-\family default
-] Steuert ähnlich wie 
-\family typewriter
-Fill_Top
-\family default
- das Einfügen eines 
-\family typewriter
-
-\backslash
-vfill
-\family default
- 
-\emph on
-unter
-\emph default
- dem Absatz.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-Fill_Top
-\family default
-\series default
- [
-\family typewriter
-\emph on
-0
-\emph default
-,1
-\family default
-]
-\begin_inset Newline newline
-\end_inset
-
-Hiermit wird festgelegt, ob über dem Absatz ein 
-\family typewriter
-
-\backslash
-vfill
-\family default
- eingefügt werden soll.
- Dies kann auch im Menü 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Besondere
-\begin_inset space \space{}
-\end_inset
-
-Formatierung\SpecialChar \menuseparator
-Vertikaler
-\begin_inset space \space{}
-\end_inset
-
-Abstand\SpecialChar \ldots{}
-
-\family default
- eingestellt werden, indem man in 
-\family sans
-Abstand
-\family default
- den Wert 
-\family sans
-Variabel
-\family default
- auswählt.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
 Font
 \family default
 \series default
@@ -7325,6 +8501,31 @@ FreeSpacing
 
 \begin_layout Description
 
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTML*
+\end_layout
+
+\end_inset
+
+ These tags are used with XHTML output.
+ See 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Paragraph-Style-XHTML"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
 \family typewriter
 \series medium
 InnerTag
@@ -7339,6 +8540,71 @@ InnerTag
 \end_inset
 
 wird nur für XML-Formate benutzt.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+InPreamble
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[1, 0]
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+If 1, marks the style as to be included in the document preamble rather
+ than in the document body.
+ This is useful for document classes that want such information as the title
+ and author to appear in the preamble.
+ Note that this works only for styles for which the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LatexType
+\end_layout
+
+\end_inset
+
+ is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Command
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Paragraph
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -7562,6 +8828,21 @@ reference "sub:Beschreibung-des-Zeichensatzes"
 \end_inset
 
 .)
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelIndent
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+Text that indicates how far a label should be indented.
 \end_layout
 
 \begin_layout Description
@@ -7895,6 +9176,62 @@ reference "sub:Zähler"
 \end_layout
 
 \end_deeper
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LangPreamble
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+Note that this will completely override any prior 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LangPreamble
+\end_layout
+
+\end_inset
+
+ declaration for this style.
+ Must end with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+EndLangPreamble
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ See section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:I18n"
+
+\end_inset
+
+ for details on its use.
+\end_layout
+
 \begin_layout Description
 
 \family typewriter
@@ -8379,6 +9716,8 @@ NeedProtect
 \begin_inset space ~
 \end_inset
 
+
+\series medium
 [
 \family typewriter
 \emph on
@@ -8386,7 +9725,9 @@ NeedProtect
 \emph default
 ,1
 \family default
-] 
+]
+\series default
+ 
 \begin_inset space ~
 \end_inset
 
@@ -8419,6 +9760,8 @@ Newline
 \begin_inset space ~
 \end_inset
 
+
+\series medium
 [
 \family typewriter
 0,
@@ -8430,7 +9773,9 @@ Newline
 1
 \family default
 \emph default
-] 
+]
+\series default
+ 
 \begin_inset space ~
 \end_inset
 
@@ -8470,6 +9815,8 @@ NextNoIndent
 \begin_inset space ~
 \end_inset
 
+
+\series medium
 [
 \family typewriter
 1,
@@ -8481,7 +9828,9 @@ NextNoIndent
 0
 \family default
 \emph default
-] 
+]
+\series default
+ 
 \begin_inset space ~
 \end_inset
 
@@ -8544,6 +9893,61 @@ ist die Zahl der optionalen Argumente, die in diesem Layout benutzt werden
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ParbreakIsNewline
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "des:ParbreakIsNewline"
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+Indicates that paragraphs will not be separated by an empty line in LaTeX
+ output, but only by a line break; together with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+PassThru 1
+\end_layout
+
+\end_inset
+
+, this allows to emulate a plain text editor (like the ERT inset).
+\end_layout
+
+\begin_layout Description
 
 \family typewriter
 \series medium
@@ -8554,11 +9958,15 @@ ParIndent
 \begin_inset space ~
 \end_inset
 
+
+\series medium
 [
 \family typewriter
 string=""
 \family default
-] 
+]
+\series default
+ 
 \begin_inset space ~
 \end_inset
 
@@ -8822,6 +10230,79 @@ ment}
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+RefPrefix
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+The prefix to use when creating labels referring to paragraphs of this type.
+ This allows the use of formatted references.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+RequiredArgs
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+int=0
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+The number of required arguments that the LaTeX command or environment correspon
+ding to this style expects.
+ In the case of a command, these are required arguments 
+\emph on
+other than
+\emph default
+ that associated with the content of the paragraph itself.
+ These do not actually have to be provided: LyX will output empty arguments
+ if necessary.
+ Note that optional arguments will be output before required arguments.
+ See the discussion of the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+OptionalArgs
+\end_layout
+
+\end_inset
+
+ tag above for more information.
+\end_layout
+
+\begin_layout Description
 
 \family typewriter
 \series medium
@@ -8996,6 +10477,42 @@ setspace.sty
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Spellcheck
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+Spellcheck paragraphs of this style.
+ Default is true.
+\end_layout
+
+\begin_layout Description
 
 \family typewriter
 \series medium
@@ -9076,10 +10593,415 @@ Der vertikale Abstand, der die erste Serie von Absätzen vom vorangehenden
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:I18n"
+
+\end_inset
+
+Internationalization of Paragraph Styles
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+LyX has long supported internationalization of layout information, but,
+ until version 2.0, this applied only to the user interface and not to, say,
+ PDF output.
+ Thus, French authors were forced to resort to ugly hacks if they wanted
+ `
+\lang french
+Théorème
+\lang english
+ 1' instead of `Theorem 1'.
+ Thanks to Georg Baum, that is no longer the case.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Style
+\end_layout
+
+\end_inset
+
+ defines text that is to appear in the typeset document, it may use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LangPreamble
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+BabelPreamble
+\end_layout
+
+\end_inset
+
+ to support non-English and even multi-language documents correctly.
+ The following excerpt (from the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+theorems-ams.inc
+\end_layout
+
+\end_inset
+
+ file) shows how this works:
+\end_layout
+
+\begin_layout LyX-Code
+Preamble
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+  
+\backslash
+theoremstyle{remark}
+\end_layout
+
+\begin_layout LyX-Code
+  
+\backslash
+newtheorem{claim}[thm]{
+\backslash
+protect
+\backslash
+claimname}
+\end_layout
+
+\begin_layout LyX-Code
+EndPreamble
+\end_layout
+
+\begin_layout LyX-Code
+LangPreamble
+\end_layout
+
+\begin_layout LyX-Code
+  
+\backslash
+providecommand{
+\backslash
+claimname}{_(Claim)}
+\end_layout
+
+\begin_layout LyX-Code
+EndLangPreamble
+\end_layout
+
+\begin_layout LyX-Code
+BabelPreamble
+\end_layout
+
+\begin_layout LyX-Code
+    
+\backslash
+addto
+\backslash
+captions$$lang{
+\backslash
+renewcommand{
+\backslash
+claimname}{_(Claim)}}
+\end_layout
+
+\begin_layout LyX-Code
+EndBabelPreamble
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\lang english
+In principle, any legal LaTeX may appear in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LangPreamble
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+BabelPreamble
+\end_layout
+
+\end_inset
+
+ tags, but in practice they will typically look as they do here.
+ The key to correct translation of the typeset text is the definition of
+ the LaTeX command 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+
+\backslash
+claimname
+\end_layout
+
+\end_inset
+
+ and its use in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+
+\backslash
+newtheorem
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LangPreamble
+\end_layout
+
+\end_inset
+
+ tag provides for internationalization based upon the overall language of
+ the document.
+ The contents of the tag will be included in the preamble, just as with
+ the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Preamble
+\end_layout
+
+\end_inset
+
+ tag.
+ What makes it special is the use of the 
+\begin_inset Quotes eld
+\end_inset
+
+function
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+_()
+\end_layout
+
+\end_inset
+
+, which will be replaced, when LyX produces LaTeX output, with the translation
+ of its argument into the document language.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+BabelPreamble
+\end_layout
+
+\end_inset
+
+ tag is more complex, since it is meant to provide support for multi-language
+ documents and so offers an interface to the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+babel
+\end_layout
+
+\end_inset
+
+ package.
+ Its contents will be added to the preamble once for each language that
+ appears in the document.
+ In this case, the argument to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+_()
+\end_layout
+
+\end_inset
+
+ will be replaced with its translation into the language in question; the
+ expression 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$lang
+\end_layout
+
+\end_inset
+
+ is replaced by the language name (as used by the babel package).
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+A German document that also included a French section would thus have the
+ following in the preamble:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+addto
+\backslash
+captionsfrench{
+\backslash
+renewcommand{
+\backslash
+claimname}{Affirmation}}   
+\backslash
+addto
+\backslash
+captionsngerman{
+\backslash
+renewcommand{
+\backslash
+claimname}{Behauptung}}   
+\backslash
+providecommand{
+\backslash
+claimname}{Behauptung}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+LaTeX and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+babel
+\end_layout
+
+\end_inset
+
+ will then conspire to produce the correct text in the output.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+One important point to note here is that the translations are provided by
+ LyX itself, through the same mechanism it uses for internationalization
+ of the user interface.
+ This means, in effect, that 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LangPreamble
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+BabelPreamble
+\end_layout
+
+\end_inset
+
+ are really only of use in layout files that are provided with LyX, since
+ text entered in user-created layout files will not be seen by LyX's internation
+alization routines.
+ That said, however, any layout created with the intention that it will
+ be included with LyX should use these tags where appropriate.
+\end_layout
+
+\begin_layout Subsection
 Gleitobjekte
 \begin_inset CommandInset label
 LatexCommand label
-name "Gleitobjekte"
+name "sub:Gleitobjekte"
 
 \end_inset
 
@@ -9682,6 +11604,43 @@ lorCode.h
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ContentAsLabel
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+Whether to use the content of the inset as the label, when the inset is
+ closed.
+ Default is false.
+\end_layout
+
+\begin_layout Description
 
 \family typewriter
 \series medium
@@ -9780,6 +11739,106 @@ Classic
 Conglomerate
 \family default
 .
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Display
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+Only useful if 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LatexType
+\end_layout
+
+\end_inset
+
+ is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Environment
+\end_layout
+
+\end_inset
+
+.
+ Indicates whether the environment will stand on its own in LaTeX output
+ or will appear inline with the surrounding text.
+ If set to false, it is supposed that the LaTeX environment ignores white
+ space (including one newline character) after the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+
+\backslash
+begin{
+\emph on
+LatexName
+\emph default
+}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+
+\backslash
+end{
+\emph on
+LatexName
+\emph default
+}
+\end_layout
+
+\end_inset
+
+ tags.
+ Default is true.
 \end_layout
 
 \begin_layout Description
@@ -9924,6 +11983,69 @@ reference "FreeSpacing"
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+HTML*
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+These tags control XHTML output.
+ See section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Tags-for-XHTML"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+InToc
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+Whether to include the contents of this inset in the strings generated for
+ the `Outline' pane.
+ One would not, for example, want the content of a footnote in a section
+ header to be included in the TOC displayed in the outline, but one would
+ normally want the content of a character style displayed.
+ Default is false: not to include.
 \end_layout
 
 \begin_layout Description
@@ -10209,6 +12331,49 @@ nicht
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ParbreakIsNewline
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+As with paragraph styles (see page 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "des:ParbreakIsNewline"
+
+\end_inset
+
+).
+ Default is false.
+\end_layout
+
+\begin_layout Description
 
 \family typewriter
 \series medium
@@ -10283,6 +12448,32 @@ reference "Preamble"
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+RefPrefix
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+The prefix to use when creating labels referring to insets of this type.
+ This allows the use of formatted references.
+\end_layout
+
+\begin_layout Description
 
 \family typewriter
 \series medium
@@ -10309,6 +12500,79 @@ reference "Requires-2"
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ResetsFont
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+Whether this inset should use the font of its surrounding environment or
+ uses its own.
+ Default is true: uses its own.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Spellcheck
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+Spellcheck the contents of this inset.
+ Default is true.
 \end_layout
 
 \begin_layout Subsection
@@ -10625,252 +12889,3274 @@ und es sind folgende Befehle vorhanden:
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
-Family
-\family default
-\series default
- [
-\family typewriter
-\emph on
-Roman
-\emph default
-, Sans, Typewriter
-\family default
-] 
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-Series
-\family default
-\series default
- [
-\family typewriter
-\emph on
-Medium
-\emph default
-, Bold
-\family default
-] 
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-Shape
-\family default
-\series default
- [
-\family typewriter
-\emph on
-Up
-\emph default
-, Italic, SmallCaps, Slanted
-\family default
-] 
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-Size
-\family default
-\series default
- [
-\family typewriter
-tiny, small,
-\family default
- 
-\family typewriter
-\emph on
-normal
-\emph default
-, large, larger, largest, huge, giant
-\family default
-]
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 Color
-\family default
-\series default
+\end_layout
+
+\end_inset
+
  [
-\family typewriter
-\emph on
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 none
-\emph default
-, black, white, red, green, blue, cyan, magenta, yellow
-\family default
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+black
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+white
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+red
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+green
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+blue
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+cyan
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+magenta
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+yellow
+\end_layout
+
+\end_inset
+
 ]
 \end_layout
 
-\begin_layout Subsection
-Alte Layout-Dateien aktualisieren
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Family
 \end_layout
 
-\begin_layout Standard
-Das Dateiformat von Layout-Dateien ändert sich hin und wieder, so dass alte
- Layout-Dateien konvertiert werden müssen.
- Mit LyX 1.4.0 wurde dieser Prozess automatisiert: wenn LyX eine Layout-Datei
- mit altem Format liest, ruft es das Konvertierungswerkzeug 
-\family typewriter
-LyXDir/scripts/layout2layout.py
-\family default
- auf und konvertiert die Datei in eine temporäre Datei mit dem neuen Format.
- Die Originaldatei wird nicht verändert.
- Wenn Sie sie permanent konvertieren wollen, müssen Sie das von Hand tun:
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Roman
 \end_layout
 
-\begin_layout LyX-Code
-python $LyXDir/scripts/layout2layout.py myclass.layout myclass\SpecialChar \-
-new.layout
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Sans
 \end_layout
 
-\begin_layout Standard
-Sie müssen dabei 
-\family typewriter
-$LyXDir
-\family default
- durch den Namen Ihres LyX-Systemverzeichnisses ersetzen, wenn Sie es nicht
- als Umgebungsvariable definiert haben.
- Danach kopieren Sie 
-\family typewriter
-myclass\SpecialChar \-
-new.layout
-\family default
- nach 
-\family typewriter
-UserDir/layouts/
-\family default
-.
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Typewriter
 \end_layout
 
-\begin_layout Standard
-Die automatische Konvertierung behandelt nur Syntaxänderungen.
- Es kann keine Fälle handhaben, in denen Inhalte geändert wurden, also müssen
- diese getrennt konvertiert werden.
+\end_inset
+
+]
 \end_layout
 
-\begin_layout Section
-Vorlagen erstellen
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Misc
 \end_layout
 
-\begin_layout Standard
-Vorlagen werden genauso erstellt wie gewöhnliche Dokumente.
- Der einzige Unterschied ist: normale Dokumente enthalten zwangsläufig alle
- nur möglichen Einstellungen, einschließlich Zeichensatzschema und Papiergröße.
- Normalerweise möchte ein Benutzer nicht, dass eine Vorlage seine persönlichen
- Voreinstellungen überschreibt.
- Deshalb sollte der Designer einer Vorlage alle entsprechenden LyX-Befehle
- wie 
-\family typewriter
+\end_inset
 
-\backslash
-fontscheme
-\family default
- oder 
-\family typewriter
-
-\backslash
-papersize
-\family default
- aus der LyX-Datei entfernen.
- Dies kann (und muss) mit einem gewöhnlichen Texteditor durchgeführt werden.
-\end_layout
-
-\begin_layout Standard
-Sie sollten Ihre persönlichen Vorlagen nach 
-\family typewriter
-UserDir/templates/
-\family default
- kopieren, ebenso die globalen Vorlagen aus dem Verzeichnis 
-\family typewriter
-Ly
-\begin_inset ERT
+ 
+\lang english
+[
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-{}
+\lang english
+string
 \end_layout
 
 \end_inset
 
-XDir/templates/
-\family default
- und anschließend das Vorlagenverzeichnis im Dialog 
-\family sans
-Werkzeuge\SpecialChar \menuseparator
-Einstellungen
-\family default
-\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+] Valid arguments are: 
+\begin_inset Flex Code
+status collapsed
 
-\family sans
-Pfade
-\family default
-\SpecialChar \menuseparator
+\begin_layout Plain Layout
 
-\family sans
-Do\SpecialChar \-
-ku\SpecialChar \-
-ment\SpecialChar \-
-vor\SpecialChar \-
-la\SpecialChar \-
-gen:
-\family default
- auf das private Verzeichnis setzen.
+\lang english
+emph
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+noun
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+strikeout
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+underbar
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+uuline
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+uwave
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+no_emph
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+no_noun
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+no_strikeout
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+no_bar
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+no_uuline
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+no_uwave
+\end_layout
+
+\end_inset
+
+.
+ Each of these turns on or off the corresponding attribute.
+ For example, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+emph
+\end_layout
+
+\end_inset
+
+ turns on emphasis, and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+no_emph
+\end_layout
+
+\end_inset
+
+ turns it off.
+ 
+\begin_inset Newline newline
+\end_inset
+
+If the latter seems puzzling, remember that the font settings for the present
+ context are generally inherited from the surrounding context.
+ So 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+no_emph
+\end_layout
+
+\end_inset
+
+ would turn off the emphasis that was anyway in effect, say, in a theorem
+ environment.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Series
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Medium
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Bold
+\end_layout
+
+\end_inset
+
+] 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Shape
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Up
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Italic
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+SmallCaps
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Slanted
+\end_layout
+
+\end_inset
+
+] 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Size
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+tiny
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+small
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+normal
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+large
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+larger
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+largest
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+huge
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+giant
+\end_layout
+
+\end_inset
+
+]
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Citation-format-description"
+
+\end_inset
+
+Citation format description
 \end_layout
 
 \begin_layout Standard
-Beachten Sie.
- dass es eine Vorlage mit besonderer Bedeutung gibt: 
-\family typewriter
-defaults.
-\begin_inset Newline linebreak
+
+\lang english
+The 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+CiteFormat
+\end_layout
+
 \end_inset
 
-lyx
-\family default
+ blocks are used to describe how bibliographic information should be displayed,
+ both within LyX itself (in the citation dialog and in tooltips, for example)
+ and in XHTML output.
+ Such a block might look like this:
+\end_layout
+
+\begin_layout LyX-Code
+CiteFormat
+\end_layout
+
+\begin_layout LyX-Code
+ article ...
+\end_layout
+
+\begin_layout LyX-Code
+ book ...
+\end_layout
+
+\begin_layout LyX-Code
+End
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The individual lines define how the bibliographic information associated
+ with an article or book, respectively, is to be displayed, and such a definitio
+n can be given for any `entry type' that might be present in a BibTeX file.
+ LyX defines a default format in the source code that will be used if no
+ specific definition has been given.
+ LyX predefines several formats in the file 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+stdciteformats.inc
+\end_layout
+
+\end_inset
+
+, which is included in most of LyX's document classes.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The definitions use a simple language that allows BibTeX keys to be replaced
+ with their values.
+ Keys should be enclosed in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+%
+\end_layout
+
+\end_inset
+
+ signs, e.g.: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+%author%
+\end_layout
+
+\end_inset
+
 .
- Diese Vorlage wird jedesmal geladen, wenn Sie ein neues Dokument mit 
-\family sans
-Datei\SpecialChar \menuseparator
-Neu
-\family default
- anlegen, damit dieses vernünftige Standardeinstellungen hat.
- Um diese Vorlage zu erstellen, müssen Sie lediglich ein Dokument mit den
- von Ihnen be\SpecialChar \-
-vor\SpecialChar \-
-zug\SpecialChar \-
-ten Einstellungen öffnen und dann im Dialog 
-\family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen
-\family default
-\SpecialChar \ldots{}
- den Schalter 
-\family sans
-Als
-\begin_inset space \space{}
+ So a simple definition might look like this:
+\end_layout
+
+\begin_layout LyX-Code
+misc %author%, 
+\begin_inset Quotes eld
 \end_inset
 
-Dokument-Standards
-\begin_inset space \space{}
+%title
+\begin_inset Quotes erd
 \end_inset
 
-speichern
-\family default
- anklicken.
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This would print the author, followed by a comma, followed by the title,
+ in quotes, followed by a period.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Of course, sometimes you may want to print a key only if it exists.
+ This can be done by using a conditional construction, such as: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+{%volume%[[vol.
+\begin_inset space ~
+\end_inset
+
+%volume%]]}
+\end_layout
+
+\end_inset
+
+.
+ This says: If the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+volume
+\end_layout
+
+\end_inset
+
+ key exists, then print 
+\begin_inset Quotes eld
+\end_inset
+
+vol.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ followed by the volume key.
+ It is also possible to have an else clause in the conditional, such as:
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+{%author%[[%author%]][[%editor%, ed.]]}
+\end_layout
+
+\end_inset
+
+.
+ Here, the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+author
+\end_layout
+
+\end_inset
+
+ key is printed if it exists; otherwise, the editor key is printed, followed
+ by 
+\begin_inset Quotes eld
+\end_inset
+
+,
+\begin_inset space ~
+\end_inset
+
+ed.
+\begin_inset Quotes erd
+\end_inset
+
+ Note that the key is again enclosed in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+%
+\end_layout
+
+\end_inset
+
+ signs; the entire conditional is enclosed in braces; and the if and else
+ clauses are enclosed in double brackets, 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+[[
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+]]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ There must be no space between any of these.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+There is one other piece of syntax available in definitions, which looks
+ like this: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+{!<i>!}
+\end_layout
+
+\end_inset
+
+.
+ This defines a piece of formatting information that is to be used when
+ creating 
+\begin_inset Quotes eld
+\end_inset
+
+rich text
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Obviously, we do not want to output HTML tags when writing plain text,
+ so they should be wrapped in 
+\begin_inset Quotes eld
+\end_inset
+
+{!
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+!}
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Two special sorts of definitions are also possible in a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+CiteFormat
+\end_layout
+
+\end_inset
+
+ block.
+ An example of the first would be:
+\end_layout
+
+\begin_layout LyX-Code
+!quotetitle 
+\begin_inset Quotes eld
+\end_inset
+
+%title%
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This is an abbreviation, or macro, and it can be used by treating it as
+ if it were a key: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+%!quotetitle%
+\end_layout
+
+\end_inset
+
+.
+ LyX will treat 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+%!quotetitle%
+\end_layout
+
+\end_inset
+
+ exactly as it would treat its definition.
+ So, let us issue the obvious 
+\emph on
+warning
+\emph default
+.
+ Do not do this:
+\end_layout
+
+\begin_layout LyX-Code
+!funfun %funfun%
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+or anything like it.
+ LyX shouldn't go into an infinite loop, but it may go into a long one before
+ it gives up.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The second sort of special definition might look like this:
+\end_layout
+
+\begin_layout LyX-Code
+_pptext pp.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This defines a translatable piece of text, which allows relevant parts of
+ the bibliography to be translated.
+ It can be included in a definition by treating it as a key: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+%_pptext%
+\end_layout
+
+\end_inset
+
+.
+ Several of these are predefined in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+stdciteformats.inc
+\end_layout
+
+\end_inset
+
+.
+ Note that these are not macros, in the sense just defined.
+ They will not be expanded.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+So here then is an example that use all these features:
+\end_layout
+
+\begin_layout LyX-Code
+!authoredit {%author%[[%author%, ]][[{%editor%[[%editor%, %_edtext%, ]]}]]}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This defines a macro that prints the author, followed by a comma, if the
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+author
+\end_layout
+
+\end_inset
+
+ key is defined, or else prints the name of the editor, followed by the
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+_edtext
+\end_layout
+
+\end_inset
+
+ or its translation (it is by default 
+\begin_inset Quotes eld
+\end_inset
+
+ed.
+\begin_inset Quotes erd
+\end_inset
+
+), if the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+editor
+\end_layout
+
+\end_inset
+
+ key is defined.
+ Note that this is in fact defined in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+stdciteformats.inc
+\end_layout
+
+\end_inset
+
+, so you can use it in your own definitions, or re-definitions, if you load
+ that file first.
+\end_layout
+
+\begin_layout Section
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Tags-for-XHTML"
+
+\end_inset
+
+Tags for XHTML output
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+As with LaTeX or DocBook, the format of LyX's XHTML output is also controlled
+ by layout information.
+ In general, LyX provides sensible defaults and, as mentioned earlier, it
+ will even construct default CSS style rules from the other layout tags.
+ For example, LyX will attempt to use the information provided in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Font
+\end_layout
+
+\end_inset
+
+ declaration for the Chapter style to write CSS that will appropriately
+ format chapter headings.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In many cases, then, you may not have to do anything at all to get acceptable
+ XHTML output for your own environments, custom insets, and so forth.
+ But in some cases you will, and so LyX provides a number of layout tags
+ that can be used to customize the XHTML and CSS that are generated.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Note that there are two tags, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLPreamble
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+AddToHTMLPreamble
+\end_layout
+
+\end_inset
+
+ that may appear outside style and inset declarations.
+ See 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Allgemeine-Parameter-für"
+
+\end_inset
+
+ for details on these.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Paragraph-Style-XHTML"
+
+\end_inset
+
+Paragraph styles
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The sort of XHTML LyX outputs for a paragraph depends upon whether we are
+ dealing with a normal paragraph, a command, or an environment, where this
+ is itself determined by the contents of the corresponding 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LaTeXType
+\end_layout
+
+\end_inset
+
+ tag.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+For a command or normal paragraph, the output XHTML has the following form:
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<tag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<labeltag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>Label</labeltag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+Contents of the paragraph.
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+</tag>
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The label tags are of course omitted if the paragraph does not have a label.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+For an environment that is not some sort of list, the XHTML takes this form:
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<tag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<itemtag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+><labeltag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>Environment Label</labeltag>First paragraph.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<itemtag>Second paragraph.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+</tag>
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Note that the label is output only for the first paragraph, as it should
+ be for a theorem, for example.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+For a list, we have one of these forms:
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<tag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<itemtag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+><labeltag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>List Label</labeltag>First item.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<itemtag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+><labeltag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>List Label</labeltag>Second item.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+</tag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<tag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<labeltag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>List Label</labeltag><itemtag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>First item.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<labeltag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>List Label</labeltag><itemtag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>Second item.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+</tag>
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Note the different orders of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+labeltag
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+itemtag
+\end_layout
+
+\end_inset
+
+.
+ Which order we get depends upon the setting of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLLabelFirst
+\end_layout
+
+\end_inset
+
+: If 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLLabelFirst
+\end_layout
+
+\end_inset
+
+ is false (the default), you get the first of these, with the label within
+ the item; if true, you get the second, with the label outside the item.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The specific tags and attributes output for each paragraph type can be controlle
+d by means of the layout tags we are about to describe.
+ As mentioned earlier, however, LyX uses sensible defaults for many of these,
+ so you often may not need to do very much to get good XHTML output.
+ Think of the available tags as there so you can tweak things to your liking.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+string
+\end_layout
+
+\end_inset
+
+] Specifies attribute information to be output with the main tag.
+ For example, 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+class=`mydiv'
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ By default, LyX will output 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+class=`layoutname'
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, where 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+layoutname
+\end_layout
+
+\end_inset
+
+ is the LyX name of the layout, made lowercase, for example: chapter.
+ This should 
+\emph on
+not
+\emph default
+ contain any style information.
+ Use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLStyle
+\end_layout
+
+\end_inset
+
+ for that purpose.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLForceCSS
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+0
+\emph default
+,1
+\end_layout
+
+\end_inset
+
+] Whether to output the default CSS information LyX generates for this layout,
+ even if additional information is explicitly provided via 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLStyle
+\end_layout
+
+\end_inset
+
+.
+ Setting this to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+1
+\end_layout
+
+\end_inset
+
+ allows you to alter or augment the generated CSS, rather than to override
+ it completely.
+ Default is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+0
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLItem
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for individual paragraphs of environments, replacing
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+itemtag
+\end_layout
+
+\end_inset
+
+ in the examples above.
+ Defaults to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+div
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLItemAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+string
+\end_layout
+
+\end_inset
+
+] Attributes for the item tag.
+ Defaults to 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+class=`layoutname_item'
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This should 
+\emph on
+not
+\emph default
+ contain any style information.
+ Use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLStyle
+\end_layout
+
+\end_inset
+
+ for that purpose.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLLabel
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for paragraph and item labels, replacing 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+labeltag
+\end_layout
+
+\end_inset
+
+ in the examples above.
+ Defaults to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+span
+\end_layout
+
+\end_inset
+
+, unless 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LabelType
+\end_layout
+
+\end_inset
+
+ is either 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Top_Environment
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Centered_Top_Environment
+\end_layout
+
+\end_inset
+
+, in which case it defaults to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+div
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLLabelAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+string
+\end_layout
+
+\end_inset
+
+] Attributes for the label tag.
+ Defaults to 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+class=`layoutname_label'
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This should 
+\emph on
+not
+\emph default
+ contain any style information.
+ Use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLStyle
+\end_layout
+
+\end_inset
+
+ for that purpose.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLLabelFirst
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+0
+\emph default
+,1
+\end_layout
+
+\end_inset
+
+] Meaningful only for list-like environments, this tag controls whether
+ the label tag is output before or inside the item tag.
+ This is used, for example, in the description environment, where we want
+ `
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<dt>\SpecialChar \ldots{}
+</dt><dd>\SpecialChar \ldots{}
+</dd>
+\end_layout
+
+\end_inset
+
+.
+ Default is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+0
+\end_layout
+
+\end_inset
+
+: The label tag is output inside the item tag.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLPreamble
+\end_layout
+
+\end_inset
+
+ Information to be output in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<head>
+\end_layout
+
+\end_inset
+
+ section when this style is used.
+ This might, for example, be used to include a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<script>
+\end_layout
+
+\end_inset
+
+ block defining an 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+onclick
+\end_layout
+
+\end_inset
+
+ handler.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLStyle
+\end_layout
+
+\end_inset
+
+ CSS style information to be included when this style is used.
+ Note that this will automatically be wrapped in a layout-generated 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<style>
+\end_layout
+
+\end_inset
+
+ block, so only the CSS itself need be included.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for the main label, replacing 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+tag
+\end_layout
+
+\end_inset
+
+ in the examples above.
+ Defaults to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+div
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLTitle
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+0
+\emph default
+,1
+\end_layout
+
+\end_inset
+
+] Marks this style as the one to be used to generate the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<title>
+\end_layout
+
+\end_inset
+
+ tag for the XHTML file.
+ By default, it is false.
+ The 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+stdtitle.inc
+\end_layout
+
+\end_inset
+
+ file sets it to true for the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+title
+\end_layout
+
+\end_inset
+
+ environment.
+ 
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+InsetLayout XHTML
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The XHTML output of insets can also be controlled by information in layout
+ files.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+At present, this is true only for 
+\begin_inset Quotes eld
+\end_inset
+
+text
+\begin_inset Quotes erd
+\end_inset
+
+ insets (insets you can type into) and is not true for 
+\begin_inset Quotes eld
+\end_inset
+
+command
+\begin_inset Quotes erd
+\end_inset
+
+ insets (insets that are associated with dialog boxes).
+\end_layout
+
+\end_inset
+
+ Here, too, LyX tries to provide sensible defaults, and it constructs default
+ CSS style rules.
+ But everything can be customized.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The XHTML LyX outputs for an inset has the following form:
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<tag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<labeltag>Label</labeltag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<innertag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>Contents of the inset.</innertag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+</tag>
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If the inset permits multiple paragraphs---that is, if 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+MultiPar
+\end_layout
+
+\end_inset
+
+ is true---then the contents of the inset will itself be output as paragraphs
+ formatted according to the styles used for those paragraphs (standard,
+ quote, and the like).
+ The label tag is of course omitted if the paragraph does not have a label
+ and, at present, is always 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+span
+\end_layout
+
+\end_inset
+
+.
+ The inner tag is optional and, by default, does not appear.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The specific tags and attributes output for each inset can be controlled
+ by means of the following layout tags.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+string
+\end_layout
+
+\end_inset
+
+] Specifies attribute information to be output with the main tag.
+ For example, 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+class=`myinset' onclick=`\SpecialChar \ldots{}
+'
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ By default, LyX will output 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+class=`insetname'
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, where 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+insetname
+\end_layout
+
+\end_inset
+
+ is the LyX name of the inset, made lowercase and with non-alphanumeric
+ characters converted to underscores, for example: footnote.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLForceCSS
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+0
+\emph default
+,1
+\end_layout
+
+\end_inset
+
+] Whether to output the default CSS information LyX generates for this layout,
+ even if additional information is explicitly provided via 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLStyle
+\end_layout
+
+\end_inset
+
+.
+ Setting this to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+1
+\end_layout
+
+\end_inset
+
+ allows you to alter or augment the generated CSS, rather than to override
+ it completely.
+ Default is 0.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLInnerAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+string
+\end_layout
+
+\end_inset
+
+] Attributes for the inner tag.
+ Defaults to 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+class=`insetname_inner'
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLInnerTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+string
+\end_layout
+
+\end_inset
+
+] The inner tag, replacing 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+innertag
+\end_layout
+
+\end_inset
+
+ in the examples above.
+ By default, there is none.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLIsBlock
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+0,
+\emph on
+1
+\end_layout
+
+\end_inset
+
+] Whether this inset represents a standalone block of text (such as a footnote)
+ or instead represents material that is included in the surrounding text
+ (such as a branch).
+ Defaults to 1.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLLabel
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+string
+\end_layout
+
+\end_inset
+
+] A label for this inset, possibly including a reference to a counter.
+ For example, for footnote, it might be: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+
+\backslash
+arabic{footnote}
+\end_layout
+
+\end_inset
+
+.
+ This is optional, and there is no default.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLPreamble
+\end_layout
+
+\end_inset
+
+ Information to be output in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<head>
+\end_layout
+
+\end_inset
+
+ section when this style is used.
+ This might, for example, be used to include a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<script>
+\end_layout
+
+\end_inset
+
+ block defining an 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+onclick
+\end_layout
+
+\end_inset
+
+ handler.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLStyle
+\end_layout
+
+\end_inset
+
+ CSS style information to be included when this style is used.
+ Note that this will automatically be wrapped in a layout-generated 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<style>
+\end_layout
+
+\end_inset
+
+ block, so only the CSS itself need be included.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for the main label, replacing 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+tag
+\end_layout
+
+\end_inset
+
+ in the examples above.
+ The default depends upon the setting of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+MultiPar
+\end_layout
+
+\end_inset
+
+: If 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+MultiPar
+\end_layout
+
+\end_inset
+
+ is true, the default is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+div
+\end_layout
+
+\end_inset
+
+; if it is false, the default is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+span
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Float XHTML
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The XHTML output for floats too can be controlled by layout information.
+ The output has the following form:
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<tag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+Contents of the float.
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+</tag>
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The caption, if there is one, is a separate inset and will be output as
+ such.
+ Its appearance can be controlled via the InsetLayout for caption insets.
+ 
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+string
+\end_layout
+
+\end_inset
+
+] Specifies attribute information to be output with the main tag.
+ For example, 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+class=`myfloat' onclick=`\SpecialChar \ldots{}
+'
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ By default, LyX will output 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+class=`float float-floattype'
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, where 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+floattype
+\end_layout
+
+\end_inset
+
+ is LyX's name for this type of float, as determined by the float declaration
+ (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Gleitobjekte"
+
+\end_inset
+
+), though made lowercase and with non-alphanumeric characters converted
+ to underscores, for example: float-table.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLStyle
+\end_layout
+
+\end_inset
+
+ CSS style information to be included when this float is used.
+ Note that this will automatically be wrapped in a layout-generated 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<style>
+\end_layout
+
+\end_inset
+
+ block, so only the CSS itself need be included.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HTMLTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for this float, replacing 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+tag
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ The default is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+div
+\end_layout
+
+\end_inset
+
+ and will rarely need changing.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Bibliography formatting
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The bibliography can be formatted using 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+CiteFormat
+\end_layout
+
+\end_inset
+
+ blocks.
+ See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Citation-format-description"
+
+\end_inset
+
+ for the details.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+LyX-generated CSS
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+We have several times mentioned that LyX will generate default CSS style
+ rules for both insets and paragraph styles, based upon the other layout
+ information that is provided.
+ In this section, we shall say a word about which layout information LyX
+ uses and how.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+At present, LyX auto-generates CSS only for font information, making use
+ of the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Family
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Series
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Shape
+\end_layout
+
+\end_inset
+
+, and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Size
+\end_layout
+
+\end_inset
+
+ specified in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Font
+\end_layout
+
+\end_inset
+
+ declaration.
+ (See 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Beschreibung-des-Zeichensatzes"
+
+\end_inset
+
+.) The translation is mostly straightforward and obvious.
+ For example, 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Family Sans
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ becomes 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+font-family: sans-serif;
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The correspondence of LyX sizes and CSS sizes is a little less obvious
+ but nonetheless intuitive.
+ See the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+getSizeCSS()
+\end_layout
+
+\end_inset
+
+ function in 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+src/FontInfo.cpp
+\end_layout
+
+\end_inset
+
+ for the details.
 \end_layout
 
 \begin_layout Chapter

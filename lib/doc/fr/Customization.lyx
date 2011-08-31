@@ -16537,21 +16537,15 @@ End
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelString [chaîne=""]
 \end_layout
 
 \end_inset
 
-
-\lang french
  définit comment le compteur s'affiche.
  Fixer ce paramètre positionne également 
 \begin_inset Flex Code
@@ -16818,21 +16812,15 @@ arabic{counter}
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelStringAppendix [string=""]
 \end_layout
 
 \end_inset
 
-
-\lang french
  est identique à 
 \begin_inset Flex Code
 status collapsed
@@ -16849,14 +16837,10 @@ LabelString
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PrettyFormat
 \end_layout
 
@@ -16867,8 +16851,6 @@ PrettyFormat
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 string
 \end_layout
 
@@ -16882,9 +16864,7 @@ string
 \begin_inset Quotes erd
 \end_inset
 
-]
-\lang french
- définit un format à utiliser pour les références lises en forme utilisant
+] définit un format à utiliser pour les références lises en forme utilisant
  ce compteur.
  Par exemple, on peut vouloir que les références aux numéros de section
  apparaissent comme 
@@ -16910,14 +16890,10 @@ Section 2.4
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Within
 \end_layout
 
@@ -16928,8 +16904,6 @@ Within
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 string
 \end_layout
 
@@ -16943,9 +16917,7 @@ string
 \begin_inset Quotes erd
 \end_inset
 
-] 
-\lang french
-contient le nom d'un autre compteur: le compteur actuel sera remis à zéro
+] contient le nom d'un autre compteur: le compteur actuel sera remis à zéro
  à chaque fois que l'autre augmentera.
  Par exemple, 
 \begin_inset Flex Code
@@ -17008,14 +16980,10 @@ et les commandes suivantes sont disponibles :
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Color
 \end_layout
 
@@ -17023,10 +16991,8 @@ Color
 
 
 \family typewriter
-\lang french
  
 \family default
-\lang english
 [
 \begin_inset Flex Code
 status collapsed
@@ -17034,7 +17000,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 none
 \end_layout
 
@@ -17045,8 +17010,6 @@ none
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 black
 \end_layout
 
@@ -17057,8 +17020,6 @@ black
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 white
 \end_layout
 
@@ -17069,8 +17030,6 @@ white
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 red
 \end_layout
 
@@ -17081,8 +17040,6 @@ red
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 green
 \end_layout
 
@@ -17093,8 +17050,6 @@ green
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 blue
 \end_layout
 
@@ -17105,8 +17060,6 @@ blue
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 cyan
 \end_layout
 
@@ -17117,8 +17070,6 @@ cyan
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 magenta
 \end_layout
 
@@ -17129,8 +17080,6 @@ magenta
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 yellow
 \end_layout
 
@@ -17140,33 +17089,22 @@ yellow
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Family
 \end_layout
 
 \end_inset
 
-
-\lang french
- 
-\lang english
-[
+ [
 \emph on
 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\emph on
-\lang english
 Roman
 \end_layout
 
@@ -17179,8 +17117,6 @@ Roman
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Sans
 \end_layout
 
@@ -17191,8 +17127,6 @@ Sans
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Typewriter
 \end_layout
 
@@ -17202,14 +17136,10 @@ Typewriter
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Misc
 \end_layout
 
@@ -17220,22 +17150,16 @@ Misc
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 string
 \end_layout
 
 \end_inset
 
-] 
-\lang french
-avec les arguments valides suivants: 
+] avec les arguments valides suivants: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 emph
 \end_layout
 
@@ -17246,8 +17170,6 @@ emph
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 noun
 \end_layout
 
@@ -17258,8 +17180,16 @@ noun
 status collapsed
 
 \begin_layout Plain Layout
+strikeout
+\end_layout
 
-\lang english
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 underbar
 \end_layout
 
@@ -17270,8 +17200,26 @@ underbar
 status collapsed
 
 \begin_layout Plain Layout
+uuline
+\end_layout
 
-\lang english
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+uwave
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 no_emph
 \end_layout
 
@@ -17282,21 +17230,47 @@ no_emph
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 no_noun
 \end_layout
 
 \end_inset
 
- and 
+, 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+no_strikeout
+\end_layout
 
-\lang english
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 no_bar
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+no_uuline
+\end_layout
+
+\end_inset
+
+ et 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+no_uwave
 \end_layout
 
 \end_inset
@@ -17311,8 +17285,6 @@ Par exemple,
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 emph
 \end_layout
 
@@ -17349,14 +17321,10 @@ no_emph
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Series
 \end_layout
 
@@ -17369,9 +17337,6 @@ Series
 status collapsed
 
 \begin_layout Plain Layout
-
-\emph on
-\lang english
 Medium
 \end_layout
 
@@ -17384,8 +17349,6 @@ Medium
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Bold
 \end_layout
 
@@ -17395,33 +17358,22 @@ Bold
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Shape
 \end_layout
 
 \end_inset
 
-
-\lang french
- 
-\lang english
-[
+ [
 \emph on
 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\emph on
-\lang english
 Up
 \end_layout
 
@@ -17434,8 +17386,6 @@ Up
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Italic
 \end_layout
 
@@ -17446,8 +17396,6 @@ Italic
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 SmallCaps
 \end_layout
 
@@ -17458,8 +17406,6 @@ SmallCaps
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Slanted
 \end_layout
 
@@ -17469,30 +17415,20 @@ Slanted
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Size
 \end_layout
 
 \end_inset
 
-
-\lang french
- 
-\lang english
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 tiny
 \end_layout
 
@@ -17503,8 +17439,6 @@ tiny
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 small
 \end_layout
 
@@ -17517,7 +17451,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 normal
 \end_layout
 
@@ -17528,8 +17461,6 @@ normal
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 large
 \end_layout
 
@@ -17540,8 +17471,6 @@ large
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 larger
 \end_layout
 
@@ -17552,8 +17481,6 @@ larger
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 largest
 \end_layout
 
@@ -17564,8 +17491,6 @@ largest
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 huge
 \end_layout
 
@@ -17576,8 +17501,6 @@ huge
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 giant
 \end_layout
 
