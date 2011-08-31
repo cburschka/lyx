@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-06-20 10:39-0400\n"
+"POT-Creation-Date: 2011-08-31 12:21-0400\n"
 "PO-Revision-Date: 2011-06-18 05:50+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -43,7 +43,7 @@ msgstr "Autorská práva"
 #: src/frontends/qt4/ui/ShowFileUi.ui:55 src/frontends/qt4/ui/SymbolsUi.ui:66
 #: src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:138 src/frontends/qt4/ui/WrapUi.ui:173
-#: src/frontends/qt4/GuiParagraph.cpp:161
+#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/ui_RefUi.h:294
 msgid "&Close"
 msgstr "&Zavøít"
 
@@ -56,7 +56,7 @@ msgid "The label as it appears in the document"
 msgstr "Znaèka tak, jak se objeví v dokumentu"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:36
-#: src/frontends/qt4/ui/RefUi.ui:332
+#: src/frontends/qt4/ui/RefUi.ui:332 src/frontends/qt4/ui_RefUi.h:324
 msgid "&Label:"
 msgstr "Z&naèka:"
 
@@ -120,16 +120,18 @@ msgstr "Generování bibliografie"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:139
+#: src/frontends/qt4/ui_IndicesUi.h:193
 msgid "&Processor:"
 msgstr "&Generátor:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
+#: src/frontends/qt4/ui_IndicesUi.h:195
 msgid "Select a processor"
 msgstr "Vybrat generátor"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:755
-#: src/frontends/qt4/GuiPrefs.cpp:850
+#: src/frontends/qt4/GuiPrefs.cpp:850 src/frontends/qt4/ui_IndicesUi.h:197
 msgid "&Options:"
 msgstr "&Mo¾nosti:"
 
@@ -166,7 +168,7 @@ msgstr "Vlo¾it jméno BibTeX-ové databáze"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:110
 #: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:350
+#: src/CutAndPaste.cpp:350 src/frontends/qt4/ui_IndicesUi.h:212
 msgid "&Add"
 msgstr "&Pøidat"
 
@@ -174,7 +176,7 @@ msgstr "&Pøidat"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/buffer_funcs.cpp:110 src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1459
+#: src/frontends/qt4/GuiApplication.cpp:1458
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "Zru¹it"
@@ -238,7 +240,7 @@ msgstr "Pøidat bibliografii k O&bsahu"
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
-#: src/frontends/qt4/ui/WrapUi.ui:150
+#: src/frontends/qt4/ui/WrapUi.ui:150 src/frontends/qt4/ui_RefUi.h:292
 msgid "&OK"
 msgstr "&OK"
 
@@ -407,7 +409,7 @@ msgstr "Vnitøní rámeèek -- potøebné pro pevnou ¹íøku & konce øádkù"
 #: src/frontends/qt4/ui/TabularUi.ui:1104 src/frontends/qt4/GuiBox.cpp:193
 #: src/frontends/qt4/GuiBox.cpp:311 src/frontends/qt4/GuiBox.cpp:388
 #: src/frontends/qt4/GuiDocument.cpp:113 src/frontends/qt4/GuiGraphics.cpp:579
-#: src/frontends/qt4/GuiPrefs.cpp:2097 src/frontends/qt4/GuiPrefs.cpp:2120
+#: src/frontends/qt4/GuiPrefs.cpp:2098 src/frontends/qt4/GuiPrefs.cpp:2121
 msgid "None"
 msgstr "®ádné"
 
@@ -434,6 +436,7 @@ msgid "Select your branch"
 msgstr "Vyber svoji vìtev"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25 src/frontends/qt4/ui/IndicesUi.ui:114
+#: src/frontends/qt4/ui_IndicesUi.h:205
 msgid "&New:"
 msgstr "&Nová:"
 
@@ -478,7 +481,7 @@ msgid "Define or change background color"
 msgstr "Definovat nebo zmìnit barvu pozadí"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:123
-#: src/frontends/qt4/ui/IndicesUi.ui:185
+#: src/frontends/qt4/ui/IndicesUi.ui:185 src/frontends/qt4/ui_IndicesUi.h:227
 msgid "Alter Co&lor..."
 msgstr "&Zmìnit barvu..."
 
@@ -487,8 +490,8 @@ msgid "Remove the selected branch"
 msgstr "Smazat vybranou vìtev"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3663
-#: src/Buffer.cpp:3676
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3616
+#: src/Buffer.cpp:3629 src/frontends/qt4/ui_IndicesUi.h:219
 msgid "&Remove"
 msgstr "&Smazat"
 
@@ -522,7 +525,7 @@ msgstr "Pøidat &v¹echny"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1038
-#: src/Buffer.cpp:2242 src/Buffer.cpp:3638 src/Buffer.cpp:3701
+#: src/Buffer.cpp:2193 src/Buffer.cpp:3591 src/Buffer.cpp:3654
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1799
@@ -575,7 +578,7 @@ msgstr "Ve&likost:"
 #: src/frontends/qt4/GuiDocument.cpp:3188 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:70 src/frontends/qt4/GuiIndices.cpp:57
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
-#: src/frontends/qt4/GuiPrefs.cpp:2241 src/frontends/qt4/GuiPrefs.cpp:2475
+#: src/frontends/qt4/GuiPrefs.cpp:2242 src/frontends/qt4/GuiPrefs.cpp:2476
 #: src/frontends/qt4/GuiPrintNomencl.cpp:47
 #: src/frontends/qt4/GuiViewSource.cpp:184
 msgid "Default"
@@ -703,7 +706,7 @@ msgstr "Tlou¹»ka kresby písma"
 #: src/frontends/qt4/ui/CharacterUi.ui:145
 #: src/frontends/qt4/ui/ListingsUi.ui:339 lib/layouts/europecv.layout:119
 #: lib/layouts/moderncv.layout:116 src/frontends/qt4/GuiDocument.cpp:1282
-#: src/frontends/qt4/GuiPrefs.cpp:2200 src/frontends/qt4/Menus.cpp:852
+#: src/frontends/qt4/GuiPrefs.cpp:2201 src/frontends/qt4/Menus.cpp:852
 msgid "Language"
 msgstr "Jazyk"
 
@@ -775,7 +778,7 @@ msgstr "&Okam¾itì pou¾ít zmìny"
 #: src/frontends/qt4/ui/RefUi.ui:124 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:1875
-#: src/frontends/qt4/GuiDocument.cpp:3131
+#: src/frontends/qt4/GuiDocument.cpp:3131 src/frontends/qt4/ui_RefUi.h:293
 msgid "&Apply"
 msgstr "&Pou¾ít"
 
@@ -1787,6 +1790,7 @@ msgstr "Jméno asociované s URL"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:42
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:251
+#: src/frontends/qt4/ui_RefUi.h:309
 msgid "&Name:"
 msgstr "J&méno:"
 
@@ -1888,8 +1892,8 @@ msgstr "Vstup (lze rekurzivnì)"
 msgid "Verbatim"
 msgstr "Doslovnì"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1117
-#: src/insets/InsetInclude.cpp:1123
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1129
+#: src/insets/InsetInclude.cpp:1135
 msgid "Program Listing"
 msgstr "Výpis zdrojového kódu"
 
@@ -1902,6 +1906,7 @@ msgid "&Edit"
 msgstr "&Editace"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59 src/frontends/qt4/ui/IndicesUi.ui:143
+#: src/frontends/qt4/ui_IndicesUi.h:213
 msgid "A&vailable Indexes:"
 msgstr "Dostupné &rejstøíky:"
 
@@ -1909,59 +1914,61 @@ msgstr "Dostupné &rejstøíky:"
 msgid "Select the index this entry should be listed in."
 msgstr "Zvolit rejstøík ve kterém má být tato polo¾ka vypsána."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:19
+#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:190
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr "Zde lze nastavit alternativní generátor rejstøíku a urèit jeho volby."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:202
+#: src/frontends/qt4/ui_IndicesUi.h:192
 msgid "Index generation"
 msgstr "Generování rejstøíku"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:64
+#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:199
 msgid "Define program options of the selected processor."
 msgstr "Definovat volby zvoleného generátoru."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:89
+#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:202
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr ""
 "Za¹krtnìte pokud potøebujete vícenásobný rejstøík (napø. rejstøík jmen)"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:92
+#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:204
 msgid "&Use multiple indexes"
 msgstr "&Vícenásobný rejstøík"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:124
+#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
 "Vlo¾te pojmenování rejstøíku (napø. \"Rejstøík jmen\") a stisknìte \"Pøidat"
 "\")"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:131
+#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:210
 msgid "Add a new index to the list"
 msgstr "Pøidat nový rejstøík do seznamu"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149
-#: src/frontends/qt4/ui/RefUi.ui:349
+#: src/frontends/qt4/ui/RefUi.ui:349 src/frontends/qt4/ui_IndicesUi.h:215
+#: src/frontends/qt4/ui_RefUi.h:326
 msgid "1"
 msgstr "1"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:162
+#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:217
 msgid "Remove the selected index"
 msgstr "Smazat vybraný rejstøík"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:172
+#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:221
 msgid "Rename the selected index"
 msgstr "Pøejmenovat vybraný rejstøík"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:175
+#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:223
 msgid "R&ename..."
 msgstr "Pøe&jmenovat..."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:182
+#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:225
 msgid "Define or change button color"
 msgstr "Zmìnit barvu tlaèítka"
 
@@ -2332,7 +2339,7 @@ msgid "Update the display"
 msgstr "Aktualizuj zobrazení"
 
 #: src/frontends/qt4/ui/LogUi.ui:77 src/frontends/qt4/ui/RefUi.ui:88
-#: src/frontends/qt4/ui/ViewSourceUi.ui:74
+#: src/frontends/qt4/ui/ViewSourceUi.ui:74 src/frontends/qt4/ui_RefUi.h:291
 msgid "&Update"
 msgstr "&Aktualizace"
 
@@ -2713,7 +2720,7 @@ msgstr "Jaký formát pou¾ít pro zobrazení matematických vzorcù"
 msgid "MathML"
 msgstr "MathML"
 
-#: src/frontends/qt4/ui/OutputUi.ui:162 lib/configure.py:603
+#: src/frontends/qt4/ui/OutputUi.ui:162 lib/configure.py:610
 msgid "HTML"
 msgstr "HTML"
 
@@ -2846,7 +2853,7 @@ msgstr "Formát stránky"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:19
-#: src/frontends/qt4/ui/RefUi.ui:271
+#: src/frontends/qt4/ui/RefUi.ui:271 src/frontends/qt4/ui_RefUi.h:310
 msgid "&Format:"
 msgstr "&Formát:"
 
@@ -2904,7 +2911,7 @@ msgstr "&Nejdel¹í znaèka"
 msgid "Line &spacing"
 msgstr "Øá&dkování"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1815
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1819
 #: src/frontends/qt4/GuiDocument.cpp:692
 msgid "Single"
 msgstr "Jedna"
@@ -2913,7 +2920,7 @@ msgstr "Jedna"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1821
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1825
 #: src/frontends/qt4/GuiDocument.cpp:696
 msgid "Double"
 msgstr "Dva"
@@ -2928,8 +2935,8 @@ msgstr "Dva"
 #: src/frontends/qt4/GuiDocument.cpp:794 src/frontends/qt4/GuiDocument.cpp:846
 #: src/frontends/qt4/GuiDocument.cpp:1009 src/frontends/qt4/GuiHSpace.cpp:54
 #: src/frontends/qt4/GuiHSpace.cpp:63 src/frontends/qt4/GuiPrefs.cpp:832
-#: src/frontends/qt4/GuiPrefs.cpp:859 src/frontends/qt4/GuiPrefs.cpp:2099
-#: src/frontends/qt4/GuiPrefs.cpp:2122
+#: src/frontends/qt4/GuiPrefs.cpp:859 src/frontends/qt4/GuiPrefs.cpp:2100
+#: src/frontends/qt4/GuiPrefs.cpp:2123
 #: src/frontends/qt4/GuiPrintNomencl.cpp:51
 msgid "Custom"
 msgstr "Vlastní"
@@ -3126,7 +3133,7 @@ msgstr "Z&mìnit"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2873 src/frontends/qt4/GuiPrefs.cpp:2937
+#: src/frontends/qt4/GuiPrefs.cpp:2874 src/frontends/qt4/GuiPrefs.cpp:2938
 msgid "Remo&ve"
 msgstr "&Smazat"
 
@@ -3191,7 +3198,7 @@ msgstr "Editace"
 msgid "Cursor &follows scrollbar"
 msgstr "&Kurzor následuje posuvník"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:46 src/LyXRC.cpp:3138
+#: src/frontends/qt4/ui/PrefEditUi.ui:46 src/LyXRC.cpp:3143
 msgid ""
 "Configure the width of the text cursor. Automatic zoom-controlled cursor "
 "width used when set to 0."
@@ -3486,7 +3493,7 @@ msgstr "Oznaèit cizí &jazyk"
 msgid "Right-to-left language support"
 msgstr "Podpora psaní zprava-doleva"
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:215 src/LyXRC.cpp:3419
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:215 src/LyXRC.cpp:3424
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
@@ -3642,7 +3649,7 @@ msgstr "&Obnovit nastavení, kdy¾ se zmìní tøída dokumentu"
 msgid "Output &line length:"
 msgstr "&Délka øádku na výstupu:"
 
-#: src/frontends/qt4/ui/PrefOutputUi.ui:37 src/LyXRC.cpp:3085
+#: src/frontends/qt4/ui/PrefOutputUi.ui:37 src/LyXRC.cpp:3090
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -3697,7 +3704,7 @@ msgstr "PD&F pøíkaz:"
 msgid "&PATH prefix:"
 msgstr "P&refix cesty:"
 
-#: src/frontends/qt4/ui/PrefPathsUi.ui:51 src/LyXRC.cpp:3329
+#: src/frontends/qt4/ui/PrefPathsUi.ui:51 src/LyXRC.cpp:3334
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable.\n"
@@ -3711,7 +3718,7 @@ msgstr ""
 msgid "TEX&INPUTS prefix:"
 msgstr "P&refix TEXINPUTS:"
 
-#: src/frontends/qt4/ui/PrefPathsUi.ui:68 src/LyXRC.cpp:3488
+#: src/frontends/qt4/ui/PrefPathsUi.ui:68 src/LyXRC.cpp:3493
 msgid ""
 "Specify those directories which should be prepended to the TEXINPUTS "
 "environment variable.\n"
@@ -4316,89 +4323,90 @@ msgstr "Zobrazovat zprávy ze stavového øádku?"
 msgid "&Statusbar messages"
 msgstr "Zprávy ze &stavového øádku"
 
-#: src/frontends/qt4/ui/RefUi.ui:36
+#: src/frontends/qt4/ui/RefUi.ui:36 src/frontends/qt4/ui_RefUi.h:279
 msgid "Fil&ter:"
 msgstr "Fil&tr:"
 
-#: src/frontends/qt4/ui/RefUi.ui:49
+#: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:281
 msgid "Enter string to filter the label list"
 msgstr "Zadejte øetìzec pro filtrování seznamu znaèek"
 
-#: src/frontends/qt4/ui/RefUi.ui:59
+#: src/frontends/qt4/ui/RefUi.ui:59 src/frontends/qt4/ui_RefUi.h:285
 msgid "Filter case-sensitively"
 msgstr "Rozli¹ovat velikost písmen pøi filtrování"
 
-#: src/frontends/qt4/ui/RefUi.ui:62
+#: src/frontends/qt4/ui/RefUi.ui:62 src/frontends/qt4/ui_RefUi.h:287
 msgid "Case-sensiti&ve"
 msgstr "Velikost pís&men"
 
-#: src/frontends/qt4/ui/RefUi.ui:85
+#: src/frontends/qt4/ui/RefUi.ui:85 src/frontends/qt4/ui_RefUi.h:289
 msgid "Update the label list"
 msgstr "Aktualizuj seznam znaèek"
 
-#: src/frontends/qt4/ui/RefUi.ui:165
+#: src/frontends/qt4/ui/RefUi.ui:165 src/frontends/qt4/ui_RefUi.h:296
 msgid ""
 "Sort labels in alphabetical order (case-insensitively unless the Case-"
 "sensitive option is checked)"
 msgstr "Tøídit znaèky v abecedním poøadí"
 
-#: src/frontends/qt4/ui/RefUi.ui:168
+#: src/frontends/qt4/ui/RefUi.ui:168 src/frontends/qt4/ui_RefUi.h:298
 msgid "&Sort"
 msgstr "&Setøídit"
 
-#: src/frontends/qt4/ui/RefUi.ui:178
+#: src/frontends/qt4/ui/RefUi.ui:178 src/frontends/qt4/ui_RefUi.h:300
 msgid "Sort labels case-sensitively in alphabetical order"
 msgstr "Rozli¹ovat velikost písmen pøi tøídìní znaèek v abecedním poøádku"
 
-#: src/frontends/qt4/ui/RefUi.ui:181
+#: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/ui_RefUi.h:302
 msgid "Cas&e-sensitive"
 msgstr "Velikost písm&en"
 
-#: src/frontends/qt4/ui/RefUi.ui:188
+#: src/frontends/qt4/ui/RefUi.ui:188 src/frontends/qt4/ui_RefUi.h:304
 msgid "Group labels by prefix (e.g. \"sec:\")"
 msgstr "Seskupit znaèky dle prefixu (napø. \"sec:\")"
 
-#: src/frontends/qt4/ui/RefUi.ui:191
+#: src/frontends/qt4/ui/RefUi.ui:191 src/frontends/qt4/ui_RefUi.h:306
 msgid "Grou&p"
 msgstr "&Seskupit"
 
 #: src/frontends/qt4/ui/RefUi.ui:219 src/frontends/qt4/GuiRef.cpp:314
+#: src/frontends/qt4/ui_RefUi.h:307
 msgid "&Go to Label"
 msgstr "&Jdi na znaèku"
 
-#: src/frontends/qt4/ui/RefUi.ui:228
+#: src/frontends/qt4/ui/RefUi.ui:228 src/frontends/qt4/ui_RefUi.h:308
 msgid "La&bels in:"
 msgstr "&Znaèky v:"
 
-#: src/frontends/qt4/ui/RefUi.ui:290
+#: src/frontends/qt4/ui/RefUi.ui:290 src/frontends/qt4/ui_RefUi.h:322
 msgid "Cross-reference as it appears in output"
 msgstr "Køí¾ový odkaz tak, jak se objeví na výstupu"
 
-#: src/frontends/qt4/ui/RefUi.ui:294
+#: src/frontends/qt4/ui/RefUi.ui:294 src/frontends/qt4/ui_RefUi.h:313
 msgid "<reference>"
 msgstr "<reference>"
 
-#: src/frontends/qt4/ui/RefUi.ui:299
+#: src/frontends/qt4/ui/RefUi.ui:299 src/frontends/qt4/ui_RefUi.h:314
 msgid "(<reference>)"
 msgstr "(<reference>)"
 
-#: src/frontends/qt4/ui/RefUi.ui:304
+#: src/frontends/qt4/ui/RefUi.ui:304 src/frontends/qt4/ui_RefUi.h:315
 msgid "<page>"
 msgstr "<strana>"
 
-#: src/frontends/qt4/ui/RefUi.ui:309
+#: src/frontends/qt4/ui/RefUi.ui:309 src/frontends/qt4/ui_RefUi.h:316
 msgid "on page <page>"
 msgstr "na stranì <strana>"
 
-#: src/frontends/qt4/ui/RefUi.ui:314
+#: src/frontends/qt4/ui/RefUi.ui:314 src/frontends/qt4/ui_RefUi.h:317
 msgid "<reference> on page <page>"
 msgstr "<reference> na stranì <strana>"
 
-#: src/frontends/qt4/ui/RefUi.ui:319
+#: src/frontends/qt4/ui/RefUi.ui:319 src/frontends/qt4/ui_RefUi.h:318
 msgid "Formatted reference"
 msgstr "Formátovaná reference"
 
-#: src/frontends/qt4/ui/RefUi.ui:324
+#: src/frontends/qt4/ui/RefUi.ui:324 src/frontends/qt4/ui_RefUi.h:319
 msgid "Textual reference"
 msgstr "Doslovná reference"
 
@@ -4464,7 +4472,7 @@ msgstr ""
 "tlaèítka 'Smazat'"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:19
-#: src/frontends/qt4/GuiSpellchecker.cpp:190
+#: src/frontends/qt4/GuiSpellchecker.cpp:192
 msgid "Spell Checker"
 msgstr "Kontrola pravopisu"
 
@@ -5160,16 +5168,18 @@ msgstr "ShortTitle"
 #: lib/layouts/ijmpd.layout:199 lib/layouts/ijmpd.layout:211
 #: lib/layouts/iopart.layout:60 lib/layouts/iopart.layout:130
 #: lib/layouts/iopart.layout:149 lib/layouts/iopart.layout:174
-#: lib/layouts/iopart.layout:203 lib/layouts/siamltex.layout:279
-#: lib/layouts/siamltex.layout:299 lib/layouts/sigplanconf.layout:71
-#: lib/layouts/sigplanconf.layout:124 lib/layouts/sigplanconf.layout:157
-#: lib/layouts/svglobal3.layout:85 lib/layouts/tufte-handout.layout:49
-#: lib/layouts/amsdefs.inc:25 lib/layouts/amsdefs.inc:48
-#: lib/layouts/amsdefs.inc:68 lib/layouts/amsdefs.inc:92
-#: lib/layouts/amsdefs.inc:119 lib/layouts/lyxmacros.inc:45
-#: lib/layouts/lyxmacros.inc:66 lib/layouts/stdstruct.inc:16
-#: lib/layouts/stdtitle.inc:60 lib/layouts/stdtitle.inc:81
-#: lib/layouts/stdtitle.inc:100 lib/layouts/customHeadersFooters.module:11
+#: lib/layouts/iopart.layout:203 lib/layouts/revtex4.layout:112
+#: lib/layouts/revtex4.layout:150 lib/layouts/revtex4.layout:247
+#: lib/layouts/siamltex.layout:279 lib/layouts/siamltex.layout:299
+#: lib/layouts/sigplanconf.layout:71 lib/layouts/sigplanconf.layout:124
+#: lib/layouts/sigplanconf.layout:157 lib/layouts/svglobal3.layout:85
+#: lib/layouts/tufte-handout.layout:49 lib/layouts/amsdefs.inc:25
+#: lib/layouts/amsdefs.inc:48 lib/layouts/amsdefs.inc:68
+#: lib/layouts/amsdefs.inc:92 lib/layouts/amsdefs.inc:119
+#: lib/layouts/lyxmacros.inc:45 lib/layouts/lyxmacros.inc:66
+#: lib/layouts/stdstruct.inc:16 lib/layouts/stdtitle.inc:60
+#: lib/layouts/stdtitle.inc:81 lib/layouts/stdtitle.inc:100
+#: lib/layouts/customHeadersFooters.module:11
 msgid "FrontMatter"
 msgstr "FrontMatter"
 
@@ -5224,7 +5234,7 @@ msgstr "Publication Issue:"
 #: lib/layouts/latex8.layout:107 lib/layouts/llncs.layout:242
 #: lib/layouts/ltugboat.layout:171 lib/layouts/ltugboat.layout:185
 #: lib/layouts/paper.layout:130 lib/layouts/revtex.layout:139
-#: lib/layouts/revtex4.layout:223 lib/layouts/siamltex.layout:251
+#: lib/layouts/revtex4.layout:220 lib/layouts/siamltex.layout:251
 #: lib/layouts/sigplanconf.layout:153 lib/layouts/sigplanconf.layout:169
 #: lib/layouts/spie.layout:75 lib/layouts/svglobal.layout:37
 #: lib/layouts/svglobal3.layout:84 lib/layouts/svglobal3.layout:88
@@ -5604,12 +5614,13 @@ msgstr "Popisek"
 #: lib/layouts/beamer.layout:908 lib/layouts/beamer.layout:927
 #: lib/layouts/beamer.layout:946 lib/layouts/beamer.layout:1066
 #: lib/layouts/beamer.layout:1090 lib/layouts/beamer.layout:1128
-#: lib/layouts/siamltex.layout:36 lib/layouts/svmono.layout:18
-#: lib/layouts/svmult.layout:83 lib/layouts/tufte-book.layout:196
-#: lib/layouts/lyxmacros.inc:13 lib/layouts/stdclass.inc:29
-#: lib/layouts/stdlayouts.inc:13 lib/layouts/stdlayouts.inc:34
-#: lib/layouts/stdlayouts.inc:55 lib/layouts/stdlayouts.inc:75
-#: lib/layouts/svjour.inc:308
+#: lib/layouts/revtex4.layout:45 lib/layouts/siamltex.layout:36
+#: lib/layouts/svmono.layout:18 lib/layouts/svmult.layout:83
+#: lib/layouts/tufte-book.layout:195 lib/layouts/lyxmacros.inc:13
+#: lib/layouts/stdclass.inc:29 lib/layouts/stdlayouts.inc:13
+#: lib/layouts/stdlayouts.inc:34 lib/layouts/stdlayouts.inc:55
+#: lib/layouts/stdlayouts.inc:75 lib/layouts/svjour.inc:308
+#: lib/layouts/initials.module:27
 msgid "MainText"
 msgstr "MainText"
 
@@ -5645,7 +5656,7 @@ msgstr "Dùkaz"
 #: lib/layouts/ltugboat.layout:30 lib/layouts/memoir.layout:31
 #: lib/layouts/moderncv.layout:19 lib/layouts/paper.layout:13
 #: lib/layouts/powerdot.layout:109 lib/layouts/revtex.layout:22
-#: lib/layouts/revtex4.layout:40 lib/layouts/scrlettr.layout:7
+#: lib/layouts/revtex4.layout:44 lib/layouts/scrlettr.layout:7
 #: lib/layouts/scrlttr2.layout:10 lib/layouts/siamltex.layout:35
 #: lib/layouts/sigplanconf.layout:37 lib/layouts/simplecv.layout:16
 #: lib/layouts/slides.layout:60 lib/layouts/tufte-book.layout:19
@@ -5673,7 +5684,7 @@ msgstr "Standardní"
 #: lib/layouts/latex8.layout:38 lib/layouts/llncs.layout:106
 #: lib/layouts/ltugboat.layout:136 lib/layouts/paper.layout:110
 #: lib/layouts/powerdot.layout:41 lib/layouts/revtex.layout:94
-#: lib/layouts/revtex4.layout:125 lib/layouts/scrlettr.layout:188
+#: lib/layouts/revtex4.layout:124 lib/layouts/scrlettr.layout:188
 #: lib/layouts/scrlttr2.layout:271 lib/layouts/siamltex.layout:187
 #: lib/layouts/sigplanconf.layout:104 lib/layouts/simplecv.layout:122
 #: lib/layouts/svprobth.layout:42 lib/layouts/tufte-book.layout:34
@@ -5710,7 +5721,7 @@ msgstr "lowercase"
 #: lib/layouts/isprs.layout:76 lib/layouts/kluwer.layout:165
 #: lib/layouts/llncs.layout:180 lib/layouts/ltugboat.layout:155
 #: lib/layouts/paper.layout:120 lib/layouts/powerdot.layout:65
-#: lib/layouts/revtex.layout:102 lib/layouts/revtex4.layout:133
+#: lib/layouts/revtex.layout:102 lib/layouts/revtex4.layout:132
 #: lib/layouts/siamltex.layout:209 lib/layouts/sigplanconf.layout:120
 #: lib/layouts/svprobth.layout:59 lib/layouts/tufte-book.layout:38
 #: lib/layouts/agu_stdtitle.inc:167 lib/layouts/amsdefs.inc:47
@@ -5750,7 +5761,7 @@ msgstr "Abstract---"
 #: lib/layouts/ijmpc.layout:201 lib/layouts/ijmpc.layout:205
 #: lib/layouts/ijmpd.layout:208 lib/layouts/iopart.layout:199
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
-#: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:262
+#: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:258
 #: lib/layouts/siamltex.layout:303 lib/layouts/sigplanconf.layout:146
 #: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:63
 #: lib/layouts/svglobal3.layout:66 lib/layouts/agu_stdtitle.inc:120
@@ -5776,9 +5787,9 @@ msgstr "Appendices"
 #: lib/layouts/ijmpc.layout:437 lib/layouts/ijmpd.layout:437
 #: lib/layouts/ijmpd.layout:461 lib/layouts/iopart.layout:243
 #: lib/layouts/iopart.layout:265 lib/layouts/iopart.layout:288
-#: lib/layouts/siamltex.layout:318 lib/layouts/sigplanconf.layout:184
-#: lib/layouts/svglobal3.layout:94 lib/layouts/stdstruct.inc:57
-#: lib/layouts/svjour.inc:285
+#: lib/layouts/revtex4.layout:228 lib/layouts/siamltex.layout:318
+#: lib/layouts/sigplanconf.layout:184 lib/layouts/svglobal3.layout:94
+#: lib/layouts/stdstruct.inc:57 lib/layouts/svjour.inc:285
 msgid "BackMatter"
 msgstr "BackMatter"
 
@@ -5808,7 +5819,7 @@ msgstr "Pøíloha"
 #: lib/layouts/scrbook.layout:22 lib/layouts/scrbook.layout:24
 #: lib/layouts/scrreprt.layout:11 lib/layouts/scrreprt.layout:13
 #: lib/layouts/siamltex.layout:317 lib/layouts/simplecv.layout:143
-#: lib/layouts/tufte-book.layout:242 lib/layouts/tufte-book.layout:244
+#: lib/layouts/tufte-book.layout:241 lib/layouts/tufte-book.layout:243
 #: lib/layouts/aguplus.inc:172 lib/layouts/aguplus.inc:174
 #: lib/layouts/amsdefs.inc:196 lib/layouts/scrclass.inc:245
 #: lib/layouts/stdstruct.inc:53 lib/layouts/svjour.inc:281
@@ -5863,15 +5874,15 @@ msgstr "Dùkaz."
 #: lib/layouts/memoir.layout:70 lib/layouts/memoir.layout:134
 #: lib/layouts/moderncv.layout:33 lib/layouts/paper.layout:58
 #: lib/layouts/powerdot.layout:226 lib/layouts/revtex.layout:38
-#: lib/layouts/revtex4.layout:59 lib/layouts/siamltex.layout:357
+#: lib/layouts/revtex4.layout:64 lib/layouts/siamltex.layout:357
 #: lib/layouts/simplecv.layout:28 lib/layouts/spie.layout:20
-#: lib/layouts/tufte-book.layout:65 lib/layouts/tufte-book.layout:86
-#: lib/layouts/tufte-book.layout:87 lib/layouts/tufte-handout.layout:23
+#: lib/layouts/tufte-book.layout:64 lib/layouts/tufte-book.layout:85
+#: lib/layouts/tufte-book.layout:86 lib/layouts/tufte-handout.layout:23
 #: lib/layouts/agu_stdsections.inc:32 lib/layouts/aguplus.inc:29
 #: lib/layouts/db_stdsections.inc:30 lib/layouts/numrevtex.inc:6
 #: lib/layouts/scrclass.inc:68 lib/layouts/stdsections.inc:13
-#: lib/layouts/stdsections.inc:40 lib/layouts/stdsections.inc:64
-#: lib/layouts/stdsections.inc:65 lib/layouts/svjour.inc:53
+#: lib/layouts/stdsections.inc:41 lib/layouts/stdsections.inc:65
+#: lib/layouts/stdsections.inc:66 lib/layouts/svjour.inc:53
 #: src/frontends/qt4/GuiDocument.cpp:170
 msgid "Section"
 msgstr "Sekce"
@@ -5886,11 +5897,11 @@ msgstr "Sekce"
 #: lib/layouts/llncs.layout:55 lib/layouts/ltugboat.layout:65
 #: lib/layouts/memoir.layout:76 lib/layouts/moderncv.layout:53
 #: lib/layouts/paper.layout:67 lib/layouts/revtex.layout:50
-#: lib/layouts/revtex4.layout:71 lib/layouts/siamltex.layout:368
-#: lib/layouts/simplecv.layout:50 lib/layouts/tufte-book.layout:110
+#: lib/layouts/revtex4.layout:73 lib/layouts/siamltex.layout:368
+#: lib/layouts/simplecv.layout:50 lib/layouts/tufte-book.layout:109
 #: lib/layouts/agu_stdsections.inc:43 lib/layouts/aguplus.inc:44
 #: lib/layouts/db_stdsections.inc:39 lib/layouts/numrevtex.inc:15
-#: lib/layouts/scrclass.inc:76 lib/layouts/stdsections.inc:89
+#: lib/layouts/scrclass.inc:76 lib/layouts/stdsections.inc:90
 #: lib/layouts/svjour.inc:63
 msgid "Subsection"
 msgstr "Podsekce"
@@ -5903,10 +5914,10 @@ msgstr "Podsekce"
 #: lib/layouts/kluwer.layout:79 lib/layouts/llncs.layout:64
 #: lib/layouts/ltugboat.layout:85 lib/layouts/memoir.layout:82
 #: lib/layouts/paper.layout:76 lib/layouts/recipebook.layout:97
-#: lib/layouts/revtex.layout:59 lib/layouts/revtex4.layout:80
+#: lib/layouts/revtex.layout:59 lib/layouts/revtex4.layout:82
 #: lib/layouts/siamltex.layout:377 lib/layouts/agu_stdsections.inc:54
 #: lib/layouts/db_stdsections.inc:48 lib/layouts/numrevtex.inc:24
-#: lib/layouts/scrclass.inc:84 lib/layouts/stdsections.inc:105
+#: lib/layouts/scrclass.inc:84 lib/layouts/stdsections.inc:106
 #: lib/layouts/svjour.inc:73
 msgid "Subsubsection"
 msgstr "Podpodsekce"
@@ -5967,7 +5978,7 @@ msgstr "Podtitulek"
 #: lib/layouts/g-brief.layout:180 lib/layouts/g-brief2.layout:715
 #: lib/layouts/ijmpc.layout:125 lib/layouts/iopart.layout:145
 #: lib/layouts/isprs.layout:111 lib/layouts/kluwer.layout:182
-#: lib/layouts/revtex.layout:120 lib/layouts/revtex4.layout:183
+#: lib/layouts/revtex.layout:120 lib/layouts/revtex4.layout:180
 #: lib/layouts/scrlettr.layout:139 lib/layouts/scrlttr2.layout:47
 #: lib/layouts/siamltex.layout:278 lib/layouts/aapaper.inc:29
 #: lib/layouts/amsdefs.inc:118 lib/layouts/lyxmacros.inc:44
@@ -5993,7 +6004,7 @@ msgstr "Mail"
 #: lib/layouts/g-brief2.layout:800 lib/layouts/kluwer.layout:149
 #: lib/layouts/lettre.layout:51 lib/layouts/lettre.layout:213
 #: lib/layouts/powerdot.layout:87 lib/layouts/revtex.layout:110
-#: lib/layouts/revtex4.layout:141 lib/layouts/scrlettr.layout:160
+#: lib/layouts/revtex4.layout:140 lib/layouts/scrlettr.layout:160
 #: lib/layouts/scrlttr2.layout:239 lib/layouts/siamltex.layout:228
 #: lib/layouts/tufte-book.layout:42 lib/layouts/agu_stdtitle.inc:238
 #: lib/layouts/amsdefs.inc:67 lib/layouts/db_stdtitle.inc:35
@@ -6065,17 +6076,17 @@ msgstr "Tezaurus"
 #: lib/layouts/egs.layout:71 lib/layouts/kluwer.layout:89
 #: lib/layouts/llncs.layout:73 lib/layouts/ltugboat.layout:105
 #: lib/layouts/memoir.layout:88 lib/layouts/paper.layout:85
-#: lib/layouts/revtex.layout:68 lib/layouts/revtex4.layout:89
+#: lib/layouts/revtex.layout:68 lib/layouts/revtex4.layout:90
 #: lib/layouts/agu_stdsections.inc:65 lib/layouts/aguplus.inc:59
 #: lib/layouts/db_stdsections.inc:57 lib/layouts/numrevtex.inc:33
-#: lib/layouts/scrclass.inc:92 lib/layouts/stdsections.inc:120
+#: lib/layouts/scrclass.inc:92 lib/layouts/stdsections.inc:121
 #: lib/layouts/svjour.inc:83
 msgid "Paragraph"
 msgstr "Odstavec"
 
 #: lib/layouts/aastex.layout:101 lib/layouts/aastex.layout:272
 #: lib/layouts/achemso.layout:94 lib/layouts/apa.layout:150
-#: lib/layouts/latex8.layout:88 lib/layouts/revtex4.layout:151
+#: lib/layouts/latex8.layout:88 lib/layouts/revtex4.layout:149
 #: lib/layouts/agu_stdtitle.inc:128 lib/layouts/aguplus.inc:65
 msgid "Affiliation"
 msgstr "Affiliation"
@@ -6230,7 +6241,7 @@ msgstr "Also Affiliation"
 
 #: lib/layouts/achemso.layout:110 lib/layouts/lettre.layout:41
 #: lib/layouts/lettre.layout:342 lib/layouts/scrlttr2.layout:191
-#: lib/configure.py:619
+#: lib/configure.py:626
 msgid "Fax"
 msgstr "Fax"
 
@@ -6306,7 +6317,7 @@ msgstr "Computing Review Categories"
 #: lib/layouts/acmsiggraph.layout:152 lib/layouts/acmsiggraph.layout:159
 #: lib/layouts/agutex.layout:177 lib/layouts/apa.layout:243
 #: lib/layouts/iopart.layout:239 lib/layouts/iopart.layout:253
-#: lib/layouts/revtex4.layout:233 lib/layouts/sigplanconf.layout:181
+#: lib/layouts/revtex4.layout:227 lib/layouts/sigplanconf.layout:181
 #: lib/layouts/sigplanconf.layout:188 lib/layouts/spie.layout:90
 msgid "Acknowledgments"
 msgstr "Acknowledgments"
@@ -6343,7 +6354,7 @@ msgstr "Acknowledgments."
 #: lib/layouts/beamer.layout:176 lib/layouts/egs.layout:581
 #: lib/layouts/isprs.layout:179 lib/layouts/spie.layout:31
 #: lib/layouts/aguplus.inc:37 lib/layouts/db_stdstarsections.inc:36
-#: lib/layouts/stdstarsections.inc:34
+#: lib/layouts/stdstarsections.inc:35
 msgid "Section*"
 msgstr "Sekce*"
 
@@ -6358,22 +6369,22 @@ msgstr "SpecialSection"
 #: lib/layouts/amsart.layout:95 lib/layouts/beamer.layout:178
 #: lib/layouts/beamer.layout:222 lib/layouts/memoir.layout:153
 #: lib/layouts/svmono.layout:78 lib/layouts/stdstarsections.inc:15
-#: lib/layouts/stdstarsections.inc:25 lib/layouts/stdstarsections.inc:36
-#: lib/layouts/stdstarsections.inc:47 lib/layouts/stdstarsections.inc:58
-#: lib/layouts/stdstarsections.inc:69 lib/layouts/stdstarsections.inc:80
+#: lib/layouts/stdstarsections.inc:26 lib/layouts/stdstarsections.inc:37
+#: lib/layouts/stdstarsections.inc:48 lib/layouts/stdstarsections.inc:59
+#: lib/layouts/stdstarsections.inc:70 lib/layouts/stdstarsections.inc:81
 msgid "Unnumbered"
 msgstr "Unnumbered"
 
 #: lib/layouts/amsart.layout:116 lib/layouts/amsbook.layout:92
 #: lib/layouts/beamer.layout:220 lib/layouts/egs.layout:601
 #: lib/layouts/isprs.layout:190 lib/layouts/aguplus.inc:52
-#: lib/layouts/db_stdstarsections.inc:48 lib/layouts/stdstarsections.inc:45
+#: lib/layouts/db_stdstarsections.inc:48 lib/layouts/stdstarsections.inc:46
 msgid "Subsection*"
 msgstr "Podsekce*"
 
 #: lib/layouts/amsart.layout:137 lib/layouts/amsbook.layout:100
 #: lib/layouts/isprs.layout:199 lib/layouts/db_stdstarsections.inc:60
-#: lib/layouts/stdstarsections.inc:56
+#: lib/layouts/stdstarsections.inc:57
 msgid "Subsubsection*"
 msgstr "Podpodsekce*"
 
@@ -6410,7 +6421,7 @@ msgid "FourAuthors"
 msgstr "FourAuthors"
 
 #: lib/layouts/apa.layout:162 lib/layouts/egs.layout:328
-#: lib/layouts/revtex4.layout:163 lib/layouts/agu_stdtitle.inc:131
+#: lib/layouts/revtex4.layout:160 lib/layouts/agu_stdtitle.inc:131
 msgid "Affiliation:"
 msgstr "Affiliation:"
 
@@ -6480,7 +6491,7 @@ msgstr "FitBitmap"
 #: lib/layouts/kluwer.layout:99 lib/layouts/llncs.layout:83
 #: lib/layouts/memoir.layout:94 lib/layouts/paper.layout:94
 #: lib/layouts/agu_stdsections.inc:76 lib/layouts/db_stdsections.inc:66
-#: lib/layouts/scrclass.inc:100 lib/layouts/stdsections.inc:130
+#: lib/layouts/scrclass.inc:100 lib/layouts/stdsections.inc:131
 msgid "Subparagraph"
 msgstr "Pododstavec"
 
@@ -6846,7 +6857,7 @@ msgid "Table"
 msgstr "Tabulka"
 
 #: lib/layouts/beamer.layout:1204 lib/layouts/powerdot.layout:385
-#: lib/layouts/tufte-book.layout:223 lib/layouts/stdfloats.inc:16
+#: lib/layouts/tufte-book.layout:222 lib/layouts/stdfloats.inc:16
 #: src/insets/InsetFloatList.cpp:177
 msgid "List of Tables"
 msgstr "Seznam tabulek"
@@ -6857,7 +6868,7 @@ msgid "Figure"
 msgstr "Obrázek"
 
 #: lib/layouts/beamer.layout:1218 lib/layouts/powerdot.layout:397
-#: lib/layouts/tufte-book.layout:236 lib/layouts/stdfloats.inc:31
+#: lib/layouts/tufte-book.layout:235 lib/layouts/stdfloats.inc:31
 #: src/insets/InsetFloatList.cpp:180
 msgid "List of Figures"
 msgstr "Seznam obrázkù"
@@ -7037,7 +7048,7 @@ msgstr "Send To Address"
 #: lib/layouts/dinbrief.layout:49 lib/layouts/ectaart.layout:66
 #: lib/layouts/elsart.layout:139 lib/layouts/g-brief.layout:185
 #: lib/layouts/g-brief2.layout:726 lib/layouts/revtex.layout:132
-#: lib/layouts/revtex4.layout:186 lib/layouts/scrlettr.layout:142
+#: lib/layouts/revtex4.layout:183 lib/layouts/scrlettr.layout:142
 #: lib/layouts/scrlttr2.layout:62 lib/layouts/siamltex.layout:290
 #: lib/layouts/amsdefs.inc:130
 msgid "Address:"
@@ -7163,7 +7174,7 @@ msgstr "Location:"
 
 #: lib/layouts/dinbrief.layout:154 lib/layouts/g-brief.layout:192
 #: lib/layouts/g-brief2.layout:810 lib/layouts/lettre.layout:226
-#: lib/layouts/revtex.layout:112 lib/layouts/revtex4.layout:143
+#: lib/layouts/revtex.layout:112 lib/layouts/revtex4.layout:142
 #: lib/layouts/scrlettr.layout:163 lib/layouts/scrlttr2.layout:243
 #: lib/layouts/siamltex.layout:240 lib/layouts/amsdefs.inc:80
 msgid "Date:"
@@ -7407,7 +7418,7 @@ msgstr "Keyword"
 #: lib/layouts/ectaart.layout:120 lib/layouts/elsarticle.layout:264
 #: lib/layouts/ijmpd.layout:212 lib/layouts/iopart.layout:210
 #: lib/layouts/kluwer.layout:289 lib/layouts/paper.layout:175
-#: lib/layouts/revtex4.layout:267 lib/layouts/sigplanconf.layout:149
+#: lib/layouts/revtex4.layout:263 lib/layouts/sigplanconf.layout:149
 #: lib/layouts/spie.layout:48 lib/layouts/agu_stdtitle.inc:123
 msgid "Keywords:"
 msgstr "Keywords:"
@@ -7540,7 +7551,7 @@ msgstr "reprint_reqs_to:"
 msgid "Author Address"
 msgstr "Author Address"
 
-#: lib/layouts/elsart.layout:147 lib/layouts/revtex4.layout:197
+#: lib/layouts/elsart.layout:147 lib/layouts/revtex4.layout:194
 msgid "Author Email"
 msgstr "Author Email"
 
@@ -7549,16 +7560,16 @@ msgstr "Author Email"
 msgid "Email:"
 msgstr "Email:"
 
-#: lib/layouts/elsart.layout:168 lib/layouts/revtex4.layout:213
+#: lib/layouts/elsart.layout:168 lib/layouts/revtex4.layout:210
 msgid "Author URL"
 msgstr "Author URL"
 
-#: lib/layouts/elsart.layout:179 lib/layouts/revtex4.layout:219
+#: lib/layouts/elsart.layout:179 lib/layouts/revtex4.layout:216
 #: lib/layouts/amsdefs.inc:157
 msgid "URL:"
 msgstr "URL:"
 
-#: lib/layouts/elsart.layout:191 lib/layouts/revtex4.layout:190
+#: lib/layouts/elsart.layout:191 lib/layouts/revtex4.layout:187
 #: lib/layouts/amsdefs.inc:168
 msgid "Thanks"
 msgstr "Thanks"
@@ -8480,7 +8491,7 @@ msgstr "Prelim"
 msgid "Rapid"
 msgstr "Rapid"
 
-#: lib/layouts/iopart.layout:218 lib/layouts/revtex4.layout:251
+#: lib/layouts/iopart.layout:218 lib/layouts/revtex4.layout:246
 #: lib/layouts/svglobal3.layout:70 lib/layouts/svglobal3.layout:73
 msgid "PACS"
 msgstr "PACS"
@@ -8634,9 +8645,9 @@ msgstr "P.S.:"
 #: lib/layouts/llncs.layout:39 lib/layouts/memoir.layout:59
 #: lib/layouts/recipebook.layout:41 lib/layouts/scrbook.layout:16
 #: lib/layouts/svmono.layout:68 lib/layouts/svmult.layout:218
-#: lib/layouts/tufte-book.layout:63 lib/layouts/agu_stdsections.inc:22
+#: lib/layouts/tufte-book.layout:62 lib/layouts/agu_stdsections.inc:22
 #: lib/layouts/db_stdsections.inc:21 lib/layouts/scrclass.inc:59
-#: lib/layouts/stdsections.inc:38
+#: lib/layouts/stdsections.inc:39
 msgid "Chapter"
 msgstr "Kapitola"
 
@@ -8724,7 +8735,7 @@ msgstr "Solution #."
 
 #: lib/layouts/memoir.layout:65 lib/layouts/svmono.layout:72
 #: lib/layouts/svmult.layout:223 lib/layouts/db_stdstarsections.inc:24
-#: lib/layouts/stdstarsections.inc:23
+#: lib/layouts/stdstarsections.inc:24
 msgid "Chapter*"
 msgstr "Kapitola*"
 
@@ -8881,27 +8892,27 @@ msgstr "Ingredients"
 msgid "Ingredients:"
 msgstr "Ingredients:"
 
-#: lib/layouts/revtex4.layout:113
+#: lib/layouts/revtex4.layout:111
 msgid "Preprint"
 msgstr "Preprint"
 
-#: lib/layouts/revtex4.layout:171 lib/layouts/revtex4.layout:177
+#: lib/layouts/revtex4.layout:168 lib/layouts/revtex4.layout:174
 msgid "AltAffiliation"
 msgstr "AltAffiliation"
 
-#: lib/layouts/revtex4.layout:193 lib/layouts/amsdefs.inc:171
+#: lib/layouts/revtex4.layout:190 lib/layouts/amsdefs.inc:171
 msgid "Thanks:"
 msgstr "Thanks:"
 
-#: lib/layouts/revtex4.layout:203
+#: lib/layouts/revtex4.layout:200
 msgid "Electronic Address:"
 msgstr "Electronic Address:"
 
-#: lib/layouts/revtex4.layout:241
+#: lib/layouts/revtex4.layout:237
 msgid "acknowledgments"
 msgstr "acknowledgments"
 
-#: lib/layouts/revtex4.layout:258
+#: lib/layouts/revtex4.layout:254
 msgid "PACS number:"
 msgstr "PACS number:"
 
@@ -9274,55 +9285,55 @@ msgstr "Inst"
 msgid "Institute #"
 msgstr "Institute #"
 
-#: lib/layouts/tufte-book.layout:124
+#: lib/layouts/tufte-book.layout:123
 msgid "Sidenote"
 msgstr "Sidenote"
 
-#: lib/layouts/tufte-book.layout:129
+#: lib/layouts/tufte-book.layout:128
 msgid "sidenote"
 msgstr "sidenote"
 
-#: lib/layouts/tufte-book.layout:143
+#: lib/layouts/tufte-book.layout:142
 msgid "Marginnote"
 msgstr "Marginnote"
 
-#: lib/layouts/tufte-book.layout:147
+#: lib/layouts/tufte-book.layout:146
 msgid "marginnote"
 msgstr "marginnote"
 
-#: lib/layouts/tufte-book.layout:156
+#: lib/layouts/tufte-book.layout:155
 msgid "NewThought"
 msgstr "NewThought"
 
-#: lib/layouts/tufte-book.layout:160
+#: lib/layouts/tufte-book.layout:159
 msgid "new thought"
 msgstr "new thought"
 
-#: lib/layouts/tufte-book.layout:170
+#: lib/layouts/tufte-book.layout:169
 msgid "AllCaps"
 msgstr "AllCaps"
 
-#: lib/layouts/tufte-book.layout:173
+#: lib/layouts/tufte-book.layout:172
 msgid "allcaps"
 msgstr "allcaps"
 
-#: lib/layouts/tufte-book.layout:183
+#: lib/layouts/tufte-book.layout:182
 msgid "SmallCaps"
 msgstr "SmallCaps"
 
-#: lib/layouts/tufte-book.layout:186
+#: lib/layouts/tufte-book.layout:185
 msgid "smallcaps"
 msgstr "smallcaps"
 
-#: lib/layouts/tufte-book.layout:192
+#: lib/layouts/tufte-book.layout:191
 msgid "Full Width"
 msgstr "Full Width"
 
-#: lib/layouts/tufte-book.layout:218
+#: lib/layouts/tufte-book.layout:217
 msgid "MarginTable"
 msgstr "MarginTable"
 
-#: lib/layouts/tufte-book.layout:231
+#: lib/layouts/tufte-book.layout:230
 msgid "MarginFigure"
 msgstr "MarginFigure"
 
@@ -9621,7 +9632,7 @@ msgid "Country"
 msgstr "Country"
 
 #: lib/layouts/aguplus.inc:71 lib/layouts/db_stdstarsections.inc:72
-#: lib/layouts/stdstarsections.inc:67
+#: lib/layouts/stdstarsections.inc:68
 msgid "Paragraph*"
 msgstr "Odstavec*"
 
@@ -9737,7 +9748,7 @@ msgstr "MenuChoice"
 msgid "SGML"
 msgstr "SGML"
 
-#: lib/layouts/db_stdstarsections.inc:84 lib/layouts/stdstarsections.inc:78
+#: lib/layouts/db_stdstarsections.inc:84 lib/layouts/stdstarsections.inc:79
 msgid "Subparagraph*"
 msgstr "Pododstavec*"
 
@@ -9766,7 +9777,7 @@ msgid "FirstName"
 msgstr "FirstName"
 
 #: lib/layouts/literate-scrap.inc:12 lib/layouts/noweb.module:11
-#: lib/layouts/sweave.module:48
+#: lib/layouts/sweave.module:45
 msgid "Scrap"
 msgstr "Útr¾ek"
 
@@ -9980,11 +9991,11 @@ msgstr "--- Oddìlit Prostøedí ---"
 msgid "Part \\thepart"
 msgstr "Èást \\thepart"
 
-#: lib/layouts/stdsections.inc:41
+#: lib/layouts/stdsections.inc:42
 msgid "Chapter \\thechapter"
 msgstr "Kapitola \\thechapter"
 
-#: lib/layouts/stdsections.inc:42
+#: lib/layouts/stdsections.inc:43
 msgid "Appendix \\thechapter"
 msgstr "Pøíloha \\thechapter"
 
@@ -10351,7 +10362,8 @@ msgstr ""
 msgid "charstyles"
 msgstr "styly znakù"
 
-#: lib/layouts/initials.module:10 lib/layouts/initials.module:12
+#: lib/layouts/initials.module:15 lib/layouts/initials.module:17
+#: lib/layouts/initials.module:26 lib/layouts/initials.module:32
 msgid "Initial"
 msgstr "Iniciálka"
 
@@ -10508,41 +10520,42 @@ msgstr ""
 msgid "literate"
 msgstr "dokumentované"
 
-#: lib/layouts/sweave.module:2 lib/layouts/sweave.module:29
-#: lib/configure.py:551
+#: lib/layouts/sweave.module:2 lib/layouts/sweave.module:24
+#: lib/configure.py:558
 msgid "Sweave"
 msgstr "Sweave"
 
 #: lib/layouts/sweave.module:6
+#, fuzzy
 msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
-"via Sweave package. See sweave.lyx in examples."
+"via the Sweave() function. See sweave.lyx in examples."
 msgstr ""
 "Povoluje statistický programovací jazyk S/R jako¾to nástroj pro "
 "dokumentované programování. Pou¾ívá balíèek Sweave. Viz sweave.lyx v "
 "pøíkladech."
 
-#: lib/layouts/sweave.module:28
+#: lib/layouts/sweave.module:23
 msgid "Chunk"
 msgstr "Útr¾ek"
 
-#: lib/layouts/sweave.module:52
+#: lib/layouts/sweave.module:49
 msgid "Sweave Options"
 msgstr "Parametry pro Sweave"
 
-#: lib/layouts/sweave.module:53
+#: lib/layouts/sweave.module:50
 msgid "Sweave opts"
 msgstr "Sweave par."
 
-#: lib/layouts/sweave.module:74
+#: lib/layouts/sweave.module:71
 msgid "S/R expression"
 msgstr "S/R výraz"
 
-#: lib/layouts/sweave.module:75
+#: lib/layouts/sweave.module:72
 msgid "S/R expr"
 msgstr "S/R výraz"
 
-#: lib/layouts/sweave.module:96 lib/layouts/sweave.module:97
+#: lib/layouts/sweave.module:93 lib/layouts/sweave.module:94
 msgid "Sweave Input File"
 msgstr "Vstupní soubor pro Sweave"
 
@@ -11637,16 +11650,16 @@ msgstr "Doslovná reference|D"
 #: lib/ui/stdcontext.inc:98 lib/ui/stdcontext.inc:110
 #: lib/ui/stdcontext.inc:120 lib/ui/stdcontext.inc:128
 #: lib/ui/stdcontext.inc:137 lib/ui/stdcontext.inc:148
-#: lib/ui/stdcontext.inc:155 lib/ui/stdcontext.inc:220
-#: lib/ui/stdcontext.inc:238 lib/ui/stdcontext.inc:265
-#: lib/ui/stdcontext.inc:359 lib/ui/stdcontext.inc:372
-#: lib/ui/stdcontext.inc:434 lib/ui/stdcontext.inc:454
-#: lib/ui/stdcontext.inc:465 lib/ui/stdcontext.inc:473
-#: lib/ui/stdcontext.inc:483 lib/ui/stdcontext.inc:491
-#: lib/ui/stdcontext.inc:499 lib/ui/stdcontext.inc:507
-#: lib/ui/stdcontext.inc:520 lib/ui/stdcontext.inc:530
-#: lib/ui/stdcontext.inc:551 lib/ui/stdcontext.inc:559
-#: lib/ui/stdcontext.inc:605 lib/ui/stdmenus.inc:506
+#: lib/ui/stdcontext.inc:155 lib/ui/stdcontext.inc:218
+#: lib/ui/stdcontext.inc:236 lib/ui/stdcontext.inc:263
+#: lib/ui/stdcontext.inc:357 lib/ui/stdcontext.inc:370
+#: lib/ui/stdcontext.inc:432 lib/ui/stdcontext.inc:452
+#: lib/ui/stdcontext.inc:463 lib/ui/stdcontext.inc:471
+#: lib/ui/stdcontext.inc:481 lib/ui/stdcontext.inc:489
+#: lib/ui/stdcontext.inc:497 lib/ui/stdcontext.inc:505
+#: lib/ui/stdcontext.inc:518 lib/ui/stdcontext.inc:528
+#: lib/ui/stdcontext.inc:549 lib/ui/stdcontext.inc:557
+#: lib/ui/stdcontext.inc:603 lib/ui/stdmenus.inc:506
 msgid "Settings...|S"
 msgstr "Nastavení...|N"
 
@@ -11654,7 +11667,7 @@ msgstr "Nastavení...|N"
 msgid "Go Back|G"
 msgstr "Jdi zpìt|J"
 
-#: lib/ui/stdcontext.inc:108 lib/ui/stdcontext.inc:451
+#: lib/ui/stdcontext.inc:108 lib/ui/stdcontext.inc:449
 msgid "Copy as Reference|C"
 msgstr "Zkopíruj jako referenci|Z"
 
@@ -11671,7 +11684,7 @@ msgid "Close Inset|C"
 msgstr "Zavøi vlo¾ku|Z"
 
 #: lib/ui/stdcontext.inc:147 lib/ui/stdcontext.inc:153
-#: lib/ui/stdcontext.inc:195 lib/ui/stdcontext.inc:567
+#: lib/ui/stdcontext.inc:565
 msgid "Dissolve Inset|D"
 msgstr "Rozpustit vlo¾ku do textu|u"
 
@@ -11743,482 +11756,482 @@ msgstr "Horizontální fantóm|H"
 msgid "Vertical Phantom|V"
 msgstr "Vertikální fantóm|V"
 
-#: lib/ui/stdcontext.inc:202 lib/ui/stdmenus.inc:394
+#: lib/ui/stdcontext.inc:200 lib/ui/stdmenus.inc:394
 msgid "Interword Space|w"
 msgstr "Mezislovní mezera|M"
 
-#: lib/ui/stdcontext.inc:203
+#: lib/ui/stdcontext.inc:201
 msgid "Protected Space|o"
 msgstr "Chránìná mezera|h"
 
-#: lib/ui/stdcontext.inc:204 lib/ui/stdcontext.inc:227 lib/ui/stdmenus.inc:395
+#: lib/ui/stdcontext.inc:202 lib/ui/stdcontext.inc:225 lib/ui/stdmenus.inc:395
 msgid "Thin Space|T"
 msgstr "Úzká mezera|z"
 
-#: lib/ui/stdcontext.inc:205 lib/ui/stdcontext.inc:230
+#: lib/ui/stdcontext.inc:203 lib/ui/stdcontext.inc:228
 msgid "Negative Thin Space|N"
 msgstr "Záporná úzká mezera|k"
 
-#: lib/ui/stdcontext.inc:206 lib/ui/stdcontext.inc:233
+#: lib/ui/stdcontext.inc:204 lib/ui/stdcontext.inc:231
 msgid "Half Quad Space (Enskip)|k"
 msgstr "Polovina ètverèíku (Enskip)|e"
 
-#: lib/ui/stdcontext.inc:207
+#: lib/ui/stdcontext.inc:205
 msgid "Protected Half Quad Space (Enspace)|E"
 msgstr "Chránìná polovina ètverèíku (Enspace)"
 
-#: lib/ui/stdcontext.inc:208 lib/ui/stdcontext.inc:234
+#: lib/ui/stdcontext.inc:206 lib/ui/stdcontext.inc:232
 msgid "Quad Space|Q"
 msgstr "Ètverèík (1 em)|t"
 
-#: lib/ui/stdcontext.inc:209 lib/ui/stdcontext.inc:235
+#: lib/ui/stdcontext.inc:207 lib/ui/stdcontext.inc:233
 msgid "Double Quad Space|u"
 msgstr "Dva ètverèíky (2 em)|D"
 
-#: lib/ui/stdcontext.inc:210
+#: lib/ui/stdcontext.inc:208
 msgid "Horizontal Fill|F"
 msgstr "Horizontální výplò|p"
 
-#: lib/ui/stdcontext.inc:211
+#: lib/ui/stdcontext.inc:209
 msgid "Protected Horizontal Fill|i"
 msgstr "Chránìná horizontální výplò|i"
 
-#: lib/ui/stdcontext.inc:212
+#: lib/ui/stdcontext.inc:210
 msgid "Horizontal Fill (Dots)|D"
 msgstr "Horizontální výplò (teèky)|y"
 
-#: lib/ui/stdcontext.inc:213
+#: lib/ui/stdcontext.inc:211
 msgid "Horizontal Fill (Rule)|R"
 msgstr "Horizontální výplò (èára)"
 
-#: lib/ui/stdcontext.inc:214
+#: lib/ui/stdcontext.inc:212
 msgid "Horizontal Fill (Left Arrow)|L"
 msgstr "Horizontální výplò (levá ¹ipka)"
 
-#: lib/ui/stdcontext.inc:215
+#: lib/ui/stdcontext.inc:213
 msgid "Horizontal Fill (Right Arrow)|g"
 msgstr "Horizontální výplò (pravá ¹ipka)"
 
-#: lib/ui/stdcontext.inc:216
+#: lib/ui/stdcontext.inc:214
 msgid "Horizontal Fill (Up Brace)|p"
 msgstr "Horizontální výplò (dolní slo¾ená)"
 
-#: lib/ui/stdcontext.inc:217
+#: lib/ui/stdcontext.inc:215
 msgid "Horizontal Fill (Down Brace)|B"
 msgstr "Horizontální výplò (horní slo¾ená)"
 
-#: lib/ui/stdcontext.inc:218 lib/ui/stdcontext.inc:236
+#: lib/ui/stdcontext.inc:216 lib/ui/stdcontext.inc:234
 msgid "Custom Length|C"
 msgstr "Vlastní délka|V"
 
-#: lib/ui/stdcontext.inc:228
+#: lib/ui/stdcontext.inc:226
 msgid "Medium Space|M"
 msgstr "Støední mezera|S"
 
-#: lib/ui/stdcontext.inc:229
+#: lib/ui/stdcontext.inc:227
 msgid "Thick Space|h"
 msgstr "©iroká mezera|T"
 
-#: lib/ui/stdcontext.inc:231
+#: lib/ui/stdcontext.inc:229
 msgid "Negative Medium Space|u"
 msgstr "Záporná støední mezera|e"
 
-#: lib/ui/stdcontext.inc:232
+#: lib/ui/stdcontext.inc:230
 msgid "Negative Thick Space|i"
 msgstr "Záporná ¹iroká mezera|i"
 
-#: lib/ui/stdcontext.inc:245
+#: lib/ui/stdcontext.inc:243
 msgid "DefSkip|D"
 msgstr "Definovaná mezera|D"
 
-#: lib/ui/stdcontext.inc:246
+#: lib/ui/stdcontext.inc:244
 msgid "SmallSkip|S"
 msgstr "Malá mezera (SmallSkip)|M"
 
-#: lib/ui/stdcontext.inc:247
+#: lib/ui/stdcontext.inc:245
 msgid "MedSkip|M"
 msgstr "Støední mezera (MedSkip)|S"
 
-#: lib/ui/stdcontext.inc:248
+#: lib/ui/stdcontext.inc:246
 msgid "BigSkip|B"
 msgstr "Velká mezera (BigSkip)|V"
 
-#: lib/ui/stdcontext.inc:249
+#: lib/ui/stdcontext.inc:247
 msgid "VFill|F"
 msgstr "Výplò (VFill)|p"
 
-#: lib/ui/stdcontext.inc:250
+#: lib/ui/stdcontext.inc:248
 msgid "Custom|C"
 msgstr "Vlastní|l"
 
-#: lib/ui/stdcontext.inc:252
+#: lib/ui/stdcontext.inc:250
 msgid "Settings...|e"
 msgstr "Nastavení...|N"
 
 # TODO nova stranka; viz wiki
-#: lib/ui/stdcontext.inc:259 lib/ui/stdcontext.inc:514
+#: lib/ui/stdcontext.inc:257 lib/ui/stdcontext.inc:512
 msgid "Include|c"
 msgstr "Zahrnout (nová stránka)|Z"
 
 # TODO lze i rekurzivne
-#: lib/ui/stdcontext.inc:260 lib/ui/stdcontext.inc:515
+#: lib/ui/stdcontext.inc:258 lib/ui/stdcontext.inc:513
 msgid "Input|p"
 msgstr "Vstup (lze rekurzivnì)|r"
 
-#: lib/ui/stdcontext.inc:261 lib/ui/stdcontext.inc:516
+#: lib/ui/stdcontext.inc:259 lib/ui/stdcontext.inc:514
 msgid "Verbatim|V"
 msgstr "Doslovnì|D"
 
-#: lib/ui/stdcontext.inc:262 lib/ui/stdcontext.inc:517
+#: lib/ui/stdcontext.inc:260 lib/ui/stdcontext.inc:515
 msgid "Verbatim (marked blanks)|b"
 msgstr "Doslovnì (vyznaèené mezery)|m"
 
-#: lib/ui/stdcontext.inc:263 lib/ui/stdcontext.inc:518
+#: lib/ui/stdcontext.inc:261 lib/ui/stdcontext.inc:516
 msgid "Listing|L"
 msgstr "Výpis|p"
 
-#: lib/ui/stdcontext.inc:267 lib/ui/stdcontext.inc:522
+#: lib/ui/stdcontext.inc:265 lib/ui/stdcontext.inc:520
 msgid "Edit Included File...|E"
 msgstr "Editovat zahrnutý soubor...|E"
 
-#: lib/ui/stdcontext.inc:274 lib/ui/stdmenus.inc:406
+#: lib/ui/stdcontext.inc:272 lib/ui/stdmenus.inc:406
 msgid "New Page|N"
 msgstr "Nová stránka|N"
 
-#: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:407
+#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:407
 msgid "Page Break|a"
 msgstr "Tvrdý konec stránky|e"
 
-#: lib/ui/stdcontext.inc:276 lib/ui/stdmenus.inc:408
+#: lib/ui/stdcontext.inc:274 lib/ui/stdmenus.inc:408
 msgid "Clear Page|C"
 msgstr "Uzavøít stránku (\\clearpage)|U"
 
-#: lib/ui/stdcontext.inc:277 lib/ui/stdmenus.inc:409
+#: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:409
 msgid "Clear Double Page|D"
 msgstr "Uzavøít stránku v oboustraném dok. (\\cleardoublepage)|s"
 
-#: lib/ui/stdcontext.inc:284 lib/ui/stdmenus.inc:403
+#: lib/ui/stdcontext.inc:282 lib/ui/stdmenus.inc:403
 msgid "Ragged Line Break|R"
 msgstr "Konec øádku|K"
 
-#: lib/ui/stdcontext.inc:285 lib/ui/stdmenus.inc:404
+#: lib/ui/stdcontext.inc:283 lib/ui/stdmenus.inc:404
 msgid "Justified Line Break|J"
 msgstr "Konec øádku se zarovnáním"
 
-#: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:102 lib/ui/stdtoolbars.inc:80
+#: lib/ui/stdcontext.inc:292 lib/ui/stdmenus.inc:102 lib/ui/stdtoolbars.inc:80
 #: src/Text3.cpp:1222 src/mathed/InsetMathNest.cpp:596
 msgid "Cut"
 msgstr "Vyjmout"
 
-#: lib/ui/stdcontext.inc:295 lib/ui/stdmenus.inc:103 lib/ui/stdtoolbars.inc:81
+#: lib/ui/stdcontext.inc:293 lib/ui/stdmenus.inc:103 lib/ui/stdtoolbars.inc:81
 #: src/Text3.cpp:1227 src/mathed/InsetMathNest.cpp:605
 msgid "Copy"
 msgstr "Zkopírovat"
 
-#: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:82
+#: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:82
 #: src/Text3.cpp:1175 src/mathed/InsetMathGrid.cpp:1327
 #: src/mathed/InsetMathNest.cpp:575
 msgid "Paste"
 msgstr "Vlo¾it"
 
-#: lib/ui/stdcontext.inc:297 lib/ui/stdmenus.inc:105
+#: lib/ui/stdcontext.inc:295 lib/ui/stdmenus.inc:105
 msgid "Paste Recent|e"
 msgstr "Vlo¾it poslední|p"
 
-#: lib/ui/stdcontext.inc:299
+#: lib/ui/stdcontext.inc:297
 msgid "Jump Back to Saved Bookmark|B"
 msgstr "Skok zpìt na ulo¾enou zálo¾ku|k"
 
-#: lib/ui/stdcontext.inc:300 lib/ui/stdmenus.inc:528
+#: lib/ui/stdcontext.inc:298 lib/ui/stdmenus.inc:528
 msgid "Forward search|F"
 msgstr "Dopøedné hledání|h"
 
-#: lib/ui/stdcontext.inc:302 lib/ui/stdmenus.inc:113
+#: lib/ui/stdcontext.inc:300 lib/ui/stdmenus.inc:113
 msgid "Move Paragraph Up|o"
 msgstr "Pøesunout odstavec nahoru|r"
 
-#: lib/ui/stdcontext.inc:303 lib/ui/stdmenus.inc:114
+#: lib/ui/stdcontext.inc:301 lib/ui/stdmenus.inc:114
 msgid "Move Paragraph Down|v"
 msgstr "Pøesunout odstavec dolù|o"
 
-#: lib/ui/stdcontext.inc:305
+#: lib/ui/stdcontext.inc:303
 msgid "Promote Section|r"
 msgstr "Zvý¹it úroveò sekce|Z"
 
-#: lib/ui/stdcontext.inc:306
+#: lib/ui/stdcontext.inc:304
 msgid "Demote Section|m"
 msgstr "Sní¾it úroveò sekce|S"
 
-#: lib/ui/stdcontext.inc:307
+#: lib/ui/stdcontext.inc:305
 msgid "Move Section Down|D"
 msgstr "Pøesunout sekci dolù|d"
 
-#: lib/ui/stdcontext.inc:308 lib/ui/stdcontext.inc:587
+#: lib/ui/stdcontext.inc:306 lib/ui/stdcontext.inc:585
 msgid "Move Section Up|U"
 msgstr "Pøesunout sekci nahorù|n"
 
-#: lib/ui/stdcontext.inc:309
+#: lib/ui/stdcontext.inc:307
 msgid "Insert Short Title|T"
 msgstr "Krátký titulek"
 
-#: lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:355
+#: lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:355
 msgid "Insert Regular Expression"
 msgstr "Vlo¾it regulární výraz"
 
-#: lib/ui/stdcontext.inc:312 lib/ui/stdcontext.inc:576
+#: lib/ui/stdcontext.inc:310 lib/ui/stdcontext.inc:574
 msgid "Accept Change|c"
 msgstr "Pøijmout zmìnu|i"
 
-#: lib/ui/stdcontext.inc:313
+#: lib/ui/stdcontext.inc:311
 msgid "Reject Change|j"
 msgstr "Odmítnout zmìnu|m"
 
-#: lib/ui/stdcontext.inc:315
+#: lib/ui/stdcontext.inc:313
 msgid "Apply Last Text Style|A"
 msgstr "Pou¾ít poslední Styl textu|y"
 
-#: lib/ui/stdcontext.inc:316 lib/ui/stdmenus.inc:116
+#: lib/ui/stdcontext.inc:314 lib/ui/stdmenus.inc:116
 msgid "Text Style|S"
 msgstr "Styl textu|t"
 
-#: lib/ui/stdcontext.inc:317 lib/ui/stdmenus.inc:118
+#: lib/ui/stdcontext.inc:315 lib/ui/stdmenus.inc:118
 msgid "Paragraph Settings...|P"
 msgstr "Nastavení odstavce...|a"
 
-#: lib/ui/stdcontext.inc:320
+#: lib/ui/stdcontext.inc:318
 msgid "Fullscreen Mode"
 msgstr "Celoobrazovkový mód"
 
-#: lib/ui/stdcontext.inc:328
+#: lib/ui/stdcontext.inc:326
 msgid "Anything|A"
 msgstr "Cokoliv|C"
 
-#: lib/ui/stdcontext.inc:329
+#: lib/ui/stdcontext.inc:327
 msgid "Anything Non-Empty|o"
 msgstr "Cokoliv neprázdné|r"
 
-#: lib/ui/stdcontext.inc:330
+#: lib/ui/stdcontext.inc:328
 msgid "Any Word|W"
 msgstr "Libovolné slovo|v"
 
-#: lib/ui/stdcontext.inc:331
+#: lib/ui/stdcontext.inc:329
 msgid "Any Number|N"
 msgstr "Libovolné èíslo|o"
 
-#: lib/ui/stdcontext.inc:332
+#: lib/ui/stdcontext.inc:330
 msgid "User Defined|U"
 msgstr "U¾ivatelsky definované|U"
 
-#: lib/ui/stdcontext.inc:341 lib/ui/stdmenus.inc:241
+#: lib/ui/stdcontext.inc:339 lib/ui/stdmenus.inc:241
 msgid "Append Argument"
 msgstr "Pøidej argument"
 
-#: lib/ui/stdcontext.inc:342 lib/ui/stdmenus.inc:242
+#: lib/ui/stdcontext.inc:340 lib/ui/stdmenus.inc:242
 msgid "Remove Last Argument"
 msgstr "Vyma¾ poslední argument"
 
-#: lib/ui/stdcontext.inc:344
+#: lib/ui/stdcontext.inc:342
 msgid "Make First Non-Optional Into Optional Argument"
 msgstr "Zmìnit první povinný argument na volitelný"
 
-#: lib/ui/stdcontext.inc:345
+#: lib/ui/stdcontext.inc:343
 msgid "Make Last Optional Into Non-Optional Argument"
 msgstr "Zmìnit poslední volitelný argument na povinný"
 
-#: lib/ui/stdcontext.inc:346 lib/ui/stdmenus.inc:246
+#: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:246
 msgid "Insert Optional Argument"
 msgstr "Vlo¾it volitelný argument"
 
-#: lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:247
+#: lib/ui/stdcontext.inc:345 lib/ui/stdmenus.inc:247
 msgid "Remove Optional Argument"
 msgstr "Smazat volitelný argument"
 
-#: lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:249
+#: lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:249
 msgid "Append Argument Eating From the Right"
 msgstr "Pøidat pohlcování argumentu zprava"
 
-#: lib/ui/stdcontext.inc:350 lib/ui/stdmenus.inc:250
+#: lib/ui/stdcontext.inc:348 lib/ui/stdmenus.inc:250
 msgid "Append Optional Argument Eating From the Right"
 msgstr "Pøidat pohlcování volitelného argumentu zprava"
 
-#: lib/ui/stdcontext.inc:351 lib/ui/stdmenus.inc:251
+#: lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:251
 msgid "Remove Last Argument Spitting Out to the Right"
 msgstr "Odstranit vyplivnutí posledního argumentu doprava"
 
-#: lib/ui/stdcontext.inc:360
+#: lib/ui/stdcontext.inc:358
 msgid "Reload|R"
 msgstr "Znovunaèíst|Z"
 
-#: lib/ui/stdcontext.inc:362 lib/ui/stdcontext.inc:374
-#: lib/ui/stdcontext.inc:475
+#: lib/ui/stdcontext.inc:360 lib/ui/stdcontext.inc:372
+#: lib/ui/stdcontext.inc:473
 msgid "Edit Externally...|x"
 msgstr "Edituj externì...|x"
 
-#: lib/ui/stdcontext.inc:382
+#: lib/ui/stdcontext.inc:380
 msgid "Multicolumn|u"
 msgstr "Vícesloupcová buòka|b"
 
-#: lib/ui/stdcontext.inc:383
+#: lib/ui/stdcontext.inc:381
 msgid "Multirow|w"
 msgstr "Víceøádková buòka|k"
 
-#: lib/ui/stdcontext.inc:385
+#: lib/ui/stdcontext.inc:383
 msgid "Top Line|n"
 msgstr "Linka nahoøe|n"
 
-#: lib/ui/stdcontext.inc:386
+#: lib/ui/stdcontext.inc:384
 msgid "Bottom Line|i"
 msgstr "Linka dole|d"
 
-#: lib/ui/stdcontext.inc:387 lib/ui/stdmenus.inc:187
+#: lib/ui/stdcontext.inc:385 lib/ui/stdmenus.inc:187
 msgid "Left Line|L"
 msgstr "Linka vlevo|l"
 
-#: lib/ui/stdcontext.inc:388 lib/ui/stdmenus.inc:188
+#: lib/ui/stdcontext.inc:386 lib/ui/stdmenus.inc:188
 msgid "Right Line|R"
 msgstr "Linka vpravo|r"
 
-#: lib/ui/stdcontext.inc:390
+#: lib/ui/stdcontext.inc:388
 msgid "Left|f"
 msgstr "Nalevo|l"
 
-#: lib/ui/stdcontext.inc:391 lib/ui/stdmenus.inc:197
+#: lib/ui/stdcontext.inc:389 lib/ui/stdmenus.inc:197
 msgid "Center|C"
 msgstr "Na støed|s"
 
-#: lib/ui/stdcontext.inc:392
+#: lib/ui/stdcontext.inc:390
 msgid "Right|h"
 msgstr "Napravo|r"
 
-#: lib/ui/stdcontext.inc:393
+#: lib/ui/stdcontext.inc:391
 msgid "Decimal"
 msgstr "Dle desetinné èárky|y"
 
-#: lib/ui/stdcontext.inc:395 lib/ui/stdmenus.inc:200
+#: lib/ui/stdcontext.inc:393 lib/ui/stdmenus.inc:200
 msgid "Top|T"
 msgstr "Nahoru|N"
 
-#: lib/ui/stdcontext.inc:396 lib/ui/stdmenus.inc:201
+#: lib/ui/stdcontext.inc:394 lib/ui/stdmenus.inc:201
 msgid "Middle|M"
 msgstr "Doprostøed|p"
 
-#: lib/ui/stdcontext.inc:397 lib/ui/stdmenus.inc:202
+#: lib/ui/stdcontext.inc:395 lib/ui/stdmenus.inc:202
 msgid "Bottom|B"
 msgstr "Dolù|D"
 
-#: lib/ui/stdcontext.inc:399
+#: lib/ui/stdcontext.inc:397
 msgid "Append Row|A"
 msgstr "Pøidat øádek|a"
 
-#: lib/ui/stdcontext.inc:400 lib/ui/stdmenus.inc:205
+#: lib/ui/stdcontext.inc:398 lib/ui/stdmenus.inc:205
 msgid "Delete Row|D"
 msgstr "Smazat øádek|t"
 
-#: lib/ui/stdcontext.inc:401 lib/ui/stdmenus.inc:206
+#: lib/ui/stdcontext.inc:399 lib/ui/stdmenus.inc:206
 msgid "Copy Row|o"
 msgstr "Zkopírovat øádek|k"
 
-#: lib/ui/stdcontext.inc:404
+#: lib/ui/stdcontext.inc:402
 msgid "Append Column|p"
 msgstr "Pøidat sloupec|c"
 
-#: lib/ui/stdcontext.inc:405 lib/ui/stdmenus.inc:210
+#: lib/ui/stdcontext.inc:403 lib/ui/stdmenus.inc:210
 msgid "Delete Column|e"
 msgstr "Smazat sloupec|m"
 
-#: lib/ui/stdcontext.inc:406
+#: lib/ui/stdcontext.inc:404
 msgid "Copy Column|y"
 msgstr "Zkopírovat sloupec|o"
 
-#: lib/ui/stdcontext.inc:409
+#: lib/ui/stdcontext.inc:407
 msgid "Settings...|g"
 msgstr "Nastavení...|N"
 
-#: lib/ui/stdcontext.inc:417 lib/ui/stdmenus.inc:30
+#: lib/ui/stdcontext.inc:415 lib/ui/stdmenus.inc:30
 msgid "File|F"
 msgstr "Soubor|o"
 
-#: lib/ui/stdcontext.inc:418
+#: lib/ui/stdcontext.inc:416
 msgid "Path|P"
 msgstr "Cesta|C"
 
-#: lib/ui/stdcontext.inc:419
+#: lib/ui/stdcontext.inc:417
 msgid "Class|C"
 msgstr "Tøída|T"
 
-#: lib/ui/stdcontext.inc:421
+#: lib/ui/stdcontext.inc:419
 msgid "File Revision|R"
 msgstr "Revize souboru|R"
 
-#: lib/ui/stdcontext.inc:422
+#: lib/ui/stdcontext.inc:420
 msgid "Tree Revision|T"
 msgstr "Revize pracovního adresáøe|p"
 
-#: lib/ui/stdcontext.inc:423
+#: lib/ui/stdcontext.inc:421
 msgid "Revision Author|A"
 msgstr "Autor revize|A"
 
-#: lib/ui/stdcontext.inc:424
+#: lib/ui/stdcontext.inc:422
 msgid "Revision Date|D"
 msgstr "Datum revize|D"
 
-#: lib/ui/stdcontext.inc:425
+#: lib/ui/stdcontext.inc:423
 msgid "Revision Time|i"
 msgstr "Èas revize|e"
 
-#: lib/ui/stdcontext.inc:427
+#: lib/ui/stdcontext.inc:425
 msgid "LyX Version|X"
 msgstr "Verze LyX-u|X"
 
-#: lib/ui/stdcontext.inc:431
+#: lib/ui/stdcontext.inc:429
 msgid "Document Info|D"
 msgstr "Informace o dokumentu|d"
 
-#: lib/ui/stdcontext.inc:433
+#: lib/ui/stdcontext.inc:431
 msgid "Copy Text|o"
 msgstr "Zkopírovat text|k"
 
-#: lib/ui/stdcontext.inc:442 lib/ui/stdcontext.inc:462
+#: lib/ui/stdcontext.inc:440 lib/ui/stdcontext.inc:460
 msgid "Activate Branch|A"
 msgstr "Aktivovat vìtev|A"
 
-#: lib/ui/stdcontext.inc:443 lib/ui/stdcontext.inc:463
+#: lib/ui/stdcontext.inc:441 lib/ui/stdcontext.inc:461
 msgid "Deactivate Branch|e"
 msgstr "Deaktivovat vìtev|v"
 
-#: lib/ui/stdcontext.inc:452
+#: lib/ui/stdcontext.inc:450
 msgid "Insert Reference at Cursor Position|I"
 msgstr "Vlo¾it køí¾ový odkaz na pozici kurzoru|k"
 
-#: lib/ui/stdcontext.inc:546
+#: lib/ui/stdcontext.inc:544
 msgid "All Indexes|A"
 msgstr "V¹echny rejstøíky|r"
 
-#: lib/ui/stdcontext.inc:549
+#: lib/ui/stdcontext.inc:547
 msgid "Subindex|b"
 msgstr "Podrejstøík|P"
 
-#: lib/ui/stdcontext.inc:577 lib/ui/stdmenus.inc:513
+#: lib/ui/stdcontext.inc:575 lib/ui/stdmenus.inc:513
 msgid "Reject Change|R"
 msgstr "Odmítnout zmìnu|m"
 
-#: lib/ui/stdcontext.inc:585
+#: lib/ui/stdcontext.inc:583
 msgid "Promote Section|P"
 msgstr "Zvý¹it úroveò sekce|Z"
 
-#: lib/ui/stdcontext.inc:586
+#: lib/ui/stdcontext.inc:584
 msgid "Demote Section|D"
 msgstr "Sní¾it úroveò sekce|S"
 
-#: lib/ui/stdcontext.inc:588
+#: lib/ui/stdcontext.inc:586
 msgid "Move Section Down|w"
 msgstr "Pøesunout sekci dolù|d"
 
-#: lib/ui/stdcontext.inc:590
+#: lib/ui/stdcontext.inc:588
 msgid "Select Section|S"
 msgstr "Vybrat sekce|e"
 
-#: lib/ui/stdcontext.inc:598
+#: lib/ui/stdcontext.inc:596
 msgid "Wrap by Preview|P"
 msgstr "Obalit náhledem (preview)"
 
@@ -13160,24 +13173,24 @@ msgid "About LyX|X"
 msgstr "O programu LyX|X"
 
 #: lib/ui/stdmenus.inc:584
-msgid "Linguistics Manual|L"
-msgstr "Lingvistika|L"
-
-#: lib/ui/stdmenus.inc:585
 msgid "Braille Manual|B"
 msgstr "Braille|B"
 
+#: lib/ui/stdmenus.inc:585
+msgid "Feynman-diagram Manual|F"
+msgstr "Feynmanovy diagramy|F"
+
 #: lib/ui/stdmenus.inc:586
-msgid "XY-pic Manual|X"
-msgstr "XY-pic|X"
+msgid "Linguistics Manual|L"
+msgstr "Lingvistika|L"
 
 #: lib/ui/stdmenus.inc:587
 msgid "Multicolumn Manual|M"
 msgstr "Sloupce|S"
 
 #: lib/ui/stdmenus.inc:588
-msgid "Feynman-diagram Manual|F"
-msgstr "Feynmanovy diagramy|F"
+msgid "XY-pic Manual|X"
+msgstr "XY-pic|X"
 
 #: lib/ui/stdtoolbars.inc:71
 msgid "New document"
@@ -16070,382 +16083,382 @@ msgstr "Dia: $$AbsOrRelPathParent$$Basename"
 msgid "Dia diagram.\n"
 msgstr "Diagram programu Dia.\n"
 
-#: lib/configure.py:489
+#: lib/configure.py:496
 msgid "Tgif"
 msgstr "Tgif"
 
-#: lib/configure.py:492
+#: lib/configure.py:499
 msgid "FIG"
 msgstr "FIG"
 
-#: lib/configure.py:495
+#: lib/configure.py:502
 msgid "DIA"
 msgstr "DIA"
 
-#: lib/configure.py:498
+#: lib/configure.py:505
 msgid "Grace"
 msgstr "Grace"
 
-#: lib/configure.py:501
+#: lib/configure.py:508
 msgid "FEN"
 msgstr "FEN"
 
-#: lib/configure.py:504
+#: lib/configure.py:511
 msgid "SVG"
 msgstr "SVG"
 
-#: lib/configure.py:507 lib/configure.py:518 lib/configure.py:528
+#: lib/configure.py:514 lib/configure.py:525 lib/configure.py:535
 msgid "BMP"
 msgstr "BMP"
 
-#: lib/configure.py:508 lib/configure.py:519 lib/configure.py:529
+#: lib/configure.py:515 lib/configure.py:526 lib/configure.py:536
 msgid "GIF"
 msgstr "GIF"
 
-#: lib/configure.py:509 lib/configure.py:520 lib/configure.py:530
+#: lib/configure.py:516 lib/configure.py:527 lib/configure.py:537
 #: src/frontends/qt4/GuiClipboard.cpp:172
 msgid "JPEG"
 msgstr "JPEG"
 
-#: lib/configure.py:510 lib/configure.py:521 lib/configure.py:531
+#: lib/configure.py:517 lib/configure.py:528 lib/configure.py:538
 msgid "PBM"
 msgstr "PBM"
 
-#: lib/configure.py:511 lib/configure.py:522 lib/configure.py:532
+#: lib/configure.py:518 lib/configure.py:529 lib/configure.py:539
 msgid "PGM"
 msgstr "PGM"
 
-#: lib/configure.py:512 lib/configure.py:523 lib/configure.py:533
+#: lib/configure.py:519 lib/configure.py:530 lib/configure.py:540
 #: src/frontends/qt4/GuiClipboard.cpp:171
 msgid "PNG"
 msgstr "PNG"
 
-#: lib/configure.py:513 lib/configure.py:524 lib/configure.py:534
+#: lib/configure.py:520 lib/configure.py:531 lib/configure.py:541
 msgid "PPM"
 msgstr "PPM"
 
-#: lib/configure.py:514 lib/configure.py:525 lib/configure.py:535
+#: lib/configure.py:521 lib/configure.py:532 lib/configure.py:542
 msgid "TIFF"
 msgstr "TIFF"
 
-#: lib/configure.py:515 lib/configure.py:526 lib/configure.py:536
+#: lib/configure.py:522 lib/configure.py:533 lib/configure.py:543
 msgid "XBM"
 msgstr "XBM"
 
-#: lib/configure.py:516 lib/configure.py:527 lib/configure.py:537
+#: lib/configure.py:523 lib/configure.py:534 lib/configure.py:544
 msgid "XPM"
 msgstr "XPM"
 
-#: lib/configure.py:542
+#: lib/configure.py:549
 msgid "Plain text (chess output)"
 msgstr "Prostý text (¹achy)"
 
-#: lib/configure.py:543
+#: lib/configure.py:550
 msgid "Plain text (image)"
 msgstr "Prostý text (obraz)"
 
-#: lib/configure.py:544
+#: lib/configure.py:551
 msgid "Plain text (Xfig output)"
 msgstr "Prostý text (Xfig výstup)"
 
-#: lib/configure.py:545
+#: lib/configure.py:552
 msgid "date (output)"
 msgstr "datum (výstup)"
 
-#: lib/configure.py:546 src/frontends/qt4/GuiErrorList.cpp:42
+#: lib/configure.py:553 src/frontends/qt4/GuiErrorList.cpp:42
 msgid "DocBook"
 msgstr "DocBook"
 
-#: lib/configure.py:546
+#: lib/configure.py:553
 msgid "DocBook|B"
 msgstr "DocBook|B"
 
-#: lib/configure.py:547
+#: lib/configure.py:554
 msgid "Docbook (XML)"
 msgstr "Docbook (XML)"
 
-#: lib/configure.py:548
+#: lib/configure.py:555
 msgid "Graphviz Dot"
 msgstr "Graphviz Dot"
 
-#: lib/configure.py:549
+#: lib/configure.py:556
 msgid "LaTeX (pLaTeX)"
 msgstr "LaTeX (pLaTeX)"
 
-#: lib/configure.py:550
+#: lib/configure.py:557
 msgid "NoWeb"
 msgstr "NoWeb"
 
-#: lib/configure.py:550
+#: lib/configure.py:557
 msgid "NoWeb|N"
 msgstr "NoWeb|N"
 
-#: lib/configure.py:551
+#: lib/configure.py:558
 msgid "Sweave|S"
 msgstr "Sweave|S"
 
-#: lib/configure.py:552
+#: lib/configure.py:559
 msgid "LilyPond music"
 msgstr "LilyPond music"
 
-#: lib/configure.py:553
+#: lib/configure.py:560
 msgid "LilyPond book (LaTeX)"
 msgstr "Lilipond book (LaTeX)"
 
-#: lib/configure.py:554
+#: lib/configure.py:561
 msgid "LaTeX (plain)"
 msgstr "LaTeX (prostý)"
 
-#: lib/configure.py:554
+#: lib/configure.py:561
 msgid "LaTeX (plain)|L"
 msgstr "LaTeX (prostý)|L"
 
-#: lib/configure.py:555
+#: lib/configure.py:562
 msgid "LaTeX (LuaTeX)"
 msgstr "LaTeX (LuaTeX)"
 
-#: lib/configure.py:556
+#: lib/configure.py:563
 msgid "LaTeX (pdflatex)"
 msgstr "LaTeX (pdflatex)"
 
-#: lib/configure.py:557
+#: lib/configure.py:564
 msgid "LaTeX (XeTeX)"
 msgstr "LaTeX (XeTeX)"
 
-#: lib/configure.py:558
+#: lib/configure.py:565
 msgid "Plain text"
 msgstr "Prostý text"
 
-#: lib/configure.py:558
+#: lib/configure.py:565
 msgid "Plain text|a"
 msgstr "Prostý text|r"
 
-#: lib/configure.py:559
+#: lib/configure.py:566
 msgid "Plain text (pstotext)"
 msgstr "Prostý text (pstotext)"
 
-#: lib/configure.py:560
+#: lib/configure.py:567
 msgid "Plain text (ps2ascii)"
 msgstr "Prostý text (ps2ascii)"
 
-#: lib/configure.py:561
+#: lib/configure.py:568
 msgid "Plain text (catdvi)"
 msgstr "Prostý text (catdvi)"
 
-#: lib/configure.py:562
+#: lib/configure.py:569
 msgid "Plain Text, Join Lines"
 msgstr "Prostý text, spojit øádky"
 
-#: lib/configure.py:565
+#: lib/configure.py:572
 msgid "Gnumeric spreadsheet"
 msgstr "Tabulkový kalkulátor Gnumeric"
 
-#: lib/configure.py:566
+#: lib/configure.py:573
 msgid "Excel spreadsheet"
 msgstr "Tabulkový kalkulátor Excel"
 
-#: lib/configure.py:567
+#: lib/configure.py:574
 msgid "OpenOffice spreadsheet"
 msgstr "Tabulkový kalkulátor OpenOffice"
 
-#: lib/configure.py:570 lib/configure.py:572
+#: lib/configure.py:577 lib/configure.py:579
 msgid "LyXHTML"
 msgstr "LyXHTML"
 
-#: lib/configure.py:570 lib/configure.py:572
+#: lib/configure.py:577 lib/configure.py:579
 msgid "LyXHTML|y"
 msgstr "LyXHTML|y"
 
-#: lib/configure.py:579 src/frontends/qt4/GuiLog.cpp:230
+#: lib/configure.py:586 src/frontends/qt4/GuiLog.cpp:230
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: lib/configure.py:584
+#: lib/configure.py:591
 msgid "EPS"
 msgstr "EPS"
 
-#: lib/configure.py:585
+#: lib/configure.py:592
 msgid "Postscript"
 msgstr "PostScript"
 
-#: lib/configure.py:585
+#: lib/configure.py:592
 msgid "Postscript|t"
 msgstr "Postscript|t"
 
-#: lib/configure.py:589
+#: lib/configure.py:596
 msgid "PDF (ps2pdf)"
 msgstr "PDF (ps2pdf)"
 
-#: lib/configure.py:589
+#: lib/configure.py:596
 msgid "PDF (ps2pdf)|P"
 msgstr "PDF (ps2pdf)|P"
 
-#: lib/configure.py:590
+#: lib/configure.py:597
 msgid "PDF (pdflatex)"
 msgstr "PDF (pdflatex)"
 
-#: lib/configure.py:590
+#: lib/configure.py:597
 msgid "PDF (pdflatex)|F"
 msgstr "PDF (pdflatex)|F"
 
-#: lib/configure.py:591
+#: lib/configure.py:598
 msgid "PDF (dvipdfm)"
 msgstr "PDF (dvipdfm)"
 
-#: lib/configure.py:591
+#: lib/configure.py:598
 msgid "PDF (dvipdfm)|m"
 msgstr "PDF (dvipdfm)|m"
 
-#: lib/configure.py:592
+#: lib/configure.py:599
 msgid "PDF (XeTeX)"
 msgstr "PDF (XeTeX)"
 
-#: lib/configure.py:592
+#: lib/configure.py:599
 msgid "PDF (XeTeX)|X"
 msgstr "PDF (XeTeX)|X"
 
-#: lib/configure.py:593
+#: lib/configure.py:600
 msgid "PDF (LuaTeX)"
 msgstr "PDF (LuaTeX)"
 
-#: lib/configure.py:593
+#: lib/configure.py:600
 msgid "PDF (LuaTeX)|u"
 msgstr "PDF (LuaTeX)|u"
 
-#: lib/configure.py:596
+#: lib/configure.py:603
 msgid "DVI"
 msgstr "DVI"
 
-#: lib/configure.py:596
+#: lib/configure.py:603
 msgid "DVI|D"
 msgstr "DVI|D"
 
-#: lib/configure.py:597
+#: lib/configure.py:604
 msgid "DVI (LuaTeX)"
 msgstr "DVI (LuaTeX)"
 
-#: lib/configure.py:597
+#: lib/configure.py:604
 msgid "DVI (LuaTeX)|V"
 msgstr "DVI (LuaTeX)|V"
 
-#: lib/configure.py:600
+#: lib/configure.py:607
 msgid "DraftDVI"
 msgstr "DraftDVI"
 
-#: lib/configure.py:603
+#: lib/configure.py:610
 msgid "HTML|H"
 msgstr "HTML|H"
 
-#: lib/configure.py:606
+#: lib/configure.py:613
 msgid "Noteedit"
 msgstr "Noteedit"
 
-#: lib/configure.py:609
+#: lib/configure.py:616
 msgid "OpenDocument"
 msgstr "OpenDocument"
 
-#: lib/configure.py:610
+#: lib/configure.py:617
 msgid "OpenOffice.Org (sxw)"
 msgstr "OpenOffice.Org (sxw)"
 
-#: lib/configure.py:613
+#: lib/configure.py:620
 msgid "Rich Text Format"
 msgstr "Rich Text Format"
 
-#: lib/configure.py:614
+#: lib/configure.py:621
 msgid "MS Word"
 msgstr "MS Word"
 
-#: lib/configure.py:614
+#: lib/configure.py:621
 msgid "MS Word|W"
 msgstr "MS Word|W"
 
-#: lib/configure.py:617
+#: lib/configure.py:624
 msgid "date command"
 msgstr "Pøíkaz pro datum"
 
-#: lib/configure.py:618
+#: lib/configure.py:625
 msgid "Table (CSV)"
 msgstr "Tabulka (CSV)"
 
-#: lib/configure.py:620 src/frontends/qt4/GuiView.cpp:1150
+#: lib/configure.py:627 src/frontends/qt4/GuiView.cpp:1150
 #: src/frontends/qt4/GuiView.cpp:1151 src/mathed/MathMacroTemplate.cpp:543
 msgid "LyX"
 msgstr "LyX"
 
-#: lib/configure.py:621
+#: lib/configure.py:628
 msgid "LyX 1.3.x"
 msgstr "LyX 1.3.x"
 
-#: lib/configure.py:622
+#: lib/configure.py:629
 msgid "LyX 1.4.x"
 msgstr "LyX 1.4.x"
 
-#: lib/configure.py:623
+#: lib/configure.py:630
 msgid "LyX 1.5.x"
 msgstr "LyX 1.5.x"
 
-#: lib/configure.py:624
+#: lib/configure.py:631
 msgid "LyX 1.6.x"
 msgstr "LyX 1.6.x"
 
-#: lib/configure.py:625
+#: lib/configure.py:632
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK LyX 1.4.x (big5)"
 
-#: lib/configure.py:626
+#: lib/configure.py:633
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr "CJK LyX 1.4.x (euc-jp)"
 
-#: lib/configure.py:627
+#: lib/configure.py:634
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr "CJK LyX 1.4.x (euc-kr)"
 
-#: lib/configure.py:628
+#: lib/configure.py:635
 msgid "LyX Preview"
 msgstr "LyX Náhled"
 
-#: lib/configure.py:629
+#: lib/configure.py:636
 msgid "LyX Preview (LilyPond book)"
 msgstr "LyX Náhled (LilyPond book)"
 
-#: lib/configure.py:630
+#: lib/configure.py:637
 msgid "LyX Preview (pLaTeX)"
 msgstr "LyX Náhled (pLaTeX)"
 
-#: lib/configure.py:631
+#: lib/configure.py:638
 msgid "PDFTEX"
 msgstr "PDFTEX"
 
-#: lib/configure.py:632
+#: lib/configure.py:639
 msgid "Program"
 msgstr "Program"
 
-#: lib/configure.py:633
+#: lib/configure.py:640
 msgid "PSTEX"
 msgstr "PSTEX"
 
-#: lib/configure.py:634 src/frontends/qt4/GuiClipboard.cpp:168
+#: lib/configure.py:641 src/frontends/qt4/GuiClipboard.cpp:168
 msgid "Windows Metafile"
 msgstr "WMF"
 
-#: lib/configure.py:635 src/frontends/qt4/GuiClipboard.cpp:167
+#: lib/configure.py:642 src/frontends/qt4/GuiClipboard.cpp:167
 msgid "Enhanced Metafile"
 msgstr "Roz¹íøený WMF"
 
-#: lib/configure.py:636
+#: lib/configure.py:643
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
-#: lib/configure.py:718
+#: lib/configure.py:725
 msgid "LyXBlogger"
 msgstr "LyXBlogger"
 
-#: lib/configure.py:921
+#: lib/configure.py:928
 msgid "LyX Archive (zip)"
 msgstr "LyX Archiv (zip)"
 
-#: lib/configure.py:924
+#: lib/configure.py:931
 msgid "LyX Archive (tar.gz)"
 msgstr "LyX Archive (tar.gz)"
 
@@ -16634,7 +16647,7 @@ msgid ""
 "it."
 msgstr "%1$s je z novìj¹í verze LyX-u a skript lyx2lyx selhal pøi konverzi."
 
-#: src/Buffer.cpp:1025 src/Buffer.cpp:3648 src/Buffer.cpp:3710
+#: src/Buffer.cpp:1025 src/Buffer.cpp:3601 src/Buffer.cpp:3663
 msgid "File is read-only"
 msgstr "Dokument je jen ke ètení"
 
@@ -16655,7 +16668,7 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "Pøepsat modifikovaný soubor?"
 
-#: src/Buffer.cpp:1038 src/Buffer.cpp:2242 src/Exporter.cpp:50
+#: src/Buffer.cpp:1038 src/Buffer.cpp:2193 src/Exporter.cpp:50
 #: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2114
 #: src/frontends/qt4/GuiView.cpp:2303
 msgid "&Overwrite"
@@ -16709,11 +16722,11 @@ msgstr "Ulo¾ení se nepovedlo! Dal¹í pokus...\n"
 msgid "Save failed! Bummer. Document is lost."
 msgstr "Ulo¾ení se nepovedlo! Dokument je ztracen."
 
-#: src/Buffer.cpp:1260
+#: src/Buffer.cpp:1259
 msgid "Iconv software exception Detected"
 msgstr "Iconv detekoval softwarovou vyjímku"
 
-#: src/Buffer.cpp:1260
+#: src/Buffer.cpp:1259
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
@@ -16722,12 +16735,12 @@ msgstr ""
 "Zkontrolujte prosím, ¾e program pro podporu va¹eho kódování (%1$s) je "
 "správnì nainstalován."
 
-#: src/Buffer.cpp:1283
+#: src/Buffer.cpp:1281
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr "Nepodaøilo se najít pøíkaz LaTeX-u pro znak '%1$s' (hodnota %2$s)"
 
-#: src/Buffer.cpp:1286
+#: src/Buffer.cpp:1284
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -16737,87 +16750,61 @@ msgstr ""
 "zvoleném kódování.\n"
 "Mohla by pomoci zmìna kódování dokumentu na utf8."
 
-#: src/Buffer.cpp:1293
+#: src/Buffer.cpp:1291
 msgid "iconv conversion failed"
 msgstr "iconv konverze se nezdaøila"
 
-#: src/Buffer.cpp:1298
+#: src/Buffer.cpp:1296
 msgid "conversion failed"
 msgstr "konverze se nezdaøila"
 
-#: src/Buffer.cpp:1391
-msgid "Uncodable character in file path"
-msgstr "Nekódovatelný znaky v cestì k souboru"
-
-#: src/Buffer.cpp:1392
-#, c-format
-msgid ""
-"The path of your document\n"
-"(%1$s)\n"
-"contains glyphs that are unknown in the\n"
-"current document encoding (namely %2$s).\n"
-"This will likely result in incomplete output.\n"
-"\n"
-"Choose an appropriate document encoding (such as utf8)\n"
-"or change the file path name."
-msgstr ""
-"Cesta k va¹emu souboru\n"
-"(%1$s)\n"
-"obsahuje znaky, které nejsou pou¾itelné v\n"
-"v aktuálním kódování dokumentu (jmenovitì %2$s).\n"
-"\n"
-"To pravdìpodobnì zpùsobí neúplný výstup pøi sazbì dokumentu.\n"
-"\n"
-"Vyberte vhodné kódování dokumentu (napø. utf8)\n"
-"nebo zmìnte cestu k souboru."
-
-#: src/Buffer.cpp:1652
+#: src/Buffer.cpp:1603
 msgid "Running chktex..."
 msgstr "Spou¹tím chktex..."
 
-#: src/Buffer.cpp:1666
+#: src/Buffer.cpp:1617
 msgid "chktex failure"
 msgstr "chktex selhal"
 
-#: src/Buffer.cpp:1667
+#: src/Buffer.cpp:1618
 msgid "Could not run chktex successfully."
 msgstr "chktex nelze úspì¹nì spustit."
 
-#: src/Buffer.cpp:1911
+#: src/Buffer.cpp:1862
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Nedostatek informace pro export do formátu %1$s."
 
-#: src/Buffer.cpp:1983 src/frontends/qt4/GuiView.cpp:3139
+#: src/Buffer.cpp:1934 src/frontends/qt4/GuiView.cpp:3139
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Chyba pøi exportu do formátu %1$s."
 
-#: src/Buffer.cpp:2066
+#: src/Buffer.cpp:2017
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "Vìtev \"%1$s\" ji¾ existuje."
 
-#: src/Buffer.cpp:2096
+#: src/Buffer.cpp:2047
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "Vìtev \"%1$s\" neexistuje."
 
-#: src/Buffer.cpp:2156
+#: src/Buffer.cpp:2107
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Nelze správnì dekódovat \"%1$s\""
 
-#: src/Buffer.cpp:2163
+#: src/Buffer.cpp:2114
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Neznámý cíl \"%1$s\""
 
-#: src/Buffer.cpp:2173
+#: src/Buffer.cpp:2124
 msgid "Error exporting to DVI."
 msgstr "Chyba pøi exportu do DVI."
 
-#: src/Buffer.cpp:2238 src/Exporter.cpp:45
+#: src/Buffer.cpp:2189 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -16828,73 +16815,73 @@ msgstr ""
 "\n"
 "Chcete tento soubor pøepsat?"
 
-#: src/Buffer.cpp:2241 src/Exporter.cpp:48
+#: src/Buffer.cpp:2192 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Pøepsat soubor?"
 
-#: src/Buffer.cpp:2258
+#: src/Buffer.cpp:2209
 msgid "Error running external commands."
 msgstr "Chyba pøi bìhu externích pøíkazù."
 
-#: src/Buffer.cpp:3063
+#: src/Buffer.cpp:3014
 msgid "Preview source code"
 msgstr "Náhled zdrojového kódu"
 
-#: src/Buffer.cpp:3081
+#: src/Buffer.cpp:3032
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Náhled zdrojového kódu pro odstavec %1$d"
 
-#: src/Buffer.cpp:3085
+#: src/Buffer.cpp:3036
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Náhled zdrojového kódu pro odstavce %1$s - %2$s"
 
-#: src/Buffer.cpp:3204
+#: src/Buffer.cpp:3155
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatické ulo¾ení %1$s"
 
-#: src/Buffer.cpp:3258
+#: src/Buffer.cpp:3209
 msgid "Autosave failed!"
 msgstr "Automatické ulo¾ení selhalo!"
 
-#: src/Buffer.cpp:3319
+#: src/Buffer.cpp:3270
 msgid "Autosaving current document..."
 msgstr "Automatické ulo¾ení souèasného dokumentu"
 
-#: src/Buffer.cpp:3409
+#: src/Buffer.cpp:3360
 msgid "Couldn't export file"
 msgstr "Nelze exportovat soubor"
 
-#: src/Buffer.cpp:3410
+#: src/Buffer.cpp:3361
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "®ádná informace pro export formátu %1$s."
 
-#: src/Buffer.cpp:3479
+#: src/Buffer.cpp:3432
 msgid "File name error"
 msgstr "Chyba ve jménì souboru"
 
-#: src/Buffer.cpp:3480
+#: src/Buffer.cpp:3433
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Cesta k dokumentu nesmí obsahovat mezery."
 
-#: src/Buffer.cpp:3565
+#: src/Buffer.cpp:3518
 msgid "Document export cancelled."
 msgstr "Export dokumentu zru¹en."
 
-#: src/Buffer.cpp:3575
+#: src/Buffer.cpp:3528
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument exportován jako %1$s do souboru `%2$s'"
 
-#: src/Buffer.cpp:3581
+#: src/Buffer.cpp:3534
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument exportován jako %1$s"
 
-#: src/Buffer.cpp:3634
+#: src/Buffer.cpp:3587
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -16905,19 +16892,19 @@ msgstr ""
 "\n"
 "Obnovit z nouzového ulo¾ení ?"
 
-#: src/Buffer.cpp:3637
+#: src/Buffer.cpp:3590
 msgid "Load emergency save?"
 msgstr "Naèíst nouzové ulo¾ení ?"
 
-#: src/Buffer.cpp:3638
+#: src/Buffer.cpp:3591
 msgid "&Recover"
 msgstr "&Obnovit"
 
-#: src/Buffer.cpp:3638
+#: src/Buffer.cpp:3591
 msgid "&Load Original"
 msgstr "&Naèíst pùvodní"
 
-#: src/Buffer.cpp:3649
+#: src/Buffer.cpp:3602
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -16927,15 +16914,15 @@ msgstr ""
 "má nastaveny atributy pouze pro ètení. Ujistìte se prosím, ¾e jste ulo¾ili "
 "tento dokument jako odli¹ný soubor."
 
-#: src/Buffer.cpp:3655
+#: src/Buffer.cpp:3608
 msgid "Document was successfully recovered."
 msgstr "Dokument byl úspì¹nì obnoven."
 
-#: src/Buffer.cpp:3657
+#: src/Buffer.cpp:3610
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument NEBYL úspì¹nì obnoven."
 
-#: src/Buffer.cpp:3658
+#: src/Buffer.cpp:3611
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -16944,27 +16931,27 @@ msgstr ""
 "Smazat nyní soubor s nouzovým ulo¾ením ?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3662 src/Buffer.cpp:3674
+#: src/Buffer.cpp:3615 src/Buffer.cpp:3627
 msgid "Delete emergency file?"
 msgstr "Smazat nouzové ulo¾ení ?"
 
-#: src/Buffer.cpp:3663 src/Buffer.cpp:3676
+#: src/Buffer.cpp:3616 src/Buffer.cpp:3629
 msgid "&Keep"
 msgstr "&Ponechat"
 
-#: src/Buffer.cpp:3667
+#: src/Buffer.cpp:3620
 msgid "Emergency file deleted"
 msgstr "Soubor s nouzovým ulo¾ením smazán."
 
-#: src/Buffer.cpp:3668
+#: src/Buffer.cpp:3621
 msgid "Do not forget to save your file now!"
 msgstr "Nezapomeòte ulo¾it nyní vá¹ soubor!"
 
-#: src/Buffer.cpp:3675
+#: src/Buffer.cpp:3628
 msgid "Remove emergency file now?"
 msgstr "Smazat nyní soubor s nouzovým ulo¾ením ?"
 
-#: src/Buffer.cpp:3698
+#: src/Buffer.cpp:3651
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -16975,19 +16962,19 @@ msgstr ""
 "\n"
 "Naèíst místo toho zálohu ?"
 
-#: src/Buffer.cpp:3700
+#: src/Buffer.cpp:3653
 msgid "Load backup?"
 msgstr "Naèíst zálohu ?"
 
-#: src/Buffer.cpp:3701
+#: src/Buffer.cpp:3654
 msgid "&Load backup"
 msgstr "&Naèíst zálohu"
 
-#: src/Buffer.cpp:3701
+#: src/Buffer.cpp:3654
 msgid "Load &original"
 msgstr "Naèíst &pùvodní"
 
-#: src/Buffer.cpp:3711
+#: src/Buffer.cpp:3664
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -16997,25 +16984,25 @@ msgstr ""
 "nastaveny atributy pouze pro ètení. Ujistìte se prosím, ¾e jste ulo¾ili "
 "tento dokument jako odli¹ný soubor."
 
-#: src/Buffer.cpp:4048 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4003 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Nesmyslné! "
 
-#: src/Buffer.cpp:4169
+#: src/Buffer.cpp:4124
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s znovunaèten."
 
-#: src/Buffer.cpp:4172
+#: src/Buffer.cpp:4127
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Nelze znovunaèíst dokument %1$s"
 
-#: src/Buffer.cpp:4238
+#: src/Buffer.cpp:4193
 msgid "Included File Invalid"
 msgstr "Neplatný soubor k zahrnutí"
 
-#: src/Buffer.cpp:4239
+#: src/Buffer.cpp:4194
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17051,7 +17038,7 @@ msgstr ""
 msgid "Document class not available"
 msgstr "Tøída dokumentu není dostupná"
 
-#: src/BufferParams.cpp:1978
+#: src/BufferParams.cpp:1979
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -17065,11 +17052,11 @@ msgstr ""
 "Bude pou¾ita tøída se standardním rozvr¾ením.\n"
 "LyX nebude schopen vytvoøit korektní výstup."
 
-#: src/BufferParams.cpp:1984
+#: src/BufferParams.cpp:1985
 msgid "Document class not found"
 msgstr "Tøída dokumentu nenalezena"
 
-#: src/BufferParams.cpp:1991
+#: src/BufferParams.cpp:1992
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -17083,15 +17070,15 @@ msgstr ""
 "Bude pou¾ita tøída se standardním rozvr¾ením.\n"
 "LyX nebude schopen vytvoøit korektní výstup."
 
-#: src/BufferParams.cpp:1997 src/BufferView.cpp:1265 src/BufferView.cpp:1297
+#: src/BufferParams.cpp:1998 src/BufferView.cpp:1265 src/BufferView.cpp:1297
 msgid "Could not load class"
 msgstr "Nelze naèíst tøídu"
 
-#: src/BufferParams.cpp:2031
+#: src/BufferParams.cpp:2032
 msgid "Error reading internal layout information"
 msgstr "Chyba pøi ètení informací o rozvr¾ení"
 
-#: src/BufferParams.cpp:2032 src/TextClass.cpp:1349
+#: src/BufferParams.cpp:2033 src/TextClass.cpp:1349
 msgid "Read Error"
 msgstr "Chyba ètení"
 
@@ -17279,7 +17266,7 @@ msgstr ""
 "zmìnte prosím kódování souboru na\n"
 "UTF-8 jiným programem.\n"
 
-#: src/Changes.cpp:363 src/Paragraph.cpp:2516
+#: src/Changes.cpp:363 src/Paragraph.cpp:2507
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:300
 #: src/insets/InsetCommandParams.cpp:390 src/insets/InsetListings.cpp:183
 #: src/insets/InsetListings.cpp:191 src/insets/InsetListings.cpp:213
@@ -17287,7 +17274,7 @@ msgstr ""
 msgid "LyX Warning: "
 msgstr "Výstraha LyX-u: "
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2517 src/insets/InsetBibitem.cpp:301
+#: src/Changes.cpp:364 src/Paragraph.cpp:2508 src/insets/InsetBibitem.cpp:301
 #: src/insets/InsetCommandParams.cpp:391 src/insets/InsetListings.cpp:184
 #: src/insets/InsetListings.cpp:192 src/insets/InsetNomencl.cpp:286
 #: src/mathed/InsetMathString.cpp:162
@@ -17659,12 +17646,12 @@ msgstr "rámeèek regulárního výrazu"
 msgid "ignore"
 msgstr "ignorovat pøedchozí"
 
-#: src/Converter.cpp:327 src/Converter.cpp:489 src/Converter.cpp:512
-#: src/Converter.cpp:555
+#: src/Converter.cpp:329 src/Converter.cpp:491 src/Converter.cpp:514
+#: src/Converter.cpp:557
 msgid "Cannot convert file"
 msgstr "Soubor nelze konvertovat"
 
-#: src/Converter.cpp:328
+#: src/Converter.cpp:330
 #, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
@@ -17673,19 +17660,19 @@ msgstr ""
 "®ádná informace pro konverzi souborù formátu %1$s do %2$s.\n"
 "Definujte konvertor v nastaveních."
 
-#: src/Converter.cpp:440 src/Format.cpp:320 src/Format.cpp:387
+#: src/Converter.cpp:442 src/Format.cpp:321 src/Format.cpp:389
 msgid "Executing command: "
 msgstr "Spou¹tìní pøíkazu: "
 
-#: src/Converter.cpp:484
+#: src/Converter.cpp:486
 msgid "Build errors"
 msgstr "Chyby pøi sestavování"
 
-#: src/Converter.cpp:485
+#: src/Converter.cpp:487
 msgid "There were errors during the build process."
 msgstr "Nastaly chyby bìhem procesu sestavování."
 
-#: src/Converter.cpp:490
+#: src/Converter.cpp:492
 #, c-format
 msgid ""
 "An error occurred while running:\n"
@@ -17694,26 +17681,26 @@ msgstr ""
 "Chyba pøi bìhu:\n"
 "%1$s"
 
-#: src/Converter.cpp:513
+#: src/Converter.cpp:515
 #, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr "Nelze pøesunout pomocný adresáø z %1$s do %2$s."
 
-#: src/Converter.cpp:557
+#: src/Converter.cpp:559
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Nelze zkopírovat pomocný soubor z %1$s do %2$s."
 
-#: src/Converter.cpp:558
+#: src/Converter.cpp:560
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr "Nelze pøesunout pomocný soubor z %1$s do %2$s."
 
-#: src/Converter.cpp:614
+#: src/Converter.cpp:616
 msgid "Running LaTeX..."
 msgstr "Spou¹tím LaTeX..."
 
-#: src/Converter.cpp:633
+#: src/Converter.cpp:635
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
@@ -17721,15 +17708,15 @@ msgid ""
 msgstr ""
 "LaTeX neprobìhl úspì¹nì. Navíc nebyl LyX schopen najít výstup LaTeX-u %1$s."
 
-#: src/Converter.cpp:636
+#: src/Converter.cpp:638
 msgid "LaTeX failed"
 msgstr "LaTeX selhal"
 
-#: src/Converter.cpp:638
+#: src/Converter.cpp:640
 msgid "Output is empty"
 msgstr "Výstup je prázdný"
 
-#: src/Converter.cpp:639
+#: src/Converter.cpp:641
 msgid "An empty output file was generated."
 msgstr "Byl vygenerován prázdný výstupní soubor."
 
@@ -17902,39 +17889,39 @@ msgstr "Jazyk: %1$s, "
 msgid "Number %1$s"
 msgstr "Èíslo %1$s"
 
-#: src/Format.cpp:268 src/Format.cpp:281 src/Format.cpp:291
+#: src/Format.cpp:269 src/Format.cpp:282 src/Format.cpp:292
 msgid "Cannot view file"
 msgstr "Soubor nelze prohlí¾et"
 
-#: src/Format.cpp:269 src/Format.cpp:335 src/frontends/qt4/GuiView.cpp:2928
+#: src/Format.cpp:270 src/Format.cpp:337 src/frontends/qt4/GuiView.cpp:2928
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Soubor neexistuje: %1$s"
 
-#: src/Format.cpp:282
+#: src/Format.cpp:283
 #, c-format
 msgid "No information for viewing %1$s"
 msgstr "®ádná informace pro prohlí¾ení %1$s"
 
-#: src/Format.cpp:292
+#: src/Format.cpp:293
 #, c-format
 msgid "Auto-view file %1$s failed"
 msgstr "Automatické prohlí¾ení souboru %1$s selhalo"
 
-#: src/Format.cpp:334 src/Format.cpp:346 src/Format.cpp:359 src/Format.cpp:370
+#: src/Format.cpp:336 src/Format.cpp:348 src/Format.cpp:361 src/Format.cpp:372
 msgid "Cannot edit file"
 msgstr "Nelze editovat soubor"
 
-#: src/Format.cpp:347
+#: src/Format.cpp:349
 msgid "LinkBack files can only be edited on Apple Mac OSX."
 msgstr "Soubory LinkBack-u mohou být editovány pouze na Apple Mac OSX."
 
-#: src/Format.cpp:360
+#: src/Format.cpp:362
 #, c-format
 msgid "No information for editing %1$s"
 msgstr "®ádná informace pro editaci %1$s"
 
-#: src/Format.cpp:371
+#: src/Format.cpp:373
 #, c-format
 msgid "Auto-edit file %1$s failed"
 msgstr "Automatická editace souboru %1$s selhala"
@@ -18070,7 +18057,7 @@ msgstr "&Rekonfigurovat"
 msgid "&Without LaTeX"
 msgstr "&Bez LaTeX-u"
 
-#: src/LyX.cpp:558 src/VCBackend.cpp:786 src/VCBackend.cpp:790
+#: src/LyX.cpp:558 src/VCBackend.cpp:845 src/VCBackend.cpp:849
 msgid "&Continue"
 msgstr "&Pokraèovat"
 
@@ -18279,19 +18266,19 @@ msgstr "Chybí typ souboru [napø. latex, ps...] za pøepínaèem --import"
 msgid "Missing filename for --import"
 msgstr "Chybí jméno souboru za pøepínaèem --import"
 
-#: src/LyXRC.cpp:3077
+#: src/LyXRC.cpp:3082
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr "Pova¾ovat slo¾eniny typu \"kafemlejnek\" za legální slova ?"
 
-#: src/LyXRC.cpp:3081
+#: src/LyXRC.cpp:3086
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr "Nastavit alternativní jazyk. Standardnì se pou¾ívá jazyk dokumentu."
 
-#: src/LyXRC.cpp:3089
+#: src/LyXRC.cpp:3094
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -18299,7 +18286,7 @@ msgstr ""
 "Zru¹te volbu, pokud nechcete automaticky pøepisovat oznaèený text tím, co "
 "zrovna pí¹ete na klávesnici."
 
-#: src/LyXRC.cpp:3093
+#: src/LyXRC.cpp:3098
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -18307,14 +18294,14 @@ msgstr ""
 "Zru¹te volbu, pokud nechcete automatické standardní nastavení pro novì "
 "zvolenou tøídu."
 
-#: src/LyXRC.cpp:3097
+#: src/LyXRC.cpp:3102
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Èasový interval pro automatické ukládání (v sekundách).0 vypne automatické "
 "ukládání."
 
-#: src/LyXRC.cpp:3104
+#: src/LyXRC.cpp:3109
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -18322,7 +18309,7 @@ msgstr ""
 "Cesta pro zálo¾ní soubory. V pøípadì prázdného øetìzce LyX ulo¾í zálohy do "
 "stejného adresáøe, ve kterém je originální soubor."
 
-#: src/LyXRC.cpp:3108
+#: src/LyXRC.cpp:3113
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
@@ -18330,11 +18317,11 @@ msgstr ""
 "Zvolte nastavení pro bibtex (viz man bibtex) nebo zvolte alternativní "
 "pøkladaè (napø. mlbibtex or bibulus)."
 
-#: src/LyXRC.cpp:3112
+#: src/LyXRC.cpp:3117
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
 msgstr "Definuje volby pro program bibtex v PLaTeX-u (Japonský LaTeX)."
 
-#: src/LyXRC.cpp:3116
+#: src/LyXRC.cpp:3121
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -18342,11 +18329,11 @@ msgstr ""
 "Soubor klávesových zkratek. Lze nastavit absolutní cestu; jinak bude LyX "
 "hledat v jeho lokálních a globálních adresáøích bind/ ."
 
-#: src/LyXRC.cpp:3120
+#: src/LyXRC.cpp:3125
 msgid "Select to check whether the lastfiles still exist."
 msgstr "Kontrolovat existenci naposledy otevøených souborù."
 
-#: src/LyXRC.cpp:3124
+#: src/LyXRC.cpp:3129
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -18354,7 +18341,7 @@ msgstr ""
 "Nastavte zpùsob spu¹tìní chktex-u. Napø. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -"
 "n25 -n30 -n38\" Viz dokumentace ChkTeX-u."
 
-#: src/LyXRC.cpp:3134
+#: src/LyXRC.cpp:3139
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -18362,7 +18349,7 @@ msgstr ""
 "LyX za normální situace nemìní pozici kurzoru pøi pohybu posuvníkem. "
 "Nastavte true pokud chcete mít kurzor v¾dy na obrazovce."
 
-#: src/LyXRC.cpp:3142
+#: src/LyXRC.cpp:3147
 msgid ""
 "LyX normally doesn't allow the user to scroll further than the bottom of the "
 "document. Set to true if you prefer to scroll the bottom of the document to "
@@ -18372,16 +18359,16 @@ msgstr ""
 "spodek dokumentu. Nastavte true pokud chcete rolovat spodek dokumentu a¾ do "
 "horní èásti obrazovky."
 
-#: src/LyXRC.cpp:3146
+#: src/LyXRC.cpp:3151
 msgid "Make Apple key act as Meta and Control key as Ctrl."
 msgstr ""
 "Nastavte pro zmìnu kláves na Applu: Apple key -> Meta, Control -> Ctrl."
 
-#: src/LyXRC.cpp:3150
+#: src/LyXRC.cpp:3155
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
 msgstr "Pou¾ít konvence Mac OS X pro pohyb kurzoru po slovech"
 
-#: src/LyXRC.cpp:3154
+#: src/LyXRC.cpp:3159
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
@@ -18389,7 +18376,7 @@ msgstr ""
 "Zobrazit malý rámeèek kolem mat. makra spoleènì se jménem makra v pøípadì, "
 "¾e je kurzor uvnitø."
 
-#: src/LyXRC.cpp:3159
+#: src/LyXRC.cpp:3164
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -18398,7 +18385,7 @@ msgstr ""
 "Akceptován standardní strftime formát; detaily viz man strftime. Napø.\"%A, "
 "%e. %B %Y\"."
 
-#: src/LyXRC.cpp:3163
+#: src/LyXRC.cpp:3168
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
 "look in its global and local commands/ directories."
@@ -18406,19 +18393,19 @@ msgstr ""
 "Soubor definic pøíkazù. Lze buïto zadat absolutní cestu; jinak bude LyX "
 "hledat v jeho lokálních a globálních adresáøích command/ ."
 
-#: src/LyXRC.cpp:3167
+#: src/LyXRC.cpp:3172
 msgid "The default format used with LFUN_BUFFER_[VIEW|UPDATE]."
 msgstr "Standardní formát pou¾ívaný funkcí LFUN_BUFFER_[VIEW|UPDATE]."
 
-#: src/LyXRC.cpp:3171
+#: src/LyXRC.cpp:3176
 msgid "New documents will be assigned this language."
 msgstr "Nové dokumenty budou mít nastaven tento jazyk."
 
-#: src/LyXRC.cpp:3175
+#: src/LyXRC.cpp:3180
 msgid "Specify the default paper size."
 msgstr "Nastavení standardní velikosti papíru."
 
-#: src/LyXRC.cpp:3179
+#: src/LyXRC.cpp:3184
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -18426,11 +18413,11 @@ msgstr ""
 "Minimalizuj dialogová okna spoleènì s hlavním oknem LyX-u. (Vztahuje se "
 "pouze na dialogy zobrazené po zmìnì nastavení.)"
 
-#: src/LyXRC.cpp:3183
+#: src/LyXRC.cpp:3188
 msgid "Select how LyX will display any graphics."
 msgstr "Nastavení zpùsobu zobrazení obrázkù v LyX-u."
 
-#: src/LyXRC.cpp:3187
+#: src/LyXRC.cpp:3192
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -18438,11 +18425,11 @@ msgstr ""
 "Standardní cesta pro va¹e dokumenty. V pøípadì prázdného øetìzce LyX vybere "
 "adresáø, ze kterého byl spou¹tìn."
 
-#: src/LyXRC.cpp:3191
+#: src/LyXRC.cpp:3196
 msgid "Specify additional chars that can be part of a word."
 msgstr "Urèení dodateèných znakù, které mohou být souèástí slova."
 
-#: src/LyXRC.cpp:3195
+#: src/LyXRC.cpp:3200
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
@@ -18450,7 +18437,7 @@ msgstr ""
 "Cesta kterou LyX nastaví pøi výbìru pøíkladù. Prázdný øetìzec zpùsobí výbìr "
 "adresáøe, ze kterého byl LyX spu¹tìn."
 
-#: src/LyXRC.cpp:3199
+#: src/LyXRC.cpp:3204
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -18458,11 +18445,12 @@ msgstr ""
 "Kódování fontu který je pou¾íván balíèkem fontenc LaTeX2e. T1 je velmi "
 "doporuèen pro neanglické jazyky."
 
-#: src/LyXRC.cpp:3203
+#: src/LyXRC.cpp:3208
 msgid "Disable any kerning and ligatures for text drawing on screen."
-msgstr "Vypnout vyrovnání (kerning) a slitky (ligatury) pro kreslení na obrazovce."
+msgstr ""
+"Vypnout vyrovnání (kerning) a slitky (ligatury) pro kreslení na obrazovce."
 
-#: src/LyXRC.cpp:3210
+#: src/LyXRC.cpp:3215
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
@@ -18472,11 +18460,11 @@ msgstr ""
 "kompilátor - napø. za pou¾ití xindy/make-rules by pøíkaz vypadal \"makeindex."
 "sh -m $$lang\"."
 
-#: src/LyXRC.cpp:3214
+#: src/LyXRC.cpp:3219
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
 msgstr "Definuje volby programu pro rejstøík PLaTeX-u (Japonský LaTeX)."
 
-#: src/LyXRC.cpp:3218
+#: src/LyXRC.cpp:3223
 msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
@@ -18484,7 +18472,7 @@ msgstr ""
 "Definuje volby programu makeindex pou¾ívané pro nomenklatury. Ty se mohou "
 "li¹it od voleb pro generování rejstøíku."
 
-#: src/LyXRC.cpp:3227
+#: src/LyXRC.cpp:3232
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -18492,7 +18480,7 @@ msgstr ""
 "Pou¾ijte k nastavení souboru mapy kláves pro va¹i klávesnici. To lze napø. "
 "vyu¾ít v pøípadì, ¾e chcete psát dokumnety v èe¹tinì na anglické klávesnici."
 
-#: src/LyXRC.cpp:3231
+#: src/LyXRC.cpp:3236
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
@@ -18500,14 +18488,14 @@ msgstr ""
 "Vyberte v pøípadì, ¾e je tøeba pou¾ívat pøíkaz pro zmìnu jazyka na zaèátku "
 "dokumentu."
 
-#: src/LyXRC.cpp:3235
+#: src/LyXRC.cpp:3240
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr ""
 "Vyberte v pøípadì, ¾e je tøeba pou¾ívat pøíkaz pro zmìnu jazyka na konci "
 "dokumentu."
 
-#: src/LyXRC.cpp:3239
+#: src/LyXRC.cpp:3244
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -18516,15 +18504,15 @@ msgstr ""
 "Pøíkaz LaTeX-u, který pøepne z jazyka dokumentu na jiný jazyk. Napø. "
 "\\selectlanguage{$$lang} kde $$lang je jméno druhého jazyka."
 
-#: src/LyXRC.cpp:3243
+#: src/LyXRC.cpp:3248
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "Pøíkaz LaTeX-u, který pøepne zpìt na jazyk dokumentu."
 
-#: src/LyXRC.cpp:3247
+#: src/LyXRC.cpp:3252
 msgid "The LaTeX command for local changing of the language."
 msgstr "Pøíkaz LaTeX-u pro lokální zmìnu jazyka."
 
-#: src/LyXRC.cpp:3251
+#: src/LyXRC.cpp:3256
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
@@ -18532,7 +18520,7 @@ msgstr ""
 "Zru¹te volbu, nechcete-li pou¾ít jazyk(y) jako¾to parametr pro "
 "\\documentclass."
 
-#: src/LyXRC.cpp:3255
+#: src/LyXRC.cpp:3260
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -18540,7 +18528,7 @@ msgstr ""
 "Pøíkaz LaTeX-u pro naètení jazykového balíèku. Napø. \"\\usepackage{babel}\","
 "\"\\usepackage{omega}\"."
 
-#: src/LyXRC.cpp:3259
+#: src/LyXRC.cpp:3264
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -18548,21 +18536,21 @@ msgstr ""
 "Zru¹te volbu, nechcete-li pou¾ívat babel v pøípadì standardního nastavení "
 "jazyka dokumentu."
 
-#: src/LyXRC.cpp:3263
+#: src/LyXRC.cpp:3268
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr ""
 "Zru¹te volbu, nechcete-li aby LyX nastavoval kurzor na ulo¾enou pozici."
 
-#: src/LyXRC.cpp:3267
+#: src/LyXRC.cpp:3272
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 "Zru¹te volbu, pokud nechcete naèítat soubory otevøené v poslední relaci."
 
-#: src/LyXRC.cpp:3271
+#: src/LyXRC.cpp:3276
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "Zru¹te volbu, nechcete-li vytváøet zálo¾ní kopie souborù."
 
-#: src/LyXRC.cpp:3275
+#: src/LyXRC.cpp:3280
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -18570,80 +18558,80 @@ msgstr ""
 "Zvolte pro kontrolu zvýraznìní slov napsaných jazykem odli¹ným od "
 "standardního jazyka dokumentu."
 
-#: src/LyXRC.cpp:3279
+#: src/LyXRC.cpp:3284
 msgid "The scrolling speed of the mouse wheel."
 msgstr "Rychlost koleèka my¹i."
 
-#: src/LyXRC.cpp:3284
+#: src/LyXRC.cpp:3289
 msgid "The completion popup delay."
 msgstr "Prodleva pro doplnìní vyskakovacím menu"
 
-#: src/LyXRC.cpp:3288
+#: src/LyXRC.cpp:3293
 msgid "Select to display the completion popup in math mode."
 msgstr "Zvolit pro zobrazení vyskakovacího menu uvnitø mat. vzorcù"
 
-#: src/LyXRC.cpp:3292
+#: src/LyXRC.cpp:3297
 msgid "Select to display the completion popup in text mode."
 msgstr "Zvolit pro zobrazení vyskakovacího menu v textovém re¾imu"
 
-#: src/LyXRC.cpp:3296
+#: src/LyXRC.cpp:3301
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr "Pøi nejednoznaènosti zobrazit vyskakovací menu bez prodlevy."
 
-#: src/LyXRC.cpp:3300
+#: src/LyXRC.cpp:3305
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
 msgstr "Zobrazit malý trojúhelník za kurzorem pokud je doplnìní mo¾né."
 
-#: src/LyXRC.cpp:3304
+#: src/LyXRC.cpp:3309
 msgid "The inline completion delay."
 msgstr "Prodleva pro øádkové doplnìní."
 
-#: src/LyXRC.cpp:3308
+#: src/LyXRC.cpp:3313
 msgid "Select to display the inline completion in math mode."
 msgstr "Zvolit pro zobrazení øádkového doplnìní v matematickém módu."
 
-#: src/LyXRC.cpp:3312
+#: src/LyXRC.cpp:3317
 msgid "Select to display the inline completion in text mode."
 msgstr "Zvolit pro zobrazení øádkového doplnìní v textovém módu."
 
-#: src/LyXRC.cpp:3316
+#: src/LyXRC.cpp:3321
 msgid "Use \"...\" to shorten long completions."
 msgstr "Pou¾ít \"...\" pro zkrácení dlouhých doplnìní."
 
-#: src/LyXRC.cpp:3320
+#: src/LyXRC.cpp:3325
 msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
 msgstr "Povolit zkratku TeXMacs-u, jako napø. konverzi z => na \\Rightarrow."
 
-#: src/LyXRC.cpp:3324
+#: src/LyXRC.cpp:3329
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 "Maximální poèet souborù v historii. V menu se mù¾e objevit a¾ %1$d souborù."
 
-#: src/LyXRC.cpp:3335
+#: src/LyXRC.cpp:3340
 msgid "Shows a typeset preview of things such as math"
 msgstr "Zobrazovat náhled na vysázený text typu matematiky apod."
 
-#: src/LyXRC.cpp:3339
+#: src/LyXRC.cpp:3344
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr "Rovnice v náhledu budou oznaèeny pomocí \"(#)\" místo oèíslování."
 
-#: src/LyXRC.cpp:3343
+#: src/LyXRC.cpp:3348
 msgid "Scale the preview size to suit."
 msgstr "Nastavte mìøítko pro náhled."
 
-#: src/LyXRC.cpp:3347
+#: src/LyXRC.cpp:3352
 msgid "The option for specifying whether the copies should be collated."
 msgstr "Volba urèující, zda-li mají být kopie srovnány za sebou."
 
-#: src/LyXRC.cpp:3351
+#: src/LyXRC.cpp:3356
 msgid "The option for specifying the number of copies to print."
 msgstr "Volba urèující poèet kopií pro tisk."
 
-#: src/LyXRC.cpp:3355
+#: src/LyXRC.cpp:3360
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -18651,11 +18639,11 @@ msgstr ""
 "Standardní tiskárna pro tisk. Pokud neurèena, LyX pou¾ije promìnnou "
 "prostøedí PRINTER."
 
-#: src/LyXRC.cpp:3359
+#: src/LyXRC.cpp:3364
 msgid "The option to print only even pages."
 msgstr "Volba pro tisk pouze sudých stran."
 
-#: src/LyXRC.cpp:3363
+#: src/LyXRC.cpp:3368
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -18663,35 +18651,35 @@ msgstr ""
 "Volby navíc, které dostane program pro tisk za ostatními volbami, leè pøed "
 "jménem DVI souboru k tisku."
 
-#: src/LyXRC.cpp:3367
+#: src/LyXRC.cpp:3372
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "Pøípona výstupního tiskového souboru. Obvykle \".ps\"."
 
-#: src/LyXRC.cpp:3371
+#: src/LyXRC.cpp:3376
 msgid "The option to print out in landscape."
 msgstr "Volba pro tisk na ¹íøku"
 
-#: src/LyXRC.cpp:3375
+#: src/LyXRC.cpp:3380
 msgid "The option to print only odd pages."
 msgstr "Volba pro tisk pouze lichých stran."
 
-#: src/LyXRC.cpp:3379
+#: src/LyXRC.cpp:3384
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr "Volba urèující èárkami oddìlený seznam stránek k tisku."
 
-#: src/LyXRC.cpp:3383
+#: src/LyXRC.cpp:3388
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Volba urèující velikost papíru."
 
-#: src/LyXRC.cpp:3387
+#: src/LyXRC.cpp:3392
 msgid "The option to specify paper type."
 msgstr "Volba uèující typ papíru."
 
-#: src/LyXRC.cpp:3391
+#: src/LyXRC.cpp:3396
 msgid "The option to reverse the order of the pages printed."
 msgstr "Volba pro tisk stránek v opaèném poøadí"
 
-#: src/LyXRC.cpp:3395
+#: src/LyXRC.cpp:3400
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -18701,7 +18689,7 @@ msgstr ""
 "oddìlenì zavolá tiskový \"spool\" program, který dostane jako argumenty "
 "jméno souboru a v¹echny volby."
 
-#: src/LyXRC.cpp:3399
+#: src/LyXRC.cpp:3404
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -18709,30 +18697,30 @@ msgstr ""
 "Pokud urèíte jméno tiskárny v dialogovém oknì tisku, bude tento argument "
 "pøedøazen jménu tiskárny za pøíkazem \"spool\"-u."
 
-#: src/LyXRC.cpp:3403
+#: src/LyXRC.cpp:3408
 msgid "Option to pass to the print program to print to a file."
 msgstr "Volba pro tiskový program, je¾ nastavuje tisk do souboru."
 
-#: src/LyXRC.cpp:3407
+#: src/LyXRC.cpp:3412
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr "Volba pro tiskový program, je¾ nastavuje urèitou tiskárnu."
 
-#: src/LyXRC.cpp:3411
+#: src/LyXRC.cpp:3416
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr "Zvolte, pokud má LyX pøedávat jméno tiskárny tiskovému programu."
 
-#: src/LyXRC.cpp:3415
+#: src/LyXRC.cpp:3420
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Zvolte tiskový program, napø. \"dvips\", \"dvilj4\"."
 
-#: src/LyXRC.cpp:3423
+#: src/LyXRC.cpp:3428
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr "Vyberte pro visuální/logický pohyb kurzoru v dvojsmìrném módu (bidi)"
 
-#: src/LyXRC.cpp:3427
+#: src/LyXRC.cpp:3432
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -18740,11 +18728,11 @@ msgstr ""
 "DPI (poèet bodù na palec) va¹eho monitoru je automaticky detekováno LyX-em. "
 "Pøi selhání nastavte vlastní hodnotu."
 
-#: src/LyXRC.cpp:3433
+#: src/LyXRC.cpp:3438
 msgid "The screen fonts used to display the text while editing."
 msgstr "Fonty pou¾ívané k zobrazení editovaného textu na obrazovce."
 
-#: src/LyXRC.cpp:3442
+#: src/LyXRC.cpp:3447
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -18755,11 +18743,11 @@ msgstr ""
 "je tato volba vypnuta pou¾ije LyX nejbli¾¹í dostupnou velikostbitmapového "
 "fontu."
 
-#: src/LyXRC.cpp:3446
+#: src/LyXRC.cpp:3451
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr "Velikosti fontu pou¾ívané pøi výpoètech zmìny mìøítka na obrazovce."
 
-#: src/LyXRC.cpp:3451
+#: src/LyXRC.cpp:3456
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -18768,11 +18756,11 @@ msgstr ""
 "Zvìt¹ení fontù na obrazovce. Nastavení 100% hrubì odpovídá jejich "
 "velikostina papíru."
 
-#: src/LyXRC.cpp:3455
+#: src/LyXRC.cpp:3460
 msgid "Allow session manager to save and restore windows geometry."
 msgstr "Povolit ukládání a znovu-nastavení pozice okna."
 
-#: src/LyXRC.cpp:3459
+#: src/LyXRC.cpp:3464
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -18780,22 +18768,22 @@ msgstr ""
 "Spustit lyxserver. Roury (pipe) dostanou pøíponu \".in\" a \".out\". Jen pro "
 "pokroèilé u¾ivatele."
 
-#: src/LyXRC.cpp:3466
+#: src/LyXRC.cpp:3471
 msgid "De-select if you don't want the startup banner."
 msgstr "Zru¹te volbu, pokud nechcete zobrazovat úvodní obrazovku."
 
-#: src/LyXRC.cpp:3470
+#: src/LyXRC.cpp:3475
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
 msgstr ""
 "LyX umístí pomocné adresáøe do této cesty. Pøi ukonèení LyX-u budou smazány."
 
-#: src/LyXRC.cpp:3474
+#: src/LyXRC.cpp:3479
 msgid "This is the place where the files of the thesaurus library reside."
 msgstr "Zde jsou umístìné soubory pro knihovnu tezauru."
 
-#: src/LyXRC.cpp:3478
+#: src/LyXRC.cpp:3483
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -18803,7 +18791,7 @@ msgstr ""
 "Cesta kterou LyX nabídne pøi výbìru ¹ablony. Prázdný øetìzec zpùsobí výbìr "
 "adresáøe, ze kterého byl LyX spu¹tìn."
 
-#: src/LyXRC.cpp:3495
+#: src/LyXRC.cpp:3500
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -18811,24 +18799,24 @@ msgstr ""
 "Soubor u¾ivatelského rozhraní (UI). Lze zadat absolutní cestu; jinak bude "
 "LyX hledat v jeho lokálních a globálních adresáøích ui/ ."
 
-#: src/LyXRC.cpp:3505
+#: src/LyXRC.cpp:3510
 msgid ""
 "Enable use the system colors for some things like main window background and "
 "selection."
 msgstr "Pou¾ít systémové barvy pro pozadí hlavního okna, výbìr apod."
 
-#: src/LyXRC.cpp:3509
+#: src/LyXRC.cpp:3514
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr "Zapíná automatické zobrazování bublinové nápovìdy na pracovní plo¹e."
 
-#: src/LyXRC.cpp:3513
+#: src/LyXRC.cpp:3518
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 "Zapnout vyrovnávací pamì» pro pixmap, která mù¾e zlep¹it výkonnost na Mac-u "
 "a Windows."
 
-#: src/LyXRC.cpp:3517
+#: src/LyXRC.cpp:3522
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Urèete volbu nastavující papír v prohlí¾eèi DVI(nechte prázdné nebo pou¾ijte "
@@ -18907,11 +18895,11 @@ msgstr ""
 "Nové rozvr¾ení nepovoluje pou¾ívané zarovnání.\n"
 "Pøepnuto na standardní."
 
-#: src/Paragraph.cpp:3102
+#: src/Paragraph.cpp:3093
 msgid "Memory problem"
 msgstr "Interní chyba"
 
-#: src/Paragraph.cpp:3102
+#: src/Paragraph.cpp:3093
 msgid "Paragraph not properly initialized"
 msgstr "Odstavec není správnì inicializován"
 
@@ -18945,61 +18933,61 @@ msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Dvì mezery nelze psát tímto zpùsobem. Pøeètìte si prosím pøíruèku(tutorial)."
 
-#: src/Text.cpp:1781
+#: src/Text.cpp:1785
 msgid "[Change Tracking] "
 msgstr "[Zmìna revize] "
 
-#: src/Text.cpp:1787
+#: src/Text.cpp:1791
 msgid "Change: "
 msgstr "Zmìna: "
 
-#: src/Text.cpp:1791
+#: src/Text.cpp:1795
 msgid " at "
 msgstr " na "
 
-#: src/Text.cpp:1801
+#: src/Text.cpp:1805
 #, c-format
 msgid "Font: %1$s"
 msgstr "Font: %1$s"
 
-#: src/Text.cpp:1806
+#: src/Text.cpp:1810
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Hloubka: %1$d"
 
-#: src/Text.cpp:1812
+#: src/Text.cpp:1816
 msgid ", Spacing: "
 msgstr ", Mezery: "
 
-#: src/Text.cpp:1818 src/frontends/qt4/GuiDocument.cpp:694
+#: src/Text.cpp:1822 src/frontends/qt4/GuiDocument.cpp:694
 msgid "OneHalf"
 msgstr "Jedna a pùl"
 
-#: src/Text.cpp:1824
+#: src/Text.cpp:1828
 msgid "Other ("
 msgstr "Dal¹í ("
 
-#: src/Text.cpp:1833
+#: src/Text.cpp:1837
 msgid ", Inset: "
 msgstr ", Vlo¾ka: "
 
-#: src/Text.cpp:1834
+#: src/Text.cpp:1838
 msgid ", Paragraph: "
 msgstr ", Odstavec: "
 
-#: src/Text.cpp:1835
+#: src/Text.cpp:1839
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1836
+#: src/Text.cpp:1840
 msgid ", Position: "
 msgstr ", Pozice: "
 
-#: src/Text.cpp:1842
+#: src/Text.cpp:1846
 msgid ", Char: 0x"
 msgstr ", Znak: 0x"
 
-#: src/Text.cpp:1844
+#: src/Text.cpp:1848
 msgid ", Boundary: "
 msgstr ", Okraj: "
 
@@ -19116,10 +19104,10 @@ msgstr "Balíèek není dostupný"
 msgid "Error reading module %1$s\n"
 msgstr "Chyba pøi ètení modulu %1$s\n"
 
-#: src/VCBackend.cpp:60 src/VCBackend.cpp:693 src/VCBackend.cpp:698
-#: src/VCBackend.cpp:746 src/VCBackend.cpp:807 src/VCBackend.cpp:868
-#: src/VCBackend.cpp:876 src/VCBackend.cpp:1084 src/VCBackend.cpp:1177
-#: src/VCBackend.cpp:1183 src/VCBackend.cpp:1204
+#: src/VCBackend.cpp:60 src/VCBackend.cpp:752 src/VCBackend.cpp:757
+#: src/VCBackend.cpp:805 src/VCBackend.cpp:866 src/VCBackend.cpp:927
+#: src/VCBackend.cpp:935 src/VCBackend.cpp:1143 src/VCBackend.cpp:1236
+#: src/VCBackend.cpp:1242 src/VCBackend.cpp:1263
 #: src/frontends/qt4/GuiView.cpp:2748
 msgid "Revision control error."
 msgstr "Chyba správy verzí."
@@ -19133,41 +19121,41 @@ msgstr ""
 "Nastala chyba pøi spu¹tìní pøíkazu:\n"
 "'%1$s'."
 
-#: src/VCBackend.cpp:372 src/VCBackend.cpp:1027 src/VCBackend.cpp:1073
-#: src/VCBackend.cpp:1194 src/VCBackend.cpp:1231 src/VCBackend.cpp:1287
-#: src/VCBackend.cpp:1405 src/VCBackend.cpp:1458
+#: src/VCBackend.cpp:431 src/VCBackend.cpp:1086 src/VCBackend.cpp:1132
+#: src/VCBackend.cpp:1253 src/VCBackend.cpp:1290 src/VCBackend.cpp:1346
+#: src/VCBackend.cpp:1464 src/VCBackend.cpp:1517
 msgid "Error: Could not generate logfile."
 msgstr "Chyba: Nepodaøilo se zalo¾it soubor pro log."
 
-#: src/VCBackend.cpp:498
+#: src/VCBackend.cpp:557
 msgid "Up-to-date"
 msgstr "Aktualizováno"
 
-#: src/VCBackend.cpp:500
+#: src/VCBackend.cpp:559
 msgid "Locally Modified"
 msgstr "Lokálnì modifikováno"
 
-#: src/VCBackend.cpp:502
+#: src/VCBackend.cpp:561
 msgid "Locally Added"
 msgstr "Lokálnì pøidáno"
 
-#: src/VCBackend.cpp:504
+#: src/VCBackend.cpp:563
 msgid "Needs Merge"
 msgstr "Je potøeba slouèit (merge)"
 
-#: src/VCBackend.cpp:506
+#: src/VCBackend.cpp:565
 msgid "Needs Checkout"
 msgstr "Je potøeba naèíst z repozitáøe"
 
-#: src/VCBackend.cpp:508
+#: src/VCBackend.cpp:567
 msgid "No CVS file"
 msgstr "®ádný CVS soubor"
 
-#: src/VCBackend.cpp:510
+#: src/VCBackend.cpp:569
 msgid "Cannot retrieve CVS status"
 msgstr "Nelze obdr¾et CVS status"
 
-#: src/VCBackend.cpp:694
+#: src/VCBackend.cpp:753
 msgid ""
 "The repository version is newer then the current check out.\n"
 "You have to update from repository first or revert your changes."
@@ -19175,7 +19163,7 @@ msgstr ""
 "Verze v repozitáøi je novìj¹í ne¾ souèasná pracovní verze.\n"
 "Nejprve aktualizujte z repozitáøe nebo revertujte va¹e zmìny."
 
-#: src/VCBackend.cpp:699
+#: src/VCBackend.cpp:758
 #, c-format
 msgid ""
 "Bad status when checking in changes.\n"
@@ -19188,7 +19176,7 @@ msgstr ""
 "'%1$s'\n"
 "\n"
 
-#: src/VCBackend.cpp:747 src/VCBackend.cpp:1205
+#: src/VCBackend.cpp:806 src/VCBackend.cpp:1264
 #, c-format
 msgid ""
 "Error when updating from repository.\n"
@@ -19203,7 +19191,7 @@ msgstr ""
 "\n"
 "Po stisknutí tlaèítka OK se LyX pokusí znovu naèíst opravený dokument."
 
-#: src/VCBackend.cpp:781
+#: src/VCBackend.cpp:840
 #, c-format
 msgid ""
 "There were detected changes in the working directory:\n"
@@ -19220,20 +19208,20 @@ msgstr ""
 "\n"
 "Pokraèovat?"
 
-#: src/VCBackend.cpp:785 src/VCBackend.cpp:789 src/VCBackend.cpp:1246
-#: src/VCBackend.cpp:1250
+#: src/VCBackend.cpp:844 src/VCBackend.cpp:848 src/VCBackend.cpp:1305
+#: src/VCBackend.cpp:1309
 msgid "Changes detected"
 msgstr "Detekovány zmìny"
 
-#: src/VCBackend.cpp:786 src/VCBackend.cpp:790
+#: src/VCBackend.cpp:845 src/VCBackend.cpp:849
 msgid "&Abort"
 msgstr "&Pø&eru¹it"
 
-#: src/VCBackend.cpp:786 src/VCBackend.cpp:1247
+#: src/VCBackend.cpp:845 src/VCBackend.cpp:1306
 msgid "View &Log ..."
 msgstr "Zobraz &Log ..."
 
-#: src/VCBackend.cpp:808
+#: src/VCBackend.cpp:867
 #, c-format
 msgid ""
 "Error when updating document %1$s from repository.\n"
@@ -19248,7 +19236,7 @@ msgstr ""
 "\n"
 "Po stisknutí tlaèítka OK se LyX pokusí znovu naèíst opravený dokument."
 
-#: src/VCBackend.cpp:869
+#: src/VCBackend.cpp:928
 #, c-format
 msgid ""
 "The document %1$s is not in repository.\n"
@@ -19258,7 +19246,7 @@ msgstr ""
 "Musíte ulo¾it první zmìnu do repozitáøe pøed pokusem o návrat k poslední "
 "verzi."
 
-#: src/VCBackend.cpp:877
+#: src/VCBackend.cpp:936
 #, c-format
 msgid ""
 "Cannot revert document %1$s to repository version.\n"
@@ -19267,7 +19255,7 @@ msgstr ""
 "Nelze se navrátit k poslední verzi dokumentu %1$s.Status '%2$s' není "
 "oèekávaný."
 
-#: src/VCBackend.cpp:1085
+#: src/VCBackend.cpp:1144
 msgid ""
 "Error when committing to repository.\n"
 "You have to manually resolve the problem.\n"
@@ -19277,7 +19265,7 @@ msgstr ""
 "Tento problém musíte vyøe¹it ruènì.\n"
 "Po stisknutí OK LyX znovunaète dokument."
 
-#: src/VCBackend.cpp:1178
+#: src/VCBackend.cpp:1237
 msgid ""
 "Error while acquiring write lock.\n"
 "Another user is most probably editing\n"
@@ -19289,7 +19277,7 @@ msgstr ""
 " právì editován jiným u¾ivatelem.\n"
 "Zkontrolujte rovnì¾ pøístup k repozitáøi."
 
-#: src/VCBackend.cpp:1184
+#: src/VCBackend.cpp:1243
 msgid ""
 "Error while releasing write lock.\n"
 "Check the access to the repository."
@@ -19297,7 +19285,7 @@ msgstr ""
 "Nepodaøilo se uvolnit zámek pro zápis tohoto dokumentu.\n"
 "Zkontrolujte pøístup k repozitáøi."
 
-#: src/VCBackend.cpp:1241
+#: src/VCBackend.cpp:1300
 #, c-format
 msgid ""
 "There were detected changes in the working directory:\n"
@@ -19316,29 +19304,29 @@ msgstr ""
 "\n"
 "Pokraèovat?"
 
-#: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
+#: src/VCBackend.cpp:1306 src/VCBackend.cpp:1310
 #: src/frontends/qt4/FindAndReplace.cpp:338
 msgid "&Yes"
 msgstr "&Ano"
 
-#: src/VCBackend.cpp:1247 src/VCBackend.cpp:1251
+#: src/VCBackend.cpp:1306 src/VCBackend.cpp:1310
 #: src/frontends/qt4/FindAndReplace.cpp:338
 msgid "&No"
 msgstr "&Ne"
 
-#: src/VCBackend.cpp:1313
+#: src/VCBackend.cpp:1372
 msgid "VCN File Locking"
 msgstr "Zamykání souboru"
 
-#: src/VCBackend.cpp:1314
+#: src/VCBackend.cpp:1373
 msgid "Locking property unset."
 msgstr "Vypnutí zamykacího módu."
 
-#: src/VCBackend.cpp:1314 src/VCBackend.cpp:1318
+#: src/VCBackend.cpp:1373 src/VCBackend.cpp:1377
 msgid "Locking property set."
 msgstr "Zapnutí zamykacího módu."
 
-#: src/VCBackend.cpp:1315
+#: src/VCBackend.cpp:1374
 msgid "Do not forget to commit the locking property into the repository."
 msgstr "Nezapomeòte nyní ulo¾it zmìnu módu do repositáøe."
 
@@ -19595,7 +19583,7 @@ msgid "About %1"
 msgstr "O programu %1"
 
 #: src/frontends/qt4/GuiApplication.cpp:489
-#: src/frontends/qt4/GuiPrefs.cpp:3139
+#: src/frontends/qt4/GuiPrefs.cpp:3140
 msgid "Preferences"
 msgstr "Nastavení"
 
@@ -19679,24 +19667,24 @@ msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\" selhalo - barva je nedefinována nebo nelze pøedefinovat"
 
-#: src/frontends/qt4/GuiApplication.cpp:1594
+#: src/frontends/qt4/GuiApplication.cpp:1593
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Standardní nastavení dokumentu ulo¾eno v %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:1598
+#: src/frontends/qt4/GuiApplication.cpp:1597
 msgid "Unable to save document defaults"
 msgstr "Nelze ulo¾it standardní nastavení dokumentu"
 
-#: src/frontends/qt4/GuiApplication.cpp:1735
+#: src/frontends/qt4/GuiApplication.cpp:1734
 msgid "Unknown function."
 msgstr "Neznámá funkce."
 
-#: src/frontends/qt4/GuiApplication.cpp:2164
+#: src/frontends/qt4/GuiApplication.cpp:2163
 msgid "The current document was closed."
 msgstr "Aktuální dokukment byl uzavøen."
 
-#: src/frontends/qt4/GuiApplication.cpp:2174
+#: src/frontends/qt4/GuiApplication.cpp:2173
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -19708,12 +19696,12 @@ msgstr ""
 "\n"
 "Vyjímka: "
 
-#: src/frontends/qt4/GuiApplication.cpp:2178
-#: src/frontends/qt4/GuiApplication.cpp:2184
+#: src/frontends/qt4/GuiApplication.cpp:2177
+#: src/frontends/qt4/GuiApplication.cpp:2183
 msgid "Software exception Detected"
 msgstr "Detekována softwarová vyjímka"
 
-#: src/frontends/qt4/GuiApplication.cpp:2182
+#: src/frontends/qt4/GuiApplication.cpp:2181
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -19721,12 +19709,12 @@ msgstr ""
 "LyX zachytil neobvyklou vyjímku a nyní se pokusí ulo¾it v¹echny neulo¾ené "
 "dokumenty a skonèit."
 
-#: src/frontends/qt4/GuiApplication.cpp:2447
-#: src/frontends/qt4/GuiApplication.cpp:2459
+#: src/frontends/qt4/GuiApplication.cpp:2446
+#: src/frontends/qt4/GuiApplication.cpp:2458
 msgid "Could not find UI definition file"
 msgstr "Nelze pøeèíst definièní soubor u¾ivatelského rozhraní"
 
-#: src/frontends/qt4/GuiApplication.cpp:2448
+#: src/frontends/qt4/GuiApplication.cpp:2447
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -19737,11 +19725,11 @@ msgstr ""
 "%1$s\n"
 "Zkontrolujte prosím va¹i instalaci."
 
-#: src/frontends/qt4/GuiApplication.cpp:2454
+#: src/frontends/qt4/GuiApplication.cpp:2453
 msgid "Could not find default UI file"
 msgstr "Nelze nalézt standardní soubor u¾ivatelského rozhraní"
 
-#: src/frontends/qt4/GuiApplication.cpp:2455
+#: src/frontends/qt4/GuiApplication.cpp:2454
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -19749,7 +19737,7 @@ msgstr ""
 "LyX nena¹el standardní soubor u¾ivatelského rozhraní (.ui)!\n"
 "Zkontrolujte prosím va¹i instalaci."
 
-#: src/frontends/qt4/GuiApplication.cpp:2460
+#: src/frontends/qt4/GuiApplication.cpp:2459
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -19771,7 +19759,7 @@ msgstr "Bibliografie BibTeX-u"
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
 #: src/frontends/qt4/GuiDocument.cpp:1841
-#: src/frontends/qt4/GuiExternal.cpp:639 src/frontends/qt4/GuiGraphics.cpp:799
+#: src/frontends/qt4/GuiExternal.cpp:637 src/frontends/qt4/GuiGraphics.cpp:799
 #: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1866
 #: src/frontends/qt4/GuiView.cpp:1923 src/frontends/qt4/GuiView.cpp:2064
 #: src/frontends/qt4/GuiView.cpp:2186 src/frontends/qt4/GuiView.cpp:2272
@@ -20726,7 +20714,7 @@ msgstr "Externí materiál"
 msgid "Scale%"
 msgstr "Mìøítko%"
 
-#: src/frontends/qt4/GuiExternal.cpp:635
+#: src/frontends/qt4/GuiExternal.cpp:633
 msgid "Select external file"
 msgstr "Vybrat externí soubor"
 
@@ -21126,7 +21114,7 @@ msgid "Give a filename for the LyX server pipe"
 msgstr "Jméno souboru pro rouru (pipe) LyX serveru"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1454
-#: src/frontends/qt4/GuiSpellchecker.cpp:422
+#: src/frontends/qt4/GuiSpellchecker.cpp:429
 msgid "Spellchecker"
 msgstr "Kontrola pravopisu"
 
@@ -21154,11 +21142,11 @@ msgstr "Konvertory"
 msgid "File Formats"
 msgstr "Formáty souborù"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2027 src/frontends/qt4/GuiPrefs.cpp:2179
+#: src/frontends/qt4/GuiPrefs.cpp:2028 src/frontends/qt4/GuiPrefs.cpp:2180
 msgid "Format in use"
 msgstr "Pou¾ívaný formát"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2028
+#: src/frontends/qt4/GuiPrefs.cpp:2029
 msgid ""
 "You cannot change a format's short name if the format is used by a "
 "converter. Please remove the converter first."
@@ -21166,90 +21154,90 @@ msgstr ""
 "Nelze mìnit krátké jméno formátu pokud je formát pou¾ívaný konvertorem. "
 "Nejprve sma¾te konvertor."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2180
+#: src/frontends/qt4/GuiPrefs.cpp:2181
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr "Nelze smazat Formát pou¾ívaný konvertorem. Nejprve sma¾te konvertor."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2262
+#: src/frontends/qt4/GuiPrefs.cpp:2263
 msgid "LyX needs to be restarted!"
 msgstr "Je potøeba restartovat LyX!"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2263
+#: src/frontends/qt4/GuiPrefs.cpp:2264
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
 msgstr "Zmìna u¾ivatelského rozhraní bude plnì aktivní pouze po restartu LyXu."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2334
+#: src/frontends/qt4/GuiPrefs.cpp:2335
 msgid "Printer"
 msgstr "Tiskárna"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2432 src/frontends/qt4/GuiPrefs.cpp:3182
+#: src/frontends/qt4/GuiPrefs.cpp:2433 src/frontends/qt4/GuiPrefs.cpp:3183
 msgid "User Interface"
 msgstr "U¾ivatelské rozhraní"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2476
+#: src/frontends/qt4/GuiPrefs.cpp:2477
 msgid "Classic"
 msgstr "Klasická"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2477
+#: src/frontends/qt4/GuiPrefs.cpp:2478
 msgid "Oxygen"
 msgstr "Oxygen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2555
+#: src/frontends/qt4/GuiPrefs.cpp:2556
 msgid "Control"
 msgstr "Ovládání"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2643
+#: src/frontends/qt4/GuiPrefs.cpp:2644
 msgid "Shortcuts"
 msgstr "Klávesové zkratky"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2648
+#: src/frontends/qt4/GuiPrefs.cpp:2649
 msgid "Function"
 msgstr "Funkce"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2649
+#: src/frontends/qt4/GuiPrefs.cpp:2650
 msgid "Shortcut"
 msgstr "Zkratka"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2728
+#: src/frontends/qt4/GuiPrefs.cpp:2729
 msgid "Cursor, Mouse and Editing Functions"
 msgstr "Kurzor, my¹, editaèní funkce"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2732
+#: src/frontends/qt4/GuiPrefs.cpp:2733
 msgid "Mathematical Symbols"
 msgstr "Matematické symboly"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2736
+#: src/frontends/qt4/GuiPrefs.cpp:2737
 msgid "Document and Window"
 msgstr "Dokument a okno"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2740
+#: src/frontends/qt4/GuiPrefs.cpp:2741
 msgid "Font, Layouts and Textclasses"
 msgstr "Font, Rozvr¾ení a tøídy "
 
-#: src/frontends/qt4/GuiPrefs.cpp:2744
+#: src/frontends/qt4/GuiPrefs.cpp:2745
 msgid "System and Miscellaneous"
 msgstr "Systém, Rùzné"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2871 src/frontends/qt4/GuiPrefs.cpp:2917
+#: src/frontends/qt4/GuiPrefs.cpp:2872 src/frontends/qt4/GuiPrefs.cpp:2918
 msgid "Res&tore"
 msgstr "&Obnovit"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3028 src/frontends/qt4/GuiPrefs.cpp:3035
-#: src/frontends/qt4/GuiPrefs.cpp:3055 src/frontends/qt4/GuiPrefs.cpp:3074
+#: src/frontends/qt4/GuiPrefs.cpp:3029 src/frontends/qt4/GuiPrefs.cpp:3036
+#: src/frontends/qt4/GuiPrefs.cpp:3056 src/frontends/qt4/GuiPrefs.cpp:3075
 msgid "Failed to create shortcut"
 msgstr "Selhalo vytvoøení klávesové zkratky"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3029
+#: src/frontends/qt4/GuiPrefs.cpp:3030
 msgid "Unknown or invalid LyX function"
 msgstr "Neznámá nebo chybná LyX-funkce"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3036
+#: src/frontends/qt4/GuiPrefs.cpp:3037
 msgid "Invalid or empty key sequence"
 msgstr "Chybná nebo prázdná sekvence kláves"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3056
+#: src/frontends/qt4/GuiPrefs.cpp:3057
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
@@ -21260,35 +21248,35 @@ msgstr ""
 "%2$s\n"
 "Musíte toto pøiøazení smazat pøed vytvoøením nového."
 
-#: src/frontends/qt4/GuiPrefs.cpp:3075
+#: src/frontends/qt4/GuiPrefs.cpp:3076
 msgid "Can not insert shortcut to the list"
 msgstr "Nelze pøidat zkratku do seznamu"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3106
+#: src/frontends/qt4/GuiPrefs.cpp:3107
 msgid "Identity"
 msgstr "Va¹e identita"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3312
+#: src/frontends/qt4/GuiPrefs.cpp:3313
 msgid "Choose bind file"
 msgstr "Vybrat soubor klávesových zkratek"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3313
+#: src/frontends/qt4/GuiPrefs.cpp:3314
 msgid "LyX bind files (*.bind)"
 msgstr "Klávesové zkratky LyX-u (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3319
+#: src/frontends/qt4/GuiPrefs.cpp:3320
 msgid "Choose UI file"
 msgstr "Vybrat soubor u¾ivatelského rozhraní"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3320
+#: src/frontends/qt4/GuiPrefs.cpp:3321
 msgid "LyX UI files (*.ui)"
 msgstr "UI soubory LyX-u (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3326
+#: src/frontends/qt4/GuiPrefs.cpp:3327
 msgid "Choose keyboard map"
 msgstr "Vybrat mapu kláves"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3327
+#: src/frontends/qt4/GuiPrefs.cpp:3328
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "Mapa kláves pro LyX (*.kmap)"
 
@@ -21352,7 +21340,7 @@ msgstr "<Bez prefixu>"
 msgid "Find and Replace"
 msgstr "Najít a zamìnit"
 
-#: src/frontends/qt4/GuiSendto.cpp:37
+#: src/frontends/qt4/GuiSendto.cpp:39
 msgid "Export or Send Document"
 msgstr "Exportovat nebo zpracovat dokument"
 
@@ -21364,7 +21352,7 @@ msgstr "Zobraz soubor"
 msgid "Error -> Cannot load file!"
 msgstr "Chyba -> Nelze naèíst soubor!"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:191
+#: src/frontends/qt4/GuiSpellchecker.cpp:193
 msgid ""
 "We reached the end of the document, would you like to continue from the "
 "beginning?"
@@ -22710,7 +22698,7 @@ msgstr "LyX nemù¾e generovat seznam: %1$s"
 msgid "footnote"
 msgstr "poznámka pod èarou"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:672
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:668
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -22756,13 +22744,13 @@ msgstr "Vstup-doslovnì*"
 msgid "Include (excluded)"
 msgstr "Zahrnout (vyjmutý)"
 
-#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:772
-#: src/insets/InsetInclude.cpp:817
+#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:768
+#: src/insets/InsetInclude.cpp:829
 msgid "Recursive input"
 msgstr "Rekurzivní vstup"
 
-#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:773
-#: src/insets/InsetInclude.cpp:818
+#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:769
+#: src/insets/InsetInclude.cpp:830
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
@@ -22813,7 +22801,7 @@ msgstr ""
 msgid "Module not found"
 msgstr "Modul nenalezen"
 
-#: src/insets/InsetInclude.cpp:626 src/insets/InsetInclude.cpp:649
+#: src/insets/InsetInclude.cpp:621 src/insets/InsetInclude.cpp:644
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
@@ -22822,15 +22810,15 @@ msgstr ""
 "Zahrnutý soubor `%1$s' nebyl korektnì exportován.\n"
 "Varaování: Export do LaTeX-u je pravdìpodobnì neúplný."
 
-#: src/insets/InsetInclude.cpp:635 src/insets/InsetInclude.cpp:657
+#: src/insets/InsetInclude.cpp:630 src/insets/InsetInclude.cpp:652
 msgid "Export failure"
 msgstr "Export selhal"
 
-#: src/insets/InsetInclude.cpp:760
+#: src/insets/InsetInclude.cpp:756
 msgid "Unsupported Inclusion"
 msgstr "Nepodporované vlo¾ení"
 
-#: src/insets/InsetInclude.cpp:761
+#: src/insets/InsetInclude.cpp:757
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
@@ -23298,7 +23286,7 @@ msgstr "Chránìná horizontální mezera (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Neznámý typ Obsahu"
 
-#: src/insets/InsetTabular.cpp:4709
+#: src/insets/InsetTabular.cpp:4718
 msgid "Selection size should match clipboard content."
 msgstr "Velikost výbìru by mìla odpovídat obsahu schránky."
 
@@ -23443,15 +23431,15 @@ msgstr "Øetìzec byl nahrazen."
 msgid "%1$d strings have been replaced."
 msgstr "%1$d øetìzcù bylo nahrazeno."
 
-#: src/lyxfind.cpp:1410
+#: src/lyxfind.cpp:1432
 msgid "Invalid regular expression!"
 msgstr "Neplatný regulární výraz!"
 
-#: src/lyxfind.cpp:1415
+#: src/lyxfind.cpp:1437
 msgid "Match not found!"
 msgstr "Øetìzec nenalezen!"
 
-#: src/lyxfind.cpp:1419
+#: src/lyxfind.cpp:1441
 msgid "Match found!"
 msgstr "Øetìzec nalezen!"
 
@@ -23460,7 +23448,7 @@ msgstr "Øetìzec nalezen!"
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1683
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1685
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -23501,11 +23489,11 @@ msgstr "®ádná vertikální linka (vline) ke smazání"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Neznámá vlastnost tabulky '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1275
+#: src/mathed/InsetMathHull.cpp:1278
 msgid "Bad math environment"
 msgstr "Vadné matematické prostøedí"
 
-#: src/mathed/InsetMathHull.cpp:1276
+#: src/mathed/InsetMathHull.cpp:1279
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
@@ -23513,25 +23501,25 @@ msgstr ""
 "Výpoèet nemù¾e být proveden pro AMS matematické prostøedí.\n"
 "Zmìòte typ mat. vzorce a zkuste znovu."
 
-#: src/mathed/InsetMathHull.cpp:1382 src/mathed/InsetMathHull.cpp:1391
+#: src/mathed/InsetMathHull.cpp:1385 src/mathed/InsetMathHull.cpp:1394
 msgid "No number"
 msgstr "®ádné èíslo"
 
-#: src/mathed/InsetMathHull.cpp:1382 src/mathed/InsetMathHull.cpp:1391
+#: src/mathed/InsetMathHull.cpp:1385 src/mathed/InsetMathHull.cpp:1394
 msgid "Number"
 msgstr "Èíslo"
 
-#: src/mathed/InsetMathHull.cpp:1656
+#: src/mathed/InsetMathHull.cpp:1658
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Nelze zmìnit poèet øádkù v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1666
+#: src/mathed/InsetMathHull.cpp:1668
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Nelze zmìnit poèet sloupcù v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1676
+#: src/mathed/InsetMathHull.cpp:1678
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Nelze pøidat horizontální linky møí¾ky v '%1$s'"
@@ -23775,6 +23763,29 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámý u¾ivatel"
+
+#~ msgid "Uncodable character in file path"
+#~ msgstr "Nekódovatelný znaky v cestì k souboru"
+
+#~ msgid ""
+#~ "The path of your document\n"
+#~ "(%1$s)\n"
+#~ "contains glyphs that are unknown in the\n"
+#~ "current document encoding (namely %2$s).\n"
+#~ "This will likely result in incomplete output.\n"
+#~ "\n"
+#~ "Choose an appropriate document encoding (such as utf8)\n"
+#~ "or change the file path name."
+#~ msgstr ""
+#~ "Cesta k va¹emu souboru\n"
+#~ "(%1$s)\n"
+#~ "obsahuje znaky, které nejsou pou¾itelné v\n"
+#~ "v aktuálním kódování dokumentu (jmenovitì %2$s).\n"
+#~ "\n"
+#~ "To pravdìpodobnì zpùsobí neúplný výstup pøi sazbì dokumentu.\n"
+#~ "\n"
+#~ "Vyberte vhodné kódování dokumentu (napø. utf8)\n"
+#~ "nebo zmìnte cestu k souboru."
 
 #~ msgid "Step"
 #~ msgstr "Step"
