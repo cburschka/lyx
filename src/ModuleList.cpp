@@ -18,6 +18,7 @@
 
 #include "support/debug.h"
 #include "support/FileName.h"
+#include "support/gettext.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
@@ -112,18 +113,19 @@ bool LyXModule::areCompatible(string const & mod1, string const & mod2)
 	return true;
 }
 
+
 // used when sorting the module list.
 class ModuleSorter
 {
 public:
 	int operator()(LyXModule const & lm1, LyXModule const & lm2) const
 	{
-		return lm1.getName() < lm2.getName();
+		return _(lm1.getName()) < _(lm2.getName());
 	}
 };
 
 
-//Much of this is borrowed from LayoutFileList::read()
+// Much of this is borrowed from LayoutFileList::read()
 bool ModuleList::read()
 {
 	FileName const real_file = libFileSearch("", "lyxmodules.lst");

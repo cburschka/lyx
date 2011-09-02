@@ -19,8 +19,9 @@
 #include "Format.h"
 #include "FuncRequest.h"
 
-#include "support/qstring_helpers.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
+#include "support/qstring_helpers.h"
 
 #include <algorithm>
 
@@ -67,11 +68,13 @@ void GuiSendTo::changed_adaptor()
 	changed();
 }
 
+
 namespace {
 bool formatSorter(Format const * lhs, Format const * rhs) {
-	return lhs->prettyname() < rhs->prettyname();
+	return _(lhs->prettyname()) < _(rhs->prettyname());
 }
 } // end namespace
+
 
 void GuiSendTo::updateContents()
 {
