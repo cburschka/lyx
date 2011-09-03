@@ -140,13 +140,6 @@ Section -Configure
    		  \format "pdf2" "pdf" "PDF (pdflatex)" "F" "pdfview" "" "document,vector,menu=export"$\r$\n\
 		  \format "pdf" "pdf" "PDF (ps2pdf)" "P" "pdfview" "" "document,vector,menu=export"$\r$\n'
   ${endif}
-  # if a SVG to PDF converter was found (e.g. Inkscape)
-  ${if} $SVGPath != ""
-   FileWrite $R1 '\format "svg" "svg" "SVG" "" "inkscape --file=$$$$i" "inkscape --file=$$$$i" "vector"$\r$\n\
-   		  \converter "svg" "png" "inkscape --without-gui --file=$$$$i --export-png=$$$$o" ""$\r$\n\
-		  \converter "svg" "pdf" "inkscape --file=$$$$p/$$$$i --export-area-drawing --without-gui --export-pdf=$$$$p/$$$$o" ""$\r$\n\
-		  \converter "svg" "eps" "inkscape --file=$$$$p/$$$$i --export-area-drawing --without-gui --export-eps=$$$$p/$$$$o" ""$\r$\n'
-  ${endif}
   # if LilyPondPath was found
   # we need to add these entris because python scripts can only be executed
   # if the full path is given
