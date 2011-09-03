@@ -1,6 +1,8 @@
 #ifndef _MYTHES_HXX_
 #define _MYTHES_HXX_
 
+#include <cstdio>
+
 // some maximum sizes for buffers
 #define MAX_WD_LEN 200
 #define MAX_LN_LEN 16384
