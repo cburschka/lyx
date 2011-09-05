@@ -47,6 +47,9 @@ What's new
 - Fix regression where parent macros were not displayed in a viewed child
   (bug 7593).
 
+- Fix regression where children included more than once are only rendered
+  once (bug 7594).
+
 - Fix problem where updates to children were not seen on output of master
   (bug 7360).
 

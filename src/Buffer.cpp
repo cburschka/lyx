@@ -444,12 +444,12 @@ void Buffer::clone(BufferMap & bufmap) const
 	// math macro caches need to be rethought and simplified.
 	// I am not sure wether we should handle Buffer cloning here or in BufferList.
 	// Right now BufferList knows nothing about buffer clones.
-	Impl::BufferPositionMap::iterator it = d->children_positions.begin();
-	Impl::BufferPositionMap::iterator end = d->children_positions.end();
+	Impl::PositionScopeBufferMap::iterator it = d->position_to_children.begin();
+	Impl::PositionScopeBufferMap::iterator end = d->position_to_children.end();
 	for (; it != end; ++it) {
-		DocIterator dit = it->second.clone(buffer_clone);
+		DocIterator dit = it->first.clone(buffer_clone);
 		dit.setBuffer(buffer_clone);
-		Buffer * child = const_cast<Buffer *>(it->first);
+		Buffer * child = const_cast<Buffer *>(it->second.second);
 
 		child->clone(bufmap);
 		BufferMap::iterator it = bufmap.find(child);
@@ -461,6 +461,7 @@ void Buffer::clone(BufferMap & bufmap) const
 		InsetInclude * inset_inc = static_cast<InsetInclude *>(inset);
 		inset_inc->setChildBuffer(child_clone);
 		child_clone->d->setParent(buffer_clone);
+		// FIXME Do we need to do this now, or can we wait until we run updateMacros()?
 		buffer_clone->setChild(dit, child_clone);
 	}
 	buffer_clone->d->macro_lock = false;
