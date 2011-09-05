@@ -31,8 +31,11 @@ public:
 	docstring const & counterValue() const { return counter_value_; }
 	///
 	docstring const & prettyCounter() const { return pretty_counter_; }
-	///
-	void updateCommand(docstring const & new_label, bool updaterefs = true);
+	/// Updates only the label string, doesn't handle undo nor references.
+	void updateLabel(docstring const & new_label);
+	/// Updates the label and the references to it.
+	/// Will also handle undo/redo if \p cursor is passed.
+	void updateLabelAndRefs(docstring const & new_label, Cursor * cursor = 0);
 
 	/// \name Public functions inherited from Inset class
 	//@{
@@ -85,6 +88,11 @@ private:
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	//@}
 
+	///
+	void uniqueLabel(docstring & label) const;
+	///
+	void updateReferences(docstring const & old_label,
+		docstring const & new_label);
 	///
 	docstring screen_label_;
 	///

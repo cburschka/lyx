@@ -55,46 +55,71 @@ InsetLabel::InsetLabel(Buffer * buf, InsetCommandParams const & p)
 
 void InsetLabel::initView()
 {
-	updateCommand(getParam("name"));
+	// FIXME: This seems to be used only for inset creation so
+	// we probably just need to call updateLabel() here.
+	updateLabelAndRefs(getParam("name"));
 }
 
 
-void InsetLabel::updateCommand(docstring const & new_label, bool updaterefs)
+void InsetLabel::uniqueLabel(docstring & label) const
 {
-	docstring const old_label = getParam("name");
-	docstring label = new_label;
+	docstring const new_label = label;
 	int i = 1;
 	while (buffer().insetLabel(label)) {
 		label = new_label + '-' + convert<docstring>(i);
 		++i;
 	}
-
 	if (label != new_label) {
 		// Warn the user that the label has been changed to something else.
 		frontend::Alert::warning(_("Label names must be unique!"),
 			bformat(_("The label %1$s already exists,\n"
 			"it will be changed to %2$s."), new_label, label));
 	}
+}
+
+
+void InsetLabel::updateLabel(docstring const & new_label)
+{
+	docstring label = new_label;
+	uniqueLabel(label);
+	setParam("name", label);
+}
+
+
+void InsetLabel::updateLabelAndRefs(docstring const & new_label,
+		Cursor * cursor)
+{
+	docstring const old_label = getParam("name");
+	docstring label = new_label;
+	uniqueLabel(label);
+	if (label == old_label)
+		return;
 
 	buffer().undo().beginUndoGroup();
+	if (cursor)
+		cursor->recordUndo();
 	setParam("name", label);
+	updateReferences(old_label, label);
+	buffer().undo().endUndoGroup();
+}
 
-	if (updaterefs) {
-		Buffer::References & refs = buffer().references(old_label);
-		Buffer::References::iterator it = refs.begin();
-		Buffer::References::iterator end = refs.end();
-		for (; it != end; ++it) {
-			buffer().undo().recordUndo(it->second);
-			if (it->first->lyxCode() == MATH_REF_CODE) {
-				InsetMathHull * mi = it->first->asInsetMath()->asHullInset();
-				mi->asRefInset()->changeTarget(label);
-			} else {
-				InsetCommand * ref = it->first->asInsetCommand();
-				ref->setParam("reference", label);
-			}
+
+void InsetLabel::updateReferences(docstring const & old_label,
+		docstring const & new_label)
+{
+	Buffer::References & refs = buffer().references(old_label);
+	Buffer::References::iterator it = refs.begin();
+	Buffer::References::iterator end = refs.end();
+	for (; it != end; ++it) {
+		buffer().undo().recordUndo(it->second);
+		if (it->first->lyxCode() == MATH_REF_CODE) {
+			InsetMathHull * mi = it->first->asInsetMath()->asHullInset();
+			mi->asRefInset()->changeTarget(new_label);
+		} else {
+			InsetCommand * ref = it->first->asInsetCommand();
+			ref->setParam("reference", new_label);
 		}
 	}
-	buffer().undo().endUndoGroup();
 }
 
 
@@ -197,8 +222,8 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 		}
 		if (p["name"] != params()["name"]) {
-			// undo is handled in updateCommand
-			updateCommand(p["name"]);
+			// undo is handled in updateLabelAndRefs
+			updateLabelAndRefs(p["name"], &cur);
 		}
 		cur.forceBufferUpdate();
 		break;

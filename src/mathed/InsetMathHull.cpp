@@ -663,7 +663,7 @@ void InsetMathHull::label(row_type row, docstring const & label)
 			label_[row] = dummy_pointer;
 		} else {
 			if (buffer_)
-				label_[row]->updateCommand(label);
+				label_[row]->updateLabelAndRefs(label);
 			else
 				label_[row]->setParam("name", label);
 		}
