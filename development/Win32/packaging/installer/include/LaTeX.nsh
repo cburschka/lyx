@@ -146,6 +146,8 @@ Function ConfigureMiKTeX
  # installs the LaTeX class files that are delivered with LyX
  # and enable MiKTeX's automatic package installation
  
+ # install LyX's LaTeX class and style files
+ ${if} $PathLaTeX != ""
   ${if} $MultiUser.Privileges != "Admin"
   ${orif} $MultiUser.Privileges != "Power"
    StrCpy $PathLaTeXLocal "$PathLaTeX" -11 # delete "\miktex\bin"
@@ -170,6 +172,7 @@ Function ConfigureMiKTeX
    ${endif}
    Pop $UpdateFNDBReturn # Return value
   ${endif}
+ ${endif}
   
   # enable package installation without asking (1 = Yes, 0 = No, 2 = Ask me first)
   WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1" # if only for current user

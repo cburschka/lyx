@@ -199,7 +199,7 @@ SectionEnd
 Section "$(SecFileAssocTitle)" SecFileAssoc
   StrCpy $CreateFileAssociations "true"
 SectionEnd
-Section /o "$(SecDesktopTitle)" SecDesktop
+Section "$(SecDesktopTitle)" SecDesktop
   StrCpy $CreateDesktopIcon "true"
 SectionEnd
 
