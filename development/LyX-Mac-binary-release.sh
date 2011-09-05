@@ -543,6 +543,7 @@ deploy_qtlibs() {
 	test -f "${condir}/Resources/qt.conf" || cat - > "${condir}/Resources/qt.conf" <<-EOF
 [Paths]
 Plugins = PlugIns
+Translations = translations
 EOF
 	if [ ! -d "${condir}/PlugIns" ]; then
 		mkdir -p "${condir}/PlugIns"
@@ -588,6 +589,11 @@ EOF
 			"@executable_path/../${fwdir}/${version}${libnm}"\
 			"${target}"
 	done
+	if [ ! -d "${condir}/translations" ]; then
+		mkdir -p "${condir}/translations"
+	fi
+	echo Copy Qt translations to "${condir}/translations"
+	cp -p "${source}"/translations/qt_*.qm "${condir}/translations"
 }
 
 # -------------------------
