@@ -33,7 +33,6 @@ Var LaTeXInstalled
 Var LilyPondPath
 Var MiKTeXUser
 Var MiKTeXVersion
-Var MissedProg
 Var Pointer
 Var PSVPath
 Var PythonPath

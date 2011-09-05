@@ -94,6 +94,11 @@ Section "un.LyX" un.SecUnProgramFiles
     ExecWait '$PrinterConf /q /dl /n "Metafile to EPS Converter"'
 
   ${EndIf}
+  
+  # clean other registry entries
+  DeleteRegKey SHCTX "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\${APP_NAME}.exe"
+  DeleteRegKey SHCTX "SOFTWARE\${APP_REGKEY}"
+  
 
 SectionEnd
 

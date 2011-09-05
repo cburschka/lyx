@@ -95,7 +95,7 @@ Section -Configure
 
   # create the path prefix
   # $$ represents a literal $ in an NSIS string
-  StrCpy $PathPrefix "$$LyXDir\bin;$$LyXDir\python;$$LyXDir\imagemagick;$$LyXDir\ghostscript"
+  StrCpy $PathPrefix "$$LyXDir\bin;$$LyXDir\python;$$LyXDir\imagemagick"
   
   ${if} $PathLaTeX != ""
     StrCpy $PathPrefix "$PathPrefix;$PathLaTeX"
@@ -108,6 +108,9 @@ Section -Configure
   ${endif}
   ${if} $ImageEditorPath != ""
     StrCpy $PathPrefix "$PathPrefix;$ImageEditorPath"
+  ${endif}
+   ${if} $GhostscriptPath != ""
+   StrCpy $PathPrefix "$PathPrefix;$GhostscriptPath"
   ${endif}
   ${if} $SVGPath != ""
    StrCpy $PathPrefix "$PathPrefix;$SVGPath"

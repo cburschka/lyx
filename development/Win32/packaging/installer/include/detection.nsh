@@ -34,52 +34,29 @@ FunctionEnd
 Function MissingPrograms
   # check if third-party programs are installed
 
-  # initialize variable, is later set to True when a program was not found
-  ${if} $MissedProg != "True" # is already True when LaTeX is missing
-   StrCpy $MissedProg "False"
-  ${endif}
-
   # test if Ghostscript is installed
+  StrCpy $3 0
   GSloop:
-  EnumRegKey $1 HKLM "Software\AFPL Ghostscript" 0
-  ${if} $1 == ""
-   EnumRegKey $1 HKLM "Software\GPL Ghostscript" 0
-   ${if} $1 != ""
-    StrCpy $2 "True"
-   ${endif}
-  ${endif}
+  EnumRegKey $1 HKLM "Software\GPL Ghostscript" $3
   ${if} $1 != ""
-   ${if} $2 == "True"
-    ReadRegStr $3 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GPL Ghostscript $1" "DisplayName"
+    ReadRegStr $2 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GPL Ghostscript $1" "DisplayName"
     StrCpy $0 "Software\GPL Ghostscript\$1"
-   ${else}
-    ReadRegStr $3 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\AFPL Ghostscript $1" "DisplayName"
-    StrCpy $0 "Software\AFPL Ghostscript\$1"
+   ${if} $2 == "" # if nothing was found in the uninstall section
+    ReadRegStr $2 HKLM "SOFTWARE\GPL Ghostscript" "OnlyWithLyX" # check if Ghostscript was installed together with LyX
    ${endif}
-   ${if} $3 == "" # if nothing was found in the uninstall section
-    ReadRegStr $3 HKLM "SOFTWARE\GPL Ghostscript" "OnlyWithLyX" # check if Ghostscript was installed together with LyX
-   ${endif}
-   ${if} $3 == "" # if nothing was found in the uninstall section
+   ${if} $2 == "" # if nothing was found in the uninstall section
     DeleteRegKey HKLM "$0"
     goto GSloop
    ${else}
     ReadRegStr $GhostscriptPath HKLM $0 "GS_DLL"
     ${if} $GhostscriptPath != ""
      StrCpy $GhostscriptPath "$GhostscriptPath" -12 # remove ending "gsdll32.dll"
-    ${else}
-     StrCpy $MissedProg "True"
     ${endif}
-   ${endif} # if $3
-  ${else} # if $1
-   StrCpy $GhostscriptPath ""
-   StrCpy $MissedProg "True"
+    # there might be several versions installed and we want to use the newest one
+    IntOp $3 $3 + 1
+    goto GSloop
+   ${endif} # if $2
   ${endif}
-
-  # test if Imagemagick is installed
-  #ReadRegStr $ImageMagickPath HKLM "Software\ImageMagick\Current" "BinPath"
-  #${if} $ImageMagickPath == ""
-  # StrCpy $MissedProg "True"
-  #${endif}
 
   # test if Python is installed
   # only use an existing python when it is version 2.5 or newer because some

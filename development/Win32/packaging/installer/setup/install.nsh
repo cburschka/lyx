@@ -79,13 +79,16 @@ Section -ProgramFiles SecProgramFiles
   WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "ConfigurePath" "$INSTDIR\imagemagick\config"
   WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "FilterModulesPath" "$INSTDIR\imagemagick\modules\filters"
   WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "LibPath" "$INSTDIR\imagemagick"
-  WriteRegDWORD SHCTX "SOFTWARE\ImageMagick\Current" "QuantumDepth" 0x00000010   
+  WriteRegDWORD SHCTX "SOFTWARE\ImageMagick\Current" "QuantumDepth" 0x00000010
   WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "Version" "${ImageMagickVersion}"
   
   # Components of Ghostscript
-  SetOutPath "$INSTDIR\ghostscript"
-  File /r "${FILES_GHOSTSCRIPT}\"
-  !insertmacro FileListMSVC File "${FILES_MSVC}\"
+  ${if} $GhostscriptPath == ""
+   SetOutPath "$INSTDIR\ghostscript"
+   File /r "${FILES_GHOSTSCRIPT}\"
+   !insertmacro FileListMSVC File "${FILES_MSVC}\"
+   StrCpy $GhostscriptPath "$INSTDIR\ghostscript\bin"
+  ${endif}
   
   !if ${SETUPTYPE} == BUNDLE
    

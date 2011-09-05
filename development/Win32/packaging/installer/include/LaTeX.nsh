@@ -99,10 +99,6 @@ Function LaTeXActions
   ${andif} $LaTeXName != "MiKTeX 2.9"
    StrCpy $LaTeXName "TeXLive"
   ${endif}
-  
-  ${if} $PathLaTeX == ""
-   StrCpy $MissedProg "True"
-  ${endif}
 
 FunctionEnd
 
