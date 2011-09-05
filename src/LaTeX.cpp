@@ -1046,6 +1046,10 @@ void LaTeX::deplog(DepTable & head)
 			continue;
 		}
 
+		// FIXME UNICODE: We assume that the file names in the log
+		// file are in the file system encoding.
+		token = to_utf8(from_filesystem8bit(token));
+
 		// Sometimes, filenames are broken across lines.
 		// We care for that and save suspicious lines.
 		// Here we exclude some cases where we are sure
@@ -1074,10 +1078,6 @@ void LaTeX::deplog(DepTable & head)
 		}
 
 		smatch sub;
-
-		// FIXME UNICODE: We assume that the file names in the log
-		// file are in the file system encoding.
-		token = to_utf8(from_filesystem8bit(token));
 
 		// (1) "File: file.ext"
 		if (regex_match(token, sub, reg1)) {
