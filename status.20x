@@ -49,6 +49,9 @@ What's new
 
 - Group correctly Koma Book environments inside environment combo-box listing.
 
+- Add undo for change of text language when document language is changed.
+  When a document is not multi-lingual the text contents is changed to the
+  new language. This should be recorded for Undo (bug 7740).
 
 * ADVANCED FIND AND REPLACE
 

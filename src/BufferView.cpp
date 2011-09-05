@@ -1884,6 +1884,19 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 	}
 
+	case LFUN_BUFFER_LANGUAGE: {
+		Language const * oldL = buffer_.params().language;
+		Language const * newL = languages.getLanguage(argument);
+		if (!newL || oldL == newL)
+			break;
+		if (oldL->rightToLeft() == newL->rightToLeft() && !buffer_.isMultiLingual()) {
+			cur.recordUndoFullDocument();
+			buffer_.changeLanguage(oldL, newL);
+			dr.forceBufferUpdate();
+		}
+		break;
+	}
+
 	default:
 		// OK, so try the Buffer itself...
 		buffer_.dispatch(cmd, dr);
