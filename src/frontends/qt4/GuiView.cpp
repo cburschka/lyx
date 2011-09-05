@@ -2951,7 +2951,11 @@ docstring GuiView::GuiViewPrivate::runAndDestroy(const T& func, Buffer const * o
 				buffer->params().maintain_unincluded_children
 				&& !buffer->params().getIncludedChildren().empty();
 	bool const success = func(format, update_unincluded);
-	delete buffer;
+
+	// the cloning operation will have produced a clone of the entire set of
+	// documents, starting from the master. so we must delete those.
+	Buffer * mbuf = const_cast<Buffer *>(buffer->masterBuffer());
+	delete mbuf;
 	busyBuffers.remove(orig);
 	if (msg == "preview") {
 		return success

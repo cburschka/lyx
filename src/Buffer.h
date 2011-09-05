@@ -211,6 +211,10 @@ public:
 	int readHeader(Lexer & lex);
 
 private:
+	///
+	typedef std::map<Buffer const *, Buffer *> BufferMap;
+	///
+	void clone(BufferMap &) const;
 	/// save timestamp and checksum of the given file.
 	void saveCheckSum() const;	
 	/// read a new file

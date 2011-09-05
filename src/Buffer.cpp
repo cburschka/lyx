@@ -422,7 +422,22 @@ Buffer::~Buffer()
 
 Buffer * Buffer::clone() const
 {
+	BufferMap bufmap;
+	masterBuffer()->clone(bufmap);
+	BufferMap::iterator it = bufmap.find(this);
+	LASSERT(it != bufmap.end(), return 0);
+	return it->second;
+}
+
+
+void Buffer::clone(BufferMap & bufmap) const
+{
+	// have we already been cloned?
+	if (bufmap.find(this) != bufmap.end())
+		return;
+
 	Buffer * buffer_clone = new Buffer(fileName().absFileName(), false, this);
+	bufmap[this] = buffer_clone;
 	buffer_clone->d->macro_lock = true;
 	buffer_clone->d->children_positions.clear();
 	// FIXME (Abdel 09/01/2010): this is too complicated. The whole children_positions and
@@ -435,7 +450,12 @@ Buffer * Buffer::clone() const
 		DocIterator dit = it->second.clone(buffer_clone);
 		dit.setBuffer(buffer_clone);
 		Buffer * child = const_cast<Buffer *>(it->first);
-		Buffer * child_clone = child->clone();
+
+		child->clone(bufmap);
+		BufferMap::iterator it = bufmap.find(child);
+		LASSERT(it != bufmap.end(), continue);
+		Buffer * child_clone = it->second;
+
 		Inset * inset = dit.nextInset();
 		LASSERT(inset && inset->lyxCode() == INCLUDE_CODE, continue);
 		InsetInclude * inset_inc = static_cast<InsetInclude *>(inset);
@@ -444,7 +464,7 @@ Buffer * Buffer::clone() const
 		buffer_clone->setChild(dit, child_clone);
 	}
 	buffer_clone->d->macro_lock = false;
-	return buffer_clone;
+	return;
 }
 
 
