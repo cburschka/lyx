@@ -1,29 +1,29 @@
 Function LatexFolder
 
-  !insertmacro INSTALLOPTIONS_EXTRACT "gui\io_latex.ini"
+  !insertmacro INSTALLOPTIONS_EXTRACT_AS "gui\io_latex.ini" "io_latex.ini"
   # generate the installer page
   !insertmacro MUI_HEADER_TEXT "$(EnterLaTeXHeader1)" "$(EnterLaTeXHeader2)"
   ${if} $LatexName != ""
-   !insertmacro INSTALLOPTIONS_WRITE "gui\io_latex.ini" "Field 1" "Text" "$(EnterLaTeXFolder)"
+   !insertmacro INSTALLOPTIONS_WRITE "io_latex.ini" "Field 1" "Text" "$(EnterLaTeXFolder)"
   ${else}
-   !insertmacro INSTALLOPTIONS_WRITE "gui\io_latex.ini" "Field 1" "Text" "$(EnterLaTeXFolderNone)"
+   !insertmacro INSTALLOPTIONS_WRITE "io_latex.ini" "Field 1" "Text" "$(EnterLaTeXFolderNone)"
   ${endif}
-  !insertmacro INSTALLOPTIONS_WRITE "gui\io_latex.ini" "Field 2" "Text" "$(PathName)"
+  !insertmacro INSTALLOPTIONS_WRITE "io_latex.ini" "Field 2" "Text" "$(PathName)"
   ${if} $PathLaTeX == ""
-   !insertmacro INSTALLOPTIONS_WRITE "gui\io_latex.ini" "Field 3" "State" "C:\" # Does \" quote a "?
+   !insertmacro INSTALLOPTIONS_WRITE "io_latex.ini" "Field 3" "State" "C:\"
   ${else}
-   !insertmacro INSTALLOPTIONS_WRITE "gui\io_latex.ini" "Field 3" "State" "$PathLaTeX"
+   !insertmacro INSTALLOPTIONS_WRITE "io_latex.ini" "Field 3" "State" "$PathLaTeX"
   ${endif}
-  !insertmacro INSTALLOPTIONS_WRITE "gui\io_latex.ini" "Field 4" "Text" "$(DontUseLaTeX)"
-  !insertmacro INSTALLOPTIONS_WRITE "gui\io_latex.ini" "Field 4" "State" "$State"
+  !insertmacro INSTALLOPTIONS_WRITE "io_latex.ini" "Field 4" "Text" "$(DontUseLaTeX)"
+  !insertmacro INSTALLOPTIONS_WRITE "io_latex.ini" "Field 4" "State" "$State"
   AgainFolder:
-  !insertmacro INSTALLOPTIONS_DISPLAY "gui\io_latex.ini"
-  !insertmacro INSTALLOPTIONS_READ "$State" "gui\io_latex.ini" "Field 4" "State" # read checkbox if LaTeX should be used, "0" or not "1"
+  !insertmacro INSTALLOPTIONS_DISPLAY "io_latex.ini"
+  !insertmacro INSTALLOPTIONS_READ "$State" "io_latex.ini" "Field 4" "State" # read checkbox if LaTeX should be used, "0" or not "1"
   ${if} $State == "1"
    StrCpy $PathLaTeX ""
    Goto ReadyFolder
   ${endif}
-  !insertmacro INSTALLOPTIONS_READ "$PathLaTeX" "gui\io_latex.ini" "Field 3" "State"
+  !insertmacro INSTALLOPTIONS_READ "$PathLaTeX" "io_latex.ini" "Field 3" "State"
   # check if the latex.exe exists in the $PathLaTeX folder
   !insertmacro FileCheck $5 "latex.exe" "$PathLaTeX"
   ${if} $5 == "False"
