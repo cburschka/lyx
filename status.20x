@@ -53,6 +53,9 @@ What's new
   When a document is not multi-lingual the text contents is changed to the
   new language. This should be recorded for Undo (bug 7740).
 
+- Adjust the cursor language after document language change had changed the
+  text language (bug 7681).
+
 * ADVANCED FIND AND REPLACE
 
 
