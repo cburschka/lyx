@@ -1418,6 +1418,13 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 		flag.setEnabled(false);
 		break;
 
+	case LFUN_SPACE_INSERT: {
+		docstring const & name = cmd.argument();
+		if (name == "protected" || name == "normal")
+			flag.setEnabled(false);
+		break;
+	}
+
 	case LFUN_INSET_DISSOLVE:
 		flag.setEnabled(!asHullInset());
 		break;
