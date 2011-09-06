@@ -27,7 +27,7 @@ ${LangFileString} AvailableLang " Beschikbare Talen "
 ${LangFileString} EnterLaTeXHeader1 'LaTeX software'
 ${LangFileString} EnterLaTeXHeader2 'Geef aan welke LaTeX-software LyX moet gebruiken.'
 ${LangFileString} EnterLaTeXFolder 'U kunt hier opgeven in welke map het programma $\"latex.exe$\" zich bevindt en op deze manier bepalen \
-					   welke LaTeX softare gebruikt wordt door LyX.$\r$\n\
+					   welke LaTeX software gebruikt wordt door LyX.$\r$\n\
 					   Zonder LaTeX kan LyX geen documenten generen!$\r$\n\
 					   $\r$\n\
 					   Het installatie programma heeft de LaTeX software \
@@ -61,7 +61,7 @@ ${LangFileString} MiKTeXPathInfo "Opdat elke gebruiker zijn MiKTeX configuratie 
 					 is het noodzakelijk alle gebruikers schrijfpermissie te geven in MiKTeX's installatie map$\r$\n\
 					 $MiKTeXPath $\r$\n\
 					 en submappen."
-${LangFileString} MiKTeXInfo 'LyX gebruikt de LaTeX softare $\"MiKTeX$\".$\r$\n\
+${LangFileString} MiKTeXInfo 'LyX gebruikt de LaTeX software $\"MiKTeX$\".$\r$\n\
 				     Het is aanbevolen MiKTeX-updates te installeren via de $\"MiKTeX Update Wizard$\"$\r$\n\
 				     voordat u LyX voor de eerste keer gebruikt.$\r$\n\
 				     Wilt u controleren of er updates voor MiKTeX beschikbaar zijn?'
