@@ -6605,7 +6605,7 @@ DeclareLyXModule{My Package}
 \end_layout
 
 \begin_layout LyX-Code
-#DescriptionEnd 
+#DescriptionEnd
 \begin_inset Newline newline
 \end_inset
 
@@ -15980,7 +15980,7 @@ Typewriter
 
 \end_inset
 
-] 
+]
 \end_layout
 
 \begin_layout Description
@@ -16028,7 +16028,37 @@ noun
 status collapsed
 
 \begin_layout Plain Layout
+strikeout
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 underbar
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+uuline
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+uwave
 \end_layout
 
 \end_inset
@@ -16053,12 +16083,42 @@ no_noun
 
 \end_inset
 
- and 
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+no_strikeout
+\end_layout
+
+\end_inset
+
+, 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 no_bar
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+no_uuline
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+no_uwave
 \end_layout
 
 \end_inset
@@ -18580,7 +18640,6 @@ src/FontInfo.cpp
 \end_inset
 
  for the details.
- 
 \end_layout
 
 \begin_layout Chapter
