@@ -72,6 +72,8 @@ What's new
 
 - Repair broken outliner display for broken references (bug 7708).
 
+- Fix Horizontal Space dialog when issued from within math (bug 7746).
+
 - Mark buffer dirty when a label is changed, so the file can be saved and
   the change can be reverted (bug 7655).
 
