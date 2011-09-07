@@ -617,23 +617,20 @@ def checkConverterEntries(java='', perl=''):
 
     checkLuatex()
 
-    ''' If we're running LyX in-place then tex2lyx will be found in
-            ../src/tex2lyx. Add this directory to the PATH temporarily and
-            search for tex2lyx.
-            Use PATH to avoid any problems with paths-with-spaces.
-    '''
-    path_orig = os.environ["PATH"]
-    os.environ["PATH"] = os.path.join('..', 'src', 'tex2lyx') + \
-        os.pathsep + path_orig
+    # Look for tex2lyx in this order (see bugs #3308 and #6986):
+    #   1)  If we're running LyX in-place then tex2lyx will be found
+    #       in ../src/tex2lyx with respect to the srcdir.
+    #   2)  If LyX was configured with a version suffix then tex2lyx
+    #       will also have this version suffix.
+    #   3)  Otherwise always use tex2lyx.
+    in_place = os.path.join('srcdir', '..', 'src', 'tex2lyx', 'tex2lyx')
+    in_place = os.path.abspath(in_place)
 
-# First search for tex2lyx with version suffix (bug 6986)
-    path, t2l = checkProg('a LaTeX/Noweb -> LyX converter', ['tex2lyx' + version_suffix, 'tex2lyx'],
+    path, t2l = checkProg('a LaTeX/Noweb -> LyX converter', [in_place, 'tex2lyx' + version_suffix, 'tex2lyx'],
         rc_entry = [r'''\converter latex      lyx        "%% -f $$i $$o"	""
 \converter literate   lyx        "%% -n -f $$i $$o"	""'''], not_found = 'tex2lyx')
     if path == '':
         logger.warning("Failed to find tex2lyx on your system.")
-
-    os.environ["PATH"] = path_orig
 
     #
     checkProg('a Noweb -> LaTeX converter', ['noweave -delay -index $$i > $$o'],
