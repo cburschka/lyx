@@ -422,7 +422,7 @@ void InsetInfo::updateInfo()
 			break;
 		}
 		if (name_ == "path") {
-			setText(from_utf8(buffer().filePath()));
+			setText(from_utf8(os::latex_path(buffer().filePath())));
 			break;
 		}
 		if (name_ == "class") {
