@@ -26,6 +26,7 @@
 #ifdef USE_EXTERNAL_MYTHES
 #include MYTHES_H_LOCATION
 #else
+#include <cstdio>
 #include "support/mythes/mythes.hxx"
 #endif
 
