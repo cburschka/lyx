@@ -627,9 +627,11 @@ def checkConverterEntries(java='', perl=''):
         os.pathsep + path_orig
 
 # First search for tex2lyx with version suffix (bug 6986)
-    checkProg('a LaTeX/Noweb -> LyX converter', ['tex2lyx' + version_suffix, 'tex2lyx'],
+    path, t2l = checkProg('a LaTeX/Noweb -> LyX converter', ['tex2lyx' + version_suffix, 'tex2lyx'],
         rc_entry = [r'''\converter latex      lyx        "%% -f $$i $$o"	""
-\converter literate   lyx        "%% -n -f $$i $$o"	""'''])
+\converter literate   lyx        "%% -n -f $$i $$o"	""'''], not_found = 'tex2lyx')
+    if path == '':
+        logger.warning("Failed to find tex2lyx on your system.")
 
     os.environ["PATH"] = path_orig
 
