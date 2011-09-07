@@ -231,7 +231,7 @@ int InsetBranch::docbook(odocstream & os,
 docstring InsetBranch::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 {
 	if (isBranchSelected())
-		 return InsetText::xhtml(xs, rp);
+		xhtmlParagraphs(text(), buffer(), xs, rp);
 	return docstring();
 }
 
