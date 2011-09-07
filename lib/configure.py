@@ -537,10 +537,8 @@ def checkFormatEntries(dtl_tools):
 \Format excel      xls    "Excel spreadsheet"      "" "" "%%"    "document"
 \Format oocalc     ods    "OpenOffice spreadsheet" "" "" "%%"    "document"'''])
  #
-    path, xhtmlview = checkViewer('an HTML previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
+    checkViewer('an HTML previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
         rc_entry = [r'\Format xhtml      xhtml   "LyXHTML"              y "%%" ""    "document,menu=export"'])
-    if xhtmlview == "":
-        addToRC(r'\Format xhtml      xhtml   "LyXHTML"              y "" ""  "document,menu=export"')
  #
     checkEditor('a BibTeX editor', ['jabref', 'JabRef', \
         'pybliographic', 'bibdesk', 'gbib', 'kbib', \
