@@ -609,7 +609,7 @@ def checkFormatEntries(dtl_tools):
 ''')
 
 
-def checkConverterEntries():
+def checkConverterEntries(java='', perl=''):
     ''' Check all converters (\converter entries) '''
     checkProg('the pdflatex program', ['pdflatex $$i'],
         rc_entry = [ r'\converter pdflatex   pdf2       "%%"	"latex=pdflatex"' ])
@@ -942,7 +942,7 @@ def checkDocBook():
         return ('no', 'false', '')
 
 
-def checkOtherEntries():
+def checkOtherEntries(java='', perl=''):
     ''' entries other than Format and Converter '''
     checkProg('ChkTeX', ['chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38'],
         rc_entry = [ r'\chktex_command "%%"' ])
@@ -1355,13 +1355,15 @@ Format %i
     # check latex
     LATEX = checkLatex(dtl_tools)
     checkFormatEntries(dtl_tools)
-    checkConverterEntries()
+    java = checkProg('a java interpreter', ['java'])[1]
+    perl = checkProg('a perl interpreter', ['perl'])[1]
+    checkConverterEntries(java, perl)
     (chk_docbook, bool_docbook, docbook_cmd) = checkDocBook()
     checkTeXAllowSpaces()
     windows_style_tex_paths = checkTeXPaths()
     if windows_style_tex_paths != '':
         addToRC(r'\tex_expects_windows_paths %s' % windows_style_tex_paths)
-    checkOtherEntries()
+    checkOtherEntries(java, perl)
     checkModulesConfig()
     # --without-latex-config can disable lyx_check_config
     ret = checkLatexConfig(lyx_check_config and LATEX != '', bool_docbook)
