@@ -94,8 +94,6 @@ public:
 	//
 	void erase(std::string const & from, std::string const & to);
 	///
-	void sort();
-	///
 	std::vector<Format const *> const
 	getReachableTo(std::string const & target, bool clear_visited);
 	///

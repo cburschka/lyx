@@ -131,21 +131,6 @@ void Converter::readFlags()
 }
 
 
-bool operator<(Converter const & a, Converter const & b)
-{
-	// use the compare_ascii_no_case instead of compare_no_case,
-	// because in turkish, 'i' is not the lowercase version of 'I',
-	// and thus turkish locale breaks parsing of tags.
-	int const i = compare_ascii_no_case(a.From->prettyname(),
-					    b.From->prettyname());
-	if (i == 0)
-		return compare_ascii_no_case(a.To->prettyname(),
-					     b.To->prettyname()) < 0;
-	else
-		return i < 0;
-}
-
-
 Converter const * Converters::getConverter(string const & from,
 					    string const & to) const
 {
@@ -247,12 +232,6 @@ void Converters::updateLast(Formats const & formats)
 		it->From = formats.getFormat(it->from);
 		it->To = formats.getFormat(it->to);
 	}
-}
-
-
-void Converters::sort()
-{
-	std::sort(converterlist_.begin(), converterlist_.end());
 }
 
 

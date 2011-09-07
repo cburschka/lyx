@@ -77,6 +77,7 @@ private:
 
 } //namespace anon
 
+
 bool operator<(Format const & a, Format const & b)
 {
 	// use the compare_ascii_no_case instead of compare_no_case,
