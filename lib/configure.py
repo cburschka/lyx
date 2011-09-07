@@ -961,11 +961,12 @@ def checkOtherEntries(java='', perl=''):
         alt_rc_entry = [ r'\index_alternatives "%%"' ])
     checkProg('an index processor appropriate to Japanese', ['mendex -c -q', 'jmakeindex -c -q', 'makeindex -c -q'],
         rc_entry = [ r'\jindex_command "%%"' ])
-    path, splitindex = checkProg('the splitindex processor', ['splitindex.pl', 'splitindex'],
-        rc_entry = [ r'\splitindex_command "%%"' ])
-    if splitindex == '':
-        checkProg('the splitindex processor (java version)', ['splitindex.class'],
-            rc_entry = [ r'\splitindex_command "java splitindex"' ])
+    path, splitindex = checkProg('the splitindex processor', ['splitindex.pl', 'splitindex',
+        'splitindex.class'], rc_entry = ['', r'\splitindex_command "%%"', '', ''])
+    if splitindex == 'splitindex.pl' and perl != '':
+        addToRC(r'\splitindex_command "%s -w \"%s\""' % (perl, os.path.join(path, splitindex)))
+    elif splitindex == 'splitindex.class' and java != '':
+        addToRC(r'\splitindex_command "%s \"%s\""' % (java, os.path.join(path, 'splitindex')))
     checkProg('a nomenclature processor', ['makeindex'],
         rc_entry = [ r'\nomencl_command "makeindex -s nomencl.ist"' ])
     ## FIXME: OCTAVE is not used anywhere
