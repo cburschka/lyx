@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-09-06 22:43+0200\n"
-"PO-Revision-Date: 2011-06-17 02:10+0100\n"
+"PO-Revision-Date: 2011-09-07 23:59+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
 "Language: it\n"
@@ -2100,9 +2100,8 @@ msgid "Select which language package LyX should use"
 msgstr "Seleziona quale pacchetto linguistico usare"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:142
-#, fuzzy
 msgid "Enter the command to load the language package (default: \\usepackage{babel})"
-msgstr "Inserire il comando per caricare il pacchetto linguistico (default: babel)"
+msgstr "Inserire il comando per caricare il pacchetto linguistico (default: \\usepackage{babel})"
 
 #: src/frontends/qt4/ui/LineUi.ui:22
 msgid "Of&fset:"
@@ -4289,12 +4288,11 @@ msgstr "Messaggi barra di &stato"
 
 #: src/frontends/qt4/ui/RefUi.ui:22
 msgid "La&bels in:"
-msgstr "Etichett&e in:"
+msgstr "Eti&chette in:"
 
 #: src/frontends/qt4/ui/RefUi.ui:49
-#, fuzzy
 msgid "&References"
-msgstr "Riferimenti"
+msgstr "&Riferimenti"
 
 #: src/frontends/qt4/ui/RefUi.ui:76
 msgid "Fil&ter:"
@@ -6960,9 +6958,8 @@ msgid "Left Header"
 msgstr "Intestazione sinistra"
 
 #: lib/layouts/customHeadersFooters.module:12
-#, fuzzy
 msgid "Header/Footer"
-msgstr "Piè pagina centrale"
+msgstr "Intestazioni"
 
 #: lib/layouts/customHeadersFooters.module:18
 #: lib/layouts/aguplus.inc:93
@@ -7672,9 +7669,8 @@ msgid "Customisable Lists (enumitem)"
 msgstr "Liste personalizzabili (enumitem)"
 
 #: lib/layouts/enumitem.module:6
-#, fuzzy
 msgid "Controls the layout of enumerate, itemize, description, and list/labeling. See section Customized Lists of the User's Guide for a detailed description."
-msgstr "Controlla il layout degli ambienti enumerate, itemize, description  ed elenchi/etichette con un argomento opzionale. Vedere http://mirror.ctan.org/CTAN/macros/latex/contrib/enumitem/enumitem.pdf ed il file di esempio distribuito con LyX."
+msgstr "Controlla il layout degli ambienti enumerate, itemize, description  ed elenchi/etichette. Vedere la guida utente per una descrizione dettagliata."
 
 #: lib/layouts/enumitem.module:73
 #: lib/layouts/scrlttr2.layout:28
@@ -9896,9 +9892,8 @@ msgid "Captionabove"
 msgstr "Didascalia superiore"
 
 #: lib/layouts/scrclass.inc:255
-#, fuzzy
 msgid "Captions"
-msgstr "Didascalia|D"
+msgstr "Didascalie"
 
 #: lib/layouts/scrclass.inc:274
 msgid "Captionbelow"
@@ -10285,7 +10280,7 @@ msgstr "Capolettere"
 
 #: lib/layouts/initials.module:6
 msgid "Define a style for paragraphs with an initial. See the EmbeddedObjects manual for a detailed description."
-msgstr ""
+msgstr "Definisce lo stile per le capolettere. Vedere il manuale per gli oggetti incorporati per una descrizione dettagliata."
 
 #: lib/layouts/initials.module:14
 #: lib/layouts/initials.module:25
@@ -10441,9 +10436,8 @@ msgid "Sweave"
 msgstr "Sweave"
 
 #: lib/layouts/sweave.module:6
-#, fuzzy
 msgid "Allows to use the statistical language S/R as a literate programming tool via the Sweave() function. For more info see the LyX example file sweave.lyx."
-msgstr "Consente di usare il linguaggio statistico S/R come strumento di programmazione esperta via Sweave. Vedere  il file di esempio sweave.lyx."
+msgstr "Consente di usare il linguaggio statistico S/R come strumento di programmazione esperta per mezzo della funzione Sweave(). Vedere  il file di esempio sweave.lyx."
 
 #: lib/layouts/sweave.module:23
 msgid "Chunk"
@@ -12197,9 +12191,8 @@ msgid "Paste Special"
 msgstr "Incolla speciale|s"
 
 #: lib/ui/stdmenus.inc:108
-#, fuzzy
 msgid "Select Whole Inset"
-msgstr "Scegliere il documento da inserire"
+msgstr "Seleziona tutto nell'inserto"
 
 #: lib/ui/stdmenus.inc:109
 msgid "Select All"
