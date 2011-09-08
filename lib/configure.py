@@ -623,7 +623,7 @@ def checkConverterEntries(java='', perl=''):
     #   2)  If LyX was configured with a version suffix then tex2lyx
     #       will also have this version suffix.
     #   3)  Otherwise always use tex2lyx.
-    in_place = os.path.join('srcdir', '..', 'src', 'tex2lyx', 'tex2lyx')
+    in_place = os.path.join(srcdir, '..', 'src', 'tex2lyx', 'tex2lyx')
     in_place = os.path.abspath(in_place)
 
     path, t2l = checkProg('a LaTeX/Noweb -> LyX converter', [in_place, 'tex2lyx' + version_suffix, 'tex2lyx'],
