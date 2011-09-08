@@ -556,6 +556,7 @@ def checkFormatEntries(dtl_tools):
 \Format platex     tex    "LaTeX (pLaTeX)"        "" "" "%%"    "document,menu=export"
 \Format literate   nw      NoWeb                  N  ""	"%%"	"document,menu=export"
 \Format sweave     Rnw    "Sweave"                S  "" "%%"    "document,menu=export"
+\Format r          R      "R/S code"              "" "" "%%"    "document,menu=export"
 \Format lilypond   ly     "LilyPond music"        "" ""	"%%"	"vector"
 \Format lilypond-book    lytex "LilyPond book (LaTeX)"   "" ""	"%%"	"document,menu=export"
 \Format latex      tex    "LaTeX (plain)"         L  ""	"%%"	"document,menu=export"
@@ -680,6 +681,9 @@ def checkConverterEntries():
 \converter sweave   pdflatex   "%%"	""
 \converter sweave   xetex      "%%"	""
 \converter sweave   luatex     "%%"	""'''])
+    #
+    checkProg('a Sweave -> R/S code converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxstangle.R $$i $$e $$r'], 
+        rc_entry = [ r'\converter sweave      r      "%%"    ""' ])
     #
     checkProg('an HTML -> LaTeX converter', ['html2latex $$i', 'gnuhtml2latex $$i', \
         'htmltolatex -input $$i -output $$o', 'java -jar htmltolatex.jar -input $$i -output $$o'],

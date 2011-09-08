@@ -1486,6 +1486,7 @@ dist_layouts_DATA =\
 scriptsdir = $(pkgdatadir)/scripts
 dist_scripts_DATA = \
 	scripts/bash_completion \
+	scripts/lyxstangle.R \
 	scripts/lyxsweave.R
 # Note that we "chmod 755" manually these files in install-data-hook.
 dist_scripts_PYTHON = \

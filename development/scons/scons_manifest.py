@@ -2991,6 +2991,7 @@ lib_scripts_files = Split('''
     lyxpreview-lytex2bitmap.py
     lyxpreview-platex2bitmap.py
     lyxpreview_tools.py
+    lyxstangle.R
     lyxsweave.R
     prefs2prefs.py
     prefs2prefs_lfuns.py
