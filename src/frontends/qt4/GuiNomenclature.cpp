@@ -60,6 +60,16 @@ docstring GuiNomenclature::dialogToParams() const
 }
 
 
+bool GuiNomenclature::initialiseParams(std::string const & data)
+{
+	InsetCommandParams p(insetCode());
+	if (!InsetCommand::string2params(data, p))
+		return false;
+	symbolED->setText(toqstr(p["symbol"]));
+	return true;
+}
+
+
 bool GuiNomenclature::checkWidgets() const
 {
 	if (!InsetParamsWidget::checkWidgets())
