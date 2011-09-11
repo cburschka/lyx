@@ -1505,7 +1505,6 @@ dist_scripts_PYTHON = \
 	scripts/listerrors \
 	scripts/lyxpak.py \
 	scripts/lyxpreview2bitmap.py \
-	scripts/lyxpreview-platex2bitmap.py \
 	scripts/lyxpreview_tools.py \
 	scripts/prefs2prefs.py \
 	scripts/prefs2prefs_lfuns.py \
