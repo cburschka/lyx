@@ -596,7 +596,6 @@ def checkFormatEntries(dtl_tools):
 \Format jlyx       cjklyx "CJK LyX 1.4.x (euc-jp)" "" ""	""	"document"
 \Format klyx       cjklyx "CJK LyX 1.4.x (euc-kr)" "" ""	""	"document"
 \Format lyxpreview lyxpreview "LyX Preview"       "" ""	""	""
-\Format lyxpreview-lytex  lyxpreview-lytex  "LyX Preview (LilyPond book)" "" ""	""	""
 \Format lyxpreview-platex lyxpreview-platex "LyX Preview (pLaTeX)"       "" ""	""	""
 \Format pdftex     pdftex_t PDFTEX                "" ""	""	""
 \Format program    ""      Program                "" ""	""	""
@@ -860,16 +859,6 @@ def checkConverterEntries(java='', perl=''):
             version_number = match.groups()[0]
             version = version_number.split('.')
             if int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 13):
-                if dv2dt == 'dv2dt':
-                    addToRC(r'\converter lyxpreview-lytex ppm "python -tt $$s/scripts/lyxpreview-lytex2bitmap.py" ""')
-                else:
-                    # set empty converter to override the default imagemagick
-                    addToRC(r'\converter lyxpreview-lytex ppm "" ""')
-                if dvipng == "dvipng" and dv2dt == 'dv2dt':
-                    addToRC(r'\converter lyxpreview-lytex png "python -tt $$s/scripts/lyxpreview-lytex2bitmap.py" ""')
-                else:
-                    # set empty converter to override the default imagemagick
-                    addToRC(r'\converter lyxpreview-lytex png "" ""')
                 # Note: The --lily-output-dir flag is required because lilypond-book
                 #       does not process input again unless the input has changed,
                 #       even if the output format being requested is different. So

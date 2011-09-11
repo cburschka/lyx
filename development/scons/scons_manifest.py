@@ -3014,7 +3014,6 @@ lib_scripts_files = Split('''
     listerrors
     lyxpak.py
     lyxpreview2bitmap.py
-    lyxpreview-lytex2bitmap.py
     lyxpreview-platex2bitmap.py
     lyxpreview_tools.py
     lyxstangle.R

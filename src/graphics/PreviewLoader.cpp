@@ -388,9 +388,7 @@ namespace graphics {
 PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
 	: parent_(p), buffer_(b)
 {
-	if (b.params().bufferFormat() == "lilypond-book")
-		pconverter_ = setConverter("lyxpreview-lytex");
-	else if (b.params().encoding().package() == Encoding::japanese)
+	if (b.params().encoding().package() == Encoding::japanese)
 		pconverter_ = setConverter("lyxpreview-platex");
 	else
 		pconverter_ = setConverter("lyxpreview");
@@ -604,6 +602,8 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	// FIXME what about LuaTeX?
 	if (buffer_.params().useNonTeXFonts)
 		cs << " --latex=xelatex";
+	if (buffer_.params().bufferFormat() == "lilypond-book")
+		cs << " --lilypond";
 
 	string const command = libScriptSearch(cs.str());
 

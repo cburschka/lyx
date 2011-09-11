@@ -43,6 +43,9 @@
 #   --fg=<color>:  The foreground color as a hexadecimal string, eg '000000'.
 #   --bg=<color>:  The background color as a hexadecimal string, eg 'faf0e6'.
 #   --latex=<exe>: The converter for latex files. Default is latex.
+#   --lilypond:    Preprocess through lilypond-book. Default is false.
+#   --lilypond-book=<exe>:
+#                  The converter for lytex files. Default is lilypond-book.
 
 # Decomposing TEXFILE's name as DIR/BASE.tex, this script will,
 # if executed successfully, leave in DIR:
@@ -67,15 +70,15 @@
 # Moreover dvipng can't work with PDF files, so, if the CONVERTER
 # paramter is pdflatex we have to fallback to legacy route (step 2).
 
-import getopt, glob, os, re, string, sys
+import getopt, glob, os, re, shutil, string, sys
 
 from legacy_lyxpreview2ppm import legacy_conversion, \
      legacy_conversion_step2, legacy_extract_metrics_info
 
 from lyxpreview_tools import copyfileobj, error, filter_pages, find_exe, \
      find_exe_or_terminate, join_metrics_and_rename, latex_commands, \
-     latex_file_re, make_texcolor, mkstemp, run_command, warning, \
-     write_metrics_info
+     latex_file_re, make_texcolor, mkstemp, pdflatex_commands, run_command, \
+     warning, write_metrics_info
 
 
 def usage(prog_name):
@@ -89,6 +92,9 @@ Options:
   --fg=<color>:  Foreground color (default: black, ie '000000')
   --bg=<color>:  Background color (default: white, ie 'ffffff')
   --latex=<exe>: Specify the executable for latex (default: latex)
+  --lilypond:    Preprocess through lilypond-book (default: false)
+  --lilypond-book=<exe>:
+                 The executable for lilypond-book (default: lilypond-book)
 
 The colors are hexadecimal strings, eg 'faf0e6'."""
     return msg % prog_name
@@ -300,13 +306,16 @@ def main(argv):
     fg_color = "000000"
     bg_color = "ffffff"
     latex = None
+    lilypond = False
+    lilypond_book = None
     output_format = "png"
     script_name = argv[0]
 
     # Parse and manipulate the command line arguments.
     try:
         (opts, args) = getopt.gnu_getopt(argv[1:], "h", ["bg=",
-            "dpi=", "fg=", "help", "latex=", "png", "ppm"])
+            "dpi=", "fg=", "help", "latex=", "lilypond", "lilypond-book=",
+            "png", "ppm"])
     except getopt.GetoptError:
         error(usage(script_name))
 
@@ -326,6 +335,10 @@ def main(argv):
             fg_color = val
         elif opt == "--latex":
             latex = [val]
+        elif opt == "--lilypond":
+            lilypond = True
+        elif opt == "--lilypond-book":
+            lilypond_book = [val]
         elif opt in ("--png", "--ppm"):
             output_format = opt[2:]
 
@@ -345,9 +358,30 @@ def main(argv):
 
     # External programs used by the script.
     latex = find_exe_or_terminate(latex or latex_commands)
+    if lilypond:
+        lilypond_book = find_exe_or_terminate(lilypond_book or ["lilypond-book"])
+
+    # These flavors of latex are known to produce pdf output
+    pdf_output = latex in pdflatex_commands
 
     # Omit font size specification in latex file.
     fix_latex_file(latex_file)
+
+    if lilypond:
+        if pdf_output:
+            lilypond_book += ' --pdf'
+
+        # Make a copy of the latex file
+        lytex_file = latex_file_re.sub(".lytex", latex_file)
+        shutil.copyfile(latex_file, lytex_file)
+
+        # Preprocess the latex file through lilypond-book.
+        lytex_call = '%s --safe --latex-program=%s "%s"' % (lilypond_book,
+            latex, lytex_file)
+        lytex_status, lytex_stdout = run_command(lytex_call)
+        if lytex_status != None:
+            warning("%s failed to compile %s" \
+                % (os.path.basename(lilypond_book), lytex_file))
 
     # This can go once dvipng becomes widespread.
     dvipng = find_exe(["dvipng"])
