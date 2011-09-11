@@ -16,6 +16,7 @@
 # png or ppm image files, one per previewed snippet.
 
 # Pre-requisites:
+# * python 2.4 or later (subprocess module);
 # * A latex executable;
 # * preview.sty;
 # * dvipng;
@@ -46,6 +47,10 @@
 #   --lilypond:    Preprocess through lilypond-book. Default is false.
 #   --lilypond-book=<exe>:
 #                  The converter for lytex files. Default is lilypond-book.
+#
+#   -d, --debug    Show the output from external commands.
+#   -h, --help     Show an help screen and exit.
+#   -v, --verbose  Show progress messages.
 
 # Decomposing TEXFILE's name as DIR/BASE.tex, this script will,
 # if executed successfully, leave in DIR:
@@ -77,8 +82,8 @@ from legacy_lyxpreview2ppm import legacy_conversion, \
 
 from lyxpreview_tools import copyfileobj, error, filter_pages, find_exe, \
      find_exe_or_terminate, join_metrics_and_rename, latex_commands, \
-     latex_file_re, make_texcolor, mkstemp, pdflatex_commands, run_command, \
-     warning, write_metrics_info
+     latex_file_re, make_texcolor, mkstemp, pdflatex_commands, progress, \
+     run_command, warning, write_metrics_info
 
 
 def usage(prog_name):
@@ -86,7 +91,6 @@ def usage(prog_name):
 Usage: %s <options> <input file>
 
 Options:
-  -h, --help:    Show this help and exit
   --dpi=<res>:   Resolution per inch (default: 128)
   --png, --ppm:  Select the output format (default: png)
   --fg=<color>:  Foreground color (default: black, ie '000000')
@@ -95,6 +99,10 @@ Options:
   --lilypond:    Preprocess through lilypond-book (default: false)
   --lilypond-book=<exe>:
                  The executable for lilypond-book (default: lilypond-book)
+
+  -d, --debug:   Show the output from external commands
+  -h, --help:    Show this help screen and exit
+  -v, --verbose: Show progress messages
 
 The colors are hexadecimal strings, eg 'faf0e6'."""
     return msg % prog_name
@@ -200,7 +208,7 @@ def fix_latex_file(latex_file):
     if changed:
         copyfileobj(tmp, open(latex_file,"wb"), 1)
 
-    return
+    return changed
 
 
 def convert_to_ppm_format(pngtopnm, basename):
@@ -211,7 +219,7 @@ def convert_to_ppm_format(pngtopnm, basename):
 
         p2p_cmd = '%s "%s"' % (pngtopnm, png_file)
         p2p_status, p2p_stdout = run_command(p2p_cmd)
-        if p2p_status != None:
+        if p2p_status:
             error("Unable to convert %s to ppm format" % png_file)
 
         ppm = open(ppm_file, 'w')
@@ -313,11 +321,11 @@ def main(argv):
 
     # Parse and manipulate the command line arguments.
     try:
-        (opts, args) = getopt.gnu_getopt(argv[1:], "h", ["bg=",
+        (opts, args) = getopt.gnu_getopt(argv[1:], "dhv", ["bg=", "debug",
             "dpi=", "fg=", "help", "latex=", "lilypond", "lilypond-book=",
-            "png", "ppm"])
-    except getopt.GetoptError:
-        error(usage(script_name))
+            "png", "ppm", "verbose"])
+    except getopt.GetoptError, err:
+        error("%s\n%s" % (err, usage(script_name)))
 
     opts.reverse()
     for opt, val in opts:
@@ -326,6 +334,9 @@ def main(argv):
             sys.exit(0)
         elif opt == "--bg":
             bg_color = val
+        elif opt in ("-d", "--debug"):
+            import lyxpreview_tools
+            lyxpreview_tools.debug = True
         elif opt == "--dpi":
             try:
                 dpi = string.atoi(val)
@@ -341,12 +352,29 @@ def main(argv):
             lilypond_book = [val]
         elif opt in ("--png", "--ppm"):
             output_format = opt[2:]
+        elif opt in ("-v", "--verbose"):
+            import lyxpreview_tools
+            lyxpreview_tools.verbose = True
 
+    # Determine input file
     if len(args) != 1:
-        error(usage(script_name))
+        err = "A single input file is required, %s given" % (len(args) or "none")
+        error("%s\n%s" % (err, usage(script_name)))
 
     input_path = args[0]
     dir, latex_file = os.path.split(input_path)
+
+    # Echo the settings
+    progress("Starting %s..." % script_name)
+    progress("Output format: %s" % output_format)
+    progress("Foreground color: %s" % fg_color)
+    progress("Background color: %s" % bg_color)
+    progress("Resolution (dpi): %s" % dpi)
+    progress("File to process: %s" % input_path)
+
+    # Check for the input file
+    if not os.path.exists(input_path):
+        error('File "%s" not found.' % input_path)
     if len(dir) != 0:
         os.chdir(dir)
 
@@ -364,10 +392,18 @@ def main(argv):
     # These flavors of latex are known to produce pdf output
     pdf_output = latex in pdflatex_commands
 
+    progress("Latex command: %s" % latex)
+    progress("Latex produces pdf output: %s" % pdf_output)
+    progress("Lilypond-book command: %s" % lilypond_book)
+    progress("Preprocess through lilypond-book: %s" % lilypond)
+    progress("Altering the latex file for font size and colors")
+
     # Omit font size specification in latex file.
-    fix_latex_file(latex_file)
+    if not fix_latex_file(latex_file):
+        warning("Unable to remove font size from the latex file")
 
     if lilypond:
+        progress("Preprocess the latex file through %s" % lilypond_book)
         if pdf_output:
             lilypond_book += ' --pdf'
 
@@ -379,7 +415,7 @@ def main(argv):
         lytex_call = '%s --safe --latex-program=%s "%s"' % (lilypond_book,
             latex, lytex_file)
         lytex_status, lytex_stdout = run_command(lytex_call)
-        if lytex_status != None:
+        if lytex_status:
             warning("%s failed to compile %s" \
                 % (os.path.basename(lilypond_book), lytex_file))
 
@@ -389,6 +425,7 @@ def main(argv):
         # The data is input to legacy_conversion in as similar
         # as possible a manner to that input to the code used in
         # LyX 1.3.x.
+        progress("Using the legacy conversion method (dvipng not found)")
         vec = [ script_name, input_path, str(dpi), output_format, fg_color, bg_color, latex ]
         return legacy_conversion(vec)
 
@@ -398,13 +435,13 @@ def main(argv):
 
     # Move color information for PDF into the latex file.
     if not color_pdf(latex_file, bg_color_gr, fg_color_gr):
-        error("Unable to move color info into the latex file")
+        warning("Unable to move color info into the latex file")
 
     # Compile the latex file.
     latex_call = '%s "%s"' % (latex, latex_file)
 
     latex_status, latex_stdout = run_command(latex_call)
-    if latex_status != None:
+    if latex_status:
         warning("%s had problems compiling %s" \
               % (os.path.basename(latex), latex_file))
 
@@ -421,8 +458,8 @@ def main(argv):
         # No DVI, is there a PDF?
         pdf_file = latex_file_re.sub(".pdf", latex_file)
         if os.path.isfile(pdf_file):
-            warning("%s produced a PDF output, fallback to legacy." % \
-                (os.path.basename(latex)))
+            progress("%s produced a PDF output, fallback to legacy." \
+                % (os.path.basename(latex)))
             return legacy_conversion_step2(latex_file, dpi, output_format)
         else:
             error("No DVI or PDF output. %s failed." \
@@ -437,6 +474,7 @@ def main(argv):
     # If all pages need PostScript, directly use the legacy method.
     if len(ps_pages) == page_count:
         vec = [ script_name, input_path, str(dpi), output_format, fg_color, bg_color, latex ]
+        progress("Using the legacy conversion method (PostScript support)")
         return legacy_conversion(vec)
 
     # Run the dvi file through dvipng.
@@ -444,10 +482,11 @@ def main(argv):
         % (dvipng, dpi, fg_color_dvipng, bg_color_dvipng, pages_parameter, dvi_file)
     dvipng_status, dvipng_stdout = run_command(dvipng_call)
 
-    if dvipng_status != None:
+    if dvipng_status:
         warning("%s failed to generate images from %s... fallback to legacy method" \
               % (os.path.basename(dvipng), dvi_file))
         # FIXME: skip unnecessary dvips trial in legacy_conversion_step2
+        progress("Using the legacy conversion method (dvipng failed)")
         return legacy_conversion_step2(latex_file, dpi, output_format)
 
     # Extract metrics info from dvipng_stdout.
@@ -464,6 +503,8 @@ def main(argv):
         # Pass the new LaTeX file to the legacy method
         vec = [ script_name, latex_file_re.sub("_legacy.tex", input_path),
                 str(dpi), output_format, fg_color, bg_color, latex ]
+        progress("Pages %s include postscript specials" % ps_pages)
+        progress("Using the legacy conversion method (PostScript support)")
         legacy_metrics = legacy_conversion(vec, True)[1]
 
         # Now we need to mix metrics data from dvipng and the legacy method

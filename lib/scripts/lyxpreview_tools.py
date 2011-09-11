@@ -12,10 +12,16 @@
 
 # A repository of the following functions, used by the lyxpreview2xyz scripts.
 # copyfileobj, error, find_exe, find_exe_or_terminate, make_texcolor, mkstemp,
-# run_command, warning
+# progress, run_command, warning
 
-import os, re, string, sys, tempfile
+# Requires python 2.4 or later (subprocess module).
 
+import os, re, string, subprocess, sys, tempfile
+
+
+# Control the output to stdout
+debug = False
+verbose = False
 
 # Known flavors of latex
 latex_commands = ("latex", "pplatex", "platex", "latex2e")
@@ -48,12 +54,18 @@ if os.name == "nt":
         use_win32_modules = 0
 
 
+def progress(message):
+    global verbose
+    if verbose:
+        sys.stdout.write("Progress: %s\n" % message)
+
+
 def warning(message):
-    sys.stderr.write(message + '\n')
+    sys.stderr.write("Warning: %s\n" % message)
 
 
 def error(message):
-    sys.stderr.write(message + '\n')
+    sys.stderr.write("Error: %s\n" % message)
     sys.exit(1)
 
 
@@ -99,10 +111,14 @@ def find_exe_or_terminate(candidates):
 
 
 def run_command_popen(cmd):
-    handle = os.popen(cmd, 'r')
-    cmd_stdout = handle.read()
-    cmd_status = handle.close()
+    pipe = subprocess.Popen(cmd, shell=True, close_fds=True, stdin=subprocess.PIPE, \
+        stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
+    cmd_stdout = pipe.communicate()[0]
+    cmd_status = pipe.returncode
 
+    global debug
+    if debug:
+        sys.stdout.write(cmd_stdout)
     return cmd_status, cmd_stdout
 
 
@@ -150,10 +166,14 @@ def run_command_win32(cmd):
     if win32process.GetExitCodeProcess(process):
         return -3, ""
 
-    return None, data
+    global debug
+    if debug:
+        sys.stdout.write(data)
+    return 0, data
 
 
 def run_command(cmd):
+    progress("Running %s" % cmd)
     if use_win32_modules:
         return run_command_win32(cmd)
     else:

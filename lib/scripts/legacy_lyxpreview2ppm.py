@@ -36,6 +36,7 @@
 #   the images correctly on the screen.
 
 # The script uses several external programs and files:
+# * python 2.4 or later (subprocess module);
 # * A latex executable;
 # * preview.sty;
 # * dvips;
@@ -76,7 +77,7 @@ import glob, os, pipes, re, string, sys
 
 from lyxpreview_tools import copyfileobj, error, filter_pages, find_exe, \
      find_exe_or_terminate, join_metrics_and_rename, latex_commands, \
-     latex_file_re, make_texcolor, mkstemp, run_command, warning, \
+     latex_file_re, make_texcolor, mkstemp, progress, run_command, warning, \
      write_metrics_info
 
 
@@ -277,7 +278,7 @@ def legacy_conversion(argv, skipMetrics = False):
     latex_call = '%s "%s"' % (latex, latex_file)
 
     latex_status, latex_stdout = run_command(latex_call)
-    if latex_status != None:
+    if latex_status:
         warning("%s had problems compiling %s" \
               % (os.path.basename(latex), latex_file))
 
@@ -301,6 +302,9 @@ def legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics, gs,
         # pdflatex call
         pdflatex_call = '%s "%s"' % (pdflatex, pdf_latex_file)
         pdflatex_status, pdflatex_stdout = run_command(pdflatex_call)
+        if pdflatex_status:
+            warning("%s had problems compiling %s" \
+                % (os.path.basename(pdflatex), pdf_latex_file))
 
         pdf_file = latex_file_re.sub(".pdf", pdf_latex_file)
 
@@ -312,7 +316,7 @@ def legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics, gs,
                     % (gs, gs_device, latex_file_re.sub("", pdf_latex_file), \
                         gs_ext, alpha, alpha, resolution, pdf_file)
         gs_status, gs_stdout = run_command(gs_call)
-        if gs_status != None:
+        if gs_status:
             # Give up!
             warning("Some pages failed with all the possible routes")
         else:
@@ -343,7 +347,7 @@ def legacy_conversion_step2(latex_file, dpi, output_format, skipMetrics = False)
     dvips_failed = False
 
     dvips_status, dvips_stdout = run_command(dvips_call)
-    if dvips_status != None:
+    if dvips_status:
         warning('Failed: %s %s ... looking for PDF' \
             % (os.path.basename(dvips), dvi_file))
         dvips_failed = True
@@ -381,7 +385,7 @@ def legacy_conversion_step2(latex_file, dpi, output_format, skipMetrics = False)
                      gs_ext, alpha, alpha, resolution, pdf_file)
 
         gs_status, gs_stdout = run_command(gs_call)
-        if gs_status != None:
+        if gs_status:
             error("Failed: %s %s" % (os.path.basename(gs), ps_file))
     else:
         # Model for calling gs on each file
@@ -400,9 +404,11 @@ def legacy_conversion_step2(latex_file, dpi, output_format, skipMetrics = False)
         # Call GhostScript for each file
         for file in ps_files:
             i = i + 1
+            progress("Processing page %s, file %s" % (i, file))
             gs_status, gs_stdout = run_command(gs_call % (i, file))
-            if gs_status != None:
+            if gs_status:
                 # gs failed, keep track of this
+                warning("Ghostscript failed on page %s, file %s" % (i, file))
                 failed_pages.append(i)
 
     # Pass failed pages to pdflatex
