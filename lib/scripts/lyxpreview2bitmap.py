@@ -77,8 +77,7 @@
 
 import getopt, glob, os, re, shutil, string, sys
 
-from legacy_lyxpreview2ppm import legacy_conversion, \
-     legacy_conversion_step2, legacy_extract_metrics_info
+from legacy_lyxpreview2ppm import legacy_conversion_step1
 
 from lyxpreview_tools import copyfileobj, error, filter_pages, find_exe, \
      find_exe_or_terminate, join_metrics_and_rename, latex_commands, \
@@ -419,19 +418,31 @@ def main(argv):
             warning("%s failed to compile %s" \
                 % (os.path.basename(lilypond_book), lytex_file))
 
+    if pdf_output:
+        progress("Using the legacy conversion method (PDF support)")
+        return legacy_conversion_step1(latex_file, dpi, output_format, fg_color,
+            bg_color, latex, pdf_output)
+
     # This can go once dvipng becomes widespread.
     dvipng = find_exe(["dvipng"])
     if dvipng == None:
-        # The data is input to legacy_conversion in as similar
-        # as possible a manner to that input to the code used in
-        # LyX 1.3.x.
         progress("Using the legacy conversion method (dvipng not found)")
-        vec = [ script_name, input_path, str(dpi), output_format, fg_color, bg_color, latex ]
-        return legacy_conversion(vec)
+        return legacy_conversion_step1(latex_file, dpi, output_format, fg_color,
+            bg_color, latex, pdf_output)
+
+    dv2dt = find_exe(["dv2dt"])
+    if dv2dt == None:
+        progress("Using the legacy conversion method (dv2dt not found)")
+        return legacy_conversion_step1(latex_file, dpi, output_format, fg_color,
+            bg_color, latex, pdf_output)
 
     pngtopnm = ""
     if output_format == "ppm":
-        pngtopnm = find_exe_or_terminate(["pngtopnm"])
+        pngtopnm = find_exe(["pngtopnm"])
+        if pngtopnm == None:
+            progress("Using the legacy conversion method (pngtopnm not found)")
+            return legacy_conversion_step1(latex_file, dpi, output_format,
+                fg_color, bg_color, latex, pdf_output)
 
     # Move color information for PDF into the latex file.
     if not color_pdf(latex_file, bg_color_gr, fg_color_gr):
@@ -445,11 +456,6 @@ def main(argv):
         warning("%s had problems compiling %s" \
               % (os.path.basename(latex), latex_file))
 
-    if latex == "xelatex":
-        warning("Using XeTeX")
-        # FIXME: skip unnecessary dvips trial in legacy_conversion_step2
-        return legacy_conversion_step2(latex_file, dpi, output_format)
-
     # The dvi output file name
     dvi_file = latex_file_re.sub(".dvi", latex_file)
 
@@ -460,7 +466,9 @@ def main(argv):
         if os.path.isfile(pdf_file):
             progress("%s produced a PDF output, fallback to legacy." \
                 % (os.path.basename(latex)))
-            return legacy_conversion_step2(latex_file, dpi, output_format)
+            progress("Using the legacy conversion method (PDF support)")
+            return legacy_conversion_step1(latex_file, dpi, output_format,
+                fg_color, bg_color, latex, True)
         else:
             error("No DVI or PDF output. %s failed." \
                 % (os.path.basename(latex)))
@@ -473,9 +481,9 @@ def main(argv):
 
     # If all pages need PostScript, directly use the legacy method.
     if len(ps_pages) == page_count:
-        vec = [ script_name, input_path, str(dpi), output_format, fg_color, bg_color, latex ]
         progress("Using the legacy conversion method (PostScript support)")
-        return legacy_conversion(vec)
+        return legacy_conversion_step1(latex_file, dpi, output_format, fg_color,
+            bg_color, latex, pdf_output)
 
     # Run the dvi file through dvipng.
     dvipng_call = '%s -Ttight -depth -height -D %d -fg "%s" -bg "%s" %s "%s"' \
@@ -485,9 +493,9 @@ def main(argv):
     if dvipng_status:
         warning("%s failed to generate images from %s... fallback to legacy method" \
               % (os.path.basename(dvipng), dvi_file))
-        # FIXME: skip unnecessary dvips trial in legacy_conversion_step2
         progress("Using the legacy conversion method (dvipng failed)")
-        return legacy_conversion_step2(latex_file, dpi, output_format)
+        return legacy_conversion_step1(latex_file, dpi, output_format, fg_color,
+            bg_color, latex, pdf_output)
 
     # Extract metrics info from dvipng_stdout.
     metrics_file = latex_file_re.sub(".metrics", latex_file)
@@ -501,11 +509,10 @@ def main(argv):
         filter_pages(latex_file, legacy_latex_file, ps_pages)
 
         # Pass the new LaTeX file to the legacy method
-        vec = [ script_name, latex_file_re.sub("_legacy.tex", input_path),
-                str(dpi), output_format, fg_color, bg_color, latex ]
         progress("Pages %s include postscript specials" % ps_pages)
         progress("Using the legacy conversion method (PostScript support)")
-        legacy_metrics = legacy_conversion(vec, True)[1]
+        legacy_status, legacy_metrics = legacy_conversion_step1(legacy_latex_file,
+            dpi, output_format, fg_color, bg_color, latex, pdf_output, True)
 
         # Now we need to mix metrics data from dvipng and the legacy method
         original_bitmap = latex_file_re.sub("%d." + output_format, legacy_latex_file)

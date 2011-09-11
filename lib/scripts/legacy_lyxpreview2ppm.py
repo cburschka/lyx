@@ -51,9 +51,12 @@
 
 # What does this script do?
 # [legacy_conversion]
+# 0) Process command-line arguments
+# [legacy_conversion_step1]
 # 1) Call latex to create a DVI file from LaTeX
 # [legacy_conversion_step2]
 # 2) Call dvips to create one PS file for each DVI page
+# [legacy_conversion_step3]
 # 3) If dvips fails look for PDF and call gs to produce bitmaps
 # 4) Otherwise call gs on each PostScript file to produce bitmaps
 # [legacy_conversion_pdflatex]
@@ -77,8 +80,8 @@ import glob, os, pipes, re, string, sys
 
 from lyxpreview_tools import copyfileobj, error, filter_pages, find_exe, \
      find_exe_or_terminate, join_metrics_and_rename, latex_commands, \
-     latex_file_re, make_texcolor, mkstemp, progress, run_command, warning, \
-     write_metrics_info
+     latex_file_re, make_texcolor, mkstemp, pdflatex_commands, progress, \
+     run_command, warning, write_metrics_info
 
 
 def usage(prog_name):
@@ -265,12 +268,24 @@ def legacy_conversion(argv, skipMetrics = False):
 
     fg_color = argv[4]
     bg_color = argv[5]
-    bg_color_gr = make_texcolor(argv[5], True)
 
     # External programs used by the script.
     latex = find_exe_or_terminate(latex or latex_commands)
 
+    pdf_output = latex in pdflatex_commands
+
+    return legacy_conversion_step1(latex_file, dpi, output_format, fg_color,
+        bg_color, latex, pdf_output, skipMetrics)
+
+
+# Add color info to the latex file, since ghostscript doesn't
+# have the option to set foreground and background colors on
+# the command line. Run the resulting file through latex.
+def legacy_conversion_step1(latex_file, dpi, output_format, fg_color, bg_color,
+                            latex, pdf_output = False, skipMetrics = False):
+
     # Move color information into the latex file.
+    bg_color_gr = make_texcolor(bg_color, True)
     if not legacy_latex_file(latex_file, fg_color, bg_color, bg_color_gr):
         error("Unable to move color info into the latex file")
 
@@ -282,7 +297,10 @@ def legacy_conversion(argv, skipMetrics = False):
         warning("%s had problems compiling %s" \
               % (os.path.basename(latex), latex_file))
 
-    return legacy_conversion_step2(latex_file, dpi, output_format, skipMetrics)
+    if pdf_output:
+        return legacy_conversion_step3(latex_file, dpi, output_format, True, skipMetrics)
+    else:
+        return legacy_conversion_step2(latex_file, dpi, output_format, skipMetrics)
 
 # Creates a new LaTeX file from the original with pages specified in
 # failed_pages, pass it through pdflatex and updates the metrics
@@ -332,16 +350,15 @@ def legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics, gs,
                 original_bitmap, destination_bitmap)
 
 
+# The file has been processed through latex and we expect dvi output.
+# Run dvips, taking note whether it was successful.
 def legacy_conversion_step2(latex_file, dpi, output_format, skipMetrics = False):
     # External programs used by the script.
     dvips   = find_exe_or_terminate(["dvips"])
-    gs      = find_exe_or_terminate(["gswin32c", "gs"])
-    pnmcrop = find_exe(["pnmcrop"])
 
     # Run the dvi file through dvips.
     dvi_file = latex_file_re.sub(".dvi", latex_file)
     ps_file  = latex_file_re.sub(".ps",  latex_file)
-    pdf_file  = latex_file_re.sub(".pdf", latex_file)
 
     dvips_call = '%s -i -o "%s" "%s"' % (dvips, ps_file, dvi_file)
     dvips_failed = False
@@ -351,6 +368,20 @@ def legacy_conversion_step2(latex_file, dpi, output_format, skipMetrics = False)
         warning('Failed: %s %s ... looking for PDF' \
             % (os.path.basename(dvips), dvi_file))
         dvips_failed = True
+
+    return legacy_conversion_step3(latex_file, dpi, output_format, dvips_failed, skipMetrics)
+
+
+# Either latex and dvips have been run and we have a ps file, or
+# pdflatex has been run and we have a pdf file. Proceed with gs.
+def legacy_conversion_step3(latex_file, dpi, output_format, dvips_failed, skipMetrics = False):
+    # External programs used by the script.
+    gs      = find_exe_or_terminate(["gswin32c", "gs"])
+    pnmcrop = find_exe(["pnmcrop"])
+
+    # Files to process
+    pdf_file  = latex_file_re.sub(".pdf", latex_file)
+    ps_file  = latex_file_re.sub(".ps",  latex_file)
 
     # Extract resolution data for gs from the log file.
     log_file = latex_file_re.sub(".log", latex_file)
