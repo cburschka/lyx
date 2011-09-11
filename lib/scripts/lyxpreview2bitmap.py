@@ -29,16 +29,20 @@
 # CTAN/support/preview-latex/
 
 # Example usage:
-# lyxpreview2bitmap.py png 0lyxpreview.tex 128 000000 faf0e6
+# lyxpreview2bitmap.py --bg=faf0e6 0lyxpreview.tex
 
-# This script takes six arguments:
-# FORMAT:   The desired output format. Either 'png' or 'ppm'.
-# TEXFILE:  the name of the .tex file to be converted.
-# DPI:      a scale factor, used to ascertain the resolution of the
-#           generated image which is then passed to gs.
-# FG_COLOR: the foreground color as a hexadecimal string, eg '000000'.
-# BG_COLOR: the background color as a hexadecimal string, eg 'faf0e6'.
-# CONVERTER: the converter (optional). Default is latex.
+# This script takes one obligatory argument:
+#
+#   <input file>:  The name of the .tex file to be converted.
+#
+# and these optional arguments:
+#
+#   --png, --ppm:  The desired output format. Either 'png' or 'ppm'.
+#   --dpi=<res>:   A scale factor, used to ascertain the resolution of the
+#                  generated image which is then passed to gs.
+#   --fg=<color>:  The foreground color as a hexadecimal string, eg '000000'.
+#   --bg=<color>:  The background color as a hexadecimal string, eg 'faf0e6'.
+#   --latex=<exe>: The converter for latex files. Default is latex.
 
 # Decomposing TEXFILE's name as DIR/BASE.tex, this script will,
 # if executed successfully, leave in DIR:
@@ -63,7 +67,7 @@
 # Moreover dvipng can't work with PDF files, so, if the CONVERTER
 # paramter is pdflatex we have to fallback to legacy route (step 2).
 
-import glob, os, re, string, sys
+import getopt, glob, os, re, string, sys
 
 from legacy_lyxpreview2ppm import legacy_conversion, \
      legacy_conversion_step2, legacy_extract_metrics_info
@@ -75,9 +79,19 @@ from lyxpreview_tools import copyfileobj, error, filter_pages, find_exe, \
 
 
 def usage(prog_name):
-    return "Usage: %s <format> <latex file> <dpi> <fg color> <bg color>\n" \
-           "\twhere the colors are hexadecimal strings, eg 'faf0e6'" \
-           % prog_name
+    msg = """
+Usage: %s <options> <input file>
+
+Options:
+  -h, --help:    Show this help and exit
+  --dpi=<res>:   Resolution per inch (default: 128)
+  --png, --ppm:  Select the output format (default: png)
+  --fg=<color>:  Foreground color (default: black, ie '000000')
+  --bg=<color>:  Background color (default: white, ie 'ffffff')
+  --latex=<exe>: Specify the executable for latex (default: latex)
+
+The colors are hexadecimal strings, eg 'faf0e6'."""
+    return msg % prog_name
 
 # Returns a list of tuples containing page number and ascent fraction
 # extracted from dvipng output.
@@ -281,22 +295,47 @@ def find_ps_pages(dvi_file):
     return (ps_pages, page_index, pages_parameter)
 
 def main(argv):
-    # Parse and manipulate the command line arguments.
-    if len(argv) != 6 and len(argv) != 7:
-        error(usage(argv[0]))
-
+    # Set defaults.
+    dpi = 128
+    fg_color = "000000"
+    bg_color = "ffffff"
+    latex = None
+    output_format = "png"
     script_name = argv[0]
 
-    output_format = string.lower(argv[1])
+    # Parse and manipulate the command line arguments.
+    try:
+        (opts, args) = getopt.gnu_getopt(argv[1:], "h", ["bg=",
+            "dpi=", "fg=", "help", "latex=", "png", "ppm"])
+    except getopt.GetoptError:
+        error(usage(script_name))
 
-    input_path = argv[2]
+    opts.reverse()
+    for opt, val in opts:
+        if opt in ("-h", "--help"):
+            print usage(script_name)
+            sys.exit(0)
+        elif opt == "--bg":
+            bg_color = val
+        elif opt == "--dpi":
+            try:
+                dpi = string.atoi(val)
+            except:
+                error("Cannot convert %s to an integer value" % val)
+        elif opt == "--fg":
+            fg_color = val
+        elif opt == "--latex":
+            latex = [val]
+        elif opt in ("--png", "--ppm"):
+            output_format = opt[2:]
+
+    if len(args) != 1:
+        error(usage(script_name))
+
+    input_path = args[0]
     dir, latex_file = os.path.split(input_path)
     if len(dir) != 0:
         os.chdir(dir)
-
-    dpi = string.atoi(argv[3])
-    fg_color = argv[4]
-    bg_color = argv[5]
 
     fg_color_dvipng = make_texcolor(fg_color, False)
     bg_color_dvipng = make_texcolor(bg_color, False)
@@ -305,10 +344,6 @@ def main(argv):
     bg_color_gr = make_texcolor(bg_color, True)
 
     # External programs used by the script.
-    if len(argv) == 7:
-        latex = [argv[6]]
-    else:
-        latex = None
     latex = find_exe_or_terminate(latex or latex_commands)
 
     # Omit font size specification in latex file.

@@ -748,12 +748,12 @@ def checkConverterEntries(java='', perl=''):
     path, dvipng = checkProg('dvipng', ['dvipng'])
     path, dv2dt  = checkProg('DVI to DTL converter', ['dv2dt'])
     if dvipng == "dvipng" and dv2dt == 'dv2dt':
-        addToRC(r'\converter lyxpreview png        "python -tt $$s/scripts/lyxpreview2bitmap.py"	""')
+        addToRC(r'\converter lyxpreview png        "python -tt $$s/scripts/lyxpreview2bitmap.py --png"	""')
     else:
         # set empty converter to override the default imagemagick
         addToRC(r'\converter lyxpreview png        ""	""')
     if dv2dt == 'dv2dt':
-        addToRC(r'\converter lyxpreview ppm        "python -tt $$s/scripts/lyxpreview2bitmap.py"	""')
+        addToRC(r'\converter lyxpreview ppm        "python -tt $$s/scripts/lyxpreview2bitmap.py --ppm"	""')
     else:
         # set empty converter to override the default imagemagick
         addToRC(r'\converter lyxpreview ppm        ""	""')

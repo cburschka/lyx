@@ -596,14 +596,14 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	               ? Color_black : PreviewLoader::foregroundColor();
 	// The conversion command.
 	ostringstream cs;
-	cs << pconverter_->command << ' ' << pconverter_->to << ' '
-	   << quoteName(latexfile.toFilesystemEncoding()) << ' '
-	   << int(font_scaling_factor) << ' '
-	   << theApp()->hexName(fg) << ' '
-	   << theApp()->hexName(bg);
+	cs << pconverter_->command
+	   << " " << quoteName(latexfile.toFilesystemEncoding())
+	   << " --dpi " << int(font_scaling_factor)
+	   << " --fg " << theApp()->hexName(fg)
+	   << " --bg " << theApp()->hexName(bg);
 	// FIXME what about LuaTeX?
 	if (buffer_.params().useNonTeXFonts)
-		cs << " xelatex";
+		cs << " --latex=xelatex";
 
 	string const command = libScriptSearch(cs.str());
 
