@@ -74,15 +74,11 @@
 
 import glob, os, pipes, re, string, sys
 
-from lyxpreview_tools import copyfileobj, error, find_exe, \
-     find_exe_or_terminate, make_texcolor, mkstemp, run_command, warning, \
-     write_metrics_info, filter_pages, join_metrics_and_rename
+from lyxpreview_tools import copyfileobj, error, filter_pages, find_exe, \
+     find_exe_or_terminate, join_metrics_and_rename, latex_commands, \
+     latex_file_re, make_texcolor, mkstemp, run_command, warning, \
+     write_metrics_info
 
-# Pre-compiled regular expression.
-latex_file_re = re.compile("\.tex$")
-
-# PATH environment variable
-path  = string.split(os.environ["PATH"], os.pathsep)
 
 def usage(prog_name):
     return "Usage: %s <latex file> <dpi> ppm <fg color> <bg color>\n" \
@@ -250,12 +246,13 @@ def crop_files(pnmcrop, basename):
 
 
 def legacy_conversion(argv, skipMetrics = False):
-    latex_commands = ["latex", "pplatex", "platex", "latex2e"]
     # Parse and manipulate the command line arguments.
     if len(argv) == 7:
-        latex_commands = [argv[6]]
+        latex = [argv[6]]
     elif len(argv) != 6:
         error(usage(argv[0]))
+    else:
+        latex = None
 
     dir, latex_file = os.path.split(argv[1])
     if len(dir) != 0:
@@ -270,7 +267,7 @@ def legacy_conversion(argv, skipMetrics = False):
     bg_color_gr = make_texcolor(argv[5], True)
 
     # External programs used by the script.
-    latex = find_exe_or_terminate(latex_commands, path)
+    latex = find_exe_or_terminate(latex or latex_commands)
 
     # Move color information into the latex file.
     if not legacy_latex_file(latex_file, fg_color, bg_color, bg_color_gr):
@@ -293,7 +290,7 @@ def legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics, gs,
     gs_device, gs_ext, alpha, resolution, output_format):
 
     # Search for pdflatex executable
-    pdflatex = find_exe(["pdflatex"], path)
+    pdflatex = find_exe(["pdflatex"])
     if pdflatex == None:
         warning("Can't find pdflatex. Some pages failed with all the possible routes.")
     else:
@@ -333,9 +330,9 @@ def legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics, gs,
 
 def legacy_conversion_step2(latex_file, dpi, output_format, skipMetrics = False):
     # External programs used by the script.
-    dvips   = find_exe_or_terminate(["dvips"], path)
-    gs      = find_exe_or_terminate(["gswin32c", "gs"], path)
-    pnmcrop = find_exe(["pnmcrop"], path)
+    dvips   = find_exe_or_terminate(["dvips"])
+    gs      = find_exe_or_terminate(["gswin32c", "gs"])
+    pnmcrop = find_exe(["pnmcrop"])
 
     # Run the dvi file through dvips.
     dvi_file = latex_file_re.sub(".dvi", latex_file)

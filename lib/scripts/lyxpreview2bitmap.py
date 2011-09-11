@@ -66,18 +66,13 @@
 import glob, os, re, string, sys
 
 from legacy_lyxpreview2ppm import legacy_conversion, \
-     legacy_conversion_step2, legacy_extract_metrics_info, filter_pages
+     legacy_conversion_step2, legacy_extract_metrics_info
 
-from lyxpreview_tools import copyfileobj, error, find_exe, \
-     find_exe_or_terminate, make_texcolor, mkstemp, run_command, warning, \
-     write_metrics_info, join_metrics_and_rename
+from lyxpreview_tools import copyfileobj, error, filter_pages, find_exe, \
+     find_exe_or_terminate, join_metrics_and_rename, latex_commands, \
+     latex_file_re, make_texcolor, mkstemp, run_command, warning, \
+     write_metrics_info
 
-
-# Pre-compiled regular expressions.
-latex_file_re = re.compile("\.tex$")
-
-# PATH environment variable
-path  = string.split(os.environ["PATH"], os.pathsep)
 
 def usage(prog_name):
     return "Usage: %s <format> <latex file> <dpi> <fg color> <bg color>\n" \
@@ -215,7 +210,7 @@ def find_ps_pages(dvi_file):
 
     # Check for PostScript specials in the dvi, badly supported by dvipng
     # This is required for correct rendering of PSTricks and TikZ
-    dv2dt = find_exe_or_terminate(["dv2dt"], path)
+    dv2dt = find_exe_or_terminate(["dv2dt"])
     dv2dt_call = '%s "%s"' % (dv2dt, dvi_file)
 
     # The output from dv2dt goes to stdout
@@ -290,40 +285,47 @@ def main(argv):
     if len(argv) != 6 and len(argv) != 7:
         error(usage(argv[0]))
 
+    script_name = argv[0]
+
     output_format = string.lower(argv[1])
 
-    dir, latex_file = os.path.split(argv[2])
+    input_path = argv[2]
+    dir, latex_file = os.path.split(input_path)
     if len(dir) != 0:
         os.chdir(dir)
 
     dpi = string.atoi(argv[3])
-    fg_color = make_texcolor(argv[4], False)
-    bg_color = make_texcolor(argv[5], False)
+    fg_color = argv[4]
+    bg_color = argv[5]
 
-    fg_color_gr = make_texcolor(argv[4], True)
-    bg_color_gr = make_texcolor(argv[5], True)
+    fg_color_dvipng = make_texcolor(fg_color, False)
+    bg_color_dvipng = make_texcolor(bg_color, False)
+
+    fg_color_gr = make_texcolor(fg_color, True)
+    bg_color_gr = make_texcolor(bg_color, True)
 
     # External programs used by the script.
     if len(argv) == 7:
-        latex = argv[6]
+        latex = [argv[6]]
     else:
-        latex = find_exe_or_terminate(["latex", "pplatex", "platex", "latex2e"], path)
+        latex = None
+    latex = find_exe_or_terminate(latex or latex_commands)
 
     # Omit font size specification in latex file.
     fix_latex_file(latex_file)
 
     # This can go once dvipng becomes widespread.
-    dvipng = find_exe(["dvipng"], path)
+    dvipng = find_exe(["dvipng"])
     if dvipng == None:
         # The data is input to legacy_conversion in as similar
         # as possible a manner to that input to the code used in
         # LyX 1.3.x.
-        vec = [ argv[0], argv[2], argv[3], argv[1], argv[4], argv[5], latex ]
+        vec = [ script_name, input_path, str(dpi), output_format, fg_color, bg_color, latex ]
         return legacy_conversion(vec)
 
     pngtopnm = ""
     if output_format == "ppm":
-        pngtopnm = find_exe_or_terminate(["pngtopnm"], path)
+        pngtopnm = find_exe_or_terminate(["pngtopnm"])
 
     # Move color information for PDF into the latex file.
     if not color_pdf(latex_file, bg_color_gr, fg_color_gr):
@@ -365,12 +367,12 @@ def main(argv):
 
     # If all pages need PostScript, directly use the legacy method.
     if len(ps_pages) == page_count:
-        vec = [argv[0], argv[2], argv[3], argv[1], argv[4], argv[5], latex]
+        vec = [ script_name, input_path, str(dpi), output_format, fg_color, bg_color, latex ]
         return legacy_conversion(vec)
 
     # Run the dvi file through dvipng.
     dvipng_call = '%s -Ttight -depth -height -D %d -fg "%s" -bg "%s" %s "%s"' \
-                  % (dvipng, dpi, fg_color, bg_color, pages_parameter, dvi_file)
+        % (dvipng, dpi, fg_color_dvipng, bg_color_dvipng, pages_parameter, dvi_file)
     dvipng_status, dvipng_stdout = run_command(dvipng_call)
 
     if dvipng_status != None:
@@ -391,8 +393,8 @@ def main(argv):
         filter_pages(latex_file, legacy_latex_file, ps_pages)
 
         # Pass the new LaTeX file to the legacy method
-        vec = [ argv[0], latex_file_re.sub("_legacy.tex", argv[2]),
-                argv[3], argv[1], argv[4], argv[5], latex ]
+        vec = [ script_name, latex_file_re.sub("_legacy.tex", input_path),
+                str(dpi), output_format, fg_color, bg_color, latex ]
         legacy_metrics = legacy_conversion(vec, True)[1]
 
         # Now we need to mix metrics data from dvipng and the legacy method

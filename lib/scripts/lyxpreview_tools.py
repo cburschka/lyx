@@ -16,6 +16,20 @@
 
 import os, re, string, sys, tempfile
 
+
+# Known flavors of latex
+latex_commands = ("latex", "pplatex", "platex", "latex2e")
+pdflatex_commands = ("pdflatex", "xelatex", "lualatex")
+
+# Pre-compiled regular expressions
+latex_file_re = re.compile(r"\.tex$")
+
+# PATH and PATHEXT environment variables
+path = os.environ["PATH"].split(os.pathsep)
+extlist = ['']
+if "PATHEXT" in os.environ:
+    extlist += os.environ["PATHEXT"].split(os.pathsep)
+
 use_win32_modules = 0
 if os.name == "nt":
     use_win32_modules = 1
@@ -59,10 +73,8 @@ def make_texcolor(hexcolor, graphics):
         return "rgb %f %f %f" % (red, green, blue)
 
 
-def find_exe(candidates, path):
-    extlist = ['']
-    if "PATHEXT" in os.environ:
-        extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
+def find_exe(candidates):
+    global extlist, path
 
     for prog in candidates:
         for directory in path:
@@ -78,8 +90,8 @@ def find_exe(candidates, path):
     return None
 
 
-def find_exe_or_terminate(candidates, path):
-    exe = find_exe(candidates, path)
+def find_exe_or_terminate(candidates):
+    exe = find_exe(candidates)
     if exe == None:
         error("Unable to find executable from '%s'" % string.join(candidates))
 
