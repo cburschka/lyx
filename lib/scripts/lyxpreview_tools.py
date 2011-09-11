@@ -29,7 +29,7 @@ if os.name == "nt":
         import win32security
         import winerror
     except:
-        sys.stderr.write("Consider installing the PyWin extension modules "\
+        sys.stderr.write("Consider installing the PyWin extension modules " \
                          "if you're irritated by windows appearing briefly.\n")
         use_win32_modules = 0
 
@@ -245,7 +245,7 @@ def filter_pages(source_path, destination_path, pages_to_keep):
 
     destination_file.close()
     source_file.close()
-    
+
 # Joins two metrics list, that is a list of tuple (page_index, metric)
 # new_page_indexes contains the original page number of the pages in new_metrics
 # e.g. new_page_indexes[3] == 14 means that the 4th item in new_metrics is the 15th in the original counting
@@ -263,8 +263,7 @@ def join_metrics_and_rename(original_metrics, new_metrics, new_page_indexes, ori
         # Goes through the array until the end is reached or the correct index is found
         while legacy_index < len(original_metrics) and original_metrics[legacy_index][0] < index:
             legacy_index += 1
-        
-        
+
         # Add or update the metric for this page
         if legacy_index < len(original_metrics) and original_metrics[legacy_index][0] == index:
             original_metrics[legacy_index] = (index, metric)
