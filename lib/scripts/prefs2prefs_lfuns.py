@@ -154,7 +154,7 @@ def Bar2bar(line):
 # Conversion chain
 
 conversions = [
-	[ # this will be a long list of conversions for format 0
+	[  1, [ # this will be a long list of conversions to format 1
 		next_inset_toggle,
 		next_inset_modify,
 		optional_insert,
@@ -165,6 +165,6 @@ conversions = [
 		paragraph_spacing,
 		tabular_feature,
 		Bar2bar
-	] # end conversions for format 0
+	]],
 ]
 

@@ -167,17 +167,24 @@ def main(argv):
 	format = get_format(lines)
 
 	while format < current_format:
-		for c in conversions[format]:
+		target_format, convert = conversions[format]
+		old_format = format
+
+		# make sure the conversion list is sequential
+		if int(old_format) + 1 != target_format:
+			sys.stderr.write("Something is wrong with the conversion chain.\n")
+			sys.exit(1)
+
+		for c in convert:
 			for i in range(len(lines)):
 				(update, newline) = c(lines[i])
 				if update:
 					lines[i] = newline
 
 		update_format(lines)
+		format = get_format(lines)
 
 		# sanity check
-		old_format = format
-		format = get_format(lines)
 		if int(old_format) + 1 != int(format):
 			sys.stderr.write("Failed to convert to new format!\n")
 			sys.exit(1)

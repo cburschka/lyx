@@ -101,11 +101,11 @@ def export_menu(line):
 
 
 conversions = [
-	[ # this will be a long list of conversions for format 0
+	[  1, [ # this will be a long list of conversions to format 1
 		export_menu,
 		latex_flavor,
 		remove_obsolete,
 		language_use_babel,
 		language_package
-	] # end conversions for format 0
+	]],
 ]
