@@ -120,7 +120,7 @@ def usage():
 	print "or: %s [-l] [-p] <infile >outfile" % sys.argv[0]
 	print "  -l: convert LFUNs (bind and ui files)"
 	print "  -p: convert preferences"
-	print "Note that one of -l and -p is required."
+	print "Note that exactly one of -l and -p is required."
 
 
 def main(argv):
@@ -155,7 +155,11 @@ def main(argv):
 	
 	if not conversions:
 		usage()
-		print "\nNeither -l nor -p given"
+		print "\nNeither -l nor -p given."
+		sys.exit(1)
+	elif len(options) > 1:
+		usage()
+		print "\nOnly one of -l or -p should be given."
 		sys.exit(1)
 
 	current_format = len(conversions)
