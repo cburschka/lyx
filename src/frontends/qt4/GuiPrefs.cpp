@@ -715,6 +715,8 @@ PrefLatex::PrefLatex(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(latexPaperSizeCO, SIGNAL(activated(int)),
 		this, SIGNAL(changed()));
+	connect(latexNomenclED, SIGNAL(textChanged(QString)),
+		this, SIGNAL(changed()));
 
 #if defined(__CYGWIN__) || defined(_WIN32)
 	pathCB->setVisible(true);
