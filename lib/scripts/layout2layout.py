@@ -152,7 +152,7 @@ def trim_bom(line):
 
 def read(source):
     " Read input file and strip lineendings."
-    lines = source.read().splitlines()
+    lines = source.read().splitlines() or ['']
     lines[0] = trim_bom(lines[0])
     return lines
 
@@ -753,6 +753,8 @@ def convert(lines):
 
         i += 1
 
+    if only_comment:
+        lines.insert(i, "Format 2")
     if usemodules:
         i = formatline + 1
         for mod in usemodules:
