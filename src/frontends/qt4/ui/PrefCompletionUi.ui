@@ -260,6 +260,14 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>inlineTextCB</tabstop>
+  <tabstop>popupTextCB</tabstop>
+  <tabstop>cursorTextCB</tabstop>
+  <tabstop>inlineMathCB</tabstop>
+  <tabstop>popupMathCB</tabstop>
+  <tabstop>autocorrectionCB</tabstop>
+ </tabstops>
  <includes>
   <include location="local" >qt_i18n.h</include>
  </includes>

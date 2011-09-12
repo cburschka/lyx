@@ -51,7 +51,7 @@
       <string>&amp;Spellchecker engine:</string>
      </property>
      <property name="buddy" >
-      <cstring>altLanguageED</cstring>
+      <cstring>spellcheckerCB</cstring>
      </property>
     </widget>
    </item>
@@ -131,9 +131,12 @@
   </layout>
  </widget>
  <tabstops>
+  <tabstop>spellcheckerCB</tabstop>
   <tabstop>altLanguageED</tabstop>
   <tabstop>escapeCharactersED</tabstop>
   <tabstop>compoundWordCB</tabstop>
+  <tabstop>spellcheckContinuouslyCB</tabstop>
+  <tabstop>spellcheckNotesCB</tabstop>
  </tabstops>
  <includes>
   <include location="local" >qt_i18n.h</include>
