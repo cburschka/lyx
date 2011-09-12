@@ -48,7 +48,7 @@ def trim_bom(line):
 
 def read(source):
 	" Read input file and strip lineendings."
-	lines = source.read().splitlines()
+	lines = source.read().splitlines() or ['']
 	lines[0] = trim_bom(lines[0])
 	return lines
 
