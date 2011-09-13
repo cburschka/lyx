@@ -323,6 +323,7 @@ QString GuiInclude::browse(QString const & in_name, Type in_type) const
 		break;
 	case VERBATIM:
 	case LISTINGS:
+		filters = fileFilters(QString());
 		break;
 	}
 
