@@ -569,7 +569,7 @@ def checkFormatEntries(dtl_tools):
         addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""	""	"vector"')
     #
     checkViewer('an HTML previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
-        rc_entry = [r'\Format html       html    HTML                   H  "%%"	""	"document,menu=export"'])
+        rc_entry = [r'\Format html      "html, htm" HTML                H  "%%"	""	"document,menu=export"'])
     #
     checkViewerEditor('Noteedit', ['noteedit'],
         rc_entry = [r'\Format noteedit   not     Noteedit               "" "%%"	"%%"	"vector"'])
@@ -601,7 +601,7 @@ def checkFormatEntries(dtl_tools):
 \Format pstex      pstex_t PSTEX                  "" ""	""	""
 \Format wmf        wmf    "Windows Metafile"      "" ""	""	"vector"
 \Format emf        emf    "Enhanced Metafile"     "" ""	""	"vector"
-\Format wordhtml   html   "HTML (MS Word)"        "" "" ""	"document"
+\Format wordhtml  "html, htm" "HTML (MS Word)"    "" "" ""	"document"
 ''')
 
 
