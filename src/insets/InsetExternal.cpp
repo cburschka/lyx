@@ -503,8 +503,14 @@ docstring screenLabel(InsetExternalParams const & params,
 					from_utf8(params.templatename()));
 	// FIXME UNICODE
 	docstring gui = _(ptr->guiName);
-	return from_utf8(external::doSubstitution(params, buffer,
-				to_utf8(gui), false));
+	gui += ": ";
+
+	if (params.filename.empty())
+		gui += "???";
+	else
+		gui += from_utf8(params.filename.relFileName(buffer.filePath()));
+
+	return gui;
 }
 
 } // namespace anon

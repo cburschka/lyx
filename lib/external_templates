@@ -34,7 +34,7 @@ PreambleDef InputOrWarn
 PreambleDefEnd
 
 Template GnumericSpreadsheet
-	GuiName "Spreadsheet"
+	GuiName "Gnumeric spreadsheet"
 	HelpText
 		A spreadsheet made with gnumeric, openoffice or excel.
 		It imports as a long table, so any length
@@ -76,7 +76,7 @@ TemplateEnd
 Template RasterImage
 	# By default, InsetExternal is displayed as a grey button
 	# containing this text.
-	GuiName "Bitmap: $$AbsOrRelPathParent$$Basename"
+	GuiName "Raster image"
 	# This text is used in the External dialog.
 	# Provide enough information to explain to the user just
 	# what the template can provide him with.
@@ -146,7 +146,7 @@ TemplateEnd
 
 
 Template XFig
-	GuiName "Xfig: $$AbsOrRelPathParent$$Basename"
+	GuiName "Xfig figure"
 	HelpText
 		An Xfig figure.
 	HelpTextEnd
@@ -199,7 +199,7 @@ TemplateEnd
 
 
 Template ChessDiagram
-	GuiName "Chess: $$AbsOrRelPathParent$$Basename"
+	GuiName "Chess diagram"
 	HelpText
 		A chess position diagram.
 		This template will use XBoard to edit the position.
@@ -298,7 +298,7 @@ Template LilyPond
 TemplateEnd
 
 Template PDFPages
-	GuiName "PDF pages: $$AbsOrRelPathParent$$Basename"
+	GuiName "PDF pages"
 	HelpText
 		Includes PDF documents, using the 'pdfpages' package.
 		To include multiple pages, use the 'pages'-option,
@@ -370,7 +370,7 @@ Template Date
 TemplateEnd
 
 Template Dia
-	GuiName "Dia: $$AbsOrRelPathParent$$Basename"
+	GuiName "Dia diagram"
 	HelpText
 		Dia diagram.
 	HelpTextEnd

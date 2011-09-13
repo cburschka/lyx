@@ -199,7 +199,7 @@ GuiExternal::GuiExternal(GuiView & lv)
 	i1 = external::TemplateManager::get().getTemplates().begin();
 	i2 = external::TemplateManager::get().getTemplates().end();
 	for (; i1 != i2; ++i1)
-		externalCO->addItem(qt_(i1->second.lyxName));
+		externalCO->addItem(qt_(i1->second.guiName));
 
 	// Fill the origins combo
 	for (size_t i = 0; i != sizeof(origins) / sizeof(origins[0]); ++i)
