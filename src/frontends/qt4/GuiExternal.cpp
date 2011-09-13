@@ -623,7 +623,14 @@ static QStringList templateFilters(QString const & template_name)
 	external::Template const * const et_ptr =
 		etm.getTemplateByName(fromqstr(template_name));
 
-	return fileFilters(et_ptr ? toqstr(et_ptr->fileRegExp) : QString());
+	string filter;
+	if (et_ptr && et_ptr->fileRegExp != "" && et_ptr->fileRegExp != "*") {
+		filter += et_ptr->guiName;
+		filter += " (";
+		filter += et_ptr->fileRegExp;
+		filter += ")";
+	}
+	return fileFilters(toqstr(filter));
 }
 
 
