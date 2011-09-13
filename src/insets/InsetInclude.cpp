@@ -693,8 +693,8 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 			os << '\\' << from_ascii(params().getCmdName())
 			   << '{' << from_utf8(incfile) << '}';
 		} else {
-		incfile = changeExtension(incfile, ".tex");
-		incfile = latex_path(incfile);
+			incfile = changeExtension(incfile, ".tex");
+			incfile = latex_path(incfile);
 			// FIXME UNICODE
 			os << '\\' << from_ascii(params().getCmdName())
 			   << '{' << from_utf8(incfile) <<  '}';
