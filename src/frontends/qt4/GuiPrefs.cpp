@@ -1903,7 +1903,7 @@ PrefFileformats::PrefFileformats(GuiPreferences * form)
 
 	formatED->setValidator(new FormatNameValidator(formatsCB, form_->formats()));
 	formatsCB->setValidator(new FormatPrettynameValidator(formatsCB, form_->formats()));
-	extensionED->setValidator(new NoNewLineValidator(extensionED));
+	extensionsED->setValidator(new NoNewLineValidator(extensionsED));
 	shortcutED->setValidator(new NoNewLineValidator(shortcutED));
 	editorED->setValidator(new NoNewLineValidator(editorED));
 	viewerED->setValidator(new NoNewLineValidator(viewerED));
@@ -2010,7 +2010,7 @@ void PrefFileformats::on_formatsCB_currentIndexChanged(int i)
 
 	formatED->setText(toqstr(f.name()));
 	copierED->setText(toqstr(form_->movers().command(f.name())));
-	extensionED->setText(toqstr(f.extension()));
+	extensionsED->setText(toqstr(f.extensions()));
 	shortcutED->setText(
 		toqstr(l10n_shortcut(f.prettyname(), f.shortcut())));
 	documentCB->setChecked((f.documentFormat()));
@@ -2045,11 +2045,12 @@ void PrefFileformats::on_copierED_textEdited(const QString & s)
 }
 
 
-void PrefFileformats::on_extensionED_textEdited(const QString & s)
+void PrefFileformats::on_extensionsED_textEdited(const QString & s)
 {
-	currentFormat().setExtension(fromqstr(s));
+	currentFormat().setExtensions(fromqstr(s));
 	changed();
 }
+
 
 void PrefFileformats::on_viewerED_textEdited(const QString & s)
 {

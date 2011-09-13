@@ -476,7 +476,7 @@ def checkFormatEntries(dtl_tools):
     path, iv = checkViewerNoRC('a raster image viewer', ['xv', 'kview', 'gimp-remote', 'gimp'],
         rc_entry = [r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"	""
 \Format gif        gif     GIF                    "" "%s"	"%s"	""
-\Format jpg        jpg     JPEG                   "" "%s"	"%s"	""
+\Format jpg       "jpg, jpeg" JPEG                "" "%s"	"%s"	""
 \Format pbm        pbm     PBM                    "" "%s"	"%s"	""
 \Format pgm        pgm     PGM                    "" "%s"	"%s"	""
 \Format png        png     PNG                    "" "%s"	"%s"	""
@@ -487,7 +487,7 @@ def checkFormatEntries(dtl_tools):
     path, ie = checkEditorNoRC('a raster image editor', ['gimp-remote', 'gimp'],
         rc_entry = [r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"	""
 \Format gif        gif     GIF                    "" "%s"	"%s"	""
-\Format jpg        jpg     JPEG                   "" "%s"	"%s"	""
+\Format jpg       "jpg, jpeg" JPEG                "" "%s"	"%s"	""
 \Format pbm        pbm     PBM                    "" "%s"	"%s"	""
 \Format pgm        pgm     PGM                    "" "%s"	"%s"	""
 \Format png        png     PNG                    "" "%s"	"%s"	""
@@ -497,7 +497,7 @@ def checkFormatEntries(dtl_tools):
 \Format xpm        xpm     XPM                    "" "%s"	"%s"	""'''])
     addToRC(r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"	""
 \Format gif        gif     GIF                    "" "%s"	"%s"	""
-\Format jpg        jpg     JPEG                   "" "%s"	"%s"	""
+\Format jpg       "jpg, jpeg" JPEG                "" "%s"	"%s"	""
 \Format pbm        pbm     PBM                    "" "%s"	"%s"	""
 \Format pgm        pgm     PGM                    "" "%s"	"%s"	""
 \Format png        png     PNG                    "" "%s"	"%s"	""
@@ -1297,7 +1297,7 @@ def removeTempFiles():
 if __name__ == '__main__':
     lyx_check_config = True
     outfile = 'lyxrc.defaults'
-    lyxrc_fileformat = 1
+    lyxrc_fileformat = 2
     rc_entries = ''
     lyx_keep_temps = False
     version_suffix = ''

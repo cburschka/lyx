@@ -16,6 +16,10 @@
 # where the Bool says if  we've modified anything and the NewLine is 
 # the new line, if so, which will be used to replace the old line.
 
+# Incremented to format 2, r39670 by jrioux
+#   Support for multiple file extensions per format.
+#   No conversion necessary.
+
 import re
 
 
@@ -108,4 +112,5 @@ conversions = [
 		language_use_babel,
 		language_package
 	]],
+	[  2, []],
 ]

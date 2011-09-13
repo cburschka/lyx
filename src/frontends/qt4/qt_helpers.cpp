@@ -347,10 +347,11 @@ QString makeAbsPath(QString const & relpath, QString const & base)
 static string const convert_brace_glob(string const & glob)
 {
 	// Matches " *.{abc,def,ghi}", storing "*." as group 1 and
-	// "abc,def,ghi" as group 2.
-	static lyx::regex const glob_re(" *([^ {]*)\\{([^ }]+)\\}");
-	// Matches "abc" and "abc,", storing "abc" as group 1.
-	static lyx::regex const block_re("([^,}]+),?");
+	// "abc,def,ghi" as group 2, while allowing spaces in group 2.
+	static lyx::regex const glob_re(" *([^ {]*)\\{([^}]+)\\}");
+	// Matches "abc" and "abc,", storing "abc" as group 1,
+	// while ignoring surrounding spaces.
+	static lyx::regex const block_re(" *([^ ,}]+) *,? *");
 
 	string pattern;
 

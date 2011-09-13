@@ -897,7 +897,7 @@ void GuiView::dropEvent(QDropEvent * event)
 			= theConverters().importableFormats();
 		vector<const Format *>::const_iterator it = import_formats.begin();
 		for (; it != import_formats.end(); ++it)
-			if ((*it)->extension() == ext)
+			if ((*it)->hasExtension(ext))
 				found_formats.push_back(*it);
 
 		FuncRequest cmd;

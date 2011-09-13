@@ -360,7 +360,7 @@ Q_SIGNALS:
 
 private Q_SLOTS:
 	void on_copierED_textEdited(const QString & s);
-	void on_extensionED_textEdited(const QString &);
+	void on_extensionsED_textEdited(const QString &);
 	void on_viewerED_textEdited(const QString &);
 	void on_editorED_textEdited(const QString &);
 	void on_shortcutED_textEdited(const QString &);

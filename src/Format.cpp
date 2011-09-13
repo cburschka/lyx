@@ -69,7 +69,7 @@ public:
 		: extension_(extension) {}
 	bool operator()(Format const & f) const
 	{
-		return f.extension() == extension_;
+		return f.hasExtension(extension_);
 	}
 private:
 	string extension_;
@@ -91,14 +91,23 @@ bool operator<(Format const & a, Format const & b)
 Format::Format(string const & n, string const & e, string const & p,
 	       string const & s, string const & v, string const & ed,
 	       int flags)
-	: name_(n), extension_(e), prettyname_(p), shortcut_(s), viewer_(v),
+	: name_(n), extensions_(e), prettyname_(p), shortcut_(s), viewer_(v),
 	  editor_(ed), flags_(flags)
-{}
+{
+	extension_list_ = getVectorFromString(e, ",");
+}
 
 
 bool Format::dummy() const
 {
 	return extension().empty();
+}
+
+
+bool Format::hasExtension(string const & e) const
+{
+	return (find(extension_list_.begin(), extension_list_.end(), e)
+		!= extension_list_.end());
 }
 
 
@@ -113,6 +122,13 @@ bool Format::isChildFormat() const
 string const Format::parentFormat() const
 {
 	return name_.substr(0, name_.length() - 1);
+}
+
+
+void Format::setExtensions(string const & e)
+{
+	extensions_ = e;
+	extension_list_ = getVectorFromString(e, ",");
 }
 
 
@@ -208,7 +224,7 @@ void Formats::add(string const & name)
 }
 
 
-void Formats::add(string const & name, string const & extension,
+void Formats::add(string const & name, string const & extensions,
 		  string const & prettyname, string const & shortcut,
 		  string const & viewer, string const & editor,
 		  int flags)
@@ -217,10 +233,10 @@ void Formats::add(string const & name, string const & extension,
 		find_if(formatlist.begin(), formatlist.end(),
 			FormatNamesEqual(name));
 	if (it == formatlist.end())
-		formatlist.push_back(Format(name, extension, prettyname,
+		formatlist.push_back(Format(name, extensions, prettyname,
 					    shortcut, viewer, editor, flags));
 	else
-		*it = Format(name, extension, prettyname, shortcut, viewer,
+		*it = Format(name, extensions, prettyname, shortcut, viewer,
 			     editor, flags);
 }
 
@@ -412,6 +428,16 @@ string const Formats::extension(string const & name) const
 	Format const * format = getFormat(name);
 	if (format)
 		return format->extension();
+	else
+		return name;
+}
+
+
+string const Formats::extensions(string const & name) const
+{
+	Format const * format = getFormat(name);
+	if (format)
+		return format->extensions();
 	else
 		return name;
 }

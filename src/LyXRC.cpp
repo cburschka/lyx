@@ -55,7 +55,7 @@ namespace os = support::os;
 
 namespace {
 
-static unsigned int const LYXRC_FILEFORMAT = 1;
+static unsigned int const LYXRC_FILEFORMAT = 2;
 
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
@@ -1088,8 +1088,8 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			break;
 		}
 		case RC_FILEFORMAT: {
-			string format, extension, prettyname, shortcut;
-			lexrc >> format >> extension >> prettyname >> shortcut;
+			string format, extensions, prettyname, shortcut;
+			lexrc >> format >> extensions >> prettyname >> shortcut;
 			string viewer, editor;
 			if (lexrc.next(true))
 				viewer = lexrc.getString();
@@ -1131,7 +1131,7 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 				else
 					formats.erase(format);
 			} else {
-				formats.add(format, extension, prettyname,
+				formats.add(format, extensions, prettyname,
 					    shortcut, viewer, editor, flgs);
 			}
 			break;
@@ -2731,7 +2731,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			Format const * format =
 				system_formats.getFormat(cit->name());
 			if (!format ||
-			    format->extension() != cit->extension() ||
+			    format->extensions() != cit->extensions() ||
 			    format->prettyname() != cit->prettyname() ||
 			    format->shortcut() != cit->shortcut() ||
 			    format->viewer() != cit->viewer() ||
@@ -2740,7 +2740,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			    format->vectorFormat() != cit->vectorFormat() ||
 			    format->inExportMenu() != cit->inExportMenu()) {
 				os << "\\format \"" << cit->name() << "\" \""
-				   << cit->extension() << "\" \""
+				   << cit->extensions() << "\" \""
 				   << cit->prettyname() << "\" \""
 				   << cit->shortcut() << "\" \""
 				   << escapeCommand(cit->viewer()) << "\" \""

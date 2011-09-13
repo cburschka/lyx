@@ -45,6 +45,8 @@ public:
 	       int);
 	///
 	bool dummy() const;
+	/// Is \p ext a valid filename extension for this format?
+	bool hasExtension(std::string const & ext) const;
 	/// Tell whether this format is a child format.
 	/// Child formats inherit settings like the viewer from their parent.
 	bool isChildFormat() const;
@@ -55,9 +57,14 @@ public:
 	///
 	void setName(std::string const & v) { name_ = v; }
 	///
-	std::string const & extension() const { return extension_; }
+	std::string const & extension() const
+	{
+		return extension_list_.empty() ? empty_string() : extension_list_[0];
+	}
 	///
-	void setExtension(std::string const & v) { extension_ = v; }
+	std::string const & extensions() const { return extensions_; }
+	///
+	void setExtensions(std::string const & v);
 	///
 	std::string const & prettyname() const { return prettyname_; }
 	///
@@ -85,8 +92,10 @@ public:
 private:
 	/// Internal name. Needs to be unique.
 	std::string name_;
-	/// Filename extension
-	std::string extension_;
+	/// Filename extensions, the first one being the default
+	mutable std::vector<std::string> extension_list_;
+	/// All filename extensions
+	std::string extensions_;
 	/// Name presented to the user. Needs to be unique.
 	std::string prettyname_;
 	/// Keyboard shortcut for the View and Export menu.
@@ -137,7 +146,7 @@ public:
 	///
 	void add(std::string const & name);
 	///
-	void add(std::string const & name, std::string const & extension,
+	void add(std::string const & name, std::string const & extensions,
 		 std::string const & prettyname, std::string const & shortcut,
 		 std::string const & viewer, std::string const & editor,
 		 int flags);
@@ -159,6 +168,8 @@ public:
 	docstring const prettyName(std::string const & name) const;
 	///
 	std::string const extension(std::string const & name) const;
+	///
+	std::string const extensions(std::string const & name) const;
 	///
 	const_iterator begin() const { return formatlist.begin(); }
 	///
