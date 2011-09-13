@@ -424,7 +424,7 @@ QString Filter::toString() const
 {
 	QString s;
 
-	bool const has_description = desc_.empty();
+	bool const has_description = !desc_.empty();
 
 	if (has_description) {
 		s += toqstr(desc_);
@@ -509,9 +509,9 @@ FileFilterList::FileFilterList(docstring const & qt_style_filter)
 
 void FileFilterList::parse_filter(string const & filter)
 {
-	// Matches "TeX documents (*.tex)",
-	// storing "TeX documents " as group 1 and "*.tex" as group 2.
-	static lyx::regex const filter_re("([^(]*)\\(([^)]+)\\) *$");
+	// Matches "TeX documents (plain) (*.tex)",
+	// storing "TeX documents (plain) " as group 1 and "*.tex" as group 2.
+	static lyx::regex const filter_re("(.*)\\(([^()]+)\\) *$");
 
 	match_results<string::const_iterator> what;
 	if (!lyx::regex_search(filter, what, filter_re)) {
