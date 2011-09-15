@@ -1644,7 +1644,7 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 		}
 
 		bool const needfg = params().fontcolor != RGBColor(0, 0, 0);
-		bool const needbg = params().backgroundcolor != RGBColor(OxFF, OxFF, OxFF);
+		bool const needbg = params().backgroundcolor != RGBColor(0xFF, 0xFF, 0xFF);
 		if (needfg || needbg) {
 				os << "<style type='text/css'>\nbody {\n";
 				if (needfg)
