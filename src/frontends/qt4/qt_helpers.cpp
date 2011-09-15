@@ -560,7 +560,7 @@ QString guiName(string const & type, BufferParams const & bp)
 	if (type == "listing")
 		return qt_("List of Listings");
 	if (type == "index")
-		return qt_("List of Indexes");
+		return qt_("List of Index Entries");
 	if (type == "marginalnote")
 		return qt_("List of Marginal notes");
 	if (type == "note")
