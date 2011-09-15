@@ -2947,7 +2947,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_EXPORT
  * \li Action: Exports the current buffer (document) to the given format.
- * \li Syntax: buffer-export <FORMAT>
+ * \li Syntax: buffer-export <FORMAT> [<DEST>]
  * \li Params: <FORMAT> is either "custom" or one of the formats which you
                         can find in Tools->Preferences->File formats->Format.
                         Usual format you will enter is "pdf2" (pdflatex),
@@ -2956,6 +2956,9 @@ void LyXAction::init()
                         want to start from and for the command that you want to
                         apply to this format. Internally the control is then passed
                         to #LFUN_BUFFER_EXPORT_CUSTOM.
+		<DEST>	If present, this argument provides the export destination
+			filename. Its containing folder will also be the destination
+			folder, where all the needed external files will be copied.
  * \li Origin: Lgb, 29 Jul 1997
  * \endvar
  */

@@ -1928,7 +1928,15 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 		case LFUN_BUFFER_EXPORT: {
 			docstring const arg = cmd.argument();
-			enable = arg == "custom" || params().isExportable(to_utf8(arg));
+			if (arg == "custom") {
+				enable = true;
+				break;
+			}
+			string format = to_utf8(arg);
+			size_t pos = format.find(' ');
+			if (pos != string::npos)
+				format = format.substr(0, pos);
+			enable = params().isExportable(format);
 			if (!enable)
 				flag.message(bformat(
 					_("Don't know how to export to format: %1$s"), arg));
@@ -3391,12 +3399,21 @@ bool Buffer::isExporting() const
 }
 
 
-bool Buffer::doExport(string const & format, bool put_in_tempdir,
+bool Buffer::doExport(string const & target, bool put_in_tempdir,
 	bool includeall, string & result_file) const
 {
+	OutputParams runparams(&params().encoding());
+	string format = target;
+	string filename;
+	size_t pos = target.find(' ');
+	if (pos != string::npos) {
+		filename = target.substr(pos + 1, target.length() - pos - 1);
+		format = target.substr(0, pos);
+		runparams.export_folder = FileName(filename).onlyPath().realPath();
+		FileName(filename).onlyPath().createPath();
+	}
 	MarkAsExporting exporting(this);
 	string backend_format;
-	OutputParams runparams(&params().encoding());
 	runparams.flavor = OutputParams::LATEX;
 	runparams.linelen = lyxrc.plaintext_linelen;
 	runparams.includeall = includeall;
@@ -3439,10 +3456,12 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 			runparams.flavor = OutputParams::XETEX;
 	}
 
-	string filename = latexName(false);
-	filename = addName(temppath(), filename);
-	filename = changeExtension(filename,
-				   formats.extension(backend_format));
+	if (filename.empty()) {
+		filename = latexName(false);
+		filename = addName(temppath(), filename);
+		filename = changeExtension(filename,
+					   formats.extension(backend_format));
+	}
 
 	// Plain text backend
 	if (backend_format == "text") {
@@ -3557,7 +3576,8 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 	// if format == "dvi") to the result dir.
 	vector<ExportedFile> const files =
 		runparams.exportdata->externalFiles(format);
-	string const dest = onlyPath(result_file);
+	string const dest = runparams.export_folder.empty() ?
+		onlyPath(result_file) : runparams.export_folder;
 	bool use_force = use_gui ? lyxrc.export_overwrite == ALL_FILES
 				 : force_overwrite == ALL_FILES;
 	CopyStatus status = use_force ? FORCE : SUCCESS;
@@ -3566,9 +3586,19 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 	vector<ExportedFile>::const_iterator const en = files.end();
 	for (; it != en && status != CANCEL; ++it) {
 		string const fmt = formats.getFormatFromFile(it->sourceName);
+		string fixedName = it->exportName;
+		if (!runparams.export_folder.empty()) {
+			// Relative pathnames starting with ../ will be sanitized
+			// if exporting to a different folder
+			while (fixedName.substr(0, 3) == "../")
+				fixedName = fixedName.substr(3, fixedName.length() - 3);
+		}
+		FileName fixedFileName = makeAbsPath(fixedName, dest);
+		fixedFileName.onlyPath().createPath();
 		status = copyFile(fmt, it->sourceName,
-			makeAbsPath(it->exportName, dest),
-			it->exportName, status == FORCE);
+			fixedFileName,
+			it->exportName, status == FORCE,
+			runparams.export_folder.empty());
 	}
 
 	if (status == CANCEL) {
@@ -3596,15 +3626,15 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 }
 
 
-bool Buffer::doExport(string const & format, bool put_in_tempdir,
-		      bool includeall) const
+bool Buffer::doExport(string const & target, bool put_in_tempdir,
+	bool includeall) const
 {
 	string result_file;
 	// (1) export with all included children (omit \includeonly)
-	if (includeall && !doExport(format, put_in_tempdir, true, result_file))
+	if (includeall && !doExport(target, put_in_tempdir, true, result_file))
 		return false;
 	// (2) export with included children only
-	return doExport(format, put_in_tempdir, false, result_file);
+	return doExport(target, put_in_tempdir, false, result_file);
 }
 
 

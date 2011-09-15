@@ -53,7 +53,9 @@ static int checkOverwrite(FileName const & filename)
 
 
 /** copy file \p sourceFile to \p destFile. If \p force is false, the user
- *  will be asked before existing files are overwritten.
+ *  will be asked before existing files are overwritten. If \p only_tmp
+ *  is true, then only copy files that are in our tmp dir (to avoid other files
+ *  overwriting themselves).
  *  \return
  *  - SUCCESS if this file got copied
  *  - FORCE   if subsequent calls should not ask for confirmation before
@@ -62,17 +64,16 @@ static int checkOverwrite(FileName const & filename)
  */
 CopyStatus copyFile(string const & format,
 		    FileName const & sourceFile, FileName const & destFile,
-		    string const & latexFile, bool force)
+		    string const & latexFile, bool force, bool only_tmp)
 {
 	CopyStatus ret = force ? FORCE : SUCCESS;
 
-	// Only copy files that are in our tmp dir, all other files would
-	// overwrite themselves. This check could be changed to
+	// This check could be changed to
 	// boost::filesystem::equivalent(sourceFile, destFile) if export to
 	// other directories than the document directory is desired.
 	// Also don't overwrite files that already exist and are identical
 	// to the source files.
-	if (!prefixIs(onlyPath(sourceFile.absFileName()), package().temp_dir().absFileName())
+	if ((only_tmp && !prefixIs(onlyPath(sourceFile.absFileName()), package().temp_dir().absFileName()))
 	    || sourceFile.checksum() == destFile.checksum())
 		return ret;
 

@@ -30,7 +30,9 @@ enum CopyStatus {
 
 
 /** copy file \p sourceFile to \p destFile. If \p force is false, the user
- *  will be asked before existing files are overwritten.
+ *  will be asked before existing files are overwritten. If \p only_tmp
+ *  is true, then only copy files that are in our tmp dir (to avoid other files
+ *  overwriting themselves).
  *  \return
  *  - SUCCESS if this file got copied
  *  - FORCE   if subsequent calls should not ask for confirmation before
@@ -39,7 +41,7 @@ enum CopyStatus {
  */
 CopyStatus copyFile(std::string const & format,
 	support::FileName const & sourceFile, support::FileName const & destFile,
-	std::string const & latexFile, bool force);
+	std::string const & latexFile, bool force, bool only_tmp = true);
 
 
 class ExportedFile {

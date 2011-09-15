@@ -1054,6 +1054,9 @@ int parse_help(string const &, string const &, string &)
 		  "                  Look on Tools->Preferences->File formats->Format\n"
 		  "                  to get an idea which parameters should be passed.\n"
 		  "                  Note that the order of -e and -x switches matters.\n"
+		  "\t-E [--export-to] fmt filename\n"
+		  "                  where fmt is the export format of choice (see --export),\n"
+		  "                  and filename is the destination filename.\n"
 		  "\t-i [--import] fmt file.xxx\n"
 		  "                  where fmt is the import format of choice\n"
 		  "                  and file.xxx is the file to be imported.\n"
@@ -1120,6 +1123,24 @@ int parse_execute(string const & arg, string const &, string & batch)
 	}
 	batch = arg;
 	return 1;
+}
+
+
+int parse_export_to(string const & type, string const & output_file, string & batch)
+{
+	if (type.empty()) {
+		lyxerr << to_utf8(_("Missing file type [eg latex, ps...] after "
+					 "--export-to switch")) << endl;
+		exit(1);
+	}
+	if (output_file.empty()) {
+		lyxerr << to_utf8(_("Missing destination filename after "
+					 "--export-to switch")) << endl;
+		exit(1);
+	}
+	batch = "buffer-export " + type + " " + output_file;
+	use_gui = false;
+	return 2;
 }
 
 
@@ -1216,8 +1237,10 @@ void LyX::easyParse(int & argc, char * argv[])
 	cmdmap["-userdir"] = parse_userdir;
 	cmdmap["-x"] = parse_execute;
 	cmdmap["--execute"] = parse_execute;
-	cmdmap["-e"] = parse_export;
+ 	cmdmap["-e"] = parse_export;
 	cmdmap["--export"] = parse_export;
+	cmdmap["-E"] = parse_export_to;
+	cmdmap["--export-to"] = parse_export_to;
 	cmdmap["-i"] = parse_import;
 	cmdmap["--import"] = parse_import;
 	cmdmap["-geometry"] = parse_geometry;

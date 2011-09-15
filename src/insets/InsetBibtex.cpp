@@ -19,6 +19,7 @@
 #include "Cursor.h"
 #include "DispatchResult.h"
 #include "Encoding.h"
+#include "Exporter.h"
 #include "Format.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
@@ -263,6 +264,9 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 	odocstringstream dbs;
 	bool didone = false;
 
+	// determine the export format
+	string const tex_format = flavor2format(runparams.flavor);
+
 	for (; it != en; ++it) {
 		string utf8input = to_utf8(*it);
 		string database =
@@ -278,7 +282,6 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 			database = removeExtension(in_file.mangledFileName());
 			FileName const out_file = makeAbsPath(database + ".bib",
 					buffer().masterBuffer()->temppath());
-
 			bool const success = in_file.copyTo(out_file);
 			if (!success) {
 				lyxerr << "Failed to copy '" << in_file
@@ -286,6 +289,7 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 				       << endl;
 			}
 		} else if (!runparams.inComment && runparams.nice && not_from_texmf) {
+			runparams.exportdata->addExternalFile(tex_format, try_in_file, database + ".bib");
 			if (!isValidLaTeXFileName(database)) {
 				frontend::Alert::warning(_("Invalid filename"),
 				         _("The following filename will cause troubles "

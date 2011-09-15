@@ -251,6 +251,9 @@ public:
 	
 	/// Include all children notwithstanding the use of \includeonly
 	bool includeall;
+
+	/// Explicit output folder, if any is desired
+	std::string export_folder;
 };
 
 

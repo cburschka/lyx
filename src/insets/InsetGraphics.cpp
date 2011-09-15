@@ -789,7 +789,14 @@ void InsetGraphics::latex(otexstream & os,
 	// Convert the file if necessary.
 	// Remove the extension so LaTeX will use whatever is appropriate
 	// (when there are several versions in different formats)
-	latex_str += prepareFile(runparams);
+	string file_path = prepareFile(runparams);
+	if (!runparams.export_folder.empty()) {
+		// Relative pathnames starting with ../ will be sanitized
+		// if exporting to a different folder
+		while (file_path.substr(0, 17) == "\\lyxdot \\lyxdot /")
+			file_path = file_path.substr(17, file_path.length() - 17);
+	}
+	latex_str += file_path;
 	latex_str += '}' + after;
 	// FIXME UNICODE
 	os << from_utf8(latex_str);

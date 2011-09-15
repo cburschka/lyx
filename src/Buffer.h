@@ -602,11 +602,12 @@ public:
 
 	
 
-	///
-	bool doExport(std::string const & format, bool put_in_tempdir,
+	/// target is a format name optionally followed by a space
+	/// and a destination file-name
+	bool doExport(std::string const & target, bool put_in_tempdir,
 		bool includeall, std::string & result_file) const;
 	///
-	bool doExport(std::string const & format, bool put_in_tempdir,
+	bool doExport(std::string const & target, bool put_in_tempdir,
 		      bool includeall = false) const;
 	///
 	bool preview(std::string const & format, bool includeall = false) const;

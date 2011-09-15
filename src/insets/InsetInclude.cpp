@@ -513,15 +513,21 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 					      from_utf8(masterBuffer->filePath())));
 	}
 
+	string exppath = incfile;
+	if (!runparams.export_folder.empty()) {
+		exppath = makeAbsPath(exppath, runparams.export_folder).realPath();
+		FileName(exppath).onlyPath().createPath();
+	}
+
 	// write it to a file (so far the complete file)
 	string exportfile;
 	string mangled;
 	// bug 5681
 	if (type(params()) == LISTINGS) {
-		exportfile = incfile;
+		exportfile = exppath;
 		mangled = DocFileName(included_file).mangledFileName();
 	} else {
-		exportfile = changeExtension(incfile, ".tex");
+		exportfile = changeExtension(exppath, ".tex");
 		mangled = DocFileName(changeExtension(included_file.absFileName(), ".tex")).
 			mangledFileName();
 	}
@@ -702,6 +708,8 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		break;
 	} 
 	case LISTINGS: {
+		runparams.exportdata->addExternalFile(tex_format, writefile,
+						      exportfile);
 		os << '\\' << from_ascii(params().getCmdName());
 		string const opt = to_utf8(params()["lstparams"]);
 		// opt is set in QInclude dialog and should have passed validation.
@@ -832,8 +840,14 @@ int InsetInclude::docbook(odocstream & os, OutputParams const & runparams) const
 		return 0;
 	}
 
+	string exppath = incfile;
+	if (!runparams.export_folder.empty()) {
+		exppath = makeAbsPath(exppath, runparams.export_folder).realPath();
+		FileName(exppath).onlyPath().createPath();
+	}
+
 	// write it to a file (so far the complete file)
-	string const exportfile = changeExtension(incfile, ".sgml");
+	string const exportfile = changeExtension(exppath, ".sgml");
 	DocFileName writefile(changeExtension(included_file, ".sgml"));
 
 	Buffer * tmp = loadIfNeeded();
