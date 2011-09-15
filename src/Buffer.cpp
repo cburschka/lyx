@@ -702,10 +702,10 @@ int Buffer::readHeader(Lexer & lex)
 	params().indiceslist().clear();
 	params().backgroundcolor = lyx::rgbFromHexName("#ffffff");
 	params().isbackgroundcolor = false;
-	params().fontcolor = lyx::rgbFromHexName("#000000");
+	params().fontcolor = RGBColor(0, 0, 0);
 	params().isfontcolor = false;
-	params().notefontcolor = lyx::rgbFromHexName("#cccccc");
-	params().boxbgcolor = lyx::rgbFromHexName("#ff0000");
+	params().notefontcolor = RGBColor(0xCC, 0xCC, 0xCC);
+	params().boxbgcolor = RGBColor(0xFF, 0, 0);
 	params().html_latex_start.clear();
 	params().html_latex_end.clear();
 	params().html_math_img_scale = 1.0;
@@ -1598,6 +1598,21 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 			os << "<style type='text/css'>\n"
 				<< styleinfo
 				<< "</style>\n";
+		}
+
+		bool const needfg = params().fontcolor != RGBColor(0, 0, 0);
+		bool const needbg = params().backgroundcolor != RGBColor(OxFF, OxFF, OxFF);
+		if (needfg || needbg) {
+				os << "<style type='text/css'>\nbody {\n";
+				if (needfg)
+				   os << "  color: "
+					    << from_ascii(X11hexname(params().fontcolor))
+					    << ";\n";
+				if (needbg)
+				   os << "  background-color: "
+					    << from_ascii(X11hexname(params().backgroundcolor))
+					    << ";\n";
+				os << "}\n</style>\n";
 		}
 		os << "</head>\n<body>\n";
 	}
