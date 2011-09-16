@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-09-14 09:37+0200\n"
-"PO-Revision-Date: 2011-09-14 09:47+0200\n"
+"POT-Creation-Date: 2011-09-16 10:24+0200\n"
+"PO-Revision-Date: 2011-09-16 10:40+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -204,16 +204,16 @@ msgstr "Táto bibliografická sekcia obsahuje..."
 msgid "&Content:"
 msgstr "&Obsah:"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:212
+#: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:213
 msgid "all cited references"
 msgstr "všetky citované referencie"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:153 src/frontends/qt4/GuiBibtex.cpp:328
-#: src/insets/InsetBibtex.cpp:210
+#: src/insets/InsetBibtex.cpp:211
 msgid "all uncited references"
 msgstr "všetky necitované referencie"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:158 src/insets/InsetBibtex.cpp:208
+#: src/frontends/qt4/ui/BibtexUi.ui:158 src/insets/InsetBibtex.cpp:209
 msgid "all references"
 msgstr "všetky referencie"
 
@@ -491,8 +491,8 @@ msgid "Remove the selected branch"
 msgstr "Zmazať vybranú vetvu"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3673
-#: src/Buffer.cpp:3686
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3718
+#: src/Buffer.cpp:3731
 msgid "&Remove"
 msgstr "&Odstrániť"
 
@@ -526,7 +526,7 @@ msgstr "Pridaj Všetko"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1094
-#: src/Buffer.cpp:2265 src/Buffer.cpp:3648 src/Buffer.cpp:3711
+#: src/Buffer.cpp:2288 src/Buffer.cpp:3693 src/Buffer.cpp:3756
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1841
@@ -535,7 +535,7 @@ msgstr "Pridaj Všetko"
 #: src/frontends/qt4/GuiView.cpp:2303 src/frontends/qt4/GuiView.cpp:2348
 #: src/frontends/qt4/GuiView.cpp:2563 src/frontends/qt4/GuiView.cpp:2570
 #: src/frontends/qt4/GuiView.cpp:2669 src/frontends/qt4/GuiView.cpp:2697
-#: src/frontends/qt4/GuiView.cpp:3288 src/insets/InsetBibtex.cpp:148
+#: src/frontends/qt4/GuiView.cpp:3288 src/insets/InsetBibtex.cpp:149
 msgid "&Cancel"
 msgstr "Z&rušiť"
 
@@ -1883,8 +1883,8 @@ msgstr "Vstup"
 msgid "Verbatim"
 msgstr "Doslovne (Verbatim)"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1130
-#: src/insets/InsetInclude.cpp:1136
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1144
+#: src/insets/InsetInclude.cpp:1150
 msgid "Program Listing"
 msgstr "Výpis zdrojového kódu"
 
@@ -17074,7 +17074,7 @@ msgid ""
 "it."
 msgstr "%1$s je z novšej verzie LyX-u, a skript lyx2lyx zlyhal pri konverzii."
 
-#: src/Buffer.cpp:1081 src/Buffer.cpp:3658 src/Buffer.cpp:3720
+#: src/Buffer.cpp:1081 src/Buffer.cpp:3703 src/Buffer.cpp:3765
 msgid "File is read-only"
 msgstr "Dokument je iba na čítanie"
 
@@ -17094,7 +17094,7 @@ msgstr "Dokument %1$s bol externe modifikovaný. Naozaj ho chcete prepísať?"
 msgid "Overwrite modified file?"
 msgstr "Prepísať modifikovaný súbor?"
 
-#: src/Buffer.cpp:1094 src/Buffer.cpp:2265 src/Exporter.cpp:50
+#: src/Buffer.cpp:1094 src/Buffer.cpp:2288 src/Exporter.cpp:50
 #: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2114
 #: src/frontends/qt4/GuiView.cpp:2303
 msgid "&Overwrite"
@@ -17184,53 +17184,53 @@ msgstr "iconv konverzia zlyhala"
 msgid "conversion failed"
 msgstr "Konverzia zlyhala"
 
-#: src/Buffer.cpp:1667
+#: src/Buffer.cpp:1682
 msgid "Running chktex..."
 msgstr "Spúšťam chktex..."
 
-#: src/Buffer.cpp:1681
+#: src/Buffer.cpp:1696
 msgid "chktex failure"
 msgstr "chktex zlyhal"
 
-#: src/Buffer.cpp:1682
+#: src/Buffer.cpp:1697
 msgid "Could not run chktex successfully."
 msgstr "Nemôžem spustiť chktex úspešne."
 
-#: src/Buffer.cpp:1934
+#: src/Buffer.cpp:1957
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Žiadne informácie pre export formátu: %1$s"
 
-#: src/Buffer.cpp:2006
+#: src/Buffer.cpp:2029
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Chyba pri exporte na formát: %1$s."
 
-#: src/Buffer.cpp:2089
+#: src/Buffer.cpp:2112
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "Vetva \"%1$s\" už existuje."
 
-#: src/Buffer.cpp:2119
+#: src/Buffer.cpp:2142
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "Vetva \"%1$s\" neexistuje."
 
-#: src/Buffer.cpp:2179
+#: src/Buffer.cpp:2202
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Nemôžem analyzovať  \"%1$s\""
 
-#: src/Buffer.cpp:2186
+#: src/Buffer.cpp:2209
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Neznámy cieľ \"%1$s\""
 
-#: src/Buffer.cpp:2196
+#: src/Buffer.cpp:2219
 msgid "Error exporting to DVI."
 msgstr "Chyba pri exporte na DVI"
 
-#: src/Buffer.cpp:2261 src/Exporter.cpp:45
+#: src/Buffer.cpp:2284 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -17241,73 +17241,73 @@ msgstr ""
 "\n"
 "Chcete tento súbor prepísať?"
 
-#: src/Buffer.cpp:2264 src/Exporter.cpp:48
+#: src/Buffer.cpp:2287 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Prepísať súbor?"
 
-#: src/Buffer.cpp:2281
+#: src/Buffer.cpp:2304
 msgid "Error running external commands."
 msgstr "Chyba pri spúšťaní externých príkazov."
 
-#: src/Buffer.cpp:3086
+#: src/Buffer.cpp:3109
 msgid "Preview source code"
 msgstr "Náhľad na zdrojový text"
 
-#: src/Buffer.cpp:3104
+#: src/Buffer.cpp:3127
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Náhľad na zdrojový text odstavca %1$d"
 
-#: src/Buffer.cpp:3108
+#: src/Buffer.cpp:3131
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Náhľad zdrojového kódu pre odstavce %1$s - %2$s"
 
-#: src/Buffer.cpp:3216
+#: src/Buffer.cpp:3239
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatické ukladanie %1$s"
 
-#: src/Buffer.cpp:3270
+#: src/Buffer.cpp:3293
 msgid "Autosave failed!"
 msgstr "Automatické ukladanie sa nepodarilo!"
 
-#: src/Buffer.cpp:3331
+#: src/Buffer.cpp:3354
 msgid "Autosaving current document..."
 msgstr "Automatické ukladanie súčasného dokumentu..."
 
-#: src/Buffer.cpp:3421
+#: src/Buffer.cpp:3453
 msgid "Couldn't export file"
 msgstr "Nemôžem exportovať súbor"
 
-#: src/Buffer.cpp:3422
+#: src/Buffer.cpp:3454
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Žiadne informácie pre export formátu %1$s"
 
-#: src/Buffer.cpp:3489
+#: src/Buffer.cpp:3523
 msgid "File name error"
 msgstr "Chyba v názve súboru"
 
-#: src/Buffer.cpp:3490
+#: src/Buffer.cpp:3524
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Cesta k dokumentu nesmie obsahovať medzery."
 
-#: src/Buffer.cpp:3575
+#: src/Buffer.cpp:3620
 msgid "Document export cancelled."
 msgstr "Exportovanie dokumentu bolo zrušené."
 
-#: src/Buffer.cpp:3585
+#: src/Buffer.cpp:3630
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument exportovaný ako %1$s do súboru `%2$s'"
 
-#: src/Buffer.cpp:3591
+#: src/Buffer.cpp:3636
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument exportovaný ako %1$s"
 
-#: src/Buffer.cpp:3644
+#: src/Buffer.cpp:3689
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17318,19 +17318,19 @@ msgstr ""
 "\n"
 "Získať núdzovú kópiu späť?"
 
-#: src/Buffer.cpp:3647
+#: src/Buffer.cpp:3692
 msgid "Load emergency save?"
 msgstr "Nahrať núdzovú kópiu ?"
 
-#: src/Buffer.cpp:3648
+#: src/Buffer.cpp:3693
 msgid "&Recover"
 msgstr "Získať späť"
 
-#: src/Buffer.cpp:3648
+#: src/Buffer.cpp:3693
 msgid "&Load Original"
 msgstr "Nahrať Originál"
 
-#: src/Buffer.cpp:3659
+#: src/Buffer.cpp:3704
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -17339,15 +17339,15 @@ msgstr ""
 "Bezpečnostný súbor úspešne načítaný, ale originálny súbor %1$s je označený "
 "len na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
 
-#: src/Buffer.cpp:3665
+#: src/Buffer.cpp:3710
 msgid "Document was successfully recovered."
 msgstr "Dokument bol úspešne obnovený."
 
-#: src/Buffer.cpp:3667
+#: src/Buffer.cpp:3712
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument nebol úspešne obnovený."
 
-#: src/Buffer.cpp:3668
+#: src/Buffer.cpp:3713
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17356,27 +17356,27 @@ msgstr ""
 "Zmazať núdzovú kópiu teraz?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3672 src/Buffer.cpp:3684
+#: src/Buffer.cpp:3717 src/Buffer.cpp:3729
 msgid "Delete emergency file?"
 msgstr "Zmazať núdzový súbor?"
 
-#: src/Buffer.cpp:3673 src/Buffer.cpp:3686
+#: src/Buffer.cpp:3718 src/Buffer.cpp:3731
 msgid "&Keep"
 msgstr "Držať"
 
-#: src/Buffer.cpp:3677
+#: src/Buffer.cpp:3722
 msgid "Emergency file deleted"
 msgstr "Núdzový súbor vymazaný"
 
-#: src/Buffer.cpp:3678
+#: src/Buffer.cpp:3723
 msgid "Do not forget to save your file now!"
 msgstr "Teraz nezabudnite uložiť váš súbor!"
 
-#: src/Buffer.cpp:3685
+#: src/Buffer.cpp:3730
 msgid "Remove emergency file now?"
 msgstr "Zmazať núdzovú kópiu teraz?"
 
-#: src/Buffer.cpp:3708
+#: src/Buffer.cpp:3753
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17387,19 +17387,19 @@ msgstr ""
 "\n"
 "Nahrať radšej zálohu ?"
 
-#: src/Buffer.cpp:3710
+#: src/Buffer.cpp:3755
 msgid "Load backup?"
 msgstr "Nahrať zálohu?"
 
-#: src/Buffer.cpp:3711
+#: src/Buffer.cpp:3756
 msgid "&Load backup"
 msgstr "Nahrať zálohu"
 
-#: src/Buffer.cpp:3711
+#: src/Buffer.cpp:3756
 msgid "Load &original"
 msgstr "Nahrať Originál"
 
-#: src/Buffer.cpp:3721
+#: src/Buffer.cpp:3766
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17408,25 +17408,25 @@ msgstr ""
 "Zálohový súbor úspešne načítaný, ale originálny súbor %1$s je označený len "
 "na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
 
-#: src/Buffer.cpp:4061 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4106 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Nezmyselné!!! "
 
-#: src/Buffer.cpp:4182
+#: src/Buffer.cpp:4227
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s znovu nahraný."
 
-#: src/Buffer.cpp:4185
+#: src/Buffer.cpp:4230
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Nedá sa znova nahrať dokument %1$s."
 
-#: src/Buffer.cpp:4251
+#: src/Buffer.cpp:4296
 msgid "Included File Invalid"
 msgstr "Zahrnutý Súbor je Neplatný"
 
-#: src/Buffer.cpp:4252
+#: src/Buffer.cpp:4297
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17741,8 +17741,8 @@ msgstr "Varovanie ChkTeXu id # %1$d"
 msgid "ChkTeX warning id # "
 msgstr "Varovanie ChkTeXu id # "
 
-#: src/Color.cpp:201 src/insets/InsetBibtex.cpp:178
-#: src/insets/InsetBibtex.cpp:203
+#: src/Color.cpp:201 src/insets/InsetBibtex.cpp:179
+#: src/insets/InsetBibtex.cpp:204
 msgid "none"
 msgstr "žiadna"
 
@@ -18205,11 +18205,11 @@ msgstr "Prepísať všetko"
 msgid "&Cancel export"
 msgstr "&Zrušiť export"
 
-#: src/Exporter.cpp:96
+#: src/Exporter.cpp:97
 msgid "Couldn't copy file"
 msgstr "Nemožné kopírovať súbor"
 
-#: src/Exporter.cpp:97
+#: src/Exporter.cpp:98
 #, c-format
 msgid "Copying %1$s to %2$s failed."
 msgstr "Kopírovanie %1$s do %2$s zlyhalo."
@@ -18603,6 +18603,9 @@ msgid ""
 "                  Look on Tools->Preferences->File formats->Format\n"
 "                  to get an idea which parameters should be passed.\n"
 "                  Note that the order of -e and -x switches matters.\n"
+"\t-E [--export-to] fmt filename\n"
+"                  where fmt is the export format of choice (see --export),\n"
+"                  and filename is the destination filename.\n"
 "\t-i [--import] fmt file.xxx\n"
 "                  where fmt is the import format of choice\n"
 "                  and file.xxx is the file to be imported.\n"
@@ -18636,11 +18639,13 @@ msgstr ""
 "                  spustí lyx-príkaz command .\n"
 "\t-e [--export] fmt\n"
 "                  kde fmt je vybraný exportný formát.\n"
-"                  Pozrite si Nástroje->Preferencie->Obsluha súborov-"
-">Formáty\n"
+"                  Pozrite si Nástroje->Preferencie->Obsluha súborov->Formáty\n"
 "                  aby ste dostali predstavu o tom, ktoré  parametre sú "
 "vhodné.\n"
 "                  Všimnite si že poradie prepínačov -e a -x je významné.\n"
+"\t-E [--export-to] fmt názov\n"
+"                  kde fmt je vybraný exportný formát (pozrite --expot),\n"
+"                  a názov je meno výsledného súboru.\n"
 "\ti [--import] fmt file.xxx\n"
 "                  kde fmt je vybraný formát k importu\n"
 "                  a file.xxx je meno súboru určeného pre import.\n"
@@ -18651,6 +18656,8 @@ msgstr ""
 "                  Keď `main' bude prepísaný len hlavný súbor.\n"
 "                  Keď `none' nebude nič prepísané.                  Všetko "
 "iné je rovnocenné k `all', len že nie je skonzumované.\n"
+"\t-n [--no-remote]\n"
+"                 otvorí dokumenty v novej inštancii\n"
 "\t-r [--remote]\n"
 "                  otvorí dokumenty v už spustenej inštancii\n"
 "                  (pracujúca lyx-pipa je potrebná)\n"
@@ -18658,39 +18665,47 @@ msgstr ""
 "\t-version  zhrnúť  verziu a prekladnú informáciu.\n"
 "Viac informácií nájdete v manuálovej stránke LyXu."
 
-#: src/LyX.cpp:1093
+#: src/LyX.cpp:1096
 msgid "No system directory"
 msgstr "Nemám systémový adresár"
 
-#: src/LyX.cpp:1094
+#: src/LyX.cpp:1097
 msgid "Missing directory for -sysdir switch"
 msgstr "Chýba adresár pre prepínač -sysdir"
 
-#: src/LyX.cpp:1105
+#: src/LyX.cpp:1108
 msgid "No user directory"
 msgstr "Nemám užívateľský adresár"
 
-#: src/LyX.cpp:1106
+#: src/LyX.cpp:1109
 msgid "Missing directory for -userdir switch"
 msgstr "Chýba adresár pre prepínač -userdir"
 
-#: src/LyX.cpp:1117
+#: src/LyX.cpp:1120
 msgid "Incomplete command"
 msgstr "Neúplný príkaz"
 
-#: src/LyX.cpp:1118
+#: src/LyX.cpp:1121
 msgid "Missing command string after --execute switch"
 msgstr "Chýba príkazový reťazec po prepínači --execute!"
 
-#: src/LyX.cpp:1129
+#: src/LyX.cpp:1132
+msgid "Missing file type [eg latex, ps...] after --export-to switch"
+msgstr "Chýba typ súboru [napr. latex, ps...] po prepínači --export-to"
+
+#: src/LyX.cpp:1137
+msgid "Missing destination filename after --export-to switch"
+msgstr "Chýba typ súboru [napr. latex, ps...] po prepínači --export-to"
+
+#: src/LyX.cpp:1150
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Chýba typ súboru [napr. latex, ps...] po prepínači --export"
 
-#: src/LyX.cpp:1142
+#: src/LyX.cpp:1163
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Chýba typ súboru [napr. latex, ps...] po prepínači --import"
 
-#: src/LyX.cpp:1147
+#: src/LyX.cpp:1168
 msgid "Missing filename for --import"
 msgstr "Chýba názov súboru pre --import"
 
@@ -22288,8 +22303,8 @@ msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "LyX-1.6.x dokumenty (*.lyx16)"
 
 #: src/frontends/qt4/GuiView.cpp:1956 src/frontends/qt4/Validator.cpp:188
-#: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:290
-#: src/insets/InsetGraphics.cpp:596 src/insets/InsetInclude.cpp:534
+#: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:294
+#: src/insets/InsetGraphics.cpp:596 src/insets/InsetInclude.cpp:540
 msgid "Invalid filename"
 msgstr "Neplatné meno súboru"
 
@@ -22825,8 +22840,8 @@ msgid "List of Listings"
 msgstr "Zoznam výpisov"
 
 #: src/frontends/qt4/qt_helpers.cpp:564
-msgid "List of Indexes"
-msgstr "Zoznam indexov"
+msgid "List of Index Entries"
+msgstr "Zoznam Indexov"
 
 #: src/frontends/qt4/qt_helpers.cpp:566
 msgid "List of Marginal notes"
@@ -22852,8 +22867,8 @@ msgstr "Zoznam vetiev"
 msgid "List of Changes"
 msgstr "Zoznam zmien"
 
-#: src/insets/ExternalSupport.cpp:369 src/insets/InsetBibtex.cpp:291
-#: src/insets/InsetGraphics.cpp:597 src/insets/InsetInclude.cpp:535
+#: src/insets/ExternalSupport.cpp:369 src/insets/InsetBibtex.cpp:295
+#: src/insets/InsetGraphics.cpp:597 src/insets/InsetInclude.cpp:541
 msgid ""
 "The following filename will cause troubles when running the exported file "
 "through LaTeX: "
@@ -22861,13 +22876,13 @@ msgstr ""
 "Nasledujúce meno súboru je vhodné na spôsobenie problémov pri preklade "
 "exportovaného súboru LaTeX-om: "
 
-#: src/insets/ExternalSupport.cpp:374 src/insets/InsetBibtex.cpp:296
-#: src/insets/InsetGraphics.cpp:604 src/insets/InsetInclude.cpp:540
+#: src/insets/ExternalSupport.cpp:374 src/insets/InsetBibtex.cpp:300
+#: src/insets/InsetGraphics.cpp:604 src/insets/InsetInclude.cpp:546
 msgid "Problematic filename for DVI"
 msgstr "Meno súboru je pre DVI problematické"
 
-#: src/insets/ExternalSupport.cpp:375 src/insets/InsetBibtex.cpp:297
-#: src/insets/InsetGraphics.cpp:605 src/insets/InsetInclude.cpp:541
+#: src/insets/ExternalSupport.cpp:375 src/insets/InsetBibtex.cpp:301
+#: src/insets/InsetGraphics.cpp:605 src/insets/InsetInclude.cpp:547
 msgid ""
 "The following filename can cause troubles when running the exported file "
 "through LaTeX and opening the resulting DVI: "
@@ -22920,7 +22935,7 @@ msgstr ""
 "Kľúč %1$s už existuje,\n"
 "bude zmenený na %2$s."
 
-#: src/insets/InsetBibtex.cpp:144
+#: src/insets/InsetBibtex.cpp:145
 #, c-format
 msgid ""
 "The BibTeX inset includes %1$s databases.\n"
@@ -22929,39 +22944,39 @@ msgstr ""
 "Vložka BibTeX-u zahrňuje %1$s databázy.\n"
 "Keď budete pokračovať, budú všetky otvorené."
 
-#: src/insets/InsetBibtex.cpp:147
+#: src/insets/InsetBibtex.cpp:148
 msgid "Open Databases?"
 msgstr "Otvoriť Databázy?"
 
-#: src/insets/InsetBibtex.cpp:148
+#: src/insets/InsetBibtex.cpp:149
 msgid "&Proceed"
 msgstr "Pokračovať"
 
-#: src/insets/InsetBibtex.cpp:166
+#: src/insets/InsetBibtex.cpp:167
 msgid "BibTeX Generated Bibliography"
 msgstr "Zoznam bibliografických odkazov generovaný BibTeXom"
 
-#: src/insets/InsetBibtex.cpp:173
+#: src/insets/InsetBibtex.cpp:174
 msgid "Databases:"
 msgstr "Databázy:"
 
-#: src/insets/InsetBibtex.cpp:198
+#: src/insets/InsetBibtex.cpp:199
 msgid "Style File:"
 msgstr "Súbor so štýlom:"
 
-#: src/insets/InsetBibtex.cpp:205
+#: src/insets/InsetBibtex.cpp:206
 msgid "Lists:"
 msgstr "Obsahuje:"
 
-#: src/insets/InsetBibtex.cpp:216
+#: src/insets/InsetBibtex.cpp:217
 msgid "included in TOC"
 msgstr "zahrnuté do Obsahu"
 
-#: src/insets/InsetBibtex.cpp:318 src/insets/InsetBibtex.cpp:364
+#: src/insets/InsetBibtex.cpp:322 src/insets/InsetBibtex.cpp:368
 msgid "Export Warning!"
 msgstr "Export-Varovanie!"
 
-#: src/insets/InsetBibtex.cpp:319
+#: src/insets/InsetBibtex.cpp:323
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -22969,7 +22984,7 @@ msgstr ""
 "V cestách k databázam BibTeX-u sú medzery.\n"
 "BibTeX nebude schopný také databázy nájsť."
 
-#: src/insets/InsetBibtex.cpp:365
+#: src/insets/InsetBibtex.cpp:369
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -23147,7 +23162,7 @@ msgstr "LyX nemôže generovať zoznam od %1$s"
 msgid "footnote"
 msgstr "Poznámka pod čiarou"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:668
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:674
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -23158,12 +23173,12 @@ msgstr ""
 "%1$s\n"
 "do pomocného adresára."
 
-#: src/insets/InsetGraphics.cpp:719 src/insets/InsetGraphics.cpp:934
+#: src/insets/InsetGraphics.cpp:719 src/insets/InsetGraphics.cpp:941
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Konverziu %1$s netreba"
 
-#: src/insets/InsetGraphics.cpp:811
+#: src/insets/InsetGraphics.cpp:818
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafický súbor: %1$s"
@@ -23193,18 +23208,18 @@ msgstr "Doslovný vstup*"
 msgid "Include (excluded)"
 msgstr "Zahrnúť (vylúčené)"
 
-#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:768
-#: src/insets/InsetInclude.cpp:829
+#: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:776
+#: src/insets/InsetInclude.cpp:837
 msgid "Recursive input"
 msgstr "Rekurzívny vstup"
 
-#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:769
-#: src/insets/InsetInclude.cpp:830
+#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:777
+#: src/insets/InsetInclude.cpp:838
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "Došlo k pokusu vložiť súbor %1$s do seba! Vklad ignorujem."
 
-#: src/insets/InsetInclude.cpp:561
+#: src/insets/InsetInclude.cpp:567
 #, c-format
 msgid ""
 "Could not load included file\n"
@@ -23215,11 +23230,11 @@ msgstr ""
 "`%1$s'\n"
 "Skontrolujte, či daný súbor naozaj existuje."
 
-#: src/insets/InsetInclude.cpp:565
+#: src/insets/InsetInclude.cpp:571
 msgid "Missing included file"
 msgstr "Chýba zahrnutý súbor"
 
-#: src/insets/InsetInclude.cpp:571
+#: src/insets/InsetInclude.cpp:577
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -23230,11 +23245,11 @@ msgstr ""
 "má triedu (textclass) `%2$s'\n"
 "zatiaľ čo rodičovský súbor má triedu `%3$s'."
 
-#: src/insets/InsetInclude.cpp:577
+#: src/insets/InsetInclude.cpp:583
 msgid "Different textclasses"
 msgstr "Rozdielne triedy (textclass)"
 
-#: src/insets/InsetInclude.cpp:592
+#: src/insets/InsetInclude.cpp:598
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -23245,11 +23260,11 @@ msgstr ""
 "používa modul `%2$s',\n"
 "ktorý sa nepoužíva v rodičovskom dokumente."
 
-#: src/insets/InsetInclude.cpp:596
+#: src/insets/InsetInclude.cpp:602
 msgid "Module not found"
 msgstr "Modul nenájdený"
 
-#: src/insets/InsetInclude.cpp:621 src/insets/InsetInclude.cpp:644
+#: src/insets/InsetInclude.cpp:627 src/insets/InsetInclude.cpp:650
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
@@ -23258,15 +23273,15 @@ msgstr ""
 "Zahrnutý súbor `%1$s'  nebol správne exportovaný.\n"
 "Upozornenie: Možné, že LaTeXov export nie je úplný."
 
-#: src/insets/InsetInclude.cpp:630 src/insets/InsetInclude.cpp:652
+#: src/insets/InsetInclude.cpp:636 src/insets/InsetInclude.cpp:658
 msgid "Export failure"
 msgstr "Exportovanie zlyhalo"
 
-#: src/insets/InsetInclude.cpp:756
+#: src/insets/InsetInclude.cpp:764
 msgid "Unsupported Inclusion"
 msgstr "Nepodporovaná Inklúzia"
 
-#: src/insets/InsetInclude.cpp:757
+#: src/insets/InsetInclude.cpp:765
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
