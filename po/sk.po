@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-09-08 13:07+0200\n"
-"PO-Revision-Date: 2011-09-08 13:10+0200\n"
+"POT-Creation-Date: 2011-09-16 10:23+0200\n"
+"PO-Revision-Date: 2011-09-16 10:39+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -491,8 +491,8 @@ msgid "Remove the selected branch"
 msgstr "Zmazať vybranú vetvu"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3625
-#: src/Buffer.cpp:3638
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3640
+#: src/Buffer.cpp:3653
 msgid "&Remove"
 msgstr "&Odstrániť"
 
@@ -526,7 +526,7 @@ msgstr "Pridaj Všetko"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1059
-#: src/Buffer.cpp:2214 src/Buffer.cpp:3600 src/Buffer.cpp:3663
+#: src/Buffer.cpp:2229 src/Buffer.cpp:3615 src/Buffer.cpp:3678
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1799
@@ -16660,7 +16660,7 @@ msgid ""
 "it."
 msgstr "%1$s je z novšej verzie LyX-u, a skript lyx2lyx zlyhal pri konverzii."
 
-#: src/Buffer.cpp:1046 src/Buffer.cpp:3610 src/Buffer.cpp:3672
+#: src/Buffer.cpp:1046 src/Buffer.cpp:3625 src/Buffer.cpp:3687
 msgid "File is read-only"
 msgstr "Dokument je iba na čítanie"
 
@@ -16680,7 +16680,7 @@ msgstr "Dokument %1$s bol externe modifikovaný. Naozaj ho chcete prepísať?"
 msgid "Overwrite modified file?"
 msgstr "Prepísať modifikovaný súbor?"
 
-#: src/Buffer.cpp:1059 src/Buffer.cpp:2214 src/Exporter.cpp:50
+#: src/Buffer.cpp:1059 src/Buffer.cpp:2229 src/Exporter.cpp:50
 #: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2114
 #: src/frontends/qt4/GuiView.cpp:2303
 msgid "&Overwrite"
@@ -16770,53 +16770,53 @@ msgstr "iconv konverzia zlyhala"
 msgid "conversion failed"
 msgstr "Konverzia zlyhala"
 
-#: src/Buffer.cpp:1624
+#: src/Buffer.cpp:1639
 msgid "Running chktex..."
 msgstr "Spúšťam chktex..."
 
-#: src/Buffer.cpp:1638
+#: src/Buffer.cpp:1653
 msgid "chktex failure"
 msgstr "chktex zlyhal"
 
-#: src/Buffer.cpp:1639
+#: src/Buffer.cpp:1654
 msgid "Could not run chktex successfully."
 msgstr "Nemôžem spustiť chktex úspešne."
 
-#: src/Buffer.cpp:1883
+#: src/Buffer.cpp:1898
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Žiadne informácie pre export formátu: %1$s"
 
-#: src/Buffer.cpp:1955 src/frontends/qt4/GuiView.cpp:3143
+#: src/Buffer.cpp:1970 src/frontends/qt4/GuiView.cpp:3143
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Chyba pri exporte na formát: %1$s."
 
-#: src/Buffer.cpp:2038
+#: src/Buffer.cpp:2053
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "Vetva \"%1$s\" už existuje."
 
-#: src/Buffer.cpp:2068
+#: src/Buffer.cpp:2083
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "Vetva \"%1$s\" neexistuje."
 
-#: src/Buffer.cpp:2128
+#: src/Buffer.cpp:2143
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Nemôžem analyzovať  \"%1$s\""
 
-#: src/Buffer.cpp:2135
+#: src/Buffer.cpp:2150
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Neznámy cieľ \"%1$s\""
 
-#: src/Buffer.cpp:2145
+#: src/Buffer.cpp:2160
 msgid "Error exporting to DVI."
 msgstr "Chyba pri exporte na DVI"
 
-#: src/Buffer.cpp:2210 src/Exporter.cpp:45
+#: src/Buffer.cpp:2225 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -16827,73 +16827,73 @@ msgstr ""
 "\n"
 "Chcete tento súbor prepísať?"
 
-#: src/Buffer.cpp:2213 src/Exporter.cpp:48
+#: src/Buffer.cpp:2228 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Prepísať súbor?"
 
-#: src/Buffer.cpp:2230
+#: src/Buffer.cpp:2245
 msgid "Error running external commands."
 msgstr "Chyba pri spúšťaní externých príkazov."
 
-#: src/Buffer.cpp:3023
+#: src/Buffer.cpp:3038
 msgid "Preview source code"
 msgstr "Náhľad na zdrojový text"
 
-#: src/Buffer.cpp:3041
+#: src/Buffer.cpp:3056
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Náhľad na zdrojový text odstavca %1$d"
 
-#: src/Buffer.cpp:3045
+#: src/Buffer.cpp:3060
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Náhľad zdrojového kódu pre odstavce %1$s - %2$s"
 
-#: src/Buffer.cpp:3164
+#: src/Buffer.cpp:3179
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatické ukladanie %1$s"
 
-#: src/Buffer.cpp:3218
+#: src/Buffer.cpp:3233
 msgid "Autosave failed!"
 msgstr "Automatické ukladanie sa nepodarilo!"
 
-#: src/Buffer.cpp:3279
+#: src/Buffer.cpp:3294
 msgid "Autosaving current document..."
 msgstr "Automatické ukladanie súčasného dokumentu..."
 
-#: src/Buffer.cpp:3369
+#: src/Buffer.cpp:3384
 msgid "Couldn't export file"
 msgstr "Nemôžem exportovať súbor"
 
-#: src/Buffer.cpp:3370
+#: src/Buffer.cpp:3385
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Žiadne informácie pre export formátu %1$s"
 
-#: src/Buffer.cpp:3441
+#: src/Buffer.cpp:3456
 msgid "File name error"
 msgstr "Chyba v názve súboru"
 
-#: src/Buffer.cpp:3442
+#: src/Buffer.cpp:3457
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Cesta k dokumentu nesmie obsahovať medzery."
 
-#: src/Buffer.cpp:3527
+#: src/Buffer.cpp:3542
 msgid "Document export cancelled."
 msgstr "Exportovanie dokumentu bolo zrušené."
 
-#: src/Buffer.cpp:3537
+#: src/Buffer.cpp:3552
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument exportovaný ako %1$s do súboru `%2$s'"
 
-#: src/Buffer.cpp:3543
+#: src/Buffer.cpp:3558
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument exportovaný ako %1$s"
 
-#: src/Buffer.cpp:3596
+#: src/Buffer.cpp:3611
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -16904,19 +16904,19 @@ msgstr ""
 "\n"
 "Získať núdzovú kópiu späť?"
 
-#: src/Buffer.cpp:3599
+#: src/Buffer.cpp:3614
 msgid "Load emergency save?"
 msgstr "Nahrať núdzovú kópiu ?"
 
-#: src/Buffer.cpp:3600
+#: src/Buffer.cpp:3615
 msgid "&Recover"
 msgstr "Získať späť"
 
-#: src/Buffer.cpp:3600
+#: src/Buffer.cpp:3615
 msgid "&Load Original"
 msgstr "Nahrať Originál"
 
-#: src/Buffer.cpp:3611
+#: src/Buffer.cpp:3626
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -16925,15 +16925,15 @@ msgstr ""
 "Bezpečnostný súbor úspešne načítaný, ale originálny súbor %1$s je označený "
 "len na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
 
-#: src/Buffer.cpp:3617
+#: src/Buffer.cpp:3632
 msgid "Document was successfully recovered."
 msgstr "Dokument bol úspešne obnovený."
 
-#: src/Buffer.cpp:3619
+#: src/Buffer.cpp:3634
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument nebol úspešne obnovený."
 
-#: src/Buffer.cpp:3620
+#: src/Buffer.cpp:3635
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -16942,27 +16942,27 @@ msgstr ""
 "Zmazať núdzovú kópiu teraz?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3624 src/Buffer.cpp:3636
+#: src/Buffer.cpp:3639 src/Buffer.cpp:3651
 msgid "Delete emergency file?"
 msgstr "Zmazať núdzový súbor?"
 
-#: src/Buffer.cpp:3625 src/Buffer.cpp:3638
+#: src/Buffer.cpp:3640 src/Buffer.cpp:3653
 msgid "&Keep"
 msgstr "Držať"
 
-#: src/Buffer.cpp:3629
+#: src/Buffer.cpp:3644
 msgid "Emergency file deleted"
 msgstr "Núdzový súbor vymazaný"
 
-#: src/Buffer.cpp:3630
+#: src/Buffer.cpp:3645
 msgid "Do not forget to save your file now!"
 msgstr "Teraz nezabudnite uložiť váš súbor!"
 
-#: src/Buffer.cpp:3637
+#: src/Buffer.cpp:3652
 msgid "Remove emergency file now?"
 msgstr "Zmazať núdzovú kópiu teraz?"
 
-#: src/Buffer.cpp:3660
+#: src/Buffer.cpp:3675
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -16973,19 +16973,19 @@ msgstr ""
 "\n"
 "Nahrať radšej zálohu ?"
 
-#: src/Buffer.cpp:3662
+#: src/Buffer.cpp:3677
 msgid "Load backup?"
 msgstr "Nahrať zálohu?"
 
-#: src/Buffer.cpp:3663
+#: src/Buffer.cpp:3678
 msgid "&Load backup"
 msgstr "Nahrať zálohu"
 
-#: src/Buffer.cpp:3663
+#: src/Buffer.cpp:3678
 msgid "Load &original"
 msgstr "Nahrať Originál"
 
-#: src/Buffer.cpp:3673
+#: src/Buffer.cpp:3688
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -16994,25 +16994,25 @@ msgstr ""
 "Zálohový súbor úspešne načítaný, ale originálny súbor %1$s je označený len "
 "na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
 
-#: src/Buffer.cpp:4012 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4027 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Nezmyselné!!! "
 
-#: src/Buffer.cpp:4133
+#: src/Buffer.cpp:4148
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s znovu nahraný."
 
-#: src/Buffer.cpp:4136
+#: src/Buffer.cpp:4151
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Nedá sa znova nahrať dokument %1$s."
 
-#: src/Buffer.cpp:4202
+#: src/Buffer.cpp:4217
 msgid "Included File Invalid"
 msgstr "Zahrnutý Súbor je Neplatný"
 
-#: src/Buffer.cpp:4203
+#: src/Buffer.cpp:4218
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -22375,8 +22375,8 @@ msgid "List of Listings"
 msgstr "Zoznam výpisov"
 
 #: src/frontends/qt4/qt_helpers.cpp:563
-msgid "List of Indexes"
-msgstr "Zoznam indexov"
+msgid "List of Index Entries"
+msgstr "Zoznam Indexov"
 
 #: src/frontends/qt4/qt_helpers.cpp:565
 msgid "List of Marginal notes"
