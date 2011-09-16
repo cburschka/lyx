@@ -115,12 +115,13 @@ def gather_files(curfile, incfiles, lyx2lyx):
             if not os.path.isabs(file):
                 file = os.path.join(curdir, file)
             file_exists = False
-            for ext in extlist:
-                if os.path.exists(file + ext):
-                    file = file + ext
-                    file_exists = True
-                    break
-            if file_exists:
+            if not os.path.isdir(file):
+                for ext in extlist:
+                    if os.path.exists(file + ext):
+                        file = file + ext
+                        file_exists = True
+                        break
+            if file_exists and not file in incfiles:
                 incfiles.append(abspath(file))
                 if recursive:
                     gather_files(file, incfiles, lyx2lyx)
