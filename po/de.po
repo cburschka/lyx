@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-07-15 20:16+0200\n"
-"PO-Revision-Date: 2011-09-07 08:25+0200\n"
+"PO-Revision-Date: 2011-09-16 11:05+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -3893,7 +3893,7 @@ msgid ""
 "Use the OS native format."
 msgstr ""
 "Spezifizieren Sie diejenigen Verzeichnisse, die der Umgebungsvariablen PATH "
-"vorangestellt werden sollten.\n"
+"vorangestellt werden sollen.\n"
 "Verwenden Sie das native Format Ihres Betriebssystems."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:58
@@ -3907,7 +3907,7 @@ msgid ""
 "A '.' represents the current document directory. Use the OS native format."
 msgstr ""
 "Spezifizieren Sie diejenigen Verzeichnisse, die der Umgebungsvariablen "
-"TEXINPUTS vorangestellt werden sollten.\n"
+"TEXINPUTS vorangestellt werden sollen.\n"
 "Ein '.' repräsentiert das aktuelle Dokumentverzeichnis. Verwenden Sie das "
 "native Format Ihres Betriebssystems."
 
@@ -4526,7 +4526,7 @@ msgstr "Ma&rken in:"
 
 #: src/frontends/qt4/ui/RefUi.ui:49
 msgid "&References"
-msgstr "&Literaturverzeichnis"
+msgstr "&Verweise"
 
 #: src/frontends/qt4/ui/RefUi.ui:76
 msgid "Fil&ter:"
@@ -7292,7 +7292,7 @@ msgstr "Kopfzeile links"
 
 #: lib/layouts/customHeadersFooters.module:12
 msgid "Header/Footer"
-msgstr "Kopf/Fußzeile"
+msgstr "Kopf-/Fußzeile"
 
 #: lib/layouts/customHeadersFooters.module:18
 #: lib/layouts/aguplus.inc:93
@@ -11097,8 +11097,9 @@ msgid ""
 "Allows to use the statistical language S/R as a literate programming tool via "
 "Sweave package. See sweave.lyx in examples."
 msgstr ""
-"Erlaubt die statistische Sprache S/R als literarisches Programmierwerkzeug "
-"mit Hilfe des Pakets Sweave zu benutzen. Beispiele zeigt die mitgelieferte "
+"Erlaubt die Verwendung der statistischen Sprache S/R als literarischem "
+"Programmierwerkzeug "
+"mit Hilfe des Pakets Sweave. Beispiele zeigt die mitgelieferte "
 "Beispieldatei sweave.lyx."
 
 #: lib/layouts/sweave.module:23
@@ -11115,11 +11116,11 @@ msgstr "Sweave Opts"
 
 #: lib/layouts/sweave.module:69
 msgid "S/R expression"
-msgstr "S/R Ausdruck"
+msgstr "S/R-Ausdruck"
 
 #: lib/layouts/sweave.module:70
 msgid "S/R expr"
-msgstr "S/R Ausdr."
+msgstr "S/R-Ausdr."
 
 #: lib/layouts/sweave.module:91
 msgid "Sweave Input File"
@@ -13865,7 +13866,7 @@ msgstr "Hauptdokument aktualisieren"
 
 #: lib/ui/stdtoolbars.inc:105
 msgid "Enable Forward/Reverse Search"
-msgstr "Vorwärts/Rückwärtssuche aktivieren"
+msgstr "Vorwärts-/Rückwärtssuche aktivieren"
 
 #: lib/ui/stdtoolbars.inc:107
 msgid "View other formats"
