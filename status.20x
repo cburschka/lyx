@@ -40,6 +40,10 @@ What's new
 
 - Make InsetInfo output a path matching the LaTeX compiler.
 
+- Improve creation of a LyX archive. Now also the files referenced in ERT
+  in the document body (e.g., through \input or \insertgraphics) are
+  included in the archive.
+
 
 * DOCUMENTATION AND LOCALIZATION
 

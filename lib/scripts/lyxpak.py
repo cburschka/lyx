@@ -24,9 +24,11 @@ from getopt import getopt
 # Pre-compiled regular expressions.
 re_lyxfile = re.compile("\.lyx$")
 re_input = re.compile(r'^(.*)\\(input|include){(\s*)(\S+)(\s*)}.*$')
+re_ertinput = re.compile(r'^(input|include)({)(\s*)(\S+)(\s*)}.*$')
 re_package = re.compile(r'^(.*)\\(usepackage){(\s*)(\S+)(\s*)}.*$')
 re_class = re.compile(r'^(\\)(textclass)(\s+)(\S+)$')
 re_norecur = re.compile(r'^(.*)\\(verbatiminput|lstinputlisting|includegraphics\[*.*\]*){(\s*)(\S+)(\s*)}.*$')
+re_ertnorecur = re.compile(r'^(verbatiminput|lstinputlisting|includegraphics\[*.*\]*)({)(\s*)(\S+)(\s*)}.*$')
 re_filename = re.compile(r'^(\s*)(filename)(\s+)(\S+)$')
 re_options = re.compile(r'^(\s*)options(\s+)(\S+)$')
 re_bibfiles = re.compile(r'^(\s*)bibfiles(\s+)(\S+)$')
@@ -92,6 +94,7 @@ def gather_files(curfile, incfiles, lyx2lyx):
         lines = input.readlines()
         input.close()
 
+    maybe_in_ert = False
     i = 0
     while i < len(lines):
         # Gather used files.
@@ -99,7 +102,10 @@ def gather_files(curfile, incfiles, lyx2lyx):
         extlist = ['']
         match = re_filename.match(lines[i])
         if not match:
-            match = re_input.match(lines[i])
+            if maybe_in_ert:
+                match = re_ertinput.match(lines[i])
+            else:
+                match = re_input.match(lines[i])
             if not match:
                 match = re_package.match(lines[i])
                 extlist = ['.sty']
@@ -107,20 +113,25 @@ def gather_files(curfile, incfiles, lyx2lyx):
                     match = re_class.match(lines[i])
                     extlist = ['.cls']
                     if not match:
-                        match = re_norecur.match(lines[i])
+                        if maybe_in_ert:
+                            match = re_ertnorecur.match(lines[i])
+                        else:
+                            match = re_norecur.match(lines[i])
                         extlist = ['', '.eps', '.pdf', '.png', '.jpg']
                         recursive = False
+        maybe_in_ert = is_lyxfile and lines[i] == "\\backslash"
         if match:
             file = match.group(4).strip('"')
             if not os.path.isabs(file):
                 file = os.path.join(curdir, file)
             file_exists = False
-            for ext in extlist:
-                if os.path.exists(file + ext):
-                    file = file + ext
-                    file_exists = True
-                    break
-            if file_exists:
+            if not os.path.isdir(file):
+                for ext in extlist:
+                    if os.path.exists(file + ext):
+                        file = file + ext
+                        file_exists = True
+                        break
+            if file_exists and not abspath(file) in incfiles:
                 incfiles.append(abspath(file))
                 if recursive:
                     gather_files(file, incfiles, lyx2lyx)
