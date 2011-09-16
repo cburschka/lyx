@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-09-16 10:46+0200\n"
-"PO-Revision-Date: 2011-09-16 10:47+0200\n"
+"PO-Revision-Date: 2011-09-16 11:03+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -10710,8 +10710,9 @@ msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
 "via the Sweave() function. For more info see the LyX example file sweave.lyx."
 msgstr ""
-"Erlaubt die statistische Sprache S/R als literarisches Programmierwerkzeug "
-"mit Hilfe der Funktion Sweave() zu benutzen. Für weitere Informationen siehe "
+"Erlaubt die Verwendung der statistischen Sprache S/R als literarischem "
+"Programmierwerkzeug "
+"mit Hilfe der Funktion Sweave(). Für weitere Informationen siehe "
 "die mitgelieferte Beispieldatei sweave.lyx."
 
 #: lib/layouts/sweave.module:23
@@ -10728,11 +10729,11 @@ msgstr "Sweave Opts"
 
 #: lib/layouts/sweave.module:71
 msgid "S/R expression"
-msgstr "S/R Ausdruck"
+msgstr "S/R-Ausdruck"
 
 #: lib/layouts/sweave.module:72
 msgid "S/R expr"
-msgstr "S/R Ausdr."
+msgstr "S/R-Ausdr."
 
 #: lib/layouts/sweave.module:93 lib/layouts/sweave.module:94
 msgid "Sweave Input File"
@@ -13477,7 +13478,7 @@ msgstr "Hauptdokument aktualisieren"
 
 #: lib/ui/stdtoolbars.inc:105
 msgid "Enable Forward/Reverse Search"
-msgstr "Vorwärts/Rückwärtssuche aktivieren"
+msgstr "Vorwärts-/Rückwärtssuche aktivieren"
 
 #: lib/ui/stdtoolbars.inc:107
 msgid "View other formats"
@@ -16391,7 +16392,7 @@ msgstr "Sweave|S"
 
 #: lib/configure.py:559
 msgid "R/S code"
-msgstr "R/S Code"
+msgstr "R/S-Code"
 
 #: lib/configure.py:560
 msgid "LilyPond music"
