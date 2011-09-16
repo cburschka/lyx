@@ -121,7 +121,7 @@ def gather_files(curfile, incfiles, lyx2lyx):
                         file = file + ext
                         file_exists = True
                         break
-            if file_exists and not file in incfiles:
+            if file_exists and not abspath(file) in incfiles:
                 incfiles.append(abspath(file))
                 if recursive:
                     gather_files(file, incfiles, lyx2lyx)
