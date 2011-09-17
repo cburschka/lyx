@@ -719,6 +719,7 @@ void TeXOnePar(Buffer const & buf,
 	}
 
 	bool pending_newline = false;
+	bool unskip_newline = false;
 	switch (style.latextype) {
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
@@ -792,6 +793,7 @@ void TeXOnePar(Buffer const & buf,
 						"$$lang",
 						current_lang));
 					pending_newline = true;
+					unskip_newline = true;
 				}
 			} else if (!par_lang.empty()) {
 				os << from_ascii(subst(
@@ -799,14 +801,19 @@ void TeXOnePar(Buffer const & buf,
 					"$$lang",
 					par_lang));
 				pending_newline = true;
+				unskip_newline = true;
 			}
 		}
 	}
 	if (closing_rtl_ltr_environment)
 		os << "}";
 
-	if (pending_newline)
+	if (pending_newline) {
+		if (unskip_newline)
+			// prevent unwanted whitespace
+			os << '%';
 		os << '\n';
+	}
 
 	// if this is a CJK-paragraph and the next isn't, close CJK
 	// also if the next paragraph is a multilingual environment (because of nesting)
