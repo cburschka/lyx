@@ -801,6 +801,7 @@ void GuiView::showEvent(QShowEvent * e)
 		// No work area, switch to the background widget.
 		d.setBackground();
 
+	updateToolbars();
 	QMainWindow::showEvent(e);
 }
 
@@ -897,7 +898,7 @@ void GuiView::dropEvent(QDropEvent * event)
 			= theConverters().importableFormats();
 		vector<const Format *>::const_iterator it = import_formats.begin();
 		for (; it != import_formats.end(); ++it)
-			if ((*it)->hasExtension(ext))
+			if ((*it)->extension() == ext)
 				found_formats.push_back(*it);
 
 		FuncRequest cmd;
@@ -2066,10 +2067,10 @@ void GuiView::importDocument(string const & argument)
 			toqstr(addPath(package().system_support().absFileName(), "examples")));
 
 		docstring filter = formats.prettyName(format);
-		filter += " (*.{";
+		filter += " (*.";
 		// FIXME UNICODE
-		filter += from_utf8(formats.extensions(format));
-		filter += "})";
+		filter += from_utf8(formats.extension(format));
+		filter += ')';
 
 		FileDialog::Result result =
 			dlg.open(toqstr(initpath), fileFilters(toqstr(filter)));
