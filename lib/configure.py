@@ -170,10 +170,15 @@ def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
         sys.exit(2)
     logger.info('checking for ' + description + '...')
     ## print '(' + ','.join(progs) + ')',
+    global java, perl
     for idx in range(len(progs)):
         # ac_prog may have options, ac_word is the command name
         ac_prog = progs[idx]
         ac_word = ac_prog.split(' ')[0]
+        if (ac_word.endswith('.class') or ac_word.endswith('.jar')) and java == '':
+            continue
+        if ac_word.endswith('.pl') and perl == '':
+            continue
         msg = '+checking for "' + ac_word + '"... '
         path = os.environ["PATH"].split(os.pathsep) + path
         extlist = ['']
@@ -183,6 +188,13 @@ def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
             for ext in extlist:
                 if os.path.isfile( os.path.join(ac_dir, ac_word + ext) ):
                     logger.info(msg + ' yes')
+                    # deal with java and perl
+                    if ac_word.endswith('.class'):
+                        ac_prog = ac_prog.replace(ac_word, r'%s \"%s\"' % (java, os.path.join(ac_dir, ac_word[:-6])))
+                    elif ac_word.endswith('.jar'):
+                        ac_prog = ac_prog.replace(ac_word, r'%s -jar \"%s\"' % (java, os.path.join(ac_dir, ac_word)))
+                    elif ac_word.endswith('.pl'):
+                        ac_prog = ac_prog.replace(ac_word, r'%s -w \"%s\"' % (perl, os.path.join(ac_dir, ac_word)))
                     # write rc entries for this command
                     if len(rc_entry) == 1:
                         addToRC(rc_entry[0].replace('%%', ac_prog))
@@ -211,10 +223,15 @@ def checkProgAlternatives(description, progs, rc_entry = [], alt_rc_entry = [], 
     found_prime = False
     real_ac_dir = ''
     real_ac_word = not_found
+    global java, perl
     for idx in range(len(progs)):
         # ac_prog may have options, ac_word is the command name
         ac_prog = progs[idx]
         ac_word = ac_prog.split(' ')[0]
+        if (ac_word.endswith('.class') or ac_word.endswith('.jar')) and java == '':
+            continue
+        if ac_word.endswith('.pl') and perl == '':
+            continue
         msg = '+checking for "' + ac_word + '"... '
         path = os.environ["PATH"].split(os.pathsep) + path
         extlist = ['']
@@ -227,6 +244,13 @@ def checkProgAlternatives(description, progs, rc_entry = [], alt_rc_entry = [], 
                     logger.info(msg + ' yes')
                     pr = re.compile(r'(\\\S+)(.*)$')
                     m = None
+                    # deal with java and perl
+                    if ac_word.endswith('.class'):
+                        ac_prog = ac_prog.replace(ac_word, r'%s \"%s\"' % (java, os.path.join(ac_dir, ac_word[:-6])))
+                    elif ac_word.endswith('.jar'):
+                        ac_prog = ac_prog.replace(ac_word, r'%s -jar \"%s\"' % (java, os.path.join(ac_dir, ac_word)))
+                    elif ac_word.endswith('.pl'):
+                        ac_prog = ac_prog.replace(ac_word, r'%s -w \"%s\"' % (perl, os.path.join(ac_dir, ac_word)))
                     # write rc entries for this command
                     if found_prime == False:
                         if len(rc_entry) == 1:
@@ -284,13 +308,13 @@ def addAlternatives(rcs, alt_type):
         if len(rcs) == 1:
             m = r.match(rcs[0])
             if m:
-                alt = '\n'.join([s + m.group(1) + " %%" for s in alt_tokens])
+                alt = '\n'.join([s + m.group(1) + ' "%%"' for s in alt_tokens])
         elif len(rcs) > 1:
             m = r.match(rcs[idxx])
             if m:
                 if idxx > 0:
                     alt += '\n'
-                alt += '\n'.join([s + m.group(1) + " %%" for s in alt_tokens])
+                alt += '\n'.join([s + m.group(1) + ' "%%"' for s in alt_tokens])
     return alt
 
 
@@ -605,7 +629,7 @@ def checkFormatEntries(dtl_tools):
 ''')
 
 
-def checkConverterEntries(java='', perl=''):
+def checkConverterEntries():
     ''' Check all converters (\converter entries) '''
     checkProg('the pdflatex program', ['pdflatex $$i'],
         rc_entry = [ r'\converter pdflatex   pdf2       "%%"	"latex=pdflatex"' ])
@@ -644,14 +668,9 @@ def checkConverterEntries(java='', perl=''):
     checkProg('a Sweave -> R/S code converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxstangle.R $$i $$e $$r'], 
         rc_entry = [ r'\converter sweave      r      "%%"    ""' ])
     #
-    path, htmltolatex = checkProg('an HTML -> LaTeX converter', ['html2latex $$i',
-        'gnuhtml2latex $$i', 'htmltolatex -input $$i -output $$o', 'htmltolatex.jar'],
-        rc_entry = [ r'\converter html       latex      "%%"	""',
-                     r'\converter html       latex      "%%"	""',
-                     r'\converter html       latex      "%%"	""', '', ''] )
-    if htmltolatex == 'htmltolatex.jar' and java != '':
-        addToRC(r'\converter html       latex      "%s -jar \"%s\" -input $$i -output $$o"	""'
-            % (java, os.path.join(path, htmltolatex)))
+    checkProg('an HTML -> LaTeX converter', ['html2latex $$i', 'gnuhtml2latex $$i',
+        'htmltolatex -input $$i -output $$o', 'htmltolatex.jar -input $$i -output $$o'],
+        rc_entry = [ r'\converter html       latex      "%%"	""' ])
     #
     checkProg('an MS Word -> LaTeX converter', ['wvCleanLatex $$i $$o'],
         rc_entry = [ r'\converter word       latex      "%%"	""' ])
@@ -921,7 +940,7 @@ def checkDocBook():
         return ('no', 'false', '')
 
 
-def checkOtherEntries(java='', perl=''):
+def checkOtherEntries():
     ''' entries other than Format and Converter '''
     checkProg('ChkTeX', ['chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38'],
         rc_entry = [ r'\chktex_command "%%"' ])
@@ -935,12 +954,8 @@ def checkOtherEntries(java='', perl=''):
         alt_rc_entry = [ r'\index_alternatives "%%"' ])
     checkProg('an index processor appropriate to Japanese', ['mendex -c -q', 'jmakeindex -c -q', 'makeindex -c -q'],
         rc_entry = [ r'\jindex_command "%%"' ])
-    path, splitindex = checkProg('the splitindex processor', ['splitindex.pl', 'splitindex',
-        'splitindex.class'], rc_entry = ['', r'\splitindex_command "%%"', '', ''])
-    if splitindex == 'splitindex.pl' and perl != '':
-        addToRC(r'\splitindex_command "%s -w \"%s\""' % (perl, os.path.join(path, splitindex)))
-    elif splitindex == 'splitindex.class' and java != '':
-        addToRC(r'\splitindex_command "%s \"%s\""' % (java, os.path.join(path, 'splitindex')))
+    checkProg('the splitindex processor', ['splitindex.pl', 'splitindex',
+        'splitindex.class'], rc_entry = [ r'\splitindex_command "%%"' ])
     checkProg('a nomenclature processor', ['makeindex'],
         rc_entry = [ r'\nomencl_command "makeindex -s nomencl.ist"' ])
     ## FIXME: OCTAVE is not used anywhere
@@ -1334,16 +1349,17 @@ Format %i
 ''' % lyxrc_fileformat)
     # check latex
     LATEX = checkLatex(dtl_tools)
-    checkFormatEntries(dtl_tools)
+    # check java and perl before any checkProg that may require them
     java = checkProg('a java interpreter', ['java'])[1]
     perl = checkProg('a perl interpreter', ['perl'])[1]
-    checkConverterEntries(java, perl)
+    checkFormatEntries(dtl_tools)
+    checkConverterEntries()
     (chk_docbook, bool_docbook, docbook_cmd) = checkDocBook()
     checkTeXAllowSpaces()
     windows_style_tex_paths = checkTeXPaths()
     if windows_style_tex_paths != '':
         addToRC(r'\tex_expects_windows_paths %s' % windows_style_tex_paths)
-    checkOtherEntries(java, perl)
+    checkOtherEntries()
     checkModulesConfig()
     # --without-latex-config can disable lyx_check_config
     ret = checkLatexConfig(lyx_check_config and LATEX != '', bool_docbook)
