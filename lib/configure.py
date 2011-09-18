@@ -743,19 +743,6 @@ def checkConverterEntries(java='', perl=''):
     checkProg('a DVI to PDF converter', ['dvipdfmx -o $$o $$i', 'dvipdfm -o $$o $$i'],
         rc_entry = [ r'\converter dvi        pdf3       "%%"	""' ])
     #
-    path, dvipng = checkProg('dvipng', ['dvipng'])
-    path, dv2dt  = checkProg('DVI to DTL converter', ['dv2dt'])
-    if dvipng == "dvipng" and dv2dt == 'dv2dt':
-        addToRC(r'\converter lyxpreview png        "python -tt $$s/scripts/lyxpreview2bitmap.py --png"	""')
-    else:
-        # set empty converter to override the default imagemagick
-        addToRC(r'\converter lyxpreview png        ""	""')
-    if dv2dt == 'dv2dt':
-        addToRC(r'\converter lyxpreview ppm        "python -tt $$s/scripts/lyxpreview2bitmap.py --ppm"	""')
-    else:
-        # set empty converter to override the default imagemagick
-        addToRC(r'\converter lyxpreview ppm        ""	""')
-    #
     checkProg('a fax program', ['kdeprintfax $$i', 'ksendfax $$i', 'hylapex $$i'],
         rc_entry = [ r'\converter ps         fax        "%%"	""'])
     #
@@ -910,6 +897,8 @@ def checkConverterEntries(java='', perl=''):
 \converter clyx       lyx        "python -tt $$s/lyx2lyx/lyx2lyx -c big5 $$i > $$o"	""
 \converter jlyx       lyx        "python -tt $$s/lyx2lyx/lyx2lyx -c euc_jp $$i > $$o"	""
 \converter klyx       lyx        "python -tt $$s/lyx2lyx/lyx2lyx -c euc_kr $$i > $$o"	""
+\converter lyxpreview png        "python -tt $$s/scripts/lyxpreview2bitmap.py --png"	""
+\converter lyxpreview ppm        "python -tt $$s/scripts/lyxpreview2bitmap.py --ppm"	""
 ''')
 
 
