@@ -8,14 +8,26 @@ been applied because of incomplete testing.
 Interface changes
 -----------------
 
-There have been some changes to the LyX command line. There is a new option 
-"--batch" that causes LyX to run the given commands without opening a GUI 
-window. Thus, something like:
-    lyx -batch -x "buffer-print printer default dvips" myfile.lyx
-will cause LyX to print myfile.lyx to the default printer, using dvips and 
-the default print settings (which, of course, have to have been configured 
-already). At present, not many commands can be used this way, but there will
-be more eventually.
+There have been some changes to the LyX command line. The following new
+options have been added:
+
+-batch
+
+  Causes LyX to run the given commands without opening a GUI window.
+  Thus, something like:
+        lyx -batch -x "buffer-print printer default dvips" myfile.lyx
+  will cause LyX to print myfile.lyx to the default printer, using
+  dvips and the default print settings (which, of course, have to have
+  been configured already). At present, not many commands can be used
+  this way, but there will be more eventually.
+
+-export-to <format> <dest>    (-E <format> <dest>)
+
+  Allows one to perform a batch export of the LyX file that is opened
+  to the specified destination file <dest> and format <format>.
+  For example, to create a PDF of a LyX document, you can run:
+    lyx -export-to pdf /path/to/dest.pdf /path/to/source.lyx
+  See the manual page for details.
 
 A bash completion script was added to the tarball.
 
