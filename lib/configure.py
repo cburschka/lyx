@@ -486,7 +486,7 @@ def checkFormatEntries(dtl_tools):
         rc_entry = [r'\Format fig        fig     FIG                    "" "%%"	"%%"	"vector"'])
     #
     checkViewerEditor('a Dia viewer and editor', ['dia'],
-        rc_entry = [r'\Format dia        dia     DIA                    "" "%%"	"%%"	"vector"'])
+        rc_entry = [r'\Format dia        dia     DIA                    "" "%%"	"%%"	"vector,zipped=native"'])
     #
     checkViewerEditor('a Grace viewer and editor', ['xmgrace'],
         rc_entry = [r'\Format agr        agr     Grace                  "" "%%"	"%%"	"vector"'])
@@ -1301,7 +1301,7 @@ def removeTempFiles():
 if __name__ == '__main__':
     lyx_check_config = True
     outfile = 'lyxrc.defaults'
-    lyxrc_fileformat = 2
+    lyxrc_fileformat = 3
     rc_entries = ''
     lyx_keep_temps = False
     version_suffix = ''

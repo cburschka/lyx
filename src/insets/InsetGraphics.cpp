@@ -490,7 +490,7 @@ copyToDirIfNeeded(DocFileName const & file, string const & dir)
 		return make_pair(IDENTICAL_PATHS, file_in);
 
 	string mangled = file.mangledFileName();
-	if (file.isZipped()) {
+	if (formats.isZippedFile(file)) {
 		// We need to change _eps.gz to .eps.gz. The mangled name is
 		// still unique because of the counter in mangledFileName().
 		// We can't just call mangledFileName() with the zip
@@ -616,7 +616,7 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 	// If the file is compressed and we have specified that it
 	// should not be uncompressed, then just return its name and
 	// let LaTeX do the rest!
-	if (params().filename.isZipped()) {
+	if (formats.isZippedFile(params().filename)) {
 		if (params().noUnzip) {
 			// We don't know whether latex can actually handle
 			// this file, but we can't check, because that would

@@ -20,6 +20,11 @@
 #   Support for multiple file extensions per format.
 #   No conversion necessary.
 
+# Incremented to format 3, r39705 by tommaso
+#   Support for file formats that are natively (g)zipped.
+#   We must add the flag zipped=native to formats that
+#   were previously hardcoded in the C++ source: dia.
+
 import re
 
 
@@ -101,6 +106,18 @@ def export_menu(line):
 	return (True,
 		"\\Format %s \"%s,menu=export\"" % (fmat, opts))
 
+zipre = re.compile(r'^\\[Ff]ormat\s+("?dia"?\s+.*)\s+"([^"]*?)"')
+def zipped_native(line):
+	if not line.lower().startswith("\\format"):
+		return no_match
+	m = zipre.match(line)
+	if not m:
+		return no_match
+	fmat = m.group(1)
+	opts = m.group(2)
+	return (True,
+		"\\Format %s \"%s,zipped=native\"" % (fmat, opts))
+
 ########################
 
 
@@ -113,4 +130,5 @@ conversions = [
 		language_package
 	]],
 	[  2, []],
+	[  3, [ zipped_native ]],
 ]

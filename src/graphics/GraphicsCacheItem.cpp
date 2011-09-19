@@ -359,7 +359,7 @@ bool CacheItem::Impl::tryDisplayFormat(FileName & filename, string & from)
 		return false;
 	}
 
-	zipped_ = filename_.isZippedFile();
+	zipped_ = formats.isZippedFile(filename);
 	if (zipped_) {
 		unzipped_filename_ = FileName::tempName(
 			filename_.toFilesystemEncoding());

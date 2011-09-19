@@ -17,7 +17,8 @@
 #include "OutputParams.h"
 
 #include <vector>
-
+#include <map>
+#include <ctime>
 
 namespace lyx {
 
@@ -37,7 +38,9 @@ public:
 		/// Set if this format can contain vector graphics.
 		vector = 2,
 		/// This format should  appear in the File > Export menu
-		export_menu = 4
+		export_menu = 4,
+		/// This may be a compressed file but doesn't need decompression
+		zipped_native = 8
 	};
 	///
 	Format(std::string const & n, std::string const & e, std::string const & p,
@@ -89,6 +92,8 @@ public:
 	void setFlags(int v) { flags_ = v; }
 	///
 	bool inExportMenu() const { return flags_ & export_menu; }
+	///
+	bool zippedNative() const { return flags_ & zipped_native; }
 private:
 	/// Internal name. Needs to be unique.
 	std::string name_;
@@ -138,6 +143,13 @@ public:
 	 * string.
 	 */
 	std::string getFormatFromFile(support::FileName const & filename) const;
+	/// Finds a format from a file extension. Returns string() if not found.
+	std::string getFormatFromExtension(std::string const & ext) const;
+	/** Returns true if the file referenced by \p filename is zipped and
+	 ** needs to be unzipped for being handled
+	 ** @note For natively zipped formats, such as dia/odg, this returns false.
+	 **/
+	bool isZippedFile(support::FileName const & filename) const;
 	/// Set editor and/or viewer to "auto" for formats that can be
 	/// opened by the OS.
 	void setAutoOpen();
@@ -179,6 +191,14 @@ public:
 private:
 	///
 	FormatList formatlist;
+	/// Used to store last timestamp of file and whether it is (was) zipped
+	struct ZippedInfo {
+		bool zipped; std::time_t timestamp;
+		ZippedInfo(bool zipped, std::time_t timestamp)
+		: zipped(zipped), timestamp(timestamp) { }
+	};
+	///
+	mutable std::map<std::string, ZippedInfo> zipped_;
 };
 
 ///

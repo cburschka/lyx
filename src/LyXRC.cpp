@@ -55,7 +55,7 @@ namespace os = support::os;
 
 namespace {
 
-static unsigned int const LYXRC_FILEFORMAT = 2;
+static unsigned int const LYXRC_FILEFORMAT = 3;
 
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
@@ -1118,6 +1118,8 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 					flgs |= Format::document;
 				else if (flag == "vector")
 					flgs |= Format::vector;
+				else if (flag == "zipped=native")
+					flgs |= Format::zipped_native;
 				else if (flag == "menu=export")
 					flgs |= Format::export_menu;
 				else
@@ -2750,6 +2752,8 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 					flags.push_back("document");
 				if (cit->vectorFormat())
 					flags.push_back("vector");
+				if (cit->zippedNative())
+					flags.push_back("zipped=native");
 				if (cit->inExportMenu())
 					flags.push_back("menu=export");
 

@@ -95,6 +95,7 @@ Format::Format(string const & n, string const & e, string const & p,
 	  editor_(ed), flags_(flags)
 {
 	extension_list_ = getVectorFromString(e, ",");
+	LYXERR(Debug::GRAPHICS, "New Format: n=" << n << ", flags=" << flags);
 }
 
 
@@ -152,11 +153,26 @@ string Formats::getFormatFromFile(FileName const & filename) const
 		return string();
 
 	string const format = filename.guessFormatFromContents();
+	string const ext = getExtension(filename.absFileName());
+	if ((format == "gzip" || format == "zip" || format == "compress")
+	    && !ext.empty()) {
+		string const & fmt_name = formats.getFormatFromExtension(ext);
+		if (!fmt_name.empty()) {
+			Format const * p_format = formats.getFormat(fmt_name);
+			if (p_format && p_format->zippedNative())
+				return p_format->name();
+		}
+	}
 	if (!format.empty())
 		return format;
 
 	// try to find a format from the file extension.
-	string const ext = getExtension(filename.absFileName());
+	return getFormatFromExtension(ext);
+}
+
+
+string Formats::getFormatFromExtension(string const & ext) const
+{
 	if (!ext.empty()) {
 		// this is ambigous if two formats have the same extension,
 		// but better than nothing
@@ -170,6 +186,19 @@ string Formats::getFormatFromFile(FileName const & filename) const
 		}
 	}
 	return string();
+}
+
+
+bool Formats::isZippedFile(support::FileName const & filename) const {
+	string const & fname = filename.absFileName();
+	time_t timestamp = filename.lastModified();
+	map<string, ZippedInfo>::iterator it = zipped_.find(fname);
+	if (it != zipped_.end() && it->second.timestamp == timestamp)
+		return it->second.zipped;
+	string const & format = getFormatFromFile(filename);
+	bool zipped = (format == "gzip" || format == "zip");
+	zipped_.insert(pair<string, ZippedInfo>(fname, ZippedInfo(zipped, timestamp)));
+	return zipped;
 }
 
 
