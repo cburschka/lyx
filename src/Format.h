@@ -17,8 +17,6 @@
 #include "OutputParams.h"
 
 #include <vector>
-#include <map>
-#include <ctime>
 
 namespace lyx {
 
@@ -191,14 +189,6 @@ public:
 private:
 	///
 	FormatList formatlist;
-	/// Used to store last timestamp of file and whether it is (was) zipped
-	struct ZippedInfo {
-		bool zipped; std::time_t timestamp;
-		ZippedInfo(bool zipped, std::time_t timestamp)
-		: zipped(zipped), timestamp(timestamp) { }
-	};
-	///
-	mutable std::map<std::string, ZippedInfo> zipped_;
 };
 
 ///

@@ -29,6 +29,8 @@
 #include "support/Translator.h"
 
 #include <algorithm>
+#include <map>
+#include <ctime>
 
 // FIXME: Q_WS_MACX is not available, it's in Qt
 #ifdef USE_MACOSX_PACKAGING
@@ -187,6 +189,19 @@ string Formats::getFormatFromExtension(string const & ext) const
 	}
 	return string();
 }
+
+
+/// Used to store last timestamp of file and whether it is (was) zipped
+struct ZippedInfo {
+	bool zipped;
+	std::time_t timestamp;
+	ZippedInfo(bool zipped, std::time_t timestamp)
+	: zipped(zipped), timestamp(timestamp) { }
+};
+
+
+/// Mapping absolute pathnames of files to their ZippedInfo metadata.
+static std::map<std::string, ZippedInfo> zipped_;
 
 
 bool Formats::isZippedFile(support::FileName const & filename) const {
