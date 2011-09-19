@@ -67,13 +67,11 @@ Use "\fBlyx@version_suffix@ \-dbg\fR" to see the list of available debug feature
 where command is a lyx command.
 .TP
 \fB \-e [\-\-export]\fP \fIfmt
-where fmt is the export format of choice.
-Look on Tools->Preferences->File formats->Format to get an idea which parameters should be passed.
+where fmt is the export format of choice (latex, pdflatex, lualatex, xelatex, xhtml, text, lyx).
 Note that the order of \-e and \-x switches matters.
 .TP
 \fB \-E [\-\-export\-to]\fP \fIfmt \fIfilename
-where fmt is the export format of choice (see \-\-export),
-and filename is the destination filename.
+where fmt is the export format of choice (see \-\-export), and filename is the destination filename. Note that any additional external file needed by filename (such as image files) will be exported as well to the folder containing filename (preserving the relative path embedded within the original LyX document, if any).
 .TP
 \fB \-i [\-\-import]\fP \fIfmt file.xxx
 where fmt is the import format of choice and file.xxx is the file to be imported.
