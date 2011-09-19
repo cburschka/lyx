@@ -488,6 +488,9 @@ def checkFormatEntries(dtl_tools):
     checkViewerEditor('a Dia viewer and editor', ['dia'],
         rc_entry = [r'\Format dia        dia     DIA                    "" "%%"	"%%"	"vector,zipped=native"'])
     #
+    checkViewerEditor('an OpenOffice drawing viewer and editor', ['libreoffice', 'ooffice', 'oodraw', 'soffice'],
+        rc_entry = [r'\Format odg        "odg, sxd" "OpenOffice drawing"   "" "%%"	"%%"	"vector,zipped=native"'])
+    #
     checkViewerEditor('a Grace viewer and editor', ['xmgrace'],
         rc_entry = [r'\Format agr        agr     Grace                  "" "%%"	"%%"	"vector"'])
     #
@@ -815,6 +818,9 @@ def checkConverterEntries():
     #
     checkProg('a Dia -> EPS converter', ['dia -e $$o -t eps $$i'],
         rc_entry = [ r'\converter dia        eps        "%%"	""'])
+    #
+    checkProg('an OpenOffice -> EPS converter', ['libreoffice'],
+        rc_entry = [ r'\converter odg        eps        "python -tt $$s/scripts/libreoffice2eps.py $$i $$o"	""'])
     #
     checkProg('a SVG -> PDF converter', ['rsvg-convert -f pdf -o $$o $$i', 'inkscape --file=$$i --export-area-drawing --without-gui --export-pdf=$$o'],
         rc_entry = [ r'\converter svg        pdf        "%%"	""'])
