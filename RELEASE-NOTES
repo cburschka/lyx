@@ -1,8 +1,6 @@
-This file lists interface changes that might affect users in 2.0.0, some 
-known problems in LyX 2.0.0 and some things you have to take into account
-when upgrading from earlier versions to a version of the 2.0.x series.
-Note that fixes are available for some of these, but they have not yet
-been applied because of incomplete testing.
+This file lists interface changes that might affect users in 2.1.0, some 
+known problems in LyX 2.1.0 and some things you have to take into account
+when upgrading from earlier versions to a version of the 2.1.x series.
 
 
 Interface changes
@@ -10,16 +8,6 @@ Interface changes
 
 There have been some changes to the LyX command line. The following new
 options have been added:
-
--batch
-
-  Causes LyX to run the given commands without opening a GUI window.
-  Thus, something like:
-        lyx -batch -x "buffer-print printer default dvips" myfile.lyx
-  will cause LyX to print myfile.lyx to the default printer, using
-  dvips and the default print settings (which, of course, have to have
-  been configured already). At present, not many commands can be used
-  this way, but there will be more eventually.
 
 -export-to <format> <dest>    (-E <format> <dest>)
 
@@ -29,139 +17,36 @@ options have been added:
     lyx -export-to pdf /path/to/dest.pdf /path/to/source.lyx
   See the manual page for details.
 
-A bash completion script was added to the tarball.
-
-We have introduced a new flag to decide whether or not a given "document"
-format shall be listed in the File > Export menu. This was necessary since
-this menu got too large. If the flag "menu=export" is not explicitly set,
-the formats are not included in the menu. This means that you might need
-to click "Show in export menu" in Preferences > File Formats for your
-customized file formats if you want them to appear in the menu.
-Customized formats imported from a previous configuration are handled
-by the prefs2prefs script, and should appear in the menu as before.
-Note, though, that you still can export to any possible format via
-File > Export > More Formats and Options ...
-
 The following pref variables were changed in 2.0:
-
-- \language_package was renamed to \language_custom_package
-
-- \language_use_babel (bool) has been replaced by 
-  \language_package_selection, which can be
-  0 (automatic selection)
-  1 (always use babel)
-  2 custom (use the custom package defined by
-    \language_custom_package)
-  3 none (equivalent to former \language_use_babel false)
 
 The following pref variables are obsoleted in 2.0:
 
-- \plaintext_roff_command (was not used anymore)
-
-- \personal_dictionary, \spell_command, \use_input_encoding,
-  \use_personal_dictionary and \use_spell_lib (ispell support has been
-  removed)
-
-- \spellchecker_use_alt_lang and \use_escape_chars (actually not used
-  by the UI, and it is as simple to check whether the relevant
-  variable is empty)
-
-- \custom_export_command and \custom_export_format
-
-
 The following new LyX functions have been introduced:
 
-- LFUN_WORD_FINDAD ("word-findadv").
-- LFUN_REGEXP_MODE ("regexp-mode").
-- LFUN_PHANTOM_INSERT ("phantom-insert").
-- LFUN_INSET_BEGIN ("inset-begin").
-- LFUN_INSET_END (""inset-end"").
-- LFUN_INSET_BEGIN_SELECT ("inset-begin-select").
-- LFUN_INSET_END_SELECT ("inset-end-select").
-- LFUN_CHANGE_PREVIOUS ("change-previous").
-- LFUN_LABEL_INSERT_AS_REF ("label-insert-as-reference").
-- LFUN_SECTION_SELECT ("section-select").
-- LFUN_FONT_UNDERLINE ("font-underline").
-- LFUN_FONT_STRIKEOUT ("font-strikeout").
-- LFUN_FONT_UULINE ("font-underunderline").
-- LFUN_FONT_UWAVE ("font-underwave").
-- LFUN_BRANCHES_RENAME ("branches-rename").
-- LFUN_BRANCH_ADD_INSERT ("branch-add-insert").
-- LFUN_BUFFER_CLOSE_ALL ("buffer-close-all").
-- LFUN_INSET_FORALL ("inset-forall").
-- LFUN_DEBUG_LEVEL_SET ("debug-level-set").
-- LFUN_INSET_SELECT_ALL ("inset-select-all").
-- LFUN_MATH_AMS_MATRIX ("math-ams-matrix").
-- LFUN_VC_COMPARE ("vc-compare").
-- LFUN_SPELLING_ADD ("spelling-add").
-- LFUN_SPELLING_IGNORE ("spelling-ignore").
-- LFUN_SPELLING_REMOVE ("spelling-remove").
-- LFUN_PREVIEW_INSERT ("preview-insert").
-- LFUN_FORWARD_SEARCH ("forward-search").
-- LFUN_INSET_COPY_AS ("inset-copy-as").
+//template, remove this entry later on
 - LFUN_BUFFER_TOGGLE_OUTPUT_SYNC ("buffer-toggle-output-sync").
 
 
 The following LyX functions have been removed:
 
+//template, remove this entry later on
 - LFUN_NEXT_INSET_TOGGLE ("next-inset-toggle"): use "inset-toggle" instead.
-- LFUN_NEXT_INSET_MODIFY ("next-inset-modify"): use "inset-modify" instead.
-- LFUN_PARAGRAPH_SPACING ("paragraph-spacing"): use "paragraph-params" instead.
-
-- LFUN_NOTES_MUTATE ("notes-mutate"): replace
-    notes-mutate <SOURCE> <TARGET>
-  with the more general function inset-forall
-    inset-forall Note:<SOURCE> inset-modify note Note <TARGET>
-
-- LFUN_ALL_INSETS_TOGGLE ("all-insets-toggle"): replace
-    all-insets-toggle <ACTION> <TARGET>
-    all-insets-toggle <ACTION>
-  with the more generic function inset-forall
-    inset-forall <TARGET> inset-toggle <ACTION>
-    inset-forall * inset-toggle <ACTION>
-  There is a difference in the <TARGET> parameter, which is would be
-  like "note" in the first case and "Note" in the second.
-
-- LFUN_TABULAR_FEATURE ("tabular-feature"): use "inset-modify" instead.
-  I.e., "tabular-feature FEATURE <ARGS>" becomes:
-    inset-modify tabular FEATURE <ARGS>
-
-- LFUN_LINE_INSERT ("line-insert"): use "inset-insert line" instead. For
-  something close to the previous default, use:
-    inset-insert line rule height 0.25ex width 100col% \\end_inset
-  This is necessary because the line inset now takes various arguments.
-
-- LFUN_TOC_INSERT ("toc-insert"): use "inset-insert toc" instead.
 
 
 The following LyX functions have been changed:
 
+//template, remove this entry later on
 - LFUN_INSET_TOGGLE ("inset-toggle"): For some insets, this function was used 
   to show the settings dialog. This is no longer possible and one should use
   inset-settings for this purpose.
  
-- LFUN_WORD_REPLACE ("word-replace"): The replacement and searched strings
-  arguments have been inverted in order to allow the replacement of the word
-  at current cursor position, even if it is not selected.
-
-- LFUN_OPTIONAL_INSERT ("optional-insert") has been renamed LFUN_ARGUMENT_INSERT
-  ("argument-insert").
-
 
 The following LyX key bindings have been changed:
 
+//template, remove this entry later on
 - LFUN_MATH_MACRO_FOLD ("math-macro-fold")
   The binding to "C-minus" has changed to "C-S-underscore".
 
-- LFUN_MATH_MACRO_UNFOLD ("math-macro-unfold")
-  The binding to "C-plus" has changed to "C-S-asterisk".
-
-- On Mac OSX the modifier keys <Control> and <Option> are now treated separately.
-  The distributed key binding for Mac OSX no longer uses the <Option> key for
-  shortcuts with letters or numbers.
-
-  The custom key bindings for <Option>/<Control> are mapped to the <Control>
-  modifier only.
 
 New external programs and libraries:
 ------------------------------------
@@ -169,60 +54,6 @@ New external programs and libraries:
 LyX 2.0 introduces support for some new external helper programs/libraries,
 while the support for some existing programs has been dropped. This
 particularly applies to spell checking and the thesaurus.
-
-1.) SPELLCHECKING:
-
-* Direct support for ispell and hspell has been dropped. However, ispell
-  and hspell are still accessible via the enchant wrapper (see below).
-
-* Support for the aspell command line program has been dropped. Note that
-  the aspell library (aspell 0.60.x) is still supported.
-  
-* As well as the aspell library, LyX now also supports hunspell (the spell
-  checker used by OpenOffice and Firefox) and enchant, a wrapper that
-  provides automatic access to many spell checking libraries (ispell,
-  aspell, hspell, hunspell, etc.).
-
-* On Mac OSX, Apple's Spell Server is preconfigured as the "native" spell 
-  checker.
-
-LyX 2.0 is configured for any and all of these three possibilities,
-given that the various libraries are installed on the machine where LyX is 
-configured. The actual spell checker can be selected in Tools > Preferences.
-Packagers are advised to pre-select whatever is most common on their
-platform/distribution.
-
-2.) THESAURUS:
-
-* Support for the aiksaurus library has been dropped in favour of the
-  MyThes thesaurus library (the thesaurus library used by OpenOffice).
-  
-* LyX ships the MyThes library itself, so unlike in LyX 1.6.x, no extra 
-  thesaurus library needs to be installed. However, LyX does not ship any 
-  thesaurus dictionaries, and those do have to be installed separately.
-
-* The OpenOffice thesaurus dictionaries can be used, but the path to those
-  dictionaries needs to be set in Tools > Preferences. Please refer to the
-  UserGuide, sec. 6.14, for further instructions.
-
-Packagers are advised to preset the thesaurus for their distribution/
-platform. Packagers of installation bundles (on Windows and the Mac)
-are advised to provide automatic installation of thesaurus dictionaries
-in the installation process (analoguous to the spellchecker installation).
-
-3.) LILYPOND:
-
-There is now direct support for Lilypond-book. Note that LyX requires at
-least version 2.14 for proper work.
-
-4.) INSTANT PREVIEW:
-
-Make sure that dv2dt (often part of LaTeX distributions) is installed
-on your system. Instant preview wil be disabled if dv2dt is not found.
-
-5.) LuaTeX support
-
-For proper LuaTeX support you need to have at least TeXLive 2010.
 
 
 Known issues in version 2.0.0
@@ -233,71 +64,6 @@ Known issues in version 2.0.0
   this properly, since simple sheebang conversion in *.py files will not
   be enough.
 
-Caveats when upgrading from earlier versions to 2.0.x
+Caveats when upgrading from earlier versions to 2.1.x
 -------------------------------------------------------
 
-- The typeset of your documents with non-english language can slightly
-  change in case of math environments and floats (this is usually the case
-  with certain modules which provide specific environments like AMS ones
-  or provide specific floats like the linguistic one).
-
-  LyX now uses its own translation machinery which will automatically provide
-  localization strings used so far only in GUI. The status of translation to
-  your language can be seen in lib/layouttranslation file. This is not meant as
-  a babel replacement (still used), but rather extension for strings not
-  translated by babel at all.
-
-- The syntax of the languages file has been changed. If you use a modified
-  languages file, you will need to adapt it to the new syntax, as LyX 2.0
-  is not able to read old languages file anymore.
-  Please refer to the beginning of the languages file for an explanation
-  of the new syntax.
-
-- There has been a large change in how Flex insets are named. Previously,
-  they tended to have names like "CharStyle:Noun". Now, they just have
-  names like "Flex:Noun" (where the "Flex" prefix is now required). When 
-  LyX 2.0 reads older files, it silently converts the old-style names
-  to new-style names; this direction works almost perfectly. The one place
-  it does not work is with CopyStyle declarations, IF your old InsetLayout
-  was NOT named "CharStyle:..." or "Custom:..." or "Element:...", but, say,
-  just "MyInset". In that case, "InsetLayout MyInset" will be changed to
-  "InsetLayout Flex:MyInset", but "CopyStyle MyInset" will be left as is.
-  Users will need to make that kind of change manually. The best way to do
-  this is to use the layout2layout.py script, which gets installed in
-  $LYXDIR/scripts/layout2layout.py, to convert your custom layout files to
-  the new format, and then check them for correctness.
-   
-  LyX will also silently revert new-style names to old-style names when 
-  exporting to 1.6.x format, but only for the pre-defined LyX insets. This 
-  means that user-defined flex insets will not be properly reverted. To solve 
-  this problem, you can modify the file $LYXDIR/lyx2lyx/lyx_2_0.py. In that 
-  file, you will find the following:
-    flex_insets = {
-      "Alert" : "CharStyle:Alert",
-      "Code" : "CharStyle:Code",
-      "Concepts" : "CharStyle:Concepts",
-      "E-Mail" : "CharStyle:E-Mail",
-      "Emph" : "CharStyle:Emph",
-      "Expression" : "CharStyle:Expression",
-      "Initial" : "CharStyle:Initial",
-      "Institute" : "CharStyle:Institute",
-      "Meaning" : "CharStyle:Meaning",
-      "Noun" : "CharStyle:Noun",
-      "Strong" : "CharStyle:Strong",
-      "Structure" : "CharStyle:Structure",
-      "ArticleMode" : "Custom:ArticleMode",
-      "Endnote" : "Custom:Endnote",
-      "Glosse" : "Custom:Glosse",
-      "PresentationMode" : "Custom:PresentationMode",
-      "Tri-Glosse" : "Custom:Tri-Glosse"
-    }
-  This is a map from new-style names (minux "Flex") to old-style names (and
-  there is a similar for DocBook elements). To get a user-defined CharStyle
-  to revert properly, it simply needs to be added to this list.
-
-
-Note: There may later be an updated list of known issues online at
-	http://wiki.lyx.org/LyX/ReleaseNotes
-
-- UI layout named "classic.ui" and some localized keyboard bindings (sv,pt,fi)
-  were long time unmaintained and we do not ship it anymore.
