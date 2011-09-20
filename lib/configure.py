@@ -885,8 +885,8 @@ def checkConverterEntries():
     # gnumeric/xls/ods to tex
     checkProg('a spreadsheet -> latex converter', ['ssconvert'],
        rc_entry = [ r'''\converter gnumeric latex "ssconvert --export-type=Gnumeric_html:latex $$i $$o" ""
-\converter ods latex "ssconvert --export-type=Gnumeric_html:latex $$i $$o" ""
-\converter xls latex "ssconvert --export-type=Gnumeric_html:latex $$i $$o" ""''',
+\converter oocalc latex "ssconvert --export-type=Gnumeric_html:latex $$i $$o" ""
+\converter excel  latex "ssconvert --export-type=Gnumeric_html:latex $$i $$o" ""''',
 ''])
 
     path, lilypond = checkProg('a LilyPond -> EPS/PDF/PNG converter', ['lilypond'])
