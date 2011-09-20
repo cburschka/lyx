@@ -63,7 +63,7 @@ public:
 		return extension_list_.empty() ? empty_string() : extension_list_[0];
 	}
 	///
-	std::string const & extensions() const { return extensions_; }
+	std::string const extensions() const;
 	///
 	void setExtensions(std::string const & v);
 	///
@@ -96,9 +96,7 @@ private:
 	/// Internal name. Needs to be unique.
 	std::string name_;
 	/// Filename extensions, the first one being the default
-	mutable std::vector<std::string> extension_list_;
-	/// All filename extensions
-	std::string extensions_;
+	std::vector<std::string> extension_list_;
 	/// Name presented to the user. Needs to be unique.
 	std::string prettyname_;
 	/// Keyboard shortcut for the View and Export menu.

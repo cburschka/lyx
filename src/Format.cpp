@@ -93,7 +93,7 @@ bool operator<(Format const & a, Format const & b)
 Format::Format(string const & n, string const & e, string const & p,
 	       string const & s, string const & v, string const & ed,
 	       int flags)
-	: name_(n), extensions_(e), prettyname_(p), shortcut_(s), viewer_(v),
+	: name_(n), prettyname_(p), shortcut_(s), viewer_(v),
 	  editor_(ed), flags_(flags)
 {
 	extension_list_ = getVectorFromString(e, ",");
@@ -104,6 +104,12 @@ Format::Format(string const & n, string const & e, string const & p,
 bool Format::dummy() const
 {
 	return extension().empty();
+}
+
+
+string const Format::extensions() const
+{
+	return getStringFromVector(extension_list_, ", ");
 }
 
 
@@ -130,7 +136,6 @@ string const Format::parentFormat() const
 
 void Format::setExtensions(string const & e)
 {
-	extensions_ = e;
 	extension_list_ = getVectorFromString(e, ",");
 }
 
