@@ -44,6 +44,10 @@ What's new
   in the document body (e.g., through \input or \insertgraphics) are
   included in the archive.
 
+- When changing the document language, also change the language of the
+  text which is not explicitly marked in a different language, irrespective
+  of the multilingual status, except for LTR<=>RTL changes.
+
 
 * DOCUMENTATION AND LOCALIZATION
 
