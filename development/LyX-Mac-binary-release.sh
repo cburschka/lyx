@@ -45,8 +45,29 @@ qt4_deployment="yes"
 MACOSX_DEPLOYMENT_TARGET="10.4" # Tiger support is default
 SDKROOT="/Developer/SDKs/MacOSX10.5.sdk" # Leopard build is default
 
+# detection of script home
+LyxSourceDir=`dirname "$0"`
+if [ ! -d "${LyxSourceDir}" ]; then
+	echo Missing LyX source directory.
+	exit 2
+fi
+case "${LyxSourceDir}" in
+/*/development)
+	LyxSourceDir=`dirname "${LyxSourceDir}"`
+	;;
+/*)
+	;;
+*/development|development)
+	LyxSourceDir=`dirname "${LyxSourceDir}"`
+	LyxSourceDir=`cd "${LyxSourceDir}";pwd`
+	;;
+*)
+	LyxSourceDir=`cd "${LyxSourceDir}";pwd`
+	;;
+esac
+
 usage() {
-	echo Build script for LyX on Mac OS X
+	echo "*" Build script for LyX on Mac OS X
 	echo
 	echo Optional arguments:
 	echo " --aspell-deployment=yes|no ." default yes
@@ -60,7 +81,12 @@ usage() {
 	echo
 	echo "All other arguments with -- are passed to configure"
 	echo "including the defaults: ${LyXConfigureOptions}"
-	echo
+	if [ -x "${LyxSourceDir}/configure" ]; then
+		echo
+		echo "*" Configure options of LyX
+		echo
+		"${LyxSourceDir}/configure" --help
+	fi
 	exit 0
 }
 
@@ -131,7 +157,7 @@ while [ $# -gt 0 ]; do
 		LyxBuildDir=`echo ${1}|cut -d= -f2`
 		shift
 		;;
-	--help)
+	--help|--help=*)
 		usage
 		;;
 	--without-aspell)
@@ -169,27 +195,6 @@ ARCH_LIST=${ARCH_LIST:-"ppc i386"}
 
 strip="-strip"
 aspellstrip=
-
-# detection of script home
-LyxSourceDir=${1:-`dirname "$0"`}
-if [ ! -d "${LyxSourceDir}" ]; then
-	echo Missing LyX source directory.
-	exit 2
-fi
-case "${LyxSourceDir}" in
-/*/development)
-	LyxSourceDir=`dirname "${LyxSourceDir}"`
-	;;
-/*)
-	;;
-*/development|development)
-	LyxSourceDir=`dirname "${LyxSourceDir}"`
-	LyxSourceDir=`cd "${LyxSourceDir}";pwd`
-	;;
-*)
-	LyxSourceDir=`cd "${LyxSourceDir}";pwd`
-	;;
-esac
 
 LyxBuildDir=${LyxBuildDir:-`dirname "${LyxSourceDir}"`/lyx-build}
 DMGLocation=${DMGLocation:-"${LyxBuildDir}"}
