@@ -24,11 +24,15 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- completely revised support for the latest versions of the Springer
+  document classes svjour3, svmono and svmult
+
 - Add possibility to export the R code from a sweave-enabled document
   (part of bug 7555).
 
 - XHTML export now respects font color and background color from 
   Document>Settings>Colors.
+
 
 * USER INTERFACE
 
@@ -50,6 +54,8 @@ What's new
 
 
 * DOCUMENTATION AND LOCALIZATION
+
+- revised template files for the Springer document classes
 
 
 * BUILD/INSTALLATION
