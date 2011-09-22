@@ -129,12 +129,12 @@ Style PartBacktext
 	LabelFont
 	  Series	Bold
 	  Size		Huge
-	EndLabelFont
+	EndFont
 	TextFont
 	  Series	Medium
 	  Shape		Up
 	  Size		normal
-	EndTextFont
+	EndFont
 	RequiredArgs	1
 	Preamble
 	  \newenvironment{svmultpartbacktext}[1]{\begin{partbacktext}
