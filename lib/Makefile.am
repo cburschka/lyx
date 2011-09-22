@@ -1446,10 +1446,10 @@ dist_layouts_DATA =\
 	layouts/stdstarsections.inc \
 	layouts/stdstruct.inc \
 	layouts/stdtitle.inc \
+	layouts/svcommon.inc \
 	layouts/svglobal.layout \
 	layouts/svglobal3.layout \
 	layouts/svjog.layout \
-	layouts/svjour.inc \
 	layouts/svmono.layout \
 	layouts/svmult.layout \
 	layouts/svprobth.layout \
@@ -1479,6 +1479,7 @@ dist_layouts_DATA =\
 	layouts/theorems-starred.inc \
 	layouts/theorems-starred.module \
 	layouts/theorems-std.module \
+	layouts/theorems-without-preamble.inc \
 	layouts/treport.layout \
 	layouts/tufte-book.layout \
 	layouts/tufte-handout.layout
@@ -1548,12 +1549,35 @@ dist_templates_DATA = \
 	templates/lettre.lyx \
 	templates/README.new_templates \
 	templates/revtex4.lyx \
-	templates/slides.lyx \
-	templates/svjour3.lyx \
-	templates/svmono_book.lyx \
-	templates/svmult_appendix.lyx \
-	templates/svmult_author.lyx \
-	templates/svmult_editor.lyx
+	templates/slides.lyx
+
+springertemplatesdir = $(pkgdatadir)/templates/springer
+dist_springertemplates_DATA = \
+	templates/springer/svjour3.lyx \
+	templates/springer/svmono_acknow.lyx \
+	templates/springer/svmono_acronym.lyx \
+	templates/springer/svmono_appendix.lyx \
+	templates/springer/svmono_book-master.lyx \
+	templates/springer/svmono_chapter.lyx \
+	templates/springer/svmono_dedication.lyx \
+	templates/springer/svmono_foreword.lyx \
+	templates/springer/svmono_glossary.lyx \
+	templates/springer/svmono_part.lyx \
+	templates/springer/svmono_preface.lyx
+	templates/springer/svmono_referenc.lyx \
+	templates/springer/svmono_solutions.lyx \
+	templates/springer/svmult_acknow.lyx \
+	templates/springer/svmult_acronym.lyx \
+	templates/springer/svmult_appendix.lyx \
+	templates/springer/svmult_author.lyx \
+	templates/springer/svmult_cblist.lyx \
+	templates/springer/svmult_dedication.lyx \
+	templates/springer/svmult_editor-master.lyx \
+	templates/springer/svmult_foreword.lyx \
+	templates/springer/svmult_glossary.lyx \
+	templates/springer/svmult_part.lyx \
+	templates/springer/svmult_preface.lyx \
+	templates/springer/svmult_referenc.lyx
 
 thesistemplatesdir = $(pkgdatadir)/templates/thesis
 dist_thesistemplates_DATA = \

@@ -1,131 +1,101 @@
 #% Do not delete the line below; configure depends on this
-#	\DeclareLaTeXClass[svmono,natbib.sty]{book (Springer svmono)}
+#	\DeclareLaTeXClass[svmono,footmisc.sty,multicol.sty,natbib.sty,type1cm.sty]{book (Springer svmono)}
 #  Author: Koji Yokota <yokota@res.otaru-uc.ac.jp>
+#          adapted: Marcus Kriele <mkriele@mac.com> and Uwe Stöhr (April 2011)
 #
+#  Supports: SVMONO DOCUMENT CLASS -- version 5.5 (17-Dec-09)
 #  Class and style files and templates are found at:
-#       ftp://ftp.springer.de/pub/tex/latex/svmonogl/
+#       http://wiki.lyx.org/Examples/Springer
 #
 Format 35
-Input svjour.inc
+Input svcommon.inc
 
 ClassOptions
-	FontSize	 10
+	FontSize	10
 End
 
-# Additional paragraphs
-Style Petit
-	CopyStyle	Standard
-	Category	MainText
-	LatexType	Environment
-	LatexName	petit
-	LeftMargin	MMM
-	RightMargin	MMM
-	Font
-	  Size		Small
-	EndFont
-End
+NoStyle Acknowledgements
+NoStyle Institute
 
-Style Front_Matter
-	Category	Structure
+Style Abstract
 	LatexType	Command
-	LatexName	frontmatter
-	KeepEmpty	1
-	OptionalArgs	0
-	Margin		First_Dynamic
-	NextNoIndent	1
-	ParSkip		0
-	TopSep		2.5
-	BottomSep	0.5
-	ParSep		0
-	Align		Center
-	LabelType	Static
-	LabelBottomSep	0
-	LeftMargin	M
-	LabelString	"--- Front Matter ---"
-
-	Font
-	  Family	Sans
-	  Series	Bold
-	  Size		Largest
-	  Color		Blue
-	EndFont
 End
 
-Style Main_Matter
-	CopyStyle	Front_Matter
-	Category	Structure
-	LatexName	mainmatter
-	LabelString	"--- Main Matter ---"
+Counter theorem
+  Within	chapter
 End
 
-Style Back_Matter
-	CopyStyle	Front_Matter
-	Category	Structure
-	LatexName	backmatter
-	LabelString	"--- Back Matter ---"
+Counter definition
+  Within	chapter
 End
 
-Style Chapter
-	Align		Left
+Counter remark
+  Within	chapter
 End
 
-Style Chapter*
-  Align   Left
+Counter corollary
+  Within	chapter
 End
 
-Style Preface
-	CopyStyle	Title
-	Category	Unnumbered
-	LatexName	svmultpreface
-	KeepEmpty	1
-	OptionalArgs	1
-	InTitle		0
-	Margin		First_Dynamic
-	LabelType	Static
-	LabelString	"Preface:"
-	LabelSep	xxx
-	Align		Left
-	Preamble
-	  \newcommand{\svmultpreface}[1]{\ifthenelse{\equal{#1}{}}{\preface}{\preface[#1]}}
-	EndPreamble
-	Requires	ifthen
+Counter lemma
+  Within	chapter
 End
 
-# Additional math environments
-Style Case
-	CopyStyle	Claim
-	LatexName	case
-	LabelString	"Case #."
+Counter proposition
+  Within	chapter
 End
 
-Style Problem
-	CopyStyle	Claim
-	LatexName	prob
-	LabelString	"Problem #."
+Counter claim
+  Within	chapter
 End
 
-Style Solution
-	CopyStyle	Claim
-	LatexName	sol
-	LabelString	"Solution #."
-	OptionalArgs	1
+Counter conjecture
+  Within	chapter
+End
+
+Counter question
+  Within	chapter
+End
+
+Counter example
+  Within	chapter
+End
+
+Counter exercise
+  Within	chapter
+End
+
+Counter case
+  Within	chapter
+End
+
+Counter property
+  Within	chapter
+End
+
+Counter note
+  Within	chapter
+End
+
+Style Claim
+	LabelString	"Claim."
+End
+
+Style Proof
+	LabelString	"Proof."
 End
 
 Style Proof(QED)
-	CopyStyle	Proof
-	LatexName	svmultproof
-	EndLabelType	Box
-	Preamble
-		\newenvironment{svmultproof}{\begin{proof}}{\qed\end{proof}}
-	EndPreamble
+	LabelString	"Proof."
 End
 
 Style Proof(smartQED)
-	CopyStyle	Proof
-	LatexName	svmultproof2
-	EndLabelType	Filled_Box
-	Preamble
-	  \newenvironment{svmultproof2}{\begin{proof}}{\smartqed\qed\end{proof}}
-	EndPreamble
+	LabelString	"Proof."
 End
+
+NoStyle TOC_Title
+NoStyle TOC_Author
+NoStyle Running_Title
+NoStyle Running_Author
+
 

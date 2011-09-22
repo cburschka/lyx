@@ -9,88 +9,79 @@
 # Adapted from svjour/jog by Cengiz Gunay in 2003.
 # Transposed by Pascal André <andre@via.ecp.fr>
 # Heavily modified and enhanced by serveral developers.
-# Last revision for svjour version 3.2 by Uwe Stöhr in September 2009
+# Revision svjour version 3.2 by Uwe Stöhr in September 2009
+# Revised by Marcus Kriele and Uwe Stöhr in April 2011 
 #
 # see ftp://ftp.springer.de/pub/tex/latex/svjour3/ for class files
 
 Format 35
 
-Input svjour.inc
+Input svcommon.inc
 
+NoStyle Front_Matter
+NoStyle Main_Matter
+NoStyle Back_Matter
 NoStyle Part
+NoStyle PartBacktext
 NoCounter part
 NoStyle Part*
 NoStyle Chapter
+NoStyle Running_Chapter
+NoStyle ChapAuthor
+NoStyle ChapSubtitle
+NoStyle ChapMotto
 NoCounter chapter
 NoStyle Chapter*
+NoStyle Subparagraph
+NoStyle Run-in_headings
+NoStyle Sub-run-in_headings
+NoStyle Extrachap
+NoStyle extrachap
+NoStyle Preface
+NoStyle Foreword
+NoStyle Dedication
+NoStyle Svgraybox
+NoStyle Petit
+NoStyle	Prob
+NoStyle Sol
+NoStyle Abstract*
+NoStyle TOC_Title
+NoStyle TOC_Author
+NoStyle Proof(smartQED)
 
 NoStyle Acknowledgement
-NoStyle Headnote
-NoStyle Dedication
-NoStyle Running_LaTeX_Title
-NoStyle Author_Running
-NoStyle Mail
-NoStyle Offprints
 NoStyle Keywords
-
-Preamble
-	\smartqed  % flush right qed marks, e.g. at end of proof
-EndPreamble
-
-
-InsetLayout Flex:Email
-	LyxType			custom
-	LatexType		command
-	LatexName		email
-	LabelString		"Email"
-	Font
-	  Color			foreground
-	  Size			Small
-	  Family		Roman
-	  Shape			Up
-	  Series		Medium
-	  Misc			No_Emph
-	  Misc			No_Noun
-	  Misc			No_Bar
-	EndFont
-	LabelFont
-	  Color			green
-	  Size			Small
-	EndFont
-End
 
 
 InsetLayout Flex:Keywords
 	CopyStyle		Flex:Email
 	LatexName		keywords
 	LabelString		"Keywords"
+	LabelFont
+	  Color			green
+	  Size			Small
+	EndFont
 End
 
-
 InsetLayout Flex:PACS
-	CopyStyle		Flex:Email
+	CopyStyle		Flex:Keywords
 	LatexName		PACS
 	LabelString		"PACS"
 End
 
-
 InsetLayout Flex:Subclass
-	CopyStyle		Flex:Email
+	CopyStyle		Flex:Keywords
 	LatexName		subclass
-	LabelString		"Subclass"
+	LabelString		"Mathematics Subject Classification"
 End
 
-
-Style Abstract
-  Category		FrontMatter
-  Newline		1
-  LabelType		Static
-  LabelString		"Abstract"
+InsetLayout Flex:CRSC
+	CopyStyle		Flex:PACS
+	LatexName		CRclass
+	LabelString		"CR Subject Classification"
 End
 
-Style Acknowledgements
-  CopyStyle		Abstract
-  LatexName		acknowledgements
-  Category		BackMatter
-  LabelString		"Acknowledgements"
+# this label has no dot at the end
+Style Solution
+	LabelString	"Solution \thesolution"
 End

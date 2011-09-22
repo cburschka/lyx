@@ -1381,11 +1381,35 @@ lib_templates_files = Split('''
     README.new_templates
     revtex4.lyx
     slides.lyx
+''')
+
+
+lib_templates_springer_files = Split('''
     svjour3.lyx
-    svmono_book.lyx
+    svmono_acknow.lyx
+    svmono_acronym.lyx
+    svmono_appendix.lyx
+    svmono_book-master.lyx
+    svmono_chapter.lyx
+    svmono_dedication.lyx
+    svmono_foreword.lyx
+    svmono_glossary.lyx
+    svmono_part.lyx
+    svmono_preface.lyx
+    svmono_referenc.lyx
+    svmono_solutions.lyx
+    svmult_acknow.lyx
+    svmult_acronym.lyx
     svmult_appendix.lyx
     svmult_author.lyx
-    svmult_editor.lyx
+    svmult_cblist.lyx
+    svmult_dedication.lyx
+    svmult_editor-master.lyx
+    svmult_foreword.lyx
+    svmult_glossary.lyx
+    svmult_part.lyx
+    svmult_preface.lyx
+    svmult_referenc.lyx
 ''')
 
 
@@ -2926,7 +2950,7 @@ lib_layouts_inc_files = Split('''
     stdstarsections.inc
     stdstruct.inc
     stdtitle.inc
-    svjour.inc
+    svcommon.inc
     theorems.inc
     theorems-ams.inc
     theorems-ams-bytype.inc
@@ -2937,6 +2961,7 @@ lib_layouts_inc_files = Split('''
     theorems-refprefix.inc
     theorems-starred.inc
     theorems-starred-equivalents.inc
+    theorems-without-preamble.inc
 ''')
 
 
