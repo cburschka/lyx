@@ -1224,7 +1224,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// http://www.tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf
 	// !! To use the Fix-cm package, load it before \documentclass, and use the command
 	// \RequirePackage to do so, rather than the normal \usepackage
-	// Do not to load any other package before the document class, unless you
+	// Do not try to load any other package before the document class, unless you
 	// have a thorough understanding of the LATEX internals and know exactly what you
 	// are doing!
 	if (features.mustProvide("fix-cm"))
