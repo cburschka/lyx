@@ -1,0 +1,950 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass svglobal3
+\begin_preamble
+\RequirePackage{fix-cm}
+
+\smartqed  % flush right qed marks, e.g. at end of proof
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This is a template LyX file for articles for Journals of the Springer publishing
+ group.
+ How to install the svjour3 LaTeX class to your LaTeX system is explained
+ in 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/Examples/Springer
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+possible document class options are:
+\end_layout
+
+\begin_layout Plain Layout
+- 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+smallextended
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ -> gives the second posible format
+\end_layout
+
+\begin_layout Plain Layout
+- 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+twocolumn
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ -> the two column formatting
+\end_layout
+
+\begin_layout Plain Layout
+- if no option is given you get the standard/default format
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Insert your title here
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Grants or other notes about the article that should go on the front page
+ should be placed here.
+ General acknowledgments should be placed at the end of the article.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subtitle
+Do you have a subtitle?
+\begin_inset Newline newline
+\end_inset
+
+If so, write it here
+\end_layout
+
+\begin_layout Running Title
+Short form of title
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+First Author 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and 
+\end_layout
+
+\end_inset
+
+Second Author
+\end_layout
+
+\begin_layout Running Author
+Short form of author list
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Institute
+F.
+ Author 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+at 
+\end_layout
+
+\end_inset
+
+first address
+\begin_inset Newline newline
+\end_inset
+
+Tel.: +123-45-678910
+\begin_inset Newline newline
+\end_inset
+
+Fax: +123-45-678910
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Email
+status collapsed
+
+\begin_layout Plain Layout
+fauthor@example.com
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+Present address:
+\emph default
+ of F.
+ Author if needed 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and 
+\end_layout
+
+\end_inset
+
+S.
+ Author 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+at 
+\end_layout
+
+\end_inset
+
+second address
+\end_layout
+
+\begin_layout Date
+Received: date / Accepted: date
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The correct dates will be entered by the editor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+Insert your abstract here.
+ Include keywords, PACS and mathematical subject classification numbers
+ as needed.
+ 
+\begin_inset Flex Keywords
+status open
+
+\begin_layout Plain Layout
+First keyword 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and 
+\end_layout
+
+\end_inset
+
+Second keyword 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and 
+\end_layout
+
+\end_inset
+
+More
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex PACS
+status open
+
+\begin_layout Plain Layout
+PACS code1 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and 
+\end_layout
+
+\end_inset
+
+PACS code2 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and 
+\end_layout
+
+\end_inset
+
+more
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Subclass
+status open
+
+\begin_layout Plain Layout
+MSC code1 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and 
+\end_layout
+
+\end_inset
+
+MSC code2 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and 
+\end_layout
+
+\end_inset
+
+more
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Specifying PACS and Subclass is optional.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Introduction"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Your text comes here.
+ Separate text sections with
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Name/Title (optional)
+\end_layout
+
+\end_inset
+
+a theorem
+\end_layout
+
+\begin_layout Problem
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Name/Title (optional)
+\end_layout
+
+\end_inset
+
+ The problem
+\end_layout
+
+\begin_layout Solution
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Name/Title (optional)
+\end_layout
+
+\end_inset
+
+ The solution
+\end_layout
+
+\begin_layout Section
+Section title
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Section-title"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Text with citations 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bringhurst2005"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Jobs95"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RefB"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RefJ"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Subsection title
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Subsection-title"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+as required.
+ Don't forget to give each section and subsection a unique label (see Sect.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Section-title"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Paragraph
+Paragraph headings
+\end_layout
+
+\begin_layout Standard
+Use paragraph headings as needed.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+a^{2}+b^{2}=c^{2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+only for one column documents:
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../examples/CV-image.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:one-column-figure"
+
+\end_inset
+
+Please write your figure caption here
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+only for two column documents:
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide true
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../examples/CV-image.png
+	width 75text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:two-column-figure"
+
+\end_inset
+
+Please write your figure caption here
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Please-write-your"
+
+\end_inset
+
+Please write your table caption here
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+first
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+second
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+third
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+number
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+number
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+number
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+number
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+number
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+number
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Acknowledgements
+If you'd like to thank anyone, place your comments here.
+\end_layout
+
+\begin_layout Section*
+---------------------
+\end_layout
+
+\begin_layout Standard
+You can either use BibTeX:
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following bibliography styles are allowed: 
+\family sans
+spbasic
+\family default
+ (basic style, author-year citations), 
+\family sans
+spmpsci
+\family default
+ (mathematics and physical sciences), 
+\family sans
+spphys
+\family default
+ (APS-like style for physics)
+\begin_inset Newline newline
+\end_inset
+
+The styles can be downloaded from 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+ftp://ftp.springer.de/pub/tex/latex/svjour3/bibtex
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "../../examples/biblioExample"
+options "bibtotoc,spbasic"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+---------------------
+\end_layout
+
+\begin_layout Standard
+\noindent
+or a plain bibliography:
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring References
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "RefJ"
+
+\end_inset
+
+Author, Article title, Journal, Volume, page numbers (year)
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring References
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "RefB"
+
+\end_inset
+
+Author, Book title, page numbers.
+ Publisher, place (year)
+\end_layout
+
+\end_body
+\end_document

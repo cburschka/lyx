@@ -1,0 +1,1512 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass svmono
+\use_default_options false
+\master svmono_book-master.lyx
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Chapter Heading
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:intro"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Running Chapter
+chapter heading in the running head
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract*
+Each chapter should be preceded by an abstract (10--15 lines long) that
+ summarizes the content.
+ The abstract will appear 
+\shape italic
+online
+\shape default
+ at 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.SpringerLink.com
+\end_layout
+
+\end_inset
+
+ and be available with unrestricted access.
+ This allows unregistered users to read the abstract as a teaser for the
+ complete chapter.
+ As a general rule the abstracts will not appear in the printed version
+ of your book unless it is the style of your particular book or that of
+ the series to which your book belongs.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+indent
+\end_layout
+
+\end_inset
+
+ Please use the 'starred' version of the 
+\family typewriter
+abstract
+\family default
+ environment for typesetting the text of the online abstracts.
+ Use the plain 
+\family typewriter
+abstract
+\family default
+ if the abstract is also to appear in the printed version of the book.
+\end_layout
+
+\begin_layout Abstract
+Each chapter should be preceded by an abstract (10--15 lines long) that
+ summarizes the content.
+ The abstract will appear 
+\shape italic
+online
+\shape default
+ at 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.SpringerLink.com
+\end_layout
+
+\end_inset
+
+ and be available with unrestricted access.
+ This allows unregistered users to read the abstract as a teaser for the
+ complete chapter.
+ As a general rule the abstracts will not appear in the printed version
+ of your book unless it is the style of your particular book or that of
+ the series to which your book belongs.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+indent
+\end_layout
+
+\end_inset
+
+ Please use the 'starred' version of the 
+\family typewriter
+abstract
+\family default
+ environment for typesetting the text of the online abstracts.
+ Use the plain 
+\family typewriter
+abstract
+\family default
+ if the abstract is also to appear in the printed version of the book.
+\end_layout
+
+\begin_layout Section
+Section Heading
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Section-Heading"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Running Section
+section heading in the running head
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+bla
+\end_layout
+
+\begin_layout Section
+Section Heading 2
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Section-Heading-2"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Instead of simply listing headings of different levels we recommend to let
+ every heading be followed by at least a short passage of text.
+\end_layout
+
+\begin_layout Standard
+Use the standard 
+\family sans
+equation
+\family default
+ environment to typeset your equations, e.g.
+ 
+\begin_inset Formula 
+\begin{equation}
+a\times b=c\;,
+\end{equation}
+
+\end_inset
+
+ however, for multiline equations we recommend to use the 
+\family sans
+eqnarray
+\family default
+ environment
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+In physics texts please activate the class option 
+\family typewriter
+vecphys
+\family default
+ to depict your vectors in 
+\series bold
+\shape italic
+boldface-italic
+\series default
+ type - as is customary for a wide range of physical subjects.
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{eqnarray}
+a\times b & = & c\nonumber \\
+\vec{a}\cdot\vec{b} & = & c\label{eq:01}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Subsection Heading
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Subsection-Heading"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Instead of simply listing headings of different levels we recommend to let
+ every heading be followed by at least a short passage of text.
+ Furtheron please use the LyX
+\begin_inset space \space{}
+\end_inset
+
+automatism for all your cross-references
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+cross-references
+\end_layout
+
+\end_inset
+
+ and citations
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+citations
+\end_layout
+
+\end_inset
+
+ as has already been described in Sect.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Section-Heading-2"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Quotation
+Please do not use quotation marks when quoting texts! Simply use the 
+\family sans
+quotation
+\family default
+ environment -- it will automatically render Springer's preferred layout.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Subsubsection Heading
+\end_layout
+
+\begin_layout Standard
+Instead of simply listing headings of different levels we recommend to let
+ every heading be followed by at least a short passage of text.
+ Furtheron please use the LyX
+\begin_inset space \space{}
+\end_inset
+
+automatism for all your cross-references and citations as has already been
+ described in Sect.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Subsection-Heading"
+
+\end_inset
+
+, see also Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:If-the-width"
+
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+If you copy text passages, figures, or tables from other works, you must
+ obtain 
+\shape italic
+permission
+\shape default
+ from the copyright holder (usually the original publisher).
+ Please enclose the signed permission with the manucript.
+ The sources
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+permission to print
+\end_layout
+
+\end_inset
+
+ must be acknowledged either in the captions, as footnotes or in a separate
+ section of the book.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Please note that the first line of text that follows a heading is not indented,
+ whereas the first lines of all subsequent paragraphs are.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement b
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+sidecaption
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../../examples/CV-image.png
+	scale 65
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:If-the-width"
+
+\end_inset
+
+If the width of the figure is less than 7.8
+\begin_inset space \thinspace{}
+\end_inset
+
+cm use the 
+\family typewriter
+sidecapion
+\family default
+ command to flush the caption on the left side of the page.
+ If the figure is positioned at the top of the page, align the sidecaption
+ with the top of the figure -- to achieve this you simply need to use the
+ optional argument 
+\family typewriter
+[t]
+\family default
+ with the 
+\family typewriter
+sidecaption
+\family default
+ command
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Paragraph Heading
+\end_layout
+
+\begin_layout Standard
+Instead of simply listing headings of different levels we recommend to let
+ every heading be followed by at least a short passage of text.
+\end_layout
+
+\begin_layout Standard
+For typesetting numbered lists we recommend to use the 
+\family sans
+enumerate
+\family default
+ environment -- it will automatically render Springer's preferred layout.
+\end_layout
+
+\begin_layout Enumerate
+Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomi
+c development.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomi
+c development.
+\end_layout
+
+\begin_layout Enumerate
+Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomi
+c development.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomi
+c development.
+\end_layout
+
+\begin_layout Subparagraph
+Subparagraph Heading
+\end_layout
+
+\begin_layout Standard
+In order to avoid simply listing headings of different levels we recommend
+ to let every heading be followed by at least a short passage of text.
+ Use the LyX
+\begin_inset space \space{}
+\end_inset
+
+automatism for all your cross-references and citations as has already been
+ described in Sect.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Section-Heading-2"
+
+\end_inset
+
+, see also Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:2"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Please note that the first line of text that follows a heading is not indented,
+ whereas the first lines of all subsequent paragraphs are.
+\end_layout
+
+\begin_layout Standard
+For unnumbered list we recommend to use the 
+\family sans
+itemize
+\family default
+ environment -- it will automatically render Springer's preferred layout.
+\end_layout
+
+\begin_layout Itemize
+Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomi
+c development, cf.
+\begin_inset space ~
+\end_inset
+
+Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:1"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomi
+c development.
+\end_layout
+
+\begin_layout Itemize
+Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomi
+c development.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomi
+c development.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement t
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+sidecaption[t]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../../examples/CV-image.png
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:2"
+
+\end_inset
+
+ Please write your figure caption here
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Run-in headings
+Run-in Heading Boldface Version
+\end_layout
+
+\begin_layout Standard
+Use the LyX
+\begin_inset space \space{}
+\end_inset
+
+automatism for all your cross-references and citations as has already been
+ described in Sect.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Section-Heading-2"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Sub-run-in headings
+Run-in Heading Italic Version
+\end_layout
+
+\begin_layout Standard
+Use the LyX
+\begin_inset space \space{}
+\end_inset
+
+automatism for all your cross-refer\SpecialChar \-
+ences and citations as has already been
+ described in Sect.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Section-Heading-2"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+paragraph
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:1"
+
+\end_inset
+
+Please write your table caption here
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="4">
+<features tabularvalignment="middle">
+<column alignment="none" valignment="top" width="2cm">
+<column alignment="none" valignment="top" width="2.4cm">
+<column alignment="none" valignment="top" width="2cm">
+<column alignment="none" valignment="top" width="4.9cm">
+<row>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Classes 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Subclass 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Length 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Action Mechanism 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+svhline
+\end_layout
+
+\end_inset
+
+ Translation 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mRNA
+\begin_inset Formula $^{a}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+22 (19--25) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Translation repression, mRNA cleavage
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Translation 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mRNA cleavage 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+21 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mRNA cleavage
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Translation 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mRNA 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+21--22 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mRNA cleavage
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Translation 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mRNA 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+24--26 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Histone and DNA Modification
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Formula $^{a}$
+\end_inset
+
+ Table foot note (with superscript) 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Section Heading
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Section-Heading-3"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Instead of simply listing headings of different levels we recommend to let
+ every heading be followed by at least a short passage of text.
+\end_layout
+
+\begin_layout Standard
+Please note that the first line of text that follows a heading is not indented,
+ whereas the first lines of all subsequent paragraphs are.
+\end_layout
+
+\begin_layout Standard
+If you want to list definitions or the like we recommend to use the Springer-enh
+anced 
+\family sans
+description
+\family default
+ environment -- it will automatically render Springer's preferred layout.
+\end_layout
+
+\begin_layout Description
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional argument for the description:
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Type 1
+\end_layout
+
+\end_inset
+
+Type
+\begin_inset space ~
+\end_inset
+
+1 That addresses central themes pertainng to migration, health, and disease.
+ In Sect.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Section-Heading"
+
+\end_inset
+
+, Wilson discusses the role of human migration in infectious disease distributio
+ns and patterns.
+\end_layout
+
+\begin_layout Description
+Type
+\begin_inset space ~
+\end_inset
+
+2 That addresses central themes pertainng to migration, health, and disease.
+ In Sect.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Section-Heading-3"
+
+\end_inset
+
+, Wilson discusses the role of human migration in infectious disease distributio
+ns and patterns.
+\end_layout
+
+\begin_layout Subsection
+Subsection Heading
+\end_layout
+
+\begin_layout Standard
+In order to avoid simply listing headings of different levels we recommend
+ to let every heading be followed by at least a short passage of text.
+ Use the LyX
+\begin_inset space \space{}
+\end_inset
+
+automatism for all your cross-references and citations citations as has
+ already been described in Sect.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Section-Heading-2"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Please note that the first line of text that follows a heading is not indented,
+ whereas the first lines of all subsequent paragraphs are.
+\end_layout
+
+\begin_layout Svgraybox
+If you want to emphasize complete paragraphs of texts we recommend to use
+ the newly defined Springer class option 
+\emph on
+graybox
+\emph default
+ and the newly defined environment 
+\emph on
+svgraybox
+\emph default
+.
+ This will produce a 15
+\begin_inset space \thinspace{}
+\end_inset
+
+percent screened box 'behind' your text.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Svgraybox
+If you want to emphasize complete paragraphs of texts we recommend to use
+ the newly defined Springer class option 
+\emph on
+graybox
+\emph default
+ and the newly defined environment 
+\emph on
+svgraybox
+\emph default
+.
+ This will produce a 15
+\begin_inset space \thinspace{}
+\end_inset
+
+percent screened box 'behind' your text.
+\end_layout
+
+\begin_layout Subsubsection
+Subsubsection Heading
+\end_layout
+
+\begin_layout Standard
+Instead of simply listing headings of different levels we recommend to let
+ every heading be followed by at least a short passage of text.
+\end_layout
+
+\begin_layout Standard
+Please note that the first line of text that follows a heading is not indented,
+ whereas the first lines of all subsequent paragraphs are.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Name/Title (optional)
+\end_layout
+
+\end_inset
+
+Theorem text goes here.
+\end_layout
+
+\begin_layout Definition
+Definition text goes here.
+\end_layout
+
+\begin_layout Proof
+Proof text goes here.
+\end_layout
+
+\begin_layout Proof(QED)
+\begin_inset Quotes eld
+\end_inset
+
+qed layout
+\begin_inset Quotes erd
+\end_inset
+
+ Proof text goes here.
+\end_layout
+
+\begin_layout Paragraph
+Paragraph Heading
+\end_layout
+
+\begin_layout Standard
+Instead of simply listing headings of different levels we recommend to let
+ every heading be followed by at least a short passage of text.
+\end_layout
+
+\begin_layout Standard
+Note that the first line of text that follows a heading is not indented,
+ whereas the first lines of all subsequent paragraphs are.
+\end_layout
+
+\begin_layout Theorem
+Theorem text goes here.
+\end_layout
+
+\begin_layout Definition
+Definition text goes here.
+\end_layout
+
+\begin_layout Proof(smartQED)
+\begin_inset Quotes eld
+\end_inset
+
+smartqed layout
+\begin_inset Quotes erd
+\end_inset
+
+ Proof text goes here.
+\end_layout
+
+\begin_layout Acknowledgement
+If you want to include acknowledgments of assistance and the like at the
+ end of an individual chapter please use the 
+\family sans
+acknowledgement
+\family default
+ environment -- it will automatically render Springer's preferred layout.
+\end_layout
+
+\begin_layout Section*
+Appendix
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{
+\end_layout
+
+\end_inset
+
+Appendix
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ When placed at the end of a chapter or contribution (as opposed to at the
+ end of the book), the numbering of tables, figures, and equations in the
+ appendix section continues on from that in the main text.
+ Hence please 
+\shape italic
+do not
+\shape default
+ use the 
+\family sans
+appendix
+\family default
+ command when writing an appendix at the end of your chapter or contribution.
+ If there is only one the appendix is designated 
+\begin_inset Quotes eld
+\end_inset
+
+Appendix
+\begin_inset Quotes erd
+\end_inset
+
+, or 
+\begin_inset Quotes eld
+\end_inset
+
+Appendix 1
+\begin_inset Quotes erd
+\end_inset
+
+, or 
+\begin_inset Quotes eld
+\end_inset
+
+Appendix 2
+\begin_inset Quotes erd
+\end_inset
+
+, etc.
+ if there is more than one.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+a\times b=c
+\end{equation}
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Problems or Exercises should be sorted chapterwise
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Problems
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{
+\end_layout
+
+\end_inset
+
+Problems
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ Don't forget to label each problem; the label is needed for the solutions'
+ environment
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There are two styles for problems: 
+\family sans
+Prob
+\family default
+ and 
+\family sans
+Problem
+\family default
+.
+ The 
+\family sans
+Prob
+\family default
+ style is the preferred because it can be referenced in the solution section.
+\end_layout
+
+\begin_layout Standard
+Two
+\begin_inset space ~
+\end_inset
+
+examples of 
+\family sans
+Prob
+\family default
+:
+\end_layout
+
+\begin_layout Prob
+\begin_inset CommandInset label
+LatexCommand label
+name "prob:given-problem"
+
+\end_inset
+
+A given problem or excercise is described here.
+ The problem is described here.
+ Its label will be referenced in its solution.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Prob
+\begin_inset CommandInset label
+LatexCommand label
+name "prob:prob2"
+
+\end_inset
+
+
+\series bold
+Problem Heading
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+ (a) The first part of the problem is described here.
+\begin_inset Newline newline
+\end_inset
+
+ (b) The second part of the problem is described here.
+\end_layout
+
+\begin_layout Standard
+This is the 
+\family sans
+Problem
+\family default
+ style:
+\end_layout
+
+\begin_layout Problem
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+Title/Name (optional)
+\end_layout
+
+\end_inset
+
+The problem
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+problems
+\end_layout
+
+\end_inset
+
+ is revealed here.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "svmono_referenc.lyx"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_body
+\end_document
