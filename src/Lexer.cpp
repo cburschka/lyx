@@ -274,9 +274,9 @@ bool Lexer::Pimpl::setFile(FileName const & filename)
 
 	// Skip byte order mark.
 	if (is.peek() == 0xef) {
-		int c = is.get();
+		is.get();
 		if (is.peek() == 0xbb) {
-			c = is.get();
+			is.get();
 			LASSERT(is.get() == 0xbf, /**/);
 		} else
 			is.unget();

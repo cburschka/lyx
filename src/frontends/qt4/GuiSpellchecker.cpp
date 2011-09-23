@@ -382,9 +382,8 @@ void SpellcheckerWidget::Private::check()
 	docstring_list suggestions;
 
 	LYXERR(Debug::GUI, "Spellchecker: start check at " << from);
-	int progress;
 	try {
-		progress = bv->buffer().spellCheck(from, to, word_lang, suggestions);
+		bv->buffer().spellCheck(from, to, word_lang, suggestions);
 	} catch (ExceptionMessage const & message) {
 		if (message.type_ == WarningException) {
 			Alert::warning(message.title_, message.details_);

@@ -159,7 +159,6 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 
 	lex.pushTable(elementTags);
 
-	FontInfo font = inherit_font;
 	labelfont_ = inherit_font;
 	bgcolor_ = Color_none;
 	bool getout = false;
