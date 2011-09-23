@@ -565,6 +565,9 @@ string apply_escapes(string s, Escapes const & escape_map)
 	return s;
 }
 
+#if 0
+// This is not used any longer, but I do not know if we want to delete
+// it, since it seems like maybe it might be needed again.
 /** Return the position of the closing brace matching the open one at s[pos],
  ** or s.size() if not found.
  **/
@@ -585,6 +588,7 @@ static size_t find_matching_brace(string const & s, size_t pos)
 	}
 	return s.size();
 }
+#endif
 
 /// Within \regexp{} apply get_lyx_unescapes() only (i.e., preserve regexp semantics of the string),
 /// while outside apply get_lyx_unescapes()+get_regexp_escapes().
