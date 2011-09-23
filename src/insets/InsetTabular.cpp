@@ -2057,8 +2057,8 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, string const lang) cons
 		// multirow, no line must be drawn.
 		if (row != 0)
 			if (isMultiRow(cellIndex(row, c))
-				&& isMultiRow(cellIndex(row - 1, c)))
-					topline[c] = false;
+			    && cell_info[row][c].multirow != CELL_BEGIN_OF_MULTIROW)
+				topline[c] = false;
 		if (topline[c])
 			++nset;
 	}
@@ -2117,13 +2117,14 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, string const lang) c
 	for (col_type c = 0; c < ncols(); ++c) {
 		bottomline.push_back(bottomLine(cellIndex(row, c)));
 		topline.push_back(!lastrow && topLine(cellIndex(row + 1, c)));
-		// If cell is part of a multirow and not the last or first cell of the
+		// If cell is part of a multirow and not the last cell of the
 		// multirow, no line must be drawn.
 		if (!lastrow)
 			if (isMultiRow(cellIndex(row, c))
-				&& isMultiRow(cellIndex(row + 1, c))) {
-					bottomline[c] = false;
-					topline[c] = false;
+			    && isMultiRow(cellIndex(row + 1, c))
+			    && cell_info[row + 1][c].multirow != CELL_BEGIN_OF_MULTIROW) {
+				bottomline[c] = false;
+				topline[c] = false;
 				}
 		nextrowset &= topline[c];
 	}
