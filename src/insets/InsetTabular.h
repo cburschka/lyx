@@ -475,7 +475,8 @@ public:
 	///
 	bool isMultiRow(idx_type cell) const;
 	///
-	idx_type setMultiRow(idx_type cell, idx_type number);
+	idx_type setMultiRow(idx_type cell, idx_type number,
+			     bool const bottom_border);
 	///
 	void unsetMultiRow(idx_type cell);
 	///
