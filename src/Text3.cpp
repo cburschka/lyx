@@ -1894,7 +1894,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 		selectWordWhenUnderCursor(cur, WHOLE_WORD_STRICT);
 		Font font(ignore_font, lang);
-		toggleAndShow(cur, this, font);
+		toggleAndShow(cur, this, font, false);
 		break;
 	}
 
