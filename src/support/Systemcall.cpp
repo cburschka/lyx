@@ -268,7 +268,6 @@ SystemcallPrivate::SystemcallPrivate(const std::string& of) :
                                 out_index_(0),
                                 err_index_(0),
                                 out_file_(of), 
-                                texinputs_(getEnv("TEXINPUTS")),
                                 process_events_(false)
 {
 	if (!out_file_.empty()) {
@@ -285,27 +284,28 @@ SystemcallPrivate::SystemcallPrivate(const std::string& of) :
 }
 
 
-
 void SystemcallPrivate::startProcess(QString const & cmd, string const & path)
 {
 	cmd_ = cmd;
 	if (process_) {
+		string cmd_prefix;
 		if (!path.empty() && !lyxrc.texinputs_prefix.empty()) {
-			string const texinputs = os::latex_path_list(
+			string const texinputs_prefix = os::latex_path_list(
 				replaceCurdirPath(path, lyxrc.texinputs_prefix));
 			string const sep = string(1,
 					os::path_separator(os::TEXENGINE));
-			string const prefix = "." + sep + texinputs + sep;
-			if (prefixIs(texinputs_, prefix))
-				texinputs_.clear();
+			string const env = getEnv("TEXINPUTS");
+			string const texinputs = "." + sep + texinputs_prefix
+						     + sep + env;
+			if (os::shell() == os::UNIX)
+				cmd_prefix = "env 'TEXINPUTS="
+						+ texinputs + "' ";
 			else
-				setEnv("TEXINPUTS", prefix + texinputs_);
+				cmd_prefix = "cmd /d /c set TEXINPUTS="
+						+ texinputs + " & ";
 		}
 		state = SystemcallPrivate::Starting;
-		if (os::shell() == os::CMD_EXE)
-			process_->start(QLatin1String("cmd /d /c ") + cmd_);
-		else
-			process_->start(cmd_);
+		process_->start(toqstr(cmd_prefix) + cmd_);
 	}
 }
 
@@ -362,9 +362,6 @@ bool SystemcallPrivate::waitWhile(State waitwhile, bool process_events, int time
 
 SystemcallPrivate::~SystemcallPrivate()
 {
-	if (!texinputs_.empty())
-		setEnv("TEXINPUTS", texinputs_);
-
 	if (out_index_) {
 		out_data_[out_index_] = '\0';
 		out_index_ = 0;
