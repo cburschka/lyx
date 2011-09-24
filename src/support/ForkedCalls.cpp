@@ -288,7 +288,7 @@ ForkedCall::ForkedCall(string const & path)
 		cmd_prefix_ = "env 'TEXINPUTS=." + sep + texinputs
 						 + sep + env + "' ";
 	else
-		cmd_prefix_ = "cmd /p /c set TEXINPUTS=." + sep + texinputs
+		cmd_prefix_ = "cmd /d /c set TEXINPUTS=." + sep + texinputs
 							  + sep + env + " & ";
 }
 
