@@ -54,12 +54,12 @@
            <string>&amp;Options:</string>
           </property>
           <property name="buddy" >
-           <cstring>indexOptionsED</cstring>
+           <cstring>indexOptionsLE</cstring>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="indexOptionsED" >
+         <widget class="QLineEdit" name="indexOptionsLE" >
           <property name="toolTip" >
            <string>Define program options of the selected processor.</string>
           </property>

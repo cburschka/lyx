@@ -82,14 +82,14 @@ void GuiIndices::update(BufferParams const & params)
 	int const pos = indexCO->findData(toqstr(command));
 	if (pos != -1) {
 		indexCO->setCurrentIndex(pos);
-		indexOptionsED->setText(toqstr(options).trimmed());
+		indexOptionsLE->setText(toqstr(options).trimmed());
 	} else {
 		// We reset to default if we do not know the specified compiler
 		// This is for security reasons
 		indexCO->setCurrentIndex(indexCO->findData(toqstr("default")));
-		indexOptionsED->clear();
+		indexOptionsLE->clear();
 	}
-	indexOptionsED->setEnabled(
+	indexOptionsLE->setEnabled(
 		indexCO->currentIndex() != 0);
 
 	updateView();
@@ -145,7 +145,7 @@ void GuiIndices::apply(BufferParams & params) const
 	string const index_command =
 		fromqstr(indexCO->itemData(
 			indexCO->currentIndex()).toString());
-	string const index_options = fromqstr(indexOptionsED->text());
+	string const index_options = fromqstr(indexOptionsLE->text());
 	if (index_command == "default" || index_options.empty())
 		params.index_command = index_command;
 	else
@@ -155,13 +155,13 @@ void GuiIndices::apply(BufferParams & params) const
 
 void GuiIndices::on_indexCO_activated(int n)
 {
-	indexOptionsED->setEnabled(
+	indexOptionsLE->setEnabled(
 		indexCO->itemData(n).toString() != "default");
 	changed();
 }
 
 
-void GuiIndices::on_indexOptionsED_textChanged(QString)
+void GuiIndices::on_indexOptionsLE_textChanged(QString)
 {
 	changed();
 }
