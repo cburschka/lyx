@@ -1,10 +1,10 @@
-Public release of LyX version 2.0.1
+Public release of LyX version 2.0.2
 ===================================
 
-We are pleased to announce the release of LyX 2.0.1. This is the first 
+We are pleased to announce the release of LyX 2.0.2. This is the second
 maintenance release in the 2.0.x series.
 
-LyX 2.0.1 is the result of on-going efforts to make our stable version
+LyX 2.0.2 is the result of on-going efforts to make our stable version
 even more reliable and stable. We have fixed a number of bugs and made
 a number of improvements. These are detailed below. We encourage all
 LyX users to upgrade to this version.
@@ -13,9 +13,9 @@ LyX is a document processor that encourages an approach to writing based
 on the structure of your documents and not simply their appearance. It is
 released under a Free and Open Source Software license.
 
-You can download LyX 2.0.1 from http://www.lyx.org/Download/.
+You can download LyX 2.0.2 from http://www.lyx.org/Download/.
 
-If you think you found a bug in LyX 2.0.1, either e-mail the LyX
+If you think you found a bug in LyX 2.0.2, either e-mail the LyX
 developers' mailing list (lyx-devel <at> lists.lyx.org), or open a bug
 report at http://www.lyx.org/trac/wiki/BugTrackerHome.
 
@@ -24,346 +24,17 @@ documentation that comes with LyX and the LyX wiki, which lives at
 http://wiki.lyx.org/. If you can't find the answer there, e-mail the LyX 
 users' list (lyx-users at lists.lyx.org).
 
-We hope you enjoy using LyX 2.0.1.
+We hope you enjoy using LyX 2.0.2.
 
 The LyX team.
 http://www.lyx.org
 
 
-What's new in LyX 2.0.1
+What's new in LyX 2.0.2
 =======================
 
-The support for using external files in ERT has been improved by the
-introduction of a prefix for the TEXINPUTS environment variable.
-This prefix can be set in preferences and by default includes the
-document directory (represented by a single '.'). The prefix can
-be set to any list of paths separated by the default separator for
-a given platform (':' on unix like systems and ';' on windows).
-When a file should be included by LaTeX, the paths listed in TEXINPUTS
-will be searched in turn for finding it. Note that any non-absolute
-path listed in the TEXINPUTS prefix is considered to be relative to the
-document directory, i.e., the directory where the LyX file lives.
-Users are advised to always include '.' (the document dir) as one of
-the path components, otherwise compilation may fail for some documents.
-This is because the previous (undocumented) mechanism based on the use
-of the \input@path macro has been dropped. The old mechanism did not
-work in all cases and was kind of a hack. Old documents using that
-undocumented hack for obtaining the path of the LyX file will have to
-be revised. A clean way for obtaining the document path is using the
-info inset through the "info-insert buffer path" LyX function.
 
 
 ** Updates:
 ***********
 
-* DOCUMENT INPUT/OUTPUT
-
-- Allow for a maximum of 3 minutes for the completion of a spawned command
-  except on Windows, where 30 minutes are allowed. This is because the
-  Windows installer may trigger MiKTeX updates that suffer from network
-  latencies.
-
-- Improved XHTML output of various fractions.
-
-- A prefix for the TEXINPUTS environment variable can be specified in the
-  preferences. The directory of a LyX document is represented by a single
-  dot '.' or by the prefix "./". Also, any non-absolute path will be
-  prepended with the LyX document directory.
-
-- Updated templates to current LyX format, so no conversion will be
-  needed.
-
-- Allow LaTeX import of \uline (bug 7640).
-
-- Fix compilation error occurring when a LyX document resides in a directory
-  whose name contains characters that are special to LaTeX (bug 6170).
-
-
-* USER INTERFACE
-
-- Updated Czech, French, German, Japanese, Interlingua, Italian, Polish,
-  Portuguese, Serbian (Latin), Spanish, Swedish and Ukrainian User
-  Interface Localization.
-
-- Now it is not necessary to restart LyX after changing the default
-  document directory and/or the PATH prefix in the preferences for them
-  to take effect.
-
-- Menu View->Source for documents with XHTML default output format now displays
-  only the current paragraph, except when complete source is requested
-  (bug 7463).
-
-- Size tab now enables and disables correctly depending on the capabilities
-  configured for the current external template (selected via the combo).
-
-- Sort entries in the "More Formats and Options" dialog (bug 7714).
-
-- Enable "Accept compound" preference setting for Aspell backend only.
-  Reconfigure the aspell backend when "Accept compound" preference is
-  changed immediately.
-
-
-* DOCUMENTATION AND LOCALIZATION
-
-- UserGuide:
-  - new section how to define custom header/footer lines
-    (bug 7196).
-  - new section about customized lists
-  - new section about comparison of LyX documents
-  - new section about the document's colors settings
-  - revised Appendix A and B
-
-- EnbeddedObjects manual:
-  - describe that LyX supports now the changing of the color of the
-    greyed-out box text
-  - new chapter about objects surrounded by text
-
-- Math manual: add a note about column limit for decorated matrices.
-
-- Updated French documentation files.
-
-- updated template file for the latest version of the ACM siggraph
-  LaTeX-package.
-
-- updated layout and template file for the latest version of the IJMPC
-  LaTeX-package.
-
-- updated layout and template file for the latest version of the IJMPD
-  LaTeX-package.
-
-
-** Bug fixes:
-*************
-
-* DOCUMENT INPUT/OUTPUT
-
-- Fixed crash when outputing the unitone command to XHTML or when using
-  such commands with mathematica, octave, or maple.
-
-- Fix output of non-TeX font names with non-ASCII characters and associated
-  assertion (bug 7569).
-
-- Fix output of decimally aligned columns in unviewed (on screen) tables.
-
-- Fix problem with indentation of bibliography items. Note that older files
-  may still exhibit this problem, since the label string "References" (or a
-  translation of it) may have been written to the file.
-
-- Inform user of unknown layouts caused by class change (bug 7571).
-
-- Avoid LaTeX errors if font changing commands are used in the wrong mode
-  by assuring to switch to the right mode on export.
-
-- Fix validation problem with user macros (bug 7525).
-
-- Improve import of LaTeX documents with non-ASCII contents before loading
-  the inputenc package (bug 7509).
-
-- The export format DVI (LuaTeX) is now correctly created (bug 7713).
-
-- Macros that use other macros now output properly to XHTML (bug 7532).
-
-- Fixed XHTML output for tables that use multirow.
-
-- Fix problem with XHTML output of blank paragraph (bug 7634).
-
-- Fixed export to plaintext of, as well as searching within,
-  a document containing aligned and other multi-cell environments
-  (bug 7549).
-
-- Fixed the call to the svg converter on Windows (bug 7608).
-
-- On Windows, allow to automatically switch TeX engines without the need
-  of manually saving the preferences after reconfiguring (bug 7557).
-
-- Fix DVI forward search on Windows when compiling with MSVC.
-
-- Calculate relative pathnames to master documents when master is in a
-  directory above the child (bug 7540).
-
-- On Windows, improve detection of the TeX engine when the file system does
-  not support short names and the temp directory contains spaces.
-
-- Fixed the latex flag set by the prefs2prefs script (bug 7610).
-
-- Code cleanup of the Sweave support script (see bug 7555).
-
-- Fix LaTeX error with Sweave module when the file name contains a
-  dot (bug 7551).
-
-- Fix error with Sweave module when using some R features (bug 7552).
-
-- Fix LaTeX error with Sweave module when the temporary directory name
-  contains a space (bug 7545).
-
-- Fix LaTeX error with Sweave module when the directory where R has
-  been installed contains a space.
-
-- Fix incompatibility between jss.layout and Sweave (see bug 7555).
-
-- Fix LaTeX export when the file encoding changes after a float (bug 7645).
-
-- Fix missing VCS revision information for RCS (author/date/time).
-
-- Fix output of chapter references when using prettyref.
-
-- Fix output of unicode math from within child documents (bug 7682).
-
-- Fix bug when exporting documents containing the command/character
-  "\iddots" in math to LyX 1.6.x.
-
-- Fix forward-search on Windows with SumatraPDF and, as a by-product,
-  allow using SumatraPDF on Cygwin without the need for a wrapper script.
-
-- Avoid kerning problems by protecting back quotation marks obtained through
-  the quotes inset only when a TeX ligature would be triggered (bug 253).
-
-- Fixed infinite loops in lyx2lyx when processing files with bad tabulars.
-
-
-* USER INTERFACE
-
-- Fixed crash relating to outliner and mouse movement.
-
-- Fixed crash when putting multirow tables into notes---or any other inset
-  that appears in the outliner (bug 7547).
-
-- Fixed crash with inverse search when document has changed (bug 7572).
-
-- Fixed crash when scrolling away from empty paragraph (bug 7591).
-
-- Fixed problem with display of Buffer load errors (bug 7622).
-
-- Show the correct label after adding a line to an AMS Multline formula
- (bug 7511).
-  
-- Equation numbering in child documents now works properly (bug 7531).
-
-- Display \utilde and \undertilde in formulas correctly (part of bug 6622).
-
-- Restore the functionality of the TeX Information dialog on Cygwin if a
-  native Windows TeX engine is used.
-
-- Correct erroneous report of duplicate labels when dissolving insets
-  (bug 7319).
-
-- Make size of characters in instant preview snippets independent of the
-  LaTeX font size (bug 2200).
-
-- Fix On-the-fly spellchecker jumps to next pattern match when replacing a
-  misspelled word with a suggested one from context menu (bug 7564).
-
-- Keep customized file formats in the export menu by default (bug 7609).
-
-- Add XeTeX/LuaTeX and derived formats to the Default Output list
-  in the preferences dialog (bug 7543).
-
-- Fix paragraph style shortcut with open source view in German localization
-  (bug 7590).
-
-- Do not cache cursor keys when scrolling (bug 7598)
-
-- Enable OK/Apply in Document>Settings dialog when bullet size is changed.
-
-- Display LyX's internal \unit equivalents in the math toolbar menu (bug 7620).
-
-- Fix problem that LyX complained about unkown flexible insets after changing
-  the document settings (bug 7630).
-
-- Enable the autocorrection option for math.
-
-- Don't assert when accepting/rejecting non-existent changes (bug 7654).
-
-- Fix assertion when using "Ignore All" in spell checker dialog
-  after changing buffer view (bug 7661).
-
-- Don't mark buffer changed simply because you open the label dialog
-  (bug 7655).
-
-- Display Postscript item in View and Export menu again.
-
-- Fixed crash involving tables that have rows whose cells are all multirow
-  (bug 7535).
-
-- With aspell backend split words on hard hyphens to check parts separately
-  because hyphen is not allowed to be part of a word (bug 7660).
-
-- On Windows, fix call to Computer Algebra System programs (bug 7715).
-
-- On Windows, fix configuration failure when shell autorun commands are
-  are enabled in the registry (bug 7718).
-
-- On Windows, allow using again batch files as converters.
-
-- Fix configuration failure due to missed deletion of a temporary file
-  under certain circumstances (bug 7586).
-
-
-* ADVANCED FIND AND REPLACE
-
-- Advanced F&R would previously ask to open a master document under some
-  circumstances, or do strange things with \selectlanguage (bug 6560). This
-  has been mostly fixed. Please see the bug report for remaining issues.
-
-- Fixed bug in matching at borders within *-environments with ignore-format
-  off. (related to bug 7596)
-
-- Bugfix in how the search buffer was exported for the Advanced Find & Replace.
-  For example, before this footnotes were not correctly found.
-
-- Now advanced find and replace doesn't ignore white spaces while matching
-  with ignore format.
-
-- Now the cursor is visible while at the rightmost part of a regexp inset.
-
-- Now a regexp inset with a \backslash or braces is previewed correctly.
-
-- Disabled possibility to type macros in regexp-mode.
-
-- Now backslash-prefixed regexps like "\s", "\d", etc., are all understood by Advanced F&R.
-
-- Now Adv. F&R correctly interprets escape sequences within regexp insets, e.g., \\ or \(,
-  for finding characters with a special meaning in regular expression context (\^()[]).
-
-- After replacing with multi-cell contents inside maths, now advanced find and replace
-  leaves the cursor after the inserted material (fixing 7675).
-
-- Fixed longstanding bug in Advanced Find&Replace, when dealing with documents containing braces.
-
-* DOCUMENTATION AND LOCALIZATION
-
-- Re-add some lost translations from layout files.
-
-- Fixed compilation of the French Customization manual.
-
-- Fixed compilation of the Spanish Math manual.
-
-- Fixed compilation of the Japanese EmbeddedObjects and UserGuide manuals.
-
-- Fixed compilation of the amsbook-test example file.
-
-- Fixed compilation of the landslide example file.
-
-- Fixed compilation of the agutex template file.
-
-- Correct command definitions for floats with captions set beside in the
-  EmbeddedObjects manual (bug 7328).
-
-- Avoid doubled page numbers in the footer lines of the thesis template.
-
-- Corrected links in the bibliography of the UserGuide.
-
-- Modified tufte example files so that the floats don't overlap each other;
-  added note that float placement options are not allowed for margin floats.
-
-
-* BUILD/INSTALLATION
-
-- Using pkgconfig to configure hunspell (hunspell 1.3 was not correctly
-  recognized).
-
-- Using explicit header and library detection as fallback to configure
-  hunspell in case pkgconfig is missing in build environment.
-
-- Fixed build failure on GNU/Hurd, which doesn't define PATH_MAX
-  (bug 7467).
