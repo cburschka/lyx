@@ -15,13 +15,12 @@
 #define FORKEDCALLS_H
 
 #include "support/shared_ptr.h"
+#include "support/strfwd.h"
 #include <boost/signal.hpp>
 
 #ifdef HAVE_SYS_TYPES_H
 # include <sys/types.h>
 #endif
-
-#include <string>
 
 namespace lyx {
 namespace support {
@@ -151,6 +150,8 @@ private:
 class ForkedCall : public ForkedProcess {
 public:
 	///
+	ForkedCall(std::string const & path = empty_string());
+	///
 	virtual shared_ptr<ForkedProcess> clone() const {
 		return shared_ptr<ForkedProcess>(new ForkedCall(*this));
 	}
@@ -175,6 +176,8 @@ public:
 private:
 	///
 	virtual int generateChild();
+	///
+	std::string cmd_prefix_;
 };
 
 

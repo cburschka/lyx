@@ -608,7 +608,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	string const command = libScriptSearch(cs.str());
 
 	if (wait) {
-		ForkedCall call;
+		ForkedCall call(buffer_.filePath());
 		int ret = call.startScript(ForkedProcess::Wait, command);
 		static int fake = (2^20) + 1;
 		int pid = fake++;
@@ -624,7 +624,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 		convert_ptr(new ForkedCall::SignalType);
 	convert_ptr->connect(bind(&Impl::finishedGenerating, this, _1, _2));
 
-	ForkedCall call;
+	ForkedCall call(buffer_.filePath());
 	int ret = call.startScript(command, convert_ptr);
 
 	if (ret != 0) {

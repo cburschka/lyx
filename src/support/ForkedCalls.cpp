@@ -15,6 +15,7 @@
 #include "support/ForkedCalls.h"
 
 #include "support/debug.h"
+#include "support/environment.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
@@ -22,6 +23,8 @@
 #include "support/Timeout.h"
 
 #include "support/bind.h"
+
+#include "LyXRC.h"
 
 #include <cerrno>
 #include <queue>
@@ -270,6 +273,25 @@ int ForkedProcess::waitForChild()
 //
 /////////////////////////////////////////////////////////////////////
 
+ForkedCall::ForkedCall(string const & path)
+	: cmd_prefix_(empty_string())
+{
+	if (path.empty() || lyxrc.texinputs_prefix.empty())
+		return;
+
+	string const texinputs = os::latex_path_list(
+			replaceCurdirPath(path, lyxrc.texinputs_prefix));
+	string const sep = string(1, os::path_separator(os::TEXENGINE));
+	string const env = getEnv("TEXINPUTS");
+
+	if (os::shell() == os::UNIX)
+		cmd_prefix_ = "env 'TEXINPUTS=." + sep + texinputs
+						 + sep + env + "' ";
+	else
+		cmd_prefix_ = "cmd /p /c set TEXINPUTS=." + sep + texinputs
+							  + sep + env + " & ";
+}
+
 
 int ForkedCall::startScript(Starttype wait, string const & what)
 {
@@ -296,7 +318,7 @@ int ForkedCall::startScript(string const & what, SignalTypePtr signal)
 // generate child in background
 int ForkedCall::generateChild()
 {
-	string line = trim(command_);
+	string const line = trim(cmd_prefix_ + command_);
 	if (line.empty())
 		return 1;
 
