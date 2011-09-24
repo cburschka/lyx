@@ -85,36 +85,6 @@
             </property>
            </spacer>
           </item>
-          <item row="1" column="0" >
-           <layout class="QVBoxLayout" >
-            <property name="spacing" >
-             <number>6</number>
-            </property>
-            <property name="margin" >
-             <number>0</number>
-            </property>
-            <item>
-             <widget class="QCheckBox" name="pdfusetitleCB" >
-              <property name="toolTip" >
-               <string>If not stated explicitly, fill title and author from appropriate environments</string>
-              </property>
-              <property name="text" >
-               <string>Automatically fi&amp;ll header</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="fullscreenCB" >
-              <property name="toolTip" >
-               <string>Enable fullscreen PDF presentation</string>
-              </property>
-              <property name="text" >
-               <string>Load in &amp;fullscreen mode</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
           <item row="0" column="0" colspan="2" >
            <widget class="QGroupBox" name="groupBox_2" >
             <property name="title" >
@@ -181,6 +151,36 @@
              </item>
             </layout>
            </widget>
+          </item>
+          <item row="1" column="0" >
+           <layout class="QVBoxLayout" >
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <property name="margin" >
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QCheckBox" name="pdfusetitleCB" >
+              <property name="toolTip" >
+               <string>If not stated explicitly, fill title and author from appropriate environments</string>
+              </property>
+              <property name="text" >
+               <string>Automatically fi&amp;ll header</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="fullscreenCB" >
+              <property name="toolTip" >
+               <string>Enable fullscreen PDF presentation</string>
+              </property>
+              <property name="text" >
+               <string>Load in &amp;fullscreen mode</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
@@ -315,6 +315,13 @@
                </property>
               </widget>
              </item>
+             <item row="1" column="0" >
+              <widget class="QCheckBox" name="bookmarksopenGB" >
+               <property name="text" >
+                <string>&amp;Open bookmarks</string>
+               </property>
+              </widget>
+             </item>
              <item row="2" column="0" >
               <layout class="QHBoxLayout" >
                <property name="spacing" >
@@ -341,13 +348,6 @@
                 </widget>
                </item>
               </layout>
-             </item>
-             <item row="1" column="0" >
-              <widget class="QCheckBox" name="bookmarksopenGB" >
-               <property name="text" >
-                <string>&amp;Open bookmarks</string>
-               </property>
-              </widget>
              </item>
              <item row="2" column="1" >
               <spacer>
