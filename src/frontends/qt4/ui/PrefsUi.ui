@@ -23,17 +23,14 @@
   <property name="sizeGripEnabled" >
    <bool>true</bool>
   </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QGridLayout" >
    <property name="margin" >
     <number>11</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item>
-    <widget class="lyx::frontend::PanelStack" name="prefsPS" />
-   </item>
-   <item>
+   <item row="1" column="0" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -99,27 +96,29 @@
      </item>
     </layout>
    </item>
+   <item row="0" column="0" >
+    <widget class="lyx::frontend::PanelStack" native="1" name="prefsPS" />
+   </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_i18n.h</include>
- </includes>
  <customwidgets>
   <customwidget>
    <class>lyx::frontend::PanelStack</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>PanelStack.h</header>
    <container>1</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>prefsPS</tabstop>
   <tabstop>restorePB</tabstop>
   <tabstop>savePB</tabstop>
   <tabstop>applyPB</tabstop>
   <tabstop>closePB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_i18n.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>

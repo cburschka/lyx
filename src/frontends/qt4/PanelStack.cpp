@@ -49,9 +49,9 @@ PanelStack::PanelStack(QWidget * parent)
 	: QWidget(parent)
 {
 	delay_search_ = new QTimer(this);
+	search_ = new FancyLineEdit(this);
 	list_ = new QTreeWidget(this);
 	stack_ = new QStackedWidget(this);
-	search_ = new FancyLineEdit(this);
 
 	// Configure the timer
 	delay_search_->setSingleShot(true);
