@@ -111,7 +111,11 @@ def find_exe_or_terminate(candidates):
 
 
 def run_command_popen(cmd):
-    pipe = subprocess.Popen(cmd, shell=True, close_fds=True, stdin=subprocess.PIPE, \
+    if os.name == 'nt':
+        unix = False
+    else:
+        unix = True
+    pipe = subprocess.Popen(cmd, shell=unix, close_fds=unix, stdin=subprocess.PIPE, \
         stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
     cmd_stdout = pipe.communicate()[0]
     cmd_status = pipe.returncode
