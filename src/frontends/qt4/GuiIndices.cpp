@@ -60,6 +60,9 @@ GuiIndices::GuiIndices(QWidget * parent)
 		QString const command = toqstr(*it).left(toqstr(*it).indexOf(" "));
 		indexCO->addItem(command, command);
 	}
+
+	indexOptionsLE->setValidator(new NoNewLineValidator(indexOptionsLE));
+	newIndexLE->setValidator(new NoNewLineValidator(newIndexLE));
 }
 
 void GuiIndices::update(BufferParams const & params)

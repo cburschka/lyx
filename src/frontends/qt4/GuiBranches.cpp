@@ -70,6 +70,8 @@ GuiBranches::GuiBranches(QWidget * parent)
 		undef_, SLOT(accept()));
 	connect(undef_->cancelPB, SIGNAL(clicked()),
 		undef_, SLOT(reject()));
+
+	newBranchLE->setValidator(new NoNewLineValidator(newBranchLE));
 }
 
 void GuiBranches::update(BufferParams const & params)

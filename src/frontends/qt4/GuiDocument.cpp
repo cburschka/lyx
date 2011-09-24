@@ -780,6 +780,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 	outputModule->synccustomCB->addItem("\\synctex=-1");
 	outputModule->synccustomCB->addItem("\\usepackage[active]{srcltx}");
 
+	outputModule->synccustomCB->setValidator(new NoNewLineValidator(
+		outputModule->synccustomCB));
+
 	// fonts
 	fontModule = new UiWidget<Ui::FontUi>;
 	connect(fontModule->osFontsCB, SIGNAL(clicked()),
@@ -818,6 +821,11 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(fontModule->fontOsfCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
+
+	fontModule->fontencLE->setValidator(new NoNewLineValidator(
+		fontModule->fontencLE));
+	fontModule->cjkFontLE->setValidator(new NoNewLineValidator(
+		fontModule->cjkFontLE));
 
 	updateFontlist();
 
@@ -1012,6 +1020,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(langModule->languagePackageCO, SIGNAL(currentIndexChanged(int)),
 		this, SLOT(languagePackageChanged(int)));
 
+	langModule->languagePackageLE->setValidator(new NoNewLineValidator(
+		langModule->languagePackageLE));
+
 	QAbstractItemModel * language_model = guiApp->languageModel();
 	// FIXME: it would be nice if sorting was enabled/disabled via a checkbox.
 	language_model->sort(0);
@@ -1105,6 +1116,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(biblioModule->bibtexOptionsLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 
+	biblioModule->bibtexOptionsLE->setValidator(new NoNewLineValidator(
+		biblioModule->bibtexOptionsLE));
+
 	biblioModule->citeStyleCO->addItem(qt_("Author-year"));
 	biblioModule->citeStyleCO->addItem(qt_("Numerical"));
 	biblioModule->citeStyleCO->setCurrentIndex(0);
@@ -1186,6 +1200,11 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(latexModule->refstyleCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
+
+	latexModule->optionsLE->setValidator(new NoNewLineValidator(
+		latexModule->optionsLE));
+	latexModule->childDocLE->setValidator(new NoNewLineValidator(
+		latexModule->childDocLE));
 
 	// postscript drivers
 	for (int n = 0; tex_graphics[n][0]; ++n) {
@@ -1287,6 +1306,17 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(pdfSupportModule->optionsLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
+
+	pdfSupportModule->titleLE->setValidator(new NoNewLineValidator(
+		pdfSupportModule->titleLE));
+	pdfSupportModule->authorLE->setValidator(new NoNewLineValidator(
+		pdfSupportModule->authorLE));
+	pdfSupportModule->subjectLE->setValidator(new NoNewLineValidator(
+		pdfSupportModule->subjectLE));
+	pdfSupportModule->keywordsLE->setValidator(new NoNewLineValidator(
+		pdfSupportModule->keywordsLE));
+	pdfSupportModule->optionsLE->setValidator(new NoNewLineValidator(
+		pdfSupportModule->optionsLE));
 
 	for (int i = 0; backref_opts[i][0]; ++i)
 		pdfSupportModule->backrefCO->addItem(qt_(backref_opts_gui[i]));
