@@ -263,10 +263,10 @@ public:
 	/* these things are for search and replace */
 
 	/// needed to insert the selection
-	void insertStringAsLines(DocIterator const & dit, docstring const & str,
+	void insertStringAsLines(Cursor & cur, docstring const & str,
 		Font const & font);
 	/// needed to insert the selection
-	void insertStringAsParagraphs(DocIterator const & dit, docstring const & str,
+	void insertStringAsParagraphs(Cursor & cur, docstring const & str,
 		Font const & font);
 
 	/// access to our paragraphs
