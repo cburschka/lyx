@@ -20,6 +20,7 @@
 #include "GuiFontLoader.h"
 #include "GuiKeySymbol.h"
 #include "qt_helpers.h"
+#include "Validator.h"
 
 #include "Author.h"
 #include "BufferList.h"
@@ -346,33 +347,6 @@ static void setComboxFont(QComboBox * cb, string const & family,
 
 	LYXERR0("FAILED to find the font: '"
 	       << foundry << "', '" << family << '\'');
-}
-
-
-/////////////////////////////////////////////////////////////////////
-//
-// NoNewLineValidator
-//
-/////////////////////////////////////////////////////////////////////
-
-class NoNewLineValidator : public QValidator
-{
-public:
-	NoNewLineValidator(QWidget *);
-	QValidator::State validate(QString & input, int & pos) const;
-};
-
-
-NoNewLineValidator::NoNewLineValidator(QWidget * parent)
-	: QValidator(parent)
-{
-}
-
-
-QValidator::State NoNewLineValidator::validate(QString & input, int & /*pos*/) const
-{
-	input.remove(QRegExp("[\\n\\r]"));
-	return QValidator::Acceptable;
 }
 
 
