@@ -212,7 +212,7 @@ int Systemcall::startscript(Starttype how, string const & what,
 			    string const & path, bool process_events)
 {
 	string outfile;
-	QString cmd = toqstr(parsecmd(what, outfile));
+	QString cmd = QString::fromLocal8Bit(parsecmd(what, outfile).c_str());
 
 	SystemcallPrivate d(outfile);
 
@@ -257,7 +257,7 @@ SystemcallPrivate::SystemcallPrivate(const std::string& of) :
 	if (!out_file_.empty()) {
 		// Check whether we have to simply throw away the output.
 		if (out_file_ != os::nulldev())
-			process_->setStandardOutputFile(toqstr(out_file_));
+			process_->setStandardOutputFile(QString::fromLocal8Bit(out_file_.c_str()));
 	}
 
 	connect(process_, SIGNAL(readyReadStandardOutput()), SLOT(stdOut()));
