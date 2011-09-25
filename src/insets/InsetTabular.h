@@ -465,7 +465,8 @@ public:
 	///
 	bool isMultiColumn(idx_type cell) const;
 	///
-	idx_type setMultiColumn(idx_type cell, idx_type number);
+	idx_type setMultiColumn(idx_type cell, idx_type number,
+			     bool const right_border);
 	///
 	void unsetMultiColumn(idx_type cell);
 	///

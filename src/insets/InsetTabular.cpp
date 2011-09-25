@@ -1615,7 +1615,8 @@ Tabular::CellData & Tabular::cellInfo(idx_type cell) const
 }
 
 
-Tabular::idx_type Tabular::setMultiColumn(idx_type cell, idx_type number)
+Tabular::idx_type Tabular::setMultiColumn(idx_type cell, idx_type number,
+					  bool const right_border)
 {
 	idx_type const col = cellColumn(cell);
 	idx_type const row = cellRow(cell);
@@ -1629,7 +1630,7 @@ Tabular::idx_type Tabular::setMultiColumn(idx_type cell, idx_type number)
 	if (column_info[col].alignment != LYX_ALIGN_DECIMAL)
 		cs.alignment = column_info[col].alignment;
 	if (col > 0)
-		setRightLine(cell, rightLine(cellIndex(row, col - 1)));
+		setRightLine(cell, right_border);
 
 	for (idx_type i = 1; i < number; ++i) {
 		CellData & cs1 = cellInfo(cell + i);
@@ -1954,7 +1955,7 @@ Tabular::idx_type Tabular::setLTCaption(row_type row, bool what)
 {
 	idx_type i = getFirstCellInRow(row);
 	if (what) {
-		setMultiColumn(i, numberOfCellsInRow(row));
+		setMultiColumn(i, numberOfCellsInRow(row), false);
 		setTopLine(i, false);
 		setBottomLine(i, false);
 		setLeftLine(i, false);
@@ -5364,7 +5365,8 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 			// just multicol for one single cell
 			// check whether we are completely in a multicol
 			if (!tabular.isMultiColumn(cur.idx()))
-				tabular.setMultiColumn(cur.idx(), 1);
+				tabular.setMultiColumn(cur.idx(), 1,
+					tabular.rightLine(cur.idx()));
 			break;
 		}
 		// we have a selection so this means we just add all this
@@ -5372,7 +5374,8 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		idx_type const s_start = cur.selBegin().idx();
 		row_type const col_start = tabular.cellColumn(s_start);
 		row_type const col_end = tabular.cellColumn(cur.selEnd().idx());
-		cur.idx() = tabular.setMultiColumn(s_start, col_end - col_start + 1);
+		cur.idx() = tabular.setMultiColumn(s_start, col_end - col_start + 1,
+						   tabular.rightLine(cur.selEnd().idx()));
 		cur.pit() = 0;
 		cur.pos() = 0;
 		cur.setSelection(false);
