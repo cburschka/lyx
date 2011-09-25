@@ -283,7 +283,7 @@ Introduction
 
  describes several things in addition to LyX's philosophy: most importantly,
  the format of all of the manuals.
- If you don't read it, you'll have a bear of a time navigating this manual.
+ If you don't read it, you will have a bear of a time navigating this manual.
  You might also be better served looking in one of the other manuals instead
  of this one.
  
@@ -346,8 +346,8 @@ reference "chap:The-User-Interface"
 \end_inset
 
 .
- Most of them are self-explanatory and you'll find them listed in the correspond
-ing sections of this documentation.
+ Most of them are self-explanatory and you will find them listed in the
+ corresponding sections of this documentation.
 \end_layout
 
 \begin_layout Section
@@ -983,7 +983,7 @@ Cut
  command.
  Also, if you've selected text, be careful: If you hit a key, LyX will completel
 y delete the selected text and replace it with what you just typed.
- You'll have to do an 
+ You will have to do an 
 \family sans
 Undo
 \family default
@@ -1354,7 +1354,7 @@ Undo
 Redo
 \family default
  work on almost everything in LyX.
- But they won't undo or redo text character by character, but by blocks
+ But they will not undo or redo text character by character, but by blocks
  of text.
 \end_layout
 
@@ -1518,14 +1518,22 @@ The Outliner
 In the pull-down box at the top of the outline window, you can choose between
  several different lists, including other TOC-like objects, such as lists
  of tables and figures, but also lists of footnotes, or labels and cross-referen
-ces (see 
+ces (see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "sec:Cross-References"
 
 \end_inset
 
-), or notes, or citations (see 
+), or notes, or citations (see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "sec:Bibliography"
@@ -1970,7 +1978,7 @@ Right
 \family sans
 Up
 \family default
-, and 
+ and 
 \family sans
 Down
 \family default
@@ -2111,12 +2119,12 @@ description "Control key"
 \end_inset
 
  in the documentation files) This has a couple of different uses, depending
- on which keys it's used in combination with:
+ on which keys it is used in combination with:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-With 
+
 \family sans
 Backspace
 \family default
@@ -2128,7 +2136,7 @@ Delete
 \end_layout
 
 \begin_layout Itemize
-With 
+
 \family sans
 Left
 \family default
@@ -2140,7 +2148,7 @@ Right
 \end_layout
 
 \begin_layout Itemize
-With 
+
 \family sans
 Home
 \family default
@@ -2178,7 +2186,7 @@ description "Shift key"
 
 \end_inset
 
- in the documentation files) Use this with any of the motion keys to select
+ in the documentation files) Use this with any of the arrow keys to select
  the text between the old and new cursor positions.
 \end_layout
 
@@ -2216,7 +2224,10 @@ description "Alt or Meta key"
 Alt+
 \family default
  function.
- This key does many different things, but it also activates the 
+\begin_inset Newline newline
+\end_inset
+
+This key does many different things, but it also activates the 
 \emph on
 menu accelerator keys
 \emph default
@@ -2263,7 +2274,7 @@ Text Style
 \begin_inset Quotes erd
 \end_inset
 
- menu.
+ dialog.
  Typing 
 \begin_inset Quotes eld
 \end_inset
@@ -2315,7 +2326,7 @@ You will learn more and more key bindings and short-cut keys as you use
 
 
 \family sans
-Alt+P Shift-A
+Alt+P Shift+A
 \family default
 
 \begin_inset Quotes erd
@@ -2634,8 +2645,8 @@ Springer Layouts for journals of the Springer publishing group
 \end_layout
 
 \begin_layout Standard
-We won't go into any detail about how to use these different document classes
- here.
+We will not go into any detail about how to use these different document
+ classes here.
  You can find all the details about the non-standard classes in Chapter
  6 of the 
 \emph on
@@ -3439,7 +3450,7 @@ Subsection
 Subsubsection
 \family default
  headings, and so on.
- We'll describe these headings fully in section
+ We will describe these headings fully in section
 \begin_inset space ~
 \end_inset
 
@@ -4198,7 +4209,7 @@ nest
  days of typewriters.
  There are several paragraph environments which are specific to a particular
  document type.
- We'll only be covering the most common ones here.
+ We will only be covering the most common ones here.
 \end_layout
 
 \begin_layout Standard
@@ -4814,7 +4825,7 @@ Numbering
 
 TOC
 \family default
- you'll see two counters.
+ you will see two counters.
  The one named 
 \family sans
 Numbering
@@ -5078,7 +5089,7 @@ This is in the
 Quotation
 \family default
  environment.
- If I keep writing, you'll see the indentation.
+ If I keep writing, you will see the indentation.
  If your country uses a writing style that shows off new paragraphs by indenting
  the first line, then 
 \family sans
@@ -5259,8 +5270,8 @@ Description
 List
 \family default
  environments, LyX lets you provide your own label.
- We'll present the individual details of each type of list next after describing
- some general features of all four of them.
+ We will present the individual details of each type of list next after
+ describing some general features of all four of them.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5341,7 +5352,7 @@ name "sec:Itemize"
 \end_layout
 
 \begin_layout Standard
-The first type of list we'll describe in detail is the 
+The first type of list we will describe in detail is the 
 \family sans
 Itemize
 \family default
@@ -5498,7 +5509,7 @@ Document ! Settings
 
 \begin_layout Standard
 Notice how the space between items decreases with increasing depth.
- We'll explain nesting and all the tricks you can do with different depths
+ We will explain nesting and all the tricks you can do with different depths
  in section
 \begin_inset space ~
 \end_inset
@@ -7263,7 +7274,7 @@ Abstract
 Abstract
 \family default
  in anything else or vice versa.
- It won't work.
+ It will not work.
  The 
 \family sans
 Abstract
@@ -7436,7 +7447,7 @@ Bibliography
 \family sans
 Bibliography
 \family default
- in anything else or vice versa won't work.
+ in anything else or vice versa will not work.
 \end_layout
 
 \begin_layout Standard
@@ -7558,7 +7569,7 @@ Blank
 \end_inset
 
  this is the only case in which you can type multiple whitespaces in LyX.
- If you need to insert blank lines, you'll still need to use 
+ If you need to insert blank lines, you will still need to use 
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
@@ -7583,7 +7594,7 @@ Return
 \family sans
 LyX-Code
 \family default
- environment, you'll need to change the paragraph environment yourself.
+ environment, you will need to change the paragraph environment yourself.
  Also, you can nest the 
 \family sans
 LyX-Code
@@ -9031,7 +9042,7 @@ arg   "depth-decrement"
 \begin_layout Labeling
 \labelwidthstring MMM
 #1-b And last, back to the outermost level, #1.
- After this sentence, we'll hit 
+ After this sentence, we will hit 
 \family sans
 Return
 \family default
@@ -9077,7 +9088,7 @@ This is the LyX-Code environment, at level #1, the outermost
 
 \begin_layout LyX-Code
 level.
-  Now we'll hit 
+  Now we will hit 
 \family sans
 Return
 \family default
@@ -9087,7 +9098,7 @@ type  "shortcut"
 arg   "depth-increment"
 \end_inset
 
-, after which, we'll change to the 
+, after which, we will change to the 
 \family sans
 Enumerate
 \family default
@@ -9237,7 +9248,7 @@ arg   "depth-increment"
 \end_inset
 
 .
- We'll do that again\SpecialChar \ldots{}
+ We will do that again\SpecialChar \ldots{}
 
 \end_layout
 
@@ -9426,8 +9437,8 @@ Example 4: Going Bonkers
 
 \begin_layout Enumerate
 We're going to go totally nuts now.
- We won't nest as deep as in the other examples, nor will we go into the
- same detail with how we did it.
+ We will not nest as deep as in the other examples, nor will we go into
+ the same detail with how we did it.
  (level #1: 
 \family sans
 Enumerate
@@ -9451,11 +9462,11 @@ arg   "depth-increment"
 \family sans
 , Standard
 \family default
-: level #2) We'll stick an encapsulated description of how we created the
- example in parentheses someplace.
+: level #2) We will stick an encapsulated description of how we created
+ the example in parentheses someplace.
  For example, the two key bindings are how we changed the depth.
  The environment name is the name of the current environment.
- Either before or after this, we'll put in the level.
+ Either before or after this, we will put in the level.
 \end_layout
 
 \end_deeper
@@ -9469,7 +9480,7 @@ Return, Enumerate
 
 \begin_deeper
 \begin_layout Verse
-Now we'll add verse.
+Now we will add verse.
 \begin_inset Newline newline
 \end_inset
 
@@ -9693,7 +9704,7 @@ quoted letter.
 \begin_inset Quotes erd
 \end_inset
 
- We'll nest both the 
+ We will nest both the 
 \family sans
 Address
 \family default
@@ -9710,7 +9721,7 @@ Address
 Quotation
 \family default
  for the letter body.
- We'll use 
+ We will use 
 \begin_inset Info
 type  "shortcut"
 arg   "break-paragraph inverse"
@@ -12277,8 +12288,8 @@ rève
 \begin_inset Quotes erd
 \end_inset
 
- in a PDF, you won't get any result, because the PDF-viewer searches for
- the glyph 
+ in a PDF, you will not get any result, because the PDF-viewer searches
+ for the glyph 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13172,8 +13183,8 @@ This is the Small caps font shape
 Size
 \family default
  Alters the size of the font.
- You'll find no numerical values here; all possible sizes are actually proportio
-nal to the document font size.
+ You will find no numerical values here; all possible sizes are actually
+ proportional to the document font size.
  Once again, you don't feed LyX the details, but a general description of
  what you want to do.
  The options are:
@@ -14150,7 +14161,7 @@ Additional Features
 \begin_layout Standard
 LyX uses the program LaTeX as its backend.
  LaTeX is just a macro package for the TeX typesetting system, but to prevent
- confusion, we'll only refer to LaTeX.
+ confusion, we will only refer to LaTeX.
  LyX is what you use to do your actual writing.
  Then, LyX calls LaTeX to turn your writing into printable output.
  This happens in two stages:
@@ -15769,7 +15780,7 @@ This is I.
 \end_layout
 
 \begin_layout Standard
-You won't see anything wrong until you view a final version of your document.
+You will not see anything wrong until you view a final version of your document.
 \end_layout
 
 \begin_layout Standard
@@ -16777,7 +16788,7 @@ Embedded
 Objects
 \emph default
  manual.
- There you'll also find tips and tricks for special cases.
+ There you will also find tips and tricks for special cases.
 \end_layout
 
 \begin_layout Section
@@ -17786,7 +17797,7 @@ PDF
 
 .
  We say it can be, because you can convert any bitmap image format to PDF
- or EPS and the result won't be scalable.
+ or EPS and the result will not be scalable.
  In this cases only a header with the image properties is added to the original
  image
 \begin_inset Foot
@@ -21987,7 +21998,7 @@ The issues of this chapter are described in detail in the
 Math
 \emph default
  manual.
- There you'll also find tips and tricks for special cases.
+ There you will also find tips and tricks for special cases.
 \end_layout
 
 \begin_layout Section
@@ -27542,7 +27553,7 @@ reference "sub:Index-Program"
 \family sans
 xindy
 \family default
-, however, this won't work for anything other than bold or italic text.
+, however, this will not work for anything other than bold or italic text.
  This is because xindy requires you to define semantic elements before they
  can be used, see 
 \begin_inset CommandInset citation
@@ -30650,7 +30661,7 @@ Document ! Preview
 
 \begin_layout Standard
 LyX allows you to generate previews of sections of your document on the
- fly so you can see how they'll look in the final document without having
+ fly so you can see how they will look in the final document without having
  to break your train of thought with 
 \family sans
 View\SpecialChar \menuseparator
@@ -32721,8 +32732,8 @@ Latin1
 
 \begin_layout Standard
 There are a few things you need to know about this table.
- Here are some of the details you'll need to bear in mind when using characters
- from the 
+ Here are some of the details you will need to bear in mind when using character
+s from the 
 \family typewriter
 Latin1
 \family default
@@ -32749,7 +32760,7 @@ T1
 \family default
 -fonts but aren't using them] will still miss a few characters: D0, F0,
  DE, FE, AB, and BB – the uppercase and lowercase eth and thorn, and the
- french quotes won't show up.
+ french quotes will not show up.
 \end_layout
 
 \begin_layout Standard
