@@ -78,8 +78,15 @@ status open
 Note:
 \series default
  You must not use the view PDF button to preview this file! For viewing
- and exporting this as PDF use in the menus the method PDF (ps2pdf) or PDF
- (dvipdfm).
+ and exporting this as PDF use in the menus the method PDF
+\begin_inset space ~
+\end_inset
+
+(ps2pdf) or PDF
+\begin_inset space ~
+\end_inset
+
+(dvipdfm).
  For more informations, please read the 
 \series bold
 powerdot
@@ -101,6 +108,31 @@ dvips
 \end_inset
 
  to the document class options to get proper DVI output.
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ 
+\series bold
+powerdot
+\series default
+ version <= 1.4g is incompatible with 
+\series bold
+enumitem
+\series default
+ version 3.5.
+ If you get 
+\family typewriter
+enumitem
+\family default
+ errors, make sure to download 
+\series bold
+powerdot
+\series default
+ version 1.4h (2011/09/15) from CTAN.
 \end_layout
 
 \end_inset
