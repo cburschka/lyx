@@ -323,21 +323,27 @@ int ForkedCall::generateChild()
 	// 2. If we are inside quotes, then don't replace the white space
 	//    but do remove the quotes themselves. We do this naively by
 	//    replacing the quote with '\0' which is fine if quotes
-	//    delimit the entire word.
+	//    delimit the entire word. However, if quotes do not delimit the
+	//    entire word (i.e., open quote is inside word), leave them alone.
 	char inside_quote = 0;
+	char c_before_open_quote = ' ';
 	vector<char>::iterator it = vec.begin();
 	vector<char>::iterator const end = vec.end();
 	for (; it != end; ++it) {
 		char const c = *it;
 		if (!inside_quote) {
-			if (c == ' ')
-				*it = '\0';
-			else if (c == '\'' || c == '"') {
-				*it = '\0';
+			if (c == '\'' || c == '"') {
+				if (c_before_open_quote == ' ')
+					*it = '\0';
 				inside_quote = c;
+			} else {
+				if (c == ' ')
+					*it = '\0';
+				c_before_open_quote = c;
 			}
 		} else if (c == inside_quote) {
-			*it = '\0';
+			if (c_before_open_quote = ' ')
+				*it = '\0';
 			inside_quote = 0;
 		}
 	}
