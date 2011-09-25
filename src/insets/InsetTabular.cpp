@@ -5391,10 +5391,27 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	}
 
 	case Tabular::MULTICOLUMN: {
-		if (tabular.isMultiColumn(cur.idx()))
-			tabularFeatures(cur, Tabular::UNSET_MULTICOLUMN);
-		else
+		if (!cur.selection()) {
+			if (tabular.isMultiColumn(cur.idx()))
+				tabularFeatures(cur, Tabular::UNSET_MULTICOLUMN);
+			else
+				tabularFeatures(cur, Tabular::SET_MULTICOLUMN);
+			break;
+		}
+		bool merge = false;
+		for (col_type c = sel_col_start; c <= sel_col_end; ++c) {
+			row_type const r = sel_row_start;
+			if (!tabular.isMultiColumn(tabular.cellIndex(r, c))
+			    || (r > sel_row_start && !tabular.isPartOfMultiColumn(r, c)))
+				merge = true;
+		}
+		// If the selection contains at least one singlecol cell
+		// or multiple multicol cells,
+		// we assume the user will merge is to a single multicol
+		if (merge)
 			tabularFeatures(cur, Tabular::SET_MULTICOLUMN);
+		else
+			tabularFeatures(cur, Tabular::UNSET_MULTICOLUMN);
 		break;
 	}
 
@@ -5429,10 +5446,27 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	}
 
 	case Tabular::MULTIROW: {
-		if (tabular.isMultiRow(cur.idx()))
-			tabularFeatures(cur, Tabular::UNSET_MULTIROW);
-		else
+		if (!cur.selection()) {
+			if (tabular.isMultiRow(cur.idx()))
+				tabularFeatures(cur, Tabular::UNSET_MULTIROW);
+			else
+				tabularFeatures(cur, Tabular::SET_MULTIROW);
+			break;
+		}
+		bool merge = false;
+		for (row_type r = sel_row_start; r <= sel_row_end; ++r) {
+			col_type const c = sel_col_start;
+			if (!tabular.isMultiRow(tabular.cellIndex(r, c))
+			    || (r > sel_row_start && !tabular.isPartOfMultiRow(r, c)))
+				merge = true;
+		}
+		// If the selection contains at least one singlerow cell
+		// or multiple multirow cells,
+		// we assume the user will merge is to a single multirow
+		if (merge)
 			tabularFeatures(cur, Tabular::SET_MULTIROW);
+		else
+			tabularFeatures(cur, Tabular::UNSET_MULTIROW);
 		break;
 	}
 
