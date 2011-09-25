@@ -282,7 +282,7 @@ int ForkedCall::startScript(Starttype wait, string const & what)
 		return retval_;
 	}
 
-	command_ = what;
+	command_ = trim(what);
 	signal_.reset();
 	return run(Wait);
 }
@@ -290,7 +290,7 @@ int ForkedCall::startScript(Starttype wait, string const & what)
 
 int ForkedCall::startScript(string const & what, SignalTypePtr signal)
 {
-	command_ = what;
+	command_ = trim(what);
 	signal_  = signal;
 
 	return run(DontWait);
@@ -300,9 +300,10 @@ int ForkedCall::startScript(string const & what, SignalTypePtr signal)
 // generate child in background
 int ForkedCall::generateChild()
 {
-	string const line = trim(cmd_prefix_ + command_);
-	if (line.empty())
+	if (command_.empty())
 		return 1;
+
+	string const line = cmd_prefix_ + command_;
 
 #if !defined (_WIN32)
 	// POSIX
