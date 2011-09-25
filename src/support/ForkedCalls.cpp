@@ -324,29 +324,42 @@ int ForkedCall::generateChild()
 	//    but do remove the quotes themselves. We do this naively by
 	//    replacing the quote with '\0' which is fine if quotes
 	//    delimit the entire word. However, if quotes do not delimit the
-	//    entire word (i.e., open quote is inside word), leave them alone.
+	//    entire word (i.e., open quote is inside word), simply discard
+	//    them such as not to break the current word.
 	char inside_quote = 0;
 	char c_before_open_quote = ' ';
 	vector<char>::iterator it = vec.begin();
+	vector<char>::iterator itc = vec.begin();
 	vector<char>::iterator const end = vec.end();
-	for (; it != end; ++it) {
+	for (; it != end; ++it, ++itc) {
 		char const c = *it;
 		if (!inside_quote) {
 			if (c == '\'' || c == '"') {
 				if (c_before_open_quote == ' ')
-					*it = '\0';
+					*itc = '\0';
+				else
+					--itc;
 				inside_quote = c;
 			} else {
 				if (c == ' ')
-					*it = '\0';
+					*itc = '\0';
+				else
+					*itc = c;
 				c_before_open_quote = c;
 			}
 		} else if (c == inside_quote) {
-			if (c_before_open_quote = ' ')
-				*it = '\0';
+			if (c_before_open_quote == ' ')
+				*itc = '\0';
+			else
+				--itc;
 			inside_quote = 0;
-		}
+		} else
+			*itc = c;
 	}
+
+	// Clear what remains.
+	for (; itc != end; ++itc)
+		*itc = '\0';
 
 	// Build an array of pointers to each word.
 	it = vec.begin();

@@ -590,8 +590,8 @@ string latexEnvCmdPrefix(string const & path)
 	string const texinputs = getEnv("TEXINPUTS");
 
 	if (os::shell() == os::UNIX)
-		return "env TEXINPUTS='." + sep + texinputs_prefix
-					  + sep + texinputs + "' ";
+		return "env TEXINPUTS=\"." + sep + texinputs_prefix
+					  + sep + texinputs + "\" ";
 	else
 		return "cmd /d /c set TEXINPUTS=." + sep + texinputs_prefix
 						   + sep + texinputs + " & ";
