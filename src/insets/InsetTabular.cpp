@@ -1649,7 +1649,8 @@ bool Tabular::isMultiRow(idx_type cell) const
 }
 
 
-Tabular::idx_type Tabular::setMultiRow(idx_type cell, idx_type number)
+Tabular::idx_type Tabular::setMultiRow(idx_type cell, idx_type number,
+				       bool const bottom_border)
 {
 	idx_type const col = cellColumn(cell);
 	idx_type const row = cellRow(cell);
@@ -1670,8 +1671,8 @@ Tabular::idx_type Tabular::setMultiRow(idx_type cell, idx_type number)
 	// cells: left
 	cs.alignment = LYX_ALIGN_LEFT; 
 
-	// set the bottom row of the last selected cell
-	setBottomLine(cell, bottomLine(cell + (number - 1)*ncols()));
+	// set the bottom line of the last selected cell
+	setBottomLine(cell, bottom_border);
 
 	for (idx_type i = 1; i < number; ++i) {
 		CellData & cs1 = cell_info[row + i][col];
@@ -5399,7 +5400,8 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 			// just multirow for one single cell
 			// check whether we are completely in a multirow
 			if (!tabular.isMultiRow(cur.idx()))
-				tabular.setMultiRow(cur.idx(), 1);
+				tabular.setMultiRow(cur.idx(), 1,
+						    tabular.bottomLine(cur.idx()));
 			break;
 		}
 		// we have a selection so this means we just add all this
@@ -5407,7 +5409,8 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		idx_type const s_start = cur.selBegin().idx();
 		row_type const row_start = tabular.cellRow(s_start);
 		row_type const row_end = tabular.cellRow(cur.selEnd().idx());
-		cur.idx() = tabular.setMultiRow(s_start, row_end - row_start + 1);
+		cur.idx() = tabular.setMultiRow(s_start, row_end - row_start + 1,
+						tabular.bottomLine(cur.selEnd().idx()));
 		cur.pit() = 0;
 		cur.pos() = 0;
 		cur.setSelection(false);

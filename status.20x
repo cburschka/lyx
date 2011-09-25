@@ -105,6 +105,8 @@ What's new
 
 - Fix Horizontal Space dialog when issued from within math (bug 7746).
 
+- Fix bottom border allocation when setting a multirow (bug 7791).
+
 - Disable interword and protected space lfuns in math, since these spaces
   are not yet supported.
 
