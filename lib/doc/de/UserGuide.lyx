@@ -300,51 +300,54 @@ Einführung
 Wie LyX aussieht
 \end_layout
 
-\begin_layout Subsection
-Das Hauptfenster
-\end_layout
-
 \begin_layout Standard
 Wie die meisten Anwendungen hat auch LyX die bekannte Menüleiste am oberen
  Rand des Fensters.
- 
-\lang english
-Below it is a toolbar with a pulldown box and various buttons.
- There is, of course, a vertical scrollbar and a main work area for editing
- documents.
+ Darunter befindet sich eine Werkzeugleiste mit einer Auswahlbox und verschieden
+en Knöpfen.
+ Es gibt natürlich einen vertikalen Rollbalken und ein Hauptarbeitsbereich
+ um die Dokumente zu bearbeiten.
 \end_layout
 
 \begin_layout Standard
-
+Es gibt keinen vertikalen Rollbalken.
+ Dies ist kein Fehler, sondern Absicht.
+ Wenn man ein Buch liest, erwartet man, dass die Zeilen am Rand umgebrochen
+ werden.
+ Der Text rutscht dabei automatisch auf die nächste Seite, daher ist ein
+ horizontaler Rollbalken nicht notwendig.
+ Es gibt drei Fälle, bei denen Sie dennoch einen Rollbalken erwarten.
+ Der erste Fall sind große Bilder, 
 \lang english
-Note that there is no horizontal scrollbar.
- This is not a bug or an oversight, but intentional.
- When you read a book, you expect the end of a line to wrap around to the
- next line.
- Text overflows onto new pages in a vertical fashion, hence the need for
- only a vertical scrollbar.
- There are three cases where you might want a horizontal scrollbar.
- The first case is large figures, displayed WYSIWYG\SpecialChar \@.
- This, however, is due
- to a flaw in the routine that displays graphics on the LyX screen in a
- WYSIWYG fashion; it should rescale the graphics to fit in the window, just
- as you'd need to rescale graphics to fit on a page.
- The second and third cases are tables and equations which are wider than
- the LyX window.
- You can use the arrow keys to scroll horizontally through the table, but
- this doesn't work for equations yet.
+displayed WYSIWYG\SpecialChar \@.
+ This, however, is due to a flaw in the routine that displays
+ graphics on the LyX screen in a WYSIWYG fashion; it should rescale the
+ graphics to fit in the window, just as you'd need to rescale graphics to
+ fit on a page
+\lang ngerman
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+präzisieren, dass in LyX skaliert werden kann; WYSIWYG raus
+\end_layout
+
+\end_inset
+
+.
+ Der zweite und dritte Fall sind Tabellen und Gleichungen, die breiter als
+ LyXs Hauptarbeitsbereich sind.
+ Man kann die Pfeiltasten benutzen um horizontal durch Tabellen zu navigieren.
+ Dies funktioniert leider noch nicht für Gleichungen.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For a brief description of all LyX menus and Werkzeugleistenknopfs, have
- a look at Anhang
+Für eine detaillierte Beschreibung aller LyX Menüs und Werkzeugleistenknöpfe,
+ siehe Anhang
 \begin_inset space ~
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -352,21 +355,43 @@ reference "chap:Die-Benutzeroberfläche"
 
 \end_inset
 
-
-\lang english
 .
- Most of them are self-explanatory and you'll find them listed in the correspond
-ing sections of this documentation.
+ 
+\lang english
+Most of them are self-explanatory and you will find them listed in the correspon
+ding sections of this documentation
+\lang ngerman
+.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+letzten Satz raus
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
-HILFE!
+HILFE
 \end_layout
 
 \begin_layout Standard
 Zunächst die schlechte Nachricht: Das Hilfesystem ist nicht so umfangreich
  und einfach wie in vielen kommerziellen Anwendungen.
  Haben Sie Geduld, es wird daran gearbeitet.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Satz raus
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -386,7 +411,15 @@ Handbüchern,
 status collapsed
 
 \begin_layout Plain Layout
-siehe 
+mehr über den Befehl 
+\series bold
+"=
+\series default
+ siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Zusammengesetzte-Worte"
@@ -431,27 +464,36 @@ name "LyX-Grundeinstellungen"
 
 \lang english
 There are several features of LyX that can be configured from inside LyX,
- without resorting to configuration files.
- First, LyX is able to inspect your system to see what programs, LaTeX document
- classes and LaTeX packages are available.
+ without resorting to configuration files
+\lang ngerman
+.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Info über Config-Dateien raus, menü Tools->Settings erwähnen
+\end_layout
+
+\end_inset
+
+ LyX kann Ihr System inspizieren, um zu sehen welche Programme, LaTeX-Dokumentkl
+assen und LaTeX-Pakete verfügbar sind.
+
+\lang english
  It uses this knowledge to give reasonable defaults to several 
 \family sans
 Einstellungen
 \family default
  settings.
- Although this configuration has already been done when LyX was installed
- on your system, you might have some items that you installed locally, e.
+
+\lang ngerman
+ Die Konfiguration wird bereits bei der Installation durchgeführt.
+ Allerdings können später installierte Dinge wie z.
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
-\begin_inset space \space{}
-\end_inset
-
-new LaTeX classes, and which are not seen by LyX.
- To force LyX to re-inspect your system, you should use
-\lang ngerman
- 
+B, LaTeX-Klassen nicht detektiert werden.
+ In diesem Fall muss LyX über das Menü 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
 Neu
@@ -460,7 +502,7 @@ Neu
 
 konfigurieren
 \family default
-.
+
 \begin_inset Index idx
 status collapsed
 
@@ -470,9 +512,9 @@ Neukonfiguration von LyX
 
 \end_inset
 
- 
-\lang english
-You should then restart LyX to ensure that the changes are taken into account.
+ neu konfiguriert werden.
+ Sie sollten dann LyX neu starten um sicherzustellen, dass die Änderungen
+ verwendet werden.
 \end_layout
 
 \begin_layout Section
@@ -1858,12 +1900,10 @@ Eingabevervollständigung
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-LyX provides completion of words by scanning all documents that are currently
- opened.
- Every word that appears in these documents is added to a database that
- is used to propose completions.
+LyX bietet eine Eingabevervollständigung an, indem alle geöffneten Dokumente
+ gescannt werden.
+ Jedes gefundene Wort wird in eine Datenbank eingetragen, die für die Vervollstä
+ndigungsvorschläge verwendet wird.
 \end_layout
 
 \begin_layout Standard
@@ -1876,11 +1916,22 @@ By default LyX zeigt a small triangle behind the cursor as indicator that
 Tab
 \family default
  key to use this completion.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+erklären, dass man das erst einstellen muss, also kein default
+\end_layout
+
+\end_inset
+
  When several completions are possible, a popup is opened showing them.
  You can select a completion in the popup using the mouse oder the arrow
  keys, und accept the chosen completion be pressing 
 \family sans
-Return
+Enter
 \family default
 .
 \end_layout
@@ -1888,12 +1939,27 @@ Return
 \begin_layout Standard
 
 \lang english
-In the preferences dialog, which is opened mit the Menü 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+nach vorne
+\end_layout
+
+\end_inset
+
+In the preferences dialog, which is opened mit the 
+\lang ngerman
+Menü 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
-Preferences
+Einstellungen
 \family default
-, the cursor completion indicator can be turned off in the section 
+, 
+\lang english
+the cursor completion indicator can be turned off in the section 
 \family sans
 Editing\SpecialChar \menuseparator
 Input Completion
@@ -1962,49 +2028,55 @@ Tastatur!-funktionen
 \end_layout
 
 \begin_layout Standard
+Es gibt mindestens zwei verschiedene grundlegende Sätze von Tastenkürzeln:
+ CUA und Emacs.
+ LyXs Voreinstellung ist CUA.
+\begin_inset Note Note
+status open
 
-\lang english
-There are at least two different primary binding maps: CUA and Emacs.
- LyX's default is CUA.
+\begin_layout Plain Layout
+beschreiben, wie emacs eingestellt werden kann
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Some keys, like 
+Einige Tasten wie 
 \family sans
-Page
+Bild
 \begin_inset space ~
 \end_inset
 
-Up
+Hoch
 \family default
 , 
 \family sans
-Page
+Bild
 \begin_inset space ~
 \end_inset
 
-Down
+Runter
 \family default
 , 
 \family sans
-Left
+Links
 \family default
 , 
 \family sans
-Right
+Rechts
 \family default
 , 
 \family sans
-Up
+Hoch
 \family default
-, and 
+ und 
 \family sans
-Down
+Runter
 \family default
-, do exactly what you expect them to do.
- Other keys don't:
+ machen genaus das, was man erwartet, andere nicht:
 \end_layout
 
 \begin_layout Labeling
@@ -2021,12 +2093,8 @@ description "Tabulator key"
 
 \end_inset
 
-
-\lang english
-There is no such thing as a tab stop in LyX.
- If you don't understand this
-\lang ngerman
-, lesen Sie die Abschnitte
+Es gibt in LyX keine Tabulatoren.
+ Wenn Sie das nicht verstehen, lesen Sie die Abschnitte
 \begin_inset space ~
 \end_inset
 
@@ -2056,20 +2124,24 @@ reference "sub:Listen"
 \end_inset
 
 , jetzt sofort.
-
-\lang english
- 
-\lang ngerman
-Ja, jetzt sofort.
- 
-\lang english
-If you're still confused, look in the
-\lang ngerman
- 
+ Ja, jetzt sofort.
+ Wenn Sie immer noch verwirrt sind, schauen Sie in das LyX 
 \emph on
 Tutorium
 \emph default
 .
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+In LyX wird die Tabulatortaste nur verwendet, um den Vorschlage der Eingabevervo
+llständigung zu übernehmen.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -2086,18 +2158,8 @@ description "Escape key"
 
 \end_inset
 
-
-\lang english
-This is the 
-\begin_inset Quotes gld
-\end_inset
-
-cancel key.
-\begin_inset Quotes erd
-\end_inset
-
- It's used, generically, to cancel operations.
- Other parts of the manual will go into greater detail about this.
+Wird verwendet, um Operationen abzubrechen.
+ Andere Teile des Handbuchs gehen detaillierter darauf ein.
 \end_layout
 
 \begin_layout Labeling
@@ -2118,16 +2180,13 @@ und
 \family sans
 Ende
 \family default
-\lang english
- These move the cursor, respectively, to the beginning and end of a line,
- unless you are using the Emacs bindings where they jump to the beginning
- or end of the file.
+ Diese setzen den Cursor an den Anfang oder das Ende einer Zeile.
+ Verwenden Sie die Emacs-Tastenkürzel, wird der Cursor an den Anfang oder
+ das Ende des Dokuments gesetzt.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There are three modifier keys:
+Es gibt drei Hilfstasten:
 \end_layout
 
 \begin_layout Labeling
@@ -2136,10 +2195,7 @@ There are three modifier keys:
 \family sans
 Steuerung
 \family default
-\lang english
- (Denoted by
-\lang ngerman
- 
+ (in der Dokumentation als 
 \begin_inset Quotes gld
 \end_inset
 
@@ -2155,53 +2211,49 @@ description "Steuerung-Taste"
 
 \end_inset
 
- 
-\lang english
-in the documentation files) This has a couple of different uses, depending
- on which keys it's used in combination with:
+ bezeichnet) Diese hat verschiedene Funktionen, abhängig mit welcher Taste
+ es in Kombination verwendet wird:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
-With 
+Mit 
 \family sans
-Backspace
+Rücktaste
 \family default
- or 
+ oder 
 \family sans
-Delete
+Entf
 \family default
-, it deletes an entire word instead of a single character.
+ löscht es ein ganzes Wort statt nur einem Zeichen.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-With 
+Mit 
 \family sans
-Left
+Links
 \family default
- and 
+ und 
 \family sans
-Right
+Rechts
 \family default
-, it moves by words instead of characters.
+ springt es über Wörter statt Zeichen.
 \end_layout
 
 \begin_layout Itemize
+Mit 
+\family sans
+Pos1
+\family default
+ und 
+\family sans
+Ende
+\family default
+ springt es Richtung Anfang bzw.
+\begin_inset space ~
+\end_inset
 
-\lang english
-With 
-\family sans
-Home
-\family default
- and 
-\family sans
-End
-\family default
-, it moves to the beginning and the end of the document, respectively.
+Ende des Dokuments.
 \end_layout
 
 \end_deeper
@@ -2211,18 +2263,12 @@ End
 \family sans
 Umschalt
 \family default
-\lang english
- (Denoted by
-\lang ngerman
- 
-\lang english
-
+ (in der Dokumentation als 
 \begin_inset Quotes gld
 \end_inset
 
 
 \family sans
-\lang ngerman
 Umschalt
 \family default
 
@@ -2237,10 +2283,8 @@ description "Umschalt-Taste"
 
 \end_inset
 
- 
-\lang english
-in the documentation files) Use this with any of the motion keys to select
- the text between the old and new cursor positions.
+ bezeichnet) Verwenden Sie diese zusammen mit den Pfeiltasten, wird der
+ Text zwischen der alten und neuen Cursorposition markiert.
 \end_layout
 
 \begin_layout Labeling
@@ -2249,10 +2293,7 @@ in the documentation files) Use this with any of the motion keys to select
 \family sans
 Alt
 \family default
-\lang english
- (Denoted by
-\lang ngerman
- 
+ (in der Dokumentation als 
 \begin_inset Quotes gld
 \end_inset
 
@@ -2268,30 +2309,29 @@ description "Alt oder Meta-Taste"
 
 \end_inset
 
- 
-\lang english
-in the documentation files) This is the Alt key on many keyboards, unless
- your keyboard has a distinct Meta key.
- If you have both keys, you will need to try out which one actually performs
- the 
-\family sans
-Alt+
-\family default
- function.
- This key does many different things, but it also activates the 
-\emph on
-menu accelerator keys
-\emph default
-.
- If you use this in combination with any of the underlined letters in a
- menu or menu item, it selects that menu item.
+ bezeichnet) Dies ist auf den meisten Tastaturen die Alt Taste, es sei denn
+ dass die Tastatur eine spezielle 
+\begin_inset Quotes gld
+\end_inset
+
+Meta
+\begin_inset Quotes grd
+\end_inset
+
+ Taste besitzt.
+ Haben Sie beide Tasten, müssen Sie herausfinden welche die Funktion der
+ Alt Taste hat.
+\begin_inset Newline newline
+\end_inset
+
+Diese Taste macht verschiedene Dinge und aktiviert zudem die Menü Schnellauswahl.
+ Wenn man sie in Kombination mit einem unterstrichenen Buchstaben eines
+ Menüeintrags verwendet, wird dieses Menü ausgewählt.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
-\lang english
-For example, the sequence 
+Zum Beispiel öffnet die Sequenz 
 \begin_inset Quotes gld
 \end_inset
 
@@ -2301,11 +2341,11 @@ Alt
 \begin_inset space ~
 \end_inset
 
-e
+b
 \begin_inset space ~
 \end_inset
 
-s
+t
 \family default
 
 \begin_inset space ~
@@ -2313,23 +2353,23 @@ s
 
 
 \family sans
-c
+b
 \family default
 
 \begin_inset Quotes erd
 \end_inset
 
- brings up the 
-\begin_inset Quotes eld
+ den 
+\begin_inset Quotes gld
 \end_inset
 
-Text Style
-\begin_inset Quotes erd
+Textstil
+\begin_inset Quotes grd
 \end_inset
 
- menu.
- Typing 
-\begin_inset Quotes eld
+ Dialog.
+ 
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -2338,84 +2378,74 @@ Alt
 \begin_inset space ~
 \end_inset
 
-f
+d
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
- opens the 
+ öffnet das 
 \family sans
-File
+Datei
 \family default
- menu.
+ Menü.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The 
+Das Handbuch 
 \emph on
-Shortcuts
+Tastenkürzel
 \emph default
- manual lists all other things bound to the 
+ listet alle Kürzel mit der 
 \family sans
 Alt
 \family default
- key.
+ Taste auf.
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-
-\lang english
-You'll learn more and more key bindings and short-cut keys as you use LyX,
- because most actions will prompt a small message in the status bar at the
- bottom of LyX's main window which describe the name of the action, you've
- just triggered, and any existing key bindings for that action.
- The LyX menus also list the defined key bindings.
- The notation for the key bindings is very similar to the notation used
- in this documentation, so you should not have any problems understanding
- it.
- However, notice that Shift-modifiers are explicitly mentioned, so 
-\begin_inset Quotes eld
+Mit der zeit werden Sie mehr und mehr Tastenkürzel von LyX lernen und verwenden,
+ denn meist wird das Kürzel zu einer Aktion in der Statusleiste von LyX
+ angezeigt.
+ Die LyX Menüeinträge listen zudem die entsprechenden Tastenkürzel auf.
+ Die Schreibweise der Kürzel ist sehr ähnlich, meist sogar dieselbe wie
+ in der LyX Dokumentation.
+ Beachten Sie, dass die 
+\family sans
+Umschalt
+\family default
+ Taste explizit erwähnt wird; 
+\begin_inset Quotes gld
 \end_inset
 
 
 \family sans
-Alt+P Shift-A
+Alt+A Umschalt+A
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
- means 
+ bedeutet 
 \family sans
 Alt+P
 \family default
- followed by a capital 
-\family sans
-A
-\family default
-.
+ gefolgt von einem großen A.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can list or change the key bindings in the menu 
+Man kann im Menü 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
-Preferences
+Einstellungen
 \family default
  unter 
 \family sans
-Editing\SpecialChar \menuseparator
-Shortcuts
+Bearbeiten\SpecialChar \menuseparator
+Tastenkürzel
 \family default
- as explained in
-\lang ngerman
- Abschnitt
+ alle Tastenkürzel auflisten oder ändern, wie es in Abschnitt
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -2426,7 +2456,7 @@ reference "sub:Tastenkürzel-bearbeiten"
 
 \end_inset
 
-.
+ beschrieben ist.
 \end_layout
 
 \begin_layout Chapter
