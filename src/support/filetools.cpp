@@ -578,6 +578,26 @@ string const replaceEnvironmentPath(string const & path)
 }
 
 
+// Return a command prefix for setting the environment of the TeX engine.
+string latexEnvCmdPrefix(string const & path)
+{
+	if (path.empty() || lyxrc.texinputs_prefix.empty())
+		return string();
+
+	string const texinputs_prefix = os::latex_path_list(
+			replaceCurdirPath(path, lyxrc.texinputs_prefix));
+	string const sep = string(1, os::path_separator(os::TEXENGINE));
+	string const texinputs = getEnv("TEXINPUTS");
+
+	if (os::shell() == os::UNIX)
+		return "env TEXINPUTS=\"." + sep + texinputs_prefix
+					  + sep + texinputs + "\" ";
+	else
+		return "cmd /d /c set TEXINPUTS=." + sep + texinputs_prefix
+						   + sep + texinputs + " & ";
+}
+
+
 // Replace current directory in all elements of a path list with a given path.
 string const replaceCurdirPath(string const & path, string const & pathlist)
 {

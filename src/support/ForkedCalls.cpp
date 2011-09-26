@@ -15,7 +15,6 @@
 #include "support/ForkedCalls.h"
 
 #include "support/debug.h"
-#include "support/environment.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
@@ -23,8 +22,6 @@
 #include "support/Timeout.h"
 
 #include "support/bind.h"
-
-#include "LyXRC.h"
 
 #include <cerrno>
 #include <queue>
@@ -274,23 +271,8 @@ int ForkedProcess::waitForChild()
 /////////////////////////////////////////////////////////////////////
 
 ForkedCall::ForkedCall(string const & path)
-	: cmd_prefix_(empty_string())
-{
-	if (path.empty() || lyxrc.texinputs_prefix.empty())
-		return;
-
-	string const texinputs = os::latex_path_list(
-			replaceCurdirPath(path, lyxrc.texinputs_prefix));
-	string const sep = string(1, os::path_separator(os::TEXENGINE));
-	string const env = getEnv("TEXINPUTS");
-
-	if (os::shell() == os::UNIX)
-		cmd_prefix_ = "env 'TEXINPUTS=." + sep + texinputs
-						 + sep + env + "' ";
-	else
-		cmd_prefix_ = "cmd /d /c set TEXINPUTS=." + sep + texinputs
-							  + sep + env + " & ";
-}
+	: cmd_prefix_(to_filesystem8bit(from_utf8(latexEnvCmdPrefix(path))))
+{}
 
 
 int ForkedCall::startScript(Starttype wait, string const & what)
@@ -300,7 +282,7 @@ int ForkedCall::startScript(Starttype wait, string const & what)
 		return retval_;
 	}
 
-	command_ = what;
+	command_ = trim(what);
 	signal_.reset();
 	return run(Wait);
 }
@@ -308,7 +290,7 @@ int ForkedCall::startScript(Starttype wait, string const & what)
 
 int ForkedCall::startScript(string const & what, SignalTypePtr signal)
 {
-	command_ = what;
+	command_ = trim(what);
 	signal_  = signal;
 
 	return run(DontWait);
@@ -318,9 +300,10 @@ int ForkedCall::startScript(string const & what, SignalTypePtr signal)
 // generate child in background
 int ForkedCall::generateChild()
 {
-	string const line = trim(cmd_prefix_ + command_);
-	if (line.empty())
+	if (command_.empty())
 		return 1;
+
+	string const line = cmd_prefix_ + command_;
 
 #if !defined (_WIN32)
 	// POSIX
@@ -341,24 +324,43 @@ int ForkedCall::generateChild()
 	// 2. If we are inside quotes, then don't replace the white space
 	//    but do remove the quotes themselves. We do this naively by
 	//    replacing the quote with '\0' which is fine if quotes
-	//    delimit the entire word.
+	//    delimit the entire word. However, if quotes do not delimit the
+	//    entire word (i.e., open quote is inside word), simply discard
+	//    them such as not to break the current word.
 	char inside_quote = 0;
+	char c_before_open_quote = ' ';
 	vector<char>::iterator it = vec.begin();
+	vector<char>::iterator itc = vec.begin();
 	vector<char>::iterator const end = vec.end();
-	for (; it != end; ++it) {
+	for (; it != end; ++it, ++itc) {
 		char const c = *it;
 		if (!inside_quote) {
-			if (c == ' ')
-				*it = '\0';
-			else if (c == '\'' || c == '"') {
-				*it = '\0';
+			if (c == '\'' || c == '"') {
+				if (c_before_open_quote == ' ')
+					*itc = '\0';
+				else
+					--itc;
 				inside_quote = c;
+			} else {
+				if (c == ' ')
+					*itc = '\0';
+				else
+					*itc = c;
+				c_before_open_quote = c;
 			}
 		} else if (c == inside_quote) {
-			*it = '\0';
+			if (c_before_open_quote == ' ')
+				*itc = '\0';
+			else
+				--itc;
 			inside_quote = 0;
-		}
+		} else
+			*itc = c;
 	}
+
+	// Clear what remains.
+	for (; itc != end; ++itc)
+		*itc = '\0';
 
 	// Build an array of pointers to each word.
 	it = vec.begin();

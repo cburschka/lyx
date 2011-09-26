@@ -74,8 +74,6 @@ private:
 	size_t err_index_;
 	///
 	std::string out_file_;
-	///
-	std::string texinputs_;
 
 	/// Size of buffers.
 	static size_t const buffer_size_ = 200;
