@@ -39,6 +39,10 @@ if LYX_WIN_RESOURCE
 	windres -I$(top_builddir) --preprocessor "$(CPP) -xc-header -DRC_INVOKED" $< -o $@
 endif
 
+if INSTALL_MACOSX
+lyx_LDFLAGS = -framework Carbon -framework Cocoa
+endif
+
 #lyx_LDFLAGS=-Wl,-O1
 
 BUILT_SOURCES = $(PCH_FILE)
