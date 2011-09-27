@@ -1033,30 +1033,35 @@ string citationStyleToString(const CitationStyle & s)
 
 vector<CiteStyle> citeStyles(CiteEngine engine)
 {
-	unsigned int nStyles = 0;
-	unsigned int start = 0;
+	vector<CiteStyle> styles(0);
 
 	switch (engine) {
 		case ENGINE_BASIC:
-			nStyles = 2;
-			start = 0;
-			break;
-		case ENGINE_NATBIB_AUTHORYEAR:
-		case ENGINE_NATBIB_NUMERICAL:
-			nStyles = nCiteStyles - 1;
-			start = 1;
+			styles.push_back(CITE);
 			break;
 		case ENGINE_JURABIB:
-			nStyles = nCiteStyles;
-			start = 0;
+			styles.push_back(CITE);
+		case ENGINE_NATBIB_AUTHORYEAR:
+			styles.push_back(CITET);
+			styles.push_back(CITEP);
+			styles.push_back(CITEALT);
+			styles.push_back(CITEALP);
+			styles.push_back(CITEAUTHOR);
+			styles.push_back(CITEYEAR);
+			styles.push_back(CITEYEARPAR);
+			break;
+		case ENGINE_NATBIB_NUMERICAL:
+			styles.push_back(CITET);
+			styles.push_back(CITEALT);
+			styles.push_back(CITEAUTHOR);
+			styles.push_back(CITEP);
+			styles.push_back(CITEALP);
+			styles.push_back(CITEYEAR);
+			styles.push_back(CITEYEARPAR);
 			break;
 	}
 
-	vector<CiteStyle> styles(nStyles);
-	size_t i = 0;
-	int j = start;
-	for (; i != styles.size(); ++i, ++j)
-		styles[i] = citeStylesArray[j];
+	styles.push_back(NOCITE);
 
 	return styles;
 }
