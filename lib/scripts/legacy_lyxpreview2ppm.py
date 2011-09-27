@@ -428,4 +428,4 @@ def legacy_conversion_step2(latex_file, dpi, output_format, skipMetrics = False)
 
 
 if __name__ == "__main__":
-    exit(legacy_conversion(sys.argv)[0])
+    sys.exit(legacy_conversion(sys.argv)[0])
