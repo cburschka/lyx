@@ -565,30 +565,6 @@ string apply_escapes(string s, Escapes const & escape_map)
 	return s;
 }
 
-#if 0
-// This is not used any longer, but I do not know if we want to delete
-// it, since it seems like maybe it might be needed again.
-/** Return the position of the closing brace matching the open one at s[pos],
- ** or s.size() if not found.
- **/
-static size_t find_matching_brace(string const & s, size_t pos)
-{
-	LASSERT(s[pos] == '{', /* */);
-	int open_braces = 1;
-	for (++pos; pos < s.size(); ++pos) {
-		if (s[pos] == '\\')
-			++pos;
-		else if (s[pos] == '{')
-			++open_braces;
-		else if (s[pos] == '}') {
-			--open_braces;
-			if (open_braces == 0)
-				return pos;
-		}
-	}
-	return s.size();
-}
-#endif
 
 /// Within \regexp{} apply get_lyx_unescapes() only (i.e., preserve regexp semantics of the string),
 /// while outside apply get_lyx_unescapes()+get_regexp_escapes().
@@ -611,7 +587,8 @@ string escape_for_regex(string s, bool match_latex)
 		LYXERR(Debug::FIND, "new_pos: " << new_pos);
 		if (new_pos == s.size())
 			break;
-		size_t end_pos = s.find("\\endregexp{}}", new_pos + 8); // find_matching_brace(s, new_pos + 7);
+		// Might fail if \\endregexp{} is preceeded by unexpected stuff (weird escapes)
+		size_t end_pos = s.find("\\endregexp{}}", new_pos + 8);
 		LYXERR(Debug::FIND, "end_pos: " << end_pos);
 		t = s.substr(new_pos + 8, end_pos - (new_pos + 8));
 		LYXERR(Debug::FIND, "t in regexp      : " << t);
