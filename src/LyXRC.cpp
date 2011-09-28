@@ -402,11 +402,15 @@ bool LyXRC::read(FileName const & filename, bool check_format)
 		LYXERR0 ("Unable to convert " << filename.absFileName() <<
 			" to format " << LYXRC_FILEFORMAT);
 		return false;
+	} else {
+		// Keep this in the else branch, such that lexrc2 goes out
+		// of scope and releases the lock on tempfile before we
+		// attempt to remove it. This matters on Windows.
+		Lexer lexrc2(lyxrcTags);
+		lexrc2.setFile(tempfile);
+		LYXERR(Debug::LYXRC, "Reading '" << tempfile << "'...");
+		retval = read(lexrc2, check_format);
 	}
-	Lexer lexrc2(lyxrcTags);
-	lexrc2.setFile(tempfile);
-	LYXERR(Debug::LYXRC, "Reading '" << tempfile << "'...");
-	retval = read(lexrc2, check_format);
 	tempfile.removeFile();
 	return retval == ReadOK;
 }
