@@ -103,7 +103,7 @@ SET(_potfiles_dep)
 file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in "")
 file(GLOB_RECURSE _tmp_potfiles RELATIVE ${TOP_SRC_DIR}/ ${TOP_SRC_DIR}/src/*.h  ${TOP_SRC_DIR}/src/*.cpp  ${TOP_SRC_DIR}/src/*.cpp.in)
 list(SORT _tmp_potfiles)
-list(REMOVE_ITEM _tmp_potfiles src/support/Package.cpp)
+# list(REMOVE_ITEM _tmp_potfiles src/support/Package.cpp)
 
 foreach(_f ${_tmp_potfiles})
   # we don't need to select only relevant files because the outcome of xgettext
