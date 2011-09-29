@@ -1670,7 +1670,7 @@ Tabular::idx_type Tabular::setMultiRow(idx_type cell, idx_type number,
 	// this feature would be a fileformat change
 	// until LyX supports this, use the deault alignment of multirow
 	// cells: left
-	cs.alignment = LYX_ALIGN_LEFT; 
+	cs.alignment = LYX_ALIGN_LEFT;
 
 	// set the bottom line of the last selected cell
 	setBottomLine(cell, bottom_border);
