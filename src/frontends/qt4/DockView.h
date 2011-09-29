@@ -62,6 +62,8 @@ public:
 			}
 			mw->activateWindow();
 			mw->setFocus();
+			if (isFloating())
+				hide();
 			ev->accept();
 		}
 	}
