@@ -393,7 +393,6 @@ if [ -d "${ASpellSourceDir}" -a ! -f "${ASpellInstallHdr}" -a "yes" = "${aspell_
 		CXXFLAGS=-g "${ASpellSourceDir}/configure"\
 			--prefix="${ASpellInstallDir}"\
 			${AspellConfigureOptions}
-			#--host="${HOSTSYSTEM}" ${BuildSystem:+"--build=${BuildSystem}"}
 		make && make install${aspellstrip}
 		for file in ${FILE_LIST} ; do
 			if [ -f "${ASpellInstallDir}"/lib/${file} ]; then
@@ -490,8 +489,6 @@ build_lyx() {
 			CPPFLAGS="${CPPFLAGS} -I${SDKROOT}/Library/Frameworks/QtCore.framework/Headers"
 			CPPFLAGS="${CPPFLAGS} -I${SDKROOT}/Library/Frameworks/QtGui.framework/Headers"
 		fi
-		LDFLAGS="${LDFLAGS}"${MAC_API:+" -framework Carbon"}
-		LDFLAGS="${LDFLAGS} -framework AppKit"
 
 		echo LDFLAGS="${LDFLAGS}"
 		export LDFLAGS
