@@ -848,6 +848,9 @@ def checkConverterEntries():
     checkProg('an EPS -> PDF converter', ['epstopdf'],
         rc_entry = [ r'\converter eps        pdf        "epstopdf --outfile=$$o $$i"	""', ''])
     #
+    checkProg('an EPS -> PNG converter', ['convert $$i $$o'],
+        rc_entry = [ r'\converter eps        png        "%%"	""', ''])
+    #
     # no agr -> pdf converter, since the pdf library used by gracebat is not
     # free software and therefore not compiled in in many installations.
     # Fortunately, this is not a big problem, because we will use epstopdf to
