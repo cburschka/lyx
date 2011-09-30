@@ -69,5 +69,5 @@ tex2lyx_LDADD = \
 	@LIBS@ $(LIBSHLWAPI) $(LIBPSAPI)
 
 if INSTALL_MACOSX
-tex2lyx_LDFLAGS = -framework Carbon
+tex2lyx_LDFLAGS = -framework AppKit
 endif

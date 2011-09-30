@@ -40,7 +40,7 @@ if LYX_WIN_RESOURCE
 endif
 
 if INSTALL_MACOSX
-lyx_LDFLAGS = -framework Carbon -framework Cocoa
+lyx_LDFLAGS = -framework AppKit
 endif
 
 #lyx_LDFLAGS=-Wl,-O1

@@ -16,7 +16,7 @@ lyxclient_LDADD = \
 	$(QT4_LIB) $(QT4_LDFLAGS) $(LIBSHLWAPI) $(LIBPSAPI)
 
 if INSTALL_MACOSX
-lyxclient_LDFLAGS = -framework Carbon
+lyxclient_LDFLAGS = -framework AppKit
 endif
 
 # everything below the line containing the single backslashs
