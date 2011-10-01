@@ -110,6 +110,9 @@ What's new
 
 - Fix bottom border allocation when setting a multirow (bug 7791).
 
+- Fix merging of cells (multicolumn, multirow) when the first cell in the
+  selection is already a multi-cell (bug 7792).
+
 - Disable interword and protected space lfuns in math, since these spaces
   are not yet supported.
 
