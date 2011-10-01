@@ -22538,7 +22538,11 @@ Basics
 \end_layout
 
 \begin_layout Standard
-If you want to have 2 columns in your text, use the style 
+If you want to have 2
+\begin_inset space ~
+\end_inset
+
+columns in your text, use the style 
 \family sans
 Begin Multiple Columns
 \family default
@@ -22801,7 +22805,7 @@ as TeX Code behind the number of columns in the
  Begin Multiple Columns
 \family default
  style.
- behind the command write the text.
+ Behind the command follows the preface text.
  At the end of the style use the command
 \end_layout
 
@@ -23255,6 +23259,13 @@ go back to the default
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Column Separation
 \end_layout
@@ -23379,11 +23390,11 @@ columnseprule
 \end_inset
 
 pt (this is the default), the rule is suppressed.
- In the following example, the line separating the columns is 2
+ In the following example the line is 2
 \begin_inset space \thinspace{}
 \end_inset
 
-pt wide.
+pt wide:
 \end_layout
 
 \begin_layout Standard
