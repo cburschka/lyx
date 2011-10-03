@@ -155,42 +155,6 @@ def extract_metrics_info(dvipng_stdout):
     return results
 
 
-def color_pdf(latex_file, bg_color, fg_color):
-    use_preview_pdf_re = re.compile("(\s*\\\\usepackage\[[^]]+)((pdftex|xetex)\]{preview})")
-
-    tmp = mkstemp()
-
-    fg = ""
-    if fg_color != "0.000000,0.000000,0.000000":
-        fg = '  \\AtBeginDocument{\\let\\oldpreview\\preview\\renewcommand\\preview{\\oldpreview\\color[rgb]{%s}}}\n' % (fg_color)
-
-    success = 0
-    try:
-        for line in open(latex_file, 'r').readlines():
-            match = use_preview_pdf_re.match(line)
-            if match == None:
-                tmp.write(line)
-                continue
-            success = 1
-            tmp.write("  \\usepackage{color}\n" \
-                  "  \\pagecolor[rgb]{%s}\n" \
-                  "%s" \
-                  "%s\n" \
-                  % (bg_color, fg, match.group()))
-            continue
-
-    except:
-        # Unable to open the file, but do nothing here because
-        # the calling function will act on the value of 'success'.
-        warning('Warning in color_pdf! Unable to open "%s"' % latex_file)
-        warning(`sys.exc_type` + ',' + `sys.exc_value`)
-
-    if success:
-        copyfileobj(tmp, open(latex_file,"wb"), 1)
-
-    return success
-
-
 def fix_latex_file(latex_file):
     documentclass_re = re.compile("(\\\\documentclass\[)(1[012]pt,?)(.+)")
 
@@ -385,9 +349,6 @@ def main(argv):
     fg_color_dvipng = make_texcolor(fg_color, False)
     bg_color_dvipng = make_texcolor(bg_color, False)
 
-    fg_color_gr = make_texcolor(fg_color, True)
-    bg_color_gr = make_texcolor(bg_color, True)
-
     # External programs used by the script.
     latex = find_exe_or_terminate(latex or latex_commands)
     bibtex = find_exe(bibtex or bibtex_commands)
@@ -447,10 +408,6 @@ def main(argv):
             progress("Using the legacy conversion method (pngtopnm not found)")
             return legacy_conversion_step1(latex_file, dpi, output_format,
                 fg_color, bg_color, latex, pdf_output)
-
-    # Move color information for PDF into the latex file.
-    if not color_pdf(latex_file, bg_color_gr, fg_color_gr):
-        warning("Unable to move color info into the latex file")
 
     # Compile the latex file.
     latex_status, latex_stdout = run_latex(latex, latex_file, bibtex)

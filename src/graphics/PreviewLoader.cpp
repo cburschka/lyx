@@ -741,26 +741,7 @@ void PreviewLoader::Impl::dumpPreamble(otexstream & os) const
 	// Also support PDF output (automatically generated e.g. when
 	// \usepackage[pdftex]{hyperref} is used and XeTeX.
 	os << "\n"
-	   << "\\newif\\ifxetex\n"
-	   << "\\expandafter\\ifx\\csname XeTeXrevision\\endcsname\\relax\n"
-	   << "   \\xetexfalse\n"
-	   << "\\else\n"
-	   << "    \\xetextrue\n"
-	   << "\\fi\n"
-	   << "\\newif\\ifpdf\n"
-	   << "\\ifx\\pdfoutput\\undefined\n"
-	   << "\\else\\ifx\\pdfoutput\\relax\n"
-	   << "\\else\\ifnum0=\\pdfoutput\n"
-	   << "\\else\\pdftrue\\fi\\fi\\fi\n"
-	   << "\\ifxetex\n"
-	   << "  \\usepackage[active,delayed,tightpage,showlabels,lyx,xetex]{preview}\n"
-	   << "\\else\n"
-	   << "\\ifpdf\n"
-	   << "  \\usepackage[active,delayed,tightpage,showlabels,lyx,pdftex]{preview}\n"
-	   << "\\else\n"
-	   << "  \\usepackage[active,delayed,showlabels,lyx,dvips]{preview}\n"
-	   << "\\fi\n"
-	   << "\\fi\n"
+	   << "\\usepackage[active,delayed,showlabels,lyx]{preview}\n"
 	   << "\n";
 }
 

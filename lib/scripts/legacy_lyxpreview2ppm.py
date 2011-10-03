@@ -194,41 +194,44 @@ def extract_resolution(log_file, dpi):
     return dpi * (10.0 / fontsize) * (1000.0 / magnification)
 
 
-def legacy_latex_file(latex_file, fg_color, bg_color, bg_color_gr):
-    use_preview_dvi_re = re.compile("(\s*\\\\usepackage\[[^]]+)(dvips\]{preview})")
-    use_preview_pdf_re = re.compile("(\s*\\\\usepackage\[[^]]+)(pdftex\]{preview})")
+def legacy_latex_file(latex_file, fg_color, bg_color):
+    use_preview_re = re.compile(r"\s*\\usepackage\[([^]]+)\]{preview}")
+    fg_color_gr = make_texcolor(fg_color, True)
+    bg_color_gr = make_texcolor(bg_color, True)
 
     tmp = mkstemp()
 
     success = 0
     try:
-        for line in open(latex_file, 'r').readlines():
-            match = use_preview_dvi_re.match(line)
-            if match == None:
-                match = use_preview_pdf_re.match(line)
-                if match == None:
-                    tmp.write(line)
-                    continue
-                success = 1
-                tmp.write("  \\usepackage{color}\n" \
-                      "  \\pagecolor[rgb]{%s}\n" \
-                      "%s\n" \
-                      % (bg_color_gr, match.group()))
-                continue
-
-            success = 1
-            tmp.write("%stightpage,%s\n" \
-                      "  \\AtBeginDocument{\\AtBeginDvi{%%\n" \
-                      "  \\special{!userdict begin/bop-hook{//bop-hook exec\n" \
-                      "  <%s%s>{255 div}forall setrgbcolor\n" \
-                      "  clippath fill setrgbcolor}bind def end}}}\n" \
-                      % (match.group(1), match.group(2), fg_color, bg_color))
-
+        f = open(latex_file, 'r')
     except:
         # Unable to open the file, but do nothing here because
         # the calling function will act on the value of 'success'.
         warning('Warning in legacy_latex_file! Unable to open "%s"' % latex_file)
         warning(`sys.exc_type` + ',' + `sys.exc_value`)
+
+    for line in f.readlines():
+        if success:
+            tmp.write(line)
+            continue
+        match = use_preview_re.match(line)
+        if match == None:
+            tmp.write(line)
+            continue
+        success = 1
+        # Package order: color should be loaded before preview
+        # Preview options: add the options lyx and tightpage
+        tmp.write(r"""
+\usepackage{color}
+\definecolor{fg}{rgb}{%s}
+\definecolor{bg}{rgb}{%s}
+\pagecolor{bg}
+\usepackage[%s,lyx,tightpage]{preview}
+\makeatletter
+\g@addto@macro\preview{\begingroup\color{bg}\special{ps::clippath fill}\color{fg}}
+\g@addto@macro\endpreview{\endgroup}
+\makeatother
+""" % (fg_color_gr, bg_color_gr, match.group(1)))
 
     if success:
         copyfileobj(tmp, open(latex_file,"wb"), 1)
@@ -284,10 +287,10 @@ def legacy_conversion(argv, skipMetrics = False):
 def legacy_conversion_step1(latex_file, dpi, output_format, fg_color, bg_color,
                             latex, pdf_output = False, skipMetrics = False):
 
-    # Move color information into the latex file.
-    bg_color_gr = make_texcolor(bg_color, True)
-    if not legacy_latex_file(latex_file, fg_color, bg_color, bg_color_gr):
-        error("Unable to move color info into the latex file")
+    # Move color information, lyx and tightpage options into the latex file.
+    if not legacy_latex_file(latex_file, fg_color, bg_color):
+        error("""Unable to move the color information, and the lyx and tightpage
+            options of preview-latex, into the latex file""")
 
     # Compile the latex file.
     latex_status, latex_stdout = run_latex(latex, latex_file)
