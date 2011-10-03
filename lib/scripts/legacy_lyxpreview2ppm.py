@@ -81,7 +81,7 @@ import glob, os, pipes, re, string, sys
 from lyxpreview_tools import copyfileobj, error, filter_pages, find_exe, \
      find_exe_or_terminate, join_metrics_and_rename, latex_commands, \
      latex_file_re, make_texcolor, mkstemp, pdflatex_commands, progress, \
-     run_command, warning, write_metrics_info
+     run_command, run_latex, warning, write_metrics_info
 
 
 def usage(prog_name):
@@ -290,12 +290,7 @@ def legacy_conversion_step1(latex_file, dpi, output_format, fg_color, bg_color,
         error("Unable to move color info into the latex file")
 
     # Compile the latex file.
-    latex_call = '%s "%s"' % (latex, latex_file)
-
-    latex_status, latex_stdout = run_command(latex_call)
-    if latex_status:
-        warning("%s had problems compiling %s" \
-              % (os.path.basename(latex), latex_file))
+    latex_status, latex_stdout = run_latex(latex, latex_file)
 
     if pdf_output:
         return legacy_conversion_step3(latex_file, dpi, output_format, True, skipMetrics)
@@ -318,11 +313,7 @@ def legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics, gs,
         filter_pages(latex_file, pdf_latex_file, failed_pages)
 
         # pdflatex call
-        pdflatex_call = '%s "%s"' % (pdflatex, pdf_latex_file)
-        pdflatex_status, pdflatex_stdout = run_command(pdflatex_call)
-        if pdflatex_status:
-            warning("%s had problems compiling %s" \
-                % (os.path.basename(pdflatex), pdf_latex_file))
+        pdflatex_status, pdflatex_stdout = run_latex(pdflatex, pdf_latex_file)
 
         pdf_file = latex_file_re.sub(".pdf", pdf_latex_file)
 

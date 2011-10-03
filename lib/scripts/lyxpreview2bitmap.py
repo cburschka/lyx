@@ -44,6 +44,7 @@
 #   --fg=<color>:  The foreground color as a hexadecimal string, eg '000000'.
 #   --bg=<color>:  The background color as a hexadecimal string, eg 'faf0e6'.
 #   --latex=<exe>: The converter for latex files. Default is latex.
+#   --bibtex=<exe>: The converter for bibtex files. Default is bibtex.
 #   --lilypond:    Preprocess through lilypond-book. Default is false.
 #   --lilypond-book=<exe>:
 #                  The converter for lytex files. Default is lilypond-book.
@@ -79,10 +80,10 @@ import getopt, glob, os, re, shutil, string, sys
 
 from legacy_lyxpreview2ppm import legacy_conversion_step1
 
-from lyxpreview_tools import copyfileobj, error, filter_pages, find_exe, \
-     find_exe_or_terminate, join_metrics_and_rename, latex_commands, \
-     latex_file_re, make_texcolor, mkstemp, pdflatex_commands, progress, \
-     run_command, warning, write_metrics_info
+from lyxpreview_tools import bibtex_commands, copyfileobj, error, \
+     filter_pages, find_exe, find_exe_or_terminate, join_metrics_and_rename, \
+     latex_commands, latex_file_re, make_texcolor, mkstemp, pdflatex_commands, \
+     progress, run_command, run_latex, run_tex, warning, write_metrics_info
 
 
 def usage(prog_name):
@@ -95,6 +96,7 @@ Options:
   --fg=<color>:  Foreground color (default: black, ie '000000')
   --bg=<color>:  Background color (default: white, ie 'ffffff')
   --latex=<exe>: Specify the executable for latex (default: latex)
+  --bibtex=<exe>: Specify the executable for bibtex (default: bibtex)
   --lilypond:    Preprocess through lilypond-book (default: false)
   --lilypond-book=<exe>:
                  The executable for lilypond-book (default: lilypond-book)
@@ -312,6 +314,7 @@ def main(argv):
     dpi = 128
     fg_color = "000000"
     bg_color = "ffffff"
+    bibtex = None
     latex = None
     lilypond = False
     lilypond_book = None
@@ -320,9 +323,9 @@ def main(argv):
 
     # Parse and manipulate the command line arguments.
     try:
-        (opts, args) = getopt.gnu_getopt(argv[1:], "dhv", ["bg=", "debug",
-            "dpi=", "fg=", "help", "latex=", "lilypond", "lilypond-book=",
-            "png", "ppm", "verbose"])
+        (opts, args) = getopt.gnu_getopt(argv[1:], "dhv", ["bibtex=", "bg=",
+            "debug", "dpi=", "fg=", "help", "latex=", "lilypond",
+            "lilypond-book=", "png", "ppm", "verbose"])
     except getopt.GetoptError, err:
         error("%s\n%s" % (err, usage(script_name)))
 
@@ -331,6 +334,8 @@ def main(argv):
         if opt in ("-h", "--help"):
             print usage(script_name)
             sys.exit(0)
+        elif opt == "--bibtex":
+            bibtex = [val]
         elif opt == "--bg":
             bg_color = val
         elif opt in ("-d", "--debug"):
@@ -385,6 +390,7 @@ def main(argv):
 
     # External programs used by the script.
     latex = find_exe_or_terminate(latex or latex_commands)
+    bibtex = find_exe(bibtex or bibtex_commands)
     if lilypond:
         lilypond_book = find_exe_or_terminate(lilypond_book or ["lilypond-book"])
 
@@ -393,6 +399,7 @@ def main(argv):
 
     progress("Latex command: %s" % latex)
     progress("Latex produces pdf output: %s" % pdf_output)
+    progress("Bibtex command: %s" % bibtex)
     progress("Lilypond-book command: %s" % lilypond_book)
     progress("Preprocess through lilypond-book: %s" % lilypond)
     progress("Altering the latex file for font size and colors")
@@ -449,12 +456,7 @@ def main(argv):
         warning("Unable to move color info into the latex file")
 
     # Compile the latex file.
-    latex_call = '%s "%s"' % (latex, latex_file)
-
-    latex_status, latex_stdout = run_command(latex_call)
-    if latex_status:
-        warning("%s had problems compiling %s" \
-              % (os.path.basename(latex), latex_file))
+    latex_status, latex_stdout = run_latex(latex, latex_file, bibtex)
 
     # The dvi output file name
     dvi_file = latex_file_re.sub(".dvi", latex_file)

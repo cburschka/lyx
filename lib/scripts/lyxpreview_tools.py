@@ -12,7 +12,7 @@
 
 # A repository of the following functions, used by the lyxpreview2xyz scripts.
 # copyfileobj, error, find_exe, find_exe_or_terminate, make_texcolor, mkstemp,
-# progress, run_command, warning
+# progress, run_command, run_latex, warning
 
 # Requires python 2.4 or later (subprocess module).
 
@@ -23,7 +23,8 @@ import os, re, string, subprocess, sys, tempfile
 debug = False
 verbose = False
 
-# Known flavors of latex
+# Known flavors of latex and bibtex
+bibtex_commands = ("bibtex", "bibtex8", "biber")
 latex_commands = ("latex", "pplatex", "platex", "latex2e")
 pdflatex_commands = ("pdflatex", "xelatex", "lualatex")
 
@@ -306,3 +307,49 @@ def join_metrics_and_rename(original_metrics, new_metrics, new_page_indexes, ori
             original_metrics[legacy_index] = (index, metric)
         else:
             original_metrics.insert(legacy_index, (index, metric))
+
+
+def run_latex(latex, latex_file, bibtex = None):
+    # Run latex
+    latex_status, latex_stdout = run_tex(latex, latex_file)
+
+    if bibtex is None:
+        return latex_status, latex_stdout
+
+    # The aux and log output file names
+    aux_file = latex_file_re.sub(".aux", latex_file)
+    log_file = latex_file_re.sub(".log", latex_file)
+
+    # Run bibtex/latex if necessary
+    progress("Checking if a bibtex run is necessary")
+    if string_in_file(r"\bibdata", aux_file):
+        bibtex_status, bibtex_stdout = run_tex(bibtex, aux_file)
+        latex_status, latex_stdout = run_tex(latex, latex_file)
+    # Rerun latex if necessary
+    progress("Checking if a latex rerun is necessary")
+    if string_in_file("Warning: Citation", log_file):
+        latex_status, latex_stdout = run_tex(latex, latex_file)
+
+    return latex_status, latex_stdout
+
+
+def run_tex(tex, tex_file):
+    tex_call = '%s "%s"' % (tex, tex_file)
+
+    tex_status, tex_stdout = run_command(tex_call)
+    if tex_status:
+        warning("%s had problems compiling %s" \
+            % (os.path.basename(tex), tex_file))
+    return tex_status, tex_stdout
+
+
+def string_in_file(string, infile):
+    if not os.path.isfile(infile):
+        return False
+    f = open(infile, 'r')
+    for line in f.readlines():
+        if string in line:
+            f.close()
+            return True
+    f.close()
+    return False
