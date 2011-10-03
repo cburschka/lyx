@@ -392,7 +392,8 @@ def main(argv):
     latex = find_exe_or_terminate(latex or latex_commands)
     bibtex = find_exe(bibtex or bibtex_commands)
     if lilypond:
-        lilypond_book = find_exe_or_terminate(lilypond_book or ["lilypond-book"])
+        lilypond_book = find_exe_or_terminate(lilypond_book or
+            ["lilypond-book --safe"])
 
     # These flavors of latex are known to produce pdf output
     pdf_output = latex in pdflatex_commands
@@ -411,19 +412,15 @@ def main(argv):
     if lilypond:
         progress("Preprocess the latex file through %s" % lilypond_book)
         if pdf_output:
-            lilypond_book += ' --pdf'
+            lilypond_book += " --pdf"
+        lilypond_book += " --latex-program=%s" % latex.split()[0]
 
         # Make a copy of the latex file
         lytex_file = latex_file_re.sub(".lytex", latex_file)
         shutil.copyfile(latex_file, lytex_file)
 
         # Preprocess the latex file through lilypond-book.
-        lytex_call = '%s --safe --latex-program=%s "%s"' % (lilypond_book,
-            latex, lytex_file)
-        lytex_status, lytex_stdout = run_command(lytex_call)
-        if lytex_status:
-            warning("%s failed to compile %s" \
-                % (os.path.basename(lilypond_book), lytex_file))
+        lytex_status, lytex_stdout = run_tex(lilypond_book, lytex_file)
 
     if pdf_output:
         progress("Using the legacy conversion method (PDF support)")
