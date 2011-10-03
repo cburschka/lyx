@@ -88,7 +88,8 @@ def make_texcolor(hexcolor, graphics):
 def find_exe(candidates):
     global extlist, path
 
-    for prog in candidates:
+    for command in candidates:
+        prog = command.split()[0]
         for directory in path:
             for ext in extlist:
                 full_path = os.path.join(directory, prog + ext)
@@ -97,7 +98,7 @@ def find_exe(candidates):
                     # have found it). Return just the basename to avoid
                     # problems when the path to the executable contains
                     # spaces.
-                    return os.path.basename(full_path)
+                    return command
 
     return None
 
