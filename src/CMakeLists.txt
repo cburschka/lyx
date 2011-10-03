@@ -148,7 +148,7 @@ if(APPLE)
 	if(LYX_COCOA)
 		target_link_libraries(${_lyx} "-framework Cocoa")
 	else()
-		target_link_libraries(${_lyx} "-framework Carbon")
+		target_link_libraries(${_lyx} "-framework AppKit")
 	endif()
 endif()
 
