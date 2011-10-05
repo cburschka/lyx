@@ -47,16 +47,11 @@ enum LayoutTags {
 	LT_COPYSTYLE,
 	LT_DEPENDSON,
 	LT_OBSOLETEDBY,
-	//LT_EMPTY,
 	LT_END,
-	//LT_ENVIRONMENT_DEFAULT,
-	//LT_FANCYHDR,
-	//LT_FIRST_COUNTER,
 	LT_FONT,
 	LT_FREE_SPACING,
 	LT_PASS_THRU,
 	LT_PARBREAK_IS_NEWLINE,
-	//LT_HEADINGS,
 	LT_ITEMSEP,
 	LT_KEEPEMPTY,
 	LT_LABEL_BOTTOMSEP,
@@ -81,7 +76,6 @@ enum LayoutTags {
 	LT_PARINDENT,
 	LT_PARSEP,
 	LT_PARSKIP,
-	//LT_PLAIN,
 	LT_PREAMBLE,
 	LT_LANGPREAMBLE,
 	LT_BABELPREAMBLE,
@@ -228,6 +222,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 	bool error = false;
 	bool finished = false;
 	lex.pushTable(layoutTags);
+
 	// parse style section
 	while (!finished && lex.isOK() && !error) {
 		int le = lex.lex();
@@ -236,7 +231,8 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		case Lexer::LEX_FEOF:
 			continue;
 
-		case Lexer::LEX_UNDEF:		// parse error
+		case Lexer::LEX_UNDEF:
+			// parse error
 			lex.printError("Unknown layout tag `$$Token'");
 			error = true;
 			continue;
@@ -245,7 +241,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		}
 		switch (static_cast<LayoutTags>(le)) {
-		case LT_END:		// end of structure
+		case LT_END:
 			finished = true;
 			break;
 
@@ -253,7 +249,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 			lex >> category_;
 			break;
 
-		case LT_COPYSTYLE: {     // initialize with a known style
+		case LT_COPYSTYLE: {
 			docstring style;
 			lex >> style;
 			style = subst(style, '_', ' ');
@@ -274,7 +270,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 			break;
 			}
 
-		case LT_OBSOLETEDBY: {   // replace with a known style
+		case LT_OBSOLETEDBY: {
 			docstring style;
 			lex >> style;
 			style = subst(style, '_', ' ');
@@ -301,11 +297,11 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 			depends_on_ = subst(depends_on_, '_', ' ');
 			break;
 
-		case LT_MARGIN:		// margin style definition.
+		case LT_MARGIN:
 			readMargin(lex);
 			break;
 
-		case LT_LATEXTYPE:	// LaTeX style definition.
+		case LT_LATEXTYPE:
 			readLatexType(lex);
 			break;
 
@@ -350,7 +346,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 			labelfont = lyxRead(lex, labelfont);
 			break;
 
-		case LT_NEXTNOINDENT:	// Indent next paragraph?
+		case LT_NEXTNOINDENT:
 			lex >> nextnoindent;
 			break;
 
@@ -399,63 +395,64 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 			readEndLabelType(lex);
 			break;
 
-		case LT_LEFTMARGIN:	// left margin type
+		case LT_LEFTMARGIN:
 			lex >> leftmargin;
 			break;
 
-		case LT_RIGHTMARGIN:	// right margin type
+		case LT_RIGHTMARGIN:
 			lex >> rightmargin;
 			break;
 
-		case LT_LABELINDENT:	// label indenting flag
+		case LT_LABELINDENT:
 			lex >> labelindent;
 			break;
 
-		case LT_PARINDENT:	// paragraph indent. flag
+		case LT_PARINDENT:
 			lex >> parindent;
 			break;
 
-		case LT_PARSKIP:	// paragraph skip size
+		case LT_PARSKIP:
 			lex >> parskip;
 			break;
 
-		case LT_ITEMSEP:	// item separation size
+		case LT_ITEMSEP:
 			lex >> itemsep;
 			break;
 
-		case LT_TOPSEP:		// top separation size
+		case LT_TOPSEP:
 			lex >> topsep;
 			break;
 
-		case LT_BOTTOMSEP:	// bottom separation size
+		case LT_BOTTOMSEP:
 			lex >> bottomsep;
 			break;
 
-		case LT_LABEL_BOTTOMSEP: // label bottom separation size
+		case LT_LABEL_BOTTOMSEP:
 			lex >> labelbottomsep;
 			break;
 
-		case LT_LABELSEP:	// label separator
+		case LT_LABELSEP:
 			lex >> labelsep;
 			labelsep = subst(labelsep, 'x', ' ');
 			break;
 
-		case LT_PARSEP:		// par. separation size
+		case LT_PARSEP:
 			lex >> parsep;
 			break;
 
-		case LT_NEWLINE:	// newlines allowed?
+		case LT_NEWLINE:
 			lex >> newline_allowed;
 			break;
 
-		case LT_ALIGN:		// paragraph align
+		case LT_ALIGN:
 			readAlign(lex);
 			break;
-		case LT_ALIGNPOSSIBLE:	// paragraph allowed align
+	
+		case LT_ALIGNPOSSIBLE:
 			readAlignPossible(lex);
 			break;
 
-		case LT_LABELSTRING:	// label string definition
+		case LT_LABELSTRING:
 			// FIXME: this means LT_ENDLABELSTRING may only
 			// occur after LT_LABELSTRING
 			lex >> labelstring_;
@@ -463,26 +460,26 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 			labelstring_appendix_ = labelstring_;
 			break;
 
-		case LT_ENDLABELSTRING:	// endlabel string definition
+		case LT_ENDLABELSTRING:
 			lex >> endlabelstring_;	
 			endlabelstring_ = trim(endlabelstring_);
 			break;
 
-		case LT_LABELSTRING_APPENDIX: // label string appendix definition
+		case LT_LABELSTRING_APPENDIX:
 			lex >> labelstring_appendix_;	
 			labelstring_appendix_ = trim(labelstring_appendix_);
 			break;
 
-		case LT_LABELCOUNTER: // name of counter to use
+		case LT_LABELCOUNTER:
 			lex >> counter;	
 			counter = trim(counter);
 			break;
 
-		case LT_FREE_SPACING:	// Allow for free spacing.
+		case LT_FREE_SPACING:
 			lex >> free_spacing;
 			break;
 
-		case LT_PASS_THRU:	// Allow for pass thru.
+		case LT_PASS_THRU:
 			lex >> pass_thru;
 			break;
 
@@ -490,7 +487,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 			lex >> parbreak_is_newline;
 			break;
 
-		case LT_SPACING: // setspace.sty
+		case LT_SPACING:
 			readSpacing(lex);
 			break;
 
