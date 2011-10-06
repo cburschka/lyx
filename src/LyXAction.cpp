@@ -2304,7 +2304,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_INSET_INSERT
  * \li Action: Insert new inset (type given by the parameters).
  * \li Syntax: inset-insert <INSET> <ARGS>
- * \li Params: <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics|tabular|\n
+ * \li Params: <INSET>: <bibitem|bibtex|citation|ert|listings|external|graphics|tabular|\n
 	                 hyperlink|include|index|label|line|nomencl|vspace|ref|toc|script>\n
                <ARGS>: depends on the given inset. Use "lyx -dbg action" to explore.
  * \li Sample: inset-insert ref LatexCommand <Format> reference "<label name>"\end_inset \n
