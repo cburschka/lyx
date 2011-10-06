@@ -576,8 +576,10 @@ void easyParse(int & argc, char * argv[])
 {
 	map<string, cmd_helper> cmdmap;
 
+	cmdmap["-h"] = parse_help;
 	cmdmap["-help"] = parse_help;
 	cmdmap["--help"] = parse_help;
+	cmdmap["-v"] = parse_version;
 	cmdmap["-version"] = parse_version;
 	cmdmap["--version"] = parse_version;
 	cmdmap["-c"] = parse_class;
