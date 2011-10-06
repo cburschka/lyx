@@ -96,7 +96,7 @@ FileDialog::Result FileDialog::save(QString const & path,
 	QString const name = 
 		QFileDialog::getSaveFileName(qApp->focusWidget(),
 	     title_, startsWith, filters.join(";;"),
-			 selectedFilter, QFileDialog::DontConfirmOverwrite);
+			 &selectedFilter, QFileDialog::DontConfirmOverwrite);
 	if (name.isNull())
 		result.first = FileDialog::Later;
 	else
