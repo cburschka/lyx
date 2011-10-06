@@ -57,13 +57,14 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
 \html_latex_start <span class='latex'>
 \html_latex_end </span>
+\author -1379302345 "Julien Rioux" jrioux@lyx.org
 \end_header
 
 \begin_body
@@ -5002,6 +5003,612 @@ a4
 \end_layout
 
 \begin_layout Section
+
+\change_inserted -1379302345 1317932269
+Bibliography and citation packages
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -1379302345 1317930904
+achicago
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317930942
+Found: 
+\begin_inset Info
+type  "package"
+arg   "achicago"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317932177
+CTAN:
+\series medium
+ 
+\family typewriter
+\series default
+macros/latex/contrib/frankenstein/
+\change_unchanged
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317934204
+Notes: The package 
+\family sans
+achicago
+\family default
+ provides citation styles following the recommendations of the 
+\emph on
+Chicago Manual of Style
+\emph default
+.
+ It can be used with basic LaTeX or together with 
+\family sans
+natbib
+\family default
+, although it does not support full author lists.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -1379302345 1317930951
+apacite
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317930961
+Found: 
+\begin_inset Info
+type  "package"
+arg   "apacite"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317932696
+CTAN:
+\series medium
+ 
+\family typewriter
+\series default
+/biblio/bibtex/contrib/apacite/
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317934370
+Notes: The package 
+\family sans
+apacite
+\family default
+ provides citation styles closely following the recommendations of the American
+ Psychological Association.
+ It can be used with basic LaTeX or together with 
+\family sans
+natbib
+\family default
+.
+ It supports full author lists on the first citation, and automatically
+ shortens citations to the first author in second and subsequent citations
+ (equivalent to 
+\family sans
+natbib
+\family default
+'s 
+\family sans
+longnamesfirst
+\family default
+ option).
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -1379302345 1317930968
+apalike
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317930974
+Found: 
+\begin_inset Info
+type  "package"
+arg   "apalike"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317933595
+CTAN:
+\series medium
+ 
+\family typewriter
+\series default
+biblio/bibtex/base/
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317934316
+Notes: The package 
+\family sans
+apalike
+\family default
+ provides a citation style loosely following the recommendations of the
+ American Psychological Association.
+ It can be used with basic LaTeX or with 
+\family sans
+natbib
+\family default
+ as a replacement, although it does not support full author lists.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -1379302345 1317930978
+astron
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317930988
+Found: 
+\begin_inset Info
+type  "package"
+arg   "astron"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317933172
+CTAN:
+\series medium
+ 
+\family typewriter
+\series default
+biblio/bibtex/contrib/astron/
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317934402
+Notes: The package 
+\family sans
+astron
+\family default
+ provides citation styles following the guidelines of the journal Astronomy
+ and Astrophysics.
+ It can be used with basic LaTeX or with 
+\family sans
+natbib
+\family default
+ as a replacement, although it does not support full author lists.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -1379302345 1317930994
+authordate1-4
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317931004
+Found: 
+\begin_inset Info
+type  "package"
+arg   "authordate1-4"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317932569
+CTAN:
+\series medium
+ 
+\family typewriter
+\series default
+biblio/bibtex/contrib/authordate/
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317934431
+Notes: The package 
+\family sans
+authordate1-4
+\family default
+ provides citation styles loosely following the recommendations of the 
+\emph on
+British Standard
+\emph default
+, Butcher's 
+\emph on
+Copy-editing
+\emph default
+, and the 
+\emph on
+Chicago Manual of Style
+\emph default
+.
+ It can be used with basic LaTeX or with 
+\family sans
+natbib
+\family default
+ as a replacement, although it does not support full author lists.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -1379302345 1317931294
+bibtopic
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317931294
+Found: 
+\begin_inset Info
+type  "package"
+arg   "bibtopic"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317931294
+CTAN: 
+\family typewriter
+macros/latex/contrib/bibtopic/
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317931294
+Notes: The package 
+\family sans
+bibtopic
+\family default
+ is used to split BibTeX created bibliographies into sections.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -1379302345 1317931009
+chicago
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317931016
+Found: 
+\begin_inset Info
+type  "package"
+arg   "chicago"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317932936
+CTAN:
+\series medium
+ 
+\family typewriter
+\series default
+biblio/bibtex/contrib/chicago/
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317934468
+Notes: The package 
+\family sans
+chicago
+\family default
+ provides citation styles following the recommendations of the 
+\emph on
+Chicago Manual of Style
+\emph default
+.
+ It can be used with basic LaTeX or with 
+\family sans
+natbib
+\family default
+ as a replacement.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -1379302345 1317931021
+harvard
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317931028
+Found: 
+\begin_inset Info
+type  "package"
+arg   "harvard"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317932224
+CTAN:
+\series medium
+ 
+\family typewriter
+\series default
+macros/latex/contrib/harvard/
+\change_unchanged
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317934523
+Notes: The package 
+\family sans
+harvard
+\family default
+ provides citation styles following various recommendations, but mostly
+ those of Pitson's 
+\emph on
+Style Manual for Authors, Editors and Printers of Australian Government
+ Publications
+\emph default
+.
+ It can be used with basic LaTeX or with 
+\family sans
+natbib
+\family default
+ as a replacement.
+ It supports full author lists on the first citation, and automatically
+ shortens citations to the first author in second and subsequent citations
+ (equivalent to 
+\family sans
+natbib
+\family default
+'s 
+\family sans
+longnamesfirst
+\family default
+ option).
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -1379302345 1317931143
+jurabib
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317931143
+Found: 
+\begin_inset Info
+type  "package"
+arg   "jurabib"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317931143
+CTAN: 
+\family typewriter
+macros/latex/contrib/jurabib/
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317931143
+Notes: The package 
+\family sans
+jurabib
+\family default
+\color none
+ (
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -1379302345 1317931143
+
+http://www.jurabib.org
+\end_layout
+
+\end_inset
+
+) can be used as an alternative to 
+\family sans
+natbib
+\family default
+, to get flexible bibliographic styles with LyX.
+ It supports cite styles which are common in human sciences and law studies,
+ footcites, ibidems, and more.
+ You'll need to have jurabib version 0.6 at least.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -1379302345 1317931031
+mslapa
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317931039
+Found: 
+\begin_inset Info
+type  "package"
+arg   "mslapa"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317932826
+CTAN:
+\series medium
+ 
+\family typewriter
+\series default
+macros/latex/contrib/mslapa/
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317934634
+Notes: The package 
+\family sans
+mslapa
+\family default
+ provides a citation style approximately following the recommendations of
+ the American Psychological Association.
+ It can be used with basic LaTeX or with 
+\family sans
+natbib
+\family default
+ as a replacement.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -1379302345 1317935200
+named
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317935252
+Found: 
+\begin_inset Info
+type  "package"
+arg   "named"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317935282
+CTAN:
+\series medium
+ 
+\family typewriter
+\series default
+biblio/bibtex/contrib/named/
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317935511
+Notes: The package 
+\family sans
+named
+\family default
+ provides an author-year citation style following undocumented guidelines.
+ It can be used with basic LaTeX or with 
+\family sans
+natbib
+\family default
+ as a replacement, although it does not support full author lists.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -1379302345 1317931189
+natbib
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317931189
+Found: 
+\begin_inset Info
+type  "package"
+arg   "natbib"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317931189
+CTAN: 
+\family typewriter
+macros/latex/contrib/natbib/
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1379302345 1317931189
+Notes: The package 
+\family sans
+natbib
+\family default
+ is needed by LyX to produce a flexible interface to most of the available
+ bibliographic styles (you can also use 
+\family sans
+jurabib
+\family default
+ instead).
+\end_layout
+
+\begin_layout Section
 Packages required by modules
 \end_layout
 
@@ -5553,10 +6160,14 @@ index of algorithms
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted -1379302345 1317931281
 bibtopic
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -1379302345 1317931281
 Found: 
 \begin_inset Info
 type  "package"
@@ -5567,12 +6178,16 @@ arg   "bibtopic"
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -1379302345 1317931281
 CTAN: 
 \family typewriter
 macros/latex/contrib/bibtopic/
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -1379302345 1317931284
 Notes: The package 
 \family sans
 bibtopic
@@ -5990,10 +6605,14 @@ if
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted -1379302345 1317931128
 jurabib
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -1379302345 1317931128
 Found: 
 \begin_inset Info
 type  "package"
@@ -6004,12 +6623,16 @@ arg   "jurabib"
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -1379302345 1317931128
 CTAN: 
 \family typewriter
 macros/latex/contrib/jurabib/
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -1379302345 1317931180
 Notes: The package 
 \family sans
 jurabib
@@ -6260,10 +6883,14 @@ multirow
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted -1379302345 1317931164
 natbib
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -1379302345 1317931164
 Found: 
 \begin_inset Info
 type  "package"
@@ -6274,12 +6901,16 @@ arg   "natbib"
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -1379302345 1317931164
 CTAN: 
 \family typewriter
 macros/latex/contrib/natbib/
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -1379302345 1317931170
 Notes: The package 
 \family sans
 natbib
