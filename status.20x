@@ -31,7 +31,7 @@ What's new
   (part of bug 7555).
 
 - XHTML export now respects font color and background color from 
-  Document>Settings>Colors.
+  Document->Settings->Colors.
 
 
 * USER INTERFACE
@@ -101,10 +101,10 @@ What's new
 - Adjust the cursor language after document language change had changed the
   text language (bug 7681).
 
-- Correctly sort modules in Document>Settings and formats in the "Other 
+- Correctly sort modules in Document->Settings and formats in the "Other 
   formats" dialog (bug 7751).
 
-- Repair broken outliner display for broken references (bug 7708).
+- Repair outliner display for broken references (bug 7708).
 
 - Fix Horizontal Space dialog when issued from within math (bug 7746).
 
@@ -129,13 +129,13 @@ What's new
 - Fix on-screen display of graphics when the name of the temporary directory
   contains non-ascii characters (bug 7621).
 
-- Fix the tab ordering of widgets in the Tools > Preferences panel.
+- Fix the tab ordering of widgets in the Tools->Preferences panel.
 
 - Mark settings as changed when the Nomenclature line is edited in the
-  Tools > Preferences panel.
+  Tools->Preferences panel.
 
 - Fix instant preview when external files are loaded in the preamble,
-  e.g., through the \input LaTeX command.
+  e.g. through the \input LaTeX command.
 
 - Fix instant preview when using Python version 2.4 or lower.
 
