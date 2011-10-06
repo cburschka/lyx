@@ -1311,7 +1311,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 		runparams.encoding = encodings.fromLyXName("utf8-plain");
 
 	string const encoding = runparams.encoding->iconvName();
-	LYXERR(Debug::LATEX, "makeLaTeXFile encoding: " << encoding << "...");
+	LYXERR(Debug::LATEX, "makeLaTeXFile encoding: " << encoding << ", fname=" << fname.realPath());
 
 	ofdocstream ofs;
 	try { ofs.reset(encoding); }
@@ -3417,15 +3417,17 @@ bool Buffer::isExporting() const
 bool Buffer::doExport(string const & target, bool put_in_tempdir,
 	bool includeall, string & result_file) const
 {
+	LYXERR(Debug::FILES, "target=" << target << ", result_file=" << result_file);
 	OutputParams runparams(&params().encoding());
 	string format = target;
-	string filename;
+	string dest_filename;
 	size_t pos = target.find(' ');
 	if (pos != string::npos) {
-		filename = target.substr(pos + 1, target.length() - pos - 1);
+		dest_filename = target.substr(pos + 1, target.length() - pos - 1);
 		format = target.substr(0, pos);
-		runparams.export_folder = FileName(filename).onlyPath().realPath();
-		FileName(filename).onlyPath().createPath();
+		runparams.export_folder = FileName(dest_filename).onlyPath().realPath();
+		FileName(dest_filename).onlyPath().createPath();
+		LYXERR(Debug::FILES, "format=" << format << ", dest_filename=" << dest_filename << ", export_folder=" << runparams.export_folder);
 	}
 	MarkAsExporting exporting(this);
 	string backend_format;
@@ -3460,6 +3462,7 @@ bool Buffer::doExport(string const & target, bool put_in_tempdir,
 
 	} else {
 		backend_format = format;
+		LYXERR(Debug::FILES, "backend_format=" << backend_format);
 		// FIXME: Don't hardcode format names here, but use a flag
 		if (backend_format == "pdflatex")
 			runparams.flavor = OutputParams::PDFLATEX;
@@ -3471,12 +3474,11 @@ bool Buffer::doExport(string const & target, bool put_in_tempdir,
 			runparams.flavor = OutputParams::XETEX;
 	}
 
-	if (filename.empty()) {
-		filename = latexName(false);
-		filename = addName(temppath(), filename);
-		filename = changeExtension(filename,
-					   formats.extension(backend_format));
-	}
+	string filename = latexName(false);
+	filename = addName(temppath(), filename);
+	filename = changeExtension(filename,
+				   formats.extension(backend_format));
+	LYXERR(Debug::FILES, "filename=" << filename);
 
 	// Plain text backend
 	if (backend_format == "text") {
@@ -3586,7 +3588,10 @@ bool Buffer::doExport(string const & target, bool put_in_tempdir,
 		return true;
 	}
 
-	result_file = changeExtension(d->exportFileName().absFileName(), ext);
+	if (dest_filename.empty())
+		result_file = changeExtension(d->exportFileName().absFileName(), ext);
+	else
+		result_file = dest_filename;
 	// We need to copy referenced files (e. g. included graphics
 	// if format == "dvi") to the result dir.
 	vector<ExportedFile> const files =
