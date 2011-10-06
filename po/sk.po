@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-09-28 10:55+0200\n"
-"PO-Revision-Date: 2011-09-28 10:59+0200\n"
+"POT-Creation-Date: 2011-10-06 13:21+0200\n"
+"PO-Revision-Date: 2011-10-06 13:29+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -4493,7 +4493,8 @@ msgstr ""
 "tlačidla 'Zmazať'"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:19
-#: src/frontends/qt4/GuiSpellchecker.cpp:192
+#: src/frontends/qt4/GuiSpellchecker.cpp:234
+#: src/frontends/qt4/GuiSpellchecker.cpp:241
 msgid "Spell Checker"
 msgstr "Kontrola Pravopisu"
 
@@ -16884,11 +16885,11 @@ msgstr "Rozšírený WMF"
 msgid "LyXBlogger"
 msgstr "LyXBlogger"
 
-#: lib/configure.py:898
+#: lib/configure.py:901
 msgid "LyX Archive (zip)"
 msgstr "LyX Archív (zip)"
 
-#: lib/configure.py:901
+#: lib/configure.py:904
 msgid "LyX Archive (tar.gz)"
 msgstr "LyX Archív (tar.gz)"
 
@@ -17424,21 +17425,21 @@ msgstr ""
 msgid "Senseless!!! "
 msgstr "Nezmyselné!!! "
 
-#: src/Buffer.cpp:4227
+#: src/Buffer.cpp:4228
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s znovu nahraný."
 
-#: src/Buffer.cpp:4230
+#: src/Buffer.cpp:4231
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Nedá sa znova nahrať dokument %1$s."
 
-#: src/Buffer.cpp:4296
+#: src/Buffer.cpp:4297
 msgid "Included File Invalid"
 msgstr "Zahrnutý Súbor je Neplatný"
 
-#: src/Buffer.cpp:4297
+#: src/Buffer.cpp:4298
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -21590,7 +21591,7 @@ msgid "Give a filename for the LyX server pipe"
 msgstr "Zadajte meno pre dátovod LyX serveru"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1475
-#: src/frontends/qt4/GuiSpellchecker.cpp:428
+#: src/frontends/qt4/GuiSpellchecker.cpp:526
 msgid "Spellchecker"
 msgstr "Kontrola pravopisu"
 
@@ -21830,7 +21831,11 @@ msgstr "Zobraziť súbor"
 msgid "Error -> Cannot load file!"
 msgstr "Chyba -> Nemôžem nahrať súbor!"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:193
+#: src/frontends/qt4/GuiSpellchecker.cpp:235
+msgid "Spell check of the selection done, did not find any errors."
+msgstr "Kontrola pravopisu hotová, nenašli sa žiadne chyby."
+
+#: src/frontends/qt4/GuiSpellchecker.cpp:242
 msgid ""
 "We reached the end of the document, would you like to continue from the "
 "beginning?"
