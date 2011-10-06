@@ -129,7 +129,7 @@ FileDialog::Result FileDialog::save(QString const & path,
 FileDialog::Result FileDialog::save(QString const & path,
 	QStringList const & filters, QString const & suggested)
 {
-	QString selectedFilter = 0;
+	QString selectedFilter;
 	return save(path, filters, suggested, selectedFilter);
 }
 
