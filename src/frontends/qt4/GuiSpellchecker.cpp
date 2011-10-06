@@ -68,6 +68,10 @@ struct SpellcheckerWidget::Private
 	/// check text until next misspelled/unknown word
 	void check();
 	///
+	void hide() const;
+	///
+	void setSelection(DocIterator const & from, DocIterator const & to) const;
+	///
 	bool continueFromBeginning();
 	///
 	void setLanguage(Language const * lang);
@@ -79,8 +83,17 @@ struct SpellcheckerWidget::Private
 		return false;
 	}
 	void canCheck() { incheck_ = false; }
-	/// check for wrap around of current position
+	/// check for wrap around
+	void wrapAround(bool flag) {
+		wrap_around_ = flag;
+		if (flag) {
+			end_ = start_;
+		}
+	}
 	bool isWrapAround(DocIterator cursor) const;
+	bool isWrapAround() const { return wrap_around_; }
+	///
+	bool atLastPos(DocIterator cursor) const;
 	///
 	Ui::SpellcheckerUi ui;
 	///
@@ -91,8 +104,13 @@ struct SpellcheckerWidget::Private
 	DockView * dv_;
 	/// current word being checked and lang code
 	WordLangTuple word_;
-	///
+	/// cursor position when spell checking starts
 	DocIterator start_;
+	/// range to spell check
+	/// for selection both are non-empty
+	/// after wrap around the start becomes the end
+	DocIterator begin_;
+	DocIterator end_;
 	///
 	bool incheck_;
 	///
@@ -178,35 +196,116 @@ void SpellcheckerWidget::on_replaceCO_highlighted(const QString & str)
 void SpellcheckerWidget::updateView()
 {
 	BufferView * bv = d->gv_->documentBufferView();
-	setEnabled(bv != 0);
-	if (bv && hasFocus() && d->start_.empty()) {
-		d->start_ = bv->cursor();
-		d->check();
+	// we need a buffer view and the buffer has to be writable
+	bool const enabled = bv != 0 && !bv->buffer().isReadonly();
+	setEnabled(enabled);
+	if (enabled && hasFocus()) {
+		Cursor const & cursor = bv->cursor();
+		if (d->start_.empty() || d->start_.buffer() != cursor.buffer()) {
+			if (cursor.selection()) {
+				d->begin_ = cursor.selectionBegin();
+				d->end_   = cursor.selectionEnd();
+				d->start_ = d->begin_;
+				bv->cursor().setCursor(d->start_);
+			} else {
+				d->begin_ = DocIterator();
+				d->end_   = DocIterator();
+				d->start_ = cursor;
+			}
+			d->wrapAround(false);
+			d->check();
+		}
 	}
 }
 
 
 bool SpellcheckerWidget::Private::continueFromBeginning()
 {
+	BufferView * bv = gv_->documentBufferView();
+	if (!begin_.empty()) {
+		// selection was checked
+		// start over from beginning makes no sense
+		DocIterator current_ = bv->cursor();
+		hide();
+		if (current_ == start_) {
+			// no errors found... tell the user the good news
+			// so there is some feedback
+			QMessageBox::information(p,
+				qt_("Spell Checker"),
+				qt_("Spell check of the selection done, "
+					"did not find any errors."));
+		}
+		return false;
+	}
 	QMessageBox::StandardButton const answer = QMessageBox::question(p,
 		qt_("Spell Checker"),
 		qt_("We reached the end of the document, would you like to "
 			"continue from the beginning?"),
 		QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
 	if (answer == QMessageBox::No) {
-		dv_->hide();
+		hide();
 		return false;
 	}
+	// there is no selection, start over from the beginning now
+	wrapAround(true);
 	dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
-	wrap_around_ = true;
 	return true;
+}
+
+bool SpellcheckerWidget::Private::atLastPos(DocIterator cursor) const
+{
+	bool const valid_end = !end_.empty();
+	return cursor.depth() <= 1 && (
+		cursor.atEnd() ||
+		valid_end && cursor >= end_);
 }
 
 bool SpellcheckerWidget::Private::isWrapAround(DocIterator cursor) const
 {
-	return wrap_around_ && start_.buffer() == cursor.buffer() && start_ < cursor;
+	return wrap_around_ && start_ < cursor;
 }
 
+void SpellcheckerWidget::Private::hide() const
+{
+	dv_->hide();
+	if (!begin_.empty() && !end_.empty()) {
+		// restore previous selection
+		setSelection(begin_, end_);
+	} else {
+		// restore cursor position
+		BufferView * bv = gv_->documentBufferView();
+		Cursor & bvcur = bv->cursor();
+		bvcur.setCursor(start_);
+		bvcur.clearSelection();
+		bv->processUpdateFlags(Update::Force | Update::FitCursor);	
+	}
+}
+
+void SpellcheckerWidget::Private::setSelection(
+	DocIterator const & from, DocIterator const & to) const
+{
+	BufferView * bv = gv_->documentBufferView();
+	DocIterator end = to;
+
+	// spell checker corrections may have invalidated the end
+	end.fixIfBroken();
+
+	if (from.pit() != end.pit()) {
+		// there are multiple paragraphs in selection 
+		Cursor & bvcur = bv->cursor();
+		bvcur.setCursor(from);
+		bvcur.clearSelection();
+		bvcur.setSelection(true);
+		bvcur.setCursor(end);
+		bvcur.setSelection(true);
+	} else {
+		// FIXME LFUN
+		// If we used a LFUN, dispatch would do all of this for us
+		int const size = end.pos() - from.pos();
+		bv->putSelectionAt(from, size, false);
+	}
+	bv->processUpdateFlags(Update::Force | Update::FitCursor);	
+}
 
 void SpellcheckerWidget::Private::forward()
 {
@@ -214,9 +313,10 @@ void SpellcheckerWidget::Private::forward()
 	DocIterator from = bv->cursor();
 
 	dispatch(FuncRequest(LFUN_ESCAPE));
-	dispatch(FuncRequest(LFUN_CHAR_FORWARD));
-	if (bv->cursor().depth() <= 1 && bv->cursor().atLastPos()) {
-		continueFromBeginning();
+	if (!atLastPos(bv->cursor())) {
+		dispatch(FuncRequest(LFUN_CHAR_FORWARD));
+	}
+	if (atLastPos(bv->cursor())) {
 		return;
 	}
 	if (from == bv->cursor()) {
@@ -224,7 +324,7 @@ void SpellcheckerWidget::Private::forward()
 		dispatch(FuncRequest(LFUN_CHAR_FORWARD));
  	}
 	if (isWrapAround(bv->cursor())) {
-		dv_->hide();
+		hide();
 	}
 }
 
@@ -247,12 +347,12 @@ bool SpellcheckerWidget::initialiseParams(std::string const &)
 	if (bv == 0)
 		return false;
 	std::set<Language const *> languages = 
-	bv->buffer().masterBuffer()->getLanguages();
+		bv->buffer().masterBuffer()->getLanguages();
 	if (!languages.empty())
 		d->setLanguage(*languages.begin());
 	d->start_ = DocIterator();
-	d->wrap_around_ = false;
-	d->incheck_ = false;
+	d->wrapAround(false);
+	d->canCheck();
 	return true;
 }
 
@@ -377,7 +477,7 @@ void SpellcheckerWidget::Private::check()
 		return;
 
 	DocIterator from = bv->cursor();
-	DocIterator to;
+	DocIterator to = end_;
 	WordLangTuple word_lang;
 	docstring_list suggestions;
 
@@ -392,10 +492,10 @@ void SpellcheckerWidget::Private::check()
 		throw message;
 	}
 
-	// end of document
-	if (from == doc_iterator_end(&bv->buffer())) {
-		if (wrap_around_ || start_ == doc_iterator_begin(&bv->buffer())) {
-			dv_->hide();
+	// end of document or selection?
+	if (atLastPos(from)) {
+		if (isWrapAround()) {
+			hide();
 			return;
 		}
 		if (continueFromBeginning())
@@ -404,7 +504,7 @@ void SpellcheckerWidget::Private::check()
 	}
 
 	if (isWrapAround(from)) {
-		dv_->hide();
+		hide();
 		return;
 	}
 
@@ -413,13 +513,11 @@ void SpellcheckerWidget::Private::check()
 	// set suggestions
 	updateSuggestions(suggestions);
 	// set language
+	if (!word_lang.lang())
+		return;
 	setLanguage(word_lang.lang());
-
-	// FIXME LFUN
-	// If we used a LFUN, dispatch would do all of this for us
-	int const size = to.pos() - from.pos();
-	bv->putSelectionAt(from, size, false);
-	bv->processUpdateFlags(Update::Force | Update::FitCursor);	
+	// mark misspelled word
+	setSelection(from, to);
 }
 
 
