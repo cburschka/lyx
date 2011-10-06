@@ -81,7 +81,8 @@ void FileDialog::setButton2(QString const & label, QString const & dir)
 
 
 FileDialog::Result FileDialog::save(QString const & path,
-	QStringList const & filters, QString const & suggested)
+	QStringList const & filters, QString const & suggested,
+	QString & selectedFilter)
 {
 	LYXERR(Debug::GUI, "Select with path \"" << path
 			   << "\", mask \"" << filters.join(";;")
@@ -95,7 +96,7 @@ FileDialog::Result FileDialog::save(QString const & path,
 	QString const name = 
 		QFileDialog::getSaveFileName(qApp->focusWidget(),
 	     title_, startsWith, filters.join(";;"),
-			 0, QFileDialog::DontConfirmOverwrite);
+			 selectedFilter, QFileDialog::DontConfirmOverwrite);
 	if (name.isNull())
 		result.first = FileDialog::Later;
 	else
@@ -118,9 +119,18 @@ FileDialog::Result FileDialog::save(QString const & path,
 		result.second = internalPath(dlg.selectedFiles()[0]);
 	else
 		result.first = FileDialog::Later;
+	selectedFilter = dlg.selectedNameFilter();
 	dlg.hide();
 #endif
 	return result;
+}
+
+
+FileDialog::Result FileDialog::save(QString const & path,
+	QStringList const & filters, QString const & suggested)
+{
+	QString selectedFilter = 0;
+	return save(path, filters, suggested, selectedFilter);
 }
 
 

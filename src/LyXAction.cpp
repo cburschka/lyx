@@ -2978,6 +2978,14 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_EXPORT_CUSTOM, "buffer-export-custom", ReadOnly, Buffer },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_EXPORT_AS
+ * \li Action: Pops up a dialog for exporting the current buffer.
+ * \li Syntax: buffer-export
+ * \li Origin: tommaso, 6 Oct 2011
+ * \endvar
+ */
+		{ LFUN_BUFFER_EXPORT_AS, "buffer-export-as", ReadOnly, Buffer },
+/*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_PRINT
  * \li Action: Prints the current document.
  * \li Notion: Many settings can be given via the preferences dialog.

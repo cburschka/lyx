@@ -353,6 +353,8 @@ private:
 	///
 	void insertPlaintextFile(docstring const & fname,
 		bool asParagraph);
+	///
+	bool exportBufferAs(Buffer & b);
 
 	/// Save a buffer as a new file. 
 	/**

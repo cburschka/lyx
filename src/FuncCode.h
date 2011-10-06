@@ -450,6 +450,7 @@ enum FuncCode
 	LFUN_SCRIPT_INSERT,             // gb, 20101123
 	// 350
 
+	LFUN_BUFFER_EXPORT_AS,          // tommaso 20111006
 	LFUN_LASTACTION                 // end of the table
 };
 

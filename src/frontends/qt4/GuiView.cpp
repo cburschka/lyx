@@ -1657,6 +1657,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	}
 
 	case LFUN_BUFFER_WRITE_AS:
+	case LFUN_BUFFER_EXPORT_AS:
 		enable = doc_buffer;
 		break;
 
@@ -2310,6 +2311,64 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 	}
 
 	return saveBuffer(b, fname);
+}
+
+
+bool GuiView::exportBufferAs(Buffer & b)
+{
+	FileName fname = b.fileName();
+	FileName const oldname = fname;
+
+	FileDialog dlg(qt_("Choose a filename to export the document as"));
+	dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
+
+	QStringList types;
+	types << "Any supported format (*.*)";
+	Formats::const_iterator it = formats.begin();
+	for (; it != formats.end(); ++it)
+		if (it->documentFormat())
+			types << toqstr(it->name() + " (*." + it->extension() + ")");
+	QString filter;
+	FileDialog::Result result =
+		dlg.save(toqstr(fname.onlyPath().absFileName()),
+			 types,
+			 toqstr(fname.onlyFileName()),
+			 filter);
+	if (result.first != FileDialog::Chosen)
+		return false;
+
+	string s = fromqstr(filter);
+	size_t pos = s.find(" (");
+	LASSERT(pos != string::npos, /**/);
+	string fmt_name = s.substr(0, pos);
+	fname.set(fromqstr(result.second));
+	if (fmt_name == "Any supported format")
+		fmt_name = formats.getFormatFromExtension(fname.extension());
+	LYXERR(Debug::FILES, "fmt_name=" << fmt_name << ", fname=" << fname.absFileName());
+
+	if (fname.empty())
+		return false;
+
+	// fname is now the new Buffer location.
+	if (FileName(fname).exists()) {
+		docstring const file = makeDisplayPath(fname.absFileName(), 30);
+		docstring text = bformat(_("The document %1$s already "
+					   "exists.\n\nDo you want to "
+					   "overwrite that document?"),
+					 file);
+		int const ret = Alert::prompt(_("Overwrite document?"),
+			text, 0, 2, _("&Overwrite"), _("&Rename"), _("&Cancel"));
+		switch (ret) {
+		case 0: break;
+		case 1: return exportBufferAs(b);
+		case 2: return false;
+		}
+	}
+
+	FuncRequest cmd(LFUN_BUFFER_EXPORT, fmt_name + " " + fname.absFileName());
+	DispatchResult dr;
+	dispatch(cmd, dr);
+	return dr.dispatched();
 }
 
 
@@ -3157,6 +3216,11 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 #endif
 			break;
 		}
+
+		case LFUN_BUFFER_EXPORT_AS:
+			LASSERT(doc_buffer, break);
+			exportBufferAs(*doc_buffer);
+			break;
 
 		case LFUN_BUFFER_UPDATE: {
 			d.asyncBufferProcessing(argument,
