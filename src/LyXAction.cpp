@@ -2980,7 +2980,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_EXPORT_AS
  * \li Action: Pops up a dialog for exporting the current buffer.
- * \li Syntax: buffer-export
+ * \li Syntax: buffer-export-as
  * \li Origin: tommaso, 6 Oct 2011
  * \endvar
  */
