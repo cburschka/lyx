@@ -257,7 +257,7 @@ bool SpellcheckerWidget::Private::atLastPos(DocIterator cursor) const
 	bool const valid_end = !end_.empty();
 	return cursor.depth() <= 1 && (
 		cursor.atEnd() ||
-		valid_end && cursor >= end_);
+		(valid_end && cursor >= end_));
 }
 
 bool SpellcheckerWidget::Private::isWrapAround(DocIterator cursor) const

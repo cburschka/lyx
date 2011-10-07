@@ -4194,7 +4194,7 @@ int Buffer::spellCheck(DocIterator & from, DocIterator & to,
 		}
 		// If from is at the end of the document (which is possible
 		// when leaving the mathed) LyX will crash later otherwise.
-		if (from.atEnd() || !to_end && from >= end)
+		if (from.atEnd() || (!to_end && from >= end))
 			break;
 		to = from;
 		from.paragraph().spellCheck();
