@@ -2314,10 +2314,17 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 }
 
 
+struct PrettyNameComparator
+{
+	bool operator()(Format const *first, Format const *second) const {
+		return compare_ascii_no_case(first->prettyname(), second->prettyname()) <= 0;
+	}
+};
+
+
 bool GuiView::exportBufferAs(Buffer & b)
 {
 	FileName fname = b.fileName();
-	FileName const oldname = fname;
 
 	FileDialog dlg(qt_("Choose a filename to export the document as"));
 	dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
@@ -2325,9 +2332,15 @@ bool GuiView::exportBufferAs(Buffer & b)
 	QStringList types;
 	types << "Any supported format (*.*)";
 	Formats::const_iterator it = formats.begin();
+	vector<Format const *> export_formats;
 	for (; it != formats.end(); ++it)
-		if (it->documentFormat())
-			types << toqstr(it->name() + " (*." + it->extension() + ")");
+		if (it->documentFormat() && it->inExportMenu())
+			export_formats.push_back(&(*it));
+	PrettyNameComparator cmp;
+	sort(export_formats.begin(), export_formats.end(), cmp);
+	vector<Format const *>::const_iterator fit = export_formats.begin();
+	for (; fit != export_formats.end(); ++fit)
+		types << toqstr((*fit)->prettyname() + " (*." + (*fit)->extension() + ")");
 	QString filter;
 	FileDialog::Result result =
 		dlg.save(toqstr(fname.onlyPath().absFileName()),
@@ -2338,15 +2351,19 @@ bool GuiView::exportBufferAs(Buffer & b)
 		return false;
 
 	string s = fromqstr(filter);
-	size_t pos = s.find(" (");
+	size_t pos = s.find(" (*.");
 	LASSERT(pos != string::npos, /**/);
-	string fmt_name = s.substr(0, pos);
+	string fmt_prettyname = s.substr(0, pos);
+	string fmt_name;
 	fname.set(fromqstr(result.second));
-	if (fmt_name == "Any supported format")
+	if (fmt_prettyname == "Any supported format")
 		fmt_name = formats.getFormatFromExtension(fname.extension());
-	LYXERR(Debug::FILES, "fmt_name=" << fmt_name << ", fname=" << fname.absFileName());
+	else
+		fmt_name = formats.getFormatFromPrettyName(fmt_prettyname);
+	LYXERR(Debug::FILES, "fmt_prettyname=" << fmt_prettyname
+	       << ", fmt_name=" << fmt_name << ", fname=" << fname.absFileName());
 
-	if (fname.empty())
+	if (fmt_name.empty() || fname.empty())
 		return false;
 
 	// fname is now the new Buffer location.
