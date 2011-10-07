@@ -279,7 +279,7 @@ int LaTeX::run(TeXErrors & terr)
 	// biber writes no info to the aux file, so we just check
 	// if a bcf file exists (and if it was updated)
 	FileName const bcffile(changeExtension(file.absFileName(), ".bcf"));
-	bool const biber = head.exist(bcffile);
+	biber |= head.exist(bcffile);
 
 	// run bibtex
 	// if (scanres & UNDEF_CIT || scanres & RERUN || run_bibtex)
@@ -290,8 +290,8 @@ int LaTeX::run(TeXErrors & terr)
 		// no checks for now
 		LYXERR(Debug::LATEX, "Running BibTeX.");
 		message(_("Running BibTeX."));
-		updateBibtexDependencies(head, bibtex_info, biber);
-		rerun |= runBibTeX(bibtex_info, runparams, biber);
+		updateBibtexDependencies(head, bibtex_info);
+		rerun |= runBibTeX(bibtex_info, runparams);
 		if (biber) {
 			// since biber writes no info to the aux file, we have
 			// to parse the blg file (which only exists after biber
@@ -304,7 +304,7 @@ int LaTeX::run(TeXErrors & terr)
 		/// If we run pdflatex on the file after running latex on it,
 		/// then we do not need to run bibtex, but we do need to
 		/// insert the .bib and .bst files into the .dep-pdf file.
-		updateBibtexDependencies(head, bibtex_info, biber);
+		updateBibtexDependencies(head, bibtex_info);
 	}
 
 	// 2
@@ -350,8 +350,8 @@ int LaTeX::run(TeXErrors & terr)
 		// no checks for now
 		LYXERR(Debug::LATEX, "Running BibTeX.");
 		message(_("Running BibTeX."));
-		updateBibtexDependencies(head, bibtex_info, biber);
-		rerun |= runBibTeX(bibtex_info, runparams, biber);
+		updateBibtexDependencies(head, bibtex_info);
+		rerun |= runBibTeX(bibtex_info, runparams);
 	}
 
 	// 4
@@ -550,8 +550,7 @@ void LaTeX::scanAuxFile(FileName const & file, AuxInfo & aux_info)
 
 
 void LaTeX::updateBibtexDependencies(DepTable & dep,
-				     vector<AuxInfo> const & bibtex_info,
-				     bool biber)
+				     vector<AuxInfo> const & bibtex_info)
 {
 	// Since a run of Bibtex mandates more latex runs it is ok to
 	// remove all ".bib" and ".bst" files.
@@ -585,7 +584,7 @@ void LaTeX::updateBibtexDependencies(DepTable & dep,
 
 
 bool LaTeX::runBibTeX(vector<AuxInfo> const & bibtex_info,
-		      OutputParams const & runparams, bool biber)
+		      OutputParams const & runparams)
 {
 	bool result = false;
 	for (vector<AuxInfo>::const_iterator it = bibtex_info.begin();
@@ -708,6 +707,9 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				}
 			} else if (contains(token, "run BibTeX")) {
 				retval |= UNDEF_CIT;
+			} else if (contains(token, "run Biber")) {
+				retval |= UNDEF_CIT;
+				biber = true;
 			} else if (contains(token, "Rerun LaTeX") ||
 				   contains(token, "Please rerun LaTeX") ||
 				   contains(token, "Rerun to get")) {

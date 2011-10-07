@@ -192,15 +192,14 @@ private:
 
 	///
 	void updateBibtexDependencies(DepTable &,
-				      std::vector<AuxInfo> const &,
-				      bool biber);
+				      std::vector<AuxInfo> const &);
 
 	///
 	void scanBlgFile(DepTable & head);
 
 	///
 	bool runBibTeX(std::vector<AuxInfo> const &,
-		       OutputParams const &, bool biber);
+		       OutputParams const &);
 
 	///
 	void deleteFilesOnError() const;
@@ -222,6 +221,9 @@ private:
 
 	///
 	OutputParams runparams;
+	
+	/// Do we use biber?
+	bool biber;
 };
 
 
