@@ -496,7 +496,7 @@ otexstream & operator<<(otexstream & ots, docstring const & s)
 			if (!contains(s2, 0xF0001))
 				s2 = split(enc, s1, 0xF0000);
 			else {
-				ots.os() << setEncoding(to_utf8(enc));
+				ots.os() << setEncoding(to_ascii(enc));
 				s2 = split(s3, s1, 0xF0000);
 			}
 		}
