@@ -98,7 +98,7 @@ public:
 	docstring const langpreamble(Language const * lang, bool const polyglossia) const;
 	/// Get language and babel dependent macro definitions needed for
 	/// this layout for language \p lang
-	docstring const babelpreamble(Language const * lang, bool const polyglossia) const;
+	docstring const babelpreamble(Language const * lang, Language const * buflang, bool const polyglossia) const;
 	///
 	std::set<std::string> const & requires() const { return requires_; }
 	///
