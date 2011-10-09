@@ -7111,7 +7111,7 @@ Personalización adicional
 status collapsed
 
 \begin_layout Plain Layout
-Listas ! Descripción
+Listas ! Personalización
 \end_layout
 
 \end_inset
@@ -14686,6 +14686,22 @@ status collapsed
 eX
 \family default
 .
+ 
+\lang english
+The different LaTeX export variants are explained in section
+\begin_inset space ~
+\end_inset
+
+
+\lang spanish
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Exportar"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -21704,7 +21720,7 @@ Normalmente sólo se inserta una imagen en un flotante, pero si quieres poner
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Dos-imágenes"
+reference "fig:Dos-imágenes"
 
 \end_inset
 
@@ -21827,7 +21843,7 @@ Ornitorrinco
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:Dos-imágenes"
+name "fig:Dos-imágenes"
 
 \end_inset
 
@@ -26046,7 +26062,7 @@ Hay seis estilos de referencias cruzadas:
 <referencia>: imprime el número, es la opción predeterminada: 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Dos-imágenes"
+reference "fig:Dos-imágenes"
 
 \end_inset
 
@@ -26082,7 +26098,7 @@ reference "eq:tanhExp"
 
 \begin_inset CommandInset ref
 LatexCommand pageref
-reference "cap:Dos-imágenes"
+reference "fig:Dos-imágenes"
 
 \end_inset
 
@@ -26109,7 +26125,7 @@ en la página
  y el número de página: 
 \begin_inset CommandInset ref
 LatexCommand vpageref
-reference "cap:Dos-imágenes"
+reference "fig:Dos-imágenes"
 
 \end_inset
 
@@ -26144,7 +26160,7 @@ en la página
  y el número de página: 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "cap:Dos-imágenes"
+reference "fig:Dos-imágenes"
 
 \end_inset
 
@@ -26281,10 +26297,10 @@ Referencia
 \begin_inset space ~
 \end_inset
 
-textual: imprime la leyenda de la referencia: 
+textual: imprime la leyenda o el nombre de la referencia: 
 \begin_inset CommandInset ref
 LatexCommand nameref
-reference "cap:Dos-imágenes"
+reference "fig:Dos-imágenes"
 
 \end_inset
 

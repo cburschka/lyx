@@ -10505,7 +10505,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-Lists ! Description
+Lists ! Customization
 \end_layout
 
 \end_inset
@@ -21132,6 +21132,21 @@ status collapsed
 X
 \family default
 を使用します。
+\lang english
+The different LaTeX export variants are explained in section
+\begin_inset space ~
+\end_inset
+
+
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:書き出し"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -28496,7 +28511,7 @@ arg   "dialog-show-new-inset ref"
 図フロートの中に図フロートを入れ込むことによって、実現することができます。ただし、図一覧にはフロートの主キャプションのみが表示されることに留意してください。図
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:歪められた二つの像"
+reference "fig:歪められた二つの像"
 
 \end_inset
 
@@ -28617,7 +28632,7 @@ name "fig:カモノハシ"
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:歪められた二つの像"
+name "fig:歪められた二つの像"
 
 \end_inset
 
@@ -33948,7 +33963,7 @@ reference "sub:保護された空白"
 <参照> フロート番号を印字します。これが既定値です。（例）
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:歪められた二つの像"
+reference "fig:歪められた二つの像"
 
 \end_inset
 
@@ -33959,7 +33974,7 @@ reference "cap:歪められた二つの像"
 (<参照>) フロート番号をかっこの中に印字します。これは通常、数式を参照するのに使われる形式で、特に参照接頭辞「式」を省略するときに使われます。（例）
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "cap:歪められた二つの像"
+reference "fig:歪められた二つの像"
 
 \end_inset
 
@@ -33970,7 +33985,7 @@ reference "cap:歪められた二つの像"
 <参照ページ> ページ番号を印字します。（例）
 \begin_inset CommandInset ref
 LatexCommand pageref
-reference "cap:歪められた二つの像"
+reference "fig:歪められた二つの像"
 
 \end_inset
 
@@ -33989,7 +34004,7 @@ page
 <参照ページ> 「on page」という文とページ番号を印字します。（例）
 \begin_inset CommandInset ref
 LatexCommand vpageref
-reference "cap:歪められた二つの像"
+reference "fig:歪められた二つの像"
 
 \end_inset
 
@@ -34012,7 +34027,7 @@ page
 <参照ページ> フロート番号、「on page」という文、ページ番号の順に印字します。（例）
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "cap:歪められた二つの像"
+reference "fig:歪められた二つの像"
 
 \end_inset
 
@@ -34142,7 +34157,7 @@ key "prettyref,refstyle"
 名称参照 
 \begin_inset CommandInset ref
 LatexCommand nameref
-reference "cap:歪められた二つの像"
+reference "fig:歪められた二つの像"
 
 \end_inset
 
