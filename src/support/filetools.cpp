@@ -594,7 +594,7 @@ string latexEnvCmdPrefix(string const & path)
 					  + sep + texinputs + "\" ";
 	else
 		return "cmd /d /c set TEXINPUTS=." + sep + texinputs_prefix
-						   + sep + texinputs + " & ";
+						   + sep + texinputs + "&";
 }
 
 
