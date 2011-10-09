@@ -1164,18 +1164,18 @@ docstring const LaTeXFeatures::getTClassHTMLStyles() const {
 namespace {
 docstring const getFloatI18nPreamble(docstring const & type,
 			docstring const & name, Language const * lang,
-			Language const * buflang, bool const polyglossia)
+			Encoding const & enc, bool const polyglossia)
 {
 	docstring const language = polyglossia ? from_ascii(lang->polyglossia())
 					       : from_ascii(lang->babel());
-	docstring const enc = from_ascii(lang->encoding()->iconvName());
+	docstring const langenc = from_ascii(lang->encoding()->iconvName());
 	docstring const texenc = from_ascii(lang->encoding()->latexName());
-	docstring const bufenc = from_ascii(buflang->encoding()->iconvName());
-	docstring const translated = (enc == bufenc) ? name
+	docstring const bufenc = from_ascii(enc.iconvName());
+	docstring const s1 = docstring(1, 0xF0000);
+	docstring const s2 = docstring(1, 0xF0001);
+	docstring const translated = (langenc == bufenc) ? name
 		: from_ascii("\\inputencoding{") + texenc + from_ascii("}")
-			+ docstring(1, 0xF0000) + enc + docstring(1, 0xF0001)
-			+ translated
-			+ docstring(1, 0xF0000) + bufenc + docstring(1, 0xF0001);
+			+ s1 + langenc + s2 + translated + s1 + bufenc + s2;
 
 	odocstringstream os;
 	os << "\\addto\\captions" << language
@@ -1199,18 +1199,19 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel, bool use_po
 	for (; cit != end; ++cit) {
 		// language dependent commands (once per document)
 		snippets.insert(tclass[*cit].langpreamble(buffer().language(),
-							  use_polyglossia));
+						buffer().params().encoding(),
+						use_polyglossia));
 		// commands for language changing (for multilanguage documents)
 		if ((use_babel || use_polyglossia) && !UsedLanguages_.empty()) {
 			snippets.insert(tclass[*cit].babelpreamble(
-							buffer().language(),
-							buffer().language(),
-							use_polyglossia));
+						buffer().language(),
+						buffer().params().encoding(),
+						use_polyglossia));
 			for (lang_it lit = lbeg; lit != lend; ++lit)
 				snippets.insert(tclass[*cit].babelpreamble(
-							*lit,
-							buffer().language(),
-							use_polyglossia));
+						*lit,
+						buffer().params().encoding(),
+						use_polyglossia));
 		}
 	}
 	if ((use_babel || use_polyglossia) && !UsedLanguages_.empty()) {
@@ -1229,8 +1230,9 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel, bool use_po
 			// (that differs from the source)
 			if (flname != name)
 				snippets.insert(getFloatI18nPreamble(
-					type, name, buffer().language(),
-					buffer().language(), use_polyglossia));
+						type, name, buffer().language(),
+						buffer().params().encoding(),
+						use_polyglossia));
 			for (lang_it lit = lbeg; lit != lend; ++lit) {
 				string const code = (*lit)->code();
 				name = (*lit)->translateLayout(fl.name());
@@ -1243,9 +1245,9 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel, bool use_po
 					(flname != name || contains(code, "en"));
 				if (have_translation)
 					snippets.insert(getFloatI18nPreamble(
-							type, name, *lit,
-							buffer().language(),
-							use_polyglossia));
+						type, name, *lit,
+						buffer().params().encoding(),
+						use_polyglossia));
 			}
 		}
 	}

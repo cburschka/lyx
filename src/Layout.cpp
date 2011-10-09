@@ -861,7 +861,7 @@ void Layout::readSpacing(Lexer & lex)
 
 namespace {
 
-docstring const i18npreamble(Language const * lang, Language const * buflang,
+docstring const i18npreamble(Language const * lang, Encoding const & enc,
 			     docstring const & templ, bool const polyglossia)
 {
 	if (templ.empty())
@@ -875,9 +875,9 @@ docstring const i18npreamble(Language const * lang, Language const * buflang,
 	// tex2lyx does not have getMessages()
 	LASSERT(false, /**/);
 #else
-	string const enc = lang->encoding()->iconvName();
+	string const langenc = lang->encoding()->iconvName();
 	string const texenc = lang->encoding()->latexName();
-	string const bufenc = buflang->encoding()->iconvName();
+	string const bufenc = enc.iconvName();
 	// First and second character of plane 15 (Private Use Area)
 	char const s1[5] = {0xf3, 0xb0, 0x80, 0x80, 0x00}; // U+F0000
 	char const s2[5] = {0xf3, 0xb0, 0x80, 0x81, 0x00}; // U+F0001
@@ -889,9 +889,9 @@ docstring const i18npreamble(Language const * lang, Language const * buflang,
 	while (regex_search(preamble, sub, reg)) {
 		string const key = sub.str(1);
 		string translated = to_utf8(lang->translateLayout(key));
-		if (enc != bufenc)
+		if (langenc != bufenc)
 			translated = "\\inputencoding{" + texenc + "}"
-				+ string(s1) + enc + string(s2) + translated
+				+ string(s1) + langenc + string(s2) + translated
 				+ string(s1) + bufenc + string(s2);
 		preamble = subst(preamble, sub.str(), translated);
 	}
@@ -902,16 +902,17 @@ docstring const i18npreamble(Language const * lang, Language const * buflang,
 }
 
 
-docstring const Layout::langpreamble(Language const * lang, bool const polyglossia) const
+docstring const Layout::langpreamble(Language const * lang,
+			Encoding const & enc, bool const polyglossia) const
 {
-	return i18npreamble(lang, lang, langpreamble_, polyglossia);
+	return i18npreamble(lang, enc, langpreamble_, polyglossia);
 }
 
 
 docstring const Layout::babelpreamble(Language const * lang,
-			Language const * buflang, bool const polyglossia) const
+			Encoding const & enc, bool const polyglossia) const
 {
-	return i18npreamble(lang, buflang, babelpreamble_, polyglossia);
+	return i18npreamble(lang, enc, babelpreamble_, polyglossia);
 }
 
 
