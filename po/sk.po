@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-09-30 12:24+0200\n"
-"PO-Revision-Date: 2011-09-30 12:25+0200\n"
+"POT-Creation-Date: 2011-10-05 15:03+0200\n"
+"PO-Revision-Date: 2011-10-10 17:56+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -355,7 +355,7 @@ msgstr "Dole"
 
 #: src/frontends/qt4/ui/BoxUi.ui:119 src/frontends/qt4/ui/BoxUi.ui:141
 msgid "Vertical alignment of the box (with regard to baseline)"
-msgstr "Vertikálne zarovnanie obsahu v rámku (vzťahujúce sa na základnú líniu)"
+msgstr "Vertikálne zarovnanie obsahu v rámku (vzťahujúce sa na základnú linku)"
 
 #: src/frontends/qt4/ui/BoxUi.ui:144
 msgid "&Box:"
@@ -1838,7 +1838,7 @@ msgstr "&Preskočiť overenia platnosti"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:86
 msgid "C&aption:"
-msgstr "Po&pisok:"
+msgstr "Po&pis:"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:99
 msgid "La&bel:"
@@ -3284,7 +3284,7 @@ msgstr "Vektorový formát obrázku"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:83
 msgid "S&hort Name:"
-msgstr "&Skratka:"
+msgstr "Interné Meno:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:96
 msgid "E&xtension:"
@@ -3292,7 +3292,7 @@ msgstr "Príp&ona:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:109
 msgid "Shortc&ut:"
-msgstr "Skratka:"
+msgstr "Klávesná skratka:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:132
 msgid "&Viewer:"
@@ -3775,11 +3775,11 @@ msgstr "Voľby príkazu pre tlačiareň"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:69
 msgid "Extension to be used when printing to file."
-msgstr "Prípona na použitie pri tlačí do súboru"
+msgstr "Rozšírenie na použitie pri tlačí do súboru"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:72
 msgid "File ex&tension:"
-msgstr "Prípona súboru:"
+msgstr "Rozšírenie súboru:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:85
 msgid "Option used to print to a file."
@@ -4822,7 +4822,7 @@ msgstr "Negeneruj poslednú pätu"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1345
 msgid "Caption:"
-msgstr "Popisok:"
+msgstr "Popis:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1362
 msgid "Set a page break on the current row"
@@ -5647,7 +5647,7 @@ msgstr "Súhrn"
 
 #: lib/layouts/AEA.layout:258 lib/ui/stdmenus.inc:361
 msgid "Caption"
-msgstr "Popisok"
+msgstr "Popis"
 
 #: lib/layouts/AEA.layout:260 lib/layouts/amsart.layout:31
 #: lib/layouts/amsbook.layout:32 lib/layouts/beamer.layout:33
@@ -5666,7 +5666,7 @@ msgstr "Hlavný text"
 
 #: lib/layouts/AEA.layout:264
 msgid "Caption: "
-msgstr "Popisok: "
+msgstr "Popis: "
 
 #: lib/layouts/AEA.layout:269 lib/layouts/IEEEtran.layout:289
 #: lib/layouts/beamer.layout:1051 lib/layouts/elsart.layout:288
@@ -6522,7 +6522,7 @@ msgstr "Hrubá línia"
 
 #: lib/layouts/apa.layout:258
 msgid "CenteredCaption"
-msgstr "Centrovaný popisok"
+msgstr "Centrovaný popis"
 
 #: lib/layouts/apa.layout:268 lib/layouts/scrclass.inc:265
 #: lib/layouts/scrclass.inc:285
@@ -8483,12 +8483,12 @@ msgstr "Tvrdenie \\theproposition."
 #: lib/layouts/ijmpc.layout:374 lib/layouts/ijmpd.layout:398
 #: lib/layouts/theorems-without-preamble.inc:120
 msgid "Prop"
-msgstr "Vlastnosť"
+msgstr "Téza(prop)"
 
 #: lib/layouts/ijmpc.layout:378 lib/layouts/ijmpd.layout:402
 #: lib/layouts/theorems-without-preamble.inc:124
 msgid "Prop \\theprop."
-msgstr "Prop \\theprop."
+msgstr "Téza \\theprop."
 
 #: lib/layouts/ijmpc.layout:383 lib/layouts/ijmpd.layout:407
 #: lib/layouts/llncs.layout:396 lib/layouts/theorems-without-preamble.inc:371
@@ -8771,7 +8771,7 @@ msgstr "Problém #."
 #: lib/layouts/theorems-without-preamble.inc:361
 #: lib/layouts/theorems-without-preamble.inc:364
 msgid "Property"
-msgstr "Vlastníctvo"
+msgstr "Vlastnosť"
 
 #: lib/layouts/llncs.layout:386
 msgid "Property #."
@@ -8800,7 +8800,7 @@ msgstr "KapitolaSúhrn"
 
 #: lib/layouts/memoir.layout:120
 msgid "Epigraph"
-msgstr "Epigraph"
+msgstr "Epigraf"
 
 #: lib/layouts/memoir.layout:121 lib/layouts/memoir.layout:177
 msgid "Maintext"
@@ -9286,7 +9286,7 @@ msgstr "Titul*: "
 
 #: lib/layouts/svmult.layout:65 lib/layouts/svmult.layout:150
 msgid "Contributors"
-msgstr "Zoznam prispievateľov"
+msgstr "Prispievatelia"
 
 #: lib/layouts/svmult.layout:67
 msgid "List of Contributors"
@@ -9294,7 +9294,7 @@ msgstr "Zoznam prispievateľov"
 
 #: lib/layouts/svmult.layout:71
 msgid "Contributor List"
-msgstr "Zoznam Prispievateľov"
+msgstr "Zoznam prispievateľov"
 
 #: lib/layouts/svmult.layout:103 lib/layouts/svmult.layout:107
 #: lib/layouts/svmult.layout:111 lib/layouts/svmult.layout:115
@@ -9931,7 +9931,7 @@ msgstr "Extra titulok"
 
 #: lib/layouts/scrclass.inc:254
 msgid "Captionabove"
-msgstr "Popisok hore"
+msgstr "Popis hore"
 
 #: lib/layouts/scrclass.inc:255 lib/layouts/scrclass.inc:275
 msgid "Captions"
@@ -9939,7 +9939,7 @@ msgstr "Popisy"
 
 #: lib/layouts/scrclass.inc:274
 msgid "Captionbelow"
-msgstr "Popisok dole"
+msgstr "Popis dole"
 
 #: lib/layouts/scrclass.inc:294
 msgid "Dictum"
@@ -10098,7 +10098,7 @@ msgstr "Pod-nadpisy do záhlavia"
 
 #: lib/layouts/svcommon.inc:355
 msgid "Author data:"
-msgstr "Autorské dáta:"
+msgstr "Autor dáta:"
 
 #: lib/layouts/svcommon.inc:392
 msgid "TOC author:"
@@ -10287,11 +10287,11 @@ msgstr "\\theprop."
 
 #: lib/layouts/theorems-without-preamble.inc:279
 msgid "Sol"
-msgstr "Rieš."
+msgstr "Riešenie"
 
 #: lib/layouts/theorems-without-preamble.inc:283
 msgid "# [number of Prob]"
-msgstr "# [počet Problémov]"
+msgstr "# [číslo problému(Prob)]"
 
 #: lib/layouts/theorems-without-preamble.inc:294
 msgid "Exercise \\theexercise"
@@ -12457,7 +12457,7 @@ msgstr "Nástroje|N"
 
 #: lib/ui/stdmenus.inc:37
 msgid "Help|H"
-msgstr "Pomocník|P"
+msgstr "Pomocník"
 
 #: lib/ui/stdmenus.inc:45
 msgid "New|N"
@@ -13049,7 +13049,7 @@ msgstr "Poznámku pod čiarou"
 
 #: lib/ui/stdmenus.inc:370
 msgid "Marginal Note|M"
-msgstr "Poznámku na okraji"
+msgstr "Okrajová Poznámka"
 
 #: lib/ui/stdmenus.inc:371
 msgid "Short Title|S"
@@ -13137,7 +13137,7 @@ msgstr "Bod delenia slova"
 
 #: lib/ui/stdmenus.inc:403
 msgid "Ligature Break|k"
-msgstr "Zlom ligatúry"
+msgstr "Zlomiť zliatku (ligatúru)"
 
 #: lib/ui/stdmenus.inc:416
 msgid "Display Formula|D"
@@ -14159,7 +14159,7 @@ msgstr "Štandard\t\\frac"
 
 #: lib/ui/stdtoolbars.inc:355
 msgid "Nice fraction (3/4)\t\\nicefrac"
-msgstr "Jemný zlomok\t\\nicefrac"
+msgstr "Jemný zlomok(3/4)\t\\nicefrac"
 
 #: lib/ui/stdtoolbars.inc:356
 msgid "Unit (km)\t\\unitone"
@@ -16203,7 +16203,7 @@ msgstr ""
 "Táto šablóna použije program XBoard na editáciu pozície.\n"
 "Použite 'File->Save Position' v XBoard-u pre uloženie\n"
 "pozície, ktorú chcete zobraziť.\n"
-"Uistite sa, že má príponu '.fen'\n"
+"Uistite sa, že má rozšírenie '.fen'\n"
 "a nezabudnite dať relatívnu cestu\n"
 "k súboru do dokumentu LyX-a.\n"
 "Vnútri XBoard-u, použite 'Edit->Edit Position'\n"
@@ -18654,7 +18654,8 @@ msgstr ""
 #: src/LyXRC.cpp:3212
 msgid "Disable any kerning and ligatures for text drawing on screen."
 msgstr ""
-"Zablokovať zmenšenia medzier medzi susednými znakmi pre text na obrazovke."
+"Zablokovať zliatky (ligatúry) a zmenšenia medzier medzi susednými znakmi pre "
+"text na obrazovke."
 
 #: src/LyXRC.cpp:3219
 msgid ""
@@ -18851,7 +18852,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3376
 msgid "Extension of printer program output file. Usually \".ps\"."
-msgstr "Prípona výstupu tlače. Obyčajne \".ps\"."
+msgstr "Rozšírenie výstupu tlače. Obyčajne \".ps\"."
 
 #: src/LyXRC.cpp:3380
 msgid "The option to print out in landscape."
@@ -20024,7 +20025,7 @@ msgstr "Celková Výška"
 
 #: src/frontends/qt4/GuiBox.cpp:71
 msgid "Width"
-msgstr "Šírka"
+msgstr "Šírka (obsahu rámku)"
 
 #: src/frontends/qt4/GuiBox.cpp:315 src/frontends/qt4/GuiBox.cpp:390
 #: src/insets/InsetBox.cpp:137
@@ -21386,7 +21387,7 @@ msgstr "Oxygen"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2558
 msgid "Control"
-msgstr "Ctrl"
+msgstr "Kontrola"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2646
 msgid "Shortcuts"
@@ -21576,7 +21577,7 @@ msgstr "Latinka rozšírená-B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:58
 msgid "IPA Extensions"
-msgstr "IPA Prípony"
+msgstr "IPA Rozšírenia"
 
 #: src/frontends/qt4/GuiSymbols.cpp:59
 msgid "Spacing Modifier Letters"
@@ -21989,7 +21990,7 @@ msgstr "Vitajte v LyXe!"
 
 #: src/frontends/qt4/GuiView.cpp:1541
 msgid "Automatic save done."
-msgstr "Automatické uloženie urobené."
+msgstr "Automatický úklad hotový."
 
 #: src/frontends/qt4/GuiView.cpp:1542
 msgid "Automatic save failed!"
@@ -23295,7 +23296,7 @@ msgstr "Zalomenie strany"
 
 #: src/insets/InsetNewpage.cpp:187
 msgid "Clear Page"
-msgstr "Stránku vyprázdniť"
+msgstr "Stránku vyprázdniť (\\clearpage)"
 
 #: src/insets/InsetNewpage.cpp:190
 msgid "Clear Double Page"
@@ -23475,7 +23476,7 @@ msgstr "Chránená horizontálna medzera (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Neznámy typ obsahu"
 
-#: src/insets/InsetTabular.cpp:4720
+#: src/insets/InsetTabular.cpp:4721
 msgid "Selection size should match clipboard content."
 msgstr "Veľkosť výberu by mala zodpovedať obsahu klipsovej dosky."
 
