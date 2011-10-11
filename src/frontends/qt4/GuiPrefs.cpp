@@ -20,6 +20,7 @@
 #include "GuiFontLoader.h"
 #include "GuiKeySymbol.h"
 #include "qt_helpers.h"
+#include "Validator.h"
 
 #include "Author.h"
 #include "BufferList.h"
@@ -387,7 +388,11 @@ PrefOutput::PrefOutput(GuiPreferences * form)
 	: PrefModule(qt_(catOutput), qt_("General"), form)
 {
 	setupUi(this);
+
 	DateED->setValidator(new StrftimeValidator(DateED));
+	dviCB->setValidator(new NoNewLineValidator(dviCB));
+	pdfCB->setValidator(new NoNewLineValidator(pdfCB));
+
 	connect(DateED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(plaintextLinelengthSB, SIGNAL(valueChanged(int)),
@@ -690,6 +695,16 @@ PrefLatex::PrefLatex(GuiPreferences * form)
 	: PrefModule(qt_(catOutput), qt_("LaTeX"), form)
 {
 	setupUi(this);
+
+	latexEncodingED->setValidator(new NoNewLineValidator(latexEncodingED));
+	latexDviPaperED->setValidator(new NoNewLineValidator(latexDviPaperED));
+	latexBibtexED->setValidator(new NoNewLineValidator(latexBibtexED));
+	latexJBibtexED->setValidator(new NoNewLineValidator(latexJBibtexED));
+	latexIndexED->setValidator(new NoNewLineValidator(latexIndexED));
+	latexJIndexED->setValidator(new NoNewLineValidator(latexJIndexED));
+	latexNomenclED->setValidator(new NoNewLineValidator(latexNomenclED));
+	latexChecktexED->setValidator(new NoNewLineValidator(latexChecktexED));
+
 	connect(latexEncodingCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(latexEncodingED, SIGNAL(textChanged(QString)),
@@ -1339,6 +1354,9 @@ PrefPaths::PrefPaths(GuiPreferences * form)
 
 	connect(texinputsPrefixED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
+
+	pathPrefixED->setValidator(new NoNewLineValidator(pathPrefixED));
+	texinputsPrefixED->setValidator(new NoNewLineValidator(texinputsPrefixED));
 }
 
 
@@ -1487,6 +1505,9 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 			this, SIGNAL(changed()));
 		connect(spellcheckNotesCB, SIGNAL(clicked()),
 			this, SIGNAL(changed()));
+
+		altLanguageED->setValidator(new NoNewLineValidator(altLanguageED));
+		escapeCharactersED->setValidator(new NoNewLineValidator(escapeCharactersED));
 	#else
 		spellcheckerCB->setEnabled(false);
 		altLanguageED->setEnabled(false);
@@ -1570,6 +1591,8 @@ PrefConverters::PrefConverters(GuiPreferences * form)
 	connect(maxAgeLE, SIGNAL(textEdited(QString)),
 		this, SIGNAL(changed()));
 
+	converterED->setValidator(new NoNewLineValidator(converterED));
+	converterFlagED->setValidator(new NoNewLineValidator(converterFlagED));
 	maxAgeLE->setValidator(new QDoubleValidator(maxAgeLE));
 	//converterDefGB->setFocusProxy(convertersLW);
 }
@@ -1850,8 +1873,14 @@ PrefFileformats::PrefFileformats(GuiPreferences * form)
 	: PrefModule(qt_(catFiles), qt_("File Formats"), form)
 {
 	setupUi(this);
+
 	formatED->setValidator(new FormatNameValidator(formatsCB, form_->formats()));
 	formatsCB->setValidator(new FormatPrettynameValidator(formatsCB, form_->formats()));
+	extensionED->setValidator(new NoNewLineValidator(extensionED));
+	shortcutED->setValidator(new NoNewLineValidator(shortcutED));
+	editorED->setValidator(new NoNewLineValidator(editorED));
+	viewerED->setValidator(new NoNewLineValidator(viewerED));
+	copierED->setValidator(new NoNewLineValidator(copierED));
 
 	connect(documentCB, SIGNAL(clicked()),
 		this, SLOT(setFlags()));
@@ -2231,6 +2260,10 @@ PrefLanguage::PrefLanguage(GuiPreferences * form)
 	connect(defaultDecimalPointLE, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 
+	languagePackageED->setValidator(new NoNewLineValidator(languagePackageED));
+	startCommandED->setValidator(new NoNewLineValidator(startCommandED));
+	endCommandED->setValidator(new NoNewLineValidator(endCommandED));
+
 	uiLanguageCO->clear();
 
 	QAbstractItemModel * language_model = guiApp->languageModel();
@@ -2374,6 +2407,24 @@ PrefPrinter::PrefPrinter(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(printerPaperSizeED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
+
+	printerNameED->setValidator(new NoNewLineValidator(printerNameED));
+	printerCommandED->setValidator(new NoNewLineValidator(printerCommandED));
+	printerEvenED->setValidator(new NoNewLineValidator(printerEvenED));
+	printerPageRangeED->setValidator(new NoNewLineValidator(printerPageRangeED));
+	printerCopiesED->setValidator(new NoNewLineValidator(printerCopiesED));
+	printerReverseED->setValidator(new NoNewLineValidator(printerReverseED));
+	printerToFileED->setValidator(new NoNewLineValidator(printerToFileED));
+	printerPaperTypeED->setValidator(new NoNewLineValidator(printerPaperTypeED));
+	printerExtraED->setValidator(new NoNewLineValidator(printerExtraED));
+	printerOddED->setValidator(new NoNewLineValidator(printerOddED));
+	printerCollatedED->setValidator(new NoNewLineValidator(printerCollatedED));
+	printerLandscapeED->setValidator(new NoNewLineValidator(printerLandscapeED));
+	printerToPrinterED->setValidator(new NoNewLineValidator(printerToPrinterED));
+	printerExtensionED->setValidator(new NoNewLineValidator(printerExtensionED));
+	printerPaperSizeED->setValidator(new NoNewLineValidator(printerPaperSizeED));
+	printerSpoolCommandED->setValidator(new NoNewLineValidator(printerSpoolCommandED));
+	printerSpoolPrefixED->setValidator(new NoNewLineValidator(printerSpoolPrefixED));
 }
 
 
@@ -3114,6 +3165,9 @@ PrefIdentity::PrefIdentity(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(emailED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
+
+	nameED->setValidator(new NoNewLineValidator(nameED));
+	emailED->setValidator(new NoNewLineValidator(emailED));
 }
 
 

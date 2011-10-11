@@ -138,6 +138,18 @@ QValidator::State DoubleAutoValidator::validate(QString & input, int & pos) cons
 }
 
 
+NoNewLineValidator::NoNewLineValidator(QWidget * parent)
+	: QValidator(parent)
+{}
+
+
+QValidator::State NoNewLineValidator::validate(QString & qtext, int &) const
+{
+	qtext.remove(QRegExp("[\\n\\r]"));
+	return QValidator::Acceptable;
+}
+
+
 PathValidator::PathValidator(bool acceptable_if_empty,
 			     QWidget * parent)
 	: QValidator(parent),

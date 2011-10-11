@@ -124,6 +124,18 @@ private:
 };
 
 
+// A class to ascertain that no newline characters are passed.
+class NoNewLineValidator : public QValidator
+{
+	Q_OBJECT
+public:
+	// Define a validator.
+	NoNewLineValidator(QWidget *);
+	// Remove newline characters from input.
+	QValidator::State validate(QString &, int &) const;
+};
+
+
 /** A class to ascertain whether the data passed to the @c validate()
  *  member function is a valid file path.
  *  The test is active only when the path is to be stored in a LaTeX

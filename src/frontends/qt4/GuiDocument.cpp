@@ -744,6 +744,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 	outputModule->synccustomCB->addItem("\\synctex=-1");
 	outputModule->synccustomCB->addItem("\\usepackage[active]{srcltx}");
 
+	outputModule->synccustomCB->setValidator(new NoNewLineValidator(
+		outputModule->synccustomCB));
+
 	// fonts
 	fontModule = new UiWidget<Ui::FontUi>;
 	connect(fontModule->osFontsCB, SIGNAL(clicked()),
@@ -782,6 +785,11 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(fontModule->fontOsfCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
+
+	fontModule->fontencLE->setValidator(new NoNewLineValidator(
+		fontModule->fontencLE));
+	fontModule->cjkFontLE->setValidator(new NoNewLineValidator(
+		fontModule->cjkFontLE));
 
 	updateFontlist();
 
@@ -971,10 +979,13 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(langModule->languagePackageCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
-	connect(langModule->languagePackageED, SIGNAL(textChanged(QString)),
+	connect(langModule->languagePackageLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(langModule->languagePackageCO, SIGNAL(currentIndexChanged(int)),
 		this, SLOT(languagePackageChanged(int)));
+
+	langModule->languagePackageLE->setValidator(new NoNewLineValidator(
+		langModule->languagePackageLE));
 
 	QAbstractItemModel * language_model = guiApp->languageModel();
 	// FIXME: it would be nice if sorting was enabled/disabled via a checkbox.
@@ -1066,8 +1077,11 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(biblioModule->bibtexCO, SIGNAL(activated(int)),
 		this, SLOT(bibtexChanged(int)));
-	connect(biblioModule->bibtexOptionsED, SIGNAL(textChanged(QString)),
+	connect(biblioModule->bibtexOptionsLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
+
+	biblioModule->bibtexOptionsLE->setValidator(new NoNewLineValidator(
+		biblioModule->bibtexOptionsLE));
 
 	biblioModule->citeStyleCO->addItem(qt_("Author-year"));
 	biblioModule->citeStyleCO->addItem(qt_("Numerical"));
@@ -1144,6 +1158,11 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(latexModule->refstyleCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
+
+	latexModule->optionsLE->setValidator(new NoNewLineValidator(
+		latexModule->optionsLE));
+	latexModule->childDocLE->setValidator(new NoNewLineValidator(
+		latexModule->childDocLE));
 
 	// postscript drivers
 	for (int n = 0; tex_graphics[n][0]; ++n) {
@@ -1245,6 +1264,17 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(pdfSupportModule->optionsLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
+
+	pdfSupportModule->titleLE->setValidator(new NoNewLineValidator(
+		pdfSupportModule->titleLE));
+	pdfSupportModule->authorLE->setValidator(new NoNewLineValidator(
+		pdfSupportModule->authorLE));
+	pdfSupportModule->subjectLE->setValidator(new NoNewLineValidator(
+		pdfSupportModule->subjectLE));
+	pdfSupportModule->keywordsLE->setValidator(new NoNewLineValidator(
+		pdfSupportModule->keywordsLE));
+	pdfSupportModule->optionsLE->setValidator(new NoNewLineValidator(
+		pdfSupportModule->optionsLE));
 
 	for (int i = 0; backref_opts[i][0]; ++i)
 		pdfSupportModule->backrefCO->addItem(qt_(backref_opts_gui[i]));
@@ -1903,14 +1933,14 @@ void GuiDocument::classChanged()
 
 void GuiDocument::languagePackageChanged(int i)
 {
-	 langModule->languagePackageED->setEnabled(
+	 langModule->languagePackageLE->setEnabled(
 		langModule->languagePackageCO->itemData(i).toString() == "custom");
 }
 
 
 void GuiDocument::bibtexChanged(int n)
 {
-	biblioModule->bibtexOptionsED->setEnabled(
+	biblioModule->bibtexOptionsLE->setEnabled(
 		biblioModule->bibtexCO->itemData(n).toString() != "default");
 	changed();
 }
@@ -2168,7 +2198,7 @@ void GuiDocument::applyView()
 		fromqstr(biblioModule->bibtexCO->itemData(
 			biblioModule->bibtexCO->currentIndex()).toString());
 	string const bibtex_options =
-		fromqstr(biblioModule->bibtexOptionsED->text());
+		fromqstr(biblioModule->bibtexOptionsLE->text());
 	if (bibtex_command == "default" || bibtex_options.empty())
 		bp_.bibtex_command = bibtex_command;
 	else
@@ -2236,7 +2266,7 @@ void GuiDocument::applyView()
 		langModule->languagePackageCO->currentIndex()).toString();
 	if (pack == "custom")
 		bp_.lang_package =
-			fromqstr(langModule->languagePackageED->text());
+			fromqstr(langModule->languagePackageLE->text());
 	else
 		bp_.lang_package = fromqstr(pack);
 
@@ -2588,15 +2618,15 @@ void GuiDocument::paramsToDialog()
 	int const bpos = biblioModule->bibtexCO->findData(toqstr(command));
 	if (bpos != -1) {
 		biblioModule->bibtexCO->setCurrentIndex(bpos);
-		biblioModule->bibtexOptionsED->setText(toqstr(options).trimmed());
+		biblioModule->bibtexOptionsLE->setText(toqstr(options).trimmed());
 	} else {
 		// We reset to default if we do not know the specified compiler
 		// This is for security reasons
 		biblioModule->bibtexCO->setCurrentIndex(
 			biblioModule->bibtexCO->findData(toqstr("default")));
-		biblioModule->bibtexOptionsED->clear();
+		biblioModule->bibtexOptionsLE->clear();
 	}
-	biblioModule->bibtexOptionsED->setEnabled(
+	biblioModule->bibtexOptionsLE->setEnabled(
 		biblioModule->bibtexCO->currentIndex() != 0);
 
 	// indices
@@ -2641,10 +2671,10 @@ void GuiDocument::paramsToDialog()
 	if (p == -1) {
 		langModule->languagePackageCO->setCurrentIndex(
 			  langModule->languagePackageCO->findData("custom"));
-		langModule->languagePackageED->setText(toqstr(bp_.lang_package));
+		langModule->languagePackageLE->setText(toqstr(bp_.lang_package));
 	} else {
 		langModule->languagePackageCO->setCurrentIndex(p);
-		langModule->languagePackageED->clear();
+		langModule->languagePackageLE->clear();
 	}
 
 	//color

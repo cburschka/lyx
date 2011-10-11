@@ -142,6 +142,9 @@ What's new
 
 - Fix instant preview when using Python version 2.4 or lower.
 
+- Don't allow copy-pasting newline characters in Document->Settings
+  and Tools->Preferences (bug 5840).
+
 
 * ADVANCED FIND AND REPLACE
 
