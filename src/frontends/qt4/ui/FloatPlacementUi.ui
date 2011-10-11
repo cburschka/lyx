@@ -123,6 +123,15 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>defaultsCB</tabstop>
+  <tabstop>topCB</tabstop>
+  <tabstop>bottomCB</tabstop>
+  <tabstop>pageCB</tabstop>
+  <tabstop>herepossiblyCB</tabstop>
+  <tabstop>heredefinitelyCB</tabstop>
+  <tabstop>ignoreCB</tabstop>
+ </tabstops>
  <includes>
   <include location="local" >qt_i18n.h</include>
  </includes>

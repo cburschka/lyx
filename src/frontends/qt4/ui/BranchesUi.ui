@@ -146,6 +146,17 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>newBranchLE</tabstop>
+  <tabstop>addBranchPB</tabstop>
+  <tabstop>branchesTW</tabstop>
+  <tabstop>removePB</tabstop>
+  <tabstop>renamePB</tabstop>
+  <tabstop>colorPB</tabstop>
+  <tabstop>suffixPB</tabstop>
+  <tabstop>activatePB</tabstop>
+  <tabstop>unknownPB</tabstop>
+ </tabstops>
  <includes>
   <include location="local" >qt_i18n.h</include>
  </includes>
