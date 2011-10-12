@@ -317,25 +317,17 @@ Es gibt keinen vertikalen Rollbalken.
  Der Text rutscht dabei automatisch auf die nächste Seite, daher ist ein
  horizontaler Rollbalken nicht notwendig.
  Es gibt drei Fälle, bei denen Sie dennoch einen Rollbalken erwarten.
- Der erste Fall sind große Bilder, 
-\lang english
-displayed WYSIWYG\SpecialChar \@.
- This, however, is due to a flaw in the routine that displays
- graphics on the LyX screen in a WYSIWYG fashion; it should rescale the
- graphics to fit in the window, just as you'd need to rescale graphics to
- fit on a page
-\lang ngerman
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-präzisieren, dass in LyX skaliert werden kann; WYSIWYG raus
-\end_layout
-
-\end_inset
-
-.
+ Der erste Fall sind große Bilder.
+ Um zu verhindern, dass sie größer als der Bildschirm dargestellt werden,
+ kann man in den Bildeinstellungen die Option 
+\family sans
+Skalierung auf Bildschirm
+\family default
+ im Tab 
+\family sans
+LaTeX- und LyX-Optionen
+\family default
+ verwenden.
  Der zweite und dritte Fall sind Tabellen und Gleichungen, die breiter als
  LyXs Hauptarbeitsbereich sind.
  Man kann die Pfeiltasten benutzen um horizontal durch Tabellen zu navigieren.
@@ -356,22 +348,6 @@ reference "chap:Die-Benutzeroberfläche"
 \end_inset
 
 .
- 
-\lang english
-Most of them are self-explanatory and you will find them listed in the correspon
-ding sections of this documentation
-\lang ngerman
-.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-letzten Satz raus
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -379,23 +355,7 @@ HILFE
 \end_layout
 
 \begin_layout Standard
-Zunächst die schlechte Nachricht: Das Hilfesystem ist nicht so umfangreich
- und einfach wie in vielen kommerziellen Anwendungen.
- Haben Sie Geduld, es wird daran gearbeitet.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Satz raus
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Doch nun zu den guten Nachrichten: Das Hilfesystem besteht aus den LyX
+Das Hilfesystem besteht aus den LyX
 \begin_inset ERT
 status collapsed
 
@@ -461,32 +421,25 @@ name "LyX-Grundeinstellungen"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There are several features of LyX that can be configured from inside LyX,
- without resorting to configuration files
-\lang ngerman
-.
-\begin_inset Note Note
-status open
+Nahezu alle Features von LyX können über das Menü 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen
+\family default
+ konfiguriert werden.
+\begin_inset Index idx
+status collapsed
 
 \begin_layout Plain Layout
-Info über Config-Dateien raus, menü Tools->Settings erwähnen
+Grundeinstellungen
 \end_layout
 
 \end_inset
 
  LyX kann Ihr System inspizieren, um zu sehen welche Programme, LaTeX-Dokumentkl
 assen und LaTeX-Pakete verfügbar sind.
-
-\lang english
- It uses this knowledge to give reasonable defaults to several 
-\family sans
-Einstellungen
-\family default
- settings.
-
-\lang ngerman
+ Diese Informationen werden verwendet, um sinnvolle Voreinstellungen für
+ die LyX-Grundeinstellungen festzulegen.
  Die Konfiguration wird bereits bei der Installation durchgeführt.
  Allerdings können später installierte Dinge wie z.
 \begin_inset space \thinspace{}
@@ -1907,100 +1860,37 @@ ndigungsvorschläge verwendet wird.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-By default LyX zeigt a small triangle behind the cursor as indicator that
- there are completions available.
- You can then press the 
-\family sans
-Tab
-\family default
- key to use this completion.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-erklären, dass man das erst einstellen muss, also kein default
-\end_layout
-
-\end_inset
-
- When several completions are possible, a popup is opened showing them.
- You can select a completion in the popup using the mouse oder the arrow
- keys, und accept the chosen completion be pressing 
-\family sans
-Enter
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-nach vorne
-\end_layout
-
-\end_inset
-
-In the preferences dialog, which is opened mit the 
-\lang ngerman
-Menü 
+Die Eingabevervollständigung wird in dem LyX-Grundeinstellungen (Menü 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
 Einstellungen
 \family default
-, 
-\lang english
-the cursor completion indicator can be turned off in the section 
+) unter 
 \family sans
-Editing\SpecialChar \menuseparator
-Input Completion
+Bearbeiten\SpecialChar \menuseparator
+Eingabevervollständigung
 \family default
- by deselecting the option 
+ aktiviert werden.
+ Mit der Option 
 \family sans
-Cursor
+Automatische
 \begin_inset space ~
 \end_inset
 
-indicator
+Wortvervollständigung
 \family default
-.
- With the option 
+ wird der Vervollständigungsvorschlag direkt hinter dem Cursor angezeigt.
+ Mit der Option 
 \family sans
-Automatic
+Automatisches
 \begin_inset space ~
 \end_inset
 
-inline
+Popup
+\family default
+ werden die Vorschläge immer in einem Popup angezeigt.
+ LyX bietet zudem weitere Einstellungen für Experten an, die in Abschnitt
 \begin_inset space ~
-\end_inset
-
-completion
-\family default
- the proposed completion is shown directly behind the cursor position.
- To accept this proposal, use the 
-\family sans
-Tab
-\family default
- key.
- With the option 
-\family sans
-Automatic popup
-\family default
- the completions are always shown in a popup.
- LyX offers some more completion settings für experts that are described
- in
-\lang ngerman
- Abschnitt
-\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -2010,7 +1900,34 @@ reference "sub:Eingabevervollständigung"
 
 \end_inset
 
-.
+ beschrieben sind.
+ Der Vervollständigungsindikator kann mit der Option 
+\family sans
+Cursor
+\begin_inset space ~
+\end_inset
+
+Markierung
+\family default
+ abgeschaltet werden.
+\end_layout
+
+\begin_layout Standard
+LyX verwendet ein kleines Dreieck hinter dem Cursor als Indikator dass es
+ Vervollständigungen gibt.
+ Um eine Vervollständigung zu akzeptieren, drückt man die 
+\family sans
+Tab
+\family default
+ Taste.
+ Falls mehrere Vervollständigungen verfügbar sind, wird ein Popup geöffnet,
+ das diese anzeigt.
+ Man kann eine Vervollständigung im Popup mit der Maus oder den Pfeiltasten
+ auswählen, und akzeptieren, indem man 
+\family sans
+Enter
+\family default
+ drückt.
 \end_layout
 
 \begin_layout Section
@@ -2029,18 +1946,25 @@ Tastatur!-funktionen
 
 \begin_layout Standard
 Es gibt mindestens zwei verschiedene grundlegende Sätze von Tastenkürzeln:
- CUA und Emacs.
- LyXs Voreinstellung ist CUA.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-beschreiben, wie emacs eingestellt werden kann
-\end_layout
-
-\end_inset
-
-
+ 
+\family typewriter
+cua
+\family default
+ und 
+\family typewriter
+emacs
+\family default
+.
+ LyXs Voreinstellung ist 
+\family typewriter
+cua
+\family default
+, die in den LyX-Grundeinstellungen unter 
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Tastenkürzel
+\family default
+ geändert werden kann.
 \end_layout
 
 \begin_layout Standard
@@ -2076,7 +2000,7 @@ Hoch
 \family sans
 Runter
 \family default
- machen genaus das, was man erwartet, andere nicht:
+ machen genau das, was man erwartet, andere nicht:
 \end_layout
 
 \begin_layout Labeling
@@ -2130,18 +2054,11 @@ reference "sub:Listen"
 Tutorium
 \emph default
 .
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-In LyX wird die Tabulatortaste nur verwendet, um den Vorschlage der Eingabevervo
-llständigung zu übernehmen.
-\end_layout
-
+\begin_inset Newline newline
 \end_inset
 
-
+In LyX wird die Tabulatortaste nur verwendet, um Vorschläge der Eingabevervollst
+ändigung zu übernehmen.
 \end_layout
 
 \begin_layout Labeling
@@ -27146,53 +27063,40 @@ name "sec:Querverweise"
 \end_layout
 
 \begin_layout Standard
-Wenn Sie dieses Handbuch in LyX lesen, sehen Sie am Ende der Überschrift
- ein graues Kästchen mit Text darin.
- Das ist eine 
-\family sans
-Marke
-\family default
-.
- Genauer gesagt ist es eine Hälfte eines Querverweises.
- Die andere Hälfte ist der 
-\family sans
-Querverweis
-\family default
- und sieht so aus: 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Querverweise"
+Eine von LyXs Stärken sind Querverweise.
+ Sie können auf jeden Abschnitt, jedes Gleitobjekt, jede Fußnote, Formel
+ und Liste im Dokument referenzieren.
+ Für eine Referenz müssen Sie zuerst eine Marke in den zu referenzieren
+ Teil einfügen.
+ Die Marke dient als Anker und Name für die Referenz.
+ Angenommen Sie wollen den zweiten Eintrag der folgenden Liste referenzieren:
+\end_layout
+
+\begin_layout Enumerate
+Erster Eintrag
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:Zweiter-Eintrag"
 
 \end_inset
 
-.
- In LyX ist das auch ein graues Kästchen mit Text darin.
- Im gedruckten Dokument ist es eine Zahl – in diesem Fall die Nummer dieses
- Abschnittes.
+Zweiter Eintrag
+\end_layout
+
+\begin_layout Enumerate
+Dritter Eintrag
 \end_layout
 
 \begin_layout Standard
-Mit Querverweisen können Sie andere Teile Ihres Dokumentes zitieren.
- Sie müssen sich die Abschnittsnummer nicht merken – LyX macht das für Sie!
- Alles, was Sie brauchen, ist eine 
-\family sans
-Marke
-\family default
- zum Markieren eines Abschnittes, eines Bildes, einer Tabelle, einer Gleichung
- usw., die Sie dann mit einem 
-\family sans
-Querverweis
-\family default
- zitieren.
-\end_layout
-
-\begin_layout Standard
-Um eine Marke zu definieren, benutzen Sie 
+Zuerst setzen Sie eine Marke zu definieren, benutzen Sie 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Marke
 \family default
- oder 
+ oder den Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/label-insert.png
 	scale 85
@@ -27201,14 +27105,81 @@ Marke
 \end_inset
 
 .
- Ein Kästchen erscheint, in das Sie Ihre Marke eingeben.
- LyX macht einen Vorschlag, den Sie aber überschreiben können.
- Sie können eine Marke ändern, indem Sie auf die Marke klicken und den Text
- ändern.
+ Ein Kästchen wie dieses: 
+\begin_inset Graphics
+	filename clipart/Marke.png
+	scale 85
+
+\end_inset
+
+ wird eingefügt und LyX fragt nach einem Namen für die Marke.
+ LyX schlägt als Namen die ersten Wörter des Listeneintrags und zusätzlich
+ einen Präfix.
+ In diesem Fall 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family sans
+enu:Zweiter-Eintrag
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Der Präfix 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family sans
+enu:
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+ steht für 
+\begin_inset Quotes gld
+\end_inset
+
+enumerate
+\begin_inset Quotes grd
+\end_inset
+
+ (auf deutsch: 
+\emph on
+nummeriert
+\emph default
+).
+ Der Präfix hängt vom Dokumentteil ab, in den die Marke eingefügt wurde.
+ Für Abschnitte ist er z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family sans
+sec:
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+ (Englisch für 
+\emph on
+section
+\emph default
+).
 \end_layout
 
 \begin_layout Standard
-Um auf eine Marke zu verweisen, wählen Sie 
+Um nun auf die Marke zu verweisen, wählen Sie 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Querverweis
@@ -27222,35 +27193,36 @@ Querverweis
 \end_inset
 
 .
- Das Menü 
+ Ein graues Querverweis-Kästchen wie dieses: 
+\begin_inset Graphics
+	filename clipart/Querverweis.png
+	scale 85
+
+\end_inset
+
+ wird eingefügt und der Querverweis-Dialog erscheint mit einer Liste der
+ Marken.
+ Um eine Marke einzufügen, können Sie die Marken alphabetisch sortieren
+ und wählen dann 
+\begin_inset Quotes gld
+\end_inset
+
+
 \family sans
-Querverweis
+enu:Zweiter-Eintrag
 \family default
- erscheint mit einer Liste der Marken.
- Um eine Marke einzufügen, wählen Sie sie aus und klicken auf 
-\family sans
-OK
-\family default
-.
+
+\begin_inset Quotes grd
+\end_inset
+
+ aus.
  Im Feld 
 \family sans
 Format
 \family default
- können Sie einen der unten beschriebenen Verweistypen auswählen.
- Wenn Sie sich nicht sicher sind, ob es die richtige Marke ist, können Sie
- mit 
-\family sans
-Gehe
-\begin_inset space ~
-\end_inset
-
-zur
-\begin_inset space ~
-\end_inset
-
-Marke
-\family default
- dorthin gehen, wo sie definiert wurde.
+ können Sie einen der unten beschriebenen Verweisstile auswählen.
+ An der Stelle der Querverweis-Box erscheint in der Ausgabe die Nummer des
+ Listeneintrags.
 \end_layout
 
 \begin_layout Standard
@@ -27259,19 +27231,64 @@ Alternativ zu
 Einfügen\SpecialChar \menuseparator
 Querverweis
 \family default
- können Sie mit der rechten Maustaste auf eine Marke klicken und im erscheinende
-n Kontextmenü 
+ können Sie mit rechts auf die Marke klicken und im erscheinenden Kontextmenü
+ 
 \family sans
 Als Querverweis kopieren
 \family default
  verwenden.
- Der Querverweis zu dieser Marke befindet sich dann im Zwischenspeicher
- und kann anschließend mit dem Menü 
+ Der Querverweis zu dieser Marke ist nun in der Zwischenablage und kann
+ an der aktuellen Cursorposition mit dem Menü 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Einfügen
 \family default
- (Tastenkürzel Strg+V) an die aktuelle Stelle des Cursors eingefügt werden.
+ (Tastenkürzel 
+\family sans
+Ctrl+V
+\family default
+) eingefügt werden.
+\end_layout
+
+\begin_layout Standard
+Hier ist unser Querverweis: Eintrag
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:Zweiter-Eintrag"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es wird empfohlen, ein geschütztes Leerzeichen
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+beschrieben in Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Geschütztes-Leerzeichen"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ zwischen Querverweisnamen und Querverweis zu verwenden, um unschöne Zeilenumbrü
+che zwischen beiden zu vermeiden.
 \end_layout
 
 \begin_layout Standard
@@ -27440,45 +27457,59 @@ LaTeX-Paket ! refstyle
 \begin_inset Newline newline
 \end_inset
 
-You can select which LaTeX-package should be used for this feature by setting
- the option 
+
+\lang ngerman
+Man kann mit der Option 
 \family sans
-Use refstyle (not prettyref) for cross-references
+Verwende refstyle (statt prettyref) für Querverweise
 \family default
- in the menu 
+ im Menü 
 \family sans
 Dokument\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Document Class
+Einstellungen\SpecialChar \menuseparator
+Dokumentklasse
 \family default
-.
- The format is specified by adding the command 
+ auswählen, welches LaTeX-Paket für dieses Feature verwendet wird.
+ Das Paket 
+\series bold
+refstyle
+\series default
+ ist die Voreinstellung und bevorzugt, da 
+\series bold
+prettyref
+\series default
+ nur englische Dokumente unterstützt.
+ Das Format wird festgelegt, indem der Befehl 
 \series bold
 
 \backslash
 newrefformat
 \series default
- (prettyref) or 
+ (prettyref) oder 
 \series bold
 
 \backslash
 newref
 \series default
- (refstyle) to the preamble of the document.
- For example redefining all references to figures (which have the label
- shortcut 
+ (refstyle) im LaTeX-Vorspann des Dokuments verwendet wird.
+ Um z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ alle Verweise auf Abbildungen (die den Marken-Präfix 
 \begin_inset Quotes gld
 \end_inset
 
 
 \family sans
-tab
+fig
 \family default
 
 \begin_inset Quotes grd
 \end_inset
 
-) can be done with this command
+ haben) umzuformatieren, verwendet man den Befehl
 \begin_inset Newline newline
 \end_inset
 
@@ -27486,7 +27517,7 @@ tab
 \series bold
 
 \backslash
-newref{tab}{refcmd={Image on page 
+newref{fig}{refcmd={Bild auf Seite 
 \backslash
 pageref{#1}}}
 \series default
@@ -27494,9 +27525,8 @@ pageref{#1}}}
 \begin_inset Newline newline
 \end_inset
 
-For more information about the format, have a look at the package documentations
-\lang ngerman
-, 
+Für weitere Informationen über das Format, siehe die Dokumentation der Pakete,
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "prettyref,refstyle"

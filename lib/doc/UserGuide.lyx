@@ -321,11 +321,17 @@ Note that there is no horizontal scrollbar.
  Text overflows onto new pages in a vertical fashion, hence the need for
  only a vertical scrollbar.
  There are three cases where you might want a horizontal scrollbar.
- The first case is large figures, displayed WYSIWYG\SpecialChar \@.
- This, however, is due
- to a flaw in the routine that displays graphics on the LyX screen in a
- WYSIWYG fashion; it should rescale the graphics to fit in the window, just
- as you'd need to rescale graphics to fit on a page.
+ The first case is large images.
+ To avoid that they are displayed larger than your screen, use in the image
+ settings the option 
+\family sans
+Scale on Screen
+\family default
+ in the tab 
+\family sans
+LaTeX and LyX options
+\family default
+.
  The second and third cases are tables and equations which are wider than
  the LyX window.
  You can use the arrow keys to scroll horizontally through the table, but
@@ -346,8 +352,6 @@ reference "chap:The-User-Interface"
 \end_inset
 
 .
- Most of them are self-explanatory and you will find them listed in the
- corresponding sections of this documentation.
 \end_layout
 
 \begin_layout Section
@@ -380,15 +384,12 @@ name "sec:Basic-LyX-Setup"
 \end_layout
 
 \begin_layout Standard
-There are several features of LyX that can be configured from inside LyX,
- without resorting to configuration files.
- First, LyX is able to inspect your system to see what programs, LaTeX document
- classes and LaTeX packages are available.
- It uses this knowledge to give reasonable defaults to several 
+Almost all features of LyX that can be configured via the menu 
 \family sans
+Tools\SpecialChar \menuseparator
 Preferences
 \family default
-
+.
 \begin_inset Index idx
 status collapsed
 
@@ -398,6 +399,9 @@ Preferences
 
 \end_inset
 
+ LyX is able to inspect your system to see what programs, LaTeX document
+ classes and LaTeX packages are available.
+ It uses this knowledge to give reasonable defaults for the preferences
  settings.
  Although this configuration has already been done when LyX was installed
  on your system, you might have some items that you installed locally, e.
@@ -1792,40 +1796,15 @@ LyX provides completion of words by scanning all documents that are currently
 \end_layout
 
 \begin_layout Standard
-By default LyX shows a small triangle behind the cursor as indicator that
- there are completions available.
- You can then press the 
-\family sans
-Tab
-\family default
- key to use this completion.
- When several completions are possible, a popup is opened showing them.
- You can select a completion in the popup using the mouse or the arrow keys,
- and accept the chosen completion be pressing 
-\family sans
-Return
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-In the preferences dialog, which is opened with the menu 
+The input completion can be activated in the LyX preferences (menu 
 \family sans
 Tools\SpecialChar \menuseparator
 Preferences
 \family default
-, the cursor completion indicator can be turned off in the section 
+) in the section 
 \family sans
 Editing\SpecialChar \menuseparator
 Input Completion
-\family default
- by deselecting the option 
-\family sans
-Cursor
-\begin_inset space ~
-\end_inset
-
-indicator
 \family default
 .
  With the option 
@@ -1840,15 +1819,14 @@ inline
 
 completion
 \family default
- the proposed completion is shown directly behind the cursor position.
- To accept this proposal, use the 
-\family sans
-Tab
-\family default
- key.
+ the proposed completion is shown directly behind the cursor.
  With the option 
 \family sans
-Automatic popup
+Automatic
+\begin_inset space ~
+\end_inset
+
+popup
 \family default
  the completions are always shown in a popup.
  LyX offers some more completion settings for experts that are described
@@ -1863,6 +1841,34 @@ reference "sub:Input-Completion-Appendix"
 
 \end_inset
 
+.
+ The cursor completion indicator can be turned off by deselecting the option
+ 
+\family sans
+Cursor
+\begin_inset space ~
+\end_inset
+
+indicator
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+LyX shows a small triangle behind the cursor as indicator that there are
+ completions available.
+ Press the 
+\family sans
+Tab
+\family default
+ key to accept a proposed completion.
+ If several completions are possible, a popup is opened showing them.
+ You can select a completion in the popup using the mouse or the arrow keys,
+ and accept the chosen completion be pressing 
+\family sans
+Return
+\family default
 .
 \end_layout
 
@@ -1945,8 +1951,25 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-There are at least two different primary binding maps: CUA and Emacs.
- LyX's default is CUA.
+There are at least two different primary binding maps: 
+\family typewriter
+cua
+\family default
+ and 
+\family typewriter
+emacs
+\family default
+.
+ LyX's default is 
+\family typewriter
+cua
+\family default
+, which can be changed in the LyX preferences under 
+\family sans
+Editing\SpecialChar \menuseparator
+Shortcuts
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -2037,6 +2060,10 @@ reference "sub:Lists"
 Tutorial
 \emph default
 .
+\begin_inset Newline newline
+\end_inset
+
+In LyX the Tab key is only used to accept propositions of the input completion.
 \end_layout
 
 \begin_layout Labeling
@@ -24326,7 +24353,7 @@ Reference
 \family default
 .
  A dialog appears to choose a label you want refer to.
- The reference appears in LyX as a grey cross reference box and in the output
+ The reference appears in LyX as a gray cross reference box and in the output
  as the formula number:
 \end_layout
 
@@ -25308,7 +25335,7 @@ arg   "label-insert"
 \end_inset
 
 .
- A grey label box like this: 
+ A gray label box like this: 
 \begin_inset Graphics
 	filename clipart/labelQt4.png
 	scale 85
@@ -25387,7 +25414,7 @@ arg   "dialog-show-new-inset ref"
 \end_inset
 
 .
- A grey cross-reference box like this: 
+ A gray cross-reference box like this: 
 \begin_inset Graphics
 	filename clipart/referenceQt4.png
 	scale 85
@@ -25424,13 +25451,19 @@ Cross-Reference
 Copy as Reference
 \family default
 .
- The cross-reference to this label is now in the clipboard and can be copied
+ The cross-reference to this label is now in the clipboard and can be pasted
  to the actual cursor position via the menu 
 \family sans
 Edit\SpecialChar \menuseparator
 Paste
 \family default
- (shortcut Ctrl+V).
+ (shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "paste"
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
@@ -25470,12 +25503,12 @@ reference "sub:Protected-Space"
 
 \end_inset
 
- between the cross-reference name and its number to avoid ugly line breaks
- between them.
+ between the cross-reference name and the cross-reference to avoid ugly
+ line breaks between them.
 \end_layout
 
 \begin_layout Standard
-There are six varieties of cross-references:
+There are six formats of cross-references:
 \end_layout
 
 \begin_layout Description
@@ -25634,7 +25667,16 @@ Settings\SpecialChar \menuseparator
 Document Class
 \family default
 .
- The format is specified by adding the command 
+ The package 
+\series bold
+refstyle
+\series default
+ is the default and preferred because 
+\series bold
+prettyref
+\series default
+ supports only English documents.
+ The format is specified by using the command 
 \series bold
 
 \backslash
@@ -25646,7 +25688,7 @@ newrefformat
 \backslash
 newref
 \series default
- (refstyle) to the preamble of the document.
+ (refstyle) in the LaTeX preamble of the document.
  For example redefining all references to figures (which have the label
  shortcut 
 \begin_inset Quotes eld
@@ -26571,7 +26613,7 @@ eX
 Bibliography
 \family default
 .
- A grey box will be inserted and a window appears.
+ A gray box will be inserted and a window appears.
  In this window you can load one or more databases and a style file.
  The option 
 \family sans
