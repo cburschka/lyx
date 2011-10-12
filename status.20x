@@ -45,9 +45,9 @@ What's new
 
 - Make InsetInfo output a path matching the LaTeX compiler.
 
-- Improve creation of a LyX archive. Now also the files referenced in ERT
-  in the document body (e.g., through \input or \insertgraphics) are
-  included in the archive.
+- Improve creation of a LyX archive. Now also the files referenced in
+  TeX-code in the document body (e.g. via \input or \insertgraphics)
+  are included in the archive.
 
 - When changing the document language, also change the language of the
   text which is not explicitly marked in a different language, irrespective
