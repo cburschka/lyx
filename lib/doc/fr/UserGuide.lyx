@@ -343,10 +343,21 @@ Notez qu'il n'y a pas de barre de défilement horizontal.
 \begin_layout Standard
 Il y a trois cas dans lesquels vous pourriez vouloir une barre de défilement
  horizontal.
- Le premier cas, ce sont les grandes figures, affichées de façon WYSIWYG.
- Cependant ceci est dû à un défaut dans la fonction qui affiche les graphiques
- sur l'écran de LyX de façon WYSIWYG ; elle devrait mettre les graphiques
- à l'échelle pour tenir dans la fenêtre.
+ Le premier cas, ce sont les grandes figures.
+ 
+\lang english
+To avoid that they are displayed larger than your screen, use in the image
+ settings the option 
+\family sans
+Scale on Screen
+\family default
+ in the tab 
+\family sans
+LaTeX and LyX options
+\family default
+.
+
+\lang french
  Les deuxième et troisième cas sont les tableaux et les équations qui sont
  plus larges que la fenêtre LyX.
  Vous pouvez utiliser les flèches du clavier pour vous déplacer horizontalement
@@ -367,8 +378,6 @@ reference "cha:Interface-Utilisateur"
 \end_inset
 
 .
- La plupart sont explicites et vous les trouverez listés dans les sections
- correspondantes de cette documentation.
 \end_layout
 
 \begin_layout Section
@@ -401,16 +410,15 @@ name "sec:Config-LyX-de-base"
 \end_layout
 
 \begin_layout Standard
-Il y a plusieurs fonctionnalités de LyX qui peuvent être configurées depuis
- LyX lui-même, sans recourir aux fichiers de configuration.
- Tout d'abord, LyX est capable d'inspecter votre système pour voir quels
- programmes, quelles classes de document LaTeX et quels paquetages LaTeX
- sont disponibles.
- Il utilise cette information pour attribuer des valeurs implicites raisonnables
- à plusieurs variables de 
+
+\lang english
+Almost all features of LyX that can be configured via the menu 
 \family sans
-préférences
+Tools\SpecialChar \menuseparator
+Preferences
 \family default
+.
+\lang french
 
 \begin_inset Index idx
 status collapsed
@@ -421,7 +429,10 @@ Préférences
 
 \end_inset
 
-.
+ LyX est capable d'inspecter votre système pour voir quels programmes, quelles
+ classes de document LaTeX et quels paquetages LaTeX sont disponibles.
+ Il utilise cette information pour attribuer des valeurs implicites raisonnables
+ à plusieurs variables de préférences.
  Bien que cette configuration ait déjà eu lieu au moment de l'installation
  de LyX sur votre système, vous pourriez avoir certains fichiers installés
  localement, par exemple des classes LaTeX, et qui n'auraient pas été vus
@@ -1865,39 +1876,19 @@ LyX propose une fonction de complétion de mots en balayant tous les documents
 \end_layout
 
 \begin_layout Standard
-Implicitement LyX affiche un petit triangle derrière le curseur pour signaler
- qu'il y a des complétions disponibles.
- Vous pouvez alors appuyer sur la touche 
-\family sans
-Tab
-\family default
- pour utiliser ces complétions.
- Quand plusieurs complétions sont possibles, une fenêtre auxiliaire s'ouvre
- pour les afficher.
- Vous pouvez utiliser la souris ou les flèches de déplacement pour sélectionner
- une complétions dans la fenêtre, et valider le choix avec la touche 
-\family sans
-Entrée
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-Dans la fenêtre de dialogue de préférences, que l'on ouvre avec le menu
- 
+La complétion de saisie 
+\lang english
+can be activated in the LyX
+\lang french
+ préférences (menu 
 \family sans
 Outils\SpecialChar \menuseparator
 Préférences
 \family default
-, on peut désactiver l'indicateur de complétion du curseur dans la rubrique
- 
+) dans la rubrique 
 \family sans
 Édition\SpecialChar \menuseparator
 Complétion de saisie
-\family default
- en décochant l'option 
-\family sans
-Indicateur curseur
 \family default
 .
  Avec l'option 
@@ -1905,11 +1896,6 @@ Indicateur curseur
 Complétion automatique en ligne
 \family default
  la complétion proposée est affichée directement derrière le curseur.
- Pour accepter cette proposition, utilisez la touche 
-\family sans
-Tab
-\family default
-.
  Avec l'option 
 \family sans
 Fenêtre auxiliaire automatique
@@ -1928,6 +1914,35 @@ reference "sub:Complétion-de-saisie-appendice"
 \end_inset
 
 .
+ On peut désactiver l'indicateur de complétion du curseur en décochant l'option
+ 
+\family sans
+Indicateur curseur
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+LyX affiche un petit triangle derrière le curseur pour signaler qu'il y
+ a des complétions disponibles.
+ Pour accepter une proposition, utilisez la touche 
+\family sans
+Tab
+\family default
+.
+ Vous pouvez alors appuyer sur la touche 
+\family sans
+Tab
+\family default
+ pour utiliser ces complétions.
+ Quand plusieurs complétions sont possibles, une fenêtre auxiliaire s'ouvre
+ pour les afficher.
+ Vous pouvez utiliser la souris ou les flèches de déplacement pour sélectionner
+ une complétions dans la fenêtre, et valider le choix avec la touche 
+\family sans
+Entrée
+\family default
+.
 \end_layout
 
 \begin_layout Section
@@ -1945,15 +1960,27 @@ Raccourcis clavier
 \end_layout
 
 \begin_layout Standard
-Il y a au moins deux familles différentes de raccourcis clavier : CUA et
- Emacs.
- Je suis sûr que vous allez protester si vous tapez 
-\family sans
-Contrôle-d
+Il y a au moins deux familles différentes de raccourcis clavier : 
+\family typewriter
+cua
 \family default
- pour effacer un caractère, et qu'il démarre une visionneuse DVI à la place
- (ou l'inverse).
- LyX utilise implicitement CUA.
+ et 
+\family typewriter
+emacs
+\family default
+.
+ 
+\lang english
+LyX's default is 
+\family typewriter
+cua
+\family default
+, which can be changed in the LyX preferences under 
+\family sans
+Editing\SpecialChar \menuseparator
+Shortcuts
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -2052,6 +2079,12 @@ Manuel
 d'Apprentissage
 \emph default
 .
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+In LyX the Tab key is only used to accept propositions of the input completion.
 \end_layout
 
 \begin_layout Labeling
@@ -7174,7 +7207,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-Lists ! Description
+Lists ! Customization
 \end_layout
 
 \end_inset
@@ -15208,11 +15241,24 @@ status collapsed
 
 \end_inset
 
-eX
+eX.
+ 
+\family default
+\lang english
+The different LaTeX export variants are explained in section
 \begin_inset space ~
 \end_inset
 
-(standard).
+
+\lang french
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Exporter"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -22486,7 +22532,7 @@ En principe on met une figure dans un flottant, mais parfois vous pouvez
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Deux-images-déformées."
+reference "fig:Deux-images-déformées."
 
 \end_inset
 
@@ -22615,7 +22661,7 @@ Ornithorynque
 Deux images déformées.
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:Deux-images-déformées."
+name "fig:Deux-images-déformées."
 
 \end_inset
 
@@ -26763,7 +26809,7 @@ Il y six variétés de références croisées :
 <référence>: affiche le numéro de l'élément, c'est le choix implicite:
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Deux-images-déformées."
+reference "fig:Deux-images-déformées."
 
 \end_inset
 
@@ -26799,7 +26845,7 @@ reference "eq:tanhExp"
 
 \begin_inset CommandInset ref
 LatexCommand pageref
-reference "cap:Deux-images-déformées."
+reference "fig:Deux-images-déformées."
 
 \end_inset
 
@@ -26822,7 +26868,7 @@ page
  suivi du numéro de la page sur laquelle se trouve l'élément:
 \begin_inset CommandInset ref
 LatexCommand vpageref
-reference "cap:Deux-images-déformées."
+reference "fig:Deux-images-déformées."
 
 \end_inset
 
@@ -26849,7 +26895,7 @@ page
  et le numéro de la page:
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "cap:Deux-images-déformées."
+reference "fig:Deux-images-déformées."
 
 \end_inset
 
@@ -26934,7 +26980,16 @@ Settings\SpecialChar \menuseparator
 Document Class
 \family default
 .
- The format is specified by adding the command 
+ The package 
+\series bold
+refstyle
+\series default
+ is the default and preferred because 
+\series bold
+prettyref
+\series default
+ supports only English documents.
+ The format is specified by using the command 
 \series bold
 
 \backslash
@@ -26946,10 +27001,10 @@ newrefformat
 \backslash
 newref
 \series default
- (refstyle) to the preamble of the document.
+ (refstyle) in the LaTeX preamble of the document.
  For example redefining all references to figures (which have the label
  shortcut 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -26957,7 +27012,7 @@ newref
 fig
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 ) can be done with this command
@@ -26996,7 +27051,7 @@ Référence
 textuelle: imprime la légende de la référence: 
 \begin_inset CommandInset ref
 LatexCommand nameref
-reference "cap:Deux-images-déformées."
+reference "fig:Deux-images-déformées."
 
 \end_inset
 

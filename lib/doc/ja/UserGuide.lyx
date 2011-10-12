@@ -326,7 +326,7 @@ LyXの外観
 \color none
 水平スクロールバーはないことにご注意ください。これはバグや手抜きではなく、意図的につけていないのです。書籍を読むときには、行が終わると次行の行頭に続くものと想定
 します。縦の長さがページからはみ出れば、文章は新しいページに続きますので、これゆえに垂直スクロールバーだけは必要となるのです。水平スクロールバーがないことが不便
-と感じられ得る場合が3つあります。一つは、WISIWYGで表示された大きな図の場合です。しかしながら、これは図をLyX画面に
+と感じられ得る場合が3つあります。
 \family default
 \series default
 \shape default
@@ -335,7 +335,18 @@ LyXの外観
 \bar default
 \noun default
 \color inherit
-WYSIWYG
+\lang english
+ To avoid that they are displayed larger than your screen, use in the image
+ settings the option 
+\family sans
+Scale on Screen
+\family default
+ in the tab 
+\family sans
+LaTeX and LyX options
+\family default
+.
+
 \family roman
 \series medium
 \shape up
@@ -344,8 +355,9 @@ WYSIWYG
 \bar no
 \noun off
 \color none
-表示するルーチンの不備のせいです。これは、ちょうどページ上で図を収まるように伸縮させる必要があるのと同じように、本来は、ウィンドウ上でも収まるように伸縮されなく
-てはなりません。水平スクロールバーが必要となりうる第二・第三の場合は、LyXのウインドウよりも横幅が広い、表や数式がある場合です。
+\lang japanese
+ これは、ちょうどページ上で図を収まるように伸縮させる必要があるのと同じように、本来は、ウィンドウ上でも収まるように伸縮されなくてはなりません。水平スクロールバ
+ーが必要となりうる第二・第三の場合は、LyXのウインドウよりも横幅が広い、表や数式がある場合です。
 \family default
 \series default
 \shape default
@@ -365,7 +377,7 @@ reference "cha:ユーザーインタフェース"
 
 \end_inset
 
-を参照してください。それらのほとんどはおのずと明らかですが、それらの説明がこの文書の対応する節に掲載されているのが分かると思います。
+を参照してください。
 \end_layout
 
 \begin_layout Section
@@ -433,8 +445,26 @@ name "sec:LyXの基本設定"
 \end_layout
 
 \begin_layout Standard
-LyXの機能の中には、設定ファイルに頼らずに、LyX内部から設定することのできるものがあります。まず、LyXは、どんなプログラムやLaTeX文書クラスあるいはL
-aTeXパッケージが、システムに備わっているかを検査することができます。LyXは、これで得た情報をいくつかの
+
+\lang english
+Almost all features of LyX that can be configured via the menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences
+\family default
+\lang japanese
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+せってい@設定
+\end_layout
+
+\end_inset
+
+。LyXは、どんなプログラムやLaTeX文書クラスあるいはLaTeXパッケージが、システムに備わっているかを検査することができます。LyXは、これで得た情報をい
+くつかの
 \family sans
 設定
 \family default
@@ -1894,52 +1924,88 @@ LyXは、現在開かれている全ての文書を走査して、単語の補�
 \end_layout
 
 \begin_layout Standard
-既定では、補完案がある場合には、LyXのカーソルの後ろに、小さな三角形が表示器として表示されます。この補完案を使用したいときには、
-\family sans
-Tab
-\family default
-キーを押してください。複数の補完案がある場合には、ポップアップでそれらが表示されます。ポップアップ内の補完案をひとつ、マウスか矢印キーで選択した後、
-\family sans
-Return
-\family default
-を押して、選択した補完案を確定させます。
-\end_layout
 
-\begin_layout Standard
+\lang english
+The input completion can be activated in the LyX preferences (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences
+\family default
+) in the section 
+\family sans
+Editing\SpecialChar \menuseparator
+Input Completion
+\family default
+.
+ With the option 
+\family sans
+Automatic
+\begin_inset space ~
+\end_inset
 
-\family sans
-ツール\SpecialChar \menuseparator
-設定
+inline
+\begin_inset space ~
+\end_inset
+
+completion
 \family default
-メニューで開かれる設定ダイアログ内の、
+ the proposed completion is shown directly behind the cursor.
+ With the option 
 \family sans
-編集\SpecialChar \menuseparator
-入力補完
+Automatic
+\begin_inset space ~
+\end_inset
+
+popup
 \family default
-セクションで
-\family sans
-カーソル表示器
-\family default
-オプションを無効にすれば、カーソル補完表示器を切ることができます。
-\family sans
-自動補完入力
-\family default
-オプションを使うと、補完案がカーソル位置の後ろに直接表示されます。この提案を受け入れるには、
-\family sans
-Tab
-\family default
-キーを押してください。
-\family sans
-自動ポップアップ
-\family default
-オプションを使うと、補完案は、つねにポップアップとして表示されます。LyXには、熟練者向けに、他にも補完用の設定があり、それらは第
+ the completions are always shown in a popup.
+ LyX offers some more completion settings for experts that are described
+ in sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\lang japanese
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:入力補完-附録"
 
 \end_inset
 
-節に述べられています。
+
+\lang english
+.
+ The cursor completion indicator can be turned off by deselecting the option
+ 
+\family sans
+Cursor
+\begin_inset space ~
+\end_inset
+
+indicator
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+LyX shows a small triangle behind the cursor as indicator that there are
+ completions available.
+ Press the 
+\family sans
+Tab
+\family default
+ key to accept a proposed completion.
+ If several completions are possible, a popup is opened showing them.
+ You can select a completion in the popup using the mouse or the arrow keys,
+ and accept the chosen completion be pressing 
+\family sans
+Return
+\family default
+.
 \end_layout
 
 \begin_layout Section
@@ -2071,7 +2137,27 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-LyXには、CUAとEmacsという、少なくとも二つの主だったキー割り当てがあります。LyXの既定値は、CUAです。
+LyXには、
+\family typewriter
+cua
+\family default
+と
+\family typewriter
+emacs
+\family default
+という、少なくとも二つの主だったキー割り当てがあります。LyXの既定値は、
+\family typewriter
+cua
+\family default
+です
+\lang english
+, which can be changed in the LyX preferences under 
+\family sans
+Editing\SpecialChar \menuseparator
+Shortcuts
+\family default
+\lang japanese
+。
 \end_layout
 
 \begin_layout Standard
@@ -2304,6 +2390,21 @@ reference "sec:箇条書き"
 \noun off
 \color none
 』を参照してください。
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+In LyX the Tab key is only used to accept propositions of the input completion.
 \end_layout
 
 \begin_layout Labeling
@@ -10505,7 +10606,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-Lists ! Description
+Lists ! Customization
 \end_layout
 
 \end_inset
@@ -21132,6 +21233,21 @@ status collapsed
 X
 \family default
 を使用します。
+\lang english
+The different LaTeX export variants are explained in section
+\begin_inset space ~
+\end_inset
+
+
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:書き出し"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -28496,7 +28612,7 @@ arg   "dialog-show-new-inset ref"
 図フロートの中に図フロートを入れ込むことによって、実現することができます。ただし、図一覧にはフロートの主キャプションのみが表示されることに留意してください。図
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:歪められた二つの像"
+reference "fig:歪められた二つの像"
 
 \end_inset
 
@@ -28617,7 +28733,7 @@ name "fig:カモノハシ"
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:歪められた二つの像"
+name "fig:歪められた二つの像"
 
 \end_inset
 
@@ -33948,7 +34064,7 @@ reference "sub:保護された空白"
 <参照> フロート番号を印字します。これが既定値です。（例）
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:歪められた二つの像"
+reference "fig:歪められた二つの像"
 
 \end_inset
 
@@ -33959,7 +34075,7 @@ reference "cap:歪められた二つの像"
 (<参照>) フロート番号をかっこの中に印字します。これは通常、数式を参照するのに使われる形式で、特に参照接頭辞「式」を省略するときに使われます。（例）
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "cap:歪められた二つの像"
+reference "fig:歪められた二つの像"
 
 \end_inset
 
@@ -33970,7 +34086,7 @@ reference "cap:歪められた二つの像"
 <参照ページ> ページ番号を印字します。（例）
 \begin_inset CommandInset ref
 LatexCommand pageref
-reference "cap:歪められた二つの像"
+reference "fig:歪められた二つの像"
 
 \end_inset
 
@@ -33989,7 +34105,7 @@ page
 <参照ページ> 「on page」という文とページ番号を印字します。（例）
 \begin_inset CommandInset ref
 LatexCommand vpageref
-reference "cap:歪められた二つの像"
+reference "fig:歪められた二つの像"
 
 \end_inset
 
@@ -34012,7 +34128,7 @@ page
 <参照ページ> フロート番号、「on page」という文、ページ番号の順に印字します。（例）
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "cap:歪められた二つの像"
+reference "fig:歪められた二つの像"
 
 \end_inset
 
@@ -34084,7 +34200,16 @@ Settings\SpecialChar \menuseparator
 Document Class
 \family default
 .
- The format is specified by adding the command 
+ The package 
+\series bold
+refstyle
+\series default
+ is the default and preferred because 
+\series bold
+prettyref
+\series default
+ supports only English documents.
+ The format is specified by using the command 
 \series bold
 
 \backslash
@@ -34096,7 +34221,7 @@ newrefformat
 \backslash
 newref
 \series default
- (refstyle) to the preamble of the document.
+ (refstyle) in the LaTeX preamble of the document.
  For example redefining all references to figures (which have the label
  shortcut 
 \begin_inset Quotes eld
@@ -34142,7 +34267,7 @@ key "prettyref,refstyle"
 名称参照 
 \begin_inset CommandInset ref
 LatexCommand nameref
-reference "cap:歪められた二つの像"
+reference "fig:歪められた二つの像"
 
 \end_inset
 

@@ -263,11 +263,21 @@ Observa que no hay barra de desplazamiento horizontal.
  El texto fluye a las nuevas páginas en vertical, de ahí que sólo haga falta
  una barra de deslizamiento vertical.
  Hay tres casos en que podrías necesitar una barra de desplazamiento horizontal.
- El primero es el caso de tener grandes figuras mostradas en modo WYSIWYG.
- Esto, sin embargo, se debe a un fallo en la rutina encargada de dibujar
- los gráficos en LyX en modo WYSIWYG; los gráficos deberían ser redimensionados
- para ajustarlos a la ventana, de igual manera que se ajusta un gráfico
- a una página.
+ El primero es el caso de tener grandes figuras.
+ 
+\lang english
+To avoid that they are displayed larger than your screen, use in the image
+ settings the option 
+\family sans
+Scale on Screen
+\family default
+ in the tab 
+\family sans
+LaTeX and LyX options
+\family default
+.
+
+\lang spanish
  Los otros dos casos son cuadros y ecuaciones más anchas que la ventana
  de LyX.
  Puedes usar las teclas de flecha para desplazarte horizontalmente por el
@@ -288,8 +298,6 @@ reference "cap:Interfaz-de-usuario"
 \end_inset
 
 .
- La mayoría de ellos son bastante explícitos y los encontrarás listados
- en las secciones correspondientes de esta documentación.
 \end_layout
 
 \begin_layout Section
@@ -322,15 +330,18 @@ name "sec:Configuración-básica"
 \end_layout
 
 \begin_layout Standard
-Hay varias características que se pueden configurar desde dentro de LyX,
- sin acudir a los archivos de configuración.
- Antes, LyX es capaz de explorar el sistema para ver qué programas, clases
- de documento de LaTeX y paquetes de LaTeX están disponibles.
- A partir de esto da unos valores predeterminados convenientes a varias
- configuraciones del submenú 
+
+\lang english
+Almost all features of LyX that can be configured
+\lang spanish
+ via el menú 
 \family sans
 Herramientas\SpecialChar \menuseparator
 Preferencias
+\family default
+.
+\family sans
+
 \begin_inset Index idx
 status collapsed
 
@@ -340,9 +351,12 @@ Preferencias
 
 \end_inset
 
-.
 
 \family default
+ LyX es capaz de explorar el sistema para ver qué programas, clases de documento
+ de LaTeX y paquetes de LaTeX están disponibles.
+ A partir de esto da unos valores predeterminados convenientes a varias
+ configuraciones del prefeencias.
  Aunque esta configuración ya se ha hecho al instalar LyX en el sistema,
  podría haber algunas cosas que hayas instalado localmente, p.
 \begin_inset space \thinspace{}
@@ -1702,38 +1716,16 @@ LyX facilita la finalización automática de palabras mediante la exploración
 \end_layout
 
 \begin_layout Standard
-Por omisión, LyX muestra un triangulito detrás del cursor como indicador
- de que hay finalizaciones disponibles.
- Puedes entonces pulsar la tecla 
-\family sans
-Tabulador
-\family default
- para aceptar esa terminación.
- Si hay varias terminaciones posibles, se abre un recuadro emergente que
- las muestra.
- En ese recuadro puedes seleccionar una finalización con el ratón o con
- las teclas de flecha, y aceptar la elegida pulsando 
-\family sans
-Entrar
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-En el diálogo que se abre con 
+La finalización de entradas puede activado en las preferencias LyX (menú
+ 
 \family sans
 Herramientas\SpecialChar \menuseparator
 Preferencias
 \family default
- se puede desactivar el indicador de terminación del cursor, en la sección
- 
+) en la sección 
 \family sans
 Edición\SpecialChar \menuseparator
 Autocompletar
-\family default
-, desmarcando la opción 
-\family sans
-Indicador en el cursor
 \family default
 .
  Con la opción 
@@ -1741,11 +1733,6 @@ Indicador en el cursor
 Finalización automática en línea
 \family default
  la finalización propuesta se muestra directamente tras el cursor.
- Para aceptarla utiliza la tecla 
-\family sans
-Tabulador
-\family default
-.
  Con la opción 
 \family sans
 Recuadros emergentes automáticos
@@ -1763,6 +1750,36 @@ reference "sub:Autocompletar-Apéndice"
 
 \end_inset
 
+.
+ Se puede desactivar el indicador de terminación del cursor desmarcando
+ la opción 
+\family sans
+Indicador en el cursor
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+LyX muestra un triangulito detrás del cursor como indicador de que hay finalizac
+iones disponibles.
+ Para aceptar una propuesta utiliza la tecla 
+\family sans
+Tabulador
+\family default
+.
+ Puedes entonces pulsar la tecla 
+\family sans
+Tabulador
+\family default
+ para aceptar esa terminación.
+ Si hay varias terminaciones posibles, se abre un recuadro emergente que
+ las muestra.
+ En ese recuadro puedes seleccionar una finalización con el ratón o con
+ las teclas de flecha, y aceptar la elegida pulsando 
+\family sans
+Entrar
+\family default
 .
 \end_layout
 
@@ -1813,8 +1830,28 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Al menos, hay dos mapas de teclado principales: CUA y Emacs.
- LyX usa CUA por omisión.
+Al menos, hay dos mapas de teclado principales: 
+\family typewriter
+cua
+\family default
+ y 
+\family typewriter
+emacs
+\family default
+.
+ LyX usa 
+\family typewriter
+cua
+\family default
+ por omisión
+\lang english
+, which can be changed in the LyX preferences under 
+\family sans
+Editing\SpecialChar \menuseparator
+Shortcuts
+\family default
+\lang spanish
+.
 \end_layout
 
 \begin_layout Standard
@@ -1897,6 +1934,12 @@ reference "sub:Listas"
 Tutorial
 \emph default
 .
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+In LyX the Tab key is only used to accept propositions of the input completion.
 \end_layout
 
 \begin_layout Labeling
@@ -7111,7 +7154,7 @@ Personalización adicional
 status collapsed
 
 \begin_layout Plain Layout
-Listas ! Descripción
+Listas ! Personalización
 \end_layout
 
 \end_inset
@@ -14686,6 +14729,22 @@ status collapsed
 eX
 \family default
 .
+ 
+\lang english
+The different LaTeX export variants are explained in section
+\begin_inset space ~
+\end_inset
+
+
+\lang spanish
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Exportar"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -21704,7 +21763,7 @@ Normalmente sólo se inserta una imagen en un flotante, pero si quieres poner
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Dos-imágenes"
+reference "fig:Dos-imágenes"
 
 \end_inset
 
@@ -21827,7 +21886,7 @@ Ornitorrinco
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:Dos-imágenes"
+name "fig:Dos-imágenes"
 
 \end_inset
 
@@ -26046,7 +26105,7 @@ Hay seis estilos de referencias cruzadas:
 <referencia>: imprime el número, es la opción predeterminada: 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Dos-imágenes"
+reference "fig:Dos-imágenes"
 
 \end_inset
 
@@ -26082,7 +26141,7 @@ reference "eq:tanhExp"
 
 \begin_inset CommandInset ref
 LatexCommand pageref
-reference "cap:Dos-imágenes"
+reference "fig:Dos-imágenes"
 
 \end_inset
 
@@ -26109,7 +26168,7 @@ en la página
  y el número de página: 
 \begin_inset CommandInset ref
 LatexCommand vpageref
-reference "cap:Dos-imágenes"
+reference "fig:Dos-imágenes"
 
 \end_inset
 
@@ -26144,7 +26203,7 @@ en la página
  y el número de página: 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "cap:Dos-imágenes"
+reference "fig:Dos-imágenes"
 
 \end_inset
 
@@ -26223,7 +26282,20 @@ Configuración\SpecialChar \menuseparator
 Clase de documento
 \family default
 .
- El formato se especifica añadiendo el comando 
+ 
+\lang english
+The package 
+\series bold
+refstyle
+\series default
+ is the default and preferred because 
+\series bold
+prettyref
+\series default
+ supports only English documents.
+
+\lang spanish
+ El formato se especifica usando el comando 
 \series bold
 
 \backslash
@@ -26235,7 +26307,7 @@ newrefformat
 \backslash
 newref
 \series default
- (refstyle) en el preámbulo del documento.
+ (refstyle) en el preámbulo LaTeX del documento.
  Por ejemplo, para redefinir todas las referencias a figuras (que tienen
  la etiqueta 
 \begin_inset Quotes fld
@@ -26281,10 +26353,10 @@ Referencia
 \begin_inset space ~
 \end_inset
 
-textual: imprime la leyenda de la referencia: 
+textual: imprime la leyenda o el nombre de la referencia: 
 \begin_inset CommandInset ref
 LatexCommand nameref
-reference "cap:Dos-imágenes"
+reference "fig:Dos-imágenes"
 
 \end_inset
 
