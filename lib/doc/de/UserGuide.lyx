@@ -4979,7 +4979,6 @@ Dokument-Einstellungen
 Dokument\SpecialChar \menuseparator
 Einstellungen
 \family default
-\SpecialChar \ldots{}
 ).
  Unter 
 \family sans
@@ -27266,6 +27265,13 @@ reference "enu:Zweiter-Eintrag"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Es wird empfohlen, ein geschütztes Leerzeichen
 \begin_inset Foot
 status collapsed
@@ -35372,18 +35378,16 @@ Versionskontrolle
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This is used when more people are working on the same Dokument.
- It is described in the Abschnitt 
+Dies wird verwendet, wenn mehrere Personen am selben Dokument arbeiten.
+ Es ist in Abschnitt 
 \emph on
-Version Control in LyX
+Versionskontrolle
 \emph default
- of the 
+ der 
 \emph on
-Additional Features
+Handbuchergänzungen
 \emph default
- Handbuch.
+ beschrieben.
 \end_layout
 
 \begin_layout Subsection
@@ -35391,40 +35395,43 @@ Importieren
 \end_layout
 
 \begin_layout Standard
+Man kann hier Dateien von älteren LyX-Versionen, HTML-Dateien, LaTeX-Dateien,
+ NoWeb-Dateien, einfache Textdateien und 
+\begin_inset Quotes gld
+\end_inset
 
-\lang english
-You can import there files from older LyX-versions, HTML-files, LaTeX-files,
- NoWeb-files, plain text files, und comma separated, table like, text files
- (CSV) as a new LyX-Dokument.
- The files will be imported as new LyX-Dokument.
+Komma-getrennte
+\begin_inset Quotes grd
+\end_inset
+
+, tabellenartige Textdateien (CSV) importieren.
+ Die Dateien werden als neues LyX-Dokument importiert.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-When using the Menü entry 
+Wird der Menüeintrag 
 \family sans
-Plain
+Einfacher
 \begin_inset space ~
 \end_inset
 
 Text
 \family default
-, line breaks in the text will start a new paragraph; when using the Menü
- entry 
+ verwendet, führen Zeilenumbrüche im Text zu neuen Absätzen; mit dem Menüeintrag
+ 
 \family sans
-Plain
+Einfacher
 \begin_inset space ~
 \end_inset
 
-Text, Join
+Text, Zeilen
 \begin_inset space ~
 \end_inset
 
-Lines
+verbinden
 \family default
-, consecutive lines of text will be imported to one big paragraph.
- A new paragraph will begin when there is a blank line in the file.
+ werden aufeinanderfolgende Textzeilen als ein großer Absatz importiert.
+ Ein neuer Absatz wird bei einer leeren Zeile im Text angelegt.
 \end_layout
 
 \begin_layout Subsection
@@ -35490,25 +35497,25 @@ yX Format der speziellen LyX
 \end_layout
 
 \begin_layout Description
-
-\lang english
-DocBook text file with code in the language SGML that is used for the markup
- language 
+DocBook Textdatei mit Code in der Sprache SGML, die für die Auszeichnungssprache
+ 
 \family typewriter
 DocBook
+\family default
+ verwendet wird
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Docbook
+DocBook
 \begin_inset space ~
 \end_inset
 
-(XML) text file with code in the language XML that is used for the markup
- language 
+(XML) Textdatei mit Code in der Sprache XML die für die Auszeichnungssprache
+ 
 \family typewriter
 DocBook
+\family default
+ verwendet wird
 \end_layout
 
 \begin_layout Description
@@ -35571,17 +35578,15 @@ Graphviz
 \begin_inset space ~
 \end_inset
 
-Dot 
-\lang english
-text file with code in the programming language 
+Dot Textdatei mit Code in der Programmiersprache 
 \family typewriter
 Dot
 \family default
- that is used to draw visualizations of graphs via the program
-\lang ngerman
- 
+, die für grafische Visualisierungen über das Programm 
 \family typewriter
 Graphviz
+\family default
+ verwendet wird
 \end_layout
 
 \begin_layout Description
@@ -35729,8 +35734,6 @@ XeTeX
 \end_layout
 
 \begin_layout Description
-
-\lang english
 LilyPond
 \begin_inset space ~
 \end_inset
@@ -35740,8 +35743,6 @@ book
 \end_inset
 
 (La
-\family sans
-
 \begin_inset ERT
 status collapsed
 
@@ -35752,12 +35753,9 @@ status collapsed
 
 \end_inset
 
-
-\family default
-TeX) text file with the LaTeX source and also code in the syntax of the
- music notation software
+TeX) Textdatei mit dem LaTeX-Quellcode und außerdem Code in der Syntax der
+ Musik-Notationssoftware
 \family typewriter
-\lang ngerman
  LilyPond
 \end_layout
 
@@ -35834,11 +35832,9 @@ yXHTML HTML-Format, unter Verwendung von LyXs internem XHTML-Konverter
 \end_layout
 
 \begin_layout Description
-
-\lang english
-NoWeb text file with code in the format of the literate programming language
+NoWeb Textdatei mit Code im Format der Programmiersprache 
 \family typewriter
- NoWeb
+NoWeb
 \end_layout
 
 \begin_layout Description
@@ -35976,27 +35972,25 @@ dvips
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Sweave text file with the LaTeX source and also code in the statistical
- programming language 
+Sweave Textdatei mit dem LaTeX-Quellcode und zusätzlich Code in der statistische
+n Programmiersprache 
 \family typewriter
 R
 \family default
 .
- Using the 
+ Unter Verwendung der 
 \family typewriter
 R
 \family default
--function 
+-Funktion 
 \family typewriter
 Sweave
 \family default
- it is possible to use 
+ ist es möglich 
 \family typewriter
 R
 \family default
--commands in LaTeX
+-Befehle in LaTeX zu benutzen
 \end_layout
 
 \begin_layout Standard
@@ -36046,20 +36040,16 @@ Drucken
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-With this Menü entry you can print your Dokument to a file in PostScript
- format oder send it to a printer.
- The printer will auch use the Dokument in PostScript format.
- The conversion to PostScript is done in the background by LyX using the
- Programm 
+Mit diesem Menü können Sie Ihr Dokument entweder in eine Datei im PostScript-For
+mat drucken, oder sie an einen Drucker schicken.
+ Der Drucker wird das Dokument ebenfalls im PostScript-Format erhalten.
+ Die Konvertierung nach PostScript wird von LyX im Hintergrund mit dem Programm
+ 
 \family typewriter
 dvips
 \family default
-.
- For more information have a look at
-\lang ngerman
- Abschnitt
+ durchgeführt.
+ Für weitere Informationen siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -36078,16 +36068,12 @@ Fax
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This Menü entry will nur appear when you have a fax Programm installed (on
- Windows you zusätzlich need to register its Programm path to LyX's PATH
- prefix, siehe Abschnitt
+Dieses Menü erscheint nur, wenn ein Faxprogramm installiert ist (bei Windows
+ muss zusätzlich dessen Programmpfad zu LyXs PATH-Präfix hinzugefügt werden,
+ siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -36095,11 +36081,8 @@ reference "sec:Pfade"
 
 \end_inset
 
-
-\lang english
 ).
- With this Menü entry you can send your Dokument to a fax Programm like
- 
+ Über dieses Menü können Sie Ihr Dokument an ein Faxprogramm wie 
 \family typewriter
 hylapex
 \family default
@@ -36107,11 +36090,9 @@ hylapex
 \family typewriter
 kdeprintfax
 \family default
-.
- The default format of the sent file is PostScript.
- The format can be changed in LyX's preferences as described
-\lang ngerman
- in Abschnitt
+ senden.
+ Das voreingestellte Format der gesendeten Datei ist PostScript.
+ Das Format kann in LyXs Grundeinstellungen, wie in in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -36122,7 +36103,7 @@ reference "sub:Konverter"
 
 \end_inset
 
-.
+ beschrieben, geändert werden.
 \end_layout
 
 \begin_layout Subsection
@@ -36193,6 +36174,15 @@ reference "sec:Einfache-Bearbeitungsfunktionen"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection
+Komplette Einfügung auswählen
+\end_layout
+
+\begin_layout Standard
+Wählt den Inhalt der Einfügung aus, in der sich der Cursor befindet.
+ Ist der Cursor außerhalb einer Einfügung, wird das gesamte Dokument ausgewählt.
 \end_layout
 
 \begin_layout Subsection
@@ -36284,19 +36274,15 @@ Absatz ! Einstellungen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Enables you to set the paragraph alignment, line spacing und label width.
- These settings nur affect the paragraph in which the cursor is currently.
+Damit kann man die Ausrichtung von Absätzen, den Zeilenabstand und die Breite
+ von Listenmarken einstellen.
+ Diese Einstellungen beeinflussen nur den Absatz, indem sich der Cursor
+ gerade befindet.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can auch prevent the first line of the paragraph being indented if you
- have chosen to separate paragraphs mit indents
-\lang ngerman
- im Dialog 
+Man kann des Weiteren verhindern, dass die erste Zeile des Absatzes eingerückt
+ wird, wenn man im Dialog 
 \family sans
 Dokument\SpecialChar \menuseparator
 Einstellungen
@@ -36309,7 +36295,7 @@ Text
 
 Layout
 \family default
-.
+ Absätze durch Einrückung getrennt hat.
 \end_layout
 
 \begin_layout Subsection
@@ -36317,12 +36303,10 @@ Tabellen-Einstellungen und Mathe
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-These two Menüs are nur fully active when the cursor is inside a table oder
- a formula.
- Here you can change the properties of tables und formulas.
- The properties of tables are described in Abschnitt
+Diese zwei Menüs sind nur voll aktiv, wenn sich der Cursor in einer Tabelle
+ oder Formel befindet.
+ Hier kann man die Eigenschaften von Tabellen und Formeln ändern.
+ Die Eigenschaften von Tabellen sind in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -36333,7 +36317,7 @@ reference "sec:Tabellen"
 
 \end_inset
 
-, the properties of formulas in Kapitel
+ beschrieben, die von Formeln in Kapitel
 \begin_inset space ~
 \end_inset
 
@@ -36352,13 +36336,9 @@ Listentiefe erhöhen / verringern
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-These Menü entries are nur active when the cursor is in an environment that
- can be nested.
- They increase/decrease the environment nesting level as explained in Abschnitt
-\lang ngerman
-
+Diese Menüs sind nur aktiv, wenn sich der Cursor in einer Umgebung befindet,
+ die geschachtelt werden können.
+ Sie erhöhen/verringern die Schachtelungstiefe der Umgebung wie in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -36376,7 +36356,7 @@ reference "sub:Nummerierung-aendern"
 
 \end_inset
 
-.
+ beschrieben ist.
 \end_layout
 
 \begin_layout Section
@@ -36394,13 +36374,13 @@ Menü ! Ansicht
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The 
+Das 
 \family sans
-View
+Ansicht
 \family default
- Menü contains a list of available formats in which you can view the aktuelle
+ Menü 
+\lang english
+contains a list of available formats in which you can view the aktuelle
  Dokument mit an external Programm.
  The Menü entries für the viewing formats are not the same on all installations
  — it depends on the LaTeX Programms that are found while LyX was configured.
@@ -36480,16 +36460,14 @@ reference "sec:Dateiformate"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset VSpace bigskip
 \end_inset
 
-At the bottom of the 
+Am unteren Ende des 
 \family sans
-View
+Ansicht
 \family default
- Menü the opened Dokuments are listed.
+ Menüs sind die geöffneten Dokumente aufgelistet.
 \end_layout
 
 \begin_layout Subsection
@@ -36541,15 +36519,17 @@ Meldungen anzeigen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Opens a Fenster showing console messages.
- This is useful für debugging LyX (i.
+Öffnet ein Fenster mit Konsolenmeldungen.
+ Dies ist nützlich um LyX zu debuggen (d.
 \begin_inset space \thinspace{}
 \end_inset
 
-e., hunt für Fehler in the Programm) oder to see what is going on in the
- background while LaTeX is processing the Dokument,
+h.
+\begin_inset space ~
+\end_inset
+
+nach Fehlern im Programm zu suchen) oder um zu sehen, was im Hintergrund
+ vor sich geht, während LaTeX das Dokument prozessiert.
 \end_layout
 
 \begin_layout Subsection
@@ -36557,15 +36537,11 @@ Ansehen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This Menü entry generates the output you have specified as default output
- format entweder in the preferences (siehe Abschnitt
+Dieses Menü erzeugt die Ausgabe im dem Format, das als Voreinstellung entweder
+ in den LyX-Grundeinstellungen (siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -36573,14 +36549,10 @@ reference "sec:Dateiformate"
 
 \end_inset
 
-
-\lang english
-) oder in the Dokument settings (siehe Abschnitt
+) oder in den Dokumenteinstellungen (siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -36588,11 +36560,7 @@ reference "sec:Dokument-Ausgabe"
 
 \end_inset
 
-
-\lang english
-) und opens it in an appropriate viewer
-\lang ngerman
-.
+) gesetzt ist und öffnet es in einem geeigneten Betrachtungsprogramm.
  Das Standard-Ausgabeformat ist 
 \family sans
 PDF
@@ -36609,9 +36577,8 @@ Andere Formate ansehen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-With this subMenü, you can view your Dokument in alternative output formats.
+Mit diesem Untermenü können Sie Ihr Dokument in einem alternativen Ausgabeformat
+ ansehen.
 \end_layout
 
 \begin_layout Subsection
@@ -36619,11 +36586,9 @@ Aktualisieren
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This Menü entry allows you to update the view mit your latest changes (in
- the default output format as described in the previous Abschnitt) ohne
- opening a new viewer Fenster.
+Dieses Menü erlaubt es, die Ansicht mit Ihren letzten Änderungen zu aktualisiere
+n (im voreingestellten Ausgabeformat), ohne ein neues Fenster im Betrachtungspro
+gramm zu öffnen.
 \end_layout
 
 \begin_layout Subsection
@@ -36631,10 +36596,8 @@ Andere Formate aktualisieren
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-With this subMenü, you can update the view of alternative output formats
- of your Dokument ohne opening a new viewer Fenster.
+Mit diesem Untermenü können Sie die Ansicht eines alternativen Ausgabeformats
+ aktualisieren, ohne ein neues Fenster im Betrachtungsprogramm zu öffnen.
 \end_layout
 
 \begin_layout Subsection
@@ -36785,7 +36748,7 @@ Ansicht teilen
 \begin_layout Standard
 
 \lang english
-This will split LyX's main Fenster vertically oder horizontally.
+This will split LyXs main Fenster vertically oder horizontally.
  This allows you to view Dokuments the same time to compare them, oder to
  view the same Dokument, but at different positions.
  You can even split the main Fenster several times to view zum Beispiel
@@ -36802,7 +36765,7 @@ Aktuelle Ansicht schließen
 \end_layout
 
 \begin_layout Standard
-Beendet eine geteilte Ansicht.
+Schließt eine geteilte Ansicht.
 \end_layout
 
 \begin_layout Subsection
@@ -36841,81 +36804,82 @@ Werkzeugleiste
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In this Menü entry you can set the appearance of the different toolbars.
- All toolbars und the 
+In diesem Menü kann das Erscheinungsbild der verschiedenen Werkzeugleisten
+ eingestellt werden.
+ Alle Werkzeugleisten und das 
 \family sans
-Command
-\begin_inset space ~
-\end_inset
-
-Buffer
+Befehlseingabefenster
 \family default
- can be turned on und off.
- The 
+ können an- und ausgeschaltet werden.
+ Der Zustand 
 \emph on
-on
+an
 \emph default
- state is denoted in the Menü mit a checkmark.
- The 
+ ist im Menü mit einem Häkchen gekennzeichnet.
+ Die Werkzeugleisten 
 \family sans
-Review
+Überarbeiten
 \family default
 , 
 \family sans
-Table
+Tabelle
 \family default
 , 
 \family sans
-Math
+Mathe
 \begin_inset space ~
 \end_inset
 
-Panels
+Kontrollflächen
 \family default
-, und 
+, 
 \family sans
-Math
+Mathe-Makros
 \family default
- toolbars can be zusätzlich set to the state 
+ und 
+\family sans
+Mathe
+\family default
+ können zusätzlich auf den Zustand 
 \emph on
-automatic
+automatisch
 \emph default
- that is denoted in the Menü mit the suffix 
+ gesetzt werden, der im Menü mit dem Suffix 
 \family sans
-(auto)
+(automatisch)
 \family default
-.
+ gekennzeichnet ist.
 \end_layout
 
 \begin_layout Standard
+Im Zustand 
+\emph on
+an
+\emph default
+ wird die Werkzeugleiste permanent angezeigt, im Zustand 
+\emph on
+automatisch
+\emph default
+ wird die Werkzeugleiste nur angezeigt, wenn sich der Cursor sich in einer
+ bestimmten Einfügung befindet, oder ein bestimmtes Feature aktiviert ist.
+ Das heißt, dass die Werkzeugleiste 
+\family sans
+Überarbeiten
+\family default
+ nur angezeigt wird, wenn Änderungsverfolgung aktiviert ist, die Mathe und
+ Tabellen Werkzeugleisten werden nur angezeigt, wenn der Cursor in einer
+ Formel bzw.
+\begin_inset space \space{}
+\end_inset
 
-\lang english
-In the 
-\emph on
-on
-\emph default
- state the toolbar is permanently shown, in the 
-\emph on
-automatic
-\emph default
- state the toolbar is nur shown when the cursor is in a certain environment
- oder when a certain Feature is enabled.
- That means that the review toolbar will nur be shown when change tracking
- is activated, the math und table toolbars are nur shown when the cursor
- is inside a formula oder table, respectively.
+Tabelle ist.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-LyX's toolbars und their buttons are explained in Abschnitt
+LyXs Werkzeugleisten und ihre Knöpfe sind in Abschnitt
 \begin_inset space ~
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -36923,9 +36887,7 @@ reference "sec:Werkzeugleisten"
 
 \end_inset
 
-
-\lang english
-.
+ erklärt.
 \end_layout
 
 \begin_layout Section
@@ -36974,11 +36936,11 @@ Hier können die folgenden Zeichen eingefügt werden:
 \end_layout
 
 \begin_layout Description
-Symbole Fügt 
-\lang english
-any character that can be output by your LaTeX system.
- Therefore the number of character categories in this Dialog und the available
- characters depend on the LaTeX-Pakete you have installed.
+Symbole Fügt jedes Zeichen ein, das von Ihrem LaTeX-System ausgegeben werden
+ kann.
+ Daher ist die Anzahl der Kategorien von Zeichen im Dialog und die Anzahl
+ an verfügbaren Zeichen von den LaTeX-Paketen abhängig, die in Ihrem LaTeX-Syste
+m installiert sind.
 \begin_inset Newline newline
 \end_inset
 
@@ -36991,23 +36953,15 @@ status open
 \series bold
 Bemerkung:
 \series default
- 
-\lang english
-Not all characters will be visible in the 
+ Nicht alle Zeichen sind im Dialog 
 \family sans
 Symbols
 \family default
- Dialog because none of the screen fonts that you can set in the preferences
- Dialog (siehe 
-\lang ngerman
-Abschnitt
-\lang english
-.
+ sichtbar, denn keine der Schriftarten, die man in den LyX-Grundeinstellungen
+ als Bildschirmschrift setzen kann (siehe Abschnitt.
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -37015,9 +36969,7 @@ reference "sub:Bildschirmschriften"
 
 \end_inset
 
-
-\lang english
-) can display every character.
+), kann alle Zeichen darstellen.
 \end_layout
 
 \end_inset
@@ -37606,29 +37558,27 @@ Benutzerdefinierte Einfügungen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Inserts Dokument class-specific insets.
- Such insets nur exist when they are defined in the layout file für a certain
- Dokument class.
- An Beispiel is the Dokument class 
-\begin_inset Quotes eld
+Fügt dokumentklassen-spezifische Einfügungen ein.
+ Solche Einfügungen existieren nur, wenn sie in der Layout-Datei der Dokumentkla
+sse definiert sind.
+ Ein Beispiel ist die Dokumentklasse 
+\begin_inset Quotes gld
 \end_inset
 
 article (Elsevier)
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
- mit three benutzerdefinierten insets.
- The Abschnitt 
+ mit drei benutzerdefinierten Einfügungen.
+ Der Abschnitt 
 \emph on
-Flex insets und InsetLayout
+Flexible Einfügungen und InsetLayout
 \emph default
  des 
 \emph on
 Anpassung
 \emph default
- Handbuchs explains how benutzerdefinierte insets are defined.
+ Handbuchs erklärt, wie benutzerdefinierte Einfügungen definiert werden.
 \end_layout
 
 \begin_layout Subsection
@@ -37646,12 +37596,8 @@ Externes Material
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This Menü entry allows you to insert oder include the contents of other
- LyX files in your Dokument
-\lang ngerman
-.
+Dieses Menü ermöglicht es, den Inhalt von anderen LyX-Dokumenten in Ihr
+ Dokument einzufügen.
  Wie dies geschieht ist im Detail im Kapitel 
 \emph on
 Externe Dateien
@@ -38060,14 +38006,13 @@ Menü ! Navigieren
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This Menü lists the existing Kapitels, Abschnitts, figures, tables, etc.
+Dieses Menü listet die existierenden Kapitel, Abschnitte, Abbildungen, Tabellen,
+ usw.
 \begin_inset space ~
 \end_inset
 
-of the aktuelle Dokument.
- This allows you to navigate easily through you Dokument.
+des aktuellen Dokuments auf.
+ Dies ermöglicht eine einfache Navigation im Dokument.
 \end_layout
 
 \begin_layout Subsection
@@ -38075,59 +38020,53 @@ Lesezeichen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-With this Menü entry you are able to define your own bookmarks.
- This is useful when you are working on a large Dokument und often have
- to jump e.
+Mit diesem Menü kann man eigenen Lesezeichen setzen.
+ Dies ist nützlich, wenn man an großen Dokumenten arbeitet und z.
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
-\begin_inset space \space{}
-\end_inset
-
-between Abschnitt
+B.
+ oft zwischen Abschnitt
 \begin_inset space ~
 \end_inset
 
-2.5 und 6.3.
- To create bookmarks für this Beispiel, go to Abschnitt
+2.5 und 6.3 hin und her springen muss.
+ Um Lesezeichen für dieses Beispiel zu setzen, geht man zu Abschnitt
 \begin_inset space ~
 \end_inset
 
-2.5 und use the Menü 
+2.5 und verwendet das Untermenü 
 \family sans
-Save
-\begin_inset space ~
-\end_inset
-
-Bookmark
+Lesezeichen
 \begin_inset space ~
 \end_inset
 
 1
+\begin_inset space ~
+\end_inset
+
+speichern
 \family default
 .
- Then go to Abschnitt
+ Anschließend geht man zu Abschnitt
 \begin_inset space ~
 \end_inset
 
-6.3 und use 
+6.3 und verwendet 
 \family sans
-Save
+Lesezeichen
 \begin_inset space ~
 \end_inset
 
-Bookmark
+2
 \begin_inset space ~
 \end_inset
 
-
+speichern
 \family default
-2.
- Now you can jump easily between these Abschnitts by using the Menü oder
- by the key bindings 
+.
+ Nun kann man leicht zwischen diesen Abschnitten hin und her springen, indem
+ man das Menü oder die Tastenkürzel 
 \begin_inset Info
 type  "shortcut"
 arg   "bookmark-goto 1"
@@ -38139,14 +38078,14 @@ type  "shortcut"
 arg   "bookmark-goto 2"
 \end_inset
 
-.
+ benutzt.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can auch use bookmarks to jump between several opened Dokuments.
- The saved bookmarks are valid till the Dokument is closed.
+Man kann Lesezeichen auch verwenden, um zwischen verschiedenen geöffneten
+ Dokumenten hin und her zu springen.
+ Die gespeicherten Lesezeichen sind gültig, bis das Dokument geschlossen
+ wird.
 \end_layout
 
 \begin_layout Subsection
@@ -38163,11 +38102,22 @@ Gehe zur Marke
 \end_layout
 
 \begin_layout Standard
+Nur aktiv, wenn sich der Cursor vor einem Querverweis befindet.
+ Es setzt den Cursor vor die referenzierte Marke.
+ (Ist dasselbe als wenn man mit rechts auf eine Querverweisbox klickt und
+ 
+\family sans
+Gehe
+\begin_inset space ~
+\end_inset
 
-\lang english
-Only active when the cursor is in front of a cross-reference.
- Sets the cursor before the referenced label, the same as if you right-click
- on a cross-reference box.
+zur
+\begin_inset space ~
+\end_inset
+
+Marke
+\family default
+ verwendet.)
 \end_layout
 
 \begin_layout Subsection
@@ -38236,22 +38186,18 @@ eX-Protokoll
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-After running LaTeX by viewing oder exporting a Dokument, this Menü will
- be enabled.
- It zeigt the logfile of the used LaTeX-Programm.
+Nachdem LaTeX gestartet wurde, indem die Ausgabe des Dokuments erzeugt wurde
+ (durch Ansicht oder Export), ist dieses Menü verfügbar.
+ Es zeigt das Protokoll des verwendeten LaTeX-Programms an.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here you can see how LaTeX works in the background.
+Darin kann man sehen, wie LaTeX im Hintergrund arbeitet.
  
 \emph on
-Experts
+Experten
 \emph default
- will find in it reasons für LaTeX-Fehler.
+ werden im Protokoll Gründe für LaTeX-Fehler finden.
 \end_layout
 
 \begin_layout Subsection
@@ -38285,12 +38231,8 @@ Anhang hier beginnen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This Menü will start the appendix of the Dokument at the aktuelle cursor
- position as described
-\lang ngerman
- in Abschnitt
+Dieses Menü beginnt den Anhang des Dokuments an der aktuellen Cursorposition,
+ wie in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -38301,7 +38243,7 @@ reference "sec:Anhang"
 
 \end_inset
 
-.
+ beschrieben.
 \end_layout
 
 \begin_layout Subsection
@@ -38427,9 +38369,8 @@ TeX-Informationen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Shows you a list of the Klassen und styles installed in your LaTeX-system.
+Zeigt eine Liste der Dokumentklassen und Stile, die in Ihrem LaTeX-System
+ installiert sind.
 \end_layout
 
 \begin_layout Subsection
@@ -38479,12 +38420,9 @@ Neukonfiguration von LyX
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This Menü entry reconfigures LyX; that is, LyX looks für LaTeX-Pakete und
- needed Programms it needs; siehe auch Abschnitt
-\lang ngerman
-
+Dieses Menü konfiguriert LyX neu.
+ Das bedeutet, dass LyX nach LaTeX-Paketen und Programmen sucht, die es
+ benötigt; siehe auch Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40675,9 +40613,9 @@ target "http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf"
 \begin_layout Standard
 
 \lang english
-Specifying a master document is necessary when the current document is a
- child or subdocument.
- This master document will be used by LyX when the child document is opened
+Specifying a master document is necessary if the current document is a child
+ or subdocument.
+ This master document will be used by LyX if the child document is opened
  without its master.
  This way child documents are always compilable.
  More about master and child documents is explained in 
@@ -42950,7 +42888,7 @@ Sicherung ! Dokumente
 \begin_layout Standard
 
 \lang english
-When the Option 
+If the Option 
 \family sans
 Backup Dokuments
 \family default
@@ -42979,7 +42917,7 @@ Recent
 \begin_layout Standard
 
 \lang english
-When the Option 
+If the Option 
 \family sans
 Open Dokuments in tabs
 \family default
@@ -43803,7 +43741,7 @@ Sicherung ! Verzeichnis
  In diesem Verzeichnis werden Sicherungen gespeichert.
  
 \lang english
-When no directory is given but backups are enabled as described in Abschnitt
+If no directory is given but backups are enabled as described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -44913,7 +44851,7 @@ Add
 \begin_layout Standard
 
 \lang english
-When the 
+If the 
 \family sans
 Converter File Cache
 \family default
