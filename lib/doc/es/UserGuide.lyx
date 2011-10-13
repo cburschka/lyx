@@ -38976,85 +38976,6 @@ Menú ! Ver
 \end_layout
 
 \begin_layout Standard
-El menú 
-\family sans
-Ver
-\family default
- contiene una lista de formatos en los que puedes ver el documento abierto
- con un programa externo.
- Las opciones de este menú no son las mismas en todas las instalaciones
- —depende de los programas LaTeX que LyX encontró durante su configuración—.
- Todos los formatos posibles se describen en la sección
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Exportar"
-
-\end_inset
-
-.
- Al menos debes ver en el menú las entradas 
-\family sans
-DVI
-\family default
- y 
-\family sans
-PDF
-\begin_inset space ~
-\end_inset
-
-(pdflatex)
-\family default
-.
- Si falta alguna de ellas debes actualizar la instalación de LaTeX y reconfigura
-r LyX, como se explica en la sección
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Configuración-básica"
-
-\end_inset
-
-.
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Reconfiguración de LyX
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Al pulsar una opción del menú se iniciará un programa visor, el cuál se
- puede elegir y configurar en las preferencias, véase la sección
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Formatos-de-archivo"
-
-\end_inset
-
-.
- Los visores predeterminados son establecidos por LyX cuando se instala.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
 Al final del menú 
 \family sans
 Ver
@@ -39122,7 +39043,7 @@ Ver
 \begin_layout Standard
 Esta entrada de menú genera la salida en el formato especificado como predetermi
 nado en las preferencias (véase la sec.
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -39133,7 +39054,7 @@ reference "sec:Formatos-de-archivo"
 \end_inset
 
 ) o en la configuración del documento (véase la sec.
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -39143,7 +39064,20 @@ reference "sec:Salidas"
 
 \end_inset
 
-) y lo abre con el visor apropiado.
+) y lo abre con el visor apropiado, el cuál se puede elegir y configurar
+ en las preferencias, véase la sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formatos-de-archivo"
+
+\end_inset
+
+.
+ Los visores predeterminados son establecidos por LyX cuando se instala.
  El formato de salida por omisión es 
 \family sans
 PDF
@@ -39162,6 +39096,67 @@ Ver (Otros Formatos)
 \begin_layout Standard
 Con este submenú puedes ver la salida del documento en otros formatos disponible
 s.
+ El menú contiene una lista de formatos en los que puedes ver el documento
+ abierto con un programa externo.
+ Las opciones de este menú no son las mismas en todas las instalaciones
+ —depende de los programas LaTeX que LyX encontró durante su configuración—.
+ Todos los formatos posibles se describen en la sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Exportar"
+
+\end_inset
+
+.
+ Al menos debes ver en el menú la entrada 
+\family sans
+DVI
+\family default
+.
+ Si falta alguna de ellas debes actualizar o arreglar la instalación de
+ LaTeX y reconfigurar LyX, como se explica en la sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Configuración-básica"
+
+\end_inset
+
+.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Reconfiguración de LyX
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Al pulsar una opción del menú se iniciará un programa visor, el cuál se
+ puede elegir y configurar en las preferencias, véase la sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formatos-de-archivo"
+
+\end_inset
+
+.
+ Los visores predeterminados son establecidos por LyX cuando se instala.
 \end_layout
 
 \begin_layout Subsection
@@ -43248,10 +43243,21 @@ predeterminados
 .
  Al hacer esto, se crea una plantilla llamada 
 \family typewriter
-default.lyx
+defaults.lyx
 \family default
  que se carga automáticamente cada vez que abres un nuevo documento sin
  plantilla.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The button 
+\family sans
+Use Class Defaults
+\family default
+ resets the document settings to the default of the document class.
+ This affects mostly class options, the page layout and Numbering & TOC.
 \end_layout
 
 \begin_layout Standard
@@ -43281,7 +43287,37 @@ reference "sec:Clases-de-documento"
 \end_inset
 
 .
- Algunas clases usan algunas opciones de clase predefinidas.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+With the button 
+\family sans
+Local
+\begin_inset space ~
+\end_inset
+
+Layout
+\family default
+ you can load you own layout-file, that is not in LyX's 
+\emph on
+layouts
+\emph default
+ folder and thus not recognized by LyX as layout for a document class.
+ For more about layout-files, see the chapter 
+\emph on
+Installing New Document Classes, Layouts, and Templates
+\emph default
+ of the 
+\emph on
+Customization
+\emph default
+ Handbook.
+\end_layout
+
+\begin_layout Standard
+Algunas clases usan algunas opciones de clase predefinidas.
  Si este es el caso, se listan en el campo 
 \family sans
 Predefinido
@@ -43314,11 +43350,11 @@ dvi2ps, dvialw, dvilaser, dvitops, psprint, pubps, ln
 \begin_inset Newline newline
 \end_inset
 
-primero tienes que activarlos en tu distribución LaTeX, véase sec.
-\begin_inset space \thinspace{}
-\end_inset
-
-2 en 
+primero tienes que activarlos en tu distribución LaTeX, véase sección 
+\emph on
+Driver support
+\emph default
+ en 
 \begin_inset CommandInset href
 LatexCommand href
 target "http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf"

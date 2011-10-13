@@ -2959,7 +2959,7 @@ Dokument ! lokales Format
 \end_layout
 
 \begin_layout Standard
-Module sind funktionieren bei LyX wie Pakete bei LaTeX: Sie sind dazu gedacht
+Module funktionieren bei LyX wie Pakete bei LaTeX: Sie sind dazu gedacht
  in verschiedenem Dokumenten verwendet zu werden.
  Wenn Sie oft dieselbe Sache in verschiedenen Dokumenten benötigen, sollten
  Sie es in Betracht ziehen, dafür ein Modul zu schreiben.
@@ -2975,7 +2975,7 @@ Lokales
  
 \emph default
 Format
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 .
@@ -36374,95 +36374,6 @@ Menü ! Ansicht
 \end_layout
 
 \begin_layout Standard
-Das 
-\family sans
-Ansicht
-\family default
- Menü 
-\lang english
-contains a list of available formats in which you can view the aktuelle
- Dokument mit an external Programm.
- The Menü entries für the viewing formats are not the same on all installations
- — it depends on the LaTeX Programms that are found while LyX was configured.
- All possible formats are formats listed in Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub: Exportieren"
-
-\end_inset
-
-.
- You should at least siehe the Menü entries 
-\family sans
-DVI
-\family default
- und 
-\family sans
-PDF
-\begin_inset space ~
-\end_inset
-
-(pdflatex)
-\family default
-.
- If one of the two is missing, you need to update your LaTeX installation.
- After updating you have to reconfigure LyX
-\lang ngerman
-, siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "LyX-Grundeinstellungen"
-
-\end_inset
-
-.
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Neukonfiguration von LyX
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Invoking a Menü will start a viewer Programm.
- The viewer can be set oder changed in the preferences, siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\lang ngerman
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Dateiformate"
-
-\end_inset
-
-
-\lang english
-.
- The default viewers are set by LyX when it is first configured.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
 Am unteren Ende des 
 \family sans
 Ansicht
@@ -36561,6 +36472,21 @@ reference "sec:Dokument-Ausgabe"
 \end_inset
 
 ) gesetzt ist und öffnet es in einem geeigneten Betrachtungsprogramm.
+ Das Betrachtungsprogramm kann in den LyX-Grundeinstellungen festgelegt
+ oder geändert werden, siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Dateiformate"
+
+\end_inset
+
+.
+ Die voreingestellten Betrachtungsprogramme wurden von LyX gesetzt, als
+ es zum ersten Mal konfiguriert wurde.
  Das Standard-Ausgabeformat ist 
 \family sans
 PDF
@@ -36579,6 +36505,71 @@ Andere Formate ansehen
 \begin_layout Standard
 Mit diesem Untermenü können Sie Ihr Dokument in einem alternativen Ausgabeformat
  ansehen.
+ Das Menü enthält eine Liste mit allen verfügbaren Formaten, in denen man
+ das aktuelle Dokument mit einem externen Programm ansehen kann.
+ Die Menüeinträge sind nicht bei allen Installationen die selben — sie hängen
+ von den LaTeX-Programmen ab, die gefunden wurden, als LyX konfiguriert
+ wurde.
+ Alle möglichen Formate sind in Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub: Exportieren"
+
+\end_inset
+
+ aufgelistet.
+ Sie sollten mindestens den Menüeintrag 
+\family sans
+DVI
+\family default
+ sehen.
+ Falls er fehlt, müssen Sie Ihre LaTeX-Installation aktualisieren oder repariere
+n.
+ Nach der Aktualisierung muss LyX neu konfiguriert werden, siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "LyX-Grundeinstellungen"
+
+\end_inset
+
+.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Neukonfiguration von LyX
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das Ausführen eines Menüeintrags öffnet ein Betrachtungsprogramm.
+ Dieses kann in den LyX-Grundeinstellungen festgelegt oder geändert werden,
+ siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Dateiformate"
+
+\end_inset
+
+.
+ Die voreingestellten Betrachtungsprogramme wurden von LyX gesetzt, als
+ es zum ersten Mal konfiguriert wurde.
 \end_layout
 
 \begin_layout Subsection
@@ -36605,49 +36596,41 @@ Hauptdokument ansehen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This Menü item is nur visible if your Dokument is included to another Dokument,
- which is then its 
-\begin_inset Quotes eld
-\end_inset
-
-master
-\begin_inset Quotes erd
-\end_inset
-
- (siehe Abschnitt 
+Dieses Menü ist nur sichtbar wenn Ihr Dokument in ein anderes Dokument eingefügt
+ ist.
+ Das andere Dokument ist daher das Hauptdokument des aktuellen Dokuments
+ (Unterdokument) (siehe Abschnitt 
 \emph on
-Child Dokuments
+Unterdokumente
 \emph default
- in the 
+ im 
 \emph on
 Eingebettete Objekte
 \emph default
- Handbuch für more information on this topic).
- This item allows you to view the master Dokument from within its child.
- That is, if you are working on a child Dokument which is a Kapitel of a
- book, 
+ Handbuch für mehr Informationen zu diesem Thema).
+ Mit diesem Menü kann man das Hauptdokument vom Unterdokument aus ansehen/öffnen.
+ Das bedeutet, dass wenn man an einem Unterdokument arbeitet, das z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ ein Kapitel eines Buches ist, erzeugt 
 \family sans
-View Master
+Hauptdokument ansehen
 \family default
- generates the output of the whole book, while 
+ die Ausgabe des kompletten Buches während 
 \family sans
-View
+Ansehen
 \family default
- will just output the Kapitel alone.
+ nur das Kapitel ausgibt.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The format used by this function is the default output format as specified
- in the preferences (siehe Abschnitt
+Das von dieser Funktion verwendete Format ist das, das als Voreinstellung
+ entweder in den LyX-Grundeinstellungen (siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -36655,14 +36638,10 @@ reference "sec:Dateiformate"
 
 \end_inset
 
-
-\lang english
-) oder in the Dokument settings (siehe Abschnitt
+) oder in den Dokumenteinstellungen (siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -36670,9 +36649,7 @@ reference "sec:Dokument-Ausgabe"
 
 \end_inset
 
-
-\lang english
-).
+) gesetzt ist.
 \end_layout
 
 \begin_layout Subsection
@@ -36680,40 +36657,28 @@ Hauptdokument aktualisieren
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This Menü item is nur visible if your Dokument is included to another Dokument,
- which is then its 
-\begin_inset Quotes eld
-\end_inset
-
-master
-\begin_inset Quotes erd
-\end_inset
-
- (siehe Abschnitt 
+Dieses Menü ist nur sichtbar wenn Ihr Dokument in ein anderes Dokument eingefügt
+ ist.
+ Das andere Dokument ist daher das Hauptdokument des aktuellen Dokuments
+ (Unterdokument) (siehe Abschnitt 
 \emph on
-Child Dokuments
+Unterdokumente
 \emph default
- in the 
+ im 
 \emph on
 Eingebettete Objekte
 \emph default
- Handbuch für more information on this topic).
- This item allows you to update the view of a master Dokument from within
- its child ohne the need to switch to the master Dokument itself.
+ Handbuch für mehr Informationen zu diesem Thema).
+ Dieses Menü erlaubt es, die Ansicht eines Hauptdokuments vom Unterdokument
+ aus zu aktualisieren, ohne zum Hauptdokument wechseln zu müssen.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The format used by this function is the default output format as specified
- in the preferences (siehe Abschnitt
+Das von dieser Funktion verwendete Format ist das, das als Voreinstellung
+ entweder in den LyX-Grundeinstellungen (siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -36721,14 +36686,10 @@ reference "sec:Dateiformate"
 
 \end_inset
 
-
-\lang english
-) oder in the Dokument settings (siehe Abschnitt
+) oder in den Dokumenteinstellungen (siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -36736,9 +36697,7 @@ reference "sec:Dokument-Ausgabe"
 
 \end_inset
 
-
-\lang english
-).
+) gesetzt ist.
 \end_layout
 
 \begin_layout Subsection
@@ -36746,16 +36705,19 @@ Ansicht teilen
 \end_layout
 
 \begin_layout Standard
+Dies teilt LyXs Hauptfenster vertikal oder horizontal.
+ Dies erlaubt es, Dokumente gleichzeitig anzusehen um sie zu vergleichen
+ oder dasselbe Dokument an verschiedenen Stellen gleichzeitig zu betrachten.
+ Man kann das Hauptfenster sogar mehrfach teilen um z.
+\begin_inset space \thinspace{}
+\end_inset
 
-\lang english
-This will split LyXs main Fenster vertically oder horizontally.
- This allows you to view Dokuments the same time to compare them, oder to
- view the same Dokument, but at different positions.
- You can even split the main Fenster several times to view zum Beispiel
- 3 oder more Dokuments at the same time.
- To return to an unsplit view, use the Menü 
+B.
+ 3 oder mehr Dokumente gleichzeitig anzuschauen.
+ Um zu einer ungeteilten Ansicht zurückzukehren, verwendet man das Menü
+ 
 \family sans
-Close aktuelle View
+Aktuelle Ansicht schließen
 \family default
 .
 \end_layout
@@ -36773,13 +36735,11 @@ Vollbild
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Using this Menü entry oder pressing F11 removes the Menü bar und all toolbars
- so that you will see nothing but your text.
- It furthermore displays LyX's main Fenster fullscreen.
- To return from fullscreen to the normal view, press F11, oder right-click
- und turn off the fullscreen mode in the context Menü.
+Mit diesem Menü oder durch Drücken von F11 wird die Menüleiste und alle
+ Werkzeugleisten ausgeblendet, so dass nur noch das Hauptfenster mit dem
+ Text des Dokuments als Vollbild zu sehen ist.
+ Um vom Vollbildmodus zurückzukehren, drückt man entweder wieder F11 oder
+ klickt mit rechts und schaltet den Vollbildmodus im Kontextmenü ab.
 \end_layout
 
 \begin_layout Subsection
@@ -40500,36 +40460,40 @@ name "chap:Dokument-Einstellungen"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Der 
-\lang ngerman
-Dokument-Einstellungen
-\lang english
- Dialog contains submenus to set properties for the whole document and is
- called with the menu
+Der Dokument-Einstellungsdialog enthält Untermenüs um die Eigenschaften
+ des kompletten Dokuments festzulegen.
+ Es wird über das Menü
 \family sans
  Dokument\SpecialChar \menuseparator
-Settings
+Einstellungen
 \family default
-.
- You can save your document settings as default with th
+ aufgerufen.
+ Sie können Ihre Dokumenteinstellungen mit dem Knopf 
 \family sans
-e Save as Document Defaults
+Als Dokument-Voreinstellung speichern
 \family default
- button in the dialog.
- This will create a template named 
+ als Voreinstellung speichern.
+ Dies erzeugt eine Vorlage mit Namen 
 \family typewriter
-default.lyx
+defaults.lyx
 \family default
- which is automatically loaded by LyX when you create a new document without
- using a template.
+ die von LyX automatisch geladen wird, wenn Sie eine neue Datei erstellen
+ ohne eine Vorlage zu verwenden.
 \end_layout
 
 \begin_layout Standard
+Der Knopf 
+\family sans
+Klassen-Voreinstellungen verwenden
+\family default
+ setzt die Dokumenteinstellungen auf die Vorgaben der verwendeten Dokumentklasse
+ zurück.
+ Dies betrifft hauptsächlich Klassenoptionen, das Seitenlayout und Nummerierung
+ & Inhaltsverzeichnis.
+\end_layout
 
-\lang english
-The different submenus of the dialog are explained in the following.
+\begin_layout Standard
+Die verschiedenen Untermenüs des Dialogs sind im Folgenden erklärt.
 \end_layout
 
 \begin_layout Section
@@ -40537,13 +40501,9 @@ Dokumentklasse
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here you set the document class, class options, a graphics driver, and a
- master document.
- Document classes are described in 
-\lang ngerman
-Abschnitt
+Hier stellen Sie die Dokumentklasse, Klassenoptionen, den Grafiktreiber
+ und das Hauptdokument ein.
+ Dokumentklassen sind in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40554,48 +40514,80 @@ reference "sub:Dokumentklassen"
 
 \end_inset
 
-.
- 
-\lang english
-Some classes use some class options by default.
- If this is the case, they are listed in the field 
+ beschrieben.
+\end_layout
+
+\begin_layout Standard
+Über den Knopf 
 \family sans
-Predefined
+Lokales
+\begin_inset space ~
+\end_inset
+
+Format
 \family default
- and you can decide to use them or not.
- If you don't exactly know what the default class options are for, it is
- recommended not to touch them.
- The graphics driver is used for LaTeX's graphics, color and page layout
- packages.
- When using 
+ können Sie eine eigene Layout-Datei laden, die sich nicht in LyXs 
+\emph on
+layouts
+\emph default
+ Ordner befindet und daher nicht als Layout einer Dokumentklasse von LyX
+ erkannt wurde.
+ Für Weiteres über Layout-Dateien, siehe das Kapitel 
+\emph on
+Installieren neuer Textklassen, Layouts und Vorlagen
+\emph default
+ des 
+\emph on
+Anpassung
+\emph default
+ Handbuchs.
+\end_layout
+
+\begin_layout Standard
+Einige Klassen verwenden spezielle Klassenoptionen standardmäßig.
+ In diesem Fall sind diese im Feld 
 \family sans
-Default
+Vordefiniert
 \family default
-, the default driver for the LaTeX-packages is used.
- It is recommended that you use the default unless you know what you are
- doing
+ aufgelistet und Sie können entscheiden, ob Sie sie verwenden wollen oder
+ nicht.
+ Wenn Sie nicht genau wissen, was die Klassenoptionen bedeuten, ist es empfohlen
+, sie unverändert zu verwenden.
+ Der Grafiktreiber wird für LaTeXs Grafik-, Farb- und Seitenlayoutpakete
+ verwendet.
+ Wenn 
 \family sans
-\lang ngerman
+Standard
+\family default
+ benutzt wird, wird der Standardtreiber für die LaTeX-Pakete verwendet.
+ Es wird empfohlen den Standard zu benutzen, es sei denn Sie wissen genau
+ was Sie tun
+\family sans
 .
+\family default
+
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\family sans
 Wenn Sie einen der folgenden Treiber verwenden wollen:
 \begin_inset Newline newline
 \end_inset
 
+
+\family sans
 dvi2ps, dvialw, dvilaser, dvitops, psprint, pubps, ln
+\family default
+
 \begin_inset Newline newline
 \end_inset
 
 müssen Sie ihn zuerst in Ihrem LaTeX-System aktivieren, siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-2 in 
+ 
+\emph on
+Driver support
+\emph default
+ in 
 \begin_inset CommandInset href
 LatexCommand href
 target "http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf"
@@ -40611,16 +40603,16 @@ target "http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Specifying a master document is necessary if the current document is a child
- or subdocument.
- This master document will be used by LyX if the child document is opened
- without its master.
- This way child documents are always compilable.
- More about master and child documents is explained in 
-\lang ngerman
-Abschnitt 
+Ein Hauptdokument festzulegen ist notwendig, wenn das aktuelle Dokument
+ ein Unterdokument ist.
+ Das Hauptdokument wird von LyX im Hintergrund benutzt, wenn das Unterdokument
+ ohne sein Hauptdokument geöffnet ist.
+ Auf diese Weise sind 
+\emph on
+Unte
+\emph default
+rdokumente immer prozessierbar.
+ Mehr über Haupt- und Unterdokumente ist in Abschnitt 
 \emph on
 Unterdokumente
 \emph default
@@ -40632,22 +40624,19 @@ Eingebettete
 
 Objekte
 \emph default
- Handbuchs.
+ Handbuchs zu finden.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There is also an option to suppress the date and one to use the LaTeX-package
- 
+Es gibt zudem noch eine Option um die Ausgabe des Datums zu unterdrücken
+ und eine um das LaTeX-Paket 
 \series bold
 refstyle
 \series default
- instead of 
+ anstelle von 
 \series bold
 prettyref
 \series default
-\lang ngerman
 
 \begin_inset Index idx
 status collapsed
@@ -40668,11 +40657,7 @@ LaTeX-Paket ! refstyle
 
 \end_inset
 
-
-\lang english
- for cross-references
-\lang ngerman
-, siehe Abschnitt
+ für Querverweise zu verwenden, siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40769,20 +40754,17 @@ Textformat
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can specify if paragraphs should be separated by indentations or vertical
- skips.
- The line spacing and the number of text columns can here also be specified.
- 
+Man kann hier festlegen, ob Absätze durch Einrückungen oder Abstände getrennt
+ werden sollen.
+ Die Zeilenabstände und die Anzahl der Textspalten können ebenfalls hier
+ eingestellt werden.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Note that LyX won't show two columns or the set up line spacing on screen.
- That's impractical, often unreadable, and not part of the WYSIWYM concept.
- However, it will be as you specified it in the output.
+Es ist zu beachten, dass LyX keine zwei Spalten oder die eingestellten Zeilenabs
+tände darstellt.
+ Dies wäre unpraktisch, oft unlesbar und ist nicht Teil des WYSIWYM-Konzepts.
+ In der Ausgabe erscheint der Text natürlich wie eingestellt.
 \end_layout
 
 \begin_layout Section
@@ -42459,10 +42441,8 @@ Vorwärtssuche
 .
  Siehe Abschnitt 
 \emph on
-\lang english
-Reverse DVI/PDF search
+DVI/PDF Rückwärtssuche
 \emph default
-\lang ngerman
  der 
 \emph on
 Handbuchergänzungen
@@ -42499,10 +42479,8 @@ Ausgabe
 \family default
  sind im Detail in Abschnitt 
 \emph on
-\lang english
-Math Output in XHTML
+Mathe-Ausgabe in XHTML
 \emph default
-\lang ngerman
  der 
 \emph on
 Handbuchergänzungen
@@ -44991,6 +44969,19 @@ Copiers
 Anpassung
 \emph default
  Handbuchs.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Referenz auf A.3.5
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
