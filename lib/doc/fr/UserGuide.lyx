@@ -38550,90 +38550,6 @@ Menu ! Visualiser
 \end_layout
 
 \begin_layout Standard
-Le menu 
-\family sans
-Visualiser
-\family default
- contient une liste de formats que vous pouvez utiliser pour visionner votre
- document, en utilisant un programme externe.
- Les rubriques du menu concernant les différents formats ne sont pas forcément
- les mêmes sur toutes les installations : elles dépendent des programmes
- de la distribution LaTeX que LyX a trouvé lors de sa configuration.
- Tous les formats possibles se trouvent parmi les formats listés dans la
- section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Exporter"
-
-\end_inset
-
-.
- Vous devriez au moins trouver les rubriques 
-\family sans
-DVI
-\family default
- et 
-\family sans
-PDF
-\begin_inset space ~
-\end_inset
-
-(pdflatex)
-\family default
-.
- Si l'une de ces dernières venait à manquer, vous devriez mettre à jour
- votre installation LaTeX.
- Après cette mise à jour, vous devez reconfigurer LyX ; voyez comment faire
- dans la section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Config-LyX-de-base"
-
-\end_inset
-
-.
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Reconfiguration de LyX
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Activer un des menus va lancer une visionneuse.
- Le visualiseur peut être choisi dans les préférences, voir
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Formats-de-Fichiers"
-
-\end_inset
-
-.
- les visionneuses implicites sont déterminés par LyX à sa première configuration
- et à chaque reconfiguration.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
 En bas du menu 
 \family sans
 Visualiser
@@ -38709,12 +38625,12 @@ View
 
 \lang english
 This menu entry generates the output you have specified as default output
- format either in the preferences (see sec.
-\begin_inset space \thinspace{}
+ format either in the preferences
+\lang french
+ voir section
+\begin_inset space ~
 \end_inset
 
-
-\lang french
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -38722,9 +38638,9 @@ reference "sec:Formats-de-Fichiers"
 
 \end_inset
 
-
+) 
 \lang english
-) or in the document settings (see sec.
+or in the document settings (see sec.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -38736,6 +38652,24 @@ reference "sec:Doc-Output"
 \end_inset
 
 ) and opens it in an appropriate viewer.
+ 
+\lang french
+Le visualiseur peut être choisi dans les préférences, voir section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formats-de-Fichiers"
+
+\end_inset
+
+.
+ Les visionneuses implicites sont déterminés par LyX à sa première configuration
+ et à chaque reconfiguration.
+
+\lang english
  The default output format is 
 \family sans
 PDF
@@ -38757,6 +38691,74 @@ View (Other Formats)
 
 \lang english
 With this submenu, you can view your document in alternative output formats.
+ 
+\lang french
+Le menu contient une liste de formats que vous pouvez utiliser pour visionner
+ votre document, en utilisant un programme externe.
+ Les rubriques du menu ne sont pas forcément les mêmes sur toutes les installati
+ons : elles dépendent des programmes de la distribution LaTeX que LyX a
+ trouvé lors de sa configuration.
+ Tous les formats possibles se trouvent parmi les formats listés dans la
+ section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Exporter"
+
+\end_inset
+
+.
+ Vous devriez au moins trouver la rubrique 
+\family sans
+DVI
+\family default
+.
+ Si la venait à manquer, vous devriez mettre à jour ou réparer votre installatio
+n LaTeX.
+ Après cette mise à jour, vous devez reconfigurer LyX ; voyez comment faire
+ dans la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Config-LyX-de-base"
+
+\end_inset
+
+.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Reconfiguration de LyX
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Activer un des menus va lancer une visionneuse.
+ Le visualiseur peut être choisi dans les préférences, voir
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formats-de-Fichiers"
+
+\end_inset
+
+.
+ les visionneuses implicites sont déterminés par LyX à sa première configuration
+ et à chaque reconfiguration.
 \end_layout
 
 \begin_layout Subsection

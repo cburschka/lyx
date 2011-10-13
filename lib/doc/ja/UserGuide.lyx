@@ -44560,63 +44560,6 @@ status collapsed
 \family sans
 表示
 \family default
-メニューには、文書の実際の出力を、外部プログラムで閲覧することができる各ファイル形式が一覧表示されます。出力形式を閲覧するためのメニュー項目は、システムの導入の
-しかたによって異なります。これは、LyXがシステム走査をしたときに見つかったLaTeXプログラムに依存するのです。潜在的に出力しうる全形式は、第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:書き出し"
-
-\end_inset
-
-節に掲げてあります。少なくとも
-\family sans
-DVI
-\family default
-と
-\family sans
-PDF
-\begin_inset space ~
-\end_inset
-
-(pdflatex)
-\family default
-のメニュー項目は、メニューに登場するはずです。これらのうち一つでも欠けているようならば、導入されているLaTeXを更新する必要があります。更新したあとにはLyX
-の再設定を行わなくてはなりません。第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:LaTeXの設定"
-
-\end_inset
-
-節をご覧ください。
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Lyxのさいせってい@LyXの再設定
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-メニューを実行すると、閲覧プログラムが実行されます。閲覧プログラムは、設定で変更することができます。第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:ファイル形式"
-
-\end_inset
-
-節をご覧ください。既定の閲覧プログラムは、LyXが最初にシステム走査をしたときに、自動的に設定されています。
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\family sans
-表示
-\family default
 メニューの最下部には、開かれている文書が一覧表示されます。
 \end_layout
 
@@ -44687,7 +44630,14 @@ reference "sub:出力ファイル形式"
 
 \end_inset
 
-節参照)で指定した既定出力形式(例えばPDF)で出力を生成し適切なビューアでそれを表示します。 
+節参照)で指定した既定出力形式(例えばPDF)で出力を生成し適切なビューアでそれを表示します。閲覧プログラムは、設定で変更することができます。第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:ファイル形式"
+
+\end_inset
+
+節をご覧ください。既定の閲覧プログラムは、LyXが最初にシステム走査をしたときに、自動的に設定されています。 
 \lang english
 The default output format is 
 \family sans
@@ -44705,7 +44655,57 @@ PDF
 \end_layout
 
 \begin_layout Standard
-この従属メニューでは文書を他の出力形式で見ることができます。
+この従属メニューでは文書を他の出力形式で見ることができます。には、文書の実際の出力を、外部プログラムで閲覧することができる各ファイル形式が一覧表示されます。出力
+形式を閲覧するためのメニュー項目は、システムの導入のしかたによって異なります。これは、LyXがシステム走査をしたときに見つかったLaTeXプログラムに依存するの
+です。潜在的に出力しうる全形式は、第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:書き出し"
+
+\end_inset
+
+節に掲げてあります。少なくとも
+\family sans
+DVI
+\family default
+と
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+のメニュー項目は、メニューに登場するはずです。これらのうち一つでも欠けているようならば、導入されているLaTeXを更新する必要があります。更新したあとにはLyX
+の再設定を行わなくてはなりません。第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:LaTeXの設定"
+
+\end_inset
+
+節をご覧ください。
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Lyxのさいせってい@LyXの再設定
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+メニューを実行すると、閲覧プログラムが実行されます。閲覧プログラムは、設定で変更することができます。第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:ファイル形式"
+
+\end_inset
+
+節をご覧ください。既定の閲覧プログラムは、LyXが最初にシステム走査をしたときに、自動的に設定されています。
 \end_layout
 
 \begin_layout Subsection
