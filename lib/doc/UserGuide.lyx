@@ -42788,17 +42788,26 @@ The document settings dialog contains submenus to set properties for the
 Settings
 \family default
 .
- You can save your document settings as default with th
+ You can save your document settings as default with the
 \family sans
-e Save as Document Defaults
+ Save as Document Defaults
 \family default
  button in the dialog.
  This will create a template named 
 \family typewriter
-default.lyx
+defaults.lyx
 \family default
  which is automatically loaded by LyX when you create a new document without
  using a template.
+\end_layout
+
+\begin_layout Standard
+The button 
+\family sans
+Use Class Defaults
+\family default
+ resets the document settings to the default of the document class.
+ This affects mostly class options, the page layout and Numbering & TOC.
 \end_layout
 
 \begin_layout Standard
@@ -42824,20 +42833,49 @@ reference "sec:Document-Classes"
 \end_inset
 
 .
- Some classes use some class options by default.
+ 
+\end_layout
+
+\begin_layout Standard
+With the button 
+\family sans
+Local
+\begin_inset space ~
+\end_inset
+
+Layout
+\family default
+ you can load you own layout-file, that is not in LyX's 
+\emph on
+layouts
+\emph default
+ folder and thus not recognized by LyX as layout for a document class.
+ For more about layout-files, see the chapter 
+\emph on
+Installing New Document Classes, Layouts, and Templates
+\emph default
+ of the 
+\emph on
+Customization
+\emph default
+ Handbook.
+\end_layout
+
+\begin_layout Standard
+Some classes use special class options by default.
  If this is the case, they are listed in the field 
 \family sans
 Predefined
 \family default
  and you can decide to use them or not.
- If you don't exactly know what the default class options are for, it is
- recommended not to touch them.
+ If you do not exactly know what the default class options are for, it is
+ recommended to use them untouched.
  The 
 \family sans
 Graphics driver
 \family default
  is used for LaTeX's graphics, color and page layout packages.
- When using 
+ If using 
 \family sans
 Default
 \family default
@@ -42860,11 +42898,12 @@ dvi2ps, dvialw, dvilaser, dvitops, psprint, pubps, ln
 \begin_inset Newline newline
 \end_inset
 
-you first have to activate them in your LaTeX distribution, see sec.
-\begin_inset space \thinspace{}
-\end_inset
-
-2 in 
+you first have to activate them in your LaTeX distribution, see section
+ 
+\emph on
+Driver support
+\emph default
+ in 
 \begin_inset CommandInset href
 LatexCommand href
 target "http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf"
@@ -42882,8 +42921,8 @@ target "http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf"
 \begin_layout Standard
 Specifying a master document is necessary if the current document is a child
  or subdocument.
- This master document will be used by LyX if the child document is opened
- without its master.
+ The master document will be used by LyX in the background if the child
+ document is opened without its master.
  This way child documents are always compilable.
  More about master and child documents is explained in the section 
 \emph on
@@ -43033,13 +43072,13 @@ Text Layout
 \begin_layout Standard
 You can specify if paragraphs should be separated by indentations or vertical
  skips.
- The line spacing and the number of text columns can here also be specified.
- 
+ The line spacing and the number of text columns can also be specified here.
 \end_layout
 
 \begin_layout Standard
 Note that LyX will not show two columns or the set up line spacing on screen.
- That is impractical, often unreadable, and not part of the WYSIWYM concept.
+ That would be impractical, often unreadable and is not part of the WYSIWYM
+ concept.
  However, it will be as you specified it in the output.
 \end_layout
 

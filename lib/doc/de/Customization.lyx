@@ -734,7 +734,7 @@ Vorlage
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Creating-Templates"
+reference "sub:Vorlagen-erstellen"
 
 \end_inset
 
@@ -4640,9 +4640,7 @@ Layout
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Types of layout files
+Layout-Dateitypen
 \end_layout
 
 \begin_layout Standard
@@ -4702,12 +4700,10 @@ Note that LyX is licensed under the General Public License, so any material
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Layout modules
+Layout Module
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Layout-modules"
+name "sub:Layout-Module"
 
 \end_inset
 
@@ -4896,9 +4892,7 @@ usly working on actual documents
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Local Layout
+Lokales Format
 \end_layout
 
 \begin_layout Standard
@@ -5002,21 +4996,17 @@ The warnings at the end of the previous section apply here, too.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Layout for 
+Layout für 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .sty
 \end_layout
 
 \end_inset
 
- files
+-Dateien
 \end_layout
 
 \begin_layout Standard
@@ -5345,7 +5335,7 @@ Your new package may also provide commands or environments not present in
  See 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:TextClass"
+reference "sec:Das-Layout-Dateiformat"
 
 \end_inset
 
@@ -5437,7 +5427,7 @@ A more complex module might modify the behavior of some existing constructs
  Again, see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:TextClass"
+reference "sec:Das-Layout-Dateiformat"
 
 \end_inset
 
@@ -5445,21 +5435,17 @@ reference "sec:TextClass"
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Layout for 
+Layout für 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .cls
 \end_layout
 
 \end_inset
 
- files
+-Dateien
 \end_layout
 
 \begin_layout Standard
@@ -5590,12 +5576,10 @@ roll your own
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Creating templates
+Vorlagen erstellen
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Creating-Templates"
+name "sub:Vorlagen-erstellen"
 
 \end_inset
 
@@ -5774,9 +5758,7 @@ Save as Document Defaults
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Upgrading old layout files
+Alte Layout-Dateien auf den neuesten Stand bringen
 \end_layout
 
 \begin_layout Standard
@@ -5842,15 +5824,14 @@ Note that manual conversion does not affect included files, so these will
 \end_layout
 
 \begin_layout Section
-
-\lang english
+Das Layout-Dateiformat
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:TextClass"
+name "sec:Das-Layout-Dateiformat"
 
 \end_inset
 
-The layout file format
+
 \end_layout
 
 \begin_layout Standard
@@ -6935,7 +6916,7 @@ nicht
  Module haben einen anderen Weg, andere Module auszuschließen (siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Layout-modules"
+reference "sub:Layout-Module"
 
 \end_inset
 

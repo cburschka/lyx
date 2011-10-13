@@ -2959,7 +2959,7 @@ Dokument ! lokales Format
 \end_layout
 
 \begin_layout Standard
-Module sind funktionieren bei LyX wie Pakete bei LaTeX: Sie sind dazu gedacht
+Module funktionieren bei LyX wie Pakete bei LaTeX: Sie sind dazu gedacht
  in verschiedenem Dokumenten verwendet zu werden.
  Wenn Sie oft dieselbe Sache in verschiedenen Dokumenten benötigen, sollten
  Sie es in Betracht ziehen, dafür ein Modul zu schreiben.
@@ -2975,7 +2975,7 @@ Lokales
  
 \emph default
 Format
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 .
@@ -40460,36 +40460,40 @@ name "chap:Dokument-Einstellungen"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Der 
-\lang ngerman
-Dokument-Einstellungen
-\lang english
- Dialog contains submenus to set properties for the whole document and is
- called with the menu
+Der Dokument-Einstellungsdialog enthält Untermenüs um die Eigenschaften
+ des kompletten Dokuments festzulegen.
+ Es wird über das Menü
 \family sans
  Dokument\SpecialChar \menuseparator
-Settings
+Einstellungen
 \family default
-.
- You can save your document settings as default with th
+ aufgerufen.
+ Sie können Ihre Dokumenteinstellungen mit dem Knopf 
 \family sans
-e Save as Document Defaults
+Als Dokument-Voreinstellung speichern
 \family default
- button in the dialog.
- This will create a template named 
+ als Voreinstellung speichern.
+ Dies erzeugt eine Vorlage mit Namen 
 \family typewriter
-default.lyx
+defaults.lyx
 \family default
- which is automatically loaded by LyX when you create a new document without
- using a template.
+ die von LyX automatisch geladen wird, wenn Sie eine neue Datei erstellen
+ ohne eine Vorlage zu verwenden.
 \end_layout
 
 \begin_layout Standard
+Der Knopf 
+\family sans
+Klassen-Voreinstellungen verwenden
+\family default
+ setzt die Dokumenteinstellungen auf die Vorgaben der verwendeten Dokumentklasse
+ zurück.
+ Dies betrifft hauptsächlich Klassenoptionen, das Seitenlayout und Nummerierung
+ & Inhaltsverzeichnis.
+\end_layout
 
-\lang english
-The different submenus of the dialog are explained in the following.
+\begin_layout Standard
+Die verschiedenen Untermenüs des Dialogs sind im Folgenden erklärt.
 \end_layout
 
 \begin_layout Section
@@ -40497,13 +40501,9 @@ Dokumentklasse
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here you set the document class, class options, a graphics driver, and a
- master document.
- Document classes are described in 
-\lang ngerman
-Abschnitt
+Hier stellen Sie die Dokumentklasse, Klassenoptionen, den Grafiktreiber
+ und das Hauptdokument ein.
+ Dokumentklassen sind in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40514,48 +40514,80 @@ reference "sub:Dokumentklassen"
 
 \end_inset
 
-.
- 
-\lang english
-Some classes use some class options by default.
- If this is the case, they are listed in the field 
+ beschrieben.
+\end_layout
+
+\begin_layout Standard
+Über den Knopf 
 \family sans
-Predefined
+Lokales
+\begin_inset space ~
+\end_inset
+
+Format
 \family default
- and you can decide to use them or not.
- If you don't exactly know what the default class options are for, it is
- recommended not to touch them.
- The graphics driver is used for LaTeX's graphics, color and page layout
- packages.
- When using 
+ können Sie eine eigene Layout-Datei laden, die sich nicht in LyXs 
+\emph on
+layouts
+\emph default
+ Ordner befindet und daher nicht als Layout einer Dokumentklasse von LyX
+ erkannt wurde.
+ Für Weiteres über Layout-Dateien, siehe das Kapitel 
+\emph on
+Installieren neuer Textklassen, Layouts und Vorlagen
+\emph default
+ des 
+\emph on
+Anpassung
+\emph default
+ Handbuchs.
+\end_layout
+
+\begin_layout Standard
+Einige Klassen verwenden spezielle Klassenoptionen standardmäßig.
+ In diesem Fall sind diese im Feld 
 \family sans
-Default
+Vordefiniert
 \family default
-, the default driver for the LaTeX-packages is used.
- It is recommended that you use the default unless you know what you are
- doing
+ aufgelistet und Sie können entscheiden, ob Sie sie verwenden wollen oder
+ nicht.
+ Wenn Sie nicht genau wissen, was die Klassenoptionen bedeuten, ist es empfohlen
+, sie unverändert zu verwenden.
+ Der Grafiktreiber wird für LaTeXs Grafik-, Farb- und Seitenlayoutpakete
+ verwendet.
+ Wenn 
 \family sans
-\lang ngerman
+Standard
+\family default
+ benutzt wird, wird der Standardtreiber für die LaTeX-Pakete verwendet.
+ Es wird empfohlen den Standard zu benutzen, es sei denn Sie wissen genau
+ was Sie tun
+\family sans
 .
+\family default
+
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\family sans
 Wenn Sie einen der folgenden Treiber verwenden wollen:
 \begin_inset Newline newline
 \end_inset
 
+
+\family sans
 dvi2ps, dvialw, dvilaser, dvitops, psprint, pubps, ln
+\family default
+
 \begin_inset Newline newline
 \end_inset
 
 müssen Sie ihn zuerst in Ihrem LaTeX-System aktivieren, siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-2 in 
+ 
+\emph on
+Driver support
+\emph default
+ in 
 \begin_inset CommandInset href
 LatexCommand href
 target "http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf"
@@ -40571,16 +40603,16 @@ target "http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Specifying a master document is necessary if the current document is a child
- or subdocument.
- This master document will be used by LyX if the child document is opened
- without its master.
- This way child documents are always compilable.
- More about master and child documents is explained in 
-\lang ngerman
-Abschnitt 
+Ein Hauptdokument festzulegen ist notwendig, wenn das aktuelle Dokument
+ ein Unterdokument ist.
+ Das Hauptdokument wird von LyX im Hintergrund benutzt, wenn das Unterdokument
+ ohne sein Hauptdokument geöffnet ist.
+ Auf diese Weise sind 
+\emph on
+Unte
+\emph default
+rdokumente immer prozessierbar.
+ Mehr über Haupt- und Unterdokumente ist in Abschnitt 
 \emph on
 Unterdokumente
 \emph default
@@ -40592,22 +40624,19 @@ Eingebettete
 
 Objekte
 \emph default
- Handbuchs.
+ Handbuchs zu finden.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There is also an option to suppress the date and one to use the LaTeX-package
- 
+Es gibt zudem noch eine Option um die Ausgabe des Datums zu unterdrücken
+ und eine um das LaTeX-Paket 
 \series bold
 refstyle
 \series default
- instead of 
+ anstelle von 
 \series bold
 prettyref
 \series default
-\lang ngerman
 
 \begin_inset Index idx
 status collapsed
@@ -40628,11 +40657,7 @@ LaTeX-Paket ! refstyle
 
 \end_inset
 
-
-\lang english
- for cross-references
-\lang ngerman
-, siehe Abschnitt
+ für Querverweise zu verwenden, siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -40729,20 +40754,17 @@ Textformat
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can specify if paragraphs should be separated by indentations or vertical
- skips.
- The line spacing and the number of text columns can here also be specified.
- 
+Man kann hier festlegen, ob Absätze durch Einrückungen oder Abstände getrennt
+ werden sollen.
+ Die Zeilenabstände und die Anzahl der Textspalten können ebenfalls hier
+ eingestellt werden.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Note that LyX won't show two columns or the set up line spacing on screen.
- That's impractical, often unreadable, and not part of the WYSIWYM concept.
- However, it will be as you specified it in the output.
+Es ist zu beachten, dass LyX keine zwei Spalten oder die eingestellten Zeilenabs
+tände darstellt.
+ Dies wäre unpraktisch, oft unlesbar und ist nicht Teil des WYSIWYM-Konzepts.
+ In der Ausgabe erscheint der Text natürlich wie eingestellt.
 \end_layout
 
 \begin_layout Section
@@ -42419,10 +42441,8 @@ Vorwärtssuche
 .
  Siehe Abschnitt 
 \emph on
-\lang english
-Reverse DVI/PDF search
+DVI/PDF Rückwärtssuche
 \emph default
-\lang ngerman
  der 
 \emph on
 Handbuchergänzungen
@@ -42459,10 +42479,8 @@ Ausgabe
 \family default
  sind im Detail in Abschnitt 
 \emph on
-\lang english
-Math Output in XHTML
+Mathe-Ausgabe in XHTML
 \emph default
-\lang ngerman
  der 
 \emph on
 Handbuchergänzungen
