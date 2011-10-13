@@ -43709,7 +43709,7 @@ DocBook
 \begin_layout Description
 
 \lang english
-Docbook
+DocBook
 \begin_inset space ~
 \end_inset
 
@@ -44388,6 +44388,19 @@ reference "sec:基本的な編集機能"
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
+Select Whole Inset
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Selects the content of the inset where the cursor is currently in.
+ Is the cursor outside of an inset, the whole document will be selected.
+\end_layout
+
+\begin_layout Subsection
 全てを選択
 \end_layout
 
@@ -44848,30 +44861,44 @@ name "sub:ツールバー"
 表示
 \emph default
 の状態は、メニューに付くチェックマークで表されます。
+\lang english
+The 
 \family sans
-校閲
+Review
 \family default
-・
+, 
 \family sans
-表
+Table
 \family default
-・
+, 
 \family sans
-数式パネル
+Math
+\begin_inset space ~
+\end_inset
+
+Panels
 \family default
-・
+, 
 \family sans
-数式
+Mathe
+\begin_inset space ~
+\end_inset
+
+Macros
 \family default
-ツールバーは、これらに加えて
+ and 
+\family sans
+Math
+\family default
+ toolbars can be additionally set to the state 
 \emph on
-自動
+automatic
 \emph default
-の状態に設定することも可能です。この状態は、メニューに
+ that is denoted in the menu with the suffix 
 \family sans
-（自動）
+(auto)
 \family default
-という接尾辞が付くことで表されます。
+.
 \end_layout
 
 \begin_layout Standard
@@ -45817,7 +45844,23 @@ arg   "bookmark-goto 2"
 \end_layout
 
 \begin_layout Standard
-これは、カーソルが相互参照の前にあるときのみ有効です。相互参照枠を右クリックしたときと同様に、カーソルを相互参照ラベルの前に移動します。
+これは、カーソルが相互参照の前にあるときのみ有効です。
+\lang english
+Sets the cursor before the referenced label.
+ (It is the same as if you right-click on a cross-reference box and use
+ 
+\family sans
+Go
+\begin_inset space ~
+\end_inset
+
+to
+\begin_inset space ~
+\end_inset
+
+Label)
+\family default
+.
 \family roman
 \series medium
 \shape up
@@ -45826,6 +45869,7 @@ arg   "bookmark-goto 2"
 \bar no
 \noun off
 \color none
+\lang japanese
 
 \begin_inset Note Note
 status open

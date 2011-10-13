@@ -37575,8 +37575,8 @@ Import
 
 \begin_layout Standard
 You can import there files from older LyX-versions, HTML-files, LaTeX-files,
- NoWeb-files, plain text files, and comma separated, table like, text files
- (CSV) as a new LyX-document.
+ NoWeb-files, plain text files and comma separated, table-like text files
+ (CSV).
  The files will be imported as new LyX-document.
 \end_layout
 
@@ -38310,7 +38310,7 @@ Fax
 \end_layout
 
 \begin_layout Standard
-This menu entry will only appear when you have a fax program installed (on
+This menu entry will only appear if you have a fax program installed (on
  Windows you additionally need to register its program path to LyX's PATH
  prefix, see section
 \begin_inset space ~
@@ -38414,6 +38414,15 @@ reference "sec:Basic-Editing-Features"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection
+Select Whole Inset
+\end_layout
+
+\begin_layout Standard
+Selects the content of the inset where the cursor is currently in.
+ Is the cursor outside of an inset, the whole document will be selected.
 \end_layout
 
 \begin_layout Subsection
@@ -38532,8 +38541,8 @@ Table Settings and Math
 \end_layout
 
 \begin_layout Standard
-These two menus are only fully active when the cursor is inside a table
- or a formula.
+These two menus are only fully active if the cursor is inside a table or
+ a formula.
  Here you can change the properties of tables and formulas.
  The properties of tables are described in section
 \begin_inset space ~
@@ -38565,8 +38574,8 @@ Increase / Decrease List Depth
 \end_layout
 
 \begin_layout Standard
-These menu entries are only active when the cursor is in an environment
- that can be nested.
+These menu entries are only active if the cursor is in an environment that
+ can be nested.
  They increase/decrease the environment nesting level as explained in section
 \begin_inset space ~
 \end_inset
@@ -38752,8 +38761,8 @@ View
 \end_layout
 
 \begin_layout Standard
-This menu entry generates the output you have specified as default output
- format either in the preferences (see sec.
+This menu entry generates the output in the format you have specified as
+ default output format either in the preferences (see sec.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -38792,7 +38801,7 @@ View (Other Formats)
 \end_layout
 
 \begin_layout Standard
-With this submenu, you can view your document in alternative output formats.
+With this submenu you can view your document in alternative output formats.
 \end_layout
 
 \begin_layout Subsection
@@ -38801,8 +38810,7 @@ Update
 
 \begin_layout Standard
 This menu entry allows you to update the view with your latest changes (in
- the default output format as described in the previous section) without
- opening a new viewer window.
+ the default output format) without opening a new viewer window.
 \end_layout
 
 \begin_layout Subsection
@@ -38810,7 +38818,7 @@ Update (Other Formats)
 \end_layout
 
 \begin_layout Standard
-With this submenu, you can update the view of alternative output formats
+With this submenu you can update the view of alternative output formats
  of your document without opening a new viewer window.
 \end_layout
 
@@ -39029,7 +39037,15 @@ Math
 
 Panels
 \family default
-, and 
+, 
+\family sans
+Mathe
+\begin_inset space ~
+\end_inset
+
+Macros
+\family default
+ and 
 \family sans
 Math
 \family default
@@ -39055,8 +39071,8 @@ automatic
 \emph default
  state the toolbar is only shown when the cursor is in a certain environment
  or when a certain feature is enabled.
- That means that the review toolbar will only be shown when change tracking
- is activated, the math and table toolbars are only shown when the cursor
+ That means that the review toolbar will only be shown if change tracking
+ is activated, the math and table toolbars are only shown if the cursor
  is inside a formula or table, respectively.
 \end_layout
 
@@ -39770,7 +39786,7 @@ Custom Insets
 
 \begin_layout Standard
 Inserts document class-specific insets.
- Such insets only exist when they are defined in the layout file for a certain
+ Such insets only exist if they are defined in the layout file for a certain
  document class.
  An example is the document class 
 \begin_inset Quotes eld
@@ -40269,7 +40285,7 @@ between section
 \begin_inset space ~
 \end_inset
 
-2.5 and use the menu 
+2.5 and use the submenu 
 \family sans
 Save
 \begin_inset space ~
@@ -40334,9 +40350,22 @@ Go to Label
 \end_layout
 
 \begin_layout Standard
-Only active when the cursor is in front of a cross-reference.
- Sets the cursor before the referenced label, the same as if you right-click
- on a cross-reference box.
+Only active if the cursor is in front of a cross-reference.
+ Sets the cursor before the referenced label.
+ (It is the same as if you right-click on a cross-reference box and use
+ 
+\family sans
+Go
+\begin_inset space ~
+\end_inset
+
+to
+\begin_inset space ~
+\end_inset
+
+Label)
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -40596,7 +40625,8 @@ TeX Information
 \end_layout
 
 \begin_layout Standard
-Shows you a list of the classes and styles installed in your LaTeX-system.
+Shows you a list of the document classes and styles installed in your LaTeX-syst
+em.
 \end_layout
 
 \begin_layout Subsection
@@ -40647,7 +40677,7 @@ Reconfiguration of LyX
 
 \begin_layout Standard
 This menu entry reconfigures LyX; that is, LyX looks for LaTeX-packages
- and needed programs it needs; see also section
+ and programs it needs; see also section
 \begin_inset space ~
 \end_inset
 
@@ -42855,9 +42885,9 @@ target "http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf"
 \end_layout
 
 \begin_layout Standard
-Specifying a master document is necessary when the current document is a
- child or subdocument.
- This master document will be used by LyX when the child document is opened
+Specifying a master document is necessary if the current document is a child
+ or subdocument.
+ This master document will be used by LyX if the child document is opened
  without its master.
  This way child documents are always compilable.
  More about master and child documents is explained in the section 
@@ -45100,7 +45130,7 @@ Backup ! Documents
 \end_layout
 
 \begin_layout Standard
-When the option 
+If the option 
 \family sans
 Backup documents
 \family default
@@ -45126,7 +45156,7 @@ Recent
 \end_layout
 
 \begin_layout Standard
-When the option 
+If the option 
 \family sans
 Open documents in tabs
 \family default
@@ -45959,7 +45989,7 @@ Backup ! Directory
 \end_inset
 
  Backup copies will be saved to this directory.
- When no directory is given but backups are enabled as described in section
+ If no directory is given but backups are enabled as described in section
 \begin_inset space ~
 \end_inset
 
@@ -47114,7 +47144,7 @@ Add
 \end_layout
 
 \begin_layout Standard
-When the 
+If the 
 \family sans
 Converter File Cache
 \family default

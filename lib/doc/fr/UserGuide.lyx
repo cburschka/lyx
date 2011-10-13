@@ -37575,7 +37575,7 @@ DocBook
 \begin_layout Description
 
 \lang english
-Docbook
+DocBook
 \begin_inset space ~
 \end_inset
 
@@ -38308,6 +38308,19 @@ reference "sec:Base-d'edition"
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
+Select Whole Inset
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Selects the content of the inset where the cursor is currently in.
+ Is the cursor outside of an inset, the whole document will be selected.
+\end_layout
+
+\begin_layout Subsection
 Sélectionner
 \begin_inset space ~
 \end_inset
@@ -38756,8 +38769,7 @@ Update
 
 \lang english
 This menu entry allows you to update the view with your latest changes (in
- the default output format as described in the previous section) without
- opening a new viewer window.
+ the default output format) without opening a new viewer window.
 \end_layout
 
 \begin_layout Subsection
@@ -39012,12 +39024,24 @@ Palettes
 \begin_inset space ~
 \end_inset
 
-Mathématique
+Mathématiques
 \family default
-s, et 
+, 
 \family sans
+\lang english
+Mathe
+\begin_inset space ~
+\end_inset
+
+Macros
+\family default
+\lang french
+ et 
+\family sans
+\lang english
 Maths
 \family default
+\lang french
  peuvent être mises en mode 
 \emph on
 automatique, 
@@ -40417,9 +40441,23 @@ Aller à l'étiquette
 
 \begin_layout Standard
 Actif seulement si les curseur est devant une référence croisée.
- Ce menu vous place devant l'étiquette à laquelle on fait référence, ce
- qui est la même chose que si on avait cliqué avec le bouton droit sur la
- boîte de référence croisée.
+ Ce menu vous place devant l'étiquette à laquelle on fait référence.
+ (Ce qui est la même chose que si on avait cliqué avec le bouton droit sur
+ la boîte de référence croisée
+\lang english
+ and use 
+\family sans
+Go
+\begin_inset space ~
+\end_inset
+
+to
+\begin_inset space ~
+\end_inset
+
+Label)
+\family default
+.
 \end_layout
 
 \begin_layout Subsection

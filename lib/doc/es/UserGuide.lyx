@@ -38074,7 +38074,7 @@ DocBook
 \end_layout
 
 \begin_layout Description
-Docbook
+DocBook
 \begin_inset space ~
 \end_inset
 
@@ -38768,6 +38768,19 @@ reference "sec:Características-básicas-de-edición"
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
+Select Whole Inset
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Selects the content of the inset where the cursor is currently in.
+ Is the cursor outside of an inset, the whole document will be selected.
+\end_layout
+
+\begin_layout Subsection
 Seleccionar todo
 \end_layout
 
@@ -39157,8 +39170,7 @@ Actualizar
 
 \begin_layout Standard
 Permite actualizar la vista del documento con los últimos cambios (en el
- formato predeterminado, como se menciona arriba) sin necesidad de reabrir
- la ventana del visor.
+ formato predeterminado) sin necesidad de reabrir la ventana del visor.
 \end_layout
 
 \begin_layout Subsection
@@ -39375,6 +39387,24 @@ Revisión
 \family sans
 Cuadro
 \family default
+, 
+\family sans
+\lang english
+Math
+\begin_inset space ~
+\end_inset
+
+Panels
+\family default
+, 
+\family sans
+Mathe
+\begin_inset space ~
+\end_inset
+
+Macros
+\family default
+\lang spanish
 , y 
 \family sans
 Ecuaciones 
@@ -40679,8 +40709,26 @@ Ir a la etiqueta
 
 \begin_layout Standard
 Sólo está activo cuando el cursor está frente a una referencia cruzada.
- Lleva el cursor hasta la etiqueta correspondiente, lo mismo que al pulsar
- clic derecho sobre el cuadro de la referencia.
+ Lleva el cursor hasta la etiqueta correspondiente.
+ 
+\lang english
+(It is the
+\lang spanish
+ mismo que al pulsar clic derecho sobre el cuadro de la referencia y 
+\lang english
+use 
+\family sans
+Go
+\begin_inset space ~
+\end_inset
+
+to
+\begin_inset space ~
+\end_inset
+
+Label)
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
