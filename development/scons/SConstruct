@@ -1586,7 +1586,9 @@ resource = env.Qrc(env.qtResource(
     '$BUILDDIR/src/frontends/qt4/Resource.qrc',
     ['$TOP_SRCDIR/lib/images/%s' % x for x in lib_images_files] +
     ['$TOP_SRCDIR/lib/images/math/%s' % x for x in lib_images_math_files] +
-    ['$TOP_SRCDIR/lib/images/commands/%s' % x for x in lib_images_commands_files]))
+    ['$TOP_SRCDIR/lib/images/classic/%s' % x for x in lib_images_classic_files] +
+    ['$TOP_SRCDIR/lib/images/commands/%s' % x for x in lib_images_commands_files] +
+    ['$TOP_SRCDIR/lib/images/oxygen/%s' % x for x in lib_images_oxygen_files]))
 
 lyx = env.Program(
     target = '$BUILDDIR/lyx',
@@ -1938,7 +1940,9 @@ if 'install' in BUILD_TARGETS or 'installer' in BUILD_TARGETS:
             ('fonts', lib_fonts_files),
             ('images', lib_images_files),
             ('images/math', lib_images_math_files),
+            ('images/classic', lib_images_classic_files),
             ('images/commands', lib_images_commands_files),
+            ('images/oxygen', lib_images_oxygen_files),
             ('kbd', lib_kbd_files),
             ('layouts', lib_layouts_files + lib_layouts_inc_files + lib_layouts_module_files),
             ('lyx2lyx', lib_lyx2lyx_files),
