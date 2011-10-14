@@ -50006,23 +50006,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-【註】
-\series default
-操作画面設定ファイルやキー設定ファイルを変更した場合には、有効にするためにLyXを再起動する必要があります。
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 メニューやツールバーの外観は、操作画面設定（UI）ファイルを選ぶことで、変更することができます。UIファイルは、ツールバーやメニューが列挙してあるテキストファイ
 ルです。ツールバーボタンとメニュー項目は、それぞれ
 \emph on
@@ -50174,6 +50157,27 @@ bookmark-save 6
 \end_layout
 
 \begin_layout Subsubsection
+
+\lang english
+Icon Set
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Here you can change the appearance of LyX's toolbar buttons.
+ The currently available icon sets are compared in 
+\begin_inset CommandInset href
+LatexCommand href
+name "this image"
+target "http://wiki.lyx.org/uploads/LyX/NewInLyX20/themes.png"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
 自動ヘルプ
 \end_layout
 
@@ -50191,10 +50195,15 @@ bookmark-save 6
 
 \begin_layout Standard
 
+\lang english
+With the option 
 \family sans
-ウィンドウ座標の保存・復帰を許可
+Restore window layouts and geometries
 \family default
-オプションが有効になっていると、LyXのメインウィンドウは、最後のセッションで使用された位置とレイアウトで起動します。
+ LyX's main window will be opened with the size and layout that was used
+ in the last LyX session
+\lang japanese
+。
 \end_layout
 
 \begin_layout Standard
@@ -50211,6 +50220,17 @@ bookmark-save 6
 最後のセッションで開いていたファイルを読み込む
 \family default
 オプションは、最後のLyXセッションで開かれていたファイル全てを開きます。
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The button 
+\family sans
+Clear all session information
+\family default
+ deletes all information from previous LyX sessions (cursor positions, names
+ of last used documents, etc.).
 \end_layout
 
 \begin_layout Subsubsection
@@ -50235,7 +50255,46 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-文書バックアップオプションが有効にされているときは、バックアップ保存の間隔を指定することができます。
+
+\family sans
+\lang english
+Backup original documents when saving
+\family default
+ creates a backup copy of the file in the state when it was opened or when
+ it was saved the last time.
+ It is stored in the same folder as your document and has the file extension
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+.lyx~
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+With the option 
+\family sans
+Backup documents, every
+\family default
+, you can specify the time between backup saves.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\lang english
+Save documents compressed by default
+\family default
+ saves the files always in a compressed format.
 \end_layout
 
 \begin_layout Standard
@@ -50257,6 +50316,48 @@ status collapsed
 文書をタブ内に開く
 \family default
 オプションが有効になっていないときには、すべてのファイルは、LyXの新しいインスタンスの中に開かれます。
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+With the option 
+\family sans
+Single close-tab button
+\family default
+ there will only be one button (
+\family sans
+
+\begin_inset Graphics
+	filename ../../images/closetab.png
+	scale 75
+
+\end_inset
+
+
+\family default
+) at the right side of the tab bar to close tabs.
+ Otherwise every document tab has its own close button.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ For the last option you have to restart LyX before the change takes effect.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection

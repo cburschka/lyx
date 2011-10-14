@@ -42576,28 +42576,6 @@ Anpassung ! der Menüs
 \begin_layout Standard
 
 \lang english
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Achtung
-\lang english
-:
-\series default
- You have to restart LyX before the change of the user interface file take
- effect.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
 The appearance of the Menüs und toolbars can be changed by choosing a user
  interface (ui) file.
  An ui-file is a text file where the toolbars und Menüs are listed.
@@ -42676,8 +42654,6 @@ Lastfiles
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset VSpace smallskip*
 \end_inset
 
@@ -42708,26 +42684,18 @@ LyX-function
 
 \begin_layout Standard
 \noindent
-
-\lang english
 \begin_inset VSpace smallskip*
 \end_inset
 
-All LyX-functions are listed in the Menü 
+Alle LyX-Funktionen sind im Menü 
 \family sans
-Help\SpecialChar \menuseparator
-LyX
-\begin_inset space ~
-\end_inset
-
-Functions
+Hilfe\SpecialChar \menuseparator
+LyX-Funktionen
 \family default
-.
+ aufgelistet.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset VSpace medskip
 \end_inset
 
@@ -42737,18 +42705,16 @@ Functions
 \begin_layout Standard
 
 \lang english
-An Beispiel: Assuming you use the Menü 
+Ein Beispiel: Assuming you use the Menü 
 \family sans
-Navigate\SpecialChar \menuseparator
-Bookmarks
+Navigieren\SpecialChar \menuseparator
+Lesezeichen
 \family default
  quite often und therefore want six available bookmarks, you can add the
  line
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset VSpace smallskip*
 \end_inset
 
@@ -42775,12 +42741,33 @@ bookmark-save 6
 
 \begin_layout Standard
 \noindent
-
-\lang english
 \begin_inset VSpace smallskip*
 \end_inset
 
+
+\lang english
 to the navigate Menü section in the .inc-file to have the sixth bookmark.
+\end_layout
+
+\begin_layout Subsubsection
+Symboldesign
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Here you can change the appearance of LyXs toolbar buttons.
+ The currently available icon sets are
+\lang ngerman
+ in 
+\begin_inset CommandInset href
+LatexCommand href
+name "diesem Bild"
+target "http://wiki.lyx.org/uploads/LyX/NewInLyX20/themes.png"
+
+\end_inset
+
+ gegenübergestellt.
 \end_layout
 
 \begin_layout Subsubsection
@@ -42790,9 +42777,9 @@ Automatische Hilfe
 \begin_layout Standard
 
 \lang english
-The Option 
+Die Option 
 \family sans
-Enable tool tips in main work area
+Tooltips im Hauptarbeitsbereich aktivieren
 \family default
  enables tool tips showing the content of closed insets like index entries
  oder footnotes.
@@ -42805,28 +42792,20 @@ Sitzung
 \begin_layout Standard
 
 \lang english
-With the Option 
+Mit der Option 
 \family sans
-Allow saving
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
-restoring of Fenster layout und geometries
+Aussehen und Größe von Fenstern wiederherstellen
 \family default
- LyX's main Fenster will be opened mit the Größe und layout that was used
+ LyXs Hauptfenster will be opened mit the Größe und layout that was used
  in the last LyX session.
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-The Option 
+Die Option 
 \family sans
-Restore cursor positions
+Cursor-Positionen wiederherstellen
 \family default
  sets the cursor to the position in the file where it has been the last
  time.
@@ -42835,11 +42814,22 @@ Restore cursor positions
 \begin_layout Standard
 
 \lang english
-The Option 
+Die Option 
 \family sans
-Load opened files from last session
+Geöffnete Dateien der letzten Sitzung laden
 \family default
  opens all files that were opened in the last LyX session.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Der Knopf 
+\family sans
+Lösche alle Sitzungsinformationen
+\family default
+ deletes all information from previous LyX sessions (cursor positions, names
+ of last used documents, etc.).
 \end_layout
 
 \begin_layout Subsubsection
@@ -42865,19 +42855,52 @@ Sicherung ! Dokumente
 
 \begin_layout Standard
 
-\lang english
-If the Option 
 \family sans
-Backup Dokuments
+\lang english
+Sichere Originaldokumente beim Speichern
 \family default
- is set, you can specify the time between backup saves.
+ creates a backup copy of the file in the state when it was opened or when
+ it was saved the last time.
+ It is stored in the same folder as your document and has the file extension
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+.lyx~
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+With the option 
+\family sans
+Sicherung der Dokumente alle
+\family default
+, you can specify the time between backup saves.
 \end_layout
 
 \begin_layout Standard
 
 \family sans
 \lang english
-Maximum last files
+Save documents compressed by default
+\family default
+ saves the files always in a compressed format.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\lang english
+Maximale Anzahl letzter Dateien
 \family default
  is the number of last opened files that LyX should display in the Menü
  
@@ -42897,10 +42920,50 @@ Recent
 \lang english
 If the Option 
 \family sans
-Open Dokuments in tabs
+Dokument in Registerkarten öffnen
 \family default
  is not used, then every file will be opened in its own new instance of
  LyX.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+With the option 
+\family sans
+Globaler Knopf zum Schließen von Registerkarten
+\family default
+ there will only be one Knopf (
+\family sans
+
+\begin_inset Graphics
+	filename ../../images/closetab.png
+	scale 75
+
+\end_inset
+
+
+\family default
+) at the right side der Reiterleiste to close Registerkarten.
+ Otherwise every document Registerkarte has its own close Knopf.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ Für die letzte Option muss LyX neu gestartet werden, ehe die Änderung aktiv
+ wird.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -43077,7 +43140,8 @@ reference "sub:Dokumentschrift-und-Schriftgröße"
 \lang english
 With the Option 
 \family sans
-Use Pixmap Cache to speed up font rendering
+Pixmap-Zwischenspeicher benutzen, um die Darstellung von Zeichen zu beschleunige
+n
 \family default
  enabled, LyX needs to redraw the screen less often.
  This results in better performance, especially on slow systems.
@@ -43208,9 +43272,9 @@ Bearbeiten
 \begin_layout Standard
 
 \lang english
-The Option 
+Die Option 
 \family sans
-Cursor follows scrollbar
+Cursor folgt Scrollbar
 \family default
  sets the cursor to the top of the currently displayed Dokument part when
  scrolling.
@@ -43231,19 +43295,19 @@ Cursor width
 \begin_layout Standard
 
 \lang english
-The Option 
+Die Option 
 \family sans
-Sort environments alphabetically
+Absatzlayouts alphabetisch sortieren
 \family default
- sorts the entries in the pull-down box für the paragraph environments.
+sorts the entries in the pull-down box für the paragraph environments.
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-The Option 
+Die Option 
 \family sans
-Group environments by their category
+Absatzlayouts nach Kategorien gruppieren
 \family default
  groups the entries in the pull-down box für the paragraph environments.
 \end_layout
@@ -43251,7 +43315,7 @@ Group environments by their category
 \begin_layout Standard
 
 \lang english
-The math macro editing Option determines the editing style, siehe the Abschnitt
+Die math macro editing Option determines the editing style, siehe the Abschnitt
  
 \emph on
 Math Macros

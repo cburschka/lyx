@@ -44902,24 +44902,6 @@ Customization ! of menus
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- You have to restart LyX before the change of the user interface file take
- effect.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 The appearance of the menus and toolbars can be changed by choosing a user
  interface (ui) file.
  An ui-file is a text file where the toolbars and menus are listed.
@@ -44954,7 +44936,7 @@ Menu
 \family sans
 Toolbar
 \family default
- entries must be ended with an explicit 
+ entries must be finished with an explicit 
 \family sans
 End
 \family default
@@ -45092,6 +45074,23 @@ to the navigate menu section in the .inc-file to have the sixth bookmark.
 \end_layout
 
 \begin_layout Subsubsection
+Icon Set
+\end_layout
+
+\begin_layout Standard
+Here you can change the appearance of LyX's toolbar buttons.
+ The currently available icon sets are compared in 
+\begin_inset CommandInset href
+LatexCommand href
+name "this image"
+target "http://wiki.lyx.org/uploads/LyX/NewInLyX20/themes.png"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
 Automatic help
 \end_layout
 
@@ -45111,15 +45110,7 @@ Session
 \begin_layout Standard
 With the option 
 \family sans
-Allow saving
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
-restoring of window layout and geometries
+Restore window layouts and geometries
 \family default
  LyX's main window will be opened with the size and layout that was used
  in the last LyX session.
@@ -45140,6 +45131,15 @@ The option
 Load opened files from last session
 \family default
  opens all files that were opened in the last LyX session.
+\end_layout
+
+\begin_layout Standard
+The button 
+\family sans
+Clear all session information
+\family default
+ deletes all information from previous LyX sessions (cursor positions, names
+ of last used documents, etc.).
 \end_layout
 
 \begin_layout Subsubsection
@@ -45164,11 +45164,42 @@ Backup ! Documents
 \end_layout
 
 \begin_layout Standard
-If the option 
+
 \family sans
-Backup documents
+Backup original documents when saving
 \family default
- is set, you can specify the time between backup saves.
+ creates a backup copy of the file in the state when it was opened or when
+ it was saved the last time.
+ It is stored in the same folder as your document and has the file extension
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+.lyx~
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+With the option 
+\family sans
+Backup documents, every
+\family default
+, you can specify the time between backup saves.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Save documents compressed by default
+\family default
+ saves the files always in a compressed format.
 \end_layout
 
 \begin_layout Standard
@@ -45196,6 +45227,43 @@ Open documents in tabs
 \family default
  is not used, then every file will be opened in its own new instance of
  LyX.
+\end_layout
+
+\begin_layout Standard
+With the option 
+\family sans
+Single close-tab button
+\family default
+ there will only be one button (
+\family sans
+
+\begin_inset Graphics
+	filename ../images/closetab.png
+	scale 75
+
+\end_inset
+
+
+\family default
+) at the right side of the tab bar to close tabs.
+ Otherwise every document tab has its own close button.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ For the last option you have to restart LyX before the chang takes effect.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
