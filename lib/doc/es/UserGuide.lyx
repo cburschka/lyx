@@ -45266,24 +45266,6 @@ Apariencia
 Interfaz de usuario
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Greyedout
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-Nota:
-\series default
- Debes reiniciar LyX para que los cambios en los archivos .ui y .bind tengan
- efecto.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsubsection
 Archivo de la interfaz de usuario
 \begin_inset Index idx
@@ -45460,6 +45442,25 @@ Navigate, "navigate_bookmarks"
 \end_layout
 
 \begin_layout Subsubsection
+Colección de iconos
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Here you can change the appearance of LyX's toolbar buttons.
+ The currently available icon sets are compared in 
+\begin_inset CommandInset href
+LatexCommand href
+name "this image"
+target "http://wiki.lyx.org/uploads/LyX/NewInLyX20/themes.png"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
 Ayuda automática
 \end_layout
 
@@ -45501,7 +45502,19 @@ Cargar los archivos abiertos de la última sesión
 \family default
  hace que se abran todos los archivos que estuvieran abiertos en la última
  sesión de LyX.
- 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The button 
+\family sans
+\lang spanish
+Limpiar la información de todas las sesiones
+\family default
+\lang english
+ deletes all information from previous LyX sessions (cursor positions, names
+ of last used documents, etc.).
 \end_layout
 
 \begin_layout Subsubsection
@@ -45526,11 +45539,73 @@ Documentos ! Copias de seguridad
 \end_layout
 
 \begin_layout Standard
+
+\family sans
+Hacer copias de seguridad de los documentos originales al guardar
+\lang english
+ 
+\family default
+creates a backup copy of the file in the state when it was opened or when
+ it was saved the last time.
+ It is stored in the same folder as your document and has the file extension
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+.lyx~
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 Si está marcada la opción 
 \family sans
-Copias de seguridad
+Hacer copias de seguridad cada 
 \family default
  puedes especificar el intervalo de tiempo entre copias de seguridad.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Guardar los documentos comprimidos por omisión 
+\family default
+\lang english
+saves the files always in a compressed format.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Quotes fld
+\end_inset
+
+por omisión
+\begin_inset Quotes frd
+\end_inset
+
+ doesn't seem correct to me.
+ What about 
+\begin_inset Quotes fld
+\end_inset
+
+por estandard
+\begin_inset Quotes frd
+\end_inset
+
+?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -45554,6 +45629,52 @@ Si no se usa la opción
 Abrir documentos en pestañas
 \family default
  cada archivo se abrirá en su propia nueva ventana de LyX.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+With the option
+\lang spanish
+ 
+\family sans
+Botón único para cerrar pestañas
+\family default
+ t
+\lang english
+here will only be one button (
+\family sans
+
+\begin_inset Graphics
+	filename ../../images/closetab.png
+	scale 75
+
+\end_inset
+
+
+\family default
+) at the right side of the tab bar to close tabs.
+ Otherwise every document tab has its own close button.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ For the last option you have to restart LyX before the chang takes effect.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection

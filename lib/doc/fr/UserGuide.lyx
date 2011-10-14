@@ -45225,24 +45225,6 @@ Personnalisation ! des menus
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- Vous devez redémarrer LyX pour que les modifications du fichier d'interface
- utilisateur soient prises en compte.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 On peut changer l'apparence des menus et des barres d'outils en choisissant
  un autre fichier de description de l'interface utilisateur
 \family typewriter
@@ -45416,6 +45398,25 @@ Item "Enregistrer Signet 6" "bookmark-save 6"
 \end_layout
 
 \begin_layout Subsubsection
+Jeu d'icônes
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Here you can change the appearance of LyX's toolbar buttons.
+ The currently available icon sets are compared in 
+\begin_inset CommandInset href
+LatexCommand href
+name "this image"
+target "http://wiki.lyx.org/uploads/LyX/NewInLyX20/themes.png"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
 Aide automatique
 \end_layout
 
@@ -45440,15 +45441,7 @@ Session
 \begin_layout Standard
 Avec l'option 
 \family sans
-Autorise l'enregistrement
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
-restauration de l'apparence et de la géométrie des fenêtres
+Restaurer l'apparence et de la géométrie des fenêtres
 \family default
 , LyX sera ouvert avec sa fenêtre principale à la position et avec l'arrangement
  qu'elle avait lors de la dernière utilisation.
@@ -45469,6 +45462,21 @@ Charger les fichiers ouverts lors de la dernière session
 \family default
  ouvre tous les fichiers qui étaient ouverts lors de la dernière session
  LyX.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The button
+\lang french
+ 
+\family sans
+Effacer toutes les informations sur la session
+\family default
+ 
+\lang english
+deletes all information from previous LyX sessions (cursor positions, names
+ of last used documents, etc.).
 \end_layout
 
 \begin_layout Subsubsection
@@ -45493,11 +45501,44 @@ Sauvegarde ! Documents
 \end_layout
 
 \begin_layout Standard
+
+\family sans
+Faire une sauvegarde des documents originaux lors de l'enregistrement
+\family default
+\lang english
+ creates a backup copy of the file in the state when it was opened or when
+ it was saved the last time.
+ It is stored in the same folder as your document and has the file extension
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+.lyx~
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 Quand l'option 
 \family sans
-Sauvegarde automatique
+Sauvegarde automatique, toutes les
 \family default
  est activée, vous pouvez préciser le temps entre deux sauvegardes.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Enregistrer les documents compressés implicitement
+\family default
+\lang english
+ saves the files always in a compressed format.
 \end_layout
 
 \begin_layout Standard
@@ -45515,6 +45556,52 @@ Documents
 récents
 \family default
 .
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+With the option
+\lang french
+ 
+\family sans
+Bouton unique pour fermer les onglets
+\family default
+ 
+\lang english
+there will only be one button (
+\family sans
+
+\begin_inset Graphics
+	filename ../../images/closetab.png
+	scale 75
+
+\end_inset
+
+
+\family default
+) at the right side of the tab bar to close tabs.
+ Otherwise every document tab has its own close button.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ For the last option you have to restart LyX before the chang takes effect.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
