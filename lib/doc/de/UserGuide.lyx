@@ -42550,7 +42550,7 @@ Benutzeroberfläche
 \end_layout
 
 \begin_layout Subsubsection
-GUI-Datei:
+GUI-Datei
 \begin_inset Index idx
 status collapsed
 
@@ -43182,14 +43182,41 @@ Einstellungen ! Farbe
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can here change all the colors used by LyX.
- Choose an item in the list und use the 
+Hier können alle Farben, die LyX verwendet, geändert werden.
+ Wählen Sie einen Eintrag in der Liste aus und drücken den Knopf 
 \family sans
-Alter
+Ändern
 \family default
- button.
+.
+\end_layout
+
+\begin_layout Standard
+Durch die Option 
+\family sans
+Systemfarben verwenden
+\family default
+ wird das Farbschema Ihres Betriebssystems oder Fenstermanagers benutzt.
+ Die Farben 
+\family sans
+Auswahl, Cursor, Tabelle
+\begin_inset space ~
+\end_inset
+
+(Linie), Text, URL
+\begin_inset space ~
+\end_inset
+
+(Marke)
+\family default
+ und 
+\family sans
+URL
+\begin_inset space ~
+\end_inset
+
+(Text)
+\family default
+ sind dann nicht veränderbar und daher nicht aufgelistet.
 \end_layout
 
 \begin_layout Subsection
