@@ -1492,8 +1492,8 @@ lib_images_files = Split('''
     buffer-view_pdf4.png
     buffer-view_pdf5.png
     buffer-view_ps.png
-    buffer-write-as.png
     buffer-write.png
+    buffer-write-as.png
     build-program.png
     busy.gif
     change-accept.png
@@ -1530,7 +1530,6 @@ lib_images_files = Split('''
     float-insert_table.png
     font-bold.png
     font-emph.png
-    textstyle-apply.png
     font-noun.png
     font-sans.png
     footnote-insert.png
@@ -1611,6 +1610,7 @@ lib_images_files = Split('''
     tabular-feature_toggle-rotate-tabular.png
     tabular-feature_unset-all-lines.png
     tabular-insert.png
+    textstyle-apply.png
     thesaurus-entry.png
     toolbar-toggle_math.png
     toolbar-toggle_math_panels.png
@@ -2044,7 +2044,6 @@ lib_images_math_files = Split('''
     square.png
     star.png
     style.png
-    style.png
     sub.png
     subset.png
     subset2.png
@@ -2172,6 +2171,275 @@ lib_images_math_extra_files = Split('''
 
 
 lib_images_commands_files = Split('''
+''')
+
+
+lib_images_classic_files = Split('''
+    all-changes-accept.png
+    all-changes-reject.png
+    bookmark-goto.png
+    bookmark-goto_0.png
+    bookmark-save.png
+    box-insert.png
+    break-line.png
+    buffer-close.png
+    buffer-export.png
+    buffer-export_dvi.png
+    buffer-export_dvi3.png
+    buffer-export_latex.png
+    buffer-export_pdf.png
+    buffer-export_pdf2.png
+    buffer-export_pdf3.png
+    buffer-export_pdf4.png
+    buffer-export_pdf5.png
+    buffer-export_ps.png
+    buffer-export_text.png
+    buffer-new.png
+    buffer-reload.png
+    buffer-toggle-output-sync.png
+    buffer-update.png
+    buffer-update_dvi.png
+    buffer-update_dvi3.png
+    buffer-update_pdf.png
+    buffer-update_pdf2.png
+    buffer-update_pdf3.png
+    buffer-update_pdf4.png
+    buffer-update_pdf5.png
+    buffer-update_ps.png
+    buffer-view.png
+    buffer-view_dvi.png
+    buffer-view_dvi3.png
+    buffer-view_pdf.png
+    buffer-view_pdf2.png
+    buffer-view_pdf3.png
+    buffer-view_pdf4.png
+    buffer-view_pdf5.png
+    buffer-view_ps.png
+    buffer-write.png
+    buffer-write-as.png
+    build-program.png
+    change-accept.png
+    change-next.png
+    change-reject.png
+    changes-merge.png
+    changes-output.png
+    changes-track.png
+    close-tab-group.png
+    copy.png
+    cut.png
+    demote.png
+    depth-decrement.png
+    depth-increment.png
+    dialog-preferences.png
+    dialog-show_character.png
+    dialog-show_findreplace.png
+    dialog-show_mathdelimiter.png
+    dialog-show_mathmatrix.png
+    dialog-show_print.png
+    dialog-show_spellchecker.png
+    dialog-show_vclog.png
+    dialog-show-new-inset_citation.png
+    dialog-show-new-inset_graphics.png
+    dialog-show-new-inset_include.png
+    dialog-show-new-inset_ref.png
+    dialog-toggle_findreplaceadv.png
+    dialog-toggle_toc.png
+    down.png
+    ert-insert.png
+    file-open.png
+    float-insert_figure.png
+    float-insert_table.png
+    font-bold.png
+    font-emph.png
+    font-noun.png
+    font-sans.png
+    footnote-insert.png
+    href-insert.png
+    iconsize.png
+    index-insert.png
+    info-insert_buffer_vcs-revision.png
+    label-insert.png
+    layout-document.png
+    layout-paragraph.png
+    layout.png
+    layout_Description.png
+    layout_Enumerate.png
+    layout_Itemize.png
+    layout_List.png
+    layout_LyX-Code.png
+    layout_Scrap.png
+    layout_Section.png
+    marginalnote-insert.png
+    master-buffer-update.png
+    master-buffer-view.png
+    math-display.png
+    math-macro-add-greedy-optional-param.png
+    math-macro-add-optional-param.png
+    math-macro-add-param.png
+    math-macro-append-greedy-param.png
+    math-macro-make-nonoptional.png
+    math-macro-make-optional.png
+    math-macro-remove-greedy-param.png
+    math-macro-remove-optional-param.png
+    math-macro-remove-param.png
+    math-macro_newmacroname_newcommand.png
+    math-matrix.png
+    math-mode.png
+    math-subscript.png
+    math-superscript.png
+    nomencl-insert.png
+    note-insert.png
+    note-next.png
+    paste.png
+    promote.png
+    redo.png
+    reload.png
+    script-insert_subscript.png
+    script-insert_superscript.png
+    split-view_horizontal.png
+    split-view_vertical.png
+    tabular-feature_align-decimal.png
+    tabular-feature_append-column.png
+    tabular-feature_append-row.png
+    tabular-feature_delete-column.png
+    tabular-feature_delete-row.png
+    tabular-feature_m-align-center.png
+    tabular-feature_m-align-left.png
+    tabular-feature_m-align-right.png
+    tabular-feature_m-valign-bottom.png
+    tabular-feature_m-valign-middle.png
+    tabular-feature_m-valign-top.png
+    tabular-feature_multicolumn.png
+    tabular-feature_multirow.png
+    tabular-feature_set-all-lines.png
+    tabular-feature_set-border-lines.png
+    tabular-feature_set-longtabular.png
+    tabular-feature_set-rotate-cell.png
+    tabular-feature_set-rotate-tabular.png
+    tabular-feature_toggle-line-bottom.png
+    tabular-feature_toggle-line-left.png
+    tabular-feature_toggle-line-right.png
+    tabular-feature_toggle-line-top.png
+    tabular-feature_toggle-rotate-cell.png
+    tabular-feature_toggle-rotate-tabular.png
+    tabular-feature_unset-all-lines.png
+    tabular-insert.png
+    textstyle-apply.png
+    thesaurus-entry.png
+    toolbar-toggle_math.png
+    toolbar-toggle_math_panels.png
+    toolbar-toggle_table.png
+    undo.png
+    unknown.png
+    up.png
+    update-others.png
+    url-insert.png
+    vc-compare.png
+    vc-compare_0.png
+    vc-check-in.png
+    vc-check-out.png
+    vc-locking-toggle.png
+    vc-register.png
+    vc-repo-update.png
+    vc-revert.png
+    view-others.png
+''')
+
+
+lib_images_oxygen_files = Split('''
+    all-changes-accept.png
+    all-changes-reject.png
+    bookmark-goto.png
+    bookmark-goto_0.png
+    bookmark-save.png
+    box-insert.png
+    buffer-new.png
+    buffer-reload.png
+    buffer-toggle-output-sync.png
+    buffer-update.png
+    buffer-update_dvi.png
+    buffer-update_dvi3.png
+    buffer-update_pdf.png
+    buffer-update_pdf2.png
+    buffer-update_pdf3.png
+    buffer-update_pdf4.png
+    buffer-update_pdf5.png
+    buffer-update_ps.png
+    buffer-view.png
+    buffer-view_dvi.png
+    buffer-view_dvi3.png
+    buffer-view_pdf.png
+    buffer-view_pdf2.png
+    buffer-view_pdf3.png
+    buffer-view_pdf4.png
+    buffer-view_pdf5.png
+    buffer-view_ps.png
+    buffer-write.png
+    buffer-write-as.png
+    change-accept.png
+    change-next.png
+    change-reject.png
+    changes-output.png
+    changes-track.png
+    closetab.png
+    close-tab-group.png
+    copy.png
+    cut.png
+    depth-decrement.png
+    depth-increment.png
+    dialog-show_character.png
+    dialog-show_findreplace.png
+    dialog-show_print.png
+    dialog-show_spellchecker.png
+    dialog-show-new-inset_citation.png
+    dialog-show-new-inset_graphics.png
+    dialog-show-new-inset_include.png
+    dialog-show-new-inset_ref.png
+    dialog-toggle_findreplaceadv.png
+    dialog-toggle_toc.png
+    ert-insert.png
+    file-open.png
+    float-insert_figure.png
+    float-insert_table.png
+    font-bold.png
+    font-emph.png
+    font-noun.png
+    footnote-insert.png
+    href-insert.png
+    iconsize.png
+    index-insert.png
+    label-insert.png
+    layout.png
+    layout-document.png
+    layout-paragraph.png
+    layout_Description.png
+    layout_Enumerate.png
+    layout_Itemize.png
+    layout_List.png
+    lyx-quit.png
+    marginalnote-insert.png
+    master-buffer-update.png
+    master-buffer-view.png
+    math-macro_newmacroname_newcommand.png
+    math-mode.png
+    nomencl-insert.png
+    note-insert.png
+    note-next.png
+    paste.png
+    redo.png
+    reload.png
+    split-view_horizontal.png
+    split-view_vertical.png
+    tabular-insert.png
+    textstyle-apply.png
+    thesaurus-entry.png
+    toolbar-toggle_math.png
+    toolbar-toggle_table.png
+    undo.png
+    update-others.png
+    url-insert.png
+    vc-revert.png
+    view-others.png
 ''')
 
 
