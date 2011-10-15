@@ -35,6 +35,7 @@ class LayoutBox : public QComboBox
 	Q_OBJECT
 public:
 	LayoutBox(GuiView &);
+	~LayoutBox();
 
 	/// select the right layout in the combobox.
 	void set(docstring const & layout);

@@ -418,6 +418,11 @@ LayoutBox::LayoutBox(GuiView & owner)
 }
 
 
+LayoutBox::~LayoutBox() {
+	delete d;
+}
+
+
 void LayoutBox::Private::countCategories()
 {
 	int n = filterModel_->rowCount();
