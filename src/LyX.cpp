@@ -44,6 +44,7 @@
 #include "Server.h"
 #include "ServerSocket.h"
 #include "Session.h"
+#include "WordList.h"
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
@@ -217,6 +218,7 @@ LyX::~LyX()
 {
 	delete pimpl_;
 	singleton_ = 0;
+	WordList::cleanupWordLists();
 }
 
 
@@ -446,8 +448,7 @@ void LyX::prepareExit()
 
 	// Kill the application object before exiting. This avoids crashes
 	// when exiting on Linux.
-	if (pimpl_->application_)
-		pimpl_->application_.reset();
+	pimpl_->application_.reset();
 }
 
 

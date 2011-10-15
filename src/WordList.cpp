@@ -30,6 +30,7 @@ namespace lyx {
 ///
 map<Language, WordList *> theGlobalWordList;
 
+
 WordList * theWordList(Language const & lang)
 {
 	map<Language, WordList *>::iterator it = theGlobalWordList.find(lang);
@@ -39,6 +40,15 @@ WordList * theWordList(Language const & lang)
 		theGlobalWordList[lang] = new WordList();
 	return theGlobalWordList[lang];
 }
+
+
+void WordList::cleanupWordLists() {
+	map<Language, WordList *>::const_iterator it = theGlobalWordList.begin();
+	for (; it != theGlobalWordList.end(); ++it)
+		delete it->second;
+	theGlobalWordList.clear();
+}
+
 
 ///
 struct WordList::Impl {

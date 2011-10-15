@@ -33,7 +33,9 @@ public:
 	void insert(docstring const & w);
 	///
 	void remove(docstring const & w);
-	
+	///
+	static void cleanupWordLists();
+
 private:
 	struct Impl;
 	Impl * d;
