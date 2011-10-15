@@ -87,7 +87,7 @@ Menuset
 	End
 
 	Menu "file_export"
-		Item "Export As...|A" "buffer-export-as"
+		Item "Export As...|s" "buffer-export-as"
 		ExportFormats
 		Item "More Formats & Options...|O" "buffer-export custom"
 	End
