@@ -70,9 +70,10 @@ public:
 	Result save(QString const & path, QStringList const & filters,
 			  QString const & suggested = QString());
 
-	/// Also retrieve the selected filter.
+	/// Also retrieve the selected filter (selectedFilter can be 0 if
+	/// that output is not needed).
 	Result save(QString const & path, QStringList const & filters,
-		    QString const & suggested, QString & selectedFilter);
+		    QString const & suggested, QString *selectedFilter);
 
 private:
 	class Private;
