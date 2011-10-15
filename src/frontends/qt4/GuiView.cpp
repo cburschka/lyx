@@ -2346,7 +2346,7 @@ bool GuiView::exportBufferAs(Buffer & b)
 		dlg.save(toqstr(fname.onlyPath().absFileName()),
 			 types,
 			 toqstr(fname.onlyFileName()),
-			 filter);
+			 &filter);
 	if (result.first != FileDialog::Chosen)
 		return false;
 
