@@ -4048,11 +4048,8 @@ Die Absatzumgebungen entsprechen in einer normalen LaTeX-Datei
 
 \backslash
 begin{
-\family default
 \emph on
-environ\SpecialChar \-
-ment
-\family typewriter
+Umgebung
 \emph default
 } 
 \family default
@@ -4062,10 +4059,8 @@ ment
 
 \backslash
 end{
-\family default
 \emph on
-environment
-\family typewriter
+Umgebung
 \emph default
 }
 \family default
@@ -12674,11 +12669,11 @@ Traditionally, LaTeX uses its own fonts.
  operating system, but you have to use specific fonts provided by your LaTeX
  distribution.
  The reason is that LaTeX needs some extra information über the fonts, which
- have to be provided by additional files und packages.
+ have to be provided by additional Dateien und packages.
  The downside of this is that your font choice is somewhat limited, compared
  to usual word processors.
  On the other hand this comes mit the advantage that the provided fonts
- are generally of very good quality, und that LaTeX files are very portable
+ are generally of very good quality, und that LaTeX Dateien are very portable
  across different machines.
  Also, the range of fonts supported by traditional LaTeX was increased a
  lot meanwhile so that you can find packages für many free und commercial
@@ -12975,7 +12970,7 @@ Default
 \family sans
 Default,
 \family default
- the font that is preset by the aktuelle document class is used.
+ the font that is preset by the aktuelle Dokumentklasse is used.
  In most cases, this will be the standard TeX font, known as 
 \begin_inset Quotes eld
 \end_inset
@@ -13459,7 +13454,7 @@ The
 \family sans
 Default Family
 \family default
- selection lets you specify whether the base font of your document should
+ selection lets you specify whether the base font of your Dokument should
  be roman, sans
 \begin_inset space ~
 \end_inset
@@ -13502,8 +13497,8 @@ status collapsed
 
 X font encoding
 \family default
- selection is an expert setting which lets you change the value passed to
- the LaTeX-package
+ selection is an expert Einstellung which lets you change the value passed
+ to the LaTeX-package
 \emph on
  fontenc
 \emph default
@@ -15275,12 +15270,12 @@ device-independent
 \begin_layout Standard
 
 \lang english
-DVI files do not contain images, they nur link them.
+DVI Dateien do not contain images, they nur link them.
  So don't forget to deliver the images together mit your DVIs.
  Because the DVI-viewer has to convert the image in the background to make
  it visible when you scroll the DVI, this can slow down your computer when
  you view the DVI.
- So we recommend to use PDF für files mit many images.
+ So we recommend to use PDF für Dateien mit many images.
 \end_layout
 
 \begin_layout Standard
@@ -15375,8 +15370,8 @@ PostScript was developed by the company
 Adobe
 \family default
  as a printer language.
- The file contains therefore Befehle that the printer uses to print the
- file.
+ The Datei contains therefore Befehle that the printer uses to print the
+ Datei.
  PostScript can be seen as a 
 \begin_inset Quotes eld
 \end_inset
@@ -15413,7 +15408,7 @@ LaTeX-Paket ! pstricks
 
 \end_inset
 
- Due to this ability, the files are often bigger than PDFs.
+ Due to this ability, the Dateien are often bigger than PDFs.
 \end_layout
 
 \begin_layout Standard
@@ -15427,7 +15422,7 @@ Encapsulated PostScript
 \begin_inset Quotes erd
 \end_inset
 
- (EPS, file extension 
+ (EPS, Datei extension 
 \begin_inset Quotes eld
 \end_inset
 
@@ -15440,17 +15435,17 @@ Encapsulated PostScript
 \end_inset
 
 ).
- As LyX allows you to use any known image format in your document, it has
+ As LyX allows you to use any known image format in your Dokument, it has
  to convert them in the background to EPS.
  If you have e.g 50
 \begin_inset space \thinspace{}
 \end_inset
 
-images in your document, LyX has to do 50
+images in your Dokument, LyX has to do 50
 \begin_inset space ~
 \end_inset
 
-conversions whenever you view oder export your document.
+conversions whenever you view oder export your Dokument.
  This will slow down your workflow mit LyX drastically.
  So if you plan to use PostScript, you can insert your images directly as
  EPS to avoid this problem.
@@ -15492,7 +15487,7 @@ PDF
 
 \begin_layout Standard
 Dieses Dateiformat hat die Endung 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -15500,21 +15495,21 @@ Dieses Dateiformat hat die Endung
 .pdf
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 .
- 
-\lang english
-The 
-\begin_inset Quotes eld
+ Das 
+\begin_inset Quotes gld
 \end_inset
 
 Portable Document Format
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
- (PDF) developed by 
+ (PDF) 
+\lang english
+developed by 
 \family typewriter
 Adobe
 \family default
@@ -15535,16 +15530,18 @@ portable
 \begin_layout Standard
 
 \lang english
-PDF can contain images in its own PDF format und in the formats 
-\begin_inset Quotes eld
+PDF can contain images in its own PDF format und in the formats
+\lang ngerman
+ 
+\begin_inset Quotes gld
 \end_inset
 
 Joint Photographic Experts Group
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
- (JPG, file extension 
-\begin_inset Quotes eld
+ (JPG, Dateiendung 
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -15552,11 +15549,11 @@ Joint Photographic Experts Group
 .jpg
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  oder 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -15564,19 +15561,19 @@ Joint Photographic Experts Group
 .jpeg
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 ) und 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 Portable Network Graphics
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
- (PNG, file extension 
-\begin_inset Quotes eld
+ (PNG, Dateiendung 
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -15584,12 +15581,14 @@ Portable Network Graphics
 .png
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 ).
- You can although use any other image format, because LyX converts them
- in the background to one of these formats.
+ 
+\lang english
+You can although use any other image format, because LyX converts them in
+ the background to one of these formats.
  But as described in the Abschnitt über PostScript, the image conversion
  will slow down your workflow.
  So we recommend to use images in one of the three mentioned formats.
@@ -15611,7 +15610,7 @@ This uses the program
 \family typewriter
 ps2pdf
 \family default
- that creates a PDF from a PostScript-version of your file.
+ that creates a PDF from a PostScript-version of your Datei.
  The PostScript-version is produced by the program 
 \family typewriter
 dvips
@@ -15631,8 +15630,8 @@ This uses the program
 \family typewriter
 dvipdfm
 \family default
- that converts your file in the background to DVI und in a second step to
- PDF.
+ that converts your Datei in the background to DVI und in a second step
+ to PDF.
 \end_layout
 
 \begin_layout Description
@@ -15646,7 +15645,7 @@ This uses the program
 \family typewriter
 pdftex
 \family default
- that converts your file directly to PDF.
+ that converts your Datei directly to PDF.
 \end_layout
 
 \begin_layout Description
@@ -15671,7 +15670,7 @@ This uses the program
 \family typewriter
 XeTeX
 \family default
- that converts your file directly to PDF.
+ that converts your Datei directly to PDF.
  
 \family typewriter
 XeTeX
@@ -15714,7 +15713,7 @@ This uses the program
 \family typewriter
 LuaTeX
 \family default
- that converts your file directly to PDF.
+ that converts your Datei directly to PDF.
  
 \family typewriter
 LuaTeX
@@ -15832,7 +15831,7 @@ HTML
 \begin_layout Standard
 
 \lang english
-This file type has the extension 
+This Datei type has the extension 
 \begin_inset Quotes eld
 \end_inset
 
@@ -15845,14 +15844,14 @@ This file type has the extension
 \end_inset
 
 .
- It is a file suitable für viewing in web browsers.
+ It is a Datei suitable für viewing in web browsers.
  It does not itself contain images und the like but nur links them, und
  when LyX produces XHTML, it auch generates corresponding images in formats
  suitable für the purpose.
  For the math output you can choose in the menu 
 \family sans
 Dokument\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
 Output
 \family default
  between different formats
@@ -15900,7 +15899,7 @@ Handbuchergänzungen
 \begin_layout Standard
 
 \lang english
-You can export your document as an XHTML file using the
+You can export your Dokument as an XHTML Datei using the
 \lang ngerman
  Menü Datei\SpecialChar \menuseparator
 Exportieren\SpecialChar \menuseparator
@@ -15924,13 +15923,13 @@ Dokument ! Vorschau
 \begin_layout Standard
 
 \lang english
-To get a look at the final version of your document, mit all of the page
+To get a look at the final version of your Dokument, mit all of the page
  breaks in place, the footnotes correctly numbered, und so on, use the Menü
  
 \family sans
 View
 \family default
- und choose a file type.
+ und choose a Datei type.
  A viewing program will pop up showing the output.
  For 
 \family sans
@@ -15987,7 +15986,7 @@ arg   "buffer-view ps"
 \begin_layout Standard
 
 \lang english
-If you have changed your document, you can refresh the output in the same
+If you have changed your Dokument, you can refresh the output in the same
  viewer Fenster using the Menü 
 \family sans
 Ansicht\SpecialChar \menuseparator
@@ -15999,9 +15998,9 @@ Aktualisieren
 \begin_layout Standard
 
 \lang english
-When you preview a file, the output file is nur generated in LyX's temporary
+When you preview a Datei, the output Datei is nur generated in LyX's temporary
  directory.
- To have a real output, export your document.
+ To have a real output, export your Dokument.
 \end_layout
 
 \begin_layout Subsection
@@ -16018,9 +16017,9 @@ name "sub:Datei-ausdrucken"
 \begin_layout Standard
 
 \lang english
-Instead of exporting your file und then printing it, you can auch print
+Instead of exporting your Datei und then printing it, you can auch print
  it directly from within LyX.
- To print a file, select the 
+ To print a Datei, select the 
 \lang ngerman
 Menü 
 \family sans
@@ -16037,11 +16036,11 @@ click on the Werkzeugleistenknopf
 
 .
  LyX will internally call LaTeX to produce a DVI.
- This file is then processed by the program 
+ This Datei is then processed by the program 
 \family typewriter
 dvips
 \family default
- to PostScript-file, which is finally printed using the program 
+ to PostScript-Datei, which is finally printed using the program 
 \family typewriter
 Ghostscript
 \family default
@@ -18060,8 +18059,8 @@ name "sec:Abbildungen"
 \begin_layout Standard
 
 \lang english
-To insert an image in your document, place the cursor at the text position
- you want and click on the toolbar icon 
+To insert an image in your Dokument, place the Cursor at the text position
+ you want and click on the Werkzeugleiste icon 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset graphics"
@@ -18073,7 +18072,7 @@ Einfügen\SpecialChar \menuseparator
 Graphics
 \family default
  from the menu.
- Then a dialog will appear to choose the file to load.
+ Then a dialog will appear to choose the Datei to load.
 \end_layout
 
 \begin_layout Standard
@@ -18084,7 +18083,7 @@ This dialog has numerous mostly self-explanatory parameters.
 \family sans
 Graphics
 \family default
- tab allows you to choose your image file.
+ tab allows you to choose your image Datei.
  The image can be transformed by setting a rotation angle and a scaling
  factor.
  The scaling units are explained in Appendix
@@ -18203,9 +18202,9 @@ Graphics Dialog
 
 \lang english
 The graphics dialog can be called at any time by clicking on an image.
- The image will appear in the output exactly at the position where it is
+ The image will appear in the output exactly at the Position where it is
  in the text.
- This is an example image within a separate, horizontally centered paragraph:
+ This is an example image within a separate, horizontally centered Absatz:
  
 \end_layout
 
@@ -18309,9 +18308,7 @@ Treppeneffekt
 Aliasing
 \emph default
 ).
- Bekannte Formate sind
-\lang english
- 
+ Bekannte Formate sind 
 \begin_inset Quotes eld
 \end_inset
 
@@ -18319,7 +18316,7 @@ Graphics Interchange Format
 \begin_inset Quotes erd
 \end_inset
 
- (GIF, file extension 
+ (GIF, Dateiendung 
 \begin_inset Quotes eld
 \end_inset
 
@@ -18371,7 +18368,7 @@ Portable Network Graphics
 \begin_inset Quotes erd
 \end_inset
 
- (PNG, file extension 
+ (PNG, Dateiendung 
 \begin_inset Quotes eld
 \end_inset
 
@@ -18423,7 +18420,7 @@ Joint Photographic Experts Group
 \begin_inset Quotes erd
 \end_inset
 
- (JPG, file extension 
+ (JPG, Dateiendung 
 \begin_inset Quotes eld
 \end_inset
 
@@ -18497,21 +18494,19 @@ Grafiken
  skaliert werden.
  Hilfreich sind sie auch bei Online-Dokumenten, um den Benutzer in Diagramme
  hineinzoomen zu lassen.
-\lang english
-
 \begin_inset Newline newline
 \end_inset
 
-Scalable image formats can be 
-\begin_inset Quotes eld
+Skalierbare Grafikformate können 
+\begin_inset Quotes gld
 \end_inset
 
 Scalable Vector Graphics
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
- (SVG, file extension 
-\begin_inset Quotes eld
+ (SVG, Dateiendung 
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -18519,7 +18514,7 @@ Scalable Vector Graphics
 .svg
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 )
@@ -18555,15 +18550,15 @@ status collapsed
 \end_inset
 
 , 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 Encapsulated PostScript
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
- (EPS, file extension 
-\begin_inset Quotes eld
+ (EPS, Dateiendung 
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -18571,7 +18566,7 @@ Encapsulated PostScript
 .eps
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 )
@@ -18607,15 +18602,15 @@ status collapsed
 \end_inset
 
 , und 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 Portable Document Format
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
- (PDF, file extension 
-\begin_inset Quotes eld
+ (PDF, Dateiendung 
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -18623,7 +18618,7 @@ Portable Document Format
 .pdf
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 )
@@ -18638,18 +18633,20 @@ PDF
 
 \end_inset
 
-.
- We say it can be, because you can convert any bitmap image format to PDF
+ sein.
+ 
+\lang english
+We say it can be, because you can convert any bitmap Grafikformat to PDF
  oder EPS und the result won't be scalable.
- In this cases nur a header mit the image properties is added to the original
- image
+ In this cases nur a header mit the Bild properties is added to the original
+ Bild
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 
 \lang english
-In the case of PDF, the original image is additionally compressed.
+In the case of PDF, the original Bild is additionally compressed.
 \end_layout
 
 \end_inset
@@ -18963,8 +18960,8 @@ Tabellen ! -dialog
 \lang english
 You can alter a table by clicking on it with the right mouse button, which
  brings up the table dialog.
- Here you can adjust the settings of the cell and row/column respectively
- where the cursor is placed currently.
+ Here you can adjust the Einstellungen of the cell and row/column respectively
+ where the Cursor is placed currently.
  Most of the dialog options also work on selections.
  This means that if you select more cells, columns or rows the action is
  done on all of your selection.
@@ -18982,7 +18979,7 @@ table
 toolbar
 \family default
  helps you in setting table properties.
- It appears when the cursor is inside a table.
+ It appears when the Cursor is inside a table.
 \end_layout
 
 \begin_layout Standard
@@ -19001,7 +18998,7 @@ Settings
  current cell respectively.
  The vertical alignment of a column can only be adjusted when a column width
  is given.
- A given width will allow the cell to have line breaks and multiple paragraphs
+ A given width will allow the cell to have line breaks and multiple Absätze
  of text
 \lang ngerman
 , siehe Abschnitt
@@ -19037,7 +19034,7 @@ one
 \emph default
  cell, spread over more than one column/row.
  Multicolumn cells are treated as own rows, so that the alignment, width,
- and border settings affect only the multicolumn cell.
+ and border Einstellungen affect only the multicolumn cell.
  Here's an example table with a multicolumn cell in the first row and one
  in the last row without the upper border:
 \end_layout
@@ -21578,12 +21575,12 @@ Tabellen ! zellen
 A table cell can contain text, inline equations, a figure, or another table.
  All these kinds of objects can be placed in the same cell.
  Font sizes and shapes can also be altered.
- But you can't put a special environment in a cell (like 
+ But you can't put a special Umgebung in a cell (like 
 \family sans
 Section*
 \family default
 , etc.), nor set spacing options etc.
- for the cell's paragraph.
+ for the cell's Absatz.
 \end_layout
 
 \begin_layout Standard
@@ -21864,8 +21861,8 @@ Figure
 \begin_inset Quotes erd
 \end_inset
 
- (# is the actual number) will be inserted into your document.
- The label will automatically be translated to the document language in
+ (# is the actual number) will be inserted into your Dokument.
+ The label will automatically be translated to the Dokument language in
  the output.
  After the label you can insert the caption text.
 \lang ngerman
@@ -21882,8 +21879,8 @@ Gleitobjekte ! Legende
  
 \lang english
 The image or table is inserted above or below the caption in a separate
- paragraph within the float.
- To keep your LyX-document readable, you can open and close the float box
+ Absatz within the float.
+ To keep your LyX-Dokument readable, you can open and close the float box
  by left-clicking on the box label.
  A closed float box looks like this: 
 \begin_inset Graphics
@@ -21898,7 +21895,7 @@ The image or table is inserted above or below the caption in a separate
 \begin_layout Standard
 
 \lang english
-It is recommended to insert floats as a separate paragraph to avoid possible
+It is recommended to insert floats as a separate Absatz to avoid possible
  LaTeX-errors that can occur when the surrounding text is specially formatted.
 \end_layout
 
@@ -21958,7 +21955,7 @@ arg   "float-insert figure"
 .
  
 \lang english
-The image was inserted by setting the cursor above the caption label and
+The image was inserted by setting the Cursor above the caption label and
  using the Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
@@ -21975,17 +21972,14 @@ arg   "dialog-show-new-inset graphics"
 .
  
 \lang english
-The image in the float was horizontally centered by putting the cursor in
- front of or behind the image and using the Menü 
+The image in the float was horizontally centered by putting the Cursor in
+ front of or behind the image and using the
+\lang ngerman
+ Menü 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
-Paragraph
-\begin_inset space ~
-\end_inset
-
-Settings
+Absatz-Einstellungen
 \family default
-\lang ngerman
  oder dem Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
@@ -22092,7 +22086,7 @@ the figure above
 \begin_inset Quotes erd
 \end_inset
 
-, because, as LaTeX will reposition the floats in the final document, it
+, because, as LaTeX will reposition the floats in the final Dokument, it
  might not be 
 \begin_inset Quotes eld
 \end_inset
@@ -29081,14 +29075,14 @@ Index
 \end_inset
 
  is inserted containing the text that appears in the index.
- The word where the cursor is in or the currently highlighted text is proposed
+ The word where the Cursor is in or the currently highlighted text is proposed
  by LyX as the index entry.
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-We give a short overview of the index commands in the next subsections.
+We give a short overview of the index Befehle in the next subsections.
  For a detailed description of LaTeX's index mechanism, have a look at one
  of the LaTeX books 
 \begin_inset CommandInset citation
@@ -29103,7 +29097,7 @@ key "latexcompanion,latexguide,latexbook"
 \begin_layout Standard
 
 \lang english
-The index list is inserted in the document with the menu 
+The index list is inserted in the Dokument with the menu 
 \family sans
 Einfügen\SpecialChar \menuseparator
 List
@@ -29275,8 +29269,19 @@ Stichwort ! Mehrere Seiten
 Normally an index entry will appear with the page number of the indexed
  section.
  But sometimes you want to index more pages under the same entry.
- E.g if we want to index the paragraph environments, we create an index entry
- in section
+ E.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+if we want to index the 
+\lang ngerman
+Absatzumgebungen
+\lang english
+, we create an index entry in section
 \begin_inset space ~
 \end_inset
 
@@ -29287,20 +29292,19 @@ reference "sec:Absatzumgebungen"
 
 \end_inset
 
- with the command
+ with the Befehl
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
-Paragraph environments|(
+Absatzumgebungen|(
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-and another entry at the end of section
+und another entry at the end of section
 \begin_inset space ~
 \end_inset
 
@@ -29311,21 +29315,18 @@ reference "sub:LyX-Code"
 
 \end_inset
 
- with the command
+ with the Befehl
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
-Paragraph environments|)
+Absatzumgebungen|)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The commands 
-\begin_inset Quotes eld
+Die Befehle 
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -29333,11 +29334,11 @@ The commands
 |(
 \series default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
- and 
-\begin_inset Quotes eld
+ und 
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -29345,19 +29346,25 @@ The commands
 |)
 \series default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
- respectively start and end the index range.
- You can also add the same index entry at different places in the document.
+ 
+\lang english
+start bzw.
+\begin_inset space ~
+\end_inset
+
+ end the index range.
+ You can also add the same index entry at different places in the Dokument.
  They appear in the output under one entry with a comma separated list of
- the pages of the indexed document parts.
+ the pages of the indexed Dokument parts.
  An example is the index entry 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
-Document ! Settings
-\begin_inset Quotes erd
+Dokument ! Einstellungen
+\begin_inset Quotes grd
 \end_inset
 
 .
@@ -29541,7 +29548,7 @@ Sinnloseintrag ! maïs@maison
 \lang english
 They will be sorted in the order maïs, maître, maison, but we want the order
  maïs, maison, maître.
- To achieve this, we use the command
+ To achieve this, we use the Befehl
 \end_layout
 
 \begin_layout Standard
@@ -29633,7 +29640,7 @@ reference "sub:Dokumentschrift-und-Schriftgröße"
 \end_inset
 
  after the index entries of the other LaTeX-packages although all these
- index commands start with 
+ index Befehle start with 
 \begin_inset Quotes eld
 \end_inset
 
@@ -29651,7 +29658,7 @@ LaTeX-packages !
 \family sans
 makeindex
 \family default
- bug, add these commands to the preamble of your document:
+ bug, add these Befehle to the preamble of your Dokument:
 \end_layout
 
 \begin_layout Standard
@@ -29712,14 +29719,14 @@ Dies ist ein kursiver Sinnloseintrag
  
 \lang english
 You can also format the page number using the character 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 |
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
- followed by a LaTeX-command without a backslash.
+ followed by a LaTeX-Befehl without a backslash.
  We can write for example
 \end_layout
 
@@ -29747,9 +29754,9 @@ Sinnloseintrag ! kursive Seitennummer:|textit
 
  
 \lang english
-Normally all LaTeX-commands begin with a backslash, but in this special
- case 
-\begin_inset Quotes eld
+Normally all LaTeX-Befehle begin with a backslash, but in this special case
+ 
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -29757,7 +29764,7 @@ Normally all LaTeX-commands begin with a backslash, but in this special
 |command
 \series default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  means 
@@ -30148,7 +30155,7 @@ Note that the package does not only consist of a LaTeX style, but it also
 To set up LyX for the use of multiple indexes, go to 
 \family sans
 Dokument\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
 Indexes
 \family default
  and select 
@@ -30206,7 +30213,7 @@ Alter Color\SpecialChar \ldots{}
 \begin_layout Standard
 
 \lang english
-Once the document changes have been applied, you can find the new index
+Once the Dokument changes have been applied, you can find the new index
  list in 
 \family sans
 Einfügen\SpecialChar \menuseparator
@@ -31348,7 +31355,9 @@ reference "sub:LaTeX-Syntax"
 
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 newcommand{
@@ -31356,7 +31365,9 @@ newcommand{
 Frage}[1]{#1}
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 newcommand{
@@ -31368,7 +31379,9 @@ Antwort}[1]{}
 und für den Antwort-Zweig:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 newcommand{
@@ -31376,7 +31389,9 @@ newcommand{
 Frage}[1]{}
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\series bold
 
 \backslash
 newcommand{
@@ -31466,26 +31481,26 @@ Antwort}[1]{#1}
 
 \begin_layout Standard
 Nun ist es möglich, die Befehle 
-\family typewriter
+\series bold
 
 \backslash
 Frage{\SpecialChar \ldots{}
 }
-\family default
+\series default
  und 
-\family typewriter
+\series bold
 
 \backslash
 Antwort{\SpecialChar \ldots{}
 }
-\family default
+\series default
  zu verwenden, um eine konditionale Ausgabe zu erhalten.
  Hier ist eine Beispielformel, in der nur der 
-\family typewriter
+\series bold
 
 \backslash
 Frage
-\family default
+\series default
 -Teil erscheint:
 \begin_inset Formula 
 \[
@@ -31953,9 +31968,9 @@ name "sub:LaTeX-Syntax"
 \begin_layout Standard
 
 \lang english
-When you write larger documents or books, you will need to know something
- about the LaTeX-commands that LyX uses in the background.
- Because LaTeX is based on commands, you can 
+When you write larger Dokumente or books, you will need to know something
+ about the LaTeX-Befehle that LyX uses in the background.
+ Because LaTeX is based on Befehle, you can 
 \begin_inset Quotes eld
 \end_inset
 
@@ -31964,8 +31979,8 @@ program
 \end_inset
 
  your text.
- This has the advantage that the layout of the document can be changed at
- any time if you know the right commands.
+ This has the advantage that the layout of the Dokument can be changed at
+ any time if you know the right Befehle.
  E.
 \begin_inset space \thinspace{}
 \end_inset
@@ -32027,9 +32042,9 @@ is what you need.
  To use a package, you have to load it in the document preamble (menu 
 \family sans
 Dokument\SpecialChar \menuseparator
-Settings
+Einstellungen
 \family default
-) with the command
+) with the Befehl
 \end_layout
 
 \begin_layout Standard
@@ -32043,9 +32058,9 @@ usepackage[options]{Paketname}
 \begin_layout Standard
 
 \lang english
-All LaTeX commands begin with a backslash, the command argument is set within
+All LaTeX Befehle begin with a backslash, the Befehl argument is set within
  two braces, and the options are set within two brackets.
- Note that not all commands have an argument and options.
+ Note that not all Befehle have an argument and options.
 \end_layout
 
 \begin_layout Standard
@@ -32062,7 +32077,7 @@ caption
 labelfont=bf
 \series default
  will change the font of all caption labels to bold.
- So you add the command
+ So you add the Befehl
 \end_layout
 
 \begin_layout Standard
@@ -32083,7 +32098,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-For more commands provided by the 
+For more Befehle provided by the 
 \series bold
 caption
 \series default
@@ -32105,7 +32120,7 @@ key "caption"
 \begin_layout Standard
 
 \lang english
-Note that some document classes have built-in solutions for well known problems
+Note that some Dokumentklassen have built-in solutions for well known problems
  like your case.
  For example if you use a 
 \family sans
@@ -32132,24 +32147,24 @@ bfseries}
 
 \lang english
 in the preamble and the problem is solved.
- So if you plan to write a large document, you should have a look at the
- documentation of the document class you want to use.
+ So if you plan to write a large Dokument, you should have a look at the
+ documentation of the Dokumentklasse you want to use.
  (
 \series bold
 
 \backslash
 setkomafont
 \series default
- is an example of a command with more than one argument.)
+ is an example of a Befehl with more than one argument.)
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-Commands in the preamble affect the whole document, while commands in the
- text affect only the text after the command or only the text used as command
+Befehle in the preamble affect the whole Dokument, while Befehle in the
+ text affect only the text after the Befehl or only the text used as Befehl
  argument.
- To insert a LaTeX-command in text, use the TeX Code box as described in
+ To insert a LaTeX-Befehl in text, use the TeX Code box as described in
  the previous section.
 \end_layout
 
@@ -33258,7 +33273,7 @@ netpbm
 \begin_layout Standard
 
 \lang english
-You can furthermore preview the LaTeX source of the whole document oder
+You can furthermore preview the LaTeX source of the whole Dokument oder
  parts of it.
  Use the
 \lang ngerman
@@ -33273,11 +33288,11 @@ ansehen
 \family default
 \lang english
  und a Fenster will be shown where you can siehe the LaTeX-source code.
- The Fenster zeigt the source of the whole paragraph where the cursor is
- currently in.
- You can auch select document parts in LyX's main Fenster, then nur this
- selection (when it is more than one paragraph) is shown as source code.
- To view the whole document as source, enable the corresponding Option in
+ The Fenster zeigt the source of the whole Absatz where the Cursor is currently
+ in.
+ You can auch select Dokument parts in LyX's main Fenster, then nur this
+ selection (when it is more than one Absatz) is shown as source code.
+ To view the whole Dokument as source, enable the corresponding Option in
  the source view Fenster.
 \end_layout
 
@@ -33318,7 +33333,7 @@ Einleitung
 
 \lang english
 The advanced find und replace Feature of LyX allows für searching of complex,
- format-sensitive text segments und mathematics contents within LyX documents.
+ format-sensitive text segments und mathematics contents within LyX Dokumente.
  It is an enhancement of the standard (quick) find und replace Feature.
  The key-Features are:
 \end_layout
@@ -33356,8 +33371,8 @@ e.
 \begin_inset space ~
 \end_inset
 
-a set of files which may be all the children of the document being edited,
- all the open files, oder all the Handbuchs available from the 
+a set of Dateien which may be all the children of the Dokument being edited,
+ all the open Dateien, oder all the Handbuchs available from the 
 \family sans
 Help
 \family default
@@ -33612,7 +33627,7 @@ editor.
 
 \lang english
 You can replace full-featured formatted LyX segments in place of the matching
- text segments in your document.
+ text segments in your Dokument.
  Typical scenarios in which to use this capability may be (just to mention
  a few):
 \end_layout
@@ -33740,7 +33755,7 @@ target "http://de.wikipedia.org/wiki/Regulärer_Ausdruck"
 
 \end_inset
 
- You can search für regular expression by inserting a regexp inset into
+ You can search für regular expression by inserting a regexp Einfügung into
  the 
 \family sans
 Find
@@ -33757,13 +33772,13 @@ type  "shortcut"
 arg   "regexp-mode"
 \end_inset
 
-) while the cursor is in the 
+) while the Cursor is in the 
 \family sans
 Find
 \family default
  editor.
- Characters entered within regexp insets are matched according to the regular
- expression matching rules
+ Characters entered within regexp Einfügungen are matched according to the
+ regular expression matching rules
 \begin_inset Foot
 status collapsed
 
@@ -33785,9 +33800,9 @@ when matching LaTeX code, no segments mit unbalanced {} braces are allowed
 
 \end_inset
 
-, while text entered outside regexp insets is matched exactly against the
- same text in the document.
- Note that it is allowed to cut und paste regexp-mode insets as usual.
+, while text entered outside regexp Einfügungen is matched exactly against
+ the same text in the Dokument.
+ Note that it is allowed to cut und paste regexp-mode Einfügungen as usual.
  Examples of using such a Feature may be:
 \end_layout
 
@@ -34200,24 +34215,24 @@ MyThes
 \emph on
 /
 \emph default
-OpenOffice thesauri consist of two files per language: A file mit the suffix
- 
+OpenOffice thesauri consist of two Dateien per language: A Datei mit the
+ suffix 
 \emph on
 *.dat
 \emph default
- containing the data und an index file mit the suffix 
+ containing the data und an index Datei mit the suffix 
 \emph on
 *.idx
 \emph default
 .
- The standardized file names include the language code für the given language
+ The standardized Datei names include the language code für the given language
  (e.
 \begin_inset space \thinspace{}
 \end_inset
 
 g.
  en_EN für English).
- For instance, the English files are named:
+ For instance, the English Dateien are named:
 \end_layout
 
 \begin_layout Itemize
@@ -34235,8 +34250,8 @@ th_en_EN_v2.dat
 \begin_layout Standard
 
 \lang english
-If you have OpenOffice und its thesaurus installed, these files should be
- already on your system.
+If you have OpenOffice und its thesaurus installed, these Dateien should
+ be already on your system.
  If not, you can get dictionaries either from
 \lang ngerman
  
@@ -34278,7 +34293,7 @@ Note that, as of OpenOffice
 \begin_inset space ~
 \end_inset
 
-3.0, the files on 
+3.0, the Dateien on 
 \begin_inset Flex URL
 status collapsed
 
@@ -34293,9 +34308,9 @@ http://extensions.services.openoffice.org
 \emph on
 *.oxt
 \emph default
-) that contain other files such as spellchecker dictionaries besides the
+) that contain other Dateien such as spellchecker dictionaries besides the
  thesauri.
- These archives are simple zip files, so you can unpack them as you would
+ These archives are simple zip Dateien, so you can unpack them as you would
  unpack a zip archive.
 \end_layout
 
@@ -34309,8 +34324,8 @@ http://extensions.services.openoffice.org
 \emph on
 *.dat
 \emph default
- files of all languages you want to use into one directory (do not use subfolder
-s), und specify the path to this directory in 
+ Dateien of all languages you want to use into one directory (do not use
+ subfolders), und specify the path to this directory in 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
 Preferences\SpecialChar \menuseparator
@@ -34340,7 +34355,7 @@ type  "icon"
 arg   "thesaurus-entry"
 \end_inset
 
- while the cursor is at the word you want to look up oder while a word is
+ while the Cursor is at the word you want to look up oder while a word is
  selected.
  A Dialog pops up showing you probably related words that you can use as
  replacement.
@@ -34372,7 +34387,7 @@ men
 \begin_layout Standard
 
 \lang english
-The language is automatisch chosen from the language at the cursor, but
+The language is automatisch chosen from the language at the Cursor, but
  you can auch switch it in the Dialog, as you can enter new words to look
  up directly there.
 \end_layout
@@ -38592,7 +38607,7 @@ Eingebettete Objekte
 \begin_inset Text
 
 \begin_layout Plain Layout
-Auswahlbox für die Paragraph Umgebungen
+Auswahlbox für die Umgebungen
 \end_layout
 
 \end_inset
@@ -42550,7 +42565,7 @@ Benutzeroberfläche
 \end_layout
 
 \begin_layout Subsubsection
-GUI-Datei:
+GUI-Datei
 \begin_inset Index idx
 status collapsed
 
@@ -42576,10 +42591,11 @@ Anpassung ! der Menüs
 \begin_layout Standard
 
 \lang english
-The appearance of the Menüs und toolbars can be changed by choosing a user
- interface (ui) file.
- An ui-file is a text file where the toolbars und Menüs are listed.
- The Werkzeugleistenknopfs und Menü entries are specified in the files 
+The appearance of the Menüs und Werkzeugleistes can be changed by choosing
+ a user interface (ui) Datei.
+ An ui-Datei is a text Datei where the Werkzeugleistes und Menüs are listed.
+ The Werkzeugleistenknopfs und Menü entries are specified in the Dateien
+ 
 \shape italic
 stdtoolbars.inc
 \shape default
@@ -42588,19 +42604,19 @@ stdtoolbars.inc
 stdmenus.inc
 \shape default
 , respectively.
- Both files are loaded by the 
+ Both Dateien are loaded by the 
 \emph on
 default.ui
 \emph default
- file.
- To create your own Menü und toolbar layout, start mit a copy of these files
- und edit the entries.
+ Datei.
+ To create your own Menü und Werkzeugleiste layout, start mit a copy of
+ these Dateien und edit the entries.
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-The syntax of the .inc-files is straightforward: The 
+The syntax of the .inc-Dateien is straightforward: The 
 \family sans
 Menubar
 \family default
@@ -42746,7 +42762,7 @@ bookmark-save 6
 
 
 \lang english
-to the navigate Menü section in the .inc-file to have the sixth bookmark.
+to the navigate Menü section in the .inc-Datei to have the sixth bookmark.
 \end_layout
 
 \begin_layout Subsubsection
@@ -42754,12 +42770,8 @@ Symboldesign
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here you can change the appearance of LyXs toolbar buttons.
- The currently available icon sets are
-\lang ngerman
- in 
+Damit kann das Aussehen von LyXs Werkzeugleisten geändert werden.
+ Die derzeit verfügbaren Symboldesigns sind in 
 \begin_inset CommandInset href
 LatexCommand href
 name "diesem Bild"
@@ -42775,14 +42787,12 @@ Automatische Hilfe
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Die Option 
 \family sans
 Tooltips im Hauptarbeitsbereich aktivieren
 \family default
- enables tool tips showing the content of closed insets like index entries
- oder footnotes.
+ aktiviert Tooltips, die den Inhalt von geschlossenen Einfügungen wie Indexeintr
+ägen oder Fußnoten anzeigt.
 \end_layout
 
 \begin_layout Subsubsection
@@ -42790,46 +42800,38 @@ Sitzung
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Mit der Option 
 \family sans
 Aussehen und Größe von Fenstern wiederherstellen
 \family default
- LyXs Hauptfenster will be opened mit the Größe und layout that was used
- in the last LyX session.
+ wird LyXs Hauptfenster mit der Größe und dem Aussehen geöffnet, das in
+ der letzten LyX-Sitzung benutzt wurde.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Die Option 
 \family sans
 Cursor-Positionen wiederherstellen
 \family default
- sets the cursor to the position in the file where it has been the last
- time.
+ setzt den Cursor auf die Position in der Datei, wo er beim letzten Mal
+ war.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Die Option 
 \family sans
 Geöffnete Dateien der letzten Sitzung laden
 \family default
- opens all files that were opened in the last LyX session.
+ öffnet alle Dateien, die in der letzten LyX-Sitzung geöffnet waren.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Der Knopf 
 \family sans
 Lösche alle Sitzungsinformationen
 \family default
- deletes all information from previous LyX sessions (cursor positions, names
- of last used documents, etc.).
+ löscht alle Informationen von vorherigen LyX-Sitzungen (Cursorpositionen,
+ Namen der zuletzt geöffneten Dokumente, usw.).
 \end_layout
 
 \begin_layout Subsubsection
@@ -42859,31 +42861,46 @@ Sicherung ! Dokumente
 \lang english
 Sichere Originaldokumente beim Speichern
 \family default
- creates a backup copy of the file in the state when it was opened or when
+ creates a backup copy of the Datei in the state when it was opened or when
  it was saved the last time.
- It is stored in the same folder as your document and has the file extension
- 
-\begin_inset Quotes eld
+ It is stored in the same folder as your Dokument or in the 
+\family sans
+Backup
+\begin_inset space ~
+\end_inset
+
+directory
+\family default
+\lang ngerman
+, siehe Abschnitt
+\begin_inset space ~
 \end_inset
 
 
-\family sans
-.lyx~
-\family default
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Pfade"
 
-\begin_inset Quotes erd
+\end_inset
+
+.
+ Die Sicherungsdateien haben die Endung 
+\begin_inset Quotes gld
+\end_inset
+
+.lyx~
+\begin_inset Quotes grd
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-With the option 
+Mit der Option
 \family sans
-Sicherung der Dokumente alle
+ Sicherung der Dokumente alle
 \family default
+\lang english
 , you can specify the time between backup saves.
 \end_layout
 
@@ -42893,26 +42910,25 @@ Sicherung der Dokumente alle
 \lang english
 Save documents compressed by default
 \family default
- saves the files always in a compressed format.
+ saves the Dateien always in a compressed format.
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-\lang english
 Maximale Anzahl letzter Dateien
 \family default
- is the number of last opened files that LyX should display in the Menü
+ ist die Anzahl der zuletzt von LyX geöffneten Dateien, die LyX im Menü
  
 \family sans
 Datei\SpecialChar \menuseparator
-Open
+Zuletzt
 \begin_inset space ~
 \end_inset
 
-Recent
+geöffnet
 \family default
-.
+ anzeigen soll.
 \end_layout
 
 \begin_layout Standard
@@ -42922,18 +42938,18 @@ If the Option
 \family sans
 Dokument in Registerkarten öffnen
 \family default
- is not used, then every file will be opened in its own new instance of
+ is not used, then every Datei will be opened in its own new instance of
  LyX.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-With the option 
+Mit der Option 
 \family sans
 Globaler Knopf zum Schließen von Registerkarten
 \family default
- there will only be one Knopf (
+ 
+\lang english
+gibt es nur einen Knopf (
 \family sans
 
 \begin_inset Graphics
@@ -42944,8 +42960,8 @@ Globaler Knopf zum Schließen von Registerkarten
 
 
 \family default
-) at the right side der Reiterleiste to close Registerkarten.
- Otherwise every document Registerkarte has its own close Knopf.
+) auf der rechten Seite der Reiterleiste um Registerkarten zu schließen.
+ Ansonsten hat jede Registerkarte ihren eigenen Knopf zum Schließen.
 \end_layout
 
 \begin_layout Standard
@@ -42990,7 +43006,11 @@ Schrift ! Bildschirm
 \begin_layout Standard
 
 \lang english
-These fonts are used to display your Dokuments on the screen.
+These fonts are used to display your Dokuments on the 
+\lang ngerman
+Bildschirm
+\lang english
+.
 \end_layout
 
 \begin_layout Standard
@@ -43010,7 +43030,7 @@ Achtung
 \emph on
 inside
 \emph default
- the LyX Fenster.
+ the LyX-Fenster.
  The fonts that appear on the output are independent from these fonts, und
  set in the
 \family sans
@@ -43066,7 +43086,7 @@ You can change the Schriftgröße mit the
 \family sans
 Zoom
 \family default
- setting.
+ Einstellung.
  You can auch change the font zoom outside the preferences Dialog für the
  aktuelle LyX session by pressing 
 \family sans
@@ -43148,9 +43168,9 @@ n
  On the other hand, the characters might look more fuzzy on screen.
  So whether you enable this oder not depends on whether you prefer speed
  over aesthetics.
- Note dass der Pixmap Cache
+
 \lang ngerman
- nur unter Mac
+ Man beachte dass der Pixmap Cache nur unter Mac
 \begin_inset space ~
 \end_inset
 
@@ -43182,14 +43202,41 @@ Einstellungen ! Farbe
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can here change all the colors used by LyX.
- Choose an item in the list und use the 
+Hier können alle Farben, die LyX verwendet, geändert werden.
+ Wählen Sie einen Eintrag in der Liste aus und drücken den Knopf 
 \family sans
-Alter
+Ändern
 \family default
- button.
+.
+\end_layout
+
+\begin_layout Standard
+Durch die Option 
+\family sans
+Systemfarben verwenden
+\family default
+ wird das Farbschema Ihres Betriebssystems oder Fenstermanagers benutzt.
+ Die Farben 
+\family sans
+Auswahl, Cursor, Tabelle
+\begin_inset space ~
+\end_inset
+
+(Linie), Text, URL
+\begin_inset space ~
+\end_inset
+
+(Marke)
+\family default
+ und 
+\family sans
+URL
+\begin_inset space ~
+\end_inset
+
+(Text)
+\family default
+ sind dann nicht veränderbar und daher nicht aufgelistet.
 \end_layout
 
 \begin_layout Subsection
@@ -43216,7 +43263,7 @@ Here you can specify if graphics inside LyX are displayed.
 
 \family sans
 \lang english
-Instant Preview
+Sofortige Vorschau
 \family default
  enables previewing snippets of your
 \lang ngerman
@@ -43244,7 +43291,7 @@ Absatzenden
 
 markieren
 \family default
- zeigt ein Absatzzeichen (¶) am Ende jedes Paragraphen an.
+ zeigt ein Absatzzeichen (¶) am Ende jedes Absatzes an.
 \end_layout
 
 \begin_layout Section
@@ -43270,46 +43317,58 @@ Bearbeiten
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Die Option 
 \family sans
 Cursor folgt Scrollbar
 \family default
- sets the cursor to the top of the currently displayed Dokument part when
- scrolling.
+ setzt den Cursor an den Anfang des aktuell angezeigten Dokumentteils wenn
+ gescrollt wird.
+\end_layout
+
+\begin_layout Standard
+Man kann die Dicke des Cursors einstellen.
+ 
+\lang english
+If you set the value to zero the thickness of the Cursor scales relative
+ to the zoom value you choose für the Bildschirmschriften.
 \end_layout
 
 \begin_layout Standard
 
-\lang english
-You can adjust the thickness of the cursor mit the 
 \family sans
-Cursor width
+Unter das Ende des Dokuments scrollen
 \family default
- setting.
- If you set the value to zero the thickness of the cursor scales relative
- to the zoom value you choose für the screen fonts.
+ ist selbsterklärend.
 \end_layout
 
 \begin_layout Standard
+In LyX kann man von Wort zu Wort springen, indem man 
+\family sans
+Strg+Pfeiltaste
+\family default
+ drückt.
+ Mit der Option 
+\family sans
+Cursornavigation zwischen Wörtern im Mac-Stil
+\family default
+ springt der Cursor vom Wortende zum Wortende des nächsten Wortes.
+ Normalerweise springt er von Anfang zu Anfang.
+\end_layout
 
-\lang english
+\begin_layout Standard
 Die Option 
 \family sans
 Absatzlayouts alphabetisch sortieren
 \family default
-sorts the entries in the pull-down box für the paragraph environments.
+ sortiert die Einträge im pull-down Menü der Absatzumgebungen.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Die Option 
 \family sans
 Absatzlayouts nach Kategorien gruppieren
 \family default
- groups the entries in the pull-down box für the paragraph environments.
+ gruppiert die Einträge im pull-down Menü der Absatzumgebungen.
 \end_layout
 
 \begin_layout Standard
@@ -43419,11 +43478,11 @@ math.bind
  haben nur einen kleinen Anwendungsbereich.
 
 \lang english
- When looking at the end of the file 
+ When looking at the end of the Datei 
 \shape italic
 cua.bind
 \shape default
-, you can see that they are included to keep the overview in the bind-file.
+, you can see that they are included to keep the overview in the bind-Datei.
 \end_layout
 
 \begin_layout Subsubsection
@@ -43577,10 +43636,11 @@ Einstellungen ! Tastaturtabelle
 \end_layout
 
 \begin_layout Standard
-
+Normalerweise werden Tastatureinstellungen in einem Menü des Betriebssystems
+ vorgenommen.
+ 
 \lang english
-Normally keyboard settings have to be done in a Menü of your operating system.
- For the case that this is not possible, LyX provides keyboard maps.
+For the case that this is not possible, LyX provides keyboard maps.
  If you have e.
 \begin_inset space \thinspace{}
 \end_inset
@@ -43590,7 +43650,7 @@ g.
 \end_inset
 
 a Czech keyboard but want to write mit it like mit a Romanian one, you can
- use the keyboard map file named 
+ use the keyboard map Datei named 
 \emph on
 romanian.kmap
 \emph default
@@ -43610,7 +43670,7 @@ Achtung
 \lang english
 :
 \series default
- Keyboard maps are nur provided as makeshift und don't work on all systems.
+ Keyboard maps are nur provided as makeshift und do not work on all systems.
 \end_layout
 
 \end_inset
@@ -43621,13 +43681,22 @@ Achtung
 \begin_layout Standard
 
 \lang english
-Besides this, you can specify here the 
+You can furthermore specify here the 
 \family sans
-Wheel scrolling speed
+Mausrad-Scrollgeschwindigkeit
 \family default
 .
  The standard value is 1.0, higher values speed up the scrolling, lower ones
  slow it down.
+\end_layout
+
+\begin_layout Standard
+Im Abschnitt 
+\family sans
+Textgröße mit dem Mausrad einstellen
+\family default
+ kann eine Taste für das Zoomen ausgewählt werden.
+ Wenn diese Taste gedrückt und das Mausrad gedreht wird, wird der Text gezoomt.
 \end_layout
 
 \begin_layout Subsection
@@ -43652,9 +43721,7 @@ Eingabevervollständigung
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Input completion is described in Abschnitt
+Eingabevervollständigung ist in Abschnitt
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -43665,12 +43732,13 @@ reference "sec:Eingabevervollständigung-general"
 
 \end_inset
 
-.
- The completion Optionen für math do the same as the corresponding Optionen
- für text.
- With the general Optionen you can define the delay time für the inline
- und popup completion und choose if long completions should be abbreviated
- oder not.
+ beschrieben.
+ Die Vervollständigungsoptionen für Mathe bewirken dasselbe wie die entsprechend
+en Optionen für Text.
+ Mit den 
+\lang english
+general Optionen you can define the delay time für the inline und popup
+ completion und choose if long completions should be abbreviated oder not.
 \end_layout
 
 \begin_layout Section
@@ -43781,9 +43849,8 @@ Sicherung ! Verzeichnis
 \end_inset
 
  In diesem Verzeichnis werden Sicherungen gespeichert.
- 
-\lang english
-If no directory is given but backups are enabled as described in Abschnitt
+ Wenn kein Sicherungsverzeichnis angegeben ist, aber Sicherungen wie in
+ Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -43794,13 +43861,11 @@ reference "sub:Sicherung-Dokumente"
 
 \end_inset
 
-, the 
+ beschrieben, aktiviert sind, wird das 
 \family sans
-Working directory
+Arbeitsverzeichnis
 \family default
- will be used to save the backups
-\lang ngerman
-.
+ für die Sicherungen verwendet.
 \begin_inset Newline newline
 \end_inset
 
@@ -43827,7 +43892,7 @@ status collapsed
 
 \end_inset
 
-X-Server-Weiterleitung Hier wird der Name einer Unix-Pipe angegeben.
+X-Server-Weiterleitung Hier wird der Name einer UNIX-Pipe angegeben.
  Über diese werden Daten aus externen Programmen an LyX gesendet.
 \begin_inset Newline newline
 \end_inset
@@ -43905,6 +43970,33 @@ Verzeichnis Hier speichert LyX alle temporären Daten einer Sitzung.
 \end_layout
 
 \begin_layout Description
+Thesaurus-Wörterbücher Verzeichnis wo sich die Thesaurus-Wörterbücher befinden.
+ Es muss nur angegeben werden, wenn der Thesaurus sonst nicht funktioniert
+ oder Sie eigene/alternative Wörterbücher verwenden wollen.
+\end_layout
+
+\begin_layout Description
+Hunspell-Wörterbücher Verzeichnis wo sich die Wörterbücher des Rechtschreibprüfu
+ngsprogramms 
+\family typewriter
+Hunspell
+\family default
+ befinden.
+ Es muss nur angegeben werden, wenn Sie 
+\family typewriter
+Hunspell
+\family default
+ verwenden und die Rechtschreibprüfung sonst nicht funktioniert oder Sie
+ eigene/alternative Wörterbücher verwenden wollen.
+ Für LyX unter Windows ist 
+\family typewriter
+Hunspell
+\family default
+ das einzige verfügbare Rechtschreibprüfungsprogramm und sollte ohne Angabe
+ eines Verzeichnisses funktionieren.
+\end_layout
+
+\begin_layout Description
 PATH-Präfix Diese Feld enthält eine Liste mit Pfaden zu externen Programmen.
  Wenn LyX ein externes Programm benötigt, wird in der Liste nachgesehen,
  wo es zu finden ist.
@@ -43914,21 +44006,34 @@ PATH-Präfix Diese Feld enthält eine Liste mit Pfaden zu externen Programmen.
  Programme benutzt werden sollen, die nicht in $PATH stehen.
 \end_layout
 
+\begin_layout Description
+TEXINPUTS-Präfix 
+\lang english
+The TEXINPUTS environment variable allows to use external files which are
+ included to a LyX Dokument via commands in TeX code.
+ This prefix includes by default the Dokument directory (represented by
+ a single '.').
+ The prefix can be set to any list of paths separated by the default separator
+ of the OS (':' on UNIX like systems and ';' on windows).
+ If files are included by LaTeX, the paths listed in the TEXINPUTS prefix
+ will be scanned for the input files.
+ Note that any non-absolute path listed in the TEXINPUTS prefix is considered
+ to be relative to the directory of your LyX file.
+ It is recommended to include always the '.' as one of the paths, otherwise
+ compilation may fail for some Dokumente.
+\end_layout
+
 \begin_layout Section
 Identität
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here you can insert your name und email address.
- The identity will be used when you have enabled change tracking as described
- in Abschnitt
+Hier können Sie Ihren Namen und Ihre E-Mail-Adresse eingeben.
+ Die Identität wird verwendet, um Änderungen die Sie machen, als Ihre zu
+ markieren, wenn Änderungsverfolgung, wie in Abschnitt
 \begin_inset space ~
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -43936,9 +44041,7 @@ reference "sec:Änderungsverfolgung"
 
 \end_inset
 
-
-\lang english
-, to mark changes you make as yours.
+ beschrieben, aktiviert ist.
 \end_layout
 
 \begin_layout Section
@@ -43977,32 +44080,27 @@ name "sub:Spracheinstellungen"
 \end_layout
 
 \begin_layout Description
-
-\lang english
-User
+Sprache
 \begin_inset space ~
 \end_inset
 
-Interface
+der
 \begin_inset space ~
 \end_inset
 
-language Here you can select the language of LyX's Menüs.
- Unfortunately this doesn't work on Mac und Windows.
- It works on Linux für the languages into LyX's Menüs und Dialogs are translated.
- You find the aktuelle translation status here: 
+Benutzeroberfläche Hier kann die Sprache der LyXs Menüs eingestellt werden.
+ Der aktuelle Übersetzungsstatus ist hier zu finden:
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset CommandInset href
 LatexCommand href
-name "http://www.lyx.org/I18n"
 target "http://www.lyx.org/I18n"
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Description
-Standard-Sprache Hier wählen Sie die Sprache für alle neuen Dokumente aus.
 \end_layout
 
 \begin_layout Description
@@ -44946,7 +45044,7 @@ Dateiformate
 \begin_layout Standard
 
 \lang english
-Here you find the list of defined file formats that LyX can handle.
+Here you find the list of defined Datei formats that LyX can handle.
  You can modify the viewer und editor Programm that should be used für certain
  formats.
 \end_layout
@@ -44994,7 +45092,7 @@ Update Master Dokument
 \begin_inset Quotes erd
 \end_inset
 
- in the Edit Menü oder the toolbar.
+ in the Edit Menü oder the Werkzeugleiste.
 \end_layout
 
 \begin_layout Standard
@@ -45016,7 +45114,7 @@ Anpassung
 
 \lang english
 Since all conversions from one format to another take place in LyX's temporary
- directory, it is manchmal notwendig to modify a file before copying it
+ directory, it is manchmal notwendig to modify a Datei before copying it
  to the temporary directory in order that the conversion may be performed.
  This is done by specifying a 
 \family sans

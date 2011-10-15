@@ -45514,7 +45514,7 @@ Limpiar la información de todas las sesiones
 \family default
 \lang english
  deletes all information from previous LyX sessions (cursor positions, names
- of last used documents, etc.).
+ of last opened documents, etc.).
 \end_layout
 
 \begin_layout Subsubsection
@@ -45547,9 +45547,32 @@ Hacer copias de seguridad de los documentos originales al guardar
 \family default
 creates a backup copy of the file in the state when it was opened or when
  it was saved the last time.
- It is stored in the same folder as your document and has the file extension
- 
-\begin_inset Quotes eld
+ It is stored in the same folder as your document or in the 
+\family sans
+Backup
+\begin_inset space ~
+\end_inset
+
+directory
+\family default
+, see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\lang spanish
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Rutas"
+
+\end_inset
+
+
+\lang english
+.
+ The backup file has the file extension 
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -45557,7 +45580,7 @@ creates a backup copy of the file in the state when it was opened or when
 .lyx~
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -45829,6 +45852,33 @@ Cambiar
 .
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+By using the option 
+\family sans
+Use system colors
+\family default
+ the color scheme of your OS or window manager is used.
+ The colors 
+\family sans
+cursor, selection, table line, text, URL
+\begin_inset space ~
+\end_inset
+
+label
+\family default
+ and 
+\family sans
+URL
+\begin_inset space ~
+\end_inset
+
+text
+\family default
+ are then not customizable and thus not listed.
+\end_layout
+
 \begin_layout Subsection
 Visualización
 \begin_inset Index idx
@@ -45943,6 +45993,31 @@ Anchura del cursor (pixels)
  permite ajustar el grosor del mismo.
  Un valor cero establece para el grosor del cursor un valor relativo al
  zoom establecido para la tipografía en pantalla.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\lang english
+Scroll below end of document
+\family default
+ is self-explanatory.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In LyX one can jump from word to word by pressing 
+\family sans
+Ctrl+arrow key
+\family default
+.
+ With the option
+\family sans
+ Use Mac-style for cursor moving between words
+\family default
+ the cursor jumps from the end of a word to the end of the next word.
+ Normally it jumps from the beginning to the beginning.
 \end_layout
 
 \begin_layout Standard
@@ -46224,6 +46299,17 @@ Velocidad de desplazamiento de la rueda
  la disminuyen.
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+In the section 
+\family sans
+Scroll wheel zoom
+\family default
+ you can select a key for zooming.
+ When this key is pressed and the mouse wheel is rotated, the text is zoomed.
+\end_layout
+
 \begin_layout Subsection
 Autocompletar
 \begin_inset CommandInset label
@@ -46458,7 +46544,7 @@ status collapsed
 
 \end_inset
 
-XServer Aquí puedes introducir el nombre de una tubería de Unix.
+XServer Aquí puedes introducir el nombre de una tubería de UNIX.
  Esta tubería se emplea para enviar datos desde programas externos a LyX.
 \lang ngerman
 
@@ -46532,6 +46618,45 @@ temporal Directorio en el que se guardarán los archivos temporales generados
 \end_layout
 
 \begin_layout Description
+
+\lang english
+Thesaurus
+\begin_inset space ~
+\end_inset
+
+directory Directory where the thesaurus dictionaries are located.
+ You only need to specify it if the thesaurus does otherwise not work or
+ if you want to use custom/alternative dictionaries.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Hunspell
+\begin_inset space ~
+\end_inset
+
+directory Directory where the dictionaries of the spell checker program
+ 
+\family typewriter
+Hunspell
+\family default
+ are located.
+ You only need to specify it if you are using 
+\family typewriter
+Hunspell
+\family default
+ and spell checking does otherwise not work or if you want to use custom/alterna
+tive dictionaries.
+ For LyX on Windows 
+\family typewriter
+Hunspell
+\family default
+ is the only available spell checker and should work without specifying
+ a directory.
+\end_layout
+
+\begin_layout Description
 Prefijo
 \begin_inset space ~
 \end_inset
@@ -46545,7 +46670,27 @@ PATH Este campo puede contener una lista de rutas («paths») a programas
  En sistemas Unix/Linux, la lista de rutas debe ponerse en el caso de querer
  usar programas externos que no estén en la rutas reconocidas por la variable
  $PATH.
- 
+\end_layout
+
+\begin_layout Description
+
+\lang english
+TEXINPUTS
+\begin_inset space ~
+\end_inset
+
+prefix The TEXINPUTS environment variable allows to use external files which
+ are included to a LyX document via commands in TeX code.
+ This prefix includes by default the document directory (represented by
+ a single '.').
+ The prefix can be set to any list of paths separated by the default separator
+ of the OS (':' on UNIX like systems and ';' on windows).
+ If files are included by LaTeX, the paths listed in the TEXINPUTS prefix
+ will be scanned for the input files.
+ Note that any non-absolute path listed in the TEXINPUTS prefix is considered
+ to be relative to the directory of your LyX file.
+ It is recommended to include always the '.' as one of the paths, otherwise
+ compilation may fail for some documents.
 \end_layout
 
 \begin_layout Section
@@ -46626,34 +46771,18 @@ de
 \end_inset
 
 usuario Aquí puedes seleccionar el idioma de los menús de LyX.
- Desafortunadamente esto no funciona en Mac y Windows.
- Hasta ahora funciona en Linux, pero no todos los idiomas que puedes seleccionar
- aquí tienen su correspondiente traducción en los menús.
  El estado actual de las traducciones se puede consultar en:
-\begin_inset space ~
+\begin_inset Newline newline
 \end_inset
 
 
 \begin_inset CommandInset href
 LatexCommand href
-name "http://www.lyx.org/I18n"
 target "http://www.lyx.org/I18n"
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Description
-
-\family sans
-Idioma
-\begin_inset space ~
-\end_inset
-
-predeterminado
-\family default
- es el que se usa en nuevos documentos.
 \end_layout
 
 \begin_layout Description
