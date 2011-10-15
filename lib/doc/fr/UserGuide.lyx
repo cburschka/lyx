@@ -45476,7 +45476,7 @@ Effacer toutes les informations sur la session
  
 \lang english
 deletes all information from previous LyX sessions (cursor positions, names
- of last used documents, etc.).
+ of last opened documents, etc.).
 \end_layout
 
 \begin_layout Subsubsection
@@ -45508,9 +45508,32 @@ Faire une sauvegarde des documents originaux lors de l'enregistrement
 \lang english
  creates a backup copy of the file in the state when it was opened or when
  it was saved the last time.
- It is stored in the same folder as your document and has the file extension
- 
-\begin_inset Quotes eld
+ It is stored in the same folder as your document or in the 
+\family sans
+Backup
+\begin_inset space ~
+\end_inset
+
+directory
+\family default
+, see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\lang french
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Répertoires"
+
+\end_inset
+
+
+\lang english
+.
+ The backup file has the file extension 
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -45518,7 +45541,7 @@ Faire une sauvegarde des documents originaux lors de l'enregistrement
 .lyx~
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -45935,6 +45958,39 @@ ent visible quand on fait défiler le texte.
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+You can adjust the width of the cursor.
+ If you set the value to zero the thickness of the cursor scales relative
+ to the zoom value you choose for the screen fonts.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\lang english
+Scroll below end of document
+\family default
+ is self-explanatory.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In LyX one can jump from word to word by pressing 
+\family sans
+Ctrl+arrow key
+\family default
+.
+ With the option
+\family sans
+ Use Mac-style for cursor moving between words
+\family default
+ the cursor jumps from the end of a word to the end of the next word.
+ Normally it jumps from the beginning to the beginning.
+\end_layout
+
+\begin_layout Standard
 L'option 
 \family sans
 Trier les environnements par ordre alphabétique
@@ -46315,6 +46371,17 @@ Vitesse de défilement via la molette
  une valeur plus basse le ralentira.
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+In the section 
+\family sans
+Scroll wheel zoom
+\family default
+ you can select a key for zooming.
+ When this key is pressed and the mouse wheel is rotated, the text is zoomed.
+\end_layout
+
 \begin_layout Subsection
 Complétion de saisie
 \begin_inset CommandInset label
@@ -46530,7 +46597,7 @@ serveur
 \begin_inset space ~
 \end_inset
 
-LyX Ici, vous pouvez entrer le nom d'un tube Unix.
+LyX Ici, vous pouvez entrer le nom d'un tube UNIX.
  Ce tube est utilisé pour transférer des informations à partir de programmes
  externes vers LyX.
 \lang ngerman
@@ -46606,6 +46673,45 @@ temporaire Les fichiers temporaires sont enregistrés dans ce répertoire.
 \end_layout
 
 \begin_layout Description
+
+\lang english
+Thesaurus
+\begin_inset space ~
+\end_inset
+
+directory Directory where the thesaurus dictionaries are located.
+ You only need to specify it if the thesaurus does otherwise not work or
+ if you want to use custom/alternative dictionaries.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Hunspell
+\begin_inset space ~
+\end_inset
+
+directory Directory where the dictionaries of the spell checker program
+ 
+\family typewriter
+Hunspell
+\family default
+ are located.
+ You only need to specify it if you are using 
+\family typewriter
+Hunspell
+\family default
+ and spell checking does otherwise not work or if you want to use custom/alterna
+tive dictionaries.
+ For LyX on Windows 
+\family typewriter
+Hunspell
+\family default
+ is the only available spell checker and should work without specifying
+ a directory.
+\end_layout
+
+\begin_layout Description
 Préfixe
 \begin_inset space ~
 \end_inset
@@ -46630,6 +46736,27 @@ OS, la liste des chemins est automatiquement remplie quand LyX est configuré,
 Linux, la liste des chemins ne devra être modifiée que si vous voulez utiliser
  des programmes externes qui ne se trouvent pas dans le chemin normal de
  votre système ($PATH).
+\end_layout
+
+\begin_layout Description
+
+\lang english
+TEXINPUTS
+\begin_inset space ~
+\end_inset
+
+prefix The TEXINPUTS environment variable allows to use external files which
+ are included to a LyX document via commands in TeX code.
+ This prefix includes by default the document directory (represented by
+ a single '.').
+ The prefix can be set to any list of paths separated by the default separator
+ of the OS (':' on UNIX like systems and ';' on windows).
+ If files are included by LaTeX, the paths listed in the TEXINPUTS prefix
+ will be scanned for the input files.
+ Note that any non-absolute path listed in the TEXINPUTS prefix is considered
+ to be relative to the directory of your LyX file.
+ It is recommended to include always the '.' as one of the paths, otherwise
+ compilation may fail for some documents.
 \end_layout
 
 \begin_layout Section
@@ -46701,35 +46828,18 @@ l'interface
 
 utilisateur Ici vous pouvez choisir la langue utilisée pour les menus de
  LyX.
- Malheureusement ceci ne fonctionne pas sous MacOS et Windows.
- Cela marche jusqu'à présent que sous Linux, mais il n'y a pas une traduction
- des menus de LyX pour toutes les langues que vous pouvez choisir.
- Vous trouverez l'état d'avancement des traductions ici : 
+ Vous trouverez l'état d'avancement des traductions ici :
 \begin_inset Newline newline
 \end_inset
 
 
 \begin_inset CommandInset href
 LatexCommand href
-name "http://www.lyx.org/I18n"
 target "http://www.lyx.org/I18n"
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Description
-
-\family sans
-Langue
-\begin_inset space ~
-\end_inset
-
-implicite
-\family default
- est la langue qui sera utilisée dans les nouveaux documents.
- 
 \end_layout
 
 \begin_layout Description
