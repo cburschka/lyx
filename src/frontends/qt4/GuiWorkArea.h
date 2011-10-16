@@ -15,27 +15,15 @@
 
 #include "frontends/WorkArea.h"
 
-#include "DocIterator.h"
-#include "FuncRequest.h"
-#include "qt_helpers.h"
 #include "support/docstring.h"
-#include "support/Timeout.h"
 
 #include <QAbstractScrollArea>
-#include <QMouseEvent>
-#include <QPixmap>
 #include <QTabBar>
 #include <QTabWidget>
-#include <QTimer>
 
-class QContextMenuEvent;
 class QDragEnterEvent;
 class QDropEvent;
-class QKeyEvent;
-class QPaintEvent;
-class QResizeEvent;
 class QToolButton;
-class QWheelEvent;
 class QWidget;
 
 #ifdef CursorShape
@@ -50,48 +38,6 @@ namespace frontend {
 
 class GuiCompleter;
 class GuiView;
-class GuiWorkArea;
-
-/// for emulating triple click
-class DoubleClick {
-public:
-	///
-	DoubleClick() : state(Qt::NoButton), active(false) {}
-	///
-	DoubleClick(QMouseEvent * e) : state(e->button()), active(true) {}
-	///
-	bool operator==(QMouseEvent const & e) { return state == e.button(); }
-	///
-public:
-	///
-	Qt::MouseButton state;
-	///
-	bool active;
-};
-
-/** Qt only emits mouse events when the mouse is being moved, but
- *  we want to generate 'pseudo' mouse events when the mouse button is
- *  pressed and the mouse cursor is below the bottom, or above the top
- *  of the work area. In this way, we'll be able to continue scrolling
- *  (and selecting) the text.
- *
- *  This class stores all the parameters needed to make this happen.
- */
-class SyntheticMouseEvent
-{
-public:
-	SyntheticMouseEvent();
-
-	FuncRequest cmd;
-	Timeout timeout;
-	bool restart_timeout;
-};
-
-
-/**
- * Implementation of the work area (buffer view GUI)
-*/
-class CursorWidget;
 
 class GuiWorkArea : public QAbstractScrollArea, public WorkArea
 {
@@ -114,9 +60,9 @@ public:
 	///
 	void setFullScreen(bool full_screen);
 	/// is GuiView in fullscreen mode?
-	bool isFullScreen();
+	bool isFullScreen() const;
 	///
-	void scheduleRedraw() { schedule_redraw_ = true; }
+	void scheduleRedraw();
 	///
 	BufferView & bufferView();
 	///
@@ -130,24 +76,18 @@ public:
 	/// Process Key pressed event.
 	/// This needs to be public because it is accessed externally by GuiView.
 	void processKeySym(KeySymbol const & key, KeyModifier mod);
-	///
-	void resizeBufferView();
 
-	bool inDialogMode() const { return dialog_mode_; }
-	void setDialogMode(bool mode) { dialog_mode_ = mode; }
+	bool inDialogMode() const;
+	void setDialogMode(bool mode);
 
 	///
-	GuiCompleter & completer() { return *completer_; }
+	GuiCompleter & completer();
 
 	Qt::CursorShape cursorShape() const;
-	void setCursorShape(Qt::CursorShape shape);
-
-	/// Change the cursor when the mouse hovers over a clickable inset
-	void updateCursorShape();
 
 	/// Return the GuiView this workArea belongs to
-	GuiView const & view() const { return *lyx_view_; }
-	GuiView & view() { return *lyx_view_; }
+	GuiView const & view() const;
+	GuiView & view();
 
 Q_SIGNALS:
 	///
@@ -171,23 +111,6 @@ private Q_SLOTS:
 	void fixVerticalScrollBar();
 
 private:
-	friend class GuiCompleter;
-
-	/// update the passed area.
-	void update(int x, int y, int w, int h);
-	///
-	void updateScreen();
-
-	/// paint the cursor and store the background
-	virtual void showCursor(int x, int y, int h,
-		bool l_shape, bool rtl, bool completable);
-
-	/// hide the cursor
-	virtual void removeCursor();
-
-	/// This function should be called to update the buffer readonly status.
-	void setReadOnly(bool);
-
 	/// Update window titles of all users.
 	void updateWindowTitle();
 	///
@@ -221,53 +144,10 @@ private:
 
 	/// The slot connected to SyntheticMouseEvent::timeout.
 	void generateSyntheticMouseEvent();
-	///
-	void dispatch(FuncRequest const & cmd0, KeyModifier = NoModifier);
-	/// hide the visible cursor, if it is visible
-	void hideCursor();
-	/// show the cursor if it is not visible
-	void showCursor();
-	///
-	void updateScrollbar();
 
-	///
-	BufferView * buffer_view_;
-	/// Read only Buffer status cache.
-	bool read_only_;
-	///
-	GuiView * lyx_view_;
-	/// is the cursor currently displayed
-	bool cursor_visible_;
-
-	///
-	QTimer cursor_timeout_;
-	///
-	SyntheticMouseEvent synthetic_mouse_event_;
-	///
-	DoubleClick dc_event_;
-
-	///
-	CursorWidget * cursor_;
-	///
-	QPixmap screen_;
-	///
-	bool need_resize_;
-	///
-	bool schedule_redraw_;
-	///
-	int preedit_lines_;
-
-	///
-	GuiCompleter * completer_;
-
-	/// Special mode in which Esc and Enter (with or without Shift)
-	/// are ignored
-	bool dialog_mode_;
-	/// store the name of the context menu when the mouse is
-	/// pressed. This is used to get the correct context menu 
-	/// when the menu is actually shown (after releasing on Windows)
-	/// and after the DEPM has done its job.
-	docstring context_menu_name_;
+	friend class GuiCompleter;
+	struct Private;
+	Private * const d;
 }; // GuiWorkArea
 
 

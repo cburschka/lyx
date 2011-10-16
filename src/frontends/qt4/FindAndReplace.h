@@ -15,6 +15,8 @@
 #include "GuiWorkArea.h"
 
 #include "DockView.h"
+// This is needed so that ui_FindAndReplaceUi.h can find qt_()
+#include "qt_helpers.h"
 #include "ui_FindAndReplaceUi.h"
 
 #include "BufferView.h"

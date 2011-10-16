@@ -167,6 +167,7 @@ NOMOCHEADER = \
 	GuiImage.h \
 	GuiKeySymbol.h \
 	GuiPainter.h \
+	GuiWorkArea_Private.cpp \
 	LaTeXHighlighter.h \
 	qt_i18n.h \
 	qt_helpers.h \

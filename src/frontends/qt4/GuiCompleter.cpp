@@ -29,6 +29,7 @@
 
 #include <QApplication>
 #include <QHeaderView>
+#include <QKeyEvent>
 #include <QPainter>
 #include <QPixmapCache>
 #include <QScrollBar>

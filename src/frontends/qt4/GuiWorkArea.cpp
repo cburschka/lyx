@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "GuiWorkArea.h"
+#include "GuiWorkArea_Private.h"
 
 #include "ColorCache.h"
 #include "FontLoader.h"
@@ -235,21 +236,24 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 {}
 
 
-GuiWorkArea::GuiWorkArea(QWidget *)
-	: buffer_view_(0), lyx_view_(0),
-	cursor_visible_(false),
-	need_resize_(false), schedule_redraw_(false),
-	preedit_lines_(1), completer_(new GuiCompleter(this, this))
+GuiWorkArea::Private::Private(GuiWorkArea * parent)
+: p(parent), buffer_view_(0), read_only_(false), lyx_view_(0), cursor_visible_(false),
+need_resize_(false), schedule_redraw_(false), preedit_lines_(1),
+completer_(new GuiCompleter(p, p))
+{
+}
+
+
+GuiWorkArea::GuiWorkArea(QWidget * w)
+: d(new Private(this)) 
 {
 }
 
 
 GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & gv)
-	: buffer_view_(0), read_only_(buffer.isReadonly()), lyx_view_(0),
-	cursor_visible_(false),
-	need_resize_(false), schedule_redraw_(false),
-	preedit_lines_(1), completer_(new GuiCompleter(this, this))
+: d(new Private(this))
 {
+	d->read_only_ = buffer.isReadonly();
 	setGuiView(gv);
 	setBuffer(buffer);
 	init();
@@ -259,24 +263,24 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & gv)
 void GuiWorkArea::init()
 {
 	// Setup the signals
-	connect(&cursor_timeout_, SIGNAL(timeout()),
+	connect(&d->cursor_timeout_, SIGNAL(timeout()),
 		this, SLOT(toggleCursor()));
 
 	int const time = QApplication::cursorFlashTime() / 2;
 	if (time > 0) {
-		cursor_timeout_.setInterval(time);
-		cursor_timeout_.start();
+		d->cursor_timeout_.setInterval(time);
+		d->cursor_timeout_.start();
 	} else {
 		// let's initialize this just to be safe
-		cursor_timeout_.setInterval(500);
+		d->cursor_timeout_.setInterval(500);
 	}
 
-	screen_ = QPixmap(viewport()->width(), viewport()->height());
+	d->screen_ = QPixmap(viewport()->width(), viewport()->height());
 	// With Qt4.5 a mouse event will happen before the first paint event
 	// so make sure that the buffer view has an up to date metrics.
-	buffer_view_->resize(viewport()->width(), viewport()->height());
-	cursor_ = new frontend::CursorWidget();
-	cursor_->hide();
+	d->buffer_view_->resize(viewport()->width(), viewport()->height());
+	d->cursor_ = new frontend::CursorWidget();
+	d->cursor_->hide();
 
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setAcceptDrops(true);
@@ -292,9 +296,9 @@ void GuiWorkArea::init()
 
 	setFocusPolicy(Qt::StrongFocus);
 
-	setCursorShape(Qt::IBeamCursor);
+	d->setCursorShape(Qt::IBeamCursor);
 
-	synthetic_mouse_event_.timeout.timeout.connect(
+	d->synthetic_mouse_event_.timeout.timeout.connect(
 		bind(&GuiWorkArea::generateSyntheticMouseEvent,
 					this));
 
@@ -309,18 +313,19 @@ void GuiWorkArea::init()
 	// Must be set when creating custom text editing widgets.
 	setAttribute(Qt::WA_InputMethodEnabled, true);
 
-	dialog_mode_ = false;
+	d->dialog_mode_ = false;
 }
 
 
 GuiWorkArea::~GuiWorkArea()
 {
-	buffer_view_->buffer().workAreaManager().remove(this);
-	delete buffer_view_;
-	delete cursor_;
+	d->buffer_view_->buffer().workAreaManager().remove(this);
+	delete d->buffer_view_;
+	delete d->cursor_;
 	// Completer has a QObject parent and is thus automatically destroyed.
 	// See #4758.
 	// delete completer_;
+	delete d;
 }
 
 
@@ -330,13 +335,13 @@ Qt::CursorShape GuiWorkArea::cursorShape() const
 }
 
 
-void GuiWorkArea::setCursorShape(Qt::CursorShape shape)
+void GuiWorkArea::Private::setCursorShape(Qt::CursorShape shape)
 {
-	viewport()->setCursor(shape);
+	p->viewport()->setCursor(shape);
 }
 
 
-void GuiWorkArea::updateCursorShape()
+void GuiWorkArea::Private::updateCursorShape()
 {
 	setCursorShape(buffer_view_->clickableInset() 
 		? Qt::PointingHandCursor : Qt::IBeamCursor);
@@ -345,14 +350,14 @@ void GuiWorkArea::updateCursorShape()
 
 void GuiWorkArea::setGuiView(GuiView & gv)
 {
-	lyx_view_ = &gv;
+	d->lyx_view_ = &gv;
 }
 
 
 void GuiWorkArea::setBuffer(Buffer & buffer)
 {
-	delete buffer_view_;
-	buffer_view_ = new BufferView(buffer);
+	delete d->buffer_view_;
+	d->buffer_view_ = new BufferView(buffer);
 	buffer.workAreaManager().add(this);
 
 	// HACK: Prevents an additional redraw when the scrollbar pops up
@@ -376,13 +381,13 @@ void GuiWorkArea::fixVerticalScrollBar()
 
 void GuiWorkArea::close()
 {
-	lyx_view_->removeWorkArea(this);
+	d->lyx_view_->removeWorkArea(this);
 }
 
 
 void GuiWorkArea::setFullScreen(bool full_screen)
 {
-	buffer_view_->setFullScreen(full_screen);
+	d->buffer_view_->setFullScreen(full_screen);
 	setFrameStyle(QFrame::NoFrame);
 	if (full_screen) {
 		setFrameStyle(QFrame::NoFrame);
@@ -395,20 +400,20 @@ void GuiWorkArea::setFullScreen(bool full_screen)
 
 BufferView & GuiWorkArea::bufferView()
 {
-	return *buffer_view_;
+	return *d->buffer_view_;
 }
 
 
 BufferView const & GuiWorkArea::bufferView() const
 {
-	return *buffer_view_;
+	return *d->buffer_view_;
 }
 
 
 void GuiWorkArea::stopBlinkingCursor()
 {
-	cursor_timeout_.stop();
-	hideCursor();
+	d->cursor_timeout_.stop();
+	d->hideCursor();
 }
 
 
@@ -420,19 +425,19 @@ void GuiWorkArea::startBlinkingCursor()
 
 	Point p;
 	int h = 0;
-	buffer_view_->cursorPosAndHeight(p, h);
+	d->buffer_view_->cursorPosAndHeight(p, h);
 	// Don't start blinking if the cursor isn't on screen.
-	if (!buffer_view_->cursorInView(p, h))
+	if (!d->buffer_view_->cursorInView(p, h))
 		return;
 
-	showCursor();
+	d->showCursor();
 
 	//we're not supposed to cache this value.
 	int const time = QApplication::cursorFlashTime() / 2;
 	if (time <= 0)
 		return;
-	cursor_timeout_.setInterval(time);
-	cursor_timeout_.start();
+	d->cursor_timeout_.setInterval(time);
+	d->cursor_timeout_.start();
 }
 
 
@@ -444,46 +449,46 @@ void GuiWorkArea::redraw(bool update_metrics)
 
 	// No need to do anything if this is the current view. The BufferView
 	// metrics are already up to date.
-	if (update_metrics || lyx_view_ != guiApp->currentView()
-		|| lyx_view_->currentWorkArea() != this) {
+	if (update_metrics || d->lyx_view_ != guiApp->currentView()
+		|| d->lyx_view_->currentWorkArea() != this) {
 		// FIXME: it would be nice to optimize for the off-screen case.
-		buffer_view_->cursor().fixIfBroken();
-		buffer_view_->updateMetrics();
-		buffer_view_->cursor().fixIfBroken();
+		d->buffer_view_->cursor().fixIfBroken();
+		d->buffer_view_->updateMetrics();
+		d->buffer_view_->cursor().fixIfBroken();
 	}
 
 	// update cursor position, because otherwise it has to wait until
 	// the blinking interval is over
-	if (cursor_visible_) {
-		hideCursor();
-		showCursor();
+	if (d->cursor_visible_) {
+		d->hideCursor();
+		d->showCursor();
 	}
 
 	LYXERR(Debug::WORKAREA, "WorkArea::redraw screen");
-	updateScreen();
+	d->updateScreen();
 	update(0, 0, viewport()->width(), viewport()->height());
 
 	/// \warning: scrollbar updating *must* be done after the BufferView is drawn
 	/// because \c BufferView::updateScrollbar() is called in \c BufferView::draw().
-	updateScrollbar();
-	lyx_view_->updateStatusBar();
+	d->updateScrollbar();
+	d->lyx_view_->updateStatusBar();
 
 	if (lyxerr.debugging(Debug::WORKAREA))
-		buffer_view_->coordCache().dump();
+		d->buffer_view_->coordCache().dump();
 
-	setReadOnly(buffer_view_->buffer().isReadonly());
+	d->setReadOnly(d->buffer_view_->buffer().isReadonly());
 
-	updateCursorShape();
+	d->updateCursorShape();
 }
 
 
 void GuiWorkArea::processKeySym(KeySymbol const & key, KeyModifier mod)
 {
-	if (lyx_view_->isFullScreen() && lyx_view_->menuBar()->isVisible()
+	if (d->lyx_view_->isFullScreen() && d->lyx_view_->menuBar()->isVisible()
 		&& lyxrc.full_screen_menubar) {
 		// FIXME HACK: we should not have to do this here. See related comment
 		// in GuiView::event() (QEvent::ShortcutOverride)
-		lyx_view_->menuBar()->hide();
+		d->lyx_view_->menuBar()->hide();
 	}
 
 	// In order to avoid bad surprise in the middle of an operation,
@@ -494,7 +499,7 @@ void GuiWorkArea::processKeySym(KeySymbol const & key, KeyModifier mod)
 }
 
 
-void GuiWorkArea::dispatch(FuncRequest const & cmd0, KeyModifier mod)
+void GuiWorkArea::Private::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 {
 	// Handle drag&drop
 	if (cmd0.action() == LFUN_FILE_OPEN) {
@@ -522,7 +527,7 @@ void GuiWorkArea::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 	// In order to avoid bad surprise in the middle of an operation, we better stop
 	// the blinking cursor.
 	if (notJustMovingTheMouse)
-		stopBlinkingCursor();
+		p->stopBlinkingCursor();
 
 	buffer_view_->mouseEventDispatch(cmd);
 
@@ -541,23 +546,23 @@ void GuiWorkArea::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 		lyx_view_->clearMessage();
 
 		// Show the cursor immediately after any operation
-		startBlinkingCursor();
+		p->startBlinkingCursor();
 	}
 
 	updateCursorShape();
 }
 
 
-void GuiWorkArea::resizeBufferView()
+void GuiWorkArea::Private::resizeBufferView()
 {
 	// WARNING: Please don't put any code that will trigger a repaint here!
 	// We are already inside a paint event.
 	lyx_view_->setBusy(true);
-	Point p;
+	Point point;
 	int h = 0;
-	buffer_view_->cursorPosAndHeight(p, h);
-	bool const cursor_in_view = buffer_view_->cursorInView(p, h);
-	buffer_view_->resize(viewport()->width(), viewport()->height());
+	buffer_view_->cursorPosAndHeight(point, h);
+	bool const cursor_in_view = buffer_view_->cursorInView(point, h);
+	buffer_view_->resize(p->viewport()->width(), p->viewport()->height());
 	if (cursor_in_view)
 		buffer_view_->scrollToCursor();
 	updateScreen();
@@ -574,7 +579,7 @@ void GuiWorkArea::resizeBufferView()
 }
 
 
-void GuiWorkArea::showCursor()
+void GuiWorkArea::Private::showCursor()
 {
 	if (cursor_visible_)
 		return;
@@ -611,7 +616,7 @@ void GuiWorkArea::showCursor()
 }
 
 
-void GuiWorkArea::hideCursor()
+void GuiWorkArea::Private::hideCursor()
 {
 	if (!cursor_visible_)
 		return;
@@ -623,35 +628,35 @@ void GuiWorkArea::hideCursor()
 
 void GuiWorkArea::toggleCursor()
 {
-	if (cursor_visible_)
-		hideCursor();
+	if (d->cursor_visible_)
+		d->hideCursor();
 	else
-		showCursor();
+		d->showCursor();
 }
 
 
-void GuiWorkArea::updateScrollbar()
+void GuiWorkArea::Private::updateScrollbar()
 {
 	ScrollbarParameters const & scroll_ = buffer_view_->scrollbarParameters();
 	// WARNING: don't touch at the scrollbar value like this:
 	//   verticalScrollBar()->setValue(scroll_.position);
 	// because this would cause a recursive signal/slot calling with
 	// GuiWorkArea::scrollTo
-	verticalScrollBar()->setRange(scroll_.min, scroll_.max);
-	verticalScrollBar()->setPageStep(scroll_.page_step);
-	verticalScrollBar()->setSingleStep(scroll_.single_step);
-	verticalScrollBar()->setSliderPosition(scroll_.position);
+	p->verticalScrollBar()->setRange(scroll_.min, scroll_.max);
+	p->verticalScrollBar()->setPageStep(scroll_.page_step);
+	p->verticalScrollBar()->setSingleStep(scroll_.single_step);
+	p->verticalScrollBar()->setSliderPosition(scroll_.position);
 }
 
 
 void GuiWorkArea::scrollTo(int value)
 {
 	stopBlinkingCursor();
-	buffer_view_->scrollDocView(value, true);
+	d->buffer_view_->scrollDocView(value, true);
 
 	if (lyxrc.cursor_follows_scrollbar) {
-		buffer_view_->setCursorFromScrollbar();
-		lyx_view_->updateLayoutList();
+		d->buffer_view_->setCursorFromScrollbar();
+		d->lyx_view_->updateLayoutList();
 	}
 	// Show the cursor immediately after any operation.
 	startBlinkingCursor();
@@ -667,7 +672,7 @@ bool GuiWorkArea::event(QEvent * e)
 		if (lyxrc.use_tooltip) {
 			QPoint pos = helpEvent->pos();
 			if (pos.x() < viewport()->width()) {
-				QString s = toqstr(buffer_view_->toolTip(pos.x(), pos.y()));
+				QString s = toqstr(d->buffer_view_->toolTip(pos.x(), pos.y()));
 				QToolTip::showText(helpEvent->globalPos(), s);
 			}
 			else
@@ -705,10 +710,10 @@ void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 	docstring name;
 	if (e->reason() == QContextMenuEvent::Mouse)
 		// the menu name is set on mouse press
-		name = context_menu_name_;
+		name = d->context_menu_name_;
 	else {
 		QPoint pos = e->pos();
-		Cursor const & cur = buffer_view_->cursor();
+		Cursor const & cur = d->buffer_view_->cursor();
 		if (e->reason() == QContextMenuEvent::Keyboard && cur.inTexted()) {
 			// Do not access the context menu of math right in front of before
 			// the cursor. This does not work when the cursor is in text.
@@ -721,7 +726,7 @@ void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 					++pos.rx();
 			}
 		}
-		name = buffer_view_->contextMenu(pos.x(), pos.y());
+		name = d->buffer_view_->contextMenu(pos.x(), pos.y());
 	}
 	
 	if (name.empty()) {
@@ -731,7 +736,7 @@ void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 	// always show mnemonics when the keyboard is used to show the context menu
 	// FIXME: This should be fixed in Qt itself
 	bool const keyboard = (e->reason() == QContextMenuEvent::Keyboard);
-	QMenu * menu = guiApp->menus().menu(toqstr(name), *lyx_view_, keyboard);
+	QMenu * menu = guiApp->menus().menu(toqstr(name), *d->lyx_view_, keyboard);
 	if (!menu) {
 		QAbstractScrollArea::contextMenuEvent(e);
 		return;
@@ -746,8 +751,8 @@ void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 void GuiWorkArea::focusInEvent(QFocusEvent * e)
 {
 	LYXERR(Debug::DEBUG, "GuiWorkArea::focusInEvent(): " << this << endl);
-	if (lyx_view_->currentWorkArea() != this)
-		lyx_view_->setCurrentWorkArea(this);
+	if (d->lyx_view_->currentWorkArea() != this)
+		d->lyx_view_->setCurrentWorkArea(this);
 
 	startBlinkingCursor();
 	QAbstractScrollArea::focusInEvent(e);
@@ -764,11 +769,11 @@ void GuiWorkArea::focusOutEvent(QFocusEvent * e)
 
 void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 {
-	if (dc_event_.active && dc_event_ == *e) {
-		dc_event_.active = false;
+	if (d->dc_event_.active && d->dc_event_ == *e) {
+		d->dc_event_.active = false;
 		FuncRequest cmd(LFUN_MOUSE_TRIPLE, e->x(), e->y(),
 			q_button_state(e->button()));
-		dispatch(cmd);
+		d->dispatch(cmd);
 		e->accept();
 		return;
 	}
@@ -777,7 +782,7 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 
 	FuncRequest const cmd(LFUN_MOUSE_PRESS, e->x(), e->y(),
 		q_button_state(e->button()));
-	dispatch(cmd, q_key_state(e->modifiers()));
+	d->dispatch(cmd, q_key_state(e->modifiers()));
 
 	// Save the context menu on mouse press, because also the mouse
 	// cursor is set on mouse press. Afterwards, we can either release
@@ -785,7 +790,7 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 	// due to the DEPM. We need to do this after the mouse has been
 	// set in dispatch(), because the selection state might change.
 	if (e->button() == Qt::RightButton)
-		context_menu_name_ = buffer_view_->contextMenu(e->x(), e->y());
+		d->context_menu_name_ = d->buffer_view_->contextMenu(e->x(), e->y());
 
 	e->accept();
 }
@@ -793,12 +798,12 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 
 void GuiWorkArea::mouseReleaseEvent(QMouseEvent * e)
 {
-	if (synthetic_mouse_event_.timeout.running())
-		synthetic_mouse_event_.timeout.stop();
+	if (d->synthetic_mouse_event_.timeout.running())
+		d->synthetic_mouse_event_.timeout.stop();
 
 	FuncRequest const cmd(LFUN_MOUSE_RELEASE, e->x(), e->y(),
 			      q_button_state(e->button()));
-	dispatch(cmd);
+	d->dispatch(cmd);
 	e->accept();
 }
 
@@ -823,9 +828,9 @@ void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 		else
 			cmd.set_y(e->y() + 21);
 		// Store the event, to be handled when the timeout expires.
-		synthetic_mouse_event_.cmd = cmd;
+		d->synthetic_mouse_event_.cmd = cmd;
 
-		if (synthetic_mouse_event_.timeout.running()) {
+		if (d->synthetic_mouse_event_.timeout.running()) {
 			// Discard the event. Note that it _may_ be handled
 			// when the timeout expires if
 			// synthetic_mouse_event_.cmd has not been overwritten.
@@ -836,22 +841,22 @@ void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 			return;
 		}
 		
-		synthetic_mouse_event_.restart_timeout = true;
-		synthetic_mouse_event_.timeout.start();
+		d->synthetic_mouse_event_.restart_timeout = true;
+		d->synthetic_mouse_event_.timeout.start();
 		// Fall through to handle this event...
 
-	} else if (synthetic_mouse_event_.timeout.running()) {
+	} else if (d->synthetic_mouse_event_.timeout.running()) {
 		// Store the event, to be possibly handled when the timeout
 		// expires.
 		// Once the timeout has expired, normal control is returned
 		// to mouseMoveEvent (restart_timeout = false).
 		// This results in a much smoother 'feel' when moving the
 		// mouse back into the work area.
-		synthetic_mouse_event_.cmd = cmd;
-		synthetic_mouse_event_.restart_timeout = false;
+		d->synthetic_mouse_event_.cmd = cmd;
+		d->synthetic_mouse_event_.restart_timeout = false;
 		return;
 	}
-	dispatch(cmd);
+	d->dispatch(cmd);
 }
 
 
@@ -904,14 +909,14 @@ void GuiWorkArea::wheelEvent(QWheelEvent * ev)
 
 void GuiWorkArea::generateSyntheticMouseEvent()
 {
-	int const e_y = synthetic_mouse_event_.cmd.y();
-	int const wh = buffer_view_->workHeight();
+	int const e_y = d->synthetic_mouse_event_.cmd.y();
+	int const wh = d->buffer_view_->workHeight();
 	bool const up = e_y < 0;
 	bool const down = e_y > wh;
 
 	// Set things off to generate the _next_ 'pseudo' event.
 	int step = 50;
-	if (synthetic_mouse_event_.restart_timeout) {
+	if (d->synthetic_mouse_event_.restart_timeout) {
 		// This is some magic formulae to determine the speed
 		// of scrolling related to the position of the mouse.
 		int time = 200;
@@ -924,37 +929,37 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 				time = 40;
 			}
 		}
-		synthetic_mouse_event_.timeout.setTimeout(time);
-		synthetic_mouse_event_.timeout.start();
+		d->synthetic_mouse_event_.timeout.setTimeout(time);
+		d->synthetic_mouse_event_.timeout.start();
 	}
 
 	// Can we scroll further ?
 	int const value = verticalScrollBar()->value();
 	if (value == verticalScrollBar()->maximum()
 		  || value == verticalScrollBar()->minimum()) {
-		synthetic_mouse_event_.timeout.stop();
+		d->synthetic_mouse_event_.timeout.stop();
 		return;
 	}
 
 	// Scroll
 	if (step <= 2 * wh) {
-		buffer_view_->scroll(up ? -step : step);
-		buffer_view_->updateMetrics();
+		d->buffer_view_->scroll(up ? -step : step);
+		d->buffer_view_->updateMetrics();
 	} else {
-		buffer_view_->scrollDocView(value + up ? -step : step, false);
+		d->buffer_view_->scrollDocView(value + up ? -step : step, false);
 	}
 
 	// In which paragraph do we have to set the cursor ?
-	Cursor & cur = buffer_view_->cursor();
+	Cursor & cur = d->buffer_view_->cursor();
 	// FIXME: we don't know howto handle math.
 	Text * text = cur.text();
 	if (!text)
 		return;
-	TextMetrics const & tm = buffer_view_->textMetrics(text);
+	TextMetrics const & tm = d->buffer_view_->textMetrics(text);
 
-	pair<pit_type, const ParagraphMetrics *> p = up ? tm.first() : tm.last();
-	ParagraphMetrics const & pm = *p.second;
-	pit_type const pit = p.first;
+	pair<pit_type, const ParagraphMetrics *> pp = up ? tm.first() : tm.last();
+	ParagraphMetrics const & pm = *pp.second;
+	pit_type const pit = pp.first;
 
 	if (pm.rows().empty())
 		return;
@@ -973,7 +978,7 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 	
 	// Find the position of the cursor
 	bool bound;
-	int x = synthetic_mouse_event_.cmd.x();
+	int x = d->synthetic_mouse_event_.cmd.x();
 	pos_type const pos = rit->pos() + tm.getColumnNearX(pit, *rit, x, bound);
 
 	// Set the cursor
@@ -981,7 +986,7 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 	cur.pos() = pos;
 	cur.boundary(bound);
 
-	buffer_view_->buffer().changed(false);
+	d->buffer_view_->buffer().changed(false);
 	return;
 }
 
@@ -989,7 +994,7 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 {
 	// Do not process here some keys if dialog_mode_ is set
-	if (dialog_mode_
+	if (d->dialog_mode_
 		&& (ev->modifiers() == Qt::NoModifier
 		    || ev->modifiers() == Qt::ShiftModifier)
 		&& (ev->key() == Qt::Key_Escape
@@ -1001,11 +1006,11 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 	}
 
 	// intercept some keys if completion popup is visible
-	if (completer_->popupVisible()) {
+	if (d->completer_->popupVisible()) {
 		switch (ev->key()) {
 		case Qt::Key_Enter:
 		case Qt::Key_Return:
-			completer_->activate();
+			d->completer_->activate();
 			ev->accept();
 			return;
 		}
@@ -1059,19 +1064,19 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 
 void GuiWorkArea::doubleClickTimeout()
 {
-	dc_event_.active = false;
+	d->dc_event_.active = false;
 }
 
 
 void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * ev)
 {
-	dc_event_ = DoubleClick(ev);
+	d->dc_event_ = DoubleClick(ev);
 	QTimer::singleShot(QApplication::doubleClickInterval(), this,
 			   SLOT(doubleClickTimeout()));
 	FuncRequest cmd(LFUN_MOUSE_DOUBLE,
 			ev->x(), ev->y(),
 			q_button_state(ev->button()));
-	dispatch(cmd);
+	d->dispatch(cmd);
 	ev->accept();
 }
 
@@ -1079,14 +1084,14 @@ void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * ev)
 void GuiWorkArea::resizeEvent(QResizeEvent * ev)
 {
 	QAbstractScrollArea::resizeEvent(ev);
-	need_resize_ = true;
+	d->need_resize_ = true;
 	ev->accept();
 }
 
 
-void GuiWorkArea::update(int x, int y, int w, int h)
+void GuiWorkArea::Private::update(int x, int y, int w, int h)
 {
-	viewport()->update(x, y, w, h);
+	p->viewport()->update(x, y, w, h);
 }
 
 
@@ -1096,30 +1101,30 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 	// LYXERR(Debug::PAINTING, "paintEvent begin: x: " << rc.x()
 	//	<< " y: " << rc.y() << " w: " << rc.width() << " h: " << rc.height());
 
-	if (need_resize_) {
-		screen_ = QPixmap(viewport()->width(), viewport()->height());
-		resizeBufferView();
-		if (cursor_visible_) {
-			hideCursor();
-			showCursor();
+	if (d->need_resize_) {
+		d->screen_ = QPixmap(viewport()->width(), viewport()->height());
+		d->resizeBufferView();
+		if (d->cursor_visible_) {
+			d->hideCursor();
+			d->showCursor();
 		}
 	}
 
 	QPainter pain(viewport());
-	pain.drawPixmap(rc, screen_, rc);
-	cursor_->draw(pain);
+	pain.drawPixmap(rc, d->screen_, rc);
+	d->cursor_->draw(pain);
 	ev->accept();
 }
 
 
-void GuiWorkArea::updateScreen()
+void GuiWorkArea::Private::updateScreen()
 {
 	GuiPainter pain(&screen_);
 	buffer_view_->draw(pain);
 }
 
 
-void GuiWorkArea::showCursor(int x, int y, int h,
+void GuiWorkArea::Private::showCursor(int x, int y, int h,
 	bool l_shape, bool rtl, bool completable)
 {
 	if (schedule_redraw_) {
@@ -1127,28 +1132,28 @@ void GuiWorkArea::showCursor(int x, int y, int h,
 		// the size of the new graphics, it's better the update everything.
 		// We can't use redraw() here because this would trigger a infinite
 		// recursive loop with showCursor().
-		buffer_view_->resize(viewport()->width(), viewport()->height());
+		buffer_view_->resize(p->viewport()->width(), p->viewport()->height());
 		updateScreen();
 		updateScrollbar();
-		viewport()->update(QRect(0, 0, viewport()->width(), viewport()->height()));
+		p->viewport()->update(QRect(0, 0, p->viewport()->width(), p->viewport()->height()));
 		schedule_redraw_ = false;
 		// Show the cursor immediately after the update.
 		hideCursor();
-		toggleCursor();
+		p->toggleCursor();
 		return;
 	}
 
 	cursor_->update(x, y, h, l_shape, rtl, completable);
 	cursor_->show();
-	viewport()->update(cursor_->rect());
+	p->viewport()->update(cursor_->rect());
 }
 
 
-void GuiWorkArea::removeCursor()
+void GuiWorkArea::Private::removeCursor()
 {
 	cursor_->hide();
 	//if (!qApp->focusWidget())
-		viewport()->update(cursor_->rect());
+		p->viewport()->update(cursor_->rect());
 }
 
 
@@ -1186,22 +1191,22 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 		return;
 	}
 
-	GuiPainter pain(&screen_);
-	buffer_view_->updateMetrics();
-	buffer_view_->draw(pain);
-	FontInfo font = buffer_view_->cursor().getFont().fontInfo();
+	GuiPainter pain(&d->screen_);
+	d->buffer_view_->updateMetrics();
+	d->buffer_view_->draw(pain);
+	FontInfo font = d->buffer_view_->cursor().getFont().fontInfo();
 	FontMetrics const & fm = theFontMetrics(font);
 	int height = fm.maxHeight();
-	int cur_x = cursor_->rect().left();
-	int cur_y = cursor_->rect().bottom();
+	int cur_x = d->cursor_->rect().left();
+	int cur_y = d->cursor_->rect().bottom();
 
 	// redraw area of preedit string.
 	update(0, cur_y - height, viewport()->width(),
-		(height + 1) * preedit_lines_);
+		(height + 1) * d->preedit_lines_);
 
 	if (preedit_string.empty()) {
 		last_width = false;
-		preedit_lines_ = 1;
+		d->preedit_lines_ = 1;
 		e->accept();
 		return;
 	}
@@ -1249,10 +1254,10 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 		rLength = 0;
 	}
 
-	int const right_margin = buffer_view_->rightMargin();
+	int const right_margin = d->buffer_view_->rightMargin();
 	Painter::preedit_style ps;
 	// Most often there would be only one line:
-	preedit_lines_ = 1;
+	d->preedit_lines_ = 1;
 	for (size_t pos = 0; pos != preedit_length; ++pos) {
 		char_type const typed_char = preedit_string[pos];
 		// reset preedit string style
@@ -1262,7 +1267,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 		if (cur_x + fm.width(typed_char) > viewport()->width() - right_margin) {
 			cur_x = right_margin;
 			cur_y += height + 1;
-			++preedit_lines_;
+			++d->preedit_lines_;
 		}
 		// preedit strings are displayed with dashed underline
 		// and partial strings are displayed white on black indicating
@@ -1283,8 +1288,8 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	}
 
 	// update the preedit string screen area.
-	update(0, cur_y - preedit_lines_*height, viewport()->width(),
-		(height + 1) * preedit_lines_);
+	update(0, cur_y - d->preedit_lines_*height, viewport()->width(),
+		(height + 1) * d->preedit_lines_);
 
 	// Don't forget to accept the event!
 	e->accept();
@@ -1298,11 +1303,11 @@ QVariant GuiWorkArea::inputMethodQuery(Qt::InputMethodQuery query) const
 		// this is the CJK-specific composition window position and
 		// the context menu position when the menu key is pressed.
 		case Qt::ImMicroFocus:
-			cur_r = cursor_->rect();
-			if (preedit_lines_ != 1)
+			cur_r = d->cursor_->rect();
+			if (d->preedit_lines_ != 1)
 				cur_r.moveLeft(10);
 			cur_r.moveBottom(cur_r.bottom()
-				+ cur_r.height() * (preedit_lines_ - 1));
+				+ cur_r.height() * (d->preedit_lines_ - 1));
 			// return lower right of cursor in LyX.
 			return cur_r;
 		default:
@@ -1316,7 +1321,7 @@ void GuiWorkArea::updateWindowTitle()
 	docstring maximize_title;
 	docstring minimize_title;
 
-	Buffer const & buf = buffer_view_->buffer();
+	Buffer const & buf = d->buffer_view_->buffer();
 	FileName const file_name = buf.fileName();
 	if (!file_name.empty()) {
 		maximize_title = file_name.displayName(130);
@@ -1344,22 +1349,56 @@ void GuiWorkArea::updateWindowTitle()
 }
 
 
-void GuiWorkArea::setReadOnly(bool read_only)
+void GuiWorkArea::Private::setReadOnly(bool read_only)
 {
 	if (read_only_ == read_only)
 		return;
 	read_only_ = read_only;
-	updateWindowTitle();
-	if (this == lyx_view_->currentWorkArea())
+	p->updateWindowTitle();
+	if (p == lyx_view_->currentWorkArea())
 		lyx_view_->updateDialogs();
 }
 
 
-bool GuiWorkArea::isFullScreen()
+bool GuiWorkArea::isFullScreen() const
 {
-	return lyx_view_ && lyx_view_->isFullScreen();
+	return d->lyx_view_ && d->lyx_view_->isFullScreen();
 }
 
+
+void GuiWorkArea::scheduleRedraw()
+{
+	d->schedule_redraw_ = true;
+}
+
+
+bool GuiWorkArea::inDialogMode() const
+{
+	return d->dialog_mode_;
+}
+
+
+void GuiWorkArea::setDialogMode(bool mode)
+{
+	d->dialog_mode_ = mode;
+}
+
+
+GuiCompleter & GuiWorkArea::completer()
+{
+	return *d->completer_;
+}
+
+GuiView const & GuiWorkArea::view() const
+{
+	return *d->lyx_view_;
+}
+
+
+GuiView & GuiWorkArea::view()
+{
+	return *d->lyx_view_;
+}
 
 ////////////////////////////////////////////////////////////////////
 //
