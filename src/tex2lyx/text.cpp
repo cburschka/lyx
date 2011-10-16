@@ -683,7 +683,7 @@ void parse_arguments(string const & command,
 			break;
 		case optional:
 			// true because we must not eat whitespace
-			// if an optional arg follows me must not strip the
+			// if an optional arg follows we must not strip the
 			// brackets from this one
 			if (i < no_arguments - 1 &&
 			    template_arguments[i+1] == optional)
@@ -1201,6 +1201,49 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			break;
 		}
 		context.check_deeper(os);
+		// handle known optional and required arguments
+		// layouts require all optional arguments before the required ones
+		// Unfortunately LyX can't handle arguments of list arguments (bug 7468):
+		// It is impossible to place anything after the environment name,
+		// but before the first \\item.
+		if (context.layout->latextype == LATEX_ENVIRONMENT) {
+			bool need_layout = true;
+			unsigned int optargs = 0;
+			while (optargs < context.layout->optargs) {
+				eat_whitespace(p, os, context, false);
+				if (p.next_token().cat() == catEscape ||
+				    p.next_token().character() != '[') 
+					break;
+				p.get_token(); // eat '['
+				if (need_layout) {
+					context.check_layout(os);
+					need_layout = false;
+				}
+				begin_inset(os, "OptArg\n");
+				os << "status collapsed\n\n";
+				parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
+				end_inset(os);
+				eat_whitespace(p, os, context, false);
+				++optargs;
+			}
+			unsigned int reqargs = 0;
+			while (LYX_FORMAT >= 392 && reqargs < context.layout->reqargs) {
+				eat_whitespace(p, os, context, false);
+				if (p.next_token().cat() != catBegin)
+					break;
+				p.get_token(); // eat '{'
+				if (need_layout) {
+					context.check_layout(os);
+					need_layout = false;
+				}
+				begin_inset(os, "OptArg\n");
+				os << "status collapsed\n\n";
+				parse_text_in_inset(p, os, FLAG_BRACE_LAST, outer, context);
+				end_inset(os);
+				eat_whitespace(p, os, context, false);
+				++reqargs;
+			}
+		}
 		parse_text(p, os, FLAG_END, outer, context);
 		context.check_end_layout(os);
 		if (parent_context.deeper_paragraph) {
