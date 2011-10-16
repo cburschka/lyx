@@ -94,21 +94,9 @@ void lyx_exit(int)
 {}
 
 
-string const trim(string const & a, char const * p)
+string const trimSpaceAndEol(string const & a)
 {
-	// LASSERT(p, /**/);
-
-	if (a.empty() || !*p)
-		return a;
-
-	size_t r = a.find_last_not_of(p);
-	size_t l = a.find_first_not_of(p);
-
-	// Is this the minimal test? (lgb)
-	if (r == string::npos && l == string::npos)
-		return string();
-
-	return a.substr(l, r - l + 1);
+	return trim(a, " \t\n\r");
 }
 
 

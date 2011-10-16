@@ -274,7 +274,7 @@ vector<string> split_options(string const & input)
 	while (p.good()) {
 		Token const & t = p.get_token();
 		if (t.asInput() == ",") {
-			options.push_back(trim(option));
+			options.push_back(trimSpaceAndEol(option));
 			option.erase();
 		} else if (t.asInput() == "=") {
 			option += '=';
@@ -286,7 +286,7 @@ vector<string> split_options(string const & input)
 	}
 
 	if (!option.empty())
-		options.push_back(trim(option));
+		options.push_back(trimSpaceAndEol(option));
 
 	return options;
 }
@@ -949,7 +949,7 @@ void parse_preamble(Parser & p, ostream & os,
 			vector<string>::const_iterator it  = vecnames.begin();
 			vector<string>::const_iterator end = vecnames.end();
 			for (; it != end; ++it)
-				handle_package(p, trim(*it), options, 
+				handle_package(p, trimSpaceAndEol(*it), options, 
 					       in_lyx_preamble);
 		}
 
@@ -986,7 +986,7 @@ void parse_preamble(Parser & p, ostream & os,
 
 		else if (t.cs() == "newcolumntype") {
 			string const name = p.getArg('{', '}');
-			trim(name);
+			trimSpaceAndEol(name);
 			int nargs = 0;
 			string opts = p.getOpt();
 			if (!opts.empty()) {

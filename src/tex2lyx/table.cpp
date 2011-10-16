@@ -321,7 +321,7 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 				break;
 			case '>': {
 				// text before the next column
-				string const s = trim(p.verbatim_item());
+				string const s = trimSpaceAndEol(p.verbatim_item());
 				if (next.special.empty() &&
 				    next.align == 'n') {
 					// Maybe this can be converted to a
@@ -341,7 +341,7 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 			}
 			case '<': {
 				// text after the last column
-				string const s = trim(p.verbatim_item());
+				string const s = trimSpaceAndEol(p.verbatim_item());
 				if (colinfo.empty())
 					// This is not possible in LaTeX.
 					cerr << "Ignoring separator '<{"

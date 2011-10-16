@@ -233,8 +233,8 @@ void split_map(string const & s, map<string, string> & res, vector<string> & key
 	keys.resize(v.size());
 	for (size_t i = 0; i < v.size(); ++i) {
 		size_t const pos   = v[i].find('=');
-		string const index = trim(v[i].substr(0, pos));
-		string const value = trim(v[i].substr(pos + 1, string::npos));
+		string const index = trimSpaceAndEol(v[i].substr(0, pos));
+		string const value = trimSpaceAndEol(v[i].substr(pos + 1, string::npos));
 		res[index] = value;
 		keys[i] = index;
 	}
@@ -265,15 +265,15 @@ bool splitLatexLength(string const & len, string & value, string & unit)
 			return false;
 		}
 	} else {
-		value = trim(string(length, 0, i));
+		value = trimSpaceAndEol(string(length, 0, i));
 	}
 	if (value == "-")
 		value = "-1.0";
 	// 'cM' is a valid LaTeX length unit. Change it to 'cm'
 	if (contains(len, '\\'))
-		unit = trim(string(len, i));
+		unit = trimSpaceAndEol(string(len, i));
 	else
-		unit = ascii_lowercase(trim(string(len, i)));
+		unit = ascii_lowercase(trimSpaceAndEol(string(len, i)));
 	return true;
 }
 
@@ -2824,7 +2824,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// try to see whether the string is in unicodesymbols
 			docstring rem;
 			string command = t.asInput() + "{" 
-				+ trim(p.verbatim_item())
+				+ trimSpaceAndEol(p.verbatim_item())
 				+ "}";
 			docstring s = encodings.fromLaTeXCommand(from_utf8(command), rem);
 			if (!s.empty()) {

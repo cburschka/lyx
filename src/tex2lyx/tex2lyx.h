@@ -82,7 +82,7 @@ void handle_tabular(Parser & p, std::ostream & os, bool is_long_tabular,
 
 
 /// in tex2lyx.cpp
-std::string const trim(std::string const & a, char const * p = " \t\n\r");
+std::string const trimSpaceAndEol(std::string const & a);
 
 void split(std::string const & s, std::vector<std::string> & result,
 	char delim = ',');
