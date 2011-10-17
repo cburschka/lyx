@@ -1529,7 +1529,24 @@
 #
 # general punctuation
 #
-0x2010 "-"                        "" "" # HYPHEN # identic in LaTeX to FIGURE DASH
+0x2000 "\\enskip"                 "" "" "\\enskip" "" # EN QUAD
+0x2001 "\\quad"                   "" "" "\\quad" "" # EM QUAD
+0x2002 "\\enskip"                 "" "" "\\enskip" "" # EN SPACE
+0x2003 "\\quad"                   "" "" "\\quad" "" # EM SPACE
+0x2004 "\\;"                      "" "" "\\;" "" # THREE-PER-EM SPACE
+0x2005 "\\:"                      "" "" "\\:" "" # FOUR-PER-EM SPACE
+0x2006 "\\,"                      "" "" "\\," "" # SIX-PER-EM SPACE
+#0x2007 ""                         "" "" "" "" # FIGURE SPACE
+#0x2008 ""                         "" "" "" "" # PUNCTUATION SPACE
+0x2009 "\\,"                      "" "" "\\," "" # THIN SPACE
+#0x200a ""                         "" "" "" "" # HAIR SPACE
+#0x200b ""                         "" "" "" "" # ZERO WIDTH SPACE
+#0x200c ""                         "" "" "" "" # ZERO WIDTH NON-JOINER
+#0x200d ""                         "" "" "" "" # ZERO WIDTH JOINER
+#0x200e ""                         "" "" "" "" # LEFT-TO-RIGHT MARK
+#0x200f ""                         "" "" "" "" # RIGHT-TO-LEFT MARK
+0x2010 "-"                        "" "" "" "" # HYPHEN # identic in LaTeX to FIGURE DASH
+#0x2011 ""                         "" "" "" "" # NON-BREAKING HYPHEN
 0x2012 "-"                        "" "" # FIGURE DASH
 0x2013 "\\textendash"             "" "" # EN DASH
 0x2014 "\\textemdash"             "" "" # EM DASH
@@ -1579,6 +1596,7 @@
 0x205d "\\vdots"                  "" "" # TRICOLON # ≈ VERTICAL ELLIPSIS
 #0x205e ""                         "" "" "" "" # VERTICAL FOUR DOTS
 0x205f ""                         "" "" "\\:" "" # MEDIUM MATHEMATICAL SPACE
+#0x2060 ""                         "" "" "" "" # WORD JOINER
 0x2070 "\\textsuperscript{0}"     "" "" "{{}^0}" "" # SUPERSCRIPT ZERO
 0x2071 "\\textsuperscript{i}"     "" "" "{{}^i}" "" # SUPERSCRIPT LATIN SMALL LETTER I
 0x2074 "\\textsuperscript{4}"     "" "" "{{}^4}" "" # SUPERSCRIPT FOUR

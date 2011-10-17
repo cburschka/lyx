@@ -646,9 +646,17 @@ int InsetSpace::plaintext(odocstream & os, OutputParams const &) const
 	case InsetSpaceParams::DOWNBRACEFILL:
 		os << "/-^-\\";
 		return 5;
+	case InsetSpaceParams::VISIBLE:
+		os.put(0x2423);
+		return 1;
 	case InsetSpaceParams::ENSKIP:
 		os.put(0x2002);
 		return 1;
+	case InsetSpaceParams::ENSPACE:
+		os.put(0x2060); // WORD JOINER, makes the breakable en space unbreakable
+		os.put(0x2002);
+		os.put(0x2060); // WORD JOINER, makes the breakable en space unbreakable
+		return 3;
 	case InsetSpaceParams::QUAD:
 		os.put(0x2003);
 		return 1;
@@ -738,20 +746,27 @@ docstring InsetSpace::xhtml(XHTMLStream & xs, OutputParams const &) const
 		output = " ";
 		break;
 	case InsetSpaceParams::ENSKIP:
-	case InsetSpaceParams::ENSPACE:
 		output ="&ensp;";
 		break;
+	case InsetSpaceParams::ENSPACE:
+		output ="&#x2060;&ensp;&#x2060;";
+		break;
 	case InsetSpaceParams::QQUAD:
-		output ="&emsp;";
+		output ="&emsp;&emsp;";
+		break;
 	case InsetSpaceParams::THICK:
+		output ="&#x2004;";
+		break;
 	case InsetSpaceParams::QUAD:
 		output ="&emsp;";
+		break;
+	case InsetSpaceParams::MEDIUM:
+		output ="&#x2005;";
 		break;
 	case InsetSpaceParams::THIN:
 		output ="&thinsp;";
 		break;
 	case InsetSpaceParams::PROTECTED:
-	case InsetSpaceParams::MEDIUM:
 	case InsetSpaceParams::NEGTHIN:
 	case InsetSpaceParams::NEGMEDIUM:
 	case InsetSpaceParams::NEGTHICK:
@@ -773,9 +788,13 @@ docstring InsetSpace::xhtml(XHTMLStream & xs, OutputParams const &) const
 		// Can we do anything with those in HTML?
 		break;
 	case InsetSpaceParams::CUSTOM:
+		// FIXME XHTML
+		// Probably we could do some sort of blank span?
+		break;
 	case InsetSpaceParams::CUSTOM_PROTECTED:
 		// FIXME XHTML
 		// Probably we could do some sort of blank span?
+		output ="&nbsp;";
 		break;
 	}
 	// don't escape the entities!
