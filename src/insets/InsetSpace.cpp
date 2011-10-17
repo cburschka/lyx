@@ -646,6 +646,33 @@ int InsetSpace::plaintext(odocstream & os, OutputParams const &) const
 	case InsetSpaceParams::DOWNBRACEFILL:
 		os << "/-^-\\";
 		return 5;
+	case InsetSpaceParams::ENSKIP:
+		os.put(0x2002);
+		return 1;
+	case InsetSpaceParams::QUAD:
+		os.put(0x2003);
+		return 1;
+	case InsetSpaceParams::QQUAD:
+		os.put(0x2003);
+		os.put(0x2003);
+		return 2;
+	case InsetSpaceParams::THIN:
+		os.put(0x2009);
+		return 1;
+	case InsetSpaceParams::MEDIUM:
+		os.put(0x2005);
+		return 1;
+	case InsetSpaceParams::THICK:
+		os.put(0x2004);
+		return 1;
+	case InsetSpaceParams::PROTECTED:
+	case InsetSpaceParams::CUSTOM_PROTECTED:
+		os.put(0x00a0);
+		return 1;
+	case InsetSpaceParams::NEGTHIN:
+	case InsetSpaceParams::NEGMEDIUM:
+	case InsetSpaceParams::NEGTHICK:
+		return 0;
 	default:
 		os << ' ';
 		return 1;
@@ -680,12 +707,15 @@ int InsetSpace::docbook(odocstream & os, OutputParams const &) const
 	case InsetSpaceParams::HFILL:
 	case InsetSpaceParams::HFILL_PROTECTED:
 		os << '\n';
+		break;
 	case InsetSpaceParams::DOTFILL:
 		// FIXME
 		os << '\n';
+		break;
 	case InsetSpaceParams::HRULEFILL:
 		// FIXME
 		os << '\n';
+		break;
 	case InsetSpaceParams::LEFTARROWFILL:
 	case InsetSpaceParams::RIGHTARROWFILL:
 	case InsetSpaceParams::UPBRACEFILL:
@@ -694,6 +724,7 @@ int InsetSpace::docbook(odocstream & os, OutputParams const &) const
 	case InsetSpaceParams::CUSTOM_PROTECTED:
 		// FIXME
 		os << '\n';
+		break;
 	}
 	return 0;
 }
