@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-10-09 09:24+0200\n"
-"PO-Revision-Date: 2011-10-10 12:32+0200\n"
+"POT-Creation-Date: 2011-10-17 14:00+0200\n"
+"PO-Revision-Date: 2011-10-17 15:04+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -2091,6 +2091,7 @@ msgid "Select which language package LyX should use"
 msgstr "Vyberte ktorý jazykový balík by mal LyX použiť"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:143
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:78
 msgid ""
 "Enter the command to load the language package (default: \\usepackage{babel})"
 msgstr ""
@@ -3440,10 +3441,6 @@ msgstr "Vždy Babel"
 #: src/frontends/qt4/GuiDocument.cpp:1058
 msgid "None[[language package]]"
 msgstr "Žiadny"
-
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:78
-msgid "Enter the command to load the language package (default: babel)"
-msgstr "Zadajte príkaz na nahranie jazykového balíku (štandardne babel)"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:87
 msgid "Command s&tart:"
@@ -12777,7 +12774,7 @@ msgid "Use Locking Property|L"
 msgstr "Použ blokovanie súborov"
 
 #: lib/ui/stdmenus.inc:90
-msgid "Export As...|A"
+msgid "Export As...|s"
 msgstr "Exportuj Ako..."
 
 #: lib/ui/stdmenus.inc:92
@@ -18431,11 +18428,11 @@ msgstr "Spúšťam BibTeX."
 msgid "Running MakeIndex for nomencl."
 msgstr "Spúšťam MakeIndex pre nomencl."
 
-#: src/LyX.cpp:119
+#: src/LyX.cpp:120
 msgid "Could not read configuration file"
 msgstr "Nemôžem čítať konfiguračný súbor"
 
-#: src/LyX.cpp:120
+#: src/LyX.cpp:121
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -18446,46 +18443,46 @@ msgstr ""
 "%1$s.\n"
 "Skontrolujte prosím vašu inštaláciu."
 
-#: src/LyX.cpp:129
+#: src/LyX.cpp:130
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: rekonfigurujem užívateľský adresár"
 
-#: src/LyX.cpp:133
+#: src/LyX.cpp:134
 msgid "Done!"
 msgstr "Hotovo!"
 
-#: src/LyX.cpp:395
+#: src/LyX.cpp:397
 msgid "The following files could not be loaded:"
 msgstr "Nasledovné súbory sa nedali nahrať:"
 
-#: src/LyX.cpp:432
+#: src/LyX.cpp:434
 #, c-format
 msgid "%1$s does not appear like a LyX created temporary directory."
 msgstr "%1$s nevyzerá ako pomocný adresár vytvorený LyXom."
 
-#: src/LyX.cpp:434
+#: src/LyX.cpp:436
 msgid "Cannot remove temporary directory"
 msgstr "Nedá sa zmazať pomocný adresár"
 
-#: src/LyX.cpp:440
+#: src/LyX.cpp:442
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Nedá sa zmazať pomocný adresár %1$s"
 
-#: src/LyX.cpp:442
+#: src/LyX.cpp:444
 msgid "Unable to remove temporary directory"
 msgstr "Nedá sa zmazať pomocný adresár"
 
-#: src/LyX.cpp:471
+#: src/LyX.cpp:472
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Zlá voľba v príkazovom riadku `%1$s'. Končím."
 
-#: src/LyX.cpp:545
+#: src/LyX.cpp:546
 msgid "No textclass is found"
 msgstr "Nenašiel sa žiadny súbor tried (textclass)"
 
-#: src/LyX.cpp:546
+#: src/LyX.cpp:547
 msgid ""
 "LyX will only have minimal functionality because no textclasses have been "
 "found. You can either try to reconfigure LyX normally, try to reconfigure "
@@ -18495,19 +18492,19 @@ msgstr ""
 "Môžte skúsiť normálnu rekonfiguráciu, alebo rekonfigurovať bez kontrolovania "
 "vašej LaTeX-inštalácie, alebo pokračovať."
 
-#: src/LyX.cpp:550
+#: src/LyX.cpp:551
 msgid "&Reconfigure"
 msgstr "Rekonfigurácia"
 
-#: src/LyX.cpp:551
+#: src/LyX.cpp:552
 msgid "&Without LaTeX"
 msgstr "Bez použitia LaTeX-a"
 
-#: src/LyX.cpp:552 src/VCBackend.cpp:845 src/VCBackend.cpp:849
+#: src/LyX.cpp:553 src/VCBackend.cpp:845 src/VCBackend.cpp:849
 msgid "&Continue"
 msgstr "Pokračovať"
 
-#: src/LyX.cpp:655
+#: src/LyX.cpp:656
 msgid ""
 "SIGHUP signal caught!\n"
 "Bye."
@@ -18515,7 +18512,7 @@ msgstr ""
 "Zachytený signál SIGHUP!\n"
 "Ahoj."
 
-#: src/LyX.cpp:659
+#: src/LyX.cpp:660
 msgid ""
 "SIGFPE signal caught!\n"
 "Bye."
@@ -18523,7 +18520,7 @@ msgstr ""
 "Zachytený signál SIGFPE!\n"
 "Ahoj."
 
-#: src/LyX.cpp:662
+#: src/LyX.cpp:663
 msgid ""
 "SIGSEGV signal caught!\n"
 "Sorry, you have found a bug in LyX, hope you have not lost any data.\n"
@@ -18537,19 +18534,19 @@ msgstr ""
 "treba, pošlite nám to oznámenie. Ďakujem!\n"
 "Ahoj."
 
-#: src/LyX.cpp:678
+#: src/LyX.cpp:679
 msgid "LyX crashed!"
 msgstr "LyX havaroval!"
 
-#: src/LyX.cpp:712 src/frontends/qt4/GuiView.cpp:990
+#: src/LyX.cpp:713 src/frontends/qt4/GuiView.cpp:990
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:852
+#: src/LyX.cpp:853
 msgid "Could not create temporary directory"
 msgstr "Nedá sa vytvoriť pomocný adresár"
 
-#: src/LyX.cpp:853
+#: src/LyX.cpp:854
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -18560,11 +18557,11 @@ msgstr ""
 "\"%1$s\"\n"
 "Zaistite, že táto cesta existuje a má práva na zápis. Potom to skúste znovu."
 
-#: src/LyX.cpp:936
+#: src/LyX.cpp:937
 msgid "Missing user LyX directory"
 msgstr "Chýba užívateľský adresár LyX-u"
 
-#: src/LyX.cpp:937
+#: src/LyX.cpp:938
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -18573,37 +18570,37 @@ msgstr ""
 "Uviedli ste neexistujúci užívateľský adresár LyX-u, %1$s.\n"
 "Je potrebný k zachovaniu vašej konfigurácii."
 
-#: src/LyX.cpp:942
+#: src/LyX.cpp:943
 msgid "&Create directory"
 msgstr "Vytvoriť adresár"
 
-#: src/LyX.cpp:943
+#: src/LyX.cpp:944
 msgid "&Exit LyX"
 msgstr "Skončiť LyX"
 
-#: src/LyX.cpp:944
+#: src/LyX.cpp:945
 msgid "No user LyX directory. Exiting."
 msgstr "Žiadny užívateľský adresár LyX-u. Koniec."
 
-#: src/LyX.cpp:948
+#: src/LyX.cpp:949
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Vytváram adresár %1$s"
 
-#: src/LyX.cpp:953
+#: src/LyX.cpp:954
 msgid "Failed to create directory. Exiting."
 msgstr "Nepodarilo sa vytvoriť adresár. Končím."
 
-#: src/LyX.cpp:1026
+#: src/LyX.cpp:1027
 msgid "List of supported debug flags:"
 msgstr "Zoznam podporovaných ladiacich indikátorov:"
 
-#: src/LyX.cpp:1030
+#: src/LyX.cpp:1031
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Nastavenie úrovne ladenia na %1$s"
 
-#: src/LyX.cpp:1041
+#: src/LyX.cpp:1042
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -18684,47 +18681,47 @@ msgstr ""
 "\t-version  zhrnúť  verziu a prekladnú informáciu.\n"
 "Viac informácií nájdete v manuálovej stránke LyXu."
 
-#: src/LyX.cpp:1096 src/support/Package.cpp:589
+#: src/LyX.cpp:1097 src/support/Package.cpp:589
 msgid "No system directory"
 msgstr "Nemám systémový adresár"
 
-#: src/LyX.cpp:1097
+#: src/LyX.cpp:1098
 msgid "Missing directory for -sysdir switch"
 msgstr "Chýba adresár pre prepínač -sysdir"
 
-#: src/LyX.cpp:1108
+#: src/LyX.cpp:1109
 msgid "No user directory"
 msgstr "Nemám užívateľský adresár"
 
-#: src/LyX.cpp:1109
+#: src/LyX.cpp:1110
 msgid "Missing directory for -userdir switch"
 msgstr "Chýba adresár pre prepínač -userdir"
 
-#: src/LyX.cpp:1120
+#: src/LyX.cpp:1121
 msgid "Incomplete command"
 msgstr "Neúplný príkaz"
 
-#: src/LyX.cpp:1121
+#: src/LyX.cpp:1122
 msgid "Missing command string after --execute switch"
 msgstr "Chýba príkazový reťazec po prepínači --execute!"
 
-#: src/LyX.cpp:1132
+#: src/LyX.cpp:1133
 msgid "Missing file type [eg latex, ps...] after --export-to switch"
 msgstr "Chýba typ súboru [napr. latex, ps...] po prepínači --export-to"
 
-#: src/LyX.cpp:1137
+#: src/LyX.cpp:1138
 msgid "Missing destination filename after --export-to switch"
 msgstr "Chýba typ súboru [napr. latex, ps...] po prepínači --export-to"
 
-#: src/LyX.cpp:1150
+#: src/LyX.cpp:1151
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Chýba typ súboru [napr. latex, ps...] po prepínači --export"
 
-#: src/LyX.cpp:1163
+#: src/LyX.cpp:1164
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Chýba typ súboru [napr. latex, ps...] po prepínači --import"
 
-#: src/LyX.cpp:1168
+#: src/LyX.cpp:1169
 msgid "Missing filename for --import"
 msgstr "Chýba názov súboru pre --import"
 
@@ -18911,8 +18908,8 @@ msgstr ""
 #: src/LyXRC.cpp:3216
 msgid "Disable any kerning and ligatures for text drawing on screen."
 msgstr ""
-"Zablokovať zliatky (ligatúry) a zmenšenia medzier medzi susednými znakmi  "
-"pre text na obrazovke."
+"Zablokovať zliatky (ligatúry) a zmenšenia medzier medzi susednými znakmi pre "
+"text na obrazovke."
 
 #: src/LyXRC.cpp:3223
 msgid ""
@@ -22627,31 +22624,31 @@ msgstr "DocBook Zdroj"
 msgid "Literate Source"
 msgstr "Literate Zdroj"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1326
+#: src/frontends/qt4/GuiWorkArea.cpp:1331
 msgid " (version control, locking)"
 msgstr " (kontrola verzií, blokovanie)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1328
+#: src/frontends/qt4/GuiWorkArea.cpp:1333
 msgid " (version control)"
 msgstr " (kontrola verzií)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1331
+#: src/frontends/qt4/GuiWorkArea.cpp:1336
 msgid " (changed)"
 msgstr " (zmenený)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1335
+#: src/frontends/qt4/GuiWorkArea.cpp:1340
 msgid " (read only)"
 msgstr " (iba pre čítanie)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1488
+#: src/frontends/qt4/GuiWorkArea.cpp:1527
 msgid "Close File"
 msgstr "Zavrieť Súbor"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1930
+#: src/frontends/qt4/GuiWorkArea.cpp:1969
 msgid "Hide tab"
 msgstr "Kartu schovať"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1932
+#: src/frontends/qt4/GuiWorkArea.cpp:1971
 msgid "Close tab"
 msgstr "Kartu zavrieť"
 
@@ -22668,11 +22665,11 @@ msgstr "Kliknite pre odpojenie"
 msgid "Filtering layouts with \"%1$s\". Press ESC to remove filter."
 msgstr "Filtrovanie schém pomocou \"%1$s\". Použite ESC na odstránenie filtru."
 
-#: src/frontends/qt4/LayoutBox.cpp:393 src/frontends/qt4/LayoutBox.cpp:443
+#: src/frontends/qt4/LayoutBox.cpp:393 src/frontends/qt4/LayoutBox.cpp:448
 msgid "Enter characters to filter the layout list."
 msgstr "Zadajte znaky na výber z listiny schém."
 
-#: src/frontends/qt4/LayoutBox.cpp:565
+#: src/frontends/qt4/LayoutBox.cpp:570
 msgid " (unknown)"
 msgstr " (neznáme)"
 
@@ -24316,6 +24313,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Enter the command to load the language package (default: babel)"
+#~ msgstr "Zadajte príkaz na nahranie jazykového balíku (štandardne babel)"
 
 #~ msgid "Bitmap: $$AbsOrRelPathParent$$Basename"
 #~ msgstr "Bitmapa: $$AbsOrRelPathParent$$Basename"
