@@ -237,7 +237,7 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 
 
 GuiWorkArea::Private::Private(GuiWorkArea * parent)
-: p(parent), buffer_view_(0), read_only_(false), lyx_view_(0), cursor_visible_(false),
+: p(parent), buffer_view_(0), lyx_view_(0), cursor_visible_(false),
 need_resize_(false), schedule_redraw_(false), preedit_lines_(1),
 completer_(new GuiCompleter(p, p))
 {
@@ -253,7 +253,6 @@ GuiWorkArea::GuiWorkArea(QWidget * /* w */)
 GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & gv)
 : d(new Private(this))
 {
-	d->read_only_ = buffer.isReadonly();
 	setGuiView(gv);
 	setBuffer(buffer);
 	init();
@@ -476,7 +475,7 @@ void GuiWorkArea::redraw(bool update_metrics)
 	if (lyxerr.debugging(Debug::WORKAREA))
 		d->buffer_view_->coordCache().dump();
 
-	d->setReadOnly(d->buffer_view_->buffer().isReadonly());
+	updateWindowTitle();
 
 	d->updateCursorShape();
 }
@@ -1346,17 +1345,6 @@ void GuiWorkArea::updateWindowTitle()
 		QWidget::setWindowIconText(toqstr(minimize_title));
 		titleChanged(this);
 	}
-}
-
-
-void GuiWorkArea::Private::setReadOnly(bool read_only)
-{
-	if (read_only_ == read_only)
-		return;
-	read_only_ = read_only;
-	p->updateWindowTitle();
-	if (p == lyx_view_->currentWorkArea())
-		lyx_view_->updateDialogs();
 }
 
 

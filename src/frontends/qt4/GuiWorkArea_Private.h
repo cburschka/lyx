@@ -105,9 +105,6 @@ struct GuiWorkArea::Private
 
 	/// hide the cursor
 	virtual void removeCursor();
-
-	/// This function should be called to update the buffer readonly status.
-	void setReadOnly(bool);
 	///
 	void dispatch(FuncRequest const & cmd0, KeyModifier = NoModifier);
 	/// hide the visible cursor, if it is visible
