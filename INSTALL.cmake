@@ -275,6 +275,24 @@ Xcode/Mac
 
 
 
+Updating the translations
+----------
+
+    Read README.localization for information on the translation process.
+    Here we list only the cmake specific part. As with the autotools build
+    system the translations are only updated on demand.
+
+    - Update .po files and create .gmo files (does not touch the source tree):
+        make translations
+
+    - Copy the updated .po files into the source tree for committing:
+      make update-po
+
+    - Update the layouttranslations file in the source tree:
+        make layouttranslations1
+
+
+
 Packaging
 ----------
 
