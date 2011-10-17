@@ -244,7 +244,7 @@ completer_(new GuiCompleter(p, p))
 }
 
 
-GuiWorkArea::GuiWorkArea(QWidget * w)
+GuiWorkArea::GuiWorkArea(QWidget * /* w */)
 : d(new Private(this)) 
 {
 }
