@@ -101,6 +101,9 @@ public:
 	///
 	char defaultColAlign(col_type col);
 	///
+	///
+	char displayColAlign(col_type col, row_type row) const;
+	///
 	bool idxFirst(Cursor &) const;
 	///
 	bool idxLast(Cursor &) const;

@@ -788,7 +788,7 @@ int InsetMathGrid::cellXOffset(BufferView const & bv, idx_type idx) const
 {
 	col_type c = col(idx);
 	int x = colinfo_[c].offset_;
-	char align = colinfo_[c].align_;
+	char align = displayColAlign(c, row(idx));
 	Dimension const & celldim = cell(idx).dimension(bv);
 	if (align == 'r' || align == 'R')
 		x += colinfo_[c].width_ - celldim.wid;

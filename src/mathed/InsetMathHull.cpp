@@ -342,11 +342,25 @@ char InsetMathHull::defaultColAlign(col_type col)
 {
 	if (type_ == hullEqnArray)
 		return "rcl"[col];
+	if (type_ == hullMultline)
+		return 'c';
 	if (type_ == hullGather)
 		return 'c';
 	if (type_ >= hullAlign)
 		return "rl"[col & 1];
 	return 'c';
+}
+
+
+char InsetMathHull::displayColAlign(col_type col, row_type row) const
+{
+	if (type_ == hullMultline) {
+		if (row == 0)
+			return 'l';
+		if (row == nrows() - 1)
+			return 'r';
+	}
+	return InsetMathGrid::displayColAlign(col, row);
 }
 
 
