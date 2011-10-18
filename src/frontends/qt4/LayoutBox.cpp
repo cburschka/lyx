@@ -534,6 +534,9 @@ void LayoutBox::set(docstring const & layout)
 	if (!d->text_class_)
 		return;
 
+	if (!(*d->text_class_).hasLayout(layout))
+		return;
+
 	Layout const & lay = (*d->text_class_)[layout];
 	QString newLayout = toqstr(lay.name());
 
