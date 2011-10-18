@@ -880,8 +880,8 @@ docstring const i18npreamble(Language const * lang, Encoding const & enc,
 	string const texenc = lang->encoding()->latexName();
 	string const bufenc = enc.iconvName();
 	// First and second character of plane 15 (Private Use Area)
-	char const s1[5] = {0xf3, 0xb0, 0x80, 0x80, 0x00}; // U+F0000
-	char const s2[5] = {0xf3, 0xb0, 0x80, 0x81, 0x00}; // U+F0001
+	string const s1 = "\xf3\xb0\x80\x80"; // U+F0000
+	string const s2 = "\xf3\xb0\x80\x81"; // U+F0001
 	// FIXME UNICODE
 	// lyx::regex is not unicode-safe.
 	// Should use QRegExp or (boost::u32regex, but that requires ICU)
@@ -892,8 +892,8 @@ docstring const i18npreamble(Language const * lang, Encoding const & enc,
 		string translated = to_utf8(lang->translateLayout(key));
 		if (langenc != bufenc)
 			translated = "\\inputencoding{" + texenc + "}"
-				+ string(s1) + langenc + string(s2) + translated
-				+ string(s1) + bufenc + string(s2);
+				+ s1 + langenc + s2 + translated
+				+ s1 + bufenc + s2;
 		preamble = subst(preamble, sub.str(), translated);
 	}
 #endif
