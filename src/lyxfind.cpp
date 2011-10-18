@@ -1348,7 +1348,7 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 		}
 	}
 	cap::cutSelection(cur, false, false);
-	if (!cur.inMathed()) {
+	if (cur.inTexted()) {
 		repl_buffer.changeLanguage(
 			repl_buffer.language(),
 			cur.getFont().language());
@@ -1359,7 +1359,7 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 					bv->buffer().errorList("Paste"));
 		LYXERR(Debug::FIND, "After pasteParagraphList() cur=" << cur << endl);
 		sel_len = repl_buffer.paragraphs().begin()->size();
-	} else {
+	} else if (cur.inMathed()) {
 		TexRow texrow;
 		odocstringstream ods;
 		otexstream os(ods, texrow);
