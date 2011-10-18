@@ -1717,6 +1717,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 
 	// Now insert the LyX specific LaTeX commands...
 	docstring lyxpreamble;
+	features.resolveAlternatives();
 
 	if (output_sync) {
 		if (!output_sync_macro.empty())
