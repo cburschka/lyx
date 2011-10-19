@@ -18,7 +18,6 @@
 #include "GuiCommandEdit.h"
 #include "GuiView.h"
 #include "qt_helpers.h"
-#include "Validator.h"
 
 #include "BufferView.h"
 #include "Cursor.h"
@@ -108,7 +107,6 @@ GuiCommandBuffer::GuiCommandBuffer(GuiView * view)
 	edit_ = new GuiCommandEdit(this);
 	edit_->setMinimumSize(edit_->sizeHint());
 	edit_->setFocusPolicy(Qt::ClickFocus);
-	edit_->setValidator(new NoNewLineValidator(edit_));
 
 	connect(edit_, SIGNAL(escapePressed()), this, SLOT(cancel()));
 	connect(edit_, SIGNAL(returnPressed()), this, SLOT(dispatch()));
