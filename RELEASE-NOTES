@@ -16,12 +16,21 @@ options have been added:
   For example, to create a PDF of a LyX document, you can run:
     lyx -export-to pdf /path/to/dest.pdf /path/to/source.lyx
   See the manual page for details.
+  This functionality is also available via a new menu voice
+  Export->Export As..., that pops up a dialog allowing one to
+  choose the export format, as well as the destination pathname.
+  Also, it is available via the mini-buffer (or the -x switch)
+  through a proper new LFUN (see below).
+
 
 The following pref variables were changed in 2.0:
 
 The following pref variables are obsoleted in 2.0:
 
 The following new LyX functions have been introduced:
+
+- LFUN_BUFFER_EXPORT_AS <format> <filename>
+  Equivalent to the new -export-to command-line switch (see above).
 
 //template, remove this entry later on
 - LFUN_BUFFER_TOGGLE_OUTPUT_SYNC ("buffer-toggle-output-sync").
