@@ -635,6 +635,7 @@ src_tex2lyx_copied_files = Split('''
     ModuleList.cpp
     Spacing.cpp
     TextClass.cpp
+    version.cpp
     insets/InsetLayout.cpp
 ''')
 

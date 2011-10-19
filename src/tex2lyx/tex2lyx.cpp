@@ -11,6 +11,7 @@
 // {[(
 
 #include <config.h>
+#include <version.h>
 
 #include "tex2lyx.h"
 
@@ -464,9 +465,29 @@ int parse_help(string const &, string const &)
 		"\t-n                 translate a noweb (aka literate programming) file.\n"
 		"\t-roundtrip         re-export created .lyx file infile.lyx.lyx to infile.lyx.tex.\n"
 		"\t-s syntaxfile      read additional syntax file.\n"
-		"\t-sysdir dir        Set system directory to DIR.\n"
-		"\t-userdir DIR       Set user directory to DIR."
+		"\t-sysdir SYSDIR     Set system directory to SYSDIR.\n"
+		"\t                   Default: " << package().system_support() << "\n"
+		"\t-userdir USERDIR   Set user directory to USERDIR.\n"
+		"\t                   Default: " << package().user_support() << "\n"
+		"\t-version           Summarize version and build info.\n"
+		"Paths:\n"
+		"\tThe program searches for the files \"encodings\", \"lyxmodules.lst\",\n"
+		"\t\"textclass.lst\", \"syntax.default\", and \"unicodesymbols\", first in\n"
+		"\t\"USERDIR\", then in \"SYSDIR\". The subdirectories \"USERDIR/layouts\"\n"
+		"\tand \"SYSDIR/layouts\" are searched for layout and module files.\n"
+		"Check the tex2lyx man page for more details."
 	     << endl;
+	exit(error_code);
+}
+
+
+int parse_version(string const &, string const &)
+{
+	lyxerr << "tex2lyx " << lyx_version
+	       << " (" << lyx_release_date << ")" << endl;
+	lyxerr << "Built on " << __DATE__ << ", " << __TIME__ << endl;
+
+	lyxerr << lyx_version_info << endl;
 	exit(error_code);
 }
 
@@ -555,12 +576,16 @@ void easyParse(int & argc, char * argv[])
 {
 	map<string, cmd_helper> cmdmap;
 
+	cmdmap["-h"] = parse_help;
+	cmdmap["-help"] = parse_help;
+	cmdmap["--help"] = parse_help;
+	cmdmap["-v"] = parse_version;
+	cmdmap["-version"] = parse_version;
+	cmdmap["--version"] = parse_version;
 	cmdmap["-c"] = parse_class;
 	cmdmap["-e"] = parse_encoding;
 	cmdmap["-f"] = parse_force;
 	cmdmap["-s"] = parse_syntaxfile;
-	cmdmap["-help"] = parse_help;
-	cmdmap["--help"] = parse_help;
 	cmdmap["-n"] = parse_noweb;
 	cmdmap["-sysdir"] = parse_sysdir;
 	cmdmap["-userdir"] = parse_userdir;
@@ -765,6 +790,16 @@ int main(int argc, char * argv[])
 	lyxerr.setStream(cerr);
 
 	os::init(argc, argv);
+
+	try {
+		init_package(internal_path(os::utf8_argv(0)), string(), string(),
+			     top_build_dir_is_two_levels_up);
+	} catch (ExceptionMessage const & message) {
+		cerr << to_utf8(message.title_) << ":\n"
+		     << to_utf8(message.details_) << endl;
+		if (message.type_ == ErrorException)
+			return EXIT_FAILURE;
+	}
 
 	easyParse(argc, argv);
 

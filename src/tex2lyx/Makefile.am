@@ -44,7 +44,8 @@ LINKED_FILES = \
 	../ModuleList.cpp \
 	../Spacing.cpp \
 	../TextClass.cpp \
-	../TextClass.h
+	../TextClass.h \
+	../version.cpp
 
 BUILT_SOURCES = $(PCH_FILE)
 

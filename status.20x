@@ -53,6 +53,11 @@ What's new
   text which is not explicitly marked in a different language, irrespective
   of the multilingual status, except for LTR<=>RTL changes.
 
+- Augmented the tex2lyx -help message with the default pathes (bug 6827).
+
+- New command-line switch -v (-version) for tex2lyx showing build information
+  and version number (bug 6827).
+
 
 * DOCUMENTATION AND LOCALIZATION
 

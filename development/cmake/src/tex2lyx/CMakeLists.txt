@@ -13,9 +13,9 @@ set(LINKED_sources ${TOP_SRC_DIR}/src/lengthcommon.cpp)
 set(LINKED_headers)
 
 foreach(_src insets/InsetLayout Color Counters
-	Encoding FloatList Floating
+	Encoding FloatList Floating FontInfo
 	Layout LayoutFile LayoutModuleList Lexer ModuleList TextClass
-	FontInfo Spacing)
+	Spacing version)
 	list(APPEND LINKED_sources ${TOP_SRC_DIR}/src/${_src}.cpp)
 	list(APPEND LINKED_headers ${TOP_SRC_DIR}/src/${_src}.h)
 endforeach(_src)
