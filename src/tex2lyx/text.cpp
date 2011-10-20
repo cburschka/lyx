@@ -2583,7 +2583,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "index") {
 			context.check_layout(os);
-			begin_inset(os, "Index\n");
+			begin_inset(os, "Index idx\n");
 			os << "status collapsed\n";
 			parse_text_in_inset(p, os, FLAG_ITEM, false, context, "Index");
 			end_inset(os);
@@ -2615,6 +2615,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "printindex") {
 			context.check_layout(os);
 			begin_command_inset(os, "index_print", "printindex");
+			os << "type \"idx\"\n";
 			end_inset(os);
 			skip_spaces_braces(p);
 		}

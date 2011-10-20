@@ -56,4 +56,8 @@ Format LaTeX feature                        LyX feature
 349    XeTeX                                \use_xetex
 350    ?                                    \default_output_format
 351    ?                                    \backgroundcolor
+353    \printsubindex                       InsetIndex
+354    \printindex*, \printsubindex*        InsetIndex
+355    \sout                                InsetIndex
+356    \uuline, \uwave                      InsetIndex
 
