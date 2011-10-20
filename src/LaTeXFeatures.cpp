@@ -602,6 +602,7 @@ char const * simplefeatures[] = {
 	"pxfonts",
 	"mathdesign",
 	"mathrsfs",
+	"mathabx",
 	"ascii",
 	"url",
 	"covington",

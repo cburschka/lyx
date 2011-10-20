@@ -21,7 +21,7 @@
 # Commands that modify other parts of the text should not be added either.
 # For this reason, all commnands requiring txfonts, pxfonts, fourier and
 # mathdesign are commented out (these packages switch to fonts like times or
-# palatino).
+# palatino). mathabx is not used because of many clashes with AMS math.
 
 # syntax:
 # ucs4 textcommand                textpreamble flags mathcommand mathpreamble
@@ -447,6 +447,28 @@
 0x0237 "\\j"                      "" "mathalpha" "\\jmath" # LATIN SMALL LETTER DOTLESS J
 0x0238 "\\textdblig"              "tipx" "force" # LATIN SMALL LETTER DB DIGRAPH
 0x0239 "\\textqplig"              "tipx" "force" # LATIN SMALL LETTER QP DIGRAPH
+#0x023a ""                         "" "" "" "" # LATIN CAPITAL LETTER A WITH STROKE
+#0x023b ""                         "" "" "" "" # LATIN CAPITAL LETTER C WITH STROKE
+#0x023c ""                         "" "" "" "" # LATIN SMALL LETTER C WITH STROKE
+#0x023d ""                         "" "" "" "" # LATIN CAPITAL LETTER L WITH BAR
+#0x023e ""                         "" "" "" "" # LATIN CAPITAL LETTER T WITH DIAGONAL STROKE
+#0x023f ""                         "" "" "" "" # LATIN SMALL LETTER S WITH SWASH TAIL
+#0x0240 ""                         "" "" "" "" # LATIN SMALL LETTER Z WITH SWASH TAIL
+#0x0241 ""                         "" "" "" "" # LATIN CAPITAL LETTER GLOTTAL STOP
+#0x0242 ""                         "" "" "" "" # LATIN SMALL LETTER GLOTTAL STOP
+#0x0243 ""                         "" "" "" "" # LATIN CAPITAL LETTER B WITH STROKE
+#0x0244 ""                         "" "" "" "" # LATIN CAPITAL LETTER U BAR
+#0x0245 ""                         "" "" "" "" # LATIN CAPITAL LETTER TURNED V
+#0x0246 ""                         "" "" "" "" # LATIN CAPITAL LETTER E WITH STROKE
+#0x0247 ""                         "" "" "" "" # LATIN SMALL LETTER E WITH STROKE
+#0x0248 ""                         "" "" "" "" # LATIN CAPITAL LETTER J WITH STROKE
+#0x0249 ""                         "" "" "" "" # LATIN SMALL LETTER J WITH STROKE
+#0x024a ""                         "" "" "" "" # LATIN CAPITAL LETTER SMALL Q WITH HOOK TAIL
+#0x024b ""                         "" "" "" "" # LATIN SMALL LETTER Q WITH HOOK TAIL
+#0x024c ""                         "" "" "" "" # LATIN CAPITAL LETTER R WITH STROKE
+#0x024d ""                         "" "" "" "" # LATIN SMALL LETTER R WITH STROKE
+#0x024e ""                         "" "" "" "" # LATIN CAPITAL LETTER Y WITH STROKE
+#0x024f ""                         "" "" "" "" # LATIN SMALL LETTER Y WITH STROKE
 #
 # IPA extensions
 #
@@ -461,7 +483,7 @@
 0x0258 "\\textreve"               "tipa" "force" # LATIN SMALL LETTER REVERSED E
 0x0259 "\\textschwa"              "tipa" "force" # LATIN SMALL LETTER SCHWA
 0x025a "\\textrhookschwa"         "tipa" "force" # LATIN SMALL LETTER SCHWA WITH HOOK
-0x025b "\\textepsilon"            "tipa" "force" # LATIN SMALL LETTER OPEN E
+0x025b "\\textepsilon"            "tipa" "force" "\\varepsilon" "" # LATIN SMALL LETTER OPEN E
 0x025c "\\textrevepsilon"         "tipa" "force" # LATIN SMALL LETTER REVERSED OPEN E
 0x025d "\\textrhookrevepsilon"    "tipa" "force" # LATIN SMALL LETTER REVERSED OPEN E WITH HOOK
 0x025e "\\textcloserevepsilon"    "tipa" "force" # LATIN SMALL LETTER CLOSED REVERSED OPEN E
@@ -727,9 +749,18 @@
 #
 # Greek
 #
+#0x0370 ""                         "" "" "" "" # GREEK CAPITAL LETTER HETA
+#0x0371 ""                         "" "" "" "" # GREEK SMALL LETTER HETA
+#0x0372 ""                         "" "" "" "" # GREEK CAPITAL LETTER ARCHAIC SAMPI
+#0x0373 ""                         "" "" "" "" # GREEK SMALL LETTER ARCHAIC SAMPI
 0x0374 "\\textgreek{\\char254}"    "textgreek" "" # GREEK NUMERAL SIGN
 0x0375 "\\textgreek{\\char255}"    "textgreek" "" # GREEK LOWER NUMERAL SIGN
+#0x0376 ""                         "" "" "" "" # GREEK CAPITAL LETTER PAMPHYLIAN DIGAMMA
+#0x0377 ""                         "" "" "" "" # GREEK SMALL LETTER PAMPHYLIAN DIGAMMA
 0x037a "\\textgreek{\\char124}"    "textgreek" "" # GREEK YPOGEGRAMMENI
+#0x037b ""                         "" "" "" "" # GREEK SMALL REVERSED LUNATE SIGMA SYMBOL
+#0x037c ""                         "" "" "" "" # GREEK SMALL DOTTED LUNATE SIGMA SYMBOL
+#0x037d ""                         "" "" "" "" # GREEK SMALL REVERSED DOTTED LUNATE SIGMA SYMBOL
 0x037e "\\textgreek{?}"            "textgreek" "" # GREEK QUESTION MARK
 0x0384 "\\textgreek{'}"            "textgreek" "force" # GREEK TONOS
 0x0385 "\\textgreek{\\char35}"     "textgreek" "force" # GREEK DIALYTIKA TONOS
@@ -803,11 +834,22 @@
 0x03cc "\\textgreek{\\char236}"   "textgreek" "" # GREEK SMALL LETTER OMICRON WITH TONOS
 0x03cd "\\textgreek{\\char212}"   "textgreek" "" # GREEK SMALL LETTER UPSILON WITH TONOS
 0x03ce "\\textgreek{\\char184}"   "textgreek" "" # GREEK SMALL LETTER OMEGA WITH TONOS
+#0x03cf ""                         "" "" "" "" # GREEK CAPITAL KAI SYMBOL
+#0x03d0 ""                         "" "" "" "" # GREEK BETA SYMBOL
+#0x03d1 ""                         "" "" "" "" # GREEK THETA SYMBOL
+#0x03d2 ""                         "" "" "" "" # GREEK UPSILON WITH HOOK SYMBOL
+#0x03d3 ""                         "" "" "" "" # GREEK UPSILON WITH ACUTE AND HOOK SYMBOL
+#0x03d4 ""                         "" "" "" "" # GREEK UPSILON WITH DIAERESIS AND HOOK SYMBOL
+#0x03d5 ""                         "" "" "" "" # GREEK PHI SYMBOL
+#0x03d6 ""                         "" "" "" "" # GREEK PI SYMBOL
+#0x03d7 ""                         "" "" "" "" # GREEK KAI SYMBOL
 0x03d8 "\\textgreek{\\char21}"     "textgreek" "" # GREEK LETTER ARCHAIC KOPPA
 0x03d9 "\\textgreek{\\char19}"     "textgreek" "" # GREEK SMALL LETTER ARCHAIC KOPPA
+#0x03da ""                         "" "" "" "" # GREEK LETTER STIGMA
 0x03db "\\textgreek{\\char6}"      "textgreek" "" # GREEK SMALL LETTER STIGMA
 0x03dc "\\textgreek{\\char195}"    "textgreek" "" # GREEK LETTER DIGAMMA
 0x03dd "\\textgreek{\\char147}"   "textgreek" "" "\\digamma" "amssymb" # GREEK SMALL LETTER DIGAMMA
+#0x03de ""                         "" "" "" "" # GREEK LETTER KOPPA
 0x03df "\\textgreek{\\char18}"     "textgreek" "" # GREEK SMALL LETTER KOPPA
 0x03e0 "\\textgreek{\\char23}"     "textgreek" "" # GREEK LETTER SAMPI
 0x03e1 "\\textgreek{\\char27}"     "textgreek" "" # GREEK SMALL LETTER SAMPI
@@ -1202,7 +1244,7 @@
 0x1e99 "\\r{y}"                   "" "mathalpha" "\\mathring{y}" # LATIN SMALL LETTER Y WITH RING ABOVE
 #0x1e9a ""                         "" "" # LATIN SMALL LETTER A WITH RIGHT HALF RING
 #0x1e9b ""                         "" "" # LATIN SMALL LETTER LONG S WITH DOT ABOVE
-0x1e9e "\\SS"                         "" "" # LATIN CAPITAL LETTER SHARP S
+0x1e9e "\\SS"                     "" "" "" "" # LATIN CAPITAL LETTER SHARP S
 0x1ea0 "\\d{A}"                   "" "mathalpha" "\\subdot{A}" "accents,subdot" # LATIN CAPITAL LETTER A WITH DOT BELOW
 0x1ea1 "\\d{a}"                   "" "mathalpha" "\\subdot{a}" "accents,subdot" # LATIN SMALL LETTER A WITH DOT BELOW
 #0x1ea2 ""                         "" "" # LATIN CAPITAL LETTER A WITH HOOK ABOVE
@@ -1556,7 +1598,7 @@
 # use the following macro for the character HORIZONTAL BAR
 0x2015 "\\LyXbar" "\\newcommand*\\LyXbar{\\rule[0.585ex]{1.2em}{0.25pt}}" ""
 0x2016 "\\textbardbl"             "textcomp" "" "\\|" "" # DOUBLE VERTICAL LINE
-#0x2017 ""                         "" "" # DOUBLE LOW LINE
+0x2017 "\\subdoublebar{ }"        "tipa" "" "" "" # DOUBLE LOW LINE
 0x2018 "\\textquoteleft"          "" "" # LEFT SINGLE QUOTATION MARK
 0x2019 "\\textquoteright"         "" "" # RIGHT SINGLE QUOTATION MARK
 0x201a "\\quotesinglbase"         "" "" # SINGLE LOW-9 QUOTATION MARK
@@ -1572,7 +1614,15 @@
 0x2024 "."                        "" "" # ONE DOT LEADER # ≈ FULL STOP
 0x2025 ".\\,."                    "" "" # TWO DOT LEADER
 0x2026 "\\ldots"                  "" "" "\\ldots" "" # HORIZONTAL ELLIPSIS
-#0x2027 ""                         "" "" # HYPHENATION POINT
+0x2027 "\\-"                      "" "" "" "" # HYPHENATION POINT
+#0x2028 ""                         "" "" "" "" # LINE SEPARATOR
+#0x2029 ""                         "" "" "" "" # PARAGRAPH SEPARATOR
+#0x202a ""                         "" "" "" "" # LEFT-TO-RIGHT EMBEDDING
+#0x202b ""                         "" "" "" "" # RIGHT-TO-LEFT EMBEDDING
+#0x202c ""                         "" "" "" "" # POP DIRECTIONAL FORMATTING
+#0x202d ""                         "" "" "" "" # LEFT-TO-RIGHT OVERRIDE
+#0x202e ""                         "" "" "" "" # RIGHT-TO-LEFT OVERRIDE
+#0x202f ""                         "" "" "" "" # NARROW NO-BREAK SPACE
 0x2030 "\\textperthousand"        "textcomp" "" # PER MILLE SIGN
 0x2031 "\\textpertenthousand"     "textcomp" "" # PER TEN THOUSAND SIGN
 0x2032 "\\textasciiacute"         "textcomp" "" "\\prime" "" # PRIME
@@ -1648,7 +1698,7 @@
 0x20ac "\\texteuro"               "textcomp" "" # EURO SIGN
 0x20b1 "\\textpeso"               "textcomp" "" # PESO SIGN
 0x20b2 "\\textguarani"            "textcomp" "" # GUARANI SIGN
-0x20b9 "\\rupee"                  "tfrupee" "" # RUPEE SIGN
+0x20b9 "\\rupee"                  "tfrupee" "" "" "" # INDIAN RUPEE SIGN
 
 #
 # letterlike symbols
@@ -1659,11 +1709,14 @@
 0x2101 "\\LyXaddressed" "\\newcommand*\\LyXaddressed{\\mbox{\\raisebox{.8ex}{a}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{s}}}" ""
 0x2102 ""                         "" "" "\\mathbb{C}" "amssymb" # DOUBLE-STUCK CAPITAL C
 0x2103 "\\textcelsius"            "textcomp" "" # DEGREE CELSIUS
+#0x2104 ""                         "" "" "" "" # CENTRE LINE SYMBOL
 # use the following macro for the character CARE OF
 0x2105 "\\LyXcareof" "\\newcommand*\\LyXcareof{\\mbox{\\raisebox{.8ex}{c}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{o}}}" ""
 # use the following macro for the character CADA UNA
 0x2106 "\\LyXcadauna" "\\newcommand*\\LyXcadauna{\\mbox{\\raisebox{.8ex}{c}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{u}}}" ""
 0x2109 "°{}F"                     "" "" # DEGREE FARENHEIT
+# mathrsfs has no small letters
+#0x210a ""                         "" "" "\\mathscr{g}" "mathrsfs" # SCRIPT SMALL G
 0x210b ""                         "" "" "\\mathscr{H}" "mathrsfs" # SCRIPT CAPITAL H
 0x210c ""                         "" "" "\\mathfrak{H}" "amssymb" # BLACK-LETTER CAPITAL H
 0x210d ""                         "" "" "\\mathbb{H}" "amssymb" # DOUBLE-STUCK CAPITAL H
@@ -1673,6 +1726,7 @@
 0x2111 ""                         "" "" "\\mathfrak{I}" "amssymb" # BLACK-LETTER CAPITAL I
 0x2112 ""                         "" "" "\\mathscr{L}" "mathrsfs" # SCRIPT CAPITAL L
 0x2113 ""                         "" "" "\\ell" # SCRIPT SMALL L
+#0x2114 ""                         "" "" "" "" # L B BAR SYMBOL
 0x2115 ""                         "" "" "\\mathbb{N}" "amssymb" # DOUBLE-STUCK CAPITAL N
 0x2116 "\\textnumero"             "textcomp" "" # NUMERO SIGN
 0x2117 "\\textcircledP"           "textcomp" "" # SOUND RECORDING COYRIGHT
@@ -1683,6 +1737,7 @@
 0x211c ""                         "" "" "\\mathfrak{R}" "amssymb" # BLACK-LETTER CAPITAL R
 0x211d ""                         "" "" "\\mathbb{R}" "amssymb" # DOUBLE-STUCK CAPITAL R
 0x211e "\\textrecipe"             "textcomp" "" # PRESCRIPTION TAKE
+#0x211f ""                         "" "" "" "" # RESPONSE
 0x2120 "\\textservicemark"        "textcomp" "" # SERVICE MARK
 #0x2121 ""                         "" "" # TELEPHONE SIGN
 0x2122 "\\texttrademark"          "textcomp" "" # TRADE MARK SIGN
@@ -1690,6 +1745,7 @@
 0x2126 "\\textohm"                "textcomp" "" # OHM SIGN
 0x2127 "\\textmho"                "textcomp" "" "\\mho" "amssymb" # INVERTED OHM SIGN
 0x2128 ""                         "" "" "\\mathfrak{Z}" "amssymb" # BLACK-LETTER CAPITAL Z
+#0x2129 ""                         "" "" "" "" # TURNED GREEK SMALL LETTER IOTA
 0x212a "K"                        "" "" # KELVIN SIGN
 0x212b "\\AA"                     "" "" # ANGSTROM SIGN
 0x212c ""                         "" "" "\\mathscr{B}" "mathrsfs" # SCRIPT CAPITAL B
@@ -1699,6 +1755,7 @@
 #0x212f ""                         "" "" "\\mathscr{e}" "mathrsfs" # SCRIPT SMALL E
 0x2130 ""                         "" "" "\\mathscr{E}" "mathrsfs" # SCRIPT CAPITAL E
 0x2131 ""                         "" "" "\\mathscr{F}" "mathrsfs" # SCRIPT CAPITAL F
+#0x2132 ""                         "" "" "" "" # TURNED CAPITAL F
 0x2133 ""                         "" "" "\\mathscr{M}" "mathrsfs" # SCRIPT CAPITAL M
 # mathrsfs has no small letters
 #0x2134 ""                         "" "" "\\mathscr{o}" "mathrsfs" # SCRIPT SMALL O
@@ -1707,6 +1764,7 @@
 0x2137 ""                         "" "" "\\gimel" "amssymb" # GIMEL SYMBOL
 0x2138 ""                         "" "" "\\daleth" "amssymb" # DALET SYMBOL
 #0x2139 ""                         "" "" # INFORMATION SOURCE
+#0x213a ""                         "" "" "" "" # ROTATED CAPITAL Q
 #0x213b ""                         "" "" # FACSIMILE SIGN
 0x214d "\\LyXaktieselskap" "\\newcommand*\\LyXaktieselskap{\\mbox{\\raisebox{.8ex}{\footnotesize A}\\kern-.18em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{\footnotesize S}}}" "" # ⅍ AKTIESELSKAB
 #
@@ -1770,6 +1828,10 @@
 0x217d "\\mbox{c}"                "" "" # SMALL ROMAN NUMERAL ONE HUNDRED
 0x217e "\\mbox{d}"                "" "" # SMALL ROMAN NUMERAL FIVE HUNDRED
 0x217f "\\mbox{m}"                "" "" # SMALL ROMAN NUMERAL ONE THOUSAND
+#0x2180 ""                         "" "" "" "" # ROMAN NUMERAL ONE THOUSAND C D
+#0x2181 ""                         "" "" "" "" # ROMAN NUMERAL FIVE THOUSAND
+#0x2182 ""                         "" "" "" "" # ROMAN NUMERAL TEN THOUSAND
+#0x2183 ""                         "" "" "" "" # ROMAN NUMERAL REVERSED ONE HUNDRED
 #
 # arrows
 #
@@ -1791,20 +1853,46 @@
 #
 # mathematical operators
 #
+0x2200 ""                         "" "" "\\forall" "" # FOR ALL
+0x2201 ""                         "" "" "\\complement" "amssymb" # COMPLEMENT
 0x2202 ""                         "" "" "\\partial" # PARTIAL DIFFERENTIAL
+0x2203 ""                         "" "" "\\exists" "" # THERE EXISTS
+0x2204 ""                         "" "" "\\nexists" "amssymb" # THERE DOES NOT EXIST
+0x2205 ""                         "" "" "\\varnothing" "amssymb" # EMPTY SET
 0x2206 ""                         "" "" "\\Delta" # INCREMENT
+0x2207 ""                         "" "" "\\nabla" "" # NABLA
+0x2208 ""                         "" "" "\\in" "" # ELEMENT OF
+0x2209 ""                         "" "" "\\notin" "" # NOT AN ELEMENT OF
+#0x220a ""                         "" "" "" "" # SMALL ELEMENT OF
+0x220b ""                         "" "" "\\ni" "" # CONTAINS AS MEMBER
 #0x220c ""                         "" "" "\\notni" "txfonts|pxfonts" # DOES NOT CONTAIN AS MEMBER
+#0x220d ""                         "" "" "" "" # SMALL CONTAINS AS MEMBER
+#0x220e ""                         "" "" "" "" # END OF PROOF
 0x220f ""                         "" "" "\\prod" # N-ARY PRODUCT
+0x2210 ""                         "" "" "\\coprod" "" # N-ARY COPRODUCT
 0x2211 ""                         "" "" "\\sum" # N-ARY SUMMATION
 0x2212 "\\textminus"              "textcomp" "" "-" "" # MINUS SIGN
+0x2213 ""                         "" "" "\\mp" "" # MINUS-OR-PLUS SIGN
+0x2214 ""                         "" "" "\\dotplus" "amssymb" # DOT PLUS
 0x2215 ""                         "" "" "\\slash" # DIVISION SLASH
+0x2216 ""                         "" "" "\\setminus" "" # SET MINUS
 0x2217 "\\textasteriskcentered"   "textcomp" "" "\\ast" "" # ASTERISK OPERATOR
+0x2218 ""                         "" "" "\\circ" "" # RING OPERATOR
 0x2219 ""                         "" "" "\\centerdot" "amssymb" # BULLET OPERATOR
-0x221a "\\textsurd"               "textcomp" "" # SQUARE ROOT
+0x221a "\\textsurd"               "textcomp" "" "\\surd" "" # SQUARE ROOT
+0x221b ""                         "" "" "\\sqrt[3]{\\vphantom{a}}" "" # CUBE ROOT
+0x221c ""                         "" "" "\\sqrt[4]{\\vphantom{a}}" "" # FOURTH ROOT
 0x221d ""                         "" "" "\\propto" # PROPORTIONAL TO
 0x221e ""                         "" "" "\\infty" # INFINITY
 # use the following macro for the character RIGHT ANGLE
 0x221f "\\LyXrightangle" "\\newcommand*\\LyXrightangle{{\\usefont{U}{msa}{m}{n}\\char120}}" ""
+0x2220 ""                         "" "" "\\angle" "" # ANGLE
+0x2221 ""                         "" "" "\\measuredangle" "amssymb" # MEASURED ANGLE
+#0x2222 ""                         "" "" "" "" # SPHERICAL ANGLE
+#0x2223 ""                         "" "" "\\divides" "mathabx" # DIVIDES
+#0x2224 ""                         "" "" "\\notdivides" "mathabx" # DOES NOT DIVIDE
+0x2225 ""                         "" "" "\\parallel" "" # PARALLEL TO
+0x2226 ""                         "" "" "\\nparallel" "amssymb" # NOT PARALLEL TO
 0x2227 ""                         "" "" "\\bigwedge" "" # LOGICAL AND
 0x2228 ""                         "" "" "\\bigvee" "" # LOGICAL OR
 0x2229 ""                         "" "" "\\bigcap" # INTERSECTION
@@ -1820,9 +1908,52 @@
 0x2233 ""                         "" "" "\\ointctrclockwise" "esint" # ANTICLOCKWISE CONTOUR INTEGRAL
 0x2234 ""                         "" "" "\\therefore" "amssymb" # THEREFORE
 0x2235 ""                         "" "" "\\because" "amssymb" # BECAUSE
+#0x2236 ""                         "" "" "" "" # RATIO
+#0x2237 ""                         "" "" "" "" # PROPORTION
+#0x2238 ""                         "" "" "" "" # DOT MINUS
+#0x2239 ""                         "" "" "" "" # EXCESS
+#0x223a ""                         "" "" "" "" # GEOMETRIC PROPORTION
+#0x223b ""                         "" "" "" "" # HOMOTHETIC
+#0x223c ""                         "" "" "" "" # TILDE OPERATOR
+#0x223d ""                         "" "" "" "" # REVERSED TILDE
+#0x223e ""                         "" "" "" "" # INVERTED LAZY S
+#0x223f ""                         "" "" "" "" # SINE WAVE
+#0x2240 ""                         "" "" "" "" # WREATH PRODUCT
+#0x2241 ""                         "" "" "" "" # NOT TILDE
+#0x2242 ""                         "" "" "" "" # MINUS TILDE
+#0x2243 ""                         "" "" "" "" # ASYMPTOTICALLY EQUAL TO
+#0x2244 ""                         "" "" "" "" # NOT ASYMPTOTICALLY EQUAL TO
+#0x2245 ""                         "" "" "" "" # APPROXIMATELY EQUAL TO
+#0x2246 ""                         "" "" "" "" # APPROXIMATELY BUT NOT ACTUALLY EQUAL TO
+#0x2247 ""                         "" "" "" "" # NEITHER APPROXIMATELY NOR ACTUALLY EQUAL TO
 0x2248 ""                         "" "" "\\approx" # ALMOST EQUAL TO
+#0x2249 ""                         "" "" "\\napprox" "mathabx" # NOT ALMOST EQUAL TO
+#0x224a ""                         "" "" "" "" # ALMOST EQUAL OR EQUAL TO
+#0x224b ""                         "" "" "" "" # TRIPLE TILDE
+#0x224c ""                         "" "" "" "" # ALL EQUAL TO
+#0x224d ""                         "" "" "" "" # EQUIVALENT TO
+#0x224e ""                         "" "" "" "" # GEOMETRICALLY EQUIVALENT TO
+#0x224f ""                         "" "" "" "" # DIFFERENCE BETWEEN
+#0x2250 ""                         "" "" "" "" # APPROACHES THE LIMIT
+#0x2251 ""                         "" "" "" "" # GEOMETRICALLY EQUAL TO
+#0x2252 ""                         "" "" "" "" # APPROXIMATELY EQUAL TO OR THE IMAGE OF
+#0x2253 ""                         "" "" "" "" # IMAGE OF OR APPROXIMATELY EQUAL TO
+#0x2254 ""                         "" "" "" "" # COLON EQUALS
+#0x2255 ""                         "" "" "" "" # EQUALS COLON
+#0x2256 ""                         "" "" "" "" # RING IN EQUAL TO
+#0x2257 ""                         "" "" "" "" # RING EQUAL TO
+#0x2258 ""                         "" "" "" "" # CORRESPONDS TO
+#0x2259 ""                         "" "" "" "" # ESTIMATES
+#0x225a ""                         "" "" "" "" # EQUIANGULAR TO
+#0x225b ""                         "" "" "" "" # STAR EQUALS
+#0x225c ""                         "" "" "" "" # DELTA EQUAL TO
+#0x225d ""                         "" "" "" "" # EQUAL TO BY DEFINITION
+#0x225e ""                         "" "" "" "" # MEASURED BY
+#0x225f ""                         "" "" "" "" # QUESTIONED EQUAL TO
 0x2260 ""                         "" "" "\\neq" # NOT EQUAL TO
 0x2261 ""                         "" "" "\\equiv" # IDENTICAL TO
+#0x2262 ""                         "" "" "" "" # NOT IDENTICAL TO
+#0x2263 ""                         "" "" "" "" # STRICTLY EQUIVALENT TO
 0x2264 ""                         "" "" "\\le" # LESS-THAN OR EQUAL TO
 0x2265 ""                         "" "" "\\ge" # GREATER-THAN OR EQUAL TO
 0x22f1 ""                         "" "" "\\ddots" "" # ⋱ DOWN RIGHT DIAGONAL ELLIPSIS
@@ -1990,15 +2121,28 @@
 #0x2665 ""                         "" "" "\\varheartsuit" "txfonts|pxfonts" # BLACK HEART SUIT
 #0x2666 ""                         "" "" "\\vardiamondsuit" "txfonts|pxfonts" # BLACK DIAMOND SUIT
 #0x2667 ""                         "" "" "\\varclubsuit" "txfonts|pxfonts" # WHITE CLUB SUIT
+#0x2668 ""                         "" "" "" "" # HOT SPRINGS
 0x2669 "\\quarternote"            "wasysym" "" "\\quarternote" "wasysym" # QUARTER NOTE
 0x266a "\\textmusicalnote"        "textcomp" "" # EIGHTH NOTE
 0x266b "\\twonotes"               "wasysym" "" "\\twonotes" "wasysym" # BEAMED EIGHTH NOTES
+#0x266c ""                         "" "" "" "" # BEAMED SIXTEENTH NOTES
+0x266d ""                         "" "" "\\flat" "" # MUSIC FLAT SIGN
+0x266e ""                         "" "" "\\natural" "" # MUSIC NATURAL SIGN
+0x266f ""                         "" "" "\\sharp" "" # MUSIC SHARP SIGN
 0x26a2 "\\FemaleFemale"           "marvosym" "" # DOUBLED FEMALE SIGN
 0x26a3 "\\MaleMale"               "marvosym" "" # DOUBLED MALE SIGN
 0x26a4 "\\FemaleMale"             "marvosym" "" # INTERLOCKED FEMALE AND MALE SIGN
 0x26a5 "\\Hermaphrodite"          "marvosym" "" # MALE AND FEMALE SIGN
+#0x26a6 ""                         "" "" "" "" # MALE WITH STROKE SIGN
+#0x26a7 ""                         "" "" "" "" # MALE WITH STROKE AND MALE AND FEMALE SIGN
+#0x26a8 ""                         "" "" "" "" # VERTICAL MALE WITH STROKE SIGN
+#0x26a9 ""                         "" "" "" "" # HORIZONTAL MALE WITH STROKE SIGN
+#0x26aa ""                         "" "" "" "" # MEDIUM WHITE CIRCLE
+#0x26ab ""                         "" "" "" "" # MEDIUM BLACK CIRCLE
+#0x26ac ""                         "" "" "" "" # MEDIUM SMALL WHITE CIRCLE
 0x26ad "\\textmarried"            "textcomp" "" # MARRIAGE SYMBOL
 0x26ae "\\textdivorced"           "textcomp" "" # DIVORCE SYMBOL
+#0x26af ""                         "" "" "" "" # UNMARRIED PARTNERSHIP SYMBOL
 #
 # dingbats
 #
