@@ -19,6 +19,9 @@
 # Do only add commands that give correct output, no hacks that look "similar".
 # TODO: fix "missing Qt keysequences (MacSpecialKey)" hacks (search for "Qt::")
 # Commands that modify other parts of the text should not be added either.
+# For this reason, all commnands requiring txfonts, pxfonts, fourier and
+# mathdesign are commented out (these packages switch to fonts like times or
+# palatino).
 
 # syntax:
 # ucs4 textcommand                textpreamble flags mathcommand mathpreamble
@@ -34,7 +37,7 @@
 
 0x00a0 "~"                        "" "" "~" "" # NO-BREAK SPACE
 0x00a1 "\\textexclamdown"         "" "" # INVERTED EXCLAMATION MARK
-0x00a2 "\\textcent"               "textcomp" "" "\\mathcent" "txfonts" # CENT SIGN
+0x00a2 "\\textcent"               "textcomp" "" #"\\mathcent" "txfonts|pxfonts" # CENT SIGN
 0x00a3 "\\pounds"                 "" "" "\\pounds" "" # £ POUND SIGN
 0x00a4 "\\textcurrency"           "textcomp" "" # CURRENCY SYMBOL
 0x00a5 "\\textyen"                "textcomp" "" "\\yen" "amssymb" # YEN SIGN
@@ -1790,6 +1793,7 @@
 #
 0x2202 ""                         "" "" "\\partial" # PARTIAL DIFFERENTIAL
 0x2206 ""                         "" "" "\\Delta" # INCREMENT
+#0x220c ""                         "" "" "\\notni" "txfonts|pxfonts" # DOES NOT CONTAIN AS MEMBER
 0x220f ""                         "" "" "\\prod" # N-ARY PRODUCT
 0x2211 ""                         "" "" "\\sum" # N-ARY SUMMATION
 0x2212 "\\textminus"              "textcomp" "" "-" "" # MINUS SIGN
@@ -1810,7 +1814,7 @@
 0x222d ""                         "" "" "\\iiint" "esint|amsmath" # TRIPLE INTEGRAL
 0x222e ""                         "" "" "\\oint" "esint" # CONTOUR INTEGRAL
 0x222f ""                         "" "" "\\oiint" "esint" # SURFACE INTEGRAL
-0x2230 ""                         "" "" "\\oiiint" "txfonts" # VOLUME INTEGRAL
+#0x2230 ""                         "" "" "\\oiiint" "txfonts|pxfonts|fourier|mathdesign" # VOLUME INTEGRAL
 #0x2231 ""                         "" "" "" "" # CLOCKWISE INTEGRAL
 0x2232 ""                         "" "" "\\ointclockwise" "esint" # CLOCKWISE CONTOUR INTEGRAL
 0x2233 ""                         "" "" "\\ointctrclockwise" "esint" # ANTICLOCKWISE CONTOUR INTEGRAL
@@ -1919,7 +1923,7 @@
 0x25c2 "\\textifsymbol[ifgeo]{114}" "ifsym" "" # BLACK LEFT-POINTING SMALL TRIANGLE
 0x25c3 "\\textifsymbol[ifgeo]{66}" "ifsym" "" # WHITE LEFT-POINTING SMALL TRIANGLE
 0x25c4 "\\LEFTarrow"              "wasysym" "" # BLACK LEFT-POINTING POINTER
-0x25c6 "\\textifsymbol[ifgeo]{102}" "ifsym" "" "\\Diamondblack" "txfonts" # BLACK DIAMOND
+0x25c6 "\\textifsymbol[ifgeo]{102}" "ifsym" "" #"\\Diamondblack" "txfonts|pxfonts" # BLACK DIAMOND
 0x25c7 "\\textifsymbol[ifgeo]{54}" "ifsym" "" "\\Diamond" "amssymb" # WHITE DIAMOND
 0x25ca ""                         "" "" "\\lozenge" "amssymb" # LOZENGE
 0x25cb "\\Circle"                 "wasysym" "" "\\Circle" "wasysym" # CIRCLE
@@ -1982,10 +1986,10 @@
 0x2661 ""                         "" "" "\\heartsuit" # WHITE HEART SUIT
 0x2662 ""                         "" "" "\\diamondsuit" # WHITE DIAMOND SUIT
 0x2663 ""                         "" "" "\\clubsuit" # BLACK CLUB SUIT
-0x2664 ""                         "" "" "\\varspadesuit" "txfonts" # WHITE SPADE SUIT
-0x2665 ""                         "" "" "\\varheartsuit" "txfonts" # BLACK HEART SUIT
-0x2666 ""                         "" "" "\\vardiamondsuit" "txfonts" # BLACK DIAMOND SUIT
-0x2667 ""                         "" "" "\\varclubsuit" "txfonts" # WHITE CLUB SUIT
+#0x2664 ""                         "" "" "\\varspadesuit" "txfonts|pxfonts" # WHITE SPADE SUIT
+#0x2665 ""                         "" "" "\\varheartsuit" "txfonts|pxfonts" # BLACK HEART SUIT
+#0x2666 ""                         "" "" "\\vardiamondsuit" "txfonts|pxfonts" # BLACK DIAMOND SUIT
+#0x2667 ""                         "" "" "\\varclubsuit" "txfonts|pxfonts" # WHITE CLUB SUIT
 0x2669 "\\quarternote"            "wasysym" "" "\\quarternote" "wasysym" # QUARTER NOTE
 0x266a "\\textmusicalnote"        "textcomp" "" # EIGHTH NOTE
 0x266b "\\twonotes"               "wasysym" "" "\\twonotes" "wasysym" # BEAMED EIGHTH NOTES

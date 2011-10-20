@@ -599,6 +599,8 @@ char const * simplefeatures[] = {
 	"ifsym",
 	"marvosym",
 	"txfonts",
+	"pxfonts",
+	"mathdesign",
 	"mathrsfs",
 	"ascii",
 	"url",
