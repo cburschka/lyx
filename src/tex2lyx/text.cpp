@@ -2404,6 +2404,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "underbar" || t.cs() == "uline") {
+			// \underbar is not 100% correct (LyX outputs \uline
+			// of ulem.sty). The difference is that \ulem allows
+			// line breaks, and \underbar does not.
 			// Do NOT handle \underline.
 			// \underbar cuts through y, g, q, p etc.,
 			// \underline does not.

@@ -60,4 +60,15 @@ Format LaTeX feature                        LyX feature
 354    \printindex*, \printsubindex*        InsetIndex
 355    \sout                                fonts
 356    \uuline, \uwave                      fonts
+358    custom bibtex command                \bibtex_command
+358    custom makeindex command             \index_command
+359    set_width                            InsetCommand nomencl_print
+360    width                                InsetCommand nomencl_print
+362    applemac encoding                    \encoding
+363    horizontal longtable alignment       InsetTabular
+364    branch file name suffix              \filename_suffix
+365    custom paragraph indentation         \paragraph_indentation
+366    relative lengths for parskip         \defskip
+367    relative lengths for h and v space   InsetHSpace, InsetVSpace
+368    glue lengths                         InsetHSpace
 
