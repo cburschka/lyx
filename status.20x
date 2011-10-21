@@ -24,8 +24,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- completely revised support for the latest versions of the Springer
-  document classes svjour3, svmono and svmult
+- Completely revised support for the latest versions of the Springer
+  document classes svjour3, svmono and svmult.
 
 - Add possibility to export the R code from a sweave-enabled document
   (part of bug 7555).
@@ -36,10 +36,7 @@ What's new
 
 * USER INTERFACE
 
-- new menu entry Edit->Select Whole Inset 
-
-- Updated French, German, Interlingua, Italian and Slovak user interface
-  localization.
+- New menu entry Edit->Select Whole Inset.
 
 - Speed up cursor movement when inline completion is enabled in math.
 
@@ -53,20 +50,23 @@ What's new
   text which is not explicitly marked in a different language, irrespective
   of the multilingual status, except for LTR<=>RTL changes.
 
-- Augmented the tex2lyx -help message with the default pathes (bug 6827).
+- Augmented the tex2lyx --help message with the default paths (bug 6827).
 
-- New command-line switch -v (-version) for tex2lyx showing build information
+- New command-line switch -v (--version) for tex2lyx showing build information
   and version number (bug 6827).
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- revised template files for the Springer document classes
+- Updated French, German, Interlingua, Italian and Slovak user interface
+  localization.
+
+- Revised template files for the Springer document classes.
 
 
 * BUILD/INSTALLATION
 
-- Add background image for Mac OS X disk image
+- Add background image for Mac OS X disk image.
 
 
 
