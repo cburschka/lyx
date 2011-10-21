@@ -198,6 +198,7 @@ string h_papersize               = "default";
 string h_use_geometry            = "false";
 string h_use_amsmath             = "1";
 string h_use_esint               = "1";
+string h_use_mhchem              = "0";
 string h_cite_engine             = "basic";
 string h_use_bibtopic            = "false";
 string h_paperorientation        = "portrait";
@@ -500,6 +501,9 @@ void handle_package(Parser &p, string const & name, string const & opts,
 	else if (name == "esint")
 		h_use_esint = "2";
 
+	else if (name == "mhchem")
+		h_use_mhchem = "2";
+
 	else if (name == "babel" && !opts.empty()) {
 		// check if more than one option was used - used later for inputenc
 		// in case inputenc is parsed before babel, set the encoding to auto
@@ -719,6 +723,7 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 	   << "\\use_geometry " << h_use_geometry << "\n"
 	   << "\\use_amsmath " << h_use_amsmath << "\n"
 	   << "\\use_esint " << h_use_esint << "\n"
+	   << "\\use_mhchem " << h_use_mhchem << "\n"
 	   << "\\cite_engine " << h_cite_engine << "\n"
 	   << "\\use_bibtopic " << h_use_bibtopic << "\n"
 	   << "\\paperorientation " << h_paperorientation << '\n';

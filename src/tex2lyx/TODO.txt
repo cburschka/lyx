@@ -71,4 +71,12 @@ Format LaTeX feature                        LyX feature
 366    relative lengths for parskip         \defskip
 367    relative lengths for h and v space   InsetHSpace, InsetVSpace
 368    glue lengths                         InsetHSpace
+369    author id                            \author
+370    \date{}                              \suppress_date
+371    automatic mhchem loading             \use_mhchem
+372    font encoding                        \fontencoding
+375    \includeonly                         \{begin,end}_includeonly
+376    update .aux of unincluded children   \maintain_unincluded_children
+377    multirow.sty                         InsetTabular
+378    revision info                        InsetInfo
 
