@@ -53,7 +53,7 @@ string h_inputencoding = "auto";
 namespace {
 
 //add this to known_languages when updating to lyxformat 266:
-// "armenian"
+// "armenian" (needs special handling since not supported by standard babel)
 //add these to known_languages when updating to lyxformat 268:
 //"chinese-simplified", "chinese-traditional", "japanese", "korean"
 // Both changes require first that support for non-babel languages (CJK,
@@ -61,7 +61,7 @@ namespace {
 // add turkmen for lyxformat 383
 /**
  * known babel language names (including synonyms)
- * not in standard babel: arabic, arabtex, belarusian, serbian-latin, thai
+ * not in standard babel: arabic, arabtex, armenian, belarusian, serbian-latin, thai
  * not yet supported by LyX: kurmanji
  * please keep this in sync with known_coded_languages line by line!
  */
@@ -77,8 +77,9 @@ const char * const known_languages[] = {"acadian", "afrikaans", "albanian",
 "ngerman", "ngermanb", "norsk", "nynorsk", "polutonikogreek", "polish",
 "portuges", "portuguese", "romanian", "russian", "russianb", "samin",
 "scottish", "serbian", "serbian-latin", "slovak", "slovene", "spanish",
-"swedish", "thai", "turkish", "ukraineb", "ukrainian", "uppersorbian",
-"UKenglish", "USenglish", "usorbian", "vietnam", "welsh", 0};
+"swedish", "thai", "turkish", "turkmen", "ukraineb", "ukrainian",
+"uppersorbian", "UKenglish", "USenglish", "usorbian", "vietnam", "welsh",
+0};
 
 /**
  * the same as known_languages with .lyx names
@@ -96,21 +97,21 @@ const char * const known_coded_languages[] = {"french", "afrikaans", "albanian",
 "ngerman", "ngerman", "norsk", "nynorsk", "polutonikogreek", "polish",
 "portuguese", "portuguese", "romanian", "russian", "russian", "samin",
 "scottish", "serbian", "serbian-latin", "slovak", "slovene", "spanish",
-"swedish", "thai", "turkish", "ukrainian", "ukrainian", "uppersorbian",
-"uppersorbian", "english", "english", "vietnamese", "welsh", 0};
+"swedish", "thai", "turkish", "turkmen", "ukrainian", "ukrainian",
+"uppersorbian", "uppersorbian", "english", "english", "vietnamese", "welsh",
+0};
 
 /// languages with english quotes (.lyx names)
 const char * const known_english_quotes_languages[] = {"american", "bahasa",
 "bahasam", "brazilian", "canadian", "chinese-simplified", "english",
 "esperanto", "hebrew", "irish", "korean", "portuguese", "scottish", "thai", 0};
 
-//add this to known_french_quotes_languages when updating to
-//lyxformat 383: "turkmen"
 /// languages with french quotes (.lyx names)
 const char * const known_french_quotes_languages[] = {"albanian",
 "arabic_arabi", "arabic_arabtex", "basque", "canadien", "catalan", "french",
 "galician", "greek", "italian", "norsk", "nynorsk", "polutonikogreek",
-"russian", "spanish", "spanish-mexico", "turkish", "ukrainian", "vietnamese", 0};
+"russian", "spanish", "spanish-mexico", "turkish", "turkmen", "ukrainian",
+"vietnamese", 0};
 
 /// languages with german quotes (.lyx names)
 const char * const known_german_quotes_languages[] = {"austrian", "bulgarian",
@@ -215,6 +216,8 @@ string h_paperpagestyle          = "default";
 string h_listings_params;
 string h_tracking_changes        = "false";
 string h_output_changes          = "false";
+string h_html_math_output        = "0";
+string h_html_be_strict          = "false";
 string h_margins;
 
 
@@ -727,13 +730,13 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 	   << "\\cite_engine " << h_cite_engine << "\n"
 	   << "\\use_bibtopic " << h_use_bibtopic << "\n"
 	   << "\\paperorientation " << h_paperorientation << '\n';
-	if (LYX_FORMAT >= 382 && !h_notefontcolor.empty())
+	if (!h_notefontcolor.empty())
 		os << "\\notefontcolor " << h_notefontcolor << '\n';
 	os << h_margins
 	   << "\\secnumdepth " << h_secnumdepth << "\n"
 	   << "\\tocdepth " << h_tocdepth << "\n"
 	   << "\\paragraph_separation " << h_paragraph_separation << "\n";
-	if (LYX_FORMAT < 365 || h_paragraph_separation == "skip")
+	if (h_paragraph_separation == "skip")
 		os << "\\defskip " << h_defskip << "\n";
 	else
 		os << "\\paragraph_indentation " << h_paragraph_indentation << "\n";
@@ -745,6 +748,8 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 		os << "\\listings_params " << h_listings_params << "\n";
 	os << "\\tracking_changes " << h_tracking_changes << "\n"
 	   << "\\output_changes " << h_output_changes << "\n"
+	   << "\\html_math_output " << h_html_math_output << "\n"
+	   << "\\html_be_strict " << h_html_be_strict << "\n"
 	   << "\\end_header\n\n"
 	   << "\\begin_body\n";
 	// clear preamble for subdocuments
@@ -1023,11 +1028,8 @@ void parse_preamble(Parser & p, ostream & os,
 			if (name == "\\parindent" && content != "") {
 				if (content[0] == '0')
 					h_paragraph_separation = "skip";
-				else if (LYX_FORMAT >= 365)
-					h_paragraph_indentation = translate_len(content);
 				else
-					h_preamble << "\\setlength{" << name
-					           << "}{" << content << "}";
+					h_paragraph_indentation = translate_len(content);
 			} else if (name == "\\parskip") {
 				if (content == "\\smallskipamount")
 					h_defskip = "smallskip";
@@ -1090,8 +1092,7 @@ void parse_preamble(Parser & p, ostream & os,
 			string const color = p.getArg('{', '}');
 			string const space = p.getArg('{', '}');
 			string const value = p.getArg('{', '}');
-			if (LYX_FORMAT >= 382 &&
-			    color == "note_fontcolor" && space == "rgb") {
+			if (color == "note_fontcolor" && space == "rgb") {
 				RGBColor c(RGBColorFromLaTeX(value));
 				h_notefontcolor = X11hexname(c);
 			} else {

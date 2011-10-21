@@ -67,7 +67,6 @@ Format LaTeX feature                        LyX feature
 362    applemac encoding                    \encoding
 363    horizontal longtable alignment       InsetTabular
 364    branch file name suffix              \filename_suffix
-365    custom paragraph indentation         \paragraph_indentation
 366    relative lengths for parskip         \defskip
 367    relative lengths for h and v space   InsetHSpace, InsetVSpace
 368    glue lengths                         InsetHSpace
@@ -79,4 +78,12 @@ Format LaTeX feature                        LyX feature
 376    update .aux of unincluded children   \maintain_unincluded_children
 377    multirow.sty                         InsetTabular
 378    revision info                        InsetInfo
+380    ?                                    InsetPreview
+381    \xymatrix@!{0,R,C}                   InsetMathXYMatrix
+382    note_fontcolor                       InsetNote
+384    document font color                  \fontcolor
+385    shaded box background color          \boxbgcolor
+386    LyX version                          InsetInfo
+388    page sizes A0-3, A6, B0-3, B6,       \papersize
+       JIS B0-6
 
