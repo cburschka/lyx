@@ -244,8 +244,7 @@ bool InsetIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 				from_utf8(cmd.getArg(1)) == params_.index);
 			return true;
 		}
-		flag.setEnabled(true);
-		return true;
+		return InsetCollapsable::getStatus(cur, cmd, flag);
 
 	case LFUN_INSET_DIALOG_UPDATE: {
 		Buffer const & realbuffer = *buffer().masterBuffer();
