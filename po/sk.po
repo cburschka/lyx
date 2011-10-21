@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-10-17 14:00+0200\n"
+"POT-Creation-Date: 2011-10-21 14:25+0200\n"
 "PO-Revision-Date: 2011-10-17 15:04+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -17018,8 +17018,8 @@ msgstr ""
 "v LaTeX-ovej preambuly."
 
 #: src/Buffer.cpp:850 src/BufferParams.cpp:415
-#: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:447
-#: src/insets/InsetIndex.cpp:711
+#: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:446
+#: src/insets/InsetIndex.cpp:710
 msgid "Index"
 msgstr "Index"
 
@@ -17479,7 +17479,7 @@ msgstr ""
 msgid "Document class not available"
 msgstr "Nedostupná trieda dokumentu"
 
-#: src/BufferParams.cpp:1987
+#: src/BufferParams.cpp:1988
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -17494,11 +17494,11 @@ msgstr ""
 "trieda a schéma. LyX nebude schopný zrobiť\n"
 "správny výstup."
 
-#: src/BufferParams.cpp:1993
+#: src/BufferParams.cpp:1994
 msgid "Document class not found"
 msgstr "Nenájdená trieda dokumentu"
 
-#: src/BufferParams.cpp:2000
+#: src/BufferParams.cpp:2001
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -17513,15 +17513,15 @@ msgstr ""
 "trieda a schéma. LyX nebude schopný zrobiť\n"
 "správny výstup."
 
-#: src/BufferParams.cpp:2006 src/BufferView.cpp:1272 src/BufferView.cpp:1304
+#: src/BufferParams.cpp:2007 src/BufferView.cpp:1272 src/BufferView.cpp:1304
 msgid "Could not load class"
 msgstr "Nepodarilo sa nahrať triedu"
 
-#: src/BufferParams.cpp:2042
+#: src/BufferParams.cpp:2043
 msgid "Error reading internal layout information"
 msgstr "Chyba pri čítaní vnútorných schéma-informácií"
 
-#: src/BufferParams.cpp:2043 src/TextClass.cpp:1371
+#: src/BufferParams.cpp:2044 src/TextClass.cpp:1371
 msgid "Read Error"
 msgstr "Chyba pri čítaní"
 
@@ -18681,7 +18681,7 @@ msgstr ""
 "\t-version  zhrnúť  verziu a prekladnú informáciu.\n"
 "Viac informácií nájdete v manuálovej stránke LyXu."
 
-#: src/LyX.cpp:1097 src/support/Package.cpp:589
+#: src/LyX.cpp:1097
 msgid "No system directory"
 msgstr "Nemám systémový adresár"
 
@@ -20485,11 +20485,11 @@ msgstr "Prepísať externý súbor?"
 msgid "File %1$s already exists, do you want to overwrite it?"
 msgstr "Súbor %1$s už existuje. Chcete tento súbor prepísať?"
 
-#: src/frontends/qt4/GuiCommandBuffer.cpp:99
+#: src/frontends/qt4/GuiCommandBuffer.cpp:98
 msgid "List of previous commands"
 msgstr "Zoznam predchádzajúcich príkazov"
 
-#: src/frontends/qt4/GuiCommandBuffer.cpp:102
+#: src/frontends/qt4/GuiCommandBuffer.cpp:101
 msgid "Next command"
 msgstr "Nasledujúci príkaz"
 
@@ -22624,31 +22624,31 @@ msgstr "DocBook Zdroj"
 msgid "Literate Source"
 msgstr "Literate Zdroj"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1331
+#: src/frontends/qt4/GuiWorkArea.cpp:1330
 msgid " (version control, locking)"
 msgstr " (kontrola verzií, blokovanie)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1333
+#: src/frontends/qt4/GuiWorkArea.cpp:1332
 msgid " (version control)"
 msgstr " (kontrola verzií)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1336
+#: src/frontends/qt4/GuiWorkArea.cpp:1335
 msgid " (changed)"
 msgstr " (zmenený)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1340
+#: src/frontends/qt4/GuiWorkArea.cpp:1339
 msgid " (read only)"
 msgstr " (iba pre čítanie)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1527
+#: src/frontends/qt4/GuiWorkArea.cpp:1515
 msgid "Close File"
 msgstr "Zavrieť Súbor"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1969
+#: src/frontends/qt4/GuiWorkArea.cpp:1957
 msgid "Hide tab"
 msgstr "Kartu schovať"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1971
+#: src/frontends/qt4/GuiWorkArea.cpp:1959
 msgid "Close tab"
 msgstr "Kartu zavrieť"
 
@@ -22669,7 +22669,7 @@ msgstr "Filtrovanie schém pomocou \"%1$s\". Použite ESC na odstránenie filtru
 msgid "Enter characters to filter the layout list."
 msgstr "Zadajte znaky na výber z listiny schém."
 
-#: src/frontends/qt4/LayoutBox.cpp:570
+#: src/frontends/qt4/LayoutBox.cpp:573
 msgid " (unknown)"
 msgstr " (neznáme)"
 
@@ -23066,7 +23066,7 @@ msgstr "%1$s (%2$s, %3$s)"
 msgid "active"
 msgstr "aktívna"
 
-#: src/insets/InsetBranch.cpp:68 src/insets/InsetIndex.cpp:455
+#: src/insets/InsetBranch.cpp:68 src/insets/InsetIndex.cpp:454
 msgid "non-active"
 msgstr "ne-aktívna"
 
@@ -23337,23 +23337,23 @@ msgstr ""
 "Prosím nastavte triedenie tohto záznamu ručne, ako\n"
 "vysvetlené v užívateľskej príručke."
 
-#: src/insets/InsetIndex.cpp:276
+#: src/insets/InsetIndex.cpp:275
 msgid "Index Entry"
 msgstr "Heslo Indexu"
 
-#: src/insets/InsetIndex.cpp:283 src/insets/InsetIndex.cpp:304
+#: src/insets/InsetIndex.cpp:282 src/insets/InsetIndex.cpp:303
 msgid "unknown type!"
 msgstr "neznámy typ!"
 
-#: src/insets/InsetIndex.cpp:452
+#: src/insets/InsetIndex.cpp:451
 msgid "Unknown index type!"
 msgstr "Neznámy typ indexu!"
 
-#: src/insets/InsetIndex.cpp:453
+#: src/insets/InsetIndex.cpp:452
 msgid "All indexes"
 msgstr "Všetky indexy"
 
-#: src/insets/InsetIndex.cpp:457
+#: src/insets/InsetIndex.cpp:456
 msgid "subindex"
 msgstr "Podindex"
 
@@ -23939,7 +23939,7 @@ msgstr "Vhodný výraz nájdený!"
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1685
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1699
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -23980,11 +23980,11 @@ msgstr "Žiadna vertikálna linka (vline) na zmazanie"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Neznáme vlastnosti tabuľky '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1278
+#: src/mathed/InsetMathHull.cpp:1292
 msgid "Bad math environment"
 msgstr "Zlé mat. prostredie"
 
-#: src/mathed/InsetMathHull.cpp:1279
+#: src/mathed/InsetMathHull.cpp:1293
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
@@ -23992,25 +23992,25 @@ msgstr ""
 "Výpočet sa pre mat. prostredie AMS nedá previezť.\n"
 "Zmeňte typ mat. formuly a skúste to ešte raz."
 
-#: src/mathed/InsetMathHull.cpp:1385 src/mathed/InsetMathHull.cpp:1394
+#: src/mathed/InsetMathHull.cpp:1399 src/mathed/InsetMathHull.cpp:1408
 msgid "No number"
 msgstr "Bez čísla"
 
-#: src/mathed/InsetMathHull.cpp:1385 src/mathed/InsetMathHull.cpp:1394
+#: src/mathed/InsetMathHull.cpp:1399 src/mathed/InsetMathHull.cpp:1408
 msgid "Number"
 msgstr "Číslo"
 
-#: src/mathed/InsetMathHull.cpp:1658
+#: src/mathed/InsetMathHull.cpp:1672
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Nedá sa zmeniť počet riadkov v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1668
+#: src/mathed/InsetMathHull.cpp:1682
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Počet stĺpcov sa nedá zmeniť v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1678
+#: src/mathed/InsetMathHull.cpp:1692
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Nedajú sa pridať horizontálne linky mriežky '%1$s'"
@@ -24080,66 +24080,6 @@ msgstr "Súhrn: "
 #: src/output_plaintext.cpp:153
 msgid "References: "
 msgstr "Referencie: "
-
-#: src/support/Package.cpp:470
-msgid "LyX binary not found"
-msgstr "Spustiteľný súbor LyX nebol nájdený!"
-
-#: src/support/Package.cpp:471
-#, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
-msgstr ""
-"Nepodarilo sa určiť cestu k spustiteľnému súboru LyX z príkazového riadku "
-"%1$s"
-
-#: src/support/Package.cpp:590
-#, c-format
-msgid ""
-"Unable to determine the system directory having searched\n"
-"\t%1$s\n"
-"Use the '-sysdir' command line parameter or set the environment variable\n"
-"%2$s to the LyX system directory containing the file `chkconfig.ltx'."
-msgstr ""
-"Nepodarilo sa určiť systémový adresár pri prehľadávaní\n"
-"\t%1$s\n"
-"Použite voľbu '-sysdir' alebo nastavte premennú\n"
-"%2$s na cestu adresára obsahujúceho súbor `chkconfig.ltx'."
-
-#: src/support/Package.cpp:671 src/support/Package.cpp:698
-msgid "File not found"
-msgstr "Súbor nenájdený"
-
-#: src/support/Package.cpp:672
-#, c-format
-msgid ""
-"Invalid %1$s switch.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-"Neplatný %1$s prepínač.\n"
-"Adresár %2$s neobsahuje %3$s."
-
-#: src/support/Package.cpp:699
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-"Neplatná %1$s premenná.\n"
-"Adresár %2$s neobsahuje %3$s."
-
-#: src/support/Package.cpp:723
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"%2$s is not a directory."
-msgstr ""
-"Neplatná premenná %1$s.\n"
-"%2$s nie je adresár."
-
-#: src/support/Package.cpp:725
-msgid "Directory not found"
-msgstr "Adresár nenájdený"
 
 #: src/support/debug.cpp:41
 msgid "No debugging messages"
@@ -24313,6 +24253,53 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "LyX binary not found"
+#~ msgstr "Spustiteľný súbor LyX nebol nájdený!"
+
+#~ msgid ""
+#~ "Unable to determine the path to the LyX binary from the command line %1$s"
+#~ msgstr ""
+#~ "Nepodarilo sa určiť cestu k spustiteľnému súboru LyX z príkazového riadku "
+#~ "%1$s"
+
+#~ msgid ""
+#~ "Unable to determine the system directory having searched\n"
+#~ "\t%1$s\n"
+#~ "Use the '-sysdir' command line parameter or set the environment variable\n"
+#~ "%2$s to the LyX system directory containing the file `chkconfig.ltx'."
+#~ msgstr ""
+#~ "Nepodarilo sa určiť systémový adresár pri prehľadávaní\n"
+#~ "\t%1$s\n"
+#~ "Použite voľbu '-sysdir' alebo nastavte premennú\n"
+#~ "%2$s na cestu adresára obsahujúceho súbor `chkconfig.ltx'."
+
+#~ msgid "File not found"
+#~ msgstr "Súbor nenájdený"
+
+#~ msgid ""
+#~ "Invalid %1$s switch.\n"
+#~ "Directory %2$s does not contain %3$s."
+#~ msgstr ""
+#~ "Neplatný %1$s prepínač.\n"
+#~ "Adresár %2$s neobsahuje %3$s."
+
+#~ msgid ""
+#~ "Invalid %1$s environment variable.\n"
+#~ "Directory %2$s does not contain %3$s."
+#~ msgstr ""
+#~ "Neplatná %1$s premenná.\n"
+#~ "Adresár %2$s neobsahuje %3$s."
+
+#~ msgid ""
+#~ "Invalid %1$s environment variable.\n"
+#~ "%2$s is not a directory."
+#~ msgstr ""
+#~ "Neplatná premenná %1$s.\n"
+#~ "%2$s nie je adresár."
+
+#~ msgid "Directory not found"
+#~ msgstr "Adresár nenájdený"
 
 #~ msgid "Enter the command to load the language package (default: babel)"
 #~ msgstr "Zadajte príkaz na nahranie jazykového balíku (štandardne babel)"
