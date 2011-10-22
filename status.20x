@@ -33,6 +33,8 @@ What's new
 - XHTML export now respects font color and background color from 
   Document->Settings->Colors.
 
+- tex2lyx produces now the current file format 413.
+
 
 * USER INTERFACE
 
@@ -154,6 +156,10 @@ What's new
   and Tools->Preferences (bug 5840).
 
 - Allow the \nocite LaTeX command when using the basic citation engine.
+
+- tex2lyx does not produce invalid Flex insets anymore (bug 7780)
+
+- Fix import of required arguments of standard environments (part of bug 7468)
 
 
 * ADVANCED FIND AND REPLACE

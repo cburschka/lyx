@@ -109,6 +109,9 @@ string parse_text_snippet(Parser & p, unsigned flags, const bool outer,
 char const * const known_ref_commands[] = { "ref", "pageref", "vref",
  "vpageref", "prettyref", "eqref", 0 };
 
+char const * const known_coded_ref_commands[] = { "ref", "pageref", "vref",
+ "vpageref", "formatted", "eqref", 0 };
+
 /*!
  * natbib commands.
  * The starred forms are also known except for "citefullauthor",
@@ -577,7 +580,7 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 		    p.next_token().character() != '[') 
 			break;
 		p.get_token(); // eat '['
-		begin_inset(os, "OptArg\n");
+		begin_inset(os, "Argument\n");
 		os << "status collapsed\n\n";
 		parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
 		end_inset(os);
@@ -585,12 +588,12 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 		++optargs;
 	}
 	unsigned int reqargs = 0;
-	while (LYX_FORMAT >= 392 && reqargs < context.layout->reqargs) {
+	while (reqargs < context.layout->reqargs) {
 		eat_whitespace(p, os, context, false);
 		if (p.next_token().cat() != catBegin)
 			break;
 		p.get_token(); // eat '{'
-		begin_inset(os, "OptArg\n");
+		begin_inset(os, "Argument\n");
 		os << "status collapsed\n\n";
 		parse_text_in_inset(p, os, FLAG_BRACE_LAST, outer, context);
 		end_inset(os);
@@ -683,7 +686,7 @@ void parse_arguments(string const & command,
 			break;
 		case optional:
 			// true because we must not eat whitespace
-			// if an optional arg follows me must not strip the
+			// if an optional arg follows we must not strip the
 			// brackets from this one
 			if (i < no_arguments - 1 &&
 			    template_arguments[i+1] == optional)
@@ -866,6 +869,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		os << "has_inner_box " << !inner_type.empty() << "\n";
 		os << "inner_pos \"" << inner_pos << "\"\n";
 		os << "use_parbox " << (inner_type == "parbox") << '\n';
+		os << "use_makebox 0\n";
 		os << "width \"" << width_value << width_unit << "\"\n";
 		os << "special \"none\"\n";
 		os << "height \"" << height_value << height_unit << "\"\n";
@@ -1201,6 +1205,49 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			break;
 		}
 		context.check_deeper(os);
+		// handle known optional and required arguments
+		// layouts require all optional arguments before the required ones
+		// Unfortunately LyX can't handle arguments of list arguments (bug 7468):
+		// It is impossible to place anything after the environment name,
+		// but before the first \\item.
+		if (context.layout->latextype == LATEX_ENVIRONMENT) {
+			bool need_layout = true;
+			unsigned int optargs = 0;
+			while (optargs < context.layout->optargs) {
+				eat_whitespace(p, os, context, false);
+				if (p.next_token().cat() == catEscape ||
+				    p.next_token().character() != '[') 
+					break;
+				p.get_token(); // eat '['
+				if (need_layout) {
+					context.check_layout(os);
+					need_layout = false;
+				}
+				begin_inset(os, "Argument\n");
+				os << "status collapsed\n\n";
+				parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
+				end_inset(os);
+				eat_whitespace(p, os, context, false);
+				++optargs;
+			}
+			unsigned int reqargs = 0;
+			while (reqargs < context.layout->reqargs) {
+				eat_whitespace(p, os, context, false);
+				if (p.next_token().cat() != catBegin)
+					break;
+				p.get_token(); // eat '{'
+				if (need_layout) {
+					context.check_layout(os);
+					need_layout = false;
+				}
+				begin_inset(os, "Argument\n");
+				os << "status collapsed\n\n";
+				parse_text_in_inset(p, os, FLAG_BRACE_LAST, outer, context);
+				end_inset(os);
+				eat_whitespace(p, os, context, false);
+				++reqargs;
+			}
+		}
 		parse_text(p, os, FLAG_END, outer, context);
 		context.check_end_layout(os);
 		if (parent_context.deeper_paragraph) {
@@ -1448,8 +1495,10 @@ void parse_noweb(Parser & p, ostream & os, Context & context)
 			os << subst(t.asInput(), "\\", "\n\\backslash\n");
 		else {
 			ostringstream oss;
-			begin_inset(oss, "Newline newline");
-			end_inset(oss);
+			Context tmp(false, context.textclass,
+			            &context.textclass[from_ascii("Scrap")]);
+			tmp.need_end_layout = true;
+			tmp.check_layout(oss);
 			os << subst(t.asInput(), "\n", oss.str());
 		}
 		// The scrap chunk is ended by an @ at the beginning of a line.
@@ -2035,7 +2084,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (p.next_token().cat() != catEscape &&
 			    p.next_token().character() == '[') {
 				p.get_token(); // eat '['
-				begin_inset(os, "OptArg\n");
+				begin_inset(os, "Argument\n");
 				os << "status collapsed\n";
 				parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
 				end_inset(os);
@@ -2361,6 +2410,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "underbar" || t.cs() == "uline") {
+			// \underbar is not 100% correct (LyX outputs \uline
+			// of ulem.sty). The difference is that \ulem allows
+			// line breaks, and \underbar does not.
 			// Do NOT handle \underline.
 			// \underbar cuts through y, g, q, p etc.,
 			// \underline does not.
@@ -2380,8 +2432,30 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "lyxline") {
+			// swallow size argument (it is not used anyway)
+			p.getArg('{', '}');
+			if (!context.atParagraphStart()) {
+				// so our line is in the middle of a paragraph
+				// we need to add a new line, lest this line
+				// follow the other content on that line and
+				// run off the side of the page
+				// FIXME: This may create an empty paragraph,
+				//        but without that it would not be
+				//        possible to set noindent below.
+				//        Fortunately LaTeX does not care
+				//        about the empty paragraph.
+				context.new_paragraph(os);
+			}
+			if (h_paragraph_separation == "indent") {
+				// we need to unindent, lest the line be too long
+				context.add_par_extra_stuff("\\noindent\n");
+			}
 			context.check_layout(os);
-			os << "\\lyxline";
+			begin_command_inset(os, "line", "rule");
+			os << "offset \"0.5ex\"\n"
+			      "width \"100line%\"\n"
+			      "height \"1pt\"\n";
+			end_inset(os);
 		}
 
 		else if (is_known(t.cs(), known_phrases) ||
@@ -2402,7 +2476,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string const opt = p.getOpt();
 			if (opt.empty()) {
 				context.check_layout(os);
-				begin_command_inset(os, "ref", t.cs());
+				char const * const * where = is_known(t.cs(),
+					known_ref_commands);
+				begin_command_inset(os, "ref",
+					known_coded_ref_commands[where - known_ref_commands]);
 				os << "reference \""
 				   << convert_command_inset_arg(p.verbatim_item())
 				   << "\"\n";
@@ -2540,7 +2617,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "index") {
 			context.check_layout(os);
-			begin_inset(os, "Index\n");
+			begin_inset(os, "Index idx\n");
 			os << "status collapsed\n";
 			parse_text_in_inset(p, os, FLAG_ITEM, false, context, "Index");
 			end_inset(os);
@@ -2572,6 +2649,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "printindex") {
 			context.check_layout(os);
 			begin_command_inset(os, "index_print", "printindex");
+			os << "type \"idx\"\n";
 			end_inset(os);
 			skip_spaces_braces(p);
 		}
@@ -2583,8 +2661,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_spaces_braces(p);
 		}
 
-		else if (LYX_FORMAT >= 408 &&
-		         (t.cs() == "textsuperscript" || t.cs() == "textsubscript")) {
+		else if ((t.cs() == "textsuperscript" || t.cs() == "textsubscript")) {
 			context.check_layout(os);
 			begin_inset(os, "script ");
 			os << t.cs().substr(4) << '\n';

@@ -51,4 +51,50 @@ Format LaTeX feature                        LyX feature
 332    ?                                    InsetGraphics groupId
 336    ?                                    \font_cjk
 343    ?                                    \use_default_options
+347    tabular valign                       InsetTabular
+348    \phantom, \hphantom, \vphantom       InsetPhantom
+350    ?                                    \default_output_format
+351    ?                                    \backgroundcolor
+353    \printsubindex                       InsetIndex
+354    \printindex*, \printsubindex*        InsetIndex
+355    \sout                                fonts
+356    \uuline, \uwave                      fonts
+358    custom bibtex command                \bibtex_command
+358    custom makeindex command             \index_command
+359    set_width                            InsetCommand nomencl_print
+360    width                                InsetCommand nomencl_print
+362    applemac encoding                    \encoding
+363    horizontal longtable alignment       InsetTabular
+364    branch file name suffix              \filename_suffix
+366    relative lengths for parskip         \defskip
+367    relative lengths for h and v space   InsetHSpace, InsetVSpace
+368    glue lengths                         InsetHSpace
+369    author id                            \author
+370    \date{}                              \suppress_date
+371    automatic mhchem loading             \use_mhchem
+375    \includeonly                         \{begin,end}_includeonly
+376    update .aux of unincluded children   \maintain_unincluded_children
+377    multirow.sty                         InsetTabular
+378    revision info                        InsetInfo
+380    ?                                    InsetPreview
+381    \xymatrix@!{0,R,C}                   InsetMathXYMatrix
+382    note_fontcolor                       InsetNote
+384    document font color                  \fontcolor
+385    shaded box background color          \boxbgcolor
+386    LyX version                          InsetInfo
+390    forward/reverse search               \forward_search, \forward_macro
+391    decimal alignment in tables          InsetTabular
+392    new beamer format                    InsetLayout
+394    \makebox                             InsetBox use_makebox
+396    nameref.sty                          InsetRef
+399    automatic mathdots loading           \use_mathdots
+400    other rules than \lyxline            InsetLine
+401    feyn.sty                             InsetMathDiagram
+402    \addcontentsline                     InsetBibtex bibtotoc option
+404    refstyle.sty                         InsetRef
+405    author hash                          \author
+407    vertical offset for multirows        InsetTabular
+409    XeTeX                                \use_non_tex_fonts
+411    babel etc.                           \language_package
+412    tabular*                             InsetTabular
 
