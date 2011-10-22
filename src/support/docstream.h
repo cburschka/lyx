@@ -154,6 +154,8 @@ otexstream & operator<<(otexstream &, odocstream_manip);
 ///
 otexstream & operator<<(otexstream &, docstring const &);
 ///
+otexstream & operator<<(otexstream &, std::string const &);
+///
 otexstream & operator<<(otexstream &, char const *);
 ///
 otexstream & operator<<(otexstream &, char);
