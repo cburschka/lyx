@@ -109,6 +109,9 @@ string parse_text_snippet(Parser & p, unsigned flags, const bool outer,
 char const * const known_ref_commands[] = { "ref", "pageref", "vref",
  "vpageref", "prettyref", "eqref", 0 };
 
+char const * const known_coded_ref_commands[] = { "ref", "pageref", "vref",
+ "vpageref", "formatted", "eqref", 0 };
+
 /*!
  * natbib commands.
  * The starred forms are also known except for "citefullauthor",
@@ -2471,7 +2474,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string const opt = p.getOpt();
 			if (opt.empty()) {
 				context.check_layout(os);
-				begin_command_inset(os, "ref", t.cs());
+				char const * const * where = is_known(t.cs(),
+					known_ref_commands);
+				begin_command_inset(os, "ref",
+					known_coded_ref_commands[where - known_ref_commands]);
 				os << "reference \""
 				   << convert_command_inset_arg(p.verbatim_item())
 				   << "\"\n";

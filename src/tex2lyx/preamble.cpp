@@ -205,6 +205,8 @@ string h_use_mathdots            = "0";
 string h_cite_engine             = "basic";
 string h_use_bibtopic            = "false";
 string h_paperorientation        = "portrait";
+string h_suppress_date           = "false";
+string h_use_refstyle            = "0";
 string h_notefontcolor;
 string h_secnumdepth             = "3";
 string h_tocdepth                = "3";
@@ -734,7 +736,9 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 	   << "\\use_mathdots " << h_use_mathdots << "\n"
 	   << "\\cite_engine " << h_cite_engine << "\n"
 	   << "\\use_bibtopic " << h_use_bibtopic << "\n"
-	   << "\\paperorientation " << h_paperorientation << '\n';
+	   << "\\paperorientation " << h_paperorientation << '\n'
+	   << "\\suppress_date " << h_suppress_date << '\n'
+	   << "\\use_refstyle " << h_use_refstyle << '\n';
 	if (!h_notefontcolor.empty())
 		os << "\\notefontcolor " << h_notefontcolor << '\n';
 	os << h_margins
