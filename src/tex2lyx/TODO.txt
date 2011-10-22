@@ -83,13 +83,10 @@ Format LaTeX feature                        LyX feature
 384    document font color                  \fontcolor
 385    shaded box background color          \boxbgcolor
 386    LyX version                          InsetInfo
-388    page sizes A0-3, A6, B0-3, B6,       \papersize
-       JIS B0-6
 390    forward/reverse search               \forward_search, \forward_macro
 391    decimal alignment in tables          InsetTabular
 392    new beamer format                    InsetLayout
 394    \makebox                             InsetBox use_makebox
-395    page sizes C0-6                      \papersize
 396    nameref.sty                          InsetRef
 399    automatic mathdots loading           \use_mathdots
 400    other rules than \lyxline            InsetLine
