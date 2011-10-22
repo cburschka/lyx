@@ -165,7 +165,7 @@ extern bool noweb_mode;
 /// Did we recognize any pdflatex-only construct?
 extern bool pdflatex;
 /// LyX format that is created by tex2lyx
-int const LYX_FORMAT = 398;
+int const LYX_FORMAT = 399;
 
 /// path of the master .tex file
 extern std::string getMasterFilePath();
