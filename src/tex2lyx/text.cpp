@@ -577,7 +577,7 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 		    p.next_token().character() != '[') 
 			break;
 		p.get_token(); // eat '['
-		begin_inset(os, "OptArg\n");
+		begin_inset(os, "Argument\n");
 		os << "status collapsed\n\n";
 		parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
 		end_inset(os);
@@ -585,12 +585,12 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 		++optargs;
 	}
 	unsigned int reqargs = 0;
-	while (LYX_FORMAT >= 392 && reqargs < context.layout->reqargs) {
+	while (reqargs < context.layout->reqargs) {
 		eat_whitespace(p, os, context, false);
 		if (p.next_token().cat() != catBegin)
 			break;
 		p.get_token(); // eat '{'
-		begin_inset(os, "OptArg\n");
+		begin_inset(os, "Argument\n");
 		os << "status collapsed\n\n";
 		parse_text_in_inset(p, os, FLAG_BRACE_LAST, outer, context);
 		end_inset(os);
@@ -1219,7 +1219,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 					context.check_layout(os);
 					need_layout = false;
 				}
-				begin_inset(os, "OptArg\n");
+				begin_inset(os, "Argument\n");
 				os << "status collapsed\n\n";
 				parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
 				end_inset(os);
@@ -1227,7 +1227,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 				++optargs;
 			}
 			unsigned int reqargs = 0;
-			while (LYX_FORMAT >= 392 && reqargs < context.layout->reqargs) {
+			while (reqargs < context.layout->reqargs) {
 				eat_whitespace(p, os, context, false);
 				if (p.next_token().cat() != catBegin)
 					break;
@@ -1236,7 +1236,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 					context.check_layout(os);
 					need_layout = false;
 				}
-				begin_inset(os, "OptArg\n");
+				begin_inset(os, "Argument\n");
 				os << "status collapsed\n\n";
 				parse_text_in_inset(p, os, FLAG_BRACE_LAST, outer, context);
 				end_inset(os);
@@ -2078,7 +2078,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (p.next_token().cat() != catEscape &&
 			    p.next_token().character() == '[') {
 				p.get_token(); // eat '['
-				begin_inset(os, "OptArg\n");
+				begin_inset(os, "Argument\n");
 				os << "status collapsed\n";
 				parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
 				end_inset(os);
