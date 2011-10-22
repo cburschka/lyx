@@ -553,7 +553,7 @@ otexstream & operator<<(otexstream & ots, char const * s)
 		// Some encoding changes for the underlying stream are embedded
 		// in the string. The encoding names to be used are enclosed
 		// between the code points 0xF0000 and xF0001 (0xf3b08080 and
-		// 0xf3b08081 in utf8 encoding). This codepoints belong to the
+		// 0xf3b08081 in utf8 encoding). These codepoints belong to the
 		// plane 15 Private Use Area and have no associated glyph.
 		string s1(s, i);
 		char const * s2 = s + i + 4;
