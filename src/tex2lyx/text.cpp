@@ -1495,8 +1495,10 @@ void parse_noweb(Parser & p, ostream & os, Context & context)
 			os << subst(t.asInput(), "\\", "\n\\backslash\n");
 		else {
 			ostringstream oss;
-			begin_inset(oss, "Newline newline");
-			end_inset(oss);
+			Context tmp(false, context.textclass,
+			            &context.textclass[from_ascii("Scrap")]);
+			tmp.need_end_layout = true;
+			tmp.check_layout(oss);
 			os << subst(t.asInput(), "\n", oss.str());
 		}
 		// The scrap chunk is ended by an @ at the beginning of a line.
@@ -2659,8 +2661,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_spaces_braces(p);
 		}
 
-		else if (LYX_FORMAT >= 408 &&
-		         (t.cs() == "textsuperscript" || t.cs() == "textsubscript")) {
+		else if ((t.cs() == "textsuperscript" || t.cs() == "textsubscript")) {
 			context.check_layout(os);
 			begin_inset(os, "script ");
 			os << t.cs().substr(4) << '\n';

@@ -565,7 +565,7 @@ void handle_package(Parser &p, string const & name, string const & opts,
 	else if (name == "url")
 		; // ignore this
 
-	else if (LYX_FORMAT >= 408 && name == "subscript")
+	else if (name == "subscript")
 		; // ignore this
 
 	else if (name == "color") {
