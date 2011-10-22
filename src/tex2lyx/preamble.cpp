@@ -168,6 +168,7 @@ string h_textclass               = "article";
 string h_use_default_options     = "false";
 string h_options;
 string h_language                = "english";
+string h_language_package        = "default";
 string h_font_roman              = "default";
 string h_font_sans               = "default";
 string h_font_typewriter         = "default";
@@ -220,6 +221,7 @@ string h_listings_params;
 string h_tracking_changes        = "false";
 string h_output_changes          = "false";
 string h_html_math_output        = "0";
+string h_html_css_as_file        = "0";
 string h_html_be_strict          = "false";
 string h_margins;
 
@@ -690,6 +692,7 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 	os << "\\use_default_options " << h_use_default_options << "\n"
 	   << modules_placeholder
 	   << "\\language " << h_language << "\n"
+	   << "\\language_package " << h_language_package << "\n"
 	   << "\\inputencoding " << h_inputencoding << "\n"
 	   << "\\font_roman " << h_font_roman << "\n"
 	   << "\\font_sans " << h_font_sans << "\n"
@@ -758,6 +761,7 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 	os << "\\tracking_changes " << h_tracking_changes << "\n"
 	   << "\\output_changes " << h_output_changes << "\n"
 	   << "\\html_math_output " << h_html_math_output << "\n"
+	   << "\\html_css_as_file " << h_html_css_as_file << "\n"
 	   << "\\html_be_strict " << h_html_be_strict << "\n"
 	   << "\\end_header\n\n"
 	   << "\\begin_body\n";
