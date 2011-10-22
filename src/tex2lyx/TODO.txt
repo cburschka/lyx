@@ -89,4 +89,7 @@ Format LaTeX feature                        LyX feature
 390    forward/reverse search               \forward_search, \forward_macro
 391    decimal alignment in tables          InsetTabular
 392    new beamer format                    InsetLayout
+394    \makebox                             InsetBox use_makebox
+395    page sizes C0-6                      \papersize
+396    nameref.sty                          InsetRef
 

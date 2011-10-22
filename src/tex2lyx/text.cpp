@@ -866,6 +866,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		os << "has_inner_box " << !inner_type.empty() << "\n";
 		os << "inner_pos \"" << inner_pos << "\"\n";
 		os << "use_parbox " << (inner_type == "parbox") << '\n';
+		os << "use_makebox 0\n";
 		os << "width \"" << width_value << width_unit << "\"\n";
 		os << "special \"none\"\n";
 		os << "height \"" << height_value << height_unit << "\"\n";
