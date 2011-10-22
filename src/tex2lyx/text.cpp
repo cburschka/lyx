@@ -2427,8 +2427,30 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "lyxline") {
+			// swallow size argument (it is not used anyway)
+			p.getArg('{', '}');
+			if (!context.atParagraphStart()) {
+				// so our line is in the middle of a paragraph
+				// we need to add a new line, lest this line
+				// follow the other content on that line and
+				// run off the side of the page
+				// FIXME: This may create an empty paragraph,
+				//        but without that it would not be
+				//        possible to set noindent below.
+				//        Fortunately LaTeX does not care
+				//        about the empty paragraph.
+				context.new_paragraph(os);
+			}
+			if (h_paragraph_separation == "indent") {
+				// we need to unindent, lest the line be too long
+				context.add_par_extra_stuff("\\noindent\n");
+			}
 			context.check_layout(os);
-			os << "\\lyxline";
+			begin_command_inset(os, "line", "rule");
+			os << "offset \"0.5ex\"\n"
+			      "width \"100line%\"\n"
+			      "height \"1pt\"\n";
+			end_inset(os);
 		}
 
 		else if (is_known(t.cs(), known_phrases) ||

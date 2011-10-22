@@ -53,6 +53,7 @@ extern std::string babel2lyx(std::string const & language);
 extern std::map<std::string, std::vector<std::string> > used_packages;
 extern const char * const modules_placeholder;
 extern std::string h_inputencoding;
+extern std::string h_paragraph_separation;
 
 /// in text.cpp
 std::string translate_len(std::string const &);
@@ -165,7 +166,7 @@ extern bool noweb_mode;
 /// Did we recognize any pdflatex-only construct?
 extern bool pdflatex;
 /// LyX format that is created by tex2lyx
-int const LYX_FORMAT = 399;
+int const LYX_FORMAT = 401;
 
 /// path of the master .tex file
 extern std::string getMasterFilePath();

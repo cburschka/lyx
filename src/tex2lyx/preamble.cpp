@@ -49,6 +49,7 @@ const char * const modules_placeholder = "\001modules\001";
 // needed to handle encodings with babel
 bool one_language = true;
 string h_inputencoding = "auto";
+string h_paragraph_separation    = "indent";
 
 namespace {
 
@@ -207,7 +208,6 @@ string h_paperorientation        = "portrait";
 string h_notefontcolor;
 string h_secnumdepth             = "3";
 string h_tocdepth                = "3";
-string h_paragraph_separation    = "indent";
 string h_defskip                 = "medskip";
 string h_paragraph_indentation   = "default";
 string h_quotes_language         = "english";
