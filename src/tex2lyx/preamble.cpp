@@ -171,6 +171,7 @@ string h_use_default_options     = "false";
 string h_options;
 string h_language                = "english";
 string h_language_package        = "default";
+string h_fontencoding            = "default";
 string h_font_roman              = "default";
 string h_font_sans               = "default";
 string h_font_typewriter         = "default";
@@ -531,8 +532,15 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		delete_opt(options, known_languages);
 	}
 
-	else if (name == "fontenc")
-		 ;// ignore this
+	else if (name == "fontenc") {
+		h_fontencoding = getStringFromVector(options, ",");
+		/* We could do the following for better round trip support,
+		 * but this makes the document less portable, so I skip it:
+		if (h_fontencoding == lyxrc.fontenc)
+			h_fontencoding = "global";
+		 */
+		options.clear();
+	}
 
 	else if (name == "inputenc" || name == "luainputenc") {
 		// h_inputencoding is only set when there is not more than one
@@ -696,6 +704,7 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 	   << "\\language " << h_language << "\n"
 	   << "\\language_package " << h_language_package << "\n"
 	   << "\\inputencoding " << h_inputencoding << "\n"
+	   << "\\fontencoding " << h_fontencoding << "\n"
 	   << "\\font_roman " << h_font_roman << "\n"
 	   << "\\font_sans " << h_font_sans << "\n"
 	   << "\\font_typewriter " << h_font_typewriter << "\n"
