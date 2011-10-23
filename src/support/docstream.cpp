@@ -517,6 +517,19 @@ otexstream & operator<<(otexstream & ots, string const & s)
 }
 
 
+namespace {
+
+int findToken(char const * s, char const * search_token)
+{
+	char const * token = strstr(s, search_token);
+	if (token)
+		return token - s;
+	return -1;
+}
+
+} // namespace anon
+
+
 otexstream & operator<<(otexstream & ots, char const * s)
 {
 	size_t const len = strlen(s);
@@ -530,7 +543,42 @@ otexstream & operator<<(otexstream & ots, char const * s)
 			ots.os() << "{}";
 		ots.protectSpace(false);
 	}
-	ots.os() << s;
+
+	char const * start_token = "\xf3\xb0\x80\x80";
+	char const * end_token = "\xf3\xb0\x80\x81";
+
+	int i = findToken(s, start_token);
+
+	if (i >= 0) {
+		// Some encoding changes for the underlying stream are embedded
+		// in the string. The encoding names to be used are enclosed
+		// between the code points 0xF0000 and xF0001 (0xf3b08080 and
+		// 0xf3b08081 in utf8 encoding). These code points belong to
+		// the plane 15 Private Use Area and have no associated glyph.
+		string s1(s, i);
+		char const * s2 = s + i + 4;
+		while (true) {
+			if (!s1.empty())
+				ots.os() << s1;
+			if (s2[0] == '\0')
+				break;
+			i = findToken(s2, end_token);
+			if (i >= 0) {
+				ots.os() << setEncoding(string(s2, i));
+				s2 += i + 4;
+			}
+			i = findToken(s2, start_token);
+			if (i >= 0) {
+				s1 = string(s2, i);
+				s2 += i + 4;
+			} else {
+				s1 = s2;
+				s2 += strlen(s2);
+			}
+		}
+	} else
+		ots.os() << s;
+
 	ots.lastChar(s[len - 1]);
 	ots.texrow().newlines(count(s, s + len, '\n'));
 	ots.canBreakLine(s[len - 1] != '\n');
