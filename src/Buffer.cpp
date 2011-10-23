@@ -126,9 +126,7 @@ namespace os = support::os;
 
 namespace {
 
-// Do not remove the comment below, so we get merge conflict in
-// independent branches. Instead add your own.
-int const LYX_FORMAT = 416; //uwestoehr : support for horizontal spaces (bug 7728)
+int const LYX_FORMAT = LYX_FORMAT_LYX;
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;

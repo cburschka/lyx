@@ -149,6 +149,7 @@ CommandMap known_environments;
 CommandMap known_math_environments;
 FullCommandMap possible_textclass_commands;
 FullEnvironmentMap possible_textclass_environments;
+int const LYX_FORMAT = LYX_FORMAT_TEX2LYX;
 
 /// used modules
 LayoutModuleList used_modules;
