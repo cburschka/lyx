@@ -130,7 +130,7 @@ for frontend in $FRONTENDS ; do
 	  FRONTEND_INFO="${FRONTEND_INFO}\
   Qt 4 Frontend:\n\
       Qt 4 version:\t\t${QT4_VERSION}\n"
-dnl qt 4 build will fail without moc or uic
+dnl qt 4 build will fail without moc, uic, or bc
 	  if test -z "$MOC4"; then
 	    LYX_ERROR([moc 4 binary not found !])
 	  fi
@@ -139,6 +139,9 @@ dnl qt 4 build will fail without moc or uic
 	  fi
 	  if test -z "$QT4_LIB"; then
 	    LYX_ERROR([qt 4 library not found !])
+	  fi
+	  if test "$bc_found" = "no"; then
+	    LYX_ERROR([bc binary not found !])
 	  fi
       ;;
     *)
