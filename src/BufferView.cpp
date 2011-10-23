@@ -51,7 +51,6 @@
 #include "TextMetrics.h"
 #include "TexRow.h"
 #include "TocBackend.h"
-#include "VSpace.h"
 #include "WordLangTuple.h"
 
 #include "insets/InsetBibtex.h"

@@ -43,7 +43,6 @@
 #include "TextClass.h"
 #include "TexRow.h"
 #include "Text.h"
-#include "VSpace.h"
 #include "WordLangTuple.h"
 #include "WordList.h"
 

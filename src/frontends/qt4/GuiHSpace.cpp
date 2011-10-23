@@ -42,6 +42,7 @@ GuiHSpace::GuiHSpace(bool math_mode, QWidget * parent)
 
 	spacingCO->clear();
 	if (math_mode_) {
+		spacingCO->addItem(qt_("Interword Space"), toqstr("normal"));
 		spacingCO->addItem(qt_("Thin Space"), toqstr("thinspace"));
 		spacingCO->addItem(qt_("Medium Space"), toqstr("medspace"));
 		spacingCO->addItem(qt_("Thick Space"), toqstr("thickspace"));

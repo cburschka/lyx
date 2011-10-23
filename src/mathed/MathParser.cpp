@@ -914,7 +914,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		}
 
 		else if (t.cat() == catActive)
-			cell->push_back(MathAtom(new InsetMathChar(t.character())));
+			cell->push_back(MathAtom(new InsetMathSpace(string(1, t.character()), "")));
 
 		else if (t.cat() == catBegin) {
 			MathData ar;

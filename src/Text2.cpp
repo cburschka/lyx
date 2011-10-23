@@ -42,7 +42,6 @@
 #include "ParagraphParameters.h"
 #include "TextClass.h"
 #include "TextMetrics.h"
-#include "VSpace.h"
 
 #include "insets/InsetCollapsable.h"
 

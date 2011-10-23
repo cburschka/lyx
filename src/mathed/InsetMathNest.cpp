@@ -1134,10 +1134,34 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_SPACE_INSERT:
+	case LFUN_SPACE_INSERT: {
 		cur.recordUndoSelection();
-		cur.insert(MathAtom(new InsetMathSpace));
+		string const name = cmd.getArg(0);
+		if (name == "normal")
+			cur.insert(MathAtom(new InsetMathSpace(" ", "")));
+		else if (name == "protected")
+			cur.insert(MathAtom(new InsetMathSpace("~", "")));
+		else if (name == "thin" || name == "med" || name == "thick")
+			cur.insert(MathAtom(new InsetMathSpace(name + "space", "")));
+		else if (name == "hfill*")
+			cur.insert(MathAtom(new InsetMathSpace("hspace*{\\fill}", "")));
+		else if (name == "quad" || name == "qquad" ||
+		         name == "enspace" || name == "enskip" ||
+		         name == "negthinspace" || name == "negmedspace" ||
+		         name == "negthickspace" || name == "hfill")
+			cur.insert(MathAtom(new InsetMathSpace(name, "")));
+		else if (name == "hspace" || name == "hspace*") {
+			string const len = cmd.getArg(1);
+			if (len.empty() || !isValidLength(len)) {
+				lyxerr << "LyX function 'space-insert " << name << "' "
+				          "needs a valid length argument." << endl;
+				break;
+			}
+			cur.insert(MathAtom(new InsetMathSpace(name, len)));
+		} else
+			cur.insert(MathAtom(new InsetMathSpace));
 		break;
+	}
 
 	case LFUN_MATH_SPACE:
 		cur.recordUndoSelection();
@@ -1420,7 +1444,7 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_SPACE_INSERT: {
 		docstring const & name = cmd.argument();
-		if (name == "protected" || name == "normal" || name == "visible")
+		if (name == "visible")
 			flag.setEnabled(false);
 		break;
 	}

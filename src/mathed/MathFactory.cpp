@@ -240,7 +240,7 @@ bool isSpecialChar(docstring const & name)
 
 	char_type const c = name.at(0);
 	return  c == '{' || c == '}' || c == '&' || c == '$' ||
-		c == '#' || c == '%' || c == '_' || c == ' ';
+		c == '#' || c == '%' || c == '_';
 }
 
 
@@ -505,6 +505,8 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 		return MathAtom(new InsetMathEnsureMath(buf));
 	if (isSpecialChar(s))
 		return MathAtom(new InsetMathSpecialChar(s));
+	if (s == " ")
+		return MathAtom(new InsetMathSpace(" ", ""));
 
 	if (s == "regexp")
 		return MathAtom(new InsetMathHull(buf, hullRegexp));

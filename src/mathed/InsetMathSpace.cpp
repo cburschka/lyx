@@ -42,30 +42,33 @@ struct SpaceInfo {
 	bool negative;
 	bool visible;
 	bool custom;
+	bool escape; ///< whether a backslash needs to be added for writing
 };
 
 SpaceInfo space_info[] = {
-	// name             width kind                         negative visible custom
-	{"!",                6,   InsetSpaceParams::NEGTHIN,   true,    true,   false},
-	{"negthinspace",     6,   InsetSpaceParams::NEGTHIN,   true,    true,   false},
-	{"negmedspace",      8,   InsetSpaceParams::NEGMEDIUM, true,    true,   false},
-	{"negthickspace",   10,   InsetSpaceParams::NEGTHICK,  true,    true,   false},
-	{",",                6,   InsetSpaceParams::THIN,      false,   true,   false},
-	{"thinspace",        6,   InsetSpaceParams::THIN,      false,   true,   false},
-	{":",                8,   InsetSpaceParams::MEDIUM,    false,   true,   false},
-	{"medspace",         8,   InsetSpaceParams::MEDIUM,    false,   true,   false},
-	{";",               10,   InsetSpaceParams::THICK,     false,   true,   false},
-	{"thickspace",      10,   InsetSpaceParams::THICK,     false,   true,   false},
-	{"enskip",          10,   InsetSpaceParams::ENSKIP,    false,   true,   false},
-	{"enspace",         10,   InsetSpaceParams::ENSPACE,   false,   true,   false},
-	{"quad",            20,   InsetSpaceParams::QUAD,      false,   true,   false},
-	{"qquad",           40,   InsetSpaceParams::QQUAD,     false,   true,   false},
-	{"lyxnegspace",     -2,   InsetSpaceParams::NEGTHIN,   true,    false,  false},
-	{"lyxposspace",      2,   InsetSpaceParams::THIN,      false,   false,  false},
-	{"hfill",           80,   InsetSpaceParams::HFILL,     false,   true,  false},
-	{"hspace*{\\fill}", 80,   InsetSpaceParams::HFILL_PROTECTED,     false,   true,  false},
-	{"hspace*",          0,   InsetSpaceParams::CUSTOM_PROTECTED,    false,   true,   true},
-	{"hspace",           0,   InsetSpaceParams::CUSTOM,    false,   true,   true},
+	// name           width kind                            negative visible custom escape
+	{"!",                6, InsetSpaceParams::NEGTHIN,         true,  true,  false, true},
+	{"negthinspace",     6, InsetSpaceParams::NEGTHIN,         true,  true,  false, true},
+	{"negmedspace",      8, InsetSpaceParams::NEGMEDIUM,       true,  true,  false, true},
+	{"negthickspace",   10, InsetSpaceParams::NEGTHICK,        true,  true,  false, true},
+	{",",                6, InsetSpaceParams::THIN,            false, true,  false, true},
+	{"thinspace",        6, InsetSpaceParams::THIN,            false, true,  false, true},
+	{":",                8, InsetSpaceParams::MEDIUM,          false, true,  false, true},
+	{"medspace",         8, InsetSpaceParams::MEDIUM,          false, true,  false, true},
+	{";",               10, InsetSpaceParams::THICK,           false, true,  false, true},
+	{"thickspace",      10, InsetSpaceParams::THICK,           false, true,  false, true},
+	{"enskip",          10, InsetSpaceParams::ENSKIP,          false, true,  false, true},
+	{"enspace",         10, InsetSpaceParams::ENSPACE,         false, true,  false, true},
+	{"quad",            20, InsetSpaceParams::QUAD,            false, true,  false, true},
+	{"qquad",           40, InsetSpaceParams::QQUAD,           false, true,  false, true},
+	{"lyxnegspace",     -2, InsetSpaceParams::NEGTHIN,         true,  false, false, true},
+	{"lyxposspace",      2, InsetSpaceParams::THIN,            false, false, false, true},
+	{"hfill",           80, InsetSpaceParams::HFILL,           false, true,  false, true},
+	{"hspace*{\\fill}", 80, InsetSpaceParams::HFILL_PROTECTED, false, true,  false, true},
+	{"hspace*",          0, InsetSpaceParams::CUSTOM_PROTECTED,false, true,  true,  true},
+	{"hspace",           0, InsetSpaceParams::CUSTOM,          false, true,  true,  true},
+	{" ",               10, InsetSpaceParams::NORMAL,          false, true,  false, true},
+	{"~",               10, InsetSpaceParams::PROTECTED,       false, true,  false, false},
 };
 
 int const nSpace = sizeof(space_info)/sizeof(SpaceInfo);
@@ -246,6 +249,10 @@ void InsetMathSpace::htmlize(HtmlStream & ms) const
 		   << from_ascii("&nbsp;") << ETag("span");
 		break;
 	}
+	case InsetSpaceParams::NORMAL:
+	case InsetSpaceParams::PROTECTED:
+		ms << from_ascii("&nbsp;");
+		break;
 	default:
 		break;
 	}
@@ -261,10 +268,12 @@ void InsetMathSpace::normalize(NormalStream & os) const
 void InsetMathSpace::write(WriteStream & os) const
 {
 	// no MathEnsurer - all kinds work in text and math mode
-	os << '\\' << space_info[space_].name.c_str();
+	if (space_info[space_].escape)
+		os << '\\';
+	os << space_info[space_].name.c_str();
 	if (space_info[space_].custom)
 		os << '{' << length_.asLatexString().c_str() << '}';
-	else
+	else if (space_info[space_].escape && space_info[space_].name != " ")
 		os.pendingSpace(true);
 }
 

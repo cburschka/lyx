@@ -45,7 +45,6 @@
 #include "SpellChecker.h"
 #include "TextClass.h"
 #include "TextMetrics.h"
-#include "VSpace.h"
 #include "WordLangTuple.h"
 
 #include "frontends/Application.h"

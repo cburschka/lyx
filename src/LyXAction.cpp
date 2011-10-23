@@ -478,6 +478,7 @@ void LyXAction::init()
  * \li Params: <NAME>: normal, protected, visible, thin, quad, qquad, enspace,
                        enskip, negthinspace, negmedspace, negthickspace, hfill,
                        hfill*, dotfill, hrulefill, hspace, hspace* \n
+                       Only in math mode: med and thick.\n
                <LEN>: length for custom spaces (hspace, hspace* for protected)
  * \li Origin: JSpitzm, 20 May 2003, Mar 17 2008
  * \endvar
