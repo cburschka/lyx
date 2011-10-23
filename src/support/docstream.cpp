@@ -559,7 +559,7 @@ otexstream & operator<<(otexstream & ots, char const * s)
 		char const * s2 = s + i + 4;
 		while (true) {
 			if (!s1.empty())
-				ots.os() << s1;
+				ots.os() << from_utf8(s1);
 			if (s2[0] == '\0')
 				break;
 			i = findToken(s2, end_token);
