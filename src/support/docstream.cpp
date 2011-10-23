@@ -482,6 +482,13 @@ otexstream & operator<<(otexstream & ots, docstring const & s)
 }
 
 
+otexstream & operator<<(otexstream & ots, string const & s)
+{
+	ots << s.c_str();
+	return ots;
+}
+
+
 otexstream & operator<<(otexstream & ots, char const * s)
 {
 	size_t const len = strlen(s);

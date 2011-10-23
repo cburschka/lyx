@@ -1260,6 +1260,7 @@ bool Buffer::write(ostream & ofs) const
 
 
 bool Buffer::makeLaTeXFile(FileName const & fname,
+			   string const & original_path,
 			   OutputParams const & runparams_in,
 			   bool output_preamble, bool output_body) const
 {
@@ -1292,7 +1293,8 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 	otexstream os(ofs, d->texrow);
 	try {
 		os.texrow().reset();
-		writeLaTeXSource(os, runparams, output_preamble, output_body);
+		writeLaTeXSource(os, original_path,
+		      runparams, output_preamble, output_body);
 	}
 	catch (EncodingException & e) {
 		odocstringstream ods;
@@ -1335,6 +1337,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 
 
 void Buffer::writeLaTeXSource(otexstream & os,
+			   string const & original_path,
 			   OutputParams const & runparams_in,
 			   bool const output_preamble, bool const output_body) const
 {
@@ -1370,11 +1373,80 @@ void Buffer::writeLaTeXSource(otexstream & os,
 	// macros will be put in the prefix anyway.
 	updateMacroInstances(OutputUpdate);
 
-	// With respect to nice LaTeX, usual files have \batchmode
+	// There are a few differences between nice LaTeX and usual files:
+	// usual files have \batchmode and special input@path to allow
+	// inclusion of figures specified by an explicitly relative path
+	// (i.e., a path starting with './' or '../') with either \input or
+	// \includegraphics, as the TEXINPUTS method doesn't work in this case.
+	// input@path is set when the actual parameter original_path is set.
+	// This is done for usual tex-file, but not for nice-latex-file.
+	// (Matthias 250696)
+	// Note that input@path is only needed for something the user does
+	// in the preamble, included .tex files or ERT, files included by
+	// LyX work without it.
 	if (output_preamble) {
 		if (!runparams.nice) {
 			// code for usual, NOT nice-latex-file
 			os << "\\batchmode\n"; // changed from \nonstopmode
+		}
+		if (!original_path.empty()) {
+			// FIXME UNICODE
+			// We don't know the encoding of inputpath
+			docstring const inputpath = from_utf8(original_path);
+			docstring uncodable_glyphs;
+			Encoding const * const enc = runparams.encoding;
+			if (enc) {
+				for (size_t n = 0; n < inputpath.size(); ++n) {
+					docstring const glyph =
+						docstring(1, inputpath[n]);
+					if (enc->latexChar(inputpath[n], true) != glyph) {
+						LYXERR0("Uncodable character '"
+							<< glyph
+							<< "' in input path!");
+						uncodable_glyphs += glyph;
+					}
+				}
+			}
+
+			// warn user if we found uncodable glyphs.
+			if (!uncodable_glyphs.empty()) {
+				frontend::Alert::warning(
+					_("Uncodable character in file path"),
+					support::bformat(
+					  _("The path of your document\n"
+					    "(%1$s)\n"
+					    "contains glyphs that are unknown "
+					    "in the current document encoding "
+					    "(namely %2$s). This may result in "
+					    "incomplete output, unless "
+					    "TEXINPUTS contains the document "
+					    "directory and you don't use "
+					    "explicitly relative paths (i.e., "
+					    "paths starting with './' or "
+					    "'../') in the preamble or in ERT."
+					    "\n\nIn case of problems, choose "
+					    "an appropriate document encoding\n"
+					    "(such as utf8) or change the "
+					    "file path name."),
+					  inputpath, uncodable_glyphs));
+			} else {
+				string docdir =
+					support::latex_path(original_path);
+				if (contains(docdir, '#')) {
+					docdir = subst(docdir, "#", "\\#");
+					os << "\\catcode`\\#=11"
+					      "\\def\\#{#}\\catcode`\\#=6\n";
+				}
+				if (contains(docdir, '%')) {
+					docdir = subst(docdir, "%", "\\%");
+					os << "\\catcode`\\%=11"
+					      "\\def\\%{%}\\catcode`\\%=14\n";
+				}
+				os << "\\makeatletter\n"
+				   << "\\def\\input@path{{"
+				   << docdir << "/}}\n"
+				   << "\\makeatother\n";
+			}
 		}
 
 		// get parent macros (if this buffer has a parent) which will be
@@ -1634,6 +1706,7 @@ int Buffer::runChktex()
 	// get LaTeX-Filename
 	FileName const path(temppath());
 	string const name = addName(path.absFileName(), latexName());
+	string const org_path = filePath();
 
 	PathChanger p(path); // path to LaTeX file
 	message(_("Running chktex..."));
@@ -1643,7 +1716,7 @@ int Buffer::runChktex()
 	runparams.flavor = OutputParams::LATEX;
 	runparams.nice = false;
 	runparams.linelen = lyxrc.plaintext_linelen;
-	makeLaTeXFile(FileName(name), runparams);
+	makeLaTeXFile(FileName(name), org_path, runparams);
 
 	TeXErrors terr;
 	Chktex chktex(lyxrc.chktex_command, onlyFileName(name), filePath());
@@ -3046,7 +3119,7 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 		else {
 			// latex or literate
 			otexstream ots(os, d->texrow);
-			writeLaTeXSource(ots, runparams, true, true);
+			writeLaTeXSource(ots, string(), runparams, true, true);
 		}
 	} else {
 		runparams.par_begin = par_begin;
@@ -3444,7 +3517,7 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 	// LaTeX backend
 	else if (backend_format == format) {
 		runparams.nice = true;
-		if (!makeLaTeXFile(FileName(filename), runparams)) {
+		if (!makeLaTeXFile(FileName(filename), string(), runparams)) {
 			if (d->cloned_buffer_) {
 				d->cloned_buffer_->d->errorLists["Export"] =
 					d->errorLists["Export"];
@@ -3458,7 +3531,7 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 		return false;
 	} else {
 		runparams.nice = false;
-		if (!makeLaTeXFile(FileName(filename), runparams)) {
+		if (!makeLaTeXFile(FileName(filename), filePath(), runparams)) {
 			if (d->cloned_buffer_) {
 				d->cloned_buffer_->d->errorLists["Export"] =
 					d->errorLists["Export"];
