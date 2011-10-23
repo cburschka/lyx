@@ -274,7 +274,7 @@ void GuiWorkArea::init()
 		d->cursor_timeout_.setInterval(500);
 	}
 
-	d->screen_ = QPixmap(viewport()->width(), viewport()->height());
+	d->resetScreen();
 	// With Qt4.5 a mouse event will happen before the first paint event
 	// so make sure that the buffer view has an up to date metrics.
 	d->buffer_view_->resize(viewport()->width(), viewport()->height());
@@ -1101,7 +1101,7 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 	//	<< " y: " << rc.y() << " w: " << rc.width() << " h: " << rc.height());
 
 	if (d->need_resize_) {
-		d->screen_ = QPixmap(viewport()->width(), viewport()->height());
+		d->resetScreen();
 		d->resizeBufferView();
 		if (d->cursor_visible_) {
 			d->hideCursor();
@@ -1110,7 +1110,11 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 	}
 
 	QPainter pain(viewport());
+#ifdef USE_QIMAGE
+	pain.drawImage(rc, d->screen_, rc);
+#else
 	pain.drawPixmap(rc, d->screen_, rc);
+#endif
 	d->cursor_->draw(pain);
 	ev->accept();
 }

@@ -12,6 +12,11 @@
 #ifndef WORKAREA_PRIVATE_H
 #define WORKAREA_PRIVATE_H
 
+// Comment out to use QImage backend instead of QPixmap. This won't have any
+// effect on Windows, MacOSX and most X11 environment when running locally.
+// When running remotely on X11, this may have a big performance penalty.
+//#define USE_QIMAGE
+
 #include "FuncRequest.h"
 #include "qt_helpers.h"
 
@@ -20,7 +25,11 @@
 
 #include <QAbstractScrollArea>
 #include <QMouseEvent>
+#ifdef USE_QIMAGE
+#include <QImage>
+#else
 #include <QPixmap>
+#endif
 #include <QTimer>
 
 class QContextMenuEvent;
@@ -117,6 +126,23 @@ struct GuiWorkArea::Private
 	void updateCursorShape();
 	///
 	void setCursorShape(Qt::CursorShape shape);
+
+#ifdef USE_QIMAGE
+	void resetScreen()
+	{
+		screen_ = QImage(p->viewport()->width(), p->viewport()->height(),
+			QImage::Format_ARGB32_Premultiplied);
+	}
+
+	QImage screen_;
+#else
+	void resetScreen()
+	{
+		screen_ = QPixmap(p->viewport()->width(), p->viewport()->height());
+	}
+
+	QPixmap screen_;
+#endif
 	///
 	GuiWorkArea * p;
 
@@ -138,8 +164,6 @@ struct GuiWorkArea::Private
 
 	///
 	CursorWidget * cursor_;
-	///
-	QPixmap screen_;
 	///
 	bool need_resize_;
 	///
