@@ -596,6 +596,12 @@ void handle_package(Parser &p, string const & name, string const & opts,
 	else if (name == "setspace")
 		; // ignore this
 
+#if 0
+	// do not ignore as long as we don't support all commands (e.g. \xout is missing)
+	else if (name == "ulem")
+		; // ignore this
+#endif
+
 	else if (name == "geometry")
 		; // Ignore this, the geometry settings are made by the \geometry
 		  // command. This command is handled below.
