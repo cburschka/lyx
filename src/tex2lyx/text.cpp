@@ -210,15 +210,18 @@ char const * const known_pdftex_graphics_formats[] = {"png", "pdf", "jpg",
 char const * const known_tex_extensions[] = {"tex", 0};
 
 /// spaces known by InsetSpace
-char const * const known_spaces[] = { " ", "space", ",", "thinspace", "quad",
-"qquad", "enspace", "enskip", "negthinspace", "hfill", "dotfill", "hrulefill",
-"leftarrowfill", "rightarrowfill", "upbracefill", "downbracefill", 0};
+char const * const known_spaces[] = { " ", "space", ",",
+"thinspace", "quad", "qquad", "enspace", "enskip",
+"negthinspace", "negmedspace", "negthickspace", "textvisiblespace",
+"hfill", "dotfill", "hrulefill", "leftarrowfill", "rightarrowfill",
+"upbracefill", "downbracefill", 0};
 
 /// the same as known_spaces with .lyx names
 char const * const known_coded_spaces[] = { "space{}", "space{}",
 "thinspace{}", "thinspace{}", "quad{}", "qquad{}", "enspace{}", "enskip{}",
-"negthinspace{}", "hfill{}", "dotfill{}", "hrulefill{}", "leftarrowfill{}",
-"rightarrowfill{}", "upbracefill{}", "downbracefill{}", 0};
+"negthinspace{}", "negmedspace{}", "negthickspace{}", "textvisiblespace{}",
+"hfill{}", "dotfill{}", "hrulefill{}", "leftarrowfill{}", "rightarrowfill{}",
+"upbracefill{}", "downbracefill{}", 0};
 
 /// These are translated by LyX to commands like "\\LyX{}", so we have to put
 /// them in ERT. "LaTeXe" must come before "LaTeX"!
