@@ -77,8 +77,6 @@ public:
 
 	int id() const { return id_; }
 
-	///
-	void setBusy(bool);
 	/// are we busy ?
 	bool busy() const;
 
@@ -207,6 +205,8 @@ Q_SIGNALS:
 	void triggerShowDialog(QString const & qname, QString const & qdata, Inset * inset);
 
 public Q_SLOTS:
+	///
+	void setBusy(bool);
 	/// idle timeout.
 	/// clear any temporary message and replace with current status.
 	void clearMessage();

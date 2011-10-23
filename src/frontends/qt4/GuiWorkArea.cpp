@@ -531,6 +531,7 @@ void GuiWorkArea::Private::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 	buffer_view_->mouseEventDispatch(cmd);
 
 	// Skip these when selecting
+	// FIXME: let GuiView take care of those.
 	if (cmd.action() != LFUN_MOUSE_MOTION) {
 		completer_->updateVisibility(false, false);
 		lyx_view_->updateDialogs();
@@ -542,6 +543,7 @@ void GuiWorkArea::Private::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 		// Slight hack: this is only called currently when we
 		// clicked somewhere, so we force through the display
 		// of the new status here.
+		// FIXME: let GuiView take care of those.
 		lyx_view_->clearMessage();
 
 		// Show the cursor immediately after any operation
@@ -556,7 +558,10 @@ void GuiWorkArea::Private::resizeBufferView()
 {
 	// WARNING: Please don't put any code that will trigger a repaint here!
 	// We are already inside a paint event.
-	lyx_view_->setBusy(true);
+	p->stopBlinkingCursor();
+	// Warn our container (GuiView).
+	p->busy(true);
+
 	Point point;
 	int h = 0;
 	buffer_view_->cursorPosAndHeight(point, h);
@@ -572,9 +577,13 @@ void GuiWorkArea::Private::resizeBufferView()
 	// as the scrollbar paramters are then set for the first time.
 	updateScrollbar();
 
-	lyx_view_->updateLayoutList();
-	lyx_view_->setBusy(false);
 	need_resize_ = false;
+	p->busy(false);
+	// Eventually, restart the cursor after the resize event.
+	// We might be resizing even if the focus is on another widget so we only
+	// restart the cursor if we have the focus.
+	if (p->hasFocus())
+		QTimer::singleShot(50, p, SLOT(startBlinkingCursor()));
 }
 
 
@@ -655,6 +664,7 @@ void GuiWorkArea::scrollTo(int value)
 
 	if (lyxrc.cursor_follows_scrollbar) {
 		d->buffer_view_->setCursorFromScrollbar();
+		// FIXME: let GuiView take care of those.
 		d->lyx_view_->updateLayoutList();
 	}
 	// Show the cursor immediately after any operation.

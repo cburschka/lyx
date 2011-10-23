@@ -994,6 +994,8 @@ void GuiView::updateWindowTitle(GuiWorkArea * wa)
 
 void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 {
+	QObject::disconnect(d.current_work_area_, SIGNAL(busy(bool)),
+		this, SLOT(setBusy(bool)));
 	disconnectBuffer();
 	disconnectBufferView();
 	connectBufferView(wa->bufferView());
@@ -1001,6 +1003,7 @@ void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 	d.current_work_area_ = wa;
 	QObject::connect(wa, SIGNAL(titleChanged(GuiWorkArea *)),
 		this, SLOT(updateWindowTitle(GuiWorkArea *)));
+	QObject::connect(wa, SIGNAL(busy(bool)), this, SLOT(setBusy(bool)));
 	updateWindowTitle(wa);
 
 	structureChanged();
@@ -1173,20 +1176,12 @@ void GuiView::setBusy(bool busy)
 		// busy state didn't change
 		return;
 
-	if (d.current_work_area_) {
-		//Why would we want to stop updates only for one workarea and
-		//not for the others ? This leads to problems as in #7314 (vfr).
-		//d.current_work_area_->setUpdatesEnabled(!busy);
-		if (busy)
-			d.current_work_area_->stopBlinkingCursor();
-		else
-			d.current_work_area_->startBlinkingCursor();
-	}
-
-	if (busy)
+	if (busy) {
 		QApplication::setOverrideCursor(Qt::WaitCursor);
-	else
-		QApplication::restoreOverrideCursor();
+		return;
+	}
+	QApplication::restoreOverrideCursor();
+	updateLayoutList();	
 }
 
 

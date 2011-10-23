@@ -69,10 +69,7 @@ public:
 	BufferView const & bufferView() const;
 	///
 	void redraw(bool update_metrics);
-	///
-	void stopBlinkingCursor();
-	///
-	void startBlinkingCursor();
+
 	/// Process Key pressed event.
 	/// This needs to be public because it is accessed externally by GuiView.
 	void processKeySym(KeySymbol const & key, KeyModifier mod);
@@ -89,9 +86,17 @@ public:
 	GuiView const & view() const;
 	GuiView & view();
 
+public Q_SLOTS:
+	///
+	void stopBlinkingCursor();
+	///
+	void startBlinkingCursor();
+
 Q_SIGNALS:
 	///
 	void titleChanged(GuiWorkArea *);
+	///
+	void busy(bool);
 
 private Q_SLOTS:
 	/// Scroll the BufferView.
