@@ -110,6 +110,7 @@ in their names. It's OK to use them in the man\"{u}script, though.
 \bibitem[{{G\"{u}rkan et~al.}(2004)}]{gur+04} Gürkan, M.~A., Freitag,
 M., \& Rasio, F.~A. 2004, ApJ, 604, 632\end{thebibliography}
 
+
 \section{Input files\index{Input files}}
 
 We can input files too, like this \input{DummyDocument}, or with the include
@@ -119,15 +120,36 @@ variant \include{DummyDocument} % unfortunately, including the doc twice
 If you prefer verbatim input, you can choose
 between~\verbatiminput{foo} or~\verbatiminput*{foo}.
 
+
 \section{URL\index{URL}\nomenclature[www]{URL}{uniform resource locator}}
 
 An URL: \url{http://www.lyx.org}
 \nomenclature{URL2}{uniform resource locator}
 
+
 \section{Lists\index{Lists}}
 
 \listoffigures
 \listoftables
+
+
+\section{Phantoms}
+
+test\hphantom{Wow}test
+
+test\phantom{\textcolor{green}{W}\textbf{ow}\textsuperscript{Wow}}test
+
+test\vphantom{Wow\textbackslash{}\&\%}test
+
+$test\hphantom{Wow}test$
+
+\[
+test\phantom{\textcolor{green}{W}\mathbf{ow}\textsuperscript{Wow}}test
+\]
+
+
+$test\vphantom{Wow\&\%}test$
+
 
 \section{Graphics\index{Graphics}}
 

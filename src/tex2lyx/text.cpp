@@ -881,6 +881,8 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		Context context(true, parent_context.textclass);
 		context.font = parent_context.font;
 
+		// FIXME, the inset layout should be plain, not standard, see bug #7846
+
 		// If we have no inner box the contens will be read with the outer box
 		if (!inner_type.empty())
 			parse_text(p, os, inner_flags, outer, context);
@@ -2443,6 +2445,21 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "\n\\" << t.cs() << " default\n";
 		}
 
+		// FIXME, the inset layout should be plain, not standard, see bug #7846
+		else if (t.cs() == "phantom" || t.cs() == "hphantom" ||
+			     t.cs() == "vphantom") {
+			context.check_layout(os);
+			if (t.cs() == "phantom")
+				begin_inset(os, "Phantom Phantom\n");
+			if (t.cs() == "hphantom")
+				begin_inset(os, "Phantom Hhantom\n");
+			if (t.cs() == "vphantom")
+				begin_inset(os, "Phantom Vhantom\n");
+			os << "status open\n";
+			parse_text_in_inset(p, os, FLAG_ITEM, outer, context);
+			end_inset(os);
+		}
+		
 		else if (t.cs() == "lyxline") {
 			// swallow size argument (it is not used anyway)
 			p.getArg('{', '}');
