@@ -56,8 +56,7 @@ GuiPrintNomencl::GuiPrintNomencl(QWidget * parent) : InsetParamsWidget(parent)
 void GuiPrintNomencl::on_setWidthCO_activated(int i)
 {
 	bool const custom =
-		(setWidthCO->itemData(i).toString()
-		 == "custom");
+		(setWidthCO->itemData(i).toString() == "custom");
 	valueLE->setEnabled(custom);
 	unitLC->setEnabled(custom);
 	valueLA->setEnabled(custom);
@@ -70,10 +69,14 @@ void GuiPrintNomencl::paramsToDialog(InsetCommandParams const & params)
 	setWidthCO->setCurrentIndex(
 		setWidthCO->findData(toqstr(params["set_width"])));
 	
-	lengthToWidgets(valueLE,
-			unitLC,
-			params["width"],
-			Length::defaultUnit());
+	lengthToWidgets(valueLE, unitLC,
+			params["width"], Length::defaultUnit());
+
+	bool const custom =
+		(setWidthCO->itemData(setWidthCO->currentIndex()).toString() == "custom");
+	valueLE->setEnabled(custom);
+	unitLC->setEnabled(custom);
+	valueLA->setEnabled(custom);
 }
 
 
