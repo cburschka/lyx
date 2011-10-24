@@ -212,6 +212,9 @@ string h_use_bibtopic            = "false";
 string h_paperorientation        = "portrait";
 string h_suppress_date           = "false";
 string h_use_refstyle            = "0";
+string h_backgroundcolor;
+string h_boxbgcolor;
+string h_fontcolor;
 string h_notefontcolor;
 string h_secnumdepth             = "3";
 string h_tocdepth                = "3";
@@ -764,8 +767,14 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 	   << "\\paperorientation " << h_paperorientation << '\n'
 	   << "\\suppress_date " << h_suppress_date << '\n'
 	   << "\\use_refstyle " << h_use_refstyle << '\n';
+	if (!h_fontcolor.empty())
+		os << "\\fontcolor " << h_fontcolor << '\n';
 	if (!h_notefontcolor.empty())
 		os << "\\notefontcolor " << h_notefontcolor << '\n';
+	if (!h_backgroundcolor.empty())
+		os << "\\backgroundcolor " << h_backgroundcolor << '\n';
+	if (!h_boxbgcolor.empty())
+		os << "\\boxbgcolor " << h_boxbgcolor << '\n';
 	os << h_margins
 	   << "\\secnumdepth " << h_secnumdepth << "\n"
 	   << "\\tocdepth " << h_tocdepth << "\n"
@@ -1127,9 +1136,18 @@ void parse_preamble(Parser & p, ostream & os,
 			string const color = p.getArg('{', '}');
 			string const space = p.getArg('{', '}');
 			string const value = p.getArg('{', '}');
-			if (color == "note_fontcolor" && space == "rgb") {
+			if (color == "document_fontcolor" && space == "rgb") {
+				RGBColor c(RGBColorFromLaTeX(value));
+				h_fontcolor = X11hexname(c);
+			} else if (color == "note_fontcolor" && space == "rgb") {
 				RGBColor c(RGBColorFromLaTeX(value));
 				h_notefontcolor = X11hexname(c);
+			} else if (color == "page_backgroundcolor" && space == "rgb") {
+				RGBColor c(RGBColorFromLaTeX(value));
+				h_backgroundcolor = X11hexname(c);
+			} else if (color == "shadecolor" && space == "rgb") {
+				RGBColor c(RGBColorFromLaTeX(value));
+				h_boxbgcolor = X11hexname(c);
 			} else {
 				h_preamble << "\\definecolor{" << color
 				           << "}{" << space << "}{" << value

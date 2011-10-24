@@ -52,7 +52,6 @@ Format LaTeX feature                        LyX feature
 347    tabular valign                       InsetTabular
 348    \phantom, \hphantom, \vphantom       InsetPhantom
 350    ?                                    \default_output_format
-351    ?                                    \backgroundcolor
 353    \printsubindex                       InsetIndex
 354    \printindex*, \printsubindex*        InsetIndex
 358    custom bibtex command                \bibtex_command
@@ -73,9 +72,6 @@ Format LaTeX feature                        LyX feature
 378    revision info                        InsetInfo
 380    ?                                    InsetPreview
 381    \xymatrix@!{0,R,C}                   InsetMathXYMatrix
-382    note_fontcolor                       InsetNote
-384    document font color                  \fontcolor
-385    shaded box background color          \boxbgcolor
 386    LyX version                          InsetInfo
 390    forward/reverse search               \forward_search, \forward_macro
 391    decimal alignment in tables          InsetTabular

@@ -10,6 +10,10 @@
 
 \usepackage{amsmath}
 \usepackage{color}
+\definecolor{page_backgroundcolor}{rgb}{1, 0.3359375, 0}
+\pagecolor{page_backgroundcolor}
+\definecolor{document_fontcolor}{rgb}{0.66796875, 1, 0}
+\color{document_fontcolor}
 \definecolor{note_fontcolor}{rgb}{0, 0, 1}
 \definecolor{shadecolor}{rgb}{1, 0, 0}
 \usepackage{framed}
@@ -139,6 +143,11 @@ $\boxed{\int A=B}$
 
 \begin{shaded}%
 Shaded background box\end{shaded}
+
+\begin{minipage}[c]{1\columnwidth}%
+\begin{shaded}%
+Shaded background box, with inner minipage\end{shaded}%
+\end{minipage}
 
 \section{Colors}
 
