@@ -212,10 +212,13 @@ bool InsetBox::getStatus(Cursor & cur, FuncRequest const & cmd,
 	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY:
-		if (cmd.getArg(0) == "changetype")
-			flag.setOnOff(cmd.getArg(1) == params_.type);
-		flag.setEnabled(true);
-		return true;
+		if (cmd.getArg(0) == "changetype") {
+			string const type = cmd.getArg(1);
+			flag.setOnOff(type == params_.type);
+			flag.setEnabled(!params_.inner_box || type != "Framed");
+			return true;
+		}
+		return InsetCollapsable::getStatus(cur, cmd, flag);
 
 	case LFUN_INSET_DIALOG_UPDATE:
 		flag.setEnabled(true);
