@@ -309,7 +309,8 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		os << "\\shadowbox{";
 		break;
 	case Shaded:
-		// later
+		// must be set later becaue e.g. the width settings only work when
+		// it is inside a minipage or parbox
 		break;
 	case Doublebox:
 		os << "\\doublebox{";
