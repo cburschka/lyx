@@ -1187,7 +1187,10 @@ void parse_preamble(Parser & p, ostream & os,
 			string const arg1 = p.verbatim_item();
 			string const arg2 = p.verbatim_item();
 			string const arg3 = p.verbatim_item();
-			if (!in_lyx_preamble) {
+			// test case \@ifundefined{date}{}{\date{}}
+			if (arg1 == "date" && arg2.empty() && arg3 == "\\date{}") {
+				h_suppress_date = "true";
+			} else if (!in_lyx_preamble) {
 				h_preamble << t.asInput()
 				           << '{' << arg1 << '}'
 				           << '{' << arg2 << '}'
