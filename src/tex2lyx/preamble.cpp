@@ -49,7 +49,11 @@ const char * const modules_placeholder = "\001modules\001";
 // needed to handle encodings with babel
 bool one_language = true;
 string h_inputencoding = "auto";
-string h_paragraph_separation    = "indent";
+string h_paragraph_separation = "indent";
+
+// necessary to avoid that our preamble stuff is added at each tex2lyx run
+// which would pollute the preamble when doing roundtrips
+bool ifundefined_color_set = false;
 
 namespace {
 
@@ -525,18 +529,22 @@ void handle_package(Parser &p, string const & name, string const & opts,
 	else if (name == "undertilde")
 		h_use_undertilde = "2";
 
-	else if (name == "babel" && !opts.empty()) {
-		// check if more than one option was used - used later for inputenc
-		// in case inputenc is parsed before babel, set the encoding to auto
-		if (options.begin() != options.end() - 1) {
-			one_language = false;
-			h_inputencoding = "auto";
+	else if (name == "babel") {
+		// we have to do nothing if babel is loaded without any options, otherwise
+		// we would pollute the preamble with this call in every roundtrip
+		if  (!opts.empty()) {
+			// check if more than one option was used - used later for inputenc
+			// in case inputenc is parsed before babel, set the encoding to auto
+			if (options.begin() != options.end() - 1) {
+				one_language = false;
+				h_inputencoding = "auto";
+			}
+			// babel takes the last language of the option of its \usepackage
+			// call as document language. If there is no such language option, the
+			// last language in the documentclass options is used.
+			handle_opt(options, known_languages, h_language);
+			delete_opt(options, known_languages);
 		}
-		// babel takes the last language of the option of its \usepackage
-		// call as document language. If there is no such language option, the
-		// last language in the documentclass options is used.
-		handle_opt(options, known_languages, h_language);
-		delete_opt(options, known_languages);
 	}
 
 	else if (name == "fontenc") {
@@ -590,7 +598,9 @@ void handle_package(Parser &p, string const & name, string const & opts,
 	else if (name == "color") {
 		// with the following command this package is only loaded when needed for
 		// undefined colors, since we only support the predefined colors
-		h_preamble << "\\@ifundefined{definecolor}\n {\\usepackage{color}}{}\n";
+		// only add it if not yet added
+		if (!ifundefined_color_set)
+			h_preamble << "\\@ifundefined{definecolor}\n {\\usepackage{color}}{}\n";
 	}
 
 	else if (name == "graphicx")
@@ -1195,6 +1205,11 @@ void parse_preamble(Parser & p, ostream & os,
 			// test case \@ifundefined{date}{}{\date{}}
 			if (arg1 == "date" && arg2.empty() && arg3 == "\\date{}") {
 				h_suppress_date = "true";
+			// test case \@ifundefined{definecolor}{\usepackage{color}}{}
+			// because we could pollute the preamble with it in roundtrips
+			} else if (arg1 == "definecolor" && arg2 == "\\usepackage{color}"
+				&& arg3.empty()) {
+				ifundefined_color_set = true;
 			} else if (!in_lyx_preamble) {
 				h_preamble << t.asInput()
 				           << '{' << arg1 << '}'
