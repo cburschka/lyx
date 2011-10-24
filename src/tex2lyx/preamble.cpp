@@ -879,6 +879,11 @@ void parse_preamble(Parser & p, ostream & os,
 		else if (t.cs() == "pagestyle")
 			h_paperpagestyle = p.verbatim_item();
 
+		else if (t.cs() == "date") {
+			if (p.verbatim_item().empty())
+				h_suppress_date = "true";
+		}
+
 		else if (t.cs() == "makeatletter") {
 			// LyX takes care of this
 			p.setCatCode('@', catLetter);
