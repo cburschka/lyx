@@ -52,6 +52,8 @@ What's new
   text which is not explicitly marked in a different language, irrespective
   of the multilingual status, except for LTR<=>RTL changes.
 
+- disable impossible settings in context menu of boxes (bug 7849).
+
 - Augmented the tex2lyx --help message with the default paths (bug 6827).
 
 - New command-line switch -v (--version) for tex2lyx showing build information
