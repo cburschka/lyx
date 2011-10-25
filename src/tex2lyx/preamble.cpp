@@ -175,7 +175,7 @@ string h_use_default_options     = "false";
 string h_options;
 string h_language                = "english";
 string h_language_package        = "default";
-string h_fontencoding            = "global";
+string h_fontencoding            = "default";
 string h_font_roman              = "default";
 string h_font_sans               = "default";
 string h_font_typewriter         = "default";
