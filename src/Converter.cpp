@@ -51,6 +51,7 @@ string const token_to("$$o");
 string const token_path("$$p");
 string const token_orig_path("$$r");
 string const token_encoding("$$e");
+string const token_latex_encoding("$$E");
 
 
 string const add_options(string const & command, string const & options)
@@ -376,7 +377,10 @@ bool Converters::convert(Buffer const * buffer,
 
 		if (conv.latex) {
 			run_latex = true;
-			string const command = subst(conv.command, token_from, "");
+			string command = conv.command;
+			command = subst(command, token_from, "");
+			command = subst(command, token_latex_encoding, buffer ?
+				buffer->params().encoding().latexName() : string());
 			LYXERR(Debug::FILES, "Running " << command);
 			if (!runLaTeX(*buffer, command, runparams, errorList))
 				return false;

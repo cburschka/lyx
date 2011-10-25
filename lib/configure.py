@@ -395,7 +395,7 @@ def checkLatex(dtl_tools):
         # run platex on chklatex.ltx and check result
         if cmdOutput(PLATEX + ' chklatex.ltx').find('pLaTeX2e') != -1:
             # We have the Japanese pLaTeX2e
-            addToRC(r'\converter platex   dvi       "%s"   "latex=platex"' % PLATEX)
+            addToRC(r'\converter platex     dvi        "%s -kanji=$$E $$i"	"latex=platex"' % PLATEX)
         else:
             PLATEX = ''
             removeFiles(['chklatex.ltx', 'chklatex.log'])
