@@ -748,7 +748,9 @@ def checkConverterEntries():
         rc_entry = [ r'\converter ps         text3      "%%"	""' ])
     #
     checkProg('a PS to EPS converter', ['ps2eps $$i'],
-        rc_entry = [ r'\converter ps         eps      "%%"	""' ])
+        rc_entry = [ r'''\Format eps2       eps    "EPS (ps2eps)"          "" "" ""	"vector"
+\converter ps         eps      "%%"	""
+\converter eps2       eps      "%%"	"resultfile=$$b.eps.eps"''' ])
     #
     checkProg('a PDF to PS converter', ['pdf2ps $$i $$o', 'pdftops $$i $$o'],
         rc_entry = [ r'\converter pdf         ps        "%%"	""' ])
@@ -822,8 +824,8 @@ def checkConverterEntries():
     checkProg('a Dia -> EPS converter', ['dia -e $$o -t eps $$i'],
         rc_entry = [ r'\converter dia        eps        "%%"	""'])
     #
-    checkProg('an OpenOffice -> EPS converter', ['libreoffice'],
-        rc_entry = [ r'\converter odg        eps        "python -tt $$s/scripts/libreoffice2eps.py $$i $$o"	""'])
+    checkProg('an OpenOffice -> EPS converter', ['libreoffice -headless -nologo -convert-to eps $$i'],
+        rc_entry = [ r'\converter odg        eps2       "%%"	""'])
     #
     checkProg('a SVG -> PDF converter', ['rsvg-convert -f pdf -o $$o $$i', 'inkscape --file=$$i --export-area-drawing --without-gui --export-pdf=$$o'],
         rc_entry = [ r'\converter svg        pdf        "%%"	""'])
