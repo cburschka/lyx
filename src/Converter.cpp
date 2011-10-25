@@ -355,7 +355,7 @@ bool Converters::convert(Buffer const * buffer,
 			       << conv.from << " to " << conv.to);
 		}
 		infile = outfile;
-		outfile = FileName(conv.result_dir.empty()
+		outfile = FileName(conv.result_file.empty()
 			? changeExtension(from_file.absFileName(), conv.To->extension())
 			: addName(subst(conv.result_dir,
 					token_base, from_base),
@@ -365,6 +365,9 @@ bool Converters::convert(Buffer const * buffer,
 		// if input and output files are equal, we use a
 		// temporary file as intermediary (JMarc)
 		FileName real_outfile;
+		if (!conv.result_file.empty())
+			real_outfile = FileName(changeExtension(from_file.absFileName(),
+				conv.To->extension()));
 		if (outfile == infile) {
 			real_outfile = infile;
 			// when importing, a buffer does not necessarily exist

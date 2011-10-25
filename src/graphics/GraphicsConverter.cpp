@@ -250,7 +250,8 @@ static void build_conversion_command(string const & command, ostream & script)
 		  "    sys.exit(1)\n\n";
 
 	// Delete the infile
-	script << "unlinkNoThrow(infile)\n\n";
+	script << "if infile != outfile:\n"
+		  "  unlinkNoThrow(infile)\n\n";
 }
 
 
@@ -348,7 +349,12 @@ static void build_script(string const & from_file,
 		// Build the conversion command
 		string const infile      = outfile;
 		string const infile_base = changeExtension(infile, string());
-		outfile = addExtension(to_base, conv.To->extension());
+		outfile = conv.result_file.empty()
+			? addExtension(to_base, conv.To->extension())
+			: addName(subst(conv.result_dir,
+					token_base, infile_base),
+				  subst(conv.result_file,
+					token_base, onlyFileName(infile_base)));
 
 		// Store these names in the python script
 		script << "infile = "
