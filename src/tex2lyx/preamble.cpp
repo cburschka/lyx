@@ -127,6 +127,10 @@ const char * const known_polish_quotes_languages[] = {"afrikaans", "croatian",
 const char * const known_swedish_quotes_languages[] = {"finnish",
 "swedish", 0};
 
+/// known language packages from the times before babel
+const char * const known_old_language_packages[] = {"french", "frenchle",
+"frenchpro", "german", "ngerman", "pmfrench", 0};
+
 char const * const known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 
 const char * const known_roman_fonts[] = { "ae", "beraserif", "bookman",
@@ -171,7 +175,7 @@ string h_textclass               = "article";
 string h_use_default_options     = "false";
 string h_options;
 string h_language                = "english";
-string h_language_package        = "default";
+string h_language_package        = "none";
 string h_fontencoding            = "default";
 string h_font_roman              = "default";
 string h_font_sans               = "default";
@@ -523,18 +527,23 @@ void handle_package(Parser &p, string const & name, string const & opts,
 	else if (name == "mathdots")
 		h_use_mathdots = "2";
 
-	else if (name == "babel" && !opts.empty()) {
-		// check if more than one option was used - used later for inputenc
-		// in case inputenc is parsed before babel, set the encoding to auto
-		if (options.begin() != options.end() - 1) {
-			one_language = false;
-			h_inputencoding = "auto";
+	else if (name == "babel") {
+		h_language_package = "default";
+		// we have to do nothing if babel is loaded without any options, otherwise
+		// we would pollute the preamble with this call in every roundtrip
+		if (!opts.empty()) {
+			// check if more than one option was used - used later for inputenc
+			// in case inputenc is parsed before babel, set the encoding to auto
+			if (options.begin() != options.end() - 1) {
+				one_language = false;
+				h_inputencoding = "auto";
+			}
+			// babel takes the last language of the option of its \usepackage
+			// call as document language. If there is no such language option, the
+			// last language in the documentclass options is used.
+			handle_opt(options, known_languages, h_language);
+			delete_opt(options, known_languages);
 		}
-		// babel takes the last language of the option of its \usepackage
-		// call as document language. If there is no such language option, the
-		// last language in the documentclass options is used.
-		handle_opt(options, known_languages, h_language);
-		delete_opt(options, known_languages);
 	}
 
 	else if (name == "fontenc") {
@@ -559,6 +568,13 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		if (!options.empty())
 			p.setEncoding(options.back());
 		options.clear();
+	}
+
+	else if (is_known(name, known_old_language_packages)) {
+		// known language packages from the times before babel
+		// if they are found and not also babel, they will be used as
+		// cutom language package
+		h_language_package = "\\usepackage{" + name + "}";
 	}
 
 	else if (name == "makeidx")
