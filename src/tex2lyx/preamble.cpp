@@ -548,7 +548,7 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		h_language_package = "default";
 		// we have to do nothing if babel is loaded without any options, otherwise
 		// we would pollute the preamble with this call in every roundtrip
-		if  (!opts.empty()) {
+		if (!opts.empty()) {
 			// check if more than one option was used - used later for inputenc
 			// in case inputenc is parsed before babel, set the encoding to auto
 			if (options.begin() != options.end() - 1) {
