@@ -133,24 +133,6 @@ An URL: \url{http://www.lyx.org}
 \listoftables
 
 
-\section{Phantoms}
-
-test\hphantom{Wow}test
-
-test\phantom{\textcolor{green}{W}\textbf{ow}\textsuperscript{Wow}}test
-
-test\vphantom{Wow\textbackslash{}\&\%}test
-
-$test\hphantom{Wow}test$
-
-\[
-test\phantom{\textcolor{green}{W}\mathbf{ow}\textsuperscript{Wow}}test
-\]
-
-
-$test\vphantom{Wow\&\%}test$
-
-
 \section{Graphics\index{Graphics}}
 
 There is also some basic support for graphics, in the form
@@ -324,6 +306,76 @@ test
 \noindent \rule{1ex}{0.5cc}test
 
 \textcolor{red}{\rule[-4ex]{5in}{1cm}}
+
+
+\subsection{Spaces}
+
+simple: a\ b
+
+simple, protected: a~b
+
+thin: a\,b
+
+medium: a\negthinspace{}b
+
+thick: a\negmedspace{}b
+
+negative thin: a\negthinspace{}b
+
+negative meduim: a\negmedspace{}b
+
+negative thick: a\negthickspace{}b
+
+half quad: a\enskip{}b
+
+half quad, protected: a\enspace{}b
+
+a\quad{}b
+
+a\qquad{}b
+
+hfill: a\hfill{}b
+
+hfill, protected: a\hspace*{\fill}b
+
+custom,: a\hspace{1cm}b
+
+custom, protected: a\hspace*{1cm}b
+
+visible: a\textvisiblespace{}b
+
+
+\subsubsection*{now some math examples:}
+
+$a\hfill b$
+
+$a\hspace*{2cm}b$
+
+$a\hspace{1cm}b$
+
+$a\hspace*{\fill} b$
+
+$a\enskip b$
+
+$a\enspace b$
+
+
+\subsection{Phantoms}
+
+test\phantom{Wow}test
+
+test\phantom{\textcolor{green}{W}\textbf{ow}\textsuperscript{Wow}}test
+
+test\phantom{Wow\textbackslash{}\&\%}test
+
+$test\hphantom{Wow}test$
+
+\[
+test\phantom{\textcolor{green}{W}\mathbf{ow}\textsuperscript{Wow}}test
+\]
+
+
+$test\vphantom{Wow\&\%}test$
 
 
 \subsection{Line breaks}
