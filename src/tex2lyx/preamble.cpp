@@ -49,7 +49,7 @@ const char * const modules_placeholder = "\001modules\001";
 // needed to handle encodings with babel
 bool one_language = true;
 string h_inputencoding = "auto";
-string h_paragraph_separation    = "indent";
+string h_paragraph_separation = "indent";
 
 namespace {
 
@@ -129,8 +129,9 @@ const char * const known_swedish_quotes_languages[] = {"finnish",
 
 char const * const known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 
-const char * const known_roman_fonts[] = { "ae", "bookman", "charter",
-"cmr", "fourier", "lmodern", "mathpazo", "mathptmx", "newcent", 0};
+const char * const known_roman_fonts[] = { "ae", "beraserif", "bookman",
+"ccfonts", "chancery", "charter", "cmr", "fourier", "lmodern", "mathpazo",
+"mathptmx", "newcent", "utopia", 0};
 
 const char * const known_sans_fonts[] = { "avant", "berasans", "cmbr", "cmss",
 "helvet", "lmss", 0};
@@ -495,10 +496,14 @@ void handle_package(Parser &p, string const & name, string const & opts,
 
 	// typewriter fonts
 	if (is_known(name, known_typewriter_fonts)) {
-		h_font_typewriter = name;
-		if (!opts.empty()) {
-			scale = opts;
-			h_font_tt_scale = scale_as_percentage(scale);
+		// fourier can be set as roman font _only_
+		// fourier as typewriter is handled in handling of \ttdefault
+		if (name != "fourier") {
+			h_font_typewriter = name;
+			if (!opts.empty()) {
+				scale = opts;
+				h_font_tt_scale = scale_as_percentage(scale);
+			}
 		}
 	}
 
