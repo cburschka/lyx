@@ -503,10 +503,14 @@ void handle_package(Parser &p, string const & name, string const & opts,
 
 	// typewriter fonts
 	if (is_known(name, known_typewriter_fonts)) {
-		h_font_typewriter = name;
-		if (!opts.empty()) {
-			scale = opts;
-			h_font_tt_scale = scale_as_percentage(scale);
+		// fourier can be set as roman font _only_
+		// fourier as typewriter is handled in handling of \ttdefault
+		if (name != "fourier") {
+			h_font_typewriter = name;
+			if (!opts.empty()) {
+				scale = opts;
+				h_font_tt_scale = scale_as_percentage(scale);
+			}
 		}
 	}
 
