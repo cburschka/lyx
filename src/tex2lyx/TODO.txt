@@ -1,6 +1,6 @@
 This file lists features that are supported by LyX but not yet converted (or
-not converted completely) by tex2lyx. Currently, only features up to file
-format 345 (LyX 1.6.x) are listed. The table is organized in three columns:
+not converted completely) by tex2lyx. Currently, (all?) features up to the
+current file format are listed. The table is organized in three columns:
 
 
 Format:        First file format that supports the feature. In some cases the
@@ -58,7 +58,8 @@ Format LaTeX feature                        LyX feature
 367    relative lengths for h and v space   InsetSpace, InsetVSpace
 368    glue lengths                         InsetSpace
 369    author id                            \author
-370    \date{}                              \suppress_date	(partly supported, see bug #7844)
+370    \date{}                              \suppress_date
+                                            (partly supported, see bug #7844)
 371    automatic mhchem loading             \use_mhchem
 375    \includeonly                         \{begin,end}_includeonly
 376    update .aux of unincluded children   \maintain_unincluded_children
