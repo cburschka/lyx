@@ -175,7 +175,7 @@ string h_use_default_options     = "false";
 string h_options;
 string h_language                = "english";
 string h_language_package        = "default";
-string h_fontencoding            = "default";
+string h_fontencoding            = "global";
 string h_font_roman              = "default";
 string h_font_sans               = "default";
 string h_font_typewriter         = "default";
@@ -549,11 +549,9 @@ void handle_package(Parser &p, string const & name, string const & opts,
 
 	else if (name == "fontenc") {
 		h_fontencoding = getStringFromVector(options, ",");
-		/* We could do the following for better round trip support,
-		 * but this makes the document less portable, so I skip it:
-		if (h_fontencoding == lyxrc.fontenc)
+		// as of version LyX 2.0 "T1" is equal to the setting "global"
+		if (h_fontencoding == "T1")
 			h_fontencoding = "global";
-		 */
 		options.clear();
 	}
 
