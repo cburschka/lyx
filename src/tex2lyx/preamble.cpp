@@ -133,8 +133,9 @@ const char * const known_swedish_quotes_languages[] = {"finnish",
 
 char const * const known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 
-const char * const known_roman_fonts[] = { "ae", "bookman", "charter",
-"cmr", "fourier", "lmodern", "mathpazo", "mathptmx", "newcent", 0};
+const char * const known_roman_fonts[] = { "ae", "bookman", "ccfonts",
+"chancery", "charter", "cmr", "fourier", "lmodern", "mathpazo", "mathptmx",
+"newcent", 0};
 
 const char * const known_sans_fonts[] = { "avant", "berasans", "cmbr", "cmss",
 "helvet", "lmss", 0};
