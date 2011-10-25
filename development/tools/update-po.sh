@@ -13,7 +13,9 @@ while getopts ":cdh" options $ARGS; do
   case $options in
     c)  COMMIT="TRUE";;
     d)  DEBUG="echo";;
-    h)  echo "check-po.sh [-d]"; 
+    h)  echo "update-po.sh [-c] [-d]"; 
+        echo "-c: Commit any changes we find.";
+        echo "-d: Debugging mode.";
         echo "You must also point the FARM variable to LyX's www tree."; 
         exit 0;;
   esac
