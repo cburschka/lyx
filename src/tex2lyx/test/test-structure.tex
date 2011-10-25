@@ -17,12 +17,21 @@
 		\renewcommand{\makelabel}[1]{##1\hfil}}}
 	{\end{list}}
 
+% LyX will also recognize this command:
+% \@ifundefined{date}{}{\date{}}
+% and also this:
+% \date{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 
 \newenvironment{foo}{==[}{]==}
 
 \begin{document}
 
+\title{Title}
+
+\date{}
+
+\maketitle
 This document contains all sorts of layouts we are supposed to
 support, along with weird nestings.
 

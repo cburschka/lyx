@@ -110,6 +110,7 @@ in their names. It's OK to use them in the man\"{u}script, though.
 \bibitem[{{G\"{u}rkan et~al.}(2004)}]{gur+04} Gürkan, M.~A., Freitag,
 M., \& Rasio, F.~A. 2004, ApJ, 604, 632\end{thebibliography}
 
+
 \section{Input files\index{Input files}}
 
 We can input files too, like this \input{DummyDocument}, or with the include
@@ -119,15 +120,18 @@ variant \include{DummyDocument} % unfortunately, including the doc twice
 If you prefer verbatim input, you can choose
 between~\verbatiminput{foo} or~\verbatiminput*{foo}.
 
+
 \section{URL\index{URL}\nomenclature[www]{URL}{uniform resource locator}}
 
 An URL: \url{http://www.lyx.org}
 \nomenclature{URL2}{uniform resource locator}
 
+
 \section{Lists\index{Lists}}
 
 \listoffigures
 \listoftables
+
 
 \section{Graphics\index{Graphics}}
 
@@ -273,6 +277,7 @@ Now use them all:
 The following tow don't work, but they should???
 %\macros{x} \macrot{x}
 
+
 \section{Special formattings\index{Special formattings}}
 
 \subsection{LyX line}
@@ -289,7 +294,89 @@ test
 
 {\Huge \lyxline{\Huge}}{\Huge \par}
 
+
+\subsection{rules}
+
+test\rule[0.001\textwidth]{1\columnwidth}{0.05\textheight}
+
 test
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+\noindent \rule{1ex}{0.5cc}test
+
+\textcolor{red}{\rule[-4ex]{5in}{1cm}}
+
+
+\subsection{Spaces}
+
+simple: a\ b
+
+simple, protected: a~b
+
+thin: a\,b
+
+medium: a\negthinspace{}b
+
+thick: a\negmedspace{}b
+
+negative thin: a\negthinspace{}b
+
+negative meduim: a\negmedspace{}b
+
+negative thick: a\negthickspace{}b
+
+half quad: a\enskip{}b
+
+half quad, protected: a\enspace{}b
+
+a\quad{}b
+
+a\qquad{}b
+
+hfill: a\hfill{}b
+
+hfill, protected: a\hspace*{\fill}b
+
+custom,: a\hspace{1cm}b
+
+custom, protected: a\hspace*{1cm}b
+
+visible: a\textvisiblespace{}b
+
+
+\subsubsection*{now some math examples:}
+
+$a\hfill b$
+
+$a\hspace*{2cm}b$
+
+$a\hspace{1cm}b$
+
+$a\hspace*{\fill} b$
+
+$a\enskip b$
+
+$a\enspace b$
+
+
+\subsection{Phantoms}
+
+test\phantom{Wow}test
+
+test\phantom{\textcolor{green}{W}\textbf{ow}\textsuperscript{Wow}}test
+
+test\phantom{Wow\textbackslash{}\&\%}test
+
+$test\hphantom{Wow}test$
+
+\[
+test\phantom{\textcolor{green}{W}\mathbf{ow}\textsuperscript{Wow}}test
+\]
+
+
+$test\vphantom{Wow\&\%}test$
+
 
 \subsection{Line breaks}
 
@@ -344,6 +431,11 @@ with $a^2+b^2=c^2$ math}.
 
 \printindex{}
 
+\printnomenclature hello
+
+\settowidth{\nomlabelwidth}{URL2}
 \printnomenclature{}
+
+\printnomenclature[0.02\linewidth]{}
 
 \end{document}
