@@ -646,6 +646,9 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		; // Ignore this, the geometry settings are made by the \geometry
 		  // command. This command is handled below.
 
+	else if (name == "rotfloat")
+		; // ignore this
+
 	else if (is_known(name, known_languages))
 		h_language = name;
 
