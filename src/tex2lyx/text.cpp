@@ -2471,9 +2471,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (t.cs() == "phantom")
 				begin_inset(os, "Phantom Phantom\n");
 			if (t.cs() == "hphantom")
-				begin_inset(os, "Phantom Hhantom\n");
+				begin_inset(os, "Phantom HPhantom\n");
 			if (t.cs() == "vphantom")
-				begin_inset(os, "Phantom Vhantom\n");
+				begin_inset(os, "Phantom VPhantom\n");
 			os << "status open\n";
 			parse_text_in_inset(p, os, FLAG_ITEM, outer, context);
 			end_inset(os);
