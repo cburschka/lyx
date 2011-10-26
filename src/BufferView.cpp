@@ -889,16 +889,25 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool recenter)
 
 		// If the top part of the row falls of the screen, we scroll
 		// up to align the top of the row with the top of the screen.
-		else if (ypos - row_dim.ascent() < 0)
-			scrolled = scrollUp(-ypos + row_dim.ascent());
+		else if (ypos - row_dim.ascent() < 0 && ypos < height_) {
+			int ynew = row_dim.ascent();
+			if (ynew > height_ - row_dim.descent())
+				// FIXME: Recursively find the rowheight of the row in the inset
+				// until we find a row which can be visualized completely.
+				ynew = height_ - defaultRowHeight();
+			int const scroll = ynew - ypos;
+			scrolled = scrollUp(scroll);
+		}
 
 		// If the bottom of the row falls of the screen, we scroll down.
 		// However, we have to be careful not to scroll that much that
 		// the top falls of the screen.
-		else if (ypos + row_dim.descent() > height_) {
+		else if (ypos + row_dim.descent() > height_ && ypos > 0) {
 			int ynew = height_ - row_dim.descent();
 			if (ynew < row_dim.ascent())
-				ynew = row_dim.ascent();
+				// FIXME: Recursively find the rowheight of the row in the inset
+				// until we find a row which can be visualized completely.
+				ynew = defaultRowHeight();
 			int const scroll = ypos - ynew;
 			scrolled = scrollDown(scroll);
 		}
