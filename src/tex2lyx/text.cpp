@@ -1094,6 +1094,38 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		p.skip_spaces();
 	}
 
+	else if (name == "wrapfigure" || name == "wraptable") {
+		// syntax is \begin{wrapfigure}[lines]{placement}[overhang]{width}
+		eat_whitespace(p, os, parent_context, false);
+		parent_context.check_layout(os);
+		// default values
+		string lines = "0";
+		string overhang = "0col%";
+		// parse
+		if (p.hasOpt())
+			lines = p.getArg('[', ']');
+		string const placement = p.getArg('{', '}');
+		if (p.hasOpt())
+			overhang = p.getArg('[', ']');
+		string const width = p.getArg('{', '}');
+		// write
+		if (name == "wrapfigure")
+			begin_inset(os, "Wrap figure\n");
+		else
+			begin_inset(os, "Wrap table\n");
+		os << "lines " << lines
+		   << "\nplacement " << placement
+		   << "\noverhang " << lyx::translate_len(overhang)
+		   << "\nwidth " << lyx::translate_len(width)
+		   << "\nstatus open\n\n";
+		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
+		end_inset(os);
+		// We don't need really a new paragraph, but
+		// we must make sure that the next item gets a \begin_layout.
+		parent_context.new_paragraph(os);
+		p.skip_spaces();
+	}
+
 	else if (name == "minipage") {
 		eat_whitespace(p, os, parent_context, false);
 		parse_box(p, os, 0, FLAG_END, outer, parent_context, "", "", name);
@@ -2534,7 +2566,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string const offset = (p.hasOpt() ? p.getArg('[', ']') : string());
 			string const width = p.getArg('{', '}');
 			string const thickness = p.getArg('{', '}');
-					
 			context.check_layout(os);
 			begin_command_inset(os, "line", "rule");
 			if (!offset.empty())
