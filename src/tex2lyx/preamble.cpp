@@ -524,6 +524,12 @@ void handle_package(Parser &p, string const & name, string const & opts,
 	if (name == "eco")
 		h_font_osf = "true";
 
+	// after the detection and handling of special cases, we can remove the
+	// fonts, otherwise they would appear in the preamble, see bug #7856
+	if (is_known(name, known_roman_fonts) || is_known(name, known_sans_fonts)
+		||	is_known(name, known_typewriter_fonts))
+		;
+
 	else if (name == "amsmath" || name == "amssymb")
 		h_use_amsmath = "2";
 
