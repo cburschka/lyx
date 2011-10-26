@@ -121,10 +121,21 @@ If you prefer verbatim input, you can choose
 between~\verbatiminput{foo} or~\verbatiminput*{foo}.
 
 
-\section{URL\index{URL}\nomenclature[www]{URL}{uniform resource locator}}
+\section{URLs and Hyperlinks\index{URL}\nomenclature[www]{URL}{uniform resource locator}}
 
-An URL: \url{http://www.lyx.org}
-\nomenclature{URL2}{uniform resource locator}
+An URL: \url{http://www.lyx.org} \nomenclature{URL2}{uniform resource locator}
+
+link:\href{http://www.test.test}{www.test.test}
+
+link2:\href{http://www.test.test}{http://www.test.test}
+
+mail:\href{mailto:www.test.test}{name}
+
+file:\href{file:www.test.test}{www.test.test}
+
+ftp:\href{ftp://www.test.test}{ftp://www.test.test}
+
+ftp2:\href{ftp://www.test.test}{www.test.test}
 
 
 \section{Lists\index{Lists}}
@@ -312,9 +323,9 @@ test
 
 test\phantom{Wow}test
 
-test\phantom{\textcolor{green}{W}\textbf{ow}\textsuperscript{Wow}}test
+test\hphantom{\textcolor{green}{W}\textbf{ow}\textsuperscript{Wow}}test
 
-test\phantom{Wow\textbackslash{}\&\%}test
+test\vphantom{Wow\textbackslash{}\&\%}test
 
 $test\hphantom{Wow}test$
 
