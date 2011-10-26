@@ -33,7 +33,26 @@ What's new
 - XHTML export now respects font color and background color from 
   Document->Settings->Colors.
 
+** TeX2LyX IMPROVEMENTS
+
 - tex2lyx produces now the current file format 413.
+
+- the font packages utopia, fourier, ccfonts, chancery and beraserif
+  are now recognized
+
+- if no language package is set, or if a language package is set that
+  works independently of babel and polyglossia, tex2lyx recognizes this
+  now
+
+- the setting of the document-wide background color and text color
+  (\color, \pagecolor), the background color of shaded boxes and the
+  text color of greyed-out notes is now recognized
+
+- phantom spaces are recognized (\phantom, \hphanton, \vphantom)
+
+- the LaTeX command \rule is recognized
+
+- recognized custom width for nomenclature list (\printnomenclature)
 
 
 * USER INTERFACE
@@ -51,8 +70,6 @@ What's new
 - When changing the document language, also change the language of the
   text which is not explicitly marked in a different language, irrespective
   of the multilingual status, except for LTR<=>RTL changes.
-
-- disable impossible settings in context menu of boxes (bug 7849).
 
 - Augmented the tex2lyx --help message with the default paths (bug 6827).
 
@@ -79,7 +96,7 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix execution of biber with MikTeX.
+- Fix execution of biber with MiKTeX.
 
 - Fix parsing of branch names containing spaces.
 
@@ -104,6 +121,10 @@ What's new
   Windows (bug 7796).
 
 - Fix handling of relative paths used in the preamble or ERT (bug 7835).
+
+- Disable impossible settings in context menu of boxes (bug 7849).
+
+- Fix tex2lyx handling of recognized roman fonts (bug 7856).
 
 
 * USER INTERFACE
@@ -143,7 +164,7 @@ What's new
   or implicit selection.
 
 - Fix on-screen display of graphics when the name of the temporary directory
-  contains non-ascii characters (bug 7621).
+  contains non-ASCII characters (bug 7621).
 
 - Fix the tab ordering of widgets in the Document->Settings and
   Tools->Preferences panels.
