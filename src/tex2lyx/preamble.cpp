@@ -165,6 +165,12 @@ const char * const known_if_commands[] = {"if", "ifarydshln", "ifbraket",
 "ifcancel", "ifcolortbl", "ifeurosym", "ifmarginnote", "ifmmode", "ifpdf",
 "ifsidecap", "ifupgreek", 0};
 
+const char * const known_basic_colors[] = {"blue", "black", "cyan", "green",
+"magenta", "red", "white", "yellow", 0};
+
+const char * const known_basic_color_codes[] = {"#0000ff", "#000000", "#00ffff", "#00ff00",
+"#ff00ff", "#ff0000", "#ffffff", "#ffff00", 0};
+
 /// conditional commands with three arguments like \@ifundefined{}{}{}
 const char * const known_if_3arg_commands[] = {"@ifundefined", "IfFileExists",
 0};
@@ -216,6 +222,9 @@ string h_use_bibtopic            = "false";
 string h_paperorientation        = "portrait";
 string h_suppress_date           = "false";
 string h_use_refstyle            = "0";
+string h_backgroundcolor;
+string h_boxbgcolor;
+string h_fontcolor;
 string h_notefontcolor;
 string h_secnumdepth             = "3";
 string h_tocdepth                = "3";
@@ -774,8 +783,14 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 	   << "\\paperorientation " << h_paperorientation << '\n'
 	   << "\\suppress_date " << h_suppress_date << '\n'
 	   << "\\use_refstyle " << h_use_refstyle << '\n';
+	if (!h_fontcolor.empty())
+		os << "\\fontcolor " << h_fontcolor << '\n';
 	if (!h_notefontcolor.empty())
 		os << "\\notefontcolor " << h_notefontcolor << '\n';
+	if (!h_backgroundcolor.empty())
+		os << "\\backgroundcolor " << h_backgroundcolor << '\n';
+	if (!h_boxbgcolor.empty())
+		os << "\\boxbgcolor " << h_boxbgcolor << '\n';
 	os << h_margins
 	   << "\\secnumdepth " << h_secnumdepth << "\n"
 	   << "\\tocdepth " << h_tocdepth << "\n"
@@ -879,6 +894,38 @@ void parse_preamble(Parser & p, ostream & os,
 
 		else if (t.cs() == "pagestyle")
 			h_paperpagestyle = p.verbatim_item();
+
+		else if (t.cs() == "color") {
+			string argument = p.getArg('{', '}');
+			// check the case that a standard color is used
+			if (is_known(argument, known_basic_colors))
+				h_fontcolor = color2code(argument);
+			// check the case that LyX's document_fontcolor is defined
+			// but not used for \color
+			if (argument != "document_fontcolor"
+				&& !is_known(argument, known_basic_colors)) {
+				h_preamble << t.asInput() << '{' << argument << '}';
+				// the color might already be set because \definecolor
+				// is parsed before this
+				h_fontcolor = "";
+			}
+		}
+
+		else if (t.cs() == "pagecolor") {
+			string argument = p.getArg('{', '}');
+			// check the case that a standard color is used
+			if (is_known(argument, known_basic_colors))
+				h_backgroundcolor = color2code(argument);
+			// check the case that LyX's page_backgroundcolor is defined
+			// but not used for \pagecolor
+			if (argument != "page_backgroundcolor"
+				&& !is_known(argument, known_basic_colors)) {
+				h_preamble << t.asInput() << '{' << argument << '}';
+				// the color might already be set because \definecolor
+				// is parsed before this
+				h_backgroundcolor = "";
+			}
+		}
 
 		else if (t.cs() == "makeatletter") {
 			// LyX takes care of this
@@ -1137,9 +1184,18 @@ void parse_preamble(Parser & p, ostream & os,
 			string const color = p.getArg('{', '}');
 			string const space = p.getArg('{', '}');
 			string const value = p.getArg('{', '}');
-			if (color == "note_fontcolor" && space == "rgb") {
+			if (color == "document_fontcolor" && space == "rgb") {
+				RGBColor c(RGBColorFromLaTeX(value));
+				h_fontcolor = X11hexname(c);
+			} else if (color == "note_fontcolor" && space == "rgb") {
 				RGBColor c(RGBColorFromLaTeX(value));
 				h_notefontcolor = X11hexname(c);
+			} else if (color == "page_backgroundcolor" && space == "rgb") {
+				RGBColor c(RGBColorFromLaTeX(value));
+				h_backgroundcolor = X11hexname(c);
+			} else if (color == "shadecolor" && space == "rgb") {
+				RGBColor c(RGBColorFromLaTeX(value));
+				h_boxbgcolor = X11hexname(c);
 			} else {
 				h_preamble << "\\definecolor{" << color
 				           << "}{" << space << "}{" << value
@@ -1228,6 +1284,16 @@ string babel2lyx(string const & language)
 	if (where)
 		return known_coded_languages[where - known_languages];
 	return language;
+}
+
+
+/// translates a color name to a LyX color code
+string color2code(string const & name)
+{
+	char const * const * where = is_known(name, known_basic_colors);
+	if (where)
+		return known_basic_color_codes[where - known_basic_colors];
+	return name;
 }
 
 // }])
