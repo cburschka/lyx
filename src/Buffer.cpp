@@ -356,6 +356,7 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	bibfile_cache_valid_ = cloned_buffer_->d->bibfile_cache_valid_;
 	bibfile_status_ = cloned_buffer_->d->bibfile_status_;
 	cite_labels_valid_ = cloned_buffer_->d->cite_labels_valid_;
+	unnamed = cloned_buffer_->d->unnamed;
 }
 
 
