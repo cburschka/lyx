@@ -37,15 +37,12 @@ Format LaTeX feature                        LyX feature
 310    \nocite{*}                           InsetBibtex
 312    rotfloat.sty                         InsetFloat
 312    wide sideways{figure,table}          InsetFloat
-315    column separation in page margins    header
 316    subfig.sty (subfloats)               InsetFloat
 317    floating placements                  InsetWrap
 322    ?                                    local layout
 325    japanese                             one japanese language
 326    PDFLaTeX for external insets         InsetExternal
 329    master documents                     \master
-330    \leftarrowfill, \rightarrowfill,     InsetHSpace
-       \upbracefill, \downbracefill
 332    ?                                    InsetGraphics groupId
 336    ?                                    \font_cjk
 343    ?                                    \use_default_options
@@ -57,7 +54,6 @@ Format LaTeX feature                        LyX feature
 356    \uuline, \uwave                      fonts
 358    custom bibtex command                \bibtex_command
 358    custom makeindex command             \index_command
-362    applemac encoding                    \encoding
 363    horizontal longtable alignment       InsetTabular
 364    branch file name suffix              \filename_suffix
 366    relative lengths for parskip         \defskip
