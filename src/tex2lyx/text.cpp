@@ -2431,6 +2431,20 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "\n\\" << t.cs() << " default\n";
 		}
 
+		else if (t.cs() == "phantom" || t.cs() == "hphantom" ||
+			     t.cs() == "vphantom") {
+			context.check_layout(os);
+			if (t.cs() == "phantom")
+				begin_inset(os, "Phantom Phantom\n");
+			if (t.cs() == "hphantom")
+				begin_inset(os, "Phantom Hhantom\n");
+			if (t.cs() == "vphantom")
+				begin_inset(os, "Phantom Vhantom\n");
+			os << "status open\n";
+			parse_text_in_inset(p, os, FLAG_ITEM, outer, context);
+			end_inset(os);
+		}
+		
 		else if (t.cs() == "lyxline") {
 			// swallow size argument (it is not used anyway)
 			p.getArg('{', '}');
