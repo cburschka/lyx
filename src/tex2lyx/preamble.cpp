@@ -169,6 +169,12 @@ const char * const known_if_commands[] = {"if", "ifarydshln", "ifbraket",
 "ifcancel", "ifcolortbl", "ifeurosym", "ifmarginnote", "ifmmode", "ifpdf",
 "ifsidecap", "ifupgreek", 0};
 
+const char * const known_basic_colors[] = {"blue", "black", "cyan", "green",
+"magenta", "red", "white", "yellow", 0};
+
+const char * const known_basic_color_codes[] = {"#0000ff", "#000000", "#00ffff", "#00ff00",
+"#ff00ff", "#ff0000", "#ffffff", "#ffff00", 0};
+
 /// conditional commands with three arguments like \@ifundefined{}{}{}
 const char * const known_if_3arg_commands[] = {"@ifundefined", "IfFileExists",
 0};
@@ -917,18 +923,32 @@ void parse_preamble(Parser & p, ostream & os,
 
 		else if (t.cs() == "color") {
 			string argument = p.getArg('{', '}');
-			// check the case that not a color defined by LyX is used
-			if (argument != "document_fontcolor") {
+			// check the case that a standard color is used
+			if (is_known(argument, known_basic_colors))
+				h_fontcolor = color2code(argument);
+			// check the case that LyX's document_fontcolor is defined
+			// but not used for \color
+			if (argument != "document_fontcolor"
+				&& !is_known(argument, known_basic_colors)) {
 				h_preamble << t.asInput() << '{' << argument << '}';
+				// the color might already be set because \definecolor
+				// is parsed before this
 				h_fontcolor = "";
 			}
 		}
 
 		else if (t.cs() == "pagecolor") {
 			string argument = p.getArg('{', '}');
-			// check the case that not a color defined by LyX is used
-			if (argument != "page_backgroundcolor") {
+			// check the case that a standard color is used
+			if (is_known(argument, known_basic_colors))
+				h_backgroundcolor = color2code(argument);
+			// check the case that LyX's page_backgroundcolor is defined
+			// but not used for \pagecolor
+			if (argument != "page_backgroundcolor"
+				&& !is_known(argument, known_basic_colors)) {
 				h_preamble << t.asInput() << '{' << argument << '}';
+				// the color might already be set because \definecolor
+				// is parsed before this
 				h_backgroundcolor = "";
 			}
 		}
@@ -1298,6 +1318,16 @@ string babel2lyx(string const & language)
 	if (where)
 		return known_coded_languages[where - known_languages];
 	return language;
+}
+
+
+/// translates a color name to a LyX color code
+string color2code(string const & name)
+{
+	char const * const * where = is_known(name, known_basic_colors);
+	if (where)
+		return known_basic_color_codes[where - known_basic_colors];
+	return name;
 }
 
 // }])
