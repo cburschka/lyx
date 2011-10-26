@@ -756,12 +756,12 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 
 
 // needed to insert the selection
-void Text::insertStringAsLines(DocIterator const & dit, docstring const & str,
+void Text::insertStringAsLines(Cursor & cur, docstring const & str,
 		Font const & font)
 {
 	BufferParams const & bparams = owner_->buffer().params();
-	pit_type pit = dit.pit();
-	pos_type pos = dit.pos();
+	pit_type pit = cur.pit();
+	pos_type pos = cur.pos();
 
 	// insert the string, don't insert doublespace
 	bool space_inserted = true;
@@ -803,12 +803,13 @@ void Text::insertStringAsLines(DocIterator const & dit, docstring const & str,
 			space_inserted = (*cit == ' ');
 		}
 	}
+	setCursor(cur, pit, pos);
 }
 
 
 // turn double CR to single CR, others are converted into one
 // blank. Then insertStringAsLines is called
-void Text::insertStringAsParagraphs(DocIterator const & dit, docstring const & str,
+void Text::insertStringAsParagraphs(Cursor & cur, docstring const & str,
 		Font const & font)
 {
 	docstring linestr = str;
@@ -830,7 +831,7 @@ void Text::insertStringAsParagraphs(DocIterator const & dit, docstring const & s
 			newline_inserted = false;
 		}
 	}
-	insertStringAsLines(dit, linestr, font);
+	insertStringAsLines(cur, linestr, font);
 }
 
 
