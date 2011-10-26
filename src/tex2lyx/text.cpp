@@ -2478,6 +2478,30 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			parse_text_in_inset(p, os, FLAG_ITEM, outer, context);
 			end_inset(os);
 		}
+
+		else if (t.cs() == "href") {
+			context.check_layout(os);
+			string target = p.getArg('{', '}');
+			string name = p.getArg('{', '}');
+			string type;
+			size_t i = target.find(':');
+			if (i != string::npos) {
+				type = target.substr(0, i + 1);
+				if (type == "mailto:" || type == "file:")
+					target = target.substr(i + 1);
+				// handle the case that name is equal to target, except of "http://"
+				else if (target.substr(i + 3) == name && type == "http:")
+					target = name;
+			}
+			begin_command_inset(os, "href", "href");
+			if (name != target)
+				os << "name \"" << name << "\"\n";
+			os << "target \"" << target << "\"\n";
+			if (type == "mailto:" || type == "file:")
+				os << "type \"" << type << "\"\n";
+			end_inset(os);
+			skip_spaces_braces(p);
+		}
 		
 		else if (t.cs() == "lyxline") {
 			// swallow size argument (it is not used anyway)
