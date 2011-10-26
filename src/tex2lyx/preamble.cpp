@@ -917,8 +917,11 @@ void parse_preamble(Parser & p, ostream & os,
 			h_paperpagestyle = p.verbatim_item();
 
 		else if (t.cs() == "date") {
-			if (p.verbatim_item().empty())
+			string argument = p.getArg('{', '}');
+			if (argument.empty())
 				h_suppress_date = "true";
+			else
+				h_preamble << t.asInput() << '{' << argument << '}';
 		}
 
 		else if (t.cs() == "color") {
