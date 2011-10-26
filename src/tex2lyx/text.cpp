@@ -1075,25 +1075,14 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		p.skip_spaces();
 	}
 
-	else if (unstarred_name == "sidewaystable") {
+	else if (unstarred_name == "sidewaysfigure"
+		|| unstarred_name == "sidewaystable") {
 		eat_whitespace(p, os, parent_context, false);
 		parent_context.check_layout(os);
-		begin_inset(os, "Float table\n");
-		os << "wide " << convert<string>(is_starred)
-		   << "\nsideways true"
-		   << "\nstatus open\n\n";
-		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
-		end_inset(os);
-		// We don't need really a new paragraph, but
-		// we must make sure that the next item gets a \begin_layout.
-		parent_context.new_paragraph(os);
-		p.skip_spaces();
-	}
-
-	else if (unstarred_name == "sidewaysfigure") {
-		eat_whitespace(p, os, parent_context, false);
-		parent_context.check_layout(os);
-		begin_inset(os, "Float figure\n");
+		if (unstarred_name == "sidewaysfigure")
+			begin_inset(os, "Float figure\n");
+		else
+			begin_inset(os, "Float table\n");
 		os << "wide " << convert<string>(is_starred)
 		   << "\nsideways true"
 		   << "\nstatus open\n\n";
