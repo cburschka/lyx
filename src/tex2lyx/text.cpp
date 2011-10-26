@@ -2423,7 +2423,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "\n\\bar default\n";
 		}
 
-		else if (t.cs() == "emph" || t.cs() == "noun") {
+		else if (t.cs() == "sout") {
+			context.check_layout(os);
+			os << "\n\\strikeout on\n";
+			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
+			context.check_layout(os);
+			os << "\n\\strikeout default\n";
+		}
+
+		else if (t.cs() == "uuline" || t.cs() == "uwave" ||
+		         t.cs() == "emph" || t.cs() == "noun") {
 			context.check_layout(os);
 			os << "\n\\" << t.cs() << " on\n";
 			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
