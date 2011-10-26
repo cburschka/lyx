@@ -915,6 +915,24 @@ void parse_preamble(Parser & p, ostream & os,
 				h_suppress_date = "true";
 		}
 
+		else if (t.cs() == "color") {
+			string argument = p.getArg('{', '}');
+			// check the case that not a color defined by LyX is used
+			if (argument != "document_fontcolor") {
+				h_preamble << t.asInput() << '{' << argument << '}';
+				h_fontcolor = "";
+			}
+		}
+
+		else if (t.cs() == "pagecolor") {
+			string argument = p.getArg('{', '}');
+			// check the case that not a color defined by LyX is used
+			if (argument != "page_backgroundcolor") {
+				h_preamble << t.asInput() << '{' << argument << '}';
+				h_backgroundcolor = "";
+			}
+		}
+
 		else if (t.cs() == "makeatletter") {
 			// LyX takes care of this
 			p.setCatCode('@', catLetter);
