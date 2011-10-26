@@ -2687,8 +2687,27 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "printnomenclature") {
+			string width = "";
+			string width_type = "";
 			context.check_layout(os);
 			begin_command_inset(os, "nomencl_print", "printnomenclature");
+			// case of a custom width
+			if (p.hasOpt()) {
+				width = p.getArg('[', ']');
+				width = translate_len(width);
+				width_type = "custom";
+			}
+			// case of no custom width
+			// the case of no custom width but the width set
+			// via \settowidth{\nomlabelwidth}{***} cannot be supported
+			// because the user could have set anything, not only the width
+			// of the longest label (which would be width_type = "auto")
+			string label = convert_command_inset_arg(p.getArg('{', '}'));
+			if (label.empty() && width_type.empty())
+				width_type = "none";
+			os << "set_width \"" << width_type << "\"\n";
+			if (width_type == "custom")
+				os << "width \"" << width << '\"';
 			end_inset(os);
 			skip_spaces_braces(p);
 		}
