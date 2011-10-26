@@ -571,9 +571,11 @@ void handle_package(Parser &p, string const & name, string const & opts,
 
 	else if (name == "fontenc") {
 		h_fontencoding = getStringFromVector(options, ",");
-		// as of version LyX 2.0 "T1" is equal to the setting "global"
-		if (h_fontencoding == "T1")
+		/* We could do the following for better round trip support,
+		 * but this makes the document less portable, so I skip it:
+		if (h_fontencoding == lyxrc.fontenc)
 			h_fontencoding = "global";
+		*/
 		options.clear();
 	}
 
