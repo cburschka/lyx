@@ -2472,6 +2472,24 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 		}
 
+		else if (t.cs() == "rule") {
+			string offset = "";
+			string width;
+			string thickness;
+			if (p.hasOpt())
+				offset = p.getArg('[', ']');
+			width = p.getArg('{', '}');
+			thickness = p.getArg('{', '}');
+					
+			context.check_layout(os);
+			begin_command_inset(os, "line", "rule");
+			if (!offset.empty())
+				os << "offset \"" << translate_len(offset) << "\"\n";
+			os << "width \"" << translate_len(width) << "\"\n"
+				  "height \"" << translate_len(thickness) << "\"\n";
+			end_inset(os);
+		}
+
 		else if (is_known(t.cs(), known_phrases) ||
 		         (t.cs() == "protect" &&
 		          p.next_token().cat() == catEscape &&
