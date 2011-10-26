@@ -126,6 +126,9 @@ What's new
 
 - Fix tex2lyx handling of recognized Roman fonts (bug 7856).
 
+- Store the autosave files of unnamed buffers in the correct directory
+  and make sure they are not left behind after saving (bug 7793).
+
 
 * USER INTERFACE
 
