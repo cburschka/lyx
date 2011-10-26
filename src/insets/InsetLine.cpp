@@ -121,7 +121,7 @@ void InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid = max(minw, max(dim.wid, -dim.wid));
 
 	Length height = Length(to_ascii(getParam("height")));
-	height_ = height.inPixels(dim.height(), fm.width(char_type('M')));
+	height_ = height.inPixels(max_width, fm.width(char_type('M')));
 
 	// get the length of the parameters in pixels
 	Length offset = Length(to_ascii(getParam("offset")));
