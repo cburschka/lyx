@@ -2531,13 +2531,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "rule") {
-			string offset = "";
-			string width;
-			string thickness;
-			if (p.hasOpt())
-				offset = p.getArg('[', ']');
-			width = p.getArg('{', '}');
-			thickness = p.getArg('{', '}');
+			string const offset = (p.hasOpt() ? p.getArg('[', ']') : string());
+			string const width = p.getArg('{', '}');
+			string const thickness = p.getArg('{', '}');
 					
 			context.check_layout(os);
 			begin_command_inset(os, "line", "rule");
