@@ -2634,7 +2634,7 @@ void GuiDocument::applyView()
 void GuiDocument::paramsToDialog()
 {
 	// set the default unit
-	Length::UNIT const defaultUnit = Length::defaultUnit();
+	Length::UNIT const default_unit = Length::defaultUnit();
 
 	// preamble
 	preambleModule->update(bp_, id());
@@ -2833,7 +2833,7 @@ void GuiDocument::paramsToDialog()
 		if (indentation != "default") {
 			lengthToWidgets(textLayoutModule->indentLE,
 			textLayoutModule->indentLengthCO,
-			indentation, defaultUnit);
+			indentation, default_unit);
 			indent = 1;
 		}
 		textLayoutModule->indentCO->setCurrentIndex(indent);
@@ -2857,7 +2857,7 @@ void GuiDocument::paramsToDialog()
 			string const length = bp_.getDefSkip().asLyXCommand();
 			lengthToWidgets(textLayoutModule->skipLE,
 				textLayoutModule->skipLengthCO,
-				length, defaultUnit);
+				length, default_unit);
 			break;
 			}
 		default:
@@ -3045,9 +3045,9 @@ void GuiDocument::paramsToDialog()
 		bp_.sides == TwoSides);
 
 	lengthToWidgets(pageLayoutModule->paperwidthLE,
-		pageLayoutModule->paperwidthUnitCO, bp_.paperwidth, defaultUnit);
+		pageLayoutModule->paperwidthUnitCO, bp_.paperwidth, default_unit);
 	lengthToWidgets(pageLayoutModule->paperheightLE,
-		pageLayoutModule->paperheightUnitCO, bp_.paperheight, defaultUnit);
+		pageLayoutModule->paperheightUnitCO, bp_.paperheight, default_unit);
 
 	// margins
 	Ui::MarginsUi * m = marginsModule;
@@ -3055,28 +3055,28 @@ void GuiDocument::paramsToDialog()
 	setMargins();
 
 	lengthToWidgets(m->topLE, m->topUnit,
-		bp_.topmargin, defaultUnit);
+		bp_.topmargin, default_unit);
 
 	lengthToWidgets(m->bottomLE, m->bottomUnit,
-		bp_.bottommargin, defaultUnit);
+		bp_.bottommargin, default_unit);
 
 	lengthToWidgets(m->innerLE, m->innerUnit,
-		bp_.leftmargin, defaultUnit);
+		bp_.leftmargin, default_unit);
 
 	lengthToWidgets(m->outerLE, m->outerUnit,
-		bp_.rightmargin, defaultUnit);
+		bp_.rightmargin, default_unit);
 
 	lengthToWidgets(m->headheightLE, m->headheightUnit,
-		bp_.headheight, defaultUnit);
+		bp_.headheight, default_unit);
 
 	lengthToWidgets(m->headsepLE, m->headsepUnit,
-		bp_.headsep, defaultUnit);
+		bp_.headsep, default_unit);
 
 	lengthToWidgets(m->footskipLE, m->footskipUnit,
-		bp_.footskip, defaultUnit);
+		bp_.footskip, default_unit);
 
 	lengthToWidgets(m->columnsepLE, m->columnsepUnit,
-		bp_.columnsep, defaultUnit);
+		bp_.columnsep, default_unit);
 
 	// branches
 	updateUnknownBranches();
