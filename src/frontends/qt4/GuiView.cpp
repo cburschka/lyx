@@ -404,8 +404,8 @@ public:
 				   Buffer const * used_buffer,
 				   docstring const & msg,
 				   docstring (*asyncFunc)(Buffer const *, Buffer *, string const &),
-				   bool (Buffer::*syncFunc)(string const &, bool, bool) const,
-				   bool (Buffer::*previewFunc)(string const &, bool) const);
+				   bool (Buffer::*syncFunc)(string const &, bool) const,
+				   bool (Buffer::*previewFunc)(string const &) const);
 
 	QVector<GuiWorkArea*> guiWorkAreas();
 };
@@ -3019,10 +3019,7 @@ bool GuiView::goToFileRow(string const & argument)
 template<class T>
 docstring GuiView::GuiViewPrivate::runAndDestroy(const T& func, Buffer const * orig, Buffer * buffer, string const & format, string const & msg)
 {
-	bool const update_unincluded =
-				buffer->params().maintain_unincluded_children
-				&& !buffer->params().getIncludedChildren().empty();
-	bool const success = func(format, update_unincluded);
+	bool const success = func(format);
 
 	// the cloning operation will have produced a clone of the entire set of
 	// documents, starting from the master. so we must delete those.
@@ -3042,22 +3039,22 @@ docstring GuiView::GuiViewPrivate::runAndDestroy(const T& func, Buffer const * o
 
 docstring GuiView::GuiViewPrivate::compileAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
 {
-	bool (Buffer::* mem_func)(std::string const &, bool, bool) const = &Buffer::doExport;
-	return runAndDestroy(bind(mem_func, buffer, _1, true, _2), orig, buffer, format, "export");
+	bool (Buffer::* mem_func)(std::string const &, bool) const = &Buffer::doExport;
+	return runAndDestroy(bind(mem_func, buffer, _1, true), orig, buffer, format, "export");
 }
 
 
 docstring GuiView::GuiViewPrivate::exportAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
 {
-	bool (Buffer::* mem_func)(std::string const &, bool, bool) const = &Buffer::doExport;
-	return runAndDestroy(bind(mem_func, buffer, _1, false, _2), orig, buffer, format, "export");
+	bool (Buffer::* mem_func)(std::string const &, bool) const = &Buffer::doExport;
+	return runAndDestroy(bind(mem_func, buffer, _1, false), orig, buffer, format, "export");
 }
 
 
 docstring GuiView::GuiViewPrivate::previewAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
 {
-	bool(Buffer::* mem_func)(std::string const &, bool) const = &Buffer::preview;
-	return runAndDestroy(bind(mem_func, buffer, _1, _2), orig, buffer, format, "preview");
+	bool(Buffer::* mem_func)(std::string const &) const = &Buffer::preview;
+	return runAndDestroy(bind(mem_func, buffer, _1), orig, buffer, format, "preview");
 }
 
 #else
@@ -3092,8 +3089,8 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 			   Buffer const * used_buffer,
 			   docstring const & msg,
 			   docstring (*asyncFunc)(Buffer const *, Buffer *, string const &),
-			   bool (Buffer::*syncFunc)(string const &, bool, bool) const,
-			   bool (Buffer::*previewFunc)(string const &, bool) const)
+			   bool (Buffer::*syncFunc)(string const &, bool) const,
+			   bool (Buffer::*previewFunc)(string const &) const)
 {
 	if (!used_buffer)
 		return false;
@@ -3122,10 +3119,7 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 #else
 	if (syncFunc) {
 		// TODO check here if it breaks exporting with Qt < 4.4
-		bool const update_unincluded =
-				used_buffer->params().maintain_unincluded_children &&
-				!used_buffer->params().getIncludedChildren().empty();
-		return (used_buffer->*syncFunc)(format, true, update_unincluded);
+		return (used_buffer->*syncFunc)(format, true);
 	} else if (previewFunc) {
 		return (used_buffer->*previewFunc)(format, false);
 	}

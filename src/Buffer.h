@@ -602,17 +602,23 @@ public:
 	///
 	bool hasGuiDelegate() const;
 
-	
+	///
+	bool doExport(std::string const & target, bool put_in_tempdir) const;
+	///
+	bool preview(std::string const & format) const;
 
+private:
 	/// target is a format name optionally followed by a space
 	/// and a destination file-name
 	bool doExport(std::string const & target, bool put_in_tempdir,
 		bool includeall, std::string & result_file) const;
 	///
 	bool doExport(std::string const & target, bool put_in_tempdir,
-		      bool includeall) const;
+		bool includeall) const;
 	///
 	bool preview(std::string const & format, bool includeall = false) const;
+
+public:
 	/// mark the buffer as busy exporting something, or not
 	void setExportStatus(bool e) const;
 	///

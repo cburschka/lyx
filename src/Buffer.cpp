@@ -2283,10 +2283,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 			break;
 		}
 
-		bool const update_unincluded =
-				params().maintain_unincluded_children
-				&& !params().getIncludedChildren().empty();
-		if (!doExport("dvi", true, update_unincluded)) {
+		if (!doExport("dvi", true)) {
 			showPrintError(absFileName());
 			dr.setMessage(_("Error exporting to DVI."));
 			break;
@@ -3486,6 +3483,14 @@ bool Buffer::isExporting() const
 }
 
 
+bool Buffer::doExport(string const & target, bool put_in_tempdir) const
+{
+	bool const update_unincluded =
+			params().maintain_unincluded_children
+			&& !params().getIncludedChildren().empty();
+	return doExport(target, put_in_tempdir, update_unincluded);
+}
+
 bool Buffer::doExport(string const & target, bool put_in_tempdir,
 	bool includeall, string & result_file) const
 {
@@ -3729,6 +3734,14 @@ bool Buffer::doExport(string const & target, bool put_in_tempdir,
 	return doExport(target, put_in_tempdir, false, result_file);
 }
 
+
+bool Buffer::preview(string const & format) const
+{
+	bool const update_unincluded =
+			params().maintain_unincluded_children
+			&& !params().getIncludedChildren().empty();
+	return preview(format, update_unincluded);
+}
 
 bool Buffer::preview(string const & format, bool includeall) const
 {
