@@ -2095,9 +2095,9 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		break;
 
 	case LFUN_BUFFER_EXPORT: {
-		bool success = doExport(argument, false, false);
-		dr.setError(!success);
-		if (!success)
+		ExportStatus const status = doExport(argument, false, false);
+		dr.setError(status != ExportSuccess);
+		if (status != ExportSuccess)
 			dr.setMessage(bformat(_("Error exporting to format: %1$s."), 
 					      func.argument()));
 		break;
@@ -3488,10 +3488,10 @@ bool Buffer::doExport(string const & target, bool put_in_tempdir) const
 	bool const update_unincluded =
 			params().maintain_unincluded_children
 			&& !params().getIncludedChildren().empty();
-	return doExport(target, put_in_tempdir, update_unincluded);
+	return (doExport(target, put_in_tempdir, update_unincluded) == ExportSuccess);
 }
 
-bool Buffer::doExport(string const & target, bool put_in_tempdir,
+Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir,
 	bool includeall, string & result_file) const
 {
 	LYXERR(Debug::FILES, "target=" << target);
@@ -3533,7 +3533,7 @@ bool Buffer::doExport(string const & target, bool put_in_tempdir,
 					_("No information for exporting the format %1$s."),
 					formats.prettyName(format)));
 			}
-			return false;
+			return ExportNoPathToFormat;
 		}
 		runparams.flavor = converters.getFlavor(path);
 
@@ -3595,13 +3595,13 @@ bool Buffer::doExport(string const & target, bool put_in_tempdir,
 				d->cloned_buffer_->d->errorLists["Export"] =
 					d->errorLists["Export"];
 			}
-			return false;
+			return ExportError;
 		}
 	} else if (!lyxrc.tex_allows_spaces
 		   && contains(filePath(), ' ')) {
 		Alert::error(_("File name error"),
 			   _("The directory path to the document cannot contain spaces."));
-		return false;
+		return ExportTexPathHasSpaces;
 	} else {
 		runparams.nice = false;
 		if (!makeLaTeXFile(FileName(filename), filePath(), runparams)) {
@@ -3609,7 +3609,7 @@ bool Buffer::doExport(string const & target, bool put_in_tempdir,
 				d->cloned_buffer_->d->errorLists["Export"] =
 					d->errorLists["Export"];
 			}
-			return false;
+			return ExportError;
 		}
 	}
 
@@ -3658,11 +3658,11 @@ bool Buffer::doExport(string const & target, bool put_in_tempdir,
 	}
 
 	if (!success)
-		return false;
+		return ExportConverterError;
 
 	if (put_in_tempdir) {
 		result_file = tmp_result_file.absFileName();
-		return true;
+		return ExportSuccess;
 	}
 
 	if (dest_filename.empty())
@@ -3719,17 +3719,21 @@ bool Buffer::doExport(string const & target, bool put_in_tempdir,
 			formats.prettyName(format)));
 	}
 
-	return true;
+	return ExportSuccess;
 }
 
 
-bool Buffer::doExport(string const & target, bool put_in_tempdir,
+Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir,
 	bool includeall) const
 {
 	string result_file;
 	// (1) export with all included children (omit \includeonly)
-	if (includeall && !doExport(target, put_in_tempdir, true, result_file))
-		return false;
+	if (includeall) { 
+		ExportStatus const status = 
+			doExport(target, put_in_tempdir, true, result_file);
+		if (status != ExportSuccess)
+			return status;
+	}
 	// (2) export with included children only
 	return doExport(target, put_in_tempdir, false, result_file);
 }
@@ -3748,10 +3752,10 @@ bool Buffer::preview(string const & format, bool includeall) const
 	MarkAsExporting exporting(this);
 	string result_file;
 	// (1) export with all included children (omit \includeonly)
-	if (includeall && !doExport(format, true, true))
+	if (includeall && (doExport(format, true, true) != ExportSuccess))
 		return false;
 	// (2) export with included children only
-	if (!doExport(format, true, false, result_file))
+	if (doExport(format, true, false, result_file) != ExportSuccess)
 		return false;
 	return formats.view(*this, FileName(result_file), format);
 }

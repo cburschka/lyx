@@ -122,6 +122,13 @@ public:
 		ReadOriginal
 	};
 
+	enum ExportStatus {
+		ExportSuccess,
+		ExportError,
+		ExportNoPathToFormat,
+		ExportTexPathHasSpaces,
+		ExportConverterError
+	};
 
 	/// Method to check if a file is externally modified, used by
 	/// isExternallyModified()
@@ -610,10 +617,10 @@ public:
 private:
 	/// target is a format name optionally followed by a space
 	/// and a destination file-name
-	bool doExport(std::string const & target, bool put_in_tempdir,
+	ExportStatus doExport(std::string const & target, bool put_in_tempdir,
 		bool includeall, std::string & result_file) const;
 	///
-	bool doExport(std::string const & target, bool put_in_tempdir,
+	ExportStatus doExport(std::string const & target, bool put_in_tempdir,
 		bool includeall) const;
 	///
 	bool preview(std::string const & format, bool includeall = false) const;
