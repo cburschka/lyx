@@ -728,8 +728,6 @@ PrefLatex::PrefLatex(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(latexDviPaperED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(latexPaperSizeCO, SIGNAL(activated(int)),
-		this, SIGNAL(changed()));
 	connect(latexNomenclED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 
@@ -835,8 +833,6 @@ void PrefLatex::apply(LyXRC & rc) const
 	rc.nomencl_command = fromqstr(latexNomenclED->text());
 	rc.auto_reset_options = latexAutoresetCB->isChecked();
 	rc.view_dvi_paper_option = fromqstr(latexDviPaperED->text());
-	rc.default_papersize =
-		form_->toPaperSize(latexPaperSizeCO->currentIndex());
 #if defined(__CYGWIN__) || defined(_WIN32)
 	rc.windows_style_tex_paths = pathCB->isChecked();
 #endif
@@ -913,8 +909,6 @@ void PrefLatex::update(LyXRC const & rc)
 	latexNomenclED->setText(toqstr(rc.nomencl_command));
 	latexAutoresetCB->setChecked(rc.auto_reset_options);
 	latexDviPaperED->setText(toqstr(rc.view_dvi_paper_option));
-	latexPaperSizeCO->setCurrentIndex(
-		form_->fromPaperSize(rc.default_papersize));
 #if defined(__CYGWIN__) || defined(_WIN32)
 	pathCB->setChecked(rc.windows_style_tex_paths);
 #endif

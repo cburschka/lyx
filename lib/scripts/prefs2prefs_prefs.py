@@ -25,6 +25,9 @@
 #   We must add the flag zipped=native to formats that
 #   were previously hardcoded in the C++ source: dia.
 
+# Incremented to format 4, r40028 by vfr
+#   Remove support for default paper size.
+
 import re
 
 
@@ -118,6 +121,12 @@ def zipped_native(line):
 	return (True,
 		"\\Format %s \"%s,zipped=native\"" % (fmat, opts))
 
+def remove_default_papersize(line):
+	if not line.startswith("\\default_papersize"):
+		return no_match
+	return (True, "")
+
+
 ########################
 
 
@@ -131,4 +140,5 @@ conversions = [
 	]],
 	[  2, []],
 	[  3, [ zipped_native ]],
+	[  4, [ remove_default_papersize ]],
 ]

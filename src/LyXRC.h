@@ -70,7 +70,6 @@ public:
 		RC_DEFAULT_DECIMAL_POINT,
 		RC_DEFAULT_LANGUAGE,
 		RC_DEFAULT_VIEW_FORMAT,
-		RC_DEFAULT_PAPERSIZE,
 		RC_DEFFILE,
 		RC_DIALOGS_ICONIFY_WITH_MAIN,
 		RC_DISPLAY_GRAPHICS,
@@ -271,7 +270,6 @@ public:
 	/// option for telling the dvi viewer about the paper size
 	std::string view_dvi_paper_option;
 	/// default paper size for local xdvi/dvips/ghostview/whatever
-	PAPER_SIZE default_papersize;
 	/// command to run chktex incl. options
 	std::string chktex_command;
 	/// all available commands to run bibtex incl. options

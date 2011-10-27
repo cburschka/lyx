@@ -55,7 +55,7 @@ namespace os = support::os;
 
 namespace {
 
-static unsigned int const LYXRC_FILEFORMAT = 3;
+static unsigned int const LYXRC_FILEFORMAT = 4; // vfr: remove default paper size
 
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
@@ -91,7 +91,6 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\def_file", LyXRC::RC_DEFFILE },
 	{ "\\default_decimal_point", LyXRC::RC_DEFAULT_DECIMAL_POINT },
 	{ "\\default_language", LyXRC::RC_DEFAULT_LANGUAGE },
-	{ "\\default_papersize", LyXRC::RC_DEFAULT_PAPERSIZE },
 	{ "\\default_view_format", LyXRC::RC_DEFAULT_VIEW_FORMAT },
 	{ "\\dialogs_iconify_with_main", LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN },
 	{ "\\display_graphics", LyXRC::RC_DISPLAY_GRAPHICS },
@@ -250,7 +249,6 @@ void LyXRC::setDefaults()
 	print_paper_dimension_flag = "-T";
 	document_path.erase();
 	view_dvi_paper_option.erase();
-	default_papersize = PAPER_DEFAULT;
 	default_view_format = "pdf2";
 	chktex_command = "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38";
 	bibtex_command = "bibtex";
@@ -623,28 +621,6 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 
 		case RC_PRINTPAPERFLAG:
 			lexrc >> print_paper_flag;
-			break;
-
-		case RC_DEFAULT_PAPERSIZE:
-			if (lexrc.next()) {
-				string const size = ascii_lowercase(lexrc.getString());
-				if (size == "usletter")
-					default_papersize = PAPER_USLETTER;
-				else if (size == "legal")
-					default_papersize = PAPER_USLEGAL;
-				else if (size == "executive")
-					default_papersize = PAPER_USEXECUTIVE;
-				else if (size == "a3")
-					default_papersize = PAPER_A3;
-				else if (size == "a4")
-					default_papersize = PAPER_A4;
-				else if (size == "a5")
-					default_papersize = PAPER_A5;
-				else if (size == "b5")
-					default_papersize = PAPER_B5;
-				else if (size == "default")
-					default_papersize = PAPER_DEFAULT;
-			}
 			break;
 
 		case RC_VIEWDVI_PAPEROPTION:
@@ -1490,58 +1466,6 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			   << "# view_dvi_command (e.g. -paper)\n"
 			   << "\\view_dvi_paper_option \""
 			   << view_dvi_paper_option << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
-	case RC_DEFAULT_PAPERSIZE:
-		if (ignore_system_lyxrc ||
-		    default_papersize != system_lyxrc.default_papersize) {
-			os << "# The default papersize to use.\n"
-			   << "\\default_papersize \"";
-			switch (default_papersize) {
-			case PAPER_DEFAULT:
-				os << "default"; break;
-			case PAPER_USLETTER:
-				os << "usletter"; break;
-			case PAPER_USLEGAL:
-				os << "legal"; break;
-			case PAPER_USEXECUTIVE:
-				os << "executive"; break;
-			case PAPER_A3:
-				os << "a3"; break;
-			case PAPER_A4:
-				os << "a4"; break;
-			case PAPER_A5:
-				os << "a5"; break;
-			case PAPER_B5:
-				os << "b5"; break;
-			case PAPER_CUSTOM:
-			case PAPER_A0:
-			case PAPER_A1:
-			case PAPER_A2:
-			case PAPER_A6:
-			case PAPER_B0:
-			case PAPER_B1:
-			case PAPER_B2:
-			case PAPER_B3:
-			case PAPER_B4:
-			case PAPER_B6:
-			case PAPER_C0:
-			case PAPER_C1:
-			case PAPER_C2:
-			case PAPER_C3:
-			case PAPER_C4:
-			case PAPER_C5:
-			case PAPER_C6:
-			case PAPER_JISB0:
-			case PAPER_JISB1:
-			case PAPER_JISB2:
-			case PAPER_JISB3:
-			case PAPER_JISB4:
-			case PAPER_JISB5:
-			case PAPER_JISB6: break;
-			}
-			os << "\"\n";
 		}
 		if (tag != RC_LAST)
 			break;
@@ -2946,7 +2870,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_DATE_INSERT_FORMAT:
 	case LyXRC::RC_DEFAULT_LANGUAGE:
 	case LyXRC::RC_GUI_LANGUAGE:
-	case LyXRC::RC_DEFAULT_PAPERSIZE:
 	case LyXRC::RC_DEFAULT_VIEW_FORMAT:
 	case LyXRC::RC_DEFFILE:
 	case LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN:
@@ -3182,10 +3105,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_DEFAULT_LANGUAGE:
 		str = _("New documents will be assigned this language.");
-		break;
-
-	case RC_DEFAULT_PAPERSIZE:
-		str = _("Specify the default paper size.");
 		break;
 
 	case RC_DIALOGS_ICONIFY_WITH_MAIN:

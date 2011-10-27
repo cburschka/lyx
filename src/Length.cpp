@@ -320,20 +320,8 @@ int Length::inBP() const
 
 Length::UNIT Length::defaultUnit()
 {
-	// FIXME user a proper pref, since we should get rid of
-	// default_papersize in lyxrc.
-	UNIT u = Length::CM;
-	switch (lyxrc.default_papersize) {
-		case PAPER_USLETTER:
-		case PAPER_USLEGAL:
-		case PAPER_USEXECUTIVE:
-			u = Length::IN;
-			break;
-		default:
-			break;
-	}
-
-	return u;
+	// FIXME: use a preference
+	return Length::CM;
 }
 
 
