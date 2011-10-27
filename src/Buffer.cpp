@@ -3494,7 +3494,7 @@ bool Buffer::doExport(string const & target, bool put_in_tempdir) const
 bool Buffer::doExport(string const & target, bool put_in_tempdir,
 	bool includeall, string & result_file) const
 {
-	LYXERR(Debug::FILES, "target=" << target << ", result_file=" << result_file);
+	LYXERR(Debug::FILES, "target=" << target);
 	OutputParams runparams(&params().encoding());
 	string format = target;
 	string dest_filename;
