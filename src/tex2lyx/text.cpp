@@ -1084,6 +1084,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		// we must make sure that the next item gets a \begin_layout.
 		parent_context.new_paragraph(os);
 		p.skip_spaces();
+		// the float is parsed thus delete the type
+		float_type = "";
 	}
 
 	else if (unstarred_name == "sidewaysfigure"
