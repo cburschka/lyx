@@ -46,7 +46,7 @@ What's new
 
 - the setting of the document-wide background color and text color
   (\color, \pagecolor), the background color of shaded boxes and the
-  text color of greyed-out notes is now recognized
+  text color of greyed-out notes are now recognized
 
 - phantom spaces are recognized (\phantom, \hphanton, \vphantom)
 
@@ -55,6 +55,8 @@ What's new
 - recognized custom width for nomenclature list (\printnomenclature)
 
 - all types of underlined or striked out text are recognized
+
+- hyperlinks are recognized (\href)
 
 
 * USER INTERFACE
