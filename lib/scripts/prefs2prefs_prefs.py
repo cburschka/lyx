@@ -28,6 +28,11 @@
 # Incremented to format 4, r40028 by vfr
 #   Remove support for default paper size.
 
+# Incremented to format 5, r40030 by vfr
+#   Add a default length unit.
+#   No conversion necessary.
+
+
 import re
 
 
@@ -141,4 +146,5 @@ conversions = [
 	[  2, []],
 	[  3, [ zipped_native ]],
 	[  4, [ remove_default_papersize ]],
+	[  5, []],
 ]

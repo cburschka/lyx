@@ -55,7 +55,7 @@ namespace os = support::os;
 
 namespace {
 
-static unsigned int const LYXRC_FILEFORMAT = 4; // vfr: remove default paper size
+static unsigned int const LYXRC_FILEFORMAT = 5; // vfr: add default length unit
 
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
@@ -91,6 +91,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\def_file", LyXRC::RC_DEFFILE },
 	{ "\\default_decimal_point", LyXRC::RC_DEFAULT_DECIMAL_POINT },
 	{ "\\default_language", LyXRC::RC_DEFAULT_LANGUAGE },
+	{ "\\default_length_unit", LyXRC::RC_DEFAULT_LENGTH_UNIT },
 	{ "\\default_view_format", LyXRC::RC_DEFAULT_VIEW_FORMAT },
 	{ "\\dialogs_iconify_with_main", LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN },
 	{ "\\display_graphics", LyXRC::RC_DISPLAY_GRAPHICS },
@@ -365,6 +366,7 @@ void LyXRC::setDefaults()
 	completion_inline_dots = -1;
 	completion_inline_delay = 0.2;
 	default_decimal_point = ".";
+	default_length_unit = Length::CM;
 	cursor_width = 1;
 }
 
@@ -978,6 +980,10 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			break;
 		case RC_DEFAULT_DECIMAL_POINT:
 			lexrc >> default_decimal_point;
+			break;
+		case RC_DEFAULT_LENGTH_UNIT:
+			if (lexrc.next())
+				default_length_unit = (Length::UNIT) lexrc.getInteger();
 			break;
 		case RC_DATE_INSERT_FORMAT:
 			lexrc >> date_insert_format;
@@ -2448,6 +2454,14 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 
+	case RC_DEFAULT_LENGTH_UNIT:
+		if (ignore_system_lyxrc ||
+		    default_length_unit != system_lyxrc.default_length_unit) {
+			os << "\\default_length_unit " << int(default_length_unit) << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+
 	case RC_SPELLCHECKER:
 		if (ignore_system_lyxrc ||
 		    spellchecker != system_lyxrc.spellchecker) {
@@ -2996,6 +3010,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_FORWARD_SEARCH_PDF:
 	case LyXRC::RC_EXPORT_OVERWRITE:
 	case LyXRC::RC_DEFAULT_DECIMAL_POINT:
+	case LyXRC::RC_DEFAULT_LENGTH_UNIT:
 	case LyXRC::RC_SCROLL_WHEEL_ZOOM:
 	case LyXRC::RC_CURSOR_WIDTH:
 		break;

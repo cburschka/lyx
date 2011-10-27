@@ -2255,6 +2255,8 @@ PrefLanguage::PrefLanguage(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(defaultDecimalPointLE, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
+	connect(defaultLengthUnitCO, SIGNAL(activated(int)),
+		this, SIGNAL(changed()));
 
 	languagePackageED->setValidator(new NoNewLineValidator(languagePackageED));
 	startCommandED->setValidator(new NoNewLineValidator(startCommandED));
@@ -2267,6 +2269,9 @@ PrefLanguage::PrefLanguage(GuiPreferences * form)
 	language_model->sort(0);
 	defaultDecimalPointLE->setInputMask("X; ");
 	defaultDecimalPointLE->setMaxLength(1);
+
+	defaultLengthUnitCO->addItem(lyx::qt_(unit_name_gui[Length::CM]), Length::CM);
+	defaultLengthUnitCO->addItem(lyx::qt_(unit_name_gui[Length::IN]), Length::IN);
 
 	set<string> added;
 	uiLanguageCO->blockSignals(true);
@@ -2327,6 +2332,7 @@ void PrefLanguage::apply(LyXRC & rc) const
 	rc.gui_language = fromqstr(
 		uiLanguageCO->itemData(uiLanguageCO->currentIndex()).toString());
 	rc.default_decimal_point = fromqstr(defaultDecimalPointLE->text());
+	rc.default_length_unit = (Length::UNIT) defaultLengthUnitCO->itemData(defaultLengthUnitCO->currentIndex()).toInt();
 }
 
 
@@ -2348,8 +2354,10 @@ void PrefLanguage::update(LyXRC const & rc)
 	startCommandED->setText(toqstr(rc.language_command_begin));
 	endCommandED->setText(toqstr(rc.language_command_end));
 	defaultDecimalPointLE->setText(toqstr(rc.default_decimal_point));
+	int pos = defaultLengthUnitCO->findData(int(rc.default_length_unit));
+	defaultLengthUnitCO->setCurrentIndex(pos);
 
-	int pos = uiLanguageCO->findData(toqstr(rc.gui_language));
+	pos = uiLanguageCO->findData(toqstr(rc.gui_language));
 	uiLanguageCO->blockSignals(true);
 	uiLanguageCO->setCurrentIndex(pos);
 	uiLanguageCO->blockSignals(false);

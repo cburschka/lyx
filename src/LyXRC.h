@@ -19,6 +19,7 @@
 #define LYXRC_H
 
 #include "paper.h"
+#include "Length.h"
 
 #include "support/strfwd.h"
 
@@ -68,6 +69,7 @@ public:
 		RC_CURSOR_WIDTH,
 		RC_DATE_INSERT_FORMAT,
 		RC_DEFAULT_DECIMAL_POINT,
+		RC_DEFAULT_LENGTH_UNIT,
 		RC_DEFAULT_LANGUAGE,
 		RC_DEFAULT_VIEW_FORMAT,
 		RC_DEFFILE,
@@ -527,6 +529,8 @@ public:
 	int export_overwrite;
 	/// Default decimal point when aligning table columns on decimal
 	std::string default_decimal_point;
+	///
+	Length::UNIT default_length_unit;
 	///
 	enum ScrollWheelZoom {
 		SCROLL_WHEEL_ZOOM_OFF,

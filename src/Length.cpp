@@ -320,8 +320,7 @@ int Length::inBP() const
 
 Length::UNIT Length::defaultUnit()
 {
-	// FIXME: use a preference
-	return Length::CM;
+	return lyxrc.default_length_unit;
 }
 
 
