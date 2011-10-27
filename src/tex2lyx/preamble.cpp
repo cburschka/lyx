@@ -654,6 +654,9 @@ void handle_package(Parser &p, string const & name, string const & opts,
 	else if (name == "wrapfig")
 		; // ignore this
 
+	else if (name == "subfig")
+		; // ignore this
+
 	else if (is_known(name, known_languages))
 		h_language = name;
 
@@ -1280,6 +1283,13 @@ void parse_preamble(Parser & p, ostream & os,
 			} else if (arg1 == "definecolor" && arg2 == "\\usepackage{color}"
 				&& arg3.empty()) {
 				ifundefined_color_set = true;
+			// test for case
+			//\@ifundefined{showcaptionsetup}{}{%
+			// \PassOptionsToPackage{caption=false}{subfig}}
+			// that LyX uses for subfloats
+			} else if (arg1 == "showcaptionsetup" && arg2.empty()
+				&& arg3 == "%\n \\PassOptionsToPackage{caption=false}{subfig}") {
+				; // do nothing
 			} else if (!in_lyx_preamble) {
 				h_preamble << t.asInput()
 				           << '{' << arg1 << '}'
