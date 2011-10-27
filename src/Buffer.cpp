@@ -3483,13 +3483,14 @@ bool Buffer::isExporting() const
 }
 
 
-bool Buffer::doExport(string const & target, bool put_in_tempdir) const
+Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir) const
 {
 	bool const update_unincluded =
 			params().maintain_unincluded_children
 			&& !params().getIncludedChildren().empty();
-	return (doExport(target, put_in_tempdir, update_unincluded) == ExportSuccess);
+	return doExport(target, put_in_tempdir, update_unincluded);
 }
+
 
 Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir,
 	bool includeall, string & result_file) const
@@ -3739,13 +3740,12 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 }
 
 
-bool Buffer::preview(string const & format) const
+Buffer::ExportStatus Buffer::preview(string const & format) const
 {
 	bool const update_unincluded =
 			params().maintain_unincluded_children
 			&& !params().getIncludedChildren().empty();
-	ExportStatus const status = preview(format, update_unincluded);
-	return (status == PreviewSuccess);
+	return preview(format, update_unincluded);
 }
 
 Buffer::ExportStatus Buffer::preview(string const & format, bool includeall) const

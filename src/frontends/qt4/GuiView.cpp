@@ -331,7 +331,7 @@ struct GuiView::GuiViewPrivate
 	}
 
 #if (QT_VERSION >= 0x040400)
-	void setPreviewFuture(QFuture<docstring> const & f)
+	void setPreviewFuture(QFuture<Buffer::ExportStatus> const & f)
 	{
 		if (processing_thread_watcher_.isRunning()) {
 			// we prefer to cancel this preview in order to keep a snappy
@@ -382,30 +382,31 @@ public:
 #if (QT_VERSION >= 0x040400)
 	///
 	QFutureWatcher<docstring> autosave_watcher_;
-	QFutureWatcher<docstring> processing_thread_watcher_;
+	QFutureWatcher<Buffer::ExportStatus> processing_thread_watcher_;
 	///
 	string last_export_format;
+	string processing_format;
 #else
 	struct DummyWatcher { bool isRunning(){return false;} };
 	DummyWatcher processing_thread_watcher_;
 #endif
 
 	static QSet<Buffer const *> busyBuffers;
-	static docstring previewAndDestroy(Buffer const * orig, Buffer * buffer, string const & format);
-	static docstring exportAndDestroy(Buffer const * orig, Buffer * buffer, string const & format);
-	static docstring compileAndDestroy(Buffer const * orig, Buffer * buffer, string const & format);
+	static Buffer::ExportStatus previewAndDestroy(Buffer const * orig, Buffer * buffer, string const & format);
+	static Buffer::ExportStatus exportAndDestroy(Buffer const * orig, Buffer * buffer, string const & format);
+	static Buffer::ExportStatus compileAndDestroy(Buffer const * orig, Buffer * buffer, string const & format);
 	static docstring autosaveAndDestroy(Buffer const * orig, Buffer * buffer);
 
 	template<class T>
-	static docstring runAndDestroy(const T& func, Buffer const * orig, Buffer * buffer, string const & format, string const & msg);
+	static Buffer::ExportStatus runAndDestroy(const T& func, Buffer const * orig, Buffer * buffer, string const & format, string const & msg);
 
 	// TODO syncFunc/previewFunc: use bind
 	bool asyncBufferProcessing(string const & argument,
 				   Buffer const * used_buffer,
 				   docstring const & msg,
-				   docstring (*asyncFunc)(Buffer const *, Buffer *, string const &),
-				   bool (Buffer::*syncFunc)(string const &, bool) const,
-				   bool (Buffer::*previewFunc)(string const &) const);
+				   Buffer::ExportStatus (*asyncFunc)(Buffer const *, Buffer *, string const &),
+				   Buffer::ExportStatus (Buffer::*syncFunc)(string const &, bool) const,
+				   Buffer::ExportStatus (Buffer::*previewFunc)(string const &) const);
 
 	QVector<GuiWorkArea*> guiWorkAreas();
 };
@@ -537,9 +538,30 @@ void GuiView::processingThreadStarted()
 
 void GuiView::processingThreadFinished(bool show_errors)
 {
-	QFutureWatcher<docstring> const * watcher =
-		static_cast<QFutureWatcher<docstring> const *>(sender());
-	message(watcher->result());
+	QFutureWatcher<Buffer::ExportStatus> const * watcher =
+		static_cast<QFutureWatcher<Buffer::ExportStatus> const *>(sender());
+
+	Buffer::ExportStatus const status = watcher->result();
+	docstring msg;
+	switch (status) {
+	case Buffer::ExportSuccess:
+		msg = _("Successful export to format: %1$s");
+		break;
+	case Buffer::ExportError:
+	case Buffer::ExportNoPathToFormat:
+	case Buffer::ExportTexPathHasSpaces:
+	case Buffer::ExportConverterError:
+		msg = _("Error while exporting format: %1$s");
+		break;
+	case Buffer::PreviewSuccess:
+		msg = _("Successful preview of format: %1$s");
+		break;
+	case Buffer::PreviewError:
+		msg = _("Error while previewing format: %1$s");
+		break;
+	}
+	message(bformat(msg, from_utf8(d.processing_format)));
+	
 	updateToolbars();
 	if (show_errors) {
 		BufferView const * const bv = currentBufferView();
@@ -3017,43 +3039,36 @@ bool GuiView::goToFileRow(string const & argument)
 
 #if (QT_VERSION >= 0x040400)
 template<class T>
-docstring GuiView::GuiViewPrivate::runAndDestroy(const T& func, Buffer const * orig, Buffer * buffer, string const & format, string const & msg)
+Buffer::ExportStatus GuiView::GuiViewPrivate::runAndDestroy(const T& func, Buffer const * orig, Buffer * buffer, string const & format, string const & msg)
 {
-	bool const success = func(format);
+	Buffer::ExportStatus const status = func(format);
 
 	// the cloning operation will have produced a clone of the entire set of
 	// documents, starting from the master. so we must delete those.
 	Buffer * mbuf = const_cast<Buffer *>(buffer->masterBuffer());
 	delete mbuf;
 	busyBuffers.remove(orig);
-	if (msg == "preview") {
-		return success
-			? bformat(_("Successful preview of format: %1$s"), from_utf8(format))
-			: bformat(_("Error while previewing format: %1$s"), from_utf8(format));
-	}
-	return success
-		? bformat(_("Successful export to format: %1$s"), from_utf8(format))
-		: bformat(_("Error while exporting format: %1$s"), from_utf8(format));
+	return status;
 }
 
 
-docstring GuiView::GuiViewPrivate::compileAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
+Buffer::ExportStatus GuiView::GuiViewPrivate::compileAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
 {
-	bool (Buffer::* mem_func)(std::string const &, bool) const = &Buffer::doExport;
+	Buffer::ExportStatus (Buffer::* mem_func)(std::string const &, bool) const = &Buffer::doExport;
 	return runAndDestroy(bind(mem_func, buffer, _1, true), orig, buffer, format, "export");
 }
 
 
-docstring GuiView::GuiViewPrivate::exportAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
+Buffer::ExportStatus GuiView::GuiViewPrivate::exportAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
 {
-	bool (Buffer::* mem_func)(std::string const &, bool) const = &Buffer::doExport;
+	Buffer::ExportStatus (Buffer::* mem_func)(std::string const &, bool) const = &Buffer::doExport;
 	return runAndDestroy(bind(mem_func, buffer, _1, false), orig, buffer, format, "export");
 }
 
 
-docstring GuiView::GuiViewPrivate::previewAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
+Buffer::ExportStatus GuiView::GuiViewPrivate::previewAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
 {
-	bool(Buffer::* mem_func)(std::string const &) const = &Buffer::preview;
+	Buffer::ExportStatus (Buffer::* mem_func)(std::string const &) const = &Buffer::preview;
 	return runAndDestroy(bind(mem_func, buffer, _1), orig, buffer, format, "preview");
 }
 
@@ -3061,24 +3076,24 @@ docstring GuiView::GuiViewPrivate::previewAndDestroy(Buffer const * orig, Buffer
 
 // not used, but the linker needs them
 
-docstring GuiView::GuiViewPrivate::compileAndDestroy(
+Buffer::ExportStatus GuiView::GuiViewPrivate::compileAndDestroy(
 		Buffer const *, Buffer *, string const &)
 {
-	return docstring();
+	return Buffer::ExportSuccess;
 }
 
 
-docstring GuiView::GuiViewPrivate::exportAndDestroy(
+Buffer::ExportStatus GuiView::GuiViewPrivate::exportAndDestroy(
 		Buffer const *, Buffer *, string const &)
 {
-	return docstring();
+	return Buffer::ExportSuccess;
 }
 
 
-docstring GuiView::GuiViewPrivate::previewAndDestroy(
+Buffer::ExportStatus GuiView::GuiViewPrivate::previewAndDestroy(
 		Buffer const *, Buffer *, string const &)
 {
-	return docstring();
+	return Buffer::ExportSuccess;
 }
 
 #endif
@@ -3088,9 +3103,9 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 			   string const & argument,
 			   Buffer const * used_buffer,
 			   docstring const & msg,
-			   docstring (*asyncFunc)(Buffer const *, Buffer *, string const &),
-			   bool (Buffer::*syncFunc)(string const &, bool) const,
-			   bool (Buffer::*previewFunc)(string const &) const)
+			   Buffer::ExportStatus (*asyncFunc)(Buffer const *, Buffer *, string const &),
+			   Buffer::ExportStatus (Buffer::*syncFunc)(string const &, bool) const,
+			   Buffer::ExportStatus (Buffer::*previewFunc)(string const &) const)
 {
 	if (!used_buffer)
 		return false;
@@ -3105,12 +3120,13 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 		gv_->message(msg);
 	}
 	GuiViewPrivate::busyBuffers.insert(used_buffer);
-	QFuture<docstring> f = QtConcurrent::run(
+	QFuture<Buffer::ExportStatus> f = QtConcurrent::run(
 				asyncFunc,
 				used_buffer,
 				used_buffer->clone(),
 				format);
 	setPreviewFuture(f);
+	processing_format = format;
 	last_export_format = used_buffer->params().bufferFormat();
 	(void) syncFunc;
 	(void) previewFunc;

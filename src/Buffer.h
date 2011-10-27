@@ -614,9 +614,9 @@ public:
 	bool hasGuiDelegate() const;
 
 	///
-	bool doExport(std::string const & target, bool put_in_tempdir) const;
+	ExportStatus doExport(std::string const & target, bool put_in_tempdir) const;
 	///
-	bool preview(std::string const & format) const;
+	ExportStatus preview(std::string const & format) const;
 
 private:
 	/// target is a format name optionally followed by a space
