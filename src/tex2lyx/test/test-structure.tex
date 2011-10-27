@@ -1,29 +1,49 @@
 %% LyX trick_preamble_code_into_believing_that_this_was_created_by_lyx created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
-\documentclass[legalpaper,francais,german,newzealand]{article}
+\documentclass[legalpaper,french,german,english]{article}
+\usepackage[latin9]{inputenc}
+\usepackage{color}
+\usepackage{rotfloat}
+\usepackage{wrapfig}
+
+\makeatletter
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\pdfpageheight\paperheight
+\pdfpagewidth\paperwidth
 
-\usepackage{babel}
+\providecommand{\LyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
 \newcommand{\noun}[1]{\textsc{#1}}
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
-
 \newenvironment{lyxlist}[1]
-	{\begin{list}{}
-		{\settowidth{\labelwidth}{#1}
-		\setlength{\leftmargin}{\labelwidth}
-		\addtolength{\leftmargin}{\labelsep}
-		\renewcommand{\makelabel}[1]{##1\hfil}}}
-	{\end{list}}
+{\begin{list}{}
+{\settowidth{\labelwidth}{#1}
+ \setlength{\leftmargin}{\labelwidth}
+ \addtolength{\leftmargin}{\labelsep}
+ \renewcommand{\makelabel}[1]{##1\hfil}}}
+{\end{list}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\newenvironment{foo}{==[}{]==}
 
 % LyX will also recognize this command:
 % \@ifundefined{date}{}{\date{}}
 % and also this:
 % \date{}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 
-\newenvironment{foo}{==[}{]==}
+\@ifundefined{showcaptionsetup}{}{%
+ \PassOptionsToPackage{caption=false}{subfig}}
+\usepackage{subfig}
+\makeatother
+
+\usepackage{babel}
+\addto\extrasfrench{%
+   \providecommand{\og}{\leavevmode\flqq~}%
+   \providecommand{\fg}{\ifdim\lastskip>\z@\unskip\fi~\frqq}%
+}
 
 \begin{document}
 
@@ -140,6 +160,35 @@ is definitely not the best tool for creating banners, flyers, or advertisements
 (we'll explain why later), though with some effort all these can be
 done, too.
 
+\begin{table}
+\caption{lkälöä}
+
+
+\subfloat[ölkälö]{
+
+klöä}
+
+\end{table}
+
+
+\begin{figure}
+\subfloat[te\%st]{sub\textcolor{red}{fig}u\%re 1
+
+}
+
+\hfill{} \subfloat[]{subfigure 2ö
+
+}
+
+\subfloat{subfigure 3}
+
+\caption{figure caption}
+
+
+strange usage, but valid 
+\end{figure}
+
+
 \subsection{Some paragraph stuff}
 
 A paragraph\footnote{hello} with a footnote and another
@@ -226,7 +275,7 @@ labelings:
 and bibliography:
 \begin{thebibliography}{9}
 \bibitem{FOO} Edward Bar. \emph{The Foo Book}. (1999)
-\bibitem{FO2} Walter MÃ¼ller \emph{The MÃ¼ller Book}. (2004) 
+\bibitem{FO2} Walter Müller \emph{The Müller Book}. (2004) 
 \end{thebibliography}
 
 \appendix
