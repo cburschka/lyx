@@ -305,6 +305,11 @@ bool FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt, bool
 				guiApp->currentView()->setBusy(true);
 			}
 			buf = theBufferList().getBuffer(fname);
+			if (!buf) {
+				view_.setBusy(false);
+				return false;
+			}
+
 			lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH,
 						  buf->absFileName()));
 			bv = view_.documentBufferView();
@@ -327,7 +332,9 @@ bool FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt, bool
 
 		// No match found in current buffer (however old selection might have been replaced)
 		// select next buffer in scope, if any
-		bool prompt = nextPrevBuffer(buf, opt);
+		bool const prompt = nextPrevBuffer(buf, opt);
+		if (!buf)
+			break;
 		if (prompt) {
 			if (wrap_answer != -1)
 				break;
