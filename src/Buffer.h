@@ -610,7 +610,7 @@ public:
 		bool includeall, std::string & result_file) const;
 	///
 	bool doExport(std::string const & target, bool put_in_tempdir,
-		      bool includeall = false) const;
+		      bool includeall) const;
 	///
 	bool preview(std::string const & format, bool includeall = false) const;
 	/// mark the buffer as busy exporting something, or not
