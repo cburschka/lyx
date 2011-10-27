@@ -37,26 +37,28 @@ What's new
 
 - tex2lyx produces now the current file format 413.
 
-- the font packages utopia, fourier, ccfonts, chancery and beraserif
-  are now recognized
+- the following things are now recognized:
 
-- if no language package is set, or if a language package is set that
-  works independently of babel and polyglossia, tex2lyx recognizes this
-  now
+ - the font packages utopia, fourier, ccfonts, chancery and beraserif
 
-- the setting of the document-wide background color and text color
-  (\color, \pagecolor), the background color of shaded boxes and the
-  text color of greyed-out notes are now recognized
+ - if no language package is set, or if a language package is set that
+  works independently of babel and polyglossia
 
-- phantom spaces are recognized (\phantom, \hphanton, \vphantom)
+ - the setting of the document-wide background color and text color
+   (\color, \pagecolor), the background color of shaded boxes and the
+   text color of greyed-out notes
 
-- the LaTeX command \rule is recognized
+ - the LaTeX command \rule
 
-- recognized custom width for nomenclature list (\printnomenclature)
+ - phantom spaces (\phantom, \hphanton, \vphantom)
 
-- all types of underlined or striked out text are recognized
+ - custom width for nomenclature list (\printnomenclature)
 
-- hyperlinks are recognized (\href)
+ - all types of underlined or striked out text
+
+ - hyperlinks (\href)
+
+ - rotated floats (sidewaysfigure, sidewaystable)
 
 
 * USER INTERFACE

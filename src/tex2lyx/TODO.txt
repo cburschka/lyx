@@ -17,7 +17,6 @@ Format LaTeX feature                        LyX feature
 226    nothing (impossible to import)       InsetBranch, \branch...\end_branch
 226    transformations                      InsetExternal
 228    draft                                InsetExternal
-231    sidewaysfigure/sidewaystable         InsetFloat
 232    bibtopic                             InsetBibTeX
 248    booktabs.sty                         InsetTabular
 254    esint.sty                            \use_esint
@@ -35,7 +34,6 @@ Format LaTeX feature                        LyX feature
 309    \nocite                              InsetCitation
 310    \nocite{*}                           InsetBibtex
 312    rotfloat.sty                         InsetFloat
-312    wide sideways{figure,table}          InsetFloat
 316    subfig.sty (subfloats)               InsetFloat
 317    floating placements                  InsetWrap
 322    ?                                    local layout
