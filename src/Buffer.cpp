@@ -3744,20 +3744,27 @@ bool Buffer::preview(string const & format) const
 	bool const update_unincluded =
 			params().maintain_unincluded_children
 			&& !params().getIncludedChildren().empty();
-	return preview(format, update_unincluded);
+	ExportStatus const status = preview(format, update_unincluded);
+	return (status == PreviewSuccess);
 }
 
-bool Buffer::preview(string const & format, bool includeall) const
+Buffer::ExportStatus Buffer::preview(string const & format, bool includeall) const
 {
 	MarkAsExporting exporting(this);
 	string result_file;
 	// (1) export with all included children (omit \includeonly)
-	if (includeall && (doExport(format, true, true) != ExportSuccess))
-		return false;
+	if (includeall) { 
+		ExportStatus const status = doExport(format, true, true);
+		if (status != ExportSuccess)
+			return status;
+	}
 	// (2) export with included children only
-	if (doExport(format, true, false, result_file) != ExportSuccess)
-		return false;
-	return formats.view(*this, FileName(result_file), format);
+	ExportStatus const status = doExport(format, true, false, result_file);
+	if (status != ExportSuccess)
+		return status;
+	if (!formats.view(*this, FileName(result_file), format))
+		return PreviewError;
+	return PreviewSuccess;
 }
 
 

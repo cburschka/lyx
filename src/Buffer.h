@@ -123,11 +123,15 @@ public:
 	};
 
 	enum ExportStatus {
+		// export
 		ExportSuccess,
 		ExportError,
 		ExportNoPathToFormat,
 		ExportTexPathHasSpaces,
-		ExportConverterError
+		ExportConverterError,
+		// preview
+		PreviewSuccess,
+		PreviewError
 	};
 
 	/// Method to check if a file is externally modified, used by
@@ -623,7 +627,7 @@ private:
 	ExportStatus doExport(std::string const & target, bool put_in_tempdir,
 		bool includeall) const;
 	///
-	bool preview(std::string const & format, bool includeall = false) const;
+	ExportStatus preview(std::string const & format, bool includeall = false) const;
 
 public:
 	/// mark the buffer as busy exporting something, or not
