@@ -570,7 +570,7 @@ void handle_package(Parser &p, string const & name, string const & opts,
 			// last language in the documentclass options is used.
 			handle_opt(options, known_languages, h_language);
 			delete_opt(options, known_languages);
-		} 
+		}
 	}
 
 	else if (name == "fontenc") {
