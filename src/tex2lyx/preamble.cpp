@@ -544,8 +544,12 @@ void handle_package(Parser &p, string const & name, string const & opts,
 
 	else if (name == "babel") {
 		h_language_package = "default";
-		// we have to do nothing if babel is loaded without any options, otherwise
-		// we would pollute the preamble with this call in every roundtrip
+		// One might think we would have to do nothing if babel is loaded
+		// without any options to prevent pollution of the preamble with this
+		// babel call in every roundtrip.
+		// But the user could have defined babel-specific things afterwards. So
+		// we need to keep it in the preamble to prevent cases like bug #7861.
+		h_preamble << "\\usepackage{babel}\n";
 		if (!opts.empty()) {
 			// check if more than one option was used - used later for inputenc
 			// in case inputenc is parsed before babel, set the encoding to auto
