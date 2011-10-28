@@ -26,15 +26,11 @@ Format LaTeX feature                        LyX feature
 269    listings.sty (inline, with args)     InsetListings
 270    \alert, \structure (beamer)          layout
 281    ?                                    modules
-284    wrapfig.sty                          InsetWrap
-287    wrapfig.sty (optarg)                 InsetWrap
-290    wrapped tables                       InsetWrap
 292    japanese                             japanese-plain
 293    ?                                    InsetInfo
 309    \nocite                              InsetCitation
 310    \nocite{*}                           InsetBibtex
 316    subfig.sty (subfloats)               InsetFloat
-317    floating placements                  InsetWrap
 322    ?                                    local layout
 325    japanese                             one japanese language
 326    PDFLaTeX for external insets         InsetExternal

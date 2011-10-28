@@ -645,6 +645,9 @@ void handle_package(Parser &p, string const & name, string const & opts,
 	else if (name == "rotfloat")
 		; // ignore this
 
+	else if (name == "wrapfig")
+		; // ignore this
+
 	else if (is_known(name, known_languages))
 		h_language = name;
 
