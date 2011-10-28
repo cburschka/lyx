@@ -914,6 +914,14 @@ void parse_preamble(Parser & p, ostream & os,
 		else if (t.cs() == "pagestyle")
 			h_paperpagestyle = p.verbatim_item();
 
+		else if (t.cs() == "date") {
+			string argument = p.getArg('{', '}');
+			if (argument.empty())
+				h_suppress_date = "true";
+			else
+				h_preamble << t.asInput() << '{' << argument << '}';
+		}
+
 		else if (t.cs() == "color") {
 			string argument = p.getArg('{', '}');
 			// check the case that a standard color is used
@@ -1254,7 +1262,10 @@ void parse_preamble(Parser & p, ostream & os,
 			string const arg1 = p.verbatim_item();
 			string const arg2 = p.verbatim_item();
 			string const arg3 = p.verbatim_item();
-			if (!in_lyx_preamble) {
+			// test case \@ifundefined{date}{}{\date{}}
+			if (arg1 == "date" && arg2.empty() && arg3 == "\\date{}")
+				h_suppress_date = "true";
+			else if (!in_lyx_preamble) {
 				h_preamble << t.asInput()
 				           << '{' << arg1 << '}'
 				           << '{' << arg2 << '}'

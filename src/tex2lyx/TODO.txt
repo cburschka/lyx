@@ -55,6 +55,7 @@ Format LaTeX feature                        LyX feature
 368    glue lengths                         InsetHSpace
 369    author id                            \author
 370    \date{}                              \suppress_date
+                                            (partly supported, see bug #7844)
 371    automatic mhchem loading             \use_mhchem
 375    \includeonly                         \{begin,end}_includeonly
 376    update .aux of unincluded children   \maintain_unincluded_children
