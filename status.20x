@@ -33,32 +33,33 @@ What's new
 - XHTML export now respects font color and background color from 
   Document->Settings->Colors.
 
-** TeX2LyX IMPROVEMENTS
 
-- tex2lyx produces now the current file format 413.
+** TEX2LYX IMPROVEMENTS
 
-- the following things are now recognized:
+- Tex2lyx now produces the current file format 413.
 
- - the font packages utopia, fourier, ccfonts, chancery and beraserif
+- Tex2lyx now supports the conversion of:
 
- - if no language package is set, or if a language package is set that
-  works independently of babel and polyglossia
+  * The font packages utopia, fourier, ccfonts, chancery and beraserif.
 
- - the setting of the document-wide background color and text color
-   (\color, \pagecolor), the background color of shaded boxes and the
-   text color of greyed-out notes
+  * Documents where no language package is set, or if a language package
+    are set that work independently of babel and polyglossia.
 
- - the LaTeX command \rule
+  * The setting of the document-wide background color and text color
+    (\color, \pagecolor), the background color of shaded boxes and the
+    text color of greyed-out notes.
 
- - phantom spaces (\phantom, \hphanton, \vphantom)
+  * The LaTeX command \rule.
 
- - custom width for nomenclature list (\printnomenclature)
+  * Phantom spaces (\phantom, \hphanton, \vphantom).
 
- - all types of underlined or striked out text
+  * Custom width for nomenclature list (\printnomenclature).
 
- - hyperlinks (\href)
+  * All types of underlined or striked out text.
 
- - rotated floats (sidewaysfigure, sidewaystable)
+  * Hyperlinks (\href).
+
+  * Rotated floats (sidewaysfigure, sidewaystable).
 
 
 * USER INTERFACE
