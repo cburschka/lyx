@@ -285,12 +285,17 @@ public:
 	/// Fill in the ErrorList with the TeXErrors
 	void bufferErrors(TeXErrors const &, ErrorList &) const;
 
+	enum OutputWhat {
+		FullSource,
+		OnlyBody,
+		OnlyPreamble
+	};
+
 	/// Just a wrapper for writeLaTeXSource, first creating the ofstream.
 	bool makeLaTeXFile(support::FileName const & filename,
 			   std::string const & original_path,
 			   OutputParams const &,
-			   bool output_preamble = true,
-			   bool output_body = true) const;
+			   OutputWhat output = FullSource) const;
 	/** Export the buffer to LaTeX.
 	    If \p os is a file stream, and params().inputenc is "auto" or
 	    "default", and the buffer contains text in different languages
@@ -316,23 +321,22 @@ public:
 	void writeLaTeXSource(otexstream & os,
 			   std::string const & original_path,
 			   OutputParams const &,
-			   bool output_preamble = true,
-			   bool output_body = true) const;
+			   OutputWhat output = FullSource) const;
 	///
 	void makeDocBookFile(support::FileName const & filename,
 			     OutputParams const & runparams_in,
-			     bool only_body = false) const;
+			     OutputWhat output = FullSource) const;
 	///
 	void writeDocBookSource(odocstream & os, std::string const & filename,
 			     OutputParams const & runparams_in,
-			     bool only_body = false) const;
+			     OutputWhat output = FullSource) const;
 	///
 	void makeLyXHTMLFile(support::FileName const & filename,
 			     OutputParams const & runparams_in) const;
 	///
 	void writeLyXHTMLSource(odocstream & os,
 			     OutputParams const & runparams_in,
-			     bool only_body = false) const;
+			     OutputWhat output = FullSource) const;
 	/// returns the main language for the buffer (document)
 	Language const * language() const;
 	/// get l10n translated to the buffers language
