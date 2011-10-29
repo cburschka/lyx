@@ -32,6 +32,11 @@ The following new LyX functions have been introduced:
 - LFUN_BUFFER_EXPORT_AS <format> <filename>
   Equivalent to the new -export-to command-line switch (see above).
 
+- LFUN_CLIPBOARD_PASTE_SIMPLE ("clipboard-paste-simple")
+  Paste the clipboard contents as simple unformatted text.
+  This is also available through a new menu voice within the
+  [Edit]->[Paste Special...] sub-menu.
+
 //template, remove this entry later on
 - LFUN_BUFFER_TOGGLE_OUTPUT_SYNC ("buffer-toggle-output-sync").
 
