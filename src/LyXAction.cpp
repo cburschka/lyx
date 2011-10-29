@@ -1210,6 +1210,14 @@ void LyXAction::init()
  */
 		{ LFUN_SELECTION_PASTE, "selection-paste", Noop, Edit },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_CLIPBOARD_PASTE_SIMPLE
+ * \li Action: Pastes simple unformatted text from the active clipboard.
+ * \li Syntax: clipboard-paste-simple [<ARG>]
+ * \li Params: <ARG>: "paragraph" will cause pasting as one paragraph, i.e. "Join lines".
+ * \endvar
+ */
+		{ LFUN_CLIPBOARD_PASTE_SIMPLE, "clipboard-paste-simple", Noop, Edit },
+/*!
  * \var lyx::FuncCode lyx::LFUN_UNDO
  * \li Action: Undoes the last edit.
  * \li Syntax: undo

@@ -93,6 +93,7 @@ using cap::pasteClipboardGraphics;
 using cap::replaceSelection;
 using cap::grabAndEraseSelection;
 using cap::selClearOrDel;
+using cap::pasteSimpleText;
 
 // globals...
 static Font freefont(ignore_font, ignore_language);
@@ -1316,6 +1317,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		pasteClipboardText(cur, bv->buffer().errorList("Paste"),
 			       cmd.argument() == "paragraph");
 		bv->buffer().errors("Paste");
+		break;
+
+	case LFUN_CLIPBOARD_PASTE_SIMPLE:
+		cur.clearSelection();
+		pasteSimpleText(cur, cmd.argument() == "paragraph");
 		break;
 
 	case LFUN_PRIMARY_SELECTION_PASTE:
@@ -2583,6 +2589,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	 }
 
 	case LFUN_CLIPBOARD_PASTE:
+	case LFUN_CLIPBOARD_PASTE_SIMPLE:
 		enable = !theClipboard().empty();
 		break;
 

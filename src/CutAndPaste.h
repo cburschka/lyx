@@ -97,6 +97,8 @@ void pasteClipboardGraphics(Cursor & cur, ErrorList & errorList,
 /// Replace the current selection with cut buffer \c sel_index
 /// Does handle undo. Does only work in text, not mathed.
 void pasteFromStack(Cursor & cur, ErrorList & errorList, size_t sel_index);
+/// Paste the clipboard as simple text, removing any formatting
+void pasteSimpleText(Cursor & cur, bool asParagraphs);
 
 /// Paste the paragraph list \p parlist at the position given by \p cur.
 /// Does not handle undo. Does only work in text, not mathed.

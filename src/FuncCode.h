@@ -448,9 +448,10 @@ enum FuncCode
 	LFUN_PREVIEW_INSERT,            // vfr, 20100328
 	LFUN_FORWARD_SEARCH,
 	LFUN_SCRIPT_INSERT,             // gb, 20101123
-	// 350
-
 	LFUN_BUFFER_EXPORT_AS,          // tommaso 20111006
+	// 350
+	LFUN_CLIPBOARD_PASTE_SIMPLE,	// tommaso, 20111028
+
 	LFUN_LASTACTION                 // end of the table
 };
 

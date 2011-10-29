@@ -1049,6 +1049,39 @@ void pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs)
 }
 
 
+void pasteSimpleText(Cursor & cur, bool asParagraphs)
+{
+	docstring text;
+	// Use internal clipboard if it is the most recent one
+	if (theClipboard().isInternal()) {
+		if (!checkPastePossible(0))
+			return;
+
+		ParagraphList const & pars = theCuts[0].first;
+		ParagraphList::const_iterator it = pars.begin();
+		for (; it != pars.end(); ++it) {
+			if (it != pars.begin())
+				text += "\n";
+			text += (*it).asString();
+		}
+		asParagraphs = false;
+	} else {
+		// Then try plain text
+		text = theClipboard().getAsText();
+	}
+
+	if (text.empty())
+		return;
+
+	cur.recordUndo();
+	cutSelection(cur, true, false);
+	if (asParagraphs)
+		cur.text()->insertStringAsParagraphs(cur, text, cur.current_font);
+	else
+		cur.text()->insertStringAsLines(cur, text, cur.current_font);
+}
+
+
 void pasteClipboardGraphics(Cursor & cur, ErrorList & /* errorList */,
 			    Clipboard::GraphicsType preferedType)
 {

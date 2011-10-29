@@ -157,6 +157,9 @@ Menuset
 		Item "Selection|S" "primary-selection-paste"
 		Item "Selection, Join Lines|i" "primary-selection-paste paragraph"
 		Separator
+		Item "Unformatted Text|U" "clipboard-paste-simple"
+		Item "Unformatted, Join Lines|o" "clipboard-paste-simple paragraph"
+		Separator
 		Item "Paste as LinkBack PDF" "paste linkback"
 		Item "Paste as PDF" "paste pdf"
 		Item "Paste as PNG" "paste png"
