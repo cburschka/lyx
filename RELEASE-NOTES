@@ -305,6 +305,12 @@ Caveats when upgrading from earlier versions to 2.0.x
   there is a similar for DocBook elements). To get a user-defined CharStyle
   to revert properly, it simply needs to be added to this list.
 
+- The LyX support for Springer document classes has been updated to fulfill the
+  latest guidelines of Springer. This has the side-effect that files, created
+  with LyX 2.0.2 or newer, using a Springer document class will not be
+  compilable with LyX versions older than LyX 2.0.2. The same applies for files
+  created with LyX 1.6.10 or older that are saved with LyX 2.0.2 or newer.
+
 
 Note: There may later be an updated list of known issues online at
 	http://wiki.lyx.org/LyX/ReleaseNotes

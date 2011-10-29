@@ -26,6 +26,10 @@ What's new
 
 - Completely revised support for the latest versions of the Springer
   document classes svjour3, svmono and svmult.
+  NOTE: This has the side-effect that files, created with LyX 2.0.2 or
+  future, using a Springer document class, will not be compilable with
+  LyX versions older than LyX 2.0.2. The same applies for files created
+  with LyX 1.6.10 or older that are saved with LyX 2.0.2 or future.
 
 - Add possibility to export the R code from a sweave-enabled document
   (part of bug 7555).
