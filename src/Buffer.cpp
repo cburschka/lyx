@@ -953,7 +953,7 @@ void Buffer::setFullyLoaded(bool value)
 
 PreviewLoader * Buffer::loader() const
 {
-	if (lyxrc.preview == LyXRC::PREVIEW_OFF)
+	if (!isExporting() && lyxrc.preview == LyXRC::PREVIEW_OFF)
 		return 0;
 	if (!d->preview_loader_)
 		d->preview_loader_ = new PreviewLoader(*this);
