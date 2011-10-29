@@ -559,10 +559,8 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		if (!opts.empty()) {
 			// check if more than one option was used - used later for inputenc
 			// in case inputenc is parsed before babel, set the encoding to auto
-			if (options.begin() != options.end() - 1) {
+			if (options.begin() != options.end() - 1)
 				one_language = false;
-				h_inputencoding = "auto";
-			}
 			// babel takes the last language of the option of its \usepackage
 			// call as document language. If there is no such language option, the
 			// last language in the documentclass options is used.
