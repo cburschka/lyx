@@ -104,7 +104,7 @@ public:
 	///
 	void infoize(odocstream & os) const;
 	///
-	docstring contextMenuName() const;
+	std::string contextMenuName() const;
 protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);

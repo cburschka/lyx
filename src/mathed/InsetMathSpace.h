@@ -61,7 +61,7 @@ public:
 	///
 	bool hasSettings() const { return true; }
 	///
-	docstring contextMenuName() const;
+	std::string contextMenuName() const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///

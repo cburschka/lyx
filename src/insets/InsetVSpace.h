@@ -32,7 +32,7 @@ public:
 	///
 	bool hasSettings() const { return true; }
 	///
-	docstring contextMenuName() const;
+	std::string contextMenuName() const;
 	///
 	static void string2params(std::string const &, VSpace &);
 	///

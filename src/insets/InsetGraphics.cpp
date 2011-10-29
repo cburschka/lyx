@@ -1054,9 +1054,9 @@ void InsetGraphics::addToToc(DocIterator const & cpit) const
 }
 
 
-docstring InsetGraphics::contextMenuName() const
+string InsetGraphics::contextMenuName() const
 {
-	return from_ascii("context-graphics");
+	return "context-graphics";
 }
 
 

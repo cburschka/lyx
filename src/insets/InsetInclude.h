@@ -103,7 +103,7 @@ public:
 	///
 	void updateBuffer(ParIterator const &, UpdateType);
 	///
-	docstring contextMenuName() const;
+	std::string contextMenuName() const;
 	//@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes

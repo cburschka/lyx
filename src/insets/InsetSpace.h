@@ -150,7 +150,7 @@ public:
 	// a line separator)?
 	bool isSpace() const { return true; }
 	///
-	docstring contextMenuName() const;
+	std::string contextMenuName() const;
 	///
 	bool clickable(int /* x */, int /* y */) const { return true; }
 protected:

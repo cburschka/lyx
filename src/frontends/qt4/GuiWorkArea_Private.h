@@ -181,7 +181,7 @@ struct GuiWorkArea::Private
 	/// pressed. This is used to get the correct context menu 
 	/// when the menu is actually shown (after releasing on Windows)
 	/// and after the DEPM has done its job.
-	docstring context_menu_name_;
+	std::string context_menu_name_;
 }; // GuiWorkArea
 
 } // namespace frontend

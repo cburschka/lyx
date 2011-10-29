@@ -91,7 +91,7 @@ protected:
 	/// \name Methods relaying to the InsetCommandParams p_
 	//@{
 	///
-	docstring contextMenuName() const;
+	std::string contextMenuName() const;
 	///
 	bool showInsetDialog(BufferView * bv) const;
 	///

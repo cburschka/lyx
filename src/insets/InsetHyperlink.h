@@ -42,7 +42,7 @@ public:
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
-	docstring contextMenuName() const;
+	std::string contextMenuName() const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///

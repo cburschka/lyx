@@ -63,7 +63,7 @@ public:
 	///
 	void addToToc(DocIterator const &) const;
 	///
-	docstring contextMenuName() const;
+	std::string contextMenuName() const;
 	//@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes

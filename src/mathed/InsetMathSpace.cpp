@@ -288,9 +288,9 @@ InsetSpaceParams InsetMathSpace::params() const
 }
 
 
-docstring InsetMathSpace::contextMenuName() const
+string InsetMathSpace::contextMenuName() const
 {
-	return from_ascii("context-mathspace");
+	return "context-mathspace";
 }
 
 

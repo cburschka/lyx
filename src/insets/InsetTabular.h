@@ -824,9 +824,9 @@ public:
 	///
 	InsetCode lyxCode() const { return TABULAR_CODE; }
 	///
-	docstring contextMenu(BufferView const &, int, int) const;
+	std::string contextMenu(BufferView const &, int, int) const;
 	///
-	docstring contextMenuName() const;
+	std::string contextMenuName() const;
 	/// get offset of this cursor slice relative to our upper left corner
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
 		bool boundary, int & x, int & y) const;

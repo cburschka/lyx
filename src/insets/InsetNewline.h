@@ -77,7 +77,7 @@ private:
 	///
 	ColorCode ColorName() const;
 	///
-	docstring contextMenuName() const;
+	std::string contextMenuName() const;
 	///
 	Inset * clone() const { return new InsetNewline(*this); }
 	///

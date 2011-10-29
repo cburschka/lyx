@@ -373,9 +373,9 @@ void InsetIndex::validate(LaTeXFeatures & features) const
 }
 
 
-docstring InsetIndex::contextMenuName() const
+string InsetIndex::contextMenuName() const
 {
-	return from_ascii("context-index");
+	return "context-index";
 }
 
 
@@ -572,10 +572,10 @@ void InsetPrintIndex::validate(LaTeXFeatures & features) const
 }
 
 
-docstring InsetPrintIndex::contextMenuName() const
+string InsetPrintIndex::contextMenuName() const
 {
 	return buffer().masterBuffer()->params().use_indices ?
-		from_ascii("context-indexprint") : docstring();
+		"context-indexprint" : string();
 }
 
 

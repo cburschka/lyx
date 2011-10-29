@@ -101,7 +101,7 @@ private:
 	/// used by the constructors
 	void init();
 	///
-	docstring contextMenuName() const;
+	std::string contextMenuName() const;
 	///
 	friend class InsetNoteParams;
 

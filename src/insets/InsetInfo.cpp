@@ -462,7 +462,7 @@ void InsetInfo::updateInfo()
 }
 
 
-docstring InsetInfo::contextMenu(BufferView const &, int, int) const
+string InsetInfo::contextMenu(BufferView const &, int, int) const
 {
 	//FIXME: We override the implementation of InsetCollapsable,
 	//because this inset is not a collapsable inset.
@@ -470,9 +470,9 @@ docstring InsetInfo::contextMenu(BufferView const &, int, int) const
 }
 
 
-docstring InsetInfo::contextMenuName() const
+string InsetInfo::contextMenuName() const
 {
-	return from_ascii("context-info");
+	return "context-info";
 }
 
 

@@ -1367,9 +1367,9 @@ void MathMacroTemplate::infoize(odocstream & os) const
 }
 
 
-docstring MathMacroTemplate::contextMenuName() const
+string MathMacroTemplate::contextMenuName() const
 {
-	return from_ascii("context-math-macro-definition");
+	return "context-math-macro-definition";
 }
 
 } // namespace lyx

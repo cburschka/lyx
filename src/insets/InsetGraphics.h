@@ -98,7 +98,7 @@ private:
 	///
 	void addToToc(DocIterator const &) const;
 	///
-	docstring contextMenuName() const;
+	std::string contextMenuName() const;
 	/// Force inset into LTR environment if surroundings are RTL
 	bool forceLTR() const { return true; }
 	///

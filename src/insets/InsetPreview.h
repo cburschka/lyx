@@ -49,8 +49,8 @@ public:
 	
 	bool descendable(BufferView const & /*bv*/) const { return true; }
 
-	docstring contextMenuName() const
-		{ return from_ascii("context-preview"); }
+	std::string contextMenuName() const
+		{ return "context-preview"; }
 
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 

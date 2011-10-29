@@ -109,7 +109,7 @@ public:
 	///
 	Inset * clone() const { return new InsetScript(*this); }
 	///
-	docstring contextMenuName() const;
+	std::string contextMenuName() const;
 	//@}
 
 	/// \name Public functions inherited from InsetText class

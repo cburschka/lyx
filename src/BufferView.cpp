@@ -561,7 +561,7 @@ docstring BufferView::toolTip(int x, int y) const
 }
 
 
-docstring BufferView::contextMenu(int x, int y) const
+string BufferView::contextMenu(int x, int y) const
 {
 	//If there is a selection, return the containing inset menu
 	if (d->cursor_.selection())

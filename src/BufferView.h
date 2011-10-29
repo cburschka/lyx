@@ -124,7 +124,7 @@ public:
 	/// \return Tool tip for the given position.
 	docstring toolTip(int x, int y) const;
 	/// \return the context menu for the given position.
-	docstring contextMenu(int x, int y) const;
+	std::string contextMenu(int x, int y) const;
 
 	/// Save the current position as bookmark.
 	/// if idx == 0, save to temp_bookmark

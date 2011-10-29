@@ -2252,9 +2252,9 @@ void InsetMathHull::forToc(docstring & os, size_t) const
 }
 
 
-docstring InsetMathHull::contextMenuName() const
+string InsetMathHull::contextMenuName() const
 {
-	return from_ascii("context-math");
+	return "context-math";
 }
 
 

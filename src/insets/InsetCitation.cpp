@@ -611,9 +611,9 @@ void InsetCitation::validate(LaTeXFeatures & features) const
 }
 
 
-docstring InsetCitation::contextMenuName() const
+string InsetCitation::contextMenuName() const
 {
-	return from_ascii("context-citation");
+	return "context-citation";
 }
 
 

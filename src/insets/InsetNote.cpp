@@ -322,9 +322,9 @@ void InsetNote::validate(LaTeXFeatures & features) const
 }
 
 
-docstring InsetNote::contextMenuName() const
+string InsetNote::contextMenuName() const
 {
-	return from_ascii("context-note");
+	return "context-note";
 }
 
 bool InsetNote::allowSpellCheck() const

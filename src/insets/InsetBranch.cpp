@@ -257,9 +257,9 @@ void InsetBranch::validate(LaTeXFeatures & features) const
 }
 
 
-docstring InsetBranch::contextMenuName() const
+string InsetBranch::contextMenuName() const
 {
-	return from_ascii("context-branch");
+	return "context-branch";
 }
 
 

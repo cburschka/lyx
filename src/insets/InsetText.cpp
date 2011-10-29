@@ -848,18 +848,18 @@ void InsetText::completionPosAndDim(Cursor const & cur, int & x, int & y,
 }
 
 
-docstring InsetText::contextMenu(BufferView const &, int, int) const
+string InsetText::contextMenu(BufferView const &, int, int) const
 {
-	docstring context_menu = contextMenuName();
+	string context_menu = contextMenuName();
 	if (context_menu != InsetText::contextMenuName())
 		context_menu += ";" + InsetText::contextMenuName(); 
 	return context_menu;
 }
 
 
-docstring InsetText::contextMenuName() const
+string InsetText::contextMenuName() const
 {
-	return from_ascii("context-edit");
+	return "context-edit";
 }
 
 

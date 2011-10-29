@@ -258,15 +258,15 @@ void Inset::forToc(docstring &, size_t) const
 }
 
 
-docstring Inset::contextMenu(BufferView const &, int, int) const
+string Inset::contextMenu(BufferView const &, int, int) const
 {
 	return contextMenuName();
 }
 
 
-docstring Inset::contextMenuName() const
+string Inset::contextMenuName() const
 {
-	return docstring();
+	return string();
 }
 
 

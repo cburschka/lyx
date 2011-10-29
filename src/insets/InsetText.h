@@ -203,9 +203,9 @@ public:
 			size_t numlines = 5, size_t len = 80) const;
 
 	///
-	docstring contextMenu(BufferView const &, int, int) const;
+	std::string contextMenu(BufferView const &, int, int) const;
 	///
-	docstring contextMenuName() const;
+	std::string contextMenuName() const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 protected:

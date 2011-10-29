@@ -271,9 +271,9 @@ void InsetHyperlink::validate(LaTeXFeatures & features) const
 }
 
 
-docstring InsetHyperlink::contextMenuName() const
+string InsetHyperlink::contextMenuName() const
 {
-	return from_ascii("context-hyperlink");
+	return "context-hyperlink";
 }
 
 

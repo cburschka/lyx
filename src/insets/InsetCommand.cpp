@@ -210,9 +210,9 @@ bool InsetCommand::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-docstring InsetCommand::contextMenuName() const
+string InsetCommand::contextMenuName() const
 {
-	return from_ascii("context-") + from_ascii(insetName(p_.code()));
+	return "context-" + insetName(p_.code());
 }
 
 

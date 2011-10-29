@@ -79,7 +79,7 @@ private:
 	///
 	void validate(LaTeXFeatures &) const;
 	///
-	docstring contextMenuName() const;
+	std::string contextMenuName() const;
 	///
 	void addToToc(DocIterator const &) const;
 	///

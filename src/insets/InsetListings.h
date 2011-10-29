@@ -67,7 +67,7 @@ private:
 	///
 	InsetListingsParams & params() { return params_; }
 	///
-	docstring contextMenuName() const;
+	std::string contextMenuName() const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///

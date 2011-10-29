@@ -618,15 +618,15 @@ InsetLayout::InsetDecoration InsetCollapsable::decoration() const
 }
 
 
-docstring InsetCollapsable::contextMenu(BufferView const & bv, int x,
+string InsetCollapsable::contextMenu(BufferView const & bv, int x,
 	int y) const
 {
-	docstring context_menu = contextMenuName();
-	docstring const it_context_menu = InsetText::contextMenuName();
+	string context_menu = contextMenuName();
+	string const it_context_menu = InsetText::contextMenuName();
 	if (decoration() == InsetLayout::CONGLOMERATE)
 		return context_menu + ";" + it_context_menu;
 
-	docstring const ic_context_menu = InsetCollapsable::contextMenuName();
+	string const ic_context_menu = InsetCollapsable::contextMenuName();
 	if (ic_context_menu != context_menu)
 		context_menu += ";" + ic_context_menu;
 
@@ -641,12 +641,12 @@ docstring InsetCollapsable::contextMenu(BufferView const & bv, int x,
 }
 
 
-docstring InsetCollapsable::contextMenuName() const
+string InsetCollapsable::contextMenuName() const
 {
 	if (decoration() == InsetLayout::CONGLOMERATE)
-		return from_ascii("context-conglomerate");
+		return "context-conglomerate";
 	else
-		return from_ascii("context-collapsable");
+		return "context-collapsable";
 }
 
 } // namespace lyx

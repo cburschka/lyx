@@ -334,9 +334,9 @@ InsetCode InsetPrintNomencl::lyxCode() const
 }
 
 
-docstring InsetPrintNomencl::contextMenuName() const
+string InsetPrintNomencl::contextMenuName() const
 {
-	return from_ascii("context-nomenclprint");
+	return "context-nomenclprint";
 }
 
 

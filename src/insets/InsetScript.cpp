@@ -421,9 +421,9 @@ docstring InsetScript::xhtml(XHTMLStream & xs, OutputParams const & runparams) c
 }
 
 
-docstring InsetScript::contextMenuName() const
+string InsetScript::contextMenuName() const
 {
-	return from_ascii("context-script");
+	return "context-script";
 }
 
 

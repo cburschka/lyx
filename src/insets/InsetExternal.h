@@ -111,7 +111,7 @@ public:
 	/// \returns the number of rows (\n's) of generated code.
 	void latex(otexstream &, OutputParams const &) const;
 	///
-	docstring contextMenuName() const;
+	std::string contextMenuName() const;
 	///
 	bool setMouseHover(BufferView const * bv, bool mouse_hover);
 	///

@@ -256,9 +256,9 @@ docstring InsetNewpage::xhtml(XHTMLStream & xs, OutputParams const &) const
 }
 
 
-docstring InsetNewpage::contextMenuName() const
+string InsetNewpage::contextMenuName() const
 {
-	return from_ascii("context-newpage");
+	return "context-newpage";
 }
 
 

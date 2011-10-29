@@ -300,9 +300,9 @@ docstring InsetListings::xhtml(XHTMLStream & os, OutputParams const & rp) const
 }
 
 
-docstring InsetListings::contextMenuName() const
+string InsetListings::contextMenuName() const
 {
-	return from_ascii("context-listings");
+	return "context-listings";
 }
 
 

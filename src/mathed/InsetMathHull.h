@@ -163,7 +163,7 @@ public:
 	void recordLocation(DocIterator const & di);
 
 	///
-	docstring contextMenuName() const;
+	std::string contextMenuName() const;
 	///
 	InsetCode lyxCode() const { return MATH_HULL_CODE; }
 

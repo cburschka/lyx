@@ -408,11 +408,11 @@ public:
 	
 	/// \return Context menu identifier. This function determines
 	/// whose Inset's menu should be shown for the given position.
-	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
+	virtual std::string contextMenu(BufferView const & bv, int x, int y) const;
 
 	/// \return Context menu identifier for this inset.
 	/// This default implementation returns an empty string.
-	virtual docstring contextMenuName() const;
+	virtual std::string contextMenuName() const;
 
 
 	virtual docstring layoutName() const;

@@ -259,9 +259,9 @@ void InsetNewline::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-docstring InsetNewline::contextMenuName() const
+string InsetNewline::contextMenuName() const
 {
-	return from_ascii("context-newline");
+	return "context-newline";
 }
 
 

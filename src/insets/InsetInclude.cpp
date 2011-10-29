@@ -985,9 +985,9 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-docstring InsetInclude::contextMenuName() const
+string InsetInclude::contextMenuName() const
 {
-	return from_ascii("context-include");
+	return "context-include";
 }
 
 

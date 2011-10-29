@@ -716,7 +716,7 @@ bool GuiWorkArea::event(QEvent * e)
 
 void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 {
-	docstring name;
+	string name;
 	if (e->reason() == QContextMenuEvent::Mouse)
 		// the menu name is set on mouse press
 		name = d->context_menu_name_;

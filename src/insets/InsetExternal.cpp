@@ -802,9 +802,9 @@ void InsetExternal::addPreview(DocIterator const & /*inset_pos*/,
 }
 
 
-docstring InsetExternal::contextMenuName() const
+string InsetExternal::contextMenuName() const
 {
-	return from_ascii("context-external");
+	return "context-external";
 }
 
 

@@ -358,9 +358,9 @@ docstring InsetPhantom::xhtml(XHTMLStream &, OutputParams const &) const
 	return docstring();
 }
 
-docstring InsetPhantom::contextMenuName() const
+string InsetPhantom::contextMenuName() const
 {
-	return from_ascii("context-phantom");
+	return "context-phantom";
 }
 
 

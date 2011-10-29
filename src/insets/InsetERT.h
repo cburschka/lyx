@@ -38,8 +38,8 @@ public:
 	///
 	static std::string params2string(CollapseStatus);
 
-	docstring contextMenuName() const
-		{ return from_ascii("context-ert"); }
+	std::string contextMenuName() const
+		{ return "context-ert"; }
 private:
 	///
 	InsetCode lyxCode() const { return ERT_CODE; }

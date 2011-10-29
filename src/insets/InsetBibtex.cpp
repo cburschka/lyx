@@ -992,9 +992,9 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 }
 
 
-docstring InsetBibtex::contextMenuName() const
+string InsetBibtex::contextMenuName() const
 {
-	return from_ascii("context-bibtex");
+	return "context-bibtex";
 }
 
 

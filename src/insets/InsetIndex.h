@@ -79,7 +79,7 @@ private:
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const;
 	///
-	docstring contextMenuName() const;
+	std::string contextMenuName() const;
 	///
 	Inset * clone() const { return new InsetIndex(*this); }
 
@@ -108,7 +108,7 @@ public:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
-	docstring contextMenuName() const;
+	std::string contextMenuName() const;
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const;
 	///

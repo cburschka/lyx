@@ -837,9 +837,9 @@ bool InsetSpace::isStretchableSpace() const
 }
 
 
-docstring InsetSpace::contextMenuName() const
+string InsetSpace::contextMenuName() const
 {
-	return from_ascii("context-space");
+	return "context-space";
 }
 
 
