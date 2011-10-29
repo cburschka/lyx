@@ -1639,29 +1639,31 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 		os << ">\n\n";
 	}
 
-	string top = top_element;
-	top += " lang=\"";
-	if (runparams.flavor == OutputParams::XML)
-		top += params().language->code();
-	else
-		top += params().language->code().substr(0, 2);
-	top += '"';
-
-	if (!params().options.empty()) {
-		top += ' ';
-		top += params().options;
+	if (output_body) {
+		string top = top_element;
+		top += " lang=\"";
+		if (runparams.flavor == OutputParams::XML)
+			top += params().language->code();
+		else
+			top += params().language->code().substr(0, 2);
+		top += '"';
+	
+		if (!params().options.empty()) {
+			top += ' ';
+			top += params().options;
+		}
+	
+		os << "<!-- " << ((runparams.flavor == OutputParams::XML)? "XML" : "SGML")
+				<< " file was created by LyX " << lyx_version
+				<< "\n  See http://www.lyx.org/ for more information -->\n";
+	
+		params().documentClass().counters().reset();
+	
+		sgml::openTag(os, top);
+		os << '\n';
+		docbookParagraphs(text(), *this, os, runparams);
+		sgml::closeTag(os, top_element);
 	}
-
-	os << "<!-- " << ((runparams.flavor == OutputParams::XML)? "XML" : "SGML")
-	    << " file was created by LyX " << lyx_version
-	    << "\n  See http://www.lyx.org/ for more information -->\n";
-
-	params().documentClass().counters().reset();
-
-	sgml::openTag(os, top);
-	os << '\n';
-	docbookParagraphs(text(), *this, os, runparams);
-	sgml::closeTag(os, top_element);
 }
 
 
@@ -1742,14 +1744,19 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 					    << ";\n";
 				os << "}\n</style>\n";
 		}
-		os << "</head>\n<body>\n";
+		os << "</head>\n";
 	}
 
-	XHTMLStream xs(os);
-	params().documentClass().counters().reset();
-	xhtmlParagraphs(text(), *this, xs, runparams);
+	if (output_body) {
+		os << "<body>\n";
+		XHTMLStream xs(os);
+		params().documentClass().counters().reset();
+		xhtmlParagraphs(text(), *this, xs, runparams);
+		os << "</body>\n";
+	}
+
 	if (output_preamble)
-		os << "</body>\n</html>\n";
+		os << "</html>\n";
 }
 
 
@@ -3179,7 +3186,7 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 
 void Buffer::getSourceCode(odocstream & os, string const format,
 			   pit_type par_begin, pit_type par_end,
-			   bool full_source) const
+			   OutputWhat output) const
 {
 	OutputParams runparams(&params().encoding());
 	runparams.nice = true;
@@ -3188,21 +3195,7 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
 
-	if (full_source) {
-		os << "% " << _("Preview source code") << "\n\n";
-		d->texrow.reset();
-		d->texrow.newline();
-		d->texrow.newline();
-		if (params().isDocBook())
-			writeDocBookSource(os, absFileName(), runparams, FullSource);
-		else if (runparams.flavor == OutputParams::HTML)
-			writeLyXHTMLSource(os, runparams, FullSource);
-		else {
-			// latex or literate
-			otexstream ots(os, d->texrow);
-			writeLaTeXSource(ots, string(), runparams, FullSource);
-		}
-	} else {
+	if (output == CurrentParagraph) {
 		runparams.par_begin = par_begin;
 		runparams.par_end = par_end;
 		if (par_begin + 1 == par_end) {
@@ -3230,6 +3223,27 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 			// latex or literate
 			otexstream ots(os, texrow);
 			latexParagraphs(*this, text(), ots, runparams);
+		}
+	} else {
+		os << "% ";
+		if (output == FullSource) 
+			os << _("Preview source code");
+		else if (output == OnlyPreamble)
+			os << _("Preview preamble");
+		else if (output == OnlyBody)
+			os << _("Preview body");
+		os << "\n\n";
+		d->texrow.reset();
+		d->texrow.newline();
+		d->texrow.newline();
+		if (params().isDocBook())
+			writeDocBookSource(os, absFileName(), runparams, output);
+		else if (runparams.flavor == OutputParams::HTML)
+			writeLyXHTMLSource(os, runparams, output);
+		else {
+			// latex or literate
+			otexstream ots(os, d->texrow);
+			writeLaTeXSource(ots, string(), runparams, output);
 		}
 	}
 }

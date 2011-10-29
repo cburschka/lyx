@@ -288,7 +288,8 @@ public:
 	enum OutputWhat {
 		FullSource,
 		OnlyBody,
-		OnlyPreamble
+		OnlyPreamble,
+		CurrentParagraph
 	};
 
 	/// Just a wrapper for writeLaTeXSource, first creating the ofstream.
@@ -575,7 +576,7 @@ public:
 	/// get source code (latex/docbook) for some paragraphs, or all paragraphs
 	/// including preamble
 	void getSourceCode(odocstream & os, std::string const format,
-			   pit_type par_begin, pit_type par_end, bool full_source) const;
+			   pit_type par_begin, pit_type par_end, OutputWhat output) const;
 
 	/// Access to error list.
 	/// This method is used only for GUI visualisation of Buffer related
