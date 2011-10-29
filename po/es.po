@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-10-25 15:01-0400\n"
+"POT-Creation-Date: 2011-10-29 17:47-0400\n"
 "PO-Revision-Date: 2011-08-26 17:17+0100\n"
 "Last-Translator: Ignacio García <ignacio.gmorales@gmail.com>\n"
 "Language-Team: Spanish <lyx-docs@lists.lyx.org>\n"
@@ -498,8 +498,8 @@ msgid "Remove the selected branch"
 msgstr "Quitar la rama seleccionada"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3713
-#: src/Buffer.cpp:3726 src/frontends/qt4/ui_IndicesUi.h:219
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3714
+#: src/Buffer.cpp:3727 src/frontends/qt4/ui_IndicesUi.h:219
 msgid "&Remove"
 msgstr "&Quitar"
 
@@ -532,8 +532,8 @@ msgstr "Añadir &todo"
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:205
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
-#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1059
-#: src/Buffer.cpp:2302 src/Buffer.cpp:3688 src/Buffer.cpp:3751
+#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1060
+#: src/Buffer.cpp:2303 src/Buffer.cpp:3689 src/Buffer.cpp:3752
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:179
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1829
@@ -2924,7 +2924,7 @@ msgstr "Etiqueta más &larga"
 msgid "Line &spacing"
 msgstr "&Interlineado"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1819
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1820
 #: src/frontends/qt4/GuiDocument.cpp:692
 msgid "Single"
 msgstr "Sencillo"
@@ -2933,7 +2933,7 @@ msgstr "Sencillo"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1825
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1826
 #: src/frontends/qt4/GuiDocument.cpp:696
 msgid "Double"
 msgstr "Doble"
@@ -13514,11 +13514,11 @@ msgstr "Imprimir documento"
 msgid "Check spelling"
 msgstr "Comprobar ortografía"
 
-#: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1315
+#: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1323
 msgid "Undo"
 msgstr "Deshacer"
 
-#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1325
+#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1333
 msgid "Redo"
 msgstr "Rehacer"
 
@@ -16820,57 +16820,57 @@ msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr "LyX no ha podido crear el directorio temporal '%1$s' (¿Disco lleno?)"
 
-#: src/Buffer.cpp:401
+#: src/Buffer.cpp:402
 msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr "¡LyX ha intentado cerrar un documento que tenía cambios sin guardar!\n"
 
-#: src/Buffer.cpp:403
+#: src/Buffer.cpp:404
 msgid "Attempting to close changed document!"
 msgstr "¡Intentando cerrar el documento cambiado!"
 
-#: src/Buffer.cpp:411
+#: src/Buffer.cpp:412
 msgid "Could not remove temporary directory"
 msgstr "No se pudo eliminar directorio temporal"
 
-#: src/Buffer.cpp:412
+#: src/Buffer.cpp:413
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "No se pudo eliminar directorio temporal %1$s"
 
-#: src/Buffer.cpp:743
+#: src/Buffer.cpp:744
 msgid "Unknown document class"
 msgstr "Clase de documento desconocida"
 
-#: src/Buffer.cpp:744
+#: src/Buffer.cpp:745
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 "Usando la clase de documento predeterminada, ya que la clase %1$s es "
 "desconocida."
 
-#: src/Buffer.cpp:748 src/Text.cpp:484
+#: src/Buffer.cpp:749 src/Text.cpp:484
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Símbolo desconocido: %1$s %2$s\n"
 
-#: src/Buffer.cpp:752 src/Buffer.cpp:759 src/Buffer.cpp:782
+#: src/Buffer.cpp:753 src/Buffer.cpp:760 src/Buffer.cpp:783
 msgid "Document header error"
 msgstr "Error de encabezamiento de documento"
 
-#: src/Buffer.cpp:758
+#: src/Buffer.cpp:759
 msgid "\\begin_header is missing"
 msgstr "\\begin_header falta"
 
-#: src/Buffer.cpp:781
+#: src/Buffer.cpp:782
 msgid "\\begin_document is missing"
 msgstr "\\begin_document falta"
 
-#: src/Buffer.cpp:794 src/Buffer.cpp:800 src/BufferView.cpp:1420
-#: src/BufferView.cpp:1426
+#: src/Buffer.cpp:795 src/Buffer.cpp:801 src/BufferView.cpp:1428
+#: src/BufferView.cpp:1434
 msgid "Changes not shown in LaTeX output"
 msgstr "Cambios no mostrados en la salida LaTeX."
 
-#: src/Buffer.cpp:795 src/BufferView.cpp:1421
+#: src/Buffer.cpp:796 src/BufferView.cpp:1429
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -16882,7 +16882,7 @@ msgstr ""
 "Por favor instala estos paquetes o redefine \\lyxadded y \\lyxdeleted en el "
 "preámbulo LaTeX."
 
-#: src/Buffer.cpp:801 src/BufferView.cpp:1427
+#: src/Buffer.cpp:802 src/BufferView.cpp:1435
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -16894,33 +16894,33 @@ msgstr ""
 "Por favor instala ambos paquetes o redefine \\lyxadded y \\lyxdeleted en el "
 "preámbulo LaTeX."
 
-#: src/Buffer.cpp:839 src/BufferParams.cpp:414
-#: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:447
-#: src/insets/InsetIndex.cpp:711
+#: src/Buffer.cpp:840 src/BufferParams.cpp:414
+#: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:446
+#: src/insets/InsetIndex.cpp:710
 msgid "Index"
 msgstr "Índice"
 
-#: src/Buffer.cpp:912 src/Buffer.cpp:956
+#: src/Buffer.cpp:913 src/Buffer.cpp:957
 msgid "Document format failure"
 msgstr "Fallo al formatear documento"
 
-#: src/Buffer.cpp:913
+#: src/Buffer.cpp:914
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 "%1$s terminó inesperadamente, lo que quiere decir que probablemente esté "
 "corrupto."
 
-#: src/Buffer.cpp:957
+#: src/Buffer.cpp:958
 #, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "%1$s no es un documento de LyX."
 
-#: src/Buffer.cpp:982
+#: src/Buffer.cpp:983
 msgid "Conversion failed"
 msgstr "Falló la conversión"
 
-#: src/Buffer.cpp:983
+#: src/Buffer.cpp:984
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -16929,11 +16929,11 @@ msgstr ""
 "%1$s es de una versión diferente de LyX, pero no se ha podido crear un "
 "archivo temporal para convertirlo."
 
-#: src/Buffer.cpp:993
+#: src/Buffer.cpp:994
 msgid "Conversion script not found"
 msgstr "Guión de conversión no encontrado"
 
-#: src/Buffer.cpp:994
+#: src/Buffer.cpp:995
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -16942,11 +16942,11 @@ msgstr ""
 "%1$s es de una versión diferente de LyX, pero el guión de conversión lyx2lyx "
 "no pudo ser encontrado."
 
-#: src/Buffer.cpp:1017 src/Buffer.cpp:1024
+#: src/Buffer.cpp:1018 src/Buffer.cpp:1025
 msgid "Conversion script failed"
 msgstr "Falló el guión de conversión"
 
-#: src/Buffer.cpp:1018
+#: src/Buffer.cpp:1019
 #, c-format
 msgid ""
 "%1$s is from an older version of LyX and the lyx2lyx script failed to "
@@ -16955,7 +16955,7 @@ msgstr ""
 "%1$s es de una versión anterior de LyX, y el guión lyx2lyx falló al "
 "convertirlo."
 
-#: src/Buffer.cpp:1025
+#: src/Buffer.cpp:1026
 #, c-format
 msgid ""
 "%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
@@ -16963,17 +16963,17 @@ msgid ""
 msgstr ""
 "%1$s es de una versión nueva de LyX y el guión lyx2lyx falló al convertirlo."
 
-#: src/Buffer.cpp:1046 src/Buffer.cpp:3698 src/Buffer.cpp:3760
+#: src/Buffer.cpp:1047 src/Buffer.cpp:3699 src/Buffer.cpp:3761
 msgid "File is read-only"
 msgstr "El archivo es de solo lectura"
 
-#: src/Buffer.cpp:1047
+#: src/Buffer.cpp:1048
 #, c-format
 msgid "The file %1$s cannot be written because it is marked as read-only."
 msgstr ""
 "El archivo %1$s no puede ser escrito porque está marcado como solo lectura."
 
-#: src/Buffer.cpp:1056
+#: src/Buffer.cpp:1057
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
@@ -16982,21 +16982,21 @@ msgstr ""
 "El documento %1$s ha sido modificado externamente. ¿Está seguro de que desea "
 "sobrescribir este archivo?"
 
-#: src/Buffer.cpp:1058
+#: src/Buffer.cpp:1059
 msgid "Overwrite modified file?"
 msgstr "¿Sobrescribir archivo modificado?"
 
-#: src/Buffer.cpp:1059 src/Buffer.cpp:2302 src/Exporter.cpp:50
+#: src/Buffer.cpp:1060 src/Buffer.cpp:2303 src/Exporter.cpp:50
 #: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2114
 #: src/frontends/qt4/GuiView.cpp:2303
 msgid "&Overwrite"
 msgstr "&Sobrescribir"
 
-#: src/Buffer.cpp:1088
+#: src/Buffer.cpp:1089
 msgid "Backup failure"
 msgstr "fallo de copia de seguridad"
 
-#: src/Buffer.cpp:1089
+#: src/Buffer.cpp:1090
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -17005,46 +17005,46 @@ msgstr ""
 "No se ha podido crear copia de seguridad de %1$s.\n"
 "Comprueba si existe el directorio y permite escritura."
 
-#: src/Buffer.cpp:1115
+#: src/Buffer.cpp:1116
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Guardando documento %1$s..."
 
-#: src/Buffer.cpp:1130
+#: src/Buffer.cpp:1131
 msgid " could not write file!"
 msgstr "¡no se pudo escribir archivo!"
 
-#: src/Buffer.cpp:1138
+#: src/Buffer.cpp:1139
 msgid " done."
 msgstr " hecho."
 
-#: src/Buffer.cpp:1153
+#: src/Buffer.cpp:1154
 #, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Intentando guardar documento %1$s\n"
 
-#: src/Buffer.cpp:1163 src/Buffer.cpp:1176 src/Buffer.cpp:1190
+#: src/Buffer.cpp:1164 src/Buffer.cpp:1177 src/Buffer.cpp:1191
 #, c-format
 msgid "Saved to %1$s. Phew.\n"
 msgstr " Guardado  como %1$s. ¡Uf!\n"
 
-#: src/Buffer.cpp:1166
+#: src/Buffer.cpp:1167
 msgid "Save failed! Trying again...\n"
 msgstr "  ¡Guardar falló! Intentando de nuevo...\n"
 
-#: src/Buffer.cpp:1180
+#: src/Buffer.cpp:1181
 msgid "Save failed! Trying yet again...\n"
 msgstr "  ¡Guardar falló! Intentando una vez más...\n"
 
-#: src/Buffer.cpp:1194
+#: src/Buffer.cpp:1195
 msgid "Save failed! Bummer. Document is lost."
 msgstr "¡Guardar falló! Desastre. El documento se ha perdido."
 
-#: src/Buffer.cpp:1281
+#: src/Buffer.cpp:1282
 msgid "Iconv software exception Detected"
 msgstr "Detectada excepción del programa iconv"
 
-#: src/Buffer.cpp:1281
+#: src/Buffer.cpp:1282
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
@@ -17053,13 +17053,13 @@ msgstr ""
 "Por favor verifica que el software de soporte para tu codificación (%1$s) "
 "está adecuadamente instalado"
 
-#: src/Buffer.cpp:1304
+#: src/Buffer.cpp:1305
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr ""
 "No se puede encontrar un comando LaTeX para el carácter '%1$s' (código %2$s)"
 
-#: src/Buffer.cpp:1307
+#: src/Buffer.cpp:1308
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -17069,19 +17069,19 @@ msgstr ""
 "elegida.\n"
 "Cambiar la codificación del documento a utf8 podría ayudar."
 
-#: src/Buffer.cpp:1314
+#: src/Buffer.cpp:1315
 msgid "iconv conversion failed"
 msgstr "Falló la conversión iconv"
 
-#: src/Buffer.cpp:1319
+#: src/Buffer.cpp:1320
 msgid "conversion failed"
 msgstr "falló la conversión"
 
-#: src/Buffer.cpp:1414
+#: src/Buffer.cpp:1415
 msgid "Uncodable character in file path"
 msgstr "Carácter no codificable en la ruta del archivo"
 
-#: src/Buffer.cpp:1416
+#: src/Buffer.cpp:1417
 #, fuzzy, c-format
 msgid ""
 "The path of your document\n"
@@ -17103,53 +17103,53 @@ msgstr ""
 "Elige una codificación adecuada (como utf8)\n"
 "o cambia el nombre de la ruta del archivo."
 
-#: src/Buffer.cpp:1712
+#: src/Buffer.cpp:1713
 msgid "Running chktex..."
 msgstr "Ejecutando chktex..."
 
-#: src/Buffer.cpp:1726
+#: src/Buffer.cpp:1727
 msgid "chktex failure"
 msgstr "fallo de chktex"
 
-#: src/Buffer.cpp:1727
+#: src/Buffer.cpp:1728
 msgid "Could not run chktex successfully."
 msgstr "No se pudo ejecutar chktex satisfactoriamente."
 
-#: src/Buffer.cpp:1971
+#: src/Buffer.cpp:1972
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Sin información para exportar al formato: %1$s."
 
-#: src/Buffer.cpp:2043 src/frontends/qt4/GuiView.cpp:3143
+#: src/Buffer.cpp:2044 src/frontends/qt4/GuiView.cpp:3143
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Error al exportar al formato: %1$s."
 
-#: src/Buffer.cpp:2126
+#: src/Buffer.cpp:2127
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "La rama \"%1$s\" ya existe."
 
-#: src/Buffer.cpp:2156
+#: src/Buffer.cpp:2157
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "La rama \"%1$s\" no existe."
 
-#: src/Buffer.cpp:2216
+#: src/Buffer.cpp:2217
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Imposible analizar \"%1$s\""
 
-#: src/Buffer.cpp:2223
+#: src/Buffer.cpp:2224
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Objetivo no reconocido \"%1$s\""
 
-#: src/Buffer.cpp:2233
+#: src/Buffer.cpp:2234
 msgid "Error exporting to DVI."
 msgstr "Error al exportar a DVI."
 
-#: src/Buffer.cpp:2298 src/Exporter.cpp:45
+#: src/Buffer.cpp:2299 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -17160,73 +17160,73 @@ msgstr ""
 "\n"
 "¿Desea sobrescribir ese archivo?"
 
-#: src/Buffer.cpp:2301 src/Exporter.cpp:48
+#: src/Buffer.cpp:2302 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "¿Sobrescribir archivo?"
 
-#: src/Buffer.cpp:2318
+#: src/Buffer.cpp:2319
 msgid "Error running external commands."
 msgstr "Error ejecutando comandos externos."
 
-#: src/Buffer.cpp:3111
+#: src/Buffer.cpp:3112
 msgid "Preview source code"
 msgstr "Vista preliminar del código fuente"
 
-#: src/Buffer.cpp:3129
+#: src/Buffer.cpp:3130
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Vista preliminar del código fuente para el párrafo %1$d"
 
-#: src/Buffer.cpp:3133
+#: src/Buffer.cpp:3134
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Vista preliminar del código fuente del párrafo %1$s al %2$s"
 
-#: src/Buffer.cpp:3252
+#: src/Buffer.cpp:3253
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Auto-guardado %1$s"
 
-#: src/Buffer.cpp:3306
+#: src/Buffer.cpp:3307
 msgid "Autosave failed!"
 msgstr "¡El auto-guardado falló!"
 
-#: src/Buffer.cpp:3367
+#: src/Buffer.cpp:3368
 msgid "Autosaving current document..."
 msgstr "Autoguardando documento actual..."
 
-#: src/Buffer.cpp:3457
+#: src/Buffer.cpp:3458
 msgid "Couldn't export file"
 msgstr "No se pudo exportar archivo"
 
-#: src/Buffer.cpp:3458
+#: src/Buffer.cpp:3459
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Sin información para exportar el formato %1$s."
 
-#: src/Buffer.cpp:3529
+#: src/Buffer.cpp:3530
 msgid "File name error"
 msgstr "Error del nombre de archivo"
 
-#: src/Buffer.cpp:3530
+#: src/Buffer.cpp:3531
 msgid "The directory path to the document cannot contain spaces."
 msgstr "La ruta del directorio al documento no puede contener espacios."
 
-#: src/Buffer.cpp:3615
+#: src/Buffer.cpp:3616
 msgid "Document export cancelled."
 msgstr "Exportación del documento cancelada."
 
-#: src/Buffer.cpp:3625
+#: src/Buffer.cpp:3626
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Documento exportado como %1$s al archivo `%2$s'"
 
-#: src/Buffer.cpp:3631
+#: src/Buffer.cpp:3632
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Documento exportado como %1$s"
 
-#: src/Buffer.cpp:3684
+#: src/Buffer.cpp:3685
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17237,19 +17237,19 @@ msgstr ""
 "\n"
 "¿Recuperar el guardado de emergencia?"
 
-#: src/Buffer.cpp:3687
+#: src/Buffer.cpp:3688
 msgid "Load emergency save?"
 msgstr "¿Cargar guardado de emergencia?"
 
-#: src/Buffer.cpp:3688
+#: src/Buffer.cpp:3689
 msgid "&Recover"
 msgstr "&Recuperar"
 
-#: src/Buffer.cpp:3688
+#: src/Buffer.cpp:3689
 msgid "&Load Original"
 msgstr "&Cargar original"
 
-#: src/Buffer.cpp:3699
+#: src/Buffer.cpp:3700
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -17259,15 +17259,15 @@ msgstr ""
 "marcado como solo lectura. Asegúrate de guardar el documento como un archivo "
 "distinto."
 
-#: src/Buffer.cpp:3705
+#: src/Buffer.cpp:3706
 msgid "Document was successfully recovered."
 msgstr "El documento se ha recuperado con éxito."
 
-#: src/Buffer.cpp:3707
+#: src/Buffer.cpp:3708
 msgid "Document was NOT successfully recovered."
 msgstr "El documento NO se ha recuperado con éxito."
 
-#: src/Buffer.cpp:3708
+#: src/Buffer.cpp:3709
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17276,27 +17276,27 @@ msgstr ""
 "¿Eliminar ahora el archivo de emergencia?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3712 src/Buffer.cpp:3724
+#: src/Buffer.cpp:3713 src/Buffer.cpp:3725
 msgid "Delete emergency file?"
 msgstr "¿Eliminar el archivo de emergencia?"
 
-#: src/Buffer.cpp:3713 src/Buffer.cpp:3726
+#: src/Buffer.cpp:3714 src/Buffer.cpp:3727
 msgid "&Keep"
 msgstr "&Mantener"
 
-#: src/Buffer.cpp:3717
+#: src/Buffer.cpp:3718
 msgid "Emergency file deleted"
 msgstr "Archivo de emergencia borrado"
 
-#: src/Buffer.cpp:3718
+#: src/Buffer.cpp:3719
 msgid "Do not forget to save your file now!"
 msgstr "¡No olvides guardar ahora el archivo!"
 
-#: src/Buffer.cpp:3725
+#: src/Buffer.cpp:3726
 msgid "Remove emergency file now?"
 msgstr "¿Eliminar ahora el archivo de emergencia?"
 
-#: src/Buffer.cpp:3748
+#: src/Buffer.cpp:3749
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17307,19 +17307,19 @@ msgstr ""
 "\n"
 "¿Cargar la copia de seguridad en su lugar?"
 
-#: src/Buffer.cpp:3750
+#: src/Buffer.cpp:3751
 msgid "Load backup?"
 msgstr "¿Cargar copia de seguridad?"
 
-#: src/Buffer.cpp:3751
+#: src/Buffer.cpp:3752
 msgid "&Load backup"
 msgstr "Cargar copia de &seguridad"
 
-#: src/Buffer.cpp:3751
+#: src/Buffer.cpp:3752
 msgid "Load &original"
 msgstr "Cargar &original"
 
-#: src/Buffer.cpp:3761
+#: src/Buffer.cpp:3762
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17329,25 +17329,25 @@ msgstr ""
 "marcado como solo lectura. No olvides guardar el documento como un archivo "
 "distinto."
 
-#: src/Buffer.cpp:4100 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4101 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "¡Sin sentido! "
 
-#: src/Buffer.cpp:4221
+#: src/Buffer.cpp:4222
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Documento %1$s abierto."
 
-#: src/Buffer.cpp:4224
+#: src/Buffer.cpp:4225
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "No se pudo recargar el documento %1$s"
 
-#: src/Buffer.cpp:4290
+#: src/Buffer.cpp:4291
 msgid "Included File Invalid"
 msgstr "Archivo incluido no válido"
 
-#: src/Buffer.cpp:4291
+#: src/Buffer.cpp:4292
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17418,7 +17418,7 @@ msgstr ""
 "predeterminada con formatos predefinidos.\n"
 "LyX no podrá generar una salida correcta."
 
-#: src/BufferParams.cpp:1998 src/BufferView.cpp:1265 src/BufferView.cpp:1297
+#: src/BufferParams.cpp:1998 src/BufferView.cpp:1273 src/BufferView.cpp:1305
 msgid "Could not load class"
 msgstr "No se pudo cargar la clase"
 
@@ -17438,115 +17438,115 @@ msgstr "No más recuadros"
 msgid "Save bookmark"
 msgstr "Guardar marcador"
 
-#: src/BufferView.cpp:940
+#: src/BufferView.cpp:948
 msgid "Converting document to new document class..."
 msgstr "Convirtiendo documento a nueva clase de documento..."
 
-#: src/BufferView.cpp:983
+#: src/BufferView.cpp:991
 msgid "Document is read-only"
 msgstr "Documento es de solo-lectura"
 
-#: src/BufferView.cpp:992
+#: src/BufferView.cpp:1000
 msgid "This portion of the document is deleted."
 msgstr "Esta porción del documento está borrada."
 
-#: src/BufferView.cpp:1263 src/BufferView.cpp:1295
+#: src/BufferView.cpp:1271 src/BufferView.cpp:1303
 #, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "La clase de documento `%1$s' no se ha podido cargar."
 
-#: src/BufferView.cpp:1318
+#: src/BufferView.cpp:1326
 msgid "No further undo information"
 msgstr "No hay más información de deshacer"
 
-#: src/BufferView.cpp:1328
+#: src/BufferView.cpp:1336
 msgid "No further redo information"
 msgstr "No hay más información de rehacer"
 
-#: src/BufferView.cpp:1517 src/lyxfind.cpp:378 src/lyxfind.cpp:396
+#: src/BufferView.cpp:1525 src/lyxfind.cpp:378 src/lyxfind.cpp:396
 msgid "String not found!"
 msgstr "¡Cadena no encontrada!"
 
-#: src/BufferView.cpp:1560
+#: src/BufferView.cpp:1568
 msgid "Mark off"
 msgstr "Marca desactivada"
 
-#: src/BufferView.cpp:1566
+#: src/BufferView.cpp:1574
 msgid "Mark on"
 msgstr "Marca activada"
 
-#: src/BufferView.cpp:1573
+#: src/BufferView.cpp:1581
 msgid "Mark removed"
 msgstr "Marca quitada"
 
-#: src/BufferView.cpp:1576
+#: src/BufferView.cpp:1584
 msgid "Mark set"
 msgstr "Marca puesta"
 
-#: src/BufferView.cpp:1631
+#: src/BufferView.cpp:1639
 msgid "Statistics for the selection:"
 msgstr "Estadísticas para la selección:"
 
-#: src/BufferView.cpp:1633
+#: src/BufferView.cpp:1641
 msgid "Statistics for the document:"
 msgstr "Estadísticas para el documento"
 
-#: src/BufferView.cpp:1636
+#: src/BufferView.cpp:1644
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d palabras"
 
-#: src/BufferView.cpp:1638
+#: src/BufferView.cpp:1646
 msgid "One word"
 msgstr "Una palabra"
 
-#: src/BufferView.cpp:1641
+#: src/BufferView.cpp:1649
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d caracteres (incluyendo espacios)"
 
-#: src/BufferView.cpp:1644
+#: src/BufferView.cpp:1652
 msgid "One character (including blanks)"
 msgstr "Un carácter (incluyendo espacios)"
 
-#: src/BufferView.cpp:1647
+#: src/BufferView.cpp:1655
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d caracteres (excluyendo espacios)"
 
-#: src/BufferView.cpp:1650
+#: src/BufferView.cpp:1658
 msgid "One character (excluding blanks)"
 msgstr "Un carácter (excluyendo espacios)"
 
-#: src/BufferView.cpp:1652
+#: src/BufferView.cpp:1660
 msgid "Statistics"
 msgstr "Estadísticas"
 
-#: src/BufferView.cpp:1783
+#: src/BufferView.cpp:1791
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
 "`inset-forall' interrumpido porque el número de acciones es mayor de %1$d"
 
-#: src/BufferView.cpp:1785
+#: src/BufferView.cpp:1793
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "\"%1$s\" aplicado a %2$d inserciones"
 
-#: src/BufferView.cpp:1793
+#: src/BufferView.cpp:1801
 msgid "Branch name"
 msgstr "Nombre de Rama"
 
-#: src/BufferView.cpp:1800 src/frontends/qt4/GuiBranches.cpp:178
+#: src/BufferView.cpp:1808 src/frontends/qt4/GuiBranches.cpp:178
 msgid "Branch already exists"
 msgstr "La rama ya existe"
 
-#: src/BufferView.cpp:2235
+#: src/BufferView.cpp:2243
 msgid "Inverse Search Failed"
 msgstr "La búsqueda inversa ha fallado"
 
-#: src/BufferView.cpp:2236
+#: src/BufferView.cpp:2244
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
@@ -17554,22 +17554,22 @@ msgstr ""
 "Posición inválida solicitada por la búsqueda inversa.\n"
 "Debes actualizar el documento visto."
 
-#: src/BufferView.cpp:2610
+#: src/BufferView.cpp:2618
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Insertando documento %1$s..."
 
-#: src/BufferView.cpp:2621
+#: src/BufferView.cpp:2629
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Documento %1$s insertado."
 
-#: src/BufferView.cpp:2623
+#: src/BufferView.cpp:2631
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "No se pudo insertar documento %1$s"
 
-#: src/BufferView.cpp:2888
+#: src/BufferView.cpp:2896
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17580,11 +17580,11 @@ msgstr ""
 "%1$s\n"
 "debido al error: %2$s"
 
-#: src/BufferView.cpp:2890
+#: src/BufferView.cpp:2898
 msgid "Could not read file"
 msgstr "No se pudo leer archivo"
 
-#: src/BufferView.cpp:2897
+#: src/BufferView.cpp:2905
 #, c-format
 msgid ""
 "%1$s\n"
@@ -17593,15 +17593,15 @@ msgstr ""
 "%1$s\n"
 "no se pudo leer."
 
-#: src/BufferView.cpp:2898 src/output.cpp:39
+#: src/BufferView.cpp:2906 src/output.cpp:39
 msgid "Could not open file"
 msgstr "No se pudo abrir el archivo"
 
-#: src/BufferView.cpp:2905
+#: src/BufferView.cpp:2913
 msgid "Reading not UTF-8 encoded file"
 msgstr "Leyendo archivo no codificado en UTF-8"
 
-#: src/BufferView.cpp:2906
+#: src/BufferView.cpp:2914
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -19311,7 +19311,7 @@ msgstr "Índice de autor desconocido para el cambio: %1$d\n"
 msgid "Unknown token"
 msgstr "Símbolo desconocido"
 
-#: src/Text.cpp:946
+#: src/Text.cpp:947
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -19319,66 +19319,66 @@ msgstr ""
 "No puede insertar un espacio al principio de un párrafo. Por favor lea el "
 "Tutorial."
 
-#: src/Text.cpp:954
+#: src/Text.cpp:955
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "No se puede introducir dos espacios de esa manera. Por favor lea el Tutorial."
 
-#: src/Text.cpp:1785
+#: src/Text.cpp:1786
 msgid "[Change Tracking] "
 msgstr "[Cambiar seguimiento] "
 
-#: src/Text.cpp:1791
+#: src/Text.cpp:1792
 msgid "Change: "
 msgstr "Cambio: "
 
-#: src/Text.cpp:1795
+#: src/Text.cpp:1796
 msgid " at "
 msgstr " en "
 
-#: src/Text.cpp:1805
+#: src/Text.cpp:1806
 #, c-format
 msgid "Font: %1$s"
 msgstr "Tipografía: %1$s"
 
-#: src/Text.cpp:1810
+#: src/Text.cpp:1811
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Profundidad: %1$d"
 
-#: src/Text.cpp:1816
+#: src/Text.cpp:1817
 msgid ", Spacing: "
 msgstr ", Espaciado: "
 
-#: src/Text.cpp:1822 src/frontends/qt4/GuiDocument.cpp:694
+#: src/Text.cpp:1823 src/frontends/qt4/GuiDocument.cpp:694
 msgid "OneHalf"
 msgstr "Uno y medio"
 
-#: src/Text.cpp:1828
+#: src/Text.cpp:1829
 msgid "Other ("
 msgstr "Otro ("
 
-#: src/Text.cpp:1837
+#: src/Text.cpp:1838
 msgid ", Inset: "
 msgstr ", recuadro: "
 
-#: src/Text.cpp:1838
+#: src/Text.cpp:1839
 msgid ", Paragraph: "
 msgstr ", Párrafo: "
 
-#: src/Text.cpp:1839
+#: src/Text.cpp:1840
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1840
+#: src/Text.cpp:1841
 msgid ", Position: "
 msgstr ", posición: "
 
-#: src/Text.cpp:1846
+#: src/Text.cpp:1847
 msgid ", Char: 0x"
 msgstr ", carácter: 0x"
 
-#: src/Text.cpp:1848
+#: src/Text.cpp:1849
 msgid ", Boundary: "
 msgstr ", frontera: "
 
@@ -19693,12 +19693,12 @@ msgstr ""
 "¿Continuar?"
 
 #: src/VCBackend.cpp:1306 src/VCBackend.cpp:1310
-#: src/frontends/qt4/FindAndReplace.cpp:338
+#: src/frontends/qt4/FindAndReplace.cpp:345
 msgid "&Yes"
 msgstr "&Sí"
 
 #: src/VCBackend.cpp:1306 src/VCBackend.cpp:1310
-#: src/frontends/qt4/FindAndReplace.cpp:338
+#: src/frontends/qt4/FindAndReplace.cpp:345
 msgid "&No"
 msgstr "&No"
 
@@ -19868,19 +19868,19 @@ msgstr ""
 "%1$s: Se ha llegado al principio en la búsqueda hacia atrás.\n"
 "¿Continuar buscando desde el final?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:337
+#: src/frontends/qt4/FindAndReplace.cpp:344
 msgid "Wrap search?"
 msgstr "¿Búsqueda recurrente?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:382
+#: src/frontends/qt4/FindAndReplace.cpp:389
 msgid "Nothing to search"
 msgstr "Nada que buscar"
 
-#: src/frontends/qt4/FindAndReplace.cpp:422
+#: src/frontends/qt4/FindAndReplace.cpp:429
 msgid "No open document(s) in which to search"
 msgstr "No hay documento(s) abierto(s) en donde buscar"
 
-#: src/frontends/qt4/FindAndReplace.cpp:522
+#: src/frontends/qt4/FindAndReplace.cpp:529
 msgid "Advanced Find and Replace"
 msgstr "Encontrar y reemplazar avanzado"
 
@@ -22971,7 +22971,7 @@ msgstr "%1$s (%2$s, %3$s)"
 msgid "active"
 msgstr "activa"
 
-#: src/insets/InsetBranch.cpp:68 src/insets/InsetIndex.cpp:455
+#: src/insets/InsetBranch.cpp:68 src/insets/InsetIndex.cpp:454
 msgid "non-active"
 msgstr "no activa"
 
@@ -23242,23 +23242,23 @@ msgstr ""
 "Por favor, especifica manualmente el orden de esta entrada,\n"
 "como se explica en la Guía del usuario."
 
-#: src/insets/InsetIndex.cpp:276
+#: src/insets/InsetIndex.cpp:275
 msgid "Index Entry"
 msgstr "Entrada de índice"
 
-#: src/insets/InsetIndex.cpp:283 src/insets/InsetIndex.cpp:304
+#: src/insets/InsetIndex.cpp:282 src/insets/InsetIndex.cpp:303
 msgid "unknown type!"
 msgstr "¡tipo desconocido!"
 
-#: src/insets/InsetIndex.cpp:452
+#: src/insets/InsetIndex.cpp:451
 msgid "Unknown index type!"
 msgstr "Tipo de índice desconocido!"
 
-#: src/insets/InsetIndex.cpp:453
+#: src/insets/InsetIndex.cpp:452
 msgid "All indexes"
 msgstr "Todos los índices"
 
-#: src/insets/InsetIndex.cpp:457
+#: src/insets/InsetIndex.cpp:456
 msgid "subindex"
 msgstr "subíndice"
 

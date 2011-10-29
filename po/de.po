@@ -95,7 +95,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-10-28 10:33+0200\n"
+"POT-Creation-Date: 2011-10-29 17:47-0400\n"
 "PO-Revision-Date: 2011-10-28 10:40+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
@@ -2043,7 +2043,7 @@ msgstr ""
 msgid "&Use multiple indexes"
 msgstr "&Mehrere Indexe verwenden"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:114 src/frontends/qt4/ui_IndicesUi.h:205
+#: src/frontends/qt4/ui/IndicesUi.ui:114
 msgid "&New:[[index]]"
 msgstr "&Neuer Index:"
 
@@ -22936,6 +22936,10 @@ msgstr "Liste der Zweige"
 msgid "List of Changes"
 msgstr "Liste der Änderungen"
 
+#: src/frontends/qt4/ui_IndicesUi.h:205
+msgid "&New:"
+msgstr "&Neu:"
+
 #: src/insets/ExternalSupport.cpp:369 src/insets/InsetBibtex.cpp:291
 #: src/insets/InsetGraphics.cpp:597 src/insets/InsetInclude.cpp:535
 msgid ""
@@ -24304,9 +24308,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
-
-#~ msgid "&New:"
-#~ msgstr "&Neu:"
 
 #~ msgid "Enter the command to load the language package (default: babel)"
 #~ msgstr ""

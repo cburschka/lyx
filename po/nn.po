@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-10-25 15:01-0400\n"
+"POT-Creation-Date: 2011-10-29 17:47-0400\n"
 "PO-Revision-Date: 2011-04-09 15:24+0200\n"
 "Last-Translator: Ingar Pareliussen <ingar.pareliussen@_dmmh_no>\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
@@ -493,8 +493,8 @@ msgid "Remove the selected branch"
 msgstr "Fjern den valde greina"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3713
-#: src/Buffer.cpp:3726 src/frontends/qt4/ui_IndicesUi.h:219
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3714
+#: src/Buffer.cpp:3727 src/frontends/qt4/ui_IndicesUi.h:219
 msgid "&Remove"
 msgstr "&Fjern"
 
@@ -527,8 +527,8 @@ msgstr "Legg til a&lle"
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:205
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
-#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1059
-#: src/Buffer.cpp:2302 src/Buffer.cpp:3688 src/Buffer.cpp:3751
+#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1060
+#: src/Buffer.cpp:2303 src/Buffer.cpp:3689 src/Buffer.cpp:3752
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:179
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1829
@@ -2899,7 +2899,7 @@ msgstr "&Lengste etikett"
 msgid "Line &spacing"
 msgstr "&Linjeavstand"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1819
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1820
 #: src/frontends/qt4/GuiDocument.cpp:692
 msgid "Single"
 msgstr "Enkel"
@@ -2908,7 +2908,7 @@ msgstr "Enkel"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1825
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1826
 #: src/frontends/qt4/GuiDocument.cpp:696
 msgid "Double"
 msgstr "Dobbel"
@@ -13442,11 +13442,11 @@ msgstr "Skriv ut dokumentet"
 msgid "Check spelling"
 msgstr "Sjekk rettskriving"
 
-#: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1315
+#: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1323
 msgid "Undo"
 msgstr "Angra"
 
-#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1325
+#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1333
 msgid "Redo"
 msgstr "Gjer om"
 
@@ -16746,56 +16746,56 @@ msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr "Klarte ikkje å fjerna den mellombelse katalogen %1$s (Er disken full?)"
 
-#: src/Buffer.cpp:401
+#: src/Buffer.cpp:402
 msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr ""
 "LyX prøvde å lukke eit dokument som hadde endringar som ikkje var lagra!\n"
 
-#: src/Buffer.cpp:403
+#: src/Buffer.cpp:404
 msgid "Attempting to close changed document!"
 msgstr "Prøver å lukke eit endra dokument!"
 
-#: src/Buffer.cpp:411
+#: src/Buffer.cpp:412
 msgid "Could not remove temporary directory"
 msgstr "Klarte ikkje å fjerna den mellombelse katalogen"
 
-#: src/Buffer.cpp:412
+#: src/Buffer.cpp:413
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Klarte ikkje å fjerna den mellombelse katalogen %1$s"
 
-#: src/Buffer.cpp:743
+#: src/Buffer.cpp:744
 msgid "Unknown document class"
 msgstr "Ukjent dokumentklasse"
 
-#: src/Buffer.cpp:744
+#: src/Buffer.cpp:745
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "Brukar standard dokumentklasse sidan dokumentklassa %1$s er ukjent."
 
-#: src/Buffer.cpp:748 src/Text.cpp:484
+#: src/Buffer.cpp:749 src/Text.cpp:484
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Ukjent symbol %1$s %2$s\n"
 
-#: src/Buffer.cpp:752 src/Buffer.cpp:759 src/Buffer.cpp:782
+#: src/Buffer.cpp:753 src/Buffer.cpp:760 src/Buffer.cpp:783
 msgid "Document header error"
 msgstr "Filhovud-feil"
 
-#: src/Buffer.cpp:758
+#: src/Buffer.cpp:759
 msgid "\\begin_header is missing"
 msgstr "\\begin_header manglar"
 
-#: src/Buffer.cpp:781
+#: src/Buffer.cpp:782
 msgid "\\begin_document is missing"
 msgstr "\\begin_document manglar"
 
-#: src/Buffer.cpp:794 src/Buffer.cpp:800 src/BufferView.cpp:1420
-#: src/BufferView.cpp:1426
+#: src/Buffer.cpp:795 src/Buffer.cpp:801 src/BufferView.cpp:1428
+#: src/BufferView.cpp:1434
 msgid "Changes not shown in LaTeX output"
 msgstr "Endring blir ikkje vist i LaTeX eksporten"
 
-#: src/Buffer.cpp:795 src/BufferView.cpp:1421
+#: src/Buffer.cpp:796 src/BufferView.cpp:1429
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -16807,7 +16807,7 @@ msgstr ""
 "Installer desse pakkane eller endre \\lyxadded og \\lyxdeleted i LaTeX "
 "fortekst."
 
-#: src/Buffer.cpp:801 src/BufferView.cpp:1427
+#: src/Buffer.cpp:802 src/BufferView.cpp:1435
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -16819,31 +16819,31 @@ msgstr ""
 "Installer desse pakkane eller endra \\lyxadded og \\lyxdeleted i LaTeX "
 "fortekst."
 
-#: src/Buffer.cpp:839 src/BufferParams.cpp:414
-#: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:447
-#: src/insets/InsetIndex.cpp:711
+#: src/Buffer.cpp:840 src/BufferParams.cpp:414
+#: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:446
+#: src/insets/InsetIndex.cpp:710
 msgid "Index"
 msgstr "Indeks"
 
-#: src/Buffer.cpp:912 src/Buffer.cpp:956
+#: src/Buffer.cpp:913 src/Buffer.cpp:957
 msgid "Document format failure"
 msgstr "Dokumentformat feil"
 
-#: src/Buffer.cpp:913
+#: src/Buffer.cpp:914
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s slutta før tida, noko som truleg tyder at det er øydelagd."
 
-#: src/Buffer.cpp:957
+#: src/Buffer.cpp:958
 #, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "%1$s er ikkje eit rett LyX dokumentet."
 
-#: src/Buffer.cpp:982
+#: src/Buffer.cpp:983
 msgid "Conversion failed"
 msgstr "Feil oppstod i konverteringa"
 
-#: src/Buffer.cpp:983
+#: src/Buffer.cpp:984
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -16852,11 +16852,11 @@ msgstr ""
 "%1$s vart laga i ein annan LyX versjon, Desverre kunne vi ikkje lage ein "
 "mellombels kopi for å konvertere dokumentet."
 
-#: src/Buffer.cpp:993
+#: src/Buffer.cpp:994
 msgid "Conversion script not found"
 msgstr "Fann ikkje eksport programmet"
 
-#: src/Buffer.cpp:994
+#: src/Buffer.cpp:995
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -16865,11 +16865,11 @@ msgstr ""
 "%1$s vart laga i ein anna LyX versjon. men programmet for å fornye "
 "dokumentet \"lyx2lyx\" vart ikkje funne."
 
-#: src/Buffer.cpp:1017 src/Buffer.cpp:1024
+#: src/Buffer.cpp:1018 src/Buffer.cpp:1025
 msgid "Conversion script failed"
 msgstr "Feil ved køyring av eksport programmet"
 
-#: src/Buffer.cpp:1018
+#: src/Buffer.cpp:1019
 #, c-format
 msgid ""
 "%1$s is from an older version of LyX and the lyx2lyx script failed to "
@@ -16878,7 +16878,7 @@ msgstr ""
 "%1$s vart laga i ein gammal LyX-versjon og lyx2lyx-programmet klarte ikkje å "
 "konvertere det."
 
-#: src/Buffer.cpp:1025
+#: src/Buffer.cpp:1026
 #, c-format
 msgid ""
 "%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
@@ -16887,16 +16887,16 @@ msgstr ""
 "%1$s vart laga i ein nyare LyX-versjon og lyx2lyx-programmet klarte ikkje å "
 "konvertere det."
 
-#: src/Buffer.cpp:1046 src/Buffer.cpp:3698 src/Buffer.cpp:3760
+#: src/Buffer.cpp:1047 src/Buffer.cpp:3699 src/Buffer.cpp:3761
 msgid "File is read-only"
 msgstr "Fila kan berre bli lest frå"
 
-#: src/Buffer.cpp:1047
+#: src/Buffer.cpp:1048
 #, c-format
 msgid "The file %1$s cannot be written because it is marked as read-only."
 msgstr "Fila %1$s  kan ikkje skrivast fordi den er merka som berre for lesing."
 
-#: src/Buffer.cpp:1056
+#: src/Buffer.cpp:1057
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
@@ -16905,21 +16905,21 @@ msgstr ""
 "Dokumentet %1$s har blitt endra av eit anna program. Vil du skriva over "
 "dokumentet?"
 
-#: src/Buffer.cpp:1058
+#: src/Buffer.cpp:1059
 msgid "Overwrite modified file?"
 msgstr "Skriv over det endra dokumentet?"
 
-#: src/Buffer.cpp:1059 src/Buffer.cpp:2302 src/Exporter.cpp:50
+#: src/Buffer.cpp:1060 src/Buffer.cpp:2303 src/Exporter.cpp:50
 #: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2114
 #: src/frontends/qt4/GuiView.cpp:2303
 msgid "&Overwrite"
 msgstr "Skriv&over"
 
-#: src/Buffer.cpp:1088
+#: src/Buffer.cpp:1089
 msgid "Backup failure"
 msgstr "Kan ikkje laga reservekopi"
 
-#: src/Buffer.cpp:1089
+#: src/Buffer.cpp:1090
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -16928,58 +16928,58 @@ msgstr ""
 "LyX klarte ikkje å lage reservekopi %1$s.\n"
 "Er du sikker at stigen finst og at du kan skrive til den?"
 
-#: src/Buffer.cpp:1115
+#: src/Buffer.cpp:1116
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Lagrar %1$s..."
 
-#: src/Buffer.cpp:1130
+#: src/Buffer.cpp:1131
 msgid " could not write file!"
 msgstr "Kan ikkje skrive fila!"
 
-#: src/Buffer.cpp:1138
+#: src/Buffer.cpp:1139
 msgid " done."
 msgstr "ferdig."
 
-#: src/Buffer.cpp:1153
+#: src/Buffer.cpp:1154
 #, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Prøver å skrive dokumentet %1$s\n"
 
-#: src/Buffer.cpp:1163 src/Buffer.cpp:1176 src/Buffer.cpp:1190
+#: src/Buffer.cpp:1164 src/Buffer.cpp:1177 src/Buffer.cpp:1191
 #, c-format
 msgid "Saved to %1$s. Phew.\n"
 msgstr "Lagra til.%1$s.\n"
 
-#: src/Buffer.cpp:1166
+#: src/Buffer.cpp:1167
 msgid "Save failed! Trying again...\n"
 msgstr "Klarte ikkje å lagre. Prøver igjen...\n"
 
-#: src/Buffer.cpp:1180
+#: src/Buffer.cpp:1181
 msgid "Save failed! Trying yet again...\n"
 msgstr "Klarte ikkje lagre. Prøver igjen på nytt...\n"
 
-#: src/Buffer.cpp:1194
+#: src/Buffer.cpp:1195
 msgid "Save failed! Bummer. Document is lost."
 msgstr "Lagring fungerte ikkje. Diverre har dokumentet gått tapt."
 
-#: src/Buffer.cpp:1281
+#: src/Buffer.cpp:1282
 msgid "Iconv software exception Detected"
 msgstr "Iconv program unntak oppdaga"
 
-#: src/Buffer.cpp:1281
+#: src/Buffer.cpp:1282
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
 msgstr "Sjekk om du har programma for å støtte enkodinga (%1$s) er installert."
 
-#: src/Buffer.cpp:1304
+#: src/Buffer.cpp:1305
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr "Kan ikkje finne LaTeX kommandoen for '%1$s' (kode punkt %2$s)"
 
-#: src/Buffer.cpp:1307
+#: src/Buffer.cpp:1308
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -16988,19 +16988,19 @@ msgstr ""
 "Nokre av teikna i dokumentet er ikkje i teiknkodinga. \n"
 "Prøv å endre teiknkodinga til utf8."
 
-#: src/Buffer.cpp:1314
+#: src/Buffer.cpp:1315
 msgid "iconv conversion failed"
 msgstr "feil med iconv konverteringa"
 
-#: src/Buffer.cpp:1319
+#: src/Buffer.cpp:1320
 msgid "conversion failed"
 msgstr "Feil oppstod i konverteringa"
 
-#: src/Buffer.cpp:1414
+#: src/Buffer.cpp:1415
 msgid "Uncodable character in file path"
 msgstr "Umogeleg spesialteikn i stigen"
 
-#: src/Buffer.cpp:1416
+#: src/Buffer.cpp:1417
 #, fuzzy, c-format
 msgid ""
 "The path of your document\n"
@@ -17021,53 +17021,53 @@ msgstr ""
 "Vel derfor ein anna koding for dokumentet (f.eks. utf8)\n"
 " eller vel ein anna stig."
 
-#: src/Buffer.cpp:1712
+#: src/Buffer.cpp:1713
 msgid "Running chktex..."
 msgstr "Køyrer ChkTeX ..."
 
-#: src/Buffer.cpp:1726
+#: src/Buffer.cpp:1727
 msgid "chktex failure"
 msgstr "ChkTeX feil"
 
-#: src/Buffer.cpp:1727
+#: src/Buffer.cpp:1728
 msgid "Could not run chktex successfully."
 msgstr "Kunne ikkje køyre ChkTeX."
 
-#: src/Buffer.cpp:1971
+#: src/Buffer.cpp:1972
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Veit ikkje korleis ein eksporterer %1$s."
 
-#: src/Buffer.cpp:2043 src/frontends/qt4/GuiView.cpp:3143
+#: src/Buffer.cpp:2044 src/frontends/qt4/GuiView.cpp:3143
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Feil ved eksporten til %1$s."
 
-#: src/Buffer.cpp:2126
+#: src/Buffer.cpp:2127
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "Grein\"%1$s\" finst frå før."
 
-#: src/Buffer.cpp:2156
+#: src/Buffer.cpp:2157
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "Finn ikkje greina: %1$s."
 
-#: src/Buffer.cpp:2216
+#: src/Buffer.cpp:2217
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Klarar ikkje å tyde \"%1$s\""
 
-#: src/Buffer.cpp:2223
+#: src/Buffer.cpp:2224
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Ukjent mål \"%1$s\""
 
-#: src/Buffer.cpp:2233
+#: src/Buffer.cpp:2234
 msgid "Error exporting to DVI."
 msgstr "Feil ved eksport til DVI"
 
-#: src/Buffer.cpp:2298 src/Exporter.cpp:45
+#: src/Buffer.cpp:2299 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -17078,73 +17078,73 @@ msgstr ""
 "\n"
 "Vil du skrive over dette dokumentet?"
 
-#: src/Buffer.cpp:2301 src/Exporter.cpp:48
+#: src/Buffer.cpp:2302 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Skriv over dokumentet?"
 
-#: src/Buffer.cpp:2318
+#: src/Buffer.cpp:2319
 msgid "Error running external commands."
 msgstr "Generell informasjon"
 
-#: src/Buffer.cpp:3111
+#: src/Buffer.cpp:3112
 msgid "Preview source code"
 msgstr "Førehandsvising av kjeldekode"
 
-#: src/Buffer.cpp:3129
+#: src/Buffer.cpp:3130
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Førehandsvising av kjeldekode for avsnittet %1$d"
 
-#: src/Buffer.cpp:3133
+#: src/Buffer.cpp:3134
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Førehandsvising av kjeldekode av avsnittet %1$s til %2$s"
 
-#: src/Buffer.cpp:3252
+#: src/Buffer.cpp:3253
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatisk lagring %1$s"
 
-#: src/Buffer.cpp:3306
+#: src/Buffer.cpp:3307
 msgid "Autosave failed!"
 msgstr "Automatisk lagring feila!"
 
-#: src/Buffer.cpp:3367
+#: src/Buffer.cpp:3368
 msgid "Autosaving current document..."
 msgstr "Automatisk lagring av dette dokumentet..."
 
-#: src/Buffer.cpp:3457
+#: src/Buffer.cpp:3458
 msgid "Couldn't export file"
 msgstr "Kan ikkje eksportere dokumentet"
 
-#: src/Buffer.cpp:3458
+#: src/Buffer.cpp:3459
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Veit ikkje korleis ein importerer %1$s."
 
-#: src/Buffer.cpp:3529
+#: src/Buffer.cpp:3530
 msgid "File name error"
 msgstr "Feil på filnamn"
 
-#: src/Buffer.cpp:3530
+#: src/Buffer.cpp:3531
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Stigen til dokumentet kan ikkje ha mellomrom i seg."
 
-#: src/Buffer.cpp:3615
+#: src/Buffer.cpp:3616
 msgid "Document export cancelled."
 msgstr "Eksport av dokumentet er stoppa."
 
-#: src/Buffer.cpp:3625
+#: src/Buffer.cpp:3626
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokumentet eksportert som %1$s til %2$s'"
 
-#: src/Buffer.cpp:3631
+#: src/Buffer.cpp:3632
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokumentet eksportert som %1$s"
 
-#: src/Buffer.cpp:3684
+#: src/Buffer.cpp:3685
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17155,19 +17155,19 @@ msgstr ""
 "\n"
 "Gå tilbake til nødkopien?"
 
-#: src/Buffer.cpp:3687
+#: src/Buffer.cpp:3688
 msgid "Load emergency save?"
 msgstr "Last nødkopien av dokumentet?"
 
-#: src/Buffer.cpp:3688
+#: src/Buffer.cpp:3689
 msgid "&Recover"
 msgstr "&Gå tilbake"
 
-#: src/Buffer.cpp:3688
+#: src/Buffer.cpp:3689
 msgid "&Load Original"
 msgstr "&Last Original"
 
-#: src/Buffer.cpp:3699
+#: src/Buffer.cpp:3700
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -17176,15 +17176,15 @@ msgstr ""
 "Nødkopien er lasta, men originalen %1$s kan berre bli lest frå. Lagra derfor "
 "dokumentet med eit anna namn."
 
-#: src/Buffer.cpp:3705
+#: src/Buffer.cpp:3706
 msgid "Document was successfully recovered."
 msgstr "Dokumentet vart redda."
 
-#: src/Buffer.cpp:3707
+#: src/Buffer.cpp:3708
 msgid "Document was NOT successfully recovered."
 msgstr "Diverre kunne ikkje dokumentet reddast."
 
-#: src/Buffer.cpp:3708
+#: src/Buffer.cpp:3709
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17193,27 +17193,27 @@ msgstr ""
 "Last nødkopien av dokumentet no?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3712 src/Buffer.cpp:3724
+#: src/Buffer.cpp:3713 src/Buffer.cpp:3725
 msgid "Delete emergency file?"
 msgstr "Slett nødkopien av dokumentet?"
 
-#: src/Buffer.cpp:3713 src/Buffer.cpp:3726
+#: src/Buffer.cpp:3714 src/Buffer.cpp:3727
 msgid "&Keep"
 msgstr "&Hald fast"
 
-#: src/Buffer.cpp:3717
+#: src/Buffer.cpp:3718
 msgid "Emergency file deleted"
 msgstr "Nødkopien sletta"
 
-#: src/Buffer.cpp:3718
+#: src/Buffer.cpp:3719
 msgid "Do not forget to save your file now!"
 msgstr "Ikkje gløym å lagra dokumentet ditt no!"
 
-#: src/Buffer.cpp:3725
+#: src/Buffer.cpp:3726
 msgid "Remove emergency file now?"
 msgstr "Fjern nødkopien av dokumentet no?"
 
-#: src/Buffer.cpp:3748
+#: src/Buffer.cpp:3749
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17224,19 +17224,19 @@ msgstr ""
 "\n"
 "Skal vi opna det istaden?"
 
-#: src/Buffer.cpp:3750
+#: src/Buffer.cpp:3751
 msgid "Load backup?"
 msgstr "Gå tilbake til reservekopi?"
 
-#: src/Buffer.cpp:3751
+#: src/Buffer.cpp:3752
 msgid "&Load backup"
 msgstr "Gå tilbake til &reservekopi"
 
-#: src/Buffer.cpp:3751
+#: src/Buffer.cpp:3752
 msgid "Load &original"
 msgstr "Last &original"
 
-#: src/Buffer.cpp:3761
+#: src/Buffer.cpp:3762
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17245,25 +17245,25 @@ msgstr ""
 "Reservekopien er lasta, men originalen %1$s kan berre bli lest frå. Lagra "
 "derfor dokumentet under eit anna namn."
 
-#: src/Buffer.cpp:4100 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4101 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Meiningslaust! "
 
-#: src/Buffer.cpp:4221
+#: src/Buffer.cpp:4222
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokumentet %1$s er lasta på nytt."
 
-#: src/Buffer.cpp:4224
+#: src/Buffer.cpp:4225
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Kunne ikkje lasta dokumentet %1$s på nytt."
 
-#: src/Buffer.cpp:4290
+#: src/Buffer.cpp:4291
 msgid "Included File Invalid"
 msgstr "Underdokument er utilgjengeleg"
 
-#: src/Buffer.cpp:4291
+#: src/Buffer.cpp:4292
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17335,7 +17335,7 @@ msgstr ""
 "stilfil vil bli brukt. LyX kan ikkje gi deg eit korrekt\n"
 "ferdig dokument."
 
-#: src/BufferParams.cpp:1998 src/BufferView.cpp:1265 src/BufferView.cpp:1297
+#: src/BufferParams.cpp:1998 src/BufferView.cpp:1273 src/BufferView.cpp:1305
 msgid "Could not load class"
 msgstr "Kan ikkje laste klassa"
 
@@ -17355,135 +17355,135 @@ msgstr "Det er ikkje fleire innskot"
 msgid "Save bookmark"
 msgstr "Lagra bokmerke"
 
-#: src/BufferView.cpp:940
+#: src/BufferView.cpp:948
 msgid "Converting document to new document class..."
 msgstr "Konverterer dokumentet til ny dokument klasse ..."
 
-#: src/BufferView.cpp:983
+#: src/BufferView.cpp:991
 msgid "Document is read-only"
 msgstr "Dokumentet kan berre bli lest frå"
 
-#: src/BufferView.cpp:992
+#: src/BufferView.cpp:1000
 msgid "This portion of the document is deleted."
 msgstr "Denne delen av dokumentet er sletta."
 
-#: src/BufferView.cpp:1263 src/BufferView.cpp:1295
+#: src/BufferView.cpp:1271 src/BufferView.cpp:1303
 #, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "Dokumentklassa '%1$s' kunne ikkje bli lasta."
 
-#: src/BufferView.cpp:1318
+#: src/BufferView.cpp:1326
 msgid "No further undo information"
 msgstr "Ikkje meir \"Angre\" informasjon"
 
-#: src/BufferView.cpp:1328
+#: src/BufferView.cpp:1336
 msgid "No further redo information"
 msgstr "Ikkje meir \"Gjer om\" informasjon"
 
-#: src/BufferView.cpp:1517 src/lyxfind.cpp:378 src/lyxfind.cpp:396
+#: src/BufferView.cpp:1525 src/lyxfind.cpp:378 src/lyxfind.cpp:396
 msgid "String not found!"
 msgstr "Kan ikkje finne teksten."
 
-#: src/BufferView.cpp:1560
+#: src/BufferView.cpp:1568
 msgid "Mark off"
 msgstr "Merke slått av"
 
-#: src/BufferView.cpp:1566
+#: src/BufferView.cpp:1574
 msgid "Mark on"
 msgstr "Merke på"
 
-#: src/BufferView.cpp:1573
+#: src/BufferView.cpp:1581
 msgid "Mark removed"
 msgstr "Fjerna merke"
 
-#: src/BufferView.cpp:1576
+#: src/BufferView.cpp:1584
 msgid "Mark set"
 msgstr "Merke sett"
 
-#: src/BufferView.cpp:1631
+#: src/BufferView.cpp:1639
 msgid "Statistics for the selection:"
 msgstr "Statistikk for utvalet:"
 
-#: src/BufferView.cpp:1633
+#: src/BufferView.cpp:1641
 msgid "Statistics for the document:"
 msgstr "Statistikk for dokumentet:"
 
-#: src/BufferView.cpp:1636
+#: src/BufferView.cpp:1644
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d ord"
 
-#: src/BufferView.cpp:1638
+#: src/BufferView.cpp:1646
 msgid "One word"
 msgstr "Eitt ord"
 
-#: src/BufferView.cpp:1641
+#: src/BufferView.cpp:1649
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d teikn (med mellomrom)"
 
-#: src/BufferView.cpp:1644
+#: src/BufferView.cpp:1652
 msgid "One character (including blanks)"
 msgstr "Eitt teikn (med mellomrom)"
 
-#: src/BufferView.cpp:1647
+#: src/BufferView.cpp:1655
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d teikn (utan mellomrom)"
 
-#: src/BufferView.cpp:1650
+#: src/BufferView.cpp:1658
 msgid "One character (excluding blanks)"
 msgstr "Eitt teikn (utan mellomrom)"
 
-#: src/BufferView.cpp:1652
+#: src/BufferView.cpp:1660
 msgid "Statistics"
 msgstr "Statistikk"
 
-#: src/BufferView.cpp:1783
+#: src/BufferView.cpp:1791
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr "'Alle-innskot' stoppa fordi talet på handlingar var større enn %1$d"
 
-#: src/BufferView.cpp:1785
+#: src/BufferView.cpp:1793
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "Gjorde \"%1$s\" med %2$d innskot"
 
-#: src/BufferView.cpp:1793
+#: src/BufferView.cpp:1801
 msgid "Branch name"
 msgstr "Greinnamn"
 
-#: src/BufferView.cpp:1800 src/frontends/qt4/GuiBranches.cpp:178
+#: src/BufferView.cpp:1808 src/frontends/qt4/GuiBranches.cpp:178
 msgid "Branch already exists"
 msgstr "Grein finst frå før"
 
-#: src/BufferView.cpp:2235
+#: src/BufferView.cpp:2243
 msgid "Inverse Search Failed"
 msgstr ""
 
-#: src/BufferView.cpp:2236
+#: src/BufferView.cpp:2244
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
 msgstr ""
 
-#: src/BufferView.cpp:2610
+#: src/BufferView.cpp:2618
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Set inn dokumentet %1$s..."
 
-#: src/BufferView.cpp:2621
+#: src/BufferView.cpp:2629
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumentet %1$s er sett inn."
 
-#: src/BufferView.cpp:2623
+#: src/BufferView.cpp:2631
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunne ikkje sette inn dokumentet %1$s"
 
-#: src/BufferView.cpp:2888
+#: src/BufferView.cpp:2896
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17494,26 +17494,26 @@ msgstr ""
 "%1$s\n"
 "på grunn av feilen: %2$s"
 
-#: src/BufferView.cpp:2890
+#: src/BufferView.cpp:2898
 msgid "Could not read file"
 msgstr "Kan ikkje lese fila"
 
-#: src/BufferView.cpp:2897
+#: src/BufferView.cpp:2905
 #, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "Kan ikkje lese %1$s."
 
-#: src/BufferView.cpp:2898 src/output.cpp:39
+#: src/BufferView.cpp:2906 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Kan ikkje opnafila"
 
-#: src/BufferView.cpp:2905
+#: src/BufferView.cpp:2913
 msgid "Reading not UTF-8 encoded file"
 msgstr "Les fil som ikkje er koda i UTF-8"
 
-#: src/BufferView.cpp:2906
+#: src/BufferView.cpp:2914
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -19164,7 +19164,7 @@ msgstr "Ukjent forfattar indeks for endring:%1$d\n"
 msgid "Unknown token"
 msgstr "Ukjent symbol"
 
-#: src/Text.cpp:946
+#: src/Text.cpp:947
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -19172,67 +19172,67 @@ msgstr ""
 "Du kan ikkje sette inn eit mellomrom i starten av eit avsnitt. Ver så snill "
 "å lese innføring i LyX."
 
-#: src/Text.cpp:954
+#: src/Text.cpp:955
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Du kan ikkje sette inn to mellomrom etter kvarandre. Ver så snill å lese "
 "innføring i LyX."
 
-#: src/Text.cpp:1785
+#: src/Text.cpp:1786
 msgid "[Change Tracking] "
 msgstr "[Spor endringar] "
 
-#: src/Text.cpp:1791
+#: src/Text.cpp:1792
 msgid "Change: "
 msgstr "Endring: "
 
-#: src/Text.cpp:1795
+#: src/Text.cpp:1796
 msgid " at "
 msgstr " til "
 
-#: src/Text.cpp:1805
+#: src/Text.cpp:1806
 #, c-format
 msgid "Font: %1$s"
 msgstr "Skrifttype:%1$s"
 
-#: src/Text.cpp:1810
+#: src/Text.cpp:1811
 #, c-format
 msgid ", Depth: %1$d"
 msgstr " Djupn: %1$d"
 
-#: src/Text.cpp:1816
+#: src/Text.cpp:1817
 msgid ", Spacing: "
 msgstr ", mellomrom: "
 
-#: src/Text.cpp:1822 src/frontends/qt4/GuiDocument.cpp:694
+#: src/Text.cpp:1823 src/frontends/qt4/GuiDocument.cpp:694
 msgid "OneHalf"
 msgstr "Halvannan"
 
-#: src/Text.cpp:1828
+#: src/Text.cpp:1829
 msgid "Other ("
 msgstr "Anna ("
 
-#: src/Text.cpp:1837
+#: src/Text.cpp:1838
 msgid ", Inset: "
 msgstr ", Innskot: "
 
-#: src/Text.cpp:1838
+#: src/Text.cpp:1839
 msgid ", Paragraph: "
 msgstr ", Avsnitt: "
 
-#: src/Text.cpp:1839
+#: src/Text.cpp:1840
 msgid ", Id: "
 msgstr " Id: "
 
-#: src/Text.cpp:1840
+#: src/Text.cpp:1841
 msgid ", Position: "
 msgstr ", plass: "
 
-#: src/Text.cpp:1846
+#: src/Text.cpp:1847
 msgid ", Char: 0x"
 msgstr ", Teikn: 0x"
 
-#: src/Text.cpp:1848
+#: src/Text.cpp:1849
 msgid ", Boundary: "
 msgstr ", Grense: "
 
@@ -19541,12 +19541,12 @@ msgstr ""
 "Skal vi halde fram?"
 
 #: src/VCBackend.cpp:1306 src/VCBackend.cpp:1310
-#: src/frontends/qt4/FindAndReplace.cpp:338
+#: src/frontends/qt4/FindAndReplace.cpp:345
 msgid "&Yes"
 msgstr "&Ja"
 
 #: src/VCBackend.cpp:1306 src/VCBackend.cpp:1310
-#: src/frontends/qt4/FindAndReplace.cpp:338
+#: src/frontends/qt4/FindAndReplace.cpp:345
 msgid "&No"
 msgstr "&Nei"
 
@@ -19717,19 +19717,19 @@ msgstr ""
 "%1$s: Starten vart nådd medan vi leita bakover.\n"
 "skal vi fortsette frå slutten?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:337
+#: src/frontends/qt4/FindAndReplace.cpp:344
 msgid "Wrap search?"
 msgstr "Leita rundt?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:382
+#: src/frontends/qt4/FindAndReplace.cpp:389
 msgid "Nothing to search"
 msgstr "Har ingenting å leite etter"
 
-#: src/frontends/qt4/FindAndReplace.cpp:422
+#: src/frontends/qt4/FindAndReplace.cpp:429
 msgid "No open document(s) in which to search"
 msgstr "Ingen opne dokument å leite i"
 
-#: src/frontends/qt4/FindAndReplace.cpp:522
+#: src/frontends/qt4/FindAndReplace.cpp:529
 msgid "Advanced Find and Replace"
 msgstr "Utvida søk og erstatte"
 
@@ -22810,7 +22810,7 @@ msgstr "%1$s (%2$s, %3$s)"
 msgid "active"
 msgstr "aktiv"
 
-#: src/insets/InsetBranch.cpp:68 src/insets/InsetIndex.cpp:455
+#: src/insets/InsetBranch.cpp:68 src/insets/InsetIndex.cpp:454
 msgid "non-active"
 msgstr "ikkje aktiv"
 
@@ -23079,23 +23079,23 @@ msgstr ""
 "Sjå korleis du kan hjelpe til med å få denne sortert\n"
 "rett manuelt i brukarmanualen."
 
-#: src/insets/InsetIndex.cpp:276
+#: src/insets/InsetIndex.cpp:275
 msgid "Index Entry"
 msgstr "Indeksnøkkel"
 
-#: src/insets/InsetIndex.cpp:283 src/insets/InsetIndex.cpp:304
+#: src/insets/InsetIndex.cpp:282 src/insets/InsetIndex.cpp:303
 msgid "unknown type!"
 msgstr "Ukjent type!"
 
-#: src/insets/InsetIndex.cpp:452
+#: src/insets/InsetIndex.cpp:451
 msgid "Unknown index type!"
 msgstr "Ukjent indekstype"
 
-#: src/insets/InsetIndex.cpp:453
+#: src/insets/InsetIndex.cpp:452
 msgid "All indexes"
 msgstr "Alle indeksar"
 
-#: src/insets/InsetIndex.cpp:457
+#: src/insets/InsetIndex.cpp:456
 msgid "subindex"
 msgstr "underindeks"
 

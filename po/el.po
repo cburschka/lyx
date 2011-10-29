@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-10-25 15:01-0400\n"
+"POT-Creation-Date: 2011-10-29 17:47-0400\n"
 "PO-Revision-Date: 2010-07-07 02:31+0100\n"
 "Last-Translator: Οδυσσέας Δαγκλής <o2d@freemail.gr>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -491,8 +491,8 @@ msgid "Remove the selected branch"
 msgstr "Αφαίρεση επιλεγμένου κλάδου"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3713
-#: src/Buffer.cpp:3726 src/frontends/qt4/ui_IndicesUi.h:219
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3714
+#: src/Buffer.cpp:3727 src/frontends/qt4/ui_IndicesUi.h:219
 msgid "&Remove"
 msgstr "&Αφαίρεση"
 
@@ -525,8 +525,8 @@ msgstr "Προσθήκη Όλ&ων"
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:205
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
-#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1059
-#: src/Buffer.cpp:2302 src/Buffer.cpp:3688 src/Buffer.cpp:3751
+#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1060
+#: src/Buffer.cpp:2303 src/Buffer.cpp:3689 src/Buffer.cpp:3752
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:179
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1829
@@ -2954,7 +2954,7 @@ msgstr "&Μακρύτερη ετικέτα"
 msgid "Line &spacing"
 msgstr "Απόσταση &γραμμών"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1819
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1820
 #: src/frontends/qt4/GuiDocument.cpp:692
 msgid "Single"
 msgstr "Απλή"
@@ -2963,7 +2963,7 @@ msgstr "Απλή"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1825
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1826
 #: src/frontends/qt4/GuiDocument.cpp:696
 msgid "Double"
 msgstr "Διπλή"
@@ -13620,11 +13620,11 @@ msgstr "Εκτύπωση εγγράφου"
 msgid "Check spelling"
 msgstr "Έλεγχος ορθογραφίας"
 
-#: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1315
+#: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1323
 msgid "Undo"
 msgstr "Αναίρεση"
 
-#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1325
+#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1333
 msgid "Redo"
 msgstr "Επανάληψη"
 
@@ -16901,57 +16901,57 @@ msgstr ""
 "To LyX δεν μπόρεσε να δημιουργήσει τον προσωρινό φάκελο '%1$s' (Δίσκος "
 "γεμάτος;)"
 
-#: src/Buffer.cpp:401
+#: src/Buffer.cpp:402
 msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr ""
 "Το LyX επιχείρησε να κλείσει ένα έγγραφο με μη αποθηκευμένες αλλαγές!\n"
 
-#: src/Buffer.cpp:403
+#: src/Buffer.cpp:404
 msgid "Attempting to close changed document!"
 msgstr "Απόπειρα κλεισίματος τροποποιημένου εγγράφου!"
 
-#: src/Buffer.cpp:411
+#: src/Buffer.cpp:412
 msgid "Could not remove temporary directory"
 msgstr "Δεν ήταν δυνατή η διαγραφή του προσωρινού φακέλου"
 
-#: src/Buffer.cpp:412
+#: src/Buffer.cpp:413
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Δεν ήταν δυνατή η διαγραφή του προσωρινού φακέλου %1$s"
 
-#: src/Buffer.cpp:743
+#: src/Buffer.cpp:744
 msgid "Unknown document class"
 msgstr "Άγνωστη κλάση εγγράφου"
 
-#: src/Buffer.cpp:744
+#: src/Buffer.cpp:745
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 "Χρήση της προεπιλεγμένης κλάσης εγγράφου, επειδή η κλάση %1$s είναι άγνωστη."
 
-#: src/Buffer.cpp:748 src/Text.cpp:484
+#: src/Buffer.cpp:749 src/Text.cpp:484
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Άγνωστο κουπόνι (token): %1$s %2$s\n"
 
-#: src/Buffer.cpp:752 src/Buffer.cpp:759 src/Buffer.cpp:782
+#: src/Buffer.cpp:753 src/Buffer.cpp:760 src/Buffer.cpp:783
 msgid "Document header error"
 msgstr "Σφάλμα κεφαλίδας εγγράφου"
 
-#: src/Buffer.cpp:758
+#: src/Buffer.cpp:759
 msgid "\\begin_header is missing"
 msgstr "\\λείπει το begin_header"
 
-#: src/Buffer.cpp:781
+#: src/Buffer.cpp:782
 msgid "\\begin_document is missing"
 msgstr "\\λείπει το begin_document"
 
-#: src/Buffer.cpp:794 src/Buffer.cpp:800 src/BufferView.cpp:1420
-#: src/BufferView.cpp:1426
+#: src/Buffer.cpp:795 src/Buffer.cpp:801 src/BufferView.cpp:1428
+#: src/BufferView.cpp:1434
 msgid "Changes not shown in LaTeX output"
 msgstr "Οι αλλαγές δεν εμφανίζονται στην έξοδο LaTeX"
 
-#: src/Buffer.cpp:795 src/BufferView.cpp:1421
+#: src/Buffer.cpp:796 src/BufferView.cpp:1429
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -16963,7 +16963,7 @@ msgstr ""
 "Εγκαταστείστε αυτά τα πακέτα ή ορίστε ξανά τα \\lyxadded και \\lyxdeleted "
 "στο προοίμιο LaTeX."
 
-#: src/Buffer.cpp:801 src/BufferView.cpp:1427
+#: src/Buffer.cpp:802 src/BufferView.cpp:1435
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -16975,32 +16975,32 @@ msgstr ""
 "Εγκαταστείστε αυτά τα πακέτα ή ορίστε ξανά τα \\lyxadded και \\lyxdeleted "
 "στο προοίμιο LaTeX."
 
-#: src/Buffer.cpp:839 src/BufferParams.cpp:414
-#: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:447
-#: src/insets/InsetIndex.cpp:711
+#: src/Buffer.cpp:840 src/BufferParams.cpp:414
+#: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:446
+#: src/insets/InsetIndex.cpp:710
 msgid "Index"
 msgstr "Ευρετήριο"
 
-#: src/Buffer.cpp:912 src/Buffer.cpp:956
+#: src/Buffer.cpp:913 src/Buffer.cpp:957
 msgid "Document format failure"
 msgstr "Αποτυχία μορφής εγγράφου"
 
-#: src/Buffer.cpp:913
+#: src/Buffer.cpp:914
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 "Το %1$s τελείωσε απρόσμενα, που σημαίνει ότι είναι πιθανόν κατεστραμμένο."
 
-#: src/Buffer.cpp:957
+#: src/Buffer.cpp:958
 #, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "Το %1$s δεν είναι ένα αναγνώσιμο έγγραφο LyX."
 
-#: src/Buffer.cpp:982
+#: src/Buffer.cpp:983
 msgid "Conversion failed"
 msgstr "Η μετατροπή απέτυχε"
 
-#: src/Buffer.cpp:983
+#: src/Buffer.cpp:984
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -17009,11 +17009,11 @@ msgstr ""
 "Το %1$s είναι από διαφορετική έκδοση του LyX, αλλά δεν ήταν δυνατή η "
 "δημιουργία του προσωρινού αρχείου μετατροπής."
 
-#: src/Buffer.cpp:993
+#: src/Buffer.cpp:994
 msgid "Conversion script not found"
 msgstr "Το σενάριο μετατροπής δεν βρέθηκε"
 
-#: src/Buffer.cpp:994
+#: src/Buffer.cpp:995
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -17022,11 +17022,11 @@ msgstr ""
 "Το %1$s είναι από διαφορετική έκδοση του LyX, αλλά το σενάριο μετατροπής "
 "lyx2lyx δεν βρέθηκε."
 
-#: src/Buffer.cpp:1017 src/Buffer.cpp:1024
+#: src/Buffer.cpp:1018 src/Buffer.cpp:1025
 msgid "Conversion script failed"
 msgstr "Το σενάριο μετατροπής απέτυχε"
 
-#: src/Buffer.cpp:1018
+#: src/Buffer.cpp:1019
 #, fuzzy, c-format
 msgid ""
 "%1$s is from an older version of LyX and the lyx2lyx script failed to "
@@ -17035,7 +17035,7 @@ msgstr ""
 "Το %1$s είναι από παλαιότερη έκδοση του LyX, αλλά το σενάριο lyx2lyx απέτυχε "
 "να το μετατρέψει."
 
-#: src/Buffer.cpp:1025
+#: src/Buffer.cpp:1026
 #, fuzzy, c-format
 msgid ""
 "%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
@@ -17044,17 +17044,17 @@ msgstr ""
 "Το %1$s είναι από παλαιότερη έκδοση του LyX, αλλά το σενάριο lyx2lyx απέτυχε "
 "να το μετατρέψει."
 
-#: src/Buffer.cpp:1046 src/Buffer.cpp:3698 src/Buffer.cpp:3760
+#: src/Buffer.cpp:1047 src/Buffer.cpp:3699 src/Buffer.cpp:3761
 #, fuzzy
 msgid "File is read-only"
 msgstr "Το έγγραφο είναι μόνο για ανάγνωση"
 
-#: src/Buffer.cpp:1047
+#: src/Buffer.cpp:1048
 #, c-format
 msgid "The file %1$s cannot be written because it is marked as read-only."
 msgstr ""
 
-#: src/Buffer.cpp:1056
+#: src/Buffer.cpp:1057
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
@@ -17063,21 +17063,21 @@ msgstr ""
 "Το έγγραφο %1$s έχει τροποποιηθεί εξωτερικά. Είστε σίγουροι ότι θέλετε να το "
 "αντικαταστήσετε;"
 
-#: src/Buffer.cpp:1058
+#: src/Buffer.cpp:1059
 msgid "Overwrite modified file?"
 msgstr "Αντικατάσταση τροποποιημένου αρχείου;"
 
-#: src/Buffer.cpp:1059 src/Buffer.cpp:2302 src/Exporter.cpp:50
+#: src/Buffer.cpp:1060 src/Buffer.cpp:2303 src/Exporter.cpp:50
 #: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2114
 #: src/frontends/qt4/GuiView.cpp:2303
 msgid "&Overwrite"
 msgstr "&Αντικατάσταση"
 
-#: src/Buffer.cpp:1088
+#: src/Buffer.cpp:1089
 msgid "Backup failure"
 msgstr "Αποτυχία αντιγράφου ασφαλείας"
 
-#: src/Buffer.cpp:1089
+#: src/Buffer.cpp:1090
 #, fuzzy, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -17086,49 +17086,49 @@ msgstr ""
 "Αποτυχία δημιουργίας αντιγράφου ασφαλείας για το %1$s.\n"
 "Ελέγξτε εάν ο φάκελος υπάρχει και είναι εγγράψιμος."
 
-#: src/Buffer.cpp:1115
+#: src/Buffer.cpp:1116
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Αποθήκευση εγγράφου %1$s..."
 
-#: src/Buffer.cpp:1130
+#: src/Buffer.cpp:1131
 msgid " could not write file!"
 msgstr " το αρχείο δεν γράφτηκε!"
 
-#: src/Buffer.cpp:1138
+#: src/Buffer.cpp:1139
 msgid " done."
 msgstr " έγινε."
 
-#: src/Buffer.cpp:1153
+#: src/Buffer.cpp:1154
 #, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Προσπάθεια αποθήκευσης εγγράφου %1$s\n"
 
-#: src/Buffer.cpp:1163 src/Buffer.cpp:1176 src/Buffer.cpp:1190
+#: src/Buffer.cpp:1164 src/Buffer.cpp:1177 src/Buffer.cpp:1191
 #, fuzzy, c-format
 msgid "Saved to %1$s. Phew.\n"
 msgstr "  Αποθηκεύτηκε στο %1$s. Ουφ.\n"
 
-#: src/Buffer.cpp:1166
+#: src/Buffer.cpp:1167
 #, fuzzy
 msgid "Save failed! Trying again...\n"
 msgstr "  Η αποθήκευση απέτυχε! Προσπάθεια...\n"
 
-#: src/Buffer.cpp:1180
+#: src/Buffer.cpp:1181
 #, fuzzy
 msgid "Save failed! Trying yet again...\n"
 msgstr "  Η αποθήκευση απέτυχε! Προσπάθεια...\n"
 
-#: src/Buffer.cpp:1194
+#: src/Buffer.cpp:1195
 #, fuzzy
 msgid "Save failed! Bummer. Document is lost."
 msgstr "  Η αποθήκευση απέτυχε! Καταστροφή. Το έγγραφο χάθηκε!"
 
-#: src/Buffer.cpp:1281
+#: src/Buffer.cpp:1282
 msgid "Iconv software exception Detected"
 msgstr "Εντοπίστηκε εξαίρεση λογισμικού Iconv."
 
-#: src/Buffer.cpp:1281
+#: src/Buffer.cpp:1282
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
@@ -17137,12 +17137,12 @@ msgstr ""
 "Επιβεβαιώστε ότι το λογισμικό υποστήριξης της κωδικοποίησής σας (%1$s) είναι "
 "σωστά εγκατεστημένο."
 
-#: src/Buffer.cpp:1304
+#: src/Buffer.cpp:1305
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr "Δεν βρέθηκε εντολή LaTeX για τον χαρακτήρα '%1$s' (σημείο κώδικα %2$s)"
 
-#: src/Buffer.cpp:1307
+#: src/Buffer.cpp:1308
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -17152,20 +17152,20 @@ msgstr ""
 "επιλεγμένη κωδικοποίηση.\n"
 "Η μετατροπή της κωδικοποίησης εγγράφου σε utf8 ίσως να βοηθήσει."
 
-#: src/Buffer.cpp:1314
+#: src/Buffer.cpp:1315
 msgid "iconv conversion failed"
 msgstr "η μετατροπή iconv απέτυχε"
 
-#: src/Buffer.cpp:1319
+#: src/Buffer.cpp:1320
 msgid "conversion failed"
 msgstr "η μετατροπή απέτυχε"
 
-#: src/Buffer.cpp:1414
+#: src/Buffer.cpp:1415
 #, fuzzy
 msgid "Uncodable character in file path"
 msgstr "Μη κωδικοποιήσιμος χαρακτήρας στο όνομα συγγραφέα"
 
-#: src/Buffer.cpp:1416
+#: src/Buffer.cpp:1417
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -17179,53 +17179,53 @@ msgid ""
 "(such as utf8) or change the file path name."
 msgstr ""
 
-#: src/Buffer.cpp:1712
+#: src/Buffer.cpp:1713
 msgid "Running chktex..."
 msgstr "Εκτέλεση chktex..."
 
-#: src/Buffer.cpp:1726
+#: src/Buffer.cpp:1727
 msgid "chktex failure"
 msgstr "αποτυχία chktex"
 
-#: src/Buffer.cpp:1727
+#: src/Buffer.cpp:1728
 msgid "Could not run chktex successfully."
 msgstr "Δεν ήταν δυνατή η επιτυχής εκτέλεση του chktex."
 
-#: src/Buffer.cpp:1971
+#: src/Buffer.cpp:1972
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Δεν υπάρχουν πληροφορίες για εξαγωγή σε τύπο: %1$s"
 
-#: src/Buffer.cpp:2043 src/frontends/qt4/GuiView.cpp:3143
+#: src/Buffer.cpp:2044 src/frontends/qt4/GuiView.cpp:3143
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Σφάλμα εξαγωγής σε τύπο: %1$s."
 
-#: src/Buffer.cpp:2126
+#: src/Buffer.cpp:2127
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "Ο κλάδος \"%1$s\" υπάρχει ήδη."
 
-#: src/Buffer.cpp:2156
+#: src/Buffer.cpp:2157
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "Ο κλάδος \"%1$s\" δεν υπάρχει."
 
-#: src/Buffer.cpp:2216
+#: src/Buffer.cpp:2217
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Αδυναμία επεξεργασίας του \"%1$s\""
 
-#: src/Buffer.cpp:2223
+#: src/Buffer.cpp:2224
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Άφνωστος προορισμός \"%1$s\""
 
-#: src/Buffer.cpp:2233
+#: src/Buffer.cpp:2234
 msgid "Error exporting to DVI."
 msgstr "Σφάλμα εξαγωγής σε DVI."
 
-#: src/Buffer.cpp:2298 src/Exporter.cpp:45
+#: src/Buffer.cpp:2299 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -17236,73 +17236,73 @@ msgstr ""
 "\n"
 "Θέλετε να το αντικαταστήσετε;"
 
-#: src/Buffer.cpp:2301 src/Exporter.cpp:48
+#: src/Buffer.cpp:2302 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Αντικατάσταση αρχείου;"
 
-#: src/Buffer.cpp:2318
+#: src/Buffer.cpp:2319
 msgid "Error running external commands."
 msgstr "Σφάλμα εκτέλεσης εξωτερικής εντολής."
 
-#: src/Buffer.cpp:3111
+#: src/Buffer.cpp:3112
 msgid "Preview source code"
 msgstr "Προεπισκόπηση κώδικα πηγής"
 
-#: src/Buffer.cpp:3129
+#: src/Buffer.cpp:3130
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Προεπισκόπηση κώδικα πηγής για την παράγραφο %1$d"
 
-#: src/Buffer.cpp:3133
+#: src/Buffer.cpp:3134
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Προεπισκόπηση κώδικα πηγής από την παράγραφο %1$s έως την %2$s"
 
-#: src/Buffer.cpp:3252
+#: src/Buffer.cpp:3253
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Αυτόματη αποθήκευση του %1$s"
 
-#: src/Buffer.cpp:3306
+#: src/Buffer.cpp:3307
 msgid "Autosave failed!"
 msgstr "Η αυτόματη αποθήκευση απέτυχε"
 
-#: src/Buffer.cpp:3367
+#: src/Buffer.cpp:3368
 msgid "Autosaving current document..."
 msgstr "Αυτόματη αποθήκευση τρέχοντος εγγράφου..."
 
-#: src/Buffer.cpp:3457
+#: src/Buffer.cpp:3458
 msgid "Couldn't export file"
 msgstr "Δεν ήταν δυνατή η εξαγωγή του αρχείου"
 
-#: src/Buffer.cpp:3458
+#: src/Buffer.cpp:3459
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Δεν υπάρχουν πληροφορίες για την εξαγωγή της μορφής %1$s."
 
-#: src/Buffer.cpp:3529
+#: src/Buffer.cpp:3530
 msgid "File name error"
 msgstr "Σφάλμα ονόματος αρχείου"
 
-#: src/Buffer.cpp:3530
+#: src/Buffer.cpp:3531
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Το μονοπάτι προς το έγγραφο δεν μπορεί να περιέχει κενά."
 
-#: src/Buffer.cpp:3615
+#: src/Buffer.cpp:3616
 msgid "Document export cancelled."
 msgstr "Η εξαγωγή του εγγράφου ακυρώθηκε."
 
-#: src/Buffer.cpp:3625
+#: src/Buffer.cpp:3626
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Το έγγραφο εξήχθη ως %1$s στο αρχείο `%2$s'"
 
-#: src/Buffer.cpp:3631
+#: src/Buffer.cpp:3632
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Το έγγραφο εξήχθη ως %1$s"
 
-#: src/Buffer.cpp:3684
+#: src/Buffer.cpp:3685
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17313,34 +17313,34 @@ msgstr ""
 "\n"
 "Επαναφορά αυτού του αντιγράφου;"
 
-#: src/Buffer.cpp:3687
+#: src/Buffer.cpp:3688
 msgid "Load emergency save?"
 msgstr "Φόρτωση αντιγράφου εκτάκτου ανάγκης;"
 
-#: src/Buffer.cpp:3688
+#: src/Buffer.cpp:3689
 msgid "&Recover"
 msgstr "&Επαναφορά"
 
-#: src/Buffer.cpp:3688
+#: src/Buffer.cpp:3689
 msgid "&Load Original"
 msgstr "&Φόρτωση Αυθεντικού"
 
-#: src/Buffer.cpp:3699
+#: src/Buffer.cpp:3700
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:3705
+#: src/Buffer.cpp:3706
 msgid "Document was successfully recovered."
 msgstr "Το έγγραφο ανακτήθηκε επιτυχώς."
 
-#: src/Buffer.cpp:3707
+#: src/Buffer.cpp:3708
 msgid "Document was NOT successfully recovered."
 msgstr "Το έγγραφο ΔΕΝ ανακτήθηκε επιτυχώς."
 
-#: src/Buffer.cpp:3708
+#: src/Buffer.cpp:3709
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17349,28 +17349,28 @@ msgstr ""
 "Διαγραφή αρχείου έκτακτης ανάγκης τώρα;\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3712 src/Buffer.cpp:3724
+#: src/Buffer.cpp:3713 src/Buffer.cpp:3725
 msgid "Delete emergency file?"
 msgstr "Διαγραφή αρχείου έκτακτης ανάγκης;"
 
-#: src/Buffer.cpp:3713 src/Buffer.cpp:3726
+#: src/Buffer.cpp:3714 src/Buffer.cpp:3727
 #, fuzzy
 msgid "&Keep"
 msgstr "Διατήρηση"
 
-#: src/Buffer.cpp:3717
+#: src/Buffer.cpp:3718
 msgid "Emergency file deleted"
 msgstr "Το αρχείο έκτακτης ανάγκης διαγράφηκε"
 
-#: src/Buffer.cpp:3718
+#: src/Buffer.cpp:3719
 msgid "Do not forget to save your file now!"
 msgstr "Μη ξεχάσετε να αποθηκεύσετε το αρχείο σας τώρα!"
 
-#: src/Buffer.cpp:3725
+#: src/Buffer.cpp:3726
 msgid "Remove emergency file now?"
 msgstr "Διαγραφή αρχείου έκτακτης ανάγκης τώρα;"
 
-#: src/Buffer.cpp:3748
+#: src/Buffer.cpp:3749
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17381,45 +17381,45 @@ msgstr ""
 "\n"
 "Να φορτωθεί αυτό εναλλακτικά;"
 
-#: src/Buffer.cpp:3750
+#: src/Buffer.cpp:3751
 msgid "Load backup?"
 msgstr "Φόρτωση αντιγράφου ασφαλείας;"
 
-#: src/Buffer.cpp:3751
+#: src/Buffer.cpp:3752
 msgid "&Load backup"
 msgstr "Φό&ρτωση αντιγράφου ασφαλείας"
 
-#: src/Buffer.cpp:3751
+#: src/Buffer.cpp:3752
 msgid "Load &original"
 msgstr "Φόρτωση &αυθεντικού"
 
-#: src/Buffer.cpp:3761
+#: src/Buffer.cpp:3762
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:4100 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4101 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Επιπόλαιο!!!"
 
-#: src/Buffer.cpp:4221
+#: src/Buffer.cpp:4222
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Το έγγραφο %1$s επαναφορτώθηκε."
 
-#: src/Buffer.cpp:4224
+#: src/Buffer.cpp:4225
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Δεν ήταν δυνατή η επαναφόρτωση του εγγράφου %1$s."
 
-#: src/Buffer.cpp:4290
+#: src/Buffer.cpp:4291
 #, fuzzy
 msgid "Included File Invalid"
 msgstr "Συμπερίληψη Αρχείου...|υ"
 
-#: src/Buffer.cpp:4291
+#: src/Buffer.cpp:4292
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17477,7 +17477,7 @@ msgstr ""
 "παράγει έξοδο εκτός αν επιλεγεί μια σωστή textclass από τον διάλογο "
 "ρυθμίσεων εγγράφου."
 
-#: src/BufferParams.cpp:1998 src/BufferView.cpp:1265 src/BufferView.cpp:1297
+#: src/BufferParams.cpp:1998 src/BufferView.cpp:1273 src/BufferView.cpp:1305
 msgid "Could not load class"
 msgstr "Δεν ήταν δυνατή η φόρτωση της κλάσης"
 
@@ -17497,135 +17497,135 @@ msgstr "Όχι άλλα ενθέματα"
 msgid "Save bookmark"
 msgstr "Αποθήκευση στηλοθέτη"
 
-#: src/BufferView.cpp:940
+#: src/BufferView.cpp:948
 msgid "Converting document to new document class..."
 msgstr "Μετατροπή εγγράφου σε νέα κλάση εγγράφου..."
 
-#: src/BufferView.cpp:983
+#: src/BufferView.cpp:991
 msgid "Document is read-only"
 msgstr "Το έγγραφο είναι μόνο για ανάγνωση"
 
-#: src/BufferView.cpp:992
+#: src/BufferView.cpp:1000
 msgid "This portion of the document is deleted."
 msgstr "Αυτό το τμήμα του εγγράφου έχει διαγραφεί."
 
-#: src/BufferView.cpp:1263 src/BufferView.cpp:1295
+#: src/BufferView.cpp:1271 src/BufferView.cpp:1303
 #, fuzzy, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "Δεν ήταν δυνατή η φόρτωση της κλάσης εγγράφων %1$s."
 
-#: src/BufferView.cpp:1318
+#: src/BufferView.cpp:1326
 msgid "No further undo information"
 msgstr "Όχι άλλες πληροφορίες αναίρεσης"
 
-#: src/BufferView.cpp:1328
+#: src/BufferView.cpp:1336
 msgid "No further redo information"
 msgstr "Όχι άλλες πληροφορίες επανάληψης"
 
-#: src/BufferView.cpp:1517 src/lyxfind.cpp:378 src/lyxfind.cpp:396
+#: src/BufferView.cpp:1525 src/lyxfind.cpp:378 src/lyxfind.cpp:396
 msgid "String not found!"
 msgstr "Η συμβολοσειρά δε βρέθηκε!"
 
-#: src/BufferView.cpp:1560
+#: src/BufferView.cpp:1568
 msgid "Mark off"
 msgstr "Σημάδι ενεργοποιημένο"
 
-#: src/BufferView.cpp:1566
+#: src/BufferView.cpp:1574
 msgid "Mark on"
 msgstr "Σημάδι απενεργοποιημένο"
 
-#: src/BufferView.cpp:1573
+#: src/BufferView.cpp:1581
 msgid "Mark removed"
 msgstr "Το σημάδι αφαιρέθηκε"
 
-#: src/BufferView.cpp:1576
+#: src/BufferView.cpp:1584
 msgid "Mark set"
 msgstr "Το σημάδι τοποθετήθηκε"
 
-#: src/BufferView.cpp:1631
+#: src/BufferView.cpp:1639
 msgid "Statistics for the selection:"
 msgstr "Στατιστικά για την επιλογή:"
 
-#: src/BufferView.cpp:1633
+#: src/BufferView.cpp:1641
 msgid "Statistics for the document:"
 msgstr "Στατιστικά για το έγγραφο:"
 
-#: src/BufferView.cpp:1636
+#: src/BufferView.cpp:1644
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d λέξεις"
 
-#: src/BufferView.cpp:1638
+#: src/BufferView.cpp:1646
 msgid "One word"
 msgstr "Μία λέξη"
 
-#: src/BufferView.cpp:1641
+#: src/BufferView.cpp:1649
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d χαρακτήρες (μαζί με κενά)"
 
-#: src/BufferView.cpp:1644
+#: src/BufferView.cpp:1652
 msgid "One character (including blanks)"
 msgstr "Ένας χαρακτήρας (μαζί με κενά)"
 
-#: src/BufferView.cpp:1647
+#: src/BufferView.cpp:1655
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d χαρακτήρες (χωρίς κενά)"
 
-#: src/BufferView.cpp:1650
+#: src/BufferView.cpp:1658
 msgid "One character (excluding blanks)"
 msgstr "Ένας χαρακτήρας (χωρίς κενά)"
 
-#: src/BufferView.cpp:1652
+#: src/BufferView.cpp:1660
 msgid "Statistics"
 msgstr "Στατιστικά"
 
-#: src/BufferView.cpp:1783
+#: src/BufferView.cpp:1791
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
 
-#: src/BufferView.cpp:1785
+#: src/BufferView.cpp:1793
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "Εφαρμόστηκε \"%1$s\" στα ενθέματα %2$d"
 
-#: src/BufferView.cpp:1793
+#: src/BufferView.cpp:1801
 msgid "Branch name"
 msgstr "Όνομα κλάδου"
 
-#: src/BufferView.cpp:1800 src/frontends/qt4/GuiBranches.cpp:178
+#: src/BufferView.cpp:1808 src/frontends/qt4/GuiBranches.cpp:178
 msgid "Branch already exists"
 msgstr "Ο κλάδος υπάρχει ήδη"
 
-#: src/BufferView.cpp:2235
+#: src/BufferView.cpp:2243
 msgid "Inverse Search Failed"
 msgstr ""
 
-#: src/BufferView.cpp:2236
+#: src/BufferView.cpp:2244
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
 msgstr ""
 
-#: src/BufferView.cpp:2610
+#: src/BufferView.cpp:2618
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Εισαγωγή εγγράφου %1$s..."
 
-#: src/BufferView.cpp:2621
+#: src/BufferView.cpp:2629
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Το έγγραφο %1$s εισήχθη."
 
-#: src/BufferView.cpp:2623
+#: src/BufferView.cpp:2631
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Δεν ήταν δυνατή η εισαγωγή του εγγράφου %1$s"
 
-#: src/BufferView.cpp:2888
+#: src/BufferView.cpp:2896
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17636,11 +17636,11 @@ msgstr ""
 "%1$s\n"
 "λόγω του σφάλματος: %2$s"
 
-#: src/BufferView.cpp:2890
+#: src/BufferView.cpp:2898
 msgid "Could not read file"
 msgstr "Δεν ήταν δυνατή η ανάγνωση του αρχείου"
 
-#: src/BufferView.cpp:2897
+#: src/BufferView.cpp:2905
 #, c-format
 msgid ""
 "%1$s\n"
@@ -17649,15 +17649,15 @@ msgstr ""
 "Το %1$s\n"
 "δεν είναι αναγνώσιμο."
 
-#: src/BufferView.cpp:2898 src/output.cpp:39
+#: src/BufferView.cpp:2906 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Δεν ήταν δυνατό το άνοιγμα του αρχείου"
 
-#: src/BufferView.cpp:2905
+#: src/BufferView.cpp:2913
 msgid "Reading not UTF-8 encoded file"
 msgstr "Ανάγνωση μη-UTF-8 κωδικοποιημένου αρχείου"
 
-#: src/BufferView.cpp:2906
+#: src/BufferView.cpp:2914
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -19343,7 +19343,7 @@ msgstr "Άγνωστο ευρετήριο συγγραφέων για αλλαγ
 msgid "Unknown token"
 msgstr "Άγνωστο κουπόνι (token)"
 
-#: src/Text.cpp:946
+#: src/Text.cpp:947
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -19351,67 +19351,67 @@ msgstr ""
 "Δεν μπορείτε να εισάγετε διάστημα στην αρχή μιας παραγράφου. Διαβάστε τη "
 "Διδακτική Παρουσίαση."
 
-#: src/Text.cpp:954
+#: src/Text.cpp:955
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Δεν μπορείτε να πληκτρολογήσετε έτσι δύο διαστήματα. Διαβάστε τη Διδακτική "
 "Παρουσίαση."
 
-#: src/Text.cpp:1785
+#: src/Text.cpp:1786
 msgid "[Change Tracking] "
 msgstr "[Αλλαγή Παρακολούθησης]"
 
-#: src/Text.cpp:1791
+#: src/Text.cpp:1792
 msgid "Change: "
 msgstr "Αλλαγή:"
 
-#: src/Text.cpp:1795
+#: src/Text.cpp:1796
 msgid " at "
 msgstr " στο"
 
-#: src/Text.cpp:1805
+#: src/Text.cpp:1806
 #, c-format
 msgid "Font: %1$s"
 msgstr "Γραμματοσειρά: %1$s"
 
-#: src/Text.cpp:1810
+#: src/Text.cpp:1811
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Βάθος: %1$d"
 
-#: src/Text.cpp:1816
+#: src/Text.cpp:1817
 msgid ", Spacing: "
 msgstr ", Διάστημα:"
 
-#: src/Text.cpp:1822 src/frontends/qt4/GuiDocument.cpp:694
+#: src/Text.cpp:1823 src/frontends/qt4/GuiDocument.cpp:694
 msgid "OneHalf"
 msgstr "Μιάμιση"
 
-#: src/Text.cpp:1828
+#: src/Text.cpp:1829
 msgid "Other ("
 msgstr "Άλλα ("
 
-#: src/Text.cpp:1837
+#: src/Text.cpp:1838
 msgid ", Inset: "
 msgstr ", Ένθεμα:"
 
-#: src/Text.cpp:1838
+#: src/Text.cpp:1839
 msgid ", Paragraph: "
 msgstr ", Παράγραφος:"
 
-#: src/Text.cpp:1839
+#: src/Text.cpp:1840
 msgid ", Id: "
 msgstr ", Ταυτότητα:"
 
-#: src/Text.cpp:1840
+#: src/Text.cpp:1841
 msgid ", Position: "
 msgstr ", Θέση:"
 
-#: src/Text.cpp:1846
+#: src/Text.cpp:1847
 msgid ", Char: 0x"
 msgstr ", Χαρακτήρας: 0x"
 
-#: src/Text.cpp:1848
+#: src/Text.cpp:1849
 msgid ", Boundary: "
 msgstr ", Όριο:"
 
@@ -19684,12 +19684,12 @@ msgid ""
 msgstr ""
 
 #: src/VCBackend.cpp:1306 src/VCBackend.cpp:1310
-#: src/frontends/qt4/FindAndReplace.cpp:338
+#: src/frontends/qt4/FindAndReplace.cpp:345
 msgid "&Yes"
 msgstr "&Ναι"
 
 #: src/VCBackend.cpp:1306 src/VCBackend.cpp:1310
-#: src/frontends/qt4/FindAndReplace.cpp:338
+#: src/frontends/qt4/FindAndReplace.cpp:345
 msgid "&No"
 msgstr "Ό&χι"
 
@@ -19861,19 +19861,19 @@ msgid ""
 "Continue searching from the end?"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:337
+#: src/frontends/qt4/FindAndReplace.cpp:344
 msgid "Wrap search?"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:382
+#: src/frontends/qt4/FindAndReplace.cpp:389
 msgid "Nothing to search"
 msgstr "Τίποτα για αναζήτηση"
 
-#: src/frontends/qt4/FindAndReplace.cpp:422
+#: src/frontends/qt4/FindAndReplace.cpp:429
 msgid "No open document(s) in which to search"
 msgstr "Κανένα ανοιχτό έγγραφο για εκτέλεση αναζήτησης"
 
-#: src/frontends/qt4/FindAndReplace.cpp:522
+#: src/frontends/qt4/FindAndReplace.cpp:529
 msgid "Advanced Find and Replace"
 msgstr "Προχωρημένη Εύρεση και Αντικατάσταση"
 
@@ -22972,7 +22972,7 @@ msgstr ""
 msgid "active"
 msgstr "ενεργό"
 
-#: src/insets/InsetBranch.cpp:68 src/insets/InsetIndex.cpp:455
+#: src/insets/InsetBranch.cpp:68 src/insets/InsetIndex.cpp:454
 msgid "non-active"
 msgstr "μη-ενεργό"
 
@@ -23232,24 +23232,24 @@ msgstr ""
 "Ορίστε χειροκίνητα τη θέση αυτής της καταχώρησης, όπως\n"
 "περιγράφεται στον Οδηγό Χρήστη."
 
-#: src/insets/InsetIndex.cpp:276
+#: src/insets/InsetIndex.cpp:275
 msgid "Index Entry"
 msgstr "Καταχώρηση Ευρετηρίου"
 
-#: src/insets/InsetIndex.cpp:283 src/insets/InsetIndex.cpp:304
+#: src/insets/InsetIndex.cpp:282 src/insets/InsetIndex.cpp:303
 msgid "unknown type!"
 msgstr "άγνωστος τύπος!"
 
-#: src/insets/InsetIndex.cpp:452
+#: src/insets/InsetIndex.cpp:451
 msgid "Unknown index type!"
 msgstr "Άγνωστος τύπος ευρετηρίου!"
 
-#: src/insets/InsetIndex.cpp:453
+#: src/insets/InsetIndex.cpp:452
 #, fuzzy
 msgid "All indexes"
 msgstr "<Όλα τα ευρετήρια>"
 
-#: src/insets/InsetIndex.cpp:457
+#: src/insets/InsetIndex.cpp:456
 msgid "subindex"
 msgstr ""
 

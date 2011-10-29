@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-10-26 20:09+0200\n"
+"POT-Creation-Date: 2011-10-29 17:47-0400\n"
 "PO-Revision-Date: 2011-06-18 05:50+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -489,8 +489,8 @@ msgid "Remove the selected branch"
 msgstr "Smazat vybranou vìtev"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3713
-#: src/Buffer.cpp:3726 src/frontends/qt4/ui_IndicesUi.h:219
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3714
+#: src/Buffer.cpp:3727 src/frontends/qt4/ui_IndicesUi.h:219
 msgid "&Remove"
 msgstr "&Smazat"
 
@@ -523,8 +523,8 @@ msgstr "Pøidat &v¹echny"
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:205
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
-#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1059
-#: src/Buffer.cpp:2302 src/Buffer.cpp:3688 src/Buffer.cpp:3751
+#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1060
+#: src/Buffer.cpp:2303 src/Buffer.cpp:3689 src/Buffer.cpp:3752
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:179
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1829
@@ -1937,7 +1937,7 @@ msgstr ""
 msgid "&Use multiple indexes"
 msgstr "&Vícenásobný rejstøík"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:114 src/frontends/qt4/ui_IndicesUi.h:205
+#: src/frontends/qt4/ui/IndicesUi.ui:114
 msgid "&New:[[index]]"
 msgstr "&Nový"
 
@@ -2110,7 +2110,9 @@ msgstr "Vybrat jazykový balíèek, který má LyX pou¾ívat"
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:78
 msgid ""
 "Enter the command to load the language package (default: \\usepackage{babel})"
-msgstr "Zadejte pøíkaz pro naètení jazykového balíèku (standardnì \\usepackage{babel})"
+msgstr ""
+"Zadejte pøíkaz pro naètení jazykového balíèku (standardnì \\usepackage"
+"{babel})"
 
 #: src/frontends/qt4/ui/LineUi.ui:22
 msgid "Of&fset:"
@@ -2914,7 +2916,7 @@ msgstr "&Nejdel¹í znaèka"
 msgid "Line &spacing"
 msgstr "Øá&dkování"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1819
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1820
 #: src/frontends/qt4/GuiDocument.cpp:692
 msgid "Single"
 msgstr "Jedna"
@@ -2923,7 +2925,7 @@ msgstr "Jedna"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1825
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1826
 #: src/frontends/qt4/GuiDocument.cpp:696
 msgid "Double"
 msgstr "Dva"
@@ -10456,7 +10458,8 @@ msgid ""
 "Controls the layout of enumerate, itemize, description, and list/labeling. "
 "See section Customized Lists of the User's Guide for a detailed description."
 msgstr ""
-"Ovládá prostøedí seznamu, výètu, popisu volitelným argumentem. Více v u¾ivatelské pøíruèce."
+"Ovládá prostøedí seznamu, výètu, popisu volitelným argumentem. Více v "
+"u¾ivatelské pøíruèce."
 
 #: lib/layouts/enumitem.module:93
 msgid "Enumerate-Resume"
@@ -10556,7 +10559,8 @@ msgstr "Iniciálky"
 msgid ""
 "Define a style for paragraphs with an initial. See the EmbeddedObjects "
 "manual for a detailed description."
-msgstr "Definuj styl pro odstavce s Iniciálkou. Viz manuál pro vkládané objekty."
+msgstr ""
+"Definuj styl pro odstavce s Iniciálkou. Viz manuál pro vkládané objekty."
 
 #: lib/layouts/initials.module:14 lib/layouts/initials.module:16
 #: lib/layouts/initials.module:25 lib/layouts/initials.module:31
@@ -16719,55 +16723,55 @@ msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr "LyX nemohl vytvoøit pomocný adresáø '%1$s' (mo¾ná je zaplnìn disk?)"
 
-#: src/Buffer.cpp:401
+#: src/Buffer.cpp:402
 msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr "LyX se pokusil uzavøít dokument, který obsahuje neulo¾ené zmìny!\n"
 
-#: src/Buffer.cpp:403
+#: src/Buffer.cpp:404
 msgid "Attempting to close changed document!"
 msgstr "Pokus o uzavøení zmìnìného dokumentu!"
 
-#: src/Buffer.cpp:411
+#: src/Buffer.cpp:412
 msgid "Could not remove temporary directory"
 msgstr "Nelze smazat pomocný adresáø"
 
-#: src/Buffer.cpp:412
+#: src/Buffer.cpp:413
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Nelze smazat pomocný adresáø %1$s"
 
-#: src/Buffer.cpp:743
+#: src/Buffer.cpp:744
 msgid "Unknown document class"
 msgstr "Neznámá tøída dokumentu"
 
-#: src/Buffer.cpp:744
+#: src/Buffer.cpp:745
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "Pou¾ita standardní tøída dokumentu, nebo» tøída %1$s není známa."
 
-#: src/Buffer.cpp:748 src/Text.cpp:484
+#: src/Buffer.cpp:749 src/Text.cpp:484
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Neznámý token: %1$s %2$s\n"
 
-#: src/Buffer.cpp:752 src/Buffer.cpp:759 src/Buffer.cpp:782
+#: src/Buffer.cpp:753 src/Buffer.cpp:760 src/Buffer.cpp:783
 msgid "Document header error"
 msgstr "Chyba hlavièky dokumentu"
 
-#: src/Buffer.cpp:758
+#: src/Buffer.cpp:759
 msgid "\\begin_header is missing"
 msgstr "chybí \\begin_header"
 
-#: src/Buffer.cpp:781
+#: src/Buffer.cpp:782
 msgid "\\begin_document is missing"
 msgstr "chybí \\begin_document"
 
-#: src/Buffer.cpp:794 src/Buffer.cpp:800 src/BufferView.cpp:1428
+#: src/Buffer.cpp:795 src/Buffer.cpp:801 src/BufferView.cpp:1428
 #: src/BufferView.cpp:1434
 msgid "Changes not shown in LaTeX output"
 msgstr "Zmìny nezobrazeny v LaTeX-ovém výstupu"
 
-#: src/Buffer.cpp:795 src/BufferView.cpp:1429
+#: src/Buffer.cpp:796 src/BufferView.cpp:1429
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -16779,7 +16783,7 @@ msgstr ""
 "Prosím nainstalujte tyto balíèky nebo pøedefinujte \\lyxadded a "
 "\\lyxdeletedv LaTeX-ové preambuli."
 
-#: src/Buffer.cpp:801 src/BufferView.cpp:1435
+#: src/Buffer.cpp:802 src/BufferView.cpp:1435
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -16791,31 +16795,31 @@ msgstr ""
 "Prosím nainstalujte tyto balíèky nebo pøedefinujte \\lyxadded a "
 "\\lyxdeletedv LaTeX-ové preambuli."
 
-#: src/Buffer.cpp:839 src/BufferParams.cpp:414
-#: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:447
-#: src/insets/InsetIndex.cpp:711
+#: src/Buffer.cpp:840 src/BufferParams.cpp:414
+#: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:446
+#: src/insets/InsetIndex.cpp:710
 msgid "Index"
 msgstr "Index"
 
-#: src/Buffer.cpp:912 src/Buffer.cpp:956
+#: src/Buffer.cpp:913 src/Buffer.cpp:957
 msgid "Document format failure"
 msgstr "Chyba formátování dokumentu"
 
-#: src/Buffer.cpp:913
+#: src/Buffer.cpp:914
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s konèí neoèekávanì, co¾ znamená, ¾e je pravdìpodobnì po¹kozen."
 
-#: src/Buffer.cpp:957
+#: src/Buffer.cpp:958
 #, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "%1$s není èitelný dokument LyX-u."
 
-#: src/Buffer.cpp:982
+#: src/Buffer.cpp:983
 msgid "Conversion failed"
 msgstr "Konverze se nezdaøila"
 
-#: src/Buffer.cpp:983
+#: src/Buffer.cpp:984
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -16824,11 +16828,11 @@ msgstr ""
 "%1$s je z odli¹né verze LyX-u, ale pomocný soubor pro jeho konverzi nemù¾e "
 "být vytvoøen."
 
-#: src/Buffer.cpp:993
+#: src/Buffer.cpp:994
 msgid "Conversion script not found"
 msgstr "Nenalezen konverzní skript"
 
-#: src/Buffer.cpp:994
+#: src/Buffer.cpp:995
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -16836,34 +16840,34 @@ msgid ""
 msgstr ""
 "%1$s je z odli¹né verze LyX-u, ale konverzní skript lyx2lyx nebyl nalezen."
 
-#: src/Buffer.cpp:1017 src/Buffer.cpp:1024
+#: src/Buffer.cpp:1018 src/Buffer.cpp:1025
 msgid "Conversion script failed"
 msgstr "Konverzní skript selhal"
 
-#: src/Buffer.cpp:1018
+#: src/Buffer.cpp:1019
 #, c-format
 msgid ""
 "%1$s is from an older version of LyX and the lyx2lyx script failed to "
 "convert it."
 msgstr "%1$s je ze star¹í verze LyX-u a skript lyx2lyx selhal pøi konverzi."
 
-#: src/Buffer.cpp:1025
+#: src/Buffer.cpp:1026
 #, c-format
 msgid ""
 "%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
 "it."
 msgstr "%1$s je z novìj¹í verze LyX-u a skript lyx2lyx selhal pøi konverzi."
 
-#: src/Buffer.cpp:1046 src/Buffer.cpp:3698 src/Buffer.cpp:3760
+#: src/Buffer.cpp:1047 src/Buffer.cpp:3699 src/Buffer.cpp:3761
 msgid "File is read-only"
 msgstr "Dokument je jen ke ètení"
 
-#: src/Buffer.cpp:1047
+#: src/Buffer.cpp:1048
 #, c-format
 msgid "The file %1$s cannot be written because it is marked as read-only."
 msgstr "Soubor %1$s nelze zapsat, proto¾e je nastaven pouze pro ètení."
 
-#: src/Buffer.cpp:1056
+#: src/Buffer.cpp:1057
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
@@ -16871,21 +16875,21 @@ msgid ""
 msgstr ""
 "Dokument %1$s byl externì modifikován. Opravdu chcete tento soubor pøepsat?"
 
-#: src/Buffer.cpp:1058
+#: src/Buffer.cpp:1059
 msgid "Overwrite modified file?"
 msgstr "Pøepsat modifikovaný soubor?"
 
-#: src/Buffer.cpp:1059 src/Buffer.cpp:2302 src/Exporter.cpp:50
+#: src/Buffer.cpp:1060 src/Buffer.cpp:2303 src/Exporter.cpp:50
 #: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2114
 #: src/frontends/qt4/GuiView.cpp:2303
 msgid "&Overwrite"
 msgstr "&Pøepsat"
 
-#: src/Buffer.cpp:1088
+#: src/Buffer.cpp:1089
 msgid "Backup failure"
 msgstr "Zálohování selhalo"
 
-#: src/Buffer.cpp:1089
+#: src/Buffer.cpp:1090
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -16894,46 +16898,46 @@ msgstr ""
 "LyX nebyl schopen vytvoøit zálo¾ní soubor v %1$s.\n"
 "Zkontrolujte, zda-li daný adresáø existuje a lze do nìj zapisovat."
 
-#: src/Buffer.cpp:1115
+#: src/Buffer.cpp:1116
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Ukládá se %1$s..."
 
-#: src/Buffer.cpp:1130
+#: src/Buffer.cpp:1131
 msgid " could not write file!"
 msgstr " nepodaøilo se zapsat soubor!"
 
-#: src/Buffer.cpp:1138
+#: src/Buffer.cpp:1139
 msgid " done."
 msgstr " hotovo."
 
-#: src/Buffer.cpp:1153
+#: src/Buffer.cpp:1154
 #, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Pokus o ulo¾ení dokumentu %1$s\n"
 
-#: src/Buffer.cpp:1163 src/Buffer.cpp:1176 src/Buffer.cpp:1190
+#: src/Buffer.cpp:1164 src/Buffer.cpp:1177 src/Buffer.cpp:1191
 #, c-format
 msgid "Saved to %1$s. Phew.\n"
 msgstr "Úspì¹nì ulo¾eno do %1$s.\n"
 
-#: src/Buffer.cpp:1166
+#: src/Buffer.cpp:1167
 msgid "Save failed! Trying again...\n"
 msgstr "Ulo¾ení se nepovedlo! Nový pokus...\n"
 
-#: src/Buffer.cpp:1180
+#: src/Buffer.cpp:1181
 msgid "Save failed! Trying yet again...\n"
 msgstr "Ulo¾ení se nepovedlo! Dal¹í pokus...\n"
 
-#: src/Buffer.cpp:1194
+#: src/Buffer.cpp:1195
 msgid "Save failed! Bummer. Document is lost."
 msgstr "Ulo¾ení se nepovedlo! Dokument je ztracen."
 
-#: src/Buffer.cpp:1281
+#: src/Buffer.cpp:1282
 msgid "Iconv software exception Detected"
 msgstr "Iconv detekoval softwarovou vyjímku"
 
-#: src/Buffer.cpp:1281
+#: src/Buffer.cpp:1282
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
@@ -16942,12 +16946,12 @@ msgstr ""
 "Zkontrolujte prosím, ¾e program pro podporu va¹eho kódování (%1$s) je "
 "správnì nainstalován."
 
-#: src/Buffer.cpp:1304
+#: src/Buffer.cpp:1305
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr "Nepodaøilo se najít pøíkaz LaTeX-u pro znak '%1$s' (hodnota %2$s)"
 
-#: src/Buffer.cpp:1307
+#: src/Buffer.cpp:1308
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -16957,19 +16961,19 @@ msgstr ""
 "zvoleném kódování.\n"
 "Mohla by pomoci zmìna kódování dokumentu na utf8."
 
-#: src/Buffer.cpp:1314
+#: src/Buffer.cpp:1315
 msgid "iconv conversion failed"
 msgstr "iconv konverze se nezdaøila"
 
-#: src/Buffer.cpp:1319
+#: src/Buffer.cpp:1320
 msgid "conversion failed"
 msgstr "konverze se nezdaøila"
 
-#: src/Buffer.cpp:1414
+#: src/Buffer.cpp:1415
 msgid "Uncodable character in file path"
 msgstr "Nekódovatelný znaky v cestì k souboru"
 
-#: src/Buffer.cpp:1416
+#: src/Buffer.cpp:1417
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -16984,59 +16988,61 @@ msgid ""
 msgstr ""
 "Cesta k va¹emu dokumentu\n"
 "(%1$s)\n"
-"obsahuje znaky, které nejsou pou¾itelné "
-"v aktuálním kódování dokumentu (jmenovitì %2$s). To mù¾e vyústit v neúplný výstup pøi sazbì dokumentu v pøípadì, ¾e TEXINPUTS neobsahuje cestu k dokumentu a explicitnì nepou¾íváte relativní cesty v preambuli nebo TeX-ovém kódu.\n"
+"obsahuje znaky, které nejsou pou¾itelné v aktuálním kódování dokumentu "
+"(jmenovitì %2$s). To mù¾e vyústit v neúplný výstup pøi sazbì dokumentu v "
+"pøípadì, ¾e TEXINPUTS neobsahuje cestu k dokumentu a explicitnì nepou¾íváte "
+"relativní cesty v preambuli nebo TeX-ovém kódu.\n"
 "\n"
 "Vyberte vhodné kódování dokumentu (napø. utf8)\n"
 "nebo zmìnte cestu k souboru."
 
-#: src/Buffer.cpp:1712
+#: src/Buffer.cpp:1713
 msgid "Running chktex..."
 msgstr "Spou¹tím chktex..."
 
-#: src/Buffer.cpp:1726
+#: src/Buffer.cpp:1727
 msgid "chktex failure"
 msgstr "chktex selhal"
 
-#: src/Buffer.cpp:1727
+#: src/Buffer.cpp:1728
 msgid "Could not run chktex successfully."
 msgstr "chktex nelze úspì¹nì spustit."
 
-#: src/Buffer.cpp:1971
+#: src/Buffer.cpp:1972
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Nedostatek informace pro export do formátu %1$s."
 
-#: src/Buffer.cpp:2043 src/frontends/qt4/GuiView.cpp:3143
+#: src/Buffer.cpp:2044 src/frontends/qt4/GuiView.cpp:3143
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Chyba pøi exportu do formátu %1$s."
 
-#: src/Buffer.cpp:2126
+#: src/Buffer.cpp:2127
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "Vìtev \"%1$s\" ji¾ existuje."
 
-#: src/Buffer.cpp:2156
+#: src/Buffer.cpp:2157
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "Vìtev \"%1$s\" neexistuje."
 
-#: src/Buffer.cpp:2216
+#: src/Buffer.cpp:2217
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Nelze správnì dekódovat \"%1$s\""
 
-#: src/Buffer.cpp:2223
+#: src/Buffer.cpp:2224
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Neznámý cíl \"%1$s\""
 
-#: src/Buffer.cpp:2233
+#: src/Buffer.cpp:2234
 msgid "Error exporting to DVI."
 msgstr "Chyba pøi exportu do DVI."
 
-#: src/Buffer.cpp:2298 src/Exporter.cpp:45
+#: src/Buffer.cpp:2299 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -17047,73 +17053,73 @@ msgstr ""
 "\n"
 "Chcete tento soubor pøepsat?"
 
-#: src/Buffer.cpp:2301 src/Exporter.cpp:48
+#: src/Buffer.cpp:2302 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Pøepsat soubor?"
 
-#: src/Buffer.cpp:2318
+#: src/Buffer.cpp:2319
 msgid "Error running external commands."
 msgstr "Chyba pøi bìhu externích pøíkazù."
 
-#: src/Buffer.cpp:3111
+#: src/Buffer.cpp:3112
 msgid "Preview source code"
 msgstr "Náhled zdrojového kódu"
 
-#: src/Buffer.cpp:3129
+#: src/Buffer.cpp:3130
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Náhled zdrojového kódu pro odstavec %1$d"
 
-#: src/Buffer.cpp:3133
+#: src/Buffer.cpp:3134
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Náhled zdrojového kódu pro odstavce %1$s - %2$s"
 
-#: src/Buffer.cpp:3252
+#: src/Buffer.cpp:3253
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatické ulo¾ení %1$s"
 
-#: src/Buffer.cpp:3306
+#: src/Buffer.cpp:3307
 msgid "Autosave failed!"
 msgstr "Automatické ulo¾ení selhalo!"
 
-#: src/Buffer.cpp:3367
+#: src/Buffer.cpp:3368
 msgid "Autosaving current document..."
 msgstr "Automatické ulo¾ení souèasného dokumentu"
 
-#: src/Buffer.cpp:3457
+#: src/Buffer.cpp:3458
 msgid "Couldn't export file"
 msgstr "Nelze exportovat soubor"
 
-#: src/Buffer.cpp:3458
+#: src/Buffer.cpp:3459
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "®ádná informace pro export formátu %1$s."
 
-#: src/Buffer.cpp:3529
+#: src/Buffer.cpp:3530
 msgid "File name error"
 msgstr "Chyba ve jménì souboru"
 
-#: src/Buffer.cpp:3530
+#: src/Buffer.cpp:3531
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Cesta k dokumentu nesmí obsahovat mezery."
 
-#: src/Buffer.cpp:3615
+#: src/Buffer.cpp:3616
 msgid "Document export cancelled."
 msgstr "Export dokumentu zru¹en."
 
-#: src/Buffer.cpp:3625
+#: src/Buffer.cpp:3626
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument exportován jako %1$s do souboru `%2$s'"
 
-#: src/Buffer.cpp:3631
+#: src/Buffer.cpp:3632
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument exportován jako %1$s"
 
-#: src/Buffer.cpp:3684
+#: src/Buffer.cpp:3685
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17124,19 +17130,19 @@ msgstr ""
 "\n"
 "Obnovit z nouzového ulo¾ení ?"
 
-#: src/Buffer.cpp:3687
+#: src/Buffer.cpp:3688
 msgid "Load emergency save?"
 msgstr "Naèíst nouzové ulo¾ení ?"
 
-#: src/Buffer.cpp:3688
+#: src/Buffer.cpp:3689
 msgid "&Recover"
 msgstr "&Obnovit"
 
-#: src/Buffer.cpp:3688
+#: src/Buffer.cpp:3689
 msgid "&Load Original"
 msgstr "&Naèíst pùvodní"
 
-#: src/Buffer.cpp:3699
+#: src/Buffer.cpp:3700
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -17146,15 +17152,15 @@ msgstr ""
 "má nastaveny atributy pouze pro ètení. Ujistìte se prosím, ¾e jste ulo¾ili "
 "tento dokument jako odli¹ný soubor."
 
-#: src/Buffer.cpp:3705
+#: src/Buffer.cpp:3706
 msgid "Document was successfully recovered."
 msgstr "Dokument byl úspì¹nì obnoven."
 
-#: src/Buffer.cpp:3707
+#: src/Buffer.cpp:3708
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument NEBYL úspì¹nì obnoven."
 
-#: src/Buffer.cpp:3708
+#: src/Buffer.cpp:3709
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17163,27 +17169,27 @@ msgstr ""
 "Smazat nyní soubor s nouzovým ulo¾ením ?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3712 src/Buffer.cpp:3724
+#: src/Buffer.cpp:3713 src/Buffer.cpp:3725
 msgid "Delete emergency file?"
 msgstr "Smazat nouzové ulo¾ení ?"
 
-#: src/Buffer.cpp:3713 src/Buffer.cpp:3726
+#: src/Buffer.cpp:3714 src/Buffer.cpp:3727
 msgid "&Keep"
 msgstr "&Ponechat"
 
-#: src/Buffer.cpp:3717
+#: src/Buffer.cpp:3718
 msgid "Emergency file deleted"
 msgstr "Soubor s nouzovým ulo¾ením smazán."
 
-#: src/Buffer.cpp:3718
+#: src/Buffer.cpp:3719
 msgid "Do not forget to save your file now!"
 msgstr "Nezapomeòte ulo¾it nyní vá¹ soubor!"
 
-#: src/Buffer.cpp:3725
+#: src/Buffer.cpp:3726
 msgid "Remove emergency file now?"
 msgstr "Smazat nyní soubor s nouzovým ulo¾ením ?"
 
-#: src/Buffer.cpp:3748
+#: src/Buffer.cpp:3749
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17194,19 +17200,19 @@ msgstr ""
 "\n"
 "Naèíst místo toho zálohu ?"
 
-#: src/Buffer.cpp:3750
+#: src/Buffer.cpp:3751
 msgid "Load backup?"
 msgstr "Naèíst zálohu ?"
 
-#: src/Buffer.cpp:3751
+#: src/Buffer.cpp:3752
 msgid "&Load backup"
 msgstr "&Naèíst zálohu"
 
-#: src/Buffer.cpp:3751
+#: src/Buffer.cpp:3752
 msgid "Load &original"
 msgstr "Naèíst &pùvodní"
 
-#: src/Buffer.cpp:3761
+#: src/Buffer.cpp:3762
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17216,25 +17222,25 @@ msgstr ""
 "nastaveny atributy pouze pro ètení. Ujistìte se prosím, ¾e jste ulo¾ili "
 "tento dokument jako odli¹ný soubor."
 
-#: src/Buffer.cpp:4100 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4101 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Nesmyslné! "
 
-#: src/Buffer.cpp:4221
+#: src/Buffer.cpp:4222
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s znovunaèten."
 
-#: src/Buffer.cpp:4224
+#: src/Buffer.cpp:4225
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Nelze znovunaèíst dokument %1$s"
 
-#: src/Buffer.cpp:4290
+#: src/Buffer.cpp:4291
 msgid "Included File Invalid"
 msgstr "Neplatný soubor k zahrnutí"
 
-#: src/Buffer.cpp:4291
+#: src/Buffer.cpp:4292
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -19152,7 +19158,7 @@ msgstr "Neznámý index autora pro zmìnu: %1$d\n"
 msgid "Unknown token"
 msgstr "Neznámý symbol"
 
-#: src/Text.cpp:946
+#: src/Text.cpp:947
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -19160,66 +19166,66 @@ msgstr ""
 "Nelze vlo¾it mezeru na zaèátek odstavce. Pøeètìte si prosím pøíruèku "
 "(tutorial)."
 
-#: src/Text.cpp:954
+#: src/Text.cpp:955
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Dvì mezery nelze psát tímto zpùsobem. Pøeètìte si prosím pøíruèku(tutorial)."
 
-#: src/Text.cpp:1785
+#: src/Text.cpp:1786
 msgid "[Change Tracking] "
 msgstr "[Zmìna revize] "
 
-#: src/Text.cpp:1791
+#: src/Text.cpp:1792
 msgid "Change: "
 msgstr "Zmìna: "
 
-#: src/Text.cpp:1795
+#: src/Text.cpp:1796
 msgid " at "
 msgstr " na "
 
-#: src/Text.cpp:1805
+#: src/Text.cpp:1806
 #, c-format
 msgid "Font: %1$s"
 msgstr "Font: %1$s"
 
-#: src/Text.cpp:1810
+#: src/Text.cpp:1811
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Hloubka: %1$d"
 
-#: src/Text.cpp:1816
+#: src/Text.cpp:1817
 msgid ", Spacing: "
 msgstr ", Mezery: "
 
-#: src/Text.cpp:1822 src/frontends/qt4/GuiDocument.cpp:694
+#: src/Text.cpp:1823 src/frontends/qt4/GuiDocument.cpp:694
 msgid "OneHalf"
 msgstr "Jedna a pùl"
 
-#: src/Text.cpp:1828
+#: src/Text.cpp:1829
 msgid "Other ("
 msgstr "Dal¹í ("
 
-#: src/Text.cpp:1837
+#: src/Text.cpp:1838
 msgid ", Inset: "
 msgstr ", Vlo¾ka: "
 
-#: src/Text.cpp:1838
+#: src/Text.cpp:1839
 msgid ", Paragraph: "
 msgstr ", Odstavec: "
 
-#: src/Text.cpp:1839
+#: src/Text.cpp:1840
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1840
+#: src/Text.cpp:1841
 msgid ", Position: "
 msgstr ", Pozice: "
 
-#: src/Text.cpp:1846
+#: src/Text.cpp:1847
 msgid ", Char: 0x"
 msgstr ", Znak: 0x"
 
-#: src/Text.cpp:1848
+#: src/Text.cpp:1849
 msgid ", Boundary: "
 msgstr ", Okraj: "
 
@@ -19537,12 +19543,12 @@ msgstr ""
 "Pokraèovat?"
 
 #: src/VCBackend.cpp:1306 src/VCBackend.cpp:1310
-#: src/frontends/qt4/FindAndReplace.cpp:338
+#: src/frontends/qt4/FindAndReplace.cpp:345
 msgid "&Yes"
 msgstr "&Ano"
 
 #: src/VCBackend.cpp:1306 src/VCBackend.cpp:1310
-#: src/frontends/qt4/FindAndReplace.cpp:338
+#: src/frontends/qt4/FindAndReplace.cpp:345
 msgid "&No"
 msgstr "&Ne"
 
@@ -19712,19 +19718,19 @@ msgstr ""
 "%1$s: bylo dosa¾eno zaèátku dokumentu pøi zpìtném vyhledávání.\n"
 "Pokraèovat ve vyhledávání od konce dokumentu?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:337
+#: src/frontends/qt4/FindAndReplace.cpp:344
 msgid "Wrap search?"
 msgstr "Vyhledávat od zaèátku/konce?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:382
+#: src/frontends/qt4/FindAndReplace.cpp:389
 msgid "Nothing to search"
 msgstr "Nic k vyhledávání"
 
-#: src/frontends/qt4/FindAndReplace.cpp:422
+#: src/frontends/qt4/FindAndReplace.cpp:429
 msgid "No open document(s) in which to search"
 msgstr "®ádné otevøené dokumenty pro vyhledávání"
 
-#: src/frontends/qt4/FindAndReplace.cpp:522
+#: src/frontends/qt4/FindAndReplace.cpp:529
 msgid "Advanced Find and Replace"
 msgstr "Pokroèilé vyhledávání"
 
@@ -22630,6 +22636,10 @@ msgstr "Seznam vìtví"
 msgid "List of Changes"
 msgstr "Seznam Zmìn"
 
+#: src/frontends/qt4/ui_IndicesUi.h:205
+msgid "&New:"
+msgstr "&Nová:"
+
 #: src/insets/ExternalSupport.cpp:369 src/insets/InsetBibtex.cpp:291
 #: src/insets/InsetGraphics.cpp:597 src/insets/InsetInclude.cpp:535
 msgid ""
@@ -22801,7 +22811,7 @@ msgstr "%1$s (%2$s, %3$s)"
 msgid "active"
 msgstr "aktivní"
 
-#: src/insets/InsetBranch.cpp:68 src/insets/InsetIndex.cpp:455
+#: src/insets/InsetBranch.cpp:68 src/insets/InsetIndex.cpp:454
 msgid "non-active"
 msgstr "neaktivní"
 
@@ -23074,23 +23084,23 @@ msgstr ""
 "Prosím nastavte tøídìní této polo¾ky ruènì podle\n"
 "popisu v u¾ivatelské pøíruèce."
 
-#: src/insets/InsetIndex.cpp:276
+#: src/insets/InsetIndex.cpp:275
 msgid "Index Entry"
 msgstr "Heslo rejstøíku"
 
-#: src/insets/InsetIndex.cpp:283 src/insets/InsetIndex.cpp:304
+#: src/insets/InsetIndex.cpp:282 src/insets/InsetIndex.cpp:303
 msgid "unknown type!"
 msgstr "neznámý typ!"
 
-#: src/insets/InsetIndex.cpp:452
+#: src/insets/InsetIndex.cpp:451
 msgid "Unknown index type!"
 msgstr "Neznámý typ rejstøíku"
 
-#: src/insets/InsetIndex.cpp:453
+#: src/insets/InsetIndex.cpp:452
 msgid "All indexes"
 msgstr "V¹echny rejstøíky"
 
-#: src/insets/InsetIndex.cpp:457
+#: src/insets/InsetIndex.cpp:456
 msgid "subindex"
 msgstr "podrejstøík"
 
@@ -23991,9 +24001,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámý u¾ivatel"
-
-#~ msgid "&New:"
-#~ msgstr "&Nová:"
 
 #~ msgid "Preface:"
 #~ msgstr "Preface:"
