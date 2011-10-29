@@ -651,6 +651,7 @@ void handle_package(Parser &p, string const & name, string const & opts,
 
 #if 0
 	// do not ignore as long as we don't support all commands (e.g. \xout is missing)
+	// and as long as we don't support change tracking
 	else if (name == "ulem")
 		; // ignore this
 #endif
