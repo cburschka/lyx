@@ -49,6 +49,8 @@ const char * const modules_placeholder = "\001modules\001";
 // needed to handle encodings with babel
 bool one_language = true;
 string h_inputencoding = "auto";
+
+// necessary to set the separation when \setlength is parsed
 string h_paragraph_separation = "indent";
 
 // necessary to avoid that our preamble stuff is added at each tex2lyx run
@@ -180,11 +182,12 @@ const char * const known_if_3arg_commands[] = {"@ifundefined", "IfFileExists",
 
 // default settings
 ostringstream h_preamble;
-string h_textclass               = "article";
-string h_use_default_options     = "false";
-string h_options;
-string h_language                = "english";
-string h_language_package        = "none";
+string h_backgroundcolor;
+string h_boxbgcolor;
+string h_cite_engine             = "basic";
+string h_defskip                 = "medskip";
+string h_float_placement;
+string h_fontcolor;
 string h_fontencoding            = "default";
 string h_font_roman              = "default";
 string h_font_sans               = "default";
@@ -195,10 +198,23 @@ string h_font_osf                = "false";
 string h_font_sf_scale           = "100";
 string h_font_tt_scale           = "100";
 string h_graphics                = "default";
-string h_float_placement;
+string h_html_be_strict          = "false";
+string h_html_css_as_file        = "0";
+string h_html_math_output        = "0";
+string h_language                = "english";
+string h_language_package        = "none";
+string h_listings_params;
+string h_margins;
+string h_notefontcolor;
+string h_options;
+string h_output_changes          = "false";
+string h_papercolumns            = "1";
 string h_paperfontsize           = "default";
-string h_spacing                 = "single";
-string h_use_hyperref            = "0";
+string h_paperorientation        = "portrait";
+string h_paperpagestyle          = "default";
+string h_papersides;
+string h_papersize               = "default";
+string h_paragraph_indentation   = "default";
 string h_pdf_title;
 string h_pdf_author;
 string h_pdf_subject;
@@ -214,37 +230,23 @@ string h_pdf_backref             = "section";
 string h_pdf_pdfusetitle         = "1";
 string h_pdf_pagemode;
 string h_pdf_quoted_options;
-string h_papersize               = "default";
+string h_quotes_language         = "english";
+string h_secnumdepth             = "3";
+string h_spacing                 = "single";
+string h_suppress_date           = "false";
+string h_textclass               = "article";
+string h_tocdepth                = "3";
+string h_tracking_changes        = "false";
+string h_use_bibtopic            = "false";
 string h_use_geometry            = "false";
 string h_use_amsmath             = "1";
+string h_use_default_options     = "false";
 string h_use_esint               = "1";
+string h_use_hyperref            = "0";
 string h_use_mhchem              = "0";
 string h_use_mathdots            = "0";
-string h_use_undertilde          = "0";
-string h_cite_engine             = "basic";
-string h_use_bibtopic            = "false";
-string h_paperorientation        = "portrait";
-string h_suppress_date           = "false";
 string h_use_refstyle            = "0";
-string h_backgroundcolor;
-string h_boxbgcolor;
-string h_fontcolor;
-string h_notefontcolor;
-string h_secnumdepth             = "3";
-string h_tocdepth                = "3";
-string h_defskip                 = "medskip";
-string h_paragraph_indentation   = "default";
-string h_quotes_language         = "english";
-string h_papercolumns            = "1";
-string h_papersides;
-string h_paperpagestyle          = "default";
-string h_listings_params;
-string h_tracking_changes        = "false";
-string h_output_changes          = "false";
-string h_html_math_output        = "0";
-string h_html_css_as_file        = "0";
-string h_html_be_strict          = "false";
-string h_margins;
+string h_use_undertilde          = "0";
 
 
 // returns true if at least one of the options in what has been found
