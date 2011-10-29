@@ -36,9 +36,10 @@ What's new
 
 ** TEX2LYX IMPROVEMENTS
 
-- Tex2lyx now produces the current file format 413.
+- tex2lyx (that is used to import TeX files) now produces the current
+  file format 413.
 
-- Tex2lyx now supports the conversion of:
+- tex2lyx now supports the conversion of:
 
   * The font packages utopia, fourier, ccfonts, chancery and beraserif.
 
@@ -49,7 +50,7 @@ What's new
     (\color, \pagecolor), the background color of shaded boxes and the
     text color of greyed-out notes.
 
-  * The LaTeX command \rule.
+  * Horizontal lines (\rule).
 
   * Phantom spaces (\phantom, \hphanton, \vphantom).
 
