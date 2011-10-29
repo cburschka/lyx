@@ -226,6 +226,9 @@ char const * const known_phrases[] = {"LyX", "TeX", "LaTeXe", "LaTeX", 0};
 char const * const known_coded_phrases[] = {"LyX", "TeX", "LaTeX2e", "LaTeX", 0};
 int const known_phrase_lengths[] = {3, 5, 7, 0};
 
+// string to store the float type to be able to determine the type of subfloats
+string float_type = "";
+
 
 /// splits "x=z, y=b" into a map and an ordered keyword vector
 void split_map(string const & s, map<string, string> & res, vector<string> & keys)
@@ -1057,6 +1060,14 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		eat_whitespace(p, os, parent_context, false);
 		parent_context.check_layout(os);
 		begin_inset(os, "Float " + unstarred_name + "\n");
+		// store the float type for subfloats
+		// subfloats only work with figures and tables
+		if (unstarred_name == "figure")
+			float_type = unstarred_name;
+		else if (unstarred_name == "table")
+			float_type = unstarred_name;
+		else
+			float_type = "";
 		if (p.hasOpt())
 			os << "placement " << p.getArg('[', ']') << '\n';
 		os << "wide " << convert<string>(is_starred)
@@ -1068,6 +1079,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		// we must make sure that the next item gets a \begin_layout.
 		parent_context.new_paragraph(os);
 		p.skip_spaces();
+		// the float is parsed thus delete the type
+		float_type = "";
 	}
 
 	else if (unstarred_name == "sidewaysfigure"
@@ -2128,7 +2141,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.skip_spaces();
 			context.check_layout(os);
 			p.skip_spaces();
-			begin_inset(os, "Caption\n\n");
+			begin_inset(os, "Caption\n");
 			Context newcontext(true, context.textclass);
 			newcontext.font = context.font;
 			newcontext.check_layout(os);
@@ -2149,6 +2162,68 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 			p.skip_spaces();
 			newcontext.check_end_layout(os);
+		}
+
+		else if (t.cs() == "subfloat") {
+			// the syntax is \subfloat[caption]{content}
+			// if it is a table of figure depends on the surrounding float
+			bool has_caption = false;
+			p.skip_spaces();
+			// do nothing if there is no outer float
+			if (!float_type.empty()) {
+				context.check_layout(os);
+				p.skip_spaces();
+				begin_inset(os, "Float " + float_type + "\n");
+				os << "wide false"
+				   << "\nsideways false"
+				   << "\nstatus collapsed\n\n";
+				// test for caption
+				string caption;
+				if (p.next_token().cat() != catEscape &&
+						p.next_token().character() == '[') {
+							p.get_token(); // eat '['
+							caption = parse_text_snippet(p, FLAG_BRACK_LAST, outer, context);
+							has_caption = true;
+				}
+				// the content
+				parse_text_in_inset(p, os, FLAG_ITEM, outer, context);
+				// the caption comes always as the last
+				if (has_caption) {
+					// we must make sure that the caption gets a \begin_layout
+					os << "\n\\begin_layout Plain Layout";
+					p.skip_spaces();
+					begin_inset(os, "Caption\n");
+					Context newcontext(true, context.textclass);
+					newcontext.font = context.font;
+					newcontext.check_layout(os);
+					os << caption << "\n";
+					newcontext.check_end_layout(os);
+					// We don't need really a new paragraph, but
+					// we must make sure that the next item gets a \begin_layout.
+					//newcontext.new_paragraph(os);
+					end_inset(os);
+					p.skip_spaces();
+				}
+				// We don't need really a new paragraph, but
+				// we must make sure that the next item gets a \begin_layout.
+				if (has_caption)
+					context.new_paragraph(os);
+				end_inset(os);
+				p.skip_spaces();
+				context.check_end_layout(os);
+				// close the layout we opened
+				if (has_caption)
+					os << "\n\\end_layout\n";
+			} else {
+				// if the float type is not supported or there is no surrounding float
+				// output it as ERT
+				if (p.hasOpt()) {
+					string opt_arg = convert_command_inset_arg(p.getArg('[', ']'));
+					handle_ert(os, t.asInput() + '[' + opt_arg +
+				               "]{" + p.verbatim_item() + '}', context);
+				} else
+					handle_ert(os, t.asInput() + "{" + p.verbatim_item() + '}', context);
+			}
 		}
 
 		else if (t.cs() == "includegraphics") {
