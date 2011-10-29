@@ -528,20 +528,9 @@ QVector<GuiWorkArea*> GuiView::GuiViewPrivate::guiWorkAreas()
 	return areas;
 }
 
-
-#if QT_VERSION >= 0x040400
-
-void GuiView::processingThreadStarted()
+static void handleExportStatus(GuiView * view, Buffer::ExportStatus status,
+	string const & format)
 {
-}
-
-
-void GuiView::processingThreadFinished(bool show_errors)
-{
-	QFutureWatcher<Buffer::ExportStatus> const * watcher =
-		static_cast<QFutureWatcher<Buffer::ExportStatus> const *>(sender());
-
-	Buffer::ExportStatus const status = watcher->result();
 	docstring msg;
 	switch (status) {
 	case Buffer::ExportSuccess:
@@ -560,7 +549,24 @@ void GuiView::processingThreadFinished(bool show_errors)
 		msg = _("Error while previewing format: %1$s");
 		break;
 	}
-	message(bformat(msg, from_utf8(d.processing_format)));
+	view->message(bformat(msg, from_utf8(format)));
+}
+
+
+#if QT_VERSION >= 0x040400
+
+void GuiView::processingThreadStarted()
+{
+}
+
+
+void GuiView::processingThreadFinished(bool show_errors)
+{
+	QFutureWatcher<Buffer::ExportStatus> const * watcher =
+		static_cast<QFutureWatcher<Buffer::ExportStatus> const *>(sender());
+
+	Buffer::ExportStatus const status = watcher->result();
+	handleExportStatus(this, status, d.processing_format);
 	
 	updateToolbars();
 	if (show_errors) {
@@ -3113,7 +3119,7 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 	string format = argument;
 	if (format.empty())
 		format = used_buffer->params().getDefaultOutputFormat();
-
+	processing_format = format;
 #if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
 	if (!msg.empty()) {
 		progress_->clearMessages();
@@ -3126,21 +3132,24 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 				used_buffer->clone(),
 				format);
 	setPreviewFuture(f);
-	processing_format = format;
 	last_export_format = used_buffer->params().bufferFormat();
 	(void) syncFunc;
 	(void) previewFunc;
 	// We are asynchronous, so we don't know here anything about the success
 	return true;
 #else
+	Buffer::ExportStatus status;
 	if (syncFunc) {
 		// TODO check here if it breaks exporting with Qt < 4.4
-		return (used_buffer->*syncFunc)(format, true);
+		status = (used_buffer->*syncFunc)(format, true);
 	} else if (previewFunc) {
-		return (used_buffer->*previewFunc)(format, false);
-	}
+		status = (used_buffer->*previewFunc)(format); 
+	} else
+		return false;
+	handleExportStatus(gv_, status, format);
 	(void) asyncFunc;
-	return false;
+	return (status == Buffer::ExportSuccess 
+			|| status == Buffer::PreviewSuccess);
 #endif
 }
 
