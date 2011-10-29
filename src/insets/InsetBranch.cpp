@@ -230,8 +230,12 @@ int InsetBranch::docbook(odocstream & os,
 
 docstring InsetBranch::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 {
-	if (isBranchSelected())
-		xhtmlParagraphs(text(), buffer(), xs, rp);
+	if (isBranchSelected()) {
+		OutputParams newrp = rp;
+		newrp.par_begin = 0;
+		newrp.par_end = text().paragraphs().size();
+		xhtmlParagraphs(text(), buffer(), xs, newrp);
+	}
 	return docstring();
 }
 
