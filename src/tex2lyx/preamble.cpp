@@ -59,7 +59,6 @@ namespace {
 //"chinese-simplified", "chinese-traditional", "japanese", "korean"
 // Both changes require first that support for non-babel languages (CJK,
 // armtex) is added.
-// add turkmen for lyxformat 383
 /**
  * known babel language names (including synonyms)
  * not in standard babel: arabic, arabtex, armenian, belarusian, serbian-latin, thai
@@ -549,7 +548,6 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		// babel call in every roundtrip.
 		// But the user could have defined babel-specific things afterwards. So
 		// we need to keep it in the preamble to prevent cases like bug #7861.
-		h_preamble << "\\usepackage{babel}\n";
 		if (!opts.empty()) {
 			// check if more than one option was used - used later for inputenc
 			// in case inputenc is parsed before babel, set the encoding to auto
@@ -561,8 +559,17 @@ void handle_package(Parser &p, string const & name, string const & opts,
 			// call as document language. If there is no such language option, the
 			// last language in the documentclass options is used.
 			handle_opt(options, known_languages, h_language);
+			// If babel is called with options, LyX puts them by default into the
+			// document class options. This works for most languages, except
+			// for Latvian, Lithuanian, Mongolian, Turkmen and Vietnamese and
+			// perhaps in future others.
+			// Therefore keep the babel call as it is as the user might have
+			// reasons for it.
+			h_preamble << "\\usepackage[" << opts << "]{babel}\n";
 			delete_opt(options, known_languages);
 		}
+		else
+			h_preamble << "\\usepackage{babel}\n";						
 	}
 
 	else if (name == "fontenc") {
