@@ -79,15 +79,16 @@ public:
 	};
 	///
 	InsetBox(Buffer *, std::string const &);
+
 	///
 	static std::string params2string(InsetBoxParams const &);
 	///
 	static void string2params(std::string const &, InsetBoxParams &);
 	///
 	InsetBoxParams const & params() const { return params_; }
-private:
-	///
-	friend class InsetBoxParams;
+
+	/// \name Public functions inherited from Inset class
+	//@{
 	///
 	InsetCode lyxCode() const { return BOX_CODE; }
 	///
@@ -96,8 +97,6 @@ private:
 	void write(std::ostream &) const;
 	///
 	void read(Lexer & lex);
-	///
-	void setButtonLabel();
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
@@ -108,9 +107,7 @@ private:
 	bool forcePlainLayout(idx_type = 0) const;
 	///
 	bool neverIndent() const { return true; }
-	/** returns false if, when outputing LaTeX, font changes should
-	    be closed before generating this inset. This is needed for
-	    insets that may contain several paragraphs */
+	///
 	bool inheritFont() const { return false; }
 	///
 	void latex(otexstream &, OutputParams const &) const;
@@ -123,19 +120,34 @@ private:
 	///
 	void validate(LaTeXFeatures &) const;
 	///
+	bool hasFixedWidth() const;
+	///
+	std::string contextMenuName() const;
+	//@}
+
+	/// \name Public functions inherited from InsetCollapsable class
+	//@{
+	///
+	void setButtonLabel();
+	//@}
+
+protected:
+	/// \name Protected functions inherited from Inset class
+	//@{
+	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
-	/// Is the width forced to some value?
-	bool hasFixedWidth() const;
 	///
 	Inset * clone() const { return new InsetBox(*this); }
+	//@}
+
+private:
 	/// used by the constructors
 	void init();
-	///
-	std::string contextMenuName() const;
 
 	///
+	friend class InsetBoxParams;
 	InsetBoxParams params_;
 };
 

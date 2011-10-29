@@ -32,28 +32,6 @@ void InsetArgument::write(ostream & os) const
 	InsetCollapsable::write(os);
 }
 
-
-void InsetArgument::latex(otexstream &, OutputParams const &) const
-{}
-
-
-int InsetArgument::plaintext(odocstream &, OutputParams const &) const
-{
-	return 0; // do not output optional arguments
-}
-
-
-int InsetArgument::docbook(odocstream &, OutputParams const &) const
-{
-	return 0;
-}
-
-
-docstring InsetArgument::xhtml(XHTMLStream &, OutputParams const &) const
-{
-	return docstring();
-}
-
 void InsetArgument::latexArgument(otexstream & os,
 		OutputParams const & runparams, bool optional) const
 {

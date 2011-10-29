@@ -32,28 +32,36 @@ public:
 	/// Outputting the parameter of a LaTeX command
 	void latexArgument(otexstream &, OutputParams const &,
 			bool optional) const;
+
+	/// \name Public functions inherited from Inset class
+	//@{
 	///
 	bool hasSettings() const { return false; }
-
-private:
-	/// code of the inset
+	///
 	InsetCode lyxCode() const { return ARG_CODE; }
 	///
 	docstring layoutName() const { return from_ascii("Argument"); }
-	/// Standard LaTeX output -- short-circuited
-	void latex(otexstream &, OutputParams const &) const;
-	/// Standard plain text output -- short-circuited
-	int plaintext(odocstream &, OutputParams const &) const;
-	/// Standard DocBook output -- short-circuited
-	int docbook(odocstream &, OutputParams const &) const;
-	/// Standard XHTML output -- short-circuited
-	docstring xhtml(XHTMLStream &, OutputParams const &) const;
-	/// Write out to the .lyx file
+	///
+	void latex(otexstream &, OutputParams const &) const { }
+	///
+	int plaintext(odocstream &, OutputParams const &) const { return 0; }
+	///
+	int docbook(odocstream &, OutputParams const &) const { return 0; }
+	///
+	docstring xhtml(XHTMLStream &, OutputParams const &) const 
+		{ return docstring(); };
+	///
 	void write(std::ostream & os) const;
-	/// should paragraph indendation be ommitted in any case?
+	///
 	bool neverIndent() const { return true; }
+	//@}
+
+protected:
+	/// \name Protected functions inherited from Inset class
+	//@{
 	///
 	Inset * clone() const { return new InsetArgument(*this); }
+	//@}
 };
 
 
