@@ -27,6 +27,8 @@ The following pref variables were changed in 2.0:
 
 The following pref variables are obsoleted in 2.0:
 
+- \\default_papersize
+
 The following new LyX functions have been introduced:
 
 - LFUN_BUFFER_EXPORT_AS <format> <filename>
@@ -36,9 +38,6 @@ The following new LyX functions have been introduced:
   Paste the clipboard contents as simple unformatted text.
   This is also available through a new menu voice within the
   [Edit]->[Paste Special...] sub-menu.
-
-//template, remove this entry later on
-- LFUN_BUFFER_TOGGLE_OUTPUT_SYNC ("buffer-toggle-output-sync").
 
 
 The following LyX functions have been removed:
@@ -65,12 +64,10 @@ The following LyX key bindings have been changed:
 New external programs and libraries:
 ------------------------------------
 
-LyX 2.0 introduces support for some new external helper programs/libraries,
-while the support for some existing programs has been dropped. This
-particularly applies to spell checking and the thesaurus.
+-
 
 
-Known issues in version 2.0.0
+Known issues in version 2.1.0
 -----------------------------
 
 - LyX needs to be run under Python 2 and will not work properly on systems
