@@ -154,6 +154,9 @@ What's new
 - Store the autosave files of unnamed buffers in the correct directory
   and make sure they are not left behind after saving (bug 7793).
 
+- Fix latex export of multilingual documents containing theorem-like
+  environments (bug 7800).
+
 
 * USER INTERFACE
 

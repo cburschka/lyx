@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "support/docstream.h"
+#include "support/lstrings.h"
 #include "support/unicode.h"
 
 #include <algorithm>
@@ -23,6 +24,8 @@
 using namespace std;
 
 using lyx::ucs4_codeset;
+using lyx::support::contains;
+using lyx::support::split;
 
 
 #if defined(_MSC_VER) && (_MSC_VER >= 1600)
@@ -474,7 +477,32 @@ otexstream & operator<<(otexstream & ots, docstring const & s)
 			ots.os() << "{}";
 		ots.protectSpace(false);
 	}
-	ots.os() << s;
+
+	if (contains(s, 0xF0000)) {
+		// Some encoding changes for the underlying stream are embedded
+		// in the docstring. The encoding names to be used are enclosed
+		// between the code points 0xF0000 and 0xF0001, the first two
+		// characters of plane 15, which is a Private Use Area whose
+		// codepoints don't have any associated glyph.
+		docstring s1;
+		docstring s2 = split(s, s1, 0xF0000);
+		while (true) {
+			if (!s1.empty())
+				ots.os() << s1;
+			if (s2.empty())
+				break;
+			docstring enc;
+			docstring const s3 = split(s2, enc, 0xF0001);
+			if (!contains(s2, 0xF0001))
+				s2 = split(enc, s1, 0xF0000);
+			else {
+				ots.os() << setEncoding(to_ascii(enc));
+				s2 = split(s3, s1, 0xF0000);
+			}
+		}
+	} else
+		ots.os() << s;
+
 	ots.lastChar(s[len - 1]);
 	ots.texrow().newlines(count(s.begin(), s.end(), '\n'));
 	ots.canBreakLine(s[len - 1] != '\n');
@@ -484,28 +512,14 @@ otexstream & operator<<(otexstream & ots, docstring const & s)
 
 otexstream & operator<<(otexstream & ots, string const & s)
 {
-	ots << s.c_str();
+	ots << from_utf8(s);
 	return ots;
 }
 
 
 otexstream & operator<<(otexstream & ots, char const * s)
 {
-	size_t const len = strlen(s);
-
-	// Check whether there's something to output
-	if (len == 0)
-		return ots;
-
-	if (ots.protectSpace()) {
-		if (!ots.canBreakLine() && s[0] == ' ')
-			ots.os() << "{}";
-		ots.protectSpace(false);
-	}
-	ots.os() << s;
-	ots.lastChar(s[len - 1]);
-	ots.texrow().newlines(count(s, s + len, '\n'));
-	ots.canBreakLine(s[len - 1] != '\n');
+	ots << from_utf8(s);
 	return ots;
 }
 
