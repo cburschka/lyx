@@ -33138,10 +33138,30 @@ wechselt zurück zum Stil mit den Standard-Kopf/Fußzeilen
 \end_layout
 
 \begin_layout Section
-Dokumentteile ansehen
+Dokumentteile vorschauen
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Dokumentteile-ansehen"
+name "sec:Dokumentteile-vorschauen"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Sofortige Vorschau
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Dokument ! Vorschau
+\end_layout
 
 \end_inset
 
@@ -33149,19 +33169,82 @@ name "sec:Dokumentteile-ansehen"
 \end_layout
 
 \begin_layout Standard
-LyX gestattet es, Teile Ihres Dokuments in der Druckvorschau anzusehen,
- ohne es zum Beispiel mit 
-\family sans
-Ansicht\SpecialChar \menuseparator
-DVI
+LyX ermöglicht es, Teile Ihres Dokuments als Vorschau anzusehen, so dass
+ der Schreib- und Denkfluss nicht durch die Ansicht der Ausgabe gestört
+ wird.
+\end_layout
+
+\begin_layout Subsection
+Voraussetzung
+\end_layout
+
+\begin_layout Standard
+Damit Vorschauen möglich sind, müssen Sie das LaTeX-Paket 
+\series bold
+preview-latex
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! preview-latex
+\end_layout
+
+\end_inset
+
+ (auf manchen System hat es den Namen 
+\series bold
+preview
+\series default
+) installiert haben.
+ Falls es noch nicht installiert ist, finden Sie es im TeX-Katalog, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "TeX-Katalog"
+
+\end_inset
+
+ oder im Paketmanager Ihres LaTeX-Systems.
+ Schönere Ergebnisse erzielen Sie, wenn Sie zusätzlich das Programm 
+\family typewriter
+pnmcrop
 \family default
- vollständig zu bearbeiten.
- Wenn Sie Ihre mathematischen Formeln als Druckvorschau sehen wollen, müssen
- Sie die notwendigen Pakete wie unten beschrieben installieren und unter
- 
+ des 
+\family typewriter
+netpbm
+\family default
+-Paketes installieren.
+ Unter LyX für Windows wird dieses und auch das LaTeX-Paket automatisch
+ zusammen mit LyX installiert.
+\end_layout
+
+\begin_layout Subsection
+Vorschau aktivieren
+\end_layout
+
+\begin_layout Standard
+Wenn Sie z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ alle mathematischen Formeln als Vorschau ansehen wollen, müssen Sie die
+ Option 
+\family sans
+Grafiken
+\begin_inset space ~
+\end_inset
+
+anzeigen
+\family default
+ im Dialog 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
+Einstellungen
+\family default
+ unter 
+\family sans
 Aussehen
 \begin_inset space \space{}
 \end_inset
@@ -33173,7 +33256,8 @@ Aussehen
 Handhabung\SpecialChar \menuseparator
 Anzeige
 \family default
- 
+ aktivieren.
+ Dann setzen Sie 
 \family sans
 Sofortige
 \begin_inset space \space{}
@@ -33185,7 +33269,7 @@ Vorschau
 \family sans
 An
 \family default
- setzen.
+.
  Die 
 \family sans
 Vorschaugröße
@@ -33194,77 +33278,307 @@ Vorschaugröße
 \end_layout
 
 \begin_layout Standard
-Vorschauen werden erzeugt, wenn Sie ein Dokument öffnen und etwas eingefügt
- haben.
- Von einem bereits geöffneten Dokument werden 
-\emph on
-keine
-\emph default
- Vorschauen erzeugt.
+Vorschauen werden erzeugt, wenn Sie ein Dokument öffnen oder eine Einfügung
+ verlassen.
 \end_layout
 
 \begin_layout Standard
-LyX erzeugt Vorschauen von mathematischen Objekten.
- Es erzeugt auch Vorschauen von Include-Einfügungen und Unterdokumenten,
- wenn Sie in dem entsprechenden Menü 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Hinweis:
+\series default
+ Von bereits geöffneten Dokumenten werden nicht in jedem Fall sofort Vorschauen
+ erzeugt, wenn man die Option 
 \family sans
-Vorschau
-\begin_inset space \space{}
+Grafiken
+\begin_inset space ~
 \end_inset
 
 anzeigen
 \family default
- ankreuzen.
- Das letztere ist nützlich, wenn Sie zum Beispiel eine LaTeX-Abbildung anschauen
- wollen.
+ aktiviert.
+ Man muss also diese Dokumente eventuell neu laden.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Ausgewählte Dokumentteile
 \end_layout
 
 \begin_layout Standard
-Damit Vorschauen möglich sind, müssen Sie zusätzliche Pakete installieren.
- Zunächst benötigen Sie das LaTeX-Paket 
-\family typewriter
-preview[-latex]
+Neben Formeln gibt es andere Fälle, in denen man vielleicht eine Vorschau
+ sehen möchte.
+ Zum Beispiel bei Dingen die LyX nicht anzeigen kann, wie Rotationen oder
+ Dinge, die LyX noch nicht unterstützt.
+ Dazu fügt man eine Vorschau-Einfügung über das Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Vorschau
 \family default
-, das Sie hier finden: 
-\begin_inset Flex URL
+ ein und fügt oder kopiert die Sachen, die vorgeschaut werden sollen, hinein.
+ Die Vorschau wird erzeugt, wenn sich der Cursor außerhalb der Vorschau-Einfügun
+g befindet.
+ Wenn man auf eine Vorschau klickt, kann das Vorgeschaute bearbeitet werden.
+\end_layout
+
+\begin_layout Standard
+Ein Beispiel: Für rotierte Boxen verwenden Sie den LaTeX-Befehl 
+\series bold
+
+\backslash
+rotatebox
+\series default
+, der noch nicht von LyX unterstützt wird.
+\begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 
-CTAN/support/preview-latex/
-\end_layout
+\series bold
 
-\end_inset
-
-.
- Schönere Ergebnisse erzielen Sie, wenn Sie zusätzlich 
-\family typewriter
-pnm\SpecialChar \-
-crop
-\family default
+\backslash
+rotatebox
+\series default
+ ist in Abschnitt 
+\emph on
+Rotierte Boxen
+\emph default
  des 
-\family typewriter
-netpbm
-\family default
--Paketes installieren.
- Unter Windows wird es zusammen mit LyX automatisch installiert.
+\emph on
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
+\emph default
+ Handbuchs erklärt.
+\end_layout
+
+\end_inset
+
+ Anstelle der TeX-Code Boxen wollen Sie in LyX die rotierten Boxen sehen,
+ um z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ den Rotationswinkel so einstellen zu können, dass er zum umgebenden Text
+ passt.
+ Daher fügen Sie eine Vorschau-Einfügung ein und kopieren den Text mit den
+ rotierten Boxen hinein.
+ Hier ist das Ergebnis:
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace bigskip
+\begin_inset Preview
+
+\begin_layout Standard
+Dies ist eine Zeile 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+rotatebox[origin=r]{-60}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Doublebox
+position "c"
+hor_pos "c"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "1in"
+special "width"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+mit rotiertem
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+, gerahmten Text 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+rotatebox[origin=lb]{60}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\int A\,\mathrm{d}x=B$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ und einer Formel.
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
+Die Vorschau funktioniert auch mit Farben.
+ In diesem Beispiel wurde eine spezielle gerahmte, farbige Box mit dem LaTeX-Bef
+ehl 
+\series bold
 
-\lang english
-You can furthermore preview the LaTeX source of the whole Dokument oder
- parts of it.
- Use the
-\lang ngerman
- Menü 
+\backslash
+fcolorbox
+\series default
+ erzeugt:
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+
+\backslash
+fcolorbox
+\series default
+ ist in Abschnitt 
+\emph on
+Farbige Boxen
+\emph default
+ des 
+\emph on
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
+\emph default
+ Handbuchs erklärt.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fboxrule 1mm 
+\backslash
+fboxsep 1mm
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fcolorbox{cyan}{magenta}{
+\end_layout
+
+\end_inset
+
+Dies ist Text in einer farbigen, gerahmten Box.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Falls LyX keine Vorschau anzeigt, stellen Sie sicher, dass Sie Vorschauen,
+ wie oben beschrieben, aktiviert haben, dass TeX-Code in der Vorschau-Einfügung
+ korrekt ist und dass Sie die LaTeX-Pakete in der Dokumentpräambel geladen
+ haben, die vom TeX-Code benötigt werden.
+ Wenn LyX keine Vorschau erzeugen kann, werden Sie in den meisten Fällen
+ auch keine Ausgabe Ihres Dokumentes aufgrund von LaTeX-Fehlern erzeugen
+ können.
+ Falls Sie also TeX-Code verwenden müssen und sich nicht sicher sind, ob
+ er korrekt ist, ist die Vorschau-Einfügung eine gute Methode ihn zu testen,
+ ohne das gesamte Dokument anzusehen.
+\end_layout
+
+\begin_layout Subsection
+LaTeX-Quellcode
+\end_layout
+
+\begin_layout Standard
+Des Weiteren kann der LaTeX-Quellcode des gesamten Dokuments oder von Teilen
+ davon angeschaut werden.
+ Das Menü 
 \family sans
 Ansicht\SpecialChar \menuseparator
 Quelle
@@ -33273,14 +33587,13 @@ Quelle
 
 ansehen
 \family default
-\lang english
- und a Fenster will be shown where you can siehe the LaTeX-source code.
- The Fenster zeigt the source of the whole Absatz where the Cursor is currently
- in.
- You can auch select Dokument parts in LyX's main Fenster, then nur this
- selection (when it is more than one Absatz) is shown as source code.
- To view the whole Dokument as source, enable the corresponding Option in
- the source view Fenster.
+ öffnet ein Fenster in dem der LaTeX-Quellcode angezeigt wird.
+ Das Fenster zeigt den Quellcode des gesamten Absatzes, indem sich der Cursor
+ momentan befindet.
+ Man kann auch Dokumentteile in LyXs Hauptfenster markieren, dann wird nur
+ der Code der Auswahl angezeigt (wenn es mehr als ein Absatz ist).
+ Um das gesamte Dokument als Quellcode anzusehen, verwendet man die entsprechend
+e Option im Quellcode-Fenster.
 \end_layout
 
 \begin_layout Section
@@ -33317,10 +33630,10 @@ Einleitung
 \end_layout
 
 \begin_layout Standard
-
+Das fortgeschrittene Suchen und Ersetzen
 \lang english
-The advanced find und replace Feature of LyX allows für searching of complex,
- format-sensitive text segments und mathematics contents within LyX Dokumente.
+ Feature of LyX allows für searching of complex, format-sensitive text segments
+ und mathematics contents within LyX Dokumente.
  It is an enhancement of the standard (quick) find und replace Feature.
  The key-Features are:
 \end_layout
@@ -36420,7 +36733,7 @@ Quelle ansehen
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Dokumentteile-ansehen"
+reference "sec:Dokumentteile-vorschauen"
 
 \end_inset
 
@@ -37951,6 +38264,25 @@ Externes Material
 Eingebettete Objekte
 \emph default
  Handbuchs erklärt und auch verglichen sind.
+\end_layout
+
+\begin_layout Subsection
+Vorschau
+\end_layout
+
+\begin_layout Standard
+Fügt eine Vorschau-Einfügung ein, siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Dokumentteile-vorschauen"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -43290,7 +43622,7 @@ Sofortige Vorschau
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Dokumentteile-ansehen"
+reference "sec:Dokumentteile-vorschauen"
 
 \end_inset
 
@@ -44539,7 +44871,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Achtung:
+Hinweis:
 \series default
  Dieses Feld kann unter Windows leer gelassen werden, da es keinen Effekt
  hat.
