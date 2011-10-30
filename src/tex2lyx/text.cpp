@@ -1035,7 +1035,8 @@ void parse_unknown_environment(Parser & p, string const & name, ostream & os,
 
 
 void parse_environment(Parser & p, ostream & os, bool outer,
-                       string & last_env, Context & parent_context)
+                       string & last_env, bool & title_layout_found,
+                       Context & parent_context)
 {
 	Layout const * newlayout;
 	InsetLayout const * newinsetlayout = 0;
@@ -1328,6 +1329,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		context.check_end_deeper(os);
 		parent_context.new_paragraph(os);
 		p.skip_spaces();
+		if (!title_layout_found)
+			title_layout_found = newlayout->intitle;
 	}
 
 	// The single '=' is meant here.
@@ -1717,6 +1720,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 	bool const use_natbib = preamble.isPackageUsed("natbib");
 	bool const use_jurabib = preamble.isPackageUsed("jurabib");
 	string last_env;
+	bool title_layout_found = false;
 	while (p.good()) {
 		Token const & t = p.get_token();
 
@@ -2023,7 +2027,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "begin")
-			parse_environment(p, os, outer, last_env, context);
+			parse_environment(p, os, outer, last_env,
+			                  title_layout_found, context);
 
 		else if (t.cs() == "end") {
 			if (flags & FLAG_END) {
@@ -2138,6 +2143,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					output_command_layout(os, p, outer,
 							context, newlayout);
 					p.skip_spaces();
+					if (!title_layout_found)
+						title_layout_found = newlayout->intitle;
 				} else
 					handle_ert(os, "\\date{" + date + '}',
 							context);
@@ -2153,6 +2160,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.get_token();
 			output_command_layout(os, p, outer, context, newlayout);
 			p.skip_spaces();
+			if (!title_layout_found)
+				title_layout_found = newlayout->intitle;
 		}
 
 		// Section headings and the like
@@ -2161,6 +2170,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// write the layout
 			output_command_layout(os, p, outer, context, newlayout);
 			p.skip_spaces();
+			if (!title_layout_found)
+				title_layout_found = newlayout->intitle;
 		}
 
 		else if (t.cs() == "caption") {
@@ -2443,10 +2454,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "makeindex" || t.cs() == "maketitle") {
-			// FIXME: Somehow prevent title layouts if
-			// "maketitle" was not found
-			// swallow this
-			skip_spaces_braces(p);
+			if (title_layout_found) {
+				// swallow this
+				skip_spaces_braces(p);
+			} else
+				handle_ert(os, t.asInput(), context);
 		}
 
 		else if (t.cs() == "tableofcontents") {
