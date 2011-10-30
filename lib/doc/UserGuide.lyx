@@ -12028,10 +12028,9 @@ reference "sub:LaTeX-font-support"
 \end_inset
 
 ).
- You will then not have access to TeX's own fonts (the selection described
- below).
- Note that LyX lists all available fonts in either of the three lists (roman,
- sans
+ You will then not have access to TeX's own fonts.
+ Note that LyX then lists all available fonts in each of the three lists
+ (roman, sans
 \begin_inset space ~
 \end_inset
 
@@ -12039,7 +12038,7 @@ serif, and typewriter), since LyX cannot determine the family.
  Also note that the output might fail with some of the listed fonts, due
  to the encoding of the fonts and\SpecialChar \slash{}
 or font failures.
- Again, LyX cannot determine this in advance, so you might need to experiment.
+ LyX cannot determine this in advance, so you might need to experiment.
 \end_layout
 
 \begin_layout Standard
@@ -12585,10 +12584,20 @@ status collapsed
 X font encoding
 \family default
  selection is an expert setting which lets you change the value passed to
- the LaTeX-package
-\emph on
- fontenc
-\emph default
+ the LaTeX-package 
+\series bold
+fontenc
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! fontenc
+\end_layout
+
+\end_inset
+
  (see also sec.
 \begin_inset space ~
 \end_inset
@@ -12624,16 +12633,18 @@ Use True Small Caps
 \family sans
 Use Old Style Figures
 \family default
- is checked, the font uses old style (also known as medieval or text) figures,
- i.
+ is checked, old style figures (also known as medieval or text figures)
+ are used.
+ Old style figures are the numerals (0
 \begin_inset space \thinspace{}
 \end_inset
 
-e.
-\begin_inset space ~
+-
+\begin_inset space \thinspace{}
 \end_inset
 
-figures with varying height that fit nicely with lower letters.
+9) with ascenders and descenders, which makes them fit nicely with lower
+ letters.
  
 \family sans
 Use True Small Caps
@@ -12660,11 +12671,20 @@ The font will be the argument for the commands of the LaTeX-package
 CJK
 \series default
 .
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! CJK
+\end_layout
+
+\end_inset
+
  So this has no effect for the document language 
 \family sans
 Japanese
 \family default
- that doesn't use 
+ that does not use 
 \series bold
 CJK
 \series default
@@ -46513,19 +46533,6 @@ reference "sec:Language-encodings"
 \end_layout
 
 \begin_layout Description
-Default
-\begin_inset space ~
-\end_inset
-
-Decimal
-\begin_inset space ~
-\end_inset
-
-Point Define the default decimal point for the use in tables (decimal point
- alignment)
-\end_layout
-
-\begin_layout Description
 Command
 \begin_inset space ~
 \end_inset
@@ -46575,6 +46582,19 @@ Command start
 .
  Some packages, like the default, don't have an end command since the start
  command toggles the package on and off.
+\end_layout
+
+\begin_layout Description
+Default
+\begin_inset space ~
+\end_inset
+
+Decimal
+\begin_inset space ~
+\end_inset
+
+Point Define the default decimal point for the use in tables (decimal point
+ alignment).
 \end_layout
 
 \begin_layout Description
@@ -46706,6 +46726,132 @@ reference "sec:Spellchecking"
 
 \begin_layout Section
 Outputs
+\end_layout
+
+\begin_layout Subsection
+General
+\end_layout
+
+\begin_layout Description
+Output
+\begin_inset space ~
+\end_inset
+
+line
+\begin_inset space ~
+\end_inset
+
+length sets the maximum number of characters printed in one line when using
+ the menu 
+\family sans
+File\SpecialChar \menuseparator
+Export\SpecialChar \menuseparator
+Plain
+\begin_inset space ~
+\end_inset
+
+text
+\family default
+.
+ Setting the line line length to 0 means all text is printed in one endless
+ line.
+\end_layout
+
+\begin_layout Description
+Date
+\begin_inset space ~
+\end_inset
+
+format
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Date Format
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Settings ! Date format
+\end_layout
+
+\end_inset
+
+ The date format can be one or a mixture of the formats listed here:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://unixhelp.ed.ac.uk/CGI/man-cgi?date
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+For example the format
+\begin_inset Newline newline
+\end_inset
+
+%d/%m/%y
+\begin_inset Newline newline
+\end_inset
+
+prints the date as day/month/year.
+\end_layout
+
+\begin_layout Description
+Overwrite
+\begin_inset space ~
+\end_inset
+
+on
+\begin_inset space ~
+\end_inset
+
+export Setting what LyX is allowed to overwrite on export.
+\end_layout
+
+\begin_layout Description
+Forward
+\begin_inset space ~
+\end_inset
+
+search Commands that will be used for the menu 
+\family sans
+Navigate\SpecialChar \menuseparator
+Forward
+\begin_inset space ~
+\end_inset
+
+search
+\family default
+.
+ For a detailed description see section 
+\emph on
+Reverse DVI/PDF search
+\emph default
+ of the 
+\emph on
+Additional
+\begin_inset space ~
+\end_inset
+
+Features
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Subsection
@@ -46844,104 +46990,6 @@ dvips
 \end_layout
 
 \begin_layout Subsection
-Date Format
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Date Format
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Settings ! Date format
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The date format can be one or a mixture of the formats listed here:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://unixhelp.ed.ac.uk/CGI/man-cgi?date
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-For example the format
-\begin_inset Newline newline
-\end_inset
-
-%d/%m/%y
-\begin_inset Newline newline
-\end_inset
-
-prints the date as day/month/year.
-\end_layout
-
-\begin_layout Subsection
-Plain Text
-\end_layout
-
-\begin_layout Description
-Output
-\begin_inset space ~
-\end_inset
-
-line
-\begin_inset space ~
-\end_inset
-
-length sets the maximum number of characters printed in one line when using
- the menu 
-\family sans
-File\SpecialChar \menuseparator
-Export\SpecialChar \menuseparator
-Plain
-\begin_inset space ~
-\end_inset
-
-text
-\family default
-.
- Setting the line line length to 0 means all text is printed in one endless
- line.
-\end_layout
-
-\begin_layout Description
-roff
-\begin_inset space ~
-\end_inset
-
-command defines an additional command used to produce better ASCII tables
- with the 
-\family typewriter
-groff/troff/nroff
-\family default
- UNIX-commands (refer to their manuals for more information about them).
- Setting this as empty tells LyX to use the internal formatter.
-\end_layout
-
-\begin_layout Subsection
 LaT
 \begin_inset ERT
 status collapsed
@@ -47059,65 +47107,42 @@ Default
  value depends on your LaTeX-system setup.
 \end_layout
 
+\begin_layout Description
+DVI
+\begin_inset space ~
+\end_inset
+
+viewer
+\begin_inset space ~
+\end_inset
+
+paper
+\begin_inset space ~
+\end_inset
+
+size
+\begin_inset space ~
+\end_inset
+
+options They only have an effect when the program 
+\family sans
+xdvi
+\family default
+ is used as DVI-viewer, read its manual to find out more.
+\end_layout
+
 \begin_layout Standard
-You can also specify here commands with parameters for the listed applications.
+You can also specify here options and commands with parameters for processors.
  But before you change something, it is strongly recommended to read the
  manuals of the applications.
- Currently the following commands can be set:
 \end_layout
 
 \begin_layout Description
-CheckTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
+Bibliography
 \begin_inset space ~
 \end_inset
 
-command Command for the program 
-\family sans
-CheckTeX
-\family default
- that is described in the section 
-\emph on
-Checking TeX
-\emph default
- of the 
-\emph on
-Additional Features
-\emph default
- manual.
-\end_layout
-
-\begin_layout Description
-BibTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
-\begin_inset space ~
-\end_inset
-
-command Command for the program 
-\family sans
-BibTeX
-\family default
- that generates the bibliography, see section
+generation Settings for the generation of the bibliography, see section
 \begin_inset space ~
 \end_inset
 
@@ -47136,7 +47161,7 @@ Index
 \begin_inset space ~
 \end_inset
 
-command Command for the program that generates the index, see section
+generation Settings for the generation of the index, see section
 \begin_inset space ~
 \end_inset
 
@@ -47170,27 +47195,34 @@ reference "sub:Nomenclature-Program"
 \end_layout
 
 \begin_layout Description
-DVI
+CheckTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
 \begin_inset space ~
 \end_inset
 
-viewer
-\begin_inset space ~
-\end_inset
-
-paper
-\begin_inset space ~
-\end_inset
-
-size
-\begin_inset space ~
-\end_inset
-
-options They only have an effect when the program 
+command Command for the program 
 \family sans
-xdvi
+CheckTeX
 \family default
- is used as DVI-viewer.
+ that is described in the section 
+\emph on
+Checking TeX
+\emph default
+ of the 
+\emph on
+Additional Features
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Standard
@@ -47440,51 +47472,26 @@ Here you find the list of defined file formats that LyX can handle.
 
 \begin_layout Standard
 Furthermore, you can define the 
-\begin_inset Quotes eld
-\end_inset
-
+\family sans
 Default output format
-\begin_inset Quotes erd
-\end_inset
-
- that is used when you hit 
-\begin_inset Quotes eld
-\end_inset
-
-View
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Update
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-View Master Document
-\begin_inset Quotes erd
-\end_inset
-
- and 
-\begin_inset Quotes eld
-\end_inset
-
+\family default
+ that is used when you use 
+\family sans
+View, Update, View Master Document
+\family default
+ or 
+\family sans
 Update Master Document
-\begin_inset Quotes erd
-\end_inset
-
- in the Edit menu or the toolbar.
+\family default
+ in the 
+\family sans
+View
+\family default
+ menu or the toolbar.
 \end_layout
 
 \begin_layout Standard
-More about formats, like the options that can be used in the format definition,
- is described in the section 
+More about formats and their options is described in the section 
 \emph on
 Formats
 \emph default

@@ -12897,7 +12897,7 @@ implicite
 implicite
 \family default
  utilise les polices TeX standard, connues sous les noms de 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -12909,7 +12909,7 @@ Computer
 Modern
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  (
@@ -12917,7 +12917,7 @@ Modern
 cm
 \family default
 ) ou 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -12925,7 +12925,7 @@ cm
 European Computer Modern
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  (
@@ -13439,14 +13439,20 @@ X
 \family default
  est un réglage avancé qui permet de changer la valeur passée au paquetage
  LaTeX 
-\emph on
+\series bold
 fontenc
-\emph default
- 
-\lang english
-(see also sec
-\lang french
-.
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages LaTeX ! fontenc
+\end_layout
+
+\end_inset
+
+ (voir aussi la section.
 \begin_inset space ~
 \end_inset
 
@@ -13503,11 +13509,11 @@ CJK
 \family default
  permet aux utilisateurs des langues Chinoise, Japonaise et Coréenne (CJK)
  de préciser une police pour afficher les 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 script characters
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -13520,6 +13526,15 @@ La police sera l'argument des commandes du paquetage LaTeX
 CJK
 \series default
 .
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages LaTeX ! CJK
+\end_layout
+
+\end_inset
+
  Elle n'aura donc aucun effet sur un document en japonais qui n'utiliserait
  pas 
 \series bold
@@ -47019,8 +47034,19 @@ Commande de début
  C'est le cas pris implicitement.
 \end_layout
 
-\begin_layout Standard
-On peut aussi activer les options suivantes dans ce menu:
+\begin_layout Description
+
+\lang english
+Default
+\begin_inset space ~
+\end_inset
+
+Decimal
+\begin_inset space ~
+\end_inset
+
+Point Define the default decimal point for the use in tables (decimal point
+ alignment).
 \end_layout
 
 \begin_layout Description
@@ -47174,6 +47200,191 @@ Sorties
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
+General
+\end_layout
+
+\begin_layout Description
+
+\family sans
+Longueur
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+la
+\begin_inset space ~
+\end_inset
+
+ligne
+\begin_inset space ~
+\end_inset
+
+exportée
+\family default
+ détermine le nombre maximum de caractères imprimés sur une ligne quand
+ on utilise le menu 
+\family sans
+Fichier\SpecialChar \menuseparator
+Exporter\SpecialChar \menuseparator
+Texte Brut.
+
+\family default
+ Mettre la longueur de la ligne à zéro, signifie que le texte sera exporté
+ sous la forme d'une unique ligne sans fin.
+\end_layout
+
+\begin_layout Description
+Format
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+la
+\begin_inset space ~
+\end_inset
+
+date
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Date |see
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Format de la date
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Format de la date
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Préférences ! Format de la date
+\end_layout
+
+\end_inset
+
+ Le format de la date peut être un des formats listés ici ou un mélange
+ de ceux-ci :
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://unixhelp.ed.ac.uk/CGI/man-cgi?date
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Par exemple, le format
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+%d/%m/%y
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+imprime la date avec le format jour/mois/année.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Overwrite
+\begin_inset space ~
+\end_inset
+
+on
+\begin_inset space ~
+\end_inset
+
+export Setting what LyX is allowed to overwrite on export.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Forward
+\begin_inset space ~
+\end_inset
+
+search Commands that will be used for the menu 
+\family sans
+Navigate\SpecialChar \menuseparator
+Forward
+\begin_inset space ~
+\end_inset
+
+search
+\family default
+.
+ For a detailed description see section 
+\emph on
+Reverse DVI/PDF search
+\emph default
+ of the 
+\emph on
+Additional
+\begin_inset space ~
+\end_inset
+
+Features
+\emph default
+ manual.
+\end_layout
+
+\begin_layout Subsection
 Imprimante
 \begin_inset Index idx
 status collapsed
@@ -47322,153 +47533,6 @@ dvips
 \end_layout
 
 \begin_layout Subsection
-Format de la date
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Date |see
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-Format de la date
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Format de la date
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Préférences ! Format de la date
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Le format de la date peut être un des formats listés ici ou un mélange de
- ceux-ci :
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://unixhelp.ed.ac.uk/CGI/man-cgi?date
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Par exemple, le format
-\begin_inset Newline newline
-\end_inset
-
-
-\family typewriter
-%d/%m/%y
-\family default
-
-\begin_inset Newline newline
-\end_inset
-
-imprime la date avec le format jour/mois/année.
-\end_layout
-
-\begin_layout Subsection
-Texte brut
-\end_layout
-
-\begin_layout Description
-
-\family sans
-Longueur
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-la
-\begin_inset space ~
-\end_inset
-
-ligne
-\begin_inset space ~
-\end_inset
-
-exportée
-\family default
- détermine le nombre maximum de caractères imprimés sur une ligne quand
- on utilise le menu 
-\family sans
-Fichier\SpecialChar \menuseparator
-Exporter\SpecialChar \menuseparator
-Texte Brut.
-
-\family default
- Mettre la longueur de la ligne à zéro, signifie que le texte sera exporté
- sous la forme d'une unique ligne sans fin.
-\end_layout
-
-\begin_layout Description
-
-\family sans
-Commande
-\begin_inset space ~
-\end_inset
-
-roff
-\family default
- définit une commande supplémentaire pour produire des tableaux ASCII avec
- une meilleure apparence grâce aux commandes UNIX 
-\family typewriter
-groff/troff/nroff
-\family default
- (voyez les pages man de ces commandes pour plus d'information à leur sujet).
- En laissant ce champ vide on dit à LyX d'utiliser sont formateur interne.
-\end_layout
-
-\begin_layout Subsection
 LaT
 \begin_inset ERT
 status collapsed
@@ -47544,7 +47608,7 @@ X2
 \family default
  sont pour le cyrillique.
  Des combinaisons d'encodages sont possibles, comme 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -47552,7 +47616,7 @@ X2
 T1, T2B
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -47580,122 +47644,6 @@ implicite C'est la taille qui sera utilisée pour les nouveaux documents.
 Défaut
 \family default
  dépend des paramètres de votre système LaTeX.
-\end_layout
-
-\begin_layout Standard
-Vous pouvez spécifier ici des commandes avec des paramètres pour les application
-s qui sont listées.
- Avant de changer quoi que ce soit ici, il est fortement recommandé de lire
- les manuels des applications concernées.
- Actuellement on peut mettre les commandes suivantes:
-\end_layout
-
-\begin_layout Description
-Commande
-\begin_inset space ~
-\end_inset
-
-CheckT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX Commande pour le programme 
-\family sans
-CheckTeX
-\family default
- qui est décrit dans la section 
-\emph on
-Vérifier TeX 
-\emph default
-du manuel 
-\emph on
-Options avancées
-\emph default
-.
-\end_layout
-
-\begin_layout Description
-Commande
-\begin_inset space ~
-\end_inset
-
-BibT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX Commande pour le programme 
-\family sans
-BibTeX
-\family default
- qui génère la bibliographie, voir section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Bases-de-Données-Biblio"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Description
-Commande
-\begin_inset space ~
-\end_inset
-
-d'indexation Commande pour le programme qui génère l'index, voir section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Programme-d'indexation"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Description
-Commande
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-nomenclature Commande pour le programme qui génère le glossaire (nomenclature),
- voir la section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:programme-glossaire"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Description
@@ -47735,7 +47683,121 @@ DVI Ces commandes n'ont d'effet que quand on utilise le programme
 \family sans
 xdvi 
 \family default
-comme visionneuse DVI.
+comme visionneuse DVI
+\lang english
+, read its manual to find out more.
+\end_layout
+
+\begin_layout Standard
+Vous pouvez spécifier ici des options et commandes avec des paramètres pour
+ les 
+\lang english
+processors
+\lang french
+ qui sont listées.
+ Avant de changer quoi que ce soit ici, il est fortement recommandé de lire
+ les manuels des applications concernées.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Bibliography
+\begin_inset space ~
+\end_inset
+
+generation Settings for the generation of
+\lang french
+ la bibliographie, voir section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Bases-de-Données-Biblio"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Index
+\begin_inset space ~
+\end_inset
+
+generation Settings for the generation of
+\lang french
+ l'index, voir section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Programme-d'indexation"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Commande
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+nomenclature Commande pour le programme qui génère le glossaire (nomenclature),
+ voir la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:programme-glossaire"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Commande
+\begin_inset space ~
+\end_inset
+
+CheckT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX Commande pour le programme 
+\family sans
+CheckTeX
+\family default
+ qui est décrit dans la section 
+\emph on
+Vérifier TeX 
+\emph default
+du manuel 
+\emph on
+Options avancées
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -47995,12 +48057,32 @@ Copieurs
 Ici, vous allez trouver la liste des formats de fichiers que LyX peut manipuler.
  Vous pouvez modifier la visionneuse et le programme d'édition qui doivent
  être utilisés avec certains formats.
- 
 \end_layout
 
 \begin_layout Standard
-Vous trouverez plus d'information, en particulier sur les options qui peuvent
- être utilisées dans la définition du format dans la section 
+
+\lang english
+Furthermore, you can define the 
+\family sans
+Default output format
+\family default
+ that is used when you hit 
+\family sans
+View, Update, View Master Document
+\family default
+ or 
+\family sans
+Update Master Document
+\family default
+ in the 
+\family sans
+View
+\family default
+ menu or the toolbar.
+\end_layout
+
+\begin_layout Standard
+Vous trouverez plus d'information dans la section 
 \emph on
 Formats 
 \emph default

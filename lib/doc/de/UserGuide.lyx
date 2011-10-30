@@ -12794,74 +12794,31 @@ Einstellungen\SpecialChar \menuseparator
 Schriften
 \family default
  festlegen.
- Im Abschnitt 
-\family sans
-Schriften
-\family default
- des Dialogs 
-\lang english
-you can specify which font should be used für the three different font shapes
-\lang ngerman
- — Serifenschrift, 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Dokument ! Einstellungen
+\end_layout
+
+\end_inset
+
+ Dort kann eingestellt werden, welche Schriftfamilie verwendet wird — Serifensch
+rift, 
 \family sans
 Serifenlos
 \family default
- und 
-\family typewriter
-Schreibmaschine
-\family default
- — 
-\lang english
-you can specify the base Schriftgröße und scaling factors für (some) sans
- serif und typewriter fonts if this is notwendig to fit mit the roman font.
-
-\lang ngerman
- 
-\end_layout
-
-\begin_layout Standard
-Für die drei Typen Serifenschrift, 
-\family sans
-Serifenfrei
-\family default
- und 
-\family sans
-Schreibmaschine
-\family default
- auswählen.
- Als Auswahl gibt es 
-\family sans
-Standard
-\family default
- und eine Liste von Schriftarten, die auf Ihrem Computer verfügbar sind.
- Einige davon sind skalierbar.
- 
-\family sans
-Standard
-\family default
- benutzt entweder die TeX-Schriftart 
-\family typewriter
-Computer
-\begin_inset space ~
-\end_inset
-
-Modern (cm)
-\family default
  oder 
 \family typewriter
-European
+Schreibmaschine
 \family default
- 
-\family typewriter
-Computer Modern (ec)
-\family default
-.
+ — und wie groß die Grundschriftgröße und der Skalierungsfaktor für (einige)
+ Serifenlos- und Schreibmaschine-Schriften ist, damit deren Größe zur Größe
+ der Serifenschrift passt.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you select 
+Wenn Sie die Option 
 \family sans
 Nicht-T
 \begin_inset ERT
@@ -12876,9 +12833,8 @@ status collapsed
 
 eX-Schriften verwenden
 \family default
-, you will have access to the fonts installed on your operating system.
-
-\lang ngerman
+ benutzen, haben Sie Zugriff auf die in Ihrem Betriebssystem installierten
+ Schriften.
  Dies setzt voraus, dass Sie 
 \family sans
 PDF (XeT
@@ -12938,38 +12894,31 @@ reference "sub:LaTeX-Schriftunterstützung"
 \end_inset
 
 ).
- 
-\lang english
-You will then not have access to TeX's own fonts (the selection described
- below).
- Note that LyX lists all available fonts in entweder of the three lists
- (roman, sans
-\begin_inset space ~
-\end_inset
-
-serif, und typewriter), since LyX cannot determine the family.
- Also note that the output might fail mit some of the listed fonts, due
- to the encoding of the fonts and\SpecialChar \slash{}
-or font failures.
- Again, LyX cannot determine this in advance, so you might need to experiment.
+ Die TeX-Schriften sind dann allerdings nicht verfügbar.
+ Es ist zu beachten, dass LyX dann alle verfügbaren Schriften in jeder der
+ drei Listen (Serifenschrift, Serifenlose, und Schreibmaschine) aufführt,
+ da LyX die Familie nicht bestimmen kann.
+ Des Weiteren kann die Ausgabe mit einigen der Schriften fehlschlagen, entweder
+ durch inkompatible Kodierungen der Schriften oder Fehler in den Schriftdefiniti
+onen.
+ LyX kann dies nicht im Voraus prüfen, so dass Sie eventuell experimentieren
+ müssen.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you use TeX fonts (which is the default), the possible Optionen for the
- font include 
+Wenn Sie TeX-Schriften verwenden (dies ist die Voreinstellung), sind die
+ möglichen Optionen für die Schriften 
 \family sans
-Default
+Standard
 \family default
- und a list of fonts available with your LaTeX distribution.
- If you select 
+ und eine Liste von in Ihrer LaTeX-Distribution verfügbaren Schriften.
+ 
 \family sans
-Default,
+Standard,
 \family default
- the font that is preset by the aktuelle Dokumentklasse is used.
- In most cases, this will be the standard TeX font, known as 
-\begin_inset Quotes eld
+ verwendet die Schrift, die die aktuelle Dokumentklasse als Standard hat.
+ In den meisten Fällen ist dies die Standard-TeX-Schrift, die als 
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -12981,7 +12930,7 @@ Computer
 Modern
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  (
@@ -12989,7 +12938,7 @@ Modern
 cm
 \family default
 ) oder 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -12997,14 +12946,15 @@ cm
 European Computer Modern
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  (
 \family typewriter
 ec
 \family default
-), but some Klassen preset different default fonts.
+) bekannt ist.
+ Einige spezielle Klassen verwenden eine andere Schrift als Standard.
 \end_layout
 
 \begin_layout Standard
@@ -13200,7 +13150,7 @@ ein
 \emph on
 zwei
 \emph default
-en bestehen, dem Buchstaben und dem Akzent.
+ bestehen, dem Buchstaben und dem Akzent.
  Deswegen kann man Dokumente nicht nach Worten mit solchen Zeichen durchsuchen.
  Wenn Sie zum Beispiel das französische Wort 
 \emph on
@@ -13335,7 +13285,7 @@ Modern
 
 Die Unterschiede zwischen Serifenschrift, 
 \family sans
-Serifenfrei
+Serifenlos
 \family default
  und 
 \family typewriter
@@ -13445,39 +13395,30 @@ reference "sub:Textstil-Dialog"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The 
+Über die 
 \family sans
-Default Family
+Standard-Familie
 \family default
- selection lets you specify whether the base font of your Dokument should
- be roman, sans
-\begin_inset space ~
+ kann der Standard-Schriftfamilie eingestellt werden; Serifenschrift, Serifenlos
+ oder Schreibmaschine.
+ In den meisten Fällen ist 
+\family sans
+Standard
+\family default
+ gleichbedeutend mit 
+\family sans
+Serifenschrift
+\family default
+.
+ Einige Dokumentklassen (wie z.
+\begin_inset space \thinspace{}
 \end_inset
 
-serif oder typewriter.
- The 
-\family sans
-Default
-\family default
- selection uses what is preset by the class, the other selections override
- this.
- In most cases, 
-\family sans
-Default
-\family default
- is equal to 
-\family sans
-roman
-\family default
-, but some Klassen (such as presentation Klassen) auch use other defaults.
+B.Präsentationsklassen) verwenden jedoch einen anderen Standard.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The
+Die
 \family typewriter
  
 \family sans
@@ -13492,19 +13433,30 @@ status collapsed
 
 \end_inset
 
-X font encoding
+X-Fontkodierung
 \family default
- selection is an expert Einstellung which lets you change the value passed
- to the LaTeX-package
+ ist eine Einstellung für Experten, mit der der Wert geändert kann, der
+ an das LaTeX-Paket
 \emph on
- fontenc
+ 
+\series bold
 \emph default
- (siehe auch Abschnitt
+fontenc
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! fontenc
+\end_layout
+
+\end_inset
+
+ übergeben wird (siehe auch Abschnitt
 \begin_inset space ~
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -13512,52 +13464,42 @@ reference "sub:LaTeX-Einstellungen"
 
 \end_inset
 
-
-\lang english
 ).
- Normally, you do not need to change (or even understand) this.
- Unless you have specific reasons use 
+ Normalerweise müssen Sie nichts ändern (und diese Einstellung auch nicht
+ verstehen).
+ Verwenden Sie daher 
 \family sans
-Default
+Benutzerdefiniert
 \family default
-.
+, es sei denn, Sie haben Ihre Gründe.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-With some fonts, the checkboxes 
+Mit einigen Schriften sind die Optionen 
 \family sans
-Use Old Style Figures
+Mediävalziffern verwenden
 \family default
  und 
 \family sans
-Use True Small Caps
+Echte Kapitälchen verwenden
 \family default
- are enabled.
- These are extra Features some fonts provide.
- If 
+ aktiviert.
+ Dies sind spezielle Features, die einige Schriften anbieten.
+ Wenn Sie die Option 
 \family sans
-Use Old Style Figures
+Mediävalziffern verwenden
 \family default
- is checked, the font uses old style (auch known as medieval oder text)
- figures, i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
-\begin_inset space ~
-\end_inset
-
-figures mit varying height that fit nicely mit lower letters.
+ auswählen, werden Ziffern mit Ober- und Unterlängen (sogenannte Mediäval-
+ oder Minuskelziffern) verwendet, die sich besonders gut in den Fließtext
+ einfügen.
  
 \family sans
-Use True Small Caps
+Echte Kapitälchen verwenden
 \family default
- determines that real small caps are used instead of faked small caps made
- of scaled capitals.
- Real small caps are often part of expert font sets; they generally look
- better than faked small caps but might have to be purchased separately.
+ bewirkt, dass echte Kapitälchen verwendet werden, und nicht Großbuchstaben,
+ die skaliert werden.
+ Echte Kapitälchen sind Teil von hochwertigen Schriften und sehen besser
+ aus als skalierte, müssen jedoch oft extra gekauft werden.
 \end_layout
 
 \begin_layout Standard
@@ -13568,26 +13510,74 @@ Im CJK-Feld können die Benutzer von Chinesisch, Japanisch oder Koreanisch
 status collapsed
 
 \begin_layout Plain Layout
-Die Schrift wird als Argument an die Befehle des LaTeX-Paketes 
-\family typewriter
-cjk
-\family default
+Die Schrift wird als Argument für die Befehle des LaTeX-Paketes 
+\series bold
+CJK
+\series default
 
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-Paket ! cjk
+LaTeX-Paket ! CJK
 \end_layout
 
 \end_inset
 
- übergeben.
- Das wirkt sich aber nicht auf die Dokumentsprache Japanisch aus, die 
-\family typewriter
-cjk
+ verwendet.
+ Das wirkt sich aber nicht auf die Dokumentsprache 
+\family sans
+Japanisch
 \family default
+ aus, die 
+\series bold
+CJK
+\series default
  nicht benutzt.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ Wenn Sie eine andere Schrift oder Schriftgröße verwenden, verändert LyX
+ 
+\emph on
+nicht
+\emph default
+ die Bildschirmschrift! Die Änderung ist nur in der Ausgabe sichtbar; dies
+ ist Teil des WYSIWYM Konzeptes.
+ LyXs Bildschirmschriften können im Dialog 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen
+\family default
+ eingestellt werden, siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Bildschirmschriften"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -43034,13 +43024,8 @@ Schrift ! Bildschirm
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-These fonts are used to display your Dokuments on the 
-\lang ngerman
-Bildschirm
-\lang english
-.
+Diese Schriften werden verwendet, um Ihr Dokument auf dem Bildschirm in
+ LyX anzuzeigen.
 \end_layout
 
 \begin_layout Standard
@@ -44199,13 +44184,6 @@ reference "sec:Sprache"
 \end_layout
 
 \begin_layout Description
-Standard-Dezimalzeichen Legen Sie hier den Standard-Dezimaltrenner fest,
- welcher für die Ausrichtung am Dezimalzeichen in Tabellen verwendet wird.
- Voreingestellt ist der Punkt, im Deutschen wird in der Regel aber ein Komma
- verwendet.
-\end_layout
-
-\begin_layout Description
 Befehl
 \begin_inset space ~
 \end_inset
@@ -44260,6 +44238,13 @@ Anfang
 .
  Einige Pakete wie das Standardpaket haben keinen Endbefehl, weil der Startbefeh
 l das Paket an- und abschaltet.
+\end_layout
+
+\begin_layout Description
+Standard-Dezimalzeichen Legen Sie hier den Standard-Dezimaltrenner fest,
+ welcher für die Ausrichtung am Dezimalzeichen in Tabellen verwendet wird.
+ Voreingestellt ist der Punkt, im Deutschen wird in der Regel aber ein Komma
+ verwendet.
 \end_layout
 
 \begin_layout Description
@@ -44400,6 +44385,113 @@ Ausgabe
 \end_layout
 
 \begin_layout Subsection
+Allgemein
+\end_layout
+
+\begin_layout Description
+Ausgabe
+\begin_inset space ~
+\end_inset
+
+Zeilenlänge legt die maximale Anzahl an Zeichen pro Zeile fest, die für
+ das Menü 
+\family sans
+Datei\SpecialChar \menuseparator
+Exportieren\SpecialChar \menuseparator
+Einfacher
+\begin_inset space ~
+\end_inset
+
+Text
+\family default
+ verwendet wird.
+ Wird die Zeilenlänge auf 0 gesetzt, wird der komplette Text in einer endlos
+ langen Zeile ausgegeben.
+\end_layout
+
+\begin_layout Description
+Datumsformat
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Datumsformat
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Einstellungen ! Datumsformat
+\end_layout
+
+\end_inset
+
+ Das Datumsformat kann eines oder eine Mischung der hier aufgelisteten Formate
+ sein:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://unixhelp.ed.ac.uk/CGI/man-cgi?date
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Zum Beispiel gibt das Format
+\begin_inset Newline newline
+\end_inset
+
+%d/%m/%y
+\begin_inset Newline newline
+\end_inset
+
+das Datum in der Form Tag/Monat/Jahr aus.
+\end_layout
+
+\begin_layout Description
+Beim
+\begin_inset space ~
+\end_inset
+
+Export
+\begin_inset space ~
+\end_inset
+
+überschreiben Einstellung was LyX erlaubt ist zu überschreiben.
+\end_layout
+
+\begin_layout Description
+Vorwärtssuche Befehle, die für das Menü 
+\family sans
+Navigieren\SpecialChar \menuseparator
+Vorwärtssuche
+\family default
+ verwendet werden.
+ Siehe Abschnitt 
+\emph on
+DVI/PDF Rückwärtssuche
+\emph default
+ der 
+\emph on
+Handbuchergänzungen
+\emph default
+ für eine detaillierte Beschreibung.
+\end_layout
+
+\begin_layout Subsection
 Drucker
 \begin_inset CommandInset label
 LatexCommand label
@@ -44523,104 +44615,6 @@ dvips
 \end_layout
 
 \begin_layout Subsection
-Datumsformat
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Datumsformat
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Einstellungen ! Datumsformat
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Das Datumsformat kann eines oder eine Mischung der hier aufgelisteten Formate
- sein:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://unixhelp.ed.ac.uk/CGI/man-cgi?date
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Zum Beispiel gibt das Format
-\begin_inset Newline newline
-\end_inset
-
-%d/%m/%y
-\begin_inset Newline newline
-\end_inset
-
-das Datum in der Form Tag/Monat/Jahr aus.
-\end_layout
-
-\begin_layout Subsection
-Einfacher Text
-\end_layout
-
-\begin_layout Description
-Ausgabe
-\begin_inset space ~
-\end_inset
-
-Zeilenlänge legt die maximale Anzahl an Zeichen pro Zeile fest, die für
- das Menü 
-\family sans
-Datei\SpecialChar \menuseparator
-Exportieren\SpecialChar \menuseparator
-Einfacher
-\begin_inset space ~
-\end_inset
-
-Text
-\family default
- verwendet wird.
- Wird die Zeilenlänge auf 0 gesetzt, wird der komplette Text in einer endlos
- langen Zeile ausgegeben.
-\end_layout
-
-\begin_layout Description
-Roff-Befehl Der roff-Befehl ist eine Möglichkeit, mit den Befehlen 
-\family typewriter
-groff
-\family default
-, 
-\family typewriter
-troff
-\family default
- und 
-\family typewriter
-nroff
-\family default
- (siehe die bezüglichen Hilfeseiten) bessere ASCII-Tabellen zu produzieren.
- Ist das Feld leer, benutzt LyX den internen Formatierer.
-\end_layout
-
-\begin_layout Subsection
 LaT
 \begin_inset ERT
 status collapsed
@@ -44698,7 +44692,7 @@ X2
 \family default
  are für Cyrillic.
  Combinations of the encodings are possible, like 
-\begin_inset Quotes erd
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -44706,7 +44700,7 @@ X2
 T1, T2B
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 .
@@ -44725,59 +44719,33 @@ Standard
  Wert hängt von den LaTeX-Systemeinstellungen ab.
 \end_layout
 
+\begin_layout Description
+Papiergrößen-Optionen
+\begin_inset space ~
+\end_inset
+
+des
+\begin_inset space ~
+\end_inset
+
+DVI-Betrachters Diese haben nur einen Effekt, wenn das Programm 
+\family sans
+xdvi
+\family default
+ als DVI-Betrachter verwendet wird; siehe dessen Handbuch für weitere Informatio
+nen.
+\end_layout
+
 \begin_layout Standard
-
-\lang english
-You can auch specify here Befehle mit Parametern für the listed applications.
- But before you change something, it is strongly recommended to read the
- Handbuchs of the applications.
- Currently the folgenden Befehle can be set:
+Des Weiteren können hier Optionen und Befehle mit Parametern für die aufgelistet
+en Prozessoren angegeben werden.
+ Bevor Sie aber etwas ändern, sollten Sie vorher unbedingt in die Handbücher
+ der Prozessoren geschaut haben.
 \end_layout
 
 \begin_layout Description
-CheckTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Befehl Befehl für das Programm 
-\family sans
-CheckTeX
-\family default
-, das im Abschnitt 
-\emph on
-TeX prüfen
-\emph default
- der 
-\emph on
-Handbuchergänzungen
-\emph default
- beschrieben ist.
-\end_layout
-
-\begin_layout Description
-BibTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Befehl Befehl für das Programm 
-\family sans
-BibTeX,
-\family default
- das die Bibliographie erstellt, siehe Abschnitt
+Literaturverzeichnis-Erzeugung Einstellungen für die Erstellung des Literaturver
+zeichnisses, siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -44792,20 +44760,8 @@ reference "sec:Literaturverzeichnis-Datenbanken"
 \end_layout
 
 \begin_layout Description
-Befehl
-\begin_inset space ~
-\end_inset
-
-für
-\begin_inset space ~
-\end_inset
-
-das
-\begin_inset space ~
-\end_inset
-
-Stichwortverzeichnis Befehl für das Programm, das das Stichwortverzeichnis
- erstellt, siehe Abschnitt
+Indexerzeugung Einstellungen für die Erstellung des Stichwortverzeichnisses,
+ siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -44836,19 +44792,30 @@ reference "sub:Nomenklatur-Programm"
 \end_layout
 
 \begin_layout Description
-Papiergrößen-Optionen
-\begin_inset space ~
+CheckTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
 \end_inset
 
-des
-\begin_inset space ~
-\end_inset
-
-DVI-Betrachters Diese haben nur einen Effekt, wenn das Programm 
+X-Befehl Befehl für das Programm 
 \family sans
-xdvi
+CheckTeX
 \family default
- als DVI-Betrachter verwendet wird.
+, das im Abschnitt 
+\emph on
+TeX prüfen
+\emph default
+ der 
+\emph on
+Handbuchergänzungen
+\emph default
+ beschrieben ist.
 \end_layout
 
 \begin_layout Standard
@@ -45080,64 +45047,35 @@ Here you find the list of defined Datei formats that LyX can handle.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Furthermore, you can define the 
-\begin_inset Quotes eld
-\end_inset
-
-Default output format
-\begin_inset Quotes erd
-\end_inset
-
- that is used when you hit 
-\begin_inset Quotes eld
-\end_inset
-
-View
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Update
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-View Master Dokument
-\begin_inset Quotes erd
-\end_inset
-
- und 
-\begin_inset Quotes eld
-\end_inset
-
-Update Master Dokument
-\begin_inset Quotes erd
-\end_inset
-
- in the Edit Menü oder the Werkzeugleiste.
+Des Weiteren kann man hier das 
+\family sans
+Voreingestellte Ausgabeformat
+\family default
+ festlegen, das verwendet wird, wenn man 
+\family sans
+Ansehen, Aktualisieren, Hauptdokument ansehen
+\family default
+ oder 
+\family sans
+Hauptdokument aktualisieren
+\family default
+ im Menü 
+\family sans
+Ansicht
+\family default
+ oder in der Werkzeugleiste aufruft.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-More über formats, like the Optionen that can be used in the format definition,
- is described in the Abschnitt 
+Mehr über Formate und deren Optionen, ist im Abschnitt 
 \emph on
-Formats
+Formate
 \emph default
- of the 
+ des 
 \emph on
 Anpassung
 \emph default
- Handbuch.
+ Handbuchs beschrieben.
 \end_layout
 
 \begin_layout Standard
@@ -45161,19 +45099,6 @@ Copiers
 Anpassung
 \emph default
  Handbuchs.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Referenz auf A.3.5
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Chapter
