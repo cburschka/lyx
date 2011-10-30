@@ -79,11 +79,7 @@ private:
 
 bool operator<(Format const & a, Format const & b)
 {
-	// use the compare_ascii_no_case instead of compare_no_case,
-	// because in turkish, 'i' is not the lowercase version of 'I',
-	// and thus turkish locale breaks parsing of tags.
-
-	return compare_ascii_no_case(a.prettyname(), b.prettyname()) < 0;
+	return _(a.prettyname()) < _(b.prettyname());
 }
 
 
