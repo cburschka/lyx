@@ -12794,14 +12794,13 @@ Einstellungen\SpecialChar \menuseparator
 Schriften
 \family default
  festlegen.
- 
-\lang english
-In the 
+ Im Abschnitt 
 \family sans
-Fonts
+Schriften
 \family default
- Abschnitt of the Dialogs, you can specify which font should be used für
- the three different font shapes
+ des Dialogs 
+\lang english
+you can specify which font should be used für the three different font shapes
 \lang ngerman
  — Serifenschrift, 
 \family sans
@@ -12864,7 +12863,7 @@ Computer Modern (ec)
 \lang english
 If you select 
 \family sans
-Use non-T
+Nicht-T
 \begin_inset ERT
 status collapsed
 
@@ -12875,10 +12874,12 @@ status collapsed
 
 \end_inset
 
-eX fonts
+eX-Schriften verwenden
 \family default
 , you will have access to the fonts installed on your operating system.
- This requires that you use 
+
+\lang ngerman
+ Dies setzt voraus, dass Sie 
 \family sans
 PDF (XeT
 \begin_inset ERT
@@ -12923,15 +12924,9 @@ status collapsed
 
 eX)
 \family default
- as output format, i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
-\begin_inset space ~
-\end_inset
-
-you will have to have entweder XeTeX oder LuaTeX installed (siehe Abschnitt
+ als Ausgabeformat verwenden.
+ Das bedeutet daher auch, dass entweder XeTeX oder LuaTeX installiert sein
+ müssen (siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -12943,7 +12938,9 @@ reference "sub:LaTeX-Schriftunterstützung"
 \end_inset
 
 ).
- You will then not have access to TeX's own fonts (the selection described
+ 
+\lang english
+You will then not have access to TeX's own fonts (the selection described
  below).
  Note that LyX lists all available fonts in entweder of the three lists
  (roman, sans
@@ -12960,7 +12957,7 @@ or font failures.
 \begin_layout Standard
 
 \lang english
-If you use TeX fonts (which is the default), the possible options for the
+If you use TeX fonts (which is the default), the possible Optionen for the
  font include 
 \family sans
 Default
@@ -18127,7 +18124,7 @@ from
 file
 \family default
 .
- The option 
+ The Option 
 \family sans
 Clip
 \begin_inset space ~
@@ -18159,9 +18156,9 @@ In the
 \family sans
 LaTeX and LyX options
 \family default
- tab LaTeX experts can specify additional LaTeX options.
+ tab LaTeX experts can specify additional LaTeX Optionen.
  You can also specify here the appearance of the image inside LyX.
- The option 
+ The Option 
 \family sans
 Draft
 \begin_inset space ~
@@ -18171,7 +18168,7 @@ mode
 \family default
  has the effect that the image doesn't appear in the output, only a frame
  with the image size is printed.
- The option 
+ The Option 
 \family sans
 Don't
 \begin_inset space ~
@@ -18962,7 +18959,7 @@ You can alter a table by clicking on it with the right mouse button, which
  brings up the table dialog.
  Here you can adjust the Einstellungen of the cell and row/column respectively
  where the Cursor is placed currently.
- Most of the dialog options also work on selections.
+ Most of the dialog Optionen also work on selections.
  This means that if you select more cells, columns or rows the action is
  done on all of your selection.
 \end_layout
@@ -19247,7 +19244,7 @@ Tabellen ! lange
 \begin_layout Standard
 
 \lang english
-If the table is too long to fit on one page, you can use the option 
+If the table is too long to fit on one page, you can use the Option 
 \family sans
 Use
 \begin_inset space ~
@@ -19273,7 +19270,7 @@ Longtable
 \lang english
 Header
 \family default
-: The current row and all rows above, that don't have any special options
+: The current row and all rows above, that don't have any special Optionen
  defined, are defined to be the header rows of all pages of the longtable;
  except for the first page, if 
 \family sans
@@ -19296,7 +19293,7 @@ First
 
 header
 \family default
-: The current row and all rows above, that don't have any special options
+: The current row and all rows above, that don't have any special Optionen
  defined, are defined to be the header rows of the first page of the longtable.
 \end_layout
 
@@ -19306,7 +19303,7 @@ header
 \lang english
 Footer
 \family default
-: The current row and all rows below, that don't have any special options
+: The current row and all rows below, that don't have any special Optionen
  defined, are defined to be the footer rows of all pages of the longtable;
  except for the last page, if 
 \family sans
@@ -19329,7 +19326,7 @@ Last
 
 footer
 \family default
-: The current row and all rows below, that don't have any special options
+: The current row and all rows below, that don't have any special Optionen
  defined, are defined to be the footer rows of the last page of the longtable.
 \end_layout
 
@@ -19358,7 +19355,7 @@ Objects
 
 \lang english
 You can also specify a row where the table is split.
- If you set more than one option in the same table row, you should be aware
+ If you set more than one Option in the same table row, you should be aware
  of the fact that only the first one is used in the given table row.
  The others will then be defined as 
 \emph on
@@ -21579,7 +21576,7 @@ A table cell can contain text, inline equations, a figure, or another table.
 \family sans
 Section*
 \family default
-, etc.), nor set spacing options etc.
+, etc.), nor set spacing Optionen etc.
  for the cell's Absatz.
 \end_layout
 
@@ -32052,15 +32049,15 @@ Einstellungen
 \series bold
 
 \backslash
-usepackage[options]{Paketname}
+usepackage[Optionen]{Paketname}
 \end_layout
 
 \begin_layout Standard
 
 \lang english
 All LaTeX Befehle begin with a backslash, the Befehl argument is set within
- two braces, and the options are set within two brackets.
- Note that not all Befehle have an argument and options.
+ two braces, and the Optionen are set within two brackets.
+ Note that not all Befehle have an argument and Optionen.
 \end_layout
 
 \begin_layout Standard
@@ -32071,7 +32068,7 @@ In your case the package name is
 caption
 \series default
 .
- After a look in the documentation of the package, you know that the option
+ After a look in the documentation of the package, you know that the Option
  
 \series bold
 labelfont=bf
@@ -33538,7 +33535,7 @@ Advanced
 \family sans
 Ignore format
 \family default
- option.
+ Option.
  This way, entering in the 
 \family sans
 Find
@@ -40992,7 +40989,30 @@ Teil
 \end_layout
 
 \begin_layout Description
-Standard ist das Paket 
+Standard verwendet das Sprachpaket, das in 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Spracheinstellungen
+\family default
+ eingestellt ist, siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Spracheinstellungen"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Automatisch wählt ein passendes Sprachpaket für das Ansichts-/Exportformat
+ an, das Sie verwenden.
+ In den meisten Fällen wird das 
 \series bold
 babel
 \series default
@@ -41006,13 +41026,8 @@ LaTeX-Paket ! babel
 
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Description
-Automatisch wählt ein passendes Sprachpaket für das Ansichts-/Exportformat
- an, das Sie verwenden.
- Zum Beispiel wird für die XeTeX-Formate das Paket 
+ sein.
+ Wenn das neuere Paket 
 \series bold
 polyglossia
 \series default
@@ -41026,7 +41041,18 @@ LaTeX-Paket ! polyglossia
 
 \end_inset
 
- statt 
+ besser geeignet ist (ist der Fall wenn XeTeX und/oder Nicht-T
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX-Schriften benutzt werden), wird dies anstelle on 
 \series bold
 babel
 \series default
@@ -41042,7 +41068,11 @@ Babel verwendet
 \series bold
 babel
 \series default
- in jedem Fall.
+, auch wenn 
+\series bold
+polyglossia
+\series default
+ besser geeignet wäre.
 \end_layout
 
 \begin_layout Description

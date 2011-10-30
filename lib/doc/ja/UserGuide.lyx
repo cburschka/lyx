@@ -48637,7 +48637,34 @@ Part
 \begin_layout Description
 
 \lang english
-Default is the package
+Default uses the language package that is selected in
+\family sans
+ Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+Language Settings
+\family default
+ (see section
+\lang japanese
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:言語設定"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Automatic selects the most suitable language package for the view/export
+ format you will use.
+ In many cases this will be
 \lang japanese
  
 \series bold
@@ -48654,19 +48681,13 @@ Latexぱっけーじ@LaTeXパッケージ ! babel
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Description
-
-\lang english
-Automatic selects the most suitable language package for the view/export
- format you will use.
- For example for the XeTeX formats the package
-\lang japanese
  
+\lang english
+If the newer package 
 \series bold
 polyglossia
 \series default
+\lang japanese
 
 \begin_inset Index idx
 status collapsed
@@ -48677,11 +48698,10 @@ Latexぱっけーじ@LaTeXパッケージ ! polyglossia
 
 \end_inset
 
- 
+
 \lang english
-will be used instead of
-\lang japanese
- 
+ is more appropriate (is the case when using XeTeX and/or non-TeX fonts),
+ this package will be used instead of 
 \series bold
 babel
 \series default
@@ -48695,13 +48715,15 @@ Always
 \begin_inset space ~
 \end_inset
 
-Babel uses in every case
-\lang japanese
- 
+Babel uses 
 \series bold
 babel
 \series default
-.
+ even if 
+\series bold
+polyglossia
+\series default
+ would be more appropriate.
 \end_layout
 
 \begin_layout Description
