@@ -2116,7 +2116,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		break;
 
 	case LFUN_BUFFER_EXPORT: {
-		ExportStatus const status = doExport(argument, false, false);
+		ExportStatus const status = doExport(argument, false);
 		dr.setError(status != ExportSuccess);
 		if (status != ExportSuccess)
 			dr.setMessage(bformat(_("Error exporting to format: %1$s."), 
@@ -2125,7 +2125,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 	}
 
 	case LFUN_BUILD_PROGRAM:
-		doExport("program", true, false);
+		doExport("program", true);
 		break;
 
 	case LFUN_BUFFER_CHKTEX:
@@ -2157,7 +2157,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 				break;
 
 		} else {
-			doExport(format_name, true, false, filename);
+			doExport(format_name, true, filename);
 		}
 
 		// Substitute $$FName for filename
@@ -3511,12 +3511,29 @@ bool Buffer::isExporting() const
 }
 
 
-Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir) const
+Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir)
+	const
+{
+	string result_file;
+	return doExport(target, put_in_tempdir, result_file);
+}
+
+Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir,
+	string & result_file) const
 {
 	bool const update_unincluded =
 			params().maintain_unincluded_children
 			&& !params().getIncludedChildren().empty();
-	return doExport(target, put_in_tempdir, update_unincluded);
+
+	// (1) export with all included children (omit \includeonly)
+	if (update_unincluded) { 
+		ExportStatus const status = 
+			doExport(target, put_in_tempdir, true, result_file);
+		if (status != ExportSuccess)
+			return status;
+	}
+	// (2) export with included children only
+	return doExport(target, put_in_tempdir, false, result_file);
 }
 
 
@@ -3752,22 +3769,6 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 }
 
 
-Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir,
-	bool includeall) const
-{
-	string result_file;
-	// (1) export with all included children (omit \includeonly)
-	if (includeall) { 
-		ExportStatus const status = 
-			doExport(target, put_in_tempdir, true, result_file);
-		if (status != ExportSuccess)
-			return status;
-	}
-	// (2) export with included children only
-	return doExport(target, put_in_tempdir, false, result_file);
-}
-
-
 Buffer::ExportStatus Buffer::preview(string const & format) const
 {
 	bool const update_unincluded =
@@ -3782,7 +3783,7 @@ Buffer::ExportStatus Buffer::preview(string const & format, bool includeall) con
 	string result_file;
 	// (1) export with all included children (omit \includeonly)
 	if (includeall) { 
-		ExportStatus const status = doExport(format, true, true);
+		ExportStatus const status = doExport(format, true, true, result_file);
 		if (status != ExportSuccess)
 			return status;
 	}

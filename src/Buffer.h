@@ -621,6 +621,9 @@ public:
 	///
 	ExportStatus doExport(std::string const & target, bool put_in_tempdir) const;
 	///
+	ExportStatus doExport(std::string const & target, bool put_in_tempdir,
+		std::string & result_file) const;
+	///
 	ExportStatus preview(std::string const & format) const;
 
 private:
