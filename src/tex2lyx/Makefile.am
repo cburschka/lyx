@@ -57,7 +57,8 @@ tex2lyx_SOURCES = \
 	math.cpp \
 	Parser.cpp \
 	Parser.h \
-	preamble.cpp \
+	Preamble.cpp \
+	Preamble.h \
 	table.cpp \
 	tex2lyx.cpp \
 	tex2lyx.h \

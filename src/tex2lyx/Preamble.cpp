@@ -1,5 +1,5 @@
 /**
- * \file preamble.cpp
+ * \file Preamble.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,6 +13,7 @@
 
 #include <config.h>
 
+#include "Preamble.h"
 #include "tex2lyx.h"
 
 #include "LayoutFile.h"
@@ -29,10 +30,6 @@
 
 #include <algorithm>
 #include <iostream>
-#include <sstream>
-#include <string>
-#include <vector>
-#include <map>
 
 using namespace std;
 using namespace lyx::support;
@@ -43,19 +40,9 @@ namespace lyx {
 // special columntypes
 extern map<char, int> special_columns;
 
-map<string, vector<string> > used_packages;
 const char * const modules_placeholder = "\001modules\001";
 
-// needed to handle encodings with babel
-bool one_language = true;
-string h_inputencoding = "auto";
-
-// necessary to set the separation when \setlength is parsed
-string h_paragraph_separation = "indent";
-
-// necessary to avoid that our preamble stuff is added at each tex2lyx run
-// which would pollute the preamble when doing roundtrips
-bool ifundefined_color_set = false;
+Preamble preamble;
 
 namespace {
 
@@ -180,74 +167,6 @@ const char * const known_basic_color_codes[] = {"#0000ff", "#000000", "#00ffff",
 const char * const known_if_3arg_commands[] = {"@ifundefined", "IfFileExists",
 0};
 
-// default settings
-ostringstream h_preamble;
-string h_backgroundcolor;
-string h_boxbgcolor;
-string h_cite_engine             = "basic";
-string h_defskip                 = "medskip";
-string h_float_placement;
-string h_fontcolor;
-string h_fontencoding            = "default";
-string h_font_roman              = "default";
-string h_font_sans               = "default";
-string h_font_typewriter         = "default";
-string h_font_default_family     = "default";
-string h_font_sc                 = "false";
-string h_font_osf                = "false";
-string h_font_sf_scale           = "100";
-string h_font_tt_scale           = "100";
-string h_graphics                = "default";
-string h_html_be_strict          = "false";
-string h_html_css_as_file        = "0";
-string h_html_math_output        = "0";
-string h_language                = "english";
-string h_language_package        = "none";
-string h_listings_params;
-string h_margins;
-string h_notefontcolor;
-string h_options;
-string h_output_changes          = "false";
-string h_papercolumns            = "1";
-string h_paperfontsize           = "default";
-string h_paperorientation        = "portrait";
-string h_paperpagestyle          = "default";
-string h_papersides;
-string h_papersize               = "default";
-string h_paragraph_indentation   = "default";
-string h_pdf_title;
-string h_pdf_author;
-string h_pdf_subject;
-string h_pdf_keywords;
-string h_pdf_bookmarks           = "1";
-string h_pdf_bookmarksnumbered   = "0";
-string h_pdf_bookmarksopen       = "0";
-string h_pdf_bookmarksopenlevel  = "1";
-string h_pdf_breaklinks          = "0";
-string h_pdf_pdfborder           = "0";
-string h_pdf_colorlinks          = "0";
-string h_pdf_backref             = "section";
-string h_pdf_pdfusetitle         = "1";
-string h_pdf_pagemode;
-string h_pdf_quoted_options;
-string h_quotes_language         = "english";
-string h_secnumdepth             = "3";
-string h_spacing                 = "single";
-string h_suppress_date           = "false";
-string h_textclass               = "article";
-string h_tocdepth                = "3";
-string h_tracking_changes        = "false";
-string h_use_bibtopic            = "false";
-string h_use_geometry            = "false";
-string h_use_amsmath             = "1";
-string h_use_default_options     = "false";
-string h_use_esint               = "1";
-string h_use_hyperref            = "0";
-string h_use_mhchem              = "0";
-string h_use_mathdots            = "0";
-string h_use_refstyle            = "0";
-string h_use_undertilde          = "0";
-
 
 // returns true if at least one of the options in what has been found
 bool handle_opt(vector<string> & opts, char const * const * what, string & target)
@@ -345,12 +264,37 @@ string process_keyval_opt(vector<string> & options, string name)
 	return "";
 }
 
+} // anonymous namespace
 
-/*!
- * Add package \p name with options \p options to used_packages.
- * Remove options from \p options that we don't want to output.
- */
-void add_package(string const & name, vector<string> & options)
+
+bool Preamble::indentParagraphs() const
+{
+	return h_paragraph_separation == "indent";
+}
+
+
+bool Preamble::isPackageUsed(string const & package) const
+{
+	return used_packages.find(package) != used_packages.end();
+}
+
+
+vector<string> Preamble::getPackageOptions(string const & package) const
+{
+	map<string, vector<string> >::const_iterator it = used_packages.find(package);
+	if (it != used_packages.end())
+		return it->second;
+	return vector<string>();
+}
+
+
+string Preamble::addModules(string const & lyxpreamble, string const & modules)
+{
+	return subst(lyxpreamble, modules_placeholder, modules);
+}
+
+
+void Preamble::add_package(string const & name, vector<string> & options)
 {
 	// every package inherits the global options
 	if (used_packages.find(name) == used_packages.end())
@@ -368,6 +312,8 @@ void add_package(string const & name, vector<string> & options)
 	}
 }
 
+
+namespace {
 
 // Given is a string like "scaled=0.9", return 0.9 * 100
 string const scale_as_percentage(string const & scale)
@@ -393,8 +339,82 @@ string remove_braces(string const & value)
 	return value;
 }
 
+} // anonymous namespace
 
-void handle_hyperref(vector<string> & options)
+
+Preamble::Preamble() : one_language(true), ifundefined_color_set(false)
+{
+	//h_backgroundcolor;
+	//h_boxbgcolor;
+	h_cite_engine             = "basic";
+	h_defskip                 = "medskip";
+	//h_float_placement;
+	//h_fontcolor;
+	h_fontencoding            = "default";
+	h_font_roman              = "default";
+	h_font_sans               = "default";
+	h_font_typewriter         = "default";
+	h_font_default_family     = "default";
+	h_font_sc                 = "false";
+	h_font_osf                = "false";
+	h_font_sf_scale           = "100";
+	h_font_tt_scale           = "100";
+	h_graphics                = "default";
+	h_html_be_strict          = "false";
+	h_html_css_as_file        = "0";
+	h_html_math_output        = "0";
+	h_inputencoding           = "auto";
+	h_language                = "english";
+	h_language_package        = "none";
+	//h_listings_params;
+	//h_margins;
+	//h_notefontcolor;
+	//h_options;
+	h_output_changes          = "false";
+	h_papercolumns            = "1";
+	h_paperfontsize           = "default";
+	h_paperorientation        = "portrait";
+	h_paperpagestyle          = "default";
+	//h_papersides;
+	h_papersize               = "default";
+	h_paragraph_indentation   = "default";
+	h_paragraph_separation    = "indent";
+	//h_pdf_title;
+	//h_pdf_author;
+	//h_pdf_subject;
+	//h_pdf_keywords;
+	h_pdf_bookmarks           = "1";
+	h_pdf_bookmarksnumbered   = "0";
+	h_pdf_bookmarksopen       = "0";
+	h_pdf_bookmarksopenlevel  = "1";
+	h_pdf_breaklinks          = "0";
+	h_pdf_pdfborder           = "0";
+	h_pdf_colorlinks          = "0";
+	h_pdf_backref             = "section";
+	h_pdf_pdfusetitle         = "1";
+	//h_pdf_pagemode;
+	//h_pdf_quoted_options;
+	h_quotes_language         = "english";
+	h_secnumdepth             = "3";
+	h_spacing                 = "single";
+	h_suppress_date           = "false";
+	h_textclass               = "article";
+	h_tocdepth                = "3";
+	h_tracking_changes        = "false";
+	h_use_bibtopic            = "false";
+	h_use_geometry            = "false";
+	h_use_amsmath             = "1";
+	h_use_default_options     = "false";
+	h_use_esint               = "1";
+	h_use_hyperref            = "0";
+	h_use_mhchem              = "0";
+	h_use_mathdots            = "0";
+	h_use_refstyle            = "0";
+	h_use_undertilde          = "0";
+}
+
+
+void Preamble::handle_hyperref(vector<string> & options)
 {
 	// FIXME swallow inputencoding changes that might surround the
 	//       hyperref setup if it was written by LyX
@@ -478,8 +498,8 @@ void handle_hyperref(vector<string> & options)
 }
 
 
-void handle_package(Parser &p, string const & name, string const & opts,
-		    bool in_lyx_preamble)
+void Preamble::handle_package(Parser &p, string const & name,
+                              string const & opts, bool in_lyx_preamble)
 {
 	vector<string> options = split_options(opts);
 	add_package(name, options);
@@ -713,7 +733,7 @@ void handle_package(Parser &p, string const & name, string const & opts,
 }
 
 
-void handle_if(Parser & p, bool in_lyx_preamble)
+void Preamble::handle_if(Parser & p, bool in_lyx_preamble)
 {
 	while (p.good()) {
 		Token t = p.get_token();
@@ -730,7 +750,7 @@ void handle_if(Parser & p, bool in_lyx_preamble)
 }
 
 
-void end_preamble(ostream & os, TextClass const & /*textclass*/)
+void Preamble::end_preamble(ostream & os, TeX2LyXDocClass const & /*tc*/)
 {
 	// translate from babel to LyX names
 	h_language = babel2lyx(h_language);
@@ -860,10 +880,8 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 	h_preamble.str("");
 }
 
-} // anonymous namespace
 
-
-void parse_preamble(Parser & p, ostream & os, 
+void Preamble::parse(Parser & p, ostream & os,
 	string const & forceclass, TeX2LyXDocClass & tc)
 {
 	// initialize fixed types
@@ -1344,7 +1362,6 @@ void parse_preamble(Parser & p, ostream & os,
 }
 
 
-/// translates a babel language name to a LyX language name
 string babel2lyx(string const & language)
 {
 	char const * const * where = is_known(language, known_languages);
@@ -1354,7 +1371,6 @@ string babel2lyx(string const & language)
 }
 
 
-/// translates a color name to a LyX color code
 string color2code(string const & name)
 {
 	char const * const * where = is_known(name, known_basic_colors);

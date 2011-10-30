@@ -21,6 +21,7 @@
 #include "FloatList.h"
 #include "Layout.h"
 #include "Length.h"
+#include "Preamble.h"
 
 #include "support/lassert.h"
 #include "support/convert.h"
@@ -1713,8 +1714,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 	// (needed for bibtex inset)
 	string btprint;
 	string bibliographystyle;
-	bool const use_natbib = used_packages.find("natbib") != used_packages.end();
-	bool const use_jurabib = used_packages.find("jurabib") != used_packages.end();
+	bool const use_natbib = preamble.isPackageUsed("natbib");
+	bool const use_jurabib = preamble.isPackageUsed("jurabib");
 	string last_env;
 	while (p.good()) {
 		Token const & t = p.get_token();
@@ -2625,7 +2626,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				//        about the empty paragraph.
 				context.new_paragraph(os);
 			}
-			if (h_paragraph_separation == "indent") {
+			if (preamble.indentParagraphs()) {
 				// we need to unindent, lest the line be too long
 				context.add_par_extra_stuff("\\noindent\n");
 			}
@@ -2752,7 +2753,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				p.get_token();
 			}
 			char argumentOrder = '\0';
-			vector<string> const & options = used_packages["jurabib"];
+			vector<string> const options =
+				preamble.getPackageOptions("jurabib");
 			if (find(options.begin(), options.end(),
 				      "natbiborder") != options.end())
 				argumentOrder = 'n';

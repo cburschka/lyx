@@ -43,19 +43,10 @@ public:
 	void setName(std::string const & name) { name_ = name; }
 };
 
-/// in preamble.cpp
-void parse_preamble(Parser & p, std::ostream & os, 
-	std::string const & forceclass, TeX2LyXDocClass & tc);
 /// Translate babel language name to LyX language name
 extern std::string babel2lyx(std::string const & language);
 /// translate color name to LyX color code
 extern std::string color2code(std::string const & name);
-
-/// used packages with options
-extern std::map<std::string, std::vector<std::string> > used_packages;
-extern const char * const modules_placeholder;
-extern std::string h_inputencoding;
-extern std::string h_paragraph_separation;
 
 /// in text.cpp
 std::string translate_len(std::string const &);

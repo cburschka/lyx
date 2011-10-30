@@ -21,6 +21,7 @@
 #include "LayoutFile.h"
 #include "LayoutModuleList.h"
 #include "ModuleList.h"
+#include "Preamble.h"
 #include "TextClass.h"
 
 #include "support/convert.h"
@@ -646,10 +647,10 @@ void tex2lyx(idocstream & is, ostream & os, string encoding)
 	// since latin1 does not cause an iconv error if the actual encoding
 	// is different (bug 7509).
 	if (encoding.empty()) {
-		if (h_inputencoding == "auto")
+		if (preamble.inputencoding() == "auto")
 			encoding = "latin1";
 		else
-			encoding = h_inputencoding;
+			encoding = preamble.inputencoding();
 	}
 
 	Parser p(is);
@@ -657,7 +658,7 @@ void tex2lyx(idocstream & is, ostream & os, string encoding)
 	//p.dump();
 
 	ostringstream ps;
-	parse_preamble(p, ps, documentclass, textclass);
+	preamble.parse(p, ps, documentclass, textclass);
 
 	active_environments.push_back("document");
 	Context context(true, textclass);
@@ -680,7 +681,7 @@ void tex2lyx(idocstream & is, ostream & os, string encoding)
 			ms << *it << '\n';
 		ms << "\\end_modules\n";
 	}
-	os << subst(ps.str(), modules_placeholder, ms.str());
+	os << preamble.addModules(ps.str(), ms.str());
 
 	ss.seekg(0);
 	os << ss.str();
