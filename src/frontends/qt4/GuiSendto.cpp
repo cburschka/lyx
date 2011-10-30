@@ -69,19 +69,10 @@ void GuiSendTo::changed_adaptor()
 }
 
 
-namespace {
-bool formatSorter(Format const * lhs, Format const * rhs) {
-	return _(lhs->prettyname()) < _(rhs->prettyname());
-}
-} // end namespace
-
-
 void GuiSendTo::updateContents()
 {
 	all_formats_ = buffer().params().exportableFormats(false);
 	
-	sort(all_formats_.begin(), all_formats_.end(), formatSorter);
-
 	// Save the current selection if any
 	Format const * current_format = 0;
 	int const line = formatLW->currentRow();
