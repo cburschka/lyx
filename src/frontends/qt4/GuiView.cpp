@@ -564,7 +564,7 @@ void GuiView::processingThreadStarted()
 }
 
 
-void GuiView::processingThreadFinished(bool show_errors)
+void GuiView::processingThreadFinished()
 {
 	QFutureWatcher<Buffer::ExportStatus> const * watcher =
 		static_cast<QFutureWatcher<Buffer::ExportStatus> const *>(sender());
@@ -573,37 +573,26 @@ void GuiView::processingThreadFinished(bool show_errors)
 	handleExportStatus(this, status, d.processing_format);
 	
 	updateToolbars();
-	if (show_errors) {
-		BufferView const * const bv = currentBufferView();
-		if (bv && !bv->buffer().errorList("Export").empty()) {
-			errors("Export");
-			return;
-		}
-		errors(d.last_export_format);
- 	}
-}
-
-
-void GuiView::processingThreadFinished()
-{
-	processingThreadFinished(true);
+	BufferView const * const bv = currentBufferView();
+	if (bv && !bv->buffer().errorList("Export").empty()) {
+		errors("Export");
+		return;
+	}
+	errors(d.last_export_format);
 }
 
 
 void GuiView::autoSaveThreadFinished()
 {
-	processingThreadFinished(false);
+	QFutureWatcher<docstring> const * watcher =
+		static_cast<QFutureWatcher<docstring> const *>(sender());
+	message(watcher->result());
+	updateToolbars();
 }
 
 #else
 
-
 void GuiView::processingThreadStarted()
-{
-}
-
-
-void GuiView::processingThreadFinished(bool)
 {
 }
 
