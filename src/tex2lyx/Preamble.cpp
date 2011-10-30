@@ -671,10 +671,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 	else if (name == "url")
 		; // ignore this
 
-	else if (name == "subscript")
-		; // ignore this
-
-	else if (name == "color") {
+	else if (name == "color" || name == "subscript" || name == "ulem") {
 		if (!in_lyx_preamble)
 			h_preamble << package_beg_sep << name
 			           << package_mid_sep << "\\usepackage{"
@@ -686,13 +683,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	else if (name == "setspace")
 		; // ignore this
-
-#if 0
-	// do not ignore as long as we don't support all commands (e.g. \xout is missing)
-	// and as long as we don't support change tracking
-	else if (name == "ulem")
-		; // ignore this
-#endif
 
 	else if (name == "geometry")
 		; // Ignore this, the geometry settings are made by the \geometry

@@ -2591,6 +2591,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
 			context.check_layout(os);
 			os << "\n\\bar default\n";
+			preamble.registerAutomaticallyLoadedPackage("ulem");
 		}
 
 		else if (t.cs() == "sout") {
@@ -2599,6 +2600,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
 			context.check_layout(os);
 			os << "\n\\strikeout default\n";
+			preamble.registerAutomaticallyLoadedPackage("ulem");
 		}
 
 		else if (t.cs() == "uuline" || t.cs() == "uwave" ||
@@ -2608,6 +2610,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
 			context.check_layout(os);
 			os << "\n\\" << t.cs() << " default\n";
+			if (t.cs() == "uuline" || t.cs() == "uwave")
+				preamble.registerAutomaticallyLoadedPackage("ulem");
 		}
 
 		// FIXME, the inset layout should be plain, not standard, see bug #7846
@@ -2918,6 +2922,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << t.cs().substr(4) << '\n';
 			parse_text_in_inset(p, os, FLAG_ITEM, false, context);
 			end_inset(os);
+			if (t.cs() == "textsubscript")
+				preamble.registerAutomaticallyLoadedPackage("subscript");
 		}
 
 		else if (is_known(t.cs(), known_quotes)) {
