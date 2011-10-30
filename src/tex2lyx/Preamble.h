@@ -40,8 +40,7 @@ public:
 	std::vector<std::string>
 	getPackageOptions(std::string const & package) const;
 	///
-	std::string addModules(std::string const & lyxpreamble,
-	                       std::string const & modules);
+	void addModule(std::string const & module);
 	///
 	void suppressDate(bool suppress);
 
@@ -55,6 +54,8 @@ public:
 private:
 	///
 	std::map<std::string, std::vector<std::string> > used_packages;
+	///
+	std::vector<std::string> used_modules;
 
 	/// needed to handle encodings with babel
 	bool one_language;

@@ -40,8 +40,6 @@ namespace lyx {
 // special columntypes
 extern map<char, int> special_columns;
 
-const char * const modules_placeholder = "\001modules\001";
-
 Preamble preamble;
 
 namespace {
@@ -288,9 +286,9 @@ vector<string> Preamble::getPackageOptions(string const & package) const
 }
 
 
-string Preamble::addModules(string const & lyxpreamble, string const & modules)
+void Preamble::addModule(string const & module)
 {
-	return subst(lyxpreamble, modules_placeholder, modules);
+	used_modules.push_back(module);
 }
 
 
@@ -801,9 +799,16 @@ void Preamble::writeLyXHeader(ostream & os)
 		os << "\\begin_preamble\n" << h_preamble.str() << "\n\\end_preamble\n";
 	if (!h_options.empty())
 		os << "\\options " << h_options << "\n";
-	os << "\\use_default_options " << h_use_default_options << "\n"
-	   << modules_placeholder
-	   << "\\language " << h_language << "\n"
+	os << "\\use_default_options " << h_use_default_options << "\n";
+	if (!used_modules.empty()) {
+		os << "\\begin_modules\n";
+		vector<string>::const_iterator const end = used_modules.end();
+		vector<string>::const_iterator it = used_modules.begin();
+		for (; it != end; it++)
+			os << *it << '\n';
+		os << "\\end_modules\n";
+	}
+	os << "\\language " << h_language << "\n"
 	   << "\\language_package " << h_language_package << "\n"
 	   << "\\inputencoding " << h_inputencoding << "\n"
 	   << "\\fontencoding " << h_fontencoding << "\n"

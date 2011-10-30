@@ -671,18 +671,13 @@ void tex2lyx(idocstream & is, ostream & os, string encoding)
 	active_environments.pop_back();
 
 	// We know the used modules only after parsing the full text
-	ostringstream ms;
 	if (!used_modules.empty()) {
-		ms << "\\begin_modules\n";
 		LayoutModuleList::const_iterator const end = used_modules.end();
 		LayoutModuleList::const_iterator it = used_modules.begin();
 		for (; it != end; it++)
-			ms << *it << '\n';
-		ms << "\\end_modules\n";
+			preamble.addModule(*it);
 	}
-	ostringstream ps;
-	preamble.writeLyXHeader(ps);
-	os << preamble.addModules(ps.str(), ms.str());
+	preamble.writeLyXHeader(os);
 
 	ss.seekg(0);
 	os << ss.str();
