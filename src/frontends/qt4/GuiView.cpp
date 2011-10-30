@@ -534,22 +534,25 @@ static void handleExportStatus(GuiView * view, Buffer::ExportStatus status,
 	docstring msg;
 	switch (status) {
 	case Buffer::ExportSuccess:
-		msg = _("Successful export to format: %1$s");
+		msg = bformat(_("Successful export to format: %1$s"), from_utf8(format));
+		break;
+	case Buffer::ExportCancel:
+		msg = _("Document export cancelled.");
 		break;
 	case Buffer::ExportError:
 	case Buffer::ExportNoPathToFormat:
 	case Buffer::ExportTexPathHasSpaces:
 	case Buffer::ExportConverterError:
-		msg = _("Error while exporting format: %1$s");
+		msg = bformat(_("Error while exporting format: %1$s"), from_utf8(format));
 		break;
 	case Buffer::PreviewSuccess:
-		msg = _("Successful preview of format: %1$s");
+		msg = bformat(_("Successful preview of format: %1$s"), from_utf8(format));
 		break;
 	case Buffer::PreviewError:
-		msg = _("Error while previewing format: %1$s");
+		msg = bformat(_("Error while previewing format: %1$s"), from_utf8(format));
 		break;
 	}
-	view->message(bformat(msg, from_utf8(format)));
+	view->message(msg);
 }
 
 

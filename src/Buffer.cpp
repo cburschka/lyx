@@ -3745,7 +3745,10 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 
 	if (status == CANCEL) {
 		message(_("Document export cancelled."));
-	} else if (tmp_result_file.exists()) {
+		return ExportCancel;
+	} 
+	
+	if (tmp_result_file.exists()) {
 		// Finally copy the main file
 		use_force = use_gui ? lyxrc.export_overwrite != NO_FILES
 				    : force_overwrite != NO_FILES;
@@ -3754,10 +3757,15 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 		status = copyFile(format, tmp_result_file,
 			FileName(result_file), result_file,
 			status == FORCE);
-		message(bformat(_("Document exported as %1$s "
-			"to file `%2$s'"),
-			formats.prettyName(format),
-			makeDisplayPath(result_file)));
+		if (status == CANCEL) {
+			message(_("Document export cancelled."));
+			return ExportCancel;
+		} else {
+			message(bformat(_("Document exported as %1$s "
+				"to file `%2$s'"),
+				formats.prettyName(format),
+				makeDisplayPath(result_file)));
+		}
 	} else {
 		// This must be a dummy converter like fax (bug 1888)
 		message(bformat(_("Document exported as %1$s"),

@@ -125,6 +125,7 @@ public:
 	enum ExportStatus {
 		// export
 		ExportSuccess,
+		ExportCancel,
 		ExportError,
 		ExportNoPathToFormat,
 		ExportTexPathHasSpaces,
