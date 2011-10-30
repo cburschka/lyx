@@ -657,8 +657,7 @@ void tex2lyx(idocstream & is, ostream & os, string encoding)
 	p.setEncoding(encoding);
 	//p.dump();
 
-	ostringstream ps;
-	preamble.parse(p, ps, documentclass, textclass);
+	preamble.parse(p, documentclass, textclass);
 
 	active_environments.push_back("document");
 	Context context(true, textclass);
@@ -681,6 +680,8 @@ void tex2lyx(idocstream & is, ostream & os, string encoding)
 			ms << *it << '\n';
 		ms << "\\end_modules\n";
 	}
+	ostringstream ps;
+	preamble.writeLyXHeader(ps);
 	os << preamble.addModules(ps.str(), ms.str());
 
 	ss.seekg(0);

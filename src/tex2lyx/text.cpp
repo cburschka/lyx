@@ -2124,6 +2124,26 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, context, true);
 		}
 
+		// Must catch empty dates before findLayout is called below
+		else if (t.cs() == "date") {
+			string const date = p.verbatim_item();
+			if (date.empty())
+				preamble.suppressDate(true);
+			else {
+				preamble.suppressDate(false);
+				if (context.new_layout_allowed &&
+				    (newlayout = findLayout(context.textclass,
+				                            t.cs(), true))) {
+					// write the layout
+					output_command_layout(os, p, outer,
+							context, newlayout);
+					p.skip_spaces();
+				} else
+					handle_ert(os, "\\date{" + date + '}',
+							context);
+			}
+		}
+
 		// Starred section headings
 		// Must attempt to parse "Section*" before "Section".
 		else if ((p.next_token().asInput() == "*") &&

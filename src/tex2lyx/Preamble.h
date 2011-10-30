@@ -42,10 +42,15 @@ public:
 	///
 	std::string addModules(std::string const & lyxpreamble,
 	                       std::string const & modules);
-
 	///
-	void parse(Parser & p, std::ostream & os,
-	           std::string const & forceclass, TeX2LyXDocClass & tc);
+	void suppressDate(bool suppress);
+
+
+	/// Parses the LaTeX preamble into internal data
+	void parse(Parser & p, std::string const & forceclass,
+	           TeX2LyXDocClass & tc);
+	/// Writes the LyX file header from internal data
+	void writeLyXHeader(std::ostream & os);
 
 private:
 	///
@@ -141,8 +146,6 @@ private:
 	                    std::string const & opts, bool in_lyx_preamble);
 	///
 	void handle_if(Parser & p, bool in_lyx_preamble);
-	///
-	void end_preamble(std::ostream & os, TeX2LyXDocClass const & tc);
 };
 
 

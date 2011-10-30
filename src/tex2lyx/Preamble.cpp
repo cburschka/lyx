@@ -294,6 +294,15 @@ string Preamble::addModules(string const & lyxpreamble, string const & modules)
 }
 
 
+void Preamble::suppressDate(bool suppress)
+{
+	if (suppress)
+		h_suppress_date = "true";
+	else
+		h_suppress_date = "false";
+}
+
+
 void Preamble::add_package(string const & name, vector<string> & options)
 {
 	// every package inherits the global options
@@ -750,7 +759,7 @@ void Preamble::handle_if(Parser & p, bool in_lyx_preamble)
 }
 
 
-void Preamble::end_preamble(ostream & os, TeX2LyXDocClass const & /*tc*/)
+void Preamble::writeLyXHeader(ostream & os)
 {
 	// translate from babel to LyX names
 	h_language = babel2lyx(h_language);
@@ -881,8 +890,8 @@ void Preamble::end_preamble(ostream & os, TeX2LyXDocClass const & /*tc*/)
 }
 
 
-void Preamble::parse(Parser & p, ostream & os,
-	string const & forceclass, TeX2LyXDocClass & tc)
+void Preamble::parse(Parser & p, string const & forceclass,
+                     TeX2LyXDocClass & tc)
 {
 	// initialize fixed types
 	special_columns['D'] = 3;
@@ -1358,7 +1367,6 @@ void Preamble::parse(Parser & p, ostream & os,
 		ss << tc.sides();
 		h_papersides = ss.str();
 	}
-	end_preamble(os, tc);
 }
 
 
