@@ -863,9 +863,10 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			os << "Boxed\n";
 		else if (outer_type == "shadowbox")
 			os << "Shadowbox\n";
-		else if (outer_type == "shaded")
+		else if (outer_type == "shaded") {
 			os << "Shaded\n";
-		else if (outer_type == "doublebox")
+			preamble.registerAutomaticallyLoadedPackage("color");
+		} else if (outer_type == "doublebox")
 			os << "Doublebox\n";
 		else if (outer_type.empty())
 			os << "Frameless\n";
@@ -1166,6 +1167,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
 		end_inset(os);
 		p.skip_spaces();
+		if (!preamble.notefontcolor().empty())
+			preamble.registerAutomaticallyLoadedPackage("color");
 	}
 
 	else if (name == "framed" || name == "shaded") {
@@ -1177,6 +1180,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 	else if (name == "lstlisting") {
 		eat_whitespace(p, os, parent_context, false);
 		// FIXME handle listings with parameters
+		//       If this is added, don't forgot to handle the
+		//       automatic color package loading
 		if (p.hasOpt())
 			parse_unknown_environment(p, name, os, FLAG_END,
 			                          outer, parent_context);
@@ -2568,6 +2573,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					parse_text_snippet(p, os, FLAG_ITEM, outer, context);
 					context.check_layout(os);
 					os << "\n\\color inherit\n";
+					preamble.registerAutomaticallyLoadedPackage("color");
 			} else
 				// for custom defined colors
 				handle_ert(os, t.asInput() + "{" + color + "}", context);

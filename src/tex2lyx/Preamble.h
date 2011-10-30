@@ -18,6 +18,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <set>
 
 
 namespace lyx {
@@ -33,12 +34,18 @@ public:
 	///
 	std::string inputencoding() const { return h_inputencoding; }
 	///
+	std::string notefontcolor() const { return h_notefontcolor; }
+	///
 	bool indentParagraphs() const;
 	///
 	bool isPackageUsed(std::string const & package) const;
 	///
 	std::vector<std::string>
 	getPackageOptions(std::string const & package) const;
+	/// Tell that \p package will be loaded automatically by LyX.
+	/// This has only an effect if \p package is prepared for
+	/// autoloading in parse().
+	void registerAutomaticallyLoadedPackage(std::string const & package);
 	///
 	void addModule(std::string const & module);
 	///
@@ -49,20 +56,18 @@ public:
 	void parse(Parser & p, std::string const & forceclass,
 	           TeX2LyXDocClass & tc);
 	/// Writes the LyX file header from internal data
-	void writeLyXHeader(std::ostream & os);
+	bool writeLyXHeader(std::ostream & os);
 
 private:
 	///
 	std::map<std::string, std::vector<std::string> > used_packages;
+	/// Packages that will be loaded automatically by LyX
+	std::set<std::string> auto_packages;
 	///
 	std::vector<std::string> used_modules;
 
 	/// needed to handle encodings with babel
 	bool one_language;
-
-	/// necessary to avoid that our preamble stuff is added at each
-	/// tex2lyx run which would pollute the preamble when doing roundtrips
-	bool ifundefined_color_set;
 
 	std::ostringstream h_preamble;
 	std::string h_backgroundcolor;

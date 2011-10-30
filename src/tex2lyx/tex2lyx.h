@@ -45,8 +45,8 @@ public:
 
 /// Translate babel language name to LyX language name
 extern std::string babel2lyx(std::string const & language);
-/// translate color name to LyX color code
-extern std::string color2code(std::string const & name);
+/// Translate basic color name or RGB color in LaTeX syntax to LyX color code
+extern std::string rgbcolor2code(std::string const & name);
 
 /// in text.cpp
 std::string translate_len(std::string const &);

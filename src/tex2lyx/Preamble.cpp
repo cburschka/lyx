@@ -165,6 +165,12 @@ const char * const known_basic_color_codes[] = {"#0000ff", "#000000", "#00ffff",
 const char * const known_if_3arg_commands[] = {"@ifundefined", "IfFileExists",
 0};
 
+// codes used to remove packages that are loaded automatically by LyX.
+// Syntax: package_beg_sep<name>package_mid_sep<package loading code>package_end_sep
+const char package_beg_sep = '\001';
+const char package_mid_sep = '\002';
+const char package_end_sep = '\003';
+
 
 // returns true if at least one of the options in what has been found
 bool handle_opt(vector<string> & opts, char const * const * what, string & target)
@@ -286,6 +292,12 @@ vector<string> Preamble::getPackageOptions(string const & package) const
 }
 
 
+void Preamble::registerAutomaticallyLoadedPackage(std::string const & package)
+{
+	auto_packages.insert(package);
+}
+
+
 void Preamble::addModule(string const & module)
 {
 	used_modules.push_back(module);
@@ -349,7 +361,7 @@ string remove_braces(string const & value)
 } // anonymous namespace
 
 
-Preamble::Preamble() : one_language(true), ifundefined_color_set(false)
+Preamble::Preamble() : one_language(true)
 {
 	//h_backgroundcolor;
 	//h_boxbgcolor;
@@ -663,11 +675,10 @@ void Preamble::handle_package(Parser &p, string const & name,
 		; // ignore this
 
 	else if (name == "color") {
-		// with the following command this package is only loaded when needed for
-		// undefined colors, since we only support the predefined colors
-		// only add it if not yet added
-		if (!ifundefined_color_set)
-			h_preamble << "\\@ifundefined{definecolor}\n {\\usepackage{color}}{}\n";
+		if (!in_lyx_preamble)
+			h_preamble << package_beg_sep << name
+			           << package_mid_sep << "\\usepackage{"
+			           << name << '}' << package_end_sep;
 	}
 
 	else if (name == "graphicx")
@@ -757,7 +768,7 @@ void Preamble::handle_if(Parser & p, bool in_lyx_preamble)
 }
 
 
-void Preamble::writeLyXHeader(ostream & os)
+bool Preamble::writeLyXHeader(ostream & os)
 {
 	// translate from babel to LyX names
 	h_language = babel2lyx(h_language);
@@ -795,8 +806,30 @@ void Preamble::writeLyXHeader(ostream & os)
 	   << "\\begin_document\n"
 	   << "\\begin_header\n"
 	   << "\\textclass " << h_textclass << "\n";
-	if (!h_preamble.str().empty())
-		os << "\\begin_preamble\n" << h_preamble.str() << "\n\\end_preamble\n";
+	string const raw = h_preamble.str();
+	if (!raw.empty()) {
+		os << "\\begin_preamble\n";
+		for (string::size_type i = 0; i < raw.size(); ++i) {
+			if (raw[i] == package_beg_sep) {
+				// Here follows some package loading code that
+				// must be skipped if the package is loaded
+				// automatically.
+				string::size_type j = raw.find(package_mid_sep, i);
+				if (j == string::npos)
+					return false;
+				string::size_type k = raw.find(package_end_sep, j);
+				if (k == string::npos)
+					return false;
+				string const package = raw.substr(i + 1, j - i - 1);
+				string const replacement = raw.substr(j + 1, k - j - 1);
+				if (auto_packages.find(package) == auto_packages.end())
+					os << replacement;
+				i = k;
+			} else
+				os.put(raw[i]);
+		}
+		os << "\n\\end_preamble\n";
+	}
 	if (!h_options.empty())
 		os << "\\options " << h_options << "\n";
 	os << "\\use_default_options " << h_use_default_options << "\n";
@@ -892,6 +925,7 @@ void Preamble::writeLyXHeader(ostream & os)
 	   << "\\begin_body\n";
 	// clear preamble for subdocuments
 	h_preamble.str("");
+	return true;
 }
 
 
@@ -982,12 +1016,14 @@ void Preamble::parse(Parser & p, string const & forceclass,
 		else if (t.cs() == "color") {
 			string argument = p.getArg('{', '}');
 			// check the case that a standard color is used
-			if (is_known(argument, known_basic_colors))
-				h_fontcolor = color2code(argument);
+			if (is_known(argument, known_basic_colors)) {
+				h_fontcolor = rgbcolor2code(argument);
+				preamble.registerAutomaticallyLoadedPackage("color");
+			} else if (argument == "document_fontcolor")
+				preamble.registerAutomaticallyLoadedPackage("color");
 			// check the case that LyX's document_fontcolor is defined
 			// but not used for \color
-			if (argument != "document_fontcolor"
-				&& !is_known(argument, known_basic_colors)) {
+			else {
 				h_preamble << t.asInput() << '{' << argument << '}';
 				// the color might already be set because \definecolor
 				// is parsed before this
@@ -998,12 +1034,13 @@ void Preamble::parse(Parser & p, string const & forceclass,
 		else if (t.cs() == "pagecolor") {
 			string argument = p.getArg('{', '}');
 			// check the case that a standard color is used
-			if (is_known(argument, known_basic_colors))
-				h_backgroundcolor = color2code(argument);
+			if (is_known(argument, known_basic_colors)) {
+				h_backgroundcolor = rgbcolor2code(argument);
+			} else if (argument == "page_backgroundcolor")
+				preamble.registerAutomaticallyLoadedPackage("color");
 			// check the case that LyX's page_backgroundcolor is defined
 			// but not used for \pagecolor
-			if (argument != "page_backgroundcolor"
-				&& !is_known(argument, known_basic_colors)) {
+			else {
 				h_preamble << t.asInput() << '{' << argument << '}';
 				// the color might already be set because \definecolor
 				// is parsed before this
@@ -1320,18 +1357,27 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			string const arg2 = p.verbatim_item();
 			string const arg3 = p.verbatim_item();
 			// test case \@ifundefined{date}{}{\date{}}
-			if (arg1 == "date" && arg2.empty() && arg3 == "\\date{}") {
+			if (t.cs() == "@ifundefined" && arg1 == "date" &&
+			    arg2.empty() && arg3 == "\\date{}") {
 				h_suppress_date = "true";
-			// test case \@ifundefined{definecolor}{\usepackage{color}}{}
-			// because we could pollute the preamble with it in roundtrips
-			} else if (arg1 == "definecolor" && arg2 == "\\usepackage{color}"
-				&& arg3.empty()) {
-				ifundefined_color_set = true;
+			// older tex2lyx versions did output
+			// \@ifundefined{definecolor}{\usepackage{color}}{}
+			} else if (t.cs() == "@ifundefined" &&
+			           arg1 == "definecolor" &&
+			           arg2 == "\\usepackage{color}" &&
+			           arg3.empty()) {
+				if (!in_lyx_preamble)
+					h_preamble << package_beg_sep
+					           << "color"
+					           << package_mid_sep
+					           << "\\@ifundefined{definecolor}{color}{}"
+					           << package_end_sep;
 			// test for case
 			//\@ifundefined{showcaptionsetup}{}{%
 			// \PassOptionsToPackage{caption=false}{subfig}}
 			// that LyX uses for subfloats
-			} else if (arg1 == "showcaptionsetup" && arg2.empty()
+			} else if (t.cs() == "@ifundefined" &&
+			           arg1 == "showcaptionsetup" && arg2.empty()
 				&& arg3 == "%\n \\PassOptionsToPackage{caption=false}{subfig}") {
 				; // do nothing
 			} else if (!in_lyx_preamble) {
@@ -1384,12 +1430,16 @@ string babel2lyx(string const & language)
 }
 
 
-string color2code(string const & name)
+string rgbcolor2code(string const & name)
 {
 	char const * const * where = is_known(name, known_basic_colors);
-	if (where)
+	if (where) {
+		// "red", "green" etc
 		return known_basic_color_codes[where - known_basic_colors];
-	return name;
+	}
+	// "255,0,0", "0,255,0" etc
+	RGBColor c(RGBColorFromLaTeX(name));
+	return X11hexname(c);
 }
 
 // }])

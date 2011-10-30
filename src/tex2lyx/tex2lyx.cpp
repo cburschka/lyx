@@ -639,7 +639,7 @@ namespace {
  *  You must ensure that \p parentFilePath is properly set before calling
  *  this function!
  */
-void tex2lyx(idocstream & is, ostream & os, string encoding)
+bool tex2lyx(idocstream & is, ostream & os, string encoding)
 {
 	// Set a sensible default encoding.
 	// This is used until an encoding command is found.
@@ -677,7 +677,10 @@ void tex2lyx(idocstream & is, ostream & os, string encoding)
 		for (; it != end; it++)
 			preamble.addModule(*it);
 	}
-	preamble.writeLyXHeader(os);
+	if (!preamble.writeLyXHeader(os)) {
+		cerr << "Could write LyX file header." << endl;
+		return false;
+	}
 
 	ss.seekg(0);
 	os << ss.str();
@@ -688,6 +691,7 @@ void tex2lyx(idocstream & is, ostream & os, string encoding)
 		parsertest << p.get_token().asInput();
 	// <origfile> and parsertest.tex should now have identical content
 #endif
+	return true;
 }
 
 
@@ -705,9 +709,9 @@ bool tex2lyx(FileName const & infilename, ostream & os, string const & encoding)
 	}
 	string const oldParentFilePath = parentFilePath;
 	parentFilePath = onlyPath(infilename.absFileName());
-	tex2lyx(is, os, encoding);
+	bool retval = tex2lyx(is, os, encoding);
 	parentFilePath = oldParentFilePath;
-	return true;
+	return retval;
 }
 
 } // anonymous namespace
