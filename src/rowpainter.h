@@ -75,6 +75,12 @@ private:
 	/// return the label font for this row
 	FontInfo labelFont() const;
 
+	///
+	void paintLabel();
+	///
+	void paintTopLevelLabel();
+
+
 	/// contains painting related information.
 	PainterInfo & pi_;
 
