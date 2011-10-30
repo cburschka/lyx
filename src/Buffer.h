@@ -638,8 +638,6 @@ private:
 	ExportStatus preview(std::string const & format, bool includeall = false) const;
 
 public:
-	/// mark the buffer as busy exporting something, or not
-	void setExportStatus(bool e) const;
 	///
 	bool isExporting() const;
 
@@ -681,6 +679,11 @@ public:
 	void checkChildBuffers();
 
 private:
+	class MarkAsExporting;
+	friend class MarkAsExporting;
+	/// mark the buffer as busy exporting something, or not
+	void setExportStatus(bool e) const;
+
 	/// Change name of buffer. Updates "read-only" flag.
 	void setFileName(support::FileName const & fname);
 	///
