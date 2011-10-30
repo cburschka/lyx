@@ -18854,9 +18854,19 @@ status collapsed
 eXフォントエンコーディング
 \family default
 は、熟練者用の設定項目であり、これによってLaTeXパッケージ
-\emph on
+\series bold
 fontenc
-\emph default
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Latexぱっけーじ@LaTeXパッケージ ! fontenc
+\end_layout
+
+\end_inset
+
 に渡す値を変更することができます(第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -18946,6 +18956,18 @@ CJK
 \noun default
 \color inherit
 CJK
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Latexぱっけーじ@LaTeXパッケージ ! CJK
+\end_layout
+
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -51412,10 +51434,6 @@ reference "sec:言語"
 \end_layout
 
 \begin_layout Description
-既定小数点 表で使用する小数点を定義します(小数点揃え用)。
-\end_layout
-
-\begin_layout Description
 開始コマンド ある文書言語を書くときに特別なLaTeXパッケージが必要とされる場合、ここにそのパッケージを開始するコマンドを指定することができます。例えば、
 \series bold
 ArabTeX
@@ -51448,6 +51466,10 @@ selectlanguage{$$lang}
 
 \begin_layout Description
 終了コマンド コマンド開始の反対です。既定値のようにいくつかのパッケージは、開始コマンドがパッケージの入切を行うので、終了コマンドを必要としません。
+\end_layout
+
+\begin_layout Description
+既定小数点 表で使用する小数点を定義します(小数点揃え用)。
 \end_layout
 
 \begin_layout Description
@@ -51500,6 +51522,123 @@ reference "sec:スペルチェック"
 
 \begin_layout Section
 出力
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+General
+\end_layout
+
+\begin_layout Description
+出力の行幅 これは、
+\family sans
+ファイル\SpecialChar \menuseparator
+書き出し\SpecialChar \menuseparator
+平文
+\family default
+メニューを使用したときに、一行に印字する最大の文字数を設定します。行幅を0にすると、すべての文章が、改行なしに一行に印字されることを意味します。
+\end_layout
+
+\begin_layout Description
+日付書式
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ひづけしょしき@日付書式
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+せってい@設定 ! ひづけしょしき@日付書式
+\end_layout
+
+\end_inset
+
+ 日付の書式は、
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://unixhelp.ed.ac.uk/CGI/man-cgi?date
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+に挙げてある書式のひとつないしは組み合わせです。
+\begin_inset Newline newline
+\end_inset
+
+例えば、
+\begin_inset Newline newline
+\end_inset
+
+%y/%m/%d
+\begin_inset Newline newline
+\end_inset
+
+という書式は、「年/月/日」の形式の日付を印字します。
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Overwrite
+\begin_inset space ~
+\end_inset
+
+on
+\begin_inset space ~
+\end_inset
+
+export Setting what LyX is allowed to overwrite on export.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Forward
+\begin_inset space ~
+\end_inset
+
+search Commands that will be used for the menu 
+\family sans
+Navigate\SpecialChar \menuseparator
+Forward
+\begin_inset space ~
+\end_inset
+
+search
+\family default
+.
+ For a detailed description see section 
+\emph on
+Reverse DVI/PDF search
+\emph default
+ of the 
+\emph on
+Additional
+\begin_inset space ~
+\end_inset
+
+Features
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Subsection
@@ -51585,88 +51724,6 @@ dvips
 \end_layout
 
 \begin_layout Subsection
-日付書式
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-ひづけしょしき@日付書式
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-せってい@設定 ! ひづけしょしき@日付書式
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-日付の書式は、
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://unixhelp.ed.ac.uk/CGI/man-cgi?date
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-に挙げてある書式のひとつないしは組み合わせです。
-\begin_inset Newline newline
-\end_inset
-
-例えば、
-\begin_inset Newline newline
-\end_inset
-
-%y/%m/%d
-\begin_inset Newline newline
-\end_inset
-
-という書式は、「年/月/日」の形式の日付を印字します。
-\end_layout
-
-\begin_layout Subsection
-平文
-\end_layout
-
-\begin_layout Description
-出力の行幅 これは、
-\family sans
-ファイル\SpecialChar \menuseparator
-書き出し\SpecialChar \menuseparator
-平文
-\family default
-メニューを使用したときに、一行に印字する最大の文字数を設定します。行幅を0にすると、すべての文章が、改行なしに一行に印字されることを意味します。
-\end_layout
-
-\begin_layout Description
-roffコマンド これは、より品質のよいASCII表を作成するのに使用される、
-\family typewriter
-groff/troff/nroff
-\family default
- UNIXコマンドを定義します（これらのコマンドの詳細については、各々の取扱説明書を参照してください）。この欄を空白にしておくと、LyXは内部の整形子を使用しま
-す。
-\end_layout
-
-\begin_layout Subsection
 LaT
 \begin_inset ERT
 status collapsed
@@ -51746,9 +51803,81 @@ T1, T2B
 既定の用紙寸法 これは新規文書で使用される用紙寸法です。既定値はお使いのLaTeXシステムの設定に依存します。
 \end_layout
 
+\begin_layout Description
+DVIビューア用紙寸法設定 これは
+\family sans
+xdvi
+\family default
+がDVIビューアとして使用されているときのみ有効です
+\lang english
+, read its manual to find out more
+\lang japanese
+。
+\end_layout
+
 \begin_layout Standard
-またここで、提示されているアプリケーションのコマンドとパラメータを指定することができます。しかし、ここで何かを変更する前に、当該アプリケーションの取扱説明書を読
-むことを強くお進めします。現在、以下のコマンドを設定することができます。
+
+\lang english
+You can also specify here options and commands with parameters for processors
+\lang japanese
+。しかし、ここで何かを変更する前に、当該アプリケーションの取扱説明書を読むことを強くお進めします。
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Bibliography
+\begin_inset space ~
+\end_inset
+
+generation Settings for the generation of the bibliography, see sectio
+\lang japanese
+n
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:文献データベース"
+
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Index
+\begin_inset space ~
+\end_inset
+
+generation Settings for the generation of the index, see section
+\begin_inset space ~
+\end_inset
+
+
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:索引プログラム"
+
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Description
+用語集コマンド 用語集を生成するプログラムのコマンド。第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:用語集プログラム"
+
+\end_inset
+
+節を参照。
 \end_layout
 
 \begin_layout Description
@@ -51776,62 +51905,6 @@ Checking TeX
 CheckTeX
 \family default
 プログラムのコマンド。
-\end_layout
-
-\begin_layout Description
-BibTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-Xコマンド 参考文献を生成する
-\family sans
-BibTeX
-\family default
-プログラムのコマンド。第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:文献データベース"
-
-\end_inset
-
-節を参照。
-\end_layout
-
-\begin_layout Description
-索引コマンド 索引を生成するプログラムのコマンド。第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:索引プログラム"
-
-\end_inset
-
-節を参照。
-\end_layout
-
-\begin_layout Description
-用語集コマンド 用語集を生成するプログラムのコマンド。第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:用語集プログラム"
-
-\end_inset
-
-節を参照。
-\end_layout
-
-\begin_layout Description
-DVIビューア用紙寸法設定 これは
-\family sans
-xdvi
-\family default
-がDVIビューアとして使用されているときのみ有効です。
 \end_layout
 
 \begin_layout Standard
@@ -51986,6 +52059,28 @@ name "sec:ファイル形式"
 \begin_layout Standard
 ここでは、LyXが扱うことのできる定義済みファイル形式が一覧表示されています。特定のファイル形式に使用する、閲覧プログラムや編集プログラムを変更することができま
 す。
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Furthermore, you can define the 
+\family sans
+Default output format
+\family default
+ that is used when you hit 
+\family sans
+View, Update, View Master Document
+\family default
+ or 
+\family sans
+Update Master Document
+\family default
+ in the 
+\family sans
+View
+\family default
+ menu or the toolbar.
 \end_layout
 
 \begin_layout Standard
