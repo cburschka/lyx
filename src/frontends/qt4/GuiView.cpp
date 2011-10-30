@@ -398,7 +398,7 @@ public:
 	static docstring autosaveAndDestroy(Buffer const * orig, Buffer * buffer);
 
 	template<class T>
-	static Buffer::ExportStatus runAndDestroy(const T& func, Buffer const * orig, Buffer * buffer, string const & format, string const & msg);
+	static Buffer::ExportStatus runAndDestroy(const T& func, Buffer const * orig, Buffer * buffer, string const & format);
 
 	// TODO syncFunc/previewFunc: use bind
 	bool asyncBufferProcessing(string const & argument,
@@ -3045,7 +3045,7 @@ bool GuiView::goToFileRow(string const & argument)
 
 #if (QT_VERSION >= 0x040400)
 template<class T>
-Buffer::ExportStatus GuiView::GuiViewPrivate::runAndDestroy(const T& func, Buffer const * orig, Buffer * buffer, string const & format, string const & msg)
+Buffer::ExportStatus GuiView::GuiViewPrivate::runAndDestroy(const T& func, Buffer const * orig, Buffer * buffer, string const & format)
 {
 	Buffer::ExportStatus const status = func(format);
 
@@ -3061,21 +3061,21 @@ Buffer::ExportStatus GuiView::GuiViewPrivate::runAndDestroy(const T& func, Buffe
 Buffer::ExportStatus GuiView::GuiViewPrivate::compileAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
 {
 	Buffer::ExportStatus (Buffer::* mem_func)(std::string const &, bool) const = &Buffer::doExport;
-	return runAndDestroy(bind(mem_func, buffer, _1, true), orig, buffer, format, "export");
+	return runAndDestroy(bind(mem_func, buffer, _1, true), orig, buffer, format);
 }
 
 
 Buffer::ExportStatus GuiView::GuiViewPrivate::exportAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
 {
 	Buffer::ExportStatus (Buffer::* mem_func)(std::string const &, bool) const = &Buffer::doExport;
-	return runAndDestroy(bind(mem_func, buffer, _1, false), orig, buffer, format, "export");
+	return runAndDestroy(bind(mem_func, buffer, _1, false), orig, buffer, format);
 }
 
 
 Buffer::ExportStatus GuiView::GuiViewPrivate::previewAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
 {
 	Buffer::ExportStatus (Buffer::* mem_func)(std::string const &) const = &Buffer::preview;
-	return runAndDestroy(bind(mem_func, buffer, _1), orig, buffer, format, "preview");
+	return runAndDestroy(bind(mem_func, buffer, _1), orig, buffer, format);
 }
 
 #else
