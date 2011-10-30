@@ -723,12 +723,6 @@ bool MenuDefinition::searchMenu(FuncRequest const & func, docstring_list & names
 }
 
 
-bool compareFormat(Format const * p1, Format const * p2)
-{
-	return *p1 < *p2;
-}
-
-
 QString limitStringLength(docstring const & str)
 {
 	size_t const max_item_length = 45;
@@ -1023,8 +1017,6 @@ void MenuDefinition::expandFormats(MenuItem::Kind const kind, Buffer const * buf
 		return;
 	}
 	
-	sort(formats.begin(), formats.end(), &compareFormat);
-
 	bool const view_update = (kind == MenuItem::ViewFormats
 			|| kind == MenuItem::UpdateFormats);
 

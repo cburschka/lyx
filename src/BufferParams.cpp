@@ -2038,6 +2038,13 @@ bool BufferParams::isExportable(string const & format) const
 }
 
 
+namespace {
+bool formatSorter(Format const * lhs, Format const * rhs) {
+	return _(lhs->prettyname()) < _(rhs->prettyname());
+}
+}
+
+
 vector<Format const *> BufferParams::exportableFormats(bool only_viewable) const
 {
 	vector<string> const backs = backends();
@@ -2054,6 +2061,7 @@ vector<Format const *> BufferParams::exportableFormats(bool only_viewable) const
 			theConverters().getReachable(*it, only_viewable, false, excludes);
 		result.insert(result.end(), r.begin(), r.end());
 	}
+	sort(result.begin(), result.end(), formatSorter);
 	return result;
 }
 
