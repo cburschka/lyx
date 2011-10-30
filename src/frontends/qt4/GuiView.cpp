@@ -531,10 +531,11 @@ QVector<GuiWorkArea*> GuiView::GuiViewPrivate::guiWorkAreas()
 static void handleExportStatus(GuiView * view, Buffer::ExportStatus status,
 	string const & format)
 {
+	docstring const fmt = formats.prettyName(format);
 	docstring msg;
 	switch (status) {
 	case Buffer::ExportSuccess:
-		msg = bformat(_("Successful export to format: %1$s"), from_utf8(format));
+		msg = bformat(_("Successful export to format: %1$s"), fmt);
 		break;
 	case Buffer::ExportCancel:
 		msg = _("Document export cancelled.");
@@ -543,13 +544,13 @@ static void handleExportStatus(GuiView * view, Buffer::ExportStatus status,
 	case Buffer::ExportNoPathToFormat:
 	case Buffer::ExportTexPathHasSpaces:
 	case Buffer::ExportConverterError:
-		msg = bformat(_("Error while exporting format: %1$s"), from_utf8(format));
+		msg = bformat(_("Error while exporting format: %1$s"), fmt);
 		break;
 	case Buffer::PreviewSuccess:
-		msg = bformat(_("Successful preview of format: %1$s"), from_utf8(format));
+		msg = bformat(_("Successful preview of format: %1$s"), fmt);
 		break;
 	case Buffer::PreviewError:
-		msg = bformat(_("Error while previewing format: %1$s"), from_utf8(format));
+		msg = bformat(_("Error while previewing format: %1$s"), fmt);
 		break;
 	}
 	view->message(msg);
