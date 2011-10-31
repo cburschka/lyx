@@ -100,13 +100,13 @@ string const latex_path(string const & original_path,
 		// We can't use '"' because " is sometimes active (e.g. if
 		// babel is loaded with the "german" option)
 		if (extension == EXCLUDE_EXTENSION) {
-			// ChangeExtension calls os::internal_path internally
+			// changeExtension calls os::internal_path internally
 			// so don't use it to remove the extension.
 			string const ext = getExtension(path);
 			string const base = ext.empty() ?
 				path :
 				path.substr(0, path.length() - ext.length() - 1);
-			// ChangeExtension calls os::internal_path internally
+			// changeExtension calls os::internal_path internally
 			// so don't use it to re-add the extension.
 			path = "\\string\"" + base + "\\string\"." + ext;
 		} else {
@@ -114,7 +114,18 @@ string const latex_path(string const & original_path,
 		}
 	}
 
-	return dots == ESCAPE_DOTS ? subst(path, ".", "\\lyxdot ") : path;
+	if (dots != ESCAPE_DOTS)
+		return path;
+
+	// Replace dots with the lyxdot macro, but only in the file name,
+	// not the directory part.
+	// addName etc call os::internal_path internally
+	// so don't use them for path manipulation
+	// The directory separator is always '/' for LaTeX.
+	string::size_type pos = path.rfind('/');
+	if (pos == string::npos)
+		return subst(path, ".", "\\lyxdot ");
+	return path.substr(0, pos) + subst(path.substr(pos), ".", "\\lyxdot ");
 }
 
 

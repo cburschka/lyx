@@ -767,7 +767,7 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 			return;
 	}
 
-	// FIXME: We don't need that always
+	// FIXME: We don't need that always, see InsetGraphics
 	features.require("lyxdot");
 
 	vector<string>::const_iterator it  = cit->second.requirements.begin();

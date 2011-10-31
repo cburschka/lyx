@@ -790,12 +790,6 @@ void InsetGraphics::latex(otexstream & os,
 	// Remove the extension so LaTeX will use whatever is appropriate
 	// (when there are several versions in different formats)
 	string file_path = prepareFile(runparams);
-	if (!runparams.export_folder.empty()) {
-		// Relative pathnames starting with ../ will be sanitized
-		// if exporting to a different folder
-		while (file_path.substr(0, 17) == "\\lyxdot \\lyxdot /")
-			file_path = file_path.substr(17, file_path.length() - 17);
-	}
 	latex_str += file_path;
 	latex_str += '}' + after;
 	// FIXME UNICODE
@@ -1005,9 +999,7 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 	features.require("graphicx");
 
 	if (features.runparams().nice) {
-		Buffer const * masterBuffer = features.buffer().masterBuffer();
-		string const rel_file = removeExtension(
-			params().filename.relFileName(masterBuffer->filePath()));
+		string const rel_file = params().filename.onlyFileNameWithoutExt();
 		if (contains(rel_file, "."))
 			features.require("lyxdot");
 	}
