@@ -37,12 +37,12 @@ These typically need to be modified for each LyX release
 !define FILES_LYX "C:\LyX\lyx-20-install"
 !define FILES_DEPS "C:\LyX\lyx-20-build\msvc2010-deps\deps20"
 !define FILES_BUNDLE "C:\LyX\depsbundle"
-!define FILES_QT "C:\Qt\qt-everywhere-opensource-src-4.7.1"
+!define FILES_QT "C:\Qt\qt-everywhere-opensource-src-4.7.4"
 
 #--------------------------------
 # MiKTeX
 # Sizes in KB
 
-!define SETUPFILE_LATEX "basic-miktex-2.9.3972.exe"
-!define SIZE_DOWNLOAD_LATEX 141645
+!define SETUPFILE_LATEX "basic-miktex-2.9.4250.exe"
+!define SIZE_DOWNLOAD_LATEX 167828
 !define SIZE_LATEX 380000
