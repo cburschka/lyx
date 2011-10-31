@@ -1901,25 +1901,15 @@ Complétion automatique en ligne
 Fenêtre auxiliaire automatique
 \family default
  les complétions sont toujours proposées dans une fenêtre auxiliaire.
- LyX propose pour les experts d'autres paramètres de complétion qui sont
- décrits dans la section
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Complétion-de-saisie-appendice"
-
-\end_inset
-
-.
  On peut désactiver l'indicateur de complétion du curseur en décochant l'option
  
 \family sans
 Indicateur curseur
 \family default
 .
+ Avec les options générales, vous pouvez définir le délai pour la complétion
+ enligne et par fenêtre auxiliaire et choisir si les complétions longues
+ doivent être tronquées.
 \end_layout
 
 \begin_layout Standard
@@ -1943,6 +1933,45 @@ Tab
 Entrée
 \family default
 .
+\end_layout
+
+\begin_layout Standard
+Les options de complétions pour le mode math 
+\lang english
+in the preferences
+\lang french
+ font la même chose que leur équivallent pour le mode texte.
+ 
+\lang english
+The special math option 
+\family sans
+Autocorrection
+\family default
+ enables that characters can be composed.
+ If you for example want to insert the character 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+, you can then input the characters 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+=>
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+ to a formula to get it.
+ So this is a quick alternative to the insertion of commands or the usage
+ of the math toolbar.
+ A list with supported character combinations can be found in the file 
+\family typewriter
+autocorrect
+\family default
+ that is somewhere in LyX's installation folder.
 \end_layout
 
 \begin_layout Section
@@ -46735,23 +46764,6 @@ Scroll wheel zoom
 
 \begin_layout Subsection
 Complétion de saisie
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Complétion-de-saisie-appendice"
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Complétion de saisie
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -46767,11 +46779,6 @@ reference "sec:Complétion-de-saisie"
 \end_inset
 
 .
- Les options de complétions pour le mode math font la même chose que leur
- équivallent pour le mode texte.
- Avec les options générales, vous pouvez définir le délai pour la complétion
- enligne et par fenêtre auxiliaire et choisir si les complétions longues
- doivent être tronquées ou non.
 \end_layout
 
 \begin_layout Section

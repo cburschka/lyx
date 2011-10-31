@@ -1959,23 +1959,6 @@ Automatic
 popup
 \family default
  the completions are always shown in a popup.
- LyX offers some more completion settings for experts that are described
- in sec.
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\lang japanese
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:入力補完-附録"
-
-\end_inset
-
-
-\lang english
-.
  The cursor completion indicator can be turned off by deselecting the option
  
 \family sans
@@ -1986,7 +1969,8 @@ Cursor
 indicator
 \family default
 .
- 
+ With the general options you can define the delay time for the inline and
+ popup completion and choose if long completions should be abbreviated.
 \end_layout
 
 \begin_layout Standard
@@ -2006,6 +1990,42 @@ Tab
 Return
 \family default
 .
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The completion options for math in the preferences do the same as the correspond
+ing options for text.
+ The special math option 
+\family sans
+Autocorrection
+\family default
+ enables that characters can be composed.
+ If you for example want to insert the character 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+, you can then input the characters 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+=>
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+ to a formula to get it.
+ So this is a quick alternative to the insertion of commands or the usage
+ of the math toolbar.
+ A list with supported character combinations can be found in the file 
+\family typewriter
+autocorrect
+\family default
+ that is somewhere in LyX's installation folder.
 \end_layout
 
 \begin_layout Section
@@ -51402,23 +51422,6 @@ Scroll wheel zoom
 
 \begin_layout Subsection
 入力補完
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:入力補完-附録"
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-にゅうりょくほかん@入力補完
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -51429,8 +51432,7 @@ reference "sec:入力補完"
 
 \end_inset
 
-節に記述があります。数式向けの補完オプションは、テキスト向けのオプションのものと同様に機能します。一般オプションでは、補完入力とポップアップ補完の遅延時間を指定
-することができるほか、長い補完案を短縮表示するかどうか選ぶことができます。
+節に記述があります。
 \end_layout
 
 \begin_layout Section
