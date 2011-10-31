@@ -1738,26 +1738,15 @@ Finalización automática en línea
 Recuadros emergentes automáticos
 \family default
  las terminaciones se muestran siempre en un recuadro emergente.
- LyX ofrece algunas otras opciones de finalización para expertos que se
- describen en la sección
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Autocompletar-Apéndice"
-
-\end_inset
-
-.
  Se puede desactivar el indicador de terminación del cursor desmarcando
  la opción 
 \family sans
 Indicador en el cursor
 \family default
 .
- 
+ Con las opciones generales puedes definir el tiempo de retardo para la
+ visualización en línea y para el recuadro emergente, y elegir si las finalizaci
+ones largas deberían, abreviarse.
 \end_layout
 
 \begin_layout Standard
@@ -1781,6 +1770,45 @@ Tabulador
 Entrar
 \family default
 .
+\end_layout
+
+\begin_layout Standard
+Las opciones de finalización para ecuaciones 
+\lang english
+in the preferences
+\lang spanish
+ hacen lo mismo que las correspondientes opciones para texto.
+ 
+\lang english
+The special math option 
+\family sans
+Autocorrection
+\family default
+ enables that characters can be composed.
+ If you for example want to insert the character 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+, you can then input the characters 
+\begin_inset Quotes fld
+\end_inset
+
+
+\series bold
+=>
+\series default
+
+\begin_inset Quotes frd
+\end_inset
+
+ to a formula to get it.
+ So this is a quick alternative to the insertion of commands or the usage
+ of the math toolbar.
+ A list with supported character combinations can be found in the file 
+\family typewriter
+autocorrect
+\family default
+ that is somewhere in LyX's installation folder.
 \end_layout
 
 \begin_layout Section
@@ -46685,23 +46713,6 @@ Scroll wheel zoom
 
 \begin_layout Subsection
 Autocompletar
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Autocompletar-Apéndice"
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Autocompletar
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -46717,11 +46728,6 @@ reference "sec:Finalización-de-entradas/palabras"
 \end_inset
 
 .
- Las opciones de finalización para ecuaciones hacen lo mismo que las correspondi
-entes opciones para texto.
- Con las opciones generales puedes definir el tiempo de retardo para la
- visualización en línea y para el recuadro emergente, y elegir si las finalizaci
-ones largas deberían, o no, abreviarse.
 \end_layout
 
 \begin_layout Section
