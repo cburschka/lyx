@@ -550,11 +550,8 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		// we need to keep it in the preamble to prevent cases like bug #7861.
 		if (!opts.empty()) {
 			// check if more than one option was used - used later for inputenc
-			// in case inputenc is parsed before babel, set the encoding to auto
-			if (options.begin() != options.end() - 1) {
+			if (options.begin() != options.end() - 1)
 				one_language = false;
-				h_inputencoding = "auto";
-			}
 			// babel takes the last language of the option of its \usepackage
 			// call as document language. If there is no such language option, the
 			// last language in the documentclass options is used.
@@ -587,8 +584,8 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		// inputenc option because otherwise h_inputencoding must be
 		// set to "auto" (the default encoding of the document language)
 		// Therefore check for the "," character.
-		// It is also only set when there is not more then one babel
-		// language option but this is handled in the routine for babel.
+		// It is also only set when there is not more than one babel
+		// language option.
 		if (opts.find(",") == string::npos && one_language == true)
 			h_inputencoding = opts;
 		if (!options.empty())

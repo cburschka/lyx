@@ -151,6 +151,8 @@ What's new
 - Fix (La)TeX import for files using Latvian, Lithuanian, Mongolian,
   Turkmen and/or Vietnamese (bug 7862).
 
+- Fix tex2lyx handling of inputenc encoding settings (bug 7863).
+
 - Store the autosave files of unnamed buffers in the correct directory
   and make sure they are not left behind after saving (bug 7793).
 
