@@ -855,6 +855,8 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			position = "c";
 		if (inner_pos.empty())
 			inner_pos = position;
+		// FIXME: Support makebox
+		bool const use_makebox = false;
 		parent_context.check_layout(os);
 		begin_inset(os, "Box ");
 		if (outer_type == "framed")
@@ -877,18 +879,28 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		os << "has_inner_box " << !inner_type.empty() << "\n";
 		os << "inner_pos \"" << inner_pos << "\"\n";
 		os << "use_parbox " << (inner_type == "parbox") << '\n';
-		os << "use_makebox 0\n";
+		os << "use_makebox " << use_makebox << '\n';
 		os << "width \"" << width_value << width_unit << "\"\n";
 		os << "special \"none\"\n";
 		os << "height \"" << height_value << height_unit << "\"\n";
 		os << "height_special \"" << height_special << "\"\n";
 		os << "status open\n\n";
+
+		// Unfortunately we can't use parse_text_in_inset:
+		// InsetBox::forcePlainLayout() is hard coded and does not
+		// use the inset layout. Apart from that do we call parse_text
+		// up to two times, but need only one check_end_layout.
+
+		bool const forcePlainLayout =
+			(!inner_type.empty() || use_makebox) &&
+			outer_type != "shaded" && outer_type != "framed";
 		Context context(true, parent_context.textclass);
-		context.font = parent_context.font;
+		if (forcePlainLayout)
+			context.layout = &context.textclass.plainLayout();
+		else
+			context.font = parent_context.font;
 
-		// FIXME, the inset layout should be plain, not standard, see bug #7846
-
-		// If we have no inner box the contens will be read with the outer box
+		// If we have no inner box the contents will be read with the outer box
 		if (!inner_type.empty())
 			parse_text(p, os, inner_flags, outer, context);
 
@@ -2614,7 +2626,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				preamble.registerAutomaticallyLoadedPackage("ulem");
 		}
 
-		// FIXME, the inset layout should be plain, not standard, see bug #7846
 		else if (t.cs() == "phantom" || t.cs() == "hphantom" ||
 			     t.cs() == "vphantom") {
 			context.check_layout(os);
@@ -2625,7 +2636,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (t.cs() == "vphantom")
 				begin_inset(os, "Phantom VPhantom\n");
 			os << "status open\n";
-			parse_text_in_inset(p, os, FLAG_ITEM, outer, context);
+			parse_text_in_inset(p, os, FLAG_ITEM, outer, context,
+			                    "Phantom");
 			end_inset(os);
 		}
 
