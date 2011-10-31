@@ -62,7 +62,7 @@ Section -InstallData
   
   ${REG_UNINSTALL} "UninstallString" '"$INSTDIR\${SETUP_UNINSTALLER}"'
   ${REG_UNINSTALL} "DisplayVersion" "${APP_VERSION}"
-  ${REG_UNINSTALL} "DisplayIcon" "$INSTDIR\bin\LyXLauncher,0"
+  ${REG_UNINSTALL} "DisplayIcon" "$INSTDIR\${APP_RUN},0"
   ${REG_UNINSTALL} "URLUpdateInfo" "http://www.lyx.org/"
   ${REG_UNINSTALL} "URLInfoAbout" "http://www.lyx.org/about/"
   ${REG_UNINSTALL} "Publisher" "LyX Team"
@@ -141,8 +141,6 @@ Section -PSPrinter
     ExecWait '$PrinterConf /q /dl /n "Metafile to EPS Converter"'
     # Install printer and driver
     ExecWait '$PrinterConf /if /f "$WINDIR\inf\ntprint.inf" /b "Metafile to EPS Converter" /r "FILE:" /m "MS Publisher Imagesetter"'
-    # Restore DEVMODE with proper settings
-    ExecWait '$PrinterConf /q /Sr /n "Metafile to EPS Converter" /a "$INSTDIR\bin\metafile2eps.dat" g'
 
   ${EndIf}
 

@@ -35,7 +35,6 @@ BrandingText " "
 !insertmacro MUI_PAGE_LICENSE "${FILES_LICENSE}"
 !insertmacro MULTIUSER_PAGE_INSTALLMODE
 
-Page custom PageReinstall PageReinstallValidate
 Page custom PageExternalLaTeX PageExternalLaTeXValidate
 
 !insertmacro MUI_PAGE_DIRECTORY

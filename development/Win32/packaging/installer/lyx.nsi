@@ -19,7 +19,6 @@ Compatible with NSIS 2.46
 !include setup\uninstall.nsh
 !include setup\configure.nsh
 !include gui\external.nsh
-!include gui\reinstall.nsh
 
 #--------------------------------
 # Output file
