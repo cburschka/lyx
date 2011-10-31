@@ -128,8 +128,10 @@ int Systemcall::startscript(Starttype how, string const & what,
 namespace {
 
 /*
- * This is a parser that (mostly) mimics the behavior of a posix shell but
- * its output is tailored for being processed by QProcess.
+ * This is a parser that (mostly) mimics the behavior of a posix shell as
+ * regards quoting, but its output is tailored for being processed by QProcess.
+ * Note that shell metacharacters are not parsed and only output redirection
+ * is taken into account.
  *
  * The escape character is the backslash.
  * A backslash that is not quoted preserves the literal value of the following
@@ -162,58 +164,67 @@ namespace {
  *    "\a"   ->  "\a"
  *    "a\"b" ->  "a"""b"
  */
-string const parsecmd(string const & inputcmd, string & outfile)
+string const parsecmd(string const & incmd, string & outfile, string & errfile)
 {
 	bool in_single_quote = false;
 	bool in_double_quote = false;
 	bool escaped = false;
 	string const python_call = "python -tt";
-	string cmd;
-	int start = 0;
+	vector<string> outcmd(3);
+	size_t start = 0;
 
-	if (prefixIs(inputcmd, python_call)) {
-		cmd = os::python();
+	if (prefixIs(incmd, python_call)) {
+		outcmd[0] = os::python();
 		start = python_call.length();
 	}
 
-	for (size_t i = start; i < inputcmd.length(); ++i) {
-		char c = inputcmd[i];
+	for (size_t i = start, o = 0; i < incmd.length(); ++i) {
+		char c = incmd[i];
 		if (c == '\'') {
 			if (in_double_quote || escaped) {
 				if (in_double_quote && escaped)
-					cmd += '\\';
-				cmd += c;
+					outcmd[o] += '\\';
+				outcmd[o] += c;
 			} else
 				in_single_quote = !in_single_quote;
 			escaped = false;
 			continue;
 		}
 		if (in_single_quote) {
-			cmd += c;
+			outcmd[o] += c;
 			continue;
 		}
 		if (c == '"') {
 			if (escaped) {
-				cmd += "\"\"\"";
+				// Don't triple double-quotes for redirection
+				// files as these won't be parsed by QProcess
+				outcmd[o] += string(o ? "\"" : "\"\"\"");
 				escaped = false;
 			} else {
-				cmd += c;
+				outcmd[o] += c;
 				in_double_quote = !in_double_quote;
 			}
 		} else if (c == '\\' && !escaped) {
 			escaped = !escaped;
 		} else if (c == '>' && !(in_double_quote || escaped)) {
-			outfile = trim(inputcmd.substr(i + 1), " \"");
-			return trim(cmd);
+			if (suffixIs(outcmd[o], " 2")) {
+				outcmd[o] = rtrim(outcmd[o], "2");
+				o = 2;
+			} else {
+				if (suffixIs(outcmd[o], " 1"))
+					outcmd[o] = rtrim(outcmd[o], "1");
+				o = 1;
+			}
 		} else {
 			if (escaped && in_double_quote)
-				cmd += '\\';
-			cmd += c;
+				outcmd[o] += '\\';
+			outcmd[o] += c;
 			escaped = false;
 		}
 	}
-	outfile.erase();
-	return cmd;
+	outfile = trim(outcmd[1], " \"");
+	errfile = trim(outcmd[2], " \"");
+	return trim(outcmd[0]);
 }
 
 } // namespace anon
@@ -223,10 +234,14 @@ string const parsecmd(string const & inputcmd, string & outfile)
 int Systemcall::startscript(Starttype how, string const & what,
 			    string const & path, bool process_events)
 {
-	string outfile;
-	QString cmd = QString::fromLocal8Bit(parsecmd(what, outfile).c_str());
+	lyxerr << "\nRunning: " << what << endl;
 
-	SystemcallPrivate d(outfile);
+	string outfile;
+	string errfile;
+	QString cmd = QString::fromLocal8Bit(
+			parsecmd(what, outfile, errfile).c_str());
+
+	SystemcallPrivate d(outfile, errfile);
 
 
 	d.startProcess(cmd, path);
@@ -259,17 +274,60 @@ int Systemcall::startscript(Starttype how, string const & what,
 }
 
 
-SystemcallPrivate::SystemcallPrivate(const std::string& of) :
-                                process_(new QProcess), 
-                                out_index_(0),
-                                err_index_(0),
-                                out_file_(of), 
-                                process_events_(false)
+SystemcallPrivate::SystemcallPrivate(std::string const & of,
+				     std::string const & ef) :
+				process_(new QProcess), 
+				out_index_(0),
+				err_index_(0),
+				out_file_(of), 
+				err_file_(ef), 
+				process_events_(false)
 {
 	if (!out_file_.empty()) {
-		// Check whether we have to simply throw away the output.
-		if (out_file_ != os::nulldev())
-			process_->setStandardOutputFile(QString::fromLocal8Bit(out_file_.c_str()));
+		if (out_file_[0] == '&') {
+			if (subst(out_file_, " ", "") == "&2"
+			    && err_file_[0] != '&') {
+				out_file_ = err_file_;
+				process_->setProcessChannelMode(
+						QProcess::MergedChannels);
+			} else {
+				if (err_file_[0] == '&') {
+					// Leave alone things such as
+					// "1>&2 2>&1". Should not be harmful,
+					// but let's give anyway a warning.
+					LYXERR0("Unsupported stdout/stderr redirect.");
+					err_file_.erase();
+				} else {
+					LYXERR0("Ambiguous stdout redirect: "
+						<< out_file_);
+				}
+				out_file_ = os::nulldev();
+			}
+		}
+		// Check whether we have to set the output file.
+		if (out_file_ != os::nulldev()) {
+			process_->setStandardOutputFile(QString::fromLocal8Bit(
+							out_file_.c_str()));
+		}
+	}
+	if (!err_file_.empty()) {
+		if (err_file_[0] == '&') {
+			if (subst(err_file_, " ", "") == "&1"
+			    && out_file_[0] != '&') {
+				process_->setProcessChannelMode(
+						QProcess::MergedChannels);
+			} else {
+				LYXERR0("Ambiguous stderr redirect: "
+					<< err_file_);
+			}
+			// In MergedChannels mode stderr goes to stdout.
+			err_file_ = os::nulldev();
+		}
+		// Check whether we have to set the error file.
+		if (err_file_ != os::nulldev()) {
+			process_->setStandardErrorFile(QString::fromLocal8Bit(
+							err_file_.c_str()));
+		}
 	}
 
 	connect(process_, SIGNAL(readyReadStandardOutput()), SLOT(stdOut()));
