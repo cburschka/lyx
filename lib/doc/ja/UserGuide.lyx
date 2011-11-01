@@ -2026,6 +2026,13 @@ Autocorrection
 autocorrect
 \family default
  that is somewhere in LyX's installation folder.
+ Math autocorrection can any time turned on by pressing the exclamation
+ mark key '!'.
+ Pressing 
+\family sans
+Space
+\family default
+ turns it off.
 \end_layout
 
 \begin_layout Section
@@ -50472,23 +50479,23 @@ End
 \family default
 で明示的に終わらなくてはなりません。これらの中には、
 \family sans
-Submenus
+Submenu
 \family default
 ・
 \family sans
-Items
+Item
 \family default
 ・
 \family sans
-OptItems
+OptItem
 \family default
 ・
 \family sans
-Separators
+Separator
 \family default
 ・
 \family sans
-Icons
+Icon
 \family default
 、および「ファイル」メニューの場合には加えて
 \family sans
@@ -50561,11 +50568,11 @@ LyX関数
 
 
 \series bold
-Iterm 
+ Item 
 \begin_inset Quotes eld
 \end_inset
 
-Save Bookmark 6
+しおり6を保存
 \begin_inset Quotes erd
 \end_inset
 
@@ -50584,7 +50591,11 @@ bookmark-save 6
 \begin_inset VSpace smallskip*
 \end_inset
 
-を.incファイルの「Navigate（移動）」メニュー部分に書き加えると、しおりが6つになります。
+を.incファイルの「
+\lang english
+navigate_bookmarks
+\lang japanese
+（移動）」メニュー部分に書き加えると、しおりが6つになります。
 \end_layout
 
 \begin_layout Subsubsection
@@ -50775,6 +50786,45 @@ Save documents compressed by default
 \begin_layout Standard
 
 \lang english
+The option 
+\family sans
+Single instance
+\family default
+ is only active on Unix systems.
+ If it is checked, documents loaded via a LyXServer pipe
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+See sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:パス"
+
+\end_inset
+
+
+\lang english
+ for information LyXServer pipes.
+\end_layout
+
+\end_inset
+
+ will be opened in the same running instance of LyX.
+ Otherwise a new LyX instance is created for each file in the pipe.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
 With the option 
 \family sans
 Single close-tab button
@@ -50903,19 +50953,14 @@ Courier
 \end_layout
 
 \begin_layout Standard
-画面DPIは、DPI（dots per inch: ドット数／インチ）で表された画面解像度です。フォント寸法は、ポイント単位で測られた文字高で表されます。72ポ
-イントが1インチの大きさになります。付録
+フォント寸法は、ポイント単位で測られた文字高で表されます。72ポイントが1インチの大きさになります。付録
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cha:LyXで使用できる単位"
 
 \end_inset
 
-を参照してください。
-\end_layout
-
-\begin_layout Standard
-既定のフォント寸法は、文書フォント寸法で10ポイントが使用されたときと同じです。寸法に関しては、第
+を参照してください。既定のフォント寸法は、文書フォント寸法で10ポイントが使用されたときと同じです。寸法に関しては、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:文書フォント"
@@ -51681,15 +51726,15 @@ TEXINPUTS
 prefix The TEXINPUTS environment variable allows to use external files which
  are included to a LyX document via commands in TeX code.
  This prefix includes by default the document directory (represented by
- a single '.').
- The prefix can be set to any list of paths separated by the default separator
- of the OS (':' on UNIX like systems and ';' on windows).
- If files are included by LaTeX, the paths listed in the TEXINPUTS prefix
- will be scanned for the input files.
+ a single dot '.').
+ The prefix can contain any list of paths separated by the default separator
+ of the OS (':' on UNIX like systems and ';' on Windows).
+ If files are included, the paths listed in the TEXINPUTS prefix will be
+ scanned for the input files.
  Note that any non-absolute path listed in the TEXINPUTS prefix is considered
  to be relative to the directory of your LyX file.
- It is recommended to include always the '.' as one of the paths, otherwise
- compilation may fail for some documents.
+ It is recommended to include always '.' as one of the paths, otherwise compilati
+on may fail for some documents.
 \end_layout
 
 \begin_layout Section

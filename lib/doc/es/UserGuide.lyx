@@ -1809,6 +1809,13 @@ Autocorrection
 autocorrect
 \family default
  that is somewhere in LyX's installation folder.
+ Math autocorrection can any time turned on by pressing the exclamation
+ mark key '!'.
+ Pressing 
+\family sans
+Space
+\family default
+ turns it off.
 \end_layout
 
 \begin_layout Section
@@ -45693,22 +45700,18 @@ Personalización ! de menús
 
 \begin_layout Standard
 El aspecto de los menús y de las barras de herramientas depende del archivo
- de interfaz de usuario (.
-\family typewriter
-ui
-\family default
-) elegido.
+ de interfaz de usuario (ui) elegido.
  Es un archivo de texto con una lista de los menús y de las barras de herramient
 as.
  Los botones de las barras de herramientas y las entradas de los menús se
  especifican en los archivos 
-\family typewriter
+\emph on
 stdtoolbars.inc
-\family default
+\emph default
  y 
-\family typewriter
+\emph on
 stdmenus.inc
-\family default
+\emph default
 , respectivamente.
  Para crear tus propios formatos de menú y de barras de herramientas comienza
  con una copia de estos archivos y edita las entradas.
@@ -45716,11 +45719,7 @@ stdmenus.inc
 \end_layout
 
 \begin_layout Standard
-La sintaxis de los archivos 
-\family typewriter
-.inc
-\family default
- es sencilla.
+La sintaxis de los archivos .inc es sencilla.
  Las entradas 
 \family sans
 Menubar
@@ -45758,10 +45757,14 @@ Separators
 \family sans
 Icons
 \family default
- y en el caso del 
-\family sans
-Menu "file_lastfiles"
-\family default
+ y en el caso del Menu 
+\begin_inset Quotes fld
+\end_inset
+
+file_lastfiles
+\begin_inset Quotes frd
+\end_inset
+
 , una entrada 
 \family sans
 Lastfiles
@@ -45824,7 +45827,7 @@ Marcadores
 \begin_layout Standard
 
 \series bold
-Item "Save Bookmark 6" "bookmark-save 6"
+Item "Guardar marcador 6" "bookmark-save 6"
 \end_layout
 
 \begin_layout Standard
@@ -45832,14 +45835,18 @@ Item "Save Bookmark 6" "bookmark-save 6"
 \end_inset
 
 en la sección 
-\family typewriter
-Navigate, "navigate_bookmarks"
-\family default
- del archivo 
-\family sans
-.inc
-\family default
-.
+\begin_inset Quotes fld
+\end_inset
+
+navigate_bookmarks
+\begin_inset Quotes frd
+\end_inset
+
+
+\emph on
+ 
+\emph default
+del archivo .inc.
 \end_layout
 
 \begin_layout Subsubsection
@@ -46058,6 +46065,45 @@ Abrir documentos en pestañas
 \begin_layout Standard
 
 \lang english
+The option 
+\family sans
+Single instance
+\family default
+ is only active on Unix systems.
+ If it is checked, documents loaded via a LyXServer pipe
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+See sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\lang spanish
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Rutas"
+
+\end_inset
+
+
+\lang english
+ for information about LyXServer pipes.
+\end_layout
+
+\end_inset
+
+ will be opened in the same running instance of LyX.
+ Otherwise a new LyX instance is created for each file in the pipe.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
 With the option
 \lang spanish
  
@@ -46093,7 +46139,7 @@ status open
 \lang english
 Note:
 \series default
- For the last option you have to restart LyX before the chang takes effect.
+ For the last option you have to restart LyX before the change takes effect.
 \end_layout
 
 \end_inset
@@ -46179,21 +46225,51 @@ Courier
 El tamaño de letra se puede cambiar con 
 \family sans
 Zoom.
-
-\family default
- 
 \end_layout
 
 \begin_layout Standard
-El tamaño de letra por omisión es 10
+
+\lang english
+The 
+\family sans
+Font Sizes
+\family default
+ are calculated as letter height in units of points.
+ 72
 \begin_inset space \thinspace{}
 \end_inset
 
-pt.
- Los tamaños se describen con detalle en la sección
+points have the size of 1
+\begin_inset space \thinspace{}
+\end_inset
+
+inch, see Appendix
 \begin_inset space ~
 \end_inset
 
+
+\lang spanish
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Tipografía-del-documento"
+
+\end_inset
+
+.
+ 
+\lang english
+The default font sizes are the same as if a document font size of 10
+\begin_inset space \thinspace{}
+\end_inset
+
+pt would be used.
+ The sizes are explained in detail in section
+\begin_inset space ~
+\end_inset
+
+
+\lang spanish
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -46848,7 +46924,7 @@ Nota:
 \family sans
 Ejemplos
 \family default
- no existe en en los sistemas MacOS o Windows.
+ no existe en en los sistemas Mac OS o Windows.
 \end_layout
 
 \end_inset
@@ -47061,15 +47137,15 @@ TEXINPUTS
 prefix The TEXINPUTS environment variable allows to use external files which
  are included to a LyX document via commands in TeX code.
  This prefix includes by default the document directory (represented by
- a single '.').
- The prefix can be set to any list of paths separated by the default separator
- of the OS (':' on UNIX like systems and ';' on windows).
- If files are included by LaTeX, the paths listed in the TEXINPUTS prefix
- will be scanned for the input files.
+ a single dot '.').
+ The prefix can contain any list of paths separated by the default separator
+ of the OS (':' on UNIX like systems and ';' on Windows).
+ If files are included, the paths listed in the TEXINPUTS prefix will be
+ scanned for the input files.
  Note that any non-absolute path listed in the TEXINPUTS prefix is considered
  to be relative to the directory of your LyX file.
- It is recommended to include always the '.' as one of the paths, otherwise
- compilation may fail for some documents.
+ It is recommended to include always '.' as one of the paths, otherwise compilati
+on may fail for some documents.
 \end_layout
 
 \begin_layout Section
@@ -48142,7 +48218,7 @@ Convertidores
 \begin_layout Standard
 Aquí está la lista de los comandos de los programas para convertir archivos
  de un formato a otro.
- Puedes modificarlos o configurar otros nuevos.
+ Puedes modificar los convertidores o configurar otros nuevos.
  Para modificar un convertidor lo seleccionas, cambias las entradas de los
  campos 
 \family sans
@@ -48193,8 +48269,8 @@ Convertidores
 \emph on
 Personalización
 \emph default
- encontrarás más información sobre convertidores, como variables y opciones
- que se pueden poner en su definición.
+ encontrarás más información sobre convertidores, como opciones que se pueden
+ poner en su definición.
 \end_layout
 
 \begin_layout Subsection
