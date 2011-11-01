@@ -34269,6 +34269,67 @@ target "http://en.wikipedia.org/wiki/Dia_(software)"
 \end_layout
 
 \begin_layout Description
+GnumericSpreadsheet With this template you can insert spreadsheets
+\begin_inset space \thinspace{}
+\end_inset
+
+/
+\begin_inset space \thinspace{}
+\end_inset
+
+tables in the format of 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Gnumeric"
+target "http://en.wikipedia.org/wiki/Gnumeric"
+
+\end_inset
+
+
+\series default
+, 
+\begin_inset CommandInset href
+LatexCommand href
+name "OpenDocument"
+target "http://en.wikipedia.org/wiki/OpenDocument"
+
+\end_inset
+
+, 
+\begin_inset CommandInset href
+LatexCommand href
+name "Microsoft Office XML"
+target "http://en.wikipedia.org/wiki/Microsoft_Office_XML_formats"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset href
+LatexCommand href
+name "Office Open XML"
+target "http://en.wikipedia.org/wiki/Office_Open_XML"
+
+\end_inset
+
+.
+ For this feature LyX must have found the program 
+\family typewriter
+ssconvert
+\family default
+ during its configuration.
+ This program is part of Gnumeric, so that you must have Gnumeric installed,
+ also if you don't have tables in the Gnumeric format.
+ For examples and possible limitations have a look at LyX's example file
+ 
+\emph on
+spreadsheet.lyx
+\emph default
+.
+\end_layout
+
+\begin_layout Description
 LilyPond This template is used for music notation typeset with the program
 \begin_inset Newline linebreak
 \end_inset
@@ -34285,6 +34346,12 @@ target "http://en.wikipedia.org/wiki/LilyPond"
 
 
 \series default
+.
+ For LyX's extended support for LilyPond have a look at LyX's example file
+ 
+\emph on
+lilypond.lyx
+\emph default
 .
 \end_layout
 

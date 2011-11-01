@@ -35018,7 +35018,7 @@ Modèles
 \begin_inset CommandInset href
 LatexCommand href
 name "XBoard"
-target "http://en.wikipedia.org/wiki/XBoard"
+target "http://fr.wikipedia.org/wiki/XBoard"
 
 \end_inset
 
@@ -35092,12 +35092,75 @@ Dia Ce modèle accepte les diagrammes créés avec le programme
 \begin_inset CommandInset href
 LatexCommand href
 name "Dia"
-target "http://en.wikipedia.org/wiki/Dia_(software)"
+target "http://fr.wikipedia.org/wiki/Dia_(logiciel)"
 
 \end_inset
 
 
 \series default
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+GnumericSpreadsheet With this template you can insert spreadsheets
+\begin_inset space \thinspace{}
+\end_inset
+
+/
+\begin_inset space \thinspace{}
+\end_inset
+
+tables in the format of 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Gnumeric"
+target "http://fr.wikipedia.org/wiki/Gnumeric"
+
+\end_inset
+
+
+\series default
+, 
+\begin_inset CommandInset href
+LatexCommand href
+name "OpenDocument"
+target "http://fr.wikipedia.org/wiki/OpenDocument"
+
+\end_inset
+
+, 
+\begin_inset CommandInset href
+LatexCommand href
+name "Microsoft Office XML"
+target "http://en.wikipedia.org/wiki/Microsoft_Office_XML_formats"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset href
+LatexCommand href
+name "Office Open XML"
+target "http://fr.wikipedia.org/wiki/Office_Open_XML"
+
+\end_inset
+
+.
+ For this feature LyX must have found the program 
+\family typewriter
+ssconvert
+\family default
+ during its configuration.
+ This program is part of Gnumeric, so that you must have Gnumeric installed,
+ also if you don't have tables in the Gnumeric format.
+ For examples and possible limitations have a look at LyX's example file
+ 
+\emph on
+spreadsheet.lyx
+\emph default
 .
 \end_layout
 
@@ -35109,12 +35172,20 @@ LilyPond Ce modèle est utilisé avec des partitions musicales mises en forme
 \begin_inset CommandInset href
 LatexCommand href
 name "LilyPond"
-target "http://en.wikipedia.org/wiki/LilyPond"
+target "http://fr.wikipedia.org/wiki/GNU_LilyPond"
 
 \end_inset
 
 
 \series default
+.
+ 
+\lang english
+For LyX's extended support for LilyPond have a look at LyX's example file
+ 
+\emph on
+lilypond.lyx
+\emph default
 .
 \end_layout
 
@@ -35181,7 +35252,7 @@ XFig Ce modèle accepte les images créées avec le programme
 \begin_inset CommandInset href
 LatexCommand href
 name "Xfig"
-target "http://en.wikipedia.org/wiki/Xfig"
+target "http://fr.wikipedia.org/wiki/Xfig"
 
 \end_inset
 
