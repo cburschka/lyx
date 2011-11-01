@@ -19671,7 +19671,7 @@ Control
  submenu.
  Please note that if you use password protected access to repository via
  ssh, you will be asked in terminal window.
- LyX was tested against SVN 1.5 and 1.6
+ LyX was tested against SVN 1.5 and 1.6.
 \begin_inset Foot
 status open
 
@@ -19688,7 +19688,8 @@ reference "sub:SVN-Repo-Update"
 
 \end_inset
 
-
+ Subversion completely changed its internal data structures in version 1.7
+ and LyX does not support this version yet.
 \end_layout
 
 \begin_layout Subsubsection
