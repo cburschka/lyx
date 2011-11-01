@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-10-29 17:47-0400\n"
-"PO-Revision-Date: 2011-06-16 19:55+0300\n"
+"PO-Revision-Date: 2011-10-30 16:27+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "Language: uk\n"
@@ -442,7 +442,7 @@ msgstr "Вибрати версію"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25
 msgid "&New:[[branch]]"
-msgstr ""
+msgstr "&Нова:[[branch]]"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:35
 msgid ""
@@ -1953,7 +1953,7 @@ msgstr "&Декілька покажчиків"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:114
 msgid "&New:[[index]]"
-msgstr ""
+msgstr "&Новий:[[index]]"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
 msgid ""
@@ -2122,10 +2122,10 @@ msgstr "Виберіть пакунок мови, який має викорис
 
 #: src/frontends/qt4/ui/LanguageUi.ui:142
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:78
-#, fuzzy
 msgid ""
 "Enter the command to load the language package (default: \\usepackage{babel})"
-msgstr "Введіть команду, яка завантажує мовний пакунок (типово, babel)"
+msgstr ""
+"Введіть команду, яка завантажує мовний пакунок (типово, \\usepackage{babel})"
 
 #: src/frontends/qt4/ui/LineUi.ui:22
 msgid "Of&fset:"
@@ -4373,9 +4373,8 @@ msgid "La&bels in:"
 msgstr "Міт&ки в:"
 
 #: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:293
-#, fuzzy
 msgid "&References"
-msgstr "Посилання"
+msgstr "&Посилання"
 
 #: src/frontends/qt4/ui/RefUi.ui:76 src/frontends/qt4/ui_RefUi.h:296
 msgid "Fil&ter:"
@@ -9314,23 +9313,20 @@ msgid "Subclass"
 msgstr "Підклас"
 
 #: lib/layouts/svglobal3.layout:75
-#, fuzzy
 msgid "Mathematics Subject Classification"
-msgstr "2000 Mathematics Subject Classification:"
+msgstr "Mathematics Subject Classification"
 
 #: lib/layouts/svglobal3.layout:78
 msgid "CRSC"
-msgstr ""
+msgstr "CRSC"
 
 #: lib/layouts/svglobal3.layout:81
-#, fuzzy
 msgid "CR Subject Classification"
-msgstr "AMS-класифікація тем:"
+msgstr "CR Subject Classification"
 
 #: lib/layouts/svglobal3.layout:86
-#, fuzzy
 msgid "Solution \\thesolution"
-msgstr "Розв’язування \\thesolution."
+msgstr "Розв’язування \\thesolution"
 
 #: lib/layouts/svmono.layout:88 lib/layouts/svcommon.inc:647
 msgid "Proof(QED)"
@@ -9345,21 +9341,18 @@ msgid "Title*"
 msgstr "Заголовок*"
 
 #: lib/layouts/svmult.layout:36
-#, fuzzy
 msgid "Title*: "
-msgstr "Заголовок*"
+msgstr "Заголовок*: "
 
 #: lib/layouts/svmult.layout:65 lib/layouts/svmult.layout:150
-#, fuzzy
 msgid "Contributors"
-msgstr "Список співавторів"
+msgstr "Співавтори"
 
 #: lib/layouts/svmult.layout:67
 msgid "List of Contributors"
 msgstr "Список співавторів"
 
 #: lib/layouts/svmult.layout:71
-#, fuzzy
 msgid "Contributor List"
 msgstr "Список співавторів"
 
@@ -9375,31 +9368,27 @@ msgstr "Для редакторів"
 
 #: lib/layouts/svmult.layout:106 lib/layouts/svcommon.inc:115
 msgid "PartBacktext"
-msgstr ""
+msgstr "PartBacktext"
 
 #: lib/layouts/svmult.layout:114 lib/layouts/svcommon.inc:408
-#, fuzzy
 msgid "Running Chapter"
-msgstr "Running author:"
+msgstr "Альтернативна назва глави"
 
 #: lib/layouts/svmult.layout:118 lib/layouts/svcommon.inc:163
-#, fuzzy
 msgid "ChapAuthor"
-msgstr "Автор"
+msgstr "Автор глави"
 
 #: lib/layouts/svmult.layout:122 lib/layouts/svcommon.inc:150
-#, fuzzy
 msgid "ChapSubtitle"
-msgstr "Підзаголовок"
+msgstr "Підзаголовок глави"
 
 #: lib/layouts/svmult.layout:126 lib/layouts/svcommon.inc:313
 msgid "extrachap"
-msgstr ""
+msgstr "extrachap"
 
 #: lib/layouts/svmult.layout:130 lib/layouts/svcommon.inc:308
-#, fuzzy
 msgid "Extrachap"
-msgstr "Додатково"
+msgstr "Додаткова глава"
 
 #: lib/layouts/svmult.layout:134 lib/layouts/scrclass.inc:204
 #: lib/layouts/svcommon.inc:477
@@ -9408,9 +9397,8 @@ msgstr "Присвята"
 
 #: lib/layouts/svmult.layout:138 lib/layouts/svcommon.inc:497
 #: lib/layouts/svcommon.inc:501
-#, fuzzy
 msgid "Foreword"
-msgstr "Ключове слово"
+msgstr "Передмова"
 
 #: lib/layouts/svmult.layout:142 lib/layouts/svcommon.inc:521
 #: lib/layouts/svcommon.inc:530
@@ -9418,9 +9406,8 @@ msgid "Preface"
 msgstr "Передмова"
 
 #: lib/layouts/svmult.layout:154 lib/layouts/svcommon.inc:175
-#, fuzzy
 msgid "ChapMotto"
-msgstr "Глава"
+msgstr "ChapMotto"
 
 #: lib/layouts/tufte-book.layout:123
 msgid "Sidenote"
@@ -10007,9 +9994,8 @@ msgid "Captionabove"
 msgstr "ПідписЗгори"
 
 #: lib/layouts/scrclass.inc:255 lib/layouts/scrclass.inc:275
-#, fuzzy
 msgid "Captions"
-msgstr "Підпис"
+msgstr "Підписи"
 
 #: lib/layouts/scrclass.inc:274
 msgid "Captionbelow"
@@ -10162,59 +10148,48 @@ msgid "--- Back Matter ---"
 msgstr "--- Апарат ---"
 
 #: lib/layouts/svcommon.inc:283
-#, fuzzy
 msgid "Run-in headings"
-msgstr "з заголовками"
+msgstr "Додаткові заголовки"
 
 #: lib/layouts/svcommon.inc:298
-#, fuzzy
 msgid "Sub-run-in headings"
-msgstr "Предметні заголовки:"
+msgstr "Додаткові підзаголовки"
 
 #: lib/layouts/svcommon.inc:355
-#, fuzzy
 msgid "Author data:"
-msgstr "Автор:"
+msgstr "Дата автора:"
 
 #: lib/layouts/svcommon.inc:392
-#, fuzzy
 msgid "TOC author:"
 msgstr "Автор змісту:"
 
 #: lib/layouts/svcommon.inc:395
-#, fuzzy
 msgid "Running Title"
-msgstr "Альтернативна назва:"
+msgstr "Альтернативна назва"
 
 #: lib/layouts/svcommon.inc:402
-#, fuzzy
 msgid "Running Author"
-msgstr "Альтернативний запис автора:"
+msgstr "Альтернативний запис автора"
 
 #: lib/layouts/svcommon.inc:413
-#, fuzzy
 msgid "Running chapter:"
-msgstr "Running author:"
+msgstr "Альтернативна назва глави:"
 
 #: lib/layouts/svcommon.inc:416
-#, fuzzy
 msgid "Running Section"
-msgstr "Альтернативна назва:"
+msgstr "Альтернативна назва розділу"
 
 #: lib/layouts/svcommon.inc:419
-#, fuzzy
 msgid "Running section:"
-msgstr "Альтернативна назва:"
+msgstr "Альтернативна назва розділу:"
 
 #: lib/layouts/svcommon.inc:443
-#, fuzzy
 msgid "Abstract*"
-msgstr "Резюме"
+msgstr "Резюме*"
 
 #: lib/layouts/svcommon.inc:447
-#, fuzzy
 msgid "Abstract* (not printed)"
-msgstr " (не встановлено)"
+msgstr "Резюме* (не друкується)"
 
 #: lib/layouts/svcommon.inc:595
 msgid "Petit"
@@ -10222,7 +10197,7 @@ msgstr "Петит"
 
 #: lib/layouts/svcommon.inc:607
 msgid "Svgraybox"
-msgstr ""
+msgstr "Svgraybox"
 
 #: lib/layouts/theorems-ams-bytype.inc:166 lib/layouts/theorems-bytype.inc:142
 #: lib/layouts/theorems-without-preamble.inc:163
@@ -10330,94 +10305,76 @@ msgid "Remark."
 msgstr "Зауваження."
 
 #: lib/layouts/theorems-without-preamble.inc:52
-#, fuzzy
 msgid "Theorem \\thetheorem"
-msgstr "Теорема \\thetheorem."
+msgstr "Теорема \\thetheorem"
 
 #: lib/layouts/theorems-without-preamble.inc:76
-#, fuzzy
 msgid "Corollary \\thecorollary"
-msgstr "Наслідок \\thecorollary."
+msgstr "Наслідок \\thecorollary"
 
 #: lib/layouts/theorems-without-preamble.inc:92
-#, fuzzy
 msgid "Lemma \\thelemma"
-msgstr "Лема \\thelemma."
+msgstr "Лема \\thelemma"
 
 #: lib/layouts/theorems-without-preamble.inc:108
-#, fuzzy
 msgid "Proposition \\theproposition"
-msgstr "Твердження \\theproposition."
+msgstr "Твердження \\theproposition"
 
 #: lib/layouts/theorems-without-preamble.inc:140
-#, fuzzy
 msgid "Conjecture \\theconjecture"
-msgstr "Припущення \\theconjecture."
+msgstr "Припущення \\theconjecture"
 
 #: lib/layouts/theorems-without-preamble.inc:179
-#, fuzzy
 msgid "Definition \\thedefinition"
-msgstr "Означення \\thedefinition."
+msgstr "Означення \\thedefinition"
 
 #: lib/layouts/theorems-without-preamble.inc:203
-#, fuzzy
 msgid "Example \\theexample"
-msgstr "Приклад \\theexample."
+msgstr "Приклад \\theexample"
 
 #: lib/layouts/theorems-without-preamble.inc:221
-#, fuzzy
 msgid "Problem \\theproblem"
-msgstr "Задача \\theproblem."
+msgstr "Задача \\theproblem"
 
 #: lib/layouts/theorems-without-preamble.inc:236
-#, fuzzy
 msgid "Prob"
 msgstr "Проблема"
 
 #: lib/layouts/theorems-without-preamble.inc:243
-#, fuzzy
 msgid "\\theprob."
-msgstr "Властивість \\theprop."
+msgstr "\\theprob."
 
 #: lib/layouts/theorems-without-preamble.inc:279
-#, fuzzy
 msgid "Sol"
-msgstr "Символ"
+msgstr "Розв."
 
 #: lib/layouts/theorems-without-preamble.inc:283
-#, fuzzy
 msgid "# [number of Prob]"
-msgstr "Кількість рядків"
+msgstr "№ [number of Prob]"
 
 #: lib/layouts/theorems-without-preamble.inc:294
-#, fuzzy
 msgid "Exercise \\theexercise"
-msgstr "Вправа \\theexercise."
+msgstr "Вправа \\theexercise"
 
 #: lib/layouts/theorems-without-preamble.inc:311
-#, fuzzy
 msgid "Remark \\theremark"
-msgstr "Примітка \\theremark."
+msgstr "Примітка \\theremark"
 
 #: lib/layouts/theorems-without-preamble.inc:341
-#, fuzzy
 msgid "Case \\thecase"
-msgstr "Випадок \\thecase."
+msgstr "Випадок \\thecase"
 
 #: lib/layouts/theorems-without-preamble.inc:358
-#, fuzzy
 msgid "Property \\theproperty"
-msgstr "Властивість \\theprop."
+msgstr "Властивість \\theproperty"
 
 #: lib/layouts/theorems-without-preamble.inc:375
-#, fuzzy
 msgid "Question \\thequestion"
-msgstr "Питання \\thequestion."
+msgstr "Питання \\thequestion"
 
 #: lib/layouts/theorems-without-preamble.inc:392
-#, fuzzy
 msgid "Note \\thenote"
-msgstr "Примітка \\thenote."
+msgstr "Примітка \\thenote"
 
 #: lib/layouts/braille.module:2
 msgid "Braille"
@@ -10498,9 +10455,8 @@ msgstr ""
 "меню «Документ -> Налаштувати -> Формат сторінки» у значення «красивий»!"
 
 #: lib/layouts/customHeadersFooters.module:12
-#, fuzzy
 msgid "Header/Footer"
-msgstr "Підвал посередині"
+msgstr "Верхній та нижній колонтитули"
 
 #: lib/layouts/customHeadersFooters.module:30
 msgid "Center Header"
@@ -10548,14 +10504,13 @@ msgid "Customisable Lists (enumitem)"
 msgstr "Налаштовувані списки (enumitem)"
 
 #: lib/layouts/enumitem.module:6
-#, fuzzy
 msgid ""
 "Controls the layout of enumerate, itemize, description, and list/labeling. "
 "See section Customized Lists of the User's Guide for a detailed description."
 msgstr ""
-"Керує компонуванням enumerate, itemize і description за допомогою "
-"додаткового параметра. Докладніше: http://mirror.ctan.org/macros/latex/"
-"contrib/enumitem/enumitem.pdf та файл прикладу, що постачається разом з LyX."
+"Керує компонуванням enumerate, itemize, description та list/labeling. "
+"Докладніше можливість описано у розділі «Нетипові списки» (Customized Lists) "
+"Підручника користувача."
 
 #: lib/layouts/enumitem.module:93
 msgid "Enumerate-Resume"
@@ -10657,6 +10612,8 @@ msgid ""
 "Define a style for paragraphs with an initial. See the EmbeddedObjects "
 "manual for a detailed description."
 msgstr ""
+"Визначити стиль для абзаців з буквицею. Докладний опис можна знайти у "
+"підручнику з EmbeddedObjects (вбудованих об’єктів)."
 
 #: lib/layouts/initials.module:14 lib/layouts/initials.module:16
 #: lib/layouts/initials.module:25 lib/layouts/initials.module:31
@@ -10827,14 +10784,13 @@ msgid "Sweave"
 msgstr "Sweave"
 
 #: lib/layouts/sweave.module:6
-#, fuzzy
 msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
 "via the Sweave() function. For more info see the LyX example file sweave.lyx."
 msgstr ""
 "Надає змогу використовувати статистичну мову S/R, як інструмент створення "
-"програмованих текстів за допомогою пакунка Sweave. Приклади можна знайти у "
-"sweave.lyx (тека examples)."
+"програмованих текстів за допомогою функції Sweave(). Докладніше з "
+"можливостями можна ознайомитися за допомогою файла-прикладу LyX, sweave.lyx."
 
 #: lib/layouts/sweave.module:23
 msgid "Chunk"
@@ -12693,13 +12649,12 @@ msgid "Paste Special"
 msgstr "Спеціальне вставлення"
 
 #: lib/ui/stdmenus.inc:108
-#, fuzzy
 msgid "Select Whole Inset"
-msgstr "Оберіть файл для вставки"
+msgstr "Позначити всю вставку"
 
 #: lib/ui/stdmenus.inc:109
 msgid "Select All"
-msgstr "Вибрати все"
+msgstr "Позначити все"
 
 #: lib/ui/stdmenus.inc:111
 msgid "Find & Replace (Quick)...|F"
@@ -16508,9 +16463,8 @@ msgid "Sweave|S"
 msgstr "Sweave|S"
 
 #: lib/configure.py:583
-#, fuzzy
 msgid "R/S code"
-msgstr "код"
+msgstr "Код R/S"
 
 #: lib/configure.py:584
 msgid "LilyPond music"
@@ -17088,7 +17042,7 @@ msgid "Uncodable character in file path"
 msgstr "Непридатні для кодування символи у шляху до файла"
 
 #: src/Buffer.cpp:1417
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The path of your document\n"
 "(%1$s)\n"
@@ -17104,7 +17058,10 @@ msgstr ""
 "(%1$s)\n"
 "містить символи, що не належать до кодування\n"
 "поточного документа (а саме %2$s).\n"
-"Це може призвести до пошкодження виведених даних.\n"
+"Це може призвести до пошкодження виведених даних, якщо у TEXINPUTS не "
+"міститься каталогу документа і вами не використано явно відносні шляхи (тобто "
+"адреси, які починаються з «./» або «../») у преамбулі або у командах "
+"всередині вашого документа LyX.\n"
 "\n"
 "Виберіть належне кодування документа (наприклад, utf8)\n"
 "або змініть шлях до файла."
@@ -22754,9 +22711,8 @@ msgid "List of Listings"
 msgstr "Список текстів програм"
 
 #: src/frontends/qt4/qt_helpers.cpp:563
-#, fuzzy
 msgid "List of Index Entries"
-msgstr "Список покажчиків"
+msgstr "Список записів покажчика"
 
 #: src/frontends/qt4/qt_helpers.cpp:565
 msgid "List of Marginal notes"
