@@ -262,6 +262,7 @@ dist_examples_DATA = \
 	examples/linguistics.lyx \
 	examples/listerrors.lyx \
 	examples/localization_test.lyx \
+	examples/longsheet.gnumeric \
 	examples/modernCV.lyx \
 	examples/multicol.lyx \
 	examples/noweb2lyx.lyx \
@@ -272,8 +273,12 @@ dist_examples_DATA = \
 	examples/serial_letter1.lyx \
 	examples/serial_letter2.lyx \
 	examples/serial_letter3.lyx \
+	examples/sheet.gnumeric \
+	examples/sheet.ods \
+	examples/sheet.xls \
 	examples/simplecv.lyx \
 	examples/splash.lyx \
+	examples/spreadsheet.lyx \
 	examples/sweave.lyx \
 	examples/tufte-book.lyx \
 	examples/tufte-handout.lyx \

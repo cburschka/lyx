@@ -2831,6 +2831,7 @@ lib_examples_files = Split('''
     listerrors.lyx
     Literate.lyx
     localization_test.lyx
+    longsheet.gnumeric
     modernCV.lyx
     multicol.lyx
     noweb2lyx.lyx
@@ -2841,8 +2842,12 @@ lib_examples_files = Split('''
     serial_letter1.lyx
     serial_letter2.lyx
     serial_letter3.lyx
+    sheet.gnumeric
+    sheet.ods
+    sheet.xls
     simplecv.lyx
     splash.lyx
+    spreadsheet.lyx
     sweave.lyx
     tufte-book.lyx
     tufte-handout.lyx
