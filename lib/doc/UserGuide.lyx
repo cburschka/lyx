@@ -1892,6 +1892,13 @@ Autocorrection
 autocorrect
 \family default
  that is somewhere in LyX's installation folder.
+ Math autocorrection can any time turned on by pressing the exclamation
+ mark key '!'.
+ Pressing 
+\family sans
+Space
+\family default
+ turns it off.
 \end_layout
 
 \begin_layout Section
@@ -45293,33 +45300,33 @@ End
 .
  They may contain 
 \family sans
-Submenus
+Submenu
 \family default
 , 
 \family sans
-Items
+Item
 \family default
 , 
 \family sans
-OptItems
+OptItem
 \family default
 , 
 \family sans
-Separators
+Separator
 \family default
 , 
 \family sans
-Icons,
+Icon,
 \family default
  and in the case of the 
 \begin_inset Quotes eld
 \end_inset
 
-file
+file_lastfiles
 \begin_inset Quotes erd
 \end_inset
 
- menus a 
+ menu a 
 \family sans
 Lastfiles
 \family default
@@ -45420,7 +45427,15 @@ bookmark-save 6
 \begin_inset VSpace smallskip*
 \end_inset
 
-to the navigate menu section in the .inc-file to have the sixth bookmark.
+to the 
+\begin_inset Quotes eld
+\end_inset
+
+navigate_bookmarks
+\begin_inset Quotes erd
+\end_inset
+
+ menu in the .inc-file to have the sixth bookmark.
 \end_layout
 
 \begin_layout Subsubsection
@@ -45595,6 +45610,37 @@ Open documents in tabs
 \end_layout
 
 \begin_layout Standard
+The option 
+\family sans
+Single instance
+\family default
+ is only active on Unix systems.
+ If it is checked, documents loaded via a LyXServer pipe
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+See sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Paths"
+
+\end_inset
+
+ for information about LyXServer pipes.
+\end_layout
+
+\end_inset
+
+ will be opened in the same running instance of LyX.
+ Otherwise a new LyX instance is created for each file in the pipe.
+\end_layout
+
+\begin_layout Standard
 With the option 
 \family sans
 Single close-tab button
@@ -45623,7 +45669,7 @@ status open
 \series bold
 Note:
 \series default
- For the last option you have to restart LyX before the chang takes effect.
+ For the last option you have to restart LyX before the change takes effect.
 \end_layout
 
 \end_inset
@@ -45706,7 +45752,7 @@ sans
 
 serif
 \family default
- font, and 
+ font and 
 \family typewriter
 Courier
 \family default
@@ -45723,21 +45769,14 @@ You can change the font size with the
 Zoom
 \family default
  setting.
- You can also change the font zoom outside the preferences dialog for the
- current LyX session by pressing 
-\family sans
-Ctrl
-\family default
- and scrolling the mouse wheel.
 \end_layout
 
 \begin_layout Standard
-
+The 
 \family sans
-Screen DPI
+Font Sizes
 \family default
- is the screen resolution in dpi (dots per inch).
- The Font Sizes are calculated as letter height in units of points.
+ are calculated as letter height in units of points.
  72
 \begin_inset space \thinspace{}
 \end_inset
@@ -45758,14 +45797,7 @@ reference "cha:Units-available-in"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-The default 
-\family sans
-Font Sizes
-\family default
- are the same as if a document font size of 10
+ The default font sizes are the same as if a document font size of 10
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -46012,7 +46044,7 @@ Here you can specify what is hidden in the fullscreen mode.
 Limit text width
 \family default
  specifies the width of the text in fullscreen mode.
- This way you can display the text smaller than the screen, the text appears
+ This way you can display the text smaller than the screen; the text appears
  then centered.
 \end_layout
 
@@ -46458,7 +46490,7 @@ Note:
 \family sans
 Examples
 \family default
- button does not exist when using LyX on MacOS and Windows systems.
+ button does not exist when using LyX on Mac OS and Windows systems.
 \end_layout
 
 \end_inset
@@ -46658,15 +46690,15 @@ TEXINPUTS
 prefix The TEXINPUTS environment variable allows to use external files which
  are included to a LyX document via commands in TeX code.
  This prefix includes by default the document directory (represented by
- a single '.').
- The prefix can be set to any list of paths separated by the default separator
- of the OS (':' on UNIX like systems and ';' on windows).
- If files are included by LaTeX, the paths listed in the TEXINPUTS prefix
- will be scanned for the input files.
+ a single dot '.').
+ The prefix can contain any list of paths separated by the default separator
+ of the OS (':' on UNIX like systems and ';' on Windows).
+ If files are included, the paths listed in the TEXINPUTS prefix will be
+ scanned for the input files.
  Note that any non-absolute path listed in the TEXINPUTS prefix is considered
  to be relative to the directory of your LyX file.
- It is recommended to include always the '.' as one of the paths, otherwise
- compilation may fail for some documents.
+ It is recommended to include always '.' as one of the paths, otherwise compilati
+on may fail for some documents.
 \end_layout
 
 \begin_layout Section
@@ -47352,11 +47384,11 @@ T2C
 \family sans
 LCY
 \family default
-, and 
+ and 
 \family sans
 X2
 \family default
- are for Cyrillic.
+ are used for Cyrillic.
  Combinations of the encodings are possible, like 
 \begin_inset Quotes erd
 \end_inset
@@ -47652,7 +47684,7 @@ Converters
 \begin_layout Standard
 Here you find the list of defined converter commands to convert material
  from one format to another.
- You can modify them or create new ones.
+ You can modify converters or create new ones.
  To modify a converter, select it, change the entry of the field 
 \family sans
 Converter
@@ -47665,7 +47697,7 @@ Extra
 
 flag
 \family default
-, and press the 
+ and press the 
 \family sans
 Modify
 \family default
@@ -47673,7 +47705,7 @@ Modify
  To create a new converter, select an existing one, select a different format
  in the 
 \family sans
-From
+To
 \begin_inset space ~
 \end_inset
 
@@ -47683,7 +47715,7 @@ format
 \family sans
 Converter
 \family default
- field, and press the 
+ field and press the 
 \family sans
 Add
 \family default
@@ -47706,8 +47738,8 @@ Maximum Age (in days
 \end_layout
 
 \begin_layout Standard
-More about converters, like the variables and flags that can be used in
- the converter definition, is described in the section 
+More about converters, like the flags that can be used in the converter
+ definition, is described in the section 
 \emph on
 Converters
 \emph default

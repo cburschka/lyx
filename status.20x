@@ -86,13 +86,13 @@ What's new
   included in the archive.
 
 - When changing the document language, also change the language of the
-  text which is not explicitly marked in a different language, irrespective
-  of the multilingual status, except for LTR<=>RTL changes.
+  text which is not explicitly marked in a different language,
+  irrespective of the multilingual status, except for LTR<=>RTL changes.
 
 - Augmented the tex2lyx --help message with the default paths (bug 6827).
 
-- New command-line switch -v (--version) for tex2lyx showing build information
-  and version number (bug 6827).
+- New command-line switch -v (--version) for tex2lyx showing build
+  information and version number (bug 6827).
 
 
 * DOCUMENTATION AND LOCALIZATION
@@ -102,7 +102,8 @@ What's new
 
 - Revised template files for the Springer document classes.
 
-- The appendices of the LyX user's guide have been revised.
+- The LyX documentation covers now all new features of LyX 2.0.x the
+  User's guide, EmbeddedObjects and the Math manual have been revised.
 
 
 * BUILD/INSTALLATION

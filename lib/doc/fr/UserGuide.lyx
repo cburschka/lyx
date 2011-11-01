@@ -1972,6 +1972,13 @@ Autocorrection
 autocorrect
 \family default
  that is somewhere in LyX's installation folder.
+ Math autocorrection can any time turned on by pressing the exclamation
+ mark key '!'.
+ Pressing 
+\family sans
+Space
+\family default
+ turns it off.
 \end_layout
 
 \begin_layout Section
@@ -45610,17 +45617,9 @@ On peut changer l'apparence des menus et des barres d'outils en choisissant
 \family typewriter
  
 \family default
-(
-\family typewriter
-.ui
-\family default
-).
- Un fichier 
-\family typewriter
-.ui
-\family default
- est un fichier texte dans lequel les éléments des menus et des barres d'outils
- sont listés.
+(ui).
+ Un fichier ui est un fichier texte dans lequel les éléments des menus et
+ des barres d'outils sont listés.
  Les boutons des barres d'outils et les éléments de menu sont décrits dans
  les fichiers 
 \emph on
@@ -45643,10 +45642,8 @@ default.ui
 La syntaxe des fichiers
 \family sans
  
-\family typewriter
-.ui
 \family default
- est simple.
+.inc est simple.
  Les éléments 
 \family sans
 The Menubar
@@ -45666,30 +45663,30 @@ End
  explicite.
  Ils peuvent contenir des éléments de type 
 \family sans
-Submenus
+Submenu
 \family default
 , 
 \family sans
-Items
+Item
 \family default
 , 
 \family sans
-OptItems
+OptItem
 \family default
 , 
 \family sans
-Separators
+Separator
 \family default
 , 
 \family sans
-Icons
+Icon
 \family default
  et dans le cas particulier du menu 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
-fichiers
-\begin_inset Quotes erd
+file_lastfiles
+\begin_inset Quotes frd
 \end_inset
 
 , un élément 
@@ -45773,8 +45770,11 @@ Item "Enregistrer Signet 6" "bookmark-save 6"
 \begin_inset VSpace smallskip*
 \end_inset
 
-à la section du menu naviguer dans le fichier .inc, pour disposer d'un sixième
- signet.
+à la section du menu 
+\emph on
+navigate_bookmarks
+\emph default
+ dans le fichier .inc, pour disposer d'un sixième signet.
 \end_layout
 
 \begin_layout Subsubsection
@@ -45964,6 +45964,56 @@ récents
 \begin_layout Standard
 
 \lang english
+If the option 
+\family sans
+Open documents in tabs
+\family default
+ is not used, then every file will be opened in its own new instance of
+ LyX.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The option 
+\family sans
+Single instance
+\family default
+ is only active on Unix systems.
+ If it is checked, documents loaded via a LyXServer pipe
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+See sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\lang french
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Répertoires"
+
+\end_inset
+
+
+\lang english
+ for information about LyXServer pipes.
+\end_layout
+
+\end_inset
+
+ will be opened in the same running instance of LyX.
+ Otherwise a new LyX instance is created for each file in the pipe.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
 With the option
 \lang french
  
@@ -45999,7 +46049,7 @@ status open
 \lang english
 Note:
 \series default
- For the last option you have to restart LyX before the chang takes effect.
+ For the last option you have to restart LyX before the change takes effect.
 \end_layout
 
 \end_inset
@@ -46096,25 +46146,14 @@ Vous pouvez changer la taille des polices avec le réglage du
 Zoom
 \family default
 .
- Vous pouvez aussi modifier le zoom de la police pour la session actuelle
- de LyX, sans passer par le menu en appuyant sur la touche 
-\family sans
-Ctrl
-\family default
- et en agissant sur la roulette de la souris.
 \end_layout
 
 \begin_layout Standard
-
+Les 
 \family sans
-Résolution DPI
+Tailles de polices
 \family default
- est la résolution de l'écran en dpi (points par pouce ou 
-\emph on
-dots per inch
-\emph default
-).
- Les tailles de polices sont données comme des hauteurs de lettre en points.
+ sont données comme des hauteurs de lettre en points.
  Une lettre de 72
 \begin_inset space \thinspace{}
 \end_inset
@@ -46135,16 +46174,8 @@ reference "cha:Unités-de-longueur"
 \end_inset
 
  pour les unités de longueur utilisées dans LyX.
- 
-\end_layout
-
-\begin_layout Standard
-Les 
-\family sans
-Tailles de polices
-\family default
- implicites sont les mêmes que celles utilisées pour une police de document
- de 10
+ Les tailles de polices implicites sont les mêmes que celles utilisées pour
+ une police de document de 10
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -46881,7 +46912,7 @@ Note :
 \family sans
 Exemples
 \family default
- n'existe pas si vous utilisez LyX sous MacOS ou Windows
+ n'existe pas si vous utilisez LyX sous Mac OS ou Windows
 \family sans
 .
 \end_layout
@@ -47106,15 +47137,15 @@ TEXINPUTS
 prefix The TEXINPUTS environment variable allows to use external files which
  are included to a LyX document via commands in TeX code.
  This prefix includes by default the document directory (represented by
- a single '.').
- The prefix can be set to any list of paths separated by the default separator
- of the OS (':' on UNIX like systems and ';' on windows).
- If files are included by LaTeX, the paths listed in the TEXINPUTS prefix
- will be scanned for the input files.
+ a single dot '.').
+ The prefix can contain any list of paths separated by the default separator
+ of the OS (':' on UNIX like systems and ';' on Windows).
+ If files are included, the paths listed in the TEXINPUTS prefix will be
+ scanned for the input files.
  Note that any non-absolute path listed in the TEXINPUTS prefix is considered
  to be relative to the directory of your LyX file.
- It is recommended to include always the '.' as one of the paths, otherwise
- compilation may fail for some documents.
+ It is recommended to include always '.' as one of the paths, otherwise compilati
+on may fail for some documents.
 \end_layout
 
 \begin_layout Section
@@ -48281,7 +48312,7 @@ Convertisseurs
 \begin_layout Standard
 Ici, vous allez trouver la liste des commandes de convertisseurs définies
  pour convertir des fichiers d'un format vers un autre.
- Vous pouvez les modifier ou en créer de nouveaux.
+ Vous pouvez modifier des convertisseurs ou en créer des nouveaux.
  Pour modifier un convertisseur, sélectionnez-le, changez le contenu du
  champ 
 \family sans
@@ -48299,8 +48330,14 @@ Modifier
  Pour créer un nouveau convertisseur, sélectionnez un de ceux qui sont proposés,
  choisissez un format différent dans la liste déroulante 
 \family sans
-Vers le format
+\lang english
+To
+\begin_inset space ~
+\end_inset
+
+format
 \family default
+\lang french
 , modifiez le champ 
 \family sans
 Convertisseur
@@ -48330,8 +48367,8 @@ Age maximum (en jours).
 
 \begin_layout Standard
 Vous trouverez plus d'information sur les convertisseurs, en particulier
- au sujet des variables et des drapeaux qui peuvent être utilisés dans la
- définition du convertisseur, dans la section 
+ au sujet des drapeaux qui peuvent être utilisés dans la définition du convertis
+seur, dans la section 
 \emph on
 Convertisseurs
 \emph default
