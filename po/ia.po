@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-10-29 17:47-0400\n"
-"PO-Revision-Date: 2011-09-23 15:04+0200\n"
+"PO-Revision-Date: 2011-11-02 15:40+0100\n"
 "Last-Translator: Giovanni Sora <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <g.sora@tiscali.it>\n"
 "Language: ia\n"
@@ -444,7 +444,7 @@ msgstr "Selige tu ramo"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25
 msgid "&New:[[branch]]"
-msgstr ""
+msgstr "&Nove:[[branch]]"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:35
 msgid ""
@@ -1939,7 +1939,7 @@ msgstr "&Usa indices multiple"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:114
 msgid "&New:[[index]]"
-msgstr ""
+msgstr "&Nove:[[index]]"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
 msgid ""
@@ -9303,23 +9303,20 @@ msgid "Subclass"
 msgstr "Sub-classe"
 
 #: lib/layouts/svglobal3.layout:75
-#, fuzzy
 msgid "Mathematics Subject Classification"
-msgstr "Classification de subjecto de Mathematica 2000:"
+msgstr "Classification de subjecto de mathematica"
 
 #: lib/layouts/svglobal3.layout:78
 msgid "CRSC"
-msgstr ""
+msgstr "CRSC"
 
 #: lib/layouts/svglobal3.layout:81
-#, fuzzy
 msgid "CR Subject Classification"
-msgstr "Classification de subjecto AMS:"
+msgstr "Classification de subjecto CR"
 
 #: lib/layouts/svglobal3.layout:86
-#, fuzzy
 msgid "Solution \\thesolution"
-msgstr "Solution \\thesolution."
+msgstr "Solution \\thesolution"
 
 #: lib/layouts/svmono.layout:88 lib/layouts/svcommon.inc:647
 msgid "Proof(QED)"
@@ -9334,21 +9331,18 @@ msgid "Title*"
 msgstr "Titulo*"
 
 #: lib/layouts/svmult.layout:36
-#, fuzzy
 msgid "Title*: "
-msgstr "Titulo*"
+msgstr "Titulo*: "
 
 #: lib/layouts/svmult.layout:65 lib/layouts/svmult.layout:150
-#, fuzzy
 msgid "Contributors"
-msgstr "Lista de contributores"
+msgstr "Contributores"
 
 #: lib/layouts/svmult.layout:67
 msgid "List of Contributors"
 msgstr "Lista de contributores"
 
 #: lib/layouts/svmult.layout:71
-#, fuzzy
 msgid "Contributor List"
 msgstr "Lista de contributores"
 
@@ -9364,31 +9358,27 @@ msgstr "Per editores"
 
 #: lib/layouts/svmult.layout:106 lib/layouts/svcommon.inc:115
 msgid "PartBacktext"
-msgstr ""
+msgstr "PartBacktext"
 
 #: lib/layouts/svmult.layout:114 lib/layouts/svcommon.inc:408
-#, fuzzy
 msgid "Running Chapter"
-msgstr "Autor currente:"
+msgstr "Capitulo currente"
 
 #: lib/layouts/svmult.layout:118 lib/layouts/svcommon.inc:163
-#, fuzzy
 msgid "ChapAuthor"
-msgstr "Autor"
+msgstr "Autor de Capitulo"
 
 #: lib/layouts/svmult.layout:122 lib/layouts/svcommon.inc:150
-#, fuzzy
 msgid "ChapSubtitle"
-msgstr "Sub-Titulo"
+msgstr "Sub-Titulo de capitulo"
 
 #: lib/layouts/svmult.layout:126 lib/layouts/svcommon.inc:313
 msgid "extrachap"
-msgstr ""
+msgstr "extrachap"
 
 #: lib/layouts/svmult.layout:130 lib/layouts/svcommon.inc:308
-#, fuzzy
 msgid "Extrachap"
-msgstr "Extra"
+msgstr "Capitulo extra"
 
 #: lib/layouts/svmult.layout:134 lib/layouts/scrclass.inc:204
 #: lib/layouts/svcommon.inc:477
@@ -9397,9 +9387,8 @@ msgstr "Dedica"
 
 #: lib/layouts/svmult.layout:138 lib/layouts/svcommon.inc:497
 #: lib/layouts/svcommon.inc:501
-#, fuzzy
 msgid "Foreword"
-msgstr "Parola clave"
+msgstr "Prefacio"
 
 #: lib/layouts/svmult.layout:142 lib/layouts/svcommon.inc:521
 #: lib/layouts/svcommon.inc:530
@@ -9407,9 +9396,8 @@ msgid "Preface"
 msgstr "Prefacio"
 
 #: lib/layouts/svmult.layout:154 lib/layouts/svcommon.inc:175
-#, fuzzy
 msgid "ChapMotto"
-msgstr "Capitulo"
+msgstr "Motto de Capitulo"
 
 #: lib/layouts/tufte-book.layout:123
 msgid "Sidenote"
@@ -10150,59 +10138,48 @@ msgid "--- Back Matter ---"
 msgstr "--- Notas conclusive ---"
 
 #: lib/layouts/svcommon.inc:283
-#, fuzzy
 msgid "Run-in headings"
-msgstr "capites"
+msgstr "Capites de discussion"
 
 #: lib/layouts/svcommon.inc:298
-#, fuzzy
 msgid "Sub-run-in headings"
-msgstr "Capites subjecto:"
+msgstr "Capites sub discussion"
 
 #: lib/layouts/svcommon.inc:355
-#, fuzzy
 msgid "Author data:"
-msgstr "Autor:"
+msgstr "Datos de Autor:"
 
 #: lib/layouts/svcommon.inc:392
-#, fuzzy
 msgid "TOC author:"
-msgstr "Autor indice general:"
+msgstr "Autor de indice general:"
 
 #: lib/layouts/svcommon.inc:395
-#, fuzzy
 msgid "Running Title"
-msgstr "Titulo currente:"
+msgstr "Titulo currente"
 
 #: lib/layouts/svcommon.inc:402
-#, fuzzy
 msgid "Running Author"
-msgstr "Autor currente:"
+msgstr "Autor currente"
 
 #: lib/layouts/svcommon.inc:413
-#, fuzzy
 msgid "Running chapter:"
-msgstr "Autor currente:"
+msgstr "Capitulo currente"
 
 #: lib/layouts/svcommon.inc:416
-#, fuzzy
 msgid "Running Section"
-msgstr "Titulo currente:"
+msgstr "Section currente"
 
 #: lib/layouts/svcommon.inc:419
-#, fuzzy
 msgid "Running section:"
-msgstr "Titulo currente:"
+msgstr "Section currente"
 
 #: lib/layouts/svcommon.inc:443
-#, fuzzy
 msgid "Abstract*"
-msgstr "Summario"
+msgstr "Summario*"
 
 #: lib/layouts/svcommon.inc:447
-#, fuzzy
 msgid "Abstract* (not printed)"
-msgstr " (non installate)"
+msgstr " Summario* (non imprimite)"
 
 #: lib/layouts/svcommon.inc:595
 msgid "Petit"
@@ -10210,7 +10187,7 @@ msgstr "Parve"
 
 #: lib/layouts/svcommon.inc:607
 msgid "Svgraybox"
-msgstr ""
+msgstr "Svgraybox"
 
 #: lib/layouts/theorems-ams-bytype.inc:166 lib/layouts/theorems-bytype.inc:142
 #: lib/layouts/theorems-without-preamble.inc:163
@@ -10318,94 +10295,76 @@ msgid "Remark."
 msgstr "Observation."
 
 #: lib/layouts/theorems-without-preamble.inc:52
-#, fuzzy
 msgid "Theorem \\thetheorem"
-msgstr "Theorema \\thetheorem."
+msgstr "Theorema \\thetheorem"
 
 #: lib/layouts/theorems-without-preamble.inc:76
-#, fuzzy
 msgid "Corollary \\thecorollary"
-msgstr "Corollario \\thecorollary."
+msgstr "Corollario \\thecorollary"
 
 #: lib/layouts/theorems-without-preamble.inc:92
-#, fuzzy
 msgid "Lemma \\thelemma"
-msgstr "Lemma \\thelemma."
+msgstr "Lemma \\thelemma"
 
 #: lib/layouts/theorems-without-preamble.inc:108
-#, fuzzy
 msgid "Proposition \\theproposition"
-msgstr "Proposition \\theproposition."
+msgstr "Proposition \\theproposition"
 
 #: lib/layouts/theorems-without-preamble.inc:140
-#, fuzzy
 msgid "Conjecture \\theconjecture"
-msgstr "Conjectura \\theconjecture."
+msgstr "Conjectura \\theconjecture"
 
 #: lib/layouts/theorems-without-preamble.inc:179
-#, fuzzy
 msgid "Definition \\thedefinition"
-msgstr "Definition \\thedefinition."
+msgstr "Definition \\thedefinition"
 
 #: lib/layouts/theorems-without-preamble.inc:203
-#, fuzzy
 msgid "Example \\theexample"
-msgstr "Exemplo \\theexample."
+msgstr "Exemplo \\theexample"
 
 #: lib/layouts/theorems-without-preamble.inc:221
-#, fuzzy
 msgid "Problem \\theproblem"
-msgstr "Problema \\theproblem."
+msgstr "Problema \\theproblem"
 
 #: lib/layouts/theorems-without-preamble.inc:236
-#, fuzzy
 msgid "Prob"
-msgstr "Problema"
+msgstr "Prob"
 
 #: lib/layouts/theorems-without-preamble.inc:243
-#, fuzzy
 msgid "\\theprob."
-msgstr "Prop \\theprop."
+msgstr "\\theprop."
 
 #: lib/layouts/theorems-without-preamble.inc:279
-#, fuzzy
 msgid "Sol"
-msgstr "Symbolo"
+msgstr "Sol"
 
 #: lib/layouts/theorems-without-preamble.inc:283
-#, fuzzy
 msgid "# [number of Prob]"
-msgstr "Numero de lineas"
+msgstr "# [numero de Prob]"
 
 #: lib/layouts/theorems-without-preamble.inc:294
-#, fuzzy
 msgid "Exercise \\theexercise"
-msgstr "Exercitio \\theexercise."
+msgstr "Exercitio \\theexercise"
 
 #: lib/layouts/theorems-without-preamble.inc:311
-#, fuzzy
 msgid "Remark \\theremark"
-msgstr "Observation \\theremark."
+msgstr "Observation \\theremark"
 
 #: lib/layouts/theorems-without-preamble.inc:341
-#, fuzzy
 msgid "Case \\thecase"
-msgstr "Caso \\thecase."
+msgstr "Caso \\thecase"
 
 #: lib/layouts/theorems-without-preamble.inc:358
-#, fuzzy
 msgid "Property \\theproperty"
-msgstr "Prop \\theprop."
+msgstr "Proprietate \\theproperty"
 
 #: lib/layouts/theorems-without-preamble.inc:375
-#, fuzzy
 msgid "Question \\thequestion"
-msgstr "Question \\thequestion."
+msgstr "Question \\thequestion"
 
 #: lib/layouts/theorems-without-preamble.inc:392
-#, fuzzy
 msgid "Note \\thenote"
-msgstr "Nota \\thenote."
+msgstr "Nota \\thenote"
 
 #: lib/layouts/braille.module:2
 msgid "Braille"
@@ -16491,9 +16450,8 @@ msgid "Sweave|S"
 msgstr "Sweave|w"
 
 #: lib/configure.py:583
-#, fuzzy
 msgid "R/S code"
-msgstr "codice"
+msgstr "codice R/S"
 
 #: lib/configure.py:584
 msgid "LilyPond music"
@@ -17073,7 +17031,7 @@ msgid "Uncodable character in file path"
 msgstr "Character intraducibile in percurso del file"
 
 #: src/Buffer.cpp:1417
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The path of your document\n"
 "(%1$s)\n"
@@ -17087,11 +17045,15 @@ msgid ""
 msgstr ""
 "Le percurso del documento\n"
 "(%1$s)\n"
-"contine characteres incognite per le\n"
+"contine glyphos que es incognite per le\n"
 "codifica del documento currentemente usate (a saper %2$s).\n"
-"Isto probabilemente resultara in un exito incomplete.\n"
+"Isto probabilemente resultara in un exito incomplete, a minus que TEXINPUTS "
+"contine le directorio de documento e que tu non usa explicitemente "
+"percursos relative (i.e. percursos initiante con './' o './') in le preambulo "
+"o "
+"in ERT\n"
 "\n"
-"Selige un codifica appropriate per le documento\n"
+"In caso de problemas, selige un codifica appropriate per le documento\n"
 "(per exemplo utf8) o modifica le nomine del percurso."
 
 #: src/Buffer.cpp:1713
@@ -22758,9 +22720,8 @@ msgid "List of Listings"
 msgstr "Lista de listar"
 
 #: src/frontends/qt4/qt_helpers.cpp:563
-#, fuzzy
 msgid "List of Index Entries"
-msgstr "Lista de indices"
+msgstr "Lista de Entratas de indice"
 
 #: src/frontends/qt4/qt_helpers.cpp:565
 msgid "List of Marginal notes"
