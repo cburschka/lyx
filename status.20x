@@ -162,6 +162,8 @@ What's new
 - Fix latex export of multilingual documents containing theorem-like
   environments (bug 7800).
 
+- Escape ampersands in <title> when outputting XHTML.
+
 
 * USER INTERFACE
 

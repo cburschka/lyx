@@ -1657,7 +1657,9 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 
 		docstring const & doctitle = features.htmlTitle();
 		os << "<title>"
-		   << (doctitle.empty() ? from_ascii("LyX Document") : doctitle)
+		   << (doctitle.empty() ? 
+		         from_ascii("LyX Document") : 
+		         html::htmlize(doctitle, XHTMLStream::ESCAPE_ALL))
 		   << "</title>\n";
 
 		os << "\n<!-- Text Class Preamble -->\n"
