@@ -1003,17 +1003,22 @@ void Preamble::parse(Parser & p, string const & forceclass,
 		}
 
 		else if (t.cs() == "color") {
+			string const space =
+				(p.hasOpt() ? p.getArg('[', ']') : string());
 			string argument = p.getArg('{', '}');
 			// check the case that a standard color is used
-			if (is_known(argument, known_basic_colors)) {
+			if (space.empty() && is_known(argument, known_basic_colors)) {
 				h_fontcolor = rgbcolor2code(argument);
 				preamble.registerAutomaticallyLoadedPackage("color");
-			} else if (argument == "document_fontcolor")
+			} else if (space.empty() && argument == "document_fontcolor")
 				preamble.registerAutomaticallyLoadedPackage("color");
 			// check the case that LyX's document_fontcolor is defined
 			// but not used for \color
 			else {
-				h_preamble << t.asInput() << '{' << argument << '}';
+				h_preamble << t.asInput();
+				if (!space.empty())
+					h_preamble << '[' << space << ']';
+				h_preamble << '{' << argument << '}';
 				// the color might already be set because \definecolor
 				// is parsed before this
 				h_fontcolor = "";
