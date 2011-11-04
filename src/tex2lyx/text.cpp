@@ -785,6 +785,15 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 	} else
 		latex_width = p.verbatim_item();
 	translate_len(latex_width, width_value, width_unit);
+	if (inner_type == "shaded") {
+		eat_whitespace(p, os, parent_context, false);
+		p.get_token();
+		p.getArg('{', '}');
+	}
+	// If we already read the inner box we have to push the inner env
+	if (!outer_type.empty() && !inner_type.empty() &&
+	    (inner_flags & FLAG_END))
+		active_environments.push_back(inner_type);
 	// LyX can't handle length variables
 	bool use_ert = contains(width_unit, '\\') || contains(height_unit, '\\');
 	if (!use_ert && !outer_type.empty() && !inner_type.empty()) {
@@ -797,8 +806,9 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		else
 			p.verbatim_item();
 		p.skip_spaces(true);
-		if ((outer_type == "framed" && p.next_token().asInput() != "\\end") ||
-		    (outer_type != "framed" && p.next_token().cat() != catEnd)) {
+		bool const outer_env(outer_type == "framed" || outer_type == "minipage");
+		if ((outer_env && p.next_token().asInput() != "\\end") ||
+		    (!outer_env && p.next_token().cat() != catEnd)) {
 			// something is between the end of the inner box and
 			// the end of the outer box, so we need to use ERT.
 			use_ert = true;
@@ -817,10 +827,12 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			}
 		}
 		if (!inner_type.empty()) {
-			if (inner_flags & FLAG_END)
-				ss << "\\begin{" << inner_type << '}';
-			else
-				ss << '\\' << inner_type;
+			if (inner_type != "shaded") {
+				if (inner_flags & FLAG_END)
+					ss << "\\begin{" << inner_type << '}';
+				else
+					ss << '\\' << inner_type;
+			}
 			if (!position.empty())
 				ss << '[' << position << ']';
 			if (!latex_height.empty())
@@ -831,6 +843,8 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			if (!(inner_flags & FLAG_END))
 				ss << '{';
 		}
+		if (inner_type == "shaded")
+			ss << "\\begin{shaded}";
 		handle_ert(os, ss.str(), parent_context);
 		if (!inner_type.empty()) {
 			parse_text(p, os, inner_flags, outer, parent_context);
@@ -841,6 +855,10 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 				handle_ert(os, "}", parent_context);
 		}
 		if (!outer_type.empty()) {
+			// If we already read the inner box we have to pop
+			// the inner env
+			if (!inner_type.empty() && (inner_flags & FLAG_END))
+				active_environments.pop_back();
 			parse_text(p, os, outer_flags, outer, parent_context);
 			if (outer_flags & FLAG_END)
 				handle_ert(os, "\\end{" + outer_type + '}',
@@ -865,7 +883,8 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			os << "Boxed\n";
 		else if (outer_type == "shadowbox")
 			os << "Shadowbox\n";
-		else if (outer_type == "shaded") {
+		else if ((outer_type == "shaded" && inner_type.empty()) ||
+		         (outer_type == "minipage" && inner_type == "shaded")) {
 			os << "Shaded\n";
 			preamble.registerAutomaticallyLoadedPackage("color");
 		} else if (outer_type == "doublebox")
@@ -914,6 +933,10 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		// Find end of outer box, output contents if inner_type is
 		// empty and output possible comments
 		if (!outer_type.empty()) {
+			// If we already read the inner box we have to pop
+			// the inner env
+			if (!inner_type.empty() && (inner_flags & FLAG_END))
+				active_environments.pop_back();
 			// This does not output anything but comments if
 			// inner_type is not empty (see use_ert)
 			parse_text(p, os, outer_flags, outer, context);
@@ -961,6 +984,16 @@ void parse_outer_box(Parser & p, ostream & os, unsigned flags, bool outer,
 	}
 	string inner;
 	unsigned int inner_flags = 0;
+	p.pushPosition();
+	if (outer_type == "minipage") {
+		p.skip_spaces(true);
+		while (p.hasOpt()) {
+			p.getArg('[', ']');
+			p.skip_spaces(true);
+		}
+		p.getArg('{', '}');
+		p.skip_spaces(true);
+	}
 	if (outer_type == "shaded") {
 		// These boxes never have an inner box
 		;
@@ -973,20 +1006,26 @@ void parse_outer_box(Parser & p, ostream & os, unsigned flags, bool outer,
 		p.get_token();
 		inner = p.getArg('{', '}');
 		p.popPosition();
-		if (inner == "minipage") {
+		if (inner == "minipage" || inner == "shaded")
+			inner_flags = FLAG_END;
+		else
+			inner = "";
+	}
+	p.popPosition();
+	if (inner_flags == FLAG_END) {
+		if (inner != "shaded")
+		{
 			p.get_token();
 			p.getArg('{', '}');
 			eat_whitespace(p, os, parent_context, false);
-			inner_flags = FLAG_END;
-		} else
-			inner = "";
-	}
-	if (inner_flags == FLAG_END) {
-		active_environments.push_back(inner);
+		}
 		parse_box(p, os, flags, FLAG_END, outer, parent_context,
 		          outer_type, special, inner);
-		active_environments.pop_back();
 	} else {
+		if (inner_flags == FLAG_ITEM) {
+			p.get_token();
+			eat_whitespace(p, os, parent_context, false);
+		}
 		parse_box(p, os, flags, inner_flags, outer, parent_context,
 		          outer_type, special, inner);
 	}
@@ -1156,7 +1195,29 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 
 	else if (name == "minipage") {
 		eat_whitespace(p, os, parent_context, false);
-		parse_box(p, os, 0, FLAG_END, outer, parent_context, "", "", name);
+		// Test whether this is an outer box of a shaded box
+		p.pushPosition();
+		// swallow arguments
+		while (p.hasOpt()) {
+			p.getArg('[', ']');
+			p.skip_spaces(true);
+		}
+		p.getArg('{', '}');
+		p.skip_spaces(true);
+		Token t = p.get_token();
+		bool shaded = false;
+		if (t.asInput() == "\\begin") {
+			p.skip_spaces(true);
+			if (p.getArg('{', '}') == "shaded")
+				shaded = true;
+		}
+		p.popPosition();
+		if (shaded)
+			parse_outer_box(p, os, FLAG_END, outer,
+			                parent_context, name, "shaded");
+		else
+			parse_box(p, os, 0, FLAG_END, outer, parent_context,
+			          "", "", name);
 		p.skip_spaces();
 	}
 
