@@ -773,14 +773,20 @@ void handle_hline_below(RowInfo & ri, vector<CellInfo> & ci)
 void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 		    Context & context)
 {
+	string tabularvalignment("middle");
 	string posopts = p.getOpt();
 	if (!posopts.empty()) {
 		// FIXME: Convert this to ERT
 		if (is_long_tabular)
-			cerr << "horizontal longtable";
+			cerr << "horizontal longtable positioning '"
+			     << posopts << "' ignored\n";
+		else if (posopts == "[t]")
+			tabularvalignment = "top";
+		else if (posopts == "[b]")
+			tabularvalignment = "bottom";
 		else
-			cerr << "vertical tabular";
-		cerr << " positioning '" << posopts << "' ignored\n";
+			cerr << "vertical tabular positioning '"
+			     << posopts << "' ignored\n";
 	}
 
 	vector<ColInfo> colinfo;
@@ -1106,8 +1112,10 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 	   << "\" columns=\"" << colinfo.size() << "\">\n";
 	os << "<features"
 	   << write_attribute("rotate", false)
-	   << write_attribute("islongtable", is_long_tabular)
-	   << ">\n";
+	   << write_attribute("islongtable", is_long_tabular);
+	if (!is_long_tabular)
+		os << write_attribute("tabularvalignment", tabularvalignment);
+	os << ">\n";
 
 	//cerr << "// after header\n";
 	for (size_t col = 0; col < colinfo.size(); ++col) {
