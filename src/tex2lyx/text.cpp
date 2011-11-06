@@ -785,8 +785,16 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 	} else
 		latex_width = p.verbatim_item();
 	translate_len(latex_width, width_value, width_unit);
+	bool shadedparbox = false;
 	if (inner_type == "shaded") {
 		eat_whitespace(p, os, parent_context, false);
+		if (outer_type == "parbox") {
+			// Eat '{'
+			if (p.next_token().cat() == catBegin)
+				p.get_token();
+			eat_whitespace(p, os, parent_context, false);
+			shadedparbox = true;
+		}
 		p.get_token();
 		p.getArg('{', '}');
 	}
@@ -884,7 +892,8 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		else if (outer_type == "shadowbox")
 			os << "Shadowbox\n";
 		else if ((outer_type == "shaded" && inner_type.empty()) ||
-		         (outer_type == "minipage" && inner_type == "shaded")) {
+			     (outer_type == "minipage" && inner_type == "shaded") ||
+			     (outer_type == "parbox" && inner_type == "shaded")) {
 			os << "Shaded\n";
 			preamble.registerAutomaticallyLoadedPackage("color");
 		} else if (outer_type == "doublebox")
@@ -897,7 +906,8 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		os << "hor_pos \"" << hor_pos << "\"\n";
 		os << "has_inner_box " << !inner_type.empty() << "\n";
 		os << "inner_pos \"" << inner_pos << "\"\n";
-		os << "use_parbox " << (inner_type == "parbox") << '\n';
+		os << "use_parbox " << (inner_type == "parbox" || shadedparbox)
+			<< '\n';
 		os << "use_makebox " << use_makebox << '\n';
 		os << "width \"" << width_value << width_unit << "\"\n";
 		os << "special \"none\"\n";
@@ -985,7 +995,7 @@ void parse_outer_box(Parser & p, ostream & os, unsigned flags, bool outer,
 	string inner;
 	unsigned int inner_flags = 0;
 	p.pushPosition();
-	if (outer_type == "minipage") {
+	if (outer_type == "minipage" || outer_type == "parbox") {
 		p.skip_spaces(true);
 		while (p.hasOpt()) {
 			p.getArg('[', ']');
@@ -993,6 +1003,12 @@ void parse_outer_box(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 		p.getArg('{', '}');
 		p.skip_spaces(true);
+		if (outer_type == "parbox") {
+			// Eat '{'
+			if (p.next_token().cat() == catBegin)
+				p.get_token();
+			eat_whitespace(p, os, parent_context, false);
+		}
 	}
 	if (outer_type == "shaded") {
 		// These boxes never have an inner box
@@ -1001,7 +1017,7 @@ void parse_outer_box(Parser & p, ostream & os, unsigned flags, bool outer,
 		inner = p.get_token().cs();
 		inner_flags = FLAG_ITEM;
 	} else if (p.next_token().asInput() == "\\begin") {
-		// Is this a minipage?
+		// Is this a minipage or shaded box?
 		p.pushPosition();
 		p.get_token();
 		inner = p.getArg('{', '}');
@@ -3422,8 +3438,35 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 		}
 
-		else if (t.cs() == "parbox")
-			parse_box(p, os, 0, FLAG_ITEM, outer, context, "", "", t.cs());
+		else if (t.cs() == "parbox") {
+			// Test whether this is an outer box of a shaded box
+			p.pushPosition();
+			// swallow arguments
+			while (p.hasOpt()) {
+				p.getArg('[', ']');
+				p.skip_spaces(true);
+			}
+			p.getArg('{', '}');
+			p.skip_spaces(true);
+			// eat the '{'
+			if (p.next_token().cat() == catBegin)
+				p.get_token();
+			p.skip_spaces(true);
+			Token to = p.get_token();
+			bool shaded = false;
+			if (to.asInput() == "\\begin") {
+				p.skip_spaces(true);
+				if (p.getArg('{', '}') == "shaded")
+					shaded = true;
+			}
+			p.popPosition();
+			if (shaded) {
+				parse_outer_box(p, os, FLAG_ITEM, outer,
+				                context, "parbox", "shaded");
+			} else
+				parse_box(p, os, 0, FLAG_ITEM, outer, context,
+				          "", "", t.cs());
+		}
 
 		else if (t.cs() == "ovalbox" || t.cs() == "Ovalbox" ||
 		         t.cs() == "shadowbox" || t.cs() == "doublebox")
