@@ -741,16 +741,29 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 	string height_unit = "in";
 	string height_special = "totalheight";
 	string latex_height;
+	string width_value;
+	string width_unit;
+	string latex_width;
+	string width_special = "none";
 	if (!inner_type.empty() && p.hasOpt()) {
-		position = p.getArg('[', ']');
+		if (inner_type != "makebox")
+			position = p.getArg('[', ']');
+		else {
+			latex_width = p.getArg('[', ']');
+			translate_box_len(latex_width, width_value, width_unit, width_special);
+			position = "t";
+		}
 		if (position != "t" && position != "c" && position != "b") {
 			cerr << "invalid position " << position << " for "
 			     << inner_type << endl;
 			position = "c";
 		}
 		if (p.hasOpt()) {
-			latex_height = p.getArg('[', ']');
-			translate_box_len(latex_height, height_value, height_unit, height_special);
+			if (inner_type != "makebox") {
+				latex_height = p.getArg('[', ']');
+				translate_box_len(latex_height, height_value, height_unit, height_special);
+			} else
+				hor_pos = p.getArg('[', ']');
 
 			if (p.hasOpt()) {
 				inner_pos = p.getArg('[', ']');
@@ -764,12 +777,9 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			}
 		}
 	}
-	string width_value;
-	string width_unit;
-	string latex_width;
 	if (inner_type.empty()) {
-		if (special.empty())
-			latex_width = "\\columnwidth";
+		if (special.empty() && outer_type != "framebox")
+			latex_width = "1\\columnwidth";
 		else {
 			Parser p2(special);
 			latex_width = p2.getArg('[', ']');
@@ -784,9 +794,16 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 				}
 			}
 		}
-	} else
+	} else if (inner_type != "makebox")
 		latex_width = p.verbatim_item();
+	// if e.g. only \ovalbox{content} was used, set the width to 1\columnwidth
+	// as this is LyX's standard for such cases (except for makebox)
+	if (latex_width.empty() && inner_type != "makebox"
+		&& outer_type != "framebox")
+		latex_width = "1\\columnwidth";
+
 	translate_len(latex_width, width_value, width_unit);
+
 	bool shadedparbox = false;
 	if (inner_type == "shaded") {
 		eat_whitespace(p, os, parent_context, false);
@@ -824,6 +841,16 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			use_ert = true;
 		}
 		p.popPosition();
+	}
+	// if only \makebox{content} was used we can its width to 1\width
+	// because this identic and also identic to \mbox
+	// this doesn't work for \framebox{content}, thus we have to use ERT for this
+	if (latex_width.empty() && inner_type == "makebox") {
+		width_value = "1";
+		width_unit = "in";
+		width_special = "width";
+	} else if (latex_width.empty() && outer_type == "framebox") {
+		use_ert = true;
 	}
 	if (use_ert) {
 		ostringstream ss;
@@ -873,6 +900,9 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			if (outer_flags & FLAG_END)
 				handle_ert(os, "\\end{" + outer_type + '}',
 				           parent_context);
+			else if (inner_type.empty() && outer_type == "framebox")
+				// in this case it is already closed later
+				;
 			else
 				handle_ert(os, "}", parent_context);
 		}
@@ -883,8 +913,6 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			position = "c";
 		if (inner_pos.empty())
 			inner_pos = position;
-		// FIXME: Support makebox
-		bool const use_makebox = false;
 		parent_context.check_layout(os);
 		begin_inset(os, "Box ");
 		if (outer_type == "framed")
@@ -909,10 +937,10 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		os << "has_inner_box " << !inner_type.empty() << "\n";
 		os << "inner_pos \"" << inner_pos << "\"\n";
 		os << "use_parbox " << (inner_type == "parbox" || shadedparbox)
-			<< '\n';
-		os << "use_makebox " << use_makebox << '\n';
+		   << '\n';
+		os << "use_makebox " << (inner_type == "makebox") << '\n';
 		os << "width \"" << width_value << width_unit << "\"\n";
-		os << "special \"none\"\n";
+		os << "special \"" << width_special << "\"\n";
 		os << "height \"" << height_value << height_unit << "\"\n";
 		os << "height_special \"" << height_special << "\"\n";
 		os << "status open\n\n";
@@ -921,9 +949,8 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		// InsetBox::forcePlainLayout() is hard coded and does not
 		// use the inset layout. Apart from that do we call parse_text
 		// up to two times, but need only one check_end_layout.
-
 		bool const forcePlainLayout =
-			(!inner_type.empty() || use_makebox) &&
+			(!inner_type.empty() || inner_type == "makebox") &&
 			outer_type != "shaded" && outer_type != "framed";
 		Context context(true, parent_context.textclass);
 		if (forcePlainLayout)
@@ -3528,13 +3555,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		//\makebox{} will be parsed by parse_box when bug 2956 is fixed
 		else if (t.cs() == "makebox") {
 			string arg = t.asInput();
-			if (p.next_token().character() == '(')
+			if (p.next_token().character() == '(') {
 				//the syntax is: \makebox(x,y)[position]{content}
 				arg += p.getFullParentheseArg();
-			else
-				//the syntax is: \makebox[width][position]{content}
 				arg += p.getFullOpt();
-			handle_ert(os, arg + p.getFullOpt(), context);
+				handle_ert(os, arg + p.get_token().asInput(), context);
+			} else
+				//the syntax is: \makebox[width][position]{content}
+				parse_box(p, os, 0, FLAG_ITEM, outer, context,
+				          "", "", t.cs());
 		}
 
 		else if (t.cs() == "smallskip" ||
