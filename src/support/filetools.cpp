@@ -791,25 +791,26 @@ docstring const makeDisplayPath(string const & path, unsigned int threshold)
 		return from_utf8(os::external_path(str));
 
 	string const prefix = ".../";
-	string temp;
+	docstring dstr = from_utf8(str);
+	docstring temp;
 
-	while (str.length() > threshold)
-		str = split(str, temp, '/');
+	while (dstr.length() > threshold)
+		dstr = split(dstr, temp, '/');
 
 	// Did we shorten everything away?
-	if (str.empty()) {
+	if (dstr.empty()) {
 		// Yes, filename itself is too long.
 		// Pick the start and the end of the filename.
-		str = onlyFileName(path);
-		string const head = str.substr(0, threshold / 2 - 3);
+		dstr = from_utf8(onlyFileName(path));
+		docstring const head = dstr.substr(0, threshold / 2 - 3);
 
-		string::size_type len = str.length();
-		string const tail =
-			str.substr(len - threshold / 2 - 2, len - 1);
-		str = head + "..." + tail;
+		docstring::size_type len = dstr.length();
+		docstring const tail =
+			dstr.substr(len - threshold / 2 - 2, len - 1);
+		dstr = head + from_ascii("...") + tail;
 	}
 
-	return from_utf8(os::external_path(prefix + str));
+	return from_utf8(os::external_path(prefix + to_utf8(dstr)));
 }
 
 
