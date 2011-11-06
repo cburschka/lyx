@@ -1035,7 +1035,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 
 		else if (t.cs() == "color") {
 			string const space =
-				(p.hasOpt() ? p.getArg('[', ']') : string());
+				(p.hasOpt() ? p.getOpt() : string());
 			string argument = p.getArg('{', '}');
 			// check the case that a standard color is used
 			if (space.empty() && is_known(argument, known_basic_colors)) {
@@ -1048,7 +1048,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			else {
 				h_preamble << t.asInput();
 				if (!space.empty())
-					h_preamble << '[' << space << ']';
+					h_preamble << space;
 				h_preamble << '{' << argument << '}';
 				// the color might already be set because \definecolor
 				// is parsed before this
