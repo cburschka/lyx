@@ -19,6 +19,8 @@
 \usepackage{framed}
 \usepackage{calc}
 \usepackage{fancybox}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
 
 \setlength{\parskip}{3mm}
 \setlength{\parindent}{0sp}
@@ -35,6 +37,8 @@
 \setlength{\fboxsep}{3mm}
 
 \definecolor{darkgreen}{cmyk}{0.5, 0, 1, 0.5}
+
+\color[rgb]{0,0,0}
 
 \usepackage{ifpdf} % part of the hyperref bundle
 \ifpdf % if pdflatex is used
@@ -223,9 +227,11 @@ Wavy underbar: \uwave{test}
 
 Strike out: \sout{test}
 
+Crossed out: \xout{test}
+
 Noun: \noun{test}
 
-Underbar, ephasized, stikreout: \emph{\uline{\sout{test}}}
+Underbar, emphasized, strikeout: \emph{\uline{\sout{test}}}
 
 
 \section{Paragraph spacing}

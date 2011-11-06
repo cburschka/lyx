@@ -25,9 +25,12 @@
  \addtolength{\leftmargin}{\labelsep}
  \renewcommand{\makelabel}[1]{##1\hfil}}}
 {\end{list}}
+\newcommand{\strong}[1]{\textbf{#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \newenvironment{foo}{==[}{]==}
+
+\usepackage{fixltx2e} % this should cause the fixltx2e module to be loaded
 
 \date{}
 
@@ -77,6 +80,8 @@ an unknown environment
 \section{A section}
 
 \section[Hello!]{A section with optional argument}
+
+This causes the \strong{logikalmkup} module to be loaded.
 
 \begin{quote}
 An environment

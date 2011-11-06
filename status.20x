@@ -156,6 +156,8 @@ What's new
 
 - Fix tex2lyx handling of inputenc encoding settings (bug 7863).
 
+- Fix (La)TeX import of shaded boxes (bug 7843).
+
 - Store the autosave files of unnamed buffers in the correct directory
   and make sure they are not left behind after saving (bug 7793).
 
