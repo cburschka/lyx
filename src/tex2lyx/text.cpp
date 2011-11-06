@@ -798,6 +798,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		latex_width = p.verbatim_item();
 	// if e.g. only \ovalbox{content} was used, set the width to 1\columnwidth
 	// as this is LyX's standard for such cases (except for makebox)
+	// \framebox is more special and handled below
 	if (latex_width.empty() && inner_type != "makebox"
 		&& outer_type != "framebox")
 		latex_width = "1\\columnwidth";
@@ -842,7 +843,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		}
 		p.popPosition();
 	}
-	// if only \makebox{content} was used we can its width to 1\width
+	// if only \makebox{content} was used we can set its width to 1\width
 	// because this identic and also identic to \mbox
 	// this doesn't work for \framebox{content}, thus we have to use ERT for this
 	if (latex_width.empty() && inner_type == "makebox") {
