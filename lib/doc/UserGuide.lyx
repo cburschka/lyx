@@ -45614,8 +45614,7 @@ The option
 \family sans
 Single instance
 \family default
- is only active on Unix systems.
- If it is checked, documents loaded via a LyXServer pipe
+ is only active if a LyXServer pipe
 \begin_inset Foot
 status collapsed
 
@@ -45636,8 +45635,10 @@ reference "sec:Paths"
 
 \end_inset
 
- will be opened in the same running instance of LyX.
- Otherwise a new LyX instance is created for each file in the pipe.
+ is specified.
+ If it is checked, LyX documents will be opened in the same running instance
+ of LyX.
+ Otherwise a new LyX instance is created for each file.
 \end_layout
 
 \begin_layout Standard
@@ -46556,16 +46557,24 @@ status collapsed
 
 \end_inset
 
-XServer-Pipe Here you can enter the name of a UNIX-pipe.
+XServer
+\begin_inset space ~
+\end_inset
+
+pipe Here you can enter the name of a so-called UNIX-pipe.
  This pipe is used to send data from external programs to LyX.
 \begin_inset Newline newline
 \end_inset
 
 
 \series bold
-Example
+Example:
 \series default
-: You add a BibTeX-database test.bib to your document.
+ You add a BibTeX-database 
+\emph on
+test.bib
+\emph default
+ to your document.
  You can edit this file with the program 
 \family typewriter
 JabRef
@@ -46600,21 +46609,40 @@ JabRef
 \begin_inset Newline newline
 \end_inset
 
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- This feature doesn't work on Windows systems.
-\end_layout
-
+The pipe is also used for the 
+\family sans
+Single instance
+\family default
+ feature, see sec.
+\begin_inset space \thinspace{}
 \end_inset
 
 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Backup documents"
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+To use the LyXServer-Pipe on Windows, you must use this pipe name:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+
+\backslash
+.
+\backslash
+pipe
+\backslash
+lyxpipe
 \end_layout
 
 \begin_layout Description
