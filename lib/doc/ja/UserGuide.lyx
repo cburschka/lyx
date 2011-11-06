@@ -50790,8 +50790,7 @@ The option
 \family sans
 Single instance
 \family default
- is only active on Unix systems.
- If it is checked, documents loaded via a LyXServer pipe
+ is only active if a LyXServer pipe
 \begin_inset Foot
 status collapsed
 
@@ -50818,8 +50817,10 @@ reference "sec:パス"
 
 \end_inset
 
- will be opened in the same running instance of LyX.
- Otherwise a new LyX instance is created for each file in the pipe.
+ is specified.
+ If it is checked, LyX documents will be opened in the same running instance
+ of LyX.
+ Otherwise a new LyX instance is created for each file.
 \end_layout
 
 \begin_layout Standard
@@ -51611,9 +51612,13 @@ Xサーバーパイプ ここには、Unixパイプ名を入れることがで�
 
 \series bold
 \lang english
-Example
+Example:
 \series default
-: You add a BibTeX-database test.bib to your document.
+ You add a BibTeX-database 
+\emph on
+test.bib
+\emph default
+ to your document.
  You can edit this file with the program 
 \family typewriter
 JabRef
@@ -51651,20 +51656,45 @@ JabRef
 \end_inset
 
 
-\begin_inset Note Greyedout
-status open
+\lang english
+The pipe is also used for the 
+\family sans
+Single instance
+\family default
+ feature, see sec.
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_layout Plain Layout
 
-\series bold
-【註】
-\series default
-この機能は、Windowsシステムでは機能しません。
-\end_layout
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:文書のバックアップ"
 
 \end_inset
 
 
+\lang english
+.
+\begin_inset Newline newline
+\end_inset
+
+To use the LyXServer-Pipe on Windows, you must use this pipe name:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+
+\backslash
+.
+\backslash
+pipe
+\backslash
+lyxpipe
 \end_layout
 
 \begin_layout Description
