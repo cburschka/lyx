@@ -1009,7 +1009,7 @@ void parse_outer_box(Parser & p, ostream & os, unsigned flags, bool outer,
 			// Eat '{'
 			if (p.next_token().cat() == catBegin)
 				p.get_token();
-			eat_whitespace(p, os, parent_context, false);
+			p.skip_spaces(true);
 		}
 	}
 	if (outer_type == "shaded") {
