@@ -18,6 +18,7 @@
 
 
 namespace lyx {
+namespace support {
 
 time_t current_time();
 
@@ -27,6 +28,15 @@ time_t current_time();
  */
 std::string const formatted_time(time_t t, std::string const & fmt);
 
+/**
+ * Inverse of ctime().
+ * Since ctime() outputs the local time, the caller needs to ensure that the
+ * time zone and daylight saving time are the same as when \p t was created
+ * by ctime().
+ */
+time_t from_ctime(std::string t);
+
+} // namespace support
 } // namespace lyx
 
 #endif // LYXTIME_H

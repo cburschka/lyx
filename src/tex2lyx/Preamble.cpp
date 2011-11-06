@@ -165,6 +165,11 @@ const char * const known_basic_color_codes[] = {"#0000ff", "#000000", "#00ffff",
 const char * const known_if_3arg_commands[] = {"@ifundefined", "IfFileExists",
 0};
 
+/// packages that work only in xetex
+const char * const known_xetex_packages[] = {"arabxetex", "fixlatvian",
+"fontbook", "fontwrap", "mathspec", "philokalia", "polyglossia", "unisugar",
+"xeCJK", "xecolor", "xecyr", "xeindex", "xepersian", "xunicode", 0};
+
 // codes used to remove packages that are loaded automatically by LyX.
 // Syntax: package_beg_sep<name>package_mid_sep<package loading code>package_end_sep
 const char package_beg_sep = '\001';
@@ -310,6 +315,28 @@ void Preamble::suppressDate(bool suppress)
 		h_suppress_date = "true";
 	else
 		h_suppress_date = "false";
+}
+
+
+void Preamble::registerAuthor(std::string const & name)
+{
+	Author author(from_utf8(name), empty_docstring());
+	author.setUsed(true);
+	authors_.record(author);
+	h_tracking_changes = "true";
+	h_output_changes = "true";
+}
+
+
+Author const & Preamble::getAuthor(std::string const & name) const
+{
+	Author author(from_utf8(name), empty_docstring());
+	for (AuthorList::Authors::const_iterator it = authors_.begin();
+	     it != authors_.end(); it++)
+		if (*it == author)
+			return *it;
+	static Author const dummy;
+	return dummy;
 }
 
 
@@ -523,6 +550,9 @@ void Preamble::handle_package(Parser &p, string const & name,
 	vector<string> options = split_options(opts);
 	add_package(name, options);
 	string scale;
+
+	if (is_known(name, known_xetex_packages))
+		xetex = true;
 
 	// roman fonts
 	if (is_known(name, known_roman_fonts)) {
@@ -910,6 +940,7 @@ bool Preamble::writeLyXHeader(ostream & os)
 	   << "\\html_math_output " << h_html_math_output << "\n"
 	   << "\\html_css_as_file " << h_html_css_as_file << "\n"
 	   << "\\html_be_strict " << h_html_be_strict << "\n"
+	   << authors_
 	   << "\\end_header\n\n"
 	   << "\\begin_body\n";
 	// clear preamble for subdocuments

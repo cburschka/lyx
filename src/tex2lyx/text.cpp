@@ -19,6 +19,7 @@
 #include "Context.h"
 #include "Encoding.h"
 #include "FloatList.h"
+#include "LaTeXPackages.h"
 #include "Layout.h"
 #include "Length.h"
 #include "Preamble.h"
@@ -28,6 +29,7 @@
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
+#include "support/lyxtime.h"
 
 #include <algorithm>
 #include <iostream>
@@ -2701,6 +2703,50 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "\n\\" << t.cs() << " default\n";
 			if (t.cs() == "uuline" || t.cs() == "uwave")
 				preamble.registerAutomaticallyLoadedPackage("ulem");
+		}
+
+		else if (t.cs() == "lyxadded" || t.cs() == "lyxdeleted") {
+			context.check_layout(os);
+			string name = p.getArg('{', '}');
+			string localtime = p.getArg('{', '}');
+			preamble.registerAuthor(name);
+			Author const & author = preamble.getAuthor(name);
+			// from_ctime() will fail if LyX decides to output the
+			// time in the text language. It might also use a wrong
+			// time zone (if the original LyX document was exported
+			// with a different time zone).
+			time_t ptime = from_ctime(localtime);
+			if (ptime == static_cast<time_t>(-1)) {
+				cerr << "Warning: Could not parse time `" << localtime
+				     << "´ for change tracking, using current time instead.\n";
+				ptime = current_time();
+			}
+			if (t.cs() == "lyxadded")
+				os << "\n\\change_inserted ";
+			else
+				os << "\n\\change_deleted ";
+			os << author.bufferId() << ' ' << ptime << '\n';
+			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
+			bool dvipost    = LaTeXPackages::isAvailable("dvipost");
+			bool xcolorulem = LaTeXPackages::isAvailable("ulem") &&
+			                  LaTeXPackages::isAvailable("xcolor");
+			// No need to test for luatex, since luatex comes in
+			// two flavours (dvi and pdf), like latex, and those
+			// are detected by pdflatex.
+			if (pdflatex || xetex) {
+				if (xcolorulem) {
+					preamble.registerAutomaticallyLoadedPackage("ulem");
+					preamble.registerAutomaticallyLoadedPackage("xcolor");
+					preamble.registerAutomaticallyLoadedPackage("pdfcolmk");
+				}
+			} else {
+				if (dvipost) {
+					preamble.registerAutomaticallyLoadedPackage("dvipost");
+				} else if (xcolorulem) {
+					preamble.registerAutomaticallyLoadedPackage("ulem");
+					preamble.registerAutomaticallyLoadedPackage("xcolor");
+				}
+			}
 		}
 
 		else if (t.cs() == "phantom" || t.cs() == "hphantom" ||

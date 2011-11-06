@@ -41,7 +41,7 @@
 #include "Intl.h"
 #include "KeyMap.h"
 #include "Language.h"
-#include "LaTeXFeatures.h"
+#include "LaTeXPackages.h"
 #include "Lexer.h"
 #include "LyX.h"
 #include "LyXAction.h"
@@ -1211,7 +1211,7 @@ void GuiApplication::reconfigure(string const & option)
 		current_view_->message(_("Reloading configuration..."));
 	lyxrc.read(libFileSearch(QString(), "lyxrc.defaults"), false);
 	// Re-read packages.lst
-	LaTeXFeatures::getAvailable();
+	LaTeXPackages::getAvailable();
 
 	if (ret)
 		Alert::information(_("System reconfiguration failed"),

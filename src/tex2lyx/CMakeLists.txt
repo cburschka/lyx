@@ -12,8 +12,8 @@ project(${_tex2lyx})
 set(LINKED_sources ${TOP_SRC_DIR}/src/lengthcommon.cpp)
 set(LINKED_headers)
 
-foreach(_src insets/InsetLayout Color Counters
-	Encoding FloatList Floating FontInfo
+foreach(_src insets/InsetLayout Author Color Counters
+	Encoding FloatList Floating FontInfo LaTeXPackages
 	Layout LayoutFile LayoutModuleList Lexer ModuleList TextClass
 	Spacing version)
 	list(APPEND LINKED_sources ${TOP_SRC_DIR}/src/${_src}.cpp)

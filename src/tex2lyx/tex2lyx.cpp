@@ -332,6 +332,7 @@ bool checkModule(string const & name, bool command)
 
 bool noweb_mode = false;
 bool pdflatex = false;
+bool xetex = false;
 bool roundtrip = false;
 
 

@@ -34,6 +34,7 @@ namespace lyx {
 namespace frontend {
 
 using support::bformat;
+using support::formatted_time;
 
 GuiChanges::GuiChanges(GuiView & lv)
 	: GuiDialog(lv, "changes", qt_("Merge Changes"))

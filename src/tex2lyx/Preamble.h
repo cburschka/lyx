@@ -11,7 +11,7 @@
 
 // {[(
 
-#include <config.h>
+#include "Author.h"
 
 #include <iosfwd>
 #include <sstream>
@@ -50,6 +50,10 @@ public:
 	void addModule(std::string const & module);
 	///
 	void suppressDate(bool suppress);
+	/// Register an author named \p name in the author list
+	void registerAuthor(std::string const & name);
+	/// Get author named \p name (must be registered first)
+	Author const & getAuthor(std::string const & name) const;
 
 
 	/// Parses the LaTeX preamble into internal data
@@ -152,6 +156,8 @@ private:
 	                    std::string const & opts, bool in_lyx_preamble);
 	///
 	void handle_if(Parser & p, bool in_lyx_preamble);
+
+	AuthorList authors_;
 };
 
 

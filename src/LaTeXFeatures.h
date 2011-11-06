@@ -86,8 +86,6 @@ public:
 	void require(std::string const & name);
 	/// Add a set of feature names requirements
 	void require(std::set<std::string> const & names);
-	/// Which of the required packages are installed?
-	static void getAvailable();
 	/// Is the (required) package available?
 	static bool isAvailable(std::string const & name);
 	/// Has the package been required?
@@ -151,10 +149,6 @@ private:
 	typedef std::list<std::string> SnippetList;
 	///
 	SnippetList preamble_snippets_;
-	/// The available (required) packages
-	typedef std::set<std::string> Packages;
-	///
-	static Packages packages_;
 	///
 	typedef std::set<Language const *> LanguageList;
 	/// used languages (only those that are supported by babel)

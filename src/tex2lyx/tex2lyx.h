@@ -158,6 +158,8 @@ extern FullEnvironmentMap possible_textclass_environments;
 extern bool noweb_mode;
 /// Did we recognize any pdflatex-only construct?
 extern bool pdflatex;
+/// Did we recognize any xetex-only construct?
+extern bool xetex;
 /// LyX format that is created by tex2lyx
 extern int const LYX_FORMAT;
 

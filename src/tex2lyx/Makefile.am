@@ -29,6 +29,7 @@ TEST_FILES = \
 	test/test-structure.tex
 
 LINKED_FILES = \
+	../Author.cpp \
 	../Color.cpp \
 	../Counters.cpp \
 	../Encoding.cpp \
@@ -36,6 +37,7 @@ LINKED_FILES = \
 	../Floating.cpp \
 	../FontInfo.cpp \
 	../insets/InsetLayout.cpp \
+	../LaTeXPackages.cpp \
 	../Layout.cpp \
 	../LayoutFile.cpp \
 	../LayoutModuleList.cpp \
