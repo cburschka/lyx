@@ -162,17 +162,51 @@ def revert_math_spaces(document):
       i = i + 1
 
 
+def convert_japanese_encodings(document):
+    " Rename the japanese encodings to names understood by platex "
+    jap_enc_dict = {
+        "EUC-JP-pLaTeX": "euc",
+        "JIS-pLaTeX":    "jis",
+        "SJIS-pLaTeX":   "sjis"
+    }
+    i = find_token(document.header, "\\inputencoding" , 0)
+    if i == -1:
+        return
+    val = get_value(document.header, "\\inputencoding", i)
+    if val in jap_enc_dict.keys():
+        document.header[i] = "\\inputencoding %s" % jap_enc_dict[val]
+
+
+def revert_japanese_encodings(document):
+    " Revert the japanese encodings name changes "
+    jap_enc_dict = {
+        "euc":  "EUC-JP-pLaTeX",
+        "jis":  "JIS-pLaTeX",
+        "sjis": "SJIS-pLaTeX"
+    }
+    i = find_token(document.header, "\\inputencoding" , 0)
+    if i == -1:
+        return
+    val = get_value(document.header, "\\inputencoding", i)
+    if val in jap_enc_dict.keys():
+        document.header[i] = "\\inputencoding %s" % jap_enc_dict[val]
+
+
 ##
 # Conversion hub
 #
 
 supported_versions = ["2.1.0","2.1"]
-convert = [[414, []],
+convert = [
+           [414, []],
            [415, [convert_undertilde]],
-           [416, []]
+           [416, []],
+           [417, [convert_japanese_encodings]],
           ]
 
-revert =  [[415, [revert_negative_space,revert_math_spaces]],
+revert =  [
+           [416, [revert_japanese_encodings]],
+           [415, [revert_negative_space,revert_math_spaces]],
            [414, [revert_undertilde]],
            [413, [revert_visible_space]]
           ]
