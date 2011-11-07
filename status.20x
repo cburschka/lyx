@@ -70,6 +70,8 @@ What's new
 
   * Subfloats (\subfloat).
 
+  * Frameless boxes (\makebox). (\mbox is not yet supported by LyX.)
+
   * Command \date{} in the preamble to suppress the date output.
 
 
@@ -161,6 +163,8 @@ What's new
 - Fix LaTeX import of theorem environment with optional argument (bug 6834).
 
 - Fix LaTeX import of tabular environment with optional argument.
+
+- Fix tex2lyx handling of framed boxes without inner box.
 
 - Store the autosave files of unnamed buffers in the correct directory
   and make sure they are not left behind after saving (bug 7793).
