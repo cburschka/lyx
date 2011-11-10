@@ -11,6 +11,9 @@
 
 // {[(
 
+#ifndef LYX_PREAMBLE_H
+#define LYX_PREAMBLE_H
+
 #include "Author.h"
 
 #include <iosfwd>
@@ -167,3 +170,5 @@ extern Preamble preamble;
 
 
 } // namespace lyx
+
+#endif
