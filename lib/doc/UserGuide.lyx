@@ -384,7 +384,7 @@ name "sec:Basic-LyX-Setup"
 \end_layout
 
 \begin_layout Standard
-Almost all features of LyX that can be configured via the menu 
+Almost all features of LyX can be configured via the menu 
 \family sans
 Tools\SpecialChar \menuseparator
 Preferences
@@ -30900,7 +30900,7 @@ Selected document parts
 
 \begin_layout Standard
 Besides math there are other cases where you might like to see a preview,
- fox example things that LyX cannot render like rotated parts or things
+ for example things that LyX cannot render like rotated parts or things
  which are not yet supported by LyX.
  To do this, insert a preview inset via the menu 
 \family sans
@@ -38366,15 +38366,7 @@ NoWeb text file with code in the format of the literate programming language
 \begin_layout Description
 OpenDocument OpenDocument-formatted file, to be opened with 
 \family sans
-OpenOffice
-\family default
-, 
-\family sans
-KOffice
-\family default
-, 
-\family sans
-Abiword
+LibreOffice, OpenOffice, KOffice, Abiword
 \family default
 , etc.
  (The OpenDocument-converter is a third-party product and may not work in
@@ -46654,7 +46646,7 @@ Thesaurus
 \begin_inset space ~
 \end_inset
 
-directory Directory where the thesaurus dictionaries are located.
+dictionary Directory where the thesaurus dictionaries are located.
  You only need to specify it if the thesaurus does otherwise not work or
  if you want to use custom/alternative dictionaries.
 \end_layout
@@ -46664,7 +46656,7 @@ Hunspell
 \begin_inset space ~
 \end_inset
 
-directory Directory where the dictionaries of the spell checker program
+dictionary Directory where the dictionaries of the spell checker program
  
 \family typewriter
 Hunspell

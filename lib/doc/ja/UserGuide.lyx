@@ -44474,6 +44474,10 @@ NoWeb text file with code in the format of the literate programming language
 \begin_layout Description
 OpenDocument OpenDocument形式のテキストファイル。
 \family sans
+LibreOffice
+\family default
+・
+\family sans
 OpenOffice
 \family default
 ・
@@ -51708,7 +51712,7 @@ Thesaurus
 \begin_inset space ~
 \end_inset
 
-directory Directory where the thesaurus dictionaries are located.
+dictionary Directory where the thesaurus dictionaries are located.
  You only need to specify it if the thesaurus does otherwise not work or
  if you want to use custom/alternative dictionaries.
 \end_layout
@@ -51720,7 +51724,7 @@ Hunspell
 \begin_inset space ~
 \end_inset
 
-directory Directory where the dictionaries of the spell checker program
+dictionary Directory where the dictionaries of the spell checker program
  
 \family typewriter
 Hunspell
