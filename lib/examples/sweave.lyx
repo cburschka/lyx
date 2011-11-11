@@ -3,18 +3,30 @@
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+%% maxwidth is the original width if it's less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\def\maxwidth{%
+\ifdim\Gin@nat@width>\linewidth
+\linewidth
+\else
+\Gin@nat@width
+\fi
+}
+\end_preamble
+\options nogin
 \use_default_options true
 \begin_modules
 sweave
 \end_modules
 \maintain_unincluded_children false
 \language english
-\language_package default
-\inputencoding auto
+\language_package auto
+\inputencoding default
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
+\font_roman palatino
+\font_sans lmss
+\font_typewriter lmtt
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
@@ -31,7 +43,7 @@ sweave
 \spacing single
 \use_hyperref false
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_amsmath 1
 \use_esint 1
 \use_mhchem 1
@@ -46,10 +58,14 @@ sweave
 \shortcut idx
 \color #008000
 \end_index
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 3cm
+\bottommargin 3cm
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation skip
-\defskip medskip
+\paragraph_separation indent
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 1
@@ -63,25 +79,15 @@ sweave
 
 \begin_body
 
-\begin_layout Title
-A Test File
-\end_layout
-
-\begin_layout Author
-Friedrich Leisch
-\begin_inset Foot
-status collapsed
+\begin_layout Standard
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
-LyX 
-\begin_inset Quotes eld
-\end_inset
 
-port
-\begin_inset Quotes erd
-\end_inset
-
- by Gregor Gorjanc
+%
+\backslash
+SweaveOpts{prefix=TRUE,prefix.string=sweave-prefix,keep.source=FALSE}
 \end_layout
 
 \end_inset
@@ -90,93 +96,521 @@ port
 \end_layout
 
 \begin_layout Standard
-A simple example that will run in any S engine: The integers from 1 to 10
- are
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%% 
+\backslash
+maxwidth was defined in the preamble; see document settings
 \end_layout
 
-\begin_layout Chunk
-<<print=TRUE>>=
+\begin_layout Plain Layout
+
+
+\backslash
+setkeys{Gin}{width=
+\backslash
+maxwidth}
 \end_layout
 
-\begin_layout Chunk
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Using Sweave with LyX
+\end_layout
+
+\begin_layout Author
+Yihui Xie
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Department of Statistics, Iowa State University.
+ Email: 
+\begin_inset CommandInset href
+LatexCommand href
+name "xie@yihui.name"
+target "xie@yihui.name"
+type "mailto:"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Gregor Gorjanc 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Jean-Marc Lasgouttes
+\end_layout
+
+\begin_layout Standard
+Sweave is a tool in the R language (
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.r-project.org
+\end_layout
+
+\end_inset
+
+) for dynamic report generation using the ideas of literate programming.
+ R code can be mixed into a LaTeX document, and will be executed in R when
+ the document is compiled; the results are written into the TeX output.
+\end_layout
+
+\begin_layout Standard
+Since LyX 2.0, Sweave can be used out of the box with any document class
+ using the 
+\family sans
+Sweave
+\family default
+ module, which means we no longer need to modify the 
+\family sans
+preferences
+\family default
+ file manually or add special layouts such as 
+\family sans
+literate-article.layout
+\family default
+ and 
+\family sans
+literate-book.layout
+\family default
+ like we did before.
+ We can add the 
+\family sans
+Sweave
+\family default
+ module to a LyX document from 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Modules
+\family default
+.
+ In this manual, we demonstrate some common features of Sweave and explain
+ how the module works.
+ A PDF version of this manual can be found at 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://github.com/downloads/yihui/lyx/sweave.pdf
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+System Requirements
+\end_layout
+
+\begin_layout Standard
+The 
+\family sans
+Sweave
+\family default
+ module depends on the executable 
+\family typewriter
+Rscript
+\family default
+, so it has to be in the 
+\family sans
+PATH
+\family default
+ variable of the system.
+ It is usually not a problem for Linux and Mac OS users, but may be confusing
+ to Windows users; if you do not understand what is 
+\family sans
+PATH
+\family default
+ under Windows, you may use the R script 
+\family sans
+add-R-path-win.R
+\family default
+ in the repository 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://github.com/yihui/lyx
+\end_layout
+
+\end_inset
+
+ to change it automatically (we recommend you to learn 
+\family sans
+PATH
+\family default
+ anyway).
+\end_layout
+
+\begin_layout Standard
+If 
+\family typewriter
+Rscript
+\family default
+ is not present in 
+\family sans
+PATH
+\family default
+, the 
+\family sans
+Sweave
+\family default
+ module will be unavailable.
+ It is recommended to use the latest version of R, since Sweave is still
+ being updated.
+ Another dependency is introduced by the LaTeX style file 
+\family sans
+Sweave.sty
+\family default
+ which is shipped with R under this path (it is not on CTAN):
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<sweave-sty,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+file.path(R.home('share'), 'texmf', 'tex', 'latex')
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+MikTeX users may add the texmf directory to the list of root directories
+ in MikTeX through MikTeX settings.
+ Further note that 
+\family sans
+Sweave.sty
+\family default
+ depends on the 
+\series bold
+fancyvrb
+\series default
+ package and 
+\emph on
+may
+\emph default
+ depend on 
+\series bold
+ae
+\series default
+.
+ If LyX cannot find 
+\family sans
+Sweave.sty
+\family default
+, it will directly copy from R, so the Sweave module works even if you do
+ not know where is this style file.
+\end_layout
+
+\begin_layout Section
+Sweave Examples
+\end_layout
+
+\begin_layout Standard
+Before we write an Sweave document, we can set some Sweave options; the
+ command is 
+\family typewriter
+
+\backslash
+SweaveOpts{}
+\family default
+ in Sweave and it can be inserted in a LyX document by 
+\family sans
+Insert\SpecialChar \menuseparator
+Custom Insets\SpecialChar \menuseparator
+Sweave Options
+\family default
+, or just use TeX code to write it (
+\family sans
+Insert\SpecialChar \menuseparator
+TeX Code
+\family default
+).
+ For example, we can set a global option 
+\family typewriter
+echo=FALSE
+\family default
+ in the beginning of a document to suppress all R code (by default, both
+ R code and its output will show up in the LaTeX document).
+ 
+\end_layout
+
+\begin_layout Standard
+To write R code in LyX, you can first switch to the 
+\family typewriter
+Chunk
+\family default
+ environment in the layout styles list (droplist in the top-left corner
+ in the toolbar), or you can simply open a TeX code environment and write
+ Sweave code chunks in it.
+ The latter approach is recommended since it is more stable.
+\end_layout
+
+\begin_layout Standard
+Some R options can be useful to the Sweave output as well, e.g.
+ 
+\family typewriter
+width
+\family default
+ and 
+\family typewriter
+useFancyQuotes
+\family default
+.
+ The former option can adjust the width of the output, and the latter can
+ avoid a common problem with quotes.
+ Users are encouraged to read the Sweave manual in R for more details.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<setup, keep.source=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+## the option 'digits' can set the (approximate) number of digits
+\end_layout
+
+\begin_layout Plain Layout
+
+options(width = 70, useFancyQuotes = FALSE, digits = 4)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+<<sweave-manual, eval=FALSE, keep.source=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+## view the Sweave vignette (requires R >= 2.13.0)
+\end_layout
+
+\begin_layout Plain Layout
+
+vignette("Sweave", package = "utils")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A simple example that will run in any S engine: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<print-integers, keep.source=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+## the integers from 1 to 10 are
+\end_layout
+
+\begin_layout Plain Layout
+
 1:10 
 \end_layout
 
-\begin_layout Chunk
-<<results=hide>>=
+\begin_layout Plain Layout
+
+@
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
+<<hide-results, results=hide>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+## intentionally hide the output by setting results=hide
+\end_layout
+
+\begin_layout Plain Layout
+
 print(1:20)
 \end_layout
 
-\begin_layout Chunk
-@ % the above is just to ensure that 2 code chunks can follow each other
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 We can also emulate a simple calculator: 
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Standard
+\begin_inset ERT
+status open
 
+\begin_layout Plain Layout
+
+<<calculator>>=
 \end_layout
 
-\begin_layout Chunk
-<<echo=TRUE,print=TRUE>>=
-\end_layout
+\begin_layout Plain Layout
 
-\begin_layout Chunk
-1 + 1 
-\end_layout
-
-\begin_layout Chunk
 1 + pi
 \end_layout
 
-\begin_layout Chunk
-sin(pi/2)
+\begin_layout Plain Layout
+
+sin(pi/6)
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 @
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-Now we look at Gaussian data:
+Now we look at some Gaussian data:
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Standard
+\begin_inset ERT
+status open
 
+\begin_layout Plain Layout
+
+<<rnorm>>=
 \end_layout
 
-\begin_layout Chunk
-<<>>=
+\begin_layout Plain Layout
+
+set.seed(123)  # for reproducibility
 \end_layout
 
-\begin_layout Chunk
-library(stats)
-\end_layout
+\begin_layout Plain Layout
 
-\begin_layout Chunk
 x <- rnorm(20)
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 print(x)
 \end_layout
 
-\begin_layout Chunk
-print(t1 <- t.test(x))
+\begin_layout Plain Layout
+
+t1 <- t.test(x)
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 @
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-Note that we can easily integrate some numbers into standard text: The third
- element of vector 
+Note that we can easily integrate some numbers into standard text; this
+ is done with the command 
+\family typewriter
+
+\backslash
+Sexpr{}
+\family default
+, and the corresponding LyX menu is 
+\family sans
+Insert\SpecialChar \menuseparator
+Custom Insets\SpecialChar \menuseparator
+S/R expression
+\family default
+, or alternatively just use TeX code.
+ For example, the third element of the vector 
 \family typewriter
 x
 \family default
@@ -191,7 +625,12 @@ x[3]
 
 \end_inset
 
-, the 
+ (i.e.
+ 
+\family typewriter
+x[3]
+\family default
+) and the 
 \begin_inset Formula $p$
 \end_inset
 
@@ -206,7 +645,13 @@ format.pval(t1$p.value)
 
 \end_inset
 
-
+.
+ You can round these numbers using functions like 
+\emph on
+round()
+\emph default
+ in R.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -219,87 +664,44 @@ format.pval(t1$p.value)
 \bar no
 \noun off
 \color none
-Now we look at a summary of the famous iris dataset, and we want to see
- the commands in the code chunks:
+Now we look at a summary of the 
+\family typewriter
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+iris
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ dataset:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Sweave Options
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-echo=true,keep.source=true
+<<iris-summary>>=
 \end_layout
 
-\end_inset
+\begin_layout Plain Layout
 
-
+summary(iris[,-5])
 \end_layout
 
-\begin_layout Chunk
-<<engine=R>>=
-\end_layout
-
-\begin_layout Chunk
-# A comment
-\end_layout
-
-\begin_layout Chunk
-data(iris)
-\end_layout
-
-\begin_layout Chunk
-summary(iris)
-\end_layout
-
-\begin_layout Chunk
-@ % def
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement tbph
-wide false
-sideways false
-status collapsed
-
-\begin_layout Chunk
-
-\end_layout
-
-\begin_layout Chunk
-
-\end_layout
-
-\begin_layout Chunk
-\align center
-
-<<fig=TRUE>>=
-\begin_inset Newline newline
-\end_inset
-
-library(graphics)
-\begin_inset Newline newline
-\end_inset
-
-pairs(iris)
-\begin_inset Newline newline
-\end_inset
+\begin_layout Plain Layout
 
 @
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Pairs plot of the iris data.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -308,32 +710,23 @@ Pairs plot of the iris data.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-placement tbph
+\begin_inset Float table
 wide false
 sideways false
-status collapsed
-
-\begin_layout Chunk
-\align center
-
-<<fig=true>>=
-\begin_inset Newline newline
-\end_inset
-
-boxplot(Sepal.Length~Species,data=iris)
-\begin_inset Newline newline
-\end_inset
-
-@
-\end_layout
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Boxplot of sepal length grouped by species.
-\end_layout
+Quantiles of the first four variables in the 
+\family typewriter
+iris
+\family default
+ data.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:xtable-demo"
 
 \end_inset
 
@@ -345,16 +738,113 @@ Boxplot of sepal length grouped by species.
 
 \end_layout
 
-\begin_layout Chunk
-<<engine=S4>>=
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
 \end_layout
 
-\begin_layout Chunk
-function.that.comes.only.with.Splus(x)
+\begin_layout Plain Layout
+
+<<xtable-demo,results=tex,echo=FALSE>>=
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
+if (require('xtable')) {
+\end_layout
+
+\begin_layout Plain Layout
+
+print(xtable(sapply(iris[,-5], quantile)), floating=FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+} else cat('the xtable package is not available! please install.packages("xtable"
+)')
+\end_layout
+
+\begin_layout Plain Layout
+
 @
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Usually people do not like such 
+\begin_inset Quotes eld
+\end_inset
+
+raw
+\begin_inset Quotes erd
+\end_inset
+
+ output, and we can polish these messy numbers with the 
+\series bold
+xtable
+\series default
+ package.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:xtable-demo"
+
+\end_inset
+
+ is an example demonstrating how to use the 
+\series bold
+xtable
+\series default
+ package with Sweave; note the chunk option 
+\family typewriter
+results=tex
+\family default
+ makes sure that the R output is written out as raw LaTeX code instead of
+ being wrapped in a special environment (
+\family typewriter
+Soutput
+\family default
+).
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:iris-pairs"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:iris-boxplots"
+
+\end_inset
+
+ are two simple examples of producing graphics output with Sweave.
 \end_layout
 
 \begin_layout Standard
@@ -363,26 +853,56 @@ wide false
 sideways false
 status open
 
-\begin_layout Chunk
-\align center
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
 
-<<fig=true>>=
-\begin_inset Newline newline
-\end_inset
+\begin_layout Plain Layout
 
-boxplot(Sepal.Length~Species,data=iris)
-\begin_inset Newline newline
-\end_inset
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+<<iris-pairs,fig=TRUE,width=4.5,height=4.5>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+pairs(iris, col = iris$Species)
+\end_layout
+
+\begin_layout Plain Layout
 
 @
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Boxplot of sepal length grouped by species
-\end_layout
+Scatter plot matrix of the 
+\family typewriter
+iris
+\family default
+ data.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:iris-pairs"
 
 \end_inset
 
@@ -392,6 +912,633 @@ Boxplot of sepal length grouped by species
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+<<iris-boxplots,fig=TRUE,width=7,height=2,keep.source=F>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mar=c(4,5,.1,.3), las=1)
+\end_layout
+
+\begin_layout Plain Layout
+
+boxplot(Sepal.Length~Species,data=iris,horizontal=TRUE,xlab='Sepal.Length')
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Boxplots of sepal length grouped by species.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:iris-boxplots"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can also export all the R code in an Sweave document as a single R script
+ (
+\family sans
+File\SpecialChar \menuseparator
+Export\SpecialChar \menuseparator
+R/S code
+\family default
+), which is done via 
+\family typewriter
+R CMD Stangle
+\family default
+.
+\end_layout
+
+\begin_layout Section
+The 
+\family sans
+Sweave
+\family default
+ Module
+\end_layout
+
+\begin_layout Standard
+The 
+\family sans
+Sweave
+\family default
+ module declares that a LyX document contains literate programming components
+ with R, so that LyX will handle such documents according to the specific
+ converters (see the Customization manual).
+ The 
+\family sans
+Sweave
+\family default
+ module uses the 
+\family sans
+sweave
+\family default
+ converter, which essentially consists of an R script 
+\family sans
+lyxsweave.R
+\family default
+ under the 
+\family sans
+scripts
+\family default
+ directory of LyX.
+ This script takes an 
+\family sans
+Rnw
+\family default
+ document from LyX and call Sweave to process it to a TeX document, then
+ LyX takes care of the rest of work.
+\end_layout
+
+\begin_layout Standard
+The converter from the 
+\family sans
+sweave
+\family default
+ format to LaTeX is a call to R via the command line as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+Rscript --no-save --no-restore $$s/scripts/lyxsweave.R $$p$$i $$p$$o $$e
+ $$r
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The LyX library directory 
+\family typewriter
+$$s
+\family default
+ can be found from the menu 
+\family sans
+Help\SpecialChar \menuseparator
+About LyX
+\family default
+.
+ All the rest of options passed to R are explained in the R script, and
+ the LyX Customization manual also has detailed explanations about 
+\family typewriter
+$$i
+\family default
+, 
+\family typewriter
+$$o
+\family default
+, 
+\family typewriter
+$$e
+\family default
+ and 
+\family typewriter
+$$r
+\family default
+.
+ General users do not need to know clearly what they mean, but here we need
+ to explain a few issues in the R code:
+\end_layout
+
+\begin_layout Enumerate
+the encoding string of the LyX document is passed to R as an command line
+ option; possible values are 
+\family typewriter
+ISO-8859-15
+\family default
+ and 
+\family typewriter
+UTF-8
+\family default
+, etc.
+ The encoding is used for R to read the 
+\family sans
+Rnw
+\family default
+ document correctly.
+\end_layout
+
+\begin_layout Enumerate
+the R code chunks in the Sweave document are executed under the directory
+ of the LyX document (if you are not sure, put 
+\family typewriter
+getwd()
+\family default
+ in a code chunk to see what is the current working directory).
+ In this case, you can put data files under the same directory and use relative
+ paths in R to guarantee reproducibility, i.e.
+ we do not need to write hard-coded paths which may not exist in other systems.
+\end_layout
+
+\begin_layout Enumerate
+if LaTeX cannot find 
+\family sans
+Sweave.sty
+\family default
+, this R script will copy it to the temporary directory automatically where
+ the LaTeX compilation takes place.
+\end_layout
+
+\begin_layout Enumerate
+Sweave will use the filename of the Rnw file as the prefix string for the
+ graphics output by default; one known issue (
+\begin_inset CommandInset href
+LatexCommand href
+name "#7551"
+target "http://www.lyx.org/trac/ticket/7551"
+
+\end_inset
+
+) is that if the filename (without extension) contains dots, LaTeX can fail
+ to deal with such files in 
+\family typewriter
+
+\backslash
+includegraphics{}
+\family default
+.
+ Therefore, we have set the default value of the prefix to be the filename
+ with all the dots being replaced by 
+\begin_inset Quotes eld
+\end_inset
+
+-
+\begin_inset Quotes erd
+\end_inset
+
+.
+ We can also solve this problem in Sweave directly: set the Sweave option
+ 
+\family typewriter
+prefix.string
+\family default
+ to be a character string without dots, and this option will override the
+ default value.
+\end_layout
+
+\begin_layout Standard
+We have pre-specified an option 
+\family typewriter
+noae
+\family default
+ for the Sweave package.
+ This option stops Sweave from loading these two packages:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+RequirePackage[T1]{fontenc}  
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+RequirePackage{ae}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+LyX can deal with the font encoding by default, so there is no need to ask
+ Sweave to do this (furthermore, this may bring clashes of package options);
+ besides, the users can load the 
+\series bold
+ae
+\series default
+ package by themselves in the preamble if needed.
+\end_layout
+
+\begin_layout Section
+Trouble Shooting
+\end_layout
+
+\begin_layout Standard
+Since LyX 2.0, we can see the detailed information during compilation via
+ 
+\family sans
+View\SpecialChar \menuseparator
+View Messages
+\family default
+.
+ This is extremely helpful for trouble shooting -- the process of R will
+ be shown in the message panel, and we will be able to know which chunk
+ goes wrong in cases of errors.
+ For example, when you compile this document, you can see messages like
+ below:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+17:58:47.868: Processing code chunks with options ...
+\end_layout
+
+\begin_layout Plain Layout
+
+17:58:47.885:  1 : echo keep.source term verbatim (label=setup)
+\end_layout
+
+\begin_layout Plain Layout
+
+17:58:47.889:  2 : echo keep.source (label=sweave-manual)
+\end_layout
+
+\begin_layout Plain Layout
+
+17:58:47.908:  3 : echo keep.source term verbatim (label=print-integers)
+\end_layout
+
+\begin_layout Plain Layout
+
+....
+\end_layout
+
+\begin_layout Plain Layout
+
+17:58:47.941: Loading required package: xtable
+\end_layout
+
+\begin_layout Plain Layout
+
+17:58:47.976:  9 : echo term verbatim pdf (label=iris-pairs)
+\end_layout
+
+\begin_layout Plain Layout
+
+....
+\end_layout
+
+\begin_layout Plain Layout
+
+17:58:48.116: You can now run (pdf)latex on 'sweave.tex'
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The string after 
+\family typewriter
+label=
+\family default
+ is the chunk label.
+ If any chunk causes an error in R, you will see the error message here
+ immediately.
+\end_layout
+
+\begin_layout Section
+Resources
+\end_layout
+
+\begin_layout Standard
+The homepage of Sweave is at 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.stat.uni-muenchen.de/~leisch/Sweave/
+\end_layout
+
+\end_inset
+
+.
+ The CRAN task view on 
+\begin_inset Quotes eld
+\end_inset
+
+Reproducible Research
+\begin_inset Quotes erd
+\end_inset
+
+ has a list of Sweave-related packages which can be potentially useful;
+ see 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://cran.r-project.org/web/views/ReproducibleResearch.html
+\end_layout
+
+\end_inset
+
+.
+ Questions about LyX and Sweave can be posted to the LyX mailing list (
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/MailingLists
+\end_layout
+
+\end_inset
+
+).
+ More LyX examples are provided at 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://github.com/yihui/lyx
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+FAQ
+\end_layout
+
+\begin_layout Subsection
+How to use Sweave with beamer?
+\end_layout
+
+\begin_layout Standard
+You will end up with LaTeX errors if you use Sweave in beamer slides in
+ LyX; the reason is the beamer frame that contains verbatim R code and output
+ must have the 
+\family typewriter
+fragile
+\family default
+ option.
+ However, currently there is no straightforward way to do this.
+ One way is to write raw TeX code, and the other is to use the 
+\family sans
+beamer-fragile.module
+\family default
+ discussed in 
+\begin_inset CommandInset href
+LatexCommand href
+name "#7273"
+target "http://www.lyx.org/trac/ticket/7273"
+
+\end_inset
+
+ (put this file under the 
+\family sans
+layouts
+\family default
+ directory of LyX user directory and reconfigure LyX).
+ After including this module in your document, you should be able to use
+ 
+\family sans
+Insert\SpecialChar \menuseparator
+Custom Insets\SpecialChar \menuseparator
+FragileFrame
+\family default
+, which is essentially 
+\family typewriter
+
+\backslash
+begin{frame}[fragile]
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+Can I define my own R script to compile the Rnw document?
+\end_layout
+
+\begin_layout Standard
+Yes, of course.
+ First you need to understand how the R script 
+\family typewriter
+$$s
+\family sans
+/scripts/lyxsweave.R
+\family default
+ works, which was introduced previously, and we recommend you to read the
+ R source code as well (on how R takes the paths and uses 
+\emph on
+Sweave()
+\emph default
+ to handle the Rnw document).
+ Then you put your customized 
+\family sans
+lyxsweave.R
+\family default
+ under the 
+\family sans
+scripts
+\family default
+ directory of your 
+\emph on
+user directory
+\emph default
+ (again, see 
+\family sans
+Help\SpecialChar \menuseparator
+About LyX
+\family default
+).
+ Note LyX will check the 
+\emph on
+user directory
+\emph default
+ before going to its own 
+\emph on
+library directory
+\emph default
+; if an R script 
+\family sans
+lyxsweave.R
+\family default
+ is found in the user directory, it will be used.
+ It is not recommended to hack the script under the LyX library directory
+ directly, since updating LyX will override you modified script (the user
+ directory will not be affected).
+\end_layout
+
+\begin_layout Standard
+Beside the support for the official Sweave in R, we have a few customized
+ R scripts to unofficially support other R packages under 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://github.com/yihui/lyx
+\end_layout
+
+\end_inset
+
+, e.g., the 
+\series bold
+pgfSweave
+\series default
+ and the 
+\series bold
+knitr
+\series default
+ package.
+ The former supports cache and tikz graphics in R, and the latter is an
+ alternative literate programming engine to Sweave which has even more features.
 \end_layout
 
 \end_body
