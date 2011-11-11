@@ -4,7 +4,7 @@
 # Joacim Persson <sp2joap@ida.his.se> 1997, 1998.
 # Jim Rotmalm <jim.rotmalm@gmail.com>, 2010, 2011.
 #
-# Information 2011-08-21:
+# Information 2011-11-11:
 #   Bad Qt shortcuts: 122
 #   Inconsistent translations: 6
 #   Bad menu shortcuts: 136
@@ -95,10 +95,12 @@
 #     .. face            -> teckensnitt?
 #     .. family          -> teckensnittsfamilj (teckenfamilj?)
 #     .. size            -> teckensnittsstorlek, grad? (teckenstorlek?)
+#   foreword             -> förord
 #   frame(d)             -> ram (inramad)
 #   function             -> funktion
 #   graphics             -> grafik
 #   grid                 -> rutnät
+#   heading              -> rubrik, överskrift?
 #   include              -> inkludera
 #   indent/ation         -> indrag, indentera/indentering
 #   index                -> index
@@ -139,6 +141,7 @@
 #   paste                -> klistra (-in)
 #   pipe                 -> sluss/a?
 #   popup                -> popup, meddelanderuta?
+#   preface              -> företal
 #   preferences          -> inställningar
 #   preview              -> förhandsgranska/ning, förhandsvisa/ning
 #   print                -> utskrift, skriv ut
@@ -207,16 +210,16 @@
 # Jim Rotmalm <jim.rotmalm@gmail.com>, 2010, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 2.0.1\n"
+"Project-Id-Version: LyX 2.0.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-10-29 17:47-0400\n"
-"PO-Revision-Date: 2011-08-21 21:12+0100\n"
+"POT-Creation-Date: 2011-11-11 11:11+0100\n"
+"PO-Revision-Date: 2011-11-11 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
-"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: sv\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
@@ -246,7 +249,7 @@ msgstr "Upphovsrätt"
 #: src/frontends/qt4/ui/ShowFileUi.ui:55 src/frontends/qt4/ui/SymbolsUi.ui:66
 #: src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:138 src/frontends/qt4/ui/WrapUi.ui:173
-#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/ui_RefUi.h:339
+#: src/frontends/qt4/GuiParagraph.cpp:161
 msgid "&Close"
 msgstr "&Stäng"
 
@@ -259,7 +262,7 @@ msgid "The label as it appears in the document"
 msgstr "Etiketten som den visas i dokumentet"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:36
-#: src/frontends/qt4/ui/RefUi.ui:190 src/frontends/qt4/ui_RefUi.h:318
+#: src/frontends/qt4/ui/RefUi.ui:190
 msgid "&Label:"
 msgstr "&Etikett:"
 
@@ -325,18 +328,16 @@ msgstr "Bibliografigenerering"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:139
-#: src/frontends/qt4/ui_IndicesUi.h:193
 msgid "&Processor:"
 msgstr "&Behandlare:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
-#: src/frontends/qt4/ui_IndicesUi.h:195
 msgid "Select a processor"
 msgstr "Välj en behandlare"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:772
-#: src/frontends/qt4/GuiPrefs.cpp:867 src/frontends/qt4/ui_IndicesUi.h:197
+#: src/frontends/qt4/GuiPrefs.cpp:867
 msgid "&Options:"
 msgstr "&Alternativ:"
 
@@ -374,7 +375,7 @@ msgstr "Ange BibTeX-databasens namn"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:110
 #: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:350 src/frontends/qt4/ui_IndicesUi.h:212
+#: src/CutAndPaste.cpp:350
 msgid "&Add"
 msgstr "Lä&gg till"
 
@@ -446,7 +447,7 @@ msgstr "Lägg till bibliografi till innehålls&förteckning"
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
-#: src/frontends/qt4/ui/WrapUi.ui:150 src/frontends/qt4/ui_RefUi.h:337
+#: src/frontends/qt4/ui/WrapUi.ui:150
 msgid "&OK"
 msgstr "&Ok"
 
@@ -643,7 +644,7 @@ msgstr "Välj din gren"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25
 msgid "&New:[[branch]]"
-msgstr ""
+msgstr "&Ny:[[gren]]"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:35
 msgid ""
@@ -686,7 +687,7 @@ msgid "Define or change background color"
 msgstr "Definiera eller ändra bakgrundsfärg"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:123
-#: src/frontends/qt4/ui/IndicesUi.ui:185 src/frontends/qt4/ui_IndicesUi.h:227
+#: src/frontends/qt4/ui/IndicesUi.ui:185
 msgid "Alter Co&lor..."
 msgstr "Ändra &färg..."
 
@@ -695,8 +696,8 @@ msgid "Remove the selected branch"
 msgstr "Ta bort vald gren"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3714
-#: src/Buffer.cpp:3727 src/frontends/qt4/ui_IndicesUi.h:219
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3716
+#: src/Buffer.cpp:3729
 msgid "&Remove"
 msgstr "Ta bo&rt"
 
@@ -730,7 +731,7 @@ msgstr "Lägg till a&lla"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1060
-#: src/Buffer.cpp:2303 src/Buffer.cpp:3689 src/Buffer.cpp:3752
+#: src/Buffer.cpp:2305 src/Buffer.cpp:3691 src/Buffer.cpp:3754
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:179
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1829
@@ -911,7 +912,7 @@ msgstr "Typsnittsserie"
 #: src/frontends/qt4/ui/CharacterUi.ui:145
 #: src/frontends/qt4/ui/ListingsUi.ui:339 lib/layouts/europecv.layout:119
 #: lib/layouts/moderncv.layout:116 src/frontends/qt4/GuiDocument.cpp:1312
-#: src/frontends/qt4/GuiPrefs.cpp:2232 src/frontends/qt4/Menus.cpp:852
+#: src/frontends/qt4/GuiPrefs.cpp:2232 src/frontends/qt4/Menus.cpp:846
 msgid "Language"
 msgstr "Språk"
 
@@ -983,7 +984,7 @@ msgstr "T&illämpa ändringar omedelbart"
 #: src/frontends/qt4/ui/RefUi.ui:330 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:1905
-#: src/frontends/qt4/GuiDocument.cpp:3161 src/frontends/qt4/ui_RefUi.h:338
+#: src/frontends/qt4/GuiDocument.cpp:3161
 msgid "&Apply"
 msgstr "Tillämp&a"
 
@@ -1989,7 +1990,6 @@ msgstr "Namn förknippat med URL"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:42
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:257
-#: src/frontends/qt4/ui_RefUi.h:332
 msgid "&Name:"
 msgstr "&Namn:"
 
@@ -2103,7 +2103,6 @@ msgid "&Edit"
 msgstr "R&edigera"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59 src/frontends/qt4/ui/IndicesUi.ui:143
-#: src/frontends/qt4/ui_IndicesUi.h:213
 msgid "A&vailable Indexes:"
 msgstr "Till&gängliga index:"
 
@@ -2111,7 +2110,7 @@ msgstr "Till&gängliga index:"
 msgid "Select the index this entry should be listed in."
 msgstr "Välj index som denna post ska listas i."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:190
+#: src/frontends/qt4/ui/IndicesUi.ui:19
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr ""
@@ -2120,55 +2119,53 @@ msgstr ""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:202
-#: src/frontends/qt4/ui_IndicesUi.h:192
 msgid "Index generation"
 msgstr "Indexgenerering"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:199
+#: src/frontends/qt4/ui/IndicesUi.ui:64
 msgid "Define program options of the selected processor."
 msgstr "Definiera programalternativ för den valda behandlaren."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:202
+#: src/frontends/qt4/ui/IndicesUi.ui:89
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr "Markera om du behöver flera index (t.ex. ett namnindex)"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:204
+#: src/frontends/qt4/ui/IndicesUi.ui:92
 msgid "&Use multiple indexes"
 msgstr "An&vänd flera index"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:114
 msgid "&New:[[index]]"
-msgstr ""
+msgstr "&Ny:[[index]]"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
+#: src/frontends/qt4/ui/IndicesUi.ui:124
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
 "Ange namnet på önskat index (t.ex. \"Namnindex\") och slå \"Lägg till\""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:210
+#: src/frontends/qt4/ui/IndicesUi.ui:131
 msgid "Add a new index to the list"
 msgstr "Lägg till ett nytt index till listan"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149 src/frontends/qt4/ui/RefUi.ui:60
-#: src/frontends/qt4/ui_IndicesUi.h:215 src/frontends/qt4/ui_RefUi.h:295
 msgid "1"
 msgstr "1"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:217
+#: src/frontends/qt4/ui/IndicesUi.ui:162
 msgid "Remove the selected index"
 msgstr "Ta bort valt index"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:221
+#: src/frontends/qt4/ui/IndicesUi.ui:172
 msgid "Rename the selected index"
 msgstr "Byt namn på valt index"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:223
+#: src/frontends/qt4/ui/IndicesUi.ui:175
 msgid "R&ename..."
 msgstr "B&yt namn..."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:225
+#: src/frontends/qt4/ui/IndicesUi.ui:182
 msgid "Define or change button color"
 msgstr "Definiera eller ändra knappfärg"
 
@@ -2307,10 +2304,10 @@ msgstr "Välj vilket språkpaket LyX ska använda"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:142
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:78
-#, fuzzy
 msgid ""
 "Enter the command to load the language package (default: \\usepackage{babel})"
-msgstr "Ange kommandot för att ladda språkpaketet (standard: babel)"
+msgstr ""
+"Ange kommandot för att ladda språkpaketet (standard: \\usepackage{babel})"
 
 #: src/frontends/qt4/ui/LineUi.ui:22
 msgid "Of&fset:"
@@ -2541,7 +2538,7 @@ msgid "Update the display"
 msgstr "Uppdatera visning"
 
 #: src/frontends/qt4/ui/LogUi.ui:77 src/frontends/qt4/ui/RefUi.ui:294
-#: src/frontends/qt4/ui/ViewSourceUi.ui:74 src/frontends/qt4/ui_RefUi.h:336
+#: src/frontends/qt4/ui/ViewSourceUi.ui:74
 msgid "&Update"
 msgstr "&Uppdatera"
 
@@ -3054,7 +3051,7 @@ msgstr "Pappersformat"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:19
-#: src/frontends/qt4/ui/RefUi.ui:355 src/frontends/qt4/ui_RefUi.h:340
+#: src/frontends/qt4/ui/RefUi.ui:355
 msgid "&Format:"
 msgstr "&Format:"
 
@@ -4533,32 +4530,31 @@ msgstr "Visa statusradens meddelanden?"
 msgid "&Statusbar messages"
 msgstr "&Statusradens meddelanden"
 
-#: src/frontends/qt4/ui/RefUi.ui:22 src/frontends/qt4/ui_RefUi.h:292
+#: src/frontends/qt4/ui/RefUi.ui:22
 msgid "La&bels in:"
 msgstr "Etiketter i:"
 
-#: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:293
-#, fuzzy
+#: src/frontends/qt4/ui/RefUi.ui:49
 msgid "&References"
-msgstr "Referenser"
+msgstr "&Referenser"
 
-#: src/frontends/qt4/ui/RefUi.ui:76 src/frontends/qt4/ui_RefUi.h:296
+#: src/frontends/qt4/ui/RefUi.ui:76
 msgid "Fil&ter:"
 msgstr "Fil&ter:"
 
-#: src/frontends/qt4/ui/RefUi.ui:89 src/frontends/qt4/ui_RefUi.h:298
+#: src/frontends/qt4/ui/RefUi.ui:89
 msgid "Enter string to filter the label list"
 msgstr "Ange sträng för att filtrera etikettlistan"
 
-#: src/frontends/qt4/ui/RefUi.ui:99 src/frontends/qt4/ui_RefUi.h:302
+#: src/frontends/qt4/ui/RefUi.ui:99
 msgid "Filter case-sensitively"
 msgstr "Filtrera skiftlägeskänsligt"
 
-#: src/frontends/qt4/ui/RefUi.ui:102 src/frontends/qt4/ui_RefUi.h:304
+#: src/frontends/qt4/ui/RefUi.ui:102
 msgid "Case-sensiti&ve"
 msgstr "Skiftlägeskänslig"
 
-#: src/frontends/qt4/ui/RefUi.ui:127 src/frontends/qt4/ui_RefUi.h:306
+#: src/frontends/qt4/ui/RefUi.ui:127
 msgid ""
 "Sort labels in alphabetical order (case-insensitively unless the Case-"
 "sensitive option is checked)"
@@ -4566,64 +4562,63 @@ msgstr ""
 "Sortera etiketter i alfabetisk följd (skiftlägesokänsligt om inte "
 "alternativet skiftlägeskänslig är markerad)"
 
-#: src/frontends/qt4/ui/RefUi.ui:130 src/frontends/qt4/ui_RefUi.h:308
+#: src/frontends/qt4/ui/RefUi.ui:130
 msgid "&Sort"
 msgstr "&Sortera"
 
-#: src/frontends/qt4/ui/RefUi.ui:140 src/frontends/qt4/ui_RefUi.h:310
+#: src/frontends/qt4/ui/RefUi.ui:140
 msgid "Sort labels case-sensitively in alphabetical order"
 msgstr "Sortera etiketter skiftlägeskänsligt i alfabetisk ordning"
 
-#: src/frontends/qt4/ui/RefUi.ui:143 src/frontends/qt4/ui_RefUi.h:312
+#: src/frontends/qt4/ui/RefUi.ui:143
 msgid "Cas&e-sensitive"
 msgstr "Skiftläg&eskänslig"
 
-#: src/frontends/qt4/ui/RefUi.ui:150 src/frontends/qt4/ui_RefUi.h:314
+#: src/frontends/qt4/ui/RefUi.ui:150
 msgid "Group labels by prefix (e.g. \"sec:\")"
 msgstr "Gruppera etiketter efter prefix (t.ex. \"sek:\")"
 
-#: src/frontends/qt4/ui/RefUi.ui:153 src/frontends/qt4/ui_RefUi.h:316
+#: src/frontends/qt4/ui/RefUi.ui:153
 msgid "Grou&p"
 msgstr "Grup&p"
 
 #: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/GuiRef.cpp:314
-#: src/frontends/qt4/ui_RefUi.h:317
 msgid "&Go to Label"
 msgstr "&Gå till etikett"
 
-#: src/frontends/qt4/ui/RefUi.ui:212 src/frontends/qt4/ui_RefUi.h:330
+#: src/frontends/qt4/ui/RefUi.ui:212
 msgid "Cross-reference as it appears in output"
 msgstr "Korsreferens som den visas i utmatning"
 
-#: src/frontends/qt4/ui/RefUi.ui:216 src/frontends/qt4/ui_RefUi.h:321
+#: src/frontends/qt4/ui/RefUi.ui:216
 msgid "<reference>"
 msgstr "<referens>"
 
-#: src/frontends/qt4/ui/RefUi.ui:221 src/frontends/qt4/ui_RefUi.h:322
+#: src/frontends/qt4/ui/RefUi.ui:221
 msgid "(<reference>)"
 msgstr "(<referens>)"
 
-#: src/frontends/qt4/ui/RefUi.ui:226 src/frontends/qt4/ui_RefUi.h:323
+#: src/frontends/qt4/ui/RefUi.ui:226
 msgid "<page>"
 msgstr "<sida>"
 
-#: src/frontends/qt4/ui/RefUi.ui:231 src/frontends/qt4/ui_RefUi.h:324
+#: src/frontends/qt4/ui/RefUi.ui:231
 msgid "on page <page>"
 msgstr "på sida <sida>"
 
-#: src/frontends/qt4/ui/RefUi.ui:236 src/frontends/qt4/ui_RefUi.h:325
+#: src/frontends/qt4/ui/RefUi.ui:236
 msgid "<reference> on page <page>"
 msgstr "<referens> på sida <sida>"
 
-#: src/frontends/qt4/ui/RefUi.ui:241 src/frontends/qt4/ui_RefUi.h:326
+#: src/frontends/qt4/ui/RefUi.ui:241
 msgid "Formatted reference"
 msgstr "Formaterad referens"
 
-#: src/frontends/qt4/ui/RefUi.ui:246 src/frontends/qt4/ui_RefUi.h:327
+#: src/frontends/qt4/ui/RefUi.ui:246
 msgid "Textual reference"
 msgstr "Textuell referens"
 
-#: src/frontends/qt4/ui/RefUi.ui:291 src/frontends/qt4/ui_RefUi.h:334
+#: src/frontends/qt4/ui/RefUi.ui:291
 msgid "Update the label list"
 msgstr "Uppdatera etikettlistan"
 
@@ -8654,7 +8649,7 @@ msgstr "Reviderad"
 
 #: lib/layouts/ijmpc.layout:218
 msgid "Classification Codes"
-msgstr "Klassifikationskoder"
+msgstr "Klassificeringskoder"
 
 #: lib/layouts/ijmpc.layout:225 lib/layouts/ijmpd.layout:228
 #: lib/layouts/aguplus.inc:217
@@ -9380,7 +9375,7 @@ msgstr "Ämnesklass"
 
 #: lib/layouts/siamltex.layout:313
 msgid "AMS subject classifications:"
-msgstr "AMS ämnesklassifikationer:"
+msgstr "AMS ämnesklassificeringar:"
 
 #: lib/layouts/sigplanconf.layout:67
 msgid "Conference"
@@ -9475,23 +9470,20 @@ msgid "Subclass"
 msgstr "Underklass"
 
 #: lib/layouts/svglobal3.layout:75
-#, fuzzy
 msgid "Mathematics Subject Classification"
-msgstr "2000 Mathematics Subject Classification:"
+msgstr "Mathematics Subject Classification"
 
 #: lib/layouts/svglobal3.layout:78
 msgid "CRSC"
-msgstr ""
+msgstr "CRSC"
 
 #: lib/layouts/svglobal3.layout:81
-#, fuzzy
 msgid "CR Subject Classification"
-msgstr "AMS ämnesklassifikationer:"
+msgstr "CR Subject Classification"
 
 #: lib/layouts/svglobal3.layout:86
-#, fuzzy
 msgid "Solution \\thesolution"
-msgstr "Lösning \\thesolution."
+msgstr "Lösning \\thesolution"
 
 #: lib/layouts/svmono.layout:88 lib/layouts/svcommon.inc:647
 msgid "Proof(QED)"
@@ -9506,23 +9498,20 @@ msgid "Title*"
 msgstr "Titel*"
 
 #: lib/layouts/svmult.layout:36
-#, fuzzy
 msgid "Title*: "
-msgstr "Titel*"
+msgstr "Titel*: "
 
 #: lib/layouts/svmult.layout:65 lib/layouts/svmult.layout:150
-#, fuzzy
 msgid "Contributors"
-msgstr "Lista över medarbetare"
+msgstr "Medarbetare"
 
 #: lib/layouts/svmult.layout:67
 msgid "List of Contributors"
 msgstr "Lista över medarbetare"
 
 #: lib/layouts/svmult.layout:71
-#, fuzzy
 msgid "Contributor List"
-msgstr "Lista över medarbetare"
+msgstr "Medarbetarlista"
 
 #: lib/layouts/svmult.layout:103 lib/layouts/svmult.layout:107
 #: lib/layouts/svmult.layout:111 lib/layouts/svmult.layout:115
@@ -9536,31 +9525,27 @@ msgstr "För redigerare"
 
 #: lib/layouts/svmult.layout:106 lib/layouts/svcommon.inc:115
 msgid "PartBacktext"
-msgstr ""
+msgstr "DelBaktext"
 
 #: lib/layouts/svmult.layout:114 lib/layouts/svcommon.inc:408
-#, fuzzy
 msgid "Running Chapter"
-msgstr "Löpande författare:"
+msgstr "Löpande kapitel"
 
 #: lib/layouts/svmult.layout:118 lib/layouts/svcommon.inc:163
-#, fuzzy
 msgid "ChapAuthor"
-msgstr "Författare"
+msgstr "KapFörfattare"
 
 #: lib/layouts/svmult.layout:122 lib/layouts/svcommon.inc:150
-#, fuzzy
 msgid "ChapSubtitle"
-msgstr "Undertitel"
+msgstr "KapUndertitel"
 
 #: lib/layouts/svmult.layout:126 lib/layouts/svcommon.inc:313
 msgid "extrachap"
-msgstr ""
+msgstr "extrakap"
 
 #: lib/layouts/svmult.layout:130 lib/layouts/svcommon.inc:308
-#, fuzzy
 msgid "Extrachap"
-msgstr "Extra"
+msgstr "Extrakap"
 
 #: lib/layouts/svmult.layout:134 lib/layouts/scrclass.inc:204
 #: lib/layouts/svcommon.inc:477
@@ -9569,19 +9554,17 @@ msgstr "Dedikation"
 
 #: lib/layouts/svmult.layout:138 lib/layouts/svcommon.inc:497
 #: lib/layouts/svcommon.inc:501
-#, fuzzy
 msgid "Foreword"
-msgstr "Nyckelord"
+msgstr "Förord"
 
 #: lib/layouts/svmult.layout:142 lib/layouts/svcommon.inc:521
 #: lib/layouts/svcommon.inc:530
 msgid "Preface"
-msgstr "Förord"
+msgstr "Företal"
 
 #: lib/layouts/svmult.layout:154 lib/layouts/svcommon.inc:175
-#, fuzzy
 msgid "ChapMotto"
-msgstr "Kapitel"
+msgstr "KapMotto"
 
 #: lib/layouts/tufte-book.layout:123
 msgid "Sidenote"
@@ -10168,9 +10151,8 @@ msgid "Captionabove"
 msgstr "Bildtextovan"
 
 #: lib/layouts/scrclass.inc:255 lib/layouts/scrclass.inc:275
-#, fuzzy
 msgid "Captions"
-msgstr "Bildtext"
+msgstr "Bildtexter"
 
 #: lib/layouts/scrclass.inc:274
 msgid "Captionbelow"
@@ -10323,59 +10305,48 @@ msgid "--- Back Matter ---"
 msgstr "--- Efter text ---"
 
 #: lib/layouts/svcommon.inc:283
-#, fuzzy
 msgid "Run-in headings"
-msgstr "rubriker"
+msgstr "Ingångsrubriker"
 
 #: lib/layouts/svcommon.inc:298
-#, fuzzy
 msgid "Sub-run-in headings"
-msgstr "Ämnesrubriker:"
+msgstr "Underingångsrubriker"
 
 #: lib/layouts/svcommon.inc:355
-#, fuzzy
 msgid "Author data:"
-msgstr "Författare:"
+msgstr "Författare data:"
 
 #: lib/layouts/svcommon.inc:392
-#, fuzzy
 msgid "TOC author:"
 msgstr "Innehållsförteckning författare:"
 
 #: lib/layouts/svcommon.inc:395
-#, fuzzy
 msgid "Running Title"
-msgstr "Löpande titel:"
+msgstr "Löpande titel"
 
 #: lib/layouts/svcommon.inc:402
-#, fuzzy
 msgid "Running Author"
-msgstr "Löpande författare:"
+msgstr "Löpande författare"
 
 #: lib/layouts/svcommon.inc:413
-#, fuzzy
 msgid "Running chapter:"
-msgstr "Löpande författare:"
+msgstr "Löpande kapitel:"
 
 #: lib/layouts/svcommon.inc:416
-#, fuzzy
 msgid "Running Section"
-msgstr "Löpande titel:"
+msgstr "Löpande avsnitt"
 
 #: lib/layouts/svcommon.inc:419
-#, fuzzy
 msgid "Running section:"
-msgstr "Löpande titel:"
+msgstr "Löpande avsnitt:"
 
 #: lib/layouts/svcommon.inc:443
-#, fuzzy
 msgid "Abstract*"
-msgstr "Sammandrag"
+msgstr "Sammandrag*"
 
 #: lib/layouts/svcommon.inc:447
-#, fuzzy
 msgid "Abstract* (not printed)"
-msgstr " (inte installerad)"
+msgstr "Sammandrag* (skrivs inte ut)"
 
 #: lib/layouts/svcommon.inc:595
 msgid "Petit"
@@ -10383,7 +10354,7 @@ msgstr "Petit"
 
 #: lib/layouts/svcommon.inc:607
 msgid "Svgraybox"
-msgstr ""
+msgstr "Svgraybox"
 
 #: lib/layouts/theorems-ams-bytype.inc:166 lib/layouts/theorems-bytype.inc:142
 #: lib/layouts/theorems-without-preamble.inc:163
@@ -10491,94 +10462,76 @@ msgid "Remark."
 msgstr "Anmärkning."
 
 #: lib/layouts/theorems-without-preamble.inc:52
-#, fuzzy
 msgid "Theorem \\thetheorem"
-msgstr "Teorem \\thetheorem."
+msgstr "Teorem \\thetheorem"
 
 #: lib/layouts/theorems-without-preamble.inc:76
-#, fuzzy
 msgid "Corollary \\thecorollary"
-msgstr "Korollarium \\thecorollary."
+msgstr "Korollarium \\thecorollary"
 
 #: lib/layouts/theorems-without-preamble.inc:92
-#, fuzzy
 msgid "Lemma \\thelemma"
-msgstr "Lemma \\thelemma."
+msgstr "Lemma \\thelemma"
 
 #: lib/layouts/theorems-without-preamble.inc:108
-#, fuzzy
 msgid "Proposition \\theproposition"
-msgstr "Proposition \\theproposition."
+msgstr "Proposition \\theproposition"
 
 #: lib/layouts/theorems-without-preamble.inc:140
-#, fuzzy
 msgid "Conjecture \\theconjecture"
-msgstr "Förmodan \\theconjecture."
+msgstr "Förmodan \\theconjecture"
 
 #: lib/layouts/theorems-without-preamble.inc:179
-#, fuzzy
 msgid "Definition \\thedefinition"
-msgstr "Definition \\thedefinition."
+msgstr "Definition \\thedefinition"
 
 #: lib/layouts/theorems-without-preamble.inc:203
-#, fuzzy
 msgid "Example \\theexample"
-msgstr "Exempel \\theexample."
+msgstr "Exempel \\theexample"
 
 #: lib/layouts/theorems-without-preamble.inc:221
-#, fuzzy
 msgid "Problem \\theproblem"
-msgstr "Problem \\theproblem."
+msgstr "Problem \\theproblem"
 
 #: lib/layouts/theorems-without-preamble.inc:236
-#, fuzzy
 msgid "Prob"
-msgstr "Problem"
+msgstr "Prob"
 
 #: lib/layouts/theorems-without-preamble.inc:243
-#, fuzzy
 msgid "\\theprob."
-msgstr "Prop \\theprop."
+msgstr "\\theprob."
 
 #: lib/layouts/theorems-without-preamble.inc:279
-#, fuzzy
 msgid "Sol"
-msgstr "Symbol"
+msgstr "Sol"
 
 #: lib/layouts/theorems-without-preamble.inc:283
-#, fuzzy
 msgid "# [number of Prob]"
-msgstr "Antal rader"
+msgstr "# [antal prob]"
 
 #: lib/layouts/theorems-without-preamble.inc:294
-#, fuzzy
 msgid "Exercise \\theexercise"
-msgstr "Övning \\theexercise."
+msgstr "Övning \\theexercise"
 
 #: lib/layouts/theorems-without-preamble.inc:311
-#, fuzzy
 msgid "Remark \\theremark"
-msgstr "Anmärkning \\theremark."
+msgstr "Anmärkning \\theremark"
 
 #: lib/layouts/theorems-without-preamble.inc:341
-#, fuzzy
 msgid "Case \\thecase"
-msgstr "Fall \\thecase."
+msgstr "Fall \\thecase"
 
 #: lib/layouts/theorems-without-preamble.inc:358
-#, fuzzy
 msgid "Property \\theproperty"
-msgstr "Prop \\theprop."
+msgstr "Egenskap \\theproperty"
 
 #: lib/layouts/theorems-without-preamble.inc:375
-#, fuzzy
 msgid "Question \\thequestion"
-msgstr "Fråga \\thequestion."
+msgstr "Fråga \\thequestion"
 
 #: lib/layouts/theorems-without-preamble.inc:392
-#, fuzzy
 msgid "Note \\thenote"
-msgstr "Not \\thenote."
+msgstr "Not \\thenote"
 
 #: lib/layouts/braille.module:2
 msgid "Braille"
@@ -10659,9 +10612,8 @@ msgstr ""
 "Inställningar -> Sidutformning till 'häftig'!"
 
 #: lib/layouts/customHeadersFooters.module:12
-#, fuzzy
 msgid "Header/Footer"
-msgstr "Centrerad fot"
+msgstr "Huvud/fot"
 
 #: lib/layouts/customHeadersFooters.module:30
 msgid "Center Header"
@@ -10708,14 +10660,13 @@ msgid "Customisable Lists (enumitem)"
 msgstr "Anpassningsbara listor (enumitem)"
 
 #: lib/layouts/enumitem.module:6
-#, fuzzy
 msgid ""
 "Controls the layout of enumerate, itemize, description, and list/labeling. "
 "See section Customized Lists of the User's Guide for a detailed description."
 msgstr ""
 "Styr utformningen av numrering, uppställning, beskrivning och lista/"
-"etikettering med ett valfritt argument. Se http://mirror.ctan.org/macros/"
-"latex/contrib/enumitem/enumitem.pdf och exempelfilen som följde med LyX."
+"etikettering. Se avsnitt Anpassade listor i handboken för en detaljerad "
+"beskrivning."
 
 #: lib/layouts/enumitem.module:93
 msgid "Enumerate-Resume"
@@ -10816,6 +10767,8 @@ msgid ""
 "Define a style for paragraphs with an initial. See the EmbeddedObjects "
 "manual for a detailed description."
 msgstr ""
+"Definiera en stil för stycken med en initial. Se manualen om inbäddade "
+"objekt för en detaljerad beskrivning."
 
 #: lib/layouts/initials.module:14 lib/layouts/initials.module:16
 #: lib/layouts/initials.module:25 lib/layouts/initials.module:31
@@ -10983,13 +10936,13 @@ msgid "Sweave"
 msgstr "Sweave"
 
 #: lib/layouts/sweave.module:6
-#, fuzzy
 msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
 "via the Sweave() function. For more info see the LyX example file sweave.lyx."
 msgstr ""
 "Gör det möjligt att använda det statistiska språket S/R som ett litterat "
-"programmeringsverktyg via Sweave-paketet. Se sweave.lyx i exempel."
+"programmeringsverktyg via Sweave()-funktionen. För mer information se "
+"exempelfilen sweave.lyx."
 
 #: lib/layouts/sweave.module:23
 msgid "Chunk"
@@ -12845,9 +12798,8 @@ msgid "Paste Special"
 msgstr "Klistra speciell"
 
 #: lib/ui/stdmenus.inc:108
-#, fuzzy
 msgid "Select Whole Inset"
-msgstr "Välj fil att infoga"
+msgstr "Välj hel insättning"
 
 #: lib/ui/stdmenus.inc:109
 msgid "Select All"
@@ -16660,9 +16612,8 @@ msgid "Sweave|S"
 msgstr "Sweave|S"
 
 #: lib/configure.py:583
-#, fuzzy
 msgid "R/S code"
-msgstr "kod"
+msgstr "R/S-kod"
 
 #: lib/configure.py:584
 msgid "LilyPond music"
@@ -17120,7 +17071,7 @@ msgstr ""
 "%1$s är från en nyare version av LyX och lyx2lyx-skriptet misslyckades med "
 "att omvandla den."
 
-#: src/Buffer.cpp:1047 src/Buffer.cpp:3699 src/Buffer.cpp:3761
+#: src/Buffer.cpp:1047 src/Buffer.cpp:3701 src/Buffer.cpp:3763
 msgid "File is read-only"
 msgstr "Filen är skrivskyddad"
 
@@ -17142,7 +17093,7 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "Skriv över modifierad fil?"
 
-#: src/Buffer.cpp:1060 src/Buffer.cpp:2303 src/Exporter.cpp:50
+#: src/Buffer.cpp:1060 src/Buffer.cpp:2305 src/Exporter.cpp:50
 #: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2114
 #: src/frontends/qt4/GuiView.cpp:2303
 msgid "&Overwrite"
@@ -17236,12 +17187,12 @@ msgid "Uncodable character in file path"
 msgstr "Okodbart tecken i filsökväg"
 
 #: src/Buffer.cpp:1417
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The path of your document\n"
 "(%1$s)\n"
-"contains glyphs that are unknown in the current document encoding (namely "
-"%2$s). This may result in incomplete output, unless TEXINPUTS contains the "
+"contains glyphs that are unknown in the current document encoding (namely %2"
+"$s). This may result in incomplete output, unless TEXINPUTS contains the "
 "document directory and you don't use explicitly relative paths (i.e., paths "
 "starting with './' or '../') in the preamble or in ERT.\n"
 "\n"
@@ -17250,60 +17201,62 @@ msgid ""
 msgstr ""
 "Sökvägen för ditt dokument\n"
 "(%1$s)\n"
-"innehåller glyfer som är okända i\n"
-"aktuell dokumentkodning (nämligen %2$s).\n"
-"Detta kommer sannolikt att resultera i ofullständig utmatning.\n"
+"innehåller glyfer som är okända i den aktuella dokumentkodningen (nämligen %2"
+"$s). Detta kan resultera i ofullständig utmatning, om inte TEXINPUTS "
+"innehåller dokumentkatalogen och du inte använder uttryckliga relativa "
+"sökvägar (t.ex. sökvägar som börjar med './' eller '../') i ingressen eller "
+"i ERT.\n"
 "\n"
-"Välj en lämplig dokumentkodning (som utf8)\n"
-"eller ändra filens sökväg."
+"Vid problem, välj en lämplig dokumentkodning\n"
+"(som utf8) eller ändra filens sökväg."
 
-#: src/Buffer.cpp:1713
+#: src/Buffer.cpp:1715
 msgid "Running chktex..."
 msgstr "Chktex körs..."
 
-#: src/Buffer.cpp:1727
+#: src/Buffer.cpp:1729
 msgid "chktex failure"
 msgstr "chktex-misslyckande"
 
-#: src/Buffer.cpp:1728
+#: src/Buffer.cpp:1730
 msgid "Could not run chktex successfully."
 msgstr "Kunde inte köra chktex framgångsrikt."
 
-#: src/Buffer.cpp:1972
+#: src/Buffer.cpp:1974
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Vet inte hur man exporterar till format: %1$s"
 
-#: src/Buffer.cpp:2044 src/frontends/qt4/GuiView.cpp:3143
+#: src/Buffer.cpp:2046 src/frontends/qt4/GuiView.cpp:3143
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Fel vid export till format: %1$s."
 
-#: src/Buffer.cpp:2127
+#: src/Buffer.cpp:2129
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "Gren \"%1$s\" finns redan."
 
-#: src/Buffer.cpp:2157
+#: src/Buffer.cpp:2159
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "Gren \"%1$s\" finns inte."
 
-#: src/Buffer.cpp:2217
+#: src/Buffer.cpp:2219
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Kan inte tolka \"%1$s\""
 
-#: src/Buffer.cpp:2224
+#: src/Buffer.cpp:2226
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Okänt mål \"%1$s\""
 
-#: src/Buffer.cpp:2234
+#: src/Buffer.cpp:2236
 msgid "Error exporting to DVI."
 msgstr "Fel vid export till DVI."
 
-#: src/Buffer.cpp:2299 src/Exporter.cpp:45
+#: src/Buffer.cpp:2301 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -17314,73 +17267,73 @@ msgstr ""
 "\n"
 "Vill du skriva över den filen?"
 
-#: src/Buffer.cpp:2302 src/Exporter.cpp:48
+#: src/Buffer.cpp:2304 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Skriv över fil?"
 
-#: src/Buffer.cpp:2319
+#: src/Buffer.cpp:2321
 msgid "Error running external commands."
 msgstr "Fel vid körning av externa kommandon."
 
-#: src/Buffer.cpp:3112
+#: src/Buffer.cpp:3114
 msgid "Preview source code"
 msgstr "Förhandsgranska källkod"
 
-#: src/Buffer.cpp:3130
+#: src/Buffer.cpp:3132
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Förhandsgranska källkod för stycke %1$d"
 
-#: src/Buffer.cpp:3134
+#: src/Buffer.cpp:3136
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Förhandsgranska källkod från stycke %1$s till %2$s"
 
-#: src/Buffer.cpp:3253
+#: src/Buffer.cpp:3255
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Autosparar %1$s"
 
-#: src/Buffer.cpp:3307
+#: src/Buffer.cpp:3309
 msgid "Autosave failed!"
 msgstr "Autosparning misslyckades!"
 
-#: src/Buffer.cpp:3368
+#: src/Buffer.cpp:3370
 msgid "Autosaving current document..."
 msgstr "Autosparar aktuellt dokument..."
 
-#: src/Buffer.cpp:3458
+#: src/Buffer.cpp:3460
 msgid "Couldn't export file"
 msgstr "Kunde inte exportera fil"
 
-#: src/Buffer.cpp:3459
+#: src/Buffer.cpp:3461
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Ingen information för att exportera formatet %1$s."
 
-#: src/Buffer.cpp:3530
+#: src/Buffer.cpp:3532
 msgid "File name error"
 msgstr "Filnamnsfel"
 
-#: src/Buffer.cpp:3531
+#: src/Buffer.cpp:3533
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Katalogsökvägen till dokumentet kan inte innehålla mellanslag."
 
-#: src/Buffer.cpp:3616
+#: src/Buffer.cpp:3618
 msgid "Document export cancelled."
 msgstr "Dokumentexport avbruten."
 
-#: src/Buffer.cpp:3626
+#: src/Buffer.cpp:3628
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument exporterat som %1$s till fil `%2$s'"
 
-#: src/Buffer.cpp:3632
+#: src/Buffer.cpp:3634
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument exporterat som %1$s"
 
-#: src/Buffer.cpp:3685
+#: src/Buffer.cpp:3687
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17391,19 +17344,19 @@ msgstr ""
 "\n"
 "Återhämta nödsparning?"
 
-#: src/Buffer.cpp:3688
+#: src/Buffer.cpp:3690
 msgid "Load emergency save?"
 msgstr "Ladda nödsparning?"
 
-#: src/Buffer.cpp:3689
+#: src/Buffer.cpp:3691
 msgid "&Recover"
 msgstr "Åte&rhämta"
 
-#: src/Buffer.cpp:3689
+#: src/Buffer.cpp:3691
 msgid "&Load Original"
 msgstr "&Ladda original"
 
-#: src/Buffer.cpp:3700
+#: src/Buffer.cpp:3702
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -17412,15 +17365,15 @@ msgstr ""
 "En nödfil laddades framgångsrikt, men originalfilen %1$s är märkt "
 "skrivskyddad. Vänligen se till att spara dokumentet som en annan fil."
 
-#: src/Buffer.cpp:3706
+#: src/Buffer.cpp:3708
 msgid "Document was successfully recovered."
 msgstr "Dokument återhämtades framgångsrikt."
 
-#: src/Buffer.cpp:3708
+#: src/Buffer.cpp:3710
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument återhämtades INTE framgångsrikt."
 
-#: src/Buffer.cpp:3709
+#: src/Buffer.cpp:3711
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17429,27 +17382,27 @@ msgstr ""
 "Ta bort nödfil nu?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3713 src/Buffer.cpp:3725
+#: src/Buffer.cpp:3715 src/Buffer.cpp:3727
 msgid "Delete emergency file?"
 msgstr "Radera nödfil?"
 
-#: src/Buffer.cpp:3714 src/Buffer.cpp:3727
+#: src/Buffer.cpp:3716 src/Buffer.cpp:3729
 msgid "&Keep"
 msgstr "Behåll"
 
-#: src/Buffer.cpp:3718
+#: src/Buffer.cpp:3720
 msgid "Emergency file deleted"
 msgstr "Nödfil raderad"
 
-#: src/Buffer.cpp:3719
+#: src/Buffer.cpp:3721
 msgid "Do not forget to save your file now!"
 msgstr "Glöm inte att spara din fil nu!"
 
-#: src/Buffer.cpp:3726
+#: src/Buffer.cpp:3728
 msgid "Remove emergency file now?"
 msgstr "Ta bort nödfil nu?"
 
-#: src/Buffer.cpp:3749
+#: src/Buffer.cpp:3751
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17460,19 +17413,19 @@ msgstr ""
 "\n"
 "Ladda säkerhetskopian i stället?"
 
-#: src/Buffer.cpp:3751
+#: src/Buffer.cpp:3753
 msgid "Load backup?"
 msgstr "Ladda säkerhetskopia?"
 
-#: src/Buffer.cpp:3752
+#: src/Buffer.cpp:3754
 msgid "&Load backup"
 msgstr "&Ladda säkerhetskopia"
 
-#: src/Buffer.cpp:3752
+#: src/Buffer.cpp:3754
 msgid "Load &original"
 msgstr "Ladda &original"
 
-#: src/Buffer.cpp:3762
+#: src/Buffer.cpp:3764
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17481,25 +17434,25 @@ msgstr ""
 "En säkerhetskopierad fil laddades framgångsrikt, men originalfilen %1$s är "
 "märkt skrivskyddad. Vänligen se till att spara dokumentet som en annan fil."
 
-#: src/Buffer.cpp:4101 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4103 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Meningslöst!!! "
 
-#: src/Buffer.cpp:4222
+#: src/Buffer.cpp:4224
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s laddades om."
 
-#: src/Buffer.cpp:4225
+#: src/Buffer.cpp:4227
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Kunde inte ladda om dokument %1$s."
 
-#: src/Buffer.cpp:4291
+#: src/Buffer.cpp:4293
 msgid "Included File Invalid"
 msgstr "Inkluderad fil ogiltig"
 
-#: src/Buffer.cpp:4292
+#: src/Buffer.cpp:4294
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -18161,7 +18114,7 @@ msgstr ""
 "Ingen information för att omvandla %1$s formatfiler till %2$s.\n"
 "Definiera en omvandlare i inställningar."
 
-#: src/Converter.cpp:442 src/Format.cpp:321 src/Format.cpp:389
+#: src/Converter.cpp:442 src/Format.cpp:317 src/Format.cpp:385
 msgid "Executing command: "
 msgstr "Exekverar kommando: "
 
@@ -18207,8 +18160,8 @@ msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
 "log %1$s."
 msgstr ""
-"LaTeX kördes inte framgångsrikt. Dessutom kunde LyX inte hitta LaTeX-loggen "
-"%1$s."
+"LaTeX kördes inte framgångsrikt. Dessutom kunde LyX inte hitta LaTeX-loggen %"
+"1$s."
 
 #: src/Converter.cpp:638
 msgid "LaTeX failed"
@@ -18257,11 +18210,11 @@ msgstr ""
 #: src/CutAndPaste.cpp:698
 #, c-format
 msgid ""
-"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
-"%3$s'."
+"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `%3"
+"$s'."
 msgstr ""
-"Flex-insättning %1$s är odefinierad på grund av omvandling från utformning `"
-"%2$s' till `%3$s'."
+"Flex-insättning %1$s är odefinierad på grund av omvandling från utformning `%"
+"2$s' till `%3$s'."
 
 #: src/CutAndPaste.cpp:703
 msgid "Undefined flex inset"
@@ -18391,39 +18344,39 @@ msgstr "Språk: %1$s, "
 msgid "Number %1$s"
 msgstr "Nummer %1$s"
 
-#: src/Format.cpp:269 src/Format.cpp:282 src/Format.cpp:292
+#: src/Format.cpp:265 src/Format.cpp:278 src/Format.cpp:288
 msgid "Cannot view file"
 msgstr "Kan inte visa fil"
 
-#: src/Format.cpp:270 src/Format.cpp:337 src/frontends/qt4/GuiView.cpp:2928
+#: src/Format.cpp:266 src/Format.cpp:333 src/frontends/qt4/GuiView.cpp:2928
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Filen finns inte: %1$s"
 
-#: src/Format.cpp:283
+#: src/Format.cpp:279
 #, c-format
 msgid "No information for viewing %1$s"
 msgstr "Ingen information för att visa %1$s"
 
-#: src/Format.cpp:293
+#: src/Format.cpp:289
 #, c-format
 msgid "Auto-view file %1$s failed"
 msgstr "Auto-visa fil %1$s misslyckades"
 
-#: src/Format.cpp:336 src/Format.cpp:348 src/Format.cpp:361 src/Format.cpp:372
+#: src/Format.cpp:332 src/Format.cpp:344 src/Format.cpp:357 src/Format.cpp:368
 msgid "Cannot edit file"
 msgstr "Kan inte redigera fil"
 
-#: src/Format.cpp:349
+#: src/Format.cpp:345
 msgid "LinkBack files can only be edited on Apple Mac OSX."
 msgstr "LinkBack-filer kan bara redigeras på Apple Mac OS X."
 
-#: src/Format.cpp:362
+#: src/Format.cpp:358
 #, c-format
 msgid "No information for editing %1$s"
 msgstr "Ingen information för att redigera %1$s"
 
-#: src/Format.cpp:373
+#: src/Format.cpp:369
 #, c-format
 msgid "Auto-edit file %1$s failed"
 msgstr "Auto-redigera fil %1$s misslyckades"
@@ -20740,7 +20693,7 @@ msgid "Document Settings"
 msgstr "Dokumentinställningar"
 
 #: src/frontends/qt4/GuiDocument.cpp:720 src/frontends/qt4/GuiInclude.cpp:48
-#: src/frontends/qt4/Menus.cpp:1398
+#: src/frontends/qt4/Menus.cpp:1391
 msgid "Child Document"
 msgstr "Barndokument"
 
@@ -22704,119 +22657,119 @@ msgstr " (okänd)"
 msgid "More...|M"
 msgstr "Mer...|M"
 
-#: src/frontends/qt4/Menus.cpp:754
+#: src/frontends/qt4/Menus.cpp:748
 msgid "No Group"
 msgstr "Ingen grupp"
 
-#: src/frontends/qt4/Menus.cpp:784 src/frontends/qt4/Menus.cpp:785
+#: src/frontends/qt4/Menus.cpp:778 src/frontends/qt4/Menus.cpp:779
 msgid "More Spelling Suggestions"
 msgstr "Fler stavningsförslag"
 
-#: src/frontends/qt4/Menus.cpp:803
+#: src/frontends/qt4/Menus.cpp:797
 msgid "Add to personal dictionary|n"
 msgstr "Lägg till i personlig ordlista|n"
 
-#: src/frontends/qt4/Menus.cpp:805
+#: src/frontends/qt4/Menus.cpp:799
 msgid "Ignore all|I"
 msgstr "Ignorera alla|I"
 
-#: src/frontends/qt4/Menus.cpp:813
+#: src/frontends/qt4/Menus.cpp:807
 msgid "Remove from personal dictionary|r"
 msgstr "Ta bort från personlig ordlista|r"
 
-#: src/frontends/qt4/Menus.cpp:851
+#: src/frontends/qt4/Menus.cpp:845
 msgid "Language|L"
 msgstr "Språk"
 
-#: src/frontends/qt4/Menus.cpp:853
+#: src/frontends/qt4/Menus.cpp:847
 msgid "More Languages ...|M"
 msgstr "Fler språk ..."
 
-#: src/frontends/qt4/Menus.cpp:923 src/frontends/qt4/Menus.cpp:924
+#: src/frontends/qt4/Menus.cpp:917 src/frontends/qt4/Menus.cpp:918
 msgid "Hidden|H"
 msgstr "Dold"
 
-#: src/frontends/qt4/Menus.cpp:928
+#: src/frontends/qt4/Menus.cpp:922
 msgid "<No Documents Open>"
 msgstr "<Inga dokument öppnade>"
 
-#: src/frontends/qt4/Menus.cpp:991
+#: src/frontends/qt4/Menus.cpp:985
 msgid "<No Bookmarks Saved Yet>"
 msgstr "<Inga bokmärken sparade än>"
 
-#: src/frontends/qt4/Menus.cpp:1029
+#: src/frontends/qt4/Menus.cpp:1022
 msgid "View (Other Formats)|F"
 msgstr "Visa (andra format)|f"
 
-#: src/frontends/qt4/Menus.cpp:1030
+#: src/frontends/qt4/Menus.cpp:1023
 msgid "Update (Other Formats)|p"
 msgstr "Uppdatera (andra format)|p"
 
-#: src/frontends/qt4/Menus.cpp:1063
+#: src/frontends/qt4/Menus.cpp:1056
 #, c-format
 msgid "View [%1$s]|V"
 msgstr "Visa [%1$s]|V"
 
-#: src/frontends/qt4/Menus.cpp:1064
+#: src/frontends/qt4/Menus.cpp:1057
 #, c-format
 msgid "Update [%1$s]|U"
 msgstr "Uppdatera [%1$s]|U"
 
-#: src/frontends/qt4/Menus.cpp:1175
+#: src/frontends/qt4/Menus.cpp:1168
 msgid "No Custom Insets Defined!"
 msgstr "Inga anpassade insättningar definierade!"
 
-#: src/frontends/qt4/Menus.cpp:1247
+#: src/frontends/qt4/Menus.cpp:1240
 msgid "<No Document Open>"
 msgstr "<Inga dokument öppnade>"
 
-#: src/frontends/qt4/Menus.cpp:1257
+#: src/frontends/qt4/Menus.cpp:1250
 msgid "Master Document"
 msgstr "Huvuddokument"
 
-#: src/frontends/qt4/Menus.cpp:1274
+#: src/frontends/qt4/Menus.cpp:1267
 msgid "Open Navigator..."
 msgstr "Öppna navigator..."
 
-#: src/frontends/qt4/Menus.cpp:1295
+#: src/frontends/qt4/Menus.cpp:1288
 msgid "Other Lists"
 msgstr "Andra listor"
 
-#: src/frontends/qt4/Menus.cpp:1308
+#: src/frontends/qt4/Menus.cpp:1301
 msgid "<Empty Table of Contents>"
 msgstr "<Tom innehållsförteckning>"
 
-#: src/frontends/qt4/Menus.cpp:1343
+#: src/frontends/qt4/Menus.cpp:1336
 msgid "Other Toolbars"
 msgstr "Andra verktygsrader"
 
-#: src/frontends/qt4/Menus.cpp:1358
+#: src/frontends/qt4/Menus.cpp:1351
 msgid "No Branches Set for Document!"
 msgstr "Inga grenar satta för dokument!"
 
-#: src/frontends/qt4/Menus.cpp:1414
+#: src/frontends/qt4/Menus.cpp:1407
 msgid "Index List|I"
 msgstr "Indexlista|I"
 
-#: src/frontends/qt4/Menus.cpp:1419
+#: src/frontends/qt4/Menus.cpp:1412
 msgid "Index Entry|d"
 msgstr "Indexpost|d"
 
-#: src/frontends/qt4/Menus.cpp:1434
+#: src/frontends/qt4/Menus.cpp:1427
 #, c-format
 msgid "Index: %1$s"
 msgstr "Index: %1$s"
 
-#: src/frontends/qt4/Menus.cpp:1439 src/frontends/qt4/Menus.cpp:1468
+#: src/frontends/qt4/Menus.cpp:1432 src/frontends/qt4/Menus.cpp:1461
 #, c-format
 msgid "Index Entry (%1$s)"
 msgstr "Indexpost (%1$s)"
 
-#: src/frontends/qt4/Menus.cpp:1485
+#: src/frontends/qt4/Menus.cpp:1478
 msgid "No Citation in Scope!"
 msgstr "Inget citat i omfång!"
 
-#: src/frontends/qt4/Menus.cpp:2093
+#: src/frontends/qt4/Menus.cpp:2086
 msgid "No Action Defined!"
 msgstr "Ingen handling definierad!"
 
@@ -22887,9 +22840,8 @@ msgid "List of Listings"
 msgstr "Lista över listningar"
 
 #: src/frontends/qt4/qt_helpers.cpp:563
-#, fuzzy
 msgid "List of Index Entries"
-msgstr "Lista över index"
+msgstr "Lista över indexposter"
 
 #: src/frontends/qt4/qt_helpers.cpp:565
 msgid "List of Marginal notes"
@@ -22914,10 +22866,6 @@ msgstr "Lista över grenar"
 #: src/frontends/qt4/qt_helpers.cpp:575
 msgid "List of Changes"
 msgstr "Lista över ändringar"
-
-#: src/frontends/qt4/ui_IndicesUi.h:205
-msgid "&New:"
-msgstr "&Ny:"
 
 #: src/insets/ExternalSupport.cpp:369 src/insets/InsetBibtex.cpp:291
 #: src/insets/InsetGraphics.cpp:597 src/insets/InsetInclude.cpp:535
@@ -24277,11 +24225,14 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Okänd användare"
 
+#~ msgid "&New:"
+#~ msgstr "&Ny:"
+
 #~ msgid "Enter the command to load the language package (default: babel)"
 #~ msgstr "Ange kommandot för att ladda språkpaketet (standard: babel)"
 
 #~ msgid "Preface:"
-#~ msgstr "Förord:"
+#~ msgstr "Företal:"
 
 #~ msgid "Contributor \\Roman{svmultlsti}:"
 #~ msgstr "Medarbetare \\Roman{svmultlsti}:"
