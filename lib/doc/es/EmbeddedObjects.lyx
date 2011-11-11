@@ -3150,7 +3150,7 @@ encabezado: La fila actual se define como encabezado de la primera página
 
 \begin_layout Description
 Pie: La fila actual se define como pie que aparecerá en todas las páginas
- del cuadrotabla, excepto para la última página si se define 
+ del cuadro/tabla, excepto para la última página si se define 
 \family sans
 Último
 \begin_inset space ~
@@ -33689,17 +33689,20 @@ target "http://es.wikipedia.org/wiki/Dia_(programa)"
 \end_layout
 
 \begin_layout Description
-
-\lang english
-GnumericSpreadsheet With this template you can insert spreadsheets
-\begin_inset space \thinspace{}
+Hoja
+\begin_inset space ~
 \end_inset
 
-/
-\begin_inset space \thinspace{}
+de
+\begin_inset space ~
 \end_inset
 
-tables in the format of 
+cálculo
+\begin_inset space ~
+\end_inset
+
+Gnumeric Esta plantilla permite insertar tablas/hojas de cálculo en los
+ formatos 
 \series bold
 
 \begin_inset CommandInset href
@@ -33727,7 +33730,7 @@ target "http://es.wikipedia.org/wiki/Microsoft_Office_XML"
 
 \end_inset
 
- and 
+ y 
 \begin_inset CommandInset href
 LatexCommand href
 name "Office Open XML"
@@ -33736,19 +33739,18 @@ target "http://es.wikipedia.org/wiki/Office_Open_XML"
 \end_inset
 
 .
- For this feature LyX must have found the program 
+ Para que esto funcione LyX debe haber encontrado el programa 
 \family typewriter
 ssconvert
 \family default
- during its configuration.
- This program is part of Gnumeric, so that you must have Gnumeric installed,
- also if you don't have tables in the Gnumeric format.
- For examples and possible limitations have a look at LyX's example file
- 
+ durante su configuración.
+ Este programa forma parte de Gnumeric, por tanto debe estar instalado aunque
+ las tablas no estén en el formato de Gnumeric.
+ Echa un vistazo al archivo de ejemplo 
 \emph on
 spreadsheet.lyx
 \emph default
-.
+ para ver ejemplos de uso y posibles limitaciones.
 \end_layout
 
 \begin_layout Description
@@ -33827,14 +33829,11 @@ target "http://es.wikipedia.org/wiki/GNU_LilyPond"
 
 \series default
 .
- 
-\lang english
-For LyX's extended support for LilyPond have a look at LyX's example file
- 
+ Echa un vistazo al archivo de ejemplo
 \emph on
-lilypond.lyx
+ lilypond.lyx
 \emph default
-.
+ para más información sobre el soporte de LyX a LilyPond.
 \end_layout
 
 \begin_layout Description
