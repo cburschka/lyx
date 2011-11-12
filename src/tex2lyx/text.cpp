@@ -1152,11 +1152,16 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		end_inset(os);
 	}
 
-	else if (name == "tabular" || name == "longtable") {
+	else if (unstarred_name == "tabular" || name == "longtable") {
 		eat_whitespace(p, os, parent_context, false);
+		string width = "0pt";
+		if (name == "tabular*") {
+			width = lyx::translate_len(p.getArg('{', '}'));
+			eat_whitespace(p, os, parent_context, false);
+		}
 		parent_context.check_layout(os);
 		begin_inset(os, "Tabular ");
-		handle_tabular(p, os, name == "longtable", parent_context);
+		handle_tabular(p, os, name, width, parent_context);
 		end_inset(os);
 		p.skip_spaces();
 	}

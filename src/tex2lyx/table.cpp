@@ -770,9 +770,10 @@ void handle_hline_below(RowInfo & ri, vector<CellInfo> & ci)
 } // anonymous namespace
 
 
-void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
-		    Context & context)
+void handle_tabular(Parser & p, ostream & os, string const & name,
+                    string const & tabularwidth, Context & context)
 {
+	bool const is_long_tabular(name == "longtable");
 	string tabularvalignment("middle");
 	string posopts = p.getOpt();
 	if (!posopts.empty()) {
@@ -1114,7 +1115,8 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 	   << write_attribute("rotate", false)
 	   << write_attribute("islongtable", is_long_tabular);
 	if (!is_long_tabular)
-		os << write_attribute("tabularvalignment", tabularvalignment);
+		os << write_attribute("tabularvalignment", tabularvalignment)
+		   << write_attribute("tabularwidth", tabularwidth);
 	os << ">\n";
 
 	//cerr << "// after header\n";
