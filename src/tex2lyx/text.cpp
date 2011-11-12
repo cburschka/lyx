@@ -897,6 +897,13 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			// the inner env
 			if (!inner_type.empty() && (inner_flags & FLAG_END))
 				active_environments.pop_back();
+	
+			// Ensure that the end of the outer box is parsed correctly:
+			// The opening brace has been eaten by parse_outer_box()
+			if (!outer_type.empty() && (outer_flags & FLAG_ITEM)) {
+				outer_flags &= ~FLAG_ITEM;
+				outer_flags |= FLAG_BRACE_LAST;
+			}
 			parse_text(p, os, outer_flags, outer, parent_context);
 			if (outer_flags & FLAG_END)
 				handle_ert(os, "\\end{" + outer_type + '}',
@@ -3558,14 +3565,18 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		//\makebox() is part of the picture environment and different from \makebox{}
-		//\makebox{} will be parsed by parse_box when bug 2956 is fixed
+		//\makebox{} will be parsed by parse_box
 		else if (t.cs() == "makebox") {
 			string arg = t.asInput();
 			if (p.next_token().character() == '(') {
 				//the syntax is: \makebox(x,y)[position]{content}
 				arg += p.getFullParentheseArg();
 				arg += p.getFullOpt();
-				handle_ert(os, arg + p.get_token().asInput(), context);
+				eat_whitespace(p, os, context, false);
+				handle_ert(os, arg + '{', context);
+				eat_whitespace(p, os, context, false);
+				parse_text(p, os, FLAG_ITEM, outer, context);
+				handle_ert(os, "}", context);
 			} else
 				//the syntax is: \makebox[width][position]{content}
 				parse_box(p, os, 0, FLAG_ITEM, outer, context,
