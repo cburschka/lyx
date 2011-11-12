@@ -260,14 +260,14 @@
 #               Manuel Fonctionnalites supplementaires:
 #               titre modifie en 'Options avancees'
 # ------------------------------------------------------------------
-# 7 novembre 2011 : derni�re revue avant 2.0.2
+# 7 novembre 2011 : derniere revue avant 2.0.2
 # ------------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-10-29 17:47-0400\n"
-"PO-Revision-Date: 2011-11-06 17:07+0100\n"
+"PO-Revision-Date: 2011-11-11 10:26+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -1408,7 +1408,7 @@ msgstr "&Ancien document"
 
 #: src/frontends/qt4/ui/CompareUi.ui:178
 msgid "Turns on the change tracking and showing changes in LaTeX output for the resulting document"
-msgstr "Active le suivi de modification et montre les modifications du résultat imprimable LaTeX pour le document"
+msgstr "Activer le suivi de modification et montre les modifications du résultat imprimable LaTeX pour le document"
 
 #: src/frontends/qt4/ui/CompareUi.ui:181
 msgid "Enable &change tracking features in the output"
@@ -1808,7 +1808,7 @@ msgstr "Utiliser le placement im&plicite"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:43
 msgid "Advanced Placement Options"
-msgstr "Options avancées de placement"
+msgstr "Options de placement élaborées"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:55
 msgid "&Top of page"
@@ -13915,7 +13915,7 @@ msgstr "Rechercher et remplacer (simple)...|e"
 
 #: lib/ui/stdmenus.inc:112
 msgid "Find & Replace (Advanced)..."
-msgstr "Rechercher et remplacer (avancé)..."
+msgstr "Rechercher et remplacer (élaboré)..."
 
 #: lib/ui/stdmenus.inc:122
 msgid "Table|T"
@@ -14751,7 +14751,7 @@ msgstr "Rechercher et remplacer"
 
 #: lib/ui/stdtoolbars.inc:84
 msgid "Find and replace (advanced)"
-msgstr "Rechercher et remplacer (avancé)"
+msgstr "Rechercher et remplacer (élaboré)"
 
 #: lib/ui/stdtoolbars.inc:85
 msgid "Navigate back"
@@ -20251,7 +20251,7 @@ msgstr "Permettre au gestionnaire de session d'enregistrer et de restaurer la po
 
 #: src/LyXRC.cpp:3468
 msgid "This starts the lyxserver. The pipes get an additional extension \".in\" and \".out\". Only for advanced users."
-msgstr "Démarrer le serveur LyX. Les tubes reçoivent l'extension supplémentaire « .in » et « .out ». Réservé aux utilisateurs avancés."
+msgstr "Démarrer le serveur LyX. Les tubes reçoivent l'extension supplémentaire « .in » et « .out ». Réservé aux utilisateurs expérimentés."
 
 #: src/LyXRC.cpp:3475
 msgid "De-select if you don't want the startup banner."
@@ -20975,7 +20975,7 @@ msgstr "Aucun document ouvert dans lequel rechercher"
 
 #: src/frontends/qt4/FindAndReplace.cpp:529
 msgid "Advanced Find and Replace"
-msgstr "Rechercher et remplacer (avancé)"
+msgstr "Rechercher et remplacer (élaboré)"
 
 #: src/frontends/qt4/GuiAbout.cpp:51
 msgid "ERROR: LyX wasn't able to read CREDITS file\n"
