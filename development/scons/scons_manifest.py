@@ -2636,6 +2636,7 @@ lib_doc_fr_clipart_files = Split('''
     BoxInsetDefaultQt4.png
     ChildDocumentQt4.png
     CommentNoteImageQt4.png
+    ERT.png
     floatQt4.png
     footnoteQt4.png
     GreyedOutNoteImageQt4.png

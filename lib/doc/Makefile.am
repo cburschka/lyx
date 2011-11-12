@@ -159,6 +159,7 @@ dist_frclipartdoc_DATA = \
 	fr/clipart/BoxInsetDefaultQt4.png \
 	fr/clipart/ChildDocumentQt4.png \
 	fr/clipart/CommentNoteImageQt4.png \
+	fr/clipart/ERT.png \
 	fr/clipart/GreyedOutNoteImageQt4.png \
 	fr/clipart/LyXNoteImageQt4.png \
 	fr/clipart/floatQt4.png \

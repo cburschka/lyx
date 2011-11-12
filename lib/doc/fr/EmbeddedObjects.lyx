@@ -81,9 +81,6 @@
   \setboolean{colortbl}{true}}
  {\setboolean{colortbl}{false}}
 
-% used for book-style tables
-\usepackage{booktabs}
-
 % used to have extra space in table cells
 \@ifundefined{extrarowheight}
  {\usepackage{array}}{}
