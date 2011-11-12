@@ -87,9 +87,6 @@
   \setboolean{colortbl}{true}}
  {\setboolean{colortbl}{false}}
 
-% used for book-style tables
-\usepackage{booktabs}
-
 % used to have extra space in table cells
 \@ifundefined{extrarowheight}
  {\usepackage{array}}{}
@@ -434,13 +431,15 @@ name "sec:画像ダイアログ"
 
 \begin_layout Standard
 画像を文書に挿入するには、文中の挿入箇所にカーソルを置いて、ツールバーアイコン
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
 \end_inset
 
+
+\family default
 をクリックするか、
 \family sans
 挿入\SpecialChar \menuseparator
@@ -724,13 +723,15 @@ reference "sec:フロートはじめに"
 
 \begin_layout Standard
 ツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/float-insert_figure.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "float-insert figure"
 \end_inset
 
+
+\family default
 か
 \family sans
 挿入\SpecialChar \menuseparator
@@ -875,26 +876,30 @@ reference "fig:エッシャー"
 ラベル
 \family default
 メニューかツールバーボタン
-\begin_inset Graphics
-	filename ../../images/label-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
+
+\family default
 を使用して、キャプションにラベルを挿入してください。その後、
 \family sans
 挿入\SpecialChar \menuseparator
 相互参照
 \family default
 メニューかツールバーボタン
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_ref.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
+
+\family default
 を使用して、ラベルを参照することができます。LaTeXは仕上文書でのフロートの位置を調整するので、「上図」のような曖昧な参照のしかたをするのではなく、フロートを
 直接参照することが重要です。仕上文書では、「上図」ではないことが、大いにありうるからです。
 \begin_inset Newline newline
@@ -1433,14 +1438,31 @@ status collapsed
 \bar no
 \noun off
 \color none
-表を挿入するには、ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/tabular-insert.png
-	scale 85
-
+表を挿入するには、ツールバーボタ
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+ン
+\begin_inset Info
+type  "icon"
+arg   "tabular-insert"
 \end_inset
 
-か、
+か
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+、
 \family sans
 \series default
 \shape default
@@ -2011,233 +2033,296 @@ status collapsed
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-row.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-row"
 \end_inset
 
-は、現在セルあるいは選択範囲の下に行を追加します。
+
+\family default
+ は、現在セルあるいは選択範囲の下に行を追加します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-column.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-column"
 \end_inset
 
-は、現在セルあるいは選択範囲の右に列を追加します。
+
+\family default
+ は、現在セルあるいは選択範囲の右に列を追加します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-row.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-row"
 \end_inset
 
-は、現在行あるいは選択範囲行を削除します。
+
+\family default
+ は、現在行あるいは選択範囲行を削除します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-column.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-column"
 \end_inset
 
-は、現在列あるいは選択範囲列を削除します。
+
+\family default
+ は、現在列あるいは選択範囲列を削除します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_toggle-line-top.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular toggle-line-top"
 \end_inset
 
-は、現在セルや現在行、あるいは選択範囲の上部に罫線を描画します。
+
+\family default
+ は、現在セルや現在行、あるいは選択範囲の上部に罫線を描画します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_toggle-line-bottom.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular toggle-line-bottom"
 \end_inset
 
-は、現在セルや現在行、あるいは選択範囲の下部に罫線を描画します。
+
+\family default
+ は、現在セルや現在行、あるいは選択範囲の下部に罫線を描画します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_toggle-line-left.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular toggle-line-left"
 \end_inset
 
-は、 現在セルや現在行、あるいは選択範囲の左側に罫線を描画します。
+
+\family default
+ は、現在セルや現在行、あるいは選択範囲の左側に罫線を描画します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_toggle-line-right.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular toggle-line-right"
 \end_inset
 
-は、 現在セルや現在行、あるいは選択範囲の右側に罫線を描画します。
+
+\family default
+ は、現在セルや現在行、あるいは選択範囲の右側に罫線を描画します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_set-all-lines.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular set-all-lines"
 \end_inset
 
-は、現在セルあるいは選択範囲の周囲に罫線を描画します。現在セルが連結列でなければ、現在行と現在列にも影響します。
+
+\family default
+ は、現在セルあるいは選択範囲の周囲に罫線を描画します。現在セルが連結列でなければ、現在行と現在列にも影響します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_unset-all-lines.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular unset-all-lines"
 \end_inset
 
-は、現在セルあるいは選択範囲のすべての罫線を消去します。現在セルが連結列でなければ、現在行と現在列にも影響します。
+
+\family default
+ は、現在セルあるいは選択範囲のすべての罫線を消去します。現在セルが連結列でなければ、現在行と現在列にも影響します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-align-left.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-align-left"
 \end_inset
 
-は、現在セルあるいは現在列の内容を左揃えにします。
+
+\family default
+ は、現在セルあるいは現在列の内容を左揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-align-center.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-align-center"
 \end_inset
 
-は、現在セルあるいは現在列の内容を水平方向中央揃えにします。
+
+\family default
+ は、現在セルあるいは現在列の内容を水平方向中央揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-align-right.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-align-right"
 \end_inset
 
-は、現在セルあるいは現在列の内容を右揃えにします。
+
+\family default
+ は、現在セルあるいは現在列の内容を右揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_align-decimal.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular align-decimal"
 \end_inset
 
-は、現在セルの内容を特定文字位置で揃えます。
+
+\family default
+ は、現在セルの内容を特定文字位置で揃えます。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-valign-top.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-valign-top"
 \end_inset
 
-は、現在セルの内容を垂直方向上揃えにします。
+
+\family default
+ は、現在セルの内容を垂直方向上揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-valign-middle.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-valign-middle"
 \end_inset
 
-は、現在セルの内容を垂直方向中央揃えにします。
+
+\family default
+ は、現在セルの内容を垂直方向中央揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-valign-bottom.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-valign-bottom"
 \end_inset
 
-は、現在セルの内容を垂直方向下揃えにします。
+
+\family default
+ は、現在セルの内容を垂直方向下揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_set-rotate-cell.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular set-rotate-cell"
 \end_inset
 
-は、現在セルあるいは選択範囲を反時計廻りに90度回転します。
+
+\family default
+ は、現在セルあるいは選択範囲を反時計廻りに90度回転します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_set-rotate-tabular.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular set-rotate-tabular"
 \end_inset
 
-は、表全体を反時計廻りに90度回転します。
+
+\family default
+ は、表全体を反時計廻りに90度回転します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_multicolumn.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular multicolumn"
 \end_inset
 
-は、現在セルあるいは選択範囲を連結列にします。
+
+\family default
+ は、現在セルあるいは選択範囲を連結列にします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_multirow.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular multirow"
 \end_inset
 
-は、現在セルあるいは選択範囲を連結行にします。
+
+\family default
+ は、現在セルあるいは選択範囲を連結行にします。
 \end_layout
 
 \begin_layout Standard
@@ -2532,13 +2617,15 @@ c & d
 \family default
 \shape default
 メニューかツールバーボタン
-\begin_inset Graphics
-	filename ../../images/float-insert_table.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "float-insert table"
 \end_inset
 
+
+\family default
 を使うと挿入することができます。
 \end_layout
 
@@ -2639,22 +2726,26 @@ status collapsed
 ラベル
 \family default
 メニューかツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/label-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
+
+\family default
 を用いて、キャプションにラベルを挿入して下さい。然る後に、挿入\SpecialChar \menuseparator
 相互参照メニューかツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_ref.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
+
+\family default
 を用いて、このラベルを参照することができます。
 \begin_inset Newline newline
 \end_inset
@@ -10963,13 +11054,15 @@ status collapsed
 
 \begin_layout Standard
 一つのセルが複数の列にまたがるようにするためには、行中から一つの連結セルにまとめるべき各セルを選択して、表ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/tabular-feature_multicolumn.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular multicolumn"
 \end_inset
 
+
+\family default
 を押すか、
 \family sans
 編集\SpecialChar \menuseparator
@@ -11691,13 +11784,15 @@ status collapsed
 
 \begin_layout Standard
 複数行にかかるセルを連結するには、同一列中の統合したいセルをすべて選択し、ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/tabular-feature_multirow.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular multirow"
 \end_inset
 
+
+\family default
 を押すか、メニュー
 \family sans
 編集\SpecialChar \menuseparator
@@ -19097,13 +19192,15 @@ fig:
 相互参照
 \family default
 メニューかツールバーボタン
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_ref.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
+
+\family default
 を使えば、ラベルを参照することができます。
 \begin_inset Graphics
 	filename clipart/referenceQt4.png
@@ -23194,13 +23291,15 @@ status collapsed
 
 \begin_layout Standard
 注釈は、ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/note-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "note-insert"
 \end_inset
 
+
+\family default
 か、
 \family sans
 挿入\SpecialChar \menuseparator
@@ -23394,13 +23493,15 @@ status open
 \end_inset
 
 注釈を挿入するのにツールバーボタン
-\begin_inset Graphics
-	filename ../../images/note-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "note-insert"
 \end_inset
 
+
+\family default
 を使用すると、
 \family sans
 LyX注釈
@@ -23458,13 +23559,15 @@ status collapsed
 
 \begin_layout Standard
 脚注は、ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/footnote-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
 \end_inset
 
+
+\family default
 か、
 \family sans
 挿入\SpecialChar \menuseparator
@@ -24744,13 +24847,15 @@ LyX内において、傍注注釈は、脚注のような外見と挙動を示�
 傍注
 \family default
 メニューかツールバーボタン
-\begin_inset Graphics
-	filename ../../images/marginalnote-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "marginalnote-insert"
 \end_inset
 
+
+\family default
 で挿入することができます。すると、紫字で「傍注」と書かれた灰色のボックスが現れて、そこに傍注文を入れることができます。
 \end_layout
 
@@ -25547,13 +25652,15 @@ reference "sec:色付きボックス"
 ボックス
 \family default
 メニューかツールバーボタン
-\begin_inset Graphics
-	filename ../../images/box-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "box-insert Frameless"
 \end_inset
 
+
+\family default
 を使って挿入することができます。すると、
 \begin_inset Graphics
 	filename ../clipart/BoxInsetDefaultQt4.png
@@ -30027,7 +30134,7 @@ Surrounded by text
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 折返しフロート
 \begin_inset CommandInset label
 LatexCommand label
@@ -30307,7 +30414,6 @@ have these positions in the paragraph:
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -30384,7 +30490,6 @@ text
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -30481,7 +30586,6 @@ text
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -30558,7 +30662,6 @@ text
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -30601,7 +30704,6 @@ text
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -30725,7 +30827,6 @@ text
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -30798,7 +30899,6 @@ text
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -30911,7 +31011,6 @@ text
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -31023,7 +31122,6 @@ text
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 

@@ -81,9 +81,6 @@
   \setboolean{colortbl}{true}}
  {\setboolean{colortbl}{false}}
 
-% used for book-style tables
-\usepackage{booktabs}
-
 % used to have extra space in table cells
 \@ifundefined{extrarowheight}
  {\usepackage{array}}{}
@@ -407,13 +404,15 @@ name "sec:Graphics-Dialog"
 \begin_layout Standard
 To insert an image into your document, place the cursor at the text position
  you want and click on the toolbar icon 
-\begin_inset Graphics
-	filename ../images/dialog-show-new-inset_graphics.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
 \end_inset
 
+
+\family default
  or use the menu 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -809,13 +808,15 @@ reference "sec:FloatIntroduction"
 
 \begin_layout Standard
 The toolbar button 
-\begin_inset Graphics
-	filename ../images/float-insert_figure.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "float-insert figure"
 \end_inset
 
+
+\family default
  and the menu 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -993,13 +994,15 @@ Insert\SpecialChar \menuseparator
 Label
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/label-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
+
+\family default
 .
  You can now refer to the label using the menu 
 \family sans
@@ -1011,13 +1014,15 @@ Cross
 reference
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/dialog-show-new-inset_ref.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
+
+\family default
 .
  It is important to use references to floats, rather than using vague references
  like 
@@ -1758,11 +1763,9 @@ Table ! Introduction
 
 \begin_layout Standard
 You can insert a table using either the toolbar button 
-\begin_inset Graphics
-	filename ../images/tabular-insert.png
-	scale 85
-	scaleBeforeRotation
-
+\begin_inset Info
+type  "icon"
+arg   "tabular-insert"
 \end_inset
 
  or the menu 
@@ -2499,234 +2502,297 @@ The toolbar has the following icons:
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../images/tabular-feature_append-row.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-row"
 \end_inset
 
+
+\family default
  adds a row below the current cell or selection
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../images/tabular-feature_append-column.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-column"
 \end_inset
 
+
+\family default
  adds a column right beside the current cell or selection
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../images/tabular-feature_delete-row.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-row"
 \end_inset
 
+
+\family default
  deletes the current row or selection
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../images/tabular-feature_delete-column.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-column"
 \end_inset
 
+
+\family default
  deletes the current column or selection
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../images/tabular-feature_toggle-line-top.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular toggle-line-top"
 \end_inset
 
+
+\family default
  adds a line at the top of the current cell / row or of a selection
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../images/tabular-feature_toggle-line-bottom.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular toggle-line-bottom"
 \end_inset
 
+
+\family default
  adds a line at the bottom of the current cell / row or of a selection
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../images/tabular-feature_toggle-line-left.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular toggle-line-left"
 \end_inset
 
+
+\family default
  adds a line at the left side of the current cell / row or of a selection
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../images/tabular-feature_toggle-line-right.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular toggle-line-right"
 \end_inset
 
+
+\family default
  adds a line at the right side of the current cell / row or of a selection
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../images/tabular-feature_set-all-lines.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular set-all-lines"
 \end_inset
 
+
+\family default
  adds lines around the current or selected cells - if the current cell no
  multicolumn cell this also affects the current row and column
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../images/tabular-feature_unset-all-lines.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular unset-all-lines"
 \end_inset
 
+
+\family default
  deletes all lines of the current or selected cells - if the current cell
  no multicolumn cell this also affects the current row and column
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../images/tabular-feature_m-align-left.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-align-left"
 \end_inset
 
+
+\family default
  left-aligns the content of the current cell / column
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../images/tabular-feature_m-align-center.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-align-center"
 \end_inset
 
+
+\family default
  centers the content of the current cell / column horizontally
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../images/tabular-feature_m-align-right.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-align-right"
 \end_inset
 
+
+\family default
  right-aligns the content of the current cell / column
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../images/tabular-feature_align-decimal.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular align-decimal"
 \end_inset
 
+
+\family default
  aligns the content of the current column at a character
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../images/tabular-feature_m-valign-top.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-valign-top"
 \end_inset
 
+
+\family default
  aligns the content of the current cell vertically to the top
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../images/tabular-feature_m-valign-middle.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-valign-middle"
 \end_inset
 
+
+\family default
  centers the content of the current cell vertically
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../images/tabular-feature_m-valign-bottom.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-valign-bottom"
 \end_inset
 
+
+\family default
  aligns the content of the current cell vertically to the bottom
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../images/tabular-feature_set-rotate-cell.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular set-rotate-cell"
 \end_inset
 
+
+\family default
  rotates the current cell or selection counter-clockwise by 90°
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../images/tabular-feature_set-rotate-tabular.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular set-rotate-tabular"
 \end_inset
 
+
+\family default
  rotates the whole table counter-clockwise by 90°
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../images/tabular-feature_multicolumn.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular multicolumn"
 \end_inset
 
+
+\family default
  sets the current cell or selection as a multicolumn
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../images/tabular-feature_multirow.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular multirow"
 \end_inset
 
+
+\family default
  sets the current cell or selection as a multirow
 \end_layout
 
@@ -3052,13 +3118,15 @@ Float\SpecialChar \menuseparator
 Table
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/float-insert_table.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "float-insert table"
 \end_inset
 
+
+\family default
 .
 \end_layout
 
@@ -3196,13 +3264,15 @@ Insert\SpecialChar \menuseparator
 Label
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/label-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
+
+\family default
 .
  You can now refer to the label using the menu 
 \family sans
@@ -3214,13 +3284,15 @@ Cross
 reference
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/dialog-show-new-inset_ref.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
+
+\family default
 .
 \begin_inset Newline newline
 \end_inset
@@ -11681,13 +11753,15 @@ Multicolumn Basics
 \begin_layout Standard
 To merge cells over multiple columns, select as many cells within a row
  as you want to merge and use either the table-toolbar button 
-\begin_inset Graphics
-	filename ../images/tabular-feature_multicolumn.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular multicolumn"
 \end_inset
 
+
+\family default
 , or the menu 
 \family sans
 Edit\SpecialChar \menuseparator
@@ -12449,13 +12523,15 @@ Table ! Multirows
 \begin_layout Standard
 To merge cells over multiple rows, select as many cells within a column
  as you want to merge and use either the table-toolbar button 
-\begin_inset Graphics
-	filename ../images/tabular-feature_multirow.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular multirow"
 \end_inset
 
+
+\family default
 , or the menu 
 \family sans
 Edit\SpecialChar \menuseparator
@@ -20311,13 +20387,15 @@ Insert\SpecialChar \menuseparator
 Label
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/label-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
+
+\family default
 .
  A grey label box like this one: 
 \begin_inset Graphics
@@ -20352,13 +20430,15 @@ Insert\SpecialChar \menuseparator
 Cross-reference
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/dialog-show-new-inset_ref.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
+
+\family default
 .
  A grey cross-reference box like this one: 
 \begin_inset Graphics
@@ -24907,13 +24987,15 @@ Notes ! LyX Notes
 
 \begin_layout Standard
 Notes are inserted with the toolbar button 
-\begin_inset Graphics
-	filename ../images/note-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "note-insert"
 \end_inset
 
+
+\family default
  or the menu 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -25122,13 +25204,15 @@ As you can see in the example, the first line of greyed out notes is a bit
 \end_inset
 
 When you use the toolbar button 
-\begin_inset Graphics
-	filename ../images/note-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "note-insert"
 \end_inset
 
+
+\family default
  to insert notes, a 
 \family sans
 LyX
@@ -25208,13 +25292,15 @@ Footnotes
 
 \begin_layout Standard
 Footnotes can be inserted using the toolbar button 
-\begin_inset Graphics
-	filename ../images/footnote-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
 \end_inset
 
+
+\family default
  or the menu 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -25264,8 +25350,11 @@ footnote
 \family default
 \series default
 \bar default
- to text, press the Backspace key when the cursor is in the first position
- of a 
+ to text, press the 
+\family sans
+Backspace
+\family default
+ key when the cursor is in the first position of a 
 \family roman
 \series medium
 \bar no
@@ -25273,8 +25362,11 @@ footnote
 \family default
 \series default
 \bar default
-, or press the Delete key when the cursor is in the very last position of
- the 
+, or press the 
+\family sans
+Delete
+\family default
+ key when the cursor is in the very last position of the 
 \family roman
 \series medium
 \bar no
@@ -26714,13 +26806,15 @@ Marginal
 Note
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/marginalnote-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "marginalnote-insert"
 \end_inset
 
+
+\family default
 .
  A grey 
 \family roman
@@ -27643,13 +27737,15 @@ Insert\SpecialChar \menuseparator
 Box
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/box-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "box-insert Frameless"
 \end_inset
 
+
+\family default
 .
  A grey box with the label 
 \family sans
@@ -32548,7 +32644,6 @@ reference "sec:Wrap-Floats"
 	filename ../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -32615,7 +32710,6 @@ text
 	filename ../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -32698,7 +32792,6 @@ text
 	filename ../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -32765,7 +32858,6 @@ text
 	filename ../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -32804,7 +32896,6 @@ text
 	filename ../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -32910,7 +33001,6 @@ text
 	filename ../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -32973,7 +33063,6 @@ text
 	filename ../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -33070,7 +33159,6 @@ text
 	filename ../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -33166,7 +33254,6 @@ text
 	filename ../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 

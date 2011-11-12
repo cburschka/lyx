@@ -81,9 +81,6 @@
   \setboolean{colortbl}{true}}
  {\setboolean{colortbl}{false}}
 
-% used for book-style tables
-\usepackage{booktabs}
-
 % used to have extra space in table cells
 \@ifundefined{extrarowheight}
  {\usepackage{array}}{}
@@ -425,12 +422,15 @@ Figuras ! Diálogo de gráficos
 \begin_layout Standard
 Para insertar una imagen en un documento, sitúa el cursor en el lugar del
  texto que desees y haz clic en el icono 
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 85
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
 \end_inset
 
+
+\family default
  o en el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -815,12 +815,15 @@ reference "sec:Introducción-Flotantes"
 
 \begin_layout Standard
 El botón 
-\begin_inset Graphics
-	filename ../../images/float-insert_figure.png
-	scale 85
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "float-insert figure"
 \end_inset
 
+
+\family default
  y el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -985,12 +988,15 @@ Insertar\SpecialChar \menuseparator
 Etiqueta
 \family default
  o el botón 
-\begin_inset Graphics
-	filename ../../images/label-insert.png
-	scale 85
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
+
+\family default
 .
  Ahora puedes referirte a la etiqueta usando el menú 
 \family sans
@@ -1002,12 +1008,15 @@ Referencia
 cruzada
 \family default
  o el botón 
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_ref.png
-	scale 85
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
+
+\family default
 .
  Es importante emplear referencias a flotantes, mejor que alusiones vagas
  como «la figura de arriba», porque como LaTeX recolocará los flotantes
@@ -1657,10 +1666,9 @@ Cuadros ! Introducción
 
 \begin_layout Standard
 Puede insertarse un cuadro mediante el botón 
-\begin_inset Graphics
-	filename ../../images/tabular-insert.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "tabular-insert"
 \end_inset
 
  o el menú 
@@ -2338,215 +2346,297 @@ La barra de herramientas tiene los siguientes iconos:
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-row.png
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-row"
 \end_inset
 
+
+\family default
  añade una fila bajo la celda actual o selección
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-column.png
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-column"
 \end_inset
 
+
+\family default
  añade una columna a la derecha de la celda actual o selección
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-row.png
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-row"
 \end_inset
 
+
+\family default
  borra la fila actual o selección
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-column.png
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-column"
 \end_inset
 
+
+\family default
  borra la columna actual o selección
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_toggle-line-top.png
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular toggle-line-top"
 \end_inset
 
+
+\family default
  añade un borde superior en la celda/fila actual o la selección
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_toggle-line-bottom.png
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular toggle-line-bottom"
 \end_inset
 
+
+\family default
  añade un borde inferior en la celda/fila actual o la selección
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_toggle-line-left.png
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular toggle-line-left"
 \end_inset
 
+
+\family default
  añade un borde a la izquierda en la celda/fila actual o la selección
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_toggle-line-right.png
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular toggle-line-right"
 \end_inset
 
+
+\family default
  añade un borde a la derecha en la celda/fila actual o la selección
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_set-all-lines.png
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular set-all-lines"
 \end_inset
 
+
+\family default
  añade bordes en la celda actual o en las seleccionadas (si la celda actual
  no es multicolumna esto afecta también a la fila y a la columna)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_unset-all-lines.png
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular unset-all-lines"
 \end_inset
 
+
+\family default
  quita todos los bordes de la celda o celdas seleccionadas (si la celda
  actual no es multicolumna esto afecta también a la fila y a la columna)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-align-left.png
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-align-left"
 \end_inset
 
+
+\family default
  alinea a la izquierda el contenido de la celda/columna
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-align-center.png
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-align-center"
 \end_inset
 
+
+\family default
  centra el contenido de la celda/columna horizontalmente
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-align-right.png
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-align-right"
 \end_inset
 
+
+\family default
  alinea a la derecha el contenido de la celda/columna
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_align-decimal.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular align-decimal"
 \end_inset
 
+
+\family default
  alinea el contenido de la celda/columna a un carácter
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-valign-top.png
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-valign-top"
 \end_inset
 
+
+\family default
  alinea arriba el contenido de la celda
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-valign-middle.png
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-valign-middle"
 \end_inset
 
+
+\family default
  centra verticalmente el contenido de la celda
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-valign-bottom.png
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-valign-bottom"
 \end_inset
 
+
+\family default
  alinea abajo el contenido de la celda
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_set-rotate-cell.png
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular set-rotate-cell"
 \end_inset
 
+
+\family default
  gira la celda o selección 90° como las agujas de reloj
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_set-rotate-tabular.png
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular set-rotate-tabular"
 \end_inset
 
+
+\family default
  gira todo el cuadro 90° como agujas del reloj
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_multicolumn.png
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular multicolumn"
 \end_inset
 
+
+\family default
  establece la celda actual o selección como multicolumna
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_multirow.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular multirow"
 \end_inset
 
+
+\family default
  establece la celda actual o selección como multifila
 \end_layout
 
@@ -2872,12 +2962,15 @@ Flotante\SpecialChar \menuseparator
 Cuadro
 \family default
  o con el botón 
-\begin_inset Graphics
-	filename ../../images/float-insert_table.png
-	scale 85
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "float-insert table"
 \end_inset
 
+
+\family default
 .
 \end_layout
 
@@ -3015,12 +3108,15 @@ Insertar\SpecialChar \menuseparator
 Etiqueta
 \family default
  o con el botón 
-\begin_inset Graphics
-	filename ../../images/label-insert.png
-	scale 85
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
+
+\family default
 .
  Ahora puedes referenciar la etiqueta con el menú 
 \family sans
@@ -3032,12 +3128,15 @@ Referencia
 cruzada
 \family default
  o con el botón 
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_ref.png
-	scale 85
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
+
+\family default
 .
 \begin_inset Newline newline
 \end_inset
@@ -11478,12 +11577,15 @@ Fundamentos de multicolumnas
 \begin_layout Standard
 Para extender una celda sobre varias columnas, se marcan las celdas que
  se desee combinar y se usa el botón 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_multicolumn.png
-	scale 85
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular multicolumn"
 \end_inset
 
+
+\family default
 , el menú 
 \family sans
 Editar\SpecialChar \menuseparator
@@ -12250,13 +12352,15 @@ Cuadros ! Multifilas
 \begin_layout Standard
 Para extender una celda sobre varias filas, se marcan las celdas que se
  desee combinar y se usa el botón 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_multirow.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular multirow"
 \end_inset
 
+
+\family default
 , el menú 
 \family sans
 Editar\SpecialChar \menuseparator
@@ -20058,12 +20162,15 @@ Insertar\SpecialChar \menuseparator
 Etiqueta
 \family default
  o el botón 
-\begin_inset Graphics
-	filename ../../images/label-insert.png
-	scale 85
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
+
+\family default
 .
  Aparece una ventana esperando la introducción del texto de la etiqueta
  y se inserta un cuadro gris como este: 
@@ -20106,12 +20213,15 @@ Referencia
 cruzada
 \family default
  o el botón 
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_ref.png
-	scale 85
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
+
+\family default
 .
  Aparece una ventana de referencia cruzada con todas las etiquetas del documento.
  Si tienes abiertos varios documentos LyX, escoge aquel con el que estás
@@ -24620,12 +24730,15 @@ Notas ! en LyX
 
 \begin_layout Standard
 Las notas se insertan con el botón 
-\begin_inset Graphics
-	filename ../../images/note-insert.png
-	scale 85
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "note-insert"
 \end_inset
 
+
+\family default
  o con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -24835,12 +24948,15 @@ Como se ve en el ejemplo, la primera línea de las notas resaltadas en gris
 \end_inset
 
 Si usas el botón de la barra de herramientas 
-\begin_inset Graphics
-	filename ../../images/note-insert.png
-	scale 85
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "note-insert"
 \end_inset
 
+
+\family default
  para insertar notas, se inserta una 
 \family sans
 Nota
@@ -24911,12 +25027,15 @@ Notas ! al pie
 
 \begin_layout Standard
 Las notas al pie se insertan con el botón 
-\begin_inset Graphics
-	filename ../../images/footnote-insert.png
-	scale 85
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
 \end_inset
 
+
+\family default
  o el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -25808,7 +25927,7 @@ Roman{footnote}}
 \begin_layout Subsection
 Colocación de notas al pie
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Notas ! al pie ! colocación
@@ -26367,12 +26486,15 @@ al
 margen
 \family default
  o con el botón 
-\begin_inset Graphics
-	filename ../../images/marginalnote-insert.png
-	scale 85
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "marginalnote-insert"
 \end_inset
 
+
+\family default
 .
  Aparece un cuadro gris con la etiqueta 
 \family roman
@@ -27301,12 +27423,15 @@ Insertar\SpecialChar \menuseparator
 Marco
 \family default
  o con el botón 
-\begin_inset Graphics
-	filename ../../images/box-insert.png
-	scale 85
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "box-insert Frameless"
 \end_inset
 
+
+\family default
 .
  Surge un recuadro gris con la etiqueta 
 \family sans
@@ -32010,7 +32135,6 @@ reference "sec:Flotantes-envueltos"
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -32077,7 +32201,6 @@ texto
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -32160,7 +32283,6 @@ texto
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -32227,7 +32349,6 @@ texto
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -32266,7 +32387,6 @@ texto
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -32372,7 +32492,6 @@ texto
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -32435,7 +32554,6 @@ texto
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -32532,7 +32650,6 @@ texto
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -32628,7 +32745,6 @@ texto
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 

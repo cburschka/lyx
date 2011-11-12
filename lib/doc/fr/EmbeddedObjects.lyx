@@ -81,9 +81,6 @@
   \setboolean{colortbl}{true}}
  {\setboolean{colortbl}{false}}
 
-% used for book-style tables
-\usepackage{booktabs}
-
 % used to have extra space in table cells
 \@ifundefined{extrarowheight}
  {\usepackage{array}}{}
@@ -418,14 +415,16 @@ name "sec:Graphics-Dialog"
 \end_layout
 
 \begin_layout Standard
-Pour placer une figure dans votre document, cliquez sur le bouton
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 85
-	scaleBeforeRotation
+Pour placer une figure dans votre document, cliquez sur le bouton 
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
 \end_inset
 
+
+\family default
  dans la barre d'outils, ou faites 
 \family sans
 Insérer\SpecialChar \menuseparator
@@ -870,13 +869,15 @@ reference "sec:Flottants-Introduction"
 
 \begin_layout Standard
 Le bouton 
-\begin_inset Graphics
-	filename ../../images/float-insert_figure.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "float-insert figure"
 \end_inset
 
+
+\family default
  de la barre d'outils et le menu 
 \family sans
 Insérer\SpecialChar \menuseparator
@@ -1064,13 +1065,15 @@ Insérer
 Étiquette
 \family default
  ou le bouton 
-\begin_inset Graphics
-	filename ../../images/label-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
+
+\family default
  de la barre d'outils.
  On peut alors faire référence à cette étiquette en utilisant le menu 
 \family sans
@@ -1082,13 +1085,15 @@ Référence
 croisée
 \family default
  ou le bouton 
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_ref.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
+
+\family default
  de la barre d'outils.
  Il est important d'utiliser des références pour les flottants de figures
  plutôt que des locutions vagues du genre 
@@ -1884,11 +1889,9 @@ Tableau ! Introduction
 \begin_layout Standard
 Vous pouvez insérer un tableau en utilisant soit le bouton de la barre d'outils
  
-\begin_inset Graphics
-	filename ../../images/tabular-insert.png
-	scale 85
-	scaleBeforeRotation
-
+\begin_inset Info
+type  "icon"
+arg   "tabular-insert"
 \end_inset
 
  soit 
@@ -2603,79 +2606,100 @@ La barre d'outils contient les icônes suivantes :
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-row.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-row"
 \end_inset
 
+
+\family default
  ajoute une ligne sous la cellule ou la sélection courante
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-column.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-column"
 \end_inset
 
+
+\family default
  ajoute une colonne à la droite de la cellule ou de la sélection courante
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-row.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-row"
 \end_inset
 
+
+\family default
  supprime la ligne ou la sélection courante
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-column.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-column"
 \end_inset
 
+
+\family default
  supprime la colonne ou la sélection courante
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_toggle-line-top.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular toggle-line-top"
 \end_inset
 
+
+\family default
  ajoute une ligne en haut de la cellule, de la ligne ou de la sélection
  courante
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_toggle-line-bottom.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular toggle-line-bottom"
 \end_inset
 
+
+\family default
  ajoute une ligne en bas de la cellule, de la ligne ou de la sélection courante
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_toggle-line-left.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular toggle-line-left"
 \end_inset
 
+
+\family default
  ajoute une ligne sur le côté gauche de la cellule, de la ligne 
 \begin_inset Note Note
 status collapsed
@@ -2691,12 +2715,15 @@ ou colonne ?
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_toggle-line-right.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular toggle-line-right"
 \end_inset
 
+
+\family default
  ajoute une ligne sur le côté droit de la cellule, de la ligne 
 \begin_inset Note Note
 status collapsed
@@ -2712,12 +2739,15 @@ ou colonne ?
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_set-all-lines.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular set-all-lines"
 \end_inset
 
+
+\family default
  ajoute des lignes autour de la cellule ou de la sélection de cellules courante
  - si la cellule courante n'est pas multi-colonnes cela affecte aussi la
  colonne et la ligne courante
@@ -2725,12 +2755,15 @@ ou colonne ?
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_unset-all-lines.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular unset-all-lines"
 \end_inset
 
+
+\family default
  supprime toutes les lignes autour de la cellule ou de la sélection de cellules
  courante- si la cellule courante n'est pas multi-colonnes cela affecte
  aussi la colonne et la ligne courante
@@ -2738,123 +2771,156 @@ ou colonne ?
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-align-left.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-align-left"
 \end_inset
 
+
+\family default
  aligne à gauche le contenu de la cellule ou de la colonne courante
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-align-center.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-align-center"
 \end_inset
 
+
+\family default
  centre horizontalement le contenu de la cellule ou de la colonne courante
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-align-right.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-align-right"
 \end_inset
 
+
+\family default
  aligne à droite le contenu de la cellule ou de la colonne courante
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_align-decimal.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular align-decimal"
 \end_inset
 
+
+\family default
  aligne le contenu de la colonne courante sur un caractère
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-valign-top.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-valign-top"
 \end_inset
 
+
+\family default
  aligne le contenu de la cellule courante verticalement vers le haut
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-valign-middle.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-valign-middle"
 \end_inset
 
+
+\family default
  centre verticalement le contenu de la cellule courante
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-valign-bottom.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-valign-bottom"
 \end_inset
 
+
+\family default
  aligne le contenu de la cellule courante verticalement vers le bas
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_set-rotate-cell.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular set-rotate-cell"
 \end_inset
 
+
+\family default
  fait pivoter la cellule ou la sélection courante de 90° dans le sens anti-horai
 re
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_set-rotate-tabular.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular set-rotate-tabular"
 \end_inset
 
+
+\family default
  fait pivoter tout le tableau de 90° dans le sens anti-horaire
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_multicolumn.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular multicolumn"
 \end_inset
 
+
+\family default
  transforme en multi-colonne la cellule ou la sélection courante
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_multirow.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular multirow"
 \end_inset
 
+
+\family default
  transforme en multiligne la cellule ou la sélection courante
 \end_layout
 
@@ -3101,13 +3167,15 @@ Flottant\SpecialChar \menuseparator
 Tableau
 \family default
  ou le bouton 
-\begin_inset Graphics
-	filename ../../images/float-insert_table.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "float-insert table"
 \end_inset
 
+
+\family default
  de la barre d'outils.
 \end_layout
 
@@ -3182,7 +3250,7 @@ Paquetages LaTeX ! caption
 
  dans le préambule de votre document.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Pour plus d'information voyez la section
@@ -3251,13 +3319,15 @@ Insérer
 Étiquette
 \family default
  ou le bouton 
-\begin_inset Graphics
-	filename ../../images/label-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
+
+\family default
  de la barre d'outils.
  On peut alors faire référence à cette étiquette en utilisant le menu 
 \family sans
@@ -3269,13 +3339,15 @@ Référence
 croisée
 \family default
  ou le bouton 
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_ref.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
+
+\family default
  de la barre d'outils.
 \begin_inset Newline newline
 \end_inset
@@ -11792,14 +11864,16 @@ Les Bases des Multicolonnes
 
 \begin_layout Standard
 Pour faire qu'une cellule couvre plusieurs colonnes, marquez les cellules
- qu'elle doit couvrir et utilisez soit le bouton
-\begin_inset Graphics
-	filename ../../images/tabular-feature_multicolumn.png
-	scale 85
-	scaleBeforeRotation
+ qu'elle doit couvrir et utilisez soit le bouton 
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular multicolumn"
 \end_inset
 
+
+\family default
  de la barre d'outils tableau, ou le menu 
 \family sans
 Éditer\SpecialChar \menuseparator
@@ -12574,14 +12648,16 @@ Tableau ! Multi-ligne
 \begin_layout Standard
 Pour faire qu'une cellule couvre plusieurs lignes, marquez les cellules
  qu'elle doit couvrir et utilisez soit le bouton 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_multirow.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular multirow"
 \end_inset
 
-de la barre d'outils tableau, ou le menu 
+
+\family default
+ de la barre d'outils tableau, ou le menu 
 \family sans
 Éditer\SpecialChar \menuseparator
 Tableau\SpecialChar \menuseparator
@@ -20692,17 +20768,20 @@ Insérer\SpecialChar \menuseparator
 Étiquette
 \family default
  ou le bouton 
-\begin_inset Graphics
-	filename ../../images/label-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
+
+\family default
  de la barre d'outils.
  Une boîte grise de ce genre : 
 \begin_inset Graphics
 	filename clipart/labelQt4.png
+	lyxscale 85
 	scale 85
 	scaleBeforeRotation
 
@@ -20732,13 +20811,15 @@ Référence
 Croisée
 \family default
  ou le bouton 
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_ref.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
+
+\family default
  de la barre d'outils.
  Une boîte grise de référence croisée comme celle-ci : 
 \begin_inset Graphics
@@ -25412,13 +25493,15 @@ Notes ! Notes LyX
 
 \begin_layout Standard
 On peut insérer une note en utilisant le bouton 
-\begin_inset Graphics
-	filename ../../images/note-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "note-insert"
 \end_inset
 
+
+\family default
  de la barre d'outils ou avec le menu 
 \family sans
 Insérer\SpecialChar \menuseparator
@@ -25638,13 +25721,15 @@ Comme vous pouvez le voir dans l'exemple, la première ligne des notes grisées
 \end_inset
 
 Quand vous utilisez le bouton 
-\begin_inset Graphics
-	filename ../../images/note-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "note-insert"
 \end_inset
 
+
+\family default
  de la barre d'outils, vous insérez une 
 \family sans
 Note
@@ -25718,13 +25803,15 @@ Notes de bas de page
 \begin_layout Standard
 Les notes en bas de page peuvent être insérées soit en utilisant le bouton
  
-\begin_inset Graphics
-	filename ../../images/footnote-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
 \end_inset
 
+
+\family default
  de la barre d'outils, soit en utilisant le menu 
 \family sans
 Insérer\SpecialChar \menuseparator
@@ -25790,7 +25877,7 @@ Page
  Pour retransformer une note de bas de page en texte, appuyez sur la touche
  
 \family sans
-backspace
+Backspace
 \family default
  quand le curseur est au tout début de la note ou appuyez sur la touche
  
@@ -27268,13 +27355,15 @@ en
 Marge
 \family default
  ou avec le bouton 
-\begin_inset Graphics
-	filename ../../images/marginalnote-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "marginalnote-insert"
 \end_inset
 
+
+\family default
  de la barre d'outils, vous voyez apparaître dans votre texte une boîte
  grise avec une étiquette rouge 
 \begin_inset Quotes fld
@@ -28171,13 +28260,15 @@ Insérer\SpecialChar \menuseparator
 Boîte
 \family default
  ou avec le bouton 
-\begin_inset Graphics
-	filename ../../images/box-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "box-insert Frameless"
 \end_inset
 
+
+\family default
  de la barre d'outils.
  Une boîte grise avec une étiquette 
 \family sans
@@ -33180,8 +33271,6 @@ reference "sec:Flottant-d'enrobage"
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features tabularvalignment="middle">
@@ -33192,13 +33281,10 @@ reference "sec:Flottant-d'enrobage"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -33211,9 +33297,7 @@ reference "sec:Flottant-d'enrobage"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33224,9 +33308,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33235,9 +33317,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33258,9 +33338,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33269,13 +33347,10 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -33290,9 +33365,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33301,9 +33374,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33321,6 +33392,8 @@ text
 \lang english
 To get an object exactly at the position where it is inserted, for example
  to get one of these positions:
+\lang french
+
 \begin_inset VSpace defskip
 \end_inset
 
@@ -33330,8 +33403,6 @@ To get an object exactly at the position where it is inserted, for example
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features tabularvalignment="middle">
@@ -33342,9 +33413,7 @@ To get an object exactly at the position where it is inserted, for example
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33353,9 +33422,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33366,13 +33433,10 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -33385,9 +33449,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33408,9 +33470,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33419,9 +33479,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33432,9 +33490,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33443,13 +33499,10 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -33475,9 +33528,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33486,13 +33537,10 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -33505,9 +33553,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33518,9 +33564,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33529,9 +33573,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33540,9 +33582,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33564,9 +33604,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33575,9 +33613,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33586,9 +33622,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33599,9 +33633,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33610,13 +33642,10 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -33629,9 +33658,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33647,8 +33674,6 @@ text
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
 <features tabularvalignment="middle">
@@ -33659,9 +33684,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33670,9 +33693,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33683,13 +33704,10 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -33702,9 +33720,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33715,9 +33731,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33726,9 +33740,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33750,9 +33762,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33761,9 +33771,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33772,9 +33780,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33785,9 +33791,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33796,13 +33800,10 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -33815,9 +33816,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33828,9 +33827,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33839,9 +33836,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33850,9 +33845,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33873,9 +33866,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33884,9 +33875,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33897,9 +33886,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33908,13 +33895,10 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -33929,9 +33913,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
@@ -33940,9 +33922,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+texte
 \end_layout
 
 \end_inset
