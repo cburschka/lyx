@@ -79,9 +79,6 @@
   \setboolean{colortbl}{true}}
  {\setboolean{colortbl}{false}}
 
-% wird fuer Tabellen im Buchstil benutzt
-\usepackage{booktabs}
-
 % wird benutzt, um Tabellenzellen zu vergrößern
 \@ifundefined{extrarowheight}
  {\usepackage{array}}{}
@@ -394,13 +391,15 @@ name "abs:Grafik-Dialog"
 \begin_layout Standard
 Um eine Abbildung in Ihr Dokument einzufügen, klicken Sie auf das Symbol
  
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 70
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
 \end_inset
 
+
+\family default
  in der Werkzeugleiste oder wählen das Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
@@ -792,13 +791,15 @@ reference "abs:Gleitobjekte-Einleitung"
 
 \begin_layout Standard
 Wenn Sie auf das Werkzeugleisten-Symbol 
-\begin_inset Graphics
-	filename ../../images/float-insert_figure.png
-	scale 70
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "float-insert figure"
 \end_inset
 
+
+\family default
  klicken oder 
 \family sans
 Einfügen\SpecialChar \menuseparator
@@ -977,13 +978,15 @@ Einfügen\SpecialChar \menuseparator
 Marke
 \family default
  oder durch Klicken auf 
-\begin_inset Graphics
-	filename ../../images/label-insert.png
-	scale 70
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
+
+\family default
  eine Marke ein.
  Auf diese können Sie dann wie gewohnt mit 
 \family sans
@@ -991,13 +994,15 @@ Einfügen\SpecialChar \menuseparator
 Querverweis
 \family default
  oder durch Klicken auf 
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_ref.png
-	scale 70
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
+
+\family default
  verweisen.
  Das ist besser als eine vage Formulierung wie 
 \begin_inset Quotes gld
@@ -1613,11 +1618,9 @@ Tabellen ! Einführung
 
 \begin_layout Standard
 Eine Tabelle können Sie mit dem Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/tabular-insert.png
-	scale 70
-	scaleBeforeRotation
-
+\begin_inset Info
+type  "icon"
+arg   "tabular-insert"
 \end_inset
 
  oder das Menü 
@@ -2338,236 +2341,299 @@ Die Werkzeugleiste hat folgende Knöpfe:
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-row.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-row"
 \end_inset
 
+
+\family default
  Fügt eine Zeile unterhalb der momentanen an
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-column.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-column"
 \end_inset
 
+
+\family default
  Fügt eine Spalte rechts von der momentanen an
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-row.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-row"
 \end_inset
 
+
+\family default
  Löscht die ausgewählte(n) Zeile(n)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-column.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-column"
 \end_inset
 
+
+\family default
  Löscht die ausgewählte(n) Spalte(n)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_toggle-line-top.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular toggle-line-top"
 \end_inset
 
+
+\family default
  Fügt eine Linie oberhalb der ausgewählte(n) Zeile(n) an oder löscht sie,
  wenn der Knopf grau hinterlegt ist
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_toggle-line-bottom.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular toggle-line-bottom"
 \end_inset
 
+
+\family default
  Fügt eine Linie unterhalb der ausgewählte(n) Zeile(n) an oder löscht sie,
  wenn der Knopf grau hinterlegt ist
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_toggle-line-left.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular toggle-line-left"
 \end_inset
 
+
+\family default
  Fügt eine Linie links der ausgewählte(n) Spalte(n) an oder löscht sie,
  wenn der Knopf grau hinterlegt ist
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_toggle-line-right.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular toggle-line-right"
 \end_inset
 
+
+\family default
  Fügt eine Linie rechts der ausgewählte(n) Spalte(n) an oder löscht sie,
  wenn der Knopf grau hinterlegt ist
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_set-all-lines.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular set-all-lines"
 \end_inset
 
+
+\family default
  Setzt alle Linien um die ausgewählte(n) Zelle(n)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_unset-all-lines.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular unset-all-lines"
 \end_inset
 
+
+\family default
  Löscht alle Linien um die ausgewählte(n) Zelle(n)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-align-left.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-align-left"
 \end_inset
 
+
+\family default
  Richtet den Inhalt der ausgewählte(n) Spalte(n) linksbündig aus
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-align-center.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-align-center"
 \end_inset
 
+
+\family default
  Zentriert den Inhalt der ausgewählte(n) Spalte(n)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-align-right.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-align-right"
 \end_inset
 
+
+\family default
  Richtet den Inhalt der ausgewählte(n) Spalte(n) rechtsbündig aus
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_align-decimal.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular align-decimal"
 \end_inset
 
+
+\family default
  Richtet den Inhalt der ausgewählten Spalte an einem Zeichen aus
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-valign-top.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-valign-top"
 \end_inset
 
+
+\family default
  Richtet den Inhalt der ausgewählte(n) Zeile(n) oben aus
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-valign-middle.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-valign-middle"
 \end_inset
 
+
+\family default
  Zentriert den Inhalt der ausgewählte(n) Zeile(n) 
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_m-valign-bottom.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular m-valign-bottom"
 \end_inset
 
+
+\family default
  Richtet den Inhalt der ausgewählte(n) Zeile(n) unten aus
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_set-rotate-cell.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular set-rotate-cell"
 \end_inset
 
+
+\family default
  Dreht den Inhalt der ausgewählte(n) Zelle(n) um 90° gegen den Uhrzeigersinn
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_set-rotate-tabular.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular set-rotate-tabular"
 \end_inset
 
+
+\family default
  Dreht die Tabelle um 90° gegen den Uhrzeigersinn
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_multicolumn.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular multicolumn"
 \end_inset
 
+
+\family default
  Setzt die ausgewählte(n) Zelle(n) einer Zeile als Mehrfachspalte
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset Graphics
-	filename ../../images/tabular-feature_multirow.png
-	scaleBeforeRotation
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular multirow"
 \end_inset
 
+
+\family default
  Setzt die ausgewählte(n) Zelle(n) einer Zeile als Mehrfachzeile
 \end_layout
 
@@ -2913,13 +2979,15 @@ Gleitobjekt\SpecialChar \menuseparator
 Tabelle
 \family default
  oder einen Klick auf den Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/float-insert_table.png
-	scale 70
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "float-insert table"
 \end_inset
 
+
+\family default
  erzeugt werden.
  Sie erhalten zunächst einen leeren roten Rahmen ohne Tabelle.
  In das rot umrahmte Feld rechts von 
@@ -2939,20 +3007,7 @@ Tabelle
 
 Nr:
 \emph default
- können Sie dann eine Tabelle mit dem Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/tabular-insert.png
-	scale 70
-	scaleBeforeRotation
-
-\end_inset
-
- oder dem Menü 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Tabelle
-\family default
- einfügen.
+ können Sie dann eine Tabelle einfügen.
 \end_layout
 
 \begin_layout Standard
@@ -3006,7 +3061,7 @@ LaTeX-Pakete ! caption
 
  im LaTeX-Vorspann Ihres Dokuments folgende Option einfügen:
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Näheres finden Sie im Abschnitt
@@ -3070,13 +3125,15 @@ Einfügen\SpecialChar \menuseparator
 Marke
 \family default
  oder durch Klicken auf 
-\begin_inset Graphics
-	filename ../../images/label-insert.png
-	scale 70
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
+
+\family default
  eine Marke ein.
  Auf diese können Sie dann wie gewohnt mit 
 \family sans
@@ -3084,13 +3141,15 @@ Einfügen\SpecialChar \menuseparator
 Querverweis
 \family default
  oder durch Klicken auf 
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_ref.png
-	scale 70
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
+
+\family default
  verweisen.
  Verweise werden detailliert in Abschnitt
 \begin_inset space ~
@@ -11630,13 +11689,15 @@ Grundlagen
 \begin_layout Standard
 Um mehrere Zellen einer Zeile zu einer zu verbinden, markieren Sie diese
  und verwenden dann den Knopf 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_multicolumn.png
-	scale 70
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular multicolumn"
 \end_inset
 
+
+\family default
  in der Werkzeugleiste, das Menü 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
@@ -12519,13 +12580,15 @@ Tabellen ! Mehrfachzeilen
 \begin_layout Standard
 Um mehrere Zellen einer Zeile zu einer zu verbinden, markieren Sie diese
  und verwenden dann den Knopf 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_multirow.png
-	scale 70
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular multirow"
 \end_inset
 
+
+\family default
  in der Werkzeugleiste, das Menü 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
@@ -20573,13 +20636,15 @@ Einfügen\SpecialChar \menuseparator
 Marke
 \family default
  oder einen Klick auf 
-\begin_inset Graphics
-	filename ../../images/label-insert.png
-	scale 70
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
+
+\family default
  eine Marke im Titel einfügen.
  Im 
 \family sans
@@ -20613,13 +20678,15 @@ Einfügen\SpecialChar \menuseparator
 Querverweis
 \family default
  oder einen Klick auf 
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_ref.png
-	scale 70
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
+
+\family default
  können Sie dann auf die Marke verweisen.
  Als Querverweis wird in LyX ein graues Kästchen wie zum Beispiel dieses
  angezeigt:
@@ -25132,13 +25199,15 @@ Notizen ! LyX-Notizen
 
 \begin_layout Standard
 Notizen werden mit einem Klick auf 
-\begin_inset Graphics
-	filename ../../images/note-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "note-insert"
 \end_inset
 
+
+\family default
  oder 
 \family sans
 Einfügen\SpecialChar \menuseparator
@@ -25356,13 +25425,15 @@ Das Beispiel zeigt, dass die erste Zeile von Grauschrift-Notizen eingerückt
 \end_inset
 
 Wenn Sie auf den Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/note-insert.png
-	scale 85
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "note-insert"
 \end_inset
 
+
+\family default
  klicken, wird zunächst eine 
 \family sans
 LyX-Notiz
@@ -25422,12 +25493,23 @@ Fußnoten
 \end_layout
 
 \begin_layout Standard
-Zu dem, was bereits im 
-\emph on
-Benutzerhandbuch
-\emph default
- über Fußnoten geschrieben wurde, folgen hier noch ein paar Anmerkungen.
- Eine Fußnotenbox sieht folgendermaßen aus: 
+Fußnoten werden über den Werkzeugleistenknopf 
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
+\end_inset
+
+
+\family default
+ oder das Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Fußnote
+\family default
+ eingefügt.
+ Man sieht dann diese Fußnotenbox: 
 \begin_inset Graphics
 	filename clipart/FussnoteQt4.png
 	scale 80
@@ -25435,7 +25517,18 @@ Benutzerhandbuch
 
 \end_inset
 
-
+ in die der Fußnotentext eingegeben wird.
+ Wenn existierender Text in eine Fußnote umgewandelt werden soll, markiert
+ man ihn und klickt auf den Fußnoten-Werkzeugleistenknopf.
+ Um eine Fußnote in Text zu konvertieren, drückt man die Taste 
+\family sans
+Backspace
+\family default
+ wenn sich der Cursor am Anfang der Fußnote befindet oder die Taste 
+\family sans
+Entf
+\family default
+ wenn der Cursor am Ende der Fußnote ist.
 \end_layout
 
 \begin_layout Standard
@@ -26875,13 +26968,15 @@ Notizen ! Randnotizen
 \begin_layout Standard
 Randnotizen sehen in LyX wie Fußnoten aus und verhalten sich auch so.
  Sie fügen sie mit einem Klick auf den Schalter 
-\begin_inset Graphics
-	filename ../../images/marginalnote-insert.png
-	scale 70
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "marginalnote-insert"
 \end_inset
 
+
+\family default
  oder über 
 \family sans
 Einfügen\SpecialChar \menuseparator
@@ -27779,13 +27874,15 @@ Einfügen\SpecialChar \menuseparator
 Box
 \family default
  oder dem Schalter 
-\begin_inset Graphics
-	filename ../../images/box-insert.png
-	scale 70
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "box-insert Frameless"
 \end_inset
 
+
+\family default
  eingefügt.
  Ein graues Kästchen mit der Aufschrift 
 \begin_inset Quotes gld
@@ -32642,7 +32739,6 @@ reference "sec:Umflossene-Gleitobjekte"
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -32709,7 +32805,6 @@ Text
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -32797,7 +32892,6 @@ Text
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -32864,7 +32958,6 @@ Text
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -32903,7 +32996,6 @@ Text
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -33009,7 +33101,6 @@ Text
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -33072,7 +33163,6 @@ Text
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -33169,7 +33259,6 @@ Text
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
@@ -33265,7 +33354,6 @@ Text
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
 
 \end_inset
 
