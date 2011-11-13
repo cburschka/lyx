@@ -6,8 +6,8 @@ echo Usage build.bat devel/install/deploy STUDIO(optional)
 echo     devel   - Builds Visual Studio project files for development on LyX
 echo     install - Builds Visual Studio project files with all enabled for installation
 echo     deploy  - Builds Makefiles and installs LyX
-echo     STUDIO  - Used Visual Studio version, default is "Visual Studio 9 2008"
-echo               use "Visual Studio 10" for Visual Studio 10
+echo     STUDIO  - Used Visual Studio version, default is "Visual Studio 10"
+echo               use "Visual Studio 9 2008" for Visual Studio 9
 echo
 echo -------------------------------------------------------------------------------------
 echo -
@@ -26,15 +26,17 @@ if [%1]==[] (
 	echo ERROR: no options.
     echo Exiting now.
 	goto :eof
+) else (
+echo hello
 )
 
 REM Add path to qmake here or set PATH correctly on your system.
-::set PATH=D:\Qt\bin;%PATH%
+set PATH=D:\Qt\bin;%PATH%
 
 REM Edit pathes here or set the environment variables on you system.
-::set GNUWIN32_DIR=D:\LyXSVN\lyx-devel\lyx-windows-deps-msvc2008
-::set LYX_SOURCE=D:\LyXSVN\lyx-devel
-::set LYX_BUILD=D:\LyXSVN\lyx-devel\compile-result
+set GNUWIN32_DIR=D:\LyXSVN\lyx-devel\lyx-windows-deps-msvc2010
+set LYX_SOURCE=D:\LyXSVN\lyx-devel
+set LYX_BUILD=D:\LyXSVN\lyx-devel\compile-result
 
 if [%LYX_SOURCE%]==[] (
 	set LYX_SOURCE=%~DP0\..\..
@@ -46,17 +48,14 @@ if [%LYX_BUILD%]==[] (
 )
 echo LyX build : "%LYX_BUILD%"
 
-
-
 if [%GNUWIN32_DIR%]==[] (
 	echo GNUWIN32_DIR not set.
 	echo Downloading win32 deps.
 	set DEPENDENCIES_DOWNLOAD="-DLYX_DEPENDENCIES_DOWNLOAD=1"
 ) else (
-	echo LyX deps  : "%GNUWIN32_DIR%"
-	set PATH="%GNUWIN32_DIR%\bin";"%PATH%"
+	echo LyX deps : "%GNUWIN32_DIR%"
+	set PATH=%GNUWIN32_DIR%\bin;%PATH%
 )
-
 
 if not exist %LYX_BUILD% (
 	echo creating "%LYX_BUILD%"
@@ -66,8 +65,8 @@ if not exist %LYX_BUILD% (
 		goto :eof
 	)
 )
-cd "%LYX_BUILD%"
 
+cd "%LYX_BUILD%"
 
 REM start with a new cmake run
 ::del CMakeCache.txt
@@ -87,11 +86,12 @@ if "%1%" == "devel" (
 
 if "%1%" == "install" (
 	REM Build solution to develop LyX
-	cmake %LYX_SOURCE% -G%USED_STUDIO% -DLYX_MERGE_FILES=1 -DLYX_INSTALL=1 %DEPENDENCIES_DOWNLOAD%
+	cmake %LYX_SOURCE% -G%USED_STUDIO% -DLYX_MERGE_FILES=1 -DLYX_INSTALL=1 %DEPENDENCIES_DOWNLOAD% -DLYX_CONSOLE=OFF
 	msbuild lyx.sln         /p:Configuration=Release /t:ALL_BUILD
 	msbuild INSTALL.vcxproj /p:Configuration=Release 
 )
 
-
+REM Edit the path according to your system.
+cd "%LYX_SOURCE%\development\cmake"
 
 :eof
