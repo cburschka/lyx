@@ -84,6 +84,7 @@ std::string join(std::vector<std::string> const & input,
 	char const * delim);
 
 bool is_math_env(std::string const & name);
+bool is_display_math_env(std::string const & name);
 char const * const * is_known(std::string const &, char const * const *);
 
 /*!
@@ -117,7 +118,8 @@ enum ArgumentType {
 	required,
 	verbatim,
 	item,
-	optional
+	optional,
+	displaymath,
 };
 
 class FullCommand {

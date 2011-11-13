@@ -703,30 +703,30 @@ thebibliography{}
 
 % Environments that start math mode.
 % $...$, $$...$$, \(...\) and \[...\] are hardcoded in tex2lyx.
-% The arguments are currently ignored.
+% The arguments are currently ignored (apart from displaymath).
 \begin{mathenvironments}
-equation
-equation*
-eqnarray
-eqnarray*
-align
-align*
-gather
-gather*
-multline
-multline*
-math
-displaymath
-flalign
-flalign
+equation{displaymath}
+equation*{displaymath}
+eqnarray{displaymath}
+eqnarray*{displaymath}
+align{displaymath}
+align*{displaymath}
+gather{displaymath}
+gather*{displaymath}
+multline{displaymath}
+multline*{displaymath}
+math{}
+displaymath{displaymath}
+flalign{displaymath}
+flalign{displaymath}
 % These require extra args
-alignat
-alignat*
-xalignat
-xalignat*
-xxalignat
+alignat{}{displaymath}
+alignat*{displaymath}
+xalignat{}{displaymath}
+xalignat*{}{displaymath}
+xxalignat{}{displaymath}
 % These are not known by LyX but work nevertheless:
-empheq
+empheq[]{}{displaymath}
 \end{mathenvironments}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

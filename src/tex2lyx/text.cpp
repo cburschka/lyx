@@ -689,6 +689,7 @@ void parse_arguments(string const & command,
 			else
 				ert += p.verbatim_item();
 			break;
+		case displaymath:
 		case verbatim:
 			// This argument may contain special characters
 			ert += '{' + p.verbatim_item() + '}';
@@ -1157,6 +1158,12 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		parse_math(p, os, FLAG_END, MATH_MODE);
 		os << "\\end{" << name << "}";
 		end_inset(os);
+		if (is_display_math_env(name)) {
+			// Prevent the conversion of a line break to a space
+			// (bug 7668). This does not change the output, but
+			// looks ugly in LyX.
+			eat_whitespace(p, os, parent_context, false);
+		}
 	}
 
 	else if (unstarred_name == "tabular" || name == "longtable") {
@@ -1900,7 +1907,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			begin_inset(os, "Formula ");
 			Token const & n = p.get_token();
-			if (n.cat() == catMath && outer) {
+			bool const display(n.cat() == catMath && outer);
+			if (display) {
 				// TeX's $$...$$ syntax for displayed math
 				os << "\\[";
 				parse_math(p, os, FLAG_SIMPLE, MATH_MODE);
@@ -1914,6 +1922,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				os << '$';
 			}
 			end_inset(os);
+			if (display) {
+				// Prevent the conversion of a line break to a
+				// space (bug 7668). This does not change the
+				// output, but looks ugly in LyX.
+				eat_whitespace(p, os, context, false);
+			}
 		}
 
 		else if (t.cat() == catSuper || t.cat() == catSub)
@@ -2160,6 +2174,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			parse_math(p, os, FLAG_EQUATION, MATH_MODE);
 			os << "\\]";
 			end_inset(os);
+			// Prevent the conversion of a line break to a space
+			// (bug 7668). This does not change the output, but
+			// looks ugly in LyX.
+			eat_whitespace(p, os, context, false);
 		}
 
 		else if (t.cs() == "begin")

@@ -357,6 +357,8 @@ void read_command(Parser & p, string command, CommandMap & commands)
 				arguments.push_back(required);
 			else if (arg == "item")
 				arguments.push_back(item);
+			else if (arg == "displaymath")
+				arguments.push_back(displaymath);
 			else
 				arguments.push_back(verbatim);
 		} else {
