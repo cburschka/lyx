@@ -32350,14 +32350,177 @@ LaTeXとLyXオプション
 pages
 \emph default
 オプションを指定してください。
+\lang english
+The argument of this option is a comma separated list, containing page numbers
+ (insert as option 
+\series bold
+pages={3,5,6,8}
+\series default
+), ranges of page numbers (
+\series bold
+pages={4-9}
+\series default
+) or any combination.
+ To insert empty pages use {}.
+ E.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+
+\series bold
+pages={3,{},8-11,15}
+\series default
+ will insert page 3, an empty page, and pages 8, 9, 10, 11 and 15.
+ Page ranges are specified in the syntax 
 \emph on
+start
+\emph default
+-
+\emph on
+stop
+\emph default
+.
+ This selects all pages from 
+\emph on
+start
+\emph default
+ to 
+\emph on
+stop
+\emph default
+.
+ Omitting 
+\emph on
+start
+\emph default
+ defaults to the first page; omitting 
+\emph on
+stop
+\emph default
+ defaults to the last page of the document.
+ The last page can also be selected with the keyword 
+\series bold
+last
+\series default
+.
+ (This is only permitted in a page range.) So 
+\series bold
+pages=-
+\series default
+ will insert all pages of the document and 
+\series bold
+pages=last-1
+\series default
+ will insert all pages in reverse order.
+\emph on
+\lang japanese
 pages
 \emph default
 オプションを指定しないと、PDFの最初のページのみが挿入されます。
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+The option 
+\series bold
+noautoscale
+\series default
+ inserts the pages with their original size, if this option is not given,
+ the pages will be resized to fith the width of the page of your document.
+ In the tab 
+\family sans
+Size and Rotation
+\family default
+ you can specify the width and height of the input pages and their rotation.
+ If another width than 100
+\begin_inset space \thinspace{}
+\end_inset
+
+Scale% is used, the option 
+\series bold
+noautoscale
+\series default
+ will be overwritten.
+ For more info and possible options, have a look into the documentation
+ of the LaTeX-package 
+\series bold
+pdfpages
+\series default
+\lang japanese
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pdfpages"
+
+\end_inset
+
+.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXぱっけーじ@LaTeXパッケージ ! pdfpages
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+To use this template in a 
+\family sans
+Beamer
+\family default
+ presentation you need to first insert an 
+\family sans
+EndFrame
+\family default
+ environment and in a subsequent paragraph a TeX Code box containing the
+ command 
+\series bold
+
+\backslash
+setbeamertemplate{background canvas}{}
+\series default
+.
+ Then you can insert as many paragraphs containing the PDFPages template
+ as you wish.
+ Behind the included PDF pages you can resume the Beamer presentation by
+ beginning a new frame or by starting a new section.
+ To avoid stray blank pages prior to the PDF pages, make sure to use the
+ 
+\family sans
+Default
+\family default
+ alignment for the paragraph containing the template.
+\begin_inset Newline newline
+\end_inset
+
+Here is an included PDF which is rotated by -5°:
+\lang japanese
+ 
+\begin_inset External
+	template PDFPages
+	filename ../clipart/Abstract.pdf
+	extra LaTeX "noautoscale, pages=-"
+	rotateAngle -5
+	rotateOrigin bottomleft
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
-ラスターイメージ これはビットマップ画像に使用します。よく使われる画像形式のほとんどすべてがサポートされています。
+ラスターイメージ これはビットマップ画像に使用します。
 \family sans
 外部素材
 \family default
@@ -32372,8 +32535,24 @@ reference "sec:画像ダイアログ"
 \family sans
 画像
 \family default
-ダイアログを使って挿入される画像と同じように取り扱うことができます。異なる点といえば、ラスターイメージのみを取り扱うことができる点、すなわちPDFやEPS画像は
-サポートしていないという点のみです。
+ダイアログを使って挿入される画像と同じように取り扱うことができます。
+\lang english
+The difference to the normal image input is that only raster images are
+ allowed; that means that PDF and EPS-images are not supported
+\lang japanese
+.
+ 
+\lang english
+Here is an inserted raster image:
+\lang japanese
+ 
+\begin_inset External
+	template RasterImage
+	filename ../clipart/ToolbarEnvBox.png
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -32394,7 +32573,7 @@ target "http://ja.wikipedia.org/wiki/Xfig"
 
 \begin_layout Standard
 \begin_inset Float table
-placement h
+placement !h
 wide false
 sideways false
 status open
@@ -34283,19 +34462,13 @@ DFを使用することをお勧めします。
 \family sans
 DVI
 \family default
-メニューを使用して、DVIに書き出すことができます。また、
+メニューを使用して、DVIに書き出すことができます。
+\lang english
+You can view your document as DVI via the 
 \family sans
-表示
+View
 \family default
-メニューかツールバーボタン
-\begin_inset Graphics
-	filename ../../images/buffer-view_dvi.png
-	scale 85
-	scaleBeforeRotation
-
-\end_inset
-
-を使用すれば、使用中の文書をDVIで表示させることができます。
+ menu.
 \end_layout
 
 \begin_layout Section
@@ -35174,6 +35347,39 @@ LaTeXぱっけーじ@LaTeXパッケージ ! sidecap
 \labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "pdfpages"
+
+\end_inset
+
+LaTeXパッケージ
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "pdfpages"
+target "http://www.ctan.org/tex-archive/macros/latex/contrib/pdfpages/pdfpages.pdf"
+
+\end_inset
+
+
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXぱっけーじ@LaTeXパッケージ ! pdfpages
+\end_layout
+
+\end_inset
+
+の取扱説明書
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring 参考文献
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "prettyref"
 
 \end_inset
@@ -35200,7 +35406,7 @@ LaTeXぱっけーじ@LaTeXパッケージ! prettyref
 
 \end_inset
 
-
+の取扱説明書
 \end_layout
 
 \begin_layout Bibliography
@@ -35233,7 +35439,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! refstyle
 
 \end_inset
 
-
+の取扱説明書
 \end_layout
 
 \begin_layout Bibliography
