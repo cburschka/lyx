@@ -34549,12 +34549,13 @@ lilypond.lyx
 \end_layout
 
 \begin_layout Description
-PDFPages Mit dieser Vorlage können Sie PDF-Dokumente in ihr Dokument einfügen.
- Um bestimmte oder alle Seiten eines PDFs einzufügen, benutzen Sie die 
-\emph on
+PDF-Seiten Mit dieser Vorlage können Sie PDF-Dokumente in ihr Dokument einfügen.
+ Um bestimmte oder alle Seiten eines PDFs einzufügen, benutzen Sie die Option
+ 
+\series bold
 pages
-\emph default
- Option im Feld 
+\series default
+ im Feld 
 \family sans
 Option
 \family default
@@ -34562,17 +34563,166 @@ Option
 \family sans
 LaTeX- und LyX-Optionen
 \family default
- entsprechend der Vorlagenbeschreibung im Dialog.
- Wenn keine 
+.
+ Das Argument der Option ist eine mit Komma gegliederte Liste, die Seitennummern
+ (man gibt als Option 
+\series bold
+pages={3,5,6,8}
+\series default
+ an), Seitenbereiche (
+\series bold
+pages={4-9}
+\series default
+) oder eine Kombination davon enthält.
+ Um leere Seiten einzufügen, verwendet man {}.
+ Z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ fügt 
+\series bold
+pages={3,{},8-11,15}
+\series default
+ Seite 3, eine leere Seite, und die Seiten 8, 9, 10, 11 und 15 ein.
+ Seitenbereiche werden mit der Syntax 
 \emph on
-pages
+Start
 \emph default
- Option gegeben ist, wird nur die erste Seite des PDFs eingefügt.
+-
+\emph on
+Stop
+\emph default
+ angegeben.
+ Dies wählt alle Seiten von 
+\emph on
+Start
+\emph default
+ bis 
+\emph on
+Stop
+\emph default
+ aus.
+ Wird 
+\emph on
+Start
+\emph default
+ weggelassen, wird stattdessen die erste Seite verwendet; wird 
+\emph on
+Stop
+\emph default
+ weggelassen, wird stattdessen die letzte Seite verwendet.
+ Die letzte Seite kann außerdem mit dem Schlagwort 
+\series bold
+last
+\series default
+ ausgewählt werden.
+ (Dies ist nur in einem Seitenbereich erlaubt.) Die Option 
+\series bold
+pages=-
+\series default
+ fügt also alle Seiten des Dokuments ein und 
+\series bold
+pages=last-1
+\series default
+ fügt alle Seiten in umgekehrter Reihenfolge ein.
+ Wenn keine pages Option angegeben ist, wird nur die erste Seite des PDFs
+ eingefügt.
+\begin_inset Newline newline
+\end_inset
+
+Die Option 
+\series bold
+noautoscale
+\series default
+ fügt die Seiten in ihrer Originalgröße ein.
+ Wenn diese Option nicht verwendet wird, werden die Seiten so eingefügt,
+ dass sie die komplette Breite Ihres Dokuments einnehmen.
+ In der Karteikarte 
+\family sans
+Größe und Drehung
+\family default
+ kann die Breite und Höhe der eingefügten Seiten und deren Drehung angegeben
+ werden.
+ Wird eine andere Breite als 100
+\begin_inset space \thinspace{}
+\end_inset
+
+Größe% verwendet, wird die Option 
+\series bold
+noautoscale
+\series default
+ überschrieben.
+ Für weitere Informationen und mögliche Optionen siehe die Dokumentation
+ des LaTeX-Pakets 
+\series bold
+pdfpages
+\series default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pdfpages"
+
+\end_inset
+
+.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pakete ! pdfpages
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Um diese Vorlage in einer 
+\family sans
+Beamer
+\family default
+-Präsentation zu verwenden, muss zuerst eine 
+\family sans
+BeendeRahmen
+\family default
+ Umgebung eingefügt werden.
+ In den folgenden Absatz kommt eine TeX-Code Box mit dem Befehl 
+\series bold
+
+\backslash
+setbeamertemplate{background canvas}{}
+\series default
+.
+ Danach kann man Absätze mit der PDFPages Vorlage einfügen.
+ Nach den eingefügten PDF-Seiten kann die Beamer-Präsentation fortgesetzt
+ werden, indem ein neuer Rahmen oder ein neuer Abschnitt eingefügt wird.
+ Um leere Seiten vor den eingefügten PDF-Seiten zu vermeiden, stellen Sie
+ sicher, dass die Ausrichtung 
+\family sans
+Standard
+\family default
+ für den Absatz verwendet wird, der die Vorlage enthält.
+\begin_inset Newline newline
+\end_inset
+
+Hier ist ein eingefügtes PDF, das um -5° gedreht wurde: 
+\begin_inset External
+	template PDFPages
+	filename ../clipart/Abstract.pdf
+	extra LaTeX "pages=-"
+	rotateAngle -5
+	rotateOrigin bottomleft
+	width 50col%
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
 Rastergrafik Diese Vorlage kann für Bitmap-Bilder benutzt werden.
- Fast alle bekannten Bildformate werden unterstützt.
  Die Bilddateien können im Dialogfenster 
 \family sans
 Externes
@@ -34597,8 +34747,16 @@ reference "abs:Grafik-Dialog"
 \end_inset
 
 .
- Der Unterschied ist, dass nur Rasterbilder erlaubt sind, das heißt PDF-
- und EPS-Bilder werden nicht unterstützt.
+ Der Unterschied zum normalen Einfügen eines Bildes ist, dass nur Rasterbilder
+ erlaubt sind, das heißt PDF- und EPS-Bilder werden nicht unterstützt.
+ Hier ist ein eingefügtes Rasterbild: 
+\begin_inset External
+	template RasterImage
+	filename ../clipart/ToolbarEnvBox.png
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -34619,7 +34777,7 @@ target "http://de.wikipedia.org/wiki/Xfig"
 
 \begin_layout Standard
 \begin_inset Float table
-placement h
+placement !h
 wide false
 sideways false
 status open
@@ -36805,14 +36963,6 @@ DVI
 \family sans
 Ansicht
 \family default
- oder den Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/buffer-view_dvi.png
-	scale 70
-	scaleBeforeRotation
-
-\end_inset
-
  anschauen.
 \end_layout
 
@@ -37806,6 +37956,39 @@ status collapsed
 
 \begin_layout Plain Layout
 LaTeX-Pakete ! pstricks
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "pdfpages"
+
+\end_inset
+
+Dokumentation des LaTeX-Pakets 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "pdfpages"
+target "http://www.ctan.org/tex-archive/macros/latex/contrib/pdfpages/pdfpages.pdf"
+
+\end_inset
+
+
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pakete ! pdfpages
 \end_layout
 
 \end_inset
