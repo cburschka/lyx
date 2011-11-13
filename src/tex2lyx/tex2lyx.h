@@ -116,9 +116,11 @@ std::string active_environment();
 
 enum ArgumentType {
 	required,
+	req_group,
 	verbatim,
 	item,
 	optional,
+	opt_group,
 	displaymath,
 };
 

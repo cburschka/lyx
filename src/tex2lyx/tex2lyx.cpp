@@ -355,6 +355,8 @@ void read_command(Parser & p, string command, CommandMap & commands)
 			string const arg = p.getArg('{', '}');
 			if (arg == "translate")
 				arguments.push_back(required);
+			else if (arg == "group")
+				arguments.push_back(req_group);
 			else if (arg == "item")
 				arguments.push_back(item);
 			else if (arg == "displaymath")
@@ -362,8 +364,11 @@ void read_command(Parser & p, string command, CommandMap & commands)
 			else
 				arguments.push_back(verbatim);
 		} else {
-			p.getArg('[', ']');
-			arguments.push_back(optional);
+			string const arg = p.getArg('[', ']');
+			if (arg == "group")
+				arguments.push_back(opt_group);
+			else
+				arguments.push_back(optional);
 		}
 	}
 	commands[command] = arguments;

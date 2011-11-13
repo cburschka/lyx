@@ -370,6 +370,9 @@ $$
 % is some code that may occur in a .tex file created by LyX. The re-import
 % works only because the first argument of \texorpdfstring is specified as
 % translatable in this file.
+% If a command puts the contents of an argument inside an own group, use
+% "group" instead of "translate". Otherwise things like font changes would
+% survive the end of the group in LyX (bug 3036).
 
 \abstractname
 \Acrobatmenu{}{}         % from the hyperref package
@@ -515,8 +518,8 @@ $$
 \makelabels
 \maketitle
 \MakeShortVerb{} % from doc.sty, argument must be verbatim
-\markboth{}{translate}
-\markright{translate}
+\markboth{group}{group}
+\markright{group}
 \mathversion{}
 \mbox{translate}
 \mddefault

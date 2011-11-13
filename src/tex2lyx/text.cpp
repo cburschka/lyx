@@ -674,10 +674,14 @@ void parse_arguments(string const & command,
 	for (size_t i = 0; i < no_arguments; ++i) {
 		switch (template_arguments[i]) {
 		case required:
+		case req_group:
 			// This argument contains regular LaTeX
 			handle_ert(os, ert + '{', context);
 			eat_whitespace(p, os, context, false);
-			parse_text(p, os, FLAG_ITEM, outer, context);
+			if (template_arguments[i] == required)
+				parse_text(p, os, FLAG_ITEM, outer, context);
+			else
+				parse_text_snippet(p, os, FLAG_ITEM, outer, context);
 			ert = "}";
 			break;
 		case item:
@@ -695,6 +699,7 @@ void parse_arguments(string const & command,
 			ert += '{' + p.verbatim_item() + '}';
 			break;
 		case optional:
+		case opt_group:
 			// true because we must not eat whitespace
 			// if an optional arg follows we must not strip the
 			// brackets from this one
