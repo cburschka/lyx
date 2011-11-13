@@ -2307,6 +2307,10 @@ void Paragraph::latex(BufferParams const & bparams,
 	if (body_pos > 0) {
 		// the optional argument is kept in curly brackets in
 		// case it contains a ']'
+		// This is not strictly needed, but if this is changed it
+		// would be a file format change, and tex2lyx would need
+		// to be adjusted, since it unconditionally removes the
+		// braces when it parses \item.
 		os << "[{";
 		column += 2;
 		basefont = getLabelFont(bparams, outerfont);

@@ -2158,16 +2158,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "item") {
-			p.skip_spaces();
 			string s;
-			bool optarg = false;
-			if (p.next_token().cat() != catEscape &&
-			    p.next_token().character() == '[') {
-				p.get_token(); // eat '['
-				s = parse_text_snippet(p, FLAG_BRACK_LAST,
-						       outer, context);
-				optarg = true;
-			}
+			bool const optarg = p.hasOpt();
+			if (optarg) {
+				// FIXME: This swallows comments, but we cannot use
+				//        eat_whitespace() since we must not output
+				//        anything before the item.
+				s = p.getArg('[', ']');
+			} else
+				p.skip_spaces(false);
 			context.set_item();
 			context.check_layout(os);
 			if (context.has_item) {
@@ -2183,13 +2182,30 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				if (context.layout->labeltype != LABEL_MANUAL) {
 					// LyX does not support \item[\mybullet]
 					// in itemize environments
-					handle_ert(os, "[", context);
-					os << s;
-					handle_ert(os, "]", context);
+					Parser p2(s + ']');
+					os << parse_text_snippet(p2,
+						FLAG_BRACK_LAST, outer, context);
 				} else if (!s.empty()) {
+					// LyX adds braces around the argument,
+					// so we need to remove them here.
+					if (s.size() > 2 && s[0] == '{' &&
+					    s[s.size()-1] == '}')
+						s = s.substr(1, s.size()-2);
+					// If the argument contains a space we
+					// must put it into ERT: Otherwise LyX
+					// would misinterpret the space as
+					// item delimiter (bug 7663)
+					if (contains(s, ' ')) {
+						handle_ert(os, s, context);
+					} else {
+						Parser p2(s + ']');
+						os << parse_text_snippet(p2,
+							FLAG_BRACK_LAST,
+							outer, context);
+					}
 					// The space is needed to separate the
 					// item from the rest of the sentence.
-					os << s << ' ';
+					os << ' ';
 					eat_whitespace(p, os, context, false);
 				}
 			}
