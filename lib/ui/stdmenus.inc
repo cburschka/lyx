@@ -592,6 +592,7 @@ Menuset
 		Item "LilyPond Manual|M" "help-open lilypond"
 		Item "Linguistics Manual|L" "help-open linguistics"
 		Item "Risk and safety statements Manual|R" "help-open R-S-statements"
+		Item "Sweave Manual|S" "help-open sweave"
 		Item "XY-pic Manual|X" "help-open xypic"
 	End
 
