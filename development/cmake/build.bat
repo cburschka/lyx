@@ -26,8 +26,6 @@ if [%1]==[] (
 	echo ERROR: no options.
     echo Exiting now.
 	goto :eof
-) else (
-echo hello
 )
 
 REM Add path to qmake here or set PATH correctly on your system.
