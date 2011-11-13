@@ -730,7 +730,9 @@ void Preamble::handle_package(Parser &p, string const & name,
 	else if (name == "url")
 		; // ignore this
 
-	else if (name == "color" || name == "subscript" || name == "ulem") {
+	else if (name == "booktabs" || name == "color" ||
+	         name == "longtable" || name == "subscript" ||
+	         name == "ulem") {
 		if (!in_lyx_preamble)
 			h_preamble << package_beg_sep << name
 			           << package_mid_sep << "\\usepackage{"
