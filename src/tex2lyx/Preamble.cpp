@@ -544,6 +544,36 @@ void Preamble::handle_hyperref(vector<string> & options)
 }
 
 
+void Preamble::handle_geometry(vector<string> & options)
+{
+	h_use_geometry = "true";
+	vector<string>::iterator it;
+	// paper orientation
+	if ((it = find(options.begin(), options.end(), "landscape")) != options.end()) {
+		h_paperorientation = "landscape";
+		options.erase(it);
+	}
+	// paper size
+	// keyval version: "paper=letter"
+	string paper = process_keyval_opt(options, "paper");
+	if (!paper.empty())
+		h_papersize = paper + "paper";
+	// alternative version: "letterpaper"
+	handle_opt(options, known_paper_sizes, h_papersize);
+	delete_opt(options, known_paper_sizes);
+	// page margins
+	char const * const * margin = known_paper_margins;
+	for (; *margin; ++margin) {
+		string value = process_keyval_opt(options, *margin);
+		if (!value.empty()) {
+			int k = margin - known_paper_margins;
+			string name = known_coded_paper_margins[k];
+			h_margins += '\\' + name + ' ' + value + '\n';
+		}
+	}
+}
+
+
 void Preamble::handle_package(Parser &p, string const & name,
                               string const & opts, bool in_lyx_preamble)
 {
@@ -714,8 +744,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 		; // ignore this
 
 	else if (name == "geometry")
-		; // Ignore this, the geometry settings are made by the \geometry
-		  // command. This command is handled below.
+		handle_geometry(options);
 
 	else if (name == "rotfloat")
 		; // ignore this
@@ -1178,7 +1207,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				opts.erase(it);
 			}
 			// paper sizes
-			// some size options are know to any document classes, other sizes
+			// some size options are known to any document classes, other sizes
 			// are handled by the \geometry command of the geometry package
 			handle_opt(opts, known_class_paper_sizes, h_papersize);
 			delete_opt(opts, known_class_paper_sizes);
@@ -1298,32 +1327,8 @@ void Preamble::parse(Parser & p, string const & forceclass,
 		}
 
 		else if (t.cs() == "geometry") {
-			h_use_geometry = "true";
 			vector<string> opts = split_options(p.getArg('{', '}'));
-			vector<string>::iterator it;
-			// paper orientation
-			if ((it = find(opts.begin(), opts.end(), "landscape")) != opts.end()) {
-				h_paperorientation = "landscape";
-				opts.erase(it);
-			}
-			// paper size
-			handle_opt(opts, known_paper_sizes, h_papersize);
-			delete_opt(opts, known_paper_sizes);
-			// page margins
-			char const * const * margin = known_paper_margins;
-			int k = -1;
-			for (; *margin; ++margin) {
-				k += 1;
-				// search for the "=" in e.g. "lmargin=2cm" to get the value
-				for(size_t i = 0; i != opts.size(); i++) {
-					if (opts.at(i).find(*margin) != string::npos) {
-						string::size_type pos = opts.at(i).find("=");
-						string value = opts.at(i).substr(pos + 1);
-						string name = known_coded_paper_margins[k];
-						h_margins += "\\" + name + " " + value + "\n";
-					}
-				}
-			}
+			handle_geometry(opts);
 		}
 
 		else if (t.cs() == "definecolor") {

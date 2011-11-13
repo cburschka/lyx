@@ -155,6 +155,8 @@ private:
 	///
 	void handle_hyperref(std::vector<std::string> & options);
 	///
+	void handle_geometry(std::vector<std::string> & options);
+	///
 	void handle_package(Parser &p, std::string const & name,
 	                    std::string const & opts, bool in_lyx_preamble);
 	///
