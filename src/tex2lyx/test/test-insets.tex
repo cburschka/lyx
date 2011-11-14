@@ -258,11 +258,39 @@ Lots of lines& like this.\\
 Lots of lines& like this.
 \end{longtable}
 
+A table*:
+
 \begin{tabular*} % some comment
 {0.8\columnwidth}[b]{lr}
 two\\
 lonely&lines
 \end{tabular*}
+
+A booktabs table:
+
+\begin{table}[h]
+\caption{\label{tab:Special-booktabs-table}Special booktabs-table}
+
+
+\centering{}%
+\begin{tabular}{cccc}
+\toprule 
+System & Chip\,1 & \multicolumn{2}{c}{Chip\,2}\tabularnewline
+\cmidrule(r){2-2}\cmidrule(l){3-4}\morecmidrules \cmidrule{2-4}Detector
+thickness in \textmu{}m & 300 & 300 & 700\tabularnewline
+\midrule 
+Edge angle in \textdegree{} & 3.55 & 2.71 & 7.99\tabularnewline
+\addlinespace
+Spatial resolution in \textmu{}m & 4.26 & 10.17 & 10.56\tabularnewline
+\addlinespace
+MTF at $f_{\mathrm{max}}$ & 0.53 & 0.37 & 0.39\tabularnewline
+\midrule 
+\morecmidrules \cmidrule{3-4}LSF-spatial resolution &  &  & \tabularnewline
+in \textmu{}m & 129.7 & 52.75 & 50.78\tabularnewline
+in \% of pixel size & 76.3 & 95.9 & 92.3\tabularnewline
+\bottomrule
+\end{tabular}
+\end{table}
 
 
 \section{Macros}
