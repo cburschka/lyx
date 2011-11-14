@@ -1187,6 +1187,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 
 	else if (parent_context.textclass.floats().typeExist(unstarred_name)) {
 		eat_whitespace(p, os, parent_context, false);
+		string const opt = p.hasOpt() ? p.getArg('[', ']') : string();
+		eat_whitespace(p, os, parent_context, false);
 		parent_context.check_layout(os);
 		begin_inset(os, "Float " + unstarred_name + "\n");
 		// store the float type for subfloats
@@ -1197,8 +1199,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			float_type = unstarred_name;
 		else
 			float_type = "";
-		if (p.hasOpt())
-			os << "placement " << p.getArg('[', ']') << '\n';
+		if (!opt.empty())
+			os << "placement " << opt << '\n';
 		os << "wide " << convert<string>(is_starred)
 		   << "\nsideways false"
 		   << "\nstatus open\n\n";
