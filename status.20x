@@ -170,6 +170,9 @@ What's new
 
 - Fix tex2lyx handling of description \item with spaces (bug 7663).
 
+- tex2lyx does not start floats with lines containing only a single space
+  anymore (bug 7895).
+
 - Store the autosave files of unnamed buffers in the correct directory
   and make sure they are not left behind after saving (bug 7793).
 
