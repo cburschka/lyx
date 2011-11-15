@@ -180,8 +180,8 @@ Buffer * BufferList::next(Buffer const * buf) const
 
 	if (bstore.empty())
 		return 0;
-	BufferStorage::const_iterator it = find(bstore.begin(),
-						bstore.end(), buf);
+	BufferStorage::const_iterator it = 
+			find(bstore.begin(), bstore.end(), buf);
 	LASSERT(it != bstore.end(), /**/);
 	++it;
 	Buffer * nextbuf = (it == bstore.end()) ? bstore.front() : *it;
@@ -195,8 +195,8 @@ Buffer * BufferList::previous(Buffer const * buf) const
 
 	if (bstore.empty())
 		return 0;
-	BufferStorage::const_iterator it = find(bstore.begin(),
-						bstore.end(), buf);
+	BufferStorage::const_iterator it = 
+			find(bstore.begin(), bstore.end(), buf);
 	LASSERT(it != bstore.end(), /**/);
 
 	Buffer * previousbuf = (it == bstore.begin()) ? bstore.back() : *(it - 1);
