@@ -1549,10 +1549,10 @@ BufferView const * GuiView::currentBufferView() const
 
 #if (QT_VERSION >= 0x040400)
 docstring GuiView::GuiViewPrivate::autosaveAndDestroy(
-	Buffer const * orig, Buffer * buffer)
+	Buffer const * orig, Buffer * clone)
 {
-	bool const success = buffer->autoSave();
-	delete buffer;
+	bool const success = clone->autoSave();
+	delete clone;
 	busyBuffers.remove(orig);
 	return success
 		? _("Automatic save done.")
@@ -3038,37 +3038,37 @@ bool GuiView::goToFileRow(string const & argument)
 
 #if (QT_VERSION >= 0x040400)
 template<class T>
-Buffer::ExportStatus GuiView::GuiViewPrivate::runAndDestroy(const T& func, Buffer const * orig, Buffer * buffer, string const & format)
+Buffer::ExportStatus GuiView::GuiViewPrivate::runAndDestroy(const T& func, Buffer const * orig, Buffer * clone, string const & format)
 {
 	Buffer::ExportStatus const status = func(format);
 
 	// the cloning operation will have produced a clone of the entire set of
 	// documents, starting from the master. so we must delete those.
-	Buffer * mbuf = const_cast<Buffer *>(buffer->masterBuffer());
+	Buffer * mbuf = const_cast<Buffer *>(clone->masterBuffer());
 	delete mbuf;
 	busyBuffers.remove(orig);
 	return status;
 }
 
 
-Buffer::ExportStatus GuiView::GuiViewPrivate::compileAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
+Buffer::ExportStatus GuiView::GuiViewPrivate::compileAndDestroy(Buffer const * orig, Buffer * clone, string const & format)
 {
 	Buffer::ExportStatus (Buffer::* mem_func)(std::string const &, bool) const = &Buffer::doExport;
-	return runAndDestroy(bind(mem_func, buffer, _1, true), orig, buffer, format);
+	return runAndDestroy(bind(mem_func, clone, _1, true), orig, clone, format);
 }
 
 
-Buffer::ExportStatus GuiView::GuiViewPrivate::exportAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
+Buffer::ExportStatus GuiView::GuiViewPrivate::exportAndDestroy(Buffer const * orig, Buffer * clone, string const & format)
 {
 	Buffer::ExportStatus (Buffer::* mem_func)(std::string const &, bool) const = &Buffer::doExport;
-	return runAndDestroy(bind(mem_func, buffer, _1, false), orig, buffer, format);
+	return runAndDestroy(bind(mem_func, clone, _1, false), orig, clone, format);
 }
 
 
-Buffer::ExportStatus GuiView::GuiViewPrivate::previewAndDestroy(Buffer const * orig, Buffer * buffer, string const & format)
+Buffer::ExportStatus GuiView::GuiViewPrivate::previewAndDestroy(Buffer const * orig, Buffer * clone, string const & format)
 {
 	Buffer::ExportStatus (Buffer::* mem_func)(std::string const &) const = &Buffer::preview;
-	return runAndDestroy(bind(mem_func, buffer, _1), orig, buffer, format);
+	return runAndDestroy(bind(mem_func, clone, _1), orig, clone, format);
 }
 
 #else
