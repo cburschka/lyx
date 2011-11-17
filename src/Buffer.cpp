@@ -458,8 +458,11 @@ Buffer * Buffer::clone() const
 	LASSERT(bit != bufmap.end(), return 0);
 	Buffer * cloned_buffer = bit->second;
 
+	// this should be empty. if not, then either we have left
+	// some buffer undeleted, or else we are trying to export
+	// two buffers at once. either way is a problem.
+	LASSERT(cloned_buffer_list.empty(), return 0);
 	// record the list of cloned buffers in the cloned master
-	cloned_buffer_list.clear();
 	BufferMap::iterator it = bufmap.begin();
 	BufferMap::iterator en = bufmap.end();
 	for (; it != en; ++it)
