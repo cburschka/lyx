@@ -417,14 +417,14 @@ Buffer::~Buffer()
 	d->children_positions.clear();
 	d->position_to_children.clear();
 
-	if (!d->cloned_buffer_ && !d->temppath.destroyDirectory()) {
-		Alert::warning(_("Could not remove temporary directory"),
-			bformat(_("Could not remove the temporary directory %1$s"),
-			from_utf8(d->temppath.absFileName())));
-	}
-
-	if (!isClone())
+	if (!isClone()) {
+		if (!d->temppath.destroyDirectory()) {
+			Alert::warning(_("Could not remove temporary directory"),
+				bformat(_("Could not remove the temporary directory %1$s"),
+				from_utf8(d->temppath.absFileName())));
+		}
 		removePreviews();
+	}
 
 	delete d;
 }
