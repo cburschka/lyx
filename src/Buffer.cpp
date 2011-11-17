@@ -400,7 +400,7 @@ Buffer::~Buffer()
 	Impl::BufferPositionMap::iterator end = d->children_positions.end();
 	for (; it != end; ++it) {
 		Buffer * child = const_cast<Buffer *>(it->first);
-		if (d->cloned_buffer_)
+		if (isClone())
 			delete child;
 		// The child buffer might have been closed already.
 		else if (theBufferList().isLoaded(child))
