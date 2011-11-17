@@ -139,10 +139,6 @@ void showPrintError(string const & name)
 	Alert::error(_("Print document failed"), str);
 }
 
-/// a list of Buffers we cloned
-set<Buffer *> cloned_buffer_list;
-
-
 } // namespace anon
 
 
@@ -399,43 +395,29 @@ Buffer::~Buffer()
 		return;
 	}
 
-	if (isClone()) {
-		// this is in case of recursive includes: we won't try to delete
-		// ourselves as a child.
-		cloned_buffer_list.erase(this);
-		// loop over children
-		Impl::BufferPositionMap::iterator it = d->children_positions.begin();
-		Impl::BufferPositionMap::iterator end = d->children_positions.end();
-		for (; it != end; ++it) {
-			Buffer * child = const_cast<Buffer *>(it->first);
-				if (cloned_buffer_list.erase(child))
-					delete child;
-		}
-		// FIXME Do we really need to do this right before we delete d?
-		// clear references to children in macro tables
-		d->children_positions.clear();
-		d->position_to_children.clear();
-	} else {
-		// loop over children
-		Impl::BufferPositionMap::iterator it = d->children_positions.begin();
-		Impl::BufferPositionMap::iterator end = d->children_positions.end();
-		for (; it != end; ++it) {
-			Buffer * child = const_cast<Buffer *>(it->first);
-			if (theBufferList().isLoaded(child))
-				theBufferList().releaseChild(this, child);
-		}
+	// loop over children
+	Impl::BufferPositionMap::iterator it = d->children_positions.begin();
+	Impl::BufferPositionMap::iterator end = d->children_positions.end();
+	for (; it != end; ++it) {
+		Buffer * child = const_cast<Buffer *>(it->first);
+		if (isClone())
+			delete child;
+		// The child buffer might have been closed already.
+		else if (theBufferList().isLoaded(child))
+			theBufferList().releaseChild(this, child);
+	}
 
-		if (!isClean()) {
-			docstring msg = _("LyX attempted to close a document that had unsaved changes!\n");
-			msg += emergencyWrite();
-			Alert::warning(_("Attempting to close changed document!"), msg);
-		}
+	if (!isClean()) {
+		docstring msg = _("LyX attempted to close a document that had unsaved changes!\n");
+		msg += emergencyWrite();
+		Alert::warning(_("Attempting to close changed document!"), msg);
+	}
+		
+	// clear references to children in macro tables
+	d->children_positions.clear();
+	d->position_to_children.clear();
 
-		// FIXME Do we really need to do this right before we delete d?
-		// clear references to children in macro tables
-		d->children_positions.clear();
-		d->position_to_children.clear();
-
+	if (!isClone()) {
 		if (!d->temppath.destroyDirectory()) {
 			Alert::warning(_("Could not remove temporary directory"),
 				bformat(_("Could not remove the temporary directory %1$s"),
@@ -452,20 +434,9 @@ Buffer * Buffer::clone() const
 {
 	BufferMap bufmap;
 	masterBuffer()->clone(bufmap);
-
-	// make sure we got cloned
-	BufferMap::const_iterator bit = bufmap.find(this);
-	LASSERT(bit != bufmap.end(), return 0);
-	Buffer * cloned_buffer = bit->second;
-
-	// record the list of cloned buffers in the cloned master
-	cloned_buffer_list.clear();
-	BufferMap::iterator it = bufmap.begin();
-	BufferMap::iterator en = bufmap.end();
-	for (; it != en; ++it)
-		cloned_buffer_list.insert(it->second);
-
-	return cloned_buffer;
+	BufferMap::iterator it = bufmap.find(this);
+	LASSERT(it != bufmap.end(), return 0);
+	return it->second;
 }
 
 
