@@ -36,7 +36,7 @@ PreambleDefEnd
 Template GnumericSpreadsheet
 	GuiName "Spreadsheet"
 	HelpText
-		A spreadsheet made with gnumeric, openoffice or excel.
+		A spreadsheet made with gnumeric, libreoffice or excel.
 		It imports as a long table, so any length
 		is ok. Excessive width could be a problem.
 		The gnumeric software is necessary for conversion,
@@ -69,7 +69,7 @@ Template GnumericSpreadsheet
 		Requirement "multirow"
 		Requirement "hhline"
 		Requirement "ifthen"
-		ReferencedFile latex "$$AbsOrRelPathMaster$$Basename.tex"
+		ReferencedFile pdflatex "$$AbsOrRelPathMaster$$Basename.tex"
 	FormatEnd
 TemplateEnd
 
