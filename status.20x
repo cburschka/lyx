@@ -156,20 +156,19 @@ What's new
 
 - Disable impossible settings in context menu of boxes (bug 7849).
 
+- Store the autosave files of unnamed buffers in the correct directory
+  and make sure they are not left behind after saving (bug 7793).
+
+- Escape ampersands in <title> when outputting XHTML.
+
+
+* TEX2LYX
+
 - Fix tex2lyx handling of recognized Roman fonts (bug 7856).
 
 - Fix tex2lyx handling babel-specific preamble commands (bug 7861).
 
-- Fix (La)TeX import for files using Latvian, Lithuanian, Mongolian,
-  Turkmen and/or Vietnamese (bug 7862).
-
 - Fix tex2lyx handling of inputenc encoding settings (bug 7863).
-
-- Fix (La)TeX import of shaded boxes (bug 7843).
-
-- Fix LaTeX import of theorem environment with optional argument (bug 6834).
-
-- Fix LaTeX import of tabular environment with optional argument.
 
 - Fix tex2lyx handling of framed boxes without inner box.
 
@@ -178,13 +177,17 @@ What's new
 - tex2lyx does not start floats with lines containing only a single space
   anymore (bug 7895).
 
-- Store the autosave files of unnamed buffers in the correct directory
-  and make sure they are not left behind after saving (bug 7793).
+- Fix (La)TeX import for files using Latvian, Lithuanian, Mongolian,
+  Turkmen and/or Vietnamese (bug 7862).
+
+- Fix (La)TeX import of shaded boxes (bug 7843).
+
+- Fix LaTeX import of theorem environment with optional argument (bug 6834).
+
+- Fix LaTeX import of tabular environment with optional argument.
 
 - Fix latex export of multilingual documents containing theorem-like
   environments (bug 7800).
-
-- Escape ampersands in <title> when outputting XHTML.
 
 
 * USER INTERFACE
