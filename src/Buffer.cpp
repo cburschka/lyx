@@ -2268,8 +2268,12 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 			docstring const msg = 
 				bformat(_("Branch \"%1$s\" does not exist."), branchName);
 			dr.setMessage(msg);
-		} else {
-			branch->setSelected(func.action() == LFUN_BRANCH_ACTIVATE);
+			break;
+		}
+		bool activate = func.action() == LFUN_BRANCH_ACTIVATE;
+		if (branch->isSelected() != activate) {
+			branch->setSelected(activate);
+			markDirty();
 			dr.setError(false);
 			dr.screenUpdate(Update::Force);
 			dr.forceBufferUpdate();
