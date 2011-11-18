@@ -238,8 +238,8 @@ initials
 \begin_body
 
 \begin_layout Title
-Manuel détaillé pour les Figures, les Tableaux, les Flottants, les Notes,
- les Boîtes et les Objets Externes de LyX
+Manuel détaillé pour les figures, les tableaux, les flottants, les notes,
+ les boîtes et les objets externes de LyX
 \end_layout
 
 \begin_layout Author
@@ -277,7 +277,7 @@ Traduction française : Siegfried Meunier-Guttin-Cluzel
 \end_layout
 
 \begin_layout Plain Layout
-version 1.6.x janvier 2010
+version 2.0.x novembre 2011
 \end_layout
 
 \end_inset
@@ -394,7 +394,7 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-La fenêtre de dialogue Graphique
+La fenêtre de dialogue graphique
 \begin_inset Index idx
 status collapsed
 
@@ -821,7 +821,7 @@ Et voici la même image mais en mode brouillon:
 \end_layout
 
 \begin_layout Section
-Figures Flottantes
+Figures flottantes
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Figure-Floats"
@@ -1295,7 +1295,7 @@ déformés
 \end_layout
 
 \begin_layout Section
-Les Formats d'images
+Les formats d'images
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Image-Formats"
@@ -2088,7 +2088,7 @@ C
 \begin_layout Section
 La fenêtre 
 \family sans
-Tableau
+tableau
 \family default
 
 \begin_inset Index idx
@@ -2765,7 +2765,7 @@ arg   "inset-modify tabular unset-all-lines"
 
 \family default
  supprime toutes les lignes autour de la cellule ou de la sélection de cellules
- courante- si la cellule courante n'est pas multi-colonnes cela affecte
+ courante - si la cellule courante n'est pas multi-colonnes cela affecte
  aussi la colonne et la ligne courante
 \end_layout
 
@@ -2921,7 +2921,7 @@ arg   "inset-modify tabular multirow"
 
 
 \family default
- transforme en multiligne la cellule ou la sélection courante
+ transforme en multi-ligne la cellule ou la sélection courante
 \end_layout
 
 \begin_layout Standard
@@ -2943,7 +2943,7 @@ Note :
 \end_layout
 
 \begin_layout Section
-Le Menu Éditer Tableau
+Le menu éditer tableau
 \begin_inset Index idx
 status collapsed
 
@@ -2970,7 +2970,7 @@ Tableau
 \end_layout
 
 \begin_layout Section
-Flottant de Tableau
+Flottant de tableau
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Table-Floats"
@@ -5701,7 +5701,7 @@ reference "sub:Tableaux-longs-légende"
 \end_layout
 
 \begin_layout Subsection
-Notes de Bas de Page dans les Tableaux Longs
+Notes de bas de page dans les tableaux longs
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Notes-dans-tableau-long"
@@ -5741,7 +5741,7 @@ reference "tab:Légendes-tableau-différentes"
 \end_layout
 
 \begin_layout Subsection
-Alignement des Tableaux Longs
+Alignement des tableaux longs
 \begin_inset Index idx
 status collapsed
 
@@ -6162,7 +6162,7 @@ reference "sub:Tableaux-longs-légende"
 \end_layout
 
 \begin_layout Subsection
-Légendes et Tableaux longs
+Légendes et tableaux longs
 \begin_inset Index idx
 status collapsed
 
@@ -6185,8 +6185,8 @@ name "sub:Tableaux-longs-légende"
 \begin_layout Standard
 Vous ne pouvez pas placer un tableau long dans un flottant de tableau puisque
  les flottants ne peuvent pas être sur plusieurs pages, mais l'environnement
- de légende des flottants de tableau peut aussi être utilisé pour les Tableaux
- Longs quand on utilise pour une ligne l'option de tableau long 
+ de légende des flottants de tableau peut aussi être utilisé pour les tableaux
+ longs quand on utilise pour une ligne l'option de tableau long 
 \family sans
 Légende
 \family default
@@ -7843,7 +7843,7 @@ caption
 \end_layout
 
 \begin_layout Subsubsection
-Des Légendes différentes sur chaque page d'un tableau
+Des légendes différentes sur chaque page d'un tableau
 \begin_inset Argument
 status collapsed
 
@@ -9853,7 +9853,7 @@ setcounter{LTchunksize}{100}
 \end_layout
 
 \begin_layout Subsection
-Les Flottants et les Tableaux Longs
+Les flottants et les tableaux longs
 \begin_inset Index idx
 status collapsed
 
@@ -11859,7 +11859,7 @@ Tableau ! Multi-colonnes
 \end_layout
 
 \begin_layout Subsubsection
-Les Bases des Multicolonnes
+Les bases des multi-colonnes
 \end_layout
 
 \begin_layout Standard
@@ -12049,7 +12049,7 @@ Multi-colonnes ! Calculs
 
 \begin_layout Standard
 LyX gère directement les multi-colonnes, mais nous devons faire attention
- à la largeur des cellules couvertes par la cellule multicolonne.
+ à la largeur des cellules couvertes par la cellule multi-colonne.
 \end_layout
 
 \begin_layout Standard
@@ -12069,7 +12069,7 @@ name "tab:Tableau-multicolonne-parfaite"
 
 \end_inset
 
-Tableau avec un texte centré dans une case multicolonne au-dessus de deux
+Tableau avec un texte centré dans une case multi-colonne au-dessus de deux
  colonnes qui ont exactement la moitié de la largeur de la case multicolonne.
 \begin_inset Argument
 status open
@@ -12101,7 +12101,7 @@ Tableau avec multicolonne parfaite
 \begin_inset Text
 
 \begin_layout Plain Layout
-multicolonne sur plusieurs lignes
+multi-colonne sur plusieurs lignes
 \end_layout
 
 \end_inset
@@ -12215,7 +12215,7 @@ reference "tab:Tableau-multicolonne-parfaite"
 \emph default
  dans la fenêtre de dialogue de tableau, 
 \emph on
-multicolonne
+multi-colonne
 \emph default
 , 
 \emph on
@@ -12235,7 +12235,7 @@ centré
 
 cm.
  Les colonnes couvertes doivent avoir exactement la moitié de la largeur
- de la cellule multicolonne, vous devez donc donner une largeur de 1.25
+ de la cellule multi-colonne, vous devez donc donner une largeur de 1.25
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -12244,7 +12244,7 @@ cm pour la première colonne.
 \begin_inset space \thinspace{}
 \end_inset
 
-cm (la largeur de la multicolonne moins la largeur de la première colonne).
+cm (la largeur de la multi-colonne moins la largeur de la première colonne).
  C'est ce qui a été fait pour le tableau
 \begin_inset space ~
 \end_inset
@@ -12276,12 +12276,12 @@ name "tab:Tableau-multicolonne-imparfait"
 \end_inset
 
 Tableau où la largeur de colonnes couvertes n'est pas exactement la moitié
- de la largeur de la cellule multicolonne.
+ de la largeur de la cellule multi-colonne.
 \begin_inset Argument
 status open
 
 \begin_layout Plain Layout
-Tableau avec multicolonne pas parfaite
+Tableau avec multi-colonne pas parfaite
 \end_layout
 
 \end_inset
@@ -12307,7 +12307,7 @@ Tableau avec multicolonne pas parfaite
 \begin_inset Text
 
 \begin_layout Plain Layout
-multicolonne sur plusieurs lignes
+multi-colonne sur plusieurs lignes
 \end_layout
 
 \end_inset
@@ -12403,7 +12403,7 @@ i
 
 \begin_layout Standard
 Vous pouvez voir que la première colonne n'a pas la moitié de la largeur
- de la cellule multicolonne, elle est un peu plus large.
+ de la cellule multi-colonne, elle est un peu plus large.
  La raison est que la taille que l'on donne à une cellule, 
 \begin_inset Formula $W_{g}$
 \end_inset
@@ -12600,10 +12600,10 @@ La commande
 
 \begin_layout Standard
 Bien que nous ayons choisi un alignement centré pour le texte de la cellule
- multicolonne, il est toujours aligné à gauche.
+ multi-colonne, il est toujours aligné à gauche.
  Cela vient du fait que LyX applique l'alignement seulement à des colonnes
  isolées.
- Nous devons donc utiliser le paramètre LaTeX suivant pour la multicolonne
+ Nous devons donc utiliser le paramètre LaTeX suivant pour la multi-colonne
 \end_layout
 
 \begin_layout Standard
@@ -12672,7 +12672,7 @@ Multi-lignes
 \end_layout
 
 \begin_layout Standard
-Voici un exemple de tableau avec une cellule multiligne en première colonne:
+Voici un exemple de tableau avec une cellule multi-ligne en première colonne:
 \end_layout
 
 \begin_layout Standard
@@ -12778,7 +12778,7 @@ i
 \end_layout
 
 \begin_layout Standard
-La largeur de la cellule multiligne est déterminée par la largeur de toute
+La largeur de la cellule multi-ligne est déterminée par la largeur de toute
  la colonne.
  L'
 \family sans
@@ -12847,8 +12847,8 @@ raggedright
 \end_layout
 
 \begin_layout Standard
-Voici un exemple de tableau avec une cellule multiligne alignée à droite
- avec un décalage vertical de of -4
+Voici un exemple de tableau avec une cellule multi-ligne alignée à droite
+ avec un décalage vertical de -4
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -13030,23 +13030,26 @@ raggedright}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To start a new line in a multirow you can use a forced line break (shortcut
- 
-\begin_inset Info
-type  "shortcut"
-arg   "newline-insert newline"
+Pour commencer une nouvelle ligne dans une cellule multi-ligne vous pouvez
+ utiliser un saut de ligne forcé (
+\begin_inset space ~
 \end_inset
 
-) but this will not respect the cell lines as demonstrated in this table:
+raccourci 
+\family sans
+Ctrl+Entrée
+\family default
+
+\begin_inset space ~
+\end_inset
+
+) mais dans ce cas les limites de cellules ne seront pas respectées comme
+ on le voit dans ce tableau :
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
 <features tabularvalignment="middle">
@@ -13057,8 +13060,6 @@ arg   "newline-insert newline"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 aaa
 \begin_inset Newline newline
 \end_inset
@@ -13067,7 +13068,7 @@ aaa
 \begin_inset Newline newline
 \end_inset
 
-wrong cell
+mauvaise cellule
 \end_layout
 
 \end_inset
@@ -13076,8 +13077,6 @@ wrong cell
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ccc
 \end_layout
 
@@ -13098,8 +13097,6 @@ ccc
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ddd
 \end_layout
 
@@ -13111,8 +13108,6 @@ ddd
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 bbb
 \end_layout
 
@@ -13122,8 +13117,6 @@ bbb
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 eee
 \end_layout
 
@@ -13138,13 +13131,11 @@ eee
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Therefore be careful with forced line breaks.
+Vous devez donc faire attention avec les saut de lignes forcés.
 \end_layout
 
 \begin_layout Section
-Les Tableaux Formels
+Les tableaux formels
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Tableaux-Formels"
@@ -13733,7 +13724,7 @@ reference "cha:Unités-de-longueur"
 
 \begin_layout Standard
 On peut aussi créer des lignes qui ne font pas toute la largeur du tableau
- en mettant une ligne pour une cellule multi colonne.
+ en mettant une ligne pour une cellule multi-colonne.
  LyX va utiliser en interne la commande 
 \series bold
 
@@ -14442,7 +14433,7 @@ en % de la taille des pixels
 \end_layout
 
 \begin_layout Section
-Alignement Vertical des Tableaux
+Alignement vertical des tableaux
 \begin_inset Index idx
 status collapsed
 
@@ -15239,7 +15230,7 @@ raisebox
 \end_layout
 
 \begin_layout Section
-Tableaux Colorés
+Tableaux colorés
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Tableaux-Colorés"
@@ -15260,7 +15251,7 @@ Tableau ! Coloré
 \end_layout
 
 \begin_layout Subsection
-Cellules Colorées
+Cellules colorées
 \begin_inset Index idx
 status collapsed
 
@@ -15623,9 +15614,7 @@ white
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you add the options
+Si vous ajoutez les options
 \end_layout
 
 \begin_layout Standard
@@ -15635,33 +15624,29 @@ usenames,dvipsnames
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-to the document class options in the document settings, you can additionally
- use further 61
+aux options de la classe de document dans les paramètres du document, vous
+ pouvez utiliser 61
 \begin_inset space ~
 \end_inset
 
-colors.
- These colors are listed in appendix
+couleurs supplémentaires.
+ Ces couleurs sont listées dans l'appendice
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:List-of-dvips-colornames"
+reference "chap:Liste-de-noms-de-couleur-dvips"
 
 \end_inset
 
 .
- One of these colors, 
+ Une de ces couleurs, 
 \family sans
 Maroon
 \family default
-, is used as example in Table
-\lang french
-
+, est utilisée comme exemple dans le tableau
 \begin_inset space ~
 \end_inset
 
@@ -15700,17 +15685,29 @@ Le modèle de couleur peut être
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-cmyk: cyan, magenta, jaune (yellow), noir (black)
+cmyk
+\begin_inset space ~
+\end_inset
+
+: cyan, magenta, jaune (yellow), noir (black)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-rgb: red, vert (green), bleu (blue)
+rgb
+\begin_inset space ~
+\end_inset
+
+: rouge (red), vert (green), bleu (blue)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-gray dégradé de gris (gray)
+gray
+\begin_inset space ~
+\end_inset
+
+: dégradé de gris (gray)
 \end_layout
 
 \begin_layout Standard
@@ -16856,7 +16853,7 @@ arrayrulewidth}{0.4pt}
 \end_layout
 
 \begin_layout Section
-Personnalisation des Tableaux
+Personnalisation des tableaux
 \begin_inset Index idx
 status collapsed
 
@@ -17926,11 +17923,11 @@ reference "tab:Tableau-centré-sur-séparateur-2"
 
 .
  Ce tableau a été créé comme un tableau 4×2.
- L'en-tête est une cellule multicolonne centrée.
+ L'en-tête est une cellule multi-colonne centrée.
  La première colonne est alignée à droite et contient la première partie
  et inclue l'opérateur.
  La seconde colonne contient le reste de la cellule aligné à gauche.
- Un petit espace a été ajouté au début de toutes les celleules de la deuxième
+ Un petit espace a été ajouté au début de toutes les cellules de la deuxième
  colonne pour obtenir l'espace que l'on a d'habitude autour d'un opérateur.
  Pour éviter l'espace qui est normalement placé entre deux colonnes d'un
  tableau, le paramètre LaTeX suivant a été utilisé pour la deuxième colonne
@@ -18314,7 +18311,7 @@ Personnalisation des tableaux !  Format de cellule/colonne
 
 \begin_layout Standard
 Calculer la largeur nécessaire pour des colonnes couvertes par un cellule
- multicolonne comme dans la section
+ multi-colonne comme dans la section
 \begin_inset space ~
 \end_inset
 
@@ -18326,7 +18323,7 @@ reference "sub:Calculs-multicolonnes"
 \end_inset
 
  peut devenir très pénible si vous avez plusieurs tableaux avec des cellules
- multicolonnes.
+ multi-colonnes.
  Pour vous rendre la vie plus facile, vous pouvez définir dans le préambule
  un format de cellule/colonne, qui puisse être utilisé dans tous les tableaux
  du document.
@@ -18379,7 +18376,7 @@ r
 \end_layout
 
 \begin_layout Standard
-Pour de cellules multicolonnes centrées verticalement et horizontalement
+Pour de cellules multi-colonnes centrées verticalement et horizontalement
  avec une largeur donnée, vous pouvez définir le format de cellule suivant
  :
 \end_layout
@@ -18426,7 +18423,7 @@ M{width}
 
 \begin_layout Standard
 comme paramètre LaTeX dans la fenêtre de dialogue de tableau pour créer
- une multicolonne.
+ une multi-colonne.
 \end_layout
 
 \begin_layout Standard
@@ -18437,8 +18434,8 @@ comme paramètre LaTeX dans la fenêtre de dialogue de tableau pour créer
 \end_layout
 
 \begin_layout Standard
-Pour les cellules qui sont couvertes par la cellule multicolonne, vous pouvez
- définir le format
+Pour les cellules qui sont couvertes par la cellule multi-colonne, vous
+ pouvez définir le format
 \end_layout
 
 \begin_layout Standard
@@ -18488,7 +18485,7 @@ reference "eq:Wgn"
 \end_inset
 
  pour calculer la largeur que doit avoir chacune des cellules couverte par
- la cellule multicolonne pour qu'elles aient toutes la même largeur.
+ la cellule multi-colonne pour qu'elles aient toutes la même largeur.
 \end_layout
 
 \begin_layout Standard
@@ -18498,7 +18495,7 @@ Ensuite, vous pouvez entrer
 \begin_layout Standard
 
 \series bold
-S{largeur de la cellule multicolonne}{nombre de colonnes couvertes}
+S{largeur de la cellule multi-colonne}{nombre de colonnes couvertes}
 \end_layout
 
 \begin_layout Standard
@@ -18581,7 +18578,7 @@ M{2.5cm}
 \end_layout
 
 \begin_layout Standard
-pour la première colonne et la multicolonne,
+pour la première colonne et la multi-colonne,
 \end_layout
 
 \begin_layout Standard
@@ -18652,7 +18649,7 @@ motTrèsLongDansUneCellule
 \begin_inset Text
 
 \begin_layout Plain Layout
-multicolonne avec multiligne
+multi-colonne avec multi-ligne
 \end_layout
 
 \end_inset
@@ -19902,7 +19899,7 @@ en code TeX comme premier élément de la première cellule de la ligne de
 \end_layout
 
 \begin_layout Standard
-Pour des filets interrompus avec des cellules multicolonnes, utilisez la
+Pour des filets interrompus avec des cellules multi-colonnes, utilisez la
  commande 
 \end_layout
 
@@ -19918,7 +19915,7 @@ numéros de colonnes}
 
 \begin_layout Standard
 en code TeX comme premier élément de la première cellule de la ligne.
- Si par exemple, vous avez une cellule multicolonne qui couvre les colonnes
+ Si par exemple, vous avez une cellule multi-colonne qui couvre les colonnes
  2 à 4 et que vous voulez un filet interrompu au dessus, ajoutez la commande
 \end_layout
 
@@ -19931,8 +19928,8 @@ cdashline{2-4}
 \end_layout
 
 \begin_layout Standard
-comme premier élément de la première cellule de la ligne contenant la multicolon
-ne.
+comme premier élément de la première cellule de la ligne contenant la multi-colo
+nne.
 \end_layout
 
 \begin_layout Standard
@@ -20259,7 +20256,7 @@ Il est recommandé d'insérer les flottants comme des paragraphes séparés
 \end_layout
 
 \begin_layout Section
-Les Types de Flottants
+Les types de flottants
 \end_layout
 
 \begin_layout Standard
@@ -20291,11 +20288,7 @@ Algorithme
 Enrobage
 \family default
 .
- 
-\lang english
-The latter are explained in sec.
-\lang french
-
+ Ces derniers sont expliques dans la section
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -20637,7 +20630,7 @@ Flottants ! Numérotation
 \end_layout
 
 \begin_layout Standard
-Les flottant sont soit numérotés indépendemment des sections dans lesquelles
+Les flottant sont soit numérotés indépendamment des sections dans lesquelles
  ils se trouvent, soit en utilisant un format du genre 
 \begin_inset Quotes eld
 \end_inset
@@ -20783,7 +20776,7 @@ reference "sub:Numerotation-notes-bas-de-page"
 \end_layout
 
 \begin_layout Section
-Faire Référence à des Flottants
+Faire référence à des flottants
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Referencer-les-Flottants"
@@ -20935,7 +20928,7 @@ Revenir
 \end_layout
 
 \begin_layout Subsection
-Formats de Références Croisées
+Formats de références croisées
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Formats-Références-Croisées"
@@ -21198,7 +21191,7 @@ pageref{#1}}}
 \begin_inset Newline newline
 \end_inset
 
-Pour plus d'information sur le format, jetez un oeil dur la documentation
+Pour plus d'information sur le format, jetez un œil sur la documentation
  du paquetage, 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -21295,7 +21288,7 @@ Paquetages LaTeX ! refstyle
 
 \end_inset
 
- est recommendée parce que 
+ est recommandée parce que 
 \series bold
 prettyref
 \series default
@@ -21655,7 +21648,7 @@ Math
 \end_layout
 
 \begin_layout Subsection
-Positionnement des Références 
+Positionnement des références 
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Reference-Position"
@@ -22378,7 +22371,7 @@ key "latexcompanion,latexguide,latexbook"
 \end_layout
 
 \begin_layout Section
-Flottants Renversés
+Flottants renversés
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Flottants-renversés"
@@ -23265,7 +23258,7 @@ Flottant du côté droit.
 \end_layout
 
 \begin_layout Section
-Mise en Forme de la Légende
+Mise en forme de la légende
 \begin_inset Index idx
 status collapsed
 
@@ -24417,11 +24410,8 @@ FigBesEnd
 \end_layout
 
 \begin_layout Standard
-en code TeX 
-\lang english
-at the point where you want to
-\lang french
- revenir à la définition originale du flottant.
+en code TeX à l'endroit où vous voulez revenir à la définition originale
+ du flottant.
 \end_layout
 
 \begin_layout Standard
@@ -24564,12 +24554,8 @@ reference "fig:legende-à-coté-fig-2"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The default caption width is the width of the image/table.
- For thin image/tables, like in
-\lang french
- tableau
+La largeur de légende par défaut est celle de l'image ou du tableau.
+ Pour des images ou des tableaux étroits, comme le tableau
 \begin_inset space ~
 \end_inset
 
@@ -24580,18 +24566,17 @@ reference "tab:legende-à-coté-tableau"
 
 \end_inset
 
-, 
-\lang english
-this leads to captions that are too thin.
- You can increase the width by specifying a factor that will be multiplied
- with the image/table width to get the caption width.
- The caption width will automatically be recalculated in case it would protrude
- over the page or column margin due to the specified width.
- The 
+, cela donne des légendes trop étroites.
+ Vous pouvez augmenter la largeur en précisant un facteur qui sera multiplié
+ à la largeur de l'image ou du tableau pour obtenir la largeur de la légende.
+ La largeur de la légende sera automatiquement recalculée dans le cas où
+ cette dernière déborderait dans la marge de la page ou de la colonne à
+ cause de la largeur indiquée.
+ Le 
 \emph on
-factor
+facteur 
 \emph default
- can either be given as optional argument for 
+peut soit être donné comme argument pour 
 \series bold
 
 \backslash
@@ -24603,36 +24588,32 @@ FigBesBeg
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
-FigBesBeg[factor]
+FigBesBeg[facteur]
 \end_layout
 
 \begin_layout Standard
+ou dans la définition de 
+\series bold
 
-\lang english
-or in the definition of 
+\backslash
+FigBesBeg 
+\series default
+en remplaçant le
+\series bold
+ 1.0 
+\series default
+par une autre valeur.
+ Si vous utilisez cette dernière méthode, votre facteur sera utilisé de
+ façon implicite quand  
 \series bold
 
 \backslash
 FigBesBeg
 \series default
- by replacing the 
-\series bold
-1.0
-\series default
- with another value.
- If you do the latter, your factor will be the default if 
-\series bold
-
-\backslash
-FigBesBeg
-\series default
- is used without an argument.
- For
-\lang french
- tableau
+ est utilisé sans argument.
+ Pour le tableau
 \begin_inset space ~
 \end_inset
 
@@ -24643,9 +24624,7 @@ reference "tab:cap-beside-tab-wider"
 
 \end_inset
 
- 
-\lang english
-the factor 5 was used.
+ on a utilisé 5 comme facteur.
 \end_layout
 
 \begin_layout Standard
@@ -24657,19 +24636,26 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Note:
 \series default
- For floats with captions set beside, you cannot use the float placement
- option 
+ Pour les flottants qui ont leur légende sur le côté, vous ne pouvez pas
+ utiliser l'option de placement, 
 \family sans
-Here
+Ici
 \begin_inset space ~
 \end_inset
 
-definitely
+à
+\begin_inset space ~
+\end_inset
+
+tout
+\begin_inset space ~
+\end_inset
+
+prix
 \family default
- because it is not supported by 
+ parce qu'elle n'est pas gérée par 
 \series bold
 sidecap
 \series default
@@ -25482,7 +25468,7 @@ fi
 \end_layout
 
 \begin_layout Section
-Les Listes de Flottants
+Les listes de flottants
 \begin_inset Index idx
 status collapsed
 
@@ -25531,7 +25517,7 @@ Notes
 \end_layout
 
 \begin_layout Section
-Les Notes de LyX
+Les notes de LyX
 \begin_inset Index idx
 status collapsed
 
@@ -25746,7 +25732,7 @@ egroup}
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Ici, on a redéfini la note grisée pour qu'elle apparaisse avec la définition
@@ -25812,18 +25798,20 @@ Suppr.
 \end_inset
 
 
-\lang english
-You can change the text color of the greyed out notes in the menu 
+\end_layout
+
+\begin_layout Standard
+Vous pouvez changer la couleur des notes grisées dans le menu 
 \family sans
 Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Colors
+Paramètres\SpecialChar \menuseparator
+Couleurs
 \family default
 .
 \end_layout
 
 \begin_layout Section
-Notes en Bas de Page
+Notes en bas de page
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Notes-bas-de-page"
@@ -26271,7 +26259,7 @@ footnotetext{
 
 \end_inset
 
-Note de bas de page en denors de la minipage.
+Note de bas de page en dehors de la minipage.
 \begin_inset ERT
 status collapsed
 
@@ -26342,7 +26330,7 @@ thefootnote}
 \end_layout
 
 \begin_layout Standard
-La note de bas de page a été créee avec la commande
+La note de bas de page a été créée avec la commande
 \begin_inset space ~
 \end_inset
 
@@ -26366,7 +26354,7 @@ Voici une note de bas de page dupliquée
 
 :
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -26404,7 +26392,7 @@ Voici une autre note de bas de page dupliquée
 
 :
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -26421,7 +26409,7 @@ thefootnote]
 \end_layout
 
 \begin_layout Subsection
-Numérotation de Notes de Bas de Page
+Numérotation de notes de bas de page
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Numerotation-notes-bas-de-page"
@@ -26713,11 +26701,11 @@ status open
 
 \begin_layout Plain Layout
 Cette note est numérotée en suivant le schéma 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 chapitre.note
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -27378,7 +27366,7 @@ key "KOMA-Script"
 \end_layout
 
 \begin_layout Section
-Notes en Marge
+Notes en marge
 \begin_inset Index idx
 status collapsed
 
@@ -28228,7 +28216,7 @@ fi
 \end_layout
 
 \begin_layout Chapter
-Les Boîtes
+Les boîtes
 \end_layout
 
 \begin_layout Section
@@ -30560,7 +30548,7 @@ Note:
 \end_layout
 
 \begin_layout Section
-Les Parboxes
+Les parboxes
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Parboxes"
@@ -30637,7 +30625,7 @@ Cette note de bas de page est à l'intérieur d'une parbox et donc n'apparaîtra
 \end_layout
 
 \begin_layout Section
-Des Boîtes pour les Mots et les Caractères
+Des boîtes pour les mots et les caractères
 \begin_inset Index idx
 status collapsed
 
@@ -30651,7 +30639,7 @@ Boîtes ! Pour les caractères
 \end_layout
 
 \begin_layout Subsection
-Empêcher la Césure
+Empêcher la césure
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Empêcher-césure"
@@ -30865,7 +30853,7 @@ motTrèsTrèsLong
 \end_layout
 
 \begin_layout Subsection
-Alignement Vertical
+Alignement vertical
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Alignement-Vertical"
@@ -31228,7 +31216,7 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-Boîtes Colorées
+Boîtes colorées
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Boîtes-colorées"
@@ -33014,16 +33002,12 @@ fleqn
 \end_layout
 
 \begin_layout Chapter
-
-\lang english
-Objects Surrounded by Text
+Objets entourés par du texte
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Surrounded by text
+Entourés par du texte
 \end_layout
 
 \end_inset
@@ -33056,11 +33040,7 @@ Flottants ! Flottants d'enrobage
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Surrounded by text ! 
-\lang french
-Flottants d'enrobage
+Entourés par du texte ! Flottants d'enrobage
 \end_layout
 
 \end_inset
@@ -33264,11 +33244,8 @@ Les flottants d'enrobage ne sont pas autorisés dans les en-têtes de sections
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Their numbering and referencing works as described in chap.
-\lang french
-
+Leur numérotation et leur référencement fonctionnent comme décrit dans le
+ chapitre
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -33283,16 +33260,14 @@ reference "chap:Flottants"
 \end_layout
 
 \begin_layout Section
-
+Objets fixes entourés par du texte
 \lang english
-Surrounded Fixed Objects
+
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Surrounded by text ! Fixed objects
+Entouré par du texte ! Objets fixes
 \end_layout
 
 \end_inset
@@ -33301,11 +33276,7 @@ Surrounded by text ! Fixed objects
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The wrap floats described in sec.
-\lang french
-
+Les flottants d'enrobage décrits dans la section
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -33316,9 +33287,7 @@ reference "sec:Flottant-d'enrobage"
 
 \end_inset
 
-
-\lang english
- have these positions in the paragraph:
+ prennent les positions suivantes dans le paragraphe :
 \end_layout
 
 \begin_layout Standard
@@ -33441,12 +33410,8 @@ texte
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To get an object exactly at the position where it is inserted, for example
- to get one of these positions:
-\lang french
-
+Pour avoir un objet exactement à la position à laquelle il a été inséré,
+ par exemple pour avoir une de ces positions :
 \begin_inset VSpace defskip
 \end_inset
 
@@ -33989,12 +33954,12 @@ texte
 \end_layout
 
 \begin_layout Standard
+vous pouvez utiliser la paquetage LaTeX 
+\end_layout
+
+\begin_layout Standard
 \noindent
 
-\lang english
-you can use the LaTeX-package
-\lang french
- 
 \series bold
 picinpar
 \series default
@@ -34009,11 +33974,7 @@ Paquetages LaTeX ! picinpar
 \end_inset
 
 .
- 
-\lang english
-Here is an example
-\lang french
-:
+ Voici un exemple :
 \end_layout
 
 \begin_layout Standard
@@ -34147,7 +34108,11 @@ footnotetext{
 
 \end_inset
 
-Footnote of the paragraph with the fixed object.
+
+\lang french
+Note de pied de page du paragraphe avec objet fixe.
+\lang english
+
 \begin_inset ERT
 status collapsed
 
@@ -34162,18 +34127,15 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Surrounded fixed objects are used to let text float around them, at which
- the object's position in the paragraph can be determined by the number
- of lines above it.
- In contrary to floats is it not possible to have a numbered caption.
+Les objets fixes enrobés sont utilisés pour laisser le texte s'écouler autour
+ d'eux et leur position est déterminée par le nombre de lignes de texte
+ situées audessus d'eux.
+ Contrairement aux flottants d'enrobage, on ne peut pas avoir de légende
+ numérotée.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-A fixed object is inserted by adding the command
+Un objet fixe enrobé est inséré en ajoutant la commande
 \end_layout
 
 \begin_layout Standard
@@ -34185,26 +34147,25 @@ begin{window}[2,c,{
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-as TeX Code at the beginning of the paragraph.
- The first parameter in the bracket, here '2', defines the number of lines
- above the object, the second, here 'c', the position of the object.
- The positions 'l', 'c' and 'r' (for left, center, right) are possible.
- Behind the command you insert the object.
- In this example an image with a width of 40
+en code TeX au debut du paragraphe.
+ Le premier paramètre du crochet, ici '2', définit le nombre de lignes au
+ dessus de l'objet, le second, ici 'c', la position de l'objet.
+ Les positions 'l', 'c' et 'r' ( respectivement pour gauche, centré et droite
+ ) sont possibles.
+ Après la commande, vous insérez votre objet.
+ Dans cet exemple, c'est une image avec une largeur de 40
 \begin_inset space \thinspace{}
 \end_inset
 
-% of the text column width was inserted.
- The object can also be a table, a box or an equation.
- Behind the object the command
+% de la colonne de texte qui a été insérée.
+ L'objet peut aussi être un tableau, une boîte ou une équation.
+ Après l'objet, on insère la commande
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-},description text]
+},texte de description ]
 \begin_inset Newline newline
 \end_inset
 
@@ -34212,11 +34173,8 @@ as TeX Code at the beginning of the paragraph.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-is inserted.
- Note that the 
-\begin_inset Quotes eld
+Notez que le 
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -34224,49 +34182,44 @@ is inserted.
 {}
 \series default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- is in the second line.
- The description text is optional.
- The text surrounding the object must be in the same paragraph as the object,
- so it must begin directly after the 
+ est sur la deuxième ligne.
+ Le texte de description est facultatif.
+ Le texte entourant l'objet doit être dans le même paragraphe que celui-ci,
+ il doit donc commence juste après le 
 \series bold
 {}
 \series default
 .
- At the end of the paragraph insert the command:
+ A la fin du paragraphe on insère la commande :
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 end{window}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Within a paragraph with a fixed object, you cannot insert footnotes in the
- normal way.
- You have to use instead the command 
+A l'intérieur d'un paragraphe contenant un objet fixe, vous ne pouvez pas
+ ajouter des notes de pied de page de la façon habituelle.
+ Vous devez utiliser la commande 
 \series bold
 
 \backslash
 footnotemark
 \series default
- inside the paragraph and outside the command 
+ à l'intérieur du paragraphe et la commande 
 \series bold
 
 \backslash
 footnotetext
 \series default
- as described in sec.
-\lang french
-
+ à l'extérieur, comme décrit dans la section
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -34335,16 +34288,12 @@ fi
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Initials
+Lettrines
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Initials
+Lettrines
 \end_layout
 
 \end_inset
@@ -34354,9 +34303,7 @@ Initials
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Surrounded by text ! Initials
+Entouré par du texte ! Lettrines
 \end_layout
 
 \end_inset
@@ -34365,11 +34312,7 @@ Surrounded by text ! Initials
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To use initials, you must have the LaTeX package
-\lang french
- 
+Pour utiliser des lettrines, le paquetage LaTeX 
 \series bold
 lettrine
 \series default
@@ -34383,42 +34326,42 @@ Paquetages LaTeX ! lettrine
 
 \end_inset
 
- 
-\lang english
-installed and use the module 
-\family sans
-Initials
-\family default
- in your document (menu 
+ doit être installé et vous devez utiliser le module Initiales (
+\begin_inset space ~
+\end_inset
+
+menu 
 \family sans
 Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Paramètres\SpecialChar \menuseparator
 Modules
 \family default
+
+\begin_inset space ~
+\end_inset
+
 ).
- To insert an initial, use the style 
+ Pour insérer une lettrine, utilisez le style 
 \family sans
 Initial
 \family default
 .
- This style has a mandatory and an optional argument.
- The mandatory argument is inserted via the menu 
+ Ce dernier a un paramètre obligatoire et un autre facultatif.
+ Le paramètre obligatoire est inséré avec le menu 
 \family sans
-Insert\SpecialChar \menuseparator
-Short
+Insérer\SpecialChar \menuseparator
+Titre
 \begin_inset space ~
 \end_inset
 
-Title
+court
 \family default
- and contains the letter that is the initial.
- To use the also the optional argument, insert another argument in front
- of the mandatory argument.
- This one contains parameters to modify the initial.
- For more information about the possible parameters see the documentation
- of
-\lang french
- 
+ et contient la lettre qui sert d'initiale.
+ Pour utiliser aussi le paramètre facultatif, ajoutez un autre paramètre
+ avant le paramètre obligatoire.
+ Ce paramètre sert à modifier la lettrine.
+ Pour plus d'informations sur les paramètres possibles, voyez la documentation
+ du paquetage 
 \series bold
 lettrine
 \series default
@@ -34430,31 +34373,31 @@ key "lettrine"
 \end_inset
 
 .
- 
-\lang english
-The style itself contains the text that is surrounding the initial.
- The usual style is hereby that the word whose first letter is the initial,
- is printed with 
+ Le style lui-même contient le texte qui doit entourer la lettrine.
+ Le style habituel est par conséquent que le mot dont la première lettre
+ est l'initiale soit en 
 \shape smallcaps
-small caps
+petites capitales
 \shape default
 .
- To tell LaTeX where this word is finished, add a closing brace '
-\series bold
-}
-\series default
-' as TeX Code behind it.
- At the end of the style there must be an opening brace '
-\series bold
-{
-\series default
-' as TeX Code.
+ Pour indiquer à LaTeX où ce mot se termine, ajoutez une accolade fermante
+ '}' en code TeX juste après.
+ A la fin du style on doit placer une accolade ouvrante '{' en code TeX.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
 
-\lang english
-Here are some examples:
+
+\end_layout
+
+\begin_layout Standard
+Voici quelques exemples
+\begin_inset space ~
+\end_inset
+
+:
 \end_layout
 
 \begin_layout Standard
@@ -34488,19 +34431,18 @@ lettrine
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-No optional argument, the initial is the letter 'I' in the math font 
+Pas de paramètre optionnel, la lettre initiale est un 'I' dans la police
+ mathématique 
 \begin_inset Formula $\mathfrak{Fraktur}$
 \end_inset
 
-
-\lang french
 :
 \end_layout
 
 \begin_deeper
 \begin_layout Initial
+
+\lang english
 \begin_inset Argument
 status open
 
@@ -34524,11 +34466,9 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-was in the spring of the year 1894 that all London was interested, and the
- fashionable world dismayed, by the murder of the Honourable Ronald Adair
- under most unusual and inexplicable circumstances.
+ was in the spring of the year 1894 that all London was interested, and
+ the fashionable world dismayed, by the murder of the Honourable Ronald
+ Adair under most unusual and inexplicable circumstances.
  The public has already learned those particulars of the crime which came
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
@@ -34550,14 +34490,18 @@ status collapsed
 
 \end_deeper
 \begin_layout Enumerate
+L'initiale est entourée par une seule ligne et est formée de deux lettres
+ dans la police standard ; aucun texte n'est écrit en petites capitales
+\begin_inset space ~
+\end_inset
 
-\lang english
-Only one line is surrounding the initial, which is formed by two letters
- in standard font and no text is printed in small caps:
+:
 \end_layout
 
 \begin_deeper
 \begin_layout Initial
+
+\lang english
 \begin_inset Argument
 status open
 
@@ -34588,11 +34532,9 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-was in the spring of the year 1894 that all London was interested, and the
- fashionable world dismayed, by the murder of the Honourable Ronald Adair
- under most unusual and inexplicable circumstances.
+ was in the spring of the year 1894 that all London was interested, and
+ the fashionable world dismayed, by the murder of the Honourable Ronald
+ Adair under most unusual and inexplicable circumstances.
  The public has already learned those particulars of the crime which came
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
@@ -34614,118 +34556,126 @@ status collapsed
 
 \end_deeper
 \begin_layout Enumerate
-
-\lang english
-Magenta, hanging initial over 3
+Initiale descendante sur 3
 \begin_inset space ~
 \end_inset
 
-lines in the math font 
+lignes en magenta en police mathématique 
 \begin_inset Formula $\mathcal{CALLIGRAPHIC}$
 \end_inset
 
-, the text 
-\begin_inset Quotes eld
+, le texte 
+\begin_inset Quotes fld
 \end_inset
 
+
+\lang english
 t was in the spring
-\begin_inset Quotes erd
+\lang french
+
+\begin_inset Quotes frd
 \end_inset
 
- is in 
+ est en 
 \shape smallcaps
-small caps
+petites capitales
 \shape default
-; to color the initial, you must insert this command before the initial:
+ ; pour colorer la lettrine, il faut insérer la commande suivante juste
+ avant l'initiale
+\begin_inset space ~
+\end_inset
+
+:
 \begin_inset Newline newline
 \end_inset
 
 
 \series bold
-\lang french
 
 \backslash
 renewcommand{
 \backslash
 LettrineFontHook}{
 \backslash
-color{color}}
+color{couleur}}
 \series default
-\lang english
 
 \begin_inset Newline newline
 \end_inset
 
-where the second 
+où la 
 \emph on
-color
+couleur
 \emph default
- can be 
-\begin_inset Quotes eld
+ peut être 
+\begin_inset Quotes fld
 \end_inset
 
 red
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 blue
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 green
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 yellow
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 cyan
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 magenta
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 black
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- or 
-\begin_inset Quotes eld
+ ou 
+\begin_inset Quotes fld
 \end_inset
 
 white
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
-, and add this command to the document preamble
-\lang french
+.
+ On doit aussi ajouter la commande suivante au préambule du document
+\begin_inset space ~
+\end_inset
+
 :
 \begin_inset Newline newline
 \end_inset
@@ -34766,15 +34716,11 @@ color{magenta}}
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-makes the initial magenta
+colore la lettrine en magenta
 \end_layout
 
 \end_inset
@@ -34783,6 +34729,8 @@ makes the initial magenta
 \end_layout
 
 \begin_layout Initial
+
+\lang english
 \begin_inset Argument
 status open
 
@@ -34805,11 +34753,7 @@ status open
 
 \end_inset
 
-
-\lang english
 t was in the spring
-\lang french
-
 \begin_inset ERT
 status collapsed
 
@@ -34820,9 +34764,7 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-of the year 1894 that all London was interested, and the fashionable world
+ of the year 1894 that all London was interested, and the fashionable world
  dismayed, by the murder of the Honourable Ronald Adair under most unusual
  and inexplicable circumstances.
  The public has already learned those particulars of the crime which came
@@ -34900,7 +34842,7 @@ fi
 \end_layout
 
 \begin_layout Chapter
-Trucs Externes
+Trucs externes
 \begin_inset Index idx
 status collapsed
 
@@ -34971,7 +34913,7 @@ Sous-document Documents LyX ou LaTeX.
 \end_layout
 
 \begin_layout Section
-Objets Externes 
+Objets externes 
 \begin_inset Index idx
 status collapsed
 
@@ -35079,7 +35021,7 @@ Jour-Mois-Année
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Retirer l'espace protégé quand le bug 4398 sera résolu !
@@ -35135,17 +35077,8 @@ target "http://fr.wikipedia.org/wiki/Dia_(logiciel)"
 \end_layout
 
 \begin_layout Description
-
-\lang english
-GnumericSpreadsheet With this template you can insert spreadsheets
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
-tables in the format of 
+TableurGnumeric Avec ce modèle vous pouvez insérer des feuilles de calcul
+ ou des tableaux dans le format de 
 \series bold
 
 \begin_inset CommandInset href
@@ -35173,7 +35106,7 @@ target "http://en.wikipedia.org/wiki/Microsoft_Office_XML_formats"
 
 \end_inset
 
- and 
+ et 
 \begin_inset CommandInset href
 LatexCommand href
 name "Office Open XML"
@@ -35182,15 +35115,15 @@ target "http://fr.wikipedia.org/wiki/Office_Open_XML"
 \end_inset
 
 .
- For this feature LyX must have found the program 
+ Pour cette fonction, LyX doit pouvoir trouver le programme 
 \family typewriter
 ssconvert
 \family default
- during its configuration.
- This program is part of Gnumeric, so that you must have Gnumeric installed,
- also if you don't have tables in the Gnumeric format.
- For examples and possible limitations have a look at LyX's example file
- 
+ au cours de sa configuration.
+ Ce programme fait partie de gnumeric, vous devez donc aussi installer gnumeric,
+ même si vous n'avez pas de tableaux au format gnumeric.
+ Pour des exemples et les limitations possibles, jetez un œil au fichier
+ LyX d'exemple, 
 \emph on
 spreadsheet.lyx
 \emph default
@@ -35212,10 +35145,8 @@ target "http://fr.wikipedia.org/wiki/GNU_LilyPond"
 
 \series default
 .
- 
-\lang english
-For LyX's extended support for LilyPond have a look at LyX's example file
- 
+ Pour plus d'information sur la gestion étendue de LilyPond, jetez un oeil
+ au fichier LyX d'exemple 
 \emph on
 lilypond.lyx
 \emph default
@@ -35238,24 +35169,38 @@ Option
 Options LaTeX et LyX
 \family default
 .
- 
-\lang english
-The argument of this option is a comma separated list, containing page numbers
- (insert as option 
+ L'argument de cette option est une liste d'éléments séparés par des virgules,
+ contenant des numéros de pages (
+\begin_inset space ~
+\end_inset
+
+insérez comme option 
 \series bold
 pages={3,5,6,8}
 \series default
-), ranges of page numbers (
-\series bold
-pages={4-9}
-\series default
-) or any combination.
- To insert empty pages use {}.
- E.
-\begin_inset space \thinspace{}
+
+\begin_inset space ~
 \end_inset
 
-g.
+), des plages de numéros de pages (
+\series bold
+
+\begin_inset space ~
+\end_inset
+
+pages={4-9}
+\series default
+
+\begin_inset space ~
+\end_inset
+
+) ou n'importe quelle combinaison des deux.
+ Pour insérer des pages vides, utilisez 
+\series bold
+{}
+\series default
+.
+ Par exemple 
 \begin_inset space ~
 \end_inset
 
@@ -35263,82 +35208,94 @@ g.
 \series bold
 pages={3,{},8-11,15}
 \series default
- will insert page 3, an empty page, and pages 8, 9, 10, 11 and 15.
- Page ranges are specified in the syntax 
+ va insérer la page 3, puis une page vide, puis les pages 8, 9, 10, 11 et
+ 15.
+ Les plages de pages sont décrites avec la syntaxe 
 \emph on
-start
+début-fin
 \emph default
--
+ qui sélectionne toutes les pages de 
 \emph on
-stop
+début
 \emph default
-.
- This selects all pages from 
+ jusqu'à 
 \emph on
-start
-\emph default
- to 
-\emph on
-stop
+fin
 \emph default
 .
- Omitting 
+ Si on omet 
 \emph on
-start
+début
 \emph default
- defaults to the first page; omitting 
+, on commence implicitement à la première page ; de même, omettre 
 \emph on
-stop
+fin
 \emph default
- defaults to the last page of the document.
- The last page can also be selected with the keyword 
+ termine implicitement à la dernière page du document.
+ La dernière page du document peut aussi être désignée par le mot-clé 
 \series bold
 last
 \series default
-.
- (This is only permitted in a page range.) So 
+ (
+\begin_inset space ~
+\end_inset
+
+ce dernier n'est accepté que pour une plage de pages
+\begin_inset space ~
+\end_inset
+
+).
+ Donc 
 \series bold
 pages=-
 \series default
- will insert all pages of the document and 
+ va insérer toutes les pages du document et 
 \series bold
 pages=last-1
 \series default
- will insert all pages in reverse order.
-
-\lang french
+ va insérer toutes les pages dans l'ordre inverse.
  Si on ne donne pas d'option pages, seule la première page du PDF sera insérée.
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-The option 
+L'option 
 \series bold
 noautoscale
 \series default
- inserts the pages with their original size, if this option is not given,
- the pages will be resized to fith the width of the page of your document.
- In the tab 
+ insère les pages avec leur taille d'origine, si cette option n'est pas
+ donnée, les pages seront redimensionnées
+\begin_inset space \space{}
+\end_inset
+
+pour tenir dans la largeur de page de votre document.
+ Dans l'onglet 
 \family sans
-Size and Rotation
+Taille
+\begin_inset space ~
+\end_inset
+
+et
+\begin_inset space ~
+\end_inset
+
+rotation
 \family default
- you can specify the width and height of the input pages and their rotation.
- If another width than 100
+ vous pouvez préciser la largeur et la hauteur des pages incorporées ainsi
+ qu'une éventuelle rotation.
+ Si vous utilisez une autre largeur que 100
 \begin_inset space \thinspace{}
 \end_inset
 
-Scale% is used, the option 
+Échelle%, l'option 
 \series bold
 noautoscale
 \series default
- will be overwritten.
- For more info and possible options, have a look into the documentation
- of the LaTeX-package 
+ sera neutralisée.
+ Pour plus d'information sur les options possibles, jetez un œil sur la
+ documentation du paquetage LaTeX 
 \series bold
 pdfpages
 \series default
-\lang french
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -35360,40 +35317,38 @@ Paquetages LaTeX ! pdfpages
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-To use this template in a 
+Pour utiliser ce modèle dans une présentation 
 \family sans
 Beamer
 \family default
- presentation you need to first insert an 
+ vous devez d'abord insérer un environnement 
 \family sans
-EndFrame
+FinCadre
 \family default
- environment and in a subsequent paragraph a TeX Code box containing the
- command 
+ et dans la suite, dans un paragraphe, une boîte de code TeX contenant la
+ commande 
 \series bold
 
 \backslash
 setbeamertemplate{background canvas}{}
 \series default
 .
- Then you can insert as many paragraphs containing the PDFPages template
- as you wish.
- Behind the included PDF pages you can resume the Beamer presentation by
- beginning a new frame or by starting a new section.
- To avoid stray blank pages prior to the PDF pages, make sure to use the
- 
-\family sans
-Default
-\family default
- alignment for the paragraph containing the template.
+ Ensuite vous pouvez insérer autant de paragraphes contenant le modèle PDFPages
+ que vous voulez.
+ Après les pages PDF incorporées, vous pouvez reprendre la présentation
+ Beamer en commençant une nouvelle diapositive ou en commençant une nouvelle
+ section.
+ Pour éviter des pages blanches indésirables avant les pages PDF, n'oubliez
+ pas d'utiliser un alignement Implicite pour le paragraphe qui contient
+ le modèle.
 \begin_inset Newline newline
 \end_inset
 
-Here is an included PDF which is rotated by -5°:
-\lang french
- 
+Voici un PDF incorporé basculé de -5°
+\begin_inset space ~
+\end_inset
+
+°: 
 \begin_inset External
 	template PDFPages
 	filename ../clipart/Abstract.pdf
@@ -35434,17 +35389,14 @@ reference "sec:Graphics-Dialog"
 \end_inset
 
 .
- La différence 
-\lang english
-to the normal image input
-\lang french
- est que seules les images matricielles sont autorisées, ce qui veut dire
- que les images PDF et EPS ne sont pas acceptées.
- 
-\lang english
-Here is an inserted raster image:
-\lang french
- 
+ La différence avec l'insertion normale d'image est que seules les images
+ matricielles sont autorisées, ce qui veut dire que les images PDF et EPS
+ ne sont pas acceptées.
+ Voici un exemple d'insertion d'image matricielle
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset External
 	template RasterImage
 	filename ../clipart/ToolbarEnvBox.png
@@ -36206,7 +36158,7 @@ Guide de l'utilisateur
 .
  En activant ou désactivant une branche, vous pouvez décider les fichiers
  inclus qui doivent apparaître dans la sortie imprimée.
- Cette méthode à l'avantage qu'elle peut aussi s'apliquer aux sous documents
+ Cette méthode à l'avantage qu'elle peut aussi s’appliquer aux sous documents
  
 \begin_inset Quotes fld
 \end_inset
@@ -36221,7 +36173,7 @@ incorporés
 \end_layout
 
 \begin_layout Chapter
-Listings de Code Source
+Listings de code source
 \begin_inset CommandInset label
 LatexCommand label
 name "cha:Program-Code-Listings"
@@ -38124,12 +38076,10 @@ PDF
 \end_layout
 
 \begin_layout Chapter
-
-\lang english
-List of dvips color names
+Liste de noms de couleur pour dvips
 \begin_inset CommandInset label
 LatexCommand label
-name "chap:List-of-dvips-colornames"
+name "chap:Liste-de-noms-de-couleur-dvips"
 
 \end_inset
 
@@ -38172,11 +38122,7 @@ status collapsed
 
 \end_inset
 
-
-\lang english
-Color
-\lang french
-
+Couleur
 \begin_inset ERT
 status collapsed
 
@@ -38187,9 +38133,7 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-Color name
+ Nom
 \end_layout
 
 \end_inset
@@ -38221,11 +38165,7 @@ status collapsed
 
 \end_inset
 
-
-\lang english
-Color
-\lang french
-
+Couleur
 \begin_inset ERT
 status collapsed
 
@@ -38236,9 +38176,7 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-Color name
+ Nom
 \end_layout
 
 \end_inset
@@ -38270,11 +38208,7 @@ status collapsed
 
 \end_inset
 
-
-\lang english
-Color
-\lang french
-
+Couleur
 \begin_inset ERT
 status collapsed
 
@@ -38285,9 +38219,7 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-Color name
+ Nom
 \end_layout
 
 \end_inset
@@ -38319,11 +38251,7 @@ status collapsed
 
 \end_inset
 
-
-\lang english
-Color
-\lang french
-
+Couleur
 \begin_inset ERT
 status collapsed
 
@@ -38334,9 +38262,7 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-Color name
+ Nom
 \end_layout
 
 \end_inset
@@ -41642,7 +41568,7 @@ status collapsed
 \end_layout
 
 \begin_layout Chapter
-Explication de l' Équation
+Explication de l' équation
 \begin_inset space ~
 \end_inset
 
