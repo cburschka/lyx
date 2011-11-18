@@ -445,8 +445,11 @@ void Text::setLabelWidthStringToSequence(pit_type const par_offset,
 	depth_type const depth = pars_[offset].getDepth();
 	Layout const & layout = pars_[offset].layout();
 	for (pit_type pit = offset; pit != end; ++pit) {
-		while (pars_[pit].getDepth() > depth)
+		while (pars_[pit].getDepth() > depth) {
 			++pit;
+			if (pit == end)
+				return;
+		}
 		if (pars_[pit].getDepth() < depth)
 			return;
 		if (pars_[pit].layout() != layout)
