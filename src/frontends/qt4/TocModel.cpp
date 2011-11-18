@@ -193,7 +193,6 @@ void TocModel::reset(Toc const & toc)
 		sorted_model_->sort(0);
 	model_->blockSignals(false);
 	model_->endResetModel();
-//	emit headerDataChanged();
 }
 
 
