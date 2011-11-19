@@ -273,9 +273,9 @@ dist_examples_DATA = \
 	examples/serial_letter1.lyx \
 	examples/serial_letter2.lyx \
 	examples/serial_letter3.lyx \
-	examples/sheet.gnumeric \
-	examples/sheet.ods \
-	examples/sheet.xls \
+	examples/sheet1.gnumeric \
+	examples/sheet2.ods \
+	examples/sheet3.xls \
 	examples/simplecv.lyx \
 	examples/splash.lyx \
 	examples/spreadsheet.lyx \

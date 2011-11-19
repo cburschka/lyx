@@ -127,7 +127,7 @@ Simple examples
 \begin_layout Standard
 First, the file 
 \emph on
-sheet.gnumeric, 
+sheet1.gnumeric, 
 \emph default
 a spreadsheet created with Gnumeric:
 \end_layout
@@ -135,7 +135,7 @@ a spreadsheet created with Gnumeric:
 \begin_layout Standard
 \begin_inset External
 	template GnumericSpreadsheet
-	filename sheet.gnumeric
+	filename sheet1.gnumeric
 
 \end_inset
 
@@ -145,7 +145,7 @@ a spreadsheet created with Gnumeric:
 \begin_layout Standard
 Then 
 \emph on
-sheet.ods, 
+sheet2.ods, 
 \emph default
 which was made with OpenOffice.org:
 \end_layout
@@ -153,7 +153,7 @@ which was made with OpenOffice.org:
 \begin_layout Standard
 \begin_inset External
 	template GnumericSpreadsheet
-	filename sheet.ods
+	filename sheet2.ods
 
 \end_inset
 
@@ -163,15 +163,15 @@ which was made with OpenOffice.org:
 \begin_layout Standard
 Finally 
 \emph on
-sheet.xls 
+sheet3.xls 
 \emph default
-which was created with Excel.
+which was made for Excel.
 \end_layout
 
 \begin_layout Standard
 \begin_inset External
 	template GnumericSpreadsheet
-	filename sheet.xls
+	filename sheet3.xls
 
 \end_inset
 
