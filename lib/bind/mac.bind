@@ -34,6 +34,9 @@ Format 1
 # Option  - A
 # Control - M
 
+# Status indicates if it is matching the mac standard
+#  +: correct binding
+#  -: missing or wrong binding
 # Status: "Key combination"	       What it does
 #  +: "Command-Space"                # Show or hide the Spotlight search field (if multiple languages are installed, may rotate through enabled script systems)
 #  +: "Option-Command-Space"         # Show the Spotlight search results window (if multiple languages are installed, may rotate through keyboard layouts and input methods within a script)
