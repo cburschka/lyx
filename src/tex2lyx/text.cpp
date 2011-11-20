@@ -2079,8 +2079,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				os << t.cs();
 		}
 
-		else if (t.cat() == catBegin &&
-			 p.next_token().cat() == catEnd) {
+		else if (t.cat() == catBegin) {
+			Token const next = p.next_token();
+			Token const end = p.next_next_token();
+			if (next.cat() == catEnd) {
 			// {}
 			Token const prev = p.prev_token();
 			p.get_token();
@@ -2090,14 +2092,19 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				; // ignore it in {}`` or -{}-
 			else
 				handle_ert(os, "{}", context);
-
-		}
-
-		else if (t.cat() == catBegin) {
+			} else if (next.cat() == catEscape &&
+			           is_known(next.cs(), known_quotes) &&
+			           end.cat() == catEnd) {
+				// Something like {\textquoteright} (e.g.
+				// from writer2latex). LyX writes
+				// \textquoteright{}, so we may skip the
+				// braces here for better readability.
+				parse_text_snippet(p, os, FLAG_BRACE_LAST,
+				                   outer, context);
+			} else {
 			context.check_layout(os);
 			// special handling of font attribute changes
 			Token const prev = p.prev_token();
-			Token const next = p.next_token();
 			TeXFont const oldFont = context.font;
 			if (next.character() == '[' ||
 			    next.character() == ']' ||
@@ -2170,6 +2177,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				parse_text_snippet(p, os, FLAG_BRACE_LAST,
 						   outer, context);
 				handle_ert(os, "}", context);
+				}
 			}
 		}
 
