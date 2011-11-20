@@ -40,6 +40,10 @@ bcp --boost=$1 \
 	boost/signals/trackable.hpp \
 	boost/tokenizer.hpp \
 	boost/tuple/tuple.hpp \
+    boost/mpl/string.hpp \
+    boost/mpl/fold.hpp \
+    boost/mpl/size_t.hpp \
+    boost/functional/hash.hpp \
 	\
 	needed
 
@@ -51,5 +55,13 @@ cp -vR needed/boost .
 cp -vR needed/libs .
 
 rm -rf needed
+
+# found by bcp but not needed by us
+rm -rf libs/config
+rm -rf libs/smart_ptr
+rm -rf libs/signals/build
+rm -rf libs/regex/build
+rm -rf libs/regex/test
+
 
 
