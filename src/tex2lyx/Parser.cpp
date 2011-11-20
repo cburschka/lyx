@@ -221,6 +221,20 @@ Token const Parser::next_token()
 
 
 // We return a copy here because the tokens_ vector may get reallocated
+Token const Parser::next_next_token()
+{
+	static const Token dummy;
+	// If good() has not been called after the last get_token() we need
+	// to tokenize two more tokens.
+	if (pos_ + 1 >= tokens_.size()) {
+		tokenize_one();
+		tokenize_one();
+	}
+	return pos_ + 1 < tokens_.size() ? tokens_[pos_ + 1] : dummy;
+}
+
+
+// We return a copy here because the tokens_ vector may get reallocated
 Token const Parser::get_token()
 {
 	static const Token dummy;
@@ -238,8 +252,7 @@ bool Parser::isParagraph()
 	if (curr_token().cat() == catNewline &&
 	    (curr_token().cs().size() > 1 ||
 	     (next_token().cat() == catSpace &&
-	      pos_ < tokens_.size() - 1 &&
-	      tokens_[pos_ + 1].cat() == catNewline)))
+	      next_next_token().cat() == catNewline)))
 		return true;
 	if (curr_token().cat() == catEscape && curr_token().cs() == "par")
 		return true;

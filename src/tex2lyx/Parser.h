@@ -213,6 +213,8 @@ public:
 	Token const curr_token() const;
 	/// The next token.
 	Token const next_token();
+	/// The next but one token.
+	Token const next_next_token();
 	/// Make the next token current and return that.
 	Token const get_token();
 	/// \return whether the current token starts a new paragraph
