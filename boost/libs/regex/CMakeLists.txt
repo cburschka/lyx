@@ -15,6 +15,7 @@ set(boost_regex_sources
 	regex.cpp
 	regex_raw_buffer.cpp
 	regex_traits_defaults.cpp
+	static_mutex.cpp
 	w32_regex_traits.cpp)
 
 lyx_add_path(boost_regex_sources ${TOP_SRC_DIR}/boost/libs/regex/src)
