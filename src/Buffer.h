@@ -79,6 +79,8 @@ class PreviewLoader;
 
 class Buffer;
 typedef std::list<Buffer *> ListOfBuffers;
+/// a list of Buffers we cloned
+typedef std::set<Buffer *> CloneList;
 
 
 /** The buffer object.
@@ -230,7 +232,7 @@ private:
 	///
 	typedef std::map<Buffer const *, Buffer *> BufferMap;
 	///
-	void clone(BufferMap &) const;
+	void clone(BufferMap &, CloneList *) const;
 	/// save timestamp and checksum of the given file.
 	void saveCheckSum() const;	
 	/// read a new file
