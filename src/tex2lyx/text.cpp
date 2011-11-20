@@ -163,7 +163,12 @@ char const * const known_old_font_families[] = { "rm", "sf", "tt", 0};
 char const * const known_font_families[] = { "rmfamily", "sffamily",
 "ttfamily", 0};
 
-/// the same as known_old_font_families and known_font_families with .lyx names
+/// LaTeX names for font family changing commands
+char const * const known_text_font_families[] = { "textrm", "textsf",
+"texttt", 0};
+
+/// The same as known_old_font_families, known_font_families and
+/// known_text_font_families with .lyx names
 char const * const known_coded_font_families[] = { "roman", "sans",
 "typewriter", 0};
 
@@ -173,7 +178,11 @@ char const * const known_old_font_series[] = { "bf", 0};
 /// LaTeX names for font series
 char const * const known_font_series[] = { "bfseries", "mdseries", 0};
 
-/// the same as known_old_font_series and known_font_series with .lyx names
+/// LaTeX names for font series changing commands
+char const * const known_text_font_series[] = { "textbf", "textmd", 0};
+
+/// The same as known_old_font_series, known_font_series and
+/// known_text_font_series with .lyx names
 char const * const known_coded_font_series[] = { "bold", "medium", 0};
 
 /// LaTeX 2.09 names for font shapes
@@ -183,9 +192,22 @@ char const * const known_old_font_shapes[] = { "it", "sl", "sc", 0};
 char const * const known_font_shapes[] = { "itshape", "slshape", "scshape",
 "upshape", 0};
 
-/// the same as known_old_font_shapes and known_font_shapes with .lyx names
+/// LaTeX names for font shape changing commands
+char const * const known_text_font_shapes[] = { "textit", "textsl", "textsc",
+"textup", 0};
+
+/// The same as known_old_font_shapes, known_font_shapes and
+/// known_text_font_shapes with .lyx names
 char const * const known_coded_font_shapes[] = { "italic", "slanted",
 "smallcaps", "up", 0};
+
+/// Known special characters which need skip_spaces_braces() afterwards
+char const * const known_special_chars[] = {"ldots", "lyxarrow",
+"textcompwordmark", "slash", 0};
+
+/// the same as known_special_chars with .lyx names
+char const * const known_coded_special_chars[] = {"ldots{}", "menuseparator",
+"textcompwordmark{}", "slash{}", 0};
 
 /*!
  * Graphics file extensions known by the dvips driver of the graphics package.
@@ -1863,6 +1885,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 {
 	Layout const * newlayout = 0;
 	InsetLayout const * newinsetlayout = 0;
+	char const * const * where = 0;
 	// Store the latest bibliographystyle and nocite{*} option
 	// (needed for bibtex inset)
 	string btprint;
@@ -2672,50 +2695,20 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				handle_ert(os, "\\listof{" + name + "}", context);
 		}
 
-		else if (t.cs() == "textrm")
+		else if ((where = is_known(t.cs(), known_text_font_families)))
 			parse_text_attributes(p, os, FLAG_ITEM, outer,
-					      context, "\\family",
-					      context.font.family, "roman");
+				context, "\\family", context.font.family,
+				known_coded_font_families[where - known_text_font_families]);
 
-		else if (t.cs() == "textsf")
+		else if ((where = is_known(t.cs(), known_text_font_series)))
 			parse_text_attributes(p, os, FLAG_ITEM, outer,
-					      context, "\\family",
-					      context.font.family, "sans");
+				context, "\\series", context.font.series,
+				known_coded_font_series[where - known_text_font_series]);
 
-		else if (t.cs() == "texttt")
+		else if ((where = is_known(t.cs(), known_text_font_shapes)))
 			parse_text_attributes(p, os, FLAG_ITEM, outer,
-					      context, "\\family",
-					      context.font.family, "typewriter");
-
-		else if (t.cs() == "textmd")
-			parse_text_attributes(p, os, FLAG_ITEM, outer,
-					      context, "\\series",
-					      context.font.series, "medium");
-
-		else if (t.cs() == "textbf")
-			parse_text_attributes(p, os, FLAG_ITEM, outer,
-					      context, "\\series",
-					      context.font.series, "bold");
-
-		else if (t.cs() == "textup")
-			parse_text_attributes(p, os, FLAG_ITEM, outer,
-					      context, "\\shape",
-					      context.font.shape, "up");
-
-		else if (t.cs() == "textit")
-			parse_text_attributes(p, os, FLAG_ITEM, outer,
-					      context, "\\shape",
-					      context.font.shape, "italic");
-
-		else if (t.cs() == "textsl")
-			parse_text_attributes(p, os, FLAG_ITEM, outer,
-					      context, "\\shape",
-					      context.font.shape, "slanted");
-
-		else if (t.cs() == "textsc")
-			parse_text_attributes(p, os, FLAG_ITEM, outer,
-					      context, "\\shape",
-					      context.font.shape, "smallcaps");
+				context, "\\shape", context.font.shape,
+				known_coded_font_shapes[where - known_text_font_shapes]);
 
 		else if (t.cs() == "textnormal" || t.cs() == "normalfont") {
 			context.check_layout(os);
@@ -2915,7 +2908,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		          is_known(p.next_token().cs(), known_phrases))) {
 			// LyX sometimes puts a \protect in front, so we have to ignore it
 			// FIXME: This needs to be changed when bug 4752 is fixed.
-			char const * const * where = is_known(
+			where = is_known(
 				t.cs() == "protect" ? p.get_token().cs() : t.cs(),
 				known_phrases);
 			context.check_layout(os);
@@ -2923,12 +2916,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_spaces_braces(p);
 		}
 
-		else if (is_known(t.cs(), known_ref_commands)) {
+		else if ((where = is_known(t.cs(), known_ref_commands))) {
 			string const opt = p.getOpt();
 			if (opt.empty()) {
 				context.check_layout(os);
-				char const * const * where = is_known(t.cs(),
-					known_ref_commands);
 				begin_command_inset(os, "ref",
 					known_coded_ref_commands[where - known_ref_commands]);
 				os << "reference \""
@@ -3142,8 +3133,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				preamble.registerAutomaticallyLoadedPackage("subscript");
 		}
 
-		else if (is_known(t.cs(), known_quotes)) {
-			char const * const * where = is_known(t.cs(), known_quotes);
+		else if ((where = is_known(t.cs(), known_quotes))) {
 			context.check_layout(os);
 			begin_inset(os, "Quotes ");
 			os << known_coded_quotes[where - known_quotes];
@@ -3155,9 +3145,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_braces(p);
 		}
 
-		else if (is_known(t.cs(), known_sizes) &&
+		else if ((where = is_known(t.cs(), known_sizes)) &&
 			 context.new_layout_allowed) {
-			char const * const * where = is_known(t.cs(), known_sizes);
 			context.check_layout(os);
 			TeXFont const oldFont = context.font;
 			context.font.size = known_coded_sizes[where - known_sizes];
@@ -3165,10 +3154,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, context, false);
 		}
 
-		else if (is_known(t.cs(), known_font_families) &&
+		else if ((where = is_known(t.cs(), known_font_families)) &&
 			 context.new_layout_allowed) {
-			char const * const * where =
-				is_known(t.cs(), known_font_families);
 			context.check_layout(os);
 			TeXFont const oldFont = context.font;
 			context.font.family =
@@ -3177,10 +3164,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, context, false);
 		}
 
-		else if (is_known(t.cs(), known_font_series) &&
+		else if ((where = is_known(t.cs(), known_font_series)) &&
 			 context.new_layout_allowed) {
-			char const * const * where =
-				is_known(t.cs(), known_font_series);
 			context.check_layout(os);
 			TeXFont const oldFont = context.font;
 			context.font.series =
@@ -3189,10 +3174,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, context, false);
 		}
 
-		else if (is_known(t.cs(), known_font_shapes) &&
+		else if ((where = is_known(t.cs(), known_font_shapes)) &&
 			 context.new_layout_allowed) {
-			char const * const * where =
-				is_known(t.cs(), known_font_shapes);
 			context.check_layout(os);
 			TeXFont const oldFont = context.font;
 			context.font.shape =
@@ -3200,10 +3183,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			output_font_change(os, oldFont, context.font);
 			eat_whitespace(p, os, context, false);
 		}
-		else if (is_known(t.cs(), known_old_font_families) &&
+		else if ((where = is_known(t.cs(), known_old_font_families)) &&
 			 context.new_layout_allowed) {
-			char const * const * where =
-				is_known(t.cs(), known_old_font_families);
 			context.check_layout(os);
 			TeXFont const oldFont = context.font;
 			context.font.init();
@@ -3214,10 +3195,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, context, false);
 		}
 
-		else if (is_known(t.cs(), known_old_font_series) &&
+		else if ((where = is_known(t.cs(), known_old_font_series)) &&
 			 context.new_layout_allowed) {
-			char const * const * where =
-				is_known(t.cs(), known_old_font_series);
 			context.check_layout(os);
 			TeXFont const oldFont = context.font;
 			context.font.init();
@@ -3228,10 +3207,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, context, false);
 		}
 
-		else if (is_known(t.cs(), known_old_font_shapes) &&
+		else if ((where = is_known(t.cs(), known_old_font_shapes)) &&
 			 context.new_layout_allowed) {
-			char const * const * where =
-				is_known(t.cs(), known_old_font_shapes);
 			context.check_layout(os);
 			TeXFont const oldFont = context.font;
 			context.font.init();
@@ -3264,27 +3241,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.setEncoding(enc);
 		}
 
-		else if (t.cs() == "ldots") {
+		else if ((where = is_known(t.cs(), known_special_chars))) {
 			context.check_layout(os);
-			os << "\\SpecialChar \\ldots{}\n";
-			skip_spaces_braces(p);
-		}
-
-		else if (t.cs() == "lyxarrow") {
-			context.check_layout(os);
-			os << "\\SpecialChar \\menuseparator\n";
-			skip_spaces_braces(p);
-		}
-
-		else if (t.cs() == "textcompwordmark") {
-			context.check_layout(os);
-			os << "\\SpecialChar \\textcompwordmark{}\n";
-			skip_spaces_braces(p);
-		}
-
-		else if (t.cs() == "slash") {
-			context.check_layout(os);
-			os << "\\SpecialChar \\slash{}\n";
+			os << "\\SpecialChar \\"
+			   << known_coded_special_chars[where - known_special_chars]
+			   << '\n';
 			skip_spaces_braces(p);
 		}
 
@@ -3635,8 +3596,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_spaces_braces(p);
 		}
 
-		else if (is_known(t.cs(), known_spaces)) {
-			char const * const * where = is_known(t.cs(), known_spaces);
+		else if ((where = is_known(t.cs(), known_spaces))) {
 			context.check_layout(os);
 			begin_inset(os, "space ");
 			os << '\\' << known_coded_spaces[where - known_spaces]
