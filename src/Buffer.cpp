@@ -140,11 +140,11 @@ void showPrintError(string const & name)
 	Alert::error(_("Print document failed"), str);
 }
 
-/// a list of Buffers we cloned
-set<Buffer *> cloned_buffer_list;
-
-
 } // namespace anon
+
+
+// A storehouse for the cloned buffers.
+list<CloneList> cloned_buffers;
 
 
 class Buffer::Impl
@@ -298,6 +298,8 @@ public:
 	/// If non zero, this buffer is a clone of existing buffer \p cloned_buffer_
 	/// This one is useful for preview detached in a thread.
 	Buffer const * cloned_buffer_;
+	///
+	CloneList * clone_list_;
 	/// are we in the process of exporting this buffer?
 	mutable bool doing_export;
 	
@@ -333,8 +335,8 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	  read_only(readonly_), filename(file), file_fully_loaded(false),
 	  toc_backend(owner), macro_lock(false), timestamp_(0),
 	  checksum_(0), wa_(0), gui_(0), undo_(*owner), bibinfo_cache_valid_(false),
-		bibfile_cache_valid_(false), cloned_buffer_(cloned_buffer), 
-		doing_export(false), parent_buffer(0)
+		bibfile_cache_valid_(false), cloned_buffer_(cloned_buffer),
+		clone_list_(0), doing_export(false), parent_buffer(0)
 {
 	if (!cloned_buffer_) {
 		temppath = createBufferTmpDir();
@@ -393,13 +395,13 @@ Buffer::~Buffer()
 	if (isClone()) {
 		// this is in case of recursive includes: we won't try to delete
 		// ourselves as a child.
-		cloned_buffer_list.erase(this);
+		d->clone_list_->erase(this);
 		// loop over children
 		Impl::BufferPositionMap::iterator it = d->children_positions.begin();
 		Impl::BufferPositionMap::iterator end = d->children_positions.end();
 		for (; it != end; ++it) {
 			Buffer * child = const_cast<Buffer *>(it->first);
-				if (cloned_buffer_list.erase(child))
+				if (d->clone_list_->erase(child))
 					delete child;
 		}
 		// FIXME Do we really need to do this right before we delete d?
@@ -442,25 +444,21 @@ Buffer::~Buffer()
 Buffer * Buffer::clone() const
 {
 	BufferMap bufmap;
-	masterBuffer()->clone(bufmap);
+	cloned_buffers.push_back(CloneList());
+	CloneList * clones = &cloned_buffers.back();
+
+	masterBuffer()->clone(bufmap, clones);
 
 	// make sure we got cloned
 	BufferMap::const_iterator bit = bufmap.find(this);
 	LASSERT(bit != bufmap.end(), return 0);
 	Buffer * cloned_buffer = bit->second;
 
-	// record the list of cloned buffers
-	cloned_buffer_list.clear();
-	BufferMap::iterator it = bufmap.begin();
-	BufferMap::iterator en = bufmap.end();
-	for (; it != en; ++it)
-		cloned_buffer_list.insert(it->second);
-
 	return cloned_buffer;
 }
 
 
-void Buffer::clone(BufferMap & bufmap) const
+void Buffer::clone(BufferMap & bufmap, CloneList * clones) const
 {
 	// have we already been cloned?
 	if (bufmap.find(this) != bufmap.end())
@@ -468,6 +466,8 @@ void Buffer::clone(BufferMap & bufmap) const
 
 	Buffer * buffer_clone = new Buffer(fileName().absFileName(), false, this);
 	bufmap[this] = buffer_clone;
+	clones->insert(buffer_clone);
+	buffer_clone->d->clone_list_ = clones;
 	buffer_clone->d->macro_lock = true;
 	buffer_clone->d->children_positions.clear();
 	// FIXME (Abdel 09/01/2010): this is too complicated. The whole children_positions and
@@ -481,7 +481,7 @@ void Buffer::clone(BufferMap & bufmap) const
 		dit.setBuffer(buffer_clone);
 		Buffer * child = const_cast<Buffer *>(it->second.second);
 
-		child->clone(bufmap);
+		child->clone(bufmap, clones);
 		BufferMap::iterator it = bufmap.find(child);
 		LASSERT(it != bufmap.end(), continue);
 		Buffer * child_clone = it->second;
