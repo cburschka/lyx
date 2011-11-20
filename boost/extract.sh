@@ -7,11 +7,19 @@
 #
 # Does also work with an outdated bcp version 
 #
+# Usage: extract.sh <path to new boost version>
+#
+
+if [ -z $1 ]
+then
+    echo "Usage: extract.sh <path to new boost version>"
+    exit 1
+fi
 
 rm -rf needed
 mkdir needed
 
-bcp --boost=$PWD \
+bcp --boost=$1 \
 	boost/any.hpp \
 	boost/assert.hpp \
 	boost/bind.hpp \
