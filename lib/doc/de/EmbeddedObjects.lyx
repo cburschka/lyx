@@ -16790,6 +16790,328 @@ setzt die Liniendicke wieder auf ihren Standardwert zurück
 \end_layout
 
 \begin_layout Section
+Berechnung der Tabellenbreite
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Berechnung-der-Tabellenbreite"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Für breite Tabellen ist es manchmal schwierig sicherzustellen, dass die
+ Tabelle nicht über den Seitenrand hinausragt.
+ Das Setzen einer festen Breite für jede Spalte der Tabelle ist die Lösung,
+ aber wie viel Platz wird für jede Spalte benötigt?
+\end_layout
+
+\begin_layout Standard
+Die Tabellenbreite 
+\begin_inset Formula $W_{\mathrm{Tabelle}}$
+\end_inset
+
+ kann berechnet werden: Jede Spalte hat die Breite der angegebenen Spaltenbreite
+ 
+\begin_inset Formula $W_{\mathrm{Spalte}}$
+\end_inset
+
+ (die der Inhalt der Spalte belegen kann) plus zweimal den Abstand zwischen
+ Spalteninhalt und dem Rand der Spalte (LaTeX-Länge
+\series bold
+ 
+\backslash
+tabcolsep
+\series default
+, Voreinstellung 6
+\begin_inset space \thinspace{}
+\end_inset
+
+pt) plus die Breite einer Tabellenlinie (LaTeX-Länge 
+\series bold
+
+\backslash
+arrayrulewidth
+\series default
+, Voreinstellung 0.4
+\begin_inset space \thinspace{}
+\end_inset
+
+pt): Wenn alle 
+\begin_inset Formula $n$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+Spalten dieselbe Breite haben, ist die Tabellenbreite also
+\begin_inset Formula 
+\begin{equation}
+W_{\mathrm{Tabelle}}=n\left(W_{\mathrm{Spalte}}+2\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth}\right)+\backslash\mbox{arrayrulewidth}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die verfügbare Breite für eine Tabelle ist der Raum zwischen den Seitenrändern
+ oder die Breite einer Textspalte (für ein zweispaltiges Dokument) (LaTeX-Länge
+ 
+\series bold
+
+\backslash
+columnwidth
+\series default
+).
+ Wenn alle Tabellenspalten dieselbe Breite haben sollen und 
+\begin_inset Formula $W_{\mathrm{Tabelle}}$
+\end_inset
+
+ gleich 1
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\backslash
+columnwidth sein soll, kann 
+\begin_inset Formula $W_{\mathrm{Spalte}}$
+\end_inset
+
+ leicht berechnet werden.
+\end_layout
+
+\begin_layout Standard
+Um Berechnungen ausführen zu können, muss das LaTeX-Paket 
+\series bold
+calc
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pakete ! calc
+\end_layout
+
+\end_inset
+
+ im LaTeX-Vorspann geladen werden.
+ Um die Breite im Tabellendialog anzugeben, muss das Feld 
+\family sans
+LaTeX-Argument
+\family default
+ verwendet werden.
+ Das Befehlsschema für dieses Feld ist dasselbe, das in Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "uab:Mehrfachspalten-Berechnungen"
+
+\end_inset
+
+ erklärt ist.
+ Für eine Tabelle mit 5
+\begin_inset space \thinspace{}
+\end_inset
+
+Spalten mit einer einheitlichen Breite und zentriertem Text, gibt man dort
+ für jede Spalte den Befehl
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+>{
+\backslash
+centering}p{(1
+\backslash
+columnwidth-62.4pt)/5}
+\end_layout
+
+\begin_layout Standard
+an.
+ Für eine Tabelle mit 5
+\begin_inset space \thinspace{}
+\end_inset
+
+Spalten bei der 2 das 0,75
+\begin_inset space \thinspace{}
+\end_inset
+
+fache der Breite der anderen 3
+\begin_inset space ~
+\end_inset
+
+Spalten haben sollen, ist die Berechnung
+\begin_inset Formula 
+\begin{align}
+\backslash\mbox{columnwidth} & =3\, W_{\mathrm{Spalte}}+2\cdot0,75\, W_{\mathrm{Spalte}}+\backslash\mbox{arrayrulewidth}\nonumber \\
+ & \phantom{=\,}+5\left(2\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth}\right)\nonumber \\
+ & =4,5\, W_{\mathrm{Spalte}}+62,4\,\mathrm{pt}\nonumber \\
+W_{\mathrm{Spalte}} & =\frac{\backslash\mbox{columnwidth}-62,4\,\mathrm{pt}}{4,5}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In der Tabelle wird daher der Befehl
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+>{
+\backslash
+centering}p{(1
+\backslash
+columnwidth-62.4pt)/
+\backslash
+real{4.5}}
+\end_layout
+
+\begin_layout Standard
+für die breiteren Spalten verwendet und
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+>{
+\backslash
+centering}p{(1
+\backslash
+columnwidth-62.4pt)/
+\backslash
+real{4.5}*
+\backslash
+real{0.75}}
+\end_layout
+
+\begin_layout Standard
+für die schmaleren:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="20col%" special=">{\centering}p{(1\columnwidth-62.4pt)/\real{4.5}}">
+<column alignment="center" valignment="top" width="0pt" special=">{\centering}p{(1\columnwidth-62.4pt)/\real{4.5}*\real{0.75}}">
+<column alignment="center" valignment="top" width="20col%" special=">{\centering}p{(1\columnwidth-62.4pt)/\real{4.5}}">
+<column alignment="center" valignment="top" width="0pt" special=">{\centering}p{(1\columnwidth-62.4pt)/\real{4.5}*\real{0.75}}">
+<column alignment="center" valignment="top" width="20col%" special=">{\centering}p{(1\columnwidth-62.4pt)/\real{4.5}}">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+111111 1111111 111111 111111111 11111 11111 1111
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2222 22222 222222 222222222 2222222 22 22222
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+333333 333333 333333 33333 3333333 333
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Tabellen-Anpassung
 \begin_inset Index idx
 status collapsed
@@ -18231,14 +18553,27 @@ Wenn man wie in Abschnitt
 
 \begin_inset CommandInset ref
 LatexCommand ref
+reference "sec:Berechnung-der-Tabellenbreite"
+
+\end_inset
+
+ oder Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "uab:Mehrfachspalten-Berechnungen"
 
 \end_inset
 
- die gewünschte Breite einer Mehrfachspalte berechnen will, ist das bei
- mehreren Tabellen mit Mehrfachspalten sehr lästig.
- Um sich das Leben zu erleichtern, können Sie im LaTeX-Vorspann Zellen/Spalten
- definieren:
+ die gewünschte Breite von Spalten berechnen muss, ist das bei mehreren
+ Tabellen sehr lästig.
+ Um sich das Leben zu erleichtern, kann man im LaTeX-Vorspann ein Zellen/Spalten
+-Format definieren, das dann in allen Tabellen des Dokuments verwendet werden
+ kann.
+ Das Format wird mit dem Befehl
 \end_layout
 
 \begin_layout Standard
@@ -18250,7 +18585,8 @@ newcolumntype{Formatname}[Zahl der Argumente]{Befehle}
 \end_layout
 
 \begin_layout Standard
-Der Formatname darf nur ein Buchstabe sein, aber nicht 
+definiert.
+ Der Formatname darf nur ein Buchstabe sein, aber nicht 
 \emph on
 b
 \emph default
@@ -18336,11 +18672,7 @@ im
 \family sans
 LaTeX-Argument
 \family default
- im 
-\family sans
-Tabellen-Einstellungen
-\family default
--Dialog eine Mehrfachspalte definieren.
+ im Tabellen-Einstellungen-Dialog eine Mehrfachspalte definieren.
 \end_layout
 
 \begin_layout Standard

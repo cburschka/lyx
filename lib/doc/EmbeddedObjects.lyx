@@ -11234,7 +11234,7 @@ Franz
 \end_layout
 
 \begin_layout Section
-Multiple Lines Columns and Rows
+Multiple Lines, Columns and Rows
 \end_layout
 
 \begin_layout Subsection
@@ -16617,6 +16617,322 @@ arrayrulewidth}{0.4pt}
 \end_layout
 
 \begin_layout Section
+Table Width Calculation
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Table-Width-Calculation"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For wide tables it is sometimes difficult to assure that the table does
+ not protrude over the page margin.
+ Setting a fixed width for every column of the table is the solution, but
+ what amount of space is needed for each column?
+\end_layout
+
+\begin_layout Standard
+The table width 
+\begin_inset Formula $W_{\mathrm{table}}$
+\end_inset
+
+ can be calculated: Every column has the width of the specified column width
+ 
+\begin_inset Formula $W_{\mathrm{column}}$
+\end_inset
+
+ (that the content of the column can consume) plus two times the separation
+ between the column content and the column border (LaTeX length
+\series bold
+ 
+\backslash
+tabcolsep
+\series default
+, default 6
+\begin_inset space \thinspace{}
+\end_inset
+
+pt) plus the width of a border line (LaTeX length 
+\series bold
+
+\backslash
+arrayrulewidth
+\series default
+, default 0.4
+\begin_inset space \thinspace{}
+\end_inset
+
+pt): So if all 
+\begin_inset Formula $n$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+columns have the same width, the table width is
+\begin_inset Formula 
+\begin{equation}
+W_{\mathrm{table}}=n\left(W_{\mathrm{column}}+2\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth}\right)+\backslash\mbox{arrayrulewidth}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The available width for a table is the space between the page margins or
+ the width of a text column (for a two-column document) (LaTeX length 
+\series bold
+
+\backslash
+columnwidth
+\series default
+).
+ If all table columns should have the same width and 
+\begin_inset Formula $W_{\mathrm{table}}$
+\end_inset
+
+ should be 1
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\backslash
+columnwidth, 
+\begin_inset Formula $W_{\mathrm{column}}$
+\end_inset
+
+ can easily be calculated.
+\end_layout
+
+\begin_layout Standard
+To be able to perform calculations you need to load the LaTeX-package 
+\series bold
+calc
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! calc
+\end_layout
+
+\end_inset
+
+ in the document preamble.
+ To set the width in the table dialog you have to use the field 
+\family sans
+LaTeX argument
+\family default
+.
+ The command scheme for this field is the same that is explained in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Multicolumn-Calculations"
+
+\end_inset
+
+.
+ For a table with 5
+\begin_inset space \thinspace{}
+\end_inset
+
+columns with an uniform width and centered text, enter there for each column
+ the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+>{
+\backslash
+centering}p{(1
+\backslash
+columnwidth-62.4pt)/5}
+\end_layout
+
+\begin_layout Standard
+For a table with 5
+\begin_inset space \thinspace{}
+\end_inset
+
+columns where 2 should have 0.75
+\begin_inset space ~
+\end_inset
+
+times the width than the 3 others, the calculation is
+\begin_inset Formula 
+\begin{align}
+\backslash\mbox{columnwidth} & =3\, W_{\mathrm{column}}+2\cdot0.75\, W_{\mathrm{column}}+\backslash\mbox{arrayrulewidth}\nonumber \\
+ & \phantom{=\,}+5\left(2\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth}\right)\nonumber \\
+ & =4.5\, W_{\mathrm{column}}+62.4\,\mathrm{pt}\nonumber \\
+W_{\mathrm{column}} & =\frac{\backslash\mbox{columnwidth}-62.4\,\mathrm{pt}}{4.5}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the table therefore the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+>{
+\backslash
+centering}p{(1
+\backslash
+columnwidth-62.4pt)/
+\backslash
+real{4.5}}
+\end_layout
+
+\begin_layout Standard
+is used for the wider columns and
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+>{
+\backslash
+centering}p{(1
+\backslash
+columnwidth-62.4pt)/
+\backslash
+real{4.5}*
+\backslash
+real{0.75}}
+\end_layout
+
+\begin_layout Standard
+for the smaller ones:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="20col%" special=">{\centering}p{(1\columnwidth-62.4pt)/\real{4.5}}">
+<column alignment="center" valignment="top" width="0pt" special=">{\centering}p{(1\columnwidth-62.4pt)/\real{4.5}*\real{0.75}}">
+<column alignment="center" valignment="top" width="20col%" special=">{\centering}p{(1\columnwidth-62.4pt)/\real{4.5}}">
+<column alignment="center" valignment="top" width="0pt" special=">{\centering}p{(1\columnwidth-62.4pt)/\real{4.5}*\real{0.75}}">
+<column alignment="center" valignment="top" width="20col%" special=">{\centering}p{(1\columnwidth-62.4pt)/\real{4.5}}">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+111111 1111111 111111 111111111 11111 11111 1111
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2222 22222 222222 222222222 2222222 22 22222
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+333333 333333 333333 33333 3333333 333
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Table Customization
 \begin_inset Index idx
 status collapsed
@@ -18047,7 +18363,18 @@ Table Customization ! Cell/Column Format
 \end_layout
 
 \begin_layout Standard
-Calculating the required width for spanned columns as in section
+Calculating the required width for normal columns as described in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Table-Width-Calculation"
+
+\end_inset
+
+ or for spanned columns as described in section
 \begin_inset space ~
 \end_inset
 
@@ -18058,9 +18385,9 @@ reference "sub:Multicolumn-Calculations"
 
 \end_inset
 
- is very annoying if you have several tables with multicolumn cells.
+ is very annoying if you have several tables where a calculation is necessary.
  To make life easier, you can define a cell/column format in the preamble,
- so that it can be used in all tables of the document.
+ that can be used in all tables of the document.
  The format is defined with the command
 \end_layout
 
@@ -18155,7 +18482,11 @@ M{width}
 \end_layout
 
 \begin_layout Standard
-as LaTeX-argument in the table dialog to create a multicolumn.
+as 
+\family sans
+LaTeX-argument
+\family default
+ in the table dialog to create a multicolumn.
 \end_layout
 
 \begin_layout Standard
