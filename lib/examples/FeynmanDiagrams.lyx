@@ -88,6 +88,7 @@
 \paperorientation portrait
 \suppress_date true
 \use_refstyle 0
+\notefontcolor #0000ff
 \index Index
 \shortcut idx
 \color #008000
@@ -784,6 +785,39 @@ key "Feyn"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ If you have an index list in your document and use one of the AMS theorem
+ modules, you have to add the option 
+\series bold
+noglobalbang
+\series default
+ to the document class options in the document settings.
+ This enables the usage of the '!' character in index entries (necessary
+ for subentries) but might cause troubles with the AMS align and align*
+ environments (which are described in section 
+\begin_inset Quotes eld
+\end_inset
+
+Align Environments
+\begin_inset Quotes erd
+\end_inset
+
+ of LyX's Math manual).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography
