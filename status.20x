@@ -194,13 +194,13 @@ What's new
 
 * USER INTERFACE
 
-- Group correctly Koma book environments inside environment combo-box listing.
+- Correctly group Koma book environments inside environment combo-box listing.
 
 - Add undo for change of text language when document language is changed.
-  When a document is not multi-lingual the text contents is changed to the
+  When a document is not multi-lingual, the text contents is changed to the
   new language. This should be recorded for Undo (bug 7740).
 
-- Adjust the cursor language after document language change had changed the
+- Adjust the cursor language after document language change has changed the
   text language (bug 7681).
 
 - Correctly sort modules in Document->Settings and formats in the "Other 
@@ -271,6 +271,8 @@ What's new
 - Sort formats under Document>Settings>Output (bug 7758).
 
 - Fix crash when changing labelwidth (bug 7873).
+
+- Keep cursor inside index inset when a blank one is created (bug 7905).
 
 
 * ADVANCED FIND AND REPLACE
