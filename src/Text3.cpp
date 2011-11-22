@@ -247,8 +247,11 @@ static bool doInsertInset(Cursor & cur, Text * text,
 			inset->edit(cur, true);
 		// Now put this into inset
 		Font const f(inherit_font, cur.current_font.language());
-		cur.text()->insertStringAsLines(cur, ds, f);
-		cur.leaveInset(*inset);
+		if (!ds.empty()) {
+			cur.text()->insertStringAsLines(cur, ds, f);
+			cur.leaveInset(*inset);
+			inset->asInsetCollapsable()->setStatus(InsetCollapsable::Collapsed);
+		}
 		return true;
 	}
 
