@@ -250,7 +250,6 @@ static bool doInsertInset(Cursor & cur, Text * text,
 		if (!ds.empty()) {
 			cur.text()->insertStringAsLines(cur, ds, f);
 			cur.leaveInset(*inset);
-			inset->asInsetCollapsable()->setStatus(InsetCollapsable::Collapsed);
 		}
 		return true;
 	}
