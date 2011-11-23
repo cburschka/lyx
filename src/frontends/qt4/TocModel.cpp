@@ -189,6 +189,7 @@ void TocModel::reset(Toc const & toc)
 	}
 
 	model_->setHeaderData(0, Qt::Horizontal, QVariant("title"), Qt::DisplayRole);
+	sorted_model_->setSourceModel(model_);
 	if (is_sorted_)
 		sorted_model_->sort(0);
 	model_->blockSignals(false);
