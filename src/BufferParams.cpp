@@ -2068,16 +2068,16 @@ vector<Format const *> BufferParams::exportableFormats(bool only_viewable) const
 
 bool BufferParams::isExportableFormat(string const & format) const
 {
-		typedef vector<Format const *> Formats;
-		Formats formats;
-		formats = exportableFormats(true);
-		Formats::const_iterator fit = formats.begin();
-		Formats::const_iterator end = formats.end();
-		for (; fit != end ; ++fit) {
-			if ((*fit)->name() == format)
-				return true;
-		}
-		return false;
+	typedef vector<Format const *> Formats;
+	Formats formats;
+	formats = exportableFormats(true);
+	Formats::const_iterator fit = formats.begin();
+	Formats::const_iterator end = formats.end();
+	for (; fit != end ; ++fit) {
+		if ((*fit)->name() == format)
+			return true;
+	}
+	return false;
 }
 
 
