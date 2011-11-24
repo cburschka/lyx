@@ -1330,6 +1330,9 @@ dist_layouts_DATA =\
 	layouts/broadway.layout \
 	layouts/chess.layout \
 	layouts/cl2emult.layout \
+	layouts/ctex-article.layout \
+	layouts/ctex-book.layout \
+	layouts/ctex-report.layout \
 	layouts/customHeadersFooters.module \
 	layouts/db_lyxmacros.inc \
 	layouts/db_stdclass.inc \
@@ -1529,6 +1532,9 @@ dist_templates_DATA = \
 	templates/agu_article.lyx \
 	templates/apa.lyx \
 	templates/beamer-conference-ornate-20min.lyx \
+	templates/ctex-article.lyx \
+	templates/ctex-book.lyx \
+	templates/ctex-report.lyx \
 	templates/de_beamer-conference-ornate-20min.lyx \
 	templates/dinbrief.lyx \
 	templates/docbook_article.lyx \
