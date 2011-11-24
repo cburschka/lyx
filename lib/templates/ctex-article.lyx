@@ -1,0 +1,130 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass ctex-article
+\begin_preamble
+\DeclareRobustCommand\nobreakspace{\leavevmode\nobreak\ }
+\end_preamble
+\options UTF8,adobefonts
+\use_default_options true
+\maintain_unincluded_children false
+\language chinese-simplified
+\language_package %
+\inputencoding utf8-plain
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format pdf4
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+基于CTeX的LyX文档模板
+\end_layout
+
+\begin_layout Author
+作者
+\end_layout
+
+\begin_layout Abstract
+这里是摘要内容。
+\end_layout
+
+\begin_layout Standard
+下面开始正文。
+\end_layout
+
+\begin_layout Section
+简介
+\end_layout
+
+\begin_layout Standard
+本文档基于ctex宏包。它使用UTF8编码，因为UTF8是比较通用的编码。设置编码有两处注意（都可以在菜单中设置）：ctex文档类的选项中需要设置UTF8，语言
+编码也需要改为UTF8。本文档默认输出类型为XeTeX，也就是用XeLaTeX编译为PDF文档，使用Adobe字体，在Ubuntu系统下可成功编译生成PDF。如
+果系统中没有Adobe字体，当然也可以使用普通article类配合任意中文字体，只需要用XeLaTeX编译即可；如果需要引用ctex所做的术语翻译和大量其它为了
+适应中文文档的调整（比如缩进），那么可以在导言区（preamble）中调用：
+\family typewriter
+
+\backslash
+usepackage[UTF8,nofonts]{ctexcap}
+\family default
+；这样，“Section X”就会变成“第X节”。非Windows用户可以尝试用这种方法写中文LyX文档（比如用文泉驿字体，注意中英字体可以分别设置，参见xeC
+JK包）。
+\end_layout
+
+\begin_layout Section
+获取帮助
+\end_layout
+
+\begin_layout Standard
+本模板来自谢益辉，若有任何疑问，请发邮件至xie@yihui.name或到 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://yihui.name
+\end_layout
+
+\end_inset
+
+留言。注意前面已经声明，本文档默认设置为使用Adobe中文字体，如果你是Linux用户，这些字体很可能不存在，这种情况下请使用任意可用的非TeX中文字体。
+\end_layout
+
+\begin_layout Section
+小结
+\end_layout
+
+\begin_layout Standard
+本文档使用ctex-article.layout（类似的还有两种：书籍ctex-book和报告ctex-report.layout，如果你熟悉ctex宏包，这里就不
+需要解释了），语言设置为简体中文，编码使用UTF8，字体用Adobe中文字体，输出类型设置为XeTeX。编译的时候中文与英文之间会自动加上空格，方便阅读。
+\end_layout
+
+\end_body
+\end_document
