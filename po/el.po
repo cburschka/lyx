@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-11-24 15:20-0500\n"
+"POT-Creation-Date: 2011-11-24 17:03-0500\n"
 "PO-Revision-Date: 2010-07-07 02:31+0100\n"
 "Last-Translator: Οδυσσέας Δαγκλής <o2d@freemail.gr>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -5466,7 +5466,7 @@ msgstr "Αξίωμα"
 msgid "Case"
 msgstr "Περίπτωση"
 
-#: lib/layouts/AEA.layout:130 lib/layouts/theorems-without-preamble.inc:341
+#: lib/layouts/AEA.layout:130
 #, fuzzy
 msgid "Case \\thecase."
 msgstr "Ισχυρισμός \\the claim."
@@ -5730,7 +5730,6 @@ msgstr "Παρατήρηση"
 
 #: lib/layouts/AEA.layout:234 lib/layouts/ijmpd.layout:314
 #: lib/layouts/theorems-ams-bytype.inc:266 lib/layouts/theorems-bytype.inc:242
-#: lib/layouts/theorems-without-preamble.inc:311
 msgid "Remark \\theremark."
 msgstr "Παρατήρηση \\the remark."
 
@@ -8631,26 +8630,22 @@ msgstr "Ρουμάνικα"
 
 #: lib/layouts/ijmpc.layout:317 lib/layouts/ijmpd.layout:342
 #: lib/layouts/theorems-ams-bytype.inc:68 lib/layouts/theorems-ams.inc:42
-#: lib/layouts/theorems-bytype.inc:44
-#: lib/layouts/theorems-without-preamble.inc:52 lib/layouts/theorems.inc:42
+#: lib/layouts/theorems-bytype.inc:44 lib/layouts/theorems.inc:42
 msgid "Theorem \\thetheorem."
 msgstr "Θεώρημα \\thetheorem."
 
 #: lib/layouts/ijmpc.layout:351 lib/layouts/ijmpd.layout:375
 #: lib/layouts/theorems-ams-bytype.inc:94 lib/layouts/theorems-bytype.inc:70
-#: lib/layouts/theorems-without-preamble.inc:76
 msgid "Corollary \\thecorollary."
 msgstr "Πόρισμα \\thecorollary."
 
 #: lib/layouts/ijmpc.layout:360 lib/layouts/ijmpd.layout:384
 #: lib/layouts/theorems-ams-bytype.inc:112 lib/layouts/theorems-bytype.inc:88
-#: lib/layouts/theorems-without-preamble.inc:92
 msgid "Lemma \\thelemma."
 msgstr "Λήμμα \\thelemma."
 
 #: lib/layouts/ijmpc.layout:369 lib/layouts/ijmpd.layout:393
 #: lib/layouts/theorems-ams-bytype.inc:130 lib/layouts/theorems-bytype.inc:106
-#: lib/layouts/theorems-without-preamble.inc:108
 msgid "Proposition \\theproposition."
 msgstr "Πρόταση \\theproposition."
 
@@ -8677,7 +8672,6 @@ msgid "Question"
 msgstr "Ερώτημα"
 
 #: lib/layouts/ijmpc.layout:387 lib/layouts/ijmpd.layout:411
-#: lib/layouts/theorems-without-preamble.inc:375
 msgid "Question \\thequestion."
 msgstr "Ερώτημα \\thequestion."
 
@@ -8688,7 +8682,6 @@ msgstr "Ισχυρισμός \\the claim."
 
 #: lib/layouts/ijmpc.layout:405 lib/layouts/ijmpd.layout:429
 #: lib/layouts/theorems-ams-bytype.inc:148 lib/layouts/theorems-bytype.inc:124
-#: lib/layouts/theorems-without-preamble.inc:140
 msgid "Conjecture \\theconjecture."
 msgstr "Εικασία \\theconjecture."
 
@@ -10364,22 +10357,18 @@ msgid "Fact \\thefact."
 msgstr ""
 
 #: lib/layouts/theorems-ams-bytype.inc:184 lib/layouts/theorems-bytype.inc:160
-#: lib/layouts/theorems-without-preamble.inc:179
 msgid "Definition \\thedefinition."
 msgstr ""
 
 #: lib/layouts/theorems-ams-bytype.inc:209 lib/layouts/theorems-bytype.inc:185
-#: lib/layouts/theorems-without-preamble.inc:203
 msgid "Example \\theexample."
 msgstr "Παράδειγμα \\theexample."
 
 #: lib/layouts/theorems-ams-bytype.inc:228 lib/layouts/theorems-bytype.inc:204
-#: lib/layouts/theorems-without-preamble.inc:221
 msgid "Problem \\theproblem."
 msgstr "Πρόβλημα \\theproblem."
 
 #: lib/layouts/theorems-ams-bytype.inc:247 lib/layouts/theorems-bytype.inc:223
-#: lib/layouts/theorems-without-preamble.inc:294
 msgid "Exercise \\theexercise."
 msgstr "Άσκηση \\theexercise."
 
@@ -10467,6 +10456,46 @@ msgstr "Άσκηση."
 msgid "Remark."
 msgstr "Παρατήρηση."
 
+#: lib/layouts/theorems-without-preamble.inc:52
+#, fuzzy
+msgid "Theorem \\thetheorem"
+msgstr "Θεώρημα \\thetheorem."
+
+#: lib/layouts/theorems-without-preamble.inc:76
+#, fuzzy
+msgid "Corollary \\thecorollary"
+msgstr "Πόρισμα \\thecorollary."
+
+#: lib/layouts/theorems-without-preamble.inc:92
+#, fuzzy
+msgid "Lemma \\thelemma"
+msgstr "Λήμμα \\thelemma."
+
+#: lib/layouts/theorems-without-preamble.inc:108
+#, fuzzy
+msgid "Proposition \\theproposition"
+msgstr "Πρόταση \\theproposition."
+
+#: lib/layouts/theorems-without-preamble.inc:140
+#, fuzzy
+msgid "Conjecture \\theconjecture"
+msgstr "Εικασία \\theconjecture."
+
+#: lib/layouts/theorems-without-preamble.inc:179
+#, fuzzy
+msgid "Definition \\thedefinition"
+msgstr "Συνθήκη \\thecondition."
+
+#: lib/layouts/theorems-without-preamble.inc:203
+#, fuzzy
+msgid "Example \\theexample"
+msgstr "Παράδειγμα \\theexample."
+
+#: lib/layouts/theorems-without-preamble.inc:221
+#, fuzzy
+msgid "Problem \\theproblem"
+msgstr "Πρόβλημα \\theproblem."
+
 #: lib/layouts/theorems-without-preamble.inc:236
 #, fuzzy
 msgid "Prob"
@@ -10487,14 +10516,34 @@ msgstr "Σύμβολα"
 msgid "# [number of Prob]"
 msgstr "Αριθμός γραμμών"
 
+#: lib/layouts/theorems-without-preamble.inc:294
+#, fuzzy
+msgid "Exercise \\theexercise"
+msgstr "Άσκηση \\theexercise."
+
+#: lib/layouts/theorems-without-preamble.inc:311
+#, fuzzy
+msgid "Remark \\theremark"
+msgstr "Παρατήρηση \\the remark."
+
+#: lib/layouts/theorems-without-preamble.inc:341
+#, fuzzy
+msgid "Case \\thecase"
+msgstr "Ισχυρισμός \\the claim."
+
 #: lib/layouts/theorems-without-preamble.inc:358
 #, fuzzy
-msgid "Property \\theproperty."
+msgid "Property \\theproperty"
 msgstr "Μέρος \\thepart"
 
+#: lib/layouts/theorems-without-preamble.inc:375
+#, fuzzy
+msgid "Question \\thequestion"
+msgstr "Ερώτημα \\thequestion."
+
 #: lib/layouts/theorems-without-preamble.inc:392
-#: lib/layouts/theorems-ams-extended-bytype.module:202
-msgid "Note \\thenote."
+#, fuzzy
+msgid "Note \\thenote"
 msgstr "Σημείωση \\thenote."
 
 #: lib/layouts/braille.module:2
@@ -11017,6 +11066,10 @@ msgstr "Συνθήκη*"
 #: lib/layouts/theorems-ams-extended.module:160
 msgid "Condition."
 msgstr "Συνθήκη."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:202
+msgid "Note \\thenote."
+msgstr "Σημείωση \\thenote."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:217
 #: lib/layouts/theorems-ams-extended.module:191
@@ -24082,58 +24135,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Άγνωστος χρήστης"
-
-#, fuzzy
-#~ msgid "Theorem \\thetheorem"
-#~ msgstr "Θεώρημα \\thetheorem."
-
-#, fuzzy
-#~ msgid "Corollary \\thecorollary"
-#~ msgstr "Πόρισμα \\thecorollary."
-
-#, fuzzy
-#~ msgid "Lemma \\thelemma"
-#~ msgstr "Λήμμα \\thelemma."
-
-#, fuzzy
-#~ msgid "Proposition \\theproposition"
-#~ msgstr "Πρόταση \\theproposition."
-
-#, fuzzy
-#~ msgid "Conjecture \\theconjecture"
-#~ msgstr "Εικασία \\theconjecture."
-
-#, fuzzy
-#~ msgid "Definition \\thedefinition"
-#~ msgstr "Συνθήκη \\thecondition."
-
-#, fuzzy
-#~ msgid "Example \\theexample"
-#~ msgstr "Παράδειγμα \\theexample."
-
-#, fuzzy
-#~ msgid "Problem \\theproblem"
-#~ msgstr "Πρόβλημα \\theproblem."
-
-#, fuzzy
-#~ msgid "Exercise \\theexercise"
-#~ msgstr "Άσκηση \\theexercise."
-
-#, fuzzy
-#~ msgid "Remark \\theremark"
-#~ msgstr "Παρατήρηση \\the remark."
-
-#, fuzzy
-#~ msgid "Case \\thecase"
-#~ msgstr "Ισχυρισμός \\the claim."
-
-#, fuzzy
-#~ msgid "Question \\thequestion"
-#~ msgstr "Ερώτημα \\thequestion."
-
-#, fuzzy
-#~ msgid "Note \\thenote"
-#~ msgstr "Σημείωση \\thenote."
 
 #~ msgid "&New:"
 #~ msgstr "Νέ&ος:"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-11-24 15:20-0500\n"
+"POT-Creation-Date: 2011-11-24 17:03-0500\n"
 "PO-Revision-Date: 2011-04-26 21:20+0100\n"
 "Last-Translator: Szőke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -5424,7 +5424,7 @@ msgstr "Axióma"
 msgid "Case"
 msgstr "Eset"
 
-#: lib/layouts/AEA.layout:130 lib/layouts/theorems-without-preamble.inc:341
+#: lib/layouts/AEA.layout:130
 msgid "Case \\thecase."
 msgstr "\\thecase. eset"
 
@@ -5687,7 +5687,6 @@ msgstr "Észrevétel"
 
 #: lib/layouts/AEA.layout:234 lib/layouts/ijmpd.layout:314
 #: lib/layouts/theorems-ams-bytype.inc:266 lib/layouts/theorems-bytype.inc:242
-#: lib/layouts/theorems-without-preamble.inc:311
 msgid "Remark \\theremark."
 msgstr "\\theremark. észrevétel"
 
@@ -8552,26 +8551,22 @@ msgstr "Roman"
 
 #: lib/layouts/ijmpc.layout:317 lib/layouts/ijmpd.layout:342
 #: lib/layouts/theorems-ams-bytype.inc:68 lib/layouts/theorems-ams.inc:42
-#: lib/layouts/theorems-bytype.inc:44
-#: lib/layouts/theorems-without-preamble.inc:52 lib/layouts/theorems.inc:42
+#: lib/layouts/theorems-bytype.inc:44 lib/layouts/theorems.inc:42
 msgid "Theorem \\thetheorem."
 msgstr "\\thetheorem. tétel"
 
 #: lib/layouts/ijmpc.layout:351 lib/layouts/ijmpd.layout:375
 #: lib/layouts/theorems-ams-bytype.inc:94 lib/layouts/theorems-bytype.inc:70
-#: lib/layouts/theorems-without-preamble.inc:76
 msgid "Corollary \\thecorollary."
 msgstr "\\thecorollary. következmény"
 
 #: lib/layouts/ijmpc.layout:360 lib/layouts/ijmpd.layout:384
 #: lib/layouts/theorems-ams-bytype.inc:112 lib/layouts/theorems-bytype.inc:88
-#: lib/layouts/theorems-without-preamble.inc:92
 msgid "Lemma \\thelemma."
 msgstr "\\thelemma. segédtétel"
 
 #: lib/layouts/ijmpc.layout:369 lib/layouts/ijmpd.layout:393
 #: lib/layouts/theorems-ams-bytype.inc:130 lib/layouts/theorems-bytype.inc:106
-#: lib/layouts/theorems-without-preamble.inc:108
 msgid "Proposition \\theproposition."
 msgstr "\\theproposition. állítás"
 
@@ -8598,7 +8593,6 @@ msgid "Question"
 msgstr "Kérdés"
 
 #: lib/layouts/ijmpc.layout:387 lib/layouts/ijmpd.layout:411
-#: lib/layouts/theorems-without-preamble.inc:375
 msgid "Question \\thequestion."
 msgstr "\\thequestion. kérdés"
 
@@ -8609,7 +8603,6 @@ msgstr "\\theclaim. igény"
 
 #: lib/layouts/ijmpc.layout:405 lib/layouts/ijmpd.layout:429
 #: lib/layouts/theorems-ams-bytype.inc:148 lib/layouts/theorems-bytype.inc:124
-#: lib/layouts/theorems-without-preamble.inc:140
 msgid "Conjecture \\theconjecture."
 msgstr "\\theconjecture. feltevés"
 
@@ -10270,22 +10263,18 @@ msgid "Fact \\thefact."
 msgstr "\\thefact. tény"
 
 #: lib/layouts/theorems-ams-bytype.inc:184 lib/layouts/theorems-bytype.inc:160
-#: lib/layouts/theorems-without-preamble.inc:179
 msgid "Definition \\thedefinition."
 msgstr "\\thedefinition. definíció"
 
 #: lib/layouts/theorems-ams-bytype.inc:209 lib/layouts/theorems-bytype.inc:185
-#: lib/layouts/theorems-without-preamble.inc:203
 msgid "Example \\theexample."
 msgstr "\\theexample. példa"
 
 #: lib/layouts/theorems-ams-bytype.inc:228 lib/layouts/theorems-bytype.inc:204
-#: lib/layouts/theorems-without-preamble.inc:221
 msgid "Problem \\theproblem."
 msgstr "\\theproblem. probléma"
 
 #: lib/layouts/theorems-ams-bytype.inc:247 lib/layouts/theorems-bytype.inc:223
-#: lib/layouts/theorems-without-preamble.inc:294
 msgid "Exercise \\theexercise."
 msgstr "\\theexercise. gyakorlat"
 
@@ -10373,6 +10362,46 @@ msgstr "Gyakorlat."
 msgid "Remark."
 msgstr "Észrevétel."
 
+#: lib/layouts/theorems-without-preamble.inc:52
+#, fuzzy
+msgid "Theorem \\thetheorem"
+msgstr "\\thetheorem. tétel"
+
+#: lib/layouts/theorems-without-preamble.inc:76
+#, fuzzy
+msgid "Corollary \\thecorollary"
+msgstr "\\thecorollary. következmény"
+
+#: lib/layouts/theorems-without-preamble.inc:92
+#, fuzzy
+msgid "Lemma \\thelemma"
+msgstr "\\thelemma. segédtétel"
+
+#: lib/layouts/theorems-without-preamble.inc:108
+#, fuzzy
+msgid "Proposition \\theproposition"
+msgstr "\\theproposition. állítás"
+
+#: lib/layouts/theorems-without-preamble.inc:140
+#, fuzzy
+msgid "Conjecture \\theconjecture"
+msgstr "\\theconjecture. feltevés"
+
+#: lib/layouts/theorems-without-preamble.inc:179
+#, fuzzy
+msgid "Definition \\thedefinition"
+msgstr "\\thedefinition. definíció"
+
+#: lib/layouts/theorems-without-preamble.inc:203
+#, fuzzy
+msgid "Example \\theexample"
+msgstr "\\theexample. példa"
+
+#: lib/layouts/theorems-without-preamble.inc:221
+#, fuzzy
+msgid "Problem \\theproblem"
+msgstr "\\theproblem. probléma"
+
 #: lib/layouts/theorems-without-preamble.inc:236
 #, fuzzy
 msgid "Prob"
@@ -10393,14 +10422,34 @@ msgstr "Szimbólum"
 msgid "# [number of Prob]"
 msgstr "Sorok száma"
 
+#: lib/layouts/theorems-without-preamble.inc:294
+#, fuzzy
+msgid "Exercise \\theexercise"
+msgstr "\\theexercise. gyakorlat"
+
+#: lib/layouts/theorems-without-preamble.inc:311
+#, fuzzy
+msgid "Remark \\theremark"
+msgstr "\\theremark. észrevétel"
+
+#: lib/layouts/theorems-without-preamble.inc:341
+#, fuzzy
+msgid "Case \\thecase"
+msgstr "\\thecase. eset"
+
 #: lib/layouts/theorems-without-preamble.inc:358
 #, fuzzy
-msgid "Property \\theproperty."
+msgid "Property \\theproperty"
 msgstr "\\theprop tulajdonság."
 
+#: lib/layouts/theorems-without-preamble.inc:375
+#, fuzzy
+msgid "Question \\thequestion"
+msgstr "\\thequestion. kérdés"
+
 #: lib/layouts/theorems-without-preamble.inc:392
-#: lib/layouts/theorems-ams-extended-bytype.module:202
-msgid "Note \\thenote."
+#, fuzzy
+msgid "Note \\thenote"
 msgstr "\\thenote. megjegyzés"
 
 #: lib/layouts/braille.module:2
@@ -10947,6 +10996,10 @@ msgstr "Feltétel*"
 #: lib/layouts/theorems-ams-extended.module:160
 msgid "Condition."
 msgstr "Feltétel."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:202
+msgid "Note \\thenote."
+msgstr "\\thenote. megjegyzés"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:217
 #: lib/layouts/theorems-ams-extended.module:191
@@ -24234,58 +24287,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Ismeretlen felhasználó"
-
-#, fuzzy
-#~ msgid "Theorem \\thetheorem"
-#~ msgstr "\\thetheorem. tétel"
-
-#, fuzzy
-#~ msgid "Corollary \\thecorollary"
-#~ msgstr "\\thecorollary. következmény"
-
-#, fuzzy
-#~ msgid "Lemma \\thelemma"
-#~ msgstr "\\thelemma. segédtétel"
-
-#, fuzzy
-#~ msgid "Proposition \\theproposition"
-#~ msgstr "\\theproposition. állítás"
-
-#, fuzzy
-#~ msgid "Conjecture \\theconjecture"
-#~ msgstr "\\theconjecture. feltevés"
-
-#, fuzzy
-#~ msgid "Definition \\thedefinition"
-#~ msgstr "\\thedefinition. definíció"
-
-#, fuzzy
-#~ msgid "Example \\theexample"
-#~ msgstr "\\theexample. példa"
-
-#, fuzzy
-#~ msgid "Problem \\theproblem"
-#~ msgstr "\\theproblem. probléma"
-
-#, fuzzy
-#~ msgid "Exercise \\theexercise"
-#~ msgstr "\\theexercise. gyakorlat"
-
-#, fuzzy
-#~ msgid "Remark \\theremark"
-#~ msgstr "\\theremark. észrevétel"
-
-#, fuzzy
-#~ msgid "Case \\thecase"
-#~ msgstr "\\thecase. eset"
-
-#, fuzzy
-#~ msgid "Question \\thequestion"
-#~ msgstr "\\thequestion. kérdés"
-
-#, fuzzy
-#~ msgid "Note \\thenote"
-#~ msgstr "\\thenote. megjegyzés"
 
 #~ msgid "&New:"
 #~ msgstr "Ú&j:"

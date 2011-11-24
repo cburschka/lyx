@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-11-24 15:20-0500\n"
+"POT-Creation-Date: 2011-11-24 17:03-0500\n"
 "PO-Revision-Date: 2011-10-30 16:27+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -5413,7 +5413,7 @@ msgstr "Аксіома"
 msgid "Case"
 msgstr "Варіант"
 
-#: lib/layouts/AEA.layout:130 lib/layouts/theorems-without-preamble.inc:341
+#: lib/layouts/AEA.layout:130
 msgid "Case \\thecase."
 msgstr "Випадок \\thecase."
 
@@ -5676,7 +5676,6 @@ msgstr "Помітка"
 
 #: lib/layouts/AEA.layout:234 lib/layouts/ijmpd.layout:314
 #: lib/layouts/theorems-ams-bytype.inc:266 lib/layouts/theorems-bytype.inc:242
-#: lib/layouts/theorems-without-preamble.inc:311
 msgid "Remark \\theremark."
 msgstr "Примітка \\theremark."
 
@@ -8522,26 +8521,22 @@ msgstr "СписокЗРимськимиЦифрами"
 
 #: lib/layouts/ijmpc.layout:317 lib/layouts/ijmpd.layout:342
 #: lib/layouts/theorems-ams-bytype.inc:68 lib/layouts/theorems-ams.inc:42
-#: lib/layouts/theorems-bytype.inc:44
-#: lib/layouts/theorems-without-preamble.inc:52 lib/layouts/theorems.inc:42
+#: lib/layouts/theorems-bytype.inc:44 lib/layouts/theorems.inc:42
 msgid "Theorem \\thetheorem."
 msgstr "Теорема \\thetheorem."
 
 #: lib/layouts/ijmpc.layout:351 lib/layouts/ijmpd.layout:375
 #: lib/layouts/theorems-ams-bytype.inc:94 lib/layouts/theorems-bytype.inc:70
-#: lib/layouts/theorems-without-preamble.inc:76
 msgid "Corollary \\thecorollary."
 msgstr "Наслідок \\thecorollary."
 
 #: lib/layouts/ijmpc.layout:360 lib/layouts/ijmpd.layout:384
 #: lib/layouts/theorems-ams-bytype.inc:112 lib/layouts/theorems-bytype.inc:88
-#: lib/layouts/theorems-without-preamble.inc:92
 msgid "Lemma \\thelemma."
 msgstr "Лема \\thelemma."
 
 #: lib/layouts/ijmpc.layout:369 lib/layouts/ijmpd.layout:393
 #: lib/layouts/theorems-ams-bytype.inc:130 lib/layouts/theorems-bytype.inc:106
-#: lib/layouts/theorems-without-preamble.inc:108
 msgid "Proposition \\theproposition."
 msgstr "Твердження \\theproposition."
 
@@ -8568,7 +8563,6 @@ msgid "Question"
 msgstr "Питання"
 
 #: lib/layouts/ijmpc.layout:387 lib/layouts/ijmpd.layout:411
-#: lib/layouts/theorems-without-preamble.inc:375
 msgid "Question \\thequestion."
 msgstr "Питання \\thequestion."
 
@@ -8579,7 +8573,6 @@ msgstr "Вимога \\theclaim."
 
 #: lib/layouts/ijmpc.layout:405 lib/layouts/ijmpd.layout:429
 #: lib/layouts/theorems-ams-bytype.inc:148 lib/layouts/theorems-bytype.inc:124
-#: lib/layouts/theorems-without-preamble.inc:140
 msgid "Conjecture \\theconjecture."
 msgstr "Припущення \\theconjecture."
 
@@ -10212,22 +10205,18 @@ msgid "Fact \\thefact."
 msgstr "Факт \\thefact."
 
 #: lib/layouts/theorems-ams-bytype.inc:184 lib/layouts/theorems-bytype.inc:160
-#: lib/layouts/theorems-without-preamble.inc:179
 msgid "Definition \\thedefinition."
 msgstr "Означення \\thedefinition."
 
 #: lib/layouts/theorems-ams-bytype.inc:209 lib/layouts/theorems-bytype.inc:185
-#: lib/layouts/theorems-without-preamble.inc:203
 msgid "Example \\theexample."
 msgstr "Приклад \\theexample."
 
 #: lib/layouts/theorems-ams-bytype.inc:228 lib/layouts/theorems-bytype.inc:204
-#: lib/layouts/theorems-without-preamble.inc:221
 msgid "Problem \\theproblem."
 msgstr "Задача \\theproblem."
 
 #: lib/layouts/theorems-ams-bytype.inc:247 lib/layouts/theorems-bytype.inc:223
-#: lib/layouts/theorems-without-preamble.inc:294
 msgid "Exercise \\theexercise."
 msgstr "Вправа \\theexercise."
 
@@ -10315,6 +10304,38 @@ msgstr "Вправа."
 msgid "Remark."
 msgstr "Зауваження."
 
+#: lib/layouts/theorems-without-preamble.inc:52
+msgid "Theorem \\thetheorem"
+msgstr "Теорема \\thetheorem"
+
+#: lib/layouts/theorems-without-preamble.inc:76
+msgid "Corollary \\thecorollary"
+msgstr "Наслідок \\thecorollary"
+
+#: lib/layouts/theorems-without-preamble.inc:92
+msgid "Lemma \\thelemma"
+msgstr "Лема \\thelemma"
+
+#: lib/layouts/theorems-without-preamble.inc:108
+msgid "Proposition \\theproposition"
+msgstr "Твердження \\theproposition"
+
+#: lib/layouts/theorems-without-preamble.inc:140
+msgid "Conjecture \\theconjecture"
+msgstr "Припущення \\theconjecture"
+
+#: lib/layouts/theorems-without-preamble.inc:179
+msgid "Definition \\thedefinition"
+msgstr "Означення \\thedefinition"
+
+#: lib/layouts/theorems-without-preamble.inc:203
+msgid "Example \\theexample"
+msgstr "Приклад \\theexample"
+
+#: lib/layouts/theorems-without-preamble.inc:221
+msgid "Problem \\theproblem"
+msgstr "Задача \\theproblem"
+
 #: lib/layouts/theorems-without-preamble.inc:236
 msgid "Prob"
 msgstr "Проблема"
@@ -10331,15 +10352,30 @@ msgstr "Розв."
 msgid "# [number of Prob]"
 msgstr "№ [number of Prob]"
 
+#: lib/layouts/theorems-without-preamble.inc:294
+msgid "Exercise \\theexercise"
+msgstr "Вправа \\theexercise"
+
+#: lib/layouts/theorems-without-preamble.inc:311
+msgid "Remark \\theremark"
+msgstr "Примітка \\theremark"
+
+#: lib/layouts/theorems-without-preamble.inc:341
+msgid "Case \\thecase"
+msgstr "Випадок \\thecase"
+
 #: lib/layouts/theorems-without-preamble.inc:358
 #, fuzzy
-msgid "Property \\theproperty."
+msgid "Property \\theproperty"
 msgstr "Властивість \\theproperty"
 
+#: lib/layouts/theorems-without-preamble.inc:375
+msgid "Question \\thequestion"
+msgstr "Питання \\thequestion"
+
 #: lib/layouts/theorems-without-preamble.inc:392
-#: lib/layouts/theorems-ams-extended-bytype.module:202
-msgid "Note \\thenote."
-msgstr "Примітка \\thenote."
+msgid "Note \\thenote"
+msgstr "Примітка \\thenote"
 
 #: lib/layouts/braille.module:2
 msgid "Braille"
@@ -10889,6 +10925,10 @@ msgstr "Умова*"
 #: lib/layouts/theorems-ams-extended.module:160
 msgid "Condition."
 msgstr "Умова."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:202
+msgid "Note \\thenote."
+msgstr "Примітка \\thenote."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:217
 #: lib/layouts/theorems-ams-extended.module:191
@@ -24057,45 +24097,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Невідомий користувач"
-
-#~ msgid "Theorem \\thetheorem"
-#~ msgstr "Теорема \\thetheorem"
-
-#~ msgid "Corollary \\thecorollary"
-#~ msgstr "Наслідок \\thecorollary"
-
-#~ msgid "Lemma \\thelemma"
-#~ msgstr "Лема \\thelemma"
-
-#~ msgid "Proposition \\theproposition"
-#~ msgstr "Твердження \\theproposition"
-
-#~ msgid "Conjecture \\theconjecture"
-#~ msgstr "Припущення \\theconjecture"
-
-#~ msgid "Definition \\thedefinition"
-#~ msgstr "Означення \\thedefinition"
-
-#~ msgid "Example \\theexample"
-#~ msgstr "Приклад \\theexample"
-
-#~ msgid "Problem \\theproblem"
-#~ msgstr "Задача \\theproblem"
-
-#~ msgid "Exercise \\theexercise"
-#~ msgstr "Вправа \\theexercise"
-
-#~ msgid "Remark \\theremark"
-#~ msgstr "Примітка \\theremark"
-
-#~ msgid "Case \\thecase"
-#~ msgstr "Випадок \\thecase"
-
-#~ msgid "Question \\thequestion"
-#~ msgstr "Питання \\thequestion"
-
-#~ msgid "Note \\thenote"
-#~ msgstr "Примітка \\thenote"
 
 #~ msgid "&New:"
 #~ msgstr "&Нові:"

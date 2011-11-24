@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zh_CN\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-11-24 15:20-0500\n"
+"POT-Creation-Date: 2011-11-24 17:03-0500\n"
 "PO-Revision-Date: 2011-06-02 23:49-0600\n"
 "Last-Translator: Yihui Xie <xie@yihui.name>\n"
 "Language-Team: 简体中文 <lyx-docs@lists.lyx.org>\n"
@@ -5379,7 +5379,7 @@ msgstr "公理"
 msgid "Case"
 msgstr "项目"
 
-#: lib/layouts/AEA.layout:130 lib/layouts/theorems-without-preamble.inc:341
+#: lib/layouts/AEA.layout:130
 msgid "Case \\thecase."
 msgstr "项目\\thecase."
 
@@ -5642,7 +5642,6 @@ msgstr "注"
 
 #: lib/layouts/AEA.layout:234 lib/layouts/ijmpd.layout:314
 #: lib/layouts/theorems-ams-bytype.inc:266 lib/layouts/theorems-bytype.inc:242
-#: lib/layouts/theorems-without-preamble.inc:311
 msgid "Remark \\theremark."
 msgstr "注\\theremark."
 
@@ -8568,28 +8567,24 @@ msgstr "衬线字体"
 
 #: lib/layouts/ijmpc.layout:317 lib/layouts/ijmpd.layout:342
 #: lib/layouts/theorems-ams-bytype.inc:68 lib/layouts/theorems-ams.inc:42
-#: lib/layouts/theorems-bytype.inc:44
-#: lib/layouts/theorems-without-preamble.inc:52 lib/layouts/theorems.inc:42
+#: lib/layouts/theorems-bytype.inc:44 lib/layouts/theorems.inc:42
 #, fuzzy
 msgid "Theorem \\thetheorem."
 msgstr "Theorem \\arabic{theorem}."
 
 #: lib/layouts/ijmpc.layout:351 lib/layouts/ijmpd.layout:375
 #: lib/layouts/theorems-ams-bytype.inc:94 lib/layouts/theorems-bytype.inc:70
-#: lib/layouts/theorems-without-preamble.inc:76
 msgid "Corollary \\thecorollary."
 msgstr "推论\\thecorollary."
 
 #: lib/layouts/ijmpc.layout:360 lib/layouts/ijmpd.layout:384
 #: lib/layouts/theorems-ams-bytype.inc:112 lib/layouts/theorems-bytype.inc:88
-#: lib/layouts/theorems-without-preamble.inc:92
 #, fuzzy
 msgid "Lemma \\thelemma."
 msgstr "Lemma \\arabic{lemma}."
 
 #: lib/layouts/ijmpc.layout:369 lib/layouts/ijmpd.layout:393
 #: lib/layouts/theorems-ams-bytype.inc:130 lib/layouts/theorems-bytype.inc:106
-#: lib/layouts/theorems-without-preamble.inc:108
 msgid "Proposition \\theproposition."
 msgstr "命题\\theproposition."
 
@@ -8617,7 +8612,6 @@ msgid "Question"
 msgstr "问题"
 
 #: lib/layouts/ijmpc.layout:387 lib/layouts/ijmpd.layout:411
-#: lib/layouts/theorems-without-preamble.inc:375
 #, fuzzy
 msgid "Question \\thequestion."
 msgstr "Question \\arabic{question}."
@@ -8629,7 +8623,6 @@ msgstr "声明\\theclaim."
 
 #: lib/layouts/ijmpc.layout:405 lib/layouts/ijmpd.layout:429
 #: lib/layouts/theorems-ams-bytype.inc:148 lib/layouts/theorems-bytype.inc:124
-#: lib/layouts/theorems-without-preamble.inc:140
 msgid "Conjecture \\theconjecture."
 msgstr "猜想\\theconjecture."
 
@@ -10347,23 +10340,19 @@ msgid "Fact \\thefact."
 msgstr "事实\\thefact."
 
 #: lib/layouts/theorems-ams-bytype.inc:184 lib/layouts/theorems-bytype.inc:160
-#: lib/layouts/theorems-without-preamble.inc:179
 #, fuzzy
 msgid "Definition \\thedefinition."
 msgstr "Definition \\arabic{definition}."
 
 #: lib/layouts/theorems-ams-bytype.inc:209 lib/layouts/theorems-bytype.inc:185
-#: lib/layouts/theorems-without-preamble.inc:203
 msgid "Example \\theexample."
 msgstr "例\\theexample."
 
 #: lib/layouts/theorems-ams-bytype.inc:228 lib/layouts/theorems-bytype.inc:204
-#: lib/layouts/theorems-without-preamble.inc:221
 msgid "Problem \\theproblem."
 msgstr "问题 \\theproblem."
 
 #: lib/layouts/theorems-ams-bytype.inc:247 lib/layouts/theorems-bytype.inc:223
-#: lib/layouts/theorems-without-preamble.inc:294
 msgid "Exercise \\theexercise."
 msgstr "练习 \\theexercise."
 
@@ -10451,6 +10440,46 @@ msgstr "练习."
 msgid "Remark."
 msgstr "注."
 
+#: lib/layouts/theorems-without-preamble.inc:52
+#, fuzzy
+msgid "Theorem \\thetheorem"
+msgstr "Theorem \\arabic{theorem}."
+
+#: lib/layouts/theorems-without-preamble.inc:76
+#, fuzzy
+msgid "Corollary \\thecorollary"
+msgstr "推论\\thecorollary."
+
+#: lib/layouts/theorems-without-preamble.inc:92
+#, fuzzy
+msgid "Lemma \\thelemma"
+msgstr "Lemma \\arabic{lemma}."
+
+#: lib/layouts/theorems-without-preamble.inc:108
+#, fuzzy
+msgid "Proposition \\theproposition"
+msgstr "命题\\theproposition."
+
+#: lib/layouts/theorems-without-preamble.inc:140
+#, fuzzy
+msgid "Conjecture \\theconjecture"
+msgstr "猜想\\theconjecture."
+
+#: lib/layouts/theorems-without-preamble.inc:179
+#, fuzzy
+msgid "Definition \\thedefinition"
+msgstr "Definition \\arabic{definition}."
+
+#: lib/layouts/theorems-without-preamble.inc:203
+#, fuzzy
+msgid "Example \\theexample"
+msgstr "例\\theexample."
+
+#: lib/layouts/theorems-without-preamble.inc:221
+#, fuzzy
+msgid "Problem \\theproblem"
+msgstr "问题 \\theproblem."
+
 #: lib/layouts/theorems-without-preamble.inc:236
 #, fuzzy
 msgid "Prob"
@@ -10471,14 +10500,34 @@ msgstr "符号"
 msgid "# [number of Prob]"
 msgstr "行数"
 
+#: lib/layouts/theorems-without-preamble.inc:294
+#, fuzzy
+msgid "Exercise \\theexercise"
+msgstr "练习 \\theexercise."
+
+#: lib/layouts/theorems-without-preamble.inc:311
+#, fuzzy
+msgid "Remark \\theremark"
+msgstr "注\\theremark."
+
+#: lib/layouts/theorems-without-preamble.inc:341
+#, fuzzy
+msgid "Case \\thecase"
+msgstr "项目\\thecase."
+
 #: lib/layouts/theorems-without-preamble.inc:358
 #, fuzzy
-msgid "Property \\theproperty."
+msgid "Property \\theproperty"
 msgstr "Prop \\arabic{prop}."
 
+#: lib/layouts/theorems-without-preamble.inc:375
+#, fuzzy
+msgid "Question \\thequestion"
+msgstr "Question \\arabic{question}."
+
 #: lib/layouts/theorems-without-preamble.inc:392
-#: lib/layouts/theorems-ams-extended-bytype.module:202
-msgid "Note \\thenote."
+#, fuzzy
+msgid "Note \\thenote"
 msgstr "注 \\thenote."
 
 #: lib/layouts/braille.module:2
@@ -11002,6 +11051,10 @@ msgstr "条件"
 #: lib/layouts/theorems-ams-extended.module:160
 msgid "Condition."
 msgstr "条件."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:202
+msgid "Note \\thenote."
+msgstr "注 \\thenote."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:217
 #: lib/layouts/theorems-ams-extended.module:191
@@ -24234,58 +24287,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "未知用户"
-
-#, fuzzy
-#~ msgid "Theorem \\thetheorem"
-#~ msgstr "Theorem \\arabic{theorem}."
-
-#, fuzzy
-#~ msgid "Corollary \\thecorollary"
-#~ msgstr "推论\\thecorollary."
-
-#, fuzzy
-#~ msgid "Lemma \\thelemma"
-#~ msgstr "Lemma \\arabic{lemma}."
-
-#, fuzzy
-#~ msgid "Proposition \\theproposition"
-#~ msgstr "命题\\theproposition."
-
-#, fuzzy
-#~ msgid "Conjecture \\theconjecture"
-#~ msgstr "猜想\\theconjecture."
-
-#, fuzzy
-#~ msgid "Definition \\thedefinition"
-#~ msgstr "Definition \\arabic{definition}."
-
-#, fuzzy
-#~ msgid "Example \\theexample"
-#~ msgstr "例\\theexample."
-
-#, fuzzy
-#~ msgid "Problem \\theproblem"
-#~ msgstr "问题 \\theproblem."
-
-#, fuzzy
-#~ msgid "Exercise \\theexercise"
-#~ msgstr "练习 \\theexercise."
-
-#, fuzzy
-#~ msgid "Remark \\theremark"
-#~ msgstr "注\\theremark."
-
-#, fuzzy
-#~ msgid "Case \\thecase"
-#~ msgstr "项目\\thecase."
-
-#, fuzzy
-#~ msgid "Question \\thequestion"
-#~ msgstr "Question \\arabic{question}."
-
-#, fuzzy
-#~ msgid "Note \\thenote"
-#~ msgstr "注 \\thenote."
 
 #~ msgid "&New:"
 #~ msgstr "新建(&N)："

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_2.0.1_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-11-24 15:20-0500\n"
+"POT-Creation-Date: 2011-11-24 17:03-0500\n"
 "PO-Revision-Date: 2011-05-31 19:16+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -5400,7 +5400,7 @@ msgstr "Axioma"
 msgid "Case"
 msgstr "Kasua"
 
-#: lib/layouts/AEA.layout:130 lib/layouts/theorems-without-preamble.inc:341
+#: lib/layouts/AEA.layout:130
 msgid "Case \\thecase."
 msgstr "\\thecase kasua."
 
@@ -5663,7 +5663,6 @@ msgstr "Oharra"
 
 #: lib/layouts/AEA.layout:234 lib/layouts/ijmpd.layout:314
 #: lib/layouts/theorems-ams-bytype.inc:266 lib/layouts/theorems-bytype.inc:242
-#: lib/layouts/theorems-without-preamble.inc:311
 msgid "Remark \\theremark."
 msgstr " \\theremark. oharra"
 
@@ -8520,26 +8519,22 @@ msgstr "Erromatarra"
 
 #: lib/layouts/ijmpc.layout:317 lib/layouts/ijmpd.layout:342
 #: lib/layouts/theorems-ams-bytype.inc:68 lib/layouts/theorems-ams.inc:42
-#: lib/layouts/theorems-bytype.inc:44
-#: lib/layouts/theorems-without-preamble.inc:52 lib/layouts/theorems.inc:42
+#: lib/layouts/theorems-bytype.inc:44 lib/layouts/theorems.inc:42
 msgid "Theorem \\thetheorem."
 msgstr "\\thetheorem. teorema"
 
 #: lib/layouts/ijmpc.layout:351 lib/layouts/ijmpd.layout:375
 #: lib/layouts/theorems-ams-bytype.inc:94 lib/layouts/theorems-bytype.inc:70
-#: lib/layouts/theorems-without-preamble.inc:76
 msgid "Corollary \\thecorollary."
 msgstr "\\thecorollary. korolarioa"
 
 #: lib/layouts/ijmpc.layout:360 lib/layouts/ijmpd.layout:384
 #: lib/layouts/theorems-ams-bytype.inc:112 lib/layouts/theorems-bytype.inc:88
-#: lib/layouts/theorems-without-preamble.inc:92
 msgid "Lemma \\thelemma."
 msgstr "\\thelemma. lema"
 
 #: lib/layouts/ijmpc.layout:369 lib/layouts/ijmpd.layout:393
 #: lib/layouts/theorems-ams-bytype.inc:130 lib/layouts/theorems-bytype.inc:106
-#: lib/layouts/theorems-without-preamble.inc:108
 msgid "Proposition \\theproposition."
 msgstr "\\theproposition. proposizioa"
 
@@ -8566,7 +8561,6 @@ msgid "Question"
 msgstr "Galdera"
 
 #: lib/layouts/ijmpc.layout:387 lib/layouts/ijmpd.layout:411
-#: lib/layouts/theorems-without-preamble.inc:375
 msgid "Question \\thequestion."
 msgstr "\\thequestion. galdera."
 
@@ -8577,7 +8571,6 @@ msgstr "\\theclaim. aldarrikapena"
 
 #: lib/layouts/ijmpc.layout:405 lib/layouts/ijmpd.layout:429
 #: lib/layouts/theorems-ams-bytype.inc:148 lib/layouts/theorems-bytype.inc:124
-#: lib/layouts/theorems-without-preamble.inc:140
 msgid "Conjecture \\theconjecture."
 msgstr "\\theconjecture. aierua"
 
@@ -10238,22 +10231,18 @@ msgid "Fact \\thefact."
 msgstr "\\thefact. egitatea"
 
 #: lib/layouts/theorems-ams-bytype.inc:184 lib/layouts/theorems-bytype.inc:160
-#: lib/layouts/theorems-without-preamble.inc:179
 msgid "Definition \\thedefinition."
 msgstr "\\thedefinition. definizioa."
 
 #: lib/layouts/theorems-ams-bytype.inc:209 lib/layouts/theorems-bytype.inc:185
-#: lib/layouts/theorems-without-preamble.inc:203
 msgid "Example \\theexample."
 msgstr "\\theexample. adibidea"
 
 #: lib/layouts/theorems-ams-bytype.inc:228 lib/layouts/theorems-bytype.inc:204
-#: lib/layouts/theorems-without-preamble.inc:221
 msgid "Problem \\theproblem."
 msgstr "\\theproblem. buruketa"
 
 #: lib/layouts/theorems-ams-bytype.inc:247 lib/layouts/theorems-bytype.inc:223
-#: lib/layouts/theorems-without-preamble.inc:294
 msgid "Exercise \\theexercise."
 msgstr "\\theexercise. ariketa"
 
@@ -10341,6 +10330,46 @@ msgstr "Ariketa."
 msgid "Remark."
 msgstr "Oharra."
 
+#: lib/layouts/theorems-without-preamble.inc:52
+#, fuzzy
+msgid "Theorem \\thetheorem"
+msgstr "\\thetheorem. teorema"
+
+#: lib/layouts/theorems-without-preamble.inc:76
+#, fuzzy
+msgid "Corollary \\thecorollary"
+msgstr "\\thecorollary. korolarioa"
+
+#: lib/layouts/theorems-without-preamble.inc:92
+#, fuzzy
+msgid "Lemma \\thelemma"
+msgstr "\\thelemma. lema"
+
+#: lib/layouts/theorems-without-preamble.inc:108
+#, fuzzy
+msgid "Proposition \\theproposition"
+msgstr "\\theproposition. proposizioa"
+
+#: lib/layouts/theorems-without-preamble.inc:140
+#, fuzzy
+msgid "Conjecture \\theconjecture"
+msgstr "\\theconjecture. aierua"
+
+#: lib/layouts/theorems-without-preamble.inc:179
+#, fuzzy
+msgid "Definition \\thedefinition"
+msgstr "\\thedefinition. definizioa."
+
+#: lib/layouts/theorems-without-preamble.inc:203
+#, fuzzy
+msgid "Example \\theexample"
+msgstr "\\theexample. adibidea"
+
+#: lib/layouts/theorems-without-preamble.inc:221
+#, fuzzy
+msgid "Problem \\theproblem"
+msgstr "\\theproblem. buruketa"
+
 #: lib/layouts/theorems-without-preamble.inc:236
 #, fuzzy
 msgid "Prob"
@@ -10361,14 +10390,34 @@ msgstr "Ikurra"
 msgid "# [number of Prob]"
 msgstr "Errenkada kopurua"
 
+#: lib/layouts/theorems-without-preamble.inc:294
+#, fuzzy
+msgid "Exercise \\theexercise"
+msgstr "\\theexercise. ariketa"
+
+#: lib/layouts/theorems-without-preamble.inc:311
+#, fuzzy
+msgid "Remark \\theremark"
+msgstr " \\theremark. oharra"
+
+#: lib/layouts/theorems-without-preamble.inc:341
+#, fuzzy
+msgid "Case \\thecase"
+msgstr "\\thecase kasua."
+
 #: lib/layouts/theorems-without-preamble.inc:358
 #, fuzzy
-msgid "Property \\theproperty."
+msgid "Property \\theproperty"
 msgstr "\\theprop. prop"
 
+#: lib/layouts/theorems-without-preamble.inc:375
+#, fuzzy
+msgid "Question \\thequestion"
+msgstr "\\thequestion. galdera."
+
 #: lib/layouts/theorems-without-preamble.inc:392
-#: lib/layouts/theorems-ams-extended-bytype.module:202
-msgid "Note \\thenote."
+#, fuzzy
+msgid "Note \\thenote"
 msgstr "\\thenote. oharra."
 
 #: lib/layouts/braille.module:2
@@ -10919,6 +10968,10 @@ msgstr "Baldintza*"
 #: lib/layouts/theorems-ams-extended.module:160
 msgid "Condition."
 msgstr "Baldintza."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:202
+msgid "Note \\thenote."
+msgstr "\\thenote. oharra."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:217
 #: lib/layouts/theorems-ams-extended.module:191
@@ -24100,58 +24153,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Erabiltzaile ezezaguna"
-
-#, fuzzy
-#~ msgid "Theorem \\thetheorem"
-#~ msgstr "\\thetheorem. teorema"
-
-#, fuzzy
-#~ msgid "Corollary \\thecorollary"
-#~ msgstr "\\thecorollary. korolarioa"
-
-#, fuzzy
-#~ msgid "Lemma \\thelemma"
-#~ msgstr "\\thelemma. lema"
-
-#, fuzzy
-#~ msgid "Proposition \\theproposition"
-#~ msgstr "\\theproposition. proposizioa"
-
-#, fuzzy
-#~ msgid "Conjecture \\theconjecture"
-#~ msgstr "\\theconjecture. aierua"
-
-#, fuzzy
-#~ msgid "Definition \\thedefinition"
-#~ msgstr "\\thedefinition. definizioa."
-
-#, fuzzy
-#~ msgid "Example \\theexample"
-#~ msgstr "\\theexample. adibidea"
-
-#, fuzzy
-#~ msgid "Problem \\theproblem"
-#~ msgstr "\\theproblem. buruketa"
-
-#, fuzzy
-#~ msgid "Exercise \\theexercise"
-#~ msgstr "\\theexercise. ariketa"
-
-#, fuzzy
-#~ msgid "Remark \\theremark"
-#~ msgstr " \\theremark. oharra"
-
-#, fuzzy
-#~ msgid "Case \\thecase"
-#~ msgstr "\\thecase kasua."
-
-#, fuzzy
-#~ msgid "Question \\thequestion"
-#~ msgstr "\\thequestion. galdera."
-
-#, fuzzy
-#~ msgid "Note \\thenote"
-#~ msgstr "\\thenote. oharra."
 
 #~ msgid "&New:"
 #~ msgstr "&Berria:"

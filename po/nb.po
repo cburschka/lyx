@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.6.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-11-24 15:20-0500\n"
+"POT-Creation-Date: 2011-11-24 17:03-0500\n"
 "PO-Revision-Date: 2011-11-15 01:23+0100\n"
 "Last-Translator: Helge Hafting <helge.hafting@aitel.hist.no>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -5337,7 +5337,7 @@ msgstr "Aksiom"
 msgid "Case"
 msgstr "Tilfelle"
 
-#: lib/layouts/AEA.layout:130 lib/layouts/theorems-without-preamble.inc:341
+#: lib/layouts/AEA.layout:130
 msgid "Case \\thecase."
 msgstr "Tilfelle \\thecase."
 
@@ -5600,7 +5600,6 @@ msgstr "Merknad"
 
 #: lib/layouts/AEA.layout:234 lib/layouts/ijmpd.layout:314
 #: lib/layouts/theorems-ams-bytype.inc:266 lib/layouts/theorems-bytype.inc:242
-#: lib/layouts/theorems-without-preamble.inc:311
 msgid "Remark \\theremark."
 msgstr "Merknad \\theremark."
 
@@ -8447,26 +8446,22 @@ msgstr "Antikva"
 
 #: lib/layouts/ijmpc.layout:317 lib/layouts/ijmpd.layout:342
 #: lib/layouts/theorems-ams-bytype.inc:68 lib/layouts/theorems-ams.inc:42
-#: lib/layouts/theorems-bytype.inc:44
-#: lib/layouts/theorems-without-preamble.inc:52 lib/layouts/theorems.inc:42
+#: lib/layouts/theorems-bytype.inc:44 lib/layouts/theorems.inc:42
 msgid "Theorem \\thetheorem."
 msgstr "Teorem \\thetheorem."
 
 #: lib/layouts/ijmpc.layout:351 lib/layouts/ijmpd.layout:375
 #: lib/layouts/theorems-ams-bytype.inc:94 lib/layouts/theorems-bytype.inc:70
-#: lib/layouts/theorems-without-preamble.inc:76
 msgid "Corollary \\thecorollary."
 msgstr "Korollar \\thecorollary."
 
 #: lib/layouts/ijmpc.layout:360 lib/layouts/ijmpd.layout:384
 #: lib/layouts/theorems-ams-bytype.inc:112 lib/layouts/theorems-bytype.inc:88
-#: lib/layouts/theorems-without-preamble.inc:92
 msgid "Lemma \\thelemma."
 msgstr "Lemma \\thelemma."
 
 #: lib/layouts/ijmpc.layout:369 lib/layouts/ijmpd.layout:393
 #: lib/layouts/theorems-ams-bytype.inc:130 lib/layouts/theorems-bytype.inc:106
-#: lib/layouts/theorems-without-preamble.inc:108
 msgid "Proposition \\theproposition."
 msgstr "Proposisjon \\theproposition."
 
@@ -8493,7 +8488,6 @@ msgid "Question"
 msgstr "Spørsmål"
 
 #: lib/layouts/ijmpc.layout:387 lib/layouts/ijmpd.layout:411
-#: lib/layouts/theorems-without-preamble.inc:375
 msgid "Question \\thequestion."
 msgstr "Spørsmål \\thequestion."
 
@@ -8504,7 +8498,6 @@ msgstr "Påstand \\theclaim."
 
 #: lib/layouts/ijmpc.layout:405 lib/layouts/ijmpd.layout:429
 #: lib/layouts/theorems-ams-bytype.inc:148 lib/layouts/theorems-bytype.inc:124
-#: lib/layouts/theorems-without-preamble.inc:140
 msgid "Conjecture \\theconjecture."
 msgstr "Konjektur \\theconjecture."
 
@@ -10141,22 +10134,18 @@ msgid "Fact \\thefact."
 msgstr "Faktum \\thefact."
 
 #: lib/layouts/theorems-ams-bytype.inc:184 lib/layouts/theorems-bytype.inc:160
-#: lib/layouts/theorems-without-preamble.inc:179
 msgid "Definition \\thedefinition."
 msgstr "Definisjon \\\\thedefinition."
 
 #: lib/layouts/theorems-ams-bytype.inc:209 lib/layouts/theorems-bytype.inc:185
-#: lib/layouts/theorems-without-preamble.inc:203
 msgid "Example \\theexample."
 msgstr "Eksempel \\theexample."
 
 #: lib/layouts/theorems-ams-bytype.inc:228 lib/layouts/theorems-bytype.inc:204
-#: lib/layouts/theorems-without-preamble.inc:221
 msgid "Problem \\theproblem."
 msgstr "Problem \\theproblem."
 
 #: lib/layouts/theorems-ams-bytype.inc:247 lib/layouts/theorems-bytype.inc:223
-#: lib/layouts/theorems-without-preamble.inc:294
 msgid "Exercise \\theexercise."
 msgstr "Oppgave \\theexercise."
 
@@ -10244,6 +10233,38 @@ msgstr "Oppgave."
 msgid "Remark."
 msgstr "Merknad."
 
+#: lib/layouts/theorems-without-preamble.inc:52
+msgid "Theorem \\thetheorem"
+msgstr "Teorem \\thetheorem"
+
+#: lib/layouts/theorems-without-preamble.inc:76
+msgid "Corollary \\thecorollary"
+msgstr "Korollar \\thecorollary"
+
+#: lib/layouts/theorems-without-preamble.inc:92
+msgid "Lemma \\thelemma"
+msgstr "Lemma \\thelemma"
+
+#: lib/layouts/theorems-without-preamble.inc:108
+msgid "Proposition \\theproposition"
+msgstr "Proposisjon \\theproposition"
+
+#: lib/layouts/theorems-without-preamble.inc:140
+msgid "Conjecture \\theconjecture"
+msgstr "Konjektur \\theconjecture"
+
+#: lib/layouts/theorems-without-preamble.inc:179
+msgid "Definition \\thedefinition"
+msgstr "Definisjon \\\\thedefinition"
+
+#: lib/layouts/theorems-without-preamble.inc:203
+msgid "Example \\theexample"
+msgstr "Eksempel \\theexample"
+
+#: lib/layouts/theorems-without-preamble.inc:221
+msgid "Problem \\theproblem"
+msgstr "Problem \\theproblem"
+
 #: lib/layouts/theorems-without-preamble.inc:236
 msgid "Prob"
 msgstr "Probl"
@@ -10261,15 +10282,30 @@ msgstr "Symbol"
 msgid "# [number of Prob]"
 msgstr "# [antall probl]"
 
+#: lib/layouts/theorems-without-preamble.inc:294
+msgid "Exercise \\theexercise"
+msgstr "Oppgave \\theexercise"
+
+#: lib/layouts/theorems-without-preamble.inc:311
+msgid "Remark \\theremark"
+msgstr "Merknad \\theremark"
+
+#: lib/layouts/theorems-without-preamble.inc:341
+msgid "Case \\thecase"
+msgstr "Tilfelle \\thecase"
+
 #: lib/layouts/theorems-without-preamble.inc:358
 #, fuzzy
-msgid "Property \\theproperty."
+msgid "Property \\theproperty"
 msgstr "Egenskap \\theproperty"
 
+#: lib/layouts/theorems-without-preamble.inc:375
+msgid "Question \\thequestion"
+msgstr "Spørsmål \\thequestion"
+
 #: lib/layouts/theorems-without-preamble.inc:392
-#: lib/layouts/theorems-ams-extended-bytype.module:202
-msgid "Note \\thenote."
-msgstr "Merknad \\thenote."
+msgid "Note \\thenote"
+msgstr "Merknad \\thenote"
 
 #: lib/layouts/braille.module:2
 msgid "Braille"
@@ -10810,6 +10846,10 @@ msgstr "Forutsetning*"
 #: lib/layouts/theorems-ams-extended.module:160
 msgid "Condition."
 msgstr "Forutsetning."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:202
+msgid "Note \\thenote."
+msgstr "Merknad \\thenote."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:217
 #: lib/layouts/theorems-ams-extended.module:191
@@ -23921,45 +23961,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Ukjent bruker"
-
-#~ msgid "Theorem \\thetheorem"
-#~ msgstr "Teorem \\thetheorem"
-
-#~ msgid "Corollary \\thecorollary"
-#~ msgstr "Korollar \\thecorollary"
-
-#~ msgid "Lemma \\thelemma"
-#~ msgstr "Lemma \\thelemma"
-
-#~ msgid "Proposition \\theproposition"
-#~ msgstr "Proposisjon \\theproposition"
-
-#~ msgid "Conjecture \\theconjecture"
-#~ msgstr "Konjektur \\theconjecture"
-
-#~ msgid "Definition \\thedefinition"
-#~ msgstr "Definisjon \\\\thedefinition"
-
-#~ msgid "Example \\theexample"
-#~ msgstr "Eksempel \\theexample"
-
-#~ msgid "Problem \\theproblem"
-#~ msgstr "Problem \\theproblem"
-
-#~ msgid "Exercise \\theexercise"
-#~ msgstr "Oppgave \\theexercise"
-
-#~ msgid "Remark \\theremark"
-#~ msgstr "Merknad \\theremark"
-
-#~ msgid "Case \\thecase"
-#~ msgstr "Tilfelle \\thecase"
-
-#~ msgid "Question \\thequestion"
-#~ msgstr "Spørsmål \\thequestion"
-
-#~ msgid "Note \\thenote"
-#~ msgstr "Merknad \\thenote"
 
 #~ msgid "&New:"
 #~ msgstr "&Ny:"
