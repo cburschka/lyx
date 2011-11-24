@@ -4,13 +4,14 @@
 \begin_header
 \textclass ctex-article
 \begin_preamble
+%Fixme: is this really necessary?
 \DeclareRobustCommand\nobreakspace{\leavevmode\nobreak\ }
 \end_preamble
 \options UTF8,adobefonts
 \use_default_options true
 \maintain_unincluded_children false
 \language chinese-simplified
-\language_package %
+\language_package none
 \inputencoding utf8-plain
 \fontencoding global
 \font_roman default
@@ -63,6 +64,29 @@
 \end_header
 
 \begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This templates creates an article.
+ To create a book or a report, change the document class to 
+\family sans
+book (ctex)
+\family default
+ or 
+\family sans
+report (ctex)
+\family default
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Title
 基于CTeX的LyX文档模板
@@ -119,6 +143,19 @@ http://yihui.name
 
 \begin_layout Section
 小结
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Fixme: the layout files are already part of LyX since version 2.0.2.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

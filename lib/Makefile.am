@@ -1534,9 +1534,7 @@ dist_templates_DATA = \
 	templates/agu_article.lyx \
 	templates/apa.lyx \
 	templates/beamer-conference-ornate-20min.lyx \
-	templates/ctex-article.lyx \
-	templates/ctex-book.lyx \
-	templates/ctex-report.lyx \
+	templates/ctex.lyx \
 	templates/de_beamer-conference-ornate-20min.lyx \
 	templates/dinbrief.lyx \
 	templates/docbook_article.lyx \
