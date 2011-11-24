@@ -1358,6 +1358,7 @@ lib_templates_files = Split('''
     agu_article.lyx
     apa.lyx
     beamer-conference-ornate-20min.lyx
+    ctex.lyx
     de_beamer-conference-ornate-20min.lyx
     dinbrief.lyx
     docbook_article.lyx
@@ -2843,9 +2844,9 @@ lib_examples_files = Split('''
     serial_letter1.lyx
     serial_letter2.lyx
     serial_letter3.lyx
-    sheet.gnumeric
-    sheet.ods
-    sheet.xls
+    sheet1.gnumeric
+    sheet2.ods
+    sheet3.xls
     simplecv.lyx
     splash.lyx
     spreadsheet.lyx
@@ -3098,6 +3099,9 @@ lib_layouts_files = Split('''
     broadway.layout
     chess.layout
     cl2emult.layout
+    ctex-article.layout
+    ctex-book.layout
+    ctex-report.layout
     customHeadersFooters.module
     dinbrief.layout
     docbook-book.layout
