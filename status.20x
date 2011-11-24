@@ -26,10 +26,6 @@ What's new
 
 - Completely revised support for the latest versions of the Springer
   document classes svjour3, svmono and svmult.
-  NOTE: This has the side-effect that files, created with LyX 2.0.2 or
-  future, using a Springer document class, will not be compilable with
-  LyX versions older than LyX 2.0.2. The same applies for files created
-  with LyX 1.6.10 or older that are saved with LyX 2.0.2 or future.
 
 - Add possibility to export the R code from a sweave-enabled document
   (part of bug 7555).
@@ -76,6 +72,8 @@ What's new
 
   * Command \date{} in the preamble to suppress the date output.
 
+- Augmented the tex2lyx --help message with the default paths (bug 6827).
+
 
 * USER INTERFACE
 
@@ -92,8 +90,6 @@ What's new
 - When changing the document language, also change the language of the
   text which is not explicitly marked in a different language,
   irrespective of the multilingual status, except for LTR<=>RTL changes.
-
-- Augmented the tex2lyx --help message with the default paths (bug 6827).
 
 - New command-line switch -v (--version) for tex2lyx showing build
   information and version number (bug 6827).
@@ -193,6 +189,11 @@ What's new
 - Fix latex export of multilingual documents containing theorem-like
   environments (bug 7800).
 
+- tex2lyx does not produce invalid Flex insets anymore (bug 7780).
+
+- Fix import of required arguments of standard environments (part of bug
+  7468).
+
 
 * USER INTERFACE
 
@@ -248,11 +249,6 @@ What's new
   and Tools->Preferences (bug 5840).
 
 - Allow the \nocite LaTeX command when using the basic citation engine.
-
-- tex2lyx does not produce invalid Flex insets anymore (bug 7780).
-
-- Fix import of required arguments of standard environments (part of bug
-  7468).
 
 - Do not incorrectly activate Edit->Table inside index entries (bug 7816).
 

@@ -33,6 +33,21 @@ http://www.lyx.org
 What's new in LyX 2.0.2
 =======================
 
+There have been several improvements to LyX's ability to export documents
+in the background, so the program does not freeze during compilation. We 
+hope to continue these improvements throughout the 2.0.x series.
+
+There have been major updates to the tex2lyx conversion script. Please see
+below for the details.
+
+The ctex document classes, used for Chinese documents, are now supported
+by LyX.
+
+Support for the Springer document classes has been updated for compatibility
+with the lasest versions. This has the side-effect that files, created with 
+LyX 2.0.2 or future, using a Springer document class, will not be compilable 
+with LyX versions older than LyX 2.0.2. The same applies for files created
+with LyX 1.6.10 or older that are saved with LyX 2.0.2 or future.
 
 
 ** Updates:
