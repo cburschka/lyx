@@ -262,12 +262,15 @@
 # ------------------------------------------------------------------
 # 7 novembre 2011 : derniere revue avant 2.0.2
 # ------------------------------------------------------------------
+# 24 novembre 2011 : utilisation du nouveau pocheck.pl pour detecter 
+#                    les points en fin de message manquants
+# ------------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-10-29 17:47-0400\n"
-"PO-Revision-Date: 2011-11-11 10:26+0100\n"
+"PO-Revision-Date: 2011-11-24 18:07+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -379,7 +382,7 @@ msgstr "Bibliographie en &sections"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:120
 msgid "Here you can define an alternative program to or specific options of BibTeX."
-msgstr "Vous pouvez définir ici un autre programme que bibtex, ou des options spécifiques à bibtex"
+msgstr "Vous pouvez définir ici un autre programme que BibTeX, ou des options spécifiques à BibTeX."
 
 #: src/frontends/qt4/ui/BiblioUi.ui:123
 #: src/frontends/qt4/ui/PrefLatexUi.ui:127
@@ -833,7 +836,7 @@ msgstr "&Renommer..."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:25
 msgid "Add the selected branches to the list."
-msgstr "Ajouter les branches sélectionnées à la liste"
+msgstr "Ajouter les branches sélectionnées à la liste."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:28
 msgid "&Add Selected"
@@ -841,7 +844,7 @@ msgstr "Ajouter la sél&ection"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:35
 msgid "Add all unknown branches to the list."
-msgstr "Ajouter toutes les branches inconnues à la liste"
+msgstr "Ajouter toutes les branches inconnues à la liste."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:38
 msgid "Add A&ll"
@@ -2410,7 +2413,7 @@ msgstr "Options de classe"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:63
 msgid "Enable to use the options that are predefined in the layout file"
-msgstr "Autoriser l'usage des options prédéfinies dans le fichier de format."
+msgstr "Autoriser l'usage des options prédéfinies dans le fichier de format"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:66
 msgid "&Predefined:"
@@ -2489,7 +2492,7 @@ msgstr "&Décalage :"
 
 #: src/frontends/qt4/ui/LineUi.ui:35
 msgid "Value of the vertical line offset."
-msgstr "Valeur du décalage vertical de la ligne"
+msgstr "Valeur du décalage vertical de la ligne."
 
 #: src/frontends/qt4/ui/LineUi.ui:71
 msgid "Value of the line width."
@@ -2732,7 +2735,7 @@ msgstr "&Go!"
 
 #: src/frontends/qt4/ui/LogUi.ui:137
 msgid "Jump to the next warning message."
-msgstr "Aller au message d'avertissement suivant"
+msgstr "Aller au message d'avertissement suivant."
 
 #: src/frontends/qt4/ui/LogUi.ui:140
 msgid "Next &Warning"
@@ -2740,7 +2743,7 @@ msgstr "&Avertissement suivant"
 
 #: src/frontends/qt4/ui/LogUi.ui:147
 msgid "Jump to the next error message."
-msgstr "Aller au message d'erreur suivant"
+msgstr "Aller au message d'erreur suivant."
 
 #: src/frontends/qt4/ui/LogUi.ui:150
 msgid "Next &Error"
@@ -2893,7 +2896,7 @@ msgstr "||x||"
 
 #: src/frontends/qt4/ui/MathsUi.ui:19
 msgid "The AMS LaTeX packages are only used if symbols from the AMS math toolbars are inserted into formulas"
-msgstr "Les paquetages LaTeX AMS ne sont utilisés que si des symboles en provenances des palettes mathématiques AMS sont insérés dans des formules."
+msgstr "Les paquetages LaTeX AMS ne sont utilisés que si des symboles en provenance des palettes mathématiques AMS sont insérés dans des formules."
 
 #: src/frontends/qt4/ui/MathsUi.ui:22
 msgid "&Use AMS math package automatically"
@@ -3158,7 +3161,7 @@ msgstr "H&yperlien"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:222
 msgid "Allows link text to break across lines."
-msgstr "Permettre la césure des liens"
+msgstr "Permettre la césure des liens."
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:225
 msgid "B&reak links over lines"
@@ -3378,7 +3381,7 @@ msgstr "En mode mathématique"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:40
 msgid "Show the grey inline completion behind the cursor in math mode after the delay."
-msgstr "Afficher la complétion en ligne grisée sous le curseur en mode mathématique, après la temporisation"
+msgstr "Afficher la complétion en ligne grisée sous le curseur en mode mathématique, après la temporisation."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:43
 msgid "Automatic in&line completion"
@@ -3402,7 +3405,7 @@ msgstr "Dans le texte"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:85
 msgid "Show the grey inline completion behind the cursor in text mode after the delay."
-msgstr "Afficher la complétion en ligne grisée sous le curseur en mode texte, après la temporisation"
+msgstr "Afficher la complétion en ligne grisée sous le curseur en mode texte, après la temporisation."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:88
 msgid "Automatic &inline completion"
@@ -4144,7 +4147,7 @@ msgstr "Commande de &spoule :"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:153
 msgid "Option used to reverse page order."
-msgstr "Imprimer à partir de la dernière page"
+msgstr "Imprimer à partir de la dernière page."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:156
 msgid "Re&verse pages:"
@@ -4478,7 +4481,7 @@ msgstr "&Largeur réglable :"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:52
 msgid "Custom value. \"List Indentation\" needs to be set to \"Custom\"."
-msgstr "Valeur réglable. Le paramètre « indentation de la liste » doit être établi à « réglable »"
+msgstr "Valeur réglable. Le paramètre « indentation de la liste » doit être établi à « réglable »."
 
 #: src/frontends/qt4/ui/PrintUi.ui:28
 msgid "Pages"
@@ -5370,7 +5373,7 @@ msgstr "LyX : saisir un texte"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:44
 msgid "If you check this, LyX will not warn you again in the given case."
-msgstr "Si vous cochez ceci, LyX ne vous avertira plus dans la même situation"
+msgstr "Si vous cochez ceci, LyX ne vous avertira plus dans la même situation."
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:47
 msgid "&Do not show this warning again!"
@@ -6158,7 +6161,7 @@ msgstr "Remarque"
 #: lib/layouts/theorems-ams-bytype.inc:266
 #: lib/layouts/theorems-bytype.inc:242
 msgid "Remark \\theremark."
-msgstr "Remarque \\theremark"
+msgstr "Remarque \\theremark."
 
 #: lib/layouts/AEA.layout:240
 #: lib/layouts/llncs.layout:410
@@ -10545,7 +10548,7 @@ msgstr "Titre*"
 
 #: lib/layouts/svmult.layout:36
 msgid "Title*: "
-msgstr "Titre* :"
+msgstr "Titre* : "
 
 #: lib/layouts/svmult.layout:65
 #: lib/layouts/svmult.layout:150
@@ -12227,7 +12230,7 @@ msgstr "théorèmes"
 
 #: lib/layouts/theorems-ams-extended.module:40
 msgid "Criterion \\thetheorem."
-msgstr "Critère \\arabic{theorem}"
+msgstr "Critère \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:74
 msgid "Algorithm \\thetheorem."
@@ -12275,7 +12278,7 @@ msgstr "Question*"
 
 #: lib/layouts/theorems-ams-extended.module:398
 msgid "Question."
-msgstr "Question"
+msgstr "Question."
 
 #: lib/layouts/theorems-ams.module:2
 msgid "Theorems (AMS)"
@@ -13810,7 +13813,7 @@ msgstr "Enregistrer sous...|s"
 
 #: lib/ui/stdmenus.inc:54
 msgid "Save All|l"
-msgstr "Enregistrer tout...|g"
+msgstr "Enregistrer tout|g"
 
 #: lib/ui/stdmenus.inc:55
 msgid "Revert to Saved|R"
@@ -13875,7 +13878,7 @@ msgstr "Annuler le dernier enregistrement|A"
 
 #: lib/ui/stdmenus.inc:80
 msgid "Compare with Older Revision...|C"
-msgstr "Comparer avec une révision antérieure|C"
+msgstr "Comparer avec une révision antérieure...|C"
 
 #: lib/ui/stdmenus.inc:81
 msgid "Show History...|H"
@@ -13945,7 +13948,7 @@ msgstr "Supprimer l'insert"
 
 #: lib/ui/stdmenus.inc:134
 msgid "TeX Code Settings...|C"
-msgstr "Paramètres de code TeX|X"
+msgstr "Paramètres de code TeX...|X"
 
 #: lib/ui/stdmenus.inc:136
 msgid "Float Settings...|a"
@@ -14516,7 +14519,7 @@ msgstr "Commentaire|C"
 
 #: lib/ui/stdmenus.inc:481
 msgid "Insert New Branch...|I"
-msgstr "Insérer une nouvelle branche|I"
+msgstr "Insérer une nouvelle branche...|I"
 
 #: lib/ui/stdmenus.inc:499
 msgid "Change Tracking|C"
@@ -14693,7 +14696,7 @@ msgstr "Manuels spécifiques|s"
 
 #: lib/ui/stdmenus.inc:581
 msgid "About LyX|X"
-msgstr "À propos de LyX...|L"
+msgstr "À propos de LyX|L"
 
 #: lib/ui/stdmenus.inc:585
 msgid "Braille Manual|B"
@@ -18378,7 +18381,7 @@ msgstr "Chktex ne s'est pas exécuté correctement."
 #: src/Buffer.cpp:1972
 #, c-format
 msgid "Don't know how to export to format: %1$s"
-msgstr "Pas d'information pour exporter au format %1$s."
+msgstr "Pas d'information pour exporter au format : %1$s."
 
 #: src/Buffer.cpp:2044
 #: src/frontends/qt4/GuiView.cpp:3143
@@ -19366,7 +19369,7 @@ msgstr "&Ne pas ajouter"
 #: src/Text.cpp:363
 #, c-format
 msgid "Layout `%1$s' was not found."
-msgstr "Format `%1$s' introuvable"
+msgstr "Format `%1$s' introuvable."
 
 #: src/CutAndPaste.cpp:667
 #: src/Text.cpp:365
@@ -19661,7 +19664,7 @@ msgstr "Les fichiers suivants n'ont pu être chargés :"
 #: src/LyX.cpp:438
 #, c-format
 msgid "%1$s does not appear like a LyX created temporary directory."
-msgstr "%1$s ne semble pas être un répertoire temporaire créé par LyX"
+msgstr "%1$s ne semble pas être un répertoire temporaire créé par LyX."
 
 #: src/LyX.cpp:440
 msgid "Cannot remove temporary directory"
@@ -19912,7 +19915,7 @@ msgstr "Il manque le nom du fichier à importer pour --import"
 # Trouver un meilleur exemple !
 #: src/LyXRC.cpp:3086
 msgid "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as legal words?"
-msgstr "Autoriser ou non les mots composés accolés, comme « diskdrive » pour « disk drive »."
+msgstr "Autoriser ou non les mots composés accolés, comme « diskdrive » pour « disk drive » ?"
 
 #: src/LyXRC.cpp:3090
 msgid "Specify an alternate language. The default is to use the language of the document."
@@ -19940,7 +19943,7 @@ msgstr "Définir les options de bibtex (voir man bibtex) ou sélectionner un aut
 
 #: src/LyXRC.cpp:3121
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
-msgstr "Définir les options du programme bibtex pour PLaTeX (LaTeX japonais)"
+msgstr "Définir les options du programme BibTeX pour PLaTeX (LaTeX japonais)."
 
 #: src/LyXRC.cpp:3125
 msgid "Keybindings file. Can either specify an absolute path, or LyX will look in its global and local bind/ directories."
@@ -20029,11 +20032,11 @@ msgstr "Définir les options de makeindex (voir man makeindex) ou sélectionner 
 
 #: src/LyXRC.cpp:3223
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
-msgstr "Définir les options du programme d'indexation pour PLaTeX (LaTeX japonais)"
+msgstr "Définir les options du programme d'indexation pour PLaTeX (LaTeX japonais)."
 
 #: src/LyXRC.cpp:3227
 msgid "Define the options of makeindex (cf. man makeindex) to be used for nomenclatures. This might differ from the index processing options."
-msgstr "Définir les options de makeindex (cf. man makeindex) utilisées pour les nomenclatures. Elles peuvent différer des options utilisées pour l'index"
+msgstr "Définir les options de makeindex (cf. man makeindex) utilisées pour les nomenclatures. Elles peuvent différer des options utilisées pour l'index."
 
 #: src/LyXRC.cpp:3236
 msgid "Use this to set the correct mapping file for your keyboard. You'll need this if you for instance want to type German documents on an American keyboard."
@@ -20182,7 +20185,7 @@ msgstr "Option pour n'imprimer que les pages impaires."
 
 #: src/LyXRC.cpp:3388
 msgid "The option for specifying a comma-separated list of pages to print."
-msgstr "Option pour spécifier la liste des pages à imprimer, séparées par une virgule"
+msgstr "Option pour spécifier la liste des pages à imprimer, séparées par une virgule."
 
 #: src/LyXRC.cpp:3392
 msgid "Option to specify the dimensions of the print paper."
@@ -20584,7 +20587,7 @@ msgstr "Erreur de lecture du module %1$s\n"
 #: src/VCBackend.cpp:1263
 #: src/frontends/qt4/GuiView.cpp:2748
 msgid "Revision control error."
-msgstr "Erreur de contrôle de version"
+msgstr "Erreur de contrôle de version."
 
 #: src/VCBackend.cpp:61
 #, c-format
@@ -20854,7 +20857,7 @@ msgstr "&Recharger"
 
 #: src/buffer_funcs.cpp:76
 msgid "&Keep Changes"
-msgstr "&Garder les modifs."
+msgstr "&Garder les modifications"
 
 #: src/buffer_funcs.cpp:86
 #, c-format
@@ -21032,7 +21035,7 @@ msgstr "Répertoire utilisateur : "
 
 #: src/frontends/qt4/GuiAbout.cpp:143
 msgid "About LyX"
-msgstr "À propos de LyX..."
+msgstr "À propos de LyX"
 
 #: src/frontends/qt4/GuiAlert.cpp:93
 #: src/frontends/qt4/GuiAlert.cpp:149
@@ -21141,7 +21144,7 @@ msgstr "Impossible d'enregistrer les valeurs implicites du document"
 
 #: src/frontends/qt4/GuiApplication.cpp:1734
 msgid "Unknown function."
-msgstr "Fonction inconnue"
+msgstr "Fonction inconnue."
 
 #: src/frontends/qt4/GuiApplication.cpp:2163
 msgid "The current document was closed."
@@ -21922,7 +21925,7 @@ msgstr "Modules"
 
 #: src/frontends/qt4/GuiDocument.cpp:1307
 msgid "Local Layout"
-msgstr "Format local..."
+msgstr "Format local"
 
 #: src/frontends/qt4/GuiDocument.cpp:1309
 msgid "Text Layout"
@@ -21951,7 +21954,7 @@ msgstr "Propriétés du PDF"
 
 #: src/frontends/qt4/GuiDocument.cpp:1318
 msgid "Math Options"
-msgstr "Options mode math."
+msgstr "Options mode math"
 
 #: src/frontends/qt4/GuiDocument.cpp:1319
 msgid "Float Placement"
@@ -22401,7 +22404,7 @@ msgstr "Impossible d'enlever l'index standard"
 
 #: src/frontends/qt4/GuiIndices.cpp:194
 msgid "The default index cannot be removed."
-msgstr "L'index implicite ne peut être supprimé"
+msgstr "L'index implicite ne peut être supprimé."
 
 #: src/frontends/qt4/GuiIndices.cpp:214
 msgid "Enter new index name"
@@ -23294,7 +23297,7 @@ msgstr "Bienvenue dans LyX !"
 
 #: src/frontends/qt4/GuiView.cpp:1541
 msgid "Automatic save done."
-msgstr "Sauvegarde automatique"
+msgstr "Sauvegarde automatique effective."
 
 #: src/frontends/qt4/GuiView.cpp:1542
 msgid "Automatic save failed!"
@@ -23320,7 +23323,7 @@ msgstr "Modèles|#M#m"
 
 #: src/frontends/qt4/GuiView.cpp:1894
 msgid "Document not loaded."
-msgstr "Le document n'a pas été chargé"
+msgstr "Le document n'a pas été chargé."
 
 #: src/frontends/qt4/GuiView.cpp:1922
 msgid "Select document to open"
@@ -23567,7 +23570,7 @@ msgstr "Ouverture du sous-document %1$s..."
 #: src/frontends/qt4/GuiView.cpp:2935
 #, c-format
 msgid "No buffer for file: %1$s."
-msgstr "Pas de tampon pour le fichier : %1$s"
+msgstr "Pas de tampon pour le fichier : %1$s."
 
 #: src/frontends/qt4/GuiView.cpp:2962
 #, c-format
@@ -23826,7 +23829,7 @@ msgstr "Exporter %1$s"
 #: src/frontends/qt4/Toolbars.cpp:221
 #, c-format
 msgid "Import %1$s"
-msgstr "Importer %1$s..."
+msgstr "Importer %1$s"
 
 #: src/frontends/qt4/Toolbars.cpp:225
 #, c-format
@@ -24494,7 +24497,7 @@ msgstr "Veuillez répondre par vrai ou faux."
 
 #: src/insets/InsetListingsParams.cpp:135
 msgid "Only true or false is allowed."
-msgstr "Seuls vrai ou faux sont autorisés"
+msgstr "Seuls vrai ou faux sont autorisés."
 
 #: src/insets/InsetListingsParams.cpp:145
 msgid "Please specify an integer value."
@@ -24801,7 +24804,7 @@ msgstr "Type de TDM inconnu"
 
 #: src/insets/InsetTabular.cpp:4721
 msgid "Selection size should match clipboard content."
-msgstr "La taille de la sélection doit correspondre au contenu du presse-papier"
+msgstr "La taille de la sélection doit correspondre au contenu du presse-papier."
 
 #: src/insets/InsetWrap.cpp:46
 #: src/insets/InsetWrap.cpp:121
