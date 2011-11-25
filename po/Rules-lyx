@@ -13,7 +13,6 @@ ${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
 	rm -f $@-t \
 	&& ( cd $(top_srcdir); \
 	     grep -l "_(\".*\")" `find src \( \( -name '*.h' -a ! -name 'ui_*.h' \) -o \( -name '*.cpp' -a ! -name 'moc_*.cpp' \) \) -print` |\
-	     grep -v -e "src/support/Package.cpp$$" |\
 	     sort | uniq ) > $@-t \
 	&& mv $@-t $@
 
