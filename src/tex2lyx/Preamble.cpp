@@ -727,12 +727,19 @@ void Preamble::handle_package(Parser &p, string const & name,
 	else if (name == "textcomp")
 		; // ignore this
 
+	else if (name == "lyxskak") {
+		// ignore this and its options
+		if (!options.empty())
+			options.clear();
+	}
+
 	else if (name == "url")
 		; // ignore this
 
-	else if (name == "booktabs" || name == "color" ||
-	         name == "longtable" || name == "subscript" ||
-	         name == "ulem") {
+	else if (name == "array" || name == "booktabs" ||
+			 name == "color" || name == "hhline" ||
+			 name == "longtable" || name == "subscript" ||
+			 name == "ulem") {
 		if (!in_lyx_preamble)
 			h_preamble << package_beg_sep << name
 			           << package_mid_sep << "\\usepackage{"
@@ -1145,6 +1152,11 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				// remove leading "\"
 				h_font_default_family = family.erase(0,1);
 			}
+
+			// remove the lyxdot definition that is re-added by LyX
+			// if necessary
+			if (name == "\\lyxdot")
+				in_lyx_preamble = true;
 
 			// Add the command to the known commands
 			add_known_command(name, opt1, !opt2.empty(), from_utf8(body));

@@ -114,8 +114,19 @@ M., \& Rasio, F.~A. 2004, ApJ, 604, 632\end{thebibliography}
 \section{Input files\index{Input files}}
 
 We can input files too, like this \input{DummyDocument}, or with the include
-variant \include{DummyDocument} % unfortunately, including the doc twice
-% generates a multiply defined label
+variant \include{DummyDocument} % unfortunately, including the doc twice generates a multiply defined label
+
+We can also import chess diagrams:
+
+\loadgame{../../../lib/examples/iecc05}\showboard
+
+Spreadsheets:
+
+\def\inputGnumericTable{}\input{../../../lib/examples/longsheet.gnumeric}
+
+and PDF pages:
+
+\includepdf[pages=-,angle=22,origin=Bl,width=5cm,height=40mm,keepaspectratio]{../../../lib/examples/beamer-icsi-logo}
 
 If you prefer verbatim input, you can choose
 between~\verbatiminput{foo} or~\verbatiminput*{foo}.

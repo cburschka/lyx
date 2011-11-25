@@ -2306,8 +2306,45 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 		}
 
-		else if (is_macro(p))
-			parse_macro(p, os, context);
+		else if (is_macro(p)) {
+			// catch the case of \def\inputGnumericTable
+			if (t.cs() == "def") {
+				Token second = p.get_token();
+				if (second.cs() == "inputGnumericTable") {
+					skip_braces(p);
+					Token third = p.get_token();
+					if (third.cs() == "input") {
+						string name = normalize_filename(p.verbatim_item());
+						string const path = getMasterFilePath();
+						// We want to preserve relative / absolute filenames,
+						// therefore path is only used for testing
+						if (!makeAbsPath(name, path).exists()) {
+							// The file extension is probably missing.
+							// Now try to find it out.
+							char const * const Gnumeric_formats[] = {"gnumeric"
+								"ods", "xls", 0};
+							string const Gnumeric_name =
+								find_file(name, path, Gnumeric_formats);
+							if (!Gnumeric_name.empty())
+								name = Gnumeric_name;
+						}
+						if (makeAbsPath(name, path).exists())
+							fix_relative_filename(name);
+						else
+							cerr << "Warning: Could not find file '"
+							     << name << "'." << endl;
+						context.check_layout(os);
+						begin_inset(os, "External\n\ttemplate ");
+						os << "GnumericSpreadsheet\n\tfilename "
+						   << name << "\n";
+						end_inset(os);
+						context.check_layout(os);
+					}
+				}
+			}
+			if (is_macro(p))
+				parse_macro(p, os, context);
+		}
 
 		else if (t.cs() == "noindent") {
 			p.skip_spaces();
@@ -3638,7 +3675,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		         t.cs() == "DeclareRobustCommandx" ||
 		         t.cs() == "newcommand" ||
 		         t.cs() == "newcommandx" ||
-			 t.cs() == "providecommand" ||
+		         t.cs() == "providecommand" ||
 		         t.cs() == "providecommandx" ||
 		         t.cs() == "renewcommand" ||
 		         t.cs() == "renewcommandx") {
@@ -3820,6 +3857,37 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			   << "status collapsed\n";
 			parse_text_in_inset(p, os, FLAG_ITEM, false, context, newinsetlayout);
 			end_inset(os);
+		}
+
+		else if (t.cs() == "loadgame") {
+			p.skip_spaces();
+			string name = normalize_filename(p.verbatim_item());
+			string const path = getMasterFilePath();
+			// We want to preserve relative / absolute filenames,
+			// therefore path is only used for testing
+			if (!makeAbsPath(name, path).exists()) {
+				// The file extension is probably missing.
+				// Now try to find it out.
+				char const * const lyxskak_format[] = {"fen", 0};
+				string const lyxskak_name =
+					find_file(name, path, lyxskak_format);
+				if (!lyxskak_name.empty())
+					name = lyxskak_name;
+			}
+			if (makeAbsPath(name, path).exists())
+				fix_relative_filename(name);
+			else
+				cerr << "Warning: Could not find file '"
+				     << name << "'." << endl;
+			context.check_layout(os);
+			begin_inset(os, "External\n\ttemplate ");
+			os << "ChessDiagram\n\tfilename "
+			   << name << "\n";
+			end_inset(os);
+			context.check_layout(os);
+			// after a \loadgame follows a \showboard
+			if (p.get_token().asInput() == "showboard")
+				p.get_token();
 		}
 
 		else {
