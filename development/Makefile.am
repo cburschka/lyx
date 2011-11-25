@@ -33,7 +33,6 @@ Win32/packaging/icons/lyx_doc_32x32_16colors.png \
 Win32/packaging/installer/graphics/header.bmp \
 Win32/packaging/installer/graphics/wizard.bmp \
 Win32/packaging/installer/gui/external.nsh \
-Win32/packaging/installer/gui/reinstall.nsh \
 Win32/packaging/installer/include/declarations.nsh \
 Win32/packaging/installer/include/detection.nsh \
 Win32/packaging/installer/include/filelist.nsh \
