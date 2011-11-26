@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-11-23 09:26+0100\n"
+"POT-Creation-Date: 2011-11-26 18:48-0500\n"
 "PO-Revision-Date: 2011-11-25 10:47+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -18464,7 +18464,7 @@ msgstr ""
 "\t-version  zhrnúť  verziu a prekladnú informáciu.\n"
 "Viac informácií nájdete v manuálovej stránke LyXu."
 
-#: src/LyX.cpp:1099 src/support/Package.cpp:563
+#: src/LyX.cpp:1099
 msgid "No system directory"
 msgstr "Nemám systémový adresár"
 
@@ -23809,66 +23809,6 @@ msgstr "Súhrn: "
 msgid "References: "
 msgstr "Referencie: "
 
-#: src/support/Package.cpp:444
-msgid "LyX binary not found"
-msgstr "Spustiteľný súbor LyX nebol nájdený!"
-
-#: src/support/Package.cpp:445
-#, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
-msgstr ""
-"Nepodarilo sa určiť cestu k spustiteľnému súboru LyX z príkazového riadku "
-"%1$s"
-
-#: src/support/Package.cpp:564
-#, c-format
-msgid ""
-"Unable to determine the system directory having searched\n"
-"\t%1$s\n"
-"Use the '-sysdir' command line parameter or set the environment variable\n"
-"%2$s to the LyX system directory containing the file `chkconfig.ltx'."
-msgstr ""
-"Nepodarilo sa určiť systémový adresár pri prehľadávaní\n"
-"\t%1$s\n"
-"Použite voľbu '-sysdir' alebo nastavte premennú\n"
-"%2$s na cestu adresára obsahujúceho súbor `chkconfig.ltx'."
-
-#: src/support/Package.cpp:645 src/support/Package.cpp:672
-msgid "File not found"
-msgstr "Súbor nenájdený"
-
-#: src/support/Package.cpp:646
-#, c-format
-msgid ""
-"Invalid %1$s switch.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-"Neplatný %1$s prepínač.\n"
-"Adresár %2$s neobsahuje %3$s."
-
-#: src/support/Package.cpp:673
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-"Neplatná %1$s premenná.\n"
-"Adresár %2$s neobsahuje %3$s."
-
-#: src/support/Package.cpp:697
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"%2$s is not a directory."
-msgstr ""
-"Neplatná premenná %1$s.\n"
-"%2$s nie je adresár."
-
-#: src/support/Package.cpp:699
-msgid "Directory not found"
-msgstr "Adresár nenájdený"
-
 #: src/support/debug.cpp:41
 msgid "No debugging messages"
 msgstr "Bez ladiaceho hlásenia"
@@ -24041,6 +23981,53 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "LyX binary not found"
+#~ msgstr "Spustiteľný súbor LyX nebol nájdený!"
+
+#~ msgid ""
+#~ "Unable to determine the path to the LyX binary from the command line %1$s"
+#~ msgstr ""
+#~ "Nepodarilo sa určiť cestu k spustiteľnému súboru LyX z príkazového riadku "
+#~ "%1$s"
+
+#~ msgid ""
+#~ "Unable to determine the system directory having searched\n"
+#~ "\t%1$s\n"
+#~ "Use the '-sysdir' command line parameter or set the environment variable\n"
+#~ "%2$s to the LyX system directory containing the file `chkconfig.ltx'."
+#~ msgstr ""
+#~ "Nepodarilo sa určiť systémový adresár pri prehľadávaní\n"
+#~ "\t%1$s\n"
+#~ "Použite voľbu '-sysdir' alebo nastavte premennú\n"
+#~ "%2$s na cestu adresára obsahujúceho súbor `chkconfig.ltx'."
+
+#~ msgid "File not found"
+#~ msgstr "Súbor nenájdený"
+
+#~ msgid ""
+#~ "Invalid %1$s switch.\n"
+#~ "Directory %2$s does not contain %3$s."
+#~ msgstr ""
+#~ "Neplatný %1$s prepínač.\n"
+#~ "Adresár %2$s neobsahuje %3$s."
+
+#~ msgid ""
+#~ "Invalid %1$s environment variable.\n"
+#~ "Directory %2$s does not contain %3$s."
+#~ msgstr ""
+#~ "Neplatná %1$s premenná.\n"
+#~ "Adresár %2$s neobsahuje %3$s."
+
+#~ msgid ""
+#~ "Invalid %1$s environment variable.\n"
+#~ "%2$s is not a directory."
+#~ msgstr ""
+#~ "Neplatná premenná %1$s.\n"
+#~ "%2$s nie je adresár."
+
+#~ msgid "Directory not found"
+#~ msgstr "Adresár nenájdený"
 
 #~ msgid "&New:"
 #~ msgstr "&Nové:"
