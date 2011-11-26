@@ -12,7 +12,7 @@
 #    ALL option is used, the translations will also be created when
 #    building the default target.
 
-set(hints "HINTS ${GNUWIN32_DIR}/deps20/gettext-tools")
+set(hints HINTS "${GNUWIN32_DIR}/gettext-tools")
 FIND_PROGRAM(GETTEXT_MSGMERGE_EXECUTABLE msgmerge  ${hints})
 FIND_PROGRAM(GETTEXT_MSGFMT_EXECUTABLE   msgfmt    ${hints})
 FIND_PROGRAM(GETTEXT_XGETTEXT_EXECUTABLE xgettext  ${hints})
