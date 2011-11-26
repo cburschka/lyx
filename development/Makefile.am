@@ -147,7 +147,7 @@ cmake/lyx.rc \
 cmake/pcheaders.h \
 cmake/boost/CMakeLists.txt \
 cmake/doc/CMakeLists.txt \
-cmake/doc/ReplaceValues.pl \
+cmake/doc/ReplaceValues.py \
 cmake/intl/CMakeLists.txt \
 cmake/intl/libgnuintl.h \
 cmake/lyx2lyx/CMakeLists.txt \
