@@ -54,7 +54,7 @@ fi
 
 # Git or SVN?
 VCS="";
-if svn log >/dev/null 2>&1; then
+if svn log -l 5 >/dev/null 2>&1; then
   VCS="svn";
 elif git diff >/dev/null 2>&1; then
   VCS="git";
