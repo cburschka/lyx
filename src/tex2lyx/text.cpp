@@ -2241,7 +2241,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				// FIXME: This swallows comments, but we cannot use
 				//        eat_whitespace() since we must not output
 				//        anything before the item.
-				s = p.getArg('[', ']');
+				p.skip_spaces(true);
+				s = p.verbatimOption();
 			} else
 				p.skip_spaces(false);
 			context.set_item();
@@ -2291,7 +2292,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "bibitem") {
 			context.set_item();
 			context.check_layout(os);
-			string label = convert_command_inset_arg(p.getArg('[', ']'));
+			eat_whitespace(p, os, context, false);
+			string label = convert_command_inset_arg(p.verbatimOption());
 			string key = convert_command_inset_arg(p.verbatim_item());
 			if (contains(label, '\\') || contains(key, '\\')) {
 				// LyX can't handle LaTeX commands in labels or keys
