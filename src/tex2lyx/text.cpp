@@ -3606,17 +3606,30 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			parse_outer_box(p, os, FLAG_ITEM, outer, context, t.cs(), "");
 
 		else if (t.cs() == "framebox") {
-			string special = p.getFullOpt();
-			special += p.getOpt();
-			parse_outer_box(p, os, FLAG_ITEM, outer, context, t.cs(), special);
+			if (p.next_token().character() == '(') {
+				//the syntax is: \framebox(x,y)[position]{content}
+				string arg = t.asInput();
+				arg += p.getFullParentheseArg();
+				arg += p.getFullOpt();
+				eat_whitespace(p, os, context, false);
+				handle_ert(os, arg + '{', context);
+				eat_whitespace(p, os, context, false);
+				parse_text(p, os, FLAG_ITEM, outer, context);
+				handle_ert(os, "}", context);
+			} else {
+				string special = p.getFullOpt();
+				special += p.getOpt();
+				parse_outer_box(p, os, FLAG_ITEM, outer,
+				                context, t.cs(), special);
+			}
 		}
 
 		//\makebox() is part of the picture environment and different from \makebox{}
 		//\makebox{} will be parsed by parse_box
 		else if (t.cs() == "makebox") {
-			string arg = t.asInput();
 			if (p.next_token().character() == '(') {
 				//the syntax is: \makebox(x,y)[position]{content}
+				string arg = t.asInput();
 				arg += p.getFullParentheseArg();
 				arg += p.getFullOpt();
 				eat_whitespace(p, os, context, false);
