@@ -98,29 +98,29 @@ procesador de documentos
  haciendo que resulte más sencilla la tarea de escribir documentos.
  Pero sólo un poco distinto, no se asuste.
  La documentación le dejará todo claro.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-¿Hemos dicho ya que debería leer la documentación?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
 La salida de LyX tiene un aspecto impecable.
  Ejecute en el menú 
 \family sans
-Archivo\SpecialChar \menuseparator
+Ver\SpecialChar \menuseparator
 Ver
 \begin_inset space ~
 \end_inset
 
-dvi
+[PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)]
 \family default
+ o clic el botón 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
+
  para comprobarlo.
 \end_layout
 

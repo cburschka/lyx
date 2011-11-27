@@ -69,8 +69,8 @@ Die wichtigsten Dinge, wenn Sie LyX verwenden
 \end_layout
 
 \begin_layout Enumerate
-LyX besitzt eine exzellente Dokumentation — bitte machen Sie regen Gebrauch
- davon! Lesen Sie zunächst 
+LyX besitzt eine exzellente Dokumentation — bitte machen Sie Gebrauch davon!
+ Lesen Sie zunächst 
 \family sans
 Hilfe\SpecialChar \menuseparator
 Einführung
@@ -105,34 +105,23 @@ Mit LyX erstellte Texte sehen gut aus.
  Überzeugen Sie sich davon mit 
 \family sans
 Ansicht\SpecialChar \menuseparator
-DVI,
-\family default
- 
-\family sans
-Strg+D,
-\family default
- oder klicken Sie auf 
-\begin_inset Graphics
-	filename ../../images/buffer-view_dvi.png
-	scale 70
-	BoundingBox 0bp 4bp 20bp 20bp
-
+Ansehen
+\begin_inset space ~
 \end_inset
 
-, wenn Sie die Werkzeugleiste 
-\family sans
-Ansicht\SpecialChar \menuseparator
-Werk\SpecialChar \-
-zeug\SpecialChar \-
-leis\SpecialChar \-
-ten
-\family default
-\SpecialChar \menuseparator
+[PDF
+\begin_inset space ~
+\end_inset
 
-\family sans
-Ansicht/Aktualisierung
+(pdflatex)]
 \family default
- aktiviert haben.
+ oder klicken Sie auf den Werkzeugleistenknopf 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -159,13 +148,7 @@ LyX für LaTeX-Benutzer
 LyX bietet ausführliche Unterstützung für all diejenigen, die eine andere
  Sprache als Englisch lesen und schreiben.
  Darüberhinaus sind Dinge wie Tastaturbelegung, Werkzeugleiste und viele
- weitere Charakteristiken frei konfigurierbar (das meiste durch 
-\family sans
-Werkzeuge\SpecialChar \menuseparator
-Einstellungen\SpecialChar \ldots{}
-
-\family default
-).
+ weitere Sachen frei konfigurierbar.
  Näheres erläutert 
 \family sans
 Hilfe\SpecialChar \menuseparator
@@ -197,11 +180,8 @@ http://www.lyx.org/
 \end_layout
 
 \begin_layout Enumerate
-
-\color red
-Installationshinweis für LyX unter Linux
-\color inherit
-: Wenn Ihre Linux-Distribution zusammen mit LyX die LaTeX-Distribution 
+Installationshinweis für LyX unter Linux: Wenn Ihre Linux-Distribution zusammen
+ mit LyX die LaTeX-Distribution 
 \family typewriter
 Te
 \begin_inset ERT

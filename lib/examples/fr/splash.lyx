@@ -62,24 +62,6 @@
 
 \begin_layout Title
 Bienvenue dans l'univers de LyX !
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Informations de révision :
-\end_layout
-
-\begin_layout Plain Layout
-Traduction : Mise à jour, Date : 07/07/2003
-\end_layout
-
-\begin_layout Plain Layout
-Original : Révision : 1.7.2.1, Date : 03/07/2003
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section*
@@ -120,25 +102,29 @@ LyX est ce qu'on appelle un
  – en ce sens qu'il facilite l'écriture des documents.
  Mais la distinction est minime, ne vous inquiétez pas.
  La documentation est là pour faire toute la lumière là-dessus.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Avons-nous déjà mentionné que vous devez lire la documentation ? 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
 Les résultats de mise en page de LyX sont très esthétiques ! Faites 
 \family sans
 Visionner\SpecialChar \menuseparator
-[PDF (pdflatex] 
+Visionner
+\begin_inset space ~
+\end_inset
+
+[PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex] 
 \family default
-pour vous en convaincre.
+ou cliquez le bouton 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
+
+ dans la barre d'outils pour vous en convaincre.
 \end_layout
 
 \begin_layout Enumerate
