@@ -755,10 +755,20 @@ void InsetGraphics::latex(otexstream & os,
 
 	bool const file_exists = !params().filename.empty()
 			&& params().filename.isReadableFile();
-	string const message = file_exists ?
-		string() : string("bb = 0 0 200 100, draft, type=eps");
-	// if !message.empty() then there was no existing file
-	// "filename" found. In this case LaTeX
+	string message;
+	if (!file_exists) {
+		if (params().bb.empty())
+		    message = "bb = 0 0 200 100";
+		if (!params().draft) {
+			if (!message.empty())
+				message += ", ";
+			message += "draft";
+		}
+		if (!message.empty())
+			message += ", ";
+		message += "type=eps";
+	}
+	// If no existing file "filename" was found LaTeX
 	// draws only a rectangle with the above bb and the
 	// not found filename in it.
 	LYXERR(Debug::GRAPHICS, "\tMessage = \"" << message << '\"');
