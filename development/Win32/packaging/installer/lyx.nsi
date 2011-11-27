@@ -6,11 +6,15 @@ Compatible with NSIS 2.46
 
 */
 
+# Do a Cyclic Redundancy Check to make sure the installer
+# was not corrupted by the download.
 CRCCheck force
+#
+# Make the installer as small as possible.
 SetCompressor /SOLID lzma
 
 # installer settings like version numbers
-!include settings.nsh 
+!include settings.nsh
 
 # declarations of LyX's registry keys and installer variant
 !include include\declarations.nsh

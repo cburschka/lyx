@@ -38,7 +38,6 @@ BrandingText " "
 
 !insertmacro MULTIUSER_PAGE_INSTALLMODE
 
-Page custom PageReinstall PageReinstallValidate
 #Page custom PageExternalLaTeX PageExternalLaTeXValidate
 
 # Specify the installation directory.

@@ -46,10 +46,6 @@ Section -ProgramFiles SecProgramFiles
   SetOutPath "$INSTDIR"
   # recursively copy all files under Python
   File /r "${FILES_PYTHON}"
-  # add MSVC runtimes
-  #SetOutPath "$INSTDIR\python"
-  #!insertmacro FileListMSVC File "${FILES_MSVC}\"
-  
   
   # Compile all Pyton files to byte-code
   # The user using the scripts may not have write access
@@ -147,8 +143,10 @@ SectionEnd
   NSISdl::download "${DOWNLOAD_${ID}}${APPEND}" "$PLUGINSDIR\${FILENAME}"
   Pop ${RET} # Return value (OK if succesful)
 
-  ${If} ${RET} != "OK"
-    # Download failed, try again (usally we get a different mirror)
+  ${If} ${RET} != "success"
+    ${AndIf} ${RET} != "cancel"
+    # Download failed, try once again before giving up
+    # (usally we get a different mirror)
     NSISdl::download "${DOWNLOAD_${ID}}${APPEND}" "$PLUGINSDIR\${FILENAME}"
     Pop ${RET}
   ${EndIf}
@@ -208,8 +206,9 @@ SectionEnd
 
     !insertmacro DOWNLOAD_FILE $DownloadResult "${COMPONENT}" "${COMPONENT}Setup.exe" ""
  
-    ${If} $DownloadResult != "OK"
-      # Download failed
+    ${If} $DownloadResult != "success"
+      ${AndIf} $DownloadResult != "cancel"
+      # Download failed after trying twice - ask user
       MessageBox MB_YESNO|MB_ICONEXCLAMATION "$(TEXT_DOWNLOAD_FAILED_${COMPONENT}) ($DownloadResult)" IDYES download_${COMPONENT}
       Goto noinstall_${COMPONENT}
     ${EndIf}

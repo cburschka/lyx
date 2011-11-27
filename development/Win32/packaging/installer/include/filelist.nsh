@@ -93,7 +93,6 @@ Lists of files to include in the installer
 !macro FileListMetaFile2EPS COMMAND DIRECTORY
 
   ${FILE}metafile2eps.exe"
-  ${FILE}metafile2eps.dat"  
 
 !macroend
 
