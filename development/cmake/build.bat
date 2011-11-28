@@ -29,7 +29,7 @@ if [%1]==[] (
 )
 
 REM Add path to qmake here or set PATH correctly on your system.
-set PATH=D:\Qt\bin;%PATH%
+set PATH="D:\Qt\bin";%PATH%
 
 REM Edit pathes here or set the environment variables on you system.
 set GNUWIN32_DIR=D:\LyXSVN\lyx-devel\lyx-windows-deps-msvc2010
@@ -50,10 +50,7 @@ if [%GNUWIN32_DIR%]==[] (
 	echo GNUWIN32_DIR not set.
 	echo Downloading win32 deps.
 	set DEPENDENCIES_DOWNLOAD="-DLYX_DEPENDENCIES_DOWNLOAD=1"
-) else (
-	echo LyX deps : "%GNUWIN32_DIR%"
-	set PATH=%GNUWIN32_DIR%\bin;%PATH%
-)
+) else set PATH="%GNUWIN32_DIR%\bin";%PATH%
 
 if not exist %LYX_BUILD% (
 	echo creating "%LYX_BUILD%"
