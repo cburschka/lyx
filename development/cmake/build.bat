@@ -79,7 +79,7 @@ if [%2]==[] (
 if "%1%" == "devel" (
 	REM Build solution to develop LyX
 	cmake %LYX_SOURCE% -G%USED_STUDIO% -DLYX_MERGE_FILES=0 -DLYX_NLS=1 %DEPENDENCIES_DOWNLOAD%
-	msbuild lyx.sln /p:Configuration=Debug /t:LyX /t:text2lyx
+	msbuild lyx.sln /p:Configuration=Debug /t:LyX /t:tex2lyx
 )
 
 if "%1%" == "install" (
