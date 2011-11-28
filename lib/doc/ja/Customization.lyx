@@ -8597,14 +8597,7 @@ CopyStyle
 
 \end_inset
 
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "des:CopyStyle"
-
-\end_inset
-
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
@@ -9139,14 +9132,7 @@ KeepEmpty
 
 \end_inset
 
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "des:KeepEmpty"
-
-\end_inset
-
-[
+ [
 \emph on
 
 \begin_inset Flex Code
@@ -9897,14 +9883,7 @@ LatexType
 
 \end_inset
 
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "des:LatexType"
-
-\end_inset
-
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
@@ -10569,13 +10548,6 @@ ParbreakIsNewline
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "des:ParbreakIsNewline"
-
-\end_inset
-
  [
 \begin_inset Flex Code
 status collapsed
@@ -10785,14 +10757,7 @@ PassThru
 
 \end_inset
 
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "des:PathThru"
-
-\end_inset
-
-[
+ [
 \emph on
 
 \begin_inset Flex Code
@@ -10829,15 +10794,8 @@ Preamble
 
 \end_inset
 
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "des:Preamble"
-
-\end_inset
-
-この様式が使用されたときに、LaTeXプリアンブルに付け加えるべき情報。この特定の様式が要求するマクロを定義したり、パッケージを読み込んだりと言ったことに使用し
-ます。「
+ この様式が使用されたときに、LaTeXプリアンブルに付け加えるべき情報。この特定の様式が要求するマクロを定義したり、パッケージを読み込んだりと言ったことに使用
+します。「
 \begin_inset Flex Code
 status collapsed
 
@@ -10931,14 +10889,7 @@ status collapsed
 
 \end_inset
 
-] 
-\begin_inset CommandInset label
-LatexCommand label
-name "des:Requires"
-
-\end_inset
-
-このレイアウトが
+] このレイアウトが
 \begin_inset Flex Code
 status collapsed
 
@@ -12626,14 +12577,17 @@ CopyStyle
 
 \end_inset
 
- 段落様式と同様です（
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "des:CopyStyle"
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
 
 \end_inset
 
-）ページ参照）。
+] 既存の様式から、すべての機能を現在の様式にコピーします。
 \end_layout
 
 \begin_layout Description
@@ -12859,14 +12813,42 @@ FreeSpacing
 
 \end_inset
 
- 段落様式と同様です（
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "des:FreeSpacing"
+ [
+\emph on
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
 
 \end_inset
 
-ページ参照）。既定値は偽です。
+
+\emph default
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] LyXは、空白をそれ自体文字や記号ではなく、2つの単語の間の分割子として捉えているため、単語間に2つ以上の空白を入れることは、通常許可していません。これ自体
+はとても素晴らしいことですが、たとえばプログラムコードや生のLaTeXコードを入力しようとするときなどに、煩わしくなることがあります。このことから、
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+FreeSpacing
+\end_layout
+
+\end_inset
+
+を有効にすることが認められています。LyXは、LaTeXモード以外では2つめ以降の空白には、保護された空白を使用することに注意してください。。
 \end_layout
 
 \begin_layout Description
@@ -12935,14 +12917,33 @@ KeepEmpty
 
 \end_inset
 
- 段落様式と同様です（
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "des:KeepEmpty"
+ [
+\emph on
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
 
 \end_inset
 
-ページ参照）。既定値は偽です。
+
+\emph default
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] 段落を空のままにすると、LaTeX出力が空になってしまうので、通常、LyXは段落を空にすることを許可しません。しかしながら、これを無効にすることが望ましい場
+合が存在します。たとえば、書簡のひな型では、必須フィールドを人々が忘れないように、空のフィールドのまま提供する手もあります。特別なクラスにおいては、レイアウトを
+実際には文章を含まないある種の改行として使用することもあります。
 \end_layout
 
 \begin_layout Description
@@ -13044,16 +13045,251 @@ LatexType
 
 \end_inset
 
- 段落様式と同様です（
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "des:LatexType"
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+Paragraph
+\emph default
+, Command, Environment, Item_Environment,
+\end_layout
 
 \end_inset
 
-ページ参照）。
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+List_Environmen, Bib_Environment
 \end_layout
 
+\end_inset
+
+] レイアウトがどのようにLaTeXに変換されるべきかを示します
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+これらのルールはSGMLクラスにも適用されるので、
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LatexType
+\end_layout
+
+\end_inset
+
+の名称は、少しミスリーディングかもしれません。特定の例については、SGMLクラスファイルを見てください。
+\end_layout
+
+\end_inset
+
+。
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Paragraph
+\end_layout
+
+\end_inset
+
+は、何も特別なことは意味しません。
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Command
+\end_layout
+
+\end_inset
+
+は、
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+
+\emph on
+LatexName
+\emph default
+{\SpecialChar \ldots{}
+}
+\end_layout
+
+\end_inset
+
+を意味します。
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Environment
+\end_layout
+
+\end_inset
+
+は、
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{
+\emph on
+LatexName
+\emph default
+}\SpecialChar \ldots{}
+
+\backslash
+end{
+\emph on
+LatexName
+\emph default
+}
+\end_layout
+
+\end_inset
+
+を意味します。
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Item_Environment
+\end_layout
+
+\end_inset
+
+は
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Environment
+\end_layout
+
+\end_inset
+
+と同じですが、
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+がこの環境のすべての段落に付けられるところだけが異なっています。
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+List_Environment
+\end_layout
+
+\end_inset
+
+は
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Item_Environment
+\end_layout
+
+\end_inset
+
+と同じですが、
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelWidthString
+\end_layout
+
+\end_inset
+
+が環境の引数として渡されるところだけが異なっています。
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelWidthString
+\end_layout
+
+\end_inset
+
+は、
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+編集\SpecialChar \menuseparator
+段落設定
+\end_layout
+
+\end_inset
+
+ダイアログで定義することができます。
+\end_layout
+
+\begin_layout Standard
+上記最後のいくつかをまとめると、LaTeX出力は、LaTeX型に依存して
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+latexname[latexparam]{\SpecialChar \ldots{}
+}
+\end_layout
+
+\begin_layout Standard
+のようになるか、
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+begin{latexname}[latexparam] \SpecialChar \ldots{}
+ 
+\backslash
+end{latexname}.
+\end_layout
+
+\begin_layout Standard
+となります。
+\end_layout
+
+\end_deeper
 \begin_layout Description
 \begin_inset Flex Code
 status collapsed
@@ -13304,7 +13540,7 @@ status collapsed
 
 \end_inset
 
-,
+, 
 \begin_inset Flex Code
 status collapsed
 
@@ -13314,14 +13550,17 @@ status collapsed
 
 \end_inset
 
-] 段落様式と同様です（
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "des:PathThru"
+] LaTeX出力中で、段落を空行ではなく、改行で区切るよう指定します。
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+PassThru 1
+\end_layout
 
 \end_inset
 
-ページ参照）。既定値は偽です。
+と併用すれば、（TeXコードを使用したときのように）テキストエディタをエミュレートすることができます。
 \end_layout
 
 \begin_layout Description
@@ -13335,18 +13574,20 @@ PassThru
 \end_inset
 
  [
+\emph on
+
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\emph on
 0
 \end_layout
 
 \end_inset
 
-,
+
+\emph default
+, 
 \begin_inset Flex Code
 status collapsed
 
@@ -13356,14 +13597,7 @@ status collapsed
 
 \end_inset
 
-] 段落様式と同様です（
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "des:PathThru"
-
-\end_inset
-
-ページ参照）。既定値は偽です。
+] この段落の内容が、LaTeXが必要とするような特別な変換を行わずに、生の形で出力されるべきかどうか。
 \end_layout
 
 \begin_layout Description
@@ -13376,14 +13610,18 @@ Preamble
 
 \end_inset
 
- 段落様式と同様です（
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "des:Preamble"
+ この様式が使用されたときに、LaTeXプリアンブルに付け加えるべき情報。この特定の様式が要求するマクロを定義したり、パッケージを読み込んだりと言ったことに使用
+します。「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+EndPreamble
+\end_layout
 
 \end_inset
 
-ページ参照）。
+」で閉じる必要があります。
 \end_layout
 
 \begin_layout Description
@@ -13429,14 +13667,34 @@ status collapsed
 
 \end_inset
 
-] 段落様式と同様です（
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "des:Requires"
+] このレイアウトが
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
 
 \end_inset
 
-ページ参照）。
+で表される機能を必要するか否か。「機能」に関する情報は、上記
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Provides
+\end_layout
+
+\end_inset
+
+の説明（
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "des:FreeSpacing"
+
+\end_inset
+
+ページ）をご参照ください。
 \end_layout
 
 \begin_layout Description

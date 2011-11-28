@@ -9334,13 +9334,6 @@ CopyStyle
 \end_inset
 
  
-\begin_inset CommandInset label
-LatexCommand label
-name "des:CopyStyle"
-
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -9924,14 +9917,7 @@ KeepEmpty
 
 \end_inset
 
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "des:KeepEmpty"
-
-\end_inset
-
-[
+ [
 \emph on
 
 \begin_inset Flex Code
@@ -10771,14 +10757,7 @@ LatexType
 
 \end_inset
 
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "des:LatexType"
-
-\end_inset
-
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
@@ -11806,14 +11785,7 @@ PassThru
 
 \end_inset
 
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "des:PathThru"
-
-\end_inset
-
-[
+ [
 \emph on
 
 \begin_inset Flex Code
@@ -11853,14 +11825,7 @@ Preamble
 
 \end_inset
 
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "des:Preamble"
-
-\end_inset
-
-Información a incluir en el preámbulo LaTeX cuando se usa este estilo.
+ Información a incluir en el preámbulo LaTeX cuando se usa este estilo.
  Utilizado para definir macros, paquetes a cargar, etc., requeridos por este
  estilo en particular.
  Debe terminar con 
@@ -11957,14 +11922,14 @@ OptionalArgs
 status collapsed
 
 \begin_layout Plain Layout
-Requires 
+Requires
 \end_layout
 
 \end_inset
 
 
 \series medium
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
@@ -11976,14 +11941,7 @@ string
 
 ]
 \series default
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "des:Requires"
-
-\end_inset
-
-Si el estilo requiere la característica 
+ Si el estilo requiere la característica 
 \begin_inset Flex Code
 status collapsed
 
@@ -13909,14 +13867,18 @@ CopyStyle
 
 \end_inset
 
- Como con los estilos de párrafo (véase 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "des:CopyStyle"
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[string]
+\end_layout
 
 \end_inset
 
-).
+ Copia todas las características de un estilo existente en el actual.
+ 
 \end_layout
 
 \begin_layout Description
@@ -14269,14 +14231,49 @@ FreeSpacing
 
 \end_inset
 
- Como con los estilos de párrafo (véase 
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "des:FreeSpacing"
+ [
+\emph on
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
 
 \end_inset
 
-).
+
+\emph default
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Usualmente LyX no permite insertar más de un espacio entre palabras, puesto
+ que un espacio se considera como la separación entre dos palabras, no un
+ carácter o símbolo por sí mismo.
+ Esto es una buena cosa pero a veces puede ser molesta, por ejemplo, para
+ escribir código de programas o de LaTeX puro.
+ Por esta razón se puede habilitar 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+FreeSpacing
+\end_layout
+
+\end_inset
+
+.
+ Anotar que LyX creará espacios protegidos para los espacios adicionales
+ en modos que no sean LaTeX.
+ 
 \end_layout
 
 \begin_layout Description
@@ -14338,6 +14335,16 @@ status collapsed
  header to be included in the TOC displayed in the outline, but one would
  normally want the content of a character style displayed.
  Default is false: not to include.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+UNTRANSLATED
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -14350,14 +14357,38 @@ KeepEmpty
 
 \end_inset
 
- Como con los estilos de párrafo (véase 
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "des:KeepEmpty"
+ [
+\emph on
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
 
 \end_inset
 
-).
+
+\emph default
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Habitualmente, LyX no permite dejar un párrafo vacío, porque llevaría
+ a una salida de LaTeX vacía.
+ Sin embargo, hay algunos casos donde podría ser útil: en una plantilla
+ de carta, los campos requeridos pueden proporcionarse vacíos, así el usuario
+ no los olvida; en algunos casos especiales, se puede usar un estilo que
+ no contiene texto real como una especie de salto.
 \end_layout
 
 \begin_layout Description
@@ -14488,16 +14519,270 @@ LatexType
 
 \end_inset
 
- Como con los estilos de párrafo (véase 
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "des:LatexType"
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+Paragraph
+\emph default
+, Command, Environment, Item_Environment,
+\end_layout
 
 \end_inset
 
-).
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+List_Environment, Bib_Environment
 \end_layout
 
+\end_inset
+
+] Cómo debería traducirse el estilo a LaTeX.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LatexType
+\end_layout
+
+\end_inset
+
+ es un poco engañoso porque estas reglas se aplican también a clases SGML.
+ Consulta los archivos de clases SGML para ejemplos concretos.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Paragraph
+\end_layout
+
+\end_inset
+
+ no significa nada especial.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Command
+\end_layout
+
+\end_inset
+
+ significa 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+
+\emph on
+LatexName
+\emph default
+{\SpecialChar \ldots{}
+}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Environment
+\end_layout
+
+\end_inset
+
+ significa 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{
+\emph on
+LatexName
+\emph default
+}\SpecialChar \ldots{}
+
+\backslash
+end{
+\emph on
+LatexName
+\emph default
+}
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Item_Environment
+\end_layout
+
+\end_inset
+
+ eslo mismo que 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Environment
+\end_layout
+
+\end_inset
+
+, excepto que un 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ se genera para cada párrafo de este entorno.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+List_Environment
+\end_layout
+
+\end_inset
+
+ es lo mismo que 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Item_Environment
+\end_layout
+
+\end_inset
+
+, excepto que 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelWidthString
+\end_layout
+
+\end_inset
+
+ se pasa como un argumento al entorno.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelWidthString
+\end_layout
+
+\end_inset
+
+ puede definirse en el diálogo 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\bar under
+Edit
+\bar default
+ar\SpecialChar \menuseparator
+
+\bar under
+Configuración
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+párrafos
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Poniendo juntas las últimas cosas, la salida LaTeX será una de estas: 
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+latexname[latexparam]{\SpecialChar \ldots{}
+}
+\end_layout
+
+\begin_layout Standard
+o: 
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+begin{latexname}[latexparam] \SpecialChar \ldots{}
+ 
+\backslash
+end{latexname}.
+\end_layout
+
+\begin_layout Standard
+dependiendo del tipo de LaTeX.
+\end_layout
+
+\end_deeper
 \begin_layout Description
 \begin_inset Flex Code
 status collapsed
@@ -14761,6 +15046,8 @@ PassThru
 \end_inset
 
  [
+\emph on
+
 \begin_inset Flex Code
 status collapsed
 
@@ -14772,7 +15059,9 @@ status collapsed
 
 \end_inset
 
-,
+
+\emph default
+, 
 \begin_inset Flex Code
 status collapsed
 
@@ -14782,14 +15071,8 @@ status collapsed
 
 \end_inset
 
-] Como con los estilos de párrafo (véase 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "des:PathThru"
-
-\end_inset
-
-).
+] Si el contenido de este párrafo debería aparecer en la salida en forma
+ cruda, es decir sin las traducciones especiales que LaTeX necesitaría.
 \end_layout
 
 \begin_layout Description
@@ -14802,14 +15085,28 @@ Preamble
 
 \end_inset
 
- Como con los estilos de párrafo (véase 
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "des:Preamble"
+ Información a incluir en el preámbulo LaTeX cuando se usa este estilo.
+ Utilizado para definir macros, paquetes a cargar, etc., requeridos por este
+ estilo en particular.
+ Debe terminar con 
+\begin_inset Quotes fld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+EndPreamble
+\end_layout
 
 \end_inset
 
-).
+
+\begin_inset Quotes frd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -14857,14 +15154,36 @@ string
 
 \end_inset
 
-] Como con los estilos de párrafo (véase 
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "des:Requires"
+] Si el estilo requiere la característica 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
 
 \end_inset
 
-).
+.
+ Véase arriba (página 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "des:Provides"
+
+\end_inset
+
+) la descripción de 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Provides
+\end_layout
+
+\end_inset
+
+ para información sobre 'características'.
+ 
 \end_layout
 
 \begin_layout Description
