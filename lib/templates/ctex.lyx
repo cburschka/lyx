@@ -4,7 +4,8 @@
 \begin_header
 \textclass ctex-article
 \begin_preamble
-% necessary to avoid problems with XeTeX
+% 如果没有这一句命令，XeTeX会出错，原因参见
+% http://bbs.ctex.org/viewthread.php?tid=60547
 \DeclareRobustCommand\nobreakspace{\leavevmode\nobreak\ }
 \end_preamble
 \options UTF8,adobefonts
@@ -23,7 +24,6 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format pdf4
 \output_sync 0
