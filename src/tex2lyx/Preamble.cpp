@@ -448,6 +448,7 @@ Preamble::Preamble() : one_language(true)
 	h_tocdepth                = "3";
 	h_tracking_changes        = "false";
 	h_use_bibtopic            = "false";
+	h_use_indices             = "false";
 	h_use_geometry            = "false";
 	h_use_amsmath             = "1";
 	h_use_default_options     = "false";
@@ -705,27 +706,21 @@ void Preamble::handle_package(Parser &p, string const & name,
 	else if (is_known(name, known_old_language_packages)) {
 		// known language packages from the times before babel
 		// if they are found and not also babel, they will be used as
-		// cutom language package
+		// custom language package
 		h_language_package = "\\usepackage{" + name + "}";
 	}
 
-	else if (name == "makeidx")
-		; // ignore this
-
 	else if (name == "prettyref")
-		; // ignore this
+		; // ignore this FIXME: Use the package separator mechanism instead
 
 	else if (name == "varioref")
-		; // ignore this
+		; // ignore this FIXME: Use the package separator mechanism instead
 
 	else if (name == "verbatim")
-		; // ignore this
-
-	else if (name == "nomencl")
-		; // ignore this
+		; // ignore this FIXME: Use the package separator mechanism instead
 
 	else if (name == "textcomp")
-		; // ignore this
+		; // ignore this FIXME: Use the package separator mechanism instead
 
 	else if (name == "lyxskak") {
 		// ignore this and its options
@@ -733,13 +728,11 @@ void Preamble::handle_package(Parser &p, string const & name,
 			options.clear();
 	}
 
-	else if (name == "url")
-		; // ignore this
-
-	else if (name == "array" || name == "booktabs" ||
-			 name == "color" || name == "hhline" ||
-			 name == "longtable" || name == "subscript" ||
-			 name == "ulem") {
+	else if (name == "array" || name == "booktabs" || name == "float" ||
+	         name == "color" || name == "hhline" || name == "longtable" ||
+	         name == "makeidx" || name == "nomencl" || name == "splitidx" ||
+	         name == "setspace" || name == "subscript" || name == "ulem" ||
+	         name == "url") {
 		if (!in_lyx_preamble)
 			h_preamble << package_beg_sep << name
 			           << package_mid_sep << "\\usepackage{"
@@ -747,22 +740,19 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 
 	else if (name == "graphicx")
-		; // ignore this
-
-	else if (name == "setspace")
-		; // ignore this
+		; // ignore this FIXME: Use the package separator mechanism instead
 
 	else if (name == "geometry")
 		handle_geometry(options);
 
 	else if (name == "rotfloat")
-		; // ignore this
+		; // ignore this FIXME: Use the package separator mechanism instead
 
 	else if (name == "wrapfig")
-		; // ignore this
+		; // ignore this FIXME: Use the package separator mechanism instead
 
 	else if (name == "subfig")
-		; // ignore this
+		; // ignore this FIXME: Use the package separator mechanism instead
 
 	else if (is_known(name, known_languages))
 		h_language = name;
@@ -857,6 +847,11 @@ bool Preamble::writeLyXHeader(ostream & os)
 	else if (is_known(h_language, known_english_quotes_languages))
 		h_quotes_language = "english";
 
+	if (contains(h_float_placement, "H"))
+		registerAutomaticallyLoadedPackage("float");
+	if (h_spacing != "single" && h_spacing != "default")
+		registerAutomaticallyLoadedPackage("setspace");
+
 	// output the LyX file settings
 	os << "#LyX file created by tex2lyx " << PACKAGE_VERSION << "\n"
 	   << "\\lyxformat " << LYX_FORMAT << '\n'
@@ -948,6 +943,7 @@ bool Preamble::writeLyXHeader(ostream & os)
 	   << "\\use_undertilde " << h_use_undertilde << "\n"
 	   << "\\cite_engine " << h_cite_engine << "\n"
 	   << "\\use_bibtopic " << h_use_bibtopic << "\n"
+	   << "\\use_indices " << h_use_indices << "\n"
 	   << "\\paperorientation " << h_paperorientation << '\n'
 	   << "\\suppress_date " << h_suppress_date << '\n'
 	   << "\\use_refstyle " << h_use_refstyle << '\n';

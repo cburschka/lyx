@@ -39,6 +39,8 @@ public:
 	///
 	std::string notefontcolor() const { return h_notefontcolor; }
 	///
+	std::string use_indices() const { return h_use_indices; }
+	///
 	bool indentParagraphs() const;
 	///
 	bool isPackageUsed(std::string const & package) const;
@@ -136,6 +138,7 @@ private:
 	std::string h_tocdepth;
 	std::string h_tracking_changes;
 	std::string h_use_bibtopic;
+	std::string h_use_indices;
 	std::string h_use_geometry;
 	std::string h_use_amsmath;
 	std::string h_use_default_options;

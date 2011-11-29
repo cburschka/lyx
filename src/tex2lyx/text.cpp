@@ -1223,6 +1223,15 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			float_type = "";
 		if (!opt.empty())
 			os << "placement " << opt << '\n';
+		if (contains(opt, "H"))
+                	preamble.registerAutomaticallyLoadedPackage("float");
+		else {
+			Floating const & fl = parent_context.textclass.floats()
+				.getType(unstarred_name);
+		        if (!fl.floattype().empty() && fl.usesFloatPkg())
+                		preamble.registerAutomaticallyLoadedPackage("float");
+		}
+
 		os << "wide " << convert<string>(is_starred)
 		   << "\nsideways false"
 		   << "\nstatus open\n\n";
@@ -1386,12 +1395,16 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			parent_context.add_extra_stuff("\\align center\n");
 		else if (name == "singlespace")
 			parent_context.add_extra_stuff("\\paragraph_spacing single\n");
-		else if (name == "onehalfspace")
+		else if (name == "onehalfspace") {
 			parent_context.add_extra_stuff("\\paragraph_spacing onehalf\n");
-		else if (name == "doublespace")
+			preamble.registerAutomaticallyLoadedPackage("setspace");
+		} else if (name == "doublespace") {
 			parent_context.add_extra_stuff("\\paragraph_spacing double\n");
-		else if (name == "spacing")
+			preamble.registerAutomaticallyLoadedPackage("setspace");
+		} else if (name == "spacing") {
 			parent_context.add_extra_stuff("\\paragraph_spacing other " + p.verbatim_item() + "\n");
+			preamble.registerAutomaticallyLoadedPackage("setspace");
+		}
 		parse_text(p, os, FLAG_END, outer, parent_context);
 		// Just in case the environment is empty
 		parent_context.extra_stuff.erase();
@@ -1503,6 +1516,9 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		p.skip_spaces();
 		if (!title_layout_found)
 			title_layout_found = newlayout->intitle;
+		set<string> const & req = newlayout->requires();
+		for (set<string>::const_iterator it = req.begin(); it != req.end(); it++)
+			preamble.registerAutomaticallyLoadedPackage(*it);
 	}
 
 	// The single '=' is meant here.
@@ -2392,6 +2408,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					p.skip_spaces();
 					if (!title_layout_found)
 						title_layout_found = newlayout->intitle;
+					set<string> const & req = newlayout->requires();
+					for (set<string>::const_iterator it = req.begin();
+					     it != req.end(); it++)
+						preamble.registerAutomaticallyLoadedPackage(*it);
 				} else
 					handle_ert(os, "\\date{" + date + '}',
 							context);
@@ -2409,6 +2429,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.skip_spaces();
 			if (!title_layout_found)
 				title_layout_found = newlayout->intitle;
+			set<string> const & req = newlayout->requires();
+			for (set<string>::const_iterator it = req.begin(); it != req.end(); it++)
+				preamble.registerAutomaticallyLoadedPackage(*it);
 		}
 
 		// Section headings and the like
@@ -2419,6 +2442,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.skip_spaces();
 			if (!title_layout_found)
 				title_layout_found = newlayout->intitle;
+			set<string> const & req = newlayout->requires();
+			for (set<string>::const_iterator it = req.begin(); it != req.end(); it++)
+				preamble.registerAutomaticallyLoadedPackage(*it);
 		}
 
 		else if (t.cs() == "caption") {
@@ -3125,6 +3151,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			   << convert_command_inset_arg(p.verbatim_item())
 			   << "\"\n";
 			end_inset(os);
+			preamble.registerAutomaticallyLoadedPackage("nomencl");
 		}
 		
 		else if (t.cs() == "label") {
@@ -3142,6 +3169,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "type \"idx\"\n";
 			end_inset(os);
 			skip_spaces_braces(p);
+			preamble.registerAutomaticallyLoadedPackage("makeidx");
+			if (preamble.use_indices() == "true")
+				preamble.registerAutomaticallyLoadedPackage("splitidx");
 		}
 
 		else if (t.cs() == "printnomenclature") {
@@ -3168,6 +3198,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				os << "width \"" << width << '\"';
 			end_inset(os);
 			skip_spaces_braces(p);
+			preamble.registerAutomaticallyLoadedPackage("nomencl");
 		}
 
 		else if ((t.cs() == "textsuperscript" || t.cs() == "textsubscript")) {
