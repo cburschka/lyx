@@ -875,6 +875,7 @@ docstring const i18npreamble(Language const * lang, Encoding const & enc,
 		subst(to_utf8(templ), "$$lang", lang->babel());
 
 #ifdef TEX2LYX
+	(void) enc;
 	// tex2lyx does not have getMessages()
 	LASSERT(false, /**/);
 #else
