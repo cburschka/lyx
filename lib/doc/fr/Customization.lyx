@@ -9453,10 +9453,6 @@ tocdepth
  en LaTeX.
 \end_layout
 
-\begin_layout Description
-
-\end_layout
-
 \begin_layout Subsection
 Section 
 \family typewriter
@@ -9957,10 +9953,19 @@ CopyStyle
 
 \end_inset
 
+ 
+\begin_inset Flex Code
+status collapsed
 
-\begin_inset CommandInset label
-LatexCommand label
-name "des:-copystyle"
+\begin_layout Plain Layout
+
+\lang english
+[
+\lang french
+chaîne
+\lang english
+]
+\end_layout
 
 \end_inset
 
@@ -10556,13 +10561,6 @@ KeepEmpty
 \end_inset
 
  
-\begin_inset CommandInset label
-LatexCommand label
-name "des:KeepEmpty"
-
-\end_inset
-
-
 \lang french
 [
 \family typewriter
@@ -11553,14 +11551,7 @@ LatexType
 
 \end_inset
 
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "des:LatexType"
-
-\end_inset
-
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
@@ -12316,13 +12307,6 @@ ParbreakIsNewline
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "des:ParbreakIsNewline"
-
-\end_inset
-
  
 \lang french
 [
@@ -12644,13 +12628,6 @@ PassThru
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "des:PathThru"
-
-\end_inset
-
-
 \lang french
  [
 \family typewriter
@@ -12675,13 +12652,6 @@ status collapsed
 \lang english
 Preamble
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "des:Preamble"
 
 \end_inset
 
@@ -12819,13 +12789,6 @@ chaîne
 \lang english
 ]
 \end_layout
-
-\end_inset
-
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "des:Requires"
 
 \end_inset
 
@@ -15065,15 +15028,25 @@ CopyStyle
 \end_inset
 
  
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+[
 \lang french
-fonctionne comme pour les styles de paragraphe (voir page 
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "des:-copystyle"
+chaîne
+\lang english
+]
+\end_layout
 
 \end_inset
 
-).
+
+\lang french
+ sert à copier toutes les caractéristiques d'un style déjà existant dans
+ un nouveau style.
 \end_layout
 
 \begin_layout Description
@@ -15516,14 +15489,31 @@ FreeSpacing
 
  
 \lang french
-fonctionne comme dans les styles de paragraphe (voir page 
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "des:-Freespacing"
+[
+\family typewriter
+\emph on
+0
+\emph default
+, 1
+\family default
+] LyX ne permet pas d'habitude d'insérer plus d'une espace entre deux mots,
+ car une espace est considérée comme un séparateur de mots, non comme un
+ caractère ou un symbole en tant que tel.
+ C'est très bien mais c'est parfois ennuyeux, par exemple pour taper un
+ code source de programme ou du code LaTeX brut.
+ C'est pourquoi on peut activer 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+FreeSpacing
+\end_layout
 
 \end_inset
 
-).
+.
+ Noter que LyX créera les espaces insécables correspondants aux espaces
+ additionnelles pour tous les modes autres que le mode LaTeX.
  Valeur implicite: faux.
 \end_layout
 
@@ -15630,18 +15620,19 @@ KeepEmpty
 
  
 \lang french
-fonctionne comme dans les styles de paragraphe (voir
-\lang english
- page 
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "des:KeepEmpty"
-
-\end_inset
-
-).
-
-\lang french
+[
+\family typewriter
+\emph on
+0
+\emph default
+, 1
+\family default
+] LyX ne permet pas d'habitude de laisser un paragraphe vide, car il ne
+ générerait rien en LaTeX.
+ Il y a quelques cas où c'est pourtant utile : dans un modèle pour une lettre,
+ les champs requis peuvent être laissés vides, pour que les gens ne les
+ oublient pas; dans certains cas particuliers, un style peut aussi servir
+ de séparateur, et ne pas contenir de texte.
  Valeur implicite: faux.
 \end_layout
 
@@ -15810,18 +15801,259 @@ LatexType
 
 \end_inset
 
- 
-\lang french
-fonctionne comme dans les styles de paragraphe (voir
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
 \lang english
- page 
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "des:LatexType"
+Paragraph
+\emph default
+, Command, Environment, Item_Environment,
+\end_layout
 
 \end_inset
 
-).
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+List_Environment, Bib_Environment
+\end_layout
+
+\end_inset
+
+] 
+\lang french
+
+\begin_inset Newline newline
+\end_inset
+
+décrit comment traduire l'environnement en LaTeX.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Paragraph
+\end_layout
+
+\end_inset
+
+ veut dire 
+\begin_inset Quotes fld
+\end_inset
+
+rien de spécial
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Command
+\end_layout
+
+\end_inset
+
+ veut dire 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+
+\emph on
+LatexName
+\emph default
+{\SpecialChar \ldots{}
+}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Environment
+\end_layout
+
+\end_inset
+
+ veut dire 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{
+\emph on
+LatexName
+\emph default
+}\SpecialChar \ldots{}
+
+\backslash
+end{
+\emph on
+LatexName
+\emph default
+}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Item_Environment
+\end_layout
+
+\end_inset
+
+ est la même chose que 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Environment
+\end_layout
+
+\end_inset
+
+, sauf qu'il génère un 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ pour chaque paragraphe de l'environnement.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+List_Environment
+\end_layout
+
+\end_inset
+
+ est la même chose que 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Item_Environment
+\end_layout
+
+\end_inset
+
+, sauf que 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelWidthString
+\end_layout
+
+\end_inset
+
+ est passé en paramètre de l'environnement.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelWidthString
+\end_layout
+
+\end_inset
+
+ peut être défini dans la fenêtre 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Éditer\SpecialChar \menuseparator
+Paramètres
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+Paragraphe
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+En collectant ces derniers éléments, l'exportation LaTeX sera ou bien:
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+
+\backslash
+latexname[latexparam]{\SpecialChar \ldots{}
+}
+\end_layout
+
+\begin_layout Standard
+ou bien:
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+
+\backslash
+begin{latexname}[latexparam] \SpecialChar \ldots{}
+ 
+\backslash
+end{latexname}.
+\end_layout
+
+\begin_layout Standard
+en fonction du type LaTeX.
 \end_layout
 
 \begin_layout Description
@@ -16126,46 +16358,52 @@ ParbreakIsNewline
 
 \end_inset
 
- [
+ 
+\lang french
+[
+\family typewriter
+\emph on
+
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
+\family typewriter
 \emph on
-\lang english
 0
 \end_layout
 
 \end_inset
 
-, 
+
+\emph default
+,
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
+\family typewriter
 1
 \end_layout
 
 \end_inset
 
-]
-\lang french
- fonctionne comme dans les styles de paragraphe (voir page
-\begin_inset space ~
+
+\family default
+] indique que les paragraphes ne seront pas séparés par une ligne vide dans
+ le résultat LaTeX, mais par un retour à la ligne; combiné avec 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+PassThru 1
+\end_layout
+
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "des:ParbreakIsNewline"
-
-\end_inset
-
-).
- Valeur implicite: faux.
+, ceci permet d'émuler une éditeur plein texte (comme l'insert code TeX).
 \end_layout
 
 \begin_layout Description
@@ -16182,49 +16420,17 @@ PassThru
 
 \end_inset
 
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-\lang english
-0
-\end_layout
-
-\end_inset
-
-,
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-1
-\end_layout
-
-\end_inset
-
-]
-\lang french
- fonctionne comme dans les styles de paragraphe (voir
-\lang english
  
 \lang french
-page 
-\lang english
-
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "des:PathThru"
-
-\end_inset
-
-).
-
-\lang french
+[
+\family typewriter
+\emph on
+0
+\emph default
+, 1
+\family default
+] indique si le contenu du paragraphe doit être passé sous forme brute,
+ c'est-à-dire sans les traductions spéciales dont LaTeX aurait besoin.
  Valeur implicite: faux.
 \end_layout
 
@@ -16244,19 +16450,30 @@ Preamble
 
  
 \lang french
-fonctionne comme dans les styles de paragraphe (voir page
+fixe le contenu à inclure dans le préambule LaTeX quand le style est utilisé.
+ Utile pour définir des macros, charger des paquetages, etc.
+ requis pour ce style particulier.
+ Doit être fermé par 
+\begin_inset Quotes fld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
 \lang english
- 
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "des:Preamble"
+EndPreamble
+\end_layout
 
 \end_inset
 
-).
- 
-\lang french
-Valeur implicite: faux.
+
+\begin_inset Quotes frd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -16315,23 +16532,35 @@ status collapsed
 \lang french
 chaîne
 \lang english
-=""]
+]
 \end_layout
 
 \end_inset
 
 
 \lang french
- fonctionne comme dans les styles de paragraphe (voir page 
-\lang english
+ indique que le style requiert la fonctionnalité chaîne.
+ Voir la description de 
+\begin_inset Flex Code
+status collapsed
 
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "des:Requires"
+\begin_layout Plain Layout
+
+\lang english
+Provides
+\end_layout
 
 \end_inset
 
-).
+ ci-dessus (page 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "des:-Freespacing"
+
+\end_inset
+
+) pour les détails sur les fonctionnalités.
+ 
 \end_layout
 
 \begin_layout Description

@@ -150,7 +150,7 @@ Möglichkeiten für fortgeschrittene Benutzer
 \begin_layout Author
 vom LyX-Team
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Übersetzung: 
@@ -8240,14 +8240,7 @@ ist die Tiefe des XML-Befehls und wird nur für XML-Formate benutzt.
 CopyStyle
 \family default
 \series default
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "CopyStyle"
-
-\end_inset
-
-Hiermit können Sie alle Optionen eines bereits definierten Layouts in das
+ Hiermit können Sie alle Optionen eines bereits definierten Layouts in das
  aktuelle kopieren.
 \end_layout
 
@@ -8692,13 +8685,6 @@ KeepEmpty
 
 
 \family default
-
-\begin_inset CommandInset label
-LatexCommand label
-name "KeepEmpty"
-
-\end_inset
-
 Normalerweise ist es in LyX nicht möglich, einen Absatz leer zu lassen,
  da das zu einer leeren LaTeX-Ausgabe führen würde.
  In manchen Fällen ist das aber durchaus gewünscht: So können beispielsweise
@@ -9265,14 +9251,7 @@ LatexName
 LatexType
 \family default
 \series default
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "LatexType"
-
-\end_inset
-
-[
+ [
 \family typewriter
 \emph on
 Paragraph
@@ -9452,7 +9431,7 @@ status open
  definiert werden.
 
 \emph on
- [Stimmt das noch? Glaube nicht! P.S.]
+ 
 \end_layout
 
 \end_deeper
@@ -9874,22 +9853,21 @@ ist die Zahl der optionalen Argumente, die in diesem Layout benutzt werden
 \end_layout
 
 \begin_layout Description
+
+\series medium
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+
+\series medium
 ParbreakIsNewline
 \end_layout
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "des:ParbreakIsNewline"
-
-\end_inset
-
+\series default
  [
 \begin_inset Flex Code
 status collapsed
@@ -10148,13 +10126,6 @@ PassThru
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "PassThru"
-
-\end_inset
-
-
 \series medium
 [0,
 \series default
@@ -10215,6 +10186,8 @@ ment}
 status collapsed
 
 \begin_layout Plain Layout
+
+\series medium
 RefPrefix
 \end_layout
 
@@ -10241,6 +10214,8 @@ The prefix to use when creating labels referring to paragraphs of this type.
 status collapsed
 
 \begin_layout Plain Layout
+
+\series medium
 RequiredArgs
 \end_layout
 
@@ -10462,6 +10437,8 @@ setspace.sty
 status collapsed
 
 \begin_layout Plain Layout
+
+\series medium
 Spellcheck
 \end_layout
 
@@ -11636,14 +11613,8 @@ CopyStyle
 \begin_inset Newline newline
 \end_inset
 
-wie beim Absatzstil (siehe 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "CopyStyle"
-
-\end_inset
-
-).
+Hiermit können Sie alle Optionen eines bereits definierten Layouts in das
+ aktuelle kopieren.
 \end_layout
 
 \begin_layout Description
@@ -11956,14 +11927,22 @@ FreeSpacing
 \begin_inset Newline newline
 \end_inset
 
-wie beim Absatzstil (siehe 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "FreeSpacing"
-
-\end_inset
-
-).
+Normalerweise erlaubt es LyX nicht, mehr als ein Leerzeichen zwischen Wörtern
+ einzufügen.
+ Diese Eigenschaft kann in bestimmten Fällen umständ\SpecialChar \-
+lich sein, zum Beispiel,
+ wenn ein Programmcode eingegeben werden soll.
+ In solchen Fällen kann 
+\family typewriter
+FreeSpacing
+\family default
+ auf 
+\family typewriter
+1
+\family default
+ gesetzt werden.
+ LyX erzeugt in diesem Fall für jedes zusätzliche Leerzeichen ein geschütztes
+ Leerzeichen, es sei denn, LyX befindet sich im LaTeX-Modus.
 \end_layout
 
 \begin_layout Description
@@ -12044,14 +12023,13 @@ KeepEmpty
 \begin_inset Newline newline
 \end_inset
 
-wie beim Absatzstil (siehe 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "KeepEmpty"
-
-\end_inset
-
-).
+Normalerweise ist es in LyX nicht möglich, einen Absatz leer zu lassen,
+ da das zu einer leeren LaTeX-Ausgabe führen würde.
+ In manchen Fällen ist das aber durchaus gewünscht: So können beispielsweise
+ in einer Briefvorlage die benötigten Felder leer voreingestellt werden,
+ damit keiner vergisst, sie anzugeben.
+ In anderen Klassen wird ein solcher Absatz als Unterbrechung verwendet,
+ die keinen eigentlichen Text enthält.
 \end_layout
 
 \begin_layout Description
@@ -12170,16 +12148,187 @@ LatexType
 \begin_inset Newline newline
 \end_inset
 
-wie beim Absatzstil (siehe 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "LatexType"
-
+[
+\family typewriter
+\emph on
+Paragraph
+\emph default
+, Command, Environment, Item_Environment, 
+\begin_inset Newline newline
 \end_inset
 
+List_Environment
+\family default
+]
+\begin_inset Newline newline
+\end_inset
+
+Legt fest, wie das Layout in LaTeX überführt wird.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+
+\family typewriter
+\series medium
+Paragraph
+\family default
+\series default
+ bewirkt nichts besonderes -- der Text wird als 
+\emph on
+normaler
+\emph default
+ 
+\emph on
+Absatz
+\emph default
+ übernommen.
+ 
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Command
+\family default
+\series default
+ behandelt den Text als Argument eines LaTeX-Befehls (
+\family typewriter
+\emph on
+
+\backslash
+LatexBe\SpecialChar \-
+fehl
+\emph default
+ {\SpecialChar \ldots{}
+}
+\family default
 ).
 \end_layout
 
+\begin_layout Description
+
+\family typewriter
+\series medium
+Environment
+\family default
+\series default
+ behandelt den Text als Kern einer LaTeX-Umgebung
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Umgebung und LaTeX-Befehl sind hier etwas irreführend, denn diese
+ Regeln gelten auch für SGML-Klassen.
+ Schauen Sie sich am besten die SGML-Klassen-Dateien für Beispiele an.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+(
+\family typewriter
+
+\backslash
+begin{
+\emph on
+LatexUmgebung
+\emph default
+} \SpecialChar \ldots{}
+ 
+\backslash
+end{
+\emph on
+LatexUmgebung
+\emph default
+}
+\family default
+).
+ 
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Item_Environment
+\family default
+\series default
+ bewirkt dasselbe wie 
+\family typewriter
+Environment
+\family default
+, nur dass vor jedem Absatz ein 
+\family typewriter
+
+\backslash
+item
+\family default
+ eingefügt wird.
+ 
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+List_Environment
+\family default
+\series default
+ funktioniert wie 
+\family typewriter
+Item_Environment
+\family default
+, nur dass
+\family typewriter
+ Label\SpecialChar \-
+Width\SpecialChar \-
+String
+\family default
+ als Argument an die Umgebung übergeben wird.
+
+\family typewriter
+ Label\SpecialChar \-
+WidthString
+\family default
+ kann im Menü 
+\family sans
+Absatz-Einstellungen
+\family default
+ (
+\family sans
+Bearbeiten
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Absatz-Einstellungen
+\family default
+ 
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../images/layout-paragraph.png
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ definiert werden.
+\end_layout
+
+\end_deeper
 \begin_layout Description
 
 \family typewriter
@@ -12341,17 +12490,42 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-As with paragraph styles (see page 
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "des:ParbreakIsNewline"
+] [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
 
 \end_inset
 
-).
- Default is false.
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+Indicates that paragraphs will not be separated by an empty line in LaTeX
+ output, but only by a line break; together with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+PassThru 1
+\end_layout
+
+\end_inset
+
+, this allows to emulate a plain text editor (like the ERT inset).
 \end_layout
 
 \begin_layout Description
@@ -12381,36 +12555,35 @@ PassThru
 \begin_inset Newline newline
 \end_inset
 
-wie beim Absatzstil (siehe 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "PassThru"
+Legt fest, ob der Absatzinhalt unverändert ausgegeben werden soll, also
+ ohne diverse von LaTeX benötigte Ersetzungen durchzuführen.
+ Dies ersetzt in gewisser Weise das alte Zeichensatzattribut 
+\family typewriter
+LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
 
 \end_inset
 
-).
+X
+\family default
+.
 \end_layout
 
 \begin_layout Description
 
 \family typewriter
 \series medium
-Preamble
-\begin_inset space ~
-\end_inset
-
-[
-\emph on
-0
-\emph default
-,
-\begin_inset space ~
-\end_inset
-
-1] 
+Preamble\SpecialChar \ldots{}
+EndPreamble
 \family default
 \series default
-
+ 
 \begin_inset space ~
 \end_inset
 
@@ -12418,14 +12591,14 @@ Preamble
 \begin_inset Newline newline
 \end_inset
 
-wie beim Absatzstil (siehe 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Preamble"
+Eine Serie von Makrodefinitionen, die in die Präambel (vor 
+\family typewriter
 
-\end_inset
-
-).
+\backslash
+begin{docu\SpecialChar \-
+ment}
+\family default
+) eingefügt werden, falls dieses Layout benutzt wird.
 \end_layout
 
 \begin_layout Description
@@ -12473,14 +12646,23 @@ Requires
 \begin_inset Newline newline
 \end_inset
 
-wie beim Absatzstil (siehe 
+Legt fest, dass das Layout die Funktion 
+\family typewriter
+string
+\family default
+ benötigt.
+ Sehen Sie sich auch die Beschreibung von 
+\family typewriter
+Provides
+\family default
+
 \begin_inset CommandInset ref
-LatexCommand vref
-reference "Requires-2"
+LatexCommand vpageref
+reference "Provides"
 
 \end_inset
 
-).
+ an.
 \end_layout
 
 \begin_layout Description
