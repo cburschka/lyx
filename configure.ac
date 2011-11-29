@@ -58,7 +58,7 @@ for file in config/install-sh ; do
 done
 
 # Check for installed python
-AM_PATH_PYTHON(2.3.4,, :)
+AM_PATH_PYTHON(2.4.0,, :)
 
 ### we need to know the byte order for unicode conversions
 AC_C_BIGENDIAN
