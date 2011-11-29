@@ -19,6 +19,8 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "DispatchResult.h"
+#include "FuncCode.h"
+#include "FuncRequest.h"
 #include "LaTeXFeatures.h"
 #include "output_xhtml.h"
 #include "ParIterator.h"
@@ -96,6 +98,14 @@ bool InsetCitation::isCompatibleCommand(string const & cmd)
 	vector<string> const & possibles = possibleCiteCommands();
 	vector<string>::const_iterator const end = possibles.end();
 	return find(possibles.begin(), end, cmd) != end;
+}
+
+
+void InsetCitation::doDispatch(Cursor & cur, FuncRequest & cmd)
+{
+	if (cmd.action() == LFUN_INSET_MODIFY)
+		cache.recalculate = true;
+	InsetCommand::doDispatch(cur, cmd);
 }
 
 
@@ -459,11 +469,10 @@ docstring InsetCitation::screenLabel() const
 
 void InsetCitation::updateBuffer(ParIterator const &, UpdateType)
 {
-	CiteEngine const engine = buffer().params().citeEngine();
-	if (cache.params == params() && cache.engine == engine)
+	if (!cache.recalculate && buffer().citeLabelsValid())
 		return;
 
-	// The label has changed, so we have to re-create it.
+	// The label may have changed, so we have to re-create it.
 	docstring const glabel = generateLabel();
 
 	unsigned int const maxLabelChars = 45;
@@ -474,8 +483,7 @@ void InsetCitation::updateBuffer(ParIterator const &, UpdateType)
 		label += "...";
 	}
 
-	cache.engine  = engine;
-	cache.params = params();
+	cache.recalculate = false;
 	cache.generated_label = glabel;
 	cache.screen_label = label;
 }
