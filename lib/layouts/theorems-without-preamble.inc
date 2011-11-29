@@ -49,7 +49,7 @@ Style Theorem
 	AlignPossible	Left
 	LabelType	Counter
 	LabelCounter	theorem
-	LabelString	"Theorem \thetheorem"
+	LabelString	"Theorem \thetheorem."
 	Font
 	  Shape		Italic
 	  Size		Normal
@@ -73,7 +73,7 @@ Style Corollary
 	CopyStyle	Theorem
 	LabelCounter	corollary
 	LatexName	corollary
-	LabelString	"Corollary \thecorollary"
+	LabelString	"Corollary \thecorollary."
 	LangPreamble
 		\providecommand{\corollaryname}{_(Corollary)}
 	EndLangPreamble
@@ -89,7 +89,7 @@ Style Lemma
 	CopyStyle	Theorem
 	LabelCounter	lemma
 	LatexName	lemma
-	LabelString	"Lemma \thelemma"
+	LabelString	"Lemma \thelemma."
 	LangPreamble
 		\providecommand{\lemmaname}{_(Lemma)}
 	EndLangPreamble
@@ -105,7 +105,7 @@ Style Proposition
 	CopyStyle	Theorem
 	LabelCounter	proposition
 	LatexName	proposition
-	LabelString	"Proposition \theproposition"
+	LabelString	"Proposition \theproposition."
 	LangPreamble
 		\providecommand{\propositionname}{_(Proposition)}
 	EndLangPreamble
@@ -137,7 +137,7 @@ Style Conjecture
 	CopyStyle	Theorem
 	LabelCounter	conjecture
 	LatexName	conjecture
-	LabelString	"Conjecture \theconjecture"
+	LabelString	"Conjecture \theconjecture."
 	Font
 	  Shape		Up
 	EndFont
@@ -176,7 +176,7 @@ Style Definition
 	CopyStyle	Theorem
 	LabelCounter	definition
 	LatexName	definition
-	LabelString	"Definition \thedefinition"
+	LabelString	"Definition \thedefinition."
 	RefPrefix	def
 	Font
 	  Shape		Up
@@ -200,7 +200,7 @@ Style Example
 	CopyStyle	Conjecture
 	LabelCounter	example
 	LatexName	example
-	LabelString	"Example \theexample"
+	LabelString	"Example \theexample."
 	RefPrefix	exa
 	LangPreamble
 		\providecommand{\examplename}{_(Example)}
@@ -218,7 +218,7 @@ Style Problem
 	Category	Exercise
 	LabelCounter	problem
 	LatexName	problem
-	LabelString	"Problem \theproblem"
+	LabelString	"Problem \theproblem."
 	RefPrefix	prob
 	LangPreamble
 		\providecommand{\problemname}{_(Problem)}
@@ -291,7 +291,7 @@ Style Exercise
 	CopyStyle	Definition
 	LabelCounter	exercise
 	LatexName	exercise
-	LabelString	"Exercise \theexercise"
+	LabelString	"Exercise \theexercise."
 	RefPrefix	exer
 	LangPreamble
 		\providecommand{\exercisename}{_(Exercise)}
@@ -308,7 +308,7 @@ Style Remark
 	CopyStyle	Conjecture
 	LabelCounter	remark
 	LatexName	remark
-	LabelString	"Remark \theremark"
+	LabelString	"Remark \theremark."
 	RefPrefix	rem
 	LangPreamble
 		\providecommand{\remarkname}{_(Remark)}
@@ -338,7 +338,7 @@ Style Case
 	CopyStyle	Remark
 	LabelCounter	case
 	LatexName	case
-	LabelString	"Case \thecase"
+	LabelString	"Case \thecase."
 	RefPrefix	case
 	LangPreamble
 		\providecommand{\casename}{_(Case)}
@@ -355,7 +355,7 @@ Style Property
 	CopyStyle	Claim
 	LabelCounter	property
 	LatexName	property
-	LabelString	"Property \theproperty"
+	LabelString	"Property \theproperty."
 	RefPrefix	prop
 	LangPreamble
 		\providecommand{\propertyname}{_(Property)}
@@ -372,7 +372,7 @@ Style Question
 	CopyStyle	Claim
 	LabelCounter	question
 	LatexName	question
-	LabelString	"Question \thequestion"
+	LabelString	"Question \thequestion."
 	RefPrefix	que
 	LangPreamble
 		\providecommand{\questionname}{_(Question)}
@@ -389,7 +389,7 @@ Style Note
 	CopyStyle	Claim
 	LabelCounter	note
 	LatexName	note
-	LabelString	"Note \thenote"
+	LabelString	"Note \thenote."
 	RefPrefix	note
 	LangPreamble
 		\providecommand{\notename}{_(Note)}
