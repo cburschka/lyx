@@ -38,6 +38,8 @@ What's new
 
 * BUILD/INSTALLATION
 
+- Make sure that we detect and use python 2 on systems where python 3
+  is the default python interpreter.
 
 
 ** Bug fixes:
