@@ -4,7 +4,8 @@
 \begin_header
 \textclass ctex-article
 \begin_preamble
-%Fixme: is this really necessary?
+% 如果没有这一句命令，XeTeX会出错，原因参见
+% http://bbs.ctex.org/viewthread.php?tid=60547
 \DeclareRobustCommand\nobreakspace{\leavevmode\nobreak\ }
 \end_preamble
 \options UTF8,adobefonts
@@ -23,7 +24,6 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format pdf4
 \output_sync 0
@@ -70,17 +70,13 @@
 status open
 
 \begin_layout Plain Layout
-This templates creates an article.
- To create a book or a report, change the document class to 
+这是一份文章模板，如果要使用书籍或报告，请设置文档类为
 \family sans
-book (ctex)
+book (CTeX)
 \family default
- or 
+或者
 \family sans
-report (ctex)
-\family default
-.
- 
+report (CTeX)
 \end_layout
 
 \end_inset
@@ -146,21 +142,8 @@ http://yihui.name
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Fixme: the layout files are already part of LyX since version 2.0.2.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-本文档使用ctex-article.layout（类似的还有两种：书籍ctex-book和报告ctex-report.layout，如果你熟悉ctex宏包，这里就不
-需要解释了），语言设置为简体中文，编码使用UTF8，字体用Adobe中文字体，输出类型设置为XeTeX。编译的时候中文与英文之间会自动加上空格，方便阅读。
+本文档使用article (CTeX)文档类，语言设置为简体中文，编码使用UTF8，字体用Adobe中文字体，输出类型设置为XeTeX。编译的时候中文与英文之间
+会自动加上空格，方便阅读。
 \end_layout
 
 \end_body
