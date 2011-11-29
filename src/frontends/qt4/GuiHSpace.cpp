@@ -83,6 +83,7 @@ GuiHSpace::GuiHSpace(bool math_mode, QWidget * parent)
 
 	// initialize the length validator
 	addCheckedWidget(valueLE, valueL);
+	enableWidgets();
 }
 
 
