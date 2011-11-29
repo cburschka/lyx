@@ -65,11 +65,12 @@ Welcome to LyX!
 \end_layout
 
 \begin_layout Section*
-Top N things to know when using LyX
+Most important things to know when using LyX
 \end_layout
 
 \begin_layout Enumerate
-LyX comes with excellent documentation — please use it! Start with the 
+LyX comes with excellent documentation — please use it! Start with the menu
+ 
 \family sans
 Help\SpecialChar \menuseparator
 Introduction
@@ -96,24 +97,28 @@ document processor.
  makes writing documents easier.
  But only a little different, so don't be scared.
  The documentation will make it all clear.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Have we mentioned yet that you ought to read the documentation?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
-The output from LyX looks great! Select 
+The output from LyX looks great! Use the menu 
 \family sans
 View\SpecialChar \menuseparator
-View [PDF (pdflatex)]
+View
+\begin_inset space ~
+\end_inset
+
+[PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)]
 \family default
+ or press the toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
+
  now to see for yourself.
 \end_layout
 
