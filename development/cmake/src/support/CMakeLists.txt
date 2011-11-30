@@ -75,7 +75,7 @@ target_link_libraries(support ${Lyx_Boost_Libraries} ${QT_QTCORE_LIBRARY} ${ZLIB
 lyx_add_gcc_pch(support)
 
 if(APPLE)
-	target_link_libraries(support "objc" "-framework Appkit" "-framework CoreFoundation")
+	target_link_libraries(support "objc" "-framework AppKit" "-framework CoreFoundation")
 elseif(WIN32)
 	target_link_libraries(support shlwapi psapi)
 endif()

@@ -51,7 +51,7 @@ if(WIN32)
 endif()
 
 if(APPLE)
-	target_link_libraries(${_tex2lyx} "-framework Carbon")
+	target_link_libraries(${_tex2lyx} "-framework AppKit")
 endif()
 
 project_source_group("${GROUP_CODE}" tex2lyx_sources tex2lyx_headers)

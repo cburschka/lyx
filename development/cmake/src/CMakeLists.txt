@@ -139,7 +139,7 @@ endif()
 
 if(APPLE)
 	target_link_libraries(${_lyx} "-bind_at_load")
-	target_link_libraries(${_lyx} "-framework Carbon")
+	target_link_libraries(${_lyx} "-framework AppKit")
 endif()
 
 if(MINGW)

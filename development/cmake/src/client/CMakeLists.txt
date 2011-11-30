@@ -39,7 +39,7 @@ if(ASPELL_FOUND)
 endif()
 
 if(APPLE)
-	target_link_libraries(${_lyxclient} "-framework Carbon")
+	target_link_libraries(${_lyxclient} "-framework AppKit")
 endif()
 
 install(TARGETS ${_lyxclient} DESTINATION bin)
