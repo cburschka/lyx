@@ -68,3 +68,7 @@ tex2lyx_LDADD = \
 	$(INTLLIBS) $(LIBICONV) $(BOOST_LIBS) \
 	$(QT4_LIB) $(QT4_LDFLAGS) \
 	@LIBS@ $(LIBSHLWAPI) $(LIBPSAPI)
+
+if INSTALL_MACOSX
+tex2lyx_LDFLAGS = -framework AppKit
+endif

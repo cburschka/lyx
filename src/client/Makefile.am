@@ -15,6 +15,10 @@ lyxclient_LDADD = \
 	$(BOOST_LIBS) $(INTLLIBS) @LIBS@ $(SOCKET_LIBS) \
 	$(QT4_LIB) $(QT4_LDFLAGS) $(LIBSHLWAPI) $(LIBPSAPI)
 
+if INSTALL_MACOSX
+lyxclient_LDFLAGS = -framework AppKit
+endif
+
 # everything below the line containing the single backslashs
 # an ugly hack and needed because of the
 # linking problems described in ../Makefile.am
