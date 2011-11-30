@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2011-11-26 18:48-0500\n"
-"PO-Revision-Date: 2011-11-25 10:47+0100\n"
+"POT-Creation-Date: 2011-11-30 12:59+0100\n"
+"PO-Revision-Date: 2011-11-30 13:02+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -491,8 +491,8 @@ msgid "Remove the selected branch"
 msgstr "Zmazať vybranú vetvu"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3745
-#: src/Buffer.cpp:3758
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3761
+#: src/Buffer.cpp:3774
 msgid "&Remove"
 msgstr "&Odstrániť"
 
@@ -525,8 +525,8 @@ msgstr "Pridaj Všetko"
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:205
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
-#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1089
-#: src/Buffer.cpp:2334 src/Buffer.cpp:3720 src/Buffer.cpp:3783
+#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1095
+#: src/Buffer.cpp:2350 src/Buffer.cpp:3736 src/Buffer.cpp:3799
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:179
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1829
@@ -1762,8 +1762,8 @@ msgstr "&Vzor výplne:"
 msgid "&Protect:"
 msgstr "Ch&rániť:"
 
-#: src/frontends/qt4/ui/HSpaceUi.ui:133 src/frontends/qt4/GuiHSpace.cpp:207
-#: src/frontends/qt4/GuiHSpace.cpp:213
+#: src/frontends/qt4/ui/HSpaceUi.ui:133 src/frontends/qt4/GuiHSpace.cpp:208
+#: src/frontends/qt4/GuiHSpace.cpp:214
 msgid "Insert the spacing even after a line break"
 msgstr "Vložiť rozstup i za zalomením riadku"
 
@@ -5354,7 +5354,7 @@ msgstr "Axióma"
 msgid "Case"
 msgstr "Prípad"
 
-#: lib/layouts/AEA.layout:130
+#: lib/layouts/AEA.layout:130 lib/layouts/theorems-without-preamble.inc:341
 msgid "Case \\thecase."
 msgstr "Prípad \\thecase."
 
@@ -5617,6 +5617,7 @@ msgstr "Pripomienka"
 
 #: lib/layouts/AEA.layout:234 lib/layouts/ijmpd.layout:314
 #: lib/layouts/theorems-ams-bytype.inc:266 lib/layouts/theorems-bytype.inc:242
+#: lib/layouts/theorems-without-preamble.inc:311
 msgid "Remark \\theremark."
 msgstr "Pripomienka \\theremark."
 
@@ -8462,22 +8463,26 @@ msgstr "SerifováListina"
 
 #: lib/layouts/ijmpc.layout:317 lib/layouts/ijmpd.layout:342
 #: lib/layouts/theorems-ams-bytype.inc:68 lib/layouts/theorems-ams.inc:42
-#: lib/layouts/theorems-bytype.inc:44 lib/layouts/theorems.inc:42
+#: lib/layouts/theorems-bytype.inc:44
+#: lib/layouts/theorems-without-preamble.inc:52 lib/layouts/theorems.inc:42
 msgid "Theorem \\thetheorem."
 msgstr "Teoréma \\thetheorem."
 
 #: lib/layouts/ijmpc.layout:351 lib/layouts/ijmpd.layout:375
 #: lib/layouts/theorems-ams-bytype.inc:94 lib/layouts/theorems-bytype.inc:70
+#: lib/layouts/theorems-without-preamble.inc:76
 msgid "Corollary \\thecorollary."
 msgstr "Korolár \\thecorollary."
 
 #: lib/layouts/ijmpc.layout:360 lib/layouts/ijmpd.layout:384
 #: lib/layouts/theorems-ams-bytype.inc:112 lib/layouts/theorems-bytype.inc:88
+#: lib/layouts/theorems-without-preamble.inc:92
 msgid "Lemma \\thelemma."
 msgstr "Lemma \\thelemma."
 
 #: lib/layouts/ijmpc.layout:369 lib/layouts/ijmpd.layout:393
 #: lib/layouts/theorems-ams-bytype.inc:130 lib/layouts/theorems-bytype.inc:106
+#: lib/layouts/theorems-without-preamble.inc:108
 msgid "Proposition \\theproposition."
 msgstr "Tvrdenie \\theproposition."
 
@@ -8504,6 +8509,7 @@ msgid "Question"
 msgstr "Otázka"
 
 #: lib/layouts/ijmpc.layout:387 lib/layouts/ijmpd.layout:411
+#: lib/layouts/theorems-without-preamble.inc:375
 msgid "Question \\thequestion."
 msgstr "Otázka \\thequestion."
 
@@ -8514,6 +8520,7 @@ msgstr "Nárok \\theclaim."
 
 #: lib/layouts/ijmpc.layout:405 lib/layouts/ijmpd.layout:429
 #: lib/layouts/theorems-ams-bytype.inc:148 lib/layouts/theorems-bytype.inc:124
+#: lib/layouts/theorems-without-preamble.inc:140
 msgid "Conjecture \\theconjecture."
 msgstr "Hypotéza \\theconjecture."
 
@@ -10147,18 +10154,22 @@ msgid "Fact \\thefact."
 msgstr "Fakt \\thefact."
 
 #: lib/layouts/theorems-ams-bytype.inc:184 lib/layouts/theorems-bytype.inc:160
+#: lib/layouts/theorems-without-preamble.inc:179
 msgid "Definition \\thedefinition."
 msgstr "Definícia \\thedefinition."
 
 #: lib/layouts/theorems-ams-bytype.inc:209 lib/layouts/theorems-bytype.inc:185
+#: lib/layouts/theorems-without-preamble.inc:203
 msgid "Example \\theexample."
 msgstr "Príklad \\theexample."
 
 #: lib/layouts/theorems-ams-bytype.inc:228 lib/layouts/theorems-bytype.inc:204
+#: lib/layouts/theorems-without-preamble.inc:221
 msgid "Problem \\theproblem."
 msgstr "Problém \\theproblem."
 
 #: lib/layouts/theorems-ams-bytype.inc:247 lib/layouts/theorems-bytype.inc:223
+#: lib/layouts/theorems-without-preamble.inc:294
 msgid "Exercise \\theexercise."
 msgstr "Úloha \\theexercise."
 
@@ -10246,38 +10257,6 @@ msgstr "Úloha."
 msgid "Remark."
 msgstr "Pripomienka."
 
-#: lib/layouts/theorems-without-preamble.inc:52
-msgid "Theorem \\thetheorem"
-msgstr "Teoréma \\thetheorem"
-
-#: lib/layouts/theorems-without-preamble.inc:76
-msgid "Corollary \\thecorollary"
-msgstr "Korolár \\thecorollary"
-
-#: lib/layouts/theorems-without-preamble.inc:92
-msgid "Lemma \\thelemma"
-msgstr "Lemma \\thelemma"
-
-#: lib/layouts/theorems-without-preamble.inc:108
-msgid "Proposition \\theproposition"
-msgstr "Tvrdenie \\theproposition"
-
-#: lib/layouts/theorems-without-preamble.inc:140
-msgid "Conjecture \\theconjecture"
-msgstr "Hypotéza \\theconjecture"
-
-#: lib/layouts/theorems-without-preamble.inc:179
-msgid "Definition \\thedefinition"
-msgstr "Definícia \\thedefinition"
-
-#: lib/layouts/theorems-without-preamble.inc:203
-msgid "Example \\theexample"
-msgstr "Príklad \\theexample"
-
-#: lib/layouts/theorems-without-preamble.inc:221
-msgid "Problem \\theproblem"
-msgstr "Problém \\theproblem"
-
 #: lib/layouts/theorems-without-preamble.inc:236
 msgid "Prob"
 msgstr "Problém"
@@ -10294,29 +10273,14 @@ msgstr "Riešenie"
 msgid "# [number of Prob]"
 msgstr "# [číslo problému(Prob)]"
 
-#: lib/layouts/theorems-without-preamble.inc:294
-msgid "Exercise \\theexercise"
-msgstr "Úloha \\theexercise"
-
-#: lib/layouts/theorems-without-preamble.inc:311
-msgid "Remark \\theremark"
-msgstr "Pripomienka \\theremark"
-
-#: lib/layouts/theorems-without-preamble.inc:341
-msgid "Case \\thecase"
-msgstr "Prípad \\thecase"
-
 #: lib/layouts/theorems-without-preamble.inc:358
-msgid "Property \\theproperty"
-msgstr "Vlastnosť \\theproperty"
-
-#: lib/layouts/theorems-without-preamble.inc:375
-msgid "Question \\thequestion"
-msgstr "Otázka \\thequestion"
+msgid "Property \\theproperty."
+msgstr "Vlastnosť \\theproperty."
 
 #: lib/layouts/theorems-without-preamble.inc:392
-msgid "Note \\thenote"
-msgstr "Poznámka \\thenote"
+#: lib/layouts/theorems-ams-extended-bytype.module:202
+msgid "Note \\thenote."
+msgstr "Poznámka \\thenote."
 
 #: lib/layouts/braille.module:2
 msgid "Braille"
@@ -10862,10 +10826,6 @@ msgstr "Podmienka*"
 #: lib/layouts/theorems-ams-extended.module:160
 msgid "Condition."
 msgstr "Podmienka."
-
-#: lib/layouts/theorems-ams-extended-bytype.module:202
-msgid "Note \\thenote."
-msgstr "Poznámka \\thenote."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:217
 #: lib/layouts/theorems-ams-extended.module:191
@@ -16707,65 +16667,65 @@ msgstr ""
 msgid "Print document failed"
 msgstr "Tlač dokumentu zlyhala"
 
-#: src/Buffer.cpp:324
+#: src/Buffer.cpp:328
 msgid "Disk Error: "
 msgstr "Chyba Disku: "
 
-#: src/Buffer.cpp:325
+#: src/Buffer.cpp:329
 #, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr "LyX nemohol vytvoriť pomocný adresár '%1$s' (možné že je plný disk?)"
 
-#: src/Buffer.cpp:422
+#: src/Buffer.cpp:428
 msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr "LyX sa pokúsil zavrieť document s neuloženými zmenami!\n"
 
-#: src/Buffer.cpp:424
+#: src/Buffer.cpp:430
 msgid "Attempting to close changed document!"
 msgstr "Pokúšam sa zavrieť zmenený dokument!"
 
-#: src/Buffer.cpp:433
+#: src/Buffer.cpp:439
 msgid "Could not remove temporary directory"
 msgstr "Pomocný adresár sa nedal zmazať"
 
-#: src/Buffer.cpp:434
+#: src/Buffer.cpp:440
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Pomocný adresár %1$s sa nedal zmazať"
 
-#: src/Buffer.cpp:773
+#: src/Buffer.cpp:779
 msgid "Unknown document class"
 msgstr "Neznáma trieda dokumentu"
 
-#: src/Buffer.cpp:774
+#: src/Buffer.cpp:780
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "Použitá štandardná trieda dokumentu, lebo trieda %1$s je neznáma."
 
-#: src/Buffer.cpp:778 src/Text.cpp:484
+#: src/Buffer.cpp:784 src/Text.cpp:484
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Neznámy token: %1$s %2$s\n"
 
-#: src/Buffer.cpp:782 src/Buffer.cpp:789 src/Buffer.cpp:812
+#: src/Buffer.cpp:788 src/Buffer.cpp:795 src/Buffer.cpp:818
 msgid "Document header error"
 msgstr "Chyba v hlavičke dokumentu"
 
-#: src/Buffer.cpp:788
+#: src/Buffer.cpp:794
 msgid "\\begin_header is missing"
 msgstr "chýba \\begin_header"
 
-#: src/Buffer.cpp:811
+#: src/Buffer.cpp:817
 msgid "\\begin_document is missing"
 msgstr "chýba \\begin_document"
 
-#: src/Buffer.cpp:824 src/Buffer.cpp:830 src/BufferView.cpp:1428
+#: src/Buffer.cpp:830 src/Buffer.cpp:836 src/BufferView.cpp:1428
 #: src/BufferView.cpp:1434
 msgid "Changes not shown in LaTeX output"
 msgstr "Zmeny nezobrazené v LaTeX-ovom výstupu"
 
-#: src/Buffer.cpp:825 src/BufferView.cpp:1429
+#: src/Buffer.cpp:831 src/BufferView.cpp:1429
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -16777,7 +16737,7 @@ msgstr ""
 "Prosím nainštalujte tieto balíky alebo predefinujte \\lyxadded a "
 "\\lyxdeleted v LaTeX-ovej preambuly."
 
-#: src/Buffer.cpp:831 src/BufferView.cpp:1435
+#: src/Buffer.cpp:837 src/BufferView.cpp:1435
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -16789,31 +16749,31 @@ msgstr ""
 "Prosím nainštalujte oba balíky alebo predefinujte \\lyxadded a \\lyxdeleted "
 "v LaTeX-ovej preambuly."
 
-#: src/Buffer.cpp:869 src/BufferParams.cpp:414
+#: src/Buffer.cpp:875 src/BufferParams.cpp:414
 #: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:446
 #: src/insets/InsetIndex.cpp:710
 msgid "Index"
 msgstr "Index"
 
-#: src/Buffer.cpp:942 src/Buffer.cpp:986
+#: src/Buffer.cpp:948 src/Buffer.cpp:992
 msgid "Document format failure"
 msgstr "Chybný formát dokumentu"
 
-#: src/Buffer.cpp:943
+#: src/Buffer.cpp:949
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s skončil neočakávane, čo znamená, že je pravdepodobne poškodený."
 
-#: src/Buffer.cpp:987
+#: src/Buffer.cpp:993
 #, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "%1$s nie je čitateľný dokument LyXu."
 
-#: src/Buffer.cpp:1012
+#: src/Buffer.cpp:1018
 msgid "Conversion failed"
 msgstr "Konverzia zlyhala"
 
-#: src/Buffer.cpp:1013
+#: src/Buffer.cpp:1019
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -16822,22 +16782,22 @@ msgstr ""
 "%1$s je z inej verzie LyX-u, ale pomocný súbor pre jeho konverziu sa nedal "
 "vytvoriť."
 
-#: src/Buffer.cpp:1023
+#: src/Buffer.cpp:1029
 msgid "Conversion script not found"
 msgstr "Skript na konverziu nenájdený"
 
-#: src/Buffer.cpp:1024
+#: src/Buffer.cpp:1030
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr "%1$s je z inej verzie LyX-u, ale konverzný skript lyx2lyx nenájdený."
 
-#: src/Buffer.cpp:1047 src/Buffer.cpp:1054
+#: src/Buffer.cpp:1053 src/Buffer.cpp:1060
 msgid "Conversion script failed"
 msgstr "Konverzný skript zlyhal"
 
-#: src/Buffer.cpp:1048
+#: src/Buffer.cpp:1054
 #, c-format
 msgid ""
 "%1$s is from an older version of LyX and the lyx2lyx script failed to "
@@ -16845,44 +16805,44 @@ msgid ""
 msgstr ""
 "%1$s je zo staršej verzie LyX-u, a skript lyx2lyx zlyhal pri konverzii."
 
-#: src/Buffer.cpp:1055
+#: src/Buffer.cpp:1061
 #, c-format
 msgid ""
 "%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
 "it."
 msgstr "%1$s je z novšej verzie LyX-u, a skript lyx2lyx zlyhal pri konverzii."
 
-#: src/Buffer.cpp:1076 src/Buffer.cpp:3730 src/Buffer.cpp:3792
+#: src/Buffer.cpp:1082 src/Buffer.cpp:3746 src/Buffer.cpp:3808
 msgid "File is read-only"
 msgstr "Dokument je iba na čítanie"
 
-#: src/Buffer.cpp:1077
+#: src/Buffer.cpp:1083
 #, c-format
 msgid "The file %1$s cannot be written because it is marked as read-only."
 msgstr "Súbor %1$s je neuložiteĺný lebo je označený ako len na čítanie."
 
-#: src/Buffer.cpp:1086
+#: src/Buffer.cpp:1092
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
 "overwrite this file?"
 msgstr "Dokument %1$s bol externe modifikovaný. Naozaj ho chcete prepísať?"
 
-#: src/Buffer.cpp:1088
+#: src/Buffer.cpp:1094
 msgid "Overwrite modified file?"
 msgstr "Prepísať modifikovaný súbor?"
 
-#: src/Buffer.cpp:1089 src/Buffer.cpp:2334 src/Exporter.cpp:50
+#: src/Buffer.cpp:1095 src/Buffer.cpp:2350 src/Exporter.cpp:50
 #: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2114
 #: src/frontends/qt4/GuiView.cpp:2303
 msgid "&Overwrite"
 msgstr "Prepísať"
 
-#: src/Buffer.cpp:1118
+#: src/Buffer.cpp:1124
 msgid "Backup failure"
 msgstr "Založenie zlyhalo"
 
-#: src/Buffer.cpp:1119
+#: src/Buffer.cpp:1125
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -16891,46 +16851,46 @@ msgstr ""
 "LyX nemohol vytvoriť záložnú kópiu v %1$s.\n"
 "Skontrolujte, či daný adresár existuje a je možné do neho zapisovať."
 
-#: src/Buffer.cpp:1145
+#: src/Buffer.cpp:1151
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Ukladám dokument %1$s..."
 
-#: src/Buffer.cpp:1160
+#: src/Buffer.cpp:1166
 msgid " could not write file!"
 msgstr "Nemôžem písať do súbora!"
 
-#: src/Buffer.cpp:1168
+#: src/Buffer.cpp:1174
 msgid " done."
 msgstr " hotové."
 
-#: src/Buffer.cpp:1183
+#: src/Buffer.cpp:1189
 #, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Pokúšam sa uložiť dokument %1$s\n"
 
-#: src/Buffer.cpp:1193 src/Buffer.cpp:1206 src/Buffer.cpp:1220
+#: src/Buffer.cpp:1199 src/Buffer.cpp:1212 src/Buffer.cpp:1226
 #, c-format
 msgid "Saved to %1$s. Phew.\n"
 msgstr "Úspešne uložené do súboru %1$s. Uf.\n"
 
-#: src/Buffer.cpp:1196
+#: src/Buffer.cpp:1202
 msgid "Save failed! Trying again...\n"
 msgstr "Uloženie zlyhalo! Skúšam ešte raz...\n"
 
-#: src/Buffer.cpp:1210
+#: src/Buffer.cpp:1216
 msgid "Save failed! Trying yet again...\n"
 msgstr "Uloženie zlyhalo! Skúšam zatiaľ ešte raz...\n"
 
-#: src/Buffer.cpp:1224
+#: src/Buffer.cpp:1230
 msgid "Save failed! Bummer. Document is lost."
 msgstr "Uloženie zlyhalo! Och. Dokument je stratený."
 
-#: src/Buffer.cpp:1311
+#: src/Buffer.cpp:1317
 msgid "Iconv software exception Detected"
 msgstr "Iconv detekoval softvérovú výnimku"
 
-#: src/Buffer.cpp:1311
+#: src/Buffer.cpp:1317
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
@@ -16939,12 +16899,12 @@ msgstr ""
 "Skontrolujte prosím či softvér pre podporu vášho kódovania (%1$s) je správne "
 "inštalovaná."
 
-#: src/Buffer.cpp:1334
+#: src/Buffer.cpp:1340
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr "Nedá sa nájsť LaTeXov príkaz pre znak '%1$s' (hodnota %2$s)"
 
-#: src/Buffer.cpp:1337
+#: src/Buffer.cpp:1343
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -16954,19 +16914,19 @@ msgstr ""
 "zvolenom kódovaní.\n"
 "Pomôcť by mohla zmena kódovania dokumentu na utf8."
 
-#: src/Buffer.cpp:1344
+#: src/Buffer.cpp:1350
 msgid "iconv conversion failed"
 msgstr "iconv konverzia zlyhala"
 
-#: src/Buffer.cpp:1349
+#: src/Buffer.cpp:1355
 msgid "conversion failed"
 msgstr "Konverzia zlyhala"
 
-#: src/Buffer.cpp:1444
+#: src/Buffer.cpp:1450
 msgid "Uncodable character in file path"
 msgstr "Nekódovateľný znak v ceste"
 
-#: src/Buffer.cpp:1446
+#: src/Buffer.cpp:1452
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -16990,53 +16950,53 @@ msgstr ""
 "V prípade problémov vyberte vhodné kódovanie dokumentu\n"
 "(ako napr. utf8) alebo zmeňte meno cesty."
 
-#: src/Buffer.cpp:1744
+#: src/Buffer.cpp:1750
 msgid "Running chktex..."
 msgstr "Spúšťam chktex..."
 
-#: src/Buffer.cpp:1758
+#: src/Buffer.cpp:1764
 msgid "chktex failure"
 msgstr "chktex zlyhal"
 
-#: src/Buffer.cpp:1759
+#: src/Buffer.cpp:1765
 msgid "Could not run chktex successfully."
 msgstr "Nemôžem spustiť chktex úspešne."
 
-#: src/Buffer.cpp:2003
+#: src/Buffer.cpp:2019
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Žiadne informácie pre export formátu: %1$s"
 
-#: src/Buffer.cpp:2075 src/frontends/qt4/GuiView.cpp:3143
+#: src/Buffer.cpp:2091 src/frontends/qt4/GuiView.cpp:3143
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Chyba pri exporte na formát: %1$s."
 
-#: src/Buffer.cpp:2158
+#: src/Buffer.cpp:2174
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "Vetva \"%1$s\" už existuje."
 
-#: src/Buffer.cpp:2188
+#: src/Buffer.cpp:2204
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "Vetva \"%1$s\" neexistuje."
 
-#: src/Buffer.cpp:2248
+#: src/Buffer.cpp:2264
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Nemôžem analyzovať  \"%1$s\""
 
-#: src/Buffer.cpp:2255
+#: src/Buffer.cpp:2271
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Neznámy cieľ \"%1$s\""
 
-#: src/Buffer.cpp:2265
+#: src/Buffer.cpp:2281
 msgid "Error exporting to DVI."
 msgstr "Chyba pri exporte na DVI"
 
-#: src/Buffer.cpp:2330 src/Exporter.cpp:45
+#: src/Buffer.cpp:2346 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -17047,73 +17007,73 @@ msgstr ""
 "\n"
 "Chcete tento súbor prepísať?"
 
-#: src/Buffer.cpp:2333 src/Exporter.cpp:48
+#: src/Buffer.cpp:2349 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Prepísať súbor?"
 
-#: src/Buffer.cpp:2350
+#: src/Buffer.cpp:2366
 msgid "Error running external commands."
 msgstr "Chyba pri spúšťaní externých príkazov."
 
-#: src/Buffer.cpp:3143
+#: src/Buffer.cpp:3159
 msgid "Preview source code"
 msgstr "Náhľad na zdrojový text"
 
-#: src/Buffer.cpp:3161
+#: src/Buffer.cpp:3177
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Náhľad na zdrojový text odstavca %1$d"
 
-#: src/Buffer.cpp:3165
+#: src/Buffer.cpp:3181
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Náhľad zdrojového kódu pre odstavce %1$s - %2$s"
 
-#: src/Buffer.cpp:3284
+#: src/Buffer.cpp:3300
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatické ukladanie %1$s"
 
-#: src/Buffer.cpp:3338
+#: src/Buffer.cpp:3354
 msgid "Autosave failed!"
 msgstr "Automatické ukladanie sa nepodarilo!"
 
-#: src/Buffer.cpp:3399
+#: src/Buffer.cpp:3415
 msgid "Autosaving current document..."
 msgstr "Automatické ukladanie súčasného dokumentu..."
 
-#: src/Buffer.cpp:3489
+#: src/Buffer.cpp:3505
 msgid "Couldn't export file"
 msgstr "Nemôžem exportovať súbor"
 
-#: src/Buffer.cpp:3490
+#: src/Buffer.cpp:3506
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Žiadne informácie pre export formátu %1$s"
 
-#: src/Buffer.cpp:3561
+#: src/Buffer.cpp:3577
 msgid "File name error"
 msgstr "Chyba v názve súboru"
 
-#: src/Buffer.cpp:3562
+#: src/Buffer.cpp:3578
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Cesta k dokumentu nesmie obsahovať medzery."
 
-#: src/Buffer.cpp:3647
+#: src/Buffer.cpp:3663
 msgid "Document export cancelled."
 msgstr "Exportovanie dokumentu bolo zrušené."
 
-#: src/Buffer.cpp:3657
+#: src/Buffer.cpp:3673
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument exportovaný ako %1$s do súboru `%2$s'"
 
-#: src/Buffer.cpp:3663
+#: src/Buffer.cpp:3679
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument exportovaný ako %1$s"
 
-#: src/Buffer.cpp:3716
+#: src/Buffer.cpp:3732
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17124,19 +17084,19 @@ msgstr ""
 "\n"
 "Získať núdzovú kópiu späť?"
 
-#: src/Buffer.cpp:3719
+#: src/Buffer.cpp:3735
 msgid "Load emergency save?"
 msgstr "Nahrať núdzovú kópiu ?"
 
-#: src/Buffer.cpp:3720
+#: src/Buffer.cpp:3736
 msgid "&Recover"
 msgstr "Získať späť"
 
-#: src/Buffer.cpp:3720
+#: src/Buffer.cpp:3736
 msgid "&Load Original"
 msgstr "Nahrať Originál"
 
-#: src/Buffer.cpp:3731
+#: src/Buffer.cpp:3747
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -17145,15 +17105,15 @@ msgstr ""
 "Bezpečnostný súbor úspešne načítaný, ale originálny súbor %1$s je označený "
 "len na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
 
-#: src/Buffer.cpp:3737
+#: src/Buffer.cpp:3753
 msgid "Document was successfully recovered."
 msgstr "Dokument bol úspešne obnovený."
 
-#: src/Buffer.cpp:3739
+#: src/Buffer.cpp:3755
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument nebol úspešne obnovený."
 
-#: src/Buffer.cpp:3740
+#: src/Buffer.cpp:3756
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17162,27 +17122,27 @@ msgstr ""
 "Zmazať núdzovú kópiu teraz?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3744 src/Buffer.cpp:3756
+#: src/Buffer.cpp:3760 src/Buffer.cpp:3772
 msgid "Delete emergency file?"
 msgstr "Zmazať núdzový súbor?"
 
-#: src/Buffer.cpp:3745 src/Buffer.cpp:3758
+#: src/Buffer.cpp:3761 src/Buffer.cpp:3774
 msgid "&Keep"
 msgstr "Držať"
 
-#: src/Buffer.cpp:3749
+#: src/Buffer.cpp:3765
 msgid "Emergency file deleted"
 msgstr "Núdzový súbor vymazaný"
 
-#: src/Buffer.cpp:3750
+#: src/Buffer.cpp:3766
 msgid "Do not forget to save your file now!"
 msgstr "Teraz nezabudnite uložiť váš súbor!"
 
-#: src/Buffer.cpp:3757
+#: src/Buffer.cpp:3773
 msgid "Remove emergency file now?"
 msgstr "Zmazať núdzovú kópiu teraz?"
 
-#: src/Buffer.cpp:3780
+#: src/Buffer.cpp:3796
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17193,19 +17153,19 @@ msgstr ""
 "\n"
 "Nahrať radšej zálohu ?"
 
-#: src/Buffer.cpp:3782
+#: src/Buffer.cpp:3798
 msgid "Load backup?"
 msgstr "Nahrať zálohu?"
 
-#: src/Buffer.cpp:3783
+#: src/Buffer.cpp:3799
 msgid "&Load backup"
 msgstr "Nahrať zálohu"
 
-#: src/Buffer.cpp:3783
+#: src/Buffer.cpp:3799
 msgid "Load &original"
 msgstr "Nahrať Originál"
 
-#: src/Buffer.cpp:3793
+#: src/Buffer.cpp:3809
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17214,25 +17174,25 @@ msgstr ""
 "Zálohový súbor úspešne načítaný, ale originálny súbor %1$s je označený len "
 "na čítanie. Zaistite prosím uloženie dokumentu ako iný súbor."
 
-#: src/Buffer.cpp:4132 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4149 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Nezmyselné!!! "
 
-#: src/Buffer.cpp:4253
+#: src/Buffer.cpp:4270
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s znovu nahraný."
 
-#: src/Buffer.cpp:4256
+#: src/Buffer.cpp:4273
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Nedá sa znova nahrať dokument %1$s."
 
-#: src/Buffer.cpp:4322
+#: src/Buffer.cpp:4339
 msgid "Included File Invalid"
 msgstr "Zahrnutý Súbor je Neplatný"
 
-#: src/Buffer.cpp:4323
+#: src/Buffer.cpp:4340
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -18464,7 +18424,7 @@ msgstr ""
 "\t-version  zhrnúť  verziu a prekladnú informáciu.\n"
 "Viac informácií nájdete v manuálovej stránke LyXu."
 
-#: src/LyX.cpp:1099
+#: src/LyX.cpp:1099 src/support/Package.cpp:563
 msgid "No system directory"
 msgstr "Nemám systémový adresár"
 
@@ -21082,7 +21042,7 @@ msgstr "Medzislovná medzera"
 msgid "Horizontal Fill"
 msgstr "Horizontálne zarovnanie"
 
-#: src/frontends/qt4/GuiHSpace.cpp:209
+#: src/frontends/qt4/GuiHSpace.cpp:210
 msgid ""
 "Insert the spacing even after a line break.\n"
 "Note that a protected Half Quad will be turned into\n"
@@ -22824,15 +22784,15 @@ msgstr "Undef: "
 msgid "Sub-%1$s"
 msgstr "Sub-%1$s"
 
-#: src/insets/InsetCitation.cpp:111
+#: src/insets/InsetCitation.cpp:121
 msgid "No bibliography defined!"
 msgstr "Žiadna bibliografia nie je definovaná!"
 
-#: src/insets/InsetCitation.cpp:115
+#: src/insets/InsetCitation.cpp:125
 msgid "No citations selected!"
 msgstr "Žiadna citácia nie je vybraná!"
 
-#: src/insets/InsetCitation.cpp:286
+#: src/insets/InsetCitation.cpp:296
 msgid "not cited"
 msgstr "necitované"
 
@@ -23809,6 +23769,66 @@ msgstr "Súhrn: "
 msgid "References: "
 msgstr "Referencie: "
 
+#: src/support/Package.cpp:444
+msgid "LyX binary not found"
+msgstr "Spustiteľný súbor LyX nebol nájdený!"
+
+#: src/support/Package.cpp:445
+#, c-format
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1$s"
+msgstr ""
+"Nepodarilo sa určiť cestu k spustiteľnému súboru LyX z príkazového riadku "
+"%1$s"
+
+#: src/support/Package.cpp:564
+#, c-format
+msgid ""
+"Unable to determine the system directory having searched\n"
+"\t%1$s\n"
+"Use the '-sysdir' command line parameter or set the environment variable\n"
+"%2$s to the LyX system directory containing the file `chkconfig.ltx'."
+msgstr ""
+"Nepodarilo sa určiť systémový adresár pri prehľadávaní\n"
+"\t%1$s\n"
+"Použite voľbu '-sysdir' alebo nastavte premennú\n"
+"%2$s na cestu adresára obsahujúceho súbor `chkconfig.ltx'."
+
+#: src/support/Package.cpp:645 src/support/Package.cpp:672
+msgid "File not found"
+msgstr "Súbor nenájdený"
+
+#: src/support/Package.cpp:646
+#, c-format
+msgid ""
+"Invalid %1$s switch.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+"Neplatný %1$s prepínač.\n"
+"Adresár %2$s neobsahuje %3$s."
+
+#: src/support/Package.cpp:673
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+"Neplatná %1$s premenná.\n"
+"Adresár %2$s neobsahuje %3$s."
+
+#: src/support/Package.cpp:697
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"%2$s is not a directory."
+msgstr ""
+"Neplatná premenná %1$s.\n"
+"%2$s nie je adresár."
+
+#: src/support/Package.cpp:699
+msgid "Directory not found"
+msgstr "Adresár nenájdený"
+
 #: src/support/debug.cpp:41
 msgid "No debugging messages"
 msgstr "Bez ladiaceho hlásenia"
@@ -23982,52 +24002,44 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
-#~ msgid "LyX binary not found"
-#~ msgstr "Spustiteľný súbor LyX nebol nájdený!"
+#~ msgid "Theorem \\thetheorem"
+#~ msgstr "Teoréma \\thetheorem"
 
-#~ msgid ""
-#~ "Unable to determine the path to the LyX binary from the command line %1$s"
-#~ msgstr ""
-#~ "Nepodarilo sa určiť cestu k spustiteľnému súboru LyX z príkazového riadku "
-#~ "%1$s"
+#~ msgid "Corollary \\thecorollary"
+#~ msgstr "Korolár \\thecorollary"
 
-#~ msgid ""
-#~ "Unable to determine the system directory having searched\n"
-#~ "\t%1$s\n"
-#~ "Use the '-sysdir' command line parameter or set the environment variable\n"
-#~ "%2$s to the LyX system directory containing the file `chkconfig.ltx'."
-#~ msgstr ""
-#~ "Nepodarilo sa určiť systémový adresár pri prehľadávaní\n"
-#~ "\t%1$s\n"
-#~ "Použite voľbu '-sysdir' alebo nastavte premennú\n"
-#~ "%2$s na cestu adresára obsahujúceho súbor `chkconfig.ltx'."
+#~ msgid "Lemma \\thelemma"
+#~ msgstr "Lemma \\thelemma"
 
-#~ msgid "File not found"
-#~ msgstr "Súbor nenájdený"
+#~ msgid "Proposition \\theproposition"
+#~ msgstr "Tvrdenie \\theproposition"
 
-#~ msgid ""
-#~ "Invalid %1$s switch.\n"
-#~ "Directory %2$s does not contain %3$s."
-#~ msgstr ""
-#~ "Neplatný %1$s prepínač.\n"
-#~ "Adresár %2$s neobsahuje %3$s."
+#~ msgid "Conjecture \\theconjecture"
+#~ msgstr "Hypotéza \\theconjecture"
 
-#~ msgid ""
-#~ "Invalid %1$s environment variable.\n"
-#~ "Directory %2$s does not contain %3$s."
-#~ msgstr ""
-#~ "Neplatná %1$s premenná.\n"
-#~ "Adresár %2$s neobsahuje %3$s."
+#~ msgid "Definition \\thedefinition"
+#~ msgstr "Definícia \\thedefinition"
 
-#~ msgid ""
-#~ "Invalid %1$s environment variable.\n"
-#~ "%2$s is not a directory."
-#~ msgstr ""
-#~ "Neplatná premenná %1$s.\n"
-#~ "%2$s nie je adresár."
+#~ msgid "Example \\theexample"
+#~ msgstr "Príklad \\theexample"
 
-#~ msgid "Directory not found"
-#~ msgstr "Adresár nenájdený"
+#~ msgid "Problem \\theproblem"
+#~ msgstr "Problém \\theproblem"
+
+#~ msgid "Exercise \\theexercise"
+#~ msgstr "Úloha \\theexercise"
+
+#~ msgid "Remark \\theremark"
+#~ msgstr "Pripomienka \\theremark"
+
+#~ msgid "Case \\thecase"
+#~ msgstr "Prípad \\thecase"
+
+#~ msgid "Question \\thequestion"
+#~ msgstr "Otázka \\thequestion"
+
+#~ msgid "Note \\thenote"
+#~ msgstr "Poznámka \\thenote"
 
 #~ msgid "&New:"
 #~ msgstr "&Nové:"
