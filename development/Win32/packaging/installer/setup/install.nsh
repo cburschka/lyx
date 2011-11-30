@@ -42,6 +42,10 @@ Section -ProgramFiles SecProgramFiles
   # recursively copy all files under Resources
   File /r "${FILES_LYX}\Resources"
   
+  SetOutPath "$INSTDIR\Resources"
+  File /r "${FILES_DICT_THES}\dicts"
+  File /r "${FILES_DICT_THES}\thes"
+  
   # Python
   SetOutPath "$INSTDIR"
   # recursively copy all files under Python

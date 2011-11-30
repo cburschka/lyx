@@ -38,6 +38,7 @@ These typically need to be modified for each LyX release
 !define FILES_DEPS "C:\LyX\lyx-20-build\msvc2010-deps\deps20"
 !define FILES_BUNDLE "C:\LyX\depsbundle"
 !define FILES_QT "C:\Qt\qt-everywhere-opensource-src-4.7.4"
+!define FILES_DICT_THES "C:\LyX\dictionaries"
 
 #--------------------------------
 # MiKTeX
