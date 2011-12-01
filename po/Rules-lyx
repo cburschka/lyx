@@ -12,7 +12,6 @@ ${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
 	rm -f $@-t \
 	&& ( cd $(top_srcdir); \
 	     grep -l "_(\".*\")" `find src \( -name '*.h' -o -name '*.cpp' -o -name '*.cpp.in' \) -print` |\
-	     grep -v -e "src/support/Package.cpp$$" |\
 	     sort | uniq ) > $@-t \
 	&& mv $@-t $@
 
