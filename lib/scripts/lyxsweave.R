@@ -14,6 +14,7 @@
 # argument 4 is the original document directory
 
 .cmdargs <- commandArgs(trailingOnly=TRUE)
+.doc.enc <- .cmdargs[3]
 
 # check whether Sweave.sty is seen by LaTeX. if it is not, we will
 # copy it alongside the .tex file (in general in the temporary
@@ -26,10 +27,6 @@ if (!length(system("kpsewhich Sweave.sty", intern=TRUE, ignore.stderr=TRUE))) {
     dirname(.cmdargs[2]), overwrite=TRUE)
 }
 
-# set default encoding for input and output files; .orig.enc is used in
-# the sweave module preamble to reset the encoding to what it was.
-.orig.enc <- getOption("encoding")
-options(encoding=.cmdargs[3])
 
 # Change current directory to the document directory, so that R can find 
 # data files.
@@ -43,14 +40,28 @@ tmpout <- gsub(".", "-", sub("\\.tex$", "", basename(.cmdargs[2])), fixed = TRUE
 rm(tmpout)
 
 # finally run sweave
-Sweave(file=.cmdargs[1], output=.cmdargs[2], syntax="SweaveSyntaxNoweb", prefix.string=.prefix.str)
+
+# The Sweave version provided with R >= 0.13.1 has proper handling for
+# encodings and our workaround for previous versions does not work
+# anymore. Therefore, the invocation has to be different.
+if (is.null(formals(Sweave)$encoding)) {
+  # set default encoding for input and output files; .orig.enc is used in
+  # the sweave module preamble to reset the encoding to what it was.
+  .orig.enc <- getOption("encoding")
+  options(encoding=.doc.enc)
+  Sweave(file=.cmdargs[1], output=.cmdargs[2], syntax="SweaveSyntaxNoweb", 
+         prefix.string=.prefix.str)
+} else {
+  Sweave(file=.cmdargs[1], output=.cmdargs[2], syntax="SweaveSyntaxNoweb", 
+         prefix.string=.prefix.str, encoding=.doc.enc)
+}
 
 # remove absolute path from \includegraphics
-options(encoding=.cmdargs[3])  # encoding has been changed in the preamble chunk
-ls.doc = readLines(.cmdargs[2])
-ls.cmd = paste('\\includegraphics{', dirname(.cmdargs[2]), "/", sep = "")
-ls.idx = grep(ls.cmd, ls.doc, fixed = TRUE)
+options(encoding=.doc.enc) # encoding may have been changed in the preamble chunk
+ls.doc <- readLines(.cmdargs[2])
+ls.cmd <- paste('\\includegraphics{', dirname(.cmdargs[2]), "/", sep = "")
+ls.idx <- grep(ls.cmd, ls.doc, fixed = TRUE)
 if (length(ls.idx)) {
-   ls.doc[ls.idx] = sub(ls.cmd, "\\includegraphics{", ls.doc[ls.idx], fixed = TRUE)
+   ls.doc[ls.idx] <- sub(ls.cmd, "\\includegraphics{", ls.doc[ls.idx], fixed = TRUE)
    writeLines(ls.doc, .cmdargs[2])
 }
