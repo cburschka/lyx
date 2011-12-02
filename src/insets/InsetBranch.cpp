@@ -126,18 +126,26 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 	case LFUN_BRANCH_ACTIVATE:
 	case LFUN_BRANCH_DEACTIVATE: {
-		// FIXME: I do not like this cast, but have no other idea...
-		Buffer const * buf = buffer().masterBuffer();
-		BranchList const & branchlist = buf->params().branchlist();
-		Branch * our_branch = const_cast<Branch *>(branchlist.find(params_.branch));
-		if (!our_branch) {
+		Buffer * buf = const_cast<Buffer *>(buffer().masterBuffer());
+		// is the branch in our master buffer?
+		bool branch_in_master = (buf != &buffer());
+
+		Branch * our_branch = buf->params().branchlist().find(params_.branch);
+		if (branch_in_master && !our_branch) {
 			// child only?
 			our_branch = buffer().params().branchlist().find(params_.branch);
 			if (!our_branch)
 				break;
+			branch_in_master = false;
 		}
 		bool const activate = (cmd.action() == LFUN_BRANCH_ACTIVATE);
 		if (our_branch->isSelected() != activate) {
+			// FIXME If the branch is in the master document, we cannot
+			// call recordUndo..., becuase the master may be hidden, and
+			// the code presently assumes that hidden documents can never
+			// be dirty. See GuiView::closeBufferAll(), for example.
+			if (!branch_in_master)
+				buffer().undo().recordUndoFullDocument(cur);
 			our_branch->setSelected(activate);
 			cur.forceBufferUpdate();
 		}
