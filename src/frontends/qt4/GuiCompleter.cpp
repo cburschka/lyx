@@ -297,7 +297,7 @@ void GuiCompleter::updateVisibility(Cursor & cur, bool start, bool keep)
 
 	// we moved or popup state is not ok for popup?
 	if ((moved && !keep) || !possiblePopupState)
-		hidePopup(cur);
+		hidePopup();
 
 	// we moved or inline state is not ok for inline completion?
 	if ((moved && !keep) || !possibleInlineState)
@@ -530,26 +530,6 @@ void GuiCompleter::showPopup(Cursor const & cur)
 }
 
 
-void GuiCompleter::hidePopup(Cursor &)
-{
-	popupVisible_ = false;
-
-	if (popup_timer_.isActive())
-		popup_timer_.stop();
-
-	// hide popup asynchronously because we might be here inside of
-	// LFUN dispatchers. Hiding a popup can trigger a focus event on the 
-	// workarea which then redisplays the cursor. But the metrics are not
-	// yet up to date such that the coord cache has not all insets yet. The
-	// cursorPos methods would triggers asserts in the coord cache then.
-	QTimer::singleShot(0, this, SLOT(asyncHidePopup()));
-	
-	// mark that the asynchronous part will reset the model
-	if (!inlineVisible())
-		modelActive_ = false;
-}
-
-
 void GuiCompleter::asyncHidePopup()
 {
 	popup()->hide();
@@ -621,14 +601,21 @@ void GuiCompleter::showInline()
 
 void GuiCompleter::hidePopup()
 {
-	Cursor cur = gui_->bufferView().cursor();
-	cur.screenUpdateFlags(Update::None);
+	popupVisible_ = false;
+
+	if (popup_timer_.isActive())
+		popup_timer_.stop();
+
+	// hide popup asynchronously because we might be here inside of
+	// LFUN dispatchers. Hiding a popup can trigger a focus event on the
+	// workarea which then redisplays the cursor. But the metrics are not
+	// yet up to date such that the coord cache has not all insets yet. The
+	// cursorPos methods would triggers asserts in the coord cache then.
+	QTimer::singleShot(0, this, SLOT(asyncHidePopup()));
 	
-	hidePopup(cur);
-	
-	// redraw if needed
-	if (cur.result().screenUpdate())
-		gui_->bufferView().processUpdateFlags(cur.result().screenUpdate());
+	// mark that the asynchronous part will reset the model
+	if (!inlineVisible())
+		modelActive_ = false;
 }
 
 
@@ -695,7 +682,7 @@ void GuiCompleter::tab()
 		cur.inset().insertCompletion(cur, docstring(), true);
 		
 		// hide popup and inline completion
-		hidePopup(cur);
+		hidePopup();
 		hideInline(cur);
 		updateVisibility(false, false);
 		cur.endUndoGroup();
@@ -888,7 +875,7 @@ void GuiCompleter::popupActivated(const QString & completion)
 	docstring prefix = cur.inset().completionPrefix(cur);
 	docstring postfix = qstring_to_ucs4(completion.mid(prefix.length()));
 	cur.inset().insertCompletion(cur, postfix, true);
-	hidePopup(cur);
+	hidePopup();
 	hideInline(cur);
 	
 	if (cur.result().screenUpdate())

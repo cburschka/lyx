@@ -105,8 +105,6 @@ private:
 	///
 	void showInline(Cursor const & cur);
 	///
-	void hidePopup(Cursor & cur);
-	///
 	void hideInline(Cursor const & cur);
 	///
 	void updatePopup(Cursor const & cur);
