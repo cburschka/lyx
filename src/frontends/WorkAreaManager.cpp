@@ -33,7 +33,9 @@ void WorkAreaManager::remove(WorkArea * wa)
 
 void WorkAreaManager::redrawAll(bool update_metrics)
 {
-	for (iterator it = work_areas_.begin(); it != work_areas_.end(); ++it)
+	iterator it = work_areas_.begin();
+	iterator const en = work_areas_.end();
+	for (; it != en; ++it)
 		(*it)->redraw(update_metrics);
 }
 
@@ -48,7 +50,9 @@ void WorkAreaManager::closeAll()
 
 void WorkAreaManager::updateTitles()
 {
-	for (iterator it = work_areas_.begin(); it != work_areas_.end(); ++it)
+	iterator it = work_areas_.begin();
+	iterator const en = work_areas_.end();
+	for (; it != en; ++it)
 		(*it)->updateWindowTitle();
 }
 
