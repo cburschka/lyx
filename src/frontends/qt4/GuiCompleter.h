@@ -61,7 +61,7 @@ public:
 	/// Update the visibility of the popup and the inline completion.
 	/// This method might set the update flags of the cursor to request
 	/// a redraw.
-	void updateVisibility(Cursor & cur, bool start, bool keep, bool cursorInView = true);
+	void updateVisibility(Cursor & cur, bool start, bool keep);
 	/// Update the visibility of the popup and the inline completion.
 	/// This method handles the redraw if needed.
 	void updateVisibility(bool start, bool keep);

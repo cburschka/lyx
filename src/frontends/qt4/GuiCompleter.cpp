@@ -285,15 +285,15 @@ bool GuiCompleter::inlineVisible() const
 }
 
 
-void GuiCompleter::updateVisibility(Cursor & cur, bool start, bool keep, bool cursorInView)
+void GuiCompleter::updateVisibility(Cursor & cur, bool start, bool keep)
 {
 	// parameters which affect the completion
 	bool moved = cur != old_cursor_;
 	if (moved)
 		old_cursor_ = cur;
 
-	bool possiblePopupState = popupPossible(cur) && cursorInView;
-	bool possibleInlineState = inlinePossible(cur) && cursorInView;
+	bool const possiblePopupState = popupPossible(cur);
+	bool const possibleInlineState = inlinePossible(cur);
 
 	// we moved or popup state is not ok for popup?
 	if ((moved && !keep) || !possiblePopupState)
