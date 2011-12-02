@@ -194,7 +194,7 @@ public:
 	void resetInlineCompletionPos();
 	/// set the inline completion postfix and its position in the buffer.
 	/// Updates the updateFlags in \c cur.
-	void setInlineCompletion(Cursor & cur, DocIterator const & pos,
+	void setInlineCompletion(Cursor const & cur, DocIterator const & pos,
 		docstring const & completion, size_t uniqueChars = 0);
 
 	/// translate and insert a character, using the correct keymap.

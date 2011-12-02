@@ -101,21 +101,21 @@ private:
 	///
 	void setCurrentCompletion(QString const & s);
 	///
-	void showPopup(Cursor & cur);
+	void showPopup(Cursor const & cur);
 	///
-	void showInline(Cursor & cur);
+	void showInline(Cursor const & cur);
 	///
 	void hidePopup(Cursor & cur);
 	///
-	void hideInline(Cursor & cur);
+	void hideInline(Cursor const & cur);
 	///
-	void updatePopup(Cursor & cur);
+	void updatePopup(Cursor const & cur);
 	///
-	void updateInline(Cursor & cur, QString const & completion);
+	void updateInline(Cursor const & cur, QString const & completion);
 	///
-	void updatePrefix(Cursor & cur);
+	void updatePrefix(Cursor const & cur);
 	///
-	void updateModel(Cursor & cur, bool popupUpdate, bool inlineUpdate);
+	void updateModel(Cursor const & cur, bool popupUpdate, bool inlineUpdate);
 	///
 	bool eventFilter(QObject * watched, QEvent * event);
 

@@ -341,7 +341,7 @@ void GuiCompleter::updateVisibility(bool start, bool keep)
 }
 
 
-void GuiCompleter::updatePrefix(Cursor & cur)
+void GuiCompleter::updatePrefix(Cursor const & cur)
 {
 	// get new prefix. Do nothing if unchanged
 	QString newPrefix = toqstr(cur.inset().completionPrefix(cur));
@@ -380,7 +380,7 @@ void GuiCompleter::updatePrefix(Cursor & cur)
 }
 
 
-void GuiCompleter::updateInline(Cursor & cur, QString const & completion)
+void GuiCompleter::updateInline(Cursor const & cur, QString const & completion)
 {
 	if (!cur.inset().inlineCompletionSupported(cur))
 		return;
@@ -401,7 +401,7 @@ void GuiCompleter::updateInline(Cursor & cur, QString const & completion)
 }
 
 
-void GuiCompleter::updatePopup(Cursor & cur)
+void GuiCompleter::updatePopup(Cursor const & cur)
 {
 	if (!cur.inset().completionSupported(cur))
 		return;
@@ -459,7 +459,7 @@ void GuiCompleter::updateAvailability()
 	// visible yet, i.e. especially if automatic completion is disabled.
 	if (inlineVisible() || popupVisible())
 		return;
-	Cursor & cur = gui_->bufferView().cursor();
+	Cursor const & cur = gui_->bufferView().cursor();
 	if (!popupPossible(cur) && !inlinePossible(cur))
 		return;
 	
@@ -467,7 +467,7 @@ void GuiCompleter::updateAvailability()
 }
 	
 
-void GuiCompleter::updateModel(Cursor & cur, bool popupUpdate, bool inlineUpdate)
+void GuiCompleter::updateModel(Cursor const & cur, bool popupUpdate, bool inlineUpdate)
 {
 	// value which should be kept selected
 	QString old = currentCompletion();
@@ -521,7 +521,7 @@ void GuiCompleter::updateModel(Cursor & cur, bool popupUpdate, bool inlineUpdate
 }
 
 
-void GuiCompleter::showPopup(Cursor & cur)
+void GuiCompleter::showPopup(Cursor const & cur)
 {
 	if (!popupPossible(cur))
 		return;
@@ -558,7 +558,7 @@ void GuiCompleter::asyncHidePopup()
 }
 
 
-void GuiCompleter::showInline(Cursor & cur)
+void GuiCompleter::showInline(Cursor const & cur)
 {
 	if (!inlinePossible(cur))
 		return;
@@ -567,7 +567,7 @@ void GuiCompleter::showInline(Cursor & cur)
 }
 
 
-void GuiCompleter::hideInline(Cursor & cur)
+void GuiCompleter::hideInline(Cursor const & cur)
 {
 	gui_->bufferView().setInlineCompletion(cur, DocIterator(cur.buffer()), docstring());
 	inlineVisible_ = false;

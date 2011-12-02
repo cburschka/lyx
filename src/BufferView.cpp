@@ -3027,7 +3027,7 @@ bool samePar(DocIterator const & a, DocIterator const & b)
 }
 
 
-void BufferView::setInlineCompletion(Cursor & cur, DocIterator const & pos, 
+void BufferView::setInlineCompletion(Cursor const & cur, DocIterator const & pos, 
 	docstring const & completion, size_t uniqueChars)
 {
 	uniqueChars = min(completion.size(), uniqueChars);
