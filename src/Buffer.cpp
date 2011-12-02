@@ -2102,14 +2102,6 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			enable = params().isExportable("program");
 			break;
 
-		case LFUN_BRANCH_ACTIVATE: 
-		case LFUN_BRANCH_DEACTIVATE: {
-			BranchList const & branchList = params().branchlist();
-			docstring const branchName = cmd.argument();
-			enable = !branchName.empty() && branchList.find(branchName);
-			break;
-		}
-
 		case LFUN_BRANCH_ADD:
 		case LFUN_BRANCHES_RENAME:
 		case LFUN_BUFFER_PRINT:
@@ -2261,36 +2253,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		break;
 	}
 
-	case LFUN_BRANCH_ACTIVATE:
-	case LFUN_BRANCH_DEACTIVATE: {
-		BranchList & branchList = params().branchlist();
-		docstring const branchName = func.argument();
-		// the case without a branch name is handled elsewhere
-		if (branchName.empty()) {
-			dispatched = false;
-			break;
-		}
-		Branch * branch = branchList.find(branchName);
-		if (!branch) {
-			LYXERR0("Branch " << branchName << " does not exist.");
-			dr.setError(true);
-			docstring const msg = 
-				bformat(_("Branch \"%1$s\" does not exist."), branchName);
-			dr.setMessage(msg);
-			break;
-		}
-		bool activate = func.action() == LFUN_BRANCH_ACTIVATE;
-		if (branch->isSelected() != activate) {
-			branch->setSelected(activate);
-			markDirty();
-			dr.setError(false);
-			dr.screenUpdate(Update::Force);
-			dr.forceBufferUpdate();
-		}
-		break;
-	}
-
-	case LFUN_BRANCHES_RENAME: {
+		case LFUN_BRANCHES_RENAME: {
 		if (func.argument().empty())
 			break;
 
