@@ -68,6 +68,10 @@ What's new
 
 - Update citation labels when the BibTeX file changes (bug 7499).
 
+- Mark Buffer dirty when changing branch activation status (bug 7872). Sadly,
+  this does not work properly if the branches are in a master document that is
+  hidden, but this is a larger issue.
+
 - Fix inconsistent state of horizontal space dialog on start up (bug 7906).
 
 - Unify diplay of theorem headings (bug 7883).
