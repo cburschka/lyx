@@ -166,12 +166,12 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 						if (label[previous] != '{')
 							label.replace(pos, 1, lbrace + brackets_escape[k] + rbrace);
 				}
+		}
 
-			if (old_label != label) {
-				p["label"] = label;
-				cur.forceBufferUpdate();
-				buffer().invalidateBibinfoCache();
-			}
+		if (old_label != label) {
+			p["label"] = label;
+			cur.forceBufferUpdate();
+			buffer().invalidateBibinfoCache();
 		}
 
 		setParam("label", p["label"]);
