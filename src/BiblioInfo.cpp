@@ -82,7 +82,7 @@ docstring familyName(docstring const & name)
 	for (; it != en; ++it) {
 		if (!first)
 			retval += " ";
-		else 
+		else
 			first = false;
 		retval += *it;
 	}
@@ -109,7 +109,7 @@ docstring convertLaTeXCommands(docstring const & str)
 				escaped = false;
 			else if (ch == '\\')
 				escaped = true;
-			else if (ch == '$') 
+			else if (ch == '$')
 				scanning_math = false;
 			ret += ch;
 			val = val.substr(1);
@@ -216,7 +216,7 @@ docstring const BibTeXInfo::getAbbreviatedAuthor() const
 		docstring authors;
 		docstring const remainder = trim(split(opt, authors, '('));
 		if (remainder.empty())
-			// in this case, we didn't find a "(", 
+			// in this case, we didn't find a "(",
 			// so we don't have author (year)
 			return docstring();
 		return authors;
@@ -231,7 +231,7 @@ docstring const BibTeXInfo::getAbbreviatedAuthor() const
 
 	// FIXME Move this to a separate routine that can
 	// be called from elsewhere.
-	// 
+	//
 	// OK, we've got some names. Let's format them.
 	// Try to split the author list on " and "
 	vector<docstring> const authors =
@@ -250,7 +250,7 @@ docstring const BibTeXInfo::getAbbreviatedAuthor() const
 
 docstring const BibTeXInfo::getYear() const
 {
-	if (is_bibtex_) 
+	if (is_bibtex_)
 		return operator[]("year");
 
 	docstring const opt = label();
@@ -259,7 +259,7 @@ docstring const BibTeXInfo::getYear() const
 
 	docstring authors;
 	docstring tmp = split(opt, authors, '(');
-	if (tmp.empty()) 
+	if (tmp.empty())
 		// we don't have author (year)
 		return docstring();
 	docstring year;
@@ -277,7 +277,7 @@ docstring const BibTeXInfo::getXRef() const
 
 
 namespace {
-	string parseOptions(string const & format, string & optkey, 
+	string parseOptions(string const & format, string & optkey,
 			string & ifpart, string & elsepart);
 
 	// Calls parseOptions to deal with an embedded option, such as:
@@ -300,9 +300,9 @@ namespace {
 		ifelsepart = format.substr(0, format.size() - rest.size());
 		return rest;
 	}
-	
-	
-	// Gets a "clause" from a format string, where the clause is 
+
+
+	// Gets a "clause" from a format string, where the clause is
 	// delimited by '[[' and ']]'. Returns what is left after the
 	// clause is removed, and returns format if there is an error.
 	string getClause(string const & format, string & clause)
@@ -310,9 +310,9 @@ namespace {
 		string fmt = format;
 		// remove '[['
 		fmt = fmt.substr(2);
-		// we'll remove characters from the front of fmt as we 
+		// we'll remove characters from the front of fmt as we
 		// deal with them
-		while (fmt.size()) { 
+		while (fmt.size()) {
 			if (fmt[0] == ']' && fmt.size() > 1 && fmt[1] == ']') {
 				// that's the end
 				fmt = fmt.substr(2);
@@ -341,8 +341,8 @@ namespace {
 	// format parameter. puts the parsed bits in optkey, ifpart, and
 	// elsepart and returns what's left after the option is removed.
 	// if there's an error, it returns format itself.
-	string parseOptions(string const & format, string & optkey, 
-			string & ifpart, string & elsepart) 
+	string parseOptions(string const & format, string & optkey,
+			string & ifpart, string & elsepart)
 	{
 		LASSERT(format[0] == '{' && format[1] == '%', return format);
 		// strip '{%'
@@ -369,13 +369,13 @@ namespace {
 
 		if (fmt[0] == '}') // we're done, no else clause
 			return fmt.substr(1);
-	
+
 		// else part should follow
 		if (fmt[0] != '[' || fmt[1] != '[') {
 			LYXERR0("Error parsing  `" << format <<"'. Can't find else clause.");
 			return format;
 		}
-		
+
 		curfmt = fmt;
 		fmt = getClause(curfmt, elsepart);
 		// we should be done
@@ -389,8 +389,8 @@ namespace {
 } // anon namespace
 
 
-docstring BibTeXInfo::expandFormat(string const & format, 
-		BibTeXInfo const * const xref, int & counter, Buffer const & buf, 
+docstring BibTeXInfo::expandFormat(string const & format,
+		BibTeXInfo const * const xref, int & counter, Buffer const & buf,
 		bool richtext) const
 {
 	// incorrect use of macros could put us in an infinite loop
@@ -401,33 +401,33 @@ docstring BibTeXInfo::expandFormat(string const & format,
 	bool scanning_rich = false;
 
 	string fmt = format;
-	// we'll remove characters from the front of fmt as we 
+	// we'll remove characters from the front of fmt as we
 	// deal with them
 	while (fmt.size()) {
 		if (counter++ > max_passes) {
-			LYXERR0("Recursion limit reached while parsing `" 
+			LYXERR0("Recursion limit reached while parsing `"
 			        << format << "'.");
 			return _("ERROR!");
 		}
-				
+
 		char_type thischar = fmt[0];
-		if (thischar == '%') { 
+		if (thischar == '%') {
 			// beginning or end of key
-			if (scanning_key) { 
+			if (scanning_key) {
 				// end of key
 				scanning_key = false;
 				// so we replace the key with its value, which may be empty
 				if (key[0] == '!') {
 					// macro
-					string const val = 
+					string const val =
 						buf.params().documentClass().getCiteMacro(key);
 					fmt = val + fmt.substr(1);
 					continue;
 				} else if (key[0] == '_') {
 					// a translatable bit
-					string const val = 
+					string const val =
 						buf.params().documentClass().getCiteMacro(key);
-					docstring const trans = 
+					docstring const trans =
 						translateIfPossible(from_utf8(val), buf.params().language->code());
 					ret += trans;
 				} else {
@@ -440,7 +440,7 @@ docstring BibTeXInfo::expandFormat(string const & format,
 				scanning_key = true;
 			}
 		}
-		else if (thischar == '{') { 
+		else if (thischar == '{') {
 			// beginning of option?
 			if (scanning_key) {
 				LYXERR0("ERROR: Found `{' when scanning key in `" << format << "'.");
@@ -452,7 +452,7 @@ docstring BibTeXInfo::expandFormat(string const & format,
 					string optkey;
 					string ifpart;
 					string elsepart;
-					string const newfmt = 
+					string const newfmt =
 						parseOptions(fmt, optkey, ifpart, elsepart);
 					if (newfmt == fmt) // parse error
 						return _("ERROR!");
@@ -463,7 +463,7 @@ docstring BibTeXInfo::expandFormat(string const & format,
 					else if (!elsepart.empty())
 						ret += expandFormat(elsepart, xref, counter, buf, richtext);
 					// fmt will have been shortened for us already
-					continue; 
+					continue;
 				}
 				if (fmt[1] == '!') {
 					// beginning of rich text
@@ -472,11 +472,11 @@ docstring BibTeXInfo::expandFormat(string const & format,
 					continue;
 				}
 			}
-			// we are here if '{' was not followed by % or !. 
+			// we are here if '{' was not followed by % or !.
 			// So it's just a character.
 			ret += thischar;
 		}
-		else if (scanning_rich && thischar == '!' 
+		else if (scanning_rich && thischar == '!'
 		         && fmt.size() > 1 && fmt[1] == '}') {
 			// end of rich text
 			scanning_rich = false;
@@ -494,9 +494,9 @@ docstring BibTeXInfo::expandFormat(string const & format,
 					ret += "&lt;";
 				else if (thischar == '>')
 					ret += "&gt;";
-				else 
+				else
 					ret += thischar;
-			}	
+			}
 		}	else if (!scanning_rich /* && !richtext */)
 			ret += thischar;
 		// else the character is discarded, which will happen only if
@@ -546,15 +546,15 @@ docstring const & BibTeXInfo::operator[](docstring const & field) const
 	static docstring const empty_value = docstring();
 	return empty_value;
 }
-	
-	
+
+
 docstring const & BibTeXInfo::operator[](string const & field) const
 {
 	return operator[](from_ascii(field));
 }
 
 
-docstring BibTeXInfo::getValueForKey(string const & key, 
+docstring BibTeXInfo::getValueForKey(string const & key,
 		BibTeXInfo const * const xref) const
 {
 	docstring const ret = operator[](key);
@@ -661,7 +661,7 @@ docstring const BiblioInfo::getYear(docstring const & key, bool use_modifier) co
 }
 
 
-docstring const BiblioInfo::getInfo(docstring const & key, 
+docstring const BiblioInfo::getInfo(docstring const & key,
 	Buffer const & buf, bool richtext) const
 {
 	BiblioInfo::const_iterator it = find(key);
@@ -712,7 +712,7 @@ vector<docstring> const BiblioInfo::getNumericalStrings(
 		return vector<docstring>();
 
 	vector<CiteStyle> const & styles = citeStyles(buf.params().citeEngine());
-	
+
 	vector<docstring> vec(styles.size());
 	for (size_t i = 0; i != vec.size(); ++i) {
 		docstring str;
@@ -771,7 +771,7 @@ vector<docstring> const BiblioInfo::getAuthorYearStrings(
 		return vector<docstring>();
 
 	vector<CiteStyle> const & styles = citeStyles(buf.params().citeEngine());
-	
+
 	vector<docstring> vec(styles.size());
 	for (size_t i = 0; i != vec.size(); ++i) {
 		docstring str;
@@ -865,9 +865,9 @@ void BiblioInfo::collectCitedEntries(Buffer const & buf)
 	}
 	if (citekeys.empty())
 		return;
-	
+
 	// We have a set of the keys used in this document.
-	// We will now convert it to a list of the BibTeXInfo objects used in 
+	// We will now convert it to a list of the BibTeXInfo objects used in
 	// this document...
 	vector<BibTeXInfo const *> bi;
 	set<docstring>::const_iterator cit = citekeys.begin();
@@ -880,7 +880,7 @@ void BiblioInfo::collectCitedEntries(Buffer const & buf)
 	}
 	// ...and sort it.
 	sort(bi.begin(), bi.end(), lSorter);
-	
+
 	// Now we can write the sorted keys
 	vector<BibTeXInfo const *>::const_iterator bit = bi.begin();
 	vector<BibTeXInfo const *>::const_iterator ben = bi.end();
@@ -893,7 +893,7 @@ void BiblioInfo::makeCitationLabels(Buffer const & buf)
 {
 	collectCitedEntries(buf);
 	CiteEngine const engine = buf.params().citeEngine();
-	bool const numbers = 
+	bool const numbers =
 		(engine == ENGINE_BASIC || engine == ENGINE_NATBIB_NUMERICAL);
 
 	int keynumber = 0;
@@ -932,7 +932,7 @@ void BiblioInfo::makeCitationLabels(Buffer const & buf)
 			} else {
 				modifier = 0;
 			}
-			entry.setModifier(modifier);				
+			entry.setModifier(modifier);
 			// remember the last one
 			last = biit;
 		}

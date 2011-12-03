@@ -61,7 +61,7 @@ private Q_SLOTS:
 	void setCitedKeys();
 	/// performs a limited update, suitable for internal call
 	void updateControls();
-	
+
 
 private:
 	/// Dialog inherited methods
@@ -109,7 +109,7 @@ private:
 	void init();
 	/// Clear selected keys
 	void clearSelection();
-	
+
 	/// Find keys containing a string.
 	void findKey(
 		BiblioInfo const & bi, //< optimize by passing this
@@ -148,7 +148,7 @@ private:
 		); //
 
 	/// The BibTeX information available to the dialog
-	/// Calls to this method will lead to checks of modification times and 
+	/// Calls to this method will lead to checks of modification times and
 	/// the like, so it should be avoided.
 	BiblioInfo const & bibInfo() const;
 

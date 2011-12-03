@@ -161,7 +161,7 @@ static docstring const mathcircumflex_def = from_ascii(
 static docstring const tabularnewline_def = from_ascii(
 	"%% Because html converters don't know tabularnewline\n"
 	"\\providecommand{\\tabularnewline}{\\\\}\n");
-	
+
 static docstring const lyxgreyedout_def = from_ascii(
 	"%% The greyedout annotation environment\n"
 	"\\newenvironment{lyxgreyedout}\n"
@@ -266,10 +266,10 @@ static docstring const ogonek_def = from_ascii(
 
 static docstring const lyxref_def = from_ascii(
 		"\\RS@ifundefined{subref}\n"
-		"  {\\def\\RSsubtxt{section~}\\newref{sub}{name = \\RSsubtxt}}\n" 
+		"  {\\def\\RSsubtxt{section~}\\newref{sub}{name = \\RSsubtxt}}\n"
 		"  {}\n"
 		"\\RS@ifundefined{thmref}\n"
-		"  {\\def\\RSthmtxt{theorem~}\\newref{thm}{name = \\RSthmtxt}}\n" 
+		"  {\\def\\RSthmtxt{theorem~}\\newref{thm}{name = \\RSthmtxt}}\n"
 		"  {}\n"
 		"\\RS@ifundefined{lemref}\n"
 		"  {\\def\\RSlemtxt{lemma~}\\newref{lem}{name = \\RSlemtxt}}\n" 
@@ -348,7 +348,7 @@ void LaTeXFeatures::useLayout(docstring const & layoutname)
 	DocumentClass const & tclass = params_.documentClass();
 	if (tclass.hasLayout(layoutname)) {
 		// Is this layout already in usedLayouts?
-		if (find(usedLayouts_.begin(), usedLayouts_.end(), layoutname) 
+		if (find(usedLayouts_.begin(), usedLayouts_.end(), layoutname)
 		    != usedLayouts_.end())
 			return;
 
@@ -380,7 +380,7 @@ void LaTeXFeatures::useInsetLayout(InsetLayout const & lay)
 	if (!tclass.hasInsetLayout(lname))
 		return;
 	// Is this layout already in usedInsetLayouts?
-	if (find(usedInsetLayouts_.begin(), usedInsetLayouts_.end(), lname) 
+	if (find(usedInsetLayouts_.begin(), usedInsetLayouts_.end(), lname)
 			!= usedInsetLayouts_.end())
 		return;
 
@@ -716,7 +716,7 @@ string const LaTeXFeatures::getPackages() const
 		packages << "\\usepackage{undertilde}\n";
 
 	// [x]color and pdfcolmk are handled in getColorOptions() above
-	
+
 	// makeidx.sty
 	if (isRequired("makeidx") || isRequired("splitidx")) {
 		if (!tclass.provides("makeidx") && !isRequired("splitidx"))
@@ -735,7 +735,7 @@ string const LaTeXFeatures::getPackages() const
 				 << params_.graphics_driver
 				 << "]{graphicx}\n";
 	}
-	
+
 	// lyxskak.sty --- newer chess support based on skak.sty
 	if (mustProvide("chess"))
 		packages << "\\usepackage[ps,mover]{lyxskak}\n";
@@ -766,7 +766,7 @@ string const LaTeXFeatures::getPackages() const
 	// jurabib -- we need version 0.6 at least.
 	if (mustProvide("jurabib"))
 		packages << "\\usepackage{jurabib}[2004/01/25]\n";
-	
+
 	// xargs -- we need version 1.09 at least
 	if (mustProvide("xargs"))
 		packages << "\\usepackage{xargs}[2008/03/08]\n";
@@ -811,7 +811,7 @@ string const LaTeXFeatures::getPackages() const
 }
 
 
-string LaTeXFeatures::getPreambleSnippets() const 
+string LaTeXFeatures::getPreambleSnippets() const
 {
 	ostringstream snip;
 	SnippetList::const_iterator pit  = preamble_snippets_.begin();
@@ -942,17 +942,17 @@ docstring const LaTeXFeatures::getMacros() const
 
 	// floats
 	getFloatDefinitions(macros);
-	
-	if (mustProvide("refstyle")) 
-		macros << lyxref_def << '\n';	
-	
+
+	if (mustProvide("refstyle"))
+		macros << lyxref_def << '\n';
+
 	// change tracking
 	if (mustProvide("ct-dvipost"))
 		macros << changetracking_dvipost_def;
-	
+
 	if (mustProvide("ct-xcolor-ulem")) {
 		streamsize const prec = macros.precision(2);
-	
+
 		RGBColor cadd = rgbFromHexName(lcolor.getX11Name(Color_addedtext));
 		macros << "\\providecolor{lyxadded}{rgb}{"
 		       << cadd.r / 255.0 << ',' << cadd.g / 255.0 << ',' << cadd.b / 255.0 << "}\n";
@@ -962,7 +962,7 @@ docstring const LaTeXFeatures::getMacros() const
 		       << cdel.r / 255.0 << ',' << cdel.g / 255.0 << ',' << cdel.b / 255.0 << "}\n";
 
 		macros.precision(prec);
-		
+
 		if (isRequired("hyperref"))
 			macros << changetracking_xcolor_ulem_hyperref_def;
 		else
@@ -1075,7 +1075,7 @@ docstring const LaTeXFeatures::getTClassPreamble() const
 }
 
 
-docstring const LaTeXFeatures::getTClassHTMLPreamble() const 
+docstring const LaTeXFeatures::getTClassHTMLPreamble() const
 {
 	DocumentClass const & tclass = params_.documentClass();
 	odocstringstream tcpreamble;
@@ -1183,7 +1183,7 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel, bool use_po
 		UsedFloats::const_iterator fend = usedFloats_.end();
 		for (; fit != fend; ++fit) {
 			Floating const & fl = floats.getType(fit->first);
-			// we assume builtin floats are translated 
+			// we assume builtin floats are translated
 			if (fl.isPredefined())
 				continue;
 			docstring const type = from_ascii(fl.floattype());

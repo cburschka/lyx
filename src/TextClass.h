@@ -55,24 +55,24 @@ private:
 };
 
 
-/// A TextClass represents a collection of layout information: At the 
+/// A TextClass represents a collection of layout information: At the
 /// moment, this includes Layout's and InsetLayout's.
 ///
 /// There are two major subclasses of TextClass: LayoutFile and
 /// DocumentClass. These subclasses are what are actually used in LyX.
-/// Simple TextClass objects are not directly constructed in the main 
+/// Simple TextClass objects are not directly constructed in the main
 /// LyX code---the constructor is protected. (That said, in tex2lyx
 /// there are what amount to simple TextClass objects.)
 ///
 /// A LayoutFile (see LayoutFile.{h,cpp}) represents a *.layout file.
-/// These are generally static objects---though they can be reloaded 
-/// from disk via LFUN_LAYOUT_RELOAD, so one should not assume that 
+/// These are generally static objects---though they can be reloaded
+/// from disk via LFUN_LAYOUT_RELOAD, so one should not assume that
 /// they will never change.
 ///
 /// A DocumentClass (see below) represents the layout information that
 /// is associated with a given Buffer. These are static, in the sense
 /// that they will not themselves change, but which DocumentClass is
-/// associated with a Buffer can change, as modules are loaded and 
+/// associated with a Buffer can change, as modules are loaded and
 /// unloaded, for example.
 ///
 class TextClass : protected ProtectCopy {
@@ -84,7 +84,7 @@ public:
 	///////////////////////////////////////////////////////////////////
 	// NOTE Do NOT try to make this a container of Layout pointers, e.g.,
 	// std::list<Layout *>. This will lead to problems. The reason is
-	// that DocumentClass objects are generally created by copying a 
+	// that DocumentClass objects are generally created by copying a
 	// LayoutFile, which serves as a base for the DocumentClass. If the
 	// LayoutList is a container of pointers, then every DocumentClass
 	// that derives from a given LayoutFile (e.g., article) will SHARE
@@ -120,14 +120,14 @@ public:
 	docstring const & defaultLayoutName() const;
 	///
 	bool isDefaultLayout(Layout const &) const;
-	/// 
+	///
 	bool isPlainLayout(Layout const &) const;
 	/// returns a special layout for use when we don't really want one,
 	/// e.g., in table cells
-	Layout const & plainLayout() const 
+	Layout const & plainLayout() const
 			{ return operator[](plain_layout_); }
 	/// the name of the plain layout
-	docstring const & plainLayoutName() const 
+	docstring const & plainLayoutName() const
 			{ return plain_layout_; }
 	/// Enumerate the paragraph styles.
 	size_t layoutCount() const { return layoutlist_.size(); }
@@ -144,7 +144,7 @@ public:
 	// reading routines
 	///////////////////////////////////////////////////////////////////
 	/// Enum used with TextClass::read
-	enum ReadType { 
+	enum ReadType {
 		BASECLASS, //>This is a base class, i.e., top-level layout file
 		MERGE, //>This is a file included in a layout file
 		MODULE, //>This is a layout module
@@ -204,14 +204,14 @@ protected:
 	///
 	Layout & operator[](docstring const & name);
 	/** Create an new, very basic layout for this textclass. This is used for
-	    the Plain Layout common to all TextClass objects and also, in 
+	    the Plain Layout common to all TextClass objects and also, in
 	    DocumentClass, for the creation of new layouts `on the fly' when
 	    previously unknown layouts are encountered.
-	    \param unknown Set to true if this layout is used to represent an 
+	    \param unknown Set to true if this layout is used to represent an
 	    unknown layout
 	 */
 	Layout createBasicLayout(docstring const & name, bool unknown = false) const;
-	
+
 	///////////////////////////////////////////////////////////////////
 	// non-const iterators
 	///////////////////////////////////////////////////////////////////
@@ -343,17 +343,17 @@ private:
 
 /// A DocumentClass represents the layout information associated with a
 /// Buffer. It is based upon a LayoutFile, but may be modified by loading
-/// various Modules. 
-/// 
+/// various Modules.
+///
 /// In that regard, DocumentClass objects are "dynamic". But this is really
 /// an illusion, since DocumentClass objects are not (currently) changed
 /// when, say, a new Module is loaded. Rather, the old DocumentClass is
 /// discarded---actually, it's kept around in case something on the cut
-/// stack needs it---and a new one is created from scratch. 
-/// 
+/// stack needs it---and a new one is created from scratch.
+///
 /// In the main LyX code, DocumentClass objects are created only by
 /// DocumentClassBundle, for which see below.
-/// 
+///
 class DocumentClass : public TextClass, boost::noncopyable {
 public:
 	///
@@ -452,15 +452,15 @@ private:
 };
 
 
-/// DocumentClassBundle is a container for DocumentClass objects, so that 
+/// DocumentClassBundle is a container for DocumentClass objects, so that
 /// they stay in memory for use by Insets, CutAndPaste, and the like, even
 /// when their associated Buffers are destroyed.
 /// FIXME Some sort of garbage collection or reference counting wouldn't
 /// be a bad idea here. It might be enough to check when a Buffer is closed
-/// (or makeDocumentClass is called) whether the old DocumentClass is in use 
+/// (or makeDocumentClass is called) whether the old DocumentClass is in use
 /// anywhere.
 ///
-/// This is a singleton class. Its sole instance is accessed via 
+/// This is a singleton class. Its sole instance is accessed via
 /// DocumentClassBundle::get().
 class DocumentClassBundle : boost::noncopyable {
 public:
@@ -468,7 +468,7 @@ public:
 	static DocumentClassBundle & get();
 	/// \return A new DocumentClass based on baseClass, with info added
 	/// from the modules in modlist.
-	DocumentClass & makeDocumentClass(LayoutFile const & baseClass, 
+	DocumentClass & makeDocumentClass(LayoutFile const & baseClass,
 			LayoutModuleList const & modlist);
 private:
 	/// control instantiation

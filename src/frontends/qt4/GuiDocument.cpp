@@ -211,7 +211,7 @@ public:
 namespace frontend {
 namespace {
 
-vector<string> getRequiredList(string const & modName) 
+vector<string> getRequiredList(string const & modName)
 {
 	LyXModule const * const mod = theModuleList[modName];
 	if (!mod)
@@ -266,16 +266,16 @@ bool isModuleAvailable(string const & modName)
 /////////////////////////////////////////////////////////////////////
 
 /// SelectionManager for use with modules
-class ModuleSelectionManager : public GuiSelectionManager 
+class ModuleSelectionManager : public GuiSelectionManager
 {
 public:
 	///
 	ModuleSelectionManager(
 		QTreeView * availableLV,
 		QListView * selectedLV,
-		QPushButton * addPB, 
-		QPushButton * delPB, 
-		QPushButton * upPB, 
+		QPushButton * addPB,
+		QPushButton * delPB,
+		QPushButton * upPB,
 		QPushButton * downPB,
 		GuiIdListModel * availableModel,
 		GuiIdListModel * selectedModel,
@@ -284,10 +284,10 @@ public:
 				upPB, downPB, availableModel, selectedModel), container_(container)
 		{}
 	///
-	void updateProvidedModules(LayoutModuleList const & pm) 
+	void updateProvidedModules(LayoutModuleList const & pm)
 			{ provided_modules_ = pm.list(); }
 	///
-	void updateExcludedModules(LayoutModuleList const & em) 
+	void updateExcludedModules(LayoutModuleList const & em)
 			{ excluded_modules_ = em.list(); }
 private:
 	///
@@ -299,12 +299,12 @@ private:
 	///
 	virtual void updateDelPB();
 	/// returns availableModel as a GuiIdListModel
-	GuiIdListModel * getAvailableModel() 
+	GuiIdListModel * getAvailableModel()
 	{
 		return dynamic_cast<GuiIdListModel *>(availableModel);
 	}
 	/// returns selectedModel as a GuiIdListModel
-	GuiIdListModel * getSelectedModel() 
+	GuiIdListModel * getSelectedModel()
 	{
 		return dynamic_cast<GuiIdListModel *>(selectedModel);
 	}
@@ -312,14 +312,14 @@ private:
 	list<string> provided_modules_;
 	/// similarly...
 	list<string> excluded_modules_;
-	/// 
+	///
 	GuiDocument const * container_;
 };
 
-void ModuleSelectionManager::updateAddPB() 
+void ModuleSelectionManager::updateAddPB()
 {
 	int const arows = availableModel->rowCount();
-	QModelIndexList const avail_sels = 
+	QModelIndexList const avail_sels =
 			availableLV->selectionModel()->selectedIndexes();
 
 	// disable if there aren't any modules (?), if none of them is chosen
@@ -332,7 +332,7 @@ void ModuleSelectionManager::updateAddPB()
 	QModelIndex const & idx = availableLV->selectionModel()->currentIndex();
 	string const modname = getAvailableModel()->getIDString(idx.row());
 
-	bool const enable = 
+	bool const enable =
 		container_->params().moduleCanBeAdded(modname);
 	addPB->setEnabled(enable);
 }
@@ -365,13 +365,13 @@ void ModuleSelectionManager::updateDownPB()
 	}
 
 	// Enable it if this module isn't required.
-	// FIXME This should perhaps be more flexible and check whether, even 
+	// FIXME This should perhaps be more flexible and check whether, even
 	// if the next one is required, there is also an earlier one that will do.
 	downPB->setEnabled(
 			find(reqs.begin(), reqs.end(), curmodname) == reqs.end());
 }
 
-void ModuleSelectionManager::updateUpPB() 
+void ModuleSelectionManager::updateUpPB()
 {
 	int const srows = selectedModel->rowCount();
 	if (srows == 0) {
@@ -398,13 +398,13 @@ void ModuleSelectionManager::updateUpPB()
 
 
 	// Enable it if the preceding module isn't required.
-	// NOTE This is less flexible than it might be. We could check whether, even 
+	// NOTE This is less flexible than it might be. We could check whether, even
 	// if the previous one is required, there is an earlier one that would do.
 	string const premod = getSelectedModel()->getIDString(curRow - 1);
 	upPB->setEnabled(find(reqs.begin(), reqs.end(), premod) == reqs.end());
 }
 
-void ModuleSelectionManager::updateDelPB() 
+void ModuleSelectionManager::updateDelPB()
 {
 	int const srows = selectedModel->rowCount();
 	if (srows == 0) {
@@ -412,7 +412,7 @@ void ModuleSelectionManager::updateDelPB()
 		return;
 	}
 
-	QModelIndex const & curidx = 
+	QModelIndex const & curidx =
 		selectedLV->selectionModel()->currentIndex();
 	int const curRow = curidx.row();
 	if (curRow < 0 || curRow >= srows) { // invalid index?
@@ -445,7 +445,7 @@ void ModuleSelectionManager::updateDelPB()
 		for (int j = 0; j < curRow; ++j) {
 			string const mod = getSelectedModel()->getIDString(j);
 			// lyxerr << "In loop: Testing " << mod << endl;
-			// do we satisfy the require? 
+			// do we satisfy the require?
 			if (find(reqs.begin(), reqs.end(), mod) != reqs.end()) {
 				// lyxerr << mod << " does the trick." << endl;
 				foundone = true;
@@ -599,14 +599,14 @@ void LocalLayout::convertPressed() {
 void LocalLayout::validate() {
 	static const QString valid = qt_("Layout is valid!");
 	static const QString vtext =
-		toqstr("<p style=\"font-weight: bold; \">") 
+		toqstr("<p style=\"font-weight: bold; \">")
 		  + valid + toqstr("</p>");
 	static const QString invalid = qt_("Layout is invalid!");
 	static const QString ivtext =
-		toqstr("<p style=\"color: #c00000; font-weight: bold; \">") 
+		toqstr("<p style=\"color: #c00000; font-weight: bold; \">")
 		  + invalid + toqstr("</p>");
 
-	string const layout = 
+	string const layout =
 		fromqstr(locallayoutTE->document()->toPlainText().trimmed());
 	if (layout.empty()) {
 		is_valid_ = true;
@@ -874,7 +874,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(pageLayoutModule->pagestyleCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
-	
+
 	pageLayoutModule->pagestyleCO->addItem(qt_("Default"));
 	pageLayoutModule->pagestyleCO->addItem(qt_("empty"));
 	pageLayoutModule->pagestyleCO->addItem(qt_("plain"));
@@ -1151,7 +1151,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		mathsModule->mathdotsCB, SLOT(setDisabled(bool)));
 	connect(mathsModule->undertildeautoCB, SIGNAL(toggled(bool)),
 		mathsModule->undertildeCB, SLOT(setDisabled(bool)));
-	
+
 	connect(mathsModule->amsCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	connect(mathsModule->amsautoCB, SIGNAL(clicked()),
@@ -1172,7 +1172,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(mathsModule->undertildeautoCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
-	
+
 
 	// latex class
 	latexModule = new UiWidget<Ui::LaTeXUi>;
@@ -1241,7 +1241,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	preambleModule = new PreambleModule;
 	connect(preambleModule, SIGNAL(changed()),
 		this, SLOT(change_adaptor()));
-	
+
 	localLayout = new LocalLayout;
 	connect(localLayout, SIGNAL(changed()),
 		this, SLOT(change_adaptor()));
@@ -1332,9 +1332,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 	listingsModule = new UiWidget<Ui::ListingsSettingsUi>;
 	connect(listingsModule->listingsED, SIGNAL(textChanged()),
 		this, SLOT(change_adaptor()));
-	connect(listingsModule->bypassCB, SIGNAL(clicked()), 
+	connect(listingsModule->bypassCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
-	connect(listingsModule->bypassCB, SIGNAL(clicked()), 
+	connect(listingsModule->bypassCB, SIGNAL(clicked()),
 		this, SLOT(setListingsMessage()));
 	connect(listingsModule->listingsED, SIGNAL(textChanged()),
 		this, SLOT(setListingsMessage()));
@@ -1405,7 +1405,7 @@ void GuiDocument::includeonlyClicked(QTreeWidgetItem * item, int)
 		includeonlys_.remove(child);
 	else
 		includeonlys_.push_back(child);
-	
+
 	updateIncludeonlys();
 	changed();
 }
@@ -1417,7 +1417,7 @@ QString GuiDocument::validateListingsParameters()
 	// of the same parameters
 	static string param_cache;
 	static QString msg_cache;
-	
+
 	if (listingsModule->bypassCB->isChecked())
 		return QString();
 
@@ -1563,7 +1563,7 @@ void GuiDocument::setCustomMargins(bool custom)
 	marginsModule->footskipLE->setEnabled(!custom);
 	marginsModule->footskipUnit->setEnabled(!custom);
 
-	bool const enableColSep = !custom && 
+	bool const enableColSep = !custom &&
 			textLayoutModule->twoColumnCB->checkState() == Qt::Checked;
 	marginsModule->columnsepL->setEnabled(enableColSep);
 	marginsModule->columnsepLE->setEnabled(enableColSep);
@@ -1710,7 +1710,7 @@ void GuiDocument::osFontsChanged(bool nontexfonts)
 		font = tex_fonts_roman[fontModule->fontsRomanCO->currentIndex()];
 	fontModule->fontScCB->setEnabled(providesSC(font));
 	fontModule->fontOsfCB->setEnabled(providesOSF(font));
-	
+
 	fontModule->fontencLA->setEnabled(tex_fonts);
 	fontModule->fontencCO->setEnabled(tex_fonts);
 	if (!tex_fonts)
@@ -1749,7 +1749,7 @@ void GuiDocument::updateFontlist()
 		fontModule->fontsRomanCO->addItem(qt_("Default"), QString("default"));
 		fontModule->fontsSansCO->addItem(qt_("Default"), QString("default"));
 		fontModule->fontsTypewriterCO->addItem(qt_("Default"), QString("default"));
-	
+
 		QFontDatabase fontdb;
 		QStringList families(fontdb.families());
 		for (QStringList::Iterator it = families.begin(); it != families.end(); ++it) {
@@ -1862,7 +1862,7 @@ void GuiDocument::browseLayout()
 
 	FileName layoutFile = support::makeAbsPath(fromqstr(file),
 		fromqstr(bufferFilePath()));
-	
+
 	int const ret = Alert::prompt(_("Local layout file"),
 		_("The layout file you have selected is a local layout\n"
 		  "file, not one in the system or user directory. Your\n"
@@ -1882,14 +1882,14 @@ void GuiDocument::browseLayout()
 
 	if (name.empty()) {
 		Alert::error(_("Error"),
-			_("Unable to read local layout file."));		
+			_("Unable to read local layout file."));
 		return;
 	}
 
 	// do not trigger classChanged if there is no change.
 	if (latexModule->classCO->currentText() == toqstr(name))
 		return;
-		
+
 	// add to combo box
 	int idx = latexModule->classCO->findText(toqstr(name));
 	if (idx == -1) {
@@ -1897,7 +1897,7 @@ void GuiDocument::browseLayout()
 		latexModule->classCO->setCurrentIndex(0);
 	} else
 		latexModule->classCO->setCurrentIndex(idx);
-	
+
 	classChanged();
 }
 
@@ -1920,7 +1920,7 @@ void GuiDocument::browseMaster()
 void GuiDocument::classChanged()
 {
 	int idx = latexModule->classCO->currentIndex();
-	if (idx < 0) 
+	if (idx < 0)
 		return;
 	string const classname = classes_model_.getIDString(idx);
 
@@ -1952,8 +1952,8 @@ void GuiDocument::classChanged()
 
 	// We load the TextClass as soon as it is selected. This is
 	// necessary so that other options in the dialog can be updated
-	// according to the new class. Note, however, that, if you use 
-	// the scroll wheel when sitting on the combo box, we'll load a 
+	// according to the new class. Note, however, that, if you use
+	// the scroll wheel when sitting on the combo box, we'll load a
 	// lot of TextClass objects very quickly....
 	if (!bp_.setBaseClass(classname)) {
 		Alert::error(_("Error"), _("Unable to set document class."));
@@ -1962,11 +1962,11 @@ void GuiDocument::classChanged()
 	if (lyxrc.auto_reset_options)
 		bp_.useClassDefaults();
 
-	// With the introduction of modules came a distinction between the base 
-	// class and the document class. The former corresponds to the main layout 
+	// With the introduction of modules came a distinction between the base
+	// class and the document class. The former corresponds to the main layout
 	// file; the latter is that plus the modules (or the document-specific layout,
-	// or  whatever else there could be). Our parameters come from the document 
-	// class. So when we set the base class, we also need to recreate the document 
+	// or  whatever else there could be). Our parameters come from the document
+	// class. So when we set the base class, we also need to recreate the document
 	// class. Otherwise, we still have the old one.
 	bp_.makeDocumentClass();
 	paramsToDialog();
@@ -1989,17 +1989,17 @@ void GuiDocument::bibtexChanged(int n)
 
 
 namespace {
-	// FIXME unicode 
+	// FIXME unicode
 	// both of these should take a vector<docstring>
-	
+
 	// This is an insanely complicated attempt to make this sort of thing
 	// work with RTL languages.
-	docstring formatStrVec(vector<string> const & v, docstring const & s) 
+	docstring formatStrVec(vector<string> const & v, docstring const & s)
 	{
 		//this mess formats the list as "v[0], v[1], ..., [s] v[n]"
 		if (v.size() == 0)
 			return docstring();
-		if (v.size() == 1) 
+		if (v.size() == 1)
 			return translateIfPossible(from_utf8(v[0]));
 		if (v.size() == 2) {
 			docstring retval = _("%1$s and %2$s");
@@ -2012,14 +2012,14 @@ namespace {
 		docstring t2 = _("%1$s, %2$s");
 		docstring retval = translateIfPossible(from_utf8(v[0]));
 		for (int i = 1; i < vSize - 2; ++i)
-			retval = bformat(t2, retval, translateIfPossible(from_utf8(v[i]))); 
+			retval = bformat(t2, retval, translateIfPossible(from_utf8(v[i])));
 		//...and then to  plug them, and the last two, into this schema
 		docstring t = _("%1$s, %2$s, and %3$s");
 		t = subst(t, _("and"), s);
 		return bformat(t, retval, translateIfPossible(from_utf8(v[vSize - 2])),
 			       translateIfPossible(from_utf8(v[vSize - 1])));
 	}
-	
+
 	vector<string> idsToNames(vector<string> const & idList)
 	{
 		vector<string> retval;
@@ -2028,7 +2028,7 @@ namespace {
 		for (; it != end; ++it) {
 			LyXModule const * const mod = theModuleList[*it];
 			if (!mod)
-				retval.push_back(to_utf8(bformat(_("%1$s (unavailable)"), 
+				retval.push_back(to_utf8(bformat(_("%1$s (unavailable)"),
 						translateIfPossible(from_utf8(*it)))));
 			else
 				retval.push_back(mod->getName());
@@ -2081,7 +2081,7 @@ void GuiDocument::modulesChanged()
 void GuiDocument::updateModuleInfo()
 {
 	selectionManager->update();
-	
+
 	//Module description
 	bool const focus_on_selected = selectionManager->selectedFocused();
 	QAbstractItemView * lv;
@@ -2094,7 +2094,7 @@ void GuiDocument::updateModuleInfo()
 		return;
 	}
 	QModelIndex const & idx = lv->selectionModel()->currentIndex();
-	GuiIdListModel const & id_model = 
+	GuiIdListModel const & id_model =
 			focus_on_selected  ? modules_sel_model_ : modules_av_model_;
 	string const modName = id_model.getIDString(idx.row());
 	docstring desc = getModuleDescription(modName);
@@ -2303,7 +2303,7 @@ void GuiDocument::applyView()
 	QString const lang = langModule->languageCO->itemData(
 		langModule->languageCO->currentIndex()).toString();
 	bp_.language = lyx::languages.getLanguage(fromqstr(lang));
-	
+
 	QString const pack = langModule->languagePackageCO->itemData(
 		langModule->languagePackageCO->currentIndex()).toString();
 	if (pack == "custom")
@@ -2335,7 +2335,7 @@ void GuiDocument::applyView()
 	// packages
 	bp_.graphics_driver =
 		tex_graphics[latexModule->psdriverCO->currentIndex()];
-	
+
 	// text layout
 	int idx = latexModule->classCO->currentIndex();
 	if (idx >= 0) {
@@ -2387,7 +2387,7 @@ void GuiDocument::applyView()
 		else
 			bp_.use_undertilde = BufferParams::package_off;
 	}
-	
+
 	// Page Layout
 	if (pageLayoutModule->pagestyleCO->currentIndex() == 0)
 		bp_.pagestyle = "default";
@@ -2779,7 +2779,7 @@ void GuiDocument::paramsToDialog()
 	if (nitem >= 0)
 		latexModule->psdriverCO->setCurrentIndex(nitem);
 	updateModuleInfo();
-	
+
 	mathsModule->amsCB->setChecked(
 		bp_.use_amsmath == BufferParams::package_on);
 	mathsModule->amsautoCB->setChecked(
@@ -2941,7 +2941,7 @@ void GuiDocument::paramsToDialog()
 	updateDefaultFormat();
 	int index = outputModule->defaultFormatCO->findData(toqstr(
 		bp_.default_output_format));
-	// set to default if format is not found 
+	// set to default if format is not found
 	if (index == -1)
 		index = 0;
 	outputModule->defaultFormatCO->setCurrentIndex(index);
@@ -3010,7 +3010,7 @@ void GuiDocument::paramsToDialog()
 	fontModule->fontOsfCB->setChecked(bp_.fonts_old_figures);
 	fontModule->scaleSansSB->setValue(bp_.fonts_sans_scale);
 	fontModule->scaleTypewriterSB->setValue(bp_.fonts_typewriter_scale);
-	
+
 	int nn = findToken(GuiDocument::fontfamilies, bp_.fonts_default_family);
 	if (nn >= 0)
 		fontModule->fontsDefaultCO->setCurrentIndex(nn);
@@ -3128,26 +3128,26 @@ void GuiDocument::saveDocDefault()
 }
 
 
-void GuiDocument::updateAvailableModules() 
+void GuiDocument::updateAvailableModules()
 {
 	modules_av_model_.clear();
 	list<modInfoStruct> const & modInfoList = getModuleInfo();
 	list<modInfoStruct>::const_iterator mit = modInfoList.begin();
 	list<modInfoStruct>::const_iterator men = modInfoList.end();
 	for (int i = 0; mit != men; ++mit, ++i)
-		modules_av_model_.insertRow(i, mit->name, mit->id, 
+		modules_av_model_.insertRow(i, mit->name, mit->id,
 				mit->description);
 }
 
 
-void GuiDocument::updateSelectedModules() 
+void GuiDocument::updateSelectedModules()
 {
 	modules_sel_model_.clear();
 	list<modInfoStruct> const selModList = getSelectedModules();
 	list<modInfoStruct>::const_iterator mit = selModList.begin();
 	list<modInfoStruct>::const_iterator men = selModList.end();
 	for (int i = 0; mit != men; ++mit, ++i)
-		modules_sel_model_.insertRow(i, mit->name, mit->id, 
+		modules_sel_model_.insertRow(i, mit->name, mit->id,
 				mit->description);
 }
 
@@ -3233,31 +3233,31 @@ void GuiDocument::setLayoutComboByIDString(string const & idString)
 {
 	int idx = classes_model_.findIDString(idString);
 	if (idx < 0)
-		Alert::warning(_("Can't set layout!"), 
+		Alert::warning(_("Can't set layout!"),
 			bformat(_("Unable to set layout for ID: %1$s"), from_utf8(idString)));
-	else 
+	else
 		latexModule->classCO->setCurrentIndex(idx);
 }
 
 
 bool GuiDocument::isValid()
 {
-	return 
+	return
 		validateListingsParameters().isEmpty() &&
 		localLayout->isValid() &&
 		(
 			// if we're asking for skips between paragraphs
 			!textLayoutModule->skipRB->isChecked() ||
 			// then either we haven't chosen custom
-			textLayoutModule->skipCO->currentIndex() != 3 || 
+			textLayoutModule->skipCO->currentIndex() != 3 ||
 			// or else a length has been given
 			!textLayoutModule->skipLE->text().isEmpty()
-		) && 
+		) &&
 		(
 			// if we're asking for indentation
-			!textLayoutModule->indentRB->isChecked() || 
+			!textLayoutModule->indentRB->isChecked() ||
 			// then either we haven't chosen custom
-			textLayoutModule->indentCO->currentIndex() != 1 || 
+			textLayoutModule->indentCO->currentIndex() != 1 ||
 			// or else a length has been given
 			!textLayoutModule->indentLE->text().isEmpty()
 		);
@@ -3313,7 +3313,7 @@ list<GuiDocument::modInfoStruct> const & GuiDocument::getModuleInfo()
 }
 
 
-list<GuiDocument::modInfoStruct> const 
+list<GuiDocument::modInfoStruct> const
 		GuiDocument::makeModuleInfo(LayoutModuleList const & mods)
 {
 	LayoutModuleList::const_iterator it =  mods.begin();
@@ -3326,7 +3326,7 @@ list<GuiDocument::modInfoStruct> const
 		if (mod)
 			// FIXME Unicode
 			m.name = toqstr(translateIfPossible(from_utf8(mod->getName())));
-		else 
+		else
 			m.name = toqstr(*it) + toqstr(" (") + qt_("Not Found") + toqstr(")");
 		mInfo.push_back(m);
 	}
@@ -3381,12 +3381,12 @@ void GuiDocument::dispatchParams()
 				if (master->isChild(const_cast<Buffer *>(&buffer())))
 					const_cast<Buffer &>(buffer()).setParent(master);
 				else
-					Alert::warning(_("Assigned master does not include this file"), 
+					Alert::warning(_("Assigned master does not include this file"),
 						bformat(_("You must include this file in the document\n"
 							  "'%1$s' in order to use the master document\n"
 							  "feature."), from_utf8(params().master)));
 			} else
-				Alert::warning(_("Could not load master"), 
+				Alert::warning(_("Could not load master"),
 						bformat(_("The master document '%1$s'\n"
 							   "could not be loaded."),
 							   from_utf8(params().master)));
@@ -3415,7 +3415,7 @@ void GuiDocument::dispatchParams()
 	executeBranchRenaming();
 	// and clear changed branches cache
 	changedBranches_.clear();
-	
+
 	// Generate the colours requested by indices.
 	IndicesList & indiceslist = params().indiceslist();
 	if (!indiceslist.empty()) {

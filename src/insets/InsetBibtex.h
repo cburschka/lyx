@@ -68,13 +68,13 @@ public:
 	///
 	static std::string defaultCommand() { return "bibtex"; }
 	///
-	static bool isCompatibleCommand(std::string const & s) 
+	static bool isCompatibleCommand(std::string const & s)
 		{ return s == "bibtex"; }
 	//@}
 
 private:
 	/// look up the path to the file using TeX
-	static support::FileName 
+	static support::FileName
 		getBibTeXPath(docstring const & filename, Buffer const & buf);
 	///
 	void editDatabases() const;

@@ -49,19 +49,19 @@ using namespace lyx::support;
 
 namespace lyx {
 
-// Keep the changes documented in the Customization manual. 
+// Keep the changes documented in the Customization manual.
 //
 // If you change this format, then you MUST also make sure that
-// your changes do not invalidate the hardcoded layout file in 
+// your changes do not invalidate the hardcoded layout file in
 // LayoutFile.cpp. Additions will never do so, but syntax changes
 // could. See LayoutFileList::addEmptyClass() and, especially, the
-// definition of the layoutpost string. 
+// definition of the layoutpost string.
 // You should also run (or ask someone who has bash to run) the
-// development/updatelayouts.sh script, to update the format of 
+// development/updatelayouts.sh script, to update the format of
 // all of our layout files.
 //
 int const LAYOUT_FORMAT = 35;
-	
+
 namespace {
 
 class LayoutNamesEqual : public unary_function<Layout, bool> {
@@ -104,7 +104,7 @@ bool layout2layout(FileName const & filename, FileName const & tempfile)
 }
 
 
-string translateReadType(TextClass::ReadType rt) 
+string translateReadType(TextClass::ReadType rt)
 {
 	switch (rt) {
 	case TextClass::BASECLASS:
@@ -123,7 +123,7 @@ string translateReadType(TextClass::ReadType rt)
 } // namespace anon
 
 
-// This string should not be translated here, 
+// This string should not be translated here,
 // because it is a layout identifier.
 docstring const TextClass::plain_layout_ = from_ascii("Plain Layout");
 
@@ -252,7 +252,7 @@ namespace {
 		{ "titlelatextype",    TC_TITLELATEXTYPE },
 		{ "tocdepth",          TC_TOCDEPTH }
 	};
-	
+
 } //namespace anon
 
 
@@ -302,8 +302,8 @@ TextClass::ReturnValues TextClass::readWithoutConv(FileName const & filename, Re
 	LYXERR(Debug::TCLASS, "Reading " + translateReadType(rt) + ": " +
 		to_utf8(makeDisplayPath(filename.absFileName())));
 
-	// Define the plain layout used in table cells, ert, etc. Note that 
-	// we do this before loading any layout file, so that classes can 
+	// Define the plain layout used in table cells, ert, etc. Note that
+	// we do this before loading any layout file, so that classes can
 	// override features of this layout if they should choose to do so.
 	if (rt == BASECLASS && !hasLayout(plain_layout_))
 		layoutlist_.push_back(createBasicLayout(plain_layout_));
@@ -311,7 +311,7 @@ TextClass::ReturnValues TextClass::readWithoutConv(FileName const & filename, Re
 	Lexer lexrc(textClassTags);
 	lexrc.setFile(filename);
 	ReturnValues retval = read(lexrc, rt);
-	
+
 	LYXERR(Debug::TCLASS, "Finished reading " + translateReadType(rt) + ": " +
 			to_utf8(makeDisplayPath(filename.absFileName())));
 
@@ -327,7 +327,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 
 	bool const worx = convertLayoutFormat(filename, rt);
 	if (!worx)
-		LYXERR0 ("Unable to convert " << filename << 
+		LYXERR0 ("Unable to convert " << filename <<
 			" to format " << LAYOUT_FORMAT);
 	return worx;
 }
@@ -347,7 +347,7 @@ TextClass::ReturnValues TextClass::read(std::string const & str, ReadType rt)
 	lexrc.setStream(is);
 	ReturnValues retval = read(lexrc, rt);
 
-	if (retval != FORMAT_MISMATCH) 
+	if (retval != FORMAT_MISMATCH)
 		return retval;
 
 	// write the layout string to a temporary file
@@ -363,7 +363,7 @@ TextClass::ReturnValues TextClass::read(std::string const & str, ReadType rt)
 	// now try to convert it
 	bool const worx = convertLayoutFormat(tempfile, rt);
 	if (!worx) {
-		LYXERR0("Unable to convert internal layout information to format " 
+		LYXERR0("Unable to convert internal layout information to format "
 			<< LAYOUT_FORMAT);
 		return ERROR;
 	}
@@ -373,7 +373,7 @@ TextClass::ReturnValues TextClass::read(std::string const & str, ReadType rt)
 
 
 // Reads a textclass structure from file.
-TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt) 
+TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 {
 	if (!lexrc.isOK())
 		return ERROR;
@@ -567,7 +567,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 		case TC_HTMLPREAMBLE:
 			htmlpreamble_ = from_utf8(lexrc.getLongString("EndPreamble"));
 			break;
-		
+
 		case TC_HTMLTOCSECTION:
 			html_toc_section_ = from_utf8(trim(lexrc.getString()));
 			break;
@@ -593,7 +593,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 
 		case TC_REQUIRES: {
 			lexrc.eatLine();
-			vector<string> const req 
+			vector<string> const req
 				= getVectorFromString(lexrc.getString());
 			requires_.insert(req.begin(), req.end());
 			break;
@@ -671,7 +671,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 		case TC_FLOAT:
 			error = !readFloat(lexrc);
 			break;
-		
+
 		case TC_CITEFORMAT:
 			readCiteFormat(lexrc);
 			break;
@@ -744,8 +744,8 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 						<< "' is missing a defaultstyle.");
 		return ERROR;
 	}
-		
-	// Try to erase "stdinsets" from the provides_ set. 
+
+	// Try to erase "stdinsets" from the provides_ set.
 	// The
 	//   Provides stdinsets 1
 	// declaration simply tells us that the standard insets have been
@@ -1004,7 +1004,7 @@ bool TextClass::readFloat(Lexer & lexrc)
 				ispredefined = fl.isPredefined();
 				listcommand = fl.listCommand();
 				refprefix = fl.refPrefix();
-			} 
+			}
 			break;
 		case FT_NAME:
 			lexrc.next();
@@ -1087,8 +1087,8 @@ bool TextClass::readFloat(Lexer & lexrc)
 			          "for the float `" << type << "'. LyX will " <<
 			          "not be able to produce a float list.");
 		}
-		Floating fl(type, placement, ext, within, style, name, 
-				listname, listcommand, refprefix, 
+		Floating fl(type, placement, ext, within, style, name,
+				listname, listcommand, refprefix,
 				htmltag, htmlattr, htmlstyle, usesfloat, ispredefined);
 		floatlist_.newFloat(fl);
 		// each float has its own counter
@@ -1104,12 +1104,12 @@ bool TextClass::readFloat(Lexer & lexrc)
 
 
 string const & TextClass::prerequisites() const
-{ 
+{
 	if (contains(prerequisites_, ',')) {
 		vector<string> const pres = getVectorFromString(prerequisites_);
 		prerequisites_ = getStringFromVector(pres, "\n\t");
 	}
-	return prerequisites_; 
+	return prerequisites_;
 }
 
 bool TextClass::hasLayout(docstring const & n) const
@@ -1124,7 +1124,7 @@ bool TextClass::hasLayout(docstring const & n) const
 
 bool TextClass::hasInsetLayout(docstring const & n) const
 {
-	if (n.empty()) 
+	if (n.empty())
 		return false;
 	InsetLayouts::const_iterator it = insetlayoutlist_.begin();
 	InsetLayouts::const_iterator en = insetlayoutlist_.end();
@@ -1139,7 +1139,7 @@ Layout const & TextClass::operator[](docstring const & name) const
 {
 	LASSERT(!name.empty(), /**/);
 
-	const_iterator it = 
+	const_iterator it =
 		find_if(begin(), end(), LayoutNamesEqual(name));
 
 	if (it == end()) {
@@ -1213,7 +1213,7 @@ bool TextClass::load(string const & path) const
 		       << to_utf8(makeDisplayPath(layout_file.absFileName()))
 		       << "'\n(Check `" << name_
 		       << "')\nCheck your installation and "
-		          "try Options/Reconfigure..." 
+		          "try Options/Reconfigure..."
 		       << endl;
 	}
 
@@ -1231,7 +1231,7 @@ bool DocumentClass::addLayoutIfNeeded(docstring const & n) const
 }
 
 
-InsetLayout const & DocumentClass::insetLayout(docstring const & name) const 
+InsetLayout const & DocumentClass::insetLayout(docstring const & name) const
 {
 	// FIXME The fix for the InsetLayout part of 4812 would be here:
 	// Add the InsetLayout to the document class if it is not found.
@@ -1262,13 +1262,13 @@ Layout const & TextClass::defaultLayout() const
 }
 
 
-bool TextClass::isDefaultLayout(Layout const & layout) const 
+bool TextClass::isDefaultLayout(Layout const & layout) const
 {
 	return layout.name() == defaultLayoutName();
 }
 
 
-bool TextClass::isPlainLayout(Layout const & layout) const 
+bool TextClass::isPlainLayout(Layout const & layout) const
 {
 	return layout.name() == plainLayoutName();
 }
@@ -1329,8 +1329,8 @@ DocumentClass & DocumentClassBundle::newClass(LayoutFile const & baseClass)
 
 DocumentClassBundle & DocumentClassBundle::get()
 {
-	static DocumentClassBundle singleton; 
-	return singleton; 
+	static DocumentClassBundle singleton;
+	return singleton;
 }
 
 
@@ -1438,7 +1438,7 @@ Layout const & DocumentClass::htmlTOCLayout() const
 string const & DocumentClass::getCiteFormat(string const & entry_type) const
 {
 	static string default_format = "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]][[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, %pages%]]}.";
-	
+
 	map<string, string>::const_iterator it = cite_formats_.find(entry_type);
 	if (it != cite_formats_.end())
 		return it->second;

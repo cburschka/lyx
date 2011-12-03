@@ -551,7 +551,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex.next();
 		string const classname = lex.getString();
 		// if there exists a local layout file, ignore the system one
-		// NOTE: in this case, the textclass (.cls file) is assumed to 
+		// NOTE: in this case, the textclass (.cls file) is assumed to
 		// be available.
 		string tcp;
 		LayoutFileList & bcl = LayoutFileList::get();
@@ -561,12 +561,12 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 			setBaseClass(tcp);
 		else
 			setBaseClass(classname);
-		// We assume that a tex class exists for local or unknown 
+		// We assume that a tex class exists for local or unknown
 		// layouts so this warning, will only be given for system layouts.
 		if (!baseClass()->isTeXClassAvailable()) {
-			docstring const desc = 
+			docstring const desc =
 				translateIfPossible(from_utf8(baseClass()->description()));
-			docstring const prereqs = 
+			docstring const prereqs =
 				from_utf8(baseClass()->prerequisites());
 			docstring const msg =
 				bformat(_("The selected document class\n"
@@ -874,7 +874,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\use_refstyle") {
 		lex >> use_refstyle;
 	} else {
-		lyxerr << "BufferParams::readToken(): Unknown token: " << 
+		lyxerr << "BufferParams::readToken(): Unknown token: " <<
 			token << endl;
 		return token;
 	}
@@ -906,14 +906,14 @@ void BufferParams::writeFile(ostream & os) const
 	}
 
 	// use the class options defined in the layout?
-	os << "\\use_default_options " 
+	os << "\\use_default_options "
 	   << convert<string>(use_default_options) << "\n";
 
 	// the master document
 	if (!master.empty()) {
 		os << "\\master " << master << '\n';
 	}
-	
+
 	// removed modules
 	if (!removed_modules_.empty()) {
 		os << "\\begin_removed_modules" << '\n';
@@ -948,7 +948,7 @@ void BufferParams::writeFile(ostream & os) const
 
 	// local layout information
 	if (!local_layout.empty()) {
-		// remove '\n' from the end 
+		// remove '\n' from the end
 		string const tmplocal = rtrim(local_layout, "\n");
 		os << "\\begin_local_layout\n"
 		   << tmplocal
@@ -1062,7 +1062,7 @@ void BufferParams::writeFile(ostream & os) const
 		os << "\\footskip "
 		   << VSpace(footskip).asLyXCommand() << '\n';
 	if (!columnsep.empty())
-		os << "\\columnsep " 
+		os << "\\columnsep "
 			 << VSpace(columnsep).asLyXCommand() << '\n';
 	os << "\\secnumdepth " << secnumdepth
 	   << "\n\\tocdepth " << tocdepth
@@ -1102,7 +1102,7 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\\html_math_output " << html_math_output << '\n'
 	   << "\\html_css_as_file " << html_css_as_file << '\n'
 	   << "\\html_be_strict " << convert<string>(html_be_strict) << '\n';
-	
+
 	if (html_math_img_scale != 1.0)
 		os << "\\html_math_img_scale " << convert<string>(html_math_img_scale) << '\n';
 	if (!html_latex_start.empty())
@@ -1145,7 +1145,7 @@ void BufferParams::validate(LaTeXFeatures & features) const
 				features.require("ulem");
 				features.require("xcolor");
 				// improves color handling in PDF output
-				features.require("pdfcolmk"); 
+				features.require("pdfcolmk");
 			} else {
 				features.require("ct-none");
 			}
@@ -1179,7 +1179,7 @@ void BufferParams::validate(LaTeXFeatures & features) const
 	// the bullet shapes are buffer level not paragraph level
 	// so they are tested here
 	for (int i = 0; i < 4; ++i) {
-		if (user_defined_bullet(i) == ITEMIZE_DEFAULTS[i]) 
+		if (user_defined_bullet(i) == ITEMIZE_DEFAULTS[i])
 			continue;
 		int const font = user_defined_bullet(i).getFont();
 		if (font == 0) {
@@ -1423,7 +1423,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 			mangledFileName();
 			if (!features.runparams().nice)
 				incfile = mangled;
-			// \includeonly doesn't want an extension 
+			// \includeonly doesn't want an extension
 			incfile = changeExtension(incfile, string());
 			incfile = support::latex_path(incfile);
 			if (!incfile.empty()) {
@@ -1441,7 +1441,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 
 	if (!listings_params.empty()) {
 		os << "\\lstset{";
-		// do not test validity because listings_params is 
+		// do not test validity because listings_params is
 		// supposed to be valid
 		string par =
 			InsetListingsParams(listings_params).separatedParams(true);
@@ -1604,7 +1604,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	if (isbackgroundcolor == true) {
 		// only require color here, the background color will be defined
 		// in LaTeXFeatures.cpp to avoid interferences with the LaTeX
-		// package pdfpages 
+		// package pdfpages
 		features.require("color");
 		features.require("pagecolor");
 	}
@@ -1613,7 +1613,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	if (isfontcolor == true) {
 		// only require color here, the font color will be defined
 		// in LaTeXFeatures.cpp to avoid interferences with the LaTeX
-		// package pdfpages 
+		// package pdfpages
 		features.require("color");
 		features.require("fontcolor");
 	}
@@ -1684,7 +1684,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// we decided therefore to load color always before babel, see
 	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg144349.html
 	lyxpreamble += from_ascii(features.getColorOptions());
-	
+
 	// If we use hyperref, jurabib, japanese, or vietnamese, we have to call babel before them.
 	if (use_babel
 	    && (features.isRequired("jurabib")
@@ -1727,7 +1727,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	//   avoid errors with algorithm floats.
 	// use hyperref explicitly if it is required
 	if (features.isRequired("hyperref")) {
-		// pass what we have to stream here, since we need 
+		// pass what we have to stream here, since we need
 		// to access the stream itself in PDFOptions.
 		os << lyxpreamble;
 
@@ -1858,7 +1858,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 			lyxpreamble += "[" + from_ascii(language->polyglossiaOpts()) + "]";
 		lyxpreamble += "{" + from_ascii(language->polyglossia()) + "}\n";
 		// now setup the other languages
-		std::map<std::string, std::string> const polylangs = 
+		std::map<std::string, std::string> const polylangs =
 			features.getPolyglossiaLanguages();
 		for (std::map<std::string, std::string>::const_iterator mit = polylangs.begin();
 		     mit != polylangs.end() ; ++mit) {
@@ -1933,7 +1933,7 @@ bool BufferParams::setBaseClass(string const & classname)
 	LYXERR(Debug::TCLASS, "setBaseClass: " << classname);
 	LayoutFileList & bcl = LayoutFileList::get();
 	if (!bcl.haveClass(classname)) {
-		docstring s = 
+		docstring s =
 			bformat(_("The layout file:\n"
 				"%1$s\n"
 				"could not be found. A default textclass with default\n"
@@ -1946,7 +1946,7 @@ bool BufferParams::setBaseClass(string const & classname)
 
 	bool const success = bcl[classname].load();
 	if (!success) {
-		docstring s = 
+		docstring s =
 			bformat(_("Due to some error in it, the layout file:\n"
 				"%1$s\n"
 				"could not be loaded. A default textclass with default\n"
@@ -1967,7 +1967,7 @@ LayoutFile const * BufferParams::baseClass() const
 {
 	if (LayoutFileList::get().haveClass(pimpl_->baseClass_))
 		return &(LayoutFileList::get()[pimpl_->baseClass_]);
-	else 
+	else
 		return 0;
 }
 
@@ -2007,7 +2007,7 @@ bool BufferParams::addLayoutModule(string const & modName)
 	LayoutModuleList::const_iterator it = layout_modules_.begin();
 	LayoutModuleList::const_iterator end = layout_modules_.end();
 	for (; it != end; it++)
-		if (*it == modName) 
+		if (*it == modName)
 			return false;
 	layout_modules_.push_back(modName);
 	return true;
@@ -2238,7 +2238,7 @@ void BufferParams::readLanguage(Lexer & lex)
 
 void BufferParams::readGraphicsDriver(Lexer & lex)
 {
-	if (!lex.next()) 
+	if (!lex.next())
 		return;
 
 	string const tmptok = lex.getString();
@@ -2264,7 +2264,7 @@ void BufferParams::readGraphicsDriver(Lexer & lex)
 
 void BufferParams::readBullets(Lexer & lex)
 {
-	if (!lex.next()) 
+	if (!lex.next())
 		return;
 
 	int const index = lex.getInteger();
@@ -2284,7 +2284,7 @@ void BufferParams::readBullets(Lexer & lex)
 void BufferParams::readBulletsLaTeX(Lexer & lex)
 {
 	// The bullet class should be able to read this.
-	if (!lex.next()) 
+	if (!lex.next())
 		return;
 	int const index = lex.getInteger();
 	lex.next(true);
@@ -2326,9 +2326,9 @@ void BufferParams::readRemovedModules(Lexer & lex)
 		removed_modules_.push_back(mod);
 		lex.eatLine();
 	}
-	// now we want to remove any removed modules that were previously 
-	// added. normally, that will be because default modules were added in 
-	// setBaseClass(), which gets called when \textclass is read at the 
+	// now we want to remove any removed modules that were previously
+	// added. normally, that will be because default modules were added in
+	// setBaseClass(), which gets called when \textclass is read at the
 	// start of the read.
 	list<string>::const_iterator rit = removed_modules_.begin();
 	list<string>::const_iterator const ren = removed_modules_.end();
@@ -2713,7 +2713,7 @@ string const BufferParams::loadFonts(string const & rm,
 	 *    -- add more GUI options?
 	 *    -- add more fonts (fonts for other scripts)
 	 *    -- if there's a way to find out if a font really supports
-	 *       OldStyle, enable/disable the widget accordingly. 
+	 *       OldStyle, enable/disable the widget accordingly.
 	*/
 	if (use_systemfonts && features.isAvailable("fontspec")) {
 		// "Mapping=tex-text" and "Ligatures=TeX" are equivalent.
@@ -2737,8 +2737,8 @@ string const BufferParams::loadFonts(string const & rm,
 		if (sf != "default") {
 			string const sans = parseFontName(sf);
 			if (sfscale != 100)
-				os << "\\setsansfont[Scale=" 
-				   << float(sfscale) / 100 
+				os << "\\setsansfont[Scale="
+				   << float(sfscale) / 100
 				   << "," << texmapping << "]{"
 				   << sans << "}\n";
 			else
@@ -2748,8 +2748,8 @@ string const BufferParams::loadFonts(string const & rm,
 		if (tt != "default") {
 			string const mono = parseFontName(tt);
 			if (ttscale != 100)
-				os << "\\setmonofont[Scale=" 
-				   << float(ttscale) / 100 
+				os << "\\setmonofont[Scale="
+				   << float(ttscale) / 100
 				   << "]{"
 				   << mono << "}\n";
 			else

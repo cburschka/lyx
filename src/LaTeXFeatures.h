@@ -56,7 +56,7 @@ public:
 	std::string const getBabelPresettings() const;
 	/// Extra preamble code after babel is called
 	std::string const getBabelPostsettings() const;
-	/// Do we need to pass the languages to babel directly? 
+	/// Do we need to pass the languages to babel directly?
 	bool needBabelLangOptions() const;
 	/// Load AMS packages when appropriate
 	std::string const loadAMSPackages() const;

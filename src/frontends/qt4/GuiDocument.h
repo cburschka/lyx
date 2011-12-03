@@ -139,7 +139,7 @@ private:
 	UiWidget<Ui::ListingsSettingsUi> *listingsModule;
 	PreambleModule * preambleModule;
 	LocalLayout * localLayout;
-	
+
 	GuiBranches * branchesModule;
 	GuiIndices * indicesModule;
 
@@ -217,7 +217,7 @@ private:
 	///
 	std::list<modInfoStruct> const getProvidedModules();
 	///
-	std::list<modInfoStruct> const 
+	std::list<modInfoStruct> const
 			makeModuleInfo(LayoutModuleList const & mods);
 	///
 	void setLanguage() const;

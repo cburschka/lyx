@@ -117,7 +117,7 @@ public:
 	///
 	LayoutFileIndex const & baseClassID() const;
 	/// Set the LyX layout file this document is using.
-	/// NOTE: This does not call makeDocumentClass() to update the local 
+	/// NOTE: This does not call makeDocumentClass() to update the local
 	/// DocumentClass. That needs to be done manually.
 	/// \param filename the name of the layout file
 	bool setBaseClass(std::string const & classname);
@@ -127,8 +127,8 @@ public:
 	/// Returns the DocumentClass currently in use: the BaseClass as modified
 	/// by modules.
 	DocumentClass const & documentClass() const;
-	/// \return A pointer to the DocumentClass currently in use: the BaseClass 
-	/// as modified by modules. 
+	/// \return A pointer to the DocumentClass currently in use: the BaseClass
+	/// as modified by modules.
 	DocumentClass const * documentClassPtr() const;
 	/// This bypasses the baseClass and sets the textClass directly.
 	/// Should be called with care and would be better not being here,
@@ -137,7 +137,7 @@ public:
 	/// List of modules in use
 	LayoutModuleList const & getModules() const { return layout_modules_; }
 	/// List of default modules the user has removed
-	std::list<std::string> const & getRemovedModules() const 
+	std::list<std::string> const & getRemovedModules() const
 			{ return removed_modules_; }
 	///
 	/// Add a module to the list of modules in use. This checks only that the
@@ -149,7 +149,7 @@ public:
 	/// not conflict with already-present modules, isn't already loaded, etc.
 	bool moduleCanBeAdded(std::string const & modName) const;
 	///
-	void addRemovedModule(std::string const & modName) 
+	void addRemovedModule(std::string const & modName)
 			{ removed_modules_.push_back(modName); }
 	/// Clear the list
 	void clearLayoutModules() { layout_modules_.clear(); }
@@ -180,10 +180,10 @@ public:
 	std::vector<std::string> backends() const;
 
 	/// List of included children (for includeonly)
-	std::list<std::string> const & getIncludedChildren() const 
+	std::list<std::string> const & getIncludedChildren() const
 			{ return included_children_; }
 	///
-	void addIncludedChildren(std::string const & child) 
+	void addIncludedChildren(std::string const & child)
 			{ included_children_.push_back(child); }
 	/// Clear the list of included children
 	void clearIncludedChildren() { included_children_.clear(); }
@@ -473,7 +473,7 @@ private:
 	CiteEngine cite_engine_;
 	///
 	DocumentClass * doc_class_;
-	/// 
+	///
 	LayoutModuleList layout_modules_;
 	/// this is for modules that are required by the document class but that
 	/// the user has chosen not to use

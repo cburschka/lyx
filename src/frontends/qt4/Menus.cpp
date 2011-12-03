@@ -108,9 +108,9 @@ public:
 		    menuitem is in a submenu, the submenu is enabled to make sure the
 		    user sees the information. */
 		Help,
-		/** This type of item merely shows that there might be a list or 
+		/** This type of item merely shows that there might be a list or
 		    something alike at this position, but the list is still empty.
-		    If this item is in a submenu, the submenu will not always be 
+		    If this item is in a submenu, the submenu will not always be
 		    enabled. */
 		Info,
 		/** This is the list of last opened file,
@@ -204,8 +204,8 @@ public:
 	~MenuItem() {}
 
 	/// The label of a given menuitem
-	QString label() const 
-	{	
+	QString label() const
+	{
 		int const index = label_.lastIndexOf('|');
 		return index == -1 ? label_ : label_.left(index);
 	}
@@ -214,7 +214,7 @@ public:
 	QString shortcut() const
 	{
 		int const index = label_.lastIndexOf('|');
-		return index == -1 ? QString() : label_.mid(index + 1); 
+		return index == -1 ? QString() : label_.mid(index + 1);
 	}
 	/// The complete label, with label and shortcut separated by a '|'
 	QString fulllabel() const { return label_; }
@@ -315,7 +315,7 @@ public:
 	void cat(MenuDefinition const & other);
 	///
 	void catSub(docstring const & name);
-	
+
 	// search for func in this menu iteratively, and put menu
 	// names in a stack.
 	bool searchMenu(FuncRequest const & func, docstring_list & names)
@@ -745,7 +745,7 @@ void MenuDefinition::expandGraphicsGroups(BufferView const * bv)
 
 	set<string>::const_iterator it = grp.begin();
 	set<string>::const_iterator end = grp.end();
-	add(MenuItem(MenuItem::Command, qt_("No Group"), 
+	add(MenuItem(MenuItem::Command, qt_("No Group"),
 		     FuncRequest(LFUN_SET_GRAPHICS_GROUP)));
 	for (; it != end; it++) {
 		addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(*it) + '|',
@@ -781,7 +781,7 @@ void MenuDefinition::expandSpellingSuggestions(BufferView const * bv)
 					docstring const & suggestion = suggestions[i];
 					LYXERR(Debug::GUI, suggestion);
 					MenuItem w(MenuItem::Command, toqstr(suggestion),
-						FuncRequest(LFUN_WORD_REPLACE, 
+						FuncRequest(LFUN_WORD_REPLACE,
 							replace2string(suggestion, selection,
 								true, true, false, true, false)));
 					if (i < m)
@@ -829,7 +829,7 @@ void MenuDefinition::expandLanguageSelector(Buffer const * buf)
 
 	std::set<Language const *> languages_buffer =
 		buf->masterBuffer()->getLanguages();
-	
+
 	if (languages_buffer.size() < 2)
 		return;
 
@@ -959,8 +959,8 @@ void MenuDefinition::expandDocuments()
 			++i;
 		}
 		b = theBufferList().next(b);
-	} while (b != first); 
-	
+	} while (b != first);
+
 	if (!item.submenu().empty())
 		add(item);
 }
@@ -1016,7 +1016,7 @@ void MenuDefinition::expandFormats(MenuItem::Kind const kind, Buffer const * buf
 		LASSERT(false, /* */);
 		return;
 	}
-	
+
 	bool const view_update = (kind == MenuItem::ViewFormats
 			|| kind == MenuItem::UpdateFormats);
 
@@ -1037,7 +1037,7 @@ void MenuDefinition::expandFormats(MenuItem::Kind const kind, Buffer const * buf
 		docstring lab = from_utf8((*fit)->prettyname());
 		docstring const scut = from_utf8((*fit)->shortcut());
 		docstring const tmplab = lab;
- 
+
 		if (!scut.empty())
 			lab += char_type('|') + scut;
 		docstring const lab_i18n = translateIfPossible(lab);
@@ -1073,7 +1073,7 @@ void MenuDefinition::expandFormats(MenuItem::Kind const kind, Buffer const * buf
 
 		if (view_update) {
 			if (buf)
-				item.submenu().addWithStatusCheck(MenuItem(MenuItem::Command, 
+				item.submenu().addWithStatusCheck(MenuItem(MenuItem::Command,
 					toqstr(label), FuncRequest(action, (*fit)->name())));
 			else
 				item.submenu().add(MenuItem(MenuItem::Command, toqstr(label),
@@ -1158,7 +1158,7 @@ void MenuDefinition::expandFlexInsert(
 			// we remove the "Flex:" prefix, if it is present
 			if (prefixIs(label, from_utf8("Flex:")))
 				label = label.substr(5);
-			addWithStatusCheck(MenuItem(MenuItem::Command, 
+			addWithStatusCheck(MenuItem(MenuItem::Command,
 				toqstr(translateIfPossible(label)),
 				FuncRequest(LFUN_FLEX_INSERT, Lexer::quoteString(label))));
 		}
@@ -1251,7 +1251,7 @@ void MenuDefinition::expandToc(Buffer const * buf)
 	}
 
 	MenuDefinition other_lists;
-	
+
 	FloatList const & floatlist = buf->params().documentClass().floats();
 	TocList const & toc_list = buf->tocBackend().tocs();
 	TocList::const_iterator cit = toc_list.begin();
@@ -1295,7 +1295,7 @@ void MenuDefinition::expandToc(Buffer const * buf)
 	if (cit == end)
 		LYXERR(Debug::GUI, "No table of contents.");
 	else {
-		if (cit->second.size() > 0 ) 
+		if (cit->second.size() > 0 )
 			expandToc2(cit->second, 0, cit->second.size(), 0);
 		else
 			add(MenuItem(MenuItem::Info, qt_("<Empty Table of Contents>")));
@@ -1365,12 +1365,12 @@ void MenuDefinition::expandBranches(Buffer const * buf)
 				    FuncRequest(LFUN_BRANCH_INSERT,
 						cit->branch())));
 	}
-	
+
 	if (buf == buf->masterBuffer())
 		return;
-	
+
 	MenuDefinition child_branches;
-	
+
 	BranchList::const_iterator ccit = params.branchlist().begin();
 	BranchList::const_iterator cend = params.branchlist().end();
 
@@ -1386,7 +1386,7 @@ void MenuDefinition::expandBranches(Buffer const * buf)
 				    FuncRequest(LFUN_BRANCH_INSERT,
 						ccit->branch())));
 	}
-	
+
 	if (!child_branches.empty()) {
 		MenuItem item(MenuItem::Submenu, qt_("Child Document"));
 		item.setSubmenu(child_branches);
@@ -1423,12 +1423,12 @@ void MenuDefinition::expandIndices(Buffer const * buf, bool listof)
 
 	for (int ii = 1; cit != end; ++cit, ++ii) {
 		if (listof) {
-			docstring const label = 
+			docstring const label =
 				bformat(_("Index: %1$s"), cit->index());
 			addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
 					   FuncRequest(LFUN_INDEX_PRINT, cit->shortcut())));
 		} else {
-			docstring const label = 
+			docstring const label =
 				bformat(_("Index Entry (%1$s)"), cit->index());
 			addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
 					   FuncRequest(LFUN_INDEX_INSERT, cit->shortcut())));
@@ -1457,7 +1457,7 @@ void MenuDefinition::expandIndicesContext(Buffer const * buf, bool listof)
 			addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(cit->index()),
 					   FuncRequest(LFUN_INSET_MODIFY, data)));
 		} else {
-			docstring const label = 
+			docstring const label =
 					bformat(_("Index Entry (%1$s)"), cit->index());
 			addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
 					   FuncRequest(LFUN_INSET_MODIFY,
@@ -1481,7 +1481,7 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 	}
 	InsetCommand const * citinset =
 				static_cast<InsetCommand const *>(inset);
-	
+
 	Buffer const * buf = &bv->buffer();
 	docstring key = citinset->getParam("key");
 	// we can only handle one key currently
@@ -1569,7 +1569,7 @@ void Menu::Impl::populate(QMenu & qMenu, MenuDefinition const & menu)
 			subMenu->setEnabled(m->status().enabled());
 		} else {
 			// we have a MenuItem::Command
-			qMenu.addAction(new Action(view, QIcon(), label(*m), 
+			qMenu.addAction(new Action(view, QIcon(), label(*m),
 				m->func(), m->tooltip(), &qMenu));
 		}
 	}
@@ -1579,7 +1579,7 @@ void Menu::Impl::populate(QMenu & qMenu, MenuDefinition const & menu)
 class AlwaysMnemonicStyle : public QProxyStyle {
 public:
 	int styleHint(StyleHint hint, const QStyleOption *opt = 0, const QWidget *widget = 0,
-		QStyleHintReturn *returnData = 0) const 
+		QStyleHintReturn *returnData = 0) const
 	{
 		if (hint == QStyle::SH_UnderlineShortcut)
 			return 1;
@@ -1606,7 +1606,7 @@ Menu::Menu(GuiView * gv, QString const & name, bool top_level, bool keyboard)
 	d->name = name;
 	setTitle(name);
 	if (d->top_level_menu)
-		connect(this, SIGNAL(aboutToShow()), this, SLOT(updateView()));	
+		connect(this, SIGNAL(aboutToShow()), this, SLOT(updateView()));
 }
 
 
@@ -1930,7 +1930,7 @@ MenuDefinition & Menus::Impl::getMenu(QString const & name)
 
 /////////////////////////////////////////////////////////////////////
 //
-// Menus 
+// Menus
 //
 /////////////////////////////////////////////////////////////////////
 
@@ -2094,7 +2094,7 @@ void Menus::updateMenu(Menu * qmenu)
 		MenuDefinition cat_menu = d->getMenu(toqstr(menu_name));
 		//FIXME: 50 is a wild guess. We should take into account here
 		//the expansion of menu items, disabled optional items etc.
-		bool const in_sub_menu = fromLyxMenu.size() > 0 
+		bool const in_sub_menu = fromLyxMenu.size() > 0
 			&& fromLyxMenu.size() + cat_menu.size() > 50 ;
 		if (in_sub_menu)
 			fromLyxMenu.catSub(menu_name);

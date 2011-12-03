@@ -13,7 +13,7 @@
 #define CITATION_H
 
 namespace lyx {
-	
+
 class Buffer;
 
 enum CiteEngine {

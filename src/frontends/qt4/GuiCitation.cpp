@@ -99,14 +99,14 @@ GuiCitation::GuiCitation(GuiView & lv)
 		this, SLOT(changed()));
 	connect(textAfterED, SIGNAL(textChanged(QString)),
 		this, SLOT(changed()));
-	connect(findLE, SIGNAL(returnPressed()), 
+	connect(findLE, SIGNAL(returnPressed()),
 		this, SLOT(on_searchPB_clicked()));
 	connect(textBeforeED, SIGNAL(returnPressed()),
 		this, SLOT(on_okPB_clicked()));
 	connect(textAfterED, SIGNAL(returnPressed()),
 		this, SLOT(on_okPB_clicked()));
 
-	selectionManager = new GuiSelectionManager(availableLV, selectedLV, 
+	selectionManager = new GuiSelectionManager(availableLV, selectedLV,
 			addPB, deletePB, upPB, downPB, &available_model_, &selected_model_);
 	connect(selectionManager, SIGNAL(selectionChanged()),
 		this, SLOT(setCitedKeys()));
@@ -290,16 +290,16 @@ void GuiCitation::fillStyles(BiblioInfo const & bi)
 
 	QStringList sty = citationStyles(bi, curr);
 
-	if (sty.isEmpty()) { 
+	if (sty.isEmpty()) {
 		// some error
 		citationStyleCO->setEnabled(false);
 		citationStyleLA->setEnabled(false);
 		citationStyleCO->clear();
 		return;
 	}
-	
+
 	citationStyleCO->blockSignals(true);
-	
+
 	// save old index
 	int const oldIndex = citationStyleCO->currentIndex();
 	citationStyleCO->clear();
@@ -375,38 +375,38 @@ void GuiCitation::updateInfo(BiblioInfo const & bi, QModelIndex const & idx)
 void GuiCitation::findText(QString const & text, bool reset)
 {
 	//"All Fields" and "Keys" are the first two
-	int index = fieldsCO->currentIndex() - 2; 
+	int index = fieldsCO->currentIndex() - 2;
 	BiblioInfo const & bi = bibInfo();
 	vector<docstring> const & fields = bi.getFields();
 	docstring field;
-	
+
 	if (index <= -1 || index >= int(fields.size()))
 		//either "All Fields" or "Keys" or an invalid value
 		field = from_ascii("");
 	else
 		field = fields[index];
-	
+
 	//Was it "Keys"?
 	bool const onlyKeys = index == -1;
-	
+
 	//"All Entry Types" is first.
-	index = entriesCO->currentIndex() - 1; 
+	index = entriesCO->currentIndex() - 1;
 	vector<docstring> const & entries = bi.getEntries();
 	docstring entry_type;
 	if (index < 0 || index >= int(entries.size()))
 		entry_type = from_ascii("");
-	else 
+	else
 		entry_type = entries[index];
-	
+
 	bool const case_sentitive = caseCB->checkState();
 	bool const reg_exp = regexCB->checkState();
-	findKey(bi, text, onlyKeys, field, entry_type, 
+	findKey(bi, text, onlyKeys, field, entry_type,
 	               case_sentitive, reg_exp, reset);
 	//FIXME
-	//It'd be nice to save and restore the current selection in 
+	//It'd be nice to save and restore the current selection in
 	//availableLV. Currently, we get an automatic reset, since the
 	//model is reset.
-	
+
 	updateControls(bi);
 }
 
@@ -531,10 +531,10 @@ void GuiCitation::init()
 		selectedLV->blockSignals(true);
 		selectedLV->setFocus();
 		QModelIndex idx = selected_model_.index(0, 0);
-		selectedLV->selectionModel()->select(idx, 
+		selectedLV->selectionModel()->select(idx,
 				QItemSelectionModel::ClearAndSelect);
 		selectedLV->blockSignals(false);
-		
+
 		// set the style combo appropriately
 		string const & command = params_.getCmdName();
 		vector<CiteStyle> const & styles = citeStyles_;
@@ -594,18 +594,18 @@ void GuiCitation::findKey(BiblioInfo const & bi,
 	last_searched_string = str;
 
 	QStringList result;
-	
-	// First, filter by entry_type, which will be faster than 
+
+	// First, filter by entry_type, which will be faster than
 	// what follows, so we may get to do that on less.
 	vector<docstring> keyVector = to_docstring_vector(keys);
 	filterByEntryType(bi, keyVector, entry_type);
-	
+
 	if (str.isEmpty())
 		result = to_qstring_list(keyVector);
 	else
-		result = to_qstring_list(searchKeys(bi, keyVector, only_keys, 
+		result = to_qstring_list(searchKeys(bi, keyVector, only_keys,
 			qstring_to_ucs4(str), field, case_sensitive, reg_exp));
-	
+
 	available_model_.setStringList(result);
 }
 
@@ -617,7 +617,7 @@ QStringList GuiCitation::citationStyles(BiblioInfo const & bi, int sel)
 }
 
 
-void GuiCitation::setCitedKeys() 
+void GuiCitation::setCitedKeys()
 {
 	cited_keys_ = selected_model_.stringList();
 }
@@ -640,11 +640,11 @@ void GuiCitation::clearParams()
 
 
 void GuiCitation::filterByEntryType(BiblioInfo const & bi,
-	vector<docstring> & keyVector, docstring entry_type) 
+	vector<docstring> & keyVector, docstring entry_type)
 {
 	if (entry_type.empty())
 		return;
-	
+
 	vector<docstring>::iterator it = keyVector.begin();
 	vector<docstring>::iterator end = keyVector.end();
 
@@ -690,7 +690,7 @@ static docstring escape_special_chars(docstring const & expr)
 }
 
 
-vector<docstring> GuiCitation::searchKeys(BiblioInfo const & bi,	
+vector<docstring> GuiCitation::searchKeys(BiblioInfo const & bi,
 	vector<docstring> const & keys_to_search, bool only_keys,
  	docstring const & search_expression, docstring field,
 	bool case_sensitive, bool regex)
@@ -723,16 +723,16 @@ vector<docstring> GuiCitation::searchKeys(BiblioInfo const & bi,
 		BiblioInfo::const_iterator info = bi.find(*it);
 		if (info == bi.end())
 			continue;
-		
+
 		BibTeXInfo const & kvm = info->second;
 		string data;
 		if (only_keys)
 			data = to_utf8(*it);
 		else if (field.empty())
 			data = to_utf8(*it) + ' ' + to_utf8(kvm.allData());
-		else 
+		else
 			data = to_utf8(kvm[field]);
-		
+
 		if (data.empty())
 			continue;
 

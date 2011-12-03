@@ -25,7 +25,7 @@
 #include "FuncRequest.h"
 #include "InsetIterator.h"
 #include "InsetList.h"
-#include "Language.h" 
+#include "Language.h"
 #include "Lexer.h"
 #include "output_xhtml.h"
 #include "OutputParams.h"
@@ -316,7 +316,7 @@ void InsetBibitem::collectBibKeys(InsetIterator const & it) const
 	docstring const key = getParam("key");
 	BibTeXInfo keyvalmap(false);
 	keyvalmap.label(bibLabel());
-	DocIterator doc_it(it); 
+	DocIterator doc_it(it);
 	doc_it.forwardPos();
 	keyvalmap[from_ascii("ref")] = doc_it.paragraph().asString();
 	buffer().addBibTeXInfo(key, keyvalmap);

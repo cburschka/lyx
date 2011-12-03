@@ -24,7 +24,7 @@
 
 
 namespace lyx {
-	
+
 class Buffer;
 
 /// FIXME: To Citation.cpp?
@@ -43,7 +43,7 @@ std::string citationStyleToString(CitationStyle const &);
 /// std::map.
 class BibTeXInfo {
 public:
-	/// The keys are BibTeX fields (e.g., author, title, etc), 
+	/// The keys are BibTeX fields (e.g., author, title, etc),
 	/// and the values are the associated field values.
 	typedef std::map<docstring, docstring>::const_iterator const_iterator;
 	///
@@ -55,7 +55,7 @@ public:
 	BibTeXInfo(docstring const & key, docstring const & type);
 	/// \return the short form of an authorlist
 	docstring const getAbbreviatedAuthor() const;
-	/// 
+	///
 	docstring const getYear() const;
 	///
 	docstring const getXRef() const;
@@ -69,7 +69,7 @@ public:
 	const_iterator end() const { return bimap_.end(); }
 	/// \return value for field f
 	/// note that this will create an empty field if it does not exist
-	docstring & operator[](docstring const & f) 
+	docstring & operator[](docstring const & f)
 		{ return bimap_[f]; }
 	/// \return value for field f
 	/// this one, since it is const, will simply return docstring() if
@@ -92,20 +92,20 @@ public:
 	docstring citeNumber() const { return cite_number_; }
 	///
 	void setCiteNumber(docstring const & num) { cite_number_ = num; }
-	/// a,b,c, etc, for author-year. currently used only by XHTML 
+	/// a,b,c, etc, for author-year. currently used only by XHTML
 	/// output routines.
 	char modifier() const { return modifier_; }
 	///
 	void setModifier(char c) { modifier_ = c; }
 	///
 	docstring entryType() const { return entry_type_; }
-	/// 
+	///
 	bool isBibTeX() const { return is_bibtex_; }
 private:
 	/// like operator[], except, if the field is empty, it will attempt
 	/// to get the data from xref BibTeXInfo object, which would normally
 	/// be the one referenced in the crossref field.
-	docstring getValueForKey(std::string const & key, 
+	docstring getValueForKey(std::string const & key,
 			BibTeXInfo const * const xref = 0) const;
 	/// replace %keys% in a format string with their values
 	/// called from getInfo()
@@ -114,7 +114,7 @@ private:
 	///   {%key%[[format]]}, which prints format if key is non-empty
 	/// the latter may optionally contain an `else' clause as well:
 	///   {%key%[[if format]][[else format]]}
-	/// material intended only for rich text (HTML) output should be 
+	/// material intended only for rich text (HTML) output should be
 	/// wrapped in "{!" and "!}". it will be removed if richtext is
 	/// false.
 	/// a simple macro facility is also available. keys that look like
@@ -122,7 +122,7 @@ private:
 	/// moreover, keys that look like "%_key%" are treated as translatable
 	/// so that things like "pp." and "vol." can be translated.
 	docstring expandFormat(std::string const & fmt,
-			BibTeXInfo const * const xref, int & counter, 
+			BibTeXInfo const * const xref, int & counter,
 			Buffer const & buf, bool richtext) const;
 	/// true if from BibTeX; false if from bibliography environment
 	bool is_bibtex_;
@@ -138,7 +138,7 @@ private:
 	docstring entry_type_;
 	/// a cache for getInfo()
 	mutable docstring info_;
-	/// 
+	///
 	docstring cite_number_;
 	///
 	char modifier_;
@@ -165,13 +165,13 @@ public:
 	/// if \param use_modifier is true, then we will also append any
 	/// modifier for this entry (e.g., 1998b).
 	/// Note that this will get the year from the crossref if it's
-	/// not present in the record itself.	
+	/// not present in the record itself.
 	docstring const getYear(docstring const & key,
 			bool use_modifier = false) const;
 	///
 	docstring const getCiteNumber(docstring const & key) const;
 	/// \return formatted BibTeX data associated with a given key.
-	/// Empty if no info exists. 
+	/// Empty if no info exists.
 	/// Note that this will retrieve data from the crossref as needed.
 	/// If \param richtext is true, then it will output any richtext tags
 	/// marked in the citation format and escape < and > elsewhere.
@@ -213,9 +213,9 @@ public:
 	void collectCitedEntries(Buffer const & buf);
 	/// A list of BibTeX keys cited in the current document, sorted by
 	/// the last name of the author.
-	/// Make sure you have called collectCitedEntries() before you try to 
+	/// Make sure you have called collectCitedEntries() before you try to
 	/// use this. You should probably call it just before you use this.
-	std::vector<docstring> const & citedEntries() const 
+	std::vector<docstring> const & citedEntries() const
 		{ return cited_entries_; }
 	///
 	void makeCitationLabels(Buffer const & buf);
@@ -246,7 +246,7 @@ private:
 	std::map<docstring, BibTeXInfo> bimap_;
 	/// a possibly sorted list of entries cited in our Buffer.
 	/// do not try to make this a vector<BibTeXInfo *> or anything of
-	/// the sort, because reloads will invalidate those pointers. 
+	/// the sort, because reloads will invalidate those pointers.
 	std::vector<docstring> cited_entries_;
 };
 

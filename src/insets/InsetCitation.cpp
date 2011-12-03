@@ -141,7 +141,7 @@ docstring InsetCitation::toolTip(BufferView const & bv, int, int) const
 
 
 namespace {
-	
+
 // FIXME See the header for the issue.
 string defaultCiteCommand(CiteEngine engine)
 {
@@ -163,7 +163,7 @@ string defaultCiteCommand(CiteEngine engine)
 	return str;
 }
 
-	
+
 string asValidLatexCommand(string const & input, CiteEngine const engine)
 {
 	string const default_str = defaultCiteCommand(engine);
@@ -210,7 +210,7 @@ string asValidLatexCommand(string const & input, CiteEngine const engine)
 }
 
 
-inline docstring wrapCitation(docstring const & key, 
+inline docstring wrapCitation(docstring const & key,
 		docstring const & content, bool for_xhtml)
 {
 	if (!for_xhtml)
@@ -341,11 +341,11 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 				else
 					label += wrapCitation(*it, author, for_xhtml) + sep_str;
 			}
-		} 
+		}
 		// nocite
 		else if (cite_type == "nocite") {
 			label += *it + sep_str;
-		} 
+		}
 		// (authors1 (<before> year);  ... ;
 		//  authors_last (<before> year, <after>)
 		else if (cite_type == "citet") {
@@ -365,8 +365,8 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 			case ENGINE_BASIC:
 				break;
 			}
-		} 
-		// author, year; author, year; ...	
+		}
+		// author, year; author, year; ...
 		else if (cite_type == "citep" ||
 			   cite_type == "citealp") {
 			if (engine == ENGINE_NATBIB_NUMERICAL) {
@@ -375,7 +375,7 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 				label += wrapCitation(*it, author + ", " + year, for_xhtml) + sep_str;
 			}
 
-		} 
+		}
 		// (authors1 <before> year;
 		//  authors_last <before> year, <after>)
 		else if (cite_type == "citealt") {
@@ -389,15 +389,15 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 					wrapCitation(*it, citenum, for_xhtml) + sep_str;
 				break;
 			case ENGINE_JURABIB:
-				label += before_str + 
+				label += before_str +
 					wrapCitation(*it, author + ' ' + year, for_xhtml) + sep_str;
 				break;
 			case ENGINE_BASIC:
 				break;
 			}
 
-		
-		} 
+
+		}
 		// author; author; ...
 		else if (cite_type == "citeauthor") {
 			label += wrapCitation(*it, author, for_xhtml) + sep_str;
@@ -430,7 +430,7 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 		label = before_str + label;
 	}
 
-	if (cite_type == "citep" || cite_type == "citeyearpar" || 
+	if (cite_type == "citep" || cite_type == "citeyearpar" ||
 	    (cite_type == "cite" && engine == ENGINE_BASIC) )
 		label = op + label + cp;
 

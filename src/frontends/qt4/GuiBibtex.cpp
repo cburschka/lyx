@@ -419,7 +419,7 @@ void GuiBibtex::applyView()
 			// use \nocite{*}
 			params_["btprint"] = from_ascii("btPrintAll");
 			break;
-		}		
+		}
 	}
 }
 

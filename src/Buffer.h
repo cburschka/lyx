@@ -111,7 +111,7 @@ public:
 		ReadWrongVersion,
 		ReadFileNotFound,
 		ReadVCError,
-		ReadAutosaveFailure,		
+		ReadAutosaveFailure,
 		ReadEmergencyFailure,
 		ReadNoLyXFormat,
 		ReadDocumentFailure,
@@ -234,7 +234,7 @@ private:
 	///
 	void clone(BufferMap &, CloneList *) const;
 	/// save timestamp and checksum of the given file.
-	void saveCheckSum() const;	
+	void saveCheckSum() const;
 	/// read a new file
 	ReadStatus readFile(support::FileName const & fn);
 	/// Reads a file without header.
@@ -246,14 +246,14 @@ private:
 	/// implemented for RCS.
 	/// \sa LyXVC::file_not_found_hook
 	ReadStatus extractFromVC();
-	/// Reads the first tag of a LyX File and 
+	/// Reads the first tag of a LyX File and
 	/// returns the file format number.
 	ReadStatus parseLyXFormat(Lexer & lex, support::FileName const & fn,
 		int & file_format) const;
 	/// Convert the LyX file to the LYX_FORMAT using
 	/// the lyx2lyx script and returns the filename
 	/// of the temporary file to be read
-	ReadStatus convertLyXFormat(support::FileName const & fn, 
+	ReadStatus convertLyXFormat(support::FileName const & fn,
 		support::FileName & tmpfile, int from_format);
 	//@}
 
@@ -261,7 +261,7 @@ public:
 	/// \name Functions involved in autosave and emergency files.
 	//@{
 	/// Save an autosave file to #filename.lyx#
-	bool autoSave() const;	
+	bool autoSave() const;
 	/// save emergency file
 	/// \return a status message towards the user.
 	docstring emergencyWrite();
@@ -270,11 +270,11 @@ public:
 //private:
 	///
 	void removeAutosaveFile() const;
-	
+
 private:
 	/// Try to load an autosave file associated to \c fn.
 	ReadStatus loadAutosave();
-	/// Try to load an emergency file associated to \c fn. 
+	/// Try to load an emergency file associated to \c fn.
 	ReadStatus loadEmergency();
 	/// Get the filename of the emergency file associated with the Buffer
 	support::FileName getEmergencyFileName() const;
@@ -407,15 +407,15 @@ public:
 
 	/// \return true if \p child is a child of this \c Buffer.
 	bool isChild(Buffer * child) const;
-	
+
 	/// \return true if this \c Buffer has children
 	bool hasChildren() const;
-	
+
 	/// \return a list of the direct children of this Buffer.
 	/// this list has no duplicates and is in the order in which
 	/// the children appear.
 	ListOfBuffers getChildren() const;
-	
+
 	/// \return a list of all descendents of this Buffer (children,
 	/// grandchildren, etc). this list has no duplicates and is in
 	/// the order in which the children appear.
@@ -447,7 +447,7 @@ public:
 	void validate(LaTeXFeatures &) const;
 
 	/// Reference information is cached in the Buffer, so we do not
-	/// have to check or read things over and over. 
+	/// have to check or read things over and over.
 	///
 	/// There are two caches.
 	///
@@ -455,11 +455,11 @@ public:
 	/// being gathered. This cache is PER BUFFER, and the cache for the
 	/// master essentially includes the cache for its children. This gets
 	/// invalidated when an InsetBibtex is created, deleted, or modified.
-	/// 
+	///
 	/// The other is a cache of the reference information itself. This
 	/// exists only in the master buffer, and when it needs to be updated,
 	/// the children add their information to the master's cache.
-	
+
 	/// Calling this method invalidates the cache and so requires a
 	/// re-read.
 	void invalidateBibinfoCache() const;
@@ -667,7 +667,7 @@ public:
 	/// do this one.
 	/// \param output: whether we are preparing for output.
 	void updateBuffer(UpdateScope scope, UpdateType utype) const;
-	/// 
+	///
 	void updateBuffer(ParIterator & parit, UpdateType utype) const;
 
 	/// Spellcheck starting from \p from.
@@ -700,7 +700,7 @@ private:
 	void updateBibfilesCache(UpdateScope scope = UpdateMaster) const;
 	/// Return the list with all bibfiles in use (including bibfiles
 	/// of loaded child documents).
-	support::FileNameList const & 
+	support::FileNameList const &
 		getBibfilesCache(UpdateScope scope = UpdateMaster) const;
 	///
 	void collectChildren(ListOfBuffers & children, bool grand_children) const;

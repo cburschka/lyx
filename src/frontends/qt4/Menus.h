@@ -43,7 +43,7 @@ public:
 
 	/// QMenu::clear() reimplementation to handle the deletion of submenus.
 	void clear();
-	
+
 private Q_SLOTS:
 	///
 	void updateView();
@@ -66,7 +66,7 @@ public:
 
 	///
 	void reset();
-	
+
 	///
 	bool searchMenu(FuncRequest const & func,
 		docstring_list & names) const;

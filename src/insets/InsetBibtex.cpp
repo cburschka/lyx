@@ -100,7 +100,7 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 			if (message.type_ == WarningException) {
 				Alert::warning(message.title_, message.details_);
 				cur.noScreenUpdate();
-			} else 
+			} else
 				throw message;
 			break;
 		}
@@ -211,7 +211,7 @@ docstring InsetBibtex::toolTip(BufferView const & /*bv*/, int /*x*/, int /*y*/) 
 			tip += _("all uncited references");
 		else
 			tip += _("all cited references");
-	
+
 	if (toc) {
 		tip += ", ";
 		tip += _("included in TOC");
@@ -307,7 +307,7 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 
 		if (didone)
 			dbs << ',';
-		else 
+		else
 			didone = true;
 		// FIXME UNICODE
 		dbs << from_utf8(latex_path(database));
@@ -334,7 +334,7 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 
 	if (!style.empty()) {
 		string base = normalizeName(buffer(), runparams, style, ".bst");
-		FileName const try_in_file = 
+		FileName const try_in_file =
 			makeAbsPath(base + ".bst", buffer().filePath());
 		bool const not_from_texmf = try_in_file.isReadableFile();
 		// If this style does not come from texmf and we are not
@@ -405,9 +405,9 @@ support::FileNameList InsetBibtex::getBibFiles() const
 {
 	FileName path(buffer().filePath());
 	support::PathChanger p(path);
-	
+
 	support::FileNameList vec;
-	
+
 	vector<docstring> bibfilelist = getVectorFromString(getParam("bibfiles"));
 	vector<docstring>::const_iterator it = bibfilelist.begin();
 	vector<docstring>::const_iterator en = bibfilelist.end();
@@ -419,7 +419,7 @@ support::FileNameList InsetBibtex::getBibFiles() const
 		else
 			LYXERR0("Couldn't find " + to_utf8(*it) + " in InsetBibtex::getBibFiles()!");
 	}
-	
+
 	return vec;
 
 }
@@ -478,7 +478,7 @@ namespace {
 	/// @return true if a string of length > 0 could be read.
 	///
 	bool readTypeOrKey(docstring & val, ifdocstream & ifs,
-		docstring const & delimChars, docstring const & illegalChars, 
+		docstring const & delimChars, docstring const & illegalChars,
 		charCase chCase) {
 
 		char_type ch;
@@ -498,10 +498,10 @@ namespace {
 
 		// read value
 		bool legalChar = true;
-		while (ifs && !isSpace(ch) && 
+		while (ifs && !isSpace(ch) &&
 						 delimChars.find(ch) == docstring::npos &&
 						 (legalChar = (illegalChars.find(ch) == docstring::npos))
-					) 
+					)
 		{
 			if (chCase == makeLowerCase)
 				val += lowercase(ch);
@@ -509,7 +509,7 @@ namespace {
 				val += ch;
 			ifs.get(ch);
 		}
-		
+
 		if (!legalChar) {
 			ifs.putback(ch);
 			return false;
@@ -570,33 +570,33 @@ namespace {
 				do {
 					ifs.get(ch);
 				} while (ifs && isSpace(ch));
-				
+
 				if (!ifs)
 					return false;
-				
+
 				// We now have the first non-whitespace character
 				// We'll collapse adjacent whitespace.
 				bool lastWasWhiteSpace = false;
-				
+
  				// inside this delimited text braces must match.
  				// Thus we can have a closing delimiter only
  				// when nestLevel == 0
 				int nestLevel = 0;
- 
+
 				while (ifs && (nestLevel > 0 || ch != delim)) {
 					if (isSpace(ch)) {
 						lastWasWhiteSpace = true;
 						ifs.get(ch);
 						continue;
 					}
-					// We output the space only after we stop getting 
+					// We output the space only after we stop getting
 					// whitespace so as not to output any whitespace
 					// at the end of the value.
 					if (lastWasWhiteSpace) {
 						lastWasWhiteSpace = false;
 						val += ' ';
 					}
-					
+
 					val += ch;
 
 					// update nesting level
@@ -606,7 +606,7 @@ namespace {
 							break;
 						case '}':
 							--nestLevel;
-							if (nestLevel < 0) 
+							if (nestLevel < 0)
 								return false;
 							break;
 					}
@@ -763,13 +763,13 @@ void InsetBibtex::parseBibTeXFiles() const
 				// next char must be an equal sign
 				ifs.get(ch);
 				if (!ifs || ch != '=') {
-					lyxerr << "BibTeX Parser: No `=' after string name: " << 
+					lyxerr << "BibTeX Parser: No `=' after string name: " <<
 							name << "." << std::endl;
 					continue;
 				}
 
 				if (!readValue(value, ifs, strings)) {
-					lyxerr << "BibTeX Parser: Unable to read value for string: " << 
+					lyxerr << "BibTeX Parser: Unable to read value for string: " <<
 							name << "." << std::endl;
 					continue;
 				}
@@ -804,7 +804,7 @@ void InsetBibtex::parseBibTeXFiles() const
 				}
 
 				/////////////////////////////////////////////
-				// now we have a key, so we will add an entry 
+				// now we have a key, so we will add an entry
  				// (even if it's empty, as bibtex does)
 				//
 				// we now read the field = value pairs.
@@ -815,13 +815,13 @@ void InsetBibtex::parseBibTeXFiles() const
 				docstring value;
 				docstring data;
 				BibTeXInfo keyvalmap(key, entryType);
-				
+
 				bool readNext = removeWSAndComma(ifs);
- 
+
 				while (ifs && readNext) {
 
 					// read field name
-					if (!readTypeOrKey(name, ifs, from_ascii("="), 
+					if (!readTypeOrKey(name, ifs, from_ascii("="),
 					                   from_ascii("{}(),"), makeLowerCase) || !ifs)
 						break;
 
@@ -867,7 +867,7 @@ void InsetBibtex::parseBibTeXFiles() const
 FileName InsetBibtex::getBibTeXPath(docstring const & filename, Buffer const & buf)
 {
 	string texfile = changeExtension(to_utf8(filename), "bib");
-	// note that, if the filename can be found directly from the path, 
+	// note that, if the filename can be found directly from the path,
 	// findtexfile will just return a FileName object for that path.
 	FileName file(findtexfile(texfile, "bib"));
 	if (file.empty())
@@ -924,7 +924,7 @@ void InsetBibtex::validate(LaTeXFeatures & features) const
 }
 
 
-// FIXME 
+// FIXME
 // docstring InsetBibtex::entriesAsXHTML(vector<docstring> const & entries)
 // And then here just: entriesAsXHTML(buffer().masterBibInfo().citedEntries())
 docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
@@ -932,14 +932,14 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 	BiblioInfo const & bibinfo = buffer().masterBibInfo();
 	vector<docstring> const & cites = bibinfo.citedEntries();
 	CiteEngine const engine = buffer().params().citeEngine();
-	bool const numbers = 
+	bool const numbers =
 		(engine == ENGINE_BASIC || engine == ENGINE_NATBIB_NUMERICAL);
 
 	docstring reflabel = from_ascii("References");
 	Language const * l = buffer().params().language;
 	if (l)
 		reflabel = translateIfPossible(reflabel, l->code());
-		
+
 	xs << html::StartTag("h2", "class='bibtex'")
 		<< reflabel
 		<< html::EndTag("h2")
@@ -980,7 +980,7 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 		// FIXME Right now, we are calling BibInfo::getInfo on the key,
 		// which will give us all the cross-referenced info. But for every
 		// entry, so there's a lot of repitition. This should be fixed.
-		xs << html::StartTag("span", "class='bibtexinfo'") 
+		xs << html::StartTag("span", "class='bibtexinfo'")
 		   << XHTMLStream::ESCAPE_AND
 		   << bibinfo.getInfo(entry.key(), buffer(), true)
 		   << html::EndTag("span")

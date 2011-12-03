@@ -71,7 +71,7 @@ public:
 	///
 	static std::string defaultCommand() { return "bibitem"; }
 	///
-	static bool isCompatibleCommand(std::string const & s) 
+	static bool isCompatibleCommand(std::string const & s)
 		{ return s == "bibitem"; }
 	///@}
 
