@@ -66,6 +66,8 @@ What's new
 
 - Fixed crash when changing label when outliner is open and sorted (bug 7709).
 
+- Fixed crash when moving out of nested empty items (bug 7673).
+
 - Update citation labels when the BibTeX file changes (bug 7499).
 
 - Mark Buffer dirty when changing branch activation status (bug 7872). Sadly,
