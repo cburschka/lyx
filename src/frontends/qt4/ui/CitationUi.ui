@@ -234,6 +234,12 @@
      <property name="readOnly">
       <bool>true</bool>
      </property>
+     <property name="maximumSize" >
+      <size>
+       <height>60</height>
+       <width>16777215</width>
+      </size>
+     </property>
     </widget>
    </item>
    <item row="8" column="0" colspan="3">
@@ -512,11 +518,12 @@
  </widget>
  <tabstops>
   <tabstop>availableLV</tabstop>
-  <tabstop>selectedLV</tabstop>
   <tabstop>addPB</tabstop>
   <tabstop>deletePB</tabstop>
   <tabstop>upPB</tabstop>
   <tabstop>downPB</tabstop>
+  <tabstop>selectedLV</tabstop>
+  <tabstop>infoML</tabstop>
   <tabstop>findLE</tabstop>
   <tabstop>searchPB</tabstop>
   <tabstop>fieldsCO</tabstop>
@@ -533,7 +540,6 @@
   <tabstop>okPB</tabstop>
   <tabstop>applyPB</tabstop>
   <tabstop>cancelPB</tabstop>
-  <tabstop>infoML</tabstop>
  </tabstops>
  <includes>
   <include location="local">qt_i18n.h</include>

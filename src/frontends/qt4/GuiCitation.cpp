@@ -116,9 +116,6 @@ GuiCitation::GuiCitation(GuiView & lv)
 		this, SLOT(on_okPB_clicked()));
 
 	setFocusProxy(availableLV);
-
-	// FIXME: the sizeHint() for this is _way_ too high
-	infoML->setFixedHeight(60);
 }
 
 
