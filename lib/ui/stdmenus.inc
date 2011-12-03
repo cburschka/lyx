@@ -586,6 +586,7 @@ Menuset
 		Item "Feynman-diagram Manual|F" "help-open FeynmanDiagrams"
 		Item "Linguistics Manual|L" "help-open linguistics"
 		Item "Multicolumn Manual|M" "help-open multicol"
+		Item "Sweave Manual|S" "help-open sweave"
 		Item "XY-pic Manual|X" "help-open xypic"
 	End
 
