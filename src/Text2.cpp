@@ -535,6 +535,9 @@ bool Text::setCursor(Cursor & cur, pit_type par, pos_type pos,
 	bool const update_needed = !tm.contains(par);
 	Cursor old = cur;
 	setCursorIntern(cur, par, pos, setfont, boundary);
+	// FIXME There is a chance that we'll miss a screen update here.
+	// If so, then do DEPM and then check if cur wants an update and
+	// go ahead and do it, if so.
 	return cur.bv().checkDepm(cur, old) || update_needed;
 }
 

@@ -247,6 +247,8 @@ public:
 	 * Not using noScreenUpdate() should never be wrong.
 	 */
 	void noScreenUpdate() const;
+	///
+	Update::flags screenUpdate() const { return disp_.screenUpdate(); }
 	/// fix cursor in circumstances that should never happen.
 	/// \retval true if a fix occured.
 	bool fixIfBroken();

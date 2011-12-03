@@ -2410,7 +2410,7 @@ bool BufferView::checkDepm(Cursor & cur, Cursor & old)
 	d->cursor_ = cur;
 
 	cur.forceBufferUpdate();
-	buffer_.changed(true);
+	cur.screenUpdateFlags(Update::Force);
 	return true;
 }
 

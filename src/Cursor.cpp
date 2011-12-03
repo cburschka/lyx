@@ -1968,8 +1968,12 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 
 			updateNeeded |= bv().checkDepm(dummy, *this);
 			updateTextTargetOffset();
-			if (updateNeeded)
+			if (updateNeeded) {
 				forceBufferUpdate();
+				// DEPM may have requested a screen update
+				this->screenUpdateFlags(
+					this->screenUpdate() | dummy.screenUpdate());
+			}
 		}
 		return false;
 	}
@@ -1994,7 +1998,8 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 			++dummy.pos();
 		if (bv().checkDepm(dummy, old)) {
 			updateNeeded = true;
-			// Make sure that cur gets back whatever happened to dummy (Lgb) 
+			// Make sure that cur gets back whatever happened to dummy (Lgb)
+			// This will include any screen update requested by DEPM
 			operator=(dummy);
 		}
 	} else {
