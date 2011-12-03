@@ -143,6 +143,10 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 	docstring const data = getEscapedLabel(rp);
 
 	if (cmd == "eqref" && buffer().params().use_refstyle) {
+		// we advertise this as printing "(n)", so we'll do that, at least
+		// for refstyle, since refstlye's own \eqref prints, by default,
+		// "equation n". if one wants \eqref, one can get it by using a
+		// formatted label in this case.
 		os << '(' << from_ascii("\\ref{") << data << from_ascii("})");
 	} 
 	else if (cmd == "formatted") {
@@ -323,7 +327,7 @@ void InsetRef::validate(LaTeXFeatures & features) const
 				features.addPreambleSnippet("\\let\\pr@chap=\\pr@cha");
 		}
 	} else if (cmd == "eqref" && !buffer().params().use_refstyle)
-		// refstyle defines its own version
+		// with refstyle, we simply output "(\ref{label})"
 		features.require("amsmath");
 	else if (cmd == "nameref")
 		features.require("nameref");
