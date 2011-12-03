@@ -318,7 +318,8 @@ void InsetBibitem::collectBibKeys(InsetIterator const & it) const
 	keyvalmap.label(bibLabel());
 	DocIterator doc_it(it); 
 	doc_it.forwardPos();
-	keyvalmap[from_ascii("ref")] = doc_it.paragraph().asString();
+	keyvalmap[from_ascii("ref")] = doc_it.paragraph().asString(
+		AS_STR_INSETS | AS_STR_SKIPDELETE);
 	buffer().addBibTeXInfo(key, keyvalmap);
 }
 
