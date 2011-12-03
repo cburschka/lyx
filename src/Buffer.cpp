@@ -462,13 +462,13 @@ Buffer::~Buffer()
 }
 
 
-Buffer * Buffer::clone() const
+Buffer * Buffer::cloneFromMaster() const
 {
 	BufferMap bufmap;
 	cloned_buffers.push_back(new CloneList());
 	CloneList * clones = cloned_buffers.back();
 
-	masterBuffer()->clone(bufmap, clones);
+	masterBuffer()->cloneWithChildren(bufmap, clones);
 
 	// make sure we got cloned
 	BufferMap::const_iterator bit = bufmap.find(this);
@@ -479,7 +479,7 @@ Buffer * Buffer::clone() const
 }
 
 
-void Buffer::clone(BufferMap & bufmap, CloneList * clones) const
+void Buffer::cloneWithChildren(BufferMap & bufmap, CloneList * clones) const
 {
 	// have we already been cloned?
 	if (bufmap.find(this) != bufmap.end())
@@ -502,7 +502,7 @@ void Buffer::clone(BufferMap & bufmap, CloneList * clones) const
 		dit.setBuffer(buffer_clone);
 		Buffer * child = const_cast<Buffer *>(it->second.second);
 
-		child->clone(bufmap, clones);
+		child->cloneWithChildren(bufmap, clones);
 		BufferMap::iterator const bit = bufmap.find(child);
 		LASSERT(bit != bufmap.end(), continue);
 		Buffer * child_clone = bit->second;
@@ -517,6 +517,14 @@ void Buffer::clone(BufferMap & bufmap, CloneList * clones) const
 	}
 	buffer_clone->d->macro_lock = false;
 	return;
+}
+
+
+Buffer * Buffer::cloneBufferOnly() const {
+	Buffer * buffer_clone = new Buffer(fileName().absFileName(), false, this);
+	// we won't be cloning the children
+	buffer_clone->d->children_positions.clear();
+	return buffer_clone;
 }
 
 

@@ -168,8 +168,11 @@ public:
 	/// Destructor
 	~Buffer();
 
-	///
-	Buffer * clone() const;
+	/// Clones the entire structure of which this Buffer is part, starting
+	/// with the master and cloning all the children, too.
+	Buffer * cloneFromMaster() const;
+	/// Just clones this single Buffer. For autosave.
+	Buffer * cloneBufferOnly() const;
 	///
 	bool isClone() const;
 
@@ -232,7 +235,7 @@ private:
 	///
 	typedef std::map<Buffer const *, Buffer *> BufferMap;
 	///
-	void clone(BufferMap &, CloneList *) const;
+	void cloneWithChildren(BufferMap &, CloneList *) const;
 	/// save timestamp and checksum of the given file.
 	void saveCheckSum() const;
 	/// read a new file
