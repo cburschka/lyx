@@ -29,7 +29,7 @@ public:
 	///
 	GuiTexInfo(GuiView & lv);
 	/// the file extensions. order matters in GuiTexInfo::fileType()
-	enum TexFileType { ClsType = 0, StyType, BstType, DummyLastType };
+	enum TexFileType { ClsType = 0, StyType, BstType, BibType, DummyLastType };
 
 public Q_SLOTS:
 	///
