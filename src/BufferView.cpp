@@ -2406,7 +2406,12 @@ bool BufferView::checkDepm(Cursor & cur, Cursor & old)
 
 	d->cursor_ = cur;
 
-	cur.forceBufferUpdate();
+	// we would rather not do this here, but it needs to be done before
+	// the changed() signal is sent. a riskier strategy has been tried
+	// in trunk (at r).
+	buffer_.updateBuffer();
+	// if it was requested, we've already done it
+	cur.clearBufferUpdate();
 	buffer_.changed(true);
 	return true;
 }
