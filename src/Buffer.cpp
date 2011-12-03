@@ -2036,6 +2036,24 @@ bool Buffer::citeLabelsValid() const
 }
 
 
+void Buffer::removeBiblioTempFiles() const
+{
+	// We remove files that contain LaTeX commands specific to the
+	// particular bibliographic style being used, in order to avoid
+	// LaTeX errors when we switch style.
+	FileName const aux_file(addName(temppath(), changeExtension(latexName(),".aux")));
+	FileName const bbl_file(addName(temppath(), changeExtension(latexName(),".bbl")));
+	LYXERR(Debug::FILES, "Removing the .aux file " << aux_file);
+	aux_file.removeFile();
+	LYXERR(Debug::FILES, "Removing the .bbl file " << bbl_file);
+	bbl_file.removeFile();
+	// Also for the parent buffer
+	Buffer const * const pbuf = parent();
+	if (pbuf)
+		pbuf->removeBiblioTempFiles();
+}
+
+
 bool Buffer::isDepClean(string const & name) const
 {
 	DepClean::const_iterator const it = d->dep_clean.find(name);

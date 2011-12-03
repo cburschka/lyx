@@ -59,13 +59,16 @@ InsetBibtex::InsetBibtex(Buffer * buf, InsetCommandParams const & p)
 	: InsetCommand(buf, p)
 {
 	buffer().invalidateBibinfoCache();
+	buffer().removeBiblioTempFiles();
 }
 
 
 InsetBibtex::~InsetBibtex()
 {
-	if (isBufferLoaded())
+	if (isBufferLoaded()) {
 		buffer().invalidateBibfileCache();
+		buffer().removeBiblioTempFiles();
+	}
 }
 
 
@@ -108,6 +111,7 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.recordUndo();
 		setParams(p);
 		buffer().invalidateBibfileCache();
+		buffer().removeBiblioTempFiles();
 		cur.forceBufferUpdate();
 		break;
 	}

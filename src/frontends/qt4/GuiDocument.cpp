@@ -2246,6 +2246,8 @@ void GuiDocument::applyView()
 	else
 		bp_.bibtex_command = bibtex_command + " " + bibtex_options;
 
+	buffer().removeBiblioTempFiles();
+
 	// Indices
 	indicesModule->apply(bp_);
 
