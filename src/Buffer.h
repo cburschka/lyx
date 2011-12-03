@@ -475,6 +475,9 @@ public:
 	///
 	void getLabelList(std::vector<docstring> &) const;
 
+	/// This removes the .aux and .bbl files from the temp dir.
+	void removeBiblioTempFiles() const;
+
 	///
 	void changeLanguage(Language const * from, Language const * to);
 
