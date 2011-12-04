@@ -87,6 +87,7 @@ src_header_files = Split('''
     KeySequence.h
     LaTeX.h
     LaTeXFeatures.h
+    LaTeXPackages.h
     Language.h
     Layout.h
     LayoutEnums.h
@@ -189,6 +190,7 @@ src_pre_files = Split('''
     KeySequence.cpp
     LaTeX.cpp
     LaTeXFeatures.cpp
+    LaTeXPackages.cpp
     Language.cpp
     Layout.cpp
     LayoutFile.cpp
