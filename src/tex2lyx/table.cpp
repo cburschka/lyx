@@ -75,6 +75,13 @@ class RowInfo {
 public:
 	RowInfo() : topline(false), bottomline(false), type(LT_NORMAL),
 		    caption(false), newpage(false) {}
+	/// Does this row have any special setting?
+	bool special() const
+	{
+		return topline || bottomline || !top_space.empty() ||
+			!bottom_space.empty() || !interline_space.empty() ||
+			type != LT_NORMAL || caption || newpage;
+	}
 	/// horizontal line above
 	bool topline;
 	/// horizontal line below
@@ -134,6 +141,23 @@ public:
 	string width;
 	/// special formatting for multicolumn cells
 	string special;
+};
+
+
+class ltType {
+public:
+	// constructor
+	ltType() : topDL(false), bottomDL(false), empty(false) {}
+	// we have this header type (is set in the getLT... functions)
+	bool set;
+	// double borders on top
+	bool topDL;
+	// double borders on bottom
+	bool bottomDL;
+	// used for FirstHeader & LastFooter and if this is true
+	// all the rows marked as FirstHeader or LastFooter are
+	// ignored in the output and it is set to be empty!
+	bool empty;
 };
 
 
@@ -641,7 +665,6 @@ void parse_table(Parser & p, ostream & os, bool is_long_tabular,
 				}
 				continue;
 			}
-
 		}
 
 		// We need a HLINE separator if we either have no hline
@@ -845,13 +868,18 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 
 	vector< vector<CellInfo> > cellinfo(lines.size());
 	vector<RowInfo> rowinfo(lines.size());
+	ltType endfirsthead;
+	ltType endhead;
+	ltType endfoot;
+	ltType endlastfoot;
 
 	// split into rows
 	//cerr << "// split into rows\n";
-	for (size_t row = 0; row < rowinfo.size(); ++row) {
+	for (size_t row = 0; row < rowinfo.size();) {
 
 		// init row
 		cellinfo[row].resize(colinfo.size());
+		bool deletelastrow = false;
 
 		// split row
 		vector<string> dummy;
@@ -967,37 +995,53 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 							rowinfo[row].interline_space = translate_len(opt);
 					}
 				} else if (t.cs() == "endhead") {
-					if (i > 0)
+					if (i == 0)
+						endhead.empty = true;
+					else
 						rowinfo[row].type = LT_HEAD;
 					for (int r = row - 1; r >= 0; --r) {
 						if (rowinfo[r].type != LT_NORMAL)
 							break;
 						rowinfo[r].type = LT_HEAD;
+						endhead.empty = false;
 					}
+					endhead.set = true;
 				} else if (t.cs() == "endfirsthead") {
-					if (i > 0)
+					if (i == 0)
+						endfirsthead.empty = true;
+					else
 						rowinfo[row].type = LT_FIRSTHEAD;
 					for (int r = row - 1; r >= 0; --r) {
 						if (rowinfo[r].type != LT_NORMAL)
 							break;
 						rowinfo[r].type = LT_FIRSTHEAD;
+						endfirsthead.empty = false;
 					}
+					endfirsthead.set = true;
 				} else if (t.cs() == "endfoot") {
-					if (i > 0)
+					if (i == 0)
+						endfoot.empty = true;
+					else
 						rowinfo[row].type = LT_FOOT;
 					for (int r = row - 1; r >= 0; --r) {
 						if (rowinfo[r].type != LT_NORMAL)
 							break;
 						rowinfo[r].type = LT_FOOT;
+						endfoot.empty = false;
 					}
+					endfoot.set = true;
 				} else if (t.cs() == "endlastfoot") {
-					if (i > 0)
+					if (i == 0)
+						endlastfoot.empty = true;
+					else
 						rowinfo[row].type = LT_LASTFOOT;
 					for (int r = row - 1; r >= 0; --r) {
 						if (rowinfo[r].type != LT_NORMAL)
 							break;
 						rowinfo[r].type = LT_LASTFOOT;
+						endlastfoot.empty = false;
 					}
+					endlastfoot.set = true;
 				} else if (t.cs() == "newpage") {
 					if (i == 0) {
 						if (row > 0)
@@ -1014,6 +1058,48 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 					cerr << "unexpected line token: " << t << endl;
 				}
 			}
+		}
+
+		// LyX ends headers and footers always with \tabularnewline.
+		// This causes one additional row in the output.
+		// If the last row of a header/footer is empty, we can work
+		// around that by removing it.
+		if (row > 1) {
+			RowInfo test = rowinfo[row-1];
+			test.type = LT_NORMAL;
+			if (lines[row-1].empty() && !test.special()) {
+				switch (rowinfo[row-1].type) {
+				case LT_FIRSTHEAD:
+					if (rowinfo[row].type != LT_FIRSTHEAD &&
+					    rowinfo[row-2].type == LT_FIRSTHEAD)
+						deletelastrow = true;
+					break;
+				case LT_HEAD:
+					if (rowinfo[row].type != LT_HEAD &&
+					    rowinfo[row-2].type == LT_HEAD)
+						deletelastrow = true;
+					break;
+				case LT_FOOT:
+					if (rowinfo[row].type != LT_FOOT &&
+					    rowinfo[row-2].type == LT_FOOT)
+						deletelastrow = true;
+					break;
+				case LT_LASTFOOT:
+					if (rowinfo[row].type != LT_LASTFOOT &&
+					    rowinfo[row-2].type == LT_LASTFOOT)
+						deletelastrow = true;
+					break;
+				case LT_NORMAL:
+					break;
+				}
+			}
+		}
+
+		if (deletelastrow) {
+			lines.erase(lines.begin() + (row - 1));
+			rowinfo.erase(rowinfo.begin() + (row - 1));
+			cellinfo.erase(cellinfo.begin() + (row - 1));
+			continue;
 		}
 
 		// split into cells
@@ -1076,7 +1162,8 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 					cellinfo[row][col].align = 'c';
 				}
 
-			} else if (col == 0 && is_long_tabular &&
+			} else if (col == 0 && colinfo.size() > 1 &&
+			           is_long_tabular &&
 			           p.next_token().cs() == "caption") {
 				// longtable caption support in LyX is a hack:
 				// Captions require a row of their own with
@@ -1084,27 +1171,45 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 				// one multicolumn cell. The contents of that
 				// cell must contain exactly one caption inset
 				// and nothing else.
-				rowinfo[row].caption = true;
-				for (size_t c = 1; c < cells.size(); ++c) {
-					if (!cells[c].empty()) {
-						cerr << "Moving cell content '"
-						     << cells[c]
-						     << "' into the caption cell. "
-							"This will probably not work."
-						     << endl;
-						cells[0] += cells[c];
+				// LyX outputs all caption rows as first head,
+				// so we must not set the caption flag for
+				// captions not in the first head.
+				// Fortunately, the caption flag is only needed
+				// for tables with more than one column.
+				bool usecaption = (rowinfo[row].type == LT_NORMAL ||
+				                   rowinfo[row].type == LT_FIRSTHEAD);
+				for (size_t r = 0; r < row && usecaption; ++r)
+					if (rowinfo[row].type != LT_NORMAL &&
+					    rowinfo[row].type != LT_FIRSTHEAD)
+						usecaption = false;
+				if (usecaption) {
+					rowinfo[row].caption = true;
+					for (size_t c = 1; c < cells.size(); ++c) {
+						if (!cells[c].empty()) {
+							cerr << "Moving cell content '"
+							     << cells[c]
+							     << "' into the caption cell. "
+								"This will probably not work."
+							     << endl;
+							cells[0] += cells[c];
+						}
 					}
+					cells.resize(1);
+					cellinfo[row][col].align      = colinfo[col].align;
+					cellinfo[row][col].multi      = CELL_BEGIN_OF_MULTICOLUMN;
+				} else {
+					cellinfo[row][col].leftlines  = colinfo[col].leftlines;
+					cellinfo[row][col].rightlines = colinfo[col].rightlines;
+					cellinfo[row][col].align      = colinfo[col].align;
 				}
-				cells.resize(1);
-				cellinfo[row][col].align      = colinfo[col].align;
-				cellinfo[row][col].multi      = CELL_BEGIN_OF_MULTICOLUMN;
 				ostringstream os;
 				parse_text_in_inset(p, os, FLAG_CELL, false, context);
 				cellinfo[row][col].content += os.str();
-				// add dummy multicolumn cells
-				for (size_t c = 1; c < colinfo.size(); ++c)
-					cellinfo[row][c].multi = CELL_PART_OF_MULTICOLUMN;
-
+				if (usecaption) {
+					// add dummy multicolumn cells
+					for (size_t c = 1; c < colinfo.size(); ++c)
+						cellinfo[row][c].multi = CELL_PART_OF_MULTICOLUMN;
+				}
 			} else {
 				cellinfo[row][col].leftlines  = colinfo[col].leftlines;
 				cellinfo[row][col].rightlines = colinfo[col].rightlines;
@@ -1126,6 +1231,8 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 					cellinfo[row - 1][col].bottomline = true;
 			rowinfo.pop_back();
 		}
+
+		++row;
 	}
 
 	// Now we have the table structure and content in rowinfo, colinfo
@@ -1185,7 +1292,18 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 	   << write_attribute("rotate", false)
 	   << write_attribute("booktabs", booktabs)
 	   << write_attribute("islongtable", is_long_tabular);
-	if (!is_long_tabular)
+	if (is_long_tabular) {
+		os << write_attribute("firstHeadTopDL", endfirsthead.topDL)
+		   << write_attribute("firstHeadBottomDL", endfirsthead.bottomDL)
+		   << write_attribute("firstHeadEmpty", endfirsthead.empty)
+		   << write_attribute("headTopDL", endhead.topDL)
+		   << write_attribute("headBottomDL", endhead.bottomDL)
+		   << write_attribute("footTopDL", endfoot.topDL)
+		   << write_attribute("footBottomDL", endfoot.bottomDL)
+		   << write_attribute("lastFootTopDL", endlastfoot.topDL)
+		   << write_attribute("lastFootBottomDL", endlastfoot.bottomDL)
+		   << write_attribute("lastFootEmpty", endlastfoot.empty);
+	} else
 		os << write_attribute("tabularvalignment", tabularvalignment)
 		   << write_attribute("tabularwidth", tabularwidth);
 	os << ">\n";
