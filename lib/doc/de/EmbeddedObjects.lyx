@@ -145,12 +145,19 @@
   \setboolean{picinpar}{true}}
  {\setboolean{picinpar}{false}}
 
-% check for lettrine
+% Prüfung auf lettrine
 \newboolean{lettrine}
 \IfFileExists{lettrine.sty}
  {\usepackage{lettrine}
   \setboolean{lettrine}{true}}
  {\setboolean{lettrine}{false}}
+
+% Prüfung auf diagbox
+\newboolean{diagbox}
+\IfFileExists{diagbox.sty}
+ {\usepackage{diagbox}
+  \setboolean{diagbox}{true}}
+ {\setboolean{diagbox}{false}}
 
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
@@ -326,7 +333,7 @@ colortbl
 \series default
 , 
 \series bold
-lettrine, marginnote, picinpar
+diagbox, lettrine, marginnote, picinpar
 \series default
  und 
 \series bold
@@ -12956,7 +12963,7 @@ raggedright}
 Um eine neue Zeile zu beginnen, können Sie einen erzwungenen Zeilenumbruch
  (Tastenkürzel 
 \family sans
-Ctrl+Enter
+Strg+Enter
 \family default
 ) verwenden.
  Dieser respektiert jedoch nicht die Tabellenlinien, wie diese Tabelle zeigt:
@@ -13047,6 +13054,1814 @@ eee
 
 \begin_layout Standard
 Seien Sie daher vorsichtig mit erzwungenen Zeilenumbrüchen.
+\end_layout
+
+\begin_layout Subsection
+Zellen mit diagonalen Linien
+\end_layout
+
+\begin_layout Standard
+Um dem Leser mitzuteilen, was die Spalten und Zeilenüberschriften in einer
+ Tabelle bedeuten, ist es hilfreich, die erste Zelle der Tabelle mit einer
+ oder zwei diagonalen Linien zu teilen.
+ Dies kann erreicht werden, indem man das LaTeX-Paket 
+\series bold
+diagbox
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pakete ! diagbox
+\end_layout
+
+\end_inset
+
+ im LaTeX-Vorspann lädt.
+ Das Paket stellt den Befehl 
+\series bold
+
+\backslash
+diagbox
+\series default
+ zur Verfügung, der als TeX-Code eingefügt wird und 2 oder 3
+\begin_inset space ~
+\end_inset
+
+Argumente hat:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+diagbox[Optionen]{links unten}{rechts oben}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+diagbox[Optionen]{links unten}{links oben}{rechts oben}
+\end_layout
+
+\begin_layout Standard
+Das erste Schema teilt die Zelle mit einer einzigen diagonalen Linie und
+ die Argumente werden unter und über diese Linie platziert.
+ Das zweite Schema teilt die Zelle mit 2
+\begin_inset space ~
+\end_inset
+
+Linien.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ifdiagbox
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Der folgende Teil wird nur gedruckt, wenn das LaTeX-Paket 
+\series bold
+diagbox
+\series default
+ installiert ist.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hier ist eine Beispieltabelle in der 
+\series bold
+
+\backslash
+diagbox 
+\series default
+im 2-Argument Schema in der ersten Zelle verwendet wird:
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+diagbox{
+\end_layout
+
+\end_inset
+
+Name
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Parameter
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Dicke in nm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Transparenz in %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Härte in MPa
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Perfekt Grün
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+45
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+80
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+504
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Dunkel Multi-P
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+60
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+72
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+982
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kristallklar Pro
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+86
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+374
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das 3-Argument Schema ist z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B: für Kreuztabellen von Sportligen oder Entfernungen nützlich:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+diagbox{
+\end_layout
+
+\end_inset
+
+Heim
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Ergebnis
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Auswärts
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tiger
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Panther
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Falken
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tiger
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+---
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1:3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0:1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Panther
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3:1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+---
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0:0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Falken
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1:0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0:0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+---
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Für größere Kreuztabellen möchte man vielleicht geteilte Zellen in 2 oder
+ jeder Ecke der Tabelle verwenden, wie in diesem Beispiel:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+diagbox{
+\end_layout
+
+\end_inset
+
+Heim
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Ergebnis
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Auswärts
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tiger
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Panther
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Falken
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+diagbox[dir=NE]{
+\end_layout
+
+\end_inset
+
+Heim
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Ergebnis
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Auswärts
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tiger
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+---
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1:3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0:1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tiger
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Panther
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3:1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+---
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0:0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Panther
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Falken
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1:0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0:0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+---
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Falken
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+diagbox[dir=SW]{
+\end_layout
+
+\end_inset
+
+Heim
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Ergebnis
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Auswärts
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tiger
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Panther
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Falken
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+diagbox[dir=SE]{
+\end_layout
+
+\end_inset
+
+Heim
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Ergebnis
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Auswärts
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Um die diagonalen Linien zu drehen, wird die Befehlsoption 
+\series bold
+dir=Richtung
+\series default
+ verwendet.
+ 
+\emph on
+Richtung
+\emph default
+ ist entweder 
+\series bold
+NE
+\series default
+, 
+\series bold
+DE
+\series default
+, 
+\series bold
+SW
+\series default
+ oder 
+\series bold
+NW
+\series default
+ und stellt eine Himmelsrichtung dar.
+ 
+\series bold
+SW
+\series default
+ ist z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ die Südwestecke.
+ Daher wird in der unteren, linken Zelle der obigen Tabelle der Befehl
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+diagbox[dir=SW]{Heim}{Ergebnis}{Auswärts}
+\end_layout
+
+\begin_layout Standard
+verwendet.
+ Wenn keine Richtung angegeben ist, wird NW verwendet.
+\end_layout
+
+\begin_layout Standard
+Die benötigte Breite von geteilten Zellen wird automatisch berechnet.
+ Wenn Sie eine feste Breite für die Spalte setzen, die kleiner als die berechnet
+e ist, ragt der Inhalt über die Zelle hinaus:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="3cm">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+diagbox{
+\end_layout
+
+\end_inset
+
+Name
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Parameter
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Dicke in nm
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Perfekt Grün
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+45
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wenn man eine bestimmte Breite für Spalten mit einer geteilten Zelle braucht,
+ verwendet man die Befehlsoption 
+\series bold
+width=3cm
+\series default
+ (ersetzen Sie '3cm' durch die benötigte Breite).
+ In der folgenden Tabelle ist die Breite der ersten Spalte auf 4
+\begin_inset space \thinspace{}
+\end_inset
+
+cm gesetzt.
+ Für 
+\series bold
+
+\backslash
+diagbox
+\series default
+ wird eine Breite von 4
+\begin_inset space \thinspace{}
+\end_inset
+
+cm + 2
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\backslash
+tabcolsep benötigt, denn die Gesamtbreite ist die Breite für den Text (in
+ diesem Fall 4
+\begin_inset space \thinspace{}
+\end_inset
+
+cm) plus zweimal den Abstand zwischen Text und Zellrand.
+ Die Berechnung der Breite kann nicht in der Befehlsoption von 
+\series bold
+
+\backslash
+diagbox
+\series default
+ durchgeführt werden, so dass man eine neue Länge erstellen muss, die man
+ später verwenden kann.
+ Dies wird mit den TeX-Code Befehlen
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newlength{
+\backslash
+diagtest}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+setlength{
+\backslash
+diagtest}{4cm+2
+\backslash
+tabcolsep}
+\end_layout
+
+\begin_layout Standard
+erreicht.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newlength{
+\backslash
+diagtest}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+diagtest}{4cm+2
+\backslash
+tabcolsep}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Um Berechnungen in LaTeX zu aktivieren, muss das Paket 
+\series bold
+calc
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pakete ! calc
+\end_layout
+
+\end_inset
+
+ im LaTeX-Vorspann geladen werden.
+\end_layout
+
+\begin_layout Standard
+In der Tabelle kann man nun den Befehl
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+diagbox[width=
+\backslash
+diagtest]{A}{B}
+\end_layout
+
+\begin_layout Standard
+in der ersten Zelle verwenden:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="4cm">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+diagbox[width=
+\backslash
+diagtest]{
+\end_layout
+
+\end_inset
+
+A
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+B
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Dicke in nm
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Perfekt Grün
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+45
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Man beachte, dass die geteilte Zelle die breiteste Zelle in der Spalte sein
+ muss.
+ Ansonsten kann die Länge der diagonalen Linie nicht richtig berechnet werden,
+ wie in in dieser Tabelle:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+diagbox{
+\end_layout
+
+\end_inset
+
+A
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+B
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Dicke in nm
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Perfekt Grün
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+45
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Verwenden Sie in diesem Fall die Option 
+\series bold
+width
+\series default
+ des Befehls 
+\series bold
+
+\backslash
+diagbox
+\series default
+.
+ Es ist dabei nicht notwendig, 2
+\backslash
+tabcolsep hinzu zu addieren, da die Zellbreite nun die Breite der Spalte
+ ist.
+ In dieser Tabelle wird eine Breite von 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm verwendet:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+diagbox[width=3cm]{
+\end_layout
+
+\end_inset
+
+A
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+B
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Dicke in nm
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Perfekt Grün
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+45
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Für mehrere Textzeilen in geteilten Zellen braucht man mehr Höhe um den
+ Text in der Zelle unterzubringen.
+ Dies wird mit der 
+\series bold
+
+\backslash
+diagbox
+\series default
+-Option 
+\series bold
+height=3cm
+\series default
+ erreicht (ersetzen Sie '3cm' durch die benötigte Höhe).
+ In der folgenden Tabelle wird der Befehl
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+diagbox[width=3cm,height=1.4cm]{A
+\backslash
+
+\backslash
+B}{C
+\backslash
+
+\backslash
+D}
+\end_layout
+
+\begin_layout Standard
+in der ersten Zelle verwendet.
+ Der Befehl 
+\series bold
+
+\backslash
+
+\backslash
+
+\series default
+ erzeugt hierbei den Zeilenumbruch.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Zeilen mit 
+\family sans
+Strg+Enter
+\family default
+ umzubrechen ist nur möglich, wenn die Spalte eine feste Breite hat.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+diagbox[width=3cm,height=1.4cm]{
+\end_layout
+
+\end_inset
+
+A
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+B
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+C
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+D
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Dicke in nm
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Perfekt Grün
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+45
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Der folgende Teil wird gedruckt, wenn das LaTeX-Paket 
+\series bold
+diagbox
+\series default
+ nicht installiert ist:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sie müssen das LaTeX-Paket 
+\series bold
+diagbox
+\series default
+ installiert haben um den Inhalt dieses Abschnitts zu sehen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Für mehr Informationen über das LaTeX-Paket 
+\series bold
+diagbox
+\series default
+, siehe dessen Dokumentation, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "diagbox"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -15913,7 +17728,7 @@ colortbl
 
 \begin_layout Plain Layout
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -20025,7 +21840,7 @@ r
 
 \end_inset
 </cell>
-<cell multicolumn="1" alignment="center" valignment="top" leftline="true" rightline="true" usebox="none" special="c:">
+<cell multicolumn="1" alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -20269,19 +22084,917 @@ wurde in die erste Zelle der vierten Zeile eingefügt.
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tabellen mit gestrichelten Linien können auch gefärbt werden, wie Tabelle
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Farbige-Tabelle-mit"
+
+\end_inset
+
+ verdeutlicht.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+arrayrulewidth}{1pt}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+dickere Linien zur besseren Visualisierung der Linienfarbe
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+dashgapcolor{green}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+färbt Raum zwischen den Strichen grün
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+let
+\backslash
+myHdashline
+\backslash
+hdashline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+hdashline}
+\end_layout
+
+\begin_layout Plain Layout
+
+ {
+\backslash
+arrayrulecolor{red}
+\backslash
+myHdashline
+\backslash
+arrayrulecolor{black}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+färbt horizontale, gestrichelte Linien rot
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+let
+\backslash
+myCdashline
+\backslash
+cdashline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+cdashline}[1]
+\end_layout
+
+\begin_layout Plain Layout
+
+ {
+\backslash
+arrayrulecolor{yellow}
+\backslash
+myCdashline{#1}
+\backslash
+arrayrulecolor{black}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+färbt partielle horizontale, gestrichelte Linien gelb
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Farbige-Tabelle-mit"
+
+\end_inset
+
+Farbige Tabelle mit gestrichelten Linien
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt" special=">{\columncolor{dunkelgruen}\centering}c">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt" special=":c">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+c
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+d
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+e
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+f
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+g
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+h
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+i
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+j
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hdashline 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+rowcolor{Gray}
+\end_layout
+
+\end_inset
+
+k
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+l
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+m
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+n
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+o
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+cdashline{4-5}
+\end_layout
+
+\end_inset
+
+p
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+q
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none" special="c:">
+\begin_inset Text
+
+\begin_layout Plain Layout
+r
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+s
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+t
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+u
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+v
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+w
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+cellcolor{Maroon}
+\end_layout
+
+\end_inset
+
+
+\color green
+i
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+hdashline}{
+\backslash
+myHdashline}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+zurücksetzen auf Standardwert
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+cdashline}{
+\backslash
+myCdashline}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+zurücksetzen auf Standardwert
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nodashgapcolor
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+zurücksetzen auf Standardwert
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+arrayrulewidth}{0.4pt}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+zurücksetzen auf Standardwert
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das Färben von Zeilen, Spalten und Zeilen erfolgt wie in Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "abs:Farbige-Tabellen"
+
+\end_inset
+
+ beschrieben.
+ Das Färben von horizontalen Linien funktioniert analog wie dort ebenso
+ beschrieben, man muss in den Befehlen nur 
+\series bold
+
+\backslash
+myHlineC
+\series default
+ durch 
+\series bold
+
+\backslash
+myHdashline
+\series default
+ und 
+\backslash
+
+\series bold
+hline
+\series default
+ durch 
+\series bold
+
+\backslash
+hdashline
+\series default
+ ersetzen; man verwendet also den Befehl
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+let
+\backslash
+myHdashline
+\backslash
+hdashline
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+renewcommand{
+\backslash
+hdashline}
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+{
+\backslash
+arrayrulecolor{red}
+\backslash
+myHdashline
+\backslash
+arrayrulecolor{black}}
+\end_layout
+
+\begin_layout Standard
+Um 
+\series bold
+
+\backslash
+cdashline
+\series default
+ zu färben, lautet der Befehl
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+let
+\backslash
+myCdashline
+\backslash
+cdashline
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+renewcommand{
+\backslash
+cdashline}[1]
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+{
+\backslash
+arrayrulecolor{red}
+\backslash
+myCdashline{#1}
+\backslash
+arrayrulecolor{black}}
+\end_layout
+
+\begin_layout Standard
+Um die schwarze Linienfarbe zurückzubekommen, muss man folgende Befehle
+ als TeX-Code hinter der Tabelle einfügen:
+\end_layout
+
+\begin_layout Standard
+Für 
+\series bold
+
+\backslash
+hdashline
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+hdashline}{
+\backslash
+myHdashline}
+\end_layout
+
+\begin_layout Standard
+und für 
+\series bold
+
+\backslash
+cdashline
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+cdashline}{
+\backslash
+myCdashline}
+\end_layout
+
+\begin_layout Standard
+Um den Bereich zwischen den Strichen einer Linie zu färben, kann man den
+ Befehl
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+dashgapcolor{Farbe}
+\end_layout
+
+\begin_layout Standard
+als TeX-Code vor der Tabelle verwenden.
+ Farbe ist hierbei der Name einer definierten Farbe.
+ Der Befehl
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+nodashgapcolor
+\end_layout
+
+\begin_layout Standard
+hebt die Einstellung von 
+\series bold
+
+\backslash
+dashgapcolor
+\series default
+ auf.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-Bemerkung:
+\color none
+Achtung
+\series default
+: Befinden sich mehrere Befehle in einer Zelle, muss sich der Befehl von
+ 
+\series bold
+arydshln
+\series default
+ an erster Stelle in der Zelle befinden.
+ Daher ist in in Zelle 
+\emph on
+k
+\emph default
+ der Tabelle
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Farbige-Tabelle-mit"
+
+\end_inset
+
+ der Befehl 
+\series bold
+
+\backslash
+hdashline
+\series default
+ vor 
+\series bold
+
+\backslash
+rowcolor
+\series default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color none
+Achtung:
 \series default
  Das LaTeX-Paket 
 \series bold
 arydshln
 \series default
- ist nicht kompatibel dem LaTeX-Paket 
+ muss im LaTeX-Vorspann nach dem LaTeX-Paket 
 \series bold
 colortbl
 \series default
@@ -20295,19 +23008,7 @@ LaTeX-Pakete ! colortbl
 
 \end_inset
 
-, das für die farbigen Tabellen in Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "abs:Farbige-Tabellen"
-
-\end_inset
-
- benutzt wurde.
- Deswegen können farbige Tabellen keine gestrichelten Linien haben.
+ geladen werden.
 \end_layout
 
 \end_inset
@@ -20367,6 +23068,22 @@ fi
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Für weitere Informationen über gestrichelte Linien, siehe die Dokumentation
+ von 
+\series bold
+arydshln
+\series default
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "arydshln"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Chapter
@@ -21350,7 +24067,7 @@ newrefformat
 \backslash
 newref
 \series default
- (refstyle) in die Dokumentpräambel einfügt.
+ (refstyle) in den LaTeX-Vorspann einfügt.
  Z.
 \begin_inset space \thinspace{}
 \end_inset
@@ -34475,7 +37192,7 @@ white
 \begin_inset Quotes erd
 \end_inset
 
- sein kann, und diesen Befehl zur Dokument Präambel hinzufügen:
+ sein kann, und diesen Befehl zum LaTeX-Vorspann hinzufügen:
 \begin_inset Newline newline
 \end_inset
 
@@ -41461,6 +44178,39 @@ LaTeX-Praxisbuch
 \labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "arydshln"
+
+\end_inset
+
+Dokumentation des LaTeX-Pakets 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "arydshln"
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/arydshln/arydshln.pdf"
+
+\end_inset
+
+
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pakete ! arydshln
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "booktabs"
 
 \end_inset
@@ -41516,6 +44266,39 @@ status collapsed
 
 \begin_layout Plain Layout
 LaTeX-Pakete ! caption
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "diagbox"
+
+\end_inset
+
+Dokumentation des LaTeX-Pakets 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "diagbox"
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/diagbox/diagbox.pdf"
+
+\end_inset
+
+
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pakete ! diagbox
 \end_layout
 
 \end_inset
@@ -41692,6 +44475,47 @@ LaTeX-Pakete ! KOMA-Script
 \labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "lettrine"
+
+\end_inset
+
+Dokumentation des LaTeX-Pakets 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "lettrine"
+target "http://mirrors.ctan.org/macros/latex/contrib/lettrine/doc/lettrine.pdf"
+
+\end_inset
+
+
+\series default
+ und ein 
+\begin_inset CommandInset href
+LatexCommand href
+name "Beispiel"
+target "http://mirrors.ctan.org/macros/latex/contrib/lettrine/doc/demo-de.pdf"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pakete ! lettrine
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "listings"
 
 \end_inset
@@ -41758,80 +44582,6 @@ LaTeX-Pakete ! marginnote
 \labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "lettrine"
-
-\end_inset
-
-Dokumentation des LaTeX-Pakets 
-\series bold
-
-\begin_inset CommandInset href
-LatexCommand href
-name "lettrine"
-target "http://mirrors.ctan.org/macros/latex/contrib/lettrine/doc/lettrine.pdf"
-
-\end_inset
-
-
-\series default
- und ein 
-\begin_inset CommandInset href
-LatexCommand href
-name "Beispiel"
-target "http://mirrors.ctan.org/macros/latex/contrib/lettrine/doc/demo-de.pdf"
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-Pakete ! lettrine
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\labelwidthstring Literaturverzeichnis
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "pstricks"
-
-\end_inset
-
-Webseite des LaTeX-Pakets 
-\series bold
-
-\begin_inset CommandInset href
-LatexCommand href
-name "PSTricks"
-target "http://tug.org/PSTricks/"
-
-\end_inset
-
-
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-Pakete ! pstricks
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\labelwidthstring Literaturverzeichnis
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
 key "pdfpages"
 
 \end_inset
@@ -41854,39 +44604,6 @@ status collapsed
 
 \begin_layout Plain Layout
 LaTeX-Pakete ! pdfpages
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\labelwidthstring Literaturverzeichnis
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "sidecap"
-
-\end_inset
-
-Dokumentation des LaTeX-Pakets 
-\series bold
-
-\begin_inset CommandInset href
-LatexCommand href
-name "sidecap"
-target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/sidecap/sidecap.pdf"
-
-\end_inset
-
-
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-Pakete ! sidecap
 \end_layout
 
 \end_inset
@@ -41931,6 +44648,39 @@ LaTeX-Pakete ! prettyref
 \labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "pstricks"
+
+\end_inset
+
+Webseite des LaTeX-Pakets 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "PSTricks"
+target "http://tug.org/PSTricks/"
+
+\end_inset
+
+
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pakete ! pstricks
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "refstyle"
 
 \end_inset
@@ -41953,6 +44703,39 @@ status collapsed
 
 \begin_layout Plain Layout
 LaTeX-Pakete ! refstyle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "sidecap"
+
+\end_inset
+
+Dokumentation des LaTeX-Pakets 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "sidecap"
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/sidecap/sidecap.pdf"
+
+\end_inset
+
+
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pakete ! sidecap
 \end_layout
 
 \end_inset
