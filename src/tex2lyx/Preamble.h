@@ -65,7 +65,7 @@ public:
 	void parse(Parser & p, std::string const & forceclass,
 	           TeX2LyXDocClass & tc);
 	/// Writes the LyX file header from internal data
-	bool writeLyXHeader(std::ostream & os);
+	bool writeLyXHeader(std::ostream & os, bool subdoc);
 
 private:
 	///

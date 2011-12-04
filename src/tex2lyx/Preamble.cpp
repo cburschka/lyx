@@ -815,7 +815,7 @@ void Preamble::handle_if(Parser & p, bool in_lyx_preamble)
 }
 
 
-bool Preamble::writeLyXHeader(ostream & os)
+bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 {
 	// translate from babel to LyX names
 	h_language = babel2lyx(h_language);
@@ -858,7 +858,7 @@ bool Preamble::writeLyXHeader(ostream & os)
 	   << "\\begin_document\n"
 	   << "\\begin_header\n"
 	   << "\\textclass " << h_textclass << "\n";
-	string const raw = h_preamble.str();
+	string const raw = subdoc ? empty_string() : h_preamble.str();
 	if (!raw.empty()) {
 		os << "\\begin_preamble\n";
 		for (string::size_type i = 0; i < raw.size(); ++i) {
@@ -977,8 +977,6 @@ bool Preamble::writeLyXHeader(ostream & os)
 	   << authors_
 	   << "\\end_header\n\n"
 	   << "\\begin_body\n";
-	// clear preamble for subdocuments
-	h_preamble.str("");
 	return true;
 }
 

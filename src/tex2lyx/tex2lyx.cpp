@@ -685,7 +685,7 @@ bool tex2lyx(idocstream & is, ostream & os, string encoding)
 		for (; it != end; it++)
 			preamble.addModule(*it);
 	}
-	if (!preamble.writeLyXHeader(os)) {
+	if (!preamble.writeLyXHeader(os, !active_environments.empty())) {
 		cerr << "Could write LyX file header." << endl;
 		return false;
 	}
