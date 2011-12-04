@@ -19,14 +19,17 @@
 #include "Context.h"
 #include "Encoding.h"
 #include "FloatList.h"
+#include "LaTeXPackages.h"
 #include "Layout.h"
 #include "Length.h"
+#include "Preamble.h"
 
 #include "support/lassert.h"
 #include "support/convert.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
+#include "support/lyxtime.h"
 
 #include <algorithm>
 #include <iostream>
@@ -160,7 +163,12 @@ char const * const known_old_font_families[] = { "rm", "sf", "tt", 0};
 char const * const known_font_families[] = { "rmfamily", "sffamily",
 "ttfamily", 0};
 
-/// the same as known_old_font_families and known_font_families with .lyx names
+/// LaTeX names for font family changing commands
+char const * const known_text_font_families[] = { "textrm", "textsf",
+"texttt", 0};
+
+/// The same as known_old_font_families, known_font_families and
+/// known_text_font_families with .lyx names
 char const * const known_coded_font_families[] = { "roman", "sans",
 "typewriter", 0};
 
@@ -170,7 +178,11 @@ char const * const known_old_font_series[] = { "bf", 0};
 /// LaTeX names for font series
 char const * const known_font_series[] = { "bfseries", "mdseries", 0};
 
-/// the same as known_old_font_series and known_font_series with .lyx names
+/// LaTeX names for font series changing commands
+char const * const known_text_font_series[] = { "textbf", "textmd", 0};
+
+/// The same as known_old_font_series, known_font_series and
+/// known_text_font_series with .lyx names
 char const * const known_coded_font_series[] = { "bold", "medium", 0};
 
 /// LaTeX 2.09 names for font shapes
@@ -180,9 +192,22 @@ char const * const known_old_font_shapes[] = { "it", "sl", "sc", 0};
 char const * const known_font_shapes[] = { "itshape", "slshape", "scshape",
 "upshape", 0};
 
-/// the same as known_old_font_shapes and known_font_shapes with .lyx names
+/// LaTeX names for font shape changing commands
+char const * const known_text_font_shapes[] = { "textit", "textsl", "textsc",
+"textup", 0};
+
+/// The same as known_old_font_shapes, known_font_shapes and
+/// known_text_font_shapes with .lyx names
 char const * const known_coded_font_shapes[] = { "italic", "slanted",
 "smallcaps", "up", 0};
+
+/// Known special characters which need skip_spaces_braces() afterwards
+char const * const known_special_chars[] = {"ldots", "lyxarrow",
+"textcompwordmark", "slash", 0};
+
+/// the same as known_special_chars with .lyx names
+char const * const known_coded_special_chars[] = {"ldots{}", "menuseparator",
+"textcompwordmark{}", "slash{}", 0};
 
 /*!
  * Graphics file extensions known by the dvips driver of the graphics package.
@@ -668,10 +693,14 @@ void parse_arguments(string const & command,
 	for (size_t i = 0; i < no_arguments; ++i) {
 		switch (template_arguments[i]) {
 		case required:
+		case req_group:
 			// This argument contains regular LaTeX
 			handle_ert(os, ert + '{', context);
 			eat_whitespace(p, os, context, false);
-			parse_text(p, os, FLAG_ITEM, outer, context);
+			if (template_arguments[i] == required)
+				parse_text(p, os, FLAG_ITEM, outer, context);
+			else
+				parse_text_snippet(p, os, FLAG_ITEM, outer, context);
 			ert = "}";
 			break;
 		case item:
@@ -683,11 +712,13 @@ void parse_arguments(string const & command,
 			else
 				ert += p.verbatim_item();
 			break;
+		case displaymath:
 		case verbatim:
 			// This argument may contain special characters
 			ert += '{' + p.verbatim_item() + '}';
 			break;
 		case optional:
+		case opt_group:
 			// true because we must not eat whitespace
 			// if an optional arg follows we must not strip the
 			// brackets from this one
@@ -792,7 +823,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		latex_width = p.verbatim_item();
 	// if e.g. only \ovalbox{content} was used, set the width to 1\columnwidth
 	// as this is LyX's standard for such cases (except for makebox)
-	// \framebox is special and handled below
+	// \framebox is more special and handled below
 	if (latex_width.empty() && inner_type != "makebox"
 		&& outer_type != "framebox")
 		latex_width = "1\\columnwidth";
@@ -927,6 +958,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			     (outer_type == "minipage" && inner_type == "shaded") ||
 			     (outer_type == "parbox" && inner_type == "shaded")) {
 			os << "Shaded\n";
+			preamble.registerAutomaticallyLoadedPackage("color");
 		} else if (outer_type == "doublebox")
 			os << "Doublebox\n";
 		else if (outer_type.empty())
@@ -1133,7 +1165,8 @@ void parse_unknown_environment(Parser & p, string const & name, ostream & os,
 
 
 void parse_environment(Parser & p, ostream & os, bool outer,
-                       string & last_env, Context & parent_context)
+                       string & last_env, bool & title_layout_found,
+                       Context & parent_context)
 {
 	Layout const * newlayout;
 	InsetLayout const * newinsetlayout = 0;
@@ -1149,13 +1182,24 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		parse_math(p, os, FLAG_END, MATH_MODE);
 		os << "\\end{" << name << "}";
 		end_inset(os);
+		if (is_display_math_env(name)) {
+			// Prevent the conversion of a line break to a space
+			// (bug 7668). This does not change the output, but
+			// looks ugly in LyX.
+			eat_whitespace(p, os, parent_context, false);
+		}
 	}
 
-	else if (name == "tabular" || name == "longtable") {
+	else if (unstarred_name == "tabular" || name == "longtable") {
 		eat_whitespace(p, os, parent_context, false);
+		string width = "0pt";
+		if (name == "tabular*") {
+			width = lyx::translate_len(p.getArg('{', '}'));
+			eat_whitespace(p, os, parent_context, false);
+		}
 		parent_context.check_layout(os);
 		begin_inset(os, "Tabular ");
-		handle_tabular(p, os, name == "longtable", parent_context);
+		handle_tabular(p, os, name, width, parent_context);
 		end_inset(os);
 		p.skip_spaces();
 	}
@@ -1176,6 +1220,15 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			float_type = "";
 		if (!opt.empty())
 			os << "placement " << opt << '\n';
+		if (contains(opt, "H"))
+                	preamble.registerAutomaticallyLoadedPackage("float");
+		else {
+			Floating const & fl = parent_context.textclass.floats()
+				.getType(unstarred_name);
+		        if (!fl.floattype().empty() && fl.usesFloatPkg())
+                		preamble.registerAutomaticallyLoadedPackage("float");
+		}
+
 		os << "wide " << convert<string>(is_starred)
 		   << "\nsideways false"
 		   << "\nstatus open\n\n";
@@ -1287,6 +1340,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
 		end_inset(os);
 		p.skip_spaces();
+		if (!preamble.notefontcolor().empty())
+			preamble.registerAutomaticallyLoadedPackage("color");
 	}
 
 	else if (name == "framed" || name == "shaded") {
@@ -1298,6 +1353,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 	else if (name == "lstlisting") {
 		eat_whitespace(p, os, parent_context, false);
 		// FIXME handle listings with parameters
+		//       If this is added, don't forgot to handle the
+		//       automatic color package loading
 		if (p.hasOpt())
 			parse_unknown_environment(p, name, os, FLAG_END,
 			                          outer, parent_context);
@@ -1335,12 +1392,16 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			parent_context.add_extra_stuff("\\align center\n");
 		else if (name == "singlespace")
 			parent_context.add_extra_stuff("\\paragraph_spacing single\n");
-		else if (name == "onehalfspace")
+		else if (name == "onehalfspace") {
 			parent_context.add_extra_stuff("\\paragraph_spacing onehalf\n");
-		else if (name == "doublespace")
+			preamble.registerAutomaticallyLoadedPackage("setspace");
+		} else if (name == "doublespace") {
 			parent_context.add_extra_stuff("\\paragraph_spacing double\n");
-		else if (name == "spacing")
+			preamble.registerAutomaticallyLoadedPackage("setspace");
+		} else if (name == "spacing") {
 			parent_context.add_extra_stuff("\\paragraph_spacing other " + p.verbatim_item() + "\n");
+			preamble.registerAutomaticallyLoadedPackage("setspace");
+		}
 		parse_text(p, os, FLAG_END, outer, parent_context);
 		// Just in case the environment is empty
 		parent_context.extra_stuff.erase();
@@ -1450,6 +1511,11 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		context.check_end_deeper(os);
 		parent_context.new_paragraph(os);
 		p.skip_spaces();
+		if (!title_layout_found)
+			title_layout_found = newlayout->intitle;
+		set<string> const & req = newlayout->requires();
+		for (set<string>::const_iterator it = req.begin(); it != req.end(); it++)
+			preamble.registerAutomaticallyLoadedPackage(*it);
 	}
 
 	// The single '=' is meant here.
@@ -1832,13 +1898,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 {
 	Layout const * newlayout = 0;
 	InsetLayout const * newinsetlayout = 0;
+	char const * const * where = 0;
 	// Store the latest bibliographystyle and nocite{*} option
 	// (needed for bibtex inset)
 	string btprint;
 	string bibliographystyle;
-	bool const use_natbib = used_packages.find("natbib") != used_packages.end();
-	bool const use_jurabib = used_packages.find("jurabib") != used_packages.end();
+	bool const use_natbib = preamble.isPackageUsed("natbib");
+	bool const use_jurabib = preamble.isPackageUsed("jurabib");
 	string last_env;
+	bool title_layout_found = false;
 	while (p.good()) {
 		Token const & t = p.get_token();
 
@@ -1882,7 +1950,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			begin_inset(os, "Formula ");
 			Token const & n = p.get_token();
-			if (n.cat() == catMath && outer) {
+			bool const display(n.cat() == catMath && outer);
+			if (display) {
 				// TeX's $$...$$ syntax for displayed math
 				os << "\\[";
 				parse_math(p, os, FLAG_SIMPLE, MATH_MODE);
@@ -1896,6 +1965,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				os << '$';
 			}
 			end_inset(os);
+			if (display) {
+				// Prevent the conversion of a line break to a
+				// space (bug 7668). This does not change the
+				// output, but looks ugly in LyX.
+				eat_whitespace(p, os, context, false);
+			}
 		}
 
 		else if (t.cat() == catSuper || t.cat() == catSub)
@@ -2017,8 +2092,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				os << t.cs();
 		}
 
-		else if (t.cat() == catBegin &&
-			 p.next_token().cat() == catEnd) {
+		else if (t.cat() == catBegin) {
+			Token const next = p.next_token();
+			Token const end = p.next_next_token();
+			if (next.cat() == catEnd) {
 			// {}
 			Token const prev = p.prev_token();
 			p.get_token();
@@ -2028,14 +2105,19 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				; // ignore it in {}`` or -{}-
 			else
 				handle_ert(os, "{}", context);
-
-		}
-
-		else if (t.cat() == catBegin) {
+			} else if (next.cat() == catEscape &&
+			           is_known(next.cs(), known_quotes) &&
+			           end.cat() == catEnd) {
+				// Something like {\textquoteright} (e.g.
+				// from writer2latex). LyX writes
+				// \textquoteright{}, so we may skip the
+				// braces here for better readability.
+				parse_text_snippet(p, os, FLAG_BRACE_LAST,
+				                   outer, context);
+			} else {
 			context.check_layout(os);
 			// special handling of font attribute changes
 			Token const prev = p.prev_token();
-			Token const next = p.next_token();
 			TeXFont const oldFont = context.font;
 			if (next.character() == '[' ||
 			    next.character() == ']' ||
@@ -2108,6 +2190,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				parse_text_snippet(p, os, FLAG_BRACE_LAST,
 						   outer, context);
 				handle_ert(os, "}", context);
+				}
 			}
 		}
 
@@ -2142,10 +2225,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			parse_math(p, os, FLAG_EQUATION, MATH_MODE);
 			os << "\\]";
 			end_inset(os);
+			// Prevent the conversion of a line break to a space
+			// (bug 7668). This does not change the output, but
+			// looks ugly in LyX.
+			eat_whitespace(p, os, context, false);
 		}
 
 		else if (t.cs() == "begin")
-			parse_environment(p, os, outer, last_env, context);
+			parse_environment(p, os, outer, last_env,
+			                  title_layout_found, context);
 
 		else if (t.cs() == "end") {
 			if (flags & FLAG_END) {
@@ -2166,7 +2254,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				// FIXME: This swallows comments, but we cannot use
 				//        eat_whitespace() since we must not output
 				//        anything before the item.
-				s = p.getArg('[', ']');
+				p.skip_spaces(true);
+				s = p.verbatimOption();
 			} else
 				p.skip_spaces(false);
 			context.set_item();
@@ -2216,7 +2305,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "bibitem") {
 			context.set_item();
 			context.check_layout(os);
-			string label = convert_command_inset_arg(p.getArg('[', ']'));
+			eat_whitespace(p, os, context, false);
+			string label = convert_command_inset_arg(p.verbatimOption());
 			string key = convert_command_inset_arg(p.verbatim_item());
 			if (contains(label, '\\') || contains(key, '\\')) {
 				// LyX can't handle LaTeX commands in labels or keys
@@ -2231,8 +2321,53 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 		}
 
-		else if (is_macro(p))
-			parse_macro(p, os, context);
+		else if (is_macro(p)) {
+			// catch the case of \def\inputGnumericTable
+			bool macro = true;
+			if (t.cs() == "def") {
+				Token second = p.next_token();
+				if (second.cs() == "inputGnumericTable") {
+					p.pushPosition();
+					p.get_token();
+					skip_braces(p);
+					Token third = p.get_token();
+					p.popPosition();
+					if (third.cs() == "input") {
+						p.get_token();
+						skip_braces(p);
+						p.get_token();
+						string name = normalize_filename(p.verbatim_item());
+						string const path = getMasterFilePath();
+						// We want to preserve relative / absolute filenames,
+						// therefore path is only used for testing
+						if (!makeAbsPath(name, path).exists()) {
+							// The file extension is probably missing.
+							// Now try to find it out.
+							char const * const Gnumeric_formats[] = {"gnumeric"
+								"ods", "xls", 0};
+							string const Gnumeric_name =
+								find_file(name, path, Gnumeric_formats);
+							if (!Gnumeric_name.empty())
+								name = Gnumeric_name;
+						}
+						if (makeAbsPath(name, path).exists())
+							fix_relative_filename(name);
+						else
+							cerr << "Warning: Could not find file '"
+							     << name << "'." << endl;
+						context.check_layout(os);
+						begin_inset(os, "External\n\ttemplate ");
+						os << "GnumericSpreadsheet\n\tfilename "
+						   << name << "\n";
+						end_inset(os);
+						context.check_layout(os);
+						macro = false;
+					}
+				}
+			}
+			if (macro)
+				parse_macro(p, os, context);
+		}
 
 		else if (t.cs() == "noindent") {
 			p.skip_spaces();
@@ -2262,6 +2397,32 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, context, true);
 		}
 
+		// Must catch empty dates before findLayout is called below
+		else if (t.cs() == "date") {
+			string const date = p.verbatim_item();
+			if (date.empty())
+				preamble.suppressDate(true);
+			else {
+				preamble.suppressDate(false);
+				if (context.new_layout_allowed &&
+				    (newlayout = findLayout(context.textclass,
+				                            t.cs(), true))) {
+					// write the layout
+					output_command_layout(os, p, outer,
+							context, newlayout);
+					p.skip_spaces();
+					if (!title_layout_found)
+						title_layout_found = newlayout->intitle;
+					set<string> const & req = newlayout->requires();
+					for (set<string>::const_iterator it = req.begin();
+					     it != req.end(); it++)
+						preamble.registerAutomaticallyLoadedPackage(*it);
+				} else
+					handle_ert(os, "\\date{" + date + '}',
+							context);
+			}
+		}
+
 		// Starred section headings
 		// Must attempt to parse "Section*" before "Section".
 		else if ((p.next_token().asInput() == "*") &&
@@ -2271,6 +2432,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.get_token();
 			output_command_layout(os, p, outer, context, newlayout);
 			p.skip_spaces();
+			if (!title_layout_found)
+				title_layout_found = newlayout->intitle;
+			set<string> const & req = newlayout->requires();
+			for (set<string>::const_iterator it = req.begin(); it != req.end(); it++)
+				preamble.registerAutomaticallyLoadedPackage(*it);
 		}
 
 		// Section headings and the like
@@ -2279,6 +2445,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// write the layout
 			output_command_layout(os, p, outer, context, newlayout);
 			p.skip_spaces();
+			if (!title_layout_found)
+				title_layout_found = newlayout->intitle;
+			set<string> const & req = newlayout->requires();
+			for (set<string>::const_iterator it = req.begin(); it != req.end(); it++)
+				preamble.registerAutomaticallyLoadedPackage(*it);
 		}
 
 		else if (t.cs() == "caption") {
@@ -2561,10 +2732,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "makeindex" || t.cs() == "maketitle") {
-			// FIXME: Somehow prevent title layouts if
-			// "maketitle" was not found
-			// swallow this
-			skip_spaces_braces(p);
+			if (title_layout_found) {
+				// swallow this
+				skip_spaces_braces(p);
+			} else
+				handle_ert(os, t.asInput(), context);
 		}
 
 		else if (t.cs() == "tableofcontents") {
@@ -2601,50 +2773,20 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				handle_ert(os, "\\listof{" + name + "}", context);
 		}
 
-		else if (t.cs() == "textrm")
+		else if ((where = is_known(t.cs(), known_text_font_families)))
 			parse_text_attributes(p, os, FLAG_ITEM, outer,
-					      context, "\\family",
-					      context.font.family, "roman");
+				context, "\\family", context.font.family,
+				known_coded_font_families[where - known_text_font_families]);
 
-		else if (t.cs() == "textsf")
+		else if ((where = is_known(t.cs(), known_text_font_series)))
 			parse_text_attributes(p, os, FLAG_ITEM, outer,
-					      context, "\\family",
-					      context.font.family, "sans");
+				context, "\\series", context.font.series,
+				known_coded_font_series[where - known_text_font_series]);
 
-		else if (t.cs() == "texttt")
+		else if ((where = is_known(t.cs(), known_text_font_shapes)))
 			parse_text_attributes(p, os, FLAG_ITEM, outer,
-					      context, "\\family",
-					      context.font.family, "typewriter");
-
-		else if (t.cs() == "textmd")
-			parse_text_attributes(p, os, FLAG_ITEM, outer,
-					      context, "\\series",
-					      context.font.series, "medium");
-
-		else if (t.cs() == "textbf")
-			parse_text_attributes(p, os, FLAG_ITEM, outer,
-					      context, "\\series",
-					      context.font.series, "bold");
-
-		else if (t.cs() == "textup")
-			parse_text_attributes(p, os, FLAG_ITEM, outer,
-					      context, "\\shape",
-					      context.font.shape, "up");
-
-		else if (t.cs() == "textit")
-			parse_text_attributes(p, os, FLAG_ITEM, outer,
-					      context, "\\shape",
-					      context.font.shape, "italic");
-
-		else if (t.cs() == "textsl")
-			parse_text_attributes(p, os, FLAG_ITEM, outer,
-					      context, "\\shape",
-					      context.font.shape, "slanted");
-
-		else if (t.cs() == "textsc")
-			parse_text_attributes(p, os, FLAG_ITEM, outer,
-					      context, "\\shape",
-					      context.font.shape, "smallcaps");
+				context, "\\shape", context.font.shape,
+				known_coded_font_shapes[where - known_text_font_shapes]);
 
 		else if (t.cs() == "textnormal" || t.cs() == "normalfont") {
 			context.check_layout(os);
@@ -2674,6 +2816,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					parse_text_snippet(p, os, FLAG_ITEM, outer, context);
 					context.check_layout(os);
 					os << "\n\\color inherit\n";
+					preamble.registerAutomaticallyLoadedPackage("color");
 			} else
 				// for custom defined colors
 				handle_ert(os, t.asInput() + "{" + color + "}", context);
@@ -2691,6 +2834,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
 			context.check_layout(os);
 			os << "\n\\bar default\n";
+			preamble.registerAutomaticallyLoadedPackage("ulem");
 		}
 
 		else if (t.cs() == "sout") {
@@ -2699,6 +2843,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
 			context.check_layout(os);
 			os << "\n\\strikeout default\n";
+			preamble.registerAutomaticallyLoadedPackage("ulem");
 		}
 
 		else if (t.cs() == "uuline" || t.cs() == "uwave" ||
@@ -2708,6 +2853,52 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
 			context.check_layout(os);
 			os << "\n\\" << t.cs() << " default\n";
+			if (t.cs() == "uuline" || t.cs() == "uwave")
+				preamble.registerAutomaticallyLoadedPackage("ulem");
+		}
+
+		else if (t.cs() == "lyxadded" || t.cs() == "lyxdeleted") {
+			context.check_layout(os);
+			string name = p.getArg('{', '}');
+			string localtime = p.getArg('{', '}');
+			preamble.registerAuthor(name);
+			Author const & author = preamble.getAuthor(name);
+			// from_ctime() will fail if LyX decides to output the
+			// time in the text language. It might also use a wrong
+			// time zone (if the original LyX document was exported
+			// with a different time zone).
+			time_t ptime = from_ctime(localtime);
+			if (ptime == static_cast<time_t>(-1)) {
+				cerr << "Warning: Could not parse time `" << localtime
+				     << "´ for change tracking, using current time instead.\n";
+				ptime = current_time();
+			}
+			if (t.cs() == "lyxadded")
+				os << "\n\\change_inserted ";
+			else
+				os << "\n\\change_deleted ";
+			os << author.bufferId() << ' ' << ptime << '\n';
+			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
+			bool dvipost    = LaTeXPackages::isAvailable("dvipost");
+			bool xcolorulem = LaTeXPackages::isAvailable("ulem") &&
+			                  LaTeXPackages::isAvailable("xcolor");
+			// No need to test for luatex, since luatex comes in
+			// two flavours (dvi and pdf), like latex, and those
+			// are detected by pdflatex.
+			if (pdflatex || xetex) {
+				if (xcolorulem) {
+					preamble.registerAutomaticallyLoadedPackage("ulem");
+					preamble.registerAutomaticallyLoadedPackage("xcolor");
+					preamble.registerAutomaticallyLoadedPackage("pdfcolmk");
+				}
+			} else {
+				if (dvipost) {
+					preamble.registerAutomaticallyLoadedPackage("dvipost");
+				} else if (xcolorulem) {
+					preamble.registerAutomaticallyLoadedPackage("ulem");
+					preamble.registerAutomaticallyLoadedPackage("xcolor");
+				}
+			}
 		}
 
 		else if (t.cs() == "phantom" || t.cs() == "hphantom" ||
@@ -2764,7 +2955,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				//        about the empty paragraph.
 				context.new_paragraph(os);
 			}
-			if (h_paragraph_separation == "indent") {
+			if (preamble.indentParagraphs()) {
 				// we need to unindent, lest the line be too long
 				context.add_par_extra_stuff("\\noindent\n");
 			}
@@ -2795,7 +2986,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		          is_known(p.next_token().cs(), known_phrases))) {
 			// LyX sometimes puts a \protect in front, so we have to ignore it
 			// FIXME: This needs to be changed when bug 4752 is fixed.
-			char const * const * where = is_known(
+			where = is_known(
 				t.cs() == "protect" ? p.get_token().cs() : t.cs(),
 				known_phrases);
 			context.check_layout(os);
@@ -2803,12 +2994,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_spaces_braces(p);
 		}
 
-		else if (is_known(t.cs(), known_ref_commands)) {
+		else if ((where = is_known(t.cs(), known_ref_commands))) {
 			string const opt = p.getOpt();
 			if (opt.empty()) {
 				context.check_layout(os);
-				char const * const * where = is_known(t.cs(),
-					known_ref_commands);
 				begin_command_inset(os, "ref",
 					known_coded_ref_commands[where - known_ref_commands]);
 				os << "reference \""
@@ -2891,7 +3080,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				p.get_token();
 			}
 			char argumentOrder = '\0';
-			vector<string> const & options = used_packages["jurabib"];
+			vector<string> const options =
+				preamble.getPackageOptions("jurabib");
 			if (find(options.begin(), options.end(),
 				      "natbiborder") != options.end())
 				argumentOrder = 'n';
@@ -2966,6 +3156,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			   << convert_command_inset_arg(p.verbatim_item())
 			   << "\"\n";
 			end_inset(os);
+			preamble.registerAutomaticallyLoadedPackage("nomencl");
 		}
 		
 		else if (t.cs() == "label") {
@@ -2983,6 +3174,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "type \"idx\"\n";
 			end_inset(os);
 			skip_spaces_braces(p);
+			preamble.registerAutomaticallyLoadedPackage("makeidx");
+			if (preamble.use_indices() == "true")
+				preamble.registerAutomaticallyLoadedPackage("splitidx");
 		}
 
 		else if (t.cs() == "printnomenclature") {
@@ -3009,6 +3203,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				os << "width \"" << width << '\"';
 			end_inset(os);
 			skip_spaces_braces(p);
+			preamble.registerAutomaticallyLoadedPackage("nomencl");
 		}
 
 		else if ((t.cs() == "textsuperscript" || t.cs() == "textsubscript")) {
@@ -3017,10 +3212,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << t.cs().substr(4) << '\n';
 			parse_text_in_inset(p, os, FLAG_ITEM, false, context);
 			end_inset(os);
+			if (t.cs() == "textsubscript")
+				preamble.registerAutomaticallyLoadedPackage("subscript");
 		}
 
-		else if (is_known(t.cs(), known_quotes)) {
-			char const * const * where = is_known(t.cs(), known_quotes);
+		else if ((where = is_known(t.cs(), known_quotes))) {
 			context.check_layout(os);
 			begin_inset(os, "Quotes ");
 			os << known_coded_quotes[where - known_quotes];
@@ -3032,9 +3228,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_braces(p);
 		}
 
-		else if (is_known(t.cs(), known_sizes) &&
+		else if ((where = is_known(t.cs(), known_sizes)) &&
 			 context.new_layout_allowed) {
-			char const * const * where = is_known(t.cs(), known_sizes);
 			context.check_layout(os);
 			TeXFont const oldFont = context.font;
 			context.font.size = known_coded_sizes[where - known_sizes];
@@ -3042,10 +3237,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, context, false);
 		}
 
-		else if (is_known(t.cs(), known_font_families) &&
+		else if ((where = is_known(t.cs(), known_font_families)) &&
 			 context.new_layout_allowed) {
-			char const * const * where =
-				is_known(t.cs(), known_font_families);
 			context.check_layout(os);
 			TeXFont const oldFont = context.font;
 			context.font.family =
@@ -3054,10 +3247,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, context, false);
 		}
 
-		else if (is_known(t.cs(), known_font_series) &&
+		else if ((where = is_known(t.cs(), known_font_series)) &&
 			 context.new_layout_allowed) {
-			char const * const * where =
-				is_known(t.cs(), known_font_series);
 			context.check_layout(os);
 			TeXFont const oldFont = context.font;
 			context.font.series =
@@ -3066,10 +3257,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, context, false);
 		}
 
-		else if (is_known(t.cs(), known_font_shapes) &&
+		else if ((where = is_known(t.cs(), known_font_shapes)) &&
 			 context.new_layout_allowed) {
-			char const * const * where =
-				is_known(t.cs(), known_font_shapes);
 			context.check_layout(os);
 			TeXFont const oldFont = context.font;
 			context.font.shape =
@@ -3077,10 +3266,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			output_font_change(os, oldFont, context.font);
 			eat_whitespace(p, os, context, false);
 		}
-		else if (is_known(t.cs(), known_old_font_families) &&
+		else if ((where = is_known(t.cs(), known_old_font_families)) &&
 			 context.new_layout_allowed) {
-			char const * const * where =
-				is_known(t.cs(), known_old_font_families);
 			context.check_layout(os);
 			TeXFont const oldFont = context.font;
 			context.font.init();
@@ -3091,10 +3278,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, context, false);
 		}
 
-		else if (is_known(t.cs(), known_old_font_series) &&
+		else if ((where = is_known(t.cs(), known_old_font_series)) &&
 			 context.new_layout_allowed) {
-			char const * const * where =
-				is_known(t.cs(), known_old_font_series);
 			context.check_layout(os);
 			TeXFont const oldFont = context.font;
 			context.font.init();
@@ -3105,10 +3290,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, context, false);
 		}
 
-		else if (is_known(t.cs(), known_old_font_shapes) &&
+		else if ((where = is_known(t.cs(), known_old_font_shapes)) &&
 			 context.new_layout_allowed) {
-			char const * const * where =
-				is_known(t.cs(), known_old_font_shapes);
 			context.check_layout(os);
 			TeXFont const oldFont = context.font;
 			context.font.init();
@@ -3141,27 +3324,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.setEncoding(enc);
 		}
 
-		else if (t.cs() == "ldots") {
+		else if ((where = is_known(t.cs(), known_special_chars))) {
 			context.check_layout(os);
-			os << "\\SpecialChar \\ldots{}\n";
-			skip_spaces_braces(p);
-		}
-
-		else if (t.cs() == "lyxarrow") {
-			context.check_layout(os);
-			os << "\\SpecialChar \\menuseparator\n";
-			skip_spaces_braces(p);
-		}
-
-		else if (t.cs() == "textcompwordmark") {
-			context.check_layout(os);
-			os << "\\SpecialChar \\textcompwordmark{}\n";
-			skip_spaces_braces(p);
-		}
-
-		else if (t.cs() == "slash") {
-			context.check_layout(os);
-			os << "\\SpecialChar \\slash{}\n";
+			os << "\\SpecialChar \\"
+			   << known_coded_special_chars[where - known_special_chars]
+			   << '\n';
 			skip_spaces_braces(p);
 		}
 
@@ -3477,17 +3644,30 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			parse_outer_box(p, os, FLAG_ITEM, outer, context, t.cs(), "");
 
 		else if (t.cs() == "framebox") {
-			string special = p.getFullOpt();
-			special += p.getOpt();
-			parse_outer_box(p, os, FLAG_ITEM, outer, context, t.cs(), special);
+			if (p.next_token().character() == '(') {
+				//the syntax is: \framebox(x,y)[position]{content}
+				string arg = t.asInput();
+				arg += p.getFullParentheseArg();
+				arg += p.getFullOpt();
+				eat_whitespace(p, os, context, false);
+				handle_ert(os, arg + '{', context);
+				eat_whitespace(p, os, context, false);
+				parse_text(p, os, FLAG_ITEM, outer, context);
+				handle_ert(os, "}", context);
+			} else {
+				string special = p.getFullOpt();
+				special += p.getOpt();
+				parse_outer_box(p, os, FLAG_ITEM, outer,
+				                context, t.cs(), special);
+			}
 		}
 
 		//\makebox() is part of the picture environment and different from \makebox{}
 		//\makebox{} will be parsed by parse_box
 		else if (t.cs() == "makebox") {
-			string arg = t.asInput();
 			if (p.next_token().character() == '(') {
 				//the syntax is: \makebox(x,y)[position]{content}
+				string arg = t.asInput();
 				arg += p.getFullParentheseArg();
 				arg += p.getFullOpt();
 				eat_whitespace(p, os, context, false);
@@ -3512,8 +3692,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_spaces_braces(p);
 		}
 
-		else if (is_known(t.cs(), known_spaces)) {
-			char const * const * where = is_known(t.cs(), known_spaces);
+		else if ((where = is_known(t.cs(), known_spaces))) {
 			context.check_layout(os);
 			begin_inset(os, "space ");
 			os << '\\' << known_coded_spaces[where - known_spaces]
@@ -3547,7 +3726,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		         t.cs() == "DeclareRobustCommandx" ||
 		         t.cs() == "newcommand" ||
 		         t.cs() == "newcommandx" ||
-			 t.cs() == "providecommand" ||
+		         t.cs() == "providecommand" ||
 		         t.cs() == "providecommandx" ||
 		         t.cs() == "renewcommand" ||
 		         t.cs() == "renewcommandx") {
@@ -3729,6 +3908,37 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			   << "status collapsed\n";
 			parse_text_in_inset(p, os, FLAG_ITEM, false, context, newinsetlayout);
 			end_inset(os);
+		}
+
+		else if (t.cs() == "loadgame") {
+			p.skip_spaces();
+			string name = normalize_filename(p.verbatim_item());
+			string const path = getMasterFilePath();
+			// We want to preserve relative / absolute filenames,
+			// therefore path is only used for testing
+			if (!makeAbsPath(name, path).exists()) {
+				// The file extension is probably missing.
+				// Now try to find it out.
+				char const * const lyxskak_format[] = {"fen", 0};
+				string const lyxskak_name =
+					find_file(name, path, lyxskak_format);
+				if (!lyxskak_name.empty())
+					name = lyxskak_name;
+			}
+			if (makeAbsPath(name, path).exists())
+				fix_relative_filename(name);
+			else
+				cerr << "Warning: Could not find file '"
+				     << name << "'." << endl;
+			context.check_layout(os);
+			begin_inset(os, "External\n\ttemplate ");
+			os << "ChessDiagram\n\tfilename "
+			   << name << "\n";
+			end_inset(os);
+			context.check_layout(os);
+			// after a \loadgame follows a \showboard
+			if (p.get_token().asInput() == "showboard")
+				p.get_token();
 		}
 
 		else {

@@ -21,6 +21,7 @@
 #include "LayoutFile.h"
 #include "LayoutModuleList.h"
 #include "ModuleList.h"
+#include "Preamble.h"
 #include "TextClass.h"
 
 #include "support/convert.h"
@@ -342,6 +343,7 @@ bool checkModule(string const & name, bool command)
 
 bool noweb_mode = false;
 bool pdflatex = false;
+bool xetex = false;
 bool roundtrip = false;
 
 
@@ -364,13 +366,20 @@ void read_command(Parser & p, string command, CommandMap & commands)
 			string const arg = p.getArg('{', '}');
 			if (arg == "translate")
 				arguments.push_back(required);
+			else if (arg == "group")
+				arguments.push_back(req_group);
 			else if (arg == "item")
 				arguments.push_back(item);
+			else if (arg == "displaymath")
+				arguments.push_back(displaymath);
 			else
 				arguments.push_back(verbatim);
 		} else {
-			p.getArg('[', ']');
-			arguments.push_back(optional);
+			string const arg = p.getArg('[', ']');
+			if (arg == "group")
+				arguments.push_back(opt_group);
+			else
+				arguments.push_back(optional);
 		}
 	}
 	commands[command] = arguments;
@@ -649,7 +658,7 @@ namespace {
  *  You must ensure that \p parentFilePath is properly set before calling
  *  this function!
  */
-void tex2lyx(idocstream & is, ostream & os, string encoding)
+bool tex2lyx(idocstream & is, ostream & os, string encoding)
 {
 	// Set a sensible default encoding.
 	// This is used until an encoding command is found.
@@ -657,18 +666,17 @@ void tex2lyx(idocstream & is, ostream & os, string encoding)
 	// since latin1 does not cause an iconv error if the actual encoding
 	// is different (bug 7509).
 	if (encoding.empty()) {
-		if (h_inputencoding == "auto")
+		if (preamble.inputencoding() == "auto")
 			encoding = "latin1";
 		else
-			encoding = h_inputencoding;
+			encoding = preamble.inputencoding();
 	}
 
 	Parser p(is);
 	p.setEncoding(encoding);
 	//p.dump();
 
-	ostringstream ps;
-	parse_preamble(p, ps, documentclass, textclass);
+	preamble.parse(p, documentclass, textclass);
 
 	active_environments.push_back("document");
 	Context context(true, textclass);
@@ -682,16 +690,16 @@ void tex2lyx(idocstream & is, ostream & os, string encoding)
 	active_environments.pop_back();
 
 	// We know the used modules only after parsing the full text
-	ostringstream ms;
 	if (!used_modules.empty()) {
-		ms << "\\begin_modules\n";
 		LayoutModuleList::const_iterator const end = used_modules.end();
 		LayoutModuleList::const_iterator it = used_modules.begin();
 		for (; it != end; it++)
-			ms << *it << '\n';
-		ms << "\\end_modules\n";
+			preamble.addModule(*it);
 	}
-	os << subst(ps.str(), modules_placeholder, ms.str());
+	if (!preamble.writeLyXHeader(os, !active_environments.empty())) {
+		cerr << "Could write LyX file header." << endl;
+		return false;
+	}
 
 	ss.seekg(0);
 	os << ss.str();
@@ -702,6 +710,7 @@ void tex2lyx(idocstream & is, ostream & os, string encoding)
 		parsertest << p.get_token().asInput();
 	// <origfile> and parsertest.tex should now have identical content
 #endif
+	return true;
 }
 
 
@@ -719,9 +728,9 @@ bool tex2lyx(FileName const & infilename, ostream & os, string const & encoding)
 	}
 	string const oldParentFilePath = parentFilePath;
 	parentFilePath = onlyPath(infilename.absFileName());
-	tex2lyx(is, os, encoding);
+	bool retval = tex2lyx(is, os, encoding);
 	parentFilePath = oldParentFilePath;
-	return true;
+	return retval;
 }
 
 } // anonymous namespace

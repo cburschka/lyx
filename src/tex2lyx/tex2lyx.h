@@ -43,19 +43,10 @@ public:
 	void setName(std::string const & name) { name_ = name; }
 };
 
-/// in preamble.cpp
-void parse_preamble(Parser & p, std::ostream & os, 
-	std::string const & forceclass, TeX2LyXDocClass & tc);
 /// Translate babel language name to LyX language name
 extern std::string babel2lyx(std::string const & language);
-/// translate color name to LyX color code
-extern std::string color2code(std::string const & name);
-
-/// used packages with options
-extern std::map<std::string, std::vector<std::string> > used_packages;
-extern const char * const modules_placeholder;
-extern std::string h_inputencoding;
-extern std::string h_paragraph_separation;
+/// Translate basic color name or RGB color in LaTeX syntax to LyX color code
+extern std::string rgbcolor2code(std::string const & name);
 
 /// in text.cpp
 std::string translate_len(std::string const &);
@@ -80,8 +71,8 @@ void parse_math(Parser & p, std::ostream & os, unsigned flags, mode_type mode);
 
 
 /// in table.cpp
-void handle_tabular(Parser & p, std::ostream & os, bool is_long_tabular,
-		    Context & context);
+void handle_tabular(Parser & p, std::ostream & os, std::string const & name,
+                    std::string const & width, Context & context);
 
 
 /// in tex2lyx.cpp
@@ -93,6 +84,7 @@ std::string join(std::vector<std::string> const & input,
 	char const * delim);
 
 bool is_math_env(std::string const & name);
+bool is_display_math_env(std::string const & name);
 char const * const * is_known(std::string const &, char const * const *);
 
 /*!
@@ -124,9 +116,12 @@ std::string active_environment();
 
 enum ArgumentType {
 	required,
+	req_group,
 	verbatim,
 	item,
-	optional
+	optional,
+	opt_group,
+	displaymath,
 };
 
 class FullCommand {
@@ -167,6 +162,8 @@ extern FullEnvironmentMap possible_textclass_environments;
 extern bool noweb_mode;
 /// Did we recognize any pdflatex-only construct?
 extern bool pdflatex;
+/// Did we recognize any xetex-only construct?
+extern bool xetex;
 /// LyX format that is created by tex2lyx
 int const LYX_FORMAT = 413;
 

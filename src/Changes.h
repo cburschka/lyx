@@ -41,7 +41,7 @@ public:
 		DELETED // deleted text
 	};
 
-	explicit Change(Type t = UNCHANGED, int a = 0, time_t ct = current_time())
+	explicit Change(Type t = UNCHANGED, int a = 0, time_t ct = support::current_time())
 		: type(t), author(a), changetime(ct) {}
 
 	/// is the change similar to the given change such that both can be merged?

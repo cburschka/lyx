@@ -141,6 +141,7 @@ SOURCEFILESCORE = \
 	Language.cpp \
 	LaTeX.cpp \
 	LaTeXFeatures.cpp \
+	LaTeXPackages.cpp \
 	LayoutFile.cpp \
 	LayoutModuleList.cpp \
 	Length.cpp \
@@ -239,6 +240,7 @@ HEADERFILESCORE = \
 	KeySequence.h \
 	Language.h \
 	LaTeXFeatures.h \
+	LaTeXPackages.h \
 	LaTeX.h \
 	Layout.h \
 	LayoutEnums.h \

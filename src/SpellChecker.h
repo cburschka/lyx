@@ -14,7 +14,6 @@
 #define SPELL_BASE_H
 
 #include "support/strfwd.h"
-#include "support/lyxtime.h"
 
 
 namespace lyx {

@@ -28,6 +28,10 @@ What's new
 
 * TEX2LYX IMPROVEMENTS
 
+- Chess diagram and Spreadsheet external templates are imported
+
+- tabular* environments are imported
+
 
 * USER INTERFACE
 
@@ -60,6 +64,22 @@ What's new
 
 
 * TEX2LYX
+
+- tex2lyx roundtips pollutes preamble with color code (bug 7845).
+
+- tex2lyx support for \date{} (bug 7844).
+
+- Latex import whitespace (bug 7668).
+
+- asme2e issues (bug 6449).
+
+- tex2lyx: problem with macros nested in \foreignlanguage (bug 5187).
+
+- tex2lyx booktabs support (bug 4553).
+
+- tex2lyx change tracking support (bug 4213).
+
+- tex2lyx problems with character style switches (bug 3036).
 
 
 * USER INTERFACE

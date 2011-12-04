@@ -10,15 +10,16 @@ LyX feature:   LyX inset or document setting
 
 
 Format LaTeX feature                        LyX feature
-222    change tracking                      change tracking
 224    external insets defined in           InsetExternal
-       lib/external_templates. This is
-       quite difficult to recognize.
+       lib/external_templates.
+       (Date and RasterImage cannot be supported
+       (Chess diagram and Spreadsheet are supported)
+       (Xfig figure, Lilypond, Dia diagram can be supported by looking at the file extension)
+       (for PDFpages work is in progress by uwestoehr)
 226    nothing (impossible to import)       InsetBranch, \branch...\end_branch
 226    transformations                      InsetExternal
 228    draft                                InsetExternal
 232    bibtopic                             InsetBibTeX
-248    booktabs.sty                         InsetTabular
 254    esint.sty                            \use_esint
 266    armenian                             \language, \lang
 267    XeTeX                                utf8 encoding
@@ -45,11 +46,8 @@ Format LaTeX feature                        LyX feature
 363    horizontal longtable alignment       InsetTabular
 364    branch file name suffix              \filename_suffix
 366    relative lengths for parskip         \defskip
-367    relative lengths for h and v space   InsetHSpace, InsetVSpace
-368    glue lengths                         InsetHSpace
-369    author id                            \author
-370    \date{}                              \suppress_date
-                                            (partly supported, see bug #7844)
+367    relative lengths for h and v space   InsetSpace, InsetVSpace
+368    glue lengths                         InsetSpace
 371    automatic mhchem loading             \use_mhchem
 375    \includeonly                         \{begin,end}_includeonly
 376    update .aux of unincluded children   \maintain_unincluded_children
@@ -66,9 +64,7 @@ Format LaTeX feature                        LyX feature
 401    feyn.sty                             InsetMathDiagram
 402    \addcontentsline                     InsetBibtex bibtotoc option
 404    refstyle.sty                         InsetRef
-405    author hash                          \author
 407    vertical offset for multirows        InsetTabular
 409    XeTeX                                \use_non_tex_fonts
 411    support for polyglossia              \language_package	(the cases of no package, of babel and of custom package is supported)
-412    tabular*                             InsetTabular
 

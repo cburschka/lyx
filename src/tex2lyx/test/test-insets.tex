@@ -114,8 +114,19 @@ M., \& Rasio, F.~A. 2004, ApJ, 604, 632\end{thebibliography}
 \section{Input files\index{Input files}}
 
 We can input files too, like this \input{DummyDocument}, or with the include
-variant \include{DummyDocument} % unfortunately, including the doc twice
-% generates a multiply defined label
+variant \include{DummyDocument} % unfortunately, including the doc twice generates a multiply defined label
+
+We can also import chess diagrams:
+
+\loadgame{../../../lib/examples/iecc05}\showboard
+
+Spreadsheets:
+
+\def\inputGnumericTable{}\input{../../../lib/examples/longsheet.gnumeric}
+
+and PDF pages:
+
+\includepdf[pages=-,angle=22,origin=Bl,width=5cm,height=40mm,keepaspectratio]{../../../lib/examples/beamer-icsi-logo}
 
 If you prefer verbatim input, you can choose
 between~\verbatiminput{foo} or~\verbatiminput*{foo}.
@@ -257,6 +268,97 @@ Lots   of   lines& like this\footnote{\env{longtable} takes special
 Lots of lines& like this.\\
 Lots of lines& like this.
 \end{longtable}
+
+From bug 7412 another example with more captions (can currently not produced in LyX):
+\begin{longtable}{|l|l|}
+\caption{A long table}
+\endfirsthead
+\caption{A long table -- continued}
+\endhead
+\multicolumn{2}{r}{{Continued on next page}}
+\tabularnewline
+\endfoot
+\endlastfoot
+\hline
+\multicolumn{1}{|c|}{Something} & \multicolumn{1}{c|}{Description}\tabularnewline
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline
+\end{longtable}
+
+A table*:
+
+\begin{tabular*} % some comment
+{0.8\columnwidth}[b]{lr}
+two\\
+lonely&lines
+\end{tabular*}
+
+A booktabs table:
+
+\begin{table}[h]
+\caption{\label{tab:Special-booktabs-table}Special booktabs-table}
+
+
+\centering{}%
+\begin{tabular}{cccc}
+\toprule 
+System & Chip\,1 & \multicolumn{2}{c}{Chip\,2}\tabularnewline
+\cmidrule(r){2-2}\cmidrule(l){3-4}\morecmidrules \cmidrule{2-4}Detector
+thickness in \textmu{}m & 300 & 300 & 700\tabularnewline
+\midrule 
+Edge angle in \textdegree{} & 3.55 & 2.71 & 7.99\tabularnewline
+\addlinespace
+Spatial resolution in \textmu{}m & 4.26 & 10.17 & 10.56\tabularnewline
+\addlinespace
+MTF at $f_{\mathrm{max}}$ & 0.53 & 0.37 & 0.39\tabularnewline
+\midrule 
+\morecmidrules \cmidrule{3-4}LSF-spatial resolution &  &  & \tabularnewline
+in \textmu{}m & 129.7 & 52.75 & 50.78\tabularnewline
+in \% of pixel size & 76.3 & 95.9 & 92.3\tabularnewline
+\bottomrule
+\end{tabular}
+\end{table}
+
 
 \section{Macros}
 

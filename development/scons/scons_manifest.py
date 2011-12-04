@@ -598,6 +598,7 @@ src_mathed_extra_files = Split('''
 src_tex2lyx_header_files = Split('''
     Context.h
     Parser.h
+    Preamble.h
     tex2lyx.h
 ''')
 
@@ -607,7 +608,7 @@ src_tex2lyx_files = Split('''
     Context.cpp
     math.cpp
     Parser.cpp
-    preamble.cpp
+    Preamble.cpp
     table.cpp
     tex2lyx.cpp
     text.cpp
@@ -621,12 +622,14 @@ src_tex2lyx_copied_header_files = Split('''
 
 
 src_tex2lyx_copied_files = Split('''
+    Author.cpp
     Color.cpp
     Counters.cpp
     Encoding.cpp
     FloatList.cpp
     Floating.cpp
     FontInfo.cpp
+    LaTeXPackages.cpp
     Layout.cpp
     LayoutFile.cpp
     LayoutModuleList.cpp

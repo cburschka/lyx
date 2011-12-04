@@ -27,6 +27,16 @@ bool is_math_env(string const & name)
 }
 
 
+bool is_display_math_env(string const & name)
+{
+	CommandMap::const_iterator it = known_math_environments.find(name);
+	if (it != known_math_environments.end())
+		if (!it->second.empty())
+			return it->second.back() == displaymath;
+	return false;
+}
+
+
 void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 {
 	while (p.good()) {

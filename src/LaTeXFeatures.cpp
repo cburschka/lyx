@@ -24,6 +24,7 @@
 #include "Floating.h"
 #include "FloatList.h"
 #include "Language.h"
+#include "LaTeXPackages.h"
 #include "Layout.h"
 #include "Lexer.h"
 #include "LyXRC.h"
@@ -281,8 +282,6 @@ static docstring const lyxref_def = from_ascii(
 //
 /////////////////////////////////////////////////////////////////////
 
-LaTeXFeatures::Packages LaTeXFeatures::packages_;
-
 
 LaTeXFeatures::LaTeXFeatures(Buffer const & b, BufferParams const & p,
 			     OutputParams const & r)
@@ -331,36 +330,6 @@ void LaTeXFeatures::require(string const & name)
 void LaTeXFeatures::require(set<string> const & names)
 {
 	features_.insert(names.begin(), names.end());
-}
-
-
-void LaTeXFeatures::getAvailable()
-{
-	Lexer lex;
-	support::FileName const real_file = libFileSearch("", "packages.lst");
-
-	if (real_file.empty())
-		return;
-
-	lex.setFile(real_file);
-
-	if (!lex.isOK())
-		return;
-
-	// Make sure that we are clean
-	packages_.clear();
-
-	bool finished = false;
-	// Parse config-file
-	while (lex.isOK() && !finished) {
-		switch (lex.lex()) {
-		case Lexer::LEX_FEOF:
-			finished = true;
-			break;
-		default:
-			packages_.insert(lex.getString());
-		}
-	}
 }
 
 
@@ -441,13 +410,7 @@ bool LaTeXFeatures::isAvailable(string const & name)
 		//LYXERR0("from=[" << from << "] to=[" << to << "]");
 		return theConverters().isReachable(from, to);
 	}
-
-	if (packages_.empty())
-		getAvailable();
-	string n = name;
-	if (suffixIs(n, ".sty"))
-		n.erase(name.length() - 4);
-	return packages_.find(n) != packages_.end();
+	return LaTeXPackages::isAvailable(name);
 }
 
 

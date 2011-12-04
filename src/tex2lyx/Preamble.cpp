@@ -1,5 +1,5 @@
 /**
- * \file preamble.cpp
+ * \file Preamble.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,6 +13,7 @@
 
 #include <config.h>
 
+#include "Preamble.h"
 #include "tex2lyx.h"
 
 #include "LayoutFile.h"
@@ -29,10 +30,6 @@
 
 #include <algorithm>
 #include <iostream>
-#include <sstream>
-#include <string>
-#include <vector>
-#include <map>
 
 using namespace std;
 using namespace lyx::support;
@@ -43,13 +40,7 @@ namespace lyx {
 // special columntypes
 extern map<char, int> special_columns;
 
-map<string, vector<string> > used_packages;
-const char * const modules_placeholder = "\001modules\001";
-
-// needed to handle encodings with babel
-bool one_language = true;
-string h_inputencoding = "auto";
-string h_paragraph_separation = "indent";
+Preamble preamble;
 
 namespace {
 
@@ -174,72 +165,16 @@ const char * const known_basic_color_codes[] = {"#0000ff", "#000000", "#00ffff",
 const char * const known_if_3arg_commands[] = {"@ifundefined", "IfFileExists",
 0};
 
-// default settings
-ostringstream h_preamble;
-string h_textclass               = "article";
-string h_use_default_options     = "false";
-string h_options;
-string h_language                = "english";
-string h_language_package        = "none";
-string h_fontencoding            = "default";
-string h_font_roman              = "default";
-string h_font_sans               = "default";
-string h_font_typewriter         = "default";
-string h_font_default_family     = "default";
-string h_font_sc                 = "false";
-string h_font_osf                = "false";
-string h_font_sf_scale           = "100";
-string h_font_tt_scale           = "100";
-string h_graphics                = "default";
-string h_float_placement;
-string h_paperfontsize           = "default";
-string h_spacing                 = "single";
-string h_use_hyperref            = "0";
-string h_pdf_title;
-string h_pdf_author;
-string h_pdf_subject;
-string h_pdf_keywords;
-string h_pdf_bookmarks           = "1";
-string h_pdf_bookmarksnumbered   = "0";
-string h_pdf_bookmarksopen       = "0";
-string h_pdf_bookmarksopenlevel  = "1";
-string h_pdf_breaklinks          = "0";
-string h_pdf_pdfborder           = "0";
-string h_pdf_colorlinks          = "0";
-string h_pdf_backref             = "section";
-string h_pdf_pdfusetitle         = "1";
-string h_pdf_pagemode;
-string h_pdf_quoted_options;
-string h_papersize               = "default";
-string h_use_geometry            = "false";
-string h_use_amsmath             = "1";
-string h_use_esint               = "1";
-string h_use_mhchem              = "0";
-string h_use_mathdots            = "0";
-string h_cite_engine             = "basic";
-string h_use_bibtopic            = "false";
-string h_paperorientation        = "portrait";
-string h_suppress_date           = "false";
-string h_use_refstyle            = "0";
-string h_backgroundcolor;
-string h_boxbgcolor;
-string h_fontcolor;
-string h_notefontcolor;
-string h_secnumdepth             = "3";
-string h_tocdepth                = "3";
-string h_defskip                 = "medskip";
-string h_paragraph_indentation   = "default";
-string h_quotes_language         = "english";
-string h_papercolumns            = "1";
-string h_papersides;
-string h_paperpagestyle          = "default";
-string h_listings_params;
-string h_tracking_changes        = "false";
-string h_output_changes          = "false";
-string h_html_math_output        = "0";
-string h_html_css_as_file        = "0";
-string h_html_be_strict          = "false";
-string h_margins;
+/// packages that work only in xetex
+const char * const known_xetex_packages[] = {"arabxetex", "fixlatvian",
+"fontbook", "fontwrap", "mathspec", "philokalia", "polyglossia", "unisugar",
+"xeCJK", "xecolor", "xecyr", "xeindex", "xepersian", "xunicode", 0};
+
+// codes used to remove packages that are loaded automatically by LyX.
+// Syntax: package_beg_sep<name>package_mid_sep<package loading code>package_end_sep
+const char package_beg_sep = '\001';
+const char package_mid_sep = '\002';
+const char package_end_sep = '\003';
 
 
 // returns true if at least one of the options in what has been found
@@ -338,12 +273,74 @@ string process_keyval_opt(vector<string> & options, string name)
 	return "";
 }
 
+} // anonymous namespace
 
-/*!
- * Add package \p name with options \p options to used_packages.
- * Remove options from \p options that we don't want to output.
- */
-void add_package(string const & name, vector<string> & options)
+
+bool Preamble::indentParagraphs() const
+{
+	return h_paragraph_separation == "indent";
+}
+
+
+bool Preamble::isPackageUsed(string const & package) const
+{
+	return used_packages.find(package) != used_packages.end();
+}
+
+
+vector<string> Preamble::getPackageOptions(string const & package) const
+{
+	map<string, vector<string> >::const_iterator it = used_packages.find(package);
+	if (it != used_packages.end())
+		return it->second;
+	return vector<string>();
+}
+
+
+void Preamble::registerAutomaticallyLoadedPackage(std::string const & package)
+{
+	auto_packages.insert(package);
+}
+
+
+void Preamble::addModule(string const & module)
+{
+	used_modules.push_back(module);
+}
+
+
+void Preamble::suppressDate(bool suppress)
+{
+	if (suppress)
+		h_suppress_date = "true";
+	else
+		h_suppress_date = "false";
+}
+
+
+void Preamble::registerAuthor(std::string const & name)
+{
+	Author author(from_utf8(name), empty_docstring());
+	author.setUsed(true);
+	authors_.record(author);
+	h_tracking_changes = "true";
+	h_output_changes = "true";
+}
+
+
+Author const & Preamble::getAuthor(std::string const & name) const
+{
+	Author author(from_utf8(name), empty_docstring());
+	for (AuthorList::Authors::const_iterator it = authors_.begin();
+	     it != authors_.end(); it++)
+		if (*it == author)
+			return *it;
+	static Author const dummy;
+	return dummy;
+}
+
+
+void Preamble::add_package(string const & name, vector<string> & options)
 {
 	// every package inherits the global options
 	if (used_packages.find(name) == used_packages.end())
@@ -361,6 +358,8 @@ void add_package(string const & name, vector<string> & options)
 	}
 }
 
+
+namespace {
 
 // Given is a string like "scaled=0.9", return 0.9 * 100
 string const scale_as_percentage(string const & scale)
@@ -386,8 +385,82 @@ string remove_braces(string const & value)
 	return value;
 }
 
+} // anonymous namespace
 
-void handle_hyperref(vector<string> & options)
+
+Preamble::Preamble() : one_language(true)
+{
+	//h_backgroundcolor;
+	//h_boxbgcolor;
+	h_cite_engine             = "basic";
+	h_defskip                 = "medskip";
+	//h_float_placement;
+	//h_fontcolor;
+	h_fontencoding            = "default";
+	h_font_roman              = "default";
+	h_font_sans               = "default";
+	h_font_typewriter         = "default";
+	h_font_default_family     = "default";
+	h_font_sc                 = "false";
+	h_font_osf                = "false";
+	h_font_sf_scale           = "100";
+	h_font_tt_scale           = "100";
+	h_graphics                = "default";
+	h_html_be_strict          = "false";
+	h_html_css_as_file        = "0";
+	h_html_math_output        = "0";
+	h_inputencoding           = "auto";
+	h_language                = "english";
+	h_language_package        = "none";
+	//h_listings_params;
+	//h_margins;
+	//h_notefontcolor;
+	//h_options;
+	h_output_changes          = "false";
+	h_papercolumns            = "1";
+	h_paperfontsize           = "default";
+	h_paperorientation        = "portrait";
+	h_paperpagestyle          = "default";
+	//h_papersides;
+	h_papersize               = "default";
+	h_paragraph_indentation   = "default";
+	h_paragraph_separation    = "indent";
+	//h_pdf_title;
+	//h_pdf_author;
+	//h_pdf_subject;
+	//h_pdf_keywords;
+	h_pdf_bookmarks           = "1";
+	h_pdf_bookmarksnumbered   = "0";
+	h_pdf_bookmarksopen       = "0";
+	h_pdf_bookmarksopenlevel  = "1";
+	h_pdf_breaklinks          = "0";
+	h_pdf_pdfborder           = "0";
+	h_pdf_colorlinks          = "0";
+	h_pdf_backref             = "section";
+	h_pdf_pdfusetitle         = "1";
+	//h_pdf_pagemode;
+	//h_pdf_quoted_options;
+	h_quotes_language         = "english";
+	h_secnumdepth             = "3";
+	h_spacing                 = "single";
+	h_suppress_date           = "false";
+	h_textclass               = "article";
+	h_tocdepth                = "3";
+	h_tracking_changes        = "false";
+	h_use_bibtopic            = "false";
+	h_use_indices             = "false";
+	h_use_geometry            = "false";
+	h_use_amsmath             = "1";
+	h_use_default_options     = "false";
+	h_use_esint               = "1";
+	h_use_hyperref            = "0";
+	h_use_mhchem              = "0";
+	h_use_mathdots            = "0";
+	h_use_refstyle            = "0";
+}
+
+
+void Preamble::handle_hyperref(vector<string> & options)
 {
 	// FIXME swallow inputencoding changes that might surround the
 	//       hyperref setup if it was written by LyX
@@ -471,12 +544,45 @@ void handle_hyperref(vector<string> & options)
 }
 
 
-void handle_package(Parser &p, string const & name, string const & opts,
-		    bool in_lyx_preamble)
+void Preamble::handle_geometry(vector<string> & options)
+{
+	h_use_geometry = "true";
+	vector<string>::iterator it;
+	// paper orientation
+	if ((it = find(options.begin(), options.end(), "landscape")) != options.end()) {
+		h_paperorientation = "landscape";
+		options.erase(it);
+	}
+	// paper size
+	// keyval version: "paper=letter"
+	string paper = process_keyval_opt(options, "paper");
+	if (!paper.empty())
+		h_papersize = paper + "paper";
+	// alternative version: "letterpaper"
+	handle_opt(options, known_paper_sizes, h_papersize);
+	delete_opt(options, known_paper_sizes);
+	// page margins
+	char const * const * margin = known_paper_margins;
+	for (; *margin; ++margin) {
+		string value = process_keyval_opt(options, *margin);
+		if (!value.empty()) {
+			int k = margin - known_paper_margins;
+			string name = known_coded_paper_margins[k];
+			h_margins += '\\' + name + ' ' + value + '\n';
+		}
+	}
+}
+
+
+void Preamble::handle_package(Parser &p, string const & name,
+                              string const & opts, bool in_lyx_preamble)
 {
 	vector<string> options = split_options(opts);
 	add_package(name, options);
 	string scale;
+
+	if (is_known(name, known_xetex_packages))
+		xetex = true;
 
 	// roman fonts
 	if (is_known(name, known_roman_fonts)) {
@@ -596,64 +702,53 @@ void handle_package(Parser &p, string const & name, string const & opts,
 	else if (is_known(name, known_old_language_packages)) {
 		// known language packages from the times before babel
 		// if they are found and not also babel, they will be used as
-		// cutom language package
+		// custom language package
 		h_language_package = "\\usepackage{" + name + "}";
 	}
 
-	else if (name == "makeidx")
-		; // ignore this
-
 	else if (name == "prettyref")
-		; // ignore this
+		; // ignore this FIXME: Use the package separator mechanism instead
 
 	else if (name == "varioref")
-		; // ignore this
+		; // ignore this FIXME: Use the package separator mechanism instead
 
 	else if (name == "verbatim")
-		; // ignore this
-
-	else if (name == "nomencl")
-		; // ignore this
+		; // ignore this FIXME: Use the package separator mechanism instead
 
 	else if (name == "textcomp")
-		; // ignore this
+		; // ignore this FIXME: Use the package separator mechanism instead
 
-	else if (name == "url")
-		; // ignore this
+	else if (name == "lyxskak") {
+		// ignore this and its options
+		if (!options.empty())
+			options.clear();
+	}
 
-	else if (name == "subscript")
-		; // ignore this
-
-	else if (name == "color") {
-		// with the following command this package is only loaded when needed for
-		// undefined colors, since we only support the predefined colors
-		h_preamble << "\\@ifundefined{definecolor}\n {\\usepackage{color}}{}\n";
+	else if (name == "array" || name == "booktabs" || name == "float" ||
+	         name == "color" || name == "hhline" || name == "longtable" ||
+	         name == "makeidx" || name == "nomencl" || name == "splitidx" ||
+	         name == "setspace" || name == "subscript" || name == "ulem" ||
+	         name == "url") {
+		if (!in_lyx_preamble)
+			h_preamble << package_beg_sep << name
+			           << package_mid_sep << "\\usepackage{"
+			           << name << '}' << package_end_sep;
 	}
 
 	else if (name == "graphicx")
-		; // ignore this
-
-	else if (name == "setspace")
-		; // ignore this
-
-#if 0
-	// do not ignore as long as we don't support all commands (e.g. \xout is missing)
-	else if (name == "ulem")
-		; // ignore this
-#endif
+		; // ignore this FIXME: Use the package separator mechanism instead
 
 	else if (name == "geometry")
-		; // Ignore this, the geometry settings are made by the \geometry
-		  // command. This command is handled below.
+		handle_geometry(options);
 
 	else if (name == "rotfloat")
-		; // ignore this
+		; // ignore this FIXME: Use the package separator mechanism instead
 
 	else if (name == "wrapfig")
-		; // ignore this
+		; // ignore this FIXME: Use the package separator mechanism instead
 
 	else if (name == "subfig")
-		; // ignore this
+		; // ignore this FIXME: Use the package separator mechanism instead
 
 	else if (is_known(name, known_languages))
 		h_language = name;
@@ -699,7 +794,7 @@ void handle_package(Parser &p, string const & name, string const & opts,
 }
 
 
-void handle_if(Parser & p, bool in_lyx_preamble)
+void Preamble::handle_if(Parser & p, bool in_lyx_preamble)
 {
 	while (p.good()) {
 		Token t = p.get_token();
@@ -716,7 +811,7 @@ void handle_if(Parser & p, bool in_lyx_preamble)
 }
 
 
-void end_preamble(ostream & os, TextClass const & /*textclass*/)
+bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 {
 	// translate from babel to LyX names
 	h_language = babel2lyx(h_language);
@@ -748,19 +843,53 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 	else if (is_known(h_language, known_english_quotes_languages))
 		h_quotes_language = "english";
 
+	if (contains(h_float_placement, "H"))
+		registerAutomaticallyLoadedPackage("float");
+	if (h_spacing != "single" && h_spacing != "default")
+		registerAutomaticallyLoadedPackage("setspace");
+
 	// output the LyX file settings
 	os << "#LyX file created by tex2lyx " << PACKAGE_VERSION << "\n"
 	   << "\\lyxformat " << LYX_FORMAT << '\n'
 	   << "\\begin_document\n"
 	   << "\\begin_header\n"
 	   << "\\textclass " << h_textclass << "\n";
-	if (!h_preamble.str().empty())
-		os << "\\begin_preamble\n" << h_preamble.str() << "\n\\end_preamble\n";
+	string const raw = subdoc ? empty_string() : h_preamble.str();
+	if (!raw.empty()) {
+		os << "\\begin_preamble\n";
+		for (string::size_type i = 0; i < raw.size(); ++i) {
+			if (raw[i] == package_beg_sep) {
+				// Here follows some package loading code that
+				// must be skipped if the package is loaded
+				// automatically.
+				string::size_type j = raw.find(package_mid_sep, i);
+				if (j == string::npos)
+					return false;
+				string::size_type k = raw.find(package_end_sep, j);
+				if (k == string::npos)
+					return false;
+				string const package = raw.substr(i + 1, j - i - 1);
+				string const replacement = raw.substr(j + 1, k - j - 1);
+				if (auto_packages.find(package) == auto_packages.end())
+					os << replacement;
+				i = k;
+			} else
+				os.put(raw[i]);
+		}
+		os << "\n\\end_preamble\n";
+	}
 	if (!h_options.empty())
 		os << "\\options " << h_options << "\n";
-	os << "\\use_default_options " << h_use_default_options << "\n"
-	   << modules_placeholder
-	   << "\\language " << h_language << "\n"
+	os << "\\use_default_options " << h_use_default_options << "\n";
+	if (!used_modules.empty()) {
+		os << "\\begin_modules\n";
+		vector<string>::const_iterator const end = used_modules.end();
+		vector<string>::const_iterator it = used_modules.begin();
+		for (; it != end; it++)
+			os << *it << '\n';
+		os << "\\end_modules\n";
+	}
+	os << "\\language " << h_language << "\n"
 	   << "\\language_package " << h_language_package << "\n"
 	   << "\\inputencoding " << h_inputencoding << "\n"
 	   << "\\fontencoding " << h_fontencoding << "\n"
@@ -809,6 +938,7 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 	   << "\\use_mathdots " << h_use_mathdots << "\n"
 	   << "\\cite_engine " << h_cite_engine << "\n"
 	   << "\\use_bibtopic " << h_use_bibtopic << "\n"
+	   << "\\use_indices " << h_use_indices << "\n"
 	   << "\\paperorientation " << h_paperorientation << '\n'
 	   << "\\suppress_date " << h_suppress_date << '\n'
 	   << "\\use_refstyle " << h_use_refstyle << '\n';
@@ -839,17 +969,15 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 	   << "\\html_math_output " << h_html_math_output << "\n"
 	   << "\\html_css_as_file " << h_html_css_as_file << "\n"
 	   << "\\html_be_strict " << h_html_be_strict << "\n"
+	   << authors_
 	   << "\\end_header\n\n"
 	   << "\\begin_body\n";
-	// clear preamble for subdocuments
-	h_preamble.str("");
+	return true;
 }
 
-} // anonymous namespace
 
-
-void parse_preamble(Parser & p, ostream & os, 
-	string const & forceclass, TeX2LyXDocClass & tc)
+void Preamble::parse(Parser & p, string const & forceclass,
+                     TeX2LyXDocClass & tc)
 {
 	// initialize fixed types
 	special_columns['D'] = 3;
@@ -933,15 +1061,22 @@ void parse_preamble(Parser & p, ostream & os,
 		}
 
 		else if (t.cs() == "color") {
+			string const space =
+				(p.hasOpt() ? p.getOpt() : string());
 			string argument = p.getArg('{', '}');
 			// check the case that a standard color is used
-			if (is_known(argument, known_basic_colors))
-				h_fontcolor = color2code(argument);
+			if (space.empty() && is_known(argument, known_basic_colors)) {
+				h_fontcolor = rgbcolor2code(argument);
+				preamble.registerAutomaticallyLoadedPackage("color");
+			} else if (space.empty() && argument == "document_fontcolor")
+				preamble.registerAutomaticallyLoadedPackage("color");
 			// check the case that LyX's document_fontcolor is defined
 			// but not used for \color
-			if (argument != "document_fontcolor"
-				&& !is_known(argument, known_basic_colors)) {
-				h_preamble << t.asInput() << '{' << argument << '}';
+			else {
+				h_preamble << t.asInput();
+				if (!space.empty())
+					h_preamble << space;
+				h_preamble << '{' << argument << '}';
 				// the color might already be set because \definecolor
 				// is parsed before this
 				h_fontcolor = "";
@@ -951,12 +1086,13 @@ void parse_preamble(Parser & p, ostream & os,
 		else if (t.cs() == "pagecolor") {
 			string argument = p.getArg('{', '}');
 			// check the case that a standard color is used
-			if (is_known(argument, known_basic_colors))
-				h_backgroundcolor = color2code(argument);
+			if (is_known(argument, known_basic_colors)) {
+				h_backgroundcolor = rgbcolor2code(argument);
+			} else if (argument == "page_backgroundcolor")
+				preamble.registerAutomaticallyLoadedPackage("color");
 			// check the case that LyX's page_backgroundcolor is defined
 			// but not used for \pagecolor
-			if (argument != "page_backgroundcolor"
-				&& !is_known(argument, known_basic_colors)) {
+			else {
 				h_preamble << t.asInput() << '{' << argument << '}';
 				// the color might already be set because \definecolor
 				// is parsed before this
@@ -1005,6 +1141,11 @@ void parse_preamble(Parser & p, ostream & os,
 				// remove leading "\"
 				h_font_default_family = family.erase(0,1);
 			}
+
+			// remove the lyxdot definition that is re-added by LyX
+			// if necessary
+			if (name == "\\lyxdot")
+				in_lyx_preamble = true;
 
 			// Add the command to the known commands
 			add_known_command(name, opt1, !opt2.empty(), from_utf8(body));
@@ -1069,7 +1210,7 @@ void parse_preamble(Parser & p, ostream & os,
 				opts.erase(it);
 			}
 			// paper sizes
-			// some size options are know to any document classes, other sizes
+			// some size options are known to any document classes, other sizes
 			// are handled by the \geometry command of the geometry package
 			handle_opt(opts, known_class_paper_sizes, h_papersize);
 			delete_opt(opts, known_class_paper_sizes);
@@ -1189,32 +1330,8 @@ void parse_preamble(Parser & p, ostream & os,
 		}
 
 		else if (t.cs() == "geometry") {
-			h_use_geometry = "true";
 			vector<string> opts = split_options(p.getArg('{', '}'));
-			vector<string>::iterator it;
-			// paper orientation
-			if ((it = find(opts.begin(), opts.end(), "landscape")) != opts.end()) {
-				h_paperorientation = "landscape";
-				opts.erase(it);
-			}
-			// paper size
-			handle_opt(opts, known_paper_sizes, h_papersize);
-			delete_opt(opts, known_paper_sizes);
-			// page margins
-			char const * const * margin = known_paper_margins;
-			int k = -1;
-			for (; *margin; ++margin) {
-				k += 1;
-				// search for the "=" in e.g. "lmargin=2cm" to get the value
-				for(size_t i = 0; i != opts.size(); i++) {
-					if (opts.at(i).find(*margin) != string::npos) {
-						string::size_type pos = opts.at(i).find("=");
-						string value = opts.at(i).substr(pos + 1);
-						string name = known_coded_paper_margins[k];
-						h_margins += "\\" + name + " " + value + "\n";
-					}
-				}
-			}
+			handle_geometry(opts);
 		}
 
 		else if (t.cs() == "definecolor") {
@@ -1273,13 +1390,27 @@ void parse_preamble(Parser & p, ostream & os,
 			string const arg2 = p.verbatim_item();
 			string const arg3 = p.verbatim_item();
 			// test case \@ifundefined{date}{}{\date{}}
-			if (arg1 == "date" && arg2.empty() && arg3 == "\\date{}") {
+			if (t.cs() == "@ifundefined" && arg1 == "date" &&
+			    arg2.empty() && arg3 == "\\date{}") {
 				h_suppress_date = "true";
+			// older tex2lyx versions did output
+			// \@ifundefined{definecolor}{\usepackage{color}}{}
+			} else if (t.cs() == "@ifundefined" &&
+			           arg1 == "definecolor" &&
+			           arg2 == "\\usepackage{color}" &&
+			           arg3.empty()) {
+				if (!in_lyx_preamble)
+					h_preamble << package_beg_sep
+					           << "color"
+					           << package_mid_sep
+					           << "\\@ifundefined{definecolor}{color}{}"
+					           << package_end_sep;
 			// test for case
 			//\@ifundefined{showcaptionsetup}{}{%
 			// \PassOptionsToPackage{caption=false}{subfig}}
 			// that LyX uses for subfloats
-			} else if (arg1 == "showcaptionsetup" && arg2.empty()
+			} else if (t.cs() == "@ifundefined" &&
+			           arg1 == "showcaptionsetup" && arg2.empty()
 				&& arg3 == "%\n \\PassOptionsToPackage{caption=false}{subfig}") {
 				; // do nothing
 			} else if (!in_lyx_preamble) {
@@ -1320,11 +1451,9 @@ void parse_preamble(Parser & p, ostream & os,
 		ss << tc.sides();
 		h_papersides = ss.str();
 	}
-	end_preamble(os, tc);
 }
 
 
-/// translates a babel language name to a LyX language name
 string babel2lyx(string const & language)
 {
 	char const * const * where = is_known(language, known_languages);
@@ -1334,13 +1463,16 @@ string babel2lyx(string const & language)
 }
 
 
-/// translates a color name to a LyX color code
-string color2code(string const & name)
+string rgbcolor2code(string const & name)
 {
 	char const * const * where = is_known(name, known_basic_colors);
-	if (where)
+	if (where) {
+		// "red", "green" etc
 		return known_basic_color_codes[where - known_basic_colors];
-	return name;
+	}
+	// "255,0,0", "0,255,0" etc
+	RGBColor c(RGBColorFromLaTeX(name));
+	return X11hexname(c);
 }
 
 // }])
