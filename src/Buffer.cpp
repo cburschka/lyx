@@ -521,7 +521,10 @@ void Buffer::cloneWithChildren(BufferMap & bufmap, CloneList * clones) const
 
 
 Buffer * Buffer::cloneBufferOnly() const {
+	cloned_buffers.push_back(new CloneList());
+	CloneList * clones = cloned_buffers.back();
 	Buffer * buffer_clone = new Buffer(fileName().absFileName(), false, this);
+	clones->insert(buffer_clone);
 	// we won't be cloning the children
 	buffer_clone->d->children_positions.clear();
 	return buffer_clone;
