@@ -1714,10 +1714,30 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 	}
 
-	case LFUN_SCROLL:
-		lfunScroll(cmd);
+	case LFUN_SCROLL: {
+		string const scroll_type = cmd.getArg(0);
+		int scroll_step = 0;
+		if (scroll_type == "line")
+			scroll_step = d->scrollbarParameters_.single_step;
+		else if (scroll_type == "page")
+			scroll_step = d->scrollbarParameters_.page_step;
+		else
+			return;
+		string const scroll_quantity = cmd.getArg(1);
+		if (scroll_quantity == "up")
+			scrollUp(scroll_step);
+		else if (scroll_quantity == "down")
+			scrollDown(scroll_step);
+		else {
+			int const scroll_value = convert<int>(scroll_quantity);
+			if (scroll_value)
+				scroll(scroll_step * scroll_value);
+		}
+		buffer_.changed(true);
+		updateHoveredInset();
 		dr.forceBufferUpdate();
 		break;
+	}
 
 	case LFUN_SCREEN_UP_SELECT: {
 		cur.selHandle(true);
@@ -2168,31 +2188,6 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 	// If the command has been dispatched,
 	if (cur.result().dispatched() || cur.result().screenUpdate())
 		processUpdateFlags(cur.result().screenUpdate());
-}
-
-
-void BufferView::lfunScroll(FuncRequest const & cmd)
-{
-	string const scroll_type = cmd.getArg(0);
-	int scroll_step = 0;
-	if (scroll_type == "line")
-		scroll_step = d->scrollbarParameters_.single_step;
-	else if (scroll_type == "page")
-		scroll_step = d->scrollbarParameters_.page_step;
-	else
-		return;
-	string const scroll_quantity = cmd.getArg(1);
-	if (scroll_quantity == "up")
-		scrollUp(scroll_step);
-	else if (scroll_quantity == "down")
-		scrollDown(scroll_step);
-	else {
-		int const scroll_value = convert<int>(scroll_quantity);
-		if (scroll_value)
-			scroll(scroll_step * scroll_value);
-	}
-	buffer_.changed(true);
-	updateHoveredInset();
 }
 
 

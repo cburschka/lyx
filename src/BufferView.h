@@ -166,8 +166,6 @@ public:
 	/// Scroll to the cursor.
 	/// \param recenter Whether the cursor should be centered on screen
 	bool scrollToCursor(DocIterator const & dit, bool recenter);
-	/// LFUN_SCROLL Helper.
-	void lfunScroll(FuncRequest const & cmd);
 	/// scroll down document by the given number of pixels.
 	int scrollDown(int pixels);
 	/// scroll up document by the given number of pixels.
