@@ -525,6 +525,7 @@ Buffer * Buffer::cloneBufferOnly() const {
 	CloneList * clones = cloned_buffers.back();
 	Buffer * buffer_clone = new Buffer(fileName().absFileName(), false, this);
 	clones->insert(buffer_clone);
+	buffer_clone->d->clone_list_ = clones;
 	// we won't be cloning the children
 	buffer_clone->d->children_positions.clear();
 	return buffer_clone;
