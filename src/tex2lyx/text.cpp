@@ -2326,12 +2326,19 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (is_macro(p)) {
 			// catch the case of \def\inputGnumericTable
+			bool macro = true;
 			if (t.cs() == "def") {
-				Token second = p.get_token();
+				Token second = p.next_token();
 				if (second.cs() == "inputGnumericTable") {
+					p.pushPosition();
+					p.get_token();
 					skip_braces(p);
 					Token third = p.get_token();
+					p.popPosition();
 					if (third.cs() == "input") {
+						p.get_token();
+						skip_braces(p);
+						p.get_token();
 						string name = normalize_filename(p.verbatim_item());
 						string const path = getMasterFilePath();
 						// We want to preserve relative / absolute filenames,
@@ -2357,10 +2364,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 						   << name << "\n";
 						end_inset(os);
 						context.check_layout(os);
+						macro = false;
 					}
 				}
 			}
-			if (is_macro(p))
+			if (macro)
 				parse_macro(p, os, context);
 		}
 
