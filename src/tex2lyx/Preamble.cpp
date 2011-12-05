@@ -718,6 +718,9 @@ void Preamble::handle_package(Parser &p, string const & name,
 	else if (name == "textcomp")
 		; // ignore this FIXME: Use the package separator mechanism instead
 
+	else if (name == "pdfpages")
+		; // ignore this
+
 	else if (name == "lyxskak") {
 		// ignore this and its options
 		if (!options.empty())
