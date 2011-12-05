@@ -408,6 +408,9 @@ bool CmdLineParser::parse(int argc, char * argv[])
 
 namespace cmdline {
 
+    docstring mainTmp(from_ascii("/tmp"));
+
+
 void usage()
 {
 	cerr <<
@@ -421,10 +424,12 @@ void usage()
 	  "  -n name       set client name\n"
 	  "  -h name       display this help end exit\n"
 	  "If -a is not used, lyxclient will use the arguments of -t and -p to look for\n"
-	  "a running lyx. If -t is not set, 'directory' defaults to /tmp. If -p is set,\n"
+	  "a running lyx. If -t is not set, 'directory' defaults to the system directory. If -p is set,\n"
 	  "lyxclient will connect only to a lyx with the specified pid. Options -c and -g\n"
 	  "cannot be set simultaneoulsly. If no -c or -g options are given, lyxclient\n"
-	  "will read commands from standard input and disconnect when command read is BYE:"
+	  "will read commands from standard input and disconnect when command read is BYE:\n"
+      "\n"
+      "System directory is: " << to_utf8(cmdline::mainTmp)
 	   << endl;
 }
 
@@ -497,7 +502,6 @@ int a(vector<docstring> const & arg)
 }
 
 
-docstring mainTmp(from_ascii("/tmp"));
 
 
 int t(vector<docstring> const & arg)
@@ -536,10 +540,16 @@ int main(int argc, char * argv[])
 	using namespace lyx;
 	lyxerr.setStream(cerr);
 
+
+    // Set defaults
 	char const * const lyxsocket = getenv("LYXSOCKET");
 	if (lyxsocket)
 		cmdline::serverAddress = from_local8bit(lyxsocket);
 
+    // Default temporary
+    cmdline::mainTmp = FileName::tempPath().absoluteFilePath();
+
+    // Command line builder
 	CmdLineParser args;
 	args.helper["-h"] = cmdline::h;
 	args.helper["-c"] = cmdline::c;
