@@ -31,12 +31,17 @@ include_directories(BEFORE
 
 add_definitions(-DTEX2LYX)
 
+if(WIN32)
+	set(FILE_RC ${TOP_SRC_DIR}/development/cmake/lyx.rc)
+	message(STATUS "Using icon defined in resource file: ${FILE_RC}")
+endif()
+
 if(NOT LYX_MERGE_FILES)
-	add_executable(${_tex2lyx} ${tex2lyx_sources} ${LINKED_sources} ${tex2lyx_headers} ${LINKED_headers})
+	add_executable(${_tex2lyx} ${tex2lyx_sources} ${LINKED_sources} ${tex2lyx_headers} ${LINKED_headers} 	${FILE_RC})
 else()
 	lyx_const_touched_files(_allinone  tex2lyx_sources)
 	lyx_const_touched_files(_allinone_linked  LINKED_sources)
-	add_executable(${_tex2lyx} ${_allinone_files} ${_allinone_linked_files})
+	add_executable(${_tex2lyx} ${_allinone_files} ${_allinone_linked_files} ${FILE_RC})
 endif()
 
 target_link_libraries(${_tex2lyx}
