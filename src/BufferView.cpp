@@ -1034,9 +1034,18 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		// buffer clean/dirty status by itself.
 		flag.setEnabled(!buffer_.isReadonly() && buffer_.undo().hasRedoStack());
 		break;
-	case LFUN_FILE_INSERT:
 	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
-	case LFUN_FILE_INSERT_PLAINTEXT:
+	case LFUN_FILE_INSERT_PLAINTEXT: {
+		bool enabled = true;
+		docstring const fname = cmd.argument();
+		if (!FileName::isAbsolute(to_utf8(fname))) {
+			flag.message(_("Absolute filename expected."));
+			return false;
+		}
+		flag.setEnabled(enabled && cur.inTexted());
+		break;
+	}
+	case LFUN_FILE_INSERT:
 	case LFUN_BOOKMARK_SAVE:
 		// FIXME: Actually, these LFUNS should be moved to Text
 		flag.setEnabled(cur.inTexted());
@@ -1937,6 +1946,16 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			cur.setCurrentFont();
 			dr.forceBufferUpdate();
 		}
+	}
+
+	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
+	case LFUN_FILE_INSERT_PLAINTEXT: {
+		bool const as_paragraph = (act == LFUN_FILE_INSERT_PLAINTEXT_PARA);
+		string const fname = to_utf8(cmd.argument());
+		if (!FileName::isAbsolute(fname))
+			dr.setMessage(_("Absolute filename expected."));
+		else
+			insertPlaintextFile(FileName(fname), as_paragraph);
 		break;
 	}
 

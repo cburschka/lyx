@@ -1867,6 +1867,15 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		enable = !(lyxrc.forward_search_dvi.empty() && lyxrc.forward_search_pdf.empty());
 		break;
 
+	case LFUN_FILE_INSERT_PLAINTEXT:
+	case LFUN_FILE_INSERT_PLAINTEXT_PARA: {
+		if (BufferView const * bv = documentBufferView())
+			enable = bv->cursor().inTexted();
+		else
+			enable = false;
+		break;
+	}
+
 	default:
 		return false;
 	}
@@ -2225,49 +2234,6 @@ void GuiView::insertLyXFile(docstring const & fname)
 
 	bv->insertLyXFile(filename);
 	bv->buffer().errors("Parse");
-}
-
-
-void GuiView::insertPlaintextFile(docstring const & fname,
-	bool asParagraph)
-{
-	BufferView * bv = documentBufferView();
-	if (!bv)
-		return;
-
-	if (!fname.empty() && !FileName::isAbsolute(to_utf8(fname))) {
-		message(_("Absolute filename expected."));
-		return;
-	}
-
-	// FIXME UNICODE
-	FileName filename(to_utf8(fname));
-
-	if (!filename.empty()) {
-		bv->insertPlaintextFile(filename, asParagraph);
-		return;
-	}
-
-	FileDialog dlg(qt_("Select file to insert"), (asParagraph ?
-		LFUN_FILE_INSERT_PLAINTEXT_PARA : LFUN_FILE_INSERT_PLAINTEXT));
-
-	FileDialog::Result result = dlg.open(toqstr(bv->buffer().filePath()),
-		QStringList(qt_("All Files (*)")));
-
-	if (result.first == FileDialog::Later)
-		return;
-
-	// FIXME UNICODE
-	filename.set(fromqstr(result.second));
-
-	// check selected filename
-	if (filename.empty()) {
-		// emit message signal.
-		message(_("Canceled."));
-		return;
-	}
-
-	bv->insertPlaintextFile(filename, asParagraph);
 }
 
 
@@ -3355,13 +3321,37 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			insertLyXFile(cmd.argument());
 			break;
 
-		case LFUN_FILE_INSERT_PLAINTEXT_PARA:
-			insertPlaintextFile(cmd.argument(), true);
-			break;
-
 		case LFUN_FILE_INSERT_PLAINTEXT:
-			insertPlaintextFile(cmd.argument(), false);
+		case LFUN_FILE_INSERT_PLAINTEXT_PARA: {
+			bool const as_paragraph = (cmd.action() == LFUN_FILE_INSERT_PLAINTEXT_PARA);
+			string const fname = to_utf8(cmd.argument());
+			if (!fname.empty() && !FileName::isAbsolute(fname)) {
+				dr.setMessage(_("Absolute filename expected."));
+				break;
+			}
+			
+			FileName filename(fname);
+			if (fname.empty()) {
+				FileDialog dlg(qt_("Select file to insert"), (as_paragraph ?
+					LFUN_FILE_INSERT_PLAINTEXT_PARA : LFUN_FILE_INSERT_PLAINTEXT));
+
+				FileDialog::Result result = dlg.open(toqstr(bv->buffer().filePath()),
+					QStringList(qt_("All Files (*)")));
+				
+				if (result.first == FileDialog::Later || result.second.isEmpty()) {
+					dr.setMessage(_("Canceled."));
+					break;
+				}
+
+				filename.set(fromqstr(result.second));
+			}
+
+			if (bv) {
+				FuncRequest const new_cmd(cmd, filename.absoluteFilePath());
+				bv->dispatch(new_cmd, dr);
+			}
 			break;
+		}
 
 		case LFUN_BUFFER_RELOAD: {
 			LASSERT(doc_buffer, break);
