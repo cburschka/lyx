@@ -67,23 +67,29 @@ What's new
 - Fix crash when exporting branches to XHTML.
 
 
-* TEX2LYX
+* TeX2LyX
 
-- tex2lyx roundtips pollutes preamble with color code (bug 7845).
+- Formal tables are now supported (bug 4553).
 
-- tex2lyx support for \date{} (bug 7844).
+- Support for included external files via the templates
+  - PDF pages
+  - Chess diagram
+  - Spreadsheet
 
-- Latex import whitespace (bug 7668).
+- Support for change tracking commands (bug 4213).
 
-- asme2e issues (bug 6449).
+- Full support for the command \date{} (bug 7844).
 
-- tex2lyx: problem with macros nested in \foreignlanguage (bug 5187).
+- Fixed LaTeX import whitespace issue (bug 7668).
 
-- tex2lyx booktabs support (bug 4553).
+- Fix some asme2e issues (bug 6449).
 
-- tex2lyx change tracking support (bug 4213).
+- Fixed problem with macros nested in \foreignlanguage (bug 5187).
 
-- tex2lyx problems with character style switches (bug 3036).
+- Fixed problematic that tex2lyx roundtips polluted the preamble with
+  color code (bug 7845).
+
+- Fixed problems with character style switches (bug 3036).
 
 
 * USER INTERFACE
