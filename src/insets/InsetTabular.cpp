@@ -4159,10 +4159,16 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.bv().showDialog("tabular");
 		break;
 
-	case LFUN_INSET_MODIFY:
-		if (!tabularFeatures(cur, to_utf8(cmd.argument())))
+	case LFUN_INSET_MODIFY: {
+		string arg;
+		if (cmd.getArg(1) == "from-dialog")
+			arg = cmd.getArg(0) + to_utf8(cmd.argument().substr(19));
+		else
+			arg = to_utf8(cmd.argument());
+		if (!tabularFeatures(cur, arg))
 			cur.undispatched();
 		break;
+	}
 
 	// insert file functions
 	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
