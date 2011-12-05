@@ -75,13 +75,13 @@ if [%2]==[] (
 
 if "%1%" == "devel" (
 	REM Build solution to develop LyX
-	cmake %LYX_SOURCE% -G%USED_STUDIO% -DLYX_MERGE_FILES=0 -DLYX_NLS=1 -DLYX_RELEASE=0 -DLYX_CONSOLE=ON %DEPENDENCIES_DOWNLOAD%
+	cmake %LYX_SOURCE% -G%USED_STUDIO% -DLYX_MERGE_FILES=0 -DLYX_NLS=1 -DLYX_INSTALL=0 -DLYX_RELEASE=0 -DLYX_CONSOLE=FORCE %DEPENDENCIES_DOWNLOAD%
 	msbuild lyx.sln /p:Configuration=Debug /t:LyX /t:tex2lyx
 )
 
 if "%1%" == "install" (
 	REM Build solution to develop LyX
-	cmake %LYX_SOURCE% -G%USED_STUDIO% -DLYX_MERGE_FILES=1 -DLYX_INSTALL=1 -DLYX_RELEASE=1 -DLYX_CONSOLE=OFF %DEPENDENCIES_DOWNLOAD% 
+	cmake %LYX_SOURCE% -G%USED_STUDIO% -DLYX_MERGE_FILES=1 -DLYX_INSTALL=1 %DEPENDENCIES_DOWNLOAD% 
 	msbuild lyx.sln         /p:Configuration=Release /t:ALL_BUILD
 	msbuild INSTALL.vcxproj /p:Configuration=Release 
 )
