@@ -14,7 +14,7 @@ set(LINKED_headers)
 
 foreach(_src insets/InsetLayout Author Color Counters
 	Encoding FloatList Floating FontInfo LaTeXPackages
-	Layout LayoutFile LayoutModuleList lengthcommon Lexer
+	Layout LayoutFile LayoutModuleList Lexer
 	ModuleList Spacing TextClass version)
 	list(APPEND LINKED_sources ${TOP_SRC_DIR}/src/${_src}.cpp)
 	list(APPEND LINKED_headers ${TOP_SRC_DIR}/src/${_src}.h)
