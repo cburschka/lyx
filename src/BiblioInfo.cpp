@@ -666,7 +666,7 @@ docstring const BiblioInfo::getInfo(docstring const & key,
 {
 	BiblioInfo::const_iterator it = find(key);
 	if (it == end())
-		return docstring(_("BibTeX entry not found!"));
+		return docstring(_("Bibliography entry not found!"));
 	BibTeXInfo const & data = it->second;
 	BibTeXInfo const * xrefptr = 0;
 	docstring const xref = data.getXRef();
