@@ -13,9 +13,8 @@ Format LaTeX feature                        LyX feature
 224    external insets defined in           InsetExternal
        lib/external_templates.
        (Date and RasterImage cannot be supported
-       (Chess diagram and Spreadsheet are supported)
+       (Chess diagram, PDF pages and Spreadsheet are supported)
        (Xfig figure, Lilypond, Dia diagram can be supported by looking at the file extension)
-       (for PDFpages work is in progress by uwestoehr)
 226    nothing (impossible to import)       InsetBranch, \branch...\end_branch
 226    transformations                      InsetExternal
 228    draft                                InsetExternal

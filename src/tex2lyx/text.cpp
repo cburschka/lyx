@@ -3913,6 +3913,74 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 		}
 
+		else if (t.cs() == "includepdf") {
+			p.skip_spaces();
+			string const arg = p.getArg('[', ']');
+			map<string, string> opts;
+			vector<string> keys;
+			split_map(arg, opts, keys);
+			string name = normalize_filename(p.verbatim_item());
+			string const path = getMasterFilePath();
+			// We want to preserve relative / absolute filenames,
+			// therefore path is only used for testing
+			if (!makeAbsPath(name, path).exists()) {
+				// The file extension is probably missing.
+				// Now try to find it out.
+				char const * const pdfpages_format[] = {"pdf", 0};
+				string const pdftex_name =
+					find_file(name, path, pdfpages_format);
+				if (!pdftex_name.empty()) {
+					name = pdftex_name;
+					pdflatex = true;
+				}
+			}
+			if (makeAbsPath(name, path).exists())
+				fix_relative_filename(name);
+			else
+				cerr << "Warning: Could not find file '"
+				     << name << "'." << endl;
+			// write output
+			context.check_layout(os);
+			begin_inset(os, "External\n\ttemplate ");
+			os << "PDFPages\n\tfilename "
+			   << name << "\n";
+			// parse the options
+			if (opts.find("pages") != opts.end())
+				os << "\textra LaTeX \"pages="
+				   << opts["pages"] << "\"\n";
+			if (opts.find("angle") != opts.end())
+				os << "\trotateAngle "
+				   << opts["angle"] << '\n';
+			if (opts.find("origin") != opts.end()) {
+				ostringstream ss;
+				string const opt = opts["origin"];
+				if (opt == "tl") ss << "topleft";
+				if (opt == "bl") ss << "bottomleft";
+				if (opt == "Bl") ss << "baselineleft";
+				if (opt == "c") ss << "center";
+				if (opt == "tc") ss << "topcenter";
+				if (opt == "bc") ss << "bottomcenter";
+				if (opt == "Bc") ss << "baselinecenter";
+				if (opt == "tr") ss << "topright";
+				if (opt == "br") ss << "bottomright";
+				if (opt == "Br") ss << "baselineright";
+				if (!ss.str().empty())
+					os << "\trotateOrigin " << ss.str() << '\n';
+				else
+					cerr << "Warning: Ignoring unknown includegraphics origin argument '" << opt << "'\n";
+			}
+			if (opts.find("width") != opts.end())
+				os << "\twidth "
+				   << translate_len(opts["width"]) << '\n';
+			if (opts.find("height") != opts.end())
+				os << "\theight "
+				   << translate_len(opts["height"]) << '\n';
+			if (opts.find("keepaspectratio") != opts.end())
+				os << "\tkeepAspectRatio\n";
+			end_inset(os);
+			context.check_layout(os);
+		}
+
 		else if (t.cs() == "loadgame") {
 			p.skip_spaces();
 			string name = normalize_filename(p.verbatim_item());
