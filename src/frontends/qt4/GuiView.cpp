@@ -1868,13 +1868,9 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_FILE_INSERT_PLAINTEXT:
-	case LFUN_FILE_INSERT_PLAINTEXT_PARA: {
-		if (BufferView const * bv = documentBufferView())
-			enable = bv->cursor().inTexted();
-		else
-			enable = false;
+	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
+		enable = documentBufferView() && documentBufferView()->cursor().inTexted();
 		break;
-	}
 
 	default:
 		return false;

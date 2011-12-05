@@ -1036,13 +1036,12 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
 	case LFUN_FILE_INSERT_PLAINTEXT: {
-		bool enabled = true;
 		docstring const fname = cmd.argument();
 		if (!FileName::isAbsolute(to_utf8(fname))) {
 			flag.message(_("Absolute filename expected."));
 			return false;
 		}
-		flag.setEnabled(enabled && cur.inTexted());
+		flag.setEnabled(cur.inTexted());
 		break;
 	}
 	case LFUN_FILE_INSERT:
