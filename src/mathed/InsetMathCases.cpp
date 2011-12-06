@@ -183,11 +183,10 @@ void InsetMathCases::validate(LaTeXFeatures & features) const
 	InsetMathGrid::validate(features);
 	if (features.runparams().math_flavor == OutputParams::MathAsHTML)
 		// CSS based on eLyXer's
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
+		features.addCSSSnippet(
 			"table.cases{display: inline-block; text-align: center;"
 			"border-left: thin solid black; vertical-align: middle; padding-left: 0.5ex;}\n"
-			"table.cases td {text-align: left;}\n"
-			"</style>");
+			"table.cases td {text-align: left;}");
 }
 
 

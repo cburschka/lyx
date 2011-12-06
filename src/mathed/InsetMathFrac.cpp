@@ -512,11 +512,10 @@ void InsetMathFrac::validate(LaTeXFeatures & features) const
 		features.require("amsmath");
 	if (features.runparams().math_flavor == OutputParams::MathAsHTML)
 		// CSS adapted from eLyXer
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
+		features.addCSSSnippet(
 			"span.frac{display: inline-block; vertical-align: middle; text-align:center;}\n"
 			"span.numer{display: block;}\n"
-			"span.denom{display: block; border-top: thin solid #000040;}\n"
-			"</style>");
+			"span.denom{display: block; border-top: thin solid #000040;}");
 	InsetMathNest::validate(features);
 }
 
@@ -717,11 +716,10 @@ void InsetMathBinom::validate(LaTeXFeatures & features) const
 		if (kind_ == DBINOM || kind_ == TBINOM)
 			features.require("amsmath");
 	} else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
+		features.addCSSSnippet(
 			"span.binom{display: inline-block; vertical-align: bottom; text-align:center;}\n"
 			"span.binom span{display: block;}\n"
-			"span.binomdelim{font-size: 2em;}\n"
-			"</style>");
+			"span.binomdelim{font-size: 2em;}");
 	InsetMathNest::validate(features);
 }
 

@@ -101,13 +101,9 @@ void InsetMathEnsureMath::validate(LaTeXFeatures & features) const
 	// It'd be better to be able to get this from an InsetLayout, but at present
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
 	if (features.runparams().math_flavor == OutputParams::MathAsMathML)
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
-			"mstyle.math { font-style: italic; }\n"
-			"</style>");
+		features.addCSSSnippet("mstyle.math { font-style: italic; }");
 	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
-			"span.mathbox { font-style: italic; }\n"
-			"</style>");
+		features.addCSSSnippet("span.mathbox { font-style: italic; }");
 
 	InsetMathNest::validate(features);
 }

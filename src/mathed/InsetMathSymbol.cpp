@@ -260,13 +260,12 @@ void InsetMathSymbol::validate(LaTeXFeatures & features) const
 	// validate in InsetMathExInt.
 	if (features.runparams().math_flavor == OutputParams::MathAsHTML
 	    && sym_->name == from_ascii("int")) {
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
+		features.addCSSSnippet(
 			"span.limits{display: inline-block; vertical-align: middle; text-align:center; font-size: 75%;}\n"
 			"span.limits span{display: block;}\n"
 			"span.intsym{font-size: 150%;}\n"
 			"sub.limit{font-size: 75%;}\n"
-			"sup.limit{font-size: 75%;}\n"
-			"</style>");
+			"sup.limit{font-size: 75%;}");
 	} else {
 		if (!sym_->requires.empty())
 			features.require(to_utf8(sym_->requires));

@@ -771,12 +771,11 @@ void InsetMathHull::validate(LaTeXFeatures & features) const
 		// it would be better to do this elsewhere, but we can't validate in
 		// InsetMathMatrix and we have no way, outside MathExtern, to know if
 		// we even have any matrices.
-				features.addPreambleSnippet("<style type=\"text/css\">\n"
+				features.addCSSSnippet(
 					"table.matrix{display: inline-block; vertical-align: middle; text-align:center;}\n"
 					"table.matrix td{padding: 0.25px;}\n"
 					"td.ldelim{width: 0.5ex; border: thin solid black; border-right: none;}\n"
-					"td.rdelim{width: 0.5ex; border: thin solid black; border-left: none;}\n"
-					"</style>");
+					"td.rdelim{width: 0.5ex; border: thin solid black; border-left: none;}");
 	}
 	InsetMathGrid::validate(features);
 }

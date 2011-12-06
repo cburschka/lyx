@@ -776,12 +776,11 @@ void InsetMathScript::doDispatch(Cursor & cur, FuncRequest & cmd)
 void InsetMathScript::validate(LaTeXFeatures & features) const
 {
 	if (features.runparams().math_flavor == OutputParams::MathAsHTML)
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
+		features.addCSSSnippet(
 			"span.scripts{display: inline-block; vertical-align: middle; text-align:center; font-size: 75%;}\n"
 			"span.scripts span {display: block;}\n"
 			"sub.math{font-size: 75%;}\n"
-			"sup.math{font-size: 75%;}\n"
-			"</style>");
+			"sup.math{font-size: 75%;}");
 	InsetMathNest::validate(features);
 }
 

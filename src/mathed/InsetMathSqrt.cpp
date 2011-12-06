@@ -127,9 +127,7 @@ void InsetMathSqrt::htmlize(HtmlStream & os) const
 void InsetMathSqrt::validate(LaTeXFeatures & features) const
 {
 	if (features.runparams().math_flavor == OutputParams::MathAsHTML)
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
-			"span.sqrtof{border-top: thin solid black;}\n"
-			"</style>");
+		features.addCSSSnippet("span.sqrtof{border-top: thin solid black;}");
 	InsetMathNest::validate(features);
 }
 

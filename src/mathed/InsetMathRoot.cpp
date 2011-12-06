@@ -133,10 +133,9 @@ void InsetMathRoot::htmlize(HtmlStream & os) const
 void InsetMathRoot::validate(LaTeXFeatures & features) const
 {
 	if (features.runparams().math_flavor == OutputParams::MathAsHTML)
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
+		features.addCSSSnippet(
 			"span.rootof{border-top: thin solid black;}\n"
-			"span.root sup{font-size: 75%;}\n"
-			"</style>");
+			"span.root sup{font-size: 75%;}");
 	InsetMathNest::validate(features);
 }
 

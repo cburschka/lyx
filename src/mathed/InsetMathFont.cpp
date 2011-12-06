@@ -107,7 +107,7 @@ void InsetMathFont::validate(LaTeXFeatures & features) const
 		if (key_->name == "ce" || key_->name == "cf")
 			features.require("mhchem");
 	} else if (features.runparams().math_flavor == OutputParams::MathAsHTML) {
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
+		features.addCSSSnippet(
 			"span.normal{font: normal normal normal inherit serif;}\n"
 			"span.fraktur{font: normal normal normal inherit cursive;}\n"
 			"span.bold{font: normal normal bold inherit serif;}\n"
@@ -115,8 +115,7 @@ void InsetMathFont::validate(LaTeXFeatures & features) const
 			"span.italic{font: italic normal normal inherit serif;}\n"
 			"span.sans{font: normal normal normal inherit sans-serif;}\n"
 			"span.monospace{font: normal normal normal inherit monospace;}\n"
-			"span.noun{font: normal small-caps normal inherit normal;}\n"
-			"</style>");
+			"span.noun{font: normal small-caps normal inherit normal;}");
 	}
 }
 

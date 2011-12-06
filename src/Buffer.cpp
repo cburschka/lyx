@@ -1775,7 +1775,11 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 		os << "\n<!-- Text Class Preamble -->\n"
 		   << features.getTClassHTMLPreamble()
 		   << "\n<!-- Preamble Snippets -->\n"
-		   << from_utf8(features.getPreambleSnippets());
+		   << from_utf8(features.getPreambleSnippets())
+		   << "\n<!-- LyX Provided Styles -->\n"
+		   << "<style type='text/css'>\n"
+		   << from_utf8(features.getCSSSnippets())
+		   << "</style>\n";
 
 		os << "\n<!-- Layout-provided Styles -->\n";
 		docstring const styleinfo = features.getTClassHTMLStyles();

@@ -4816,10 +4816,9 @@ void InsetTabular::validate(LaTeXFeatures & features) const
 	// It'd be better to be able to get this from an InsetLayout, but at present
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
 	if (features.runparams().flavor == OutputParams::HTML)
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
-      "table { border: 1px solid black; display: inline-block; }\n"
-      "td { border: 1px solid black; padding: 0.5ex; }\n"
-      "</style>");
+		features.addCSSSnippet(
+			"table { border: 1px solid black; display: inline-block; }\n"
+			"td { border: 1px solid black; padding: 0.5ex; }");
 }
 
 

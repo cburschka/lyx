@@ -102,13 +102,9 @@ void InsetMathBox::validate(LaTeXFeatures & features) const
 	// It'd be better to be able to get this from an InsetLayout, but at present
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
 	if (features.runparams().math_flavor == OutputParams::MathAsMathML)
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
-			"mstyle.mathbox { font-style: normal; }\n"
-			"</style>");
+		features.addCSSSnippet("mstyle.mathbox { font-style: normal; }");
 	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
-			"span.mathbox { font-style: normal; }\n"
-			"</style>");
+		features.addCSSSnippet("span.mathbox { font-style: normal; }");
 
 	if (name_ == "tag" || name_ == "tag*")
 		features.require("amsmath");
@@ -192,13 +188,11 @@ void InsetMathFBox::validate(LaTeXFeatures & features) const
 	// It'd be better to be able to get this from an InsetLayout, but at present
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
 	if (features.runparams().math_flavor == OutputParams::MathAsMathML)
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
-			"mstyle.fbox { border: 1px solid black; font-style: normal; padding: 0.5ex; }\n"
-			"</style>");
+		features.addCSSSnippet(
+			"mstyle.fbox { border: 1px solid black; font-style: normal; padding: 0.5ex; }");
 	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
-			"span.fbox { border: 1px solid black; font-style: normal; padding: 0.5ex; }\n"
-			"</style>");
+		features.addCSSSnippet(
+			"span.fbox { border: 1px solid black; font-style: normal; padding: 0.5ex; }");
 
 	cell(0).validate(features);
 	InsetMathNest::validate(features);
@@ -340,13 +334,9 @@ void InsetMathMakebox::validate(LaTeXFeatures & features) const
 	// It'd be better to be able to get this from an InsetLayout, but at present
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
 	if (features.runparams().math_flavor == OutputParams::MathAsMathML)
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
-			"mstyle.framebox { border: 1px solid black; }\n"
-			"</style>");
+		features.addCSSSnippet("mstyle.framebox { border: 1px solid black; }");
 	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
-			"span.framebox { border: 1px solid black; }\n"
-			"</style>");
+		features.addCSSSnippet("span.framebox { border: 1px solid black; }");
 	InsetMathNest::validate(features);
 }
 
@@ -422,13 +412,9 @@ void InsetMathBoxed::validate(LaTeXFeatures & features) const
 	// It'd be better to be able to get this from an InsetLayout, but at present
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
 	if (features.runparams().math_flavor == OutputParams::MathAsMathML)
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
-			"mstyle.boxed { border: 1px solid black; }\n"
-			"</style>");
+		features.addCSSSnippet("mstyle.boxed { border: 1px solid black; }");
 	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
-			"span.boxed { border: 1px solid black; }\n"
-			"</style>");
+		features.addCSSSnippet("span.boxed { border: 1px solid black; }");
 	
 	InsetMathNest::validate(features);
 }

@@ -423,6 +423,15 @@ void LaTeXFeatures::addPreambleSnippet(string const & preamble)
 }
 
 
+void LaTeXFeatures::addCSSSnippet(std::string const & snippet)
+{
+	SnippetList::const_iterator begin = css_snippets_.begin();
+	SnippetList::const_iterator end   = css_snippets_.end();
+	if (find(begin, end, snippet) == end)
+		css_snippets_.push_back(snippet);
+}
+
+
 void LaTeXFeatures::useFloat(string const & name, bool subfloat)
 {
 	if (!usedFloats_[name])
@@ -816,6 +825,17 @@ string LaTeXFeatures::getPreambleSnippets() const
 	ostringstream snip;
 	SnippetList::const_iterator pit  = preamble_snippets_.begin();
 	SnippetList::const_iterator pend = preamble_snippets_.end();
+	for (; pit != pend; ++pit)
+		snip << *pit << '\n';
+	return snip.str();
+}
+
+
+std::string LaTeXFeatures::getCSSSnippets() const
+{
+	ostringstream snip;
+	SnippetList::const_iterator pit  = css_snippets_.begin();
+	SnippetList::const_iterator pend = css_snippets_.end();
 	for (; pit != pend; ++pit)
 		snip << *pit << '\n';
 	return snip.str();

@@ -158,10 +158,9 @@ void InsetMathSubstack::validate(LaTeXFeatures & features) const
 	if (features.runparams().isLaTeX())
 		features.require("amsmath");
 	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
+		features.addCSSSnippet(
 			"span.substack{display: inline-block; vertical-align: middle; text-align:center; font-size: 75%;}\n"
-			"span.substack span{display: block;}\n"
-			"</style>");
+			"span.substack span{display: block;}");
 
 	InsetMathGrid::validate(features);
 }

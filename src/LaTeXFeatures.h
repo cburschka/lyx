@@ -82,6 +82,10 @@ public:
 	void addPreambleSnippet(std::string const &);
 	///
 	std::string getPreambleSnippets() const;
+	///
+	void addCSSSnippet(std::string const &);
+	///
+	std::string getCSSSnippets() const;
 	/// Add a feature name requirements
 	void require(std::string const & name);
 	/// Add a set of feature names requirements
@@ -149,6 +153,8 @@ private:
 	typedef std::list<std::string> SnippetList;
 	///
 	SnippetList preamble_snippets_;
+	///
+	SnippetList css_snippets_;
 	///
 	typedef std::set<Language const *> LanguageList;
 	/// used languages (only those that are supported by babel)

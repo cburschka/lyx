@@ -275,21 +275,16 @@ void InsetMathDecoration::validate(LaTeXFeatures & features) const
 	if (features.runparams().math_flavor == OutputParams::MathAsHTML) {
 		string const name = to_utf8(key_->name);
 		if (name == "bar") {
-			features.addPreambleSnippet("<style type=\"text/css\">\n"
-				"span.overbar{border-top: thin black solid;}\n"
-				"</style>");
+			features.addCSSSnippet("span.overbar{border-top: thin black solid;}");
 		} else if (name == "underbar" || name == "underline") {
-			features.addPreambleSnippet("<style type=\"text/css\">\n"
-				"span.underbar{border-bottom: thin black solid;}\n"
-				"</style>");
+			features.addCSSSnippet("span.underbar{border-bottom: thin black solid;}");
 		} else {
-			features.addPreambleSnippet("<style type=\"text/css\">\n"
+			features.addCSSSnippet(
 				"span.symbolpair{display: inline-block; text-align:center;}\n"
 				"span.symontop{vertical-align: top;}\n"
 				"span.symonbot{vertical-align: bottom;}\n"
 				"span.symbolpair span{display: block;}\n"			
-				"span.symbol{height: 0.5ex;}\n"
-				"</style>");
+				"span.symbol{height: 0.5ex;}");
 		}
 	} else {
 		if (!key_->requires.empty())

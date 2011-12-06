@@ -102,11 +102,10 @@ void InsetMathXArrow::validate(LaTeXFeatures & features) const
 	features.require("amsmath");
 	if (features.runparams().math_flavor == OutputParams::MathAsHTML)
 		// CSS adapted from eLyXer
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
+		features.addCSSSnippet(
 			"span.xarrow{display: inline-block; vertical-align: middle; text-align:center;}\n"
 			"span.xatop{display: block;}\n"
-			"span.xabottom{display: block;}\n"
-			"</style>");
+			"span.xabottom{display: block;}");
 	InsetMathNest::validate(features);
 }
 

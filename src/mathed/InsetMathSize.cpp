@@ -108,11 +108,10 @@ void InsetMathSize::infoize(odocstream & os) const
 void InsetMathSize::validate(LaTeXFeatures & features) const
 {
 	if (features.runparams().math_flavor == OutputParams::MathAsHTML)
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
+		features.addCSSSnippet(
 			"span.displaystyle, span.textstyle{font-size: normal;}\n"
 			"span.scriptstyle {font-size: small;}\n"
-			"span.scriptscriptstyle {font-size: x-small;}\n"
-			"</style>");
+			"span.scriptscriptstyle {font-size: x-small;}");
 	InsetMathNest::validate(features);
 }
 

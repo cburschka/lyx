@@ -91,11 +91,10 @@ void InsetMathStackrel::validate(LaTeXFeatures & features) const
 {
 	// from overset
 	if (features.runparams().math_flavor == OutputParams::MathAsHTML)
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
+		features.addCSSSnippet(
 			"span.overset{display: inline-block; vertical-align: bottom; text-align:center;}\n"
 			"span.overset span {display: block;}\n"
-			"span.top{font-size: 66%;}\n"
-			"</style>");
+			"span.top{font-size: 66%;}");
 
 	InsetMathNest::validate(features);
 }

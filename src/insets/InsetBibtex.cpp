@@ -920,11 +920,9 @@ void InsetBibtex::validate(LaTeXFeatures & features) const
 	// It'd be better to be able to get this from an InsetLayout, but at present
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
 	if (features.runparams().flavor == OutputParams::HTML)
-		features.addPreambleSnippet("<style type=\"text/css\">\n"
-			"div.bibtexentry { margin-left: 2em; text-indent: -2em; }\n"
+		features.addCSSSnippet("div.bibtexentry { margin-left: 2em; text-indent: -2em; }\n"
 			"span.bibtexlabel:before{ content: \"[\"; }\n"
-			"span.bibtexlabel:after{ content: \"] \"; }\n"
-			"</style>");
+			"span.bibtexlabel:after{ content: \"] \"; }");
 }
 
 
