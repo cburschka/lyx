@@ -1775,33 +1775,39 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 		os << "\n<!-- Text Class Preamble -->\n"
 		   << features.getTClassHTMLPreamble()
 		   << "\n<!-- Preamble Snippets -->\n"
-		   << from_utf8(features.getPreambleSnippets())
-		   << "\n<!-- LyX Provided Styles -->\n"
-		   << "<style type='text/css'>\n"
-		   << from_utf8(features.getCSSSnippets())
-		   << "</style>\n";
+		   << from_utf8(features.getPreambleSnippets());
 
-		os << "\n<!-- Layout-provided Styles -->\n";
-		docstring const styleinfo = features.getTClassHTMLStyles();
-		if (!styleinfo.empty()) {
-			os << "<style type='text/css'>\n"
-				<< styleinfo
-				<< "</style>\n";
-		}
+		// we will collect CSS information in a stream, and then output it
+		// either here, as part of the header, or else in a separate file.
+		odocstringstream css;
+		docstring styles = from_utf8(features.getCSSSnippets());
+		if (!styles.empty())
+			css << "/* LyX Provided Styles */\n" << styles << '\n';
+
+		styles = features.getTClassHTMLStyles();
+		if (!styles.empty())
+			css << "/* Layout-provided Styles */\n" << styles << '\n';
 
 		bool const needfg = params().fontcolor != RGBColor(0, 0, 0);
 		bool const needbg = params().backgroundcolor != RGBColor(0xFF, 0xFF, 0xFF);
 		if (needfg || needbg) {
-				os << "<style type='text/css'>\nbody {\n";
+				css << "\nbody {\n";
 				if (needfg)
-				   os << "  color: "
+				   css << "  color: "
 					    << from_ascii(X11hexname(params().fontcolor))
 					    << ";\n";
 				if (needbg)
-				   os << "  background-color: "
+				   css << "  background-color: "
 					    << from_ascii(X11hexname(params().backgroundcolor))
 					    << ";\n";
-				os << "}\n</style>\n";
+				css << "}\n";
+		}
+		
+		docstring const dstyles = css.str();
+		if (!dstyles.empty()) {
+			os << "<style type='text/css'>\n"
+				 << dstyles
+				 << "\n</style>\n";
 		}
 		os << "</head>\n";
 	}
