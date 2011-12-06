@@ -645,6 +645,8 @@ private:
 		bool includeall) const;
 	///
 	ExportStatus preview(std::string const & format, bool includeall = false) const;
+	///
+	void setMathFlavor(OutputParams & op) const;
 
 public:
 	///

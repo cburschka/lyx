@@ -3258,6 +3258,7 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 			docbookParagraphs(text(), *this, os, runparams);
 		else if (runparams.flavor == OutputParams::HTML) {
 			XHTMLStream xs(os);
+			setMathFlavor(runparams);
 			xhtmlParagraphs(text(), *this, xs, runparams);
 		} else {
 			// latex or literate
@@ -3576,6 +3577,25 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 }
 
 
+void Buffer::setMathFlavor(OutputParams & op) const
+{
+	switch (params().html_math_output) {
+	case BufferParams::MathML:
+		op.math_flavor = OutputParams::MathAsMathML;
+		break;
+	case BufferParams::HTML:
+		op.math_flavor = OutputParams::MathAsHTML;
+		break;
+	case BufferParams::Images:
+		op.math_flavor = OutputParams::MathAsImages;
+		break;
+	case BufferParams::LaTeX:
+		op.math_flavor = OutputParams::MathAsLaTeX;
+		break;
+	}
+}
+
+
 Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir,
 	bool includeall, string & result_file) const
 {
@@ -3650,20 +3670,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 	// HTML backend
 	else if (backend_format == "xhtml") {
 		runparams.flavor = OutputParams::HTML;
-		switch (params().html_math_output) {
-		case BufferParams::MathML:
-			runparams.math_flavor = OutputParams::MathAsMathML;
-			break;
-		case BufferParams::HTML:
-			runparams.math_flavor = OutputParams::MathAsHTML;
-			break;
-		case BufferParams::Images:
-			runparams.math_flavor = OutputParams::MathAsImages;
-			break;
-		case BufferParams::LaTeX:
-			runparams.math_flavor = OutputParams::MathAsLaTeX;
-			break;
-		}
+		setMathFlavor(runparams);
 		makeLyXHTMLFile(FileName(filename), runparams);
 	} else if (backend_format == "lyx")
 		writeFile(FileName(filename));
