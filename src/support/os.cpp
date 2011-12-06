@@ -54,6 +54,12 @@ static string const python2(string const & binary, bool verbose = false)
 }
 
 
+int timeout_min()
+{
+	return 30;
+}
+
+
 string const python()
 {
 	// Check whether the first python in PATH is the right one.

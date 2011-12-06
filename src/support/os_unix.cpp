@@ -222,12 +222,6 @@ shell_type shell()
 }
 
 
-int timeout_min()
-{
-	return 3;
-}
-
-
 char path_separator(path_type)
 {
 	return ':';
