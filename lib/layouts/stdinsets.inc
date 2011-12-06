@@ -87,8 +87,13 @@ InsetLayout Note:Comment
 	EndFont
 	MultiPar              true
 	Display               false
-	HTMLTag               !--
-	HTMLIsBlock           false
+	HTMLTag               div
+	HTMLIsBlock           true
+  HTMLStyle
+    div.note_comment {
+      display: none;
+    }
+  EndHTMLStyle
 End
 
 
@@ -121,6 +126,7 @@ InsetLayout Note:Greyedout
 	EndFont
 	MultiPar              true
 	Display               false
+	HTMLInnerTag div
 	HTMLStyle
 		div.note_greyedout {
 			display: inline;

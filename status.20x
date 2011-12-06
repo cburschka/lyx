@@ -26,6 +26,10 @@ What's new
 
 - Fix Sweave support for document encoding with R >= 2.13.1 (bug 7876).
 
+- Improved output of Comment notes for XHTML. These are now div's that are
+  hidden by the default CSS.
+
+
 * TEX2LYX IMPROVEMENTS
 
 - Chess diagram and Spreadsheet external templates are imported
