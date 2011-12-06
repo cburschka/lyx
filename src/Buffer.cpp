@@ -1772,15 +1772,18 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 		         html::htmlize(doctitle, XHTMLStream::ESCAPE_ALL))
 		   << "</title>\n";
 
-		os << "\n<!-- Text Class Preamble -->\n"
-		   << features.getTClassHTMLPreamble()
-		   << "\n<!-- Preamble Snippets -->\n"
-		   << from_utf8(features.getPreambleSnippets());
+		docstring styles = features.getTClassHTMLPreamble();
+		if (!styles.empty())
+			os << "\n<!-- Text Class Preamble -->\n" << styles << '\n';
+
+		styles = from_utf8(features.getPreambleSnippets());
+		if (!styles.empty())
+			os << "\n<!-- Preamble Snippets -->\n" << styles << '\n';
 
 		// we will collect CSS information in a stream, and then output it
 		// either here, as part of the header, or else in a separate file.
 		odocstringstream css;
-		docstring styles = from_utf8(features.getCSSSnippets());
+		styles = from_utf8(features.getCSSSnippets());
 		if (!styles.empty())
 			css << "/* LyX Provided Styles */\n" << styles << '\n';
 
@@ -1805,9 +1808,29 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 		
 		docstring const dstyles = css.str();
 		if (!dstyles.empty()) {
-			os << "<style type='text/css'>\n"
-				 << dstyles
-				 << "\n</style>\n";
+			bool written = false;
+			if (params().html_css_as_file) {
+				// open a file for CSS info
+				ofdocstream ocss;
+				string const fcssname = addName(temppath(), "docstyle.css");
+				FileName const fcssfile = FileName(fcssname);
+				if (openFileWrite(ocss, fcssfile)) {
+					ocss << dstyles;
+					ocss.close();
+					written = true;
+					// write link to header
+					os << "<link rel='stylesheet' href='docstyle.css' type='text/css' />\n";
+					// register file
+					runparams.exportdata->addExternalFile("xhtml", fcssfile);
+				}
+			}
+			// we are here if the CSS is supposed to be written to the header
+			// or if we failed to write it to an external file.
+			if (!written) {
+				os << "<style type='text/css'>\n"
+					 << dstyles
+					 << "\n</style>\n";
+			}
 		}
 		os << "</head>\n";
 	}
