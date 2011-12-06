@@ -60,7 +60,7 @@ namespace lyx {
 // development/updatelayouts.sh script, to update the format of
 // all of our layout files.
 //
-int const LAYOUT_FORMAT = 35;
+int const LAYOUT_FORMAT = 36;
 
 namespace {
 
@@ -190,6 +190,7 @@ enum TextClassTags {
 	TC_CLASSOPTIONS,
 	TC_PREAMBLE,
 	TC_HTMLPREAMBLE,
+	TC_HTMLSTYLES,
 	TC_PROVIDES,
 	TC_REQUIRES,
 	TC_LEFTMARGIN,
@@ -204,6 +205,7 @@ enum TextClassTags {
 	TC_FORMAT,
 	TC_ADDTOPREAMBLE,
 	TC_ADDTOHTMLPREAMBLE,
+	TC_ADDTOHTMLSTYLES,
 	TC_DEFAULTMODULE,
 	TC_PROVIDESMODULE,
 	TC_EXCLUDESMODULE,
@@ -216,6 +218,7 @@ namespace {
 
 	LexerKeyword textClassTags[] = {
 		{ "addtohtmlpreamble", TC_ADDTOHTMLPREAMBLE },
+	  { "addtohtmlstyles",   TC_ADDTOHTMLSTYLES },
 		{ "addtopreamble",     TC_ADDTOPREAMBLE },
 		{ "citeformat",        TC_CITEFORMAT },
 		{ "classoptions",      TC_CLASSOPTIONS },
@@ -228,6 +231,7 @@ namespace {
 		{ "float",             TC_FLOAT },
 		{ "format",            TC_FORMAT },
 		{ "htmlpreamble",      TC_HTMLPREAMBLE },
+	  { "htmlstyles",        TC_HTMLSTYLES },
 		{ "htmltocsection",    TC_HTMLTOCSECTION },
 		{ "ifcounter",         TC_IFCOUNTER },
 		{ "ifstyle",           TC_IFSTYLE },
@@ -568,6 +572,10 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			htmlpreamble_ = from_utf8(lexrc.getLongString("EndPreamble"));
 			break;
 
+		case TC_HTMLSTYLES:
+			htmlstyles_ = from_utf8(lexrc.getLongString("EndStyles"));
+			break;
+
 		case TC_HTMLTOCSECTION:
 			html_toc_section_ = from_utf8(trim(lexrc.getString()));
 			break;
@@ -578,6 +586,10 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 
 		case TC_ADDTOHTMLPREAMBLE:
 			htmlpreamble_ += from_utf8(lexrc.getLongString("EndPreamble"));
+			break;
+
+		case TC_ADDTOHTMLSTYLES:
+			htmlstyles_ += from_utf8(lexrc.getLongString("EndStyles"));
 			break;
 
 		case TC_PROVIDES: {

@@ -129,7 +129,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 35
+currentFormat = 36
 
 
 def usage(prog_name):
@@ -313,6 +313,10 @@ def convert(lines):
             while i < len(lines) and not re_EndBabelPreamble.match(lines[i]):
                 i += 1
             continue
+
+        if format == 35:
+          i += 1
+          continue
 
         if format == 34:
           match = re_InsetLayout2.match(lines[i])

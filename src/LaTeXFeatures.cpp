@@ -1121,9 +1121,12 @@ docstring const LaTeXFeatures::getTClassHTMLPreamble() const
 }
 
 
-docstring const LaTeXFeatures::getTClassHTMLStyles() const {
+docstring const LaTeXFeatures::getTClassHTMLStyles() const
+{
 	DocumentClass const & tclass = params_.documentClass();
 	odocstringstream tcpreamble;
+
+	tcpreamble << tclass.htmlstyles();
 
 	list<docstring>::const_iterator cit = usedLayouts_.begin();
 	list<docstring>::const_iterator end = usedLayouts_.end();

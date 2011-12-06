@@ -264,6 +264,8 @@ protected:
 	/// same, but for HTML output
 	/// this is output as is to the header
 	docstring htmlpreamble_;
+	/// same, but specifically for CSS information
+	docstring htmlstyles_;
 	/// the paragraph style to use for TOCs, Bibliography, etc
 	mutable docstring html_toc_section_;
 	/// latex packages loaded by document class.
@@ -401,6 +403,8 @@ public:
 	docstring const & preamble() const { return preamble_; }
 	///
 	docstring const & htmlpreamble() const { return htmlpreamble_; }
+	///
+	docstring const & htmlstyles() const { return htmlstyles_; }
 	/// the paragraph style to use for TOCs, Bibliography, etc
 	/// we will attempt to calculate this if it was not given
 	Layout const & htmlTOCLayout() const;
