@@ -443,7 +443,7 @@ if(LYX_HUNSPELL)
 endif()
 
 if(LYX_NLS)
-	FIND_PROGRAM(LYX_PYTHON_EXECUTABLE python HINTS ${GNUWIN32_DIR}/python)
+	FIND_PROGRAM(LYX_PYTHON_EXECUTABLE python2 python HINTS ${GNUWIN32_DIR}/python)
 	if(${LYX_PYTHON_EXECUTABLE} MATCHES "-NOTFOUND")
 		message(FATAL_ERROR "Python 2.6 needed!")
 	endif()
@@ -624,6 +624,21 @@ endif()
 if(LYX_DEBUG_GLIBC_PEDANTIC)
 	set(_GLIBCXX_DEBUG_PEDANTIC ON)
 endif()
+
+# Xcode compiler
+if (CMAKE_GENERATOR MATCHES Xcode)
+	# Automatically select the Xcode compiler if not set
+	if (NOT DEFINED CMAKE_XCODE_ATTRIBUTE_GCC_VERSION)
+		# XCode >= 3.1 has gcc 4.2 (up to actual Xcode)
+		if (XCODE_VERSION VERSION_GREATER "3.1")
+			SET(CMAKE_XCODE_ATTRIBUTE_GCC_VERSION "com.apple.compilers.llvmgcc42")
+		ENDIF(XCODE_VERSION VERSION_GREATER "3.1")
+	ENDIF(NOT DEFINED CMAKE_XCODE_ATTRIBUTE_GCC_VERSION)
+
+	# Print the selected compiler version
+    MESSAGE(STATUS "---- Using XCode compiler CMAKE_XCODE_ATTRIBUTE_GCC_VERSION=${CMAKE_XCODE_ATTRIBUTE_GCC_VERSION}")
+ENDIF(CMAKE_GENERATOR MATCHES Xcode)
+
 
 # compiler tests, config.h generation
 if(MSVC AND NOT LYX_CONFIGURE_CHECKS)
