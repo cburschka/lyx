@@ -28,6 +28,10 @@ if [%1]==[] (
 	goto :eof
 )
 
+REM Save path
+set CALLED_FROM=%CD%
+
+
 REM Add path to qmake here or set PATH correctly on your system.
 set PATH="D:\Qt\bin";%PATH%
 
@@ -86,7 +90,7 @@ if "%1%" == "install" (
 	msbuild INSTALL.vcxproj /p:Configuration=Release 
 )
 
-REM Edit the path according to your system.
-cd "%LYX_SOURCE%\development\cmake"
+REM go back to the dir where the script was called from
+cd /D %CALLED_FROM%
 
 :eof
