@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>OutputUi</class>
  <widget class="QWidget" name="OutputUi">
@@ -115,7 +116,7 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout" name="outGridLayout">
-      <item row="0" column="0" colspan="2">
+      <item row="0" column="0">
        <widget class="QCheckBox" name="strictCB">
         <property name="toolTip">
          <string>Whether to comply strictly with XHTML 1.1.</string>
@@ -212,6 +213,13 @@
         </property>
         <property name="value">
          <double>1.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QCheckBox" name="cssCB">
+        <property name="text">
+         <string>Write CSS to File</string>
         </property>
        </widget>
       </item>

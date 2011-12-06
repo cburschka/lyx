@@ -768,6 +768,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(outputModule->strictCB, SIGNAL(stateChanged(int)),
 		this, SLOT(change_adaptor()));
+	connect(outputModule->cssCB, SIGNAL(stateChanged(int)),
+		this, SLOT(change_adaptor()));
 	connect(outputModule->mathoutCB, SIGNAL(currentIndexChanged(int)),
 		this, SLOT(change_adaptor()));
 
@@ -2514,6 +2516,7 @@ void GuiDocument::applyView()
 	bp_.useNonTeXFonts = nontexfonts;
 
 	bp_.output_sync = outputModule->outputsyncCB->isChecked();
+	
 	bp_.output_sync_macro = fromqstr(outputModule->synccustomCB->currentText());
 
 	int mathfmt = outputModule->mathoutCB->currentIndex();
@@ -2523,6 +2526,7 @@ void GuiDocument::applyView()
 		static_cast<BufferParams::MathOutput>(mathfmt);
 	bp_.html_math_output = mo;
 	bp_.html_be_strict = outputModule->strictCB->isChecked();
+	bp_.html_css_as_file = outputModule->cssCB->isChecked();
 	bp_.html_math_img_scale = outputModule->mathimgSB->value();
 
 	// fonts
@@ -2960,6 +2964,7 @@ void GuiDocument::paramsToDialog()
 	outputModule->mathimgSB->setValue(bp_.html_math_img_scale);
 	outputModule->mathoutCB->setCurrentIndex(bp_.html_math_output);
 	outputModule->strictCB->setChecked(bp_.html_be_strict);
+	outputModule->cssCB->setChecked(bp_.html_css_as_file);
 
 	// Fonts
 	updateFontsize(documentClass().opt_fontsize(),
