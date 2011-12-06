@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 417
 \begin_document
 \begin_header
 \textclass scrbook
@@ -103,6 +103,7 @@ End
 \use_esint 0
 \use_mhchem 0
 \use_mathdots 1
+\use_undertilde 1
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
@@ -7816,6 +7817,57 @@ EndPreamble
 status collapsed
 
 \begin_layout Plain Layout
+AddToHTMLStyles
+\end_layout
+
+\end_inset
+
+ Adds CSS styling information.
+ This will either be output in a 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<style>
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ block or, if the user has so chosen, to a separate CSS file.Must end with
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+EndStyles
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 AddToPreamble
 \end_layout
 
@@ -8318,6 +8370,88 @@ status collapsed
 
 \begin_layout Plain Layout
 EndPreamble
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+HTMLStyles
+\end_layout
+
+\end_inset
+
+ Sets CSS styling information.
+ This will either be output in a 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<style>
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ block or, if the user has so chosen, to a separate CSS file.
+ Note that this will completely override any prior 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+HTMLStyles
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+AddToHTMLStyles
+\end_layout
+
+\end_inset
+
+ declarations.
+ (Use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+AddToHTMLStyles
+\end_layout
+
+\end_inset
+
+ if you just want to add material.) Must end with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+EndStyles
 \end_layout
 
 \end_inset
