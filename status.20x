@@ -75,8 +75,11 @@ What's new
 
 - Fix crash when exporting branches to XHTML.
 
+- Do not allow user to over-write a file already open. Attempting to do so
+  crashes LyX (bug 7921).
 
-* TeX2LyX
+
+* TEX2LYX
 
 - Formal tables are now supported (bug 4553).
 
