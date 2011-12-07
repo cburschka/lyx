@@ -1606,6 +1606,19 @@ dist_tex_DATA = \
 	tex/lyxskak.sty \
 	tex/revtex.cls
 
+if !INSTALL_WINDOWS
+if !INSTALL_MACOSX
+# install application icons. The 'hicolor' theme is the default theme
+# where applications themselves should install their icons.
+scalableappiconsdir = $(datadir)/icons/hicolor/scalable/apps
+scalableappicons_DATA = images/lyx.svg
+
+fixedappiconsdir = $(datadir)/icons/hicolor/48x48/apps
+fixedappicons_DATA = images/lyx.png
+
+endif
+endif
+
 # subscript.sty is not in dist_tex_DATA since we don't want to install it
 # (it is part of TeXLive). We include it in our source package only so that
 # packagers may decide to install it (e.g. for MikTeX).

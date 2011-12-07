@@ -444,9 +444,16 @@ GuiView::GuiView(int id)
 	setAttribute(Qt::WA_DeleteOnClose, true);
 
 #if (!defined(Q_WS_WIN) && !defined(Q_WS_MACX))
+	// QIcon::fromTheme was introduced in Qt 4.6
+#if (QT_VERSION >= 0x040600)
 	// assign an icon to main form. We do not do it under Qt/Win or Qt/Mac,
-	// since the icon is provided in the application bundle.
+	// since the icon is provided in the application bundle. We use a themed
+	// version when available and use the bundled one as fallback.
+	setWindowIcon(QIcon::fromTheme("lyx", getPixmap("images/", "lyx", "png")));
+#else
 	setWindowIcon(getPixmap("images/", "lyx", "png"));
+#endif
+
 #endif
 
 #if (QT_VERSION >= 0x040300)
