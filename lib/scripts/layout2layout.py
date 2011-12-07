@@ -122,6 +122,9 @@ import os, re, string, sys
 # Incremented to format 35, 28 March 2011 by rgh
 # Try to add "Flex:" to any flex insets that don't have it.
 
+# Incremented to format 36, 7 December 2011, by rgh
+# Added HTMLStyles and AddToHTMLStyles tags.
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
