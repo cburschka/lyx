@@ -3030,6 +3030,10 @@ void GuiDocument::paramsToDialog()
 	// PDF support
 	PDFOptions const & pdf = bp_.pdfoptions();
 	pdfSupportModule->use_hyperrefGB->setChecked(pdf.use_hyperref);
+	if (bp_.documentClass().provides("hyperref"))
+		pdfSupportModule->use_hyperrefGB->setTitle(qt_("C&ustomize Hyperref Options"));
+	else
+		pdfSupportModule->use_hyperrefGB->setTitle(qt_("&Use Hyperref Support"));
 	pdfSupportModule->titleLE->setText(toqstr(pdf.title));
 	pdfSupportModule->authorLE->setText(toqstr(pdf.author));
 	pdfSupportModule->subjectLE->setText(toqstr(pdf.subject));
