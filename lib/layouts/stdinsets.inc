@@ -2,7 +2,7 @@
 # Author : Martin vermeer <martin.vermeer@hut.fi>
 # Inset layouts definition
 #
-# Detailled format description is available in the customization manual
+# Detailed format description is available in the customization manual
 
 Format 35
 
