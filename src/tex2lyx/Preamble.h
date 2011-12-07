@@ -99,6 +99,7 @@ private:
 	std::string h_html_css_as_file;
 	std::string h_html_math_output;
 	std::string h_inputencoding;
+	std::string h_justification;
 	std::string h_language;
 	std::string h_language_package;
 	std::string h_listings_params;

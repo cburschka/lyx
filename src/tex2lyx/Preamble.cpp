@@ -410,6 +410,7 @@ Preamble::Preamble() : one_language(true)
 	h_html_css_as_file        = "0";
 	h_html_math_output        = "0";
 	h_inputencoding           = "auto";
+	h_justification           = "true";
 	h_language                = "english";
 	h_language_package        = "none";
 	//h_listings_params;
@@ -950,6 +951,7 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 	   << "\\use_indices " << h_use_indices << "\n"
 	   << "\\paperorientation " << h_paperorientation << '\n'
 	   << "\\suppress_date " << h_suppress_date << '\n'
+	   << "\\justification " << h_justification << '\n'
 	   << "\\use_refstyle " << h_use_refstyle << '\n';
 	if (!h_fontcolor.empty())
 		os << "\\fontcolor " << h_fontcolor << '\n';
