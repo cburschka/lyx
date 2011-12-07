@@ -18,7 +18,7 @@
 #define LEXER_H
 
 #include "support/strfwd.h"
-
+#include <string>
 
 namespace lyx {
 
