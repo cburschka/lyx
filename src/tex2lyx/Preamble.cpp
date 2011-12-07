@@ -727,11 +727,12 @@ void Preamble::handle_package(Parser &p, string const & name,
 			options.clear();
 	}
 
-	else if (name == "array" || name == "booktabs" || name == "float" ||
-	         name == "color" || name == "hhline" || name == "longtable" ||
-	         name == "makeidx" || name == "nomencl" || name == "splitidx" ||
-	         name == "setspace" || name == "subscript" || name == "ulem" ||
-	         name == "url") {
+	else if (name == "array" || name == "booktabs" || name == "calc" ||
+		     name == "color" || name == "hhline" || name == "ifthen" ||
+		     name == "float" || name == "longtable" || name == "makeidx" ||
+		     name == "multirow" || name == "nomencl" || name == "setspace" ||
+		     name == "splitidx" || name == "subscript" || name == "ulem" ||
+		     name == "url") {
 		if (!in_lyx_preamble)
 			h_preamble << package_beg_sep << name
 			           << package_mid_sep << "\\usepackage{"

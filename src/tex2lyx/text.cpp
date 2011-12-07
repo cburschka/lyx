@@ -2362,6 +2362,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 						end_inset(os);
 						context.check_layout(os);
 						macro = false;
+						// register the packages that are automatically reloaded
+						// by the Gnumeric template
+						// Fixme: InsetExternal.cpp should give us that list
+						preamble.registerAutomaticallyLoadedPackage("array");
+						preamble.registerAutomaticallyLoadedPackage("calc");
+						preamble.registerAutomaticallyLoadedPackage("color");
+						preamble.registerAutomaticallyLoadedPackage("hhline");
+						preamble.registerAutomaticallyLoadedPackage("ifthen");
+						preamble.registerAutomaticallyLoadedPackage("longtable");
+						preamble.registerAutomaticallyLoadedPackage("multirow");
 					}
 				}
 			}
