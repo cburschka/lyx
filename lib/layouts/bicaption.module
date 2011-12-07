@@ -1,0 +1,47 @@
+#\DeclareLyXModule[bicaption.sty]{Multilingual captions}
+#DescriptionBegin
+#Provides two styles to typeset multilingual captions.
+#For a description see the file MultilingualCaptions.lyx in LyX's examples folder.
+#DescriptionEnd
+#Author: Uwe Stöhr <uwestoehr@web.de>
+
+Format 36
+
+Style "Caption setup"
+	LatexType		command
+	LatexName		captionsetup
+	Category		FrontMatter
+	OptionalArgs		1
+	Margin			Dynamic
+	LabelSep		xx
+	ParSkip			0.0
+	ItemSep			0.2
+	TopSep			0.7
+	BottomSep		0.7
+	ParSep			0.3
+	Align			Block
+	AlignPossible		Block
+	LabelType		Static
+	LabelString		"Caption setup:"
+	LabelFont
+		Color		Green
+	EndFont
+	BabelPreamble
+	\usepackage{bicaption} % for multilingual captions
+	EndBabelPreamble
+End
+
+Style Bicaption
+	CopyStyle		"Caption setup"
+	LatexName		bicaption
+	Category		MainText
+	RequiredArgs		1
+	TopSep			0
+	Align			Center
+	AlignPossible		Center
+	LabelString		"Multilingual caption:"
+	LabelFont
+		Color		Black
+	EndFont
+End
+
