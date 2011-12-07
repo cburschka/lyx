@@ -403,6 +403,7 @@ dist_images_DATA = \
 	images/layout_Section.png \
 	images/lyx-quit.png \
 	images/lyx.png \
+	images/lyx.svg \
 	images/marginalnote-insert.png \
 	images/master-buffer-update.png \
 	images/master-buffer-view.png \
