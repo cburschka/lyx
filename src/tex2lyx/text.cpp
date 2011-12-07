@@ -2343,9 +2343,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 						string const path = getMasterFilePath();
 						// We want to preserve relative / absolute filenames,
 						// therefore path is only used for testing
+						// The file extension is in every case ".tex".
+						// So we need to remove this extension and check for
+						// the original one.
+						name.erase(name.length() - 4, name.length());
 						if (!makeAbsPath(name, path).exists()) {
-							// The file extension is probably missing.
-							// Now try to find it out.
 							char const * const Gnumeric_formats[] = {"gnumeric"
 								"ods", "xls", 0};
 							string const Gnumeric_name =
