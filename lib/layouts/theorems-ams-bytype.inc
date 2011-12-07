@@ -21,7 +21,7 @@
 # - Case (regular only -- defined as an enumeration)
 
 # We need separate counters for each theorem-like style.
-Format 35
+Format 36
 Counter theorem
 End
 Counter corollary

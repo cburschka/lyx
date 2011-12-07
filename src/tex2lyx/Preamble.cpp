@@ -410,6 +410,7 @@ Preamble::Preamble() : one_language(true)
 	h_html_css_as_file        = "0";
 	h_html_math_output        = "0";
 	h_inputencoding           = "auto";
+	h_justification           = "true";
 	h_language                = "english";
 	h_language_package        = "none";
 	//h_listings_params;

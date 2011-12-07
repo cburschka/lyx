@@ -4,7 +4,7 @@
 # in most LyX layouts.
 
 
-Format 35
+Format 36
 Counter part
 	LabelString          "\Roman{part}"
 	PrettyFormat         "Part \Roman{part}"
