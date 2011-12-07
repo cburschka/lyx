@@ -2280,9 +2280,27 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 	}
 
 	// fname is now the new Buffer location.
+
+	// if there is already a Buffer open with this name, we do not want
+	// to have another one.
+	if (theBufferList().exists(fname)) {
+		docstring const text = 
+			bformat(_("The file\n%1$s\nis already open in your current session.\n"
+		            "Please close it before attempting to overwrite it.\n"
+		            "Do you want to choose a new filename?"),
+			        from_utf8(fname.absFileName()));
+		int const ret = Alert::prompt(_("Chosen File Already Open"),
+			text, 0, 1, _("&Rename"), _("&Cancel"));
+		switch (ret) {
+		case 0: return renameBuffer(b, docstring());
+		case 1: return false;
+		}
+		//return false;
+	}
+	
 	if (FileName(fname).exists()) {
 		docstring const file = makeDisplayPath(fname.absFileName(), 30);
-		docstring text = bformat(_("The document %1$s already "
+		docstring const text = bformat(_("The document %1$s already "
 					   "exists.\n\nDo you want to "
 					   "overwrite that document?"),
 					 file);
