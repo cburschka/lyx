@@ -305,6 +305,8 @@ public:
 	std::string float_placement;
 	///
 	unsigned int columns;
+	///
+	bool justification;
 	/// parameters for the listings package
 	std::string listings_params;
 	///

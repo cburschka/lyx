@@ -710,6 +710,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(textLayoutModule->twoColumnCB, SIGNAL(clicked()),
 		this, SLOT(setColSep()));
+	connect(textLayoutModule->justCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
 
 	textLayoutModule->lspacingLE->setValidator(new QDoubleValidator(
 		textLayoutModule->lspacingLE));
@@ -2428,6 +2430,8 @@ void GuiDocument::applyView()
 	else
 		bp_.columns = 1;
 
+	bp_.justification = textLayoutModule->justCB->isChecked();
+
 	if (textLayoutModule->indentRB->isChecked()) {
 		// if paragraphs are separated by an indentation
 		bp_.paragraph_separation = BufferParams::ParagraphIndentSeparation;
@@ -2876,6 +2880,7 @@ void GuiDocument::paramsToDialog()
 
 	textLayoutModule->twoColumnCB->setChecked(
 		bp_.columns == 2);
+	textLayoutModule->justCB->setChecked(bp_.justification);
 
 	if (!bp_.options.empty()) {
 		latexModule->optionsLE->setText(

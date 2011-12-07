@@ -25,7 +25,8 @@ import sys, os
 
 # Uncomment only what you need to import, please.
 
-from parser_tools import find_token, find_end_of_inset, get_value
+from parser_tools import find_token, find_end_of_inset, get_value, \
+   del_token
 
 #from parser_tools import find_token, find_end_of, find_tokens, \
   #find_token_exact, find_end_of_inset, find_end_of_layout, \
@@ -192,6 +193,13 @@ def revert_japanese_encodings(document):
         document.header[i] = "\\inputencoding %s" % jap_enc_dict[val]
 
 
+def revert_justification(document):
+    " Revert the \\justification buffer param"
+    if not del_token(document.header, '\\justification', 0):
+        document.warning("Malformed LyX document: Missing \\justification.")
+
+    
+
 ##
 # Conversion hub
 #
@@ -202,9 +210,11 @@ convert = [
            [415, [convert_undertilde]],
            [416, []],
            [417, [convert_japanese_encodings]],
+           [418, []],
           ]
 
 revert =  [
+           [417, [revert_justification]],
            [416, [revert_japanese_encodings]],
            [415, [revert_negative_space,revert_math_spaces]],
            [414, [revert_undertilde]],

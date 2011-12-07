@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>TextLayoutUi</class>
  <widget class="QWidget" name="TextLayoutUi">
@@ -6,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>421</width>
-    <height>280</height>
+    <height>327</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -245,20 +246,10 @@
         </property>
        </spacer>
       </item>
-      <item row="1" column="0" colspan="2">
-       <widget class="QCheckBox" name="twoColumnCB">
-        <property name="toolTip">
-         <string>Format text into two columns</string>
-        </property>
-        <property name="text">
-         <string>Two-&amp;column document</string>
-        </property>
-       </widget>
-      </item>
      </layout>
     </widget>
    </item>
-   <item row="2" column="0">
+   <item row="4" column="0">
     <spacer>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -273,6 +264,23 @@
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="2" column="0">
+    <widget class="QCheckBox" name="twoColumnCB">
+     <property name="toolTip">
+      <string>Format text into two columns</string>
+     </property>
+     <property name="text">
+      <string>Two-&amp;column document</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QCheckBox" name="justCB">
+     <property name="text">
+      <string>Use &amp;Justification</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
@@ -294,7 +302,6 @@
   <tabstop>skipLengthCO</tabstop>
   <tabstop>lspacingCO</tabstop>
   <tabstop>lspacingLE</tabstop>
-  <tabstop>twoColumnCB</tabstop>
  </tabstops>
  <includes>
   <include location="local">qt_i18n.h</include>

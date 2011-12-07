@@ -397,6 +397,7 @@ BufferParams::BufferParams()
 	listings_params = string();
 	pagestyle = "default";
 	suppress_date = false;
+	justification = true;
 	// no color is the default (white)
 	backgroundcolor = lyx::rgbFromHexName("#ffffff");
 	isbackgroundcolor = false;
@@ -603,6 +604,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		master = lex.getString();
 	} else if (token == "\\suppress_date") {
 		lex >> suppress_date;
+	} else if (token == "\\justification") {
+		lex >> justification;
 	} else if (token == "\\language") {
 		readLanguage(lex);
 	} else if (token == "\\language_package") {
@@ -1002,6 +1005,7 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\use_indices " << convert<string>(use_indices)
 	   << "\n\\paperorientation " << string_orientation[orientation]
 	   << "\n\\suppress_date " << convert<string>(suppress_date)
+	   << "\n\\justification " << convert<string>(justification)
 		 << "\n\\use_refstyle " << use_refstyle
 	   << '\n';
 	if (isbackgroundcolor == true)

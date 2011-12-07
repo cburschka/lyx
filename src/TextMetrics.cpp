@@ -598,6 +598,11 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			}
 		}
 
+		// Has the user requested we not justify stuff?
+		if (!bv_->buffer().params().justification
+		    && align == LYX_ALIGN_BLOCK)
+			align = LYX_ALIGN_LEFT;
+
 		switch (align) {
 		case LYX_ALIGN_BLOCK: {
 			int const ns = numberOfSeparators(par, row);
