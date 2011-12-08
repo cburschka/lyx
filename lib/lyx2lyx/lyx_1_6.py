@@ -793,7 +793,7 @@ def convert_flex(document):
         document.body[i] = document.body[i].replace('\\begin_inset CharStyle', '\\begin_inset Flex')
 
 def revert_flex(document):
-    "Revert Flex to Charstyle"
+    "Revert Flex to CharStyle"
     i = 0
     while True:
         i = find_token(document.body, "\\begin_inset Flex", i)
