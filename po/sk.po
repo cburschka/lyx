@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2011-12-08 10:43+0100\n"
-"PO-Revision-Date: 2011-12-08 10:58+0100\n"
+"PO-Revision-Date: 2011-12-08 12:24+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-devel@lists.lyx.org>\n"
 "Language: sk\n"
@@ -22527,10 +22527,15 @@ msgid ""
 "Please close it before attempting to overwrite it.\n"
 "Do you want to choose a new filename?"
 msgstr ""
+"Súbor\n"
+"%1$s\n"
+"je už otvorený v súčasnom sedení.\n"
+"Zavrite ho prosím pred pokusom na prepísanie.\n"
+"Chcete si vybrať nové meno pre tento súbor?"
 
 #: src/frontends/qt4/GuiView.cpp:2292
 msgid "Chosen File Already Open"
-msgstr ""
+msgstr "Vybraný Súbor je Už Otvorený."
 
 #: src/frontends/qt4/GuiView.cpp:2293 src/frontends/qt4/GuiView.cpp:2308
 #: src/frontends/qt4/GuiView.cpp:2380 src/frontends/qt4/GuiView.cpp:2428
