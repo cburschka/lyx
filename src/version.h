@@ -30,8 +30,8 @@ extern char const * const lyx_version_info;
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-#define LYX_FORMAT_LYX 418 // rgh: justification option
-#define LYX_FORMAT_TEX2LYX 418
+#define LYX_FORMAT_LYX 419 // uwestoehr: support for the languages australian and newzealand
+#define LYX_FORMAT_TEX2LYX 419
 
 #if LYX_FORMAT_FOR_TEX2LYX != LYX_FORMAT_FOR_LYX
 #warning "tex2lyx produces an out of date file format."

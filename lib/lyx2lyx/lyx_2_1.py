@@ -198,6 +198,28 @@ def revert_justification(document):
     if not del_token(document.header, '\\justification', 0):
         document.warning("Malformed LyX document: Missing \\justification.")
 
+
+def revert_australian(document):
+    "Set English language variants Australian and Newzealand to English" 
+
+    if document.language == "australian" or document.language == "newzealand": 
+        document.language = "english" 
+        i = find_token(document.header, "\\language", 0) 
+        if i != -1: 
+            document.header[i] = "\\language english" 
+
+    j = 0 
+    while True: 
+        j = find_token(document.body, "\\lang australian", j) 
+        if j == -1: 
+            j = find_token(document.body, "\\lang newzealand", 0)
+            if j == -1:
+                return
+            else:
+                document.body[j] = document.body[j].replace("\\lang newzealand", "\\lang english")
+        else:
+            document.body[j] = document.body[j].replace("\\lang australian", "\\lang english") 
+        j += 1
     
 
 ##
@@ -211,9 +233,11 @@ convert = [
            [416, []],
            [417, [convert_japanese_encodings]],
            [418, []],
+           [419, []]
           ]
 
 revert =  [
+           [418, [revert_australian]],
            [417, [revert_justification]],
            [416, [revert_japanese_encodings]],
            [415, [revert_negative_space,revert_math_spaces]],

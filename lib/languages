@@ -134,6 +134,15 @@ Language armenian
 	LangCode         hy_AM
 End
 
+Language australian
+	GuiName          "English (Australia)"
+	BabelName        australian
+	PolyglossiaName  english
+	PolyglossiaOpts  "variant=australian"
+	Encoding         iso8859-15
+	LangCode         en_AU
+End
+
 Language austrian
 	GuiName          "German (Austria, old spelling)"
 	BabelName        austrian
@@ -593,6 +602,15 @@ Language mongolian
 	Encoding         utf8
 	LangCode         mn_MN
 	AsBabelOptions   true
+End
+
+Language newzealand
+	GuiName          "English (New Zealand)"
+	BabelName        newzealand
+	PolyglossiaName  english
+	PolyglossiaOpts  "variant=newzealand"
+	Encoding         iso8859-15
+	LangCode         en_NZ
 End
 
 Language norsk

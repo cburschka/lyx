@@ -57,12 +57,12 @@ namespace {
  * please keep this in sync with known_coded_languages line by line!
  */
 const char * const known_languages[] = {"acadian", "afrikaans", "albanian",
-"american", "arabic", "arabtex", "austrian", "bahasa", "bahasai", "bahasam",
-"basque", "belarusian", "brazil", "brazilian", "breton", "british", "bulgarian",
-"canadian", "canadien", "catalan", "croatian", "czech", "danish", "dutch",
-"english", "esperanto", "estonian", "farsi", "finnish", "francais", "french",
-"frenchb", "frenchle", "frenchpro", "galician", "german", "germanb", "greek",
-"hebrew", "hungarian", "icelandic", "indon", "indonesian", "interlingua",
+"american", "arabic", "arabtex", "australian", "austrian", "bahasa", "bahasai",
+"bahasam", "basque", "belarusian", "brazil", "brazilian", "breton", "british",
+"bulgarian", "canadian", "canadien", "catalan", "croatian", "czech", "danish",
+"dutch", "english", "esperanto", "estonian", "farsi", "finnish", "francais",
+"french", "frenchb", "frenchle", "frenchpro", "galician", "german", "germanb",
+"greek", "hebrew", "hungarian", "icelandic", "indon", "indonesian", "interlingua",
 "irish", "italian", "kazakh", "latin", "latvian", "lithuanian", "lowersorbian",
 "lsorbian", "magyar", "malay", "meyalu", "mongolian", "naustrian", "newzealand",
 "ngerman", "ngermanb", "norsk", "nynorsk", "polutonikogreek", "polish",
@@ -77,14 +77,14 @@ const char * const known_languages[] = {"acadian", "afrikaans", "albanian",
  * please keep this in sync with known_languages line by line!
  */
 const char * const known_coded_languages[] = {"french", "afrikaans", "albanian",
-"american", "arabic_arabi", "arabic_arabtex", "austrian", "bahasa", "bahasa", "bahasam",
-"basque", "belarusian", "brazilian", "brazilian", "breton", "british", "bulgarian",
-"canadian", "canadien", "catalan", "croatian", "czech", "danish", "dutch",
-"english", "esperanto", "estonian", "farsi", "finnish", "french", "french",
-"french", "french", "french", "galician", "german", "german", "greek",
-"hebrew", "magyar", "icelandic", "bahasa", "bahasa", "interlingua",
+"american", "arabic_arabi", "arabic_arabtex", "australian", "austrian", "bahasa", "bahasa",
+"bahasam", "basque", "belarusian", "brazilian", "brazilian", "breton", "british",
+"bulgarian", "canadian", "canadien", "catalan", "croatian", "czech", "danish",
+"dutch", "english", "esperanto", "estonian", "farsi", "finnish", "french",
+"french", "french", "french", "french", "galician", "german", "german",
+"greek", "hebrew", "magyar", "icelandic", "bahasa", "bahasa", "interlingua",
 "irish", "italian", "kazakh", "latin", "latvian", "lithuanian", "lowersorbian",
-"lowersorbian", "magyar", "bahasam", "bahasam", "mongolian", "naustrian", "english",
+"lowersorbian", "magyar", "bahasam", "bahasam", "mongolian", "naustrian", "newzealand",
 "ngerman", "ngerman", "norsk", "nynorsk", "polutonikogreek", "polish",
 "portuguese", "portuguese", "romanian", "russian", "russian", "samin",
 "scottish", "serbian", "serbian-latin", "slovak", "slovene", "spanish",
@@ -93,9 +93,10 @@ const char * const known_coded_languages[] = {"french", "afrikaans", "albanian",
 0};
 
 /// languages with english quotes (.lyx names)
-const char * const known_english_quotes_languages[] = {"american", "bahasa",
-"bahasam", "brazilian", "canadian", "chinese-simplified", "english",
-"esperanto", "hebrew", "irish", "korean", "portuguese", "scottish", "thai", 0};
+const char * const known_english_quotes_languages[] = {"american", "australian",
+"bahasa", "bahasam", "brazilian", "canadian", "chinese-simplified", "english",
+"esperanto", "hebrew", "irish", "korean", "newzealand", "portuguese", "scottish",
+"thai", 0};
 
 /// languages with french quotes (.lyx names)
 const char * const known_french_quotes_languages[] = {"albanian",
