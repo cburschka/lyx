@@ -1600,7 +1600,7 @@ def convert_macro_global(document):
     "Remove TeX code command \global when it is in front of a macro"
     # math macros are nowadays already defined \global, so that an additional
     # \global would make the document uncompilable, see
-    # http://bugzilla.lyx.org/show_bug.cgi?id=5371
+    # http://www.lyx.org/trac/ticket/5371
     # We're looking for something like this:
     # \begin_inset ERT
     # status collapsed
@@ -2879,7 +2879,7 @@ def update_apa_styles(document):
 
 def convert_paper_sizes(document):
     ' exchange size options legalpaper and executivepaper to correct order '
-    # routine is needed to fix http://bugzilla.lyx.org/show_bug.cgi?id=4868
+    # routine is needed to fix http://www.lyx.org/trac/ticket/4868
     i = 0
     j = 0
     i = find_token(document.header, "\\papersize executivepaper", 0)
