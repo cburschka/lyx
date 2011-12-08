@@ -225,6 +225,8 @@ void InsetMathHull::setBuffer(Buffer & buffer)
 }
 
 
+// FIXME This should really be controlled by the TOC level, or
+// something of the sort.
 namespace {
 	const char * counters_to_save[] = {"section", "chapter"};
 	unsigned int const numcnts = sizeof(counters_to_save)/sizeof(char *);
