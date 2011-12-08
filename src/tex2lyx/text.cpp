@@ -455,8 +455,11 @@ docstring convert_unicodesymbols(docstring s)
 		}
 		s = s.substr(i);
 		docstring rem;
-		docstring parsed = encodings.fromLaTeXCommand(s, rem,
-				Encodings::TEXT_CMD);
+		set<string> req;
+		docstring parsed = encodings.fromLaTeXCommand(s,
+				Encodings::TEXT_CMD, rem, &req);
+		for (set<string>::const_iterator it = req.begin(); it != req.end(); it++)
+			preamble.registerAutomaticallyLoadedPackage(*it);
 		os << parsed;
 		s = rem;
 		if (s.empty() || s[0] != '\\')
@@ -1262,6 +1265,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		// we must make sure that the next item gets a \begin_layout.
 		parent_context.new_paragraph(os);
 		p.skip_spaces();
+                preamble.registerAutomaticallyLoadedPackage("rotfloat");
 	}
 
 	else if (name == "wrapfigure" || name == "wraptable") {
@@ -1294,6 +1298,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		// we must make sure that the next item gets a \begin_layout.
 		parent_context.new_paragraph(os);
 		p.skip_spaces();
+                preamble.registerAutomaticallyLoadedPackage("wrapfig");
 	}
 
 	else if (name == "minipage") {
@@ -1333,6 +1338,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		end_inset(os);
 		p.skip_spaces();
 		skip_braces(p); // eat {} that might by set by LyX behind comments
+		preamble.registerAutomaticallyLoadedPackage("verbatim");
 	}
 
 	else if (name == "lyxgreyedout") {
@@ -3019,6 +3025,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				   << convert_command_inset_arg(p.verbatim_item())
 				   << "\"\n";
 				end_inset(os);
+				if (t.cs() == "vref" || t.cs() == "vpageref")
+					preamble.registerAutomaticallyLoadedPackage("varioref");
+
 			} else {
 				// LyX does not support optional arguments of ref commands
 				handle_ert(os, t.asInput() + '[' + opt + "]{" +
@@ -3435,13 +3444,17 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string command = t.asInput() + "{" 
 				+ trimSpaceAndEol(p.verbatim_item())
 				+ "}";
-			docstring s = encodings.fromLaTeXCommand(from_utf8(command), rem);
+			set<string> req;
+			docstring s = encodings.fromLaTeXCommand(from_utf8(command),
+				Encodings::TEXT_CMD | Encodings::MATH_CMD, rem, &req);
 			if (!s.empty()) {
 				if (!rem.empty())
 					cerr << "When parsing " << command 
 					     << ", result is " << to_utf8(s)
 					     << "+" << to_utf8(rem) << endl;
 				os << to_utf8(s);
+				for (set<string>::const_iterator it = req.begin(); it != req.end(); it++)
+					preamble.registerAutomaticallyLoadedPackage(*it);
 			} else
 				// we did not find a non-ert version
 				handle_ert(os, command, context);
@@ -3575,6 +3588,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				begin_command_inset(os, "include", name);
 				os << "preview false\n"
 				      "filename \"" << outname << "\"\n";
+				if (t.cs() == "verbatiminput")
+					preamble.registerAutomaticallyLoadedPackage("verbatim");
 			}
 			end_inset(os);
 		}
@@ -4029,8 +4044,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// Only use text mode commands, since we are in text mode here,
 			// and math commands may be invalid (bug 6797)
 			docstring rem;
+			set<string> req;
 			docstring s = encodings.fromLaTeXCommand(from_utf8(t.asInput()),
-			                                         rem, Encodings::TEXT_CMD);
+			                                         Encodings::TEXT_CMD, rem, &req);
 			if (!s.empty()) {
 				if (!rem.empty())
 					cerr << "When parsing " << t.cs() 
@@ -4039,6 +4055,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				context.check_layout(os);
 				os << to_utf8(s);
 				skip_spaces_braces(p);
+				for (set<string>::const_iterator it = req.begin(); it != req.end(); it++)
+					preamble.registerAutomaticallyLoadedPackage(*it);
 			}
 			//cerr << "#: " << t << " mode: " << mode << endl;
 			// heuristic: read up to next non-nested space

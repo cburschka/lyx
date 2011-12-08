@@ -599,10 +599,10 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_font_sc = "true";
 	}
 
-	if (name == "mathpazo")
+	else if (name == "mathpazo")
 		h_font_roman = "palatino";
 
-	if (name == "mathptmx")
+	else if (name == "mathptmx")
 		h_font_roman = "times";
 
 	// sansserif fonts
@@ -714,17 +714,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 	else if (name == "prettyref")
 		; // ignore this FIXME: Use the package separator mechanism instead
 
-	else if (name == "varioref")
-		; // ignore this FIXME: Use the package separator mechanism instead
-
-	else if (name == "verbatim")
-		; // ignore this FIXME: Use the package separator mechanism instead
-
-	else if (name == "textcomp")
-		; // ignore this FIXME: Use the package separator mechanism instead
-
 	else if (name == "pdfpages")
-		; // ignore this
+		; // ignore this FIXME: Use the package separator mechanism instead
 
 	else if (name == "lyxskak") {
 		// ignore this and its options
@@ -733,15 +724,16 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 
 	else if (name == "array" || name == "booktabs" || name == "calc" ||
-		     name == "color" || name == "hhline" || name == "ifthen" ||
-		     name == "float" || name == "longtable" || name == "makeidx" ||
-		     name == "multirow" || name == "nomencl" || name == "setspace" ||
-		     name == "splitidx" || name == "subscript" || name == "ulem" ||
-		     name == "url") {
+	         name == "color" || name == "float" || name == "hhline" ||
+	         name == "ifthen" || name == "longtable" || name == "makeidx" ||
+	         name == "multirow" || name == "nomencl" || name == "rotfloat" ||
+	         name == "splitidx" || name == "setspace" || name == "subscript" ||
+	         name == "textcomp" || name == "ulem" || name == "url" ||
+	         name == "varioref" || name == "verbatim" || name == "wrapfig") {
 		if (!in_lyx_preamble)
 			h_preamble << package_beg_sep << name
 			           << package_mid_sep << "\\usepackage{"
-			           << name << '}' << package_end_sep;
+			           << name << "}\n" << package_end_sep;
 	}
 
 	else if (name == "graphicx")
@@ -749,12 +741,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	else if (name == "geometry")
 		handle_geometry(options);
-
-	else if (name == "rotfloat")
-		; // ignore this FIXME: Use the package separator mechanism instead
-
-	else if (name == "wrapfig")
-		; // ignore this FIXME: Use the package separator mechanism instead
 
 	else if (name == "subfig")
 		; // ignore this FIXME: Use the package separator mechanism instead

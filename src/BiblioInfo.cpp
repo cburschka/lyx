@@ -175,8 +175,8 @@ docstring convertLaTeXCommands(docstring const & str)
 			val.insert(2, from_ascii("{"));
 		}
 		docstring rem;
-		docstring const cnvtd = Encodings::fromLaTeXCommand(val, rem,
-							Encodings::TEXT_CMD);
+		docstring const cnvtd = Encodings::fromLaTeXCommand(val,
+				Encodings::TEXT_CMD, rem);
 		if (!cnvtd.empty()) {
 			// it did, so we'll take that bit and proceed with what's left
 			ret += cnvtd;

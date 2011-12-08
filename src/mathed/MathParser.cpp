@@ -1821,7 +1821,8 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			}
 			docstring rem;
 			do {
-				cmd = Encodings::fromLaTeXCommand(cmd, rem);
+				cmd = Encodings::fromLaTeXCommand(cmd,
+					Encodings::MATH_CMD | Encodings::TEXT_CMD, rem);
 				for (size_t i = 0; i < cmd.size(); ++i)
 					cell->push_back(MathAtom(new InsetMathChar(cmd[i])));
 				if (rem.size()) {
@@ -1913,8 +1914,9 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 						}
 					}
 					bool is_combining;
-					char_type c =
-						Encodings::fromLaTeXCommand(cmd, is_combining);
+					char_type c = Encodings::fromLaTeXCommand(cmd,
+						Encodings::MATH_CMD | Encodings::TEXT_CMD,
+						is_combining);
 					if (is_combining) {
 						if (cat == catLetter)
 							cmd += '{';
@@ -1922,7 +1924,9 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 						++num_tokens;
 						if (cat == catLetter)
 							cmd += '}';
-						c = Encodings::fromLaTeXCommand(cmd, is_combining);
+						c = Encodings::fromLaTeXCommand(cmd,
+							Encodings::MATH_CMD | Encodings::TEXT_CMD,
+							is_combining);
 					}
 					if (c) {
 						is_unicode_symbol = true;

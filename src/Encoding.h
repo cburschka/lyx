@@ -232,7 +232,8 @@ public:
 	 * Convert the LaTeX command in \p cmd to the corresponding unicode
 	 * point and set \p combining to true if it is a combining symbol
 	 */
-	static char_type fromLaTeXCommand(docstring const & cmd, bool & combining);
+	static char_type fromLaTeXCommand(docstring const & cmd, int cmdtype,
+			bool & combining, std::set<std::string> * req = 0);
 	///
 	enum LatexCmd {
 		///
@@ -248,8 +249,8 @@ public:
 	 * The \p cmdtype parameter can be used to limit recognized
 	 * commands to math or text mode commands only.
 	 */
-	static docstring fromLaTeXCommand(docstring const & cmd,
-			docstring & rem, int cmdtype = MATH_CMD | TEXT_CMD);
+	static docstring fromLaTeXCommand(docstring const & cmd, int cmdtype,
+			docstring & rem, std::set<std::string> * req = 0);
 	/**
 	 * Add the preamble snippet needed for the output of \p c to
 	 * \p features.

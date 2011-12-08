@@ -420,15 +420,26 @@ bool Encodings::latexMathChar(char_type c, bool mathmode,
 }
 
 
-char_type Encodings::fromLaTeXCommand(docstring const & cmd, bool & combining)
+char_type Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
+		bool & combining, set<string> * req)
 {
 	CharInfoMap::const_iterator const end = unicodesymbols.end();
 	CharInfoMap::const_iterator it = unicodesymbols.begin();
 	for (combining = false; it != end; ++it) {
 		docstring const math = it->second.mathcommand;
 		docstring const text = it->second.textcommand;
-		if (math == cmd || text == cmd) {
+		if ((cmdtype && MATH_CMD) && math == cmd) {
 			combining = it->second.combining;
+			if (req && it->second.mathfeature &&
+			    !it->second.mathpreamble.empty())
+				req->insert(it->second.mathpreamble);
+			return it->first;
+		}
+		if ((cmdtype & TEXT_CMD) && text == cmd) {
+			combining = it->second.combining;
+			if (req && it->second.textfeature &&
+			    !it->second.textpreamble.empty())
+				req->insert(it->second.textpreamble);
 			return it->first;
 		}
 	}
@@ -436,8 +447,8 @@ char_type Encodings::fromLaTeXCommand(docstring const & cmd, bool & combining)
 }
 
 
-docstring Encodings::fromLaTeXCommand(docstring const & cmd, docstring & rem,
-				      int cmdtype)
+docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
+		docstring & rem, set<string> * req)
 {
 	bool const mathmode = cmdtype & MATH_CMD;
 	bool const textmode = cmdtype & TEXT_CMD;
@@ -521,6 +532,14 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, docstring & rem,
 				j = k - 1;
 				i = j + 1;
 				unicmd_size = cur_size;
+				if (req) {
+					if (math == tmp && it->second.mathfeature &&
+					    !it->second.mathpreamble.empty())
+						req->insert(it->second.mathpreamble);
+					if (text == tmp && it->second.textfeature &&
+					    !it->second.textpreamble.empty())
+						req->insert(it->second.textpreamble);
+				}
 			}
 		}
 		if (unicmd_size)

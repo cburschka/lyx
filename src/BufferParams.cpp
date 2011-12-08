@@ -1006,7 +1006,7 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\paperorientation " << string_orientation[orientation]
 	   << "\n\\suppress_date " << convert<string>(suppress_date)
 	   << "\n\\justification " << convert<string>(justification)
-		 << "\n\\use_refstyle " << use_refstyle
+	   << "\n\\use_refstyle " << use_refstyle
 	   << '\n';
 	if (isbackgroundcolor == true)
 		os << "\\backgroundcolor " << lyx::X11hexname(backgroundcolor) << '\n';

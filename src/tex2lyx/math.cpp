@@ -12,6 +12,7 @@
 
 #include <config.h>
 
+#include "Preamble.h"
 #include "tex2lyx.h"
 
 #include <iostream>
@@ -229,6 +230,11 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 			cerr << "Warning: Converting TeX '\\cr' to LaTeX '\\\\'."
 			     << endl;
 			os << "\\\\";
+		}
+
+		else if (t.cs() == "vref" || t.cs() == "vpageref") {
+			os << t.asInput();
+			preamble.registerAutomaticallyLoadedPackage("varioref");
 		}
 
 		else
