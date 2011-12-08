@@ -819,7 +819,7 @@ tbond              cmsy        180 186 mathord  x
 # Note that we do _not_ require the wasysym package for any integral besides
 # \varint and \varoint. The reason is that the integrals of the wasysym
 # package do not match the standard \int and \intop. See
-# http://bugzilla.lyx.org/show_bug.cgi?id=1942 for details.
+# http://www.lyx.org/trac/ticket/1942 for details.
 # If the wasysym integrals are really wanted then one has to load the package
 # manually and disable automatic loading of amsmath and esint.
 iffont esint
