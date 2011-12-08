@@ -913,6 +913,14 @@ contributers = [
                  "11 March 2005",
                  u"Gtk reference insertion dialog"),
 
+     contributer(u"Timo Kluck",
+                 "tkluck () gmail ! com",
+                 "GPL",
+                 "license statement",
+                 "m=132334049317495",
+                 "8 December 2011",
+                 u"Dutch translation, icon fixes"),
+
      contributer(u"Kostantino",
                  "ciclope10 () alice ! it",
                  "GPL",
