@@ -51,7 +51,7 @@ void RenderButton::metrics(MetricsInfo &, Dimension & dim) const
 	else
 		fm.rectText(text_, dim.wid, dim.asc, dim.des);
 
-	dim.wid += 4;
+	dim.wid += 2;
 	dim_ = dim;
 }
 
@@ -64,9 +64,9 @@ void RenderButton::draw(PainterInfo & pi, int x, int y) const
 	font.decSize();
 
 	if (editable_) {
-		pi.pain.buttonText(x + 2, y, text_, font, renderState());
+		pi.pain.buttonText(x + 1, y, text_, font, renderState());
 	} else {
-		pi.pain.rectText(x + 2, y, text_, font,
+		pi.pain.rectText(x + 1, y, text_, font,
 				 Color_commandbg, Color_commandframe);
 	}
 }
