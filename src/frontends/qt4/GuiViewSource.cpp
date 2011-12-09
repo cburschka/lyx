@@ -58,7 +58,7 @@ ViewSourceWidget::ViewSourceWidget()
 	connect(updatePB, SIGNAL(clicked()),
 		this, SLOT(updateView()));
 	connect(outputFormatCO, SIGNAL(activated(int)),
-		this, SLOT(updateView()));
+		this, SLOT(setViewFormat()));
 
 	// setting a document at this point trigger an assertion in Qt
 	// so we disable the signals here:
@@ -136,6 +136,13 @@ void ViewSourceWidget::contentsChanged()
 }
 
 
+void ViewSourceWidget::setViewFormat()
+{
+	view_format_ = outputFormatCO->itemData(
+	      outputFormatCO->currentIndex()).toString();
+	updateView();
+}
+
 void ViewSourceWidget::updateView()
 {
 	if (!bv_) {
@@ -146,8 +153,7 @@ void ViewSourceWidget::updateView()
 
 	setEnabled(true);
 
-	string const format = fromqstr(outputFormatCO->itemData(
-		outputFormatCO->currentIndex()).toString());
+	string const format = fromqstr(view_format_);
 
 	QString content;
 	Buffer::OutputWhat output = Buffer::CurrentParagraph;
@@ -190,13 +196,20 @@ void ViewSourceWidget::updateDefaultFormat()
 	outputFormatCO->clear();
 	outputFormatCO->addItem(qt_("Default"),
 				QVariant(QString("default")));
+
+	int index = 0;
 	typedef vector<Format const *> Formats;
 	Formats formats = bv_->buffer().params().exportableFormats(true);
 	Formats::const_iterator cit = formats.begin();
 	Formats::const_iterator end = formats.end();
-	for (; cit != end; ++cit)
+	for (; cit != end; ++cit) {
+		QString const fname = toqstr((*cit)->name());
 		outputFormatCO->addItem(qt_((*cit)->prettyname()),
-				QVariant(toqstr((*cit)->name())));
+				QVariant(fname));
+		if (fname == view_format_)
+		    index = outputFormatCO->count() -1;
+	}
+	outputFormatCO->setCurrentIndex(index);
 	outputFormatCO->blockSignals(false);
 }
 

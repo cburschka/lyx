@@ -42,8 +42,10 @@ public:
 	void setBufferView(BufferView const * bv);
 
 public Q_SLOTS:
-	// update content
+	/// update content
 	void updateView();
+	///
+	void setViewFormat();
 	///
 	void updateDefaultFormat();
 	///
@@ -58,6 +60,8 @@ private:
 	LaTeXHighlighter * highlighter_;
 	///
 	bool force_getcontent_;
+	///
+	QString view_format_;
 };
 
 
