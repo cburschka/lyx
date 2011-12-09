@@ -543,6 +543,7 @@ def checkFormatEntries(dtl_tools):
 \Format docbook    sgml    DocBook                B  ""	"%%"	"document,menu=export"
 \Format docbook-xml xml   "DocBook (XML)"         "" ""	"%%"	"document,menu=export"
 \Format dot        dot    "Graphviz Dot"          "" ""	"%%"	"vector"
+\Format dviluatex  tex    "LaTeX (dviluatex)"     "" "" "%%"  "document,menu=export"
 \Format platex     tex    "LaTeX (pLaTeX)"        "" "" "%%"    "document,menu=export"
 \Format literate   nw      NoWeb                  N  ""	"%%"	"document,menu=export"
 \Format sweave     Rnw    "Sweave"                S  "" "%%"    "document,menu=export"
