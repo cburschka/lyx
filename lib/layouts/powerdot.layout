@@ -50,13 +50,12 @@ Style Title
   ParSep        1
   Align         Center
   LabelType     No_Label
-
   Font
     Series      Bold
     Size        Largest
     Color       Blue
   EndFont
-	HTMLTitle             true
+  HTMLTitle     true
 End
 
 ###
@@ -74,7 +73,6 @@ Style Author
   ParSep        0.7
   Align         Center
   LabelType     No_Label
-
   Font
     Size        Large
     Color       Blue
@@ -96,7 +94,6 @@ Style Date
   ParSep        1
   Align         Center
   LabelType     No_Label
-
   Font
     Size        Large
     Color       Blue
@@ -108,12 +105,12 @@ End
 ###
 Style Standard
   Margin        Static
-  LatexType         Paragraph
-  LatexName         dummy
+  LatexType     Paragraph
+  LatexName     dummy
   ParSkip       0.4
   Align         Block
-  AlignPossible     Block, Left, Right, Center
-  LabelType         No_Label
+  AlignPossible Block, Left, Right, Center
+  LabelType     No_Label
 End
 
 ###
@@ -131,10 +128,9 @@ Style Slide
   ParSep        0.7
   Align         Center
   LabelType     Counter
-  LabelCounter subsection
-  LabelString       "    "
-  OptionalArgs      1
-
+  LabelCounter  subsection
+  LabelString   "    "
+  OptionalArgs  1
   Font
     Series      Bold
     Size        Large
@@ -172,7 +168,6 @@ End
 Style WideSlide
   CopyStyle     Slide
   LatexName     lyxend\lyxwideslide
-
   Font
     Color       Green
   EndFont
@@ -184,11 +179,10 @@ End
 Style EmptySlide
   CopyStyle     Slide
   LatexName     lyxend\lyxemptyslide
-  LeftMargin        MMMMMMMMMMMMMM
-  LabelString       "Empty slide:"
-  LabelType         Static
+  LeftMargin    MMMMMMMMMMMMMM
+  LabelString   "Empty slide:"
+  LabelType     Static
   KeepEmpty     1
-
   Font
     Color       Cyan
   EndFont
@@ -207,12 +201,12 @@ Style Note
   BottomSep     0.7
   ParSep        0.7
   Align         Center
-  AlignPossible     Center
-  LabelType         Static
-  LabelString       "Note:"
-  LeftMargin        MMMMMMM
+  AlignPossible Center
+  LabelType     Static
+  LabelString   "Note:"
+  LeftMargin    MMMMMMM
   KeepEmpty     1
-  OptionalArgs      0
+  OptionalArgs  0
   Font
     Series      Bold
     Size        Large
@@ -228,9 +222,8 @@ Style Section
   TocLevel      1
   LatexName     lyxend\section
   LabelType     Counter
-  LabelCounter section
-  LabelString       "\arabic{section}"
-
+  LabelCounter  section
+  LabelString   "\arabic{section}"
   Font
     Size        Larger
     Color       Blue
@@ -245,22 +238,21 @@ Style Itemize
   Margin        Static
   LatexType     Item_Environment
   LatexName     itemize
-  NextNoIndent      1
-  LeftMargin        MMN
+  NextNoIndent  1
+  LeftMargin    MMN
   LabelSep      xx
   ItemSep       0.2
   TopSep        0.7
   BottomSep     0.7
   ParSep        0.3
   Align         Block
-  AlignPossible     Block, Left
+  AlignPossible Block, Left
   LabelType     Itemize
-  LabelString       *
 End
 
 Style ItemizeType1
   CopyStyle     Itemize
-  LatexParam        [type=1]
+  LatexParam    [type=1]
 End
 
 ###
@@ -286,7 +278,7 @@ End
 
 Style EnumerateType1
   CopyStyle     Enumerate
-  LatexParam        [type=1]
+  LatexParam    [type=1]
 End
 
 ###
@@ -296,18 +288,18 @@ Style Bibliography
   Margin        First_Dynamic
   LatexType     Bib_Environment
   LatexName     thebibliography
-  NextNoIndent      1
-  LeftMargin        MM
+  NextNoIndent  1
+  LeftMargin    MM
   ParSkip       0.4
   ItemSep       0
   TopSep        0.7
   BottomSep     0.7
   ParSep        0.5
   Align         Block
-  AlignPossible     Block, Left
+  AlignPossible Block, Left
   LabelType     Bibliography
-  LabelString       ""
-  LabelBottomSep    0
+  LabelString   ""
+  LabelBottomSep 0
 End
 
 ###
@@ -317,9 +309,9 @@ Style Quotation
   Margin        Static
   LatexType     Environment
   LatexName     quotation
-  NextNoIndent      1
-  LeftMargin        MMM
-  RightMargin       MMM
+  NextNoIndent  1
+  LeftMargin    MMM
+  RightMargin   MMM
   ParIndent     MM
   ParSkip       0
   ItemSep       0
@@ -327,7 +319,7 @@ Style Quotation
   BottomSep     0.5
   ParSep        0
   Align         Block
-  AlignPossible     Block, Left, Right, Center
+  AlignPossible Block, Left, Right, Center
 End
 
 ###
@@ -337,14 +329,14 @@ Style Quote
   Margin        Static
   LatexType     Environment
   LatexName     quote
-  NextNoIndent      1
-  LeftMargin        MMM
-  RightMargin       MMM
+  NextNoIndent  1
+  LeftMargin    MMM
+  RightMargin   MMM
   TopSep        0.5
   ParSep        0.5
   BottomSep     0.5
   Align         Block
-  AlignPossible     Block, Left, Right, Center
+  AlignPossible Block, Left, Right, Center
   LabelType     No_Label
 End
 
@@ -357,15 +349,15 @@ Style Verse
   LatexType     Environment
   LatexName     verse
   Margin        First_Dynamic
-  NextNoIndent      1
-  LeftMargin        MMMM
-  LabelIndent       MMMM
+  NextNoIndent  1
+  LeftMargin    MMMM
+  LabelIndent   MMMM
   ParSkip       0.4
   TopSep        0.7
   BottomSep     0.7
   ParSep        0.5
   Align         Block
-  AlignPossible     Block, Left
+  AlignPossible Block, Left
   LabelType     No_Label
 End
 
