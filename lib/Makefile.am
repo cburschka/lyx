@@ -1528,14 +1528,14 @@ dist_templates_DATA = \
 	templates/ACM-siggraph.lyx \
 	templates/ACM-sigplan.lyx \
 	templates/AEA.lyx \
-	templates/agutex.lyx \
-	templates/agu_article.lyx \
-	templates/apa.lyx \
+	templates/AGUTeX.lyx \
+	templates/AGU_article.lyx \
+	templates/APA.lyx \
 	templates/beamer-conference-ornate-20min.lyx \
 	templates/ctex.lyx \
 	templates/de_beamer-conference-ornate-20min.lyx \
 	templates/dinbrief.lyx \
-	templates/docbook_article.lyx \
+	templates/DocBook_article.lyx \
 	templates/ectaart.lyx \
 	templates/elsarticle.lyx \
 	templates/es_beamer-conference-ornate-20min.lyx \
@@ -1546,9 +1546,9 @@ dist_templates_DATA = \
 	templates/g-brief-en.lyx \
 	templates/hollywood.lyx \
 	templates/IEEEtran.lyx \
-	templates/ijmpc.lyx \
-	templates/ijmpd.lyx \
-	templates/iop-article.lyx \
+	templates/IJMPC.lyx \
+	templates/IJMPD.lyx \
+	templates/IOP-article.lyx \
 	templates/JSS-article.lyx \
 	templates/kluwer.lyx \
 	templates/koma-letter2.lyx \
