@@ -13,6 +13,7 @@ TocDepth                -1
 Input stdcounters.inc
 Input stdinsets.inc
 
+
 Style Standard
 	Margin                Static
 	LatexType             Paragraph
@@ -69,7 +70,6 @@ Style Topic
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Manual
-	LabelString           "MMMMM"
 	LabelFont
 	  Family              Sans
 	  Shape               Slanted
@@ -91,7 +91,9 @@ Style Itemize
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Itemize
-	LabelString           "*"
+	HTMLTag               ul
+	HTMLItem              li
+	HTMLLabel             NONE
 End
 
 
@@ -145,7 +147,6 @@ Style Bibliography
 	LatexName             thebibliography
 	LatexType             Bib_Environment
 	LabelType             Bibliography
-	LabelString           ""
 	LabelBottomSep        0.7
 	LabelFont
 	  Size                Tiny
