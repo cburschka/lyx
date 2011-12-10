@@ -25,7 +25,6 @@ Style Itemize
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Itemize
-	LabelString           "*"
 	HTMLTag               ul
 	HTMLItem              li
 	HTMLLabel             NONE
@@ -71,7 +70,6 @@ Style Description
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Manual
-	LabelString           "MM"
 	LabelFont
 	  Series              Bold
 	EndFont
