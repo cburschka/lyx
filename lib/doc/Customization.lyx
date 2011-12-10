@@ -1,5 +1,5 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 417
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass scrbook
@@ -103,7 +103,6 @@ End
 \use_esint 0
 \use_mhchem 0
 \use_mathdots 1
-\use_undertilde 1
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
@@ -11477,16 +11476,8 @@ LabelWidthString
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-Edit
-\bar default
-\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-aragraph
+Edit\SpecialChar \menuseparator
+Paragraph
 \begin_inset space ~
 \end_inset
 
