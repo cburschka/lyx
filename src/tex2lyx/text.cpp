@@ -2352,9 +2352,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 						// The file extension is in every case ".tex".
 						// So we need to remove this extension and check for
 						// the original one.
-						name.erase(name.length() - 4, name.length());
+						name = removeExtension(name);
+						//name.erase(name.length() - 4, name.length());
 						if (!makeAbsPath(name, path).exists()) {
-							char const * const Gnumeric_formats[] = {"gnumeric"
+							char const * const Gnumeric_formats[] = {"gnumeric",
 								"ods", "xls", 0};
 							string const Gnumeric_name =
 								find_file(name, path, Gnumeric_formats);
