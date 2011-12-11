@@ -259,6 +259,7 @@ dist_examples_DATA = \
 	examples/localization_test.lyx \
 	examples/longsheet.gnumeric \
 	examples/modernCV.lyx \
+	examples/MultilingualCaptions.lyx \
 	examples/noweb2lyx.lyx \
 	examples/powerdot-example.lyx \
 	examples/recipebook.lyx \
@@ -1325,6 +1326,7 @@ dist_layouts_DATA =\
 	layouts/article.layout \
 	layouts/article-beamer.layout \
 	layouts/beamer.layout \
+	layouts/bicaption.module \
 	layouts/book.layout \
 	layouts/braille.module \
 	layouts/broadway.layout \
