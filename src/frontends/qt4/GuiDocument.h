@@ -105,6 +105,7 @@ private Q_SLOTS:
 	void browseMaster();
 	void classChanged();
 	void languagePackageChanged(int);
+	void biblioChanged();
 	void bibtexChanged(int);
 	void updateModuleInfo();
 	void modulesChanged();

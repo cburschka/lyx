@@ -1106,21 +1106,21 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(biblioModule->citeNatbibRB, SIGNAL(toggled(bool)),
 		biblioModule->citeStyleCO, SLOT(setEnabled(bool)));
 	connect(biblioModule->citeDefaultRB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
+		this, SLOT(biblioChanged()));
 	connect(biblioModule->citeNatbibRB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
+		this, SLOT(biblioChanged()));
 	connect(biblioModule->citeStyleCO, SIGNAL(activated(int)),
-		this, SLOT(change_adaptor()));
+		this, SLOT(biblioChanged()));
 	connect(biblioModule->citeJurabibRB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
+		this, SLOT(biblioChanged()));
 	connect(biblioModule->bibtopicCB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
+		this, SLOT(biblioChanged()));
 	connect(biblioModule->bibtexCO, SIGNAL(activated(int)),
 		this, SLOT(bibtexChanged(int)));
 	connect(biblioModule->bibtexOptionsLE, SIGNAL(textChanged(QString)),
-		this, SLOT(change_adaptor()));
+		this, SLOT(biblioChanged()));
 	connect(biblioModule->bibtexStyleLE, SIGNAL(textChanged(QString)),
-		this, SLOT(change_adaptor()));
+		this, SLOT(biblioChanged()));
 
 	biblioModule->bibtexOptionsLE->setValidator(new NoNewLineValidator(
 		biblioModule->bibtexOptionsLE));
@@ -1988,11 +1988,19 @@ void GuiDocument::languagePackageChanged(int i)
 }
 
 
+void GuiDocument::biblioChanged()
+{
+	buffer().invalidateBibinfoCache();
+	buffer().removeBiblioTempFiles();
+	changed();
+}
+
+
 void GuiDocument::bibtexChanged(int n)
 {
 	biblioModule->bibtexOptionsLE->setEnabled(
 		biblioModule->bibtexCO->itemData(n).toString() != "default");
-	changed();
+	biblioChanged();
 }
 
 
@@ -2255,8 +2263,6 @@ void GuiDocument::applyView()
 		bp_.bibtex_command = bibtex_command;
 	else
 		bp_.bibtex_command = bibtex_command + " " + bibtex_options;
-
-	buffer().removeBiblioTempFiles();
 
 	// Indices
 	indicesModule->apply(bp_);
