@@ -1119,9 +1119,13 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(bibtexChanged(int)));
 	connect(biblioModule->bibtexOptionsLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
+	connect(biblioModule->bibtexStyleLE, SIGNAL(textChanged(QString)),
+		this, SLOT(change_adaptor()));
 
 	biblioModule->bibtexOptionsLE->setValidator(new NoNewLineValidator(
 		biblioModule->bibtexOptionsLE));
+	biblioModule->bibtexStyleLE->setValidator(new NoNewLineValidator(
+		biblioModule->bibtexStyleLE));
 
 	biblioModule->citeStyleCO->addItem(qt_("Author-year"));
 	biblioModule->citeStyleCO->addItem(qt_("Numerical"));
@@ -2240,6 +2244,8 @@ void GuiDocument::applyView()
 	bp_.use_bibtopic =
 		biblioModule->bibtopicCB->isChecked();
 
+	bp_.biblio_style = fromqstr(biblioModule->bibtexStyleLE->text());
+
 	string const bibtex_command =
 		fromqstr(biblioModule->bibtexCO->itemData(
 			biblioModule->bibtexCO->currentIndex()).toString());
@@ -2670,6 +2676,8 @@ void GuiDocument::paramsToDialog()
 
 	biblioModule->bibtopicCB->setChecked(
 		bp_.use_bibtopic);
+
+	biblioModule->bibtexStyleLE->setText(toqstr(bp_.biblio_style));
 
 	string command;
 	string options =

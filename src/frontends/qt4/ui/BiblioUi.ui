@@ -105,13 +105,46 @@
     </widget>
    </item>
    <item row="1" column="0" >
-    <widget class="QCheckBox" name="bibtopicCB" >
-     <property name="toolTip" >
-      <string>Select this if you want to split your bibliography into sections</string>
+    <widget class="QGroupBox" name="BiblioStyleBG" >
+     <property name="title" >
+      <string>Bibliography Style</string>
      </property>
-     <property name="text" >
-      <string>S&amp;ectioned bibliography</string>
+     <property name="flat" >
+      <bool>true</bool>
      </property>
+     <layout class="QGridLayout" name="gridLayout_1" >
+      <item row="0" column="0" >
+       <layout class="QHBoxLayout" name="horizontalLayout_1" >
+        <item>
+         <widget class="QLabel" name="bibtexStyleLA" >
+          <property name="text" >
+           <string>Default st&amp;yle:</string>
+          </property>
+          <property name="buddy" >
+           <cstring>bibtexStyleLE</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="bibtexStyleLE" >
+          <property name="toolTip" >
+           <string>Define the default BibTeX style</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QCheckBox" name="bibtopicCB" >
+        <property name="toolTip" >
+         <string>Select this if you want to split your bibliography into sections</string>
+        </property>
+        <property name="text" >
+         <string>S&amp;ectioned bibliography</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
    <item row="2" column="0" >
