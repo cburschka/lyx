@@ -249,6 +249,8 @@ private:
 	std::map<docstring, docstring> changedBranches_;
 	///
 	std::list<std::string> includeonlys_;
+	///
+	bool biblioChanged_;
 };
 
 

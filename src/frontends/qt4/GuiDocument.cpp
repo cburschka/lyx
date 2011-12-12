@@ -1990,8 +1990,7 @@ void GuiDocument::languagePackageChanged(int i)
 
 void GuiDocument::biblioChanged()
 {
-	buffer().invalidateBibinfoCache();
-	buffer().removeBiblioTempFiles();
+	biblioChanged_ = true;
 	changed();
 }
 
@@ -2263,6 +2262,11 @@ void GuiDocument::applyView()
 		bp_.bibtex_command = bibtex_command;
 	else
 		bp_.bibtex_command = bibtex_command + " " + bibtex_options;
+
+	if (biblioChanged_) {
+		buffer().invalidateBibinfoCache();
+		buffer().removeBiblioTempFiles();
+	}
 
 	// Indices
 	indicesModule->apply(bp_);
