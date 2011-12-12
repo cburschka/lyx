@@ -367,6 +367,7 @@ BufferParams::BufferParams()
 	use_mathdots = package_auto;
 	use_undertilde = package_auto;
 	cite_engine_ = ENGINE_BASIC;
+	biblio_style = "plain";
 	use_bibtopic = false;
 	use_indices = false;
 	trackChanges = false;
@@ -698,6 +699,9 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		string engine;
 		lex >> engine;
 		cite_engine_ = citeenginetranslator().find(engine);
+	} else if (token == "\\biblio_style") {
+		lex.eatLine();
+		biblio_style = lex.getString();
 	} else if (token == "\\use_bibtopic") {
 		lex >> use_bibtopic;
 	} else if (token == "\\use_indices") {
@@ -1001,6 +1005,7 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\use_mathdots " << use_mathdots
 	   << "\n\\use_undertilde " << use_undertilde
 	   << "\n\\cite_engine " << citeenginetranslator().find(cite_engine_)
+	   << "\n\\biblio_style " << biblio_style
 	   << "\n\\use_bibtopic " << convert<string>(use_bibtopic)
 	   << "\n\\use_indices " << convert<string>(use_indices)
 	   << "\n\\paperorientation " << string_orientation[orientation]

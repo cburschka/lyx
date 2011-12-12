@@ -25,8 +25,8 @@ import sys, os
 
 # Uncomment only what you need to import, please.
 
-from parser_tools import find_token, find_end_of_inset, get_value, \
-   del_token
+from parser_tools import del_token, find_token, find_end_of_inset, get_value, \
+    get_quoted_value
 
 #from parser_tools import find_token, find_end_of, find_tokens, \
   #find_token_exact, find_end_of_inset, find_end_of_layout, \
@@ -222,6 +222,45 @@ def revert_australian(document):
         j += 1
     
 
+def convert_biblio_style(document):
+    "Add a sensible default for \\biblio_style based on the citation engine."
+    i = find_token(document.header, "\\cite_engine", 0)
+    if i != -1:
+        engine = get_value(document.header, "\\cite_engine", i).split("_")[0]
+        style = {"basic": "plain", "natbib": "plainnat", "jurabib": "jurabib"}
+        document.header.insert(i + 1, "\\biblio_style " + style[engine])
+
+
+def revert_biblio_style(document):
+    "BibTeX insets with default option use the style defined by \\biblio_style."
+    i = find_token(document.header, "\\biblio_style" , 0)
+    if i == -1:
+        document.warning("No \\biblio_style line. Nothing to do.")
+        return
+
+    default_style = get_value(document.header, "\\biblio_style", i)
+    del document.header[i]
+
+    # We are looking for bibtex insets having the default option
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset CommandInset bibtex", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of bibtex inset at line " + str(i))
+            i += 1
+            return
+        k = find_token(document.body, "options", i, j)
+        if k != -1:
+            options = get_quoted_value(document.body, "options", k)
+            if "default" in options.split(","):
+                document.body[k] = 'options "%s"' \
+                    % options.replace("default", default_style)
+        i = j
+
+
 ##
 # Conversion hub
 #
@@ -233,10 +272,12 @@ convert = [
            [416, []],
            [417, [convert_japanese_encodings]],
            [418, []],
-           [419, []]
+           [419, []],
+           [420, [convert_biblio_style]],
           ]
 
 revert =  [
+           [419, [revert_biblio_style]],
            [418, [revert_australian]],
            [417, [revert_justification]],
            [416, [revert_japanese_encodings]],

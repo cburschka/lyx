@@ -413,6 +413,9 @@ public:
 	///
 	void setCiteEngine(CiteEngine const);
 
+	/// the default BibTeX style file for the document
+	std::string biblio_style;
+
 	/// options for pdf output
 	PDFOptions & pdfoptions();
 	PDFOptions const & pdfoptions() const;

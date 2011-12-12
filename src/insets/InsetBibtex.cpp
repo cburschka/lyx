@@ -336,6 +336,9 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 			style = split(style, bibtotoc, ',');
 	}
 
+	if (style == "default")
+		style = buffer().params().biblio_style;
+
 	if (!style.empty()) {
 		string base = normalizeName(buffer(), runparams, style, ".bst");
 		FileName const try_in_file =
