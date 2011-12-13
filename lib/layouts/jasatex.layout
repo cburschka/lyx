@@ -53,7 +53,6 @@ NoStyle Chapter
 NoCounter chapter
 NoStyle Chapter*
 
-Provides natbib 1
 
 Style Title
 	Margin			Static
@@ -230,6 +229,28 @@ Style Acknowledgments
 	LabelFont
 	  Series		Bold
 	  Size			Normal
+	EndFont
+End
+
+
+InsetLayout "Flex:Online citation"
+	LyxType			custom
+	LatexType		command
+	LatexName		onlinecite
+	LabelString		"Online citation"
+	Font
+	  Color			foreground
+	  Size			Small
+	  Family		Roman
+	  Shape			Up
+	  Series		Medium
+	  Misc			No_Emph
+	  Misc			No_Noun
+	  Misc			No_Bar
+	EndFont
+	LabelFont
+	  Color			green
+	  Size			Small
 	EndFont
 End
 
