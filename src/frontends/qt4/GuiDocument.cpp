@@ -2707,6 +2707,8 @@ void GuiDocument::paramsToDialog()
 	biblioModule->bibtexOptionsLE->setEnabled(
 		biblioModule->bibtexCO->currentIndex() != 0);
 
+	biblioChanged_ = false;
+
 	// indices
 	indicesModule->update(bp_);
 
