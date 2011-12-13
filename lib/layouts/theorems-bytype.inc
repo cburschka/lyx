@@ -5,7 +5,7 @@
 # Modularized Jan 08 by Richard Heck <rgheck@comcast.net>
 # Hacked June '09 by Paul Rubin <rubin@msu.edu> to use separate counters
 
-# The environnements defined are :
+# The environments defined are :
 # - Theorem
 # - Corollary
 # - Lemma
@@ -19,7 +19,7 @@
 # - Remark
 # - Claim
 # - Proof
-# - Case (regular only -- defined as an enumeration)
+# - Case (by inclusion)
 
 Format 36
 
@@ -280,39 +280,5 @@ Style Claim
 	LabelCounter          claim
 End
 
-
-# Define Case as an enumeration environment
-Style Case
-	Category              Theorem
-	CopyStyle             Enumerate
-	LatexName             caseenv
-	LabelType             Static
-	LeftMargin            "Case ###."
-	LabelString           "Case #."
-	LabelFont
-	  Series              Medium
-	  Shape               Italic
-	EndFont
-	Preamble
-	  \newcounter{casectr}
-	  \newenvironment{caseenv}
-	  {\begin{list}{{\itshape\ \protect\casename} \arabic{casectr}.}{%
-	   \setlength{\leftmargin}{\labelwidth}
-	   \addtolength{\leftmargin}{\parskip}
-	   \setlength{\itemindent}{\listparindent}
-	   \setlength{\itemsep}{\medskipamount}
-	   \setlength{\topsep}{\itemsep}}
-	   \setcounter{casectr}{0}
-	   \usecounter{casectr}}
-	  {\end{list}}
-	EndPreamble
-	LangPreamble
-		\providecommand{\casename}{_(Case)}
-	EndLangPreamble
-	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\casename}{_(Case)}}
-	EndBabelPreamble
-	RefPrefix OFF
-End
-
+Input theorems-case.inc
 Input theorems-refprefix.inc
