@@ -4,7 +4,7 @@
 # Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
 # Modularized Jan 08 by Richard Heck <rgheck@comcast.net>
 
-# The environnements defined are :
+# The environments defined are :
 # - Theorem
 # - Corollary
 # - Lemma
@@ -17,7 +17,7 @@
 # - Remark
 # - Claim
 # - Proof
-# - Case (regular only -- defined as an enumeration)
+# - Case (by inclusion)
 
 Format 35
 
@@ -270,48 +270,5 @@ Style Claim
 	EndBabelPreamble
 End
 
-
-# Define Case as an enumeration environment
-Style Case
-	Category              Theorem
-	Margin                Static
-	LatexType             Item_Environment
-	LatexName             caseenv
-	LabelType             Static
-	NextNoIndent          1
-	LeftMargin            "Case ###."
-	ParSkip               0.0
-	ItemSep               0.2
-	TopSep                0.7
-	BottomSep             0.7
-	ParSep                0.3
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelSep              xx
-	LabelString           "Case #."
-	LabelFont
-	  Series              Medium
-	  Shape               Italic
-	EndFont
-	Preamble
-	  \newcounter{casectr}
-	  \newenvironment{caseenv}
-	  {\begin{list}{{\itshape\ \protect\casename} \arabic{casectr}.}{%
-	   \setlength{\leftmargin}{\labelwidth}
-	   \addtolength{\leftmargin}{\parskip}
-	   \setlength{\itemindent}{\listparindent}
-	   \setlength{\itemsep}{\medskipamount}
-	   \setlength{\topsep}{\itemsep}}
-	   \setcounter{casectr}{0}
-	   \usecounter{casectr}}
-	  {\end{list}}
-	EndPreamble
-	LangPreamble
-	  \providecommand{\casename}{_(Case)}
-	EndLangPreamble
-	BabelPreamble
-	  \addto\captions$$lang{\renewcommand{\casename}{_(Case)}}
-	EndBabelPreamble
-End
-
+Input theorems-case.inc
 Input theorems-refprefix.inc
