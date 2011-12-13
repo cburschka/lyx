@@ -36,17 +36,20 @@ LINKED_FILES = \
 	../FloatList.cpp \
 	../Floating.cpp \
 	../FontInfo.cpp \
+	../graphics/GraphicsParams.cpp \
+	../insets/ExternalTemplate.cpp \
+	../insets/ExternalTransforms.cpp \
 	../insets/InsetLayout.cpp \
 	../LaTeXPackages.cpp \
 	../Layout.cpp \
 	../LayoutFile.cpp \
 	../LayoutModuleList.cpp \
+	../Length.cpp \
 	../lengthcommon.cpp \
 	../Lexer.cpp \
 	../ModuleList.cpp \
 	../Spacing.cpp \
 	../TextClass.cpp \
-	../TextClass.h \
 	../version.cpp
 
 BUILT_SOURCES = $(PCH_FILE)

@@ -24,6 +24,8 @@
 #include "Length.h"
 #include "Preamble.h"
 
+#include "insets/ExternalTemplate.h"
+
 #include "support/lassert.h"
 #include "support/convert.h"
 #include "support/FileName.h"
@@ -1899,6 +1901,28 @@ void parse_macro(Parser & p, ostream & os, Context & context)
 		handle_ert(os, command + ert, context);
 }
 
+
+void registerExternalTemplatePackages(string const & name)
+{
+	external::TemplateManager const & etm = external::TemplateManager::get();
+	external::Template const * const et = etm.getTemplateByName(name);
+	if (!et)
+		return;
+	external::Template::Formats::const_iterator cit = et->formats.end();
+	if (pdflatex)
+	        cit = et->formats.find("PDFLaTeX");
+	if (cit == et->formats.end())
+		// If the template has not specified a PDFLaTeX output,
+		// we try the LaTeX format.
+		cit = et->formats.find("LaTeX");
+	if (cit == et->formats.end())
+		return;
+	vector<string>::const_iterator qit = cit->second.requirements.begin();
+	vector<string>::const_iterator qend = cit->second.requirements.end();
+	for (; qit != qend; ++qit)
+		preamble.registerAutomaticallyLoadedPackage(*qit);
+}
+
 } // anonymous namespace
 
 
@@ -2375,14 +2399,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 						macro = false;
 						// register the packages that are automatically reloaded
 						// by the Gnumeric template
-						// Fixme: InsetExternal.cpp should give us that list
-						preamble.registerAutomaticallyLoadedPackage("array");
-						preamble.registerAutomaticallyLoadedPackage("calc");
-						preamble.registerAutomaticallyLoadedPackage("color");
-						preamble.registerAutomaticallyLoadedPackage("hhline");
-						preamble.registerAutomaticallyLoadedPackage("ifthen");
-						preamble.registerAutomaticallyLoadedPackage("longtable");
-						preamble.registerAutomaticallyLoadedPackage("multirow");
+						registerExternalTemplatePackages("GnumericSpreadsheet");
 					}
 				}
 			}
@@ -2719,6 +2736,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// Warn about invalid options.
 			// Check whether some option was given twice.
 			end_inset(os);
+			preamble.registerAutomaticallyLoadedPackage("graphicx");
 		}
 
 		else if (t.cs() == "footnote" ||
@@ -3584,6 +3602,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				begin_inset(os, "External\n");
 				os << "\ttemplate XFig\n"
 				   << "\tfilename " << outname << '\n';
+				registerExternalTemplatePackages("XFig");
 			} else {
 				begin_command_inset(os, "include", name);
 				os << "preview false\n"
@@ -4006,6 +4025,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				os << "\tkeepAspectRatio\n";
 			end_inset(os);
 			context.check_layout(os);
+			registerExternalTemplatePackages("PDFPages");
 		}
 
 		else if (t.cs() == "loadgame") {
@@ -4037,6 +4057,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// after a \loadgame follows a \showboard
 			if (p.get_token().asInput() == "showboard")
 				p.get_token();
+			registerExternalTemplatePackages("ChessDiagram");
 		}
 
 		else {

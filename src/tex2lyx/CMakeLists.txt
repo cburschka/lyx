@@ -12,9 +12,10 @@ project(${_tex2lyx})
 set(LINKED_sources ${TOP_SRC_DIR}/src/lengthcommon.cpp)
 set(LINKED_headers)
 
-foreach(_src insets/InsetLayout Author Color Counters
-	Encoding FloatList Floating FontInfo LaTeXPackages
-	Layout LayoutFile LayoutModuleList Lexer ModuleList TextClass
+foreach(_src graphics/GraphicsParams insets/ExternalTemplate
+	insets/ExternalTransforms insets/InsetLayout Author Color Counters
+	Encoding FloatList Floating FontInfo LaTeXPackages Layout
+	LayoutFile LayoutModuleList Length Lexer ModuleList TextClass
 	Spacing version)
 	list(APPEND LINKED_sources ${TOP_SRC_DIR}/src/${_src}.cpp)
 	list(APPEND LINKED_headers ${TOP_SRC_DIR}/src/${_src}.h)

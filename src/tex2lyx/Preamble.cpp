@@ -171,6 +171,12 @@ const char * const known_xetex_packages[] = {"arabxetex", "fixlatvian",
 "fontbook", "fontwrap", "mathspec", "philokalia", "polyglossia", "unisugar",
 "xeCJK", "xecolor", "xecyr", "xeindex", "xepersian", "xunicode", 0};
 
+/// packages that are automatically skipped if loaded by LyX
+const char * const known_lyx_packages[] = {"array", "booktabs", "calc",
+"color", "float", "graphicx", "hhline", "ifthen", "longtable", "makeidx",
+"multirow", "nomencl", "pdfpages", "rotfloat", "splitidx", "setspace",
+"subscript", "textcomp", "ulem", "url", "varioref", "verbatim", "wrapfig", 0};
+
 // codes used to remove packages that are loaded automatically by LyX.
 // Syntax: package_beg_sep<name>package_mid_sep<package loading code>package_end_sep
 const char package_beg_sep = '\001';
@@ -715,30 +721,18 @@ void Preamble::handle_package(Parser &p, string const & name,
 	else if (name == "prettyref")
 		; // ignore this FIXME: Use the package separator mechanism instead
 
-	else if (name == "pdfpages")
-		; // ignore this FIXME: Use the package separator mechanism instead
-
 	else if (name == "lyxskak") {
 		// ignore this and its options
-		if (!options.empty())
-			options.clear();
+		const char * const o[] = {"ps", "mover", 0};
+		delete_opt(options, o);
 	}
 
-	else if (name == "array" || name == "booktabs" || name == "calc" ||
-	         name == "color" || name == "float" || name == "hhline" ||
-	         name == "ifthen" || name == "longtable" || name == "makeidx" ||
-	         name == "multirow" || name == "nomencl" || name == "rotfloat" ||
-	         name == "splitidx" || name == "setspace" || name == "subscript" ||
-	         name == "textcomp" || name == "ulem" || name == "url" ||
-	         name == "varioref" || name == "verbatim" || name == "wrapfig") {
+	else if (is_known(name, known_lyx_packages) && options.empty()) {
 		if (!in_lyx_preamble)
 			h_preamble << package_beg_sep << name
 			           << package_mid_sep << "\\usepackage{"
 			           << name << "}\n" << package_end_sep;
 	}
-
-	else if (name == "graphicx")
-		; // ignore this FIXME: Use the package separator mechanism instead
 
 	else if (name == "geometry")
 		handle_geometry(options);
