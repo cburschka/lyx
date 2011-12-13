@@ -58,22 +58,6 @@ Length::UNIT unitFromString(string const & data)
 
 namespace {
 
-/// used to return numeric values in parsing vspace
-double number[4] = { 0, 0, 0, 0 };
-
-/// used to return unit types in parsing vspace
-Length::UNIT unit[4] = {
-	Length::UNIT_NONE,
-	Length::UNIT_NONE,
-	Length::UNIT_NONE,
-	Length::UNIT_NONE
-};
-
-/// the current position in the number array
-int number_index;
-/// the current position in the unit array
-int unit_index;
-
 /// skip n characters of input
 inline void lyx_advance(string & data, size_t n)
 {
@@ -91,6 +75,8 @@ inline bool isEndOfData(string const & data)
 /**
  * nextToken -  return the next token in the input
  * @param data input string
+ * @param number_index the current position in the number array
+ * @param unit_index the current position in the unit array
  * @return a char representing the type of token returned
  *
  * The possible return values are :
@@ -100,7 +86,8 @@ inline bool isEndOfData(string const & data)
  *	u	a unit type (stored in unit array)
  *	E	parse error
  */
-char nextToken(string & data)
+char nextToken(string & data, double * number, int & number_index,
+               Length::UNIT * unit, int & unit_index)
 {
 	data = ltrim(data);
 
@@ -267,7 +254,13 @@ bool isValidGlueLength(string const & data, GlueLength * result)
 	}
 	// end of hack
 
-	number_index = unit_index = 1;  // entries at index 0 are sentinels
+	// used to return numeric values in parsing vspace
+	double number[4] = { 0, 0, 0, 0 };
+	// used to return unit types in parsing vspace
+	Length::UNIT unit[4] = {Length::UNIT_NONE, Length::UNIT_NONE,
+	                        Length::UNIT_NONE, Length::UNIT_NONE};
+	int number_index = 1; // entries at index 0 are sentinels
+	int unit_index = 1;   // entries at index 0 are sentinels
 
 	// construct "pattern" from "data"
 	size_t const pattern_max_size = 20;
@@ -275,7 +268,8 @@ bool isValidGlueLength(string const & data, GlueLength * result)
 	while (!isEndOfData(buffer)) {
 		if (pattern.size() > pattern_max_size)
 			return false;
-		char const c = nextToken(buffer);
+		char const c = nextToken(buffer, number, number_index, unit,
+				unit_index);
 		if (c == 'E')
 			return false;
 		pattern.push_back(c);
@@ -334,13 +328,20 @@ bool isValidLength(string const & data, Length * result)
 	}
 	// end of hack
 
-	number_index = unit_index = 1;  // entries at index 0 are sentinels
+	// used to return numeric values in parsing vspace
+	double number[4] = { 0, 0, 0, 0 };
+	// used to return unit types in parsing vspace
+	Length::UNIT unit[4] = {Length::UNIT_NONE, Length::UNIT_NONE,
+	                        Length::UNIT_NONE, Length::UNIT_NONE};
+	int number_index = 1; // entries at index 0 are sentinels
+	int unit_index = 1;   // entries at index 0 are sentinels
 
 	// construct "pattern" from "data"
 	while (!isEndOfData(buffer)) {
 		if (pattern_index > 2)
 			return false;
-		pattern[pattern_index] = nextToken(buffer);
+		pattern[pattern_index] = nextToken(buffer, number,
+				number_index, unit, unit_index);
 		if (pattern[pattern_index] == 'E')
 			return false;
 		++pattern_index;
