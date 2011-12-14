@@ -144,7 +144,7 @@ const char * const known_paper_sizes[] = { "a0paper", "b0paper", "c0paper",
 const char * const known_class_paper_sizes[] = { "a4paper", "a5paper",
 "executivepaper", "legalpaper", "letterpaper", 0};
 
-const char * const known_paper_margins[] = { "lmargin", "tmargin", "rmargin", 
+const char * const known_paper_margins[] = { "lmargin", "tmargin", "rmargin",
 "bmargin", "headheight", "headsep", "footskip", "columnsep", 0};
 
 const char * const known_coded_paper_margins[] = { "leftmargin", "topmargin",
@@ -684,7 +684,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 			delete_opt(options, known_languages);
 		}
 		else
-			h_preamble << "\\usepackage{babel}\n";						
+			h_preamble << "\\usepackage{babel}\n";
 	}
 
 	else if (name == "fontenc") {
@@ -768,7 +768,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 		if (options.empty())
 			h_preamble << "\\usepackage{" << name << "}";
 		else {
-			h_preamble << "\\usepackage[" << opts << "]{" 
+			h_preamble << "\\usepackage[" << opts << "]{"
 				   << name << "}";
 			options.clear();
 		}
@@ -1011,7 +1011,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 		     t.cat() == catParameter))
 			h_preamble << t.cs();
 
-		else if (!in_lyx_preamble && 
+		else if (!in_lyx_preamble &&
 			 (t.cat() == catSpace || t.cat() == catNewline))
 			h_preamble << t.asInput();
 
@@ -1024,7 +1024,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			// magically switch encoding default if it looks like XeLaTeX
 			static string const magicXeLaTeX =
 				"% This document must be compiled with XeLaTeX ";
-			if (comment.size() > magicXeLaTeX.size() 
+			if (comment.size() > magicXeLaTeX.size()
 				  && comment.substr(0, magicXeLaTeX.size()) == magicXeLaTeX
 				  && h_inputencoding == "auto") {
 				cerr << "XeLaTeX comment found, switching to UTF8\n";
@@ -1221,7 +1221,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			vector<string>::const_iterator it  = vecnames.begin();
 			vector<string>::const_iterator end = vecnames.end();
 			for (; it != end; ++it)
-				handle_package(p, trimSpaceAndEol(*it), options, 
+				handle_package(p, trimSpaceAndEol(*it), options,
 					       in_lyx_preamble);
 		}
 
