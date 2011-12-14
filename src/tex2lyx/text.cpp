@@ -569,7 +569,7 @@ void skip_spaces_braces(Parser & p, bool keepws = false)
 	   should be handled by this function:
 	   - abc \j{} xyz
 	   - abc \j {} xyz
-	   - abc \j 
+	   - abc \j
 	     {} xyz
 	   - abc \j %comment
 	     {} xyz
@@ -613,7 +613,7 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 	while (optargs < context.layout->optargs) {
 		eat_whitespace(p, os, context, false);
 		if (p.next_token().cat() == catEscape ||
-		    p.next_token().character() != '[') 
+		    p.next_token().character() != '[')
 			break;
 		p.get_token(); // eat '['
 		begin_inset(os, "Argument\n");
@@ -930,7 +930,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			// the inner env
 			if (!inner_type.empty() && (inner_flags & FLAG_END))
 				active_environments.pop_back();
-	
+
 			// Ensure that the end of the outer box is parsed correctly:
 			// The opening brace has been eaten by parse_outer_box()
 			if (!outer_type.empty() && (outer_flags & FLAG_ITEM)) {
@@ -1480,7 +1480,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			while (optargs < context.layout->optargs) {
 				eat_whitespace(p, os, context, false);
 				if (p.next_token().cat() == catEscape ||
-				    p.next_token().character() != '[') 
+				    p.next_token().character() != '[')
 					break;
 				p.get_token(); // eat '['
 				if (need_layout) {
@@ -2978,7 +2978,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 			skip_spaces_braces(p);
 		}
-		
+
 		else if (t.cs() == "lyxline") {
 			// swallow size argument (it is not used anyway)
 			p.getArg('{', '}');
@@ -3200,7 +3200,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 			preamble.registerAutomaticallyLoadedPackage("nomencl");
 		}
-		
+
 		else if (t.cs() == "label") {
 			context.check_layout(os);
 			begin_command_inset(os, "label", "label");
@@ -3347,7 +3347,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "selectlanguage") {
 			context.check_layout(os);
 			// save the language for the case that a
-			// \foreignlanguage is used 
+			// \foreignlanguage is used
 
 			context.font.language = babel2lyx(p.verbatim_item());
 			os << "\n\\lang " << context.font.language << "\n";
@@ -3454,12 +3454,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			handle_ert(os, t.asInput(), context);
 
 		// accents (see Table 6 in Comprehensive LaTeX Symbol List)
-		else if (t.cs().size() == 1 
+		else if (t.cs().size() == 1
 			 && contains("\"'.=^`bcdHkrtuv~", t.cs())) {
 			context.check_layout(os);
 			// try to see whether the string is in unicodesymbols
 			docstring rem;
-			string command = t.asInput() + "{" 
+			string command = t.asInput() + "{"
 				+ trimSpaceAndEol(p.verbatim_item())
 				+ "}";
 			set<string> req;
@@ -3467,7 +3467,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				Encodings::TEXT_CMD | Encodings::MATH_CMD, rem, &req);
 			if (!s.empty()) {
 				if (!rem.empty())
-					cerr << "When parsing " << command 
+					cerr << "When parsing " << command
 					     << ", result is " << to_utf8(s)
 					     << "+" << to_utf8(rem) << endl;
 				os << to_utf8(s);
@@ -4070,7 +4070,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			                                         Encodings::TEXT_CMD, rem, &req);
 			if (!s.empty()) {
 				if (!rem.empty())
-					cerr << "When parsing " << t.cs() 
+					cerr << "When parsing " << t.cs()
 					     << ", result is " << to_utf8(s)
 					     << "+" << to_utf8(rem) << endl;
 				context.check_layout(os);
