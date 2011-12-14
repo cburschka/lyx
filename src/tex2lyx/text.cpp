@@ -1935,7 +1935,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 	// Store the latest bibliographystyle and nocite{*} option
 	// (needed for bibtex inset)
 	string btprint;
-	string bibliographystyle;
+	string bibliographystyle = "default";
 	bool const use_natbib = preamble.isPackageUsed("natbib");
 	bool const use_jurabib = preamble.isPackageUsed("jurabib");
 	string last_env;

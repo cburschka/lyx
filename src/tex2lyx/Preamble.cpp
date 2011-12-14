@@ -399,6 +399,7 @@ Preamble::Preamble() : one_language(true)
 {
 	//h_backgroundcolor;
 	//h_boxbgcolor;
+	h_biblio_style            = "plain";
 	h_cite_engine             = "basic";
 	h_defskip                 = "medskip";
 	//h_float_placement;
@@ -744,6 +745,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 		h_language = name;
 
 	else if (name == "natbib") {
+		h_biblio_style = "plainnat";
 		h_cite_engine = "natbib_authoryear";
 		vector<string>::iterator it =
 			find(options.begin(), options.end(), "authoryear");
@@ -758,8 +760,10 @@ void Preamble::handle_package(Parser &p, string const & name,
 		}
 	}
 
-	else if (name == "jurabib")
+	else if (name == "jurabib") {
+		h_biblio_style = "jurabib";
 		h_cite_engine = "jurabib";
+	}
 
 	else if (name == "hyperref")
 		handle_hyperref(options);
@@ -928,6 +932,7 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 	   << "\\use_mathdots " << h_use_mathdots << "\n"
 	   << "\\use_undertilde " << h_use_undertilde << "\n"
 	   << "\\cite_engine " << h_cite_engine << "\n"
+	   << "\\biblio_style " << h_biblio_style << "\n"
 	   << "\\use_bibtopic " << h_use_bibtopic << "\n"
 	   << "\\use_indices " << h_use_indices << "\n"
 	   << "\\paperorientation " << h_paperorientation << '\n'
@@ -1348,6 +1353,9 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				           << '}';
 			}
 		}
+
+		else if (t.cs() == "bibliographystyle")
+			h_biblio_style = p.verbatim_item();
 
 		else if (t.cs() == "jurabibsetup") {
 			// FIXME p.getArg('{', '}') is most probably wrong (it

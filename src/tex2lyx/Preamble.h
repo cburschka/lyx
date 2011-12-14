@@ -80,6 +80,7 @@ private:
 
 	std::ostringstream h_preamble;
 	std::string h_backgroundcolor;
+	std::string h_biblio_style;
 	std::string h_boxbgcolor;
 	std::string h_cite_engine;
 	std::string h_defskip;
