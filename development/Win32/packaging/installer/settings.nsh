@@ -11,7 +11,7 @@ These typically need to be modified for each LyX release
 
 !define APP_VERSION_MAJOR 2
 !define APP_VERSION_MINOR 0
-!define APP_VERSION_REVISION 1
+!define APP_VERSION_REVISION 2
 !define APP_VERSION_BUILD 1 # Start with 1 for the installer releases of each version
 
 !define APP_VERSION "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_VERSION_REVISION}" # Version to display
@@ -50,7 +50,7 @@ These typically need to be modified for each LyX release
 
 !define JabRefVersion "2.7"
 !define MiKTeXDeliveredVersion "2.9"
-!define ImageMagickVersion "6.7.2"
+!define ImageMagickVersion "6.7.3"
  
 # definitions for the Complete installer
 !if ${SETUPTYPE} == BUNDLE

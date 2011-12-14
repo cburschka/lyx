@@ -131,6 +131,13 @@ Function MissingPrograms
   
   # test if metafile2eps is installed
   ReadRegStr $WMFPath HKLM "Software\Microsoft\Windows NT\CurrentVersion\Print\Printers\Metafile to EPS Converter" "Name"
+  
+  # test if Gnumeric is installed
+  ReadRegStr $0 HKLM "Software\Classes\Applications\gnumeric.exe\shell\Open\command" ""
+  ${if} $0 != ""
+   StrCpy $0 $0 -18 # remove "gnumeric.exe" "%1""
+   StrCpy $GnumericPath $0
+  ${endif}
 
 FunctionEnd
 

@@ -118,6 +118,9 @@ Section -Configure
   ${if} $WMFPath != ""
    StrCpy $PathPrefix "$PathPrefix;$WMFPath"
   ${endif}
+  ${if} $GnumericPath != ""
+   StrCpy $PathPrefix "$PathPrefix;$GnumericPath"
+  ${endif}
   ${if} $PathBibTeXEditor != ""
     StrCpy $PathPrefix "$PathPrefix;$PathBibTeXEditor"
   ${EndIf}

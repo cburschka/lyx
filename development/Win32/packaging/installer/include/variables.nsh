@@ -23,6 +23,7 @@ Var CreateFileAssociations
 Var DelPythonFiles
 Var EditorPath
 Var GhostscriptPath
+Var GnumericPath
 Var ImageEditorPath
 !if ${SETUPTYPE} == BUNDLE
  Var InstallJabRef
