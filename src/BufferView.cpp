@@ -1764,7 +1764,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		FuncRequest const fr = lyxaction.lookupFunc(commandstr);
 
 		// an arbitrary number to limit number of iterations
-		const int max_iter = 10000;
+		const int max_iter = 100000;
 		int iterations = 0;
 		Cursor & cur = d->cursor_;
 		Cursor const savecur = cur;

@@ -2397,7 +2397,7 @@ void LyXAction::init()
                A typical example is
                    inset-forall Note note-insert
                which starts an infinite loop. This is mitigated by the fact
-               that the number of actions is arbitrarily limited to 10000.
+               that the number of actions is arbitrarily limited to 100000.
                Note also that inset-forall does not update metrics between 
                iterations, which can lead to bugs. This has to be eventually
                fixed.
