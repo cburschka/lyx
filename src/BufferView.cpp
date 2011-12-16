@@ -1699,17 +1699,17 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			p = Point(width_, height_);
 		Cursor old = cur;
 		bool const in_texted = cur.inTexted();
-		cur.reset();
+		cur.setCursor(doc_iterator_begin(cur.buffer()));
+		cur.selHandle(false);
 		buffer_.changed(true);
 		updateHoveredInset();
 
 		d->text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_,
 			true, act == LFUN_SCREEN_UP); 
-		cur.resetAnchor();
 		//FIXME: what to do with cur.x_target()?
 		bool update = in_texted && cur.bv().checkDepm(cur, old);
 		cur.finishUndo();
-		if (update) {
+		if (update || cur.selection()) {
 			dr.screenUpdate(Update::Force | Update::FitCursor);
 			dr.forceBufferUpdate();
 		}
