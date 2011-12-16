@@ -1715,10 +1715,11 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		//FIXME: what to do with cur.x_target()?
 		bool update = in_texted && cur.bv().checkDepm(cur, old);
 		cur.finishUndo();
-		if (update || cur.selection()) {
-			dr.screenUpdate(Update::Force | Update::FitCursor);
+
+		if (update || cur.mark())
+			dr.screenUpdate(Update::Force | Update::FitCursor);	
+		if (update)
 			dr.forceBufferUpdate();
-		}
 		break;
 	}
 
@@ -1748,6 +1749,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_SCREEN_UP_SELECT: {
+		// FIXME: why is the algorithm different from LFUN_SCREEN_UP?
 		cur.selHandle(true);
 		if (isTopScreen()) {
 			lyx::dispatch(FuncRequest(LFUN_BUFFER_BEGIN_SELECT));
@@ -1765,6 +1767,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_SCREEN_DOWN_SELECT: {
+		// FIXME: why is the algorithm different from LFUN_SCREEN_DOWN?
 		cur.selHandle(true);
 		if (isBottomScreen()) {
 			lyx::dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
