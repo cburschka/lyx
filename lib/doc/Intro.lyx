@@ -151,16 +151,16 @@ What is LyX?
 LyX is a document preparation system.
  It excels at letting you create complex technical and scientific articles
  with mathematics, cross-references, bibliographies, indices, etc.
- It is very good at documents of any length in which the usual processing
- abilities are required: automatic sectioning and pagination, spell checking,
- and so forth.
+ It is very good for working with documents of any length in which the usual
+ processing abilities are required: automatic sectioning and pagination,
+ spell checking, and so forth.
  It can also be used to write a letter to your mom, though granted, there
  are probably simpler programs available for that.
  It is definitely not the best tool for creating banners, flyers, or advertiseme
 nts (we'll explain why later), though with some effort all these can be
  done, too.
- Some examples of what it is used for: memos, letters, dissertations and
- theses, lecture notes, seminar notebooks, conference proceedings, software
+ Here are some examples of what it is used for: memos, letters, dissertations
+ and theses, lecture notes, seminar notebooks, conference proceedings, software
  documentation, books, articles in refereed scientific journals, scripts
  for plays and movies, business proposals, presentations \SpecialChar \ldots{}
 
@@ -179,7 +179,7 @@ typewriter concept
 
 .
  It is designed for authors who want professional output quickly with a
- minimum of effort without becoming specialists in typesetting.
+ minimum of effort and without becoming specialists in typesetting.
  The job of typesetting is done mostly by the computer, not the author;
  with LyX, the author can concentrate on the contents of his writing.
 \end_layout
@@ -294,7 +294,6 @@ Introduction
  in the document, or if you insert a new section before it, you need to
  change the numbering for this and all following sections, as well as any
  entry in the table of contents.
- 
 \end_layout
 
 \begin_layout Standard
@@ -307,12 +306,11 @@ Section
 \begin_inset Quotes eld
 \end_inset
 
-Introduction\SpecialChar \@.
-
+Introduction
 \begin_inset Quotes erd
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -562,7 +560,7 @@ Additional Features
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Standard
@@ -679,7 +677,7 @@ TeX isn't only a typesetting engine; it also allows you to define macros.
  This is where Leslie Lamport enters our story.
  He wanted a macro package that was more user- and less typesetter-oriented,
  with a set of commands that consistently typeset things like sections,
- tables or math formulas in an uniform, consistent fashion.
+ tables or math formulas in a uniform, consistent fashion.
  This is how LaTeX was born.
 \end_layout
 
@@ -707,7 +705,8 @@ class
  or an article.
  There are classes for slides, for physics and math journals\SpecialChar \ldots{}
  many universities
- even have a class for their thesis format! A 
+ even have a class for their thesis format.
+ A 
 \emph on
 style
 \emph default
@@ -756,9 +755,9 @@ LyX: Visual, WYSIWYM word-processor that uses LaTeX to do its typesetting.
 This section attempts to account for the difference between LyX and other
  word processors.
  Simply put, LaTeX is the difference.
- By using LaTeX as its backend, LyX helps you think more about 
+ By using LaTeX as its backend, LyX helps you think more about
 \emph on
- what 
+ what
 \emph default
  (as in the 
 \emph on
@@ -781,7 +780,7 @@ To make it easier to answer your questions and describe all of the features
  of LyX, the documentation has been split up into several different files.
  Each one has its own purpose, as described below.
  Before you go ploughing into any of those files, however, you should read
- this chapter thoroughly first, since it contains a lot of useful information
+ this chapter thoroughly, since it contains a lot of useful information
  and commentary that can save you some time.
 \end_layout
 
@@ -824,7 +823,7 @@ type "mailto:"
 \end_inset
 
 .
- If you have questions which are not obviously answered in the documentation,
+ If you have questions that are not obviously answered in the documentation,
  and need help fast, there is an active users' mailing list which you can
  reach at 
 \begin_inset CommandInset href
@@ -843,9 +842,9 @@ The Format of the Manuals
 
 \begin_layout Standard
 Some may have printed out the manuals.
- Others may be reading it within LyX.
+ Others may be reading them within LyX.
  There are some differences between the LyX-file and the printed version.
- First, the title is simply at the top of the document, not formatted on
+ In LyX, the title is simply at the top of the document, not formatted on
  a separate page as in some of the printed versions.
  Nor are any of the footnotes or the Table of Contents fully visible.
  To open a footnote, which looks like this: 
@@ -1938,7 +1937,7 @@ LaTeX
 \begin_inset space ~
 \end_inset
 
-configuration LyX investigates your system upon installation.
+Configuration LyX investigates your system upon installation.
  This file contains info on what LyX learned about your installation.
  Check it to see if you're missing something you might like to have.
 \end_layout
@@ -2089,7 +2088,6 @@ A useful bug report will at a minimum include the version of LyX you are
 config.log
 \family default
 , and mention which compiler you are using.
- 
 \end_layout
 
 \begin_layout Subsubsection
@@ -2184,7 +2182,7 @@ Tutorial
 \emph on
 User's Guide
 \emph default
- is likely to be the most up-to-date of all of the documentation.
+ are likely to be the most up-to-date of all of the documentation.
  You should be able to glean some insights into how we want the manuals
  to read and to look.
 \end_layout
@@ -2206,7 +2204,7 @@ type "mailto:"
 \begin_inset Newline newline
 \end_inset
 
-to discuss your intended changes, and get some feedback on them.
+to discuss your intended changes and to get some feedback on them.
 \end_layout
 
 \begin_layout Standard

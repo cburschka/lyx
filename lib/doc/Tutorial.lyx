@@ -236,9 +236,9 @@ Getting the most out of the Tutorial
 
 \begin_layout Standard
 This tutorial consists of examples and exercises.
- To get the most out of this document, you should read through the document,
- typing all the little things we are telling you to type and trying out
- all of the exercises to see if you get them right.
+ To get the most out of this document, you should read through the it, typing
+ all the little things we are telling you to type and trying out all of
+ the exercises to see if you get them right.
  For convenience, you might want to print out the PDF version of this document.
 \end_layout
 
@@ -486,41 +486,45 @@ As\SpecialChar \@.
 \end_layout
 
 \begin_layout Itemize
-Run LaTeX to create a DVI file, with 
+Create a PDF file, with 
 \family sans
 View\SpecialChar \menuseparator
-DVI
+View
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/buffer-view_dvi.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
 \end_inset
 
+
+\family default
 .
- LyX will open a DVI-viewer program displaying your document as it will
+ LyX will open a PDF-viewer program displaying your document as it will
  look when printed.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-You can save time by leaving the DVI-viewer running in the background.
+You can save time by leaving the PDF-viewer running in the background.
  Then, you can use 
 \family sans
 View\SpecialChar \menuseparator
-Update\SpecialChar \menuseparator
-DVI
+Update
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/buffer-update_dvi.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "buffer-update"
 \end_inset
 
- and just click on the DVI-viewer window (or unminimize it) after LaTeX
- finishes running.
+
+\family default
+ and just click on the PDF-viewer window (or unminimize it) afterwards.
 \end_layout
 
 \end_inset
@@ -549,26 +553,30 @@ Simple Operations
 \end_layout
 
 \begin_layout Standard
-LyX can of course do most of the things you are used to do with a word processor.
+LyX can of course do most of the things you are used to doing with a word
+ processor.
  It will word-wrap and indent paragraphs automatically.
  Here is a quick description of how to do some simple actions.
 \end_layout
 
 \begin_layout Description
 Undo LyX has multiple levels of undo, which means you can undo everything
- you have  done since your current editing session started, by selecting
+ you have done since your current editing session started, by selecting
  
 \family sans
 Edit\SpecialChar \menuseparator
 Undo
 \family default
  (toolbar button 
-\begin_inset Graphics
-	filename ../images/undo.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "undo"
 \end_inset
 
+
+\family default
 ) over and over again.
  If you undo too much, just select 
 \family sans
@@ -576,14 +584,16 @@ Edit\SpecialChar \menuseparator
 Redo
 \family default
  (toolbar button 
-\begin_inset Graphics
-	filename ../images/redo.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "redo"
 \end_inset
 
+
+\family default
 ) to get it back.
- 
 \end_layout
 
 \begin_deeper
@@ -599,30 +609,46 @@ Edit\SpecialChar \menuseparator
 Cut
 \family default
  (toolbar button 
-\begin_inset Graphics
-	filename ../images/cut.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "cut"
 \end_inset
 
+
+\family default
 ), 
 \family sans
 Edit\SpecialChar \menuseparator
 Copy
 \family default
  (toolbar button 
-\begin_inset Graphics
-	filename ../images/copy.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "copy"
 \end_inset
 
+
+\family default
 ), and 
 \family sans
 Edit\SpecialChar \menuseparator
 Paste
 \family default
  (toolbar button 
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "paste"
+\end_inset
+
+
+\family default
+
 \begin_inset Graphics
 	filename ../images/paste.png
 	scale 75
@@ -653,12 +679,15 @@ Find
 Replace
 \family default
  (toolbar button 
-\begin_inset Graphics
-	filename ../images/dialog-show_findreplace.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show findreplace"
 \end_inset
 
+
+\family default
 ) to search.
  In the dialog, search with the 
 \family sans
@@ -672,7 +701,7 @@ Next
 \family sans
 Replace
 \family default
- button to replace a word you have  found.
+ button to replace a word you have found.
 \begin_inset Foot
 status collapsed
 
@@ -680,8 +709,8 @@ status collapsed
 Close the window when you are done or leave it open if you find it more
  convenient.
  Most dialog boxes in LyX can operate like this.
- Just be sure you have the right window focus when you are trying to type
- in the main LyX window or a LyX dialog.
+ Just be sure you have the right window in focus when you are trying to
+ type in the main LyX window or a LyX dialog.
 \end_layout
 
 \end_inset
@@ -719,12 +748,15 @@ Text
 Style
 \family default
  dialog (toolbar button 
-\begin_inset Graphics
-	filename ../images/dialog-show_character.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
 \end_inset
 
+
+\family default
 ).
 \end_layout
 
@@ -1216,7 +1248,6 @@ Subsection
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Standard
@@ -1332,7 +1363,6 @@ A slide presentation might use the
 Itemize
 \family default
  environment's bulleted lists to describe different points.
- 
 \end_layout
 
 \begin_layout Itemize
@@ -1341,7 +1371,6 @@ An outline would use the
 Enumerate
 \family default
  environment's numbered lists (and lettered sublists).
- 
 \end_layout
 
 \begin_layout Itemize
@@ -1350,7 +1379,6 @@ A document describing several software packages could use the
 Description
 \family default
  environment, where each item in the list begins with a bold-faced word.
- 
 \end_layout
 
 \begin_layout Itemize
@@ -1373,7 +1401,7 @@ Let us write a list of reasons why LyX is better than other word processors.
 \begin_layout Standard
 
 \family typewriter
-LyX is better than other word processors because: 
+LyX is better than other word processors because:
 \end_layout
 
 \begin_layout Standard
@@ -1390,7 +1418,17 @@ Itemize
 \family sans
 Environment
 \family default
- box.
+ box (
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "layout Itemize"
+\end_inset
+
+
+\family default
+).
  LyX writes a 
 \begin_inset Quotes eld
 \end_inset
@@ -1400,7 +1438,7 @@ bullet
 \end_inset
 
  on the line.
- Type in your reasons: 
+ Type in your reasons:
 \end_layout
 
 \begin_layout LyX-Code
@@ -1485,7 +1523,17 @@ Enumerate
 \family sans
 Environment
 \family default
- box.
+ box (
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "layout Enumerate"
+\end_inset
+
+
+\family default
+).
  Pow! As we mentioned, if you add or delete a list item, LyX will fix the
  numbering.
 \end_layout
@@ -1500,14 +1548,35 @@ Description
 \family sans
 List
 \family default
-, in order to see what they look like.
+ (
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "layout Description"
+\end_inset
+
+
+\family default
+ and 
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "layout List"
+\end_inset
+
+
+\family default
+), in order to see what they look like.
  For those two environments, each list item is made up of a term, which
  is the item's first word, followed by a definition, which is the rest of
  the paragraph (until you hit 
 \family sans
 Return
 \family default
-.) The term is either typeset in boldface (
+).
+ The term is either typeset in boldface (
 \family sans
 Description
 \family default
@@ -2013,7 +2082,7 @@ My
 
 Address
 \family default
- environment, which do not even exist in most other document classes.
+ environment, that do not exist in most other document classes.
  Others, like 
 \family sans
 Description
@@ -2030,7 +2099,7 @@ Signature
 \end_inset
 
 Signature:
-\begin_inset Quotes eld
+\begin_inset Quotes erd
 \end_inset
 
  in red before the actual text of the signature.
@@ -2101,8 +2170,8 @@ Templates can be a huge time-saver, and we urge you to use them whenever
  document classes.
  Finally, they may be useful for a person who is configuring LyX for a bunch
  of less computer-aware users.
- When they are first learning LyX, it will be much less intimidating if
- they have a letter template customized for their company, for example.
+ When they are first learning LyX, it will be less intimidating if they
+ have a letter template customized for their company, for example.
 \end_layout
 
 \begin_layout Section
@@ -2197,11 +2266,10 @@ Embedded Objects
  using cross-references.
  You can refer either to the section's number, or to the page that the section
  appears on.
- As with section numbering, LyX also takes care about cross-reference numbering
+ As with section numbering, LyX also takes care of cross-reference numbering
  for you.
- Automatic labels and cross-references are among the most significant advantages
- of LyX (and LaTeX) over conventional word processors.
- 
+ Automatic management of labels and cross-references is among the most significa
+nt advantages of LyX (and LaTeX) over conventional word processors.
 \end_layout
 
 \begin_layout Subsection
@@ -2224,13 +2292,15 @@ Insert\SpecialChar \menuseparator
 Label
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/label-insert.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
+
+\family default
 .
  A dialog asks you for a label name, and gives you a suggestion.
  When you click on 
@@ -2288,13 +2358,15 @@ Cross
 Reference
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/dialog-show-new-inset_ref.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
+
+\family default
 .
  The Cross-reference dialog pops up.
  It shows a list of the possible labels you can reference.
@@ -2307,7 +2379,15 @@ sec:About-This-Document
 \end_inset
 
 .
- First, select the drop-down menu labeled Format and select 
+ First, select the drop-down menu labeled 
+\begin_inset Quotes eld
+\end_inset
+
+Format
+\begin_inset Quotes erd
+\end_inset
+
+ and select 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2350,12 +2430,12 @@ Section
 \end_inset
 
  and the reference).
- Alternatively to that method, you can right-click on a label and use in
- the appearing context menu 
+ An alternative way to reference a label is to right-click the label and
+ select 
 \family sans
 Copy as Reference
 \family default
-.
+ in the appearing context menu.
  The cross-reference to this label is now in the clipboard and can be copied
  to the actual cursor position via the menu 
 \family sans
@@ -2440,14 +2520,14 @@ More fun with labels
 \end_layout
 
 \begin_layout Standard
-We told you that LyX takes care about numbering cross-references; now you
- can test that.
+We told you that LyX takes careof numbering cross-references; now you can
+ test this claim.
  Add a new section before Section
 \begin_inset space ~
 \end_inset
 
 2.
- Update the DVI view, and — voilà! — the section cross reference changed
+ Update the DVI view, and — voilà! — the section cross-reference changed
  to 
 \begin_inset Quotes eld
 \end_inset
@@ -2491,8 +2571,8 @@ Cross-reference
 \end_layout
 
 \begin_layout Standard
-If you want to make sure that the cross-referencing gets the pages right
- even for larger documents, 
+If you want to confirm that the cross-referencing gets the pages right even
+ for larger documents, 
 \family sans
 Copy
 \family default
@@ -2504,7 +2584,7 @@ User's Guide
 \family sans
 Paste
 \family default
- the stolen text into your document.
+ it into your document.
 \begin_inset Foot
 status collapsed
 
@@ -2546,13 +2626,15 @@ Footnotes and Margin Notes
 
 \begin_layout Standard
 Footnotes can be added using the toolbar button 
-\begin_inset Graphics
-	filename ../images/footnote-insert.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
 \end_inset
 
+
+\family default
  or the menu 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -2567,15 +2649,7 @@ LyX
 \begin_inset Quotes erd
 \end_inset
 
- somewhere in your document and click the 
-\begin_inset Graphics
-	filename ../images/footnote-insert.png
-	scale 75
-	scaleBeforeRotation
-
-\end_inset
-
- button.
+ somewhere in your document and insert a footnote.
  A footnote box appears where you can enter the text of the footnote.
  LyX should place the cursor at the beginning of the footnote box.
  Type
@@ -2642,13 +2716,15 @@ Paste
  it.
  In addition, you can change regular text to a footnote, by selecting it
  and hitting the 
-\begin_inset Graphics
-	filename ../images/footnote-insert.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
 \end_inset
 
+
+\family default
  button; change a footnote to regular text by hitting the 
 \family sans
 Backspace
@@ -2658,7 +2734,7 @@ Backspace
 \family sans
 Delete
 \family default
- key when the cursor is in the very last position of the footnote, respectively.
+ key when the cursor is in the very last position of the footnote.
 \end_layout
 
 \begin_layout Standard
@@ -2672,13 +2748,15 @@ Marginal
 Note
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/marginalnote-insert.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "marginalnote-insert"
 \end_inset
 
+
+\family default
 \SpecialChar \@.
  Margin notes are like footnotes, except that: 
 \end_layout
@@ -2739,7 +2817,7 @@ name "sec:bibliographies"
 \end_layout
 
 \begin_layout Standard
-Bibliographies (at least in the exact sciences) are similar to cross references.
+Bibliographies (at least in the exact sciences) are similar to cross-references.
  The bibliography contains a list of references at the end of the document,
  and they can be referenced from within the document.
  Like section titles, LyX and LaTeX make your job easier by automatically
@@ -2791,7 +2869,7 @@ Label
 Label
 \family default
  is set (default), you will see the number of the bibliography in the output.
- Change now the 
+ Now change the 
 \family sans
 Key
 \family default
@@ -2814,13 +2892,15 @@ Insert\SpecialChar \menuseparator
 Citation
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/dialog-show-new-inset_citation.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset citation"
 \end_inset
 
+
+\family default
 .
  A 
 \family sans
@@ -2908,7 +2988,7 @@ Table of Contents
 
 \begin_layout Standard
 You may want to put a table of contents at the beginning of your document.
- LyX makes this very easy to do.
+ LyX makes this easy to do.
  Just hit 
 \family sans
 Return
@@ -2968,17 +3048,19 @@ Document\SpecialChar \menuseparator
 Outline
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/dialog-toggle_toc.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-toggle toc"
 \end_inset
 
+
+\family default
 .
  This menu will work even if you do not have a table of contents inset in
  your document.
- This is a very useful tool for moving around your document parts.
+ This is a very useful tool for rearranging your document parts.
  Clicking on a (sub)section title in the 
 \family sans
 Outline
@@ -3067,13 +3149,15 @@ Now, that equation does not look very good in LyX and in the output; there
 \begin_layout Standard
 Instead, we create a formula that will get typeset properly.
  In order to create a formula, just click the toolbar button 
-\begin_inset Graphics
-	filename ../images/math-mode.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-mode"
 \end_inset
 
+
+\family default
  or use the menu 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -3086,7 +3170,7 @@ Formula
 \family default
 .
  LyX will insert a little blue square, which is an empty math formula.
- Now just type 
+ Now type 
 \family typewriter
 E=mc^2
 \family default
@@ -3335,7 +3419,7 @@ Esc
 \end_layout
 
 \begin_layout Standard
-Writing a subscript (index) is just easy; start one by typing the underscore
+Writing a subscript (index) is just as easy; start one by typing the underscore
  key 
 \begin_inset Quotes eld
 \end_inset
@@ -3379,7 +3463,7 @@ Math
 
 toolbar
 \family default
- is a convenient way to enter symbols or to perform complicated formula
+ is a convenient way to enter symbols and/or to perform complicated formula
  operations.
  Many of these operations can be accomplished from the keyboard or the 
 \family sans
@@ -3432,7 +3516,17 @@ Math
 \begin_inset Quotes erd
 \end_inset
 
- the toolbar will be shown permanently at the bottom; this state is visualized
+ (
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "toolbar-toggle math"
+\end_inset
+
+
+\family default
+) the toolbar will be shown permanently at the bottom; this state is visualized
  in the 
 \family sans
 Toolbars
@@ -3495,7 +3589,6 @@ toolbar
  arrows, relationships, delimiters, special characters, sums and integrals.
  Note that subscripting and superscripting allow you to put lower and upper
  limits on sums and integrals.
- 
 \end_layout
 
 \begin_layout Subsection
@@ -3504,13 +3597,15 @@ Square roots, accents, and delimiters
 
 \begin_layout Standard
 To type a square root, just click on the button 
-\begin_inset Graphics
-	filename ../images/math/sqrt.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\sqrt"
 \end_inset
 
+
+\family default
 .
  The square root appears, and the cursor is in a new insertion point inside
  the square root.
@@ -3521,22 +3616,32 @@ To type a square root, just click on the button
 
 \begin_layout Standard
 Accenting a character (
-\begin_inset Formula $\overrightarrow{v}$
+\begin_inset Formula $\overrightarrow{a}$
 \end_inset
 
 ) or group of characters (
 \begin_inset Formula $\overrightarrow{a+b}$
 \end_inset
 
-) is done the same way.
- Decorations are available from the toolbar via the button 
-\begin_inset Graphics
-	filename ../images/math/hat.png
-	scale 75
-	scaleBeforeRotation
-
+) is done similarly, and is an example of inserting a 
+\begin_inset Quotes eld
 \end_inset
 
+frame decoration
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Decorations are available from the toolbar via the button 
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\hat"
+\end_inset
+
+
+\family default
 .
  Click on a decoration, and LyX will insert that decoration with an insertion
  point under (or over) it.
@@ -3551,13 +3656,15 @@ Accenting a character (
 Delimiters such as parentheses, brackets, and braces work similarly, but
  are a bit more complicated.
  Hit the delimiter button 
-\begin_inset Graphics
-	filename ../images/dialog-show_mathdelimiter.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathdelimiter"
 \end_inset
 
+
+\family default
  to pop up the 
 \family sans
 Delimiter
@@ -3640,14 +3747,25 @@ Fractions
 
 \begin_layout Standard
 To create a fraction, click on the fraction button 
-\begin_inset Graphics
-	filename ../images/math/frac.png
-	lyxscale 75
-	scale 60
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac"
 \end_inset
 
+
+\family default
+ or 
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac-square"
+\end_inset
+
+
+\family default
  in the 
 \family sans
 Math
@@ -3796,13 +3914,15 @@ Math
 Toolbar
 \family default
  button 
-\begin_inset Graphics
-	filename ../images/math/functions.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\functions"
 \end_inset
 
+
+\family default
  and then on 
 \begin_inset Quotes eld
 \end_inset
@@ -3888,13 +4008,15 @@ Matrices
 
 \begin_layout Standard
 Click on the matrix button 
-\begin_inset Graphics
-	filename ../images/dialog-show_mathmatrix.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathmatrix"
 \end_inset
 
+
+\family default
  in the 
 \family sans
 Math
@@ -3953,37 +4075,45 @@ Rows
 Columns
 \family default
  or the math toolbar buttons 
-\begin_inset Graphics
-	filename ../images/tabular-feature_append-row.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-row"
 \end_inset
 
+
+\family default
 , 
-\begin_inset Graphics
-	filename ../images/tabular-feature_delete-row.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-row"
 \end_inset
 
+
+\family default
 , 
-\begin_inset Graphics
-	filename ../images/tabular-feature_append-column.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-column"
 \end_inset
 
+
+\family default
 , 
-\begin_inset Graphics
-	filename ../images/tabular-feature_delete-column.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-column"
 \end_inset
 
+
+\family default
 .
 \end_layout
 
@@ -4019,13 +4149,15 @@ User's Guide
 
 \begin_layout Standard
 While being in a formula, click on the display button 
-\begin_inset Graphics
-	filename ../images/math-display.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-display"
 \end_inset
 
+
+\family default
  in the 
 \family sans
 Math
@@ -4148,20 +4280,21 @@ More Math Stuff
 \end_layout
 
 \begin_layout Standard
-LyX's math editor can do a lot more.
- Now you are familiar with the basics, you can refer to the 
+Now you are familiar with the basics.
+ LyX's math editor can do a lot more.
+ You can refer to the 
 \emph on
-User's Guide
+Math
 \emph default
- for tips on how to:
+ manual for tips on how to:
 \end_layout
 
 \begin_layout Itemize
-Label and number expressions
+Label and number expressions.
 \end_layout
 
 \begin_layout Itemize
-Create multi-line equations
+Create multi-line equations.
 \end_layout
 
 \begin_layout Itemize
@@ -4188,7 +4321,7 @@ Write macros.
 \end_layout
 
 \begin_layout Itemize
-Do lots of other things that we have no space for in this Tutorial.
+Almost all you can do with math.
 \end_layout
 
 \begin_layout Chapter
@@ -4226,13 +4359,15 @@ Insert\SpecialChar \menuseparator
 Table
 \family default
  (toolbar button 
-\begin_inset Graphics
-	filename ../images/tabular-insert.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "tabular-insert"
 \end_inset
 
+
+\family default
 ) to get a table.
  Click on the table with the 
 \emph on
@@ -4247,6 +4382,17 @@ Table
 Settings
 \family default
  dialog box which allows extensive table editing.
+ By pressing 
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "toolbar-toggle table"
+\end_inset
+
+
+\family default
+ the table toolbar will appear permanently.
 \end_layout
 
 \begin_layout Itemize
@@ -4257,13 +4403,15 @@ Insert\SpecialChar \menuseparator
 Graphics
 \family default
  (toolbar button 
-\begin_inset Graphics
-	filename ../images/dialog-show-new-inset_graphics.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
 \end_inset
 
+
+\family default
 ).
  Then browse for the figure file, rotate or scale it, etc.) Tables and figures
  can have captions, and LyX will automatically generate lists of figures
@@ -4416,20 +4564,22 @@ TeX
 Code
 \family default
  (toolbar button 
-\begin_inset Graphics
-	filename ../images/ert-insert.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "ert-insert"
 \end_inset
 
+
+\family default
 ).
  This creates a box where everything within it is passed straight to LaTeX.
 \end_layout
 
 \begin_layout Standard
 In a math formula, TeX mode is handled a bit differently.
- TeX mode is there entered by typing a backslash.
+ TeX mode is entered there by typing a backslash.
  The backslash is not written out, but anything you type afterwards will
  be in red.
  You exit TeX mode by typing 
@@ -4438,7 +4588,7 @@ Space
 \family default
  or some other non-alphabetic character, like a number, underscore, caret,
  or parenthesis.
- Once you exit TeX mode, if LyX knows the TeX command you have  typed in,
+ Once you exit TeX mode, if LyX knows the TeX command you have typed in,
  it will convert it to WYSIWYM\SpecialChar \@.
  So if you type 
 \begin_inset Quotes eld
@@ -4512,7 +4662,7 @@ and
 \emph default
  ending braces will be inserted in red while the cursor is placed between
  the braces.
- This makes it more convenient to type those commands which take an argument.
+ This makes it more convenient to type those commands that take an argument.
 \end_layout
 
 \begin_layout Standard
@@ -4676,7 +4826,6 @@ whatever.tex
 whatever.lyx
 \family default
  file you are editing.
- LyX always creates temporary LaTeX files when viewing or printing files.
 \end_layout
 
 \begin_layout Subsection
@@ -4693,9 +4842,9 @@ The
 Document\SpecialChar \menuseparator
 Settings
 \family default
- dialog takes care of the document-wide options.
- You can change there the document class, default font size and paper size.
- Document class options but also options for LaTeX packages can be entered
+ dialog takes care of the document-wide options, such as changing the document
+ class, default font size and paper size.
+ Document class options and also options for LaTeX packages can be entered
  there in the 
 \family sans
 Class
@@ -4779,7 +4928,7 @@ Style
 
 \begin_layout Standard
 After you have done this, you can use citations from any bibliographies
- you are including with 
+ you have included with 
 \family sans
 Insert\SpecialChar \menuseparator
 Citation
@@ -4796,7 +4945,6 @@ reference "sec:bibliographies"
 \end_inset
 
 ).
- LyX will take care of running BibTeX.
  The box in the 
 \family sans
 Citation
