@@ -12,24 +12,17 @@
 #ifndef WORKAREA_PRIVATE_H
 #define WORKAREA_PRIVATE_H
 
-// Comment out to use QImage backend instead of QPixmap. This won't have any
-// effect on Windows, MacOSX and most X11 environment when running locally.
-// When running remotely on X11, this may have a big performance penalty.
-//#define USE_QIMAGE
-
 #include "FuncRequest.h"
 #include "qt_helpers.h"
+#include "LyXRC.h"
 
 #include "support/docstring.h"
 #include "support/Timeout.h"
 
 #include <QAbstractScrollArea>
 #include <QMouseEvent>
-#ifdef USE_QIMAGE
 #include <QImage>
-#else
 #include <QPixmap>
-#endif
 #include <QTimer>
 
 class QContextMenuEvent;
@@ -109,11 +102,11 @@ struct GuiWorkArea::Private
 	void resizeBufferView();
 
 	/// paint the cursor and store the background
-	virtual void showCursor(int x, int y, int h,
+	void showCursor(int x, int y, int h,
 		bool l_shape, bool rtl, bool completable);
 
 	/// hide the cursor
-	virtual void removeCursor();
+	void removeCursor();
 	///
 	void dispatch(FuncRequest const & cmd0, KeyModifier = NoModifier);
 	/// hide the visible cursor, if it is visible
@@ -127,25 +120,20 @@ struct GuiWorkArea::Private
 	///
 	void setCursorShape(Qt::CursorShape shape);
 
-#ifdef USE_QIMAGE
 	void resetScreen()
 	{
-		screen_ = QImage(p->viewport()->width(), p->viewport()->height(),
-			QImage::Format_ARGB32_Premultiplied);
+		delete screen_;
+		if (lyxrc.use_qimage) {
+			screen_ = new QImage(p->viewport()->width(), p->viewport()->height(),
+				QImage::Format_ARGB32_Premultiplied);
+		} else {
+			screen_ = new QPixmap(p->viewport()->width(), p->viewport()->height());
+		}
 	}
-
-	QImage screen_;
-#else
-	void resetScreen()
-	{
-		screen_ = QPixmap(p->viewport()->width(), p->viewport()->height());
-	}
-
-	QPixmap screen_;
-#endif
 	///
 	GuiWorkArea * p;
-
+	///
+	QPaintDevice * screen_;
 	///
 	BufferView * buffer_view_;
 	/// Read only Buffer status cache.

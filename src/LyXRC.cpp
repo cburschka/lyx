@@ -199,6 +199,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\use_converter_cache", LyXRC::RC_USE_CONVERTER_CACHE },
 	{ "\\use_lastfilepos", LyXRC::RC_USELASTFILEPOS },
 	{ "\\use_pixmap_cache", LyXRC::RC_USE_PIXMAP_CACHE },
+	{ "\\use_qimage", LyXRC::RC_USE_QIMAGE },
 	// compatibility with versions older than 1.4.0 only
 	{ "\\use_system_colors", LyXRC::RC_USE_SYSTEM_COLORS },
 	{ "\\use_tooltip", LyXRC::RC_USE_TOOLTIP },
@@ -337,6 +338,7 @@ void LyXRC::setDefaults()
 	use_system_colors = false;
 	use_tooltip = true;
 	use_pixmap_cache = false;
+	use_qimage = true;
 	converter_cache_maxage = 6 * 30 * 24 * 3600; // 6 months
 	user_name = to_utf8(support::user_name());
 	user_email = to_utf8(support::user_email());
@@ -950,6 +952,9 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			break;
 		case RC_USE_PIXMAP_CACHE:
 			lexrc >> use_pixmap_cache;
+			break;
+		case RC_USE_QIMAGE:
+			lexrc >> use_qimage;
 			break;
 		case RC_SPELLCHECKER:
 			lexrc >> spellchecker;
@@ -2439,6 +2444,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
+	case RC_USE_QIMAGE:
+		if (ignore_system_lyxrc ||
+		    use_qimage != system_lyxrc.use_qimage) {
+			os << "\\use_qimage "
+			   << convert<string>(use_qimage)
+			   << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
 
 		os << "\n#\n"
 		   << "# LANGUAGE SUPPORT SECTION ##########################\n"
@@ -2993,6 +3007,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_USE_SYSTEM_COLORS:
 	case LyXRC::RC_USE_TOOLTIP:
 	case LyXRC::RC_USE_PIXMAP_CACHE:
+	case LyXRC::RC_USE_QIMAGE:
 	case LyXRC::RC_VIEWDVI_PAPEROPTION:
 	case LyXRC::RC_SINGLE_CLOSE_TAB_BUTTON:
 	case LyXRC::RC_SINGLE_INSTANCE:

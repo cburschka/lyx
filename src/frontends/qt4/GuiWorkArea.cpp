@@ -237,7 +237,7 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 
 
 GuiWorkArea::Private::Private(GuiWorkArea * parent)
-: p(parent), buffer_view_(0), lyx_view_(0), cursor_visible_(false),
+: p(parent), screen_(0), buffer_view_(0), lyx_view_(0), cursor_visible_(false),
 need_resize_(false), schedule_redraw_(false), preedit_lines_(1),
 completer_(new GuiCompleter(p, p))
 {
@@ -319,6 +319,7 @@ void GuiWorkArea::init()
 GuiWorkArea::~GuiWorkArea()
 {
 	d->buffer_view_->buffer().workAreaManager().remove(this);
+	delete d->screen_;
 	delete d->buffer_view_;
 	delete d->cursor_;
 	// Completer has a QObject parent and is thus automatically destroyed.
@@ -1120,11 +1121,11 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 	}
 
 	QPainter pain(viewport());
-#ifdef USE_QIMAGE
-	pain.drawImage(rc, d->screen_, rc);
-#else
-	pain.drawPixmap(rc, d->screen_, rc);
-#endif
+	if (lyxrc.use_qimage) {
+		pain.drawImage(rc, static_cast<QImage const &>(*d->screen_), rc);
+	} else {
+		pain.drawPixmap(rc, static_cast<QPixmap const &>(*d->screen_), rc);
+	}
 	d->cursor_->draw(pain);
 	ev->accept();
 }
@@ -1132,7 +1133,7 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 
 void GuiWorkArea::Private::updateScreen()
 {
-	GuiPainter pain(&screen_);
+	GuiPainter pain(screen_);
 	buffer_view_->draw(pain);
 }
 
@@ -1204,7 +1205,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 		return;
 	}
 
-	GuiPainter pain(&d->screen_);
+	GuiPainter pain(d->screen_);
 	d->buffer_view_->updateMetrics();
 	d->buffer_view_->draw(pain);
 	FontInfo font = d->buffer_view_->cursor().getFont().fontInfo();
