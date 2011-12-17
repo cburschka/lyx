@@ -13401,9 +13401,8 @@ msgid "Multicolumn Manual|M"
 msgstr "Manual Multi-columnas|M"
 
 #: lib/ui/stdmenus.inc:589
-#, fuzzy
 msgid "Sweave Manual|S"
-msgstr "Sweave|w"
+msgstr "Sweave Manual|S"
 
 #: lib/ui/stdmenus.inc:590
 msgid "XY-pic Manual|X"
@@ -16152,7 +16151,6 @@ msgid "Spreadsheet"
 msgstr "Folio de calculo electronic"
 
 #: lib/external_templates:39
-#, fuzzy
 msgid ""
 "A spreadsheet made with Gnumeric, LibreOffice, OpenOffice or Excel.\n"
 "It imports as a long table, so any length\n"
@@ -16160,8 +16158,8 @@ msgid ""
 "The gnumeric software is necessary for conversion,\n"
 "both for gnumeric and excel files.\n"
 msgstr ""
-"Un folio de calculo electronic facite per con gnumeric, openoffice o excel.\n"
-"Il es importate como tabella longe, ergo ulle longitude es ok.\n"
+"Un folio de calculo electronic facite per con Gnumeric, Libreoffice o Excel.\n"
+"Il importa como tabella longe, ergo ulle longitude es ok.\n"
 "Un longitude excessive poterea esser problematic.\n"
 "Per le conversion es necessari le software gnumeric,\n"
 "sia per file gnumeric que los de excel.\n"
@@ -16261,7 +16259,6 @@ msgid "PDF pages: $$AbsOrRelPathParent$$Basename"
 msgstr "Paginas PDF: $$AbsOrRelPathParent$$Basename"
 
 #: lib/external_templates:303
-#, fuzzy
 msgid ""
 "Includes PDF documents, using the 'pdfpages' package.\n"
 "To include multiple pages, use the 'pages'-option,\n"
@@ -16276,13 +16273,16 @@ msgid ""
 "Read the documentation of the pdfpages package\n"
 "for further options and details.\n"
 msgstr ""
-"Include documentos PDF usante le pacchetto 'pdfpages'.\n"
-"Per includer plure paginas, on necessita usar le option 'pages',\n"
-"de insertar se in le scheda 'Optiones'.\n"
+"Il include documentos PDF usante le pacchetto 'pdfpages'.\n"
+"Per include paginas multiple, on necessita usar le option 'pages',\n"
+"que on debe insertar se in le scheda 'Optiones'.\n"
 "Exemplos:\n"
-"* pages={x-y} (per un insimul de paginas)\n"
+"* pages={x-y} (per un extension de paginas)\n"
 "* pages={x,y,z} (per paginas specific)\n"
 "* pages=- (per includer omne paginas)\n"
+"* pages=ultime-1 (per includer tote paginas in ordine revertite)\n"
+"Con le option 'noautoscale' le paginas PDF es\n"
+"insertate in lor grandor original.\n"
 "Lege le documentation del pacchetto pdfpages\n"
 "per ulterior optiones e detalios.\n"
 
@@ -20929,12 +20929,11 @@ msgstr "[Nulle option predefinite]"
 
 #: src/frontends/qt4/GuiDocument.cpp:3034
 msgid "C&ustomize Hyperref Options"
-msgstr ""
+msgstr "Pe&rsonalisa Optiones de Hyperref"
 
 #: src/frontends/qt4/GuiDocument.cpp:3036
-#, fuzzy
 msgid "&Use Hyperref Support"
-msgstr "&Usa supporto hyperref"
+msgstr "&Usa supporto Hyperref"
 
 #: src/frontends/qt4/GuiDocument.cpp:3185
 msgid "Can't set layout!"
@@ -22281,10 +22280,15 @@ msgid ""
 "Please close it before attempting to overwrite it.\n"
 "Do you want to choose a new filename?"
 msgstr ""
+"Le file\n"
+"%1$s\n"
+"ja es aperite in tu session currente.\n"
+"Pro favor tu claude illo ante essayar de superscriber lo.\n"
+"Tu vole seliger un nove nomine de file?"
 
 #: src/frontends/qt4/GuiView.cpp:2305
 msgid "Chosen File Already Open"
-msgstr ""
+msgstr "File seligite ja aperite"
 
 #: src/frontends/qt4/GuiView.cpp:2306 src/frontends/qt4/GuiView.cpp:2321
 #: src/frontends/qt4/GuiView.cpp:2366
