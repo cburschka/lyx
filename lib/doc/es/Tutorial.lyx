@@ -511,42 +511,46 @@ como\SpecialChar \@.
 \end_layout
 
 \begin_layout Itemize
-Ejecuta LaTeX para crear un archivo DVI, con 
+Crear un archivo DVI, con 
 \family sans
 Ver\SpecialChar \menuseparator
-DVI
+Ver
 \family default
  o con el botón 
-\begin_inset Graphics
-	filename ../../images/buffer-view_dvi.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
 \end_inset
 
+
+\family default
  de la barra de herramientas.
- LyX lanzará un programa visor de DVI que abrirá una nueva ventana mostrándote
+ LyX lanzará un programa visor de PDF que abrirá una nueva ventana mostrándote
  el aspecto de tu documento cuando esté impreso.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Puedes ahorrar tiempo dejando que el visor de DVI se siga ejecutando en
+Puedes ahorrar tiempo dejando que el visor de PDF se siga ejecutando en
  segundo plano.
  De esta forma, puedes usar 
 \family sans
 Ver\SpecialChar \menuseparator
-Actualizar\SpecialChar \menuseparator
-DVI
+Actualizar
 \family default
  o el botón 
-\begin_inset Graphics
-	filename ../../images/buffer-update_dvi.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "buffer-update"
 \end_inset
 
- y simplemente pulsar sobre la ventana del visor (o restaurarla) cuando
- LaTeX termine de ejecutarse.
+
+\family default
+ y simplemente pulsar sobre la ventana del visor (o restaurarla) después.
 \end_layout
 
 \end_inset
@@ -596,12 +600,15 @@ Editar\SpecialChar \menuseparator
 Deshacer
 \family default
  (icono 
-\begin_inset Graphics
-	filename ../../images/undo.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "undo"
 \end_inset
 
+
+\family default
 )
 \family sans
 .
@@ -613,12 +620,15 @@ Editar\SpecialChar \menuseparator
 Rehacer
 \family default
  (icono 
-\begin_inset Graphics
-	filename ../../images/redo.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "redo"
 \end_inset
 
+
+\family default
 )
 \family sans
  
@@ -642,36 +652,45 @@ Editar\SpecialChar \menuseparator
 Cortar
 \family default
  (icono 
-\begin_inset Graphics
-	filename ../../images/cut.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "cut"
 \end_inset
 
+
+\family default
 ), 
 \family sans
 Editar\SpecialChar \menuseparator
 Copiar
 \family default
  (icono 
-\begin_inset Graphics
-	filename ../../images/copy.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "copy"
 \end_inset
 
+
+\family default
 ), y 
 \family sans
 Editar\SpecialChar \menuseparator
  Pegar
 \family default
  (icono 
-\begin_inset Graphics
-	filename ../../images/paste.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "paste"
 \end_inset
 
+
+\family default
 ) para cortar, copiar y pegar.
  O pega automáticamente el texto seleccionado (incluyendo selecciones de
  otros programas) con el botón central del ratón.
@@ -692,12 +711,15 @@ y
 Reemplazar
 \family default
  (icono 
-\begin_inset Graphics
-	filename ../../images/dialog-show_findreplace.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show findreplace"
 \end_inset
 
+
+\family default
 ) para realizar una búsqueda.
  En el menú que se despliega a tal efecto, puedes desplazarte hacia delante
  y hacia atrás en la búsqueda mediante las flechas, y reemplazar aquellas
@@ -765,12 +787,15 @@ del
 texto
 \family default
  (botón 
-\begin_inset Graphics
-	filename ../../images/dialog-show_character.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
 \end_inset
 
+
+\family default
 ).
 \end_layout
 
@@ -1385,7 +1410,17 @@ Enumeración*
 \family sans
 Entorno
 \family default
-s.
+s (
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "layout Itemize"
+\end_inset
+
+
+\family default
+).
  LyX pondrá una marca en la línea.
  Escribe tus razones:
 \end_layout
@@ -1466,7 +1501,17 @@ LyX no te dejará seleccionar el primer bolo a menos que selecciones el párrafo
 \family sans
 Enumeración
 \family default
- en el menú.
+ en el menú (
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "layout Enumerate"
+\end_inset
+
+
+\family default
+).
  ¡Increíble! Como ya dijimos, si añades o borras un elemento de la lista,
  LyX corrige la numeración.
 \end_layout
@@ -1481,7 +1526,27 @@ Descripción
 \family sans
 List
 \family default
-a, para ver cómo son.
+a (
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "layout Description"
+\end_inset
+
+
+\family default
+ y 
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "layout List"
+\end_inset
+
+
+\family default
+), para ver cómo son.
  Para ambos, cada elemento de la lista está compuesto por un término, que
  es la primera palabra del elemento, seguido de una definición, que es el
  resto del párrafo (hasta que pulses 
@@ -2227,13 +2292,15 @@ Insertar\SpecialChar \menuseparator
 Etiqueta
 \family default
  o pulsa el icono 
-\begin_inset Graphics
-	filename ../../images/label-insert.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
+
+\family default
 .
  Se desplegará una ventana de diálogo preguntándote el nombre de la etiqueta,
  y ofreciéndote una sugerencia.
@@ -2295,13 +2362,15 @@ Insertar\SpecialChar \menuseparator
 Referencia cruzada
 \family default
  o pulsa el icono 
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_ref.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
+
+\family default
 .
  Aparecerá una ventana de diálogo que muestra una lista de etiquetas posibles
  a las que puedes hacer referencia.
@@ -2569,13 +2638,15 @@ Notas a pie de página y notas al margen
 
 \begin_layout Standard
 Las notas a pie de página se pueden añadir usando el botón 
-\begin_inset Graphics
-	filename ../../images/footnote-insert.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
 \end_inset
 
+
+\family default
  de la barra de herramientas o bien accediendo en el menú a 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -2599,13 +2670,15 @@ LyX
 \end_inset
 
  en cualquier parte de tu documento y pulsa el botón 
-\begin_inset Graphics
-	filename ../../images/footnote-insert.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
 \end_inset
 
+
+\family default
 .
  Se mostrará un cuadro con la etiqueta 
 \begin_inset Quotes fld
@@ -2689,13 +2762,15 @@ Pegar
 lo.
  Además, puedes convertir texto normal en una nota, basta que lo selecciones
  y pulses el botón 
-\begin_inset Graphics
-	filename ../../images/footnote-insert.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
 \end_inset
 
+
+\family default
 ; convierte una nota en texto normal pulsando la tecla 
 \family sans
 Retroceso 
@@ -2710,13 +2785,15 @@ cuando el cursor está en la última posición de la nota al pie, respectivament
 
 \begin_layout Standard
 Las notas al margen se pueden añadir mediante el botón 
-\begin_inset Graphics
-	filename ../../images/marginalnote-insert.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "marginalnote-insert"
 \end_inset
 
+
+\family default
  o bien el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -2861,13 +2938,15 @@ Insertar\SpecialChar \menuseparator
 Cita
 \family default
  o con el botón 
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_citation.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset citation"
 \end_inset
 
+
+\family default
 .
  Aparecerá la ventana 
 \family sans
@@ -3132,23 +3211,21 @@ Ahora la ecuación no tiene muy buen aspecto en LyX ni en la salida; no hay
  como un verdadero exponente.
  Esta composición tan mala se debe a que no le hemos dicho a LyX que estamos
  escribiendo una expresión matemática, así que la compone como texto normal.
-\begin_inset Formula $ $
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 Las expresiones matemáticas se escriben en modo matemático o de ecuaciones.
  Para entrar en dicho modo, sólo tienes que pinchar el botón de la barra
  de herramientas 
-\begin_inset Graphics
-	filename ../../images/math-mode.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-mode"
 \end_inset
 
+
+\family default
  o usar el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -3581,8 +3658,18 @@ Ecuaciones
 \begin_inset Quotes frd
 \end_inset
 
- la barra de herramientas se mostrará permanentemente en la parte inferior
- de la ventana; este estado se visualiza en el menú con una marca.
+ la barra de herramientas (
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "toolbar-toggle math"
+\end_inset
+
+
+\family default
+) se mostrará permanentemente en la parte inferior de la ventana; este estado
+ se visualiza en el menú con una marca.
  Si en ese estado vuelves a pulsar 
 \begin_inset Quotes fld
 \end_inset
@@ -3692,13 +3779,15 @@ Raíces cuadradas, tildes y delimitadores
 
 \begin_layout Standard
 Para escribir una raíz cuadrada sólo tienes que pulsar el botón 
-\begin_inset Graphics
-	filename ../../images/math/sqrt.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\sqrt"
 \end_inset
 
+
+\family default
 .
  La raíz aparece, y el cursor va a un nuevo punto de inserción dentro de
  ella.
@@ -3719,13 +3808,15 @@ La colocación de tildes en una letra (
 
 ) se realiza de la misma forma.
  Las decoraciones están disponibles en el botón 
-\begin_inset Graphics
-	filename ../../images/math/hat.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\hat"
 \end_inset
 
+
+\family default
  de la barra de herramientas.
  Pincha en una de las decoraciones, y LyX la imprimirá con un punto de inserción
  debajo (o encima).
@@ -3738,13 +3829,15 @@ La colocación de tildes en una letra (
 Los delimitadores (como paréntesis, corchetes y llaves) funcionan de forma
  similar, pero son un poco más complicados.
  Pulsa el botón 
-\begin_inset Graphics
-	filename ../../images/dialog-show_mathdelimiter.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathdelimiter"
 \end_inset
 
+
+\family default
  para abrir la ventana 
 \family sans
 Delimitador
@@ -3835,14 +3928,25 @@ Fracciones
 
 \begin_layout Standard
 Para crear una fracción pica el botón 
-\begin_inset Graphics
-	filename ../../images/math/frac.png
-	lyxscale 75
-	scale 60
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac"
 \end_inset
 
+
+\family default
+ o 
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac-square"
+\end_inset
+
+
+\family default
  en la 
 \family sans
 Barra
@@ -3989,13 +4093,15 @@ Espacio
 
 \begin_layout Standard
 Pulsando el botón 
-\begin_inset Graphics
-	filename ../../images/math/functions.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\functions"
 \end_inset
 
+
+\family default
  de la 
 \family sans
 Barra
@@ -4044,14 +4150,10 @@ x
 \end_inset
 
 , que aparecerá en cursiva azul, como es habitual en una ecuación.
- En
-\begin_inset Formula $ $
-\end_inset
-
- la salida, la expresión se imprimirá correctamente.
+ En la salida, la expresión se imprimirá correctamente.
  Inténtalo.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -4072,12 +4174,15 @@ babel
 \series default
  permite escribir esta función en español.
  Para ello, dentro de la ecuación, pulsa el botón 
-\begin_inset Graphics
-	filename ../../images/ert-insert.png
-	scale 50
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "ert-insert"
 \end_inset
 
+
+\family default
  y escribe 
 \begin_inset Quotes fld
 \end_inset
@@ -4171,13 +4276,15 @@ Matrices
 
 \begin_layout Standard
 Pulsa en el botón 
-\begin_inset Graphics
-	filename ../../images/dialog-show_mathmatrix.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathmatrix"
 \end_inset
 
+
+\family default
  en la 
 \family sans
 Barra
@@ -4253,37 +4360,45 @@ y
 columnas
 \family default
  o los botones de la barra de herramientas de cuadros 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-row.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-row"
 \end_inset
 
+
+\family default
 , 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-row.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-row"
 \end_inset
 
+
+\family default
 , 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-column.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-column"
 \end_inset
 
+
+\family default
 , 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-column.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-column"
 \end_inset
 
+
+\family default
 .
 \end_layout
 
@@ -4321,13 +4436,15 @@ Guía del usuario
 
 \begin_layout Standard
 Pincha en el botón 
-\begin_inset Graphics
-	filename ../../images/math-display.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-display"
 \end_inset
 
+
+\family default
  de la 
 \family sans
 Barra
@@ -4459,8 +4576,11 @@ Más cosas sobre matemáticas
 El modo matemático puede hacer muchas cosas más.
  Por ahora te has familiarizado con lo básico, así que dirígete a la 
 \emph on
-Guía del usuario
+\lang english
+Math
 \emph default
+ manual
+\lang spanish
  si quieres buscar trucos para:
 \end_layout
 
@@ -4493,12 +4613,9 @@ Escribir macros.
 \end_layout
 
 \begin_layout Itemize
-Hacer un montón de cosas más que no tenemos espacio para contarte en este
- 
-\emph on
-Tutorial
-\emph default
-.
+
+\lang english
+Almost all you can do with math.
 \end_layout
 
 \begin_layout Chapter
@@ -4533,13 +4650,15 @@ Insertar\SpecialChar \menuseparator
 Cuadro/Tabla
 \family default
  (botón 
-\begin_inset Graphics
-	filename ../../images/tabular-insert.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "tabular-insert"
 \end_inset
 
+
+\family default
 ) para crear uno.
  Pincha en el cuadro con el 
 \emph on
@@ -4554,6 +4673,21 @@ Editar
 cuadro
 \family default
 , que te ofrece extensas posibilidades de edición del cuadro.
+ 
+\lang english
+By pressing 
+\family sans
+\lang spanish
+
+\begin_inset Info
+type  "icon"
+arg   "toolbar-toggle table"
+\end_inset
+
+
+\family default
+\lang english
+ the table toolbar will appear permanently.
 \end_layout
 
 \begin_layout Itemize
@@ -4564,13 +4698,15 @@ Insertar\SpecialChar \menuseparator
 Imagen
 \family default
  (botón 
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
 \end_inset
 
+
+\family default
 )\SpecialChar \@.
  Después pincha en la figura para elegir el archivo que quieres incluir,
  rotarla, escalarla, etc.
@@ -4727,13 +4863,15 @@ Código
 TeX
 \family default
  o pinchando en el botón 
-\begin_inset Graphics
-	filename ../../images/ert-insert.png
-	scale 75
-	scaleBeforeRotation
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "ert-insert"
 \end_inset
 
+
+\family default
  de la barra de herramientas.
  Esto genera un cuadro cuyo contenido es pasado directamente a LaTeX.
 \end_layout
@@ -4978,8 +5116,6 @@ cualquiera.tex
 cualquiera.lyx
 \family default
  que estés editando.
- LyX siempre genera archivos temporales LaTeX cuando visualiza o imprime
- los documentos.
 \end_layout
 
 \begin_layout Subsection
@@ -5117,7 +5253,6 @@ reference "sec:Bibliografía"
 \end_inset
 
 ).
- El programa se preocupará de ejecutar BibTeX.
  El diálogo 
 \family sans
 Cita

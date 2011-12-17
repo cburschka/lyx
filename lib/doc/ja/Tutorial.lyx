@@ -435,39 +435,44 @@ example
 \SpecialChar \menuseparator
 
 \family sans
-DVI
+表示
 \family default
 を選ぶか、ツールバーで
-\begin_inset Graphics
-	filename ../../images/buffer-view_dvi.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
 \end_inset
 
-を押して、LaTeXを実行させ、DVIファイルを作ります。LyXは、DVIビューアを開いて、印刷したときにあなたの文書がどのように見えるかを表示します
+
+\family default
+を押して、LaTeXを実行させ、PDFファイルを作ります。LyXは、PDFビューアを開いて、印刷したときにあなたの文書がどのように見えるかを表示します。
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-DVIビューアをバックグラウンドで起動したままにしておけば、時間を節約することができます。
+PDFビューアをバックグラウンドで起動したままにしておけば、時間を節約することができます。
 \family sans
 表示\SpecialChar \menuseparator
-更新\SpecialChar \menuseparator
-DVI
+更新
 \family default
 を選ぶか、ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/buffer-update_dvi.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "buffer-update"
 \end_inset
 
-を押して、LaTeXを走らせた後、単にDVIビューアのウインドウをクリックすれば（あるいは最小化を解除すれば）よいのです。
+
+\family default
+を押して、LaTeXを走らせた後、単にPDFビューアのウインドウをクリックすれば（あるいは最小化を解除すれば）よいのです。
 \end_layout
 
 \end_inset
 
-。 
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -511,12 +516,15 @@ DVI
 元に戻す
 \family default
 を繰り返し選ぶ（あるいはツールバーボタン
-\begin_inset Graphics
-	filename ../../images/undo.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "undo"
 \end_inset
 
+
+\family default
 を繰り返し押す）ことで復元することができるのです。元に戻しすぎてしまったときには、
 \family sans
 編集
@@ -527,12 +535,15 @@ DVI
 やり直す
 \family default
 （あるいはツールバーボタン
-\begin_inset Graphics
-	filename ../../images/redo.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "redo"
 \end_inset
 
+
+\family default
 ）を選択して、新しい方に戻ってください。
 \end_layout
 
@@ -553,12 +564,15 @@ DVI
 切り取り
 \family default
 （あるいはツールバーボタン
-\begin_inset Graphics
-	filename ../../images/cut.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "cut"
 \end_inset
 
+
+\family default
 ）、
 \family sans
 編集
@@ -569,12 +583,15 @@ DVI
 コピー
 \family default
 （あるいはツールバーボタン
-\begin_inset Graphics
-	filename ../../images/copy.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "copy"
 \end_inset
 
+
+\family default
 ）、または
 \family sans
 編集
@@ -585,12 +602,15 @@ DVI
 貼り付け
 \family default
 （あるいはツールバーボタン
-\begin_inset Graphics
-	filename ../../images/paste.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "paste"
 \end_inset
 
+
+\family default
 ）を使ってください。また
 \emph on
 マウスの中ボタン
@@ -609,12 +629,15 @@ DVI
 検索／置換
 \family default
 （あるいはツールバー
-\begin_inset Graphics
-	filename ../../images/dialog-show_findreplace.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show findreplace"
 \end_inset
 
+
+\family default
 ）を選択してください。ダイアログボックスで
 \family sans
 次候補
@@ -646,12 +669,15 @@ status collapsed
 任意設定
 \family default
 ダイアログボックス内にある切替ボタン（あるいはツールバーボタン
-\begin_inset Graphics
-	filename ../../images/dialog-show_character.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
 \end_inset
 
+
+\family default
 ）を使えば、テキストを
 \emph on
 強調
@@ -1064,7 +1090,17 @@ Return
 \family sans
 箇条書き（記号）
 \family default
-を選びます。するとLyXは、行頭に小さな「印」（ブリット）を描画します。以下のように理由を入力してください。
+を選びます(
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "layout Itemize"
+\end_inset
+
+
+\family default
+)。するとLyXは、行頭に小さな「印」（ブリット）を描画します。以下のように理由を入力してください。
 \end_layout
 
 \begin_layout LyX-Code
@@ -1137,7 +1173,17 @@ LyXでは、箇条書きの
 \family sans
 箇条書き（連番）
 \family default
-を選択してください。ほら！一瞬です。前述したように、項目を加えたり削除したりすると、LyXは自動的に連番を更新してくれます。
+を選択してください(
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "layout Enumerate"
+\end_inset
+
+
+\family default
+)。ほら！一瞬です。前述したように、項目を加えたり削除したりすると、LyXは自動的に連番を更新してくれます。
 \end_layout
 
 \begin_layout Standard
@@ -1149,8 +1195,35 @@ LyXでは、箇条書きの
 \family sans
 箇条書き（一覧）
 \family default
-の出力がどのようなものになるかを見るために、この箇条書きが選択された状態のまま、これらの環境に変更してみるとよろしいでしょう。これらの2つの環境では、箇条書きの
-各項目は、最初の単語が用語として表示され、段落の残り（
+の出力がどのようなものになるかを見るために、この箇条書きが選択された状態のまま、これらの環境に変更してみるとよろしいでしょう
+\lang english
+(
+\family sans
+\lang japanese
+
+\begin_inset Info
+type  "icon"
+arg   "layout Description"
+\end_inset
+
+
+\family default
+\lang english
+ and 
+\family sans
+\lang japanese
+
+\begin_inset Info
+type  "icon"
+arg   "layout List"
+\end_inset
+
+
+\family default
+\lang english
+)
+\lang japanese
+。これらの2つの環境では、箇条書きの各項目は、最初の単語が用語として表示され、段落の残り（
 \family sans
 Return
 \family default
@@ -1764,12 +1837,15 @@ status collapsed
 ラベル
 \family default
 を選択するかツールバーボタン
-\begin_inset Graphics
-	filename ../../images/label-insert.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
+
+\family default
 を押してください。ダイアログボックスが、入力候補を表示してラベル名の入力を求めます。OKボタンを押すと、そのラベル名が節見出しの横にボックス表示されます。
 \end_layout
 
@@ -1801,12 +1877,15 @@ status collapsed
 相互参照
 \family default
 かツールバーボタン
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_ref.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
+
+\family default
 を選択してください。
 \family sans
 相互参照
@@ -1923,12 +2002,15 @@ example_raw.lyx
 
 \begin_layout Standard
 脚注は、ツールバーの
-\begin_inset Graphics
-	filename ../../images/footnote-insert.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
 \end_inset
 
+
+\family default
 ボタンか
 \family sans
 挿入
@@ -1939,12 +2021,15 @@ example_raw.lyx
 脚注
 \family default
 メニューを使えば、加えることができます。現在の文中にあるLyXという単語のどれでもいいですから、その単語の後ろにカーソルを持っていって、ツールバーの
-\begin_inset Graphics
-	filename ../../images/footnote-insert.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
 \end_inset
 
+
+\family default
 ボタンを押して下さい。すると脚注ボックスが現れて、脚注の文章が入力できるようになります。カーソルが脚注ボックスの先頭に現れますから、次のように入力してください。
 \end_layout
 
@@ -1977,12 +2062,15 @@ status collapsed
 貼り付け
 \family default
 をしてみてください。また通常の本文を脚注へ変えることもできます。脚注にしたい場所を選択して
-\begin_inset Graphics
-	filename ../../images/footnote-insert.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
 \end_inset
 
+
+\family default
 ボタンを押してください。脚注を通常の本文に戻すには、カーソルが脚注の先頭にある時にバックスペースキーを押すか、カーソルが脚注の最後にある時に削除キーを押してくだ
 さい。
 \end_layout
@@ -1998,12 +2086,15 @@ status collapsed
 傍注
 \family default
 を選ぶか、ツールバーの
-\begin_inset Graphics
-	filename ../../images/marginalnote-insert.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "marginalnote-insert"
 \end_inset
 
+
+\family default
 ボタンを押せば追加することができます。傍注は脚注とほとんど同じですが、以下の点が違います。
 \end_layout
 
@@ -2083,12 +2174,15 @@ LyXは各文献の前に四角に囲まれた番号を自動的につけます�
 文献引用
 \family default
 を選ぶか、ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_citation.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset citation"
 \end_inset
 
+
+\family default
 を押してください。すると、
 \family sans
 文献引用
@@ -2243,12 +2337,15 @@ eXを使ったことのない人でも
 
 \begin_layout Standard
 代わりに、正しく組版されるような数式を作りましょう。数式を作るには、ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/math-mode.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-mode"
 \end_inset
 
+
+\family default
 を押すか、
 \family sans
 挿入\SpecialChar \menuseparator
@@ -2424,7 +2521,17 @@ example_raw.lyx
 表示\SpecialChar \menuseparator
 ツールバー
 \family default
-メニューで手動で有効にすることもできます。上記メニューで「数式」 をクリックすると、ツールバーは底面にずっとされるようになります。この状態にあることは、
+メニューで手動で有効にすることもできます(
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "toolbar-toggle math"
+\end_inset
+
+
+\family default
+)。上記メニューで「数式」 をクリックすると、ツールバーは底面にずっとされるようになります。この状態にあることは、
 \family sans
 ツールバー
 \family default
@@ -2455,12 +2562,15 @@ example_raw.lyx
 
 \begin_layout Standard
 平方根を入れるには、
-\begin_inset Graphics
-	filename ../../images/math/sqrt.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\sqrt"
 \end_inset
 
+
+\family default
 ボタンを押して下さい。平方根があらわれ、カーソルが平方根の中の新しい挿入ポイントへ移動します。そこへ変数でも数字でも、他の平方根でも、分数でも好きなものを入力で
 きます。LyXは平方根の中に書かれたものに応じて自動的に平方根の大きさを変えてくれます。
 \end_layout
@@ -2475,12 +2585,15 @@ example_raw.lyx
 \end_inset
 
 のようなアクセントを付けることも同様にすることができます。装飾は、ツールバーの
-\begin_inset Graphics
-	filename ../../images/math/hat.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\hat"
 \end_inset
 
+
+\family default
 ボタンから選択できます。装飾を選ぶと、その装飾の上か下に挿入ポイントが出てくるので、その中に装飾を付けたい文字を入力して下さい。装飾には、入力した文字に応じて長
 さの変わる可変長のものと、一文字のみを装飾するのに適した固定長のものの二つの種類があります。
 \end_layout
@@ -2491,12 +2604,15 @@ example_raw.lyx
 区切り記号
 \family default
 ボタン
-\begin_inset Graphics
-	filename ../../images/dialog-show_mathdelimiter.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathdelimiter"
 \end_inset
 
+
+\family default
 を押すと
 \family sans
 、区切り記号
@@ -2543,12 +2659,29 @@ example_raw.lyx
 数式ツールバー
 \family default
 の分数ボタン
-\begin_inset Graphics
-	filename ../../images/math/frac.png
-	scale 60
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac"
 \end_inset
 
+
+\family default
+ 
+\lang english
+or
+\lang japanese
+ 
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac-square"
+\end_inset
+
+
+\family default
 をクリックしてください。LyXは、二つの挿入ポイントをもつ分数を表示します。多分わかるとは思いますが、矢印キーとマウスで分子と分母の間を移動できます。上の四角を
 クリックして「１」を入力して下さい。下向きの矢印キーで分母に移り、「2」を入れて下さい。分数のできあがりです！もちろん二つの四角のそれぞれには、数字以外のもの、
 すなわち上付き文字のついた変数や平方根、別の分数、その他諸々を入力することができます。
@@ -2601,12 +2734,15 @@ example_raw.lyx
 数式ツールバー
 \family default
 ボタン
-\begin_inset Graphics
-	filename ../../images/math/functions.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\functions"
 \end_inset
 
+
+\family default
 をクリックし、現れる関数一覧でsinをクリックして下さい。LyX中に、斜字でないローマン体の「sin」という単語が黒で表示されるでしょう。この単語全体が一つの記
 号として取り扱われるので、
 \family sans
@@ -2650,12 +2786,15 @@ example_raw.lyx
 数式ツールバー
 \family default
 から行列ボタン
-\begin_inset Graphics
-	filename ../../images/dialog-show_mathmatrix.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathmatrix"
 \end_inset
 
+
+\family default
 を押して下さい。現れるダイアログで、行列の行数と列数を選択することができます。行数を2行、列数を3列にして
 \family sans
 OK
@@ -2680,33 +2819,33 @@ OK
 行と列
 \family default
 メニューか
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-row.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-row"
 \end_inset
 
 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-row.png
-	scale 75
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-row"
 \end_inset
 
 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-column.png
-	scale 75
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-column"
 \end_inset
 
 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-column.png
-	scale 75
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-column"
 \end_inset
 
+
+\family default
 ボタンを使ってください。
 \end_layout
 
@@ -2741,12 +2880,15 @@ OK
 別行建て
 \family default
 ボタン
-\begin_inset Graphics
-	filename ../../images/math-display.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-display"
 \end_inset
 
+
+\family default
 を押して下さい。こうすると、数式が中央揃えになり、上下に空白行が加えられます。何か数式を入力してファイルをコンパイルし、どのように表示されるかご覧になって下さい
 。
 \family sans
@@ -2911,12 +3053,15 @@ LyXは、表のWYSIWYMサポートをしています。表を作るには、
 表
 \family default
 （あるいはツールバー
-\begin_inset Graphics
-	filename ../../images/tabular-insert.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "tabular-insert"
 \end_inset
 
+
+\family default
 ）を使って下さい。表を
 \emph on
 右マウスボタン
@@ -2926,6 +3071,20 @@ LyXは、表のWYSIWYMサポートをしています。表を作るには、
 表設定
 \family default
 ダイアログボックスが現れるので、そこで表の詳しい編集ができます。
+\lang english
+By pressing 
+\family sans
+\lang japanese
+
+\begin_inset Info
+type  "icon"
+arg   "toolbar-toggle table"
+\end_inset
+
+
+\family default
+\lang english
+ the table toolbar will appear permanently.
 \end_layout
 
 \begin_layout Itemize
@@ -2935,12 +3094,15 @@ LyXは、文書中に任意の形式の図を取り込むことができます�
 図
 \family default
 （またはツールバーボタン
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
 \end_inset
 
+
+\family default
 ）を選択します。すると、図ファイルを探したり、図を回転させたり、大きさを変えたりできるようになります）。表や図にはキャプションをつけることができ、LyX
  は自動的に図や表の一覧を生成します。
 \end_layout
@@ -3063,12 +3225,15 @@ TeXモードで入力されたものは、すべて直接LaTeXに渡され、画
 TeXコード
 \family default
 （またはツールバーボタン
-\begin_inset Graphics
-	filename ../../images/ert-insert.png
-	scale 75
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "ert-insert"
 \end_inset
 
+
+\family default
 ）を選択すると、LyXの中でTeXコマンドを使うことができます。この操作で生成されたボックスの中に書かれたのものすべては、そのまま LaTeX
  に渡されることになります。
 \end_layout
@@ -3218,7 +3383,7 @@ whatever.lyx
 \family typewriter
 whatever.tex
 \family default
-を生成します。LyXは、プレビューをするときや、印刷をする場合にはいつも一時的なLaTeXファイルをつくります。
+を生成します。
 \end_layout
 
 \begin_layout Subsection
@@ -3317,11 +3482,7 @@ reference "sec:参考文献"
 
 \end_inset
 
-節参照）を使って参照することができるようになります。
-\family typewriter
-BibTeX
-\family default
-の実行は、LyXが行います。また、
+節参照）を使って参照することができるようになります。また、
 \family sans
 文献引用
 \family default
