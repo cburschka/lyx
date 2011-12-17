@@ -414,8 +414,8 @@ This is Braille.
 \begin_inset VSpace bigskip
 \end_inset
 
-Text can be printed mirrored to be later able to for "print" Braille by
- hand with a needle or another suitable method:
+Text can be printed mirrored for embossing the Braille by hand with a needle
+ or another suitable device:
 \end_layout
 
 \begin_layout Standard
@@ -467,11 +467,11 @@ insets
 \family default
 .
  Every number in this box turns on the corresponding Braille dot.
- For example leads the number
+ For example, the number
 \series bold
  6145
 \series default
- to:
+ results in:
 \begin_inset Newline newline
 \end_inset
 
@@ -504,11 +504,11 @@ brailleeightdotstrue
 \series default
 .
  But the two extra dots are only printed when using a Braille box.
- For example leads the number
+ For example, the number 
 \series bold
- 8175
+8175
 \series default
- in a Braille box leads to:
+ in a Braille box results in:
 \begin_inset Newline newline
 \end_inset
 
