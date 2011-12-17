@@ -1135,7 +1135,7 @@ docstring const getFloatI18nPreamble(docstring const & type,
 	docstring const s2 = docstring(1, 0xF0001);
 	docstring const translated = (langenc == bufenc) ? name
 		: from_ascii("\\inputencoding{") + texenc + from_ascii("}")
-			+ s1 + langenc + s2 + translated + s1 + bufenc + s2;
+			+ s1 + langenc + s2 + name + s1 + bufenc + s2;
 
 	odocstringstream os;
 	os << "\\addto\\captions" << language

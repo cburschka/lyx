@@ -88,6 +88,9 @@ What's new
 - Do not allow user to over-write a file already open. Attempting to do so
   crashes LyX (bug 7921).
 
+- Fix problem with translation of theorem environments when language and
+  buffer encoding differ (bug 7941).
+
 
 * TEX2LYX
 
