@@ -56,7 +56,7 @@ static string const python2(string const & binary, bool verbose = false)
 
 int timeout_min()
 {
-	return 30;
+	return 3;
 }
 
 
