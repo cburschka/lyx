@@ -307,7 +307,7 @@ def get_quoted_value(lines, token, start, end = 0, default = ""):
 
 
 def get_option_value(line, option):
-    rx = option + '\s*=\s*"([^"+])"'
+    rx = option + '\s*=\s*"([^"]+)"'
     rx = re.compile(rx)
     m = rx.search(line)
     if not m:
