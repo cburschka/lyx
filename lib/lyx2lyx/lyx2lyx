@@ -1,5 +1,6 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
+# Copyright (C) 2002-2011 The LyX Team
 # Copyright (C) 2002-2007 José Matos <jamatos@lyx.org>
 # Copyright (C) 2002-2004 Dekel Tsur <dekel@lyx.org>
 #
@@ -15,7 +16,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 " Program used to convert between different versions of the lyx file format."
 import optparse
@@ -27,7 +28,7 @@ def main():
     args["usage"] = "usage: %prog [options] [file]"
 
     args["version"] = """lyx2lyx, version %s
-Copyright (C) 2007 José Matos and Dekel Tsur""" % LyX.version__
+Copyright (C) 2011 The LyX Team, José Matos and Dekel Tsur""" % LyX.version__
 
     args["description"] = """Convert old lyx file <file> to newer format,
     files can be compressed with gzip.  If there no file is specified then
@@ -46,7 +47,7 @@ Copyright (C) 2007 José Matos and Dekel Tsur""" % LyX.version__
     parser.add_option("--noisy",
                       action="store_const", const=10, dest="debug")
     parser.add_option("-c", "--encoding", dest="cjk_encoding",
-                      help="files in format 248 and lower are read and"
+                      help="files in format 413 and lower are read and"
                            " written in the format of CJK-LyX."
                            "If encoding is not given or 'auto' the encoding"
                            "is determined from the locale.")

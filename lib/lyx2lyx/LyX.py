@@ -1,5 +1,6 @@
 # This file is part of lyx2lyx
 # -*- coding: utf-8 -*-
+# Copyright (C) 2002-2011 The LyX Team
 # Copyright (C) 2002-2004 Dekel Tsur <dekel@lyx.org>
 # Copyright (C) 2002-2006 José Matos <jamatos@lyx.org>
 #
@@ -15,7 +16,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 " The LyX module has all the rules related with different lyx file formats."
 
@@ -145,7 +146,7 @@ def trim_eol(line):
 
 
 def get_encoding(language, inputencoding, format, cjk_encoding):
-    " Returns enconding of the lyx file"
+    " Returns enconding of the LyX file"
     if format > 248:
         return "utf8"
     # CJK-LyX encodes files using the current locale encoding.
