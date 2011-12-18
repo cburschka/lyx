@@ -575,6 +575,7 @@ char const * simplefeatures[] = {
 	"mathdesign",
 	"mathrsfs",
 	"mathabx",
+	"mathtools",
 	"ascii",
 	"url",
 	"covington",
