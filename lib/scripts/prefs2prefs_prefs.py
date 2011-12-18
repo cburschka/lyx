@@ -32,6 +32,9 @@
 #   Add a default length unit.
 #   No conversion necessary.
 
+# Incremented to format 6, r40515 by younes
+#   Add use_qimage option.
+#   No conversion necessary.
 
 import re
 
@@ -147,4 +150,5 @@ conversions = [
 	[  3, [ zipped_native ]],
 	[  4, [ remove_default_papersize ]],
 	[  5, []],
+	[  6, []],
 ]

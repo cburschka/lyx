@@ -55,7 +55,7 @@ namespace os = support::os;
 
 namespace {
 
-static unsigned int const LYXRC_FILEFORMAT = 5; // vfr: add default length unit
+static unsigned int const LYXRC_FILEFORMAT = 6; // younes: add use_qimage option
 
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
