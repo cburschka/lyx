@@ -32,9 +32,16 @@ What's new
 
 * TEX2LYX IMPROVEMENTS
 
-- Chess diagram and Spreadsheet external templates are imported
+- Support for included external files via the templates
+  - PDF pages
+  - Chess diagram
+  - Spreadsheet
 
 - tabular* environments are imported
+
+- Formal tables are now supported (bug 4553).
+
+- Support for change tracking commands (bug 4213).
 
 
 * USER INTERFACE
@@ -93,15 +100,6 @@ What's new
 
 
 * TEX2LYX
-
-- Formal tables are now supported (bug 4553).
-
-- Support for included external files via the templates
-  - PDF pages
-  - Chess diagram
-  - Spreadsheet
-
-- Support for change tracking commands (bug 4213).
 
 - Full support for the command \date{} (bug 7844).
 
