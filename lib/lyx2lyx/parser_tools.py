@@ -315,6 +315,15 @@ def get_option_value(line, option):
     return m.group(1)
 
 
+def set_option_value(line, option, value):
+    rx = '(' + option + '\s*=\s*")[^"]+"'
+    rx = re.compile(rx)
+    m = rx.search(line)
+    if not m:
+        return line
+    return re.sub(rx, '\g<1>' + value + '"', line)
+
+
 def del_token(lines, token, start, end = 0):
     """ del_token(lines, token, start, end) -> int
 

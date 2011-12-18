@@ -1171,45 +1171,28 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 				// one multicolumn cell. The contents of that
 				// cell must contain exactly one caption inset
 				// and nothing else.
-				// LyX outputs all caption rows as first head,
-				// so we must not set the caption flag for
-				// captions not in the first head.
 				// Fortunately, the caption flag is only needed
 				// for tables with more than one column.
-				bool usecaption = (rowinfo[row].type == LT_NORMAL ||
-				                   rowinfo[row].type == LT_FIRSTHEAD);
-				for (size_t r = 0; r < row && usecaption; ++r)
-					if (rowinfo[row].type != LT_NORMAL &&
-					    rowinfo[row].type != LT_FIRSTHEAD)
-						usecaption = false;
-				if (usecaption) {
-					rowinfo[row].caption = true;
-					for (size_t c = 1; c < cells.size(); ++c) {
-						if (!cells[c].empty()) {
-							cerr << "Moving cell content '"
-							     << cells[c]
-							     << "' into the caption cell. "
-								"This will probably not work."
-							     << endl;
-							cells[0] += cells[c];
-						}
+				rowinfo[row].caption = true;
+				for (size_t c = 1; c < cells.size(); ++c) {
+					if (!cells[c].empty()) {
+						cerr << "Moving cell content '"
+						     << cells[c]
+						     << "' into the caption cell. "
+							"This will probably not work."
+						     << endl;
+						cells[0] += cells[c];
 					}
-					cells.resize(1);
-					cellinfo[row][col].align      = colinfo[col].align;
-					cellinfo[row][col].multi      = CELL_BEGIN_OF_MULTICOLUMN;
-				} else {
-					cellinfo[row][col].leftlines  = colinfo[col].leftlines;
-					cellinfo[row][col].rightlines = colinfo[col].rightlines;
-					cellinfo[row][col].align      = colinfo[col].align;
 				}
+				cells.resize(1);
+				cellinfo[row][col].align      = colinfo[col].align;
+				cellinfo[row][col].multi      = CELL_BEGIN_OF_MULTICOLUMN;
 				ostringstream os;
 				parse_text_in_inset(p, os, FLAG_CELL, false, context);
 				cellinfo[row][col].content += os.str();
-				if (usecaption) {
-					// add dummy multicolumn cells
-					for (size_t c = 1; c < colinfo.size(); ++c)
-						cellinfo[row][c].multi = CELL_PART_OF_MULTICOLUMN;
-				}
+				// add dummy multicolumn cells
+				for (size_t c = 1; c < colinfo.size(); ++c)
+					cellinfo[row][c].multi = CELL_PART_OF_MULTICOLUMN;
 			} else {
 				cellinfo[row][col].leftlines  = colinfo[col].leftlines;
 				cellinfo[row][col].rightlines = colinfo[col].rightlines;

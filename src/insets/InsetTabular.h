@@ -317,6 +317,19 @@ public:
 		BOX_MINIPAGE = 2
 	};
 
+	enum CaptionType {
+		///
+		CAPTION_FIRSTHEAD,
+		///
+		CAPTION_HEAD,
+		///
+		CAPTION_FOOT,
+		///
+		CAPTION_LASTFOOT,
+		///
+		CAPTION_ANY
+	};
+
 	class ltType {
 	public:
 		// constructor
@@ -505,8 +518,6 @@ public:
 	//
 	// Long Tabular Options support functions
 	///
-	bool checkLTType(row_type row, ltType const &) const;
-	///
 	void setLTHead(row_type row, bool flag, ltType const &, bool first);
 	///
 	bool getRowOfLTHead(row_type row, ltType &) const;
@@ -527,15 +538,15 @@ public:
 	///
 	bool ltCaption(row_type row) const;
 	///
-	bool haveLTHead() const;
+	bool haveLTHead(bool withcaptions = true) const;
 	///
-	bool haveLTFirstHead() const;
+	bool haveLTFirstHead(bool withcaptions = true) const;
 	///
-	bool haveLTFoot() const;
+	bool haveLTFoot(bool withcaptions = true) const;
 	///
-	bool haveLTLastFoot() const;
+	bool haveLTLastFoot(bool withcaptions = true) const;
 	///
-	bool haveLTCaption() const;
+	bool haveLTCaption(CaptionType captiontype = CAPTION_ANY) const;
 	///
 	// end longtable support
 	///

@@ -11,6 +11,13 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2011-12-18 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+	* Format incremented to 421 (r40522)
+	  The caption flag of longtable rows is no longer exclusive to the head
+	  and foot flags, since captions can occur in any of the two heads and
+	  two foots. Before, captions were implicitly in head or firsthead.
+	  For Docbook and XHTML output the caption flag "wins" over head/foot.
+
 2011-12-12 Julien Rioux <jrioux@lyx.org>
 	* Format incremented to 420 (r40484)
 	  New buffer param \biblio_style to specify a document-wide

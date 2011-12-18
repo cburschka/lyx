@@ -1906,45 +1906,49 @@ bool Tabular::getLTNewPage(row_type row) const
 }
 
 
-bool Tabular::haveLTHead() const
+bool Tabular::haveLTHead(bool withcaptions) const
 {
 	if (!is_long_tabular)
 		return false;
 	for (row_type i = 0; i < nrows(); ++i)
-		if (row_info[i].endhead)
+		if (row_info[i].endhead &&
+		    (withcaptions || !row_info[i].caption))
 			return true;
 	return false;
 }
 
 
-bool Tabular::haveLTFirstHead() const
+bool Tabular::haveLTFirstHead(bool withcaptions) const
 {
 	if (!is_long_tabular || endfirsthead.empty)
 		return false;
 	for (row_type r = 0; r < nrows(); ++r)
-		if (row_info[r].endfirsthead)
+		if (row_info[r].endfirsthead &&
+		    (withcaptions || !row_info[r].caption))
 			return true;
 	return false;
 }
 
 
-bool Tabular::haveLTFoot() const
+bool Tabular::haveLTFoot(bool withcaptions) const
 {
 	if (!is_long_tabular)
 		return false;
 	for (row_type r = 0; r < nrows(); ++r)
-		if (row_info[r].endfoot)
+		if (row_info[r].endfoot &&
+		    (withcaptions || !row_info[r].caption))
 			return true;
 	return false;
 }
 
 
-bool Tabular::haveLTLastFoot() const
+bool Tabular::haveLTLastFoot(bool withcaptions) const
 {
 	if (!is_long_tabular || endlastfoot.empty)
 		return false;
 	for (row_type r = 0; r < nrows(); ++r)
-		if (row_info[r].endlastfoot)
+		if (row_info[r].endlastfoot &&
+		    (withcaptions || !row_info[r].caption))
 			return true;
 	return false;
 }
@@ -1959,6 +1963,11 @@ Tabular::idx_type Tabular::setLTCaption(row_type row, bool what)
 		setBottomLine(i, false);
 		setLeftLine(i, false);
 		setRightLine(i, false);
+		if (!row_info[row].endfirsthead && !row_info[row].endhead &&
+		    !row_info[row].endfoot && !row_info[row].endlastfoot) {
+			setLTHead(row, true, endfirsthead, true);
+			row_info[row].endfirsthead = true;
+		}
 	} else {
 		unsetMultiColumn(i);
 		// When unsetting a caption row, also all existing
@@ -1975,13 +1984,34 @@ bool Tabular::ltCaption(row_type row) const
 }
 
 
-bool Tabular::haveLTCaption() const
+bool Tabular::haveLTCaption(CaptionType captiontype) const
 {
 	if (!is_long_tabular)
 		return false;
-	for (row_type r = 0; r < nrows(); ++r)
-		if (row_info[r].caption)
-			return true;
+	for (row_type r = 0; r < nrows(); ++r) {
+		if (row_info[r].caption) {
+			switch (captiontype) {
+			case CAPTION_FIRSTHEAD:
+				if (row_info[r].endfirsthead)
+					return true;
+				break;
+			case CAPTION_HEAD:
+				if (row_info[r].endhead)
+					return true;
+				break;
+			case CAPTION_FOOT:
+				if (row_info[r].endfoot)
+					return true;
+				break;
+			case CAPTION_LASTFOOT:
+				if (row_info[r].endlastfoot)
+					return true;
+				break;
+			case CAPTION_ANY:
+				return true;
+			}
+		}
+	}
 	return false;
 }
 
@@ -2355,17 +2385,7 @@ void Tabular::TeXLongtableHeaderFooter(otexstream & os,
 	if (!is_long_tabular)
 		return;
 
-	// caption handling
-	// the caption must be output before the headers
-	if (haveLTCaption()) {
-		for (row_type r = 0; r < nrows(); ++r) {
-			if (row_info[r].caption)
-				TeXRow(os, r, runparams);
-		}
-	}
 	// output first header info
-	// first header must be output before the header, otherwise the
-	// correct caption placement becomes really weird
 	if (haveLTFirstHead()) {
 		if (endfirsthead.topDL)
 			os << "\\hline\n";
@@ -2487,7 +2507,7 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 				os << "\\textFR{";
 			else if (lang == "arabic_arabi")
 				os << "\\textAR{";
-			// currently, remaning RTL languages are
+			// currently, remaining RTL languages are
 			// arabic_arabtex and hebrew
 			else
 				os << "\\R{";
@@ -2537,13 +2557,7 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 				os << " &\n";
 		}
 	}
-	if (row_info[row].caption && !endfirsthead.empty && !haveLTFirstHead())
-		// if no first header and no empty first header is used,
-		// the caption needs to be terminated by \endfirsthead
-		// (bug 6057)
-		os << "\\endfirsthead";
-	else
-		os << "\\tabularnewline";
+	os << "\\tabularnewline";
 	if (row_info[row].bottom_space_default) {
 		if (use_booktabs)
 			os << "\\addlinespace";
@@ -2809,6 +2823,7 @@ int Tabular::docbook(odocstream & os, OutputParams const & runparams) const
 	//+---------------------------------------------------------------------
 
 	// output caption info
+	// The caption flag wins over head/foot
 	if (haveLTCaption()) {
 		os << "<caption>\n";
 		++ret;
@@ -2821,11 +2836,12 @@ int Tabular::docbook(odocstream & os, OutputParams const & runparams) const
 		++ret;
 	}
 	// output header info
-	if (haveLTHead() || haveLTFirstHead()) {
+	if (haveLTHead(false) || haveLTFirstHead(false)) {
 		os << "<thead>\n";
 		++ret;
 		for (row_type r = 0; r < nrows(); ++r) {
-			if (row_info[r].endhead || row_info[r].endfirsthead) {
+			if ((row_info[r].endhead || row_info[r].endfirsthead) &&
+			    !row_info[r].caption) {
 				ret += docbookRow(os, r, runparams);
 			}
 		}
@@ -2833,11 +2849,12 @@ int Tabular::docbook(odocstream & os, OutputParams const & runparams) const
 		++ret;
 	}
 	// output footer info
-	if (haveLTFoot() || haveLTLastFoot()) {
+	if (haveLTFoot(false) || haveLTLastFoot(false)) {
 		os << "<tfoot>\n";
 		++ret;
 		for (row_type r = 0; r < nrows(); ++r) {
-			if (row_info[r].endfoot || row_info[r].endlastfoot) {
+			if ((row_info[r].endfoot || row_info[r].endlastfoot) &&
+			    !row_info[r].caption) {
 				ret += docbookRow(os, r, runparams);
 			}
 		}
@@ -2943,6 +2960,7 @@ docstring Tabular::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
 		}
 		xs << html::StartTag("div", "class='longtable' style='text-align: " + align + ";'")
 		   << html::CR();
+		// The caption flag wins over head/foot
 		if (haveLTCaption()) {
 			xs << html::StartTag("div", "class='longtable-caption' style='text-align: " + align + ";'")
 			   << html::CR();
@@ -2956,30 +2974,32 @@ docstring Tabular::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
 	xs << html::StartTag("table") << html::CR();
 
 	// output header info
-	bool const havefirsthead = haveLTFirstHead();
+	bool const havefirsthead = haveLTFirstHead(false);
 	// if we have a first head, then we are going to ignore the
 	// headers for the additional pages, since there aren't any
 	// in XHTML. this test accomplishes that.
-	bool const havehead = !havefirsthead && haveLTHead();
+	bool const havehead = !havefirsthead && haveLTHead(false);
 	if (havehead || havefirsthead) {
 		xs << html::StartTag("thead") << html::CR();
 		for (row_type r = 0; r < nrows(); ++r) {
-			if ((havefirsthead && row_info[r].endfirsthead)
-			    || (havehead && row_info[r].endhead)) {
+			if (((havefirsthead && row_info[r].endfirsthead) ||
+			     (havehead && row_info[r].endhead)) &&
+			    !row_info[r].caption) {
 				ret += xhtmlRow(xs, r, runparams, true);
 			}
 		}
 		xs << html::EndTag("thead") << html::CR();
 	}
 	// output footer info
-	bool const havelastfoot = haveLTLastFoot();
+	bool const havelastfoot = haveLTLastFoot(false);
 	// as before.
-	bool const havefoot = !havelastfoot && haveLTFoot();
+	bool const havefoot = !havelastfoot && haveLTFoot(false);
 	if (havefoot || havelastfoot) {
 		xs << html::StartTag("tfoot") << html::CR();
 		for (row_type r = 0; r < nrows(); ++r) {
-			if ((havelastfoot && row_info[r].endlastfoot)
-			    || (havefoot && row_info[r].endfoot)) {
+			if (((havelastfoot && row_info[r].endlastfoot) ||
+			     (havefoot && row_info[r].endfoot)) &&
+			    !row_info[r].caption) {
 				ret += xhtmlRow(xs, r, runparams);
 			}
 		}
@@ -4583,10 +4603,9 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 
 		// every row can only be one thing:
-		// either a footer or header or caption
+		// either a footer or header
 		case Tabular::SET_LTFIRSTHEAD:
-			status.setEnabled(sel_row_start == sel_row_end
-				&& !tabular.ltCaption(sel_row_start));
+			status.setEnabled(sel_row_start == sel_row_end);
 			status.setOnOff(tabular.getRowOfLTFirstHead(sel_row_start, dummyltt));
 			break;
 
@@ -4595,8 +4614,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 
 		case Tabular::SET_LTHEAD:
-			status.setEnabled(sel_row_start == sel_row_end
-				&& !tabular.ltCaption(sel_row_start));
+			status.setEnabled(sel_row_start == sel_row_end);
 			status.setOnOff(tabular.getRowOfLTHead(sel_row_start, dummyltt));
 			break;
 
@@ -4605,8 +4623,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 
 		case Tabular::SET_LTFOOT:
-			status.setEnabled(sel_row_start == sel_row_end
-				&& !tabular.ltCaption(sel_row_start));
+			status.setEnabled(sel_row_start == sel_row_end);
 			status.setOnOff(tabular.getRowOfLTFoot(sel_row_start, dummyltt));
 			break;
 
@@ -4615,8 +4632,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 
 		case Tabular::SET_LTLASTFOOT:
-			status.setEnabled(sel_row_start == sel_row_end
-				&& !tabular.ltCaption(sel_row_start));
+			status.setEnabled(sel_row_start == sel_row_end);
 			status.setOnOff(tabular.getRowOfLTLastFoot(sel_row_start, dummyltt));
 			break;
 
@@ -4628,19 +4644,36 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setOnOff(tabular.getLTNewPage(sel_row_start));
 			break;
 
-		// only one row can be the caption
+		// only one row in head/firsthead/foot/lasthead can be the caption
 		// and a multirow cannot be set as caption
 		case Tabular::SET_LTCAPTION:
-		case Tabular::UNSET_LTCAPTION:
-		case Tabular::TOGGLE_LTCAPTION:
 			status.setEnabled(sel_row_start == sel_row_end
-				&& !tabular.getRowOfLTFirstHead(sel_row_start, dummyltt)
-				&& !tabular.getRowOfLTHead(sel_row_start, dummyltt)
-				&& !tabular.getRowOfLTFoot(sel_row_start, dummyltt)
-				&& !tabular.getRowOfLTLastFoot(sel_row_start, dummyltt)
-				&& (!tabular.haveLTCaption()
-					|| tabular.ltCaption(sel_row_start))
+				&& (!tabular.getRowOfLTFirstHead(sel_row_start, dummyltt)
+				 || !tabular.haveLTCaption(Tabular::CAPTION_FIRSTHEAD))
+				&& (!tabular.getRowOfLTHead(sel_row_start, dummyltt)
+				 || !tabular.haveLTCaption(Tabular::CAPTION_HEAD))
+				&& (!tabular.getRowOfLTFoot(sel_row_start, dummyltt)
+				 || !tabular.haveLTCaption(Tabular::CAPTION_FOOT))
+				&& (!tabular.getRowOfLTLastFoot(sel_row_start, dummyltt)
+				 || !tabular.haveLTCaption(Tabular::CAPTION_LASTFOOT))
 				&& !tabular.isMultiRow(sel_row_start));
+			status.setOnOff(tabular.ltCaption(sel_row_start));
+			break;
+
+		case Tabular::UNSET_LTCAPTION:
+			status.setEnabled(sel_row_start == sel_row_end && tabular.ltCaption(sel_row_start));
+			break;
+
+		case Tabular::TOGGLE_LTCAPTION:
+			status.setEnabled(sel_row_start == sel_row_end && (tabular.ltCaption(sel_row_start)
+				|| ((!tabular.getRowOfLTFirstHead(sel_row_start, dummyltt)
+				  || !tabular.haveLTCaption(Tabular::CAPTION_FIRSTHEAD))
+				 && (!tabular.getRowOfLTHead(sel_row_start, dummyltt)
+				  || !tabular.haveLTCaption(Tabular::CAPTION_HEAD))
+				 && (!tabular.getRowOfLTFoot(sel_row_start, dummyltt)
+				  || !tabular.haveLTCaption(Tabular::CAPTION_FOOT))
+				 && (!tabular.getRowOfLTLastFoot(sel_row_start, dummyltt)
+				  || !tabular.haveLTCaption(Tabular::CAPTION_LASTFOOT)))));
 			status.setOnOff(tabular.ltCaption(sel_row_start));
 			break;
 

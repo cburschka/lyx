@@ -983,7 +983,6 @@ def revert_multirow(document):
           numrows = int(numrows)
           numcols = int(numcols)
         except:
-          document.warning(numrows)
           document.warning("Unable to determine rows and columns!")
           begin_table = end_table
           continue
@@ -2222,7 +2221,6 @@ def revert_multirowOffset(document):
           numrows = int(numrows)
           numcols = int(numcols)
         except:
-          document.warning(numrows)
           document.warning("Unable to determine rows and columns!")
           begin_table = end_table
           continue

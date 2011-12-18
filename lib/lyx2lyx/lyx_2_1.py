@@ -25,8 +25,8 @@ import sys, os
 
 # Uncomment only what you need to import, please.
 
-from parser_tools import del_token, find_token, find_end_of_inset, get_value, \
-    get_quoted_value
+from parser_tools import del_token, find_token, find_end_of, find_end_of_inset, \
+    get_option_value, get_value, get_quoted_value, set_option_value
 
 #from parser_tools import find_token, find_end_of, find_tokens, \
   #find_token_exact, find_end_of_inset, find_end_of_layout, \
@@ -220,7 +220,7 @@ def revert_australian(document):
         else:
             document.body[j] = document.body[j].replace("\\lang australian", "\\lang english") 
         j += 1
-    
+
 
 def convert_biblio_style(document):
     "Add a sensible default for \\biblio_style based on the citation engine."
@@ -261,6 +261,77 @@ def revert_biblio_style(document):
         i = j
 
 
+def handle_longtable_captions(document, forward):
+    begin_table = 0
+    while True:
+        begin_table = find_token(document.body, '<lyxtabular version=', begin_table)
+        if begin_table == -1:
+            break
+        end_table = find_end_of(document.body, begin_table, '<lyxtabular', '</lyxtabular>')
+        if end_table == -1:
+            document.warning("Malformed LyX document: Could not find end of table.")
+            begin_table += 1
+            continue
+        fline = find_token(document.body, "<features", begin_table, end_table)
+        if fline == -1:
+            document.warning("Can't find features for inset at line " + str(begin_table))
+            begin_table += 1
+            continue
+        p = document.body[fline].find("islongtable")
+        if p == -1:
+            # no longtable
+            begin_table += 1
+            continue
+        numrows = get_option_value(document.body[begin_table], "rows")
+        try:
+            numrows = int(numrows)
+        except:
+            document.warning(document.body[begin_table])
+            document.warning("Unable to determine rows!")
+            begin_table = end_table
+            continue
+        begin_row = begin_table
+        for row in range(numrows):
+            begin_row = find_token(document.body, '<row', begin_row, end_table)
+            if begin_row == -1:
+                document.warning("Can't find row " + str(row + 1))
+                break
+            end_row = find_end_of(document.body, begin_row, '<row', '</row>')
+            if end_row == -1:
+                document.warning("Can't find end of row " + str(row + 1))
+                break
+            if forward:
+                if (get_option_value(document.body[begin_row], 'caption') == 'true' and
+                    get_option_value(document.body[begin_row], 'endfirsthead') != 'true' and
+                    get_option_value(document.body[begin_row], 'endhead') != 'true' and
+                    get_option_value(document.body[begin_row], 'endfoot') != 'true' and
+                    get_option_value(document.body[begin_row], 'endlastfoot') != 'true'):
+                    document.body[begin_row] = set_option_value(document.body[begin_row], 'caption', 'true", endfirsthead="true')
+            elif get_option_value(document.body[begin_row], 'caption') == 'true':
+                if get_option_value(document.body[begin_row], 'endfirsthead') == 'true':
+                    document.body[begin_row] = set_option_value(document.body[begin_row], 'endfirsthead', 'false')
+                if get_option_value(document.body[begin_row], 'endhead') == 'true':
+                    document.body[begin_row] = set_option_value(document.body[begin_row], 'endhead', 'false')
+                if get_option_value(document.body[begin_row], 'endfoot') == 'true':
+                    document.body[begin_row] = set_option_value(document.body[begin_row], 'endfoot', 'false')
+                if get_option_value(document.body[begin_row], 'endlastfoot') == 'true':
+                    document.body[begin_row] = set_option_value(document.body[begin_row], 'endlastfoot', 'false')
+            begin_row = end_row
+        # since there could be a tabular inside this one, we 
+        # cannot jump to end.
+        begin_table += 1
+
+
+def convert_longtable_captions(document):
+    "Add a firsthead flag to caption rows"
+    handle_longtable_captions(document, True)
+
+
+def revert_longtable_captions(document):
+    "remove head/foot flag from caption rows"
+    handle_longtable_captions(document, False)
+
+
 ##
 # Conversion hub
 #
@@ -274,9 +345,11 @@ convert = [
            [418, []],
            [419, []],
            [420, [convert_biblio_style]],
+           [421, [convert_longtable_captions]],
           ]
 
 revert =  [
+           [420, [revert_longtable_captions]],
            [419, [revert_biblio_style]],
            [418, [revert_australian]],
            [417, [revert_justification]],
