@@ -247,7 +247,10 @@ void GuiTabular::checkEnabled()
 	// depending on the cursor position is very very unintuitive...
 	// We need some edit boxes to show which rows are header/footer/etc
 	// without having to move the cursor first.
-	headerStatusCB->setEnabled(longtabular);
+	headerStatusCB->setEnabled(longtabular
+		&& (headerStatusCB->isChecked() ?
+		    funcEnabled(Tabular::UNSET_LTHEAD) :
+		    funcEnabled(Tabular::SET_LTHEAD)));
 	headerBorderAboveCB->setEnabled(longtabular
 		&& headerStatusCB->isChecked());
 	headerBorderBelowCB->setEnabled(longtabular
@@ -259,14 +262,19 @@ void GuiTabular::checkEnabled()
 	// check if setting a first header is allowed
 	// additionally check firstheaderNoContentsCB because when this is
 	// the case a first header makes no sense
-	firstheaderStatusCB->setEnabled(funcEnabled(Tabular::SET_LTFIRSTHEAD)
+	firstheaderStatusCB->setEnabled((firstheaderStatusCB->isChecked() ?
+		   funcEnabled(Tabular::UNSET_LTFIRSTHEAD) :
+		   funcEnabled(Tabular::SET_LTFIRSTHEAD))
 		&& longtabular && !firstheaderNoContentsCB->isChecked());
 	firstheaderBorderAboveCB->setEnabled(longtabular
 		&& firstheaderStatusCB->isChecked());
 	firstheaderBorderBelowCB->setEnabled(longtabular
 		&& firstheaderStatusCB->isChecked());
 
-	footerStatusCB->setEnabled(longtabular);
+	footerStatusCB->setEnabled(longtabular
+		&& (footerStatusCB->isChecked() ?
+		    funcEnabled(Tabular::UNSET_LTFOOT) :
+		    funcEnabled(Tabular::SET_LTFOOT)));
 	footerBorderAboveCB->setEnabled(longtabular
 		&& footerBorderAboveCB->isChecked());
 	footerBorderBelowCB->setEnabled(longtabular
@@ -278,7 +286,9 @@ void GuiTabular::checkEnabled()
 	// check if setting a last footer is allowed
 	// additionally check lastfooterNoContentsCB because when this is
 	// the case a last footer makes no sense
-	lastfooterStatusCB->setEnabled(funcEnabled(Tabular::SET_LTLASTFOOT)
+	lastfooterStatusCB->setEnabled((lastfooterStatusCB->isChecked() ?
+		   funcEnabled(Tabular::UNSET_LTLASTFOOT) :
+		   funcEnabled(Tabular::SET_LTLASTFOOT))
 		&& longtabular && !lastfooterNoContentsCB->isChecked());
 	lastfooterBorderAboveCB->setEnabled(longtabular
 		&& lastfooterBorderAboveCB->isChecked());
