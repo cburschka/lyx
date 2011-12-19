@@ -1909,12 +1909,12 @@
 0x2234 ""                         "" "" "\\therefore" "amssymb" # THEREFORE
 0x2235 ""                         "" "" "\\because" "amssymb" # BECAUSE
 #0x2236 ""                         "" "" "" "" # RATIO
-0x2237 ""                         "" "" "" "\\dblcolon" "mathtools" # PROPORTION
+0x2237 ""                         "" "" "\\dblcolon" "mathtools" # PROPORTION
 #0x2238 ""                         "" "" "" "" # DOT MINUS
-0x2239 ""                         "" "" "" "\\eqcolon" "mathtools" # EXCESS
+0x2239 ""                         "" "" "\\eqcolon" "mathtools" # EXCESS
 #0x223a ""                         "" "" "" "" # GEOMETRIC PROPORTION
 #0x223b ""                         "" "" "" "" # HOMOTHETIC
-0x223c ""                         "" "" "" "\\sim" # TILDE OPERATOR
+0x223c ""                         "" "" "\\sim" "" # TILDE OPERATOR
 #0x223d ""                         "" "" "" "" # REVERSED TILDE
 #0x223e ""                         "" "" "" "" # INVERTED LAZY S
 #0x223f ""                         "" "" "" "" # SINE WAVE
@@ -1938,8 +1938,8 @@
 #0x2251 ""                         "" "" "" "" # GEOMETRICALLY EQUAL TO
 #0x2252 ""                         "" "" "" "" # APPROXIMATELY EQUAL TO OR THE IMAGE OF
 #0x2253 ""                         "" "" "" "" # IMAGE OF OR APPROXIMATELY EQUAL TO
-0x2254 ""                         "" "" "" "\\coloneqq" "mathtools" # COLON EQUALS
-0x2255 ""                         "" "" "" "\\\eqqcolon" "mathtools"  # EQUALS COLON
+0x2254 ""                         "" "" "\\coloneqq" "mathtools" # COLON EQUALS
+0x2255 ""                         "" "" "\\eqqcolon" "mathtools" # EQUALS COLON
 #0x2256 ""                         "" "" "" "" # RING IN EQUAL TO
 #0x2257 ""                         "" "" "" "" # RING EQUAL TO
 #0x2258 ""                         "" "" "" "" # CORRESPONDS TO
