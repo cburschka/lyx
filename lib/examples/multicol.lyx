@@ -78,15 +78,15 @@ Purpose
 \end_layout
 
 \begin_layout Standard
-The aim for this chapter is to show how the LaTeX package 
-\family typewriter
+The aim for this chapter is to show how the LaTeX-package 
+\series bold
 multicol
-\family default
+\series default
  can be used in a LyX document.
  As LyX doesn't support the 
-\family typewriter
+\series bold
 multicol
-\family default
+\series default
  package natively yet, we have to use some small hacks.
  By reading this section it should be obvious how to do this.
 \end_layout
@@ -97,9 +97,9 @@ Limitations
 
 \begin_layout Standard
 The 
-\family typewriter
+\series bold
 multicol
-\family default
+\series default
  package allows switching between one and multicolumn format on the same
  page.
  Footnotes are handled correctly (for the most part), but will be placed
@@ -114,6 +114,22 @@ ion.
 Examples
 \end_layout
 
+\begin_layout Standard
+To get multiple columns, you have to load 
+\series bold
+multicol
+\series default
+ in the LaTeX preamble of your document with this line:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+usepackage{multicol}
+\end_layout
+
 \begin_layout Subsubsection
 Two columns
 \end_layout
@@ -121,17 +137,17 @@ Two columns
 \begin_layout Standard
 If you want to have two columns in your text, you have use LaTeX mode to
  insert 
-\family typewriter
+\series bold
 
 \backslash
 begin{multicols}{2}
-\family default
+\series default
  at the point where you want the two column layout to start, and then 
-\family typewriter
+\series bold
 
 \backslash
 end{multicols}
-\family default
+\series default
  where you want it to end.
  Like this:
 \end_layout
@@ -223,8 +239,11 @@ Multiple columns
 
 \begin_layout Standard
 The same pattern is used when you want more than two columns.
- (You can have more than 3 columns if you want , but that might not be very
- pleasant for the eye.)
+ (You can have more than 3
+\begin_inset space ~
+\end_inset
+
+columns if you want , but that might not be very pleasant for the eye.)
 \end_layout
 
 \begin_layout Standard
@@ -434,9 +453,9 @@ Advanced Examples
 
 \begin_layout Standard
 As you probably know 
-\family typewriter
+\series bold
 multicol
-\family default
+\series default
  has several customizing variables.
  The following examples shows how these can be used from LyX.
 \end_layout
@@ -615,26 +634,29 @@ Free Space
 
 \begin_layout Standard
 The 
-\family typewriter
+\series bold
 multicol
-\family default
+\series default
  package demands that a certain amount of space is available before and
  after a multicolumn section.
  In addition 
-\family typewriter
+\series bold
 multicol
-\family default
+\series default
  inserts a given space in front of and after the multicol section.
  The commands to change the default settings for this must be given just
  before the 
-\family typewriter
+\series bold
 
 \backslash
 begin{multicols}
-\family default
+\series default
 .
- This example puts a space of 3 cm in front of and after the multicolumn
- text:
+ This example puts a space of 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm in front of and after the multicolumn text:
 \end_layout
 
 \begin_layout Standard
@@ -709,11 +731,11 @@ Note:
 
 \begin_layout Standard
 The values you set with 
-\family typewriter
+\series bold
 
 \backslash
 setlength
-\family default
+\series default
  must be reset to default after use, or you will get the modified value
  in the rest of your document.
 \end_layout
@@ -747,7 +769,11 @@ multicols
 \family default
  environment is automatically calculated, but you can modify the space between
  two columns explicitly.
- The space between the following two columns is 3 cm wide:
+ The space between the following two columns is 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm wide:
 \end_layout
 
 \begin_layout Standard
@@ -774,7 +800,10 @@ begin{multicols}{2}
 
 \size small
 My observations of No.
- 427 Park Lane did little to clear up the problem in which I was interested.
+\begin_inset space ~
+\end_inset
+
+427 Park Lane did little to clear up the problem in which I was interested.
  The house was separated from the street by a low wall and railing, the
  whole not more than five feet high.
  It was perfectly easy, therefore, for anyone to get into the garden, but
@@ -833,14 +862,22 @@ Vertical Lines
 
 \begin_layout Standard
 Between every two columns, a rule of width 
-\family typewriter
+\series bold
 
 \backslash
 columnseprule
-\family default
+\series default
  is placed.
- If this rule is set to 0 pt, the rule is suppressed.
- In the following example, the line separating the two columns is 2 pt wide.
+ If this rule is set to 0
+\begin_inset space \thinspace{}
+\end_inset
+
+pt, the rule is suppressed.
+ In the following example, the line separating the two columns is 2
+\begin_inset space \thinspace{}
+\end_inset
+
+pt wide.
 \end_layout
 
 \begin_layout Standard
