@@ -1388,6 +1388,7 @@ dist_layouts_DATA =\
 	layouts/iopart.layout \
 	layouts/isprs.layout \
 	layouts/jarticle.layout \
+	layouts/jasatex.layout \
 	layouts/jbook.layout \
 	layouts/jgrga.layout \
 	layouts/jreport.layout \
@@ -1552,6 +1553,7 @@ dist_templates_DATA = \
 	templates/ijmpc.lyx \
 	templates/ijmpd.lyx \
 	templates/iop-article.lyx \
+	templates/JASA.lyx \
 	templates/JSS-article.lyx \
 	templates/kluwer.lyx \
 	templates/koma-letter2.lyx \

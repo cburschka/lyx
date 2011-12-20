@@ -1380,6 +1380,7 @@ lib_templates_files = Split('''
     ijmpc.lyx
     ijmpd.lyx
     iop-article.lyx
+    JASA.lyx
     JSS-article.lyx
     kluwer.lyx
     koma-letter2.lyx
@@ -3139,6 +3140,7 @@ lib_layouts_files = Split('''
     iopart.layout
     isprs.layout
     jarticle.layout
+    jasatex.layout
     jbook.layout
     jgrga.layout
     jreport.layout
