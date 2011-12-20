@@ -399,7 +399,6 @@ dist_images_DATA = \
 	images/layout_Scrap.png \
 	images/layout_Section.png \
 	images/lyx-quit.png \
-	images/lyx.png \
 	images/marginalnote-insert.png \
 	images/master-buffer-update.png \
 	images/master-buffer-view.png \
@@ -1591,7 +1590,7 @@ dist_springertemplates_DATA = \
 	templates/springer/svmult_part.lyx \
 	templates/springer/svmult_preface.lyx \
 	templates/springer/svmult_referenc.lyx
-	
+
 thesistemplatesdir = $(pkgdatadir)/templates/thesis
 dist_thesistemplates_DATA = \
 	templates/thesis/Acknowledgments.lyx \
@@ -1611,19 +1610,6 @@ dist_tex_DATA = \
 	tex/lyxskak.sty \
 	tex/revtex.cls
 
-if !INSTALL_WINDOWS
-if !INSTALL_MACOSX
-# install application icons. The 'hicolor' theme is the default theme
-# where applications themselves should install their icons.
-scalableappiconsdir = $(datadir)/icons/hicolor/scalable/apps
-scalableappicons_DATA = images/lyx.svg
-
-fixedappiconsdir = $(datadir)/icons/hicolor/48x48/apps
-fixedappicons_DATA = images/lyx.png
-
-endif
-endif
-
 # subscript.sty is not in dist_tex_DATA since we don't want to install it
 # (it is part of TeXLive). We include it in our source package only so that
 # packagers may decide to install it (e.g. for MikTeX).
@@ -1635,6 +1621,32 @@ dist_ui_DATA = \
 	ui/stdcontext.inc \
 	ui/stdmenus.inc \
 	ui/stdtoolbars.inc
+
+if INSTALL_POSIX
+# install application icons. The 'hicolor' theme is the default theme
+# where applications themselves should install their icons.
+lyx@program_suffix@.svg: images/lyx.svg
+	$(AM_V_GEN)$(INSTALL_DATA) $< $@
+scalableappiconsdir = $(datadir)/icons/hicolor/scalable/apps
+scalableappicons_DATA = lyx@program_suffix@.svg
+
+lyx@program_suffix@.png: images/lyx.png
+	$(AM_V_GEN)$(INSTALL_DATA) $< $@
+fixedappiconsdir = $(datadir)/icons/hicolor/48x48/apps
+fixedappicons_DATA = lyx@program_suffix@.png
+
+# if configure is asked to generate the name with suffix directly, then
+# config.status refuses to rebuild this file (with a variable name), and
+# a build error ensues when lyx.desktop.in is changed.
+lyx@program_suffix@.desktop: lyx.desktop-temp
+	$(AM_V_GEN)$(INSTALL_DATA) $< $@
+desktopdir = $(datadir)/applications
+desktop_DATA = lyx@program_suffix@.desktop
+
+CLEANFILES += lyx@program_suffix@.desktop lyx.desktop-temp \
+              lyx@program_suffix@.svg lyx@program_suffix@.png
+endif
+dist_noinst_DATA += lyx.desktop.in images/lyx.svg images/lyx.png
 
 install-data-hook:
 	$(CHMOD) 755 $(DESTDIR)$(pkgdatadir)/configure.py

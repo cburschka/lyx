@@ -361,6 +361,7 @@ AC_CONFIG_FILES([Makefile \
       development/cygwin/lyxrc.dist \
       development/lyx.spec \
       intl/Makefile \
+      lib/lyx.desktop-temp:lib/lyx.desktop.in
       lib/Makefile \
       lib/doc/Makefile \
       lib/lyx2lyx/lyx2lyx_version.py \
