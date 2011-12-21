@@ -71,7 +71,7 @@ Section "un.LyX" un.SecUnProgramFiles
   
   # Application folder
   SetOutPath "$TEMP"
-  RMDir "$INSTDIR"
+  RMDir /r "$INSTDIR"
   
   # Registry keys
   DeleteRegKey SHCTX "${APP_REGKEY_SETUP}"

@@ -242,7 +242,7 @@ Function StartLyX
   # the time consuming LaTeX package installation
   
   #Exec 'cmd /K " "$INSTDIR\bin\lyx.exe""'
-  Exec "$INSTDIR\${AppRun}"
+  Exec "$INSTDIR\${APP_RUN}"
 
 FunctionEnd
 
