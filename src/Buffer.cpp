@@ -144,7 +144,7 @@ void showPrintError(string const & name)
 
 
 // A storehouse for the cloned buffers.
-list<CloneList> cloned_buffers;
+list<CloneList *> cloned_buffers;
 
 
 class Buffer::Impl
@@ -410,6 +410,18 @@ Buffer::~Buffer()
 				if (d->clone_list_->erase(child))
 					delete child;
 		}
+		// if we're the master buffer, then we should get rid of the list
+		// of clones
+		if (!parent()) {
+			// if this is not empty, we have leaked something. worse, one of the
+			// children still has a reference to this list.
+			LASSERT(d->clone_list_->empty(), /* */);
+			list<CloneList *>::iterator it = 
+				find(cloned_buffers.begin(), cloned_buffers.end(), d->clone_list_);
+			LASSERT(it != cloned_buffers.end(), /* */);
+			cloned_buffers.erase(it);
+			delete d->clone_list_;
+		}
 		// FIXME Do we really need to do this right before we delete d?
 		// clear references to children in macro tables
 		d->children_positions.clear();
@@ -450,8 +462,8 @@ Buffer::~Buffer()
 Buffer * Buffer::clone() const
 {
 	BufferMap bufmap;
-	cloned_buffers.push_back(CloneList());
-	CloneList * clones = &cloned_buffers.back();
+	cloned_buffers.push_back(new CloneList());
+	CloneList * clones = cloned_buffers.back();
 
 	masterBuffer()->clone(bufmap, clones);
 
