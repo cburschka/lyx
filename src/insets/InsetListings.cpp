@@ -158,8 +158,7 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 			(outer_language->encoding()->hasFixedWidth()) ?
 				outer_language->encoding() 
 				: encodings.fromLyXName("iso8859-1");
-		pair<bool, int> const c = switchEncoding(os.os(),
-				buffer().params(), runparams, *lstenc, true);
+		switchEncoding(os.os(), buffer().params(), runparams, *lstenc, true);
 		runparams.encoding = lstenc;
 		encoding_switched = true;
 	}
@@ -250,8 +249,7 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 
 	if (encoding_switched){
 		// Switch back
-		pair<bool, int> const c = switchEncoding(os.os(),
-				buffer().params(), runparams, *save_enc, true);
+		switchEncoding(os.os(), buffer().params(), runparams, *save_enc, true);
 		runparams.encoding = save_enc;
 	}
 
