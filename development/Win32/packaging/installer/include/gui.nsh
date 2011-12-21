@@ -51,8 +51,10 @@ BrandingText " "
 !define MUI_STARTMENUPAGE_DEFAULTFOLDER "LyX ${APP_SERIES_NAME}"
 !insertmacro MUI_PAGE_STARTMENU ${APP_NAME} $StartmenuFolder
 
-# Select latex.exe manually
-Page custom LatexFolder LatexFolder_LeaveFunction
+!if ${SETUPTYPE} != BUNDLE
+ # Select latex.exe manually
+ Page custom LatexFolder LatexFolder_LeaveFunction
+!endif # end if != BUNDLE
 
 # Watch the components being installed.
 !insertmacro MUI_PAGE_INSTFILES

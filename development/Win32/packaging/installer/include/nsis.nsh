@@ -42,8 +42,10 @@ Configuration of standard NSIS header files
 # Functions to check and configure the LaTeX-system
 !include include\LaTeX.nsh
 
-# Function for page to manually select LaTeX's installation folder
-!include gui\LaTeXFolder.nsh
+!if ${SETUPTYPE} != BUNDLE
+ # Function for page to manually select LaTeX's installation folder
+ !include gui\LaTeXFolder.nsh
+!endif # end if != BUNDLE
 
 #--------------------------------
 # Include standard functions

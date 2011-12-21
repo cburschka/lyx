@@ -38,9 +38,11 @@ Var Pointer
 Var PSVPath
 Var PythonPath
 Var Search
+!if ${SETUPTYPE} != BUNDLE
+ Var State
+!endif
 Var SVGPath
 Var StartmenuFolder
-Var State
 Var String
 Var UpdateFNDBReturn
 Var UserList

@@ -42,6 +42,16 @@ Section -ProgramFiles SecProgramFiles
   # recursively copy all files under Resources
   File /r "${FILES_LYX}\Resources"
   
+  !if ${SETUPTYPE} == BUNDLE
+   
+   # extract the Jabref and MiKTeX installer
+   File /r "${FILES_LYX}\external"
+
+   # install MiKTeX if not already installed
+   Call InstallMiKTeX # function from LaTeX.nsh
+   
+  !endif # end if BUNDLE
+  
   # Python
   SetOutPath "$INSTDIR"
   # recursively copy all files under Python
@@ -67,12 +77,12 @@ Section -ProgramFiles SecProgramFiles
   WriteRegStr SHCTX "SOFTWARE\Classes\Applications" "AutoRun" "$INSTDIR\imagemagick\convert.exe $$"
   WriteRegStr SHCTX "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "BinPath" "$INSTDIR\imagemagick"
   WriteRegStr SHCTX "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "CoderModulesPath" "$INSTDIR\imagemagick\modules\coders"
-  WriteRegStr SHCTX "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "ConfigurePath" "$INSTDIR\imagemagick\config"
+  WriteRegStr SHCTX "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "ConfigurePath" "$INSTDIR\imagemagick"
   WriteRegStr SHCTX "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "FilterModulesPath" "$INSTDIR\imagemagick\modules\filters"
   WriteRegStr SHCTX "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "LibPath" "$INSTDIR\imagemagick"
   WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "BinPath" "$INSTDIR\imagemagick"
   WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "CoderModulesPath" "$INSTDIR\imagemagick\modules\coders"
-  WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "ConfigurePath" "$INSTDIR\imagemagick\config"
+  WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "ConfigurePath" "$INSTDIR\imagemagick"
   WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "FilterModulesPath" "$INSTDIR\imagemagick\modules\filters"
   WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "LibPath" "$INSTDIR\imagemagick"
   WriteRegDWORD SHCTX "SOFTWARE\ImageMagick\Current" "QuantumDepth" 0x00000010
@@ -87,12 +97,6 @@ Section -ProgramFiles SecProgramFiles
   ${endif}
   
   !if ${SETUPTYPE} == BUNDLE
-   
-   # extract the Jabref and MiKTeX installer
-   File /r "${FILES_LYX}\external"
-
-   # install MiKTeX if not already installed
-   Call InstallMiKTeX # function from LaTeX.nsh
    
    # install JabRef if not already installed and the user selected it
    # if no BibTeX editor is installed

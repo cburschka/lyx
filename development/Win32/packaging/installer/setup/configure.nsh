@@ -217,12 +217,18 @@ Section -ConfigureScript
 
   SetOutPath "$INSTDIR\Resources"
   DetailPrint $(TEXT_CONFIGURE_LYX)
-  nsExec::ExecToLog '"$INSTDIR\python\python.exe" "$INSTDIR\Resources\configure.py"'
+  nsExec::ExecToLog '"$INSTDIR\Python\python.exe" "$INSTDIR\Resources\configure.py"'
   Pop $ConfigureReturn # Return value
 
   # ask to update MiKTeX
   ${if} $LaTeXInstalled == "MiKTeX"
    Call UpdateMiKTeX # function from latex.nsh
+   # for new installations a second run is necessary to give the users feedback about
+   # the ongoing installation of LaTeX packages
+   # a new installed MiKTeX needs some time until it is ready to install packages
+   !if ${SETUPTYPE} == BUNDLE
+    nsExec::ExecToLog '"$INSTDIR\Python\python.exe" "$INSTDIR\Resources\configure.py"'
+   !endif # end if == BUNDLE
   ${endif}
 
 SectionEnd
@@ -232,10 +238,11 @@ SectionEnd
 
 Function StartLyX
 
-  # Enable desktop icon creation when there is an icon already
-  # Old shortcuts need to be updated
+  # run LyX in a command line window to give the users feedback about
+  # the time consuming LaTeX package installation
   
-  Exec "$INSTDIR\${APP_RUN}"
+  #Exec 'cmd /K " "$INSTDIR\bin\lyx.exe""'
+  Exec "$INSTDIR\${AppRun}"
 
 FunctionEnd
 
