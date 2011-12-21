@@ -1558,7 +1558,7 @@ void GuiView::autoSave()
 #if (QT_VERSION >= 0x040400)
 	GuiViewPrivate::busyBuffers.insert(buffer);
 	QFuture<docstring> f = QtConcurrent::run(GuiViewPrivate::autosaveAndDestroy,
-		buffer, buffer->clone());
+		buffer, buffer->cloneBufferOnly());
 	d.autosave_watcher_.setFuture(f);
 #else
 	buffer->autoSave();
@@ -3057,7 +3057,7 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 	QFuture<docstring> f = QtConcurrent::run(
 				asyncFunc,
 				used_buffer,
-				used_buffer->clone(),
+				used_buffer->cloneFromMaster(),
 				format);
 	setPreviewFuture(f);
 	last_export_format = used_buffer->params().bufferFormat();
