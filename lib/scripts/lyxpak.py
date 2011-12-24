@@ -285,6 +285,10 @@ def main(args):
     # Find the topmost dir common to all files
     if len(incfiles) > 1:
         topdir = os.path.commonprefix(incfiles)
+        # Check whether topdir is valid, as os.path.commonprefix() works on
+        # a character by character basis, rather than on path elements.
+        if not os.path.exists(topdir):
+            topdir = os.path.dirname(topdir) + os.path.sep
     else:
         topdir = os.path.dirname(incfiles[0]) + os.path.sep
 
