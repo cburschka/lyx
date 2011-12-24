@@ -90,10 +90,11 @@ struct SpellcheckerWidget::Private
 			end_ = start_;
 		}
 	}
-	bool isWrapAround(DocIterator cursor) const;
+	bool isCurrentBuffer(DocIterator const & cursor) const;
+	bool isWrapAround(DocIterator const & cursor) const;
 	bool isWrapAround() const { return wrap_around_; }
 	///
-	bool atLastPos(DocIterator cursor) const;
+	bool atLastPos(DocIterator const & cursor) const;
 	///
 	Ui::SpellcheckerUi ui;
 	///
@@ -201,7 +202,7 @@ void SpellcheckerWidget::updateView()
 	setEnabled(enabled);
 	if (enabled && hasFocus()) {
 		Cursor const & cursor = bv->cursor();
-		if (d->start_.empty() || d->start_.buffer() != cursor.buffer()) {
+		if (d->start_.empty() || !d->isCurrentBuffer(cursor)) {
 			if (cursor.selection()) {
 				d->begin_ = cursor.selectionBegin();
 				d->end_   = cursor.selectionEnd();
@@ -222,10 +223,10 @@ void SpellcheckerWidget::updateView()
 bool SpellcheckerWidget::Private::continueFromBeginning()
 {
 	BufferView * bv = gv_->documentBufferView();
-	if (!begin_.empty()) {
+	DocIterator const current_ = bv->cursor();
+	if (isCurrentBuffer(current_) && !begin_.empty()) {
 		// selection was checked
 		// start over from beginning makes no sense
-		DocIterator current_ = bv->cursor();
 		hide();
 		if (current_ == start_) {
 			// no errors found... tell the user the good news
@@ -252,32 +253,39 @@ bool SpellcheckerWidget::Private::continueFromBeginning()
 	return true;
 }
 
-bool SpellcheckerWidget::Private::atLastPos(DocIterator cursor) const
+bool SpellcheckerWidget::Private::isCurrentBuffer(DocIterator const & cursor) const
+{
+	return start_.buffer() == cursor.buffer();
+}
+
+bool SpellcheckerWidget::Private::atLastPos(DocIterator const & cursor) const
 {
 	bool const valid_end = !end_.empty();
 	return cursor.depth() <= 1 && (
 		cursor.atEnd() ||
-		(valid_end && cursor >= end_));
+		(valid_end && isCurrentBuffer(cursor) && cursor >= end_));
 }
 
-bool SpellcheckerWidget::Private::isWrapAround(DocIterator cursor) const
+bool SpellcheckerWidget::Private::isWrapAround(DocIterator const & cursor) const
 {
-	return wrap_around_ && start_ < cursor;
+	return wrap_around_ && isCurrentBuffer(cursor) && start_ < cursor;
 }
 
 void SpellcheckerWidget::Private::hide() const
 {
+	BufferView * bv = gv_->documentBufferView();
+	Cursor & bvcur = bv->cursor();
 	dv_->hide();
-	if (!begin_.empty() && !end_.empty()) {
-		// restore previous selection
-		setSelection(begin_, end_);
-	} else {
-		// restore cursor position
-		BufferView * bv = gv_->documentBufferView();
-		Cursor & bvcur = bv->cursor();
-		bvcur.setCursor(start_);
-		bvcur.clearSelection();
-		bv->processUpdateFlags(Update::Force | Update::FitCursor);	
+	if (isCurrentBuffer(bvcur)) {
+		if (!begin_.empty() && !end_.empty()) {
+			// restore previous selection
+			setSelection(begin_, end_);
+		} else {
+			// restore cursor position
+			bvcur.setCursor(start_);
+			bvcur.clearSelection();
+			bv->processUpdateFlags(Update::Force | Update::FitCursor);	
+		}
 	}
 }
 
@@ -310,7 +318,7 @@ void SpellcheckerWidget::Private::setSelection(
 void SpellcheckerWidget::Private::forward()
 {
 	BufferView * bv = gv_->documentBufferView();
-	DocIterator from = bv->cursor();
+	DocIterator const from = bv->cursor();
 
 	dispatch(FuncRequest(LFUN_ESCAPE));
 	if (!atLastPos(bv->cursor())) {
@@ -477,7 +485,7 @@ void SpellcheckerWidget::Private::check()
 		return;
 
 	DocIterator from = bv->cursor();
-	DocIterator to = end_;
+	DocIterator to = isCurrentBuffer(from) ? end_ : doc_iterator_end(&bv->buffer());
 	WordLangTuple word_lang;
 	docstring_list suggestions;
 
