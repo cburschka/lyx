@@ -1196,7 +1196,7 @@ void LaTeX::scanBlgFile(DepTable & dep)
 
 	ifstream ifs(blg_file.toFilesystemEncoding().c_str());
 	string token;
-	static regex const reg1(".*Found bibtex data file '([^']+).*");
+	static regex const reg1(".*Found (bibtex|BibTeX) data (file|source) '([^']+).*");
 
 	while (getline(ifs, token)) {
 		token = rtrim(token, "\r");
@@ -1205,7 +1205,7 @@ void LaTeX::scanBlgFile(DepTable & dep)
 		// in the aux file are in the file system encoding.
 		token = to_utf8(from_filesystem8bit(token));
 		if (regex_match(token, sub, reg1)) {
-			string data = sub.str(1);
+			string data = sub.str(3);
 			if (!data.empty()) {
 				LYXERR(Debug::LATEX, "Found bib file: " << data);
 				handleFoundFile(data, dep);
