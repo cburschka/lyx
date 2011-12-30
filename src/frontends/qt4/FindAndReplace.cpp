@@ -67,6 +67,11 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 
 bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 {
+	bool replace_enabled = view_.documentBufferView() && !view_.documentBufferView()->buffer().isReadonly();
+	replace_work_area_->setEnabled(replace_enabled);
+	replacePB->setEnabled(replace_enabled);
+	replaceallPB->setEnabled(replace_enabled);
+
 	if (event->type() != QEvent::KeyPress
 		  || (obj != find_work_area_ && obj != replace_work_area_))
 		return QWidget::eventFilter(obj, event);

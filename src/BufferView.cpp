@@ -1059,7 +1059,6 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_WORD_FIND:
 	case LFUN_WORD_FIND_FORWARD:
 	case LFUN_WORD_FIND_BACKWARD:
-	case LFUN_WORD_FINDADV:
 	case LFUN_WORD_REPLACE:
 	case LFUN_MARK_OFF:
 	case LFUN_MARK_ON:
@@ -1076,6 +1075,14 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_KEYMAP_TOGGLE:
 		flag.setEnabled(true);
 		break;
+
+	case LFUN_WORD_FINDADV: {
+		FindAndReplaceOptions opt;
+		istringstream iss(to_utf8(cmd.argument()));
+		iss >> opt;
+		flag.setEnabled(opt.repl_buf_name.empty()
+				|| !buffer_.isReadonly());
+	}
 
 	case LFUN_LABEL_GOTO: {
 		flag.setEnabled(!cmd.argument().empty()
