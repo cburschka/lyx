@@ -39,6 +39,7 @@ class FindAndReplaceWidget : public QTabWidget, public Ui::FindAndReplaceUi
 public:
 	FindAndReplaceWidget(GuiView & view);
 	bool initialiseParams(std::string const & params);
+	void updateGUI();
 
 private:
 	///
@@ -90,7 +91,7 @@ public:
 	void selectAll();
 
 	/// update
-	void updateView() {}
+	void updateView();
 	//virtual void update_contents() {}
 
 protected:

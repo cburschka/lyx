@@ -67,11 +67,6 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 
 bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 {
-	bool replace_enabled = view_.documentBufferView() && !view_.documentBufferView()->buffer().isReadonly();
-	replace_work_area_->setEnabled(replace_enabled);
-	replacePB->setEnabled(replace_enabled);
-	replaceallPB->setEnabled(replace_enabled);
-
 	if (event->type() != QEvent::KeyPress
 		  || (obj != find_work_area_ && obj != replace_work_area_))
 		return QWidget::eventFilter(obj, event);
@@ -530,6 +525,12 @@ bool FindAndReplaceWidget::initialiseParams(std::string const & /*params*/)
 }
 
 
+void FindAndReplace::updateView()
+{
+	widget_->updateGUI();
+}
+
+
 FindAndReplace::FindAndReplace(GuiView & parent,
 		Qt::DockWidgetArea area, Qt::WindowFlags flags)
 	: DockView(parent, "findreplaceadv", qt_("Advanced Find and Replace"),
@@ -551,6 +552,16 @@ FindAndReplace::~FindAndReplace()
 bool FindAndReplace::initialiseParams(std::string const & params)
 {
 	return widget_->initialiseParams(params);
+}
+
+
+void FindAndReplaceWidget::updateGUI()
+{
+	bool replace_enabled = view_.documentBufferView()
+		&& !view_.documentBufferView()->buffer().isReadonly();
+	replace_work_area_->setEnabled(replace_enabled);
+	replacePB->setEnabled(replace_enabled);
+	replaceallPB->setEnabled(replace_enabled);
 }
 
 
