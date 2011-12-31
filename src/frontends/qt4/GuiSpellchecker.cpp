@@ -284,6 +284,8 @@ void SpellcheckerWidget::Private::hide() const
 			// restore cursor position
 			bvcur.setCursor(start_);
 			bvcur.clearSelection();
+			// spell checker may have started at (invalid) empty paragraph at end
+			bvcur.fixIfBroken();
 			bv->processUpdateFlags(Update::Force | Update::FitCursor);	
 		}
 	}
