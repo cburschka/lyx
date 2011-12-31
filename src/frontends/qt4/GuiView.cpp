@@ -1734,7 +1734,9 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		else if (name == "latexlog")
 			enable = FileName(doc_buffer->logName()).isReadableFile();
 		else if (name == "spellchecker")
-			enable = theSpellChecker() && !doc_buffer->isReadonly();
+			enable = theSpellChecker() 
+				&& !doc_buffer->isReadonly()
+				&& !doc_buffer->text().empty();
 		else if (name == "vclog")
 			enable = doc_buffer->lyxvc().inUse();
 		break;
