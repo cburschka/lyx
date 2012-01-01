@@ -26482,6 +26482,21 @@ En una ecuación presentada:
 
 En una ecuación en línea se pone menos espacio delante del nombre de la
  función para todas las variantes.
+ 
+\lang english
+By default the modulo-functions take only the first following character
+ into account.
+ To use more than one character, one has to put them into TeX-braces:
+\begin_inset Formula 
+\begin{align*}
+\underline{\textrm{Comando}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Resultado}}\\
+\mathrm{a\backslash pod\textrm{\spce}bcd} &  & a\pod bcd\\
+\mathrm{a\backslash pod\backslash\{bc\to d} &  & a\pod{bc}d
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

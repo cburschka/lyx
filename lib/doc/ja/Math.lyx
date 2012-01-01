@@ -25696,6 +25696,20 @@ status collapsed
 
 \begin_layout Standard
 行内数式では、すべての派生型で、関数名の前の余白がすこし小さく設定されます。
+\lang english
+By default the modulo-functions take only the first following character
+ into account.
+ To use more than one character, one has to put them into TeX-braces:
+\begin_inset Formula 
+\begin{align*}
+\underline{\textrm{Command}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Result}}\\
+\mathrm{a\backslash pod\textrm{\spce}bcd} &  & a\pod bcd\\
+\mathrm{a\backslash pod\backslash\{bc\to d} &  & a\pod{bc}d
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
