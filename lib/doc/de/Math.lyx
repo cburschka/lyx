@@ -26065,6 +26065,18 @@ Die Varianten in einer abgesetzten Formel:
 \begin_layout Standard
 In einer eingebetteten Formel wird bei allen Varianten vor den Funktionsnamen
  weniger Leerraum gesetzt.
+ Standardmäßig beachten die Modulo-Funktionen nur das erste, folgende Zeichen.
+ Um mehrere Zeichen zu verwenden, muss man sie in TeX-Klammern setzen:
+\begin_inset Formula 
+\begin{align*}
+\underline{\textrm{Befehl}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Ergebnis}}\\
+\mathrm{a\backslash pod\textrm{\leer}bcd} &  & a\pod bcd\\
+\mathrm{a\backslash pod\backslash\{bc\to d} &  & a\pod{bc}d
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

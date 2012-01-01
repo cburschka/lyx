@@ -26025,10 +26025,7 @@ Functions ! modulo-
 
 \begin_layout Standard
 The modulo-function is special, because it exists in four variants.
-\end_layout
-
-\begin_layout Standard
-The variants in a displayed formula:
+ The variants in a displayed formula are:
 \begin_inset Formula 
 \begin{align*}
 \underline{\textrm{Command}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Result}}\\
@@ -26046,6 +26043,19 @@ The variants in a displayed formula:
 \begin_layout Standard
 In an inline formula less space is set before the function names for all
  variants.
+ By default the modulo-functions take only the first following character
+ into account.
+ To use more than one character, one has to put them into TeX-braces:
+\begin_inset Formula 
+\begin{align*}
+\underline{\textrm{Command}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Result}}\\
+\mathrm{a\backslash pod\textrm{\spce}bcd} &  & a\pod bcd\\
+\mathrm{a\backslash pod\backslash\{bc\to d} &  & a\pod{bc}d
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

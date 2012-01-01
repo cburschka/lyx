@@ -26068,6 +26068,21 @@ Les variantes pour une formule hors ligne:
 \begin_layout Standard
 Dans une formule en ligne, il y a moins d'espace inséré avant le nom de
  la fonction, quelque soit la variante.
+ 
+\lang english
+By default the modulo-functions take only the first following character
+ into account.
+ To use more than one character, one has to put them into TeX-braces:
+\begin_inset Formula 
+\begin{align*}
+\underline{\textrm{Commande}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Résultat}}\\
+\mathrm{a\backslash pod\textrm{\spce}bcd} &  & a\pod bcd\\
+\mathrm{a\backslash pod\backslash\{bc\to d} &  & a\pod{bc}d
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -26632,13 +26647,6 @@ Les commandes
 \series default
 ` sont des exceptions puisqu'elles peuvent être insérées directement dans
  le texte dans LyX.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
