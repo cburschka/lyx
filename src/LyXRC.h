@@ -58,6 +58,7 @@ public:
 		RC_COMPLETION_INLINE_MATH,
 		RC_COMPLETION_INLINE_TEXT,
 		RC_COMPLETION_INLINE_DOTS,
+		RC_COMPLETION_MINLENGTH,
 		RC_COMPLETION_POPUP_DELAY,
 		RC_COMPLETION_POPUP_MATH,
 		RC_COMPLETION_POPUP_TEXT,
@@ -374,6 +375,8 @@ public:
 	bool spellcheck_continuously;
 	/// spellcheck notes and comments?
 	bool spellcheck_notes;
+	/// minimum length of words to complete
+	unsigned int completion_minlength;
 	///
 	bool use_kbmap;
 	///

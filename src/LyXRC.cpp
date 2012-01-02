@@ -78,6 +78,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\completion_inline_dots", LyXRC::RC_COMPLETION_INLINE_DOTS },
 	{ "\\completion_inline_math", LyXRC::RC_COMPLETION_INLINE_MATH },
 	{ "\\completion_inline_text", LyXRC::RC_COMPLETION_INLINE_TEXT },
+	{ "\\completion_minlength", LyXRC::RC_COMPLETION_MINLENGTH },
 	{ "\\completion_popup_after_complete", LyXRC::RC_COMPLETION_POPUP_AFTER_COMPLETE },
 	{ "\\completion_popup_delay", LyXRC::RC_COMPLETION_POPUP_DELAY },
 	{ "\\completion_popup_math", LyXRC::RC_COMPLETION_POPUP_MATH },
@@ -302,6 +303,7 @@ void LyXRC::setDefaults()
 #endif
 	spellchecker_accept_compound = false;
 	spellcheck_continuously = false;
+	completion_minlength = 6;
 	spellcheck_notes = true;
 	use_kbmap = false;
 	rtl_support = true;
@@ -813,6 +815,10 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 
 		case RC_COMPLETION_POPUP_AFTER_COMPLETE:
 			lexrc >> completion_popup_after_complete;
+			break;
+
+		case RC_COMPLETION_MINLENGTH:
+			lexrc >> completion_minlength;
 			break;
 
 		case RC_NUMLASTFILES:
@@ -2301,7 +2307,16 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
-	case RC_NUMLASTFILES:
+	case RC_COMPLETION_MINLENGTH:
+		if (ignore_system_lyxrc ||
+			completion_minlength != system_lyxrc.completion_minlength) {
+			os << "\\completion_minlength " << convert<string>(completion_minlength)
+			<< '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+			
+		case RC_NUMLASTFILES:
 		if (ignore_system_lyxrc ||
 		    num_lastfiles != system_lyxrc.num_lastfiles) {
 			os << "\\num_lastfiles " << num_lastfiles << '\n';
@@ -2887,6 +2902,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_COMPLETION_POPUP_DELAY:
 	case LyXRC::RC_COMPLETION_POPUP_MATH:
 	case LyXRC::RC_COMPLETION_POPUP_TEXT:
+	case LyXRC::RC_COMPLETION_MINLENGTH:
 	case LyXRC::RC_USELASTFILEPOS:
 	case LyXRC::RC_LOADSESSION:
 	case LyXRC::RC_CHKTEX_COMMAND:

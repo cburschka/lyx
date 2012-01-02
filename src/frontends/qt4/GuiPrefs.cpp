@@ -631,6 +631,8 @@ PrefCompletion::PrefCompletion(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(cursorTextCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
+	connect(minlengthSB, SIGNAL(valueChanged(int)),
+			this, SIGNAL(changed()));
 }
 
 
@@ -666,6 +668,7 @@ void PrefCompletion::apply(LyXRC & rc) const
 	rc.completion_cursor_text = cursorTextCB->isChecked();
 	rc.completion_popup_after_complete =
 		popupAfterCompleteCB->isChecked();
+	rc.completion_minlength = minlengthSB->value();
 }
 
 
@@ -682,6 +685,7 @@ void PrefCompletion::update(LyXRC const & rc)
 	cursorTextCB->setChecked(rc.completion_cursor_text);
 	popupAfterCompleteCB->setChecked(rc.completion_popup_after_complete);
         enableCB();
+	minlengthSB->setValue(rc.completion_minlength);
 }
 
 
