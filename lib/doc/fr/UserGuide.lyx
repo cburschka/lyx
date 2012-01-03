@@ -10573,7 +10573,7 @@ insécable
  (raccourci 
 \begin_inset Info
 type  "shortcut"
-arg   "space-insert protected"
+arg   "command-alternatives space-insert protected ; math-space"
 \end_inset
 
 ).
@@ -24036,11 +24036,15 @@ Math ! Espacement
 Vous voudrez peut-être créer des espaces qui soient différents de l'espacement
  proposé implicitement par LaTeX.
  Pour cela, tapez 
+\family sans
+
 \begin_inset Info
 type  "shortcut"
-arg   "space-insert protected"
+arg   "command-alternatives space-insert protected ; math-space"
 \end_inset
 
+
+\family default
  ou utilisez le bouton 
 \family sans
 
@@ -24804,29 +24808,40 @@ Il y a plusieurs délimiteurs disponibles avec LyX.
 
 \end_inset
 
-et pour rendre plus les parenthèses plus lisible dans:
-\end_layout
+et pour rendre plus les parenthèses.
+ 
+\lang english
+Below, the expression on the left was entered using the delimiter icon 
+\lang french
 
-\begin_layout Standard
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathdelimiter"
+\end_inset
+
+
+\lang english
+ and the expression on the right was entered using the 
+\family typewriter
+()
+\family default
+ keys.
+
+\lang french
+ 
 \begin_inset Formula 
 \[
-\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}
+\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}\qquad\qquad\frac{1}{(1+(\frac{1}{1+(\frac{1}{1+x})}))}
 \]
 
 \end_inset
 
-Les parenthèses, et autres délimiteurs, de ce menu s'adaptent à la taille
- de ce qu'elles contiennent.
- (On obtient ceci en LaTeX brut avec 
-\family typewriter
 
-\backslash
-left( blabla 
-\backslash
-right)
-\family default
-).
- 
+\lang english
+If you use the delimiter icon, 
+\lang french
+les parenthèses, et autres délimiteurs, de ce menu s'adaptent à la taille
+ de ce qu'elles contiennent.
 \end_layout
 
 \begin_layout Standard
@@ -24865,6 +24880,20 @@ Insérer
 \family default
 .
  Les parenthèses seront placées autour de la structure sélectionnée.
+ 
+\lang english
+The most common bracket combinations (parentheses, square brackets, and
+ braces, on both sides) can be entered more quickly using keyboard shortcuts.
+ For example, to insert a pair of flexible parentheses on both sides, select
+ the structure and enter 
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+(
+\family default
+.
 \end_layout
 
 \begin_layout Section

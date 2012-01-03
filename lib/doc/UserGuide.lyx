@@ -129,13 +129,11 @@ enumitem
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author -1853239151 "Scott Kostyshak" 
-\author 2090807402 "usti" 
 \end_header
 
 \begin_body
@@ -9999,21 +9997,11 @@ Protected
 Space
 \family default
  (shortcut 
-\change_inserted 2090807402 1325541442
-
 \begin_inset Info
 type  "shortcut"
-arg   "command-alternatives space-insert protected"
+arg   "command-alternatives space-insert protected ; math-space"
 \end_inset
 
-
-\change_inserted -1853239151 1323493905
-
-\family sans
-Ctrl+Space
-\change_unchanged
-
-\family default
 ).
 \end_layout
 
@@ -21208,7 +21196,7 @@ reference "sec:Cross-References"
 To insert a float, use the menu 
 \family sans
 Insert\SpecialChar \menuseparator
-Floats
+Float
 \family default
 .
  A box with a caption will be inserted into your document.
@@ -21329,7 +21317,7 @@ arg   "layout-paragraph"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -21479,7 +21467,7 @@ reference "fig:Platypus"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset space \hfill{}
@@ -21640,7 +21628,7 @@ reference "tab:Table-float"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -22977,13 +22965,11 @@ Math ! Spaces
 You may want to create spaces that differ from the standard spacing that
  LaTeX provides.
  To do this, press 
-\change_inserted -1853239151 1323067041
+\begin_inset Info
+type  "shortcut"
+arg   "command-alternatives space-insert protected ; math-space"
+\end_inset
 
-\family sans
-Ctrl+Space
-\change_unchanged
-
-\family default
  or use the 
 \family sans
 Math
@@ -23915,11 +23901,7 @@ arg   "dialog-show mathdelimiter"
 
 \end_inset
 
-and to make it easier to see the layers of parentheses
-\change_deleted -1853239151 1323115263
- as in:
-\change_inserted -1853239151 1323115782
-.
+and to make it easier to see the layers of parentheses.
  Below, the expression on the left was entered using the delimiter icon
  
 \begin_inset Info
@@ -23932,8 +23914,6 @@ arg   "dialog-show mathdelimiter"
 ()
 \family default
  keys.
-
-\change_unchanged
  
 \begin_inset Formula 
 \[
@@ -23946,14 +23926,9 @@ arg   "dialog-show mathdelimiter"
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -1853239151 1323115473
-If you use the delimiter icon, t
-\change_deleted -1853239151 1323115473
-T
-\change_unchanged
-he parentheses, and other brackets from that menu will automatically re-size
- to accommodate the size of what is inside.
+If you use the delimiter icon, the parentheses, and other brackets from
+ that menu will automatically re-size to accommodate the size of what is
+ inside.
 \end_layout
 
 \begin_layout Standard
@@ -23974,34 +23949,27 @@ matched
 \end_layout
 
 \begin_layout Standard
-If you want to place brackets around 
-\change_inserted -1853239151 1323115809
-existing (already entered) 
-\change_unchanged
-math structures, like a square root, you can do so by first highlighting
- (selecting) the structure that is to go inside the brackets.
+If you want to place brackets around math structures, like a square root,
+ you can do so by first highlighting (selecting) the structure that is to
+ go inside the brackets.
  Then choose the appropriate brackets for left and right and click on 
 \family sans
 Insert
 \family default
 .
  The parentheses will be drawn around the selected structure.
-
-\change_inserted -1853239151 1323498105
  The most common bracket combinations (parentheses, square brackets, and
  braces, on both sides) can be entered more quickly using keyboard shortcuts.
  For example, to insert a pair of flexible parentheses on both sides, select
  the structure and enter 
-\noun on
+\family sans
 Alt+M
 \begin_inset space ~
 \end_inset
 
 (
-\noun default
+\family default
 .
-\change_unchanged
-
 \end_layout
 
 \begin_layout Section

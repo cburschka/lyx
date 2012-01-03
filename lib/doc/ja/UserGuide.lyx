@@ -16210,7 +16210,7 @@ reference "sec:参考文献"
 
 \begin_inset Info
 type  "shortcut"
-arg   "space-insert protected"
+arg   "command-alternatives space-insert protected ; math-space"
 \end_inset
 
 
@@ -30859,11 +30859,15 @@ LaTeXの提供する標準的な余白取りとは異なる余白を使いたい
 \noun default
 \color inherit
 、
+\family sans
+
 \begin_inset Info
 type  "shortcut"
-arg   "space-insert protected"
+arg   "command-alternatives space-insert protected ; math-space"
 \end_inset
 
+
+\family default
 を
 \family roman
 \series medium
@@ -31192,7 +31196,7 @@ status collapsed
 \noun off
 \color none
 数式中においても、通常の本文と同じ方法で、アクセントの付いた文字を挿入することができます。方法は、使用しているキーボードとキー設定ファイルによって異なります。ま
-た、キーボードがアクセントを使うように設定されていないでも、例えば
+た、キーボードがアクセントを使うように
 \family default
 \series default
 \shape default
@@ -31201,31 +31205,13 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-
+設定されていないでも、例えば
 \begin_inset Formula $\hat{a}$
 \end_inset
 
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 を挿入するのにLaTeXコマンドを使用することができます。この例では、数式中で
-\family default
 \series bold
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
  
-\lang english
-
 \backslash
 hat
 \series default
@@ -31245,6 +31231,8 @@ spce
 
 \series bold
 a
+\series default
+ と入力することによって作成して
 \family roman
 \series medium
 \shape up
@@ -31253,8 +31241,7 @@ a
 \bar no
 \noun off
 \color none
-\lang japanese
- と入力することによって作成しています。第
+います。第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:アクセント名とそれに対応するコマンド"
@@ -32016,32 +32003,37 @@ arg   "dialog-show mathdelimiter"
 \end_inset
 
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-ように行列の周りを標準的な括弧で囲ったり、
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
+\lang english
+and to make it easier to see the layers of parentheses.
+ Below, the expression on the left was entered using the delimiter icon
+ 
+\lang japanese
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathdelimiter"
+\end_inset
+
+
+\lang english
+ and the expression on the right was entered using the 
+\family typewriter
+()
+\family default
+ keys.
+
+\lang japanese
+ 
 \begin_inset Formula 
 \[
-\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}
+\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}\qquad\qquad\frac{1}{(1+(\frac{1}{1+(\frac{1}{1+x})}))}
 \]
 
 \end_inset
 
 
+\lang english
+If you use the delimiter icon, 
 \family roman
 \series medium
 \shape up
@@ -32050,6 +32042,7 @@ arg   "dialog-show mathdelimiter"
 \bar no
 \noun off
 \color none
+\lang japanese
 のように幾重にも括弧が重なっているのを見やすくするためには、この方法を使うことになります。
 \end_layout
 
@@ -32110,6 +32103,27 @@ arg   "dialog-show mathdelimiter"
 \noun off
 \color none
 をクリックしてください。選択した要素の周りに括弧が描かれます。
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+The most common bracket combinations (parentheses, square brackets, and
+ braces, on both sides) can be entered more quickly using keyboard shortcuts.
+ For example, to insert a pair of flexible parentheses on both sides, select
+ the structure and enter 
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+(
+\family default
+.
 \end_layout
 
 \begin_layout Section

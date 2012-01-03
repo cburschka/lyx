@@ -24426,10 +24426,30 @@ arg   "dialog-show mathdelimiter"
 
 \end_inset
 
-o para colocar diversos paréntesis como en la fracción: 
+o para colocar diversos paréntesis.
+ 
+\lang english
+Below, the expression on the left was entered using the delimiter icon
+\lang spanish
+ 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathdelimiter"
+\end_inset
+
+ 
+\lang english
+and the expression on the right was entered using the 
+\family typewriter
+()
+\family default
+ keys.
+
+\lang spanish
+ 
 \begin_inset Formula 
 \[
-\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}
+\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}\qquad\qquad\frac{1}{(1+(\frac{1}{1+(\frac{1}{1+x})}))}
 \]
 
 \end_inset
@@ -24438,7 +24458,11 @@ o para colocar diversos paréntesis como en la fracción:
 \end_layout
 
 \begin_layout Standard
-Los paréntesis y otros delimitadores de dicho panel se redimensionan automáticam
+
+\lang english
+If you use the delimiter icon, 
+\lang spanish
+los paréntesis y otros delimitadores de dicho panel se redimensionan automáticam
 ente de acuerdo con el tamaño de lo que contienen.
 \end_layout
 
@@ -24471,6 +24495,20 @@ Si quieres poner delimitadores alrededor de estructuras matemáticas, como
 Insert
 \family default
 ar, con esto se dibujarán alrededor de la estructura resaltada.
+ 
+\lang english
+The most common bracket combinations (parentheses, square brackets, and
+ braces, on both sides) can be entered more quickly using keyboard shortcuts.
+ For example, to insert a pair of flexible parentheses on both sides, select
+ the structure and enter 
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+(
+\family default
+.
 \end_layout
 
 \begin_layout Section
