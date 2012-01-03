@@ -21444,9 +21444,28 @@ PostScriptには、画像を「Encapsulated PostScript」（EPS、ファイル�
 .eps
 \family default
 」）形式でのみ入れることができます。LyXは、既知の画像形式ならば何でも文書内に入れていいことになっているので、LyXがバックグラウンドで画像をEPSに変換して
-やらなくてはならないのです。仮に、お使いの文書に50個の画像があったとすると、LyXは、あなたが文書をプレビューしたり書き出したりするたびに、50回の変換を行わ
-なくてはなりません。これは、LyXでの作業の流れを著しく停滞させます。もしPostScriptを利用することをお考えならば、画像を直接EPSとして挿入すれば、こ
-の問題を回避することができます。
+やらなくてはならないのです。
+\lang english
+If you have e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+50
+\begin_inset space ~
+\end_inset
+
+images in your document, LyX has to do 50
+\begin_inset space ~
+\end_inset
+
+conversions when you view or export your document the first time.
+ This might slow down your workflow with LyX
+\lang japanese
+。もしPostScriptを利用することをお考えならば、画像を直接EPSとして挿入すれば、この問題を回避することができます。
 \end_layout
 
 \begin_layout Standard
@@ -21530,13 +21549,17 @@ status collapsed
 ファイル\SpecialChar \menuseparator
 書き出し
 \family default
-メニューを開いた後に以下の3つのいずれかを選択します。
+メニューを開いた後に以下の5つのいずれかを選択します。
 \end_layout
 
 \begin_layout Description
 
 \family sans
 PDF
+\begin_inset space ~
+\end_inset
+
+(ps2pdf)
 \family default
  これを選択すると、お使いのファイルのPostScript版からPDFを作るのに
 \family typewriter
@@ -22288,11 +22311,29 @@ status collapsed
 
 \begin_layout Subsection
 ハイフン
+\lang english
+, Dashes and Minus Signs
+\lang japanese
+
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
 はいふん@ハイフン
+\end_layout
+
+\end_inset
+
+
+\lang english
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Dashes
 \end_layout
 
 \end_inset
@@ -29818,7 +29859,47 @@ status collapsed
 \bar no
 \noun off
 \color none
-上付き文字や下付き文字を入力するには、数式パネルを使うこともできますが、コマンドを使用する方がより簡単です。つまり、
+上付き文字や下付き文字を入力するには
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+(buttons
+\lang japanese
+
+\begin_inset Info
+type  "icon"
+arg   "math-superscript"
+\end_inset
+
+
+\lang ngerman
+and
+\lang japanese
+
+\begin_inset Info
+type  "icon"
+arg   "math-subscript"
+\end_inset
+
+
+\lang english
+)
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang japanese
+、数式パネルを使うこともできますが、コマンドを使用する方がより簡単です。つまり、
 \family default
 \series default
 \shape default
@@ -30153,6 +30234,14 @@ frac
 \noun default
 \color inherit
 数式パネル
+\family default
+の
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac"
+\end_inset
+
+アイ
 \family roman
 \series medium
 \shape up
@@ -30161,14 +30250,7 @@ frac
 \bar no
 \noun off
 \color none
-の
-\begin_inset Graphics
-	filename ../../images/math/frac.png
-	scale 60
-
-\end_inset
-
-アイコンを使用してください。空の分数が現れて、カーソルが分数の横棒の上方に置かれます。横棒の下に移動するには
+コンを使用してください。空の分数が現れて、カーソルが分数の横棒の上方に置かれます。横棒の下に移動するには
 \family sans
 \series default
 \shape default
@@ -30243,11 +30325,19 @@ status collapsed
 
 \begin_layout Standard
 根号は、数式パネルの
-\begin_inset Graphics
-	filename ../../images/math/sqrt.png
-	scale 85
-	groupId toolbarbuttons
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\sqrt"
+\end_inset
 
+
+\lang english
+or
+\lang japanese
+
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\root"
 \end_inset
 
 ボタンか、
@@ -30801,7 +30891,7 @@ arg   "space-insert protected"
 \bar no
 \noun off
 \color none
-のボタン
+のボ
 \family default
 \series default
 \shape default
@@ -30810,15 +30900,17 @@ arg   "space-insert protected"
 \bar default
 \noun default
 \color inherit
+タン
+\family sans
 
-\begin_inset Graphics
-	filename ../../images/math/space.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\space"
 \end_inset
 
 
+\family default
+を
 \family roman
 \series medium
 \shape up
@@ -30827,7 +30919,7 @@ arg   "space-insert protected"
 \bar no
 \noun off
 \color none
-を使用してください。これは小さな空白を追加するもので、画面上には小さなマーカーが表示されます。例えば、
+使用してください。これは小さな空白を追加するもので、画面上には小さなマーカーが表示されます。例えば、
 \family default
 \series bold
 \shape default
@@ -30934,32 +31026,18 @@ name "sub:関数"
 
 \family sans
 数式パネル
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-の
 \family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
+の
+\family sans
 
-\begin_inset Graphics
-	filename ../../images/math/functions.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\functions"
 \end_inset
 
 
+\family default
+ボタンの
 \family roman
 \series medium
 \shape up
@@ -30968,7 +31046,7 @@ name "sub:関数"
 \bar no
 \noun off
 \color none
-ボタンの中には、
+中には、
 \family default
 \series default
 \shape default
@@ -31822,11 +31900,9 @@ vec
 上下装飾
 \family default
 記号設定ボタン
-\begin_inset Graphics
-	filename ../../images/math/hat.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\hat"
 \end_inset
 
 から項目を選ぶことで選択することもできます。この方法は、数式内で選択したものなら何にでも適用することができます。
@@ -32080,7 +32156,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-LyXでは、行列は数式パネルの行列ボタン
+LyXでは、行列は数式パネルの行列ボ
 \family default
 \series default
 \shape default
@@ -32089,15 +32165,17 @@ LyXでは、行列は数式パネルの行列ボタン
 \bar default
 \noun default
 \color inherit
+タン
+\family sans
 
-\begin_inset Graphics
-	filename ../../images/math/matrix.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathmatrix"
 \end_inset
 
 
+\family default
+を使用
 \family roman
 \series medium
 \shape up
@@ -32106,7 +32184,7 @@ LyXでは、行列は数式パネルの行列ボタン
 \bar no
 \noun off
 \color none
-を使用して入力します。これを押すとダイアログが表示されますので、行数と列数を指定してください。以下が作例です。
+して入力します。これを押すとダイアログが表示されますので、行数と列数を指定してください。以下が作例です。
 \family default
 \series default
 \shape default
@@ -32731,21 +32809,14 @@ reference "sec:相互参照"
 
 \end_inset
 
-節に説明があります。ラベルを削除するには、カーソルをラベルのついた数式に合わせたあと、
+節に説明があります。
+\lang english
+To delete a label, set the cursor at the end in the labeled formula and
+ press 
 \family sans
-挿入\SpecialChar \menuseparator
-ラベル
+Del
 \family default
-メニューを使用して現れるダイアログからラベルを削除してください
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-この方法は直感的ではないので、次期LyXで修正されるでしょう。
-\end_layout
-
-\end_inset
-
+\lang japanese
 。
 \end_layout
 
@@ -32850,13 +32921,15 @@ status collapsed
 \noun default
 \color inherit
 であり、数字の標準フォントはローマン体です。数式中でフォントを指定するには、数式パネルの
-\begin_inset Graphics
-	filename ../../images/math/font.png
-	scale 85
-	groupId toolbarbuttons
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\font"
 \end_inset
 
+
+\family default
 ボタンを使用するか、第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -33350,13 +33423,15 @@ status collapsed
 数式パネル
 \family default
 の中の
-\begin_inset Graphics
-	filename ../../images/math/font.png
-	scale 85
-	groupId toolbarbuttons
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\font"
 \end_inset
 
+
+\family default
 ボタンにある項目「
 \family sans
 標準テキストモード
@@ -33493,8 +33568,7 @@ displaystyle
 \bar no
 \noun off
 \color none
-の方が大きくなっています。状況に応じて伸縮するいくつかの演算子を除くすべての文字は、LaTeXが適切と判断する形式に設定されます。これらの設定は、数式パネルボタ
-ン
+の方が大きくなっています。状況に応じて伸縮するいくつかの演算子を除くすべての文字は、LaTeXが適切と判断する形式に設定されます。これらの設定は、数式パネルボ
 \family default
 \series default
 \shape default
@@ -33503,15 +33577,17 @@ displaystyle
 \bar default
 \noun default
 \color inherit
+タン
+\family sans
 
-\begin_inset Graphics
-	filename ../../images/math/style.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\style"
 \end_inset
 
 
+\family default
+を使
 \family roman
 \series medium
 \shape up
@@ -33520,7 +33596,7 @@ displaystyle
 \bar no
 \noun off
 \color none
-を使用することで上書きすることができます。選択した寸法用の枠が生成されるので、その中に数式要素を入力します。例えば、
+用することで上書きすることができます。選択した寸法用の枠が生成されるので、その中に数式要素を入力します。例えば、
 \family default
 \series default
 \shape default
@@ -37402,7 +37478,24 @@ type  "icon"
 arg   "ert-insert"
 \end_inset
 
-を使用して挿入することができます。枠は左クリックで開き、右クリックで閉じることができます。
+を使用して挿入することができます
+\lang english
+(shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "ert-insert"
+\end_inset
+
+)
+\lang japanese
+。枠は左クリックで開き、右クリックで閉じることができます
+\lang english
+and selecting 
+\family sans
+Close Inset
+\family default
+\lang japanese
+。
 \end_layout
 
 \begin_layout Standard
@@ -43994,7 +44087,11 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-複数人で同じ文書を作業するときに使用します。取扱説明書
+複数人で同じ文書を作業するときに使用します
+\lang english
+or when one person wants to keep a careful archive of changes
+\lang japanese
+。取扱説明書
 \emph on
 高度な機能篇
 \emph default
