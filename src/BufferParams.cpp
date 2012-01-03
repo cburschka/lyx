@@ -700,26 +700,12 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		papersize = papersizetranslator().find(ppsize);
 	} else if (token == "\\use_geometry") {
 		lex >> use_geometry;
-	} else if (token == "\\use_amsmath") {
-		int use_ams;
-		lex >> use_ams;
-		use_package("amsmath", packagetranslator().find(use_ams));
-	} else if (token == "\\use_esint") {
-		int useesint;
-		lex >> useesint;
-		use_package("esint", packagetranslator().find(useesint));
-	} else if (token == "\\use_mhchem") {
-		int usemhchem;
-		lex >> usemhchem;
-		use_package("mhchem", packagetranslator().find(usemhchem));
-	} else if (token == "\\use_mathdots") {
-		int usemathdots;
-		lex >> usemathdots;
-		use_package("mathdots", packagetranslator().find(usemathdots));
-	} else if (token == "\\use_undertilde") {
-		int useundertilde;
-		lex >> useundertilde;
-		use_package("undertilde", packagetranslator().find(useundertilde));
+	} else if (token == "\\use_package") {
+		string package;
+		int use;
+		lex >> package;
+		lex >> use;
+		use_package(package, packagetranslator().find(use));
 	} else if (token == "\\cite_engine") {
 		string engine;
 		lex >> engine;
@@ -1023,13 +1009,12 @@ void BufferParams::writeFile(ostream & os) const
 	pdfoptions().writeFile(os);
 
 	os << "\\papersize " << string_papersize[papersize]
-	   << "\n\\use_geometry " << convert<string>(use_geometry)
-	   << "\n\\use_amsmath " << use_package("amsmath")
-	   << "\n\\use_esint " << use_package("esint")
-	   << "\n\\use_mhchem " << use_package("mhchem")
-	   << "\n\\use_mathdots " << use_package("mathdots")
-	   << "\n\\use_undertilde " << use_package("undertilde")
-	   << "\n\\cite_engine " << citeenginetranslator().find(cite_engine_)
+	   << "\n\\use_geometry " << convert<string>(use_geometry);
+	vector<string> const & packages = auto_packages();
+	for (size_t i = 0; i < packages.size(); ++i)
+		os << "\n\\use_package " << packages[i] << ' '
+		   << use_package(packages[i]);
+	os << "\n\\cite_engine " << citeenginetranslator().find(cite_engine_)
 	   << "\n\\biblio_style " << biblio_style
 	   << "\n\\use_bibtopic " << convert<string>(use_bibtopic)
 	   << "\n\\use_indices " << convert<string>(use_indices)

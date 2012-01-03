@@ -926,11 +926,11 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 	}
 	os << "\\papersize " << h_papersize << "\n"
 	   << "\\use_geometry " << h_use_geometry << "\n"
-	   << "\\use_amsmath " << h_use_amsmath << "\n"
-	   << "\\use_esint " << h_use_esint << "\n"
-	   << "\\use_mhchem " << h_use_mhchem << "\n"
-	   << "\\use_mathdots " << h_use_mathdots << "\n"
-	   << "\\use_undertilde " << h_use_undertilde << "\n"
+	   << "\\use_package amsmath " << h_use_amsmath << '\n'
+	   << "\\use_package esint " << h_use_esint << '\n'
+	   << "\\use_package mhchem " << h_use_mhchem << '\n'
+	   << "\\use_package mathdots " << h_use_mathdots << '\n'
+	   << "\\use_package undertilde " << h_use_undertilde << '\n'
 	   << "\\cite_engine " << h_cite_engine << "\n"
 	   << "\\biblio_style " << h_biblio_style << "\n"
 	   << "\\use_bibtopic " << h_use_bibtopic << "\n"

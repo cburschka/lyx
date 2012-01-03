@@ -26,12 +26,12 @@ import sys, os
 # Uncomment only what you need to import, please.
 
 from parser_tools import del_token, find_token, find_end_of, find_end_of_inset, \
-    get_option_value, get_value, get_quoted_value, set_option_value
+    find_re, get_option_value, get_value, get_quoted_value, set_option_value
 
 #from parser_tools import find_token, find_end_of, find_tokens, \
   #find_token_exact, find_end_of_inset, find_end_of_layout, \
   #find_token_backwards, is_in_inset, get_value, get_quoted_value, \
-  #del_token, check_token, get_option_value
+  #del_token, check_token
 
 from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert
 
@@ -332,6 +332,27 @@ def revert_longtable_captions(document):
     handle_longtable_captions(document, False)
 
 
+def convert_use_packages(document):
+    "use_xxx yyy => use_package xxx yyy"
+    packages = ["amsmath", "esint", "mathdots", "mhchem", "undertilde"]
+    for p in packages:
+        i = find_token(document.header, "\\use_%s" % p , 0)
+        if i != -1:
+            value = get_value(document.header, "\\use_%s" % p , i)
+            document.header[i] = "\\use_package %s %s" % (p, value)
+
+
+def revert_use_packages(document):
+    "use_package xxx yyy => use_xxx yyy"
+    packages = ["amsmath", "esint", "mathdots", "mhchem", "undertilde"]
+    for p in packages:
+        regexp = re.compile(r'(\\use_package\s+%s)' % p)
+        i = find_re(document.header, regexp, 0)
+        if i != -1:
+            values = get_value(document.header, "\\use_package" , i)
+            document.header[i] = "\\use_%s" % values
+
+
 ##
 # Conversion hub
 #
@@ -346,9 +367,11 @@ convert = [
            [419, []],
            [420, [convert_biblio_style]],
            [421, [convert_longtable_captions]],
+           [422, [convert_use_packages]],
           ]
 
 revert =  [
+           [421, [revert_use_packages]],
            [420, [revert_longtable_captions]],
            [419, [revert_biblio_style]],
            [418, [revert_australian]],

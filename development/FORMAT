@@ -11,6 +11,14 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2012-01-03 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+	* Format incremented to 422 (r40563)
+	  \use_amsmath 0/1/2    => \use_package amsmath 0/1/2
+	  \use_esint 0/1/2      => \use_package esint 0/1/2
+	  \use_mhchem 0/1/2     => \use_package mhchem 0/1/2
+	  \use_mathdots 0/1/2   => \use_package mathdots 0/1/2
+	  \use_undertilde 0/1/2 => \use_package undertilde 0/1/2
+
 2011-12-18 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 	* Format incremented to 421 (r40522)
 	  The caption flag of longtable rows is no longer exclusive to the head
