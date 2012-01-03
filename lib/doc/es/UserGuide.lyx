@@ -14401,7 +14401,7 @@ phantom
  en la sección 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Otros-espacios"
+reference "sub:Espacio-fantasma"
 
 \end_inset
 
@@ -15011,16 +15011,16 @@ Encapsulated PostScript
  Como LyX permite usar cualquier formato de imagen conocido, tiene que trabajar
  en segundo plano para convertir las imágenes a EPS.
  Si por ejemplo, el documento tiene 50
-\begin_inset space \thinspace{}
+\begin_inset space ~
 \end_inset
 
 imágenes, LyX ha de hacer 50
-\begin_inset space \thinspace{}
+\begin_inset space ~
 \end_inset
 
-conversiones cada vez que veas o exportes el documento.
- Esto ralentizará mucho el trabajo, así que si piensas usar PostScript,
- puedes evitar el problema insertando las imágenes directamente en EPS.
+conversiones la primera vez que veas o exportes el documento.
+ Esto podría ralentir el trabajo, así que si piensas usar PostScript, puedes
+ evitar el problema insertando las imágenes directamente en EPS.
 \end_layout
 
 \begin_layout Standard
@@ -15170,7 +15170,11 @@ Exportar
 \end_layout
 
 \begin_layout Description
-PDF Este utiliza el programa 
+PDF
+\begin_inset space ~
+\end_inset
+
+(ps2pdf) Este utiliza el programa 
 \family typewriter
 ps2pdf
 \family default
@@ -15693,12 +15697,30 @@ Tipografía
 \end_layout
 
 \begin_layout Subsection
-Guiones
+Guiones, 
+\lang english
+Dashes and Minus Signs
+\lang spanish
+
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
 Guiones
+\end_layout
+
+\end_inset
+
+
+\lang english
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Dashes
 \end_layout
 
 \end_inset
@@ -22860,8 +22882,20 @@ Matemáticas ! Subíndices
 \end_layout
 
 \begin_layout Standard
-Con el panel de ecuaciones se pueden poner exponentes y subíndices, pero
- la forma más sencilla es usar comandos.
+Con el panel de ecuaciones se pueden poner exponentes y subíndices (botones
+ 
+\begin_inset Info
+type  "icon"
+arg   "math-superscript"
+\end_inset
+
+ y 
+\begin_inset Info
+type  "icon"
+arg   "math-subscript"
+\end_inset
+
+), pero la forma más sencilla es usar comandos.
  Para escribir 
 \begin_inset Formula $x^{2}$
 \end_inset
@@ -23030,10 +23064,9 @@ Una fracción se escribe con el comando
 frac
 \series default
  o con el icono 
-\begin_inset Graphics
-	filename ../../images/math/frac.png
-	scale 60
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac"
 \end_inset
 
  de la 
@@ -23094,11 +23127,15 @@ Matemáticas ! Raíces
 
 \begin_layout Standard
 Las raíces se generan con el botón 
-\begin_inset Graphics
-	filename ../../images/math/sqrt.png
-	scale 85
-	groupId botonesbh
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\sqrt"
+\end_inset
 
+ o 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\root"
 \end_inset
 
  de la 
@@ -23386,13 +23423,15 @@ El espacio estándar provisto por LaTeX se puede cambiar.
 Ctrl+Espacio
 \family default
  o usa el botón 
-\begin_inset Graphics
-	filename ../../images/math/space.png
-	scale 85
-	groupId botonesbh
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\space"
 \end_inset
 
+
+\family default
  de los 
 \family sans
 Paneles de ecuaciones
@@ -23487,13 +23526,15 @@ name "sub:Funciones"
 
 \begin_layout Standard
 El botón 
-\begin_inset Graphics
-	filename ../../images/math/functions.png
-	scale 85
-	groupId botonesbh
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\functions"
 \end_inset
 
+
+\family default
  abre el 
 \family sans
 Panel
@@ -24313,9 +24354,9 @@ Puedes elegir uno de los acentos seleccionándolo en el panel
 Decoraciones
 \family default
 , botón 
-\begin_inset Graphics
-	filename ../../images/math/hat.png
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\hat"
 \end_inset
 
  de los 
@@ -24385,10 +24426,30 @@ arg   "dialog-show mathdelimiter"
 
 \end_inset
 
-o para colocar diversos paréntesis como en la fracción: 
+o para colocar diversos paréntesis.
+ 
+\lang english
+Below, the expression on the left was entered using the delimiter icon
+\lang spanish
+ 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathdelimiter"
+\end_inset
+
+ 
+\lang english
+and the expression on the right was entered using the 
+\family typewriter
+()
+\family default
+ keys.
+
+\lang spanish
+ 
 \begin_inset Formula 
 \[
-\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}
+\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}\qquad\qquad\frac{1}{(1+(\frac{1}{1+(\frac{1}{1+x})}))}
 \]
 
 \end_inset
@@ -24397,7 +24458,11 @@ o para colocar diversos paréntesis como en la fracción:
 \end_layout
 
 \begin_layout Standard
-Los paréntesis y otros delimitadores de dicho panel se redimensionan automáticam
+
+\lang english
+If you use the delimiter icon, 
+\lang spanish
+los paréntesis y otros delimitadores de dicho panel se redimensionan automáticam
 ente de acuerdo con el tamaño de lo que contienen.
 \end_layout
 
@@ -24430,6 +24495,20 @@ Si quieres poner delimitadores alrededor de estructuras matemáticas, como
 Insert
 \family default
 ar, con esto se dibujarán alrededor de la estructura resaltada.
+ 
+\lang english
+The most common bracket combinations (parentheses, square brackets, and
+ braces, on both sides) can be entered more quickly using keyboard shortcuts.
+ For example, to insert a pair of flexible parentheses on both sides, select
+ the structure and enter 
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+(
+\family default
+.
 \end_layout
 
 \begin_layout Section
@@ -24468,13 +24547,15 @@ Matemáticas ! Ecuaciones multilínea
 
 \begin_layout Standard
 Las matrices se introducen con el botón 
-\begin_inset Graphics
-	filename ../../images/math/matrix.png
-	scale 85
-	groupId botonesbh
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathmatrix"
 \end_inset
 
+
+\family default
  de la 
 \family sans
 Barra
@@ -24981,22 +25062,14 @@ reference "sec:Referencias-cruzadas"
 \end_inset
 
 .
- Para borrar una etiqueta, pon el cursor en la ecuación etiquetada, usa
- el menú 
+ Para borrar una etiqueta, pon el cursor en el fin en la ecuación etiquetada
+ y teclea 
 \family sans
-Insertar\SpecialChar \menuseparator
-Etiqueta
+\lang english
+Del
 \family default
- y borra la etiqueta en el cuadro de texto.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Esto no es intuitivo y se corregirá en la siguiente versión de LyX.
-\end_layout
-
-\end_inset
-
+\lang spanish
+.
  
 \end_layout
 
@@ -25049,13 +25122,15 @@ Matemáticas ! Estilos de la tipografía
 \begin_layout Standard
 La tipografía estándar para el texto es cursiva, y para números es romana.
  Para establecer una tipografía en una ecuación usa el botón 
-\begin_inset Graphics
-	filename ../../images/math/font.png
-	scale 85
-	groupId botonesbh
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\font"
 \end_inset
 
+
+\family default
  de 
 \family sans
 Paneles de ecuaciones
@@ -25526,13 +25601,15 @@ Modo texto
 normal
 \family default
  en la lista desplegable que surge al pulsar el icono 
-\begin_inset Graphics
-	filename ../../images/math/font.png
-	scale 85
-	groupId botonesbh
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\font"
 \end_inset
 
+
+\family default
  de los 
 \family sans
 Paneles de ecuaciones
@@ -25642,13 +25719,15 @@ presentación.
 Panel de ecuaciones con el
 \family default
  botón 
-\begin_inset Graphics
-	filename ../../images/math/style.png
-	scale 85
-	groupId botonesbh
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\style"
 \end_inset
 
+
+\family default
 .
  Aparece un rectángulo de tamaño adecuado al estilo elegido en el que puedes
  insertar la estructura matemática.
@@ -29915,8 +29994,26 @@ type  "icon"
 arg   "ert-insert"
 \end_inset
 
+
+\lang english
+ (shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "ert-insert"
+\end_inset
+
+)
+\lang spanish
 .
- El cuadro se puede abrir con clic izquierdo y cerrar con clic derecho.
+ El cuadro se puede abrir con clic izquierdo y cerrar con clic derecho y
+ 
+\lang english
+selecting 
+\family sans
+Close Inset
+\family default
+\lang spanish
+.
 \end_layout
 
 \begin_layout Standard
@@ -38229,7 +38326,12 @@ Control de versiones
 \end_layout
 
 \begin_layout Standard
-Esto se emplea cuando varias personas trabajan sobre el mismo documento.
+Esto se emplea cuando varias personas trabajan sobre el mismo documento
+ 
+\lang english
+or when one person wants to keep a careful archive of changes
+\lang spanish
+.
  Se describe con detalle en el manual 
 \emph on
 Características adicionales

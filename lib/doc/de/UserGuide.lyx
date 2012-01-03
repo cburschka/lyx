@@ -36,6 +36,9 @@
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
 
+% define a short command for \textvisiblespace
+\newcommand{\leer}{\textvisiblespace}
+
 % macro for italic page numbers in the index
 \newcommand{\IndexDef}[1]{\textit{#1}}
 
@@ -14901,7 +14904,315 @@ Menü
 Zeichenformat
 \family default
  nicht zu sehen ist.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To completely reset the character style to the default, use
+\lang ngerman
  
+\family sans
+Alt+C
+\begin_inset space ~
+\end_inset
+
+Leertaste
+\family default
+\lang english
+.
+ If you want to toggle only those properties that you have just changed
+ (suppose you just set the shape to 
+\begin_inset Quotes gld
+\end_inset
+
+slanted
+\begin_inset Quotes grd
+\end_inset
+
+ and the series to 
+\begin_inset Quotes gld
+\end_inset
+
+fett
+\begin_inset Quotes grd
+\end_inset
+
+), set the 
+\family sans
+Toggle
+\begin_inset space ~
+\end_inset
+
+all
+\family default
+ switch and press 
+\family sans
+Apply
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You should also know something about the differences between the three main
+ font types 
+\family sans
+serif
+\family default
+, 
+\family sans
+sans
+\begin_inset space ~
+\end_inset
+
+serif
+\family default
+, and 
+\family sans
+typewriter
+\family default
+:
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+Schreibmaschine
+\family default
+ ist eine sogenannte 
+\begin_inset Quotes gld
+\end_inset
+
+nichtproportionale
+\begin_inset Quotes grd
+\end_inset
+
+ Schriftart, was bedeutet, dass jedes Zeichen dieselbe Breite hat; das 
+\begin_inset Quotes gld
+\end_inset
+
+i
+\begin_inset Quotes grd
+\end_inset
+
+ ist so breit wie das 
+\begin_inset Quotes gld
+\end_inset
+
+m
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Hier ist ein Beispiel
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+kein 
+\end_layout
+
+\end_inset
+
+
+\family typewriter
+Schreibmaschine-Text
+\family default
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Für mehr über Phantom-Leerräume, siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Phantom-Leerraum"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+kein Schreibmaschine-Text
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\lang english
+Serif
+\family default
+\lang ngerman
+ Schriftarten verwenden Zeichen mit Serifen.
+ 
+\lang english
+These are the small 
+\begin_inset Quotes gld
+\end_inset
+
+appendices
+\begin_inset Quotes grd
+\end_inset
+
+ at the ends of the strokes that form the character.
+ The following example will show the difference
+\lang ngerman
+:
+\begin_inset Newline newline
+\end_inset
+
+Text mit Serifen
+\begin_inset Newline newline
+\end_inset
+
+
+\family sans
+Text ohne Serifen
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+Serifen 
+\lang english
+facilitate quick and easy reading.
+ These fonts are therefore used as default (named 
+\family sans
+roman
+\family default
+).
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\lang english
+Sans serif
+\family default
+ don't use serifs.
+ This font type is therefore often used for headings and short texts.
+ We use it in this document to highlight menu names.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Quotes gld
+\end_inset
+
+Toggling
+\begin_inset Quotes grd
+\end_inset
+
+ refers to applying or removing font properties.
+ When a property is marked for toggling in the Text Style dialog, applying
+ the style to text that already has the property will cause the property
+ to be removed.
+ If you apply a style with properties A, B and C to text that currently
+ has font properties B, C, F and G, and if B is set to toggle and C is set
+ not to toggle, the text ends up with properties A, C, F and G.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Never toggled
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+always toggled
+\begin_inset Quotes erd
+\end_inset
+
+ mean that you do not control the toggling behavior.
+ For the properties on the left side of the dialog (
+\begin_inset Quotes gld
+\end_inset
+
+Family
+\begin_inset Quotes grd
+\end_inset
+
+ etc.), toggling behavior is up to you.
+ If 
+\begin_inset Quotes gld
+\end_inset
+
+Toggle all
+\begin_inset Quotes grd
+\end_inset
+
+ is checked, all of the left side properties are toggled; by default, none
+ of them are.
+ Finally, 
+\begin_inset Quotes gld
+\end_inset
+
+Reset
+\begin_inset Quotes grd
+\end_inset
+
+ is never toggled.
+ If you set 
+\begin_inset Quotes gld
+\end_inset
+
+Series
+\begin_inset Quotes grd
+\end_inset
+
+ to 
+\begin_inset Quotes gld
+\end_inset
+
+Reset
+\begin_inset Quotes grd
+\end_inset
+
+ and select 
+\begin_inset Quotes gld
+\end_inset
+
+Toggle all
+\begin_inset Quotes grd
+\end_inset
+
+, then apply the style to bold face text, the text will revert to the default
+ series (
+\begin_inset Quotes gld
+\end_inset
+
+Medium
+\begin_inset Quotes grd
+\end_inset
+
+), no matter how many times you apply the style.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+We conclude with the same warning once again: Don't overuse the fonts.
+ They are, more often than not, a kludge and a bad substitute for good writing.
 \end_layout
 
 \begin_layout Section
@@ -15260,7 +15571,7 @@ Dateiformate ! DVI
 
 \begin_layout Standard
 Dieses Dateiformat hat die Endung 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -15268,18 +15579,18 @@ Dieses Dateiformat hat die Endung
 .dvi
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 .
  
 \lang english
 It is called 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 device-independent
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  (DVI), because it is completely portable; you can move them from one machine
@@ -15340,7 +15651,9 @@ LuaTeX
 LuaTeX
 \family default
  is an engine that provides direct Unicode support und support für direct
- font access (siehe Abschnitt
+ font access
+\lang ngerman
+ (siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -15352,8 +15665,10 @@ reference "sub:LaTeX-Schriftunterstützung"
 \end_inset
 
 ).
- LuaTeX is still work in progress, but it might develop into the next standard
- TeX processor.
+ LuaTeX 
+\lang english
+is still work in progress, but it might develop into the next standard TeX
+ processor.
 \end_layout
 
 \begin_layout Subsubsection
@@ -15435,16 +15750,18 @@ LaTeX-Paket ! pstricks
 \begin_layout Standard
 
 \lang english
-PostScript can nur contain images in the format 
-\begin_inset Quotes eld
+PostScript can nur contain
+\lang ngerman
+ Bilder im Format 
+\begin_inset Quotes gld
 \end_inset
 
 Encapsulated PostScript
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
- (EPS, Datei extension 
-\begin_inset Quotes eld
+ (EPS, Dateiendung 
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -15452,22 +15769,29 @@ Encapsulated PostScript
 .eps
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 ).
- As LyX allows you to use any known image format in your Dokument, it has
+ 
+\lang english
+As LyX allows you to use any known image format in your Dokument, it has
  to convert them in the background to EPS.
- If you have e.g 50
+ If you have z.
 \begin_inset space \thinspace{}
 \end_inset
 
-images in your Dokument, LyX has to do 50
+B.
+ 50
 \begin_inset space ~
 \end_inset
 
-conversions whenever you view oder export your Dokument.
- This will slow down your workflow mit LyX drastically.
+Bilder in your Dokument, LyX has to do 50
+\begin_inset space ~
+\end_inset
+
+conversions when you view oder export your Dokument zum ersten Mal.
+ This könnte slow down your workflow mit LyX.
  So if you plan to use PostScript, you can insert your images directly as
  EPS to avoid this problem.
 \end_layout
@@ -15621,11 +15945,15 @@ Sie können ihr Dokument als PDF über das Menü
 Datei\SpecialChar \menuseparator
 Exportieren
 \family default
- in drei verschiedenen Arten exportieren:
+ in verschiedenen Arten exportieren:
 \end_layout
 
 \begin_layout Description
-PDF 
+PDF
+\begin_inset space ~
+\end_inset
+
+(ps2pdf) 
 \lang english
 This uses the program 
 \family typewriter
@@ -15853,7 +16181,7 @@ HTML
 
 \lang english
 This Datei type has the extension 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -15861,7 +16189,7 @@ This Datei type has the extension
 .xhtml
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 .
@@ -15894,11 +16222,11 @@ Handbuchergänzungen
 
 \lang english
 XHTML output remains 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 under development
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 , und not all LyX Features are supported yet.
@@ -15944,84 +16272,95 @@ Dokument ! Vorschau
 \begin_layout Standard
 
 \lang english
-To get a look at the final version of your Dokument, mit all of the page
- breaks in place, the footnotes correctly numbered, und so on, use the Menü
+To get a look at the final version of your document, with all of the page
+ breaks in place, the footnotes correctly numbered, and so on, use the menu
  
 \family sans
 View
 \family default
- und choose a Datei type.
- A viewing program will pop up showing the output.
- For 
+ and choose 
 \family sans
-Ansicht\SpecialChar \menuseparator
-DVI
+View
 \family default
- you can use the Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/buffer-view_dvi.png
-
-\end_inset
-
- (Tastenkürzel 
+ or the toolbar button 
 \begin_inset Info
-type  "shortcut"
-arg   "buffer-view dvi"
+type  "icon"
+arg   "buffer-view"
 \end_inset
 
-), für 
-\family sans
-Ansicht\SpecialChar \menuseparator
-PDF
-\begin_inset space ~
+.
+ A viewing program will pop up showing the output in the defined default
+ output format, which is globally set in the preferences (see sec.
+\begin_inset space \thinspace{}
 \end_inset
 
-(pdflatex)
-\family default
- the Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/buffer-view_pdf2.png
 
-\end_inset
+\lang ngerman
 
-, und für 
-\family sans
-Ansicht\SpecialChar \menuseparator
-Postscript
-\family default
- the Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/buffer-view_ps.png
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Dateiformate"
 
 \end_inset
 
- (Tastenkürzel 
-\begin_inset Info
-type  "shortcut"
-arg   "buffer-view ps"
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Standard
 
 \lang english
-If you have changed your Dokument, you can refresh the output in the same
- viewer Fenster using the Menü 
+) and can also be altered for single documents in the document settings
+ (see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\lang ngerman
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Dokument-Ausgabe"
+
+\end_inset
+
+
+\lang english
+).
+ Further output formats can be selected via 
 \family sans
 Ansicht\SpecialChar \menuseparator
-Aktualisieren
+Other Formats
 \family default
+ or the toolbar button 
+\begin_inset Graphics
+	filename ../../images/view-others.png
+	scale 85
+	groupId toolbarbuttons
+
+\end_inset
+
 .
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-When you preview a Datei, the output Datei is nur generated in LyX's temporary
+If you have changed your document, you can refresh the output in the same
+ viewer window using the menu 
+\family sans
+Ansicht\SpecialChar \menuseparator
+Update
+\family default
+ or 
+\family sans
+Ansicht\SpecialChar \menuseparator
+Update (Other Formats)
+\family default
+, respectively.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+When you preview a file, the output file is only generated in LyX's temporary
  directory.
- To have a real output, export your Dokument.
+ To have a real output, export your document.
 \end_layout
 
 \begin_layout Subsection
@@ -16050,9 +16389,9 @@ Drucken
  oder 
 \lang english
 click on the Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/dialog-show_print.png
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show print"
 \end_inset
 
 .
@@ -16158,12 +16497,22 @@ Typographie
 \end_layout
 
 \begin_layout Subsection
-Bindestriche
+Bindestriche, Gedankenstriche und Minuszeichen
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
 Bindestriche
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Gedankenstriche
 \end_layout
 
 \end_inset
@@ -21801,14 +22150,18 @@ Einführung
 \begin_layout Standard
 
 \lang english
-A float is a block of text associated with some sort of label, which doesn't
- have a fixed location.
+A 
+\lang ngerman
+Gleitobjekt
+\lang english
+ is a block of text associated with some sort of label, which doesn't have
+ a fixed location.
  It can 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
-float
-\begin_inset Quotes erd
+gleiten
+\begin_inset Quotes grd
 \end_inset
 
  forward or backward a page or two, to wherever it fits best.
@@ -21824,19 +22177,31 @@ Margin
 
 Notes
 \family default
- are also floats, because they can float to the next page when there are
- too many notes on the page.
+ are also 
+\lang ngerman
+Gleitobjekt
+\lang english
+e, because they can float to the next page when there are too many notes
+ on the page.
 \end_layout
 
 \begin_layout Standard
-
+Gleitobjekt
 \lang english
-Floats make it possible to get a high quality layout.
+e make it possible to get a high quality layout.
  Images and tables can be spread evenly over the pages to avoid whitespace
  and pages without text.
  As the floating often destroys the context between the text and the image/table
-, every float can be referenced in the text.
- Floats are therefore numbered.
+, every 
+\lang ngerman
+Gleitobjekt
+\lang english
+ can be referenced in the text.
+ 
+\lang ngerman
+Gleitobjekte 
+\lang english
+are therefore numbered.
  Referencing is described in
 \lang ngerman
  Abschnitt
@@ -21856,11 +22221,18 @@ reference "sec:Querverweise"
 \begin_layout Standard
 
 \lang english
-To insert a float, use the menu 
+To insert a 
+\lang ngerman
+Gleitobjekt
+\lang english
+, use the Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
-Floats
+
+\lang ngerman
+Gleitobjekt
 \family default
+\lang english
 .
  A box with a caption that has e.
 \begin_inset space \thinspace{}
@@ -21871,15 +22243,15 @@ g.
 \end_inset
 
 the label 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
-Figure
+Abbildung
 \begin_inset space ~
 \end_inset
 
 #:
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  (# is the actual number) will be inserted into your Dokument.
@@ -21900,10 +22272,21 @@ Gleitobjekte ! Legende
  
 \lang english
 The image or table is inserted above or below the caption in a separate
- Absatz within the float.
- To keep your LyX-Dokument readable, you can open and close the float box
- by left-clicking on the box label.
- A closed float box looks like this: 
+ Absatz within the 
+\lang ngerman
+Gleitobjekt
+\lang english
+s.
+ To keep your LyX-Dokument readable, you can open and close the 
+\lang ngerman
+Gleitobjekt-B
+\lang english
+ox by left-clicking on the box label.
+ A closed 
+\lang ngerman
+Gleitobjekt-B
+\lang english
+ox looks like this: 
 \begin_inset Graphics
 	filename clipart/GleitobjektQt4.png
 	scale 80
@@ -21916,8 +22299,12 @@ The image or table is inserted above or below the caption in a separate
 \begin_layout Standard
 
 \lang english
-It is recommended to insert floats as a separate Absatz to avoid possible
- LaTeX-errors that can occur when the surrounding text is specially formatted.
+It is recommended to insert 
+\lang ngerman
+Gleitobjekte
+\lang english
+ as a separate Absatz to avoid possible LaTeX-errors that can occur when
+ the surrounding text is specially formatted.
 \end_layout
 
 \begin_layout Subsection
@@ -21957,57 +22344,45 @@ reference "fig:Ein-verzerrtes-Schnabeltier"
 
 \end_inset
 
- 
-\lang english
-was created using the Menü 
+ wurde mit dem Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
-Float\SpecialChar \menuseparator
-Figure
+Gleitobjekt\SpecialChar \menuseparator
+Abbildung
 \family default
- or the
-\lang ngerman
- Werkzeugleistenknopf 
+ oder dem Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
 arg   "float-insert figure"
 \end_inset
 
-.
- 
-\lang english
-The image was inserted by setting the Cursor above the caption label and
- using the Menü 
+ erstellt.
+ Das Bild wurde eingefügt, indem der Cursor über die Beschriftung gesetzt
+ wurde und dann das Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
-Graphics
+Grafik
 \family default
- or the
-\lang ngerman
- Werkzeugleistenknopf 
+ oder der Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset graphics"
 \end_inset
 
-.
- 
-\lang english
-The image in the float was horizontally centered by putting the Cursor in
- front of or behind the image and using the
-\lang ngerman
- Menü 
+ verwendet wurde.
+ Das Bild wurde horizontal im Gleitobjekt zentriert, indem der Cursor vor
+ oder hinter das Bild gesetzt wurde und dann das Menü 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Absatz-Einstellungen
 \family default
- oder dem Werkzeugleistenknopf 
+ oder der Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
 arg   "layout-paragraph"
 \end_inset
 
-.
+ benutzt wurde.
 \end_layout
 
 \begin_layout Standard
@@ -22052,11 +22427,9 @@ Ein verzerrtes Schnabeltier in einem Gleitobjekt.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This figure float also shows how to set a label and create a cross-reference
- to it.
- As described in Abschnitt
+Dieses Abbildungs-Gleitobjekt zeigt außerdem, wie man eine Marke einfügt
+ und diese referenziert.
+ Wie in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -22067,8 +22440,7 @@ reference "sec:Querverweise"
 
 \end_inset
 
-, you can simply insert a label in the caption using the
-\lang ngerman
+ beschrieben, kann man einfach eine Marke in die Beschriftung übder das
  Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
@@ -22080,53 +22452,61 @@ type  "icon"
 arg   "label-insert"
 \end_inset
 
- 
-\lang english
-and refer to it using the Menü 
+ einfügen und darauf mit dem Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
-Cross-Reference
+Querverweis
 \family default
- or the
-\lang ngerman
- Werkzeugleistenknopf 
+ oder dem Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset ref"
 \end_inset
 
-.
- 
-\lang english
-It is important to use references to figure floats, rather than using vague
- references like 
-\begin_inset Quotes eld
+ verweisen.
+ Es ist wichtig Querverweise für Abbildungs-Gleitobjekte zu verwenden, und
+ nicht vage Formulierungen wie 
+\begin_inset Quotes gld
 \end_inset
 
-the figure above
-\begin_inset Quotes erd
+die obige Abbildung
+\begin_inset Quotes grd
 \end_inset
 
-, because, as LaTeX will reposition the floats in the final Dokument, it
- might not be 
-\begin_inset Quotes eld
+, denn LaTeX wird die Gleitobjekte in der Ausgabe neu anordnen, so dass
+ sie nicht mehr 
+\begin_inset Quotes gld
 \end_inset
 
-above
-\begin_inset Quotes erd
+obig
+\begin_inset Quotes grd
 \end_inset
 
- at all.
+ sein muss.
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-Normally only one image is inserted in a figure float, but sometimes you
- might want to use two images with separate subcaptions.
- This can be done by inserting image floats into existing image floats.
- Note that only the main caption of the float is added to the List of Figures
- as described in Abschnitt
+Normally only one image is inserted in a 
+\lang ngerman
+Abbildungs-Gleitobjekt
+\lang english
+, but sometimes you might want to use two images with separate subcaptions.
+ This can be done by inserting 
+\lang ngerman
+Abbildungs-Gleitobjekte
+\lang english
+ into existing 
+\lang ngerman
+Abbildungs-Gleitobjekt
+\lang english
+e.
+ Note that only the main caption of the 
+\lang ngerman
+Gleitobjekts
+\lang english
+ is added to the List of Figures as described in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -22149,7 +22529,11 @@ reference "fig:Zwei-verzerrte-Bilder"
 
 \end_inset
 
- is an example of a figure float with two images set side by side.
+ is an example of a 
+\lang ngerman
+Abbildungs-Gleitobjekts
+\lang english
+ with two images set side by side.
  You can also set the images one below the other.
  Abbildung
 \begin_inset space ~
@@ -22752,166 +23136,124 @@ Grundlagen
 \end_layout
 
 \begin_layout Standard
-Es gibt verschiedene Wege eine Formel einzufügen.
- Sie können einfach auf den Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/math-mode.png
-	scale 85
-	groupId Icon
 
+\lang english
+To create a math formula, you can just click on the toolbar icon 
+\lang ngerman
+
+\begin_inset Info
+type  "icon"
+arg   "math-mode on"
 \end_inset
 
- klicken.
- Das öffnet ein kleines blaues Rechteck, mit purpurnen Häkchen umrandet.
- Die purpurne Farbe deutet an, dass Sie im 
-\family typewriter
-Mathe-Modus
-\family default
- sind.
-\end_layout
 
-\begin_layout Standard
-Sie können auch 
+\lang english
+.
+ That will create a little blue rectangle, with purple markers around its
+ corners.
+ That blue rectangle is the formula itself; the purple markers indicate
+ what level of nesting within the formula you are at.
+ You can also choose a particular formula type to insert via
+\lang ngerman
+ des Menüs 
 \family sans
 Einfügen\SpecialChar \menuseparator
-Mathe\SpecialChar \menuseparator
-Eingebettete
-\begin_inset space \space{}
-\end_inset
-
-Formel
+Mathe
 \family default
- wählen oder die Tastenkürzel 
-\family sans
-Alt+M
-\begin_inset space ~
-\end_inset
-
-M
-\family default
-, 
-\family sans
-Alt+Z
-\begin_inset space ~
-\end_inset
-
-M
-\family default
- oder 
-\family sans
-Strg+M
-\family default
- benutzen.
- Auf all diese Arten wird eine Formel 
-\emph on
-in der Zeile
-\emph default
- (eingebettet) erzeugt.
-\end_layout
-
-\begin_layout Standard
-Um eine abgesetzte Formel zu erhalten, wählen Sie 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Mathe\SpecialChar \menuseparator
-Abgesetzte
-\begin_inset space \space{}
-\end_inset
-
-Formel
-\family default
- (
-\family sans
-Strg+Umschalt+M
-\family default
-).
-\end_layout
-
-\begin_layout Standard
-Wenn Sie den 
-\family typewriter
-Mathe-Modus
-\family default
- nur benutzen wollen, um zum Beispiel ein 
-\begin_inset Formula $\alpha$
-\end_inset
-
- zu schreiben, gibt es besondere Tastenkürzel, zum Beispiel 
-\family sans
-Alt+M
-\begin_inset space ~
-\end_inset
-
-G
-\begin_inset space ~
-\end_inset
-
-A
-\family default
- für 
-\begin_inset Formula $\alpha$
-\end_inset
-
-, 
-\family sans
-Alt+M
-\begin_inset space ~
-\end_inset
-
-G
-\begin_inset space ~
-\end_inset
-
-B
-\family default
- für 
-\begin_inset Formula $\beta$
-\end_inset
-
- usw
-\emph on
 .
 \end_layout
 
 \begin_layout Standard
-Dann gibt es noch die Mathe-Kontrollflächen
-\begin_inset Index idx
-status collapsed
 
-\begin_layout Plain Layout
-Mathe-!Kontrollflächen
+\lang english
+Editing the parameters of a formula and adding math constructs can be done
+ with the 
+\family sans
+math
+\begin_inset space ~
+\end_inset
+
+toolbar
+\family default
+, that appears when the cursor is in a formula.
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+There are two main types of formulas, inline formulas and display formulas.
+ Inline formulas appear within a text line, like this one:
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This is a line with an inline formula 
+\begin_inset Formula $A=B$
 \end_inset
 
-, die Sie über 
-\family sans
-Ansicht\SpecialChar \menuseparator
-Werkzeugleisten\SpecialChar \menuseparator
-Mathe-Kontrollflächen
-\family default
- oder 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Mathe\SpecialChar \menuseparator
-Mathe-Kontrollflächen
-\family default
- ein- und ausschalten können, und die Mathe-Werkzeugleiste, die Sie über
- 
-\family sans
-Ansicht\SpecialChar \menuseparator
-Werkzeugleisten\SpecialChar \menuseparator
-Mathe
-\family default
- oder einen Klick auf 
-\begin_inset Graphics
-	filename ../../images/toolbar-toggle_math.png
-	scale 85
-	groupId Icon
+ in it.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Displayed formulas appear outside the text like if they were in a separate
+ paragraph, like this one:
+\lang ngerman
+
+\begin_inset Formula 
+\[
+A=B
+\]
 
 \end_inset
 
- ein- und ausschalten können.
+
+\lang english
+You can only number and reference displayed formulas.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+LyX supports also many LaTeX math commands.
+ E.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+typing 
+\begin_inset Quotes gld
+\end_inset
+
+
+\series bold
+
+\backslash
+alpha
+\series default
+
+\begin_inset Quotes grd
+\end_inset
+
+, followed by a space, in a formula will create the Greek letter 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ Typing commands might sometimes be faster than using the 
+\family sans
+Math
+\begin_inset space ~
+\end_inset
+
+Panel
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -23007,61 +23349,73 @@ Wenn man zum Beispiel
 \end_inset
 
  erreichen will, muss man 
-\family typewriter
+\series bold
 
 \backslash
 sqrt
-\family default
- eingeben, dann 
-\family sans
-Leertaste
-\family default
-, dann 
-\family typewriter
-2x+1
-\family default
-, aber nicht 
-\family typewriter
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+
+\backslash
+leer 
+\end_layout
+
+\end_inset
+
+2x+1 
+\series default
+eingeben und nicht 
+\series bold
 
 \backslash
 sqrt
-\family sans
+\begin_inset ERT
+status collapsed
 
-\begin_inset space ~
+\begin_layout Plain Layout
+
+\series bold
+
+\backslash
+leer 
+\end_layout
+
 \end_inset
 
-Leertaste
-\begin_inset space ~
-\end_inset
-
-
-\family typewriter
 2x
-\family sans
+\begin_inset ERT
+status collapsed
 
-\begin_inset space ~
+\begin_layout Plain Layout
+
+\series bold
+
+\backslash
+leer 
+\end_layout
+
 \end_inset
 
-Leertaste
-\begin_inset space ~
-\end_inset
-
-
-\family typewriter
 +
-\family sans
+\begin_inset ERT
+status collapsed
 
-\begin_inset space ~
+\begin_layout Plain Layout
+
+\series bold
+
+\backslash
+leer 
+\end_layout
+
 \end_inset
 
-Leertaste
-\begin_inset space ~
-\end_inset
-
-
-\family typewriter
 1
-\family default
+\series default
 , weil dann nur die 
 \family typewriter
 
@@ -23086,18 +23440,8 @@ Leertaste
 \family default
  sprechen: es mag sein, dass Sie Leerzeichen erzeugen wollen, die über das
  hinausgehen, was LaTeX normalerweise erzeugt.
- Wir empfehlen das natürlich nicht, weil das WYSIWYM
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-WYSIWYM
-\end_layout
-
-\end_inset
-
--Prinzip bedeutet, dass Sie nicht über den Schriftsatz nachdenken sollen,
- sondern über den Inhalt.
+ Wir empfehlen das natürlich nicht, weil das WYSIWYM-Prinzip bedeutet, dass
+ Sie nicht über den Schriftsatz nachdenken sollen, sondern über den Inhalt.
  Es mag aber Situationen geben, in denen Sie wirklich Leerzeichen hinzufügen
  wollen.
 \end_layout
@@ -23110,7 +23454,7 @@ Strg+Leertaste
  machen.
  Das erzeugt einen kleinen Zwischenraum und zeigt ihn auf dem Bildschirm
  wie eine auf dem Rücken liegende eckige rote Klammer an: 
-\begin_inset Formula $a\!\sqcup\! b$
+\begin_inset Formula $a\text{{\color{red}\leer}}b$
 \end_inset
 
 .
@@ -23223,24 +23567,20 @@ Indizes
 \end_layout
 
 \begin_layout Standard
-Sie können die automatische 
+Sie können die 
 \family sans
 Mathe-Werkzeugleiste
 \family default
- am unteren Rand benutzen, um Hoch- oder Tiefstellungen zu erzeugen (
-\begin_inset Graphics
-	filename ../../images/math/super.png
-	scale 85
-	groupId Icon
-
+ benutzen um Hoch- oder Tiefstellungen zu erzeugen (Knöpfe 
+\begin_inset Info
+type  "icon"
+arg   "math-superscript"
 \end_inset
 
  und 
-\begin_inset Graphics
-	filename ../../images/math/sub.png
-	scale 85
-	groupId Icon
-
+\begin_inset Info
+type  "icon"
+arg   "math-subscript"
 \end_inset
 
 ), aber viel einfacher geht es mit der normalen TeX-Methode.
@@ -23248,25 +23588,34 @@ Mathe-Werkzeugleiste
 \begin_inset Formula $x^{2}$
 \end_inset
 
- zu erhalten, tippen Sie (in Mathed) 
-\family typewriter
+ zu erhalten, geben Sie 
+\series bold
 x^2
-\family default
-, dann 
-\family sans
-Leertaste
-\family default
-.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+leer 
+\end_layout
+
+\end_inset
+
+
+\series default
+ ein.
  Die 
 \family sans
 Leertaste
 \family default
  bringt den Cursor zurück auf die Grundlinie des Ausdrucks.
  Wenn Sie 
-\family typewriter
+\series bold
 x^2y
-\family default
- tippen, erhalten Sie 
+\series default
+ eingeben, erhalten Sie 
 \begin_inset Formula $x^{2y}$
 \end_inset
 
@@ -23275,31 +23624,85 @@ x^2y
 \end_inset
 
  zu erhalten, müssen Sie 
-\family typewriter
-x^2,
-\family default
- dann 
+\series bold
+x^2
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+leer 
+\end_layout
+
+\end_inset
+
+y
+\series default
+ eingeben.
+ Wenn Sie Zeichen in der Hochstellung haben, die mit dem Zirkumflex 
+\begin_inset Quotes gld
+\end_inset
+
+^
+\begin_inset Quotes grd
+\end_inset
+
+ akzentuiert werden können, müssen Sie die 
 \family sans
 Leertaste
 \family default
-, dann 
-\family typewriter
-y
-\family default
- tippen.
+ ein weiteres Mal drücken um den Zirkumflex vom Zeichen zu trennen.
+ Wenn Sie z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ 
+\begin_inset Formula $x^{a}$
+\end_inset
+
+ haben wollen, geben Sie 
+\series bold
+x^
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+leer 
+\end_layout
+
+\end_inset
+
+a
+\series default
+ ein.
  Indizes sind ähnlich: um 
 \begin_inset Formula $a_{1}$
 \end_inset
 
  zu erhalten, müssen Sie in Mathed 
-\family typewriter
+\series bold
 a_1
-\family default
-, dann 
-\family sans
-Leertaste
-\family default
- tippen.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+leer 
+\end_layout
+
+\end_inset
+
+
+\series default
+ eingeben.
 \end_layout
 
 \begin_layout Subsection
@@ -23318,17 +23721,15 @@ Bruche@Brüche
 
 \begin_layout Standard
 Einen Bruch kann man mit 
-\family typewriter
+\series bold
 
 \backslash
-
-\family default
- (in Mathed) oder mit dem Bruchsymbol 
-\begin_inset Graphics
-	filename ../../images/math/frac-square.png
-	scale 85
-	groupId Icon
-
+frac
+\series default
+ oder mit dem Bruchsymbol 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac"
 \end_inset
 
 aus der 
@@ -23349,18 +23750,6 @@ ed-Kästchen über und
 \end_inset
 
 -Taste wieder in den Zähler.
- Mit der automatischen 
-\family sans
-Mathe-Werkzeugleiste
-\family default
- am unteren Rand können Sie über 
-\begin_inset Graphics
-	filename ../../images/math/frac.png
-	scale 50
-
-\end_inset
-
- einen Standardbruch erzeugen.
  Jede mathematische Struktur kann in einen Bruch geschrieben werden, wie
  dieses Beispiel zeigt:
 \begin_inset Formula 
@@ -23391,21 +23780,19 @@ Wurzeln
 \end_layout
 
 \begin_layout Standard
-Wurzeln erhält man, wenn man auf das 
-\begin_inset Graphics
-	filename ../../images/math/sqrt.png
-	scale 70
-
+Wurzeln erhält man, wenn man auf das Symbol 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\sqrt"
 \end_inset
 
--Symbol oder das 
-\begin_inset Graphics
-	filename ../../images/math/root.png
-	scale 70
-
+ oder 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\root"
 \end_inset
 
--Symbol in der 
+ in der 
 \family sans
 Mathe-Werkzeugleiste
 \family default
@@ -23529,11 +23916,11 @@ lim
  In LaTeX wird es als Sonderobjekt behandelt, damit es Indizes wie beschrieben
  darstellen kann.
  In LyX erhält man es mit 
-\family typewriter
+\series bold
 
 \backslash
 lim
-\family default
+\series default
  in Mathed oder indem man es aus den 
 \family sans
 Funktionen
@@ -23553,638 +23940,8 @@ reference "sub:Mathematische-Funktionen"
 ).
 \end_layout
 
-\begin_layout Subsubsection
-Besondere Integralzeichen
-\end_layout
-
-\begin_layout Standard
-Das Standard-LaTeX hat nur einen beschränkten Satz von Integralzeichen.
- Deshalb haben mehrere Pakete zusätzliche Zeichen implementiert wie Mehrfachinte
-grale 
-\begin_inset Formula $\iint$
-\end_inset
-
- (
-\family typewriter
-
-\backslash
-iint
-\family default
-).
- Unglücklicherweise sehen sie nicht immer konsistent aus.
-\end_layout
-
-\begin_layout Standard
-Deswegen sollten Sie in 
-\family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Mathe-Optionen esint-Paket
-\begin_inset space \space{}
-\end_inset
-
-automatisch
-\begin_inset space \space{}
-\end_inset
-
-verwenden
-\family default
- ankreuzen, wenn Sie besondere Integralzeichen benötigen.
- Dieses Paket hat einen vollständigen Satz von Integralzeichen, die konsistent
- aussehen.
- Die meisten finden Sie in der 
-\family sans
-Mathe-Werkzeugleiste
-\family default
-.
-\end_layout
-
 \begin_layout Subsection
-Die 
-\family sans
-Mathe-Kontrollflächen
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Mathe-!Kontrollflächen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die 
-\family sans
-Mathe-Kontrollflächen
-\family default
- sind in einer Werkzeugleiste zusammengefasst, die eine sehr umfangreiche
- Liste an Symbolen, Funktionen und Strukturen besitzt.
- Wie bereits erwähnt können Sie sie anzeigen lassen, wenn Sie mathematische
- Formeln schreiben.
- Dadurch gelangen Sie leichter an die weniger trivialen Funktionen des 
-\family typewriter
-Mathe-Modus
-\family default
-.
- Wenn Sie auf einen Schaltknopf klicken, bekommen Sie eine Auswahl an Symbolen
- angezeigt, von denen Sie eines durch Anklicken einfügen.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/space.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
- bringt eine Auswahl von geschützten Leerzeichen, zum Beispiel 
-\begin_inset Formula $2\qquad3$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/style.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
- gibt eine Auswahl von Schriftstilen.
- Dabei ist 
-\family typewriter
-
-\backslash
-displaystyle
-\family default
- die Grundgröße für abgesetzte Formeln, 
-\family typewriter
-
-\backslash
-textstyle
-\family default
- die Grundgröße für Textformeln, 
-\family typewriter
-
-\backslash
-scriptstyle
-\family default
- die Grundgröße für einfache Umstellungen und 
-\family typewriter
-
-\backslash
-scriptscript\SpecialChar \-
-style
-\family default
- die Grundgröße für zweifache Umstellungen (siehe auch 
-\begin_inset CommandInset citation
-LatexCommand cite
-after "Abschnitt 5.5.2"
-key "latex-einführung"
-
-\end_inset
-
- und Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sub:Schriftgrößen-Mathe"
-
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/frac-square.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
-
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset space \space{}
-\end_inset
-
-erzeugt eine Schablone für Brüche wie 
-\begin_inset Formula $\frac{1}{2},\:\nicefrac{1}{2},\:\tfrac{1}{2},\:\dfrac{1}{2}$
-\end_inset
-
-.
- Auch hier gibt es eine Auswahl an Bruchtypen, die mehr oder weniger selbsterklä
-rend ist.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/font.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
- legt den Schrifttyp fest.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/functions.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
- Funktionen: siehe Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sub:Mathematische-Funktionen"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Die folgenden Symbole sind auch in Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sub:Andere-Mathe-Symbole"
-
-\end_inset
-
- beschrieben.
- Wenn Sie mit der Maus auf ein Symbol zeigen, erhalten Sie eine Beschreibung.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/hat.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
-: Rahmen-Verzierungen.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/intop.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
-: große Operatoren
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/bigtriangledown.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
-: verschiedene, nicht zuzuordnende Symbole
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/alpha.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
-: kleine griechische Buchstaben und die großen, die anders aussehen als
- die lateinischen.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/leftarrow.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
- : Pfeile
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/dashleftarrow.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
-: AMS-Pfeile
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/pm.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
-: Operatoren
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/leq.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
-: Relationen
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/leqq.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
-: AMS-Relationen
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/nless.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
-: AMS-Negierte-Relationen
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/ldots.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
-: Punkte
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/dotplus.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
-: AMS-Operatoren
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/digamma.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
-: AMS-Verschiedenes
-\end_layout
-
-\begin_layout Subsection
-Die Mathe-Werkzeugleiste
-\family sans
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Mathe-!Werkzeugleiste
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
-\end_layout
-
-\begin_layout Enumerate
-\paragraph_spacing onehalf
-\begin_inset Graphics
-	filename ../../images/math/equation.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
-: Darstellungsmodus
-\end_layout
-
-\begin_layout Enumerate
-\paragraph_spacing onehalf
-\begin_inset Graphics
-	filename ../../images/math/sub.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
-: Indizes
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/super.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
-: Exponenten
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/sqrt.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
- : Quadratwurzeln
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/root.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
- : allgemeine Wurzeln
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/frac.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
- : Standardbrüche
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $\sum$
-\end_inset
-
- : Summen
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/int.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
- : Integrale
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/prod.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
- : Produkte
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/lparen_rparen.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
- : runde Klammern
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/lbracket_rbracket.png
-	scale 70
-
-\end_inset
-
- : eckige Klammern
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/lbrace_rbrace.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
- : geschweifte Klammern
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/dialog-show_mathdelimiter.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
- : Trennzeichen
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math-matrix.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
- : Matrizen
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/math/cases.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
- : Fallunterscheidungen
-\end_layout
-
-\begin_layout Enumerate
-
-\family sans
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-row.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
-
-\family default
- : Zeile hinzufügen
-\end_layout
-
-\begin_layout Enumerate
-
-\family sans
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-column.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
-
-\family default
- : Spalte hinzufügen
-\end_layout
-
-\begin_layout Enumerate
-
-\family sans
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-row.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
-
-\family default
- : Zeile löschen
-\end_layout
-
-\begin_layout Enumerate
-
-\family sans
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-column.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
-
-\family default
- : Spalte löschen
-\end_layout
-
-\begin_layout Enumerate
-
-\family sans
-\begin_inset Graphics
-	filename ../../images/toolbar-toggle_math_panels.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
-
-\family default
- : Mathe-Kontrollflächen an/aus
-\end_layout
-
-\begin_layout Subsection
-Andere mathematische Symbole
+Mathematische Symbole
 \begin_inset Index idx
 status collapsed
 
@@ -24197,7 +23954,7 @@ mathematische!Symbole
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Andere-Mathe-Symbole"
+name "sub:Mathe-Symbole"
 
 \end_inset
 
@@ -24205,216 +23962,51 @@ name "sub:Andere-Mathe-Symbole"
 \end_layout
 
 \begin_layout Standard
-Wenn Sie den LaTeX-Namen für ein bestimmtes Symbol kennen, können Sie ihn
- direkt eingeben.
- Mathematische Symbole sind sehr hilfreich, wenn Sie den LaTeX-Namen nicht
- kennen.
- Einen LaTeX-Namen, den Sie kennen, tippen Sie mit einem vorangestellten
- 
-\family typewriter
 
-\backslash
-
-\family default
-, den LaTeX benutzt, ein, wie zum Beispiel 
-\family typewriter
-
-\backslash
-alpha
-\family default
-, und der Text wird automatisch in das Zeichen konvertiert, nachdem Sie
- ihn mit der 
+\lang english
+Most math symbols can be found in the 
 \family sans
-Leertaste
-\family default
- oder einem anderen nicht-alphabetischen Symbol abgeschlossen haben.
- Der Text erscheint zunächst ohne den 
-\family typewriter
-
-\backslash
-
-\family default
-, wird aber zu einem blauen Symbol, wenn LyX verstanden hat, was Sie wollen.
- Wenn Mathed den Text nicht in ein Symbol konvertieren kann, wird er rot
- bleiben.
- Das nennt man 
-\emph on
-Makromodus.
-\end_layout
-
-\begin_layout Standard
-Inzwischen werden fast alle in LaTeX verfügbaren Symbole WYSIWYM
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-WYSIWYM
-\end_layout
-
+Math
+\begin_inset space ~
 \end_inset
 
- in LyX dargestellt.
- Sie finden Sie in der 
+Panel
+\family default
+ under one of several categories; including 
 \family sans
-Mathe-Werkzeugleiste
+Greek
 \family default
- rechts von den Funktionen.
- Die dort unter 
+, 
 \family sans
-Griechisch
+Operators
 \family default
- 
-\emph on
-fehlenden
-\emph default
- großen Buchstaben sehen aus wie die entsprechenden lateinischen.
-\end_layout
-
-\begin_layout Standard
-Diese Eigenschaft von LyX, Texte in Mathed, die es nicht kennt, so zu lassen
- wie sie eingegeben wurden, erlaubt Ihnen, Ihre eigenen Makrokürzel zu definiere
-n und zu benutzen.
- Der zugehörige Befehl muss im LaTeX-Vorspann stehen (siehe 
-\emph on
-Hand\SpecialChar \-
-buch\SpecialChar \-
-ergänzungen
-\emph default
-).
- Wenn Sie dort zum Beispiel schreiben:
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-newcommand{
-\backslash
-a}{
-\backslash
-alpha} 
-\end_layout
-
-\begin_layout Standard
-können Sie in Mathed 
-\family typewriter
-
-\backslash
-a
+, 
+\family sans
+Relations
 \family default
- anstatt 
-\family typewriter
-
-\backslash
-alpha
+, 
+\family sans
+Arrows
 \family default
- benutzen, um 
-\begin_inset Formula $\alpha$
-\end_inset
-
- zu erzeugen.
- Vorsicht ist aber geboten, weil es LyX egal ist, ob das Makro gültig ist.
- Ist es ungültig, werden Sie Fehlermeldungen erhalten, sobald Sie es an
- LaTeX senden (für eine Druckvorschau oder zum Druck).
- Weitere Einzelheiten finden Sie in den 
-\emph on
-Handbuchergänzungen
-\emph default
 .
-\end_layout
-
-\begin_layout Subsection
-Weitere Symbole
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Symbole
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Weitere-Symbole"
-
-\end_inset
-
-
+ There are also the additional symbols provided by the American Mathematical
+ Society (AMS).
 \end_layout
 
 \begin_layout Standard
-Es gibt einige mathematische Symbole, die es in LaTeX (oder LyX) nicht gibt,
- die aber in mathematischen Schriften benutzt werden, wie zum Beispiel die
- altdeutsche Frakturschrift und die 
-\emph on
-Wandtafel
-\emph default
--Fettschrift (Blackboard), die für Vektoren, komplexe Zahlen oder ganze
- Zahlen benutzt werden.
- Diese Pakete kann man jetzt über ein Menü hinzufügen: im Dialogfenster
- 
+
+\lang english
+If you know the LaTeX-command for a construct or symbol you wish to use,
+ you don't have to use the 
 \family sans
-Dokument-Einstellungen
-\family default
- gibt es unter 
-\family sans
-Mathe-Optionen
-\family default
- die Optionen 
-\family sans
-AMS-Mathe-Paket
-\begin_inset space \space{}
+Math
+\begin_inset space ~
 \end_inset
 
-automatisch
-\begin_inset space \space{}
-\end_inset
-
-verwenden
+Panel
 \family default
- und 
-\family sans
-AMS-Mathe-Paket
-\begin_inset space \space{}
-\end_inset
-
-verwenden
-\family default
-, von denen keine oder eine angekreuzt werden kann.
-\end_layout
-
-\begin_layout Standard
-Wenn die erste angekreuzt ist, sind alle AMS-LaTeX-Symbole und Umgebungen
- verfügbar, und LyX versucht, sie so gut wie möglich zu verwenden.
- Wenn Sie die zweite ankreuzen, wird LyX gezwungen, das Paket zu benutzen.
- Sie werden Ärger bekommen, wenn Sie diese Pakete in den Vorspann einfügen,
- weil LyX jetzt ein paar Makros dieser Pakete selber definiert hat.
- Die AMS-Klassen fügen diese Pakete automatisch hinzu.
-\end_layout
-
-\begin_layout Standard
-Das 
-\family typewriter
-esint
-\family default
--Paket, das Sie ebenfalls [automatisch] benutzen können, erlaubt für Computer-Mo
-dern Schriften alternative Integral-Symbole, näheres finden Sie auf
-\begin_inset Newline linebreak
-\end_inset
-
- 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-ftp://dante.ctan.org/tex-archive/help/Catalogue/entries/esint.html
-\end_layout
-
-\end_inset
-
-.
+; you can type the command directly into the formula.
+ LyX will convert it to the corresponding symbol or construct.
 \end_layout
 
 \begin_layout Subsection
@@ -24422,38 +24014,89 @@ Leerraum ändern
 \end_layout
 
 \begin_layout Standard
-Vielleicht wollen Sie Leerraum verwenden, der vom LaTeX-Standard abweicht.
- Natürlich empfehlen wir das nicht, weil es dem WYSIWYM-Prinzip widerspricht,
- sich nur um den Inhalt zu kümmern und nicht um den Druck.
- Aber es gibt Situationen, in denen Sie mehr Leerraum benötigen.
- Als erstes benutzen Sie 
+
+\lang english
+You may want to create spaces that differ from the standard spacing that
+ LaTeX provides.
+ To do this, press 
 \family sans
+\lang ngerman
 Strg+Leertaste
 \family default
-, was einen kleinen Leerraum erzeugt und in LyX so aussieht: 
+\lang english
+ or use the 
+\family sans
+Math
+\begin_inset space ~
+\end_inset
+
+Panel
+\family default
+ button 
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\space"
+\end_inset
+
+
+\family default
+.
+ This generates a small space, and shows a small marker on the screen.
+ For example, the sequence 
+\series bold
+a Strg+Leertaste b
+\series default
+: 
 \begin_inset Formula $a\, b$
 \end_inset
 
+ appears in LyX as 
+\begin_inset Graphics
+	filename ../clipart/SpaceMarker.png
+
+\end_inset
+
 .
- Wenn Sie dann wieder die 
+ You can change the space to different sizes when you set the cursor behind
+ the space marker and hit space again several times.
+ With every space hit the size will be changed.
+ Some markers for the space size appear red in LyX, because they are negative
+ spaces.
+ Here are two examples:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+a Strg+Leertaste b
+\series default
+ und 3×
 \family sans
 Leertaste
 \family default
- betätigen, wird der Leerraum größer: 
+: 
 \begin_inset Formula $a\quad b$
 \end_inset
 
-.
- Zuletzt wird der Leerraum rot und bedeutet einen negativen Leerraum: 
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+a Strg+Leertaste b
+\series default
+ und 5×
+\family sans
+Leertaste
+\family default
+: 
 \begin_inset Formula $a\! b$
 \end_inset
 
-.
- Diese Leerräume können Sie auch über die 
-\family sans
-Mathe-Werkzeugleiste
-\family default
- einfügen.
+
 \end_layout
 
 \begin_layout Subsection
@@ -24490,12 +24133,22 @@ Die Funktionen wie
 \begin_inset space \space{}
 \end_inset
 
-kann man in Mathed auch mit Befehlen wie 
-\family typewriter
+kann man entweder mit dem Werkzeugleistenknopf 
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\functions"
+\end_inset
+
+
+\family default
+ oder mit Befehlen wie 
+\series bold
 
 \backslash
 sin
-\family default
+\series default
  usw.
 \begin_inset space \space{}
 \end_inset
@@ -24563,28 +24216,28 @@ Akzente
 \end_layout
 
 \begin_layout Standard
-Im 
-\family typewriter
-Mathe-Modus
-\family default
- setzt man Akzente wie im normalen Textmodus.
+Im Mathe-Modus setzt man Akzente wie im normalen Textmodus.
  Wie das gemacht wird, kann von Ihrer Tastatur und Ihrer Tastaturdatei abhängen.
  Sie können aber auch die LaTeX-Äquivalente als Makros benutzen.
  Wenn Ihre Tastatur keine Akzente ermöglicht, können Sie zum Beispiel in
  Mathed 
-\family typewriter
+\series bold
 
 \backslash
 hat{a
-\family default
+\series default
  eintippen, um 
 \begin_inset Formula $\hat{a}$
 \end_inset
 
  zu erhalten.
- Tabelle 
+ Tabelle
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "tab:Akzente"
 
 \end_inset
@@ -24597,7 +24250,7 @@ reference "tab:Akzente"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -24640,9 +24293,7 @@ Akzente
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
-Text
+Name
 \end_layout
 
 \end_inset
@@ -24651,9 +24302,7 @@ Text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
-Mathed
+Befehl
 \end_layout
 
 \end_inset
@@ -24662,8 +24311,6 @@ Mathed
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 Beispiel
 \end_layout
 
@@ -24684,6 +24331,10 @@ circumflex
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
+
+\backslash
 hat
 \end_layout
 
@@ -24716,6 +24367,10 @@ grave
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
+
+\backslash
 grave
 \end_layout
 
@@ -24748,6 +24403,10 @@ acute
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
+
+\backslash
 acute
 \end_layout
 
@@ -24780,6 +24439,10 @@ umlaut
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
+
+\backslash
 ddot
 \end_layout
 
@@ -24812,6 +24475,10 @@ tilde
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
+
+\backslash
 tilde
 \end_layout
 
@@ -24844,6 +24511,10 @@ dot
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
+
+\backslash
 dot
 \end_layout
 
@@ -24876,6 +24547,10 @@ breve
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
+
+\backslash
 breve
 \end_layout
 
@@ -24908,6 +24583,10 @@ caron
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
+
+\backslash
 check
 \end_layout
 
@@ -24940,6 +24619,10 @@ macron
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
+
+\backslash
 bar
 \end_layout
 
@@ -24963,7 +24646,7 @@ bar
 \begin_inset Text
 
 \begin_layout Plain Layout
-—
+vector
 \end_layout
 
 \end_inset
@@ -24972,6 +24655,10 @@ bar
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
+
+\backslash
 vector
 \end_layout
 
@@ -25000,6 +24687,21 @@ vector
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Sie können die Akzente auch über das Untermenü 
+\family sans
+Rahmen-Verzierungen
+\family default
+ des Mathe-Werkzeugleistenknopfs 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\hat"
+\end_inset
+
+ auswählen.
+ Dies wirkt auch auf markierte Bereiche in Formeln.
 \end_layout
 
 \begin_layout Section
@@ -25064,16 +24766,19 @@ Es gibt in LyX mehrere Klammerarten.
 
 \begin_layout Standard
 \noindent
-In Abschnitt 
+In Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sec:Matrizen-mehrzeilige-Gleichungen"
 
 \end_inset
 
  steht ausführlich beschrieben, wie man das im Einzelnen macht.
- Auch erkennt man mehrere Klammernschichten besser bei Scheußlichkeiten
- wie hier: 
+ Auch erkennt man mehrere Klammernschichten besser bei Ausdrücken wie 
 \begin_inset Formula 
 \begin{equation}
 \frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}\label{eq:Bruch}
@@ -25081,7 +24786,7 @@ reference "sec:Matrizen-mehrzeilige-Gleichungen"
 
 \end_inset
 
-oder hier:
+oder
 \begin_inset Formula 
 \[
 f\left(g\left(h\left(k\left(l\left(x\right)\right)\right)\right)\right).
@@ -25092,7 +24797,7 @@ f\left(g\left(h\left(k\left(l\left(x\right)\right)\right)\right)\right).
 Die Klammern aus dem Menü werden automatisch an die Größe ihres Inhaltes
  angepasst.
  (Das wird direkt mit den LaTeX-Befehlen 
-\family typewriter
+\series bold
 
 \backslash
 left( bla
@@ -25102,7 +24807,7 @@ left( bla
 bla 
 \backslash
 right)
-\family default
+\series default
  erreicht.)
 \end_layout
 
@@ -25148,7 +24853,11 @@ Zusammenpassend
 \end_layout
 
 \begin_layout Standard
-Schließlich können Sie noch zwischen 5 Klammergrößen wählen.
+Schließlich können Sie noch zwischen 5
+\begin_inset space ~
+\end_inset
+
+Klammergrößen wählen.
  
 \family sans
 Variabel
@@ -25181,65 +24890,6 @@ Einfügen
 \family default
 .
  Die Klammern werden um die markierte Struktur gesetzt.
-\end_layout
-
-\begin_layout Section
-Gruppierung
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Gruppierung
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Eventuell müssen Sie einen Satz von Symbolen gruppieren.
- In LaTeX wird zum Beispiel 
-\family typewriter
-(x^y)^z
-\family default
- anders als 
-\family typewriter
-x^(y^z)=x^y^z
-\family default
- gesetzt:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{eqnarray*}
-x^{yz} & \mathrm{ist}\,\mathrm{anders\, als} & x^{y^{z}}
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die Gruppierung erreichen Sie, indem Sie im ersten Fall 
-\family typewriter
-x^y
-\family default
-, gefolgt von 
-\family sans
-Leertaste
-\family default
- und schließlich 
-\family typewriter
-^z
-\family default
- eingeben.
- Im zweiten Fall geben Sie einfach 
-\family typewriter
-x^y^z
-\family default
- ein.
 \end_layout
 
 \begin_layout Section
@@ -25287,13 +24937,15 @@ Array-Umgebung
 Mathe-Werkzeugleiste
 \family default
  den Knopf 
-\begin_inset Graphics
-	filename ../../images/math-matrix.png
-	scale 85
-	groupId Icon
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathmatrix"
 \end_inset
 
+
+\family default
  an, der das Menü 
 \family sans
 Mathe-Matrix
@@ -25790,6 +25442,27 @@ reference "eq:fifth-eqn"
 ) wieder markiert.
 \end_layout
 
+\begin_layout Standard
+Die Eigenschaften von LyXs Querverweis-Box sind in Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Querverweise"
+
+\end_inset
+
+ beschrieben.
+ Um eine Marke zu entfernen, setzt man den Cursor ans Ende in die Gleichung
+ und drückt die 
+\family sans
+Entf
+\family default
+-Taste.
+\end_layout
+
 \begin_layout Section
 Benutzerdefinierte Mathe-Makros
 \begin_inset Index idx
@@ -25848,29 +25521,22 @@ Schriftstile
 \begin_layout Standard
 Sie können verschiedene Schriftstile benutzen, die Sie über die Schaltfläche
  
-\begin_inset Graphics
-	filename ../../images/math/font.png
-	scale 85
-	groupId Icon
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\font"
 \end_inset
 
+
+\family default
  auf der 
 \family sans
 Mathe-Werkzeugleiste
 \family default
  oder Tastaturbefehle auswählen.
- Nicht alle erscheinen genau WYSIWYM
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-WYSIWYM
-\end_layout
-
-\end_inset
-
-, und einige werden überhaupt nicht angezeigt.
+ Nicht alle erscheinen genau WYSIWYM, und einige werden überhaupt nicht
+ angezeigt.
  Der Standardschriftstil für Text ist kursiv, 
 \begin_inset Formula $text$
 \end_inset
@@ -25971,30 +25637,17 @@ mathematische ! Schriftstile
 
 \begin_layout Plain Layout
 \align center
-
-\family typewriter
 \begin_inset Tabular
-<lyxtabular version="3" rows="11" columns="4">
+<lyxtabular version="3" rows="9" columns="2">
 <features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0pt">
-<column alignment="left" valignment="top" width="0cm">
-<column alignment="left" valignment="top" width="0pt">
-<column alignment="left" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Textmodus
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Mathed
+Schriftstil
 \end_layout
 
 \end_inset
@@ -26003,164 +25656,33 @@ Mathed
 \begin_inset Text
 
 \begin_layout Plain Layout
-Mathed-Tastenkürzel
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-LaTeX-Befehl
+Befehl
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathrm{Aufrecht}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \series bold
-fett
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\mathbf{Fett}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
----------
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 
 \backslash
-
-\family typewriter
-mathbf
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
----------
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\mathcal{KALLIGRAFISCH}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-Alt+Z
-\begin_inset space ~
-\end_inset
-
-I
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
-
-\family typewriter
-mathcal
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
----------
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\mathrm{Roman}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-Alt+Z
-\begin_inset space ~
-\end_inset
-
-R
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
-
-\family typewriter
 mathrm
 \end_layout
 
@@ -26168,17 +25690,60 @@ mathrm
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $\mathbf{\mathbf{Fett}}$
+\end_inset
 
-\family typewriter
-Schreibmaschine
+
 \end_layout
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+
+\backslash
+mathbf
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathit{Kursiv}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+
+\backslash
+mathit
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
@@ -26195,19 +25760,10 @@ Schreibmaschine
 \begin_inset Text
 
 \begin_layout Plain Layout
----------
-\end_layout
 
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
+\series bold
 
 \backslash
-
-\family typewriter
 mathtt
 \end_layout
 
@@ -26215,20 +25771,11 @@ mathtt
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Voreinstellung
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\textrm{Voreinstellung}$
+\begin_inset Formula $\mathbf{\mathbb{BLACKBOARD}}$
 \end_inset
 
 
@@ -26241,75 +25788,9 @@ Voreinstellung
 
 \begin_layout Plain Layout
 
-\family sans
-Alt+Z
-\begin_inset space ~
-\end_inset
-
-Leertaste
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
+\series bold
 
 \backslash
-
-\family typewriter
-textrm
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
----------
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\mathbb{WANDTAFEL}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-Alt+Z
-\begin_inset space ~
-\end_inset
-
-K
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
-
-\family typewriter
 mathbb
 \end_layout
 
@@ -26317,16 +25798,7 @@ mathbb
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
----------
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -26338,23 +25810,14 @@ mathbb
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
----------
-\end_layout
 
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
+\series bold
 
 \backslash
-
-\family typewriter
 mathfrak
 \end_layout
 
@@ -26362,22 +25825,13 @@ mathfrak
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \emph on
-kursiv
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\mathit{kursiv}$
+\begin_inset Formula $\mathcal{KALLIGRAFISCH}$
 \end_inset
 
 
@@ -26385,46 +25839,26 @@ kursiv
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
----------
-\end_layout
 
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
+\series bold
 
 \backslash
-
-\family typewriter
-mathit
+mathcal
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family sans
-serifenfrei
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\mathsf{serifenfrei}$
+\begin_inset Formula $\mathsf{Serifenlos}$
 \end_inset
 
 
@@ -26432,81 +25866,15 @@ serifenfrei
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
-\family sans
-Alt+Z
-\begin_inset space ~
-\end_inset
-
-S
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
+\series bold
 
 \backslash
-
-\family typewriter
 mathsf
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
----------
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\boldsymbol{Fett\, Symbol}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-Alt+Z
-\begin_inset space ~
-\end_inset
-
-F
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
-
-\family typewriter
-boldsymbol
 \end_layout
 
 \end_inset
@@ -26517,6 +25885,34 @@ boldsymbol
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Achtung:
+\series default
+ You can only print capital letters in the typefaces 
+\family sans
+Blackboard
+\family default
+ and 
+\family sans
+Calligraphic
+\family default
+.
 \end_layout
 
 \end_inset
@@ -26558,7 +25954,7 @@ In AMS-LaTeX ist es möglich, Zahlen und Spezialsymbole fett (aber nicht
 \end_inset
 
  zu bekommen, müssen Sie 
-\family typewriter
+\series bold
 
 \backslash
 boldsymbol
@@ -26568,7 +25964,7 @@ boldsymbol
 {
 \backslash
 alpha}
-\family default
+\series default
  eingeben: 
 \begin_inset Formula $\boldsymbol{\mathbb{\alpha}}$
 \end_inset
@@ -26748,13 +26144,15 @@ math-size displaystyle
 \end_inset
 
  ein oder wählt über den Knopf 
-\begin_inset Graphics
-	filename ../../images/math/style.png
-	scale 85
-	groupId Icon
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\style"
 \end_inset
 
+
+\family default
  der 
 \family sans
 Mathe-Werkzeugleiste
@@ -31785,7 +31183,11 @@ Strg+L
 
 \end_inset
 
--Knopf.
+-Knopf (Tastenkürzel 
+\family sans
+Strg+L
+\family default
+).
  Es erscheint ein rotes Rechteck, in das Sie Ihren LaTeX-Text schreiben.
  LyX wird alles, was im TeX-Code-Kästchen steht, unverändert an LaTeX übergeben.
 \end_layout
@@ -35727,7 +35129,8 @@ Versionskontrolle
 \end_layout
 
 \begin_layout Standard
-Dies wird verwendet, wenn mehrere Personen am selben Dokument arbeiten.
+Dies wird verwendet, wenn mehrere Personen am selben Dokument arbeiten oder
+ wenn eine Person ihre Änderungen archivieren möchte.
  Es ist in Abschnitt 
 \emph on
 Versionskontrolle
@@ -37905,8 +37308,8 @@ Externes Material
 \end_layout
 
 \begin_layout Standard
-Dieses Menü ermöglicht es, den Inhalt von anderen LyX-Dokumenten in Ihr
- Dokument einzufügen.
+Dieses Menü ermöglicht es, den Inhalt von anderen Dokumenten in Ihr Dokument
+ einzufügen.
  Wie dies geschieht ist im Detail im Kapitel 
 \emph on
 Externe Dateien

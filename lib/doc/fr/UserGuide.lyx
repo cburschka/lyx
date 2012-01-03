@@ -10573,7 +10573,7 @@ insécable
  (raccourci 
 \begin_inset Info
 type  "shortcut"
-arg   "space-insert protected"
+arg   "command-alternatives space-insert protected ; math-space"
 \end_inset
 
 ).
@@ -14868,7 +14868,6 @@ no
 
 texte à chasse fixe
 \family default
-\lang english
 
 \begin_inset Note Note
 status collapsed
@@ -14881,7 +14880,7 @@ Pour les détais sur les fantômes, voir
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Encore-plus-d'espaces"
+reference "sub:Espace-fantôme"
 
 \end_inset
 
@@ -14890,8 +14889,6 @@ reference "sub:Encore-plus-d'espaces"
 
 \end_inset
 
-
-\lang french
 
 \begin_inset Newline newline
 \end_inset
@@ -15521,16 +15518,16 @@ PostScript Encapsulé
  Comme LyX vous permet n'importe quel format d'image connu dans votre document,
  il doit les convertir en interne en EPS.
  Si vous avez par exemple 50
-\begin_inset space \thinspace{}
+\begin_inset space ~
 \end_inset
 
 images dans votre document, LyX doit faire 50
-\begin_inset space \thinspace{}
+\begin_inset space ~
 \end_inset
 
-conversions à chaque fois que vous visualisez ou que vous exportez votre
+conversions la première fois que vous visualisez ou que vous exportez votre
  document.
- Cela risque de ralentir de façon importante votre rythme de travail.
+ Cela risque de ralentir votre rythme de travail.
  En conclusion, si vous prévoyez d'utiliser PostScript, vous pouvez insérer
  vos images directement en EPS pour éviter ce problème.
 \end_layout
@@ -15657,7 +15654,7 @@ Vous pouvez exporter votre document comme un fichier PDF en utilisant le
 Fichier\SpecialChar \menuseparator
 Exporter 
 \family default
-de trois façons différentes:
+de façons différentes:
 \end_layout
 
 \begin_layout Description
@@ -16192,12 +16189,30 @@ Typographie
 \end_layout
 
 \begin_layout Subsection
-Tirets
+Tirets, 
+\lang english
+Dashes and Minus Signs
+\lang french
+
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
 Tirets et Césures
+\end_layout
+
+\end_inset
+
+
+\lang english
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Dashes
 \end_layout
 
 \end_inset
@@ -23498,8 +23513,19 @@ Math ! Indices
 
 \begin_layout Standard
 Vous pouvez utiliser la palette mathématique pour mettre des indices et
- des exposants, mais la façon de loin la plus simple est la méthode TeX
- standard.
+ des exposants (boutons 
+\begin_inset Info
+type  "icon"
+arg   "math-superscript"
+\end_inset
+
+ et 
+\begin_inset Info
+type  "icon"
+arg   "math-subscript"
+\end_inset
+
+), mais la façon de loin la plus simple est la méthode TeX standard.
  Pour obtenir 
 \begin_inset Formula $x^{2}$
 \end_inset
@@ -23640,10 +23666,9 @@ Créez une fraction soit avec
 frac
 \series default
  soit en utilisant l'icône de fraction 
-\begin_inset Graphics
-	filename ../../images/math/frac.png
-	scale 60
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac"
 \end_inset
 
  de la 
@@ -23702,9 +23727,15 @@ Math ! Racines
 
 \begin_layout Standard
 Les racines peuvent être créées en utilisant le bouton 
-\begin_inset Graphics
-	filename ../../images/math/sqrt.png
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\sqrt"
+\end_inset
 
+ ou 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\root"
 \end_inset
 
  de la 
@@ -24005,17 +24036,25 @@ Math ! Espacement
 Vous voudrez peut-être créer des espaces qui soient différents de l'espacement
  proposé implicitement par LaTeX.
  Pour cela, tapez 
+\family sans
+
 \begin_inset Info
 type  "shortcut"
-arg   "space-insert protected"
+arg   "command-alternatives space-insert protected ; math-space"
 \end_inset
 
+
+\family default
  ou utilisez le bouton 
-\begin_inset Graphics
-	filename ../../images/math/space.png
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\space"
 \end_inset
 
+
+\family default
  de la 
 \family sans
 Palette
@@ -24115,11 +24154,15 @@ Palette
 mathématique
 \family default
  contient sous le bouton 
-\begin_inset Graphics
-	filename ../../images/math/functions.png
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\functions"
 \end_inset
 
+
+\family default
  un certain nombre de 
 \begin_inset Quotes fld
 \end_inset
@@ -24694,9 +24737,9 @@ Enfin, vous pouvez choisir un de ces accents parmi les
 Décorations
 \family default
  disponibles dans la palette mathématique avec le bouton 
-\begin_inset Graphics
-	filename ../../images/math/hat.png
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\hat"
 \end_inset
 
 , et il s'appliquera à toute sélection que vous aurez faite dans une formule.
@@ -24765,29 +24808,40 @@ Il y a plusieurs délimiteurs disponibles avec LyX.
 
 \end_inset
 
-et pour rendre plus les parenthèses plus lisible dans:
-\end_layout
+et pour rendre plus les parenthèses.
+ 
+\lang english
+Below, the expression on the left was entered using the delimiter icon 
+\lang french
 
-\begin_layout Standard
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathdelimiter"
+\end_inset
+
+
+\lang english
+ and the expression on the right was entered using the 
+\family typewriter
+()
+\family default
+ keys.
+
+\lang french
+ 
 \begin_inset Formula 
 \[
-\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}
+\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}\qquad\qquad\frac{1}{(1+(\frac{1}{1+(\frac{1}{1+x})}))}
 \]
 
 \end_inset
 
-Les parenthèses, et autres délimiteurs, de ce menu s'adaptent à la taille
- de ce qu'elles contiennent.
- (On obtient ceci en LaTeX brut avec 
-\family typewriter
 
-\backslash
-left( blabla 
-\backslash
-right)
-\family default
-).
- 
+\lang english
+If you use the delimiter icon, 
+\lang french
+les parenthèses, et autres délimiteurs, de ce menu s'adaptent à la taille
+ de ce qu'elles contiennent.
 \end_layout
 
 \begin_layout Standard
@@ -24826,6 +24880,20 @@ Insérer
 \family default
 .
  Les parenthèses seront placées autour de la structure sélectionnée.
+ 
+\lang english
+The most common bracket combinations (parentheses, square brackets, and
+ braces, on both sides) can be entered more quickly using keyboard shortcuts.
+ For example, to insert a pair of flexible parentheses on both sides, select
+ the structure and enter 
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+(
+\family default
+.
 \end_layout
 
 \begin_layout Section
@@ -24866,11 +24934,15 @@ mathématique
 Matrice
 \family default
  
-\begin_inset Graphics
-	filename ../../images/math/matrix.png
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathmatrix"
 \end_inset
 
+
+\family default
 , qui ouvre une fenêtre pour choisir le nombre de lignes et de colonnes.
  Voici un exemple :
 \end_layout
@@ -25423,23 +25495,14 @@ reference "sec:Références-croisées"
 \end_inset
 
 .
- Pour réellement supprimer une étiquette, positionnez le curseur dans la
- formule, utilisez 
+ Pour réellement supprimer une étiquette, positionnez le curseur en fin
+ dans la formule et 
+\lang english
+press 
 \family sans
-Insérer\SpecialChar \menuseparator
-Etiquette
+Del
 \family default
- et effacez le nom de l'étiquette dans la fenêtre de dialogue qui apparaît
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-C'est peu intuitif et ça devrait être changé dans une prochaine version
- de LyX.
-\end_layout
-
-\end_inset
-
+\lang french
 .
  
 \end_layout
@@ -25509,11 +25572,15 @@ La police standard pour du texte est l'italique,
 , mais pour les nombres le standard est le romain.
  Pour obtenir une police donnée dans une formule, choisissez-la dans la
  palette mathématique en utilisant le bouton 
-\begin_inset Graphics
-	filename ../../images/math/font.png
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\font"
 \end_inset
 
+
+\family default
 , ou entrez la commande LaTeX directement, comme c'est indiqué dans la table
 \begin_inset space ~
 \end_inset
@@ -26036,13 +26103,13 @@ texte
 normal
 \family default
  sous le bouton 
-\begin_inset Graphics
-	filename ../../images/math/font.png
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\font"
 \end_inset
 
-
-\family sans
  
 \family default
 de la
@@ -26169,11 +26236,15 @@ ligne
  aux différentes situations, tous le texte va être mis dans le style que
  LaTeX juge approprié.
  On peut passer outre ces choix en utilisant le bouton 
-\begin_inset Graphics
-	filename ../../images/math/style.png
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\style"
 \end_inset
 
+
+\family default
  de la palette mathématique.
  Une boîte va être insérée dans laquelle vous pouvez utiliser la taille
  choisie.
@@ -30841,9 +30912,26 @@ type  "icon"
 arg   "ert-insert"
 \end_inset
 
- de la barre d'outils.
+ de la barre d'outils 
+\lang english
+(shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "ert-insert"
+\end_inset
+
+)
+\lang french
+.
  La boîte de code TeX, peut être ouverte avec un clic gauche et refermée
- avec un clic droit.
+ avec un clic droit et 
+\lang english
+selecting 
+\family sans
+Close Inset
+\family default
+\lang french
+.
 \end_layout
 
 \begin_layout Standard
@@ -37889,7 +37977,11 @@ Contrôle de version
 
 \begin_layout Standard
 Le contrôle de version est utilisé quand plusieurs personnes travaillent
- en même temps sur le même document.
+ en même temps sur le même document 
+\lang english
+or when one person wants to keep a careful archive of changes
+\lang french
+.
  Il est décrit dans la section 
 \emph on
 Contrôle de version avec LyX 
