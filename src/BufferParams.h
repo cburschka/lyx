@@ -343,16 +343,12 @@ public:
 		/// some ERT that needs the package)
 		package_on = 2
 	};
-	/// Whether and how to load amsmath
-	Package use_amsmath;
-	/// Whether and how to load esint
-	Package use_esint;
-	/// Whether and how to load mhchem
-	Package use_mhchem;
-	/// Whether and how to load mathdots
-	Package use_mathdots;
-	/// Whether and how to load undertilde
-	Package use_undertilde;
+	/// Whether to load a package such as amsmath or esint.
+	Package use_package(std::string const & p) const;
+	/// Set whether to load a package such as amsmath or esint.
+	void use_package(std::string const & p, Package u);
+	/// All packages that can be switched on or off
+	static std::vector<std::string> const & auto_packages();
 	/// Split bibliography?
 	bool use_bibtopic;
 	/// Split the index?
@@ -486,6 +482,12 @@ private:
 
 	/// the list of included children (for includeonly)
 	std::list<std::string> included_children_;
+
+	typedef std::map<std::string, Package> PackageMap;
+	/** Whether and how to load packages like amsmath, esint, mhchem,
+	 *  mathdots and undertilde.
+	 */
+	PackageMap use_packages;
 
 	/** Use the Pimpl idiom to hide those member variables that would otherwise
 	 *  drag in other header files.

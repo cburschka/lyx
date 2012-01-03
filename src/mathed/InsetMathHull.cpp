@@ -1377,7 +1377,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (type_ == hullSimple || type_ == hullEquation) {
 			cur.recordUndoInset();
 			bool const align =
-				cur.bv().buffer().params().use_amsmath == BufferParams::package_on;
+				cur.bv().buffer().params().use_package("amsmath") == BufferParams::package_on;
 			mutate(align ? hullAlign : hullEqnArray);
 			// mutate() may change labels and such.
 			cur.forceBufferUpdate();

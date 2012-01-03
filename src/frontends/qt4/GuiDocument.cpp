@@ -54,6 +54,7 @@
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 
 #include "frontends/alert.h"
@@ -168,6 +169,32 @@ char const * backref_opts[] =
 char const * backref_opts_gui[] =
 {
 	N_("Off"), N_("Section"), N_("Slide"), N_("Page"), ""
+};
+
+
+char const * packages_gui[][4] =
+{
+	{"amsmath",
+	 N_("&Use AMS math package automatically"),
+	 N_("Use AMS &math package"),
+	 N_("The AMS LaTeX packages are only used if symbols from the AMS math toolbars are inserted into formulas")},
+	{"esint",
+	 N_("Use esint package &automatically"),
+	 N_("Use &esint package"),
+	 N_("The LaTeX package esint is only used if special integral symbols are inserted into formulas")},
+	{"mathdots",
+	 N_("Use math&dots package automatically"),
+	 N_("Use mathdo&ts package"),
+	 N_("The LaTeX package mathdots is only used if the command \\iddots is inserted into formulas")},
+	{"mhchem",
+	 N_("Use mhchem &package automatically"),
+	 N_("Use mh&chem package"),
+	 N_("The LaTeX package mhchem is only used if either the command \\ce or \\cf is inserted into formulas")},
+	{"undertilde",
+	 N_("Use u&ndertilde package automatically"),
+	 N_("Use undertilde pac&kage"),
+	 N_("The LaTeX package undertilde is only used if you use the math frame decoration 'utilde'")},
+	{"", "", "", ""}
 };
 
 
@@ -1148,38 +1175,49 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 
 	// maths
+	// FIXME This UI has problems:
+	//       1) It is not generic, packages_gui needs to be changed for each new package
+	//       2) Two checkboxes have 4 states, but one is invalid (both pressed)
+	//       3) The auto cb is not disabled if the use cb is checked
 	mathsModule = new UiWidget<Ui::MathsUi>;
-	connect(mathsModule->amsautoCB, SIGNAL(toggled(bool)),
-		mathsModule->amsCB, SLOT(setDisabled(bool)));
-	connect(mathsModule->esintautoCB, SIGNAL(toggled(bool)),
-		mathsModule->esintCB, SLOT(setDisabled(bool)));
-	connect(mathsModule->mhchemautoCB, SIGNAL(toggled(bool)),
-		mathsModule->mhchemCB, SLOT(setDisabled(bool)));
-	connect(mathsModule->mathdotsautoCB, SIGNAL(toggled(bool)),
-		mathsModule->mathdotsCB, SLOT(setDisabled(bool)));
-	connect(mathsModule->undertildeautoCB, SIGNAL(toggled(bool)),
-		mathsModule->undertildeCB, SLOT(setDisabled(bool)));
-
-	connect(mathsModule->amsCB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
-	connect(mathsModule->amsautoCB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
-	connect(mathsModule->esintCB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
-	connect(mathsModule->esintautoCB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
-	connect(mathsModule->mhchemCB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
-	connect(mathsModule->mhchemautoCB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
-	connect(mathsModule->mathdotsCB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
-	connect(mathsModule->mathdotsautoCB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
-	connect(mathsModule->undertildeCB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
-	connect(mathsModule->undertildeautoCB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
+	vector<string> const & packages = BufferParams::auto_packages();
+        for (size_t i = 0; i < packages.size(); ++i) {
+		// Use the order of BufferParams::auto_packages() for easier
+		// access in applyView() and paramsToDialog()
+		int n = 0;
+		for (n = 0; packages_gui[n][0][0]; n++)
+			if (packages_gui[n][0] == packages[i])
+				break;
+		// If this fires somebody changed
+		// BufferParams::auto_packages() without adjusting packages_gui
+		LASSERT(packages_gui[n][0][0], /**/);
+		QString autoText = qt_(packages_gui[n][1]);
+		QString alwaysText = qt_(packages_gui[n][2]);
+		QString autoTooltip = qt_(packages_gui[n][3]);
+		QString alwaysTooltip;
+		if (packages[i] == "amsmath")
+			alwaysTooltip =
+				qt_("The AMS LaTeX packages are always used");
+		else
+			alwaysTooltip = toqstr(bformat(
+				_("The LaTeX package %1$s is always used"),
+				from_ascii(packages[i])));
+		QCheckBox * autoCB = new QCheckBox(autoText, mathsModule);
+		QCheckBox * alwaysCB = new QCheckBox(alwaysText, mathsModule);
+		mathsModule->gridLayout->addWidget(autoCB, 2 * i, 0);
+		mathsModule->gridLayout->addWidget(alwaysCB, 2 * i + 1, 0);
+		autoCB->setToolTip(autoTooltip);
+		alwaysCB->setToolTip(alwaysTooltip);
+		connect(autoCB, SIGNAL(toggled(bool)),
+		        alwaysCB, SLOT(setDisabled(bool)));
+		connect(autoCB, SIGNAL(clicked()),
+		        this, SLOT(change_adaptor()));
+		connect(alwaysCB, SIGNAL(clicked()),
+		        this, SLOT(change_adaptor()));
+	}
+	QSpacerItem * spacer = new QSpacerItem(20, 20, QSizePolicy::Minimum,
+	                                       QSizePolicy::Expanding);
+	mathsModule->gridLayout->addItem(spacer, 2 * packages.size(), 0);
 
 
 	// latex class
@@ -2369,45 +2407,20 @@ void GuiDocument::applyView()
 	modulesToParams(bp_);
 
 	// Math
-	if (mathsModule->amsautoCB->isChecked())
-		bp_.use_amsmath = BufferParams::package_auto;
-	else {
-		if (mathsModule->amsCB->isChecked())
-			bp_.use_amsmath = BufferParams::package_on;
-		else
-			bp_.use_amsmath = BufferParams::package_off;
-	}
-	if (mathsModule->esintautoCB->isChecked())
-		bp_.use_esint = BufferParams::package_auto;
-	else {
-		if (mathsModule->esintCB->isChecked())
-			bp_.use_esint = BufferParams::package_on;
-		else
-			bp_.use_esint = BufferParams::package_off;
-	}
-	if (mathsModule->mhchemautoCB->isChecked())
-		bp_.use_mhchem = BufferParams::package_auto;
-	else {
-		if (mathsModule->mhchemCB->isChecked())
-			bp_.use_mhchem = BufferParams::package_on;
-		else
-			bp_.use_mhchem = BufferParams::package_off;
-	}
-	if (mathsModule->mathdotsautoCB->isChecked())
-		bp_.use_mathdots = BufferParams::package_auto;
-	else {
-		if (mathsModule->mathdotsCB->isChecked())
-			bp_.use_mathdots = BufferParams::package_on;
-		else
-			bp_.use_mathdots = BufferParams::package_off;
-	}
-	if (mathsModule->undertildeautoCB->isChecked())
-		bp_.use_undertilde = BufferParams::package_auto;
-	else {
-		if (mathsModule->undertildeCB->isChecked())
-			bp_.use_undertilde = BufferParams::package_on;
-		else
-			bp_.use_undertilde = BufferParams::package_off;
+	vector<string> const & packages = BufferParams::auto_packages();
+        for (size_t n = 0; n < packages.size(); ++n) {
+		QCheckBox * autoCB = static_cast<QCheckBox *>(
+			mathsModule->gridLayout->itemAtPosition(2 * n, 0)->widget());
+		if (autoCB->isChecked())
+			bp_.use_package(packages[n], BufferParams::package_auto);
+		else {
+			QCheckBox * alwaysCB = static_cast<QCheckBox *>(
+				mathsModule->gridLayout->itemAtPosition(2 * n + 1, 0)->widget());
+			if (alwaysCB->isChecked())
+				bp_.use_package(packages[n], BufferParams::package_on);
+			else
+				bp_.use_package(packages[n], BufferParams::package_off);
+		}
 	}
 
 	// Page Layout
@@ -2810,30 +2823,15 @@ void GuiDocument::paramsToDialog()
 		latexModule->psdriverCO->setCurrentIndex(nitem);
 	updateModuleInfo();
 
-	mathsModule->amsCB->setChecked(
-		bp_.use_amsmath == BufferParams::package_on);
-	mathsModule->amsautoCB->setChecked(
-		bp_.use_amsmath == BufferParams::package_auto);
-
-	mathsModule->esintCB->setChecked(
-		bp_.use_esint == BufferParams::package_on);
-	mathsModule->esintautoCB->setChecked(
-		bp_.use_esint == BufferParams::package_auto);
-
-	mathsModule->mhchemCB->setChecked(
-		bp_.use_mhchem == BufferParams::package_on);
-	mathsModule->mhchemautoCB->setChecked(
-		bp_.use_mhchem == BufferParams::package_auto);
-
-	mathsModule->mathdotsCB->setChecked(
-		bp_.use_mathdots == BufferParams::package_on);
-	mathsModule->mathdotsautoCB->setChecked(
-		bp_.use_mathdots == BufferParams::package_auto);
-
-	mathsModule->undertildeCB->setChecked(
-		bp_.use_undertilde == BufferParams::package_on);
-	mathsModule->undertildeautoCB->setChecked(
-		bp_.use_undertilde == BufferParams::package_auto);
+	vector<string> const & packages = BufferParams::auto_packages();
+        for (size_t n = 0; n < packages.size(); ++n) {
+		QCheckBox * alwaysCB = static_cast<QCheckBox *>(
+			mathsModule->gridLayout->itemAtPosition(2 * n + 1, 0)->widget());
+		alwaysCB->setChecked(bp_.use_package(packages[n]) == BufferParams::package_on);
+		QCheckBox * autoCB = static_cast<QCheckBox *>(
+			mathsModule->gridLayout->itemAtPosition(2 * n, 0)->widget());
+		autoCB->setChecked(bp_.use_package(packages[n]) == BufferParams::package_auto);
+	}
 
 	switch (bp_.spacing().getSpace()) {
 		case Spacing::Other: nitem = 3; break;

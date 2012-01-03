@@ -361,11 +361,6 @@ BufferParams::BufferParams()
 	papersize = PAPER_DEFAULT;
 	orientation = ORIENTATION_PORTRAIT;
 	use_geometry = false;
-	use_amsmath = package_auto;
-	use_esint = package_auto;
-	use_mhchem = package_auto;
-	use_mathdots = package_auto;
-	use_undertilde = package_auto;
 	cite_engine_ = ENGINE_BASIC;
 	biblio_style = "plain";
 	use_bibtopic = false;
@@ -429,6 +424,36 @@ docstring BufferParams::B_(string const & l10n) const
 {
 	LASSERT(language, /**/);
 	return getMessages(language->code()).get(l10n);
+}
+
+
+BufferParams::Package BufferParams::use_package(std::string const & p) const
+{
+	PackageMap::const_iterator it = use_packages.find(p);
+	if (it == use_packages.end())
+		return package_auto;
+	return it->second;
+}
+
+
+void BufferParams::use_package(std::string const & p, BufferParams::Package u)
+{
+	use_packages[p] = u;
+}
+
+
+vector<string> const & BufferParams::auto_packages()
+{
+	static vector<string> packages;
+	if (packages.empty()) {
+		// adding a package here implies a file format change!
+		packages.push_back("amsmath");
+		packages.push_back("esint");
+		packages.push_back("mathdots");
+		packages.push_back("mhchem");
+		packages.push_back("undertilde");
+	}
+	return packages;
 }
 
 
@@ -678,23 +703,23 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\use_amsmath") {
 		int use_ams;
 		lex >> use_ams;
-		use_amsmath = packagetranslator().find(use_ams);
+		use_package("amsmath", packagetranslator().find(use_ams));
 	} else if (token == "\\use_esint") {
 		int useesint;
 		lex >> useesint;
-		use_esint = packagetranslator().find(useesint);
+		use_package("esint", packagetranslator().find(useesint));
 	} else if (token == "\\use_mhchem") {
 		int usemhchem;
 		lex >> usemhchem;
-		use_mhchem = packagetranslator().find(usemhchem);
+		use_package("mhchem", packagetranslator().find(usemhchem));
 	} else if (token == "\\use_mathdots") {
 		int usemathdots;
 		lex >> usemathdots;
-		use_mathdots = packagetranslator().find(usemathdots);
+		use_package("mathdots", packagetranslator().find(usemathdots));
 	} else if (token == "\\use_undertilde") {
 		int useundertilde;
 		lex >> useundertilde;
-		use_undertilde = packagetranslator().find(useundertilde);
+		use_package("undertilde", packagetranslator().find(useundertilde));
 	} else if (token == "\\cite_engine") {
 		string engine;
 		lex >> engine;
@@ -999,11 +1024,11 @@ void BufferParams::writeFile(ostream & os) const
 
 	os << "\\papersize " << string_papersize[papersize]
 	   << "\n\\use_geometry " << convert<string>(use_geometry)
-	   << "\n\\use_amsmath " << use_amsmath
-	   << "\n\\use_esint " << use_esint
-	   << "\n\\use_mhchem " << use_mhchem
-	   << "\n\\use_mathdots " << use_mathdots
-	   << "\n\\use_undertilde " << use_undertilde
+	   << "\n\\use_amsmath " << use_package("amsmath")
+	   << "\n\\use_esint " << use_package("esint")
+	   << "\n\\use_mhchem " << use_package("mhchem")
+	   << "\n\\use_mathdots " << use_package("mathdots")
+	   << "\n\\use_undertilde " << use_package("undertilde")
 	   << "\n\\cite_engine " << citeenginetranslator().find(cite_engine_)
 	   << "\n\\biblio_style " << biblio_style
 	   << "\n\\use_bibtopic " << convert<string>(use_bibtopic)
@@ -1168,18 +1193,16 @@ void BufferParams::validate(LaTeXFeatures & features) const
 	if (float_placement.find('H') != string::npos)
 		features.require("float");
 
-	// AMS Style is at document level
-	if (use_amsmath == package_on
-	    || documentClass().provides("amsmath"))
-		features.require("amsmath");
-	if (use_esint == package_on)
-		features.require("esint");
-	if (use_mhchem == package_on)
-		features.require("mhchem");
-	if (use_mathdots == package_on)
-		features.require("mathdots");
-	if (use_undertilde == package_on)
-		features.require("undertilde");
+	for (PackageMap::const_iterator it = use_packages.begin();
+	     it != use_packages.end(); ++it) {
+		if (it->first == "amsmath") {
+			// AMS Style is at document level
+			if (it->second == package_on ||
+			    documentClass().provides("amsmath"))
+				features.require(it->first);
+		} else if (it->second == package_on)
+			features.require(it->first);
+	}
 
 	// Document-level line spacing
 	if (spacing().getSpace() != Spacing::Single && !spacing().isDefault())

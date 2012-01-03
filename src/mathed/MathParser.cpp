@@ -1838,7 +1838,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		else if (t.cs().size()) {
 			bool const no_mhchem =
 				(t.cs() == "ce" || t.cs() == "cf")
-				&& buf && buf->params().use_mhchem ==
+				&& buf && buf->params().use_package("mhchem") ==
 						BufferParams::package_off;
 
 			bool const is_user_macro = no_mhchem ||

@@ -322,7 +322,7 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 {
 	//lyxerr << "creating inset with name: '" << to_utf8(s) << '\'' << endl;
 	if ((s == "ce" || s == "cf") && buf
-	    && buf->params().use_mhchem == BufferParams::package_off)
+	    && buf->params().use_package("mhchem") == BufferParams::package_off)
 		return MathAtom(new MathMacro(buf, s));
 
 	latexkeys const * l = in_word_set(s);

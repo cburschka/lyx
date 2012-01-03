@@ -691,7 +691,7 @@ string const LaTeXFeatures::getPackages() const
 		packages << amsPackages;
 
 	// fixltx2e must be loaded after amsthm, since amsthm produces an error with
-	// the redefined \[ command (bug 7233). Load is as early as possible, since
+	// the redefined \[ command (bug 7233). Load it as early as possible, since
 	// other packages might profit from it.
 	if (mustProvide("fixltx2e"))
 		packages << "\\usepackage{fixltx2e}\n";
@@ -705,24 +705,27 @@ string const LaTeXFeatures::getPackages() const
 	// integral symbols from wasysym and amsmath.
 	// See http://www.lyx.org/trac/ticket/1942
 	if (mustProvide("wasysym") &&
-	    (params_.use_esint != BufferParams::package_off || !isRequired("esint")))
+	    params_.use_package("wasysym") != BufferParams::package_off &&
+	    (params_.use_package("esint") != BufferParams::package_off || !isRequired("esint")))
 		packages << "\\usepackage{wasysym}\n";
 
 	// accents must be loaded after amsmath
-	if (mustProvide("accents"))
+	if (mustProvide("accents") &&
+	    params_.use_package("accents") != BufferParams::package_off)
 		packages << "\\usepackage{accents}\n";
 
 	// mathdots must be loaded after amsmath
 	if (mustProvide("mathdots") &&
-		params_.use_mathdots != BufferParams::package_off)
+		params_.use_package("mathdots") != BufferParams::package_off)
 		packages << "\\usepackage{mathdots}\n";
 
 	// yhmath must be loaded after amsmath
-	if (mustProvide("yhmath"))
+	if (mustProvide("yhmath") &&
+	    params_.use_package("yhmath") != BufferParams::package_off)
 		packages << "\\usepackage{yhmath}\n";
 
 	if (mustProvide("undertilde") &&
-		params_.use_undertilde != BufferParams::package_off)
+		params_.use_package("undertilde") != BufferParams::package_off)
 		packages << "\\usepackage{undertilde}\n";
 
 	// [x]color and pdfcolmk are handled in getColorOptions() above
@@ -757,7 +760,7 @@ string const LaTeXFeatures::getPackages() const
 	// esint must be after amsmath and wasysym, since it will redeclare
 	// inconsistent integral symbols
 	if (mustProvide("esint") &&
-	    params_.use_esint != BufferParams::package_off)
+	    params_.use_package("esint") != BufferParams::package_off)
 		packages << "\\usepackage{esint}\n";
 
 	// natbib.sty
@@ -796,9 +799,9 @@ string const LaTeXFeatures::getPackages() const
 		packages << "\\PassOptionsToPackage{normalem}{ulem}\n"
 			    "\\usepackage{ulem}\n";
 
-	if (params_.use_mhchem == BufferParams::package_on ||
+	if (params_.use_package("mhchem") == BufferParams::package_on ||
 	    (mustProvide("mhchem") &&
-	     params_.use_mhchem != BufferParams::package_off))
+	     params_.use_package("mhchem") != BufferParams::package_off))
 		packages << "\\PassOptionsToPackage{version=3}{mhchem}\n"
 			    "\\usepackage{mhchem}\n";
 
@@ -1051,7 +1054,7 @@ string const LaTeXFeatures::loadAMSPackages() const
 		tmp << "\\usepackage{amsthm}\n";
 
 	if (mustProvide("amsmath")
-	    && params_.use_amsmath != BufferParams::package_off) {
+	    && params_.use_package("amsmath") != BufferParams::package_off) {
 		tmp << "\\usepackage{amsmath}\n";
 	} else {
 		// amsbsy and amstext are already provided by amsmath
@@ -1062,7 +1065,7 @@ string const LaTeXFeatures::loadAMSPackages() const
 	}
 
 	if (mustProvide("amssymb")
-	    || params_.use_amsmath == BufferParams::package_on)
+	    || params_.use_package("amsmath") == BufferParams::package_on)
 		tmp << "\\usepackage{amssymb}\n";
 
 	return tmp.str();
