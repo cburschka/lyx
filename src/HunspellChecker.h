@@ -31,6 +31,7 @@ public:
 	void remove(WordLangTuple const &);
 	void accept(WordLangTuple const &);
 	bool hasDictionary(Language const * lang) const;
+	int numDictionaries() const;
 	docstring const error();
 	void advanceChangeNumber();
 	///@}

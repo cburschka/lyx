@@ -55,10 +55,13 @@ struct HunspellChecker::Private
 	Private();
 	~Private();
 
+	void cleanCache();
+	void setUserPath(std::string path);
 	const string dictPath(int selector);
 	bool haveLanguageFiles(string const & hpath);
 	bool haveDictionary(Language const * lang, string & hpath);
 	bool haveDictionary(Language const * lang);
+	int numDictionaries() const;
 	Hunspell * addSpeller(Language const * lang, string & hpath);
 	Hunspell * addSpeller(Language const * lang);
 	Hunspell * speller(Language const * lang);
@@ -74,31 +77,53 @@ struct HunspellChecker::Private
 	IgnoreList ignored_;
 	///
 	LangPersonalWordList personal_;
+	///
+	std::string user_path_;
 
 	/// the location below system/user directory
 	/// there the aff+dic files lookup will happen
 	const string dictDirectory(void) const { return "dicts"; }
-	int maxLookupSelector(void) const { return 3; }
+	int maxLookupSelector(void) const { return 4; }
 	const string HunspellDictionaryName(Language const * lang) {
 		return lang->variety().empty() 
 			? lang->code()
 			: lang->code() + "-" + lang->variety();
+	}
+	const string osPackageDictDirectory(void) {
+		return "/usr/share/myspell";
 	}
 };
 
 
 HunspellChecker::Private::Private()
 {
+	setUserPath(lyxrc.hunspelldir_path);
 }
 
 
 HunspellChecker::Private::~Private()
 {
+	cleanCache();
+}
+
+
+void HunspellChecker::Private::setUserPath(std::string path)
+{
+	if (user_path_ != lyxrc.hunspelldir_path) {
+		cleanCache();
+		user_path_ = path;
+	}
+}
+
+
+void HunspellChecker::Private::cleanCache()
+{
 	Spellers::iterator it = spellers_.begin();
 	Spellers::iterator end = spellers_.end();
 
 	for (; it != end; ++it) {
-		if ( 0 != it->second) delete it->second;
+		delete it->second;
+		it->second = 0;
 	}
 
 	LangPersonalWordList::const_iterator pdit = personal_.begin();
@@ -125,6 +150,9 @@ bool HunspellChecker::Private::haveLanguageFiles(string const & hpath)
 const string HunspellChecker::Private::dictPath(int selector)
 {
 	switch (selector) {
+	case 3:
+		return addName(osPackageDictDirectory(),dictDirectory());
+		break;
 	case 2:
 		return addName(package().system_support().absFileName(),dictDirectory());
 		break;
@@ -132,7 +160,7 @@ const string HunspellChecker::Private::dictPath(int selector)
 		return addName(package().user_support().absFileName(),dictDirectory());
 		break;
 	default:
-		return lyxrc.hunspelldir_path;
+		return user_path_;
 	}
 }
 
@@ -167,6 +195,8 @@ bool HunspellChecker::Private::haveDictionary(Language const * lang, string & hp
 bool HunspellChecker::Private::haveDictionary(Language const * lang)
 {
 	bool result = false;
+
+	setUserPath(lyxrc.hunspelldir_path);
 	for ( int p = 0; !result && p < maxLookupSelector(); p++ ) {
 		string lpath = dictPath(p);
 		result = haveDictionary(lang, lpath);
@@ -181,10 +211,11 @@ bool HunspellChecker::Private::haveDictionary(Language const * lang)
 
 Hunspell * HunspellChecker::Private::speller(Language const * lang)
 {
+	setUserPath(lyxrc.hunspelldir_path);
 	Spellers::iterator it = spellers_.find(lang->lang());
-	if (it != spellers_.end())
+	if (it != spellers_.end()) {
 		return it->second;
-
+	}
 	return addSpeller(lang);
 }
 
@@ -225,6 +256,19 @@ Hunspell * HunspellChecker::Private::addSpeller(Language const * lang)
 		}
 	}
 	return h;
+}
+
+
+int HunspellChecker::Private::numDictionaries() const
+{
+	int result = 0;
+	Spellers::const_iterator it = spellers_.begin();
+	Spellers::const_iterator et = spellers_.end();
+
+	for (; it != et; ++it) {
+		result += it->second != 0;
+	}
+	return result;
 }
 
 
@@ -298,7 +342,7 @@ SpellChecker::Result HunspellChecker::check(WordLangTuple const & wl)
 
 	Hunspell * h = d->speller(wl.lang());
 	if (!h)
-		return WORD_OK;
+		return NO_DICTIONARY;
 	int info;
 
 	string const encoding = h->get_dic_encoding();
@@ -374,6 +418,12 @@ bool HunspellChecker::hasDictionary(Language const * lang) const
 	if (!lang)
 		return false;
 	return (d->haveDictionary(lang));
+}
+
+
+int HunspellChecker::numDictionaries() const
+{
+	return d->numDictionaries();
 }
 
 

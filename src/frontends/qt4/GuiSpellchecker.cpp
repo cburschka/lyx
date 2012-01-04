@@ -485,6 +485,17 @@ void SpellcheckerWidget::Private::check()
 	BufferView * bv = gv_->documentBufferView();
 	if (!bv || bv->buffer().text().empty())
 		return;
+	SpellChecker * speller = theSpellChecker();
+	if (speller && !speller->hasDictionary(bv->buffer().language())) {
+		int dsize = speller->numDictionaries();
+		if (0 == dsize) {
+			hide();
+			QMessageBox::information(p,
+				qt_("Spell Checker"),
+				qt_("Spell checker has no dictionaries."));
+			return;
+		}
+	}
 
 	DocIterator from = bv->cursor();
 	DocIterator to = isCurrentBuffer(from) ? end_ : doc_iterator_end(&bv->buffer());

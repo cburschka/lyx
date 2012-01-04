@@ -31,7 +31,8 @@ struct AppleSpellChecker::Private
 
 	SpellChecker::Result toResult(SpellCheckResult status);
 	string toString(SpellCheckResult status);
-
+	int numDictionaries() const;
+	
 	/// the speller
 	AppleSpeller speller;
 	
@@ -82,7 +83,7 @@ string AppleSpellChecker::Private::toString(SpellCheckResult status)
 SpellChecker::Result AppleSpellChecker::check(WordLangTuple const & word)
 {
 	if (!hasDictionary(word.lang()))
-		return WORD_OK;
+		return NO_DICTIONARY;
 
 	string const word_str = to_utf8(word.word());
 	string const lang = d->languageMap[word.lang()->lang()];
@@ -168,6 +169,20 @@ bool AppleSpellChecker::hasDictionary(Language const * lang) const
 }
 
 
+int AppleSpellChecker::numDictionaries() const
+{
+	int result = 0;
+	map<string, string>::const_iterator it = d->languageMap.begin();
+	map<string, string>::const_iterator et = d->languageMap.end();
+
+	for (; it != et; ++it) {
+		string const langmap = it->second;
+		result += langmap.empty() ? 0 : 1;
+	}
+	return result;
+}
+
+	
 int AppleSpellChecker::numMisspelledWords() const
 {
 	return AppleSpeller_numMisspelledWords(d->speller);
