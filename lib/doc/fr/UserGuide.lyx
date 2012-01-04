@@ -1164,34 +1164,8 @@ arg   "dialog-show findreplace"
 
 \begin_layout Standard
 Les trois premières s'expliquent d'elles-mêmes.
- Une chose à noter: quand vous effacez un bloc de texte que vous avez sélectionn
-é, il est automatiquement placé dans le presse-papiers.
- C'est-à-dire que les touches 
-\family sans
-Suppr
-\family default
- et 
-\family sans
-Ret.Arr
-\family default
- fonctionnent aussi comme la commande 
-\family sans
-Couper
-\family default
-.
- D'autre part, si vous avez sélectionné du texte, faites attention.
- Si vous tapez une touche, LyX va complètement effacer le texte sélectionné
- et le remplacer par ce que vous aurez tapé (ce comportement est modifiable).
- Vous aurez à faire 
-\family sans
-Annuler
-\family default
- pour récupérer le texte perdu.
-\end_layout
-
-\begin_layout Standard
-Vous pouvez aussi copier du texte entre LyX et d'autres programmes par coupé-cop
-ié-collé.
+ Vous pouvez aussi copier du texte entre LyX et d'autres programmes par
+ coupé-copié-collé.
  Le sous-menu 
 \family sans
 Coller
@@ -24885,14 +24859,14 @@ Insérer
 The most common bracket combinations (parentheses, square brackets, and
  braces, on both sides) can be entered more quickly using keyboard shortcuts.
  For example, to insert a pair of flexible parentheses on both sides, select
- the structure and enter 
-\family sans
-Alt+M
-\begin_inset space ~
+ the structure and enter
+\lang french
+ 
+\begin_inset Info
+type  "shortcut"
+arg   "math-delim ( )"
 \end_inset
 
-(
-\family default
 .
 \end_layout
 
@@ -25185,17 +25159,9 @@ a & = & \sqrt{b^{4}-c^{4}}\label{eq:asquared}
 \end_layout
 
 \begin_layout Standard
-Pour changer les repères d'alignement de l'équation, placez le curseur là
- où vous voulez que commence la zone qui doit être déplacée dans la colonne
- suivante et tapez 
-\family sans
-Ctrl-Tab
-\family default
-.
- Ça met tout ce qui est à droite du curseur dans la zone suivante.
- Notez que la zone centrale est prévue pour les opérateurs de relation,
- les structures qui sont placées dans cette colonne sont imprimées en plus
- petits caractères: 
+Notez que la zone centrale est prévue pour les opérateurs de relation, les
+ structures qui sont placées dans cette colonne sont imprimées en plus petits
+ caractères: 
 \end_layout
 
 \begin_layout Standard
@@ -25218,14 +25184,14 @@ eqnarray
 .
  Il existe d'autres types de formules multi-lignes qui sont mieux adaptées
  à certaines situations et que l'on peut utiliser pour améliorer l'espacement
- entre les lignes de la formule (
+ entre les lignes de la formule 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:asquared"
 
 \end_inset
 
-).
+.
  Ces autres types sont détaillés dans la section
 \begin_inset space ~
 \end_inset
