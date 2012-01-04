@@ -1067,8 +1067,8 @@ arg   "dialog-show findreplace"
 \bar no
 \noun off
 \color none
-はじめの3つに関しては自明でしょう。一つ知っておいていただきたいのは、選択した文章の塊を削除すると、それは自動的にクリップボードに保持されることです。つまり、
-\family sans
+はじめの3つに関しては自明でしょう。
+\family default
 \series default
 \shape default
 \size default
@@ -1076,39 +1076,7 @@ arg   "dialog-show findreplace"
 \bar default
 \noun default
 \color inherit
-Delete
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-と
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-Backspace
-\family default
-キーも
-\family sans
-切り取り
-\family default
-コマンドとして機能するのです。また、文章を選択状態にしたときには、何かキーを押してしまうと、LyXは選択された文章を完全に削除して、入力された文字に置き換えてし
-まいますので、気をつけるようにしてください。消してしまった文章を戻すには、
-\family sans
-元に戻す
-\family default
-を使わなくてはなりません。
-\end_layout
 
-\begin_layout Standard
 \begin_inset Index idx
 status collapsed
 
@@ -32116,14 +32084,14 @@ The most common bracket combinations (parentheses, square brackets, and
  braces, on both sides) can be entered more quickly using keyboard shortcuts.
  For example, to insert a pair of flexible parentheses on both sides, select
  the structure and enter 
-\family sans
-Alt+M
-\begin_inset space ~
+\lang japanese
+
+\begin_inset Info
+type  "shortcut"
+arg   "math-delim ( )"
 \end_inset
 
-(
-\family default
-.
+。
 \end_layout
 
 \begin_layout Section
@@ -32422,26 +32390,7 @@ a & = & \sqrt{b^{4}-c^{4}}\label{eq:asquared}
 \bar no
 \noun off
 \color none
-数式要素の列割当てを変更したいときには、カーソルを移動したい部分の前において
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-Ctrl+Tab
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-を押してください。すると、列中の現在カーソル位置から右の部分はすべて、次の列に移動します。中央の列は関係子用にデザインされていますので、この列の要素は、以下のよ
-うに少し小さい大きさで印字されることに
+中央の列は関係子用にデザインされていますので、この列の要素は、以下のように少し小さい大きさで印字されることに
 \family default
 \series default
 \shape default
@@ -32489,14 +32438,14 @@ eqnarray
 \bar no
 \noun off
 \color none
-と呼ばれるものです。例えば、(
+と呼ばれるものです。例えば、
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:asquared"
 
 \end_inset
 
-)式よりも美しい行間が欲しい場合など、状況によっては、より適した複数行型が他にあります。他の型に関しては、第
+式よりも美しい行間が欲しい場合など、状況によっては、より適した複数行型が他にあります。他の型に関しては、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:AMS数式型"

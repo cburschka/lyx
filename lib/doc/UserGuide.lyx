@@ -966,31 +966,7 @@ arg   "dialog-show findreplace"
 
 \begin_layout Standard
 The first three are self-explanatory.
- One thing to note: whenever you delete a block of text that you have selected,
- it is automatically placed in the clipboard.
- That is, the 
-\family sans
-Delete
-\family default
- and 
-\family sans
-Backspace
-\family default
- keys also function as the 
-\family sans
-Cut
-\family default
- command.
- Also, if you've selected text, be careful: If you hit a key, LyX will completel
-y delete the selected text and replace it with what you just typed.
- You will have to do an 
-\family sans
-Undo
-\family default
- to get back the lost text.
-\end_layout
-
-\begin_layout Standard
+ 
 \begin_inset Index idx
 status collapsed
 
@@ -1209,7 +1185,7 @@ Find
 Replace
 \family default
  feature that is described in sec.
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -13830,52 +13806,36 @@ color
 
  and means normally black, you can choose between 
 \family sans
-\color black
 Black
 \family default
-\color inherit
 , 
 \family sans
-\color white
 White
 \family default
-\color inherit
 , 
 \family sans
-\color red
 Red
 \family default
-\color inherit
 , 
 \family sans
-\color green
 Green
 \family default
-\color inherit
 , 
 \family sans
-\color blue
 Blue
 \family default
-\color inherit
 , 
 \family sans
-\color cyan
 Cyan
 \family default
-\color inherit
 , 
 \family sans
-\color magenta
 Magenta
 \family default
-\color inherit
  and 
 \family sans
-\color yellow
 Yellow
 \family default
-\color inherit
  text.
 \begin_inset Index idx
 status collapsed
@@ -23962,13 +23922,11 @@ Insert
  braces, on both sides) can be entered more quickly using keyboard shortcuts.
  For example, to insert a pair of flexible parentheses on both sides, select
  the structure and enter 
-\family sans
-Alt+M
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "math-delim ( )"
 \end_inset
 
-(
-\family default
 .
 \end_layout
 
@@ -24233,15 +24191,7 @@ a & = & \sqrt{b^{4}-c^{4}}\label{eq:asquared}
 
 \end_inset
 
- To change the column assignment of the formula parts, place the cursor
- where you want to start the shift and hit 
-\family sans
-Ctrl-Tab.
-
-\family default
- It shifts everything in the column which is right beside the current cursor
- position to the next column.
- Note that the middle column is designed for relation signs so structures
+Note that the middle column is designed for relation signs so structures
  in this column will be printed in a smaller size:
 \begin_inset Formula 
 \begin{eqnarray*}
@@ -24262,14 +24212,14 @@ eqnarray
 \series default
 .
  There are other multi-line types more suitable for certain situations,
- for example if you want a better inter-line spacing than in formula (
+ for example if you want a better inter-line spacing than in formula 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:asquared"
 
 \end_inset
 
-).
+.
  The other types are described in section
 \begin_inset space ~
 \end_inset

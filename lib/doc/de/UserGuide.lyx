@@ -993,16 +993,7 @@ Ersetzen
 \end_layout
 
 \begin_layout Standard
-Die ersten drei sind selbsterklärend, lediglich ein Punkt ist erwähnenswert:
- Wenn Sie ein Stück Text, das Sie markiert hatten, mit 
-\family sans
-Strg+X
-\family default
- löschen oder mit 
-\family sans
-Strg+C
-\family default
- kopieren, wird der gelöschte Text automatisch in den Zwischenspeicher kopiert.
+Die ersten drei sind selbsterklärend.
  Unter 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
@@ -1016,7 +1007,7 @@ Einfügen
 
 Auswahl)
 \family default
- finden Sie eine Liste der letzten 10 auf diese Weise gespeicherten Textstücke.
+ finden Sie eine Liste der letzten eingefügten Textstücke.
  Durch anklicken können Sie eins davon an der momentanen Cursorposition
  einfügen.
 \end_layout
@@ -23358,7 +23349,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\series bold
 
 \backslash
 leer 
@@ -23378,7 +23368,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\series bold
 
 \backslash
 leer 
@@ -23392,7 +23381,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\series bold
 
 \backslash
 leer 
@@ -23406,7 +23394,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\series bold
 
 \backslash
 leer 
@@ -25093,18 +25080,18 @@ Mathe-Modus
 \family default
  hat viele Matrizenarten, insbesondere bietet das AMS-LaTeX-Paket zum Beispiel
  
-\family typewriter
+\series bold
 
 \backslash
 cases
-\family default
+\series default
  und kommutative Diagramme.
  Hier ist ein einfaches Beispiel, wie LyX Bedingungen (LaTeX 
-\family typewriter
+\series bold
 
 \backslash
 cases
-\family default
+\series default
 ) darstellen kann:
 \end_layout
 
@@ -25191,35 +25178,6 @@ Strg+Eingabe
  tippt.
  LyX wird alles in den linken Teil der mehrzeiligen Gleichung packen, wobei
  alles links vom Cursor in die erste Zeile kommt, der Rest in die zweite.
- Um die Gleichungen auszurichten, stellen Sie den Cursor dorthin, wo der
- mittlere Teil (zum Beispiel das Gleichheitszeichen) beginnen soll, und
- tippen 
-\family sans
-Strg+Tab.
-\family default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Wenn Sie KDE als grafische Oberfläche verwenden, geht das leider nicht,
- es sei denn, Sie konfigurieren KDE um (zum Beispiel 
-\family sans
-Strg+Tab
-\family default
- auf 
-\family sans
-Windows+Tab
-\family default
-: KDE-Kontrollzentrum oder Kubuntu-Systemeinstellungen\SpecialChar \menuseparator
-Regional-Einstellungen
- & Zugangshilfen\SpecialChar \menuseparator
-Tastenkürzel).
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

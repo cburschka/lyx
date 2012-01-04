@@ -915,35 +915,7 @@ arg   "dialog-show findreplace"
 
 \begin_layout Standard
 Los tres primeros son evidentes.
- Una observación: siempre que borras un bloque de texto seleccionado, es
- puesto automáticamente en el portapapeles.
- Las teclas 
-\family sans
-Suprimir
-\family default
- y 
-\family sans
-Retroceso
-\family default
- también funcionan como el comando 
-\family sans
-Cortar
-\family default
-.
- Además, si has seleccionado texto, ten cuidado: si pulsas una tecla, LyX
- borrará completamente el texto seleccionado y lo reemplazará con lo que
- hayas pulsado.
- Tendrás que 
-\family sans
-Deshacer
-\family default
- para recuperar el texto borrado.
  
-\end_layout
-
-\begin_layout Standard
-
-\family sans
 \begin_inset Index idx
 status collapsed
 
@@ -953,8 +925,6 @@ Pegar
 
 \end_inset
 
-
-\family default
 También puedes copiar texto entre LyX y otros programas con cortar, copiar
  y pegar.
  El submenú 
@@ -966,7 +936,6 @@ Pegar
 reciente
 \family default
  muestra una lista con los últimos términos copiados.
- 
 \end_layout
 
 \begin_layout Standard
@@ -24500,14 +24469,14 @@ ar, con esto se dibujarán alrededor de la estructura resaltada.
 The most common bracket combinations (parentheses, square brackets, and
  braces, on both sides) can be entered more quickly using keyboard shortcuts.
  For example, to insert a pair of flexible parentheses on both sides, select
- the structure and enter 
-\family sans
-Alt+M
-\begin_inset space ~
+ the structure and enter
+\lang spanish
+ 
+\begin_inset Info
+type  "shortcut"
+arg   "math-delim ( )"
 \end_inset
 
-(
-\family default
 .
 \end_layout
 
@@ -24789,16 +24758,8 @@ a & = & \sqrt{b^{4}-c^{4}}\label{eq:acuadrado}
 \end_layout
 
 \begin_layout Standard
-Para cambiar la asignación de columna de las partes de la ecuación, pon
- el cursor donde quieras empezar el cambio y teclea 
-\family sans
-Ctrl+Tab.
-
-\family default
- Todo lo que esté a la derecha del cursor pasa a la columna siguiente.
- Ten en cuenta que la columna central está destinada para los signos de
- relación, y que las estructuras en esa columna se imprimirán en un tamaño
- menor:
+Ten en cuenta que la columna central está destinada para los signos de relación,
+ y que las estructuras en esa columna se imprimirán en un tamaño menor:
 \begin_inset Formula 
 \begin{eqnarray*}
 \frac{A}{B} & \frac{A}{B} & \frac{A}{B}
@@ -24817,14 +24778,14 @@ Entorno_EqnArray
 .
  Hay otros tipos de ecuaciones de varias líneas más apropiados para determinadas
  situaciones, por ejemplo si quieres un espacio entre líneas más adecuado
- que en la ecuación (
+ que en la ecuación 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:acuadrado"
 
 \end_inset
 
-).
+.
  Los otros tipos se describen en la sección
 \begin_inset space ~
 \end_inset
