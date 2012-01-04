@@ -492,15 +492,11 @@ View\SpecialChar \menuseparator
 View
 \family default
  or the toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "buffer-view"
 \end_inset
 
-
-\family default
 .
  LyX will open a PDF-viewer program displaying your document as it will
  look when printed.
@@ -515,15 +511,11 @@ View\SpecialChar \menuseparator
 Update
 \family default
  or the toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "buffer-update"
 \end_inset
 
-
-\family default
  and just click on the PDF-viewer window (or unminimize it) afterwards.
 \end_layout
 
@@ -568,15 +560,11 @@ Edit\SpecialChar \menuseparator
 Undo
 \family default
  (toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "undo"
 \end_inset
 
-
-\family default
 ) over and over again.
  If you undo too much, just select 
 \family sans
@@ -584,15 +572,11 @@ Edit\SpecialChar \menuseparator
 Redo
 \family default
  (toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "redo"
 \end_inset
 
-
-\family default
 ) to get it back.
 \end_layout
 
@@ -609,45 +593,33 @@ Edit\SpecialChar \menuseparator
 Cut
 \family default
  (toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "cut"
 \end_inset
 
-
-\family default
 ), 
 \family sans
 Edit\SpecialChar \menuseparator
 Copy
 \family default
  (toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "copy"
 \end_inset
 
-
-\family default
 ), and 
 \family sans
 Edit\SpecialChar \menuseparator
 Paste
 \family default
  (toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "paste"
 \end_inset
 
-
-\family default
 
 \begin_inset Graphics
 	filename ../images/paste.png
@@ -679,15 +651,11 @@ Find
 Replace
 \family default
  (toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show findreplace"
 \end_inset
 
-
-\family default
 ) to search.
  In the dialog, search with the 
 \family sans
@@ -748,15 +716,11 @@ Text
 Style
 \family default
  dialog (toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show character"
 \end_inset
 
-
-\family default
 ).
 \end_layout
 
@@ -1419,15 +1383,11 @@ Itemize
 Environment
 \family default
  box (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "layout Itemize"
 \end_inset
 
-
-\family default
 ).
  LyX writes a 
 \begin_inset Quotes eld
@@ -1482,14 +1442,12 @@ Ctrl+Return
 \family sans
 Standard
 \family default
- environment (or just use the key binding, 
-\family sans
-Alt+P
-\begin_inset space ~
+ environment (or just use the key binding 
+\begin_inset Info
+type  "shortcut"
+arg   "layout Standard"
 \end_inset
 
-S
-\family default
 ).
 \end_layout
 
@@ -1524,15 +1482,11 @@ Enumerate
 Environment
 \family default
  box (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "layout Enumerate"
 \end_inset
 
-
-\family default
 ).
  Pow! As we mentioned, if you add or delete a list item, LyX will fix the
  numbering.
@@ -1549,25 +1503,17 @@ Description
 List
 \family default
  (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "layout Description"
 \end_inset
 
-
-\family default
  and 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "layout List"
 \end_inset
 
-
-\family default
 ), in order to see what they look like.
  For those two environments, each list item is made up of a term, which
  is the item's first word, followed by a definition, which is the rest of
@@ -2292,15 +2238,11 @@ Insert\SpecialChar \menuseparator
 Label
 \family default
  or the toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
 \end_inset
 
-
-\family default
 .
  A dialog asks you for a label name, and gives you a suggestion.
  When you click on 
@@ -2358,15 +2300,11 @@ Cross
 Reference
 \family default
  or the toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset ref"
 \end_inset
 
-
-\family default
 .
  The Cross-reference dialog pops up.
  It shows a list of the possible labels you can reference.
@@ -2443,9 +2381,11 @@ Edit\SpecialChar \menuseparator
 Paste
 \family default
  (shortcut 
-\family sans
-Ctrl+V
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "paste"
+\end_inset
+
 ).
  In the printed document, this reference marker will be replaced with the
  section number and then the page number.
@@ -2626,15 +2566,11 @@ Footnotes and Margin Notes
 
 \begin_layout Standard
 Footnotes can be added using the toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "footnote-insert"
 \end_inset
 
-
-\family default
  or the menu 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -2716,15 +2652,11 @@ Paste
  it.
  In addition, you can change regular text to a footnote, by selecting it
  and hitting the 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "footnote-insert"
 \end_inset
 
-
-\family default
  button; change a footnote to regular text by hitting the 
 \family sans
 Backspace
@@ -2748,15 +2680,11 @@ Marginal
 Note
 \family default
  or the toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "marginalnote-insert"
 \end_inset
 
-
-\family default
 \SpecialChar \@.
  Margin notes are like footnotes, except that: 
 \end_layout
@@ -2892,15 +2820,11 @@ Insert\SpecialChar \menuseparator
 Citation
 \family default
  or the toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset citation"
 \end_inset
 
-
-\family default
 .
  A 
 \family sans
@@ -3048,15 +2972,11 @@ Document\SpecialChar \menuseparator
 Outline
 \family default
  or the toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-toggle toc"
 \end_inset
 
-
-\family default
 .
  This menu will work even if you do not have a table of contents inset in
  your document.
@@ -3149,15 +3069,11 @@ Now, that equation does not look very good in LyX and in the output; there
 \begin_layout Standard
 Instead, we create a formula that will get typeset properly.
  In order to create a formula, just click the toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-mode"
 \end_inset
 
-
-\family default
  or use the menu 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -3517,15 +3433,11 @@ Math
 \end_inset
 
  (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "toolbar-toggle math"
 \end_inset
 
-
-\family default
 ) the toolbar will be shown permanently at the bottom; this state is visualized
  in the 
 \family sans
@@ -3597,15 +3509,11 @@ Square roots, accents, and delimiters
 
 \begin_layout Standard
 To type a square root, just click on the button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\sqrt"
 \end_inset
 
-
-\family default
 .
  The square root appears, and the cursor is in a new insertion point inside
  the square root.
@@ -3633,15 +3541,11 @@ frame decoration
 
 .
  Decorations are available from the toolbar via the button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\hat"
 \end_inset
 
-
-\family default
 .
  Click on a decoration, and LyX will insert that decoration with an insertion
  point under (or over) it.
@@ -3656,15 +3560,11 @@ arg   "math-insert \\hat"
 Delimiters such as parentheses, brackets, and braces work similarly, but
  are a bit more complicated.
  Hit the delimiter button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show mathdelimiter"
 \end_inset
 
-
-\family default
  to pop up the 
 \family sans
 Delimiter
@@ -3747,25 +3647,17 @@ Fractions
 
 \begin_layout Standard
 To create a fraction, click on the fraction button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\frac"
 \end_inset
 
-
-\family default
  or 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\frac-square"
 \end_inset
 
-
-\family default
  in the 
 \family sans
 Math
@@ -3914,15 +3806,11 @@ Math
 Toolbar
 \family default
  button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\functions"
 \end_inset
 
-
-\family default
  and then on 
 \begin_inset Quotes eld
 \end_inset
@@ -4008,15 +3896,11 @@ Matrices
 
 \begin_layout Standard
 Click on the matrix button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show mathmatrix"
 \end_inset
 
-
-\family default
  in the 
 \family sans
 Math
@@ -4075,45 +3959,29 @@ Rows
 Columns
 \family default
  or the math toolbar buttons 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular append-row"
 \end_inset
 
-
-\family default
 , 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular delete-row"
 \end_inset
 
-
-\family default
 , 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular append-column"
 \end_inset
 
-
-\family default
 , 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular delete-column"
 \end_inset
 
-
-\family default
 .
 \end_layout
 
@@ -4149,15 +4017,11 @@ User's Guide
 
 \begin_layout Standard
 While being in a formula, click on the display button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-display"
 \end_inset
 
-
-\family default
  in the 
 \family sans
 Math
@@ -4359,15 +4223,11 @@ Insert\SpecialChar \menuseparator
 Table
 \family default
  (toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "tabular-insert"
 \end_inset
 
-
-\family default
 ) to get a table.
  Click on the table with the 
 \emph on
@@ -4383,15 +4243,11 @@ Settings
 \family default
  dialog box which allows extensive table editing.
  By pressing 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "toolbar-toggle table"
 \end_inset
 
-
-\family default
  the table toolbar will appear permanently.
 \end_layout
 
@@ -4403,15 +4259,11 @@ Insert\SpecialChar \menuseparator
 Graphics
 \family default
  (toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset graphics"
 \end_inset
 
-
-\family default
 ).
  Then browse for the figure file, rotate or scale it, etc.) Tables and figures
  can have captions, and LyX will automatically generate lists of figures
@@ -4462,8 +4314,13 @@ Alt+F
 \family sans
 O
 \family default
- or by using the binding which is shown next to it in the menu (Ctrl+O by
- default).
+ or by using the binding which is shown next to it in the menu (
+\begin_inset Info
+type  "shortcut"
+arg   "file-open"
+\end_inset
+
+ by default).
  Keybindings are also configurable.
  For information on this, check out 
 \family sans
@@ -4564,15 +4421,11 @@ TeX
 Code
 \family default
  (toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "ert-insert"
 \end_inset
 
-
-\family default
 ).
  This creates a box where everything within it is passed straight to LaTeX.
 \end_layout

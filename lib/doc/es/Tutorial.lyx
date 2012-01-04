@@ -517,15 +517,11 @@ Ver\SpecialChar \menuseparator
 Ver
 \family default
  o con el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "buffer-view"
 \end_inset
 
-
-\family default
  de la barra de herramientas.
  LyX lanzará un programa visor de PDF que abrirá una nueva ventana mostrándote
  el aspecto de tu documento cuando esté impreso.
@@ -541,15 +537,11 @@ Ver\SpecialChar \menuseparator
 Actualizar
 \family default
  o el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "buffer-update"
 \end_inset
 
-
-\family default
  y simplemente pulsar sobre la ventana del visor (o restaurarla) después.
 \end_layout
 
@@ -600,40 +592,24 @@ Editar\SpecialChar \menuseparator
 Deshacer
 \family default
  (icono 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "undo"
 \end_inset
 
-
-\family default
-)
-\family sans
-.
-
-\family default
+).
  Si deshaces demasiado, elige simplemente 
 \family sans
 Editar\SpecialChar \menuseparator
 Rehacer
 \family default
  (icono 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "redo"
 \end_inset
 
-
-\family default
-)
-\family sans
- 
-\family default
-para recuperar los cambios.
+)para recuperar los cambios.
  
 \end_layout
 
@@ -652,45 +628,33 @@ Editar\SpecialChar \menuseparator
 Cortar
 \family default
  (icono 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "cut"
 \end_inset
 
-
-\family default
 ), 
 \family sans
 Editar\SpecialChar \menuseparator
 Copiar
 \family default
  (icono 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "copy"
 \end_inset
 
-
-\family default
 ), y 
 \family sans
 Editar\SpecialChar \menuseparator
  Pegar
 \family default
  (icono 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "paste"
 \end_inset
 
-
-\family default
 ) para cortar, copiar y pegar.
  O pega automáticamente el texto seleccionado (incluyendo selecciones de
  otros programas) con el botón central del ratón.
@@ -711,15 +675,11 @@ y
 Reemplazar
 \family default
  (icono 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show findreplace"
 \end_inset
 
-
-\family default
 ) para realizar una búsqueda.
  En el menú que se despliega a tal efecto, puedes desplazarte hacia delante
  y hacia atrás en la búsqueda mediante las flechas, y reemplazar aquellas
@@ -787,15 +747,11 @@ del
 texto
 \family default
  (botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show character"
 \end_inset
 
-
-\family default
 ).
 \end_layout
 
@@ -1411,15 +1367,11 @@ Enumeración*
 Entorno
 \family default
 s (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "layout Itemize"
 \end_inset
 
-
-\family default
 ).
  LyX pondrá una marca en la línea.
  Escribe tus razones:
@@ -1469,13 +1421,11 @@ Ctrl+Retorno
 Normal
 \family default
  (o usar la combinación de teclas 
-\family sans
-Alt+P
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "layout Standard"
 \end_inset
 
-S
-\family default
 ).
 \end_layout
 
@@ -1502,15 +1452,11 @@ LyX no te dejará seleccionar el primer bolo a menos que selecciones el párrafo
 Enumeración
 \family default
  en el menú (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "layout Enumerate"
 \end_inset
 
-
-\family default
 ).
  ¡Increíble! Como ya dijimos, si añades o borras un elemento de la lista,
  LyX corrige la numeración.
@@ -1527,25 +1473,17 @@ Descripción
 List
 \family default
 a (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "layout Description"
 \end_inset
 
-
-\family default
  y 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "layout List"
 \end_inset
 
-
-\family default
 ), para ver cómo son.
  Para ambos, cada elemento de la lista está compuesto por un término, que
  es la primera palabra del elemento, seguido de una definición, que es el
@@ -2292,15 +2230,11 @@ Insertar\SpecialChar \menuseparator
 Etiqueta
 \family default
  o pulsa el icono 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
 \end_inset
 
-
-\family default
 .
  Se desplegará una ventana de diálogo preguntándote el nombre de la etiqueta,
  y ofreciéndote una sugerencia.
@@ -2362,15 +2296,11 @@ Insertar\SpecialChar \menuseparator
 Referencia cruzada
 \family default
  o pulsa el icono 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset ref"
 \end_inset
 
-
-\family default
 .
  Aparecerá una ventana de diálogo que muestra una lista de etiquetas posibles
  a las que puedes hacer referencia.
@@ -2444,9 +2374,11 @@ Editar\SpecialChar \menuseparator
 Pegar
 \family default
  (atajo 
-\family sans
-Ctrl+V
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "paste"
+\end_inset
+
 ).
 \end_layout
 
@@ -2638,15 +2570,11 @@ Notas a pie de página y notas al margen
 
 \begin_layout Standard
 Las notas a pie de página se pueden añadir usando el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "footnote-insert"
 \end_inset
 
-
-\family default
  de la barra de herramientas o bien accediendo en el menú a 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -2670,15 +2598,11 @@ LyX
 \end_inset
 
  en cualquier parte de tu documento y pulsa el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "footnote-insert"
 \end_inset
 
-
-\family default
 .
  Se mostrará un cuadro con la etiqueta 
 \begin_inset Quotes fld
@@ -2762,15 +2686,11 @@ Pegar
 lo.
  Además, puedes convertir texto normal en una nota, basta que lo selecciones
  y pulses el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "footnote-insert"
 \end_inset
 
-
-\family default
 ; convierte una nota en texto normal pulsando la tecla 
 \family sans
 Retroceso 
@@ -2785,15 +2705,11 @@ cuando el cursor está en la última posición de la nota al pie, respectivament
 
 \begin_layout Standard
 Las notas al margen se pueden añadir mediante el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "marginalnote-insert"
 \end_inset
 
-
-\family default
  o bien el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -2938,15 +2854,11 @@ Insertar\SpecialChar \menuseparator
 Cita
 \family default
  o con el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset citation"
 \end_inset
 
-
-\family default
 .
  Aparecerá la ventana 
 \family sans
@@ -3115,11 +3027,9 @@ Documento\SpecialChar \menuseparator
 Navegador de contorno
 \family default
  o con el botón 
-\begin_inset Graphics
-	filename ../../images/dialog-toggle_toc.png
-	scale 75
-	scaleBeforeRotation
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-toggle toc"
 \end_inset
 
 .
@@ -3217,15 +3127,11 @@ Ahora la ecuación no tiene muy buen aspecto en LyX ni en la salida; no hay
 Las expresiones matemáticas se escriben en modo matemático o de ecuaciones.
  Para entrar en dicho modo, sólo tienes que pinchar el botón de la barra
  de herramientas 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-mode"
 \end_inset
 
-
-\family default
  o usar el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -3659,15 +3565,11 @@ Ecuaciones
 \end_inset
 
  la barra de herramientas (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "toolbar-toggle math"
 \end_inset
 
-
-\family default
 ) se mostrará permanentemente en la parte inferior de la ventana; este estado
  se visualiza en el menú con una marca.
  Si en ese estado vuelves a pulsar 
@@ -3779,15 +3681,11 @@ Raíces cuadradas, tildes y delimitadores
 
 \begin_layout Standard
 Para escribir una raíz cuadrada sólo tienes que pulsar el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\sqrt"
 \end_inset
 
-
-\family default
 .
  La raíz aparece, y el cursor va a un nuevo punto de inserción dentro de
  ella.
@@ -3808,15 +3706,11 @@ La colocación de tildes en una letra (
 
 ) se realiza de la misma forma.
  Las decoraciones están disponibles en el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\hat"
 \end_inset
 
-
-\family default
  de la barra de herramientas.
  Pincha en una de las decoraciones, y LyX la imprimirá con un punto de inserción
  debajo (o encima).
@@ -3829,15 +3723,11 @@ arg   "math-insert \\hat"
 Los delimitadores (como paréntesis, corchetes y llaves) funcionan de forma
  similar, pero son un poco más complicados.
  Pulsa el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show mathdelimiter"
 \end_inset
 
-
-\family default
  para abrir la ventana 
 \family sans
 Delimitador
@@ -3928,25 +3818,17 @@ Fracciones
 
 \begin_layout Standard
 Para crear una fracción pica el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\frac"
 \end_inset
 
-
-\family default
  o 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\frac-square"
 \end_inset
 
-
-\family default
  en la 
 \family sans
 Barra
@@ -4174,15 +4056,11 @@ babel
 \series default
  permite escribir esta función en español.
  Para ello, dentro de la ecuación, pulsa el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "ert-insert"
 \end_inset
 
-
-\family default
  y escribe 
 \begin_inset Quotes fld
 \end_inset
@@ -4276,15 +4154,11 @@ Matrices
 
 \begin_layout Standard
 Pulsa en el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show mathmatrix"
 \end_inset
 
-
-\family default
  en la 
 \family sans
 Barra
@@ -4360,45 +4234,29 @@ y
 columnas
 \family default
  o los botones de la barra de herramientas de cuadros 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular append-row"
 \end_inset
 
-
-\family default
 , 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular delete-row"
 \end_inset
 
-
-\family default
 , 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular append-column"
 \end_inset
 
-
-\family default
 , 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular delete-column"
 \end_inset
 
-
-\family default
 .
 \end_layout
 
@@ -4436,15 +4294,11 @@ Guía del usuario
 
 \begin_layout Standard
 Pincha en el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-display"
 \end_inset
 
-
-\family default
  de la 
 \family sans
 Barra
@@ -4650,15 +4504,11 @@ Insertar\SpecialChar \menuseparator
 Cuadro/Tabla
 \family default
  (botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "tabular-insert"
 \end_inset
 
-
-\family default
 ) para crear uno.
  Pincha en el cuadro con el 
 \emph on
@@ -4676,7 +4526,6 @@ cuadro
  
 \lang english
 By pressing 
-\family sans
 \lang spanish
 
 \begin_inset Info
@@ -4685,7 +4534,6 @@ arg   "toolbar-toggle table"
 \end_inset
 
 
-\family default
 \lang english
  the table toolbar will appear permanently.
 \end_layout
@@ -4698,15 +4546,11 @@ Insertar\SpecialChar \menuseparator
 Imagen
 \family default
  (botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset graphics"
 \end_inset
 
-
-\family default
 )\SpecialChar \@.
  Después pincha en la figura para elegir el archivo que quieres incluir,
  rotarla, escalarla, etc.
@@ -4762,9 +4606,11 @@ Alt+A
 A
 \family default
 , o mediante la combinación de teclas que figura en el menú, 
-\family sans
-Ctrl+O
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "file-open"
+\end_inset
+
  en este caso.
  Las asociaciones de teclas también son configurables.
  Para más información, busca en 
@@ -4863,15 +4709,11 @@ Código
 TeX
 \family default
  o pinchando en el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "ert-insert"
 \end_inset
 
-
-\family default
  de la barra de herramientas.
  Esto genera un cuadro cuyo contenido es pasado directamente a LaTeX.
 \end_layout

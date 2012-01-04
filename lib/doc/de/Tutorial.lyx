@@ -589,15 +589,11 @@ Ansicht\SpecialChar \menuseparator
 Ansicht
 \family default
  (Werkzeugleistenknopf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "buffer-view"
 \end_inset
 
-
-\family default
 )\SpecialChar \@.
  LyX wird einen PDF-Betrachter starten, der dann ein eigenes Fenster öffnet,
  in dem Sie den Text so sehen können, wie er später gedruckt aussehen wird.
@@ -614,15 +610,11 @@ Ansicht\SpecialChar \menuseparator
 Aktualisieren
 \family default
  wählen oder auf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "buffer-update"
 \end_inset
 
-
-\family default
  klicken und danach in das PDF-Betrachter-Fenster klicken, um die neue Version
  zu sehen.
 \end_layout
@@ -697,15 +689,11 @@ Bearbeiten\SpecialChar \menuseparator
 Rückgängig
 \family default
  oder einen Klick auf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "undo"
 \end_inset
 
-
-\family default
  alles, was Sie seit dem Öffnen des Dokumentes verändert haben, zurücknehmen.
  Falls Sie dabei einen oder mehrere Schritte zu viel tun – kein Problem.
  
@@ -714,15 +702,11 @@ Bearbeiten\SpecialChar \menuseparator
 Wiederholen
 \family default
  oder 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "redo"
 \end_inset
 
-
-\family default
  macht das Rückgängig machen wieder ungeschehen.
 \end_layout
 
@@ -739,44 +723,36 @@ Bear\SpecialChar \-
 beiten\SpecialChar \menuseparator
 Aus\SpecialChar \-
 schnei\SpecialChar \-
-den (
+den 
+\family default
+(
 \begin_inset Info
 type  "icon"
 arg   "cut"
 \end_inset
 
-),
-\family default
- 
+), 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Kopieren
 \family default
  (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "copy"
 \end_inset
 
-
-\family default
 ) und 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Einfügen
 \family default
  (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "paste"
 \end_inset
 
-
-\family default
 ), um markierten Text zu bearbeiten.
  Zum Einfügen können Sie auch die 
 \emph on
@@ -800,15 +776,11 @@ Suchen
 Ersetzen
 \family default
  (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show findreplace"
 \end_inset
 
-
-\family default
 ) gelangen Sie in einen Dialog, in dem Sie Begriffe (wahlweise unter Berücksicht
 igung von Groß/Klein\SpecialChar \-
 schreibung sowie als ganzes Wort) suchen und ersetzen
@@ -826,15 +798,11 @@ Bearbeiten
 Textstil
 \family default
  oder einen Klick auf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show character"
 \end_inset
 
-
-\family default
  können Sie Text 
 \emph on
 hervorheben
@@ -1652,15 +1620,11 @@ Eingabe
 Auflistung
 \family default
  aus dem Auswahlmenü (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "layout Itemize"
 \end_inset
 
-
-\family default
 ).
  LyX schreibt jetzt einen Aufzählungspunkt an den Anfang der Zeile.
  Zählen Sie nun die Gründe auf:
@@ -1701,7 +1665,13 @@ Strg+Eingabe
 \family sans
 Standard
 \family default
- als Umgebungstyp aktivieren.
+ als Umgebungstyp aktivieren (Tastenkürzel 
+\begin_inset Info
+type  "shortcut"
+arg   "layout Standard"
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
@@ -1730,15 +1700,11 @@ LyX wird es Ihnen nicht ermöglichen, den Stern vor dem ersten Listenelement
 Aufzählung
 \family default
  (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "layout Enumerate"
 \end_inset
 
-
-\family default
 ), fertig.
  Wie bereits erwähnt wird LyX auch automatisch die Nummerierung anpassen,
  wenn Sie einzelne Einträge aus der Liste entfernen oder hinzufügen.
@@ -1755,25 +1721,17 @@ Beschreibung
 Liste 
 \family default
 (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "layout Description"
 \end_inset
 
-
-\family default
  und 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "layout List"
 \end_inset
 
-
-\family default
 ), konvertieren, dann sehen Sie sofort, wie diese aussehen.
  Bei diesen beiden Typen bestehen die Listen aus einem Begriff (dem ersten
  Wort im Absatz) und einer Definition, die den Rest des Absatzes (bis zum
@@ -2555,11 +2513,15 @@ Was das Tutorium ist\SpecialChar \ldots{}
 \family sans
 Einfügen\SpecialChar \menuseparator
 Marke (
+\family default
+
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
 \end_inset
 
+
+\family sans
 ).
 \begin_inset Foot
 status collapsed
@@ -2676,17 +2638,13 @@ vor dem Punkt befinden) den Menüpunkt
 Einfügen\SpecialChar \menuseparator
 Querverweis
 \family default
- 
-\family sans
-(
+ (
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset ref"
 \end_inset
 
 ).
-
-\family default
  Es öffnet sich ein Auswahlfeld, in dem Sie die im aktuellen Text definierten
  Marken aufgeführt sehen.
  Suchen Sie den Eintrag 
@@ -2733,7 +2691,11 @@ Als Querverweis kopieren
 Bearbeiten\SpecialChar \menuseparator
 Einfügen
 \family default
- (Tastenkürzel Strg+V) an die aktuelle Stelle des Cursors eingefügt werden.
+ (Tastenkürzel 
+\family sans
+Strg+V
+\family default
+) an die aktuelle Stelle des Cursors eingefügt werden.
 \end_layout
 
 \begin_layout Standard
@@ -2867,15 +2829,11 @@ Einfügen\SpecialChar \menuseparator
 Fußnote
 \family default
  (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "footnote-insert"
 \end_inset
 
-
-\family default
 ) einfügen.
  Setzen Sie beispielsweise den Cursor hinter das Wort 
 \emph on
@@ -2998,15 +2956,11 @@ Einfügen\SpecialChar \menuseparator
 Randnotiz
 \family default
  (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "marginalnote-insert"
 \end_inset
 
-
-\family default
 ) eingefügt.
  Eine Randnotiz ist fast wie eine Fußnote, mit den folgenden Unterschieden:
 \end_layout
@@ -3118,13 +3072,13 @@ Literaturverweis
  (
 \family sans
  
+\family default
+
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset citation"
 \end_inset
 
-
-\family default
 ).
  Das Dialogfenster 
 \family sans
@@ -3284,15 +3238,11 @@ führt.
 \begin_layout Standard
 Innerhalb von LyX selber wird das Inhaltsverzeichnis in einem Unterfenster
   angezeigt, wenn Sie auf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-toggle toc"
 \end_inset
 
-
-\family default
  klicken.
  Dieses Fenster ist ungemein hilfreich, denn Sie können damit in Ihrem Dokument
  navigieren: Klicken Sie auf ein (Unter)kapitel im Fenster 
@@ -3412,15 +3362,11 @@ Mathematische Ausdrücke werden im Mathematik-Editor geschrieben, auch bekannt
 matik-Modus.
  Um in den Mathematik-Modus zu kommen, müssen Sie nur den blau beschrifteten
  Knopf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-mode"
 \end_inset
 
-
-\family default
  in der Werkzeugleiste anklicken.
  LyX öffnet dann ein kleines blaues Rechteck, welches an den Ecken purpurrot
  umrahmt wird.
@@ -3568,16 +3514,12 @@ Bearbeiten\SpecialChar \menuseparator
 Rückgängig
 \family default
  (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "undo"
 \end_inset
 
-
-\family default
- ) funktioniert auch im Mathematik-Modus, ebenso wie 
+) funktioniert auch im Mathematik-Modus, ebenso wie 
 \family sans
 Ausschneiden
 \family default
@@ -3602,16 +3544,12 @@ Bearbeiten\SpecialChar \menuseparator
 Rückgängig
 \family default
  (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "undo"
 \end_inset
 
-
-\family default
- ) zurückholen.
+) zurückholen.
 \end_layout
 
 \begin_layout Standard
@@ -3880,15 +3818,11 @@ Werkzeugleisten\SpecialChar \menuseparator
 Mathe
 \family default
  (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "toolbar-toggle math"
 \end_inset
 
-
-\family default
 ) eingeblendet werden.
  Wenn nun im Menü 
 \family sans
@@ -3949,15 +3883,11 @@ Quadratwurzeln, Akzente und Klammern
 
 \begin_layout Standard
 Wenn Sie auf den Schalter 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\sqrt"
 \end_inset
 
-
-\family default
  klicken, erhalten Sie eine Quadratwurzel.
  Der Cursor wird automatisch unter das Wurzelzeichen gesetzt (zunächst sehen
  Sie dort das blaue Quadrat als Platzhalter), hier können Sie den Radikanden
@@ -3981,15 +3911,11 @@ Eine Variable (
 ) zum Beispiel mit einem Pfeil zu versehen, wird genauso gemacht.
  Wenn der Cursor in einem mathematischen Ausdruck steht, klicken Sie auf
  den Schalknopf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\hat"
 \end_inset
 
-
-\family default
  und wählen ein Symbol aus.
  Wenn Sie einen Ausdruck nachträglich verzieren wollen, müssen Sie ihn vorher
  markieren.
@@ -4004,15 +3930,11 @@ Gruppensymbole wie Trennungsstriche, Klammern und Pfeile werden ähnlich,
  jedoch etwas komplizierter gehandhabt.
  Hierzu ist der Knopf mit dem blauen Rechteck, umgeben von rechteckigen
  Klammern (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show mathdelimiter"
 \end_inset
 
-
-\family default
 ), anzuklicken.
  In dem Dialogfenster 
 \family sans
@@ -4100,15 +4022,11 @@ Brüche sind mit dem Mathematik-Editor einfach.
 Brüche
 \family default
 -Knopf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\frac-square"
 \end_inset
 
-
-\family default
  im Fenster 
 \family sans
 Mathe
@@ -4146,15 +4064,11 @@ Kontrollfläche
  Natürlich können Sie auch beliebige andere Ausdrücke in die zwei Quadrate
  schreiben: Variablen mit Exponenten, Quadratwurzeln, andere Brüche, usw.
  Wenn Sie nur einen Standardbruch benötigen, können Sie auch auf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\frac"
 \end_inset
 
-
-\family default
  in der 
 \family sans
 Mathe
@@ -4263,15 +4177,11 @@ x
 
 \begin_layout Standard
 Klicken Sie dazu auf den Werkzeugleistenknopf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\functions"
 \end_inset
 
-
-\family default
  und dann auf 
 \begin_inset Quotes gld
 \end_inset
@@ -4377,15 +4287,11 @@ name "sub:Matrizen"
 
 \begin_layout Standard
 Um eine Matrix zu erstellen, klicken Sie auf den Knopf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show mathmatrix"
 \end_inset
 
-
-\family default
  in der 
 \family sans
 Mathe-Werkzeugleiste
@@ -4439,45 +4345,29 @@ Zeilen
 Spalten
 \family default
  (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular append-row"
 \end_inset
 
-
-\family default
 , 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular delete-row"
 \end_inset
 
-
-\family default
 , 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular append-column"
 \end_inset
 
-
-\family default
 , 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular delete-column"
 \end_inset
 
-
-\family default
 ) tun (sie werden unter/rechts von der aktuellen Cursorposition eingefügt);
  ebenso können überzählige entfernt werden.
 \end_layout
@@ -4526,15 +4416,11 @@ Klicken Sie auf den
 Anzeige
 \family default
 -Schalter 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-display"
 \end_inset
 
-
-\family default
  in der unteren 
 \family sans
 Mathe
@@ -4714,15 +4600,11 @@ bel\SpecialChar \-
 le
 \family default
  (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "tabular-insert"
 \end_inset
 
-
-\family default
 ) legen Sie eine Tabelle an, indem Sie mit der Maus die Größe festlegen..
  Klicken Sie nun mit dem 
 \emph on
@@ -4739,15 +4621,11 @@ Einstellungen
  zu öffnen.
  Hier können umfangreiche Einstellungen einfach vorgenommen werden.
  Wenn Sie auf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "toolbar-toggle table"
 \end_inset
 
-
-\family default
  klicken, erscheint die Tabellen-Werkzeugleiste permanent.
 \end_layout
 
@@ -4759,15 +4637,11 @@ Einfügen\SpecialChar \menuseparator
 Grafik
 \family default
  (
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset graphics"
 \end_inset
 
-
-\family default
 ) öffnet eine Dialogbox, in der Sie die Abbildung einfach definieren, skalieren
  und drehen können usw.
 \end_layout
@@ -4975,15 +4849,11 @@ status collapsed
 X
 \family default
  oder durch Klicken auf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "ert-insert"
 \end_inset
 
-
-\family default
  in der zweiten Werkzeugleiste.
  Dadurch wird eine Textbox geöffnet, und alles darin wird direkt an LaTeX
  weitergegeben.
