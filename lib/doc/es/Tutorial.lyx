@@ -1331,7 +1331,11 @@ El entorno
 \family sans
 Lista
 \family default
- (que no existe en LaTeX) es ligeramente diferente al entorno 
+ (también llamado 
+\family sans
+Etiquetado
+\family default
+) es ligeramente diferente al entorno 
 \family sans
 Descripción
 \family default
@@ -1470,9 +1474,21 @@ Descripción
 \family default
  y 
 \family sans
-List
+Lista
 \family default
-a (
+
+\begin_inset space \thinspace{}
+\end_inset
+
+/
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\family sans
+Etiquetado
+\family default
+ (
 \begin_inset Info
 type  "icon"
 arg   "layout Description"
