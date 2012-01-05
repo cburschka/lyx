@@ -521,6 +521,7 @@ case $lyx_use_packaging in
 	   default_prefix=$ac_default_prefix
 	   case ${host} in
 	   *cygwin*) lyx_install_cygwin=true ;;
+		*apple-darwin*) lyx_install_macosx=true ;;
 	   esac
 	   lyx_install_posix=true ;;
     *) LYX_ERROR([Unknown packaging type $lyx_use_packaging]) ;;
