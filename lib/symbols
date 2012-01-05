@@ -932,21 +932,20 @@ pod                lyxblacktext  0   0 func     x     amsmath
 
 
 # mathtools.sty
-# no automatic loading without file format change
-\def\vcentcolon{\kern4mu:\kern3mu}
-\def\dblcolon{\vcentcolon\kern-8mu\vcentcolon}
-\def\coloneqq{\vcentcolon\kern-7mu=}
-\def\Coloneqq{\dblcolon\kern-7mu=}
-\def\coloneq{\vcentcolon\kern-7mu-}
-\def\Coloneq{\dblcolon\kern-7mu-}
-\def\eqqcolon{=\kern-8mu\vcentcolon}
-\def\Eqqcolon{=\kern-8mu\dblcolon}
-\def\eqcolon{-\kern-8mu\vcentcolon}
-\def\Eqcolon{-\kern-8mu\dblcolon}
-\def\colonapprox{\vcentcolon\kern-7mu\approx}
-\def\Colonapprox{\dblcolon\kern-7mu\approx}
-\def\colonsim{\vcentcolon\kern-7mu\sim}
-\def\Colonsim{\dblcolon\kern-7mu\sim}
+\def\vcentcolon{\kern4mu:\kern3mu}             mathtools
+\def\dblcolon{\vcentcolon\kern-8mu\vcentcolon} mathtools
+\def\coloneqq{\vcentcolon\kern-7mu=}           mathtools
+\def\Coloneqq{\dblcolon\kern-7mu=}             mathtools
+\def\coloneq{\vcentcolon\kern-7mu-}            mathtools
+\def\Coloneq{\dblcolon\kern-7mu-}              mathtools
+\def\eqqcolon{=\kern-8mu\vcentcolon}           mathtools
+\def\Eqqcolon{=\kern-8mu\dblcolon}             mathtools
+\def\eqcolon{-\kern-8mu\vcentcolon}            mathtools
+\def\Eqcolon{-\kern-8mu\dblcolon}              mathtools
+\def\colonapprox{\vcentcolon\kern-7mu\approx}  mathtools
+\def\Colonapprox{\dblcolon\kern-7mu\approx}    mathtools
+\def\colonsim{\vcentcolon\kern-7mu\sim}        mathtools
+\def\Colonsim{\dblcolon\kern-7mu\sim}          mathtools
 
 
 #

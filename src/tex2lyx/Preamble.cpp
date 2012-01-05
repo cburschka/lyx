@@ -459,14 +459,15 @@ Preamble::Preamble() : one_language(true)
 	h_use_bibtopic            = "false";
 	h_use_indices             = "false";
 	h_use_geometry            = "false";
-	h_use_amsmath             = "1";
 	h_use_default_options     = "false";
-	h_use_esint               = "1";
 	h_use_hyperref            = "0";
-	h_use_mhchem              = "0";
-	h_use_mathdots            = "0";
 	h_use_refstyle            = "0";
-	h_use_undertilde          = "0";
+	h_use_packages["amsmath"]    = "1";
+	h_use_packages["esint"]      = "1";
+	h_use_packages["mhchem"]     = "0";
+	h_use_packages["mathdots"]   = "0";
+	h_use_packages["mathtools"]  = "0";
+	h_use_packages["undertilde"] = "0";
 }
 
 
@@ -646,19 +647,11 @@ void Preamble::handle_package(Parser &p, string const & name,
 		;
 
 	else if (name == "amsmath" || name == "amssymb")
-		h_use_amsmath = "2";
+		h_use_packages["amsmath"] = "2";
 
-	else if (name == "esint")
-		h_use_esint = "2";
-
-	else if (name == "mhchem")
-		h_use_mhchem = "2";
-
-	else if (name == "mathdots")
-		h_use_mathdots = "2";
-
-	else if (name == "undertilde")
-		h_use_undertilde = "2";
+	else if (name == "esint" || name == "mhchem" || name == "mathdots" ||
+	         name == "mathtools" || name == "undertilde")
+		h_use_packages[name] = "2";
 
 	else if (name == "babel") {
 		h_language_package = "default";
@@ -925,13 +918,11 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 			os << "\\pdf_quoted_options \"" << h_pdf_quoted_options << "\"\n";
 	}
 	os << "\\papersize " << h_papersize << "\n"
-	   << "\\use_geometry " << h_use_geometry << "\n"
-	   << "\\use_package amsmath " << h_use_amsmath << '\n'
-	   << "\\use_package esint " << h_use_esint << '\n'
-	   << "\\use_package mhchem " << h_use_mhchem << '\n'
-	   << "\\use_package mathdots " << h_use_mathdots << '\n'
-	   << "\\use_package undertilde " << h_use_undertilde << '\n'
-	   << "\\cite_engine " << h_cite_engine << "\n"
+	   << "\\use_geometry " << h_use_geometry << '\n';
+	for (map<string, string>::const_iterator it = h_use_packages.begin();
+	     it != h_use_packages.end(); it++)
+		os << "\\use_package " << it->first << ' ' << it->second << '\n';
+	os << "\\cite_engine " << h_cite_engine << '\n'
 	   << "\\biblio_style " << h_biblio_style << "\n"
 	   << "\\use_bibtopic " << h_use_bibtopic << "\n"
 	   << "\\use_indices " << h_use_indices << "\n"

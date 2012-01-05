@@ -450,6 +450,7 @@ vector<string> const & BufferParams::auto_packages()
 		packages.push_back("amsmath");
 		packages.push_back("esint");
 		packages.push_back("mathdots");
+		packages.push_back("mathtools");
 		packages.push_back("mhchem");
 		packages.push_back("undertilde");
 	}

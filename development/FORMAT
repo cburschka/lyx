@@ -11,6 +11,11 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2012-01-05 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+	* Format incremented to 423 (r40574)
+	  support for the LaTeX-package mathtools (fix bug 7949)
+	  New buffer param \use_package mathtools
+
 2012-01-03 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 	* Format incremented to 422 (r40563)
 	  \use_amsmath 0/1/2    => \use_package amsmath 0/1/2

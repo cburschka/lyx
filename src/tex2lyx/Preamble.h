@@ -142,14 +142,10 @@ private:
 	std::string h_use_bibtopic;
 	std::string h_use_indices;
 	std::string h_use_geometry;
-	std::string h_use_amsmath;
+	std::map<std::string, std::string> h_use_packages;
 	std::string h_use_default_options;
-	std::string h_use_esint;
 	std::string h_use_hyperref;
-	std::string h_use_mhchem;
-	std::string h_use_mathdots;
 	std::string h_use_refstyle;
-	std::string h_use_undertilde;
 
 	/*!
 	 * Add package \p name with options \p options to used_packages.

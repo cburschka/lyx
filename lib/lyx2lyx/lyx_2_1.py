@@ -35,7 +35,7 @@ from parser_tools import del_token, find_token, find_end_of, find_end_of_inset, 
 
 from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert
 
-#from lyx2lyx_tools import add_to_preamble, insert_to_preamble, \
+#from lyx2lyx_tools import insert_to_preamble, \
 #  put_cmd_in_ert, lyx2latex, latex_length, revert_flex_inset, \
 #  revert_font_attrs, hex2ratio, str2bool
 
@@ -99,7 +99,7 @@ def revert_undertilde(document):
         # force load case
         add_to_preamble(document, ["\\usepackage{undertilde}"])
         return
-    
+
     # so we are in the auto case. we want to load undertilde if \utilde is used.
     i = 0
     while True:
@@ -344,13 +344,62 @@ def convert_use_packages(document):
 
 def revert_use_packages(document):
     "use_package xxx yyy => use_xxx yyy"
-    packages = ["amsmath", "esint", "mathdots", "mhchem", "undertilde"]
-    for p in packages:
+    packages = {"amsmath":"1", "esint":"1", "mathdots":"1", "mhchem":"1", "undertilde":"1"}
+    # the order is arbitrary for the use_package version, and not all packages need to be given.
+    # Ensure a complete list and correct order (important for older LyX versions and especially lyx2lyx)
+    j = -1
+    for p in packages.keys():
         regexp = re.compile(r'(\\use_package\s+%s)' % p)
         i = find_re(document.header, regexp, 0)
         if i != -1:
-            values = get_value(document.header, "\\use_package" , i)
-            document.header[i] = "\\use_%s" % values
+            value = get_value(document.header, "\\use_package" , i).split()[1]
+            del document.header[i]
+            j = i
+    for (p, v) in packages.items():
+        document.header.insert(j, "\\use_%s %s"  % (p, value))
+        j = j + 1
+
+
+def convert_use_mathtools(document):
+    "insert use_package mathtools"
+    i = find_token(document.header, "\\use_package", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Can't find \\use_package.")
+        return;
+    document.header.insert(i + 1, "\\use_package mathtools 0")
+
+
+def revert_use_mathtools(document):
+    "remove use_package mathtools"
+    regexp = re.compile(r'(\\use_package\s+mathtools)')
+    i = find_re(document.header, regexp, 0)
+    value = "1" # default is auto
+    if i != -1:
+        value = get_value(document.header, "\\use_package" , i).split()[1]
+        del document.header[i]
+    if value == "2": # on
+        add_to_preamble(document, ["\\usepackage{mathtools}"])
+    elif value == "1": # auto
+        commands = ["lgathered", "rgathered", "vcentcolon", "dblcolon", \
+                    "coloneqq", "Coloneqq", "coloneq", "Coloneq", "eqqcolon", \
+                    "Eqqcolon", "eqcolon", "Eqcolon", "colonapprox", \
+                    "Colonapprox", "colonsim", "Colonsim"]
+        i = 0
+        while True:
+            i = find_token(document.body, '\\begin_inset Formula', i)
+            if i == -1:
+                return
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of Formula inset at line " + str(i))
+                i += 1
+                continue
+            code = "\n".join(document.body[i:j])
+            for c in commands:
+                if code.find("\\%s" % c) != -1:
+                    add_to_preamble(document, ["\\usepackage{mathtools}"])
+                    return
+            i = j
 
 
 ##
@@ -368,9 +417,11 @@ convert = [
            [420, [convert_biblio_style]],
            [421, [convert_longtable_captions]],
            [422, [convert_use_packages]],
+           [423, [convert_use_mathtools]],
           ]
 
 revert =  [
+           [422, [revert_use_mathtools]],
            [421, [revert_use_packages]],
            [420, [revert_longtable_captions]],
            [419, [revert_biblio_style]],

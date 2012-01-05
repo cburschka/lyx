@@ -147,6 +147,8 @@ void InsetMathSplit::validate(LaTeXFeatures & features) const
 	if (name_ == "split" || name_ == "gathered" || name_ == "aligned" ||
 	    name_ == "alignedat")
 		features.require("amsmath");
+	else if (name_ == "lgathered" || name_ == "rgathered")
+		features.require("mathtools");
 	InsetMathGrid::validate(features);
 }
 
