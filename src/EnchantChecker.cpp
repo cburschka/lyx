@@ -188,6 +188,12 @@ bool EnchantChecker::hasDictionary(Language const * lang) const
 }
 
 
+int EnchantChecker::numDictionaries() const
+{
+	return d->spellers_.size();
+}
+	
+
 docstring const EnchantChecker::error()
 {
 	return docstring();
