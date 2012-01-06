@@ -71,13 +71,13 @@
 % provides caption formatting
 \setkomafont{captionlabel}{\bfseries}
 
-% benutzt in Kap. 23.6
+% benutzt in Kap. 24.5
 \usepackage[samesize]{cancel}
 
 % enables calculation of values
 \usepackage{calc}
 
-% für Mehrfachzeilen, benutzt in Kap. 23.7
+% für Mehrfachzeilen, benutzt in Kap. 24.7
 \usepackage{multicol}
 
 % benutzt in Kap. 19.4
@@ -35669,7 +35669,7 @@ Pakete ! cancel
 \series bold
 
 \backslash
-usepackage[samesize]{cancel}
+usepackage{cancel}
 \end_layout
 
 \begin_layout Standard
@@ -35943,6 +35943,152 @@ cancelto
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Um die Größe des 
+\begin_inset Quotes gld
+\end_inset
+
+hochgestellten
+\begin_inset Quotes grd
+\end_inset
+
+ Werts von 
+\series bold
+
+\backslash
+cancelto
+\series default
+ zu ändern, kann man das Paket 
+\series bold
+cancel
+\series default
+ entweder mit der Option 
+\series bold
+samesize
+\series default
+, die zur selben Größe wie die der durchgestrichenen Zeichen führt, oder
+ mit der Option 
+\series bold
+Smaller
+\series default
+, die zu einer etwas kleineren Größe führt als es ohne Option der Fall ist.
+ In diesem Dokument wurde 
+\series bold
+cancel
+\series default
+ mit der Zeile
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+usepackage[samesize]{cancel}
+\end_layout
+
+\begin_layout Standard
+geladen.
+ Um den Durchstrich zu färben, verwendet man den Befehl
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+CancelColor}{
+\backslash
+color{red}}
+\end_layout
+
+\begin_layout Standard
+als TeX-Code.
+ 
+\series bold
+red
+\series default
+ kann durch eine Farbe der Wahl ersetzt werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+CancelColor}{
+\backslash
+color{red}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\left(x_{0}+bB\right)^{2}}{\left(1+b^{2}\right)^{\cancelto{2}{3}}}=\frac{x_{0}^{2}+B^{2}-r_{g}^{2}}{\cancel{1+b^{2}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+CancelColor}{
+\backslash
+color{black}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Farbe zurücksetzen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Für weitere Anpassungen siehe die Dokumentation des Pakets 
+\series bold
+cancel
+\series default
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cancel"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -38101,6 +38247,39 @@ target "ftp://ftp.dante.de/tex-archive/info/symbols/comprehensive/symbols-a4.pdf
 \end_inset
 
  aller über LaTeX-Pakete verfügbare Symbole
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Referenzen
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "cancel"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Dokumentation"
+target "http://mirrors.ctan.org/macros/latex/contrib/cancel/cancel.pdf"
+
+\end_inset
+
+ des LaTeX-Pakets 
+\series bold
+cancel
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Pakete ! cancel
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography

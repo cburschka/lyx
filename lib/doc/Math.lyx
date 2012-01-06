@@ -71,13 +71,13 @@
 % provides caption formatting
 \setkomafont{captionlabel}{\bfseries}
 
-% used in sec. 23.6
+% used in sec. 24.5
 \usepackage[samesize]{cancel}
 
 % enables calculation of values
 \usepackage{calc}
 
-% for multiple columns used in sec. 23.7
+% for multiple columns used in sec. 24.7
 \usepackage{multicol}
 
 % needed in sec. 19.4
@@ -31079,7 +31079,7 @@ Counter denotes what kind of numbering is affected, sectioning denotes what
 \end_layout
 
 \begin_layout Standard
-Thus in our case the following LaTeX-preamble or TeX-Code line is used:
+Thus in our case the following LaTeX-preamble or TeX code line is used:
 \end_layout
 
 \begin_layout Standard
@@ -31140,7 +31140,7 @@ numberwithin{table}{part}
 \begin_layout Standard
 To go back to the standard numbering or to prevent this kind of numbering
  when it is defined by the document class, the following command is inserted
- as TeX-Code or to the LaTeX-preamble:
+ as TeX code or to the LaTeX-preamble:
 \end_layout
 
 \begin_layout Standard
@@ -35546,6 +35546,13 @@ genfrac{}{}{#1}{}{#2}{#3}}
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 A test:
 \begin_inset Formula 
 \begin{align*}
@@ -35596,7 +35603,7 @@ Packages ! cancel
 \series bold
 
 \backslash
-usepackage[samesize]{cancel}
+usepackage{cancel}
 \end_layout
 
 \begin_layout Standard
@@ -35865,6 +35872,151 @@ cancelto
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+To change the size of 
+\series bold
+
+\backslash
+cancelto
+\series default
+'s 
+\begin_inset Quotes eld
+\end_inset
+
+subscript
+\begin_inset Quotes erd
+\end_inset
+
+ value one can load the package 
+\series bold
+cancel
+\series default
+ with either the option 
+\series bold
+samesize
+\series default
+ which leads to the same size as for the canceled value or with the option
+ 
+\series bold
+Smaller
+\series default
+ which makes is it a bit smaller than the size one gets without using a
+ package option.
+ In this document 
+\series bold
+cancel
+\series default
+ was loaded with this line:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+usepackage[samesize]{cancel}
+\end_layout
+
+\begin_layout Standard
+To color the cancellation bar one adds this command as TeX code:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+CancelColor}{
+\backslash
+color{red}}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+red
+\series default
+ can be replaced by a color of your choice.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+CancelColor}{
+\backslash
+color{red}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\left(x_{0}+bB\right)^{2}}{\left(1+b^{2}\right)^{\cancelto{2}{3}}}=\frac{x_{0}^{2}+B^{2}-r_{g}^{2}}{\cancel{1+b^{2}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+CancelColor}{
+\backslash
+color{black}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+reset the color
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For further customizations, see the documentation of the package 
+\series bold
+cancel
+\series default
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cancel"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -36841,6 +36993,13 @@ status collapsed
 fi 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -38025,6 +38184,39 @@ target "ftp://ftp.dante.de/tex-archive/info/symbols/comprehensive/symbols-a4.pdf
 \end_inset
 
  of all symbols available with LaTeX-packages
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring References
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "cancel"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "http://mirrors.ctan.org/macros/latex/contrib/cancel/cancel.pdf"
+
+\end_inset
+
+ of the LaTeX-package 
+\series bold
+cancel
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Packages ! cancel
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography

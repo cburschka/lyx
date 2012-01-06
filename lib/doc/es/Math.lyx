@@ -71,13 +71,13 @@
 % provides caption formatting
 \setkomafont{captionlabel}{\bfseries}
 
-% used in sec. 23.6
+% used in sec. 24.5
 \usepackage[samesize]{cancel}
 
 % enables calculation of values
 \usepackage{calc}
 
-% for multiple columns used in sec. 23.7
+% for multiple columns used in sec. 24.7
 \usepackage{multicol}
 
 % needed in sec. 19.4
@@ -36139,7 +36139,7 @@ Paquetes ! cancel
 \series bold
 
 \backslash
-usepackage[samesize]{cancel}
+usepackage{cancel}
 \end_layout
 
 \begin_layout Standard
@@ -36413,6 +36413,162 @@ cancelto
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To change the size of 
+\series bold
+
+\backslash
+cancelto
+\series default
+'s 
+\begin_inset Quotes fld
+\end_inset
+
+subscript
+\begin_inset Quotes frd
+\end_inset
+
+ value one can load the package 
+\series bold
+cancel
+\series default
+ with either the option 
+\series bold
+samesize
+\series default
+ which leads to the same size as for the canceled value or with the option
+ 
+\series bold
+Smaller
+\series default
+ which makes is it a bit smaller than the size one gets without using a
+ package option.
+ In this document 
+\series bold
+cancel
+\series default
+ was loaded with this line:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+usepackage[samesize]{cancel}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To color the cancellation bar one adds this command as TeX code:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+CancelColor}{
+\backslash
+color{red}}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+red
+\series default
+ can be replaced by a color of your choice.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+CancelColor}{
+\backslash
+color{red}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\left(x_{0}+bB\right)^{2}}{\left(1+b^{2}\right)^{\cancelto{2}{3}}}=\frac{x_{0}^{2}+B^{2}-r_{g}^{2}}{\cancel{1+b^{2}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+CancelColor}{
+\backslash
+color{black}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+reset the color
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+For further customizations, see the documentation of the package
+\lang spanish
+ 
+\series bold
+cancel
+\series default
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cancel"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -36855,7 +37011,7 @@ Sangrado
 \series default
 ,
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 véase estilos de ecuación en 
@@ -37388,6 +37544,13 @@ fi
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Caracteres de texto en ecuaciones
 \begin_inset CommandInset label
@@ -37542,7 +37705,7 @@ i}
 \start_of_appendix
 Notas sobre tipografía
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tipografía, normas
@@ -37846,7 +38009,7 @@ Sinónimos
 Algunos caracteres y símbolos se pueden componer con varios comandos sinónimos
  como los que se recogen en esta lista:
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 véase también 
@@ -38594,6 +38757,39 @@ target "ftp://ftp.dante.de/tex-archive/info/symbols/comprehensive/symbols-a4.pdf
 \end_inset
 
  de todos los símbolos disponibles con paquetes LaTeX
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Referencias
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "cancel"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentación"
+target "http://mirrors.ctan.org/macros/latex/contrib/cancel/cancel.pdf"
+
+\end_inset
+
+ del paquete LaTeX 
+\series bold
+cancel
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetes ! cancel
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography
