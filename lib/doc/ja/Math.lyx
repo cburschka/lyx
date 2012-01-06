@@ -74,13 +74,13 @@
 % provides caption formatting
 %\setkomafont{captionlabel}{\bfseries}
 
-% used in sec. 23.6
+% used in sec. 24.5
 \usepackage[samesize]{cancel}
 
 % enables calculation of values
 \usepackage{calc}
 
-% for multiple columns used in sec. 23.7
+% for multiple columns used in sec. 24.7
 \usepackage{multicol}
 
 % needed in sec. 19.4
@@ -33885,6 +33885,173 @@ status open
 
 \end_layout
 
+\begin_layout Section
+
+\lang english
+Computer Algebra Systems
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+LyX offers the exchange between mathematical expressions written in LyX's
+ math editor and external applications or user defined scripts.
+ Currently supported applications are 
+\family sans
+Maple
+\family default
+, 
+\family sans
+Mathematica
+\family default
+, 
+\family sans
+Maxima
+\family default
+ and 
+\family sans
+Octave
+\family default
+.
+ Note that the set of supported mathematical constructs is limited only
+ to very simple cases.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Usage
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Write some expression in a formula, go to the 
+\family sans
+Edit\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Use Computer Algebra System
+\family default
+ menu and choose the application you have installed on the computer.
+ After that the result of computation should show on the right side of the
+ expression together with the 
+\begin_inset Quotes eld
+\end_inset
+
+=
+\begin_inset Quotes erd
+\end_inset
+
+ operator.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Here are few simple examples (with results from 
+\family typewriter
+Maxima
+\family default
+) to show what kind of computations can be performed:
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Formula $\frac{37}{3}*2-\sum_{i=1}^{3}i^{i}=-\frac{22}{3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Formula $\frac{37.0}{3}=12.33333333333333$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Formula $\int_{1}^{2}\sin(x)dx=\cos1-\cos2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Formula $\det\left[\begin{array}{ccc}
+1 & 6 & 7\\
+2 & 5 & 8\\
+3 & 4 & 17
+\end{array}\right]=-56$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Formula $\lim_{x\rightarrow0}\left(\frac{\sin(x)}{x}\right)=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Keyboard shortcut
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Currently there is no keyboard shortcut for calling the algebra applications.
+ One can easily bind a shortcut to the 
+\family sans
+math-extern
+\family default
+ LyX function (see the 
+\family sans
+\emph on
+LyX Functions
+\family default
+\emph default
+ manual).
+ One could e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+bind the 
+\family sans
+Return
+\family default
+ key inside the math editor.
+ To bind it to 
+\family typewriter
+Maxima
+\family default
+ one would use this shortcut definition command:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+command-alternatives break-paragraph;math-extern maxima
+\end_layout
+
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -34810,7 +34977,7 @@ status collapsed
 \series bold
 
 \backslash
-usepackage[samesize]{cancel}
+usepackage{cancel}
 \end_layout
 
 \begin_layout Standard
@@ -35053,6 +35220,164 @@ cancelto
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To change the size of 
+\series bold
+
+\backslash
+cancelto
+\series default
+'s 
+\begin_inset Quotes eld
+\end_inset
+
+subscript
+\begin_inset Quotes erd
+\end_inset
+
+ value one can load the package 
+\series bold
+cancel
+\series default
+ with either the option 
+\series bold
+samesize
+\series default
+ which leads to the same size as for the canceled value or with the option
+ 
+\series bold
+Smaller
+\series default
+ which makes is it a bit smaller than the size one gets without using a
+ package option.
+ In this document 
+\series bold
+cancel
+\series default
+ was loaded with this line:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+usepackage[samesize]{cancel}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To color the cancellation bar one adds this command as TeX code:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+CancelColor}{
+\backslash
+color{red}}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+red
+\series default
+ can be replaced by a color of your choice.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+CancelColor}{
+\backslash
+color{red}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\left(x_{0}+bB\right)^{2}}{\left(1+b^{2}\right)^{\cancelto{2}{3}}}=\frac{x_{0}^{2}+B^{2}-r_{g}^{2}}{\cancel{1+b^{2}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+CancelColor}{
+\backslash
+color{black}}
+\end_layout
+
+\end_inset
+
+
+\lang english
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+reset the color
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+For further customizations, see the documentation of the package
+\lang japanese
+ 
+\series bold
+cancel
+\series default
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cancel"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -37113,6 +37438,39 @@ LaTeXパッケージで利用できる記号の
 LatexCommand href
 name "全覧"
 target "ftp://ftp.dante.de/tex-archive/info/symbols/comprehensive/symbols-a4.pdf"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring 参考文献
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "cancel"
+
+\end_inset
+
+LaTeX 
+\series bold
+cancel
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ぱっけーじ@パッケージ ! cancel
+\end_layout
+
+\end_inset
+
+パッケージの
+\begin_inset CommandInset href
+LatexCommand href
+name "取扱説明書"
+target "http://mirrors.ctan.org/macros/latex/contrib/cancel/cancel.pdf"
 
 \end_inset
 
