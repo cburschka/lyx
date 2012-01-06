@@ -6,6 +6,9 @@
 \begin_preamble
 % specify here the journal
 \journal{Example: Nuclear Physics B}
+
+% use this if you need line numbers
+%\usepackage{lineno}
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -696,6 +699,36 @@ PACS
 MSC
 \series default
  are optional classifications.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Use here the command 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+linenumbers 
+\end_layout
+
+\end_inset
+
+ and enable the package 
+\series bold
+lineno
+\series default
+ in the preamble if you need line numbers.
 \end_layout
 
 \end_inset
