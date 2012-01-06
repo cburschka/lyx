@@ -51,12 +51,37 @@ NoCounter chapter
 NoStyle Chapter*
 
 
+Style BeginFrontmatter
+  Margin	Dynamic
+  LatexType	Command
+  LatexName	begin{frontmatter}
+  Category	FrontMatter
+  KeepEmpty	1
+  ParSkip	0.4
+  Align		Block
+  LabelSep	xx
+  LabelType	Static
+  LabelString	"Begin frontmatter"
+  LabelFont
+    Series	Bold
+    Color	Green
+  EndFont
+End
+
+
+Style EndFrontmatter
+  CopyStyle	BeginFrontmatter
+  LatexName	end{frontmatter}
+  LabelString	"End frontmatter"
+End
+
+
 Style Title
 	Margin			Static
 	LatexType		Command
 	LatexName		title
 	Category		FrontMatter
-	InTitle			1
+	InTitle			0
 	OptionalArgs		0
 	ParSkip			0.4
 	ItemSep			0
@@ -99,7 +124,7 @@ Style "Title footnote"
 	LatexType		Command
 	LatexName		tnotetext
 	Category		FrontMatter
-	InTitle			1
+	InTitle			0
 	OptionalArgs		1
 	ParSkip			0.4
 	BottomSep		0.5
@@ -118,7 +143,7 @@ Style Author
 	Margin			Static
 	LatexType		Command
 	Category		FrontMatter
-	InTitle			1
+	InTitle			0
 	OptionalArgs		1
 	LatexName		author
 	LabelSep		xxx
@@ -197,7 +222,7 @@ Style Address
 	LatexType		Command
 	Category		FrontMatter
 	LatexName		address
-	InTitle			1
+	InTitle			0
 	OptionalArgs		1
 	ParSkip			0.4
 	Align			Center
@@ -224,7 +249,7 @@ Style Abstract
 	LatexType		Environment
 	LatexName		abstract
 	Category		FrontMatter
-	InTitle			1
+	InTitle			0
 	NextNoIndent		1
 	LeftMargin		MMM
 	RightMargin		MMM
@@ -253,7 +278,7 @@ Style Keywords
 	LatexType		Environment
 	LatexName		keyword
 	Category		FrontMatter
-	InTitle			1
+	InTitle			0
 	Align			Left
 	NextNoIndent		1
 	BottomSep		0.5
