@@ -26,6 +26,7 @@ else
 
 liblyxboost_a_SOURCES = \
 	\
+	libs/regex/src/internals.hpp \
 	libs/regex/src/c_regex_traits.cpp \
 	libs/regex/src/cpp_regex_traits.cpp \
 	libs/regex/src/cregex.cpp \
