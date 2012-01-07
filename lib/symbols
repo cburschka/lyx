@@ -931,6 +931,23 @@ pmod               lyxblacktext  0   0 func     x
 pod                lyxblacktext  0   0 func     x     amsmath
 
 
+# mathtools.sty
+# no automatic loading without file format change
+\def\vcentcolon{\kern4mu:\kern3mu}
+\def\dblcolon{\vcentcolon\kern-8mu\vcentcolon}
+\def\coloneqq{\vcentcolon\kern-7mu=}
+\def\Coloneqq{\dblcolon\kern-7mu=}
+\def\coloneq{\vcentcolon\kern-7mu-}
+\def\Coloneq{\dblcolon\kern-7mu-}
+\def\eqqcolon{=\kern-8mu\vcentcolon}
+\def\Eqqcolon{=\kern-8mu\dblcolon}
+\def\eqcolon{-\kern-8mu\vcentcolon}
+\def\Eqcolon{-\kern-8mu\dblcolon}
+\def\colonapprox{\vcentcolon\kern-7mu\approx}
+\def\Colonapprox{\dblcolon\kern-7mu\approx}
+\def\colonsim{\vcentcolon\kern-7mu\sim}
+\def\Colonsim{\dblcolon\kern-7mu\sim}
+
 
 #
 # pre-defined macros
