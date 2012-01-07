@@ -949,9 +949,8 @@ void MenuDefinition::expandDocuments()
 	Buffer * b = first;
 	// We cannot use a for loop as the buffer list cycles.
 	do {
-		bool const shown = guiApp->currentView()
-			? guiApp->currentView()->workArea(*b) : false;
-		if (!shown) {
+		if (guiApp->currentView()
+		    && guiApp->currentView()->workArea(*b)) {
 			QString label = toqstr(b->fileName().displayName(20));
 			if (!b->isClean())
 				label += "*";
