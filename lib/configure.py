@@ -488,7 +488,7 @@ def checkFormatEntries(dtl_tools):
     checkViewerEditor('a Dia viewer and editor', ['dia'],
         rc_entry = [r'\Format dia        dia     DIA                    "" "%%"	"%%"	"vector,zipped=native"'])
     #
-    checkViewerEditor('an OpenOffice drawing viewer and editor', ['libreoffice', 'ooffice', 'oodraw', 'soffice'],
+    checkViewerEditor('an OpenOffice drawing viewer and editor', ['libreoffice', 'lodraw', 'ooffice', 'oodraw', 'soffice'],
         rc_entry = [r'\Format odg        "odg, sxd" "OpenOffice drawing"   "" "%%"	"%%"	"vector,zipped=native"'])
     #
     checkViewerEditor('a Grace viewer and editor', ['xmgrace'],
@@ -602,11 +602,11 @@ def checkFormatEntries(dtl_tools):
     checkViewerEditor('Noteedit', ['noteedit'],
         rc_entry = [r'\Format noteedit   not     Noteedit               "" "%%"	"%%"	"vector"'])
     #
-    checkViewerEditor('an OpenDocument/OpenOffice viewer', ['swriter', 'oowriter', 'abiword'],
+    checkViewerEditor('an OpenDocument/OpenOffice viewer', ['lwriter', 'swriter', 'oowriter', 'abiword'],
         rc_entry = [r'''\Format odt        odt     OpenDocument           "" "%%"	"%%"	"document,vector,menu=export"
 \Format sxw        sxw    "OpenOffice.Org (sxw)"  "" ""	""	"document,vector"'''])
     #
-    checkViewerEditor('a Rich Text and Word viewer', ['swriter', 'oowriter', 'abiword'],
+    checkViewerEditor('a Rich Text and Word viewer', ['lwriter', 'swriter', 'oowriter', 'abiword'],
         rc_entry = [r'''\Format rtf        rtf    "Rich Text Format"      "" "%%"	"%%"	"document,vector,menu=export"
 \Format word       doc    "MS Word"               W  "%%"	"%%"	"document,vector,menu=export"'''])
     #
@@ -722,6 +722,9 @@ def checkConverterEntries():
     #
     checkProg('an OpenDocument -> LaTeX converter', ['w2l -clean $$i'],
         rc_entry = [ r'\converter odt        latex      "%%"	""' ])
+    #
+    checkProg('an OpenDocument -> PDF converter', ['unoconv -f pdf --stdout $$i > $$o'],
+        rc_entry = [ r'\converter odt        pdf        "%%"	""' ])
     # According to http://www.tug.org/applications/tex4ht/mn-commands.html
     # the command mk4ht oolatex $$i has to be used as default,
     # but as this would require to have Perl installed, in MiKTeX oolatex is
@@ -825,8 +828,14 @@ def checkConverterEntries():
     checkProg('a Dia -> EPS converter', ['dia -e $$o -t eps $$i'],
         rc_entry = [ r'\converter dia        eps        "%%"	""'])
     #
-    checkProg('an OpenOffice -> EPS converter', ['libreoffice -headless -nologo -convert-to eps $$i'],
+    checkProg('an OpenOffice -> EPS converter', ['libreoffice -headless -nologo -convert-to eps $$i', 'unoconv -f eps --stdout $$i > $$o'],
         rc_entry = [ r'\converter odg        eps2       "%%"	""'])
+    #
+    checkProg('an OpenOffice -> PDF converter', ['unoconv -f pdf --stdout $$i > $$o'],
+        rc_entry = [ r'\converter odg        pdf        "%%"	""'])
+    #
+    checkProg('an OpenOffice -> PNG converter', ['unoconv -f png --stdout $$i > $$o'],
+        rc_entry = [ r'\converter odg        png        "%%"	""'])
     #
     checkProg('a SVG -> PDF converter', ['rsvg-convert -f pdf -o $$o $$i', 'inkscape --file=$$i --export-area-drawing --without-gui --export-pdf=$$o'],
         rc_entry = [ r'\converter svg        pdf        "%%"	""'])
