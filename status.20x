@@ -91,7 +91,9 @@ What's new
 - Make sure that we detect and use python 2 on systems where python 3
   is the default python interpreter.
 
-- cmake, LYX_DEPENDENCIES_DOWNLOAD: look for the right filename on SourceForge
+- cmake, LYX_DEPENDENCIES_DOWNLOAD: look for the right filename on SourceForge.
+
+- Make compilation work with GCC 4.7.
 
 
 ** Bug fixes:
