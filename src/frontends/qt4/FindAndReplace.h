@@ -87,7 +87,8 @@ public:
 	bool initialiseParams(std::string const &);
 	void clearParams() {}
 	void dispatchParams() {}
-	bool isBufferDependent() const { return true; }
+	bool isBufferDependent() const { return false; }
+	bool canApplyToReadOnly() const { return true; }
 	void selectAll();
 
 	/// update
