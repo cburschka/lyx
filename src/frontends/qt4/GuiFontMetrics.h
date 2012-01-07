@@ -66,8 +66,8 @@ private:
 	mutable QHash<char_type, int> width_cache_;
 
 	struct AscendDescend {
-		short int ascent;
-		short int descent;
+		int ascent;
+		int descent;
 	};
 	/// Cache of char ascends and descends
 	mutable QHash<char_type, AscendDescend> metrics_cache_;
