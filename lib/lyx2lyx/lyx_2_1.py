@@ -73,8 +73,19 @@ def revert_visible_space(document):
 def convert_undertilde(document):
     " Load undertilde automatically "
     i = find_token(document.header, "\\use_mathdots" , 0)
-    if i != -1:
-      document.header.insert(i + 1, "\\use_undertilde 1")
+    if i == -1:
+        i = find_token(document.header, "\\use_mhchem" , 0)
+    if i == -1:
+        i = find_token(document.header, "\\use_esint" , 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Can't find \\use_mathdots.")
+        return;
+    j = find_token(document.preamble, "\\usepackage{undertilde}", 0)
+    if j == -1:
+        document.header.insert(i + 1, "\\use_undertilde 0")
+    else:
+        document.header.insert(i + 1, "\\use_undertilde 2")
+        del document.preamble[j]
 
 
 def revert_undertilde(document):
@@ -366,7 +377,12 @@ def convert_use_mathtools(document):
     if i == -1:
         document.warning("Malformed LyX document: Can't find \\use_package.")
         return;
-    document.header.insert(i + 1, "\\use_package mathtools 0")
+    j = find_token(document.preamble, "\\usepackage{mathtools}", 0)
+    if j == -1:
+        document.header.insert(i + 1, "\\use_package mathtools 0")
+    else:
+        document.header.insert(i + 1, "\\use_package mathtools 2")
+        del document.preamble[j]
 
 
 def revert_use_mathtools(document):
@@ -380,7 +396,8 @@ def revert_use_mathtools(document):
     if value == "2": # on
         add_to_preamble(document, ["\\usepackage{mathtools}"])
     elif value == "1": # auto
-        commands = ["lgathered", "rgathered", "vcentcolon", "dblcolon", \
+        commands = ["mathclap", "mathllap", "mathrlap", \
+                    "lgathered", "rgathered", "vcentcolon", "dblcolon", \
                     "coloneqq", "Coloneqq", "coloneq", "Coloneq", "eqqcolon", \
                     "Eqqcolon", "eqcolon", "Eqcolon", "colonapprox", \
                     "Colonapprox", "colonsim", "Colonsim"]

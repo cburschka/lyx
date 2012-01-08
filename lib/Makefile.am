@@ -734,6 +734,9 @@ dist_imagesmath_DATA = \
 	images/math/mathcal_L.png \
 	images/math/mathcal_O.png \
 	images/math/mathcircumflex.png \
+	images/math/mathclap.png \
+	images/math/mathllap.png \
+	images/math/mathrlap.png \
 	images/math/mathrm_T.png \
 	images/math/matrix.png \
 	images/math/measuredangle.png \
@@ -866,6 +869,7 @@ dist_imagesmath_DATA = \
 	images/math/smallfrown.png \
 	images/math/smallsetminus.png \
 	images/math/smallsmile.png \
+	images/math/smash.png \
 	images/math/smile.png \
 	images/math/space.png \
 	images/math/spadesuit.png \

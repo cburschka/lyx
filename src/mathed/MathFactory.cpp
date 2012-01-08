@@ -501,6 +501,14 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 		return MathAtom(new InsetMathPhantom(buf, InsetMathPhantom::phantom));
 	if (s == "vphantom")
 		return MathAtom(new InsetMathPhantom(buf, InsetMathPhantom::vphantom));
+	if (s == "smash")
+		return MathAtom(new InsetMathPhantom(buf, InsetMathPhantom::smash));
+	if (s == "mathclap")
+		return MathAtom(new InsetMathPhantom(buf, InsetMathPhantom::mathclap));
+	if (s == "mathllap")
+		return MathAtom(new InsetMathPhantom(buf, InsetMathPhantom::mathllap));
+	if (s == "mathrlap")
+		return MathAtom(new InsetMathPhantom(buf, InsetMathPhantom::mathrlap));
 	if (s == "ensuremath")
 		return MathAtom(new InsetMathEnsureMath(buf));
 	if (isSpecialChar(s))

@@ -799,9 +799,8 @@ string const LaTeXFeatures::getPackages() const
 		packages << "\\PassOptionsToPackage{normalem}{ulem}\n"
 			    "\\usepackage{ulem}\n";
 
-	if (params_.use_package("mhchem") == BufferParams::package_on ||
-	    (mustProvide("mhchem") &&
-	     params_.use_package("mhchem") != BufferParams::package_off))
+	if (mustProvide("mhchem") &&
+	    params_.use_package("mhchem") != BufferParams::package_off)
 		packages << "\\PassOptionsToPackage{version=3}{mhchem}\n"
 			    "\\usepackage{mhchem}\n";
 

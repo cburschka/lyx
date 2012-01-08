@@ -336,6 +336,10 @@ ToolbarSet
 		Item "Phantom	\\phantom" "math-insert \phantom"
 		Item "Horizontal phantom	\\hphantom" "math-insert \hphantom"
 		Item "Vertical phantom	\\vphantom" "math-insert \vphantom"
+		Item "Smash \\smash" "math-insert \smash"
+		Item "Left overlap \\mathllap" "math-insert \mathllap"
+		Item "Center overlap \\mathclap" "math-insert \mathclap"
+		Item "Right overlap \\mathrlap" "math-insert \mathrlap"
 	End
 
 	Toolbar "sqrt-square" "Roots"

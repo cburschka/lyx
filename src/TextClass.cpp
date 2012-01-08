@@ -218,7 +218,7 @@ namespace {
 
 	LexerKeyword textClassTags[] = {
 		{ "addtohtmlpreamble", TC_ADDTOHTMLPREAMBLE },
-	  { "addtohtmlstyles",   TC_ADDTOHTMLSTYLES },
+		{ "addtohtmlstyles",   TC_ADDTOHTMLSTYLES },
 		{ "addtopreamble",     TC_ADDTOPREAMBLE },
 		{ "citeformat",        TC_CITEFORMAT },
 		{ "classoptions",      TC_CLASSOPTIONS },
@@ -231,7 +231,7 @@ namespace {
 		{ "float",             TC_FLOAT },
 		{ "format",            TC_FORMAT },
 		{ "htmlpreamble",      TC_HTMLPREAMBLE },
-	  { "htmlstyles",        TC_HTMLSTYLES },
+		{ "htmlstyles",        TC_HTMLSTYLES },
 		{ "htmltocsection",    TC_HTMLTOCSECTION },
 		{ "ifcounter",         TC_IFCOUNTER },
 		{ "ifstyle",           TC_IFSTYLE },

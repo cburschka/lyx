@@ -23,7 +23,11 @@ public:
 	enum Kind {
 		phantom,
 		vphantom,
-		hphantom
+		hphantom,
+		smash,
+		mathclap,
+		mathllap,
+		mathrlap
 	};
 	///
 	explicit InsetMathPhantom(Buffer * buf, Kind);
@@ -43,6 +47,10 @@ public:
 	void mathmlize(MathStream &) const {}
 	/// Nothing for HTML
 	void htmlize(HtmlStream &) const {}
+	/// request "external features"
+	void validate(LaTeXFeatures & features) const;
+	/// Does the contents appear in LaTeX output?
+	bool visibleContents() const;
 
 private:
 	///

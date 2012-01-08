@@ -1817,9 +1817,16 @@ def convert_mathdots(document):
     " Load mathdots automatically "
     i = find_token(document.header, "\\use_mhchem" , 0)
     if i == -1:
-      i = find_token(document.header, "\\use_esint" , 0)
-    if i != -1:
-      document.header.insert(i + 1, "\\use_mathdots 1")
+        i = find_token(document.header, "\\use_esint" , 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Can't find \\use_mhchem.")
+        return;
+    j = find_token(document.preamble, "\\usepackage{mathdots}", 0)
+    if j == -1:
+        document.header.insert(i + 1, "\\use_mathdots 0")
+    else:
+        document.header.insert(i + 1, "\\use_mathdots 2")
+        del document.preamble[j]
 
 
 def revert_mathdots(document):
