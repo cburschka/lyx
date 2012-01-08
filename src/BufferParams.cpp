@@ -2526,6 +2526,14 @@ string const BufferParams::dvips_options() const
 {
 	string result;
 
+	// If the class loads the geometry package, we do not know which
+	// paper size is used, since we do not set it (bug 7013).
+	// Therefore we must not specify any argument here.
+	// dvips gets the correct paper size via DVI specials in this case
+	// (if the class uses the geometry package correctly).
+	if (documentClass().provides("geometry"))
+		return result;
+
 	if (use_geometry
 	    && papersize == PAPER_CUSTOM
 	    && !lyxrc.print_paper_dimension_flag.empty()
