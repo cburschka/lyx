@@ -34,6 +34,11 @@ creates a file of textclass \*[lq]foo\*[rq] and reads the LyX layout file for th
 (something like /usr/local/share/lyx/layouts/foo.layout \s-1OR\s0
 \fB\s-1HOME\s0\fR/.lyx/layouts/foo.layout).  Use \fB\-c\fR to declare a different textclass
 (and read a different layout file).
+.IP ""
+This option is needed if the input file is a LaTeX fragment, with no preamble
+matter or \f(CW\ebegin{document}\fR command. LyX files created by
+\fBtex2lyx\fR from partial files can be included in an existing LyX file using
+the \*[lq]Include LyX File\*[rq] command from LyX's Insert menu.
 .TP
 .BI \-f
 Force. \fBtex2lyx\fR will not run if the .lyx file it would generate already exists.
@@ -43,16 +48,6 @@ Use the \fB\-f\fR option (carefully) to clobber any existing files.
 Noweb. Translate a noweb (aka literate programming) file. This should be
 (almost?) equivalent to running \*[lq]noweb2lyx foo.tex foo.lyx\*[rq]. This option
 requires the \fB\-c\fR option.
-.\" .TP
-.\" .BI \-p
-.\" Partial file. The input files are LaTeX fragments, with no preamble matter or
-.\" \f(CW\ebegin{document}\fR commands. This option requires the \fB\-c\fR option, since there
-.\" are no \f(CW\edocumentclass\fR commands in the files \fBtex2lyx\fR is translating. When
-.\" using this option, you can translate more than one file, as long as all files
-.\" are the same class. The LyX file created by \fBtex2lyx\fR can be included in an
-.\" existing LyX file using the \*[lq]Include LyX File\*[rq] command from
-.\" LyX's Insert menu. (\fBNOTE\fR: this feature of the older \fBreLyX\fR script has
-.\" not yet been implemented in \fBtex2lyx\fR).
 .\" .TP
 .\" .BI \-r
 .\" Regular environments (see the section on \fISyntax Files\fR).  If you give more than one
@@ -120,7 +115,7 @@ Run \fBtex2lyx\fR.
 you don't want any output at all, try (in csh) `tex2lyx foo.tex >& /dev/null'.
 You should \s-1NOT\s0 redirect standard output to \fIfoo.lyx\fR.
 .IP "\(bu" 4
-Run LyX (version 1.6 or later) on the resulting .lyx file.
+Run LyX (version 2.1 or later) on the resulting .lyx file.
 .IP ""
 In theory, most of the file will have been translated, and anything that's
 untranslatable will be transferred to TeX code (ERT in LyX-speak). In theory, LyX will be
