@@ -510,10 +510,7 @@ QString GuiBibtex::styleFile() const
 	case ENGINE_BASIC:
 		defaultstyle = "plain";
 		break;
-	case ENGINE_NATBIB_AUTHORYEAR:
-		defaultstyle = "plainnat";
-		break;
-	case ENGINE_NATBIB_NUMERICAL:
+	case ENGINE_NATBIB:
 		defaultstyle = "plainnat";
 		break;
 	case ENGINE_JURABIB:

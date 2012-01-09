@@ -11,6 +11,11 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2012-01-09 Julien Rioux <jrioux@lyx.org>
+	* Format incremented to 424 (r40592)
+	  New buffer param \cite_engine_type to specify the type of
+	  citation labels being used, authoryear or numerical.
+
 2012-01-05 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 	* Format incremented to 423 (r40574)
 	  support for the LaTeX-package mathtools (fix bug 7949)

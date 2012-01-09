@@ -107,6 +107,8 @@ private Q_SLOTS:
 	void languagePackageChanged(int);
 	void biblioChanged();
 	void bibtexChanged(int);
+	void setAuthorYear(bool);
+	void setNumerical(bool);
 	void updateModuleInfo();
 	void modulesChanged();
 	void changeBackgroundColor();

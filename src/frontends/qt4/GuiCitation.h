@@ -134,6 +134,8 @@ private:
 		std::vector<docstring> & keyVector, docstring entryType);
 	///
 	CiteEngine citeEngine() const;
+	///
+	CiteEngineType citeEngineType() const;
 
 	/// Search a given string within the passed keys.
 	/// \return the vector of matched keys.

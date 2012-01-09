@@ -419,6 +419,37 @@ def revert_use_mathtools(document):
             i = j
 
 
+def convert_cite_engine_type(document):
+    "Determine the \\cite_engine_type from the citation engine."
+    i = find_token(document.header, "\\cite_engine", 0)
+    if i == -1:
+        return
+    engine = get_value(document.header, "\\cite_engine", i)
+    if "_" in engine:
+        engine, type = engine.split("_")
+    else:
+        type = {"basic": "numerical", "jurabib": "authoryear"}[engine]
+    document.header[i] = "\\cite_engine " + engine
+    document.header.insert(i + 1, "\\cite_engine_type " + type)
+
+
+def revert_cite_engine_type(document):
+    "Natbib had the type appended with an underscore."
+    engine_type = "numerical"
+    i = find_token(document.header, "\\cite_engine_type" , 0)
+    if i == -1:
+        document.warning("No \\cite_engine_type line. Assuming numerical.")
+    else:
+        engine_type = get_value(document.header, "\\cite_engine_type", i)
+        del document.header[i]
+
+    # We are looking for the natbib citation engine
+    i = find_token(document.header, "\\cite_engine natbib", i)
+    if i == -1:
+        return
+    document.header[i] = "\\cite_engine natbib_" + engine_type
+
+
 ##
 # Conversion hub
 #
@@ -435,9 +466,11 @@ convert = [
            [421, [convert_longtable_captions]],
            [422, [convert_use_packages]],
            [423, [convert_use_mathtools]],
+           [424, [convert_cite_engine_type]],
           ]
 
 revert =  [
+           [423, [revert_cite_engine_type]],
            [422, [revert_use_mathtools]],
            [421, [revert_use_packages]],
            [420, [revert_longtable_captions]],

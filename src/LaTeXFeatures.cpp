@@ -769,7 +769,7 @@ string const LaTeXFeatures::getPackages() const
 	// This special case is indicated by the "natbib-internal" key.
 	if (mustProvide("natbib") && !tclass.provides("natbib-internal")) {
 		packages << "\\usepackage[";
-		if (params_.citeEngine() == ENGINE_NATBIB_NUMERICAL)
+		if (params_.citeEngineType() == ENGINE_TYPE_NUMERICAL)
 			packages << "numbers";
 		else
 			packages << "authoryear";

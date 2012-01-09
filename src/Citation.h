@@ -18,9 +18,13 @@ class Buffer;
 
 enum CiteEngine {
 	ENGINE_BASIC,
-	ENGINE_NATBIB_AUTHORYEAR,
-	ENGINE_NATBIB_NUMERICAL,
+	ENGINE_NATBIB,
 	ENGINE_JURABIB
+};
+
+enum CiteEngineType {
+	ENGINE_TYPE_AUTHORYEAR = 1,
+	ENGINE_TYPE_NUMERICAL = 2,
 };
 
 enum CiteStyle {

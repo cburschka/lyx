@@ -1490,7 +1490,8 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 	if (contains(key, ','))
 		key = qstring_to_ucs4(toqstr(key).split(',')[0]);
 
-	vector<CiteStyle> citeStyleList = citeStyles(buf->params().citeEngine());
+	vector<CiteStyle> citeStyleList = citeStyles(buf->params().citeEngine(),
+		buf->params().citeEngineType());
 	docstring_list citeStrings =
 		buf->masterBibInfo().getCiteStrings(key, bv->buffer());
 

@@ -265,8 +265,7 @@ typedef Translator<string, CiteEngine> CiteEngineTranslator;
 CiteEngineTranslator const init_citeenginetranslator()
 {
 	CiteEngineTranslator translator("basic", ENGINE_BASIC);
-	translator.addPair("natbib_numerical", ENGINE_NATBIB_NUMERICAL);
-	translator.addPair("natbib_authoryear", ENGINE_NATBIB_AUTHORYEAR);
+	translator.addPair("natbib", ENGINE_NATBIB);
 	translator.addPair("jurabib", ENGINE_JURABIB);
 	return translator;
 }
@@ -275,6 +274,24 @@ CiteEngineTranslator const init_citeenginetranslator()
 CiteEngineTranslator const & citeenginetranslator()
 {
 	static CiteEngineTranslator translator = init_citeenginetranslator();
+	return translator;
+}
+
+
+typedef Translator<string, CiteEngineType> CiteEngineTypeTranslator;
+
+
+CiteEngineTypeTranslator const init_citeenginetypetranslator()
+{
+	CiteEngineTypeTranslator translator("authoryear", ENGINE_TYPE_AUTHORYEAR);
+	translator.addPair("numerical", ENGINE_TYPE_NUMERICAL);
+	return translator;
+}
+
+
+CiteEngineTypeTranslator const & citeenginetypetranslator()
+{
+	static CiteEngineTypeTranslator translator = init_citeenginetypetranslator();
 	return translator;
 }
 
@@ -362,6 +379,7 @@ BufferParams::BufferParams()
 	orientation = ORIENTATION_PORTRAIT;
 	use_geometry = false;
 	cite_engine_ = ENGINE_BASIC;
+	cite_engine_type_ = ENGINE_TYPE_NUMERICAL;
 	biblio_style = "plain";
 	use_bibtopic = false;
 	use_indices = false;
@@ -711,6 +729,10 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		string engine;
 		lex >> engine;
 		cite_engine_ = citeenginetranslator().find(engine);
+	} else if (token == "\\cite_engine_type") {
+		string engine_type;
+		lex >> engine_type;
+		cite_engine_type_ = citeenginetypetranslator().find(engine_type);
 	} else if (token == "\\biblio_style") {
 		lex.eatLine();
 		biblio_style = lex.getString();
@@ -1016,6 +1038,7 @@ void BufferParams::writeFile(ostream & os) const
 		os << "\n\\use_package " << packages[i] << ' '
 		   << use_package(packages[i]);
 	os << "\n\\cite_engine " << citeenginetranslator().find(cite_engine_)
+	   << "\n\\cite_engine_type " << citeenginetypetranslator().find(cite_engine_type_)
 	   << "\n\\biblio_style " << biblio_style
 	   << "\n\\use_bibtopic " << convert<string>(use_bibtopic)
 	   << "\n\\use_indices " << convert<string>(use_indices)
@@ -2922,9 +2945,8 @@ CiteEngine BufferParams::citeEngine() const
 {
 	// FIXME the class should provide the numerical/
 	// authoryear choice
-	if (documentClass().provides("natbib")
-	    && cite_engine_ != ENGINE_NATBIB_NUMERICAL)
-		return ENGINE_NATBIB_AUTHORYEAR;
+	if (documentClass().provides("natbib"))
+		return ENGINE_NATBIB;
 	return cite_engine_;
 }
 

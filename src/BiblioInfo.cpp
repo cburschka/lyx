@@ -692,8 +692,8 @@ bool BiblioInfo::isBibtex(docstring const & key) const
 vector<docstring> const BiblioInfo::getCiteStrings(
 	docstring const & key, Buffer const & buf) const
 {
-	CiteEngine const engine = buf.params().citeEngine();
-	if (engine == ENGINE_BASIC || engine == ENGINE_NATBIB_NUMERICAL)
+	CiteEngineType const engine_type = buf.params().citeEngineType();
+	if (engine_type == ENGINE_TYPE_NUMERICAL)
 		return getNumericalStrings(key, buf);
 	else
 		return getAuthorYearStrings(key, buf);
@@ -711,7 +711,8 @@ vector<docstring> const BiblioInfo::getNumericalStrings(
 	if (author.empty() || year.empty())
 		return vector<docstring>();
 
-	vector<CiteStyle> const & styles = citeStyles(buf.params().citeEngine());
+	vector<CiteStyle> const & styles = citeStyles(buf.params().citeEngine(),
+		buf.params().citeEngineType());
 
 	vector<docstring> vec(styles.size());
 	for (size_t i = 0; i != vec.size(); ++i) {
@@ -770,7 +771,8 @@ vector<docstring> const BiblioInfo::getAuthorYearStrings(
 	if (author.empty() || year.empty())
 		return vector<docstring>();
 
-	vector<CiteStyle> const & styles = citeStyles(buf.params().citeEngine());
+	vector<CiteStyle> const & styles = citeStyles(buf.params().citeEngine(),
+		buf.params().citeEngineType());
 
 	vector<docstring> vec(styles.size());
 	for (size_t i = 0; i != vec.size(); ++i) {
@@ -892,9 +894,8 @@ void BiblioInfo::collectCitedEntries(Buffer const & buf)
 void BiblioInfo::makeCitationLabels(Buffer const & buf)
 {
 	collectCitedEntries(buf);
-	CiteEngine const engine = buf.params().citeEngine();
-	bool const numbers =
-		(engine == ENGINE_BASIC || engine == ENGINE_NATBIB_NUMERICAL);
+	CiteEngineType const engine_type = buf.params().citeEngineType();
+	bool const numbers = (engine_type == ENGINE_TYPE_NUMERICAL);
 
 	int keynumber = 0;
 	char modifier = 0;
@@ -1025,17 +1026,18 @@ string citationStyleToString(const CitationStyle & s)
 	return cite;
 }
 
-vector<CiteStyle> citeStyles(CiteEngine engine)
+vector<CiteStyle> citeStyles(CiteEngine engine, CiteEngineType engine_type)
 {
 	vector<CiteStyle> styles(0);
 
-	switch (engine) {
+	if (engine_type == ENGINE_TYPE_AUTHORYEAR) {
+		switch (engine) {
 		case ENGINE_BASIC:
 			styles.push_back(CITE);
 			break;
 		case ENGINE_JURABIB:
 			styles.push_back(CITE);
-		case ENGINE_NATBIB_AUTHORYEAR:
+		case ENGINE_NATBIB:
 			styles.push_back(CITET);
 			styles.push_back(CITEP);
 			styles.push_back(CITEALT);
@@ -1044,7 +1046,15 @@ vector<CiteStyle> citeStyles(CiteEngine engine)
 			styles.push_back(CITEYEAR);
 			styles.push_back(CITEYEARPAR);
 			break;
-		case ENGINE_NATBIB_NUMERICAL:
+		}
+	} else {
+		switch (engine) {
+		case ENGINE_BASIC:
+			styles.push_back(CITE);
+			break;
+		case ENGINE_JURABIB:
+			styles.push_back(CITE);
+		case ENGINE_NATBIB:
 			styles.push_back(CITET);
 			styles.push_back(CITEALT);
 			styles.push_back(CITEAUTHOR);
@@ -1053,6 +1063,7 @@ vector<CiteStyle> citeStyles(CiteEngine engine)
 			styles.push_back(CITEYEAR);
 			styles.push_back(CITEYEARPAR);
 			break;
+		}
 	}
 
 	styles.push_back(NOCITE);

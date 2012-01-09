@@ -211,9 +211,7 @@ void GuiCitation::updateControls(BiblioInfo const & bi)
 void GuiCitation::updateFormatting(CiteStyle currentStyle)
 {
 	CiteEngine const engine = citeEngine();
-	bool const natbib_engine =
-		engine == ENGINE_NATBIB_AUTHORYEAR ||
-		engine == ENGINE_NATBIB_NUMERICAL;
+	bool const natbib_engine = engine == ENGINE_NATBIB;
 	bool const basic_engine = engine == ENGINE_BASIC;
 
 	bool const haveSelection = 
@@ -624,7 +622,8 @@ bool GuiCitation::initialiseParams(string const & data)
 {
 	InsetCommand::string2params(data, params_);
 	CiteEngine const engine = citeEngine();
-	citeStyles_ = citeStyles(engine);
+	CiteEngineType const engine_type = citeEngineType();
+	citeStyles_ = citeStyles(engine, engine_type);
 	init();
 	return true;
 }
@@ -661,6 +660,12 @@ void GuiCitation::filterByEntryType(BiblioInfo const & bi,
 CiteEngine GuiCitation::citeEngine() const
 {
 	return documentBuffer().params().citeEngine();
+}
+
+
+CiteEngineType GuiCitation::citeEngineType() const
+{
+	return documentBuffer().params().citeEngineType();
 }
 
 

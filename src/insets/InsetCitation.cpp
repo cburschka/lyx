@@ -143,18 +143,18 @@ docstring InsetCitation::toolTip(BufferView const & bv, int, int) const
 namespace {
 
 // FIXME See the header for the issue.
-string defaultCiteCommand(CiteEngine engine)
+string defaultCiteCommand(CiteEngine engine, CiteEngineType engine_type)
 {
 	string str;
 	switch (engine) {
 		case ENGINE_BASIC:
 			str = "cite";
 			break;
-		case ENGINE_NATBIB_AUTHORYEAR:
-			str = "citet";
-			break;
-		case ENGINE_NATBIB_NUMERICAL:
-			str = "citep";
+		case ENGINE_NATBIB:
+			if (engine_type == ENGINE_TYPE_AUTHORYEAR)
+				str = "citet";
+			else
+				str = "citep";
 			break;
 		case ENGINE_JURABIB:
 			str = "cite";
@@ -164,9 +164,10 @@ string defaultCiteCommand(CiteEngine engine)
 }
 
 
-string asValidLatexCommand(string const & input, CiteEngine const engine)
+string asValidLatexCommand(string const & input, CiteEngine const engine,
+	CiteEngineType const engine_type)
 {
-	string const default_str = defaultCiteCommand(engine);
+	string const default_str = defaultCiteCommand(engine, engine_type);
 	if (!InsetCitation::isCompatibleCommand(input))
 		return default_str;
 
@@ -179,8 +180,7 @@ string asValidLatexCommand(string const & input, CiteEngine const engine)
 				output = default_str;
 			break;
 
-		case ENGINE_NATBIB_AUTHORYEAR:
-		case ENGINE_NATBIB_NUMERICAL:
+		case ENGINE_NATBIB:
 			if (input == "cite" || input == "citefield"
 			    || input == "citetitle" || input == "cite*")
 				output = default_str;
@@ -259,8 +259,9 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 	// CITE:	author/<before field>
 
 	CiteEngine const engine = buffer().params().citeEngine();
+	CiteEngineType const engine_type = buffer().params().citeEngineType();
 	// We don't currently use the full or forceUCase fields.
-	string cite_type = asValidLatexCommand(getCmdName(), engine);
+	string cite_type = asValidLatexCommand(getCmdName(), engine, engine_type);
 	if (cite_type[0] == 'C')
 		// If we were going to use them, this would mean ForceUCase
 		cite_type = string(1, 'c') + cite_type.substr(1);
@@ -350,13 +351,13 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 		//  authors_last (<before> year, <after>)
 		else if (cite_type == "citet") {
 			switch (engine) {
-			case ENGINE_NATBIB_AUTHORYEAR:
-				label += author + op_str + before_str +
-					wrapCitation(*it, year, for_xhtml) + cp + sep_str;
-				break;
-			case ENGINE_NATBIB_NUMERICAL:
-				label += author + op_str + before_str + 
-					wrapCitation(*it, citenum, for_xhtml) + cp + sep_str;
+			case ENGINE_NATBIB:
+				if (engine_type == ENGINE_TYPE_AUTHORYEAR)
+					label += author + op_str + before_str +
+						wrapCitation(*it, year, for_xhtml) + cp + sep_str;
+				else
+					label += author + op_str + before_str +
+						wrapCitation(*it, citenum, for_xhtml) + cp + sep_str;
 				break;
 			case ENGINE_JURABIB:
 				label += before_str + author + op_str +
@@ -369,7 +370,7 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 		// author, year; author, year; ...
 		else if (cite_type == "citep" ||
 			   cite_type == "citealp") {
-			if (engine == ENGINE_NATBIB_NUMERICAL) {
+			if (engine_type == ENGINE_TYPE_NUMERICAL) {
 				label += wrapCitation(*it, citenum, for_xhtml) + sep_str;
 			} else {
 				label += wrapCitation(*it, author + ", " + year, for_xhtml) + sep_str;
@@ -380,13 +381,13 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 		//  authors_last <before> year, <after>)
 		else if (cite_type == "citealt") {
 			switch (engine) {
-			case ENGINE_NATBIB_AUTHORYEAR:
-				label += author + ' ' + before_str +
-					wrapCitation(*it, year, for_xhtml) + sep_str;
-				break;
-			case ENGINE_NATBIB_NUMERICAL:
-				label += author + ' ' + before_str + '#' + 
-					wrapCitation(*it, citenum, for_xhtml) + sep_str;
+			case ENGINE_NATBIB:
+				if (engine_type == ENGINE_TYPE_AUTHORYEAR)
+					label += author + ' ' + before_str +
+						wrapCitation(*it, year, for_xhtml) + sep_str;
+				else
+					label += author + ' ' + before_str + '#' +
+						wrapCitation(*it, citenum, for_xhtml) + sep_str;
 				break;
 			case ENGINE_JURABIB:
 				label += before_str +
@@ -416,7 +417,8 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 			label.insert(label.size() - 1, after_str);
 		} else {
 			bool const add =
-				!(engine == ENGINE_NATBIB_NUMERICAL &&
+				!(engine == ENGINE_NATBIB &&
+				  engine_type == ENGINE_TYPE_NUMERICAL &&
 				  (cite_type == "citeauthor" ||
 				   cite_type == "citeyear"));
 			if (add)
@@ -567,10 +569,11 @@ void InsetCitation::forToc(docstring & os, size_t) const
 void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 {
 	CiteEngine cite_engine = buffer().params().citeEngine();
+	CiteEngineType cite_engine_type = buffer().params().citeEngineType();
 	BiblioInfo const & bi = buffer().masterBibInfo();
 	// FIXME UNICODE
 	docstring const cite_str = from_utf8(
-		asValidLatexCommand(getCmdName(), cite_engine));
+		asValidLatexCommand(getCmdName(), cite_engine, cite_engine_type));
 
 	if (runparams.inulemcmd)
 		os << "\\mbox{";
@@ -600,8 +603,7 @@ void InsetCitation::validate(LaTeXFeatures & features) const
 	switch (features.bufferParams().citeEngine()) {
 	case ENGINE_BASIC:
 		break;
-	case ENGINE_NATBIB_AUTHORYEAR:
-	case ENGINE_NATBIB_NUMERICAL:
+	case ENGINE_NATBIB:
 		features.require("natbib");
 		break;
 	case ENGINE_JURABIB:

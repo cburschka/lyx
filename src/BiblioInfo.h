@@ -29,7 +29,7 @@ class Buffer;
 
 /// FIXME: To Citation.cpp?
 /// Returns a vector of available Citation styles.
-std::vector<CiteStyle> citeStyles(CiteEngine);
+std::vector<CiteStyle> citeStyles(CiteEngine, CiteEngineType);
 /// \param latex_str a LaTeX command, "cite", "Citep*", etc
 CitationStyle citationStyleFromString(std::string const & latex_str);
 /// the other way round

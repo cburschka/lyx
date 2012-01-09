@@ -409,6 +409,13 @@ public:
 	///
 	void setCiteEngine(CiteEngine const);
 
+	/// the type of cite engine (authoryear or numerical)
+	CiteEngineType const & citeEngineType() const
+		{ return cite_engine_type_; }
+	/// set the cite engine type
+	void setCiteEngineType(CiteEngineType const & engine_type)
+		{ cite_engine_type_ = engine_type; }
+
 	/// the default BibTeX style file for the document
 	std::string biblio_style;
 
@@ -472,6 +479,8 @@ private:
 	mutable DefaultFlavorCache default_flavors_;
 	/// for use with natbib
 	CiteEngine cite_engine_;
+	/// the type of cite engine (authoryear or numerical)
+	CiteEngineType cite_engine_type_;
 	///
 	DocumentClass * doc_class_;
 	///

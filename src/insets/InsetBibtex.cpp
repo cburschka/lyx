@@ -936,9 +936,8 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
 	BiblioInfo const & bibinfo = buffer().masterBibInfo();
 	vector<docstring> const & cites = bibinfo.citedEntries();
-	CiteEngine const engine = buffer().params().citeEngine();
-	bool const numbers =
-		(engine == ENGINE_BASIC || engine == ENGINE_NATBIB_NUMERICAL);
+	CiteEngineType const engine_type = buffer().params().citeEngineType();
+	bool const numbers = (engine_type == ENGINE_TYPE_NUMERICAL);
 
 	docstring reflabel = from_ascii("References");
 	Language const * l = buffer().params().language;

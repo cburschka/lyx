@@ -1132,6 +1132,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 	// biblio
 	biblioModule = new UiWidget<Ui::BiblioUi>;
+	connect(biblioModule->citeDefaultRB, SIGNAL(toggled(bool)),
+		this, SLOT(setNumerical(bool)));
+	connect(biblioModule->citeJurabibRB, SIGNAL(toggled(bool)),
+		this, SLOT(setAuthorYear(bool)));
 	connect(biblioModule->citeNatbibRB, SIGNAL(toggled(bool)),
 		biblioModule->citationStyleL, SLOT(setEnabled(bool)));
 	connect(biblioModule->citeNatbibRB, SIGNAL(toggled(bool)),
@@ -2045,6 +2049,22 @@ void GuiDocument::bibtexChanged(int n)
 }
 
 
+void GuiDocument::setAuthorYear(bool authoryear)
+{
+	if (authoryear)
+		biblioModule->citeStyleCO->setCurrentIndex(0);
+	biblioChanged();
+}
+
+
+void GuiDocument::setNumerical(bool numerical)
+{
+	if (numerical)
+		biblioModule->citeStyleCO->setCurrentIndex(1);
+	biblioChanged();
+}
+
+
 namespace {
 	// FIXME unicode
 	// both of these should take a vector<docstring>
@@ -2279,16 +2299,15 @@ void GuiDocument::applyView()
 	// biblio
 	bp_.setCiteEngine(ENGINE_BASIC);
 
-	if (biblioModule->citeNatbibRB->isChecked()) {
-		bool const use_numerical_citations =
-			biblioModule->citeStyleCO->currentIndex();
-		if (use_numerical_citations)
-			bp_.setCiteEngine(ENGINE_NATBIB_NUMERICAL);
-		else
-			bp_.setCiteEngine(ENGINE_NATBIB_AUTHORYEAR);
-
-	} else if (biblioModule->citeJurabibRB->isChecked())
+	if (biblioModule->citeNatbibRB->isChecked())
+		bp_.setCiteEngine(ENGINE_NATBIB);
+	else if (biblioModule->citeJurabibRB->isChecked())
 		bp_.setCiteEngine(ENGINE_JURABIB);
+
+	if (biblioModule->citeStyleCO->currentIndex())
+		bp_.setCiteEngineType(ENGINE_TYPE_NUMERICAL);
+	else
+		bp_.setCiteEngineType(ENGINE_TYPE_AUTHORYEAR);
 
 	bp_.use_bibtopic =
 		biblioModule->bibtopicCB->isChecked();
@@ -2692,11 +2711,10 @@ void GuiDocument::paramsToDialog()
 		bp_.citeEngine() == ENGINE_BASIC);
 
 	biblioModule->citeNatbibRB->setChecked(
-		bp_.citeEngine() == ENGINE_NATBIB_NUMERICAL ||
-		bp_.citeEngine() == ENGINE_NATBIB_AUTHORYEAR);
+		bp_.citeEngine() == ENGINE_NATBIB);
 
 	biblioModule->citeStyleCO->setCurrentIndex(
-		bp_.citeEngine() == ENGINE_NATBIB_NUMERICAL);
+		bp_.citeEngineType() == ENGINE_TYPE_NUMERICAL);
 
 	biblioModule->citeJurabibRB->setChecked(
 		bp_.citeEngine() == ENGINE_JURABIB);

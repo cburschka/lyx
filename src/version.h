@@ -30,7 +30,7 @@ extern char const * const lyx_version_info;
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-#define LYX_FORMAT_LYX 423 // baum : \\use_package mathtools
+#define LYX_FORMAT_LYX 424 // jrioux : \cite_engine_type (authoryear|numerical)
 #define LYX_FORMAT_TEX2LYX 423
 
 #if LYX_FORMAT_FOR_TEX2LYX != LYX_FORMAT_FOR_LYX
