@@ -401,6 +401,7 @@ Preamble::Preamble() : one_language(true)
 	//h_boxbgcolor;
 	h_biblio_style            = "plain";
 	h_cite_engine             = "basic";
+	h_cite_engine_type        = "numerical";
 	h_defskip                 = "medskip";
 	//h_float_placement;
 	//h_fontcolor;
@@ -739,7 +740,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	else if (name == "natbib") {
 		h_biblio_style = "plainnat";
-		h_cite_engine = "natbib_authoryear";
+		h_cite_engine = "natbib";
+		h_cite_engine_type = "authoryear";
 		vector<string>::iterator it =
 			find(options.begin(), options.end(), "authoryear");
 		if (it != options.end())
@@ -747,7 +749,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 		else {
 			it = find(options.begin(), options.end(), "numbers");
 			if (it != options.end()) {
-				h_cite_engine = "natbib_numerical";
+				h_cite_engine_type = "numerical";
 				options.erase(it);
 			}
 		}
@@ -756,6 +758,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 	else if (name == "jurabib") {
 		h_biblio_style = "jurabib";
 		h_cite_engine = "jurabib";
+		h_cite_engine_type = "authoryear";
 	}
 
 	else if (name == "hyperref")
@@ -923,6 +926,7 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 	     it != h_use_packages.end(); it++)
 		os << "\\use_package " << it->first << ' ' << it->second << '\n';
 	os << "\\cite_engine " << h_cite_engine << '\n'
+	   << "\\cite_engine_type " << h_cite_engine_type << '\n'
 	   << "\\biblio_style " << h_biblio_style << "\n"
 	   << "\\use_bibtopic " << h_use_bibtopic << "\n"
 	   << "\\use_indices " << h_use_indices << "\n"

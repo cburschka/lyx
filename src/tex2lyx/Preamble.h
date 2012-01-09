@@ -83,6 +83,7 @@ private:
 	std::string h_biblio_style;
 	std::string h_boxbgcolor;
 	std::string h_cite_engine;
+	std::string h_cite_engine_type;
 	std::string h_defskip;
 	std::string h_float_placement;
 	std::string h_fontcolor;
