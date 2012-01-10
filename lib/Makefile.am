@@ -1517,7 +1517,6 @@ dist_scripts_PYTHON = \
 	scripts/include_bib.py \
 	scripts/layout2layout.py \
 	scripts/legacy_lyxpreview2ppm.py \
-	scripts/libreoffice2eps.py \
 	scripts/listerrors \
 	scripts/lyxpak.py \
 	scripts/lyxpreview2bitmap.py \

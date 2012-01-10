@@ -3281,7 +3281,6 @@ lib_scripts_files = Split('''
     layout2layout.py
     legacy_lyxpreview2ppm.py
     listerrors
-    libreoffice2eps.py
     lyxpak.py
     lyxpreview2bitmap.py
     lyxpreview_tools.py
