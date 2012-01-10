@@ -370,7 +370,7 @@ def legacy_conversion_step2(latex_file, dpi, output_format, skipMetrics = False)
 # pdflatex has been run and we have a pdf file. Proceed with gs.
 def legacy_conversion_step3(latex_file, dpi, output_format, dvips_failed, skipMetrics = False):
     # External programs used by the script.
-    gs      = find_exe_or_terminate(["gswin32c", "gs"])
+    gs      = find_exe_or_terminate(["gswin32c", "gswin64c", "gs"])
     pnmcrop = find_exe(["pnmcrop"])
 
     # Files to process
