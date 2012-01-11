@@ -112,7 +112,10 @@ SpellChecker::Result EnchantChecker::check(WordLangTuple const & word)
 {
 	enchant::Dict * m = d->speller(word.lang()->code());
 
-	if (!m || word.word().empty())
+	if (!m)
+		return NO_DICTIONARY;
+
+	if (word.word().empty())
 		return WORD_OK;
 
 	string utf8word = to_utf8(word.word());
