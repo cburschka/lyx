@@ -65,6 +65,7 @@ struct AspellChecker::Private
 
 	bool isValidDictionary(AspellConfig * config,
 			string const & lang, string const & variety);
+	int numDictionaries() const;
 	bool checkAspellData(AspellConfig * config,
 		string const & basepath, string const & datapath, string const & dictpath,
 		string const & lang, string const & variety);
@@ -313,6 +314,20 @@ AspellSpeller * AspellChecker::Private::speller(Language const * lang)
 }
 
 
+int AspellChecker::Private::numDictionaries() const
+{
+	int result = 0;
+	Spellers::const_iterator it = spellers_.begin();
+	Spellers::const_iterator et = spellers_.end();
+
+	for (; it != et; ++it) {
+		Speller aspell = it->second;
+		result += aspell.e_speller != 0;
+	}
+	return result;
+}
+
+
 string AspellChecker::Private::toAspellWord(docstring const & word) const
 {
 	size_t mpos;
@@ -406,7 +421,7 @@ SpellChecker::Result AspellChecker::check(WordLangTuple const & word)
 	AspellSpeller * m = d->speller(word.lang());
 
 	if (!m)
-		return WORD_OK;
+		return NO_DICTIONARY;
 
 	if (word.word().empty())
 		// MSVC compiled Aspell doesn't like it.
@@ -494,6 +509,12 @@ bool AspellChecker::hasDictionary(Language const * lang) const
 }
 
 
+int AspellChecker::numDictionaries() const
+{
+	return d->numDictionaries();
+}
+	
+	
 docstring const AspellChecker::error()
 {
 	Spellers::iterator it = d->spellers_.begin();

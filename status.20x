@@ -65,6 +65,11 @@ What's new
 
 - Display some commands from mathtools.sty natively (bug 7949).
 
+- Add the directory /usr/share/myspell as default location for dictionary
+  lookup of hunspell spell checker backend (a common location on linux).
+  Detect value change of preferences path to hunspell dictionaries
+  to avoid the need for a restart.  This is related to bug 7884.
+
 
 * DOCUMENTATION AND LOCALIZATION
 
@@ -157,6 +162,8 @@ What's new
 - Correctly display and handle the math commands \pod and \mod (bug 7962).
 
 - Fix tabbar visibility in fullscreen mode when opening/closing files (bug 7963).
+
+- Show a message box if the current spell checker has no dictionaries (bug 7884).
 
 
 * DOCUMENTATION AND LOCALIZATION

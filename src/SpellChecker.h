@@ -42,7 +42,9 @@ public:
 		/// number of other ignored "word"
 		IGNORED_WORD,
 		/// number of personal dictionary "word"
-		LEARNED_WORD
+		LEARNED_WORD,
+		/// missing dictionary for language
+		NO_DICTIONARY
 	};
 
 	virtual ~SpellChecker() {}
@@ -51,6 +53,7 @@ public:
 	static bool misspelled(Result res) {
 		return res != WORD_OK
 			&& res != IGNORED_WORD
+			&& res != NO_DICTIONARY
 			&& res != LEARNED_WORD; }
 
 	/// check the given word of the given lang code and return the result
@@ -71,6 +74,9 @@ public:
 	/// check if dictionary exists
 	virtual bool hasDictionary(Language const *) const = 0;
 
+	/// how many valid dictionaries were found
+	virtual int numDictionaries() const = 0;
+	
 	/// if speller can spell check whole paragraph return true
 	virtual bool canCheckParagraph() const { return false; }
 

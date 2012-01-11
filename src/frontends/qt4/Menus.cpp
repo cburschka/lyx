@@ -808,6 +808,9 @@ void MenuDefinition::expandSpellingSuggestions(BufferView const * bv)
 					FuncRequest(LFUN_SPELLING_REMOVE, arg)));
 		}
 		break;
+	case SpellChecker::NO_DICTIONARY:
+		LYXERR(Debug::GUI, "No dictionary for language " + from_ascii(wl.lang()->lang()));
+		// FALLTHROUGH
 	case SpellChecker::WORD_OK:
 	case SpellChecker::COMPOUND_WORD:
 	case SpellChecker::ROOT_FOUND:
