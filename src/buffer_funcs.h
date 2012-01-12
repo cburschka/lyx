@@ -46,13 +46,6 @@ Buffer * newUnnamedFile(support::FileName const & path,
 /// file was already loaded it just returns the associated buffer.
 Buffer * loadIfNeeded(support::FileName const & fname);
 
-/// Count the number of words in the text between these two iterators
-int countWords(DocIterator const & from, DocIterator const & to,
-		bool skipNoOutput = true);
-
-/// Count the number of chars in the text between these two iterators
-int countChars(DocIterator const & from, DocIterator const & to, bool with_blanks);
-
 } // namespace lyx
 
 #endif // BUFFER_FUNCS_H
