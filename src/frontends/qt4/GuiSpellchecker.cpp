@@ -59,21 +59,22 @@ namespace frontend {
 
 struct SpellcheckerWidget::Private
 {
-	Private(SpellcheckerWidget * parent, DockView * dv)
-		: p(parent), dv_(dv), incheck_(false), wrap_around_(false) {}
+	Private(SpellcheckerWidget * parent, DockView * dv, GuiView * gv)
+		: p(parent), dv_(dv), gv_(gv), incheck_(false), wrap_around_(false) {}
 	/// update from controller
 	void updateSuggestions(docstring_list & words);
 	/// move to next position after current word
 	void forward();
 	/// check text until next misspelled/unknown word
 	void check();
-	///
+	/// close the spell checker dialog
 	void hide() const;
-	///
+	/// make/restore a selection between from and to
 	void setSelection(DocIterator const & from, DocIterator const & to) const;
-	///
+	/// if no selection was checked:
+	/// ask the user if the check should start over
 	bool continueFromBeginning();
-	///
+	/// set the given language in language chooser
 	void setLanguage(Language const * lang);
 	/// test and set guard flag
 	bool inCheck() {
@@ -90,26 +91,37 @@ struct SpellcheckerWidget::Private
 			end_ = start_;
 		}
 	}
+	/// test for existing association with a document buffer
+	/// and test for already active check
+	bool disabled() {
+		return gv_->documentBufferView() == 0 || inCheck();
+	}
+	/// the cursor position of the buffer view
+	DocIterator const cursor() const;
+	/// status checks
 	bool isCurrentBuffer(DocIterator const & cursor) const;
 	bool isWrapAround(DocIterator const & cursor) const;
 	bool isWrapAround() const { return wrap_around_; }
-	///
 	bool atLastPos(DocIterator const & cursor) const;
+	/// validate the cached doc iterators
+	/// The spell checker dialog is not modal.
+	/// The user may change the buffer being checked and break the iterators.
+	void fixPositionsIfBroken();
 	///
 	Ui::SpellcheckerUi ui;
 	///
 	SpellcheckerWidget * p;
 	///
-	GuiView * gv_;
-	///
 	DockView * dv_;
+	/// 
+	GuiView * gv_;
 	/// current word being checked and lang code
 	WordLangTuple word_;
-	/// cursor position when spell checking starts
+	/// cursor position where spell checking starts
 	DocIterator start_;
 	/// range to spell check
 	/// for selection both are non-empty
-	/// after wrap around the start becomes the end
+	/// after wrap around the start position becomes the end
 	DocIterator begin_;
 	DocIterator end_;
 	///
@@ -120,10 +132,9 @@ struct SpellcheckerWidget::Private
 
 
 SpellcheckerWidget::SpellcheckerWidget(GuiView * gv, DockView * dv, QWidget * parent)
-	: QTabWidget(parent), d(new Private(this, dv))
+	: QTabWidget(parent), d(new Private(this, dv, gv))
 {
 	d->ui.setupUi(this);
-	d->gv_ = gv;
 
 	connect(d->ui.suggestionsLW, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
 		this, SLOT(on_replacePB_clicked()));
@@ -219,14 +230,19 @@ void SpellcheckerWidget::updateView()
 	}
 }
 
+DocIterator const SpellcheckerWidget::Private::cursor() const
+{
+	BufferView * bv = gv_->documentBufferView();
+	return bv ? bv->cursor() : DocIterator();
+}
 
 bool SpellcheckerWidget::Private::continueFromBeginning()
 {
-	BufferView * bv = gv_->documentBufferView();
-	DocIterator const current_ = bv->cursor();
+	DocIterator const current_ = cursor();
 	if (isCurrentBuffer(current_) && !begin_.empty()) {
 		// selection was checked
 		// start over from beginning makes no sense
+		fixPositionsIfBroken();
 		hide();
 		if (current_ == start_) {
 			// no errors found... tell the user the good news
@@ -244,6 +260,7 @@ bool SpellcheckerWidget::Private::continueFromBeginning()
 			"continue from the beginning?"),
 		QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
 	if (answer == QMessageBox::No) {
+		fixPositionsIfBroken();
 		hide();
 		return false;
 	}
@@ -271,6 +288,26 @@ bool SpellcheckerWidget::Private::isWrapAround(DocIterator const & cursor) const
 	return wrap_around_ && isCurrentBuffer(cursor) && start_ < cursor;
 }
 
+void SpellcheckerWidget::Private::fixPositionsIfBroken()
+{
+	DocIterator const current_ = cursor();
+	if (!isCurrentBuffer(current_)) {
+		LYXERR(Debug::GUI, "wrong document of current cursor position " << start_);
+		start_ = current_;
+		begin_ = DocIterator();
+		end_   = DocIterator();
+	}
+	if (start_.fixIfBroken())
+		LYXERR(Debug::GUI, "broken start position fixed " << start_);
+	if (begin_.fixIfBroken()) {
+		LYXERR(Debug::GUI, "broken selection begin position fixed " << begin_);
+		begin_ = DocIterator();
+		end_   = DocIterator();
+	}
+	if (end_.fixIfBroken())
+		LYXERR(Debug::GUI, "broken selection end position fixed " << end_);
+}
+
 void SpellcheckerWidget::Private::hide() const
 {
 	BufferView * bv = gv_->documentBufferView();
@@ -284,8 +321,6 @@ void SpellcheckerWidget::Private::hide() const
 			// restore cursor position
 			bvcur.setCursor(start_);
 			bvcur.clearSelection();
-			// spell checker may have started at (invalid) empty paragraph at end
-			bvcur.fixIfBroken();
 			bv->processUpdateFlags(Update::Force | Update::FitCursor);	
 		}
 	}
@@ -296,9 +331,6 @@ void SpellcheckerWidget::Private::setSelection(
 {
 	BufferView * bv = gv_->documentBufferView();
 	DocIterator end = to;
-
-	// spell checker corrections may have invalidated the end
-	end.fixIfBroken();
 
 	if (from.pit() != end.pit()) {
 		// there are multiple paragraphs in selection 
@@ -319,21 +351,21 @@ void SpellcheckerWidget::Private::setSelection(
 
 void SpellcheckerWidget::Private::forward()
 {
-	BufferView * bv = gv_->documentBufferView();
-	DocIterator const from = bv->cursor();
+	DocIterator const from = cursor();
 
 	dispatch(FuncRequest(LFUN_ESCAPE));
-	if (!atLastPos(bv->cursor())) {
+	fixPositionsIfBroken();
+	if (!atLastPos(cursor())) {
 		dispatch(FuncRequest(LFUN_CHAR_FORWARD));
 	}
-	if (atLastPos(bv->cursor())) {
+	if (atLastPos(cursor())) {
 		return;
 	}
-	if (from == bv->cursor()) {
+	if (from == cursor()) {
 		//FIXME we must be at the end of a cell
 		dispatch(FuncRequest(LFUN_CHAR_FORWARD));
  	}
-	if (isWrapAround(bv->cursor())) {
+	if (isWrapAround(cursor())) {
 		hide();
 	}
 }
@@ -370,7 +402,7 @@ bool SpellcheckerWidget::initialiseParams(std::string const &)
 void SpellcheckerWidget::on_ignoreAllPB_clicked()
 {
 	/// ignore all occurrences of word
-	if (d->inCheck())
+	if (d->disabled())
 		return;
 	LYXERR(Debug::GUI, "Spellchecker: ignore all button");
 	if (d->word_.lang() && !d->word_.word().empty())
@@ -384,7 +416,7 @@ void SpellcheckerWidget::on_ignoreAllPB_clicked()
 void SpellcheckerWidget::on_addPB_clicked()
 {
 	/// insert word in personal dictionary
-	if (d->inCheck())
+	if (d->disabled())
 		return;
 	LYXERR(Debug::GUI, "Spellchecker: add word button");
 	theSpellChecker()->insert(d->word_);
@@ -397,7 +429,7 @@ void SpellcheckerWidget::on_addPB_clicked()
 void SpellcheckerWidget::on_ignorePB_clicked()
 {
 	/// ignore this occurrence of word
-	if (d->inCheck())
+	if (d->disabled())
 		return;
 	LYXERR(Debug::GUI, "Spellchecker: ignore button");
 	d->forward();
@@ -408,7 +440,7 @@ void SpellcheckerWidget::on_ignorePB_clicked()
 
 void SpellcheckerWidget::on_findNextPB_clicked()
 {
-	if (d->inCheck())
+	if (d->disabled())
 		return;
 	docstring const textfield = qstring_to_ucs4(d->ui.wordED->text());
 	docstring const datastring = find2string(textfield,
@@ -421,7 +453,7 @@ void SpellcheckerWidget::on_findNextPB_clicked()
 
 void SpellcheckerWidget::on_replacePB_clicked()
 {
-	if (d->inCheck())
+	if (d->disabled())
 		return;
 	docstring const textfield = qstring_to_ucs4(d->ui.wordED->text());
 	docstring const replacement = qstring_to_ucs4(d->ui.replaceCO->currentText());
@@ -438,7 +470,7 @@ void SpellcheckerWidget::on_replacePB_clicked()
 
 void SpellcheckerWidget::on_replaceAllPB_clicked()
 {
-	if (d->inCheck())
+	if (d->disabled())
 		return;
 	docstring const textfield = qstring_to_ucs4(d->ui.wordED->text());
 	docstring const replacement = qstring_to_ucs4(d->ui.replaceCO->currentText());
@@ -485,6 +517,9 @@ void SpellcheckerWidget::Private::check()
 	BufferView * bv = gv_->documentBufferView();
 	if (!bv || bv->buffer().text().empty())
 		return;
+
+	fixPositionsIfBroken();
+	
 	SpellChecker * speller = theSpellChecker();
 	if (speller && !speller->hasDictionary(bv->buffer().language())) {
 		int dsize = speller->numDictionaries();
