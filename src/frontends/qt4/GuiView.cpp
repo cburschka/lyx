@@ -3109,10 +3109,16 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 		gv_->message(msg);
 	}
 	GuiViewPrivate::busyBuffers.insert(used_buffer);
+  Buffer * cloned_buffer = used_buffer->cloneFromMaster();
+  if (!cloned_buffer) {
+      Alert::error(_("Export Error"), 
+                   _("Error cloning the Buffer."));
+      return false;
+  }
 	QFuture<Buffer::ExportStatus> f = QtConcurrent::run(
 				asyncFunc,
 				used_buffer,
-				used_buffer->cloneFromMaster(),
+				cloned_buffer,
 				format);
 	setPreviewFuture(f);
 	last_export_format = used_buffer->params().bufferFormat();
