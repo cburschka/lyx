@@ -1016,16 +1016,6 @@ FileName const findtexfile(string const & fil, string const & /*format*/)
 }
 
 
-void readBB_lyxerrMessage(FileName const & file, bool & zipped,
-	string const & message)
-{
-	LYXERR(Debug::GRAPHICS, "[readBB_from_PSFile] " << message);
-	// FIXME: Why is this func deleting a file? (Lgb)
-	if (zipped)
-		file.removeFile();
-}
-
-
 string const readBB_from_PSFile(FileName const & file)
 {
 	// in a (e)ps-file it's an entry like %%BoundingBox:23 45 321 345
@@ -1040,7 +1030,9 @@ string const readBB_from_PSFile(FileName const & file)
 	string const format = file_.guessFormatFromContents();
 
 	if (format != "eps" && format != "ps") {
-		readBB_lyxerrMessage(file_, zipped,"no(e)ps-format");
+		LYXERR(Debug::GRAPHICS, "[readBB_from_PSFile] no(e)ps-format");
+		if (zipped)
+			file_.removeFile();
 		return string();
 	}
 
@@ -1060,11 +1052,15 @@ string const readBB_from_PSFile(FileName const & file)
 			os << what.str(1) << ' ' << what.str(2) << ' '
 			   << what.str(3) << ' ' << what.str(4);
 			string const bb = os.str();
-			readBB_lyxerrMessage(file_, zipped, bb);
+			LYXERR(Debug::GRAPHICS, "[readBB_from_PSFile] " << bb);
+			if (zipped)
+				file_.removeFile();
 			return bb;
 		}
 	}
-	readBB_lyxerrMessage(file_, zipped, "no bb found");
+	LYXERR(Debug::GRAPHICS, "[readBB_from_PSFile] no bb found");
+	if (zipped)
+		file_.removeFile();
 	return string();
 }
 

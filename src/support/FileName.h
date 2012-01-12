@@ -290,8 +290,6 @@ public:
 	std::string
 	mangledFileName(std::string const & dir = empty_string()) const;
 
-	/// \return true if the file is compressed.
-	bool isZipped() const;
 	/// \return the absolute file name without its .gz, .z, .Z extension
 	std::string unzippedFileName() const;
 
@@ -299,10 +297,6 @@ private:
 	/// Records whether we should save (or export) the filename as a relative
 	/// or absolute path.
 	bool save_abs_path_;
-	/// Cache for isZipped() because zippedFile() is expensive
-	mutable bool zipped_;
-	/// Is zipped_ valid?
-	mutable bool zipped_valid_;
 };
 
 

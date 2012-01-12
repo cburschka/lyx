@@ -1054,12 +1054,12 @@ DocFileName::DocFileName()
 
 
 DocFileName::DocFileName(string const & abs_filename, bool save_abs)
-	: FileName(abs_filename), save_abs_path_(save_abs), zipped_valid_(false)
+	: FileName(abs_filename), save_abs_path_(save_abs)
 {}
 
 
 DocFileName::DocFileName(FileName const & abs_filename, bool save_abs)
-	: FileName(abs_filename), save_abs_path_(save_abs), zipped_valid_(false)
+	: FileName(abs_filename), save_abs_path_(save_abs)
 {}
 
 
@@ -1070,14 +1070,12 @@ void DocFileName::set(string const & name, string const & buffer_path)
 		FileName::set(name);
 	else
 		FileName::set(makeAbsPath(name, buffer_path).absFileName());
-	zipped_valid_ = false;
 }
 
 
 void DocFileName::erase()
 {
 	FileName::erase();
-	zipped_valid_ = false;
 }
 
 
@@ -1153,16 +1151,6 @@ string DocFileName::mangledFileName(string const & dir) const
 
 	mangledNames[absFileName()] = mname;
 	return mname;
-}
-
-
-bool DocFileName::isZipped() const
-{
-	if (!zipped_valid_) {
-		zipped_ = isZippedFile();
-		zipped_valid_ = true;
-	}
-	return zipped_;
 }
 
 
