@@ -4427,6 +4427,8 @@ Buffer::ReadStatus Buffer::reload()
 	d->filename.refresh();
 	docstring const disp_fn = makeDisplayPath(d->filename.absFileName());
 
+	// clear parent. this will get reset if need be.
+	d->setParent(0);
 	ReadStatus const status = loadLyXFile();
 	if (status == ReadSuccess) {
 		updateBuffer();

@@ -97,6 +97,8 @@ What's new
 
 - Fix crash when using undo in a paragraph with layout Bibliography (bug 7111).
 
+- Fix crash when renaming a child buffer.
+
 - Replace current selection when pasting (bug 8027).
 
 - Make sure that undo restores environment depth correctly (bug 8159).
@@ -108,7 +110,8 @@ What's new
 - Fix problem with configure.py when the user profile path on Windows
   contains non-ascii characters (bug 8254).
 
-- remove annoying startup debug message.
+- Remove annoying startup debug message.
+
 
 * DOCUMENTATION AND LOCALIZATION
 
