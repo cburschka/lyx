@@ -876,6 +876,7 @@ docstring const i18npreamble(Language const * lang, Encoding const & enc,
 	// tex2lyx does not have getMessages()
 	LASSERT(false, /**/);
 	(void)enc;
+	(void)unicode;
 #else
 	string const langenc = lang->encoding()->iconvName();
 	string const texenc = lang->encoding()->latexName();
