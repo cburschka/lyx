@@ -761,8 +761,10 @@ void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 void GuiWorkArea::focusInEvent(QFocusEvent * e)
 {
 	LYXERR(Debug::DEBUG, "GuiWorkArea::focusInEvent(): " << this << endl);
-	if (d->lyx_view_->currentWorkArea() != this)
+	if (d->lyx_view_->currentWorkArea() != this) {
 		d->lyx_view_->setCurrentWorkArea(this);
+		d->lyx_view_->currentWorkArea()->bufferView().buffer().updateBuffer();
+	}
 
 	startBlinkingCursor();
 	QAbstractScrollArea::focusInEvent(e);
