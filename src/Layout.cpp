@@ -862,7 +862,8 @@ void Layout::readSpacing(Lexer & lex)
 namespace {
 
 docstring const i18npreamble(Language const * lang, Encoding const & enc,
-			     docstring const & templ, bool const polyglossia)
+			     docstring const & templ, bool const polyglossia,
+			     bool const unicode)
 {
 	if (templ.empty())
 		return templ;
@@ -890,7 +891,7 @@ docstring const i18npreamble(Language const * lang, Encoding const & enc,
 	while (regex_search(preamble, sub, reg)) {
 		string const key = sub.str(1);
 		string translated = to_utf8(lang->translateLayout(key));
-		if (langenc != bufenc)
+		if (!unicode && langenc != bufenc)
 			translated = "\\inputencoding{" + texenc + "}"
 				+ s1 + langenc + s2 + translated
 				+ s1 + bufenc + s2;
@@ -904,16 +905,18 @@ docstring const i18npreamble(Language const * lang, Encoding const & enc,
 
 
 docstring const Layout::langpreamble(Language const * lang,
-			Encoding const & enc, bool const polyglossia) const
+			Encoding const & enc, bool const polyglossia,
+			bool const unicode) const
 {
-	return i18npreamble(lang, enc, langpreamble_, polyglossia);
+	return i18npreamble(lang, enc, langpreamble_, polyglossia, unicode);
 }
 
 
 docstring const Layout::babelpreamble(Language const * lang,
-			Encoding const & enc, bool const polyglossia) const
+			Encoding const & enc, bool const polyglossia,
+			bool const unicode) const
 {
-	return i18npreamble(lang, enc, babelpreamble_, polyglossia);
+	return i18npreamble(lang, enc, babelpreamble_, polyglossia, unicode);
 }
 
 
