@@ -892,10 +892,18 @@ docstring const i18npreamble(Language const * lang, Encoding const & enc,
 	smatch sub;
 	while (regex_search(preamble, sub, reg)) {
 		string const key = sub.str(1);
-		string translated = to_utf8(lang->translateLayout(key));
-		if (langenc != bufenc)
-			translated = "\\inputencoding{" + texenc + "}"
-				+ s1 + langenc + s2 + translated
+		docstring const name = lang->translateLayout(key);
+		// Check whether name can be encoded in the buffer encoding
+		bool encodable = true;
+		for (size_t i = 0; i < name.size(); ++i) {
+			if (enc.latexChar(name[i], true)[0] != name[i]) {
+				encodable = false;
+				break;
+			}
+		}
+		string const translated = encodable ? to_utf8(name)
+			: "\\inputencoding{" + texenc + "}"
+				+ s1 + langenc + s2 + to_utf8(name)
 				+ s1 + bufenc + s2;
 		preamble = subst(preamble, sub.str(), translated);
 	}

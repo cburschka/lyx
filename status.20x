@@ -125,6 +125,9 @@ What's new
 
 - Fix dvips paper size arguments for presentations (beamer etc) (bug 7013).
 
+- Do not use \inputencoding for translated names of theorem-like environments
+  if they can be actually encoded in the chosen document encoding (bug 7800).
+
 
 * TEX2LYX
 

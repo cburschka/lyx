@@ -1126,6 +1126,15 @@ docstring const getFloatI18nPreamble(docstring const & type,
 			docstring const & name, Language const * lang,
 			Encoding const & enc, bool const polyglossia)
 {
+	// Check whether name can be encoded in the buffer encoding
+	bool encodable = true;
+	for (size_t i = 0; i < name.size(); ++i) {
+		if (enc.latexChar(name[i], true)[0] != name[i]) {
+			encodable = false;
+			break;
+		}
+	}
+
 	docstring const language = polyglossia ? from_ascii(lang->polyglossia())
 					       : from_ascii(lang->babel());
 	docstring const langenc = from_ascii(lang->encoding()->iconvName());
@@ -1133,7 +1142,7 @@ docstring const getFloatI18nPreamble(docstring const & type,
 	docstring const bufenc = from_ascii(enc.iconvName());
 	docstring const s1 = docstring(1, 0xF0000);
 	docstring const s2 = docstring(1, 0xF0001);
-	docstring const translated = (langenc == bufenc) ? name
+	docstring const translated = encodable ? name
 		: from_ascii("\\inputencoding{") + texenc + from_ascii("}")
 			+ s1 + langenc + s2 + name + s1 + bufenc + s2;
 
