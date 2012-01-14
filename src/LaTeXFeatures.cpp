@@ -1153,17 +1153,14 @@ docstring const LaTeXFeatures::getTClassHTMLStyles() const
 namespace {
 docstring const getFloatI18nPreamble(docstring const & type,
 			docstring const & name, Language const * lang,
-			Encoding const & enc, bool const polyglossia,
-			bool const unicode)
+			Encoding const & enc, bool const polyglossia)
 {
 	// Check whether name can be encoded in the buffer encoding
 	bool encodable = true;
-	if (!unicode) {
-		for (size_t i = 0; i < name.size(); ++i) {
-			if (enc.latexChar(name[i], true)[0] != name[i]) {
-				encodable = false;
-				break;
-			}
+	for (size_t i = 0; i < name.size(); ++i) {
+		if (enc.latexChar(name[i], true)[0] != name[i]) {
+			encodable = false;
+			break;
 		}
 	}
 
@@ -1201,21 +1198,18 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel, bool use_po
 		// language dependent commands (once per document)
 		snippets.insert(tclass[*cit].langpreamble(buffer().language(),
 						buffer().params().encoding(),
-						use_polyglossia,
-						runparams().isFullUnicode()));
+						use_polyglossia));
 		// commands for language changing (for multilanguage documents)
 		if ((use_babel || use_polyglossia) && !UsedLanguages_.empty()) {
 			snippets.insert(tclass[*cit].babelpreamble(
 						buffer().language(),
 						buffer().params().encoding(),
-						use_polyglossia,
-						runparams().isFullUnicode()));
+						use_polyglossia));
 			for (lang_it lit = lbeg; lit != lend; ++lit)
 				snippets.insert(tclass[*cit].babelpreamble(
 						*lit,
 						buffer().params().encoding(),
-						use_polyglossia,
-						runparams().isFullUnicode()));
+						use_polyglossia));
 		}
 	}
 	if ((use_babel || use_polyglossia) && !UsedLanguages_.empty()) {
@@ -1236,8 +1230,7 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel, bool use_po
 				snippets.insert(getFloatI18nPreamble(
 						type, name, buffer().language(),
 						buffer().params().encoding(),
-						use_polyglossia,
-						runparams().isFullUnicode()));
+						use_polyglossia));
 			for (lang_it lit = lbeg; lit != lend; ++lit) {
 				string const code = (*lit)->code();
 				name = (*lit)->translateLayout(fl.name());
@@ -1252,8 +1245,7 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel, bool use_po
 					snippets.insert(getFloatI18nPreamble(
 						type, name, *lit,
 						buffer().params().encoding(),
-						use_polyglossia,
-						runparams().isFullUnicode()));
+						use_polyglossia));
 			}
 		}
 	}

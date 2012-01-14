@@ -862,8 +862,7 @@ void Layout::readSpacing(Lexer & lex)
 namespace {
 
 docstring const i18npreamble(Language const * lang, Encoding const & enc,
-			     docstring const & templ, bool const polyglossia,
-			     bool const unicode)
+			     docstring const & templ, bool const polyglossia)
 {
 	if (templ.empty())
 		return templ;
@@ -876,7 +875,6 @@ docstring const i18npreamble(Language const * lang, Encoding const & enc,
 	// tex2lyx does not have getMessages()
 	LASSERT(false, /**/);
 	(void)enc;
-	(void)unicode;
 #else
 	string const langenc = lang->encoding()->iconvName();
 	string const texenc = lang->encoding()->latexName();
@@ -894,12 +892,10 @@ docstring const i18npreamble(Language const * lang, Encoding const & enc,
 		docstring const name = lang->translateLayout(key);
 		// Check whether name can be encoded in the buffer encoding
 		bool encodable = true;
-		if (!unicode) {
-			for (size_t i = 0; i < name.size(); ++i) {
-				if (enc.latexChar(name[i], true)[0] != name[i]) {
-					encodable = false;
-					break;
-				}
+		for (size_t i = 0; i < name.size(); ++i) {
+			if (enc.latexChar(name[i], true)[0] != name[i]) {
+				encodable = false;
+				break;
 			}
 		}
 		string const translated = encodable ? to_utf8(name)
@@ -916,18 +912,16 @@ docstring const i18npreamble(Language const * lang, Encoding const & enc,
 
 
 docstring const Layout::langpreamble(Language const * lang,
-			Encoding const & enc, bool const polyglossia,
-			bool const unicode) const
+			Encoding const & enc, bool const polyglossia) const
 {
-	return i18npreamble(lang, enc, langpreamble_, polyglossia, unicode);
+	return i18npreamble(lang, enc, langpreamble_, polyglossia);
 }
 
 
 docstring const Layout::babelpreamble(Language const * lang,
-			Encoding const & enc, bool const polyglossia,
-			bool const unicode) const
+			Encoding const & enc, bool const polyglossia) const
 {
-	return i18npreamble(lang, enc, babelpreamble_, polyglossia, unicode);
+	return i18npreamble(lang, enc, babelpreamble_, polyglossia);
 }
 
 
