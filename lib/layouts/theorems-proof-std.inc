@@ -10,12 +10,10 @@ Style Proof
 			\normalfont\topsep6\p@\@plus6\p@\relax
 			\trivlist
 			\itemindent\parindent
-			\item[\hskip\labelsep
-					\scshape
-#1]\ignorespaces
-}{%
+			\item[\hskip\labelsep\scshape #1]\ignorespaces
+		}{%
 			\endtrivlist\@endpefalse
-}
+		}
 		\providecommand{\proofname}{Proof}
 		\fi
 	EndPreamble
