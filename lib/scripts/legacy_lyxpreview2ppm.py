@@ -334,7 +334,7 @@ def legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics, gs,
 def legacy_conversion_step2(latex_file, dpi, output_format, skipMetrics = False):
     # External programs used by the script.
     dvips   = find_exe_or_terminate(["dvips"], path)
-    gs      = find_exe_or_terminate(["gswin32c", "gs"], path)
+    gs      = find_exe_or_terminate(["gswin32c", "gswin64c", "gs"], path)
     pnmcrop = find_exe(["pnmcrop"], path)
 
     # Run the dvi file through dvips.
