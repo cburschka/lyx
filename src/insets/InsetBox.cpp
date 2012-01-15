@@ -547,7 +547,6 @@ string InsetBox::params2string(InsetBoxParams const & params)
 
 void InsetBox::string2params(string const & in, InsetBoxParams & params)
 {
-	params = InsetBoxParams(string());
 	if (in.empty())
 		return;
 
@@ -572,6 +571,7 @@ void InsetBox::string2params(string const & in, InsetBoxParams & params)
 					  "Expected arg 2 to be \"Box\"\n");
 	}
 
+	params = InsetBoxParams(string());
 	params.read(lex);
 }
 
