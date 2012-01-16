@@ -129,6 +129,8 @@ public:
 	/// of \param os. If \param shorten is true, then we will shorten
 	/// \param os to maxlen chars and replace the final three by "...,
 	/// if \param os is longer than maxlen chars.
+	/// if \param maxlen is passed as 0, then it is ignored. (In fact,
+	/// it is reset to the maximum value for size_t.)
 	void forToc(docstring & os, size_t maxlen, bool shorten = true) const;
 
 	/// insert a character at cursor position
