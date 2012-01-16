@@ -34,6 +34,11 @@ What's new
 
 - Speed up autosave a bit by not cloning child documents (bug 7923).
 
+- Don't use the first python binary in the PATH environment variable if
+  this is not a version 2.x binary, but try to find a suitable one.
+  Note that this mechanism triggers only if the binary is invoked exactly
+  as "python -tt", which is the way it is done internally.
+
 
 * TEX2LYX IMPROVEMENTS
 

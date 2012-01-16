@@ -100,8 +100,13 @@ ProgressInterface* ProgressInterface::instance()
 int Systemcall::startscript(Starttype how, string const & what,
 			    std::string const & path, bool /*process_events*/)
 {
-	string command =
-		to_filesystem8bit(from_utf8(latexEnvCmdPrefix(path))) + what;
+	string const python_call = "python -tt";
+	string command = to_filesystem8bit(from_utf8(latexEnvCmdPrefix(path)));
+
+	if (prefixIs(what, python_call))
+		command += os::python() + what.substr(python_call.length());
+	else
+		command += what;
 
 	if (how == DontWait) {
 		switch (os::shell()) {
@@ -162,9 +167,16 @@ string const parsecmd(string const & inputcmd, string & outfile)
 	bool in_single_quote = false;
 	bool in_double_quote = false;
 	bool escaped = false;
+	string const python_call = "python -tt";
 	string cmd;
+	int start = 0;
 
-	for (size_t i = 0; i < inputcmd.length(); ++i) {
+	if (prefixIs(inputcmd, python_call)) {
+		cmd = os::python();
+		start = python_call.length();
+	}
+
+	for (size_t i = start; i < inputcmd.length(); ++i) {
 		char c = inputcmd[i];
 		if (c == '\'') {
 			if (in_double_quote || escaped) {
