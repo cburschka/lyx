@@ -76,6 +76,9 @@ What's new
   Detect value change of preferences path to hunspell dictionaries
   to avoid the need for a restart.  This is related to bug 7884.
 
+- We now use the display string as a tooltip in the Outliner, if no
+  other tooltip is given.
+
 
 * DOCUMENTATION AND LOCALIZATION
 
