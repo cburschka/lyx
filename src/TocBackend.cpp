@@ -70,7 +70,7 @@ docstring const & TocItem::str() const
 
 docstring const & TocItem::tooltip() const
 {
-	return tooltip_;
+	return tooltip_.empty() ? str_ : tooltip_;
 }
 
 
