@@ -39,6 +39,7 @@ What's new
   Note that this mechanism triggers only if the binary is invoked exactly
   as "python -tt", which is the way it is done internally.
 
+- Allow redirecting stderr in converters (other than stdout).
 
 * TEX2LYX IMPROVEMENTS
 
