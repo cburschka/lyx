@@ -34,7 +34,7 @@ Qt4ConfigureOptions="${Qt4ConfigureOptions} -nomake examples -nomake demos -noma
 #Qt4ConfigureOptions="${Qt4ConfigureOptions} ${CARBON}"
 
 aspell_dictionaries="no"
-hunspell_dictionaries="no"
+hunspell_dictionaries="yes"
 
 aspell_deployment="yes"
 hunspell_deployment="yes"
@@ -197,6 +197,7 @@ HunSpellInstallDir=${HunSpellInstallDir:-"${LyxBuildDir}"/SpellChecker.lib}
 Qt4SourceDir=${QT4SOURCEDIR:-`dirname "${LyxSourceDir}"`/${Qt4SourceVersion}}
 Qt4BuildDir=${Qt4BuildDir:-"${LyxBuildDir}"/${Qt4BuildSubDir:-"qt4-build"}}
 DictionarySourceDir=${DICTIONARYDIR:-`dirname "${LyxSourceDir}"`/dictionaries}
+DmgBackground="${LyxSourceDir}"/development/MacOSX/dmg-background.png
 
 ASpellInstallHdr="${ASpellInstallDir}/include/aspell.h"
 HunSpellInstallHdr="${HunSpellInstallDir}/include/hunspell/hunspell.h"
@@ -226,7 +227,6 @@ QtLibraries="QtSvg QtXml QtGui QtNetwork QtCore"
 
 DMGNAME="${LyxBase}"
 DMGSIZE="550m"
-BACKGROUND="${LyxAppDir}.app/Contents/Resources/images/banner.png"
 
 # Check for existing SDKs
 SDKs=`echo /Developer/SDKs/MacOSX10*sdk`
@@ -538,6 +538,7 @@ deploy_qtlibs() {
 	test -f "${condir}/Resources/qt.conf" || cat - > "${condir}/Resources/qt.conf" <<-EOF
 [Paths]
 Plugins = PlugIns
+Translations = translations
 EOF
 	if [ ! -d "${condir}/PlugIns" ]; then
 		mkdir -p "${condir}/PlugIns"
@@ -583,6 +584,11 @@ EOF
 			"@executable_path/../${fwdir}/${version}${libnm}"\
 			"${target}"
 	done
+	if [ ! -d "${condir}/translations" ]; then
+		mkdir -p "${condir}/translations"
+	fi
+	echo Copy Qt translations to "${condir}/translations"
+	cp -p "${source}"/translations/qt_*.qm "${condir}/translations"
 }
 
 # -------------------------
@@ -646,8 +652,16 @@ copy_dictionaries() {
 }
 
 set_bundle_display_options() {
+	X_BOUNDS=$2
+	Y_BOUNDS=$3
+	Y_POSITION=$((Y_BOUNDS - 65))
+	Y_BOUNDS=$((Y_BOUNDS + 20))
+	LYX_X_POSITION=$((X_BOUNDS / 4))
+	LYX_Y_POSITION=$Y_POSITION
+	APP_X_POSITION=$((3 * X_BOUNDS / 4))
+	APP_Y_POSITION=$Y_POSITION
 	osascript <<-EOF
-    tell application "Finder"
+	tell application "Finder"
         set f to POSIX file ("${1}" as string) as alias
         tell folder f
             open
@@ -656,16 +670,16 @@ set_bundle_display_options() {
                 set statusbar visible to false
                 set current view to icon view
                 delay 1 -- sync
-                set the bounds to {20, 50, $2, $3}
+                set the bounds to {20, 50, $X_BOUNDS, $Y_BOUNDS}
             end tell
             delay 1 -- sync
             set icon size of the icon view options of container window to 64
             set arrangement of the icon view options of container window to not arranged
-            set position of item "${LyxName}.app" to {100,$4}
-            set position of item "Applications" to {280,$4}
+            set position of item "${LyxName}.app" to {$LYX_X_POSITION,$LYX_Y_POSITION}
+            set position of item "Applications" to {$APP_X_POSITION,$APP_Y_POSITION}
             set background picture of the icon view options\
 					of container window to file "background.png" of folder "Pictures"
-            set the bounds of the container window to {0, 0, $2, $3}
+            set the bounds of the container window to {0, 0, $X_BOUNDS, $Y_BOUNDS}
             update without registering applications
             delay 5 -- sync
             close
@@ -678,10 +692,9 @@ EOF
 make_dmg() {
 	cd "${1}"
 
-	BGSIZE=`file "$BACKGROUND" | awk -F , '/PNG/{print $2 }' | tr x ' '`
+	BGSIZE=`file "$DmgBackground" | awk -F , '/PNG/{print $2 }' | tr x ' '`
 	BG_W=`echo ${BGSIZE} | awk '{print $1 }'`
-	BG_H=`echo ${BGSIZE} | awk '{h = $2 + 20 ;print h }'`
-	BG_Y=`echo ${BGSIZE} | awk '{y = $2 - 60 ;print y }'`
+	BG_H=`echo ${BGSIZE} | awk '{print $2 }'`
 
 	rm -f "${DMGNAME}.sparseimage" "${DMGNAME}.dmg"
 
@@ -702,10 +715,11 @@ make_dmg() {
 
 	# copy in background image
 	mkdir -p "${VOLUME}/Pictures"
-	cp "${BACKGROUND}" "${VOLUME}/Pictures/background.png"
+	cp "${DmgBackground}" "${VOLUME}/Pictures/background.png"
 	# symlink applications
 	ln -s /Applications/ "${VOLUME}"/Applications
-	set_bundle_display_options "${VOLUME}" ${BG_W} ${BG_H} ${BG_Y}
+	set_bundle_display_options "${VOLUME}" ${BG_W} ${BG_H}
+	/Developer/Tools/SetFile -a C "${VOLUME}"
 	mv "${VOLUME}/Pictures" "${VOLUME}/.Pictures"
 
 	# Unmount the disk image
