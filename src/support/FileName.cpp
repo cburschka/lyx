@@ -813,6 +813,9 @@ string FileName::guessFormatFromContents() const
 	// PKZIP
 	static string const zipStamp = "PK";
 
+	// ZIP containers (koffice, openoffice.org etc).
+	static string const nonzipStamp = "\008\0\0\0mimetypeapplication/";
+
 	// compress
 	static string const compressStamp = "\037\235";
 
@@ -840,7 +843,8 @@ string FileName::guessFormatFromContents() const
 			if (prefixIs(str, gzipStamp)) {
 				format =  "gzip";
 
-			} else if (stamp == zipStamp) {
+			} else if (stamp == zipStamp &&
+			           !contains(str, nonzipStamp)) {
 				format =  "zip";
 
 			} else if (stamp == compressStamp) {
