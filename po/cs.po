@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2012-01-16 09:46-0500\n"
-"PO-Revision-Date: 2011-06-18 05:50+0100\n"
+"PO-Revision-Date: 2012-01-19 05:50+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
 "Language: cs\n"
@@ -8617,34 +8617,28 @@ msgid "ACKNOWLEDGEMENTS"
 msgstr "ACKNOWLEDGEMENTS"
 
 #: lib/layouts/jasatex.layout:114
-#, fuzzy
 msgid "Alternative Affiliation"
-msgstr "Alternative affiliation:"
+msgstr "Alternative Affiliation"
 
 #: lib/layouts/jasatex.layout:122
-#, fuzzy
 msgid "Homepage"
-msgstr "nová strana"
+msgstr "Homepage"
 
 #: lib/layouts/jasatex.layout:210
-#, fuzzy
 msgid "PACS numbers:"
-msgstr "PACS number:"
+msgstr "PACS numbers:"
 
 #: lib/layouts/jasatex.layout:213
-#, fuzzy
 msgid "Preprint number"
-msgstr "Preprint"
+msgstr "Preprint number"
 
 #: lib/layouts/jasatex.layout:216
-#, fuzzy
 msgid "Preprint number:"
-msgstr "Preprint"
+msgstr "Preprint number:"
 
 #: lib/layouts/jasatex.layout:236 lib/layouts/jasatex.layout:240
-#, fuzzy
 msgid "Online citation"
-msgstr "Vlo¾it citaci"
+msgstr "Online citation"
 
 #: lib/layouts/kluwer.layout:198
 msgid "AddressForOffprints"
@@ -10310,9 +10304,8 @@ msgid "# [number of Prob]"
 msgstr "# [poèet prob]"
 
 #: lib/layouts/theorems-without-preamble.inc:358
-#, fuzzy
 msgid "Property \\theproperty."
-msgstr "Vlastnost \\theproperty"
+msgstr "Vlastnost \\theproperty."
 
 #: lib/layouts/theorems-without-preamble.inc:392
 #: lib/layouts/theorems-ams-extended-bytype.module:202
@@ -13385,9 +13378,8 @@ msgid "Multicolumn Manual|M"
 msgstr "Sloupce|S"
 
 #: lib/ui/stdmenus.inc:589
-#, fuzzy
 msgid "Sweave Manual|S"
-msgstr "Sweave|S"
+msgstr "Sweave|w"
 
 #: lib/ui/stdmenus.inc:590
 msgid "XY-pic Manual|X"
@@ -16136,7 +16128,6 @@ msgid "Spreadsheet"
 msgstr "Tabulka"
 
 #: lib/external_templates:39
-#, fuzzy
 msgid ""
 "A spreadsheet made with Gnumeric, LibreOffice, OpenOffice or Excel.\n"
 "It imports as a long table, so any length\n"
@@ -16144,7 +16135,7 @@ msgid ""
 "The gnumeric software is necessary for conversion,\n"
 "both for gnumeric and excel files.\n"
 msgstr ""
-"Tabulka vytvoøená v prostøedí gnumeric, openoffice nebo excelu.\n"
+"Tabulka vytvoøená v prostøedí Gnumeric, Libre/OpenOffice nebo Excelu.\n"
 " Import pøevádí do dlouhých tabulek (longtable),\n"
 "excesivní ¹íøka neo¹etøována.\n"
 "Pro konverzi je potøebný program gnumeric.\n"
@@ -16244,7 +16235,6 @@ msgid "PDF pages: $$AbsOrRelPathParent$$Basename"
 msgstr "PDF stránky: $$AbsOrRelPathParent$$Basename"
 
 #: lib/external_templates:303
-#, fuzzy
 msgid ""
 "Includes PDF documents, using the 'pdfpages' package.\n"
 "To include multiple pages, use the 'pages'-option,\n"
@@ -16266,6 +16256,7 @@ msgstr ""
 "* pages={x-y} (pro rozsah stránek)\n"
 "* pages={x,y,z} (pro konkrétní stránky)\n"
 "* pages=- (pro v¹echny stránky)\n"
+"* pages=last-1 (pro v¹echny stránky v obráceném poøadí)\n"
 "Pøeètìte si dokumentaci balíèku pdfpages\n"
 "pro dal¹í nastavení a detaily.\n"
 
@@ -20852,10 +20843,9 @@ msgstr "[®ádné nastavení pøeddefinováno]"
 
 #: src/frontends/qt4/GuiDocument.cpp:3034
 msgid "C&ustomize Hyperref Options"
-msgstr ""
+msgstr "Vlastní nastavení pro hyppe&ref"
 
 #: src/frontends/qt4/GuiDocument.cpp:3036
-#, fuzzy
 msgid "&Use Hyperref Support"
 msgstr "Po&u¾ít balíèek hyperref"
 
@@ -21605,9 +21595,8 @@ msgid ""
 msgstr "Byl dosa¾en konec dokumentu. Pokraèovat dále od zaèátku?"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:385
-#, fuzzy
 msgid "Spell checker has no dictionaries."
-msgstr "Kontrola pravopisu selhala.\n"
+msgstr "Kontrola pravopisu nenalezla potøebné slovníky."
 
 #: src/frontends/qt4/GuiSymbols.cpp:54
 msgid "Basic Latin"
@@ -22206,10 +22195,15 @@ msgid ""
 "Please close it before attempting to overwrite it.\n"
 "Do you want to choose a new filename?"
 msgstr ""
+"Soubor\n"
+"%1$s\n"
+"je ji¾ otevøen.\n"
+"Je potøeba soubor uzavøít, ne¾li se ho pokusíte pøepsat.\n"
+"Chcete vybrat nové jméno souboru?"
 
 #: src/frontends/qt4/GuiView.cpp:2307
 msgid "Chosen File Already Open"
-msgstr ""
+msgstr "Vybraný soubor je ji¾ otevøený"
 
 #: src/frontends/qt4/GuiView.cpp:2308 src/frontends/qt4/GuiView.cpp:2323
 #: src/frontends/qt4/GuiView.cpp:2368
