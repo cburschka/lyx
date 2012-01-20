@@ -41,6 +41,7 @@ What's new
 
 - Allow redirecting stderr in converters (other than stdout).
 
+
 * TEX2LYX IMPROVEMENTS
 
 - Support for included external files via the templates
@@ -143,6 +144,9 @@ What's new
   if they can be actually encoded in the chosen document encoding (bug 7800).
 
 - Do not misdetect office file formats as zip (bug 7973).
+
+- Fix font/script definition clashes with XeTeX/LuaTeX and unicode output
+  (bug 7766, 7782).
 
 
 * TEX2LYX

@@ -577,11 +577,14 @@ void Encodings::validate(char_type c, LaTeXFeatures & features, bool for_mathed)
 	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
 	if (it != unicodesymbols.end()) {
 		// In mathed, c could be used both in textmode and mathmode
-		bool const use_math = (for_mathed && isMathCmd(c)) ||
+		bool const math_mode = for_mathed && isMathCmd(c);
+		bool const use_math = math_mode ||
 		                      (!for_mathed && it->second.textcommand.empty());
 		bool const use_text = (for_mathed && isTextCmd(c)) ||
 		                      (!for_mathed && !it->second.textcommand.empty());
-		if (use_math) {
+		bool const plain_utf8 = (features.runparams().encoding->name() == "utf8-plain");
+		// with utf8-plain, we only load packages when in mathed (see #7766)
+		if (math_mode || (use_math && !plain_utf8)) {
 			if (!it->second.mathpreamble.empty()) {
 				if (it->second.mathfeature) {
 					string feats = it->second.mathpreamble;
@@ -594,7 +597,8 @@ void Encodings::validate(char_type c, LaTeXFeatures & features, bool for_mathed)
 					features.addPreambleSnippet(it->second.mathpreamble);
 			}
 		}
-		if (use_text) {
+		// with utf8-plain, we do not load packages (see #7766)
+		if (use_text && !plain_utf8) {
 			if (!it->second.textpreamble.empty()) {
 				if (it->second.textfeature) {
 					string feats = it->second.textpreamble;
