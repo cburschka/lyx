@@ -171,6 +171,9 @@ What's new
 
 - Fixed crash when moving out of nested empty items (bug 7673).
 
+- Fix crash when performing "forward search" while cursor is in mathed
+  (bug 7992).
+
 - Update citation labels when the BibTeX file changes (bug 7499).
 
 - Mark Buffer dirty when changing branch activation status (bug 7872). Sadly,

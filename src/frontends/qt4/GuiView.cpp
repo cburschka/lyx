@@ -3567,9 +3567,14 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				command = lyxrc.forward_search_pdf;
 			}
 
-			int row = doc_buffer->texrow().getRowFromIdPos(bv->cursor().paragraph().id(), bv->cursor().pos());
+			DocIterator tmpcur = bv->cursor();
+			// Leave math first
+			while (tmpcur.inMathed())
+				tmpcur.pop_back();
+			int row = tmpcur.inMathed() ? 0 : doc_buffer->texrow().getRowFromIdPos(
+								tmpcur.paragraph().id(), tmpcur.pos());
 			LYXERR(Debug::ACTION, "Forward search: row:" << row
-				<< " id:" << bv->cursor().paragraph().id());
+				<< " id:" << tmpcur.paragraph().id());
 			if (!row || command.empty()) {
 				dr.setMessage(_("Couldn't proceed."));
 				break;
