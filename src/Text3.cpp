@@ -1648,16 +1648,19 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_FLOAT_INSERT:
 	case LFUN_FLOAT_WIDE_INSERT:
 	case LFUN_WRAP_INSERT: {
-		// will some text be moved into the inset?
-		bool content = cur.selection();
+		// will some content be moved into the inset?
+		bool const content = cur.selection();
+		// does the content consist of multiple paragraphs?
+		bool const singlepar = (cur.selBegin().pit() == cur.selEnd().pit());
 
 		doInsertInset(cur, this, cmd, true, true);
 		cur.posForward();
 
-		// If some text is moved into the inset, doInsertInset 
-		// puts the cursor outside the inset. To insert the
-		// caption we put it back into the inset.
-		if (content)
+		// If some single-par content is moved into the inset,
+		// doInsertInset puts the cursor outside the inset.
+		// To insert the caption we put it back into the inset.
+		// FIXME cleanup doInsertInset to avoid such dances!
+		if (content && singlepar)
 			cur.backwardPos();
 
 		ParagraphList & pars = cur.text()->paragraphs();

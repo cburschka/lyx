@@ -174,6 +174,8 @@ What's new
 - Fix crash when performing "forward search" while cursor is in mathed
   (bug 7992).
 
+- Fix crash when inserting a float around multiple display maths (bug 7974).
+
 - Update citation labels when the BibTeX file changes (bug 7499).
 
 - Mark Buffer dirty when changing branch activation status (bug 7872). Sadly,
