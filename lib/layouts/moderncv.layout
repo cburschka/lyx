@@ -5,7 +5,7 @@
 
 
 # General textclass parameters
-Format 36
+Format 35
 	Columns			1
 	Sides			1
 	SecNumDepth		-1
@@ -168,5 +168,23 @@ Style Bibliography
 	  Size			Larger
 	  Family		Sans
 	EndFont
+End
+
+Style --Separator--
+	KeepEmpty             1
+	Margin                Dynamic
+	LatexType             Paragraph
+	LatexName             dummy
+	ParIndent             MM
+	Align                 Block
+	LabelType             Static
+	LabelString           "--- Separate Environment ---"
+	LabelFont
+	  Family              Roman
+	  Series              Medium
+	  Size                Normal
+	  Color               Blue
+	EndFont
+	HTMLLabel             NONE
 End
 

@@ -4,6 +4,9 @@
 \begin_header
 \textclass moderncv
 \begin_preamble
+% adjust the page margins
+\usepackage[scale=0.75]{geometry}
+
 \moderncvtheme[blue]{classic}
 % possible themes are "classic" and "casual"
 % optional argument are 'blue' (default), 'orange', 'red', 'green', 'grey' and 'roman' (for roman fonts, instead of sans serif fonts)
@@ -65,7 +68,7 @@
 \paperfontsize 12
 \spacing single
 \use_hyperref false
-\papersize default
+\papersize a4paper
 \use_geometry false
 \use_amsmath 1
 \use_esint 1
@@ -81,8 +84,8 @@
 \shortcut idx
 \color #008000
 \end_index
-\secnumdepth 3
-\tocdepth 3
+\secnumdepth 0
+\tocdepth -1
 \paragraph_separation skip
 \defskip medskip
 \quotes_language english
@@ -817,8 +820,8 @@ status collapsed
 subsection
 \end_layout
 
-\begin_layout Standard
-subsection text
+\begin_layout ListItem
+subsection item
 \end_layout
 
 \begin_layout Section
@@ -896,6 +899,10 @@ Back to moderncv layout, without making a new section
 
 \begin_layout Standard
 You can use bibitems:
+\end_layout
+
+\begin_layout --Separator--
+
 \end_layout
 
 \begin_layout Bibliography
