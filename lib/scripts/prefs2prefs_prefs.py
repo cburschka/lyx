@@ -44,9 +44,10 @@ import re
 # Conversion chain
 
 def simple_renaming(line, old, new):
-	if line.find(old) == -1:
+	i = line.lower().find(old.lower())
+	if i == -1:
 		return no_match
-	line = line.replace(old, new)
+	line = line[:i] + new + line[i+len(old):]
 	return (True, line)
 
 no_match = (False, [])
@@ -60,16 +61,16 @@ def remove_obsolete(line):
 				"\\use_escape_chars", "\\use_input_encoding",
 				"\\use_personal_dictionary", "\\use_pspell",
 				"\\use_spell_lib")
-	line = line.lstrip()
+	line = line.lower().lstrip()
 	for tag in tags:
-		if line.startswith(tag):
+		if line.lower().startswith(tag):
 			return (True, "")
 	return no_match
 
 def language_use_babel(line):
-	if not line.startswith("\language_use_babel"):
+	if not line.lower().startswith("\language_use_babel"):
 		return no_match
-	re_lub = re.compile(r'^\\language_use_babel\s+"?(true|false)')
+	re_lub = re.compile(r'^\\language_use_babel\s+"?(true|false)', re.IGNORECASE)
 	m = re_lub.match(line)
 	val = m.group(1)
 	newval = '0'
@@ -81,9 +82,9 @@ def language_use_babel(line):
 def language_package(line):
 	return simple_renaming(line, "\\language_package", "\\language_custom_package")
 
-lfre = re.compile(r'^\\converter\s+"?(\w+)"?\s+"?(\w+)"?\s+"([^"]*?)"\s+"latex"')
+lfre = re.compile(r'^\\converter\s+"?(\w+)"?\s+"?(\w+)"?\s+"([^"]*?)"\s+"latex"', re.IGNORECASE)
 def latex_flavor(line):
-	if not line.startswith("\\converter"):
+	if not line.lower().startswith("\\converter"):
 		return no_match
 	m = lfre.match(line)
 	if not m:
@@ -105,7 +106,7 @@ def latex_flavor(line):
 	return (True,
 		"\\converter \"%s\" \"%s\" \"%s\" \"latex=%s\"" % (conv, fmat, args, flavor))
 
-emre = re.compile(r'^\\[Ff]ormat\s+(.*)\s+"(document[^"]*?)"')
+emre = re.compile(r'^\\format\s+(.*)\s+"(document[^"]*?)"', re.IGNORECASE)
 def export_menu(line):
 	if not line.lower().startswith("\\format"):
 		return no_match
@@ -117,7 +118,7 @@ def export_menu(line):
 	return (True,
 		"\\Format %s \"%s,menu=export\"" % (fmat, opts))
 
-zipre = re.compile(r'^\\[Ff]ormat\s+("?dia"?\s+.*)\s+"([^"]*?)"')
+zipre = re.compile(r'^\\format\s+("?dia"?\s+.*)\s+"([^"]*?)"', re.IGNORECASE)
 def zipped_native(line):
 	if not line.lower().startswith("\\format"):
 		return no_match
@@ -130,7 +131,7 @@ def zipped_native(line):
 		"\\Format %s \"%s,zipped=native\"" % (fmat, opts))
 
 def remove_default_papersize(line):
-	if not line.startswith("\\default_papersize"):
+	if not line.lower().startswith("\\default_papersize"):
 		return no_match
 	return (True, "")
 
