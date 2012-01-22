@@ -130,8 +130,7 @@ namespace {
 /*
  * This is a parser that (mostly) mimics the behavior of a posix shell as
  * regards quoting, but its output is tailored for being processed by QProcess.
- * Note that shell metacharacters are not parsed and only output redirection
- * is taken into account.
+ * Note that shell metacharacters are not parsed.
  *
  * The escape character is the backslash.
  * A backslash that is not quoted preserves the literal value of the following
@@ -164,13 +163,14 @@ namespace {
  *    "\a"   ->  "\a"
  *    "a\"b" ->  "a"""b"
  */
-string const parsecmd(string const & incmd, string & outfile, string & errfile)
+string const parsecmd(string const & incmd, string & infile, string & outfile,
+                     string & errfile)
 {
 	bool in_single_quote = false;
 	bool in_double_quote = false;
 	bool escaped = false;
 	string const python_call = "python -tt";
-	vector<string> outcmd(3);
+	vector<string> outcmd(4);
 	size_t start = 0;
 
 	if (prefixIs(incmd, python_call)) {
@@ -215,6 +215,8 @@ string const parsecmd(string const & incmd, string & outfile, string & errfile)
 					outcmd[o] = rtrim(outcmd[o], "1");
 				o = 1;
 			}
+		} else if (c == '<' && !(in_double_quote || escaped)) {
+			o = 3;
 		} else {
 			if (escaped && in_double_quote)
 				outcmd[o] += '\\';
@@ -222,6 +224,7 @@ string const parsecmd(string const & incmd, string & outfile, string & errfile)
 			escaped = false;
 		}
 	}
+	infile  = trim(outcmd[3], " \"");
 	outfile = trim(outcmd[1], " \"");
 	errfile = trim(outcmd[2], " \"");
 	return trim(outcmd[0]);
@@ -236,12 +239,13 @@ int Systemcall::startscript(Starttype how, string const & what,
 {
 	lyxerr << "\nRunning: " << what << endl;
 
+	string infile;
 	string outfile;
 	string errfile;
 	QString cmd = QString::fromLocal8Bit(
-			parsecmd(what, outfile, errfile).c_str());
+			parsecmd(what, infile, outfile, errfile).c_str());
 
-	SystemcallPrivate d(outfile, errfile);
+	SystemcallPrivate d(infile, outfile, errfile);
 
 
 	d.startProcess(cmd, path);
@@ -274,15 +278,19 @@ int Systemcall::startscript(Starttype how, string const & what,
 }
 
 
-SystemcallPrivate::SystemcallPrivate(std::string const & of,
+SystemcallPrivate::SystemcallPrivate(std::string const & sf,
+				     std::string const & of,
 				     std::string const & ef) :
 				process_(new QProcess), 
 				out_index_(0),
 				err_index_(0),
+				in_file_(sf),
 				out_file_(of), 
 				err_file_(ef), 
 				process_events_(false)
 {
+	if (!in_file_.empty())
+		process_->setStandardInputFile(QString::fromLocal8Bit(in_file_.c_str()));
 	if (!out_file_.empty()) {
 		if (out_file_[0] == '&') {
 			if (subst(out_file_, " ", "") == "&2"

@@ -32,7 +32,8 @@ class SystemcallPrivate : public QObject
 	Q_OBJECT
 
 public:
-	SystemcallPrivate(std::string const & outfile, std::string const & errfile);
+	SystemcallPrivate(std::string const & infile, std::string const & outfile,
+	                  std::string const & errfile);
 	~SystemcallPrivate();
 
 	enum State {
@@ -72,6 +73,8 @@ private:
 	size_t out_index_;
 	/// Index to the standard error buffer.
 	size_t err_index_;
+	///
+	std::string in_file_;
 	///
 	std::string out_file_;
 	///
