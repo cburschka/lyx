@@ -11,7 +11,7 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/lyx2lyx_version.py DESTINATION ${LYX_D
 
 if (UNIX)
 	set(_project "lyx2lyx")
-	include(../PyCompile)
+	# include(../PyCompile)
 endif()
 
 install(PROGRAMS ${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx DESTINATION ${LYX_DATA_SUBDIR}lyx2lyx)
