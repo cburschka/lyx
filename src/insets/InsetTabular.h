@@ -444,13 +444,13 @@ public:
 	///
 	int textVOffset(idx_type cell) const;
 	///
-	void appendRow(idx_type cell);
+	void appendRow(row_type row);
 	///
 	void deleteRow(row_type row);
 	///
 	void copyRow(row_type);
 	///
-	void appendColumn(idx_type cell);
+	void appendColumn(col_type column);
 	///
 	void deleteColumn(col_type column);
 	///
