@@ -328,7 +328,8 @@ bool FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt, bool
 				continue;
 			view_.setBusy(false);
 			return true;
-		}
+		} else if (replace_all)
+			bv->clearSelection();
 
 		// No match found in current buffer (however old selection might have been replaced)
 		// select next buffer in scope, if any
