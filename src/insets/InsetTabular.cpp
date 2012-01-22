@@ -700,10 +700,8 @@ void Tabular::init(Buffer * buf, row_type rows_arg,
 }
 
 
-void Tabular::appendRow(idx_type const cell)
+void Tabular::appendRow(row_type row)
 {
-	row_type const row = cellRow(cell);
-
 	row_info.insert(row_info.begin() + row + 1, RowData());
 	row_info[row + 1] = row_info[row];
 
@@ -793,10 +791,8 @@ void Tabular::copyRow(row_type const row)
 }
 
 
-void Tabular::appendColumn(idx_type const cell)
-{
-	col_type const c = cellColumn(cell);
-	
+void Tabular::appendColumn(col_type c)
+{	
 	column_info.insert(column_info.begin() + c + 1, ColumnData());
 	column_info[c + 1] = column_info[c];
 
@@ -5334,12 +5330,12 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 
 	case Tabular::APPEND_ROW:
 		// append the row into the tabular
-		tabular.appendRow(cur.idx());
+		tabular.appendRow(row);
 		break;
 
 	case Tabular::APPEND_COLUMN:
 		// append the column into the tabular
-		tabular.appendColumn(cur.idx());
+		tabular.appendColumn(column);
 		cur.idx() = tabular.cellIndex(row, column);
 		break;
 
