@@ -106,8 +106,10 @@ ParagraphList::const_iterator makeParagraph(Buffer const & buf,
 	for (ParagraphList::const_iterator par = pbegin; par != pend; ++par) {
 		if (par != pbegin)
 			os << '\n';
-		if (buf.params().documentClass().isDefaultLayout(par->layout()) 
-		    && par->emptyTag()) {
+		bool const default_or_plain = 
+			(buf.params().documentClass().isDefaultLayout(par->layout()) 
+				|| buf.params().documentClass().isPlainLayout(par->layout()));
+		if (default_or_plain && par->emptyTag()) {
 			par->simpleDocBookOnePar(buf, os, runparams, 
 					text.outerFont(distance(paragraphs.begin(), par)));
 		} else {
