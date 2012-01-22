@@ -129,6 +129,8 @@ public:
 	void inFloat(bool const b) { in_float_ = b; }
 	/// Runparams that will be used for exporting this file.
 	OutputParams const & runparams() const { return runparams_; }
+	/// Resolve alternatives like "esint|amsmath|wasysym"
+	void resolveAlternatives();
 	///
 	void setHTMLTitle(docstring const & t) { htmltitle_ = t; }
 	///

@@ -825,12 +825,12 @@ tbond              cmsy        180 186 mathord  x
 iffont esint
 int                esint        001    0  mathop  &int;  esint
 intop              esint        001    0  mathop  &int;  esint
-iint               esint        003    0  mathop  &Int;      esintoramsmath
+iint               esint        003    0  mathop  &Int;         esint|amsmath
 iintop             esint        003    0  mathop  &Int;      esint
-iiint              esint        005    0  mathop  &tint;      esintoramsmath
+iiint              esint        005    0  mathop  &tint;        esint|amsmath
 
 iiintop            esint        005    0  mathop  &tint;      esint
-iiiint             esint        007    0  mathop  &qint;      esintoramsmath
+iiiint             esint        007    0  mathop  &qint;        esint|amsmath
 
 iiiintop           esint        007    0  mathop  &qint;      esint
 oint               esint        011    0  mathop  &conint;      esint
@@ -851,12 +851,12 @@ ointclockwiseop    esint        025    0  mathop  &cwconint;      esint
 else
 int                cmex          82  242  mathop  &int;  esint
 intop              cmex          82  242  mathop  &int;  esint
-iint               wasy         115    0  mathop  &Int;      esintoramsmath
+iint               wasy         115    0  mathop  &Int;         esint|amsmath
 iintop             wasy         115    0  mathop  &Int      esint
-iiint              wasy         116    0  mathop  &tint;      esintoramsmath
+iiint              wasy         116    0  mathop  &tint;        esint|amsmath
 
 iiintop            wasy         116    0  mathop  &tint;      esint
-\def\iiiint{\int\kern-6mu\int\kern-6mu\int\kern-6mu\int}        esintoramsmath
+\def\iiiint{\int\kern-6mu\int\kern-6mu\int\kern-6mu\int}        esint|amsmath
 \def\iiiintop{\int\kern-6mu\int\kern-6mu\int\kern-6mu\int}      esint
 \def\dotsint{\int\kern-3mu\cdots\kern-3mu\int}                  esint
 \def\dotsintop{\int\kern-3mu\cdots\kern-3mu\int}                esint

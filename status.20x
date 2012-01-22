@@ -148,6 +148,9 @@ What's new
 - Fix font/script definition clashes with XeTeX/LuaTeX and unicode output
   (bug 7766, 7782).
 
+- Fix marvosym/bbding package clash caused by using 0x271d "LATIN CROSS"
+  unicode symbol (part of bug 7811).
+
 
 * TEX2LYX
 

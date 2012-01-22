@@ -810,6 +810,10 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 			breakout = true;
 		}
 
+		// backward compatibility
+		if (info.mathpreamble == "esintoramsmath")
+			info.mathpreamble = "esint|amsmath";
+
 		if (!info.textpreamble.empty())
 			info.textfeature = info.textpreamble[0] != '\\';
 		if (!info.mathpreamble.empty())

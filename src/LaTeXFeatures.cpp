@@ -562,6 +562,8 @@ char const * simplefeatures[] = {
 	"ifsym",
 	"marvosym",
 	"txfonts",
+	"pxfonts",
+	"mathdesign",
 	"mathrsfs",
 	"ascii",
 	"url",
@@ -674,8 +676,9 @@ string const LaTeXFeatures::getPackages() const
 
 	// if fontspec is used, AMS packages have to be loaded before
 	// fontspec (in BufferParams)
-	if (!params_.useNonTeXFonts && !loadAMSPackages().empty())
-		packages << loadAMSPackages();
+	string const amsPackages = loadAMSPackages();
+	if (!params_.useNonTeXFonts && !amsPackages.empty())
+		packages << amsPackages;
 
 	// fixltx2e must be loaded after amsthm, since amsthm produces an error with
 	// the redefined \[ command (bug 7233). Load is as early as possible, since
@@ -739,7 +742,7 @@ string const LaTeXFeatures::getPackages() const
 
 	// esint must be after amsmath and wasysym, since it will redeclare
 	// inconsistent integral symbols
-	if ((mustProvide("esint") || mustProvide("esintoramsmath")) &&
+	if (mustProvide("esint") &&
 	    params_.use_esint != BufferParams::package_off)
 		packages << "\\usepackage{esint}\n";
 
@@ -1022,12 +1025,8 @@ string const LaTeXFeatures::loadAMSPackages() const
 	if (mustProvide("amsthm"))
 		tmp << "\\usepackage{amsthm}\n";
 
-	// esint is preferred for esintoramsmath
-	if ((mustProvide("amsmath")
-	     && params_.use_amsmath != BufferParams::package_off)
-	    || (mustProvide("esintoramsmath")
-	        && params_.use_esint == BufferParams::package_off
-	        && params_.use_amsmath != BufferParams::package_off)) {
+	if (mustProvide("amsmath")
+	    && params_.use_amsmath != BufferParams::package_off) {
 		tmp << "\\usepackage{amsmath}\n";
 	} else {
 		// amsbsy and amstext are already provided by amsmath
@@ -1036,7 +1035,7 @@ string const LaTeXFeatures::loadAMSPackages() const
 		if (mustProvide("amstext"))
 			tmp << "\\usepackage{amstext}\n";
 	}
-	
+
 	if (mustProvide("amssymb")
 	    || params_.use_amsmath == BufferParams::package_on)
 		tmp << "\\usepackage{amssymb}\n";
@@ -1353,6 +1352,27 @@ void LaTeXFeatures::getFloatDefinitions(odocstream & os) const
 		}
 		if (cit->second)
 			os << "\n\\newsubfloat{" << from_ascii(fl.floattype()) << "}\n";
+	}
+}
+
+
+void LaTeXFeatures::resolveAlternatives()
+{
+	for (Features::iterator it = features_.begin(); it != features_.end();) {
+		if (contains(*it, '|')) {
+			vector<string> const alternatives = getVectorFromString(*it, "|");
+			vector<string>::const_iterator const end = alternatives.end();
+			vector<string>::const_iterator ita = alternatives.begin();
+			for (; ita != end; ++ita) {
+				if (isRequired(*ita))
+					break;
+			}
+			if (ita == end)
+				require(alternatives.front());
+			features_.erase(it);
+			it = features_.begin();
+		} else
+			++it;
 	}
 }
 

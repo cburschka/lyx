@@ -161,9 +161,12 @@ void initSymbols()
 		else
 			is >> tmp.extra;
 		// requires is optional
-		if (is)
+		if (is) {
 			is >> tmp.requires;
-		else {
+			// backward compatibility
+			if (tmp.requires == "esintoramsmath")
+				tmp.requires = from_ascii("esint|amsmath");
+		} else {
 			LYXERR(Debug::MATHED, "skipping line '" << line << "'\n"
 				<< to_utf8(tmp.name) << ' ' << to_utf8(tmp.inset) << ' '
 				<< to_utf8(tmp.extra));
