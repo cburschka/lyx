@@ -356,6 +356,12 @@ static void build_script(string const & from_file,
 				  subst(conv.result_file,
 					token_base, onlyFileName(infile_base)));
 
+		// If two formats share the same extension we may get identical names
+		if (outfile == infile && conv.result_file.empty()) {
+			string const new_base = FileName::tempName(tmp).toFilesystemEncoding();
+			outfile = addExtension(new_base, conv.To->extension());
+		}
+
 		// Store these names in the python script
 		script << "infile = "
 				<< quoteName(infile, quote_python) << "\n"
