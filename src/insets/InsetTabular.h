@@ -448,13 +448,17 @@ public:
 	///
 	void deleteRow(row_type row);
 	///
-	void copyRow(row_type);
+	void copyRow(row_type row);
+	///  
+	void insertRow(row_type row, bool copy);
 	///
 	void appendColumn(col_type column);
 	///
 	void deleteColumn(col_type column);
 	///
-	void copyColumn(col_type);
+	void copyColumn(col_type column);
+	///
+	void insertColumn(col_type column, bool copy);
 	///
 	idx_type getFirstCellInRow(row_type row) const;
 	///

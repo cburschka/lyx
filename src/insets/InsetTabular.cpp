@@ -700,41 +700,6 @@ void Tabular::init(Buffer * buf, row_type rows_arg,
 }
 
 
-void Tabular::appendRow(row_type row)
-{
-	row_info.insert(row_info.begin() + row + 1, RowData());
-	row_info[row + 1] = row_info[row];
-
-	cell_info.insert(cell_info.begin() + row + 1,
-		cell_vector(ncols(), CellData(buffer_)));
-	for (col_type c = 0; c < ncols(); ++c) {
-		if (cell_info[row][c].multirow == CELL_BEGIN_OF_MULTIROW)
-			cell_info[row + 1][c].multirow = CELL_PART_OF_MULTIROW;
-		else
-			cell_info[row + 1][c].multirow = cell_info[row][c].multirow;
-	}
-	updateIndexes();
-
-	for (col_type c = 0; c < ncols(); ++c) {
-		if (isPartOfMultiRow(row, c))
-			continue;
-		// inherit line settings
-		idx_type const i = cellIndex(row + 1, c);
-		idx_type const j = cellIndex(row, c);
-		setLeftLine(i, leftLine(j));
-		setRightLine(i, rightLine(j));
-		setTopLine(i, topLine(j));
-		if (topLine(j) && bottomLine(j)) {
-			setBottomLine(i, true);
-			setBottomLine(j, false);
-		}
-		// mark track changes
-		if (buffer().params().trackChanges)
-			cellInfo(i).inset->setChange(Change(Change::INSERTED));
-	}
-}
-
-
 void Tabular::deleteRow(row_type const row)
 {
 	// Not allowed to delete last row
@@ -757,13 +722,25 @@ void Tabular::deleteRow(row_type const row)
 
 void Tabular::copyRow(row_type const row)
 {
+	insertRow(row, true);
+}
+
+
+void Tabular::appendRow(row_type row)
+{
+	insertRow(row, false);
+}
+
+
+void Tabular::insertRow(row_type const row, bool copy)
+{
 	row_info.insert(row_info.begin() + row + 1, RowData(row_info[row]));
 	cell_info.insert(cell_info.begin() + row + 1, 
 		cell_vector(0, CellData(buffer_)));
 	
 	for (col_type c = 0; c < ncols(); ++c) {
 		cell_info[row + 1].insert(cell_info[row + 1].begin() + c,
-			CellData(cell_info[row][c]));
+			copy ? CellData(cell_info[row][c]) : CellData(buffer_));
 		if (buffer().params().trackChanges)
 			cell_info[row + 1][c].inset->setChange(Change(Change::INSERTED));
 		if (cell_info[row][c].multirow == CELL_BEGIN_OF_MULTIROW)
@@ -785,37 +762,6 @@ void Tabular::copyRow(row_type const row)
 			setBottomLine(j, false);
 		}
 		// mark track changes
-		if (buffer().params().trackChanges)
-			cellInfo(i).inset->setChange(Change(Change::INSERTED));
-	}
-}
-
-
-void Tabular::appendColumn(col_type c)
-{	
-	column_info.insert(column_info.begin() + c + 1, ColumnData());
-	column_info[c + 1] = column_info[c];
-
-	for (row_type r = 0; r < nrows(); ++r) {
-		cell_info[r].insert(cell_info[r].begin() + c + 1, 
-			CellData(buffer_));
-		if (cell_info[r][c].multicolumn == CELL_BEGIN_OF_MULTICOLUMN)
-			cell_info[r][c + 1].multicolumn = CELL_PART_OF_MULTICOLUMN;
-		else
-			cell_info[r][c + 1].multicolumn = cell_info[r][c].multicolumn;
-	}
-	updateIndexes();
-	for (row_type r = 0; r < nrows(); ++r) {
-		// inherit line settings
-		idx_type const i = cellIndex(r, c + 1);
-		idx_type const j = cellIndex(r, c);
-		setBottomLine(i, bottomLine(j));
-		setTopLine(i, topLine(j));
-		setLeftLine(i, leftLine(j));
-		if (rightLine(j) && rightLine(j)) {
-			setRightLine(i, true);
-			setRightLine(j, false);
-		}
 		if (buffer().params().trackChanges)
 			cellInfo(i).inset->setChange(Change(Change::INSERTED));
 	}
@@ -844,11 +790,24 @@ void Tabular::deleteColumn(col_type const col)
 
 void Tabular::copyColumn(col_type const col)
 {
+	insertColumn(col, true);
+}
+
+
+void Tabular::appendColumn(col_type col)
+{	
+	insertColumn(col, false);
+}
+
+
+void Tabular::insertColumn(col_type const col, bool copy)
+{
 	BufferParams const & bp = buffer().params();
 	column_info.insert(column_info.begin() + col + 1, ColumnData(column_info[col]));
 
 	for (row_type r = 0; r < nrows(); ++r) {
-		cell_info[r].insert(cell_info[r].begin() + col + 1, CellData(cell_info[r][col]));
+		cell_info[r].insert(cell_info[r].begin() + col + 1,
+			copy ? CellData(cell_info[r][col]) : CellData(buffer_));
 		if (bp.trackChanges)
 			cell_info[r][col + 1].inset->setChange(Change(Change::INSERTED));
 		if (cell_info[r][col].multicolumn == CELL_BEGIN_OF_MULTICOLUMN)
