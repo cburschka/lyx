@@ -579,6 +579,7 @@ def checkFormatEntries(dtl_tools):
     #  rc_entry = [ r'\ps_command "%%"' ])
     checkViewer('a Postscript previewer', ['kghostview', 'okular', 'evince', 'gv', 'ghostview -swap'],
         rc_entry = [r'''\Format eps        eps     EPS                    "" "%%"	""	"vector"
+\Format eps2       eps    "EPS (uncropped)"       "" "%%"	""	"vector"
 \Format ps         ps      Postscript             t  "%%"	""	"document,vector,menu=export"'''])
     # for xdg-open issues look here: http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg151818.html
     checkViewer('a PDF previewer', ['kpdf', 'okular', 'evince', 'kghostview', 'xpdf', 'acrobat', 'acroread', \
@@ -750,11 +751,15 @@ def checkConverterEntries():
     #
     checkProg('a PS to TXT converter', ['ps2ascii $$i $$o'],
         rc_entry = [ r'\converter ps         text3      "%%"	""' ])
-    #
-    checkProg('a PS to EPS converter', ['ps2eps $$i'],
-        rc_entry = [ r'''\Format eps2       eps    "EPS (ps2eps)"          "" "" ""	"vector"
-\converter ps         eps      "%%"	""
-\converter eps2       eps      "%%"	"resultfile=$$b.eps.eps"''' ])
+    # Need to call ps2eps in a pipe, otherwise it would name the output file
+    # depending on the extension of the input file. We do not know the input
+    # file extension in general, so the resultfile= flag would not help.
+    # Since ps2eps crops the image, we do not use it to convert from ps->eps.
+    # This would create additional paths in the converter graph with unwanted
+    # side effects (e.g. ps->pdf via ps2pdf would create a different result
+    # than ps->eps->pdf via ps2eps and epstopdf).
+    checkProg('a PS to EPS converter', ['ps2eps -- < $$i > $$o'],
+        rc_entry = [ r'\converter eps2       eps      "%%"	""' ])
     #
     checkProg('a PDF to PS converter', ['pdf2ps $$i $$o', 'pdftops $$i $$o'],
         rc_entry = [ r'\converter pdf         ps        "%%"	""' ])
@@ -827,15 +832,12 @@ def checkConverterEntries():
     #
     checkProg('a Dia -> EPS converter', ['dia -e $$o -t eps $$i'],
         rc_entry = [ r'\converter dia        eps        "%%"	""'])
-    #
+    # Actually, this produces EPS, but with a wrong bounding box (usually A4 or letter).
+    # The eps2->eps converter then fixes the bounding box by cropping.
+    # Although unoconv can convert to png and pdf as well, do not define
+    # odg->png and odg->pdf converters, since the bb would be too large as well.
     checkProg('an OpenOffice -> EPS converter', ['libreoffice -headless -nologo -convert-to eps $$i', 'unoconv -f eps --stdout $$i > $$o'],
         rc_entry = [ r'\converter odg        eps2       "%%"	""'])
-    #
-    checkProg('an OpenOffice -> PDF converter', ['unoconv -f pdf --stdout $$i > $$o'],
-        rc_entry = [ r'\converter odg        pdf        "%%"	""'])
-    #
-    checkProg('an OpenOffice -> PNG converter', ['unoconv -f png --stdout $$i > $$o'],
-        rc_entry = [ r'\converter odg        png        "%%"	""'])
     #
     checkProg('a SVG -> PDF converter', ['rsvg-convert -f pdf -o $$o $$i', 'inkscape --file=$$i --export-area-drawing --without-gui --export-pdf=$$o'],
         rc_entry = [ r'\converter svg        pdf        "%%"	""'])
