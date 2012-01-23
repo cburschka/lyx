@@ -46,7 +46,7 @@ Configuration of LyX installer
 !define APP_DIR "${APP_NAME} ${APP_SERIES_NAME}"
 !define APP_DIR_USERDATA "lyx${APP_VERSION_MAJOR}${APP_VERSION_MINOR}"
 !define APP_INFO "${APP_NAME} - The Document Processor"
-!define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-2011 by the LyX Team"
+!define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-2012 by the LyX Team"
 
 !define APP_RUN "bin\lyx.exe"
 
