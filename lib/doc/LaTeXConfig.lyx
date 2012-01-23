@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 425
 \begin_document
 \begin_header
 \textclass article
@@ -29,15 +29,20 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 0
-\use_esint 0
-\use_mhchem 0
-\use_mathdots 0
+\use_package amsmath 0
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -4612,6 +4617,59 @@ breakurl
 \family default
  assures that url's are correctly broken at the end of lines with DVI output
  when hyperref is used.
+\end_layout
+
+\begin_layout Subsection
+cancel
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "esint"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/cancel/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+cancel
+\family default
+ is used to typeset mathematical canceling.
+ This happens if you enter the commands 
+\family sans
+
+\backslash
+cancel
+\family default
+, 
+\family sans
+
+\backslash
+bcancel
+\family default
+, 
+\family sans
+
+\backslash
+xcancel
+\family default
+ or 
+\family sans
+
+\backslash
+cancelto
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
