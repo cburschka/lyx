@@ -8,8 +8,9 @@ dist_pkgdata_DATA = CREDITS autocorrect chkconfig.ltx external_templates \
 	encodings layouttranslations languages symbols syntax.default \
 	unicodesymbols
 
+# We use DATA now instead of PYTHON because automake 1.11.2 complains.
 # Note that we "chmod 755" manually this file in install-data-hook.
-dist_pkgdata_PYTHON = configure.py 
+dist_pkgdata_DATA += configure.py 
 
 dist_noinst_DATA = \
 	images/README \
@@ -1503,8 +1504,9 @@ dist_scripts_DATA = \
 	scripts/bash_completion \
 	scripts/lyxstangle.R \
 	scripts/lyxsweave.R
+# We use DATA now instead of PYTHON because automake 1.11.2 complains.
 # Note that we "chmod 755" manually these files in install-data-hook.
-dist_scripts_PYTHON = \
+dist_scripts_DATA += \
 	scripts/clean_dvi.py \
 	scripts/convertDefault.py \
 	scripts/csv2lyx.py \
