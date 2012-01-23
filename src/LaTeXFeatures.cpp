@@ -576,6 +576,7 @@ char const * simplefeatures[] = {
 	"mathrsfs",
 	"mathabx",
 	"mathtools",
+	"cancel",
 	"ascii",
 	"url",
 	"covington",
@@ -727,9 +728,6 @@ string const LaTeXFeatures::getPackages() const
 	if (mustProvide("undertilde") &&
 		params_.use_package("undertilde") != BufferParams::package_off)
 		packages << "\\usepackage{undertilde}\n";
-
-	if (mustProvide("cancel"))
-		packages << "\\usepackage{cancel}\n";
 
 	// [x]color and pdfcolmk are handled in getColorOptions() above
 

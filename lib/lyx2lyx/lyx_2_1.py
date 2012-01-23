@@ -488,12 +488,12 @@ convert = [
            [422, [convert_use_packages]],
            [423, [convert_use_mathtools]],
            [424, [convert_cite_engine_type]],
-           [425, []]
+           [425, []],
           ]
 
 revert =  [
            [424, [revert_cancel]],
-           [423, [revert_cite_engine_type, revert_cancel]],
+           [423, [revert_cite_engine_type]],
            [422, [revert_use_mathtools]],
            [421, [revert_use_packages]],
            [420, [revert_longtable_captions]],
