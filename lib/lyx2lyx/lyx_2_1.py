@@ -488,7 +488,7 @@ convert = [
            [422, [convert_use_packages]],
            [423, [convert_use_mathtools]],
            [424, [convert_cite_engine_type]],
-           [425, []],
+           [425, []]
           ]
 
 revert =  [
