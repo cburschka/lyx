@@ -123,6 +123,8 @@ static void build_translator()
 	insetnames[MATH_BOLDSYMBOL_CODE] = InsetName("mathboldsymbol");
 	insetnames[MATH_BOX_CODE] = InsetName("mathbox");
 	insetnames[MATH_BRACE_CODE] = InsetName("mathbrace");
+	insetnames[MATH_CANCEL_CODE] = InsetName("mathcancel");
+	insetnames[MATH_CANCELTO_CODE] = InsetName("mathcancelto");
 	insetnames[MATH_CASES_CODE] = InsetName("mathcases");
 	insetnames[MATH_CHAR_CODE] = InsetName("mathchar");
 	insetnames[MATH_COLOR_CODE] = InsetName("mathcolor");

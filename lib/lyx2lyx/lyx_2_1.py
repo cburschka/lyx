@@ -450,6 +450,27 @@ def revert_cite_engine_type(document):
     document.header[i] = "\\cite_engine natbib_" + engine_type
 
 
+def revert_cancel(document):
+    "add cancel to the preamble if necessary"
+    commands = ["cancelto", "cancel", "bcancel", "xcancel"]
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_inset Formula', i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of Formula inset at line " + str(i))
+            i += 1
+            continue
+        code = "\n".join(document.body[i:j])
+        for c in commands:
+            if code.find("\\%s" % c) != -1:
+                add_to_preamble(document, ["\\usepackage{cancel}"])
+                return
+        i = j
+
+
 ##
 # Conversion hub
 #
@@ -467,10 +488,12 @@ convert = [
            [422, [convert_use_packages]],
            [423, [convert_use_mathtools]],
            [424, [convert_cite_engine_type]],
+           [425, []]
           ]
 
 revert =  [
-           [423, [revert_cite_engine_type]],
+           [424, [revert_cancel]],
+           [423, [revert_cite_engine_type, revert_cancel]],
            [422, [revert_use_mathtools]],
            [421, [revert_use_packages]],
            [420, [revert_longtable_captions]],
@@ -478,7 +501,7 @@ revert =  [
            [418, [revert_australian]],
            [417, [revert_justification]],
            [416, [revert_japanese_encodings]],
-           [415, [revert_negative_space,revert_math_spaces]],
+           [415, [revert_negative_space, revert_math_spaces]],
            [414, [revert_undertilde]],
            [413, [revert_visible_space]]
           ]

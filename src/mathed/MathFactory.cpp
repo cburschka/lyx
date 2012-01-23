@@ -16,6 +16,8 @@
 #include "InsetMathArray.h"
 #include "InsetMathBoldSymbol.h"
 #include "InsetMathBox.h"
+#include "InsetMathCancel.h"
+#include "InsetMathCancelto.h"
 #include "InsetMathCases.h"
 #include "InsetMathColor.h"
 #include "InsetMathDecoration.h"
@@ -501,6 +503,14 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 		return MathAtom(new InsetMathPhantom(buf, InsetMathPhantom::phantom));
 	if (s == "vphantom")
 		return MathAtom(new InsetMathPhantom(buf, InsetMathPhantom::vphantom));
+	if (s == "cancel")
+		return MathAtom(new InsetMathCancel(buf, InsetMathCancel::cancel));
+	if (s == "bcancel")
+		return MathAtom(new InsetMathCancel(buf, InsetMathCancel::bcancel));
+	if (s == "xcancel")
+		return MathAtom(new InsetMathCancel(buf, InsetMathCancel::xcancel));
+	if (s == "cancelto")
+		return MathAtom(new InsetMathCancelto(buf));
 	if (s == "smash")
 		return MathAtom(new InsetMathPhantom(buf, InsetMathPhantom::smash));
 	if (s == "mathclap")

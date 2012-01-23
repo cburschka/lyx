@@ -42,6 +42,7 @@ following hack as starting point to write some macros:
 #include "InsetMathArray.h"
 #include "InsetMathBig.h"
 #include "InsetMathBrace.h"
+#include "InsetMathCancelto.h"
 #include "InsetMathChar.h"
 #include "InsetMathColor.h"
 #include "InsetMathComment.h"
@@ -1382,6 +1383,14 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				cell->push_back(MathAtom(new InsetMathSqrt(buf)));
 				parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 			}
+		}
+
+		else if (t.cs() == "cancelto") {
+			MathData ar;
+			parse(ar, FLAG_ITEM, mode);
+				cell->push_back(MathAtom(new InsetMathCancelto(buf)));
+				cell->back().nucleus()->cell(1) = ar;
+				parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 		}
 
 		else if (t.cs() == "unit") {

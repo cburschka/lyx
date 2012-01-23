@@ -728,6 +728,9 @@ string const LaTeXFeatures::getPackages() const
 		params_.use_package("undertilde") != BufferParams::package_off)
 		packages << "\\usepackage{undertilde}\n";
 
+	if (mustProvide("cancel"))
+		packages << "\\usepackage{cancel}\n";
+
 	// [x]color and pdfcolmk are handled in getColorOptions() above
 
 	// makeidx.sty

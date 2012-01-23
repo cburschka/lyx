@@ -87,6 +87,7 @@ src_header_files = Split('''
     KeySequence.h
     LaTeX.h
     LaTeXFeatures.h
+    LaTeXPackages.h
     Language.h
     Layout.h
     LayoutEnums.h
@@ -189,6 +190,7 @@ src_pre_files = Split('''
     KeySequence.cpp
     LaTeX.cpp
     LaTeXFeatures.cpp
+    LaTeXPackages.cpp
     Language.cpp
     Layout.cpp
     LayoutFile.cpp
@@ -445,6 +447,8 @@ src_mathed_header_files = Split('''
     InsetMathBoldSymbol.h
     InsetMathBox.h
     InsetMathBrace.h
+    InsetMathCancel.h
+    InsetMathCancelto.h
     InsetMathCases.h
     InsetMathChar.h
     InsetMathColor.h
@@ -518,6 +522,8 @@ src_mathed_files = Split('''
     InsetMathBoldSymbol.cpp
     InsetMathBox.cpp
     InsetMathBrace.cpp
+    InsetMathCancel.cpp
+    InsetMathCancelto.cpp
     InsetMathCases.cpp
     InsetMathChar.cpp
     InsetMathColor.cpp
@@ -614,26 +620,36 @@ src_tex2lyx_files = Split('''
 
 src_tex2lyx_copied_header_files = Split('''
     TextClass.h
+    graphics/GraphicsParams.h
+    graphics/GraphicsTypes.h
+    insets/ExternalTemplate.h
+    insets/ExternalTransforms.h
     insets/InsetLayout.h
 ''')
 
 
 src_tex2lyx_copied_files = Split('''
+    Author.cpp
     Color.cpp
     Counters.cpp
     Encoding.cpp
     FloatList.cpp
     Floating.cpp
     FontInfo.cpp
+    LaTeXPackages.cpp
     Layout.cpp
     LayoutFile.cpp
     LayoutModuleList.cpp
+    Length.cpp
     lengthcommon.cpp
     Lexer.cpp
     ModuleList.cpp
     Spacing.cpp
     TextClass.cpp
     version.cpp
+    graphics/GraphicsParams.cpp
+    insets/ExternalTemplate.cpp
+    insets/ExternalTransforms.cpp
     insets/InsetLayout.cpp
 ''')
 
@@ -1354,13 +1370,14 @@ lib_templates_files = Split('''
     ACM-siggraph.lyx
     ACM-sigplan.lyx
     AEA.lyx
-    agutex.lyx
-    agu_article.lyx
-    apa.lyx
+    AGUTeX.lyx
+    AGU_article.lyx
+    APA.lyx
     beamer-conference-ornate-20min.lyx
+    ctex.lyx
     de_beamer-conference-ornate-20min.lyx
     dinbrief.lyx
-    docbook_article.lyx
+    DocBook_article.lyx
     ectaart.lyx
     elsarticle.lyx
     es_beamer-conference-ornate-20min.lyx
@@ -1371,9 +1388,10 @@ lib_templates_files = Split('''
     g-brief2.lyx
     hollywood.lyx
     IEEEtran.lyx
-    ijmpc.lyx
-    ijmpd.lyx
-    iop-article.lyx
+    IJMPC.lyx
+    IJMPD.lyx
+    IOP-article.lyx
+    JASA.lyx
     JSS-article.lyx
     kluwer.lyx
     koma-letter2.lyx
@@ -2638,6 +2656,7 @@ lib_doc_fr_clipart_files = Split('''
     BoxInsetDefaultQt4.png
     ChildDocumentQt4.png
     CommentNoteImageQt4.png
+    ERT.png
     floatQt4.png
     footnoteQt4.png
     GreyedOutNoteImageQt4.png
@@ -2833,7 +2852,9 @@ lib_examples_files = Split('''
     listerrors.lyx
     Literate.lyx
     localization_test.lyx
+    longsheet.gnumeric
     modernCV.lyx
+    MultilingualCaptions.lyx
     noweb2lyx.lyx
     powerdot-example.lyx
     recipebook.lyx
@@ -2843,8 +2864,12 @@ lib_examples_files = Split('''
     serial_letter1.lyx
     serial_letter2.lyx
     serial_letter3.lyx
+    sheet1.gnumeric
+    sheet2.ods
+    sheet3.xls
     simplecv.lyx
     splash.lyx
+    spreadsheet.lyx
     sweave.lyx
     tufte-book.lyx
     tufte-handout.lyx
@@ -3086,10 +3111,14 @@ lib_layouts_files = Split('''
     article.layout
     article-beamer.layout
     beamer.layout
+    bicaption.module
     book.layout
     broadway.layout
     chess.layout
     cl2emult.layout
+    ctex-article.layout
+    ctex-book.layout
+    ctex-report.layout
     customHeadersFooters.module
     dinbrief.layout
     docbook-book.layout
@@ -3122,6 +3151,7 @@ lib_layouts_files = Split('''
     iopart.layout
     isprs.layout
     jarticle.layout
+    jasatex.layout
     jbook.layout
     jgrga.layout
     jreport.layout
@@ -3223,6 +3253,7 @@ lib_layouts_inc_files = Split('''
     theorems-ams.inc
     theorems-ams-bytype.inc
     theorems-bytype.inc
+    theorems-case.inc
     theorems-order.inc
     theorems-proof.inc
     theorems-proof-std.inc

@@ -364,6 +364,7 @@ EXTRA_DIST += mathed/InsetFormulaMacro.cpp
 noinst_LIBRARIES += liblyxmathed.a
 
 SOURCEFILESMATHED = \
+	mathed/CommandInset.cpp \
 	mathed/InsetMathAMSArray.cpp \
 	mathed/InsetMathArray.cpp \
 	mathed/InsetMathBig.cpp \
@@ -374,7 +375,6 @@ SOURCEFILESMATHED = \
 	mathed/InsetMathCases.cpp \
 	mathed/InsetMathChar.cpp \
 	mathed/InsetMathColor.cpp \
-	mathed/CommandInset.cpp \
 	mathed/InsetMathComment.cpp \
 	mathed/InsetMathDecoration.cpp \
 	mathed/InsetMathDecoration.h \
@@ -393,7 +393,8 @@ SOURCEFILESMATHED = \
 	mathed/InsetMathKern.cpp \
 	mathed/InsetMathLefteqn.cpp \
 	mathed/InsetMathLim.cpp \
-	mathed/MathMacro.cpp \
+	mathed/InsetMathCancel.cpp \
+	mathed/InsetMathCancelto.cpp \
 	mathed/InsetMathMatrix.cpp \
 	mathed/InsetMathNest.cpp \
 	mathed/InsetMathNumber.cpp \
@@ -423,6 +424,7 @@ SOURCEFILESMATHED = \
 	mathed/MathData.cpp \
 	mathed/MathExtern.cpp \
 	mathed/MathFactory.cpp \
+	mathed/MathMacro.cpp \
 	mathed/MathMacroArgument.cpp \
 	mathed/MacroTable.cpp \
 	mathed/MathMacroTemplate.cpp \
@@ -432,16 +434,18 @@ SOURCEFILESMATHED = \
 	mathed/TextPainter.cpp
 
 HEADERFILESMATHED = \
+	mathed/CommandInset.h \
 	mathed/InsetMathAMSArray.h \
 	mathed/InsetMathArray.h \
 	mathed/InsetMathBig.h \
 	mathed/InsetMathBoldSymbol.h \
 	mathed/InsetMathBox.h \
 	mathed/InsetMathBrace.h \
+	mathed/InsetMathCancel.h \
+	mathed/InsetMathCancelto.h \
 	mathed/InsetMathCases.h \
 	mathed/InsetMathChar.h \
 	mathed/InsetMathColor.h \
-	mathed/CommandInset.h \
 	mathed/InsetMathComment.h \
 	mathed/InsetMathDelim.h \
 	mathed/InsetMathDiff.h \
@@ -459,7 +463,6 @@ HEADERFILESMATHED = \
 	mathed/InsetMathKern.h \
 	mathed/InsetMathLefteqn.h \
 	mathed/InsetMathLim.h \
-	mathed/MathMacro.h \
 	mathed/InsetMathMatrix.h \
 	mathed/InsetMathNest.h \
 	mathed/InsetMathNumber.h \
@@ -491,6 +494,7 @@ HEADERFILESMATHED = \
 	mathed/MathExtern.h \
 	mathed/MathFactory.h \
 	mathed/MathGridInfo.h \
+	mathed/MathMacro.h \
 	mathed/MathMacroArgument.h \
 	mathed/MacroTable.h \
 	mathed/MathMacroTemplate.h \

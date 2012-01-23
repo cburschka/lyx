@@ -2128,6 +2128,10 @@ MathCompletionList::MathCompletionList(Cursor const & cur)
 	globals.push_back(from_ascii("\\hphantom"));
 	globals.push_back(from_ascii("\\phantom"));
 	globals.push_back(from_ascii("\\vphantom"));
+	globals.push_back(from_ascii("\\cancel"));
+	globals.push_back(from_ascii("\\bcancel"));
+	globals.push_back(from_ascii("\\xcancel"));
+	globals.push_back(from_ascii("\\cancelto"));
 	globals.push_back(from_ascii("\\smash"));
 	globals.push_back(from_ascii("\\mathclap"));
 	globals.push_back(from_ascii("\\mathllap"));
