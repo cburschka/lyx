@@ -208,6 +208,9 @@ What's new
 
 - Fix a warning when changing table settings via the dialog (bug 7755).
 
+- Correct buffer statistics when change tracking is on.
+  LyX did incorrectly count the words in deleted notes (bug 7789).
+
 
 * DOCUMENTATION AND LOCALIZATION
 

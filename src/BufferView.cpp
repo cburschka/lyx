@@ -1642,9 +1642,10 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			from = doc_iterator_begin(&buffer_);
 			to = doc_iterator_end(&buffer_);
 		}
-		int const words = countWords(from, to);
-		int const chars = countChars(from, to, false);
-		int const chars_blanks = countChars(from, to, true);
+		buffer_.updateStatistics(from, to);
+		int const words = buffer_.wordCount();
+		int const chars = buffer_.charCount(false);
+		int const chars_blanks = buffer_.charCount(true);
 		docstring message;
 		if (cur.selection())
 			message = _("Statistics for the selection:");

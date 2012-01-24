@@ -306,10 +306,26 @@ public:
 	CloneList * clone_list_;
 	/// are we in the process of exporting this buffer?
 	mutable bool doing_export;
+
+	/// compute statistics
+	/// \p from initial position
+	/// \p to points to the end position
+	void updateStatistics(DocIterator & from, DocIterator & to,
+						  bool skipNoOutput = true);
+	/// statistics accessor functions
+	int wordCount() const { return word_count_; }
+	int charCount(bool with_blanks) const {
+		return char_count_
+		+ (with_blanks ? blank_count_ : 0);
+	}
 	
 private:
 	/// So we can force access via the accessors.
 	mutable Buffer const * parent_buffer;
+
+	int word_count_;
+	int char_count_;
+	int blank_count_;
 
 };
 
@@ -4242,7 +4258,73 @@ int Buffer::spellCheck(DocIterator & from, DocIterator & to,
 	return progress;
 }
 
+void Buffer::Impl::updateStatistics(DocIterator & from, DocIterator & to, bool skipNoOutput)
+{
+	bool inword = false;
+	word_count_ = 0;
+	char_count_ = 0;
+	blank_count_ = 0;
 
+	for (DocIterator dit = from ; dit != to && !dit.atEnd(); ) {
+		if (!dit.inTexted()) {
+			dit.forwardPos();
+			continue;
+		}
+		
+		Paragraph const & par = dit.paragraph();
+		pos_type const pos = dit.pos();
+		
+		// Copied and adapted from isWordSeparator() in Paragraph
+		if (pos == dit.lastpos()) {
+			inword = false;
+		} else {
+			Inset const * ins = par.getInset(pos);
+			if (ins && skipNoOutput && !ins->producesOutput()) {
+				// skip this inset
+				++dit.top().pos();
+				// stop if end of range was skipped
+				if (!to.atEnd() && dit >= to)
+					break;
+				continue;
+			} else if (!par.isDeleted(pos)) {
+				if (par.isWordSeparator(pos)) 
+					inword = false;
+				else if (!inword) {
+					++word_count_;
+					inword = true;
+				}
+				if (ins && ins->isLetter())
+					++char_count_;
+				else if (ins && ins->isSpace())
+					++blank_count_;
+				else {
+					char_type const c = par.getChar(pos);
+					if (isPrintableNonspace(c))
+						++char_count_;
+					else if (isSpace(c))
+						++blank_count_;
+				}
+			}
+		}
+		dit.forwardPos();
+	}
+}
+
+void Buffer::updateStatistics(DocIterator & from, DocIterator & to, bool skipNoOutput) const
+{
+	d->updateStatistics(from, to, skipNoOutput);
+}
+
+int Buffer::wordCount() const
+{
+	return d->wordCount();
+}
+
+int Buffer::charCount(bool with_blanks) const
+{
+	return d->charCount(with_blanks);
+}
+	
 Buffer::ReadStatus Buffer::reload()
 {
 	setBusy(true);

@@ -655,6 +655,16 @@ public:
 	///
 	void checkChildBuffers();
 
+	/// compute statistics between \p from and \p to
+	/// \p from initial position
+	/// \p to points to the end position
+	/// \p skipNoOutput if notes etc. should be ignored
+	void updateStatistics(DocIterator & from, DocIterator & to,
+						  bool skipNoOutput = true) const;
+	/// statistics accessor functions
+	int wordCount() const;
+	int charCount(bool with_blanks) const;
+
 private:
 	/// Change name of buffer. Updates "read-only" flag.
 	void setFileName(support::FileName const & fname);
