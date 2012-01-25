@@ -548,6 +548,7 @@ def checkFormatEntries(dtl_tools):
 \Format literate   nw      NoWeb                  N  ""	"%%"	"document,menu=export"
 \Format sweave     Rnw    "Sweave"                S  "" "%%"	"document,menu=export"
 \Format r          R      "R/S code"              "" "" "%%"	"document,menu=export"
+\Format knitr      Rnw    "Rnw (knitr)"           "" "" "%%"  "document,menu=export"
 \Format lilypond   ly     "LilyPond music"        "" ""	"%%"	"vector"
 \Format lilypond-book    lytex "LilyPond book (LaTeX)"   "" ""	"%%"	"document,menu=export"
 \Format latex      tex    "LaTeX (plain)"         L  ""	"%%"	"document,menu=export"
@@ -670,8 +671,17 @@ def checkConverterEntries():
 \converter sweave   xetex      "%%"	""
 \converter sweave   luatex     "%%"	""'''])
     #
+    checkProg('a knitr -> LaTeX converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxknitr.R $$p$$i $$p$$o $$e $$r'],
+        rc_entry = [r'''\converter knitr   latex      "%%"	""
+\converter knitr   pdflatex   "%%"	""
+\converter knitr   xetex      "%%"	""
+\converter knitr   luatex     "%%"	""'''])
+    #
     checkProg('a Sweave -> R/S code converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxstangle.R $$i $$e $$r'], 
         rc_entry = [ r'\converter sweave      r      "%%"    ""' ])
+    #
+    checkProg('a knitr -> R/S code converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxknitr.R $$p$$i $$p$$o $$e $$r tangle'], 
+        rc_entry = [ r'\converter knitr      r      "%%"    ""' ])
     #
     checkProg('an HTML -> LaTeX converter', ['html2latex $$i', 'gnuhtml2latex $$i',
         'htmltolatex -input $$i -output $$o', 'htmltolatex.jar -input $$i -output $$o'],

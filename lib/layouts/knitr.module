@@ -1,0 +1,82 @@
+#\DeclareLyXModule[knitr->latex]{Rnw (knitr)}
+#DescriptionBegin
+#Uses the knitr package in R for dynamic report generation. This R package has to be installed for this module to work: install.packages('knitr'). Note it depends on R >= 2.14.1.
+#For more info see http://yihui.github.com/knitr
+#DescriptionEnd
+#Category: literate
+#Excludes: lilypond | sweave
+
+Format 35
+OutputType             literate
+OutputFormat           knitr
+
+Style Chunk
+	Category              Sweave
+	LatexType             Paragraph
+	LatexName             dummy
+	Margin                static
+	Align                 Left
+	AlignPossible         Block, Left, Right, Center
+	TopSep                0.7
+	BottomSep             0.7
+	NewLine               0
+	FreeSpacing           1
+	PassThru              1
+	ParbreakIsNewline     1
+	Spellcheck	      0
+	## What is LabelType used for?
+	LabelType             Static
+	TextFont
+	  Color               latex
+	  Family              Typewriter
+	EndFont
+End
+
+Style Scrap
+	ObsoletedBy           Chunk
+End
+
+InsetLayout "Flex:Sweave Options"
+	LabelString           "Sweave opts"
+	LatexType             Command
+	LaTexName             SweaveOpts
+	LyXType               Custom
+	Decoration            Classic
+	Font
+	  Color               latex
+	  Family              typewriter
+	EndFont
+	LabelFont
+	  Color               latex
+	  Size                Small
+	EndFont
+	MultiPar              false
+	PassThru              1
+	ParbreakIsNewline     1
+	Spellcheck	      0
+	FreeSpacing           true
+	ForceLTR              true
+End
+
+InsetLayout "Flex:S/R expression"
+	LabelString           "S/R expr"
+	LatexType             Command
+	LaTexName             Sexpr
+	LyXType               Custom
+	Decoration            Conglomerate
+	Font
+	  Color               latex
+	  Family              typewriter
+	EndFont
+	LabelFont
+	  Color               latex
+	  Size                Small
+	EndFont
+	MultiPar              false
+	PassThru              1
+	ParbreakIsNewline     1
+	Spellcheck	      0
+	FreeSpacing           true
+	ForceLTR              true
+End
+

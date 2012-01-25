@@ -252,8 +252,9 @@ dist_examples_DATA = \
 	examples/iecc05.fen \
 	examples/iecc07.fen \
 	examples/iecc12.fen \
-	examples/instant_preview.lyx \
 	examples/landslide.lyx \
+	examples/instant_preview.lyx \
+	examples/knitr.lyx \
 	examples/lilypond.lyx \
 	examples/linguistics.lyx \
 	examples/listerrors.lyx \
@@ -1468,6 +1469,7 @@ dist_layouts_DATA =\
 	layouts/svmult.layout \
 	layouts/svprobth.layout \
 	layouts/sweave.module \
+	layouts/knitr.module \
 	layouts/tabs-within-sections.module \
 	layouts/tarticle.layout \
 	layouts/tbook.layout \
@@ -1502,6 +1504,7 @@ dist_layouts_DATA =\
 scriptsdir = $(pkgdatadir)/scripts
 dist_scripts_DATA = \
 	scripts/bash_completion \
+	scripts/lyxknitr.R \
 	scripts/lyxstangle.R \
 	scripts/lyxsweave.R
 # We use DATA now instead of PYTHON because automake 1.11.2 complains.
