@@ -2,7 +2,7 @@
 
 ACLOCAL="aclocal -I m4 -I config"
 AUTOHEADER="autoheader"
-AUTOMAKE="automake --add-missing --copy --foreign"
+AUTOMAKE="automake --add-missing --force-missing --copy --foreign"
 AUTOCONF="autoconf"
 
 # Discover what version of automake we are using.
