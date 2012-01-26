@@ -235,3 +235,5 @@ What's new
 
 - Fix installation of python files (bug 6080, bug 7990).
 
+- When building LyX package on Mac don't call configure with --build anymore.
+  It's guessed by configure anyway.
