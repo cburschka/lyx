@@ -3,8 +3,9 @@ What's new in version 2.0.3?
 
 LyX 2.0.3 still requires a python 2 interpreter, but steps have been taken
 to avoid problems on systems where python 3 is the default python interpreter.
-A python 2 interpreter is now automatically detected and used; distribution
-maintainers are encouraged to verify their patch sets.
+A python 2 interpreter is now automatically detected and used. Additionally,
+byte-compiled python files changed their installation target.
+Distribution maintainers are encouraged to verify their patch sets.
 
 
 What's new in version 2.0.2?
