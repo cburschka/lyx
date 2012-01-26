@@ -252,9 +252,9 @@ dist_examples_DATA = \
 	examples/iecc05.fen \
 	examples/iecc07.fen \
 	examples/iecc12.fen \
-	examples/landslide.lyx \
 	examples/instant_preview.lyx \
 	examples/knitr.lyx \
+	examples/landslide.lyx \
 	examples/lilypond.lyx \
 	examples/linguistics.lyx \
 	examples/listerrors.lyx \
@@ -1398,6 +1398,7 @@ dist_layouts_DATA =\
 	layouts/jsbook.layout \
 	layouts/jss.layout \
 	layouts/kluwer.layout \
+	layouts/knitr.module \
 	layouts/latex8.layout \
 	layouts/letter.layout \
 	layouts/lettre.layout \
@@ -1469,7 +1470,6 @@ dist_layouts_DATA =\
 	layouts/svmult.layout \
 	layouts/svprobth.layout \
 	layouts/sweave.module \
-	layouts/knitr.module \
 	layouts/tabs-within-sections.module \
 	layouts/tarticle.layout \
 	layouts/tbook.layout \
