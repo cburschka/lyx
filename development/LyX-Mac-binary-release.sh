@@ -226,8 +226,6 @@ LyxAppPrefix="${LyxAppDir}.app"
 # if zip file is needed... remove the comment sign
 #LyxAppZip="${LyxAppPrefix}.zip"
 
-BuildSystem=`"${LyxSourceDir}/config/config.guess"`
-
 # ---------------------------------
 # DON'T MODIFY ANYTHING BELOW HERE!
 # ---------------------------------
@@ -328,7 +326,6 @@ if [ -d "${HunSpellSourceDir}" -a ! -f "${HunSpellInstallHdr}" ]; then
 		"${HunSpellSourceDir}/configure"\
 			--prefix="${HunSpellInstallDir}"\
 			${HunspellConfigureOptions}
-			#--host="${HOSTSYSTEM}" ${BuildSystem:+"--build=${BuildSystem}"}
 		make && make install${strip}
 		for file in ${FILE_LIST} ; do
 			if [ -f "${HunSpellInstallDir}"/lib/${file} ]; then
@@ -499,7 +496,7 @@ build_lyx() {
 			--prefix="${LyxAppPrefix}" --with-version-suffix="-${LyXVersionSuffix}"\
 			${QtInstallDir:+"--with-qt4-dir=${QtInstallDir}"} \
 			${LyXConfigureOptions}\
-			--host="${HOSTSYSTEM}" --build="${BuildSystem}" --enable-build-type=rel && \
+			--enable-build-type=rel && \
 		make -j2 && make install${strip}
 		for file in ${LYX_FILE_LIST} ; do
 			if [ -f "${LYX_BUNDLE_PATH}/${file}" ]; then
