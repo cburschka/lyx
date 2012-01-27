@@ -759,14 +759,37 @@ void Tabular::deleteRow(row_type const row)
 
 void Tabular::copyRow(row_type const row)
 {
-	row_info.insert(row_info.begin() + row, row_info[row]);
-	cell_info.insert(cell_info.begin() + row, cell_info[row]);
-
-	if (buffer().params().trackChanges)
-		for (col_type c = 0; c < ncols(); ++c)
+	row_info.insert(row_info.begin() + row + 1, RowData(row_info[row]));
+	cell_info.insert(cell_info.begin() + row + 1, 
+		cell_vector(0, CellData(buffer_)));
+	
+	for (col_type c = 0; c < ncols(); ++c) {
+		cell_info[row + 1].insert(cell_info[row + 1].begin() + c,
+			CellData(cell_info[row][c]));
+		if (buffer().params().trackChanges)
 			cell_info[row + 1][c].inset->setChange(Change(Change::INSERTED));
-
+		if (cell_info[row][c].multirow == CELL_BEGIN_OF_MULTIROW)
+			cell_info[row + 1][c].multirow = CELL_PART_OF_MULTIROW;
+	}
+	
 	updateIndexes();
+	for (col_type c = 0; c < ncols(); ++c) {
+		if (isPartOfMultiRow(row, c))
+			continue;
+		// inherit line settings
+		idx_type const i = cellIndex(row + 1, c);
+		idx_type const j = cellIndex(row, c);
+		setLeftLine(i, leftLine(j));
+		setRightLine(i, rightLine(j));
+		setTopLine(i, topLine(j));
+		if (topLine(j) && bottomLine(j)) {
+			setBottomLine(i, true);
+			setBottomLine(j, false);
+		}
+		// mark track changes
+		if (buffer().params().trackChanges)
+			cellInfo(i).inset->setChange(Change(Change::INSERTED));
+	}
 }
 
 
@@ -826,14 +849,30 @@ void Tabular::deleteColumn(col_type const col)
 void Tabular::copyColumn(col_type const col)
 {
 	BufferParams const & bp = buffer().params();
-	column_info.insert(column_info.begin() + col, column_info[col]);
+	column_info.insert(column_info.begin() + col + 1, ColumnData(column_info[col]));
 
 	for (row_type r = 0; r < nrows(); ++r) {
-		cell_info[r].insert(cell_info[r].begin() + col, cell_info[r][col]);
+		cell_info[r].insert(cell_info[r].begin() + col + 1, CellData(cell_info[r][col]));
 		if (bp.trackChanges)
 			cell_info[r][col + 1].inset->setChange(Change(Change::INSERTED));
+		if (cell_info[r][col].multicolumn == CELL_BEGIN_OF_MULTICOLUMN)
+			cell_info[r][col + 1].multicolumn = CELL_PART_OF_MULTICOLUMN;
 	}
 	updateIndexes();
+	for (row_type r = 0; r < nrows(); ++r) {
+		// inherit line settings
+		idx_type const i = cellIndex(r, col + 1);
+		idx_type const j = cellIndex(r, col);
+		setBottomLine(i, bottomLine(j));
+		setTopLine(i, topLine(j));
+		setLeftLine(i, leftLine(j));
+		if (rightLine(j) && rightLine(j)) {
+			setRightLine(i, true);
+			setRightLine(j, false);
+		}
+		if (buffer().params().trackChanges)
+			cellInfo(i).inset->setChange(Change(Change::INSERTED));
+	}
 }
 
 

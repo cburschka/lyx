@@ -181,6 +181,8 @@ What's new
 
 - Fix crash when inserting a float around multiple display maths (bug 7974).
 
+- Fix crash when copying table columns or rows (bug 7644).
+
 - Update citation labels when the BibTeX file changes (bug 7499).
 
 - Mark Buffer dirty when changing branch activation status (bug 7872). Sadly,
