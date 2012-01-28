@@ -24,7 +24,11 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix Sweave support for document encoding with R >= 2.13.1 (bug 7876).
+- Fix Sweave support for document encoding with R >= 2.13.1 (bug
+  7876).
+
+- Add support for `knitr', an alternative for Sweave on R >= 2.14.1
+  (bug 7887).
 
 - Improved output of Comment notes for XHTML. These are now div's that are
   hidden by the default CSS.
