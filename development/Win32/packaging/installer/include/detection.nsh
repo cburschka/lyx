@@ -136,6 +136,7 @@ Function MissingPrograms
   ReadRegStr $0 HKLM "Software\Classes\Applications\gnumeric.exe\shell\Open\command" ""
   ${if} $0 != ""
    StrCpy $0 $0 -18 # remove "gnumeric.exe" "%1""
+   StrCpy $0 $0 "" 1 # remove the leading quote
    StrCpy $GnumericPath $0
   ${endif}
 

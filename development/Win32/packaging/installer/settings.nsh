@@ -12,7 +12,7 @@ These typically need to be modified for each LyX release
 !define APP_VERSION_MAJOR 2
 !define APP_VERSION_MINOR 0
 !define APP_VERSION_REVISION 2
-!define APP_VERSION_BUILD 4 # Start with 1 for the installer releases of each version
+!define APP_VERSION_BUILD 5 # Start with 1 for the installer releases of each version
 
 !define APP_VERSION "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_VERSION_REVISION}" # Version to display
 
@@ -50,12 +50,12 @@ These typically need to be modified for each LyX release
 
 !define JabRefVersion "2.7"
 !define MiKTeXDeliveredVersion "2.9"
-!define ImageMagickVersion "6.7.4"
+!define ImageMagickVersion "6.7.5"
  
 # definitions for the Complete installer
 !if ${SETUPTYPE} == BUNDLE
  !define JabRefInstall "external\JabRef-2.7-setup.exe"
- !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.4250.exe"
+ !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.4407.exe"
  !define SIZE_DOWNLOAD_LATEX 160106
  !define SIZE_LATEX 380000
 !endif
