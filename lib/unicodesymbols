@@ -1581,17 +1581,17 @@
 0x2004 "\\;"                      "" "" "\\;" "" # THREE-PER-EM SPACE
 0x2005 "\\:"                      "" "" "\\:" "" # FOUR-PER-EM SPACE
 0x2006 "\\,"                      "" "" "\\," "" # SIX-PER-EM SPACE
-#0x2007 ""                         "" "" "" "" # FIGURE SPACE
-#0x2008 ""                         "" "" "" "" # PUNCTUATION SPACE
-0x2009 "\\,"                      "" "" "\\," "" # THIN SPACE
-#0x200a ""                         "" "" "" "" # HAIR SPACE
-#0x200b ""                         "" "" "" "" # ZERO WIDTH SPACE
-#0x200c ""                         "" "" "" "" # ZERO WIDTH NON-JOINER
+0x2007 "\\LyXFigureSpace" "\\newcommand*\\LyXFigureSpace{\\hphantom{0}}" "" "\\LyXFigureSpace" "\\newcommand*\\LyXFigureSpace{\\hphantom{0}}" # FIGURE SPACE
+0x2008 "\\LyXPunctSpace" "\\newcommand*\\LyXPunctSpace{\\hphantom{,}}" "" "\\LyXPunctSpace" "\\newcommand*\\LyXPunctSpace{\\hphantom{,}}" # PUNCTUATION SPACE
+0x2009 "\\LyXThinSpace" "\\newcommand*\\LyXThinSpace{\\,\\hspace{0pt}}" "" "\\LyXThinSpace" "\\newcommand*\\LyXThinSpace{\\,\\hspace{0pt}}" # THIN SPACE
+0x200a "\\LyXHairSpace" "\\newcommand*\\LyXHairSpace{\\hspace{1pt}}" "" "\\LyXHairSpace" "\\newcommand*\\LyXHairSpace{\\hspace{1pt}}" # HAIR SPACE
+0x200b "\\LyXZeroWidthSpace" "\\newcommand*\\LyXZeroWidthSpace{\\hspace{0pt}}" "" "\\LyXZeroWidthSpace" "\\newcommand*\\LyXZeroWidthSpace{\\hspace{0pt}}" # ZERO WIDTH SPACE
+0x200c "\\textcompwordmark"       "" "" "" "" # ZERO WIDTH NON-JOINER
 #0x200d ""                         "" "" "" "" # ZERO WIDTH JOINER
 #0x200e ""                         "" "" "" "" # LEFT-TO-RIGHT MARK
 #0x200f ""                         "" "" "" "" # RIGHT-TO-LEFT MARK
 0x2010 "-"                        "" "" "" "" # HYPHEN # identic in LaTeX to FIGURE DASH
-#0x2011 ""                         "" "" "" "" # NON-BREAKING HYPHEN
+0x2011 "\\nobreakdash-"           "amsmath" "" "" "" # NON-BREAKING HYPHEN
 0x2012 "-"                        "" "" # FIGURE DASH
 0x2013 "\\textendash"             "" "" # EN DASH
 0x2014 "\\textemdash"             "" "" # EM DASH
@@ -1606,7 +1606,7 @@
 0x201c "\\textquotedblleft"       "" "" # LEFT DOUBLE QUOTATION MARK
 0x201d "\\textquotedblright"      "" "" # RIGHT DOUBLE QUOTATION MARK
 0x201e "\\quotedblbase"           "" "" # DOUBLE LOW-9 QUOTATION MARK
-#0x201f ""                         "" "" # DOUBLE LOW-REVERSED-9 QUOTATION MARK
+#0x201f ""                         "" "" # DOUBLE HIGH-REVERSED-9 QUOTATION MARK
 0x2020 "\\dag"                    "" "" "\\dagger" "" # DAGGER
 0x2021 "\\ddag"                   "" "" "\\ddagger" "" # DOUBLE DAGGER
 0x2022 "\\textbullet"             "textcomp" "" # BULLET
@@ -1622,7 +1622,7 @@
 #0x202c ""                         "" "" "" "" # POP DIRECTIONAL FORMATTING
 #0x202d ""                         "" "" "" "" # LEFT-TO-RIGHT OVERRIDE
 #0x202e ""                         "" "" "" "" # RIGHT-TO-LEFT OVERRIDE
-#0x202f ""                         "" "" "" "" # NARROW NO-BREAK SPACE
+0x202f "\\,"                      "" "" "\\," "" # NARROW NO-BREAK SPACE
 0x2030 "\\textperthousand"        "textcomp" "" # PER MILLE SIGN
 0x2031 "\\textpertenthousand"     "textcomp" "" # PER TEN THOUSAND SIGN
 0x2032 "\\textasciiacute"         "textcomp" "" "\\prime" "" # PRIME

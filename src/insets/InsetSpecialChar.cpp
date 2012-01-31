@@ -243,8 +243,10 @@ int InsetSpecialChar::plaintext(odocstream & os, OutputParams const &) const
 {
 	switch (kind_) {
 	case HYPHENATION:
-	case LIGATURE_BREAK:
 		return 0;
+	case LIGATURE_BREAK:
+		os.put(0x200c);
+		return 1;
 	case END_OF_SENTENCE:
 		os << '.';
 		return 1;
@@ -258,7 +260,7 @@ int InsetSpecialChar::plaintext(odocstream & os, OutputParams const &) const
 		os << '/';
 		return 1;
 	case NOBREAKDASH:
-		os << '-';
+		os.put(0x2011);
 		return 1;
 	}
 	return 0;
@@ -295,7 +297,9 @@ docstring InsetSpecialChar::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
 	switch (kind_) {
 	case HYPHENATION:
+		break;
 	case LIGATURE_BREAK:
+		xs << XHTMLStream::ESCAPE_NONE << "&#8204;";
 		break;
 	case END_OF_SENTENCE:
 		xs << '.';
@@ -310,7 +314,7 @@ docstring InsetSpecialChar::xhtml(XHTMLStream & xs, OutputParams const &) const
 		xs << XHTMLStream::ESCAPE_NONE << "&frasl;";
 		break;
 	case NOBREAKDASH:
-		xs << '-';
+		xs << XHTMLStream::ESCAPE_NONE << "&#8209;";
 		break;
 	}
 	return docstring();
