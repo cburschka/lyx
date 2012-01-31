@@ -2987,31 +2987,13 @@ void GuiDocument::paramsToDialog()
 		InsetListingsParams(bp_.listings_params).separatedParams();
 	listingsModule->listingsED->setPlainText(toqstr(lstparams));
 
-	// Output
-	// update combobox with formats
-	updateDefaultFormat();
-	int index = outputModule->defaultFormatCO->findData(toqstr(
-		bp_.default_output_format));
-	// set to default if format is not found
-	if (index == -1)
-		index = 0;
-	outputModule->defaultFormatCO->setCurrentIndex(index);
+	// Fonts
 	bool const os_fonts_available =
 		bp_.baseClass()->outputType() == lyx::LATEX
 		&& LaTeXFeatures::isAvailable("fontspec");
 	fontModule->osFontsCB->setEnabled(os_fonts_available);
 	fontModule->osFontsCB->setChecked(
 		os_fonts_available && bp_.useNonTeXFonts);
-
-	outputModule->outputsyncCB->setChecked(bp_.output_sync);
-	outputModule->synccustomCB->setEditText(toqstr(bp_.output_sync_macro));
-
-	outputModule->mathimgSB->setValue(bp_.html_math_img_scale);
-	outputModule->mathoutCB->setCurrentIndex(bp_.html_math_output);
-	outputModule->strictCB->setChecked(bp_.html_be_strict);
-	outputModule->cssCB->setChecked(bp_.html_css_as_file);
-
-	// Fonts
 	updateFontsize(documentClass().opt_fontsize(),
 			bp_.fontsize);
 
@@ -3077,6 +3059,26 @@ void GuiDocument::paramsToDialog()
 		fontModule->fontencCO->setCurrentIndex(1);
 		fontModule->fontencLE->setText(toqstr(bp_.fontenc));
 	}
+
+	// Output
+	// This must be set _after_ fonts since updateDefaultFormat()
+	// checks osFontsCB settings.
+	// update combobox with formats
+	updateDefaultFormat();
+	int index = outputModule->defaultFormatCO->findData(toqstr(
+		bp_.default_output_format));
+	// set to default if format is not found
+	if (index == -1)
+		index = 0;
+	outputModule->defaultFormatCO->setCurrentIndex(index);
+
+	outputModule->outputsyncCB->setChecked(bp_.output_sync);
+	outputModule->synccustomCB->setEditText(toqstr(bp_.output_sync_macro));
+
+	outputModule->mathimgSB->setValue(bp_.html_math_img_scale);
+	outputModule->mathoutCB->setCurrentIndex(bp_.html_math_output);
+	outputModule->strictCB->setChecked(bp_.html_be_strict);
+	outputModule->cssCB->setChecked(bp_.html_css_as_file);
 
 	// paper
 	bool const extern_geometry =
