@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-01-16 09:46-0500\n"
+"POT-Creation-Date: 2012-01-31 09:56-0500\n"
 "PO-Revision-Date: 2011-11-25 02:23+0900\n"
 "Last-Translator: Koji Yokota <yokota33@gmail.com>\n"
 "Language-Team: Japanese <lyx-doc@lists.lyx.org>\n"
@@ -496,8 +496,8 @@ msgid "Remove the selected branch"
 msgstr "選択した派生枝を削除"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3752
-#: src/Buffer.cpp:3765 src/frontends/qt4/ui_IndicesUi.h:219
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3768
+#: src/Buffer.cpp:3781 src/frontends/qt4/ui_IndicesUi.h:219
 msgid "&Remove"
 msgstr "削除(&R)"
 
@@ -530,8 +530,8 @@ msgstr "すべて追加(&L)"
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:205
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
-#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1119
-#: src/Buffer.cpp:2341 src/Buffer.cpp:3727 src/Buffer.cpp:3790
+#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1135
+#: src/Buffer.cpp:2357 src/Buffer.cpp:3743 src/Buffer.cpp:3806
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:179
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1829
@@ -2717,7 +2717,7 @@ msgstr "数式の出力に使用する形式。"
 msgid "MathML"
 msgstr "MathML"
 
-#: src/frontends/qt4/ui/OutputUi.ui:162 lib/configure.py:635
+#: src/frontends/qt4/ui/OutputUi.ui:162 lib/configure.py:636
 msgid "HTML"
 msgstr "HTML"
 
@@ -2905,7 +2905,7 @@ msgstr "最長のラベル(&N)"
 msgid "Line &spacing"
 msgstr "行間(&S)"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1820
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1821
 #: src/frontends/qt4/GuiDocument.cpp:692
 msgid "Single"
 msgstr "なし"
@@ -2914,7 +2914,7 @@ msgstr "なし"
 msgid "1.5"
 msgstr "半行"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1826
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1827
 #: src/frontends/qt4/GuiDocument.cpp:696
 msgid "Double"
 msgstr "一行"
@@ -6305,7 +6305,7 @@ msgstr "副所属"
 
 #: lib/layouts/achemso.layout:110 lib/layouts/lettre.layout:41
 #: lib/layouts/lettre.layout:342 lib/layouts/scrlttr2.layout:191
-#: lib/configure.py:651
+#: lib/configure.py:652
 msgid "Fax"
 msgstr "ファックス"
 
@@ -8916,6 +8916,14 @@ msgstr "節終了"
 msgid "Close Section"
 msgstr "節終了"
 
+#: lib/layouts/moderncv.layout:173 lib/layouts/stdlayouts.inc:74
+msgid "--Separator--"
+msgstr "－分離線－"
+
+#: lib/layouts/moderncv.layout:181 lib/layouts/stdlayouts.inc:83
+msgid "--- Separate Environment ---"
+msgstr "－－ここから新たな環境－－"
+
 #: lib/layouts/paper.layout:147
 msgid "SubTitle"
 msgstr "サブタイトル"
@@ -9878,8 +9886,8 @@ msgstr "改訂所見"
 msgid "FirstName"
 msgstr "名"
 
-#: lib/layouts/literate-scrap.inc:12 lib/layouts/noweb.module:11
-#: lib/layouts/sweave.module:45
+#: lib/layouts/literate-scrap.inc:12 lib/layouts/knitr.module:35
+#: lib/layouts/noweb.module:11 lib/layouts/sweave.module:45
 msgid "Scrap"
 msgstr "スクラップ"
 
@@ -10080,14 +10088,6 @@ msgstr "オプション"
 #: lib/layouts/stdinsets.inc:444
 msgid "Preview"
 msgstr "プレビュー"
-
-#: lib/layouts/stdlayouts.inc:74
-msgid "--Separator--"
-msgstr "－分離線－"
-
-#: lib/layouts/stdlayouts.inc:83
-msgid "--- Separate Environment ---"
-msgstr "－－ここから新たな環境－－"
 
 #: lib/layouts/stdsections.inc:15 lib/layouts/svcommon.inc:118
 msgid "Part \\thepart"
@@ -10552,6 +10552,47 @@ msgstr ""
 msgid "Initial"
 msgstr "頭文字"
 
+#: lib/layouts/knitr.module:2 lib/configure.py:584
+msgid "Rnw (knitr)"
+msgstr ""
+
+#: lib/layouts/knitr.module:6
+msgid ""
+"Uses the knitr package in R for dynamic report generation. This R package "
+"has to be installed for this module to work: install.packages('knitr'). Note "
+"it depends on R >= 2.14.1. For more info see http://yihui.github.com/knitr"
+msgstr ""
+
+#: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
+#: lib/layouts/sweave.module:6
+msgid "literate"
+msgstr "文芸"
+
+#: lib/layouts/knitr.module:13 lib/layouts/sweave.module:23
+msgid "Chunk"
+msgstr "単位塊"
+
+#: lib/layouts/knitr.module:14 lib/layouts/sweave.module:2
+#: lib/layouts/sweave.module:24 lib/configure.py:582
+msgid "Sweave"
+msgstr "Sweave"
+
+#: lib/layouts/knitr.module:39 lib/layouts/sweave.module:49
+msgid "Sweave Options"
+msgstr "Sweaveオプション"
+
+#: lib/layouts/knitr.module:40 lib/layouts/sweave.module:50
+msgid "Sweave opts"
+msgstr "Sweaveオプション"
+
+#: lib/layouts/knitr.module:61 lib/layouts/sweave.module:71
+msgid "S/R expression"
+msgstr "S/R表現"
+
+#: lib/layouts/knitr.module:62 lib/layouts/sweave.module:72
+msgid "S/R expr"
+msgstr "S/R表現"
+
 #: lib/layouts/lilypond.module:2
 msgid "LilyPond Book"
 msgstr "LilyPond Book"
@@ -10703,15 +10744,6 @@ msgstr "NoWeb"
 msgid "Allows to use Noweb as a literate programming tool."
 msgstr "Nowebを文芸的プログラミングツールとして使用することを許可する。"
 
-#: lib/layouts/noweb.module:5 lib/layouts/sweave.module:6
-msgid "literate"
-msgstr "文芸"
-
-#: lib/layouts/sweave.module:2 lib/layouts/sweave.module:24
-#: lib/configure.py:582
-msgid "Sweave"
-msgstr "Sweave"
-
 #: lib/layouts/sweave.module:6
 msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
@@ -10719,26 +10751,6 @@ msgid ""
 msgstr ""
 "統計言語SまたはRを、Sweave()関数経由で文芸的プログラミングツールとして使用す"
 "ることを許可する。詳しくは、LyX用例ファイルのsweave.lyxを参照のこと。"
-
-#: lib/layouts/sweave.module:23
-msgid "Chunk"
-msgstr "単位塊"
-
-#: lib/layouts/sweave.module:49
-msgid "Sweave Options"
-msgstr "Sweaveオプション"
-
-#: lib/layouts/sweave.module:50
-msgid "Sweave opts"
-msgstr "Sweaveオプション"
-
-#: lib/layouts/sweave.module:71
-msgid "S/R expression"
-msgstr "S/R表現"
-
-#: lib/layouts/sweave.module:72
-msgid "S/R expr"
-msgstr "S/R表現"
 
 #: lib/layouts/sweave.module:93 lib/layouts/sweave.module:94
 msgid "Sweave Input File"
@@ -16385,268 +16397,268 @@ msgstr "Sweave|S"
 msgid "R/S code"
 msgstr "R/Sコード"
 
-#: lib/configure.py:584
+#: lib/configure.py:585
 msgid "LilyPond music"
 msgstr "LilyPond音楽"
 
-#: lib/configure.py:585
+#: lib/configure.py:586
 msgid "LilyPond book (LaTeX)"
 msgstr "LilyPond book (LaTeX)"
 
-#: lib/configure.py:586
+#: lib/configure.py:587
 msgid "LaTeX (plain)"
 msgstr "LaTeX (plain)"
 
-#: lib/configure.py:586
+#: lib/configure.py:587
 msgid "LaTeX (plain)|L"
 msgstr "LaTeX (plain)|L"
 
-#: lib/configure.py:587
+#: lib/configure.py:588
 msgid "LaTeX (LuaTeX)"
 msgstr "LaTeX (LuaTeX)"
 
-#: lib/configure.py:588
+#: lib/configure.py:589
 msgid "LaTeX (pdflatex)"
 msgstr "LaTeX (pdflatex)"
 
-#: lib/configure.py:589
+#: lib/configure.py:590
 msgid "LaTeX (XeTeX)"
 msgstr "LaTeX (XeTeX)"
 
-#: lib/configure.py:590
+#: lib/configure.py:591
 msgid "Plain text"
 msgstr "平文"
 
-#: lib/configure.py:590
+#: lib/configure.py:591
 msgid "Plain text|a"
 msgstr "平文(A)|A"
 
-#: lib/configure.py:591
+#: lib/configure.py:592
 msgid "Plain text (pstotext)"
 msgstr "平文（pstotext）"
 
-#: lib/configure.py:592
+#: lib/configure.py:593
 msgid "Plain text (ps2ascii)"
 msgstr "平文（ps2ascii）"
 
-#: lib/configure.py:593
+#: lib/configure.py:594
 msgid "Plain text (catdvi)"
 msgstr "平文（catdvi）"
 
-#: lib/configure.py:594
+#: lib/configure.py:595
 msgid "Plain Text, Join Lines"
 msgstr "平文(行を連結して)"
 
-#: lib/configure.py:597
+#: lib/configure.py:598
 msgid "Gnumeric spreadsheet"
 msgstr "Gnumeric表計算表"
 
-#: lib/configure.py:598
+#: lib/configure.py:599
 msgid "Excel spreadsheet"
 msgstr "Excel表計算表"
 
-#: lib/configure.py:599
+#: lib/configure.py:600
 msgid "OpenOffice spreadsheet"
 msgstr "OpenOffice表計算表"
 
-#: lib/configure.py:602 lib/configure.py:604
+#: lib/configure.py:603 lib/configure.py:605
 msgid "LyXHTML"
 msgstr "LyXHTML"
 
-#: lib/configure.py:602 lib/configure.py:604
+#: lib/configure.py:603 lib/configure.py:605
 msgid "LyXHTML|y"
 msgstr "LyXHTML|y"
 
-#: lib/configure.py:611 src/frontends/qt4/GuiLog.cpp:230
+#: lib/configure.py:612 src/frontends/qt4/GuiLog.cpp:230
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: lib/configure.py:616
+#: lib/configure.py:617
 msgid "EPS"
 msgstr "EPS"
 
-#: lib/configure.py:617
+#: lib/configure.py:618
 msgid "Postscript"
 msgstr "Postscript"
 
-#: lib/configure.py:617
+#: lib/configure.py:618
 msgid "Postscript|t"
 msgstr "Postscript|t"
 
-#: lib/configure.py:621
+#: lib/configure.py:622
 msgid "PDF (ps2pdf)"
 msgstr "PDF (ps2pdf)"
 
-#: lib/configure.py:621
+#: lib/configure.py:622
 msgid "PDF (ps2pdf)|P"
 msgstr "PDF (ps2pdf)|P"
 
-#: lib/configure.py:622
+#: lib/configure.py:623
 msgid "PDF (pdflatex)"
 msgstr "PDF (pdflatex)"
 
-#: lib/configure.py:622
+#: lib/configure.py:623
 msgid "PDF (pdflatex)|F"
 msgstr "PDF (pdflatex)|F"
 
-#: lib/configure.py:623
+#: lib/configure.py:624
 msgid "PDF (dvipdfm)"
 msgstr "PDF (dvipdfm)"
 
-#: lib/configure.py:623
+#: lib/configure.py:624
 msgid "PDF (dvipdfm)|m"
 msgstr "PDF (dvipdfm)|m"
 
-#: lib/configure.py:624
+#: lib/configure.py:625
 msgid "PDF (XeTeX)"
 msgstr "PDF (XeTeX)"
 
-#: lib/configure.py:624
+#: lib/configure.py:625
 msgid "PDF (XeTeX)|X"
 msgstr "PDF (XeTeX)|X"
 
-#: lib/configure.py:625
+#: lib/configure.py:626
 msgid "PDF (LuaTeX)"
 msgstr "PDF (LuaTeX)"
 
-#: lib/configure.py:625
+#: lib/configure.py:626
 msgid "PDF (LuaTeX)|u"
 msgstr "PDF (LuaTeX)|u"
 
-#: lib/configure.py:628
+#: lib/configure.py:629
 msgid "DVI"
 msgstr "DVI"
 
-#: lib/configure.py:628
+#: lib/configure.py:629
 msgid "DVI|D"
 msgstr "DVI|D"
 
-#: lib/configure.py:629
+#: lib/configure.py:630
 msgid "DVI (LuaTeX)"
 msgstr "DVI (LuaTeX)"
 
-#: lib/configure.py:629
+#: lib/configure.py:630
 msgid "DVI (LuaTeX)|V"
 msgstr "DVI (LuaTeX)|V"
 
-#: lib/configure.py:632
+#: lib/configure.py:633
 msgid "DraftDVI"
 msgstr "DraftDVI"
 
-#: lib/configure.py:635
+#: lib/configure.py:636
 msgid "HTML|H"
 msgstr "HTML|H"
 
-#: lib/configure.py:638
+#: lib/configure.py:639
 msgid "Noteedit"
 msgstr "Noteedit"
 
-#: lib/configure.py:641
+#: lib/configure.py:642
 msgid "OpenDocument"
 msgstr "OpenDocument"
 
-#: lib/configure.py:642
+#: lib/configure.py:643
 msgid "OpenOffice.Org (sxw)"
 msgstr "OpenOffice.Org (sxw)"
 
-#: lib/configure.py:645
+#: lib/configure.py:646
 msgid "Rich Text Format"
 msgstr "リッチテキスト形式"
 
-#: lib/configure.py:646
+#: lib/configure.py:647
 msgid "MS Word"
 msgstr "MS Word"
 
-#: lib/configure.py:646
+#: lib/configure.py:647
 msgid "MS Word|W"
 msgstr "MS Word|W"
 
-#: lib/configure.py:649
+#: lib/configure.py:650
 msgid "date command"
 msgstr "dateコマンド"
 
-#: lib/configure.py:650
+#: lib/configure.py:651
 msgid "Table (CSV)"
 msgstr "表（CSV）"
 
-#: lib/configure.py:652 src/frontends/qt4/GuiView.cpp:1150
+#: lib/configure.py:653 src/frontends/qt4/GuiView.cpp:1150
 #: src/frontends/qt4/GuiView.cpp:1151 src/mathed/MathMacroTemplate.cpp:543
 msgid "LyX"
 msgstr "LyX"
 
-#: lib/configure.py:653
+#: lib/configure.py:654
 msgid "LyX 1.3.x"
 msgstr "LyX 1.3.x"
 
-#: lib/configure.py:654
+#: lib/configure.py:655
 msgid "LyX 1.4.x"
 msgstr "LyX 1.4.x"
 
-#: lib/configure.py:655
+#: lib/configure.py:656
 msgid "LyX 1.5.x"
 msgstr "LyX 1.5.x"
 
-#: lib/configure.py:656
+#: lib/configure.py:657
 msgid "LyX 1.6.x"
 msgstr "LyX 1.6.x"
 
-#: lib/configure.py:657
+#: lib/configure.py:658
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK LyX 1.4.x (big5)"
 
-#: lib/configure.py:658
+#: lib/configure.py:659
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr "CJK LyX 1.4.x (euc-jp)"
 
-#: lib/configure.py:659
+#: lib/configure.py:660
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr "CJK LyX 1.4.x (euc-kr)"
 
-#: lib/configure.py:660
+#: lib/configure.py:661
 msgid "LyX Preview"
 msgstr "LyXプレビュー"
 
-#: lib/configure.py:661
+#: lib/configure.py:662
 msgid "LyX Preview (LilyPond book)"
 msgstr "LyXプレビュー (LilyPond book)"
 
-#: lib/configure.py:662
+#: lib/configure.py:663
 msgid "LyX Preview (pLaTeX)"
 msgstr "LyXプレビュー (pLaTeX)"
 
-#: lib/configure.py:663
+#: lib/configure.py:664
 msgid "PDFTEX"
 msgstr "PDFTEX"
 
-#: lib/configure.py:664
+#: lib/configure.py:665
 msgid "Program"
 msgstr "プログラム"
 
-#: lib/configure.py:665
+#: lib/configure.py:666
 msgid "PSTEX"
 msgstr "PSTEX"
 
-#: lib/configure.py:666 src/frontends/qt4/GuiClipboard.cpp:168
+#: lib/configure.py:667 src/frontends/qt4/GuiClipboard.cpp:168
 msgid "Windows Metafile"
 msgstr "Windowsメタファイル"
 
-#: lib/configure.py:667 src/frontends/qt4/GuiClipboard.cpp:167
+#: lib/configure.py:668 src/frontends/qt4/GuiClipboard.cpp:167
 msgid "Enhanced Metafile"
 msgstr "拡張メタファイル"
 
-#: lib/configure.py:668
+#: lib/configure.py:669
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
-#: lib/configure.py:755
+#: lib/configure.py:765
 msgid "LyXBlogger"
 msgstr "LyxBlogger"
 
-#: lib/configure.py:961
+#: lib/configure.py:971
 msgid "LyX Archive (zip)"
 msgstr "LyX書庫(zip)"
 
-#: lib/configure.py:964
+#: lib/configure.py:974
 msgid "LyX Archive (tar.gz)"
 msgstr "LyX書庫(tar.gz)"
 
@@ -16690,11 +16702,11 @@ msgstr ""
 msgid "Print document failed"
 msgstr "文書の印刷に失敗しました"
 
-#: src/Buffer.cpp:328
+#: src/Buffer.cpp:344
 msgid "Disk Error: "
 msgstr "ディスクエラー: "
 
-#: src/Buffer.cpp:329
+#: src/Buffer.cpp:345
 #, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
@@ -16702,55 +16714,55 @@ msgstr ""
 "LyXは作業ディレクトリ'%1$s'を作ることができませんでした(ひょっとしてディスク"
 "がいっぱいですか？)。"
 
-#: src/Buffer.cpp:440
+#: src/Buffer.cpp:456
 msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr "LyXは、未保存の変更がある文書を閉じようとしました！\n"
 
-#: src/Buffer.cpp:442
+#: src/Buffer.cpp:458
 msgid "Attempting to close changed document!"
 msgstr "変更のある文書を閉じようとしています！"
 
-#: src/Buffer.cpp:451
+#: src/Buffer.cpp:467
 msgid "Could not remove temporary directory"
 msgstr "作業ディレクトリを削除することができませんでした"
 
-#: src/Buffer.cpp:452
+#: src/Buffer.cpp:468
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "作業ディレクトリ%1$sを削除することができませんでした："
 
-#: src/Buffer.cpp:803
+#: src/Buffer.cpp:819
 msgid "Unknown document class"
 msgstr "不明な文書クラスです"
 
-#: src/Buffer.cpp:804
+#: src/Buffer.cpp:820
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "%1$sというクラスは登録されていないので，既定の文書クラスを使います。"
 
-#: src/Buffer.cpp:808 src/Text.cpp:484
+#: src/Buffer.cpp:824 src/Text.cpp:485
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "未知のトークン：%1$s %2$s\n"
 
-#: src/Buffer.cpp:812 src/Buffer.cpp:819 src/Buffer.cpp:842
+#: src/Buffer.cpp:828 src/Buffer.cpp:835 src/Buffer.cpp:858
 msgid "Document header error"
 msgstr "文書ヘッダのエラー"
 
-#: src/Buffer.cpp:818
+#: src/Buffer.cpp:834
 msgid "\\begin_header is missing"
 msgstr "\\begin_headerがありません"
 
-#: src/Buffer.cpp:841
+#: src/Buffer.cpp:857
 msgid "\\begin_document is missing"
 msgstr "\\begin_documentがありません"
 
-#: src/Buffer.cpp:854 src/Buffer.cpp:860 src/BufferView.cpp:1439
+#: src/Buffer.cpp:870 src/Buffer.cpp:876 src/BufferView.cpp:1439
 #: src/BufferView.cpp:1445
 msgid "Changes not shown in LaTeX output"
 msgstr "変更箇所はLaTeXの出力に表示されません。"
 
-#: src/Buffer.cpp:855 src/BufferView.cpp:1440
+#: src/Buffer.cpp:871 src/BufferView.cpp:1440
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -16762,7 +16774,7 @@ msgstr ""
 "これらのパッケージをインストールするか，LaTeXプリアンブルの中で\\lyxaddedと"
 "\\lyxdeletedを再定義してください"
 
-#: src/Buffer.cpp:861 src/BufferView.cpp:1446
+#: src/Buffer.cpp:877 src/BufferView.cpp:1446
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -16774,31 +16786,31 @@ msgstr ""
 "これらのパッケージをインストールするか，LaTeXプリアンブルの中で\\lyxaddedと"
 "\\lyxdeletedを再定義してください。"
 
-#: src/Buffer.cpp:899 src/BufferParams.cpp:414
+#: src/Buffer.cpp:915 src/BufferParams.cpp:414
 #: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:446
 #: src/insets/InsetIndex.cpp:710
 msgid "Index"
 msgstr "索引"
 
-#: src/Buffer.cpp:972 src/Buffer.cpp:1016
+#: src/Buffer.cpp:988 src/Buffer.cpp:1032
 msgid "Document format failure"
 msgstr "文書フォーマットに失敗"
 
-#: src/Buffer.cpp:973
+#: src/Buffer.cpp:989
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s は予期せず終了しました。おそらく壊れているものと思われます。"
 
-#: src/Buffer.cpp:1017
+#: src/Buffer.cpp:1033
 #, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "%1$s は読み取り可能なLyX文書ではありません。"
 
-#: src/Buffer.cpp:1042
+#: src/Buffer.cpp:1058
 msgid "Conversion failed"
 msgstr "変換に失敗しました"
 
-#: src/Buffer.cpp:1043
+#: src/Buffer.cpp:1059
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -16807,11 +16819,11 @@ msgstr ""
 "%1$s は違うバージョンのLyXファイルですが，これを変換するための作業ファイルを"
 "生成することができませんでした。"
 
-#: src/Buffer.cpp:1053
+#: src/Buffer.cpp:1069
 msgid "Conversion script not found"
 msgstr "変換スクリプトが見つかりません"
 
-#: src/Buffer.cpp:1054
+#: src/Buffer.cpp:1070
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -16820,11 +16832,11 @@ msgstr ""
 "%1$s は違うバージョンのLyXファイルですが，変換スクリプトlyx2lyxが見つかりませ"
 "んでした。"
 
-#: src/Buffer.cpp:1077 src/Buffer.cpp:1084
+#: src/Buffer.cpp:1093 src/Buffer.cpp:1100
 msgid "Conversion script failed"
 msgstr "変換スクリプトが失敗しました"
 
-#: src/Buffer.cpp:1078
+#: src/Buffer.cpp:1094
 #, c-format
 msgid ""
 "%1$s is from an older version of LyX and the lyx2lyx script failed to "
@@ -16832,7 +16844,7 @@ msgid ""
 msgstr ""
 "%1$s は旧版のLyXで作成されており，スクリプトlyx2lyxは変換に失敗 しました。"
 
-#: src/Buffer.cpp:1085
+#: src/Buffer.cpp:1101
 #, c-format
 msgid ""
 "%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
@@ -16840,16 +16852,16 @@ msgid ""
 msgstr ""
 "%1$s は新版のLyXファイルなので，スクリプトlyx2lyxが変換に失敗しました。"
 
-#: src/Buffer.cpp:1106 src/Buffer.cpp:3737 src/Buffer.cpp:3799
+#: src/Buffer.cpp:1122 src/Buffer.cpp:3753 src/Buffer.cpp:3815
 msgid "File is read-only"
 msgstr "ファイルが読込専用です"
 
-#: src/Buffer.cpp:1107
+#: src/Buffer.cpp:1123
 #, c-format
 msgid "The file %1$s cannot be written because it is marked as read-only."
 msgstr "ファイル「%1$s」は、読み込み専用のため書き込むことができません。"
 
-#: src/Buffer.cpp:1116
+#: src/Buffer.cpp:1132
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
@@ -16858,21 +16870,21 @@ msgstr ""
 "文書 %1$s は他のプログラムによって修正されています。本当にこのファイルに上書"
 "きしますか？"
 
-#: src/Buffer.cpp:1118
+#: src/Buffer.cpp:1134
 msgid "Overwrite modified file?"
 msgstr "修正されているファイルに上書きしますか？"
 
-#: src/Buffer.cpp:1119 src/Buffer.cpp:2341 src/Exporter.cpp:50
+#: src/Buffer.cpp:1135 src/Buffer.cpp:2357 src/Exporter.cpp:50
 #: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2116
 #: src/frontends/qt4/GuiView.cpp:2323
 msgid "&Overwrite"
 msgstr "上書き(&O)"
 
-#: src/Buffer.cpp:1148
+#: src/Buffer.cpp:1164
 msgid "Backup failure"
 msgstr "バックアップ失敗"
 
-#: src/Buffer.cpp:1149
+#: src/Buffer.cpp:1165
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -16881,46 +16893,46 @@ msgstr ""
 "バックアップファイル %1$s を生成することができません。\n"
 "ディレクトリが存在して書込可能になっていることを確認してください。"
 
-#: src/Buffer.cpp:1175
+#: src/Buffer.cpp:1191
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "文書を保存中です: %1$s..."
 
-#: src/Buffer.cpp:1190
+#: src/Buffer.cpp:1206
 msgid " could not write file!"
 msgstr "はファイルを書き込めませんでした!"
 
-#: src/Buffer.cpp:1198
+#: src/Buffer.cpp:1214
 msgid " done."
 msgstr "終わりました。"
 
-#: src/Buffer.cpp:1213
+#: src/Buffer.cpp:1229
 #, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: 文書「%1$s」を保存しようとしています\n"
 
-#: src/Buffer.cpp:1223 src/Buffer.cpp:1236 src/Buffer.cpp:1250
+#: src/Buffer.cpp:1239 src/Buffer.cpp:1252 src/Buffer.cpp:1266
 #, c-format
 msgid "Saved to %1$s. Phew.\n"
 msgstr "%1$sに保存しました。ひゅぅ。\n"
 
-#: src/Buffer.cpp:1226
+#: src/Buffer.cpp:1242
 msgid "Save failed! Trying again...\n"
 msgstr "保存に失敗しました！再度試みています...\n"
 
-#: src/Buffer.cpp:1240
+#: src/Buffer.cpp:1256
 msgid "Save failed! Trying yet again...\n"
 msgstr "保存に失敗しました！また再度試みています...\n"
 
-#: src/Buffer.cpp:1254
+#: src/Buffer.cpp:1270
 msgid "Save failed! Bummer. Document is lost."
 msgstr "保存に失敗しました！なんてこった。文書は失われました。"
 
-#: src/Buffer.cpp:1341
+#: src/Buffer.cpp:1357
 msgid "Iconv software exception Detected"
 msgstr "Iconvソフトウェアで例外エラーが検出されました"
 
-#: src/Buffer.cpp:1341
+#: src/Buffer.cpp:1357
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
@@ -16929,14 +16941,14 @@ msgstr ""
 "お使いの文字コード(%1$s)向けのサポートソフトウェアが適切にインストールされて"
 "いることを確認してください。"
 
-#: src/Buffer.cpp:1364
+#: src/Buffer.cpp:1380
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr ""
 "文字「%1$s」を表すLaTeXコマンドを見つけることができませんでした(コードポイン"
 "ト%2$s)"
 
-#: src/Buffer.cpp:1367
+#: src/Buffer.cpp:1383
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -16946,19 +16958,19 @@ msgstr ""
 "す。\n"
 "文書文字コードをutf8に変更すると解決するかもしれません。"
 
-#: src/Buffer.cpp:1374
+#: src/Buffer.cpp:1390
 msgid "iconv conversion failed"
 msgstr "iconvが変換に失敗しました"
 
-#: src/Buffer.cpp:1379
+#: src/Buffer.cpp:1395
 msgid "conversion failed"
 msgstr "変換に失敗しました"
 
-#: src/Buffer.cpp:1474
+#: src/Buffer.cpp:1490
 msgid "Uncodable character in file path"
 msgstr "ファイルパスにコード化できない文字があります"
 
-#: src/Buffer.cpp:1476
+#: src/Buffer.cpp:1492
 #, fuzzy, c-format
 msgid ""
 "The path of your document\n"
@@ -16980,48 +16992,48 @@ msgstr ""
 "（utf8など）適切な文書エンコーディングを選択するか、\n"
 "ファイルパス名を変更してください。"
 
-#: src/Buffer.cpp:1774
+#: src/Buffer.cpp:1790
 msgid "Running chktex..."
 msgstr "chktexを実行しています..."
 
-#: src/Buffer.cpp:1788
+#: src/Buffer.cpp:1804
 msgid "chktex failure"
 msgstr "chktexに失敗"
 
-#: src/Buffer.cpp:1789
+#: src/Buffer.cpp:1805
 msgid "Could not run chktex successfully."
 msgstr "Chktexをうまく実行することができませんでした。"
 
-#: src/Buffer.cpp:2043
+#: src/Buffer.cpp:2059
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "%1$s形式に書き出す方法を知りません"
 
-#: src/Buffer.cpp:2107 src/frontends/qt4/GuiView.cpp:3163
+#: src/Buffer.cpp:2123 src/frontends/qt4/GuiView.cpp:3163
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "%1$s形式への書き出し時にエラーが起こりました"
 
-#: src/Buffer.cpp:2190
+#: src/Buffer.cpp:2206
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "派生枝「%1$s」は既に存在しています。"
 
-#: src/Buffer.cpp:2255
+#: src/Buffer.cpp:2271
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "「%1$s」を解析できません"
 
-#: src/Buffer.cpp:2262
+#: src/Buffer.cpp:2278
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "ターゲット「%1$s」を認識できません"
 
-#: src/Buffer.cpp:2272
+#: src/Buffer.cpp:2288
 msgid "Error exporting to DVI."
 msgstr "DVI書き出し時にエラーが起こりました。"
 
-#: src/Buffer.cpp:2337 src/Exporter.cpp:45
+#: src/Buffer.cpp:2353 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -17032,73 +17044,73 @@ msgstr ""
 "\n"
 "そのファイルに上書きしますか？"
 
-#: src/Buffer.cpp:2340 src/Exporter.cpp:48
+#: src/Buffer.cpp:2356 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "ファイルを上書きしますか？"
 
-#: src/Buffer.cpp:2357
+#: src/Buffer.cpp:2373
 msgid "Error running external commands."
 msgstr "外部コマンド実行時にエラーが起こりました。"
 
-#: src/Buffer.cpp:3150
+#: src/Buffer.cpp:3166
 msgid "Preview source code"
 msgstr "ソースコードをプレビューする"
 
-#: src/Buffer.cpp:3168
+#: src/Buffer.cpp:3184
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "段落%1$dのソースコードをプレビューする"
 
-#: src/Buffer.cpp:3172
+#: src/Buffer.cpp:3188
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "段落%1$sから%2$sまでのソースコードをプレビューする"
 
-#: src/Buffer.cpp:3291
+#: src/Buffer.cpp:3307
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "%1$sを自動保存しています"
 
-#: src/Buffer.cpp:3345
+#: src/Buffer.cpp:3361
 msgid "Autosave failed!"
 msgstr "自動保存に失敗しました！"
 
-#: src/Buffer.cpp:3406
+#: src/Buffer.cpp:3422
 msgid "Autosaving current document..."
 msgstr "現在の文書を自動保存しています..."
 
-#: src/Buffer.cpp:3496
+#: src/Buffer.cpp:3512
 msgid "Couldn't export file"
 msgstr "ファイルを書き出すことができませんでした"
 
-#: src/Buffer.cpp:3497
+#: src/Buffer.cpp:3513
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "%1$sというフォーマットを書き出すのに必要な情報がありません"
 
-#: src/Buffer.cpp:3568
+#: src/Buffer.cpp:3584
 msgid "File name error"
 msgstr "ファイル名エラー"
 
-#: src/Buffer.cpp:3569
+#: src/Buffer.cpp:3585
 msgid "The directory path to the document cannot contain spaces."
 msgstr "文書のパスには空白が含まれていてはなりません。"
 
-#: src/Buffer.cpp:3654
+#: src/Buffer.cpp:3670
 msgid "Document export cancelled."
 msgstr "文書の書き出しは取り消されました。"
 
-#: src/Buffer.cpp:3664
+#: src/Buffer.cpp:3680
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "文書は%1$sとしてファイル「%2$s」に書き出されました。"
 
-#: src/Buffer.cpp:3670
+#: src/Buffer.cpp:3686
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "文書は%1$sとして書き出されました。"
 
-#: src/Buffer.cpp:3723
+#: src/Buffer.cpp:3739
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17109,19 +17121,19 @@ msgstr ""
 "\n"
 "緊急保存ファイルから復旧しますか？"
 
-#: src/Buffer.cpp:3726
+#: src/Buffer.cpp:3742
 msgid "Load emergency save?"
 msgstr "緊急保存ファイルを読みこみますか？"
 
-#: src/Buffer.cpp:3727
+#: src/Buffer.cpp:3743
 msgid "&Recover"
 msgstr "復旧(&R)"
 
-#: src/Buffer.cpp:3727
+#: src/Buffer.cpp:3743
 msgid "&Load Original"
 msgstr "オリジナルを読み込む(&L):"
 
-#: src/Buffer.cpp:3738
+#: src/Buffer.cpp:3754
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -17131,15 +17143,15 @@ msgstr ""
 "込み専用に設定されています。この文書を別のファイルにかならず保存してくださ"
 "い。"
 
-#: src/Buffer.cpp:3744
+#: src/Buffer.cpp:3760
 msgid "Document was successfully recovered."
 msgstr "文書を無事に復旧しました。"
 
-#: src/Buffer.cpp:3746
+#: src/Buffer.cpp:3762
 msgid "Document was NOT successfully recovered."
 msgstr "文書を無事に復旧することができませんでした。"
 
-#: src/Buffer.cpp:3747
+#: src/Buffer.cpp:3763
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17148,27 +17160,27 @@ msgstr ""
 "緊急保存ファイルを直ちに削除しますか？\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3751 src/Buffer.cpp:3763
+#: src/Buffer.cpp:3767 src/Buffer.cpp:3779
 msgid "Delete emergency file?"
 msgstr "緊急保存ファイルを削除しますか？"
 
-#: src/Buffer.cpp:3752 src/Buffer.cpp:3765
+#: src/Buffer.cpp:3768 src/Buffer.cpp:3781
 msgid "&Keep"
 msgstr "保持(&K)"
 
-#: src/Buffer.cpp:3756
+#: src/Buffer.cpp:3772
 msgid "Emergency file deleted"
 msgstr "緊急保存ファイルを削除しました"
 
-#: src/Buffer.cpp:3757
+#: src/Buffer.cpp:3773
 msgid "Do not forget to save your file now!"
 msgstr "すぐにファイルを保存するようにしてください！"
 
-#: src/Buffer.cpp:3764
+#: src/Buffer.cpp:3780
 msgid "Remove emergency file now?"
 msgstr "緊急保存ファイルを読みこみますか？"
 
-#: src/Buffer.cpp:3787
+#: src/Buffer.cpp:3803
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17179,19 +17191,19 @@ msgstr ""
 "\n"
 "代わりにバックアップファイルを読み込みますか？"
 
-#: src/Buffer.cpp:3789
+#: src/Buffer.cpp:3805
 msgid "Load backup?"
 msgstr "バックアップを読み込みますか？"
 
-#: src/Buffer.cpp:3790
+#: src/Buffer.cpp:3806
 msgid "&Load backup"
 msgstr "バックアップを読み込む(&L)"
 
-#: src/Buffer.cpp:3790
+#: src/Buffer.cpp:3806
 msgid "Load &original"
 msgstr "オリジナルを読み込む(&O)"
 
-#: src/Buffer.cpp:3800
+#: src/Buffer.cpp:3816
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17201,25 +17213,25 @@ msgstr ""
 "読み込み専用に設定されています。文書を別のファイルにかならず保存してくださ"
 "い。"
 
-#: src/Buffer.cpp:4140 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4156 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "意味を成しません!!! "
 
-#: src/Buffer.cpp:4261
+#: src/Buffer.cpp:4343
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "文書%1$sを再読み込みしました。"
 
-#: src/Buffer.cpp:4264
+#: src/Buffer.cpp:4346
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "文書%1$sの再読み込みができません"
 
-#: src/Buffer.cpp:4330
+#: src/Buffer.cpp:4412
 msgid "Included File Invalid"
 msgstr "取り込まれたファイルが無効です"
 
-#: src/Buffer.cpp:4331
+#: src/Buffer.cpp:4413
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17257,7 +17269,7 @@ msgstr ""
 msgid "Document class not available"
 msgstr "文書クラスが利用不能です"
 
-#: src/BufferParams.cpp:1979
+#: src/BufferParams.cpp:1980
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -17272,11 +17284,11 @@ msgstr ""
 "既定テキストクラスを使用します。LyXは、正しい出力を\n"
 "行うことができないでしょう。"
 
-#: src/BufferParams.cpp:1985
+#: src/BufferParams.cpp:1986
 msgid "Document class not found"
 msgstr "文書クラスが見つかりません"
 
-#: src/BufferParams.cpp:1992
+#: src/BufferParams.cpp:1993
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -17291,15 +17303,15 @@ msgstr ""
 "既定テキストクラスを使用します。LyXは、正しい出力を\n"
 "行わないでしょう。"
 
-#: src/BufferParams.cpp:1998 src/BufferView.cpp:1284 src/BufferView.cpp:1316
+#: src/BufferParams.cpp:1999 src/BufferView.cpp:1284 src/BufferView.cpp:1316
 msgid "Could not load class"
 msgstr "クラスを読み込むことができませんでした"
 
-#: src/BufferParams.cpp:2032
+#: src/BufferParams.cpp:2033
 msgid "Error reading internal layout information"
 msgstr "内部レイアウト情報の読み込みエラーです"
 
-#: src/BufferParams.cpp:2033 src/TextClass.cpp:1349
+#: src/BufferParams.cpp:2034 src/TextClass.cpp:1349
 msgid "Read Error"
 msgstr "読み込みエラー"
 
@@ -17356,74 +17368,74 @@ msgstr "マーク削除"
 msgid "Mark set"
 msgstr "マーク設定"
 
-#: src/BufferView.cpp:1650
+#: src/BufferView.cpp:1651
 msgid "Statistics for the selection:"
 msgstr "選択範囲の統計:"
 
-#: src/BufferView.cpp:1652
+#: src/BufferView.cpp:1653
 msgid "Statistics for the document:"
 msgstr "文書の統計:"
 
-#: src/BufferView.cpp:1655
+#: src/BufferView.cpp:1656
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d語"
 
-#: src/BufferView.cpp:1657
+#: src/BufferView.cpp:1658
 msgid "One word"
 msgstr "1語"
 
-#: src/BufferView.cpp:1660
+#: src/BufferView.cpp:1661
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d字(空白含む)"
 
-#: src/BufferView.cpp:1663
+#: src/BufferView.cpp:1664
 msgid "One character (including blanks)"
 msgstr "1字(空白含む)"
 
-#: src/BufferView.cpp:1666
+#: src/BufferView.cpp:1667
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d字(空白除く)"
 
-#: src/BufferView.cpp:1669
+#: src/BufferView.cpp:1670
 msgid "One character (excluding blanks)"
 msgstr "1字(空白除く)"
 
-#: src/BufferView.cpp:1671
+#: src/BufferView.cpp:1672
 msgid "Statistics"
 msgstr "統計"
 
-#: src/BufferView.cpp:1805
+#: src/BufferView.cpp:1806
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr "動作数が%1$dよりも大きいため、「inset-forall」は中断されました"
 
-#: src/BufferView.cpp:1807
+#: src/BufferView.cpp:1808
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "%2$d個の差込枠に「%1$s」を適用しました"
 
-#: src/BufferView.cpp:1815
+#: src/BufferView.cpp:1816
 msgid "Branch name"
 msgstr "派生枝名"
 
-#: src/BufferView.cpp:1822 src/frontends/qt4/GuiBranches.cpp:178
+#: src/BufferView.cpp:1823 src/frontends/qt4/GuiBranches.cpp:178
 msgid "Branch already exists"
 msgstr "「%1$s」という派生枝はすでに存在します。"
 
-#: src/BufferView.cpp:1943
+#: src/BufferView.cpp:1944
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "派生枝「%1$s」は存在しません。"
 
-#: src/BufferView.cpp:2292
+#: src/BufferView.cpp:2293
 msgid "Inverse Search Failed"
 msgstr "逆検索に失敗"
 
-#: src/BufferView.cpp:2293
+#: src/BufferView.cpp:2294
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
@@ -17431,22 +17443,22 @@ msgstr ""
 "逆検索で有効でない位置が要求されました。\n"
 "表示中の文書を更新する必要があります。"
 
-#: src/BufferView.cpp:2672
+#: src/BufferView.cpp:2673
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "文書「%1$s」を挿入しています..."
 
-#: src/BufferView.cpp:2683
+#: src/BufferView.cpp:2684
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "文書「%1$s」が挿入されました。"
 
-#: src/BufferView.cpp:2685
+#: src/BufferView.cpp:2686
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "文書「%1$s」を挿入することができませんでした"
 
-#: src/BufferView.cpp:2950
+#: src/BufferView.cpp:2951
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17457,11 +17469,11 @@ msgstr ""
 "%1$s\n"
 "を読むことができませんでした。"
 
-#: src/BufferView.cpp:2952
+#: src/BufferView.cpp:2953
 msgid "Could not read file"
 msgstr "ファイルを読むことができませんでした"
 
-#: src/BufferView.cpp:2959
+#: src/BufferView.cpp:2960
 #, c-format
 msgid ""
 "%1$s\n"
@@ -17470,15 +17482,15 @@ msgstr ""
 "%1$s\n"
 "は読み込み不能です。"
 
-#: src/BufferView.cpp:2960 src/output.cpp:39
+#: src/BufferView.cpp:2961 src/output.cpp:39
 msgid "Could not open file"
 msgstr "ファイルを開くことができませんでした"
 
-#: src/BufferView.cpp:2967
+#: src/BufferView.cpp:2968
 msgid "Reading not UTF-8 encoded file"
 msgstr "UTF-8でエンコードされていないファイルを読んでいます"
 
-#: src/BufferView.cpp:2968
+#: src/BufferView.cpp:2969
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -17963,12 +17975,12 @@ msgstr "未知の派生枝です"
 msgid "&Don't Add"
 msgstr "追加しない(&D)"
 
-#: src/CutAndPaste.cpp:665 src/Text.cpp:363
+#: src/CutAndPaste.cpp:665 src/Text.cpp:364
 #, c-format
 msgid "Layout `%1$s' was not found."
 msgstr "レイアウト「%1$s」が見つかりません。"
 
-#: src/CutAndPaste.cpp:667 src/Text.cpp:365
+#: src/CutAndPaste.cpp:667 src/Text.cpp:366
 msgid "Layout Not Found"
 msgstr "レイアウトが見つかりません"
 
@@ -19142,91 +19154,91 @@ msgstr "メモリ障害"
 msgid "Paragraph not properly initialized"
 msgstr "段落が正しく初期化されていません"
 
-#: src/Text.cpp:390
+#: src/Text.cpp:391
 msgid "Unknown Inset"
 msgstr "不明な差込枠です"
 
-#: src/Text.cpp:471
+#: src/Text.cpp:472
 msgid "Change tracking error"
 msgstr "変更追跡機能のエラー"
 
-#: src/Text.cpp:472
+#: src/Text.cpp:473
 #, c-format
 msgid "Unknown author index for change: %1$d\n"
 msgstr "変更する著者索引が見つかりません: %1$d\n"
 
-#: src/Text.cpp:483
+#: src/Text.cpp:484
 msgid "Unknown token"
 msgstr "未知のトークン"
 
-#: src/Text.cpp:947
+#: src/Text.cpp:948
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr ""
 "空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
 
-#: src/Text.cpp:955
+#: src/Text.cpp:956
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "二つの空白をこのようにして入力することはできません。LyX入門篇を読んでくださ"
 "い。"
 
-#: src/Text.cpp:1786
+#: src/Text.cpp:1787
 msgid "[Change Tracking] "
 msgstr "[変更追跡機能] "
 
-#: src/Text.cpp:1792
+#: src/Text.cpp:1793
 msgid "Change: "
 msgstr "変更: "
 
-#: src/Text.cpp:1796
+#: src/Text.cpp:1797
 msgid " at "
 msgstr " at "
 
-#: src/Text.cpp:1806
+#: src/Text.cpp:1807
 #, c-format
 msgid "Font: %1$s"
 msgstr "フォント: %1$s"
 
-#: src/Text.cpp:1811
+#: src/Text.cpp:1812
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", 階層: %1$d"
 
-#: src/Text.cpp:1817
+#: src/Text.cpp:1818
 msgid ", Spacing: "
 msgstr ", 行間: "
 
-#: src/Text.cpp:1823 src/frontends/qt4/GuiDocument.cpp:694
+#: src/Text.cpp:1824 src/frontends/qt4/GuiDocument.cpp:694
 msgid "OneHalf"
 msgstr "半行"
 
-#: src/Text.cpp:1829
+#: src/Text.cpp:1830
 msgid "Other ("
 msgstr "その他 ("
 
-#: src/Text.cpp:1838
+#: src/Text.cpp:1839
 msgid ", Inset: "
 msgstr ", 差込枠: "
 
-#: src/Text.cpp:1839
+#: src/Text.cpp:1840
 msgid ", Paragraph: "
 msgstr ", 段落: "
 
-#: src/Text.cpp:1840
+#: src/Text.cpp:1841
 msgid ", Id: "
 msgstr ", ID: "
 
-#: src/Text.cpp:1841
+#: src/Text.cpp:1842
 msgid ", Position: "
 msgstr ", 位置: "
 
-#: src/Text.cpp:1847
+#: src/Text.cpp:1848
 msgid ", Char: 0x"
 msgstr ", 文字: 0x"
 
-#: src/Text.cpp:1849
+#: src/Text.cpp:1850
 msgid ", Boundary: "
 msgstr ", 境界: "
 
@@ -19266,15 +19278,15 @@ msgstr "割り付け"
 msgid " not known"
 msgstr "解釈不能"
 
-#: src/Text3.cpp:1755 src/frontends/qt4/GuiApplication.cpp:1367
+#: src/Text3.cpp:1758 src/frontends/qt4/GuiApplication.cpp:1367
 msgid "Missing argument"
 msgstr "引数がありません"
 
-#: src/Text3.cpp:1904 src/Text3.cpp:1916
+#: src/Text3.cpp:1907 src/Text3.cpp:1919
 msgid "Character set"
 msgstr "文字が調整されました"
 
-#: src/Text3.cpp:2123 src/Text3.cpp:2134
+#: src/Text3.cpp:2126 src/Text3.cpp:2137
 msgid "Paragraph layout set"
 msgstr "段落を割り付けました。"
 
@@ -19540,12 +19552,12 @@ msgstr ""
 "続けますか？"
 
 #: src/VCBackend.cpp:1306 src/VCBackend.cpp:1310
-#: src/frontends/qt4/FindAndReplace.cpp:345
+#: src/frontends/qt4/FindAndReplace.cpp:346
 msgid "&Yes"
 msgstr "はい(&Y)"
 
 #: src/VCBackend.cpp:1306 src/VCBackend.cpp:1310
-#: src/frontends/qt4/FindAndReplace.cpp:345
+#: src/frontends/qt4/FindAndReplace.cpp:346
 msgid "&No"
 msgstr "いいえ(&N)"
 
@@ -19714,19 +19726,19 @@ msgstr ""
 "%1$s: 後方検索を行っていて文頭に到達しました。\n"
 "文末から検索を続けますか？"
 
-#: src/frontends/qt4/FindAndReplace.cpp:344
+#: src/frontends/qt4/FindAndReplace.cpp:345
 msgid "Wrap search?"
 msgstr "文頭に戻って検索を続けますか？"
 
-#: src/frontends/qt4/FindAndReplace.cpp:389
+#: src/frontends/qt4/FindAndReplace.cpp:390
 msgid "Nothing to search"
 msgstr "検索対象がありません"
 
-#: src/frontends/qt4/FindAndReplace.cpp:429
+#: src/frontends/qt4/FindAndReplace.cpp:430
 msgid "No open document(s) in which to search"
 msgstr "検索を行う文書が開かれていません"
 
-#: src/frontends/qt4/FindAndReplace.cpp:529
+#: src/frontends/qt4/FindAndReplace.cpp:530
 msgid "Advanced Find and Replace"
 msgstr "詳細な検索及び置換"
 
@@ -22384,7 +22396,7 @@ msgstr "%1$sは未知のコマンドです！"
 msgid "Please, preview the document first."
 msgstr "文書をまずプレビューしてください。"
 
-#: src/frontends/qt4/GuiView.cpp:3574
+#: src/frontends/qt4/GuiView.cpp:3579
 msgid "Couldn't proceed."
 msgstr "続けることができませんでした。"
 
@@ -23551,7 +23563,7 @@ msgstr "保護された水平スペース（%1$s）"
 msgid "Unknown TOC type"
 msgstr "未知の目次型"
 
-#: src/insets/InsetTabular.cpp:4720
+#: src/insets/InsetTabular.cpp:4765
 msgid "Selection size should match clipboard content."
 msgstr "選択した大きさが、クリップボードの内容と一致していなくてはなりません。"
 

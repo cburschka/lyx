@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-01-16 09:46-0500\n"
+"POT-Creation-Date: 2012-01-31 09:56-0500\n"
 "PO-Revision-Date: 2011-09-06 22:48+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
@@ -488,8 +488,8 @@ msgid "Remove the selected branch"
 msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3752
-#: src/Buffer.cpp:3765 src/frontends/qt4/ui_IndicesUi.h:219
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3768
+#: src/Buffer.cpp:3781 src/frontends/qt4/ui_IndicesUi.h:219
 msgid "&Remove"
 msgstr ""
 
@@ -522,8 +522,8 @@ msgstr ""
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:205
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
-#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1119
-#: src/Buffer.cpp:2341 src/Buffer.cpp:3727 src/Buffer.cpp:3790
+#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1135
+#: src/Buffer.cpp:2357 src/Buffer.cpp:3743 src/Buffer.cpp:3806
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:179
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1829
@@ -2676,7 +2676,7 @@ msgstr ""
 msgid "MathML"
 msgstr ""
 
-#: src/frontends/qt4/ui/OutputUi.ui:162 lib/configure.py:635
+#: src/frontends/qt4/ui/OutputUi.ui:162 lib/configure.py:636
 msgid "HTML"
 msgstr ""
 
@@ -2864,7 +2864,7 @@ msgstr ""
 msgid "Line &spacing"
 msgstr ""
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1820
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1821
 #: src/frontends/qt4/GuiDocument.cpp:692
 msgid "Single"
 msgstr ""
@@ -2873,7 +2873,7 @@ msgstr ""
 msgid "1.5"
 msgstr ""
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1826
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1827
 #: src/frontends/qt4/GuiDocument.cpp:696
 msgid "Double"
 msgstr ""
@@ -6202,7 +6202,7 @@ msgstr ""
 
 #: lib/layouts/achemso.layout:110 lib/layouts/lettre.layout:41
 #: lib/layouts/lettre.layout:342 lib/layouts/scrlttr2.layout:191
-#: lib/configure.py:651
+#: lib/configure.py:652
 msgid "Fax"
 msgstr ""
 
@@ -8808,6 +8808,14 @@ msgstr ""
 msgid "Close Section"
 msgstr ""
 
+#: lib/layouts/moderncv.layout:173 lib/layouts/stdlayouts.inc:74
+msgid "--Separator--"
+msgstr ""
+
+#: lib/layouts/moderncv.layout:181 lib/layouts/stdlayouts.inc:83
+msgid "--- Separate Environment ---"
+msgstr ""
+
 #: lib/layouts/paper.layout:147
 msgid "SubTitle"
 msgstr ""
@@ -9770,8 +9778,8 @@ msgstr ""
 msgid "FirstName"
 msgstr ""
 
-#: lib/layouts/literate-scrap.inc:12 lib/layouts/noweb.module:11
-#: lib/layouts/sweave.module:45
+#: lib/layouts/literate-scrap.inc:12 lib/layouts/knitr.module:35
+#: lib/layouts/noweb.module:11 lib/layouts/sweave.module:45
 msgid "Scrap"
 msgstr ""
 
@@ -9971,14 +9979,6 @@ msgstr ""
 
 #: lib/layouts/stdinsets.inc:444
 msgid "Preview"
-msgstr ""
-
-#: lib/layouts/stdlayouts.inc:74
-msgid "--Separator--"
-msgstr ""
-
-#: lib/layouts/stdlayouts.inc:83
-msgid "--- Separate Environment ---"
 msgstr ""
 
 #: lib/layouts/stdsections.inc:15 lib/layouts/svcommon.inc:118
@@ -10416,6 +10416,47 @@ msgstr ""
 msgid "Initial"
 msgstr ""
 
+#: lib/layouts/knitr.module:2 lib/configure.py:584
+msgid "Rnw (knitr)"
+msgstr ""
+
+#: lib/layouts/knitr.module:6
+msgid ""
+"Uses the knitr package in R for dynamic report generation. This R package "
+"has to be installed for this module to work: install.packages('knitr'). Note "
+"it depends on R >= 2.14.1. For more info see http://yihui.github.com/knitr"
+msgstr ""
+
+#: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
+#: lib/layouts/sweave.module:6
+msgid "literate"
+msgstr ""
+
+#: lib/layouts/knitr.module:13 lib/layouts/sweave.module:23
+msgid "Chunk"
+msgstr ""
+
+#: lib/layouts/knitr.module:14 lib/layouts/sweave.module:2
+#: lib/layouts/sweave.module:24 lib/configure.py:582
+msgid "Sweave"
+msgstr ""
+
+#: lib/layouts/knitr.module:39 lib/layouts/sweave.module:49
+msgid "Sweave Options"
+msgstr ""
+
+#: lib/layouts/knitr.module:40 lib/layouts/sweave.module:50
+msgid "Sweave opts"
+msgstr ""
+
+#: lib/layouts/knitr.module:61 lib/layouts/sweave.module:71
+msgid "S/R expression"
+msgstr ""
+
+#: lib/layouts/knitr.module:62 lib/layouts/sweave.module:72
+msgid "S/R expr"
+msgstr ""
+
 #: lib/layouts/lilypond.module:2
 msgid "LilyPond Book"
 msgstr ""
@@ -10560,39 +10601,10 @@ msgstr ""
 msgid "Allows to use Noweb as a literate programming tool."
 msgstr ""
 
-#: lib/layouts/noweb.module:5 lib/layouts/sweave.module:6
-msgid "literate"
-msgstr ""
-
-#: lib/layouts/sweave.module:2 lib/layouts/sweave.module:24
-#: lib/configure.py:582
-msgid "Sweave"
-msgstr ""
-
 #: lib/layouts/sweave.module:6
 msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
 "via the Sweave() function. For more info see the LyX example file sweave.lyx."
-msgstr ""
-
-#: lib/layouts/sweave.module:23
-msgid "Chunk"
-msgstr ""
-
-#: lib/layouts/sweave.module:49
-msgid "Sweave Options"
-msgstr ""
-
-#: lib/layouts/sweave.module:50
-msgid "Sweave opts"
-msgstr ""
-
-#: lib/layouts/sweave.module:71
-msgid "S/R expression"
-msgstr ""
-
-#: lib/layouts/sweave.module:72
-msgid "S/R expr"
 msgstr ""
 
 #: lib/layouts/sweave.module:93 lib/layouts/sweave.module:94
@@ -16159,268 +16171,268 @@ msgstr ""
 msgid "R/S code"
 msgstr ""
 
-#: lib/configure.py:584
+#: lib/configure.py:585
 msgid "LilyPond music"
 msgstr ""
 
-#: lib/configure.py:585
+#: lib/configure.py:586
 msgid "LilyPond book (LaTeX)"
 msgstr ""
 
-#: lib/configure.py:586
+#: lib/configure.py:587
 msgid "LaTeX (plain)"
 msgstr ""
 
-#: lib/configure.py:586
+#: lib/configure.py:587
 msgid "LaTeX (plain)|L"
 msgstr ""
 
-#: lib/configure.py:587
+#: lib/configure.py:588
 msgid "LaTeX (LuaTeX)"
 msgstr ""
 
-#: lib/configure.py:588
+#: lib/configure.py:589
 msgid "LaTeX (pdflatex)"
 msgstr ""
 
-#: lib/configure.py:589
+#: lib/configure.py:590
 msgid "LaTeX (XeTeX)"
 msgstr ""
 
-#: lib/configure.py:590
+#: lib/configure.py:591
 msgid "Plain text"
 msgstr ""
 
-#: lib/configure.py:590
+#: lib/configure.py:591
 msgid "Plain text|a"
 msgstr ""
 
-#: lib/configure.py:591
+#: lib/configure.py:592
 msgid "Plain text (pstotext)"
 msgstr ""
 
-#: lib/configure.py:592
+#: lib/configure.py:593
 msgid "Plain text (ps2ascii)"
 msgstr ""
 
-#: lib/configure.py:593
+#: lib/configure.py:594
 msgid "Plain text (catdvi)"
 msgstr ""
 
-#: lib/configure.py:594
+#: lib/configure.py:595
 msgid "Plain Text, Join Lines"
 msgstr ""
 
-#: lib/configure.py:597
+#: lib/configure.py:598
 msgid "Gnumeric spreadsheet"
 msgstr ""
 
-#: lib/configure.py:598
+#: lib/configure.py:599
 msgid "Excel spreadsheet"
 msgstr ""
 
-#: lib/configure.py:599
+#: lib/configure.py:600
 msgid "OpenOffice spreadsheet"
 msgstr ""
 
-#: lib/configure.py:602 lib/configure.py:604
+#: lib/configure.py:603 lib/configure.py:605
 msgid "LyXHTML"
 msgstr ""
 
-#: lib/configure.py:602 lib/configure.py:604
+#: lib/configure.py:603 lib/configure.py:605
 msgid "LyXHTML|y"
 msgstr ""
 
-#: lib/configure.py:611 src/frontends/qt4/GuiLog.cpp:230
+#: lib/configure.py:612 src/frontends/qt4/GuiLog.cpp:230
 msgid "BibTeX"
 msgstr ""
 
-#: lib/configure.py:616
+#: lib/configure.py:617
 msgid "EPS"
 msgstr ""
 
-#: lib/configure.py:617
+#: lib/configure.py:618
 msgid "Postscript"
 msgstr ""
 
-#: lib/configure.py:617
+#: lib/configure.py:618
 msgid "Postscript|t"
 msgstr ""
 
-#: lib/configure.py:621
+#: lib/configure.py:622
 msgid "PDF (ps2pdf)"
 msgstr ""
 
-#: lib/configure.py:621
+#: lib/configure.py:622
 msgid "PDF (ps2pdf)|P"
 msgstr ""
 
-#: lib/configure.py:622
+#: lib/configure.py:623
 msgid "PDF (pdflatex)"
 msgstr ""
 
-#: lib/configure.py:622
+#: lib/configure.py:623
 msgid "PDF (pdflatex)|F"
 msgstr ""
 
-#: lib/configure.py:623
+#: lib/configure.py:624
 msgid "PDF (dvipdfm)"
 msgstr ""
 
-#: lib/configure.py:623
+#: lib/configure.py:624
 msgid "PDF (dvipdfm)|m"
 msgstr ""
 
-#: lib/configure.py:624
+#: lib/configure.py:625
 msgid "PDF (XeTeX)"
 msgstr ""
 
-#: lib/configure.py:624
+#: lib/configure.py:625
 msgid "PDF (XeTeX)|X"
 msgstr ""
 
-#: lib/configure.py:625
+#: lib/configure.py:626
 msgid "PDF (LuaTeX)"
 msgstr ""
 
-#: lib/configure.py:625
+#: lib/configure.py:626
 msgid "PDF (LuaTeX)|u"
 msgstr ""
 
-#: lib/configure.py:628
+#: lib/configure.py:629
 msgid "DVI"
 msgstr ""
 
-#: lib/configure.py:628
+#: lib/configure.py:629
 msgid "DVI|D"
 msgstr ""
 
-#: lib/configure.py:629
+#: lib/configure.py:630
 msgid "DVI (LuaTeX)"
 msgstr ""
 
-#: lib/configure.py:629
+#: lib/configure.py:630
 msgid "DVI (LuaTeX)|V"
 msgstr ""
 
-#: lib/configure.py:632
+#: lib/configure.py:633
 msgid "DraftDVI"
 msgstr ""
 
-#: lib/configure.py:635
+#: lib/configure.py:636
 msgid "HTML|H"
 msgstr ""
 
-#: lib/configure.py:638
+#: lib/configure.py:639
 msgid "Noteedit"
 msgstr ""
 
-#: lib/configure.py:641
+#: lib/configure.py:642
 msgid "OpenDocument"
 msgstr ""
 
-#: lib/configure.py:642
+#: lib/configure.py:643
 msgid "OpenOffice.Org (sxw)"
 msgstr ""
 
-#: lib/configure.py:645
+#: lib/configure.py:646
 msgid "Rich Text Format"
 msgstr ""
 
-#: lib/configure.py:646
+#: lib/configure.py:647
 msgid "MS Word"
 msgstr ""
 
-#: lib/configure.py:646
+#: lib/configure.py:647
 msgid "MS Word|W"
 msgstr ""
 
-#: lib/configure.py:649
+#: lib/configure.py:650
 msgid "date command"
 msgstr ""
 
-#: lib/configure.py:650
+#: lib/configure.py:651
 msgid "Table (CSV)"
 msgstr ""
 
-#: lib/configure.py:652 src/frontends/qt4/GuiView.cpp:1150
+#: lib/configure.py:653 src/frontends/qt4/GuiView.cpp:1150
 #: src/frontends/qt4/GuiView.cpp:1151 src/mathed/MathMacroTemplate.cpp:543
 msgid "LyX"
 msgstr ""
 
-#: lib/configure.py:653
+#: lib/configure.py:654
 msgid "LyX 1.3.x"
 msgstr ""
 
-#: lib/configure.py:654
+#: lib/configure.py:655
 msgid "LyX 1.4.x"
 msgstr ""
 
-#: lib/configure.py:655
+#: lib/configure.py:656
 msgid "LyX 1.5.x"
 msgstr ""
 
-#: lib/configure.py:656
+#: lib/configure.py:657
 msgid "LyX 1.6.x"
 msgstr ""
 
-#: lib/configure.py:657
+#: lib/configure.py:658
 msgid "CJK LyX 1.4.x (big5)"
 msgstr ""
 
-#: lib/configure.py:658
+#: lib/configure.py:659
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr ""
 
-#: lib/configure.py:659
+#: lib/configure.py:660
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr ""
 
-#: lib/configure.py:660
+#: lib/configure.py:661
 msgid "LyX Preview"
 msgstr ""
 
-#: lib/configure.py:661
+#: lib/configure.py:662
 msgid "LyX Preview (LilyPond book)"
 msgstr ""
 
-#: lib/configure.py:662
+#: lib/configure.py:663
 msgid "LyX Preview (pLaTeX)"
 msgstr ""
 
-#: lib/configure.py:663
+#: lib/configure.py:664
 msgid "PDFTEX"
 msgstr ""
 
-#: lib/configure.py:664
+#: lib/configure.py:665
 msgid "Program"
 msgstr ""
 
-#: lib/configure.py:665
+#: lib/configure.py:666
 msgid "PSTEX"
 msgstr ""
 
-#: lib/configure.py:666 src/frontends/qt4/GuiClipboard.cpp:168
+#: lib/configure.py:667 src/frontends/qt4/GuiClipboard.cpp:168
 msgid "Windows Metafile"
 msgstr ""
 
-#: lib/configure.py:667 src/frontends/qt4/GuiClipboard.cpp:167
+#: lib/configure.py:668 src/frontends/qt4/GuiClipboard.cpp:167
 msgid "Enhanced Metafile"
 msgstr ""
 
-#: lib/configure.py:668
+#: lib/configure.py:669
 msgid "HTML (MS Word)"
 msgstr ""
 
-#: lib/configure.py:755
+#: lib/configure.py:765
 msgid "LyXBlogger"
 msgstr ""
 
-#: lib/configure.py:961
+#: lib/configure.py:971
 msgid "LyX Archive (zip)"
 msgstr ""
 
-#: lib/configure.py:964
+#: lib/configure.py:974
 msgid "LyX Archive (tar.gz)"
 msgstr ""
 
@@ -16462,65 +16474,65 @@ msgstr ""
 msgid "Print document failed"
 msgstr ""
 
-#: src/Buffer.cpp:328
+#: src/Buffer.cpp:344
 msgid "Disk Error: "
 msgstr ""
 
-#: src/Buffer.cpp:329
+#: src/Buffer.cpp:345
 #, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr ""
 
-#: src/Buffer.cpp:440
+#: src/Buffer.cpp:456
 msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr ""
 
-#: src/Buffer.cpp:442
+#: src/Buffer.cpp:458
 msgid "Attempting to close changed document!"
 msgstr ""
 
-#: src/Buffer.cpp:451
+#: src/Buffer.cpp:467
 msgid "Could not remove temporary directory"
 msgstr ""
 
-#: src/Buffer.cpp:452
+#: src/Buffer.cpp:468
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr ""
 
-#: src/Buffer.cpp:803
+#: src/Buffer.cpp:819
 msgid "Unknown document class"
 msgstr ""
 
-#: src/Buffer.cpp:804
+#: src/Buffer.cpp:820
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/Buffer.cpp:808 src/Text.cpp:484
+#: src/Buffer.cpp:824 src/Text.cpp:485
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr ""
 
-#: src/Buffer.cpp:812 src/Buffer.cpp:819 src/Buffer.cpp:842
+#: src/Buffer.cpp:828 src/Buffer.cpp:835 src/Buffer.cpp:858
 msgid "Document header error"
 msgstr ""
 
-#: src/Buffer.cpp:818
+#: src/Buffer.cpp:834
 msgid "\\begin_header is missing"
 msgstr ""
 
-#: src/Buffer.cpp:841
+#: src/Buffer.cpp:857
 msgid "\\begin_document is missing"
 msgstr ""
 
-#: src/Buffer.cpp:854 src/Buffer.cpp:860 src/BufferView.cpp:1439
+#: src/Buffer.cpp:870 src/Buffer.cpp:876 src/BufferView.cpp:1439
 #: src/BufferView.cpp:1445
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:855 src/BufferView.cpp:1440
+#: src/Buffer.cpp:871 src/BufferView.cpp:1440
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -16528,7 +16540,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:861 src/BufferView.cpp:1446
+#: src/Buffer.cpp:877 src/BufferView.cpp:1446
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -16536,174 +16548,174 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:899 src/BufferParams.cpp:414
+#: src/Buffer.cpp:915 src/BufferParams.cpp:414
 #: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:446
 #: src/insets/InsetIndex.cpp:710
 msgid "Index"
 msgstr ""
 
-#: src/Buffer.cpp:972 src/Buffer.cpp:1016
+#: src/Buffer.cpp:988 src/Buffer.cpp:1032
 msgid "Document format failure"
 msgstr ""
 
-#: src/Buffer.cpp:973
+#: src/Buffer.cpp:989
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
-#: src/Buffer.cpp:1017
+#: src/Buffer.cpp:1033
 #, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr ""
 
-#: src/Buffer.cpp:1042
+#: src/Buffer.cpp:1058
 msgid "Conversion failed"
 msgstr ""
 
-#: src/Buffer.cpp:1043
+#: src/Buffer.cpp:1059
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 
-#: src/Buffer.cpp:1053
+#: src/Buffer.cpp:1069
 msgid "Conversion script not found"
 msgstr ""
 
-#: src/Buffer.cpp:1054
+#: src/Buffer.cpp:1070
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 
-#: src/Buffer.cpp:1077 src/Buffer.cpp:1084
+#: src/Buffer.cpp:1093 src/Buffer.cpp:1100
 msgid "Conversion script failed"
 msgstr ""
 
-#: src/Buffer.cpp:1078
+#: src/Buffer.cpp:1094
 #, c-format
 msgid ""
 "%1$s is from an older version of LyX and the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 
-#: src/Buffer.cpp:1085
+#: src/Buffer.cpp:1101
 #, c-format
 msgid ""
 "%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
 "it."
 msgstr ""
 
-#: src/Buffer.cpp:1106 src/Buffer.cpp:3737 src/Buffer.cpp:3799
+#: src/Buffer.cpp:1122 src/Buffer.cpp:3753 src/Buffer.cpp:3815
 msgid "File is read-only"
 msgstr ""
 
-#: src/Buffer.cpp:1107
+#: src/Buffer.cpp:1123
 #, c-format
 msgid "The file %1$s cannot be written because it is marked as read-only."
 msgstr ""
 
-#: src/Buffer.cpp:1116
+#: src/Buffer.cpp:1132
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
 "overwrite this file?"
 msgstr ""
 
-#: src/Buffer.cpp:1118
+#: src/Buffer.cpp:1134
 msgid "Overwrite modified file?"
 msgstr ""
 
-#: src/Buffer.cpp:1119 src/Buffer.cpp:2341 src/Exporter.cpp:50
+#: src/Buffer.cpp:1135 src/Buffer.cpp:2357 src/Exporter.cpp:50
 #: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2116
 #: src/frontends/qt4/GuiView.cpp:2323
 msgid "&Overwrite"
 msgstr ""
 
-#: src/Buffer.cpp:1148
+#: src/Buffer.cpp:1164
 msgid "Backup failure"
 msgstr ""
 
-#: src/Buffer.cpp:1149
+#: src/Buffer.cpp:1165
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
 "Please check whether the directory exists and is writable."
 msgstr ""
 
-#: src/Buffer.cpp:1175
+#: src/Buffer.cpp:1191
 #, c-format
 msgid "Saving document %1$s..."
 msgstr ""
 
-#: src/Buffer.cpp:1190
+#: src/Buffer.cpp:1206
 msgid " could not write file!"
 msgstr ""
 
-#: src/Buffer.cpp:1198
+#: src/Buffer.cpp:1214
 msgid " done."
 msgstr ""
 
-#: src/Buffer.cpp:1213
+#: src/Buffer.cpp:1229
 #, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr ""
 
-#: src/Buffer.cpp:1223 src/Buffer.cpp:1236 src/Buffer.cpp:1250
+#: src/Buffer.cpp:1239 src/Buffer.cpp:1252 src/Buffer.cpp:1266
 #, c-format
 msgid "Saved to %1$s. Phew.\n"
 msgstr ""
 
-#: src/Buffer.cpp:1226
+#: src/Buffer.cpp:1242
 msgid "Save failed! Trying again...\n"
 msgstr ""
 
-#: src/Buffer.cpp:1240
+#: src/Buffer.cpp:1256
 msgid "Save failed! Trying yet again...\n"
 msgstr ""
 
-#: src/Buffer.cpp:1254
+#: src/Buffer.cpp:1270
 msgid "Save failed! Bummer. Document is lost."
 msgstr ""
 
-#: src/Buffer.cpp:1341
+#: src/Buffer.cpp:1357
 msgid "Iconv software exception Detected"
 msgstr ""
 
-#: src/Buffer.cpp:1341
+#: src/Buffer.cpp:1357
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
 msgstr ""
 
-#: src/Buffer.cpp:1364
+#: src/Buffer.cpp:1380
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr ""
 
-#: src/Buffer.cpp:1367
+#: src/Buffer.cpp:1383
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/Buffer.cpp:1374
+#: src/Buffer.cpp:1390
 msgid "iconv conversion failed"
 msgstr ""
 
-#: src/Buffer.cpp:1379
+#: src/Buffer.cpp:1395
 msgid "conversion failed"
 msgstr ""
 
-#: src/Buffer.cpp:1474
+#: src/Buffer.cpp:1490
 msgid "Uncodable character in file path"
 msgstr ""
 
-#: src/Buffer.cpp:1476
+#: src/Buffer.cpp:1492
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -16717,48 +16729,48 @@ msgid ""
 "(such as utf8) or change the file path name."
 msgstr ""
 
-#: src/Buffer.cpp:1774
+#: src/Buffer.cpp:1790
 msgid "Running chktex..."
 msgstr ""
 
-#: src/Buffer.cpp:1788
+#: src/Buffer.cpp:1804
 msgid "chktex failure"
 msgstr ""
 
-#: src/Buffer.cpp:1789
+#: src/Buffer.cpp:1805
 msgid "Could not run chktex successfully."
 msgstr ""
 
-#: src/Buffer.cpp:2043
+#: src/Buffer.cpp:2059
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr ""
 
-#: src/Buffer.cpp:2107 src/frontends/qt4/GuiView.cpp:3163
+#: src/Buffer.cpp:2123 src/frontends/qt4/GuiView.cpp:3163
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr ""
 
-#: src/Buffer.cpp:2190
+#: src/Buffer.cpp:2206
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr ""
 
-#: src/Buffer.cpp:2255
+#: src/Buffer.cpp:2271
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr ""
 
-#: src/Buffer.cpp:2262
+#: src/Buffer.cpp:2278
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr ""
 
-#: src/Buffer.cpp:2272
+#: src/Buffer.cpp:2288
 msgid "Error exporting to DVI."
 msgstr ""
 
-#: src/Buffer.cpp:2337 src/Exporter.cpp:45
+#: src/Buffer.cpp:2353 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -16766,73 +16778,73 @@ msgid ""
 "Do you want to overwrite that file?"
 msgstr ""
 
-#: src/Buffer.cpp:2340 src/Exporter.cpp:48
+#: src/Buffer.cpp:2356 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr ""
 
-#: src/Buffer.cpp:2357
+#: src/Buffer.cpp:2373
 msgid "Error running external commands."
 msgstr ""
 
-#: src/Buffer.cpp:3150
+#: src/Buffer.cpp:3166
 msgid "Preview source code"
 msgstr ""
 
-#: src/Buffer.cpp:3168
+#: src/Buffer.cpp:3184
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr ""
 
-#: src/Buffer.cpp:3172
+#: src/Buffer.cpp:3188
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr ""
 
-#: src/Buffer.cpp:3291
+#: src/Buffer.cpp:3307
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr ""
 
-#: src/Buffer.cpp:3345
+#: src/Buffer.cpp:3361
 msgid "Autosave failed!"
 msgstr ""
 
-#: src/Buffer.cpp:3406
+#: src/Buffer.cpp:3422
 msgid "Autosaving current document..."
 msgstr ""
 
-#: src/Buffer.cpp:3496
+#: src/Buffer.cpp:3512
 msgid "Couldn't export file"
 msgstr ""
 
-#: src/Buffer.cpp:3497
+#: src/Buffer.cpp:3513
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr ""
 
-#: src/Buffer.cpp:3568
+#: src/Buffer.cpp:3584
 msgid "File name error"
 msgstr ""
 
-#: src/Buffer.cpp:3569
+#: src/Buffer.cpp:3585
 msgid "The directory path to the document cannot contain spaces."
 msgstr ""
 
-#: src/Buffer.cpp:3654
+#: src/Buffer.cpp:3670
 msgid "Document export cancelled."
 msgstr ""
 
-#: src/Buffer.cpp:3664
+#: src/Buffer.cpp:3680
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr ""
 
-#: src/Buffer.cpp:3670
+#: src/Buffer.cpp:3686
 #, c-format
 msgid "Document exported as %1$s"
 msgstr ""
 
-#: src/Buffer.cpp:3723
+#: src/Buffer.cpp:3739
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -16840,61 +16852,61 @@ msgid ""
 "Recover emergency save?"
 msgstr ""
 
-#: src/Buffer.cpp:3726
+#: src/Buffer.cpp:3742
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/Buffer.cpp:3727
+#: src/Buffer.cpp:3743
 msgid "&Recover"
 msgstr ""
 
-#: src/Buffer.cpp:3727
+#: src/Buffer.cpp:3743
 msgid "&Load Original"
 msgstr ""
 
-#: src/Buffer.cpp:3738
+#: src/Buffer.cpp:3754
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:3744
+#: src/Buffer.cpp:3760
 msgid "Document was successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:3746
+#: src/Buffer.cpp:3762
 msgid "Document was NOT successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:3747
+#: src/Buffer.cpp:3763
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
 msgstr ""
 
-#: src/Buffer.cpp:3751 src/Buffer.cpp:3763
+#: src/Buffer.cpp:3767 src/Buffer.cpp:3779
 msgid "Delete emergency file?"
 msgstr ""
 
-#: src/Buffer.cpp:3752 src/Buffer.cpp:3765
+#: src/Buffer.cpp:3768 src/Buffer.cpp:3781
 msgid "&Keep"
 msgstr ""
 
-#: src/Buffer.cpp:3756
+#: src/Buffer.cpp:3772
 msgid "Emergency file deleted"
 msgstr ""
 
-#: src/Buffer.cpp:3757
+#: src/Buffer.cpp:3773
 msgid "Do not forget to save your file now!"
 msgstr ""
 
-#: src/Buffer.cpp:3764
+#: src/Buffer.cpp:3780
 msgid "Remove emergency file now?"
 msgstr ""
 
-#: src/Buffer.cpp:3787
+#: src/Buffer.cpp:3803
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -16902,44 +16914,44 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/Buffer.cpp:3789
+#: src/Buffer.cpp:3805
 msgid "Load backup?"
 msgstr ""
 
-#: src/Buffer.cpp:3790
+#: src/Buffer.cpp:3806
 msgid "&Load backup"
 msgstr ""
 
-#: src/Buffer.cpp:3790
+#: src/Buffer.cpp:3806
 msgid "Load &original"
 msgstr ""
 
-#: src/Buffer.cpp:3800
+#: src/Buffer.cpp:3816
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:4140 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4156 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr ""
 
-#: src/Buffer.cpp:4261
+#: src/Buffer.cpp:4343
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr ""
 
-#: src/Buffer.cpp:4264
+#: src/Buffer.cpp:4346
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr ""
 
-#: src/Buffer.cpp:4330
+#: src/Buffer.cpp:4412
 msgid "Included File Invalid"
 msgstr ""
 
-#: src/Buffer.cpp:4331
+#: src/Buffer.cpp:4413
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -16965,7 +16977,7 @@ msgstr ""
 msgid "Document class not available"
 msgstr ""
 
-#: src/BufferParams.cpp:1979
+#: src/BufferParams.cpp:1980
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -16975,11 +16987,11 @@ msgid ""
 "correct output."
 msgstr ""
 
-#: src/BufferParams.cpp:1985
+#: src/BufferParams.cpp:1986
 msgid "Document class not found"
 msgstr ""
 
-#: src/BufferParams.cpp:1992
+#: src/BufferParams.cpp:1993
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -16989,15 +17001,15 @@ msgid ""
 "correct output."
 msgstr ""
 
-#: src/BufferParams.cpp:1998 src/BufferView.cpp:1284 src/BufferView.cpp:1316
+#: src/BufferParams.cpp:1999 src/BufferView.cpp:1284 src/BufferView.cpp:1316
 msgid "Could not load class"
 msgstr ""
 
-#: src/BufferParams.cpp:2032
+#: src/BufferParams.cpp:2033
 msgid "Error reading internal layout information"
 msgstr ""
 
-#: src/BufferParams.cpp:2033 src/TextClass.cpp:1349
+#: src/BufferParams.cpp:2034 src/TextClass.cpp:1349
 msgid "Read Error"
 msgstr ""
 
@@ -17054,95 +17066,95 @@ msgstr ""
 msgid "Mark set"
 msgstr ""
 
-#: src/BufferView.cpp:1650
+#: src/BufferView.cpp:1651
 msgid "Statistics for the selection:"
 msgstr ""
 
-#: src/BufferView.cpp:1652
+#: src/BufferView.cpp:1653
 msgid "Statistics for the document:"
 msgstr ""
 
-#: src/BufferView.cpp:1655
+#: src/BufferView.cpp:1656
 #, c-format
 msgid "%1$d words"
 msgstr ""
 
-#: src/BufferView.cpp:1657
+#: src/BufferView.cpp:1658
 msgid "One word"
 msgstr ""
 
-#: src/BufferView.cpp:1660
+#: src/BufferView.cpp:1661
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1663
+#: src/BufferView.cpp:1664
 msgid "One character (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1666
+#: src/BufferView.cpp:1667
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1669
+#: src/BufferView.cpp:1670
 msgid "One character (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1671
+#: src/BufferView.cpp:1672
 msgid "Statistics"
 msgstr ""
 
-#: src/BufferView.cpp:1805
+#: src/BufferView.cpp:1806
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
 
-#: src/BufferView.cpp:1807
+#: src/BufferView.cpp:1808
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr ""
 
-#: src/BufferView.cpp:1815
+#: src/BufferView.cpp:1816
 msgid "Branch name"
 msgstr ""
 
-#: src/BufferView.cpp:1822 src/frontends/qt4/GuiBranches.cpp:178
+#: src/BufferView.cpp:1823 src/frontends/qt4/GuiBranches.cpp:178
 msgid "Branch already exists"
 msgstr ""
 
-#: src/BufferView.cpp:1943
+#: src/BufferView.cpp:1944
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr ""
 
-#: src/BufferView.cpp:2292
+#: src/BufferView.cpp:2293
 msgid "Inverse Search Failed"
 msgstr ""
 
-#: src/BufferView.cpp:2293
+#: src/BufferView.cpp:2294
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
 msgstr ""
 
-#: src/BufferView.cpp:2672
+#: src/BufferView.cpp:2673
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr ""
 
-#: src/BufferView.cpp:2683
+#: src/BufferView.cpp:2684
 #, c-format
 msgid "Document %1$s inserted."
 msgstr ""
 
-#: src/BufferView.cpp:2685
+#: src/BufferView.cpp:2686
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr ""
 
-#: src/BufferView.cpp:2950
+#: src/BufferView.cpp:2951
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17150,26 +17162,26 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/BufferView.cpp:2952
+#: src/BufferView.cpp:2953
 msgid "Could not read file"
 msgstr ""
 
-#: src/BufferView.cpp:2959
+#: src/BufferView.cpp:2960
 #, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr ""
 
-#: src/BufferView.cpp:2960 src/output.cpp:39
+#: src/BufferView.cpp:2961 src/output.cpp:39
 msgid "Could not open file"
 msgstr ""
 
-#: src/BufferView.cpp:2967
+#: src/BufferView.cpp:2968
 msgid "Reading not UTF-8 encoded file"
 msgstr ""
 
-#: src/BufferView.cpp:2968
+#: src/BufferView.cpp:2969
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -17635,12 +17647,12 @@ msgstr ""
 msgid "&Don't Add"
 msgstr ""
 
-#: src/CutAndPaste.cpp:665 src/Text.cpp:363
+#: src/CutAndPaste.cpp:665 src/Text.cpp:364
 #, c-format
 msgid "Layout `%1$s' was not found."
 msgstr ""
 
-#: src/CutAndPaste.cpp:667 src/Text.cpp:365
+#: src/CutAndPaste.cpp:667 src/Text.cpp:366
 msgid "Layout Not Found"
 msgstr ""
 
@@ -18644,88 +18656,88 @@ msgstr ""
 msgid "Paragraph not properly initialized"
 msgstr ""
 
-#: src/Text.cpp:390
+#: src/Text.cpp:391
 msgid "Unknown Inset"
 msgstr ""
 
-#: src/Text.cpp:471
+#: src/Text.cpp:472
 msgid "Change tracking error"
 msgstr ""
 
-#: src/Text.cpp:472
+#: src/Text.cpp:473
 #, c-format
 msgid "Unknown author index for change: %1$d\n"
 msgstr ""
 
-#: src/Text.cpp:483
+#: src/Text.cpp:484
 msgid "Unknown token"
 msgstr ""
 
-#: src/Text.cpp:947
+#: src/Text.cpp:948
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr ""
 
-#: src/Text.cpp:955
+#: src/Text.cpp:956
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 
-#: src/Text.cpp:1786
+#: src/Text.cpp:1787
 msgid "[Change Tracking] "
 msgstr ""
 
-#: src/Text.cpp:1792
+#: src/Text.cpp:1793
 msgid "Change: "
 msgstr ""
 
-#: src/Text.cpp:1796
+#: src/Text.cpp:1797
 msgid " at "
 msgstr ""
 
-#: src/Text.cpp:1806
+#: src/Text.cpp:1807
 #, c-format
 msgid "Font: %1$s"
 msgstr ""
 
-#: src/Text.cpp:1811
+#: src/Text.cpp:1812
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ""
 
-#: src/Text.cpp:1817
+#: src/Text.cpp:1818
 msgid ", Spacing: "
 msgstr ""
 
-#: src/Text.cpp:1823 src/frontends/qt4/GuiDocument.cpp:694
+#: src/Text.cpp:1824 src/frontends/qt4/GuiDocument.cpp:694
 msgid "OneHalf"
 msgstr ""
 
-#: src/Text.cpp:1829
+#: src/Text.cpp:1830
 msgid "Other ("
 msgstr ""
 
-#: src/Text.cpp:1838
+#: src/Text.cpp:1839
 msgid ", Inset: "
 msgstr ""
 
-#: src/Text.cpp:1839
+#: src/Text.cpp:1840
 msgid ", Paragraph: "
 msgstr ""
 
-#: src/Text.cpp:1840
+#: src/Text.cpp:1841
 msgid ", Id: "
 msgstr ""
 
-#: src/Text.cpp:1841
+#: src/Text.cpp:1842
 msgid ", Position: "
 msgstr ""
 
-#: src/Text.cpp:1847
+#: src/Text.cpp:1848
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1849
+#: src/Text.cpp:1850
 msgid ", Boundary: "
 msgstr ""
 
@@ -18765,15 +18777,15 @@ msgstr ""
 msgid " not known"
 msgstr ""
 
-#: src/Text3.cpp:1755 src/frontends/qt4/GuiApplication.cpp:1367
+#: src/Text3.cpp:1758 src/frontends/qt4/GuiApplication.cpp:1367
 msgid "Missing argument"
 msgstr ""
 
-#: src/Text3.cpp:1904 src/Text3.cpp:1916
+#: src/Text3.cpp:1907 src/Text3.cpp:1919
 msgid "Character set"
 msgstr ""
 
-#: src/Text3.cpp:2123 src/Text3.cpp:2134
+#: src/Text3.cpp:2126 src/Text3.cpp:2137
 msgid "Paragraph layout set"
 msgstr ""
 
@@ -18985,12 +18997,12 @@ msgid ""
 msgstr ""
 
 #: src/VCBackend.cpp:1306 src/VCBackend.cpp:1310
-#: src/frontends/qt4/FindAndReplace.cpp:345
+#: src/frontends/qt4/FindAndReplace.cpp:346
 msgid "&Yes"
 msgstr ""
 
 #: src/VCBackend.cpp:1306 src/VCBackend.cpp:1310
-#: src/frontends/qt4/FindAndReplace.cpp:345
+#: src/frontends/qt4/FindAndReplace.cpp:346
 msgid "&No"
 msgstr ""
 
@@ -19148,19 +19160,19 @@ msgid ""
 "Continue searching from the end?"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:344
+#: src/frontends/qt4/FindAndReplace.cpp:345
 msgid "Wrap search?"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:389
+#: src/frontends/qt4/FindAndReplace.cpp:390
 msgid "Nothing to search"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:429
+#: src/frontends/qt4/FindAndReplace.cpp:430
 msgid "No open document(s) in which to search"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:529
+#: src/frontends/qt4/FindAndReplace.cpp:530
 msgid "Advanced Find and Replace"
 msgstr ""
 
@@ -21707,7 +21719,7 @@ msgstr ""
 msgid "Please, preview the document first."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3574
+#: src/frontends/qt4/GuiView.cpp:3579
 msgid "Couldn't proceed."
 msgstr ""
 
@@ -22809,7 +22821,7 @@ msgstr ""
 msgid "Unknown TOC type"
 msgstr ""
 
-#: src/insets/InsetTabular.cpp:4720
+#: src/insets/InsetTabular.cpp:4765
 msgid "Selection size should match clipboard content."
 msgstr ""
 
