@@ -2,13 +2,13 @@
 # Copyright (C) 2008 LyX Developers
 # This file is distributed under the same license as the LyX package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2007, 2008, 2009, 2010, 2011.
+# Yuri Chornoivan <yurchor@ukr.net>, 2007, 2008, 2009, 2010, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2012-01-31 09:56-0500\n"
-"PO-Revision-Date: 2011-10-30 16:27+0200\n"
+"PO-Revision-Date: 2012-01-31 18:00+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "Language: uk\n"
@@ -8667,34 +8667,28 @@ msgid "ACKNOWLEDGEMENTS"
 msgstr "ПОДЯКИ"
 
 #: lib/layouts/jasatex.layout:114
-#, fuzzy
 msgid "Alternative Affiliation"
-msgstr "Альтернативне місце роботи:"
+msgstr "Альтернативне місце роботи"
 
 #: lib/layouts/jasatex.layout:122
-#, fuzzy
 msgid "Homepage"
-msgstr "нова сторінка"
+msgstr "Домашня сторінка"
 
 #: lib/layouts/jasatex.layout:210
-#, fuzzy
 msgid "PACS numbers:"
-msgstr "Номер PACS:"
+msgstr "Номери PACS:"
 
 #: lib/layouts/jasatex.layout:213
-#, fuzzy
 msgid "Preprint number"
-msgstr "Препринт"
+msgstr "Номер препринта"
 
 #: lib/layouts/jasatex.layout:216
-#, fuzzy
 msgid "Preprint number:"
-msgstr "Препринт"
+msgstr "Номер препринта:"
 
 #: lib/layouts/jasatex.layout:236 lib/layouts/jasatex.layout:240
-#, fuzzy
 msgid "Online citation"
-msgstr "Вставити посилання"
+msgstr "Інтерактивне цитування"
 
 #: lib/layouts/kluwer.layout:198
 msgid "AddressForOffprints"
@@ -10360,9 +10354,8 @@ msgid "# [number of Prob]"
 msgstr "№ [number of Prob]"
 
 #: lib/layouts/theorems-without-preamble.inc:358
-#, fuzzy
 msgid "Property \\theproperty."
-msgstr "Властивість \\theproperty"
+msgstr "Властивість \\theproperty."
 
 #: lib/layouts/theorems-without-preamble.inc:392
 #: lib/layouts/theorems-ams-extended-bytype.module:202
@@ -10615,7 +10608,7 @@ msgstr "Буквиця"
 
 #: lib/layouts/knitr.module:2 lib/configure.py:584
 msgid "Rnw (knitr)"
-msgstr ""
+msgstr "Rnw (knitr)"
 
 #: lib/layouts/knitr.module:6
 msgid ""
@@ -10623,6 +10616,11 @@ msgid ""
 "has to be installed for this module to work: install.packages('knitr'). Note "
 "it depends on R >= 2.14.1. For more info see http://yihui.github.com/knitr"
 msgstr ""
+"Використовує пакунок knitr R для динамічного створення звітів. Щоб можна було "
+"працювати з цим модулем, вам слід встановити відповідний пакунок R: install."
+"packages('knitr'). Зауважте, що для користування цим пакунком слід встановити "
+"R >= 2.14.1. Докладніший опис пакунка можна знайти на сторінці http://yihui."
+"github.com/knitr"
 
 #: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
 #: lib/layouts/sweave.module:6
@@ -13454,9 +13452,8 @@ msgid "Multicolumn Manual|M"
 msgstr "Підручник з багатоколонковості|к"
 
 #: lib/ui/stdmenus.inc:589
-#, fuzzy
 msgid "Sweave Manual|S"
-msgstr "Sweave|S"
+msgstr "Підручник зі Sweave|S"
 
 #: lib/ui/stdmenus.inc:590
 msgid "XY-pic Manual|X"
@@ -16205,7 +16202,6 @@ msgid "Spreadsheet"
 msgstr "Електронна таблиця"
 
 #: lib/external_templates:39
-#, fuzzy
 msgid ""
 "A spreadsheet made with Gnumeric, LibreOffice, OpenOffice or Excel.\n"
 "It imports as a long table, so any length\n"
@@ -16213,7 +16209,8 @@ msgid ""
 "The gnumeric software is necessary for conversion,\n"
 "both for gnumeric and excel files.\n"
 msgstr ""
-"Електронна таблиця, створена за допомогою gnumeric, openoffice або excel.\n"
+"Електронна таблиця, створена за допомогою Gnumeric, LibreOffice, OpenOffice "
+"або Excel.\n"
 "Програма імпортує її як довгу таблицю, отже ніяких обмежень на\n"
 "довжину не накладається. Ширина таблиці може стати проблемою.\n"
 "Для перетворення файлів gnumeric і excel слід встановити програму\n"
@@ -16314,7 +16311,6 @@ msgid "PDF pages: $$AbsOrRelPathParent$$Basename"
 msgstr "Сторінки PDF: $$AbsOrRelPathParent$$Basename"
 
 #: lib/external_templates:303
-#, fuzzy
 msgid ""
 "Includes PDF documents, using the 'pdfpages' package.\n"
 "To include multiple pages, use the 'pages'-option,\n"
@@ -16336,6 +16332,9 @@ msgstr ""
 "* pages={x-y} (діапазон сторінок)\n"
 "* pages={x,y,z} (окремі сторінки)\n"
 "* pages=- (всі сторінки)\n"
+"* pages=last-1 (включити всі сторінки у зворотному порядку)"
+"Якщо буде додано параметр «noautoscale», сторінки PDF буде додано\n"
+"без внесення змін до початкових розмірів цих сторінок. \n"
 "Щоб дізнатися про інші параметри та подробиці, зверніться до\n"
 "документації пакунка pdfpages.\n"
 
@@ -20962,10 +20961,9 @@ msgstr "[Немає попередньо визначених параметрі
 
 #: src/frontends/qt4/GuiDocument.cpp:3034
 msgid "C&ustomize Hyperref Options"
-msgstr ""
+msgstr "З&мінити параметри hyperref"
 
 #: src/frontends/qt4/GuiDocument.cpp:3036
-#, fuzzy
 msgid "&Use Hyperref Support"
 msgstr "&Використовувати підтримку hyperref"
 
@@ -21721,9 +21719,8 @@ msgid ""
 msgstr "Досягнуто кінця документа, бажаєте продовжити з початку?"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:385
-#, fuzzy
 msgid "Spell checker has no dictionaries."
-msgstr "Помилка програми перевірки правопису."
+msgstr "Не виявлено словників перевірки правопису."
 
 #: src/frontends/qt4/GuiSymbols.cpp:54
 msgid "Basic Latin"
@@ -22320,10 +22317,15 @@ msgid ""
 "Please close it before attempting to overwrite it.\n"
 "Do you want to choose a new filename?"
 msgstr ""
+"Файл\n"
+"%1$s\n"
+"вже відкрито у поточному сеансі.\n"
+"Будь ласка, закрийте його, перш ніж намагатися перезаписати цей файл.\n"
+"Хочете вибрати іншу назву файла?"
 
 #: src/frontends/qt4/GuiView.cpp:2307
 msgid "Chosen File Already Open"
-msgstr ""
+msgstr "Вибраний файл вже відкрито"
 
 #: src/frontends/qt4/GuiView.cpp:2308 src/frontends/qt4/GuiView.cpp:2323
 #: src/frontends/qt4/GuiView.cpp:2368
