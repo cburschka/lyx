@@ -187,6 +187,9 @@ What's new
 
 - Fix crash when copying table columns or rows (bug 7644).
 
+- Correctly set the default output format in the document settings dialog
+  if non-tex fonts are used (bug 8013).
+
 - Update citation labels when the BibTeX file changes (bug 7499).
 
 - Mark Buffer dirty when changing branch activation status (bug 7872). Sadly,
