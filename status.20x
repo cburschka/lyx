@@ -45,6 +45,9 @@ What's new
 
 - Allow redirecting stderr in converters (other than stdout).
 
+- Add LaTeX commands for unicode symbols U+200c, U+2011, U+2017, U+2027 and
+  U+202f to be used with non-unicode LaTeX backends (bug 7998).
+
 
 * TEX2LYX IMPROVEMENTS
 

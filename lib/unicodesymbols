@@ -1530,14 +1530,19 @@
 #
 # general punctuation
 #
+0x200c "\\textcompwordmark"       "" "" "" "" # ZERO WIDTH NON-JOINER
+#0x200d ""                         "" "" "" "" # ZERO WIDTH JOINER
+#0x200e ""                         "" "" "" "" # LEFT-TO-RIGHT MARK
+#0x200f ""                         "" "" "" "" # RIGHT-TO-LEFT MARK
 0x2010 "-"                        "" "" # HYPHEN # identic in LaTeX to FIGURE DASH
+0x2011 "\\nobreakdash-"           "amsmath" "" "" "" # NON-BREAKING HYPHEN
 0x2012 "-"                        "" "" # FIGURE DASH
 0x2013 "\\textendash"             "" "" # EN DASH
 0x2014 "\\textemdash"             "" "" # EM DASH
 # use the following macro for the character HORIZONTAL BAR
 0x2015 "\\LyXbar" "\\newcommand*\\LyXbar{\\rule[0.585ex]{1.2em}{0.25pt}}" ""
 0x2016 "\\textbardbl"             "textcomp" "" # DOUBLE VERTICAL LINE
-#0x2017 ""                         "" "" # DOUBLE LOW LINE
+0x2017 "\\subdoublebar{ }"        "tipa" "" "" "" # DOUBLE LOW LINE
 0x2018 "\\textquoteleft"          "" "" # LEFT SINGLE QUOTATION MARK
 0x2019 "\\textquoteright"         "" "" # RIGHT SINGLE QUOTATION MARK
 0x201a "\\quotesinglbase"         "" "" # SINGLE LOW-9 QUOTATION MARK
@@ -1545,7 +1550,7 @@
 0x201c "\\textquotedblleft"       "" "" # LEFT DOUBLE QUOTATION MARK
 0x201d "\\textquotedblright"      "" "" # RIGHT DOUBLE QUOTATION MARK
 0x201e "\\quotedblbase"           "" "" # DOUBLE LOW-9 QUOTATION MARK
-#0x201f ""                         "" "" # DOUBLE LOW-REVERSED-9 QUOTATION MARK
+#0x201f ""                         "" "" # DOUBLE HIGH-REVERSED-9 QUOTATION MARK
 0x2020 "\\dag"                    "" "" # DAGGER
 0x2021 "\\ddag"                   "" "" # DOUBLE DAGGER
 0x2022 "\\textbullet"             "textcomp" "" # BULLET
@@ -1553,7 +1558,15 @@
 0x2024 "."                        "" "" # ONE DOT LEADER # ≈ FULL STOP
 0x2025 ".\\,."                    "" "" # TWO DOT LEADER
 0x2026 "\\ldots"                  "" "" # HORIZONTAL ELLIPSIS
-#0x2027 ""                         "" "" # HYPHENATION POINT
+0x2027 "\\-"                      "" "" "" "" # HYPHENATION POINT
+#0x2028 ""                         "" "" "" "" # LINE SEPARATOR
+#0x2029 ""                         "" "" "" "" # PARAGRAPH SEPARATOR
+#0x202a ""                         "" "" "" "" # LEFT-TO-RIGHT EMBEDDING
+#0x202b ""                         "" "" "" "" # RIGHT-TO-LEFT EMBEDDING
+#0x202c ""                         "" "" "" "" # POP DIRECTIONAL FORMATTING
+#0x202d ""                         "" "" "" "" # LEFT-TO-RIGHT OVERRIDE
+#0x202e ""                         "" "" "" "" # RIGHT-TO-LEFT OVERRIDE
+0x202f "\\,"                      "" "" "\\," "" # NARROW NO-BREAK SPACE
 0x2030 "\\textperthousand"        "textcomp" "" # PER MILLE SIGN
 0x2031 "\\textpertenthousand"     "textcomp" "" # PER TEN THOUSAND SIGN
 0x2032 "\\textasciiacute"         "textcomp" "" # PRIME
@@ -1580,6 +1593,7 @@
 0x205d "\\vdots"                  "" "" # TRICOLON # ≈ VERTICAL ELLIPSIS
 #0x205e ""                         "" "" "" "" # VERTICAL FOUR DOTS
 0x205f ""                         "" "" "\\:" "" # MEDIUM MATHEMATICAL SPACE
+#0x2060 ""                         "" "" "" "" # WORD JOINER
 0x2070 "\\textsuperscript{0}"     "" "" "{{}^0}" "" # SUPERSCRIPT ZERO
 0x2071 "\\textsuperscript{i}"     "" "" "{{}^i}" "" # SUPERSCRIPT LATIN SMALL LETTER I
 0x2074 "\\textsuperscript{4}"     "" "" "{{}^4}" "" # SUPERSCRIPT FOUR
