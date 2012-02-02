@@ -14,6 +14,7 @@
 #include "Cursor.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
+#include "FuncStatus.h"
 #include "InsetMathFont.h"
 #include "InsetMathScript.h"
 #include "InsetMathSymbol.h"
@@ -754,6 +755,7 @@ void InsetMathScript::doDispatch(Cursor & cur, FuncRequest & cmd)
 	//LYXERR("InsetMathScript: request: " << cmd);
 
 	if (cmd.action() == LFUN_MATH_LIMITS) {
+		cur.recordUndoInset();
 		if (!cmd.argument().empty()) {
 			if (cmd.argument() == "limits")
 				limits_ = 1;
@@ -769,6 +771,26 @@ void InsetMathScript::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	InsetMathNest::doDispatch(cur, cmd);
+}
+
+
+bool InsetMathScript::getStatus(Cursor & cur, FuncRequest const & cmd,
+				FuncStatus & flag) const
+{
+	if (cmd.action() == LFUN_MATH_LIMITS) {
+		if (!cmd.argument().empty()) {
+			if (cmd.argument() == "limits")
+				flag.setOnOff(limits_ == 1);
+			else if (cmd.argument() == "nolimits")
+				flag.setOnOff(limits_ == -1);
+			else
+				flag.setOnOff(limits_ == 0);
+		} 
+		flag.setEnabled(true);
+		return true;
+	}
+
+	return InsetMathNest::getStatus(cur, cmd, flag);
 }
 
 

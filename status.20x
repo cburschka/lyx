@@ -87,6 +87,7 @@ What's new
 - We now use the display string as a tooltip in the Outliner, if no
   other tooltip is given.
 
+- Show check mark on current math limit type in Edit>Math submenu.
 
 * DOCUMENTATION AND LOCALIZATION
 
@@ -121,7 +122,7 @@ What's new
 
 - Support configure --with-packaging=posix on Mac OS X (bug 7927).
 
-- Improved disk image creation:
+- Improved disk image creationi on Mac OS X:
   * Provide translation of the application menu.
   * Enhanced background image.
   * Package with hunspell dictionaries is default.
@@ -199,6 +200,8 @@ What's new
   this does not work properly if the branches are in a master document that is
   hidden, but this is a larger issue.
 
+- Fix undo after changing limit type of a subscript in math mode (bug 8007).
+
 - Fix inconsistent state of horizontal space dialog on start up (bug 7906).
 
 - Unify display of theorem headings (bug 7883).
@@ -208,7 +211,7 @@ What's new
 
 - Correctly display and handle the math commands \pod and \mod (bug 7962).
 
-- Fix tabbar visibility in fullscreen mode when opening/closing files (bug 7963).
+- Fix tabbar visibility in fullscreen mode when opening/closing files (bug 7G963).
 
 - Show a message box if the current spell checker has no dictionaries (bug 7884).
 
