@@ -1,14 +1,14 @@
 # Swedish translation of LyX / Svensk lokalisering för LyX
-# Copyright (C) 1997, 1998, 2010, 2011 LyX Team
+# Copyright (C) 1997, 1998, 2010, 2011, 2012 LyX Team
 #
 # Joacim Persson <sp2joap@ida.his.se> 1997, 1998.
-# Jim Rotmalm <jim.rotmalm@gmail.com>, 2010, 2011.
+# Jim Rotmalm <jim.rotmalm@gmail.com>, 2010, 2011, 2012.
 #
-# Information 2011-11-11:
-#   Bad Qt shortcuts: 122
+# Information 2012-02-01:
+#   Bad Qt shortcuts: 124
 #   Inconsistent translations: 6
 #   Bad menu shortcuts: 136
-#   Total warnings: 264
+#   Total warnings: 266
 #
 # Behöver förbättras:
 #   Alla genvägar (snabbkommandon, kortkommandon)
@@ -207,13 +207,13 @@
 #   view(er)             -> visa(re)
 #   wrap               ? -> svep, varva? bryt? (automatisk) radbrytning? linda in? att svepa runt
 #
-# Jim Rotmalm <jim.rotmalm@gmail.com>, 2010, 2011.
+# Jim Rotmalm <jim.rotmalm@gmail.com>, 2010, 2011, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 2.0.2\n"
+"Project-Id-Version: LyX 2.0.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-01-31 09:56-0500\n"
-"PO-Revision-Date: 2011-11-11 21:12+0100\n"
+"POT-Creation-Date: 2012-02-01 12:21+0200\n"
+"PO-Revision-Date: 2012-02-01 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
 "Language: sv\n"
@@ -249,7 +249,7 @@ msgstr "Upphovsrätt"
 #: src/frontends/qt4/ui/ShowFileUi.ui:55 src/frontends/qt4/ui/SymbolsUi.ui:66
 #: src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:138 src/frontends/qt4/ui/WrapUi.ui:173
-#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/ui_RefUi.h:339
+#: src/frontends/qt4/GuiParagraph.cpp:161
 msgid "&Close"
 msgstr "&Stäng"
 
@@ -262,7 +262,7 @@ msgid "The label as it appears in the document"
 msgstr "Etiketten som den visas i dokumentet"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:36
-#: src/frontends/qt4/ui/RefUi.ui:190 src/frontends/qt4/ui_RefUi.h:318
+#: src/frontends/qt4/ui/RefUi.ui:190
 msgid "&Label:"
 msgstr "&Etikett:"
 
@@ -328,18 +328,16 @@ msgstr "Bibliografigenerering"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:139
-#: src/frontends/qt4/ui_IndicesUi.h:193
 msgid "&Processor:"
 msgstr "&Behandlare:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
-#: src/frontends/qt4/ui_IndicesUi.h:195
 msgid "Select a processor"
 msgstr "Välj en behandlare"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:772
-#: src/frontends/qt4/GuiPrefs.cpp:867 src/frontends/qt4/ui_IndicesUi.h:197
+#: src/frontends/qt4/GuiPrefs.cpp:867
 msgid "&Options:"
 msgstr "&Alternativ:"
 
@@ -377,7 +375,7 @@ msgstr "Ange BibTeX-databasens namn"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:110
 #: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:350 src/frontends/qt4/ui_IndicesUi.h:212
+#: src/CutAndPaste.cpp:350
 msgid "&Add"
 msgstr "Lä&gg till"
 
@@ -449,7 +447,7 @@ msgstr "Lägg till bibliografi till innehålls&förteckning"
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
-#: src/frontends/qt4/ui/WrapUi.ui:150 src/frontends/qt4/ui_RefUi.h:337
+#: src/frontends/qt4/ui/WrapUi.ui:150
 msgid "&OK"
 msgstr "&Ok"
 
@@ -689,7 +687,7 @@ msgid "Define or change background color"
 msgstr "Definiera eller ändra bakgrundsfärg"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:123
-#: src/frontends/qt4/ui/IndicesUi.ui:185 src/frontends/qt4/ui_IndicesUi.h:227
+#: src/frontends/qt4/ui/IndicesUi.ui:185
 msgid "Alter Co&lor..."
 msgstr "Ändra &färg..."
 
@@ -699,7 +697,7 @@ msgstr "Ta bort vald gren"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
 #: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3768
-#: src/Buffer.cpp:3781 src/frontends/qt4/ui_IndicesUi.h:219
+#: src/Buffer.cpp:3781
 msgid "&Remove"
 msgstr "Ta bo&rt"
 
@@ -784,7 +782,7 @@ msgstr "&Storlek:"
 #: src/frontends/qt4/GuiDocument.cpp:1709
 #: src/frontends/qt4/GuiDocument.cpp:1784
 #: src/frontends/qt4/GuiDocument.cpp:2148
-#: src/frontends/qt4/GuiDocument.cpp:3222 src/frontends/qt4/GuiExternal.cpp:75
+#: src/frontends/qt4/GuiDocument.cpp:3224 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:70 src/frontends/qt4/GuiIndices.cpp:57
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
 #: src/frontends/qt4/GuiPrefs.cpp:2277 src/frontends/qt4/GuiPrefs.cpp:2529
@@ -987,7 +985,7 @@ msgstr "T&illämpa ändringar omedelbart"
 #: src/frontends/qt4/ui/RefUi.ui:330 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:1905
-#: src/frontends/qt4/GuiDocument.cpp:3165 src/frontends/qt4/ui_RefUi.h:338
+#: src/frontends/qt4/GuiDocument.cpp:3167
 msgid "&Apply"
 msgstr "Tillämp&a"
 
@@ -1993,7 +1991,6 @@ msgstr "Namn förknippat med URL"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:42
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:257
-#: src/frontends/qt4/ui_RefUi.h:332
 msgid "&Name:"
 msgstr "&Namn:"
 
@@ -2107,7 +2104,6 @@ msgid "&Edit"
 msgstr "R&edigera"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59 src/frontends/qt4/ui/IndicesUi.ui:143
-#: src/frontends/qt4/ui_IndicesUi.h:213
 msgid "A&vailable Indexes:"
 msgstr "Till&gängliga index:"
 
@@ -2115,7 +2111,7 @@ msgstr "Till&gängliga index:"
 msgid "Select the index this entry should be listed in."
 msgstr "Välj index som denna post ska listas i."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:190
+#: src/frontends/qt4/ui/IndicesUi.ui:19
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr ""
@@ -2124,55 +2120,53 @@ msgstr ""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:202
-#: src/frontends/qt4/ui_IndicesUi.h:192
 msgid "Index generation"
 msgstr "Indexgenerering"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:199
+#: src/frontends/qt4/ui/IndicesUi.ui:64
 msgid "Define program options of the selected processor."
 msgstr "Definiera programalternativ för den valda behandlaren."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:202
+#: src/frontends/qt4/ui/IndicesUi.ui:89
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr "Markera om du behöver flera index (t.ex. ett namnindex)"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:204
+#: src/frontends/qt4/ui/IndicesUi.ui:92
 msgid "&Use multiple indexes"
 msgstr "An&vänd flera index"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:114 src/frontends/qt4/ui_IndicesUi.h:205
+#: src/frontends/qt4/ui/IndicesUi.ui:114
 msgid "&New:[[index]]"
 msgstr "&Ny:[[index]]"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
+#: src/frontends/qt4/ui/IndicesUi.ui:124
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
 "Ange namnet på önskat index (t.ex. \"Namnindex\") och slå \"Lägg till\""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:210
+#: src/frontends/qt4/ui/IndicesUi.ui:131
 msgid "Add a new index to the list"
 msgstr "Lägg till ett nytt index till listan"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149 src/frontends/qt4/ui/RefUi.ui:60
-#: src/frontends/qt4/ui_IndicesUi.h:215 src/frontends/qt4/ui_RefUi.h:295
 msgid "1"
 msgstr "1"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:217
+#: src/frontends/qt4/ui/IndicesUi.ui:162
 msgid "Remove the selected index"
 msgstr "Ta bort valt index"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:221
+#: src/frontends/qt4/ui/IndicesUi.ui:172
 msgid "Rename the selected index"
 msgstr "Byt namn på valt index"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:223
+#: src/frontends/qt4/ui/IndicesUi.ui:175
 msgid "R&ename..."
 msgstr "B&yt namn..."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:225
+#: src/frontends/qt4/ui/IndicesUi.ui:182
 msgid "Define or change button color"
 msgstr "Definiera eller ändra knappfärg"
 
@@ -2545,7 +2539,7 @@ msgid "Update the display"
 msgstr "Uppdatera visning"
 
 #: src/frontends/qt4/ui/LogUi.ui:77 src/frontends/qt4/ui/RefUi.ui:294
-#: src/frontends/qt4/ui/ViewSourceUi.ui:74 src/frontends/qt4/ui_RefUi.h:336
+#: src/frontends/qt4/ui/ViewSourceUi.ui:74
 msgid "&Update"
 msgstr "&Uppdatera"
 
@@ -3058,7 +3052,7 @@ msgstr "Pappersformat"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:19
-#: src/frontends/qt4/ui/RefUi.ui:355 src/frontends/qt4/ui_RefUi.h:340
+#: src/frontends/qt4/ui/RefUi.ui:355
 msgid "&Format:"
 msgstr "&Format:"
 
@@ -4537,31 +4531,31 @@ msgstr "Visa statusradens meddelanden?"
 msgid "&Statusbar messages"
 msgstr "&Statusradens meddelanden"
 
-#: src/frontends/qt4/ui/RefUi.ui:22 src/frontends/qt4/ui_RefUi.h:292
+#: src/frontends/qt4/ui/RefUi.ui:22
 msgid "La&bels in:"
 msgstr "Etiketter i:"
 
-#: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:293
+#: src/frontends/qt4/ui/RefUi.ui:49
 msgid "&References"
 msgstr "&Referenser"
 
-#: src/frontends/qt4/ui/RefUi.ui:76 src/frontends/qt4/ui_RefUi.h:296
+#: src/frontends/qt4/ui/RefUi.ui:76
 msgid "Fil&ter:"
 msgstr "Fil&ter:"
 
-#: src/frontends/qt4/ui/RefUi.ui:89 src/frontends/qt4/ui_RefUi.h:298
+#: src/frontends/qt4/ui/RefUi.ui:89
 msgid "Enter string to filter the label list"
 msgstr "Ange sträng för att filtrera etikettlistan"
 
-#: src/frontends/qt4/ui/RefUi.ui:99 src/frontends/qt4/ui_RefUi.h:302
+#: src/frontends/qt4/ui/RefUi.ui:99
 msgid "Filter case-sensitively"
 msgstr "Filtrera skiftlägeskänsligt"
 
-#: src/frontends/qt4/ui/RefUi.ui:102 src/frontends/qt4/ui_RefUi.h:304
+#: src/frontends/qt4/ui/RefUi.ui:102
 msgid "Case-sensiti&ve"
 msgstr "Skiftlägeskänslig"
 
-#: src/frontends/qt4/ui/RefUi.ui:127 src/frontends/qt4/ui_RefUi.h:306
+#: src/frontends/qt4/ui/RefUi.ui:127
 msgid ""
 "Sort labels in alphabetical order (case-insensitively unless the Case-"
 "sensitive option is checked)"
@@ -4569,64 +4563,63 @@ msgstr ""
 "Sortera etiketter i alfabetisk följd (skiftlägesokänsligt om inte "
 "alternativet skiftlägeskänslig är markerad)"
 
-#: src/frontends/qt4/ui/RefUi.ui:130 src/frontends/qt4/ui_RefUi.h:308
+#: src/frontends/qt4/ui/RefUi.ui:130
 msgid "&Sort"
 msgstr "&Sortera"
 
-#: src/frontends/qt4/ui/RefUi.ui:140 src/frontends/qt4/ui_RefUi.h:310
+#: src/frontends/qt4/ui/RefUi.ui:140
 msgid "Sort labels case-sensitively in alphabetical order"
 msgstr "Sortera etiketter skiftlägeskänsligt i alfabetisk ordning"
 
-#: src/frontends/qt4/ui/RefUi.ui:143 src/frontends/qt4/ui_RefUi.h:312
+#: src/frontends/qt4/ui/RefUi.ui:143
 msgid "Cas&e-sensitive"
 msgstr "Skiftläg&eskänslig"
 
-#: src/frontends/qt4/ui/RefUi.ui:150 src/frontends/qt4/ui_RefUi.h:314
+#: src/frontends/qt4/ui/RefUi.ui:150
 msgid "Group labels by prefix (e.g. \"sec:\")"
 msgstr "Gruppera etiketter efter prefix (t.ex. \"sek:\")"
 
-#: src/frontends/qt4/ui/RefUi.ui:153 src/frontends/qt4/ui_RefUi.h:316
+#: src/frontends/qt4/ui/RefUi.ui:153
 msgid "Grou&p"
 msgstr "Grup&p"
 
 #: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/GuiRef.cpp:314
-#: src/frontends/qt4/ui_RefUi.h:317
 msgid "&Go to Label"
 msgstr "&Gå till etikett"
 
-#: src/frontends/qt4/ui/RefUi.ui:212 src/frontends/qt4/ui_RefUi.h:330
+#: src/frontends/qt4/ui/RefUi.ui:212
 msgid "Cross-reference as it appears in output"
 msgstr "Korsreferens som den visas i utmatning"
 
-#: src/frontends/qt4/ui/RefUi.ui:216 src/frontends/qt4/ui_RefUi.h:321
+#: src/frontends/qt4/ui/RefUi.ui:216
 msgid "<reference>"
 msgstr "<referens>"
 
-#: src/frontends/qt4/ui/RefUi.ui:221 src/frontends/qt4/ui_RefUi.h:322
+#: src/frontends/qt4/ui/RefUi.ui:221
 msgid "(<reference>)"
 msgstr "(<referens>)"
 
-#: src/frontends/qt4/ui/RefUi.ui:226 src/frontends/qt4/ui_RefUi.h:323
+#: src/frontends/qt4/ui/RefUi.ui:226
 msgid "<page>"
 msgstr "<sida>"
 
-#: src/frontends/qt4/ui/RefUi.ui:231 src/frontends/qt4/ui_RefUi.h:324
+#: src/frontends/qt4/ui/RefUi.ui:231
 msgid "on page <page>"
 msgstr "på sida <sida>"
 
-#: src/frontends/qt4/ui/RefUi.ui:236 src/frontends/qt4/ui_RefUi.h:325
+#: src/frontends/qt4/ui/RefUi.ui:236
 msgid "<reference> on page <page>"
 msgstr "<referens> på sida <sida>"
 
-#: src/frontends/qt4/ui/RefUi.ui:241 src/frontends/qt4/ui_RefUi.h:326
+#: src/frontends/qt4/ui/RefUi.ui:241
 msgid "Formatted reference"
 msgstr "Formaterad referens"
 
-#: src/frontends/qt4/ui/RefUi.ui:246 src/frontends/qt4/ui_RefUi.h:327
+#: src/frontends/qt4/ui/RefUi.ui:246
 msgid "Textual reference"
 msgstr "Textuell referens"
 
-#: src/frontends/qt4/ui/RefUi.ui:291 src/frontends/qt4/ui_RefUi.h:334
+#: src/frontends/qt4/ui/RefUi.ui:291
 msgid "Update the label list"
 msgstr "Uppdatera etikettlistan"
 
@@ -8831,34 +8824,28 @@ msgid "ACKNOWLEDGEMENTS"
 msgstr "TACKSÄGELSER"
 
 #: lib/layouts/jasatex.layout:114
-#, fuzzy
 msgid "Alternative Affiliation"
-msgstr "Alternativ tillhörighet:"
+msgstr "Alternativ tillhörighet"
 
 #: lib/layouts/jasatex.layout:122
-#, fuzzy
 msgid "Homepage"
-msgstr "ny sida"
+msgstr "Hemsida"
 
 #: lib/layouts/jasatex.layout:210
-#, fuzzy
 msgid "PACS numbers:"
 msgstr "PACS-nummer:"
 
 #: lib/layouts/jasatex.layout:213
-#, fuzzy
 msgid "Preprint number"
-msgstr "Preprint"
+msgstr "Preprintnummer"
 
 #: lib/layouts/jasatex.layout:216
-#, fuzzy
 msgid "Preprint number:"
-msgstr "Preprint"
+msgstr "Preprintnummer:"
 
 #: lib/layouts/jasatex.layout:236 lib/layouts/jasatex.layout:240
-#, fuzzy
 msgid "Online citation"
-msgstr "Infoga citat"
+msgstr "Nätcitat"
 
 #: lib/layouts/kluwer.layout:198
 msgid "AddressForOffprints"
@@ -10524,9 +10511,8 @@ msgid "# [number of Prob]"
 msgstr "# [antal prob]"
 
 #: lib/layouts/theorems-without-preamble.inc:358
-#, fuzzy
 msgid "Property \\theproperty."
-msgstr "Egenskap \\theproperty"
+msgstr "Egenskap \\theproperty."
 
 #: lib/layouts/theorems-without-preamble.inc:392
 #: lib/layouts/theorems-ams-extended-bytype.module:202
@@ -10777,7 +10763,7 @@ msgstr "Initial"
 
 #: lib/layouts/knitr.module:2 lib/configure.py:584
 msgid "Rnw (knitr)"
-msgstr ""
+msgstr "Rnw (knitr)"
 
 #: lib/layouts/knitr.module:6
 msgid ""
@@ -10785,6 +10771,10 @@ msgid ""
 "has to be installed for this module to work: install.packages('knitr'). Note "
 "it depends on R >= 2.14.1. For more info see http://yihui.github.com/knitr"
 msgstr ""
+"Använder knitr-paketet i R för dynamisk rapportgenerering. Detta R-paket "
+"måste vara installerad för denna modul att fungera: install.packages"
+"('knitr'). Notera att den beror på R >= 2.14.1. För mer information se "
+"http://yihui.github.com/knitr"
 
 #: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
 #: lib/layouts/sweave.module:6
@@ -13610,9 +13600,8 @@ msgid "Multicolumn Manual|M"
 msgstr "Multikolumnmanual|M"
 
 #: lib/ui/stdmenus.inc:589
-#, fuzzy
 msgid "Sweave Manual|S"
-msgstr "Sweave|S"
+msgstr "Sweavemanual|S"
 
 #: lib/ui/stdmenus.inc:590
 msgid "XY-pic Manual|X"
@@ -16361,7 +16350,6 @@ msgid "Spreadsheet"
 msgstr "Kalkylblad"
 
 #: lib/external_templates:39
-#, fuzzy
 msgid ""
 "A spreadsheet made with Gnumeric, LibreOffice, OpenOffice or Excel.\n"
 "It imports as a long table, so any length\n"
@@ -16369,8 +16357,8 @@ msgid ""
 "The gnumeric software is necessary for conversion,\n"
 "both for gnumeric and excel files.\n"
 msgstr ""
-"Ett kalkylblad gjord med gnumeric, openoffice eller excel.\n"
-"Den importeras som en lång tabell, så längd\n"
+"Ett kalkylblad gjord med Gnumeric, LibreOffice, OpenOffice eller excel.\n"
+"Det importeras som en lång tabell, så all längd\n"
 "är ok. Överdriven bredd kan vara ett problem.\n"
 "Mjukvaran gnumeric är nödvändig för omvandling,\n"
 "både för gnumeric och excel-filer.\n"
@@ -16470,7 +16458,6 @@ msgid "PDF pages: $$AbsOrRelPathParent$$Basename"
 msgstr "PDF sidor: $$ABsOrRelPathParent$$Basename"
 
 #: lib/external_templates:303
-#, fuzzy
 msgid ""
 "Includes PDF documents, using the 'pdfpages' package.\n"
 "To include multiple pages, use the 'pages'-option,\n"
@@ -16486,14 +16473,17 @@ msgid ""
 "for further options and details.\n"
 msgstr ""
 "Inkluderar PDF-dokument, genom 'pdfpages'-paketet.\n"
-"För att inkludera flera sidor, använd alternativet\n"
+"För att inkludera flertalet sidor, använd alternativet\n"
 "'pages', som måste infogas i 'Alternativ'.\n"
 "Exempel:\n"
 "* pages={x-y} (för ett sidintervall)\n"
 "* pages={x,y,z} (för specifika sidor)\n"
 "* pages=- (för att inkludera alla sidor)\n"
+"* pages=last-1 (för att inkludera alla sidor i omvänd ordning)\n"
+"Med alternativet 'noautoscale' infogas\n"
+"PDF-sidorna i deras ursprungsstorlek.\n"
 "Läs dokumentationen för pdfpages-paketet\n"
-"för fler alternativ och mer information.\n"
+"för ytterligare alternativ och detaljer.\n"
 
 #: lib/external_templates:346
 msgid ""
@@ -18260,19 +18250,19 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "Kopiera %1$s till %2$s misslyckades."
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:121
-#: src/frontends/qt4/GuiDocument.cpp:3222
+#: src/frontends/qt4/GuiDocument.cpp:3224
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Roman"
 msgstr "Antikva"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:122
-#: src/frontends/qt4/GuiDocument.cpp:3222
+#: src/frontends/qt4/GuiDocument.cpp:3224
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Sans Serif"
 msgstr "Linjär"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:123
-#: src/frontends/qt4/GuiDocument.cpp:3222
+#: src/frontends/qt4/GuiDocument.cpp:3224
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Typewriter"
 msgstr "Skrivmaskin"
@@ -20336,7 +20326,7 @@ msgstr "Filnamnsändelse"
 
 #: src/frontends/qt4/GuiBranches.cpp:101 src/frontends/qt4/GuiBranches.cpp:109
 #: src/frontends/qt4/GuiDocument.cpp:2113
-#: src/frontends/qt4/GuiDocument.cpp:3108
+#: src/frontends/qt4/GuiDocument.cpp:3110
 #: src/frontends/qt4/GuiProgressView.cpp:123
 #: src/frontends/qt4/GuiProgressView.cpp:137
 #: src/frontends/qt4/GuiProgressView.cpp:158
@@ -20345,7 +20335,7 @@ msgstr "Ja"
 
 #: src/frontends/qt4/GuiBranches.cpp:101 src/frontends/qt4/GuiBranches.cpp:109
 #: src/frontends/qt4/GuiDocument.cpp:2112
-#: src/frontends/qt4/GuiDocument.cpp:3107
+#: src/frontends/qt4/GuiDocument.cpp:3109
 #: src/frontends/qt4/GuiProgressView.cpp:89
 #: src/frontends/qt4/GuiProgressView.cpp:122
 #: src/frontends/qt4/GuiProgressView.cpp:158
@@ -20537,7 +20527,7 @@ msgstr "LyX-dokument (*.lyx)"
 
 #: src/frontends/qt4/GuiCompare.cpp:198 src/frontends/qt4/GuiDocument.cpp:1842
 #: src/frontends/qt4/GuiDocument.cpp:1917
-#: src/frontends/qt4/GuiDocument.cpp:3173
+#: src/frontends/qt4/GuiDocument.cpp:3175
 msgid "Error"
 msgstr "Fel"
 
@@ -20983,9 +20973,9 @@ msgstr "Stan&dard..."
 #: src/frontends/qt4/GuiDocument.cpp:1724
 #: src/frontends/qt4/GuiDocument.cpp:1730
 #: src/frontends/qt4/GuiDocument.cpp:1736
-#: src/frontends/qt4/GuiDocument.cpp:2915
-#: src/frontends/qt4/GuiDocument.cpp:2923
-#: src/frontends/qt4/GuiDocument.cpp:2931
+#: src/frontends/qt4/GuiDocument.cpp:2898
+#: src/frontends/qt4/GuiDocument.cpp:2906
+#: src/frontends/qt4/GuiDocument.cpp:2914
 msgid " (not installed)"
 msgstr " (inte installerad)"
 
@@ -21031,12 +21021,12 @@ msgid "LyX Files (*.lyx)"
 msgstr "LyX-filer (*.lyx)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1902
-#: src/frontends/qt4/GuiDocument.cpp:3162
+#: src/frontends/qt4/GuiDocument.cpp:3164
 msgid "Unapplied changes"
 msgstr "Otillämpade ändringar"
 
 #: src/frontends/qt4/GuiDocument.cpp:1903
-#: src/frontends/qt4/GuiDocument.cpp:3163
+#: src/frontends/qt4/GuiDocument.cpp:3165
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
@@ -21045,12 +21035,12 @@ msgstr ""
 "Om du inte tillämpar nu kommer de att förloras efter denna handling."
 
 #: src/frontends/qt4/GuiDocument.cpp:1905
-#: src/frontends/qt4/GuiDocument.cpp:3165
+#: src/frontends/qt4/GuiDocument.cpp:3167
 msgid "&Dismiss"
 msgstr "Avfär&da"
 
 #: src/frontends/qt4/GuiDocument.cpp:1917
-#: src/frontends/qt4/GuiDocument.cpp:3173
+#: src/frontends/qt4/GuiDocument.cpp:3175
 msgid "Unable to set document class."
 msgstr "Kan inte sätta dokumentklass."
 
@@ -21100,33 +21090,32 @@ msgstr "VARNING: Några paket som krävs är otillgängliga!"
 msgid "[No options predefined]"
 msgstr "[Inga alternativ fördefinierade]"
 
-#: src/frontends/qt4/GuiDocument.cpp:3034
-msgid "C&ustomize Hyperref Options"
-msgstr ""
-
 #: src/frontends/qt4/GuiDocument.cpp:3036
-#, fuzzy
+msgid "C&ustomize Hyperref Options"
+msgstr "Anpassa hyperref-alternativ"
+
+#: src/frontends/qt4/GuiDocument.cpp:3038
 msgid "&Use Hyperref Support"
 msgstr "Använd hyperref-stöd"
 
-#: src/frontends/qt4/GuiDocument.cpp:3185
+#: src/frontends/qt4/GuiDocument.cpp:3187
 msgid "Can't set layout!"
 msgstr "Kan inte sätta utformning!"
 
-#: src/frontends/qt4/GuiDocument.cpp:3186
+#: src/frontends/qt4/GuiDocument.cpp:3188
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Kan inte sätta utformning för ID: %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:3279
+#: src/frontends/qt4/GuiDocument.cpp:3281
 msgid "Not Found"
 msgstr "Hittades inte"
 
-#: src/frontends/qt4/GuiDocument.cpp:3333
+#: src/frontends/qt4/GuiDocument.cpp:3335
 msgid "Assigned master does not include this file"
 msgstr "Tilldelat huvud inkluderar inte denna fil"
 
-#: src/frontends/qt4/GuiDocument.cpp:3334
+#: src/frontends/qt4/GuiDocument.cpp:3336
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -21137,11 +21126,11 @@ msgstr ""
 "'%1$s' för att kunna använda huvuddokumentets\n"
 "finess."
 
-#: src/frontends/qt4/GuiDocument.cpp:3338
+#: src/frontends/qt4/GuiDocument.cpp:3340
 msgid "Could not load master"
 msgstr "Kunde inte ladda huvud"
 
-#: src/frontends/qt4/GuiDocument.cpp:3339
+#: src/frontends/qt4/GuiDocument.cpp:3341
 #, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -21858,9 +21847,8 @@ msgid ""
 msgstr "Vi nådde slutet på dokumentet, vill du fortsätta från början?"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:385
-#, fuzzy
 msgid "Spell checker has no dictionaries."
-msgstr "Stavningskontrollen misslyckades.\n"
+msgstr "Stavningskontroll har inga ordlistor."
 
 #: src/frontends/qt4/GuiSymbols.cpp:54
 msgid "Basic Latin"
@@ -22456,10 +22444,15 @@ msgid ""
 "Please close it before attempting to overwrite it.\n"
 "Do you want to choose a new filename?"
 msgstr ""
+"Filen\n"
+"%1$s\n"
+"är redan öppen i din aktuella session.\n"
+"Vänligen stäng den innan du försöker skriva över den.\n"
+"Vill du välja ett nytt filnamn?"
 
 #: src/frontends/qt4/GuiView.cpp:2307
 msgid "Chosen File Already Open"
-msgstr ""
+msgstr "Vald fil redan öppen"
 
 #: src/frontends/qt4/GuiView.cpp:2308 src/frontends/qt4/GuiView.cpp:2323
 #: src/frontends/qt4/GuiView.cpp:2368
@@ -24117,6 +24110,10 @@ msgid ""
 "Use the '-sysdir' command line parameter or set the environment variable\n"
 "%2$s to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
+"Kan inte fastställa systemkatalogen efter genomsökning av\n"
+"\t%1$s\n"
+"Använd kommandoradsparametern '-sysdir' eller sätt miljövariabeln\n"
+"%2$s till systemkatalogen för LyX som innehåller filen `chkconfig.ltx'."
 
 #: src/support/Package.cpp:645 src/support/Package.cpp:672
 msgid "File not found"
