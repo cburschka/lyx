@@ -110,6 +110,9 @@ public:
 	void validate(LaTeXFeatures &features) const;
 protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	/// do we want to handle this event?
+	bool getStatus(Cursor & cur, FuncRequest const & cmd,
+		FuncStatus & status) const;
 private:
 	virtual Inset * clone() const;
 	/// returns x offset for main part
