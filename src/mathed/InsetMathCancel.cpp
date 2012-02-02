@@ -47,13 +47,15 @@ void InsetMathCancel::draw(PainterInfo & pi, int x, int y) const
 	cell(0).draw(pi, x + 1, y);
 	Dimension const dim = dimension(*pi.base.bv);
 
-	// y1 \    /
-	//     \  /
-	//      \/
-	//      /\
-	//     /  \
-	// y2 /    \
-	//    x1  x2
+	/*
+	 * y1 \    /
+	 *     \  /
+	 *      \/
+	 *      /\
+	 *     /  \
+	 * y2 /	   \
+	 *    x1  x2
+	 */
 
 	int const x2 = x + dim.wid;
 	int const x1 = x;
