@@ -163,6 +163,8 @@ What's new
 
 - Avoid creation of a spurious Rplots.pdf file when using Sweave (bug 8019).
 
+- Find correctly the file Sweave.sty with older R versions (bug 8019).
+
 * TEX2LYX
 
 - Full support for the command \date{} (bug 7844).
