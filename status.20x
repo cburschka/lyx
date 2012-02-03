@@ -24,9 +24,6 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix Sweave support for document encoding with R >= 2.13.1 (bug
-  7876).
-
 - Add support for `knitr', an alternative for Sweave on R >= 2.14.1
   (bug 7887).
 
@@ -161,6 +158,10 @@ What's new
 
 - Fix error when exporting DocBook tables (bug 7004).
 
+- Fix Sweave support for document encoding with R >= 2.13.1 (bug
+  7876).
+
+- Avoid creation of a spurious Rplots.pdf file when using Sweave (bug 8019).
 
 * TEX2LYX
 

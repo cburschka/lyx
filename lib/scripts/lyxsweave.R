@@ -23,8 +23,12 @@
 # The advantage compared to the use of stylepath, is that the exported
 # .tex file will be portable to another machine. (JMarc)
 if (!length(system("kpsewhich Sweave.sty", intern=TRUE, ignore.stderr=TRUE))) {
-  file.copy(file.path(R.home("share"), "texmf", "tex", "latex", "Sweave.sty"),
-    dirname(.cmdargs[2]), overwrite=TRUE)
+  .texmf.path <- file.path(R.home("share"), "texmf")
+  if (!file.exists(.sweave.sty <- file.path(.texmf.path, "Sweave.sty"))) {
+    .sweave.sty <- file.path(.texmf.path, "tex", "latex", "Sweave.sty")
+  } 
+  file.copy(.sweave.sty, dirname(.cmdargs[2]), overwrite=TRUE)
+  rm(list = c('.sweave.sty', '.texmf.path'))
 }
 
 
@@ -38,6 +42,11 @@ tmpout <- gsub(".", "-", sub("\\.tex$", "", basename(.cmdargs[2])), fixed = TRUE
 # replace
 .prefix.str <- paste(dirname(.cmdargs[2]), tmpout, sep="/")
 rm(tmpout)
+
+# avoid the default Rplots.pdf
+options(device = function(...) {
+  pdf(file = tempfile())
+})
 
 # finally run sweave
 
