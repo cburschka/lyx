@@ -1345,11 +1345,7 @@ reference "cha:Formats-fichiers-graphiques"
 
 \end_inset
 
-,
-\lang english
- 
-\lang french
-chaque format pour la sortie du document ne va accepter qu'un petit nombre
+, chaque format pour la sortie du document ne va accepter qu'un petit nombre
  de formats d'images.
  Pour s'en sortir LyX utilise le programme 
 \family typewriter
@@ -1358,11 +1354,7 @@ ImageMagick
  en arrière plan pour convertir les formats que vous utilisez dans un des
  formats acceptés par le format de sortie.
  Ces conversions prenant forcément du temps, vous pouvez accélérer vos exportati
-ons en n'utilisant que les formats listés dans les sous sections de
-\lang english
- 
-\lang french
-l'appendice
+ons en n'utilisant que les formats listés dans les sous sections de l'appendice
 \begin_inset space ~
 \end_inset
 
@@ -1826,9 +1818,9 @@ status collapsed
 .
  En fait vous pouvez convertir n'importe quel format matriciel en PDF ou
  en EPS, mais le résultat ne sera pas redimensionnable.
- Dans ce cas seul une en-tête est réellement ajoutée à l'image initiale
+ Dans ce cas seul une en-tête est réellement ajoutée à l'image initiale.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dans le cas du PDF l'image initiale est aussi compressée.
@@ -1836,7 +1828,7 @@ Dans le cas du PDF l'image initiale est aussi compressée.
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -1850,11 +1842,7 @@ Adobe Photoshop
 \begin_layout Standard
 En principe il est quasiment impossible de convertir une image matricielle
  en graphique vectoriel, seul le contraire est possible.
-
-\lang english
- 
-\lang french
-Seuls les formats d'image PDF et EPS peuvent être directement incorporés
+ Seuls les formats d'image PDF et EPS peuvent être directement incorporés
  dans respectivement un fichier de sortie PDF ou PostScript.
  Les images en SVG ou en WMF sont recalculées sous forme de bitmaps quand
  la sortie est générée puisqu'il n'existe pas actuellement de convertisseurs
@@ -19612,8 +19600,6 @@ strut
 \series default
  en code TeX au debut d'une ligne du tableau.
  Le tableau
-\lang english
-
 \begin_inset space ~
 \end_inset
 
@@ -19624,8 +19610,6 @@ reference "tab:Alignement-vertical"
 
 \end_inset
 
-
-\lang french
  montre l'effet de cette commande.
 \end_layout
 
@@ -20662,8 +20646,6 @@ Personnalisation des tableaux !  Format de cellule/colonne
 
 \begin_layout Standard
 Calculer la largeur nécessaire pour colonnes normales comme dans la section
-\lang english
-
 \begin_inset space ~
 \end_inset
 
@@ -20674,8 +20656,6 @@ reference "sec:Table-Width-Calculation"
 
 \end_inset
 
-
-\lang french
  et pour des colonnes couvertes par un cellule multi-colonne comme dans
  la section
 \begin_inset space ~
@@ -22346,8 +22326,6 @@ cdashline{4-5}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -22357,9 +22335,9 @@ cdashline{4-5}
 \begin_layout Standard
 
 \lang english
-Tables with dashed lines can also be colored as shown by Table
+Tables with dashed lines can also be colored as shown by
 \lang french
-
+ tableau
 \begin_inset space ~
 \end_inset
 
@@ -22544,8 +22522,6 @@ color partial horizontal, dashed lines yellow
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Float table
 placement h
 wide false
@@ -22553,19 +22529,17 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Colored-table-with"
 
 \end_inset
 
+
+\lang english
 Colored table with dashed lines
 \end_layout
 
@@ -28950,11 +28924,7 @@ LaTeX (pdflatex) / (plain)
 
 \end_inset
 
-
-\lang english
  
-\lang french
-
 \begin_inset Note Comment
 status open
 
@@ -28971,13 +28941,9 @@ Le texte de cette note n'apparaîtra que comme commentaire dans un fichier
 \begin_layout Description
 Grisée Ce type de note apparaît à l'impression sous forme de texte grisé.
  La boîte de cette note ressemble à ceci :
-\lang english
-
 \begin_inset Newline newline
 \end_inset
 
-
-\lang french
 
 \begin_inset Newline newline
 \end_inset
@@ -32675,8 +32641,6 @@ reference "sec:Boîtes-colorées"
 
 , elle utilise toujours toute la largeur de la colonne et la boîte constitue
  son propre paragraphe.
-\lang english
-
 \begin_inset Box Shaded
 position "t"
 hor_pos "c"
@@ -32688,7 +32652,7 @@ width "50col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Boîte avec fond ombré
@@ -33443,8 +33407,6 @@ FrameSep}{9pt}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -33653,8 +33615,6 @@ definecolor{shadecolor}{rgb}{1,0,0}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -33725,12 +33685,6 @@ Horizontal
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -33746,7 +33700,7 @@ status open
 
 \begin_layout Plain Layout
 
-\lang german
+\lang ngerman
 Dies ist ein deutscher Text.
  Dies ist ein deutscher Text.
  Dies ist ein deutscher Text.
@@ -33765,7 +33719,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\lang german
+\lang ngerman
 Dies ist eine deutsche Fußnote.
 \end_layout
 
@@ -33827,7 +33781,6 @@ This is an English footnote.
 \end_inset
 
  This is an English Text.
- 
 \end_layout
 
 \end_inset
@@ -33905,17 +33858,6 @@ Boîtes ! Parboxes
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-En attendant une traduction de parbox (NdT)
-\end_layout
-
-\end_inset
-
 Les parboxes ressemblent beaucoup aux minipages à la différence qu'elles
  ne peuvent avoir de note de bas de page.
 \end_layout
@@ -33933,7 +33875,7 @@ width "33col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Ceci est un texte à l'intérieur d'une parbox.
@@ -36370,8 +36312,6 @@ Flottants ! Flottants d'enrobage
 \end_inset
 
 
-\lang english
-
 \begin_inset Index idx
 status collapsed
 
@@ -36582,7 +36522,7 @@ Les flottants d'enrobage ne sont pas autorisés dans les en-têtes de sections
 \begin_layout Itemize
 Leur numérotation et leur référencement fonctionnent comme décrit dans le
  chapitre
-\begin_inset space \thinspace{}
+\begin_inset space ~
 \end_inset
 
 
@@ -36597,8 +36537,6 @@ reference "chap:Flottants"
 
 \begin_layout Section
 Objets fixes entourés par du texte
-\lang english
-
 \begin_inset Index idx
 status collapsed
 
@@ -37430,8 +37368,6 @@ end{window}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -37444,11 +37380,7 @@ footnotetext{
 
 \end_inset
 
-
-\lang french
 Note de pied de page du paragraphe avec objet fixe.
-\lang english
-
 \begin_inset ERT
 status collapsed
 
@@ -37777,8 +37709,6 @@ Pas de paramètre optionnel, la lettre initiale est un 'I' dans la police
 
 \begin_deeper
 \begin_layout Initial
-
-\lang english
 \begin_inset Argument
 status open
 
@@ -37802,9 +37732,11 @@ status collapsed
 
 \end_inset
 
- was in the spring of the year 1894 that all London was interested, and
- the fashionable world dismayed, by the murder of the Honourable Ronald
- Adair under most unusual and inexplicable circumstances.
+ 
+\lang english
+was in the spring of the year 1894 that all London was interested, and the
+ fashionable world dismayed, by the murder of the Honourable Ronald Adair
+ under most unusual and inexplicable circumstances.
  The public has already learned those particulars of the crime which came
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
@@ -37836,8 +37768,6 @@ L'initiale est entourée par une seule ligne et est formée de deux lettres
 
 \begin_deeper
 \begin_layout Initial
-
-\lang english
 \begin_inset Argument
 status open
 
@@ -37868,9 +37798,11 @@ status collapsed
 
 \end_inset
 
- was in the spring of the year 1894 that all London was interested, and
- the fashionable world dismayed, by the murder of the Honourable Ronald
- Adair under most unusual and inexplicable circumstances.
+ 
+\lang english
+was in the spring of the year 1894 that all London was interested, and the
+ fashionable world dismayed, by the murder of the Honourable Ronald Adair
+ under most unusual and inexplicable circumstances.
  The public has already learned those particulars of the crime which came
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
@@ -38065,8 +37997,6 @@ colore la lettrine en magenta
 \end_layout
 
 \begin_layout Initial
-
-\lang english
 \begin_inset Argument
 status open
 
@@ -38089,6 +38019,8 @@ status open
 
 \end_inset
 
+
+\lang english
 t was in the spring
 \begin_inset ERT
 status collapsed

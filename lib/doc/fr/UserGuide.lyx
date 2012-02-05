@@ -2174,10 +2174,7 @@ cua
 
 , ceci peut être modifié via
 \family sans
-\lang english
- 
-\lang french
-Saisie\SpecialChar \menuseparator
+ Saisie\SpecialChar \menuseparator
 Raccourcis.
 \end_layout
 
@@ -2804,21 +2801,13 @@ Astronomy & Astrophysics
 \end_layout
 
 \begin_layout Description
-ACS Articles de publications dans le style et le format utilisés par
-\lang english
- 
-\lang french
-l'
+ACS Articles de publications dans le style et le format utilisés par l'
 \lang english
 American Chemistry Society
 \end_layout
 
 \begin_layout Description
-AGU Articles de publications dans le style et le format utilisés par
-\lang english
- 
-\lang french
-l'
+AGU Articles de publications dans le style et le format utilisés par l'
 \lang english
 American Geophysical Union
 \end_layout
@@ -2930,9 +2919,9 @@ status collapsed
 
 \end_inset
 
-X Pour écrire des articles pour les publications de l
+X Pour écrire des articles pour les publications de l'
 \lang english
-'American Physical Society
+American Physical Society
 \lang french
  (APS), de l'
 \lang english
@@ -2956,9 +2945,11 @@ SPIE
 \begin_inset space ~
 \end_inset
 
-Proceedings Disposition pour les journaux publiés par SPIE 
+Proceedings Disposition pour les journaux publiés par SPIE (
 \lang english
-(The International Society for Optical Engineering).
+The International Society for Optical Engineering
+\lang french
+).
 \end_layout
 
 \begin_layout Description
@@ -2997,8 +2988,6 @@ Classes de document
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Document ! Paramètres
 \end_layout
 
@@ -3063,8 +3052,6 @@ Installation de nouveaux fichiers LaTeX
 Personnalisation
 \emph default
  pour les détails de la procédure.
-\lang english
-
 \begin_inset VSpace medskip
 \end_inset
 
@@ -3158,8 +3145,6 @@ Reconfigurer
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Reconfiguration de LyX
 \end_layout
 
@@ -3204,13 +3189,11 @@ name "sub:Format-local"
 
 \end_inset
 
- 
+
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Document ! Format local
 \end_layout
 
@@ -4592,15 +4575,11 @@ Entrée
  réinitialise ces paramètres.
  Si vous voulez que le nouveau paragraphe conserve l'environnement ainsi
  que la profondeur actuels, utilisez 
-\lang english
-
 \begin_inset Info
 type  "shortcut"
 arg   "break-paragraph inverse"
 \end_inset
 
-
-\lang french
 .
 \end_layout
 
@@ -6637,7 +6616,7 @@ type  "shortcut"
 arg   "ert-insert"
 \end_inset
 
-)
+).
 \begin_inset Foot
 status collapsed
 
@@ -6646,8 +6625,6 @@ Pour en savoir plus sur le code TeX, voir la section
 \begin_inset space ~
 \end_inset
 
-
-\lang english
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6660,7 +6637,6 @@ reference "sec:Code-TeX"
 
 \end_inset
 
-.
 
 \emph on
  enumi
@@ -6714,8 +6690,6 @@ alph
 
 \begin_layout Standard
 \noindent
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
@@ -6929,8 +6903,6 @@ bf{}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
@@ -6951,8 +6923,6 @@ Note:
 
 \begin_layout Subsubsection
 Reprise des énumérations
-\lang english
-
 \begin_inset Index idx
 status collapsed
 
@@ -7028,8 +6998,6 @@ Pour reprendre une énumération, utiliser le style
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
@@ -9459,15 +9427,11 @@ arg   "depth-increment"
 Entrée
 \family default
 , puis 
-\lang english
-
 \begin_inset Info
 type  "shortcut"
 arg   "depth-increment"
 \end_inset
 
-
-\lang french
  deux fois de suite.
  Nous aurions pu le créer de la même manière que le précédent, avec 
 \begin_inset Info
@@ -9476,8 +9440,6 @@ arg   "break-paragraph inverse"
 \end_inset
 
  suivi de 
-\lang english
-
 \begin_inset Info
 type  "shortcut"
 arg   "depth-increment"
@@ -9509,15 +9471,11 @@ arg   "break-paragraph inverse"
 \end_inset
 
 , puis 
-\lang english
-
 \begin_inset Info
 type  "shortcut"
 arg   "depth-increment"
 \end_inset
 
-
-\lang french
 , puis en changeant l'environnement de paragraphe à 
 \family sans
 Standard
@@ -9611,15 +9569,11 @@ arg   "break-paragraph inverse"
 \end_inset
 
  puis 
-\lang english
-
 \begin_inset Info
 type  "shortcut"
 arg   "depth-decrement"
 \end_inset
 
-
-\lang french
 .
 \end_layout
 
@@ -9633,15 +9587,11 @@ arg   "break-paragraph inverse"
 \end_inset
 
  suivi de 
-\lang english
-
 \begin_inset Info
 type  "shortcut"
 arg   "depth-decrement"
 \end_inset
 
-
-\lang french
 , retour au niveau n°4.
 \end_layout
 
@@ -11417,15 +11367,15 @@ Parfois, vous avez besoin d'insérer un espace qui a exactement la même longueu
 \end_inset
 
 Quelle est la tournure anglaise correcte?:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
 \lang english
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
 Mr.
 \begin_inset space ~
 \end_inset
@@ -12563,8 +12513,6 @@ D'habitude, LaTeX utilise ses propres polices de caractères.
  pour plusieurs polices libres et commerciales.
  Du côté de LyX, seule une partie de ces dernières est directement accessible
  grâce à l'interface utilisateur (voir la section
-\lang english
-
 \begin_inset space ~
 \end_inset
 
@@ -12575,8 +12523,6 @@ reference "sub:Document-Polices"
 
 \end_inset
 
-
-\lang french
  pour plus de détails).
  Toutes les autres polices sont néanmoins accessibles si vous entrez les
  codes LaTeX correspondants dans le préambule du document (veuillez consulter
@@ -12595,8 +12541,6 @@ En plus, des évolutions récentes on vu apparaître de nouveaux moteurs de
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
@@ -12616,8 +12560,6 @@ Note:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
@@ -22685,15 +22627,12 @@ Insérer\SpecialChar \menuseparator
 Flottant\SpecialChar \menuseparator
 Tableau ou le bouton
 \family default
-\lang english
-
+ 
 \begin_inset Info
 type  "icon"
 arg   "float-insert table"
 \end_inset
 
-
-\lang french
  de la barre d'outils.
  Ils ont les mêmes propriétés que les flottants de figures, à part une étiquette
  différente.
@@ -25086,11 +25025,7 @@ cas,
 cases
 \series default
 .
- Voici un exemple :
-\lang english
- 
-\lang french
-
+ Voici un exemple : 
 \begin_inset Formula 
 \[
 f(x)=\begin{cases}
@@ -26029,7 +25964,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 texorpdfstring 
@@ -26972,17 +26906,13 @@ pageref{#1}}}
 \end_inset
 
 Pour les détails sur la gestion des mises en forme, voyez la documentation
- des paquetages
-\lang english
-, 
+ des paquetages, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "prettyref,refstyle"
 
 \end_inset
 
-
-\lang french
 .
 \begin_inset Newline newline
 \end_inset
@@ -28011,10 +27941,8 @@ Pour créer la bibliographie à partir de la base de donnée et des citations
  Vous pouvez choisir quelle variante du programme doit être utilisée pour
  le traitement, Ce programme peut être contrôlé par un certain nombre d'options
  que vous pouvez ajouter soit dans les paramètres du document à la rubrique
-\lang english
  
 \family sans
-\lang french
 Bibliographie
 \family default
 , soit dans la fenêtre de préférences de LyX, sous la rubrique 
@@ -28818,13 +28746,9 @@ Dans certains cas l'ordre des entrées d'index n'est pas correct quand vous
 makeindex 
 \family default
 pour générer l'index (voir la section
-\lang english
-
-\begin_inset space \thinspace{}
+\begin_inset space ~
 \end_inset
 
-
-\lang french
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -29237,9 +29161,7 @@ splitidx
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-LaTeX-packages ! splitidx
+Paquetages LaTeX ! splitidx
 \end_layout
 
 \end_inset
@@ -29640,14 +29562,11 @@ texte
 \end_inset
 
  dans ce document est:
-\lang english
-
 \begin_inset Newline newline
 \end_inset
 
 
 \series bold
-\lang french
 entrée bidon pour le symbole 
 \backslash
 textsf{sigma}
@@ -30045,7 +29964,7 @@ page
 \end_inset
 
  sont automatiquement traduits pour cerianes langues de documents.
- Sinon, ajoutez v)ces lignes au préambule LateX:
+ Sinon, ajoutez v)ces lignes au préambule LaTeX:
 \end_layout
 
 \begin_layout Standard
@@ -30311,10 +30230,7 @@ Dans ces cas, LyX permet de créer plusieurs branches pour le même document.
  Le texte n'apparaîtra dans la sortie que si sa branche est activée.
  Pour créer une branche, vous pouvez utiliser
 \family sans
-\lang english
- 
-\lang french
-Insérer\SpecialChar \menuseparator
+ Insérer\SpecialChar \menuseparator
 Branche\SpecialChar \menuseparator
 Insérer une nouvelle branche
 \family default
@@ -30878,17 +30794,13 @@ type  "icon"
 arg   "ert-insert"
 \end_inset
 
- de la barre d'outils 
-\lang english
-(shortcut 
+ de la barre d'outils (raccourci 
 \begin_inset Info
 type  "shortcut"
 arg   "ert-insert"
 \end_inset
 
-)
-\lang french
-.
+).
  La boîte de code TeX, peut être ouverte avec un clic gauche et refermée
  avec un clic droit et 
 \lang english
@@ -31721,8 +31633,6 @@ Mise en page avec en-tête et pied de page
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
 Définition
 \end_layout
 
@@ -32457,8 +32367,6 @@ Objets insérés
 
 \begin_layout Standard
 Ceci est un texte encadré 
-\lang english
-
 \begin_inset ERT
 status collapsed
 
@@ -32486,15 +32394,11 @@ height_special "totalheight"
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 with rotated
 \end_layout
 
 \end_inset
 
-
-\lang french
 
 \begin_inset ERT
 status collapsed
@@ -32507,8 +32411,6 @@ status collapsed
 \end_inset
 
  et une formule 
-\lang english
-
 \begin_inset ERT
 status collapsed
 
@@ -32526,8 +32428,6 @@ rotatebox[origin=lb]{60}{
 \end_inset
 
 
-\lang french
-
 \begin_inset ERT
 status collapsed
 
@@ -32538,7 +32438,7 @@ status collapsed
 
 \end_inset
 
- .
+.
 \end_layout
 
 \end_inset
@@ -32585,8 +32485,6 @@ Objets insérés
 \begin_inset Preview
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -32614,11 +32512,7 @@ fcolorbox{cyan}{magenta}{
 
 \end_inset
 
-
-\lang french
 Ceci est un texte dans une boîte encadrée et colorée.
-\lang english
-
 \begin_inset ERT
 status collapsed
 
@@ -32638,8 +32532,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset VSpace medskip
 \end_inset
 
@@ -38073,23 +37965,23 @@ Depuis LyX 1.5.0 le support CJK est intégré à LyX.
 \end_layout
 
 \begin_layout Description
-
+DocBook 
 \lang english
-DocBook text file with code in the language SGML that is used for the markup
- language 
+text file with code in the language SGML that is used for the markup language
+ 
 \family typewriter
 DocBook
 \end_layout
 
 \begin_layout Description
-
-\lang english
 DocBook
 \begin_inset space ~
 \end_inset
 
-(XML) text file with code in the language XML that is used for the markup
- language 
+(XML) 
+\lang english
+text file with code in the language XML that is used for the markup language
+ 
 \family typewriter
 DocBook
 \end_layout
@@ -38330,12 +38222,12 @@ LilyPond
 \end_inset
 
 book
+\lang french
+
 \begin_inset space ~
 \end_inset
 
 (La
-\family sans
-
 \begin_inset ERT
 status collapsed
 
@@ -38346,21 +38238,17 @@ status collapsed
 
 \end_inset
 
-
-\family default
-TeX) text file with the LaTeX source and also code in the syntax of the
- music notation software
+TeX) 
+\lang english
+text file with the LaTeX source and also code in the syntax of the music
+ notation software
 \family typewriter
 \lang french
  LilyPond
 \end_layout
 
 \begin_layout Description
-
-\lang english
 L
-\lang french
-
 \begin_inset ERT
 status collapsed
 
@@ -38371,12 +38259,12 @@ status collapsed
 
 \end_inset
 
-
-\lang english
 yX
 \begin_inset space ~
 \end_inset
 
+
+\lang english
 Archive
 \begin_inset space ~
 \end_inset
@@ -38439,9 +38327,9 @@ HTML-format using LyX's internal XHTML engine
 \end_layout
 
 \begin_layout Description
-
+NoWeb 
 \lang english
-NoWeb text file with code in the format of the literate programming language
+text file with code in the format of the literate programming language
 \family typewriter
  NoWeb
 \end_layout
@@ -40404,15 +40292,13 @@ article (Elsevier)
 \end_inset
 
  qui a trois inserts personnalisés.
- La section
-\lang english
- 
+ La section 
 \emph on
+\lang english
 Flex insets and InsetLayout
 \emph default
- 
 \lang french
-du manuel 
+ du manuel 
 \emph on
 Personnalisation
 \emph default
@@ -43179,8 +43065,6 @@ La barre d'outils Visionner/Mettre à jour contient de gauche à droite les
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features islongtable="true" longtabularalignment="center">
@@ -43209,10 +43093,8 @@ arg   "buffer-view"
 \begin_layout Plain Layout
 
 \family sans
+Visionner\SpecialChar \menuseparator
 Visionner
-\lang english
-\SpecialChar \menuseparator
-View
 \end_layout
 
 \end_inset
@@ -43241,10 +43123,8 @@ arg   "buffer-update"
 \begin_layout Plain Layout
 
 \family sans
-Visionner
-\lang english
-\SpecialChar \menuseparator
-Update
+Visionner\SpecialChar \menuseparator
+Mettre à jour
 \end_layout
 
 \end_inset
@@ -43273,9 +43153,9 @@ arg   "master-buffer-view"
 \begin_layout Plain Layout
 
 \family sans
-Visionner
+Visionner\SpecialChar \menuseparator
+
 \lang english
-\SpecialChar \menuseparator
 Master
 \end_layout
 
@@ -43305,9 +43185,9 @@ arg   "master-buffer-update"
 \begin_layout Plain Layout
 
 \family sans
-Visionner
+Visionner\SpecialChar \menuseparator
+
 \lang english
-\SpecialChar \menuseparator
 Update
 \begin_inset space ~
 \end_inset
@@ -43341,10 +43221,11 @@ arg   "buffer-toggle-output-sync"
 \begin_layout Plain Layout
 
 \family sans
-\lang english
 Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Output\SpecialChar \menuseparator
+Paramètres\SpecialChar \menuseparator
+Sortie\SpecialChar \menuseparator
+
+\lang english
 Synchronize with Output
 \end_layout
 
@@ -43376,10 +43257,8 @@ Synchronize with Output
 \begin_layout Plain Layout
 
 \family sans
-Visionner
-\lang english
-\SpecialChar \menuseparator
-View (Other Formats)
+Visionner\SpecialChar \menuseparator
+Visionner (autres formats)
 \end_layout
 
 \end_inset
@@ -43408,10 +43287,8 @@ View (Other Formats)
 \begin_layout Plain Layout
 
 \family sans
-Visionner
-\lang english
-\SpecialChar \menuseparator
-Update (Other Formats)
+Visionner\SpecialChar \menuseparator
+Mettre à jour (autres formats)
 \end_layout
 
 \end_inset
@@ -44974,8 +44851,6 @@ key "hyperref"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -49864,8 +49739,6 @@ Paquetages LaTeX ! hyperref
 \end_inset
 
 :
-\lang english
-
 \begin_inset Newline newline
 \end_inset
 
@@ -49874,7 +49747,6 @@ Paquetages LaTeX ! hyperref
 status collapsed
 
 \begin_layout Plain Layout
-
 ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf
 \end_layout
 

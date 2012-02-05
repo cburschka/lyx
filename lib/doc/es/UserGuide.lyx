@@ -14751,13 +14751,9 @@ eX
 \family default
 .
  Las variantes de exportación a LaTeX se explican en la sección
-\lang english
-
 \begin_inset space ~
 \end_inset
 
-
-\lang spanish
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -29955,17 +29951,13 @@ type  "icon"
 arg   "ert-insert"
 \end_inset
 
-
-\lang english
- (shortcut 
+ (atajo 
 \begin_inset Info
 type  "shortcut"
 arg   "ert-insert"
 \end_inset
 
-)
-\lang spanish
-.
+).
  El cuadro se puede abrir con clic izquierdo y cerrar con clic derecho y
  
 \lang english
@@ -31345,8 +31337,6 @@ Las vistas se generan cuando cargas un documento en Lyx y cuando terminas
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
@@ -46938,14 +46928,11 @@ reference "sub:Copias-de-seguridad"
 \end_inset
 
 Para usar LyXServer-Pipe en Windows hay que usar este nombre:
-\lang english
-
 \begin_inset Newline newline
 \end_inset
 
 
 \series bold
-\lang spanish
 
 \backslash
 
@@ -47854,11 +47841,7 @@ xdvi
 
 \begin_layout Standard
 Además, aquí puedes especificar opciones y comandos con parámetros para
- las 
-\lang english
-processors
-\lang spanish
- listadas.
+ las procesadores listadas.
  Pero antes de cambiar algo, es muy recomendable leer los manuales de las
  aplicaciones.
 \end_layout
