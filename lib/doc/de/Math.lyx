@@ -42,11 +42,10 @@
 \newlength{\abc}
 \settowidth{\abc}{\space}
 \AtBeginDocument{%
-\addto\extrasngerman{
  \renewcommand{\equationautorefname}{\hspace{-\abc}}
  \renewcommand{\sectionautorefname}{Kap.\negthinspace}
  \renewcommand{\subsectionautorefname}{Kap.\negthinspace}
- \renewcommand{\subsubsectionautorefname}{Kap.\negthinspace}}
+ \renewcommand{\subsubsectionautorefname}{Kap.\negthinspace}
 }
 
 % Makros damit Pakete nicht doppelt geladen werden.
@@ -4934,13 +4933,9 @@ ldots
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset VSpace medskip
 \end_inset
 
-
-\lang ngerman
 Um 
 \series bold
 
@@ -33925,13 +33920,9 @@ Makro
 \end_inset
 
 
-\lang english
-
 \begin_inset space \hspace*{\fill}
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset Graphics
 	filename ../clipart/macrobox.png
@@ -33939,13 +33930,9 @@ Makro
 \end_inset
 
 
-\lang english
-
 \begin_inset space \hspace*{\fill}
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset Newline newline
 \end_inset
@@ -34083,13 +34070,9 @@ qG
 \end_inset
 
 
-\lang english
-
 \begin_inset space \hspace*{\fill}
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset Graphics
 	filename ../clipart/macrouse.png
@@ -34097,13 +34080,9 @@ qG
 \end_inset
 
 
-\lang english
-
 \begin_inset space \hspace*{\fill}
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset Newline newline
 \end_inset
