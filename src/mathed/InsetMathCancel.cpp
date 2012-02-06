@@ -126,21 +126,35 @@ void InsetMathCancel::infoize(odocstream & os) const
 }
 
 
+// unfortunately, we do not have many options here, so we have to treat
+// them all the same way.
+void InsetMathCancel::htmlize(HtmlStream & os) const
+{
+	os << MTag("span", "style='text-decoration: line-through;'")
+	   << cell(0)
+	   << ETag("span");
+}
+
+
 void InsetMathCancel::mathmlize(MathStream & os) const
 {
 	switch (kind_) {
 	case cancel:
-		os << MTag("menclose", "notation='updiagonalstrike'") << cell(0) << ETag("menclose"); 
+		os << MTag("menclose", "notation='updiagonalstrike'")
+		   << cell(0)
+		   << ETag("menclose"); 
 		break;
 	case bcancel:
-		os << MTag("menclose", "notation='downdiagonalstrike'") << cell(0) << ETag("menclose"); 
+		os << MTag("menclose", "notation='downdiagonalstrike'")
+		   << cell(0)
+		   << ETag("menclose"); 
 		break;
 	case xcancel:
 		os << MTag("menclose", "notation='updiagonalstrike'")
 		   << MTag("menclose", "notation='downdiagonalstrike'")
 		   << cell(0)
 		   << ETag("menclose")
-		   << ETag("menclose"); 
+		   << ETag("menclose");
 		break;
 	}
 }

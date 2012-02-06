@@ -41,8 +41,8 @@ public:
 	InsetCode lyxCode() const { return MATH_CANCEL_CODE; }
 	///
 	void mathmlize(MathStream &) const;
-	/// Nothing for HTML
-	void htmlize(HtmlStream &) const {}
+	///
+	void htmlize(HtmlStream &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 
