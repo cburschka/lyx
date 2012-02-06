@@ -125,6 +125,27 @@ void InsetMathCancel::infoize(odocstream & os) const
 	}
 }
 
+
+void InsetMathCancel::mathmlize(MathStream & os) const
+{
+	switch (kind_) {
+	case cancel:
+		os << MTag("menclose", "notation='updiagonalstrike'") << cell(0) << ETag("menclose"); 
+		break;
+	case bcancel:
+		os << MTag("menclose", "notation='downdiagonalstrike'") << cell(0) << ETag("menclose"); 
+		break;
+	case xcancel:
+		os << MTag("menclose", "notation='updiagonalstrike'")
+		   << MTag("menclose", "notation='downdiagonalstrike'")
+		   << cell(0)
+		   << ETag("menclose")
+		   << ETag("menclose"); 
+		break;
+	}
+}
+
+
 void InsetMathCancel::validate(LaTeXFeatures & features) const
 {
 	InsetMathNest::validate(features);
