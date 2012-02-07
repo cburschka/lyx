@@ -84,6 +84,9 @@ public:
 	/// end the current undo group.
 	void endUndoGroup();
 
+	/// end the current undo group and set UndoElement::cur_after if necessary.
+	void endUndoGroup(DocIterator const &);
+
 	/// The general case: record undo information for an arbitrary range.
 	/**
 	 * Record undo information - call with the current cursor and

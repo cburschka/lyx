@@ -334,7 +334,7 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 	Cursor old = *this;
 	disp_ = DispatchResult();
 
-	buffer()->undo().beginUndoGroup();
+	beginUndoGroup();
 
 	// Is this a function that acts on inset at point?
 	if (lyxaction.funcHasFlag(cmd.action(), LyXAction::AtPoint)
@@ -346,7 +346,7 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 			<< cmd0 << endl << *this);
 		nextInset()->dispatch(*this, tmpcmd);
 		if (disp_.dispatched()) {
-			buffer()->undo().endUndoGroup();
+			endUndoGroup();
 			return;
 		}
 	}
@@ -391,7 +391,7 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 		// are possible which would change it
 		beforeDispatchCursor_ = safe.beforeDispatchCursor_;
 	}
-	buffer()->undo().endUndoGroup();
+	endUndoGroup();
 
 	// notify insets we just left
 	if (*this != old) {
@@ -2413,7 +2413,7 @@ void Cursor::beginUndoGroup() const
 
 void Cursor::endUndoGroup() const
 {
-	buffer()->undo().endUndoGroup();
+	buffer()->undo().endUndoGroup(*this);
 }
 
 
