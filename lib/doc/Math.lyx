@@ -42,11 +42,10 @@
 \newlength{\abc}
 \settowidth{\abc}{\space}
 \AtBeginDocument{%
-\addto\extrasenglish{
  \renewcommand{\equationautorefname}{\hspace{-\abc}}
  \renewcommand{\sectionautorefname}{sec.\negthinspace}
  \renewcommand{\subsectionautorefname}{sec.\negthinspace}
- \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}}
+ \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}
 }
 
 % don't load packages twice

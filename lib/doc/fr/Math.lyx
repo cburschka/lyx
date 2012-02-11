@@ -42,11 +42,10 @@
 \newlength{\abc}
 \settowidth{\abc}{\space}
 \AtBeginDocument{%
-\addto\extrasfrench{
  \renewcommand{\equationautorefname}{\hspace{-\abc}}
  \renewcommand{\sectionautorefname}{sec.\negthinspace}
  \renewcommand{\subsectionautorefname}{sec.\negthinspace}
- \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}}
+ \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}
 }
 
 % don't load packages twice
@@ -38366,8 +38365,6 @@ Vert
 \end_inset
 
 
-\lang english
-
 \begin_inset space \hfill{}
 \end_inset
 
@@ -38375,8 +38372,6 @@ Vert
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Newpage newpage
 \end_inset
 

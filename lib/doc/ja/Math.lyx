@@ -45,11 +45,10 @@
 \newlength{\abc}
 \settowidth{\abc}{\space}
 \AtBeginDocument{%
-\addto\extrasenglish{
  \renewcommand{\equationautorefname}{\hspace{-\abc}}
  \renewcommand{\sectionautorefname}{sec.\negthinspace}
  \renewcommand{\subsectionautorefname}{sec.\negthinspace}
- \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}}
+ \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}
 }
 
 % don't load packages twice
@@ -33956,8 +33955,6 @@ Maxima
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Formula $\frac{37}{3}*2-\sum_{i=1}^{3}i^{i}=-\frac{22}{3}$
 \end_inset
 
@@ -33965,8 +33962,6 @@ Maxima
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Formula $\frac{37.0}{3}=12.33333333333333$
 \end_inset
 
@@ -33974,8 +33969,6 @@ Maxima
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Formula $\int_{1}^{2}\sin(x)dx=\cos1-\cos2$
 \end_inset
 
@@ -33983,8 +33976,6 @@ Maxima
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Formula $\det\left[\begin{array}{ccc}
 1 & 6 & 7\\
 2 & 5 & 8\\
@@ -33996,8 +33987,6 @@ Maxima
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Formula $\lim_{x\rightarrow0}\left(\frac{\sin(x)}{x}\right)=1$
 \end_inset
 
