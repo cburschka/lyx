@@ -129,11 +129,12 @@ enumitem
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author 2090807402 "usti" 
 \end_header
 
 \begin_body
@@ -43447,6 +43448,12 @@ Text Layout
 You can specify if paragraphs should be separated by indentations or vertical
  skips.
  The line spacing and the number of text columns can also be specified here.
+
+\change_inserted 2090807402 1325640630
+ You can also determine whether text will be shown as justified in LyX itself.
+ Note that this does not affect whether the text is justified in the output.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
