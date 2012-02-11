@@ -11827,6 +11827,7 @@ height "1pt"
 \end_layout
 
 \begin_layout Standard
+\noindent
 Con el diálogo 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -12139,7 +12140,7 @@ n de la tipografía deseada).
 Por otra parte, desarrollos recientes han aportado algunos nuevos ingenios
  LaTeX que son capaces de acceder directamente a las tipografías instaladas
  por el sistema operativo (SO), a saber, XeTeX y LuaTeX.
- Ambos ingenios son soportados ya por LyX.
+ Ambos ingenios son soportados por LyX.
  Con ellos, teóricamente se puede usar cualquier tipografía OpenType o TrueType
  instalada en el sistema.
  La siguiente sección describe cómo usar estas tipografías del SO.
@@ -14485,13 +14486,13 @@ Familia
 
 , etc.), la conmutación depende de tu elección.
  Si 
-\begin_inset Quotes fld
+\family sans
+Conmutar
+\begin_inset space ~
 \end_inset
 
-Conmutar todo
-\begin_inset Quotes frd
-\end_inset
-
+todo
+\family default
  está marcado, todas las propiedades de esa parte se conmutan; por omisión
  no lo está ninguna de ellas.
  Por último, 
@@ -14520,13 +14521,13 @@ Grosor
 \end_inset
 
  y marcas 
-\begin_inset Quotes fld
+\family sans
+Conmutar
+\begin_inset space ~
 \end_inset
 
-Conmutar todo
-\begin_inset Quotes frd
-\end_inset
-
+todo
+\family default
 , y luego aplicas el estilo a texto en negrita, este texto volverá al grosor
  por omisión, (
 \begin_inset Quotes fld

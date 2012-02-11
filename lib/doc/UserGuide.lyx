@@ -11543,6 +11543,7 @@ height "1pt"
 \end_layout
 
 \begin_layout Standard
+\noindent
 In the dialog 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -11840,13 +11841,13 @@ reference "sub:Document-Font"
 \end_layout
 
 \begin_layout Standard
-Furthermore, recent developments brought some new LaTeX engines that are
- also able to directly access fonts that are installed for your operating
- system (OS), namely XeTeX and LuaTeX.
- Both engines are now supported by LyX.
+Recent developments brought some new LaTeX engines that are also able to
+ directly access fonts that are installed for your operating system, namely
+ XeTeX and LuaTeX.
+ Both engines are supported by LyX.
  By using them, you can use theoretically any OpenType or TrueType font
  that is installed on your system.
- The next section describes how to use these OS fonts.
+ The next section describes how to use these fonts.
 \end_layout
 
 \begin_layout Standard
@@ -12900,7 +12901,7 @@ Emphasized
 \begin_layout Quotation
 
 \emph on
-Don't overuse character styles!
+Do not overuse character styles!
 \end_layout
 
 \begin_layout Standard
@@ -14053,7 +14054,7 @@ appendices
 \end_inset
 
  at the ends of the strokes that form the character.
- The following example will show the difference:
+ The following example shows the difference:
 \begin_inset Newline newline
 \end_inset
 
@@ -14082,8 +14083,8 @@ roman
 \family sans
 Sans serif
 \family default
- don't use serifs.
- This font type is therefore often used for headings and short texts.
+ is not recommended to use a base type.
+ This font type is therefore often only used for headings and short texts.
  We use it in this document to highlight menu names.
 \end_layout
 
@@ -14099,9 +14100,10 @@ Toggling
  When a property is marked for toggling in the Text Style dialog, applying
  the style to text that already has the property will cause the property
  to be removed.
- If you apply a style with properties A, B and C to text that currently
- has font properties B, C, F and G, and if B is set to toggle and C is set
- not to toggle, the text ends up with properties A, C, F and G.
+ If you for example apply a style with properties A, B and C to text that
+ currently has font properties B, C, F and G, and if B is set to toggle
+ and C is set not to toggle, the text ends up with properties A, C, F and
+ G.
  
 \begin_inset Quotes eld
 \end_inset
@@ -14129,13 +14131,13 @@ Family
 
  etc.), toggling behavior is up to you.
  If 
-\begin_inset Quotes eld
+\family sans
+Toggle
+\begin_inset space ~
 \end_inset
 
-Toggle all
-\begin_inset Quotes erd
-\end_inset
-
+all
+\family default
  is checked, all of the left side properties are toggled; by default, none
  of them are.
  Finally, 
@@ -14147,7 +14149,15 @@ Reset
 \end_inset
 
  is never toggled.
- If you set 
+ If you e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+set 
 \begin_inset Quotes eld
 \end_inset
 
@@ -14164,13 +14174,13 @@ Reset
 \end_inset
 
  and select 
-\begin_inset Quotes eld
+\family sans
+Toggle
+\begin_inset space ~
 \end_inset
 
-Toggle all
-\begin_inset Quotes erd
-\end_inset
-
+all
+\family default
 , then apply the style to bold face text, the text will revert to the default
  series (
 \begin_inset Quotes eld
@@ -14184,7 +14194,7 @@ Medium
 \end_layout
 
 \begin_layout Standard
-We conclude with the same warning once again: Don't overuse the fonts.
+We conclude with the same warning once again: Do not overuse the fonts!
  They are, more often than not, a kludge and a bad substitute for good writing.
 \end_layout
 
