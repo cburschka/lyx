@@ -4,14 +4,14 @@
 #
 # Lars Gullik Bjønnes <larsbj@lyx.org>, 1999.
 # Ingar Pareliussen <ingar.pareliussen@samfundet.no>, 2003,2005,2006, 2006, 2007, 2010.
-# Ingar Pareliussen <ingar.pareliussen@_dmmh_no>, 2010, 2011.
+# Ingar Pareliussen <ingar.pareliussen@_dmmh_no>, 2010, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2012-01-31 09:56-0500\n"
-"PO-Revision-Date: 2011-04-09 15:24+0200\n"
-"Last-Translator: Ingar Pareliussen <ingar.pareliussen@_dmmh_no>\n"
+"PO-Revision-Date: 2012-02-11 18:59+0100\n"
+"Last-Translator: Ingar Pareliussen\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
@@ -443,7 +443,7 @@ msgstr "Vel greina di"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25
 msgid "&New:[[branch]]"
-msgstr ""
+msgstr "&Ny:[[grein]]"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:35
 msgid ""
@@ -1935,7 +1935,7 @@ msgstr "Br&uk fleire indeksar"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:114 src/frontends/qt4/ui_IndicesUi.h:205
 msgid "&New:[[index]]"
-msgstr ""
+msgstr "&Ny:[[indeks]]"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
 msgid ""
@@ -2101,10 +2101,9 @@ msgstr "Vel kva språkpakke LyX skal bruke"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:142
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:78
-#, fuzzy
 msgid ""
 "Enter the command to load the language package (default: \\usepackage{babel})"
-msgstr "Kommandoen for språkpakken. (Vanlegvis: babel)"
+msgstr "Kommandoen for språkpakken. (Standard: \\usepackage{babel})"
 
 #: src/frontends/qt4/ui/LineUi.ui:22
 msgid "Of&fset:"
@@ -3611,6 +3610,10 @@ msgid ""
 "TeX engine was not correctly detected at configure time.\n"
 "Warning: Your changes here will not be saved."
 msgstr ""
+"Vel om LyX skal bruke Windows eller Cygwin stigar\n"
+"i LaTeX filer. Du bør berre endre dette dersom TeX\n"
+"ikkje vart korrekt identifisert når LyX vart  fyrst sett opp\n"
+"Åtvaring: Endringar blir ikkje lagra."
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:332
 msgid "&Use Windows-style paths in LaTeX files"
@@ -3683,28 +3686,26 @@ msgid "&PATH prefix:"
 msgstr "&Stig-prefiks:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:51 src/LyXRC.cpp:3338
-#, fuzzy
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable.\n"
 "Use the OS native format."
 msgstr ""
-"Kva stig skal PATH-miljø ha framfor seg. Bruk standarden for "
+"Kva for mapper skal ha PATH-miljøet framfor seg. Bruk formatet for "
 "operativsystemet."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:58
-#, fuzzy
 msgid "TEX&INPUTS prefix:"
-msgstr "&Stig-prefiks:"
+msgstr "TEX&INPUTS prefiks:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:68 src/LyXRC.cpp:3497
-#, fuzzy
 msgid ""
 "Specify those directories which should be prepended to the TEXINPUTS "
 "environment variable.\n"
 "A '.' represents the current document directory. Use the OS native format."
 msgstr ""
-"Kva stig skal PATH-miljø ha framfor seg. Bruk standarden for "
+"Kva for stigar skal TEXINPUTS miljø variabelen lagt tilframfor seg. \n"
+"Ein '.' er den gjeldande dokument stigen. Bruk standarden for "
 "operativsystemet."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:75
@@ -4304,9 +4305,8 @@ msgid "La&bels in:"
 msgstr "E&tikettar i:"
 
 #: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:293
-#, fuzzy
 msgid "&References"
-msgstr "Referansar"
+msgstr "&Referansar"
 
 #: src/frontends/qt4/ui/RefUi.ui:76 src/frontends/qt4/ui_RefUi.h:296
 msgid "Fil&ter:"
@@ -7419,7 +7419,7 @@ msgstr "Løpetittel"
 
 #: lib/layouts/ectaart.layout:28
 msgid "Running Title:"
-msgstr "Løpetittel:"
+msgstr "Laupetittel:"
 
 #: lib/layouts/ectaart.layout:35
 msgid "RunAuthor"
@@ -7427,7 +7427,7 @@ msgstr "Løpeforfattar"
 
 #: lib/layouts/ectaart.layout:39
 msgid "Running Author:"
-msgstr "Løpeforfattar:"
+msgstr "Laupeforfattar:"
 
 #: lib/layouts/ectaart.layout:77 lib/layouts/latex8.layout:77
 msgid "E-mail:"
@@ -7772,49 +7772,40 @@ msgid "Mother Tongue:"
 msgstr "Morsmål:"
 
 #: lib/layouts/europecv.layout:112
-#, fuzzy
 msgid "LangHeader"
-msgstr "Topptekst"
+msgstr "Språktittel"
 
 #: lib/layouts/europecv.layout:116
-#, fuzzy
 msgid "Language Header:"
-msgstr "Venstre topptekst:"
+msgstr "Språk:"
 
 #: lib/layouts/europecv.layout:122 lib/layouts/moderncv.layout:119
-#, fuzzy
 msgid "Language:"
-msgstr "&Språk:"
+msgstr "Språk:"
 
 #: lib/layouts/europecv.layout:125
-#, fuzzy
 msgid "LastLanguage"
-msgstr "Språk"
+msgstr "SisteSpråk"
 
 #: lib/layouts/europecv.layout:128
-#, fuzzy
 msgid "Last Language:"
-msgstr "&Språk:"
+msgstr "Siste Språk:"
 
 #: lib/layouts/europecv.layout:131
-#, fuzzy
 msgid "LangFooter"
-msgstr "Botntekst:"
+msgstr "SpråkBotntekst"
 
 #: lib/layouts/europecv.layout:135
-#, fuzzy
 msgid "Language Footer:"
-msgstr "Venstre botntekst:"
+msgstr "Språk-botntekst:"
 
 #: lib/layouts/europecv.layout:138
-#, fuzzy
 msgid "End"
-msgstr "Og"
+msgstr "Slutt"
 
 #: lib/layouts/europecv.layout:148
-#, fuzzy
 msgid "End of CV"
-msgstr "Start CV"
+msgstr "Slutt CV"
 
 #: lib/layouts/foils.layout:42
 msgid "Foilhead"
@@ -8412,14 +8403,12 @@ msgstr "Scene"
 #: lib/layouts/ijmpc.layout:68 lib/layouts/ijmpc.layout:72
 #: lib/layouts/ijmpc.layout:80 lib/layouts/ijmpd.layout:73
 #: lib/layouts/ijmpd.layout:77 lib/layouts/ijmpd.layout:85
-#, fuzzy
 msgid "Catchline"
-msgstr "matte linje"
+msgstr "Slagord"
 
 #: lib/layouts/ijmpc.layout:140 lib/layouts/ijmpd.layout:130
-#, fuzzy
 msgid "History"
-msgstr "Revisjonshistorie"
+msgstr "Historie"
 
 #: lib/layouts/ijmpc.layout:171 lib/layouts/ijmpc.layout:175
 #: lib/layouts/ijmpd.layout:161 lib/layouts/ijmpd.layout:165
@@ -8437,28 +8426,24 @@ msgid "TableCaption"
 msgstr "TabellTekst"
 
 #: lib/layouts/ijmpc.layout:229 lib/layouts/ijmpd.layout:232
-#, fuzzy
 msgid "Table caption"
 msgstr "Tabell tekst"
 
 #: lib/layouts/ijmpc.layout:242 lib/layouts/ijmpd.layout:245
 msgid "Refcite"
-msgstr ""
+msgstr "Refcite"
 
 #: lib/layouts/ijmpc.layout:246 lib/layouts/ijmpd.layout:249
-#, fuzzy
 msgid "Cite reference"
-msgstr "Litteratur nytta i teksten"
+msgstr "Litteratur referanse"
 
 #: lib/layouts/ijmpc.layout:259 lib/layouts/ijmpd.layout:262
-#, fuzzy
 msgid "ItemList"
 msgstr "Punktliste"
 
 #: lib/layouts/ijmpc.layout:279 lib/layouts/ijmpd.layout:282
-#, fuzzy
 msgid "RomanList"
-msgstr "Romansk"
+msgstr "Romanskliste"
 
 #: lib/layouts/ijmpc.layout:316 lib/layouts/ijmpd.layout:341
 #: lib/layouts/theorems-ams-bytype.inc:68 lib/layouts/theorems-ams.inc:42
@@ -8528,9 +8513,8 @@ msgid "Appendix \\Alph{appendix}."
 msgstr "Appendix \\Alph{appendix}."
 
 #: lib/layouts/ijmpd.layout:178 lib/layouts/ijmpd.layout:182
-#, fuzzy
 msgid "Comby"
-msgstr "Tastaturkombinasjon"
+msgstr "Kombinasjon"
 
 #: lib/layouts/iopart.layout:77
 msgid "Review"
@@ -8607,34 +8591,28 @@ msgid "ACKNOWLEDGEMENTS"
 msgstr "TAKK"
 
 #: lib/layouts/jasatex.layout:114
-#, fuzzy
 msgid "Alternative Affiliation"
-msgstr "Alternative tilknyting:"
+msgstr "Alternative tilknyting"
 
 #: lib/layouts/jasatex.layout:122
-#, fuzzy
 msgid "Homepage"
-msgstr "ny side"
+msgstr "Heimeside"
 
 #: lib/layouts/jasatex.layout:210
-#, fuzzy
 msgid "PACS numbers:"
 msgstr "PACS nummer:"
 
 #: lib/layouts/jasatex.layout:213
-#, fuzzy
 msgid "Preprint number"
-msgstr "For-trykk"
+msgstr "For-trykk nummer"
 
 #: lib/layouts/jasatex.layout:216
-#, fuzzy
 msgid "Preprint number:"
-msgstr "For-trykk"
+msgstr "For-trykk nummer:"
 
 #: lib/layouts/jasatex.layout:236 lib/layouts/jasatex.layout:240
-#, fuzzy
 msgid "Online citation"
-msgstr "Legg til litteratur referanse"
+msgstr " Nettbasert litteratur referanse"
 
 #: lib/layouts/kluwer.layout:198
 msgid "AddressForOffprints"
@@ -8646,20 +8624,20 @@ msgstr "AdresseForEkstraKopiar:"
 
 #: lib/layouts/kluwer.layout:216
 msgid "RunningTitle"
-msgstr "Løpetittel"
+msgstr "Laupetittel"
 
 #: lib/layouts/kluwer.layout:224 lib/layouts/llncs.layout:163
 #: lib/layouts/svcommon.inc:399
 msgid "Running title:"
-msgstr "Løpetittel:"
+msgstr "Laupetittel:"
 
 #: lib/layouts/kluwer.layout:238
 msgid "RunningAuthor"
-msgstr "Løpeforfattar"
+msgstr "Laupeforfattar"
 
 #: lib/layouts/kluwer.layout:245 lib/layouts/svcommon.inc:405
 msgid "Running author:"
-msgstr "Løpeforfattar:"
+msgstr "Laupeforfattar:"
 
 #: lib/layouts/lettre.layout:39 lib/layouts/lettre.layout:316
 msgid "NoTelephone"
@@ -8749,7 +8727,7 @@ msgstr "Kapittel"
 
 #: lib/layouts/llncs.layout:149
 msgid "Running LaTeX Title"
-msgstr "LaTeX løpetittel "
+msgstr "LaTeX laupetittel "
 
 #: lib/layouts/llncs.layout:172 lib/layouts/svcommon.inc:371
 msgid "TOC Title"
@@ -8761,11 +8739,11 @@ msgstr "Namn på innhaldsliste:"
 
 #: lib/layouts/llncs.layout:200
 msgid "Author Running"
-msgstr "Løpeforfattar"
+msgstr "Laupeforfattar"
 
 #: lib/layouts/llncs.layout:204
 msgid "Author Running:"
-msgstr "Løpeforfatter:"
+msgstr "Laupeforfatter:"
 
 #: lib/layouts/llncs.layout:208 lib/layouts/svcommon.inc:389
 msgid "TOC Author"
@@ -8890,34 +8868,28 @@ msgid "Space:"
 msgstr "Avstand:"
 
 #: lib/layouts/moderncv.layout:122
-#, fuzzy
 msgid "Computer"
-msgstr "Vis heile kjeldekoden"
+msgstr "Datamaskin"
 
 #: lib/layouts/moderncv.layout:125
-#, fuzzy
 msgid "Computer:"
-msgstr "&Ytre:"
+msgstr "Datamaskin:"
 
 #: lib/layouts/moderncv.layout:128
-#, fuzzy
 msgid "EmptySection"
-msgstr "Bolk"
+msgstr "TomBolk"
 
 #: lib/layouts/moderncv.layout:137
-#, fuzzy
 msgid "Empty Section"
-msgstr "Bolk"
+msgstr "Tom Bolk"
 
 #: lib/layouts/moderncv.layout:144
-#, fuzzy
 msgid "CloseSection"
-msgstr "utval"
+msgstr "LatattAvsnitt"
 
 #: lib/layouts/moderncv.layout:147
-#, fuzzy
 msgid "Close Section"
-msgstr "utval"
+msgstr "Lat att avsnitt"
 
 #: lib/layouts/moderncv.layout:173 lib/layouts/stdlayouts.inc:74
 msgid "--Separator--"
@@ -9302,21 +9274,18 @@ msgid "Subclass"
 msgstr "Underbolk"
 
 #: lib/layouts/svglobal3.layout:75
-#, fuzzy
 msgid "Mathematics Subject Classification"
-msgstr "2000 Matematikk subjektklassifikasjon:"
+msgstr "Matematikk subjektklassifikasjon"
 
 #: lib/layouts/svglobal3.layout:78
 msgid "CRSC"
-msgstr ""
+msgstr "CRSC"
 
 #: lib/layouts/svglobal3.layout:81
-#, fuzzy
 msgid "CR Subject Classification"
-msgstr "AMS Subjekt klassifikasjonar:"
+msgstr "CR Subjekt klassifikasjonar:"
 
 #: lib/layouts/svglobal3.layout:86
-#, fuzzy
 msgid "Solution \\thesolution"
 msgstr "Løysinga \\thesolution"
 
@@ -9333,21 +9302,18 @@ msgid "Title*"
 msgstr "Tittel*"
 
 #: lib/layouts/svmult.layout:36
-#, fuzzy
 msgid "Title*: "
-msgstr "Tittel*"
+msgstr "Tittel*: "
 
 #: lib/layouts/svmult.layout:65 lib/layouts/svmult.layout:150
-#, fuzzy
 msgid "Contributors"
-msgstr "Liste over bidragsytarar"
+msgstr "Bidragsytarar"
 
 #: lib/layouts/svmult.layout:67
 msgid "List of Contributors"
 msgstr "Liste over bidragsytarar"
 
 #: lib/layouts/svmult.layout:71
-#, fuzzy
 msgid "Contributor List"
 msgstr "Liste over bidragsytarar"
 
@@ -9363,31 +9329,27 @@ msgstr "For redaktørane"
 
 #: lib/layouts/svmult.layout:106 lib/layouts/svcommon.inc:115
 msgid "PartBacktext"
-msgstr ""
+msgstr "Del-baktekst"
 
 #: lib/layouts/svmult.layout:114 lib/layouts/svcommon.inc:408
-#, fuzzy
 msgid "Running Chapter"
-msgstr "Løpeforfattar:"
+msgstr "Laupekapittel"
 
 #: lib/layouts/svmult.layout:118 lib/layouts/svcommon.inc:163
-#, fuzzy
 msgid "ChapAuthor"
-msgstr "Forfattar"
+msgstr "KapForfattar"
 
 #: lib/layouts/svmult.layout:122 lib/layouts/svcommon.inc:150
-#, fuzzy
 msgid "ChapSubtitle"
-msgstr "Undertittel"
+msgstr "KapUndertittel"
 
 #: lib/layouts/svmult.layout:126 lib/layouts/svcommon.inc:313
 msgid "extrachap"
-msgstr ""
+msgstr "ekstrakap"
 
 #: lib/layouts/svmult.layout:130 lib/layouts/svcommon.inc:308
-#, fuzzy
 msgid "Extrachap"
-msgstr "Ekstra"
+msgstr "EkstraKap"
 
 #: lib/layouts/svmult.layout:134 lib/layouts/scrclass.inc:204
 #: lib/layouts/svcommon.inc:477
@@ -9396,9 +9358,8 @@ msgstr "Dedikasjon"
 
 #: lib/layouts/svmult.layout:138 lib/layouts/svcommon.inc:497
 #: lib/layouts/svcommon.inc:501
-#, fuzzy
 msgid "Foreword"
-msgstr "Nøkkelord"
+msgstr "Forord"
 
 #: lib/layouts/svmult.layout:142 lib/layouts/svcommon.inc:521
 #: lib/layouts/svcommon.inc:530
@@ -9406,9 +9367,8 @@ msgid "Preface"
 msgstr "Forord"
 
 #: lib/layouts/svmult.layout:154 lib/layouts/svcommon.inc:175
-#, fuzzy
 msgid "ChapMotto"
-msgstr "Kapittel"
+msgstr "KapMotto"
 
 #: lib/layouts/tufte-book.layout:123
 msgid "Sidenote"
@@ -9995,7 +9955,6 @@ msgid "Captionabove"
 msgstr "Over_figurtekst"
 
 #: lib/layouts/scrclass.inc:255 lib/layouts/scrclass.inc:275
-#, fuzzy
 msgid "Captions"
 msgstr "Figur/tabell-tekst"
 
@@ -10142,59 +10101,48 @@ msgid "--- Back Matter ---"
 msgstr "--- Ting Bak ---"
 
 #: lib/layouts/svcommon.inc:283
-#, fuzzy
 msgid "Run-in headings"
-msgstr "hovud"
+msgstr "Innrykka overskrifter"
 
 #: lib/layouts/svcommon.inc:298
-#, fuzzy
 msgid "Sub-run-in headings"
-msgstr "Subjekt overskrifter:"
+msgstr "Under-innrykka overskrifter"
 
 #: lib/layouts/svcommon.inc:355
-#, fuzzy
 msgid "Author data:"
-msgstr "Forfattar:"
+msgstr "Forfattar data:"
 
 #: lib/layouts/svcommon.inc:392
-#, fuzzy
 msgid "TOC author:"
-msgstr "Forfatter på Innhaldslista:"
+msgstr "Forfatter til innhaldslista:"
 
 #: lib/layouts/svcommon.inc:395
-#, fuzzy
 msgid "Running Title"
-msgstr "Løpetittel:"
+msgstr "Laupetittel"
 
 #: lib/layouts/svcommon.inc:402
-#, fuzzy
 msgid "Running Author"
-msgstr "Løpeforfattar:"
+msgstr "Laupeforfattar"
 
 #: lib/layouts/svcommon.inc:413
-#, fuzzy
 msgid "Running chapter:"
-msgstr "Løpeforfattar:"
+msgstr "Laupeforfattar:"
 
 #: lib/layouts/svcommon.inc:416
-#, fuzzy
 msgid "Running Section"
-msgstr "Løpetittel:"
+msgstr "LaupeBolk"
 
 #: lib/layouts/svcommon.inc:419
-#, fuzzy
 msgid "Running section:"
-msgstr "Løpetittel:"
+msgstr "Laupebolk:"
 
 #: lib/layouts/svcommon.inc:443
-#, fuzzy
 msgid "Abstract*"
-msgstr "Samandrag"
+msgstr "Samandrag*"
 
 #: lib/layouts/svcommon.inc:447
-#, fuzzy
 msgid "Abstract* (not printed)"
-msgstr " (ikkje installert)"
+msgstr "Samandrag*(ikkje trykt)"
 
 #: lib/layouts/svcommon.inc:595
 msgid "Petit"
@@ -10202,7 +10150,7 @@ msgstr "Petit"
 
 #: lib/layouts/svcommon.inc:607
 msgid "Svgraybox"
-msgstr ""
+msgstr "Svgråboks"
 
 #: lib/layouts/theorems-ams-bytype.inc:166 lib/layouts/theorems-bytype.inc:142
 #: lib/layouts/theorems-without-preamble.inc:163
@@ -10314,28 +10262,24 @@ msgid "Remark."
 msgstr "Merknad."
 
 #: lib/layouts/theorems-without-preamble.inc:236
-#, fuzzy
 msgid "Prob"
-msgstr "Problem"
+msgstr "Prob"
 
 #: lib/layouts/theorems-without-preamble.inc:243
 msgid "\\theprob."
 msgstr "\\theprob."
 
 #: lib/layouts/theorems-without-preamble.inc:279
-#, fuzzy
 msgid "Sol"
-msgstr "Symbol"
+msgstr "Sol"
 
 #: lib/layouts/theorems-without-preamble.inc:283
-#, fuzzy
 msgid "# [number of Prob]"
-msgstr "Tal på rader"
+msgstr "#[talet på Prob]"
 
 #: lib/layouts/theorems-without-preamble.inc:358
-#, fuzzy
 msgid "Property \\theproperty."
-msgstr "Framlegg \\theprop."
+msgstr "Eigenskap \\theproperty"
 
 #: lib/layouts/theorems-without-preamble.inc:392
 #: lib/layouts/theorems-ams-extended-bytype.module:202
@@ -10420,9 +10364,8 @@ msgstr ""
 "hovudstil i menyen: Dokument val-> sidestil til frodig."
 
 #: lib/layouts/customHeadersFooters.module:12
-#, fuzzy
 msgid "Header/Footer"
-msgstr "Midtstilt botnekst"
+msgstr "topp/botn"
 
 #: lib/layouts/customHeadersFooters.module:30
 msgid "Center Header"
@@ -10469,14 +10412,12 @@ msgid "Customisable Lists (enumitem)"
 msgstr "Tilpassa lister (enumitem)"
 
 #: lib/layouts/enumitem.module:6
-#, fuzzy
 msgid ""
 "Controls the layout of enumerate, itemize, description, and list/labeling. "
 "See section Customized Lists of the User's Guide for a detailed description."
 msgstr ""
-"Kontroller stilen på nummererte-, punkt-, skildring-, og etikett-lister med "
-"tilleggsargument. Sjå http://mirror.ctan.org/CTAN/macros/latex/contrib/"
-"enumitem/enumitem.pdf"
+"Kontroller stilen på nummererte-, punkt-, skildring-, og etikett-lister. "
+"Sjå avsnitt tilpassa lister i brukarhandboka for detaljar."
 
 #: lib/layouts/enumitem.module:93
 msgid "Enumerate-Resume"
@@ -10575,6 +10516,8 @@ msgid ""
 "Define a style for paragraphs with an initial. See the EmbeddedObjects "
 "manual for a detailed description."
 msgstr ""
+"Definer ein stil for avsnitt med initial. Sjå Innlemma objekt "
+"manualen for tealjert skildring."
 
 #: lib/layouts/initials.module:14 lib/layouts/initials.module:16
 #: lib/layouts/initials.module:25 lib/layouts/initials.module:31
@@ -10583,7 +10526,7 @@ msgstr "Forbokstav"
 
 #: lib/layouts/knitr.module:2 lib/configure.py:584
 msgid "Rnw (knitr)"
-msgstr ""
+msgstr "Rnw (knitr)"
 
 #: lib/layouts/knitr.module:6
 msgid ""
@@ -10591,6 +10534,11 @@ msgid ""
 "has to be installed for this module to work: install.packages('knitr'). Note "
 "it depends on R >= 2.14.1. For more info see http://yihui.github.com/knitr"
 msgstr ""
+"Brukar knitr pakken for å lage dynamiske rapportar i R. Denne R pakken "
+"må vere installert for at modulen skal virke: install.packages(\"knitr\")."
+"Merk "
+"at den er avhengig av R >= 2.14.1. For meir info sjå http://yihui.github."
+"com/knitr"
 
 #: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
 #: lib/layouts/sweave.module:6
@@ -10773,13 +10721,12 @@ msgid "Allows to use Noweb as a literate programming tool."
 msgstr "Tillet brukav verktyet noweb til litterær programmering"
 
 #: lib/layouts/sweave.module:6
-#, fuzzy
 msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
 "via the Sweave() function. For more info see the LyX example file sweave.lyx."
 msgstr ""
-"Tillet bruk av statistiskverkty slik som S eller R til litterær "
-"programmering gjennom Sweave pakken. Sjå sweave.lyx for eksempel."
+"Tillet bruk av statistiskverkty slik som S eller R til litterær programmering "
+"gjennom Sweave pakken. Sjå sweave.lyx for meir informasjon."
 
 #: lib/layouts/sweave.module:93 lib/layouts/sweave.module:94
 msgid "Sweave Input File"
@@ -12600,9 +12547,8 @@ msgid "Paste Special"
 msgstr "Tilpassa lim inn"
 
 #: lib/ui/stdmenus.inc:108
-#, fuzzy
 msgid "Select Whole Inset"
-msgstr "Vel fil å setje inn"
+msgstr "Vel Heile Innskotet"
 
 #: lib/ui/stdmenus.inc:109
 msgid "Select All"
@@ -13405,9 +13351,8 @@ msgid "Multicolumn Manual|M"
 msgstr "Multikolonne manual|M"
 
 #: lib/ui/stdmenus.inc:589
-#, fuzzy
 msgid "Sweave Manual|S"
-msgstr "Sweave|S"
+msgstr "Sweave Manualen|S"
 
 #: lib/ui/stdmenus.inc:590
 msgid "XY-pic Manual|X"
@@ -16156,7 +16101,6 @@ msgid "Spreadsheet"
 msgstr "Rekneark"
 
 #: lib/external_templates:39
-#, fuzzy
 msgid ""
 "A spreadsheet made with Gnumeric, LibreOffice, OpenOffice or Excel.\n"
 "It imports as a long table, so any length\n"
@@ -16164,8 +16108,8 @@ msgid ""
 "The gnumeric software is necessary for conversion,\n"
 "both for gnumeric and excel files.\n"
 msgstr ""
-"Eir rekneark laga i gnumeric, openoffice eller excel.\n"
-"Den blir importert som ein lang-tabell, så lengd\n"
+"Eir rekneark laga i Gnumeric, Libreoffice, Openoffice eller Excel.\n"
+"Den blir importert som ein lang-tabell, så lange tabeller\n"
 "er ok. Stor breidd kan vere eit problem.\n"
 "Gnumeric er naudsynt både for gnumeric- og excel-rekneark.\n"
 
@@ -16263,7 +16207,6 @@ msgid "PDF pages: $$AbsOrRelPathParent$$Basename"
 msgstr "PDF pages: $$AbsOrRelPathParent$$Basename"
 
 #: lib/external_templates:303
-#, fuzzy
 msgid ""
 "Includes PDF documents, using the 'pdfpages' package.\n"
 "To include multiple pages, use the 'pages'-option,\n"
@@ -16285,6 +16228,9 @@ msgstr ""
 "* pages={x-y} (for ei rekkje sider)\n"
 "* pages={x,y,z} (for enkeltsider)\n"
 "* pages=- (for alle sidene)\n"
+"* pages=last-1 (for å reversere sidene)\n"
+"Med valet 'noautoscale' sidene er \n"
+"brukte i orginalstorleik. \n"
 "les dokumentasjonen for PDFPages-pakken\n"
 "for fleire val og detaljar.\n"
 
@@ -16423,9 +16369,8 @@ msgid "Sweave|S"
 msgstr "Sweave|S"
 
 #: lib/configure.py:583
-#, fuzzy
 msgid "R/S code"
-msgstr "kode"
+msgstr "R/S kode"
 
 #: lib/configure.py:585
 msgid "LilyPond music"
@@ -16997,7 +16942,7 @@ msgid "Uncodable character in file path"
 msgstr "Umogeleg spesialteikn i stigen"
 
 #: src/Buffer.cpp:1492
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The path of your document\n"
 "(%1$s)\n"
@@ -17013,7 +16958,11 @@ msgstr ""
 "(%1$s)\n"
 "innheld teikn som er ukjente i den\n"
 "gjeldande kodinga (dvs %2$s).\n"
-"Dette vil mest truleg ende med eit ikkje komplett dokument.\n"
+"Dette vil mest truleg ende med eit ikkje komplett dokument, dersom "
+"ikkje TEXINPUTS har stigen til dokumentet og du ikkje "
+"relative stigar (t.d. stigar som startar med ./ eller ../) i forteksten eller "
+"i ERT.\n"
+"\n"
 "Vel derfor ein anna koding for dokumentet (f.eks. utf8)\n"
 " eller vel ein anna stig."
 
@@ -17456,13 +17405,15 @@ msgstr "Finn ikkje greina: %1$s."
 
 #: src/BufferView.cpp:2293
 msgid "Inverse Search Failed"
-msgstr ""
+msgstr "Leit tilbake feila"
 
 #: src/BufferView.cpp:2294
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
 msgstr ""
+"Ugyldig posisjon spurt etter av leit tilbake.\n"
+"Du må oppdatere dokumentet du ser på."
 
 #: src/BufferView.cpp:2673
 #, c-format
@@ -17994,14 +17945,13 @@ msgid "&Don't Add"
 msgstr "&Ikkje legg til"
 
 #: src/CutAndPaste.cpp:665 src/Text.cpp:364
-#, fuzzy, c-format
+#, c-format
 msgid "Layout `%1$s' was not found."
-msgstr "Dokumentklassa er ikkje tilgjengeleg"
+msgstr "Stilen '%1$' vart ikkje funnen."
 
 #: src/CutAndPaste.cpp:667 src/Text.cpp:366
-#, fuzzy
 msgid "Layout Not Found"
-msgstr "Ikkje funnen"
+msgstr "Stil ikkje funnen"
 
 #: src/CutAndPaste.cpp:695
 #, c-format
@@ -19797,11 +19747,11 @@ msgstr ""
 
 #: src/frontends/qt4/GuiAbout.cpp:122
 msgid "Library directory: "
-msgstr "Bibliotek katalog: "
+msgstr "Bibliotekstig: "
 
 #: src/frontends/qt4/GuiAbout.cpp:125
 msgid "User directory: "
-msgstr "Brukar katalog: "
+msgstr "Brukarstig: "
 
 #: src/frontends/qt4/GuiAbout.cpp:143
 msgid "About LyX"
@@ -20317,19 +20267,19 @@ msgstr "Samanlikne ulike versjon"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:57
 msgid "big[[delimiter size]]"
-msgstr "store"
+msgstr "store[[delimiter size]]"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:58
 msgid "Big[[delimiter size]]"
-msgstr "store"
+msgstr "Store[[delimiter size]]"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:59
 msgid "bigg[[delimiter size]]"
-msgstr "Store"
+msgstr "Stoore[[delimiter size]]"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:60
 msgid "Bigg[[delimiter size]]"
-msgstr "STORE"
+msgstr "Stoore[[delimiter size]]"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:165
 msgid "Math Delimiter"
@@ -20741,7 +20691,7 @@ msgstr " (ikkje installert)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1811
 msgid "Layouts|#o#O"
-msgstr "Stiller|#o#O"
+msgstr "Stiler|#o#O"
 
 #: src/frontends/qt4/GuiDocument.cpp:1813
 msgid "LyX Layout (*.layout)"
@@ -20852,10 +20802,9 @@ msgstr "[Ingen val predefinert]"
 
 #: src/frontends/qt4/GuiDocument.cpp:3034
 msgid "C&ustomize Hyperref Options"
-msgstr ""
+msgstr "T&ilpass Hyperref val"
 
 #: src/frontends/qt4/GuiDocument.cpp:3036
-#, fuzzy
 msgid "&Use Hyperref Support"
 msgstr "Br&uk hyperref støtte"
 
@@ -21008,7 +20957,7 @@ msgid ""
 "because this graphic was its only member.\n"
 "How do you want to proceed?"
 msgstr ""
-"Dersom du fjernar bilete frå  gruppa'%1$s', vil den forsvinne\n"
+"Dersom du fjernar bilete frå gruppa'%1$s', vil den forsvinne\n"
 "fordi dette bilete var det einaste medlemmet\n"
 "Korleis vil du fortsette?"
 
@@ -21606,9 +21555,8 @@ msgid ""
 msgstr "Vi kom til slutten av dokumentet, skal vi fortsette frå starten?"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:385
-#, fuzzy
 msgid "Spell checker has no dictionaries."
-msgstr "&Stavekontrollmotor:"
+msgstr "Stavekontrollen har ingen ordbøker."
 
 #: src/frontends/qt4/GuiSymbols.cpp:54
 msgid "Basic Latin"
@@ -22204,10 +22152,15 @@ msgid ""
 "Please close it before attempting to overwrite it.\n"
 "Do you want to choose a new filename?"
 msgstr ""
+"Fila\n"
+"%1$s\n"
+"er open frå før.\n"
+"Ver venleg å lat igjen fila før du prøver å skrive over den.\n"
+"Vil du bruke eit anna namn på fila?"
 
 #: src/frontends/qt4/GuiView.cpp:2307
 msgid "Chosen File Already Open"
-msgstr ""
+msgstr "Fila er open frå før"
 
 #: src/frontends/qt4/GuiView.cpp:2308 src/frontends/qt4/GuiView.cpp:2323
 #: src/frontends/qt4/GuiView.cpp:2368
@@ -22316,9 +22269,9 @@ msgid "Opening child document %1$s..."
 msgstr "Opnar barne dokumentet %1$s..."
 
 #: src/frontends/qt4/GuiView.cpp:2955
-#, fuzzy, c-format
+#, c-format
 msgid "No buffer for file: %1$s."
-msgstr "Veit ikkje korleis vise %1$s"
+msgstr "Ingen buffer for: %1$s."
 
 #: src/frontends/qt4/GuiView.cpp:2982
 #, c-format
@@ -22633,9 +22586,8 @@ msgid "List of Listings"
 msgstr "Liste over kodelister"
 
 #: src/frontends/qt4/qt_helpers.cpp:563
-#, fuzzy
 msgid "List of Index Entries"
-msgstr "Liste over indeksar"
+msgstr "Liste over indekspunkt"
 
 #: src/frontends/qt4/qt_helpers.cpp:565
 msgid "List of Marginal notes"
