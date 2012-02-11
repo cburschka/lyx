@@ -12407,6 +12407,7 @@ height "1pt"
 \end_layout
 
 \begin_layout Standard
+\noindent
 Horizontale Linien können Sie mit 
 \family sans
 Einfügen
@@ -12690,24 +12691,19 @@ name "sub:LaTeX-Schriftunterstützung"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Traditionally, LaTeX uses its own fonts.
- That is to say, you cannot directly access the fonts installed on your
- operating system, but you have to use specific fonts provided by your LaTeX
- distribution.
- The reason is that LaTeX needs some extra information über the fonts, which
- have to be provided by additional Dateien und packages.
- The downside of this is that your font choice is somewhat limited, compared
- to usual word processors.
- On the other hand this comes mit the advantage that the provided fonts
- are generally of very good quality, und that LaTeX Dateien are very portable
- across different machines.
- Also, the range of fonts supported by traditional LaTeX was increased a
- lot meanwhile so that you can find packages für many free und commercial
- fonts.
- In LyX, nur a subset of these are directly selectable via the user interface
-\lang ngerman
+Traditionell verwendet LaTeX seine eigenen Schriften.
+ Daher kann man die Schriften, die im Betriebssystem installiert sind nicht
+ verwenden, sondern muss spezielle LaTeX-Schriften benutzen.
+ Der Grund ist, dass LaTeX besondere Informationen von den Schriften benötigt,
+ die von zusätzlichen Dateien und Paketen bereit gestellt werden.
+ Die Schattenseite ist, dass daher die Auswahl an Schriften im Vergleich
+ zu anderen Textprogrammen etwas eingeschränkt ist.
+ Auf der anderen Seite hat man den Vorteil dass die LaTeX-Schriften generell
+ eine exzellente Qualität haben und auf allen Betriebssystemen exakt gleich
+ aussehen.
+ Mittlerweile gibt es eine recht große Zahl an LaTeX-Schriften, freie und
+ kommerzielle.
+ In LyX sind nur einige davon direkt über die Dokumenteinstellungen auswählbar
  (siehe Abschnitt
 \begin_inset space ~
 \end_inset
@@ -12720,28 +12716,22 @@ reference "sub:Dokumentschrift-und-Schriftgröße"
 \end_inset
 
  für Details).
- 
-\lang english
-However, all others are available if you enter the respective LaTeX code
- in the document preamble (please refer to the documentation of your desired
- font).
+ Es sind dennoch alle verfügbar wenn man den entsprechenden LaTeX-Code in
+ den LaTeX-Vorspann einfügt (bitte lesen Sie dazu die Dokumentation der
+ gewünschten Schrift).
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Furthermore, recent developments brought some new LaTeX engines that are
- auch able to directly access fonts that are installed für your operating
- system (OS), namely XeTeX und LuaTeX.
- Both engines are now supported by LyX.
- By using them, you can use theoretically any OpenType oder TrueType font
- that is installed on your system.
- The next Abschnitt describes how to use these OS fonts.
+Die neuesten Entwicklungen sind LaTeX-Interpreter, die es erlauben die Schriften
+, die auf Ihrem Betriebssystem installiert sind, direkt zu verwenden.
+ Dies sind die Interpreter XeTeX und LuaTeX.
+ Beine werden von LyX unterstützt.
+ Damit kann man theoretisch jede installierte OpenType oder TrueType Schrift
+ verwenden.
+ Der nächste Abschnitt beschreibt wie man diese Schriften verwendet.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
@@ -12750,10 +12740,9 @@ status open
 \series bold
 Achtung:
 \series default
- 
-\lang english
-In practice, some fonts might fail due to bad metrics und other font deficiencie
-s; so you might have to experiment.
+ Es kann sein, dass einige Schriften aufgrund schlechter Zeichendefinitionen
+ ein schlechtes Ergebnis in der Ausgabe bringen; daher muss man manchmal
+ experimentieren.
 \end_layout
 
 \end_inset
@@ -12762,8 +12751,6 @@ s; so you might have to experiment.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
@@ -12772,10 +12759,8 @@ status open
 \series bold
 Achtung:
 \series default
- 
-\lang english
-XeTeX und especially LuaTeX, are still rather new und thus not as mature
- as traditional LaTeX oder PDFTeX.
+ XeTeX und besonders LuaTeX sind immer noch relativ neu und daher noch nicht
+ ganz so stabil wie das traditionelle LaTeX oder PDFTeX.
 \end_layout
 
 \end_inset
@@ -14898,30 +14883,26 @@ Zeichenformat
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To completely reset the character style to the default, use
-\lang ngerman
- 
+Um den Buchstabenstil komplett auf die Voreinstellung zurückzusetzen, drückt
+ man 
 \family sans
-Alt+C
+Alt+Z
 \begin_inset space ~
 \end_inset
 
 Leertaste
 \family default
-\lang english
 .
- If you want to toggle only those properties that you have just changed
- (suppose you just set the shape to 
+ Will man nur die Einstellungen umschalten, die man gerade geändert hat
+ (angenommen man hat gerade den Schnitt auf 
 \begin_inset Quotes gld
 \end_inset
 
-slanted
+geneigt
 \begin_inset Quotes grd
 \end_inset
 
- and the series to 
+ und die Strichstärke auf 
 \begin_inset Quotes gld
 \end_inset
 
@@ -14929,40 +14910,33 @@ fett
 \begin_inset Quotes grd
 \end_inset
 
-), set the 
+ gesetzt), verwendet man die Option 
 \family sans
-Toggle
+Alle
 \begin_inset space ~
 \end_inset
 
-all
+umschalten
 \family default
- switch and press 
+ und drückt 
 \family sans
-Apply
+Übernehmen
 \family default
 .
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You should also know something about the differences between the three main
- font types 
+Sie sollten den Unterschied zwischen den drei Hauptschrifttypen kennen 
 \family sans
-serif
+Serifenschrift
 \family default
 , 
 \family sans
-sans
-\begin_inset space ~
-\end_inset
-
-serif
+Serifenlos
 \family default
-, and 
-\family sans
-typewriter
+, und 
+\family typewriter
+Schreibmaschine
 \family default
 :
 \end_layout
@@ -15046,25 +15020,19 @@ kein Schreibmaschine-Text
 \begin_layout Itemize
 
 \family sans
-\lang english
-Serif
+Serifenschrift
 \family default
-\lang ngerman
  Schriftarten verwenden Zeichen mit Serifen.
- 
-\lang english
-These are the small 
+ Dies sind die kleinen 
 \begin_inset Quotes gld
 \end_inset
 
-appendices
+Anhängsel
 \begin_inset Quotes grd
 \end_inset
 
- at the ends of the strokes that form the character.
- The following example will show the difference
-\lang ngerman
-:
+ am Ende der Striche, die ein Zeichen bilden.
+ Das folgende Beispiel zeigt den Unterschied:
 \begin_inset Newline newline
 \end_inset
 
@@ -15080,130 +15048,134 @@ Text ohne Serifen
 \begin_inset Newline newline
 \end_inset
 
-Serifen 
-\lang english
-facilitate quick and easy reading.
- These fonts are therefore used as default (named 
-\family sans
-roman
-\family default
-).
+Serifen ermöglichen ein schnelles und leichtes Lesen.
+ Diese Schriften werden daher als Standardschrift verwendet.
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
-Sans serif
+Serifenlos
 \family default
- don't use serifs.
- This font type is therefore often used for headings and short texts.
- We use it in this document to highlight menu names.
+ wird nicht als Grundtyp empfohlen.
+ Diese Schrift wird daher oft nur für Abschnittsüberschriften und Kurztexte
+ verwendet.
+ In diesem Dokument wird er zur Hervorhebung von Menünamen verwendet.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Quotes gld
 \end_inset
 
-Toggling
+Umschalten
 \begin_inset Quotes grd
 \end_inset
 
- refers to applying or removing font properties.
- When a property is marked for toggling in the Text Style dialog, applying
- the style to text that already has the property will cause the property
- to be removed.
- If you apply a style with properties A, B and C to text that currently
- has font properties B, C, F and G, and if B is set to toggle and C is set
- not to toggle, the text ends up with properties A, C, F and G.
+ bezieht sich auf das Setzen oder Entfernen von Schrifteigenschaften.
+ Wenn eine Eigenschaft fürs Umschalten im Textstil-Dialog ausgewählt ist,
+ wird sie vom ausgewählten Text entfernt, wenn dieser schon die Eigenschaft
+ besitzt.
+ Wenn man z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ einen Stil mit den Eigenschaften A, B und C für Text anwendet, der aktuell
+ die Schrifteigenschaften B, C, F und G hat, und wenn B auf umschalten,
+ C auf nicht umschalten gesetzt ist, wird der Text danach die Eigenschaften
+ A, C, F und G haben.
  
-\begin_inset Quotes eld
-\end_inset
-
-Never toggled
-\begin_inset Quotes erd
-\end_inset
-
- and 
-\begin_inset Quotes eld
-\end_inset
-
-always toggled
-\begin_inset Quotes erd
-\end_inset
-
- mean that you do not control the toggling behavior.
- For the properties on the left side of the dialog (
 \begin_inset Quotes gld
 \end_inset
 
-Family
+Niemals Umschalten
 \begin_inset Quotes grd
 \end_inset
 
- etc.), toggling behavior is up to you.
- If 
+ und 
 \begin_inset Quotes gld
 \end_inset
 
-Toggle all
+Immer Umschalten
 \begin_inset Quotes grd
 \end_inset
 
- is checked, all of the left side properties are toggled; by default, none
- of them are.
- Finally, 
+ bedeutet, dass man die Umschalt-Eigenschaft nicht kontrolliert.
+ Für die Eigenschaften der linken Seite des Dialogs (
 \begin_inset Quotes gld
 \end_inset
 
-Reset
+Familie
 \begin_inset Quotes grd
 \end_inset
 
- is never toggled.
- If you set 
+ usw.) entscheidet man selbst über das Umschalten.
+ Wenn 
+\family sans
+Alle
+\begin_inset space ~
+\end_inset
+
+umschalten
+\family default
+ gewählt ist, werden alle Eigenschaften der linken Dialogseite umgeschaltet;
+ standardmäßig werden sie nicht umgeschaltet.
+ Die Einstellung 
 \begin_inset Quotes gld
 \end_inset
 
-Series
+Zurücksetzen
 \begin_inset Quotes grd
 \end_inset
 
- to 
+ wird nie umgeschaltet.
+ Wenn man z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B: 
 \begin_inset Quotes gld
 \end_inset
 
-Reset
+Strichstärke
 \begin_inset Quotes grd
 \end_inset
 
- and select 
+ auf 
 \begin_inset Quotes gld
 \end_inset
 
-Toggle all
+Zurücksetzen
 \begin_inset Quotes grd
 \end_inset
 
-, then apply the style to bold face text, the text will revert to the default
- series (
+ setzt, 
+\family sans
+Alle
+\begin_inset space ~
+\end_inset
+
+umschalten
+\family default
+ wählt und dies auf fett gesetzten Text anwendet, wird auf die Voreinstellung
+ 
 \begin_inset Quotes gld
 \end_inset
 
-Medium
+Mittel
 \begin_inset Quotes grd
 \end_inset
 
-), no matter how many times you apply the style.
+ zurückgesetzt, egal wie oft man den Stil anwendet.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-We conclude with the same warning once again: Don't overuse the fonts.
- They are, more often than not, a kludge and a bad substitute for good writing.
+Es wird zum Schluss nochmal gewarnt: Übertreiben Sie den Gebrauch von
+\emph on
+ 
+\emph default
+Schriften nicht! Sie sind ansonsten nur ein vorgetäuschter Ersatz für gutes
+ Schreiben.
 \end_layout
 
 \begin_layout Section
@@ -16097,8 +16069,8 @@ pdftex
  supports all the Features of actual PDF-versions, is quick, stable, und
  works ohne problems.
  If you rely on multiscript support and\SpecialChar \slash{}
-or specific OpenType fonts, you might
- want to try out 
+or specific OpenType Schriften, you
+ might want to try out 
 \family sans
 PDF
 \begin_inset space ~

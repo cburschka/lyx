@@ -17833,6 +17833,7 @@ height "1pt"
 \end_layout
 
 \begin_layout Standard
+\noindent
 
 \family sans
 挿入\SpecialChar \menuseparator
@@ -44460,9 +44461,9 @@ Archive
 \begin_inset space ~
 \end_inset
 
-(zip) creates a zip-archive file that contains your document and all files
- that are necessary to compile it (images, child documents, BibTeX files,
- etc.)
+(zip|tar.gz) creates a zip- or tar.gz-archive file (depending upon your system)
+ that contains your document and all files that are necessary to compile
+ it (images, child documents, BibTeX files, etc.)
 \end_layout
 
 \begin_layout Description
@@ -44666,10 +44667,10 @@ dvips
 \end_layout
 
 \begin_layout Description
-
+Sweave
 \lang english
-Sweave text file with the LaTeX source and also code in the statistical
- programming language 
+ text file with the LaTeX source and also code in the statistical programming
+ language 
 \family typewriter
 R
 \family default
