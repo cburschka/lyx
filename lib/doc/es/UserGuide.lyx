@@ -38670,9 +38670,12 @@ Archive
 \begin_inset space ~
 \end_inset
 
-(zip) crea un contenedor de archivos zip con el documento y todos los archivos
- necesarios para compilarlo (imágenes, documentos hijo, archivos BibTeX,
- etc.)
+(zip|tar.gz) crea un contenedor de archivos zip o tar.gz (
+\lang english
+depending upon your system
+\lang spanish
+) con el documento y todos los archivos necesarios para compilarlo (imágenes,
+ documentos hijo, archivos BibTeX, etc.)
 \end_layout
 
 \begin_layout Description

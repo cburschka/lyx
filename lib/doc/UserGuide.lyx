@@ -38334,9 +38334,9 @@ Archive
 \begin_inset space ~
 \end_inset
 
-(zip) creates a zip-archive file that contains your document and all files
- that are necessary to compile it (images, child documents, BibTeX files,
- etc.)
+(zip|tar.gz) creates a zip-archive or a tar.gz-archive file (depending upon
+ your system) that contains your document and all files that are necessary
+ to compile it (images, child documents, BibTeX files, etc.)
 \end_layout
 
 \begin_layout Description

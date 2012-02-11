@@ -25851,26 +25851,23 @@ mathsf
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Achtung:
 \series default
- You can only print capital letters in the typefaces 
+ Man kann nur Großbuchstaben in die Stile 
 \family sans
 Blackboard
 \family default
- and 
+ und 
 \family sans
-Calligraphic
+Kalligrafisch
 \family default
-.
+ setzen.
 \end_layout
 
 \end_inset
@@ -35485,9 +35482,9 @@ yX-Archiv
 \begin_inset space ~
 \end_inset
 
-(zip) erstellt eine zip-Archiv-Datei die Ihr Dokument und alle Dateien,
- die notwendig sind, um es zu kompilieren, enthält (Bilder, Unterdokumente,
- BibTeX-Dateien, usw.)
+(zip|tar.gz) erstellt eine zip- oder-tar.gz-Archiv-Datei (abhängig von Ihrem
+ System) die Ihr Dokument und alle Dateien, die notwendig sind, um es zu
+ kompilieren, enthält (Bilder, Unterdokumente, BibTeX-Dateien, usw.)
 \end_layout
 
 \begin_layout Description
