@@ -4,10 +4,10 @@
 \begin_header
 \textclass scrbook
 \begin_preamble
-% enable calculations
+% enables calculations
 \usepackage{calc}
 
-% increase the bottom float placement fraction
+% increases the bottom float placement fraction
 \renewcommand{\bottomfraction}{0.5}
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
