@@ -260,7 +260,7 @@ PATH
 \family sans
 PATH
 \family default
- under Windows, you may use the R script 
+ under Windows, you may either use the R script 
 \family sans
 add-R-path-win.R
 \family default
@@ -275,15 +275,64 @@ https://github.com/yihui/lyx
 
 \end_inset
 
- to change it automatically (we recommend you to learn 
+ to change it automatically (not recommended; you should learn 
 \family sans
 PATH
 \family default
- anyway).
+ anyway), or go to 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+Paths\SpecialChar \menuseparator
+PATH prefix
+\family default
+ to add the bin path of R (recommended), which is often like 
+\family sans
+C:
+\backslash
+Program Files
+\backslash
+R
+\backslash
+R-x.x.x
+\backslash
+bin
+\family default
+ and you can find it in R:
 \end_layout
 
 \begin_layout Standard
-If 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<where-is-R-bin,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+R.home('bin')
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+After you have done these changes, you need to reconfigure LyX by 
+\family sans
+Tools\SpecialChar \menuseparator
+Reconfigure
+\family default
+.
+ If 
 \family typewriter
 Rscript
 \family default
@@ -739,14 +788,12 @@ name "tab:xtable-demo"
 \end_layout
 
 \begin_layout Plain Layout
+\align center
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-
-\backslash
-begin{center}
 \end_layout
 
 \begin_layout Plain Layout
@@ -773,13 +820,6 @@ print(xtable(sapply(iris[,-5], quantile)), floating=FALSE)
 \begin_layout Plain Layout
 
 @
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{center}
 \end_layout
 
 \end_inset
@@ -854,15 +894,9 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset ERT
 status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{center}
-\end_layout
 
 \begin_layout Plain Layout
 
@@ -877,13 +911,6 @@ pairs(iris, col = iris$Species)
 \begin_layout Plain Layout
 
 @
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{center}
 \end_layout
 
 \end_inset
@@ -926,15 +953,9 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset ERT
 status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{center}
-\end_layout
 
 \begin_layout Plain Layout
 
@@ -954,13 +975,6 @@ boxplot(Sepal.Length~Species,data=iris,horizontal=TRUE,xlab='Sepal.Length')
 \begin_layout Plain Layout
 
 @
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{center}
 \end_layout
 
 \end_inset
@@ -1347,6 +1361,79 @@ label=
  immediately.
 \end_layout
 
+\begin_layout Standard
+Another known issue is the Sweave code chunk may fail when we change the
+ alignment of the chunk paragraph in LyX (using 
+\family sans
+Paragraph settings
+\family default
+), because LyX may add a macro like 
+\family typewriter
+
+\backslash
+centering{}
+\family default
+ before the code chunk without adding a new line, which will lead to a code
+ chunk like this:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering{}<<xtable-demo,results=tex,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is not a legitimate Sweave code chunk, since 
+\family typewriter
+<<>>=
+\family default
+ must start in a new line with nothing before it.
+ Therefore we recommend you to double check the real source code via 
+\family sans
+View\SpecialChar \menuseparator
+View Source
+\family default
+ when changing the alignment of a chunk paragraph, and make sure 
+\family typewriter
+<<>>=
+\family default
+ appears in a new line.
+ This explains why we manually added an empty line in the code chunk in
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:xtable-demo"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Section
 Resources
 \end_layout
@@ -1516,29 +1603,16 @@ lyxsweave.R
 \end_layout
 
 \begin_layout Standard
-Beside the support for the official Sweave in R, we have a few customized
- R scripts to unofficially support other R packages under 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-https://github.com/yihui/lyx
-\end_layout
-
-\end_inset
-
-, e.g., the 
-\series bold
-pgfSweave
-\series default
- and the 
+Beside the support for the official Sweave in R, the 
 \series bold
 knitr
 \series default
- package.
- The former supports cache and tikz graphics in R, and the latter is an
- alternative literate programming engine to Sweave which has even more features.
+ package is also supported, which is an alternative tool to Sweave; the
+ corresponding module is named 
+\family sans
+Rnw (knitr)
+\family default
+.
 \end_layout
 
 \end_body
