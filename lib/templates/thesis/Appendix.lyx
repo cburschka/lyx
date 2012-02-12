@@ -4,26 +4,26 @@
 \begin_header
 \textclass scrbook
 \begin_preamble
-% Linkfläche für Querverweise vergrößern und automatisch benenne
+% increases link area for cross-references and autoname them
 \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
 \addto\extrasenglish{%
  \renewcommand*{\equationautorefname}[1]{}
- \renewcommand{\sectionautorefname}{Kap.\negthinspace}
- \renewcommand{\subsectionautorefname}{Kap.\negthinspace}
- \renewcommand{\subsubsectionautorefname}{Kap.\negthinspace}
- \renewcommand{\figureautorefname}{Abb.\negthinspace}
+ \renewcommand{\sectionautorefname}{sec.\negthinspace}
+ \renewcommand{\subsectionautorefname}{sec.\negthinspace}
+ \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}
+ \renewcommand{\figureautorefname}{Fig.\negthinspace}
  \renewcommand{\tableautorefname}{Tab.\negthinspace}
 }
 
-% für den Fall, dass jemand die Bezeichnung "Gleichung" haben will
-%\renewcommand{\eqref}[1]{Gleichung~(\negthinspace\autoref{#1})}
+% in case somebody want to have the label "Equation"
+%\renewcommand{\eqref}[1]{Equation~(\negthinspace\autoref{#1})}
 
-% Setzt den Link für Sprünge zu Gleitabbildungen
-% auf den Anfang des Gelitobjekts und nicht aufs Ende
+% that links to image floats jumps to the beginning
+% of the float and not to its caption
 \usepackage[figure]{hypcap}
 
-% Die Seiten des Inhaltsverzeichnisses werden römisch numeriert,
-% ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
 \let\myTOC\tableofcontents
 \renewcommand\tableofcontents{%
   \frontmatter
@@ -31,22 +31,21 @@
   \myTOC
   \mainmatter }
 
-% make caption labels bold
+% makes caption labels bold
 \setkomafont{captionlabel}{\bfseries}
 \setcapindent{1em}
 
-% enable calculations
+% enables calculations
 \usepackage{calc}
 
 % fancy page header/footer settings
 \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
 
-%Vergrößert den Teil der Seite, in dem Gleitobjekte
-% unten angeordnet werden dürfen
+% increases the bottom float placement fraction
 \renewcommand{\bottomfraction}{0.5}
 
-% Vermeidet, dass Gleitobjekte vor ihrem Abschnitt gedruckt werden
+% avoids that floats are placed above its sections
 \let\mySection\section\renewcommand{\section}{\suppressfloats[t]\mySection}
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn

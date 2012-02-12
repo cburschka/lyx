@@ -4,7 +4,7 @@
 \begin_header
 \textclass scrbook
 \begin_preamble
-% increase link area for cross-references and autoname them
+% increases link area for cross-references and autoname them
 \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
 \addto\extrasenglish{%
  \renewcommand*{\equationautorefname}[1]{}
@@ -15,8 +15,8 @@
  \renewcommand{\tableautorefname}{Tab.\negthinspace}
 }
 
-% in case somebody want to have the label "equation"
-%\renewcommand{\eqref}[1]{equation~(\negthinspace\autoref{#1})}
+% in case somebody want to have the label "Equation"
+%\renewcommand{\eqref}[1]{Equation~(\negthinspace\autoref{#1})}
 
 % that links to image floats jumps to the beginning
 % of the float and not to its caption
@@ -31,21 +31,21 @@
   \myTOC
   \mainmatter }
 
-% make caption labels bold
+% makes caption labels bold
 \setkomafont{captionlabel}{\bfseries}
 \setcapindent{1em}
 
-% enable calculations
+% enables calculations
 \usepackage{calc}
 
 % fancy page header/footer settings
 \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
 
-% increase the bottom float placement fraction
+% increases the bottom float placement fraction
 \renewcommand{\bottomfraction}{0.5}
 
-% avoid that floats are placed above its sections
+% avoids that floats are placed above its sections
 \let\mySection\section\renewcommand{\section}{\suppressfloats[t]\mySection}
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
