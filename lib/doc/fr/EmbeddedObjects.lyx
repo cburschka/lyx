@@ -24781,7 +24781,7 @@ section
 \backslash
 addto
 \backslash
-extrasenglish{
+extrasfrench{
 \backslash
 renewcommand{
 \backslash
@@ -24810,11 +24810,11 @@ negthinspace}}
 \end_layout
 
 \begin_layout Standard
-Si vous utilisez une autre langue que l'anglais, remplacez 
+Si vous utilisez une autre langue que le français, remplacez 
 \series bold
 
 \backslash
-extrasenglish
+extrasfrench
 \series default
  par 
 \series bold
@@ -24838,54 +24838,13 @@ Pour avoir des noms automatiques, mais pas pour certains types de références,
 \series bold
 
 \backslash
-newlength{
-\backslash
-abc}
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-settowidth{
-\backslash
-abc}{
-\backslash
-space}
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
 addto
 \backslash
-extrasenglish{
+extrasfrench{
 \backslash
-renewcommand{
+renewcommand*{
 \backslash
-equationautorefname}
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Phantom HPhantom
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-{
-\backslash
-hspace{-
-\backslash
-abc}}
+equationautorefname}[1]{}}
 \end_layout
 
 \begin_layout Standard

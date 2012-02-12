@@ -40,17 +40,6 @@
 %\DeclareInputText{176}{\ifmmode^\circ\else\textdegree\fi}
 %\DeclareInputText{183}{\ifmmode\cdot\else\textperiodcentered\fi}
 
-% increase link area for cross-references and autoname them,
-%\AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
-\newlength{\abc}
-\settowidth{\abc}{\space}
-\AtBeginDocument{%
- \renewcommand{\equationautorefname}{\hspace{-\abc}}
- \renewcommand{\sectionautorefname}{sec.\negthinspace}
- \renewcommand{\subsectionautorefname}{sec.\negthinspace}
- \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}
-}
-
 % don't load packages twice
 % see first footnote in sec. 9.3
 \@ifundefined{textcolor}{\usepackage{color}}{}

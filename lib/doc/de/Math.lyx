@@ -39,10 +39,8 @@
 
 % Linkfläche für Querverweise vergrößern und automatisch benennen,
 \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
-\newlength{\abc}
-\settowidth{\abc}{\space}
-\AtBeginDocument{%
- \renewcommand{\equationautorefname}{\hspace{-\abc}}
+\addto\extrasngerman{%
+ \renewcommand*{\equationautorefname}[1]{}
  \renewcommand{\sectionautorefname}{Kap.\negthinspace}
  \renewcommand{\subsectionautorefname}{Kap.\negthinspace}
  \renewcommand{\subsubsectionautorefname}{Kap.\negthinspace}
