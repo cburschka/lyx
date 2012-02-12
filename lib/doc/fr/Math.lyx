@@ -39,10 +39,8 @@
 
 % increase link area for cross-references and autoname them,
 \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
-\newlength{\abc}
-\settowidth{\abc}{\space}
-\AtBeginDocument{%
- \renewcommand{\equationautorefname}{\hspace{-\abc}}
+\addto\extrasfrench{%
+ \renewcommand*{\equationautorefname}[1]{}
  \renewcommand{\sectionautorefname}{sec.\negthinspace}
  \renewcommand{\subsectionautorefname}{sec.\negthinspace}
  \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}

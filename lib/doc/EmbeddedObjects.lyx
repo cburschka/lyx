@@ -24161,54 +24161,13 @@ To get automatic names, but not for certain reference types, for example
 \series bold
 
 \backslash
-newlength{
-\backslash
-abc}
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-settowidth{
-\backslash
-abc}{
-\backslash
-space}
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
 addto
 \backslash
 extrasenglish{
 \backslash
-renewcommand{
+renewcommand*{
 \backslash
-equationautorefname}
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Phantom HPhantom
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-{
-\backslash
-hspace{-
-\backslash
-abc}}
+equationautorefname}[1]{}}
 \end_layout
 
 \begin_layout Standard
