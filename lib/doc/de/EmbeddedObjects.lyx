@@ -23845,17 +23845,6 @@ Gehe
 zurück
 \family default
  und ein Klick darauf macht genau dies.
-  Ein Rechts-Klick auf das Querverweis-Kästchen stellt den Cursor vor die
- entsprechende Marke, ohne dass das Querverweis-Fenster zusehen ist.
- Dann ist auch kein 
-\family sans
-Gehe
-\begin_inset space ~
-\end_inset
-
-zurück
-\family default
- möglich.
 \end_layout
 
 \begin_layout Subsection
@@ -24655,12 +24644,12 @@ Gleitobjekte ! Platzierung
 \end_layout
 
 \begin_layout Standard
-Ein Rechtsklick auf ein Gleitobjekt-Kästchen öffnet den 
+Ein Rechtsklick auf ein Gleitobjekt-Kästchen und Klicken auf 
 \family sans
-Gleitobjekt-Einstellungen
+Einstellungen 
 \family default
--Dialog, in dem Sie die LaTeX-Optionen für die Gleitobjekt-Platzierung ändern
- können.
+öffnet einen Dialog, in dem Sie die LaTeX-Optionen für die Gleitobjekt-Platzieru
+ng ändern können.
 \begin_inset Newline newline
 \end_inset
 
@@ -28497,8 +28486,8 @@ arg   "note-insert"
 LyX-Notiz
 \family default
  eingefügt.
- Mit einem Rechts-Klick auf das Notiz-Kästchen können Sie eine der vier
- anderen Möglichkeiten auswählen.
+ Mit einem Rechts-Klick auf das Notiz-Kästchen können Sie einen der drei
+ Notiz-Typen auswählen.
  Wenn Sie einen vorhandenen Text in eine Notiz verwandeln wollen, markieren
  Sie ihn und klicken dann auf den Werkzeugleistenknopf.
  Um eine Notiz in Text zu verwandeln, drücken Sie die Backspace-Taste, wenn
@@ -38194,7 +38183,7 @@ Include Sie können LyX- und LaTeX-Dokumente einbinden.
 \family default
  auf 
 \family sans
-Öffnen
+Bearbeiten
 \family default
  klicken, wird das eingebundene Dokument in einem eigenen Unterfenster geöffnet,
  und Sie können es editieren.

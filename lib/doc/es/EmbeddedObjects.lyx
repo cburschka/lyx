@@ -23672,8 +23672,6 @@ etiqueta
 Volver
 \family default
 , con el que se puede retornar a la referencia.
- Un clic derecho sobre el cuadro de la referencia también lleva el cursor
- hasta la etiqueta pero sin opción de volver.
 \end_layout
 
 \begin_layout Subsection
@@ -24453,9 +24451,15 @@ Flotantes ! Colocación
 \end_layout
 
 \begin_layout Standard
-Pulsando con el botón derecho del ratón sobre un cuadro de flotante se abre
- un diálogo en el que pueden cambiarse las opciones de LaTeX para situar
- los flotantes.
+Pulsando con el botón derecho del ratón sobre un cuadro de flotante y 
+\lang english
+clicking on 
+\family sans
+Settings
+\family default
+\lang spanish
+ se abre un diálogo en el que pueden cambiarse las opciones de LaTeX para
+ situar los flotantes.
 \begin_inset Newline newline
 \end_inset
 
@@ -28323,8 +28327,7 @@ Nota
 LyX
 \family default
 .
- Puedes cambiar entre los cinco tipos de nota con clic derecho sobre el
- recuadro.
+ Puedes cambiar entre los tres tipos de nota con clic derecho sobre el recuadro.
  
 \family roman
 \series medium
@@ -37892,7 +37895,7 @@ hijo
 Anexar Puedes incluir documentos LyX y documentos LaTeX.
  Al pulsar el botón 
 \family sans
-Aceptar
+Editar
 \family default
  en el diálogo 
 \family sans

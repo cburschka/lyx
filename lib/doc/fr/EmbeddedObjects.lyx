@@ -24177,6 +24177,13 @@ arg   "dialog-show-new-inset ref"
 
 \family default
  de la barre d'outils.
+ La fenêtre de référence croisée va s'ouvrir et montrer toutes les étiquettes
+ définies dans votre document.
+ Si vous avez plusieurs documents LyX ouverts, vous pouvez choisir celui
+ que vous voulez utiliser avec la liste déroulante qui se trouve en haut
+ de la fenêtre de dialogue.
+ Vous pouvez trier les étiquettes par ordre alphabétique et ensuite en choisir
+ une.
  Une boîte grise de référence croisée comme celle-ci : 
 \begin_inset Graphics
 	filename ../clipart/referenceQt4.png
@@ -24185,13 +24192,7 @@ arg   "dialog-show-new-inset ref"
 
 \end_inset
 
- va être insérée et la fenêtre de référence croisée va s'ouvrir et montrer
- toutes les étiquettes définies dans votre document.
- Si vous avez plusieurs documents LyX ouverts, vous pouvez choisir celui
- que vous voulez utiliser avec la liste déroulante qui se trouve en haut
- de la fenêtre de dialogue.
- Vous pouvez trier les étiquettes par ordre alphabétique et ensuite en choisir
- une.
+ va être insérée.
  Dans la sortie imprimée, le numéro du flottant apparaîtra à la position
  de la référence croisée.
 \end_layout
@@ -24232,9 +24233,6 @@ l'étiquette
 Revenir
 \family default
  et vous pouvez l'utiliser pour remettre le curseur sur la référence croisée.
- Si vous faites un clic droit sur la boîte d'une référence croisée, le curseur
- est aussi placé devant l'étiquette concernée, mais vous ne pouvez pas revenir
- à votre point de départ.
 \end_layout
 
 \begin_layout Subsection
@@ -25065,21 +25063,16 @@ Flottants ! Placement
 \end_layout
 
 \begin_layout Standard
-En faisant un clic droit sur la boîte d'un flottant, on ouvre la fenêtre
- de dialogue 
+En faisant un clic droit sur la boîte d'un flottant et 
+\lang english
+clicking on 
 \family sans
-Paramètre
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-Flottant
+Settings
 \family default
- dans laquelle vous pouvez modifier le paramètres de placement que LaTeX
- utilise pour déterminer où placer le flottant.
+\lang french
+ on ouvre une fenêtre de dialogue dans laquelle vous pouvez modifier le
+ paramètres de placement que LaTeX utilise pour déterminer où placer le
+ flottant.
 \begin_inset Newline newline
 \end_inset
 
@@ -29039,6 +29032,11 @@ Note
 LyX
 \family default
 .
+ 
+\lang english
+You can switch between the three note types by right-clicking on the note-box.
+
+\lang french
  Si vous voulez transformer une portion de texte existant en note, sélectionnez-
 la et cliquez sur le bouton d'insertion de note.
  Pour retransformer une note en texte, appuyez sur la touche 
@@ -39008,7 +39006,7 @@ Inclus
 (include) Vous pouvez inclure des documents LyX et LaTeX.
  Quand vous cliquez sur le bouton 
 \family sans
-Charger
+Modifier
 \family default
  dans la fenêtre de dialogue 
 \family sans
