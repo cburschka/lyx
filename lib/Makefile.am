@@ -500,6 +500,7 @@ dist_imagesmath_DATA = \
 	images/math/bars.png \
 	images/math/barwedge.png \
 	images/math/Bbbk.png \
+	images/math/bcancel.png \
 	images/math/because.png \
 	images/math/beta.png \
 	images/math/beth.png \
@@ -533,6 +534,8 @@ dist_imagesmath_DATA = \
 	images/math/bullet.png \
 	images/math/bumpeq.png \
 	images/math/bumpeq2.png \
+	images/math/cancel.png \
+	images/math/cancelto.png \
 	images/math/cap.png \
 	images/math/cap2.png \
 	images/math/cases.png \
@@ -988,6 +991,7 @@ dist_imagesmath_DATA = \
 	images/math/widetilde.png \
 	images/math/wp.png \
 	images/math/wr.png \
+	images/math/xcancel.png \
 	images/math/xi.png \
 	images/math/xi2.png \
 	images/math/zeta.png

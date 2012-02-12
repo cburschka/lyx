@@ -1678,6 +1678,7 @@ lib_images_math_files = Split('''
     bars.png
     barwedge.png
     Bbbk.png
+    bcancel.png
     because.png
     beta.png
     beth.png
@@ -1711,6 +1712,8 @@ lib_images_math_files = Split('''
     bullet.png
     bumpeq.png
     bumpeq2.png
+    cancel.png
+    cancelto.png
     cap.png
     cap2.png
     cases.png
@@ -2162,6 +2165,7 @@ lib_images_math_files = Split('''
     widetilde.png
     wp.png
     wr.png
+    xcancel.png
     xi.png
     xi2.png
     zeta.png
@@ -2846,6 +2850,7 @@ lib_examples_files = Split('''
     iecc07.fen
     iecc12.fen
     ItemizeBullets.lyx
+    knitr.lyx
     landslide.lyx
     lilypond.lyx
     linguistics.lyx
@@ -3274,6 +3279,7 @@ lib_layouts_module_files = Split('''
     foottoend.module
     hanging.module
     initials.module
+    knitr.module
     lilypond.module
     linguistics.module
     logicalmkup.module
@@ -3312,6 +3318,7 @@ lib_scripts_files = Split('''
     layout2layout.py
     legacy_lyxpreview2ppm.py
     listerrors
+    lyxknitr.R
     lyxpak.py
     lyxpreview2bitmap.py
     lyxpreview_tools.py

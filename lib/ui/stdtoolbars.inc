@@ -421,6 +421,10 @@ ToolbarSet
 		Item "underrightarrow" "math-insert \underrightarrow"
 		Item "underleftrightarrow" "math-insert \underleftrightarrow"
 		Item "underset" "math-insert \underset"
+		Item "cancel" "math-insert \cancel"
+		Item "bcancel" "math-insert \bcancel"
+		Item "xcancel" "math-insert \xcancel"
+		Item "cancelto" "math-insert \cancelto"
 	End
 
 	Toolbar "latex_arrow" "Arrows"
