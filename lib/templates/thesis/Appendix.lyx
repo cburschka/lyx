@@ -6,17 +6,13 @@
 \begin_preamble
 % Linkfläche für Querverweise vergrößern und automatisch benenne
 \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
-\newlength{\abc}
-\settowidth{\abc}{\space}
-\AtBeginDocument{%
-\addto\extrasngerman{
- \renewcommand{\equationautorefname}{\hspace{-\abc}}
+\addto\extrasenglish{%
+ \renewcommand*{\equationautorefname}[1]{}
  \renewcommand{\sectionautorefname}{Kap.\negthinspace}
  \renewcommand{\subsectionautorefname}{Kap.\negthinspace}
  \renewcommand{\subsubsectionautorefname}{Kap.\negthinspace}
  \renewcommand{\figureautorefname}{Abb.\negthinspace}
  \renewcommand{\tableautorefname}{Tab.\negthinspace}
-}
 }
 
 % für den Fall, dass jemand die Bezeichnung "Gleichung" haben will
