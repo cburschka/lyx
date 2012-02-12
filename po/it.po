@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2012-02-09 00:33+0100\n"
-"PO-Revision-Date: 2012-02-09 01:55+0100\n"
+"PO-Revision-Date: 2012-02-12 17:44+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
 "Language: it\n"
@@ -6221,7 +6221,7 @@ msgstr "Appendici"
 #: lib/layouts/svcommon.inc:536
 #: lib/layouts/svcommon.inc:570
 msgid "BackMatter"
-msgstr "Materiale posteriore"
+msgstr "Note conclusive"
 
 #: lib/layouts/IEEEtran.layout:234
 #: lib/layouts/IEEEtran.layout:237
@@ -20886,7 +20886,7 @@ msgid ""
 "The document %1$s is already loaded and has unsaved changes.\n"
 "Do you want to abandon your changes and reload the version on disk?"
 msgstr ""
-"Il documento %1$s è già aperto e non è stato salvato.\n"
+"Il documento %1$s è già aperto ed è stato modificato.\n"
 "Volete scartare le modifiche e ripristinare la versione su disco?"
 
 #: src/buffer_funcs.cpp:75
@@ -23758,7 +23758,7 @@ msgid ""
 "\n"
 "Do you want to save the document or discard the changes?"
 msgstr ""
-"Il documento %1$s ha delle modifiche non salvate.\n"
+"Il documento %1$s è stato modificato.\n"
 "\n"
 "Volete salvare il documento o abbandonare le modifiche?"
 
@@ -23778,7 +23778,7 @@ msgid ""
 "\n"
 "Do you want to save the document?"
 msgstr ""
-"Il documento %1$s ha delle modifiche non salvate.\n"
+"Il documento %1$s è stato modificato.\n"
 "\n"
 "Volete salvare il documento?"
 
