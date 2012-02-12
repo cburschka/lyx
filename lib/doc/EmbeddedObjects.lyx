@@ -552,7 +552,7 @@ bounding
 box
 \family default
  will only print the image region within the given coordinates.
- Normally you don't need to take care about image coordinates and can ignore
+ Normally you don't need to worry about image coordinates and can ignore
  this tab.
 \end_layout
 
@@ -1301,8 +1301,8 @@ ImageMagick
 \family default
  in the background to convert the images to the right format.
  To increase your work flow by avoiding these conversions in the background,
- you can use only the image formats that can directly be embedded in the
- output file format.
+ you could choose to use only the image formats that can directly be embedded
+ in the output file format.
  The output file formats are explained in appendix
 \begin_inset space ~
 \end_inset
@@ -2428,7 +2428,7 @@ reference "sec:Formal-Tables"
 \begin_inset Newline newline
 \end_inset
 
-You can also add here space to table rows as described in section
+You can also add space here to table rows as described in section
 \begin_inset space ~
 \end_inset
 
@@ -2837,7 +2837,7 @@ Table ! Edit Menu
 \end_layout
 
 \begin_layout Standard
-Additionally to the table dialog and toolbar, the menu 
+In addition to the table dialog and toolbar, the menu 
 \family sans
 Edit\SpecialChar \menuseparator
 Table
@@ -6490,8 +6490,8 @@ Note
 
 1:
 \series default
- The table number is increased for for every longtable, even if you did
- not set a caption for it.
+ The table number is increased for every longtable, even if you did not
+ set a caption for it.
  For this reason you could have the case that e.
 \begin_inset space \thinspace{}
 \end_inset
@@ -6522,7 +6522,7 @@ addtocounter{table}{-1}
 \end_layout
 
 \begin_layout Plain Layout
-This is not needed when none of your longtables have a caption and you add
+This is not needed when none of your longtables has a caption and you add
  the following code to the document preamble:
 \end_layout
 
@@ -6990,7 +6990,7 @@ Longtables ! Caption Width
 \end_layout
 
 \begin_layout Standard
-The maximal width of of caption lines is defined by the length 
+The maximal width of caption lines is defined by the length 
 \series bold
 
 \backslash
@@ -15584,8 +15584,8 @@ cmidrule{3-4}
 \end_layout
 
 \begin_layout Standard
-If you are anyway not satisfied with the border line spacing, you can use
- the following command to produce lines that span over all table columns
+If you are in any way not satisfied with the border line spacing, you can
+ use the following command to produce lines that span over all table columns
 \series bold
 :
 \end_layout
@@ -16077,7 +16077,7 @@ Table ! Alignment
 \end_layout
 
 \begin_layout Standard
-To align tables vertically in a text line the table must be inside a box.
+To align tables vertically in a text line, the table must be inside a box.
  The box can then be vertically aligned as described in section
 \begin_inset space ~
 \end_inset
@@ -22918,13 +22918,13 @@ Margin
 
 Notes
 \family default
- are also floats, because they can float to the next page when there are
+ are also floats because they can float to the next page when there are
  too many notes on the page.
 \end_layout
 
 \begin_layout Standard
 Floats allow a high quality layout.
- Images and tables can be spread evenly to the pages to avoid white space
+ Images and tables can be spread evenly among the pages to avoid white space
  and pages without text.
  As the floating often destroys the context between the text and the image/table
 , every float can be referenced in the text.
@@ -22986,7 +22986,7 @@ reference "sec:Caption-Placement"
 \end_layout
 
 \begin_layout Standard
-It is recommended that you insert floats as a separate standard paragraph
+It is recommended that you insert floats as separate standard paragraphs
  to avoid possible LaTeX-errors that can occur when the surrounding text
  is specially formatted.
 \end_layout
@@ -23106,7 +23106,7 @@ end loop
 This float type is inserted with the menu 
 \family sans
 Insert\SpecialChar \menuseparator
-Floats\SpecialChar \menuseparator
+Float\SpecialChar \menuseparator
 Algorithm
 \family default
 .
@@ -23366,8 +23366,8 @@ roman{table}}
 \backslash
 thetable
 \series default
- is the command that prints the table number, for figure floats, the command
- would be 
+ is the command that prints the table number.
+ For figure floats, the command would be 
 \series bold
 
 \backslash
@@ -23380,7 +23380,7 @@ thefigure
 \backslash
 roman
 \series default
- in the command above prints the table number as small roman number.
+ in the command above prints the table number as a small roman number.
 \end_layout
 
 \begin_layout Standard
@@ -23543,6 +23543,10 @@ arg   "dialog-show-new-inset ref"
 
 \family default
 .
+ The cross-reference window appears showing all labels of the document.
+ If you have multiple LyX-documents opened, choose the one you are working
+ on from the drop-list at the top of the dialog.
+ You can now sort the labels alphabetically and then choose one.
  A grey cross-reference box like this one: 
 \begin_inset Graphics
 	filename clipart/referenceQt4.png
@@ -23551,11 +23555,7 @@ arg   "dialog-show-new-inset ref"
 
 \end_inset
 
- will be inserted and the cross-reference window appear showing all labels
- of the document.
- If you have multiple LyX-documents opened, choose the one you are working
- on from the drop-list at the top of the dialog.
- You can now sort the labels alphabetically and then choose one.
+ will be inserted.
  At the position of the cross-reference box the float number will appear
  in the output.
 \end_layout
@@ -23569,8 +23569,8 @@ It is recommended that you use a protected space between the cross-reference
 
 \begin_layout Standard
 You can change labels at any time by clicking on the label box.
- References to the changed label will automatically change its link to the
- new label text, so that you don't need to take care about this.
+ References to the changed label will automatically update their links to
+ the new label text.
 \end_layout
 
 \begin_layout Standard
@@ -23592,8 +23592,6 @@ Label
 \end_inset
 
 Back and you can use it to set the cursor back to the cross-reference.
- Right-clicking on a cross-reference box also sets the cursor before the
- referenced label but without the possibility of going back.
 \end_layout
 
 \begin_layout Subsection
@@ -24387,8 +24385,12 @@ Floats ! Placement
 \end_layout
 
 \begin_layout Standard
-Right-clicking on a float-box opens a dialog where you can alter the placement
- options that LaTeX uses for positioning the float.
+Right-clicking on a float-box and clicking on 
+\family sans
+Settings
+\family default
+ opens a dialog where you can alter the placement options that LaTeX uses
+ for positioning the float.
 \begin_inset Newline newline
 \end_inset
 
@@ -24424,7 +24426,7 @@ reference "sec:Rotated-Floats"
 \end_layout
 
 \begin_layout Standard
-You can use one ore more of the following options in the float dialog to
+You can use one or more of the following options in the float dialog to
  set the placement for a particular float when you uncheck the option 
 \family sans
 Use
@@ -24526,8 +24528,8 @@ page
 \begin_inset space ~
 \end_inset
 
-placements are possible the procedure is internally repeated but it is tried
- to put the float on the following page.
+placements is possible the procedure is internally repeated trying to put
+ the float on the following page.
 \end_layout
 
 \begin_layout Standard
@@ -24607,7 +24609,7 @@ floats
 \begin_inset space \thinspace{}
 \end_inset
 
-% of the page are occupied by floats, several floats can be set together
+% of the page is occupied by floats, several floats can be set together
  on a page.
  (
 \series bold
@@ -24789,7 +24791,7 @@ usepackage[options]{endfloat}
 
 \begin_layout Standard
 There are various package options to format the created figure/table sections.
- For more information we refer to the 
+ For more information we refer you to the 
 \series bold
 endfloat
 \series default
@@ -25825,7 +25827,7 @@ Caption
 Floats
 \family default
 .
- On the LyX screen captions appear as label, e.
+ On the LyX screen captions appear as a label, e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -28284,7 +28286,7 @@ LyX
 Note
 \family default
  is inserted.
- You can switch between the five note types by right-clicking on the note-box.
+ You can switch between the three note types by right-clicking on the note-box.
  
 \family roman
 \series medium
@@ -28369,15 +28371,7 @@ Insert\SpecialChar \menuseparator
 Footnote
 \family default
 .
- 
-\family roman
-\series medium
-\bar no
-You'll see
-\family default
-\series default
-\bar default
- then the following footnote-box: 
+ You will then see the following footnote-box: 
 \begin_inset Graphics
 	filename clipart/footnoteQt4.png
 	scale 80
@@ -28494,8 +28488,8 @@ The footnote will appear in the output as a superscript number at the text
  position where the footnote box is placed.
  The footnote text is placed at the bottom of the current page.
  The footnote number is calculated by LaTeX; the numbers are consecutive.
- It depends on your document-class, whether the footnote number is reset
- for every chapter.
+ Whether the footnote number is reset for every chapter depends on your
+ document class.
 \end_layout
 
 \begin_layout Standard
@@ -37210,7 +37204,7 @@ With the menu
 Insert\SpecialChar \menuseparator
 File
 \family default
- you can insert external material to your document.
+ you can insert external material into your document.
  This can be:
 \end_layout
 
@@ -37280,7 +37274,7 @@ External Document Parts ! External Material
 \end_layout
 
 \begin_layout Standard
-The external material feature allows you to insert files in to your document
+The external material feature allows you to insert files into your document
  without converting them to a format that can be read by the document output
  format.
  LyX takes care of the necessary conversions.
@@ -38026,7 +38020,7 @@ child documents
 
 , and a master document connects them to print the full document or parts
  of it.
- A child document inherits elements of its master, for example the LaTeX
+ A child document inherits elements from its master, for example the LaTeX
  preamble, the bibliography, and labels for cross-references.
 \end_layout
 
@@ -38074,14 +38068,14 @@ Documents
 Include You can include LyX- and LaTeX-documents.
  When you press the 
 \family sans
-Load
+Edit
 \family default
  button in the 
 \family sans
 Child Document
 \family default
- dialog, the included documents will be opened in LyX in a new file tab
- so that you can modify them.
+ dialog, the included document will be opened in LyX in a new file tab so
+ that you can modify it.
 \begin_inset Newline newline
 \end_inset
 
