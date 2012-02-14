@@ -262,8 +262,8 @@ Observa que no hay barra de desplazamiento horizontal.
  la siguiente.
  El texto fluye a las nuevas páginas en vertical, de ahí que sólo haga falta
  una barra de deslizamiento vertical.
- Hay tres casos en que podrías necesitar una barra de desplazamiento horizontal.
- El primero es el caso de tener grandes figuras.
+ Hay tres casos en que podrías necesitar una barra de desplazamiento horizontal:
+ el primero es si hay grandes figuras.
  Para evitar que se vean más grandes que la pantalla, usa la opción 
 \family sans
 Escala en pantalla
@@ -1677,7 +1677,7 @@ LyX facilita la finalización automática de palabras mediante la exploración
 \end_layout
 
 \begin_layout Standard
-La finalización de entradas puede activado en las preferencias LyX (menú
+La finalización de entradas puede activarse en las preferencias LyX (menú
  
 \family sans
 Herramientas\SpecialChar \menuseparator
@@ -1707,7 +1707,7 @@ Indicador en el cursor
 .
  Con las opciones generales puedes definir el tiempo de retardo para la
  visualización en línea y para el recuadro emergente, y elegir si las finalizaci
-ones largas deberían, abreviarse.
+ones largas deberían abreviarse.
 \end_layout
 
 \begin_layout Standard
@@ -14985,8 +14985,8 @@ imágenes, LyX ha de hacer 50
 \end_inset
 
 conversiones la primera vez que veas o exportes el documento.
- Esto podría ralentir el trabajo, así que si piensas usar PostScript, puedes
- evitar el problema insertando las imágenes directamente en EPS.
+ Esto podría ralentizar el trabajo, así que si piensas usar PostScript,
+ puedes evitar el problema insertando las imágenes directamente en EPS.
 \end_layout
 
 \begin_layout Standard
@@ -15663,11 +15663,7 @@ Tipografía
 \end_layout
 
 \begin_layout Subsection
-Guiones, 
-\lang english
-Dashes and Minus Signs
-\lang spanish
-
+Guiones, rayas y signo menos 
 \begin_inset Index idx
 status collapsed
 
@@ -15678,15 +15674,13 @@ Guiones
 \end_inset
 
 
-\lang english
-
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
-Dashes
+\family sans
+Rayas
 \end_layout
 
 \end_inset
@@ -24393,25 +24387,18 @@ arg   "dialog-show mathdelimiter"
 \end_inset
 
 o para colocar diversos paréntesis.
- 
-\lang english
-Below, the expression on the left was entered using the delimiter icon
-\lang spanish
+ Abajo, la expresión de la izquierda se ha escrito usando el botón delimitadores
  
 \begin_inset Info
 type  "icon"
 arg   "dialog-show mathdelimiter"
 \end_inset
 
- 
-\lang english
-and the expression on the right was entered using the 
+ y la expresión de la derecha se ha escrito usando las teclas 
 \family typewriter
 ()
 \family default
- keys.
-
-\lang spanish
+.
  
 \begin_inset Formula 
 \[
@@ -24424,12 +24411,9 @@ and the expression on the right was entered using the
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you use the delimiter icon, 
-\lang spanish
-los paréntesis y otros delimitadores de dicho panel se redimensionan automáticam
-ente de acuerdo con el tamaño de lo que contienen.
+Si usas el icono delimitadores, los paréntesis y otros delimitadores de
+ dicho panel se redimensionan automáticamente de acuerdo con el tamaño de
+ lo que contienen.
 \end_layout
 
 \begin_layout Standard
@@ -24461,14 +24445,11 @@ Si quieres poner delimitadores alrededor de estructuras matemáticas, como
 Insert
 \family default
 ar, con esto se dibujarán alrededor de la estructura resaltada.
- 
-\lang english
-The most common bracket combinations (parentheses, square brackets, and
- braces, on both sides) can be entered more quickly using keyboard shortcuts.
- For example, to insert a pair of flexible parentheses on both sides, select
- the structure and enter
-\lang spanish
- 
+ Las combinaciones más comunes de delimitadores (paréntesis, corchetes y
+ llaves en ambos lados) se pueden insertar más rápidamente mediante atajos
+ de teclado.
+ Por ejemplo, para insertar un par de paréntesis flexibles en ambos lados,
+ selecciona la estructura y teclea 
 \begin_inset Info
 type  "shortcut"
 arg   "math-delim ( )"
@@ -25020,13 +25001,11 @@ reference "sec:Referencias-cruzadas"
 \end_inset
 
 .
- Para borrar una etiqueta, pon el cursor en el fin en la ecuación etiquetada
+ Para borrar una etiqueta, pon el cursor al final de la ecuación etiquetada
  y teclea 
 \family sans
-\lang english
-Del
+Supr
 \family default
-\lang spanish
 .
  
 \end_layout
@@ -29960,18 +29939,15 @@ arg   "ert-insert"
 
 ).
  El cuadro se puede abrir con clic izquierdo y cerrar con clic derecho y
- 
-\lang english
-selecting 
+ seleccionando 
 \family sans
-Close Inset
+Cerrar recuadro
 \family default
-\lang spanish
 .
 \end_layout
 
 \begin_layout Standard
-En un cuadro código TeX se pueden insertar los comandos total o parcialmente.
+En un cuadro de código TeX se pueden insertar los comandos total o parcialmente.
  Parcialmente significa que el argumento del comando puede ser texto LyX
  normal.
  Por ejemplo, si quieres dibujar un marco alrededor de una palabra con el
@@ -32636,8 +32612,8 @@ name "sec:Seguimiento-de-cambios"
 \end_layout
 
 \begin_layout Standard
-Cuando varias personas trabajan sobre el mismo documento es muy útil ver
- resaltados los cambios hechos por otros.
+Cuando varias personas trabajan en el mismo documento es muy útil ver resaltados
+ los cambios hechos por otros.
  Entonces puedes decidir si aceptar o no dichos cambios.
  Para habilitar esta característica marca el menú 
 \family sans
@@ -38278,12 +38254,8 @@ Control de versiones
 \end_layout
 
 \begin_layout Standard
-Esto se emplea cuando varias personas trabajan sobre el mismo documento
- 
-\lang english
-or when one person wants to keep a careful archive of changes
-\lang spanish
-.
+Esto se emplea cuando varias personas trabajan en el mismo documento o cuando
+ una persona quiere mantener un detallado archivo de cambios.
  Se describe con detalle en el manual 
 \emph on
 Características adicionales
@@ -38667,16 +38639,13 @@ yX
 \begin_inset space ~
 \end_inset
 
-Archive
+Archivo
 \begin_inset space ~
 \end_inset
 
-(zip|tar.gz) crea un contenedor de archivos zip o tar.gz (
-\lang english
-depending upon your system
-\lang spanish
-) con el documento y todos los archivos necesarios para compilarlo (imágenes,
- documentos hijo, archivos BibTeX, etc.)
+(zip|tar.gz) crea un contenedor de archivos zip o tar.gz (dependiendo del
+ sistema) con el documento y todos los archivos necesarios para compilarlo
+ (imágenes, documentos hijo, archivos BibTeX, etc.)
 \end_layout
 
 \begin_layout Description
