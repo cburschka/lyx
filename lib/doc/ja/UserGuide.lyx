@@ -51809,7 +51809,8 @@ TEXINPUTS
 \end_inset
 
 prefix The TEXINPUTS environment variable allows to use external files which
- are included to a LyX document via commands in TeX code.
+ are included to a LyX document via commands in TeX code or in the document
+ preamble.
  This prefix includes by default the document directory (represented by
  a single dot '.').
  The prefix can contain any list of paths separated by the default separator
