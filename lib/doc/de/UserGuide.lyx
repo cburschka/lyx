@@ -43683,8 +43683,8 @@ PATH-Präfix Diese Feld enthält eine Liste mit Pfaden zu externen Programmen.
 
 \begin_layout Description
 TEXINPUTS-Präfix Die TEXINPUTS Umgebungsvariable erlaubt es externe Dateien,
- die in LyX-Dokumenten mittels Befehlen in TeX-Code eingefügt wurden, zu
- verwenden.
+ die in LyX-Dokumenten mittels Befehlen als TeX-Code oder im LaTeX-Vorspann
+ eingefügt wurden, zu verwenden.
  Dieser Präfix enthält standardmäßig das Dokumentverzeichnis (durch einen
  Punkt '.' repräsentiert).
  Der Präfix kann jede Liste an Pfaden enthalten, die durch das Standard-Trennzei

@@ -511,10 +511,10 @@ como\SpecialChar \@.
 \end_layout
 
 \begin_layout Itemize
-Crear un archivo DVI, con 
+Comprueba el resultado final en PDF con 
 \family sans
 Ver\SpecialChar \menuseparator
-Ver
+Ver [PDF (pdflatex)]
 \family default
  o con el botón 
 \begin_inset Info
@@ -609,7 +609,7 @@ type  "icon"
 arg   "redo"
 \end_inset
 
-)para recuperar los cambios.
+) para recuperar los cambios.
  
 \end_layout
 
@@ -1368,15 +1368,15 @@ Enumeración*
 \family default
  en el menú de 
 \family sans
-Entorno
+Entornos
 \family default
-s (
+ o con el botón 
 \begin_inset Info
 type  "icon"
 arg   "layout Itemize"
 \end_inset
 
-).
+.
  LyX pondrá una marca en la línea.
  Escribe tus razones:
 \end_layout
@@ -1455,13 +1455,13 @@ LyX no te dejará seleccionar el primer bolo a menos que selecciones el párrafo
 \family sans
 Enumeración
 \family default
- en el menú (
+ en el menú o usa el botón 
 \begin_inset Info
 type  "icon"
 arg   "layout Enumerate"
 \end_inset
 
-).
+.
  ¡Increíble! Como ya dijimos, si añades o borras un elemento de la lista,
  LyX corrige la numeración.
 \end_layout
@@ -4444,14 +4444,11 @@ Más cosas sobre matemáticas
 
 \begin_layout Standard
 El modo matemático puede hacer muchas cosas más.
- Por ahora te has familiarizado con lo básico, así que dirígete a la 
+ Por ahora te has familiarizado con lo básico, así que consulta el manual
 \emph on
-\lang english
-Math
+ Ecuaciones
 \emph default
- manual
-\lang spanish
- si quieres buscar trucos para:
+ si quieres saber cómo hacer cosas como:
 \end_layout
 
 \begin_layout Itemize
@@ -4459,7 +4456,7 @@ Etiquetar y numerar expresiones.
 \end_layout
 
 \begin_layout Itemize
-Ecuaciones con varias líneas
+Escribir ecuaciones con varias líneas
 \end_layout
 
 \begin_layout Itemize
@@ -4483,9 +4480,7 @@ Escribir macros.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Almost all you can do with math.
+Y casi cualquier cosa que se pueda hacer en una ecuación matemática.
 \end_layout
 
 \begin_layout Chapter
@@ -4539,19 +4534,13 @@ Editar
 cuadro
 \family default
 , que te ofrece extensas posibilidades de edición del cuadro.
- 
-\lang english
-By pressing 
-\lang spanish
-
+ Pulsando el botón 
 \begin_inset Info
 type  "icon"
 arg   "toolbar-toggle table"
 \end_inset
 
-
-\lang english
- the table toolbar will appear permanently.
+ la barra de herramientas de cuadros y tablas se mostrará de forma permanente.
 \end_layout
 
 \begin_layout Itemize
@@ -4689,7 +4678,7 @@ aprender
 \end_layout
 
 \begin_layout Standard
-Como este es sólo un tutorial, aquí vamos a mencionar únicamente aquellas
+Como esto es sólo un tutorial, aquí vamos a mencionar únicamente aquellas
  cosas que los nuevos usuarios de LyX vayan a encontrar interesantes.
  Para mantener corto el 
 \emph on
