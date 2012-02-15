@@ -28221,21 +28221,6 @@ arg   "index-insert"
 \end_layout
 
 \begin_layout Standard
-Nous donnons une courte description des commandes d'indexation dans les
- sections qui suivent.
- Pour avoir une description détaillée des mécanismes d'indexation de LaTeX,
- jetez un coup d'œil dans un des livres traitant de LaTeX 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "latexcompanion,latexguide,latexbook"
-
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
 L'index lui même est inséré dans le document avec le menu 
 \family sans
 Insérer\SpecialChar \menuseparator
@@ -28265,6 +28250,20 @@ Index
 
  apparaîtra à l'endroit où l'index sera imprimé dans la sortie finale.
  La boîte de l'index n'est pas cliquable comme les autre boîtes de LyX.
+\end_layout
+
+\begin_layout Standard
+Nous donnons une courte description des commandes d'indexation dans les
+ sections qui suivent.
+ Pour avoir une description détaillée des mécanismes d'indexation de LaTeX,
+ jetez un coup d'œil dans un des livres traitant de LaTeX 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "latexcompanion,latexguide,latexbook"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -28950,10 +28949,9 @@ key "latexcompanion"
 En général, nous vous déconseillons de typographier les numéros de pages
  directement comme c'est décrit ci-dessus.
  À la place, vous devriez écrire une macro dans le préambule et l'utiliser.
- Pourquoi voulez-vous que quelques numéros de pages soient en gras? Peut-être
- voulez vous que toutes les pages qui font référence à la définition du
- terme indexé soient en italique pour que le lecteur puisse retrouver facilement
- les définitions.
+ Peut-être voulez vous que toutes les pages qui font référence à la définition
+ du terme indexé soient en italique pour que le lecteur puisse retrouver
+ facilement les définitions.
  Si c'est le cas, mettez ce qui suit dans le préambule
 \end_layout
 

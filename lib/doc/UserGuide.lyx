@@ -27000,19 +27000,6 @@ arg   "index-insert"
 \end_layout
 
 \begin_layout Standard
-We give a short overview of the index commands in the next subsections.
- For a detailed description of LaTeX's index mechanism, have a look at one
- of the LaTeX books 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "latexcompanion,latexguide,latexbook"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
 The index list is inserted in the document with the menu 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -27046,6 +27033,19 @@ Index
 
  will show the place where the index is printed in the output.
  The index list box is not clickable like other LyX-boxes.
+\end_layout
+
+\begin_layout Standard
+We give a short overview of the index commands in the next subsections.
+ For a detailed description of LaTeX's index mechanism, have a look at one
+ of the LaTeX books 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "latexcompanion,latexguide,latexbook"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -27346,7 +27346,7 @@ Index ! Entry order
 \begin_layout Standard
 If you use accented characters in the index entry the entries might not
  follow the rules for the index order.
- The index entries are sorted alphabetically, but LaTeX
+ The index entries are sorted alphabetically but LaTeX
 \begin_inset Foot
 status collapsed
 
@@ -27368,7 +27368,7 @@ reference "sub:Index-Program"
 
 \end_inset
 
- doesn't know how to sort accents in different languages.
+ does not know how to sort accents in different languages.
  We have created as an example the three dummy index entries 
 \begin_inset Quotes eld
 \end_inset
@@ -27423,8 +27423,8 @@ Dummy entries ! maïs@maison
 
 \end_inset
 
- They will be sorted in the order maïs, maître, maison, but we want the
- order maïs, maison, maître.
+ They will be sorted in the order maïs, maître, maison but we want the order
+ maïs, maison, maître.
  To achieve this, we use the command
 \end_layout
 
@@ -27649,7 +27649,7 @@ reference "sub:LaTeX-Syntax"
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -27676,9 +27676,12 @@ reference "sub:Index-Program"
 \family sans
 xindy
 \family default
-, however, this will not work for anything other than bold or italic text.
- This is because xindy requires you to define semantic elements before they
- can be used, see 
+, this will not work for anything other than bold or italic text.
+ This is because 
+\family sans
+xindy
+\family default
+ requires you to define semantic elements before they can be used, see 
 \begin_inset CommandInset citation
 LatexCommand cite
 after "p. 678 ff."
@@ -27698,7 +27701,6 @@ key "latexcompanion"
 In general, we encourage you to not format page numbers directly as shown
  above.
  Instead, you should define a macro in the preamble and use that.
- Consider why you want some page numbers to be bold.
  Maybe you want all page references italic that refer to a definition of
  the indexed term, so that users can easily find definitions.
  If so, put the following in the preamble
