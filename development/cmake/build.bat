@@ -36,9 +36,9 @@ REM Add path to qmake here or set PATH correctly on your system.
 set PATH="D:\Qt\bin";%PATH%
 
 REM Edit pathes here or set the environment variables on you system.
-::set GNUWIN32_DIR=D:\LyXSVN\lyx-devel\lyx-windows-deps-msvc2010
-::set LYX_SOURCE=D:\LyXSVN\lyx-devel
-::set LYX_BUILD=D:\LyXSVN\lyx-devel\compile-result
+set GNUWIN32_DIR=D:\LyXSVN\lyx-devel\lyx-windows-deps-msvc2010
+set LYX_SOURCE=D:\LyXSVN\lyx-devel
+set LYX_BUILD=D:\LyXSVN\lyx-devel\compile-result
 
 if [%LYX_SOURCE%]==[] (
 	set LYX_SOURCE=%~DP0\..\..
@@ -85,7 +85,8 @@ if "%1%" == "devel" (
 
 if "%1%" == "install" (
 	REM Build solution to develop LyX
-	cmake %LYX_SOURCE% -G%USED_STUDIO% -DLYX_MERGE_FILES=1 -DLYX_INSTALL=1 %DEPENDENCIES_DOWNLOAD% 
+	REM set -DLYX_MERGE_REBUILD and -DLYX_MERGE_FILES to 1 for a version released with an installer
+	cmake %LYX_SOURCE% -G%USED_STUDIO% -DLYX_MERGE_REBUILD=0 -DLYX_MERGE_FILES=0 -DLYX_INSTALL=1 %DEPENDENCIES_DOWNLOAD% 
 	msbuild lyx.sln         /p:Configuration=Release /t:ALL_BUILD
 	msbuild INSTALL.vcxproj /p:Configuration=Release 
 )
