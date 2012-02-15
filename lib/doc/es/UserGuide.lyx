@@ -27612,24 +27612,6 @@ arg   "index-insert"
 \end_layout
 
 \begin_layout Standard
-En las siguientes subsecciones describiremos brevemente los comandos para
- el índice alfabético.
- Para una descripción detallada del mecanismo de indexación de LaTeX, consulta
- algún libro de LaTeX, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "latexcompanion,latexbook,latexguide"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Puedes cambiar las entradas del índice pulsando sobre su etiqueta.
-\end_layout
-
-\begin_layout Standard
 El índice alfabético se inserta en el documento con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -27655,6 +27637,20 @@ alfabético
 
  en el lugar en que saldrá impreso en la salida.
  Este tipo de cuadro no admite clic.
+\end_layout
+
+\begin_layout Standard
+En las siguientes subsecciones describiremos brevemente los comandos para
+ el índice alfabético.
+ Para una descripción detallada del mecanismo de indexación de LaTeX, consulta
+ algún libro de LaTeX, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "latexcompanion,latexbook,latexguide"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -28297,8 +28293,11 @@ reference "sub:Programas-para-índice"
 xindy
 \family default
 , sólo funciona para negrita y cursiva.
- Esto se debe a que xindy requiere definir elementos semánticos antes de
- poder usarse, véase
+ Esto se debe a que 
+\family sans
+xindy
+\family default
+ requiere definir elementos semánticos antes de poder usarse, véase
 \begin_inset space ~
 \end_inset
 
@@ -28321,7 +28320,6 @@ key "latexcompanion"
 \begin_layout Standard
 En general recomendamos no utilizar el procedimiento anterior.
  Es mejor definir una macro en el preámbulo.
- Considera por qué quieres algunos números de página en negrita.
  Quizá quieras en cursiva todos los números de página que se refieran a
  definiciones del término indexado para que el usuario las encuentre fácilmente.
  Para ello, pon lo siguiente en el preámbulo 

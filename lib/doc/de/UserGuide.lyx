@@ -28296,21 +28296,7 @@ Literaturverzeichnis ! Gestaltung
 \end_layout
 
 \begin_layout Standard
-Im Literaturverweisdialog (
-\family sans
-Einfügen\SpecialChar \menuseparator
-Literaturverweis\SpecialChar \ldots{}
-
-\family default
- oder 
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_citation.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
-) können Sie eine 
+Im Literaturverweisdialog können Sie eine 
 \family sans
 Formatierung
 \family default
@@ -28403,27 +28389,8 @@ arg   "index-insert"
 
  verwendet.
  Es wird dann eine Box eingefügt, die den Text des Stichworts enthält.
- 
-\lang english
-The word where the Cursor is in or the currently highlighted text is proposed
- by LyX as the index entry.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-We give a short overview of the index Befehle in the next subsections.
- For a detailed description of LaTeXs index mechanism, have a look at one
- of the
-\lang ngerman
- LaTeX-Bücher 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "latexcompanion,latexguide,latexbook"
-
-\end_inset
-
-.
+ Das Wort in dem sich der Cursor befindet oder markierter Text wird von
+ LyX als Stichwort vorgeschlagen.
 \end_layout
 
 \begin_layout Standard
@@ -28457,6 +28424,19 @@ Stichwortverzeichnis
  zeigt die Stelle an, wo das Stichwortverzeichnis in der Ausgabe erscheinen
  wird.
  Die Stichwortverzeichnis-Box ist nicht wie andere LyX-Boxen anklickbar.
+\end_layout
+
+\begin_layout Standard
+Es folgt ein kurzer Überblick über die Stichwort-Befehle.
+ Für eine detaillierte Beschreibung von LaTeXs Stichwort-Mechanismus, sei
+ auf eines dieser LaTeX-Bücher verwiesen: 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "latexcompanion,latexguide,latexbook"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -28667,17 +28647,14 @@ Die Befehle
 \end_inset
 
  beginnen bzw.
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
- beenden den Indexbereich.
- 
-\lang english
-You can also add the same index entry at different places in the Dokument.
- They appear in the output under one entry with a comma separated list of
- the pages of the indexed Dokument parts.
-
-\lang ngerman
+beenden den Indexbereich.
+ Man kann außerdem dasselbe Stichwort mehrfach an verschiedenen Stellen
+ des Dokuments einfügen.
+ Diese erscheinen im Stichwortverzeichnis als ein Stichwort mit einer nachstehen
+den Liste von Seitenzahlen in denen sich das Stichwort befindet.
  Ein Beispiel ist das Stichwort 
 \begin_inset Quotes gld
 \end_inset
@@ -28778,19 +28755,16 @@ Stichwort ! Reihenfolge
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can use accented characters in the index entry, but the entries might
- then not follow the rules for the index order.
- The index entries are sorted alphabetically, but LaTeX
+Man kann akzentuierte Zeichen in Stichwörtern verwenden, aber diese Zeichen
+ können dazu führen, dass das Stichwort im Stichwortverzeichnis nicht korrekt
+ sortiert wird.
+ Die Stichworte werden alphabetisch sortiert, aber LaTeX
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-The index generating is done in the background by an extra Programm, siehe
- Abschnitt
+Das Stichwortverzeichnis wird im Hintergrund von einem speziellen Programm
+ erzeugt, siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -28806,10 +28780,8 @@ reference "sub:Stichwort-Programm"
 
 \end_inset
 
- doesn't know how to sort accents in different languages.
- We have created as an example the three dummy index entries
-\lang ngerman
- 
+ weiß nicht wie die Akzente in verschiedenen Sprachen einsortiert werden.
+ Als Beispiel haben wir die drei Stichworte 
 \begin_inset Quotes gld
 \end_inset
 
@@ -28863,12 +28835,9 @@ Sinnloseintrag ! maïs@maison
 
 \end_inset
 
- 
-\lang english
-They will be sorted in the order maïs, maître, maison, but we want the order
- maïs, maison, maître
-\lang ngerman
-.
+ eingefügt.
+ Sie werden in der Reihenfolge maïs, maître, maison sortiert, aber wir wollen
+ die Reihenfolge maïs, maison, maître.
  Um dies zu erreichen, verwendet man den Befehl
 \end_layout
 
@@ -28999,12 +28968,12 @@ OrgIndex{#1}}
 \end_layout
 
 \begin_layout Subsection
-Stichwort formatieren
+Stichwort-Formatierung
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Stichwort ! formatieren
+Stichwort ! Formatierung
 \end_layout
 
 \end_inset
@@ -29013,11 +28982,7 @@ Stichwort ! formatieren
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can change the appearance of index entries via the text style dialog.
-\lang ngerman
-
+Man kann das Erscheinungsbild von Stichworten über den Textstil-Dialog verändern.
 \begin_inset Index idx
 status open
 
@@ -29029,9 +28994,7 @@ Dies ist ein kursiver Sinnloseintrag
 
 \end_inset
 
- 
-\lang english
-You can also format the page number using the character 
+ Des Weiteren kann die Seitennummer mit dem Befehl 
 \begin_inset Quotes gld
 \end_inset
 
@@ -29039,9 +29002,7 @@ You can also format the page number using the character
 \begin_inset Quotes grd
 \end_inset
 
- followed by a LaTeX-Befehl without a
-\lang ngerman
- Backslash.
+, gefolgt von einem LaTeX-Befehl ohne Backslash, formatiert werden .
  Man kann zum Beispiel
 \end_layout
 
@@ -29093,26 +29054,24 @@ reference "sub:LaTeX-Syntax"
 
 \end_inset
 
- um mehr über die LaTeX-Syntax zu lernen.
+ um mehr über die LaTeX-Syntax zu erfahren.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Achtung:
 \series default
- Formatting single index entries only works when you use the program 
+ Die Formatierung von einzelnen Stichworten funktioniert nur, wenn Sie das
+ Programm 
 \family sans
 makeindex 
 \family default
-to generate the index, see Kap.
+verwenden um das Stichwortverzeichnis zu erzeugen, siehe Kap.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -29124,13 +29083,15 @@ reference "sub:Stichwort-Programm"
 \end_inset
 
 .
- If you use 
+ Verwenden Sie 
 \family sans
 xindy
 \family default
-, however, this won't work for anything other than bold or italic text.
- This is because xindy requires you to define semantic elements before they
- can be used, see 
+, wird es mit Ausnahme von fett und kursiv nicht funktionieren, da 
+\family sans
+xindy
+\family default
+ semantische Elemente benötigt, die man erst definieren muss; siehe 
 \begin_inset CommandInset citation
 LatexCommand cite
 after "p. 678 ff."
@@ -29138,7 +29099,7 @@ key "latexcompanion"
 
 \end_inset
 
- for details.
+ für Details.
 \end_layout
 
 \end_inset
@@ -29147,16 +29108,13 @@ key "latexcompanion"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In general, we encourage you to not format page numbers directly as shown
- above.
- Instead of this, you should define a macro in the preamble and use that.
- Consider why you want some page numbers to be bold.
- Maybe you want all page references kursiv that refer to a definition of
- the indexed term, so that users can easily find definitions.
-
-\lang ngerman
+Allgemein ist es jedoch nicht empfehlenswert die Seitennummer auf obige
+ Weise zu formatieren.
+ Stattdessen sollte man ein Makro im LaTeX-Vorspann definieren und es in
+ Stichworten verwenden.
+ Vielleicht wollen Sie alle Seitennummern von Stichworten, die auf eine
+ Definition verweisen, kursiv setzen, so dass die Leser schnell Definitionen
+ finden können.
  In diesem Fall schreiben Sie Folgendes in den LaTeX-Vorspann
 \end_layout
 
@@ -31148,8 +31106,7 @@ Kästchen:
 \begin_layout Standard
 \begin_inset Graphics
 	filename clipart/ERT.png
-	display false
-	scale 240
+	scale 75
 
 \end_inset
 
@@ -33822,6 +33779,7 @@ Wenn Sie LibreOffice oder OpenOffice verwenden uns dessen Thesaurus installiert
 status collapsed
 
 \begin_layout Plain Layout
+
 http://www.lyx.org/trac/browser/dictionaries/trunk/thes
 \end_layout
 
@@ -33832,6 +33790,7 @@ http://www.lyx.org/trac/browser/dictionaries/trunk/thes
 status collapsed
 
 \begin_layout Plain Layout
+
 http://extensions.services.openoffice.org/en/project/dict-de_DE_frami
 \end_layout
 
@@ -33851,6 +33810,7 @@ Beachten Sie, dass seit OpenOffice
 status collapsed
 
 \begin_layout Plain Layout
+
 http://extensions.services.openoffice.org
 \end_layout
 

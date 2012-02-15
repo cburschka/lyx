@@ -35388,21 +35388,6 @@ arg   "index-insert"
 \end_layout
 
 \begin_layout Standard
-以下の小節で、索引コマンドの概要を短く説明します。LaTeXの索引機構に関して詳細な説明が欲しい場合には、LaTeX関連書籍
-\begin_inset CommandInset citation
-LatexCommand cite
-key "latexcompanion,latexguide,latexbook"
-
-\end_inset
-
-を参照してください。
-\end_layout
-
-\begin_layout Standard
-索引項目は、索引枠をクリックすることで変更することができます。
-\end_layout
-
-\begin_layout Standard
 索引一覧は、
 \family sans
 挿入\SpecialChar \menuseparator
@@ -35414,6 +35399,17 @@ key "latexcompanion,latexguide,latexbook"
 索引
 \family default
 」というラベルのついた水色の枠が、出力中で索引が印字される位置を示します。索引一覧枠は、他のLyX枠とちがってクリック可能ではありません。
+\end_layout
+
+\begin_layout Standard
+以下の小節で、索引コマンドの概要を短く説明します。LaTeXの索引機構に関して詳細な説明が欲しい場合には、LaTeX関連書籍
+\begin_inset CommandInset citation
+LatexCommand cite
+key "latexcompanion,latexguide,latexbook"
+
+\end_inset
+
+を参照してください。
 \end_layout
 
 \begin_layout Subsection
@@ -36074,9 +36070,9 @@ key "latexcompanion"
 \end_layout
 
 \begin_layout Standard
-一般的にいって、上述のように直接ページ番号を整形することは望ましくありません。その代わりに、プリアンブルでマクロを定義し、それを使用するべきです。どうしていくつ
-かのページをイタリック体にしたいのかを考えてみてください。例えば、索引項目の定義を参照しているすべてのページ参照をイタリック体にしたいとすれば、それはユーザが簡
-単に定義を見つけられるようにするためかもしれません。だとすれば、プリアンブルに
+一般的にいって、上述のように直接ページ番号を整形することは望ましくありません。その代わりに、プリアンブルでマクロを定義し、それを使用するべきです。例えば、索引項
+目の定義を参照しているすべてのページ参照をイタリック体にしたいとすれば、それはユーザが簡単に定義を見つけられるようにするためかもしれません。だとすれば、プリアン
+ブルに
 \end_layout
 
 \begin_layout Standard
