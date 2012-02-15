@@ -1267,7 +1267,8 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		    && prefixIs(latex, from_ascii("\\" + script)))
 			column += writeScriptChars(os, latex,
 					running_change, encoding, i) - 1;
-		else if (latex.length() > 1 && latex[latex.length() - 1] != '}') {
+		else if (latex.length() > 1 && latex[latex.length() - 1] != '}' &&
+		         latex[latex.length() - 1] != '-') {
 			// Prevent eating of a following
 			// space or command corruption by
 			// following characters
