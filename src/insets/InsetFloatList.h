@@ -46,6 +46,10 @@ public:
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
+	bool clickable(int, int) const { return true; }
+	///
 	void validate(LaTeXFeatures & features) const;
 	//@}
 

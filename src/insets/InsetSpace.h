@@ -151,8 +151,6 @@ public:
 	bool isSpace() const { return true; }
 	///
 	std::string contextMenuName() const;
-	///
-	bool clickable(int /* x */, int /* y */) const { return true; }
 protected:
 	///
 	Inset * clone() const { return new InsetSpace(*this); }

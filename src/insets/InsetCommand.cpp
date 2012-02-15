@@ -80,7 +80,7 @@ InsetCommand::~InsetCommand()
 
 void InsetCommand::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	button_.update(screenLabel(), editable() || hasSettings());
+	button_.update(screenLabel(), editable() || clickable(0, 0));
 	button_.metrics(mi, dim);
 }
 

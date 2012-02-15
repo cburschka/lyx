@@ -14,10 +14,13 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "BufferView.h"
+#include "Cursor.h"
 #include "DispatchResult.h"
 #include "Floating.h"
 #include "FloatList.h"
 #include "Font.h"
+#include "FuncRequest.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
@@ -76,6 +79,21 @@ docstring InsetFloatList::screenLabel() const
 		return buffer().B_(it->second.listName());
 	else
 		return _("ERROR: Nonexistent float type!");
+}
+
+
+void InsetFloatList::doDispatch(Cursor & cur, FuncRequest & cmd) {
+	switch (cmd.action()) {
+	case LFUN_MOUSE_RELEASE:
+		if (!cur.selection() && cmd.button() == mouse_button::button1) {
+			cur.bv().showDialog("toc", params2string(params()));
+			cur.dispatched();
+		}
+		break;
+	
+	default:
+		InsetCommand::doDispatch(cur, cmd);
+	}
 }
 
 

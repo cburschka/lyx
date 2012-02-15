@@ -14,6 +14,7 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "BufferView.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
 #include "Font.h"
@@ -64,7 +65,7 @@ void InsetTOC::doDispatch(Cursor & cur, FuncRequest & cmd) {
 	switch (cmd.action()) {
 	case LFUN_MOUSE_RELEASE:
 		if (!cur.selection() && cmd.button() == mouse_button::button1) {
-			showInsetDialog(&cur.bv());
+			cur.bv().showDialog("toc", params2string(params()));
 			cur.dispatched();
 		}
 		break;

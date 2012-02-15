@@ -41,6 +41,8 @@ public:
 	docstring xhtml(XHTMLStream & xs, OutputParams const &) const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
+	bool clickable(int, int) const { return true; }
 	//@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes
