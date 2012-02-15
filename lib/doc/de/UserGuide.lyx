@@ -28390,38 +28390,22 @@ Stichwort!verzeichnis@-verzeichnis
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-An index entry is created if you use the menu 
+Ein Stichwort wird erzeugt, wenn man das Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
-Index
-\begin_inset space ~
-\end_inset
-
-Entry
+Stichwort
 \family default
- or the Werkzeugleistenknopf 
+ oder den Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
 arg   "index-insert"
 \end_inset
 
-.
- A box labeled 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family sans
-Index
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- is inserted containing the text that appears in the index.
- The word where the Cursor is in or the currently highlighted text is proposed
+ verwendet.
+ Es wird dann eine Box eingefügt, die den Text des Stichworts enthält.
+ 
+\lang english
+The word where the Cursor is in or the currently highlighted text is proposed
  by LyX as the index entry.
 \end_layout
 
@@ -28429,8 +28413,10 @@ Index
 
 \lang english
 We give a short overview of the index Befehle in the next subsections.
- For a detailed description of LaTeX's index mechanism, have a look at one
- of the LaTeX books 
+ For a detailed description of LaTeXs index mechanism, have a look at one
+ of the
+\lang ngerman
+ LaTeX-Bücher 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latexcompanion,latexguide,latexbook"
@@ -28441,12 +28427,10 @@ key "latexcompanion,latexguide,latexbook"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The index list is inserted in the Dokument with the menu 
+Das Stichwortverzeichnis wird in das Dokument mit dem Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
-List
+Liste
 \begin_inset space ~
 \end_inset
 
@@ -28454,28 +28438,25 @@ List
 \begin_inset space ~
 \end_inset
 
-TOC\SpecialChar \menuseparator
-Index
-\begin_inset space ~
-\end_inset
-
-List
+Inhaltsverzeichnis\SpecialChar \menuseparator
+Stichwortverzeichnis
 \family default
-.
- A light blue box labeled 
-\begin_inset Quotes eld
+ eingefügt.
+ Eine hellblaue Box namens 
+\begin_inset Quotes gld
 \end_inset
 
 
 \family sans
-Index
+Stichwortverzeichnis
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
- will show the place where the index is printed in the output.
- The index list box is not clickable like other LyX-boxes.
+ zeigt die Stelle an, wo das Stichwortverzeichnis in der Ausgabe erscheinen
+ wird.
+ Die Stichwortverzeichnis-Box ist nicht wie andere LyX-Boxen anklickbar.
 \end_layout
 
 \begin_layout Subsection
@@ -28610,24 +28591,16 @@ Stichwort ! Mehrere Seiten
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Normally an index entry will appear with the page number of the indexed
- section.
- But sometimes you want to index more pages under the same entry.
- E.
+Normalerweise erscheint ein Stichwort im Verzeichnis mit der Seitennummer
+ des Abschnitts, indem sich das Stichwort befindet.
+ Manchmal will man aber mehrere Seiten unter einem Stichwort indizieren.
+ Will man z.
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
-\begin_inset space \space{}
-\end_inset
-
-if we want to index the 
-\lang ngerman
-Absatzumgebungen
-\lang english
-, we create an index entry in section
+B.
+ den Abschnitt über Absatzumgebungen indizieren, erzeugt man ein Stichwort
+ in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -28638,7 +28611,7 @@ reference "sec:Absatzumgebungen"
 
 \end_inset
 
- with the Befehl
+ mit dem Befehl
 \end_layout
 
 \begin_layout Standard
@@ -28648,9 +28621,7 @@ Absatzumgebungen|(
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-und another entry at the end of section
+und ein weiteres Stichwort am Ende des Abschnitts
 \begin_inset space ~
 \end_inset
 
@@ -28661,7 +28632,7 @@ reference "sub:LyX-Code"
 
 \end_inset
 
- with the Befehl
+ mit dem Befehl
 \end_layout
 
 \begin_layout Standard
@@ -28695,17 +28666,19 @@ Die Befehle
 \begin_inset Quotes grd
 \end_inset
 
- 
-\lang english
-start bzw.
+ beginnen bzw.
 \begin_inset space ~
 \end_inset
 
- end the index range.
- You can also add the same index entry at different places in the Dokument.
+ beenden den Indexbereich.
+ 
+\lang english
+You can also add the same index entry at different places in the Dokument.
  They appear in the output under one entry with a comma separated list of
  the pages of the indexed Dokument parts.
- An example is the index entry 
+
+\lang ngerman
+ Ein Beispiel ist das Stichwort 
 \begin_inset Quotes gld
 \end_inset
 
@@ -28816,8 +28789,8 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-The index generating is done in the background by an extra program, see
- section
+The index generating is done in the background by an extra Programm, siehe
+ Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -28852,7 +28825,7 @@ maïs
 \begin_inset Quotes grd
 \end_inset
 
- and 
+ und 
 \begin_inset Quotes gld
 \end_inset
 
@@ -28862,7 +28835,7 @@ maître
 
 .
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Sinnloseintrag ! maïs
@@ -28872,7 +28845,7 @@ Sinnloseintrag ! maïs
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Sinnloseintrag ! maître
@@ -28882,7 +28855,7 @@ Sinnloseintrag ! maître
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Sinnloseintrag ! maïs@maison
@@ -28893,37 +28866,36 @@ Sinnloseintrag ! maïs@maison
  
 \lang english
 They will be sorted in the order maïs, maître, maison, but we want the order
- maïs, maison, maître.
- To achieve this, we use the Befehl
+ maïs, maison, maître
+\lang ngerman
+.
+ Um dies zu erreichen, verwendet man den Befehl
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
-previous entry@current entry
+voriger Eintrag@aktueller Eintrag
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In our case we want to have 
-\begin_inset Quotes eld
+In unserem Fall wollen wir 
+\begin_inset Quotes gld
 \end_inset
 
 maison
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
- after 
-\begin_inset Quotes eld
+ nach 
+\begin_inset Quotes gld
 \end_inset
 
 maïs
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
- and write therefore for the index entry of maison:
+ haben und schreiben daher in das Stichwort von maison:
 \end_layout
 
 \begin_layout Standard
@@ -28933,11 +28905,9 @@ maïs@maison
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The previous entry needn't to be a real existing entry, you can also use
- another word to tell LaTeX the entry order, see the next subsection for
- an example.
+Der vorige Eintrag muss kein existierender Eintrag sein.
+ Man kann ein beliebiges Wort verwenden um LaTeX die Reihenfolge vorzugeben,
+ siehe den nächsten Unterabschnitt für ein Beispiel.
 \end_layout
 
 \begin_layout Standard
@@ -28950,14 +28920,12 @@ The previous entry needn't to be a real existing entry, you can also use
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In some cases the index entry order is not correct when you are using the
- program 
+In einigen Fällen ist die Stichwort-Reihenfolge inkorrekt wenn das Programm
+ 
 \family sans
 makeindex 
 \family default
-to generate the index (see sec.
+verwendet wird um das Stichwortverzeichnis zu erzeugen (siehe Kap.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -28973,8 +28941,7 @@ reference "sub:Stichwort-Programm"
 \family sans
 makeindex
 \family default
- would for example print the index entry for the LaTeX-package aeguill in
- sec.
+ gibt zum Beispiel das Stichwort für das LaTeX-Paket aeguill in Kap.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -28985,26 +28952,26 @@ reference "sub:Dokumentschrift-und-Schriftgröße"
 
 \end_inset
 
- after the index entries of the other LaTeX-packages although all these
- index Befehle start with 
-\begin_inset Quotes eld
+ nach den Stichworten der anderen LaTeX-Pakete aus, obwohl all diese Stichwort-B
+efehle mit 
+\begin_inset Quotes gld
 \end_inset
 
 
 \series bold
-LaTeX-packages ! 
+LaTeX-Paket ! 
 \series default
 
-\begin_inset Quotes eld
+\begin_inset Quotes grd
 \end_inset
 
-.
- The reason is that the index entry for aeguill is in a footnote.
- To fix this 
+ beginnen.
+ Der Grund ist, dass sich das Stichwort für aeguill in einer Fußnote befindet.
+ Um diesen Fehler von 
 \family sans
 makeindex
 \family default
- bug, add these Befehle to the preamble of your Dokument:
+ zu umgehen, kann man diese Befehle zum LaTeX-Vorspann des Dokuments hinzufügen:
 \end_layout
 
 \begin_layout Standard
@@ -29072,23 +29039,20 @@ You can also format the page number using the character
 \begin_inset Quotes grd
 \end_inset
 
- followed by a LaTeX-Befehl without a backslash.
- We can write for example
+ followed by a LaTeX-Befehl without a
+\lang ngerman
+ Backslash.
+ Man kann zum Beispiel
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
-italic page number:|textit
+kursive Seitennummer:|textit
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-to get the page number in italic.
-\lang ngerman
-
+schreiben, um die Seitennummer kursiv zu bekommen.
 \begin_inset Index idx
 status open
 
@@ -29098,33 +29062,27 @@ Sinnloseintrag ! kursive Seitennummer:|textit
 
 \end_inset
 
- 
-\lang english
-Normally all LaTeX-Befehle begin with a backslash, but in this special case
- 
+ Normalerweise beginnen alle LaTeX-Befehle mit einem Backslash, aber in
+ diesem speziellen Fall bedeutet 
 \begin_inset Quotes gld
 \end_inset
 
 
 \series bold
-|command
+|Befehl
 \series default
 
 \begin_inset Quotes grd
 \end_inset
 
- means 
+ 
 \series bold
 
 \backslash
-command{page
-\begin_inset space ~
-\end_inset
-
-number}
+Befehl{Seitennummer}
 \series default
 .
- Have a look at section
+ Siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -29135,7 +29093,7 @@ reference "sub:LaTeX-Syntax"
 
 \end_inset
 
- to learn more about the LaTeX-syntax.
+ um mehr über die LaTeX-Syntax zu lernen.
 \end_layout
 
 \begin_layout Standard
@@ -29148,13 +29106,13 @@ status open
 
 \series bold
 \lang english
-Note:
+Achtung:
 \series default
  Formatting single index entries only works when you use the program 
 \family sans
 makeindex 
 \family default
-to generate the index, see sec.
+to generate the index, see Kap.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -29195,9 +29153,11 @@ In general, we encourage you to not format page numbers directly as shown
  above.
  Instead of this, you should define a macro in the preamble and use that.
  Consider why you want some page numbers to be bold.
- Maybe you want all page references italic that refer to a definition of
+ Maybe you want all page references kursiv that refer to a definition of
  the indexed term, so that users can easily find definitions.
- If so, put the following in the preamble
+
+\lang ngerman
+ In diesem Fall schreiben Sie Folgendes in den LaTeX-Vorspann
 \end_layout
 
 \begin_layout Standard
@@ -29213,9 +29173,7 @@ textit{#1}}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-and write
+und schreiben
 \end_layout
 
 \begin_layout Standard
@@ -29225,11 +29183,7 @@ mein Eintrag|IndexDef
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-in the index entry.
-\lang ngerman
-
+in das Stichwort.
 \begin_inset Index idx
 status open
 
@@ -29239,11 +29193,10 @@ Sinnloseintrag ! mein Eintrag|IndexDef
 
 \end_inset
 
- 
-\lang english
-The advantage is that, if you change your mind later or if your publisher
- insists that definitions must not be italic but bold, you just need to
- change the macro in the preamble, not every single index entry.
+ Der Vorteil ist, dass, wenn man seine Meinung später ändert oder der Lektor
+ darauf besteht, dass Definitionen nicht kursiv gesetzt werden dürfen, sondern
+ fett gesetzt werden müssen, man nur den Befehl im Vorspann ändern muss,
+ nicht jedes Stichwort.
 \end_layout
 
 \begin_layout Standard
@@ -29275,7 +29228,7 @@ Wenn Sie wollen, dass die Stichworte mit Stichwortverzeichnis statt Index
 \backslash
 addto
 \backslash
-captionsgerman{
+captionsngerman{
 \backslash
 renewcommand{
 \backslash
@@ -29448,11 +29401,11 @@ Mehrere Stichwortverzeichnisse
 \lang english
 In many fields, it is common to have more than one index.
  For instance, you might need to set up a separate 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 Index of Names
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  next to the standard index.
@@ -29500,25 +29453,28 @@ Note that the package does not only consist of a LaTeX style, but it also
 \lang english
 To set up LyX for the use of multiple indexes, go to 
 \family sans
+\lang ngerman
 Dokument\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
-Indexes
+Stichwortverzeichnis
 \family default
- and select 
-\begin_inset Quotes eld
+ und aktiviert 
+\begin_inset Quotes gld
 \end_inset
 
-Use multiple Indexes
-\begin_inset Quotes erd
+Mehrere Indexe verwenden
+\begin_inset Quotes grd
 \end_inset
 
 .
- Note that the list of 
-\begin_inset Quotes eld
+ 
+\lang english
+Note that the list of 
+\begin_inset Quotes gld
 \end_inset
 
-Available Indexes
-\begin_inset Quotes erd
+Verfügbare Indexe
+\begin_inset Quotes grd
 \end_inset
 
  below already contains the standard index.
@@ -29594,11 +29550,11 @@ If you want to change the attribution of a specific index entry, right-clicking
 \lang english
 By right-clicking on an index, you can change its type.
  Furthermore, you can specify an index list to be a 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 Subindex
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 .
@@ -30746,14 +30702,10 @@ Antwort}[1]{#1}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Branch Frage
 status open
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -30786,8 +30738,6 @@ Antwort}[1]{}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Branch Antwort
 status collapsed
 
@@ -31059,7 +31009,7 @@ TeX-Code
 \end_layout
 
 \begin_layout Subsection
-TeX-Code-BocKästchen
+TeX-Code-Kästchen
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:TeX-Code-Kästchen"
@@ -31287,7 +31237,11 @@ status collapsed
  eingerahmt werden.
 \end_layout
 
-\begin_layout Description
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
 
 \series bold
 Bemerkung:
@@ -31296,12 +31250,9 @@ Bemerkung:
  damit LaTeX weiß, dass der Befehl zu Ende ist.
 \end_layout
 
-\begin_layout Standard
-Siehe auch 
-\emph on
-Handbuchergänzungen
-\emph default
-.
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -31316,48 +31267,33 @@ name "sub:LaTeX-Syntax"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-When you write larger Dokumente or books, you will need to know something
- about the LaTeX-Befehle that LyX uses in the background.
- Because LaTeX is based on Befehle, you can 
-\begin_inset Quotes eld
+Wenn Sie größere Dokumente oder Bücher schreiben, müssen Sie etwas über
+ die LaTeX-Befehle wissen, die LyX im Hintergrund verwendet.
+ Da LaTeX auf Befehlen basiert, können Sie Ihren Text 
+\begin_inset Quotes gld
 \end_inset
 
-program
-\begin_inset Quotes erd
+programmieren
+\begin_inset Quotes grd
 \end_inset
 
- your text.
- This has the advantage that the layout of the Dokument can be changed at
- any time if you know the right Befehle.
- E.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-imagine you have to write a manual for a product and the deadline is the
- end of the day.
- Your boss just has complimented you for your good work but wants to have
- all caption labels bold.
- But you have over hundred figure and table captions with non-bold labels
- in your manual.
- Of course it's impossible to change all caption labels manually in one
- day.
+.
+ Dies hat den Vorteil, dass das Aussehen des Dokuments jederzeit geändert
+ werden kann, wenn man die richtigen Befehle kennt.
+ Stellen Sie sich zum Beispiel vor, dass Sie ein Handbuch für ein Produkt
+ schreiben müssen und der Abgabetermin in wenigen Stunden ist.
+ Ihr Chef hat Sie eben für Ihre gute Arbeit gelobt, hätte aber gern alle
+ Beschriftungsmarken fett gesetzt.
+ Nun haben Sie aber im Dokument über hundert Abbildungs- und Tabellenbeschriftun
+gen mit Marken in normaler Schrift.
+ Natürlich kann man sie nicht alle in so kurzer Zeit manuell ändern.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Now LaTeX comes into play.
- As mentioned above, for every problem there exists a LaTeX-package.
- First you have to find out which and therefore look in the LaTeX package
- database
-\lang ngerman
-, 
+Nun kommt LaTeX ins Spiel.
+ Wie schon weiter oben erwähnt, gibt es für jedes Problem ein LaTeX-Paket.
+ Zuerst müssen Sie herausfinden welches und schauen daher in die LaTeX-Paket
+ Datenbank, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Catalogue"
@@ -31368,11 +31304,7 @@ key "Catalogue"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-As result you know that the package
-\lang ngerman
- 
+Als Ergebnis wissen Sie, dass das Paket 
 \series bold
 caption
 \series default
@@ -31386,15 +31318,13 @@ LaTeX-Paket ! caption
 
 \end_inset
 
- 
-\lang english
-is what you need.
- To use a package, you have to load it in the document preamble (menu 
+ das ist, das Sie brauchen.
+ Um ein Paket zu verwenden, muss es im LaTeX-Vorspann (Menü 
 \family sans
 Dokument\SpecialChar \menuseparator
 Einstellungen
 \family default
-) with the Befehl
+) mit dem Befehl
 \end_layout
 
 \begin_layout Standard
@@ -31406,28 +31336,25 @@ usepackage[Optionen]{Paketname}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-All LaTeX Befehle begin with a backslash, the Befehl argument is set within
- two braces, and the Optionen are set within two brackets.
- Note that not all Befehle have an argument and Optionen.
+geladen werden.
+ Alle LaTeX Befehle beginnen mit einem Backslash, das Befehls-Argument wird
+ in geschweifte Klammern gesetzt und die Optionen in eckige Klammern.
+ Nicht alle Befehle haben ein Argument und Optionen.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In your case the package name is 
+In Ihrem Fall ist der Paketname 
 \series bold
 caption
 \series default
 .
- After a look in the documentation of the package, you know that the Option
+ Nach einem Blick in die Dokumentation des Pakets wissen Sie, dass die Option
  
 \series bold
 labelfont=bf
 \series default
- will change the font of all caption labels to bold.
- So you add the Befehl
+ die Schrift aller Beschriftungsmarken fett setzt.
+ Daher fügen Sie den Befehl
 \end_layout
 
 \begin_layout Standard
@@ -31439,20 +31366,16 @@ usepackage[labelfont=bf]{caption}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-to the preamble and the problem is solved.
+in den LaTeX-Vorspann ein und das Problem ist gelöst.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-For more Befehle provided by the 
+Für weitere Befehle, die das Paket 
 \series bold
 caption
 \series default
- package, have a look at its documentation, 
+ zur Verfügung stellt, siehe seine Dokumentation, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "caption"
@@ -31468,19 +31391,23 @@ key "caption"
 \end_layout
 
 \begin_layout Standard
+Beachten Sie dass einige Dokumentklassen eingebaute Lösungen für häufige
+ Problemstellungen wie diese haben.
+ Verwenden Sie z.
+\begin_inset space \thinspace{}
+\end_inset
 
-\lang english
-Note that some Dokumentklassen have built-in solutions for well known problems
- like your case.
- For example if you use a 
+B.
+ eine 
 \family sans
 KOMA-Script
 \family default
- class, you don't need the package 
+ Kasse, müssen Die das Paket 
 \series bold
 caption
 \series default
-, you can instead write
+ nicht verwenden.
+ Sie können stattdessen
 \end_layout
 
 \begin_layout Standard
@@ -31494,37 +31421,29 @@ bfseries}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-in the preamble and the problem is solved.
- So if you plan to write a large Dokument, you should have a look at the
- documentation of the Dokumentklasse you want to use.
+in den LaTeX-Vorspann schreiben und das Problem ist gelöst.
+ Wenn Sie also ein größeres Dokument planen, sollten Sie einen Blick in
+ die Dokumentation der Dokumentklasse werfen, die Sie verwenden wollen.
  (
 \series bold
 
 \backslash
 setkomafont
 \series default
- is an example of a Befehl with more than one argument.)
+ ist ein Beispiel für einen Befehl mit mehr als einem Argument.)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Befehle in the preamble affect the whole Dokument, while Befehle in the
- text affect only the text after the Befehl or only the text used as Befehl
- argument.
- To insert a LaTeX-Befehl in text, use the TeX Code box as described in
- the previous section.
+Befehle im LaTeX-Vorspann beeinflussen das gesamte Dokument, während Befehle
+ im Text nur den Text nach dem Befehl oder den Text, der als Befehlsargument
+ verwendet wird, beeinflussen.
+ Um einen LaTeX-Befehl im Text einzufügen, verwenden Sie die TeX-Code-Kästchen
+ wie im vorigen Abschnitt beschrieben.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you want to learn more about LaTeX and its syntax, have a look at the
- LaTeX-books
-\lang ngerman
- 
+Wenn Sie mehr über LaTeX und seine Syntax wissen wollen, schauen Sie in
+ die LaTeX-Bücher 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latexcompanion,latexguide"
@@ -32993,12 +32912,18 @@ Einleitung
 \end_layout
 
 \begin_layout Standard
-Das fortgeschrittene Suchen und Ersetzen
-\lang english
- Feature of LyX allows für searching of complex, format-sensitive text segments
- und mathematics contents within LyX Dokumente.
- It is an enhancement of the standard (quick) find und replace Feature.
- The key-Features are:
+Das fortgeschrittene Suchen und Ersetzen von LyX erlaubt es nach komplexen
+ Textabschnitten und mathematischem Inhalt zu suchen.
+ Es ist eine Erweiterung des Standard Suchen
+\begin_inset space \thinspace{}
+\end_inset
+
+&
+\begin_inset space \thinspace{}
+\end_inset
+
+Ersetzen Dialogs.
+ Die Hauptfeatures sind:
 \end_layout
 
 \begin_layout Itemize
@@ -33062,28 +32987,31 @@ Benutzung
 \end_layout
 
 \begin_layout Standard
+Das erweiterte Suchen
+\begin_inset space \thinspace{}
+\end_inset
 
-\lang english
-The advanced find und replace Feature of LyX is activated through the Menü
- 
+&
+\begin_inset space \thinspace{}
+\end_inset
+
+Ersetzen Feature wird über das Menü 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
-Find & Replace
+Suchen & Ersetzen
 \noun on
  (
 \noun default
-Advanced
+ersetzen
 \noun on
 )
 \family default
 \noun default
- (Tastenkürzel 
-\begin_inset Info
-type  "shortcut"
-arg   "dialog-show findreplaceadv"
-\end_inset
-
-) oder the Werkzeugleistenknopf 
+ (Tastenkürzel Ctrl+
+\family sans
+Umschalt
+\family default
++F oder den Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/dialog-toggle_findreplaceadv.png
 	scale 85
@@ -33091,12 +33019,12 @@ arg   "dialog-show findreplaceadv"
 
 \end_inset
 
-.
- This opens the 
+ aktiviert.
+ Damit wird der Dialog 
 \family sans
-Advanced Find und Replace
+Erweitertes Suchen und Ersetzen
 \family default
- Dialog.
+ geöffnet.
 \end_layout
 
 \begin_layout Subsubsection
@@ -33129,7 +33057,10 @@ Enter
  keeps searching forward.
  Similarly, pressing 
 \family sans
-Shift+Enter
+\lang ngerman
+Umschalt
+\lang english
++Enter
 \family default
  searches für the entered text backwards.
 \end_layout
@@ -33300,21 +33231,21 @@ You can replace full-featured formatted LyX segments in place of the matching
 \lang english
 replacing occurrences of a word mit a benutzerdefinierten formatted version
  of the same word, zum Beispiel replacing occurrences of a name like 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 func()
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  mit its typewriter version 
 \family typewriter
 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 func()
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 ;
@@ -33325,7 +33256,7 @@ func()
 \lang english
 performing a notation rework of mathematical symbols, zum Beispiel replacing
  occurrences of 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -33333,11 +33264,11 @@ performing a notation rework of mathematical symbols, zum Beispiel replacing
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  mit 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -33345,7 +33276,7 @@ performing a notation rework of mathematical symbols, zum Beispiel replacing
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  (you may want to enable the 
@@ -33396,52 +33327,42 @@ Benutzung mit regulären Ausdrücken
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There is a regular expression (regexp) based searching facility.
+Es gibt einen Regulärer Ausdruck (Regexp)-basierten Suchmodus.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-A good explanation of regular expressions is given in this Wikipedia entry:
- 
+Der Wikipedia-Eintrag 
 \begin_inset CommandInset href
 LatexCommand href
 target "http://de.wikipedia.org/wiki/Regulärer_Ausdruck"
 
 \end_inset
 
-.
+ ist eine gute Erklärung was ein Regulärer Ausdruck ist.
 \end_layout
 
 \end_inset
 
- You can search für regular expression by inserting a regexp Einfügung into
- the 
+ Man kann nach Regulären Ausdrücken suchen, indem man eine Regexp-Einfügung
+ in den 
 \family sans
-Find
+Suchen
 \family default
- editor.
- This is done via the Menü 
+-Editor einfügt.
+ Dies geschieht über das Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
-Insert Regular Expression
+Regulären Ausdruck einfügen
 \family default
- (Tastenkürzel 
-\begin_inset Info
-type  "shortcut"
-arg   "regexp-mode"
-\end_inset
-
-) while the Cursor is in the 
+ während sich der Cursor im 
 \family sans
-Find
+Suchen
 \family default
- editor.
- Characters entered within regexp Einfügungen are matched according to the
- regular expression matching rules
+-Editor befindet.
+ Zeichen in Regexp-Einfügungen 
+\lang english
+are matched according to the regular expression matching rules
 \begin_inset Foot
 status collapsed
 
@@ -33465,7 +33386,7 @@ when matching LaTeX code, no segments mit unbalanced {} braces are allowed
 
 , while text entered outside regexp Einfügungen is matched exactly against
  the same text in the Dokument.
- Note that it is allowed to cut und paste regexp-mode Einfügungen as usual.
+ Note that it is allowed to cut und paste Regexp-mode Einfügungen as usual.
  Examples of using such a Feature may be:
 \end_layout
 
@@ -33623,11 +33544,9 @@ Rechtschreibprüfung
 F7
 \family default
  oder dem Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/dialog-show_spellchecker.png
-	scale 85
-	groupId Icon
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show spellchecker"
 \end_inset
 
  starten.
@@ -33824,11 +33743,9 @@ Thesaurus
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-LyX provides a multilingual thesaurus.
- It uses the same thesaurus framework as OpenOffice und Firefox (namely
- the 
+LyX bietet einen mehrsprachigen Thesaurus.
+ Es verwendet denselben Thesaurus wie LibreOffice, OpenOffice und Firefox
+ (namentlich die 
 \family typewriter
 MyThes
 \family default
@@ -33837,8 +33754,6 @@ MyThes
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset href
 LatexCommand href
 target "http://lingucomponent.openoffice.org/thesaurus.html"
@@ -33850,136 +33765,110 @@ target "http://lingucomponent.openoffice.org/thesaurus.html"
 
 \end_inset
 
- thesaurus library, which is included in LyX).
- Therefore, LyX can directly access OpenOffice thesaurus dictionaries, which
- are available für many languages.
+ Thesaurus-Bibliothek, die in LyX enthalten ist).
+ Daher kann LyX direkt auf OpenOffice Thesaurus Wörterbücher zugreifen,
+ die für viele Sprachen verfügbar sind.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This Abschnitt describes how new dictionaries are installed und set up für
- the use mit LyX.
+Dieser Abschnitt beschreibt wie neue Wörterbücher installiert und für LyX
+ bereitgestellt werden.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Setting up the thesaurus
+Einrichten des Thesaurus
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The 
+Die 
 \family typewriter
 MyThes
 \family default
 \emph on
 /
 \emph default
-OpenOffice thesauri consist of two Dateien per language: A Datei mit the
- suffix 
+OpenOffice Thesauri bestehen aus zwei Dateien pro Sprache: Eine Datei mit
+ der Endung 
 \emph on
 *.dat
 \emph default
- containing the data und an index Datei mit the suffix 
+, die die Daten enthält und eine Index-Datei mit der Endung 
 \emph on
 *.idx
 \emph default
 .
- The standardized Datei names include the language code für the given language
- (e.
+ Der Standardisierte Dateinamen enthält den Code der Sprache (z.
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
- en_EN für English).
- For instance, the English Dateien are named:
+B.
+ de_DE für Deutsch).
+ So heißen die Dateien für Deutsch:
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-th_en_EN_v2.idx
+th_de_DE_v2.idx
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-th_en_EN_v2.dat
+th_de_DE_v2.dat
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you have OpenOffice und its thesaurus installed, these Dateien should
- be already on your system.
- If not, you can get dictionaries either from
-\lang ngerman
- 
+Wenn Sie LibreOffice oder OpenOffice verwenden uns dessen Thesaurus installiert
+ haben sollten sich diese Dateien bereits auf Ihrem System befinden.
+ Falls nicht, kann man die Wörterbücher auch von 
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
-
 http://www.lyx.org/trac/browser/dictionaries/trunk/thes
 \end_layout
 
 \end_inset
 
- 
-\lang english
-or from the site
-\lang ngerman
- 
+ oder von der Seite 
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
-
 http://extensions.services.openoffice.org/en/project/dict-de_DE_frami
 \end_layout
 
 \end_inset
 
-.
-\lang english
-
+ beziehen.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Note that, as of OpenOffice
+Beachten Sie, dass seit OpenOffice
 \begin_inset space ~
 \end_inset
 
-3.0, the Dateien on 
+3.0 die Dateien auf 
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
-
 http://extensions.services.openoffice.org
 \end_layout
 
 \end_inset
 
- are usually packed in extension archives (
+ üblicherweise als Erweiterungs-Archiv-Datei (
 \emph on
 *.oxt
 \emph default
-) that contain other Dateien such as spellchecker dictionaries besides the
- thesauri.
- These archives are simple zip Dateien, so you can unpack them as you would
- unpack a zip archive.
+) gepackt sind und sich darin Dateien wie Rechtschreibprüfungs-Wörterbücher
+ neben den Thesaurus-Dateien befinden.
+ Diese Archiv-Dateien sind einfache Zip-Dateien und lassen sich mit jedem
+ Zip-Programm entpacken.
 \end_layout
 
 \end_inset
 
- Put the 
+ Packen Sie die 
 \emph on
 *.idx
 \emph default
@@ -33987,40 +33876,39 @@ http://extensions.services.openoffice.org
 \emph on
 *.dat
 \emph default
- Dateien of all languages you want to use into one directory (do not use
- subfolders), und specify the path to this directory in 
+-Dateien aller Sprachen, die Sie verwenden wollen, in ein Verzeichnis (verwenden
+ Sie keine Unterverzeichnisse) und geben Sie den Pfad zu diesem Verzeichnis
+ im Menü 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-Paths
+Einstellungen\SpecialChar \menuseparator
+Pfade
 \family default
-.
- Now the thesaurus should be ready to use.
+ an.
+ Nun sollte der Thesaurus benutzbar sein.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Using the thesaurus
+Verwendung des Thesaurus
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To start the thesaurus, use the Menü 
+Um den Thesaurus zu starten, verwendet man das Menü 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
 Thesaurus
 \family default
- oder the Werkzeugleistenknopf 
+ oder den Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
 arg   "thesaurus-entry"
 \end_inset
 
- while the Cursor is at the word you want to look up oder while a word is
- selected.
- A Dialog pops up showing you probably related words that you can use as
+ während ein Wort markiert ist oder während sich der Cursor in einem Wort
+ befindet.
+ 
+\lang english
+A Dialog pops up showing you probably related words that you can use as
  replacement.
  The proposals are grouped into categories.
  Note that the thesaurus does not nur show synonyms, but auch hyperonyms

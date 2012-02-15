@@ -28215,19 +28215,7 @@ arg   "index-insert"
 \end_inset
 
  de la barre d'outils.
- Une boîte grise marquée 
-\family sans
-
-\begin_inset Quotes fld
-\end_inset
-
-Idx
-\family default
-
-\begin_inset Quotes frd
-\end_inset
-
- est insérée contenant le texte qui apparaîtra dans l'index.
+ Une boîte est insérée contenant le texte qui apparaîtra dans l'index.
  Le mot dans lequel le curseur se trouve ou la portion de texte qui est
  actuellement sélectionnée est proposé comme entrée d'index par LyX.
 \end_layout
@@ -32676,11 +32664,10 @@ Rechercher et remplacer
 \begin_inset Quotes frd
 \end_inset
 
- élaborée de LyX est activée par le menu 
+ est activée par le menu 
 \family sans
 Éditer\SpecialChar \menuseparator
-Rechercher et remplacer (élaboré)...
-
+Rechercher et remplacer (élaboré)
 \family default
  (raccourci 
 \begin_inset Info
@@ -33545,8 +33532,8 @@ name "sec:Dictionnaire-de-synonymes"
 
 \begin_layout Standard
 LyX fournit un dictionnaires de synonymes multilingue.
- Il utilise le même environnement que OpenOffice et Firefox (à savoir le
- dictionnaire
+ Il utilise le même environnement que LibreOffice, OpenOffice et Firefox
+ (à savoir le dictionnaire
 \family typewriter
  MyThes
 \family default
@@ -33612,8 +33599,8 @@ th_en_EN_v2.dat
 \end_layout
 
 \begin_layout Standard
-Si OpenOffice est déjà installé sur votre système, avec ses dictionnaires
- de synonymes, ces fichiers devraient déjà être présents.
+Si LibreOffice ou OpenOffice est déjà installé sur votre système, avec ses
+ dictionnaires de synonymes, ces fichiers devraient déjà être présents.
  Si ce n'est pas le cas, vous pouvez récupérer les dictionnaires, soit à
  partir du site 
 \begin_inset Flex URL

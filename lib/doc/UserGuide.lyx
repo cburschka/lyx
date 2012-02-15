@@ -26994,19 +26994,7 @@ arg   "index-insert"
 \end_inset
 
 .
- A box labeled 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family sans
-Index
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- is inserted containing the text that appears in the index.
+ A box is inserted containing the text that appears in the index.
  The word where the cursor is in or the currently highlighted text is proposed
  by LyX as the index entry.
 \end_layout
@@ -27582,7 +27570,7 @@ Index ! Entry layout
 \begin_layout Standard
 You can change the appearance of index entries via the text style dialog.
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Dummy entries ! 
@@ -27613,7 +27601,7 @@ italic page number:|textit
 \begin_layout Standard
 to get the page number in italic.
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Dummy entries ! italic page number:|textit
@@ -27741,7 +27729,7 @@ my entry|IndexDef
 \begin_layout Standard
 in the index entry.
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Dummy entries ! my entry|IndexDef
@@ -29699,7 +29687,7 @@ usepackage[options]{package name}
 
 \begin_layout Standard
 All LaTeX commands begin with a backslash, the command argument is set within
- two braces, and the options are set within two brackets.
+ two braces and the options are set within two brackets.
  Note that not all commands have an argument and options.
 \end_layout
 
@@ -31317,8 +31305,7 @@ Basic usage
 \end_layout
 
 \begin_layout Standard
-The advanced find and replace feature of LyX is activated through the menu
- 
+The advanced find and replace feature is activated through the menu 
 \family sans
 Edit\SpecialChar \menuseparator
 Find & Replace
@@ -32002,8 +31989,8 @@ name "sec:Thesaurus"
 
 \begin_layout Standard
 LyX provides a multilingual thesaurus.
- It uses the same thesaurus framework as OpenOffice and Firefox (namely
- the 
+ It uses the same thesaurus framework as LibreOffice, OpenOffice and Firefox
+ (namely the 
 \family typewriter
 MyThes
 \family default
@@ -32074,8 +32061,8 @@ th_en_EN_v2.dat
 \end_layout
 
 \begin_layout Standard
-If you have OpenOffice and its thesaurus installed, these files should be
- already on your system.
+If you have LibreOffice or OpenOffice and its thesaurus installed, these
+ files should be already on your system.
  If not, you can get dictionaries either from 
 \begin_inset Flex URL
 status collapsed
