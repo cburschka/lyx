@@ -26479,11 +26479,9 @@ En una ecuación presentada:
 
 En una ecuación en línea se pone menos espacio delante del nombre de la
  función para todas las variantes.
- 
-\lang english
-By default the modulo-functions take only the first following character
- into account.
- To use more than one character, one has to put them into TeX-braces:
+ Por omisión, las funciones módulo solo tienen en cuenta el primer carácter
+ siguente.
+ Para aplicarlas a más de un carácter hay que poner estos entre llaves TeX:
 \begin_inset Formula 
 \begin{align*}
 \underline{\textrm{Comando}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Resultado}}\\
@@ -36400,7 +36398,7 @@ A=B
 \backslash
 cancelto
 \series default
- es especialmente apropiada para visualizar la simplificación de fracciones
+ es especialmente apropiado para visualizar la simplificación de fracciones
  en una ecuación:
 \begin_inset Formula 
 \[
@@ -36413,42 +36411,31 @@ cancelto
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To change the size of 
+Para cambiar el tamaño del valor subscrito por 
 \series bold
 
 \backslash
 cancelto
 \series default
-'s 
-\begin_inset Quotes fld
-\end_inset
-
-subscript
-\begin_inset Quotes frd
-\end_inset
-
- value one can load the package 
+ se puede cargar el paquete 
 \series bold
 cancel
 \series default
- with either the option 
+ con la opción 
 \series bold
 samesize
 \series default
- which leads to the same size as for the canceled value or with the option
- 
+, que da el mismo tamaño que para el valor cancelado, o con la opción 
 \series bold
 Smaller
 \series default
- which makes is it a bit smaller than the size one gets without using a
- package option.
- In this document 
+, que da un tamaño un poco más pequeño que el que se obtiene sin usar ninguna
+ opción.
+ En este documento, 
 \series bold
 cancel
 \series default
- was loaded with this line:
+ se ha cargado con la línea 
 \end_layout
 
 \begin_layout Standard
@@ -36460,9 +36447,8 @@ usepackage[samesize]{cancel}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To color the cancellation bar one adds this command as TeX code:
+Para colorear la raya de cancelación añade el siguiente comando en código
+ TeX:
 \end_layout
 
 \begin_layout Standard
@@ -36478,17 +36464,16 @@ color{red}}
 \end_layout
 
 \begin_layout Standard
-
+donde 
 \series bold
-\lang english
 red
 \series default
- can be replaced by a color of your choice.
+ puede reemplazarse por el color deseado.
 \end_layout
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -36519,7 +36504,7 @@ color{red}}
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -36539,9 +36524,7 @@ color{black}}
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-reset the color
+restablece el color
 \end_layout
 
 \end_inset
@@ -36550,13 +36533,10 @@ reset the color
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For further customizations, see the documentation of the package
-\lang spanish
- 
+Para otras posibilidades de personalización, véase la documentación del
+ paquete
 \series bold
-cancel
+ cancel
 \series default
 , 
 \begin_inset CommandInset citation
@@ -36733,7 +36713,7 @@ texorpdfstring
 \begin_layout Standard
 parte se refiere a la parte del encabezado que no debería aparecer en el
  marcador PDF.
- Puede ser caracteres, ecuaciones, notas al pie, y también referencias cruzadas.
+ Pueden ser caracteres, ecuaciones, notas al pie y también referencias cruzadas.
  La alternativa se usa para el marcador en vez de la parte.
 \end_layout
 
