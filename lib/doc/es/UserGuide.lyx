@@ -27605,19 +27605,7 @@ arg   "index-insert"
 \end_inset
 
 .
- Se inserta un cuadro gris con la etiqueta 
-\begin_inset Quotes fld
-\end_inset
-
-
-\family sans
-Ind
-\family default
-
-\begin_inset Quotes frd
-\end_inset
-
- que contiene el texto que aparecerá en el índice.
+ Se inserta un cuadro que contiene el texto que aparecerá en el índice.
  Por omisión, LyX escoge como texto para la entrada de índice la palabra
  en la que está el cursor o el texto que esté seleccionado.
  
@@ -28202,7 +28190,7 @@ Ind@Índice alfabético ! Formato de las entradas
 El aspecto de las entradas de índice se puede cambiar con el diálogo de
  estilo del texto.
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Entradas postizas ! 
@@ -28233,7 +28221,7 @@ número en cursiva:|textit
 \begin_layout Standard
 para imprimir el número en cursiva.
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Entradas postizas ! número en cursiva:|textit
@@ -28364,7 +28352,7 @@ mi entrada|IndexDef
 \begin_layout Standard
 en la entrada de índice.
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Entradas postizas ! mi entrada|IndexDef
@@ -32372,7 +32360,7 @@ name "sec:Tesauro"
 
 \begin_layout Standard
 LyX proporciona un diccionario de sinónimos multilingüe.
- Utiliza la misma estructura que LibreOffice/OpenOffice y Firefox (o sea,
+ Utiliza la misma estructura que LibreOffice, OpenOffice y Firefox (o sea,
  la biblioteca de sinónimos 
 \family typewriter
 MyThes
@@ -32440,8 +32428,8 @@ th_es_ES_v2.dat
 \end_layout
 
 \begin_layout Standard
-Si están instalados OpenOffice y su tesauro, estos archivos deberían estar
- ya en tu sistema.
+Si están instalados LibreOffice o OpenOffice y su tesauro, estos archivos
+ deberían estar ya en tu sistema.
  Si no, puedes obtener diccionarios en los sitios 
 \begin_inset Flex URL
 status collapsed
