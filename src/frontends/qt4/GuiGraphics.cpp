@@ -25,6 +25,7 @@
 #include "Length.h"
 #include "LyXRC.h"
 
+#include "graphics/epstools.h"
 #include "graphics/GraphicsCache.h"
 #include "graphics/GraphicsCacheItem.h"
 #include "graphics/GraphicsImage.h"
@@ -806,7 +807,7 @@ string GuiGraphics::readBoundingBox(string const & file)
 
 	// try to get it from the file, if possible. Zipped files are
 	// unzipped in the readBB_from_PSFile-Function
-	string const bb = readBB_from_PSFile(abs_file);
+	string const bb = graphics::readBB_from_PSFile(abs_file);
 	if (!bb.empty())
 		return bb;
 

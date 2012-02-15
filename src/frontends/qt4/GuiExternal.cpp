@@ -23,6 +23,7 @@
 #include "insets/ExternalTemplate.h"
 #include "insets/InsetExternal.h"
 
+#include "graphics/epstools.h"
 #include "graphics/GraphicsCache.h"
 #include "graphics/GraphicsCacheItem.h"
 #include "graphics/GraphicsImage.h"
@@ -299,7 +300,7 @@ void GuiExternal::getbbClicked()
 	FileName const abs_file(support::makeAbsPath(filename, fromqstr(bufferFilePath())));
 
 	// try to get it from the file, if possible
-	string bb = readBB_from_PSFile(abs_file);
+	string bb = graphics::readBB_from_PSFile(abs_file);
 	if (bb.empty()) {
 		// we don't, so ask the Graphics Cache if it has loaded the file
 		int width = 0;

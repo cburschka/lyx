@@ -18,12 +18,12 @@
 #include "Lexer.h"
 #include "LyXRC.h"
 
+#include "graphics/epstools.h"
 #include "graphics/GraphicsParams.h"
 #include "graphics/GraphicsTypes.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
-#include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "support/lstrings.h"
 #include "support/Translator.h"
@@ -262,7 +262,7 @@ graphics::Params InsetGraphicsParams::as_grfxParams() const
 		pars.bb = bb;
 
 		// Get the original Bounding Box from the file
-		string const tmp = readBB_from_PSFile(filename);
+		string const tmp = graphics::readBB_from_PSFile(filename);
 		LYXERR(Debug::GRAPHICS, "BB_from_File: " << tmp);
 		if (!tmp.empty()) {
 			unsigned int const bb_orig_xl = convert<unsigned int>(token(tmp, ' ', 0));

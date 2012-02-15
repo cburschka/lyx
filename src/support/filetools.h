@@ -275,9 +275,6 @@ bool readLink(FileName const & file, FileName & link);
 FileName const findtexfile(std::string const & fil,
 			      std::string const & format);
 
-/// read the BoundingBox entry from a ps/eps/pdf-file
-std::string const readBB_from_PSFile(FileName const & file);
-
 /** \param file1, file2 the two files to be compared. Must have absolute paths.
  *  \returns 1 if \c file1 has a more recent timestamp than \c file2,
  *           0 if their timestamps are the same,

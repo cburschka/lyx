@@ -339,6 +339,8 @@ liblyxcore_a_DEPENDENCIES = $(MOCEDFILES)
 noinst_LIBRARIES += liblyxgraphics.a
 
 liblyxgraphics_a_SOURCES = \
+	graphics/epstools.h \
+	graphics/epstools.cpp \
 	graphics/GraphicsCache.h \
 	graphics/GraphicsCache.cpp \
 	graphics/GraphicsCacheItem.h \
