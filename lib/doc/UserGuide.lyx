@@ -129,12 +129,11 @@ enumitem
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author 424524441 "rgheck" 
 \end_header
 
 \begin_body
@@ -21339,11 +21338,7 @@ reference "sec:Cross-References"
 
 \end_inset
 
-, you can simply insert a label in the caption
-\change_inserted 424524441 1329396628
- (not just in the float)
-\change_unchanged
- using the menu 
+, you can simply insert a label in the caption using the menu 
 \family sans
 Insert\SpecialChar \menuseparator
 Label
