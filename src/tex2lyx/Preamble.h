@@ -92,6 +92,7 @@ private:
 	std::string h_font_sans;
 	std::string h_font_typewriter;
 	std::string h_font_default_family;
+	std::string h_use_non_tex_fonts;
 	std::string h_font_sc;
 	std::string h_font_osf;
 	std::string h_font_sf_scale;
