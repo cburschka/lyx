@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 418
+\lyxformat 425
 \begin_document
 \begin_header
 \textclass scrbook
@@ -79,7 +79,7 @@ End
 
 \graphics default
 \default_output_format default
-\output_sync 0
+\output_sync 1
 \bibtex_command default
 \index_command default
 \paperfontsize 12
@@ -101,12 +101,15 @@ End
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
-\use_undertilde 1
+\use_package amsmath 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -126,7 +129,7 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
@@ -140,7 +143,7 @@ Additional LyX Features
 \end_layout
 
 \begin_layout Subtitle
-Version 2.1.x
+Version 2.0.x
 \end_layout
 
 \begin_layout Author
@@ -194,7 +197,7 @@ This manual is essentially Part II of the
 User's Guide\SpecialChar \@.
 
 \emph default
- The reason for separating this document out is simple: the 
+ The reason for separating the two documents is simple: the 
 \emph on
 User's Guide
 \emph default
@@ -691,6 +694,12 @@ TeX Code
 
 \end_inset
 
+ or the keyboard shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "ert-insert"
+\end_inset
+
 .
 \end_layout
 
@@ -712,7 +721,7 @@ begin{minipage}{5cm}
 \begin_inset Newline newline
 \end_inset
 
-This is an example for a minipage environment.
+This is an example of a minipage environment.
  You 
 \begin_inset Newline newline
 \end_inset
@@ -800,11 +809,15 @@ TeX Code
  box containing this text is directly after this paragraph.
  Those of you reading the manual in LyX will only see the TeX code inset.
  Those reading a printed version of the manuals will see the actual results:
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -822,7 +835,7 @@ begin{minipage}{5cm}
 
 \begin_layout Plain Layout
 
-This is an example for a minipage environment.
+This is an example of a minipage environment.
  You can put nearly everything in it, even (non-floating) figures and tables.
  
 \end_layout
@@ -897,6 +910,10 @@ end{tabular}
 \end_inset
 
 
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -958,7 +975,7 @@ does not
 \end_layout
 
 \begin_layout Itemize
-Beware reinventing the wheel.
+Beware of reinventing the wheel.
 \end_layout
 
 \begin_layout Standard
@@ -1039,6 +1056,8 @@ Declare the usage of packages.
 
 LaTeX packages provide special commands, which are only available within
  a document when the package has been declared in the preamble.
+ In addition to providing special commands, the inclusion of a package can
+ change the document.
  For example, the package 
 \begin_inset Flex Code
 status collapsed
@@ -1060,13 +1079,13 @@ Set counters, variables, lengths and widths.
 \begin_inset Newline newline
 \end_inset
 
-There are several LaTeX counters and variables which 
+There are several LaTeX counters and variables that 
 \emph on
 must
 \emph default
  be set globally from within the preamble in order to have the desired effect.
- (There are variables which you can set and reset inside the document, too.)
- Margins are a good example of something which must be set in the preamble.
+ (There are variables that you can set and reset inside the document, too.)
+ Margins are a good example of something that must be set in the preamble.
  Another example is the label format for lists.
  You can actually set these just about anywhere, but it's best to do it
  just once, inside the preamble.
@@ -1565,7 +1584,7 @@ LyX and LaTeX Errors
 When LyX calls LaTeX, it tells LaTeX to blithely ignore any errors and keep
  going.
  It then uses the logfile from the LaTeX run to do a post-mortem.
- After analyzing the logfile,LyX displays a dialog listing the errors.
+ After analyzing the logfile, LyX displays a dialog listing the errors.
  Clicking on any one of them will take you to the position in your LyX file
  where the error occurred.
 \begin_inset Foot
@@ -1784,7 +1803,7 @@ Warnings about troubles breaking the page.
 status collapsed
 
 \begin_layout Plain Layout
- LaTeX Error: File 
+LaTeX Error: File 
 \begin_inset Quotes els
 \end_inset
 
@@ -2174,7 +2193,7 @@ natbib
 
 \end_inset
 
-, than the established 
+, then the established 
 \begin_inset Flex Code
 status collapsed
 
@@ -2473,7 +2492,7 @@ scientific.bib
 
 .
  You are free to use the same or different styles for each section.
- Additionally, you can chose if the bibliography section should contain
+ Additionally, you can choose if the bibliography section should contain
  
 \begin_inset Quotes eld
 \end_inset
@@ -2536,7 +2555,7 @@ bibtopic
 
 \end_inset
 
- removes the bibliography title, you have manually re-add that, too (as
+ removes the bibliography title, you have to manually re-add that, too (as
  a chapter* or section*, for instance).
 \end_layout
 
@@ -2681,7 +2700,7 @@ end{btUnit}
 \end_inset
 
  (those commands have to be inserted as TeX code).
- The bibliography will contain all references which have been cited in the
+ The bibliography will contain all references that have been cited in the
  current 
 \begin_inset Flex Code
 status collapsed
@@ -2858,7 +2877,7 @@ input
 \end_inset
 
  is really only meaningful to LaTeXperts, but the practical difference is
- that files which are 
+ that files that are 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2866,7 +2885,7 @@ included
 \begin_inset Quotes erd
 \end_inset
 
- are typeset beginning on a new page, while files which are 
+ are typeset beginning on a new page, while files that are 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2879,7 +2898,7 @@ inputted
 
 \begin_layout Standard
 Generally, the master file is converted into a full LaTeX file before typesettin
-g, while the included files are converted to LaTeX files which do not have
+g, while the included files are converted to LaTeX files that do not have
  all the preamble information.
 \end_layout
 
@@ -2893,7 +2912,7 @@ verbatim
 \end_inset
 
  included file allows you to include a file typeset exactly as it appears
- in the file, i.
+ in the file, e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -2975,7 +2994,7 @@ It is possible to set up cross-references between the different files.
  First, open all the files in question: let's call them A and B in a two
  file example, where B is included in A.
  Let's say you insert a label in A, then want to reference it in B.
- Open the cross-reference dialog in whilst in document B, and you can select
+ Open the cross-reference dialog whilst in document B, and you can select
  the 
 \begin_inset Quotes eld
 \end_inset
@@ -3398,7 +3417,7 @@ lhead{John Q.
 \begin_layout Standard
 You will now see your name in the upper left.
  If a field has a default entry that you would like to get rid of (often
- the page number appears in the central footer, simply include a command
+ the page number appears in the central footer) simply include a command
  with a blank argument, e.
 \begin_inset space \thinspace{}
 \end_inset
@@ -3745,7 +3764,7 @@ The dialog provides you with a table of bullet shapes.
 
 \begin_layout Standard
 The six panels are divided up by the packages they require.
- The following table shows the mappings from button name to LaTeX packages.
+ The following table shows the mappings from button name to LaTeX package.
 \end_layout
 
 \begin_layout Standard
@@ -5331,7 +5350,7 @@ development/lyxserver/server_monitor.c
 \end_layout
 
 \begin_layout Standard
-Another useful tool is command-line based client you will find in 
+Another useful tool is the command-line based clientfound in 
 \begin_inset Flex Code
 status collapsed
 
@@ -6946,7 +6965,7 @@ opposite
 \begin_inset Quotes erd
 \end_inset
 
- to reverse search.
+ of reverse search.
  It allows you to let the viewer jump to a given position from within LyX.
  If forward search is set up (as described in what follows), you can put
  the cursor anywhere in your LyX document, and hit 
@@ -7088,7 +7107,7 @@ near
 \end_inset
 
 .
- These latter functionality is provided by an external call of synctex (see
+ This latter functionality is provided by an external call of synctex (see
  the predefined example configurations).
  
 \end_layout
@@ -14583,7 +14602,8 @@ lyx-devel@lists.lyx.org
 
 \end_inset
 
-, lots will probably never, due to the limitations of LyX's framework.
+, lots will probably never be supported, due to the limitations of LyX's
+ framework.
  Of course you can still use all features with the help of some native LaTeX
  commands (TeX code
 \begin_inset Foot
@@ -14620,7 +14640,7 @@ reference "sec:Inserting-TeX-Code"
 \end_inset
 
 ).
- In this section, we can only list those features which are natively supported
+ In this section, we can only list those features that are natively supported
  by LyX.
  For detailed descriptions (and for the rest of features) we recommend you
  have a look at the detailed manual of the Memoir class
@@ -17803,7 +17823,7 @@ TeX
 \family typewriter
 chktex
 \family default
- it from CTAN, 
+ from CTAN, 
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.ctan.org/tex-archive/help/Catalogue/entries/chktex.html"
@@ -17948,8 +17968,8 @@ Space in front of references, instead of hard spaces:
 \begin_inset Newline newline
 \end_inset
 
-In you are in bad luck, the text will break right between the referenced
- text and reference number, and that's a pity.
+If you have bad luck, the text will break right between the referenced text
+ and reference number, and that's a pity.
  See section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -18071,8 +18091,7 @@ emacs
 \family sans
 ChkTeX
 \family default
-, and this gap can make some warnings seem arcane or just right down plain
- silly.
+, and this gap can make some warnings seem arcane or just plain silly.
 \end_layout
 
 \begin_layout Standard
@@ -18151,8 +18170,8 @@ chktex
 
 \end_inset
 
- to the internal document structure, some of the warnings will not seen
- to appear correctly.
+ to the internal document structure, some of the warnings will not appear
+ correctly.
  There are two things you can do about this:
 \end_layout
 
@@ -18162,18 +18181,20 @@ Fine tune the
 ChkTeX
 \family default
  invocation command line in 
-\family sans
-Preferences
-\family default
- (tabs 
-\family sans
-Outputs
-\family default
-, 
-\family sans
-Misc
-\family default
-), or the global 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+Output\SpecialChar \menuseparator
+LaTeX\SpecialChar \menuseparator
+CheckTeX command
+\end_layout
+
+\end_inset
+
+, or the global 
 \family sans
 ChkTeX
 \family default
@@ -18184,7 +18205,6 @@ chktexrc
 ).
  See below to learn what warnings can be enabled and disabled on the command
  line.
- 
 \end_layout
 
 \begin_layout Itemize
@@ -18888,9 +18908,9 @@ A friend of mine wanted to try LyX for a group project.
 \end_layout
 
 \begin_layout Standard
-Also note that CVS support is not as good as subversion support so we advice
+Also note that CVS support is not as good as subversion support so we advise
  using SVN instead.
- Good place to start with Subversion is SVN Book
+ A good place to start learning Subversion is SVN Book
 \begin_inset Foot
 status open
 
@@ -18907,7 +18927,7 @@ target "http://svnbook.red-bean.com/"
 \end_inset
 
 .
- In case of RCS you should read 
+ In the case of RCS you should read 
 \begin_inset Quotes eld
 \end_inset
 
@@ -18935,7 +18955,7 @@ Before you begin to use the version control features in LyX, you should
  The implementation in LyX assumes a recent version of the GNU RCS or CVS/SVN
  package—no guarantees are made for older versions.
  Most of the log messages are not currently displayed after operations —
- you can check them in Messages pane if unsure.
+ you can check them in the Messages pane if unsure.
 \end_layout
 
 \begin_layout Standard
@@ -19326,8 +19346,8 @@ only
 
 \end_inset
 
- in case you have already the documents directory under CVS control (in
- particular 
+ in the case you have already the documents directory under CVS control
+ (in particular 
 \family typewriter
 CVS/Entries
 \family default
@@ -20745,7 +20765,7 @@ SSH tunnel used with SVN under Windows
 \end_layout
 
 \begin_layout Standard
-Compared with Linux setting up svn client to communicate over ssh under
+Compared with Linux setting up an svn client to communicate over ssh under
  Windows is a rather troublesome task.
  We will at least offer some hints how to setup the client side but prior
  knowledge about ssh and the Windows command line is needed, also be prepared
@@ -20754,7 +20774,7 @@ Compared with Linux setting up svn client to communicate over ssh under
 \end_layout
 
 \begin_layout Enumerate
-Get a svn client for windows, as described in the previous sections.
+Get an svn client for windows, as described in the previous sections.
  When it is a fresh install run some svn command (e.g.
  
 \begin_inset Flex Code
@@ -20770,7 +20790,7 @@ svn --version
 \end_layout
 
 \begin_layout Enumerate
-Choose a ssh client for Windows.
+Choose an ssh client for Windows.
  There are several possibilities, we will use the one from Putty tools
 \begin_inset Foot
 status open
@@ -21063,9 +21083,9 @@ diff
 
  dumps.
  While this is useful for plain text files, it is much less useful in the
- case of LyX files, which have more complicated structure.
+ case of LyX files, which have more a complicated structure.
  Hence we provide binding to the Document comparison feature.
- They are two ways of calling this feature - either by direct call of 
+ There are two ways of calling this feature - either by direct call of 
 \begin_inset Flex Code
 status collapsed
 
@@ -22463,7 +22483,11 @@ You can do everything with LyX that you can do with LaTeX.
  For other special things you can do with figures, tables, floats, boxes
  and notes, have a look at the 
 \emph on
-EmbeddedObjects
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
 \emph default
  manual.
 \end_layout
@@ -23224,7 +23248,7 @@ Note:
 \backslash
 setlength
 \series default
- will be used for all following multiple columns until to change them again.
+ will be used for all following multiple columns until you change them again.
 \end_layout
 
 \end_inset
