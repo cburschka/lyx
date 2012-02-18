@@ -17,6 +17,8 @@
 
 #include "qt_helpers.h"
 
+#include "frontends/alert.h"
+
 #include "support/debug.h"
 #include "support/Systemcall.h"
 
@@ -64,6 +66,14 @@ GuiProgress::GuiProgress()
 	flushDelay_.setInterval(200);
 	flushDelay_.setSingleShot(true);
 	connect(&flushDelay_, SIGNAL(timeout()), this, SLOT(updateWithLyXErr()));
+}
+
+
+int GuiProgress::prompt(docstring const & title, docstring const & question,
+			int default_button, int cancel_button,
+			docstring const & b1, docstring const & b2)
+{
+	return Alert::prompt(title, question, default_button, cancel_button, b1, b2);
 }
 
 

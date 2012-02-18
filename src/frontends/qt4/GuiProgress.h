@@ -42,6 +42,10 @@ public:
 	void lyxerrDisconnect();
 	void lyxerrFlush();
 
+	int prompt(docstring const & title, docstring const & question,
+		   int default_button, int cancel_button,
+		   docstring const & b1, docstring const & b2);
+
 	static QString currentTime();
 
 Q_SIGNALS:

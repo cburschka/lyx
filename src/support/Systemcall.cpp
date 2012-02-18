@@ -15,6 +15,7 @@
 
 #include "support/debug.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/qstring_helpers.h"
 #include "support/Systemcall.h"
@@ -72,6 +73,8 @@ public:
 	void toggleWarning(QString const &, QString const &, QString const &) {}
 	void error(QString const &, QString const &) {}
 	void information(QString const &, QString const &) {}
+	int prompt(docstring const &, docstring const &, int default_but, int,
+		   docstring const &, docstring const &) { return default_but; }
 };
 
 
@@ -371,11 +374,26 @@ void SystemcallPrivate::waitAndProcessEvents()
 }
 
 
+namespace {
+
+bool queryStopCommand(QString const & cmd)
+{
+	docstring text = bformat(_(
+		"The command\n%1$s\nhas not yet completed.\n\n"
+		"Do you want to stop it?"), qstring_to_ucs4(cmd));
+	return ProgressInterface::instance()->prompt(_("Stop command?"), text,
+			1, 1, _("&Stop it"), _("Let it &run")) == 0;
+}
+
+}
+
+
 bool SystemcallPrivate::waitWhile(State waitwhile, bool process_events, int timeout)
 {
 	if (!process_)
 		return false;
 
+	bool timedout = false;
 	process_events_ = process_events;
 
 	// Block GUI while waiting,
@@ -383,8 +401,24 @@ bool SystemcallPrivate::waitWhile(State waitwhile, bool process_events, int time
 	if (!process_events_) {
 		if (waitwhile == Starting)
 			return process_->waitForStarted(timeout);
-		if (waitwhile == Running)
-			return process_->waitForFinished(timeout);
+		if (waitwhile == Running) {
+			int bump = 2;
+			while (!timedout) {
+				if (process_->waitForFinished(timeout))
+					return true;
+				bool stop = queryStopCommand(cmd_);
+				// The command may have finished in the meantime
+				if (process_->state() == QProcess::NotRunning)
+					return true;
+				if (stop) {
+					timedout = true;
+					process_->kill();
+				} else {
+					timeout *= bump;
+					bump = 3;
+				}
+			}
+		}
 		return false;
 	}
 
@@ -399,10 +433,21 @@ bool SystemcallPrivate::waitWhile(State waitwhile, bool process_events, int time
 	// process events while waiting whith timeout
 	QTime timer;
 	timer.start();
-	while (state == waitwhile && state != Error && timer.elapsed() < timeout) {
+	while (state == waitwhile && state != Error && !timedout) {
 		waitAndProcessEvents();
+		if (timer.elapsed() > timeout) {
+			bool stop = queryStopCommand(cmd_);
+			// The command may have finished in the meantime
+			if (process_->state() == QProcess::NotRunning)
+				break;
+			if (stop) {
+				timedout = true;
+				process_->kill();
+			} else
+				timeout *= 3;
+		}
 	}
-	return (state != Error) && (timer.elapsed() < timeout);
+	return (state != Error) && !timedout;
 }
 
 
