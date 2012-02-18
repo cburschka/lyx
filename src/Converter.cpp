@@ -50,6 +50,7 @@ string const token_base("$$b");
 string const token_to("$$o");
 string const token_path("$$p");
 string const token_orig_path("$$r");
+string const token_orig_from("$$f");
 string const token_encoding("$$e");
 string const token_latex_encoding("$$E");
 
@@ -412,6 +413,7 @@ bool Converters::convert(Buffer const * buffer,
 			command = subst(command, token_to, quoteName(outfile2));
 			command = subst(command, token_path, quoteName(onlyPath(infile.absFileName())));
 			command = subst(command, token_orig_path, quoteName(onlyPath(orig_from.absFileName())));
+			command = subst(command, token_orig_from, quoteName(onlyFileName(orig_from.absFileName())));
 			command = subst(command, token_encoding, buffer ? buffer->params().encoding().iconvName() : string());
 			command = libScriptSearch(command);
 
