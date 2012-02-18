@@ -966,7 +966,7 @@ def checkConverterEntries():
     # Currently, lyxpak outputs a gzip compressed tar archive on *nix
     # and a zip archive on Windows.
     # So, we configure the appropriate version according to the platform.
-    cmd = r'\converter lyx %s "python -tt $$s/scripts/lyxpak.py $$r/$$i" ""'
+    cmd = r'\converter lyx %s "python -tt $$s/scripts/lyxpak.py $$r/$$f" ""'
     if os.name == 'nt':
         addToRC(r'\Format lyxzip     zip    "LyX Archive (zip)"     "" "" ""  "document,menu=export"')
         addToRC(cmd % "lyxzip")

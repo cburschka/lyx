@@ -166,6 +166,9 @@ What's new
 
 - Find correctly the file Sweave.sty with older R versions (bug 8019).
 
+- Fix lyx archive creation when the document file name contains spaces
+  or other characters which are special to latex.
+
 * TEX2LYX
 
 - Full support for the command \date{} (bug 7844).
