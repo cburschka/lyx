@@ -1,5 +1,5 @@
 # this script compiles the three different installer variants at once
-# this is necessary when the installer should e.g. be built by SCons or CMake
+# this is necessary when the installer should e.g. be built by CMake
 
 SetCompressor /SOLID lzma
 

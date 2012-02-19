@@ -127,10 +127,6 @@ Win32/packaging/AltInstaller/specials/PDFViewWin/PDFViewWin.res \
 Win32/packaging/AltInstaller/specials/AspellRepositories.txt \
 Win32/packaging/AltInstaller/specials/AspellDictionaryNames.txt \
 Win32/pdfview/pdfview.nsi \
-scons/qt4.py \
-scons/scons_manifest.py \
-scons/SConstruct \
-scons/scons_utils.py \
 Win32/packaging/installer/lyx.nsi.cmake \
 Win32/packaging/installer/settings.nsh.cmake \
 Win32/vld/cmake/CMakeLists.txt \

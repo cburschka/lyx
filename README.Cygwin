@@ -15,26 +15,12 @@ To build lyx, you will need to install the following cygwin packages
     gcc           gettext-devel    libQtCore4         pkg-config
     gcc4          libintl8         libQtCore4-devel   python
 
-Two building systems can be used to build lyx on cygwin: the traditional
-autotools (autoconf, automake, make etc), and a scons build system.
-The former is the preferred method and it does not differ from building lyx
-on any typical posix system, so you are referred to the INSTALL file.
+Currently only the traditional autotools (autoconf, automake, make etc)
+build system is recommended to build LyX on cygwin. It does not differ
+from building lyx on any typical posix system, so you are referred to the
+INSTALL file.
 Note that it is not advisable using the cmake build system on cygwin for
 the reasons explained here: http://www.cmake.org/Bug/view.php?id=10122
-
-If you prefer using scons, you will have to install it separately, as it
-is not available as a cygwin package, and then build lyx with the command
-
-    > python scons.py -f development/scons/SConstruct mode=release install
-
-Optionally, you can install to a DESTDIR using a command similar to 
-
-    > python scons.py -f development/scons/SConstruct mode=release DESTDIR=./test install
-
-For more details about the use of scons, please refer to INSTALL.scons.
-However, be aware that scons is not fully supported on cygwin and you may
-be missing some features (reverse dvi/pdf search, for example) and some
-cygwin-specific ancillary programs that you get when building with autotools.
 
 When lyx is built as outlined above, it will be a X-Window application,
 so you will need a X-server for running it. It is possible to build lyx

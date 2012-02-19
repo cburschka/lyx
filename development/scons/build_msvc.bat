@@ -1,1 +1,0 @@
-call scons install prefix=..\..\build-msvc use_vc=yes spell=hunspell frontend=qt4 mode=release version_suffix=21 gettext=system nls=yes extra_inc_path=..\..\lyx-windows-deps-msvc2010\include extra_lib_path=..\..\lyx-windows-deps-msvc2010\lib extra_bin_path=..\..\lyx-windows-deps-msvc2010\bin qt_dir=..\..\..\..\Qt
