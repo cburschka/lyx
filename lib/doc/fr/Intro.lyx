@@ -199,20 +199,20 @@ LyX est un système de préparation de documents.
  des index, etc\SpecialChar \ldots{}
  Il est très bon pour tous les documents de toutes tailles
  pour lesquels sont requises les fonctions habituelles d'un traitement de
- texte : numérotation des sections et pagination automatiques, correction
+ texte: numérotation des sections et pagination automatiques, correction
  orthographique, et ainsi de suite.
  Il peut aussi servir à écrire une lettre à votre maman, même si je vous
  accorde qu'il existe sans doute des programmes plus simples pour ça.
  Il n'est certainement pas le meilleur outil pour créer des affiches, tracts
  ou publicités (nous expliquerons pourquoi plus tard), bien qu'avec quelque
  effort vous puissiez faire tout cela aussi.
- Quelques exemples de ce à quoi il peut servir : des rapports, des lettres,
+ Quelques exemples de ce à quoi il peut servir: des rapports, des lettres,
  des dissertations et des thèses, des notes de conférence, des cahiers de
- séminaire, des actes de conférence, de la documentation de logiciel, des
- livres (sur PostgreSQL, les capteurs à distance, la cryptologie, des romans,
- de la poésie, et même un ou deux livres pour enfants), des articles dans
- des publications scientifiques, des scripts pour des pièces de théâtre
- ou des films, des propositions de contrats\SpecialChar \ldots{}
+ séminaire, des actes de congrès, de la documentation de logiciel, des livres
+ (sur PostgreSQL, les capteurs à distance, la cryptologie, des romans, de
+ la poésie, et même un ou deux livres pour enfants), des articles dans des
+ publications scientifiques, des scripts pour des pièces de théâtre ou des
+ films, des propositions de contrats\SpecialChar \ldots{}
  vous voyez le genre.
 \end_layout
 
@@ -223,7 +223,7 @@ LyX est un programme qui offre une approche moderne de l'écriture de documents
  Il est destiné aux auteurs qui veulent obtenir rapidement un rendu professionne
 l avec le minimum d'effort sans devenir des spécialistes en typographie.
  Le travail de typographie sera pris en charge en majorité par l'ordinateur,
- non par l'auteur ; avec LyX, l'auteur peut se concentrer sur le contenu
+ non par l'auteur; avec LyX, l'auteur peut se concentrer sur le contenu
  de ce qu'il écrit.
 \end_layout
 
@@ -242,51 +242,11 @@ _
 \end_inset
 
 , est devenu un moyen de mettre du texte en valeur.
- Pour créer une table, il fallait évaluer au préalable la largeur des colonnes
+ Pour créer un tableau, il fallait évaluer au préalable la largeur des colonnes
  et mettre en place les tabulations adaptées.
  C'était la même chose pour écrire des lettres et tous les textes justifiés
  à droite.
- Les césures nécessitaient un oeil
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-NdT : Pour conserver une bonne lisibilité dans la fenêtre LyX, l'o e dans
- l'o a volontairement été évité.
- Il faut savoir qu'il s'écrit 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-oe{}
-\end_layout
-
-\end_inset
-
-, c'est-à-dire 
-\backslash
-oe{} en mode TeX.
- Consultez la section 
-\emph on
-LyX et la typographie française
-\emph default
- du 
-\emph on
-Manuel
-\begin_inset space ~
-\end_inset
-
-d'Apprentissage
-\emph default
-.
-\end_layout
-
-\end_inset
-
- exercé et beaucoup de prévoyance.
+ Les césures nécessitaient un œil exercé et beaucoup de prévoyance.
 \end_layout
 
 \begin_layout Standard
@@ -307,7 +267,7 @@ What You See Is What You Get
 \begin_inset Quotes frd
 \end_inset
 
-
+.
 \begin_inset Foot
 status collapsed
 
@@ -325,7 +285,6 @@ Vous voyez ce que vous obtenez.
 
 \end_inset
 
-.
  Malheureusement, ce paradigme devient souvent 
 \begin_inset Quotes fld
 \end_inset
@@ -334,7 +293,7 @@ What You See Is All You Get
 \begin_inset Quotes frd
 \end_inset
 
-
+.
 \begin_inset Foot
 status collapsed
 
@@ -352,7 +311,7 @@ Vous n'obtenez que ce que vous voyez.
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -366,7 +325,7 @@ ce que vous voulez faire
 \emph on
 style
 \emph default
-
+.
 \begin_inset Foot
 status collapsed
 
@@ -375,17 +334,17 @@ Pour être honnête, la plupart des versions récentes des suites bureautiques
  les plus populaires ont aujourd'hui des sortes de feuilles de style qui
  présentent une approche semblable.
  Cependant, l'expérience montre qu'elles sont encore rarement utilisées
- en pratique.
+ en pratique (ou qu'elles le sont mal, comme dans ces documents passant
+ de main en main avec le même style redéfini sous des noms différents).
 \end_layout
 
 \end_inset
 
-.
- Voyons un petit exemple :
+ Voyons un petit exemple.
 \end_layout
 
 \begin_layout Standard
-Supposons que vous tapez un rapport.
+Supposons que vous tapiez un rapport.
  Pour commencer, vous voulez une section appelée 
 \begin_inset Quotes fld
 \end_inset
@@ -571,22 +530,6 @@ LyX et les autres traitements de texte
 \end_inset
 
 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Non, nous ne cherchons pas ici à déclarer (ou à gagner) la guerre sainte
- des traitements de texte.
- Mais nous pensons vraiment qu'il est important de décrire les possibilités
- de LyX.
- Et l'un de ses aspects les plus importants, le WYSIWYM, est un concept
- fondamentalement différent de ce que la plupart des gens pensent qu'est
- un traitement de texte.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -594,11 +537,11 @@ Voici une liste de choses que vous ne trouverez pas dans LyX :
 \end_layout
 
 \begin_layout Itemize
-une règle ;
+une règle;
 \end_layout
 
 \begin_layout Itemize
-des taquets de tabulation ;
+des taquets de tabulation;
 \end_layout
 
 \begin_layout Itemize
@@ -617,7 +560,7 @@ Espace
 Les taquets de tabulation, au même titre que la règle qui vous indique la
  position des éléments dans la page, n'ont aucune utilité avec LyX.
  Le programme s'occupe de placer les éléments dans la page, pas vous.
- Pour les espaces, c'est pareil ; LyX en ajoute quand c'est nécessaire,
+ Pour les espaces, c'est pareil: LyX les ajoute quand c'est nécessaire,
  en fonction du contexte.
  Le fait de ne pas pouvoir taper deux lignes vides à la suite vous agacera
  au début, mais prendra tout son sens une fois que vous penserez en termes
@@ -630,24 +573,24 @@ Voilà quelques notions qui existent avec LyX, mais ne sont pas utilisées
 \end_layout
 
 \begin_layout Itemize
-contrôle de l'indentation ;
+contrôle de l'indentation;
 \end_layout
 
 \begin_layout Itemize
-sauts de page ;
+sauts de page;
 \end_layout
 
 \begin_layout Itemize
 interligne (simple, double, etc\SpecialChar \ldots{}
-) ;
+);
 \end_layout
 
 \begin_layout Itemize
-espacement, horizontal et vertical ;
+espacement, horizontal et vertical;
 \end_layout
 
 \begin_layout Itemize
-polices et tailles de police ;
+polices et tailles de police;
 \end_layout
 
 \begin_layout Itemize
@@ -660,11 +603,11 @@ Même si elles existent dans LyX, vous n'en aurez généralement pas besoin.
  LyX prendra en charge tout cela pour vous, en fonction de ce que vous écrivez.
  Les différentes parties du document sont automatiquement imprimées avec
  des types de caractères et des tailles de police différents.
- L'indentation dépend du contexte ; des paragraphes de types différents
- suivent des règles d'indentation différentes.
+ L'indentation dépend du contexte; des paragraphes de types différents suivent
+ des règles d'indentation différentes.
  Les sauts de page, eux aussi, sont gérés automatiquement.
  En général, l'interligne, l'espace entre les mots et entre les paragraphes
- est variable, et est défini par LyX
+ est variable, et est défini par LyX.
 \begin_inset Foot
 status collapsed
 
@@ -682,22 +625,22 @@ de
 \begin_inset space ~
 \end_inset
 
-l'Utilisateur
+l'utilisateur
 \emph default
- et/ou aux 
+ ou au manuel des 
 \emph on
 Options
 \begin_inset space ~
 \end_inset
 
-Avancées
+avancées
 \emph default
- pour avoir des détails.
+ pour les détails.
 \end_layout
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -706,19 +649,19 @@ Enfin, il y a quelques domaines où nous pensons que LyX (et LaTeX) surpasse
 \end_layout
 
 \begin_layout Itemize
-césure ;
+césure;
 \end_layout
 
 \begin_layout Itemize
-listes de tous types ;
+listes de tous types;
 \end_layout
 
 \begin_layout Itemize
-mathématiques ;
+mathématiques;
 \end_layout
 
 \begin_layout Itemize
-tables ;
+tableaux;
 \end_layout
 
 \begin_layout Itemize
@@ -726,12 +669,13 @@ références croisées.
 \end_layout
 
 \begin_layout Standard
-D'accord, un certain nombre de traitements de texte modernes peuvent gérer
- les symboles mathématiques, les tableaux et les césures, et beaucoup ont
- adopté des définitions de style et ont évolué en direction du concept WYSIWYM.
+Nous sommes d'accord, un certain nombre de traitements de texte modernes
+ peuvent gérer les symboles mathématiques, les tableaux et les césures,
+ et beaucoup ont adopté des définitions de style et ont évolué en direction
+ du concept WYSIWYM.
  Cependant, ils ne le font que depuis peu, alors que LyX est construit sur
  le système de préparation de document LaTeX.
- LaTeX est là depuis plus de 20 ans, et 
+ LaTeX est là depuis 1985, et 
 \shape slanted
 fonctionne.
 \end_layout
@@ -741,8 +685,11 @@ Qu'est-ce donc que LaTeX ?
 \end_layout
 
 \begin_layout Standard
-LaTeX est un système de préparation de document conçu par Leslie Lamport
- en 1985
+LaTeX est un système de préparation de document conçu par Leslie 
+\noun on
+Lamport
+\noun default
+ en 1985.
 \begin_inset Foot
 status collapsed
 
@@ -770,7 +717,7 @@ de
 \begin_inset space ~
 \end_inset
 
-l'Utilisateur
+l'utilisateur
 \emph default
 \SpecialChar \@.
 
@@ -778,15 +725,14 @@ l'Utilisateur
 
 \end_inset
 
-.
- À son tour, il a été construit à partir d'un langage de composition appelé
- TeX, créé par Donald 
+ À son tour, il a été construit à partir d'un langage de composition typographiq
+ue appelé TeX, créé par Donald 
 \noun on
 Knuth
 \noun default
  en 1984.
- TeX prend une séquence de commandes typographiques, écrites dans un script
- dans un fichier ASCII, et les exécute.
+ TeX prend une séquence de commandes typographiques, écrites dans un fichier
+ ASCII, et les exécute.
  La plupart des 
 \begin_inset Quotes fld
 \end_inset
@@ -823,7 +769,7 @@ NdT :
 \begin_inset Quotes fld
 \end_inset
 
-indépendant du périphérique
+indépendant du périphérique d'affichage
 \begin_inset Quotes frd
 \end_inset
 
@@ -897,13 +843,13 @@ Lamport
  qui fournit une interface conviviale pour les anciennes commandes de création
  de macros de TeX, des commandes facilitant l'utilisation de nouvelles polices,
  et d'autres extensions.
- En fait, LaTeX est pratiquement un langage complet à lui tout seul ! Des
+ En fait, LaTeX est pratiquement un langage complet à lui tout seul! Des
  utilisateurs du monde entier ont créé leur propres extensions de LaTeX,
  en plus de celles qui sont en standard.
 \end_layout
 
 \begin_layout Standard
-Il y a deux façons d'étendre LaTeX : les classes et les styles.
+Il y a deux façons d'étendre LaTeX: les classes et les styles.
  Une 
 \shape slanted
 classe
@@ -913,7 +859,7 @@ classe
  On trouve des classes pour des transparents, pour des articles de journaux
  de physique et de maths\SpecialChar \ldots{}
  de nombreuses universités ont même une classe pour
- la composition de leurs thèses ! Le 
+ la composition de leurs thèses! Le 
 \shape slanted
 style
 \shape default
@@ -925,11 +871,11 @@ comportement
  différent applicable dans n'importe quel document.
  Par exemple, LyX contrôle les marges et l'interligne grâce à deux fichiers
  de style conçus à cet effet.
- Il y a des fichiers de style pour plein de trucs : étiquettes, enveloppes,
- modifier l'indentation, ajouter des polices, manipuler des objets graphiques,
- définir des en-têtes de page fantaisie, personnaliser les bibliographies,
- modifier la place et l'allure des notes de bas de page, tableaux, et figures,
- personnaliser les listes, et cetera.
+ Il y a des fichiers de style pour plein d'éléments: créer des étiquettes,
+ imprimer des enveloppes, modifier l'indentation, ajouter des polices, manipuler
+ des objets graphiques, définir des en-têtes de page fantaisie, personnaliser
+ les bibliographies, modifier la place et l'allure des notes de bas de page,
+ tableaux, et figures, personnaliser les listes, et cætera.
 \end_layout
 
 \begin_layout Standard
@@ -937,59 +883,40 @@ Voici un résumé :
 \end_layout
 
 \begin_layout Description
-TeX: langage de composition avec possibilité de macros.
+TeX: langage de composition avec possibilité de macros;
 \end_layout
 
 \begin_layout Description
-LaTeX: paquetage de macros basé sur TeX\SpecialChar \@.
-
+LaTeX: paquetage de macros basé sur TeX;
 \end_layout
 
 \begin_layout Description
-classes: définitions d'un type de document, utilisant LaTeX\SpecialChar \@.
-
+classes: définitions d'un type de document, utilisant LaTeX;
 \end_layout
 
 \begin_layout Description
-styles: modifications du comportement implicite de LaTeX d'une façon donnée.
+styles: modifications du comportement implicite de LaTeX d'une façon donnée;
 \end_layout
 
 \begin_layout Description
-LyX: traitement de texte visuel, WYSIWYM, qui à l'impression utilise LaTeX
- dans toute sa splendeur.
+LyX: traitement de texte visuel, WYSIWYM, qui utilise LaTeX pour la typographie.
 \end_layout
 
 \begin_layout Standard
-LaTeX rend LyX diffèrent des autres traitements de texte.
- LyX est une interface graphique utilisateur
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
+Cette section tente de rendre compte des différences entre LyX et les autres
+ traitements de texte.
+ En bref, LaTeX 
 \emph on
-Graphical User Interface
+est
 \emph default
- (GUI) en anglais
-\end_layout
-
-\end_inset
-
- d'accueil pour LaTeX, conçue pour saisir des documents sans connaître les
- macro-commandes de LaTeX.
- Cependant, LyX ne propose pas d'interface graphique pour toutes les (innombrabl
-es) macros LaTeX existantes, mais il les accepte, ce qui le rend aussi fonctionn
-el que LaTeX.
-\end_layout
-
-\begin_layout Standard
-Exactement comme LaTeX, LyX se focalise sur le contexte de vos écrits –
- le 
+ la différence.
+ En utilisant LaTeX comme processeur typographique, LyX vous permet de vous
+ focaliser sur le contenu de vos écrits – le 
 \shape italic
 quoi.
 
 \shape default
- L'ordinateur s'occupe lui du 
+ L'ordinateur s'occupe quant à lui du 
 \shape slanted
 comment
 \shape default
@@ -1010,10 +937,10 @@ Pour répondre plus facilement à vos questions tout en décrivant toutes les
 \end_layout
 
 \begin_layout Standard
-Bien que LyX ait maintenant bien dépassé la version 1.0, certains documents
- seront peut-être incomplets ou un peu en retard dans la mise à jour, même
- si nous travaillons dur pour suivre les évolutions.
- Comme pour l'ensemble de LyX, les manuels sont l'oeuvre de bénévoles qui
+Le développement de LyX ne s'arrêtera jamais, nous l'espérons, et de ce
+ fait certains documents seront peut-être incomplets ou un peu en retard
+ dans la mise à jour, même si nous travaillons dur pour suivre les évolutions.
+ Comme pour l'ensemble de LyX, les manuels sont l'œuvre de bénévoles qui
  ont un 
 \begin_inset Quotes fld
 \end_inset
@@ -1024,7 +951,7 @@ vrai
 
  travail, une famille, la vaisselle à laver, la litière du chat à changer,
  et ainsi de suite.
- Si vous êtes volontaire pour nous rejoindre, jetez un oeil attentif sur
+ Si vous êtes volontaire pour nous rejoindre, jetez un œil attentif sur
  la section
 \begin_inset space ~
 \end_inset
@@ -1042,8 +969,8 @@ reference "sec:Contrib"
 \begin_layout Standard
 D'autre part, faites-nous une faveur – s'il arrivait que dans cette documentatio
 n quelque chose vous embrouille, ne soit pas bien clair, ou carrément faux,
- faites-le nous savoir ! Vous pouvez contacter les préposés à la mise à
- jour de la documentation à l'adresse email 
+ faites-le nous savoir! Vous pouvez contacter les préposés à la mise à jour
+ de la documentation à l'adresse email 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -1099,8 +1026,7 @@ Si certains d'entre vous ont imprimé les manuels, d'autres les lisent en
 \family sans
 Naviguer
 \family default
-, qui la fait apparaître automatiquement.
- (Essayez!)
+, qui la fait apparaître automatiquement (essayez!).
 \end_layout
 
 \begin_layout Standard
@@ -1114,10 +1040,9 @@ reference "sec:Contrib"
 
 \end_inset
 
-.
- (Dans la version papier il y a un numéro à la place.) Si vous cliquez sur
- cet insert avec le bouton gauche de la souris, une fenêtre s'ouvre avec
- la liste de toutes les références croisées du document.
+ (dans la version papier il y a un numéro à la place).
+ Si vous cliquez sur cet insert avec le bouton gauche de la souris, une
+ fenêtre s'ouvre avec la liste de toutes les références croisées du document.
  Cette introduction n'en a que deux, la première est dénommée 
 \begin_inset Quotes fld
 \end_inset
@@ -1144,18 +1069,7 @@ l'étiquette
  Revenir d'où vous venez est tout aussi simple, il suffit de cliquer sur
  le bouton 
 \family sans
-Revenir
-\family default
- ou de taper 
-\family sans
-C-<
-\family default
-.
- (Que signifie 
-\family sans
-C-<
-\family default
- ? La description est juste un peu plus loin.)
+Revenir.
 \end_layout
 
 \begin_layout Standard
@@ -1226,7 +1140,7 @@ Ctrl-
 
  pour la touche 
 \family sans
-Control ;
+Control;
 \end_layout
 
 \begin_layout Itemize
@@ -1243,7 +1157,7 @@ Shift-
 
  pour la touche 
 \family sans
-Majuscule ;
+Majuscule;
 \end_layout
 
 \begin_layout Itemize
@@ -1262,7 +1176,7 @@ Alt-
 \family sans
 Alt
 \family default
- ;
+;
 \end_layout
 
 \begin_layout Itemize
@@ -1290,7 +1204,7 @@ F12
 \begin_inset Quotes frd
 \end_inset
 
- sont les touches de fonctions ;
+ sont les touches de fonctions;
 \end_layout
 
 \begin_layout Itemize
@@ -1309,7 +1223,7 @@ Esc
 \family sans
 Échap
 \family default
- ;
+;
 \end_layout
 
 \begin_layout Itemize
@@ -1324,7 +1238,7 @@ Gauche
 \begin_inset Quotes frd
 \end_inset
 
- 
+,
 \begin_inset Quotes fld
 \end_inset
 
@@ -1336,7 +1250,7 @@ Droite
 \begin_inset Quotes frd
 \end_inset
 
- 
+, 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1348,7 +1262,7 @@ Haute
 \begin_inset Quotes frd
 \end_inset
 
- 
+, 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1360,7 +1274,7 @@ Basse
 \begin_inset Quotes frd
 \end_inset
 
- : les flèches de déplacement du curseur ;
+ sont les flèches de déplacement du curseur;
 \end_layout
 
 \begin_layout Itemize
@@ -1375,7 +1289,7 @@ Inser
 \begin_inset Quotes frd
 \end_inset
 
- 
+, 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1387,7 +1301,7 @@ Suppr
 \begin_inset Quotes frd
 \end_inset
 
- 
+, 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1399,7 +1313,19 @@ Début
 \begin_inset Quotes frd
 \end_inset
 
- 
+ ou 
+\begin_inset Quotes fld
+\end_inset
+
+
+\family sans
+Orig
+\family default
+
+\begin_inset Quotes frd
+\end_inset
+
+, 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1411,7 +1337,7 @@ Fin
 \begin_inset Quotes frd
 \end_inset
 
- 
+, 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1423,7 +1349,23 @@ PageUp
 \begin_inset Quotes frd
 \end_inset
 
- 
+ ou 
+\begin_inset Quotes fld
+\end_inset
+
+
+\family sans
+Pg
+\begin_inset space \thinspace{}
+\end_inset
+
+Préc
+\family default
+
+\begin_inset Quotes frd
+\end_inset
+
+, 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1435,7 +1377,23 @@ PageDown
 \begin_inset Quotes frd
 \end_inset
 
- : sont les 6 touches situées, sur la plupart des claviers de PC, au dessus
+ ou 
+\begin_inset Quotes fld
+\end_inset
+
+
+\family sans
+Pg
+\begin_inset space \thinspace{}
+\end_inset
+
+Suiv
+\family default
+
+\begin_inset Quotes frd
+\end_inset
+
+ sont les 6 touches situées, sur la plupart des claviers de PC, au dessus
  des flèches de déplacement du curseur.
  
 \begin_inset Quotes fld
@@ -1486,7 +1444,7 @@ Next
 \end_inset
 
  sur certains claviers, ou sérigraphiées de flèches vers le haut et vers
- le bas barrées de plusieurs traits ;
+ le bas barrées de plusieurs traits;
 \end_layout
 
 \begin_layout Itemize
@@ -2155,8 +2113,7 @@ Les manuels
 \end_layout
 
 \begin_layout Standard
-La liste suivante décrit le contenu de chaque fichier de la documentation
- :
+La liste suivante décrit le contenu de chaque fichier de la documentation:
 \end_layout
 
 \begin_layout Description
@@ -2176,38 +2133,14 @@ Manuel
 \begin_inset space ~
 \end_inset
 
-d'Apprentissage
+d'apprentissage
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
 Si vous commencez avec LyX, et n'avez jamais touché à LaTeX, vous devriez
  commencer par là.
- Si vous pensez que le LaTeX est ce qui sert à faire les préservatifs, c'est
- qu'il vous faut relire le Chapitre
-\begin_inset space ~
-\end_inset
-
-1, puis lire le 
-\emph on
-Manuel
-\begin_inset space ~
-\end_inset
-
-d'Apprentissage
-\emph default
-.
- Après sa lecture, vous penserez encore que le LaTeX est une substance extensibl
-e – mais au moins, vous 
-\emph on
-saurez
-\emph default
- comment utiliser LyX.
- 
-\end_layout
-
-\begin_layout Standard
-Si vous connaissez déjà LaTeX, vous devriez lire au moins la section 
+ Si vous connaissez déjà LaTeX, vous devriez lire au moins la section 
 \begin_inset Quotes fld
 \end_inset
 
@@ -2215,21 +2148,7 @@ LyX pour les connaisseurs de LaTeX
 \begin_inset Quotes frd
 \end_inset
 
- (et passer en revue le reste du document ne pourrait pas faire de tort).
-\end_layout
-
-\begin_layout Standard
-Et lorsque vous vous sentez un peu perdu avec LyX, essayez de lire attentivement
- le 
-\emph on
-Manuel
-\begin_inset space ~
-\end_inset
-
-d'Apprentissage
-\emph default
- avant de consulter les autres manuels.
- C'est un bon tremplin.
+ (et passer en revue le reste du document ne peut pas faire de tort).
 \end_layout
 
 \end_deeper
@@ -2245,12 +2164,12 @@ de
 \begin_inset space ~
 \end_inset
 
-l'Utilisateur
+l'utilisateur
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Le document de base.
+C'est le document de base.
  Il couvre la 
 \emph on
 majeure partie
@@ -2262,7 +2181,7 @@ Manuel
 \begin_inset space ~
 \end_inset
 
-d'Apprentissage\SpecialChar \@.
+d'apprentissage\SpecialChar \@.
 .
 \end_layout
 
@@ -2272,7 +2191,12 @@ Objets
 \begin_inset space ~
 \end_inset
 
-Insérés Extension du 
+insérés 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Extension du 
 \emph on
 Guide
 \begin_inset space ~
@@ -2285,8 +2209,9 @@ de L'Utilisateur
  Il inclut également de nombreuses astuces connus des spécialistes de LaTeX.
 \end_layout
 
+\end_deeper
 \begin_layout Description
-Math
+Maths
 \end_layout
 
 \begin_deeper
@@ -2308,7 +2233,7 @@ Options
 \begin_inset space ~
 \end_inset
 
-Avancées
+avancées
 \end_layout
 
 \begin_deeper
@@ -2340,15 +2265,9 @@ C'est une description de certaines fonctions avancées de LyX, notamment
  la façon de personnaliser son comportement général.
  Y sont abordés la configuration du clavier (raccourcis), l'internationalisation
 , et les fichiers de configuration.
- Inutile de le consulter avant d'avoir lu le 
-\emph on
-Manuel
-\begin_inset space ~
-\end_inset
-
-d'Apprentissage
-\emph default
-.
+ Il contient également les informations nécessaires concernant les fichiers
+ de formats, indispensables pour permettre à LyX de reconnaître vos propres
+ classes et paquetages.
 \end_layout
 
 \end_deeper
@@ -2358,7 +2277,7 @@ Raccourcis
 
 \begin_deeper
 \begin_layout Standard
-Des tableaux avec les raccourcis claviers qui sont définis actuellement
+Contient des tableaux avec les raccourcis claviers qui sont définis actuellement
  dans LyX.
 \end_layout
 
@@ -2392,7 +2311,7 @@ de
 \begin_inset space ~
 \end_inset
 
-l'Utilisateur
+l'utilisateur
 \emph default
  contient par exemple 
 \emph on
@@ -2419,13 +2338,13 @@ Répétons un point important :
 
 \begin_layout Standard
 \align center
-Si vous commencez avec LyX, lisez le 
+Si vous débutez avec LyX, lisez le 
 \emph on
 Manuel
 \begin_inset space ~
 \end_inset
 
-d'Apprentissage
+d'apprentissage
 \emph default
  dès maintenant\SpecialChar \@.
 
@@ -2473,7 +2392,7 @@ Lors de votre utilisation de LyX, vous pouvez rencontrer un comportement
  que vous considérez comme un bogue.
  Les plantages sont rares, mais ça peut arriver.
  Les problèmes d'interface utilisateur sont considérés par l'équipe LyX
- comme des bogues importants : des indications sur les parties de l'interface
+ comme des bogues importants: des indications sur les parties de l'interface
  LyX que vous trouvez confuses et peu claires nous sont précieuses.
 \end_layout
 
@@ -2512,7 +2431,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.lyx.org/
+http://www.lyx.org/WebFr.Home
 \end_layout
 
 \end_inset
@@ -2523,7 +2442,7 @@ http://www.lyx.org/
 \begin_layout Standard
 Un bon rapport de bogue doit au minimum comprendre la version de LyX avec
  laquelle vous avez rencontré le problème.
- Envoyez les descriptions les plus exactes et détaillées possibles : plus
+ Envoyez les descriptions les plus exactes et détaillées possibles: plus
  les développeurs devront passer de temps à trouver l'origine du bogue,
  moins ils en auront pour d'autres améliorations.
  Dites sur quel système, et dans quelle version de celui-ci vous faites
@@ -2536,6 +2455,20 @@ Un bon rapport de bogue doit au minimum comprendre la version de LyX avec
 config.log
 \family default
 , et dites quel compilateur vous utilisez.
+\end_layout
+
+\begin_layout Standard
+Le traceur de bogues et la liste de messagerie de développeurs sont anglophones,
+ vous pouvez utiliser la liste de messagerie francophone 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-fr@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+, bien qu'elle soit théoriquement réservée aux seuls problèmes de francisation
+ de LyX.
 \end_layout
 
 \begin_layout Standard
@@ -2566,7 +2499,7 @@ Contribuer à la documentation
 \end_layout
 
 \begin_layout Standard
-La documentation de LyX est assez exhaustive ; cependant LyX est en constant
+La documentation de LyX est assez exhaustive; cependant LyX est en constant
  développement, et chaque nouvelle version ajoute de nouvelles fonctions.
  Vous pouvez trouver qu'une partie de la documentation nécessite des amélioratio
 ns.
@@ -2598,7 +2531,7 @@ Se joindre à l'équipe de documentation
 
 \begin_layout Standard
 Comme pour l'ensemble du projet LyX, toute aide est bienvenue pour la documentat
-ion de LyX ! Si vous êtes volontaire, merci de respecter 
+ion de LyX! Si vous êtes volontaire, merci de respecter 
 \shape italic
 avant tout
 \shape default
@@ -2635,7 +2568,7 @@ de
 \begin_inset space ~
 \end_inset
 
-l'Utilisateur
+l'utilisateur
 \shape default
  et le 
 \emph on
@@ -2643,7 +2576,7 @@ Manuel
 \begin_inset space ~
 \end_inset
 
-d'Apprentissage
+d'apprentissage
 \emph default
 .
  
@@ -2658,7 +2591,7 @@ Manuel
 \begin_inset space ~
 \end_inset
 
-d'Apprentissage
+d'apprentissage
 \emph default
  et le 
 \shape italic
@@ -2670,7 +2603,7 @@ de
 \begin_inset space ~
 \end_inset
 
-l'Utilisateur
+l'utilisateur
 \shape default
  sont toujours les documents les plus à jour de la collection.
  Ils devraient vous aider à vous imprégner de l'aspect et de la structure
