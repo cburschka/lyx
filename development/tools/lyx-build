@@ -18,7 +18,7 @@ MAKEOPTS="-j4";
 
 
 cd $SRCDIR/
-VERSION=$(head configure.ac | grep AC_INIT | perl -e 'while (<>) {m/(\d\.\d+\.\d+)/; print $1;}');
+VERSION=$(head configure.ac | grep AC_INIT | perl -e 'while (<>) {m/AC_INIT\(LyX,([^,]+)/; print $1;}');
 
 echo "This is version $VERSION.";
 echo -n "Ready to build source packages...";
