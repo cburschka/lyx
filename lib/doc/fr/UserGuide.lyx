@@ -10712,13 +10712,6 @@ arg   "space-insert thin"
 
 \begin_layout Subsubsection
 Encore plus d'espaces
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Encore-plus-d'espaces"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -22259,7 +22252,7 @@ La figure
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Ornithorinque"
+reference "fig:Ornithorinque"
 
 \end_inset
 
@@ -22328,7 +22321,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:Ornithorinque"
+name "fig:Ornithorinque"
 
 \end_inset
 
@@ -22347,25 +22340,13 @@ Un ornithorynque sévèrement déformé dans un flottant de figure.
 
 \begin_layout Standard
 Ce flottant de figure montrent aussi comment ajouter une étiquette et créer
- une référence croisée pointant sur elle.
- Comme c'est décrit dans la section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Références-croisées"
-
-\end_inset
-
-, vous pouvez simplement insérer une étiquette dans la légende à l'aide
- du menu 
+ une référence croisée pointant sur elle : Insérez-vous une étiquette dans
+ la légende à l'aide du menu 
 \family sans
 Insérer\SpecialChar \menuseparator
 Étiquette
 \family default
- ou le bouton
+ ou le bouton 
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
@@ -22406,7 +22387,22 @@ ci-dessous
 \begin_inset Quotes frd
 \end_inset
 
- du tout !
+ du tout ! 
+\lang english
+For more about cross-references, see
+\lang french
+ section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Références-croisées"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -22434,7 +22430,7 @@ reference "sub:Liste-des-figures,"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Deux-images-déformées."
+reference "fig:Deux-images-déformées."
 
 \end_inset
 
@@ -22563,7 +22559,7 @@ Ornithorynque
 Deux images déformées.
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:Deux-images-déformées."
+name "fig:Deux-images-déformées."
 
 \end_inset
 
@@ -22624,7 +22620,7 @@ arg   "float-insert table"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Flottant-de-tableau"
+reference "tab:Flottant-de-tableau"
 
 \end_inset
 
@@ -22643,7 +22639,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:Flottant-de-tableau"
+name "tab:Flottant-de-tableau"
 
 \end_inset
 
@@ -25470,7 +25466,7 @@ arg   "math-insert \\font"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Polices-et-commandes"
+reference "tab:Polices-et-commandes"
 
 \end_inset
 
@@ -25489,7 +25485,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:Polices-et-commandes"
+name "tab:Polices-et-commandes"
 
 \end_inset
 
@@ -26654,7 +26650,7 @@ Il y six variétés de références croisées:
 <référence> affiche le numéro de l'élément, c'est le choix implicite:
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Deux-images-déformées."
+reference "fig:Deux-images-déformées."
 
 \end_inset
 
@@ -26690,7 +26686,7 @@ reference "eq:tanhExp"
 
 \begin_inset CommandInset ref
 LatexCommand pageref
-reference "cap:Deux-images-déformées."
+reference "fig:Deux-images-déformées."
 
 \end_inset
 
@@ -26713,7 +26709,7 @@ page
  suivi du numéro de la page sur laquelle se trouve l'élément:
 \begin_inset CommandInset ref
 LatexCommand vpageref
-reference "cap:Deux-images-déformées."
+reference "fig:Deux-images-déformées."
 
 \end_inset
 
@@ -26740,7 +26736,7 @@ page
  et le numéro de la page:
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "cap:Deux-images-déformées."
+reference "fig:Deux-images-déformées."
 
 \end_inset
 
@@ -26932,7 +26928,7 @@ textuelle affiche la contenu de la légende ou le nom de la référence, par
  exemple un titre de section: 
 \begin_inset CommandInset ref
 LatexCommand nameref
-reference "cap:Deux-images-déformées."
+reference "fig:Deux-images-déformées."
 
 \end_inset
 
@@ -34697,7 +34693,7 @@ Le tableau
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Alphabet-latin1"
+reference "tab:Alphabet-latin1"
 
 \end_inset
 
@@ -34756,7 +34752,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:Alphabet-latin1"
+name "tab:Alphabet-latin1"
 
 \end_inset
 
@@ -37515,7 +37511,7 @@ La liste suivante reprend tous les caractères accentués qui peuvent être
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Alphabet-latin1"
+reference "tab:Alphabet-latin1"
 
 \end_inset
 
@@ -48272,7 +48268,7 @@ Pour comprendre les unités de longueur utilisées dans cette documentation,
  le tableau 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Unités"
+reference "tab:Unités"
 
 \end_inset
 
@@ -48292,7 +48288,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:Unités"
+name "tab:Unités"
 
 \end_inset
 

@@ -7385,7 +7385,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:Paragraph-in-the"
+name "fig:Paragraph-in-the"
 
 \end_inset
 
@@ -7427,7 +7427,7 @@ book
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Paragraph-in-the"
+reference "fig:Paragraph-in-the"
 
 \end_inset
 
@@ -10017,7 +10017,7 @@ Horizontal Space
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:Units-available-in"
+reference "chap:Units-available-in"
 
 \end_inset
 
@@ -10169,13 +10169,6 @@ arg   "space-insert thin"
 
 \begin_layout Subsubsection
 More Spaces
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:More-Spaces"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -11108,7 +11101,7 @@ Custom
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:Units-available-in"
+reference "chap:Units-available-in"
 
 \end_inset
 
@@ -17358,7 +17351,7 @@ Graphics
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:Units-available-in"
+reference "chap:Units-available-in"
 
 \end_inset
 
@@ -21234,7 +21227,7 @@ Figure
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Platypus"
+reference "fig:Platypus-distorted"
 
 \end_inset
 
@@ -21307,7 +21300,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:Platypus"
+name "fig:Platypus-distorted"
 
 \end_inset
 
@@ -21326,19 +21319,7 @@ A severely distorted platypus in a float.
 
 \begin_layout Standard
 This figure float also shows how to set a label and create a cross-reference
- to it.
- As described in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Cross-References"
-
-\end_inset
-
-, you can simply insert a label in the caption using the menu 
+ to it: Insert a label into the caption using the menu 
 \family sans
 Insert\SpecialChar \menuseparator
 Label
@@ -21380,6 +21361,18 @@ above
 \end_inset
 
  at all.
+ For more about cross-references, see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Cross-References"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -22076,7 +22069,7 @@ status collapsed
 
 \begin_inset CommandInset label
 LatexCommand label
-name "cha:Mathematical-Formulas"
+name "chap:Mathematical-Formulas"
 
 \end_inset
 
@@ -23174,7 +23167,7 @@ a
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Accent-names-and"
+reference "tab:Accent-names-and"
 
 \end_inset
 
@@ -23193,7 +23186,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:Accent-names-and"
+name "tab:Accent-names-and"
 
 \end_inset
 
@@ -24555,7 +24548,7 @@ arg   "math-insert \\font"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Typefaces-and-the"
+reference "tab:Typefaces-and-the"
 
 \end_inset
 
@@ -24574,7 +24567,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:Typefaces-and-the"
+name "tab:Typefaces-and-the"
 
 \end_inset
 
@@ -26384,7 +26377,7 @@ Appendix
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:Credits"
+reference "chap:Credits"
 
 \end_inset
 
@@ -33116,7 +33109,7 @@ Table
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:The-latin1-character"
+reference "tab:The-latin1-character"
 
 \end_inset
 
@@ -33174,7 +33167,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:The-latin1-character"
+name "tab:The-latin1-character"
 
 \end_inset
 
@@ -38905,7 +38898,7 @@ reference "sec:Tables"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:Mathematical-Formulas"
+reference "chap:Mathematical-Formulas"
 
 \end_inset
 
@@ -39455,7 +39448,7 @@ Inserts math constructs that are explained in chapter
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:Mathematical-Formulas"
+reference "chap:Mathematical-Formulas"
 
 \end_inset
 
@@ -45826,7 +45819,7 @@ inch, see Appendix
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:Units-available-in"
+reference "chap:Units-available-in"
 
 \end_inset
 
@@ -47915,7 +47908,7 @@ Units
 
 \begin_inset CommandInset label
 LatexCommand label
-name "cha:Units-available-in"
+name "chap:Units-available-in"
 
 \end_inset
 
@@ -47926,7 +47919,7 @@ name "cha:Units-available-in"
 To understand the units described in this documentation, 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Units"
+reference "tab:Units"
 
 \end_inset
 
@@ -47946,7 +47939,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:Units"
+name "tab:Units"
 
 \end_inset
 
@@ -48456,7 +48449,7 @@ em)
 Credits
 \begin_inset CommandInset label
 LatexCommand label
-name "cha:Credits"
+name "chap:Credits"
 
 \end_inset
 

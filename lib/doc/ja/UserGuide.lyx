@@ -11529,7 +11529,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename ../clipart/Abstract.pdf
-	lyxscale 25
 
 \end_inset
 
@@ -11542,7 +11541,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:概要環境内の段落"
+name "fig:概要環境内の段落"
 
 \end_inset
 
@@ -11594,7 +11593,7 @@ name "cap:概要環境内の段落"
 環境の例を見せたいのですが、この取扱説明書が「book」クラスなのでできません。したがって第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:概要環境内の段落"
+reference "fig:概要環境内の段落"
 
 \end_inset
 
@@ -28416,7 +28415,7 @@ Figure
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:カモノハシ"
+reference "fig:カモノハシ-1"
 
 \end_inset
 
@@ -28503,7 +28502,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:カモノハシ"
+name "fig:カモノハシ-1"
 
 \end_inset
 
@@ -28530,53 +28529,7 @@ name "cap:カモノハシ"
 \bar no
 \noun off
 \color none
-この図フロートは、ラベルの付け方と相互参照の作り方も示しています。第
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:相互参照"
-
-\end_inset
-
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-節で説明されているように、キャプション
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-に
-\family sans
-挿入\SpecialChar \menuseparator
-ラベル
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-メニュー
+この図フロートは、ラベルの付け方と相互参照の作り方も示しています
 \family default
 \series default
 \shape default
@@ -28586,17 +28539,18 @@ reference "sec:相互参照"
 \noun default
 \color inherit
 \lang english
- or the toolbar button
-\lang japanese
- 
+: Insert a label into the caption using the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Label
+\family default
+ or the toolbar button 
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
 \end_inset
 
- 
-\lang english
-and refer to it using the menu
+ and refer to it using the menu 
 \family roman
 \series medium
 \shape up
@@ -28606,7 +28560,7 @@ and refer to it using the menu
 \noun off
 \color none
 \lang japanese
- を使ってラベルを挿入し、
+を使ってラベルを挿入し、
 \family sans
 \series default
 \shape default
@@ -28635,15 +28589,17 @@ and refer to it using the menu
 \noun default
 \color inherit
 \lang english
- or the toolbar button
+ or the toolbar button 
 \lang japanese
- 
+
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset ref"
 \end_inset
 
 
+\lang english
+ 
 \family roman
 \series medium
 \shape up
@@ -28652,8 +28608,34 @@ arg   "dialog-show-new-inset ref"
 \bar no
 \noun off
 \color none
+\lang japanese
 。図フロートを参照する場合には、「上図」のようにあいまいな参照をするのではなく、相互参照を使用することが重要です。LaTeXは、文書の最終版でフロートの再配置を
 行うため、図が「上」に来るかどうかはまったくもって定かではないからです。
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+ For more about cross-references, see section
+\begin_inset space ~
+\end_inset
+
+
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:相互参照"
+
+\end_inset
+
+
+\lang english
+.
 \end_layout
 
 \begin_layout Standard
@@ -28836,7 +28818,7 @@ arg   "float-insert table"
  うと挿入することができます。表フロートは、ラベルが異なることを除けば、図フロートと同じです。表
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:表フロート"
+reference "tab:表フロート"
 
 \end_inset
 
@@ -28865,7 +28847,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:表フロート"
+name "tab:表フロート"
 
 \end_inset
 
@@ -40871,7 +40853,7 @@ status collapsed
 第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:latin1文字セット"
+reference "tab:latin1文字セット"
 
 \end_inset
 
@@ -40920,7 +40902,7 @@ status collapsed
 第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:latin1文字セット"
+reference "tab:latin1文字セット"
 
 \end_inset
 
@@ -40941,7 +40923,7 @@ status collapsed
 第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:latin1文字セット"
+reference "tab:latin1文字セット"
 
 \end_inset
 
@@ -40965,7 +40947,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:latin1文字セット"
+name "tab:latin1文字セット"
 
 \end_inset
 
@@ -43719,7 +43701,7 @@ o
 以下は、LyXが直接表示することができるアクセント付き文字の全一覧です。これには、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:latin1文字セット"
+reference "tab:latin1文字セット"
 
 \end_inset
 
@@ -52641,7 +52623,7 @@ status collapsed
 この文書で用いられる単位の理解のために、表
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:単位"
+reference "tab:単位"
 
 \end_inset
 
@@ -52661,7 +52643,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:単位"
+name "tab:単位"
 
 \end_inset
 
