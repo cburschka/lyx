@@ -1,11 +1,17 @@
 What's new in version 2.0.3?
 ----------------------------
 
+There have been several more updates to LyX's Sweave support. Work on this
+is expected to continue through the 2.0.x series. 
+
 LyX 2.0.3 still requires a python 2 interpreter, but steps have been taken
 to avoid problems on systems where python 3 is the default python interpreter.
 A python 2 interpreter is now automatically detected and used. Additionally,
-byte-compiled python files changed their installation target.
-Distribution maintainers are encouraged to verify their patch sets.
+byte-compiled python files changed their installation target. Distribution 
+maintainers are encouraged to verify their patch sets.
+
+There have again been several updates to the tex2lyx conversion script. Not
+as many as with 2.0.2, but quite a few.
 
 
 What's new in version 2.0.2?

@@ -1,10 +1,10 @@
-Public release of LyX version 2.0.2
+Public release of LyX version 2.0.3
 ===================================
 
-We are pleased to announce the release of LyX 2.0.2. This is the second
+We are pleased to announce the release of LyX 2.0.3. This is the third
 maintenance release in the 2.0.x series.
 
-LyX 2.0.2 is the result of on-going efforts to make our stable version
+LyX 2.0.3 is the result of on-going efforts to make our stable version
 even more reliable and stable. We have fixed a number of bugs and made
 a number of improvements. These are detailed below. We encourage all
 LyX users to upgrade to this version.
@@ -13,9 +13,9 @@ LyX is a document processor that encourages an approach to writing based
 on the structure of your documents and not simply their appearance. It is
 released under a Free and Open Source Software license.
 
-You can download LyX 2.0.2 from http://www.lyx.org/Download/.
+You can download LyX 2.0.3 from http://www.lyx.org/Download/.
 
-If you think you found a bug in LyX 2.0.2, either e-mail the LyX
+If you think you found a bug in LyX 2.0.3, either e-mail the LyX
 developers' mailing list (lyx-devel <at> lists.lyx.org), or open a bug
 report at http://www.lyx.org/trac/wiki/BugTrackerHome.
 
@@ -24,30 +24,26 @@ documentation that comes with LyX and the LyX wiki, which lives at
 http://wiki.lyx.org/. If you can't find the answer there, e-mail the LyX 
 users' list (lyx-users at lists.lyx.org).
 
-We hope you enjoy using LyX 2.0.2.
+We hope you enjoy using LyX 2.0.3.
 
 The LyX team.
 http://www.lyx.org
 
 
-What's new in LyX 2.0.2
+What's new in LyX 2.0.3
 =======================
 
-There have been several improvements to LyX's ability to export documents
-in the background, so the program does not freeze during compilation. We 
-hope to continue these improvements throughout the 2.0.x series.
+There have been several more updates to LyX's Sweave support. Work on this
+is expected to continue through the 2.0.x series. 
 
-There have been major updates to the tex2lyx conversion script. Please see
-below for the details.
+LyX 2.0.3 still requires a python 2 interpreter, but steps have been taken
+to avoid problems on systems where python 3 is the default python interpreter.
+A python 2 interpreter is now automatically detected and used. Additionally,
+byte-compiled python files changed their installation target. Distribution 
+maintainers are encouraged to verify their patch sets.
 
-The ctex document classes, used for Chinese documents, are now supported
-by LyX.
-
-Support for the Springer document classes has been updated for compatibility
-with the lasest versions. This has the side-effect that files, created with 
-LyX 2.0.2 or future, using a Springer document class, will not be compilable 
-with LyX versions older than LyX 2.0.2. The same applies for files created
-with LyX 1.6.10 or older that are saved with LyX 2.0.2 or future.
+There have again been several updates to the tex2lyx conversion script. Not
+as many as with 2.0.2, but quite a few.
 
 
 What's new
@@ -58,101 +54,107 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Completely revised support for the latest versions of the Springer
-  document classes svjour3, svmono and svmult.
+- Add support for `knitr', an alternative for Sweave on R >= 2.14.1
+  (bug 7887).
 
-- Add possibility to export the R code from a sweave-enabled document
-  (part of bug 7555).
+- Improved output of Comment notes for XHTML. These are now div's that are
+  hidden by the default CSS.
 
-- XHTML export now respects font color and background color from 
-  Document->Settings->Colors.
+- New layout and template file for articles in the Journal of the Acoustical
+  Society of America (JASA). 
 
-- Added support for ctex document classes (bug 7495).
+- Speed up autosave a bit by not cloning child documents (bug 7923).
+
+- Don't use the first python binary in the PATH environment variable if
+  this is not a version 2.x binary, but try to find a suitable one.
+  Note that this mechanism triggers only if the binary is invoked exactly
+  as "python -tt", which is the way it is done internally.
+
+- Allow redirecting stderr in converters (other than stdout).
+
+- Add LaTeX commands for unicode symbols U+200c, U+2011, U+2017, U+2027 and
+  U+202f to be used with non-unicode LaTeX backends (bug 7998).
 
 
-** TEX2LYX IMPROVEMENTS
+* TEX2LYX IMPROVEMENTS
 
-- tex2lyx (that is used to import TeX files) now produces the current
-  file format 413.
+- Support for included external files via the templates
+  - PDF pages
+  - Chess diagram
+  - Spreadsheet
 
-- tex2lyx now supports the conversion of:
+- tabular* environments are imported
 
-  * The font packages utopia, fourier, ccfonts, chancery and beraserif.
+- Formal tables are now supported (bug 4553).
 
-  * Documents where no language package is set, or if a language package
-    are set that work independently of babel and polyglossia.
-
-  * The setting of the document-wide background color and text color
-    (\color, \pagecolor), the background color of shaded boxes and the
-    text color of greyed-out notes.
-
-  * Horizontal lines (\rule).
-
-  * Phantom spaces (\phantom, \hphanton, \vphantom).
-
-  * Custom width for nomenclature list (\printnomenclature).
-
-  * All types of underlined or striked out text.
-
-  * Hyperlinks (\href).
-
-  * Rotated floats (sidewaysfigure, sidewaystable).
-
-  * Wrapped floats (wrapfigure, wraptable) (bug 4378).
-
-  * Subfloats (\subfloat).
-
-  * Frameless boxes (\makebox). (\mbox is not yet supported by LyX.)
-
-  * Command \date{} in the preamble to suppress the date output.
-
-- Augmented the tex2lyx --help message with the default paths (bug 6827).
+- Support for change tracking commands (bug 4213).
 
 
 * USER INTERFACE
 
-- New menu entry Edit->Select Whole Inset.
+- Added scalable LyX icon in svg format (bug 7919).
 
-- Speed up cursor movement when inline completion is enabled in math.
+- Clarify what the user can do when hyperref is provided by the document
+  class (bug 6293).
 
-- Make InsetInfo output a path matching the LaTeX compiler.
+- Slightly reduced space around inset buttons, to make it clearer when
+  there is a real space there (bug 7256).
 
-- Improve creation of a LyX archive. Now also the files referenced in ERT
-  in the document body (e.g., through \input or \insertgraphics) are
-  included in the archive.
+- Let inset-toggle work for very large documents (bug 7945).
 
-- When changing the document language, also change the language of the
-  text which is not explicitly marked in a different language,
-  irrespective of the multilingual status, except for LTR<=>RTL changes.
+- Disable spell checker dialog for empty documents (bug 5585).
 
-- New command-line switch -v (--version) for tex2lyx showing build
-  information and version number (bug 6827).
+- Display some commands from mathtools.sty natively (bug 7949).
+
+- Add the directory /usr/share/myspell as default location for dictionary
+  lookup of hunspell spell checker backend (a common location on linux).
+  Detect value change of preferences path to hunspell dictionaries
+  to avoid the need for a restart.  This is related to bug 7884.
+
+- We now use the display string as a tooltip in the Outliner, if no
+  other tooltip is given.
+
+- Show check mark on current math limit type in Edit>Math submenu.
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- The LyX documentation covers now all new features of LyX 2.0.x; the
-  User's guide, EmbeddedObjects and the Math manual have been revised
-  accordingly.
+- Customization manual updated to reflect the features of LyX 2.0.x.
 
-- Updated French, German, Indonesian, Interlingua, Italian, Japanese,
-  Norwegian (Bokmål), Slovak, Spanish, Swedish and Ukrainian user
-  interface localization.
+- New Dutch user interface localization.
 
-- Revised template files for the Springer document classes.
+- Updated Czech, French, German, Indonesian, Interlingua, Italian,
+  Japanese, Nynorsk, Slovak, Spanish, Swedish and Ukrainian user
+  interface localizations.
 
-- Revised example file sweave.lyx.
+- The Sweave manual was completely revised and is now also available in
+  the menu Help->Specific Manuals (bug 7891).
 
-- New appendix in the EmbeddedObjects manual with list of available
-  colors and new section about the calculation of table widths.
+- EmbeddedObjects manual:
+  - new description how to color dashed table lines
+  - new section how to split table cells by diagonal lines
 
-- New example file spreadsheet.lyx.
+- Updated description of the external material template PDFPages
+  (bug 7888).
+
+- Improved description of the modulo-functions in the Math manual (bug 7961).
 
 
 * BUILD/INSTALLATION
 
-- Add background image for Mac OS X disk image.
+- Make sure that we detect and use python 2 on systems where python 3
+  is the default python interpreter.
 
+- cmake, LYX_DEPENDENCIES_DOWNLOAD: look for the right filename on SourceForge.
+
+- Make compilation work with GCC 4.7.
+
+- Support configure --with-packaging=posix on Mac OS X (bug 7927).
+
+- Improved disk image creation on Mac OS X:
+  * Provide translation of the application menu.
+  * Enhanced background image.
+  * Package with hunspell dictionaries is default.
 
 
 ** Bug fixes:
@@ -160,170 +162,141 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix execution of biber with MiKTeX.
+- Fix crash when exporting branches to XHTML.
 
-- Fix parsing of branch names containing spaces.
+- Do not allow user to over-write a file already open. Attempting to do so
+  crashes LyX (bug 7921).
 
-- Fix output of multirow table cell borders (bug 7578).
+- Fix problem with translation of theorem environments when language and
+  buffer encoding differ (bug 7941).
 
-- Fix ASCII export for branch inset (bug 7720).
+- Fix monitoring of bib files with recent versions of biber.
 
-- Fix regression where parent macros were not displayed in a viewed child
-  (bug 7593).
+- Fix python problem with common path prefixes when exporting a LyX archive
+  (bug 7933).
 
-- Fix regression where children included more than once are only rendered
-  once (bug 7594).
+- Fix dvips paper size arguments for presentations (beamer etc) (bug 7013).
 
-- Fix problem where updates to children were not seen on output of master
-  (bug 7360).
+- Do not use \inputencoding for translated names of theorem-like environments
+  if they can be actually encoded in the chosen document encoding (bug 7800).
 
-- Fix XHTML export of branches (bug 7721).
+- Do not misdetect office file formats as zip (bug 7973).
 
-- Fix whitespace issues with language changes (bug 7607).
+- Fix font/script definition clashes with XeTeX/LuaTeX and unicode output
+  (bug 7766, 7782).
 
-- Fix deletion of temporary file used for preferences conversion on
-  Windows (bug 7796).
+- Fix marvosym/bbding package clash caused by using 0x271d "LATIN CROSS"
+  unicode symbol (part of bug 7811).
 
-- Fix handling of relative paths used in the preamble or ERT (bug 7835).
+- Fix error when exporting DocBook tables (bug 7004).
 
-- Disable impossible settings in context menu of boxes (bug 7849).
+- Fix Sweave support for document encoding with R >= 2.13.1 (bug
+  7876).
 
-- Store the autosave files of unnamed buffers in the correct directory
-  and make sure they are not left behind after saving (bug 7793).
+- Avoid creation of a spurious Rplots.pdf file when using Sweave (bug 8019).
 
-- Escape ampersands in <title> when outputting XHTML.
+- Find correctly the file Sweave.sty with older R versions (bug 8019).
 
-- Fix export of spreadsheets (bug 7897).
+- Fix lyx archive creation when the document file name contains spaces
+  or other characters which are special to latex.
 
-
+  
 * TEX2LYX
 
-- Fix tex2lyx handling of recognized Roman fonts (bug 7856).
+- Full support for the command \date{} (bug 7844).
 
-- Fix tex2lyx handling babel-specific preamble commands (bug 7861).
+- Fixed LaTeX import whitespace issue (bug 7668).
 
-- Fix tex2lyx handling of inputenc encoding settings (bug 7863).
+- Fix some asme2e issues (bug 6449).
 
-- Fix tex2lyx handling of framed boxes without inner box.
+- Fixed problem with macros nested in \foreignlanguage (bug 5187).
 
-- Fix tex2lyx handling of description \item with spaces (bug 7663).
+- Fixed problematic that tex2lyx roundtips polluted the preamble with
+  color code (bug 7845).
 
-- tex2lyx does not start floats with lines containing only a single space
-  anymore (bug 7895).
-
-- Fix (La)TeX import for files using Latvian, Lithuanian, Mongolian,
-  Turkmen and/or Vietnamese (bug 7862).
-
-- Fix (La)TeX import of shaded boxes (bug 7843).
-
-- Fix LaTeX import of theorem environment with optional argument (bug 6834).
-
-- Fix LaTeX import of tabular environment with optional argument.
-
-- Fix latex export of multilingual documents containing theorem-like
-  environments (bug 7800).
-
-- tex2lyx does not produce invalid Flex insets anymore (bug 7780).
-
-- Fix import of required arguments of standard environments (part of bug
-  7468).
+- Fixed problems with character style switches (bug 3036).
 
 
 * USER INTERFACE
 
-- Correctly group Koma book environments inside environment combo-box listing.
+- Fixed crash when changing label when outliner is open and sorted (bug 7709).
 
-- Add undo for change of text language when document language is changed.
-  When a document is not multi-lingual, the text contents is changed to the
-  new language. This should be recorded for Undo (bug 7740).
+- Fixed crash when moving out of nested empty items (bug 7673).
 
-- Adjust the cursor language after document language change has changed the
-  text language (bug 7681).
+- Fix crash when performing "forward search" while cursor is in mathed
+  (bug 7992).
 
-- Correctly sort modules in Document->Settings and formats in the "Other 
-  formats" dialog (bug 7751).
+- Fix crash when inserting a float around multiple display maths (bug 7974).
 
-- Repair outliner display for broken references (bug 7708).
+- Fix crash when copying table columns or rows (bug 7644).
 
-- Fix Horizontal Space dialog when issued from within math (bug 7746).
+- Correctly set the default output format in the document settings dialog
+  if non-tex fonts are used (bug 8013).
 
-- Fix bottom border allocation when setting a multirow (bug 7791).
+- Update citation labels when the BibTeX file changes (bug 7499).
 
-- Fix merging of cells (multicolumn, multirow) when the first cell in the
-  selection is already a multi-cell (bug 7792).
+- Mark Buffer dirty when changing branch activation status (bug 7872). Sadly,
+  this does not work properly if the branches are in a master document that is
+  hidden, but this is a larger issue.
 
-- Disable interword and protected space lfuns in math, since these spaces
-  are not yet supported.
+- Fix undo after changing limit type of a subscript in math mode (bug 8007).
 
-- Mark buffer dirty when a label is changed, so the file can be saved and
-  the change can be reverted (bug 7655).
+- Fix inconsistent state of horizontal space dialog on start up (bug 7906).
 
-- Fix shortcuts in cross reference dialog (bug 7576).
+- Unify display of theorem headings (bug 7883).
 
-- Fixed recursive repaint problem (see bugs 7503 and 7173).
+- Keep the selection when doing Page Up/Down and in mark-on selection mode 
+  (bug 7909).
 
-- Restore nomenclature dialog's ability to take the symbol from an explicit
-  or implicit selection.
+- Correctly display and handle the math commands \pod and \mod (bug 7962).
 
-- Fix on-screen display of graphics when the name of the temporary directory
-  contains non-ASCII characters (bug 7621).
+- Fix tabbar visibility in fullscreen mode when opening/closing files (bug 7963).
 
-- Fix the tab ordering of widgets in the Document->Settings and
-  Tools->Preferences panels.
+- Show a message box if the current spell checker has no dictionaries (bug 7884).
 
-- Mark settings as changed when the Nomenclature line is edited in the
-  Tools->Preferences panel.
+- Fix problem where box gets modifications intended for table (bug 7983).
 
-- Fix instant preview when external files are loaded in the preamble,
-  e.g. through the \input LaTeX command.
+- Fix broken instant preview due to ghostscript on 64-bit Windows (bug 7938).
 
-- Fix instant preview when using Python version 2.4 or lower.
+- Show entire index entry in outliner (bug 7774).
 
-- Don't allow copy-pasting newline characters in Document->Settings
-  and Tools->Preferences (bug 5840).
+- Fix a warning when changing table settings via the dialog (bug 7755).
 
-- Allow the \nocite LaTeX command when using the basic citation engine.
+- Correct buffer statistics when change tracking is on.
+  LyX did incorrectly count the words in deleted notes (bug 7789).
 
-- Do not incorrectly activate Edit->Table inside index entries (bug 7816).
 
-- Fix display of section (etc.) headings, in both TOC and menu, when there is 
-  math in the title.
+* DOCUMENTATION AND LOCALIZATION
 
-- Correct handling of custom width in the nomenclature dialog (bug 7853).
+- Fixed description in the example file multicol.lyx (bug 7953).
 
-- Improved scrolling in large tables with vertical alignment (bug 7662).
+- Fixed description of automatic reference naming in sec. 3.4.2 of the
+  Embedded Objects manual.
 
-- Make cursor position after paste independent of where the pasted material
-  comes from (bug 3821).
+- Fixed preamble code for automatic reference naming in the thesis template
+  files.
 
-- Fix display of thickness of horizontal lines (bug 7851).
+- Translated German strings in the Appendix.lyx file of the thesis template
+  to English.
 
-- Fix change of language of selected text with context menu (bug 7778).
+- Fixed example file modernCV.lyx: corrected subsection example, added a
+  separator, set the page size to A4 (bug 7991).
 
-- Sort formats under Document>Settings>Output (bug 7758).
-
-- Fix crash when changing labelwidth (bug 7873).
-
-- Keep cursor inside index inset when a blank one is created (bug 7905).
+- Update tex2lyx man page regarding partial documents (bug 5906).
 
 
 * ADVANCED FIND AND REPLACE
 
-- Fix a crash when searching in all manuals, but the manuals could
-  not be loaded.
+- Fix crash with Replace All (bug 7410).
 
 
 * BUILD/INSTALLATION
 
-- Fix compile error with gcc 4.5.3 when using the included mythes library.
+- Fix link problem when compiling on Mac OS X with plain autotools.
 
-- Fix the detection of the tex2lyx converter (bug 3308).
+- Add forgotten file Package.cpp to list of files that need l10n.
 
-- Fix the detection of htmltolatex (bug 6339).
+- Fix installation of python files (bug 6080, bug 7990).
 
-- Fix the detection of splitindex (bug 7579).
-
-- Fix the detection of jfig3-itext, jfig3.
-
-- Properly associate the gnumeric converter with the Excel and OpenOffice
-  spreadsheet formats.
+- When building LyX package on Mac don't call configure with --build anymore.
+  It's guessed by configure anyway.
