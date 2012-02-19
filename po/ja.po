@@ -23802,4 +23802,485 @@ msgid "Error loading file into memory"
 msgstr "メモリへの読み込みに失敗しました"
 
 #: src/insets/RenderGraphic.cpp:114
-msgid "Error gen
+msgid "Error generating the pixmap"
+msgstr "pixmapを生成するのに失敗しました"
+
+#: src/insets/RenderGraphic.cpp:117
+msgid "No image"
+msgstr "図表がありません"
+
+#: src/insets/RenderPreview.cpp:89
+msgid "Preview loading"
+msgstr "プレビューを読み込んでいます"
+
+#: src/insets/RenderPreview.cpp:92
+msgid "Preview ready"
+msgstr "プレビューの準備ができました"
+
+#: src/insets/RenderPreview.cpp:95
+msgid "Preview failed"
+msgstr "プレビューに失敗しました"
+
+#: src/lengthcommon.cpp:37
+msgid "cc[[unit of measure]]"
+msgstr "cc"
+
+#: src/lengthcommon.cpp:37
+msgid "dd"
+msgstr "dd"
+
+#: src/lengthcommon.cpp:37
+msgid "em"
+msgstr "em"
+
+#: src/lengthcommon.cpp:38
+msgid "ex"
+msgstr "ex"
+
+#: src/lengthcommon.cpp:38
+msgid "mu[[unit of measure]]"
+msgstr "mu[[unit of measure]]"
+
+#: src/lengthcommon.cpp:38
+msgid "pc"
+msgstr "pc"
+
+#: src/lengthcommon.cpp:39
+msgid "pt"
+msgstr "pt"
+
+#: src/lengthcommon.cpp:39
+msgid "sp"
+msgstr "sp"
+
+#: src/lengthcommon.cpp:39
+msgid "Text Width %"
+msgstr "本文幅％"
+
+#: src/lengthcommon.cpp:40
+msgid "Column Width %"
+msgstr "列幅％"
+
+#: src/lengthcommon.cpp:40
+msgid "Page Width %"
+msgstr "ページ幅％"
+
+#: src/lengthcommon.cpp:40
+msgid "Line Width %"
+msgstr "行幅％"
+
+#: src/lengthcommon.cpp:41
+msgid "Text Height %"
+msgstr "本文高％"
+
+#: src/lengthcommon.cpp:41
+msgid "Page Height %"
+msgstr "ページ高％"
+
+#: src/lyxfind.cpp:144
+msgid "Search error"
+msgstr "検索エラー"
+
+#: src/lyxfind.cpp:144
+msgid "Search string is empty"
+msgstr "検索文字が空です"
+
+#: src/lyxfind.cpp:381
+msgid "String found."
+msgstr "文字列が見つかりました。"
+
+#: src/lyxfind.cpp:383
+msgid "String has been replaced."
+msgstr "文字列が置換されました。"
+
+#: src/lyxfind.cpp:386
+#, c-format
+msgid "%1$d strings have been replaced."
+msgstr "%1$d個の文字列が置換されました。"
+
+#: src/lyxfind.cpp:1436
+msgid "Invalid regular expression!"
+msgstr "有効な正規表現ではありません！"
+
+#: src/lyxfind.cpp:1441
+msgid "Match not found!"
+msgstr "一致するものが見つかりません！"
+
+#: src/lyxfind.cpp:1445
+msgid "Match found!"
+msgstr "一致箇所が見つかりました！"
+
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1685
+#: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
+#, c-format
+msgid "Can't add vertical grid lines in '%1$s'"
+msgstr "「%1$s」には縦境界線を加えることができません"
+
+#: src/mathed/InsetMathCases.cpp:110
+#, c-format
+msgid "No vertical grid lines in 'cases': feature %1$s"
+msgstr "「cases」には縦境界線はつけられません: 機能 %1$s"
+
+#: src/mathed/InsetMathCases.cpp:117
+#, c-format
+msgid "Changing number of columns not allowed in 'cases': feature %1$s"
+msgstr "「cases」では列数を変えることができません: 機能「%1$s」"
+
+#: src/mathed/InsetMathGrid.cpp:1442
+msgid "Cursor not in table"
+msgstr "カーソルが表中にありません"
+
+#: src/mathed/InsetMathGrid.cpp:1448
+msgid "Only one row"
+msgstr "一行だけです"
+
+#: src/mathed/InsetMathGrid.cpp:1454
+msgid "Only one column"
+msgstr "一列だけです"
+
+#: src/mathed/InsetMathGrid.cpp:1462
+msgid "No hline to delete"
+msgstr "削除する vline はありません"
+
+#: src/mathed/InsetMathGrid.cpp:1471
+msgid "No vline to delete"
+msgstr "削除する vline はありません"
+
+#: src/mathed/InsetMathGrid.cpp:1500
+#, c-format
+msgid "Unknown tabular feature '%1$s'"
+msgstr "「%1$s」は未知の表の特性です"
+
+#: src/mathed/InsetMathHull.cpp:1278
+msgid "Bad math environment"
+msgstr "不良な数式環境です"
+
+#: src/mathed/InsetMathHull.cpp:1279
+msgid ""
+"Computation cannot be performed for AMS math environments.\n"
+"Change the math formula type and try again."
+msgstr ""
+"AMS数式環境では、計算を行うことができません。\n"
+"数式型を変更して再度試みてください。"
+
+#: src/mathed/InsetMathHull.cpp:1385 src/mathed/InsetMathHull.cpp:1394
+msgid "No number"
+msgstr "番号なし"
+
+#: src/mathed/InsetMathHull.cpp:1385 src/mathed/InsetMathHull.cpp:1394
+msgid "Number"
+msgstr "番号あり"
+
+#: src/mathed/InsetMathHull.cpp:1658
+#, c-format
+msgid "Can't change number of rows in '%1$s'"
+msgstr "「%1$s」の行数を変えることができません。"
+
+#: src/mathed/InsetMathHull.cpp:1668
+#, c-format
+msgid "Can't change number of columns in '%1$s'"
+msgstr "「%1$s」の列数を変えることができません。"
+
+#: src/mathed/InsetMathHull.cpp:1678
+#, c-format
+msgid "Can't add horizontal grid lines in '%1$s'"
+msgstr "「%1$s」に水平境界線を加えることができません。"
+
+#: src/mathed/InsetMathNest.cpp:1015
+msgid "create new math text environment ($...$)"
+msgstr "新しい数式テキスト環境を作成する($...$)"
+
+#: src/mathed/InsetMathNest.cpp:1018
+msgid "entered math text mode (textrm)"
+msgstr "挿入された数式テキストモード(textrm)"
+
+#: src/mathed/InsetMathNest.cpp:1040
+msgid "Regular expression editor mode"
+msgstr "正規表現エディタモード"
+
+#: src/mathed/InsetMathNest.cpp:1666 src/mathed/InsetMathNest.cpp:1811
+msgid "Autocorrect Off ('!' to enter)"
+msgstr "自動修正切（入にするには「!」）"
+
+#: src/mathed/InsetMathNest.cpp:1671 src/mathed/InsetMathNest.cpp:1813
+msgid "Autocorrect On (<space> to exit)"
+msgstr "自動修正入（切にするには<スペース>）"
+
+#: src/mathed/InsetMathRef.cpp:225
+msgid "Standard[[mathref]]"
+msgstr "標準"
+
+#: src/mathed/InsetMathRef.cpp:230
+msgid "PrettyRef"
+msgstr "装飾参照"
+
+#: src/mathed/InsetMathRef.cpp:230
+msgid "FormatRef: "
+msgstr "整形参照: "
+
+#: src/mathed/InsetMathSubstack.cpp:85
+#, c-format
+msgid "Can't change horizontal alignment in '%1$s'"
+msgstr "「%1$s」の水平揃えを変更することができません。"
+
+#: src/mathed/MathMacroTemplate.cpp:495
+msgid "optional"
+msgstr "非必須"
+
+#: src/mathed/MathMacroTemplate.cpp:538
+msgid "TeX"
+msgstr "TeX"
+
+#: src/mathed/MathMacroTemplate.cpp:1258
+msgid "math macro"
+msgstr "数式マクロ"
+
+#: src/output.cpp:37
+#, c-format
+msgid ""
+"Could not open the specified document\n"
+"%1$s."
+msgstr ""
+"指定された文書%1$s\n"
+"を開くことができませんでした。"
+
+#: src/output_plaintext.cpp:141
+msgid "Abstract: "
+msgstr "要約: "
+
+#: src/output_plaintext.cpp:153
+msgid "References: "
+msgstr "引用: "
+
+#: src/support/Package.cpp:470
+msgid "LyX binary not found"
+msgstr "LyXバイナリが見つかりません！"
+
+#: src/support/Package.cpp:471
+#, c-format
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1$s"
+msgstr ""
+"コマンドライン %1$s からは、LyXバイナリへのパスを特定することができません。"
+
+#: src/support/Package.cpp:590
+#, c-format
+msgid ""
+"Unable to determine the system directory having searched\n"
+"\t%1$s\n"
+"Use the '-sysdir' command line parameter or set the environment variable\n"
+"%2$s to the LyX system directory containing the file `chkconfig.ltx'."
+msgstr ""
+"\t%1$s\n"
+"を検索しましたが、システムディレクトリを特定することができませんでした。\n"
+"コマンドラインパラメータ「-sysdir」を使うか、環境変数\n"
+"%2$sを、ファイル「chkconfig.ltx」を含むLyXシステムディレクトリに設定してくだ"
+"さい。"
+
+#: src/support/Package.cpp:671 src/support/Package.cpp:698
+msgid "File not found"
+msgstr "ファイルが見つかりません"
+
+#: src/support/Package.cpp:672
+#, c-format
+msgid ""
+"Invalid %1$s switch.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+"%1$s スイッチは無効です。\n"
+"ディレクトリ %2$s には、%3$s がありません。"
+
+#: src/support/Package.cpp:699
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+"%1$s 環境変数は無効です。\n"
+"ディレクトリ %2$s には、%3$s がありません。"
+
+#: src/support/Package.cpp:723
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"%2$s is not a directory."
+msgstr ""
+"%1$s 環境変数は無効です。\n"
+"ディレクトリ %2$s は、ディレクトリではありません。"
+
+#: src/support/Package.cpp:725
+msgid "Directory not found"
+msgstr "ディレクトリが見つかりません"
+
+#: src/support/debug.cpp:41
+msgid "No debugging messages"
+msgstr "デバッグ用メッセージはありません"
+
+#: src/support/debug.cpp:42
+msgid "General information"
+msgstr "一般情報"
+
+#: src/support/debug.cpp:43
+msgid "Program initialisation"
+msgstr "プログラム初期化"
+
+#: src/support/debug.cpp:44
+msgid "Keyboard events handling"
+msgstr "キーボードイベント処理"
+
+#: src/support/debug.cpp:45
+msgid "GUI handling"
+msgstr "GUI処理"
+
+#: src/support/debug.cpp:46
+msgid "Lyxlex grammar parser"
+msgstr "Lyxlex文法解析器"
+
+#: src/support/debug.cpp:47
+msgid "Configuration files reading"
+msgstr "設定ファイル読込"
+
+#: src/support/debug.cpp:48
+msgid "Custom keyboard definition"
+msgstr "個人用のキーボード定義"
+
+#: src/support/debug.cpp:49
+msgid "LaTeX generation/execution"
+msgstr "LaTeX生成・実行"
+
+#: src/support/debug.cpp:50
+msgid "Math editor"
+msgstr "数式エディタ"
+
+#: src/support/debug.cpp:51
+msgid "Font handling"
+msgstr "フォント処理"
+
+#: src/support/debug.cpp:52
+msgid "Textclass files reading"
+msgstr "textclassファイル読込"
+
+#: src/support/debug.cpp:53
+msgid "Version control"
+msgstr "バージョン管理"
+
+#: src/support/debug.cpp:54
+msgid "External control interface"
+msgstr "外部制御インタフェース"
+
+#: src/support/debug.cpp:55
+msgid "Undo/Redo mechanism"
+msgstr "元に戻す/やり直すの動作"
+
+#: src/support/debug.cpp:56
+msgid "User commands"
+msgstr "ユーザーコマンド"
+
+#: src/support/debug.cpp:57
+msgid "The LyX Lexer"
+msgstr "LyX Lexer"
+
+#: src/support/debug.cpp:58
+msgid "Dependency information"
+msgstr "依存情報"
+
+#: src/support/debug.cpp:59
+msgid "LyX Insets"
+msgstr "LyX差込枠"
+
+#: src/support/debug.cpp:60
+msgid "Files used by LyX"
+msgstr "LyX が使用するファイル"
+
+#: src/support/debug.cpp:61
+msgid "Workarea events"
+msgstr "ワークエリア・イベント"
+
+#: src/support/debug.cpp:62
+msgid "Insettext/tabular messages"
+msgstr "差込枠テキスト・表メッセージ"
+
+#: src/support/debug.cpp:63
+msgid "Graphics conversion and loading"
+msgstr "画像の変換と読込"
+
+#: src/support/debug.cpp:64
+msgid "Change tracking"
+msgstr "変更追跡機能"
+
+#: src/support/debug.cpp:65
+msgid "External template/inset messages"
+msgstr "外部ひな型・差込枠メッセージ"
+
+#: src/support/debug.cpp:66
+msgid "RowPainter profiling"
+msgstr "RowPainterが輪郭を描いています"
+
+#: src/support/debug.cpp:67
+msgid "Scrolling debugging"
+msgstr "スクロールデバッグ"
+
+#: src/support/debug.cpp:68
+msgid "Math macros"
+msgstr "数式マクロ"
+
+#: src/support/debug.cpp:69
+msgid "RTL/Bidi"
+msgstr "RTL/Bidi"
+
+#: src/support/debug.cpp:70
+msgid "Locale/Internationalisation"
+msgstr "ロケール・国際化"
+
+#: src/support/debug.cpp:71
+msgid "Selection copy/paste mechanism"
+msgstr "選択部のコピー/貼り付けの動作"
+
+#: src/support/debug.cpp:72
+msgid "Find and replace mechanism"
+msgstr "検索・置換機構"
+
+#: src/support/debug.cpp:73
+msgid "Developers' general debug messages"
+msgstr "開発者向けの一般的デバッグメッセージ"
+
+#: src/support/debug.cpp:74
+msgid "All debugging messages"
+msgstr "全デバッグメッセージ"
+
+#: src/support/debug.cpp:153
+#, c-format
+msgid "Debugging `%1$s' (%2$s)"
+msgstr "`%1$s' (%2$s)をデバッグしています"
+
+#: src/support/lstrings.cpp:1295
+msgid "[[Replace with the code of your language]]"
+msgstr "ja"
+
+#: src/support/os_win32.cpp:488
+msgid "System file not found"
+msgstr "システムファイルが見つかりません"
+
+#: src/support/os_win32.cpp:489
+msgid ""
+"Unable to load shfolder.dll\n"
+"Please install."
+msgstr ""
+"shfolder.dllを読み込むことができません\n"
+"インストールしてください。"
+
+#: src/support/os_win32.cpp:494
+msgid "System function not found"
+msgstr "システム関数が見つかりません"
+
+#: src/support/os_win32.cpp:495
+msgid ""
+"Unable to find SHGetFolderPathA in shfolder.dll\n"
+"Don't know how to proceed. Sorry."
+msgstr ""
+"shfolder.dll内にSHGetFolderPathAを見つけることができません。\n"
+"どう進めばいいのかわかりません。ごめんなさい。"
+
+#: src/support/userinfo.cpp:45
+msgid "Unknown user"
+msgstr "未知の"
