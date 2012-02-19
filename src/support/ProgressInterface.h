@@ -12,7 +12,8 @@
 #ifndef LYX_SUPPORT_PROGRESSINTERFACE_H
 #define LYX_SUPPORT_PROGRESSINTERFACE_H
 
-class docstring;
+#include "support/strfwd.h"
+
 class QString;
 
 namespace lyx {
