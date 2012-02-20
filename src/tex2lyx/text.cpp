@@ -1343,6 +1343,29 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		preamble.registerAutomaticallyLoadedPackage("verbatim");
 	}
 
+	else if (name == "verbatim") {
+		eat_whitespace(p, os, parent_context, false);
+		os << "\n\\begin_layout Verbatim\n";
+		string const s = p.verbatimEnvironment("verbatim");
+		string::const_iterator it2 = s.begin();
+		for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
+			if (*it == '\n') {
+				it2 = it + 1;
+				// avoid adding an empty paragraph at the end
+				// if there are 2 consecutive spaces at the end ignore it
+				// because LyX will re-add a \n
+				if ((it + 1 != et) && (it + 2 != et || *it2 != '\n'))
+					os << "\n\\end_layout\n\\begin_layout Verbatim\n";
+			} else
+				os << *it;
+		}
+		os << "\n\\end_layout\n\n";
+		p.skip_spaces();
+		skip_braces(p); // eat {} that might by set by LyX behind comments
+		// reset to Standard layout
+		os << "\n\\begin_layout Standard\n";
+	}
+
 	else if (name == "lyxgreyedout") {
 		eat_whitespace(p, os, parent_context, false);
 		parent_context.check_layout(os);
