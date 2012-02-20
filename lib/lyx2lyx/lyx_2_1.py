@@ -26,7 +26,8 @@ import sys, os
 # Uncomment only what you need to import, please.
 
 from parser_tools import del_token, find_token, find_end_of, find_end_of_inset, \
-    find_re, get_option_value, get_value, get_quoted_value, set_option_value
+    find_end_of_layout, find_re, get_option_value, get_value, get_quoted_value, \
+    set_option_value
 
 #from parser_tools import find_token, find_end_of, find_tokens, \
   #find_token_exact, find_end_of_inset, find_end_of_layout, \
@@ -471,6 +472,69 @@ def revert_cancel(document):
         i = j
 
 
+def revert_verbatim(document):
+    " Revert verbatim einvironments completely to TeX-code. "
+    i = 0
+    consecutive = False
+    subst_end = ['\end_layout', '', '\\begin_layout Plain Layout',
+    	         '\end_layout', '',
+                 '\\begin_layout Plain Layout', '', '',
+                 '\\backslash', '',
+                 'end{verbatim}',
+                 '\\end_layout', '', '\\end_inset',
+                 '', '', '\\end_layout']
+    subst_begin = ['\\begin_layout Standard', '\\noindent',
+                   '\\begin_inset ERT', 'status collapsed', '',
+                   '\\begin_layout Plain Layout', '', '', '\\backslash',
+                   'begin{verbatim}',
+                   '\\end_layout', '', '\\begin_layout Plain Layout', '']
+    while 1:
+        i = find_token(document.body, "\\begin_layout Verbatim", i)
+        if i == -1:
+            return
+        j = find_end_of_layout(document.body, i)
+        if j == -1:
+            document.warning("Malformed lyx document: Can't find end of Verbatim layout")
+            i += 1
+            continue
+        # delete all line breaks insets (there are no other insets)
+        l = i
+        while 1:
+            n = find_token(document.body, "\\begin_inset Newline newline", l)
+            if n == -1:
+                n = find_token(document.body, "\\begin_inset Newline linebreak", l)
+                if n == -1:
+                    break
+            m = find_end_of_inset(document.body, n)
+            del(document.body[m:m+1])
+            document.body[n:n+1] = ['\end_layout', '', '\\begin_layout Plain Layout']
+            l += 1
+            j += 1
+        # consecutive verbatim environments need to be connected
+        k = find_token(document.body, "\\begin_layout Verbatim", j)
+        if k == j + 2 and consecutive == False:
+            consecutive = True
+            document.body[j:j+1] = ['\end_layout', '', '\\begin_layout Plain Layout']
+            document.body[i:i+1] = subst_begin
+            continue
+        if k == j + 2 and consecutive == True:
+            document.body[j:j+1] = ['\end_layout', '', '\\begin_layout Plain Layout']
+            del(document.body[i:i+1])
+            continue
+        if k != j + 2 and consecutive == True:
+            document.body[j:j+1] = subst_end
+            # the next paragraph must not be indented
+            document.body[j+19:j+19] = ['\\noindent']
+            del(document.body[i:i+1])
+            consecutive = False
+            continue
+        else:
+            document.body[j:j+1] = subst_end
+            # the next paragraph must not be indented
+            document.body[j+19:j+19] = ['\\noindent']
+            document.body[i:i+1] = subst_begin
+
+
 ##
 # Conversion hub
 #
@@ -488,10 +552,12 @@ convert = [
            [422, [convert_use_packages]],
            [423, [convert_use_mathtools]],
            [424, [convert_cite_engine_type]],
-           [425, []]
+           [425, []],
+           [426, []]
           ]
 
 revert =  [
+           [425, [revert_verbatim]],
            [424, [revert_cancel]],
            [423, [revert_cite_engine_type]],
            [422, [revert_use_mathtools]],

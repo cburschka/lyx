@@ -11,6 +11,15 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2012-02-20 Uwe Stöhr <uwestoehr@web.de>
+	* Format incremented to 426 (r40784)
+	  support for the verbatim environment
+	  (added only a layout)
+
+2012-01-23 Uwe Stöhr <uwestoehr@web.de>
+	* Format incremented to 425 (r40663)
+	  support for the LaTeX-package cancel (fix bug 6819)
+
 2012-01-09 Julien Rioux <jrioux@lyx.org>
 	* Format incremented to 424 (r40592)
 	  New buffer param \cite_engine_type to specify the type of

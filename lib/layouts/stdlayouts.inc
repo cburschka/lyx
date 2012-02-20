@@ -71,6 +71,30 @@ Style Verse
 End
 
 
+Style Verbatim
+	Category		MainText
+	LatexType		Environment
+	LatexName		verbatim
+	NextNoIndent		1
+	ParbreakIsNewline	1
+	FreeSpacing		1
+	PassThru		1
+	NewLine			0
+	ParSkip			0.4
+	TopSep			0.7
+	BottomSep		0.7
+	ParSep			0.5
+	Align			Block
+	AlignPossible		Block
+	LabelType		No_Label
+	Font
+	  Family		Typewriter
+	EndFont
+	HTMLTag			<pre></pre>
+	HTMLItem		p
+End
+
+
 Style --Separator--
 	Category              MainText
 	KeepEmpty             1
