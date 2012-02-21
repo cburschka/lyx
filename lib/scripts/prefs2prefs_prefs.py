@@ -36,12 +36,40 @@
 #   Add use_qimage option.
 #   No conversion necessary.
 
-import re
+# Incremented to format 7, r40789 by gb
+#   Add mime type to file format
 
+import re
 
 ###########################################################
 #
 # Conversion chain
+
+def get_format(line):
+	entries = []
+	i = 0
+	while i < len(line):
+		if line[i] == '"':
+			beg = i + 1
+			i = i + 1
+			while i < len(line) and line[i] != '"':
+				if line[i] == '\\' and i < len(line) - 1 and line[i+1] == '"':
+					# convert \" to "
+					i = i + 1
+				i = i + 1
+			end = i
+			entries.append(line[beg:end].replace('\\"', '"'))
+		elif line[i] == '#':
+			return entries
+		elif not line[i].isspace():
+			beg = i
+			while not line[i].isspace():
+				i = i + 1
+			end = i
+			entries.append(line[beg:end])
+		i = i + 1
+	return entries
+
 
 def simple_renaming(line, old, new):
 	i = line.lower().find(old.lower())
@@ -135,6 +163,59 @@ def remove_default_papersize(line):
 		return no_match
 	return (True, "")
 
+def add_mime_types(line):
+	if not line.lower().startswith("\\format"):
+		return no_match
+	entries = get_format(line)
+	converted = line
+	i = len(entries)
+	while i < 7:
+		converted = converted + '	""'
+		i = i + 1
+	formats = {'tgif':'application/x-tgif', \
+		'fig':'application/x-xfig', \
+		'dia':'application/x-dia-diagram', \
+		'odg':'application/vnd.oasis.opendocument.graphics', \
+		'svg':'image/svg+xml', \
+		'bmp':'image/x-bmp', \
+		'gif':'image/gif', \
+		'jpg':'image/jpeg', \
+		'pbm':'image/x-portable-bitmap', \
+		'pgm':'image/x-portable-graymap', \
+		'png':'image/x-png', \
+		'ppm':'image/x-portable-pixmap', \
+		'tiff':'image/tiff', \
+		'xbm':'image/x-xbitmap', \
+		'xpm':'image/x-xpixmap', \
+		'docbook-xml':'application/docbook+xml', \
+		'dot':'text/vnd.graphviz', \
+		'ly':'text/x-lilypond', \
+		'latex':'text/x-tex', \
+		'text':'text/plain', \
+		'gnumeric':'application/x-gnumeric', \
+		'excel':'application/vnd.ms-excel', \
+		'oocalc':'application/vnd.oasis.opendocument.spreadsheet', \
+		'xhtml':'application/xhtml+xml', \
+		'bib':'text/x-bibtex', \
+		'eps':'image/x-eps', \
+		'ps':'application/postscript', \
+		'pdf':'application/pdf', \
+		'dvi':'application/x-dvi', \
+		'html':'text/html', \
+		'odt':'application/vnd.oasis.opendocument.text', \
+		'sxw':'application/vnd.sun.xml.writer', \
+		'rtf':'application/rtf', \
+		'doc':'application/msword', \
+		'csv':'text/csv', \
+		'lyx':'application/x-lyx', \
+		'wmf':'image/x-wmf', \
+		'emf':'image/x-emf'}
+	if entries[1] in formats.keys():
+		converted = converted + '	"' + formats[entries[1]] + '"'
+	else:
+		converted = converted + '       ""'
+	return (True, converted)
+
 
 ########################
 
@@ -152,4 +233,5 @@ conversions = [
 	[  4, [ remove_default_papersize ]],
 	[  5, []],
 	[  6, []],
+	[  7, [add_mime_types]],
 ]

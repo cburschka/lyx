@@ -480,36 +480,36 @@ def checkModule(module):
 def checkFormatEntries(dtl_tools):
     ''' Check all formats (\Format entries) '''
     checkViewerEditor('a Tgif viewer and editor', ['tgif'],
-        rc_entry = [r'\Format tgif       obj     Tgif                   "" "%%"	"%%"	"vector"'])
+        rc_entry = [r'\Format tgif      "obj, tgo" Tgif                 "" "%%"	"%%"	"vector"	"application/x-tgif"'])
     #
     checkViewerEditor('a FIG viewer and editor', ['xfig', 'jfig3-itext.jar', 'jfig3.jar'],
-        rc_entry = [r'\Format fig        fig     FIG                    "" "%%"	"%%"	"vector"'])
+        rc_entry = [r'\Format fig        fig     FIG                    "" "%%"	"%%"	"vector"	"application/x-xfig"'])
     #
     checkViewerEditor('a Dia viewer and editor', ['dia'],
-        rc_entry = [r'\Format dia        dia     DIA                    "" "%%"	"%%"	"vector,zipped=native"'])
+        rc_entry = [r'\Format dia        dia     DIA                    "" "%%"	"%%"	"vector,zipped=native", "application/x-dia-diagram"'])
     #
     checkViewerEditor('an OpenOffice drawing viewer and editor', ['libreoffice', 'lodraw', 'ooffice', 'oodraw', 'soffice'],
-        rc_entry = [r'\Format odg        "odg, sxd" "OpenOffice drawing"   "" "%%"	"%%"	"vector,zipped=native"'])
+        rc_entry = [r'\Format odg        "odg, sxd" "OpenOffice drawing"   "" "%%"	"%%"	"vector,zipped=native"	"application/vnd.oasis.opendocument.graphics"'])
     #
     checkViewerEditor('a Grace viewer and editor', ['xmgrace'],
-        rc_entry = [r'\Format agr        agr     Grace                  "" "%%"	"%%"	"vector"'])
+        rc_entry = [r'\Format agr        agr     Grace                  "" "%%"	"%%"	"vector"	""'])
     #
     checkViewerEditor('a FEN viewer and editor', ['xboard -lpf $$i -mode EditPosition'],
-        rc_entry = [r'\Format fen        fen     FEN                    "" "%%"	"%%"	""'])
+        rc_entry = [r'\Format fen        fen     FEN                    "" "%%"	"%%"	""	""'])
     #
     checkViewerEditor('a SVG viewer and editor', ['inkscape'],
-        rc_entry = [r'\Format svg        svg     SVG                    "" "%%" "%%"	"vector"'])
+        rc_entry = [r'\Format svg        svg     SVG                    "" "%%" "%%"	"vector"	"image/svg+xml"'])
     #
-    imageformats = r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"	""
-\Format gif        gif     GIF                    "" "%s"	"%s"	""
-\Format jpg       "jpg, jpeg" JPEG                "" "%s"	"%s"	""
-\Format pbm        pbm     PBM                    "" "%s"	"%s"	""
-\Format pgm        pgm     PGM                    "" "%s"	"%s"	""
-\Format png        png     PNG                    "" "%s"	"%s"	""
-\Format ppm        ppm     PPM                    "" "%s"	"%s"	""
-\Format tiff       tif     TIFF                   "" "%s"	"%s"	""
-\Format xbm        xbm     XBM                    "" "%s"	"%s"	""
-\Format xpm        xpm     XPM                    "" "%s"	"%s"	""'''
+    imageformats = r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"	""	"image/x-bmp"
+\Format gif        gif     GIF                    "" "%s"	"%s"	""	"image/gif"
+\Format jpg       "jpg, jpeg" JPEG                "" "%s"	"%s"	""	"image/jpeg"
+\Format pbm        pbm     PBM                    "" "%s"	"%s"	""	"image/x-portable-bitmap"
+\Format pgm        pgm     PGM                    "" "%s"	"%s"	""	"image/x-portable-graymap"
+\Format png        png     PNG                    "" "%s"	"%s"	""	"image/x-png"
+\Format ppm        ppm     PPM                    "" "%s"	"%s"	""	"image/x-portable-pixmap"
+\Format tiff       tif     TIFF                   "" "%s"	"%s"	""	"image/tiff"
+\Format xbm        xbm     XBM                    "" "%s"	"%s"	""	"image/x-xbitmap"
+\Format xpm        xpm     XPM                    "" "%s"	"%s"	""	"image/x-xpixmap"'''
     path, iv = checkViewerNoRC('a raster image viewer', ['xv', 'kview', 'gimp-remote', 'gimp'], rc_entry = [imageformats])
     path, ie = checkEditorNoRC('a raster image editor', ['gimp-remote', 'gimp'], rc_entry = [imageformats])
     addToRC(imageformats % \
@@ -517,102 +517,102 @@ def checkFormatEntries(dtl_tools):
     #
     checkViewerEditor('a text editor', ['xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
         'nedit', 'gedit', 'notepad'],
-        rc_entry = [r'''\Format asciichess asc    "Plain text (chess output)"  "" ""	"%%"	""
-\Format asciiimage asc    "Plain text (image)"         "" ""	"%%"	""
-\Format asciixfig  asc    "Plain text (Xfig output)"   "" ""	"%%"	""
-\Format dateout    tmp    "date (output)"         "" ""	"%%"	""
-\Format docbook    sgml    DocBook                B  ""	"%%"	"document,menu=export"
-\Format docbook-xml xml   "DocBook (XML)"         "" ""	"%%"	"document,menu=export"
-\Format dot        dot    "Graphviz Dot"          "" ""	"%%"	"vector"
-\Format dviluatex  tex    "LaTeX (dviluatex)"     "" "" "%%"	"document,menu=export"
-\Format platex     tex    "LaTeX (pLaTeX)"        "" "" "%%" 	"document,menu=export"
-\Format literate   nw      NoWeb                  N  ""	"%%"	"document,menu=export"
-\Format sweave     Rnw    "Sweave"                S  "" "%%"	"document,menu=export"
-\Format r          R      "R/S code"              "" "" "%%"	"document,menu=export"
-\Format knitr      Rnw    "Rnw (knitr)"           "" "" "%%"  "document,menu=export"
-\Format lilypond   ly     "LilyPond music"        "" ""	"%%"	"vector"
-\Format lilypond-book    lytex "LilyPond book (LaTeX)"   "" ""	"%%"	"document,menu=export"
-\Format latex      tex    "LaTeX (plain)"         L  ""	"%%"	"document,menu=export"
-\Format luatex     tex    "LaTeX (LuaTeX)"        "" ""	"%%"	"document,menu=export"
-\Format pdflatex   tex    "LaTeX (pdflatex)"      "" ""	"%%"	"document,menu=export"
-\Format xetex      tex    "LaTeX (XeTeX)"         "" ""	"%%"	"document,menu=export"
-\Format text       txt    "Plain text"            a  ""	"%%"	"document,menu=export"
-\Format text2      txt    "Plain text (pstotext)" "" ""	"%%"	"document"
-\Format text3      txt    "Plain text (ps2ascii)" "" ""	"%%"	"document"
-\Format text4      txt    "Plain text (catdvi)"   "" ""	"%%"	"document"
-\Format textparagraph txt "Plain Text, Join Lines" "" ""	"%%"	"document"''' ])
+        rc_entry = [r'''\Format asciichess asc    "Plain text (chess output)"  "" ""	"%%"	""	""
+\Format asciiimage asc    "Plain text (image)"         "" ""	"%%"	""	""
+\Format asciixfig  asc    "Plain text (Xfig output)"   "" ""	"%%"	""	""
+\Format dateout    tmp    "date (output)"         "" ""	"%%"	""	""
+\Format docbook    sgml    DocBook                B  ""	"%%"	"document,menu=export"	""
+\Format docbook-xml xml   "DocBook (XML)"         "" ""	"%%"	"document,menu=export"	"application/docbook+xml"
+\Format dot        dot    "Graphviz Dot"          "" ""	"%%"	"vector"	"text/vnd.graphviz"
+\Format dviluatex  tex    "LaTeX (dviluatex)"     "" "" "%%"	"document,menu=export"	""
+\Format platex     tex    "LaTeX (pLaTeX)"        "" "" "%%" 	"document,menu=export"	""
+\Format literate   nw      NoWeb                  N  ""	"%%"	"document,menu=export"	""
+\Format sweave     Rnw    "Sweave"                S  "" "%%"	"document,menu=export"	""
+\Format r          R      "R/S code"              "" "" "%%"	"document,menu=export"	""
+\Format knitr      Rnw    "Rnw (knitr)"           "" "" "%%"	"document,menu=export"	""
+\Format lilypond   ly     "LilyPond music"        "" ""	"%%"	"vector"	"text/x-lilypond"
+\Format lilypond-book    lytex "LilyPond book (LaTeX)"   "" ""	"%%"	"document,menu=export"	""
+\Format latex      tex    "LaTeX (plain)"         L  ""	"%%"	"document,menu=export"	"text/x-tex"
+\Format luatex     tex    "LaTeX (LuaTeX)"        "" ""	"%%"	"document,menu=export"	""
+\Format pdflatex   tex    "LaTeX (pdflatex)"      "" ""	"%%"	"document,menu=export"	""
+\Format xetex      tex    "LaTeX (XeTeX)"         "" ""	"%%"	"document,menu=export"	""
+\Format text       txt    "Plain text"            a  ""	"%%"	"document,menu=export"	"text/plain"
+\Format text2      txt    "Plain text (pstotext)" "" ""	"%%"	"document"	""
+\Format text3      txt    "Plain text (ps2ascii)" "" ""	"%%"	"document"	""
+\Format text4      txt    "Plain text (catdvi)"   "" ""	"%%"	"document"	""
+\Format textparagraph txt "Plain Text, Join Lines" "" ""	"%%"	"document"	""''' ])
    #Spreadsheets using ssconvert from gnumeric
     checkViewer('gnumeric spreadsheet software', ['gnumeric'],
-      rc_entry = [r'''\Format gnumeric gnumeric "Gnumeric spreadsheet" "" ""    "%%"   "document"
-\Format excel      xls    "Excel spreadsheet"      "" "" "%%"    "document"
-\Format oocalc     ods    "OpenOffice spreadsheet" "" "" "%%"    "document"'''])
+      rc_entry = [r'''\Format gnumeric gnumeric "Gnumeric spreadsheet" "" ""    "%%"   "document"	"application/x-gnumeric"
+\Format excel      xls    "Excel spreadsheet"      "" "" "%%"    "document"	"application/vnd.ms-excel"
+\Format oocalc     ods    "OpenOffice spreadsheet" "" "" "%%"    "document"	"application/vnd.oasis.opendocument.spreadsheet"'''])
  #
     checkViewer('an HTML previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
-        rc_entry = [r'\Format xhtml      xhtml   "LyXHTML"              y "%%" ""    "document,menu=export"'])
+        rc_entry = [r'\Format xhtml      xhtml   "LyXHTML"              y "%%" ""    "document,menu=export"	"application/xhtml+xml"'])
  #
     checkEditor('a BibTeX editor', ['jabref', 'JabRef', \
         'pybliographic', 'bibdesk', 'gbib', 'kbib', \
         'kbibtex', 'sixpack', 'bibedit', 'tkbibtex' \
         'xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
         'nedit', 'gedit', 'notepad'],
-        rc_entry = [r'''\Format bibtex bib    "BibTeX"         "" ""	"%%"	""''' ])
+        rc_entry = [r'''\Format bibtex bib    "BibTeX"         "" ""	"%%"	""	"text/x-bibtex"''' ])
     #
     #checkProg('a Postscript interpreter', ['gs'],
     #  rc_entry = [ r'\ps_command "%%"' ])
     checkViewer('a Postscript previewer', ['kghostview', 'okular', 'evince', 'gv', 'ghostview -swap'],
-        rc_entry = [r'''\Format eps        eps     EPS                    "" "%%"	""	"vector"
-\Format eps2       eps    "EPS (uncropped)"       "" "%%"	""	"vector"
-\Format ps         ps      Postscript             t  "%%"	""	"document,vector,menu=export"'''])
+        rc_entry = [r'''\Format eps        eps     EPS                    "" "%%"	""	"vector"	"image/x-eps"
+\Format eps2       eps    "EPS (uncropped)"       "" "%%"	""	"vector"	""
+\Format ps         ps      Postscript             t  "%%"	""	"document,vector,menu=export"	"application/postscript"'''])
     # for xdg-open issues look here: http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg151818.html
     checkViewer('a PDF previewer', ['kpdf', 'okular', 'evince', 'kghostview', 'xpdf', 'acrobat', 'acroread', \
 		    'gv', 'ghostview'],
-        rc_entry = [r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""	"document,vector,menu=export"
-\Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""	"document,vector,menu=export"
-\Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""	"document,vector,menu=export"
-\Format pdf4       pdf    "PDF (XeTeX)"           X  "%%"	""	"document,vector,menu=export"
-\Format pdf5       pdf    "PDF (LuaTeX)"          u  "%%"	""	"document,vector,menu=export"'''])
+        rc_entry = [r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""	"document,vector,menu=export"	"application/pdf"
+\Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""	"document,vector,menu=export"	""
+\Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""	"document,vector,menu=export"	""
+\Format pdf4       pdf    "PDF (XeTeX)"           X  "%%"	""	"document,vector,menu=export"	""
+\Format pdf5       pdf    "PDF (LuaTeX)"          u  "%%"	""	"document,vector,menu=export"	""'''])
     #
     checkViewer('a DVI previewer', ['xdvi', 'kdvi', 'okular', 'yap', 'dviout -Set=!m'],
-        rc_entry = [r'''\Format dvi        dvi     DVI                    D  "%%"	""	"document,vector,menu=export"
-\Format dvi3       dvi     "DVI (LuaTeX)"          V  "%%"	""	"document,vector,menu=export"'''])
+        rc_entry = [r'''\Format dvi        dvi     DVI                    D  "%%"	""	"document,vector,menu=export"	"application/x-dvi"
+\Format dvi3       dvi     "DVI (LuaTeX)"          V  "%%"	""	"document,vector,menu=export"	""'''])
     if dtl_tools:
         # Windows only: DraftDVI
-        addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""	""	"vector"')
+        addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""	""	"vector"	""')
     #
     checkViewer('an HTML previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
-        rc_entry = [r'\Format html      "html, htm" HTML                H  "%%"	""	"document,menu=export"'])
+        rc_entry = [r'\Format html      "html, htm" HTML                H  "%%"	""	"document,menu=export"	"text/html"'])
     #
     checkViewerEditor('Noteedit', ['noteedit'],
-        rc_entry = [r'\Format noteedit   not     Noteedit               "" "%%"	"%%"	"vector"'])
+        rc_entry = [r'\Format noteedit   not     Noteedit               "" "%%"	"%%"	"vector"	""'])
     #
     checkViewerEditor('an OpenDocument/OpenOffice viewer', ['libreoffice', 'lwriter', 'swriter', 'oowriter', 'abiword'],
-        rc_entry = [r'''\Format odt        odt     OpenDocument           "" "%%"	"%%"	"document,vector,menu=export"
-\Format sxw        sxw    "OpenOffice.Org (sxw)"  "" ""	""	"document,vector"'''])
+        rc_entry = [r'''\Format odt        odt     OpenDocument           "" "%%"	"%%"	"document,vector,menu=export"	"application/vnd.oasis.opendocument.text"
+\Format sxw        sxw    "OpenOffice.Org (sxw)"  "" ""	""	"document,vector"	"application/vnd.sun.xml.writer"'''])
     #
     checkViewerEditor('a Rich Text and Word viewer', ['libreoffice', 'lwriter', 'swriter', 'oowriter', 'abiword'],
-        rc_entry = [r'''\Format rtf        rtf    "Rich Text Format"      "" "%%"	"%%"	"document,vector,menu=export"
-\Format word       doc    "MS Word"               W  "%%"	"%%"	"document,vector,menu=export"'''])
+        rc_entry = [r'''\Format rtf        rtf    "Rich Text Format"      "" "%%"	"%%"	"document,vector,menu=export"	"application/rtf"
+\Format word       doc    "MS Word"               W  "%%"	"%%"	"document,vector,menu=export"	"application/msword"'''])
     #
     # entries that do not need checkProg
-    addToRC(r'''\Format date       ""     "date command"          "" ""	""	""
-\Format csv        csv    "Table (CSV)"  "" ""	""	"document"
-\Format fax        ""      Fax                    "" ""	""	"document"
-\Format lyx        lyx     LyX                    "" ""	""	""
-\Format lyx13x     13.lyx  "LyX 1.3.x"             "" ""	""	"document"
-\Format lyx14x     14.lyx  "LyX 1.4.x"             "" ""	""	"document"
-\Format lyx15x     15.lyx  "LyX 1.5.x"             "" ""	""	"document"
-\Format lyx16x     16.lyx  "LyX 1.6.x"             "" ""	""	"document,menu=export"
-\Format lyx20x     20.lyx  "LyX 2.0.x"             "" ""	""	"document,menu=export"
-\Format clyx       cjklyx "CJK LyX 1.4.x (big5)"  "" ""	""	"document"
-\Format jlyx       cjklyx "CJK LyX 1.4.x (euc-jp)" "" ""	""	"document"
-\Format klyx       cjklyx "CJK LyX 1.4.x (euc-kr)" "" ""	""	"document"
-\Format lyxpreview lyxpreview "LyX Preview"       "" ""	""	""
-\Format pdftex     pdftex_t PDFTEX                "" ""	""	""
-\Format program    ""      Program                "" ""	""	""
-\Format pstex      pstex_t PSTEX                  "" ""	""	""
-\Format wmf        wmf    "Windows Metafile"      "" ""	""	"vector"
-\Format emf        emf    "Enhanced Metafile"     "" ""	""	"vector"
-\Format wordhtml  "html, htm" "HTML (MS Word)"    "" "" ""	"document"
+    addToRC(r'''\Format date       ""     "date command"          "" ""	""	""	""
+\Format csv        csv    "Table (CSV)"           "" ""	""	"document"	"text/csv"
+\Format fax        ""      Fax                    "" ""	""	"document"	""
+\Format lyx        lyx     LyX                    "" ""	""	""	"application/x-lyx"
+\Format lyx13x     13.lyx "LyX 1.3.x"             "" ""	""	"document"	""
+\Format lyx14x     14.lyx "LyX 1.4.x"             "" ""	""	"document"	""
+\Format lyx15x     15.lyx "LyX 1.5.x"             "" ""	""	"document"	""
+\Format lyx16x     16.lyx "LyX 1.6.x"             "" ""	""	"document,menu=export"	""
+\Format lyx20x     20.lyx "LyX 2.0.x"             "" ""	""	"document,menu=export"	""
+\Format clyx       cjklyx "CJK LyX 1.4.x (big5)"  "" ""	""	"document"	""
+\Format jlyx       cjklyx "CJK LyX 1.4.x (euc-jp)" "" ""	""	"document"	""
+\Format klyx       cjklyx "CJK LyX 1.4.x (euc-kr)" "" ""	""	"document"	""
+\Format lyxpreview lyxpreview "LyX Preview"       "" ""	""	""	""
+\Format pdftex     pdftex_t PDFTEX                "" ""	""	""	""
+\Format program    ""      Program                "" ""	""	""	""
+\Format pstex      pstex_t PSTEX                  "" ""	""	""	""
+\Format wmf        wmf    "Windows Metafile"      "" ""	""	"vector"	"image/x-wmf"
+\Format emf        emf    "Enhanced Metafile"     "" ""	""	"vector"	"image/x-emf"
+\Format wordhtml  "html, htm" "HTML (MS Word)"    "" "" ""	"document"	""
 ''')
 
 
@@ -903,10 +903,10 @@ def checkConverterEntries():
     # So, we configure the appropriate version according to the platform.
     cmd = r'\converter lyx %s "python -tt $$s/scripts/lyxpak.py $$r/$$f" ""'
     if os.name == 'nt':
-        addToRC(r'\Format lyxzip     zip    "LyX Archive (zip)"     "" "" ""  "document,menu=export"')
+        addToRC(r'\Format lyxzip     zip    "LyX Archive (zip)"     "" "" ""  "document,menu=export"	""')
         addToRC(cmd % "lyxzip")
     else:
-        addToRC(r'\Format lyxgz      gz     "LyX Archive (tar.gz)"  "" "" ""  "document,menu=export"')
+        addToRC(r'\Format lyxgz      gz     "LyX Archive (tar.gz)"  "" "" ""  "document,menu=export"	""')
         addToRC(cmd % "lyxgz")
 
     #
@@ -1315,7 +1315,7 @@ def removeTempFiles():
 if __name__ == '__main__':
     lyx_check_config = True
     outfile = 'lyxrc.defaults'
-    lyxrc_fileformat = 3
+    lyxrc_fileformat = 7
     rc_entries = ''
     lyx_keep_temps = False
     version_suffix = ''

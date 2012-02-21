@@ -46,11 +46,11 @@ string const readBB_from_PSFile(FileName const & file)
 	// end of the file. Than we have in the header:
 	// %%BoundingBox: (atend)
 	// In this case we must check the end.
-	bool zipped = file.isZippedFile();
+	bool const zipped = formats.isZippedFile(file);
 	FileName const file_ = zipped ? unzipFile(file) : file;
-	string const format = file_.guessFormatFromContents();
+	string const format = formats.getFormatFromFile(file_);
 
-	if (format != "eps" && format != "ps") {
+	if (!Formats::isPostScriptFileFormat(format)) {
 		LYXERR(Debug::GRAPHICS, "[readBB_from_PSFile] no(e)ps-format");
 		if (zipped)
 			file_.removeFile();

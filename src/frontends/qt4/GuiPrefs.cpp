@@ -1983,6 +1983,7 @@ void PrefFileformats::on_formatsCB_currentIndexChanged(int i)
 	formatED->setText(toqstr(f.name()));
 	copierED->setText(toqstr(form_->movers().command(f.name())));
 	extensionsED->setText(toqstr(f.extensions()));
+	mimeED->setText(toqstr(f.mime()));
 	shortcutED->setText(
 		toqstr(l10n_shortcut(f.prettyname(), f.shortcut())));
 	documentCB->setChecked((f.documentFormat()));
@@ -2034,6 +2035,13 @@ void PrefFileformats::on_viewerED_textEdited(const QString & s)
 void PrefFileformats::on_editorED_textEdited(const QString & s)
 {
 	currentFormat().setEditor(fromqstr(s));
+	changed();
+}
+
+
+void PrefFileformats::on_mimeED_textEdited(const QString & s)
+{
+	currentFormat().setMime(fromqstr(s));
 	changed();
 }
 
@@ -2195,7 +2203,7 @@ Format & PrefFileformats::currentFormat()
 
 void PrefFileformats::on_formatNewPB_clicked()
 {
-	form_->formats().add("", "", "", "", "", "", Format::none);
+	form_->formats().add("", "", "", "", "", "", "", Format::none);
 	updateView();
 	formatsCB->setCurrentIndex(0);
 	formatsCB->setFocus(Qt::OtherFocusReason);

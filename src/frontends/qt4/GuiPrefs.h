@@ -358,6 +358,7 @@ private Q_SLOTS:
 	void on_extensionsED_textEdited(const QString &);
 	void on_viewerED_textEdited(const QString &);
 	void on_editorED_textEdited(const QString &);
+	void on_mimeED_textEdited(const QString &);
 	void on_shortcutED_textEdited(const QString &);
 	void on_formatED_editingFinished();
 	void on_formatED_textChanged(const QString &);

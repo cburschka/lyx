@@ -43,7 +43,7 @@ public:
 	///
 	Format(std::string const & n, std::string const & e, std::string const & p,
 	       std::string const & s, std::string const & v, std::string const & ed,
-	       int);
+	       std::string const & m, int);
 	///
 	bool dummy() const;
 	/// Is \p ext a valid filename extension for this format?
@@ -83,6 +83,10 @@ public:
 	///
 	void setEditor(std::string const & v) { editor_ = v; }
 	///
+	std::string const & mime() const { return mime_; }
+	///
+	void setMime(std::string const & m) { mime_ = m; }
+	///
 	bool documentFormat() const { return flags_ & document; }
 	///
 	bool vectorFormat() const { return flags_ & vector; }
@@ -111,6 +115,14 @@ private:
 	std::string viewer_;
 	/// Editor for this format. \sa viewer_.
 	std::string editor_;
+	/*!
+	 * Full MIME type, e.g. "text/x-tex".
+	 * Only types listed by the shared MIME database of freedesktop.org
+	 * should be added.
+	 * This field may be empty, but it must be unique across all formats
+	 * if it is set.
+	 */
+	std::string mime_;
 	///
 	int flags_;
 };
@@ -148,6 +160,10 @@ public:
 	 ** @note For natively zipped formats, such as dia/odg, this returns false.
 	 **/
 	bool isZippedFile(support::FileName const & filename) const;
+	/// check for zipped file format
+	static bool isZippedFileFormat(std::string const & format);
+	/// check for PostScript file format
+	static bool isPostScriptFileFormat(std::string const & format);
 	/// Set editor and/or viewer to "auto" for formats that can be
 	/// opened by the OS.
 	void setAutoOpen();
@@ -159,7 +175,7 @@ public:
 	void add(std::string const & name, std::string const & extensions,
 		 std::string const & prettyname, std::string const & shortcut,
 		 std::string const & viewer, std::string const & editor,
-		 int flags);
+		 std::string const & mime, int flags);
 	///
 	void erase(std::string const & name);
 	///

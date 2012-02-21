@@ -55,7 +55,7 @@ namespace os = support::os;
 
 namespace {
 
-static unsigned int const LYXRC_FILEFORMAT = 6; // younes: add use_qimage option
+static unsigned int const LYXRC_FILEFORMAT = 7; // gb: add mime types
 
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
@@ -1085,28 +1085,29 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			break;
 		}
 		case RC_FILEFORMAT: {
+			bool ok = true;
 			string format, extensions, prettyname, shortcut;
-			lexrc >> format >> extensions >> prettyname >> shortcut;
+			if (!(lexrc >> format >> extensions))
+				ok = false;
+			if (ok && lexrc.next(true))
+				prettyname  = lexrc.getString();
+			else
+				ok = false;
+			if (ok)
+				if(!(lexrc >> shortcut))
+					ok = false;
 			string viewer, editor;
-			if (lexrc.next(true))
+			if (ok && lexrc.next(true))
 				viewer = lexrc.getString();
-			if (lexrc.next(true))
+			else
+				ok = false;
+			if (ok && lexrc.next(true))
 				editor = lexrc.getString();
-			string flags;
-			// Hack to ensure compatibility with versions older
-			// than 1.5.0
-			int le = lexrc.lex();
-			if (le != Lexer::LEX_FEOF && le != Lexer::LEX_UNDEF) {
-				flags = lexrc.getString();
-				if (le != Lexer::LEX_DATA) {
-					// We have got a known token.
-					// Therefore this is an old style
-					// format definition without
-					// flags.
-					lexrc.pushToken(flags);
-					flags.erase();
-				}
-			}
+			else
+				ok = false;
+			string flags, mime;
+			if (!(lexrc >> flags >> mime))
+				ok = false;
 			int flgs = Format::none;
 			while (!flags.empty()) {
 				string flag;
@@ -1124,14 +1125,16 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 					       << flag << "' for format `"
 					       << format << "'.");
 			}
-			if (prettyname.empty()) {
+			if (!ok)
+				LYXERR0("Syntax error in format " << format);
+			else if (prettyname.empty()) {
 				if (theConverters().formatIsUsed(format))
 					LYXERR0("Can't delete format " << format);
 				else
 					formats.erase(format);
 			} else {
 				formats.add(format, extensions, prettyname,
-					    shortcut, viewer, editor, flgs);
+					    shortcut, viewer, editor, mime, flgs);
 			}
 			break;
 		}
@@ -2711,7 +2714,8 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			    format->editor() != cit->editor() ||
 			    format->documentFormat() != cit->documentFormat() ||
 			    format->vectorFormat() != cit->vectorFormat() ||
-			    format->inExportMenu() != cit->inExportMenu()) {
+			    format->inExportMenu() != cit->inExportMenu() ||
+			    format->mime() != cit->mime()) {
 				os << "\\format \"" << cit->name() << "\" \""
 				   << cit->extensions() << "\" \""
 				   << cit->prettyname() << "\" \""
@@ -2729,7 +2733,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 					flags.push_back("menu=export");
 
 				os << getStringFromVector(flags);
-				os << "\"\n";
+				os << "\" \"" << cit->mime() << "\"\n";
 			}
 		}
 
@@ -2738,7 +2742,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		     cit != system_formats.end(); ++cit)
 			if (!formats.getFormat(cit->name()))
 				os << "\\format \"" << cit->name()
-				   << "\" \"\" \"\" \"\" \"\" \"\" \"\"\n";
+				   << "\" \"\" \"\" \"\" \"\" \"\" \"\" \"\"\n";
 		if (tag != RC_LAST)
 			break;
 	case RC_VIEWER_ALTERNATIVES: {

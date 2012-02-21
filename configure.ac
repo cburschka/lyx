@@ -115,6 +115,16 @@ AC_CHECK_HEADERS(zlib.h,
  [AC_CHECK_LIB(z, gzopen, [LIBS="$LIBS -lz"], LYX_LIB_ERROR(libz,zlib))],
  [LYX_LIB_ERROR(zlib.h,zlib)])
 
+### check for file magic support (currently optional)
+AC_CHECK_HEADERS(magic.h,
+ [AC_CHECK_LIB(magic, magic_open, [LIBS="$LIBS -lmagic"],
+  LYX_WARNING([Cannot find limagic. Please check that the libmagic library
+   is correctly installed on your system.
+   Falling back to builtin file format detection.]))],
+ [LYX_WARNING([Cannot find magic.h. Please check that the libmagic library
+   is correctly installed on your system.
+   Falling back to builtin file format detection.])])
+
 
 ### check which frontend we want to use
 

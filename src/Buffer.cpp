@@ -1002,7 +1002,7 @@ Buffer::ReadStatus Buffer::readFile(FileName const & fn)
 
 	d->file_fully_loaded = true;
 	d->read_only = !d->filename.isWritable();
-	params().compressed = d->filename.isZippedFile();
+	params().compressed = formats.isZippedFile(d->filename);
 	saveCheckSum();
 	return ReadSuccess;
 }

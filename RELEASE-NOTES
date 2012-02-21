@@ -68,7 +68,10 @@ into the tarball.
 New external programs and libraries:
 ------------------------------------
 
--
+- LyX links now against libmagic (http://www.darwinsys.com/file/) if it is
+  available at compile time. This improves the file format detection of
+  included graphics and other files. The old builtin format detection code
+  is used if libmagic is not available.
 
 
 Known issues in version 2.1.0

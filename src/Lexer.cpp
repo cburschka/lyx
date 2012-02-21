@@ -14,6 +14,7 @@
 #include <config.h>
 
 #include "Lexer.h"
+#include "Format.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -237,10 +238,14 @@ void Lexer::Pimpl::popTable()
 
 bool Lexer::Pimpl::setFile(FileName const & filename)
 {
+#ifdef TEX2LYX
+	// tex2lyx does not read lyxrc and therefore can't really check for
+	// zipped formats.
+	if (false) {
+#else
 	// Check the format of the file.
-	string const format = filename.guessFormatFromContents();
-
-	if (format == "gzip" || format == "zip" || format == "compress") {
+	if (formats.isZippedFile(filename)) {
+#endif
 		LYXERR(Debug::LYXLEX, "lyxlex: compressed");
 		// The check only outputs a debug message, because it triggers
 		// a bug in compaq cxx 6.2, where is_open() returns 'true' for

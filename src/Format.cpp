@@ -37,6 +37,10 @@
 #include "support/linkback/LinkBackProxy.h"
 #endif
 
+#ifdef HAVE_MAGIC_H
+#include <magic.h>
+#endif
+
 using namespace std;
 using namespace lyx::support;
 
@@ -78,6 +82,21 @@ private:
 };
 
 
+class FormatMimeEqual : public unary_function<Format, bool> {
+public:
+	FormatMimeEqual(string const & mime)
+		: mime_(mime) {}
+	bool operator()(Format const & f) const
+	{
+		// The test for empty mime strings is needed since we allow
+		// formats with empty mime types.
+		return f.mime() == mime_ && !mime_.empty();
+	}
+private:
+	string mime_;
+};
+
+
 class FormatPrettyNameEqual : public unary_function<Format, bool> {
 public:
 	FormatPrettyNameEqual(string const & prettyname)
@@ -101,9 +120,9 @@ bool operator<(Format const & a, Format const & b)
 
 Format::Format(string const & n, string const & e, string const & p,
 	       string const & s, string const & v, string const & ed,
-	       int flags)
+	       string const & m, int flags)
 	: name_(n), prettyname_(p), shortcut_(s), viewer_(v),
-	  editor_(ed), flags_(flags)
+	  editor_(ed), mime_(m), flags_(flags)
 {
 	extension_list_ = getVectorFromString(e, ",");
 	LYXERR(Debug::GRAPHICS, "New Format: n=" << n << ", flags=" << flags);
@@ -168,10 +187,39 @@ string Formats::getFormatFromFile(FileName const & filename) const
 	if (filename.empty())
 		return string();
 
+#ifdef HAVE_MAGIC_H
+	magic_t magic_cookie = magic_open(MAGIC_MIME);
+	if (magic_cookie) {
+		string format;
+		if (magic_load(magic_cookie, NULL) != 0) {
+			LYXERR(Debug::GRAPHICS, "Formats::getFormatFromFile\n"
+				<< "\tCouldn't load magic database - "
+				<< magic_error(magic_cookie));
+		} else {
+			string mime = magic_file(magic_cookie,
+				filename.toFilesystemEncoding().c_str());
+			mime = token(mime, ';', 0);
+			// we need our own ps/eps detection
+			if (mime != "application/postscript") {
+				Formats::const_iterator cit =
+					find_if(formatlist.begin(), formatlist.end(),
+					        FormatMimeEqual(mime));
+				if (cit != formats.end()) {
+					LYXERR(Debug::GRAPHICS, "\tgot format from MIME type: "
+						<< mime << " -> " << cit->name());
+					format = cit->name();
+				}
+			}
+		}
+		magic_close(magic_cookie);
+		if (!format.empty())
+			return format;
+	}
+#endif
+
 	string const format = filename.guessFormatFromContents();
 	string const ext = getExtension(filename.absFileName());
-	if ((format == "gzip" || format == "zip" || format == "compress")
-	    && !ext.empty()) {
+	if (isZippedFileFormat(format) && !ext.empty()) {
 		string const & fmt_name = formats.getFormatFromExtension(ext);
 		if (!fmt_name.empty()) {
 			Format const * p_format = formats.getFormat(fmt_name);
@@ -244,6 +292,17 @@ bool Formats::isZippedFile(support::FileName const & filename) const {
 }
 
 
+bool Formats::isZippedFileFormat(string const & format)
+{
+	return contains("gzip zip compress", format) && !format.empty();
+}
+
+
+bool Formats::isPostScriptFileFormat(string const & format)
+{
+	return format == "ps" || format == "eps";
+}
+
 static string fixCommand(string const & cmd, string const & ext,
 		  os::auto_open_mode mode)
 {
@@ -291,24 +350,24 @@ void Formats::add(string const & name)
 {
 	if (!getFormat(name))
 		add(name, name, name, string(), string(), string(),
-		    Format::document);
+		    string(), Format::document);
 }
 
 
 void Formats::add(string const & name, string const & extensions,
 		  string const & prettyname, string const & shortcut,
 		  string const & viewer, string const & editor,
-		  int flags)
+		  string const & mime, int flags)
 {
 	FormatList::iterator it =
 		find_if(formatlist.begin(), formatlist.end(),
 			FormatNamesEqual(name));
 	if (it == formatlist.end())
 		formatlist.push_back(Format(name, extensions, prettyname,
-					    shortcut, viewer, editor, flags));
+					    shortcut, viewer, editor, mime, flags));
 	else
 		*it = Format(name, extensions, prettyname, shortcut, viewer,
-			     editor, flags);
+			     editor, mime, flags);
 }
 
 

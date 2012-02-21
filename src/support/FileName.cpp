@@ -948,13 +948,6 @@ string FileName::guessFormatFromContents() const
 }
 
 
-bool FileName::isZippedFile() const
-{
-	string const type = guessFormatFromContents();
-	return contains("gzip zip compress", type) && !type.empty();
-}
-
-
 docstring const FileName::relPath(string const & path) const
 {
 	// FIXME UNICODE
