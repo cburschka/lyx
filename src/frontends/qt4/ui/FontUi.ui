@@ -16,7 +16,7 @@
    <item row="0" column="0" colspan="2">
     <widget class="QCheckBox" name="osFontsCB">
      <property name="toolTip">
-      <string>Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)</string>
+      <string>Use OpenType and TrueType fonts with the fontspec package (requires XeTeX or LuaTeX)</string>
      </property>
      <property name="text">
       <string>&amp;Use non-TeX fonts (via XeTeX/LuaTeX)</string>
