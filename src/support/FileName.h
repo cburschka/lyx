@@ -169,12 +169,6 @@ public:
 	*/
 	void changeExtension(std::string const & extension);
 
-	/** Guess the file format name (as in Format::name()) from contents.
-	 Normally you don't want to use this directly, but rather
-	 Formats::getFormatFromFile().
-	 */
-	std::string guessFormatFromContents() const;
-
 	static FileName fromFilesystemEncoding(std::string const & name);
 	/// (securely) create a temporary file with the given mask.
 	/// \p mask must be in filesystem encoding, if it contains a
