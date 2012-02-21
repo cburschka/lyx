@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-02-16 09:54+0100\n"
-"PO-Revision-Date: 2012-02-16 15:47+0100\n"
+"POT-Creation-Date: 2012-02-21 16:09+0100\n"
+"PO-Revision-Date: 2012-02-21 16:20+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-devel@lists.lyx.org>\n"
 "Language: sk\n"
@@ -1485,8 +1485,12 @@ msgid "FontUi"
 msgstr "FontUi"
 
 #: src/frontends/qt4/ui/FontUi.ui:19
-msgid "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)"
-msgstr "Použiť  OpenType a TrueType fonty priamo (potrebné XeTeX alebo LuaTeX)"
+msgid ""
+"Use OpenType and TrueType fonts with the fontspec package (requires XeTeX or "
+"LuaTeX)"
+msgstr ""
+"Použiť  OpenType a TrueType fonty spolu s balíkom fontspec (potrebné XeTeX "
+"alebo LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:22
 msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
@@ -1890,7 +1894,7 @@ msgstr "Zahrnúť"
 msgid "Input"
 msgstr "Vstup"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:303
+#: src/frontends/qt4/ui/IncludeUi.ui:303 lib/layouts/stdlayouts.inc:74
 msgid "Verbatim"
 msgstr "Doslovne (Verbatim)"
 
@@ -5595,9 +5599,10 @@ msgstr "Popis"
 #: lib/layouts/scrclass.inc:295 lib/layouts/stdclass.inc:29
 #: lib/layouts/stdlayouts.inc:13 lib/layouts/stdlayouts.inc:34
 #: lib/layouts/stdlayouts.inc:55 lib/layouts/stdlayouts.inc:75
-#: lib/layouts/svcommon.inc:597 lib/layouts/svcommon.inc:608
-#: lib/layouts/bicaption.module:37 lib/layouts/initials.module:26
-#: lib/layouts/multicol.module:12 lib/layouts/rsphrase.module:45
+#: lib/layouts/stdlayouts.inc:99 lib/layouts/svcommon.inc:597
+#: lib/layouts/svcommon.inc:608 lib/layouts/bicaption.module:37
+#: lib/layouts/initials.module:26 lib/layouts/multicol.module:12
+#: lib/layouts/rsphrase.module:45
 msgid "MainText"
 msgstr "Hlavný text"
 
@@ -8861,11 +8866,11 @@ msgstr "ZavriSekciu"
 msgid "Close Section"
 msgstr "Zavri Sekciu"
 
-#: lib/layouts/moderncv.layout:173 lib/layouts/stdlayouts.inc:74
+#: lib/layouts/moderncv.layout:173 lib/layouts/stdlayouts.inc:98
 msgid "--Separator--"
 msgstr "--Oddeľovač--"
 
-#: lib/layouts/moderncv.layout:181 lib/layouts/stdlayouts.inc:83
+#: lib/layouts/moderncv.layout:181 lib/layouts/stdlayouts.inc:107
 msgid "--- Separate Environment ---"
 msgstr "-- Oddeliť Prostredie --"
 
@@ -18159,12 +18164,12 @@ msgstr "regulárny výraz (rám)"
 msgid "ignore"
 msgstr "ignorovať"
 
-#: src/Converter.cpp:309 src/Converter.cpp:479 src/Converter.cpp:502
-#: src/Converter.cpp:545
+#: src/Converter.cpp:310 src/Converter.cpp:481 src/Converter.cpp:504
+#: src/Converter.cpp:547
 msgid "Cannot convert file"
 msgstr "Nie je možné konvertovať súbor"
 
-#: src/Converter.cpp:310
+#: src/Converter.cpp:311
 #, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
@@ -18173,19 +18178,19 @@ msgstr ""
 "Žiadne informácie pre konverziu %1$s formátnych súborov do %2$s.\n"
 "Definujte konvertor v preferenciách."
 
-#: src/Converter.cpp:430 src/Format.cpp:409 src/Format.cpp:477
+#: src/Converter.cpp:432 src/Format.cpp:409 src/Format.cpp:477
 msgid "Executing command: "
 msgstr "Vykonávam príkaz: "
 
-#: src/Converter.cpp:474
+#: src/Converter.cpp:476
 msgid "Build errors"
 msgstr "Chyby pri vytváraní"
 
-#: src/Converter.cpp:475
+#: src/Converter.cpp:477
 msgid "There were errors during the build process."
 msgstr "Počas spracovania sa vyskytli chyby."
 
-#: src/Converter.cpp:480
+#: src/Converter.cpp:482
 #, c-format
 msgid ""
 "An error occurred while running:\n"
@@ -18194,26 +18199,26 @@ msgstr ""
 "Chyba pri spracovaní:\n"
 "%1$s"
 
-#: src/Converter.cpp:503
+#: src/Converter.cpp:505
 #, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr "Pomocný adresár %1$s sa nedal presunúť na %2$s."
 
-#: src/Converter.cpp:547
+#: src/Converter.cpp:549
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Nedá sa skopírovať pomocný súbor z %1$s do %2$s."
 
-#: src/Converter.cpp:548
+#: src/Converter.cpp:550
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr "Nedá sa presunúť pomocný súbor z %1$s do %2$s."
 
-#: src/Converter.cpp:604
+#: src/Converter.cpp:606
 msgid "Running LaTeX..."
 msgstr "Spúšťam LaTeX..."
 
-#: src/Converter.cpp:623
+#: src/Converter.cpp:625
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
@@ -18222,15 +18227,15 @@ msgstr ""
 "LaTeX neprebehol úspešne. Čo viac, LyX nenašiel výstup pre protokol LaTeXu "
 "%1$s."
 
-#: src/Converter.cpp:626
+#: src/Converter.cpp:628
 msgid "LaTeX failed"
 msgstr "LaTeX zlyhal"
 
-#: src/Converter.cpp:628
+#: src/Converter.cpp:630
 msgid "Output is empty"
 msgstr "Výstup je prázdny"
 
-#: src/Converter.cpp:629
+#: src/Converter.cpp:631
 msgid "An empty output file was generated."
 msgstr "Bol generovaný prázdny výstupný súbor."
 
@@ -24376,6 +24381,33 @@ msgstr ""
 msgid "Directory not found"
 msgstr "Adresár nenájdený"
 
+#: src/support/Systemcall.cpp:382
+#, c-format
+msgid ""
+"The command\n"
+"%1$s\n"
+"has not yet completed.\n"
+"\n"
+"Do you want to stop it?"
+msgstr ""
+"Príkaz\n"
+"%1$s\n"
+"ešte nedokončil.\n"
+"\n"
+"Chcete ho zastaviť ?"
+
+#: src/support/Systemcall.cpp:384
+msgid "Stop command?"
+msgstr "Zastaviť príkaz?"
+
+#: src/support/Systemcall.cpp:385
+msgid "&Stop it"
+msgstr "Zastaviť"
+
+#: src/support/Systemcall.cpp:385
+msgid "Let it &run"
+msgstr "Nech beží ďalej"
+
 #: src/support/debug.cpp:41
 msgid "No debugging messages"
 msgstr "Bez ladiaceho hlásenia"
@@ -25452,9 +25484,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Could not read document"
 #~ msgstr "Nedá sa čítať dokument"
-
-#~ msgid "&Keep it"
-#~ msgstr "Nezmazať"
 
 #~ msgid "Cannot view URL"
 #~ msgstr "Nemôžem zobraziť URL"
