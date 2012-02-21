@@ -500,8 +500,7 @@ def checkFormatEntries(dtl_tools):
     checkViewerEditor('a SVG viewer and editor', ['inkscape'],
         rc_entry = [r'\Format svg        svg     SVG                    "" "%%" "%%"	"vector"'])
     #
-    path, iv = checkViewerNoRC('a raster image viewer', ['xv', 'kview', 'gimp-remote', 'gimp'],
-        rc_entry = [r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"	""
+    imageformats = r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"	""
 \Format gif        gif     GIF                    "" "%s"	"%s"	""
 \Format jpg       "jpg, jpeg" JPEG                "" "%s"	"%s"	""
 \Format pbm        pbm     PBM                    "" "%s"	"%s"	""
@@ -510,28 +509,10 @@ def checkFormatEntries(dtl_tools):
 \Format ppm        ppm     PPM                    "" "%s"	"%s"	""
 \Format tiff       tif     TIFF                   "" "%s"	"%s"	""
 \Format xbm        xbm     XBM                    "" "%s"	"%s"	""
-\Format xpm        xpm     XPM                    "" "%s"	"%s"	""'''])
-    path, ie = checkEditorNoRC('a raster image editor', ['gimp-remote', 'gimp'],
-        rc_entry = [r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"	""
-\Format gif        gif     GIF                    "" "%s"	"%s"	""
-\Format jpg       "jpg, jpeg" JPEG                "" "%s"	"%s"	""
-\Format pbm        pbm     PBM                    "" "%s"	"%s"	""
-\Format pgm        pgm     PGM                    "" "%s"	"%s"	""
-\Format png        png     PNG                    "" "%s"	"%s"	""
-\Format ppm        ppm     PPM                    "" "%s"	"%s"	""
-\Format tiff       tif     TIFF                   "" "%s"	"%s"	""
-\Format xbm        xbm     XBM                    "" "%s"	"%s"	""
-\Format xpm        xpm     XPM                    "" "%s"	"%s"	""'''])
-    addToRC(r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"	""
-\Format gif        gif     GIF                    "" "%s"	"%s"	""
-\Format jpg       "jpg, jpeg" JPEG                "" "%s"	"%s"	""
-\Format pbm        pbm     PBM                    "" "%s"	"%s"	""
-\Format pgm        pgm     PGM                    "" "%s"	"%s"	""
-\Format png        png     PNG                    "" "%s"	"%s"	""
-\Format ppm        ppm     PPM                    "" "%s"	"%s"	""
-\Format tiff       tif     TIFF                   "" "%s"	"%s"	""
-\Format xbm        xbm     XBM                    "" "%s"	"%s"	""
-\Format xpm        xpm     XPM                    "" "%s"	"%s"	""''' % \
+\Format xpm        xpm     XPM                    "" "%s"	"%s"	""'''
+    path, iv = checkViewerNoRC('a raster image viewer', ['xv', 'kview', 'gimp-remote', 'gimp'], rc_entry = [imageformats])
+    path, ie = checkEditorNoRC('a raster image editor', ['gimp-remote', 'gimp'], rc_entry = [imageformats])
+    addToRC(imageformats % \
         (iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie) )
     #
     checkViewerEditor('a text editor', ['xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
