@@ -82,6 +82,7 @@
 #cmakedefine HAVE_LC_MESSAGES 1    
 #cmakedefine HAVE_SSTREAM 1
 #cmakedefine HAVE_ARGZ_H 1
+#cmakedefine HAVE_MAGIC_H 1
 #cmakedefine SIZEOF_WCHAR_T_IS_2 1
 #cmakedefine SIZEOF_WCHAR_T_IS_4 1
 

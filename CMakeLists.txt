@@ -423,7 +423,10 @@ endif()
 
 
 find_package(Qt4 REQUIRED)
-
+find_package(Magic)
+if(Magic_FOUND)
+	set(HAVE_MAGIC_H 1)
+endif()
 
 include_directories(${TOP_BINARY_DIR} ${TOP_SRC_DIR}/src)
 
