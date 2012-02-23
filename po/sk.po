@@ -3241,6 +3241,10 @@ msgid "E&xtensions:"
 msgstr "Rozšírenia:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:109
+msgid "&MIME:"
+msgstr "&MIME:"
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:109
 msgid "Shortc&ut:"
 msgstr "Klávesná skratka:"
 
@@ -9669,11 +9673,11 @@ msgstr "Revidované:"
 
 #: lib/layouts/agu_stdtitle.inc:222
 msgid "Ident-line"
-msgstr "Posunutý-riadok"
+msgstr "Identifikačný riadok"
 
 #: lib/layouts/agu_stdtitle.inc:225
 msgid "Ident-line:"
-msgstr "Posunutý-riadok:"
+msgstr "Identifikačný riadok:"
 
 #: lib/layouts/agu_stdtitle.inc:230
 msgid "Runhead"
@@ -16528,8 +16532,16 @@ msgid "Dia diagram.\n"
 msgstr "Diagram programu Dia.\n"
 
 #: lib/configure.py:483
-msgid "Tgif"
-msgstr "Tgif"
+msgid "tgo"
+msgstr "tgo"
+
+#: lib/configure.py:483
+msgid "tgo|Tgif"
+msgstr "tgo|Tgif"
+
+#: lib/configure.py:483
+msgid "tgo|Tgif"
+msgstr "tgo|Tgif"
 
 #: lib/configure.py:486
 msgid "FIG"
@@ -21949,7 +21961,7 @@ msgstr "Nemôžem pridať skratku do listiny"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3168
 msgid "Identity"
-msgstr "Totožnosť"
+msgstr "Vaša identita"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3377
 msgid "Choose bind file"
