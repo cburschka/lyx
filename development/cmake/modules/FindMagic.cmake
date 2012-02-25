@@ -28,6 +28,20 @@
 
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
+include(CheckFunctionExists)
+macro(check_magic_functions_exists _varname)
+	set(${_varname} 1)
+	if (Magic_LIBRARY)
+		set(CMAKE_REQUIRED_LIBRARIES ${Magic_LIBRARY})
+	endif()
+	foreach(fkt file open load close error)
+		check_function_exists(magic_${fkt} HAS_function_magic_${fkt})
+		if (NOT HAS_function_magic_${fkt})
+			set(${_varname} 0)
+			message(STATUS "Function magic_${fkt} not found")
+		endif()
+	endforeach()
+endmacro()
 if (Magic_INCLUDE_DIR)
   # Already in cache, be silent
   set(Magic_FIND_QUIETLY TRUE)
@@ -39,9 +53,9 @@ find_path(Magic_INCLUDE_DIR magic.h PATHS
  	
 find_library(Magic_LIBRARY NAMES "magic")
 	
-include(CheckFunctionExists)
-check_function_exists(magic_open HAVE_HAVE_MAGIC_OPEN)
-if(Magic_INCLUDE_DIR AND Magic_LIBRARY)
+check_magic_functions_exists(HAS_MAGIC_FUNCTIONS)
+
+if(Magic_INCLUDE_DIR AND Magic_LIBRARY AND HAS_MAGIC_FUNCTIONS)
 	set(Magic_FOUND TRUE)
 endif()
 
