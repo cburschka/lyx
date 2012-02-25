@@ -126,6 +126,8 @@ private:
 	InsetGraphicsParams params_;
 	/// holds the entity name that defines the graphics location (SGML).
 	docstring const graphic_label;
+	///
+	docstring toolTip(BufferView const & bv, int x, int y) const;
 	/// The thing that actually draws the image on LyX's screen.
 	RenderGraphic * graphic_;
 };

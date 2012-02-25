@@ -1088,6 +1088,12 @@ string InsetGraphics::params2string(InsetGraphicsParams const & params,
 	return data.str();
 }
 
+
+docstring InsetGraphics::toolTip(BufferView const &, int, int) const
+{
+	return from_utf8(FileName(params().filename.relFileName()).onlyFileName());
+}
+
 namespace graphics {
 
 void getGraphicsGroups(Buffer const & b, set<string> & ids)
