@@ -1091,7 +1091,7 @@ string InsetGraphics::params2string(InsetGraphicsParams const & params,
 
 docstring InsetGraphics::toolTip(BufferView const &, int, int) const
 {
-	return from_utf8(FileName(params().filename.relFileName()).onlyFileName());
+	return from_utf8(params().filename.onlyFileName());
 }
 
 namespace graphics {
